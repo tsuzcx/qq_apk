@@ -62,43 +62,43 @@ public class HongBaoPanel
   extends RelativeLayout
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 4;
-  protected Context a;
-  GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new HongBaoPanel.3(this);
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  IBaseChatPieProxy jdField_a_of_type_ComQwalletTempIBaseChatPieProxy;
+  private String A;
+  private String B = "#5B6175";
+  private String C = "#27BEF6";
+  private String D = "#000000";
+  private boolean E = false;
+  private boolean F = false;
+  private int G = 0;
+  private List<Integer> H = new ArrayList();
+  private View.OnClickListener I = new HongBaoPanel.3(this);
+  private Integer J = null;
+  private IQWalletHbApi.ITroopUnclaimedHbList K;
   public BaseQQAppInterface a;
-  BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  protected QBaseActivity a;
-  private IQWalletHbApi.ITroopUnclaimedHbList jdField_a_of_type_ComTencentMobileqqQwalletHbIQWalletHbApi$ITroopUnclaimedHbList;
-  ICustomizeStrategyFactory.OnCustomizeListener jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$OnCustomizeListener = new HongBaoPanel.1(this);
-  HongBaoPanel.HongBaoAdapter jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter;
-  HongBaoPanel.OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$OnHolderItemClickListener = new HongBaoPanel.5(this);
-  IQWalletRedService jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService;
-  private Integer jdField_a_of_type_JavaLangInteger = null;
-  private String jdField_a_of_type_JavaLangString;
-  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = ImmersiveUtils.dpToPx(14.0F);
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private String jdField_b_of_type_JavaLangString;
-  private List<Integer> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
-  private String d;
-  private String e = "#5B6175";
-  private String f = "#27BEF6";
-  private String g = "#000000";
+  protected Context b;
+  protected QBaseActivity c;
+  GridLayoutManager d;
+  HongBaoPanel.HongBaoAdapter e;
+  ViewGroup f;
+  IBaseChatPieProxy g;
+  BaseSessionInfo h;
+  boolean i = false;
+  int j = 4;
+  IQWalletRedService k;
+  int l = ImmersiveUtils.dpToPx(14.0F);
+  ICustomizeStrategyFactory.OnCustomizeListener m = new HongBaoPanel.1(this);
+  HongBaoPanel.OnHolderItemClickListener n = new HongBaoPanel.5(this);
+  List<Integer> o = new ArrayList();
+  private ImageView p;
+  private RecyclerView q;
+  private RelativeLayout r;
+  private ImageView s;
+  private RelativeLayout t;
+  private TextView u;
+  private ImageView v;
+  private LinearLayout w;
+  private String x;
+  private String y;
+  private String z;
   
   public HongBaoPanel(Context paramContext)
   {
@@ -110,67 +110,59 @@ public class HongBaoPanel
     super(paramContext, paramAttributeSet);
   }
   
-  private int a()
-  {
-    if (this.jdField_a_of_type_JavaLangInteger == null) {
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(getResources().getColor(com.tencent.mobileqq.qqpay.ui.R.color.j));
-    }
-    return this.jdField_a_of_type_JavaLangInteger.intValue();
-  }
-  
   private RedPacketInfo a(int paramInt, String paramString, ImageView paramImageView)
   {
     RedPacketInfo localRedPacketInfo = new RedPacketInfo();
     localRedPacketInfo.type = 7;
     localRedPacketInfo.templateId = paramString;
-    return ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localRedPacketInfo, new HongBaoPanel.4(this, paramString, paramImageView, paramInt));
+    return ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a(this.a, localRedPacketInfo, new HongBaoPanel.4(this, paramString, paramImageView, paramInt));
   }
   
   private void a(TextView paramTextView, String paramString, int paramInt1, int paramInt2)
   {
-    int j;
+    int i2;
     if (paramTextView != null) {
-      j = paramInt1;
+      i2 = paramInt1;
     }
     for (;;)
     {
       try
       {
         paramTextView.setText(paramString);
-        i = paramInt1;
-        j = paramInt1;
-        if (a()) {
+        i1 = paramInt1;
+        i2 = paramInt1;
+        if (i()) {
           if (paramInt2 != 0)
           {
             if (paramInt2 != 1)
             {
               if (paramInt2 != 2)
               {
-                i = paramInt1;
+                i1 = paramInt1;
               }
               else
               {
-                j = paramInt1;
+                i2 = paramInt1;
                 paramInt1 = Color.parseColor("#737373");
                 break label138;
               }
             }
             else
             {
-              j = paramInt1;
+              i2 = paramInt1;
               paramInt1 = Color.parseColor("#004080");
               break label138;
             }
           }
           else
           {
-            j = paramInt1;
-            paramInt1 = a();
+            i2 = paramInt1;
+            paramInt1 = getNightModeIconTxtColor();
             break label138;
           }
         }
-        j = i;
-        paramTextView.setTextColor(i);
+        i2 = i1;
+        paramTextView.setTextColor(i1);
         return;
       }
       catch (Throwable paramTextView)
@@ -180,13 +172,13 @@ public class HongBaoPanel
         {
           paramTextView = new StringBuilder();
           paramTextView.append("maybe parseColor failed--------,color=");
-          paramTextView.append(j);
+          paramTextView.append(i2);
           QLog.d("HongBaoPanel", 2, paramTextView.toString());
         }
       }
       return;
       label138:
-      int i = paramInt1;
+      int i1 = paramInt1;
     }
   }
   
@@ -201,81 +193,79 @@ public class HongBaoPanel
       {
       case 102: 
         if ((paramRedPacketInfo == null) || (paramRedPacketInfo.icon == null)) {
-          break label271;
+          break label288;
         }
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramRedPacketInfo.icon);
+        this.v.setImageBitmap(paramRedPacketInfo.icon);
         return;
       }
     }
     catch (Throwable paramRedPacketInfo)
     {
       if (!QLog.isColorLevel()) {
-        break label271;
+        break label288;
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updatePanelPictures exception =");
       ((StringBuilder)localObject).append(paramRedPacketInfo.toString());
       QLog.i("HongBaoPanel", 2, ((StringBuilder)localObject).toString());
     }
-    if (a())
+    if (i())
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(R.drawable.aj);
+      this.r.setBackgroundResource(R.drawable.ak);
       return;
     }
     if ((paramRedPacketInfo != null) && (paramRedPacketInfo.icon != null))
     {
       if (Build.VERSION.SDK_INT < 16)
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramRedPacketInfo.icon));
+        this.r.setBackgroundDrawable(new BitmapDrawable(this.b.getResources(), paramRedPacketInfo.icon));
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackground(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramRedPacketInfo.icon));
+      this.r.setBackground(new BitmapDrawable(this.b.getResources(), paramRedPacketInfo.icon));
       return;
       if ((paramRedPacketInfo != null) && (!TextUtils.isEmpty(paramRedPacketInfo.resPath)))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.p.setVisibility(0);
         localObject = QWalletPicHelper.getDrawableForAIO(paramRedPacketInfo.resPath, URLDrawableHelperConstants.a);
         ((URLDrawable)localObject).setURLDrawableListener(new HongBaoPanel.2(this, paramRedPacketInfo, (Drawable)localObject));
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        return;
+        this.p.setImageDrawable((Drawable)localObject);
       }
-      if (this.jdField_b_of_type_Boolean)
+      else if (this.E)
       {
         setBackgroundColor(Color.parseColor("#000000"));
-        this.jdField_c_of_type_Boolean = true;
+        this.F = true;
+      }
+      if (f())
+      {
+        this.p.setBackgroundColor(-1);
         return;
       }
     }
-    label271:
+    label288:
     return;
   }
   
   private void a(String paramString)
   {
-    if (!StringUtil.a(paramString))
+    if (!StringUtil.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService;
+      Object localObject = this.k;
       if (localObject != null)
       {
         paramString = ((IQWalletRedService)localObject).getShowInfo(paramString);
         if (paramString != null)
         {
-          localObject = this.jdField_b_of_type_AndroidWidgetImageView;
-          int i;
-          if (paramString.jdField_a_of_type_Boolean) {
-            i = 0;
+          localObject = this.s;
+          int i1;
+          if (paramString.a) {
+            i1 = 0;
           } else {
-            i = 8;
+            i1 = 8;
           }
-          ((ImageView)localObject).setVisibility(i);
+          ((ImageView)localObject).setVisibility(i1);
         }
       }
     }
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean);
   }
   
   private boolean a(IQWalletConfigService paramIQWalletConfigService, String paramString1, String paramString2)
@@ -295,52 +285,64 @@ public class HongBaoPanel
     return false;
   }
   
-  private void f()
+  private boolean f()
   {
-    Object localObject2 = (IQWalletConfigService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "");
+    BaseSessionInfo localBaseSessionInfo = this.h;
+    if (localBaseSessionInfo == null) {
+      return true;
+    }
+    return localBaseSessionInfo.a != 10014;
+  }
+  
+  private void g()
+  {
+    Object localObject2 = (IQWalletConfigService)this.a.getRuntimeService(IQWalletConfigService.class, "");
     if (a((IQWalletConfigService)localObject2, ((IQWalletConfigService)localObject2).getString("redPackPanel", "", new String[] { "themeInfo", "begintime" }), ((IQWalletConfigService)localObject2).getString("redPackPanel", "", new String[] { "themeInfo", "endtime" })))
     {
-      this.e = ((IQWalletConfigService)localObject2).getString("redPackPanel", "#5B6175", new String[] { "themeInfo", "fontColorIcon" });
-      this.g = ((IQWalletConfigService)localObject2).getString("redPackPanel", "#000000", new String[] { "themeInfo", "fontColorAct" });
-      this.f = ((IQWalletConfigService)localObject2).getString("redPackPanel", "#27BEF6", new String[] { "themeInfo", "fontColorTab" });
-      this.jdField_c_of_type_JavaLangString = ((IQWalletConfigService)localObject2).getString("redPackPanel", "", new String[] { "themeInfo", "panelPic" });
-      this.jdField_b_of_type_JavaLangString = ((IQWalletConfigService)localObject2).getString("redPackPanel", "#FFFFFF", new String[] { "themeInfo", "panelColor" });
+      this.B = ((IQWalletConfigService)localObject2).getString("redPackPanel", "#5B6175", new String[] { "themeInfo", "fontColorIcon" });
+      this.D = ((IQWalletConfigService)localObject2).getString("redPackPanel", "#000000", new String[] { "themeInfo", "fontColorAct" });
+      this.C = ((IQWalletConfigService)localObject2).getString("redPackPanel", "#27BEF6", new String[] { "themeInfo", "fontColorTab" });
+      this.z = ((IQWalletConfigService)localObject2).getString("redPackPanel", "", new String[] { "themeInfo", "panelPic" });
+      this.y = ((IQWalletConfigService)localObject2).getString("redPackPanel", "#FFFFFF", new String[] { "themeInfo", "panelColor" });
     }
-    if (QQTheme.a(VasUtil.a(), false))
+    if (QQTheme.isCustomTheme(VasUtil.e(), false))
     {
-      this.f = "#27BEF6";
-      this.e = "#5B6175";
-      this.jdField_b_of_type_JavaLangString = "";
+      this.C = "#27BEF6";
+      this.B = "#5B6175";
+      this.y = "";
     }
-    if (!StringUtil.a(this.jdField_b_of_type_JavaLangString)) {
+    if (!StringUtil.isEmpty(this.y)) {
       try
       {
-        setBackgroundColor(Color.parseColor(this.jdField_b_of_type_JavaLangString));
+        setBackgroundColor(Color.parseColor(this.y));
       }
       catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
       }
     }
-    if (!StringUtil.a(this.jdField_c_of_type_JavaLangString))
+    if (!StringUtil.isEmpty(this.z))
     {
       localObject1 = new RedPacketInfo();
       ((RedPacketInfo)localObject1).skinType = 100;
-      ((RedPacketInfo)localObject1).templateId = this.jdField_c_of_type_JavaLangString;
+      ((RedPacketInfo)localObject1).templateId = this.z;
       ((RedPacketInfo)localObject1).type = 7;
-      localObject1 = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (RedPacketInfo)localObject1, this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$OnCustomizeListener);
+      localObject1 = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a(this.a, (RedPacketInfo)localObject1, this.m);
       if (localObject1 != null) {
         a((RedPacketInfo)localObject1);
       }
     }
-    else if (this.jdField_b_of_type_Boolean)
+    else if (this.E)
     {
       setBackgroundColor(Color.parseColor("#000000"));
-      this.jdField_c_of_type_Boolean = true;
+      this.F = true;
     }
     else
     {
-      setBackgroundResource(R.drawable.ar);
+      setBackgroundResource(R.drawable.as);
+    }
+    if (!f()) {
+      setBackgroundColor(-1);
     }
     Object localObject1 = ((IQWalletConfigService)localObject2).getObj("redPackPanel", new String[] { "panelAct" });
     if (localObject1 != null) {
@@ -348,18 +350,18 @@ public class HongBaoPanel
       {
         localObject2 = ((JSONObject)localObject1).optJSONObject("params");
         if (localObject2 != null) {
-          this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("url");
+          this.x = ((JSONObject)localObject2).optString("url");
         }
-        if (!StringUtil.a(this.jdField_a_of_type_JavaLangString))
+        if ((!StringUtil.isEmpty(this.x)) && (this.h.a != 10014))
         {
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-          a(this.jdField_a_of_type_AndroidWidgetTextView, ((JSONObject)localObject1).optString("name"), Color.parseColor(this.g), 2);
+          this.r.setVisibility(0);
+          a(this.u, ((JSONObject)localObject1).optString("name"), Color.parseColor(this.D), 2);
           localObject2 = ((JSONObject)localObject1).optString("bubble_pic");
           RedPacketInfo localRedPacketInfo = new RedPacketInfo();
           localRedPacketInfo.skinType = 101;
           localRedPacketInfo.templateId = ((String)localObject2);
           localRedPacketInfo.type = 7;
-          localObject2 = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localRedPacketInfo, this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$OnCustomizeListener);
+          localObject2 = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a(this.a, localRedPacketInfo, this.m);
           if (localObject2 != null) {
             a((RedPacketInfo)localObject2);
           }
@@ -368,84 +370,102 @@ public class HongBaoPanel
           localRedPacketInfo.skinType = 102;
           localRedPacketInfo.templateId = ((String)localObject2);
           localRedPacketInfo.type = 7;
-          localObject2 = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localRedPacketInfo, this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$OnCustomizeListener);
+          localObject2 = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getCustomizeStrategyFactory().a(this.a, localRedPacketInfo, this.m);
           if (localObject2 != null) {
             a((RedPacketInfo)localObject2);
           }
-          this.d = ((JSONObject)localObject1).optString("id");
-          a(this.d);
+          this.A = ((JSONObject)localObject1).optString("id");
+          a(this.A);
         }
       }
     }
   }
   
-  private void g()
+  private int getNightModeIconTxtColor()
   {
-    List localList = ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getPanelTabList(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    if (this.J == null) {
+      this.J = Integer.valueOf(getResources().getColor(com.tencent.mobileqq.qqpay.ui.R.color.k));
+    }
+    return this.J.intValue();
+  }
+  
+  private void h()
+  {
+    List localList;
+    if (this.h != null) {
+      localList = ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getPanelTabList(this.h.a, this.h.b, this.h.c);
+    } else {
+      localList = null;
+    }
     if ((localList != null) && (localList.size() > 0))
     {
-      int i = 0;
-      while (i < localList.size())
+      int i1 = 0;
+      while (i1 < localList.size())
       {
-        Object localObject2 = (PanelTabData)localList.get(i);
-        if (i != 0)
+        Object localObject2 = (PanelTabData)localList.get(i1);
+        if (i1 != 0)
         {
-          localObject3 = new View(this.jdField_a_of_type_AndroidContentContext);
+          localObject3 = new View(this.b);
           localObject1 = new LinearLayout.LayoutParams(ImmersiveUtils.dpToPx(0.5F), ImmersiveUtils.dpToPx(15.0F));
           ((LinearLayout.LayoutParams)localObject1).leftMargin = ImmersiveUtils.dpToPx(9.0F);
           ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          if (a()) {
+          if (i()) {
             localObject1 = "#737373";
           } else {
             localObject1 = "#DEDEDE";
           }
           ((View)localObject3).setBackgroundColor(Color.parseColor((String)localObject1));
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject3);
+          this.w.addView((View)localObject3);
         }
-        Object localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);
+        Object localObject1 = new TextView(this.b);
+        this.w.addView((View)localObject1);
         ((TextView)localObject1).setTag(localObject2);
-        ((TextView)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        ((TextView)localObject1).setOnClickListener(this.I);
         ((TextView)localObject1).setTextSize(2, 12.0F);
         Object localObject3 = (LinearLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
         ((LinearLayout.LayoutParams)localObject3).gravity = 16;
         ((TextView)localObject1).setGravity(1);
-        if (i != 0) {
+        if (i1 != 0) {
           ((LinearLayout.LayoutParams)localObject3).leftMargin = ImmersiveUtils.dpToPx(10.0F);
         }
-        if (StringUtil.a(this.f)) {
-          this.f = "#27BEF6";
+        if (StringUtil.isEmpty(this.C)) {
+          this.C = "#27BEF6";
         }
-        localObject2 = ((PanelTabData)localObject2).jdField_b_of_type_JavaLangString;
-        int j;
-        if ("#27BEF6".equals(this.f)) {
-          j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(com.tencent.mobileqq.qqui.R.color.jdField_a_of_type_Int);
+        localObject2 = ((PanelTabData)localObject2).c;
+        int i2;
+        if ("#27BEF6".equals(this.C)) {
+          i2 = this.b.getResources().getColor(com.tencent.mobileqq.qqui.R.color.a);
         } else {
-          j = Color.parseColor(this.f);
+          i2 = Color.parseColor(this.C);
         }
-        a((TextView)localObject1, (String)localObject2, j, 1);
-        i += 1;
+        a((TextView)localObject1, (String)localObject2, i2, 1);
+        i1 += 1;
       }
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.w.setVisibility(8);
   }
   
-  private void h()
+  private boolean i()
   {
-    Object localObject = this.jdField_a_of_type_ComQwalletTempIBaseChatPieProxy;
-    if ((localObject != null) && (((IBaseChatPieProxy)localObject).a() != null))
+    return (this.E) && (this.F);
+  }
+  
+  private void j()
+  {
+    Object localObject = this.g;
+    if ((localObject != null) && (((IBaseChatPieProxy)localObject).b() != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
+      localObject = this.h;
       if (localObject != null) {
         try
         {
-          localObject = ((BaseSessionInfo)localObject).jdField_a_of_type_JavaLangString;
-          int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int;
-          if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbIQWalletHbApi$ITroopUnclaimedHbList == null) {
-            this.jdField_a_of_type_ComTencentMobileqqQwalletHbIQWalletHbApi$ITroopUnclaimedHbList = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getTroopUnclaimedHbList(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_ComQwalletTempIBaseChatPieProxy);
+          localObject = ((BaseSessionInfo)localObject).b;
+          int i1 = this.h.a;
+          if (this.K == null) {
+            this.K = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getTroopUnclaimedHbList(this.a, this.g);
           }
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbIQWalletHbApi$ITroopUnclaimedHbList.a((String)localObject, i);
+          this.K.a((String)localObject, i1);
           return;
         }
         catch (Throwable localThrowable)
@@ -463,22 +483,22 @@ public class HongBaoPanel
     }
   }
   
-  private void i()
+  private void k()
   {
     try
     {
       Rect localRect = new Rect();
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHitRect(localRect);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      this.q.getHitRect(localRect);
+      Iterator localIterator = this.o.iterator();
       while (localIterator.hasNext())
       {
-        int i = ((Integer)localIterator.next()).intValue();
-        Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i);
+        int i1 = ((Integer)localIterator.next()).intValue();
+        Object localObject = this.q.getChildAt(i1);
         if ((localObject != null) && (((View)localObject).getLocalVisibleRect(localRect)) && (localRect.height() == ((View)localObject).getHeight()))
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.a(i);
+          localObject = this.e.a(i1);
           if (localObject != null) {
-            ReportUtils.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "aio.lucky.show", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, ((PanelData)localObject).jdField_b_of_type_JavaLangString);
+            ReportUtils.a(this.a, "aio.lucky.show", this.h, ((PanelData)localObject).c);
           }
           localIterator.remove();
         }
@@ -493,7 +513,7 @@ public class HongBaoPanel
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.a();
+    Object localObject = this.e.a();
     if (localObject != null)
     {
       if (((List)localObject).size() <= 0) {
@@ -503,8 +523,8 @@ public class HongBaoPanel
       while (((Iterator)localObject).hasNext())
       {
         PanelData localPanelData = (PanelData)((Iterator)localObject).next();
-        if ((localPanelData != null) && (localPanelData.jdField_a_of_type_Int == 8)) {
-          PreloadStaticApi.a().getResPath(EmojiRedpacketUserGuideDialog.jdField_a_of_type_JavaLangString, null);
+        if ((localPanelData != null) && (localPanelData.b == 8)) {
+          PreloadStaticApi.a().getResPath(EmojiRedpacketUserGuideDialog.a, null);
         }
       }
     }
@@ -512,69 +532,79 @@ public class HongBaoPanel
   
   public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, IBaseChatPieProxy paramIBaseChatPieProxy)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_Boolean = ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, false, null);
-    this.jdField_a_of_type_ComQwalletTempIBaseChatPieProxy = paramIBaseChatPieProxy;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramIBaseChatPieProxy.a();
-    this.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService = ((IQWalletRedService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQWalletRedService.class));
-    this.jdField_a_of_type_AndroidViewViewGroup = paramIBaseChatPieProxy.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramIBaseChatPieProxy.a();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(R.id.ah));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(R.id.ag));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(R.id.aG));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(R.id.aH));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(R.id.ak));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(R.id.af));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(R.id.jdField_a_of_type_Int));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.cj));
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.setOrientation(1);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setChangeDuration(0L);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new HongBaoPanel.SpaceItemDecoration(this));
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter = new HongBaoPanel.HongBaoAdapter(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$OnHolderItemClickListener);
-    f();
+    this.a = paramBaseQQAppInterface;
+    this.b = paramContext;
+    this.h = paramIBaseChatPieProxy.e();
+    boolean bool3 = f();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (ThemeUtil.isNowThemeIsNight(this.a, false, null)) {
+        bool1 = true;
+      }
+    }
+    this.E = bool1;
+    this.g = paramIBaseChatPieProxy;
+    this.c = paramIBaseChatPieProxy.b();
+    this.k = ((IQWalletRedService)this.a.getRuntimeService(IQWalletRedService.class));
+    this.f = paramIBaseChatPieProxy.d();
+    this.p = ((ImageView)findViewById(R.id.ao));
+    this.q = ((RecyclerView)findViewById(R.id.an));
+    this.q.setHasFixedSize(true);
+    this.t = ((RelativeLayout)findViewById(R.id.aO));
+    this.w = ((LinearLayout)findViewById(R.id.aP));
+    this.v = ((ImageView)findViewById(R.id.ar));
+    this.r = ((RelativeLayout)findViewById(R.id.am));
+    this.r.setVisibility(8);
+    this.s = ((ImageView)findViewById(R.id.a));
+    this.s.setVisibility(8);
+    this.r.setOnClickListener(this);
+    this.u = ((TextView)findViewById(R.id.cx));
+    this.d = new GridLayoutManager(this.b, this.j);
+    this.d.setOrientation(1);
+    this.q.setLayoutManager(this.d);
+    this.q.getItemAnimator().setChangeDuration(0L);
+    this.q.addItemDecoration(new HongBaoPanel.SpaceItemDecoration(this));
+    this.e = new HongBaoPanel.HongBaoAdapter(this);
+    this.q.setAdapter(this.e);
+    this.e.a(this.n);
     g();
-    paramBaseQQAppInterface = ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getPanelList(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.a(paramBaseQQAppInterface);
+    h();
+    paramBaseQQAppInterface = ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getPanelList(this.h);
+    this.e.a(paramBaseQQAppInterface);
     b();
     a();
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.a();
+    Object localObject = this.e.a();
     if (localObject != null)
     {
       if (((List)localObject).size() <= 0) {
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < ((List)localObject).size())
+      int i1 = 0;
+      while (i1 < ((List)localObject).size())
       {
-        localArrayList.add(((PanelData)((List)localObject).get(i)).jdField_a_of_type_JavaLangString);
-        i += 1;
+        localArrayList.add(((PanelData)((List)localObject).get(i1)).a);
+        i1 += 1;
       }
-      localObject = ((IQWalletConfigService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQWalletConfigService.class, "")).getObj("redPackPanel", new String[] { "panelAct" });
+      localObject = ((IQWalletConfigService)this.a.getRuntimeService(IQWalletConfigService.class, "")).getObj("redPackPanel", new String[] { "panelAct" });
       if (localObject != null) {
         localArrayList.add(((JSONObject)localObject).optString("id"));
       }
-      this.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService.doShowReport(localArrayList);
+      this.k.doShowReport(localArrayList);
     }
   }
   
   public void c()
   {
-    this.jdField_c_of_type_Int = 0;
-    IQWalletHbApi.ITroopUnclaimedHbList localITroopUnclaimedHbList = this.jdField_a_of_type_ComTencentMobileqqQwalletHbIQWalletHbApi$ITroopUnclaimedHbList;
+    this.G = 0;
+    IQWalletHbApi.ITroopUnclaimedHbList localITroopUnclaimedHbList = this.K;
     if (localITroopUnclaimedHbList != null) {
       localITroopUnclaimedHbList.a();
     }
@@ -586,29 +616,29 @@ public class HongBaoPanel
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("failedImageReTryTimes=");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(this.G);
       ((StringBuilder)localObject).append(",failedPositionList=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaUtilList.toString());
+      ((StringBuilder)localObject).append(this.H.toString());
       QLog.d("HongBaoPanel", 2, ((StringBuilder)localObject).toString());
     }
-    int i = this.jdField_c_of_type_Int + 1;
-    this.jdField_c_of_type_Int = i;
-    if (i > 3) {
+    int i1 = this.G + 1;
+    this.G = i1;
+    if (i1 > 3) {
       return;
     }
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
+    Object localObject = this.H;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      i = 0;
-      while (i < this.jdField_b_of_type_JavaUtilList.size())
+      i1 = 0;
+      while (i1 < this.H.size())
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter;
+        localObject = this.e;
         if (localObject != null) {
-          ((HongBaoPanel.HongBaoAdapter)localObject).notifyItemChanged(i);
+          ((HongBaoPanel.HongBaoAdapter)localObject).notifyItemChanged(i1);
         }
-        i += 1;
+        i1 += 1;
       }
-      this.jdField_b_of_type_JavaUtilList.clear();
+      this.H.clear();
     }
   }
   
@@ -616,17 +646,17 @@ public class HongBaoPanel
   {
     try
     {
-      List localList = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$HongBaoAdapter.a();
+      List localList = this.e.a();
       if (localList != null)
       {
-        int i = 0;
-        while (i < localList.size())
+        int i1 = 0;
+        while (i1 < localList.size())
         {
-          this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(i));
-          i += 1;
+          this.o.add(Integer.valueOf(i1));
+          i1 += 1;
         }
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.postDelayed(new HongBaoPanel.6(this), 300L);
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new HongBaoPanel.7(this));
+        this.q.postDelayed(new HongBaoPanel.6(this), 300L);
+        this.q.addOnScrollListener(new HongBaoPanel.7(this));
         return;
       }
     }
@@ -638,21 +668,21 @@ public class HongBaoPanel
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == R.id.af)
+    if (paramView.getId() == R.id.am)
     {
-      if ((this.jdField_a_of_type_AndroidContentContext != null) && (!StringUtil.a(this.jdField_a_of_type_JavaLangString))) {
-        ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      if ((this.b != null) && (!StringUtil.isEmpty(this.x))) {
+        ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).doStartBrowser(this.b, this.x);
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqQwalletRedIQWalletRedService;
+      paramView = this.k;
       if (paramView != null) {
-        paramView.doClick(this.d);
+        paramView.doClick(this.A);
       }
-      a(this.d);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 1000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 10002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 10004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 10008))
+      a(this.A);
+      if ((this.h.a != 0) && (this.h.a != 1000) && (this.h.a != 1004) && (this.h.a != 1001) && (this.h.a != 10002) && (this.h.a != 10004) && (this.h.a != 10008))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 3000) {
+        if (this.h.a == 3000) {
           paramView = "entrance.click.group";
-        } else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1) {
+        } else if (this.h.a == 1) {
           paramView = "entrance.click.chatgroup";
         } else {
           paramView = "";
@@ -661,9 +691,9 @@ public class HongBaoPanel
       else {
         paramView = "entrance.click.c2c";
       }
-      int i = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getPanelFrom();
+      int i1 = ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).getPanelFrom();
       Object localObject;
-      if (i == 0)
+      if (i1 == 0)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramView);
@@ -673,7 +703,7 @@ public class HongBaoPanel
       else
       {
         localObject = paramView;
-        if (i == 1)
+        if (i1 == 1)
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramView);
@@ -681,13 +711,13 @@ public class HongBaoPanel
           localObject = ((StringBuilder)localObject).toString();
         }
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", (String)localObject, 0, 0, "10000", "", "", "");
+      ReportController.b(this.a, "P_CliOper", "Vip_pay_mywallet", "", "wallet", (String)localObject, 0, 0, "10000", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ class MsgSenderProvider$1
 {
   MsgSenderProvider$1(MsgSenderProvider paramMsgSenderProvider)
   {
+    add(new GuildMsgSender());
     add(new TextOrReplyTextMsgSender());
     add(new SpecialMsgSender());
     add(new MediaLightVideoMsgSender());
@@ -16,7 +17,7 @@ class MsgSenderProvider$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.send.sender.MsgSenderProvider.1
  * JD-Core Version:    0.7.0.1
  */

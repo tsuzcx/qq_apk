@@ -22,9 +22,9 @@ import org.json.JSONObject;
 
 public class RIJDislikeManager
 {
-  private ReadInJoyFeedbackPopupWindow jdField_a_of_type_ComTencentMobileqqKandianBizDislikeReadInJoyFeedbackPopupWindow;
-  private KandianNegativeWindow jdField_a_of_type_ComTencentWidgetKandianNegativeWindow;
-  private KandianNegativeWindowForAd jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd;
+  private KandianNegativeWindow a;
+  private KandianNegativeWindowForAd b;
+  private ReadInJoyFeedbackPopupWindow c;
   
   public static String a(ArrayList<DislikeInfo> paramArrayList)
   {
@@ -39,9 +39,9 @@ public class RIJDislikeManager
         {
           DislikeInfo localDislikeInfo = (DislikeInfo)paramArrayList.next();
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("type", localDislikeInfo.c);
-          localJSONObject.put("name", localDislikeInfo.jdField_a_of_type_JavaLangString);
-          localJSONObject.put("tagid", localDislikeInfo.jdField_a_of_type_Long);
+          localJSONObject.put("type", localDislikeInfo.d);
+          localJSONObject.put("name", localDislikeInfo.c);
+          localJSONObject.put("tagid", localDislikeInfo.e);
           localJSONArray.put(localJSONObject);
         }
         return localJSONArray.toString();
@@ -56,62 +56,62 @@ public class RIJDislikeManager
   
   public ReadInJoyFeedbackPopupWindow a(Activity paramActivity, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeReadInJoyFeedbackPopupWindow == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeReadInJoyFeedbackPopupWindow = new ReadInJoyFeedbackPopupWindow(paramActivity, paramReadInJoyBaseAdapter);
+    if (this.c == null) {
+      this.c = new ReadInJoyFeedbackPopupWindow(paramActivity, paramReadInJoyBaseAdapter);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeReadInJoyFeedbackPopupWindow;
+    return this.c;
   }
   
   public KandianNegativeWindow a(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow == null) {
-      this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow = new KandianNegativeWindow(paramContext);
+    if (this.a == null) {
+      this.a = new KandianNegativeWindow(paramContext);
     }
-    return this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow;
-  }
-  
-  public KandianNegativeWindowForAd a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd == null) {
-      this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd = new KandianNegativeWindowForAd(paramContext);
-    }
-    return this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd;
+    return this.a;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow = null;
-    this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd = null;
+    this.a = null;
+    this.b = null;
   }
   
   public void a(View paramView, ViewHolder paramViewHolder, AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJDataManager paramRIJDataManager)
   {
-    int i = paramViewHolder.a;
+    int i = paramViewHolder.P;
     paramViewHolder = new RIJDislikeManager.1(this, i, paramRIJDataManager, paramViewHolder, paramAbsBaseArticleInfo);
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo))
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow;
+      localObject = this.a;
       if ((localObject != null) && (((KandianNegativeWindow)localObject).isShowing())) {
-        this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow.dismiss();
+        this.a.dismiss();
       }
-      this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd.a(i, paramRIJDataManager.a().b(), RIJFeedsType.a(paramAbsBaseArticleInfo), ((AdvertisementInfo)paramAbsBaseArticleInfo).mAdDislikeInfos);
-      this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd.a(paramView, paramViewHolder);
-      this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd.a(new RIJDislikeManager.2(this, paramRIJDataManager, paramAbsBaseArticleInfo));
-      this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd.setOnDismissListener(new RIJDislikeManager.3(this, paramRIJDataManager));
+      this.b.a(i, paramRIJDataManager.a().B(), RIJFeedsType.g(paramAbsBaseArticleInfo), ((AdvertisementInfo)paramAbsBaseArticleInfo).mAdDislikeInfos);
+      this.b.a(paramView, paramViewHolder);
+      this.b.a(new RIJDislikeManager.2(this, paramRIJDataManager, paramAbsBaseArticleInfo));
+      this.b.setOnDismissListener(new RIJDislikeManager.3(this, paramRIJDataManager));
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd;
+    Object localObject = this.b;
     if ((localObject != null) && (((KandianNegativeWindowForAd)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindowForAd.dismiss();
+      this.b.dismiss();
     }
-    this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow.a(i, paramRIJDataManager.a().b(), RIJFeedsType.a(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.mDislikeInfos, paramAbsBaseArticleInfo.innerUniqueID);
-    this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow.a(paramView, paramViewHolder);
-    this.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow.setOnDismissListener(new RIJDislikeManager.4(this, paramRIJDataManager));
+    this.a.a(i, paramRIJDataManager.a().B(), RIJFeedsType.g(paramAbsBaseArticleInfo), paramAbsBaseArticleInfo.mDislikeInfos, paramAbsBaseArticleInfo.innerUniqueID);
+    this.a.a(paramView, paramViewHolder);
+    this.a.setOnDismissListener(new RIJDislikeManager.4(this, paramRIJDataManager));
+  }
+  
+  public KandianNegativeWindowForAd b(Context paramContext)
+  {
+    if (this.b == null) {
+      this.b = new KandianNegativeWindowForAd(paramContext);
+    }
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.RIJDislikeManager
  * JD-Core Version:    0.7.0.1
  */

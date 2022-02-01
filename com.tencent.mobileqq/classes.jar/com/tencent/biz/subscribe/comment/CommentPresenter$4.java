@@ -8,7 +8,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class CommentPresenter$4
   implements AbsListView.OnScrollListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   
   CommentPresenter$4(CommentPresenter paramCommentPresenter) {}
   
@@ -16,24 +16,24 @@ class CommentPresenter$4
   {
     if ((paramInt3 > 0) && (paramAbsListView.getFirstVisiblePosition() + paramInt2 >= paramInt3))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0) && (!CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)) && (!CommentPresenter.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)))
+    if ((this.a) && (paramInt == 0) && (!CommentPresenter.f(this.b)) && (!CommentPresenter.g(this.b)))
     {
-      QLog.i(CommentPresenter.a(), 1, "onLastItemVisible");
-      paramAbsListView = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-      CommentPresenter.a(paramAbsListView, CommentPresenter.a(paramAbsListView).a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)));
-      if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null)
+      QLog.i(CommentPresenter.t(), 1, "onLastItemVisible");
+      paramAbsListView = this.b;
+      CommentPresenter.a(paramAbsListView, CommentPresenter.i(paramAbsListView).a(CommentPresenter.h(this.b)));
+      if (CommentPresenter.j(this.b) != null)
       {
-        CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter), true);
-        CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, true);
+        CommentPresenter.i(this.b).a(CommentPresenter.k(this.b), true);
+        CommentPresenter.a(this.b, true);
       }
     }
   }

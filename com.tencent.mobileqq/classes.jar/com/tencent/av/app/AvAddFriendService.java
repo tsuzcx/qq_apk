@@ -36,69 +36,37 @@ import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
 
 public class AvAddFriendService
 {
-  public static String a = "AvAddFriendService";
-  int jdField_a_of_type_Int = 0;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new AvAddFriendService.3(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new AvAddFriendService.4(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  AvatarObserver jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver = new AvAddFriendService.1(this);
-  FriendObserver jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver = new AvAddFriendService.2(this);
-  public HashMap<String, AvAddFriendService.AddFriendStatus> a;
-  boolean jdField_a_of_type_Boolean = false;
+  public static String b = "AvAddFriendService";
+  boolean a = false;
+  QQAppInterface c = null;
+  int d = 0;
+  public HashMap<String, AvAddFriendService.AddFriendStatus> e = new HashMap();
+  AvatarObserver f = new AvAddFriendService.1(this);
+  FriendObserver g = new AvAddFriendService.2(this);
+  FriendListObserver h = new AvAddFriendService.3(this);
+  MessageObserver i = new AvAddFriendService.4(this);
   
   public AvAddFriendService(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "AvAddFriendLogic");
+      QLog.d(b, 2, "AvAddFriendLogic");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    String str;
-    StringBuilder localStringBuilder;
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-    {
-      if (QLog.isColorLevel())
-      {
-        str = jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("setRelationStatus no uin in map:");
-        localStringBuilder.append(paramString);
-        QLog.d(str, 2, localStringBuilder.toString());
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel())
-      {
-        str = jdField_a_of_type_JavaLangString;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("setRelationStatus :");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(",status");
-        localStringBuilder.append(paramInt);
-        QLog.d(str, 2, localStringBuilder.toString());
-      }
-      ((AvAddFriendService.AddFriendStatus)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt;
-    }
+    this.c = paramQQAppInterface;
+    this.c.addObserver(this.i);
+    this.c.addObserver(this.h);
+    this.c.addObserver(this.f);
+    this.c.addObserver(this.g);
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
     String str;
     StringBuilder localStringBuilder;
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (!this.e.containsKey(paramString))
     {
       if (QLog.isColorLevel())
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("setRelationStatus no uin in map:");
         localStringBuilder.append(paramString);
@@ -109,7 +77,7 @@ public class AvAddFriendService
     {
       if (QLog.isColorLevel())
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("setRelationStatus :");
         localStringBuilder.append(paramString);
@@ -119,8 +87,8 @@ public class AvAddFriendService
         localStringBuilder.append(paramInt2);
         QLog.d(str, 2, localStringBuilder.toString());
       }
-      ((AvAddFriendService.AddFriendStatus)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt1;
-      ((AvAddFriendService.AddFriendStatus)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt2;
+      ((AvAddFriendService.AddFriendStatus)this.e.get(paramString)).b = paramInt1;
+      ((AvAddFriendService.AddFriendStatus)this.e.get(paramString)).b = paramInt2;
     }
   }
   
@@ -140,15 +108,15 @@ public class AvAddFriendService
     if (paramInt != 1) {
       return false;
     }
-    if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+    if (paramString.equals(this.c.getCurrentAccountUin())) {
       return false;
     }
     try
     {
       Long.parseLong(paramString);
-      FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      FriendsManager localFriendsManager = (FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (localFriendsManager != null) {
-        paramString = localFriendsManager.e(paramString);
+        paramString = localFriendsManager.m(paramString);
       } else {
         paramString = null;
       }
@@ -158,20 +126,51 @@ public class AvAddFriendService
     return false;
   }
   
-  private void d(String paramString)
+  private void b(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER) != null) {
-      ((IFriendHandlerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFriendHandlerService.class)).requestUserAddFriendSetting(paramString, this.jdField_a_of_type_Int, 0, "");
+    String str;
+    StringBuilder localStringBuilder;
+    if (!this.e.containsKey(paramString))
+    {
+      if (QLog.isColorLevel())
+      {
+        str = b;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setRelationStatus no uin in map:");
+        localStringBuilder.append(paramString);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        str = b;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setRelationStatus :");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(",status");
+        localStringBuilder.append(paramInt);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      ((AvAddFriendService.AddFriendStatus)this.e.get(paramString)).b = paramInt;
+    }
+  }
+  
+  private void e(String paramString)
+  {
+    if (this.c.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER) != null) {
+      ((IFriendHandlerService)this.c.getRuntimeService(IFriendHandlerService.class)).requestUserAddFriendSetting(paramString, this.d, 0, "");
     }
   }
   
   public int a(String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (!this.e.containsKey(paramString))
     {
       if (QLog.isColorLevel())
       {
-        String str = jdField_a_of_type_JavaLangString;
+        String str = b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getRelationStatus no uin in map:");
         localStringBuilder.append(paramString);
@@ -179,31 +178,20 @@ public class AvAddFriendService
       }
       return 0;
     }
-    return ((AvAddFriendService.AddFriendStatus)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b;
+    return ((AvAddFriendService.AddFriendStatus)this.e.get(paramString)).b;
   }
   
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "AvAddFriendLogic onDestory");
+      QLog.d(b, 2, "AvAddFriendLogic onDestory");
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendObserverFriendObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  void a(String paramString)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.q2v.AddfrindMsg");
-    localIntent.putExtra("peerUin", paramString);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (paramString != null) {
-      paramString.getApp().sendBroadcast(localIntent);
-    }
+    this.e.clear();
+    this.c.removeObserver(this.i);
+    this.c.removeObserver(this.h);
+    this.c.removeObserver(this.f);
+    this.c.removeObserver(this.g);
+    this.c = null;
   }
   
   public boolean a(String paramString, int paramInt)
@@ -211,17 +199,17 @@ public class AvAddFriendService
     if (TextUtils.isEmpty(paramString))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "addFriend uin is null");
+        QLog.d(b, 2, "addFriend uin is null");
       }
       return false;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    if (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString))
+    this.d = paramInt;
+    if (((FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString))
     {
       localObject = new AvAddFriendService.AddFriendStatus(this);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject);
-      a(paramString, 4);
-      a(paramString);
+      this.e.put(paramString, localObject);
+      b(paramString, 4);
+      b(paramString);
       return true;
     }
     if (!a(1, paramString)) {
@@ -229,27 +217,26 @@ public class AvAddFriendService
     }
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addFriend uin");
       localStringBuilder.append(paramString);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     Object localObject = new AvAddFriendService.AddFriendStatus(this);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject);
-    ((IFriendHandlerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFriendHandlerService.class)).requestUinSafetyFlag(Long.parseLong(paramString));
+    this.e.put(paramString, localObject);
+    ((IFriendHandlerService)this.c.getRuntimeService(IFriendHandlerService.class)).requestUinSafetyFlag(Long.parseLong(paramString));
     return true;
   }
   
-  public void b(String paramString)
+  void b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.q2v.AddfrindMsg");
+    localIntent.putExtra("peerUin", paramString);
+    paramString = this.c;
+    if (paramString != null) {
+      paramString.getApp().sendBroadcast(localIntent);
     }
   }
   
@@ -257,25 +244,37 @@ public class AvAddFriendService
   {
     if (TextUtils.isEmpty(paramString))
     {
+      this.e.clear();
+      return;
+    }
+    if (this.e.containsKey(paramString)) {
+      this.e.remove(paramString);
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "acceptAddFriend uin is null");
+        QLog.d(b, 2, "acceptAddFriend uin is null");
       }
       return;
     }
     new ArrayList();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0);
+    Object localObject = this.c.getMessageFacade().h(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0);
     structmsg.StructMsg localStructMsg = null;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "systemMsgList is null");
+        QLog.d(b, 2, "systemMsgList is null");
       }
       return;
     }
     if ((((List)localObject).size() > 0) && (!(((List)localObject).get(0) instanceof MessageForSystemMsg)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "systemMsgList error");
+        QLog.d(b, 2, "systemMsgList error");
       }
       return;
     }
@@ -283,19 +282,19 @@ public class AvAddFriendService
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = b;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("answerAddFriend systemMsgList size");
       localStringBuilder.append(((List)localObject).size());
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    int i = ((List)localObject).size() - 1;
-    while (i >= 0)
+    int j = ((List)localObject).size() - 1;
+    while (j >= 0)
     {
-      localStructMsg = ((MessageForSystemMsg)((List)localObject).get(i)).getSystemMsg();
+      localStructMsg = ((MessageForSystemMsg)((List)localObject).get(j)).getSystemMsg();
       if (QLog.isColorLevel())
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("answerAddFriend structMsg.req_uin =");
         localStringBuilder.append(String.valueOf(localStructMsg.req_uin.get()));
@@ -306,28 +305,28 @@ public class AvAddFriendService
       if (paramString.equals(String.valueOf(localStructMsg.req_uin.get()))) {
         break;
       }
-      i -= 1;
+      j -= 1;
     }
     if ((localStructMsg != null) && (paramString.equals(String.valueOf(localStructMsg.req_uin.get()))))
     {
-      i = localStructMsg.msg_type.get();
+      j = localStructMsg.msg_type.get();
       long l1 = localStructMsg.msg_seq.get();
       long l2 = localStructMsg.req_uin.get();
-      int j = localStructMsg.msg.sub_type.get();
-      int k = localStructMsg.msg.src_id.get();
-      int m = localStructMsg.msg.sub_src_id.get();
-      int n = localStructMsg.msg.group_msg_type.get();
+      int k = localStructMsg.msg.sub_type.get();
+      int m = localStructMsg.msg.src_id.get();
+      int n = localStructMsg.msg.sub_src_id.get();
+      int i1 = localStructMsg.msg.group_msg_type.get();
       paramString = localStructMsg.msg.actions.get();
       if ((paramString != null) && (paramString.size() > 0))
       {
         paramString = (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramString.get(0)).action_info.get();
         paramString.remark.set("");
         paramString.group_id.set(0);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a(i, l1, l2, j, k, m, n, paramString, 0, localStructMsg, false);
+        this.c.getMsgHandler().B().a(j, l1, l2, k, m, n, i1, paramString, 0, localStructMsg, false);
         a(localStructMsg, localStructMsg.msg_seq.get());
         if (QLog.isColorLevel())
         {
-          paramString = jdField_a_of_type_JavaLangString;
+          paramString = b;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("answerAddFriend  structMsg.req_uin:  ");
           ((StringBuilder)localObject).append(String.valueOf(localStructMsg.req_uin.get()));
@@ -337,7 +336,7 @@ public class AvAddFriendService
     }
     else if (QLog.isColorLevel())
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend  structMsg == null | , friendUin == structMsg.req_uin | ");
+      QLog.d(b, 2, "answerAddFriend  structMsg == null | , friendUin == structMsg.req_uin | ");
     }
   }
   
@@ -346,7 +345,7 @@ public class AvAddFriendService
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "finalize");
+        QLog.d(b, 2, "finalize");
       }
       return;
     }

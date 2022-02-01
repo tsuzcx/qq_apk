@@ -16,7 +16,7 @@ class PersonalityLabelGalleryActivity$1
       if (!NetworkUtil.isNetSupport(this.this$0))
       {
         Object localObject = this.this$0;
-        PersonalityLabelGalleryActivity.a((PersonalityLabelGalleryActivity)localObject, ((PersonalityLabelGalleryActivity)localObject).getResources().getString(2131694422));
+        PersonalityLabelGalleryActivity.a((PersonalityLabelGalleryActivity)localObject, ((PersonalityLabelGalleryActivity)localObject).getResources().getString(2131892102));
         localObject = this.a;
         int i;
         if ((localObject != null) && (((ProfilePersonalityLabelInfo)localObject).getSize() > 0)) {
@@ -39,7 +39,7 @@ class PersonalityLabelGalleryActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.mobileqq.colornote.launcher;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.comic.api.IQQComicConfigApi;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -33,31 +32,20 @@ public class BoodoLauncher
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (!a()) {
-        break label94;
-      }
-      str = "com.qqcomic.reader.VipComicReadingActivityV2";
+      localJSONObject.put("jumpto", "com.qqcomic.reader.VipComicReadingActivityV2");
+      localJSONObject.put("comic", paramJSONObject);
+      localJSONObject.put("from", Integer.parseInt("1041001"));
+      label37:
+      paramContext = new ActivityURIRequest(paramContext, "/base/vipcomic");
+      paramContext.extra().putString("options", localJSONObject.toString());
+      paramContext.setFlags(268435456);
+      QRoute.startUri(paramContext, null);
+      return;
     }
     catch (Exception paramJSONObject)
     {
-      for (;;)
-      {
-        continue;
-        String str = "com.qqcomic.activity.reader.VipComicPortraitReadingActivity";
-      }
+      break label37;
     }
-    localJSONObject.put("jumpto", str);
-    localJSONObject.put("comic", paramJSONObject);
-    localJSONObject.put("from", Integer.parseInt("1041001"));
-    paramContext = new ActivityURIRequest(paramContext, "/base/vipcomic");
-    paramContext.extra().putString("options", localJSONObject.toString());
-    paramContext.setFlags(268435456);
-    QRoute.startUri(paramContext, null);
-  }
-  
-  public static boolean a()
-  {
-    return ((IQQComicConfigApi)QRoute.api(IQQComicConfigApi.class)).isEnableNewReader();
   }
   
   private void b(Context paramContext, JSONObject paramJSONObject)
@@ -126,7 +114,7 @@ public class BoodoLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.launcher.BoodoLauncher
  * JD-Core Version:    0.7.0.1
  */

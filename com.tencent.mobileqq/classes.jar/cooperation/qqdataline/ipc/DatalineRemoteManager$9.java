@@ -11,12 +11,12 @@ class DatalineRemoteManager$9
   public void run()
   {
     DatalineRemoteManager.a(this.this$0, this.a);
-    this.this$0.a.add(this.a);
+    this.this$0.d.add(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.9
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ final class AudioRoomSettingHandler$1
           i = 1;
           ((JSONObject)localObject).put("pushSwitch", i);
           paramBundle.put("data", localObject);
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+          this.a.callJs(this.b, new String[] { paramBundle.toString() });
           return;
         }
       }
@@ -49,7 +49,7 @@ final class AudioRoomSettingHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.webplugin.AudioRoomSettingHandler.1
  * JD-Core Version:    0.7.0.1
  */

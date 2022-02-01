@@ -19,7 +19,12 @@ public class TofuConst
     return -1;
   }
   
-  public static final String a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    ReportController.b(paramQQAppInterface, "dc00898", "", paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, paramInt, 0, "0", "0", "", "");
+  }
+  
+  public static final String b(int paramInt)
   {
     if (paramInt != 0)
     {
@@ -43,12 +48,7 @@ public class TofuConst
     return "BUSID_INTIMATE_ANNIVERSARY";
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    ReportController.b(paramQQAppInterface, "dc00898", "", paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, paramInt, 0, "0", "0", "", "");
-  }
-  
-  public static final int b(int paramInt)
+  public static final int c(int paramInt)
   {
     int i = 0;
     for (;;)
@@ -67,7 +67,7 @@ public class TofuConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuConst
  * JD-Core Version:    0.7.0.1
  */

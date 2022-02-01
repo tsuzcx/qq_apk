@@ -13,26 +13,26 @@ class CustomDataReportService$4
   
   public void run()
   {
-    if (BuildConfig.jdField_a_of_type_Boolean)
+    if (BuildConfig.a)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("aud quality report--eventName=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(";params=");
-      localStringBuilder.append(CustomDataReportService.a(this.jdField_a_of_type_JavaUtilHashMap));
+      localStringBuilder.append(CustomDataReportService.b(this.b));
       Log.d("DataReportService", localStringBuilder.toString());
     }
     if (this.this$0.a.isUserHostBeacon())
     {
-      QQBeaconReport.a(this.this$0.a.getAppKey(), "", this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Boolean);
+      QQBeaconReport.a(this.this$0.a.getAppKey(), "", this.a, true, this.b, this.c);
       return;
     }
-    QQBeaconReport.a("", this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Boolean);
+    QQBeaconReport.a("", this.a, true, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.CustomDataReportService.4
  * JD-Core Version:    0.7.0.1
  */

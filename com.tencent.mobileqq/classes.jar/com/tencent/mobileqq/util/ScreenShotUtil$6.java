@@ -14,61 +14,61 @@ final class ScreenShotUtil$6
   
   public T a(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.a.get())
     {
       QLog.e("ScreenShotUtil", 1, "onScreenshotFinish isCanceled");
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.dismiss();
+      this.b.dismiss();
       return null;
     }
     if (paramBitmap == null)
     {
       QLog.e("ScreenShotUtil", 1, "onScreenshotFinish bitmap is null");
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.dismiss();
+      this.b.dismiss();
       return null;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqUtilScreenShotUtil$ScreenLongShotCallback.a(paramBitmap);
+    return this.c.a(paramBitmap);
   }
   
   public void a(Exception paramException)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilScreenShotUtil$ScreenLongShotCallback.a(paramException);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.dismiss();
+    this.c.a(paramException);
+    this.b.dismiss();
   }
   
   public void a(T paramT, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.a.get())
     {
       QLog.e("ScreenShotUtil", 1, "postBitmap isCanceled");
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.dismiss();
+      this.b.dismiss();
       return;
     }
     if (paramT == null)
     {
       QLog.e("ScreenShotUtil", 1, "postBitmap t is null");
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.dismiss();
+      this.b.dismiss();
       return;
     }
     if (paramBitmap == null)
     {
       QLog.e("ScreenShotUtil", 1, "postBitmap bitmap is null");
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilScreenShotUtil$ScreenLongShotCallback.a(new NullPointerException("postBitmap bitmap is null"));
+      this.b.dismiss();
+      this.c.a(new NullPointerException("postBitmap bitmap is null"));
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView.getContext() != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.isShowing()))
+    if ((this.d.getContext() != null) && (this.b.isShowing()))
     {
-      if (this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()) {
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      if (this.e.isRunning()) {
+        this.e.end();
       }
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.dismiss();
+      this.b.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilScreenShotUtil$ScreenLongShotCallback.a(paramT, paramBitmap);
+    this.c.a(paramT, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil.6
  * JD-Core Version:    0.7.0.1
  */

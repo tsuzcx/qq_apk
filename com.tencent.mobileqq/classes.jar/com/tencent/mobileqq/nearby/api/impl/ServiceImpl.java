@@ -15,18 +15,18 @@ public class ServiceImpl
   extends MobileQQServiceBase
   implements IService
 {
-  INearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  INearbyAppInterface a;
+  Random b = new Random();
   
   public ServiceImpl(INearbyAppInterface paramINearbyAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface = paramINearbyAppInterface;
-    seq = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+    this.a = paramINearbyAppInterface;
+    seq = Math.abs(this.b.nextInt());
   }
   
   public AppInterface getAppInterface()
   {
-    return (AppInterface)this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface;
+    return (AppInterface)this.a;
   }
   
   protected Map<String, String[]> getCompatibleCmd2HandlerMap()
@@ -43,7 +43,7 @@ public class ServiceImpl
   {
     try
     {
-      super.addCoder(new NearbyProtocolCoder((AppInterface)this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface));
+      super.addCoder(new NearbyProtocolCoder((AppInterface)this.a));
       super.setCodersInit();
       return;
     }
@@ -56,7 +56,7 @@ public class ServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.ServiceImpl
  * JD-Core Version:    0.7.0.1
  */

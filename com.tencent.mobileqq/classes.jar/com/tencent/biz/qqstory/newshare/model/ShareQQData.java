@@ -5,29 +5,29 @@ import com.tencent.biz.qqstory.app.QQStoryConstant;
 public class ShareQQData
   extends ShareData
 {
-  public String a;
-  public int b = 0;
-  public int c = 16296448;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 1;
-  public String e;
-  public String f = QQStoryConstant.a;
-  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
+  public int a = 0;
+  public String f;
+  public String g;
   public String h;
-  public String i = "";
+  public int i = 16296448;
   public String j;
-  public String k;
-  public String l;
+  public String k = QQStoryConstant.a;
+  public String l = "mqqapi://qstory/open?src_type=internal&version=1";
   public String m;
   public String n = "";
   public String o;
-  public String p;
+  public int p;
+  public int q = 1;
+  public String r;
+  public String s;
+  public String t;
+  public String u = "";
+  public String v;
+  public String w;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.ShareQQData
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class AdvertisementVideoPreloadManager$4
   {
     Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      AdvertisementVideoPreloadManager.b(((PAAdPreloadTask)localIterator.next()).mVideoVid);
+      AdvertisementVideoPreloadManager.c(((PAAdPreloadTask)localIterator.next()).mVideoVid);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.4
  * JD-Core Version:    0.7.0.1
  */

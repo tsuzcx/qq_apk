@@ -11,12 +11,12 @@ class DailyDynamicHeaderViewController$9
   public void run()
   {
     DailyDynamicHeaderViewController localDailyDynamicHeaderViewController = this.this$0;
-    DailyDynamicHeaderViewController.a(localDailyDynamicHeaderViewController, (BaseActivity)DailyDynamicHeaderViewController.a(localDailyDynamicHeaderViewController).getContext(), new DailyDynamicHeaderViewController.9.1(this));
+    DailyDynamicHeaderViewController.a(localDailyDynamicHeaderViewController, (BaseActivity)DailyDynamicHeaderViewController.b(localDailyDynamicHeaderViewController).getContext(), new DailyDynamicHeaderViewController.9.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyDynamicHeaderViewController.9
  * JD-Core Version:    0.7.0.1
  */

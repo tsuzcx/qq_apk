@@ -32,10 +32,10 @@ class KCWraperV2$2
       i = ((OrderCheckResult)localObject).product;
       KCWraperV2.a(this.this$0, (OrderCheckResult)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqVipTMSManager$Callback;
+    localObject = this.a;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
         ThreadManager.getUIHandler().post(new KCWraperV2.2.1(this, bool1, i));
         return;
@@ -46,7 +46,7 @@ class KCWraperV2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2.2
  * JD-Core Version:    0.7.0.1
  */

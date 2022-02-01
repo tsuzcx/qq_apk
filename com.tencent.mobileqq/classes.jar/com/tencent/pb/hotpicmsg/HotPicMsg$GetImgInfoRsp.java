@@ -29,7 +29,7 @@ public final class HotPicMsg$GetImgInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.hotpicmsg.HotPicMsg.GetImgInfoRsp
  * JD-Core Version:    0.7.0.1
  */

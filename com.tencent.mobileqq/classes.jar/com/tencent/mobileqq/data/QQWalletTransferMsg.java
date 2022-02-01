@@ -97,28 +97,28 @@ public class QQWalletTransferMsg
   
   public void readExternal(QwSafeInputStream paramQwSafeInputStream)
   {
-    this.elem.jdField_a_of_type_Int = paramQwSafeInputStream.readInt();
-    this.elem.jdField_b_of_type_Int = paramQwSafeInputStream.readInt();
-    this.elem.jdField_a_of_type_JavaLangString = paramQwSafeInputStream.readUTF();
-    this.elem.jdField_b_of_type_JavaLangString = paramQwSafeInputStream.readUTF();
-    this.elem.jdField_c_of_type_JavaLangString = paramQwSafeInputStream.readUTF();
-    this.elem.jdField_d_of_type_JavaLangString = paramQwSafeInputStream.readUTF();
-    this.elem.jdField_e_of_type_JavaLangString = paramQwSafeInputStream.readUTF();
-    this.elem.jdField_f_of_type_JavaLangString = paramQwSafeInputStream.readUTF();
+    this.elem.a = paramQwSafeInputStream.readInt();
+    this.elem.b = paramQwSafeInputStream.readInt();
+    this.elem.c = paramQwSafeInputStream.readUTF();
+    this.elem.d = paramQwSafeInputStream.readUTF();
+    this.elem.e = paramQwSafeInputStream.readUTF();
+    this.elem.f = paramQwSafeInputStream.readUTF();
+    this.elem.g = paramQwSafeInputStream.readUTF();
+    this.elem.h = paramQwSafeInputStream.readUTF();
     this.channelId = paramQwSafeInputStream.readInt();
     this.templateId = paramQwSafeInputStream.readInt();
     this.resend = paramQwSafeInputStream.readInt();
-    this.elem.jdField_c_of_type_Int = paramQwSafeInputStream.readInt(-1);
-    this.elem.jdField_d_of_type_Int = paramQwSafeInputStream.readInt(-1);
-    this.elem.g = paramQwSafeInputStream.readUTF();
-    this.elem.h = paramQwSafeInputStream.readUTF();
-    this.elem.i = paramQwSafeInputStream.readUTF();
-    this.elem.j = paramQwSafeInputStream.readUTF();
-    this.elem.jdField_e_of_type_Int = paramQwSafeInputStream.readInt(13487565);
-    this.elem.jdField_f_of_type_Int = paramQwSafeInputStream.readInt(-1);
+    this.elem.i = paramQwSafeInputStream.readInt(-1);
+    this.elem.j = paramQwSafeInputStream.readInt(-1);
     this.elem.k = paramQwSafeInputStream.readUTF();
     this.elem.l = paramQwSafeInputStream.readUTF();
     this.elem.m = paramQwSafeInputStream.readUTF();
+    this.elem.n = paramQwSafeInputStream.readUTF();
+    this.elem.o = paramQwSafeInputStream.readInt(13487565);
+    this.elem.p = paramQwSafeInputStream.readInt(-1);
+    this.elem.q = paramQwSafeInputStream.readUTF();
+    this.elem.r = paramQwSafeInputStream.readUTF();
+    this.elem.s = paramQwSafeInputStream.readUTF();
     this.body.pfa_type = paramQwSafeInputStream.readInt();
     this.elem.a(paramQwSafeInputStream.readUTF());
     this.listId = paramQwSafeInputStream.readUTF();
@@ -126,28 +126,28 @@ public class QQWalletTransferMsg
   
   public void writeExternal(QwSafeOutputStream paramQwSafeOutputStream)
   {
-    paramQwSafeOutputStream.writeInt(this.elem.jdField_a_of_type_Int);
-    paramQwSafeOutputStream.writeInt(this.elem.jdField_b_of_type_Int);
-    paramQwSafeOutputStream.writeUTF(this.elem.jdField_a_of_type_JavaLangString);
-    paramQwSafeOutputStream.writeUTF(this.elem.jdField_b_of_type_JavaLangString);
-    paramQwSafeOutputStream.writeUTF(this.elem.jdField_c_of_type_JavaLangString);
-    paramQwSafeOutputStream.writeUTF(this.elem.jdField_d_of_type_JavaLangString);
-    paramQwSafeOutputStream.writeUTF(this.elem.jdField_e_of_type_JavaLangString);
-    paramQwSafeOutputStream.writeUTF(this.elem.jdField_f_of_type_JavaLangString);
+    paramQwSafeOutputStream.writeInt(this.elem.a);
+    paramQwSafeOutputStream.writeInt(this.elem.b);
+    paramQwSafeOutputStream.writeUTF(this.elem.c);
+    paramQwSafeOutputStream.writeUTF(this.elem.d);
+    paramQwSafeOutputStream.writeUTF(this.elem.e);
+    paramQwSafeOutputStream.writeUTF(this.elem.f);
+    paramQwSafeOutputStream.writeUTF(this.elem.g);
+    paramQwSafeOutputStream.writeUTF(this.elem.h);
     paramQwSafeOutputStream.writeInt(this.channelId);
     paramQwSafeOutputStream.writeInt(this.templateId);
     paramQwSafeOutputStream.writeInt(this.resend);
-    paramQwSafeOutputStream.writeInt(this.elem.jdField_c_of_type_Int);
-    paramQwSafeOutputStream.writeInt(this.elem.jdField_d_of_type_Int);
-    paramQwSafeOutputStream.writeUTF(this.elem.g);
-    paramQwSafeOutputStream.writeUTF(this.elem.h);
-    paramQwSafeOutputStream.writeUTF(this.elem.i);
-    paramQwSafeOutputStream.writeUTF(this.elem.j);
-    paramQwSafeOutputStream.writeInt(this.elem.jdField_e_of_type_Int);
-    paramQwSafeOutputStream.writeInt(this.elem.jdField_f_of_type_Int);
+    paramQwSafeOutputStream.writeInt(this.elem.i);
+    paramQwSafeOutputStream.writeInt(this.elem.j);
     paramQwSafeOutputStream.writeUTF(this.elem.k);
     paramQwSafeOutputStream.writeUTF(this.elem.l);
     paramQwSafeOutputStream.writeUTF(this.elem.m);
+    paramQwSafeOutputStream.writeUTF(this.elem.n);
+    paramQwSafeOutputStream.writeInt(this.elem.o);
+    paramQwSafeOutputStream.writeInt(this.elem.p);
+    paramQwSafeOutputStream.writeUTF(this.elem.q);
+    paramQwSafeOutputStream.writeUTF(this.elem.r);
+    paramQwSafeOutputStream.writeUTF(this.elem.s);
     paramQwSafeOutputStream.writeInt(this.body.pfa_type);
     paramQwSafeOutputStream.writeUTF(this.elem.a());
     paramQwSafeOutputStream.writeUTF(this.listId);
@@ -163,7 +163,7 @@ public class QQWalletTransferMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQWalletTransferMsg
  * JD-Core Version:    0.7.0.1
  */

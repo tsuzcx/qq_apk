@@ -22,49 +22,49 @@ class ApolloItemBuilder$6
 {
   ApolloItemBuilder$6(ApolloItemBuilder paramApolloItemBuilder, ApolloItemBuilder.Holder paramHolder, ApolloActionData paramApolloActionData, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0) {
-      if ((1 != this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder$Holder.f) && (this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder$Holder.f != 2))
+      if ((1 != this.a.s) && (this.a.s != 2))
       {
-        if (3 == this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder$Holder.f)
+        if (3 == this.a.s)
         {
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData.url))
+          paramView = new Intent(this.d.e, QQBrowserActivity.class);
+          if (!TextUtils.isEmpty(this.b.url))
           {
-            paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData.url);
+            paramView.putExtra("url", this.b.url);
           }
           else
           {
             StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(ApolloConstant.l);
+            localStringBuilder.append(ApolloConstant.t);
             localStringBuilder.append("&id=");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloActionData.actionId);
+            localStringBuilder.append(this.b.actionId);
             paramView.putExtra("url", localStringBuilder.toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+          this.d.e.startActivity(paramView);
         }
-        else if (4 != this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder$Holder.f)
+        else if (4 != this.a.s)
         {
-          ApolloMessageUtilImpl.resendApolloMessage(this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder$Holder.a.uniseq);
+          ApolloMessageUtilImpl.resendApolloMessage(this.d.d, this.d.f.a, this.d.f.b, this.a.q.uniseq);
         }
       }
       else
       {
-        if (!(this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        if (!(this.d.e instanceof Activity))
         {
           QLog.e("[cmshow]ApolloItemBuilder", 1, "mContext is not activity");
           return;
         }
-        QZoneVipInfoManager.a((Activity)this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqApolloAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "lmx_actchat");
+        QZoneVipInfoManager.a((Activity)this.d.e, this.d.d.getCurrentUin(), "lmx_actchat");
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    this.c.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

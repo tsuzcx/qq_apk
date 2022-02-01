@@ -34,15 +34,15 @@ class QzonePhotoView$1
       localObject2 = Message.obtain();
       ((Message)localObject2).what = 200;
       ((Message)localObject2).obj = localObject1;
-      QzonePhotoView.a(this.this$0).sendMessage((Message)localObject2);
+      QzonePhotoView.b(this.this$0).sendMessage((Message)localObject2);
       return;
     }
-    QzonePhotoView.a(this.this$0).sendEmptyMessage(201);
+    QzonePhotoView.b(this.this$0).sendEmptyMessage(201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.QzonePhotoView.1
  * JD-Core Version:    0.7.0.1
  */

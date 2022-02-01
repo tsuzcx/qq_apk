@@ -13,9 +13,9 @@ class LuxuryGiftController$TestSuit
   
   public void init()
   {
-    View localView = LayoutInflater.from(LuxuryGiftController.access$1000(this.this$0)).inflate(2131559233, LuxuryGiftController.access$900(this.this$0));
-    this.mGiftH5 = localView.findViewById(2131364092);
-    this.mGift264 = localView.findViewById(2131364091);
+    View localView = LayoutInflater.from(LuxuryGiftController.access$1000(this.this$0)).inflate(2131625153, LuxuryGiftController.access$900(this.this$0));
+    this.mGiftH5 = localView.findViewById(2131430055);
+    this.mGift264 = localView.findViewById(2131430054);
     this.mGiftH5.setOnClickListener(new LuxuryGiftController.TestSuit.1(this));
     this.mGift264.setOnClickListener(new LuxuryGiftController.TestSuit.2(this));
   }
@@ -33,7 +33,7 @@ class LuxuryGiftController$TestSuit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.LuxuryGiftController.TestSuit
  * JD-Core Version:    0.7.0.1
  */

@@ -37,85 +37,55 @@ public class StickerRecBarAdapter
 {
   public static final int a;
   public static final int b;
-  public static final int c;
+  public static final int c = d;
   private static int d;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private BaseAIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext;
-  private StickerDrawableDownloader jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterStickerDrawableDownloader;
-  private StickerRecManagerImpl jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl;
-  private StickerRecViewModel jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewModel;
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private EmotionKeywordHorizonListView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView;
-  private String jdField_a_of_type_JavaLangString;
-  private List<IStickerRecEmoticon> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private String c;
-  private int e = 0;
+  private List<IStickerRecEmoticon> e;
+  private QBaseActivity f;
+  private AppInterface g;
+  private BaseSessionInfo h;
+  private BaseAIOContext i;
+  private ViewGroup j;
+  private EditText k;
+  private String l;
+  private String m;
+  private int n = 0;
+  private String o;
+  private StickerRecManagerImpl p;
+  private EmotionKeywordHorizonListView q;
+  private StickerDrawableDownloader r;
+  private StickerRecViewModel s;
   
   static
   {
-    int i = d;
-    d = i + 1;
-    jdField_a_of_type_Int = i;
-    i = d;
-    d = i + 1;
-    jdField_b_of_type_Int = i;
-    jdField_c_of_type_Int = d;
+    int i1 = d;
+    d = i1 + 1;
+    a = i1;
+    i1 = d;
+    d = i1 + 1;
+    b = i1;
   }
   
   public StickerRecBarAdapter(QBaseActivity paramQBaseActivity, AppInterface paramAppInterface, BaseAIOContext paramBaseAIOContext, ViewGroup paramViewGroup, EditText paramEditText, EmotionKeywordHorizonListView paramEmotionKeywordHorizonListView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = paramBaseAIOContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseAIOContext.a();
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl = StickerRecManagerImpl.get(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView = paramEmotionKeywordHorizonListView;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterStickerDrawableDownloader = new StickerDrawableDownloader();
-  }
-  
-  public IStickerRecEmoticon a(int paramInt)
-  {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("get view position exception , position = ");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append(",size = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
-      QLog.e("StickerRecBarAdapter", 2, localStringBuilder.toString());
-      return null;
-    }
-    return (IStickerRecEmoticon)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public IStickerPresenter a(int paramInt)
-  {
-    if (paramInt == jdField_a_of_type_Int) {
-      return new CommonStickerRecPresenter(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext, this.jdField_a_of_type_AndroidWidgetEditText);
-    }
-    if (paramInt == jdField_b_of_type_Int) {
-      return new ApolloStickerRecPresenter(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext, this.jdField_a_of_type_AndroidWidgetEditText);
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("error presenter type:");
-    localStringBuilder.append(paramInt);
-    throw new IllegalArgumentException(localStringBuilder.toString());
+    this.f = paramQBaseActivity;
+    this.g = paramAppInterface;
+    this.e = new ArrayList();
+    this.i = paramBaseAIOContext;
+    this.j = paramViewGroup;
+    this.h = paramBaseAIOContext.O();
+    this.k = paramEditText;
+    this.p = StickerRecManagerImpl.get(paramAppInterface);
+    this.q = paramEmotionKeywordHorizonListView;
+    this.r = new StickerDrawableDownloader();
   }
   
   public IStickerView a(int paramInt, IStickerPresenter paramIStickerPresenter)
   {
-    if (paramInt == jdField_a_of_type_Int) {
-      return new CommonStickerRecView(paramIStickerPresenter, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidWidgetEditText);
+    if (paramInt == a) {
+      return new CommonStickerRecView(paramIStickerPresenter, this.f, this.i, this.j, this.k);
     }
-    if (paramInt == jdField_b_of_type_Int) {
-      return new ApolloStickerRecView(paramIStickerPresenter, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext, this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (paramInt == b) {
+      return new ApolloStickerRecView(paramIStickerPresenter, this.f, this.i, this.j, this.k, this.g);
     }
     return null;
   }
@@ -125,31 +95,31 @@ public class StickerRecBarAdapter
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 149	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter:b	()V
-    //   4: invokestatic 152	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/mvp/CommonStickerRecPresenter:a	()Ljava/util/List;
+    //   1: invokevirtual 111	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter:b	()V
+    //   4: invokestatic 116	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/mvp/CommonStickerRecPresenter:f	()Ljava/util/List;
     //   7: astore_1
-    //   8: invokestatic 158	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
-    //   11: new 160	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter$2
+    //   8: invokestatic 122	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
+    //   11: new 124	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter$2
     //   14: dup
     //   15: aload_0
     //   16: aload_1
-    //   17: invokespecial 163	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter$2:<init>	(Lcom/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter;Ljava/util/List;)V
-    //   20: invokevirtual 169	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   17: invokespecial 127	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter$2:<init>	(Lcom/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter;Ljava/util/List;)V
+    //   20: invokevirtual 133	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   23: pop
     //   24: goto +17 -> 41
     //   27: astore_1
     //   28: goto +18 -> 46
     //   31: astore_1
-    //   32: ldc 104
+    //   32: ldc 135
     //   34: iconst_1
-    //   35: ldc 171
+    //   35: ldc 137
     //   37: aload_1
-    //   38: invokestatic 174	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   38: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   41: aload_0
-    //   42: invokevirtual 176	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter:c	()V
+    //   42: invokevirtual 144	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter:c	()V
     //   45: return
     //   46: aload_0
-    //   47: invokevirtual 176	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter:c	()V
+    //   47: invokevirtual 144	com/tencent/mobileqq/activity/aio/stickerrecommended/adapter/StickerRecBarAdapter:c	()V
     //   50: aload_1
     //   51: athrow
     // Local variable table:
@@ -167,30 +137,30 @@ public class StickerRecBarAdapter
   
   public void a(int paramInt)
   {
-    this.e = paramInt;
+    this.n = paramInt;
   }
   
   public void a(StickerRecViewModel paramStickerRecViewModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewModel = paramStickerRecViewModel;
+    this.s = paramStickerRecViewModel;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.l = paramString;
   }
   
   public void a(List<IStickerRecEmoticon> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewModel.b(false);
+      this.s.b(false);
       QLog.e("StickerRecBarAdapter", 1, "setData");
       c();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionKeywordHorizonListView.resetCurrentX(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterStickerDrawableDownloader.a(new StickerRecBarAdapter.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterStickerDrawableDownloader.a(this.jdField_a_of_type_JavaUtilList);
+      this.e.addAll(paramList);
+      this.q.resetCurrentX(0);
+      this.r.a(new StickerRecBarAdapter.1(this));
+      this.r.a(this.e);
       notifyDataSetChanged();
       if (QLog.isColorLevel())
       {
@@ -203,7 +173,7 @@ public class StickerRecBarAdapter
           if ((localIStickerRecEmoticon != null) && (StickerRecManagerImpl.isStickerRecFromRemote(localIStickerRecEmoticon)))
           {
             localStringBuilder.append("thumb=");
-            localStringBuilder.append(((StickerRecData)localIStickerRecEmoticon).b());
+            localStringBuilder.append(((StickerRecData)localIStickerRecEmoticon).f());
             localStringBuilder.append(",");
           }
         }
@@ -216,20 +186,20 @@ public class StickerRecBarAdapter
   
   public boolean a(boolean paramBoolean)
   {
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewModel.b();
+    boolean bool2 = this.s.e();
     boolean bool1 = false;
     if (bool2) {
       return false;
     }
     Object localObject;
-    if (this.e != 1)
+    if (this.n != 1)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedImplStickerRecManagerImpl.preProcessUsrText(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
-      String str = ((IRecommendEmotionService)QRoute.api(IRecommendEmotionService.class)).getSpecKeyWord(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext);
+      localObject = this.p.preProcessUsrText(this.k.getText().toString());
+      String str = ((IRecommendEmotionService)QRoute.api(IRecommendEmotionService.class)).getSpecKeyWord(this.i);
       if (!TextUtils.isEmpty(str)) {
         localObject = str;
       }
-      if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase((String)localObject))) {
+      if ((paramBoolean) && (this.l.equalsIgnoreCase((String)localObject))) {
         paramBoolean = true;
       } else {
         paramBoolean = false;
@@ -237,9 +207,9 @@ public class StickerRecBarAdapter
     }
     if (paramBoolean)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext.a();
+      localObject = this.i.g();
       if (localObject != null) {
-        ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(69, this.jdField_c_of_type_JavaLangString));
+        ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(69, this.o));
       }
       bool1 = true;
     }
@@ -253,33 +223,62 @@ public class StickerRecBarAdapter
     return bool1;
   }
   
+  public IStickerRecEmoticon b(int paramInt)
+  {
+    if (paramInt >= this.e.size())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get view position exception , position = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",size = ");
+      localStringBuilder.append(this.e.size());
+      QLog.e("StickerRecBarAdapter", 2, localStringBuilder.toString());
+      return null;
+    }
+    return (IStickerRecEmoticon)this.e.get(paramInt);
+  }
+  
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppAppInterface).collectReportData(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.e);
+    if (this.e.size() > 0) {
+      StickerRecManagerImpl.get(this.g).collectReportData(this.e, this.l, this.m, this.n);
     }
   }
   
   public void b(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.o = paramString;
+  }
+  
+  public IStickerPresenter c(int paramInt)
+  {
+    if (paramInt == a) {
+      return new CommonStickerRecPresenter(this.g, this.f, this.i, this.k);
+    }
+    if (paramInt == b) {
+      return new ApolloStickerRecPresenter(this.g, this.f, this.i, this.k);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("error presenter type:");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void c()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    CommonStickerRecPresenter.c();
-    ApolloStickerRecPresenter.a();
+    this.e.clear();
+    CommonStickerRecPresenter.e();
+    ApolloStickerRecPresenter.b();
   }
   
   public void c(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.m = paramString;
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.e;
     if (localList == null) {
       return 0;
     }
@@ -288,7 +287,7 @@ public class StickerRecBarAdapter
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.e.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -298,30 +297,30 @@ public class StickerRecBarAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (StickerRecDataUtils.a(a(paramInt))) {
-      return jdField_b_of_type_Int;
+    if (StickerRecDataUtils.a(b(paramInt))) {
+      return b;
     }
-    return jdField_a_of_type_Int;
+    return a;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject1;
     Object localObject2;
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt >= this.e.size())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("get view position exception , position = ");
       ((StringBuilder)localObject1).append(paramInt);
       ((StringBuilder)localObject1).append(",size = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject1).append(this.e.size());
       QLog.e("StickerRecBarAdapter", 2, ((StringBuilder)localObject1).toString());
       localObject1 = null;
       localObject2 = paramView;
     }
     else
     {
-      IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)this.e.get(paramInt);
       StringBuilder localStringBuilder;
       if (paramView == null)
       {
@@ -331,9 +330,9 @@ public class StickerRecBarAdapter
         paramView.append(", model:");
         paramView.append(localIStickerRecEmoticon);
         QLog.d("StickerRecBarAdapter", 1, paramView.toString());
-        localObject2 = a(getItemViewType(paramInt));
+        localObject2 = c(getItemViewType(paramInt));
         localObject1 = a(getItemViewType(paramInt), (IStickerPresenter)localObject2);
-        paramView = ((IStickerView)localObject1).a();
+        paramView = ((IStickerView)localObject1).c();
         paramView.setTag(localObject1);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("convertView is null, view:");
@@ -351,7 +350,7 @@ public class StickerRecBarAdapter
         ((StringBuilder)localObject1).append(localIStickerRecEmoticon);
         QLog.d("StickerRecBarAdapter", 1, ((StringBuilder)localObject1).toString());
         localObject1 = (IStickerView)paramView.getTag();
-        localObject2 = ((IStickerView)localObject1).a();
+        localObject2 = ((IStickerView)localObject1).d();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("convertView exist, view:");
         localStringBuilder.append(localObject1);
@@ -359,7 +358,7 @@ public class StickerRecBarAdapter
         localStringBuilder.append(localObject2);
         QLog.d("StickerRecBarAdapter", 1, localStringBuilder.toString());
       }
-      ((IStickerPresenter)localObject2).a(this.jdField_a_of_type_JavaLangString, this.e);
+      ((IStickerPresenter)localObject2).a(this.l, this.n);
       ((IStickerPresenter)localObject2).a((IStickerView)localObject1, localIStickerRecEmoticon);
       localObject2 = paramView;
       localObject1 = paramView;
@@ -370,12 +369,12 @@ public class StickerRecBarAdapter
   
   public int getViewTypeCount()
   {
-    return jdField_c_of_type_Int;
+    return c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.adapter.StickerRecBarAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -41,14 +41,14 @@ public class ProfileCardUtils
     if (QavCameraUsage.b(BaseApplicationImpl.getContext())) {
       return null;
     }
-    if (AudioUtil.a(0))
+    if (AudioUtil.b(0))
     {
-      DialogUtil.a(paramActivity, 230, paramActivity.getString(2131698511), paramActivity.getString(2131698512), new ProfileCardUtils.1(), null).show();
+      DialogUtil.a(paramActivity, 230, paramActivity.getString(2131896453), paramActivity.getString(2131896454), new ProfileCardUtils.1(), null).show();
       return null;
     }
     if (QQAudioHelper.a(0))
     {
-      DialogUtil.a(paramActivity, 230, paramActivity.getString(2131698511), paramActivity.getString(2131698513), new ProfileCardUtils.2(), null).show();
+      DialogUtil.a(paramActivity, 230, paramActivity.getString(2131896453), paramActivity.getString(2131896455), new ProfileCardUtils.2(), null).show();
       return null;
     }
     Object localObject1 = new StringBuilder();
@@ -74,7 +74,7 @@ public class ProfileCardUtils
   public static String getProfileDetailUrl(QQAppInterface paramQQAppInterface, ProfileCardInfo paramProfileCardInfo)
   {
     if ((paramQQAppInterface != null) && (paramProfileCardInfo != null) && (paramProfileCardInfo.allInOne != null) && (!TextUtils.isEmpty(paramProfileCardInfo.allInOne.uin))) {
-      return getProfileDetailUrl(paramProfileCardInfo.allInOne.uin, paramQQAppInterface.getAppid(), "android-8.7.0", paramProfileCardInfo.troopUin, ProfileMetalWallUtils.getProfileMetalWallEntryInfo(paramQQAppInterface, paramProfileCardInfo));
+      return getProfileDetailUrl(paramProfileCardInfo.allInOne.uin, paramQQAppInterface.getAppid(), "android-8.8.17", paramProfileCardInfo.troopUin, ProfileMetalWallUtils.getProfileMetalWallEntryInfo(paramQQAppInterface, paramProfileCardInfo));
     }
     return null;
   }
@@ -92,7 +92,7 @@ public class ProfileCardUtils
       paramString2 = paramString2.toString();
     }
     paramString1 = paramString2;
-    if (ProfileCardUtil.a())
+    if (ProfileCardUtil.c())
     {
       paramString1 = new StringBuilder();
       paramString1.append(paramString2);
@@ -152,7 +152,7 @@ public class ProfileCardUtils
   
   public static void notifyUser(int paramInt, String paramString)
   {
-    QQToast.a(BaseApplication.getContext(), paramInt, paramString, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), paramInt, paramString, 0).show();
   }
   
   public static void openProfileEdit(AppInterface paramAppInterface, Activity paramActivity, ProfileCardInfo paramProfileCardInfo)
@@ -200,7 +200,7 @@ public class ProfileCardUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils
  * JD-Core Version:    0.7.0.1
  */

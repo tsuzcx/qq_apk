@@ -11,7 +11,7 @@ class SoLoaderBaseCommonetServiceImpl$1
   
   public void onResult(int paramInt, IPreloadService.PathResult paramPathResult)
   {
-    OnSoGetPathListener localOnSoGetPathListener = this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnSoGetPathListener;
+    OnSoGetPathListener localOnSoGetPathListener = this.a;
     if (localOnSoGetPathListener != null) {
       localOnSoGetPathListener.onResult(paramInt, paramPathResult.filePath, paramPathResult.folderPath, paramPathResult.url, paramPathResult.isAlreadyExist, paramPathResult.subErrCode);
     }
@@ -19,7 +19,7 @@ class SoLoaderBaseCommonetServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SoLoaderBaseCommonetServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

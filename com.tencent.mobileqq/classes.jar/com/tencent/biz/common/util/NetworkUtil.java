@@ -13,7 +13,65 @@ import java.net.URL;
 
 public class NetworkUtil
 {
-  public static int a(Context paramContext)
+  public static String a(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      try
+      {
+        String str4 = new URL(paramString).getHost();
+        String str3 = InnerDns.getInstance().reqDns(str4, paramInt);
+        if (!TextUtils.isEmpty(str3))
+        {
+          String str1 = str3;
+          if (!str3.contains(":"))
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str3);
+            if (!paramString.startsWith("https")) {
+              break label114;
+            }
+            str1 = ":443";
+            localStringBuilder.append(str1);
+            str1 = localStringBuilder.toString();
+          }
+          str1 = paramString.replaceFirst(str4, str1);
+          return str1;
+        }
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        QLog.e("NetworkUtil", 1, "MalformedURLException", localMalformedURLException);
+      }
+      return paramString;
+      label114:
+      String str2 = ":80";
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.getAllNetworkInfo();
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+    return false;
+  }
+  
+  public static int b(Context paramContext)
   {
     for (;;)
     {
@@ -95,68 +153,10 @@ public class NetworkUtil
     label326:
     return -1;
   }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      try
-      {
-        String str4 = new URL(paramString).getHost();
-        String str3 = InnerDns.getInstance().reqDns(str4, paramInt);
-        if (!TextUtils.isEmpty(str3))
-        {
-          String str1 = str3;
-          if (!str3.contains(":"))
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(str3);
-            if (!paramString.startsWith("https")) {
-              break label114;
-            }
-            str1 = ":443";
-            localStringBuilder.append(str1);
-            str1 = localStringBuilder.toString();
-          }
-          str1 = paramString.replaceFirst(str4, str1);
-          return str1;
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        QLog.e("NetworkUtil", 1, "MalformedURLException", localMalformedURLException);
-      }
-      return paramString;
-      label114:
-      String str2 = ":80";
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = paramContext.getAllNetworkInfo();
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        if (paramContext[i].getState() == NetworkInfo.State.CONNECTED) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.util.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

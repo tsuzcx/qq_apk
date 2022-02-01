@@ -27,79 +27,39 @@ import org.json.JSONObject;
 public class NearbyGrayTipsManager
   implements Manager
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<NearbyGrayTipsManager.GrayTipsConfig> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<NearbyGrayTipsManager.GreetWording> jdField_a_of_type_JavaUtilList = null;
-  private Random jdField_a_of_type_JavaUtilRandom;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private List<NearbyGrayTipsManager.FaceScoreWording> jdField_b_of_type_JavaUtilList = null;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private List<NearbyGrayTipsManager.GrayTipStatisticData> jdField_c_of_type_JavaUtilList = null;
-  private int d;
+  private QQAppInterface a;
+  private ArrayList<NearbyGrayTipsManager.GrayTipsConfig> b = new ArrayList();
+  private boolean c;
+  private boolean d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private long i;
+  private Random j;
+  private List<NearbyGrayTipsManager.GreetWording> k = null;
+  private List<NearbyGrayTipsManager.FaceScoreWording> l = null;
+  private List<NearbyGrayTipsManager.GrayTipStatisticData> m = null;
   
   public NearbyGrayTipsManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(2);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList(2);
-    this.jdField_c_of_type_JavaUtilList = new ArrayList(2);
-    this.jdField_a_of_type_JavaUtilRandom = new Random();
-    this.jdField_a_of_type_JavaUtilRandom.setSeed(System.currentTimeMillis());
-  }
-  
-  private NearbyGrayTipsManager.FaceScoreWording a(int paramInt)
-  {
-    Object localObject1;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getFaceScoreWordingById id= ");
-      ((StringBuilder)localObject1).append(paramInt);
-      QLog.d("Q..troop.faceScore", 2, ((StringBuilder)localObject1).toString());
-    }
-    int i;
-    label167:
-    Object localObject3;
-    label170:
-    synchronized (this.jdField_b_of_type_JavaUtilList)
-    {
-      int j = this.jdField_b_of_type_JavaUtilList.size();
-      i = 0;
-      localObject1 = null;
-      if (i < j)
-      {
-        localObject1 = (NearbyGrayTipsManager.FaceScoreWording)this.jdField_b_of_type_JavaUtilList.get(i);
-        if (localObject1 == null) {
-          break label170;
-        }
-        if (((NearbyGrayTipsManager.FaceScoreWording)localObject1).id != paramInt) {
-          break label167;
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        ??? = new StringBuilder();
-        ((StringBuilder)???).append("getFaceScoreWordingById return faceScoreWording= ");
-        ((StringBuilder)???).append(localObject1);
-        QLog.d("Q..troop.faceScore", 2, ((StringBuilder)???).toString());
-      }
-      return localObject1;
-    }
+    this.a = paramQQAppInterface;
+    this.k = new ArrayList(2);
+    this.l = new ArrayList(2);
+    this.m = new ArrayList(2);
+    this.j = new Random();
+    this.j.setSeed(System.currentTimeMillis());
   }
   
   private NearbyGrayTipsManager.GrayTipsConfig a(int paramInt1, int paramInt2, int paramInt3, long paramLong, NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     NearbyGrayTipsManager.GrayTipsConfig localGrayTipsConfig = paramGrayTipsConfig;
     try
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.b.size() > 0)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.b.iterator();
         do
         {
           do
@@ -109,7 +69,7 @@ public class NearbyGrayTipsManager
               break;
             }
             localGrayTipsConfig = (NearbyGrayTipsManager.GrayTipsConfig)localIterator.next();
-          } while ((localGrayTipsConfig == null) || (localGrayTipsConfig.sceneId != 3) || (localGrayTipsConfig.sceneThree == null) || (!localGrayTipsConfig.sceneThree.keywordTrigger) || (localGrayTipsConfig.sceneThree.keywords == null) || (localGrayTipsConfig.sceneThree.keywords.size() == 0) || (localGrayTipsConfig.sceneThree.whichSide == null) || (!localGrayTipsConfig.sceneThree.whichSide.contains(Integer.valueOf(paramInt3))) || (!localGrayTipsConfig.isValid(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2, paramLong)));
+          } while ((localGrayTipsConfig == null) || (localGrayTipsConfig.sceneId != 3) || (localGrayTipsConfig.sceneThree == null) || (!localGrayTipsConfig.sceneThree.keywordTrigger) || (localGrayTipsConfig.sceneThree.keywords == null) || (localGrayTipsConfig.sceneThree.keywords.size() == 0) || (localGrayTipsConfig.sceneThree.whichSide == null) || (!localGrayTipsConfig.sceneThree.whichSide.contains(Integer.valueOf(paramInt3))) || (!localGrayTipsConfig.isValid(this.a, paramInt1, paramInt2, paramLong)));
           if ((paramGrayTipsConfig == null) || (paramGrayTipsConfig.priority < localGrayTipsConfig.priority)) {
             break label238;
           }
@@ -136,13 +96,13 @@ public class NearbyGrayTipsManager
   
   private NearbyGrayTipsManager.GrayTipsConfig a(int paramInt1, int paramInt2, long paramLong, NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     NearbyGrayTipsManager.GrayTipsConfig localGrayTipsConfig = paramGrayTipsConfig;
     try
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.b.size() > 0)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.b.iterator();
         do
         {
           do
@@ -152,7 +112,7 @@ public class NearbyGrayTipsManager
               break;
             }
             localGrayTipsConfig = (NearbyGrayTipsManager.GrayTipsConfig)localIterator.next();
-          } while ((localGrayTipsConfig == null) || (localGrayTipsConfig.sceneId != 2) || (localGrayTipsConfig.sceneTwo == null) || (!localGrayTipsConfig.sceneTwo.sayHiFrequencyControl) || (localGrayTipsConfig.sceneTwo.timeRange == 0) || (localGrayTipsConfig.sceneTwo.sayHiPeopleCount == 0) || (!localGrayTipsConfig.isValid(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2, paramLong)));
+          } while ((localGrayTipsConfig == null) || (localGrayTipsConfig.sceneId != 2) || (localGrayTipsConfig.sceneTwo == null) || (!localGrayTipsConfig.sceneTwo.sayHiFrequencyControl) || (localGrayTipsConfig.sceneTwo.timeRange == 0) || (localGrayTipsConfig.sceneTwo.sayHiPeopleCount == 0) || (!localGrayTipsConfig.isValid(this.a, paramInt1, paramInt2, paramLong)));
           if ((paramGrayTipsConfig == null) || (paramGrayTipsConfig.priority < localGrayTipsConfig.priority)) {
             break label205;
           }
@@ -186,32 +146,32 @@ public class NearbyGrayTipsManager
     //   3: aconst_null
     //   4: astore 6
     //   6: aload_0
-    //   7: ifnull +533 -> 540
+    //   7: ifnull +532 -> 539
     //   10: aload_0
-    //   11: invokevirtual 189	java/io/File:exists	()Z
+    //   11: invokevirtual 154	java/io/File:exists	()Z
     //   14: ifne +5 -> 19
     //   17: aconst_null
     //   18: areturn
-    //   19: new 67	java/lang/StringBuilder
+    //   19: new 156	java/lang/StringBuilder
     //   22: dup
-    //   23: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   23: invokespecial 157	java/lang/StringBuilder:<init>	()V
     //   26: astore 8
-    //   28: new 191	java/io/FileReader
+    //   28: new 159	java/io/FileReader
     //   31: dup
     //   32: aload_0
-    //   33: invokespecial 194	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   33: invokespecial 162	java/io/FileReader:<init>	(Ljava/io/File;)V
     //   36: astore_0
-    //   37: new 196	java/io/BufferedReader
+    //   37: new 164	java/io/BufferedReader
     //   40: dup
     //   41: aload_0
-    //   42: invokespecial 199	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   42: invokespecial 167	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   45: astore_3
     //   46: aload_0
     //   47: astore_1
     //   48: aload_3
     //   49: astore_2
     //   50: aload_3
-    //   51: invokevirtual 202	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   51: invokevirtual 171	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   54: astore 4
     //   56: aload 4
     //   58: ifnull +18 -> 76
@@ -221,17 +181,17 @@ public class NearbyGrayTipsManager
     //   64: astore_2
     //   65: aload 8
     //   67: aload 4
-    //   69: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: pop
     //   73: goto -27 -> 46
     //   76: aload_3
-    //   77: invokevirtual 205	java/io/BufferedReader:close	()V
+    //   77: invokevirtual 178	java/io/BufferedReader:close	()V
     //   80: goto +8 -> 88
     //   83: astore_1
     //   84: aload_1
-    //   85: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   85: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   88: aload_0
-    //   89: invokevirtual 209	java/io/FileReader:close	()V
+    //   89: invokevirtual 182	java/io/FileReader:close	()V
     //   92: goto +206 -> 298
     //   95: astore 5
     //   97: aload_0
@@ -248,7 +208,7 @@ public class NearbyGrayTipsManager
     //   115: astore_1
     //   116: aconst_null
     //   117: astore_2
-    //   118: goto +388 -> 506
+    //   118: goto +387 -> 505
     //   121: astore 5
     //   123: aconst_null
     //   124: astore_1
@@ -270,7 +230,7 @@ public class NearbyGrayTipsManager
     //   147: astore_2
     //   148: aload_2
     //   149: astore_0
-    //   150: goto +356 -> 506
+    //   150: goto +355 -> 505
     //   153: astore 5
     //   155: aconst_null
     //   156: astore_0
@@ -280,34 +240,34 @@ public class NearbyGrayTipsManager
     //   162: astore_1
     //   163: aload_0
     //   164: astore_2
-    //   165: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   165: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   168: ifeq +16 -> 184
     //   171: aload 4
     //   173: astore_1
     //   174: aload_0
     //   175: astore_2
-    //   176: ldc 211
+    //   176: ldc 189
     //   178: iconst_2
-    //   179: ldc 213
-    //   181: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   179: ldc 191
+    //   181: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   184: aload 4
     //   186: astore_1
     //   187: aload_0
     //   188: astore_2
     //   189: aload 5
-    //   191: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   191: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   194: aload_0
     //   195: ifnull +15 -> 210
     //   198: aload_0
-    //   199: invokevirtual 205	java/io/BufferedReader:close	()V
+    //   199: invokevirtual 178	java/io/BufferedReader:close	()V
     //   202: goto +8 -> 210
     //   205: astore_0
     //   206: aload_0
-    //   207: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   207: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   210: aload 4
     //   212: ifnull +86 -> 298
     //   215: aload 4
-    //   217: invokevirtual 209	java/io/FileReader:close	()V
+    //   217: invokevirtual 182	java/io/FileReader:close	()V
     //   220: goto +78 -> 298
     //   223: astore 5
     //   225: aconst_null
@@ -318,116 +278,116 @@ public class NearbyGrayTipsManager
     //   232: astore_1
     //   233: aload_0
     //   234: astore_2
-    //   235: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   235: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   238: ifeq +16 -> 254
     //   241: aload 4
     //   243: astore_1
     //   244: aload_0
     //   245: astore_2
-    //   246: ldc 211
+    //   246: ldc 189
     //   248: iconst_2
-    //   249: ldc 215
-    //   251: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   249: ldc 196
+    //   251: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   254: aload 4
     //   256: astore_1
     //   257: aload_0
     //   258: astore_2
     //   259: aload 5
-    //   261: invokevirtual 216	java/io/FileNotFoundException:printStackTrace	()V
+    //   261: invokevirtual 197	java/io/FileNotFoundException:printStackTrace	()V
     //   264: aload_0
     //   265: ifnull +15 -> 280
     //   268: aload_0
-    //   269: invokevirtual 205	java/io/BufferedReader:close	()V
+    //   269: invokevirtual 178	java/io/BufferedReader:close	()V
     //   272: goto +8 -> 280
     //   275: astore_0
     //   276: aload_0
-    //   277: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   277: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   280: aload 4
     //   282: ifnull +16 -> 298
     //   285: aload 4
-    //   287: invokevirtual 209	java/io/FileReader:close	()V
+    //   287: invokevirtual 182	java/io/FileReader:close	()V
     //   290: goto +8 -> 298
     //   293: astore_0
     //   294: aload_0
-    //   295: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   295: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   298: aload 7
     //   300: astore_0
     //   301: aload 8
-    //   303: invokevirtual 219	java/lang/StringBuilder:length	()I
-    //   306: ifle +193 -> 499
-    //   309: new 221	org/json/JSONObject
+    //   303: invokevirtual 200	java/lang/StringBuilder:length	()I
+    //   306: ifle +192 -> 498
+    //   309: new 202	org/json/JSONObject
     //   312: dup
     //   313: aload 8
-    //   315: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   318: invokespecial 224	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   315: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   318: invokespecial 208	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   321: astore_1
-    //   322: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   322: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   325: ifeq +34 -> 359
-    //   328: new 67	java/lang/StringBuilder
+    //   328: new 156	java/lang/StringBuilder
     //   331: dup
-    //   332: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   332: invokespecial 157	java/lang/StringBuilder:<init>	()V
     //   335: astore_0
     //   336: aload_0
-    //   337: ldc 226
-    //   339: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   337: ldc 210
+    //   339: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   342: pop
     //   343: aload_0
     //   344: aload_1
-    //   345: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   345: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   348: pop
-    //   349: ldc 211
+    //   349: ldc 189
     //   351: iconst_2
     //   352: aload_0
-    //   353: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   356: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   359: new 123	com/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig
+    //   353: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   356: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   359: new 88	com/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig
     //   362: dup
-    //   363: invokespecial 227	com/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig:<init>	()V
+    //   363: invokespecial 214	com/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig:<init>	()V
     //   366: astore_0
     //   367: aload_0
     //   368: aload_1
-    //   369: invokestatic 231	com/tencent/mobileqq/app/NearbyGrayTipsManager:l	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   369: invokestatic 217	com/tencent/mobileqq/app/NearbyGrayTipsManager:l	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   372: aload_1
-    //   373: ldc 233
-    //   375: invokevirtual 237	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
+    //   373: ldc 219
+    //   375: invokevirtual 223	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
     //   378: ifne +65 -> 443
     //   381: aload_1
-    //   382: ldc 233
-    //   384: invokevirtual 241	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   382: ldc 219
+    //   384: invokevirtual 227	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   387: astore_1
     //   388: aload_0
     //   389: aload_1
-    //   390: invokestatic 244	com/tencent/mobileqq/app/NearbyGrayTipsManager:k	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   390: invokestatic 229	com/tencent/mobileqq/app/NearbyGrayTipsManager:k	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   393: aload_0
     //   394: aload_1
-    //   395: invokestatic 247	com/tencent/mobileqq/app/NearbyGrayTipsManager:j	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   395: invokestatic 231	com/tencent/mobileqq/app/NearbyGrayTipsManager:j	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   398: aload_0
     //   399: aload_1
-    //   400: invokestatic 250	com/tencent/mobileqq/app/NearbyGrayTipsManager:i	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   400: invokestatic 233	com/tencent/mobileqq/app/NearbyGrayTipsManager:i	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   403: aload_0
     //   404: aload_1
-    //   405: invokestatic 253	com/tencent/mobileqq/app/NearbyGrayTipsManager:h	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   405: invokestatic 235	com/tencent/mobileqq/app/NearbyGrayTipsManager:h	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   408: aload_0
     //   409: aload_1
-    //   410: invokestatic 256	com/tencent/mobileqq/app/NearbyGrayTipsManager:g	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   410: invokestatic 237	com/tencent/mobileqq/app/NearbyGrayTipsManager:g	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   413: aload_0
     //   414: aload_1
-    //   415: invokestatic 259	com/tencent/mobileqq/app/NearbyGrayTipsManager:f	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   415: invokestatic 239	com/tencent/mobileqq/app/NearbyGrayTipsManager:f	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   418: aload_0
     //   419: aload_1
-    //   420: invokestatic 262	com/tencent/mobileqq/app/NearbyGrayTipsManager:e	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   420: invokestatic 241	com/tencent/mobileqq/app/NearbyGrayTipsManager:e	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   423: aload_0
     //   424: aload_1
-    //   425: invokestatic 264	com/tencent/mobileqq/app/NearbyGrayTipsManager:d	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   425: invokestatic 243	com/tencent/mobileqq/app/NearbyGrayTipsManager:d	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   428: aload_0
     //   429: aload_1
-    //   430: invokestatic 266	com/tencent/mobileqq/app/NearbyGrayTipsManager:c	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   430: invokestatic 245	com/tencent/mobileqq/app/NearbyGrayTipsManager:c	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   433: aload_0
     //   434: aload_1
-    //   435: invokestatic 268	com/tencent/mobileqq/app/NearbyGrayTipsManager:b	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   435: invokestatic 247	com/tencent/mobileqq/app/NearbyGrayTipsManager:b	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   438: aload_0
     //   439: aload_1
-    //   440: invokestatic 270	com/tencent/mobileqq/app/NearbyGrayTipsManager:a	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
+    //   440: invokestatic 249	com/tencent/mobileqq/app/NearbyGrayTipsManager:a	(Lcom/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig;Lorg/json/JSONObject;)V
     //   443: aload_0
     //   444: areturn
     //   445: astore_1
@@ -435,58 +395,58 @@ public class NearbyGrayTipsManager
     //   449: astore_1
     //   450: aload 6
     //   452: astore_0
-    //   453: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   456: ifeq +39 -> 495
-    //   459: new 67	java/lang/StringBuilder
+    //   453: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   456: ifeq +38 -> 494
+    //   459: new 156	java/lang/StringBuilder
     //   462: dup
-    //   463: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   463: invokespecial 157	java/lang/StringBuilder:<init>	()V
     //   466: astore_2
     //   467: aload_2
-    //   468: ldc_w 272
-    //   471: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   474: pop
-    //   475: aload_2
-    //   476: aload 8
-    //   478: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   481: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: pop
-    //   485: ldc 211
-    //   487: iconst_2
-    //   488: aload_2
-    //   489: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   492: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   495: aload_1
-    //   496: invokevirtual 273	org/json/JSONException:printStackTrace	()V
-    //   499: aload_0
-    //   500: areturn
-    //   501: astore_3
-    //   502: aload_1
-    //   503: astore_0
-    //   504: aload_3
-    //   505: astore_1
-    //   506: aload_2
-    //   507: ifnull +15 -> 522
-    //   510: aload_2
-    //   511: invokevirtual 205	java/io/BufferedReader:close	()V
-    //   514: goto +8 -> 522
-    //   517: astore_2
-    //   518: aload_2
-    //   519: invokevirtual 208	java/io/IOException:printStackTrace	()V
-    //   522: aload_0
-    //   523: ifnull +15 -> 538
-    //   526: aload_0
-    //   527: invokevirtual 209	java/io/FileReader:close	()V
-    //   530: goto +8 -> 538
-    //   533: astore_0
-    //   534: aload_0
-    //   535: invokevirtual 208	java/io/IOException:printStackTrace	()V
-    //   538: aload_1
-    //   539: athrow
-    //   540: aconst_null
-    //   541: areturn
+    //   468: ldc 251
+    //   470: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   473: pop
+    //   474: aload_2
+    //   475: aload 8
+    //   477: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   480: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   483: pop
+    //   484: ldc 189
+    //   486: iconst_2
+    //   487: aload_2
+    //   488: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   491: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   494: aload_1
+    //   495: invokevirtual 252	org/json/JSONException:printStackTrace	()V
+    //   498: aload_0
+    //   499: areturn
+    //   500: astore_3
+    //   501: aload_1
+    //   502: astore_0
+    //   503: aload_3
+    //   504: astore_1
+    //   505: aload_2
+    //   506: ifnull +15 -> 521
+    //   509: aload_2
+    //   510: invokevirtual 178	java/io/BufferedReader:close	()V
+    //   513: goto +8 -> 521
+    //   516: astore_2
+    //   517: aload_2
+    //   518: invokevirtual 181	java/io/IOException:printStackTrace	()V
+    //   521: aload_0
+    //   522: ifnull +15 -> 537
+    //   525: aload_0
+    //   526: invokevirtual 182	java/io/FileReader:close	()V
+    //   529: goto +8 -> 537
+    //   532: astore_0
+    //   533: aload_0
+    //   534: invokevirtual 181	java/io/IOException:printStackTrace	()V
+    //   537: aload_1
+    //   538: athrow
+    //   539: aconst_null
+    //   540: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	542	0	paramFile	File
+    //   0	541	0	paramFile	File
     //   47	16	1	localFile	File
     //   83	2	1	localIOException1	java.io.IOException
     //   115	1	1	localObject1	Object
@@ -494,12 +454,12 @@ public class NearbyGrayTipsManager
     //   145	1	1	localObject3	Object
     //   162	278	1	localObject4	Object
     //   445	1	1	localJSONException1	org.json.JSONException
-    //   449	54	1	localJSONException2	org.json.JSONException
-    //   505	34	1	localObject5	Object
-    //   49	462	2	localObject6	Object
-    //   517	2	2	localIOException2	java.io.IOException
+    //   449	53	1	localJSONException2	org.json.JSONException
+    //   504	34	1	localObject5	Object
+    //   49	461	2	localObject6	Object
+    //   516	2	2	localIOException2	java.io.IOException
     //   45	66	3	localBufferedReader	java.io.BufferedReader
-    //   501	4	3	localObject7	Object
+    //   500	4	3	localObject7	Object
     //   54	232	4	localObject8	Object
     //   95	1	5	localIOException3	java.io.IOException
     //   105	1	5	localFileNotFoundException1	java.io.FileNotFoundException
@@ -509,7 +469,7 @@ public class NearbyGrayTipsManager
     //   223	37	5	localFileNotFoundException3	java.io.FileNotFoundException
     //   4	447	6	localObject9	Object
     //   1	298	7	localObject10	Object
-    //   26	451	8	localStringBuilder	StringBuilder
+    //   26	450	8	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
     //   76	80	83	java/io/IOException
@@ -531,16 +491,16 @@ public class NearbyGrayTipsManager
     //   367	443	445	org/json/JSONException
     //   309	359	449	org/json/JSONException
     //   359	367	449	org/json/JSONException
-    //   50	56	501	finally
-    //   65	73	501	finally
-    //   165	171	501	finally
-    //   176	184	501	finally
-    //   189	194	501	finally
-    //   235	241	501	finally
-    //   246	254	501	finally
-    //   259	264	501	finally
-    //   510	514	517	java/io/IOException
-    //   526	530	533	java/io/IOException
+    //   50	56	500	finally
+    //   65	73	500	finally
+    //   165	171	500	finally
+    //   176	184	500	finally
+    //   189	194	500	finally
+    //   235	241	500	finally
+    //   246	254	500	finally
+    //   259	264	500	finally
+    //   509	513	516	java/io/IOException
+    //   525	529	532	java/io/IOException
   }
   
   private NearbyGrayTipsManager.GrayTipsConfig a(String paramString, NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig)
@@ -550,11 +510,11 @@ public class NearbyGrayTipsManager
       if (TextUtils.isEmpty(paramString)) {
         return null;
       }
-      int i = 0;
-      while ((i < paramGrayTipsConfig.sceneThree.keywords.size()) && (paramString.indexOf((String)paramGrayTipsConfig.sceneThree.keywords.get(i)) < 0)) {
-        i += 1;
+      int n = 0;
+      while ((n < paramGrayTipsConfig.sceneThree.keywords.size()) && (paramString.indexOf((String)paramGrayTipsConfig.sceneThree.keywords.get(n)) < 0)) {
+        n += 1;
       }
-      if (i == paramGrayTipsConfig.sceneThree.keywords.size()) {
+      if (n == paramGrayTipsConfig.sceneThree.keywords.size()) {
         return null;
       }
     }
@@ -563,18 +523,18 @@ public class NearbyGrayTipsManager
   
   private NearbyGrayTipsManager.GreetWording a(int paramInt)
   {
-    int i;
+    int n;
     label84:
     Object localObject2;
     label87:
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.k)
     {
-      int j = this.jdField_a_of_type_JavaUtilList.size();
-      i = 0;
+      int i1 = this.k.size();
+      n = 0;
       NearbyGrayTipsManager.GreetWording localGreetWording = null;
-      if (i < j)
+      if (n < i1)
       {
-        localGreetWording = (NearbyGrayTipsManager.GreetWording)this.jdField_a_of_type_JavaUtilList.get(i);
+        localGreetWording = (NearbyGrayTipsManager.GreetWording)this.k.get(n);
         if (localGreetWording == null) {
           break label87;
         }
@@ -598,20 +558,20 @@ public class NearbyGrayTipsManager
     //   7: astore_3
     //   8: aconst_null
     //   9: astore 7
-    //   11: new 296	java/io/FileInputStream
+    //   11: new 284	java/io/FileInputStream
     //   14: dup
     //   15: aload_0
-    //   16: invokespecial 297	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   16: invokespecial 285	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   19: astore_0
-    //   20: new 299	java/io/BufferedInputStream
+    //   20: new 287	java/io/BufferedInputStream
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 302	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   25: invokespecial 290	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   28: astore_1
-    //   29: new 304	java/io/ObjectInputStream
+    //   29: new 292	java/io/ObjectInputStream
     //   32: dup
     //   33: aload_1
-    //   34: invokespecial 305	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   34: invokespecial 293	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   37: astore 5
     //   39: aload_0
     //   40: astore 4
@@ -620,26 +580,26 @@ public class NearbyGrayTipsManager
     //   45: aload_1
     //   46: astore_3
     //   47: aload 5
-    //   49: invokevirtual 308	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   49: invokevirtual 296	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   52: astore 6
     //   54: aload 6
     //   56: astore_2
     //   57: aload 5
-    //   59: invokevirtual 309	java/io/ObjectInputStream:close	()V
+    //   59: invokevirtual 297	java/io/ObjectInputStream:close	()V
     //   62: aload 6
     //   64: astore_2
     //   65: aload_1
-    //   66: invokevirtual 310	java/io/BufferedInputStream:close	()V
+    //   66: invokevirtual 298	java/io/BufferedInputStream:close	()V
     //   69: aload 6
     //   71: astore_2
     //   72: aload_0
-    //   73: invokevirtual 311	java/io/FileInputStream:close	()V
+    //   73: invokevirtual 299	java/io/FileInputStream:close	()V
     //   76: aload 6
     //   78: astore_2
     //   79: goto +363 -> 442
     //   82: astore_0
     //   83: aload_0
-    //   84: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   84: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   87: goto +355 -> 442
     //   90: astore_2
     //   91: aload_0
@@ -759,19 +719,19 @@ public class NearbyGrayTipsManager
     //   260: aload_1
     //   261: astore_3
     //   262: aload 5
-    //   264: invokevirtual 312	java/lang/Exception:printStackTrace	()V
+    //   264: invokevirtual 300	java/lang/Exception:printStackTrace	()V
     //   267: aload_0
     //   268: ifnull +10 -> 278
     //   271: aload 7
     //   273: astore_2
     //   274: aload_0
-    //   275: invokevirtual 309	java/io/ObjectInputStream:close	()V
+    //   275: invokevirtual 297	java/io/ObjectInputStream:close	()V
     //   278: aload_1
     //   279: ifnull +10 -> 289
     //   282: aload 7
     //   284: astore_2
     //   285: aload_1
-    //   286: invokevirtual 310	java/io/BufferedInputStream:close	()V
+    //   286: invokevirtual 298	java/io/BufferedInputStream:close	()V
     //   289: aload 8
     //   291: astore_2
     //   292: aload 6
@@ -779,7 +739,7 @@ public class NearbyGrayTipsManager
     //   297: aload 7
     //   299: astore_2
     //   300: aload 6
-    //   302: invokevirtual 311	java/io/FileInputStream:close	()V
+    //   302: invokevirtual 299	java/io/FileInputStream:close	()V
     //   305: aload 8
     //   307: astore_2
     //   308: goto +134 -> 442
@@ -797,19 +757,19 @@ public class NearbyGrayTipsManager
     //   327: aload_1
     //   328: astore_3
     //   329: aload 5
-    //   331: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   331: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   334: aload_0
     //   335: ifnull +10 -> 345
     //   338: aload 7
     //   340: astore_2
     //   341: aload_0
-    //   342: invokevirtual 309	java/io/ObjectInputStream:close	()V
+    //   342: invokevirtual 297	java/io/ObjectInputStream:close	()V
     //   345: aload_1
     //   346: ifnull +10 -> 356
     //   349: aload 7
     //   351: astore_2
     //   352: aload_1
-    //   353: invokevirtual 310	java/io/BufferedInputStream:close	()V
+    //   353: invokevirtual 298	java/io/BufferedInputStream:close	()V
     //   356: aload 8
     //   358: astore_2
     //   359: aload 6
@@ -817,7 +777,7 @@ public class NearbyGrayTipsManager
     //   364: aload 7
     //   366: astore_2
     //   367: aload 6
-    //   369: invokevirtual 311	java/io/FileInputStream:close	()V
+    //   369: invokevirtual 299	java/io/FileInputStream:close	()V
     //   372: aload 8
     //   374: astore_2
     //   375: goto +67 -> 442
@@ -835,19 +795,19 @@ public class NearbyGrayTipsManager
     //   394: aload_1
     //   395: astore_3
     //   396: aload 5
-    //   398: invokevirtual 216	java/io/FileNotFoundException:printStackTrace	()V
+    //   398: invokevirtual 197	java/io/FileNotFoundException:printStackTrace	()V
     //   401: aload_0
     //   402: ifnull +10 -> 412
     //   405: aload 7
     //   407: astore_2
     //   408: aload_0
-    //   409: invokevirtual 309	java/io/ObjectInputStream:close	()V
+    //   409: invokevirtual 297	java/io/ObjectInputStream:close	()V
     //   412: aload_1
     //   413: ifnull +10 -> 423
     //   416: aload 7
     //   418: astore_2
     //   419: aload_1
-    //   420: invokevirtual 310	java/io/BufferedInputStream:close	()V
+    //   420: invokevirtual 298	java/io/BufferedInputStream:close	()V
     //   423: aload 8
     //   425: astore_2
     //   426: aload 6
@@ -855,36 +815,36 @@ public class NearbyGrayTipsManager
     //   431: aload 7
     //   433: astore_2
     //   434: aload 6
-    //   436: invokevirtual 311	java/io/FileInputStream:close	()V
+    //   436: invokevirtual 299	java/io/FileInputStream:close	()V
     //   439: aload 8
     //   441: astore_2
-    //   442: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   442: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   445: ifeq +51 -> 496
-    //   448: new 67	java/lang/StringBuilder
+    //   448: new 156	java/lang/StringBuilder
     //   451: dup
-    //   452: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   452: invokespecial 157	java/lang/StringBuilder:<init>	()V
     //   455: astore_1
     //   456: aload_1
-    //   457: ldc_w 314
-    //   460: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: ldc_w 302
+    //   460: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   463: pop
     //   464: aload_2
     //   465: ifnonnull +10 -> 475
-    //   468: ldc_w 316
+    //   468: ldc_w 304
     //   471: astore_0
     //   472: goto +8 -> 480
     //   475: aload_2
-    //   476: invokevirtual 317	java/lang/Object:toString	()Ljava/lang/String;
+    //   476: invokevirtual 305	java/lang/Object:toString	()Ljava/lang/String;
     //   479: astore_0
     //   480: aload_1
     //   481: aload_0
-    //   482: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   482: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   485: pop
-    //   486: ldc 211
+    //   486: ldc 189
     //   488: iconst_2
     //   489: aload_1
-    //   490: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   493: invokestatic 319	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   490: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   493: invokestatic 307	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   496: aload_2
     //   497: areturn
     //   498: astore_0
@@ -907,19 +867,19 @@ public class NearbyGrayTipsManager
     //   518: aload_0
     //   519: ifnull +10 -> 529
     //   522: aload_0
-    //   523: invokevirtual 309	java/io/ObjectInputStream:close	()V
+    //   523: invokevirtual 297	java/io/ObjectInputStream:close	()V
     //   526: goto +3 -> 529
     //   529: aload_1
     //   530: ifnull +7 -> 537
     //   533: aload_1
-    //   534: invokevirtual 310	java/io/BufferedInputStream:close	()V
+    //   534: invokevirtual 298	java/io/BufferedInputStream:close	()V
     //   537: aload_2
     //   538: ifnull +14 -> 552
     //   541: aload_2
-    //   542: invokevirtual 311	java/io/FileInputStream:close	()V
+    //   542: invokevirtual 299	java/io/FileInputStream:close	()V
     //   545: goto +7 -> 552
     //   548: aload_0
-    //   549: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   549: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   552: aload_3
     //   553: athrow
     //   554: astore_0
@@ -990,38 +950,23 @@ public class NearbyGrayTipsManager
     //   541	545	554	java/io/IOException
   }
   
-  public static String a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath());
-    ((StringBuilder)localObject).append("/nearby_gray_tips_configs");
-    localObject = new File(((StringBuilder)localObject).toString());
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(((File)localObject).getAbsolutePath());
-    localStringBuilder.append("/");
-    return localStringBuilder.toString();
-  }
-  
   private void a(long paramLong, NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, List<MessageRecord> paramList)
   {
     paramLong = (paramLong - paramGrayTipsConfig.sceneTwo.timeRange * 60 * 1000) / 1000L;
-    int i = paramList.size() - 1;
-    while (i >= 0)
+    int n = paramList.size() - 1;
+    while (n >= 0)
     {
-      paramGrayTipsConfig = (MessageRecord)paramList.get(i);
+      paramGrayTipsConfig = (MessageRecord)paramList.get(n);
       if (paramGrayTipsConfig != null)
       {
         if (paramGrayTipsConfig.time < paramLong) {
-          paramList.remove(i);
+          paramList.remove(n);
         }
       }
       else {
-        paramList.remove(i);
+        paramList.remove(n);
       }
-      i -= 1;
+      n -= 1;
     }
   }
   
@@ -1033,14 +978,14 @@ public class NearbyGrayTipsManager
       Object localObject = (Integer)paramGrayTipsConfig.next();
       if (((Integer)localObject).intValue() == 1)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_HELLO_UIN, 1001);
-        List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(10002).a(AppConstants.LBS_HELLO_UIN, 10002);
+        localObject = this.a.getMessageProxy(1001).b(AppConstants.LBS_HELLO_UIN, 1001);
+        List localList = this.a.getMessageProxy(10002).b(AppConstants.LBS_HELLO_UIN, 10002);
         paramList.addAll((Collection)localObject);
         paramList.addAll(localList);
       }
       else if (((Integer)localObject).intValue() == 2)
       {
-        paramList.addAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(1010).a(AppConstants.DATE_UIN, 1010));
+        paramList.addAll(this.a.getMessageProxy(1010).b(AppConstants.DATE_UIN, 1010));
       }
     }
   }
@@ -1051,19 +996,19 @@ public class NearbyGrayTipsManager
       paramGrayTipsConfig.sceneId = paramJSONObject.getInt("SceneType");
     }
     boolean bool = paramJSONObject.isNull("RandomWording");
-    int j = 0;
+    int i1 = 0;
     Object localObject1;
     Object localObject2;
-    int i;
+    int n;
     if (!bool)
     {
       localObject1 = paramJSONObject.getJSONArray("RandomWording");
       localObject2 = new ArrayList();
-      i = 0;
-      while (i < ((JSONArray)localObject1).length())
+      n = 0;
+      while (n < ((JSONArray)localObject1).length())
       {
-        ((ArrayList)localObject2).add(((JSONArray)localObject1).getString(i));
-        i += 1;
+        ((ArrayList)localObject2).add(((JSONArray)localObject1).getString(n));
+        n += 1;
       }
       paramGrayTipsConfig.randomWordings = ((ArrayList)localObject2);
     }
@@ -1104,11 +1049,11 @@ public class NearbyGrayTipsManager
         {
           localObject3 = ((JSONObject)localObject2).getJSONArray("MessageSide");
           ArrayList localArrayList = new ArrayList();
-          i = 0;
-          while (i < ((JSONArray)localObject3).length())
+          n = 0;
+          while (n < ((JSONArray)localObject3).length())
           {
-            localArrayList.add(Integer.valueOf(((JSONArray)localObject3).getInt(i)));
-            i += 1;
+            localArrayList.add(Integer.valueOf(((JSONArray)localObject3).getInt(n)));
+            n += 1;
           }
           ((NearbyGrayTipsManager.SceneThree)localObject1).whichSide = localArrayList;
         }
@@ -1116,11 +1061,11 @@ public class NearbyGrayTipsManager
         {
           localObject2 = ((JSONObject)localObject2).getJSONArray("KeywordList");
           localObject3 = new ArrayList();
-          i = 0;
-          while (i < ((JSONArray)localObject2).length())
+          n = 0;
+          while (n < ((JSONArray)localObject2).length())
           {
-            ((ArrayList)localObject3).add(((JSONArray)localObject2).getString(i));
-            i += 1;
+            ((ArrayList)localObject3).add(((JSONArray)localObject2).getString(n));
+            n += 1;
           }
           ((NearbyGrayTipsManager.SceneThree)localObject1).keywords = ((ArrayList)localObject3);
         }
@@ -1141,20 +1086,20 @@ public class NearbyGrayTipsManager
       paramJSONObject.faceScoreTrigger = ((JSONObject)localObject1).getBoolean("FaceScoreTrigger");
       localObject2 = ((JSONObject)localObject1).getJSONArray("RandomWordingForMale");
       localObject3 = new ArrayList();
-      i = 0;
-      while (i < ((JSONArray)localObject2).length())
+      n = 0;
+      while (n < ((JSONArray)localObject2).length())
       {
-        ((ArrayList)localObject3).add(((JSONArray)localObject2).getString(i));
-        i += 1;
+        ((ArrayList)localObject3).add(((JSONArray)localObject2).getString(n));
+        n += 1;
       }
       paramJSONObject.randomWordingForMale = ((ArrayList)localObject3);
       localObject1 = ((JSONObject)localObject1).getJSONArray("RandomWordingForFemale");
       localObject2 = new ArrayList();
-      i = j;
-      while (i < ((JSONArray)localObject1).length())
+      n = i1;
+      while (n < ((JSONArray)localObject1).length())
       {
-        ((ArrayList)localObject2).add(((JSONArray)localObject1).getString(i));
-        i += 1;
+        ((ArrayList)localObject2).add(((JSONArray)localObject1).getString(n));
+        n += 1;
       }
       paramJSONObject.randomWordingForFeMale = ((ArrayList)localObject2);
       paramGrayTipsConfig.sceneFive = paramJSONObject;
@@ -1167,12 +1112,12 @@ public class NearbyGrayTipsManager
     // Byte code:
     //   0: aload_0
     //   1: ifnonnull +19 -> 20
-    //   4: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   7: ifeq +12 -> 19
-    //   10: ldc 211
+    //   10: ldc 189
     //   12: iconst_2
-    //   13: ldc_w 490
-    //   16: invokestatic 319	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   13: ldc_w 455
+    //   16: invokestatic 307	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   19: return
     //   20: iconst_0
     //   21: istore_3
@@ -1186,50 +1131,50 @@ public class NearbyGrayTipsManager
     //   32: astore 9
     //   34: aconst_null
     //   35: astore 8
-    //   37: new 492	java/io/FileOutputStream
+    //   37: new 457	java/io/FileOutputStream
     //   40: dup
     //   41: aload_1
-    //   42: invokespecial 493	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   42: invokespecial 458	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   45: astore 5
-    //   47: new 495	java/io/BufferedOutputStream
+    //   47: new 460	java/io/BufferedOutputStream
     //   50: dup
     //   51: aload 5
-    //   53: invokespecial 498	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   53: invokespecial 463	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   56: astore_1
-    //   57: new 500	java/io/ObjectOutputStream
+    //   57: new 465	java/io/ObjectOutputStream
     //   60: dup
     //   61: aload_1
-    //   62: invokespecial 501	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   62: invokespecial 466	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   65: astore 6
     //   67: aload 6
     //   69: aload_0
-    //   70: invokevirtual 505	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   70: invokevirtual 470	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   73: aload_1
-    //   74: invokevirtual 508	java/io/BufferedOutputStream:flush	()V
+    //   74: invokevirtual 473	java/io/BufferedOutputStream:flush	()V
     //   77: iconst_1
     //   78: istore_3
     //   79: iconst_1
     //   80: istore_2
     //   81: aload_1
-    //   82: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   82: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   85: goto +8 -> 93
     //   88: astore_1
     //   89: aload_1
-    //   90: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   90: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   93: aload 6
-    //   95: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   95: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   98: goto +8 -> 106
     //   101: astore_1
     //   102: aload_1
-    //   103: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   103: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   106: aload 5
-    //   108: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   108: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   111: iload_3
     //   112: istore_2
     //   113: goto +443 -> 556
     //   116: astore_1
     //   117: aload_1
-    //   118: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   118: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   121: goto +435 -> 556
     //   124: astore_0
     //   125: aload 6
@@ -1345,23 +1290,23 @@ public class NearbyGrayTipsManager
     //   327: aload_1
     //   328: astore 7
     //   330: aload 9
-    //   332: invokevirtual 312	java/lang/Exception:printStackTrace	()V
+    //   332: invokevirtual 300	java/lang/Exception:printStackTrace	()V
     //   335: aload 8
     //   337: ifnull +18 -> 355
     //   340: aload 8
-    //   342: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   342: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   345: goto +10 -> 355
     //   348: astore 5
     //   350: aload 5
-    //   352: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   352: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   355: aload_1
     //   356: ifnull +15 -> 371
     //   359: aload_1
-    //   360: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   360: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   363: goto +8 -> 371
     //   366: astore_1
     //   367: aload_1
-    //   368: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   368: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   371: iload_3
     //   372: istore_2
     //   373: aload 10
@@ -1369,7 +1314,7 @@ public class NearbyGrayTipsManager
     //   378: iload 4
     //   380: istore_2
     //   381: aload 10
-    //   383: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   383: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   386: iload_3
     //   387: istore_2
     //   388: goto +168 -> 556
@@ -1387,23 +1332,23 @@ public class NearbyGrayTipsManager
     //   411: aload_1
     //   412: astore 7
     //   414: aload 9
-    //   416: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   416: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   419: aload 8
     //   421: ifnull +18 -> 439
     //   424: aload 8
-    //   426: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   426: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   429: goto +10 -> 439
     //   432: astore 5
     //   434: aload 5
-    //   436: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   436: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   439: aload_1
     //   440: ifnull +15 -> 455
     //   443: aload_1
-    //   444: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   444: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   447: goto +8 -> 455
     //   450: astore_1
     //   451: aload_1
-    //   452: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   452: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   455: iload_3
     //   456: istore_2
     //   457: aload 10
@@ -1411,7 +1356,7 @@ public class NearbyGrayTipsManager
     //   462: iload 4
     //   464: istore_2
     //   465: aload 10
-    //   467: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   467: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   470: iload_3
     //   471: istore_2
     //   472: goto +84 -> 556
@@ -1429,23 +1374,23 @@ public class NearbyGrayTipsManager
     //   495: aload_1
     //   496: astore 7
     //   498: aload 9
-    //   500: invokevirtual 216	java/io/FileNotFoundException:printStackTrace	()V
+    //   500: invokevirtual 197	java/io/FileNotFoundException:printStackTrace	()V
     //   503: aload 8
     //   505: ifnull +18 -> 523
     //   508: aload 8
-    //   510: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   510: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   513: goto +10 -> 523
     //   516: astore 5
     //   518: aload 5
-    //   520: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   520: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   523: aload_1
     //   524: ifnull +15 -> 539
     //   527: aload_1
-    //   528: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   528: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   531: goto +8 -> 539
     //   534: astore_1
     //   535: aload_1
-    //   536: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   536: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   539: iload_3
     //   540: istore_2
     //   541: aload 10
@@ -1453,37 +1398,37 @@ public class NearbyGrayTipsManager
     //   546: iload 4
     //   548: istore_2
     //   549: aload 10
-    //   551: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   551: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   554: iload_3
     //   555: istore_2
-    //   556: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   556: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   559: ifeq +52 -> 611
-    //   562: new 67	java/lang/StringBuilder
+    //   562: new 156	java/lang/StringBuilder
     //   565: dup
-    //   566: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   566: invokespecial 157	java/lang/StringBuilder:<init>	()V
     //   569: astore_1
     //   570: aload_1
-    //   571: ldc_w 513
-    //   574: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   571: ldc_w 478
+    //   574: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   577: pop
     //   578: aload_1
     //   579: iload_2
-    //   580: invokevirtual 516	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   580: invokevirtual 481	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   583: pop
     //   584: aload_1
-    //   585: ldc_w 518
-    //   588: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   585: ldc_w 483
+    //   588: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   591: pop
     //   592: aload_1
     //   593: aload_0
-    //   594: invokevirtual 317	java/lang/Object:toString	()Ljava/lang/String;
-    //   597: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   594: invokevirtual 305	java/lang/Object:toString	()Ljava/lang/String;
+    //   597: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   600: pop
-    //   601: ldc 211
+    //   601: ldc 189
     //   603: iconst_2
     //   604: aload_1
-    //   605: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   608: invokestatic 319	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   605: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   608: invokestatic 307	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   611: return
     //   612: astore_0
     //   613: aload 5
@@ -1491,27 +1436,27 @@ public class NearbyGrayTipsManager
     //   616: aload_1
     //   617: ifnull +15 -> 632
     //   620: aload_1
-    //   621: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   621: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   624: goto +8 -> 632
     //   627: astore_1
     //   628: aload_1
-    //   629: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   629: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   632: aload 7
     //   634: ifnull +16 -> 650
     //   637: aload 7
-    //   639: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   639: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   642: goto +8 -> 650
     //   645: astore_1
     //   646: aload_1
-    //   647: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   647: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   650: aload 6
     //   652: ifnull +16 -> 668
     //   655: aload 6
-    //   657: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   657: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   660: goto +8 -> 668
     //   663: astore_1
     //   664: aload_1
-    //   665: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   665: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   668: aload_0
     //   669: athrow
     // Local variable table:
@@ -1594,8 +1539,100 @@ public class NearbyGrayTipsManager
     return localCalendar1.get(1) == localCalendar2.get(1);
   }
   
+  private NearbyGrayTipsManager.FaceScoreWording b(int paramInt)
+  {
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getFaceScoreWordingById id= ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("Q..troop.faceScore", 2, ((StringBuilder)localObject1).toString());
+    }
+    int n;
+    label171:
+    Object localObject3;
+    label174:
+    synchronized (this.l)
+    {
+      int i1 = this.l.size();
+      n = 0;
+      localObject1 = null;
+      if (n < i1)
+      {
+        localObject1 = (NearbyGrayTipsManager.FaceScoreWording)this.l.get(n);
+        if (localObject1 == null) {
+          break label174;
+        }
+        if (((NearbyGrayTipsManager.FaceScoreWording)localObject1).id != paramInt) {
+          break label171;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("getFaceScoreWordingById return faceScoreWording= ");
+        ((StringBuilder)???).append(localObject1);
+        QLog.d("Q..troop.faceScore", 2, ((StringBuilder)???).toString());
+      }
+      return localObject1;
+    }
+  }
+  
+  private static void b(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, JSONObject paramJSONObject)
+  {
+    boolean bool = paramJSONObject.isNull("FavoriteContent1");
+    int i1 = 0;
+    Object localObject1;
+    Object localObject2;
+    int n;
+    Object localObject3;
+    if (!bool)
+    {
+      localObject1 = paramJSONObject.getJSONArray("FavoriteContent1");
+      localObject2 = new ArrayList();
+      n = 0;
+      while (n < ((JSONArray)localObject1).length())
+      {
+        localObject3 = ((JSONArray)localObject1).getJSONObject(n);
+        if (!((JSONObject)localObject3).isNull("Title"))
+        {
+          NearbyGrayTipsManager.Wording localWording = new NearbyGrayTipsManager.Wording();
+          localWording.text = ((JSONObject)localObject3).getString("Title");
+          if (!((JSONObject)localObject3).isNull("HighlightTitle")) {
+            localWording.highlightText = ((JSONObject)localObject3).getString("HighlightTitle");
+          }
+          ((ArrayList)localObject2).add(localWording);
+        }
+        n += 1;
+      }
+      paramGrayTipsConfig.favoriteGrayTipWordings1 = ((ArrayList)localObject2);
+    }
+    if (!paramJSONObject.isNull("FavoriteContent2"))
+    {
+      paramJSONObject = paramJSONObject.getJSONArray("FavoriteContent2");
+      localObject1 = new ArrayList();
+      n = i1;
+      while (n < paramJSONObject.length())
+      {
+        localObject2 = paramJSONObject.getJSONObject(n);
+        if (!((JSONObject)localObject2).isNull("Title"))
+        {
+          localObject3 = new NearbyGrayTipsManager.Wording();
+          ((NearbyGrayTipsManager.Wording)localObject3).text = ((JSONObject)localObject2).getString("Title");
+          if (!((JSONObject)localObject2).isNull("HighlightTitle")) {
+            ((NearbyGrayTipsManager.Wording)localObject3).highlightText = ((JSONObject)localObject2).getString("HighlightTitle");
+          }
+          ((ArrayList)localObject1).add(localObject3);
+        }
+        n += 1;
+      }
+      paramGrayTipsConfig.favoriteGrayTipWordings2 = ((ArrayList)localObject1);
+    }
+  }
+  
   /* Error */
-  public static boolean a(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig)
+  public static boolean b(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig)
   {
     // Byte code:
     //   0: iconst_0
@@ -1612,33 +1649,33 @@ public class NearbyGrayTipsManager
     //   15: astore 5
     //   17: aconst_null
     //   18: astore 9
-    //   20: new 67	java/lang/StringBuilder
+    //   20: new 156	java/lang/StringBuilder
     //   23: dup
-    //   24: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   24: invokespecial 157	java/lang/StringBuilder:<init>	()V
     //   27: astore_3
     //   28: aload_3
-    //   29: invokestatic 533	com/tencent/mobileqq/app/NearbyGrayTipsManager:a	()Ljava/lang/String;
-    //   32: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokestatic 540	com/tencent/mobileqq/app/NearbyGrayTipsManager:d	()Ljava/lang/String;
+    //   32: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_3
     //   37: aload_0
-    //   38: getfield 534	com/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig:id	I
-    //   41: invokevirtual 77	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: getfield 541	com/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig:id	I
+    //   41: invokevirtual 501	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   44: pop
     //   45: aload_3
-    //   46: ldc_w 536
-    //   49: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: ldc_w 543
+    //   49: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   52: pop
-    //   53: new 492	java/io/FileOutputStream
+    //   53: new 457	java/io/FileOutputStream
     //   56: dup
     //   57: aload_3
-    //   58: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokespecial 493	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   58: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   61: invokespecial 458	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   64: astore_3
-    //   65: new 495	java/io/BufferedOutputStream
+    //   65: new 460	java/io/BufferedOutputStream
     //   68: dup
     //   69: aload_3
-    //   70: invokespecial 498	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   70: invokespecial 463	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   73: astore 4
     //   75: aload 6
     //   77: astore 5
@@ -1646,35 +1683,35 @@ public class NearbyGrayTipsManager
     //   80: astore 6
     //   82: aload 4
     //   84: astore 7
-    //   86: new 500	java/io/ObjectOutputStream
+    //   86: new 465	java/io/ObjectOutputStream
     //   89: dup
     //   90: aload 4
-    //   92: invokespecial 501	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   92: invokespecial 466	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   95: astore 8
     //   97: aload 8
     //   99: aload_0
-    //   100: invokevirtual 505	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   100: invokevirtual 470	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   103: aload 4
-    //   105: invokevirtual 508	java/io/BufferedOutputStream:flush	()V
+    //   105: invokevirtual 473	java/io/BufferedOutputStream:flush	()V
     //   108: iconst_1
     //   109: istore_2
     //   110: iload_2
     //   111: istore_1
     //   112: aload 8
-    //   114: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   114: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   117: iload_2
     //   118: istore_1
     //   119: aload 4
-    //   121: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   121: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   124: iload_2
     //   125: istore_1
     //   126: aload_3
-    //   127: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   127: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   130: iconst_1
     //   131: ireturn
     //   132: astore_0
     //   133: aload_0
-    //   134: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   134: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   137: iload_1
     //   138: ireturn
     //   139: astore_0
@@ -1729,25 +1766,25 @@ public class NearbyGrayTipsManager
     //   226: aload 4
     //   228: astore 7
     //   230: aload_0
-    //   231: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   231: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   234: aload 8
     //   236: ifnull +10 -> 246
     //   239: iload_2
     //   240: istore_1
     //   241: aload 8
-    //   243: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   243: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   246: aload 4
     //   248: ifnull +10 -> 258
     //   251: iload_2
     //   252: istore_1
     //   253: aload 4
-    //   255: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   255: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   258: aload_3
     //   259: ifnull +70 -> 329
     //   262: iload_2
     //   263: istore_1
     //   264: aload_3
-    //   265: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   265: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   268: iconst_0
     //   269: ireturn
     //   270: astore_0
@@ -1764,25 +1801,25 @@ public class NearbyGrayTipsManager
     //   287: aload 4
     //   289: astore 7
     //   291: aload_0
-    //   292: invokevirtual 216	java/io/FileNotFoundException:printStackTrace	()V
+    //   292: invokevirtual 197	java/io/FileNotFoundException:printStackTrace	()V
     //   295: aload 8
     //   297: ifnull +10 -> 307
     //   300: iload_2
     //   301: istore_1
     //   302: aload 8
-    //   304: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   304: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   307: aload 4
     //   309: ifnull +10 -> 319
     //   312: iload_2
     //   313: istore_1
     //   314: aload 4
-    //   316: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   316: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   319: aload_3
     //   320: ifnull +9 -> 329
     //   323: iload_2
     //   324: istore_1
     //   325: aload_3
-    //   326: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   326: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   329: iconst_0
     //   330: ireturn
     //   331: astore_0
@@ -1793,19 +1830,19 @@ public class NearbyGrayTipsManager
     //   339: aload 5
     //   341: ifnull +11 -> 352
     //   344: aload 5
-    //   346: invokevirtual 510	java/io/ObjectOutputStream:close	()V
+    //   346: invokevirtual 475	java/io/ObjectOutputStream:close	()V
     //   349: goto +3 -> 352
     //   352: aload 4
     //   354: ifnull +8 -> 362
     //   357: aload 4
-    //   359: invokevirtual 509	java/io/BufferedOutputStream:close	()V
+    //   359: invokevirtual 474	java/io/BufferedOutputStream:close	()V
     //   362: aload_3
     //   363: ifnull +14 -> 377
     //   366: aload_3
-    //   367: invokevirtual 511	java/io/FileOutputStream:close	()V
+    //   367: invokevirtual 476	java/io/FileOutputStream:close	()V
     //   370: goto +7 -> 377
     //   373: aload_3
-    //   374: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   374: invokevirtual 181	java/io/IOException:printStackTrace	()V
     //   377: aload_0
     //   378: athrow
     //   379: astore_3
@@ -1854,68 +1891,63 @@ public class NearbyGrayTipsManager
     //   366	370	379	java/io/IOException
   }
   
-  private static void b(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, JSONObject paramJSONObject)
+  private static void c(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, JSONObject paramJSONObject)
   {
-    boolean bool = paramJSONObject.isNull("FavoriteContent1");
-    int j = 0;
-    Object localObject1;
-    Object localObject2;
-    int i;
-    Object localObject3;
-    if (!bool)
+    if (!paramJSONObject.isNull("Content"))
     {
-      localObject1 = paramJSONObject.getJSONArray("FavoriteContent1");
-      localObject2 = new ArrayList();
-      i = 0;
-      while (i < ((JSONArray)localObject1).length())
+      paramJSONObject = paramJSONObject.getJSONArray("Content");
+      ArrayList localArrayList = new ArrayList();
+      int n = 0;
+      while (n < paramJSONObject.length())
       {
-        localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-        if (!((JSONObject)localObject3).isNull("Title"))
+        JSONObject localJSONObject = paramJSONObject.getJSONObject(n);
+        if (!localJSONObject.isNull("Title"))
         {
           NearbyGrayTipsManager.Wording localWording = new NearbyGrayTipsManager.Wording();
-          localWording.text = ((JSONObject)localObject3).getString("Title");
-          if (!((JSONObject)localObject3).isNull("HighlightTitle")) {
-            localWording.highlightText = ((JSONObject)localObject3).getString("HighlightTitle");
+          localWording.text = localJSONObject.getString("Title");
+          if (!localJSONObject.isNull("HighlightTitle")) {
+            localWording.highlightText = localJSONObject.getString("HighlightTitle");
           }
-          ((ArrayList)localObject2).add(localWording);
+          localArrayList.add(localWording);
         }
-        i += 1;
+        n += 1;
       }
-      paramGrayTipsConfig.favoriteGrayTipWordings1 = ((ArrayList)localObject2);
-    }
-    if (!paramJSONObject.isNull("FavoriteContent2"))
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("FavoriteContent2");
-      localObject1 = new ArrayList();
-      i = j;
-      while (i < paramJSONObject.length())
-      {
-        localObject2 = paramJSONObject.getJSONObject(i);
-        if (!((JSONObject)localObject2).isNull("Title"))
-        {
-          localObject3 = new NearbyGrayTipsManager.Wording();
-          ((NearbyGrayTipsManager.Wording)localObject3).text = ((JSONObject)localObject2).getString("Title");
-          if (!((JSONObject)localObject2).isNull("HighlightTitle")) {
-            ((NearbyGrayTipsManager.Wording)localObject3).highlightText = ((JSONObject)localObject2).getString("HighlightTitle");
-          }
-          ((ArrayList)localObject1).add(localObject3);
-        }
-        i += 1;
-      }
-      paramGrayTipsConfig.favoriteGrayTipWordings2 = ((ArrayList)localObject1);
+      paramGrayTipsConfig.grayTipWordings = localArrayList;
     }
   }
   
-  private void c()
+  public static String d()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath());
+    ((StringBuilder)localObject).append("/nearby_gray_tips_configs");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((File)localObject).getAbsolutePath());
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
+  }
+  
+  private static void d(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, JSONObject paramJSONObject)
+  {
+    if (!paramJSONObject.isNull("Link")) {
+      paramGrayTipsConfig.url = paramJSONObject.getString("Link");
+    }
+  }
+  
+  private void e()
   {
     label274:
     label290:
     label295:
     for (;;)
     {
-      int i;
+      int n;
       Object localObject3;
-      int j;
+      int i1;
       Object localObject4;
       try
       {
@@ -1923,28 +1955,28 @@ public class NearbyGrayTipsManager
           QLog.i("nearby_aio_operation_gray_tips", 4, "loadLocalData");
         }
         a(true);
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-        i = 0;
-        this.d = ((SharedPreferences)localObject1).getInt("nearby_max_count_in_one_day", 0);
-        this.jdField_a_of_type_Long = ((SharedPreferences)localObject1).getLong("nearby_mark_day_time", 0L);
+        Object localObject1 = this.a.getPreferences();
+        n = 0;
+        this.h = ((SharedPreferences)localObject1).getInt("nearby_max_count_in_one_day", 0);
+        this.i = ((SharedPreferences)localObject1).getLong("nearby_mark_day_time", 0L);
         if (QLog.isDevelopLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("loadLocalData, [");
-          ((StringBuilder)localObject1).append(this.d);
+          ((StringBuilder)localObject1).append(this.h);
           ((StringBuilder)localObject1).append(",");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)localObject1).append(this.i);
           ((StringBuilder)localObject1).append("]");
           QLog.i("nearby_aio_operation_gray_tips", 4, ((StringBuilder)localObject1).toString());
         }
-        localObject1 = a();
+        localObject1 = d();
         localObject3 = new File((String)localObject1);
         if (((File)localObject3).isDirectory())
         {
           localObject3 = ((File)localObject3).listFiles();
           if ((localObject3 != null) && (localObject3.length > 0))
           {
-            j = localObject3.length;
+            i1 = localObject3.length;
             break label274;
             localObject4 = ((File)localObject4).getName();
             if ((TextUtils.isEmpty((CharSequence)localObject4)) || (!((String)localObject4).endsWith(".conf"))) {
@@ -1971,47 +2003,15 @@ public class NearbyGrayTipsManager
       }
       for (;;)
       {
-        if (i >= j) {
+        if (n >= i1) {
           break label295;
         }
-        localObject4 = localObject3[i];
+        localObject4 = localObject3[n];
         if (localObject4 != null) {
           break;
         }
-        i += 1;
+        n += 1;
       }
-    }
-  }
-  
-  private static void c(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, JSONObject paramJSONObject)
-  {
-    if (!paramJSONObject.isNull("Content"))
-    {
-      paramJSONObject = paramJSONObject.getJSONArray("Content");
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramJSONObject.length())
-      {
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-        if (!localJSONObject.isNull("Title"))
-        {
-          NearbyGrayTipsManager.Wording localWording = new NearbyGrayTipsManager.Wording();
-          localWording.text = localJSONObject.getString("Title");
-          if (!localJSONObject.isNull("HighlightTitle")) {
-            localWording.highlightText = localJSONObject.getString("HighlightTitle");
-          }
-          localArrayList.add(localWording);
-        }
-        i += 1;
-      }
-      paramGrayTipsConfig.grayTipWordings = localArrayList;
-    }
-  }
-  
-  private static void d(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, JSONObject paramJSONObject)
-  {
-    if (!paramJSONObject.isNull("Link")) {
-      paramGrayTipsConfig.url = paramJSONObject.getString("Link");
     }
   }
   
@@ -2031,10 +2031,10 @@ public class NearbyGrayTipsManager
     {
       paramJSONObject = paramJSONObject.getJSONArray("TimeRangeDaily");
       ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramJSONObject.length())
+      int n = 0;
+      while (n < paramJSONObject.length())
       {
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+        JSONObject localJSONObject = paramJSONObject.getJSONObject(n);
         if ((!localJSONObject.isNull("BeginTime")) && (!localJSONObject.isNull("EndTime")))
         {
           NearbyGrayTipsManager.TimeRangeInOneDay localTimeRangeInOneDay = new NearbyGrayTipsManager.TimeRangeInOneDay();
@@ -2042,7 +2042,7 @@ public class NearbyGrayTipsManager
           localTimeRangeInOneDay.endTime = localJSONObject.getInt("EndTime");
           localArrayList.add(localTimeRangeInOneDay);
         }
-        i += 1;
+        n += 1;
       }
       paramGrayTipsConfig.timeRange = localArrayList;
     }
@@ -2054,11 +2054,11 @@ public class NearbyGrayTipsManager
     {
       paramJSONObject = paramJSONObject.getJSONArray("SexType");
       ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramJSONObject.length())
+      int n = 0;
+      while (n < paramJSONObject.length())
       {
-        localArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
-        i += 1;
+        localArrayList.add(Integer.valueOf(paramJSONObject.getInt(n)));
+        n += 1;
       }
       paramGrayTipsConfig.sexTypes = localArrayList;
     }
@@ -2070,11 +2070,11 @@ public class NearbyGrayTipsManager
     {
       paramJSONObject = paramJSONObject.getJSONArray("AIOType");
       ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramJSONObject.length())
+      int n = 0;
+      while (n < paramJSONObject.length())
       {
-        localArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
-        i += 1;
+        localArrayList.add(Integer.valueOf(paramJSONObject.getInt(n)));
+        n += 1;
       }
       paramGrayTipsConfig.aioTypes = localArrayList;
     }
@@ -2133,16 +2133,16 @@ public class NearbyGrayTipsManager
   
   public NearbyGrayTipsManager.GrayTipStatisticData a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i;
+    int n;
     label227:
-    synchronized (this.jdField_c_of_type_JavaUtilList)
+    synchronized (this.m)
     {
-      int j = this.jdField_c_of_type_JavaUtilList.size();
-      i = 0;
+      int i1 = this.m.size();
+      n = 0;
       ??? = null;
-      if (i < j)
+      if (n < i1)
       {
-        ??? = (NearbyGrayTipsManager.GrayTipStatisticData)this.jdField_c_of_type_JavaUtilList.get(i);
+        ??? = (NearbyGrayTipsManager.GrayTipStatisticData)this.m.get(n);
         if ((??? == null) || (((NearbyGrayTipsManager.GrayTipStatisticData)???).mId != paramInt)) {
           break label227;
         }
@@ -2153,14 +2153,14 @@ public class NearbyGrayTipsManager
         ??? = ???;
         if (paramBoolean1)
         {
-          Object localObject5 = a(NearbyGrayTipsManager.GrayTipStatisticData.getPath(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt));
+          Object localObject5 = a(NearbyGrayTipsManager.GrayTipStatisticData.getPath(this.a.getCurrentAccountUin(), paramInt));
           ??? = ???;
           if ((localObject5 instanceof NearbyGrayTipsManager.GrayTipStatisticData))
           {
             ??? = (NearbyGrayTipsManager.GrayTipStatisticData)localObject5;
-            synchronized (this.jdField_c_of_type_JavaUtilList)
+            synchronized (this.m)
             {
-              this.jdField_c_of_type_JavaUtilList.add(???);
+              this.m.add(???);
             }
           }
         }
@@ -2168,9 +2168,9 @@ public class NearbyGrayTipsManager
       if ((localObject4 == null) && (paramBoolean2))
       {
         NearbyGrayTipsManager.GrayTipStatisticData localGrayTipStatisticData1 = new NearbyGrayTipsManager.GrayTipStatisticData(paramInt);
-        synchronized (this.jdField_c_of_type_JavaUtilList)
+        synchronized (this.m)
         {
-          this.jdField_c_of_type_JavaUtilList.add(localGrayTipStatisticData1);
+          this.m.add(localGrayTipStatisticData1);
           return localGrayTipStatisticData1;
         }
       }
@@ -2180,10 +2180,10 @@ public class NearbyGrayTipsManager
   
   public NearbyGrayTipsManager.GrayTipsConfig a(int paramInt1, int paramInt2, long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
+    if (!this.c) {
+      e();
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.d)
     {
       if (QLog.isDevelopLevel()) {
         QLog.i("nearby_aio_operation_gray_tips", 4, "getValidConfigForEnterAIO, not enable");
@@ -2194,11 +2194,11 @@ public class NearbyGrayTipsManager
     label301:
     label306:
     Object localObject2;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.b)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.b.size() > 0)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.b.iterator();
         NearbyGrayTipsManager.GrayTipStatisticData localGrayTipStatisticData = null;
         do
         {
@@ -2209,7 +2209,7 @@ public class NearbyGrayTipsManager
               break;
             }
             localObject3 = (NearbyGrayTipsManager.GrayTipsConfig)localIterator.next();
-          } while ((localObject3 == null) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneId != 4) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneFour == null) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneFour.enterAIOTrigger) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).isValid(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2, paramLong)));
+          } while ((localObject3 == null) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneId != 4) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneFour == null) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneFour.enterAIOTrigger) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).isValid(this.a, paramInt1, paramInt2, paramLong)));
           if (!QLog.isDevelopLevel()) {
             break label301;
           }
@@ -2238,10 +2238,10 @@ public class NearbyGrayTipsManager
   
   public NearbyGrayTipsManager.GrayTipsConfig a(int paramInt1, int paramInt2, String paramString, int paramInt3, long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
+    if (!this.c) {
+      e();
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.d) {
       return null;
     }
     NearbyGrayTipsManager.GrayTipsConfig localGrayTipsConfig2 = a(paramInt1, paramInt2, paramInt3, paramLong, null);
@@ -2274,7 +2274,7 @@ public class NearbyGrayTipsManager
       ((StringBuilder)localObject1).append(paramBoolean);
       QLog.d("Q..troop.faceScore", 2, ((StringBuilder)localObject1).toString());
     }
-    NearbyGrayTipsManager.FaceScoreWording localFaceScoreWording = a(paramInt1);
+    NearbyGrayTipsManager.FaceScoreWording localFaceScoreWording = b(paramInt1);
     Object localObject1 = localFaceScoreWording;
     if (localFaceScoreWording == null)
     {
@@ -2291,7 +2291,7 @@ public class NearbyGrayTipsManager
     if (localObject1 == null) {
       return "";
     }
-    return ((NearbyGrayTipsManager.FaceScoreWording)localObject1).getWording(this.jdField_a_of_type_JavaUtilRandom, paramInt2);
+    return ((NearbyGrayTipsManager.FaceScoreWording)localObject1).getWording(this.j, paramInt2);
   }
   
   public String a(int paramInt, boolean paramBoolean)
@@ -2313,19 +2313,19 @@ public class NearbyGrayTipsManager
     if (localGreetWording1 == null) {
       return "";
     }
-    return localGreetWording1.getWording(this.jdField_a_of_type_JavaUtilRandom);
+    return localGreetWording1.getWording(this.j);
   }
   
   public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject1 = this.b;
     if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0)) {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      synchronized (this.b)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        if (this.b.size() > 0)
         {
-          localObject1 = (NearbyGrayTipsManager.GrayTipsConfig)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          localObject1 = (NearbyGrayTipsManager.GrayTipsConfig)this.b.get(0);
+          Iterator localIterator = this.b.iterator();
           while (localIterator.hasNext())
           {
             NearbyGrayTipsManager.GrayTipsConfig localGrayTipsConfig = (NearbyGrayTipsManager.GrayTipsConfig)localIterator.next();
@@ -2333,10 +2333,10 @@ public class NearbyGrayTipsManager
               localObject1 = localGrayTipsConfig;
             }
           }
-          this.jdField_b_of_type_Boolean = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).grayTipsEnable;
-          this.jdField_a_of_type_Int = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).globalMaxTipsCountPerDay;
-          this.jdField_b_of_type_Int = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).maxTipsCount;
-          this.jdField_c_of_type_Int = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).messageCount;
+          this.d = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).grayTipsEnable;
+          this.e = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).globalMaxTipsCountPerDay;
+          this.f = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).maxTipsCount;
+          this.g = ((NearbyGrayTipsManager.GrayTipsConfig)localObject1).messageCount;
         }
         return;
       }
@@ -2345,53 +2345,53 @@ public class NearbyGrayTipsManager
   
   public void a(int paramInt, long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
+    if (!this.c) {
+      e();
     }
     NearbyGrayTipsManager.GrayTipStatisticData localGrayTipStatisticData = a(paramInt, true, true);
     if (localGrayTipStatisticData != null)
     {
       localGrayTipStatisticData.increase(paramLong);
-      a(localGrayTipStatisticData, NearbyGrayTipsManager.GrayTipStatisticData.getPath(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt));
+      a(localGrayTipStatisticData, NearbyGrayTipsManager.GrayTipStatisticData.getPath(this.a.getCurrentAccountUin(), paramInt));
     }
-    if (a(paramLong, this.jdField_a_of_type_Long))
+    if (a(paramLong, this.i))
     {
-      this.d += 1;
+      this.h += 1;
     }
     else
     {
-      this.d = 1;
-      this.jdField_a_of_type_Long = paramLong;
+      this.h = 1;
+      this.i = paramLong;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("nearby_max_count_in_one_day", this.d).putLong("nearby_mark_day_time", this.jdField_a_of_type_Long).commit();
+    this.a.getPreferences().edit().putInt("nearby_max_count_in_one_day", this.h).putLong("nearby_mark_day_time", this.i).commit();
   }
   
   public void a(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig)
   {
     ArrayList localArrayList;
-    int i;
+    int n;
     if (paramGrayTipsConfig != null)
     {
-      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      i = 0;
+      localArrayList = this.b;
+      n = 0;
     }
     for (;;)
     {
       try
       {
         Object localObject;
-        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        if (n < this.b.size())
         {
-          localObject = (NearbyGrayTipsManager.GrayTipsConfig)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          localObject = (NearbyGrayTipsManager.GrayTipsConfig)this.b.get(n);
           if (((NearbyGrayTipsManager.GrayTipsConfig)localObject).id != paramGrayTipsConfig.id) {
             break label238;
           }
           if (paramGrayTipsConfig.createTime > ((NearbyGrayTipsManager.GrayTipsConfig)localObject).createTime) {
-            this.jdField_a_of_type_JavaUtilArrayList.set(i, paramGrayTipsConfig);
+            this.b.set(n, paramGrayTipsConfig);
           }
         }
-        if (i == this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramGrayTipsConfig);
+        if (n == this.b.size()) {
+          this.b.add(paramGrayTipsConfig);
         }
         if (QLog.isDevelopLevel())
         {
@@ -2399,7 +2399,7 @@ public class NearbyGrayTipsManager
           ((StringBuilder)localObject).append("updateOrAddAConfig");
           ((StringBuilder)localObject).append(",");
           ((StringBuilder)localObject).append("[");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(n);
           ((StringBuilder)localObject).append(",");
           ((StringBuilder)localObject).append("config_id =");
           ((StringBuilder)localObject).append(paramGrayTipsConfig.id);
@@ -2415,7 +2415,7 @@ public class NearbyGrayTipsManager
       finally {}
       return;
       label238:
-      i += 1;
+      n += 1;
     }
   }
   
@@ -2428,14 +2428,14 @@ public class NearbyGrayTipsManager
       if (localObject2 == null)
       {
         localObject1 = new NearbyGrayTipsManager.GreetWording(paramGrayTipsConfig.id);
-        localObject2 = this.jdField_a_of_type_JavaUtilList;
+        localObject2 = this.k;
         if (paramBoolean) {}
         label80:
         try
         {
-          this.jdField_a_of_type_JavaUtilList.add(0, localObject1);
+          this.k.add(0, localObject1);
           break label80;
-          this.jdField_a_of_type_JavaUtilList.add(localObject1);
+          this.k.add(localObject1);
         }
         finally {}
       }
@@ -2445,35 +2445,27 @@ public class NearbyGrayTipsManager
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
-    }
-    return this.jdField_b_of_type_Boolean;
+    this.c = paramBoolean;
   }
   
   public boolean a(long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
+    if (!this.c) {
+      e();
     }
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.e == 0) {
       return false;
     }
-    if (a(paramLong, this.jdField_a_of_type_Long))
+    if (a(paramLong, this.i))
     {
-      if (this.d >= this.jdField_a_of_type_Int) {
+      if (this.h >= this.e) {
         return true;
       }
     }
     else
     {
-      this.d = 0;
-      this.jdField_a_of_type_Long = 0L;
+      this.h = 0;
+      this.i = 0L;
     }
     return false;
   }
@@ -2485,39 +2477,39 @@ public class NearbyGrayTipsManager
     if (paramList != null)
     {
       bool1 = bool2;
-      if (this.jdField_b_of_type_Int > 0)
+      if (this.f > 0)
       {
         bool1 = bool2;
-        if (this.jdField_c_of_type_Int > 0)
+        if (this.g > 0)
         {
-          int i = paramList.size() - 1;
-          for (int k = 0; i >= 0; k = j)
+          int n = paramList.size() - 1;
+          for (int i2 = 0; n >= 0; i2 = i1)
           {
-            j = k;
-            if (!MessageUtils.a(((ChatMessage)paramList.get(i)).msgtype))
+            i1 = i2;
+            if (!MessageUtils.b(((ChatMessage)paramList.get(n)).msgtype))
             {
-              k += 1;
-              j = k;
-              if (k == this.jdField_c_of_type_Int) {
+              i2 += 1;
+              i1 = i2;
+              if (i2 == this.g) {
                 break label104;
               }
             }
-            i -= 1;
+            n -= 1;
           }
-          i = 0;
+          n = 0;
           label104:
-          int j = paramList.size() - 1;
-          int m;
-          for (k = 0; j >= i; k = m)
+          int i1 = paramList.size() - 1;
+          int i3;
+          for (i2 = 0; i1 >= n; i2 = i3)
           {
-            m = k;
-            if (-2027 == ((ChatMessage)paramList.get(j)).msgtype) {
-              m = k + 1;
+            i3 = i2;
+            if (-2027 == ((ChatMessage)paramList.get(i1)).msgtype) {
+              i3 = i2 + 1;
             }
-            j -= 1;
+            i1 -= 1;
           }
           bool1 = bool2;
-          if (k >= this.jdField_b_of_type_Int) {
+          if (i2 >= this.f) {
             bool1 = true;
           }
         }
@@ -2539,22 +2531,22 @@ public class NearbyGrayTipsManager
       localStringBuilder.append(paramLong);
       QLog.d("Q..troop.faceScore", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
+    if (!this.c) {
+      e();
     }
-    boolean bool = this.jdField_b_of_type_Boolean;
+    boolean bool = this.d;
     Object localObject3 = null;
     StringBuilder localStringBuilder = null;
     if (!bool) {
       return null;
     }
-    label295:
+    label296:
     Object localObject2;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.b)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.b.size() > 0)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.b.iterator();
         do
         {
           do
@@ -2564,9 +2556,9 @@ public class NearbyGrayTipsManager
               break;
             }
             localObject3 = (NearbyGrayTipsManager.GrayTipsConfig)localIterator.next();
-          } while ((localObject3 == null) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneId != 5) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneFive == null) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneFive.faceScoreTrigger) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).isValid(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2, paramLong)));
+          } while ((localObject3 == null) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneId != 5) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneFive == null) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneFive.faceScoreTrigger) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).isValid(this.a, paramInt1, paramInt2, paramLong)));
           if ((localStringBuilder == null) || (localStringBuilder.priority < ((NearbyGrayTipsManager.GrayTipsConfig)localObject3).priority)) {
-            break label295;
+            break label296;
           }
         } while ((localStringBuilder.priority != ((NearbyGrayTipsManager.GrayTipsConfig)localObject3).priority) || (localStringBuilder.createTime >= ((NearbyGrayTipsManager.GrayTipsConfig)localObject3).createTime));
       }
@@ -2578,33 +2570,6 @@ public class NearbyGrayTipsManager
         return localObject3;
       }
     }
-  }
-  
-  public void b()
-  {
-    ??? = new File(a());
-    if ((((File)???).exists()) && (((File)???).isDirectory()))
-    {
-      ??? = ((File)???).listFiles();
-      if ((??? != null) && (???.length > 0))
-      {
-        int j = ???.length;
-        int i = 0;
-        while (i < j)
-        {
-          ???[i].delete();
-          i += 1;
-        }
-      }
-    }
-    ??? = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((??? != null) && (((ArrayList)???).size() > 0)) {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-    }
-    this.jdField_b_of_type_Boolean = false;
   }
   
   public void b(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, boolean paramBoolean)
@@ -2621,19 +2586,19 @@ public class NearbyGrayTipsManager
     }
     if ((paramGrayTipsConfig != null) && (paramGrayTipsConfig.sceneId == 5) && (paramGrayTipsConfig.sceneFive != null))
     {
-      Object localObject2 = a(paramGrayTipsConfig.id);
+      Object localObject2 = b(paramGrayTipsConfig.id);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new NearbyGrayTipsManager.FaceScoreWording(paramGrayTipsConfig.id);
-        localObject2 = this.jdField_b_of_type_JavaUtilList;
+        localObject2 = this.l;
         if (paramBoolean) {}
-        label139:
+        label140:
         try
         {
-          this.jdField_b_of_type_JavaUtilList.add(0, localObject1);
-          break label139;
-          this.jdField_b_of_type_JavaUtilList.add(localObject1);
+          this.l.add(0, localObject1);
+          break label140;
+          this.l.add(localObject1);
         }
         finally {}
       }
@@ -2641,22 +2606,30 @@ public class NearbyGrayTipsManager
     }
   }
   
+  public boolean b()
+  {
+    if (!this.c) {
+      e();
+    }
+    return this.d;
+  }
+  
   public NearbyGrayTipsManager.GrayTipsConfig c(int paramInt1, int paramInt2, long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
+    if (!this.c) {
+      e();
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.d) {
       return null;
     }
     Object localObject3;
     label238:
     Object localObject2;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.b)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.b.size() > 0)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.b.iterator();
         NearbyGrayTipsManager.GrayTipStatisticData localGrayTipStatisticData = null;
         do
         {
@@ -2667,7 +2640,7 @@ public class NearbyGrayTipsManager
               break;
             }
             localObject3 = (NearbyGrayTipsManager.GrayTipsConfig)localIterator.next();
-          } while ((localObject3 == null) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneId != 1) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneOne == null) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneOne.sayHiTrigger) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).isValid(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2, paramLong)));
+          } while ((localObject3 == null) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneId != 1) || (((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneOne == null) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).sceneOne.sayHiTrigger) || (!((NearbyGrayTipsManager.GrayTipsConfig)localObject3).isValid(this.a, paramInt1, paramInt2, paramLong)));
           if ((localGrayTipStatisticData == null) || (localGrayTipStatisticData.priority < ((NearbyGrayTipsManager.GrayTipsConfig)localObject3).priority)) {
             break label238;
           }
@@ -2685,12 +2658,39 @@ public class NearbyGrayTipsManager
     }
   }
   
+  public void c()
+  {
+    ??? = new File(d());
+    if ((((File)???).exists()) && (((File)???).isDirectory()))
+    {
+      ??? = ((File)???).listFiles();
+      if ((??? != null) && (???.length > 0))
+      {
+        int i1 = ???.length;
+        int n = 0;
+        while (n < i1)
+        {
+          ???[n].delete();
+          n += 1;
+        }
+      }
+    }
+    ??? = this.b;
+    if ((??? != null) && (((ArrayList)???).size() > 0)) {
+      synchronized (this.b)
+      {
+        this.b.clear();
+      }
+    }
+    this.d = false;
+  }
+  
   public NearbyGrayTipsManager.GrayTipsConfig d(int paramInt1, int paramInt2, long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      c();
+    if (!this.c) {
+      e();
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.d) {
       return null;
     }
     Object localObject2 = a(paramInt1, paramInt2, paramLong, null);
@@ -2721,7 +2721,7 @@ public class NearbyGrayTipsManager
           a(localObject1, (List)localObject3);
           a(paramLong, localObject1, (List)localObject3);
           Collections.sort((List)localObject3, new NearbyGrayTipsManager.1(this));
-          localObject2 = (QQMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE);
+          localObject2 = (QQMessageFacade)this.a.getManager(QQManagerFactory.MGR_MSG_FACADE);
           paramInt1 = 0;
           localObject3 = ((List)localObject3).iterator();
           do
@@ -2753,7 +2753,7 @@ public class NearbyGrayTipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager
  * JD-Core Version:    0.7.0.1
  */

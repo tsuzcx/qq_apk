@@ -18,7 +18,7 @@ final class WeatherArkViewWrapper$topPadding$2
   
   public final int invoke()
   {
-    int j = (int)this.this$0.getResources().getDimension(2131299168);
+    int j = (int)this.this$0.getResources().getDimension(2131299920);
     int i = j;
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i = j + ImmersiveUtils.getStatusBarHeight(this.this$0.getContext());
@@ -28,7 +28,7 @@ final class WeatherArkViewWrapper$topPadding$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherArkViewWrapper.topPadding.2
  * JD-Core Version:    0.7.0.1
  */

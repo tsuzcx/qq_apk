@@ -12,9 +12,9 @@ public class QVipDiyTemplateProcessor
 {
   static QVipDiyTemplateConfig a = new QVipDiyTemplateConfig();
   
-  public static QVipDiyTemplateConfig c()
+  public static QVipDiyTemplateConfig e()
   {
-    QVipDiyTemplateConfig localQVipDiyTemplateConfig2 = (QVipDiyTemplateConfig)QConfigManager.a().a(444);
+    QVipDiyTemplateConfig localQVipDiyTemplateConfig2 = (QVipDiyTemplateConfig)QConfigManager.b().b(444);
     QVipDiyTemplateConfig localQVipDiyTemplateConfig1 = localQVipDiyTemplateConfig2;
     if (localQVipDiyTemplateConfig2 == null) {
       localQVipDiyTemplateConfig1 = a;
@@ -40,9 +40,9 @@ public class QVipDiyTemplateProcessor
     if (i < m)
     {
       localObject = paramArrayOfQConfItem[i];
-      if (j <= ((QConfItem)localObject).jdField_a_of_type_Int)
+      if (j <= ((QConfItem)localObject).a)
       {
-        k = ((QConfItem)localObject).jdField_a_of_type_Int;
+        k = ((QConfItem)localObject).a;
         j = k;
       }
     }
@@ -50,9 +50,9 @@ public class QVipDiyTemplateProcessor
     {
       try
       {
-        if (paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString != null)
+        if (paramArrayOfQConfItem[0].b != null)
         {
-          localObject = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+          localObject = new JSONObject(paramArrayOfQConfItem[0].b);
           localQVipDiyTemplateConfig.a = ((JSONObject)localObject).optBoolean("enable", false);
           j = ((JSONObject)localObject).optInt("dltc", 0);
           bool = true;
@@ -67,7 +67,7 @@ public class QVipDiyTemplateProcessor
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("parsed : ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         localStringBuilder.append(" error:");
         localStringBuilder.append(localJSONException);
         SLog.e("QVipDiyTemplateProcessor", localStringBuilder.toString());
@@ -99,7 +99,7 @@ public class QVipDiyTemplateProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipDiyTemplateProcessor
  * JD-Core Version:    0.7.0.1
  */

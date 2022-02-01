@@ -10,12 +10,12 @@ class QzoneEditPicturePartComment$1
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QzoneEditPicturePartComment.a(this.a).a = paramBoolean;
+    QzoneEditPicturePartComment.a(this.a).g = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzoneEditPicturePartComment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,19 @@ class ChatHistoryTroopMemberFragment$46$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$46.a.getBaseActivity().isFinishing()) {
+    if (this.b.a.getBaseActivity().isFinishing()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$46.a.a != null)
+    if (this.b.a.K != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$46.a.a.c = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$46.a.a.a();
+      this.b.a.K.f = this.a;
+      this.b.a.K.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.46.1
  * JD-Core Version:    0.7.0.1
  */

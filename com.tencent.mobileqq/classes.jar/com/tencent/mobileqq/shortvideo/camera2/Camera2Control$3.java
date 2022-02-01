@@ -19,19 +19,19 @@ class Camera2Control$3
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[Camera2]Image Capture cost:");
-      ((StringBuilder)localObject).append((float)(System.currentTimeMillis() - Camera2Control.a(this.a)) / 1000.0F);
+      ((StringBuilder)localObject).append((float)(System.currentTimeMillis() - Camera2Control.h(this.a)) / 1000.0F);
       Camera2Utils.a(1, ((StringBuilder)localObject).toString());
-      Camera2Support.a(2, Camera2Control.a(this.a).a * Camera2Control.a(this.a).b, System.currentTimeMillis() - Camera2Control.a(this.a));
+      Camera2Support.a(2, Camera2Control.i(this.a).a * Camera2Control.i(this.a).b, System.currentTimeMillis() - Camera2Control.h(this.a));
       paramImageReader = paramImageReader.acquireNextImage();
       if (paramImageReader != null)
       {
         localObject = paramImageReader.getPlanes()[0].getBuffer();
         byte[] arrayOfByte = new byte[((ByteBuffer)localObject).remaining()];
         ((ByteBuffer)localObject).get(arrayOfByte);
-        if ((Camera2Control.a(this.a) != null) && (Camera2Control.a(this.a) != null))
+        if ((Camera2Control.f(this.a) != null) && (Camera2Control.j(this.a) != null))
         {
-          Camera2Control.a(this.a).a = Camera2Control.a(this.a).a;
-          Camera2Control.a(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.a)));
+          Camera2Control.j(this.a).f = Camera2Control.k(this.a).b;
+          Camera2Control.f(this.a).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.j(this.a)));
         }
         paramImageReader.close();
         return;
@@ -48,7 +48,7 @@ class Camera2Control$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.3
  * JD-Core Version:    0.7.0.1
  */

@@ -23,10 +23,10 @@ class QQSpecialFriendSettingActivity$4
       paramArrayOfObject.append("onSetSpecialCareSwith_global isSuccess: ");
       paramArrayOfObject.append(paramBoolean);
       paramArrayOfObject.append(",isFromForwardFriendActivity=");
-      paramArrayOfObject.append(QQSpecialFriendSettingActivity.a(this.a));
+      paramArrayOfObject.append(QQSpecialFriendSettingActivity.h(this.a));
       QLog.d("QQSpecialFriendSettingActivity", 2, paramArrayOfObject.toString());
     }
-    if (QQSpecialFriendSettingActivity.a(this.a)) {
+    if (QQSpecialFriendSettingActivity.h(this.a)) {
       return;
     }
     this.a.a.sendEmptyMessage(8194);
@@ -36,9 +36,9 @@ class QQSpecialFriendSettingActivity$4
     }
     paramArrayOfObject.arg1 = i;
     if (paramBoolean) {
-      i = 2131692089;
+      i = 2131889067;
     } else {
-      i = 2131699312;
+      i = 2131897329;
     }
     paramArrayOfObject.arg2 = i;
     this.a.a.sendMessage(paramArrayOfObject);
@@ -56,13 +56,13 @@ class QQSpecialFriendSettingActivity$4
       paramArrayOfObject.append(paramBoolean);
       QLog.d("QQSpecialFriendSettingActivity", 2, paramArrayOfObject.toString());
     }
-    if (QQSpecialFriendSettingActivity.a(this.a)) {
+    if (QQSpecialFriendSettingActivity.h(this.a)) {
       return;
     }
     if (!paramBoolean)
     {
       paramArrayOfObject = this.a;
-      paramArrayOfObject.a(QQSpecialFriendSettingActivity.b(paramArrayOfObject), QQSpecialFriendSettingActivity.b(this.a).a() ^ true);
+      paramArrayOfObject.a(QQSpecialFriendSettingActivity.c(paramArrayOfObject), QQSpecialFriendSettingActivity.c(this.a).a() ^ true);
     }
   }
   
@@ -75,10 +75,10 @@ class QQSpecialFriendSettingActivity$4
       paramArrayOfObject.append(paramBoolean);
       QLog.d("QQSpecialFriendSettingActivity", 2, paramArrayOfObject.toString());
     }
-    if (QQSpecialFriendSettingActivity.a(this.a)) {
+    if (QQSpecialFriendSettingActivity.h(this.a)) {
       return;
     }
-    QQSpecialFriendSettingActivity.b(this.a);
+    QQSpecialFriendSettingActivity.j(this.a);
   }
   
   protected void onSetSpecialCareSwitchesOfAPerson(boolean paramBoolean, Object[] paramArrayOfObject)
@@ -92,12 +92,12 @@ class QQSpecialFriendSettingActivity$4
       paramArrayOfObject.append("onSetSpecialCareSwitchesOfAPerson isSuccess: ");
       paramArrayOfObject.append(paramBoolean);
       paramArrayOfObject.append(",isFromForwardFriendActivity=");
-      paramArrayOfObject.append(QQSpecialFriendSettingActivity.a(this.a));
+      paramArrayOfObject.append(QQSpecialFriendSettingActivity.h(this.a));
       paramArrayOfObject.append(",result=");
       paramArrayOfObject.append(j);
       QLog.d("QQSpecialFriendSettingActivity", 2, paramArrayOfObject.toString());
     }
-    if (!QQSpecialFriendSettingActivity.a(this.a)) {
+    if (!QQSpecialFriendSettingActivity.h(this.a)) {
       return;
     }
     this.a.a.sendEmptyMessage(8194);
@@ -107,20 +107,20 @@ class QQSpecialFriendSettingActivity$4
     }
     paramArrayOfObject.arg1 = i;
     if ((paramBoolean) && (j == 0)) {
-      i = 2131692089;
+      i = 2131889067;
     } else {
-      i = 2131699309;
+      i = 2131897326;
     }
     paramArrayOfObject.arg2 = i;
     this.a.a.sendMessage(paramArrayOfObject);
     if ((paramBoolean) && (j == 0))
     {
-      if (QQSpecialFriendSettingActivity.b(this.a))
+      if (QQSpecialFriendSettingActivity.i(this.a))
       {
         paramArrayOfObject = new Intent();
         paramArrayOfObject.setClass(this.a, SpecailCareListActivity.class);
         paramArrayOfObject.addFlags(67108864);
-        paramArrayOfObject.putExtra("selfSet_leftViewText", this.a.getString(2131695179));
+        paramArrayOfObject.putExtra("selfSet_leftViewText", this.a.getString(2131892912));
         this.a.startActivity(paramArrayOfObject);
         this.a.finish();
         return;
@@ -156,12 +156,12 @@ class QQSpecialFriendSettingActivity$4
       paramList.append(paramBoolean2);
       QLog.d("QQSpecialFriendSettingActivity", 2, paramList.toString());
     }
-    QQSpecialFriendSettingActivity.b(this.a);
+    QQSpecialFriendSettingActivity.j(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class ChatHistoryTroopMemberFragment$5
   {
     if (paramMotionEvent.getAction() == 4)
     {
-      this.a.a.dismiss();
+      this.a.aT.dismiss();
       return true;
     }
     return false;
@@ -22,7 +22,7 @@ class ChatHistoryTroopMemberFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.5
  * JD-Core Version:    0.7.0.1
  */

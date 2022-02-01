@@ -47,7 +47,7 @@ class ContactListView$UiHandler
             {
               if (i == 8)
               {
-                ((ContactListView)localObject1).i();
+                ((ContactListView)localObject1).j();
                 ((ContactListView)localObject1).l();
                 return;
               }
@@ -59,8 +59,8 @@ class ContactListView$UiHandler
             ContactListView.a((ContactListView)localObject1, (QQPimTipsInfo)paramMessage.obj);
             return;
           }
-          paramMessage = ContactListView.a((ContactListView)localObject1).getAccount();
-          Object localObject2 = (TicketManagerImpl)ContactListView.a((ContactListView)localObject1).getManager(2);
+          paramMessage = ContactListView.b((ContactListView)localObject1).getAccount();
+          Object localObject2 = (TicketManagerImpl)ContactListView.b((ContactListView)localObject1).getManager(2);
           if (localObject2 == null) {
             return;
           }
@@ -72,35 +72,35 @@ class ContactListView$UiHandler
             localStringBuilder.append((String)localObject2);
             QLog.i("ContactListView", 2, localStringBuilder.toString());
           }
-          QQPimGetTipsInfoIPC.a().a(ContactListView.a((ContactListView)localObject1), ContactListView.a((ContactListView)localObject1), paramMessage, (String)localObject2);
+          QQPimGetTipsInfoIPC.a().a(ContactListView.b((ContactListView)localObject1), ContactListView.c((ContactListView)localObject1), paramMessage, (String)localObject2);
           return;
         }
-        ((ContactListView)localObject1).b = ((List)paramMessage.obj);
-        ((ContactListView)localObject1).jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter.a(((ContactListView)localObject1).b);
-        ((ContactListView)localObject1).jdField_a_of_type_ComTencentMobileqqAdapterContactBindedAdapter.notifyDataSetChanged();
+        ((ContactListView)localObject1).p = ((List)paramMessage.obj);
+        ((ContactListView)localObject1).q.a(((ContactListView)localObject1).p);
+        ((ContactListView)localObject1).q.notifyDataSetChanged();
         return;
       }
-      ((ContactListView)localObject1).j();
+      ((ContactListView)localObject1).k();
       if (!NetworkUtil.isNetSupport(((ContactListView)localObject1).getContext()))
       {
-        ((ContactListView)localObject1).i();
-        ((ContactListView)localObject1).a(HardCodeUtil.a(2131702668));
+        ((ContactListView)localObject1).j();
+        ((ContactListView)localObject1).a(HardCodeUtil.a(2131900658));
       }
     }
     else
     {
-      if ((ContactListView.a((ContactListView)localObject1)) && (!((ContactListView)localObject1).jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService.isAutoUploadContacts()))
+      if ((ContactListView.a((ContactListView)localObject1)) && (!((ContactListView)localObject1).e.isAutoUploadContacts()))
       {
-        ((ContactListView)localObject1).g();
+        ((ContactListView)localObject1).h();
         ContactListView.a((ContactListView)localObject1, false);
       }
-      ((ContactListView)localObject1).j();
+      ((ContactListView)localObject1).k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.ContactListView.UiHandler
  * JD-Core Version:    0.7.0.1
  */

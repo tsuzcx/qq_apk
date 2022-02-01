@@ -43,8 +43,8 @@ public class GroupViewAdapter
   {
     paramContext = NearbyTroops.a(paramContext, paramViewGroup, paramInt2);
     paramViewGroup = (NearbyTroops.CustomViewHolder)paramContext.getTag();
-    paramViewGroup.a.setMaxLabelCount(paramInt1);
-    paramViewGroup.a.setmIsNeedPriority(paramBoolean);
+    paramViewGroup.c.setMaxLabelCount(paramInt1);
+    paramViewGroup.c.setmIsNeedPriority(paramBoolean);
     return paramContext;
   }
   
@@ -246,20 +246,20 @@ public class GroupViewAdapter
     paramView = (NearbyTroops.CustomViewHolder)paramView.getTag();
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      paramView.e.setText((CharSequence)localObject2);
-      paramView.e.setVisibility(0);
+      paramView.s.setText((CharSequence)localObject2);
+      paramView.s.setVisibility(0);
       return;
     }
-    paramView.e.setVisibility(8);
+    paramView.s.setVisibility(8);
   }
   
   public static View b(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    paramContext = NearbyTroops.a(paramContext, paramViewGroup, paramInt2, 2131561431);
+    paramContext = NearbyTroops.a(paramContext, paramViewGroup, paramInt2, 2131627787);
     paramViewGroup = (NearbyTroops.CustomViewHolder)paramContext.getTag();
-    paramViewGroup.a.setMaxLabelCount(paramInt1);
-    paramViewGroup.a.setmIsNeedPriority(paramBoolean);
-    paramViewGroup.b = 1;
+    paramViewGroup.c.setMaxLabelCount(paramInt1);
+    paramViewGroup.c.setmIsNeedPriority(paramBoolean);
+    paramViewGroup.i = 1;
     return paramContext;
   }
 }

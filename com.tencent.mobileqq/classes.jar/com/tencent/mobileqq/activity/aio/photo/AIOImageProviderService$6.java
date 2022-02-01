@@ -10,17 +10,17 @@ class AIOImageProviderService$6
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
+      NewReportPlugin.a(this.b.app, this.c, this.d, this.e, this.f);
       return;
     }
-    NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, this.jdField_a_of_type_JavaLangString, this.c, NewReportPlugin.a(this.jdField_a_of_type_Int), this.c);
+    NewReportPlugin.a(this.b, this.d, this.c, this.e, NewReportPlugin.b(this.g), this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.6
  * JD-Core Version:    0.7.0.1
  */

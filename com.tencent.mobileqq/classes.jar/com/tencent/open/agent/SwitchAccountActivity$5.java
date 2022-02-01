@@ -11,16 +11,12 @@ import java.lang.ref.WeakReference;
 class SwitchAccountActivity$5
   implements View.OnTouchListener
 {
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  View jdField_a_of_type_AndroidViewView;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  View a;
+  WeakReference<View> b;
+  protected GestureDetector.SimpleOnGestureListener c = new SwitchAccountActivity.5.1(this);
+  protected GestureDetector d = new GestureDetector(this.c);
   
-  SwitchAccountActivity$5(SwitchAccountActivity paramSwitchAccountActivity)
-  {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new SwitchAccountActivity.5.1(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  }
+  SwitchAccountActivity$5(SwitchAccountActivity paramSwitchAccountActivity) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
@@ -34,18 +30,18 @@ class SwitchAccountActivity$5
     }
     if (i == 0)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (SwitchAccountActivity.access$500(this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity)) {
-        SwitchAccountActivity.access$502(this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity, false);
+      this.a = paramView;
+      if (SwitchAccountActivity.access$500(this.e)) {
+        SwitchAccountActivity.access$502(this.e, false);
       }
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.d.onTouchEvent(paramMotionEvent);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.SwitchAccountActivity.5
  * JD-Core Version:    0.7.0.1
  */

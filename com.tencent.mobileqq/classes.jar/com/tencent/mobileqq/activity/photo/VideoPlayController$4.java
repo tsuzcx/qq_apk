@@ -7,8 +7,8 @@ class VideoPlayController$4
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayController$VideoPlayerStateListener != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayController$VideoPlayerStateListener.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo);
+    if (this.this$0.g != null) {
+      this.this$0.g.a(this.this$0.a);
     }
     VideoPlayController.a(this.this$0, 1);
     this.this$0.b(8);
@@ -16,7 +16,7 @@ class VideoPlayController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayController.4
  * JD-Core Version:    0.7.0.1
  */

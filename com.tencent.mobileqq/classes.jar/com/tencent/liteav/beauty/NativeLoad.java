@@ -1,24 +1,21 @@
 package com.tencent.liteav.beauty;
 
 import android.util.Log;
+import com.tencent.liteav.basic.util.h;
 import java.nio.ByteBuffer;
 
 public class NativeLoad
 {
   private static final String TAG = "NativeLoad";
   
-  private NativeLoad()
+  static
   {
+    h.f();
     OnLoadBeauty();
-    Log.e("NativeLoad", "NativeLoad: load jni");
+    Log.i("NativeLoad", "NativeLoad: load jni");
   }
   
   public static native void OnLoadBeauty();
-  
-  public static NativeLoad getInstance()
-  {
-    return NativeLoad.a.a;
-  }
   
   public static native void nativeClearQueue();
   
@@ -38,7 +35,7 @@ public class NativeLoad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.NativeLoad
  * JD-Core Version:    0.7.0.1
  */

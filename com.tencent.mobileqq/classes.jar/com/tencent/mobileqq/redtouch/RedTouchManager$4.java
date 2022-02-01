@@ -10,12 +10,12 @@ class RedTouchManager$4
   
   public void run()
   {
-    RedTouchManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString);
+    RedTouchManager.a(this.this$0, this.a, this.b, this.c, this.d, this.e, this.f, this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public abstract class TRTCCloudListener
 {
+  @Deprecated
   public void onAudioEffectFinished(int paramInt1, int paramInt2) {}
   
   public void onAudioRouteChanged(int paramInt1, int paramInt2) {}
@@ -28,6 +29,12 @@ public abstract class TRTCCloudListener
   public void onFirstAudioFrame(String paramString) {}
   
   public void onFirstVideoFrame(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onLocalRecordBegin(int paramInt, String paramString) {}
+  
+  public void onLocalRecordComplete(int paramInt, String paramString) {}
+  
+  public void onLocalRecording(long paramLong, String paramString) {}
   
   public void onMicDidReady() {}
   
@@ -70,6 +77,8 @@ public abstract class TRTCCloudListener
   public void onStopPublishing(int paramInt, String paramString) {}
   
   public void onSwitchRole(int paramInt, String paramString) {}
+  
+  public void onSwitchRoom(int paramInt, String paramString) {}
   
   public void onTryToReconnect() {}
   

@@ -25,15 +25,15 @@ final class CommentProteusListenerUtil$Companion$initCommentMediaClickListener$1
     localStringBuilder.append("comment media url : ");
     localStringBuilder.append(paramViewBase.getEventAttachedData());
     QLog.d("CommentProteusUtil", 2, localStringBuilder.toString());
-    TroopNoticeJsHandler.a((Activity)this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a(), 0, localArrayList, true, "", 1888);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a().f(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem);
+    TroopNoticeJsHandler.a((Activity)this.a.n(), 0, localArrayList, true, "", 1888);
+    if (this.a.q() != null) {
+      this.a.q().f(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initCommentMediaClickListener.1.configClickListener.1
  * JD-Core Version:    0.7.0.1
  */

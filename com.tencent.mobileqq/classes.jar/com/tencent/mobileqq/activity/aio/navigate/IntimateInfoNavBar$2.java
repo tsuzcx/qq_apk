@@ -14,10 +14,10 @@ class IntimateInfoNavBar$2
   
   public void run()
   {
-    Object localObject = this.this$0.a.getApp();
+    Object localObject = this.this$0.b.getApp();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("IntimateInfo");
-    localStringBuilder.append(this.this$0.a.getCurrentAccountUin());
+    localStringBuilder.append(this.this$0.b.getCurrentAccountUin());
     localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     int i = ((SharedPreferences)localObject).getInt("key_aio_score_guide_count", 0);
     if (QLog.isColorLevel()) {
@@ -29,7 +29,7 @@ class IntimateInfoNavBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.IntimateInfoNavBar.2
  * JD-Core Version:    0.7.0.1
  */

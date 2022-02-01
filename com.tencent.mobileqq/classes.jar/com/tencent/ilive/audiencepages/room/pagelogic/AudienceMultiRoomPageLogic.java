@@ -115,7 +115,7 @@ public class AudienceMultiRoomPageLogic
       i = 1;
     }
     if (PreloadUtil.a(str, i)) {
-      bool = ((AVPreloadServiceInterface)BizEngineMgr.getInstance().getUserEngine().getService(AVPreloadServiceInterface.class)).b(paramSwitchRoomInfo.videoUrl);
+      bool = ((AVPreloadServiceInterface)BizEngineMgr.getInstance().getUserEngine().getService(AVPreloadServiceInterface.class)).f(paramSwitchRoomInfo.videoUrl);
     }
     this.audQualityService.reportSwitchRoom(paramSwitchRoomInfo.roomId, true ^ TextUtils.isEmpty(paramSwitchRoomInfo.videoUrl), bool);
     paramAudienceRoomFragment = (RoomBootBizModules)paramAudienceRoomFragment.getBootBizModules();
@@ -134,7 +134,7 @@ public class AudienceMultiRoomPageLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.AudienceMultiRoomPageLogic
  * JD-Core Version:    0.7.0.1
  */

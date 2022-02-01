@@ -16,19 +16,19 @@ class PhotoGridAdapter$4
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo))
+    if (this.d.a(this.a))
     {
-      QQToast.a(paramView.getContext(), HardCodeUtil.a(2064515223), 0).a();
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoVH.a.setChecked(false);
+      QQToast.makeText(paramView.getContext(), HardCodeUtil.a(2064187570), 0).show();
+      this.b.d.setChecked(false);
       return;
     }
-    PhotoGridAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoVH);
+    PhotoGridAdapter.a(this.d, this.c, this.b);
     SimpleEventBus.getInstance().dispatchEvent(new AECircleSelectChangeEvent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.adapter.PhotoGridAdapter.4
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ final class LocationDialogUtil$9
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_JavaLangString, 2131690728, 2131694583, new LocationDialogUtil.9.1(this), new LocationDialogUtil.9.2(this));
-    LocationDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, localQQCustomDialog);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230, null, this.b, 2131887648, 2131892267, new LocationDialogUtil.9.1(this), new LocationDialogUtil.9.2(this));
+    LocationDialogUtil.a(this.a, localQQCustomDialog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.9
  * JD-Core Version:    0.7.0.1
  */

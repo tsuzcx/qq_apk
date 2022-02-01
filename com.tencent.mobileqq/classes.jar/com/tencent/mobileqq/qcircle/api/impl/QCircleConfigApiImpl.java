@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.qcircle.api.impl;
 
 import android.content.SharedPreferences;
-import com.tencent.biz.qcircleshadow.local.QCircleShadow;
+import com.tencent.mobileqq.auto.engine.loader.ASDynamicEngine;
+import com.tencent.mobileqq.auto.engine.loader.ASDynamicEngineFactory;
 import com.tencent.mobileqq.qcircle.api.IQCircleConfigApi;
-import common.config.service.QzoneConfig;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import cooperation.qqcircle.QCircleConfig;
 
 public class QCircleConfigApiImpl
@@ -11,9 +12,14 @@ public class QCircleConfigApiImpl
 {
   private static final String TAG = "QCircleConfigApiImpl";
   
+  public String getPluginMark()
+  {
+    return ASDynamicEngineFactory.a("qcircle-app").i();
+  }
+  
   public String getPluginQUA()
   {
-    return QCircleShadow.a().a();
+    return ASDynamicEngineFactory.a("qcircle-app").h();
   }
   
   public SharedPreferences getQCircleSp()
@@ -26,9 +32,14 @@ public class QCircleConfigApiImpl
     return QCircleConfig.getQQCircleFollowTabUpdateNotificationShowInterval();
   }
   
+  public boolean isShowQCircleEnter(boolean paramBoolean)
+  {
+    return QCircleConfigHelper.d(paramBoolean);
+  }
+  
   public boolean isShowQQCircleMainTabEntrance(boolean paramBoolean)
   {
-    return QzoneConfig.isShowQQCircleMainTabEntrance(paramBoolean);
+    return QCircleConfigHelper.a(paramBoolean);
   }
   
   public void tryGetSplashVideoAsync()
@@ -38,7 +49,7 @@ public class QCircleConfigApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleConfigApiImpl
  * JD-Core Version:    0.7.0.1
  */

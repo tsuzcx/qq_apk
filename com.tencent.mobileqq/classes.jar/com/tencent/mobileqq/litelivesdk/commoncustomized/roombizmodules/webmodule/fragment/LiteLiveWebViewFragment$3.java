@@ -22,7 +22,7 @@ class LiteLiveWebViewFragment$3
   {
     if (!this.a.isDestroyed())
     {
-      if (LiteLiveWebViewFragment.a(this.a) == null) {
+      if (LiteLiveWebViewFragment.b(this.a) == null) {
         return;
       }
       if (paramJSONObject != null)
@@ -43,7 +43,7 @@ class LiteLiveWebViewFragment$3
         paramJSONObject.append("()");
         paramString = paramJSONObject.toString();
       }
-      LiteLiveWebViewFragment.b(this.a).evaluateJavascript(paramString, new LiteLiveWebViewFragment.3.1(this, paramValueCallback));
+      LiteLiveWebViewFragment.c(this.a).evaluateJavascript(paramString, new LiteLiveWebViewFragment.3.1(this, paramValueCallback));
     }
   }
   
@@ -82,7 +82,7 @@ class LiteLiveWebViewFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.fragment.LiteLiveWebViewFragment.3
  * JD-Core Version:    0.7.0.1
  */

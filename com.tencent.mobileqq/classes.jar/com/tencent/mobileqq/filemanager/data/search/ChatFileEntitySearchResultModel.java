@@ -13,7 +13,7 @@ public class ChatFileEntitySearchResultModel
   {
     Object localObject = (FileManagerEntity)this.a.get(0);
     String str1 = QfileTimeUtils.b(((FileManagerEntity)localObject).srvTime);
-    String str2 = FileManagerUtil.b((FileManagerEntity)localObject);
+    String str2 = FileManagerUtil.k((FileManagerEntity)localObject);
     localObject = FileUtil.a(((FileManagerEntity)localObject).fileSize);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str2);
@@ -21,13 +21,13 @@ public class ChatFileEntitySearchResultModel
     localStringBuilder.append(str1);
     localStringBuilder.append("  ");
     localStringBuilder.append((String)localObject);
-    this.b = localStringBuilder;
+    this.d = localStringBuilder;
     return localStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.ChatFileEntitySearchResultModel
  * JD-Core Version:    0.7.0.1
  */

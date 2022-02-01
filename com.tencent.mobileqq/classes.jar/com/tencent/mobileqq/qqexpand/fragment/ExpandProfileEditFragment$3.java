@@ -7,37 +7,37 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 class ExpandProfileEditFragment$3
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private int c;
+  private final Rect d = new Rect();
   
   ExpandProfileEditFragment$3(ExpandProfileEditFragment paramExpandProfileEditFragment) {}
   
   public void onGlobalLayout()
   {
-    ExpandProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
+    ExpandProfileEditFragment.d(this.a).getWindowVisibleDisplayFrame(this.d);
+    int i = this.d.bottom - this.d.top;
+    if (i != this.c)
     {
-      int j = ExpandProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment).getRootView().getHeight();
+      int j = ExpandProfileEditFragment.d(this.a).getRootView().getHeight();
       int k = j - i;
       if (k > j / 4)
       {
-        ExpandProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment, k);
-        this.jdField_a_of_type_Boolean = true;
-        ExpandProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment);
+        ExpandProfileEditFragment.b(this.a, k);
+        this.b = true;
+        ExpandProfileEditFragment.e(this.a);
       }
-      else if (this.jdField_a_of_type_Boolean)
+      else if (this.b)
       {
-        ExpandProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment);
+        ExpandProfileEditFragment.f(this.a);
       }
-      this.jdField_a_of_type_Int = i;
+      this.c = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandProfileEditFragment.3
  * JD-Core Version:    0.7.0.1
  */

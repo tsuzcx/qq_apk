@@ -25,28 +25,28 @@ class ReminderListFragment$ReminderListItemVH
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  RelativeLayout a;
+  RelativeLayout b;
   TextView c;
+  TextView d;
+  TextView e;
+  ImageView f;
+  ImageView g;
+  FrameLayout h;
   
   public ReminderListFragment$ReminderListItemVH(ReminderListFragment paramReminderListFragment, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376394));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376393));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.c = ((TextView)paramView.findViewById(2131376398));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376395));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370139));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370138));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376396));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376397));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
+    this.a = ((RelativeLayout)paramView.findViewById(2131444610));
+    this.b = ((RelativeLayout)paramView.findViewById(2131444609));
+    this.b.setOnClickListener(this);
+    this.e = ((TextView)paramView.findViewById(2131444614));
+    this.g = ((ImageView)paramView.findViewById(2131444611));
+    this.c = ((TextView)paramView.findViewById(2131437302));
+    this.d = ((TextView)paramView.findViewById(2131437300));
+    this.f = ((ImageView)paramView.findViewById(2131444612));
+    this.h = ((FrameLayout)paramView.findViewById(2131444613));
+    this.h.setOnClickListener(this);
   }
   
   private void a(View paramView, AcsMsg paramAcsMsg)
@@ -60,9 +60,9 @@ class ReminderListFragment$ReminderListItemVH
         paramView.setTag(paramAcsMsg);
         paramView = (FrameLayout.LayoutParams)paramView.getLayoutParams();
         paramAcsMsg = new Rect();
-        this.jdField_a_of_type_AndroidWidgetImageView.getLocalVisibleRect(paramAcsMsg);
+        this.f.getLocalVisibleRect(paramAcsMsg);
         paramView.rightMargin = paramAcsMsg.right;
-        this.jdField_a_of_type_AndroidWidgetImageView.getGlobalVisibleRect(paramAcsMsg);
+        this.f.getGlobalVisibleRect(paramAcsMsg);
         paramView.topMargin = (paramAcsMsg.top - paramView.width);
       }
     }
@@ -70,21 +70,21 @@ class ReminderListFragment$ReminderListItemVH
   
   public void a(ReminderListItemModel paramReminderListItemModel)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setTag(paramReminderListItemModel.jdField_a_of_type_WalletAcsMsg);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramReminderListItemModel.jdField_a_of_type_WalletAcsMsg.title);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setTag(paramReminderListItemModel.jdField_a_of_type_WalletAcsMsg.jump_url);
-    Object localObject1 = paramReminderListItemModel.jdField_a_of_type_WalletAcsMsg.busi_icon;
+    this.h.setTag(paramReminderListItemModel.a);
+    this.c.setText(paramReminderListItemModel.a.title);
+    this.b.setTag(paramReminderListItemModel.a.jump_url);
+    Object localObject1 = paramReminderListItemModel.a.busi_icon;
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_b_of_type_AndroidWidgetImageView.getHeight();
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_b_of_type_AndroidWidgetImageView.getWidth();
+    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.g.getHeight();
+    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.g.getWidth();
     localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
     if (localObject1 != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+      this.g.setImageDrawable((Drawable)localObject1);
     }
-    String str = DateUtil.a(paramReminderListItemModel.jdField_a_of_type_WalletAcsMsg.notice_time * 1000L, "yyyy.MM.dd");
-    localObject2 = DateUtil.a(paramReminderListItemModel.jdField_a_of_type_WalletAcsMsg.notice_time * 1000L, "HH:mm");
+    String str = DateUtil.a(paramReminderListItemModel.a.notice_time * 1000L, "yyyy.MM.dd");
+    localObject2 = DateUtil.a(paramReminderListItemModel.a.notice_time * 1000L, "HH:mm");
     localObject1 = localObject2;
-    if (paramReminderListItemModel.jdField_a_of_type_Int == 0)
+    if (paramReminderListItemModel.c == 0)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append((String)localObject2);
@@ -96,11 +96,11 @@ class ReminderListFragment$ReminderListItemVH
     ((StringBuilder)localObject2).append("　　　");
     ((StringBuilder)localObject2).append((String)localObject1);
     localObject1 = ((StringBuilder)localObject2).toString();
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-    localObject1 = this.c;
-    if (!StringUtil.a(paramReminderListItemModel.jdField_a_of_type_JavaLangString))
+    this.d.setText((CharSequence)localObject1);
+    localObject1 = this.e;
+    if (!StringUtil.isEmpty(paramReminderListItemModel.b))
     {
-      ((TextView)localObject1).setText(paramReminderListItemModel.jdField_a_of_type_JavaLangString);
+      ((TextView)localObject1).setText(paramReminderListItemModel.b);
       ((TextView)localObject1).setVisibility(0);
       return;
     }
@@ -109,28 +109,28 @@ class ReminderListFragment$ReminderListItemVH
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131376393)
+    int j = paramView.getId();
+    if (j != 2131444609)
     {
-      if ((i == 2131376397) && (ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment) != null))
+      if ((j == 2131444613) && (ReminderListFragment.b(this.i) != null))
       {
-        a(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).getContentView(), (AcsMsg)this.jdField_a_of_type_AndroidWidgetFrameLayout.getTag());
-        ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).showAtLocation(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment), 17, 0, 0);
+        a(ReminderListFragment.b(this.i).getContentView(), (AcsMsg)this.h.getTag());
+        ReminderListFragment.b(this.i).showAtLocation(ReminderListFragment.e(this.i), 17, 0, 0);
       }
     }
-    else if (!StringUtil.a((String)paramView.getTag()))
+    else if (!StringUtil.isEmpty((String)paramView.getTag()))
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment.getBaseActivity(), QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.i.getBaseActivity(), QQBrowserActivity.class);
       localIntent.putExtra("url", (String)paramView.getTag());
       localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment.startActivity(localIntent);
+      this.i.startActivity(localIntent);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.ReminderListItemVH
  * JD-Core Version:    0.7.0.1
  */

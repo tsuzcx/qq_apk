@@ -26,10 +26,10 @@ class TeamWorkFileImportHandlerImpl$3
       return;
     }
     long l1 = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_OrgJsonJSONObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b()) && (!this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g)) {}
+    if ((this.a != null) && (this.b.b()) && (!this.b.t)) {}
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("cacheKeyType", 1);
+      this.a.put("cacheKeyType", 1);
     }
     catch (JSONException localJSONException1)
     {
@@ -46,19 +46,19 @@ class TeamWorkFileImportHandlerImpl$3
       StringBuilder localStringBuilder2;
       break label56;
     }
-    str2 = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).uploadFileInfo(this.jdField_a_of_type_OrgJsonJSONObject, TeamWorkFileImportHandlerImpl.access$000(this.this$0).getCurrentAccountUin(), TeamWorkFileImportHandlerImpl.access$000(this.this$0));
+    str2 = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).uploadFileInfo(this.a, TeamWorkFileImportHandlerImpl.access$000(this.this$0).getCurrentAccountUin(), TeamWorkFileImportHandlerImpl.access$000(this.this$0));
     l2 = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_k_of_type_Int != this.jdField_a_of_type_Int)
+    if (this.b.N != this.c)
     {
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("this job has dropped ");
-      localStringBuilder1.append(this.jdField_a_of_type_Int);
+      localStringBuilder1.append(this.c);
       QLog.w("TeamWorkFileImportHandlerImpl", 2, localStringBuilder1.toString());
       return;
     }
     if (str2 != null)
     {
-      bool = TeamWorkFileImportHandlerImpl.access$200(this.this$0, str2, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+      bool = TeamWorkFileImportHandlerImpl.access$200(this.this$0, str2, this.b);
       try
       {
         str1 = new JSONObject(str2).getString("url");
@@ -71,28 +71,28 @@ class TeamWorkFileImportHandlerImpl$3
     }
     else
     {
-      TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "url import no result string", this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_k_of_type_JavaLangString);
+      TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "url import no result string", this.b.A);
       str1 = "";
       bool = false;
     }
-    localObject = HardCodeUtil.a(2131714606);
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.e == 3) {
+    localObject = HardCodeUtil.a(2131912115);
+    if (this.b.u == 3) {
       localObject = "word";
     }
     for (;;)
     {
       break;
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.e == 6) {
+      if (this.b.u == 6) {
         localObject = "excel";
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.e == 7) {
+      } else if (this.b.u == 7) {
         localObject = "ppt";
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.e == 9) {
+      } else if (this.b.u == 9) {
         localObject = "pdf";
       }
     }
     l1 = l2 - l1;
     localAppInterface = TeamWorkFileImportHandlerImpl.access$000(this.this$0);
-    j = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.d;
+    j = this.b.n;
     if (bool) {
       i = 1;
     } else {
@@ -102,13 +102,13 @@ class TeamWorkFileImportHandlerImpl$3
     localStringBuilder2.append(l1);
     localStringBuilder2.append("");
     ReportController.b(localAppInterface, "dc00898", "", "", "0X8009955", "0X8009955", j, i, localStringBuilder2.toString(), "", (String)localObject, str1);
-    TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "http duration", String.valueOf(l1), this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_k_of_type_JavaLangString);
+    TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "http duration", String.valueOf(l1), this.b.A);
     if (!bool) {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b()) && (FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.c)))
+      if ((!this.b.b()) && (FileUtil.b(this.b.d)))
       {
-        TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "url import fail, try local file import", this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_k_of_type_JavaLangString);
-        this.this$0.removeFileImporting(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
+        TenDocLogReportHelper.a("TeamWorkFileImportHandlerImpl", "import fail", "url import fail, try local file import", this.b.A);
+        this.this$0.removeFileImporting(this.b);
+        localObject = this.b;
         try
         {
           if (!TextUtils.isEmpty(str2)) {
@@ -122,14 +122,14 @@ class TeamWorkFileImportHandlerImpl$3
         }
         if ((i != 20003) && (i != 20005))
         {
-          ((TeamWorkFileImportInfo)localObject).a = false;
+          ((TeamWorkFileImportInfo)localObject).m = false;
           this.this$0.addFileImportJob((TeamWorkFileImportInfo)localObject);
         }
       }
       else if (TeamWorkFileImportHandlerImpl.access$100(this.this$0) != null)
       {
         localObject = TeamWorkFileImportHandlerImpl.access$100(this.this$0).obtainMessage(8002);
-        ((Message)localObject).obj = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
+        ((Message)localObject).obj = this.b;
         TeamWorkFileImportHandlerImpl.access$100(this.this$0).sendMessage((Message)localObject);
       }
     }
@@ -137,7 +137,7 @@ class TeamWorkFileImportHandlerImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkFileImportHandlerImpl.3
  * JD-Core Version:    0.7.0.1
  */

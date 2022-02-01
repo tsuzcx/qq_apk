@@ -24,11 +24,11 @@ public class MyAppApi$YYBDownloadListener
   {
     if ((paramString1.startsWith("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
     {
-      if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing())) {
-        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+      if ((this.a.k != null) && (this.a.k.isShowing())) {
+        this.a.k.dismiss();
       }
-      DownloadManager.a().b(this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener);
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener = null;
+      DownloadManager.b().b(this.a.s);
+      this.a.s = null;
     }
   }
   
@@ -38,11 +38,11 @@ public class MyAppApi$YYBDownloadListener
       return;
     }
     LogUtility.c("MyAppApi", "onDownloadCancel");
-    if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.f, paramDownloadInfo.a());
+    if ((this.a.k != null) && (this.a.k.isShowing()) && (this.a.l)) {
+      this.a.k.a(paramDownloadInfo.t, paramDownloadInfo.a());
     }
-    DownloadManager.a().b(this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener);
-    this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener = null;
+    DownloadManager.b().b(this.a.s);
+    this.a.s = null;
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
@@ -51,10 +51,10 @@ public class MyAppApi$YYBDownloadListener
       return;
     }
     LogUtility.c("MyAppApi", "onDownloadError");
-    if ((paramDownloadInfo.f != 100) && (paramDownloadInfo.e != 4))
+    if ((paramDownloadInfo.t != 100) && (paramDownloadInfo.s != 4))
     {
-      if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
-        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.f, paramDownloadInfo.a());
+      if ((this.a.k != null) && (this.a.k.isShowing()) && (this.a.l)) {
+        this.a.k.a(paramDownloadInfo.t, paramDownloadInfo.a());
       }
       return;
     }
@@ -68,11 +68,11 @@ public class MyAppApi$YYBDownloadListener
     }
     if (MyAppApi.a(this.a))
     {
-      localObject = UpgradeController.a().a();
-      if ((localObject != null) && (((UpgradeDetailWrapper)localObject).a != null))
+      localObject = UpgradeController.a().d();
+      if ((localObject != null) && (((UpgradeDetailWrapper)localObject).e != null))
       {
         SPSettings.a(true);
-        SPSettings.a(((UpgradeDetailWrapper)localObject).a.jdField_a_of_type_Int);
+        SPSettings.a(((UpgradeDetailWrapper)localObject).e.d);
         NewUpgradeDialog.b();
         LogUtility.c("NewUpgradeDialog", "pre download success state saved!");
       }
@@ -82,31 +82,31 @@ public class MyAppApi$YYBDownloadListener
       ReportController.b(null, "dc00898", "", "", "0X8008F7E", "0X8008F7E", 0, 0, "", "", "", "");
     }
     LogUtility.c("MyAppApi", "onDownloadFinish");
-    if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(100, 4);
+    if ((this.a.k != null) && (this.a.k.isShowing()) && (this.a.l)) {
+      this.a.k.a(100, 4);
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("mInstallParam: ");
-    ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams);
+    ((StringBuilder)localObject).append(this.a.j);
     LogUtility.c("MyAppApi", ((StringBuilder)localObject).toString());
-    if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams != null)
+    if (this.a.j != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean)
+      if (this.a.j.c)
       {
         ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.YYBDownloadListener.1(this, paramDownloadInfo), 500L);
         localObject = this.a;
-        ((MyAppApi)localObject).jdField_a_of_type_Boolean = true;
-        ((MyAppApi)localObject).jdField_b_of_type_Boolean = false;
+        ((MyAppApi)localObject).d = true;
+        ((MyAppApi)localObject).e = false;
       }
-      else if ((AppUtil.a() == 1) && (ControlPolicyUtil.c()))
+      else if ((AppUtil.a() == 1) && (ControlPolicyUtil.d()))
       {
         ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.YYBDownloadListener.2(this, paramDownloadInfo), 500L);
         localObject = this.a;
-        ((MyAppApi)localObject).jdField_a_of_type_Boolean = true;
-        ((MyAppApi)localObject).jdField_b_of_type_Boolean = false;
+        ((MyAppApi)localObject).d = true;
+        ((MyAppApi)localObject).e = false;
       }
       long l2 = 0L;
-      int i = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Int;
+      int i = this.a.j.e;
       long l1 = l2;
       if (i != -1) {
         if (i != 0)
@@ -116,21 +116,21 @@ public class MyAppApi$YYBDownloadListener
             if (i != 3)
             {
               localObject = this.a;
-              l1 = ((MyAppApi)localObject).a(((MyAppApi)localObject).jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean);
+              l1 = ((MyAppApi)localObject).a(((MyAppApi)localObject).j.a, this.a.j.b, this.a.j.c);
             }
             else
             {
               localObject = this.a;
-              l1 = ((MyAppApi)localObject).b(((MyAppApi)localObject).jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle);
+              l1 = ((MyAppApi)localObject).b(((MyAppApi)localObject).j.a);
             }
           }
           else
           {
             localObject = this.a;
-            ((MyAppApi)localObject).e = true;
-            if (((MyAppApi)localObject).jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
+            ((MyAppApi)localObject).p = true;
+            if (((MyAppApi)localObject).q != null)
             {
-              l1 = this.a.a().addDownloadTaskFromAuthorize(this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+              l1 = this.a.d().addDownloadTaskFromAuthorize(this.a.q, "2");
             }
             else
             {
@@ -142,15 +142,15 @@ public class MyAppApi$YYBDownloadListener
         else
         {
           localObject = this.a;
-          l1 = ((MyAppApi)localObject).b(((MyAppApi)localObject).jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean);
+          l1 = ((MyAppApi)localObject).b(((MyAppApi)localObject).j.a, this.a.j.b, this.a.j.c);
         }
       }
       localObject = this.a;
-      ((MyAppApi)localObject).jdField_a_of_type_Long = l1;
-      ((MyAppApi)localObject).jdField_b_of_type_Long = System.currentTimeMillis();
+      ((MyAppApi)localObject).f = l1;
+      ((MyAppApi)localObject).g = System.currentTimeMillis();
     }
-    DownloadManager.a().b(this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener);
-    this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener = null;
+    DownloadManager.b().b(this.a.s);
+    this.a.s = null;
     if (("ANDROID.QQ.YYBXZGAMECENTER".equals(paramDownloadInfo.h)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(paramDownloadInfo.h))) {
       GameCenterUtils.a(null, "765", "205011", paramDownloadInfo.c, "76501", "1", "156");
     }
@@ -162,8 +162,8 @@ public class MyAppApi$YYBDownloadListener
       return;
     }
     LogUtility.c("MyAppApi", "onDownloadPause");
-    if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.f, paramDownloadInfo.a());
+    if ((this.a.k != null) && (this.a.k.isShowing()) && (this.a.l)) {
+      this.a.k.a(paramDownloadInfo.t, paramDownloadInfo.a());
     }
   }
   
@@ -182,8 +182,8 @@ public class MyAppApi$YYBDownloadListener
         ((StringBuilder)localObject).append("onDownloadUpdate STATE = ");
         ((StringBuilder)localObject).append(paramList.a());
         LogUtility.c("MyAppApi", ((StringBuilder)localObject).toString());
-        if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
-          this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramList.f, paramList.a());
+        if ((this.a.k != null) && (this.a.k.isShowing()) && (this.a.l)) {
+          this.a.k.a(paramList.t, paramList.a());
         }
       }
     }
@@ -195,8 +195,8 @@ public class MyAppApi$YYBDownloadListener
       return;
     }
     LogUtility.c("MyAppApi", "onDownloadWait");
-    if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.f, paramDownloadInfo.a());
+    if ((this.a.k != null) && (this.a.k.isShowing()) && (this.a.l)) {
+      this.a.k.a(paramDownloadInfo.t, paramDownloadInfo.a());
     }
   }
   
@@ -206,7 +206,7 @@ public class MyAppApi$YYBDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener
  * JD-Core Version:    0.7.0.1
  */

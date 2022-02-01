@@ -37,36 +37,14 @@ public final class SuperMaskExtKt
     Object localObject = paramAdvertisementInfo.mAdvertisementExtInfo;
     if (localObject != null)
     {
-      localObject = String.valueOf(((AdvertisementExtInfo)localObject).j);
+      localObject = String.valueOf(((AdvertisementExtInfo)localObject).o);
       if (localObject != null) {}
     }
     else
     {
       localObject = "";
     }
-    return new ResCheckStep.AdResCheckInfo(String.valueOf(l), (String)localObject, paramAdvertisementInfo.mAdvertisementExtInfo.q);
-  }
-  
-  @Nullable
-  public static final JSONObject a(@NotNull AdvertisementInfo paramAdvertisementInfo)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAdvertisementInfo, "$this$findLocalResJson");
-    long l = paramAdvertisementInfo.mAdAid;
-    paramAdvertisementInfo = paramAdvertisementInfo.mAdvertisementExtInfo;
-    if (paramAdvertisementInfo != null)
-    {
-      paramAdvertisementInfo = String.valueOf(paramAdvertisementInfo.j);
-      if (paramAdvertisementInfo != null) {}
-    }
-    else
-    {
-      paramAdvertisementInfo = "";
-    }
-    paramAdvertisementInfo = SuperMaskResMgr.a.a(String.valueOf(l), paramAdvertisementInfo);
-    if (paramAdvertisementInfo != null) {
-      return paramAdvertisementInfo.a();
-    }
-    return null;
+    return new ResCheckStep.AdResCheckInfo(String.valueOf(l), (String)localObject, paramAdvertisementInfo.mAdvertisementExtInfo.z);
   }
   
   public static final void a(@NotNull AdRequestData paramAdRequestData, int paramInt)
@@ -76,22 +54,22 @@ public final class SuperMaskExtKt
     boolean bool1 = false;
     if (paramInt == 0)
     {
-      if (SuperMaskConfigMgr.a.a().getAndAdd(1) == 0) {
+      if (SuperMaskConfigMgr.a.f().getAndAdd(1) == 0) {
         bool1 = true;
       }
-      paramAdRequestData.b = bool1;
-      if (paramAdRequestData.b) {
+      paramAdRequestData.m = bool1;
+      if (paramAdRequestData.m) {
         QLog.d("ReadInJoySuperMaskAd", 1, "request SuperMask in recommend");
       }
     }
     else if (((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(paramInt))
     {
       bool1 = bool2;
-      if (SuperMaskConfigMgr.a.b().getAndAdd(1) == 0) {
+      if (SuperMaskConfigMgr.a.g().getAndAdd(1) == 0) {
         bool1 = true;
       }
-      paramAdRequestData.b = bool1;
-      if (paramAdRequestData.b) {
+      paramAdRequestData.m = bool1;
+      if (paramAdRequestData.m) {
         QLog.d("ReadInJoySuperMaskAd", 1, "request SuperMask in daily");
       }
     }
@@ -103,7 +81,7 @@ public final class SuperMaskExtKt
     if (paramAdvertisementInfo != null)
     {
       AdvertisementExtInfo localAdvertisementExtInfo = paramAdvertisementInfo.mAdvertisementExtInfo;
-      if ((localAdvertisementExtInfo != null) && (localAdvertisementExtInfo.m == 3))
+      if ((localAdvertisementExtInfo != null) && (localAdvertisementExtInfo.r == 3))
       {
         paramJSONObject2.put("is_transparent", "1");
         break label75;
@@ -112,7 +90,7 @@ public final class SuperMaskExtKt
     if (paramAdvertisementInfo != null)
     {
       paramAdvertisementInfo = paramAdvertisementInfo.mAdvertisementExtInfo;
-      if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.m == 2)) {
+      if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.r == 2)) {
         paramJSONObject2.put("is_transparent", "");
       }
     }
@@ -139,7 +117,7 @@ public final class SuperMaskExtKt
     if (paramAdvertisementInfo != null)
     {
       AdvertisementExtInfo localAdvertisementExtInfo = paramAdvertisementInfo.mAdvertisementExtInfo;
-      if ((localAdvertisementExtInfo != null) && (localAdvertisementExtInfo.m == 3))
+      if ((localAdvertisementExtInfo != null) && (localAdvertisementExtInfo.r == 3))
       {
         paramJSONObject2.put("is_transparent", "1");
         break label72;
@@ -148,7 +126,7 @@ public final class SuperMaskExtKt
     if (paramAdvertisementInfo != null)
     {
       paramAdvertisementInfo = paramAdvertisementInfo.mAdvertisementExtInfo;
-      if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.m == 2)) {
+      if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.r == 2)) {
         paramJSONObject2.put("is_transparent", "");
       }
     }
@@ -176,7 +154,7 @@ public final class SuperMaskExtKt
       }
     }
     if (paramInt == 26) {
-      if (SuperMaskReportMgr.a.a())
+      if (SuperMaskReportMgr.a.b())
       {
         paramJSONObject2.put("is_jump_mc", "2");
         ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "is_jump_mc = 2");
@@ -190,44 +168,6 @@ public final class SuperMaskExtKt
     if (paramJSONObject1 != null) {
       paramJSONObject1.put("click_info_report", paramJSONObject2.toString());
     }
-  }
-  
-  public static final void a(@Nullable MaterialData paramMaterialData)
-  {
-    if (paramMaterialData != null) {}
-    try
-    {
-      localObject1 = new File(paramMaterialData.res_path, "manifest.json");
-      if ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()) || (!((File)localObject1).canRead())) {
-        break label124;
-      }
-      localObject2 = new StringBuffer();
-      FileUtil.a((StringBuffer)localObject2, ((File)localObject1).getPath());
-      localObject1 = ((StringBuffer)localObject2).toString();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "buffer.toString()");
-      localObject2 = new JSONObject((String)localObject1);
-      localObject1 = ((JSONObject)localObject2).optString("animFileName");
-      if (localObject1 == null) {
-        break label154;
-      }
-    }
-    catch (Exception paramMaterialData)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        continue;
-        Object localObject1 = "";
-      }
-    }
-    paramMaterialData.animFileName = ((String)localObject1);
-    paramMaterialData.superMaskType = ((JSONObject)localObject2).optInt("superMaskType", 0);
-    SuperMaskReportMgr.a(SuperMaskReportMgr.a, "updateSuperMaskTypeSuccess", null, 2, null);
-    return;
-    label124:
-    SuperMaskReportMgr.a(SuperMaskReportMgr.a, "dbUpdateNoManifest", null, 2, null);
-    return;
-    SuperMaskReportMgr.a(SuperMaskReportMgr.a, "updateSuperMaskTypeError", null, 2, null);
   }
   
   public static final void a(@NotNull MaterialData paramMaterialData, @Nullable ConcurrentHashMap<String, Object> paramConcurrentHashMap)
@@ -281,6 +221,28 @@ public final class SuperMaskExtKt
     return (paramMaterialData.exists()) && (paramMaterialData.isFile()) && (paramMaterialData.canRead());
   }
   
+  @Nullable
+  public static final JSONObject b(@NotNull AdvertisementInfo paramAdvertisementInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAdvertisementInfo, "$this$findLocalResJson");
+    long l = paramAdvertisementInfo.mAdAid;
+    paramAdvertisementInfo = paramAdvertisementInfo.mAdvertisementExtInfo;
+    if (paramAdvertisementInfo != null)
+    {
+      paramAdvertisementInfo = String.valueOf(paramAdvertisementInfo.o);
+      if (paramAdvertisementInfo != null) {}
+    }
+    else
+    {
+      paramAdvertisementInfo = "";
+    }
+    paramAdvertisementInfo = SuperMaskResMgr.a.a(String.valueOf(l), paramAdvertisementInfo);
+    if (paramAdvertisementInfo != null) {
+      return paramAdvertisementInfo.a();
+    }
+    return null;
+  }
+  
   public static final boolean b(@NotNull MaterialData paramMaterialData)
   {
     Intrinsics.checkParameterIsNotNull(paramMaterialData, "$this$isManifestFileExit");
@@ -288,7 +250,45 @@ public final class SuperMaskExtKt
     return (paramMaterialData.exists()) && (paramMaterialData.isFile()) && (paramMaterialData.canRead());
   }
   
-  public static final boolean c(@Nullable MaterialData paramMaterialData)
+  public static final void c(@Nullable MaterialData paramMaterialData)
+  {
+    if (paramMaterialData != null) {}
+    try
+    {
+      localObject1 = new File(paramMaterialData.res_path, "manifest.json");
+      if ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()) || (!((File)localObject1).canRead())) {
+        break label125;
+      }
+      localObject2 = new StringBuffer();
+      FileUtil.a((StringBuffer)localObject2, ((File)localObject1).getPath());
+      localObject1 = ((StringBuffer)localObject2).toString();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "buffer.toString()");
+      localObject2 = new JSONObject((String)localObject1);
+      localObject1 = ((JSONObject)localObject2).optString("animFileName");
+      if (localObject1 == null) {
+        break label155;
+      }
+    }
+    catch (Exception paramMaterialData)
+    {
+      for (;;)
+      {
+        Object localObject2;
+        continue;
+        Object localObject1 = "";
+      }
+    }
+    paramMaterialData.animFileName = ((String)localObject1);
+    paramMaterialData.superMaskType = ((JSONObject)localObject2).optInt("superMaskType", 0);
+    SuperMaskReportMgr.a(SuperMaskReportMgr.a, "updateSuperMaskTypeSuccess", null, 2, null);
+    return;
+    label125:
+    SuperMaskReportMgr.a(SuperMaskReportMgr.a, "dbUpdateNoManifest", null, 2, null);
+    return;
+    SuperMaskReportMgr.a(SuperMaskReportMgr.a, "updateSuperMaskTypeError", null, 2, null);
+  }
+  
+  public static final boolean d(@Nullable MaterialData paramMaterialData)
   {
     boolean bool = true;
     if (paramMaterialData == null) {
@@ -306,7 +306,7 @@ public final class SuperMaskExtKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.SuperMaskExtKt
  * JD-Core Version:    0.7.0.1
  */

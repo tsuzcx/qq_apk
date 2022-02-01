@@ -12,14 +12,14 @@ class AutoReplyAdapter$6
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter.a(i);
+    int i = this.a.getTextId();
+    this.b.a(i);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyAdapter.6
  * JD-Core Version:    0.7.0.1
  */

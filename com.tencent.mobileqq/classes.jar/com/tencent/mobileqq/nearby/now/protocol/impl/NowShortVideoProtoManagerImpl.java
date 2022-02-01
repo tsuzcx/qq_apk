@@ -45,7 +45,7 @@ public class NowShortVideoProtoManagerImpl
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.7.0");
+      paramReqBody.version.set("8.8.17");
       paramReqBody.original_id.set(this.mApp.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -141,7 +141,7 @@ public class NowShortVideoProtoManagerImpl
       ((oidb_0xada.ReqBody)localObject1).busi_buf.set(ByteStringMicro.copyFrom(((FeedsProtocol.GetMediaDetailReq)localObject2).toByteArray()));
       localObject2 = (INearbyCardManager)this.mApp.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
       PBUInt32Field localPBUInt32Field = ((oidb_0xada.ReqBody)localObject1).buss_id;
-      if (((INearbyCardManager)localObject2).a() > 0L) {
+      if (((INearbyCardManager)localObject2).e() > 0L) {
         i = 0;
       }
       localPBUInt32Field.set(i);
@@ -189,7 +189,7 @@ public class NowShortVideoProtoManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.impl.NowShortVideoProtoManagerImpl
  * JD-Core Version:    0.7.0.1
  */

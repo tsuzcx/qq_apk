@@ -12,9 +12,9 @@ class QWalletIPCModule$1
   
   public void run()
   {
-    String str = this.jdField_a_of_type_AndroidOsBundle.getString("id");
+    String str = this.a.getString("id");
     QWalletIPCModule.1.1 local1 = new QWalletIPCModule.1.1(this, null);
-    IPreloadService localIPreloadService = (IPreloadService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IPreloadService.class, "");
+    IPreloadService localIPreloadService = (IPreloadService)this.c.getRuntimeService(IPreloadService.class, "");
     if (localIPreloadService != null)
     {
       localIPreloadService.getFilePathByResID(str, local1);
@@ -25,7 +25,7 @@ class QWalletIPCModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.ipc.impl.QWalletIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -47,6 +47,11 @@ public class VideoEmbeddedWidgetClient
   private static final int EVENT_MEDIAPLAYER_PREPARED = 5;
   private static final int EVENT_VIDEOSURFACE_SUCC = 3;
   private static final int EVENT_X5SURFACE_SUCC = 2;
+  private static final int MEDIA_INFO_SUPER_BUFFERING_END = 113;
+  private static final int MEDIA_INFO_SUPER_BUFFERING_START = 112;
+  private static final int MEDIA_INFO_SUPER_FIRST_VIDEO_FRAME_RENDERED = 105;
+  private static final int MEDIA_INFO_SUPER_LOOP_END = 108;
+  private static final int MEDIA_INFO_SUPER_LOOP_START = 107;
   public static final int MSG_IS_HLS = 1003;
   public static final int MSG_TIME_UPDATE = 1001;
   public static final int MSG_VIDEO_SURFACE_CREATED = 1002;
@@ -68,9 +73,11 @@ public class VideoEmbeddedWidgetClient
   private int height = -1;
   private boolean hide;
   private int initialTime;
+  private boolean isDrm;
   private volatile Boolean isHls;
   private boolean isOnPageBackGrond = false;
   private boolean isPaused = false;
+  private String licenseUrl;
   private boolean loop;
   private Map<String, String> mAttributes;
   private IMediaPlayer mMediaPlayer;
@@ -85,6 +92,7 @@ public class VideoEmbeddedWidgetClient
   private String objectFit;
   private boolean pauseByNavigate = false;
   private boolean pauseByOpenNative = false;
+  private String provisionUrl;
   private VideoTextureRenderer renderer;
   private StateMachine.State stateCanPlay;
   private StateMachine.State stateInited;
@@ -109,6 +117,7 @@ public class VideoEmbeddedWidgetClient
     this.initialTime = 0;
     this.autoPauseIfNavigate = true;
     this.autoPauseIfOpenNative = true;
+    this.isDrm = false;
     this.filePath = "";
     this.cueFilePath = "";
     this.isHls = null;
@@ -164,6 +173,29 @@ public class VideoEmbeddedWidgetClient
   private IMediaPlayer.OnVideoSizeChangedListener getOnVideoSizeChangedListener()
   {
     return new VideoEmbeddedWidgetClient.4(this);
+  }
+  
+  private String getOskPlayerUrl()
+  {
+    if ((!this.filePath.startsWith("http")) && (!this.filePath.startsWith("https"))) {
+      return ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(this.filePath);
+    }
+    return this.mMediaPlayerUtil.getUrl(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(this.filePath));
+  }
+  
+  private int getSuperMsg(int paramInt)
+  {
+    if (paramInt == 105) {
+      return 3;
+    }
+    if (paramInt == 112) {
+      return 701;
+    }
+    int i = paramInt;
+    if (paramInt == 113) {
+      i = 702;
+    }
+    return i;
   }
   
   private void handleIsHLS()
@@ -240,16 +272,20 @@ public class VideoEmbeddedWidgetClient
         this.hasStoped = false;
         try
         {
-          if ((!this.filePath.startsWith("http")) && (!this.filePath.startsWith("https"))) {
+          if (this.mMediaPlayer.isSuperPlayer()) {
             localObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(this.filePath);
           } else {
-            localObject = this.mMediaPlayerUtil.getUrl(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(this.filePath));
+            localObject = getOskPlayerUrl();
           }
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("handleOperateXWebVideo playUrl : ");
           localStringBuilder.append((String)localObject);
           QMLog.d("miniapp-embedded", localStringBuilder.toString());
-          this.mMediaPlayer.setDataSource((String)localObject);
+          if (!this.isDrm) {
+            this.mMediaPlayer.setDataSource((String)localObject);
+          } else {
+            this.mMediaPlayer.setDrmDataSource((String)localObject, this.provisionUrl, this.licenseUrl);
+          }
           this.handler.sendEmptyMessage(1003);
           setCurrState(this.stateVideoSurfaceCreated);
           this.mMediaPlayer.prepareAsync();
@@ -389,6 +425,34 @@ public class VideoEmbeddedWidgetClient
     addStateTransfer(new StateMachine.StateTransfer(this).from(this.stateX5SurfaceCreated).next(this.stateVideoSurfaceCreated).registEvent(Integer.valueOf(3)));
     addStateTransfer(new StateMachine.StateTransfer(this).from(this.stateVideoSurfaceCreated).next(this.stateCanPlay).registEvent(Integer.valueOf(5)));
     setCurrState(this.stateInitial);
+  }
+  
+  private void sendBufferUpdateToJs()
+  {
+    if ((this.callBackWebview != null) && (!this.isPaused)) {
+      try
+      {
+        int i = this.mMediaPlayer.getBufferPercent();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("data", this.data);
+        localJSONObject.put("buffered", i);
+        localJSONObject.put("videoPlayerId", this.viewId);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("superPlayer buffer percent is ");
+        localStringBuilder.append(i);
+        QMLog.d("miniapp-embedded", localStringBuilder.toString());
+        evaluateSubscribeJS("onXWebVideoProgress", localJSONObject.toString(), this.curPageWebviewId);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("evaluateSubcribeJS onXWebVideoProgress = ");
+        localStringBuilder.append(localJSONObject.toString());
+        QMLog.d("miniapp-embedded", localStringBuilder.toString());
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QMLog.e("miniapp-embedded", "VIDEO_EVENT_PROGRESS  error.", localThrowable);
+      }
+    }
   }
   
   private void sendEndToJs()
@@ -725,6 +789,9 @@ public class VideoEmbeddedWidgetClient
         this.initialTime = paramJSONObject.optInt("initialTime", this.initialTime);
         this.autoPauseIfNavigate = paramJSONObject.optBoolean("autoPauseIfNavigate", this.autoPauseIfNavigate);
         this.autoPauseIfOpenNative = paramJSONObject.optBoolean("autoPauseIfOpenNative", this.autoPauseIfOpenNative);
+        this.provisionUrl = paramJSONObject.optString("provisionUrl");
+        this.licenseUrl = paramJSONObject.optString("licenseUrl");
+        this.isDrm = paramJSONObject.optBoolean("isDrm", false);
         if (paramJSONObject.has("filePath")) {
           this.filePath = paramJSONObject.optString("filePath");
         }
@@ -743,16 +810,20 @@ public class VideoEmbeddedWidgetClient
               this.mMediaPlayer.stop();
             }
             this.mMediaPlayer.reset();
-            if ((!this.filePath.startsWith("http")) && (!this.filePath.startsWith("https"))) {
+            if (this.mMediaPlayer.isSuperPlayer()) {
               localObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(this.filePath);
             } else {
-              localObject = this.mMediaPlayerUtil.getUrl(((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(this.filePath));
+              localObject = getOskPlayerUrl();
             }
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("handleUpdateXWebVideo playUrl : ");
             localStringBuilder.append((String)localObject);
             QMLog.d("miniapp-embedded", localStringBuilder.toString());
-            this.mMediaPlayer.setDataSource((String)localObject);
+            if (!this.isDrm) {
+              this.mMediaPlayer.setDataSource((String)localObject);
+            } else {
+              this.mMediaPlayer.setDrmDataSource((String)localObject, this.provisionUrl, this.licenseUrl);
+            }
             this.handler.sendEmptyMessage(1003);
             this.mMediaPlayer.prepareAsync();
           }
@@ -1147,7 +1218,7 @@ public class VideoEmbeddedWidgetClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

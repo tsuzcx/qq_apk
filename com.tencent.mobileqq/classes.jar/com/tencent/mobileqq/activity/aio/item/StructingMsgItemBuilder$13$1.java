@@ -9,14 +9,14 @@ class StructingMsgItemBuilder$13$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.13.1
  * JD-Core Version:    0.7.0.1
  */

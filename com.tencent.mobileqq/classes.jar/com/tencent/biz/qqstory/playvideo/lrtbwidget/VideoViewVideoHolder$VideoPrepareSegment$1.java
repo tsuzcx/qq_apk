@@ -16,7 +16,7 @@ class VideoViewVideoHolder$VideoPrepareSegment$1
     if (this.a.isCanceled()) {
       return false;
     }
-    SLog.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramIVideoView)), Integer.valueOf(paramInt), paramObject);
+    SLog.a(this.a.b.a, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramIVideoView)), Integer.valueOf(paramInt), paramObject);
     if (paramInt != 1) {
       if (paramInt != 2)
       {
@@ -29,40 +29,40 @@ class VideoViewVideoHolder$VideoPrepareSegment$1
               if (paramInt != 39) {
                 break label288;
               }
-              SLog.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
+              SLog.d(this.a.b.a, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
               break label288;
             }
-            VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
+            VideoViewVideoHolder.e(this.a.b, ((Integer)paramObject).intValue());
             break label288;
           }
         }
         else
         {
-          VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
-          SLog.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
-          this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
+          VideoViewVideoHolder.g(this.a.b, (int)(VideoViewVideoHolder.g(this.a.b) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.h(this.a.b))));
+          SLog.d(this.a.b.a, "end buffering, hide loading view");
+          this.a.b.s.setVisibility(8);
           break label288;
         }
       }
       else
       {
-        SLog.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
-        VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
-        VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
-        VideoViewVideoHolder.a(this.a.a, 8);
-        this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+        SLog.d(this.a.b.a, "start buffering, show loading view");
+        VideoViewVideoHolder.f(this.a.b, VideoViewVideoHolder.f(this.a.b) + 1);
+        VideoViewVideoHolder.a(this.a.b, SystemClock.uptimeMillis());
+        VideoViewVideoHolder.a(this.a.b, 8);
+        this.a.b.s.setVisibility(0);
         break label288;
       }
     }
-    VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
+    VideoViewVideoHolder.a(this.a.b, 0L, "rendering-Start");
     label288:
-    VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramIVideoView, paramInt, paramObject);
+    VideoViewVideoHolder.i(this.a.b).a(this.a.b, paramIVideoView, paramInt, paramObject);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment.1
  * JD-Core Version:    0.7.0.1
  */

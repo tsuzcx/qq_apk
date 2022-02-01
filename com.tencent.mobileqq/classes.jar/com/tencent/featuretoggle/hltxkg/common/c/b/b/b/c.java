@@ -9,8 +9,8 @@ final class c
   
   public final void run()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    byte[] arrayOfByte2 = this.jdField_a_of_type_ArrayOfByte;
+    String str = this.a;
+    byte[] arrayOfByte2 = this.b;
     byte[] arrayOfByte1;
     if (!com.tencent.featuretoggle.hltxkg.common.e.c.a(str))
     {
@@ -21,14 +21,14 @@ final class c
     {
       e.d();
       str = e.b();
-      arrayOfByte1 = b.a(this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCBBBB).a(str);
+      arrayOfByte1 = b.a(this.c).a(str);
     }
     com.tencent.featuretoggle.hltxkg.common.c.b.b.c.c().e().a(str, arrayOfByte1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.c.b.b.b.c
  * JD-Core Version:    0.7.0.1
  */

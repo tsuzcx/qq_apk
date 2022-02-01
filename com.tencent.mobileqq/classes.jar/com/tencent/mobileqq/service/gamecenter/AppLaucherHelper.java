@@ -32,94 +32,53 @@ import oicq.wlogin_sdk.tools.util;
 
 public class AppLaucherHelper
 {
-  protected static long a = 0L;
   protected static boolean a = false;
-  protected static String b = "";
-  protected int a;
-  protected Handler a;
-  protected String a;
-  protected HashMap<String, String> a;
-  protected NewIntent a;
-  protected Handler b;
-  protected boolean b;
-  
-  public AppLaucherHelper()
-  {
-    this.jdField_a_of_type_MqqAppNewIntent = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_b_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_Boolean = false;
-  }
+  protected static long i = 0L;
+  protected static String j = "";
+  protected NewIntent b = null;
+  protected Handler c = null;
+  protected Handler d = null;
+  protected String e;
+  protected int f = 0;
+  protected HashMap<String, String> g = new HashMap();
+  protected boolean h = false;
   
   public static int a(String paramString)
   {
     if (paramString.contains("$OPID$")) {
-      j = 1;
+      m = 1;
     } else {
-      j = 0;
+      m = 0;
     }
-    int i = j;
+    int k = m;
     if (paramString.contains("$AT$")) {
-      i = j | 0x2;
+      k = m | 0x2;
     }
-    int j = i;
+    int m = k;
     if (paramString.contains("$PT$")) {
-      j = i | 0x4;
+      m = k | 0x4;
     }
-    i = j;
+    k = m;
     if (paramString.contains("$PF$")) {
-      i = j | 0x40;
+      k = m | 0x40;
     }
-    j = i;
+    m = k;
     if (paramString.contains("$ESK$")) {
-      j = i | 0x80;
+      m = k | 0x80;
     }
-    return j;
-  }
-  
-  public static Bundle a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    if (TextUtils.isEmpty(paramString)) {
-      return localBundle;
-    }
-    paramString = paramString.split("&");
-    if (paramString != null)
-    {
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramString[i];
-        int k = localObject.indexOf('=');
-        if (k != -1) {
-          try
-          {
-            localBundle.putString(localObject.substring(0, k), localObject.substring(k + 1));
-          }
-          catch (Exception localException)
-          {
-            QLog.d("AppLaucherHelper", 2, localException.getMessage(), localException);
-          }
-        }
-        i += 1;
-      }
-    }
-    return localBundle;
+    return m;
   }
   
   public static void a()
   {
-    jdField_b_of_type_JavaLangString = "";
+    j = "";
   }
   
   private void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     local4 = new AppLaucherHelper.4(this, System.currentTimeMillis(), paramString3, paramContext, paramInt);
-    if (this.jdField_a_of_type_MqqAppNewIntent == null) {
-      this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(paramContext, ProtoServlet.class);
+    if (this.b == null) {
+      this.b = new NewIntent(paramContext, ProtoServlet.class);
     }
     localAuthorizeRequest = new FastAuthorize.AuthorizeRequest();
     l2 = 0L;
@@ -142,14 +101,14 @@ public class AppLaucherHelper
         paramString1 = Build.DISPLAY;
         localAuthorizeRequest.os.set(paramString1);
         localAuthorizeRequest.skey.set(paramString4);
-        int i = a(paramString2);
-        if (i != 0) {
+        int k = a(paramString2);
+        if (k != 0) {
           break label188;
         }
-        AppUtil.a(paramContext, paramString3, a(this.jdField_a_of_type_JavaLangString), paramInt);
-        jdField_a_of_type_Boolean = false;
+        AppUtil.a(paramContext, paramString3, b(this.e), paramInt);
+        a = false;
         return;
-        localAuthorizeRequest.flags.set(i);
+        localAuthorizeRequest.flags.set(k);
         paramString1 = str;
         try
         {
@@ -189,23 +148,23 @@ public class AppLaucherHelper
           break label320;
         }
         if (!TextUtils.isEmpty(paramString1)) {
-          break label368;
+          break label367;
         }
         if (!QLog.isColorLevel()) {
-          break label347;
+          break label346;
         }
         QLog.d(getClass().getSimpleName(), 2, "no sign");
-        jdField_a_of_type_Boolean = false;
-        AppUtil.a(paramContext, paramString3, a(this.jdField_a_of_type_JavaLangString), paramInt);
+        a = false;
+        AppUtil.a(paramContext, paramString3, b(this.e), paramInt);
         return;
         localAuthorizeRequest.apk_sign.set(paramString1);
-        this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
+        this.b.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
         try
         {
-          this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localAuthorizeRequest.toByteArray());
-          this.jdField_a_of_type_MqqAppNewIntent.setObserver(local4);
-          paramAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 2000L);
+          this.b.putExtra("data", localAuthorizeRequest.toByteArray());
+          this.b.setObserver(local4);
+          paramAppInterface.startServlet(this.b);
+          this.c.sendEmptyMessageDelayed(0, 2000L);
           return;
         }
         catch (Exception paramAppInterface)
@@ -213,7 +172,7 @@ public class AppLaucherHelper
           if (QLog.isColorLevel()) {
             QLog.d(getClass().getSimpleName(), 2, paramAppInterface.getMessage());
           }
-          jdField_a_of_type_Boolean = false;
+          a = false;
           return;
         }
         localException = localException;
@@ -230,22 +189,53 @@ public class AppLaucherHelper
     localAuthorizeRequest.uin.set(l1);
   }
   
+  public static Bundle b(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    if (TextUtils.isEmpty(paramString)) {
+      return localBundle;
+    }
+    paramString = paramString.split("&");
+    if (paramString != null)
+    {
+      int m = paramString.length;
+      int k = 0;
+      while (k < m)
+      {
+        Object localObject = paramString[k];
+        int n = localObject.indexOf('=');
+        if (n != -1) {
+          try
+          {
+            localBundle.putString(localObject.substring(0, n), localObject.substring(n + 1));
+          }
+          catch (Exception localException)
+          {
+            QLog.d("AppLaucherHelper", 2, localException.getMessage(), localException);
+          }
+        }
+        k += 1;
+      }
+    }
+    return localBundle;
+  }
+  
   public boolean a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       return false;
     }
     if (QLog.isColorLevel()) {
       QLog.d(getClass().getSimpleName(), 2, "lauchApp");
     }
-    jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new AppLaucherHelper.3(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
+    a = true;
+    if (this.c == null) {
+      this.c = new AppLaucherHelper.3(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
     }
     if (paramString2.startsWith("?")) {
-      this.jdField_a_of_type_JavaLangString = paramString2.substring(1);
+      this.e = paramString2.substring(1);
     } else {
-      this.jdField_a_of_type_JavaLangString = paramString2;
+      this.e = paramString2;
     }
     a(paramAppInterface, paramContext, paramString1, paramString2, paramString3, ((TicketManager)paramAppInterface.getManager(2)).getSkey(paramAppInterface.getAccount()), paramInt);
     return true;
@@ -253,7 +243,7 @@ public class AppLaucherHelper
   
   public boolean a(String paramString1, Context paramContext, String paramString2, AppInterface paramAppInterface, String paramString3, String paramString4, int paramInt, String paramString5)
   {
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       return false;
     }
     if (QLog.isColorLevel()) {
@@ -262,12 +252,12 @@ public class AppLaucherHelper
     Long localLong;
     if (!TextUtils.isEmpty(paramString2))
     {
-      if (!AuthorizeConfig.a().h(paramString2)) {
+      if (!AuthorizeConfig.a().o(paramString2)) {
         return false;
       }
-      jdField_a_of_type_Boolean = true;
-      if (this.jdField_b_of_type_AndroidOsHandler == null) {
-        this.jdField_b_of_type_AndroidOsHandler = new AppLaucherHelper.1(this);
+      a = true;
+      if (this.d == null) {
+        this.d = new AppLaucherHelper.1(this);
       }
       localLong = Long.valueOf(0L);
     }
@@ -305,14 +295,14 @@ public class AppLaucherHelper
     paramString5 = util.getPkgSigFromApkName(paramContext, paramString4);
     paramString3.GetA1WithA1(paramAppInterface.getAccount(), 16L, 16L, paramString4.getBytes(), 1L, paramString2.longValue(), l1, "5.2".getBytes(), paramString5, new WUserSigInfo(), new WFastLoginInfo());
     paramString3.SetListener(new AppLaucherHelper.2(this, paramString1, paramString3, paramInt, paramContext));
-    this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
+    this.d.sendEmptyMessageDelayed(0, 10000L);
     return true;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.gamecenter.AppLaucherHelper
  * JD-Core Version:    0.7.0.1
  */

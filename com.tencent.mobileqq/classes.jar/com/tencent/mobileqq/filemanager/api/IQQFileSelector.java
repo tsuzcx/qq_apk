@@ -53,11 +53,13 @@ public abstract interface IQQFileSelector
   
   public abstract void openMyFile(Activity paramActivity);
   
+  public abstract void openMyFileBySchema(Activity paramActivity);
+  
   public abstract void startFM(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.IQQFileSelector
  * JD-Core Version:    0.7.0.1
  */

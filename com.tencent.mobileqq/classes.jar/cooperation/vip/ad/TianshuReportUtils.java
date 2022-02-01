@@ -26,15 +26,15 @@ public class TianshuReportUtils
         localStringBuilder.append("_");
         localStringBuilder.append(l);
         localTianShuReportData.b = localStringBuilder.toString();
-        localTianShuReportData.d = paramInt;
-        localTianShuReportData.jdField_e_of_type_Int = 1;
-        localTianShuReportData.g = paramString1;
-        localTianShuReportData.jdField_a_of_type_Long = l;
-        localTianShuReportData.jdField_a_of_type_Int = 1;
-        localTianShuReportData.jdField_e_of_type_JavaLangString = paramString3;
-        localTianShuReportData.f = paramString4;
-        localTianShuReportData.i = "";
-        localTianShuReportData.l = paramString2;
+        localTianShuReportData.p = paramInt;
+        localTianShuReportData.q = 1;
+        localTianShuReportData.h = paramString1;
+        localTianShuReportData.o = l;
+        localTianShuReportData.c = 1;
+        localTianShuReportData.f = paramString3;
+        localTianShuReportData.g = paramString4;
+        localTianShuReportData.j = "";
+        localTianShuReportData.s = paramString2;
         TianShuManager.getInstance().report(localTianShuReportData);
         if (QLog.isDevelopLevel())
         {
@@ -89,7 +89,7 @@ public class TianshuReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuReportUtils
  * JD-Core Version:    0.7.0.1
  */

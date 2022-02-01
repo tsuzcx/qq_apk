@@ -18,51 +18,43 @@ import java.lang.ref.WeakReference;
 public class FloatViewSkin
   extends SkinDrawable
 {
-  private static FloatViewSkin jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeFloatViewSkin;
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new FloatViewSkin.2(this);
-  SimpleUIObserver jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIObserver = new FloatViewSkin.1(this);
-  private QuickUpdateListener jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQuickUpdateListener = new FloatViewSkin.3(this);
-  private volatile int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean c = false;
+  private static FloatViewSkin g;
+  SimpleUIObserver a = new FloatViewSkin.1(this);
+  BusinessObserver b = new FloatViewSkin.2(this);
+  private String h = "";
+  private int i = 0;
+  private View j;
+  private boolean k = false;
+  private volatile int l = 0;
+  private QuickUpdateListener m = new FloatViewSkin.3(this);
   
   public static FloatViewSkin a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeFloatViewSkin == null) {
+    if (g == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeFloatViewSkin == null)
+        if (g == null)
         {
-          jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeFloatViewSkin = new FloatViewSkin();
-          ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeFloatViewSkin.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
-          ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeFloatViewSkin.jdField_a_of_type_ComTencentMobileqqSimpleuiSimpleUIObserver);
+          g = new FloatViewSkin();
+          ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(g.b);
+          ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).addObserver(g.a);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeFloatViewSkin;
+    return g;
   }
   
-  private void c()
+  private void f()
   {
     SkinDrawable.IVasSkinChangeCallback localIVasSkinChangeCallback;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    if (this.f == null) {
       localIVasSkinChangeCallback = null;
     } else {
-      localIVasSkinChangeCallback = (SkinDrawable.IVasSkinChangeCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localIVasSkinChangeCallback = (SkinDrawable.IVasSkinChangeCallback)this.f.get();
     }
     if (localIVasSkinChangeCallback != null) {
-      localIVasSkinChangeCallback.l();
-    }
-  }
-  
-  public void a()
-  {
-    IApolloExtensionHandler localIApolloExtensionHandler = (IApolloExtensionHandler)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
-    if (localIApolloExtensionHandler != null) {
-      localIApolloExtensionHandler.c();
+      localIVasSkinChangeCallback.n();
     }
   }
   
@@ -70,47 +62,47 @@ public class FloatViewSkin
   {
     if (paramInt > 0)
     {
-      this.jdField_b_of_type_Int = paramInt;
+      this.l = paramInt;
       a(true);
-      MusicPlayerCallback.sInstance.download(this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQuickUpdateListener, false);
+      MusicPlayerCallback.sInstance.download(this.l, this.m, false);
       return;
     }
-    this.jdField_b_of_type_Int = 0;
+    this.l = 0;
     a(false);
-    a(null);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
+    b(null);
+    if (this.j != null) {
       ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.5(this));
     }
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.j = paramView;
   }
   
   public void a(View paramView, String paramString, int paramInt)
   {
     if (paramView != null)
     {
-      if (SimpleUIUtil.a()) {
+      if (SimpleUIUtil.e()) {
         return;
       }
-      a();
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_b_of_type_JavaLangString = paramString;
-      if (this.jdField_a_of_type_Boolean) {
+      c();
+      this.j = paramView;
+      this.i = paramInt;
+      this.h = paramString;
+      if (this.d) {
         b(paramView);
       }
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("enter uin:");
-        paramView.append(this.jdField_b_of_type_JavaLangString);
+        paramView.append(this.h);
         paramView.append("  type:");
-        paramView.append(this.jdField_a_of_type_Int);
+        paramView.append(this.i);
         paramView.append(" mIsUserSkin:");
-        paramView.append(this.jdField_a_of_type_Boolean);
+        paramView.append(this.d);
         QLog.i("FloatViewSkin", 2, paramView.toString());
       }
     }
@@ -118,33 +110,10 @@ public class FloatViewSkin
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.d != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      c();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Int > 0;
-  }
-  
-  public void b()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
-    if (localObject != null) {
-      ((View)localObject).post(new FloatViewSkin.4(this));
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("leave uin:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject).append("  type:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      QLog.i("FloatViewSkin", 2, ((StringBuilder)localObject).toString());
+      this.d = paramBoolean;
+      f();
     }
   }
   
@@ -154,45 +123,76 @@ public class FloatViewSkin
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("setMusicBarSkin uin:");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.h);
       localStringBuilder.append("  type:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.i);
       localStringBuilder.append(" mIsUserSkin:");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d);
       QLog.i("FloatViewSkin", 2, localStringBuilder.toString());
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setMusicBarSkin mIsShowSkin:");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.k);
     localStringBuilder.append("  mIsUserSkin:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     QLog.i("FloatViewSkin", 1, localStringBuilder.toString());
     if (paramView != null)
     {
-      if (!this.c) {
+      if (!this.k) {
         return;
       }
-      if (SimpleUIUtil.a()) {
+      if (SimpleUIUtil.e()) {
         a(false);
       } else {
         a(true);
       }
       paramView = paramView.getRootView();
-      a(paramView, 2131371645, 2130844792, "qq_aio_listentogether_lyrics_music_point@3x.png");
-      b(paramView, 2131371617, 2130844786, "qq_aio_listentogether_lyrics_music_bg@3x.png");
-      b(paramView, 2131371651, 2130844791, "qq_aio_listentogether_lyrics_music_dot@3x.png");
-      b(paramView, 2131364719, 2130844790, "qq_aio_listentogether_lyrics_music_close@3x.png");
+      a(paramView, 2131439065, 2130846226, "qq_aio_listentogether_lyrics_music_point@3x.png");
+      b(paramView, 2131439036, 2130846220, "qq_aio_listentogether_lyrics_music_bg@3x.png");
+      b(paramView, 2131439072, 2130846225, "qq_aio_listentogether_lyrics_music_dot@3x.png");
+      b(paramView, 2131430825, 2130846224, "qq_aio_listentogether_lyrics_music_close@3x.png");
     }
   }
   
-  public boolean n_()
+  public boolean b()
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Int != 0);
+    return this.l > 0;
+  }
+  
+  public void c()
+  {
+    IApolloExtensionHandler localIApolloExtensionHandler = (IApolloExtensionHandler)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
+    if (localIApolloExtensionHandler != null) {
+      localIApolloExtensionHandler.d();
+    }
+  }
+  
+  public void d()
+  {
+    Object localObject = this.j;
+    if (localObject != null) {
+      ((View)localObject).post(new FloatViewSkin.4(this));
+    }
+    this.j = null;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("leave uin:");
+      ((StringBuilder)localObject).append(this.h);
+      ((StringBuilder)localObject).append("  type:");
+      ((StringBuilder)localObject).append(this.i);
+      QLog.i("FloatViewSkin", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public boolean du_()
+  {
+    return (this.d) && (this.e) && (this.l != 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class PagOverlayEffectProxy
       b(paramPagOverlayEffect, paramSendMsgTavEvent);
       return;
     }
-    paramPagOverlayEffect.a(ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray("pagFiles"), TAVSticker.class));
+    paramPagOverlayEffect.a(ObjConvector.a(paramSendMsgTavEvent.c().getJSONArray("pagFiles"), TAVSticker.class));
     a();
   }
   
@@ -26,7 +26,7 @@ class PagOverlayEffectProxy
       c();
       return;
     }
-    c(ObjConvector.c(paramPagOverlayEffect.a()));
+    c(ObjConvector.c(paramPagOverlayEffect.b()));
   }
   
   void a(ObjCreateTavEvent paramObjCreateTavEvent)
@@ -38,7 +38,7 @@ class PagOverlayEffectProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof PagOverlayEffect)) {
       return;
     }
@@ -47,7 +47,7 @@ class PagOverlayEffectProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagOverlayEffectProxy
  * JD-Core Version:    0.7.0.1
  */

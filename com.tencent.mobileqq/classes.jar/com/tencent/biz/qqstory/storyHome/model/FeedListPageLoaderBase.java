@@ -17,21 +17,17 @@ import java.util.List;
 public abstract class FeedListPageLoaderBase<T extends FeedListPageLoaderBase.FeedData>
   extends INetPageLoader
 {
-  public BasicLocation a;
-  protected FeedListPageLoaderBase.FeedIdListCache a;
-  protected FeedListPageLoaderBase.OnFeedItemPageLoadListener<T> a;
-  private Stream<T> a;
+  protected FeedListPageLoaderBase.FeedIdListCache g = new FeedListPageLoaderBase.FeedIdListCache();
+  protected FeedListPageLoaderBase.OnFeedItemPageLoadListener<T> h;
+  public BasicLocation i;
+  private Stream<T> j;
   
-  public FeedListPageLoaderBase()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache = new FeedListPageLoaderBase.FeedIdListCache();
-  }
+  public FeedListPageLoaderBase() {}
   
   public FeedListPageLoaderBase(@NonNull FeedListPageLoaderBase.OnFeedItemPageLoadListener<T> paramOnFeedItemPageLoadListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache = new FeedListPageLoaderBase.FeedIdListCache();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$OnFeedItemPageLoadListener = paramOnFeedItemPageLoadListener;
-    AssertUtils.checkNotNull(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$OnFeedItemPageLoadListener);
+    this.h = paramOnFeedItemPageLoadListener;
+    AssertUtils.checkNotNull(this.h);
   }
   
   private void d()
@@ -40,43 +36,43 @@ public abstract class FeedListPageLoaderBase<T extends FeedListPageLoaderBase.Fe
     Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
   }
   
-  protected abstract T a();
-  
-  protected abstract T a(ErrorMessage paramErrorMessage);
-  
-  public FeedListPageLoaderBase.FeedIdListCache a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache;
-  }
-  
-  protected abstract JobSegment<FeedListPageLoaderBase.GetFeedIdListResult, T> a();
-  
   protected abstract JobSegment<Integer, FeedListPageLoaderBase.GetFeedIdListResult> a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache);
-  
-  public void a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache = paramFeedIdListCache;
-    SLog.a("Q.qqstory.home.position", "restore last time cache:%s", paramFeedIdListCache);
-  }
   
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
     super.a(paramTencentLocation, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a();
+    this.g.a();
     d();
   }
   
   protected abstract void a(List<String> paramList, boolean paramBoolean);
   
-  public T b()
+  protected abstract T b(ErrorMessage paramErrorMessage);
+  
+  public void b(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
   {
-    return a();
+    this.g = paramFeedIdListCache;
+    SLog.a("Q.qqstory.home.position", "restore last time cache:%s", paramFeedIdListCache);
   }
   
   public void c()
   {
     super.c();
     d();
+  }
+  
+  protected abstract JobSegment<FeedListPageLoaderBase.GetFeedIdListResult, T> e();
+  
+  protected abstract T f();
+  
+  public FeedListPageLoaderBase.FeedIdListCache g()
+  {
+    return this.g;
+  }
+  
+  public T h()
+  {
+    return f();
   }
 }
 

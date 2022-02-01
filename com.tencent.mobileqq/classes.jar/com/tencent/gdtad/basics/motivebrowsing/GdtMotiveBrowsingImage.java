@@ -22,39 +22,13 @@ import org.jetbrains.annotations.Nullable;
 public final class GdtMotiveBrowsingImage
   extends View
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)GdtMotiveBrowsingImage.translate.2.INSTANCE);
+  private GradientDrawable a;
+  private Drawable b;
+  private final Lazy c = LazyKt.lazy((Function0)GdtMotiveBrowsingImage.translate.2.INSTANCE);
   
   public GdtMotiveBrowsingImage(@NotNull Context paramContext)
   {
     super(paramContext);
-  }
-  
-  private final int a()
-  {
-    return ((Number)this.jdField_a_of_type_KotlinLazy.getValue()).intValue();
-  }
-  
-  private final Drawable a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable == null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
-      localGradientDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-      if (localGradientDrawable == null) {
-        Intrinsics.throwNpe();
-      }
-      localGradientDrawable.setStroke(ViewUtils.b(1.0F), Color.parseColor("#E5E5E5"));
-      localGradientDrawable.setCornerRadius(ViewUtils.b(18.0F));
-      int i = ViewUtils.b(33.0F);
-      localGradientDrawable.setBounds(0, 0, i, i);
-    }
-    GradientDrawable localGradientDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-    if (localGradientDrawable == null) {
-      Intrinsics.throwNpe();
-    }
-    return (Drawable)localGradientDrawable;
   }
   
   private final Drawable a(@NotNull Resources paramResources, @DrawableRes int paramInt)
@@ -70,25 +44,51 @@ public final class GdtMotiveBrowsingImage
     return paramResources;
   }
   
-  private final Drawable b()
+  private final Drawable getCircleDrawable()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+    if (this.a == null)
+    {
+      this.a = new GradientDrawable();
+      localGradientDrawable = this.a;
+      if (localGradientDrawable == null) {
+        Intrinsics.throwNpe();
+      }
+      localGradientDrawable.setStroke(ViewUtils.dpToPx(1.0F), Color.parseColor("#E5E5E5"));
+      localGradientDrawable.setCornerRadius(ViewUtils.dpToPx(18.0F));
+      int i = ViewUtils.dpToPx(33.0F);
+      localGradientDrawable.setBounds(0, 0, i, i);
+    }
+    GradientDrawable localGradientDrawable = this.a;
+    if (localGradientDrawable == null) {
+      Intrinsics.throwNpe();
+    }
+    return (Drawable)localGradientDrawable;
+  }
+  
+  private final Drawable getImageDrawable()
+  {
+    if (this.b == null)
     {
       localObject = getResources();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "resources");
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a((Resources)localObject, 2130840267);
-      int i = ViewUtils.b(18.0F);
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      this.b = a((Resources)localObject, 2130840585);
+      int i = ViewUtils.dpToPx(18.0F);
+      localObject = this.b;
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
       ((Drawable)localObject).setBounds(0, 0, i, i);
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = this.b;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     return localObject;
+  }
+  
+  private final int getTranslate()
+  {
+    return ((Number)this.c.getValue()).intValue();
   }
   
   protected void onDraw(@Nullable Canvas paramCanvas)
@@ -96,17 +96,17 @@ public final class GdtMotiveBrowsingImage
     super.onDraw(paramCanvas);
     if (paramCanvas != null)
     {
-      a().draw(paramCanvas);
+      getCircleDrawable().draw(paramCanvas);
       paramCanvas.save();
-      paramCanvas.translate(a(), a());
-      b().draw(paramCanvas);
+      paramCanvas.translate(getTranslate(), getTranslate());
+      getImageDrawable().draw(paramCanvas);
       paramCanvas.restore();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingImage
  * JD-Core Version:    0.7.0.1
  */

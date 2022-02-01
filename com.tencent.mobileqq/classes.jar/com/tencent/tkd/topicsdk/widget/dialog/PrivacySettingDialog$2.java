@@ -16,13 +16,13 @@ final class PrivacySettingDialog$2
   {
     paramDialogInterface = this.a.a();
     if (paramDialogInterface != null) {
-      paramDialogInterface = (Unit)paramDialogInterface.invoke(Integer.valueOf(PrivacySettingDialog.a(this.a)));
+      paramDialogInterface = (Unit)paramDialogInterface.invoke(Integer.valueOf(PrivacySettingDialog.b(this.a)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.PrivacySettingDialog.2
  * JD-Core Version:    0.7.0.1
  */

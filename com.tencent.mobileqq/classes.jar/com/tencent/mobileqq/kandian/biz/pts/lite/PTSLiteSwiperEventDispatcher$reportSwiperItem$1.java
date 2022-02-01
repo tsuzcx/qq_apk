@@ -19,14 +19,14 @@ final class PTSLiteSwiperEventDispatcher$reportSwiperItem$1
     while (localIterator.hasNext())
     {
       PTSLiteSwiperEventDispatcher.ItemExposureData localItemExposureData = (PTSLiteSwiperEventDispatcher.ItemExposureData)((Map.Entry)localIterator.next()).getValue();
-      PTSLiteSwiperEventDispatcher.a(this.this$0, localItemExposureData.a(), localItemExposureData.a(), localItemExposureData.b());
+      PTSLiteSwiperEventDispatcher.a(this.this$0, localItemExposureData.a(), localItemExposureData.b(), localItemExposureData.c());
     }
     PTSLiteSwiperEventDispatcher.a(this.this$0).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteSwiperEventDispatcher.reportSwiperItem.1
  * JD-Core Version:    0.7.0.1
  */

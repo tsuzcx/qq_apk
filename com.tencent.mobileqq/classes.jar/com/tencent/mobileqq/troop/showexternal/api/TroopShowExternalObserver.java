@@ -7,27 +7,27 @@ import java.util.List;
 public class TroopShowExternalObserver
   implements BusinessObserver
 {
-  public static final int a;
-  public static final int b;
+  private static int a;
   public static final int c;
-  private static int d;
+  public static final int d;
+  public static final int e;
   
   static
   {
-    int i = d;
-    d = i + 1;
-    a = i;
-    i = d;
-    d = i + 1;
-    b = i;
-    i = d;
-    d = i + 1;
+    int i = a;
+    a = i + 1;
     c = i;
+    i = a;
+    a = i + 1;
+    d = i;
+    i = a;
+    a = i + 1;
+    e = i;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != b) {
+    if (paramInt != d) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -39,7 +39,7 @@ public class TroopShowExternalObserver
   
   private void b(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != c) {
+    if (paramInt != e) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -51,7 +51,7 @@ public class TroopShowExternalObserver
   
   private void c(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != a) {
+    if (paramInt != c) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -83,7 +83,7 @@ public class TroopShowExternalObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.showexternal.api.TroopShowExternalObserver
  * JD-Core Version:    0.7.0.1
  */

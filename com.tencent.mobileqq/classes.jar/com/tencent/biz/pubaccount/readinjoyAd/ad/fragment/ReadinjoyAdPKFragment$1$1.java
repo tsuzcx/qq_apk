@@ -11,13 +11,13 @@ class ReadinjoyAdPKFragment$1$1
   
   public void run()
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ReadinjoyAdPKFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdFragmentReadinjoyAdPKFragment$1.this$0).setBackgroundDrawable(localBitmapDrawable);
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a);
+    ReadinjoyAdPKFragment.b(this.b.this$0).setBackgroundDrawable(localBitmapDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdPKFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

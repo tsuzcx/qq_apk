@@ -14,7 +14,7 @@ class DbCacheService$1
       if ((paramIDBManagerWrapper instanceof DbCacheManager))
       {
         paramIDBManagerWrapper = (DbCacheManager)paramIDBManagerWrapper;
-        DbCacheService.a(this.a).remove(paramIDBManagerWrapper.b());
+        DbCacheService.a(this.a).remove(paramIDBManagerWrapper.c());
       }
       return;
     }
@@ -22,7 +22,7 @@ class DbCacheService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.DbCacheService.1
  * JD-Core Version:    0.7.0.1
  */

@@ -63,7 +63,7 @@ public class RecentItemChatMsgBaseData
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
     int i = this.mUser.getType();
     boolean bool2 = false;
@@ -103,7 +103,7 @@ public class RecentItemChatMsgBaseData
   {
     dealStatus(paramBaseQQAppInterface);
     dealDraft(paramBaseQQAppInterface, paramMsgSummary);
-    b();
+    d();
     super.extraUpdate(paramBaseQQAppInterface, paramContext, paramMsgSummary);
   }
   
@@ -121,7 +121,7 @@ public class RecentItemChatMsgBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgBaseData
  * JD-Core Version:    0.7.0.1
  */

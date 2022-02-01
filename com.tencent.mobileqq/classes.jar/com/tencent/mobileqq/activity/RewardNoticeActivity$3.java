@@ -42,7 +42,7 @@ class RewardNoticeActivity$3
       if (paramBoolean)
       {
         FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        localObject = localFriendsManager.a(str);
+        localObject = localFriendsManager.x(str);
         paramObject = localObject;
         if (localObject == null)
         {
@@ -52,8 +52,8 @@ class RewardNoticeActivity$3
         paramObject.pendantId = l;
         paramObject.timestamp = System.currentTimeMillis();
         localFriendsManager.a(paramObject);
-        if (!TextUtils.isEmpty(this.a.f)) {
-          QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+        if (!TextUtils.isEmpty(this.a.q)) {
+          QQToast.makeText(this.a.app.getApp(), 2, this.a.q, 0).show();
         }
       }
       else
@@ -75,16 +75,16 @@ class RewardNoticeActivity$3
           {
             i = -1;
             break;
-            i = 2131716876;
+            i = 2131914349;
             paramObject = "1";
             break;
-            i = 2131716875;
+            i = 2131914348;
             paramObject = "0";
             break;
             paramObject = "2";
           }
         }
-        i = 2131716874;
+        i = 2131914347;
         if ((i != -1) && (QLog.isColorLevel()))
         {
           localObject = new StringBuilder();
@@ -93,7 +93,7 @@ class RewardNoticeActivity$3
           ((StringBuilder)localObject).append(paramObject);
           QLog.e("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
         }
-        QQToast.a(this.a.app.getApp(), 1, HardCodeUtil.a(2131713369), 0).a();
+        QQToast.makeText(this.a.app.getApp(), 1, HardCodeUtil.a(2131910922), 0).show();
       }
       this.a.finish();
     }
@@ -108,7 +108,7 @@ class RewardNoticeActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RewardNoticeActivity.3
  * JD-Core Version:    0.7.0.1
  */

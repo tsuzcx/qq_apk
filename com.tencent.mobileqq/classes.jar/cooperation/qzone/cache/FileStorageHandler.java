@@ -165,7 +165,7 @@ public class FileStorageHandler
     if (!shouldShowWarning()) {
       return;
     }
-    QQToast.a(BaseApplication.getContext(), ((IQzoneResLoader)QRoute.api(IQzoneResLoader.class)).getStringId(1), 1).a();
+    QQToast.makeText(BaseApplication.getContext(), ((IQzoneResLoader)QRoute.api(IQzoneResLoader.class)).getStringId(1), 1).show();
   }
   
   private boolean shouldShowWarning()
@@ -242,7 +242,7 @@ public class FileStorageHandler
     //   82: ifle +209 -> 291
     //   85: ldc 169
     //   87: iconst_1
-    //   88: ldc 232
+    //   88: ldc 233
     //   90: invokestatic 178	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   93: iload_2
     //   94: i2f
@@ -250,11 +250,11 @@ public class FileStorageHandler
     //   97: fmul
     //   98: f2l
     //   99: lstore 9
-    //   101: new 234	java/util/ArrayList
+    //   101: new 235	java/util/ArrayList
     //   104: dup
     //   105: aload 11
     //   107: arraylength
-    //   108: invokespecial 235	java/util/ArrayList:<init>	(I)V
+    //   108: invokespecial 236	java/util/ArrayList:<init>	(I)V
     //   111: astore_1
     //   112: iload 4
     //   114: istore_2
@@ -266,7 +266,7 @@ public class FileStorageHandler
     //   123: aload 11
     //   125: iload_2
     //   126: aaload
-    //   127: invokevirtual 239	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   127: invokevirtual 240	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   130: pop
     //   131: iload_2
     //   132: iconst_1
@@ -275,9 +275,9 @@ public class FileStorageHandler
     //   135: goto -20 -> 115
     //   138: aload_1
     //   139: getstatic 59	cooperation/qzone/cache/FileStorageHandler:fileTimeComparator	Ljava/util/Comparator;
-    //   142: invokestatic 245	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   142: invokestatic 246	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   145: aload_1
-    //   146: invokevirtual 248	java/util/ArrayList:size	()I
+    //   146: invokevirtual 249	java/util/ArrayList:size	()I
     //   149: iconst_1
     //   150: isub
     //   151: istore_2
@@ -285,7 +285,7 @@ public class FileStorageHandler
     //   153: ifle +138 -> 291
     //   156: aload_1
     //   157: iload_2
-    //   158: invokevirtual 252	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   158: invokevirtual 253	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   161: checkcast 93	java/io/File
     //   164: astore 12
     //   166: aload 12
@@ -302,7 +302,7 @@ public class FileStorageHandler
     //   192: lsub
     //   193: lstore 7
     //   195: aload 12
-    //   197: invokevirtual 254	java/io/File:delete	()Z
+    //   197: invokevirtual 255	java/io/File:delete	()Z
     //   200: pop
     //   201: new 150	java/lang/StringBuilder
     //   204: dup
@@ -313,7 +313,7 @@ public class FileStorageHandler
     //   214: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   217: pop
     //   218: aload 12
-    //   220: ldc_w 256
+    //   220: ldc_w 257
     //   223: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   226: pop
     //   227: new 93	java/io/File
@@ -326,7 +326,7 @@ public class FileStorageHandler
     //   243: invokevirtual 100	java/io/File:exists	()Z
     //   246: ifeq +9 -> 255
     //   249: aload 11
-    //   251: invokevirtual 254	java/io/File:delete	()Z
+    //   251: invokevirtual 255	java/io/File:delete	()Z
     //   254: pop
     //   255: lload 7
     //   257: lload 9
@@ -342,7 +342,7 @@ public class FileStorageHandler
     //   272: goto -120 -> 152
     //   275: astore_1
     //   276: aload_1
-    //   277: invokevirtual 259	java/lang/Exception:printStackTrace	()V
+    //   277: invokevirtual 260	java/lang/Exception:printStackTrace	()V
     //   280: return
     //   281: astore_1
     //   282: ldc 169
@@ -476,7 +476,7 @@ public class FileStorageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.cache.FileStorageHandler
  * JD-Core Version:    0.7.0.1
  */

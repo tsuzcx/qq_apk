@@ -56,7 +56,7 @@ public class LoginKeyHelperImpl
     if (localWtloginHelper != null) {
       localWtloginHelper.CancelRequest();
     }
-    this.mAccountInfo.a = null;
+    this.mAccountInfo.d = null;
   }
   
   public void clearAccount()
@@ -72,7 +72,7 @@ public class LoginKeyHelperImpl
     localStringBuilder.append(" appid = ");
     localStringBuilder.append(paramString4);
     QLog.i("XProxy", 2, localStringBuilder.toString());
-    if ((this.mAccountInfo.a != null) && (!paramBoolean) && (System.currentTimeMillis() - this.mLastUpdatedTime < 43200000L))
+    if ((this.mAccountInfo.d != null) && (!paramBoolean) && (System.currentTimeMillis() - this.mLastUpdatedTime < 43200000L))
     {
       if (paramGetLoginKeyListener != null) {
         paramGetLoginKeyListener.onGetKeyComplete(paramString2, true, 0);
@@ -247,7 +247,7 @@ public class LoginKeyHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.impl.LoginKeyHelperImpl
  * JD-Core Version:    0.7.0.1
  */

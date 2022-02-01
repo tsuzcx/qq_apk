@@ -11,24 +11,21 @@ import java.util.concurrent.CopyOnWriteArrayList;
 class QCallDetailActivity$QCalDetailAdapter
   extends BaseAdapter
 {
-  public List<QCallRecord> a;
+  public List<QCallRecord> a = new CopyOnWriteArrayList();
   
-  public QCallDetailActivity$QCalDetailAdapter(QCallDetailActivity paramQCallDetailActivity)
-  {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
+  public QCallDetailActivity$QCalDetailAdapter(QCallDetailActivity paramQCallDetailActivity) {}
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    if (this.a == null) {
+      this.a = new CopyOnWriteArrayList();
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -38,7 +35,7 @@ class QCallDetailActivity$QCalDetailAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (((QCallRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt)).type == QCallRecord.TYPE_DATE) {
+    if (((QCallRecord)this.a.get(paramInt)).type == QCallRecord.TYPE_DATE) {
       return QCallRecord.TYPE_DATE;
     }
     return QCallRecord.TYPE_REALRECORD;
@@ -57,7 +54,7 @@ class QCallDetailActivity$QCalDetailAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.QCalDetailAdapter
  * JD-Core Version:    0.7.0.1
  */

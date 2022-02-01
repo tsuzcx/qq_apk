@@ -21,7 +21,7 @@ import mqq.manager.TicketManager;
 public class VipComicMqqHandlerConstants
 {
   public static int a = 100;
-  public static String a = "1000290";
+  public static String b = "1000290";
   
   public static MqqComicHeadPb.ComicReqHead a(AppInterface paramAppInterface, String paramString1, long paramLong, String paramString2)
   {
@@ -35,8 +35,8 @@ public class VipComicMqqHandlerConstants
     localComicReqHead.optTs.set(l1);
     localComicReqHead.os.set(2);
     PBStringField localPBStringField = localComicReqHead.clientVer;
-    String str = "8.7.0";
-    if (TextUtils.isEmpty("8.7.0")) {
+    String str = "8.8.17";
+    if (TextUtils.isEmpty("8.8.17")) {
       str = "";
     }
     localPBStringField.set(str);
@@ -114,7 +114,7 @@ public class VipComicMqqHandlerConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.vipcomic.VipComicMqqHandlerConstants
  * JD-Core Version:    0.7.0.1
  */

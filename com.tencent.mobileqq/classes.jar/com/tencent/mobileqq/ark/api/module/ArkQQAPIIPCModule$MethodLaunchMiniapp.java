@@ -13,21 +13,21 @@ public abstract class ArkQQAPIIPCModule$MethodLaunchMiniapp
     this.a = paramString;
   }
   
-  public Bundle a()
+  public String a()
+  {
+    return "QQ.LaunchMiniappHandler";
+  }
+  
+  public Bundle b()
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("url", this.a);
     return localBundle;
   }
-  
-  public String a()
-  {
-    return "QQ.LaunchMiniappHandler";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.MethodLaunchMiniapp
  * JD-Core Version:    0.7.0.1
  */

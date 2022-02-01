@@ -13,7 +13,7 @@ class TroopListAdapter2$6
   
   public void run()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.d(this.jdField_a_of_type_JavaLangString);
+    String str = this.a.v(this.b);
     if (QLog.isColorLevel()) {
       QLog.d("TroopListAdapter2", 2, "itemTag.troopInfo.troopcode == null, queryDB");
     }
@@ -22,7 +22,7 @@ class TroopListAdapter2$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.6
  * JD-Core Version:    0.7.0.1
  */

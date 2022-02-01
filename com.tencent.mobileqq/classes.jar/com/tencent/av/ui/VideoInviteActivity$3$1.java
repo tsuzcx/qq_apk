@@ -7,7 +7,7 @@ class VideoInviteActivity$3$1
   
   public void run()
   {
-    this.a.a.c();
+    this.a.d.g();
   }
 }
 

@@ -20,7 +20,7 @@ public class FontBubbleManager$FontBubbleObserver
   {
     BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
     if (localBaseChatPie != null) {
-      FontBubbleManager.a(localBaseChatPie.a).a(localBaseChatPie, paramBundle);
+      FontBubbleManager.a(localBaseChatPie.d).a(localBaseChatPie, paramBundle);
     }
   }
   
@@ -28,13 +28,13 @@ public class FontBubbleManager$FontBubbleObserver
   {
     BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
     if (localBaseChatPie != null) {
-      FontBubbleManager.a(localBaseChatPie.a).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
+      FontBubbleManager.a(localBaseChatPie.d).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubbleManager.FontBubbleObserver
  * JD-Core Version:    0.7.0.1
  */

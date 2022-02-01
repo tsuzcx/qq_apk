@@ -18,21 +18,21 @@ class DataLineHandler$17
   
   public void a(int paramInt, String paramString)
   {
-    FMToastUtil.c(BaseApplicationImpl.getContext().getString(2131692576));
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).OnSessionComplete(this.jdField_a_of_type_Long, 41, paramInt);
+    FMToastUtil.c(BaseApplicationImpl.getContext().getString(2131889599));
+    ((DataLineHandler)this.b.i.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).OnSessionComplete(this.a, 41, paramInt);
   }
   
   public void a(Object paramObject)
   {
     Object localObject = (String)paramObject;
-    paramObject = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    paramObject = (DataLineHandler)this.b.i.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      paramObject.OnSessionComplete(this.jdField_a_of_type_Long, 0, -999);
+      paramObject.OnSessionComplete(this.a, 0, -999);
       return;
     }
-    int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_Long);
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.getMessageFacade().a(i).a(this.jdField_a_of_type_Long);
+    int i = DataLineMsgRecord.getDevTypeBySeId(this.a);
+    DataLineMsgRecord localDataLineMsgRecord = this.b.i.getMessageFacade().d(i).a(this.a);
     if (localDataLineMsgRecord == null) {
       return;
     }
@@ -42,7 +42,7 @@ class DataLineHandler$17
     localDataLineMsgRecord.bIsTransfering = false;
     if (localDataLineMsgRecord.entityID != 0L)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.getFileManagerDataCenter().a(localDataLineMsgRecord.entityID);
+      localObject = this.b.i.getFileManagerDataCenter().a(localDataLineMsgRecord.entityID);
       if (localObject != null)
       {
         ((FileManagerEntity)localObject).status = 1;
@@ -50,13 +50,13 @@ class DataLineHandler$17
       }
     }
     if (paramObject.a(localDataLineMsgRecord)) {
-      paramObject.a(localDataLineMsgRecord);
+      paramObject.b(localDataLineMsgRecord);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.17
  * JD-Core Version:    0.7.0.1
  */

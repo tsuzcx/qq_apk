@@ -14,23 +14,23 @@ class DoubleVideoProteusItem$1
   public void onClick(ViewBase paramViewBase)
   {
     int i;
-    if (this.jdField_a_of_type_Int == 1167) {
+    if (this.a == 1167) {
       i = 1;
     } else {
       i = 0;
     }
-    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)this.b.u();
     if (i != 0) {
-      paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      paramViewBase = this.c;
     } else {
-      paramViewBase = this.b;
+      paramViewBase = this.d;
     }
-    localReadInJoyBaseAdapter.b(paramViewBase);
+    localReadInJoyBaseAdapter.c(paramViewBase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.DoubleVideoProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

@@ -38,11 +38,6 @@ public class QCircleSpUtil
     return null;
   }
   
-  public static Object a(String paramString, Object paramObject)
-  {
-    return a(paramString, paramObject, true, true);
-  }
-  
   public static Object a(String paramString, Object paramObject, boolean paramBoolean1, boolean paramBoolean2)
   {
     SharedPreferences localSharedPreferences = a(paramBoolean1, paramBoolean2);
@@ -93,10 +88,15 @@ public class QCircleSpUtil
     }
     return false;
   }
+  
+  public static Object b(String paramString, Object paramObject)
+  {
+    return a(paramString, paramObject, true, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qcircle.cooperation.config.QCircleSpUtil
  * JD-Core Version:    0.7.0.1
  */

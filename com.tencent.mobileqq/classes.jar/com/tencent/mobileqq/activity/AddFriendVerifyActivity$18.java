@@ -17,13 +17,13 @@ class AddFriendVerifyActivity$18
     if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
       paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin))
+      if (AddFriendVerifyActivity.d(this.a).equals(paramHashMap.uin))
       {
-        if (AddFriendVerifyActivity.a(this.a) != null)
+        if (AddFriendVerifyActivity.f(this.a) != null)
         {
-          String str = AddFriendVerifyActivity.a(this.a).getText().toString();
-          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
-            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
+          String str = AddFriendVerifyActivity.f(this.a).getText().toString();
+          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.d(this.a)))) {
+            AddFriendVerifyActivity.f(this.a).setText(paramHashMap.nickname);
           }
         }
       }
@@ -39,7 +39,7 @@ class AddFriendVerifyActivity$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.18
  * JD-Core Version:    0.7.0.1
  */

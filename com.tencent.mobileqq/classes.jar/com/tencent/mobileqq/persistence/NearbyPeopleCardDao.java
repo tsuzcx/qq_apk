@@ -9,7 +9,7 @@ public class NearbyPeopleCardDao
 {
   public NearbyPeopleCardDao()
   {
-    this.columnLen = 115;
+    this.columnLen = 117;
   }
   
   public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
@@ -26,6 +26,7 @@ public class NearbyPeopleCardDao
       paramEntity.gender = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("gender")));
       paramEntity.age = paramCursor.getInt(paramCursor.getColumnIndex("age"));
       paramEntity.birthday = paramCursor.getInt(paramCursor.getColumnIndex("birthday"));
+      paramEntity.sign = paramCursor.getString(paramCursor.getColumnIndex("sign"));
       paramEntity.constellation = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("constellation")));
       paramEntity.distance = paramCursor.getString(paramCursor.getColumnIndex("distance"));
       paramEntity.timeDiff = paramCursor.getString(paramCursor.getColumnIndex("timeDiff"));
@@ -187,6 +188,12 @@ public class NearbyPeopleCardDao
       paramEntity.guideVerifiedDialogRightBtnText = paramCursor.getString(paramCursor.getColumnIndex("guideVerifiedDialogRightBtnText"));
       paramEntity.firstOfficialMsg = paramCursor.getString(paramCursor.getColumnIndex("firstOfficialMsg"));
       paramEntity.unverifyGrayTips = paramCursor.getString(paramCursor.getColumnIndex("unverifyGrayTips"));
+      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("isVerified"))) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
+      paramEntity.isVerified = paramBoolean;
       return paramEntity;
     }
     int i = paramCursor.getColumnIndex("tinyId");
@@ -242,6 +249,12 @@ public class NearbyPeopleCardDao
       paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("birthday", Integer.TYPE));
     } else {
       paramEntity.birthday = paramCursor.getInt(i);
+    }
+    i = paramCursor.getColumnIndex("sign");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("sign", String.class));
+    } else {
+      paramEntity.sign = paramCursor.getString(i);
     }
     i = paramCursor.getColumnIndex("constellation");
     if (i == -1) {
@@ -870,9 +883,9 @@ public class NearbyPeopleCardDao
     }
     else
     {
-      i = paramCursor.getShort(i);
-      paramBoolean = true;
-      if (1 != i) {
+      if (1 == paramCursor.getShort(i)) {
+        paramBoolean = true;
+      } else {
         paramBoolean = false;
       }
       paramEntity.isSendMsgBtnDownloadAppOpen = paramBoolean;
@@ -962,12 +975,23 @@ public class NearbyPeopleCardDao
       paramEntity.firstOfficialMsg = paramCursor.getString(i);
     }
     i = paramCursor.getColumnIndex("unverifyGrayTips");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("unverifyGrayTips", String.class));
+    } else {
+      paramEntity.unverifyGrayTips = paramCursor.getString(i);
+    }
+    i = paramCursor.getColumnIndex("isVerified");
     if (i == -1)
     {
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("unverifyGrayTips", String.class));
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isVerified", Boolean.TYPE));
       return paramEntity;
     }
-    paramEntity.unverifyGrayTips = paramCursor.getString(i);
+    i = paramCursor.getShort(i);
+    paramBoolean = true;
+    if (1 != i) {
+      paramBoolean = false;
+    }
+    paramEntity.isVerified = paramBoolean;
     return paramEntity;
   }
   
@@ -983,6 +1007,7 @@ public class NearbyPeopleCardDao
     paramContentValues.put("gender", Byte.valueOf(paramEntity.gender));
     paramContentValues.put("age", Integer.valueOf(paramEntity.age));
     paramContentValues.put("birthday", Integer.valueOf(paramEntity.birthday));
+    paramContentValues.put("sign", paramEntity.sign);
     paramContentValues.put("constellation", Byte.valueOf(paramEntity.constellation));
     paramContentValues.put("distance", paramEntity.distance);
     paramContentValues.put("timeDiff", paramEntity.timeDiff);
@@ -1089,19 +1114,20 @@ public class NearbyPeopleCardDao
     paramContentValues.put("guideVerifiedDialogRightBtnText", paramEntity.guideVerifiedDialogRightBtnText);
     paramContentValues.put("firstOfficialMsg", paramEntity.firstOfficialMsg);
     paramContentValues.put("unverifyGrayTips", paramEntity.unverifyGrayTips);
+    paramContentValues.put("isVerified", Boolean.valueOf(paramEntity.isVerified));
   }
   
   public String getCreateTableSql(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,tinyId INTEGER ,uin TEXT ,nowId INTEGER ,nowUserType INTEGER ,strRemark TEXT ,nickname TEXT ,gender INTEGER ,age INTEGER ,birthday INTEGER ,constellation INTEGER ,distance TEXT ,timeDiff TEXT ,aioDistanceAndTime TEXT ,likeCount INTEGER ,likeCountInc INTEGER ,oldPhotoCount INTEGER ,dateInfo BLOB ,ulShowControl INTEGER ,xuanYan BLOB ,maritalStatus INTEGER ,job INTEGER ,company TEXT ,college TEXT ,hometownCountry TEXT ,hometownProvice TEXT ,hometownCity TEXT ,hometownDistrict TEXT ,vCookies BLOB ,bVoted INTEGER ,feedPreviewTime INTEGER ,qzoneFeed TEXT ,qzoneName TEXT ,qzonePicUrl_1 TEXT ,qzonePicUrl_2 TEXT ,qzonePicUrl_3 TEXT ,isPhotoUseCache INTEGER ,vSeed BLOB ,vTempChatSig BLOB ,vGroupList BLOB ,nearbyInfo BLOB ,vActivityList BLOB ,lUserFlag INTEGER ,iIsGodFlag INTEGER ,strGodJumpUrl TEXT ,mHeartNum INTEGER ,switchQzone INTEGER ,switchHobby INTEGER ,uiShowControl INTEGER ,userFlag INTEGER ,busiEntry TEXT ,godFlag INTEGER ,nLastGameFlag INTEGER ,strProfileUrl TEXT ,lastUpdateNickTime INTEGER ,favoriteSource INTEGER ,switchGiftVisible INTEGER ,vGiftInfo BLOB ,sayHelloFlag INTEGER ,charm INTEGER ,charmLevel INTEGER ,nextThreshold INTEGER ,curThreshold INTEGER ,profPercent INTEGER ,taskFinished INTEGER ,taskTotal INTEGER ,hiWanInfo TEXT ,commonLabelString TEXT ,tagFlag INTEGER ,tagInfo TEXT ,picInfo TEXT ,videoDetails TEXT ,strFreshNewsInfo TEXT ,strHotChatInfo TEXT ,uRoomid INTEGER ,strVoteLimitedNotice TEXT ,bHaveVotedCnt INTEGER ,bAvailVoteCnt INTEGER ,collegeId INTEGER ,videoHeadFlag INTEGER ,bVideoHeadUrl TEXT ,faceScoreWordingColor INTEGER ,faceScoreWording TEXT ,faceScoreTailWordingColor INTEGER ,faceScoreTailWording TEXT ,faceScoreIconUrl TEXT ,entryAbility INTEGER ,strLevelType TEXT ,maskMsgFlag INTEGER ,isForbidSendMsg INTEGER ,isForbidSendGiftMsg INTEGER ,disableSendMsgBtnTips TEXT ,disableSendGiftBtnTips TEXT ,isForbidSendMsgForTribar INTEGER ,isForbidSendGiftMsgForTribar INTEGER ,disableSendMsgBtnTipsForTribar TEXT ,disableSendGiftBtnTipsForTribar TEXT ,highScoreNum INTEGER ,mHasStory INTEGER ,mQQStoryData BLOB ,isSendMsgBtnDownloadAppOpen INTEGER ,sendMsgBtnDownloadAppTips TEXT ,addPicBtnDownloadAppTips TEXT ,tribeAppDownloadPageUrl TEXT ,nearbyNowDataBytes BLOB ,guideAppNowTip TEXT ,guideAppNowTipLeftBtn TEXT ,guideAppNowTipRightBtnInstalled TEXT ,guideAppNowTipRightBtnNotInstalled TEXT ,guideAppNowPackage TEXT ,guideAppNowJumpUri TEXT ,guideAppNowDownloadUrl TEXT ,guideVerifiedDialogTitle TEXT ,guideVerifiedDialogRightBtnText TEXT ,firstOfficialMsg TEXT ,unverifyGrayTips TEXT)");
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,tinyId INTEGER ,uin TEXT ,nowId INTEGER ,nowUserType INTEGER ,strRemark TEXT ,nickname TEXT ,gender INTEGER ,age INTEGER ,birthday INTEGER ,sign TEXT ,constellation INTEGER ,distance TEXT ,timeDiff TEXT ,aioDistanceAndTime TEXT ,likeCount INTEGER ,likeCountInc INTEGER ,oldPhotoCount INTEGER ,dateInfo BLOB ,ulShowControl INTEGER ,xuanYan BLOB ,maritalStatus INTEGER ,job INTEGER ,company TEXT ,college TEXT ,hometownCountry TEXT ,hometownProvice TEXT ,hometownCity TEXT ,hometownDistrict TEXT ,vCookies BLOB ,bVoted INTEGER ,feedPreviewTime INTEGER ,qzoneFeed TEXT ,qzoneName TEXT ,qzonePicUrl_1 TEXT ,qzonePicUrl_2 TEXT ,qzonePicUrl_3 TEXT ,isPhotoUseCache INTEGER ,vSeed BLOB ,vTempChatSig BLOB ,vGroupList BLOB ,nearbyInfo BLOB ,vActivityList BLOB ,lUserFlag INTEGER ,iIsGodFlag INTEGER ,strGodJumpUrl TEXT ,mHeartNum INTEGER ,switchQzone INTEGER ,switchHobby INTEGER ,uiShowControl INTEGER ,userFlag INTEGER ,busiEntry TEXT ,godFlag INTEGER ,nLastGameFlag INTEGER ,strProfileUrl TEXT ,lastUpdateNickTime INTEGER ,favoriteSource INTEGER ,switchGiftVisible INTEGER ,vGiftInfo BLOB ,sayHelloFlag INTEGER ,charm INTEGER ,charmLevel INTEGER ,nextThreshold INTEGER ,curThreshold INTEGER ,profPercent INTEGER ,taskFinished INTEGER ,taskTotal INTEGER ,hiWanInfo TEXT ,commonLabelString TEXT ,tagFlag INTEGER ,tagInfo TEXT ,picInfo TEXT ,videoDetails TEXT ,strFreshNewsInfo TEXT ,strHotChatInfo TEXT ,uRoomid INTEGER ,strVoteLimitedNotice TEXT ,bHaveVotedCnt INTEGER ,bAvailVoteCnt INTEGER ,collegeId INTEGER ,videoHeadFlag INTEGER ,bVideoHeadUrl TEXT ,faceScoreWordingColor INTEGER ,faceScoreWording TEXT ,faceScoreTailWordingColor INTEGER ,faceScoreTailWording TEXT ,faceScoreIconUrl TEXT ,entryAbility INTEGER ,strLevelType TEXT ,maskMsgFlag INTEGER ,isForbidSendMsg INTEGER ,isForbidSendGiftMsg INTEGER ,disableSendMsgBtnTips TEXT ,disableSendGiftBtnTips TEXT ,isForbidSendMsgForTribar INTEGER ,isForbidSendGiftMsgForTribar INTEGER ,disableSendMsgBtnTipsForTribar TEXT ,disableSendGiftBtnTipsForTribar TEXT ,highScoreNum INTEGER ,mHasStory INTEGER ,mQQStoryData BLOB ,isSendMsgBtnDownloadAppOpen INTEGER ,sendMsgBtnDownloadAppTips TEXT ,addPicBtnDownloadAppTips TEXT ,tribeAppDownloadPageUrl TEXT ,nearbyNowDataBytes BLOB ,guideAppNowTip TEXT ,guideAppNowTipLeftBtn TEXT ,guideAppNowTipRightBtnInstalled TEXT ,guideAppNowTipRightBtnNotInstalled TEXT ,guideAppNowPackage TEXT ,guideAppNowJumpUri TEXT ,guideAppNowDownloadUrl TEXT ,guideVerifiedDialogTitle TEXT ,guideVerifiedDialogRightBtnText TEXT ,firstOfficialMsg TEXT ,unverifyGrayTips TEXT ,isVerified INTEGER)");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.NearbyPeopleCardDao
  * JD-Core Version:    0.7.0.1
  */

@@ -7,26 +7,26 @@ class EditPicSave$4
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean) {
+    if (this.this$0.b) {
       return;
     }
     EditPicSave localEditPicSave = this.this$0;
-    localEditPicSave.jdField_a_of_type_Int += this.this$0.b;
-    if (this.this$0.jdField_a_of_type_Int > 99)
+    localEditPicSave.a += this.this$0.c;
+    if (this.this$0.a > 99)
     {
       localEditPicSave = this.this$0;
-      localEditPicSave.jdField_a_of_type_Int = 99;
-      localEditPicSave.a(localEditPicSave.jdField_a_of_type_Int);
+      localEditPicSave.a = 99;
+      localEditPicSave.a(localEditPicSave.a);
       return;
     }
     localEditPicSave = this.this$0;
-    localEditPicSave.a(localEditPicSave.jdField_a_of_type_Int);
-    this.this$0.b();
+    localEditPicSave.a(localEditPicSave.a);
+    this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicSave.4
  * JD-Core Version:    0.7.0.1
  */

@@ -41,24 +41,24 @@ import mqq.app.MobileQQ;
 public class ArkHelper
   implements AIOConfigurationListener, OnFinishListener, TopGestureTouchEventListener, ILifeCycleHelper, PanelProvider<ArkAppRootLayout>, AbsListView.OnScrollListener
 {
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private ArkTipsBar jdField_a_of_type_ComTencentMobileqqActivityAioTipsArkTipsBar;
-  private ArkRecommendController jdField_a_of_type_ComTencentMobileqqArkArkRecommendController;
+  private final AIOContext a;
+  private ArkTipsBar b;
+  private ArkRecommendController c;
+  private final BaseChatPie d;
   
   public ArkHelper(AIOContext paramAIOContext, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    paramAIOContext = paramAIOContext.a();
+    this.a = paramAIOContext;
+    this.d = paramBaseChatPie;
+    paramAIOContext = paramAIOContext.d();
     paramAIOContext.a(this);
     paramAIOContext.a(this);
     paramAIOContext.a(this);
   }
   
-  private void c()
+  private void g()
   {
-    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    ChatXListView localChatXListView = this.d.U;
     if (localChatXListView != null)
     {
       if (localChatXListView.getAdapter() == null) {
@@ -73,7 +73,7 @@ public class ArkHelper
         {
           localObject = (MessageForArkApp)localObject;
           if (((MessageForArkApp)localObject).arkContainer != null) {
-            ((MessageForArkApp)localObject).arkContainer.d();
+            ((MessageForArkApp)localObject).arkContainer.h();
           }
         }
         i += 1;
@@ -81,75 +81,47 @@ public class ArkHelper
     }
   }
   
-  private void d()
+  private void h()
   {
-    if (a()) {
+    if (f()) {
       return;
     }
-    ArkTipsManager.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
+    ArkTipsManager.b().b(this.a);
     ArkAioContainerWrapper.a(2);
     ArkFlashChatContainerWrapper.a(2);
-    a();
+    b();
   }
   
-  private void e()
+  private void i()
   {
     ArkAioContainerWrapper.a(1);
     ArkFlashChatContainerWrapper.a(1);
   }
   
-  private void f()
+  private void j()
   {
     ArkAioContainerWrapper.a(0);
     ArkFlashChatContainerWrapper.a(0);
   }
   
-  private void g() {}
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public int a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
-    int i = paramMotionEvent.getChildCount() - 1;
-    while (i >= 0)
-    {
-      View localView = paramMotionEvent.getChildAt(i);
-      if ((localView != null) && ((AIOUtils.a(localView) instanceof ArkAppItemBubbleBuilder.Holder)))
-      {
-        localView = localView.findViewById(2131362947);
-        Rect localRect = new Rect();
-        localView.getGlobalVisibleRect(localRect);
-        if (localRect.contains((int)f1, (int)f2)) {
-          return 2;
-        }
-      }
-      i -= 1;
-    }
-    return 0;
-  }
+  private void k() {}
   
   public ArkAppRootLayout a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController.a();
+    return this.c.d();
   }
   
   public ArkAppRootLayout a(Context paramContext)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController.a();
+    return this.c.d();
   }
   
   public ArkTipsBar a(String paramString, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsArkTipsBar == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsArkTipsBar = new ArkTipsBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsArkTipsBar);
+      this.b = new ArkTipsBar(this.a.c(), this.a.b());
+      this.a.c().b(this.b);
     }
     if (QLog.isColorLevel())
     {
@@ -167,26 +139,11 @@ public class ArkHelper
       QLog.d("ArkHelper", 2, localStringBuilder.toString());
     }
     if (paramString == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a();
+      this.a.c().c();
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsArkTipsBar, new Object[] { paramString, Long.valueOf(paramLong) });
+      this.a.c().a(this.b, new Object[] { paramString, Long.valueOf(paramLong) });
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsArkTipsBar;
-  }
-  
-  public ArkRecommendController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController;
-  }
-  
-  public void a()
-  {
-    ArkRecommendController localArkRecommendController = this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController;
-    if (localArkRecommendController != null)
-    {
-      localArkRecommendController.b();
-      this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController = null;
-    }
+    return this.b;
   }
   
   public void a(Configuration paramConfiguration)
@@ -196,40 +153,83 @@ public class ArkHelper
   
   public void a(MotionEvent paramMotionEvent) {}
   
-  public boolean a()
-  {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)) {
-      return ((IQQGameSubscribeService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameSubscribeService.class, "all")).isFromAllMsgGameSinglePage(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent());
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
   public boolean a(boolean paramBoolean)
   {
     return false;
   }
   
+  public int b(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    paramMotionEvent = this.d.U;
+    int i = paramMotionEvent.getChildCount() - 1;
+    while (i >= 0)
+    {
+      View localView = paramMotionEvent.getChildAt(i);
+      if ((localView != null) && ((AIOUtils.b(localView) instanceof ArkAppItemBubbleBuilder.Holder)))
+      {
+        localView = localView.findViewById(2131428746);
+        Rect localRect = new Rect();
+        localView.getGlobalVisibleRect(localRect);
+        if (localRect.contains((int)f1, (int)f2)) {
+          return 2;
+        }
+      }
+      i -= 1;
+    }
+    return 0;
+  }
+  
   public void b()
   {
-    ArkRecommendController localArkRecommendController = this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController;
+    ArkRecommendController localArkRecommendController = this.c;
+    if (localArkRecommendController != null)
+    {
+      localArkRecommendController.b();
+      this.c = null;
+    }
+  }
+  
+  public int bM_()
+  {
+    return 0;
+  }
+  
+  public void d()
+  {
+    ArkRecommendController localArkRecommendController = this.c;
     if (localArkRecommendController != null) {
       localArkRecommendController.c();
     }
   }
   
-  public void d(int paramInt)
+  public boolean d(int paramInt)
   {
-    if (a()) {
+    return false;
+  }
+  
+  public ArkRecommendController e()
+  {
+    return this.c;
+  }
+  
+  public void e(int paramInt)
+  {
+    if (f()) {
       return;
     }
     ArkAioContainerWrapper.a(2);
     ArkFlashChatContainerWrapper.a(2);
+  }
+  
+  public boolean f()
+  {
+    BaseChatPie localBaseChatPie = this.d;
+    if ((localBaseChatPie != null) && (localBaseChatPie.f != null)) {
+      return ((IQQGameSubscribeService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameSubscribeService.class, "all")).isFromAllMsgGameSinglePage(this.d.f.getIntent());
+    }
+    return false;
   }
   
   public int getPanelId()
@@ -255,8 +255,8 @@ public class ArkHelper
   
   public void onHideAllPanel()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a() == 22)) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController.a();
+    if ((this.c != null) && (this.a.q().b() == 22)) {
+      this.c.a();
     }
   }
   
@@ -277,41 +277,41 @@ public class ArkHelper
                 if (paramInt != 22) {
                   return;
                 }
-                ArkAppCenterUtil.a();
+                ArkAppCenterUtil.b();
                 return;
               }
-              g();
+              k();
               return;
             }
-            d();
+            h();
             return;
           }
-          f();
+          j();
           return;
         }
-        ArkTipsManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
+        ArkTipsManager.b().a(this.a);
         return;
       }
-      e();
+      i();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController = new ArkRecommendController(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
+    if (this.c == null) {
+      this.c = new ArkRecommendController(this.a);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext instanceof RobotContext))
+    if ((this.a instanceof RobotContext))
     {
-      ArkRecommendController localArkRecommendController = this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController;
+      ArkRecommendController localArkRecommendController = this.c;
       if (localArkRecommendController != null)
       {
         localArkRecommendController.b();
-        this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController = null;
+        this.c = null;
       }
     }
   }
   
   public void onPanelChanged(int paramInt1, int paramInt2)
   {
-    ArkRecommendController localArkRecommendController = this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController;
+    ArkRecommendController localArkRecommendController = this.c;
     if (localArkRecommendController != null) {
       localArkRecommendController.a(paramInt1, paramInt2);
     }
@@ -329,7 +329,7 @@ public class ArkHelper
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     if (paramInt == 1) {
-      c();
+      g();
     }
   }
   
@@ -337,7 +337,7 @@ public class ArkHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.ArkHelper
  * JD-Core Version:    0.7.0.1
  */

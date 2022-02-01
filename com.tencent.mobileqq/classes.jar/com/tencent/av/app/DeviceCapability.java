@@ -14,7 +14,7 @@ public class DeviceCapability
   public static void a(long paramLong, VideoController paramVideoController, DeviceCapability.CodecPlayerCallback.CodecTestInfo paramCodecTestInfo, DeviceCapability.CodecPlayerCallback paramCodecPlayerCallback)
   {
     long l1 = System.currentTimeMillis();
-    String str = paramCodecTestInfo.a();
+    String str = paramCodecTestInfo.b();
     paramVideoController = paramVideoController.a(paramLong, paramCodecTestInfo.a(), str.getBytes());
     long l2 = System.currentTimeMillis();
     if (paramVideoController == null) {
@@ -24,9 +24,9 @@ public class DeviceCapability
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("doCodecTest, codec[");
-    localStringBuilder.append(paramCodecTestInfo.jdField_a_of_type_Int);
+    localStringBuilder.append(paramCodecTestInfo.a);
     localStringBuilder.append("], sampleMD5[");
-    localStringBuilder.append(paramCodecTestInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramCodecTestInfo.b);
     localStringBuilder.append("], cmdParams[");
     localStringBuilder.append(str);
     localStringBuilder.append("], result[");
@@ -48,17 +48,17 @@ public class DeviceCapability
     paramCodecTestInfo.append(", output format: ");
     paramCodecTestInfo.append(AndroidCodec.getHwDetectOutputFormatForReport());
     paramCodecTestInfo.append(", H264EncBaseLineLevel: ");
-    paramCodecTestInfo.append(AndroidCodecUtil.jdField_a_of_type_Int);
-    paramCodecTestInfo.append(", H264DecBaseLineLevel: ");
     paramCodecTestInfo.append(AndroidCodecUtil.b);
-    paramCodecTestInfo.append(", H264EncHighProfileLevel: ");
+    paramCodecTestInfo.append(", H264DecBaseLineLevel: ");
     paramCodecTestInfo.append(AndroidCodecUtil.c);
-    paramCodecTestInfo.append(", H264DecHighProfileLevel: ");
+    paramCodecTestInfo.append(", H264EncHighProfileLevel: ");
     paramCodecTestInfo.append(AndroidCodecUtil.d);
-    paramCodecTestInfo.append(", H265EncLevel: ");
+    paramCodecTestInfo.append(", H264DecHighProfileLevel: ");
     paramCodecTestInfo.append(AndroidCodecUtil.e);
-    paramCodecTestInfo.append(", H265DecLevel: ");
+    paramCodecTestInfo.append(", H265EncLevel: ");
     paramCodecTestInfo.append(AndroidCodecUtil.f);
+    paramCodecTestInfo.append(", H265DecLevel: ");
+    paramCodecTestInfo.append(AndroidCodecUtil.g);
     QLog.w("DeviceCapability", 1, paramCodecTestInfo.toString());
     paramCodecTestInfo = new GlStringParser('=', ';');
     paramCodecTestInfo.unflatten(paramVideoController);

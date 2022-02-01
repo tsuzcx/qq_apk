@@ -16,13 +16,13 @@ class HightlightHotWordText$1
 {
   HightlightHotWordText$1(HightlightHotWordText paramHightlightHotWordText, Context paramContext, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
       paramView = new StringBuilder();
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouHightlightHotWordText.b);
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouHightlightHotWordText.jdField_a_of_type_JavaLangString);
+      paramView.append(this.c.b);
+      paramView.append(this.c.a);
       paramView = paramView.toString();
       if (TextUtils.isEmpty(paramView)) {
         return;
@@ -30,19 +30,19 @@ class HightlightHotWordText$1
       if ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))) {
         return;
       }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
       localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      if ((this.jdField_a_of_type_ComTencentMobileqqBusinessSougouHightlightHotWordText.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouHightlightHotWordText.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        ReportController.b((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqBusinessSougouHightlightHotWordText.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_ComTencentMobileqqBusinessSougouHightlightHotWordText.jdField_a_of_type_JavaLangString, "");
+      this.a.startActivity(localIntent);
+      if ((this.c.c != null) && (this.c.c.get() != null)) {
+        ReportController.b((AppRuntime)this.c.c.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.c.a, "");
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.HightlightHotWordText.1
  * JD-Core Version:    0.7.0.1
  */

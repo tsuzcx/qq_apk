@@ -13,15 +13,15 @@ class ThemeHandler$4
   public boolean beforeSwitch(ThemeLocator paramThemeLocator)
   {
     String str = ThemeUtil.getCurrentThemeId();
-    if (!paramThemeLocator.a().equals(str)) {
-      QQToast.a(ThemeHandler.a(this.this$0).getApplication(), HardCodeUtil.a(2131714719), 4000).a();
+    if (!paramThemeLocator.d().equals(str)) {
+      QQToast.makeText(ThemeHandler.b(this.this$0).getApplication(), HardCodeUtil.a(2131912225), 4000).show();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThemeHandler.4
  * JD-Core Version:    0.7.0.1
  */

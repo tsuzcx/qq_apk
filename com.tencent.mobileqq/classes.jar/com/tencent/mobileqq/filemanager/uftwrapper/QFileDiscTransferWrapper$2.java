@@ -15,34 +15,34 @@ class QFileDiscTransferWrapper$2
   
   public void run()
   {
-    FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    Object localObject = TransfileUtile.makeTransFileProtocolData(this.jdField_a_of_type_JavaLangString, 0L, 0, true);
-    QFileDiscTransferWrapper.a(this.this$0).getFileManagerDataCenter().a(this.b, this.c, true, this.jdField_a_of_type_JavaLangString, 0L, true, 3000, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgSeq, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgUid, -1L, MessageCache.a());
+    FileManagerUtil.g(this.a);
+    Object localObject = TransfileUtile.makeTransFileProtocolData(this.b, 0L, 0, true);
+    QFileDiscTransferWrapper.a(this.this$0).getFileManagerDataCenter().a(this.c, this.d, true, this.b, 0L, true, 3000, (String)localObject, this.a.msgSeq, this.e, this.a.msgUid, -1L, MessageCache.c());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("=_=k Id[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((StringBuilder)localObject).append(this.a.nSessionId);
     ((StringBuilder)localObject).append("] SendLocalfile[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+    ((StringBuilder)localObject).append(this.a.fileName);
     ((StringBuilder)localObject).append("], peerType[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
+    ((StringBuilder)localObject).append(this.a.peerType);
     ((StringBuilder)localObject).append("]");
     QLog.i("QFileC2CTransferWrapper<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    localObject = QFileDiscTransferWrapper.b(this.this$0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    localObject = QFileDiscTransferWrapper.b(this.this$0, this.a.nSessionId);
     if (localObject != null)
     {
-      ((QFileDiscTransferWrapper.DiscBaseUploadWrapper)localObject).a();
+      ((QFileDiscTransferWrapper.DiscBaseUploadWrapper)localObject).b();
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("=_=k Id[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((StringBuilder)localObject).append(this.a.nSessionId);
     ((StringBuilder)localObject).append("] SendLocalfile fail. may stoped");
     QLog.w("QFileC2CTransferWrapper<FileAssistant>", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileDiscTransferWrapper.2
  * JD-Core Version:    0.7.0.1
  */

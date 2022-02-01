@@ -88,7 +88,7 @@ public class QCC
     //   129: iload_1
     //   130: ifeq +47 -> 177
     //   133: iload_1
-    //   134: bipush 15
+    //   134: bipush 8
     //   136: invokestatic 129	com/tencent/startrail/T:a	(II)[B
     //   139: astore 6
     //   141: aload 6
@@ -146,7 +146,7 @@ public class QCC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.common.QCC
  * JD-Core Version:    0.7.0.1
  */

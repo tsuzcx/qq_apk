@@ -12,7 +12,7 @@ public class EmoticonTabSortConfProcessor
 {
   public static EmoticonTabSortConfBean a()
   {
-    return (EmoticonTabSortConfBean)QConfigManager.a().a(622);
+    return (EmoticonTabSortConfBean)QConfigManager.b().b(622);
   }
   
   @NonNull
@@ -71,7 +71,7 @@ public class EmoticonTabSortConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.EmoticonTabSortConfProcessor
  * JD-Core Version:    0.7.0.1
  */

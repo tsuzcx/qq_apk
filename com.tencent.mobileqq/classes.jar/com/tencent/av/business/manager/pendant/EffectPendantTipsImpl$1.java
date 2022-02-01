@@ -12,7 +12,7 @@ class EffectPendantTipsImpl$1
   {
     try
     {
-      TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, -1, null);
+      TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016, this.a, this.b, -1, null);
       return;
     }
     catch (Exception localException)

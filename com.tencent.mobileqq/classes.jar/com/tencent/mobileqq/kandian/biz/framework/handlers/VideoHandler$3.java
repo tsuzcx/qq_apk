@@ -21,10 +21,10 @@ class VideoHandler$3
   {
     if ((paramList != null) && (paramInt >= 0))
     {
-      if (paramInt >= this.a.c()) {
+      if (paramInt >= this.a.t()) {
         return;
       }
-      if ((this.a.a() != 0) && (this.a.a() != 40677)) {
+      if ((this.a.c() != 0) && (this.a.c() != 40677)) {
         i = 1;
       } else {
         i = 0;
@@ -35,7 +35,7 @@ class VideoHandler$3
       for (int i = 0;; i = k)
       {
         k = i;
-        if (j >= this.a.c()) {
+        if (j >= this.a.t()) {
           break;
         }
         k = i;
@@ -75,7 +75,7 @@ class VideoHandler$3
                     if (!TextUtils.isEmpty((CharSequence)localObject2))
                     {
                       localObject1 = new VideoPreDownloadMgr.VideoPreDownloadParam((String)localObject2, "", ((AbsBaseArticleInfo)localObject1).busiType, ((AbsBaseArticleInfo)localObject1).getVideoDuration());
-                      ((VideoPreDownloadMgr.VideoPreDownloadParam)localObject1).a = true;
+                      ((VideoPreDownloadMgr.VideoPreDownloadParam)localObject1).e = true;
                       paramList.add(localObject1);
                       i = k + 1;
                     }
@@ -113,7 +113,7 @@ class VideoHandler$3
   
   private boolean a(int paramInt)
   {
-    return (paramInt == 4) || (paramInt == 6) || (paramInt == 66) || (paramInt == 115) || (paramInt == 148) || (paramInt == 46) || (paramInt == 70);
+    return (paramInt == 4) || (paramInt == 6) || (paramInt == 66) || (paramInt == 115) || (paramInt == 148) || (paramInt == 151) || (paramInt == 46) || (paramInt == 70);
   }
   
   private void b(List<VideoPreDownloadMgr.VideoPreDownloadParam> paramList, int paramInt, boolean paramBoolean)
@@ -123,7 +123,7 @@ class VideoHandler$3
       if (paramInt < 0) {
         return;
       }
-      int m = VideoPreloadStrategyConoller.a().a();
+      int m = VideoPreloadStrategyConoller.a().b();
       int j = paramInt - 1;
       int k;
       for (int i = 0;; i = k)
@@ -137,7 +137,7 @@ class VideoHandler$3
           break;
         }
         k = i;
-        if (j >= this.a.c()) {
+        if (j >= this.a.t()) {
           break;
         }
         k = this.a.a(j).intValue();
@@ -203,12 +203,12 @@ class VideoHandler$3
     } else {
       localObject = "";
     }
-    return VideoPreloadStrategyConoller.a().a(this.a.a.a((String)localObject));
+    return VideoPreloadStrategyConoller.a().a(this.a.c.b((String)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.VideoHandler.3
  * JD-Core Version:    0.7.0.1
  */

@@ -9,104 +9,104 @@ import com.tencent.widget.AbsListView;
 
 public final class ItemManager
 {
-  final int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  ItemManaged jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged;
-  final boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  boolean c;
+  ItemManaged a;
+  final ItemLoader<?, ?> b;
+  final Handler c;
+  final boolean d;
+  final int e;
+  long f;
+  int g;
+  boolean h;
+  boolean i;
   
   void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
-    localObject = ((ItemManaged)localObject).a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
-    this.jdField_b_of_type_Boolean = false;
+    localObject = ((ItemManaged)localObject).b();
+    ListAdapter localListAdapter = this.a.g();
+    this.h = false;
     if (localListAdapter == null) {
       return;
     }
     long l1 = SystemClock.uptimeMillis();
-    int j = ((AbsListView)localObject).getChildCount();
-    int i = 0;
-    while (i < j)
+    int k = ((AbsListView)localObject).getChildCount();
+    int j = 0;
+    while (j < k)
     {
-      View localView = ((AbsListView)localObject).getChildAt(i);
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a((View)localObject, localListAdapter, localView, l1);
-      i += 1;
+      View localView = ((AbsListView)localObject).getChildAt(j);
+      this.b.a((View)localObject, localListAdapter, localView, l1);
+      j += 1;
       l1 = 1L + l1;
     }
     long l3 = l1;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      j = ((AbsListView)localObject).getLastVisiblePosition() + 1;
+      k = ((AbsListView)localObject).getLastVisiblePosition() + 1;
       long l2 = l1;
-      if (j > 0)
+      if (k > 0)
       {
-        int k = localListAdapter.getCount();
-        i = j;
+        int m = localListAdapter.getCount();
+        j = k;
         for (;;)
         {
           l2 = l1;
-          if (i >= this.jdField_a_of_type_Int + j) {
+          if (j >= this.e + k) {
             break;
           }
           l2 = l1;
-          if (i >= k) {
+          if (j >= m) {
             break;
           }
-          this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a((View)localObject, localListAdapter, i, l1);
-          i += 1;
+          this.b.a((View)localObject, localListAdapter, j, l1);
+          j += 1;
           l1 += 1L;
         }
       }
-      j = ((AbsListView)localObject).getFirstVisiblePosition();
+      k = ((AbsListView)localObject).getFirstVisiblePosition();
       l3 = l2;
-      if (j >= this.jdField_a_of_type_Int)
+      if (k >= this.e)
       {
-        i = j - 1;
+        j = k - 1;
         for (;;)
         {
           l3 = l2;
-          if (i < j - this.jdField_a_of_type_Int) {
+          if (j < k - this.e) {
             break;
           }
-          this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a((View)localObject, localListAdapter, i, l2);
-          i -= 1;
+          this.b.a((View)localObject, localListAdapter, j, l2);
+          j -= 1;
           l2 += 1L;
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Long = l3;
+    this.b.a(this.f);
+    this.f = l3;
     ((AbsListView)localObject).invalidate();
   }
   
   void a(View paramView1, View paramView2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
+    this.a.b();
+    ListAdapter localListAdapter = this.a.g();
     boolean bool;
-    if ((this.jdField_b_of_type_Int != 2) && (!this.jdField_b_of_type_Boolean)) {
+    if ((this.g != 2) && (!this.h)) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
+    this.b.a(paramView1, paramView2, localListAdapter, paramInt, bool);
   }
   
   void a(ItemManaged paramItemManaged)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged = paramItemManaged;
-    paramItemManaged = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged;
+    this.a = paramItemManaged;
+    paramItemManaged = this.a;
     if (paramItemManaged != null)
     {
-      paramItemManaged = paramItemManaged.a();
+      paramItemManaged = paramItemManaged.b();
       paramItemManaged.setOnScrollListener(new ItemManager.ScrollManager(this, null));
       paramItemManaged.setOnTouchListener(new ItemManager.FingerTracker(this, null));
       paramItemManaged.setOnItemSelectedListener(new ItemManager.SelectionTracker(this, null));
@@ -115,18 +115,18 @@ public final class ItemManager
   
   void b()
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    Message localMessage = this.c.obtainMessage(1, this);
+    this.c.removeMessages(1);
+    this.h = true;
+    this.c.sendMessage(localMessage);
   }
   
   void c()
   {
-    ItemManaged localItemManaged = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged;
+    ItemManaged localItemManaged = this.a;
     if (localItemManaged != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localItemManaged.a());
+      this.b.a(localItemManaged.b());
       return;
     }
     throw new IllegalStateException("Cannot cancel requests with no managed view");
@@ -134,7 +134,7 @@ public final class ItemManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManager
  * JD-Core Version:    0.7.0.1
  */

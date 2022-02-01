@@ -28,29 +28,29 @@ class DefaultFileModel$1
       paramString1.append(paramString3);
       paramString1.append("]");
       QLog.e("FileBrowserModelBase", 1, paramString1.toString());
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramLong);
+      if (this.b.n != null) {
+        this.b.n.a(paramLong);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.c();
+      if (this.b.k != null) {
+        this.b.k.h();
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
+      this.b.a.getFileManagerDataCenter().c(this.b.c.r());
       return;
     }
-    paramString3 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel;
-    paramString3.jdField_a_of_type_JavaLangString = paramString1;
-    paramString3.b = paramString2;
-    paramString3.c = paramString4;
-    paramString3.d = paramString5;
+    paramString3 = this.b;
+    paramString3.d = paramString1;
+    paramString3.e = paramString2;
+    paramString3.f = paramString4;
+    paramString3.g = paramString5;
     paramString1 = null;
     short s = 0;
     boolean bool = false;
     if (paramBundle != null)
     {
-      if (this.jdField_a_of_type_Int == 3000) {
-        paramBoolean = ((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsDownload4Disc_ZipInner(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (this.a == 3000) {
+        paramBoolean = ((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsDownload4Disc_ZipInner(this.b.a);
       } else {
-        paramBoolean = ((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsDownload4C2C_ZipInner(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramBoolean = ((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsDownload4C2C_ZipInner(this.b.a);
       }
       paramString2 = paramBundle.getString("httpsdomain");
       if ((!TextUtils.isEmpty(paramString2)) && (paramBoolean))
@@ -72,13 +72,13 @@ class DefaultFileModel$1
       paramString2 = "";
       paramBoolean = false;
     }
-    paramString3 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel;
-    paramString3.a(paramString3.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.c, FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()), "/", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.d, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a(), paramBoolean, paramString1, s, paramString2, new DefaultFileModel.1.1(this, paramBoolean, paramString1, s));
+    paramString3 = this.b;
+    paramString3.a(paramString3.d, this.b.e, this.b.f, FileManagerUtil.p(this.b.c.r()), "/", this.b.g, this.b.c.r(), paramBoolean, paramString1, s, paramString2, new DefaultFileModel.1.1(this, paramBoolean, paramString1, s));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel.1
  * JD-Core Version:    0.7.0.1
  */

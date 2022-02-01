@@ -25,7 +25,7 @@ public class AdQQMiniGameHorizListProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    if (paramIReadInJoyModel.a() == null) {
+    if (paramIReadInJoyModel.k() == null) {
       return;
     }
     paramContainer = (IRvPolymericContainer)paramContainer.getVirtualView().findViewBaseByName("id_small_game_proteus_collection_view");
@@ -41,7 +41,7 @@ public class AdQQMiniGameHorizListProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdQQMiniGameHorizListProteusItem
  * JD-Core Version:    0.7.0.1
  */

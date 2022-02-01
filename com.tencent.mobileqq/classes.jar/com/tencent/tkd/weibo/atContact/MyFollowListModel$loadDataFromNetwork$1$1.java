@@ -15,26 +15,26 @@ final class MyFollowListModel$loadDataFromNetwork$1$1
   
   public final void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     Boolean localBoolean = Boolean.valueOf(true);
     Integer localInteger = Integer.valueOf(0);
     if (i == 0)
     {
       Function7 localFunction7 = this.this$0.$callback;
-      boolean bool = this.jdField_a_of_type_Boolean;
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      boolean bool = this.b;
+      List localList = this.c;
       if (localList == null) {
         localList = CollectionsKt.emptyList();
       }
-      localFunction7.invoke(localBoolean, Boolean.valueOf(bool), localInteger, new ArrayList((Collection)localList), this.jdField_a_of_type_ArrayOfByte, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+      localFunction7.invoke(localBoolean, Boolean.valueOf(bool), localInteger, new ArrayList((Collection)localList), this.d, Integer.valueOf(this.a), this.e);
       return;
     }
-    this.this$0.$callback.invoke(Boolean.valueOf(false), localBoolean, localInteger, new ArrayList(), null, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+    this.this$0.$callback.invoke(Boolean.valueOf(false), localBoolean, localInteger, new ArrayList(), null, Integer.valueOf(this.a), this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.atContact.MyFollowListModel.loadDataFromNetwork.1.1
  * JD-Core Version:    0.7.0.1
  */

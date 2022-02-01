@@ -9,7 +9,39 @@ public class VasPalette
   private static int a = 57600;
   private static int b = -1;
   
-  private static Bitmap a(Bitmap paramBitmap)
+  public static List<VasPalette.OcNode> a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      paramBitmap = c(paramBitmap);
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+      {
+        VasPalette.OcTreeQuantizer localOcTreeQuantizer = new VasPalette.OcTreeQuantizer();
+        try
+        {
+          localOcTreeQuantizer.a(b(paramBitmap), 16);
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
+        }
+        paramBitmap.recycle();
+        return localOcTreeQuantizer.a();
+      }
+    }
+    return null;
+  }
+  
+  private static int[] b(Bitmap paramBitmap)
+  {
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    int[] arrayOfInt = new int[i * j];
+    paramBitmap.getPixels(arrayOfInt, 0, i, 0, 0, i, j);
+    return arrayOfInt;
+  }
+  
+  private static Bitmap c(Bitmap paramBitmap)
   {
     int i = a;
     double d2 = -1.0D;
@@ -68,42 +100,10 @@ public class VasPalette
     }
     return null;
   }
-  
-  public static List<VasPalette.OcNode> a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
-    {
-      paramBitmap = a(paramBitmap);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-      {
-        VasPalette.OcTreeQuantizer localOcTreeQuantizer = new VasPalette.OcTreeQuantizer();
-        try
-        {
-          localOcTreeQuantizer.a(a(paramBitmap), 16);
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          QLog.e("VasPalette", 1, localOutOfMemoryError.getMessage());
-        }
-        paramBitmap.recycle();
-        return localOcTreeQuantizer.a();
-      }
-    }
-    return null;
-  }
-  
-  private static int[] a(Bitmap paramBitmap)
-  {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    int[] arrayOfInt = new int[i * j];
-    paramBitmap.getPixels(arrayOfInt, 0, i, 0, 0, i, j);
-    return arrayOfInt;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasPalette
  * JD-Core Version:    0.7.0.1
  */

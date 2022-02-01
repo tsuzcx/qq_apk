@@ -5,6 +5,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.emoticon.QQEmojiUtil;
+import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
 import com.tencent.mobileqq.onlinestatus.utils.LottieHelper;
@@ -73,8 +75,21 @@ public class PopOutAnimViewHelper
   
   public static void a(String paramString, EmoticonInfo paramEmoticonInfo)
   {
-    if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) {
-      a(paramString, ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).code, "");
+    a(paramString, paramEmoticonInfo, false);
+  }
+  
+  public static void a(String paramString, EmoticonInfo paramEmoticonInfo, boolean paramBoolean)
+  {
+    if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
+    {
+      paramEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      int i;
+      if (paramBoolean) {
+        i = QQEmojiUtil.getEmojiUnicode(paramEmoticonInfo.code);
+      } else {
+        i = QQSysFaceUtil.convertToServer(paramEmoticonInfo.code);
+      }
+      a(paramString, i, "");
     }
   }
   
@@ -85,7 +100,7 @@ public class PopOutAnimViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.view.PopOutAnimViewHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class StoryQIMBadgeView$1$1
   public void run()
   {
     boolean bool;
-    if (this.jdField_a_of_type_FriendlistGetOnlineInfoResp.eIconType == 11) {
+    if (this.a.eIconType == 11) {
       bool = true;
     } else {
       bool = false;
     }
-    StoryQIMBadgeView.a().put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView$1.a.a(bool);
+    StoryQIMBadgeView.c().put(this.b, Boolean.valueOf(bool));
+    this.c.a.a(bool);
   }
 }
 

@@ -14,24 +14,24 @@ class LangSettingFragment$3
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if ((i >= 0) && (i < LangSettingFragment.a().size()))
     {
-      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
-      LangSettingFragment.c(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, ((Integer)LangSettingFragment.a().get(this.jdField_a_of_type_Int)).intValue());
+      LangSettingFragment.c(this.b, this.a);
+      LangSettingFragment.d(this.b, ((Integer)LangSettingFragment.a().get(this.a)).intValue());
     }
-    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
-      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
+    if ((LangSettingFragment.b(this.b) != null) && (LangSettingFragment.b(this.b).isShowing())) {
+      LangSettingFragment.b(this.b).dismiss();
     }
-    if ((LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment) != null) && (LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).isShowing())) {
-      LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment).dismiss();
+    if ((LangSettingFragment.c(this.b) != null) && (LangSettingFragment.c(this.b).isShowing())) {
+      LangSettingFragment.c(this.b).dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

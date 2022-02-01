@@ -67,7 +67,7 @@ public class PttConfigServiceImpl
     if (paramAppRuntime.length > 13)
     {
       boolean bool = "1".equals(paramAppRuntime[12]);
-      AccountDPCHelper.b(BaseApplication.getContext(), bool);
+      AccountDPCHelper.d(BaseApplication.getContext(), bool);
       if (paramAppRuntime.length > 14)
       {
         bool = "1".equals(paramAppRuntime[13]);
@@ -82,7 +82,7 @@ public class PttConfigServiceImpl
     this.mApp = null;
     PreDownloadParams.a();
     getDPCApi().removeObserver(this);
-    RecordParams.a();
+    RecordParams.c();
     getStreamParamsApi().release();
   }
   
@@ -100,7 +100,7 @@ public class PttConfigServiceImpl
       if (localObject.length > 13)
       {
         paramBoolean = "1".equals(localObject[12]);
-        AccountDPCHelper.b(BaseApplication.getContext(), paramBoolean);
+        AccountDPCHelper.d(BaseApplication.getContext(), paramBoolean);
         if (localObject.length > 14)
         {
           paramBoolean = "1".equals(localObject[13]);
@@ -163,7 +163,7 @@ public class PttConfigServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pttlogic.api.impl.PttConfigServiceImpl
  * JD-Core Version:    0.7.0.1
  */

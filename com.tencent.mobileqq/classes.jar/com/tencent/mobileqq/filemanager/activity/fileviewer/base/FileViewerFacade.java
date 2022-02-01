@@ -39,12 +39,12 @@ public class FileViewerFacade
         ((StringBuilder)localObject2).append("]");
         QLog.i("<FileAssistant>FileViewerFacade", 2, ((StringBuilder)localObject2).toString());
       }
-      FMDialogUtil.a(paramActivity, paramActivity.getString(2131692745), 2131692732, new FileViewerFacade.1((String)localObject1, str, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIFileBrowser));
+      FMDialogUtil.a(paramActivity, paramActivity.getString(2131889816), 2131889803, new FileViewerFacade.1((String)localObject1, str, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIFileBrowser));
       return;
     }
     if ((paramFileManagerEntity.nFileType == 5) && ((paramFileManagerEntity.isZipInnerFile) || (paramFileManagerEntity.nOpType == 190)))
     {
-      FMDialogUtil.a(paramActivity, paramActivity.getString(2131692745), 2131692711, new FileViewerFacade.2(paramActivity, paramFileManagerEntity));
+      FMDialogUtil.a(paramActivity, paramActivity.getString(2131889816), 2131889782, new FileViewerFacade.2(paramActivity, paramFileManagerEntity));
       return;
     }
     FileManagerUtil.b(paramActivity, paramFileManagerEntity.getFilePath());
@@ -52,7 +52,7 @@ public class FileViewerFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileviewer.base.FileViewerFacade
  * JD-Core Version:    0.7.0.1
  */

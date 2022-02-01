@@ -12,8 +12,8 @@ public class PublishConfigResponse
   @Deprecated
   public boolean b;
   @Deprecated
-  public boolean c;
-  public boolean d;
+  public boolean e;
+  public boolean f;
   
   public PublishConfigResponse(qqstory_service.RspGetPublishConfig paramRspGetPublishConfig)
   {
@@ -37,19 +37,19 @@ public class PublishConfigResponse
     } else {
       bool1 = false;
     }
-    this.c = bool1;
+    this.e = bool1;
     boolean bool1 = bool2;
     if (paramRspGetPublishConfig.video_use_bdh.get() == 1) {
       bool1 = true;
     }
-    this.d = bool1;
+    this.f = bool1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PublishConfigResponse{firstTimePic=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", nowEntry=");
     localStringBuilder.append(this.a);
     localStringBuilder.append(", takePic=");
@@ -60,7 +60,7 @@ public class PublishConfigResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.PublishConfigResponse
  * JD-Core Version:    0.7.0.1
  */

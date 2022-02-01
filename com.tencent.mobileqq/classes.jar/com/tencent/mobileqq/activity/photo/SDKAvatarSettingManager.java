@@ -35,36 +35,32 @@ import java.security.MessageDigest;
 
 public class SDKAvatarSettingManager
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-  protected QQProgressDialog a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SDKAvatarSettingManager.4(this);
-  private String jdField_a_of_type_JavaLangString = null;
-  protected boolean a;
-  protected QQCustomDialog b;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new SDKAvatarSettingManager.5(this);
-  private String jdField_b_of_type_JavaLangString = null;
-  protected boolean b;
-  protected QQCustomDialog c;
-  private String jdField_c_of_type_JavaLangString = null;
-  private boolean jdField_c_of_type_Boolean = false;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean = false;
-  private String e;
-  private String f;
+  protected boolean a = false;
+  protected boolean b = false;
+  protected QQProgressDialog c;
+  QQCustomDialog d = null;
+  protected QQCustomDialog e = null;
+  protected QQCustomDialog f = null;
+  private Activity g;
+  private String h = null;
+  private String i = null;
+  private String j = null;
+  private String k;
+  private String l;
+  private String m;
+  private boolean n = false;
+  private boolean o = false;
+  private Handler p;
+  private Runnable q = new SDKAvatarSettingManager.4(this);
+  private Runnable r = new SDKAvatarSettingManager.5(this);
   
   public SDKAvatarSettingManager(Activity paramActivity)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     if (QLog.isColorLevel()) {
       QLog.w("SDKAvatarSettingManager", 2, " onCreate ");
     }
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.g = paramActivity;
+    this.p = new Handler();
   }
   
   private void a(Activity paramActivity, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
@@ -92,7 +88,7 @@ public class SDKAvatarSettingManager
       ((Intent)localObject).setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(paramLong), "sdkSetAvatar" })));
     }
     if (paramActivity.getIntent() != null) {
-      ((Intent)localObject).setPackage(this.jdField_c_of_type_JavaLangString);
+      ((Intent)localObject).setPackage(this.j);
     }
     try
     {
@@ -119,14 +115,14 @@ public class SDKAvatarSettingManager
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      int i = ProfileCardUtil.b(this.jdField_a_of_type_AndroidAppActivity);
+      int i1 = ProfileCardUtil.b(this.g);
       localObject = new Intent();
       ((Intent)localObject).setFlags(603979776);
       ((Intent)localObject).putExtra("Business_Origin", 100);
       ((Intent)localObject).putExtra("FROM_WHERE", "FROM_SDK_AVATAR_SET_IMAGE");
       Class localClass = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardActivityClass();
-      PhotoUtils.startPhotoEditForResult((Intent)localObject, this.jdField_a_of_type_AndroidAppActivity, localClass.getName(), i, i, 1080, 1080, paramString, FaceUtil.a(), 1035);
-      this.jdField_d_of_type_Boolean = true;
+      PhotoUtils.startPhotoEditForResult((Intent)localObject, this.g, localClass.getName(), i1, i1, 1080, 1080, paramString, FaceUtil.a(), 1035);
+      this.o = true;
       return;
     }
     if (QLog.isColorLevel()) {
@@ -137,14 +133,14 @@ public class SDKAvatarSettingManager
   private void g()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidAppActivity.getString(2131718866));
-    ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.g.getString(2131916399));
+    ((StringBuilder)localObject1).append(this.i);
     String str = ((StringBuilder)localObject1).toString();
     Object localObject3;
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+    if (!TextUtils.isEmpty(this.j)) {
       try
       {
-        localObject1 = this.jdField_a_of_type_AndroidAppActivity.getPackageManager().getPackageInfo(this.jdField_c_of_type_JavaLangString, 64);
+        localObject1 = this.g.getPackageManager().getPackageInfo(this.j, 64);
         if (localObject1 == null) {
           break label132;
         }
@@ -170,33 +166,33 @@ public class SDKAvatarSettingManager
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("checkApiPermission api, mShareAppId=");
-      ((StringBuilder)localObject3).append(this.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.k);
       ((StringBuilder)localObject3).append(", mPkgName=");
-      ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.j);
       ((StringBuilder)localObject3).append(",signature=");
       ((StringBuilder)localObject3).append((String)localObject2);
       ((StringBuilder)localObject3).append(",mSdkVerdion=");
-      ((StringBuilder)localObject3).append(this.f);
+      ((StringBuilder)localObject3).append(this.m);
       QLog.d("SDKAvatarSettingManager", 2, ((StringBuilder)localObject3).toString());
     }
-    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+    if ((!TextUtils.isEmpty(this.k)) && (!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
     {
       ((IDoraemonService)QRoute.api(IDoraemonService.class)).prepare();
       localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("sdkVersion", this.f);
-      ((Bundle)localObject3).putString("pkgName", this.jdField_c_of_type_JavaLangString);
+      ((Bundle)localObject3).putString("sdkVersion", this.m);
+      ((Bundle)localObject3).putString("pkgName", this.j);
       ((Bundle)localObject3).putString("signature", (String)localObject2);
-      a(2131719039);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-      ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_d_of_type_JavaLangString, (Bundle)localObject3).a("sdk_avatar_edit", null, new SDKAvatarSettingManager.2(this, str));
+      a(2131916575);
+      this.p.postDelayed(this.q, 5000L);
+      ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(this.g, 1, this.k, (Bundle)localObject3).a("sdk_avatar_edit", null, new SDKAvatarSettingManager.2(this, str));
       return;
     }
-    QLog.e("SDKAvatarSettingManager", 1, new Object[] { "check, invalid param, mShareAppId=", this.jdField_d_of_type_JavaLangString, ", pkgName=", this.jdField_c_of_type_JavaLangString, ", signature=", localObject2 });
+    QLog.e("SDKAvatarSettingManager", 1, new Object[] { "check, invalid param, mShareAppId=", this.k, ", pkgName=", this.j, ", signature=", localObject2 });
     try
     {
-      localObject2 = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-      ((QQCustomDialog)localObject2).setMessage(HardCodeUtil.a(2131713513));
-      ((QQCustomDialog)localObject2).setNegativeButton(2131690728, new SDKAvatarSettingManager.1(this));
+      localObject2 = DialogUtil.a(this.g, 230);
+      ((QQCustomDialog)localObject2).setMessage(HardCodeUtil.a(2131911062));
+      ((QQCustomDialog)localObject2).setNegativeButton(2131887648, new SDKAvatarSettingManager.1(this));
       ((QQCustomDialog)localObject2).setCancelable(false);
       ((QQCustomDialog)localObject2).show();
       return;
@@ -214,37 +210,37 @@ public class SDKAvatarSettingManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" checkJumpAction mShareAppId = ");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.k);
       ((StringBuilder)localObject).append("， mShareOpenId =");
-      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(this.l);
       QLog.w("SDKAvatarSettingManager", 2, ((StringBuilder)localObject).toString());
     }
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      a(this.jdField_a_of_type_AndroidAppActivity, false, Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue(), false);
+      a(this.g, false, Long.valueOf(this.k).longValue(), false);
       b();
-      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+      this.g.moveTaskToBack(true);
       return;
     }
     OpenID localOpenID;
-    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.e)))
+    if ((!TextUtils.isEmpty(this.k)) && (!TextUtils.isEmpty(this.l)))
     {
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localOpenID = ((QQAppInterface)localObject).getMsgHandler().a(this.jdField_d_of_type_JavaLangString);
+      localOpenID = ((QQAppInterface)localObject).getMsgHandler().e(this.k);
       if (localOpenID == null)
       {
-        a(2131719039);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 8000L);
+        a(2131916575);
+        this.p.postDelayed(this.r, 8000L);
       }
     }
     try
     {
-      long l = Long.parseLong(((QQAppInterface)localObject).getCurrentAccountUin());
-      ((QQAppInterface)localObject).getMsgHandler().a(l, this.e, Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue(), new SDKAvatarSettingManager.3(this));
+      long l1 = Long.parseLong(((QQAppInterface)localObject).getCurrentAccountUin());
+      ((QQAppInterface)localObject).getMsgHandler().a(l1, this.l, Long.valueOf(this.k).longValue(), new SDKAvatarSettingManager.3(this));
       return;
     }
     catch (Exception localException) {}
-    if (!this.e.equals(localOpenID.openID))
+    if (!this.l.equals(localOpenID.openID))
     {
       if (QLog.isColorLevel()) {
         QLog.w("SDKAvatarSettingManager", 2, "-->preForward--openid doesn't equal current local openid");
@@ -253,10 +249,10 @@ public class SDKAvatarSettingManager
       return;
     }
     d();
-    b(this.jdField_a_of_type_JavaLangString);
+    b(this.h);
     return;
     d();
-    b(this.jdField_a_of_type_JavaLangString);
+    b(this.h);
     return;
   }
   
@@ -267,14 +263,14 @@ public class SDKAvatarSettingManager
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.c == null)
     {
-      Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299168));
+      Activity localActivity = this.g;
+      this.c = new QQProgressDialog(localActivity, localActivity.getResources().getDimensionPixelSize(2131299920));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.c.c(paramInt);
+    if (!this.g.isFinishing()) {
+      this.c.show();
     }
   }
   
@@ -291,29 +287,29 @@ public class SDKAvatarSettingManager
     {
       if (paramIntent.getBooleanExtra("key_from_sdk_set_avatar_result", false))
       {
-        this.jdField_c_of_type_Boolean = true;
-        a(this.jdField_b_of_type_JavaLangString);
+        this.n = true;
+        a(this.i);
       }
       else
       {
-        this.jdField_c_of_type_Boolean = false;
-        a(this.jdField_a_of_type_AndroidAppActivity, false, Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue(), false);
+        this.n = false;
+        a(this.g, false, Long.valueOf(this.k).longValue(), false);
         b();
-        this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+        this.g.moveTaskToBack(true);
       }
     }
     else if (paramInt == 0)
     {
       paramIntent = new Intent();
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0, paramIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+      this.g.setResult(0, paramIntent);
+      this.g.finish();
+      this.g.moveTaskToBack(true);
     }
     else
     {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.g.finish();
     }
-    this.jdField_d_of_type_Boolean = false;
+    this.o = false;
   }
   
   public void a(Intent paramIntent)
@@ -321,12 +317,12 @@ public class SDKAvatarSettingManager
     paramIntent = paramIntent.getBundleExtra("profile_extra");
     if (paramIntent != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramIntent.getString("key_from_sdk_set_avatar_path", null);
-      this.jdField_b_of_type_JavaLangString = paramIntent.getString("key_from_sdk_set_avatar_appname", null);
-      this.jdField_d_of_type_JavaLangString = paramIntent.getString("key_from_sdk_set_avatar_share_id", null);
-      this.e = paramIntent.getString("key_from_sdk_set_avatar_open_id", null);
-      this.jdField_c_of_type_JavaLangString = paramIntent.getString("pkg_name", null);
-      this.f = paramIntent.getString("sdk_version");
+      this.h = paramIntent.getString("key_from_sdk_set_avatar_path", null);
+      this.i = paramIntent.getString("key_from_sdk_set_avatar_appname", null);
+      this.k = paramIntent.getString("key_from_sdk_set_avatar_share_id", null);
+      this.l = paramIntent.getString("key_from_sdk_set_avatar_open_id", null);
+      this.j = paramIntent.getString("pkg_name", null);
+      this.m = paramIntent.getString("sdk_version");
     }
     if (QLog.isColorLevel()) {
       QLog.w("SDKAvatarSettingManager", 2, " initParam ");
@@ -335,19 +331,19 @@ public class SDKAvatarSettingManager
   
   void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (this.g.isFinishing()) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    Object localObject = this.d;
     if ((localObject != null) && (!((QQCustomDialog)localObject).isShowing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.d.show();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(HardCodeUtil.a(2131713515));
-    String str1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131718866);
-    String str2 = this.jdField_a_of_type_AndroidAppActivity.getString(2131718867);
+    this.d = DialogUtil.a(this.g, 230);
+    this.d.setTitle(HardCodeUtil.a(2131911064));
+    String str1 = this.g.getString(2131916399);
+    String str2 = this.g.getString(2131916400);
     localObject = str1;
     if (paramString != null)
     {
@@ -357,44 +353,44 @@ public class SDKAvatarSettingManager
       localObject = ((StringBuilder)localObject).toString();
     }
     paramString = new SDKAvatarSettingManager.6(this, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(str2, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton((String)localObject, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new SDKAvatarSettingManager.7(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.d.setPositiveButton(str2, paramString);
+    this.d.setNegativeButton((String)localObject, paramString);
+    this.d.setOnKeyListener(new SDKAvatarSettingManager.7(this));
+    this.d.show();
   }
   
   protected void a(String paramString1, String paramString2)
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.f;
     if (localQQCustomDialog != null) {
       localQQCustomDialog.dismiss();
     }
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString1);
+    this.e = DialogUtil.a(this.g, 230);
+    this.e.setMessage(paramString1);
     paramString1 = new SDKAvatarSettingManager.9(this);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(paramString2, paramString1);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.e.setNegativeButton(paramString2, paramString1);
+    this.e.show();
   }
   
   protected void b()
   {
     Intent localIntent = new Intent();
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.g.setResult(-1, localIntent);
+    this.g.finish();
   }
   
   public void b(Intent paramIntent)
   {
-    if (!this.jdField_d_of_type_Boolean)
+    if (!this.o)
     {
       f();
       a(paramIntent);
       a();
       return;
     }
-    a(this.jdField_a_of_type_AndroidAppActivity, false, Long.valueOf(this.jdField_d_of_type_JavaLangString).longValue(), false);
+    a(this.g, false, Long.valueOf(this.k).longValue(), false);
     b();
-    this.jdField_a_of_type_AndroidAppActivity.moveTaskToBack(true);
+    this.g.moveTaskToBack(true);
   }
   
   public void c()
@@ -404,61 +400,61 @@ public class SDKAvatarSettingManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" gotoConversation isSuccess = ");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.n);
       QLog.w("SDKAvatarSettingManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_c_of_type_Boolean)
+    if (this.n)
     {
       localObject = new Intent();
-      ((Intent)localObject).setClass(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
+      ((Intent)localObject).setClass(this.g, SplashActivity.class);
       ((Intent)localObject).setAction("com.tencent.mobileqq.action.MAINACTIVITY");
       ((Intent)localObject).setFlags(67108864);
       ((Intent)localObject).putExtra("tab_index", FrameControllerUtil.a);
       ((Intent)localObject).putExtra("fragment_id", 1);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+      this.g.startActivity((Intent)localObject);
     }
   }
   
   public void d()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.c;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.c.dismiss();
     }
   }
   
   protected void e()
   {
-    Object localObject = this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    Object localObject = this.e;
     if (localObject != null)
     {
       if (!((QQCustomDialog)localObject).isShowing()) {
-        this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        this.e.show();
       }
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(HardCodeUtil.a(2131713514));
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131692113);
+    this.e = DialogUtil.a(this.g, 230);
+    this.e.setMessage(HardCodeUtil.a(2131911063));
+    this.e.setTitle(2131889094);
     localObject = new SDKAvatarSettingManager.8(this);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690728, (DialogInterface.OnClickListener)localObject);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131718876, (DialogInterface.OnClickListener)localObject);
-    this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.e.setNegativeButton(2131887648, (DialogInterface.OnClickListener)localObject);
+    this.e.setPositiveButton(2131916409, (DialogInterface.OnClickListener)localObject);
+    this.e.show();
   }
   
   public void f()
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.d;
     if (localQQCustomDialog != null) {
       localQQCustomDialog.dismiss();
     }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
+    this.n = false;
+    this.o = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager
  * JD-Core Version:    0.7.0.1
  */

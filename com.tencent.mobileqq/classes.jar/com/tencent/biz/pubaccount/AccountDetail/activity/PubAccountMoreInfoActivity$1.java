@@ -27,7 +27,7 @@ class PubAccountMoreInfoActivity$1
     }
     if (!paramBoolean)
     {
-      this.a.a(2131695217);
+      this.a.a(2131892951);
       return;
     }
     try
@@ -53,7 +53,7 @@ class PubAccountMoreInfoActivity$1
       }
       if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0)
       {
-        if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl != null) && ((!paramBundle.seqno.has()) || (paramBundle.seqno.get() == this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.seqno))) {
+        if ((this.a.a != null) && ((!paramBundle.seqno.has()) || (paramBundle.seqno.get() == this.a.a.seqno))) {
           break label298;
         }
         if (QLog.isColorLevel())
@@ -63,13 +63,13 @@ class PubAccountMoreInfoActivity$1
           ((StringBuilder)localObject).append(paramBundle.seqno.get());
           QLog.d("PubAccountMoreInfoActivity", 2, ((StringBuilder)localObject).toString());
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = paramBundle;
-        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl = new PublicAccountDetailImpl();
-        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.init(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+        this.a.h = paramBundle;
+        this.a.a = new PublicAccountDetailImpl();
+        this.a.a.init(this.a.h);
         PubAccountMoreInfoActivity.a(this.a);
         return;
       }
-      this.a.a(2131695217);
+      this.a.a(2131892951);
       return;
     }
     catch (Exception paramBundle)
@@ -77,13 +77,13 @@ class PubAccountMoreInfoActivity$1
       label289:
       break label289;
     }
-    this.a.a(2131695217);
+    this.a.a(2131892951);
     label298:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.activity.PubAccountMoreInfoActivity.1
  * JD-Core Version:    0.7.0.1
  */

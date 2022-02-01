@@ -12,7 +12,7 @@ public class TencentDocFormKeyWordsProcessor
 {
   public static TencentDocFormKeyWordsBean a()
   {
-    return (TencentDocFormKeyWordsBean)QConfigManager.a().a(569);
+    return (TencentDocFormKeyWordsBean)QConfigManager.b().b(569);
   }
   
   @NonNull
@@ -67,7 +67,7 @@ public class TencentDocFormKeyWordsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocFormKeyWordsProcessor
  * JD-Core Version:    0.7.0.1
  */

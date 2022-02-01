@@ -29,33 +29,104 @@ import org.json.JSONObject;
 public class MessageSearchResultModel
   extends ISearchResultPositionModel
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private String jdField_b_of_type_JavaLangString;
+  private String a;
+  private FullMessageSearchResult.SearchResultItem b;
+  private QQAppInterface c;
+  private CharSequence d;
+  private CharSequence e;
+  private String f;
   
   public MessageSearchResultModel(QQAppInterface paramQQAppInterface, String paramString, FullMessageSearchResult.SearchResultItem paramSearchResultItem)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
+    this.c = paramQQAppInterface;
+    this.a = paramString;
+    this.b = paramSearchResultItem;
     if (paramSearchResultItem.user.getType() == 3000)
     {
-      int i = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramSearchResultItem.user.uin);
+      int i = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c(paramSearchResultItem.user.uin);
       if (i <= 0)
       {
-        this.jdField_b_of_type_JavaLangString = "";
+        this.f = "";
         return;
       }
-      this.jdField_b_of_type_JavaLangString = String.valueOf(i);
+      this.f = String.valueOf(i);
     }
   }
   
-  public int a()
+  public CharSequence a()
   {
-    int k = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType();
+    if (this.e == null)
+    {
+      int i = this.b.secondPageMessageUniseq.size();
+      if (i == 1)
+      {
+        this.e = SearchUtils.a(((MessageRecord)this.b.secondPageList.get(0)).msg, this.a);
+      }
+      else
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131904549));
+        ((StringBuilder)localObject).append("\"");
+        localObject = new SpannableStringBuilder(((StringBuilder)localObject).toString());
+        String str = this.a;
+        ((SpannableStringBuilder)localObject).append(SearchUtils.a(str, str));
+        ((SpannableStringBuilder)localObject).append("\"").append("相关记录");
+        this.e = ((CharSequence)localObject);
+      }
+    }
+    return this.e;
+  }
+  
+  public void a(View paramView)
+  {
+    if (((paramView.getContext() instanceof UniteSearchActivity)) && (SearchUtils.l.containsKey(this)))
+    {
+      Object localObject1 = (SearchUtils.ObjectItemInfo)SearchUtils.l.get(this);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject2 = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject2).put("project", UniteSearchReportController.a());
+        ((JSONObject)localObject2).put("event_src", "client");
+        ((JSONObject)localObject2).put("obj_lct", ((SearchUtils.ObjectItemInfo)localObject1).c);
+        ((JSONObject)localObject2).put("get_src", "native");
+      }
+      catch (JSONException localJSONException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("e = ");
+        localStringBuilder.append(localJSONException);
+        QLog.e("MessageSearchResultModel", 2, localStringBuilder.toString());
+      }
+      ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((SearchUtils.ObjectItemInfo)localObject1).b);
+      localStringBuilder.append("");
+      localObject1 = localReportModelDC02528.obj1(localStringBuilder.toString()).obj2(((SearchUtils.ObjectItemInfo)localObject1).e).ver1(((SearchUtils.ObjectItemInfo)localObject1).a).ver2(UniteSearchReportController.a(UniteSearchActivity.f)).ver7(((JSONObject)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(localQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(SearchUtils.j);
+      UniteSearchReportController.a(null, ((ReportModelDC02528)localObject1).session_id(((StringBuilder)localObject2).toString()));
+    }
+    if (this.b.secondPageMessageUniseq.size() == 1)
+    {
+      RecentUtil.a = true;
+      RecentUtil.b = (MessageRecord)this.b.secondPageList.get(0);
+      RecentUtil.a(paramView.getContext(), this.c, this.b.user.uin, this.b.user.getType(), ContactUtils.a(this.c, this.b.user.uin, this.b.user.getType()), false);
+      SearchHistoryManager.a(this.c, this.a);
+      SearchUtils.a(this.a, 40, paramView, false);
+    }
+    else
+    {
+      MessageSearchDetailActivity.a(paramView.getContext(), g(), this.b);
+    }
+    SearchUtils.a(this.a, 40, 0, paramView);
+  }
+  
+  public int b()
+  {
+    int k = this.b.user.getType();
     int j = 1;
     int i = j;
     if (k != 0) {
@@ -68,7 +139,7 @@ public class MessageSearchResultModel
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("Face type is illegal. type = ");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType());
+            localStringBuilder.append(this.b.user.getType());
             QLog.d("MessageSearchResultModel", 2, localStringBuilder.toString());
             return 1;
           }
@@ -85,116 +156,45 @@ public class MessageSearchResultModel
     return i;
   }
   
-  public CharSequence a()
+  public String c()
   {
-    if (this.jdField_b_of_type_JavaLangCharSequence == null)
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size();
-      if (i == 1)
-      {
-        this.jdField_b_of_type_JavaLangCharSequence = SearchUtils.a(((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageList.get(0)).msg, this.jdField_a_of_type_JavaLangString);
-      }
-      else
-      {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(i);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131706698));
-        ((StringBuilder)localObject).append("\"");
-        localObject = new SpannableStringBuilder(((StringBuilder)localObject).toString());
-        String str = this.jdField_a_of_type_JavaLangString;
-        ((SpannableStringBuilder)localObject).append(SearchUtils.a(str, str));
-        ((SpannableStringBuilder)localObject).append("\"").append("相关记录");
-        this.jdField_b_of_type_JavaLangCharSequence = ((CharSequence)localObject);
-      }
-    }
-    return this.jdField_b_of_type_JavaLangCharSequence;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin;
-  }
-  
-  public void a(View paramView)
-  {
-    if (((paramView.getContext() instanceof UniteSearchActivity)) && (SearchUtils.b.containsKey(this)))
-    {
-      Object localObject1 = (SearchUtils.ObjectItemInfo)SearchUtils.b.get(this);
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      Object localObject2 = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject2).put("project", UniteSearchReportController.a());
-        ((JSONObject)localObject2).put("event_src", "client");
-        ((JSONObject)localObject2).put("obj_lct", ((SearchUtils.ObjectItemInfo)localObject1).jdField_a_of_type_Int);
-        ((JSONObject)localObject2).put("get_src", "native");
-      }
-      catch (JSONException localJSONException)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("e = ");
-        localStringBuilder.append(localJSONException);
-        QLog.e("MessageSearchResultModel", 2, localStringBuilder.toString());
-      }
-      ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item");
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((SearchUtils.ObjectItemInfo)localObject1).jdField_a_of_type_Long);
-      localStringBuilder.append("");
-      localObject1 = localReportModelDC02528.obj1(localStringBuilder.toString()).obj2(((SearchUtils.ObjectItemInfo)localObject1).jdField_b_of_type_JavaLangString).ver1(((SearchUtils.ObjectItemInfo)localObject1).jdField_a_of_type_JavaLangString).ver2(UniteSearchReportController.a(UniteSearchActivity.d)).ver7(((JSONObject)localObject2).toString());
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(localQQAppInterface.getCurrentAccountUin());
-      ((StringBuilder)localObject2).append(SearchUtils.d);
-      UniteSearchReportController.a(null, ((ReportModelDC02528)localObject1).session_id(((StringBuilder)localObject2).toString()));
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size() == 1)
-    {
-      RecentUtil.jdField_a_of_type_Boolean = true;
-      RecentUtil.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = (MessageRecord)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageList.get(0);
-      RecentUtil.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType(), ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType()), false);
-      SearchHistoryManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      SearchUtils.a(this.jdField_a_of_type_JavaLangString, 40, paramView, false);
-    }
-    else
-    {
-      MessageSearchDetailActivity.a(paramView.getContext(), b(), this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem);
-    }
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
-      this.jdField_a_of_type_JavaLangCharSequence = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType());
-    }
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public CharSequence c()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType() == 3000) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-      return SearchUtils.a(this.jdField_b_of_type_JavaLangString);
-    }
-    return "";
+    return this.b.user.uin;
   }
   
   public CharSequence d()
   {
+    if (this.d == null) {
+      this.d = ContactUtils.a(this.c, this.b.user.uin, this.b.user.getType());
+    }
+    return this.d;
+  }
+  
+  public CharSequence e()
+  {
+    if ((this.b.user.getType() == 3000) && (!TextUtils.isEmpty(this.f))) {
+      return SearchUtils.a(this.f);
+    }
+    return "";
+  }
+  
+  public CharSequence f()
+  {
     return null;
+  }
+  
+  public String g()
+  {
+    return this.a;
+  }
+  
+  public boolean h()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.MessageSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

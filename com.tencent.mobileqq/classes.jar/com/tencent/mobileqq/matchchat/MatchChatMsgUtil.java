@@ -31,35 +31,6 @@ import java.util.List;
 
 public class MatchChatMsgUtil
 {
-  public static int a(AppInterface paramAppInterface)
-  {
-    int i = 0;
-    if (paramAppInterface == null) {
-      return 0;
-    }
-    if (!a(paramAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MatchChatMsgUtil", 2, "isMatchChatRedPointSwitchOn false");
-      }
-      return 0;
-    }
-    IConversationFacade localIConversationFacade = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
-    paramAppInterface = ((MsgProxyContainer)((QProxyManager)paramAppInterface.getProxyManagerInner()).getProxy(0)).a(1044).a(AppConstants.MATCH_CHAT_UIN, 1044);
-    if (paramAppInterface == null)
-    {
-      QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointNum null");
-      return 0;
-    }
-    paramAppInterface = paramAppInterface.iterator();
-    while (paramAppInterface.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramAppInterface.next();
-      i += localIConversationFacade.getUnreadCount(localMessageRecord.senderuin, localMessageRecord.istroop);
-    }
-    return i;
-  }
-  
   public static Intent a(Context paramContext)
   {
     paramContext = new Intent(paramContext, PublicFragmentActivity.class);
@@ -82,7 +53,7 @@ public class MatchChatMsgUtil
   
   public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    int i = a(paramQQAppInterface);
+    int i = b(paramQQAppInterface);
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append("getMatchChatRedPointAppInfo num = ");
     paramQQAppInterface.append(i);
@@ -100,7 +71,7 @@ public class MatchChatMsgUtil
     if (paramQQAppInterface == null) {
       return;
     }
-    Object localObject1 = paramQQAppInterface.getMessageProxy(1044).a(AppConstants.MATCH_CHAT_UIN, 1044);
+    Object localObject1 = paramQQAppInterface.getMessageProxy(1044).b(AppConstants.MATCH_CHAT_UIN, 1044);
     if (localObject1 == null)
     {
       QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox null");
@@ -119,7 +90,7 @@ public class MatchChatMsgUtil
       }
       Object localObject2 = localMessageRecord.senderuin;
       int i = localMessageRecord.istroop;
-      paramQQAppInterface.getMessageFacade().a((String)localObject2, i);
+      paramQQAppInterface.getMessageFacade().c((String)localObject2, i);
     }
   }
   
@@ -150,7 +121,36 @@ public class MatchChatMsgUtil
     return true;
   }
   
-  static boolean a(QQAppInterface paramQQAppInterface)
+  public static int b(AppInterface paramAppInterface)
+  {
+    int i = 0;
+    if (paramAppInterface == null) {
+      return 0;
+    }
+    if (!a(paramAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MatchChatMsgUtil", 2, "isMatchChatRedPointSwitchOn false");
+      }
+      return 0;
+    }
+    IConversationFacade localIConversationFacade = (IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "");
+    paramAppInterface = ((MsgProxyContainer)((QProxyManager)paramAppInterface.getProxyManagerInner()).getProxy(0)).a(1044).b(AppConstants.MATCH_CHAT_UIN, 1044);
+    if (paramAppInterface == null)
+    {
+      QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointNum null");
+      return 0;
+    }
+    paramAppInterface = paramAppInterface.iterator();
+    while (paramAppInterface.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramAppInterface.next();
+      i += localIConversationFacade.getUnreadCount(localMessageRecord.senderuin, localMessageRecord.istroop);
+    }
+    return i;
+  }
+  
+  static boolean b(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface == null) {
       return false;
@@ -159,7 +159,7 @@ public class MatchChatMsgUtil
     return DateUtils.a.a(7, l);
   }
   
-  static void b(QQAppInterface paramQQAppInterface)
+  static void c(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface == null) {
       return;

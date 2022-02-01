@@ -13,31 +13,45 @@ public class CameraProviderViewGesture
   implements GLGestureListener
 {
   protected View a;
-  private CameraProviderViewGesture.Listener a;
-  protected List<AEAbsBottomPanal> a;
+  protected List<AEAbsBottomPanal> b;
+  private List<CameraProviderViewGesture.TouchDownHandler> c;
+  private CameraProviderViewGesture.Listener d;
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
   
   public void a(AEAbsBottomPanal paramAEAbsBottomPanal)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(paramAEAbsBottomPanal);
+      this.b = new ArrayList();
+      this.b.add(paramAEAbsBottomPanal);
       return;
     }
     if (!localList.contains(paramAEAbsBottomPanal)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramAEAbsBottomPanal);
+      this.b.add(paramAEAbsBottomPanal);
     }
   }
   
   public void a(CameraProviderViewGesture.Listener paramListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGestureCameraProviderViewGesture$Listener = paramListener;
+    this.d = paramListener;
+  }
+  
+  public void a(CameraProviderViewGesture.TouchDownHandler paramTouchDownHandler)
+  {
+    if (paramTouchDownHandler == null) {
+      return;
+    }
+    if (this.c == null) {
+      this.c = new ArrayList();
+    }
+    if (!this.c.contains(paramTouchDownHandler)) {
+      this.c.add(paramTouchDownHandler);
+    }
   }
   
   public int onGetPriority()
@@ -51,24 +65,32 @@ public class CameraProviderViewGesture
     int j = paramMotionEvent.getAction();
     if ((i == 1) && (!paramBoolean) && ((j & 0xFF) == 0))
     {
-      Object localObject1 = this.jdField_a_of_type_AndroidViewView;
+      Object localObject1 = this.a;
       if (localObject1 == null) {
         localObject1 = GLGestureProxy.getInstance().getGLSurfaceView();
       }
-      Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeGestureCameraProviderViewGesture$Listener;
+      Object localObject2 = this.d;
       if (localObject2 != null) {
         ((CameraProviderViewGesture.Listener)localObject2).a();
       }
-      localObject2 = this.jdField_a_of_type_JavaUtilList;
+      localObject2 = this.b;
       if (localObject2 != null)
       {
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           AEAbsBottomPanal localAEAbsBottomPanal = (AEAbsBottomPanal)((Iterator)localObject2).next();
-          if ((localObject1 != null) && (localAEAbsBottomPanal != null) && (paramMotionEvent.getY() < ((View)localObject1).getHeight() - localAEAbsBottomPanal.getHeight()) && (!localAEAbsBottomPanal.a())) {
-            localAEAbsBottomPanal.d();
+          if ((localObject1 != null) && (localAEAbsBottomPanal != null) && (paramMotionEvent.getY() < ((View)localObject1).getHeight() - localAEAbsBottomPanal.getHeight()) && (!localAEAbsBottomPanal.e())) {
+            localAEAbsBottomPanal.h();
           }
+        }
+      }
+      paramMotionEvent = this.c;
+      if (paramMotionEvent != null)
+      {
+        paramMotionEvent = paramMotionEvent.iterator();
+        while (paramMotionEvent.hasNext()) {
+          ((CameraProviderViewGesture.TouchDownHandler)paramMotionEvent.next()).a();
         }
       }
     }
@@ -77,7 +99,7 @@ public class CameraProviderViewGesture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gesture.CameraProviderViewGesture
  * JD-Core Version:    0.7.0.1
  */

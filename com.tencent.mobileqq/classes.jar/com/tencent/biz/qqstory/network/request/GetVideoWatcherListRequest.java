@@ -14,16 +14,21 @@ import com.tencent.mobileqq.pb.PBBytesField;
 public class GetVideoWatcherListRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.feed_visitor_list");
-  public String b;
+  public static final String e = StoryApi.a("StorySvc.feed_visitor_list");
+  public String f;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     Object localObject = new qqstory_service.RspGetFeedVisitor();
     try
     {
       ((qqstory_service.RspGetFeedVisitor)localObject).mergeFrom(paramArrayOfByte);
-      return new GetVideoWatcherListResponse(this.b, (qqstory_service.RspGetFeedVisitor)localObject);
+      return new GetVideoWatcherListResponse(this.f, (qqstory_service.RspGetFeedVisitor)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
@@ -35,15 +40,10 @@ public class GetVideoWatcherListRequest
     return null;
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetFeedVisitor localReqGetFeedVisitor = new qqstory_service.ReqGetFeedVisitor();
-    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.f));
     return localReqGetFeedVisitor.toByteArray();
   }
   
@@ -51,7 +51,7 @@ public class GetVideoWatcherListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetVideoWatcherListRequest{, feedId='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -59,7 +59,7 @@ public class GetVideoWatcherListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetVideoWatcherListRequest
  * JD-Core Version:    0.7.0.1
  */

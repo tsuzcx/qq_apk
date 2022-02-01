@@ -4,48 +4,48 @@ import java.lang.ref.WeakReference;
 
 public class ZipResEntry
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static int jdField_b_of_type_Int = 0;
-  private static ZipResEntry jdField_b_of_type_CooperationVipVipcomponentUtilZipResEntry;
-  public int a;
-  private ZipResEntry jdField_a_of_type_CooperationVipVipcomponentUtilZipResEntry;
+  private static final Object h = new Object();
+  private static ZipResEntry i;
+  private static int j = 0;
   public String a;
-  public WeakReference<ZipResLoadListener> a;
   public String b;
-  public String c;
+  public int c;
   public String d;
+  public String e;
+  public WeakReference<ZipResLoadListener> f;
+  private ZipResEntry g;
   
   public ZipResEntry(String paramString1, int paramInt, String paramString2, WeakReference<ZipResLoadListener> paramWeakReference)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString1;
+    this.c = paramInt;
     paramString1 = new StringBuilder();
-    paramString1.append(this.jdField_b_of_type_JavaLangString);
+    paramString1.append(this.b);
     paramString1.append(" ");
     paramString1.append(paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1.toString();
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.a = paramString1.toString();
+    this.f = paramWeakReference;
   }
   
   public static ZipResEntry a(String paramString1, int paramInt, String paramString2, WeakReference<ZipResLoadListener> paramWeakReference)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (h)
     {
-      if (jdField_b_of_type_CooperationVipVipcomponentUtilZipResEntry != null)
+      if (i != null)
       {
-        ZipResEntry localZipResEntry = jdField_b_of_type_CooperationVipVipcomponentUtilZipResEntry;
-        jdField_b_of_type_CooperationVipVipcomponentUtilZipResEntry = localZipResEntry.jdField_a_of_type_CooperationVipVipcomponentUtilZipResEntry;
-        localZipResEntry.jdField_a_of_type_CooperationVipVipcomponentUtilZipResEntry = null;
-        localZipResEntry.jdField_b_of_type_JavaLangString = paramString1;
-        localZipResEntry.d = paramString2;
-        localZipResEntry.jdField_a_of_type_Int = paramInt;
+        ZipResEntry localZipResEntry = i;
+        i = localZipResEntry.g;
+        localZipResEntry.g = null;
+        localZipResEntry.b = paramString1;
+        localZipResEntry.e = paramString2;
+        localZipResEntry.c = paramInt;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString1);
         localStringBuilder.append(" ");
         localStringBuilder.append(paramString2);
-        localZipResEntry.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-        localZipResEntry.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-        jdField_b_of_type_Int -= 1;
+        localZipResEntry.a = localStringBuilder.toString();
+        localZipResEntry.f = paramWeakReference;
+        j -= 1;
         return localZipResEntry;
       }
       return new ZipResEntry(paramString1, paramInt, paramString2, paramWeakReference);
@@ -54,24 +54,24 @@ public class ZipResEntry
   
   private void b()
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.c = null;
+    this.b = null;
+    this.a = null;
     this.d = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.e = null;
+    this.c = -1;
+    this.f = null;
   }
   
   public void a()
   {
     b();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (h)
     {
-      if (jdField_b_of_type_Int < 100)
+      if (j < 100)
       {
-        this.jdField_a_of_type_CooperationVipVipcomponentUtilZipResEntry = jdField_b_of_type_CooperationVipVipcomponentUtilZipResEntry;
-        jdField_b_of_type_CooperationVipVipcomponentUtilZipResEntry = this;
-        jdField_b_of_type_Int += 1;
+        this.g = i;
+        i = this;
+        j += 1;
       }
       return;
     }
@@ -79,7 +79,7 @@ public class ZipResEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.vipcomponent.util.ZipResEntry
  * JD-Core Version:    0.7.0.1
  */

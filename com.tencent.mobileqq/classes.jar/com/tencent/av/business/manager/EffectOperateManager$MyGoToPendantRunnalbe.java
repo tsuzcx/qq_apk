@@ -9,7 +9,7 @@ class EffectOperateManager$MyGoToPendantRunnalbe
   {
     EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.a.get();
     if (localEffectOperateManager != null) {
-      localEffectOperateManager.c();
+      localEffectOperateManager.e();
     }
   }
 }

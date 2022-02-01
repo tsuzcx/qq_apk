@@ -5,23 +5,20 @@ import com.tencent.mobileqq.listentogether.player.IConnCallback;
 class ListenTogetherManager$ConnCallback
   implements IConnCallback
 {
-  public Object a;
+  public Object a = new Object();
   
-  private ListenTogetherManager$ConnCallback(ListenTogetherManager paramListenTogetherManager)
-  {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-  }
+  private ListenTogetherManager$ConnCallback(ListenTogetherManager paramListenTogetherManager) {}
   
   public void a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    Object localObject1 = this.a;
     if (localObject1 == null) {
       return;
     }
     if (paramInt != 0) {
       try
       {
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        this.a.notifyAll();
         return;
       }
       finally {}
@@ -30,7 +27,7 @@ class ListenTogetherManager$ConnCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.ConnCallback
  * JD-Core Version:    0.7.0.1
  */

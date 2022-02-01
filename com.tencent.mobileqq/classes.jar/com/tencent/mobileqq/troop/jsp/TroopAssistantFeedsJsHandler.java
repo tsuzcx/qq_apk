@@ -31,13 +31,11 @@ import org.json.JSONObject;
 public class TroopAssistantFeedsJsHandler
   extends WebViewPlugin
 {
-  protected TroopMemberApiClient a;
-  protected AtomicBoolean a;
+  protected TroopMemberApiClient a = null;
+  protected AtomicBoolean b = new AtomicBoolean(false);
   
   public TroopAssistantFeedsJsHandler()
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.mPluginNameSpace = "troopAssistantFeeds";
   }
   
@@ -55,7 +53,7 @@ public class TroopAssistantFeedsJsHandler
       if (TextUtils.isEmpty(new JSONObject(paramString).getString("url"))) {
         return;
       }
-      QQToast.a(this.mRuntime.a(), 0, HardCodeUtil.a(2131714987), 0).a();
+      QQToast.makeText(this.mRuntime.d(), 0, HardCodeUtil.a(2131912482), 0).show();
       return;
     }
     catch (Exception paramString)
@@ -99,9 +97,9 @@ public class TroopAssistantFeedsJsHandler
         ((StringBuilder)localObject2).append(paramString);
         QLog.d("TroopAssistantFeedsJsHandler", 2, ((StringBuilder)localObject2).toString());
       }
-      Object localObject2 = this.mRuntime.a();
+      Object localObject2 = this.mRuntime.d();
       paramString = paramString.trim();
-      String str = this.mRuntime.a().getCurrentAccountUin();
+      String str = this.mRuntime.b().getCurrentAccountUin();
       Intent localIntent = new Intent((Context)localObject2, QQBrowserDelegationActivity.class);
       StringBuilder localStringBuilder = new StringBuilder(paramString);
       int i = paramString.indexOf("?");
@@ -151,7 +149,7 @@ public class TroopAssistantFeedsJsHandler
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           return;
         }
-        Activity localActivity = this.mRuntime.a();
+        Activity localActivity = this.mRuntime.d();
         Bundle localBundle = TroopInfoUIUtil.a(String.valueOf(localObject), 6);
         localBundle.putString("troop_code", paramString);
         localBundle.putString("troop_uin", (String)localObject);
@@ -189,13 +187,13 @@ public class TroopAssistantFeedsJsHandler
       paramString = ((JSONObject)localObject2).getString("guin");
       localObject1 = ((JSONObject)localObject2).getString("gcode");
       localObject2 = ((JSONObject)localObject2).getString("muin");
-      Object localObject3 = this.mRuntime.a().getCurrentAccountUin();
+      Object localObject3 = this.mRuntime.b().getCurrentAccountUin();
       if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
       {
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
           return;
         }
-        localObject3 = this.mRuntime.a();
+        localObject3 = this.mRuntime.d();
         Intent localIntent = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly((Context)localObject3, null);
         localIntent.putExtra("troopUin", (String)localObject1);
         localIntent.putExtra("troopCode", paramString);
@@ -239,7 +237,7 @@ public class TroopAssistantFeedsJsHandler
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           return;
         }
-        Activity localActivity = this.mRuntime.a();
+        Activity localActivity = this.mRuntime.d();
         Intent localIntent = AIOUtils.a(new Intent(localActivity, SplashActivity.class), null);
         localIntent.putExtra("uin", (String)localObject1);
         localIntent.putExtra("troop_uin", paramString);
@@ -303,7 +301,7 @@ public class TroopAssistantFeedsJsHandler
       int i = ((JSONObject)localObject3).getInt("bisID");
       Object localObject4 = ((JSONObject)localObject3).optString("senderUin");
       long l3 = ((JSONObject)localObject3).optLong("lastTime");
-      Object localObject3 = this.mRuntime.a();
+      Object localObject3 = this.mRuntime.d();
       Intent localIntent = new Intent((Context)localObject3, TroopFileDetailBrowserActivity.class);
       try
       {
@@ -357,8 +355,8 @@ public class TroopAssistantFeedsJsHandler
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      localObject = this.mRuntime.a();
-      Activity localActivity = this.mRuntime.a();
+      localObject = this.mRuntime.b();
+      Activity localActivity = this.mRuntime.d();
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
       localUserInfo.qzone_uin = ((AppInterface)localObject).getCurrentAccountUin();
       localUserInfo.nickname = "";
@@ -426,25 +424,25 @@ public class TroopAssistantFeedsJsHandler
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 363	com/tencent/mobileqq/webview/swift/WebViewPlugin:onDestroy	()V
+    //   1: invokespecial 365	com/tencent/mobileqq/webview/swift/WebViewPlugin:onDestroy	()V
     //   4: aload_0
-    //   5: getfield 13	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   5: getfield 14	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:a	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   8: ifnull +24 -> 32
     //   11: aload_0
-    //   12: getfield 13	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   15: invokevirtual 367	com/tencent/biz/troop/TroopMemberApiClient:b	()V
+    //   12: getfield 14	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:a	Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   15: invokevirtual 369	com/tencent/biz/troop/TroopMemberApiClient:f	()V
     //   18: goto +14 -> 32
     //   21: astore_1
     //   22: aload_0
-    //   23: getfield 20	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   23: getfield 21	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:b	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   26: iconst_0
-    //   27: invokevirtual 370	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   27: invokevirtual 372	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   30: aload_1
     //   31: athrow
     //   32: aload_0
-    //   33: getfield 20	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   33: getfield 21	com/tencent/mobileqq/troop/jsp/TroopAssistantFeedsJsHandler:b	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   36: iconst_0
-    //   37: invokevirtual 370	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   37: invokevirtual 372	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   40: return
     //   41: astore_1
     //   42: goto -10 -> 32
@@ -461,7 +459,7 @@ public class TroopAssistantFeedsJsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopAssistantFeedsJsHandler
  * JD-Core Version:    0.7.0.1
  */

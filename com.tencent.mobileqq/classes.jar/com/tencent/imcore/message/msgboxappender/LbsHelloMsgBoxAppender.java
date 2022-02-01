@@ -19,11 +19,11 @@ public class LbsHelloMsgBoxAppender
   private Object[] a(IMessageManager paramIMessageManager, MessageRecord paramMessageRecord, IConversationFacade paramIConversationFacade, Map<String, RecentUser> paramMap, RecentUserProxy paramRecentUserProxy, String paramString, int paramInt, long paramLong)
   {
     if ((paramIConversationFacade.isUinInRecentNotSubAccount(paramMessageRecord.senderuin)) || (paramMap.containsKey(UinTypeUtil.a(paramMessageRecord.senderuin, paramMessageRecord.istroop)))) {
-      paramRecentUserProxy.a(paramMessageRecord.senderuin);
+      paramRecentUserProxy.b(paramMessageRecord.senderuin);
     }
     boolean bool = MsgBoxUtil.a();
     int j;
-    if (UinTypeUtil.a(paramMessageRecord))
+    if (UinTypeUtil.c(paramMessageRecord))
     {
       paramIMessageManager = (C2CMessageManager)paramIMessageManager;
       paramIMessageManager.a(paramMessageRecord, AppConstants.LBS_SAY_HELLO_LIST_UIN, paramMessageRecord.senderuin);
@@ -83,7 +83,7 @@ public class LbsHelloMsgBoxAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.msgboxappender.LbsHelloMsgBoxAppender
  * JD-Core Version:    0.7.0.1
  */

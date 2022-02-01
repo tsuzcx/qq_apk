@@ -1,21 +1,16 @@
 package com.tencent.av.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.screenshare.ScreenShareReportHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ActionSheet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class DoubleVideoCtrlUI$20
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  DoubleVideoCtrlUI$20(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, ActionSheet paramActionSheet) {}
+  DoubleVideoCtrlUI$20(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScreenShareReportHelper.a("0X800B8AC");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

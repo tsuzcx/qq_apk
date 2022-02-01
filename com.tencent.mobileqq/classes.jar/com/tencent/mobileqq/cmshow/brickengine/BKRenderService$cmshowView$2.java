@@ -28,21 +28,21 @@ final class BKRenderService$cmshowView$2
     Object localObject1 = this.this$0;
     boolean bool = true;
     BKRenderService.a((BKRenderService)localObject1, true);
-    localObject1 = BKRenderService.a(this.this$0);
+    localObject1 = BKRenderService.c(this.this$0);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("init CMShowView renderConfig:");
-    ((StringBuilder)localObject2).append(BKRenderService.a(this.this$0));
+    ((StringBuilder)localObject2).append(BKRenderService.e(this.this$0));
     QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    localObject1 = BKRenderService.a(this.this$0);
+    localObject1 = BKRenderService.e(this.this$0);
     if (localObject1 != null) {
       bool = ((RenderConfig)localObject1).a;
     }
     if (bool) {
-      localObject1 = (ICMShowView)BKRenderService.a(this.this$0);
+      localObject1 = (ICMShowView)BKRenderService.f(this.this$0);
     } else {
-      localObject1 = (ICMShowView)BKRenderService.a(this.this$0);
+      localObject1 = (ICMShowView)BKRenderService.g(this.this$0);
     }
-    localObject2 = BKRenderService.a(this.this$0);
+    localObject2 = BKRenderService.h(this.this$0);
     Object localObject3;
     if (localObject2 != null)
     {
@@ -51,13 +51,13 @@ final class BKRenderService$cmshowView$2
         ((ApolloRender)localObject3).setRecordFrameListener((IRecordFrameListener)localObject2);
       }
     }
-    localObject2 = BKRenderService.a(this.this$0);
+    localObject2 = BKRenderService.d(this.this$0);
     if ((localObject2 != null) && ((localObject2 instanceof IRenderCallback)))
     {
       localObject2 = BKRenderService.a(this.this$0, (ICMShowView)localObject1);
       if (localObject2 != null)
       {
-        localObject3 = BKRenderService.a(this.this$0);
+        localObject3 = BKRenderService.d(this.this$0);
         if (localObject3 != null)
         {
           ((ApolloRender)localObject2).setRenderCallback((IRenderCallback)localObject3);
@@ -71,7 +71,7 @@ final class BKRenderService$cmshowView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKRenderService.cmshowView.2
  * JD-Core Version:    0.7.0.1
  */

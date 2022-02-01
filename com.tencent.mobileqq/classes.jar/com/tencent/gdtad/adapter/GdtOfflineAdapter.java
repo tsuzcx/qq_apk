@@ -15,12 +15,12 @@ public final class GdtOfflineAdapter
       GdtLog.d("GdtOfflineAdapter", "getVersionIfExists error");
       return null;
     }
-    return HtmlOffline.a(paramString);
+    return HtmlOffline.d(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtOfflineAdapter
  * JD-Core Version:    0.7.0.1
  */

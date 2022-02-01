@@ -7,18 +7,18 @@ import java.io.IOException;
 
 class DragSortListView$DragSortTracker
 {
-  private int jdField_a_of_type_Int = 0;
-  File jdField_a_of_type_JavaIoFile = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
-  StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b = 0;
+  StringBuilder a = new StringBuilder();
+  File b = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
+  private int d = 0;
+  private int e = 0;
+  private boolean f = false;
   
   public DragSortListView$DragSortTracker(DragSortListView paramDragSortListView)
   {
-    if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    if (!this.b.exists()) {}
     try
     {
-      this.jdField_a_of_type_JavaIoFile.createNewFile();
+      this.b.createNewFile();
       return;
     }
     catch (IOException paramDragSortListView) {}
@@ -26,108 +26,108 @@ class DragSortListView$DragSortTracker
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangStringBuilder.append("<DSLVStates>\n");
-    this.b = 0;
-    this.jdField_a_of_type_Boolean = true;
+    this.a.append("<DSLVStates>\n");
+    this.e = 0;
+    this.f = true;
   }
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
-    this.jdField_a_of_type_JavaLangStringBuilder.append("<DSLVState>\n");
-    int j = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildCount();
-    int k = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getFirstVisiblePosition();
-    this.jdField_a_of_type_JavaLangStringBuilder.append("    <Positions>");
+    this.a.append("<DSLVState>\n");
+    int j = this.c.getChildCount();
+    int k = this.c.getFirstVisiblePosition();
+    this.a.append("    <Positions>");
     int i = 0;
     while (i < j)
     {
-      localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+      localStringBuilder = this.a;
       localStringBuilder.append(k + i);
       localStringBuilder.append(",");
       i += 1;
     }
-    this.jdField_a_of_type_JavaLangStringBuilder.append("</Positions>\n");
-    this.jdField_a_of_type_JavaLangStringBuilder.append("    <Tops>");
+    this.a.append("</Positions>\n");
+    this.a.append("    <Tops>");
     i = 0;
     while (i < j)
     {
-      localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getTop());
+      localStringBuilder = this.a;
+      localStringBuilder.append(this.c.getChildAt(i).getTop());
       localStringBuilder.append(",");
       i += 1;
     }
-    this.jdField_a_of_type_JavaLangStringBuilder.append("</Tops>\n");
-    this.jdField_a_of_type_JavaLangStringBuilder.append("    <Bottoms>");
+    this.a.append("</Tops>\n");
+    this.a.append("    <Bottoms>");
     i = 0;
     while (i < j)
     {
-      localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i).getBottom());
+      localStringBuilder = this.a;
+      localStringBuilder.append(this.c.getChildAt(i).getBottom());
       localStringBuilder.append(",");
       i += 1;
     }
-    this.jdField_a_of_type_JavaLangStringBuilder.append("</Bottoms>\n");
-    StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    this.a.append("</Bottoms>\n");
+    StringBuilder localStringBuilder = this.a;
     localStringBuilder.append("    <FirstExpPos>");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c);
+    localStringBuilder.append(this.c.d);
     localStringBuilder.append("</FirstExpPos>\n");
-    localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    localStringBuilder = this.a;
     localStringBuilder.append("    <FirstExpBlankHeight>");
-    DragSortListView localDragSortListView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
-    i = localDragSortListView.a(localDragSortListView.c);
-    localDragSortListView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
-    localStringBuilder.append(i - localDragSortListView.b(localDragSortListView.c));
-    localStringBuilder.append("</FirstExpBlankHeight>\n");
-    localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
-    localStringBuilder.append("    <SecondExpPos>");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d);
-    localStringBuilder.append("</SecondExpPos>\n");
-    localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
-    localStringBuilder.append("    <SecondExpBlankHeight>");
-    localDragSortListView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
+    DragSortListView localDragSortListView = this.c;
     i = localDragSortListView.a(localDragSortListView.d);
-    localDragSortListView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
-    localStringBuilder.append(i - localDragSortListView.b(localDragSortListView.d));
+    localDragSortListView = this.c;
+    localStringBuilder.append(i - localDragSortListView.c(localDragSortListView.d));
+    localStringBuilder.append("</FirstExpBlankHeight>\n");
+    localStringBuilder = this.a;
+    localStringBuilder.append("    <SecondExpPos>");
+    localStringBuilder.append(this.c.e);
+    localStringBuilder.append("</SecondExpPos>\n");
+    localStringBuilder = this.a;
+    localStringBuilder.append("    <SecondExpBlankHeight>");
+    localDragSortListView = this.c;
+    i = localDragSortListView.a(localDragSortListView.e);
+    localDragSortListView = this.c;
+    localStringBuilder.append(i - localDragSortListView.c(localDragSortListView.e));
     localStringBuilder.append("</SecondExpBlankHeight>\n");
-    localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    localStringBuilder = this.a;
     localStringBuilder.append("    <SrcPos>");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e);
+    localStringBuilder.append(this.c.f);
     localStringBuilder.append("</SrcPos>\n");
-    localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    localStringBuilder = this.a;
     localStringBuilder.append("    <SrcHeight>");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.i + this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getDividerHeight());
+    localStringBuilder.append(this.c.j + this.c.getDividerHeight());
     localStringBuilder.append("</SrcHeight>\n");
-    localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    localStringBuilder = this.a;
     localStringBuilder.append("    <ViewHeight>");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeight());
+    localStringBuilder.append(this.c.getHeight());
     localStringBuilder.append("</ViewHeight>\n");
-    localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    localStringBuilder = this.a;
     localStringBuilder.append("    <LastY>");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.l);
+    localStringBuilder.append(this.c.s);
     localStringBuilder.append("</LastY>\n");
-    localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    localStringBuilder = this.a;
     localStringBuilder.append("    <FloatY>");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c.b);
     localStringBuilder.append("</FloatY>\n");
-    this.jdField_a_of_type_JavaLangStringBuilder.append("    <ShuffleEdges>");
+    this.a.append("    <ShuffleEdges>");
     i = 0;
     while (i < j)
     {
-      localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
-      localDragSortListView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
+      localStringBuilder = this.a;
+      localDragSortListView = this.c;
       localStringBuilder.append(localDragSortListView.a(k + i, localDragSortListView.getChildAt(i).getTop()));
       localStringBuilder.append(",");
       i += 1;
     }
-    this.jdField_a_of_type_JavaLangStringBuilder.append("</ShuffleEdges>\n");
-    this.jdField_a_of_type_JavaLangStringBuilder.append("</DSLVState>\n");
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int > 1000)
+    this.a.append("</ShuffleEdges>\n");
+    this.a.append("</DSLVState>\n");
+    this.d += 1;
+    if (this.d > 1000)
     {
       c();
-      this.jdField_a_of_type_Int = 0;
+      this.d = 0;
     }
   }
   
@@ -136,11 +136,11 @@ class DragSortListView$DragSortTracker
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 31	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:jdField_a_of_type_Boolean	Z
+    //   1: getfield 35	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:f	Z
     //   4: ifne +4 -> 8
     //   7: return
     //   8: aload_0
-    //   9: getfield 29	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:b	I
+    //   9: getfield 33	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:e	I
     //   12: ifne +8 -> 20
     //   15: iconst_0
     //   16: istore_1
@@ -150,20 +150,20 @@ class DragSortListView$DragSortTracker
     //   22: new 176	java/io/FileWriter
     //   25: dup
     //   26: aload_0
-    //   27: getfield 46	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   27: getfield 50	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:b	Ljava/io/File;
     //   30: iload_1
     //   31: invokespecial 179	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
     //   34: astore_2
     //   35: aload_2
     //   36: aload_0
-    //   37: getfield 25	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
+    //   37: getfield 29	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:a	Ljava/lang/StringBuilder;
     //   40: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   43: invokevirtual 187	java/io/FileWriter:write	(Ljava/lang/String;)V
     //   46: aload_0
-    //   47: getfield 25	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
+    //   47: getfield 29	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:a	Ljava/lang/StringBuilder;
     //   50: iconst_0
     //   51: aload_0
-    //   52: getfield 25	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:jdField_a_of_type_JavaLangStringBuilder	Ljava/lang/StringBuilder;
+    //   52: getfield 29	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:a	Ljava/lang/StringBuilder;
     //   55: invokevirtual 190	java/lang/StringBuilder:length	()I
     //   58: invokevirtual 194	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
     //   61: pop
@@ -171,10 +171,10 @@ class DragSortListView$DragSortTracker
     //   63: invokevirtual 197	java/io/FileWriter:flush	()V
     //   66: aload_0
     //   67: aload_0
-    //   68: getfield 29	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:b	I
+    //   68: getfield 33	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:e	I
     //   71: iconst_1
     //   72: iadd
-    //   73: putfield 29	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:b	I
+    //   73: putfield 33	com/tencent/mobileqq/emosm/view/DragSortListView$DragSortTracker:e	I
     //   76: aload_2
     //   77: invokevirtual 200	java/io/FileWriter:close	()V
     //   80: return
@@ -234,17 +234,17 @@ class DragSortListView$DragSortTracker
   
   public void d()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("</DSLVStates>\n");
+      this.a.append("</DSLVStates>\n");
       c();
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.DragSortTracker
  * JD-Core Version:    0.7.0.1
  */

@@ -48,14 +48,17 @@ class MapActivity$2
     }
     else
     {
-      this.this$0.dialog.setTitle(HardCodeUtil.a(2131706509)).setMessage(HardCodeUtil.a(2131706505)).setPositiveButton(HardCodeUtil.a(2131706507), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(HardCodeUtil.a(2131706506), Color.parseColor("#000000"), new MapActivity.2.1(this));
+      if (this.this$0.isFinishing()) {
+        return;
+      }
+      this.this$0.dialog.setTitle(HardCodeUtil.a(2131904365)).setMessage(HardCodeUtil.a(2131904362)).setPositiveButton(HardCodeUtil.a(2131904363), Color.parseColor("#000000"), new MapActivity.2.2(this)).setNegativeButton(HardCodeUtil.a(2131901576), Color.parseColor("#000000"), new MapActivity.2.1(this));
       this.this$0.dialog.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity.2
  * JD-Core Version:    0.7.0.1
  */

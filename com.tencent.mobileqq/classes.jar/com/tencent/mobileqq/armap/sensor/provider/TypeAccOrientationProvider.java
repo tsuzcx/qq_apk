@@ -14,7 +14,7 @@ import java.util.List;
 public class TypeAccOrientationProvider
   extends OrientationProvider2
 {
-  private float[] d = new float[4];
+  private float[] a = new float[4];
   
   public TypeAccOrientationProvider(Context paramContext, int paramInt, SensorManager paramSensorManager, ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener)
   {
@@ -30,7 +30,7 @@ public class TypeAccOrientationProvider
     if ((paramSensorManager != null) && (localSensor != null) && (Build.VERSION.SDK_INT >= 9))
     {
       paramOnSensorChangeListener.onSensorSupport(4, true);
-      this.jdField_a_of_type_JavaUtilList.add(localSensor);
+      this.d.add(localSensor);
       paramSensorManager = new StringBuilder();
       paramSensorManager.append("Gyroscope support,model:");
       paramSensorManager.append(Build.MODEL);
@@ -75,7 +75,7 @@ public class TypeAccOrientationProvider
     if (paramContext != null)
     {
       paramOnSensorChangeListener.onSensorSupport(1, true);
-      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      this.d.add(paramContext);
       return;
     }
     paramOnSensorChangeListener.onSensorSupport(1, false);
@@ -83,10 +83,10 @@ public class TypeAccOrientationProvider
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener == null) {
+    if (this.g == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.g.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
   }
   
   @TargetApi(9)
@@ -101,8 +101,8 @@ public class TypeAccOrientationProvider
     else {
       try
       {
-        SensorManager.getQuaternionFromVector(this.d, paramSensorEvent.values);
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.onRotationUpdateQuaternion(this.d);
+        SensorManager.getQuaternionFromVector(this.a, paramSensorEvent.values);
+        this.g.onRotationUpdateQuaternion(this.a);
         return;
       }
       catch (Exception paramSensorEvent)
@@ -114,7 +114,7 @@ public class TypeAccOrientationProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.TypeAccOrientationProvider
  * JD-Core Version:    0.7.0.1
  */

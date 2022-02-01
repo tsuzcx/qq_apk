@@ -79,36 +79,36 @@ public class QQReminderUtil
     return a;
   }
   
-  public static void a(AcsMsg paramAcsMsg)
+  public static void b(AcsMsg paramAcsMsg)
   {
     ((IComIPCUtils)QRoute.api(IComIPCUtils.class)).cancelAlarmNotifaction(paramAcsMsg);
   }
   
-  public static boolean a(long paramLong)
+  public static boolean b(long paramLong)
   {
-    return a(paramLong, "yyyy-MM-dd");
+    return b(paramLong, "yyyy-MM-dd");
   }
   
-  private static boolean a(long paramLong, String paramString)
+  private static boolean b(long paramLong, String paramString)
   {
     Date localDate = new Date(paramLong);
     paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
     return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
   }
   
-  public static void b(AcsMsg paramAcsMsg)
+  public static void c(AcsMsg paramAcsMsg)
   {
     ((IComIPCUtils)QRoute.api(IComIPCUtils.class)).removeMessageRecord(paramAcsMsg);
   }
   
-  public static void c(AcsMsg paramAcsMsg)
+  public static void d(AcsMsg paramAcsMsg)
   {
     ((IComIPCUtils)QRoute.api(IComIPCUtils.class)).setAlarmNotifaction(paramAcsMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.util.QQReminderUtil
  * JD-Core Version:    0.7.0.1
  */

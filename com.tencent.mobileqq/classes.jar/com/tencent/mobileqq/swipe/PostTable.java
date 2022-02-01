@@ -15,16 +15,8 @@ import com.tencent.mobileqq.utils.QQTheme;
 public class PostTable
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public RelativeLayout a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private Context b;
   private int c;
   private int d;
   private int e;
@@ -32,6 +24,14 @@ public class PostTable
   private int g;
   private int h;
   private int i;
+  private int j;
+  private int k;
+  private ImageView l;
+  private ImageView m;
+  private TextView n;
+  private TextView o;
+  private View p;
+  private boolean q = false;
   
   public PostTable(Context paramContext)
   {
@@ -47,127 +47,127 @@ public class PostTable
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.i = 0;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131558887, this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372973));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372974));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372975));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372972));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372971);
-    if (QQTheme.a()) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130839245));
+    this.b = paramContext;
+    this.k = 0;
+    this.a = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131624509, this));
+    this.l = ((ImageView)this.a.findViewById(2131440542));
+    this.m = ((ImageView)this.a.findViewById(2131440543));
+    this.n = ((TextView)this.a.findViewById(2131440544));
+    this.o = ((TextView)this.a.findViewById(2131440541));
+    this.p = this.a.findViewById(2131440540);
+    if (QQTheme.isNowThemeIsNight()) {
+      this.p.setBackgroundDrawable(paramContext.getResources().getDrawable(2130839417));
     }
     paramContext = (WindowManager)paramContext.getSystemService("window");
-    this.c = paramContext.getDefaultDisplay().getWidth();
-    this.d = paramContext.getDefaultDisplay().getHeight();
+    this.e = paramContext.getDefaultDisplay().getWidth();
+    this.f = paramContext.getDefaultDisplay().getHeight();
     d();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297580);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297581);
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * 1.083333F));
-    this.jdField_b_of_type_Int = ((int)(this.jdField_b_of_type_Int * 1.0F));
-    this.g = (this.d - getResources().getDimensionPixelSize(2131297579));
-    this.f = (this.g - this.jdField_a_of_type_Int);
-    this.e = this.c;
-    this.h = (this.e + this.jdField_b_of_type_Int);
+    this.c = this.b.getResources().getDimensionPixelSize(2131298244);
+    this.d = this.b.getResources().getDimensionPixelSize(2131298245);
+    this.c = ((int)(this.c * 1.083333F));
+    this.d = ((int)(this.d * 1.0F));
+    this.i = (this.f - getResources().getDimensionPixelSize(2131298243));
+    this.h = (this.i - this.c);
+    this.g = this.e;
+    this.j = (this.g + this.d);
   }
   
   private void e()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.o.setVisibility(0);
+    this.n.setVisibility(8);
+    this.m.setVisibility(8);
+    this.l.setVisibility(8);
   }
   
   private void f()
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setScaleX(0.0F);
-    this.jdField_b_of_type_AndroidWidgetImageView.setScaleY(0.0F);
+    this.o.setVisibility(4);
+    this.n.setVisibility(0);
+    this.m.setVisibility(0);
+    this.l.setVisibility(0);
+    this.m.setScaleX(0.0F);
+    this.m.setScaleY(0.0F);
   }
   
   public void a()
   {
-    int j = this.i;
-    if (j == 0) {
+    int i1 = this.k;
+    if (i1 == 0) {
       return;
     }
-    if (j == 2) {
+    if (i1 == 2) {
       f();
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.i = 0;
-    PostTableAnimHelper.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
-    PostTableAnimHelper.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
-    PostTableAnimHelper.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.083333F, 1.0F);
+    this.q = true;
+    this.k = 0;
+    PostTableAnimHelper.a(this.m, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
+    PostTableAnimHelper.a(this.l, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+    PostTableAnimHelper.a(this.p, 300, 1.0F, 1.0F, 1.083333F, 1.0F);
   }
   
   public void a(double paramDouble)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.q)
     {
       d();
-      this.jdField_a_of_type_Boolean = false;
+      this.q = false;
     }
-    int j = this.c;
-    int k = this.jdField_b_of_type_Int;
-    double d1 = k;
+    int i1 = this.e;
+    int i2 = this.d;
+    double d1 = i2;
     Double.isNaN(d1);
-    this.e = (j - (int)(d1 * paramDouble));
-    d1 = k;
+    this.g = (i1 - (int)(d1 * paramDouble));
+    d1 = i2;
     Double.isNaN(d1);
-    this.h = (j - (int)(paramDouble * d1) + k);
-    layout(this.e, this.f, this.h, this.g);
+    this.j = (i1 - (int)(paramDouble * d1) + i2);
+    layout(this.g, this.h, this.j, this.i);
     invalidate();
   }
   
   public void b()
   {
-    int j = this.i;
-    if (j == 1) {
+    int i1 = this.k;
+    if (i1 == 1) {
       return;
     }
-    if (j == 2) {
+    if (i1 == 2) {
       f();
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.i = 1;
-    PostTableAnimHelper.a(this.jdField_a_of_type_AndroidWidgetImageView, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
-    PostTableAnimHelper.a(this.jdField_b_of_type_AndroidWidgetImageView, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
-    PostTableAnimHelper.a(this.jdField_a_of_type_AndroidViewView, 300, 1.0F, 1.0F, 1.0F, 1.083333F);
+    this.q = true;
+    this.k = 1;
+    PostTableAnimHelper.a(this.l, 300, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F);
+    PostTableAnimHelper.a(this.m, 300, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F);
+    PostTableAnimHelper.a(this.p, 300, 1.0F, 1.0F, 1.0F, 1.083333F);
   }
   
   public void c()
   {
-    if (this.i == 2) {
+    if (this.k == 2) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.q = true;
     e();
-    this.i = 2;
-    this.jdField_a_of_type_AndroidViewView.setScaleX(1.0F);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(1.083333F);
+    this.k = 2;
+    this.p.setScaleX(1.0F);
+    this.p.setScaleY(1.083333F);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.onLayout(paramBoolean, this.e, this.f, this.h, this.g);
+    super.onLayout(paramBoolean, this.g, this.h, this.j, this.i);
     if (paramInt2 == 0) {
-      layout(this.e, this.f, this.h, this.g);
+      layout(this.g, this.h, this.j, this.i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.swipe.PostTable
  * JD-Core Version:    0.7.0.1
  */

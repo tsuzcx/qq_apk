@@ -1,31 +1,21 @@
 package com.tencent.qqconnect.wtlogin;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.open.agent.util.SSOLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class Login$10
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
   Login$10(Login paramLogin) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent == null)
-    {
-      SSOLog.a("Login", new Object[] { "mPuzzleVerifyCodeReceiver onReceive null == oldIntent" });
-      return;
-    }
-    SSOLog.a("Login", new Object[] { "mPuzzleVerifyCodeReceiver onReceive" });
-    AuthorityUtil.a(paramIntent, paramContext);
-    this.a.hideLoginTip();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.10
  * JD-Core Version:    0.7.0.1
  */

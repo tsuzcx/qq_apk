@@ -22,40 +22,40 @@ public class TroopAddFrdsSrchResultPresenter
     super.a(paramISearchResultModel, paramISearchResultView);
     if (TextUtils.isEmpty(paramISearchResultModel.a()))
     {
-      paramISearchResultView.c().setVisibility(8);
-      ((TroopAddFrdsSrchResultView)paramISearchResultView).a().setVisibility(0);
+      paramISearchResultView.d().setVisibility(8);
+      ((TroopAddFrdsSrchResultView)paramISearchResultView).j().setVisibility(0);
     }
     else
     {
-      paramISearchResultView.c().setVisibility(0);
-      paramISearchResultView.c().setText(paramISearchResultModel.a());
-      ((TroopAddFrdsSrchResultView)paramISearchResultView).a().setVisibility(8);
+      paramISearchResultView.d().setVisibility(0);
+      paramISearchResultView.d().setText(paramISearchResultModel.a());
+      ((TroopAddFrdsSrchResultView)paramISearchResultView).j().setVisibility(8);
     }
-    if (paramISearchResultView.b() != null)
+    if (paramISearchResultView.c() != null)
     {
-      paramISearchResultModel = ((TroopBatchAddFrdsSearchModelMember)paramISearchResultModel).d();
+      paramISearchResultModel = ((TroopBatchAddFrdsSearchModelMember)paramISearchResultModel).n();
       if (TextUtils.isEmpty(paramISearchResultModel))
       {
-        paramISearchResultView.b().setVisibility(8);
+        paramISearchResultView.c().setVisibility(8);
       }
       else
       {
-        paramISearchResultView.b().setVisibility(0);
-        paramISearchResultView.b().setText(paramISearchResultModel);
+        paramISearchResultView.c().setVisibility(0);
+        paramISearchResultView.c().setText(paramISearchResultModel);
       }
     }
-    paramISearchResultView.d().setVisibility(8);
+    paramISearchResultView.e().setVisibility(8);
   }
   
   protected void c(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.c(paramISearchResultModel, paramISearchResultView);
-    ((TroopAddFrdsSrchResultView)paramISearchResultView).a().setOnClickListener(new TroopAddFrdsSrchResultPresenter.1(this, paramISearchResultModel));
+    ((TroopAddFrdsSrchResultView)paramISearchResultView).j().setOnClickListener(new TroopAddFrdsSrchResultPresenter.1(this, paramISearchResultModel));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.presenter.TroopAddFrdsSrchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ public class AVGameLobbyBannerContentInfo
     return 0;
   }
   
-  public List<AVGameLobbyConstants.BannerInfo> a()
-  {
-    return this.a;
-  }
-  
   public void a(List<AVGameLobbyConstants.BannerInfo> paramList)
   {
     this.a = paramList;
   }
   
+  public List<AVGameLobbyConstants.BannerInfo> b()
+  {
+    return this.a;
+  }
+  
   @NonNull
-  public int b()
+  public int c()
   {
     return 1;
   }

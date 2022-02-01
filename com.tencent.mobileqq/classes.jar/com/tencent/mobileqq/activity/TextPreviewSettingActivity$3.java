@@ -9,12 +9,12 @@ class TextPreviewSettingActivity$3
   
   public void run()
   {
-    this.a.loadHiBoomConfig(TextPreviewSettingActivity.b(this.this$0), true, false, true);
+    this.a.loadHiBoomConfig(TextPreviewSettingActivity.c(this.this$0), true, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

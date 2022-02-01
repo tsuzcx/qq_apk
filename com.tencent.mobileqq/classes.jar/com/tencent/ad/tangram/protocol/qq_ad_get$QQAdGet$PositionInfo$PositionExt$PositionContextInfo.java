@@ -3,6 +3,7 @@ package com.tencent.ad.tangram.protocol;
 public final class qq_ad_get$QQAdGet$PositionInfo$PositionExt$PositionContextInfo
 {
   public int abs_seq = 0;
+  public int screen_num = 0;
   public int seq = 0;
   public String wesee_feeds_id;
   public String wesee_first_category;

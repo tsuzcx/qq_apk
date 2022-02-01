@@ -9,54 +9,42 @@ public class ImageInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ImageInfo> CREATOR = new ImageInfo.1();
-  public long a = -1L;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public String d;
-  public int e = 54;
-  public String e;
-  public int f = -1;
-  public String f;
-  public boolean f;
-  public int g;
-  public String g;
-  public boolean g;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i = false;
-  public int j;
+  public int A = 0;
+  public int B = 0;
+  public String C;
+  public int D;
+  public boolean E = false;
+  public boolean F = false;
+  public boolean G = true;
+  public boolean H = false;
+  public boolean I = false;
+  public boolean J = false;
+  public boolean K = false;
+  public int L = 0;
+  public int M;
+  public long N;
+  public String O;
+  public String P;
+  public String Q;
+  public boolean R;
+  public int S = 2;
   public String j;
-  public boolean j;
   public int k;
-  public String k;
-  public boolean k = false;
-  public int l;
   public String l;
-  public boolean l;
-  public boolean m = false;
-  public boolean n = false;
-  public boolean o = false;
-  public boolean p = false;
-  public boolean q;
-  
-  public ImageInfo()
-  {
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = true;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_j_of_type_Boolean = false;
-    this.jdField_l_of_type_Boolean = true;
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_l_of_type_Int = 2;
-  }
+  public int m;
+  public int n;
+  public boolean o;
+  public long p = -1L;
+  public boolean q = false;
+  public boolean r = true;
+  public boolean s = false;
+  public String t;
+  public long u;
+  public String v;
+  public long w;
+  public String x;
+  public int y = 54;
+  public int z = -1;
   
   public int describeContents()
   {
@@ -70,7 +58,7 @@ public class ImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

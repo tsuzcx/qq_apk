@@ -16,29 +16,29 @@ class TabFrameControllerImpl$1
   
   public void run()
   {
-    if (this.a.a() == null) {
+    if (this.a.C() == null) {
       return;
     }
     RenderInSubThreadMonitor.disableMonitor();
     Object localObject1 = this.a;
-    ((FrameFragment)localObject1).jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(((FrameFragment)localObject1).jdField_a_of_type_MqqAppAppRuntime.getApp());
-    localObject1 = this.a.jdField_a_of_type_AndroidContentSharedPreferences;
+    ((FrameFragment)localObject1).M = PreferenceManager.getDefaultSharedPreferences(((FrameFragment)localObject1).A.getApp());
+    localObject1 = this.a.M;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("theme_voice_setting_");
-    ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+    ((StringBuilder)localObject2).append(this.a.A.getCurrentAccountUin());
     localObject2 = ((StringBuilder)localObject2).toString();
     boolean bool = true;
     if (((SharedPreferences)localObject1).getBoolean((String)localObject2, true)) {
-      bool = ((IVasApngUtilApi)QRoute.api(IVasApngUtilApi.class)).isSoundEffectsEnable(this.a.jdField_a_of_type_MqqAppAppRuntime, this.a.a());
+      bool = ((IVasApngUtilApi)QRoute.api(IVasApngUtilApi.class)).isSoundEffectsEnable(this.a.A, this.a.C());
     }
-    this.this$0.dispatchResumeUpdateSound(this.a.jdField_a_of_type_JavaUtilHashMap, bool);
-    TabFrameControllerImpl.sFrameControllerInjectInterface.a(this.a);
+    this.this$0.dispatchResumeUpdateSound(this.a.G, bool);
+    TabFrameControllerImpl.sFrameControllerInjectInterface.b(this.a);
     RenderInSubThreadMonitor.enableMonitor();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.TabFrameControllerImpl.1
  * JD-Core Version:    0.7.0.1
  */

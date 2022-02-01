@@ -2,29 +2,23 @@ package com.tencent.mobileqq.troop.data;
 
 public class MessageInfo
 {
-  public int a;
-  public MessageNavInfo a;
-  public String a;
+  public String a = null;
+  public int b = -1;
+  public MessageNavInfo c = new MessageNavInfo();
   
   public MessageInfo()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo();
-    a();
+    f();
   }
   
   public MessageInfo(MessageInfo paramMessageInfo)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo();
     if (paramMessageInfo != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      this.c.a(paramMessageInfo.c);
       return;
     }
-    a();
+    f();
   }
   
   public static final boolean a(int paramInt1, int paramInt2)
@@ -55,8 +49,8 @@ public class MessageInfo
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a()) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.jdField_a_of_type_Int;
+    if (this.c.a()) {
+      return this.c.a;
     }
     return 0;
   }
@@ -66,54 +60,54 @@ public class MessageInfo
     if (paramBoolean) {
       return a();
     }
-    return b();
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a()) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.jdField_a_of_type_Long;
-    }
-    return -1L;
+    return c();
   }
   
   public MessageInfo a(MessageInfo paramMessageInfo)
   {
     if (paramMessageInfo != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      this.c.b(paramMessageInfo.c);
     }
     return this;
   }
   
-  public void a()
+  public long b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a();
+    if (this.c.a()) {
+      return this.c.b;
+    }
+    return -1L;
   }
   
-  public boolean a()
+  public int c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a();
-  }
-  
-  public int b()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a()) && (MessageNavInfo.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.jdField_a_of_type_Int))) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.jdField_a_of_type_Int;
+    if ((this.c.a()) && (MessageNavInfo.a(this.c.a))) {
+      return this.c.a;
     }
     return 0;
   }
   
-  public long b()
+  public long d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a()) && (MessageNavInfo.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.jdField_a_of_type_Int))) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.jdField_a_of_type_Long;
+    if ((this.c.a()) && (MessageNavInfo.a(this.c.a))) {
+      return this.c.b;
     }
     return -1L;
+  }
+  
+  public boolean e()
+  {
+    return this.c.a();
+  }
+  
+  public void f()
+  {
+    this.c.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.MessageInfo
  * JD-Core Version:    0.7.0.1
  */

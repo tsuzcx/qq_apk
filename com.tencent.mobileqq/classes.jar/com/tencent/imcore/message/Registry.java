@@ -55,191 +55,191 @@ import java.util.List;
 
 public class Registry
 {
-  private AddMessageHandlerGenerator jdField_a_of_type_ComTencentImcoreMessageAdderAddMessageHandlerGenerator = new AddMessageHandlerGeneratorImpl();
-  private C2CAddMessageHandlerGenerator jdField_a_of_type_ComTencentImcoreMessageAdderC2CAddMessageHandlerGenerator = new C2CAddMessageHandlerGeneratorImpl();
-  private AioMsgHandlerGenerator jdField_a_of_type_ComTencentImcoreMessageAiolistAioMsgHandlerGenerator = new AioMsgHandlerGeneratorImpl();
-  private ExtractMessageSummaryCallbackGenerator jdField_a_of_type_ComTencentImcoreMessageCoreExtractMessageSummaryCallbackGenerator = new ExtractMessageSummaryCallbackGeneratorImpl();
-  private GetAioListCallbackGenerator jdField_a_of_type_ComTencentImcoreMessageCoreGetAioListCallbackGenerator = new GetAioListCallbackGeneratorImpl();
-  private GetUnreadMsgNumCallbackGenerator jdField_a_of_type_ComTencentImcoreMessageCoreGetUnreadMsgNumCallbackGenerator = new GetUnreadMsgNumCallbackGeneratorImpl();
-  private CreatePbSendReqFromMessageCallbackGenerator jdField_a_of_type_ComTencentImcoreMessageCoreCodecCreatePbSendReqFromMessageCallbackGenerator = new CreatePbSendReqFromMessageCallbackGeneratorImpl();
-  private IPBMsgElemsDecoderGenerator jdField_a_of_type_ComTencentImcoreMessageCoreCodecIPBMsgElemsDecoderGenerator = new PBMsgElemsDecoderGeneratorImpl();
-  private IUinPairMsgUinTypeCallbackGenerator jdField_a_of_type_ComTencentImcoreMessageCoreCodecIUinPairMsgUinTypeCallbackGenerator = new UinPairMsgUinTypeCallbackGeneratorImpl();
-  private RoutingTypeGenerator jdField_a_of_type_ComTencentImcoreMessageCoreCodecRoutingTypeGenerator = new RoutingTypeGeneratorImpl();
-  private TempSessionCacheGenerator jdField_a_of_type_ComTencentImcoreMessageCoreCodecTempSessionCacheGenerator = new TempSessionCacheGeneratorImpl();
-  private TempSessionServiceTypeGenerator jdField_a_of_type_ComTencentImcoreMessageCoreCodecTempSessionServiceTypeGenerator = new TempSessionServiceTypeGeneratorImpl();
-  private UinTypeRoutingTypeMap jdField_a_of_type_ComTencentImcoreMessageCoreCodecUinTypeRoutingTypeMap = new UinTypeRoutingTypeMapImpl();
-  private MessageDecoderGenerator jdField_a_of_type_ComTencentImcoreMessageDecoderMessageDecoderGenerator = new MessageDecoderGeneratorImpl();
-  private MsgBoxAppenderGenerator jdField_a_of_type_ComTencentImcoreMessageMsgboxappenderMsgBoxAppenderGenerator = new MsgBoxAppenderGeneratorImpl();
-  private GeneralFlagProviderGenerator jdField_a_of_type_ComTencentMobileqqAppGeneralflagGeneralFlagProviderGenerator = new GeneralFlagProviderGeneratorImpl();
-  private PbSendReqHandlerGenerator jdField_a_of_type_ComTencentMobileqqAppPbsendhandlerPbSendReqHandlerGenerator = new PbSendReqHandlerGeneratorImpl();
-  private RichTextAndMsgViaProviderGenerator jdField_a_of_type_ComTencentMobileqqAppRichtextRichTextAndMsgViaProviderGenerator = new RichTextAndMsgViaProviderGeneratorImpl();
-  private C2CMessageDecoderGenerator jdField_a_of_type_ComTencentMobileqqServiceMessageCodecDecoderC2CMessageDecoderGenerator = new C2CMessageDecoderGeneratorImpl();
+  private RoutingTypeGenerator a = new RoutingTypeGeneratorImpl();
+  private UinTypeRoutingTypeMap b = new UinTypeRoutingTypeMapImpl();
+  private TempSessionServiceTypeGenerator c = new TempSessionServiceTypeGeneratorImpl();
+  private TempSessionCacheGenerator d = new TempSessionCacheGeneratorImpl();
+  private IPBMsgElemsDecoderGenerator e = new PBMsgElemsDecoderGeneratorImpl();
+  private IUinPairMsgUinTypeCallbackGenerator f = new UinPairMsgUinTypeCallbackGeneratorImpl();
+  private ExtractMessageSummaryCallbackGenerator g = new ExtractMessageSummaryCallbackGeneratorImpl();
+  private CreatePbSendReqFromMessageCallbackGenerator h = new CreatePbSendReqFromMessageCallbackGeneratorImpl();
+  private GetUnreadMsgNumCallbackGenerator i = new GetUnreadMsgNumCallbackGeneratorImpl();
+  private GetAioListCallbackGenerator j = new GetAioListCallbackGeneratorImpl();
+  private C2CMessageDecoderGenerator k = new C2CMessageDecoderGeneratorImpl();
+  private MessageDecoderGenerator l = new MessageDecoderGeneratorImpl();
+  private AddMessageHandlerGenerator m = new AddMessageHandlerGeneratorImpl();
+  private AioMsgHandlerGenerator n = new AioMsgHandlerGeneratorImpl();
+  private C2CAddMessageHandlerGenerator o = new C2CAddMessageHandlerGeneratorImpl();
+  private MsgBoxAppenderGenerator p = new MsgBoxAppenderGeneratorImpl();
+  private GeneralFlagProviderGenerator q = new GeneralFlagProviderGeneratorImpl();
+  private PbSendReqHandlerGenerator r = new PbSendReqHandlerGeneratorImpl();
+  private RichTextAndMsgViaProviderGenerator s = new RichTextAndMsgViaProviderGeneratorImpl();
   
   public Registry()
   {
-    a();
+    D();
   }
   
-  private void a() {}
+  private void D() {}
   
-  public AddMessageHandlerGenerator a()
+  public PbSendReqHandlerGenerator A()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageAdderAddMessageHandlerGenerator;
+    return this.r;
   }
   
-  public C2CAddMessageHandlerGenerator a()
+  public List<IRichTextAndMsgViaProvider> B()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageAdderC2CAddMessageHandlerGenerator;
+    return this.s.a();
   }
   
-  public AioMsgHandlerGenerator a()
+  public RichTextAndMsgViaProviderGenerator C()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageAiolistAioMsgHandlerGenerator;
-  }
-  
-  public ExtractMessageSummaryCallbackGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreExtractMessageSummaryCallbackGenerator;
-  }
-  
-  public GetAioListCallbackGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreGetAioListCallbackGenerator;
-  }
-  
-  public GetUnreadMsgNumCallbackGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreGetUnreadMsgNumCallbackGenerator;
+    return this.s;
   }
   
   public RoutingTypeGenerator a()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreCodecRoutingTypeGenerator;
-  }
-  
-  public TempSessionCacheGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreCodecTempSessionCacheGenerator;
-  }
-  
-  public TempSessionServiceTypeGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreCodecTempSessionServiceTypeGenerator;
-  }
-  
-  public UinTypeRoutingTypeMap a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreCodecUinTypeRoutingTypeMap;
-  }
-  
-  public MessageDecoderGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageDecoderMessageDecoderGenerator;
-  }
-  
-  public MsgBoxAppenderGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageMsgboxappenderMsgBoxAppenderGenerator;
-  }
-  
-  public GeneralFlagProviderGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppGeneralflagGeneralFlagProviderGenerator;
-  }
-  
-  public PbSendReqHandlerGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppPbsendhandlerPbSendReqHandlerGenerator;
-  }
-  
-  public RichTextAndMsgViaProviderGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppRichtextRichTextAndMsgViaProviderGenerator;
-  }
-  
-  public C2CMessageDecoderGenerator a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqServiceMessageCodecDecoderC2CMessageDecoderGenerator;
+    return this.a;
   }
   
   public Decoder a(int paramInt)
   {
-    return (Decoder)this.jdField_a_of_type_ComTencentMobileqqServiceMessageCodecDecoderC2CMessageDecoderGenerator.a(Integer.valueOf(paramInt));
-  }
-  
-  public List<IPBMsgElemDecoder> a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreCodecIPBMsgElemsDecoderGenerator.a();
+    return (Decoder)this.k.a(Integer.valueOf(paramInt));
   }
   
   public void a(Class<? extends IPBMsgElemDecoder> paramClass)
   {
-    this.jdField_a_of_type_ComTencentImcoreMessageCoreCodecIPBMsgElemsDecoderGenerator.a(paramClass);
+    this.e.a(paramClass);
   }
   
-  public List<ExtractMessageSummaryCallback> b()
+  public UinTypeRoutingTypeMap b()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreExtractMessageSummaryCallbackGenerator.a();
+    return this.b;
   }
   
-  public List<CreatePbSendReqFromMessageCallback> c()
+  public TempSessionServiceTypeGenerator c()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreCodecCreatePbSendReqFromMessageCallbackGenerator.a();
+    return this.c;
   }
   
-  public List<GetUnreadMsgNumCallback> d()
+  public TempSessionCacheGenerator d()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreGetUnreadMsgNumCallbackGenerator.a();
+    return this.d;
   }
   
-  public List<GetAioListCallback> e()
+  public List<IPBMsgElemDecoder> e()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageCoreGetAioListCallbackGenerator.a();
+    return this.e.a();
   }
   
-  public List<IMessageDecoder> f()
+  public List<ExtractMessageSummaryCallback> f()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageDecoderMessageDecoderGenerator.a();
+    return this.g.a();
   }
   
-  public List<IAddMessageHandler> g()
+  public ExtractMessageSummaryCallbackGenerator g()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageAdderAddMessageHandlerGenerator.a();
+    return this.g;
   }
   
-  public List<IAioMsgHandler> h()
+  public List<CreatePbSendReqFromMessageCallback> h()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageAiolistAioMsgHandlerGenerator.a();
+    return this.h.a();
   }
   
-  public List<IC2CAddMessageHandler> i()
+  public C2CMessageDecoderGenerator i()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageAdderC2CAddMessageHandlerGenerator.a();
+    return this.k;
   }
   
-  public List<IMsgBoxAppender> j()
+  public List<GetUnreadMsgNumCallback> j()
   {
-    return this.jdField_a_of_type_ComTencentImcoreMessageMsgboxappenderMsgBoxAppenderGenerator.a();
+    return this.i.a();
   }
   
-  public List<IGeneralFlagProvider> k()
+  public GetUnreadMsgNumCallbackGenerator k()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppGeneralflagGeneralFlagProviderGenerator.a();
+    return this.i;
   }
   
-  public List<IPbSendReqHandler> l()
+  public GetAioListCallbackGenerator l()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppPbsendhandlerPbSendReqHandlerGenerator.a();
+    return this.j;
   }
   
-  public List<IRichTextAndMsgViaProvider> m()
+  public List<GetAioListCallback> m()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppRichtextRichTextAndMsgViaProviderGenerator.a();
+    return this.j.a();
+  }
+  
+  public List<IMessageDecoder> n()
+  {
+    return this.l.a();
+  }
+  
+  public MessageDecoderGenerator o()
+  {
+    return this.l;
+  }
+  
+  public List<IAddMessageHandler> p()
+  {
+    return this.m.a();
+  }
+  
+  public AddMessageHandlerGenerator q()
+  {
+    return this.m;
+  }
+  
+  public List<IAioMsgHandler> r()
+  {
+    return this.n.a();
+  }
+  
+  public AioMsgHandlerGenerator s()
+  {
+    return this.n;
+  }
+  
+  public List<IC2CAddMessageHandler> t()
+  {
+    return this.o.a();
+  }
+  
+  public C2CAddMessageHandlerGenerator u()
+  {
+    return this.o;
+  }
+  
+  public List<IMsgBoxAppender> v()
+  {
+    return this.p.a();
+  }
+  
+  public MsgBoxAppenderGenerator w()
+  {
+    return this.p;
+  }
+  
+  public List<IGeneralFlagProvider> x()
+  {
+    return this.q.a();
+  }
+  
+  public GeneralFlagProviderGenerator y()
+  {
+    return this.q;
+  }
+  
+  public List<IPbSendReqHandler> z()
+  {
+    return this.r.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.Registry
  * JD-Core Version:    0.7.0.1
  */

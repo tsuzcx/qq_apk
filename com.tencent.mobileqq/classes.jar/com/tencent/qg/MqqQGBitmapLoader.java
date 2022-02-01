@@ -71,7 +71,7 @@ public class MqqQGBitmapLoader
     //   109: astore_3
     //   110: ldc 79
     //   112: invokestatic 85	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   115: checkcast 79	com/tencent/biz/pubaccount/util/api/IPublicAccountHttpDownloader
+    //   115: checkcast 79	com/tencent/mobileqq/kandian/base/image/api/IPublicAccountHttpDownloader
     //   118: invokeinterface 89 1 0
     //   123: checkcast 91	com/tencent/mobileqq/transfile/HttpDownloader
     //   126: astore 4
@@ -585,7 +585,7 @@ public class MqqQGBitmapLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.MqqQGBitmapLoader
  * JD-Core Version:    0.7.0.1
  */

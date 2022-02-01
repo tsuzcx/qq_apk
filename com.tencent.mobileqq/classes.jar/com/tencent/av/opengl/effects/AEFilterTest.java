@@ -3,9 +3,9 @@ package com.tencent.av.opengl.effects;
 public class AEFilterTest
 {
   public static String a = "AEFilterTest";
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b = 0;
+  private boolean b = false;
+  private int c = 0;
+  private int d = 0;
 }
 
 

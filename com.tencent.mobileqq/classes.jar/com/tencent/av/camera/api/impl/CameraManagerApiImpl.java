@@ -95,11 +95,11 @@ public class CameraManagerApiImpl
     getCameraNotifyCenter().a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong) });
     localObject = this.mListener;
     if (localObject != null) {
-      ((CameraListener)localObject).d();
+      ((CameraListener)localObject).e();
     }
     localObject = this.mCamera;
     if (localObject != null) {
-      ((VcCamera)localObject).c(paramLong);
+      ((VcCamera)localObject).e(paramLong);
     }
     stopNoPreviewRunnable("CloseCameraRunnable.run");
     localObject = this.mListener;
@@ -132,7 +132,7 @@ public class CameraManagerApiImpl
   
   private SurfaceTexture getSurfaceTexture(int paramInt)
   {
-    boolean bool2 = EffectCtrlBase.b();
+    boolean bool2 = EffectCtrlBase.c();
     int i = 0;
     boolean bool1 = bool2;
     if (bool2) {
@@ -143,7 +143,7 @@ public class CameraManagerApiImpl
     }
     if ((i == 1) && (paramInt == 1))
     {
-      if (!CameraFrame.a(this.mSurfaceTexture)) {
+      if (!CameraFrame.d(this.mSurfaceTexture)) {
         QLog.i("CameraUtils", 1, "getSurfaceTexture, frame is not deal right.");
       }
       CameraFrame.c(this.mSurfaceTexture);
@@ -172,10 +172,10 @@ public class CameraManagerApiImpl
     ((StringBuilder)localObject).append(paramLong);
     ((StringBuilder)localObject).append("]");
     QLog.w("CameraUtils", 1, ((StringBuilder)localObject).toString());
-    getCameraNotifyCenter().a(new Object[] { Integer.valueOf(1), Boolean.valueOf(this.mCamera.d()), Long.valueOf(paramLong) });
+    getCameraNotifyCenter().a(new Object[] { Integer.valueOf(1), Boolean.valueOf(this.mCamera.l()), Long.valueOf(paramLong) });
     localObject = this.mListener;
     if (localObject != null) {
-      ((CameraListener)localObject).e();
+      ((CameraListener)localObject).f();
     }
     boolean bool2 = this.mCamera.a(paramLong, getSurfaceTexture());
     if (bool2) {
@@ -185,7 +185,7 @@ public class CameraManagerApiImpl
     if (this.mListener != null)
     {
       boolean bool1;
-      if (this.mCamera.h() != 0) {
+      if (this.mCamera.n() != 0) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -231,7 +231,7 @@ public class CameraManagerApiImpl
   
   private void setCameraParaInSubThread(long paramLong, int paramInt)
   {
-    if ((QQAudioHelper.c()) || (this.mCamera == null))
+    if ((QQAudioHelper.f()) || (this.mCamera == null))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setCameraParaInSubThread begin, mCamera[");
@@ -250,7 +250,7 @@ public class CameraManagerApiImpl
   
   private void switchCameraInSubThread(long paramLong)
   {
-    if (QQAudioHelper.c())
+    if (QQAudioHelper.f())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("switchCamera begin, mCamera[");
@@ -270,7 +270,7 @@ public class CameraManagerApiImpl
       bool = false;
     }
     getCameraNotifyCenter().a(new Object[] { Integer.valueOf(6), Boolean.valueOf(bool) });
-    if (QQAudioHelper.c())
+    if (QQAudioHelper.f())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("switchCamera end, result[");
@@ -296,7 +296,7 @@ public class CameraManagerApiImpl
     if (this.mCamera != null)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.mCamera.d());
+      ((StringBuilder)localObject).append(this.mCamera.l());
       ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -322,7 +322,7 @@ public class CameraManagerApiImpl
     localStringBuilder.append("]");
     QLog.w("CameraUtils", 1, localStringBuilder.toString(), localThrowable);
     Object localObject = this.mCamera;
-    if ((localObject != null) && (((VcCamera)localObject).d()))
+    if ((localObject != null) && (((VcCamera)localObject).l()))
     {
       closeCamera2(paramLong, paramBoolean);
       return true;
@@ -363,7 +363,7 @@ public class CameraManagerApiImpl
   {
     VcCamera localVcCamera = this.mCamera;
     if (localVcCamera != null) {
-      return localVcCamera.a();
+      return localVcCamera.b();
     }
     return null;
   }
@@ -393,7 +393,7 @@ public class CameraManagerApiImpl
     Object localObject = this.mCamera;
     boolean bool;
     if (localObject != null) {
-      bool = ((VcCamera)localObject).d();
+      bool = ((VcCamera)localObject).l();
     } else {
       bool = false;
     }
@@ -413,7 +413,7 @@ public class CameraManagerApiImpl
     boolean bool2 = false;
     boolean bool1;
     if (localObject != null) {
-      bool1 = ((VcCamera)localObject).c();
+      bool1 = ((VcCamera)localObject).k();
     } else {
       bool1 = false;
     }
@@ -440,7 +440,7 @@ public class CameraManagerApiImpl
     Object localObject = this.mCamera;
     boolean bool;
     if (localObject != null) {
-      bool = ((VcCamera)localObject).b();
+      bool = ((VcCamera)localObject).j();
     } else {
       bool = false;
     }
@@ -464,19 +464,19 @@ public class CameraManagerApiImpl
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPreviewData_");
-      localStringBuilder.append(paramCameraFrame.c);
+      localStringBuilder.append(paramCameraFrame.j);
       stopNoPreviewRunnable(localStringBuilder.toString());
       if (this.mIsHuaWeiGraTL00)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onPreviewData_");
-        localStringBuilder.append(paramCameraFrame.c);
+        localStringBuilder.append(paramCameraFrame.j);
         startNoPreviewRunnable(-1019L, localStringBuilder.toString());
       }
       localCameraListener.onPreviewData(paramCameraFrame);
       return;
     }
-    paramCameraFrame.b();
+    paramCameraFrame.e();
   }
   
   public void openCamera(long paramLong)
@@ -565,7 +565,7 @@ public class CameraManagerApiImpl
   {
     VcCamera localVcCamera = this.mCamera;
     if (localVcCamera != null) {
-      localVcCamera.a();
+      localVcCamera.m();
     }
   }
   
@@ -577,7 +577,7 @@ public class CameraManagerApiImpl
       int i = this.mCameraNum;
       if (i > 0)
       {
-        if ((i != 1) && (localVcCamera.b()))
+        if ((i != 1) && (localVcCamera.j()))
         {
           i = this.mCamera.c(true);
           this.mCamera.a(true, i + 90);
@@ -621,7 +621,7 @@ public class CameraManagerApiImpl
   public void setCameraWithNewFps(long paramLong, int paramInt)
   {
     VcCamera localVcCamera = this.mCamera;
-    if ((localVcCamera != null) && (localVcCamera.d())) {
+    if ((localVcCamera != null) && (localVcCamera.l())) {
       setCameraPara2(paramLong, paramInt);
     }
   }
@@ -639,17 +639,17 @@ public class CameraManagerApiImpl
     Object localObject = this.mCamera;
     if (localObject != null)
     {
-      if (((VcCamera)localObject).f != paramBoolean)
+      if (((VcCamera)localObject).y != paramBoolean)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("setSupportLandscape, value[");
-        ((StringBuilder)localObject).append(this.mCamera.f);
+        ((StringBuilder)localObject).append(this.mCamera.y);
         ((StringBuilder)localObject).append("->");
         ((StringBuilder)localObject).append(paramBoolean);
         ((StringBuilder)localObject).append("]");
         QLog.w("CameraUtils", 1, ((StringBuilder)localObject).toString());
       }
-      this.mCamera.f = paramBoolean;
+      this.mCamera.y = paramBoolean;
     }
   }
   
@@ -687,7 +687,7 @@ public class CameraManagerApiImpl
   
   public void startNoPreviewRunnable(long paramLong, String paramString)
   {
-    if (QQAudioHelper.c())
+    if (QQAudioHelper.f())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startNoPreviewRunnable[");
@@ -710,7 +710,7 @@ public class CameraManagerApiImpl
   {
     if (!this.mPreview)
     {
-      if (QQAudioHelper.c())
+      if (QQAudioHelper.f())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("stopNoPreviewRunnable[");
@@ -727,7 +727,7 @@ public class CameraManagerApiImpl
   
   public void switchCamera(long paramLong)
   {
-    if (this.mCamera.d()) {
+    if (this.mCamera.l()) {
       switchCamera2(paramLong);
     }
   }
@@ -759,7 +759,7 @@ public class CameraManagerApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.camera.api.impl.CameraManagerApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/hippy/module/TKDCommentBizModule$MyTKDTuWen2HippyEventReceiver;", "Lcom/tencent/mobileqq/kandian/biz/hippy/interfaces/receiver/tuwen/TKDTuWen2HippyEventSimpleReceiver;", "(Lcom/tencent/mobileqq/kandian/biz/hippy/module/TKDCommentBizModule;)V", "onDeleteMainComment", "", "mainCommentId", "", "onDeleteSubComment", "subCommentId", "onInsertSubComment", "repliedCommentId", "subCommentData", "onLikeMainCommentChanged", "like", "", "onOpenCommentPublisher", "sendCommentReadTime", "time", "", "updateFollowUI", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/hippy/module/TKDCommentBizModule$MyTKDTuWen2HippyEventReceiver;", "Lcom/tencent/mobileqq/kandian/biz/hippy/interfaces/receiver/tuwen/TKDTuWen2HippyEventSimpleReceiver;", "(Lcom/tencent/mobileqq/kandian/biz/hippy/module/TKDCommentBizModule;)V", "onDeleteMainComment", "", "mainCommentId", "", "onDeleteSubComment", "subCommentId", "onInsertSubComment", "repliedCommentId", "subCommentData", "onLikeMainCommentChanged", "like", "", "onOpenCommentPublisher", "sendCommentReadTime", "time", "", "updateFollowUI", "followUin", "followStatus", "", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 final class TKDCommentBizModule$MyTKDTuWen2HippyEventReceiver
   extends TKDTuWen2HippyEventSimpleReceiver
 {
@@ -98,16 +98,18 @@ final class TKDCommentBizModule$MyTKDTuWen2HippyEventReceiver
     this.this$0.sendEventToJs("@comment:reportCommentReadTime", (HippyMap)localObject);
   }
   
-  public void updateFollowUI()
+  public void updateFollowUI(long paramLong, int paramInt)
   {
     QLog.d("TKDCommentBizModule", 1, "updateFollowUI");
     HippyMap localHippyMap = new HippyMap();
+    localHippyMap.pushLong("followUin", paramLong);
+    localHippyMap.pushInt("followStatus", paramInt);
     this.this$0.sendEventToJs("@comment:updateFollowUI", localHippyMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDCommentBizModule.MyTKDTuWen2HippyEventReceiver
  * JD-Core Version:    0.7.0.1
  */

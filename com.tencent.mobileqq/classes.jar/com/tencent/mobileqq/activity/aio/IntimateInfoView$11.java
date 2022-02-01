@@ -14,8 +14,8 @@ class IntimateInfoView$11
   {
     try
     {
-      if ((IntimateInfoView.a(this.a) != null) && (IntimateInfoView.a(this.a).isShowing())) {
-        IntimateInfoView.a(this.a).dismiss();
+      if ((IntimateInfoView.l(this.a) != null) && (IntimateInfoView.l(this.a).isShowing())) {
+        IntimateInfoView.l(this.a).dismiss();
       }
     }
     catch (Exception paramDialogInterface)
@@ -29,7 +29,7 @@ class IntimateInfoView$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.11
  * JD-Core Version:    0.7.0.1
  */

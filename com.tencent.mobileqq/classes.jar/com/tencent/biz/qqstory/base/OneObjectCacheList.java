@@ -9,28 +9,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class OneObjectCacheList<KEY, VALUE extends Copyable>
 {
-  public int a;
   public LruCache<KEY, VALUE> a;
-  public ConcurrentHashMap<KEY, WeakReference<VALUE>> a;
+  public ConcurrentHashMap<KEY, WeakReference<VALUE>> b = new ConcurrentHashMap(50);
+  public int c = 0;
   
   public OneObjectCacheList(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(50);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new OneObjectCacheList.1(this, paramInt);
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    this.a = new OneObjectCacheList.1(this, paramInt);
+    this.a.evictAll();
   }
   
   private void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    Iterator localIterator = this.b.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      WeakReference localWeakReference = (WeakReference)this.b.get(localObject);
       if ((localWeakReference != null) && (localWeakReference.get() == null))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject);
+        this.b.remove(localObject);
         SLog.b("OneObjectCacheList", String.format("key :%s had been remove by jvm", new Object[] { localObject }));
       }
     }
@@ -38,11 +36,11 @@ public class OneObjectCacheList<KEY, VALUE extends Copyable>
   
   public VALUE a(KEY paramKEY)
   {
-    Copyable localCopyable2 = (Copyable)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramKEY);
+    Copyable localCopyable2 = (Copyable)this.a.get(paramKEY);
     Copyable localCopyable1 = localCopyable2;
     if (localCopyable2 == null)
     {
-      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramKEY);
+      WeakReference localWeakReference = (WeakReference)this.b.remove(paramKEY);
       localCopyable1 = localCopyable2;
       if (localWeakReference != null)
       {
@@ -64,7 +62,7 @@ public class OneObjectCacheList<KEY, VALUE extends Copyable>
     Copyable localCopyable = a(paramKEY);
     if (localCopyable == null)
     {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramKEY, paramVALUE);
+      this.a.put(paramKEY, paramVALUE);
       return paramVALUE;
     }
     localCopyable.copy(paramVALUE);
@@ -73,31 +71,31 @@ public class OneObjectCacheList<KEY, VALUE extends Copyable>
   
   public void a()
   {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-    if (i - this.jdField_a_of_type_Int > 50)
+    int i = this.b.size();
+    if (i - this.c > 50)
     {
       b();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-      SLog.a("OneObjectCacheList", "evict second cache data count:%d", Integer.valueOf(i - this.jdField_a_of_type_Int));
+      this.c = this.b.size();
+      SLog.a("OneObjectCacheList", "evict second cache data count:%d", Integer.valueOf(i - this.c));
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.trimToSize(paramInt);
+    this.a.trimToSize(paramInt);
   }
   
-  public void a(KEY paramKEY)
+  public void b(KEY paramKEY)
   {
-    Copyable localCopyable = (Copyable)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramKEY);
+    Copyable localCopyable = (Copyable)this.a.remove(paramKEY);
     if (localCopyable != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramKEY, new WeakReference(localCopyable));
+      this.b.put(paramKEY, new WeakReference(localCopyable));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.OneObjectCacheList
  * JD-Core Version:    0.7.0.1
  */

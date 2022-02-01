@@ -13,19 +13,19 @@ class FastWebActivity$40
   
   public void a(int paramInt, Map<Long, FollowingMember> paramMap)
   {
-    if (FastWebActivity.a(this.a) != null)
+    if (FastWebActivity.k(this.a) != null)
     {
-      FastWebActivity.a(this.a).a(paramMap);
-      if (FastWebActivity.a(this.a) != null) {
-        FastWebActivity.a(this.a).notifyDataSetChanged();
+      FastWebActivity.k(this.a).a(paramMap);
+      if (FastWebActivity.z(this.a) != null) {
+        FastWebActivity.z(this.a).notifyDataSetChanged();
       }
-      FastWebActivity.r(this.a);
+      FastWebActivity.ae(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.40
  * JD-Core Version:    0.7.0.1
  */

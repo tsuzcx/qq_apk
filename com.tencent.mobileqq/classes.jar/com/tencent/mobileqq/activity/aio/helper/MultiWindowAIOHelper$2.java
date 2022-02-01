@@ -9,12 +9,12 @@ class MultiWindowAIOHelper$2
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    MultiWindowAIOHelper.a(this.a);
+    MultiWindowAIOHelper.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.2
  * JD-Core Version:    0.7.0.1
  */

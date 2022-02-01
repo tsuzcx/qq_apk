@@ -28,15 +28,15 @@ class ReadInJoyAdBrandOptimizationView$3
   public void onAnimationStart(Animator paramAnimator)
   {
     ReadInJoyAdBrandOptimizationView.a(this.a, true);
-    ReadInJoyAdBrandOptimizationView.a(this.a).setAlpha(0.0F);
-    ReadInJoyAdBrandOptimizationView.b(this.a).setAlpha(0.0F);
-    ReadInJoyAdBrandOptimizationView.c(this.a).setAlpha(0.0F);
-    ReadInJoyAdBrandOptimizationView.a(this.a).setVisibility(0);
+    ReadInJoyAdBrandOptimizationView.e(this.a).setAlpha(0.0F);
+    ReadInJoyAdBrandOptimizationView.f(this.a).setAlpha(0.0F);
+    ReadInJoyAdBrandOptimizationView.g(this.a).setAlpha(0.0F);
+    ReadInJoyAdBrandOptimizationView.h(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBrandOptimizationView.3
  * JD-Core Version:    0.7.0.1
  */

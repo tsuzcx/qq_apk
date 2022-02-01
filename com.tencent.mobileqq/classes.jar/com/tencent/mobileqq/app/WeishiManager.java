@@ -45,7 +45,7 @@ public class WeishiManager
       if (localObject == null) {
         return;
       }
-      localObject = FileUtils.readFile(((WeishiManager)localObject).b());
+      localObject = FileUtils.readFile(((WeishiManager)localObject).c());
       if (localObject != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -79,7 +79,7 @@ public class WeishiManager
         if (this.a.getMessageFacade().a() == null) {
           return null;
         }
-        Object localObject = this.a.getMessageFacade().b(AppConstants.WEISHI_UIN, 1008);
+        Object localObject = this.a.getMessageFacade().r(AppConstants.WEISHI_UIN, 1008);
         if ((localObject instanceof MessageForStructing))
         {
           localObject = (MessageForStructing)localObject;
@@ -107,19 +107,6 @@ public class WeishiManager
     localMessageRecord.selfuin = this.a.getCurrentAccountUin();
     a(localMessageRecord, paramString, paramLong);
     return localMessageRecord;
-  }
-  
-  public String a()
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((MessageForStructing)localObject).structingMsg;
-      if ((localObject != null) && (!TextUtils.isEmpty(((AbsStructMsg)localObject).mMsgActionData))) {
-        return ((AbsStructMsg)localObject).mMsgActionData;
-      }
-    }
-    return "";
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, String paramString)
@@ -165,13 +152,26 @@ public class WeishiManager
   
   public String b()
   {
+    Object localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((MessageForStructing)localObject).structingMsg;
+      if ((localObject != null) && (!TextUtils.isEmpty(((AbsStructMsg)localObject).mMsgActionData))) {
+        return ((AbsStructMsg)localObject).mMsgActionData;
+      }
+    }
+    return "";
+  }
+  
+  public String c()
+  {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
     localStringBuilder.append("/file/weishi/ws_recommend_mappassback");
     return localStringBuilder.toString();
   }
   
-  public String c()
+  public String d()
   {
     try
     {
@@ -189,7 +189,7 @@ public class WeishiManager
     return "";
   }
   
-  public String d()
+  public String e()
   {
     try
     {
@@ -214,7 +214,7 @@ public class WeishiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.WeishiManager
  * JD-Core Version:    0.7.0.1
  */

@@ -20,20 +20,6 @@ public class ApolloClassFactoryApi
     return null;
   }
   
-  public static String a()
-  {
-    try
-    {
-      String str = ((IApolloClassFactory)QRoute.api(IApolloClassFactory.class)).getApolloContentUpdateHandlerClassName();
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("ApolloClassFactoryApi", "[getApolloContentUpdateHandlerClassName]", localThrowable);
-    }
-    return null;
-  }
-  
   public static Class b()
   {
     try
@@ -44,20 +30,6 @@ public class ApolloClassFactoryApi
     catch (Throwable localThrowable)
     {
       Log.e("ApolloClassFactoryApi", "[getApolloExtensionServletClass]", localThrowable);
-    }
-    return null;
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      String str = ((IApolloClassFactory)QRoute.api(IApolloClassFactory.class)).getApolloExtensionHandlerClassName();
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("ApolloClassFactoryApi", "[getApolloExtensionHandlerClassName]", localThrowable);
     }
     return null;
   }
@@ -118,23 +90,37 @@ public class ApolloClassFactoryApi
     return null;
   }
   
-  public static Class g()
+  public static String g()
   {
     try
     {
-      Class localClass = ((IApolloClassFactory)QRoute.api(IApolloClassFactory.class)).getCmShowModuleClass();
-      return localClass;
+      String str = ((IApolloClassFactory)QRoute.api(IApolloClassFactory.class)).getApolloContentUpdateHandlerClassName();
+      return str;
     }
     catch (Throwable localThrowable)
     {
-      Log.e("ApolloClassFactoryApi", "[getCmShowModuleClass]", localThrowable);
+      Log.e("ApolloClassFactoryApi", "[getApolloContentUpdateHandlerClassName]", localThrowable);
+    }
+    return null;
+  }
+  
+  public static String h()
+  {
+    try
+    {
+      String str = ((IApolloClassFactory)QRoute.api(IApolloClassFactory.class)).getApolloExtensionHandlerClassName();
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("ApolloClassFactoryApi", "[getApolloExtensionHandlerClassName]", localThrowable);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloClassFactoryApi
  * JD-Core Version:    0.7.0.1
  */

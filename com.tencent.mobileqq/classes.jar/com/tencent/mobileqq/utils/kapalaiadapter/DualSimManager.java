@@ -10,20 +10,20 @@ import java.lang.reflect.Method;
 public class DualSimManager
 {
   public static int a = -1;
-  private static DualSimManager jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterDualSimManager;
-  public static String a;
-  public static String b = "0";
-  public static String c = "1";
-  private Object jdField_a_of_type_JavaLangObject = null;
-  private TelephonyManager[] jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager = null;
-  private ISms[] jdField_a_of_type_ArrayOfComAndroidInternalTelephonyISms = null;
-  private Object b = null;
+  public static String b;
+  public static String c = "0";
+  public static String d = "1";
+  private static DualSimManager e;
+  private Object f = null;
+  private TelephonyManager[] g = null;
+  private Object h = null;
+  private ISms[] i = null;
   
   private DualSimManager()
   {
     try
     {
-      a();
+      b();
       return;
     }
     catch (Throwable localThrowable)
@@ -34,36 +34,36 @@ public class DualSimManager
   
   public static DualSimManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterDualSimManager == null) {
+    if (e == null) {
       try
       {
-        jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterDualSimManager = new DualSimManager();
+        e = new DualSimManager();
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterDualSimManager;
+    return e;
   }
   
-  private void a()
+  private void b()
   {
-    this.jdField_a_of_type_ArrayOfComAndroidInternalTelephonyISms = new ISms[2];
-    int i = jdField_a_of_type_Int;
-    if ((i != 0) && (i != 1)) {
-      if (i != 2)
+    this.i = new ISms[2];
+    int j = a;
+    if ((j != 0) && (j != 1)) {
+      if (j != 2)
       {
-        if (i != 3)
+        if (j != 3)
         {
-          if (i == 4) {
+          if (j == 4) {
             return;
           }
-          if (i != 5) {
+          if (j != 5) {
             return;
           }
           try
           {
-            this.jdField_a_of_type_JavaLangObject = BaseApplication.getContext().getSystemService("phone");
+            this.f = BaseApplication.getContext().getSystemService("phone");
             ISms localISms = ISms.Stub.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isms" }));
-            this.jdField_a_of_type_ArrayOfComAndroidInternalTelephonyISms[0] = localISms;
+            this.i[0] = localISms;
             return;
           }
           catch (Throwable localThrowable)
@@ -74,14 +74,14 @@ public class DualSimManager
         }
         try
         {
-          this.jdField_a_of_type_ArrayOfComAndroidInternalTelephonyISms[0] = ISms.Stub.a(ServiceManager.a("isms"));
-          this.jdField_a_of_type_ArrayOfComAndroidInternalTelephonyISms[1] = ISms.Stub.a(ServiceManager.a("isms2"));
-          if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager != null) {
+          this.i[0] = ISms.Stub.a(ServiceManager.a("isms"));
+          this.i[1] = ISms.Stub.a(ServiceManager.a("isms2"));
+          if (this.g != null) {
             return;
           }
-          this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager = new TelephonyManager[2];
-          this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[0] = ((TelephonyManager)ReflecterHelper.a("android.telephony.TelephonyManager", "getDefault"));
-          this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[1] = ((TelephonyManager)ReflecterHelper.a("android.telephony.TelephonyManager", "getSecondary"));
+          this.g = new TelephonyManager[2];
+          this.g[0] = ((TelephonyManager)ReflecterHelper.a("android.telephony.TelephonyManager", "getDefault"));
+          this.g[1] = ((TelephonyManager)ReflecterHelper.a("android.telephony.TelephonyManager", "getSecondary"));
           return;
         }
         catch (Error localError)
@@ -99,8 +99,8 @@ public class DualSimManager
       {
         try
         {
-          this.jdField_a_of_type_JavaLangObject = ReflecterHelper.a("android.telephony.MSimTelephonyManager", "getDefault", null, null);
-          this.b = ReflecterHelper.a("android.telephony.MSimSmsManager", "getDefault", null, null);
+          this.f = ReflecterHelper.a("android.telephony.MSimTelephonyManager", "getDefault", null, null);
+          this.h = ReflecterHelper.a("android.telephony.MSimSmsManager", "getDefault", null, null);
           return;
         }
         catch (Exception localException2)
@@ -111,31 +111,36 @@ public class DualSimManager
     }
   }
   
-  public int a(int paramInt)
+  public boolean a(int paramInt)
   {
-    int j = jdField_a_of_type_Int;
+    return b(paramInt) == 5;
+  }
+  
+  public int b(int paramInt)
+  {
+    int k = a;
     Object localObject1;
-    if (j != 0)
+    if (k != 0)
     {
-      int i = 1;
-      if (j != 1) {
-        if (j != 2) {
-          if (j != 3)
+      int j = 1;
+      if (k != 1) {
+        if (k != 2) {
+          if (k != 3)
           {
-            if (j == 4) {
+            if (k == 4) {
               break label157;
             }
-            if (j != 5) {
+            if (k != 5) {
               return 0;
             }
-            localObject1 = this.jdField_a_of_type_JavaLangObject;
+            localObject1 = this.f;
             if (localObject1 == null) {
               break label157;
             }
             if (paramInt != 0) {
               break label159;
             }
-            paramInt = i;
+            paramInt = j;
           }
         }
       }
@@ -152,11 +157,11 @@ public class DualSimManager
         localException1.printStackTrace();
         return 0;
       }
-      Object localObject2 = this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager;
+      Object localObject2 = this.g;
       if (localObject2 != null)
       {
         return localObject2[paramInt].getSimState();
-        localObject2 = this.jdField_a_of_type_JavaLangObject;
+        localObject2 = this.f;
         if (localObject2 != null) {
           try
           {
@@ -175,15 +180,10 @@ public class DualSimManager
       paramInt = 5;
     }
   }
-  
-  public boolean a(int paramInt)
-  {
-    return a(paramInt) == 5;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.kapalaiadapter.DualSimManager
  * JD-Core Version:    0.7.0.1
  */

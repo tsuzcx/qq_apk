@@ -25,8 +25,6 @@ public abstract class SuperMaskStep
     this.a = paramString;
   }
   
-  public abstract boolean a();
-  
   @Nullable
   public final String b()
   {
@@ -37,10 +35,12 @@ public abstract class SuperMaskStep
   {
     this.b = paramString;
   }
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.api.SuperMaskStep
  * JD-Core Version:    0.7.0.1
  */

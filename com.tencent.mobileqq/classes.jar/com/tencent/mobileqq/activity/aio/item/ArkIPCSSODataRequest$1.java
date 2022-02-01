@@ -19,12 +19,12 @@ class ArkIPCSSODataRequest$1
       i = -1;
     }
     paramObject = (String)paramObject;
-    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkIPCSSODataRequest.c, new ArkIPCSSODataRequest.1.1(this, i, paramObject));
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.c.f, new ArkIPCSSODataRequest.1.1(this, i, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkIPCSSODataRequest.1
  * JD-Core Version:    0.7.0.1
  */

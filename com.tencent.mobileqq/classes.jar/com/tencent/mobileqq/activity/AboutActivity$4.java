@@ -23,10 +23,10 @@ class AboutActivity$4
   
   public void onClick(View paramView)
   {
-    MyAppApi.a();
+    MyAppApi.l();
     int i;
     Intent localIntent;
-    if (MyAppApi.b())
+    if (MyAppApi.m())
     {
       if (SPSettings.a()) {
         i = 1;
@@ -35,15 +35,15 @@ class AboutActivity$4
       }
       ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
       localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      localIntent.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      localIntent.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      localIntent.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      localIntent.putExtra("StrTitle", AboutActivity.b(this.a).b.strTitle);
+      localIntent.putExtra("StrUpgradeDesc", AboutActivity.b(this.a).b.strUpgradeDesc);
+      localIntent.putExtra("iUpgradeType", AboutActivity.b(this.a).b.iUpgradeType);
       localIntent.putExtra("activity_type", 4096);
       if (BaseActivity.sTopActivity != null) {
         BaseActivity.sTopActivity.startActivity(localIntent);
       }
     }
-    else if ((AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo != null) && (SPSettings.a(AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.a)))
+    else if ((AboutActivity.b(this.a).e != null) && (SPSettings.d(AboutActivity.b(this.a).e.d)))
     {
       if (SPSettings.a()) {
         i = 1;
@@ -52,25 +52,25 @@ class AboutActivity$4
       }
       ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
       localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      localIntent.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      localIntent.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      localIntent.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      localIntent.putExtra("StrTitle", AboutActivity.b(this.a).b.strTitle);
+      localIntent.putExtra("StrUpgradeDesc", AboutActivity.b(this.a).b.strUpgradeDesc);
+      localIntent.putExtra("iUpgradeType", AboutActivity.b(this.a).b.iUpgradeType);
       localIntent.putExtra("activity_type", 4096);
       if (BaseActivity.sTopActivity != null) {
         BaseActivity.sTopActivity.startActivity(localIntent);
       }
     }
-    else if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null))
+    else if ((AboutActivity.b(this.a) != null) && (AboutActivity.b(this.a).b != null))
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
-      UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.k(), "");
+      UpgradeDetailActivity.a(this.a, UpgradeController.a().d(), false, false, true);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AboutActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class QQIdentiferLegacy$1
     if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing()))
     {
       ReportController.b(null, "dc00898", "", "", "0X800B307", "0X800B307", 0, 0, "", "", "", "");
-      QQToast.a(this.this$0.getActivity(), 2131693238, 0).a();
+      QQToast.makeText(this.this$0.getActivity(), 2131890786, 0).show();
       return;
     }
     QLog.d("QQIdentiferLegacy", 1, "mResLoadingRunnable null == activity || activity.isFinishing()");
@@ -25,7 +25,7 @@ class QQIdentiferLegacy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.1
  * JD-Core Version:    0.7.0.1
  */

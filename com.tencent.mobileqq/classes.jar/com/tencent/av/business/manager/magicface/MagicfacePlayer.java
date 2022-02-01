@@ -8,15 +8,15 @@ import java.io.File;
 
 public class MagicfacePlayer
 {
-  MagicfaceBaseDecoder.MagicPlayListener jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener;
-  MagicfaceBaseDecoder.MagicfaceRenderListener jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicfaceRenderListener;
-  private MagicfaceBaseDecoder jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder;
-  MagicfaceData jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData;
-  private SoundPoolUtil jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
-  String jdField_a_of_type_JavaLangString;
-  MagicfaceBaseDecoder.MagicPlayListener jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener;
-  String jdField_b_of_type_JavaLangString;
-  MagicfaceBaseDecoder.MagicPlayListener c = new MagicfacePlayer.1(this);
+  String a;
+  String b;
+  MagicfaceData c;
+  MagicfaceBaseDecoder.MagicfaceRenderListener d;
+  MagicfaceBaseDecoder.MagicPlayListener e;
+  MagicfaceBaseDecoder.MagicPlayListener f;
+  MagicfaceBaseDecoder.MagicPlayListener g = new MagicfacePlayer.1(this);
+  private MagicfaceBaseDecoder h;
+  private SoundPoolUtil i;
   
   public MagicfacePlayer()
   {
@@ -25,29 +25,29 @@ public class MagicfacePlayer
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder == null)
+    if (this.h == null)
     {
-      if (DeviceInfoUtil.d())
+      if (DeviceInfoUtil.L())
       {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder = new MagicfaceNormalDecoder();
+        this.h = new MagicfaceNormalDecoder();
         AVLog.printErrorLog("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
         return;
       }
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder = new MagicfaceNormalDecoder();
+      this.h = new MagicfaceNormalDecoder();
       AVLog.printErrorLog("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
     }
   }
   
   public void a(long paramLong, String paramString, MagicfaceData paramMagicfaceData, MagicfaceBaseDecoder.MagicfaceRenderListener paramMagicfaceRenderListener, MagicfaceBaseDecoder.MagicPlayListener paramMagicPlayListener)
   {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a) {
+    if (this.h.d) {
       try
       {
-        this.jdField_b_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData = paramMagicfaceData;
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicfaceRenderListener = paramMagicfaceRenderListener;
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener = paramMagicPlayListener;
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.b();
+        this.b = paramString;
+        this.c = paramMagicfaceData;
+        this.d = paramMagicfaceRenderListener;
+        this.e = paramMagicPlayListener;
+        this.h.b();
         return;
       }
       finally {}
@@ -65,21 +65,21 @@ public class MagicfacePlayer
       localStringBuilder.append(paramString);
       localStringBuilder.append("audio");
       localStringBuilder.append(File.separator);
-      localStringBuilder.append(paramMagicfaceData.a.src);
-      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-      this.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener = paramMagicPlayListener;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData = null;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicfaceRenderListener = null;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener = null;
-      if ((paramMagicfaceData.a.src != null) && (!paramMagicfaceData.a.src.equals("")) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil == null)) {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil = new SoundPoolUtil();
+      localStringBuilder.append(paramMagicfaceData.s.src);
+      this.a = localStringBuilder.toString();
+      this.f = paramMagicPlayListener;
+      this.b = null;
+      this.c = null;
+      this.d = null;
+      this.e = null;
+      if ((paramMagicfaceData.s.src != null) && (!paramMagicfaceData.s.src.equals("")) && (this.i == null)) {
+        this.i = new SoundPoolUtil();
       }
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a(paramString);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a(paramMagicfaceData);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a(paramMagicfaceRenderListener);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a(this.c);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a();
+      this.h.a(paramString);
+      this.h.a(paramMagicfaceData);
+      this.h.a(paramMagicfaceRenderListener);
+      this.h.a(this.g);
+      this.h.a();
       return;
     }
     finally {}
@@ -87,9 +87,9 @@ public class MagicfacePlayer
   
   public void a(String paramString)
   {
-    SoundPoolUtil localSoundPoolUtil = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
+    SoundPoolUtil localSoundPoolUtil = this.i;
     if (localSoundPoolUtil != null) {
-      localSoundPoolUtil.a(paramString);
+      localSoundPoolUtil.b(paramString);
     }
   }
   
@@ -101,26 +101,26 @@ public class MagicfacePlayer
     ((StringBuilder)localObject).append(", loop = ");
     ((StringBuilder)localObject).append(paramInt);
     AVLog.printColorLog("AVMagicfacePlayer", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
+    localObject = this.i;
     if (localObject != null) {
       ((SoundPoolUtil)localObject).a(paramString, paramInt, 0);
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a;
+    return this.h.d;
   }
   
-  public void b()
+  public void c()
   {
     try
     {
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData = null;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicfaceRenderListener = null;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener = null;
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.b();
+      this.b = null;
+      this.c = null;
+      this.d = null;
+      this.e = null;
+      this.h.b();
       return;
     }
     finally {}

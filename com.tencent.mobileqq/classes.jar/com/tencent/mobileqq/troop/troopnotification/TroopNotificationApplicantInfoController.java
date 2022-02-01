@@ -18,13 +18,12 @@ import mqq.app.AppRuntime;
 public class TroopNotificationApplicantInfoController
   extends TroopNotificationController
 {
-  protected Map<Long, TroopNotifyApplicantInfo> a;
+  protected Map<Long, TroopNotifyApplicantInfo> a = new HashMap();
   protected Map<String, ConcurrentHashMap<Long, Integer>> b = new ConcurrentHashMap();
   
   public TroopNotificationApplicantInfoController(AppRuntime paramAppRuntime)
   {
     super(paramAppRuntime);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
   private void c(String paramString, List<Long> paramList)
@@ -54,18 +53,12 @@ public class TroopNotificationApplicantInfoController
   
   public TroopNotifyApplicantInfo a(Long paramLong)
   {
-    TroopNotifyApplicantInfo localTroopNotifyApplicantInfo = (TroopNotifyApplicantInfo)this.jdField_a_of_type_JavaUtilMap.get(paramLong);
+    TroopNotifyApplicantInfo localTroopNotifyApplicantInfo = (TroopNotifyApplicantInfo)this.a.get(paramLong);
     paramLong = localTroopNotifyApplicantInfo;
     if (localTroopNotifyApplicantInfo != null) {
-      paramLong = localTroopNotifyApplicantInfo.a();
+      paramLong = localTroopNotifyApplicantInfo.k();
     }
     return paramLong;
-  }
-  
-  @Nullable
-  protected String a()
-  {
-    return "TroopNotificationApplicantInfoController";
   }
   
   public List<Long> a(String paramString)
@@ -141,7 +134,7 @@ public class TroopNotificationApplicantInfoController
         TroopNotifyApplicantInfo localTroopNotifyApplicantInfo = (TroopNotifyApplicantInfo)paramList.next();
         if (localTroopNotifyApplicantInfo != null)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localTroopNotifyApplicantInfo.a()), localTroopNotifyApplicantInfo);
+          this.a.put(Long.valueOf(localTroopNotifyApplicantInfo.a()), localTroopNotifyApplicantInfo);
           localArrayList.add(Long.valueOf(localTroopNotifyApplicantInfo.a()));
         }
       }
@@ -156,12 +149,12 @@ public class TroopNotificationApplicantInfoController
       if (paramList.isEmpty()) {
         return;
       }
-      if (this.jdField_a_of_type_MqqAppAppRuntime == null)
+      if (this.c == null)
       {
         c(paramString, paramList);
         return;
       }
-      TroopNotificationHandler localTroopNotificationHandler = (TroopNotificationHandler)((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getBusinessHandler(TroopNotificationHandler.class.getName());
+      TroopNotificationHandler localTroopNotificationHandler = (TroopNotificationHandler)((AppInterface)this.c).getBusinessHandler(TroopNotificationHandler.class.getName());
       if (localTroopNotificationHandler == null)
       {
         c(paramString, paramList);
@@ -207,7 +200,7 @@ public class TroopNotificationApplicantInfoController
         {
           localArrayList.add(localLong);
           int i = ((Integer)paramMap.get(localLong)).intValue();
-          TroopNotifyApplicantInfo localTroopNotifyApplicantInfo = (TroopNotifyApplicantInfo)this.jdField_a_of_type_JavaUtilMap.get(localLong);
+          TroopNotifyApplicantInfo localTroopNotifyApplicantInfo = (TroopNotifyApplicantInfo)this.a.get(localLong);
           if (localTroopNotifyApplicantInfo != null)
           {
             localTroopNotifyApplicantInfo.c(i);
@@ -216,7 +209,7 @@ public class TroopNotificationApplicantInfoController
           else
           {
             localTroopNotifyApplicantInfo = new TroopNotifyApplicantInfo(localLong.longValue(), i, true);
-            this.jdField_a_of_type_JavaUtilMap.put(localLong, localTroopNotifyApplicantInfo);
+            this.a.put(localLong, localTroopNotifyApplicantInfo);
           }
         }
       }
@@ -228,7 +221,7 @@ public class TroopNotificationApplicantInfoController
   {
     super.b();
     this.b.clear();
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.a.clear();
   }
   
   protected void b(String paramString, List<Long> paramList)
@@ -253,10 +246,16 @@ public class TroopNotificationApplicantInfoController
   {
     b();
   }
+  
+  @Nullable
+  protected String d()
+  {
+    return "TroopNotificationApplicantInfoController";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationApplicantInfoController
  * JD-Core Version:    0.7.0.1
  */

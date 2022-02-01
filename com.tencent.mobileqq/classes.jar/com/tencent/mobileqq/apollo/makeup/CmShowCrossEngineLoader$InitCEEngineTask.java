@@ -2,7 +2,8 @@ package com.tencent.mobileqq.apollo.makeup;
 
 import android.content.Context;
 import com.tencent.mobileqq.apollo.ipc.ApolloIPCModule;
-import com.tencent.mobileqq.apollo.ipc.business.ICEResManager;
+import com.tencent.mobileqq.apollo.ipc.ApolloIPCModule.Companion;
+import com.tencent.mobileqq.apollo.ipc.business.ICMResManager;
 import com.tencent.mobileqq.apollo.utils.CrossEngineResManager;
 import com.tencent.mobileqq.apollo.utils.CrossEngineResManager.LoadListener;
 import com.tencent.mobileqq.apollo.utils.task.AsyncTask;
@@ -22,15 +23,15 @@ public final class CmShowCrossEngineLoader$InitCEEngineTask
   {
     if (CrossEngineResManager.a())
     {
-      e();
+      j();
       return;
     }
-    ((ICEResManager)ApolloIPCModule.a(ICEResManager.class)).a((CrossEngineResManager.LoadListener)new CmShowCrossEngineLoader.InitCEEngineTask.executeAsync.1(this));
+    ((ICMResManager)ApolloIPCModule.a.a(ICMResManager.class)).a((CrossEngineResManager.LoadListener)new CmShowCrossEngineLoader.InitCEEngineTask.executeAsync.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowCrossEngineLoader.InitCEEngineTask
  * JD-Core Version:    0.7.0.1
  */

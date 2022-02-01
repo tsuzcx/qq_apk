@@ -11,19 +11,19 @@ class SCFChannel$1$1$1
   
   public void run()
   {
-    this.a.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(null);
+    this.a.c.success(null);
     int i;
-    if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-      i = 2131699317;
+    if (this.a.b.booleanValue()) {
+      i = 2131897334;
     } else {
-      i = 2131699316;
+      i = 2131897333;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 2, i, 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 2, i, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.1.1
  * JD-Core Version:    0.7.0.1
  */

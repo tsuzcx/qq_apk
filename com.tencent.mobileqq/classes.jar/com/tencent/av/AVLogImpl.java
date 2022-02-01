@@ -26,12 +26,12 @@ public class AVLogImpl
   
   public long genDebugSeq()
   {
-    return AudioHelper.b();
+    return AudioHelper.c();
   }
   
   public String getVersion()
   {
-    return "8.7.0";
+    return "8.8.17";
   }
   
   public void i(String paramString1, String paramString2)

@@ -9,14 +9,14 @@ class PicBrowserImage$3
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 2)) {
-      this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserImage$OnLoadListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLDrawable.getProgress());
+    if ((this.a.getStatus() != 1) && (this.a.getStatus() != 2)) {
+      this.b.a(this.c, this.a.getProgress());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserImage.3
  * JD-Core Version:    0.7.0.1
  */

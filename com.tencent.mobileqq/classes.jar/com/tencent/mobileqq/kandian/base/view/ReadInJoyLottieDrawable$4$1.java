@@ -16,14 +16,14 @@ class ReadInJoyLottieDrawable$4$1
   {
     if (paramLottieComposition != null)
     {
-      ReadInJoyLottieDrawable.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
-      ReadInJoyLottieDrawable.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
+      ReadInJoyLottieDrawable.a().put(this.a.b.getAbsolutePath(), paramLottieComposition);
+      ReadInJoyLottieDrawable.b(this.a.this$0).post(this.a.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.ReadInJoyLottieDrawable.4.1
  * JD-Core Version:    0.7.0.1
  */

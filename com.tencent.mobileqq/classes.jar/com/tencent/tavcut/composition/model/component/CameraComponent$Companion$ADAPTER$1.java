@@ -1,0 +1,96 @@
+package com.tencent.tavcut.composition.model.component;
+
+import com.squareup.wire.FieldEncoding;
+import com.squareup.wire.ProtoAdapter;
+import com.squareup.wire.ProtoReader;
+import com.squareup.wire.ProtoWriter;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.reflect.KClass;
+import okio.ByteString;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/tavcut/composition/model/component/CameraComponent$Companion$ADAPTER$1", "Lcom/squareup/wire/ProtoAdapter;", "Lcom/tencent/tavcut/composition/model/component/CameraComponent;", "decode", "reader", "Lcom/squareup/wire/ProtoReader;", "encode", "", "writer", "Lcom/squareup/wire/ProtoWriter;", "value", "encodedSize", "", "redact", "lib_tavcut_model_release"}, k=1, mv={1, 1, 16})
+public final class CameraComponent$Companion$ADAPTER$1
+  extends ProtoAdapter<CameraComponent>
+{
+  CameraComponent$Companion$ADAPTER$1(FieldEncoding paramFieldEncoding, KClass paramKClass, String paramString)
+  {
+    super(paramFieldEncoding, paramKClass, paramString);
+  }
+  
+  @NotNull
+  public CameraComponent decode(@NotNull ProtoReader paramProtoReader)
+  {
+    Intrinsics.checkParameterIsNotNull(paramProtoReader, "reader");
+    Integer localInteger1 = (Integer)null;
+    Boolean localBoolean = (Boolean)null;
+    String str1 = (String)null;
+    long l = paramProtoReader.beginMessage();
+    String str2 = str1;
+    Integer localInteger2 = localInteger1;
+    Integer localInteger3 = localInteger2;
+    for (;;)
+    {
+      int i = paramProtoReader.nextTag();
+      if (i == -1) {
+        return new CameraComponent(localInteger1, localInteger2, localBoolean, str1, localInteger3, str2, paramProtoReader.endMessageAndGetUnknownFields(l));
+      }
+      switch (i)
+      {
+      default: 
+        paramProtoReader.readUnknownField(i);
+        break;
+      case 6: 
+        str2 = (String)ProtoAdapter.STRING.decode(paramProtoReader);
+        break;
+      case 5: 
+        localInteger3 = (Integer)ProtoAdapter.INT32.decode(paramProtoReader);
+        break;
+      case 4: 
+        str1 = (String)ProtoAdapter.STRING.decode(paramProtoReader);
+        break;
+      case 3: 
+        localBoolean = (Boolean)ProtoAdapter.BOOL.decode(paramProtoReader);
+        break;
+      case 2: 
+        localInteger2 = (Integer)ProtoAdapter.INT32.decode(paramProtoReader);
+        break;
+      case 1: 
+        localInteger1 = (Integer)ProtoAdapter.INT32.decode(paramProtoReader);
+      }
+    }
+  }
+  
+  public void encode(@NotNull ProtoWriter paramProtoWriter, @NotNull CameraComponent paramCameraComponent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramProtoWriter, "writer");
+    Intrinsics.checkParameterIsNotNull(paramCameraComponent, "value");
+    ProtoAdapter.INT32.encodeWithTag(paramProtoWriter, 1, paramCameraComponent.entityId);
+    ProtoAdapter.INT32.encodeWithTag(paramProtoWriter, 2, paramCameraComponent.componentID);
+    ProtoAdapter.BOOL.encodeWithTag(paramProtoWriter, 3, paramCameraComponent.enabled);
+    ProtoAdapter.STRING.encodeWithTag(paramProtoWriter, 4, paramCameraComponent.type);
+    ProtoAdapter.INT32.encodeWithTag(paramProtoWriter, 5, paramCameraComponent.version);
+    ProtoAdapter.STRING.encodeWithTag(paramProtoWriter, 6, paramCameraComponent.renderTargetKey);
+    paramProtoWriter.writeBytes(paramCameraComponent.unknownFields());
+  }
+  
+  public int encodedSize(@NotNull CameraComponent paramCameraComponent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramCameraComponent, "value");
+    return ProtoAdapter.INT32.encodedSizeWithTag(1, paramCameraComponent.entityId) + ProtoAdapter.INT32.encodedSizeWithTag(2, paramCameraComponent.componentID) + ProtoAdapter.BOOL.encodedSizeWithTag(3, paramCameraComponent.enabled) + ProtoAdapter.STRING.encodedSizeWithTag(4, paramCameraComponent.type) + ProtoAdapter.INT32.encodedSizeWithTag(5, paramCameraComponent.version) + ProtoAdapter.STRING.encodedSizeWithTag(6, paramCameraComponent.renderTargetKey) + paramCameraComponent.unknownFields().size();
+  }
+  
+  @NotNull
+  public CameraComponent redact(@NotNull CameraComponent paramCameraComponent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramCameraComponent, "value");
+    return CameraComponent.copy$default(paramCameraComponent, null, null, null, null, null, null, ByteString.EMPTY, 63, null);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+ * Qualified Name:     com.tencent.tavcut.composition.model.component.CameraComponent.Companion.ADAPTER.1
+ * JD-Core Version:    0.7.0.1
+ */

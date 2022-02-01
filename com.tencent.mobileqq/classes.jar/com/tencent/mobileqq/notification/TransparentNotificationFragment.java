@@ -43,7 +43,7 @@ public class TransparentNotificationFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559298, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625234, null);
     Object localObject = getBaseActivity().app;
     Intent localIntent = getBaseActivity().getIntent();
     ForegroundNotifyManager localForegroundNotifyManager = ForegroundNotifyManager.a((QQAppInterface)localObject);
@@ -75,7 +75,7 @@ public class TransparentNotificationFragment
     else
     {
       paramViewGroup = localForegroundNotifyManager.a(i, paramViewGroup, paramBundle, j);
-      getBaseActivity().overridePendingTransition(2130772008, 2130772009);
+      getBaseActivity().overridePendingTransition(2130772011, 2130772012);
       getBaseActivity().startActivity(paramViewGroup);
       getBaseActivity().finish();
     }
@@ -85,7 +85,7 @@ public class TransparentNotificationFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.notification.TransparentNotificationFragment
  * JD-Core Version:    0.7.0.1
  */

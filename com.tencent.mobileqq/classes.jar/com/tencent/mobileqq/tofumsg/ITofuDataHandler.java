@@ -12,13 +12,13 @@ public abstract interface ITofuDataHandler
   
   public abstract oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem);
   
-  public abstract void a();
-  
   public abstract void a(@NotNull TofuItem paramTofuItem, @NotNull oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.ITofuDataHandler
  * JD-Core Version:    0.7.0.1
  */

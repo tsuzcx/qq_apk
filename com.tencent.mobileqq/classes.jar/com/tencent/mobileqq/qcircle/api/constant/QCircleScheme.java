@@ -2,6 +2,8 @@ package com.tencent.mobileqq.qcircle.api.constant;
 
 public class QCircleScheme
 {
+  public static final String KEY_MAIN_ENTRANCE = "xsj_main_entrance";
+  public static final String KEY_SCHEME = "key_scheme";
   public static final String Q_CIRCLE_ACTION_OPEN_AGGREGATION = "openAggregation";
   public static final String Q_CIRCLE_ACTION_OPEN_CAMERA = "opencamera";
   public static final String Q_CIRCLE_ACTION_OPEN_CIRCLE_CONTENT_DETAIL = "opendetail";
@@ -15,15 +17,17 @@ public class QCircleScheme
   public static final String Q_CIRCLE_ACTION_OPEN_MESSAGE_PAGE = "opennoticelist";
   public static final String Q_CIRCLE_ACTION_OPEN_POLYMERIZE = "openpolymerize";
   public static final String Q_CIRCLE_ACTION_OPEN_POLYMERIZE_DETAIL = "openpolymerizedetail";
+  public static final String Q_CIRCLE_ACTION_OPEN_PRIVACY_SETTING = "openPrivacySetting";
   public static final String Q_CIRCLE_ACTION_OPEN_PUBLISH_PAGE = "openpublish";
   public static final String Q_CIRCLE_ACTION_OPEN_PYMK_PAGE = "openpymk";
+  public static final String Q_CIRCLE_ACTION_OPEN_QQPUBLISH = "openqqpublish";
   public static final String Q_CIRCLE_ACTION_OPEN_SEARCH = "opencirclesearch";
   public static final String Q_CIRCLE_PROTOCOL_ROOTPATH = "qcircle";
   public static final String Q_CIRCLR_ACTION_REWARDAD = "openRewardAd";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.QCircleScheme
  * JD-Core Version:    0.7.0.1
  */

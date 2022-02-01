@@ -11,82 +11,186 @@ import java.io.File;
 public class AIOFilePicData
   extends AIORichMediaData
 {
-  public int a;
-  public long a;
-  public FileManagerEntity a;
   public String a;
-  public boolean a;
   public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  public String e;
-  public boolean e;
-  public String f;
-  public boolean f;
-  public String g;
-  public String h;
-  public String i;
-  
-  public AIOFilePicData()
-  {
-    this.jdField_b_of_type_JavaLangString = "I:N";
-    this.jdField_c_of_type_JavaLangString = "I:N";
-    this.jdField_d_of_type_JavaLangString = "I:N";
-    this.jdField_e_of_type_JavaLangString = "I:N";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-  }
+  public String c = "I:N";
+  public String d = "I:N";
+  public String e = "I:N";
+  public String f = "I:N";
+  public boolean g = false;
+  public boolean h = false;
+  public boolean i = false;
+  public FileManagerEntity j;
+  public boolean k = false;
+  public long l = 0L;
+  public long m = 0L;
+  public boolean n = false;
+  public String o;
+  public int p;
+  public String q;
+  public String r;
+  public boolean s = false;
+  public String t;
+  public int u;
+  public int v;
+  public int w;
   
   public int a(String paramString)
   {
     return 0;
   }
   
-  public File a(int paramInt)
+  public void a(Parcel paramParcel)
   {
-    Object localObject;
-    if (paramInt != 16)
-    {
-      if (paramInt != 18)
-      {
-        if (paramInt != 20) {
-          localObject = null;
-        } else {
-          localObject = this.jdField_d_of_type_JavaLangString;
-        }
-      }
-      else {
-        localObject = this.jdField_c_of_type_JavaLangString;
-      }
+    super.a(paramParcel);
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readString();
+    this.f = paramParcel.readString();
+    this.o = paramParcel.readString();
+    this.p = paramParcel.readInt();
+    this.q = paramParcel.readString();
+    this.k = Boolean.valueOf(paramParcel.readString()).booleanValue();
+    this.l = Long.valueOf(paramParcel.readString()).longValue();
+    this.m = Long.valueOf(paramParcel.readString()).longValue();
+    this.n = Boolean.valueOf(paramParcel.readString()).booleanValue();
+    this.r = paramParcel.readString();
+    int i1 = paramParcel.readInt();
+    boolean bool = true;
+    if (i1 != 1) {
+      bool = false;
     }
-    else {
-      localObject = this.jdField_b_of_type_JavaLangString;
-    }
-    if ((localObject != null) && (!((String)localObject).equals("I:N")))
-    {
-      localObject = new File((String)localObject);
-      if (((File)localObject).exists()) {
-        return localObject;
-      }
-    }
-    return null;
+    this.s = bool;
+    this.t = paramParcel.readString();
+    this.u = paramParcel.readInt();
+    this.v = paramParcel.readInt();
+    this.w = paramParcel.readInt();
   }
   
-  public String a(int paramInt)
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (this.j == null) {
+      this.j = paramQQAppInterface.getFileManagerDataCenter().a(this.L, this.a, this.b);
+    }
+    paramQQAppInterface = this.j;
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.strMiddleThumPath;
+      String str = "I:N";
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface = this.j.strMiddleThumPath;
+      } else {
+        paramQQAppInterface = "I:N";
+      }
+      this.c = paramQQAppInterface;
+      if (this.j.strLargeThumPath != null) {
+        paramQQAppInterface = this.j.strLargeThumPath;
+      } else {
+        paramQQAppInterface = "I:N";
+      }
+      this.d = paramQQAppInterface;
+      paramQQAppInterface = str;
+      if (this.j.getFilePath() != null) {
+        paramQQAppInterface = this.j.getFilePath();
+      }
+      this.e = paramQQAppInterface;
+      this.q = this.j.fileName;
+      boolean bool;
+      if (this.j.status == 16) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.k = bool;
+      this.l = this.j.fileSize;
+      this.O = this.j.fileSize;
+      this.m = this.j.lastSuccessTime;
+      this.n = this.j.sendCloudUnsuccessful();
+    }
+  }
+  
+  public void a(DataLineMsgRecord paramDataLineMsgRecord)
+  {
+    if (paramDataLineMsgRecord == null) {
+      return;
+    }
+    Object localObject = paramDataLineMsgRecord.thumbPath;
+    String str = "I:N";
+    if (localObject != null) {
+      localObject = paramDataLineMsgRecord.thumbPath;
+    } else {
+      localObject = "I:N";
+    }
+    this.c = ((String)localObject);
+    if (paramDataLineMsgRecord.thumbPath != null) {
+      localObject = paramDataLineMsgRecord.thumbPath;
+    } else {
+      localObject = "I:N";
+    }
+    this.d = ((String)localObject);
+    localObject = str;
+    if (paramDataLineMsgRecord.path != null) {
+      localObject = paramDataLineMsgRecord.path;
+    }
+    this.e = ((String)localObject);
+    this.q = paramDataLineMsgRecord.filename;
+    this.l = paramDataLineMsgRecord.filesize;
+    this.O = paramDataLineMsgRecord.filesize;
+    this.n = false;
+  }
+  
+  public void a(TroopFileStatusInfo paramTroopFileStatusInfo)
+  {
+    if (paramTroopFileStatusInfo == null) {
+      return;
+    }
+    Object localObject = paramTroopFileStatusInfo.n;
+    String str = "I:N";
+    if (localObject != null) {
+      localObject = paramTroopFileStatusInfo.n;
+    } else {
+      localObject = "I:N";
+    }
+    this.c = ((String)localObject);
+    if (paramTroopFileStatusInfo.m != null) {
+      localObject = paramTroopFileStatusInfo.m;
+    } else {
+      localObject = "I:N";
+    }
+    this.d = ((String)localObject);
+    localObject = str;
+    if (paramTroopFileStatusInfo.k != null) {
+      localObject = paramTroopFileStatusInfo.k;
+    }
+    this.e = ((String)localObject);
+    this.q = paramTroopFileStatusInfo.t;
+    boolean bool;
+    if (paramTroopFileStatusInfo.e == 12) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.k = bool;
+    this.l = paramTroopFileStatusInfo.i;
+    this.O = paramTroopFileStatusInfo.i;
+    this.n = false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (paramInt != 16)
+    {
+      if (paramInt != 18) {
+        return paramInt == 20;
+      }
+      return this.d.equals("I:N") ^ true;
+    }
+    return this.c.equals("I:N") ^ true;
+  }
+  
+  public String b(int paramInt)
   {
     String str;
     if (paramInt != 16)
@@ -96,15 +200,15 @@ public class AIOFilePicData
         if (paramInt != 20) {
           str = null;
         } else {
-          str = this.jdField_d_of_type_JavaLangString;
+          str = this.e;
         }
       }
       else {
-        str = this.jdField_c_of_type_JavaLangString;
+        str = this.d;
       }
     }
     else {
-      str = this.jdField_b_of_type_JavaLangString;
+      str = this.c;
     }
     if ((str != null) && (!str.equals("I:N")))
     {
@@ -130,154 +234,34 @@ public class AIOFilePicData
     return null;
   }
   
-  public void a(Parcel paramParcel)
+  public File c(int paramInt)
   {
-    super.a(paramParcel);
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.g = paramParcel.readString();
-    this.jdField_d_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
-    this.jdField_a_of_type_Long = Long.valueOf(paramParcel.readString()).longValue();
-    this.jdField_b_of_type_Long = Long.valueOf(paramParcel.readString()).longValue();
-    this.jdField_e_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
-    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
-    int j = paramParcel.readInt();
-    boolean bool = true;
-    if (j != 1) {
-      bool = false;
-    }
-    this.jdField_f_of_type_Boolean = bool;
-    this.i = paramParcel.readString();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.getFileManagerDataCenter().a(this.jdField_f_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    }
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.strMiddleThumPath;
-      String str = "I:N";
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strMiddleThumPath;
-      } else {
-        paramQQAppInterface = "I:N";
-      }
-      this.jdField_b_of_type_JavaLangString = paramQQAppInterface;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath != null) {
-        paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath;
-      } else {
-        paramQQAppInterface = "I:N";
-      }
-      this.jdField_c_of_type_JavaLangString = paramQQAppInterface;
-      paramQQAppInterface = str;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath() != null) {
-        paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-      }
-      this.jdField_d_of_type_JavaLangString = paramQQAppInterface;
-      this.g = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
-      boolean bool;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 16) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      this.jdField_d_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      this.jdField_h_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      this.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime;
-      this.jdField_e_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.sendCloudUnsuccessful();
-    }
-  }
-  
-  public void a(DataLineMsgRecord paramDataLineMsgRecord)
-  {
-    if (paramDataLineMsgRecord == null) {
-      return;
-    }
-    Object localObject = paramDataLineMsgRecord.thumbPath;
-    String str = "I:N";
-    if (localObject != null) {
-      localObject = paramDataLineMsgRecord.thumbPath;
-    } else {
-      localObject = "I:N";
-    }
-    this.jdField_b_of_type_JavaLangString = ((String)localObject);
-    if (paramDataLineMsgRecord.thumbPath != null) {
-      localObject = paramDataLineMsgRecord.thumbPath;
-    } else {
-      localObject = "I:N";
-    }
-    this.jdField_c_of_type_JavaLangString = ((String)localObject);
-    localObject = str;
-    if (paramDataLineMsgRecord.path != null) {
-      localObject = paramDataLineMsgRecord.path;
-    }
-    this.jdField_d_of_type_JavaLangString = ((String)localObject);
-    this.g = paramDataLineMsgRecord.filename;
-    this.jdField_a_of_type_Long = paramDataLineMsgRecord.filesize;
-    this.jdField_h_of_type_Long = paramDataLineMsgRecord.filesize;
-    this.jdField_e_of_type_Boolean = false;
-  }
-  
-  public void a(TroopFileStatusInfo paramTroopFileStatusInfo)
-  {
-    if (paramTroopFileStatusInfo == null) {
-      return;
-    }
-    Object localObject = paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString;
-    String str = "I:N";
-    if (localObject != null) {
-      localObject = paramTroopFileStatusInfo.jdField_d_of_type_JavaLangString;
-    } else {
-      localObject = "I:N";
-    }
-    this.jdField_b_of_type_JavaLangString = ((String)localObject);
-    if (paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString != null) {
-      localObject = paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString;
-    } else {
-      localObject = "I:N";
-    }
-    this.jdField_c_of_type_JavaLangString = ((String)localObject);
-    localObject = str;
-    if (paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString != null) {
-      localObject = paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString;
-    }
-    this.jdField_d_of_type_JavaLangString = ((String)localObject);
-    this.g = paramTroopFileStatusInfo.g;
-    boolean bool;
-    if (paramTroopFileStatusInfo.jdField_b_of_type_Int == 12) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    this.jdField_d_of_type_Boolean = bool;
-    this.jdField_a_of_type_Long = paramTroopFileStatusInfo.jdField_c_of_type_Long;
-    this.jdField_h_of_type_Long = paramTroopFileStatusInfo.jdField_c_of_type_Long;
-    this.jdField_e_of_type_Boolean = false;
-  }
-  
-  public boolean a(int paramInt)
-  {
+    Object localObject;
     if (paramInt != 16)
     {
-      if (paramInt != 18) {
-        return paramInt == 20;
+      if (paramInt != 18)
+      {
+        if (paramInt != 20) {
+          localObject = null;
+        } else {
+          localObject = this.e;
+        }
       }
-      return this.jdField_c_of_type_JavaLangString.equals("I:N") ^ true;
+      else {
+        localObject = this.d;
+      }
     }
-    return this.jdField_b_of_type_JavaLangString.equals("I:N") ^ true;
+    else {
+      localObject = this.c;
+    }
+    if ((localObject != null) && (!((String)localObject).equals("I:N")))
+    {
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {
+        return localObject;
+      }
+    }
+    return null;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -287,7 +271,7 @@ public class AIOFilePicData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOFilePicData
  * JD-Core Version:    0.7.0.1
  */

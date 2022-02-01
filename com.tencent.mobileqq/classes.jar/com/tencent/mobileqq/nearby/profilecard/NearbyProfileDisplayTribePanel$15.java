@@ -13,18 +13,18 @@ class NearbyProfileDisplayTribePanel$15
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView = new Intent(this.a.e, QQBrowserActivity.class);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=");
-    localStringBuilder.append(this.a.a.app.getCurrentUin());
+    localStringBuilder.append(this.a.e.app.getCurrentUin());
     paramView.putExtra("url", localStringBuilder.toString());
     paramView.putExtra("reqType", 1);
-    this.a.a.startActivity(paramView);
+    this.a.e.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.15
  * JD-Core Version:    0.7.0.1
  */

@@ -2,40 +2,31 @@ package com.tencent.av.business.manager.magicface;
 
 public class EffectFaceManager$BlessingTips
 {
-  public int a;
-  public long a;
   public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
-  
-  public EffectFaceManager$BlessingTips()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 3;
-  }
+  public long b = 0L;
+  public long c = 0L;
+  public String d = "";
+  public String e = "";
+  public int f = 30;
+  public int g = 3;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], text[");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("], date[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("->");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append("], imageUrl[");
     localStringBuilder.append(this.c);
+    localStringBuilder.append("], imageUrl[");
+    localStringBuilder.append(this.e);
     localStringBuilder.append("], callTimeLen[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("], showTimeLen[");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

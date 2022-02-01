@@ -3,17 +3,11 @@ package com.tencent.av.app;
 public class DeprecatedClass$Session
 {
   @Deprecated
-  public int a;
-  @Deprecated
-  public boolean a;
+  public int a = 0;
   @Deprecated
   public int b = 5;
-  
-  public DeprecatedClass$Session()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  @Deprecated
+  public boolean c = false;
 }
 
 

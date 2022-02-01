@@ -10,12 +10,12 @@ class AECirclePhotoListLogic$14
   
   public void run()
   {
-    AECirclePhotoListLogic.a(this.this$0).a(((AECirclePhotoListFragment)this.this$0.a.get()).getString(2064515274, new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) }));
+    AECirclePhotoListLogic.c(this.this$0).a(((AECirclePhotoListFragment)this.this$0.b.get()).getString(2064187624, new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.14
  * JD-Core Version:    0.7.0.1
  */

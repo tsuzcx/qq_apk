@@ -18,7 +18,7 @@ public class NavigateModule
 {
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    paramString = this.a.a();
+    paramString = this.a.h();
     if ((paramString != null) && (!paramString.isFinishing()))
     {
       Intent localIntent;
@@ -53,7 +53,7 @@ public class NavigateModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.internalModule.NavigateModule
  * JD-Core Version:    0.7.0.1
  */

@@ -19,8 +19,8 @@ class PasterDataManager$2
   {
     SLog.b("PasterDataManager", "onPOIPostersRequestResult callback");
     Object localObject = this.a;
-    ((PasterDataManager)localObject).jdField_a_of_type_Boolean = true;
-    ((PasterDataManager)localObject).jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    ((PasterDataManager)localObject).a = true;
+    ((PasterDataManager)localObject).e.removeCallbacks(this.a.h);
     localObject = paramList;
     if (paramList == null) {
       localObject = Collections.EMPTY_LIST;
@@ -30,7 +30,7 @@ class PasterDataManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.PasterDataManager.2
  * JD-Core Version:    0.7.0.1
  */

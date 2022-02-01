@@ -13,10 +13,10 @@ class MatchChatMsgListFragment$3
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
+    if (TextUtils.equals(this.a, paramString))
     {
-      paramString = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqMatchchatMatchChatMsgListFragment.getResources(), paramBitmap);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+      paramString = new BitmapDrawable(this.c.getResources(), paramBitmap);
+      this.b.setImageDrawable(paramString);
     }
   }
 }

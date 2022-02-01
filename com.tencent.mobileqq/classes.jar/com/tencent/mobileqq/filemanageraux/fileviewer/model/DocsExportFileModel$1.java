@@ -19,8 +19,8 @@ class DocsExportFileModel$1
   
   public void a(int paramInt)
   {
-    if ((DocsExportFileModel.d(this.a) != null) && (paramInt <= 100)) {
-      DocsExportFileModel.a(this.a).post(new DocsExportFileModel.1.2(this, paramInt));
+    if ((DocsExportFileModel.i(this.a) != null) && (paramInt <= 100)) {
+      DocsExportFileModel.f(this.a).post(new DocsExportFileModel.1.2(this, paramInt));
     }
   }
   
@@ -37,19 +37,19 @@ class DocsExportFileModel$1
   public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.a.b;
-    long l3 = this.a.b;
-    long l4 = this.a.a;
+    long l2 = this.a.A;
+    long l3 = this.a.A;
+    long l4 = this.a.z;
     if (paramBoolean)
     {
       if ((DocsExportFileModel.a(this.a) != null) && (DocsExportFileModel.b(this.a).getBoolean("isMiniProgram", false))) {
-        TenDocLogReportHelper.a(DocsExportFileModel.a(this.a), "0X800A4B3");
+        TenDocLogReportHelper.a(DocsExportFileModel.c(this.a), "0X800A4B3");
       }
-      if (DocsExportFileModel.a(this.a) != null)
+      if (DocsExportFileModel.d(this.a) != null)
       {
-        DocsExportFileModel.a(this.a).setFilePath(paramString1);
-        DocsExportFileModel.a(this.a).fileSize = FileManagerUtil.a(paramString1);
-        paramString1 = TeamWorkExportUtil.a(DocsExportFileModel.a(this.a).nFileType);
+        DocsExportFileModel.d(this.a).setFilePath(paramString1);
+        DocsExportFileModel.d(this.a).fileSize = FileManagerUtil.h(paramString1);
+        paramString1 = TeamWorkExportUtil.a(DocsExportFileModel.d(this.a).nFileType);
         QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if ((localQQAppInterface != null) && (paramString2 != null))
         {
@@ -63,23 +63,23 @@ class DocsExportFileModel$1
           ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009956", "0X8009956", 0, 1, (String)localObject, localStringBuilder.toString(), paramString1, paramString2);
         }
       }
-      if (DocsExportFileModel.a(this.a) != null)
+      if (DocsExportFileModel.e(this.a) != null)
       {
-        DocsExportFileModel.a(this.a).removeMessages(8001);
-        DocsExportFileModel.a(this.a).removeMessages(8002);
-        DocsExportFileModel.a(this.a).post(new DocsExportFileModel.1.1(this));
+        DocsExportFileModel.f(this.a).removeMessages(8001);
+        DocsExportFileModel.f(this.a).removeMessages(8002);
+        DocsExportFileModel.f(this.a).post(new DocsExportFileModel.1.1(this));
       }
     }
     else
     {
-      paramString1 = HardCodeUtil.a(2131703560);
+      paramString1 = HardCodeUtil.a(2131901511);
       DocsExportFileModel.a(this.a, paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.model.DocsExportFileModel.1
  * JD-Core Version:    0.7.0.1
  */

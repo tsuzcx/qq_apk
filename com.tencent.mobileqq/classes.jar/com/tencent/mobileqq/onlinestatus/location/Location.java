@@ -9,22 +9,22 @@ import java.util.Locale;
 
 public class Location
 {
-  public final float a;
-  public final long a;
   public final LatLng a;
-  public final String a;
+  public final String b;
+  public final float c;
+  public final long d;
   
   public Location(LatLng paramLatLng, String paramString, float paramFloat, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLatLng;
+    this.b = paramString;
+    this.c = paramFloat;
+    this.d = paramLong;
   }
   
   public boolean a()
   {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long >= Constant.N;
+    return System.currentTimeMillis() - this.d >= Constant.Q;
   }
   
   @NonNull
@@ -32,20 +32,20 @@ public class Location
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Location{latLng=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", provider='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", accuracy=");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", time=");
-    localStringBuilder.append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)));
+    localStringBuilder.append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.d)));
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.location.Location
  * JD-Core Version:    0.7.0.1
  */

@@ -6,28 +6,23 @@ import java.util.List;
 public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
   implements ListContract.IListPresenter<BEAN, VIEW>
 {
-  private ListContract.IListModel<BEAN> jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListModel;
-  private ListContract.IListView<BEAN> jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  
-  public ListPresenter(ListContract.IListModel<BEAN> paramIListModel)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListModel = paramIListModel;
-  }
+  private ListContract.IListModel<BEAN> a;
+  private ListContract.IListView<BEAN> b;
+  private boolean c;
   
   private void a(List<BEAN> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
+      ListContract.IListView localIListView = this.b;
       if (localIListView != null)
       {
-        localIListView.setCenterHide();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setListData(paramList, false);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setFooterNoMore();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setHeaderLoading();
+        localIListView.d();
+        this.b.a(paramList, false);
+        this.b.e();
+        this.b.a();
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
     }
   }
   
@@ -44,109 +39,73 @@ public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
   private void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, @Nullable String paramString)
   {
     ListContract.IListView localIListView;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      localIListView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
+      localIListView = this.b;
       if (localIListView != null) {
-        localIListView.setHeaderError(paramInt, paramString);
+        localIListView.a(paramInt, paramString);
       }
     }
     if ((paramList != null) && (!paramList.isEmpty()) && (paramBoolean))
     {
-      localIListView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
+      localIListView = this.b;
       if (localIListView != null)
       {
-        localIListView.setCenterHide();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setListData(paramList, false);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setFooterNoMore();
+        localIListView.d();
+        this.b.a(paramList, false);
+        this.b.e();
         return;
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      paramList = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
+      paramList = this.b;
       if (paramList != null)
       {
-        paramList.setCenterError(paramInt, paramString);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setTotal(0);
+        paramList.b(paramInt, paramString);
+        this.b.a(0);
       }
     }
   }
   
   private void b(int paramInt, List<BEAN> paramList)
   {
-    ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
+    ListContract.IListView localIListView = this.b;
     if (localIListView != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        localIListView.setHeaderSuccess();
+      if (this.c) {
+        localIListView.b();
       }
       a(paramInt, paramList);
     }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView = null;
-  }
-  
   public void a(int paramInt, List<BEAN> paramList)
   {
-    ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
+    ListContract.IListView localIListView = this.b;
     if (localIListView != null)
     {
-      localIListView.setTotal(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setListData(paramList, false);
+      localIListView.a(paramInt);
+      this.b.a(paramList, false);
       if ((paramList != null) && (!paramList.isEmpty()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setCenterHide();
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListModel.a())
+        this.b.d();
+        if (this.a.a())
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setFooterHasMore();
+          this.b.f();
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setFooterNoMore();
+        this.b.e();
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setCenterEmpty();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView.setFooterHide();
+      this.b.c();
+      this.b.g();
     }
-  }
-  
-  public void a(VIEW paramVIEW)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView = paramVIEW;
-  }
-  
-  public void b()
-  {
-    ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
-    if (localIListView != null) {
-      localIListView.setCenterLoading();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListModel.a(true, new ListPresenter.2(this));
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListModel.a())
-    {
-      localIListView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
-      if (localIListView != null) {
-        localIListView.setFooterNoMore();
-      }
-      return;
-    }
-    ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListView;
-    if (localIListView != null) {
-      localIListView.setFooterLoading();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseMvpListContract$IListModel.a(new ListPresenter.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.mvp.ListPresenter
  * JD-Core Version:    0.7.0.1
  */

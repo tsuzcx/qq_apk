@@ -11,13 +11,13 @@ class NearbyProfileEditPanel$20$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel$20.a.f();
+    this.a.dismiss();
+    this.b.a.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.20.3
  * JD-Core Version:    0.7.0.1
  */

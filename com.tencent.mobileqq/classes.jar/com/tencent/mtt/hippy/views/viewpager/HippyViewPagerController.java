@@ -78,7 +78,7 @@ public class HippyViewPagerController
     int j = paramHippyViewPager.getCurrentItem();
     int i = -1;
     int k = paramString.hashCode();
-    boolean bool = true;
+    boolean bool = false;
     switch (k)
     {
     default: 
@@ -140,8 +140,8 @@ public class HippyViewPagerController
           if ((paramString != null) && (paramString.size() > 0) && (paramString.containsKey("index")))
           {
             i = paramString.getInt("index");
-            if (paramString.containsKey("animated")) {
-              bool = paramString.getBoolean("animated");
+            if ((!paramString.containsKey("animated")) || (paramString.getBoolean("animated"))) {
+              bool = true;
             }
             paramHippyViewPager.switchToPage(i, bool);
           }
@@ -170,7 +170,9 @@ public class HippyViewPagerController
       return;
     }
     int i = -1;
-    if ((paramString.hashCode() == 1395059088) && (paramString.equals("setIndex"))) {
+    int j = paramString.hashCode();
+    boolean bool = false;
+    if ((j == 1395059088) && (paramString.equals("setIndex"))) {
       i = 0;
     }
     if (i != 0) {
@@ -182,10 +184,7 @@ public class HippyViewPagerController
       if ((paramString != null) && (paramString.size() > 0) && (paramString.containsKey("index")))
       {
         i = paramString.getInt("index");
-        boolean bool;
-        if (paramString.containsKey("animated")) {
-          bool = paramString.getBoolean("animated");
-        } else {
+        if ((!paramString.containsKey("animated")) || (paramString.getBoolean("animated"))) {
           bool = true;
         }
         paramHippyViewPager.setCallBackPromise(paramPromise);
@@ -242,7 +241,7 @@ public class HippyViewPagerController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.HippyViewPagerController
  * JD-Core Version:    0.7.0.1
  */

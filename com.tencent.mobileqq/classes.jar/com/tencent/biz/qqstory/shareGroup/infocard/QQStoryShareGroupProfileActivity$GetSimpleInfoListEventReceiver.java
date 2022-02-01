@@ -16,8 +16,8 @@ class QQStoryShareGroupProfileActivity$GetSimpleInfoListEventReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
   {
-    if (paramGetSimpleInfoListEvent.a.isSuccess()) {
-      paramQQStoryShareGroupProfileActivity.a.a(paramGetSimpleInfoListEvent);
+    if (paramGetSimpleInfoListEvent.g.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.d.a(paramGetSimpleInfoListEvent);
     }
   }
   

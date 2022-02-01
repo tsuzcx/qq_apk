@@ -12,14 +12,14 @@ import com.tencent.qphone.base.util.QLog;
 public class TeamWorkFileImportJob
   implements ITeamWorkFileImportJob
 {
-  protected ITeamWorkFileImportHandler a;
-  public TeamWorkFileImportInfo a;
+  public TeamWorkFileImportInfo b;
+  protected ITeamWorkFileImportHandler c;
   
   public TeamWorkFileImportJob(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
+    this.b = paramTeamWorkFileImportInfo;
     if (paramAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler = ((ITeamWorkFileImportHandler)paramAppInterface.getBusinessHandler(((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getImportHandlerName()));
+      this.c = ((ITeamWorkFileImportHandler)paramAppInterface.getBusinessHandler(((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getImportHandlerName()));
     }
   }
   
@@ -28,33 +28,33 @@ public class TeamWorkFileImportJob
   protected void a(boolean paramBoolean)
   {
     int i = 0;
-    if ((paramBoolean) && (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.c)))
+    if ((paramBoolean) && (FileUtils.fileExistsAndNotEmpty(this.b.d)))
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("---notifyUIFailed try local fileName: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b);
+        ((StringBuilder)localObject).append(this.b.c);
         QLog.i("TeamWorkFileImportJob", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.removeFileImporting(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
-      ((TeamWorkFileImportInfo)localObject).a = false;
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.addToFileImportingMap((TeamWorkFileImportInfo)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.fileImportFromLocalFile(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+      this.c.removeFileImporting(this.b);
+      Object localObject = this.b;
+      ((TeamWorkFileImportInfo)localObject).m = false;
+      this.c.addToFileImportingMap((TeamWorkFileImportInfo)localObject);
+      this.c.fileImportFromLocalFile(this.b);
     }
     else
     {
       i = 1;
     }
     if (i != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.notifyUIError(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+      this.c.notifyUIError(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJob
  * JD-Core Version:    0.7.0.1
  */

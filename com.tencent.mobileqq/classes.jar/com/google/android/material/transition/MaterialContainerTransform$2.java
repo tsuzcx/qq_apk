@@ -13,25 +13,25 @@ class MaterialContainerTransform$2
   
   public void onTransitionEnd(@NonNull Transition paramTransition)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform.removeListener(this);
-    if (MaterialContainerTransform.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform)) {
+    this.e.removeListener(this);
+    if (MaterialContainerTransform.a(this.e)) {
       return;
     }
-    this.b.setAlpha(1.0F);
     this.c.setAlpha(1.0F);
-    ViewUtils.a(this.jdField_a_of_type_AndroidViewView).b(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$TransitionDrawable);
+    this.d.setAlpha(1.0F);
+    ViewUtils.e(this.a).b(this.b);
   }
   
   public void onTransitionStart(@NonNull Transition paramTransition)
   {
-    ViewUtils.a(this.jdField_a_of_type_AndroidViewView).a(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$TransitionDrawable);
-    this.b.setAlpha(0.0F);
+    ViewUtils.e(this.a).a(this.b);
     this.c.setAlpha(0.0F);
+    this.d.setAlpha(0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.MaterialContainerTransform.2
  * JD-Core Version:    0.7.0.1
  */

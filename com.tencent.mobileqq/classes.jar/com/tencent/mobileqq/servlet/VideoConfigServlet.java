@@ -62,7 +62,7 @@ public class VideoConfigServlet
     }
     if ((paramVideoCallMsg != null) && (paramVideoCallMsg.vMsg != null))
     {
-      int[] arrayOfInt = ConfigSystemImpl.a(paramVideoCallMsg.vMsg);
+      int[] arrayOfInt = ConfigSystemImpl.c(paramVideoCallMsg.vMsg);
       if (arrayOfInt != null)
       {
         boolean bool2 = false;
@@ -99,7 +99,7 @@ public class VideoConfigServlet
         QQAudioHelper.a(3, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
       }
     }
-    ConfigSystemImpl.a(String.valueOf(AppSetting.a()), getAppRuntime().getApplication(), paramVideoCallMsg.vMsg);
+    ConfigSystemImpl.a(String.valueOf(AppSetting.d()), getAppRuntime().getApplication(), paramVideoCallMsg.vMsg);
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -169,7 +169,7 @@ public class VideoConfigServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject1 = paramIntent.getExtras();
-    if (QQAudioHelper.c()) {
+    if (QQAudioHelper.f()) {
       QQAudioHelper.a("VideoConfigServlet.onSend", (Bundle)localObject1, true);
     }
     if (localObject1 == null) {
@@ -240,14 +240,14 @@ public class VideoConfigServlet
       paramIntent.cVerifyType = 0;
       paramIntent.uSeqId = 0;
       paramIntent.uSessionId = 0;
-      paramIntent.vMsg = ConfigSystemImpl.a(paramIntent.lUin, String.valueOf(AppSetting.a()), getAppRuntime().getApplication());
+      paramIntent.vMsg = ConfigSystemImpl.a(paramIntent.lUin, String.valueOf(AppSetting.d()), getAppRuntime().getApplication());
       paramPacket.addRequestPacket("VideoCallMsg", paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.VideoConfigServlet
  * JD-Core Version:    0.7.0.1
  */

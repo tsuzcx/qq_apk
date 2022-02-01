@@ -16,12 +16,12 @@ class UniformDownloadMgr$8
   
   public void run()
   {
-    UniformDownloadMgr.a(this.this$0).d();
-    if (UniformDownloadMgr.a(this.this$0))
+    UniformDownloadMgr.b(this.this$0).d();
+    if (UniformDownloadMgr.d(this.this$0))
     {
       QLog.i("UniformDownloadMgr_Impl", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot. start resume");
-      Object localObject2 = UniformDownloadMgr.a(this.this$0).a();
-      UniformDownloadMgr.a(this.this$0).a();
+      Object localObject2 = UniformDownloadMgr.e(this.this$0).b();
+      UniformDownloadMgr.e(this.this$0).c();
       Object localObject1 = new HashMap();
       Object localObject4;
       Object localObject3;
@@ -35,7 +35,7 @@ class UniformDownloadMgr$8
           localObject4 = (DownloadingRbResmeInfo)((Map.Entry)localObject4).getValue();
           if (localObject4 != null)
           {
-            if (((DownloadingRbResmeInfo)localObject4).jdField_a_of_type_Boolean)
+            if (((DownloadingRbResmeInfo)localObject4).e)
             {
               ((Map)localObject1).put(localObject3, localObject4);
             }
@@ -45,10 +45,10 @@ class UniformDownloadMgr$8
               localStringBuilder.append("[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[");
               localStringBuilder.append((String)localObject3);
               localStringBuilder.append("] nId:[");
-              localStringBuilder.append(((DownloadingRbResmeInfo)localObject4).jdField_a_of_type_Int);
+              localStringBuilder.append(((DownloadingRbResmeInfo)localObject4).a);
               localStringBuilder.append("] - 1");
               QLog.i("UniformDownloadMgr_Impl", 1, localStringBuilder.toString());
-              this.this$0.a(new DownloadInfoBuilder().a((String)localObject3).b(((DownloadingRbResmeInfo)localObject4).jdField_a_of_type_JavaLangString).a(((DownloadingRbResmeInfo)localObject4).jdField_a_of_type_Long).c(((DownloadingRbResmeInfo)localObject4).b).a(((DownloadingRbResmeInfo)localObject4).jdField_a_of_type_AndroidOsBundle).a(((DownloadingRbResmeInfo)localObject4).jdField_a_of_type_Int).a(true));
+              this.this$0.a(new DownloadInfoBuilder().a((String)localObject3).b(((DownloadingRbResmeInfo)localObject4).b).a(((DownloadingRbResmeInfo)localObject4).d).c(((DownloadingRbResmeInfo)localObject4).c).a(((DownloadingRbResmeInfo)localObject4).f).a(((DownloadingRbResmeInfo)localObject4).a).a(true));
             }
           }
           else
@@ -75,10 +75,10 @@ class UniformDownloadMgr$8
             ((StringBuilder)localObject4).append("[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[");
             ((StringBuilder)localObject4).append((String)localObject2);
             ((StringBuilder)localObject4).append("] nId:[");
-            ((StringBuilder)localObject4).append(((DownloadingRbResmeInfo)localObject3).jdField_a_of_type_Int);
+            ((StringBuilder)localObject4).append(((DownloadingRbResmeInfo)localObject3).a);
             ((StringBuilder)localObject4).append("] - 2");
             QLog.i("UniformDownloadMgr_Impl", 1, ((StringBuilder)localObject4).toString());
-            this.this$0.a(new DownloadInfoBuilder().a((String)localObject2).b(((DownloadingRbResmeInfo)localObject3).jdField_a_of_type_JavaLangString).a(((DownloadingRbResmeInfo)localObject3).jdField_a_of_type_Long).c(((DownloadingRbResmeInfo)localObject3).b).a(((DownloadingRbResmeInfo)localObject3).jdField_a_of_type_AndroidOsBundle).a(((DownloadingRbResmeInfo)localObject3).jdField_a_of_type_Int).a(true));
+            this.this$0.a(new DownloadInfoBuilder().a((String)localObject2).b(((DownloadingRbResmeInfo)localObject3).b).a(((DownloadingRbResmeInfo)localObject3).d).c(((DownloadingRbResmeInfo)localObject3).c).a(((DownloadingRbResmeInfo)localObject3).f).a(((DownloadingRbResmeInfo)localObject3).a).a(true));
           }
           else
           {
@@ -94,14 +94,14 @@ class UniformDownloadMgr$8
     else
     {
       QLog.i("UniformDownloadMgr_Impl", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot. not resume");
-      UniformDownloadMgr.a(this.this$0).a();
+      UniformDownloadMgr.e(this.this$0).c();
     }
-    UniformDownloadMgr.a(this.this$0).b();
+    UniformDownloadMgr.b(this.this$0).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadMgr.8
  * JD-Core Version:    0.7.0.1
  */

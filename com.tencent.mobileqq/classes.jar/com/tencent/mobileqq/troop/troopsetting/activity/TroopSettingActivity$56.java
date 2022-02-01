@@ -18,19 +18,19 @@ class TroopSettingActivity$56
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)
+    if (this.a.t != null)
     {
-      ((ITroopAppService)TroopSettingActivity.a(this.a).getRuntimeService(ITroopAppService.class, "all")).setProfileAppListChangedFromWebOperate(true, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin;
+      ((ITroopAppService)TroopSettingActivity.a(this.a).getRuntimeService(ITroopAppService.class, "all")).setProfileAppListChangedFromWebOperate(true, this.a.i.troopUin);
+      String str = this.a.t.troopuin;
       ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).handleTroopAppManageShortcutBar(TroopSettingActivity.a(this.a), str, this.a);
-      ReportController.b(null, "dc00898", "", "", "0X800AFC5", "0X800AFC5", 0, 0, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.dwGroupClassExt), "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800AFC5", "0X800AFC5", 0, 0, String.valueOf(this.a.t.dwGroupClassExt), "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.56
  * JD-Core Version:    0.7.0.1
  */

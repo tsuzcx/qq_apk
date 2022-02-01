@@ -1,30 +1,44 @@
 package com.tencent.av.ui;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.utils.SeqUtil;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.business.manager.magicface.MagicDataReport;
+import com.tencent.av.tips.TipsUtil;
+import com.tencent.av.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AVActivity$20
-  extends Handler
+  implements View.OnClickListener
 {
-  AVActivity$20(AVActivity paramAVActivity) {}
+  AVActivity$20(AVActivity paramAVActivity, String paramString, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what != 272)
+    TipsUtil.b(this.c.H, 1044);
+    this.c.a(2, false);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.c.I.p(this.c.I.k().s));
+    ((StringBuilder)localObject).append("");
+    MagicDataReport.e(((StringBuilder)localObject).toString());
+    if (AudioHelper.e())
     {
-      super.handleMessage(paramMessage);
-      return;
+      localObject = this.c.i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qav_double_screen_notify, click[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject, 1, localStringBuilder.toString());
     }
-    long l = SeqUtil.a(paramMessage.obj);
-    this.a.a(l, "handleMessage", true);
-    if (this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.n();
+    if (!TextUtils.isEmpty(this.a)) {
+      new ControlUIObserver.RequestPlayMagicFace(this.b, this.a, false, 4).a(this.c.H);
     }
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.l(this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.a);
-    }
-    this.a.g(-1031L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

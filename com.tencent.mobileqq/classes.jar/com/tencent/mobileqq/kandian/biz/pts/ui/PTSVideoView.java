@@ -19,7 +19,7 @@ public final class PTSVideoView
   @NotNull
   public static final String TAG = "PTSVideoView";
   
-  public PTSVideoView(@NotNull Context paramContext)
+  public PTSVideoView(@Nullable Context paramContext)
   {
     super(paramContext);
   }
@@ -36,7 +36,7 @@ public final class PTSVideoView
   
   public PTSVideoView(@NotNull PTSNodeVideo paramPTSNodeVideo)
   {
-    this(paramPTSNodeVideo);
+    this(paramPTSNodeVideo.getContext());
   }
   
   public void onBindNodeInfo(@Nullable PTSNodeInfo paramPTSNodeInfo)
@@ -46,7 +46,7 @@ public final class PTSVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.ui.PTSVideoView
  * JD-Core Version:    0.7.0.1
  */

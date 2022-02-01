@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.cmshow.brickengine.script.task;
 
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
+import com.tencent.mobileqq.cmshow.engine.script.ScriptHelper;
 import com.tencent.mobileqq.cmshow.engine.script.task.BackgroundInitTask;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
@@ -9,25 +12,30 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.StringCompanionObject;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/brickengine/script/task/BKBackgroundInitTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/BackgroundInitTask;", "()V", "buildScript", "", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/brickengine/script/task/BKBackgroundInitTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/BackgroundInitTask;", "apolloResManager", "Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;", "(Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;)V", "buildScript", "Lcom/tencent/mobileqq/cmshow/engine/script/Script;", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class BKBackgroundInitTask
   extends BackgroundInitTask
 {
   @Deprecated
   public static final BKBackgroundInitTask.Companion a = new BKBackgroundInitTask.Companion(null);
   
-  @NotNull
-  public String a()
+  public BKBackgroundInitTask(@NotNull IApolloResManager paramIApolloResManager)
   {
-    String str = e();
+    super(paramIApolloResManager);
+  }
+  
+  @NotNull
+  public Script a()
+  {
+    String str = l();
     if (str == null) {
       str = ApolloUtilImpl.getApolloId(c());
     }
     Object localObject1 = new StringBuilder();
-    if (d() == 0) {
+    if (m() == 0) {
       ((StringBuilder)localObject1).append("def/basic/skeleton/");
     }
-    ((StringBuilder)localObject1).append(d());
+    ((StringBuilder)localObject1).append(m());
     ((StringBuilder)localObject1).append("/role");
     localObject1 = ((StringBuilder)localObject1).toString();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "StringBuilder().apply(builderAction).toString()");
@@ -44,10 +52,10 @@ public final class BKBackgroundInitTask
     localObject2[2] = localObject1;
     localObject2[3] = localObject1;
     localObject2[4] = Float.valueOf(1.0F);
-    localObject2[5] = Float.valueOf(a());
+    localObject2[5] = Float.valueOf(n());
     localObject2[6] = Float.valueOf(f);
-    localObject2[7] = Float.valueOf(b());
-    localObject2[8] = Float.valueOf(c());
+    localObject2[7] = Float.valueOf(o());
+    localObject2[8] = Float.valueOf(p());
     localObject2[9] = "null";
     localObject2[10] = "null";
     localObject2[11] = str;
@@ -58,12 +66,12 @@ public final class BKBackgroundInitTask
     ((StringBuilder)localObject1).append("buildScript: ");
     ((StringBuilder)localObject1).append(str);
     QLog.i("[cmshow][ScriptTask][BKBackgroundInitTask]", 1, ((StringBuilder)localObject1).toString());
-    return str;
+    return ScriptHelper.a.b(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.script.task.BKBackgroundInitTask
  * JD-Core Version:    0.7.0.1
  */

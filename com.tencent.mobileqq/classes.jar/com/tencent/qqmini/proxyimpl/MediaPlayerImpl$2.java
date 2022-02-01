@@ -9,12 +9,12 @@ class MediaPlayerImpl$2
   
   public void onCompletion(IMediaPlayer paramIMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaPlayerImpl);
+    this.a.onCompletion(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MediaPlayerImpl.2
  * JD-Core Version:    0.7.0.1
  */

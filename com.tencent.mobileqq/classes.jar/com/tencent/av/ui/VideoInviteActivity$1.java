@@ -12,16 +12,16 @@ class VideoInviteActivity$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isFinishing()) {
+    if (this.b.isFinishing()) {
       return;
     }
-    if ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.isDestroyed())) {
+    if ((Build.VERSION.SDK_INT >= 17) && (this.b.isDestroyed())) {
       return;
     }
     if (paramInt == 1) {
       return;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity, true, new VideoInviteActivity.1.1(this));
+    ChatActivityUtils.a(this.b, true, new VideoInviteActivity.1.1(this));
   }
 }
 

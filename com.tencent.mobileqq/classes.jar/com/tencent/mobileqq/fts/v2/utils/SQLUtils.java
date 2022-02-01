@@ -125,15 +125,15 @@ public class SQLUtils
   private static String a(FTSQueryArgsV2 paramFTSQueryArgsV2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(paramFTSQueryArgsV2.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramFTSQueryArgsV2.f))
     {
       localStringBuilder.append(" ORDER BY ");
-      localStringBuilder.append(paramFTSQueryArgsV2.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramFTSQueryArgsV2.f);
     }
-    if (paramFTSQueryArgsV2.jdField_a_of_type_Int > 0)
+    if (paramFTSQueryArgsV2.d > 0)
     {
       localStringBuilder.append(" LIMIT ");
-      localStringBuilder.append(paramFTSQueryArgsV2.jdField_a_of_type_Int);
+      localStringBuilder.append(paramFTSQueryArgsV2.d);
     }
     return localStringBuilder.toString();
   }
@@ -141,18 +141,18 @@ public class SQLUtils
   private static String a(FTSQueryArgsV2 paramFTSQueryArgsV2, FTSQueryArgsV2.MatchKey paramMatchKey)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    paramMatchKey = a(paramFTSQueryArgsV2.jdField_a_of_type_JavaLangClass, paramMatchKey);
-    if ((!TextUtils.isEmpty(paramMatchKey)) || (!TextUtils.isEmpty(paramFTSQueryArgsV2.jdField_a_of_type_JavaLangString)))
+    paramMatchKey = a(paramFTSQueryArgsV2.a, paramMatchKey);
+    if ((!TextUtils.isEmpty(paramMatchKey)) || (!TextUtils.isEmpty(paramFTSQueryArgsV2.e)))
     {
       localStringBuilder.append(" WHERE ");
       if (!TextUtils.isEmpty(paramMatchKey)) {
         localStringBuilder.append(paramMatchKey);
       }
-      if ((!TextUtils.isEmpty(paramMatchKey)) && (!TextUtils.isEmpty(paramFTSQueryArgsV2.jdField_a_of_type_JavaLangString))) {
+      if ((!TextUtils.isEmpty(paramMatchKey)) && (!TextUtils.isEmpty(paramFTSQueryArgsV2.e))) {
         localStringBuilder.append(" AND ");
       }
-      if (!TextUtils.isEmpty(paramFTSQueryArgsV2.jdField_a_of_type_JavaLangString)) {
-        localStringBuilder.append(paramFTSQueryArgsV2.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(paramFTSQueryArgsV2.e)) {
+        localStringBuilder.append(paramFTSQueryArgsV2.e);
       }
     }
     return localStringBuilder.toString();
@@ -174,7 +174,7 @@ public class SQLUtils
     String str = a(paramFTSQueryArgsV2, false);
     if ((paramList != null) && (paramList.size() <= 0))
     {
-      paramFTSQueryArgsV2 = FTSV2FieldUtils.a(paramFTSQueryArgsV2.jdField_a_of_type_JavaLangClass).values().iterator();
+      paramFTSQueryArgsV2 = FTSV2FieldUtils.a(paramFTSQueryArgsV2.a).values().iterator();
       while (paramFTSQueryArgsV2.hasNext())
       {
         Object localObject = (Field)paramFTSQueryArgsV2.next();
@@ -200,14 +200,14 @@ public class SQLUtils
   
   private static String a(FTSQueryArgsV2 paramFTSQueryArgsV2, boolean paramBoolean)
   {
-    if (paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey != null)
+    if (paramFTSQueryArgsV2.b != null)
     {
-      if (paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey.length == 1) {
-        return a(paramFTSQueryArgsV2, paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey[0], paramBoolean);
+      if (paramFTSQueryArgsV2.b.length == 1) {
+        return a(paramFTSQueryArgsV2, paramFTSQueryArgsV2.b[0], paramBoolean);
       }
-      if (paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey.length > 1)
+      if (paramFTSQueryArgsV2.b.length > 1)
       {
-        if (paramFTSQueryArgsV2.jdField_a_of_type_Boolean) {
+        if (paramFTSQueryArgsV2.c) {
           return b(paramFTSQueryArgsV2, paramBoolean);
         }
         return c(paramFTSQueryArgsV2, paramBoolean);
@@ -225,7 +225,7 @@ public class SQLUtils
     localStringBuilder.append(paramFTSEntityV2.getTableName());
     localStringBuilder.append("(");
     Object localObject1 = FTSV2FieldUtils.a(paramFTSEntityV2.getClass());
-    Set localSet = FTSV2FieldUtils.a(paramFTSEntityV2.getClass());
+    Set localSet = FTSV2FieldUtils.b(paramFTSEntityV2.getClass());
     Object localObject2 = ((Map)localObject1).values().iterator();
     Field localField;
     for (int i = 1; ((Iterator)localObject2).hasNext(); i = 0)
@@ -346,15 +346,15 @@ public class SQLUtils
     if (paramMatchKey == null) {
       return "";
     }
-    Object localObject1 = FTSV2FieldUtils.a(paramClass);
-    Object localObject3 = paramMatchKey.jdField_a_of_type_JavaLangString;
+    Object localObject1 = FTSV2FieldUtils.d(paramClass);
+    Object localObject3 = paramMatchKey.a;
     if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (paramMatchKey != null))
     {
-      if (TextUtils.isEmpty(paramMatchKey.jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramMatchKey.b)) {
         return "";
       }
       Object localObject2 = FTSV2FieldUtils.a(paramClass);
-      Object localObject4 = FTSV2FieldUtils.a(paramClass);
+      Object localObject4 = FTSV2FieldUtils.b(paramClass);
       Field localField = (Field)((Map)localObject2).get(localObject3);
       localObject2 = new StringBuilder(128);
       if (((Set)localObject4).contains(localField)) {
@@ -367,9 +367,9 @@ public class SQLUtils
       boolean bool = ((Set)localObject4).contains(localField);
       int j = 0;
       int i;
-      if ((!bool) && (!paramMatchKey.jdField_b_of_type_Boolean))
+      if ((!bool) && (!paramMatchKey.d))
       {
-        localObject3 = SegmentUtils.a(paramMatchKey.jdField_b_of_type_JavaLangString);
+        localObject3 = SegmentUtils.c(paramMatchKey.b);
         if (localObject3 != null)
         {
           localObject1 = new String[((ArrayList)localObject3).size()];
@@ -392,7 +392,7 @@ public class SQLUtils
       }
       else
       {
-        paramClass = SegmentUtils.b(paramMatchKey.jdField_b_of_type_JavaLangString);
+        paramClass = SegmentUtils.d(paramMatchKey.b);
       }
       if (paramClass != null)
       {
@@ -403,7 +403,7 @@ public class SQLUtils
         while (i < paramClass.length)
         {
           if (i > 0) {
-            if (paramMatchKey.jdField_a_of_type_Boolean) {
+            if (paramMatchKey.c) {
               ((StringBuilder)localObject2).append(" OR ");
             } else {
               ((StringBuilder)localObject2).append(" ");
@@ -423,7 +423,7 @@ public class SQLUtils
   
   public static String a(Class<? extends FTSEntityV2> paramClass, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    FTSEntityV2 localFTSEntityV2 = FTSV2FieldUtils.a(paramClass);
+    FTSEntityV2 localFTSEntityV2 = FTSV2FieldUtils.d(paramClass);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CREATE VIRTUAL TABLE ");
     if ((paramBoolean1) && (paramBoolean2)) {
@@ -438,7 +438,7 @@ public class SQLUtils
     }
     localStringBuilder.append("(");
     Object localObject2 = FTSV2FieldUtils.a(paramClass);
-    Object localObject1 = FTSV2FieldUtils.a(paramClass);
+    Object localObject1 = FTSV2FieldUtils.b(paramClass);
     int i = 1;
     localObject2 = ((Map)localObject2).values().iterator();
     while (((Iterator)localObject2).hasNext())
@@ -464,7 +464,7 @@ public class SQLUtils
     {
       localObject2 = new HashSet();
       ((Set)localObject2).addAll((Collection)localObject1);
-      ((Set)localObject2).addAll(FTSV2FieldUtils.b(paramClass));
+      ((Set)localObject2).addAll(FTSV2FieldUtils.c(paramClass));
       paramClass = ((Set)localObject2).iterator();
       while (paramClass.hasNext())
       {
@@ -482,7 +482,7 @@ public class SQLUtils
   
   private static String b(FTSQueryArgsV2 paramFTSQueryArgsV2, boolean paramBoolean)
   {
-    if ((paramFTSQueryArgsV2 != null) && (paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey != null) && (paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey.length >= 2))
+    if ((paramFTSQueryArgsV2 != null) && (paramFTSQueryArgsV2.b != null) && (paramFTSQueryArgsV2.b.length >= 2))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       int j = 0;
@@ -493,12 +493,12 @@ public class SQLUtils
         localStringBuilder.append(" WHERE rowid in (");
         i = j;
       }
-      while (i < paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey.length)
+      while (i < paramFTSQueryArgsV2.b.length)
       {
         if (i > 0) {
           localStringBuilder.append(" UNION ");
         }
-        localStringBuilder.append(a(paramFTSQueryArgsV2, paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey[i], true));
+        localStringBuilder.append(a(paramFTSQueryArgsV2, paramFTSQueryArgsV2.b[i], true));
         i += 1;
       }
       if (!paramBoolean)
@@ -513,7 +513,7 @@ public class SQLUtils
   
   private static String c(FTSQueryArgsV2 paramFTSQueryArgsV2, boolean paramBoolean)
   {
-    if ((paramFTSQueryArgsV2 != null) && (paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey != null) && (paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey.length >= 2))
+    if ((paramFTSQueryArgsV2 != null) && (paramFTSQueryArgsV2.b != null) && (paramFTSQueryArgsV2.b.length >= 2))
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
       if (!paramBoolean)
@@ -521,12 +521,12 @@ public class SQLUtils
         localStringBuilder1.append(d(paramFTSQueryArgsV2, false));
         localStringBuilder1.append(" WHERE rowid in (");
       }
-      String str = a(paramFTSQueryArgsV2, paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey[0], true);
+      String str = a(paramFTSQueryArgsV2, paramFTSQueryArgsV2.b[0], true);
       int i = 1;
-      while (i < paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey.length)
+      while (i < paramFTSQueryArgsV2.b.length)
       {
         StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append(a(paramFTSQueryArgsV2, paramFTSQueryArgsV2.jdField_a_of_type_ArrayOfComTencentMobileqqFtsV2FTSQueryArgsV2$MatchKey[i], true));
+        localStringBuilder2.append(a(paramFTSQueryArgsV2, paramFTSQueryArgsV2.b[i], true));
         localStringBuilder2.append(" AND rowid in (");
         localStringBuilder2.append(str);
         localStringBuilder2.append(")");
@@ -546,8 +546,8 @@ public class SQLUtils
   
   private static String d(FTSQueryArgsV2 paramFTSQueryArgsV2, boolean paramBoolean)
   {
-    FTSEntityV2 localFTSEntityV2 = FTSV2FieldUtils.a(paramFTSQueryArgsV2.jdField_a_of_type_JavaLangClass);
-    Object localObject = FTSV2FieldUtils.a(paramFTSQueryArgsV2.jdField_a_of_type_JavaLangClass);
+    FTSEntityV2 localFTSEntityV2 = FTSV2FieldUtils.d(paramFTSQueryArgsV2.a);
+    Object localObject = FTSV2FieldUtils.a(paramFTSQueryArgsV2.a);
     paramFTSQueryArgsV2 = new StringBuilder();
     paramFTSQueryArgsV2.append("SELECT ");
     if (paramBoolean)
@@ -575,7 +575,7 @@ public class SQLUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v2.utils.SQLUtils
  * JD-Core Version:    0.7.0.1
  */

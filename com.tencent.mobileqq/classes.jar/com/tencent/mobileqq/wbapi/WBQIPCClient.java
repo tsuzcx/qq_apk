@@ -11,14 +11,14 @@ public class WBQIPCClient
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("installWBSdk process=");
-    localStringBuilder.append(Common.r());
+    localStringBuilder.append(Common.x());
     QLog.d("OpenSdkQIPCClient", 1, localStringBuilder.toString());
     QIPCClientHelper.getInstance().callServer("weibo_qipc_module", "action_install_weibo_sdk", new Bundle(), new WBQIPCClient.1(paramRunnable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.wbapi.WBQIPCClient
  * JD-Core Version:    0.7.0.1
  */

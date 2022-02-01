@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.multiVideo;
 
 import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
 import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
@@ -12,14 +13,16 @@ import java.util.ArrayList;
 class NegativeHelper$1
   implements KandianPopupWindow.OnUninterestConfirmListener
 {
+  NegativeHelper$1(NegativeHelper paramNegativeHelper, AdvertisementInfo paramAdvertisementInfo) {}
+  
   public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    paramView = NegativeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdMultiVideoNegativeHelper);
+    paramView = NegativeHelper.a(this.b);
     paramInt = 0;
-    QQToast.a(paramView, 0, 2131695168, 0).a();
+    QQToast.makeText(paramView, 0, 2131892901, 0).show();
     long l;
     if ((paramObject != null) && ((paramObject instanceof DislikeInfo))) {
-      l = ((DislikeInfo)paramObject).jdField_a_of_type_Long;
+      l = ((DislikeInfo)paramObject).e;
     } else {
       l = 0L;
     }
@@ -33,11 +36,11 @@ class NegativeHelper$1
       {
         paramView = new StringBuilder();
         paramView.append((String)localObject2);
-        paramView.append(localDislikeInfo.jdField_a_of_type_Long);
+        paramView.append(localDislikeInfo.e);
         localObject2 = paramView.toString();
         paramView = new StringBuilder();
         paramView.append((String)localObject1);
-        paramView.append(localDislikeInfo.jdField_a_of_type_JavaLangString);
+        paramView.append(localDislikeInfo.c);
         localObject1 = paramView.toString();
         paramObject = localObject2;
         paramView = (View)localObject1;
@@ -56,12 +59,12 @@ class NegativeHelper$1
       paramInt += 1;
       localObject2 = paramObject;
     }
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(NegativeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdMultiVideoNegativeHelper)).a(3).b(5).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).a(l).a((String)localObject2).b((String)localObject1));
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(NegativeHelper.a(this.b)).a(3).b(5).a(this.a).a(l).a((String)localObject2).b((String)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.multiVideo.NegativeHelper.1
  * JD-Core Version:    0.7.0.1
  */

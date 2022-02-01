@@ -10,25 +10,25 @@ import java.util.HashMap;
 class StoryPickerListAdapter$DayItemViewHolder
 {
   public TextView a;
-  public StoryPickerHorizontalListView a;
+  public StoryPickerHorizontalListView b;
   
   public StoryPickerListAdapter$DayItemViewHolder(StoryPickerListAdapter paramStoryPickerListAdapter, View paramView, StoryPickerHorizontalListView.OnHorizontalScrollListener paramOnHorizontalScrollListener)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365427));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131368267));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramOnHorizontalScrollListener);
-    paramView = (StoryPickerHorizontalListAdapter)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
-    paramView.a(paramStoryPickerListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalItemClickListener);
-    paramView.a(paramStoryPickerListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnCheckBoxClickListener);
+    this.a = ((TextView)paramView.findViewById(2131431631));
+    this.b = ((StoryPickerHorizontalListView)paramView.findViewById(2131435139));
+    this.b.setSelection(0);
+    this.b.setOnHorizontalScrollListener(paramOnHorizontalScrollListener);
+    paramView = (StoryPickerHorizontalListAdapter)this.b.getAdapter();
+    paramView.a(paramStoryPickerListAdapter.e);
+    paramView.a(paramStoryPickerListAdapter.f);
   }
   
   public void a(int paramInt, VideoCollectionItem paramVideoCollectionItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setTag(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(DateUtils.b(paramVideoCollectionItem.collectionTime));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.jdField_a_of_type_JavaUtilHashMap.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
+    this.b.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
+    this.b.setTag(Integer.valueOf(paramInt));
+    this.a.setText(DateUtils.c(paramVideoCollectionItem.collectionTime));
+    this.c.c.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
   }
 }
 

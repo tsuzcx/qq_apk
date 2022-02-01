@@ -4,7 +4,6 @@ import com.tencent.tkd.topicsdk.TopicSDK;
 import com.tencent.tkd.topicsdk.TopicSDK.Companion;
 import com.tencent.tkd.topicsdk.TopicSDKConfig;
 import com.tencent.tkd.topicsdk.interfaces.IAccount;
-import com.tencent.tkd.topicsdk.interfaces.IStorageConfig;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,18 +15,12 @@ public final class TKDPublisherUtils
   @NotNull
   public final IAccount a()
   {
-    return TopicSDK.a.a().a().a();
-  }
-  
-  @NotNull
-  public final IStorageConfig a()
-  {
-    return TopicSDK.a.a().a().a();
+    return TopicSDK.a.a().b().f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.TKDPublisherUtils
  * JD-Core Version:    0.7.0.1
  */

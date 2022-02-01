@@ -10,7 +10,7 @@ import java.util.Random;
 class VideoFeedsLikeAnimate$LikeExplosionView$CircleLikeExplosion
   extends VideoFeedsLikeAnimate.LikeExplosionView.LikeExplosion
 {
-  private float i;
+  private float m;
   
   public VideoFeedsLikeAnimate$LikeExplosionView$CircleLikeExplosion(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
   {
@@ -22,27 +22,27 @@ class VideoFeedsLikeAnimate$LikeExplosionView$CircleLikeExplosion
   {
     super(paramLikeExplosionView);
     double d = Math.toRadians(paramInt);
-    this.e = ((float)Math.cos(d));
-    this.f = ((float)Math.sin(d));
+    this.f = ((float)Math.cos(d));
+    this.g = ((float)Math.sin(d));
     a();
     b();
   }
   
   private void b()
   {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setColor(Color.parseColor("#E6FF4222"));
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setStyle(Paint.Style.FILL);
-    this.i = (VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).nextFloat() * AIOUtils.b(10.0F, this.a.getResources()) + AIOUtils.b(4.5F, this.a.getResources()));
+    VideoFeedsLikeAnimate.LikeExplosionView.b(this.a).setColor(Color.parseColor("#E6FF4222"));
+    VideoFeedsLikeAnimate.LikeExplosionView.b(this.a).setStyle(Paint.Style.FILL);
+    this.m = (VideoFeedsLikeAnimate.LikeExplosionView.c(this.a).nextFloat() * AIOUtils.b(10.0F, this.a.getResources()) + AIOUtils.b(4.5F, this.a.getResources()));
   }
   
   public void a(Canvas paramCanvas)
   {
-    paramCanvas.drawCircle(this.c, this.d, this.i, VideoFeedsLikeAnimate.LikeExplosionView.a(this.a));
+    paramCanvas.drawCircle(this.d, this.e, this.m, VideoFeedsLikeAnimate.LikeExplosionView.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsLikeAnimate.LikeExplosionView.CircleLikeExplosion
  * JD-Core Version:    0.7.0.1
  */

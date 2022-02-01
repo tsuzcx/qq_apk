@@ -1,33 +1,45 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.os.Build;
+import android.content.Context;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class Flat
+  extends Thread
 {
-  public static Foxnut a;
-  public static String a;
-  public static Map<String, Flat.do> a;
+  public Flat(Foxnut paramFoxnut, Context paramContext) {}
   
-  static
+  public void run()
   {
-    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaUtilMap.put("C892BA2", new Flat.do(new Guava()));
-    jdField_a_of_type_JavaUtilMap.put("43780D5", new Flat.do(new Guava()));
-    jdField_a_of_type_JavaUtilMap.put("22792AF", new Flat.do(new Grapefruit()));
-    jdField_a_of_type_JavaLangString = "";
+    Context localContext = this.a;
+    Object localObject2 = Date.a;
     try
     {
-      jdField_a_of_type_JavaLangString = void.f(Build.MANUFACTURER.toLowerCase().getBytes()).substring(0, 7);
-      return;
+      l = Long.valueOf(Date.b(localContext, "801")).longValue();
     }
-    catch (Throwable localThrowable) {}
+    finally
+    {
+      long l;
+      label26:
+      StringBuilder localStringBuilder;
+      break label26;
+    }
+    l = 0L;
+    if (l == 0L)
+    {
+      localContext = this.a;
+      localObject2 = new HashMap();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(System.currentTimeMillis());
+      ((HashMap)localObject2).put("801", localStringBuilder.toString());
+      Date.a(localContext, (Map)localObject2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Flat
  * JD-Core Version:    0.7.0.1
  */

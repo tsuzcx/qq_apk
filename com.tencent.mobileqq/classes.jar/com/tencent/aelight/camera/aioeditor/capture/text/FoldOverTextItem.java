@@ -33,32 +33,32 @@ import java.util.List;
 public class FoldOverTextItem
   extends DynamicTextItem
 {
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 5, 5, 5, 5 };
-  private static final int jdField_e_of_type_Int;
-  private static final float f;
-  private float jdField_a_of_type_Float = 0.0F;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Shader jdField_a_of_type_AndroidGraphicsShader;
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter = null;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<Float> jdField_a_of_type_JavaUtilList;
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int = Color.parseColor("#ffa414");
-  private float jdField_c_of_type_Float = 0.0F;
-  private int jdField_c_of_type_Int = Color.parseColor("#ff1a14");
-  private float jdField_d_of_type_Float = 0.0F;
-  private int jdField_d_of_type_Int = Color.parseColor("#1f14ff");
-  private float jdField_e_of_type_Float = 0.0F;
+  private static final int[] r = { 5, 5, 5, 5 };
+  private static Method s;
+  private static final float v;
+  private static final int w;
+  private int a = Color.parseColor("#ffa414");
+  private int b = Color.parseColor("#ff1a14");
+  private int c = Color.parseColor("#1f14ff");
+  private float d = 0.0F;
+  private float e = 0.0F;
+  private List<Float> f;
+  private TextPaint g;
+  private float h = 0.0F;
+  private float i = 0.0F;
+  private Bitmap j;
+  private Shader p;
+  private float q = 0.0F;
+  private String t = "";
+  private RectF u = new RectF();
+  private InputFilter x = null;
   
   static
   {
     Resources localResources = BaseApplicationImpl.getContext().getResources();
-    f = AIOUtils.b(2.0F, localResources);
-    int i = DisplayUtil.a();
-    jdField_e_of_type_Int = localResources.getDisplayMetrics().widthPixels - TextLayer.a - i * 2;
+    v = AIOUtils.b(2.0F, localResources);
+    int k = DisplayUtil.a();
+    w = localResources.getDisplayMetrics().widthPixels - TextLayer.b - k * 2;
   }
   
   public FoldOverTextItem(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface, Bitmap paramBitmap)
@@ -70,86 +70,27 @@ public class FoldOverTextItem
     }
   }
   
-  private CharSequence a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int m = 0;
-    int j = 0;
-    int i = 0;
-    int k = 0;
-    while (j < paramString.length())
-    {
-      if ((paramString.charAt(j) != '\n') && (paramString.charAt(j) != '\r') && (i < jdField_a_of_type_ArrayOfInt[k]))
-      {
-        localStringBuilder.append(paramString.charAt(j));
-        i += 1;
-      }
-      else
-      {
-        localStringBuilder.append('\n');
-        if ((paramString.charAt(j) != '\n') && (paramString.charAt(j) != '\r'))
-        {
-          localStringBuilder.append(paramString.charAt(j));
-          i = 1;
-        }
-        else
-        {
-          i = 0;
-        }
-        int n = k + 1;
-        k = n;
-        if (n >= jdField_a_of_type_ArrayOfInt.length) {
-          break;
-        }
-      }
-      j += 1;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    paramString = new SpannableString(localStringBuilder.toString());
-    float f1 = 0.0F;
-    j = 0;
-    i = m;
-    while (i < paramString.length())
-    {
-      if ((paramString.charAt(i) != '\n') && (paramString.charAt(i) != '\r'))
-      {
-        float f2 = (int)(this.jdField_a_of_type_Float + j * this.jdField_b_of_type_Float);
-        paramString.setSpan(new AbsoluteSizeAndLineSpaceSpan(f2, 0.85F), i, i + 1, 17);
-        f1 += f2;
-        j += 1;
-      }
-      else
-      {
-        this.jdField_a_of_type_JavaUtilList.add(Float.valueOf(f1));
-        f1 = 0.0F;
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilList.add(Float.valueOf(f1));
-    return paramString;
-  }
-  
   private void a(Typeface paramTypeface, Bitmap paramBitmap)
   {
     Resources localResources = BaseApplicationImpl.getContext().getResources();
-    this.jdField_e_of_type_Float = (localResources.getDisplayMetrics().density * 2.0F);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Float = AIOUtils.b(25.0F, localResources);
-    this.jdField_b_of_type_Float = AIOUtils.b(3.0F, localResources);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    this.q = (localResources.getDisplayMetrics().density * 2.0F);
+    this.f = new ArrayList();
+    this.d = AIOUtils.b(25.0F, localResources);
+    this.e = AIOUtils.b(3.0F, localResources);
+    this.g = new TextPaint();
+    this.g.setTextSize(this.d);
+    this.g.setAntiAlias(true);
     if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      this.g.setTypeface(paramTypeface);
     }
     if (Build.VERSION.SDK_INT >= 21) {}
     try
     {
-      if (jdField_a_of_type_JavaLangReflectMethod == null) {
-        jdField_a_of_type_JavaLangReflectMethod = Paint.class.getDeclaredMethod("setLetterSpacing", new Class[] { Float.TYPE });
+      if (s == null) {
+        s = Paint.class.getDeclaredMethod("setLetterSpacing", new Class[] { Float.TYPE });
       }
-      if (jdField_a_of_type_JavaLangReflectMethod != null) {
-        jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_AndroidTextTextPaint, new Object[] { Float.valueOf(-0.09F) });
+      if (s != null) {
+        s.invoke(this.g, new Object[] { Float.valueOf(-0.09F) });
       }
     }
     catch (Exception paramTypeface)
@@ -159,152 +100,193 @@ public class FoldOverTextItem
     }
     if (paramBitmap != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      this.jdField_a_of_type_AndroidGraphicsShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+      this.j = paramBitmap;
+      this.p = new BitmapShader(this.j, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
     }
   }
   
-  public float a()
+  private CharSequence b(String paramString)
   {
-    return this.jdField_b_of_type_AndroidTextStaticLayout.getWidth() + this.jdField_e_of_type_Float * 3.0F;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new FoldOverTextItem.2(this, 20);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i1 = 0;
+    int m = 0;
+    int k = 0;
+    int n = 0;
+    while (m < paramString.length())
+    {
+      if ((paramString.charAt(m) != '\n') && (paramString.charAt(m) != '\r') && (k < r[n]))
+      {
+        localStringBuilder.append(paramString.charAt(m));
+        k += 1;
+      }
+      else
+      {
+        localStringBuilder.append('\n');
+        if ((paramString.charAt(m) != '\n') && (paramString.charAt(m) != '\r'))
+        {
+          localStringBuilder.append(paramString.charAt(m));
+          k = 1;
+        }
+        else
+        {
+          k = 0;
+        }
+        int i2 = n + 1;
+        n = i2;
+        if (i2 >= r.length) {
+          break;
+        }
+      }
+      m += 1;
     }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
+    this.f.clear();
+    paramString = new SpannableString(localStringBuilder.toString());
+    float f1 = 0.0F;
+    m = 0;
+    k = i1;
+    while (k < paramString.length())
+    {
+      if ((paramString.charAt(k) != '\n') && (paramString.charAt(k) != '\r'))
+      {
+        float f2 = (int)(this.d + m * this.e);
+        paramString.setSpan(new AbsoluteSizeAndLineSpaceSpan(f2, 0.85F), k, k + 1, 17);
+        f1 += f2;
+        m += 1;
+      }
+      else
+      {
+        this.f.add(Float.valueOf(f1));
+        f1 = 0.0F;
+      }
+      k += 1;
+    }
+    this.f.add(Float.valueOf(f1));
+    return paramString;
   }
   
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
     Object localObject1 = a(paramInt, new FoldOverTextItem.1(this));
-    this.jdField_a_of_type_JavaLangString = ((String)localObject1);
-    paramString = jdField_a_of_type_ArrayOfInt;
-    int k = paramString.length;
-    int j = 0;
+    this.t = ((String)localObject1);
+    paramString = r;
+    int n = paramString.length;
+    int m = 0;
     paramInt = 0;
-    int i = 0;
-    while (paramInt < k)
+    int k = 0;
+    while (paramInt < n)
     {
-      i += paramString[paramInt];
+      k += paramString[paramInt];
       paramInt += 1;
     }
     paramString = (String)localObject1;
-    if (((String)localObject1).length() > i) {
-      paramString = ((String)localObject1).substring(0, i);
+    if (((String)localObject1).length() > k) {
+      paramString = ((String)localObject1).substring(0, k);
     }
-    localObject1 = a(paramString);
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject1 = b(paramString);
+    Object localObject2 = this.f.iterator();
     for (float f1 = 0.0F; ((Iterator)localObject2).hasNext(); f1 = Math.max(((Float)((Iterator)localObject2).next()).floatValue(), f1)) {}
-    f1 = Math.min(jdField_e_of_type_Int, f1);
-    i = ((CharSequence)localObject1).length();
-    localObject2 = this.jdField_a_of_type_AndroidTextTextPaint;
+    f1 = Math.min(w, f1);
+    k = ((CharSequence)localObject1).length();
+    localObject2 = this.g;
     paramInt = (int)f1;
-    this.jdField_b_of_type_AndroidTextStaticLayout = StaticLayoutWithMaxLines.a((CharSequence)localObject1, 0, i, (TextPaint)localObject2, paramInt, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, jdField_a_of_type_ArrayOfInt.length);
+    this.n = StaticLayoutWithMaxLines.a((CharSequence)localObject1, 0, k, (TextPaint)localObject2, paramInt, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, r.length);
     localObject1 = paramString;
-    if (this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount() == 4)
+    if (this.n.getLineCount() == 4)
     {
-      i = this.jdField_b_of_type_AndroidTextStaticLayout.getLineEnd(3);
+      k = this.n.getLineEnd(3);
       localObject1 = paramString;
-      if (i > 0)
+      if (k > 0)
       {
-        i = Math.min(i, paramString.length());
-        localObject1 = paramString.substring(0, i);
+        k = Math.min(k, paramString.length());
+        localObject1 = paramString.substring(0, k);
         if ((!((String)localObject1).endsWith("\n")) && (!((String)localObject1).endsWith("\r"))) {
-          localObject1 = paramString.substring(0, i);
+          localObject1 = paramString.substring(0, k);
         } else {
-          localObject1 = paramString.substring(0, i - 1);
+          localObject1 = paramString.substring(0, k - 1);
         }
       }
     }
-    paramString = a((String)localObject1);
-    this.jdField_b_of_type_AndroidTextStaticLayout = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, jdField_a_of_type_ArrayOfInt.length);
-    this.jdField_c_of_type_Float = 0.0F;
-    i = this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount();
-    paramInt = j;
-    while (paramInt < i)
+    paramString = b((String)localObject1);
+    this.n = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.g, paramInt, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, r.length);
+    this.h = 0.0F;
+    k = this.n.getLineCount();
+    paramInt = m;
+    while (paramInt < k)
     {
-      this.jdField_c_of_type_Float = Math.max(this.jdField_b_of_type_AndroidTextStaticLayout.getLineWidth(paramInt), this.jdField_c_of_type_Float);
+      this.h = Math.max(this.n.getLineWidth(paramInt), this.h);
       paramInt += 1;
     }
-    f1 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-    float f2 = this.jdField_e_of_type_Float;
-    this.jdField_d_of_type_Float = (f1 + 3.0F * f2);
-    this.jdField_c_of_type_Float += f2 * 2.0F;
+    f1 = this.n.getHeight();
+    float f2 = this.q;
+    this.i = (f1 + 3.0F * f2);
+    this.h += f2 * 2.0F;
   }
   
   protected void a(Canvas paramCanvas)
   {
     paramCanvas.save();
-    paramCanvas.translate(this.jdField_e_of_type_Float * 2.0F, 0.0F);
+    paramCanvas.translate(this.q * 2.0F, 0.0F);
     paramCanvas.save();
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL);
-    float f1 = this.jdField_e_of_type_Float;
+    this.g.setStyle(Paint.Style.FILL);
+    float f1 = this.q;
     paramCanvas.translate(f1 * -2.0F, f1 * 3.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_d_of_type_Int);
-    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    this.g.setColor(this.c);
+    this.n.draw(paramCanvas);
+    this.g.setColor(-16777216);
+    this.g.setStyle(Paint.Style.STROKE);
+    this.g.setStrokeWidth(2.0F);
+    this.n.draw(paramCanvas);
     paramCanvas.restore();
     paramCanvas.save();
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL);
-    f1 = this.jdField_e_of_type_Float;
+    this.g.setStyle(Paint.Style.FILL);
+    f1 = this.q;
     paramCanvas.translate(-f1, f1 * 1.5F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    this.g.setColor(this.b);
+    this.n.draw(paramCanvas);
+    this.g.setColor(-16777216);
+    this.g.setStyle(Paint.Style.STROKE);
+    this.g.setStrokeWidth(2.0F);
+    this.n.draw(paramCanvas);
     paramCanvas.restore();
     paramCanvas.save();
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL);
+    this.g.setStyle(Paint.Style.FILL);
     paramCanvas.translate(0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsShader;
+    this.g.setColor(this.a);
+    this.n.draw(paramCanvas);
+    Object localObject = this.p;
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShader((Shader)localObject);
-      this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      this.jdField_a_of_type_AndroidTextTextPaint.setShader(null);
+      this.g.setShader((Shader)localObject);
+      this.n.draw(paramCanvas);
+      this.g.setShader(null);
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    int i = 0;
-    if (b(0))
+    this.g.setColor(-16777216);
+    this.g.setStyle(Paint.Style.STROKE);
+    this.g.setStrokeWidth(2.0F);
+    this.n.draw(paramCanvas);
+    int k = 0;
+    if (f(0))
     {
-      int j = this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount();
+      int m = this.n.getLineCount();
       f1 = 0.0F;
-      while (i < j)
+      while (k < m)
       {
-        f1 = Math.max(f1, this.jdField_b_of_type_AndroidTextStaticLayout.getLineWidth(i));
-        i += 1;
+        f1 = Math.max(f1, this.n.getLineWidth(k));
+        k += 1;
       }
-      float f4 = this.jdField_c_of_type_Float;
-      f1 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-      float f2 = this.jdField_b_of_type_AndroidTextStaticLayout.getWidth() / 2.0F;
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-      float f3 = this.jdField_e_of_type_Float;
+      float f4 = this.h;
+      f1 = this.n.getHeight();
+      float f2 = this.n.getWidth() / 2.0F;
+      localObject = this.u;
+      float f3 = this.q;
       f4 /= 2.0F;
-      float f5 = f;
+      float f5 = v;
       ((RectF)localObject).left = (-2.0F * f3 + f2 - f4 - f5);
       ((RectF)localObject).top = (0.0F - f5 * 3.0F);
       ((RectF)localObject).right = (f2 + f4 + f5 * 2.0F);
       ((RectF)localObject).bottom = (f1 + f3 * 3.0F + f5 * 2.0F);
-      paramCanvas.drawRoundRect((RectF)localObject, 6.0F, 6.0F, a());
+      paramCanvas.drawRoundRect((RectF)localObject, 6.0F, 6.0F, s());
     }
     paramCanvas.restore();
     paramCanvas.restore();
@@ -315,19 +297,37 @@ public class FoldOverTextItem
     return true;
   }
   
-  public float b()
+  public int b()
   {
-    return this.jdField_d_of_type_Float;
+    return 1;
   }
   
-  public boolean b()
+  public float c()
   {
-    return (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (super.b());
+    return this.n.getWidth() + this.q * 3.0F;
+  }
+  
+  public float d()
+  {
+    return this.i;
+  }
+  
+  public boolean e()
+  {
+    return (TextUtils.isEmpty(this.t)) || (super.e());
+  }
+  
+  public InputFilter f()
+  {
+    if (this.x == null) {
+      this.x = new FoldOverTextItem.2(this, 20);
+    }
+    return this.x;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.FoldOverTextItem
  * JD-Core Version:    0.7.0.1
  */

@@ -17,35 +17,35 @@ import java.lang.ref.WeakReference;
 public class TextItemBuilder$MyOnDoubleClick
   implements AnimationTextView.OnDoubleClick
 {
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<Activity> b;
+  private WeakReference<QQAppInterface> b;
+  private WeakReference<Activity> c;
   
   TextItemBuilder$MyOnDoubleClick(TextItemBuilder paramTextItemBuilder, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = new WeakReference(paramActivity);
   }
   
   public void a(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Activity localActivity = (Activity)this.b.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    Activity localActivity = (Activity)this.c.get();
     if ((localActivity != null) && (localQQAppInterface != null))
     {
-      AIOUtils.o = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a()) {
+      AIOUtils.q = true;
+      if (this.a.c()) {
         return;
       }
       Object localObject = AIOUtils.a(paramView);
-      if (ConfessMsgUtil.a((MessageRecord)localObject)) {
+      if (ConfessMsgUtil.b((MessageRecord)localObject)) {
         return;
       }
       if (((ChatMessage)localObject).istroop == 10007) {
         return;
       }
-      if ((paramView.getId() != 2131378668) && (paramView.getId() != 2131371529))
+      if ((paramView.getId() != 2131447325) && (paramView.getId() != 2131438908))
       {
-        if (paramView.getId() == 2131364549) {
+        if (paramView.getId() == 2131430607) {
           return;
         }
         BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
@@ -58,7 +58,7 @@ public class TextItemBuilder$MyOnDoubleClick
           ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
           return;
         }
-        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a.a);
+        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.a.f.a);
       }
       return;
     }
@@ -67,7 +67,7 @@ public class TextItemBuilder$MyOnDoubleClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.MyOnDoubleClick
  * JD-Core Version:    0.7.0.1
  */

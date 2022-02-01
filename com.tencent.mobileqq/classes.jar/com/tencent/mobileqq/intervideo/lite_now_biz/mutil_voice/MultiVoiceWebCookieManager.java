@@ -24,42 +24,22 @@ import mqq.manager.TicketManager;
 
 public class MultiVoiceWebCookieManager
 {
-  private static MultiVoiceWebCookieManager jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceWebCookieManager = new MultiVoiceWebCookieManager();
-  private String jdField_a_of_type_JavaLangString = "0";
+  private static MultiVoiceWebCookieManager a = new MultiVoiceWebCookieManager();
+  private String b = "0";
   
   public MultiVoiceWebCookieManager()
   {
-    a();
+    b();
   }
   
   public static MultiVoiceWebCookieManager a()
   {
-    return jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceWebCookieManager;
+    return a;
   }
   
-  private List<String> a(String paramString)
+  private void b()
   {
-    ArrayList localArrayList = new ArrayList();
-    paramString = com.tencent.mobileqq.intervideo.lite_now_biz.utils.UriUtil.a(paramString);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(";Domain=");
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append(";Path=/;");
-    paramString = ((StringBuilder)localObject).toString();
-    localObject = DeviceInfoUtil.c();
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "p_skey", this.jdField_a_of_type_JavaLangString, paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "__client_type", Integer.valueOf(406), paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "sdkver", "2.0.0", paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "platform", "Android", paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", localObject, paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "versioncode", "800409", paramString }));
-    return localArrayList;
-  }
-  
-  private void a()
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "0"))) {
+    if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.equals(this.b, "0"))) {
       return;
     }
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
@@ -69,7 +49,27 @@ public class MultiVoiceWebCookieManager
     localTicketManager.getPskey((String)localObject, 16L, new String[] { "now.qq.com" }, local1);
   }
   
-  private List<String> b(String paramString)
+  private List<String> c(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = com.tencent.mobileqq.intervideo.lite_now_biz.utils.UriUtil.a(paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(";Domain=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(";Path=/;");
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = DeviceInfoUtil.e();
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "p_skey", this.b, paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "__client_type", Integer.valueOf(406), paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "sdkver", "2.0.0", paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "platform", "Android", paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", localObject, paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "versioncode", "800409", paramString }));
+    return localArrayList;
+  }
+  
+  private List<String> d(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     paramString = com.tencent.mobileqq.litelivesdk.utils.UriUtil.a(paramString);
@@ -80,8 +80,8 @@ public class MultiVoiceWebCookieManager
     ((StringBuilder)localObject).toString();
     paramString = DeviceUtil.getDeviceId(BaseApplicationImpl.getContext());
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
-    localObject = BusinessManager.a.a().e;
-    String str = DeviceInfoUtil.c();
+    localObject = BusinessManager.a.b().j;
+    String str = DeviceInfoUtil.e();
     Locale localLocale = Locale.ENGLISH;
     Integer localInteger = Integer.valueOf(406);
     localArrayList.add(String.format(localLocale, "%s=%d%s", new Object[] { "__client_type", localInteger, "" }));
@@ -129,7 +129,7 @@ public class MultiVoiceWebCookieManager
     CookieSyncManager.createInstance(BaseApplicationImpl.getContext());
     CookieManager localCookieManager = CookieManager.getInstance();
     localCookieManager.setAcceptCookie(true);
-    Iterator localIterator = b(paramString).iterator();
+    Iterator localIterator = d(paramString).iterator();
     while (localIterator.hasNext()) {
       localCookieManager.setCookie(paramString, (String)localIterator.next());
     }
@@ -142,7 +142,7 @@ public class MultiVoiceWebCookieManager
     CookieSyncManager.createInstance(BaseApplicationImpl.getContext());
     CookieManager localCookieManager = CookieManager.getInstance();
     localCookieManager.setAcceptCookie(true);
-    Iterator localIterator = a(paramString).iterator();
+    Iterator localIterator = c(paramString).iterator();
     while (localIterator.hasNext()) {
       localCookieManager.setCookie(paramString, (String)localIterator.next());
     }
@@ -152,7 +152,7 @@ public class MultiVoiceWebCookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceWebCookieManager
  * JD-Core Version:    0.7.0.1
  */

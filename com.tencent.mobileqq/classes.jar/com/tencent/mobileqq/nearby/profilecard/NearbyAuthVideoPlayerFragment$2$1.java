@@ -13,20 +13,20 @@ class NearbyAuthVideoPlayerFragment$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a, NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a), false, false);
+      NearbyAuthVideoPlayerFragment.a(this.b.a, NearbyAuthVideoPlayerFragment.b(this.b.a), false, false);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a.getBaseActivity(), 1, HardCodeUtil.a(2131707146), 0).b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a.getBaseActivity().getTitleBarHeight());
-    NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a).setVisibility(0);
-    NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a).setVisibility(0);
-    NearbyAuthVideoPlayerFragment.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a).setVisibility(8);
+    QQToast.makeText(this.b.a.getBaseActivity(), 1, HardCodeUtil.a(2131904981), 0).show(this.b.a.getBaseActivity().getTitleBarHeight());
+    NearbyAuthVideoPlayerFragment.c(this.b.a).setVisibility(0);
+    NearbyAuthVideoPlayerFragment.d(this.b.a).setVisibility(0);
+    NearbyAuthVideoPlayerFragment.e(this.b.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

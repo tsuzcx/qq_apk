@@ -19,7 +19,7 @@ class FriendTeamListInnerFrame$5
   
   protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.getIntent().getStringExtra("group_uin");
+    Object localObject1 = this.a.f.getIntent().getStringExtra("group_uin");
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("onUpdateTroopGetMemberList, troopUin[");
     ((StringBuilder)localObject2).append(paramString);
@@ -37,9 +37,9 @@ class FriendTeamListInnerFrame$5
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(paramString))) {
       return;
     }
-    paramString = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    paramString = this.a.h.getCurrentAccountUin();
     localObject1 = new ArrayList();
-    localObject2 = (ITroopRobotService)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopRobotService.class, "all");
+    localObject2 = (ITroopRobotService)this.a.h.getRuntimeService(ITroopRobotService.class, "all");
     if (paramList != null)
     {
       paramList = paramList.iterator();
@@ -57,7 +57,7 @@ class FriendTeamListInnerFrame$5
             QLog.w("FriendTeamListInnerFrameNew", 1, localStringBuilder.toString());
           }
           if (!TextUtils.equals(localTroopMemberInfo.memberuin, paramString)) {
-            if ((!((ITroopRobotService)localObject2).isRobotUin(localTroopMemberInfo.memberuin)) && (!CommonUtils.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, localTroopMemberInfo.memberuin))) {
+            if ((!((ITroopRobotService)localObject2).isRobotUin(localTroopMemberInfo.memberuin)) && (!CommonUtils.a(this.a.h, localTroopMemberInfo.memberuin))) {
               ((ArrayList)localObject1).add(localTroopMemberInfo);
             } else if (QLog.isDevelopLevel()) {
               QLog.w("FriendTeamListInnerFrameNew", 1, "onUpdateTroopGetMemberList, isRobotUin");
@@ -66,14 +66,14 @@ class FriendTeamListInnerFrame$5
         }
       }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.setGroupMembers((ArrayList)localObject1);
-    FriendTeamListInnerFrame.a(this.a).a((ArrayList)localObject1);
-    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    this.a.f.setGroupMembers((ArrayList)localObject1);
+    FriendTeamListInnerFrame.b(this.a).a((ArrayList)localObject1);
+    FriendTeamListInnerFrame.b(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.FriendTeamListInnerFrame.5
  * JD-Core Version:    0.7.0.1
  */

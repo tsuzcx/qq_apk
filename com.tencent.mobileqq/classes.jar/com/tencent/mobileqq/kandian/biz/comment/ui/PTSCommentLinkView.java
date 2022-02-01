@@ -51,7 +51,7 @@ public class PTSCommentLinkView
     if ((paramInt == 1059) && ((paramObject instanceof CommentViewItem)))
     {
       CommentViewItem localCommentViewItem = (CommentViewItem)paramObject;
-      if (localCommentViewItem.a != null) {
+      if (localCommentViewItem.c != null) {
         this.a.a(localCommentViewItem);
       }
     }
@@ -60,7 +60,7 @@ public class PTSCommentLinkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.PTSCommentLinkView
  * JD-Core Version:    0.7.0.1
  */

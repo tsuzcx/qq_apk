@@ -13,7 +13,7 @@ class ConversationHongBaoV2$16
   
   public void a(boolean paramBoolean, String paramString, Object paramObject)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && ((paramObject instanceof Bitmap)) && (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a != null))
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.a)) && ((paramObject instanceof Bitmap)) && (this.c.b != null))
     {
       if (QLog.isColorLevel())
       {
@@ -23,14 +23,14 @@ class ConversationHongBaoV2$16
         QLog.d("2021_UI_ConversationHongBaoV2", 2, localStringBuilder.toString());
       }
       paramString = (Bitmap)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a.b(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalEntryManager.b(this);
+      this.c.b.b(paramString);
+      this.b.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.16
  * JD-Core Version:    0.7.0.1
  */

@@ -27,45 +27,45 @@ public class JoinDiscussionActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private JoinDiscussionActivity.FaceObserver jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$FaceObserver;
-  private JoinDiscussionActivity.MyDiscussionObserver jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$MyDiscussionObserver;
-  DiscussionHandler jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new JoinDiscussionActivity.2(this);
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  List<DiscussMemberInfo> jdField_a_of_type_JavaUtilList;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  String c = "";
-  String d;
-  String e = "";
-  String f = "";
+  String a;
+  String b;
+  ImageView c;
+  TextView d;
+  TextView e;
+  int f = 0;
+  DiscussionHandler g;
+  String h = "";
+  String i;
+  List<DiscussMemberInfo> j;
+  long k;
+  String l = "";
+  long m;
+  int n = 0;
+  String o = "";
+  ArrayList<String> p = new ArrayList();
+  private Button q;
+  private JoinDiscussionActivity.MyDiscussionObserver r;
+  private JoinDiscussionActivity.FaceObserver s;
+  private RelativeLayout t;
+  private RelativeLayout u;
+  private FriendListObserver v = new JoinDiscussionActivity.2(this);
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365723));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365733));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365739));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365322));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369575));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366363));
+    this.t = ((RelativeLayout)findViewById(2131431965));
+    this.c = ((ImageView)findViewById(2131431975));
+    this.d = ((TextView)findViewById(2131431981));
+    this.e = ((TextView)findViewById(2131431505));
+    this.q = ((Button)findViewById(2131436679));
+    this.u = ((RelativeLayout)findViewById(2131432671));
   }
   
   private void c()
   {
-    setTitle(HardCodeUtil.a(2131705954));
-    setRightButton(2131690728, this);
+    setTitle(HardCodeUtil.a(2131903834));
+    setRightButton(2131887648, this);
     this.leftView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new JoinDiscussionActivity.1(this));
+    this.q.setOnClickListener(new JoinDiscussionActivity.1(this));
   }
   
   private void d()
@@ -73,15 +73,15 @@ public class JoinDiscussionActivity
     if (NetworkUtil.isNetSupport(this))
     {
       startTitleProgress();
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       if ((str != null) && (str.length() > 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.c(this.jdField_a_of_type_JavaLangString);
+        this.g.c(this.a);
         return;
       }
-      str = this.jdField_b_of_type_JavaLangString;
+      str = this.b;
       if ((str != null) && (str.length() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.b(this.jdField_b_of_type_JavaLangString);
+        this.g.b(this.b);
       }
     }
     else
@@ -100,7 +100,7 @@ public class JoinDiscussionActivity
     if (NetworkUtil.isNetSupport(this))
     {
       startTitleProgress();
-      this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.g.a(this.a, this.f);
       return;
     }
     a(1, -160);
@@ -121,35 +121,35 @@ public class JoinDiscussionActivity
             if (paramInt2 != 8)
             {
               if (paramInt1 == 1) {
-                str = HardCodeUtil.a(2131705952);
+                str = HardCodeUtil.a(2131903832);
               } else if (paramInt1 == 0) {
-                str = HardCodeUtil.a(2131705947);
+                str = HardCodeUtil.a(2131903827);
               } else {
                 str = "";
               }
             }
             else
             {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-              this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+              this.t.setVisibility(8);
+              this.u.setVisibility(0);
             }
           }
           else {
-            str = HardCodeUtil.a(2131705948);
+            str = HardCodeUtil.a(2131903828);
           }
         }
         else {
-          str = HardCodeUtil.a(2131705950);
+          str = HardCodeUtil.a(2131903830);
         }
       }
       else {
-        str = HardCodeUtil.a(2131705946);
+        str = HardCodeUtil.a(2131903826);
       }
     }
     else {
-      str = HardCodeUtil.a(2131705949);
+      str = HardCodeUtil.a(2131903829);
     }
-    QQToast.a(this, str, 0).b(getTitleBarHeight());
+    QQToast.makeText(this, str, 0).show(getTitleBarHeight());
   }
   
   @Override
@@ -164,52 +164,52 @@ public class JoinDiscussionActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559279);
+    super.setContentView(2131625204);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$MyDiscussionObserver = new JoinDiscussionActivity.MyDiscussionObserver(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$FaceObserver = new JoinDiscussionActivity.FaceObserver(this, null);
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$MyDiscussionObserver);
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$FaceObserver);
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_Int = paramBundle.getInt("addDisSource");
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("innerSig");
-    paramBundle = this.jdField_b_of_type_JavaLangString;
+    this.r = new JoinDiscussionActivity.MyDiscussionObserver(this, null);
+    this.s = new JoinDiscussionActivity.FaceObserver(this, null);
+    addObserver(this.r);
+    addObserver(this.s);
+    addObserver(this.v);
+    this.f = paramBundle.getInt("addDisSource");
+    this.a = paramBundle.getString("sig");
+    this.b = paramBundle.getString("innerSig");
+    paramBundle = this.b;
     if (paramBundle != null)
     {
       paramBundle = paramBundle.toUpperCase();
-      if (this.jdField_b_of_type_JavaLangString.contains("?_wv=5")) {
-        this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString.replace("?_wv=5", "");
+      if (this.b.contains("?_wv=5")) {
+        this.b = this.b.replace("?_wv=5", "");
       }
-      if ((this.jdField_b_of_type_JavaLangString != null) && (!paramBundle.startsWith("HTTP://")) && (!paramBundle.startsWith("HTTPS://"))) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      if ((this.b != null) && (!paramBundle.startsWith("HTTP://")) && (!paramBundle.startsWith("HTTPS://"))) {
+        this.a = this.b;
       }
     }
-    paramBundle = this.jdField_a_of_type_JavaLangString;
+    paramBundle = this.a;
     if ((paramBundle != null) && (paramBundle.endsWith("#flyticket")))
     {
-      paramBundle = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_JavaLangString = paramBundle.substring(0, paramBundle.length() - 10);
+      paramBundle = this.a;
+      this.a = paramBundle.substring(0, paramBundle.length() - 10);
     }
     b();
     c();
-    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler = ((DiscussionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER));
+    this.g = ((DiscussionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER));
     d();
     return true;
   }
   
   protected void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$MyDiscussionObserver);
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityJoinDiscussionActivity$FaceObserver);
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    removeObserver(this.r);
+    removeObserver(this.s);
+    removeObserver(this.v);
     super.doOnDestroy();
   }
   
   public void finish()
   {
     super.finish();
-    overridePendingTransition(0, 2130771992);
+    overridePendingTransition(0, 2130771995);
   }
   
   public void onClick(View paramView)
@@ -227,7 +227,7 @@ public class JoinDiscussionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -30,26 +30,26 @@ import mqq.os.MqqHandler;
 public class AIOZhituHelper
   implements Handler.Callback, ILifeCycleHelper, PanelListener
 {
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public boolean a;
+  private AIOContext b;
+  private QQAppInterface c;
   
   public AIOZhituHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
+    this.b = paramAIOContext;
+    this.c = paramAIOContext.a();
   }
   
   private static Drawable a(QQAppInterface paramQQAppInterface)
   {
-    Drawable localDrawable = paramQQAppInterface.getApplicationContext().getResources().getDrawable(2130838030);
-    if (!ABTestController.a().a()) {
+    Drawable localDrawable = paramQQAppInterface.getApplicationContext().getResources().getDrawable(2130838072);
+    if (!ABTestController.a().b()) {
       return localDrawable;
     }
     Object localObject = ABTestController.a().a("exp_qq_msg_marketface_input_icon");
     Map localMap = ((ExpEntityInfo)localObject).a();
     RichTextChatManager localRichTextChatManager = RichTextChatManager.a(paramQQAppInterface);
-    if ((((ExpEntityInfo)localObject).c()) && (localMap != null))
+    if ((((ExpEntityInfo)localObject).i()) && (localMap != null))
     {
       localObject = ABTestUtil.a(ABTestUtil.a((String)localMap.get("aio_input_shan_icon_url1"), 44, 44), ABTestUtil.a((String)localMap.get("aio_input_shan_icon_url2"), 44, 44));
       paramQQAppInterface = localDrawable;
@@ -62,7 +62,7 @@ public class AIOZhituHelper
       paramQQAppInterface = localDrawable;
       if (localRichTextChatManager != null)
       {
-        localObject = ABTestUtil.a(ABTestUtil.a(localRichTextChatManager.c(), 44, 44), ABTestUtil.a(localRichTextChatManager.d(), 44, 44));
+        localObject = ABTestUtil.a(ABTestUtil.a(localRichTextChatManager.f(), 44, 44), ABTestUtil.a(localRichTextChatManager.g(), 44, 44));
         paramQQAppInterface = localDrawable;
         if (localObject != null) {
           paramQQAppInterface = (QQAppInterface)localObject;
@@ -82,22 +82,22 @@ public class AIOZhituHelper
   
   public void a()
   {
-    ImageButton localImageButton = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a() != null) && (this.jdField_a_of_type_Boolean))
+    ImageButton localImageButton = this.b.p().d().c().b();
+    if ((this.b.p().d().c().a() != null) && (this.a))
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localImageButton);
+      a(this.c, localImageButton);
       localImageButton.setActivated(false);
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
   }
   
   public void a(Editable paramEditable)
   {
-    if ((!((ReceiptHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(118)).jdField_a_of_type_Boolean) && (paramEditable.length() > 0) && (this.jdField_a_of_type_Boolean))
+    if ((!((ReceiptHelper)this.b.a(118)).a) && (paramEditable.length() > 0) && (this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().removeMessages(84);
-      ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEditable, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().sendEmptyMessageDelayed(84, 10000L);
+      this.b.g().removeMessages(84);
+      ZhituManager.a(this.c).a(this.c, paramEditable, this.b.e().b().d(), this.b.O().a, true);
+      this.b.g().sendEmptyMessageDelayed(84, 10000L);
     }
   }
   
@@ -111,9 +111,9 @@ public class AIOZhituHelper
   {
     if (paramMessage.what == 84)
     {
-      EditTextUI localEditTextUI = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
+      EditTextUI localEditTextUI = this.b.p().d().f();
       a();
-      if ((localEditTextUI.a() != null) && (paramMessage.arg1 == 1)) {
+      if ((localEditTextUI.b() != null) && (paramMessage.arg1 == 1)) {
         localEditTextUI.a("");
       }
     }
@@ -130,7 +130,7 @@ public class AIOZhituHelper
   public void onMoveToState(int paramInt)
   {
     if (paramInt == 0) {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
   }
   
@@ -138,8 +138,8 @@ public class AIOZhituHelper
   
   public void onPanelIconClickBeforeCreate(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a() != null) {
-      this.jdField_a_of_type_Boolean = false;
+    if (this.b.p().d().c().b() != null) {
+      this.a = false;
     }
   }
   
@@ -147,7 +147,7 @@ public class AIOZhituHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOZhituHelper
  * JD-Core Version:    0.7.0.1
  */

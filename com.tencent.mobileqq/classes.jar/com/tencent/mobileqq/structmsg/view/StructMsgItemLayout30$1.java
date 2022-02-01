@@ -11,13 +11,13 @@ class StructMsgItemLayout30$1
   
   public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    StructMsgItemLayout30.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout30, this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    StructMsgItemLayout30.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout30.1
  * JD-Core Version:    0.7.0.1
  */

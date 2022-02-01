@@ -8,24 +8,17 @@ import com.tencent.av.app.SessionInfo;
 
 class VideoNodeReporter$SeesionRecord
 {
-  public int a;
-  public long a;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  long[] jdField_a_of_type_ArrayOfLong = new long[41];
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d = "KilledBySystem";
-  
-  VideoNodeReporter$SeesionRecord()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
+  public long a = -1L;
+  boolean b = false;
+  String c;
+  long[] d = new long[41];
+  public int e = -1;
+  public int f = -1;
+  public String g;
+  public String h;
+  public long i;
+  public long j;
+  public String k = "KilledBySystem";
   
   public String a()
   {
@@ -40,22 +33,22 @@ class VideoNodeReporter$SeesionRecord
     localStringBuilder.append('|');
     localStringBuilder.append(str2);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('|');
-    int i = this.jdField_b_of_type_Int;
-    if (i != -1)
+    int m = this.f;
+    if (m != -1)
     {
-      localStringBuilder.append(i);
+      localStringBuilder.append(m);
       localStringBuilder.append('|');
     }
     else
     {
-      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20]));
+      localStringBuilder.append(String.valueOf(this.d[20]));
       localStringBuilder.append('|');
     }
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('|');
     return localStringBuilder.toString();
   }
@@ -65,9 +58,9 @@ class VideoNodeReporter$SeesionRecord
     if ((paramInt >= 0) && (paramInt < 41))
     {
       if (paramLong == 1L) {
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
+        this.d[paramInt] = 1L;
       } else {
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+        this.d[paramInt] = paramLong;
       }
       localStringBuilder = new StringBuilder();
       paramInt = 0;
@@ -81,21 +74,21 @@ class VideoNodeReporter$SeesionRecord
             {
               if (paramInt != 36)
               {
-                localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt]));
+                localStringBuilder.append(String.valueOf(this.d[paramInt]));
                 localStringBuilder.append('|');
               }
               else
               {
-                if (this.jdField_b_of_type_Long > 0L) {
-                  this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
+                if (this.i > 0L) {
+                  this.j = ((System.currentTimeMillis() - this.i) / 1000L);
                 }
-                localStringBuilder.append(this.jdField_c_of_type_Long);
+                localStringBuilder.append(this.j);
                 localStringBuilder.append('|');
               }
             }
             else
             {
-              localStringBuilder.append(this.d);
+              localStringBuilder.append(this.k);
               localStringBuilder.append('|');
             }
           }
@@ -107,12 +100,12 @@ class VideoNodeReporter$SeesionRecord
         }
         else
         {
-          if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
+          if (this.d[14] == 0L)
           {
-            this.jdField_a_of_type_JavaLangString = VideoNodeReporter.a();
-            this.jdField_a_of_type_ArrayOfLong[14] = 1L;
+            this.c = VideoNodeReporter.c();
+            this.d[14] = 1L;
           }
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.c);
           localStringBuilder.append('|');
         }
         paramInt += 1;
@@ -130,18 +123,18 @@ class VideoNodeReporter$SeesionRecord
   {
     if (paramSessionInfo != null)
     {
-      if (paramSessionInfo.l != -1) {
-        this.jdField_a_of_type_Int = paramSessionInfo.l;
+      if (paramSessionInfo.r != -1) {
+        this.e = paramSessionInfo.r;
       }
-      if (paramSessionInfo.d != 0) {
-        this.jdField_b_of_type_Int = paramSessionInfo.d;
+      if (paramSessionInfo.g != 0) {
+        this.f = paramSessionInfo.g;
       }
-      if (!TextUtils.isEmpty(paramSessionInfo.jdField_c_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramSessionInfo.jdField_c_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(paramSessionInfo.s)) {
+        this.g = paramSessionInfo.s;
       }
     }
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_JavaLangString = paramString;
+      this.h = paramString;
     }
   }
 }

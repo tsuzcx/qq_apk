@@ -10,10 +10,6 @@ import com.tencent.mobileqq.litelivesdk.api.login.LoginResult;
 
 public abstract interface ILiveSDK
 {
-  public abstract BusinessConfig a();
-  
-  public abstract LoginResult a();
-  
   public abstract void a();
   
   public abstract void a(BusinessConfig paramBusinessConfig);
@@ -28,17 +24,21 @@ public abstract interface ILiveSDK
   
   public abstract void a(String paramString, Class<? extends ServiceBaseInterface> paramClass, Class<? extends BaseServiceBuilder> paramClass1);
   
-  public abstract boolean a();
-  
   public abstract boolean a(String paramString1, String paramString2);
   
-  public abstract void b();
+  public abstract BusinessConfig b();
   
   public abstract void b(BusinessConfig paramBusinessConfig);
+  
+  public abstract boolean c();
+  
+  public abstract LoginResult d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.api.ILiveSDK
  * JD-Core Version:    0.7.0.1
  */

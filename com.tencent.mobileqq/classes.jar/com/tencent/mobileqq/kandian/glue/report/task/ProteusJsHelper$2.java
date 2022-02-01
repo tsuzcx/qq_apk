@@ -20,13 +20,13 @@ final class ProteusJsHelper$2
           ProteusJsHelper.a((String)localObject, this.b);
           return;
         }
-        if (!KandianReportSoLoader.c())
+        if (!KandianReportSoLoader.e())
         {
           QLog.d("kandianreport.ProteusJsHelper", 1, "so not ready, now download");
           KandianReportSoLoader.a(new ProteusJsHelper.2.1(this, (String)localObject));
           return;
         }
-        KandianReportSoLoader.a();
+        KandianReportSoLoader.f();
         ProteusJsHelper.b((String)localObject, this.b);
         return;
       }
@@ -39,7 +39,7 @@ final class ProteusJsHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.ProteusJsHelper.2
  * JD-Core Version:    0.7.0.1
  */

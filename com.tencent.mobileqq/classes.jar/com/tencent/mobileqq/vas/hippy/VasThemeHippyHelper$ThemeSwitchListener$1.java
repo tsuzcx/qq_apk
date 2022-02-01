@@ -15,14 +15,14 @@ class VasThemeHippyHelper$ThemeSwitchListener$1
   public void run()
   {
     VasUtil.a().getThemeSwitchManager().doScreenShot();
-    SkinEngine.getInstances().setSkinRootPath(this.jdField_a_of_type_ComTencentMobileqqVasHippyVasThemeHippyHelper$ThemeSwitchListener.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.d());
-    ThemeUtil.setCurrentThemeIdVersion(this.jdField_a_of_type_ComTencentMobileqqVasHippyVasThemeHippyHelper$ThemeSwitchListener.this$0.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a(), "20000000");
-    this.jdField_a_of_type_ComTencentMobileqqVasHippyVasThemeHippyHelper$ThemeSwitchListener.postSwitch(0);
+    SkinEngine.getInstances().setSkinRootPath(this.b.this$0.c, this.a.g());
+    ThemeUtil.setCurrentThemeIdVersion(this.b.this$0.d, this.a.d(), "20000000");
+    this.b.postSwitch(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.VasThemeHippyHelper.ThemeSwitchListener.1
  * JD-Core Version:    0.7.0.1
  */

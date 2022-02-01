@@ -24,29 +24,24 @@ public class PickerContainer
   extends RelativeLayout
   implements PickerBarLayout.PickerBarLayoutListener
 {
-  public static final String a;
-  public float a;
-  private int jdField_a_of_type_Int = 58;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  Property<PickerContainer, Float> jdField_a_of_type_AndroidUtilProperty = new PickerContainer.1(this, Float.class, "containerAlpha");
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ContainerDrawable jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable;
-  private HintDrawable jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable;
-  private PickerBarLayout jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBarLayout;
-  private Float jdField_a_of_type_JavaLangFloat = Float.valueOf(1.0F);
-  private WeakReference<PickerContainer.PickerContainerListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  public float b;
-  private boolean b;
-  private float c = 200.0F;
-  private float d = 497.0F;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131708155);
-  }
+  public static final String a = HardCodeUtil.a(2131905951);
+  public float b = 333.60001F;
+  public float c = 333.60001F;
+  Property<PickerContainer, Float> d = new PickerContainer.1(this, Float.class, "containerAlpha");
+  private float e = 200.0F;
+  private float f = 497.0F;
+  private int g = 58;
+  private View h;
+  private ContainerDrawable i;
+  private PickerBarLayout j;
+  private ImageView k;
+  private HintDrawable l;
+  private Handler m = new Handler(Looper.getMainLooper());
+  private Float n = Float.valueOf(1.0F);
+  private boolean o = false;
+  private WeakReference<PickerContainer.PickerContainerListener> p;
+  private ValueAnimator q;
+  private boolean r = false;
   
   public PickerContainer(Context paramContext)
   {
@@ -61,9 +56,6 @@ public class PickerContainer
   public PickerContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = 333.60001F;
-    this.jdField_b_of_type_Float = 333.60001F;
-    this.jdField_b_of_type_Boolean = false;
   }
   
   private static float a(float paramFloat, Resources paramResources)
@@ -82,100 +74,100 @@ public class PickerContainer
     return a(paramFloat / 2.0F, paramContext.getResources());
   }
   
-  private Float a()
-  {
-    return this.jdField_a_of_type_JavaLangFloat;
-  }
-  
   private void a(Context paramContext)
   {
+    this.e = a(paramContext, this.e);
+    this.b = a(paramContext, this.b);
     this.c = a(paramContext, this.c);
-    this.jdField_a_of_type_Float = a(paramContext, this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_Float = a(paramContext, this.jdField_b_of_type_Float);
-    this.d = a(paramContext, this.d);
-    this.jdField_a_of_type_Int = AIOUtils.b(this.jdField_a_of_type_Int, paramContext.getResources());
-  }
-  
-  private void a(Float paramFloat)
-  {
-    this.jdField_a_of_type_JavaLangFloat = paramFloat;
+    this.f = a(paramContext, this.f);
+    this.g = AIOUtils.b(this.g, paramContext.getResources());
   }
   
   private void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.o) {
       return;
     }
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.q;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.q.removeAllUpdateListeners();
+      this.q = null;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.o = false;
   }
   
   private void b(boolean paramBoolean, long paramLong)
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.q;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.q.removeAllUpdateListeners();
+      this.q = null;
     }
-    float f = 1.0F;
+    float f1 = 1.0F;
     if (!paramBoolean) {
-      f = 0.0F;
+      f1 = 0.0F;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.jdField_a_of_type_AndroidUtilProperty, new float[] { this.jdField_a_of_type_JavaLangFloat.floatValue(), f }) });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
-    localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    this.q = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(this.d, new float[] { this.n.floatValue(), f1 }) });
+    this.q.setDuration(paramLong);
+    localValueAnimator = this.q;
     if (localValueAnimator != null)
     {
       localValueAnimator.setRepeatMode(1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new PickerContainer.2(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new PickerContainer.3(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.q.setRepeatCount(0);
+      this.q.setStartDelay(0L);
+      this.q.addUpdateListener(new PickerContainer.2(this));
+      this.q.addListener(new PickerContainer.3(this));
+      this.q.start();
     }
+  }
+  
+  private Float getContainerAlpha()
+  {
+    return this.n;
+  }
+  
+  private void setContainerAlpha(Float paramFloat)
+  {
+    this.n = paramFloat;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable;
+    this.p = null;
+    Object localObject = this.l;
     if (localObject != null)
     {
       ((HintDrawable)localObject).a();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable = null;
+      this.l = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable;
+    localObject = this.i;
     if (localObject != null)
     {
       ((ContainerDrawable)localObject).a();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable = null;
+      this.i = null;
     }
-    this.jdField_a_of_type_AndroidViewView = null;
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBarLayout;
+    this.h = null;
+    localObject = this.j;
     if (localObject != null) {
       ((PickerBarLayout)localObject).a();
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    this.k = null;
+    localObject = this.m;
     if (localObject != null) {
       ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    localObject = this.q;
     if (localObject != null)
     {
       ((ValueAnimator)localObject).cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.q.removeAllUpdateListeners();
+      this.q = null;
     }
-    this.jdField_a_of_type_AndroidUtilProperty = null;
+    this.d = null;
   }
   
   public void a(int paramInt)
@@ -183,13 +175,13 @@ public class PickerContainer
     ContainerDrawable localContainerDrawable;
     if (paramInt == 1)
     {
-      localContainerDrawable = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable;
+      localContainerDrawable = this.i;
       if (localContainerDrawable != null)
       {
         localContainerDrawable.stop();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable.a(false);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable.a(1);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable.start();
+        this.i.a(false);
+        this.i.a(1);
+        this.i.start();
       }
     }
     else
@@ -197,13 +189,13 @@ public class PickerContainer
       if (paramInt == 4) {
         return;
       }
-      localContainerDrawable = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable;
+      localContainerDrawable = this.i;
       if (localContainerDrawable != null)
       {
         localContainerDrawable.stop();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable.a(false);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable.a(2);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable.start();
+        this.i.a(false);
+        this.i.a(2);
+        this.i.start();
       }
     }
   }
@@ -223,16 +215,16 @@ public class PickerContainer
       ((StringBuilder)localObject).append(paramBoolean2);
       QLog.d("PickerContainer", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (PickerContainer.PickerContainerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (PickerContainer.PickerContainerListener)this.p.get();
     if (localObject != null) {
       if (paramBoolean1)
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.r = true;
         ((PickerContainer.PickerContainerListener)localObject).a(paramInt, paramString);
       }
       else if (paramBoolean2)
       {
-        this.jdField_b_of_type_Boolean = false;
+        this.r = false;
         ((PickerContainer.PickerContainerListener)localObject).c(paramInt, paramString);
       }
       else
@@ -240,13 +232,13 @@ public class PickerContainer
         ((PickerContainer.PickerContainerListener)localObject).b(paramInt, paramString);
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PickerContainer.4(this, paramString), 300L);
+    this.m.removeCallbacksAndMessages(null);
+    this.m.postDelayed(new PickerContainer.4(this, paramString), 300L);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    PickerBarLayout localPickerBarLayout = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBarLayout;
+    PickerBarLayout localPickerBarLayout = this.j;
     if (localPickerBarLayout != null) {
       localPickerBarLayout.a(paramInt, paramBoolean);
     }
@@ -254,7 +246,7 @@ public class PickerContainer
   
   public void a(boolean paramBoolean, long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.o) {
       b();
     }
     if (paramLong > 0L)
@@ -274,33 +266,33 @@ public class PickerContainer
   
   public boolean a(EditVideoParams paramEditVideoParams, PickerContainer.PickerContainerListener paramPickerContainerListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramPickerContainerListener);
+    this.p = new WeakReference(paramPickerContainerListener);
     a(getContext());
-    this.jdField_a_of_type_AndroidViewView = new View(getContext());
+    this.h = new View(getContext());
     paramPickerContainerListener = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable = new ContainerDrawable();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable.a(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerContainerDrawable);
-    addView(this.jdField_a_of_type_AndroidViewView, paramPickerContainerListener);
+    this.i = new ContainerDrawable();
+    this.i.a(getContext());
+    this.h.setBackground(this.i);
+    addView(this.h, paramPickerContainerListener);
     paramPickerContainerListener = new RelativeLayout(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.bottomMargin = this.jdField_a_of_type_Int;
+    localLayoutParams.bottomMargin = this.g;
     addView(paramPickerContainerListener, localLayoutParams);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBarLayout = new PickerBarLayout(getContext());
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBarLayout.a(paramEditVideoParams, getContext(), this);
-    this.d = (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBarLayout.a() * 60 + 80 + this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBarLayout.a() * 5 + 22 + 70);
-    this.d = a(getContext(), this.d);
-    paramEditVideoParams = new RelativeLayout.LayoutParams((int)this.c, (int)this.d);
+    this.j = new PickerBarLayout(getContext());
+    this.j.a(paramEditVideoParams, getContext(), this);
+    this.f = (this.j.getMarkSize() * 60 + 80 + this.j.getMarkSize() * 5 + 22 + 70);
+    this.f = a(getContext(), this.f);
+    paramEditVideoParams = new RelativeLayout.LayoutParams((int)this.e, (int)this.f);
     paramEditVideoParams.addRule(11);
     paramEditVideoParams.addRule(15);
-    paramPickerContainerListener.addView(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerBarLayout, paramEditVideoParams);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    paramEditVideoParams = new RelativeLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    paramPickerContainerListener.addView(this.j, paramEditVideoParams);
+    this.k = new ImageView(getContext());
+    paramEditVideoParams = new RelativeLayout.LayoutParams((int)this.b, (int)this.c);
     paramEditVideoParams.addRule(13);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable = new HintDrawable();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable.a(getContext(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, 1.2F);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackground(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable);
-    paramPickerContainerListener.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramEditVideoParams);
+    this.l = new HintDrawable();
+    this.l.a(getContext(), this.b, this.c, 1.2F);
+    this.k.setBackground(this.l);
+    paramPickerContainerListener.addView(this.k, paramEditVideoParams);
     return true;
   }
   
@@ -310,15 +302,15 @@ public class PickerContainer
   {
     if (paramInt == 4)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      HintDrawable localHintDrawable = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable;
+      this.m.removeCallbacksAndMessages(null);
+      HintDrawable localHintDrawable = this.l;
       if (localHintDrawable != null)
       {
         localHintDrawable.stop();
-        if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable.a() == 1) || (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable.a() == 3))
+        if ((this.l.b() == 1) || (this.l.b() == 3))
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable.a(2);
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerHintDrawable.start();
+          this.l.a(2);
+          this.l.start();
         }
       }
     }
@@ -328,7 +320,7 @@ public class PickerContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.PickerContainer
  * JD-Core Version:    0.7.0.1
  */

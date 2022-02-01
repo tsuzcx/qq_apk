@@ -1,23 +1,22 @@
 package com.tencent.aelight.camera.ae;
 
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.aelight.camera.ae.camera.ui.tips.AETipsViewController;
 
 class AEPituCameraUnit$43
   implements Runnable
 {
-  AEPituCameraUnit$43(AEPituCameraUnit paramAEPituCameraUnit, Context paramContext) {}
+  AEPituCameraUnit$43(AEPituCameraUnit paramAEPituCameraUnit) {}
   
   public void run()
   {
-    Context localContext = this.a;
-    QQToast.a(localContext, localContext.getString(2131698749), 0).a();
-    this.this$0.R();
+    if (AEPituCameraUnit.f(this.this$0) != null) {
+      AEPituCameraUnit.f(this.this$0).f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.43
  * JD-Core Version:    0.7.0.1
  */

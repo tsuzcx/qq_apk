@@ -27,14 +27,9 @@ public class WhiteScreenAuthorizeConfigInjector
     }
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(String paramString)
   {
-    AuthorizeConfig.a().k();
+    AuthorizeConfig.a().s();
     Object localObject = this.a;
     if (QLog.isColorLevel())
     {
@@ -64,6 +59,11 @@ public class WhiteScreenAuthorizeConfigInjector
   }
   
   public boolean a(String paramString1, String paramString2)
+  {
+    return false;
+  }
+  
+  public boolean b()
   {
     return false;
   }

@@ -10,14 +10,14 @@ public class ParallGroup
   {
     try
     {
-      paramInt = this.jdField_a_of_type_Int - 1;
-      this.jdField_a_of_type_Int = paramInt;
+      paramInt = this.a - 1;
+      this.a = paramInt;
       if (paramInt == 0)
       {
         setResult(7);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = null;
+        this.b = null;
       }
-      this.mAutomator.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep);
+      this.mAutomator.a(this.b);
       return;
     }
     finally {}
@@ -25,7 +25,7 @@ public class ParallGroup
   
   protected int doStep()
   {
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    this.a = this.e.length;
     for (;;)
     {
       AsyncStep localAsyncStep = a();
@@ -40,7 +40,7 @@ public class ParallGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.ParallGroup
  * JD-Core Version:    0.7.0.1
  */

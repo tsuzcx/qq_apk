@@ -15,17 +15,17 @@ final class OldMutualMarkLogicHelper$1
   
   public void run()
   {
-    Object localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    Object localObject1 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject2 = this.b.b;
     boolean bool2 = false;
-    if (((FriendsManager)localObject1).a((String)localObject2, false) == null) {
+    if (((FriendsManager)localObject1).d((String)localObject2, false) == null) {
       return;
     }
     if (((FriendsManager)localObject1).a(false)) {
       return;
     }
-    localObject1 = MutualMarkDataCenter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 7L, false);
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie;
+    localObject1 = MutualMarkDataCenter.a(this.a, this.b.b, 7L, false);
+    localObject2 = this.c;
     boolean bool1 = bool2;
     if (localObject1 != null)
     {
@@ -38,15 +38,15 @@ final class OldMutualMarkLogicHelper$1
         }
       }
     }
-    ((FriendChatPie)localObject2).F = bool1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.F) {
-      OldMutualMarkLogicHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie);
+    ((FriendChatPie)localObject2).bo = bool1;
+    if (this.c.bo) {
+      OldMutualMarkLogicHelper.b(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.1
  * JD-Core Version:    0.7.0.1
  */

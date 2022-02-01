@@ -153,170 +153,176 @@ public class VideoObserver
     int i = ((Integer)arrayOfObject[0]).intValue();
     String str2;
     if (i != 0) {
-      if (i != 100) {
-        if (i != 201) {
-          if (i != 308) {
-            if (i != 400) {
-              if (i != 501) {
-                if (i != 600) {
-                  if (i != 20002) {
-                    if (i != 47) {
-                      if (i != 48)
+      if (i != 47) {
+        if (i != 48)
+        {
+          str2 = null;
+          str1 = null;
+          switch (i)
+          {
+          default: 
+            switch (i)
+            {
+            default: 
+              switch (i)
+              {
+              default: 
+                switch (i)
+                {
+                default: 
+                  switch (i)
+                  {
+                  default: 
+                    switch (i)
+                    {
+                    default: 
+                      switch (i)
                       {
-                        str2 = null;
-                        str1 = null;
+                      default: 
                         switch (i)
                         {
                         default: 
                           switch (i)
                           {
                           default: 
-                            switch (i)
-                            {
-                            default: 
-                              switch (i)
-                              {
-                              default: 
-                                switch (i)
-                                {
-                                default: 
-                                  switch (i)
-                                  {
-                                  default: 
-                                    switch (i)
-                                    {
-                                    default: 
-                                      return;
-                                    case 10007: 
-                                      f();
-                                      return;
-                                    case 10006: 
-                                      a(((Boolean)arrayOfObject[1]).booleanValue());
-                                      return;
-                                    case 10005: 
-                                      a(((Boolean)arrayOfObject[1]).booleanValue(), ((Boolean)arrayOfObject[2]).booleanValue());
-                                      return;
-                                    case 10004: 
-                                      a(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
-                                      return;
-                                    case 10003: 
-                                      a(((Integer)arrayOfObject[1]).intValue());
-                                      return;
-                                    case 10002: 
-                                      a(((Boolean)arrayOfObject[1]).booleanValue(), ((Integer)arrayOfObject[2]).intValue(), (String)arrayOfObject[3], ((Integer)arrayOfObject[4]).intValue());
-                                      return;
-                                    }
-                                    a(((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), ((Long)arrayOfObject[3]).longValue());
-                                    return;
-                                  case 520: 
-                                    a(((Integer)arrayOfObject[1]).intValue(), ((Long)arrayOfObject[2]).longValue(), ((Integer)arrayOfObject[3]).intValue());
-                                    return;
-                                  case 519: 
-                                    a(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue(), ((Integer)arrayOfObject[3]).intValue(), ((Long)arrayOfObject[4]).longValue(), ((Integer)arrayOfObject[5]).intValue());
-                                    return;
-                                  }
-                                  a(((Boolean)arrayOfObject[1]).booleanValue(), ((Long)arrayOfObject[2]).longValue(), ((Integer)arrayOfObject[3]).intValue(), ((Integer)arrayOfObject[4]).intValue(), ((Integer)arrayOfObject[5]).intValue(), (String)arrayOfObject[6]);
-                                  return;
-                                case 306: 
-                                  b(arrayOfObject);
-                                  return;
-                                case 305: 
-                                  a(arrayOfObject);
-                                  return;
-                                }
-                                c(arrayOfObject);
-                                return;
-                              case 208: 
-                                h((String)arrayOfObject[1]);
-                                return;
-                              case 207: 
-                                g((String)arrayOfObject[1]);
-                                return;
-                              case 206: 
-                                f((String)arrayOfObject[1]);
-                                return;
-                              case 205: 
-                                e((String)arrayOfObject[1]);
-                                return;
-                              case 204: 
-                                h();
-                                return;
-                              }
-                              paramObject = (String)arrayOfObject[1];
-                              bool = ((Boolean)arrayOfObject[2]).booleanValue();
-                              b(SeqUtil.a(arrayOfObject, 3), paramObject, bool);
-                              return;
-                            case 52: 
-                              a((byte[])arrayOfObject[2], ((Integer)arrayOfObject[3]).intValue(), ((Integer)arrayOfObject[4]).intValue());
-                              return;
-                            case 51: 
-                              l();
-                              return;
-                            }
-                            e(((Boolean)arrayOfObject[1]).booleanValue());
                             return;
-                          case 44: 
-                            b(paramObject);
+                          case 10007: 
+                            f();
                             return;
-                          case 43: 
-                            b((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
+                          case 10006: 
+                            a(((Boolean)arrayOfObject[1]).booleanValue());
                             return;
-                          case 42: 
-                            a((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
+                          case 10005: 
+                            a(((Boolean)arrayOfObject[1]).booleanValue(), ((Boolean)arrayOfObject[2]).booleanValue());
                             return;
-                          case 41: 
-                            a((String)arrayOfObject[1], ((Long)arrayOfObject[2]).longValue(), (byte[])arrayOfObject[3]);
+                          case 10004: 
+                            a(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
                             return;
-                          case 40: 
-                            b((String)arrayOfObject[1], ((Boolean)arrayOfObject[2]).booleanValue());
+                          case 10003: 
+                            a(((Integer)arrayOfObject[1]).intValue());
                             return;
-                          case 39: 
-                            c(((Integer)arrayOfObject[1]).intValue());
-                            return;
-                          case 38: 
-                            i = ((Integer)arrayOfObject[1]).intValue();
-                            a(SeqUtil.a(arrayOfObject, 2), i);
-                            return;
-                          case 37: 
-                            k();
+                          case 10002: 
+                            a(((Boolean)arrayOfObject[1]).booleanValue(), ((Integer)arrayOfObject[2]).intValue(), (String)arrayOfObject[3], ((Integer)arrayOfObject[4]).intValue());
                             return;
                           }
-                          j();
+                          a(((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), ((Long)arrayOfObject[3]).longValue());
                           return;
-                        case 34: 
-                          c(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
+                        case 525: 
+                          f(((Boolean)arrayOfObject[1]).booleanValue());
                           return;
-                        case 33: 
-                          bool = ((Boolean)arrayOfObject[2]).booleanValue();
-                          c((String)arrayOfObject[1], bool);
+                        case 524: 
+                          a((String)arrayOfObject[1], (byte[])arrayOfObject[2]);
                           return;
-                        case 32: 
-                          i = arrayOfObject.length;
-                          int j = -1;
-                          if (i > 2)
-                          {
-                            j = ((Integer)arrayOfObject[1]).intValue();
-                            i = ((Integer)arrayOfObject[2]).intValue();
-                          }
-                          else
-                          {
-                            i = -1;
-                          }
-                          a(SeqUtil.a(arrayOfObject, 3), j, i);
+                        case 523: 
+                          a((String)arrayOfObject[1], ((Boolean)arrayOfObject[2]).booleanValue(), (String)arrayOfObject[3]);
                           return;
-                        case 31: 
-                          a(((Integer)arrayOfObject[1]).intValue(), (String)arrayOfObject[2]);
-                          return;
-                        case 30: 
-                          str2 = (String)arrayOfObject[1];
-                          paramObject = str1;
                         }
+                        a((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue(), (String)arrayOfObject[3]);
+                        return;
+                      case 520: 
+                        a(((Integer)arrayOfObject[1]).intValue(), ((Long)arrayOfObject[2]).longValue(), ((Integer)arrayOfObject[3]).intValue());
+                        return;
+                      case 519: 
+                        a(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue(), ((Integer)arrayOfObject[3]).intValue(), ((Long)arrayOfObject[4]).longValue(), ((Integer)arrayOfObject[5]).intValue());
+                        return;
                       }
+                      a(((Boolean)arrayOfObject[1]).booleanValue(), ((Long)arrayOfObject[2]).longValue(), ((Integer)arrayOfObject[3]).intValue(), ((Integer)arrayOfObject[4]).intValue(), ((Integer)arrayOfObject[5]).intValue(), (String)arrayOfObject[6]);
+                      return;
+                    case 306: 
+                      b(arrayOfObject);
+                      return;
+                    case 305: 
+                      a(arrayOfObject);
+                      return;
                     }
+                    c(arrayOfObject);
+                    return;
+                  case 208: 
+                    g((String)arrayOfObject[1]);
+                    return;
+                  case 207: 
+                    f((String)arrayOfObject[1]);
+                    return;
+                  case 206: 
+                    e((String)arrayOfObject[1]);
+                    return;
+                  case 205: 
+                    d((String)arrayOfObject[1]);
+                    return;
+                  case 204: 
+                    h();
+                    return;
                   }
+                  paramObject = (String)arrayOfObject[1];
+                  bool = ((Boolean)arrayOfObject[2]).booleanValue();
+                  b(SeqUtil.a(arrayOfObject, 3), paramObject, bool);
+                  return;
+                case 52: 
+                  a((byte[])arrayOfObject[2], ((Integer)arrayOfObject[3]).intValue(), ((Integer)arrayOfObject[4]).intValue());
+                  return;
+                case 51: 
+                  l();
+                  return;
                 }
+                e(((Boolean)arrayOfObject[1]).booleanValue());
+                return;
+              case 44: 
+                b(paramObject);
+                return;
+              case 43: 
+                b((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
+                return;
+              case 42: 
+                a((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
+                return;
+              case 41: 
+                a((String)arrayOfObject[1], ((Long)arrayOfObject[2]).longValue(), (byte[])arrayOfObject[3]);
+                return;
+              case 40: 
+                b((String)arrayOfObject[1], ((Boolean)arrayOfObject[2]).booleanValue());
+                return;
+              case 39: 
+                c(((Integer)arrayOfObject[1]).intValue());
+                return;
+              case 38: 
+                i = ((Integer)arrayOfObject[1]).intValue();
+                a(SeqUtil.a(arrayOfObject, 2), i);
+                return;
+              case 37: 
+                k();
+                return;
               }
+              j();
+              return;
+            case 34: 
+              c(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
+              return;
+            case 33: 
+              bool = ((Boolean)arrayOfObject[2]).booleanValue();
+              c((String)arrayOfObject[1], bool);
+              return;
+            case 32: 
+              i = arrayOfObject.length;
+              int j = -1;
+              if (i > 2)
+              {
+                j = ((Integer)arrayOfObject[1]).intValue();
+                i = ((Integer)arrayOfObject[2]).intValue();
+              }
+              else
+              {
+                i = -1;
+              }
+              a(SeqUtil.a(arrayOfObject, 3), j, i);
+              return;
+            case 31: 
+              a(((Integer)arrayOfObject[1]).intValue(), (String)arrayOfObject[2]);
+              return;
+            case 30: 
+              str2 = (String)arrayOfObject[1];
+              paramObject = str1;
             }
+            break;
           }
         }
       }
@@ -351,6 +357,48 @@ public class VideoObserver
             a((String)arrayOfObject[1], (Bitmap)arrayOfObject[2]);
             return;
             c(((Boolean)arrayOfObject[1]).booleanValue());
+            return;
+            bool = ((Boolean)arrayOfObject[1]).booleanValue();
+            a(SeqUtil.a(arrayOfObject, 2), bool);
+            return;
+            b(((Boolean)arrayOfObject[1]).booleanValue());
+            return;
+            b(false, ((Boolean)arrayOfObject[1]).booleanValue());
+            return;
+            b(true, ((Boolean)arrayOfObject[1]).booleanValue());
+            return;
+            b(((Integer)arrayOfObject[1]).intValue());
+            return;
+            g();
+            return;
+            a((String)arrayOfObject[1]);
+            return;
+            e();
+            return;
+            d();
+            return;
+            b(SeqUtil.a(arrayOfObject, 1));
+            return;
+            c();
+            return;
+            i = ((Integer)arrayOfObject[1]).intValue();
+            paramObject = str2;
+            if (arrayOfObject.length > 2) {
+              paramObject = (String)arrayOfObject[2];
+            }
+            a(SeqUtil.a(arrayOfObject, 3), i, paramObject);
+            return;
+            a(SeqUtil.a(arrayOfObject, 1));
+            return;
+            a((RecvMsg)arrayOfObject[1]);
+            return;
+            b();
+            return;
+            a();
+            return;
+            d(((Boolean)arrayOfObject[1]).booleanValue());
+            return;
+            a(((Boolean)arrayOfObject[1]).booleanValue(), (String)arrayOfObject[2], (String)arrayOfObject[3], (String)arrayOfObject[4]);
           }
           return;
         }
@@ -371,55 +419,11 @@ public class VideoObserver
     }
     a(paramObject, bool);
     return;
-    c((String)arrayOfObject[1]);
-    return;
     b((String)arrayOfObject[1]);
-    return;
-    bool = ((Boolean)arrayOfObject[1]).booleanValue();
-    a(SeqUtil.a(arrayOfObject, 2), bool);
-    return;
-    b(((Boolean)arrayOfObject[1]).booleanValue());
-    return;
-    b(false, ((Boolean)arrayOfObject[1]).booleanValue());
-    return;
-    b(true, ((Boolean)arrayOfObject[1]).booleanValue());
-    return;
-    b(((Integer)arrayOfObject[1]).intValue());
-    return;
-    g();
-    return;
-    a((String)arrayOfObject[1]);
-    return;
-    e();
-    return;
-    d();
-    return;
-    b(SeqUtil.a(arrayOfObject, 1));
-    return;
-    c();
-    return;
-    i = ((Integer)arrayOfObject[1]).intValue();
-    paramObject = str2;
-    if (arrayOfObject.length > 2) {
-      paramObject = (String)arrayOfObject[2];
-    }
-    a(SeqUtil.a(arrayOfObject, 3), i, paramObject);
-    return;
-    a(SeqUtil.a(arrayOfObject, 1));
-    return;
-    a((RecvMsg)arrayOfObject[1]);
-    return;
-    b();
-    return;
-    a();
-    return;
-    d(((Boolean)arrayOfObject[1]).booleanValue());
-    return;
-    a(((Boolean)arrayOfObject[1]).booleanValue(), (String)arrayOfObject[2], (String)arrayOfObject[3], (String)arrayOfObject[4]);
     return;
     b(((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), ((Long)arrayOfObject[3]).longValue());
     return;
-    d((String)arrayOfObject[1]);
+    c((String)arrayOfObject[1]);
     return;
     a((RecvGVideoLevelInfo[])arrayOfObject[1]);
     return;
@@ -429,6 +433,8 @@ public class VideoObserver
   
   protected void a(String paramString, int paramInt) {}
   
+  protected void a(String paramString1, int paramInt, String paramString2) {}
+  
   protected void a(String paramString, long paramLong, byte[] paramArrayOfByte) {}
   
   protected void a(String paramString, Bitmap paramBitmap) {}
@@ -436,6 +442,10 @@ public class VideoObserver
   protected void a(String paramString1, String paramString2) {}
   
   protected void a(String paramString, boolean paramBoolean) {}
+  
+  protected void a(String paramString1, boolean paramBoolean, String paramString2) {}
+  
+  protected void a(String paramString, byte[] paramArrayOfByte) {}
   
   protected void a(boolean paramBoolean) {}
   
@@ -505,13 +515,13 @@ public class VideoObserver
   
   protected void f(String paramString) {}
   
+  protected void f(boolean paramBoolean) {}
+  
   protected void g() {}
   
   protected void g(String paramString) {}
   
   protected void h() {}
-  
-  protected void h(String paramString) {}
   
   protected void i() {}
   

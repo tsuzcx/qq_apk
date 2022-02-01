@@ -10,18 +10,18 @@ class ProfileExtendFriendComponent$4
   
   public void run()
   {
-    if (ProfileExtendFriendComponent.a(this.this$0) != null)
+    if (ProfileExtendFriendComponent.e(this.this$0) != null)
     {
-      int i = ((View)ProfileExtendFriendComponent.b(this.this$0)).getTop();
-      if ((i >= 0) && (ProfileExtendFriendComponent.c(this.this$0) != null)) {
-        ProfileExtendFriendComponent.d(this.this$0).scrollToMoreInfoView(i);
+      int i = ((View)ProfileExtendFriendComponent.f(this.this$0)).getTop();
+      if ((i >= 0) && (ProfileExtendFriendComponent.g(this.this$0) != null)) {
+        ProfileExtendFriendComponent.h(this.this$0).scrollToMoreInfoView(i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.profilecard.ProfileExtendFriendComponent.4
  * JD-Core Version:    0.7.0.1
  */

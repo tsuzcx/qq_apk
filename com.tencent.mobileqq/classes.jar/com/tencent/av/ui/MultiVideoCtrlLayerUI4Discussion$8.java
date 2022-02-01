@@ -15,18 +15,18 @@ class MultiVideoCtrlLayerUI4Discussion$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d;
+    paramDialogInterface = this.c.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showConfirmBoxToHangup, yes, mRelationId[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b);
+    localStringBuilder.append(this.c.j);
     localStringBuilder.append("]");
     QLog.w(paramDialogInterface, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j(0L);
+    this.c.h(0L);
     paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b));
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(4, 0, 0, paramDialogInterface, null);
-    if (!QAVHrMeeting.a(this.jdField_a_of_type_Int)) {
-      MultiVideoCtrlLayerUI4Discussion.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b), 3000, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695617));
+    paramDialogInterface.putString("uin", String.valueOf(this.c.j));
+    this.a.a(4, 0, 0, paramDialogInterface, null);
+    if (!QAVHrMeeting.a(this.b)) {
+      MultiVideoCtrlLayerUI4Discussion.a(this.c.X, this.a, String.valueOf(this.c.j), 3000, this.a.getApp().getString(2131893376));
     }
   }
 }

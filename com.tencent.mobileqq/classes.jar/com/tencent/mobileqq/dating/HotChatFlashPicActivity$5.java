@@ -9,12 +9,12 @@ class HotChatFlashPicActivity$5
   
   public void run()
   {
-    DESUtil.a(this.a, HotChatFlashPicActivity.c(this.this$0));
+    DESUtil.a(this.a, HotChatFlashPicActivity.d(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.dating.HotChatFlashPicActivity.5
  * JD-Core Version:    0.7.0.1
  */

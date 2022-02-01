@@ -8,11 +8,11 @@ import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class LiteMutiPicViewerActivity$ItemHolder
 {
-  public View a;
-  public ImageView a;
   public RelativeLayout a;
-  public AsyncImageView a;
-  public DataLineMsgRecord a;
+  public AsyncImageView b;
+  public View c;
+  public ImageView d;
+  public DataLineMsgRecord e;
   
   public LiteMutiPicViewerActivity$ItemHolder(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
 }

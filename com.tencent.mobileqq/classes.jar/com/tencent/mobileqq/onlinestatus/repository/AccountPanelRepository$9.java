@@ -16,7 +16,7 @@ class AccountPanelRepository$9
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
     if ((paramBoolean1) && (localAppRuntime != null) && (!paramBoolean2))
     {
-      AccountPanelRepository.a(this.a).b();
+      AccountPanelRepository.a(this.a).o();
       if (QLog.isColorLevel()) {
         QLog.d("AccountPanelRepository", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean1) }));
       }
@@ -30,7 +30,7 @@ class AccountPanelRepository$9
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
     if ((paramBoolean1) && (localAppRuntime != null) && (!paramBoolean2))
     {
-      AccountPanelRepository.a(this.a).b();
+      AccountPanelRepository.a(this.a).o();
       if (QLog.isColorLevel()) {
         QLog.d("AccountPanelRepository", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean1) }));
       }
@@ -44,7 +44,7 @@ class AccountPanelRepository$9
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
     if ((paramBoolean1) && (localAppRuntime != null) && (!paramBoolean2))
     {
-      AccountPanelRepository.a(this.a).b();
+      AccountPanelRepository.a(this.a).o();
       if (QLog.isColorLevel()) {
         QLog.d("AccountPanelRepository", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean1) }));
       }
@@ -55,7 +55,7 @@ class AccountPanelRepository$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.repository.AccountPanelRepository.9
  * JD-Core Version:    0.7.0.1
  */

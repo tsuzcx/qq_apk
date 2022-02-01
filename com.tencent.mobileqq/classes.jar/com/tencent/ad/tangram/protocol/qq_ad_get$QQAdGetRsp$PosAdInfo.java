@@ -3,6 +3,8 @@ package com.tencent.ad.tangram.protocol;
 public final class qq_ad_get$QQAdGetRsp$PosAdInfo
 {
   public qq_ad_get.QQAdGetRsp.AdInfo[] ads_info;
+  public qq_ad_get.QQAdGetRsp.ContractEmptyAdResponse[] contract_empty_ad_response;
+  public qq_ad_get.QQAdGetRsp.PosAdInfo.FrequencyInfo frequency_info = new qq_ad_get.QQAdGetRsp.PosAdInfo.FrequencyInfo();
   public String msg;
   public indicator.NoAdIndicator no_ad_indicator;
   public String pos_id;

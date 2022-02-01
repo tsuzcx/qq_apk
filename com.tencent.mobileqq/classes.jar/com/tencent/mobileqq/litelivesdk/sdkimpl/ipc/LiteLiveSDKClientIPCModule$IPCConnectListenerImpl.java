@@ -14,24 +14,24 @@ import java.util.concurrent.atomic.AtomicInteger;
 class LiteLiveSDKClientIPCModule$IPCConnectListenerImpl
   implements EIPCOnGetConnectionListener, EIPClientConnectListener
 {
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  AtomicInteger a = new AtomicInteger(0);
   
   private LiteLiveSDKClientIPCModule$IPCConnectListenerImpl(LiteLiveSDKClientIPCModule paramLiteLiveSDKClientIPCModule) {}
   
   public boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
+    return this.a.get() == 2;
   }
   
   public void connectFailed()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(3);
+    this.a.set(3);
     QLog.e("LiteLiveSDKClientIPCModule", 1, "ilive connectFailed");
   }
   
   public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    this.a.set(2);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ilive connectSuccess, server[");
     localStringBuilder.append(paramEIPCConnection.procName);
@@ -55,7 +55,7 @@ class LiteLiveSDKClientIPCModule$IPCConnectListenerImpl
     localStringBuilder.append("]");
     QLog.e("LiteLiveSDKClientIPCModule", 1, localStringBuilder.toString());
     if (TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName)) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+      this.a.set(2);
     }
   }
   
@@ -70,13 +70,13 @@ class LiteLiveSDKClientIPCModule$IPCConnectListenerImpl
     localStringBuilder.append("]");
     QLog.e("LiteLiveSDKClientIPCModule", 1, localStringBuilder.toString());
     if (TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName)) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
+      this.a.set(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteLiveSDKClientIPCModule.IPCConnectListenerImpl
  * JD-Core Version:    0.7.0.1
  */

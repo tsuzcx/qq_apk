@@ -30,13 +30,13 @@ class FavEmoRoamingHandler$1
       ((StringBuilder)localObject1).append(AppConstants.SDCARD_IMG_FAVORITE);
       ((StringBuilder)localObject1).append(".nomedia");
       FileUtils.createFileIfNotExits(((StringBuilder)localObject1).toString());
-      localList1 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.filename.get();
-      localList2 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.delete_file.get();
-      localList3 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.uint32_emoji_type.get();
-      localObject2 = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.bid.get();
-      k = this.jdField_a_of_type_TencentImCsFaceroam_ssoFaceroam_sso$RspUserInfo.max_roam_size.get();
+      localList1 = this.a.filename.get();
+      localList2 = this.a.delete_file.get();
+      localList3 = this.a.uint32_emoji_type.get();
+      localObject2 = this.a.bid.get();
+      k = this.a.max_roam_size.get();
       FavEmoConstant.a = k;
-      localObject1 = this.this$0.a.getCurrentAccountUin();
+      localObject1 = this.this$0.b.getCurrentAccountUin();
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit();
@@ -104,7 +104,7 @@ class FavEmoRoamingHandler$1
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("ret = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append(" userlist= ");
       ((StringBuilder)localObject1).append(localList1.toString());
       ((StringBuilder)localObject1).append(" delList=");
@@ -120,7 +120,7 @@ class FavEmoRoamingHandler$1
       localObject1 = "qq_expression";
     }
     FavEmoRoamingHandler.a(this.this$0, localList2, localList1);
-    localObject2 = ((IFavroamingDBManagerService)this.this$0.a.getRuntimeService(IFavroamingDBManagerService.class, "")).updateFavEmotionsInLocalEx(localList2, localList1, (String)localObject1, localList3);
+    localObject2 = ((IFavroamingDBManagerService)this.this$0.b.getRuntimeService(IFavroamingDBManagerService.class, "")).updateFavEmotionsInLocalEx(localList2, localList1, (String)localObject1, localList3);
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ArrayList();
@@ -133,7 +133,7 @@ class FavEmoRoamingHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FavEmoRoamingHandler.1
  * JD-Core Version:    0.7.0.1
  */

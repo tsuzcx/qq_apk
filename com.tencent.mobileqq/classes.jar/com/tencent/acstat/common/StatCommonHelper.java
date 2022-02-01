@@ -38,6 +38,7 @@ import android.view.WindowManager;
 import com.tencent.acstat.StatConfig;
 import com.tencent.acstat.StatReportStrategy;
 import com.tencent.acstat.StatSpecifyReportedInfo;
+import com.tencent.mobileqq.qmethodmonitor.monitor.LocationMonitor;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -663,7 +664,7 @@ public class StatCommonHelper
         if (paramContext.isProviderEnabled("gps"))
         {
           localObject1 = localStringBuilder;
-          paramContext = paramContext.getLastKnownLocation("gps");
+          paramContext = LocationMonitor.getLastKnownLocation(paramContext, "gps");
           localObject1 = paramContext;
           localObject2 = k;
           localObject1 = paramContext;
@@ -872,7 +873,7 @@ public class StatCommonHelper
         if (((LocationManager)localObject2).isProviderEnabled("network"))
         {
           localObject1 = localStringBuilder;
-          paramContext = ((LocationManager)localObject2).getLastKnownLocation("network");
+          paramContext = LocationMonitor.getLastKnownLocation((LocationManager)localObject2, "network");
         }
         localObject1 = paramContext;
         localObject2 = k;
@@ -1124,18 +1125,18 @@ public class StatCommonHelper
   public static int hasRootAccess(Context paramContext)
   {
     // Byte code:
-    //   0: getstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   0: getstatic 919	com/tencent/acstat/common/StatCommonHelper:j	I
     //   3: iflt +7 -> 10
-    //   6: getstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   6: getstatic 919	com/tencent/acstat/common/StatCommonHelper:j	I
     //   9: ireturn
     //   10: iconst_0
-    //   11: putstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   11: putstatic 919	com/tencent/acstat/common/StatCommonHelper:j	I
     //   14: ldc 2
     //   16: monitorenter
-    //   17: invokestatic 921	com/tencent/acstat/common/l:a	()Z
+    //   17: invokestatic 923	com/tencent/acstat/common/l:a	()Z
     //   20: ifeq +22 -> 42
     //   23: iconst_1
-    //   24: putstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   24: putstatic 919	com/tencent/acstat/common/StatCommonHelper:j	I
     //   27: goto +15 -> 42
     //   30: astore_0
     //   31: goto +18 -> 49
@@ -1145,7 +1146,7 @@ public class StatCommonHelper
     //   39: invokevirtual 323	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Throwable;)V
     //   42: ldc 2
     //   44: monitorexit
-    //   45: getstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   45: getstatic 919	com/tencent/acstat/common/StatCommonHelper:j	I
     //   48: ireturn
     //   49: ldc 2
     //   51: monitorexit

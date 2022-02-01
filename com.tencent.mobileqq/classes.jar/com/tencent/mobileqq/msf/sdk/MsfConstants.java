@@ -98,6 +98,8 @@ public class MsfConstants
   public static final String ATTRIBUTE_WTLOGIN_OLDCMD = "to_wtlogin_oldcmd";
   public static final String ATTR_CHAT_MSG_SENT_FLAG = "chat_msg_sent_flag";
   public static final String ATTR_QUICK_SEND_BY_XG = "attr_quick_send_by_xg";
+  public static final String ATTR_UDP_RETRY_COUNT = "attr_udp_retry_count";
+  public static final String ATTR_UDP_SEND_TIME = "attr_udp_send_time";
   public static final String ATTR_WEAKNET_SENT_FLAG = "attr_weaknet_sent_flag";
   public static final String Attribute_TAG_NEEDCALLBACK = "__base_tag_needCallback";
   public static final int GM_EVENT_BACK_GUARD = 1;
@@ -126,10 +128,11 @@ public class MsfConstants
   public static final int SERVICE_CMDID_CHANGEUIN = 5001;
   public static final int TLV_KEY_FACE_REG_SIG = 54;
   public static final int TLV_KEY_FACE_RESULT = 55;
+  public static final int UDP_RETRY_DEFAULT_COUNT = 12;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.MsfConstants
  * JD-Core Version:    0.7.0.1
  */

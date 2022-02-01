@@ -2,6 +2,7 @@ package com.tencent.mobileqq.soload.api.impl;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.soload.biz.OnSoGetPathListener;
+import com.tencent.mobileqq.soload.biz.entity.LoadParam.LoadItem;
 import com.tencent.qphone.base.util.QLog;
 
 class GetSoLoadInfoTaskAsync$4
@@ -16,20 +17,22 @@ class GetSoLoadInfoTaskAsync$4
       paramString1 = new StringBuilder();
       paramString1.append("[downRFiles] download resCode=");
       paramString1.append(paramInt1);
+      paramString1.append(",loadItemName:");
+      paramString1.append(this.d.b.name);
       QLog.i("SoLoadWidget.GetSoTaskAsync", 2, paramString1.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplGetSoLoadInfoTaskAsync.jdField_a_of_type_Int = paramInt2;
+    this.d.c = paramInt2;
     if ((paramInt1 == 0) && (!TextUtils.isEmpty(paramString2)))
     {
-      GetSoLoadInfoTaskAsync.a(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplGetSoLoadInfoTaskAsync, paramString2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+      GetSoLoadInfoTaskAsync.a(this.d, paramString2, this.a, this.b, this.c);
       return;
     }
-    GetSoLoadInfoTaskAsync.a(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplGetSoLoadInfoTaskAsync, 11);
+    GetSoLoadInfoTaskAsync.a(this.d, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.GetSoLoadInfoTaskAsync.4
  * JD-Core Version:    0.7.0.1
  */

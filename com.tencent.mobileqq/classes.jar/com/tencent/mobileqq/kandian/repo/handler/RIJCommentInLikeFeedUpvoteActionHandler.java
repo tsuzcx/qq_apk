@@ -51,14 +51,14 @@ public class RIJCommentInLikeFeedUpvoteActionHandler
     ((oidb_cmd0x83e.FeedsInfo)localObject2).uint32_business_id.set((int)paramAbsBaseArticleInfo.businessId);
     ((oidb_cmd0x83e.ReqBody)localObject1).msg_feeds_info.set((MessageMicro)localObject2);
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(String.valueOf(RIJQQAppInterfaceUtil.a()));
+    ((StringBuilder)localObject2).append(String.valueOf(RIJQQAppInterfaceUtil.d()));
     ((StringBuilder)localObject2).append(System.currentTimeMillis());
     localObject2 = ((StringBuilder)localObject2).toString();
     ((oidb_cmd0x83e.ReqBody)localObject1).bytes_req_seq.set(ByteStringMicro.copyFromUtf8((String)localObject2));
     localObject1 = ReadInJoyOidbHelper.a("OidbSvc.0x83e", 2110, 0, ((oidb_cmd0x83e.ReqBody)localObject1).toByteArray());
     ((ToServiceMsg)localObject1).addAttribute("0x83e_article", paramAbsBaseArticleInfo);
     ((ToServiceMsg)localObject1).addAttribute("0x83e_upvote_operation_type", Integer.valueOf(i));
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReqWithAutoRetry((ToServiceMsg)localObject1);
+    this.a.sendPbReqWithAutoRetry((ToServiceMsg)localObject1);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -94,7 +94,7 @@ public class RIJCommentInLikeFeedUpvoteActionHandler
       try
       {
         paramToServiceMsg = (AbsBaseArticleInfo)paramToServiceMsg.getAttribute("0x83e_article");
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJCommentInLikeFeedUpvoteActionHandler.1(this, paramToServiceMsg));
+        this.f.execute(new RIJCommentInLikeFeedUpvoteActionHandler.1(this, paramToServiceMsg));
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -106,7 +106,7 @@ public class RIJCommentInLikeFeedUpvoteActionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedUpvoteActionHandler
  * JD-Core Version:    0.7.0.1
  */

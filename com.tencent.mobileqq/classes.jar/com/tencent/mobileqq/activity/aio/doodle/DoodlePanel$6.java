@@ -18,8 +18,8 @@ class DoodlePanel$6
     byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleData.length);
     try
     {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
+      this.a.write(arrayOfByte);
+      this.a.write(paramDoodleData);
       label33:
       return true;
     }
@@ -38,8 +38,8 @@ class DoodlePanel$6
     byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleHeader.length);
     try
     {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
+      this.a.write(arrayOfByte);
+      this.a.write(paramDoodleHeader);
       label33:
       return true;
     }
@@ -51,7 +51,7 @@ class DoodlePanel$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodlePanel.6
  * JD-Core Version:    0.7.0.1
  */

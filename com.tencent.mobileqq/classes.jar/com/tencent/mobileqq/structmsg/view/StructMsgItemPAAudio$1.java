@@ -17,29 +17,29 @@ class StructMsgItemPAAudio$1
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.a.ag)) {
+    if (!TextUtils.isEmpty(this.a.aM)) {
       try
       {
-        String str = ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getPAAudioPttPath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.af);
+        String str = ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getPAAudioPttPath(this.a.aB, this.a.aA);
         if (TextUtils.isEmpty(str))
         {
-          this.a.a();
-          this.a.a(this.a.ag, paramView);
+          this.a.c();
+          this.a.a(this.a.aM, paramView);
         }
         else if (new File(str).exists())
         {
-          if (this.a.jdField_a_of_type_Boolean) {
-            this.a.d();
+          if (this.a.aE) {
+            this.a.f();
           } else {
-            this.a.c();
+            this.a.e();
           }
         }
         else
         {
-          this.a.a();
-          this.a.a(this.a.ag, paramView);
+          this.a.c();
+          this.a.a(this.a.aM, paramView);
         }
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.ag, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.ae, this.a.af);
+        ReportController.b(this.a.aB, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.aM, this.a.aB.getCurrentAccountUin(), this.a.ay, this.a.aA);
       }
       catch (Exception localException)
       {
@@ -51,7 +51,7 @@ class StructMsgItemPAAudio$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio.1
  * JD-Core Version:    0.7.0.1
  */

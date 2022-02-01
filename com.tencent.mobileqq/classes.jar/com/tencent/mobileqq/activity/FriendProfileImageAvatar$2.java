@@ -13,7 +13,7 @@ class FriendProfileImageAvatar$2
   {
     if (paramSetting != null)
     {
-      if (!this.a.b.equals(paramSetting.uin)) {
+      if (!this.a.h.equals(paramSetting.uin)) {
         return;
       }
       if (QLog.isColorLevel())
@@ -23,7 +23,7 @@ class FriendProfileImageAvatar$2
         localStringBuilder.append(paramSetting.uin);
         QLog.d("Q.profilecard.Avatar", 2, localStringBuilder.toString());
       }
-      if ((this.a.jdField_a_of_type_Boolean) && (paramSetting.url != null) && (paramSetting.url.length() > 0)) {
+      if ((this.a.c) && (paramSetting.url != null) && (paramSetting.url.length() > 0)) {
         this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
       }
     }
@@ -31,7 +31,7 @@ class FriendProfileImageAvatar$2
   
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (!this.a.b.equals(paramString)) {
+    if (!this.a.h.equals(paramString)) {
       return;
     }
     if (QLog.isColorLevel())
@@ -42,23 +42,23 @@ class FriendProfileImageAvatar$2
       QLog.d("Q.profilecard.Avatar", 2, localStringBuilder.toString());
     }
     paramString = this.a;
-    paramString.b(paramString.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    paramString.b(paramString.k);
     if (paramBoolean)
     {
       paramString = this.a;
-      paramString.a(paramString.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo, false);
+      paramString.a(paramString.k, false);
       paramString = this.a;
-      paramString.c(paramString.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      paramString.c(paramString.k);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.a = 2;
+    this.a.k.d = 2;
     paramString = this.a;
-    paramString.c(paramString.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    paramString.c(paramString.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.2
  * JD-Core Version:    0.7.0.1
  */

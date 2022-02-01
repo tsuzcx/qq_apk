@@ -244,7 +244,7 @@ public class HippyTextView
           int j = getPaddingTop();
           int k = getPaddingBottom();
           int m = this.mLayout.getHeight();
-          paramCanvas.translate((getWidth() - this.mLayout.getWidth()) / 2, (i + j + k - m) / 2);
+          paramCanvas.translate((getWidth() - this.mLayout.getWidth()) / 2, (i + j + k - m) / 2.0F);
         }
         localObject = this.mLayout.getPaint();
         if (localObject != null) {
@@ -341,13 +341,13 @@ public class HippyTextView
   {
     super.setId(paramInt);
     Object localObject = getContext();
-    if ((localObject != null) && ((localObject instanceof HippyInstanceContext)))
+    if ((localObject instanceof HippyInstanceContext))
     {
       localObject = ((HippyInstanceContext)localObject).getEngineContext();
       if (localObject != null)
       {
         localObject = ((HippyEngineContext)localObject).getDomManager().b(paramInt);
-        if ((localObject != null) && ((localObject instanceof TextNode))) {
+        if ((localObject instanceof TextNode)) {
           ((TextNode)localObject).setTextView(this);
         }
       }
@@ -415,7 +415,7 @@ public class HippyTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.text.HippyTextView
  * JD-Core Version:    0.7.0.1
  */

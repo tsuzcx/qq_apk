@@ -1,31 +1,36 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IQRMenuItemController;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IQRResultCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.data.FileQRScanResult;
+import com.tencent.mobileqq.filemanager.util.QFileUtils;
 import java.util.ArrayList;
 import java.util.List;
 
 class FileBrowserModelBase$2
-  implements IQRMenuItemController
+  implements IQRResultCallback
 {
-  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void a(FileQRScanResult paramFileQRScanResult)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if (paramFileQRScanResult != null)
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      paramList = this.a;
-      paramList.f = paramString;
-      if (paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.c();
+      this.b.w = new ArrayList();
+      paramFileQRScanResult = QFileUtils.a(paramFileQRScanResult);
+      if ((paramFileQRScanResult != null) && (!paramFileQRScanResult.isEmpty()))
+      {
+        this.b.w.addAll(paramFileQRScanResult);
+        paramFileQRScanResult = this.b;
+        paramFileQRScanResult.x = this.a;
+        if (paramFileQRScanResult.k != null) {
+          this.b.k.h();
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.2
  * JD-Core Version:    0.7.0.1
  */

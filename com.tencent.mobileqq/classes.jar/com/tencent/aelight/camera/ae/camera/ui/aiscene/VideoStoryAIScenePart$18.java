@@ -14,17 +14,17 @@ class VideoStoryAIScenePart$18
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEMaterialPanel.getHeight();
-    int j = this.jdField_a_of_type_Int;
-    int k = VideoStoryAIScenePart.a(this.this$0).getMeasuredHeight();
+    int i = this.a.getHeight();
+    int j = this.b;
+    int k = VideoStoryAIScenePart.f(this.this$0).getMeasuredHeight();
     Object localObject = new int[2];
-    VideoStoryAIScenePart.a(this.this$0).getLocationInWindow((int[])localObject);
+    VideoStoryAIScenePart.f(this.this$0).getLocationInWindow((int[])localObject);
     int m = localObject[1];
-    localObject = VideoStoryAIScenePart.a(this.this$0);
+    localObject = VideoStoryAIScenePart.f(this.this$0);
     float f = j - i - k - 10 - m;
     localObject = ObjectAnimator.ofFloat(localObject, "translationY", new float[] { 0.0F, f });
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.b(this.this$0), "translationY", new float[] { 0.0F, f });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.b(this.this$0), "translationY", new float[] { 0.0F, f });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.e(this.this$0), "translationY", new float[] { 0.0F, f });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(VideoStoryAIScenePart.j(this.this$0), "translationY", new float[] { 0.0F, f });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
     localAnimatorSet.setDuration(300L).start();
@@ -32,7 +32,7 @@ class VideoStoryAIScenePart$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.18
  * JD-Core Version:    0.7.0.1
  */

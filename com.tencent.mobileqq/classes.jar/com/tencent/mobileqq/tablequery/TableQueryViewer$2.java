@@ -25,18 +25,18 @@ class TableQueryViewer$2
     }
     if (i == 2)
     {
-      if ((TableQueryViewer.a(this.a)) || (Math.abs(paramMotionEvent.getY() - TableQueryViewer.a(this.a)) > DisplayUtil.a(paramView, 10.0F)))
+      if ((TableQueryViewer.b(this.a)) || (Math.abs(paramMotionEvent.getY() - TableQueryViewer.c(this.a)) > DisplayUtil.a(paramView, 10.0F)))
       {
         TableQueryViewer.a(this.a, true);
         paramMotionEvent = (WindowManager.LayoutParams)this.a.getLayoutParams();
-        paramMotionEvent.y = (j - TableQueryViewer.a(this.a) - DisplayUtil.a(paramView, 0.0F));
-        i = TableQueryViewer.a(this.a).getDefaultDisplay().getHeight();
+        paramMotionEvent.y = (j - TableQueryViewer.c(this.a) - DisplayUtil.a(paramView, 0.0F));
+        i = TableQueryViewer.d(this.a).getDefaultDisplay().getHeight();
         if (paramMotionEvent.y < 0) {
           paramMotionEvent.y = 0;
         } else if (paramMotionEvent.y > i - this.a.getHeight()) {
           paramMotionEvent.y = (i - this.a.getHeight());
         }
-        TableQueryViewer.a(this.a).updateViewLayout(TableQueryViewer.a(this.a), paramMotionEvent);
+        TableQueryViewer.d(this.a).updateViewLayout(TableQueryViewer.e(this.a), paramMotionEvent);
       }
       return true;
     }
@@ -46,7 +46,7 @@ class TableQueryViewer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryViewer.2
  * JD-Core Version:    0.7.0.1
  */

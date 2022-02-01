@@ -26,26 +26,26 @@ class MultiCardRecommendFragment$5
         }
         else
         {
-          MultiCardRecommendFragment.d(this.a);
+          MultiCardRecommendFragment.e(this.a);
         }
       }
       else
       {
         paramMessage = this.a;
-        MultiCardRecommendFragment.a(paramMessage, MultiCardRecommendFragment.b(paramMessage));
-        MultiCardRecommendFragment.e(this.a);
+        MultiCardRecommendFragment.a(paramMessage, MultiCardRecommendFragment.h(paramMessage));
+        MultiCardRecommendFragment.g(this.a);
       }
     }
     else
     {
-      MultiCardRecommendFragment.e(this.a);
+      MultiCardRecommendFragment.g(this.a);
       sendEmptyMessageDelayed(3, 500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRecommendFragment.5
  * JD-Core Version:    0.7.0.1
  */

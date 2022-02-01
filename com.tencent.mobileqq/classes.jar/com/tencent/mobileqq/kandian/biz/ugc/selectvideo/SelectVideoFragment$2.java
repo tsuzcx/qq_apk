@@ -1,27 +1,23 @@
 package com.tencent.mobileqq.kandian.biz.ugc.selectvideo;
 
-import android.support.v7.widget.RecyclerView;
-import com.tencent.mobileqq.kandian.biz.ugc.coverselect.LocalMediaGridAdapter;
-import com.tencent.mobileqq.kandian.biz.ugc.coverselect.UniversalItemDecoration;
-import com.tencent.mobileqq.kandian.biz.ugc.coverselect.UniversalItemDecoration.Decoration;
-import com.tencent.mobileqq.util.DisplayUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class SelectVideoFragment$2
-  extends UniversalItemDecoration
+  implements View.OnClickListener
 {
-  SelectVideoFragment$2(SelectVideoFragment paramSelectVideoFragment) {}
+  SelectVideoFragment$2(SelectVideoFragment paramSelectVideoFragment, boolean paramBoolean, Dialog paramDialog) {}
   
-  @Nullable
-  public UniversalItemDecoration.Decoration a(int paramInt, @NotNull RecyclerView paramRecyclerView)
+  public void onClick(View paramView)
   {
-    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, DisplayUtil.a(SelectVideoFragment.a(this.a), 8.0F));
+    SelectVideoFragment.c(this.c).a(this.a);
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectvideo.SelectVideoFragment.2
  * JD-Core Version:    0.7.0.1
  */

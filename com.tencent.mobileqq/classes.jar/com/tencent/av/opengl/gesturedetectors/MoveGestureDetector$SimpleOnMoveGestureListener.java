@@ -3,8 +3,6 @@ package com.tencent.av.opengl.gesturedetectors;
 public class MoveGestureDetector$SimpleOnMoveGestureListener
   implements MoveGestureDetector.OnMoveGestureListener
 {
-  public void a(MoveGestureDetector paramMoveGestureDetector) {}
-  
   public boolean a(MoveGestureDetector paramMoveGestureDetector)
   {
     return false;
@@ -14,6 +12,8 @@ public class MoveGestureDetector$SimpleOnMoveGestureListener
   {
     return true;
   }
+  
+  public void c(MoveGestureDetector paramMoveGestureDetector) {}
 }
 
 

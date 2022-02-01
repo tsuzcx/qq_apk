@@ -183,7 +183,7 @@ public class IndividualRedPacketJsPlugin
   {
     super.onCreate();
     this.mReqBundle = new Bundle();
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if ((localAppInterface instanceof BrowserAppInterface))
     {
       this.browserApp = ((BrowserAppInterface)localAppInterface);
@@ -244,7 +244,7 @@ public class IndividualRedPacketJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.IndividualRedPacketJsPlugin
  * JD-Core Version:    0.7.0.1
  */

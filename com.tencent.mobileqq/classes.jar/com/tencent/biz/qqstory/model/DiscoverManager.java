@@ -18,17 +18,7 @@ import java.util.List;
 public class DiscoverManager
   implements IManager
 {
-  private String a;
-  
-  public DiscoverManager()
-  {
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory:DiscoverManager";
-  }
-  
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
+  private String a = "Q.qqstory:DiscoverManager";
   
   public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
@@ -37,7 +27,7 @@ public class DiscoverManager
   
   private void a(CardItem paramCardItem)
   {
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = c().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     try
     {
@@ -54,7 +44,7 @@ public class DiscoverManager
         CardEntry localCardEntry2 = (CardEntry)paramCardItem.next();
         localCardEntry2.PBData = localCardEntry1.PBData;
         localEntityManager.update(localCardEntry2);
-        SLog.a(this.jdField_a_of_type_JavaLangString, "update db cardId=%s id=%d", localCardEntry2.cardId, Long.valueOf(localCardEntry2.getId()));
+        SLog.a(this.a, "update db cardId=%s id=%d", localCardEntry2.cardId, Long.valueOf(localCardEntry2.getId()));
       }
       localEntityManager.getTransaction().commit();
       localEntityManager.getTransaction().end();
@@ -70,9 +60,14 @@ public class DiscoverManager
     }
   }
   
+  private QQStoryContext c()
+  {
+    return QQStoryContext.a();
+  }
+  
   public DiscoverBannerVideoEntry a(String paramString)
   {
-    paramString = a(QQStoryContext.a().a().createEntityManager(), DiscoverBannerVideoEntry.class, DiscoverBannerVideoEntry.class.getSimpleName(), "bannerId=?", new String[] { paramString });
+    paramString = a(QQStoryContext.a().d().createEntityManager(), DiscoverBannerVideoEntry.class, DiscoverBannerVideoEntry.class.getSimpleName(), "bannerId=?", new String[] { paramString });
     if ((paramString != null) && (paramString.size() > 0)) {
       return (DiscoverBannerVideoEntry)paramString.get(0);
     }
@@ -83,27 +78,27 @@ public class DiscoverManager
   
   public void a(String paramString, GetDiscoverBannerVideoResponse paramGetDiscoverBannerVideoResponse)
   {
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = c().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     try
     {
-      if (paramGetDiscoverBannerVideoResponse.jdField_b_of_type_JavaUtilList.size() == paramGetDiscoverBannerVideoResponse.jdField_a_of_type_JavaUtilList.size())
+      if (paramGetDiscoverBannerVideoResponse.b.size() == paramGetDiscoverBannerVideoResponse.a.size())
       {
         DiscoverBannerVideoEntry localDiscoverBannerVideoEntry = new DiscoverBannerVideoEntry();
         localDiscoverBannerVideoEntry.bannerId = paramString;
-        localDiscoverBannerVideoEntry.totalCount = paramGetDiscoverBannerVideoResponse.jdField_b_of_type_Int;
-        paramString = new ArrayList(paramGetDiscoverBannerVideoResponse.jdField_b_of_type_JavaUtilList.size());
+        localDiscoverBannerVideoEntry.totalCount = paramGetDiscoverBannerVideoResponse.g;
+        paramString = new ArrayList(paramGetDiscoverBannerVideoResponse.b.size());
         int i = 0;
-        while (i < paramGetDiscoverBannerVideoResponse.jdField_b_of_type_JavaUtilList.size())
+        while (i < paramGetDiscoverBannerVideoResponse.b.size())
         {
           DiscoverBannerVideoEntry.BannerInfo localBannerInfo = new DiscoverBannerVideoEntry.BannerInfo();
-          localBannerInfo.b = ((String)paramGetDiscoverBannerVideoResponse.jdField_b_of_type_JavaUtilList.get(i));
-          localBannerInfo.jdField_a_of_type_JavaLangString = ((String)paramGetDiscoverBannerVideoResponse.jdField_a_of_type_JavaUtilList.get(i));
+          localBannerInfo.b = ((String)paramGetDiscoverBannerVideoResponse.b.get(i));
+          localBannerInfo.a = ((String)paramGetDiscoverBannerVideoResponse.a.get(i));
           paramString.add(localBannerInfo);
           i += 1;
         }
         localDiscoverBannerVideoEntry.bannerInfoList = paramString;
-        localDiscoverBannerVideoEntry.nextCookie = paramGetDiscoverBannerVideoResponse.jdField_a_of_type_JavaLangString;
+        localDiscoverBannerVideoEntry.nextCookie = paramGetDiscoverBannerVideoResponse.f;
         localEntityManager.persistOrReplace(localDiscoverBannerVideoEntry);
       }
       localEntityManager.getTransaction().commit();
@@ -124,7 +119,7 @@ public class DiscoverManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.DiscoverManager
  * JD-Core Version:    0.7.0.1
  */

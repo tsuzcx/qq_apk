@@ -26,29 +26,29 @@ public class FavoriteSearchResultPresenter
   
   public void b(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    paramISearchResultView.a().setMaxWidth(800);
+    paramISearchResultView.b().setMaxWidth(800);
     FavoriteSearchResultModel localFavoriteSearchResultModel = (FavoriteSearchResultModel)paramISearchResultModel;
-    ImageView localImageView = paramISearchResultView.b();
+    ImageView localImageView = paramISearchResultView.g();
     localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
+    if ((5 != localFavoriteSearchResultModel.n) && (!localFavoriteSearchResultModel.o))
     {
       localImageView.setImageDrawable(null);
       localImageView.setBackgroundDrawable(null);
     }
     else
     {
-      localImageView.setImageResource(2130844218);
+      localImageView.setImageResource(2130845535);
     }
-    if (localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString != null)
+    if (localFavoriteSearchResultModel.j != null)
     {
       paramISearchResultModel = URLDrawable.URLDrawableOptions.obtain();
-      paramISearchResultModel.mRequestHeight = paramISearchResultView.b().getHeight();
-      paramISearchResultModel.mRequestWidth = paramISearchResultView.b().getWidth();
-      if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
+      paramISearchResultModel.mRequestHeight = paramISearchResultView.g().getHeight();
+      paramISearchResultModel.mRequestWidth = paramISearchResultView.g().getWidth();
+      if ((5 != localFavoriteSearchResultModel.n) && (!localFavoriteSearchResultModel.o))
       {
         try
         {
-          localImageView.setImageDrawable(URLDrawable.getDrawable(localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString, paramISearchResultModel));
+          localImageView.setImageDrawable(URLDrawable.getDrawable(localFavoriteSearchResultModel.j, paramISearchResultModel));
           return;
         }
         catch (Exception paramISearchResultModel)
@@ -64,33 +64,33 @@ public class FavoriteSearchResultPresenter
       }
       else
       {
-        localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString, paramISearchResultModel));
+        localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localFavoriteSearchResultModel.j, paramISearchResultModel));
       }
     }
     else
     {
-      if (localFavoriteSearchResultModel.jdField_d_of_type_Int != 0)
+      if (localFavoriteSearchResultModel.k != 0)
       {
-        if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
+        if ((5 != localFavoriteSearchResultModel.n) && (!localFavoriteSearchResultModel.o))
         {
-          localImageView.setImageResource(localFavoriteSearchResultModel.jdField_d_of_type_Int);
+          localImageView.setImageResource(localFavoriteSearchResultModel.k);
           return;
         }
-        localImageView.setBackgroundResource(localFavoriteSearchResultModel.jdField_d_of_type_Int);
+        localImageView.setBackgroundResource(localFavoriteSearchResultModel.k);
         return;
       }
-      if (localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte != null)
+      if (localFavoriteSearchResultModel.l != null)
       {
         this.a.inJustDecodeBounds = true;
-        BitmapFactory.decodeByteArray(localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte, 0, localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte.length, this.a);
+        BitmapFactory.decodeByteArray(localFavoriteSearchResultModel.l, 0, localFavoriteSearchResultModel.l.length, this.a);
         paramISearchResultModel = this.a;
         paramISearchResultModel.inJustDecodeBounds = false;
-        paramISearchResultModel.inSampleSize = (paramISearchResultModel.outWidth / paramISearchResultView.b().getMeasuredWidth());
+        paramISearchResultModel.inSampleSize = (paramISearchResultModel.outWidth / paramISearchResultView.g().getMeasuredWidth());
       }
     }
     try
     {
-      paramISearchResultModel = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte, 0, localFavoriteSearchResultModel.jdField_a_of_type_ArrayOfByte.length, this.a));
+      paramISearchResultModel = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localFavoriteSearchResultModel.l, 0, localFavoriteSearchResultModel.l.length, this.a));
     }
     catch (OutOfMemoryError paramISearchResultModel)
     {
@@ -99,7 +99,7 @@ public class FavoriteSearchResultPresenter
       break label333;
     }
     paramISearchResultModel = null;
-    if ((5 != localFavoriteSearchResultModel.f) && (!localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
+    if ((5 != localFavoriteSearchResultModel.n) && (!localFavoriteSearchResultModel.o))
     {
       localImageView.setImageDrawable(paramISearchResultModel);
       return;
@@ -111,7 +111,7 @@ public class FavoriteSearchResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

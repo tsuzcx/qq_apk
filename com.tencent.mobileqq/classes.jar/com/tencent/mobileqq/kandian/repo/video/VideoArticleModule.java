@@ -42,16 +42,16 @@ public class VideoArticleModule
   extends ReadInJoyEngineModule
 {
   public static final String a = "VideoArticleModule";
-  private SparseArray<CopyOnWriteArrayList<WeiShiVideoArticleInfo>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-  private IFindRemovedEntity<WeiShiVideoArticleInfo> jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity = new VideoArticleModule.1(this);
-  private LinkedHashMap<Integer, ConcurrentHashMap<Long, WeiShiVideoArticleInfo>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private SparseArray<HashSet<Long>> b = new SparseArray();
+  private LinkedHashMap<Integer, ConcurrentHashMap<Long, WeiShiVideoArticleInfo>> b = new LinkedHashMap();
+  private SparseArray<CopyOnWriteArrayList<WeiShiVideoArticleInfo>> c = new SparseArray();
+  private SparseArray<HashSet<Long>> d = new SparseArray();
+  private SparseBooleanArray e = new SparseBooleanArray();
+  private IFindRemovedEntity<WeiShiVideoArticleInfo> f = new VideoArticleModule.1(this);
   
   public VideoArticleModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    registerEntityFinder(WeiShiVideoArticleInfo.class, this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity);
+    registerEntityFinder(WeiShiVideoArticleInfo.class, this.f);
   }
   
   private void a(int paramInt, BaseVideoArticleInfo paramBaseVideoArticleInfo)
@@ -70,7 +70,7 @@ public class VideoArticleModule
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("request error, proto:");
       localStringBuilder.append(paramToServiceMsg.getServiceCmd());
@@ -131,7 +131,7 @@ public class VideoArticleModule
       {
         if (QLog.isColorLevel())
         {
-          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = a;
           paramObject = new StringBuilder();
           paramObject.append("handle0xbedGetWeiShiVideoArticleInfoList re-request:");
           paramObject.append(k);
@@ -158,7 +158,7 @@ public class VideoArticleModule
   
   private void a(Integer paramInteger, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo)
   {
-    paramInteger = (CopyOnWriteArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInteger.intValue());
+    paramInteger = (CopyOnWriteArrayList)this.c.get(paramInteger.intValue());
     if (paramInteger != null) {
       paramInteger.remove(paramWeiShiVideoArticleInfo);
     }
@@ -193,19 +193,19 @@ public class VideoArticleModule
     if (paramWeiShiVideoArticleInfo == null) {
       return false;
     }
-    Object localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramInteger);
+    Object localObject2 = (ConcurrentHashMap)this.b.get(paramInteger);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ConcurrentHashMap();
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramInteger, localObject1);
+      this.b.put(paramInteger, localObject1);
     }
     int j;
     if (((ConcurrentHashMap)localObject1).get(Long.valueOf(paramWeiShiVideoArticleInfo.recommendSeq)) != null)
     {
       if (QLog.isColorLevel())
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("saveArticleInfo, article seq duplicated, article channelID=");
         ((StringBuilder)localObject2).append(paramInteger);
@@ -223,12 +223,12 @@ public class VideoArticleModule
     }
     else
     {
-      Object localObject3 = (HashSet)this.b.get(paramInteger.intValue());
+      Object localObject3 = (HashSet)this.d.get(paramInteger.intValue());
       localObject2 = localObject3;
       if (localObject3 == null)
       {
         localObject2 = new HashSet();
-        this.b.put(paramInteger.intValue(), localObject2);
+        this.d.put(paramInteger.intValue(), localObject2);
       }
       if (!((HashSet)localObject2).contains(Long.valueOf(paramWeiShiVideoArticleInfo.articleID)))
       {
@@ -237,10 +237,10 @@ public class VideoArticleModule
       }
       else
       {
-        this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(paramInteger.intValue(), true);
+        this.e.put(paramInteger.intValue(), true);
         if (QLog.isColorLevel())
         {
-          localObject2 = jdField_a_of_type_JavaLangString;
+          localObject2 = a;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("saveArticleInfo, article articleID duplicated, article channelID=");
           ((StringBuilder)localObject3).append(paramInteger);
@@ -294,7 +294,7 @@ public class VideoArticleModule
       StringBuilder localStringBuilder;
       if (!localHashSet1.add(Long.valueOf(localWeiShiVideoArticleInfo.articleID)))
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("loadChannelArticleSeqList articleID duplicated, channelID = ");
         localStringBuilder.append(paramInt1);
@@ -306,7 +306,7 @@ public class VideoArticleModule
       }
       else if (!localHashSet2.add(Long.valueOf(localWeiShiVideoArticleInfo.recommendSeq)))
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("loadChannelArticleSeqList articleRecommendSeq duplicated, channelID = ");
         localStringBuilder.append(paramInt1);
@@ -329,11 +329,11 @@ public class VideoArticleModule
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       paramToServiceMsg = new CopyOnWriteArrayList(paramList);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramToServiceMsg);
+      this.c.put(paramInt, paramToServiceMsg);
     }
     else
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+      this.c.remove(paramInt);
     }
     if (paramBoolean1)
     {
@@ -368,7 +368,7 @@ public class VideoArticleModule
     {
       if (QLog.isColorLevel())
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("loadChannelArticleSeqList mEntityManager.query return empty,with selection=");
         ((StringBuilder)localObject2).append(str);
@@ -384,7 +384,7 @@ public class VideoArticleModule
     }
     else if (QLog.isColorLevel())
     {
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("loadChannelArticleSeqList mEntityManager.query size: ");
       ((StringBuilder)localObject3).append(((List)localObject1).size());
@@ -422,7 +422,7 @@ public class VideoArticleModule
           if (((WeiShiVideoArticleInfo)localObject3).videoData == null) {
             str = "";
           } else {
-            str = ((WeiShiVideoArticleInfo)localObject3).videoData.jdField_a_of_type_JavaLangString;
+            str = ((WeiShiVideoArticleInfo)localObject3).videoData.e;
           }
           localStringBuilder.append(str);
           localStringBuilder.append(" feedsType : ");
@@ -432,7 +432,7 @@ public class VideoArticleModule
           paramInt2 += 1;
         }
       }
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("loadFromDb return article list: channelId=");
       ((StringBuilder)localObject2).append(paramInt1);
@@ -445,7 +445,7 @@ public class VideoArticleModule
   
   public List<WeiShiVideoArticleInfo> a(Integer paramInteger)
   {
-    paramInteger = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramInteger);
+    paramInteger = (ConcurrentHashMap)this.b.get(paramInteger);
     if ((paramInteger != null) && (paramInteger.size() != 0))
     {
       ArrayList localArrayList = new ArrayList(paramInteger.size());
@@ -463,7 +463,7 @@ public class VideoArticleModule
   {
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("deleteChannelOutdatedArticle, channelID:");
       ((StringBuilder)localObject2).append(paramInt1);
@@ -473,7 +473,7 @@ public class VideoArticleModule
       ((StringBuilder)localObject2).append(paramInt2);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    Object localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
+    Object localObject2 = (ConcurrentHashMap)this.b.get(Integer.valueOf(paramInt1));
     if (localObject2 == null) {
       return;
     }
@@ -510,7 +510,7 @@ public class VideoArticleModule
     }
     localObject2 = b(Integer.valueOf(paramInt1));
     this.mMainThreadHandler.post(new VideoArticleModule.9(this, paramInt1, (List)localObject2));
-    localObject2 = jdField_a_of_type_JavaLangString;
+    localObject2 = a;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("delete outdated article cache , cnt ");
     ((StringBuilder)localObject3).append(((ArrayList)localObject1).size());
@@ -548,7 +548,7 @@ public class VideoArticleModule
         WeiShiVideoArticleInfo localWeiShiVideoArticleInfo = (WeiShiVideoArticleInfo)((Iterator)localObject).next();
         if (!localHashSet.add(Long.valueOf(localWeiShiVideoArticleInfo.articleID)))
         {
-          String str = jdField_a_of_type_JavaLangString;
+          String str = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getChannelArticleSeqList 有重复文章， channelID = ");
           localStringBuilder.append(paramInteger);
@@ -577,15 +577,15 @@ public class VideoArticleModule
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.c.clear();
     this.b.clear();
-    this.jdField_a_of_type_AndroidUtilSparseBooleanArray.clear();
+    this.d.clear();
+    this.e.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.VideoArticleModule
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ public final class NewerGuideBannerPreloadWebProcessConfigProcessor$Companion
 {
   public final boolean a()
   {
-    Object localObject = QConfigManager.a().a(699);
+    Object localObject = QConfigManager.b().b(699);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
     return ((NewerGuideBannerPreloadWebProcessConfigProcessor.Config)localObject).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerPreloadWebProcessConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -7,19 +7,9 @@ import io.flutter.plugin.common.MethodCodec;
 public class ExpandConfigChannel
   extends ExpandBaseChannel
 {
-  public MethodCodec a()
-  {
-    return ExpandConfigChannelHandler.a;
-  }
-  
   public String a()
   {
     return "com.tencent.qflutter/expand/method.config";
-  }
-  
-  public void a()
-  {
-    super.a();
   }
   
   protected void a(@NonNull MethodCall paramMethodCall, @NonNull ExpandBaseChannel.MethodChannelResultWrapper paramMethodChannelResultWrapper)
@@ -27,14 +17,24 @@ public class ExpandConfigChannel
     new ExpandConfigChannelHandler().onMethodCall(paramMethodCall, paramMethodChannelResultWrapper);
   }
   
-  protected String c()
+  public MethodCodec b()
+  {
+    return ExpandConfigChannelHandler.a;
+  }
+  
+  public void f()
+  {
+    super.f();
+  }
+  
+  protected String g()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.ExpandConfigChannel
  * JD-Core Version:    0.7.0.1
  */

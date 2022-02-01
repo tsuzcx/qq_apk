@@ -7,41 +7,41 @@ import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 
 class OnLinePushMessageProcessor$HandleShMsgTypeSystemMessage
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  private long b;
+  private MsgInfo c;
+  private int d;
+  private int e;
+  private long f;
   
   public OnLinePushMessageProcessor$HandleShMsgTypeSystemMessage(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, long paramLong, MsgInfo paramMsgInfo, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong;
+    this.c = paramMsgInfo;
+    this.d = paramInt;
   }
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
+    return this.e;
   }
   
-  public long a()
+  public long b()
   {
-    return this.jdField_b_of_type_Long;
+    return this.f;
   }
   
-  public HandleShMsgTypeSystemMessage a()
+  public HandleShMsgTypeSystemMessage c()
   {
-    ((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a).getMsgHandler().a().a(2);
-    this.jdField_b_of_type_Long = 9998L;
-    this.jdField_b_of_type_Int = (-1006 - (this.jdField_a_of_type_Int - 187));
-    ((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a).getMsgHandler().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_OnlinePushPackMsgInfo.shMsgSeq);
+    ((QQAppInterface)this.a.q).getMsgHandler().B().a(2);
+    this.f = 9998L;
+    this.e = (-1006 - (this.d - 187));
+    ((QQAppInterface)this.a.q).getMsgHandler().B().a(this.b, this.c.lFromUin, this.d, this.e, this.c.uMsgTime, this.c.shMsgSeq);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.OnLinePushMessageProcessor.HandleShMsgTypeSystemMessage
  * JD-Core Version:    0.7.0.1
  */

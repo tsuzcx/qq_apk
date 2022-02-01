@@ -10,22 +10,22 @@ public final class RIJWebArticleUtilImpl
 {
   public boolean isSupportWebViewAnimation()
   {
-    return RIJWebArticleUtil.a.d();
+    return RIJWebArticleUtil.a.e();
   }
   
   public boolean isSupportWebViewReuse()
   {
-    return RIJWebArticleUtil.a.b();
+    return RIJWebArticleUtil.a.c();
   }
   
   public boolean isSupportWebViewVasSonic()
   {
-    return RIJWebArticleUtil.a.c();
+    return RIJWebArticleUtil.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.api.impl.RIJWebArticleUtilImpl
  * JD-Core Version:    0.7.0.1
  */

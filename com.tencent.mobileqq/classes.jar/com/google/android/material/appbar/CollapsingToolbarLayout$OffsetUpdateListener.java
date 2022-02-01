@@ -14,10 +14,10 @@ class CollapsingToolbarLayout$OffsetUpdateListener
   public void a(AppBarLayout paramAppBarLayout, int paramInt)
   {
     paramAppBarLayout = this.a;
-    paramAppBarLayout.jdField_a_of_type_Int = paramInt;
+    paramAppBarLayout.c = paramInt;
     int i;
-    if (paramAppBarLayout.jdField_a_of_type_AndroidxCoreViewWindowInsetsCompat != null) {
-      i = this.a.jdField_a_of_type_AndroidxCoreViewWindowInsetsCompat.getSystemWindowInsetTop();
+    if (paramAppBarLayout.d != null) {
+      i = this.a.d.getSystemWindowInsetTop();
     } else {
       i = 0;
     }
@@ -28,30 +28,30 @@ class CollapsingToolbarLayout$OffsetUpdateListener
       paramAppBarLayout = this.a.getChildAt(j);
       CollapsingToolbarLayout.LayoutParams localLayoutParams = (CollapsingToolbarLayout.LayoutParams)paramAppBarLayout.getLayoutParams();
       ViewOffsetHelper localViewOffsetHelper = CollapsingToolbarLayout.a(paramAppBarLayout);
-      int m = localLayoutParams.jdField_a_of_type_Int;
+      int m = localLayoutParams.a;
       if (m != 1)
       {
         if (m == 2) {
-          localViewOffsetHelper.a(Math.round(-paramInt * localLayoutParams.jdField_a_of_type_Float));
+          localViewOffsetHelper.a(Math.round(-paramInt * localLayoutParams.b));
         }
       }
       else {
-        localViewOffsetHelper.a(MathUtils.clamp(-paramInt, 0, this.a.a(paramAppBarLayout)));
+        localViewOffsetHelper.a(MathUtils.clamp(-paramInt, 0, this.a.b(paramAppBarLayout)));
       }
       j += 1;
     }
-    this.a.a();
-    if ((this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (i > 0)) {
+    this.a.b();
+    if ((this.a.b != null) && (i > 0)) {
       ViewCompat.postInvalidateOnAnimation(this.a);
     }
     j = this.a.getHeight();
     k = ViewCompat.getMinimumHeight(this.a);
-    this.a.jdField_a_of_type_ComGoogleAndroidMaterialInternalCollapsingTextHelper.b(Math.abs(paramInt) / (j - k - i));
+    this.a.a.b(Math.abs(paramInt) / (j - k - i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.CollapsingToolbarLayout.OffsetUpdateListener
  * JD-Core Version:    0.7.0.1
  */

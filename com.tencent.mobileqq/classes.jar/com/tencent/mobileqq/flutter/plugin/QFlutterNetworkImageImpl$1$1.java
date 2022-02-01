@@ -10,12 +10,12 @@ class QFlutterNetworkImageImpl$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFlutterPluginQFlutterNetworkImageImpl$1.a.onLoaded(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.a.onLoaded(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterNetworkImageImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

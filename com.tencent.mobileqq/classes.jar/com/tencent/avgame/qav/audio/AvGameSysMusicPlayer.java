@@ -13,44 +13,39 @@ public class AvGameSysMusicPlayer
   implements IGameEffectPlayer
 {
   protected AVGameUIEventCallback a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private String c;
   
   public static AvGameSysMusicPlayer a()
   {
     return AvGameSysMusicPlayer.Holder.a();
   }
   
-  private void d()
+  private void e()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     QLog.d("AvGameSysMusicPlayer", 1, "[initIfNeeded]");
-    if (!AVSoundHelper.a()) {
+    if (!AVSoundHelper.c()) {
       AVSoundHelper.a();
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = AvGameResDownloadUtil.b();
+    if (TextUtils.isEmpty(this.c)) {
+      this.c = AvGameResDownloadUtil.b();
     }
-    this.jdField_a_of_type_ComTencentAvgameCallbackAVGameUIEventCallback = new AvGameSysMusicPlayer.1(this);
-    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.a();
+    this.a = new AvGameSysMusicPlayer.1(this);
+    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.p();
     if (localIAVGameBusinessCtrl != null) {
-      localIAVGameBusinessCtrl.a(this.jdField_a_of_type_ComTencentAvgameCallbackAVGameUIEventCallback);
+      localIAVGameBusinessCtrl.a(this.a);
     }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a()
-  {
-    d();
+    this.b = true;
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.c)) {
         return;
       }
       Object localObject1;
@@ -58,7 +53,7 @@ public class AvGameSysMusicPlayer
       if (((paramInt == 2) || (paramInt == 5)) && (paramBoolean))
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.c);
         ((StringBuilder)localObject1).append("cj_bg");
         ((StringBuilder)localObject1).append(".mp3");
         localObject2 = ((StringBuilder)localObject1).toString();
@@ -67,10 +62,10 @@ public class AvGameSysMusicPlayer
       }
       else
       {
-        localObject1 = AvGameMusicPlayer.a(paramInt);
+        localObject1 = AvGameMusicPlayer.d(paramInt);
         AvGameMusicPlayer.a((String)localObject1);
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.c);
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append(".mp3");
         localObject1 = ((StringBuilder)localObject2).toString();
@@ -82,15 +77,15 @@ public class AvGameSysMusicPlayer
   
   public void a(ITopic paramITopic, String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    String str = AvGameMusicPlayer.a(paramITopic, paramString);
+    String str = AvGameMusicPlayer.b(paramITopic, paramString);
     paramITopic = str;
     if (TextUtils.isEmpty(str))
     {
       paramITopic = new StringBuilder();
-      paramITopic.append(this.jdField_a_of_type_JavaLangString);
+      paramITopic.append(this.c);
       paramITopic.append(paramString);
       paramITopic.append(".mp3");
       paramITopic = paramITopic.toString();
@@ -101,26 +96,31 @@ public class AvGameSysMusicPlayer
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    QLog.d("AvGameSysMusicPlayer", 1, "[stopPlay]");
-    AVSoundHelper.f();
-    AVSoundHelper.e();
+    e();
   }
   
   public void c()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
+      return;
+    }
+    QLog.d("AvGameSysMusicPlayer", 1, "[stopPlay]");
+    AVSoundHelper.g();
+    AVSoundHelper.f();
+  }
+  
+  public void d()
+  {
+    if (!this.b) {
       return;
     }
     QLog.d("AvGameSysMusicPlayer", 1, "[destroy]");
     AVSoundHelper.b();
-    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.a();
+    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.p();
     if (localIAVGameBusinessCtrl != null) {
-      localIAVGameBusinessCtrl.b(this.jdField_a_of_type_ComTencentAvgameCallbackAVGameUIEventCallback);
+      localIAVGameBusinessCtrl.b(this.a);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
 }
 

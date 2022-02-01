@@ -4,7 +4,7 @@ import com.qwallet.temp.IAIOAnimationControlManager;
 import com.qwallet.temp.IAnimationMessageProxy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -58,13 +58,13 @@ public class AIOAnimationControlManagerImpl
   {
     AIOAnimationControlManager localAIOAnimationControlManager = getManager();
     if (localAIOAnimationControlManager != null) {
-      localAIOAnimationControlManager.a(paramString);
+      localAIOAnimationControlManager.b(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.AIOAnimationControlManagerImpl
  * JD-Core Version:    0.7.0.1
  */

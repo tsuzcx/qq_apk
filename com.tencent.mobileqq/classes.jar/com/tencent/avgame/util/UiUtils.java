@@ -10,7 +10,7 @@ public class UiUtils
 {
   public static int a()
   {
-    return (int)(ViewUtils.a() * 0.64F);
+    return (int)(ViewUtils.getScreenWidth() * 0.64F);
   }
   
   public static int a(TextView paramTextView)
@@ -25,17 +25,17 @@ public class UiUtils
   
   public static int b()
   {
-    return (int)(ViewUtils.a() * 0.045F);
+    return (int)(ViewUtils.getScreenWidth() * 0.045F);
   }
   
   public static int c()
   {
-    return (int)(ViewUtils.a() * 0.058F);
+    return (int)(ViewUtils.getScreenWidth() * 0.058F);
   }
   
   public static int d()
   {
-    return (int)(ViewUtils.a() * 0.048F);
+    return (int)(ViewUtils.getScreenWidth() * 0.048F);
   }
 }
 

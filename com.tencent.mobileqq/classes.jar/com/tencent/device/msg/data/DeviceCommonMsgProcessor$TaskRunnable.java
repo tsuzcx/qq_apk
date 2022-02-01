@@ -15,12 +15,12 @@ class DeviceCommonMsgProcessor$TaskRunnable
   implements Runnable
 {
   public Session a;
-  public boolean a;
+  public boolean b;
   
   public DeviceCommonMsgProcessor$TaskRunnable(Session paramSession, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkSession = paramSession;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramSession;
+    this.b = paramBoolean;
   }
   
   public void a()
@@ -30,7 +30,7 @@ class DeviceCommonMsgProcessor$TaskRunnable
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentLitetransfersdkSession;
+    Object localObject1 = this.a;
     int i;
     if (localObject1 != null)
     {
@@ -40,7 +40,7 @@ class DeviceCommonMsgProcessor$TaskRunnable
       localObject1 = null;
       try
       {
-        JSONArray localJSONArray = new JSONObject(new String(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.vServiceInfo)).getJSONArray("datapoint");
+        JSONArray localJSONArray = new JSONObject(new String(this.a.actionInfo.vServiceInfo)).getJSONArray("datapoint");
         localObject1 = localJSONArray;
       }
       catch (Exception localException1)
@@ -65,14 +65,14 @@ class DeviceCommonMsgProcessor$TaskRunnable
         DataPoint localDataPoint = new DataPoint(((JSONObject)localObject2).optString("apiName"), ((JSONObject)localObject2).optInt("id"), ((JSONObject)localObject2).optString("type"), ((JSONObject)localObject2).optString("value"));
         localDataPoint.mSeq = ((JSONObject)localObject2).optString("seq", "0");
         localDataPoint.mDin = ((JSONObject)localObject2).optLong("din");
-        if (((DeviceMsgHandle.d.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (DeviceMsgHandle.e.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (DeviceMsgHandle.h.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName))) && (!TextUtils.isEmpty(localDataPoint.mValue)))
+        if (((DeviceMsgHandle.d.equalsIgnoreCase(this.a.actionInfo.strServiceName)) || (DeviceMsgHandle.e.equalsIgnoreCase(this.a.actionInfo.strServiceName)) || (DeviceMsgHandle.h.equalsIgnoreCase(this.a.actionInfo.strServiceName))) && (!TextUtils.isEmpty(localDataPoint.mValue)))
         {
           Object localObject3 = new DeviceCommonMsgProcessor.KeyValue();
           ((DeviceCommonMsgProcessor.KeyValue)localObject3).a = "path";
           ((DeviceCommonMsgProcessor.KeyValue)localObject3).b = localDataPoint.mValue;
           DeviceCommonMsgProcessor.KeyValue localKeyValue = new DeviceCommonMsgProcessor.KeyValue();
           localKeyValue.a = "ret";
-          if (!this.jdField_a_of_type_Boolean) {
+          if (!this.b) {
             break label372;
           }
           localObject2 = "0";
@@ -100,7 +100,7 @@ class DeviceCommonMsgProcessor$TaskRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceCommonMsgProcessor.TaskRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -28,25 +28,25 @@ class AntiFraudConfigFileUtil$4
       localObject2 = SecUtil.getFileMd5(((File)localObject1).getAbsolutePath());
       if (!this.c.equalsIgnoreCase((String)localObject2))
       {
-        AntiFraudConfigFileUtil.b(this.this$0).putInt(this.c, 2);
+        AntiFraudConfigFileUtil.c(this.this$0).putInt(this.c, 2);
         return;
       }
       if (((File)localObject1).renameTo(localFile))
       {
-        AntiFraudConfigFileUtil.b(this.this$0).putInt(this.c, 3);
+        AntiFraudConfigFileUtil.c(this.this$0).putInt(this.c, 3);
         this.this$0.a(this.a, System.currentTimeMillis());
-        this.this$0.a(this.a, this.c);
+        this.this$0.b(this.a, this.c);
         AntiFraudConfigFileUtil.b(this.this$0, str);
         return;
       }
-      AntiFraudConfigFileUtil.b(this.this$0).putInt(this.c, 2);
+      AntiFraudConfigFileUtil.c(this.this$0).putInt(this.c, 2);
       ((File)localObject1).delete();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AntiFraudConfigFileUtil.4
  * JD-Core Version:    0.7.0.1
  */

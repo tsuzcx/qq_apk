@@ -21,12 +21,12 @@ class EmoticonGroupStoreFragment$10
       ((EmoticonFromGroupEntity)localIterator.next()).status = -1;
     }
     this.a.a.clear();
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
-    EmoticonGroupStoreFragment.a(this.a).a = false;
-    EmoticonGroupStoreFragment.a(this.a).a(false);
-    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.e(this.a);
+    EmoticonGroupStoreFragment.r(this.a).setVisibility(8);
+    EmoticonGroupStoreFragment.s(this.a).setVisibility(0);
+    EmoticonGroupStoreFragment.g(this.a).a = false;
+    EmoticonGroupStoreFragment.g(this.a).a(false);
+    EmoticonGroupStoreFragment.g(this.a).notifyDataSetChanged();
+    EmoticonGroupStoreFragment.t(this.a);
     this.a.a(true);
     this.a.resetLeftButton();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -34,7 +34,7 @@ class EmoticonGroupStoreFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.10
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class o
 {
-  private static o jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAO = new o();
-  private Map<Runnable, TimerTask> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Timer jdField_a_of_type_JavaUtilTimer;
+  private static o a = new o();
+  private Timer b;
+  private Map<Runnable, TimerTask> c = new ConcurrentHashMap();
   
   private o()
   {
@@ -18,12 +18,12 @@ public final class o
     localStringBuilder.append(a.c());
     localStringBuilder.append("_");
     localStringBuilder.append("ConnectionTimer");
-    this.jdField_a_of_type_JavaUtilTimer = new Timer(localStringBuilder.toString(), true);
+    this.b = new Timer(localStringBuilder.toString(), true);
   }
   
   public static o a()
   {
-    return jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAO;
+    return a;
   }
   
   private void a(Runnable paramRunnable, boolean paramBoolean, long paramLong)
@@ -33,11 +33,11 @@ public final class o
       a(paramRunnable);
       p localp = new p(this, paramRunnable);
       if (paramBoolean) {
-        this.jdField_a_of_type_JavaUtilTimer.schedule(localp, paramLong, paramLong);
+        this.b.schedule(localp, paramLong, paramLong);
       } else {
-        this.jdField_a_of_type_JavaUtilTimer.schedule(localp, paramLong);
+        this.b.schedule(localp, paramLong);
       }
-      this.jdField_a_of_type_JavaUtilMap.put(paramRunnable, localp);
+      this.c.put(paramRunnable, localp);
       return;
     }
     finally {}
@@ -52,10 +52,10 @@ public final class o
   {
     try
     {
-      TimerTask localTimerTask = (TimerTask)this.jdField_a_of_type_JavaUtilMap.get(paramRunnable);
+      TimerTask localTimerTask = (TimerTask)this.c.get(paramRunnable);
       if (localTimerTask != null)
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramRunnable);
+        this.c.remove(paramRunnable);
         boolean bool = localTimerTask.cancel();
         return bool;
       }
@@ -71,7 +71,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.o
  * JD-Core Version:    0.7.0.1
  */

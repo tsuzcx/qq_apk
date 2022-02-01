@@ -66,14 +66,14 @@ public class FileManagerUtilImpl
       if (".pdf|".indexOf(paramString) >= 0) {
         return "PDF";
       }
-      return HardCodeUtil.a(2131692586);
+      return HardCodeUtil.a(2131889609);
     }
-    return HardCodeUtil.a(2131692586);
+    return HardCodeUtil.a(2131889609);
   }
   
   private String getGroupName(String paramString, int paramInt)
   {
-    String str = HardCodeUtil.a(2131692586);
+    String str = HardCodeUtil.a(2131889609);
     if (paramInt != 3)
     {
       if (paramInt != 11) {
@@ -90,27 +90,27 @@ public class FileManagerUtilImpl
     {
       paramString = paramString.toLowerCase();
       if (".rar|.zip|.7z|.iso|.tar|.gz|".indexOf(paramString) >= 0) {
-        return HardCodeUtil.a(2131692590);
+        return HardCodeUtil.a(2131889613);
       }
       if (".txt|.html|.lit|.wdl|.ceb|.pdg|.epub|.caj|.umd|.jar|.mobi|".indexOf(paramString) >= 0) {
-        return HardCodeUtil.a(2131692588);
+        return HardCodeUtil.a(2131889611);
       }
       if (".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|".indexOf(paramString) >= 0) {
-        return HardCodeUtil.a(2131692585);
+        return HardCodeUtil.a(2131889608);
       }
-      return HardCodeUtil.a(2131692583);
+      return HardCodeUtil.a(2131889606);
     }
-    return HardCodeUtil.a(2131692583);
+    return HardCodeUtil.a(2131889606);
   }
   
   public void addCloseButtonSessionId(long paramLong)
   {
-    QQFileManagerUtilImpl.a(paramLong);
+    QQFileManagerUtilImpl.b(paramLong);
   }
   
   public int addExternalFileToFMRecv(String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramString);
+    return QQFileManagerUtilImpl.d(paramString);
   }
   
   public void addShortcut(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt)
@@ -120,7 +120,7 @@ public class FileManagerUtilImpl
   
   public void associateLocalWithCloud(FileManagerEntity paramFileManagerEntity)
   {
-    QQFileManagerUtilImpl.a(paramFileManagerEntity);
+    QQFileManagerUtilImpl.d(paramFileManagerEntity);
   }
   
   public boolean bShowFlowDlg(boolean paramBoolean, ArrayList<FileManagerEntity> paramArrayList)
@@ -130,7 +130,7 @@ public class FileManagerUtilImpl
   
   public boolean bZip(int paramInt)
   {
-    return QQFileManagerUtilImpl.a(paramInt);
+    return QQFileManagerUtilImpl.h(paramInt);
   }
   
   public String binToHEX(ByteStringMicro paramByteStringMicro)
@@ -150,7 +150,7 @@ public class FileManagerUtilImpl
   
   public boolean canCreateThumb(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.f(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.r(paramFileManagerEntity);
   }
   
   public boolean canPreview(Context paramContext, String paramString, long paramLong)
@@ -160,12 +160,12 @@ public class FileManagerUtilImpl
   
   public int chechFileType(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.b(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.m(paramFileManagerEntity);
   }
   
   public int chechZipFileType(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.c(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.n(paramFileManagerEntity);
   }
   
   public void checkFileExisted(FileManagerEntity paramFileManagerEntity, BaseQQAppInterface paramBaseQQAppInterface, QQFileManagerUtil.CheckResult paramCheckResult)
@@ -182,12 +182,12 @@ public class FileManagerUtilImpl
   
   public void clearRememberPicSelectForQlink(Context paramContext)
   {
-    QQFileManagerUtilImpl.a(paramContext);
+    QQFileManagerUtilImpl.b(paramContext);
   }
   
   public void correctFileInfo(FileManagerEntity paramFileManagerEntity)
   {
-    QQFileManagerUtilImpl.b(paramFileManagerEntity);
+    QQFileManagerUtilImpl.e(paramFileManagerEntity);
   }
   
   public FileManagerEntity createFileRecordForMultiMsg(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage)
@@ -197,7 +197,7 @@ public class FileManagerUtilImpl
   
   public void createMediThumbnail(FileManagerEntity paramFileManagerEntity)
   {
-    QQFileManagerUtilImpl.c(paramFileManagerEntity);
+    QQFileManagerUtilImpl.o(paramFileManagerEntity);
   }
   
   public String createMediaThumbnail(String paramString, int paramInt1, int paramInt2, QQFileManagerUtil.IThumbResult paramIThumbResult)
@@ -207,22 +207,22 @@ public class FileManagerUtilImpl
   
   public String createVideoThumbPath(String paramString)
   {
-    return QQFileManagerUtilImpl.f(paramString);
+    return QQFileManagerUtilImpl.v(paramString);
   }
   
   public String cutLongLongFileName(String paramString, int paramInt)
   {
-    return QQFileManagerUtilImpl.a(paramString, paramInt);
+    return QQFileManagerUtilImpl.b(paramString, paramInt);
   }
   
   public String cutLongName(String paramString)
   {
-    return QQFileManagerUtilImpl.d(paramString);
+    return QQFileManagerUtilImpl.q(paramString);
   }
   
   public void dealWithErrCode(String paramString)
   {
-    QQFileManagerUtilImpl.a(paramString);
+    QQFileManagerUtilImpl.p(paramString);
   }
   
   public boolean dealWithErrCode(int paramInt, String paramString)
@@ -232,7 +232,7 @@ public class FileManagerUtilImpl
   
   public void dealWithErrCodeById(int paramInt)
   {
-    QQFileManagerUtilImpl.a(paramInt);
+    QQFileManagerUtilImpl.e(paramInt);
   }
   
   public void dealWithTransFileFaild(long paramLong, int paramInt, String paramString)
@@ -242,17 +242,17 @@ public class FileManagerUtilImpl
   
   public void dealWithTransFileSuc(long paramLong)
   {
-    QQFileManagerUtilImpl.c(paramLong);
+    QQFileManagerUtilImpl.d(paramLong);
   }
   
   public void delCloseButtonSessionId(long paramLong)
   {
-    QQFileManagerUtilImpl.b(paramLong);
+    QQFileManagerUtilImpl.c(paramLong);
   }
   
   public int delExternalFileFromFMRecv(String paramString)
   {
-    return QQFileManagerUtilImpl.b(paramString);
+    return QQFileManagerUtilImpl.e(paramString);
   }
   
   public void downloadUniformQQBrowser(Context paramContext, String paramString, Bundle paramBundle)
@@ -262,17 +262,17 @@ public class FileManagerUtilImpl
   
   public String enCodecString(String paramString)
   {
-    return QQFileManagerUtilImpl.e(paramString);
+    return QQFileManagerUtilImpl.t(paramString);
   }
   
   public boolean fileExist(String paramString)
   {
-    return QQFileManagerUtilImpl.b(paramString);
+    return QQFileManagerUtilImpl.l(paramString);
   }
   
   public boolean fileWhetherExpire(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.a(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.c(paramFileManagerEntity);
   }
   
   public String filesizeToString(long paramLong)
@@ -292,7 +292,7 @@ public class FileManagerUtilImpl
   
   public void fixEntityThumbSize(FileManagerEntity paramFileManagerEntity)
   {
-    QQFileManagerUtilImpl.d(paramFileManagerEntity);
+    QQFileManagerUtilImpl.q(paramFileManagerEntity);
   }
   
   public void forwardRencentFiles(List<FileManagerEntity> paramList, Activity paramActivity)
@@ -302,12 +302,12 @@ public class FileManagerUtilImpl
   
   public long genMsgSeq()
   {
-    return QQFileManagerUtilImpl.a();
+    return QQFileManagerUtilImpl.b();
   }
   
   public long genMsgUid()
   {
-    return QQFileManagerUtilImpl.b();
+    return QQFileManagerUtilImpl.c();
   }
   
   public Long genSessionId()
@@ -332,7 +332,7 @@ public class FileManagerUtilImpl
   
   public BaseQQAppInterface getApp()
   {
-    return QQFileManagerUtilImpl.a();
+    return QQFileManagerUtilImpl.l();
   }
   
   public Bitmap getCircleFaceBitmap(Context paramContext, Bitmap paramBitmap, int paramInt)
@@ -352,22 +352,22 @@ public class FileManagerUtilImpl
   
   public HashMap<String, String> getDocsImportConfigGroupFromStr(String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramString);
+    return QQFileManagerUtilImpl.A(paramString);
   }
   
   public long getDocsImportFileMaxSize(String paramString)
   {
-    return QQFileManagerUtilImpl.b(paramString);
+    return QQFileManagerUtilImpl.B(paramString);
   }
   
   public String getFMDownloadPath()
   {
-    return QQFileManagerUtilImpl.b();
+    return QQFileManagerUtilImpl.i();
   }
   
   public int getFileIconResId(int paramInt)
   {
-    return QQFileManagerUtilImpl.a(paramInt);
+    return QQFileManagerUtilImpl.d(paramInt);
   }
   
   public int getFileIconResId(int paramInt1, int paramInt2)
@@ -377,7 +377,7 @@ public class FileManagerUtilImpl
   
   public int getFileIconResId(String paramString)
   {
-    return QQFileManagerUtilImpl.c(paramString);
+    return QQFileManagerUtilImpl.f(paramString);
   }
   
   public FileManagerEntity getFileManagerEntityByMsgFile(BaseQQAppInterface paramBaseQQAppInterface, MessageForFile paramMessageForFile)
@@ -387,12 +387,12 @@ public class FileManagerUtilImpl
   
   public String getFileName(String paramString)
   {
-    return QQFileManagerUtilImpl.b(paramString);
+    return QQFileManagerUtilImpl.n(paramString);
   }
   
   public String getFileOperationTypeToPeer(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.e(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.l(paramFileManagerEntity);
   }
   
   public FileManagerEntity getFileRecordForMultiMsg(BaseQQAppInterface paramBaseQQAppInterface, long paramLong, String paramString, int paramInt, ChatMessage paramChatMessage)
@@ -402,27 +402,27 @@ public class FileManagerUtilImpl
   
   public String getFileSizeInvalidTime(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.d(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.k(paramFileManagerEntity);
   }
   
   public long getFileSizes(String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramString);
+    return QQFileManagerUtilImpl.j(paramString);
   }
   
   public int getFileSrcCloudType(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.a(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.h(paramFileManagerEntity);
   }
   
   public String getFileSuffix(String paramString)
   {
-    return QQFileManagerUtilImpl.g(paramString);
+    return QQFileManagerUtilImpl.x(paramString);
   }
   
   public int getFileType(String paramString)
   {
-    return QQFileManagerUtilImpl.d(paramString);
+    return QQFileManagerUtilImpl.g(paramString);
   }
   
   public String getFileType(int paramInt)
@@ -437,12 +437,12 @@ public class FileManagerUtilImpl
   
   public byte[] getFullMd5(String paramString)
   {
-    return QQFileManagerUtilImpl.e(paramString);
+    return QQFileManagerUtilImpl.s(paramString);
   }
   
   public String getHardCodeConfig(String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramString);
+    return QQFileManagerUtilImpl.h(paramString);
   }
   
   public String getImageUrl(FileManagerEntity paramFileManagerEntity)
@@ -462,12 +462,12 @@ public class FileManagerUtilImpl
   
   public int[] getMediaFileWidthHeight(String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramString);
+    return QQFileManagerUtilImpl.k(paramString);
   }
   
   public String getMultiFileThumbPath(ChatMessage paramChatMessage)
   {
-    return QQFileManagerUtilImpl.a(paramChatMessage);
+    return QQFileManagerUtilImpl.b(paramChatMessage);
   }
   
   public String getPeerNick(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, int paramInt)
@@ -482,7 +482,7 @@ public class FileManagerUtilImpl
   
   public int getQlinkIntroShowTime(String paramString)
   {
-    return QQFileManagerUtilImpl.e(paramString);
+    return QQFileManagerUtilImpl.m(paramString);
   }
   
   public String getReportFileTypeStr(int paramInt)
@@ -492,17 +492,17 @@ public class FileManagerUtilImpl
   
   public AppRuntime getRuntime()
   {
-    return QQFileManagerUtilImpl.a();
+    return QQFileManagerUtilImpl.m();
   }
   
   public byte[] getSHA(String paramString)
   {
-    return QQFileManagerUtilImpl.d(paramString);
+    return QQFileManagerUtilImpl.r(paramString);
   }
   
   public FileManagerEntity getSelectedEntity()
   {
-    return QQFileManagerUtilImpl.a();
+    return QQFileManagerUtilImpl.j();
   }
   
   public byte[] getSha3(String paramString)
@@ -527,13 +527,13 @@ public class FileManagerUtilImpl
       paramList.add(0, localFileInfo);
       if (paramLinkedHashMap2 != null)
       {
-        str = getGroupName(QQFileManagerUtilImpl.g(localFileInfo.d()), paramInt);
+        str = getGroupName(QQFileManagerUtilImpl.x(localFileInfo.e()), paramInt);
         if (!paramLinkedHashMap2.containsKey(str)) {
           paramLinkedHashMap2.put(str, new ArrayList());
         }
         ((List)paramLinkedHashMap2.get(str)).add(localFileInfo);
       }
-      long l = localFileInfo.b();
+      long l = localFileInfo.g();
       String str = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHistoryGroupByTime(l);
       if (!localHashMap.containsValue(str)) {
         localHashMap.put(str, Integer.valueOf((int)(l / 1000L)));
@@ -562,7 +562,7 @@ public class FileManagerUtilImpl
   
   public int getStatus(int paramInt)
   {
-    return QQFileManagerUtilImpl.b(paramInt);
+    return QQFileManagerUtilImpl.f(paramInt);
   }
   
   public byte[] getTempSessionSig(BaseQQAppInterface paramBaseQQAppInterface, String paramString, int paramInt)
@@ -572,17 +572,17 @@ public class FileManagerUtilImpl
   
   public long getTempSessionType(int paramInt)
   {
-    return QQFileManagerUtilImpl.a(paramInt);
+    return QQFileManagerUtilImpl.g(paramInt);
   }
   
   public TimeoutParam getTimeOutParamer()
   {
-    return QQFileManagerUtilImpl.a();
+    return QQFileManagerUtilImpl.g();
   }
   
   public long getWeiyunZipTargetId(long paramLong)
   {
-    return QQFileManagerUtilImpl.a(paramLong);
+    return QQFileManagerUtilImpl.e(paramLong);
   }
   
   public String getZipThumbSavePath(FileManagerEntity paramFileManagerEntity)
@@ -592,7 +592,7 @@ public class FileManagerUtilImpl
   
   public String getZipThumbUrlWithFileUrl(String paramString)
   {
-    return QQFileManagerUtilImpl.h(paramString);
+    return QQFileManagerUtilImpl.z(paramString);
   }
   
   public String handleLongFileName(String paramString, boolean paramBoolean, int paramInt1, TextPaint paramTextPaint, int paramInt2)
@@ -602,17 +602,17 @@ public class FileManagerUtilImpl
   
   public boolean hasNoThumb(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.b(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.f(paramFileManagerEntity);
   }
   
   public boolean hasShortCut(Context paramContext, String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramContext, paramString);
+    return QQFileManagerUtilImpl.d(paramContext, paramString);
   }
   
   public boolean hasThumb(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.e(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.p(paramFileManagerEntity);
   }
   
   public String hexToString(byte[] paramArrayOfByte)
@@ -629,7 +629,7 @@ public class FileManagerUtilImpl
   
   public void initSaveToPc(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage, Context paramContext)
   {
-    QQFileManagerUtilImpl.a(paramBaseQQAppInterface, paramChatMessage, paramContext);
+    QQFileManagerUtilImpl.b(paramBaseQQAppInterface, paramChatMessage, paramContext);
   }
   
   public boolean initSaveToWeiYun(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage, Context paramContext)
@@ -649,7 +649,7 @@ public class FileManagerUtilImpl
   
   public boolean is2GOr3G()
   {
-    return QQFileManagerUtilImpl.a();
+    return QQFileManagerUtilImpl.d();
   }
   
   public boolean isBuddyIntroShow(String paramString1, String paramString2)
@@ -659,32 +659,32 @@ public class FileManagerUtilImpl
   
   public boolean isContainChinese(String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramString);
+    return QQFileManagerUtilImpl.i(paramString);
   }
   
   public boolean isDebugVersion()
   {
-    return QQFileManagerUtilImpl.d();
+    return QQFileManagerUtilImpl.o();
   }
   
   public boolean isImportLocaFilesForH5(Context paramContext)
   {
-    return QQFileManagerUtilImpl.a(paramContext);
+    return QQFileManagerUtilImpl.c(paramContext);
   }
   
   public boolean isLocalFile(String paramString)
   {
-    return QQFileManagerUtilImpl.c(paramString);
+    return QQFileManagerUtilImpl.w(paramString);
   }
   
   public boolean isMultiMessageSender(BaseQQAppInterface paramBaseQQAppInterface, ChatMessage paramChatMessage)
   {
-    return QQFileManagerUtilImpl.a(paramBaseQQAppInterface, paramChatMessage);
+    return QQFileManagerUtilImpl.b(paramBaseQQAppInterface, paramChatMessage);
   }
   
   public boolean isPreDownloadThumb()
   {
-    return QQFileManagerUtilImpl.b();
+    return QQFileManagerUtilImpl.e();
   }
   
   public boolean isSameDay(long paramLong1, long paramLong2, TimeZone paramTimeZone)
@@ -694,22 +694,22 @@ public class FileManagerUtilImpl
   
   public boolean isSelectedFavImageEntity()
   {
-    return QQFileManagerUtilImpl.c();
+    return QQFileManagerUtilImpl.k();
   }
   
   public boolean isSupportFavorite(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.c(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.i(paramFileManagerEntity);
   }
   
   public boolean isTroopFile(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.d(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.j(paramFileManagerEntity);
   }
   
   public LinkedHashMap jsonToMap(String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramString);
+    return QQFileManagerUtilImpl.u(paramString);
   }
   
   public String mapToJson(Map paramMap)
@@ -774,12 +774,12 @@ public class FileManagerUtilImpl
   
   public String printFileManagerEntityInfo(FileManagerEntity paramFileManagerEntity)
   {
-    return QQFileManagerUtilImpl.c(paramFileManagerEntity);
+    return QQFileManagerUtilImpl.g(paramFileManagerEntity);
   }
   
   public String printStack()
   {
-    return QQFileManagerUtilImpl.a();
+    return QQFileManagerUtilImpl.h();
   }
   
   public void processAIOTimGraytips(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
@@ -789,7 +789,7 @@ public class FileManagerUtilImpl
   
   public String recreateFilePath(String paramString)
   {
-    return QQFileManagerUtilImpl.c(paramString);
+    return QQFileManagerUtilImpl.o(paramString);
   }
   
   public boolean renameFile(VFSFile paramVFSFile1, VFSFile paramVFSFile2)
@@ -829,7 +829,7 @@ public class FileManagerUtilImpl
   
   public String reportSrcType(int paramInt1, int paramInt2)
   {
-    return QQFileManagerUtilImpl.a(paramInt1, paramInt2);
+    return QQFileManagerUtilImpl.b(paramInt1, paramInt2);
   }
   
   public void resume(Context paramContext, FileManagerEntity paramFileManagerEntity, BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
@@ -914,12 +914,12 @@ public class FileManagerUtilImpl
   
   public QQFileManagerUtil.VideoThumbInfo syncCreateVideoThumb(String paramString)
   {
-    return QQFileManagerUtilImpl.a(paramString);
+    return QQFileManagerUtilImpl.y(paramString);
   }
   
   public void updateBatProcessTips(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    QQFileManagerUtilImpl.a(paramBaseQQAppInterface, paramString1, paramString2, paramInt);
+    QQFileManagerUtilImpl.b(paramBaseQQAppInterface, paramString1, paramString2, paramInt);
   }
   
   public String updateRecentListTxt(BaseQQAppInterface paramBaseQQAppInterface, Message paramMessage)
@@ -934,7 +934,7 @@ public class FileManagerUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FileManagerUtilImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,19 @@ class CameraManagerImpl$CameraHandler$1
   {
     try
     {
-      CameraManagerImpl.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl$CameraHandler.a).takePicture(this.jdField_a_of_type_AndroidHardwareCamera$ShutterCallback, this.jdField_a_of_type_AndroidHardwareCamera$PictureCallback, this.b, this.c);
+      CameraManagerImpl.a(this.e.a).takePicture(this.a, this.b, this.c, this.d);
       return;
     }
     catch (RuntimeException localRuntimeException)
     {
-      QLog.e(CameraManagerImpl.CameraHandler.a(this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl$CameraHandler), 2, "take picture failed.");
+      QLog.e(CameraManagerImpl.CameraHandler.a(this.e), 2, "take picture failed.");
       throw localRuntimeException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl.CameraHandler.1
  * JD-Core Version:    0.7.0.1
  */

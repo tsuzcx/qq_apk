@@ -2,13 +2,13 @@ package com.tencent.biz;
 
 public abstract class PoiMapActivity$Shops
 {
-  public int a;
-  public int b;
-  public int c;
-  public String e;
-  public String f;
+  public int f;
   public String g;
   public String h;
+  public String i;
+  public String j;
+  public int k;
+  public int l;
   
   public PoiMapActivity$Shops(PoiMapActivity paramPoiMapActivity) {}
 }

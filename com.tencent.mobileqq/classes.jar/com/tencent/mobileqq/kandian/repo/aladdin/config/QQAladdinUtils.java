@@ -58,8 +58,7 @@ import com.tencent.mobileqq.kandian.repo.aladdin.handlers.ViolaPicSerPreloadHand
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.ViolaSusAutoPlayConfigHandler;
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.ViolaVideoFeedsConfigHandler;
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.WhiteListBidConfigHandler;
-import com.tencent.mobileqq.kandian.repo.aladdin.handlers.WormholeConfigHandler;
-import com.tencent.mobileqq.kandian.repo.xtab.api.IRIJXTabConfigHandler;
+import com.tencent.mobileqq.kandian.repo.xtab.KDXTabHomepageModeConfigHandler;
 import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,6 +69,7 @@ public class QQAladdinUtils
 {
   @Deprecated
   public static int[] a = { 1, 3, 40, 41, 111, 112, 116, 117, 119, 156, 121, 122, 123, 124, 127, 131, 133, 134, 132, 136, 139, 135, 138, 144, 140, 142, 145, 147, 148, 149, 151, 152, 153, 154, 155, 157, 159, 160, 161, 162, 164, 165, 167, 168, 169, 171, 170, 172, 173, 174, 176, 177, 178, 180, 179, 181, 182, 183, 185, 187, 186, 194, 190, 189, 188, 192, 193, 191, 196, 199, 200, 201, 204, 202, 205, 206, 207, 208, 209, 211, 212, 214, 215, 216, 218, 219, 217, 220, 221, 222, 197, 223, 225, 226, 246, 227, 226, 228, 227, 230, 232, 234, 243, 238, 239, 242, 244, 245, 247, 250, 252, 251, 254, 253, 255, 256, 259, 258, 260, 261, 263, 262, 264, 265, 269, 271, 272, 273, 274, 272, 267, 266, 276, 277, 278, 280, 282, 279, 275, 281, 283, 284, 285, 286, 287, 288, 290, 306, 289, 293, 298, 296, 300, 304, 305, 293, 295, 301, 297, 303, 307, 309, 311, 312, 318, 317, 240, 313, 314, 315, 329, 320, 315, 324, 323, 326, 327, 330, 331, 332, 319, 334, 335, 336, 337, 338, 339, 340, 343, 346, 341, 342, 354, 358, 365, 366, 372, 374, 379 };
+  public static boolean b;
   
   static
   {
@@ -114,39 +114,21 @@ public class QQAladdinUtils
     Aladdin.registerConfigHandler(274, new SimpleConfigHandler());
     Aladdin.registerConfigHandler(280, new RIJNewReportChannelConfigHandler());
     Aladdin.registerConfigHandler(282, new ViolaSusAutoPlayConfigHandler());
-    Aladdin.registerConfigHandler(287, new WormholeConfigHandler());
     Aladdin.registerConfigHandler(290, new VDynamicConfigHandler());
     Aladdin.registerConfigHandler(304, new PtsNativeFeedsAladdinKeyConfigHandler());
     Aladdin.registerConfigHandler(305, new PtsCommentFeedsAladdinKeyConfigHandler());
     Aladdin.registerConfigHandler(346, new ViolaVideoFeedsConfigHandler());
     Aladdin.registerConfigHandler(360, new PersonalHomePageConfigHandler());
     Aladdin.registerConfigHandler(369, new BarrageConfigHandler());
-    Aladdin.registerConfigHandler(401, ((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).asAladdinConfigHandler());
     Aladdin.registerConfigHandler(452, new VideoBarrageConfigHandler());
-  }
-  
-  private static List<Integer> a(int[] paramArrayOfInt)
-  {
-    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      int j = paramArrayOfInt.length;
-      int i = 0;
-      while (i < j)
-      {
-        localArrayList.add(Integer.valueOf(paramArrayOfInt[i]));
-        i += 1;
-      }
-      return localArrayList;
-    }
-    return new ArrayList();
+    Aladdin.registerConfigHandler(534, new KDXTabHomepageModeConfigHandler());
   }
   
   public static void a()
   {
-    Aladdin.InitParams.Builder localBuilder = Aladdin.InitParams.newBuilder().withUserId(RIJQQAppInterfaceUtil.a()).withAppVersion("8.7.0").withContext(BaseApplicationImpl.getContext()).withExecutor(QQAsyncTaskExecutor.a).withRequestHandler(new QQAladdinRequestHandler());
+    Aladdin.InitParams.Builder localBuilder = Aladdin.InitParams.newBuilder().withUserId(RIJQQAppInterfaceUtil.d()).withAppVersion("8.8.17").withContext(BaseApplicationImpl.getContext()).withExecutor(QQAsyncTaskExecutor.a).withRequestHandler(new QQAladdinRequestHandler());
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppSetting.a());
+    localStringBuilder.append(AppSetting.d());
     localStringBuilder.append("");
     Aladdin.initialize(localBuilder.withAppFlavorId(localStringBuilder.toString()).withLogger(new QQAladdinLogger()).build());
     d();
@@ -161,6 +143,7 @@ public class QQAladdinUtils
     Aladdin.registerConfigParser(140, Aladdin.DEFAULT_SIMPLE_OBJECT_PARSER);
     Aladdin.registerConfigParser(334, Aladdin.DEFAULT_SIMPLE_OBJECT_PARSER);
     c();
+    b = true;
   }
   
   private static int[] a(List<Integer> paramList)
@@ -201,6 +184,23 @@ public class QQAladdinUtils
     return a;
   }
   
+  private static List<Integer> b(int[] paramArrayOfInt)
+  {
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
+    {
+      ArrayList localArrayList = new ArrayList();
+      int j = paramArrayOfInt.length;
+      int i = 0;
+      while (i < j)
+      {
+        localArrayList.add(Integer.valueOf(paramArrayOfInt[i]));
+        i += 1;
+      }
+      return localArrayList;
+    }
+    return new ArrayList();
+  }
+  
   public static void b()
   {
     Object localObject = VDynamicConfigHandler.a();
@@ -234,8 +234,8 @@ public class QQAladdinUtils
   
   private static void e()
   {
-    Object localObject2 = a(Aladdin.getConfigIdList());
-    Object localObject1 = a(a);
+    Object localObject2 = b(Aladdin.getConfigIdList());
+    Object localObject1 = b(a);
     localObject2 = ((List)localObject2).iterator();
     int i;
     for (;;)
@@ -274,7 +274,7 @@ public class QQAladdinUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.config.QQAladdinUtils
  * JD-Core Version:    0.7.0.1
  */

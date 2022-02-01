@@ -12,34 +12,34 @@ import java.util.HashMap;
 class AudioUploadThread$1
   implements ITransactionCallback
 {
-  private final long jdField_a_of_type_Long = System.currentTimeMillis();
+  private final long d = System.currentTimeMillis();
   
   AudioUploadThread$1(AudioUploadThread paramAudioUploadThread, String paramString, VoiceBean paramVoiceBean) {}
   
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
     long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.d;
     paramArrayOfByte = new StringBuilder();
     paramArrayOfByte.append("onFailed, duration:");
     paramArrayOfByte.append(l1 - l2);
     paramArrayOfByte.append(", retCode:");
     paramArrayOfByte.append(paramInt);
     AssistantUtils.a("AudioUploadThread", paramArrayOfByte.toString());
-    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+    FileUtils.deleteFile(this.a);
   }
   
   public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    long l = System.currentTimeMillis() - this.d;
     paramHashMap = new StringBuilder();
     paramHashMap.append("onSuccess duration:");
     paramHashMap.append(l);
     AssistantUtils.a("AudioUploadThread", paramHashMap.toString());
-    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+    FileUtils.deleteFile(this.a);
     try
     {
-      AudioUploadThread.a(this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioUploadThread, this.jdField_a_of_type_ComTencentMobileqqQassistantDataVoiceBean, paramArrayOfByte, l);
+      AudioUploadThread.a(this.c, this.b, paramArrayOfByte, l);
       return;
     }
     catch (IOException paramArrayOfByte)
@@ -77,7 +77,7 @@ class AudioUploadThread$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.AudioUploadThread.1
  * JD-Core Version:    0.7.0.1
  */

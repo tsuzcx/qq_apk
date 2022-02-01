@@ -183,7 +183,7 @@ public class PublicAccountDataManagerImpl
           Collections.sort((List)localObject1, ContactSorter.a);
         }
         this.mPublicAccountList = ((ArrayList)localObject1);
-        PAOfflineSearchManager.a().a = true;
+        PAOfflineSearchManager.a().c = true;
       }
       this.mIsBuildingList = false;
       if (QLog.isColorLevel())
@@ -592,7 +592,7 @@ public class PublicAccountDataManagerImpl
     if (!(paramObject instanceof SessionInfo)) {
       return false;
     }
-    paramObject = (PublicAccountInfo)findPublicAccountInfo(((SessionInfo)paramObject).a);
+    paramObject = (PublicAccountInfo)findPublicAccountInfo(((SessionInfo)paramObject).b);
     return (paramObject != null) && (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getAccountType2(paramObject.accountFlag2) == -10L);
   }
   
@@ -1056,7 +1056,7 @@ public class PublicAccountDataManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountDataManagerImpl
  * JD-Core Version:    0.7.0.1
  */

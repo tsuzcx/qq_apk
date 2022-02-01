@@ -17,37 +17,31 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class EmoWindowAdapter
   extends BaseAdapter
 {
-  public static final int[] a;
-  public static final int[] b;
-  public static final int[] c = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-  private final int jdField_a_of_type_Int = 2130839024;
-  private Context jdField_a_of_type_AndroidContentContext;
-  KeyClickListener jdField_a_of_type_ComTencentBizSubscribeCommentKeyClickListener;
-  private Integer[] jdField_a_of_type_ArrayOfJavaLangInteger;
-  private int b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 43, 51, 17, 60, 61, 92, 93, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64, 38, 47, 95, 71, 96, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 43, 51, 17, 60, 61, 92, 93, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64, 38, 47, 95, 71, 96, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141 };
-  }
+  public static final int[] b = { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 43, 51, 17, 60, 61, 92, 93, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64, 38, 47, 95, 71, 96, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105 };
+  public static final int[] c = { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 43, 51, 17, 60, 61, 92, 93, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64, 38, 47, 95, 71, 96, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141 };
+  public static final int[] d = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  KeyClickListener a;
+  private Integer[] e;
+  private final int f = 2130839178;
+  private int g;
+  private Context h;
   
   public EmoWindowAdapter(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, KeyClickListener paramKeyClickListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[paramInt3];
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentKeyClickListener = paramKeyClickListener;
-    this.jdField_b_of_type_Int = paramInt4;
+    this.h = paramContext;
+    this.e = new Integer[paramInt3];
+    this.a = paramKeyClickListener;
+    this.g = paramInt4;
     paramInt4 = 0;
     paramKeyClickListener = Integer.valueOf(0);
     while (paramInt4 < paramInt3)
     {
       if (paramInt4 < paramInt2)
       {
-        paramContext = jdField_b_of_type_ArrayOfInt;
+        paramContext = c;
         int i = (paramInt1 - 1) * (paramInt3 - 1) + paramInt4;
         int j = paramContext[i];
-        if (c[i] == 1) {
+        if (d[i] == 1) {
           paramContext = "f";
         } else {
           paramContext = "f_static_";
@@ -79,10 +73,10 @@ public class EmoWindowAdapter
         }
         if ((j >= 0) && (j < 107))
         {
-          this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = Integer.valueOf(Patterns.jdField_b_of_type_ArrayOfInt[j]);
+          this.e[paramInt4] = Integer.valueOf(Patterns.h[j]);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("step1 has current id :");
-          localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4]);
+          localStringBuilder.append(this.e[paramInt4]);
           localStringBuilder.append(" ");
           localStringBuilder.append(paramContext);
           localStringBuilder.append("  ");
@@ -90,21 +84,21 @@ public class EmoWindowAdapter
         }
         else
         {
-          this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = paramKeyClickListener;
+          this.e[paramInt4] = paramKeyClickListener;
         }
       }
       else
       {
-        this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = paramKeyClickListener;
+        this.e[paramInt4] = paramKeyClickListener;
       }
       paramInt4 += 1;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangInteger[(paramInt3 - 1)] = Integer.valueOf(2130839024);
+    this.e[(paramInt3 - 1)] = Integer.valueOf(2130839178);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangInteger.length;
+    return this.e.length;
   }
   
   public Object getItem(int paramInt)
@@ -122,14 +116,14 @@ public class EmoWindowAdapter
     LinearLayout localLinearLayout;
     if (paramView == null)
     {
-      localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      int i = AIOUtils.b(35.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localImageView = new ImageView(this.h);
+      int i = AIOUtils.b(35.0F, this.h.getResources());
       Object localObject = new LinearLayout.LayoutParams(i, i);
       i /= 5;
       ((LinearLayout.LayoutParams)localObject).setMargins(i, i, i, i);
       localImageView.setAdjustViewBounds(false);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout = new LinearLayout(this.h);
       localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
       localLinearLayout.setGravity(17);
       localLinearLayout.addView(localImageView, (ViewGroup.LayoutParams)localObject);
@@ -144,9 +138,9 @@ public class EmoWindowAdapter
     ImageView localImageView = ((EmoWindowAdapter.ViewHolder)localLinearLayout.getTag()).a;
     try
     {
-      if (this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt].intValue() != 0)
+      if (this.e[paramInt].intValue() != 0)
       {
-        localImageView.setImageResource(this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt].intValue());
+        localImageView.setImageResource(this.e[paramInt].intValue());
         localImageView.setVisibility(0);
       }
       else

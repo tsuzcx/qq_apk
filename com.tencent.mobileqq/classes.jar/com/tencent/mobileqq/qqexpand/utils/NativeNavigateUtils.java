@@ -3,12 +3,11 @@ package com.tencent.mobileqq.qqexpand.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
@@ -88,27 +87,24 @@ public final class NativeNavigateUtils
       paramContext.a().a("NativeNavigateUtils", 1, "schema url is null", paramString);
       return;
     }
-    Object localObject = LogUtils.a;
+    paramContext = LogUtils.a;
     if (QLog.isColorLevel())
     {
-      localObject = ((LogUtils)localObject).a();
+      paramContext = paramContext.a();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("navigateBySchema: ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(' ');
-      ((ILog)localObject).a("NativeNavigateUtils", 2, localStringBuilder.toString());
+      paramContext.a("NativeNavigateUtils", 2, localStringBuilder.toString());
     }
-    localObject = new Intent((Context)BaseApplicationImpl.getContext(), JumpActivity.class);
-    ((Intent)localObject).setData(Uri.parse(paramString));
-    if (!(paramContext instanceof Activity)) {
-      ((Intent)localObject).addFlags(268435456);
-    }
-    paramContext.startActivity((Intent)localObject);
+    paramContext = new Bundle();
+    paramContext.putString("data", paramString);
+    QIPCClientHelper.getInstance().callServer("ExpandFlutterIPCServer", "notifyOpenSchema", paramContext, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.NativeNavigateUtils
  * JD-Core Version:    0.7.0.1
  */

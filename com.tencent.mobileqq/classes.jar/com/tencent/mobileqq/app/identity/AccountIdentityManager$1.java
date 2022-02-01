@@ -12,18 +12,18 @@ class AccountIdentityManager$1
   
   public void getAccountIdentitySuccess(cmd0x9ae.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager.a.set(false);
-    AccountIdentityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager, this.jdField_a_of_type_MqqAppAppRuntime, paramRspBody, this);
+    this.b.a.set(false);
+    AccountIdentityManager.a(this.b, this.a, paramRspBody, this);
   }
   
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager.a.set(false);
+    this.b.a.set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountIdentityManager.1
  * JD-Core Version:    0.7.0.1
  */

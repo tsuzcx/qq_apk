@@ -8,122 +8,108 @@ import com.tencent.qphone.base.util.QLog;
 
 public class NormalMenuView
 {
-  int jdField_a_of_type_Int;
-  ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  NormalMenuView.ViewEvent jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent = null;
-  final String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
+  final String a;
+  NormalMenuView.ViewEvent b = null;
+  RelativeLayout c = null;
+  int d;
+  boolean e = false;
+  ObjectAnimator f = null;
   
   public NormalMenuView(RelativeLayout paramRelativeLayout, int paramInt, NormalMenuView.ViewEvent paramViewEvent)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MenuView_");
     localStringBuilder.append(paramInt);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent = paramViewEvent;
+    this.a = localStringBuilder.toString();
+    this.c = paramRelativeLayout;
+    this.d = paramInt;
+    this.b = paramViewEvent;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public RelativeLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  void a()
-  {
-    ObjectAnimator localObjectAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-    if (localObjectAnimator != null) {
-      localObjectAnimator.cancel();
-    }
+    return this.d;
   }
   
   public void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+    if (this.c == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ShowMenuView, isShow[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("], needAnimation[");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("], lastObjectAnimator[");
     boolean bool;
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+    if (this.f != null) {
       bool = true;
     } else {
       bool = false;
     }
     localStringBuilder.append(bool);
     localStringBuilder.append("], visibility[");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility());
+    localStringBuilder.append(this.c.getVisibility());
     localStringBuilder.append("], seq[");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("]");
     QLog.w((String)localObject, 1, localStringBuilder.toString());
-    a();
-    localObject = this.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent;
+    b();
+    localObject = this.b;
     if (localObject != null) {
-      ((NormalMenuView.ViewEvent)localObject).a(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
+      ((NormalMenuView.ViewEvent)localObject).a(paramLong, this.c, true);
     }
     if (paramBoolean)
     {
-      int i = b();
+      int i = c();
       localObject = null;
       if (paramInt == 3) {
-        localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "TranslationY", new float[] { i, 0.0F });
+        localObject = ObjectAnimator.ofFloat(this.c, "TranslationY", new float[] { i, 0.0F });
       } else if (paramInt == 4) {
-        localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
+        localObject = ObjectAnimator.ofFloat(this.c, "alpha", new float[] { 0.0F, 1.0F });
       }
       if (localObject == null)
       {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, warning animator is null");
+        QLog.w(this.a, 1, "ShowMenuView, warning animator is null");
         return;
       }
       ((ObjectAnimator)localObject).setDuration(300L);
       ((ObjectAnimator)localObject).addListener(new NormalMenuView.2(this, i, paramLong));
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ((ObjectAnimator)localObject);
+      this.e = true;
+      this.f = ((ObjectAnimator)localObject);
       ((ObjectAnimator)localObject).start();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_Boolean = true;
-    localObject = this.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent;
+    this.c.setVisibility(0);
+    this.e = true;
+    localObject = this.b;
     if (localObject != null) {
-      ((NormalMenuView.ViewEvent)localObject).a(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+      ((NormalMenuView.ViewEvent)localObject).a(paramLong, this.c, false);
     }
   }
   
   public void a(long paramLong, boolean paramBoolean, int paramInt, QavPanel.OnDismissAnimationEndListener paramOnDismissAnimationEndListener)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = this.c;
     int i;
     if (localObject != null) {
       i = ((RelativeLayout)localObject).getVisibility();
     } else {
       i = 4;
     }
-    localObject = this.jdField_a_of_type_JavaLangString;
+    localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("HiddenMenuView, isShow[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("], needAnimation[");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("], visibility[");
     localStringBuilder.append(i);
     localStringBuilder.append("], lastObjectAnimator[");
     boolean bool;
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+    if (this.f != null) {
       bool = true;
     } else {
       bool = false;
@@ -133,13 +119,13 @@ public class NormalMenuView
     localStringBuilder.append(paramLong);
     localStringBuilder.append("]");
     QLog.w((String)localObject, 1, localStringBuilder.toString());
-    a();
+    b();
     if (paramBoolean)
     {
-      i = b();
+      i = c();
       localObject = null;
       if (paramInt == 2) {
-        localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "TranslationY", new float[] { 0.0F, i });
+        localObject = ObjectAnimator.ofFloat(this.c, "TranslationY", new float[] { 0.0F, i });
       }
       if (localObject == null)
       {
@@ -147,56 +133,70 @@ public class NormalMenuView
           return;
         }
         paramOnDismissAnimationEndListener = new StringBuilder();
-        paramOnDismissAnimationEndListener.append(HardCodeUtil.a(2131708927));
-        paramOnDismissAnimationEndListener.append(this.jdField_a_of_type_Boolean);
+        paramOnDismissAnimationEndListener.append(HardCodeUtil.a(2131906695));
+        paramOnDismissAnimationEndListener.append(this.e);
         paramOnDismissAnimationEndListener.append("], height[");
         paramOnDismissAnimationEndListener.append(i);
         paramOnDismissAnimationEndListener.append("], seq[");
         paramOnDismissAnimationEndListener.append(paramLong);
         paramOnDismissAnimationEndListener.append("]");
         paramOnDismissAnimationEndListener = paramOnDismissAnimationEndListener.toString();
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, paramOnDismissAnimationEndListener, new Throwable("打印调用栈"));
+        QLog.w(this.a, 1, paramOnDismissAnimationEndListener, new Throwable("打印调用栈"));
         throw new IllegalArgumentException(paramOnDismissAnimationEndListener);
       }
       ((ObjectAnimator)localObject).setDuration(300L);
       ((ObjectAnimator)localObject).addListener(new NormalMenuView.1(this, i, paramLong, paramOnDismissAnimationEndListener));
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ((ObjectAnimator)localObject);
+      this.f = ((ObjectAnimator)localObject);
       ((ObjectAnimator)localObject).start();
-      this.jdField_a_of_type_Boolean = false;
-      paramOnDismissAnimationEndListener = this.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent;
+      this.e = false;
+      paramOnDismissAnimationEndListener = this.b;
       if (paramOnDismissAnimationEndListener != null) {
-        paramOnDismissAnimationEndListener.b(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
+        paramOnDismissAnimationEndListener.b(paramLong, this.c, true);
       }
     }
     else
     {
-      paramOnDismissAnimationEndListener = this.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent;
+      paramOnDismissAnimationEndListener = this.b;
       if (paramOnDismissAnimationEndListener != null) {
-        paramOnDismissAnimationEndListener.b(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
+        paramOnDismissAnimationEndListener.b(paramLong, this.c, true);
       }
-      paramOnDismissAnimationEndListener = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      paramOnDismissAnimationEndListener = this.c;
       if (paramOnDismissAnimationEndListener != null)
       {
         paramOnDismissAnimationEndListener.setVisibility(8);
-        this.jdField_a_of_type_Boolean = false;
+        this.e = false;
       }
-      paramOnDismissAnimationEndListener = this.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent;
+      paramOnDismissAnimationEndListener = this.b;
       if (paramOnDismissAnimationEndListener != null) {
-        paramOnDismissAnimationEndListener.b(paramLong, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+        paramOnDismissAnimationEndListener.b(paramLong, this.c, false);
       }
     }
   }
   
-  int b()
+  void b()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    ObjectAnimator localObjectAnimator = this.f;
+    this.f = null;
+    if (localObjectAnimator != null) {
+      localObjectAnimator.cancel();
+    }
+  }
+  
+  int c()
+  {
+    RelativeLayout localRelativeLayout = this.c;
     int i = 0;
     if (localRelativeLayout != null)
     {
       localRelativeLayout.measure(0, 0);
-      i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
+      i = this.c.getMeasuredHeight();
     }
     return i;
+  }
+  
+  public RelativeLayout d()
+  {
+    return this.c;
   }
 }
 

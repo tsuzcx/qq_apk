@@ -17,20 +17,20 @@ class SimpleFileViewer$3$1
       if (paramInt != 2) {
         return;
       }
-      SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a);
+      SimpleFileViewer.a(this.b.this$0, this.a, this.b.a);
       return;
     }
-    TeamWorkConvertUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a, new SimpleFileViewer.3.1.1(this));
+    TeamWorkConvertUtils.a(this.a, this.b.this$0.c, "FileBrowserViewBase", this.b.a, new SimpleFileViewer.3.1.1(this));
   }
   
   public void a(ImageView paramImageView)
   {
-    SimpleFileViewer.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, paramImageView);
+    SimpleFileViewer.b(this.b.this$0, paramImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class LocalVideoPushSegment$2
   public void run()
   {
     SLog.b("Q.qqstory.home.LocalVideoPushSegment", "loadPhotos..");
-    LocalVideoPushSegment.LoadPhotoResult localLoadPhotoResult = LocalVideoPushSegment.a(this.this$0);
+    LocalVideoPushSegment.LoadPhotoResult localLoadPhotoResult = LocalVideoPushSegment.b(this.this$0);
     if (localLoadPhotoResult != null)
     {
       ThreadManager.getUIHandler().post(new LocalVideoPushSegment.2.1(this, localLoadPhotoResult));

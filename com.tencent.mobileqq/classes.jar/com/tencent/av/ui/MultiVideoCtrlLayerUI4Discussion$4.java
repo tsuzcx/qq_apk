@@ -14,36 +14,36 @@ class MultiVideoCtrlLayerUI4Discussion$4
   
   public void a()
   {
-    MultiVideoCtrlLayerUI4Discussion localMultiVideoCtrlLayerUI4Discussion = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion;
-    localMultiVideoCtrlLayerUI4Discussion.j = true;
-    localMultiVideoCtrlLayerUI4Discussion.O();
+    MultiVideoCtrlLayerUI4Discussion localMultiVideoCtrlLayerUI4Discussion = this.b;
+    localMultiVideoCtrlLayerUI4Discussion.aU = true;
+    localMultiVideoCtrlLayerUI4Discussion.aj();
   }
   
   public void b()
   {
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a();
+    SessionInfo localSessionInfo = this.b.am.k();
     if (localSessionInfo != null)
     {
-      String str = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" TYPE_NOTIFY_CAMERA_CLOSE 2: ");
-      localStringBuilder.append(localSessionInfo.j);
+      localStringBuilder.append(localSessionInfo.H);
       localStringBuilder.append("|");
-      localStringBuilder.append(localSessionInfo.d);
+      localStringBuilder.append(localSessionInfo.g);
       AVLog.printAllUserLog(str, localStringBuilder.toString());
-      if (localSessionInfo.j) {
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
+      if (localSessionInfo.H) {
+        this.b.ao.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.a) });
       }
     }
-    MultiVideoCtrlLayerUI4Discussion.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.e(true);
+    MultiVideoCtrlLayerUI4Discussion.a(this.b, this.a);
+    this.b.e(true);
     ReportController.b(null, "CliOper", "", "", "0X8004CF2", "0X8004CF2", 0, 0, "", "", "", "");
-    if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c() != -1) && (((VideoViewInfo)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a == 1)) {
+    if (((this.b.l == 90) || (this.b.l == 270)) && (this.b.am.k().B() != -1) && (((VideoViewInfo)this.b.am.k().bi.get(0)).b == 1)) {
       ReportController.b(null, "CliOper", "", "", "0X8004CFB", "0X8004CFB", 0, 0, "", "", "", "");
-    } else if (((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 90) || (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.f == 270)) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c() != -1) && (((VideoViewInfo)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.a.a().c.get(0)).a == 2)) {
+    } else if (((this.b.l == 90) || (this.b.l == 270)) && (this.b.am.k().B() != -1) && (((VideoViewInfo)this.b.am.k().bi.get(0)).b == 2)) {
       ReportController.b(null, "CliOper", "", "", "0X8004CFC", "0X8004CFC", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.j = false;
+    this.b.aU = false;
   }
 }
 

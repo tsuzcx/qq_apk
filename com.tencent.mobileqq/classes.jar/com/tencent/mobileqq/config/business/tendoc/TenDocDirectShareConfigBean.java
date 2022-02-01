@@ -10,9 +10,9 @@ import org.json.JSONObject;
 
 public class TenDocDirectShareConfigBean
 {
-  private String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131714644);
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private String b = "";
+  private List<String> a = new ArrayList();
+  private String b = HardCodeUtil.a(2131912153);
+  private String c = "";
   
   public static TenDocDirectShareConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -22,15 +22,15 @@ public class TenDocDirectShareConfigBean
       int i = 0;
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         JSONArray localJSONArray = paramArrayOfQConfItem.getJSONArray("suffix");
         while (i < localJSONArray.length())
         {
-          localTenDocDirectShareConfigBean.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
+          localTenDocDirectShareConfigBean.a.add(localJSONArray.getString(i));
           i += 1;
         }
-        localTenDocDirectShareConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("title");
-        localTenDocDirectShareConfigBean.b = paramArrayOfQConfItem.getString("desc");
+        localTenDocDirectShareConfigBean.b = paramArrayOfQConfItem.getString("title");
+        localTenDocDirectShareConfigBean.c = paramArrayOfQConfItem.getString("desc");
         return localTenDocDirectShareConfigBean;
       }
       catch (JSONException paramArrayOfQConfItem)
@@ -44,12 +44,12 @@ public class TenDocDirectShareConfigBean
   
   public List<String> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TenDocDirectShareConfigBean
  * JD-Core Version:    0.7.0.1
  */

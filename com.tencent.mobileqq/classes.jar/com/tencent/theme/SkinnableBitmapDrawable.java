@@ -165,7 +165,7 @@ public class SkinnableBitmapDrawable
             i2 = paramAttributeSet1.getAttributeResourceValue(m, 0);
             if (i2 != 0)
             {
-              localObject1 = (SkinnableBitmapDrawable.a)SkinEngine.getInstances().a(i2);
+              localObject1 = (SkinnableBitmapDrawable.a)SkinEngine.getInstances().loadConstantState(i2);
               paramResources.a = ((SkinnableBitmapDrawable.a)localObject1).a;
               paramResources.mImageSizeWhenOOM = ((SkinnableBitmapDrawable.a)localObject1).mImageSizeWhenOOM;
               break;
@@ -356,13 +356,13 @@ public class SkinnableBitmapDrawable
                 m |= i2;
                 break;
                 if (!"end".equals(localObject2)) {
-                  break label1112;
+                  break label1113;
                 }
               }
             }
             i1 += 1;
             continue;
-            label1112:
+            label1113:
             paramResources = new StringBuilder();
             paramResources.append("error attribute value: ");
             paramResources.append(paramAttributeSet1);
@@ -759,7 +759,7 @@ public class SkinnableBitmapDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.SkinnableBitmapDrawable
  * JD-Core Version:    0.7.0.1
  */

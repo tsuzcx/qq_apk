@@ -13,8 +13,8 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.KandianDailyReportUtils;
@@ -22,7 +22,6 @@ import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.DailyModeConfigHandler;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.InsertArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import com.tencent.widget.ReadInJoyOverScrollViewListener;
@@ -32,32 +31,32 @@ import mqq.app.AppRuntime;
 public class ReadInJoyDailyOverScrollListener
   implements ReadInJoyOverScrollViewListener
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateInterpolator();
+  private Interpolator a = new AccelerateInterpolator();
+  private float b = 0.0F;
   
   private ImageView a(ListView paramListView)
   {
     if ((paramListView != null) && (paramListView.getOverScrollFooterView() != null)) {
-      return (ImageView)paramListView.getOverScrollFooterView().findViewById(2131369435);
+      return (ImageView)paramListView.getOverScrollFooterView().findViewById(2131436487);
     }
     return null;
   }
   
   public static String a(Context paramContext)
   {
-    return (String)RIJSPUtils.a("kandian_daily_wrapper_default_text", paramContext.getResources().getString(2131717840));
+    return (String)RIJSPUtils.b("kandian_daily_wrapper_default_text", paramContext.getResources().getString(2131915314));
   }
   
   public static void a(int paramInt)
   {
-    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a();
-    localReportR5Builder.addStringNotThrow("jump_src", DailyModeConfigHandler.b());
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.g();
+    localReportR5Builder.addStringNotThrow("jump_src", DailyModeConfigHandler.e());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(paramInt);
     localReportR5Builder.addStringNotThrow("entrance", localStringBuilder.toString());
-    localReportR5Builder.addStringNotThrow("cmd", ReadInJoyHelper.c());
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009883", "0X8009883", 0, 0, "", "", "", localReportR5Builder.build(), false);
+    localReportR5Builder.addStringNotThrow("cmd", ReadInJoyHelper.O());
+    PublicAccountReportUtils.a(null, "", "0X8009883", "0X8009883", 0, 0, "", "", "", localReportR5Builder.build(), false);
   }
   
   public static void a(Activity paramActivity)
@@ -68,26 +67,26 @@ public class ReadInJoyDailyOverScrollListener
   public static void a(Activity paramActivity, Bundle paramBundle)
   {
     Bundle localBundle = new Bundle();
-    List localList = ReadInJoyLogicEngine.a().a(Integer.valueOf(DailyModeConfigHandler.b()));
+    List localList = ReadInJoyLogicEngine.a().c(Integer.valueOf(DailyModeConfigHandler.j()));
     if ((localList != null) && (!localList.isEmpty()))
     {
-      KandianMergeManager localKandianMergeManager = (KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
+      KandianMergeManager localKandianMergeManager = (KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
       InsertArticleInfo localInsertArticleInfo = new InsertArticleInfo();
-      localInsertArticleInfo.jdField_a_of_type_Long = ((Long)localList.get(localList.size() - 1)).longValue();
-      localInsertArticleInfo.jdField_a_of_type_Int = 13;
+      localInsertArticleInfo.a = ((Long)localList.get(localList.size() - 1)).longValue();
+      localInsertArticleInfo.b = 13;
       localKandianMergeManager.a(localInsertArticleInfo);
     }
     paramActivity.finish();
-    paramActivity.overridePendingTransition(2130772004, 2130772394);
-    localBundle.putString("folder_status", KandianDailyReportUtils.a());
+    paramActivity.overridePendingTransition(2130772007, 2130772490);
+    localBundle.putString("folder_status", KandianDailyReportUtils.e());
     localBundle.putBoolean("force_refresh", true);
     if (paramBundle != null) {
       localBundle.putAll(paramBundle);
     }
-    ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchFeedsActivity(paramActivity, 13, 0, localBundle);
+    ReadInJoyActivityHelper.INSTANCE.launchFeedsActivity(paramActivity, 13, 0, localBundle);
   }
   
-  private void a(ListView paramListView)
+  private void b(ListView paramListView)
   {
     paramListView = a(paramListView);
     if (paramListView == null) {
@@ -98,15 +97,15 @@ public class ReadInJoyDailyOverScrollListener
     paramListView.setRotation(0.0F);
   }
   
-  private void b(ListView paramListView)
+  private void c(ListView paramListView)
   {
-    if (ReadInJoyDailyViewController.a() == 1)
+    if (ReadInJoyDailyViewController.m() == 1)
     {
       a((Activity)paramListView.getContext());
       a(1);
       return;
     }
-    String str = DailyModeConfigHandler.a();
+    String str = DailyModeConfigHandler.c();
     if (!TextUtils.isEmpty(str))
     {
       ReadInJoyUtils.a(paramListView.getContext(), str);
@@ -121,7 +120,7 @@ public class ReadInJoyDailyOverScrollListener
     paramView.append(paramInt);
     QLog.d("ReadInJoyDailyOverScrollListener", 2, paramView.toString());
     if (paramInt == 1) {
-      a(paramListView);
+      b(paramListView);
     }
   }
   
@@ -132,7 +131,7 @@ public class ReadInJoyDailyOverScrollListener
     paramView.append(paramInt1);
     QLog.d("ReadInJoyDailyOverScrollListener", 2, paramView.toString());
     if (paramInt1 == 1) {
-      a(paramListView);
+      b(paramListView);
     }
   }
   
@@ -148,8 +147,8 @@ public class ReadInJoyDailyOverScrollListener
     if (f2 >= 1.0D) {
       f1 = 1.0F;
     }
-    this.jdField_a_of_type_Float = f1;
-    f1 = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f1);
+    this.b = f1;
+    f1 = this.a.getInterpolation(f1);
     paramView = a(paramListView);
     if (paramView == null) {
       return;
@@ -171,7 +170,7 @@ public class ReadInJoyDailyOverScrollListener
     paramView.append(paramInt);
     QLog.d("ReadInJoyDailyOverScrollListener", 2, paramView.toString());
     if (paramInt == 1) {
-      b(paramListView);
+      c(paramListView);
     }
     return false;
   }
@@ -185,17 +184,17 @@ public class ReadInJoyDailyOverScrollListener
     if (paramInt != 1) {
       return;
     }
-    a(paramListView);
-    if (this.jdField_a_of_type_Float > DailyModeConfigHandler.a())
+    b(paramListView);
+    if (this.b > DailyModeConfigHandler.b())
     {
       QLog.d("ReadInJoyDailyOverScrollListener", 2, "[onViewCompleteVisableAndReleased] ");
-      b(paramListView);
+      c(paramListView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyOverScrollListener
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ final class AppCompatTextClassifierHelper
   @NonNull
   private TextView mTextView;
   
-  AppCompatTextClassifierHelper(TextView paramTextView)
+  AppCompatTextClassifierHelper(@NonNull TextView paramTextView)
   {
     this.mTextView = ((TextView)Preconditions.checkNotNull(paramTextView));
   }

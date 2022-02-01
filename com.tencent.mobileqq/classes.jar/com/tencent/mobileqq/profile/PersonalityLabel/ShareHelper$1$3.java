@@ -10,13 +10,13 @@ class ShareHelper$1$3
   
   public void run()
   {
-    String str = ShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1.a);
+    String str = ShareHelper.a(this.b.a);
     ThreadManager.getUIHandler().post(new ShareHelper.1.3.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3
  * JD-Core Version:    0.7.0.1
  */

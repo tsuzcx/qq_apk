@@ -48,7 +48,7 @@ public class f
     try
     {
       paramJSONObject.put(e.a(12), c.b());
-      paramJSONObject.put(e.a(13), c.e());
+      paramJSONObject.put(e.a(13), c.f());
       paramJSONObject.put(e.a(14), c.a());
       return true;
     }
@@ -74,7 +74,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qmsp.sdk.a.f
  * JD-Core Version:    0.7.0.1
  */

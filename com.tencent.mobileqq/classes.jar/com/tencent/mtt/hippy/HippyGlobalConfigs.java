@@ -16,18 +16,18 @@ import com.tencent.mtt.hippy.utils.LogUtils;
 
 public class HippyGlobalConfigs
 {
-  private Context mContext;
-  private HippyDeviceAdapter mDeviceAdapter;
-  private HippyEngineMonitorAdapter mEngineMonitorAdapter;
-  private HippyExceptionHandlerAdapter mExceptionHandler;
-  private HippyExecutorSupplierAdapter mExecutorSupplierAdapter;
-  private HippyFontScaleAdapter mFontScaleAdapter;
-  private HippyHttpAdapter mHttpAdapter;
-  private HippyImageLoader mImageLoaderAdapter;
-  private HippyLogAdapter mLogAdapter;
-  private HippySharedPreferencesAdapter mSharedPreferencesAdapter;
-  private HippySoLoaderAdapter mSoLoaderAdapter;
-  private HippyStorageAdapter mStorageAdapter;
+  private final Context mContext;
+  private final HippyDeviceAdapter mDeviceAdapter;
+  private final HippyEngineMonitorAdapter mEngineMonitorAdapter;
+  private final HippyExceptionHandlerAdapter mExceptionHandler;
+  private final HippyExecutorSupplierAdapter mExecutorSupplierAdapter;
+  private final HippyFontScaleAdapter mFontScaleAdapter;
+  private final HippyHttpAdapter mHttpAdapter;
+  private final HippyImageLoader mImageLoaderAdapter;
+  private final HippyLogAdapter mLogAdapter;
+  private final HippySharedPreferencesAdapter mSharedPreferencesAdapter;
+  private final HippySoLoaderAdapter mSoLoaderAdapter;
+  private final HippyStorageAdapter mStorageAdapter;
   
   private HippyGlobalConfigs(Context paramContext, HippySharedPreferencesAdapter paramHippySharedPreferencesAdapter, HippyExceptionHandlerAdapter paramHippyExceptionHandlerAdapter, HippyHttpAdapter paramHippyHttpAdapter, HippyImageLoader paramHippyImageLoader, HippyExecutorSupplierAdapter paramHippyExecutorSupplierAdapter, HippyStorageAdapter paramHippyStorageAdapter, HippyEngineMonitorAdapter paramHippyEngineMonitorAdapter, HippyFontScaleAdapter paramHippyFontScaleAdapter, HippySoLoaderAdapter paramHippySoLoaderAdapter, HippyDeviceAdapter paramHippyDeviceAdapter, HippyLogAdapter paramHippyLogAdapter)
   {
@@ -168,7 +168,7 @@ public class HippyGlobalConfigs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyGlobalConfigs
  * JD-Core Version:    0.7.0.1
  */

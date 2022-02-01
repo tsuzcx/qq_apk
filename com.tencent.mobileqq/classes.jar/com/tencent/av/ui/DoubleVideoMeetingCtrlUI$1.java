@@ -19,9 +19,9 @@ class DoubleVideoMeetingCtrlUI$1
   protected void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.d, 2, "onGAudioInviteResp");
+      QLog.d(this.b.X, 2, "onGAudioInviteResp");
     }
-    AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AVActivity localAVActivity = (AVActivity)this.b.ak.get();
     if ((localAVActivity != null) && (!localAVActivity.isFinishing())) {
       localAVActivity.runOnUiThread(new DoubleVideoMeetingCtrlUI.1.1(this));
     }
@@ -31,14 +31,14 @@ class DoubleVideoMeetingCtrlUI$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDestory UI-->relationId = ");
       localStringBuilder.append(paramLong);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_a_of_type_Long == paramLong) {
-      this.a.b(true);
+    if (this.b.i == paramLong) {
+      this.b.b(true);
     }
   }
   
@@ -46,28 +46,28 @@ class DoubleVideoMeetingCtrlUI$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDestroyInviteUI-->GroupId = ");
       localStringBuilder.append(paramLong);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (paramLong == this.a.jdField_a_of_type_Long)
+    if (paramLong == this.b.i)
     {
       super.a(paramLong);
-      this.a.b(true);
+      this.b.b(true);
     }
   }
   
   protected void a(long paramLong1, int paramInt1, long paramLong2, long paramLong3, long paramLong4, int paramInt2)
   {
-    if (this.a.h()) {
+    if (this.b.V()) {
       return;
     }
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = this.a.d;
+      localObject1 = this.b.X;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onGaOperationResult, result[");
       ((StringBuilder)localObject2).append(paramInt1);
@@ -80,58 +80,58 @@ class DoubleVideoMeetingCtrlUI$1
       ((StringBuilder)localObject2).append("], relationType[");
       ((StringBuilder)localObject2).append(paramInt2);
       ((StringBuilder)localObject2).append("], mCameraNum[");
-      ((StringBuilder)localObject2).append(this.a.q);
+      ((StringBuilder)localObject2).append(this.b.ac);
       ((StringBuilder)localObject2).append("], seq[");
       ((StringBuilder)localObject2).append(paramLong1);
       ((StringBuilder)localObject2).append("]");
       QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+    Object localObject1 = this.b.am.k();
     switch (paramInt1)
     {
     default: 
     case 96: 
       if (paramLong3 == 1L)
       {
-        if (((SessionInfo)localObject1).af) {
+        if (((SessionInfo)localObject1).bz) {
           return;
         }
-        this.a.e("onGaOperationResult->REQUEST_VIDEO_SUC");
-        this.a.a(paramLong1, ((SessionInfo)localObject1).c);
+        this.b.e("onGaOperationResult->REQUEST_VIDEO_SUC");
+        this.b.a(paramLong1, ((SessionInfo)localObject1).bi);
         return;
       }
       break;
     case 91: 
     case 92: 
-      this.a.c(paramLong1, true);
-      this.a.o(paramLong1);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(paramLong1) });
+      this.b.c(paramLong1, true);
+      this.b.q(paramLong1);
+      this.b.al.a(new Object[] { Integer.valueOf(106), Long.valueOf(paramLong1) });
       return;
     case 90: 
       if (paramLong3 == 3L)
       {
-        if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
-          if (this.a.q > 1) {
-            this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131373640, 0);
+        if (this.b.aA != null) {
+          if (this.b.ac > 1) {
+            this.b.aA.setViewVisibility(2131441310, 0);
           } else {
-            this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131373640, 8);
+            this.b.aA.setViewVisibility(2131441310, 8);
           }
         }
-        if ((!((SessionInfo)localObject1).j) || (this.a.c))
+        if ((!((SessionInfo)localObject1).H) || (this.b.c))
         {
-          localObject2 = this.a;
+          localObject2 = this.b;
           ((DoubleVideoMeetingCtrlUI)localObject2).c = false;
-          ((DoubleVideoMeetingCtrlUI)localObject2).n(paramLong1);
-          paramInt1 = ((SessionInfo)localObject1).a(this.a.jdField_b_of_type_Long, 1);
+          ((DoubleVideoMeetingCtrlUI)localObject2).p(paramLong1);
+          paramInt1 = ((SessionInfo)localObject1).b(this.b.k, 1);
           boolean bool;
           if (paramInt1 != -1) {
-            bool = ((VideoViewInfo)((SessionInfo)localObject1).c.get(paramInt1)).a;
+            bool = ((VideoViewInfo)((SessionInfo)localObject1).bi.get(paramInt1)).c;
           } else {
             bool = false;
           }
-          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
+          this.b.al.a(new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
         }
-        DoubleVideoMeetingCtrlUI.a(this.a, paramLong1);
+        DoubleVideoMeetingCtrlUI.a(this.b, paramLong1);
         return;
       }
       if (paramLong3 == 2L) {}
@@ -143,23 +143,23 @@ class DoubleVideoMeetingCtrlUI$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onCreateRoomSuc-->relationId = ");
       localStringBuilder.append(paramLong2);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (paramLong2 != this.a.jdField_a_of_type_Long) {
+    if (paramLong2 != this.b.i) {
       return;
     }
-    this.a.a(paramLong1, true);
+    this.b.a(paramLong1, true);
   }
   
   protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onMemberVideoOut, groupId[");
       localStringBuilder.append(paramLong2);
@@ -172,15 +172,15 @@ class DoubleVideoMeetingCtrlUI$1
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    this.a.a(paramLong1, paramLong2, paramLong3, 2);
+    this.b.a(paramLong1, paramLong2, paramLong3, 2);
   }
   
   protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onMemberLeave, groupId[");
       localStringBuilder.append(paramLong1);
@@ -193,15 +193,15 @@ class DoubleVideoMeetingCtrlUI$1
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    this.a.a(l, paramLong1, paramLong2, 6);
+    this.b.a(l, paramLong1, paramLong2, 6);
   }
   
   protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onMemberJoin, groupId[");
       localStringBuilder.append(paramLong1);
@@ -216,10 +216,10 @@ class DoubleVideoMeetingCtrlUI$1
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    if (paramLong2 == this.a.jdField_a_of_type_Long)
+    if (paramLong2 == this.b.i)
     {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().Z = 1;
-      this.a.a(l, paramLong1, paramLong2, 5);
+      this.b.am.k().cm = 1;
+      this.b.a(l, paramLong1, paramLong2, 5);
     }
   }
   
@@ -229,24 +229,24 @@ class DoubleVideoMeetingCtrlUI$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("EnterRoomSuc-->GroupId = ");
       localStringBuilder.append(paramLong2);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (paramLong2 == this.a.jdField_a_of_type_Long) {
-      this.a.A(paramLong1);
+    if (paramLong2 == this.b.i) {
+      this.b.G(paramLong1);
     }
-    this.a.a(paramLong1, false);
+    this.b.a(paramLong1, false);
   }
   
   protected void b(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onGaMemberShareSrcInOrOut, groupId[");
       localStringBuilder.append(paramLong1);
@@ -262,22 +262,22 @@ class DoubleVideoMeetingCtrlUI$1
       QLog.w(str, 1, localStringBuilder.toString());
     }
     if (paramBoolean1) {
-      this.a.a(l, paramLong1, paramLong2, 3);
+      this.b.a(l, paramLong1, paramLong2, 3);
     } else {
-      this.a.a(l, paramLong1, paramLong2, 4);
+      this.b.a(l, paramLong1, paramLong2, 4);
     }
-    this.a.jdField_b_of_type_Boolean = paramBoolean2;
+    this.b.b = paramBoolean2;
   }
   
   protected void c(long paramLong, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {
+    if (this.b.am == null) {
       return;
     }
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onFirstFrameDataComeIn, uin[");
       localStringBuilder.append(paramLong);
@@ -288,22 +288,22 @@ class DoubleVideoMeetingCtrlUI$1
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    paramInt = this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, paramInt);
-    if ((paramInt != -1) && (((VideoViewInfo)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).a))
+    paramInt = this.b.am.k().b(paramLong, paramInt);
+    if ((paramInt != -1) && (((VideoViewInfo)this.b.am.k().bi.get(paramInt)).c))
     {
-      TipsUtil.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-      TipsUtil.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
+      TipsUtil.b(this.b.al, 1036);
+      TipsUtil.b(this.b.al, 1037);
     }
-    DoubleVideoMeetingCtrlUI.b(this.a, l);
-    this.a.f("OnFirstFrameDataComeIn");
+    DoubleVideoMeetingCtrlUI.b(this.b, l);
+    this.b.f("OnFirstFrameDataComeIn");
   }
   
   protected void c(long paramLong1, long paramLong2)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onMemberVideoIn, groupId[");
       localStringBuilder.append(paramLong1);
@@ -314,7 +314,7 @@ class DoubleVideoMeetingCtrlUI$1
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    this.a.a(l, paramLong1, paramLong2, 1);
+    this.b.a(l, paramLong1, paramLong2, 1);
   }
   
   protected void d(long paramLong1, long paramLong2)
@@ -327,9 +327,9 @@ class DoubleVideoMeetingCtrlUI$1
       ((StringBuilder)localObject).append("]");
       QLog.i("AVShare", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-    if ((paramLong2 == this.a.jdField_a_of_type_Long) && (((SessionInfo)localObject).f == paramLong2)) {
-      this.a.a(paramLong1, (SessionInfo)localObject, 3);
+    Object localObject = this.b.am.k();
+    if ((paramLong2 == this.b.i) && (((SessionInfo)localObject).aN == paramLong2)) {
+      this.b.a(paramLong1, (SessionInfo)localObject, 3);
     }
   }
 }

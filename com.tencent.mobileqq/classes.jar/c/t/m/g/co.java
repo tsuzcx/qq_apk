@@ -16,6 +16,7 @@ import android.util.Log;
 import android.util.LruCache;
 import android.util.Pair;
 import androidx.annotation.Nullable;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -258,7 +259,7 @@ public final class co
     label124:
     do
     {
-      localObject = ((WifiManager)localObject).getConnectionInfo();
+      localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
       int i1 = 1;
       paramContext = paramContext.getNetworkInfo(1);
       if ((localObject != null) && (paramContext != null))
@@ -542,37 +543,37 @@ public final class co
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 367	java/io/File:exists	()Z
+    //   1: invokevirtual 369	java/io/File:exists	()Z
     //   4: ifeq +163 -> 167
     //   7: aload_0
-    //   8: invokevirtual 370	java/io/File:length	()J
+    //   8: invokevirtual 372	java/io/File:length	()J
     //   11: lconst_0
     //   12: lcmp
     //   13: ifne +6 -> 19
     //   16: goto +151 -> 167
-    //   19: new 372	java/io/ByteArrayOutputStream
+    //   19: new 374	java/io/ByteArrayOutputStream
     //   22: dup
-    //   23: invokespecial 373	java/io/ByteArrayOutputStream:<init>	()V
+    //   23: invokespecial 375	java/io/ByteArrayOutputStream:<init>	()V
     //   26: astore 4
     //   28: aconst_null
     //   29: astore_3
     //   30: aconst_null
     //   31: astore_2
-    //   32: invokestatic 378	c/t/m/g/dn:a	()Lc/t/m/g/dn;
+    //   32: invokestatic 380	c/t/m/g/dn:a	()Lc/t/m/g/dn;
     //   35: sipush 2048
-    //   38: invokevirtual 381	c/t/m/g/dn:a	(I)[B
+    //   38: invokevirtual 383	c/t/m/g/dn:a	(I)[B
     //   41: astore 5
-    //   43: new 383	java/io/BufferedInputStream
+    //   43: new 385	java/io/BufferedInputStream
     //   46: dup
-    //   47: new 385	java/io/FileInputStream
+    //   47: new 387	java/io/FileInputStream
     //   50: dup
     //   51: aload_0
-    //   52: invokespecial 388	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   55: invokespecial 391	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   52: invokespecial 390	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   55: invokespecial 393	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   58: astore_0
     //   59: aload_0
     //   60: aload 5
-    //   62: invokevirtual 395	java/io/BufferedInputStream:read	([B)I
+    //   62: invokevirtual 397	java/io/BufferedInputStream:read	([B)I
     //   65: istore_1
     //   66: iload_1
     //   67: iconst_m1
@@ -581,20 +582,20 @@ public final class co
     //   73: aload 5
     //   75: iconst_0
     //   76: iload_1
-    //   77: invokevirtual 398	java/io/ByteArrayOutputStream:write	([BII)V
+    //   77: invokevirtual 400	java/io/ByteArrayOutputStream:write	([BII)V
     //   80: goto -21 -> 59
     //   83: aload 4
-    //   85: invokevirtual 401	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   85: invokevirtual 403	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   88: astore_2
-    //   89: invokestatic 378	c/t/m/g/dn:a	()Lc/t/m/g/dn;
+    //   89: invokestatic 380	c/t/m/g/dn:a	()Lc/t/m/g/dn;
     //   92: aload 5
-    //   94: invokevirtual 403	c/t/m/g/dn:a	([B)V
+    //   94: invokevirtual 405	c/t/m/g/dn:a	([B)V
     //   97: aload_0
-    //   98: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   98: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
     //   101: aload_2
     //   102: astore_0
     //   103: aload 4
-    //   105: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   105: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
     //   108: aload_0
     //   109: areturn
     //   110: astore_3
@@ -608,26 +609,26 @@ public final class co
     //   122: goto +26 -> 148
     //   125: aload_0
     //   126: astore_2
-    //   127: getstatic 406	c/t/m/g/do:a	[B
+    //   127: getstatic 408	c/t/m/g/do:a	[B
     //   130: astore_3
-    //   131: invokestatic 378	c/t/m/g/dn:a	()Lc/t/m/g/dn;
+    //   131: invokestatic 380	c/t/m/g/dn:a	()Lc/t/m/g/dn;
     //   134: aload 5
-    //   136: invokevirtual 403	c/t/m/g/dn:a	([B)V
+    //   136: invokevirtual 405	c/t/m/g/dn:a	([B)V
     //   139: aload_0
-    //   140: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   140: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
     //   143: aload_3
     //   144: astore_0
     //   145: goto -42 -> 103
-    //   148: invokestatic 378	c/t/m/g/dn:a	()Lc/t/m/g/dn;
+    //   148: invokestatic 380	c/t/m/g/dn:a	()Lc/t/m/g/dn;
     //   151: aload 5
-    //   153: invokevirtual 403	c/t/m/g/dn:a	([B)V
+    //   153: invokevirtual 405	c/t/m/g/dn:a	([B)V
     //   156: aload_2
-    //   157: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   157: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
     //   160: aload 4
-    //   162: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   162: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
     //   165: aload_0
     //   166: athrow
-    //   167: getstatic 406	c/t/m/g/do:a	[B
+    //   167: getstatic 408	c/t/m/g/do:a	[B
     //   170: areturn
     //   171: astore_0
     //   172: aload_3

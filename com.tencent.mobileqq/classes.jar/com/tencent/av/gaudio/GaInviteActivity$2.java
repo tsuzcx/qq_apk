@@ -1,5 +1,6 @@
 package com.tencent.av.gaudio;
 
+import com.tencent.av.VideoController;
 import com.tencent.av.VideoController.GAudioFriends;
 import com.tencent.av.app.GAudioUIObserver;
 import com.tencent.av.app.VideoAppInterface;
@@ -14,15 +15,17 @@ class GaInviteActivity$2
   
   protected void a(long paramLong, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
-      this.a.f();
+    if ((this.b.b == paramLong) || (0L == paramLong))
+    {
+      this.b.i();
+      this.b.f.d(paramInt);
     }
   }
   
   protected void a(long paramLong, String paramString)
   {
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.c.equals(paramString))) {
-      this.a.finish();
+    if ((this.b.b == paramLong) && (this.b.B.equals(paramString))) {
+      this.b.finish();
     }
   }
   
@@ -30,8 +33,8 @@ class GaInviteActivity$2
   {
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      if (String.valueOf(((VideoController.GAudioFriends)paramArrayList.next()).jdField_a_of_type_Long).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount())) {
-        this.a.finish();
+      if (String.valueOf(((VideoController.GAudioFriends)paramArrayList.next()).a).equalsIgnoreCase(this.b.e.getAccount())) {
+        this.b.finish();
       }
     }
   }
@@ -39,8 +42,8 @@ class GaInviteActivity$2
   protected void b()
   {
     super.b();
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.a("onServiceConnected");
+    if (this.b.u) {
+      this.b.a("onServiceConnected");
     }
   }
   
@@ -49,7 +52,7 @@ class GaInviteActivity$2
     if (QLog.isColorLevel())
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b.l);
       ((StringBuilder)localObject).append(".troopgroup_vedio.invite");
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -60,28 +63,28 @@ class GaInviteActivity$2
       localStringBuilder.append(",invitedId:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", mInviterUin:");
-      localStringBuilder.append(this.a.jdField_b_of_type_Long);
+      localStringBuilder.append(this.b.c);
       localStringBuilder.append(", mGroupId:");
-      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.b);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.finish();
+    if ((paramLong2 == this.b.c) && (paramLong1 == this.b.b)) {
+      this.b.finish();
     }
   }
   
   protected void d(long paramLong)
   {
-    if (this.a.jdField_a_of_type_Long != paramLong) {
-      this.a.a(-1035L);
+    if (this.b.b != paramLong) {
+      this.b.a(-1035L);
     }
-    this.a.finish();
+    this.b.finish();
   }
   
   protected void e(long paramLong)
   {
-    if (this.a.jdField_a_of_type_Long == paramLong) {
-      this.a.finish();
+    if (this.b.b == paramLong) {
+      this.b.finish();
     }
   }
 }

@@ -10,21 +10,21 @@ class PermissionPrivacyFragment$3$1
   
   public void run()
   {
-    if (PermissionPrivacyFragment.a(this.a.this$0) == 0)
+    if (PermissionPrivacyFragment.d(this.a.this$0) == 0)
     {
-      this.a.this$0.a.setVisibility(8);
+      this.a.this$0.d.setVisibility(8);
       return;
     }
-    FormSimpleItem localFormSimpleItem = this.a.this$0.a;
+    FormSimpleItem localFormSimpleItem = this.a.this$0.d;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(PermissionPrivacyFragment.a(this.a.this$0));
-    localStringBuilder.append(HardCodeUtil.a(2131707925));
+    localStringBuilder.append(PermissionPrivacyFragment.d(this.a.this$0));
+    localStringBuilder.append(HardCodeUtil.a(2131905739));
     localFormSimpleItem.setRightText(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

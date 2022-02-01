@@ -22,7 +22,7 @@ class BusinessCmrTmpChatPie$4
     Object localObject1 = paramView.getTag();
     if ((localObject1 != null) && ((localObject1 instanceof Integer)))
     {
-      Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      Object localObject2 = this.a.ah.b;
       int i = ((Integer)localObject1).intValue();
       boolean bool = true;
       if (i != 1)
@@ -30,28 +30,28 @@ class BusinessCmrTmpChatPie$4
         if (i != 2)
         {
           if (i == 3) {
-            if (this.a.jdField_a_of_type_ComTencentQidianQidianManager.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+            if (this.a.bR.m(this.a.ah.b))
             {
-              localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-              localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-              String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131690706);
-              if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("param_return_addr") == null) {
+              localObject1 = this.a.f;
+              localObject2 = this.a.ah;
+              String str = this.a.d.getApp().getString(2131887625);
+              if (this.a.f.getIntent().getStringExtra("param_return_addr") == null) {
                 bool = false;
               }
               ChatActivityUtils.a((Activity)localObject1, (SessionInfo)localObject2, str, bool);
             }
             else
             {
-              this.a.at();
+              this.a.bG();
             }
           }
         }
         else {
-          ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
+          ChatActivityUtils.a(this.a.d, this.a.f, this.a.ah.a, (String)localObject2, this.a.ah.f, false);
         }
       }
       else {
-        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
+        ChatActivityUtils.a(this.a.d, this.a.f, this.a.ah.a, (String)localObject2, this.a.ah.f, true);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -59,7 +59,7 @@ class BusinessCmrTmpChatPie$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.4
  * JD-Core Version:    0.7.0.1
  */

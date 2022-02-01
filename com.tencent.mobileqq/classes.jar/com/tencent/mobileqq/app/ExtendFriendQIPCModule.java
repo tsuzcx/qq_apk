@@ -88,7 +88,7 @@ public class ExtendFriendQIPCModule
       String str1 = paramBundle.getString("schoolid", "");
       int i = paramBundle.getInt("idx", 0);
       IExpandManager localIExpandManager = (IExpandManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-      String str2 = localIExpandManager.j();
+      String str2 = localIExpandManager.J();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -109,7 +109,7 @@ public class ExtendFriendQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ExtendFriendQIPCModule
  * JD-Core Version:    0.7.0.1
  */

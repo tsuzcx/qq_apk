@@ -21,17 +21,17 @@ public class ProfileFeedPlayPageLoader
   {
     super(paramProfileFeedPlayInfo);
     paramProfileFeedPlayInfo = (FeedManager)SuperManager.a(11);
-    if (paramProfileFeedPlayInfo.b != null) {
-      this.a = paramProfileFeedPlayInfo.b;
+    if (paramProfileFeedPlayInfo.h != null) {
+      this.b = paramProfileFeedPlayInfo.h;
     }
   }
   
   public FeedIdListSeqInfo a(String paramString)
   {
-    if (this.a == null) {
+    if (this.b == null) {
       return null;
     }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.a.iterator();
     while (localIterator.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)localIterator.next();
@@ -44,32 +44,32 @@ public class ProfileFeedPlayPageLoader
   
   public void a(boolean paramBoolean, int paramInt, IGroupPageLoader.CallBack paramCallBack)
   {
-    if (this.a == null)
+    if (this.b == null)
     {
       paramCallBack.a(new ErrorMessage(940001, "null point"), null, true);
       return;
     }
-    Object localObject1 = this.a.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.b.a;
     if ((paramBoolean) && (((List)localObject1).size() > 0))
     {
       localObject2 = b((List)localObject1);
-      paramCallBack.a(new ErrorMessage(), (List)localObject2, this.a.jdField_a_of_type_Boolean);
+      paramCallBack.a(new ErrorMessage(), (List)localObject2, this.b.b);
       SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
       return;
     }
     localObject1 = new GetProfileFeedIdListRequest();
-    ((GetProfileFeedIdListRequest)localObject1).a = this.a.a();
-    ((GetProfileFeedIdListRequest)localObject1).b = QQStoryContext.a().b();
+    ((GetProfileFeedIdListRequest)localObject1).e = this.b.c();
+    ((GetProfileFeedIdListRequest)localObject1).f = QQStoryContext.a().i();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("start request with cookie ");
-    ((StringBuilder)localObject2).append(((GetProfileFeedIdListRequest)localObject1).a);
+    ((StringBuilder)localObject2).append(((GetProfileFeedIdListRequest)localObject1).e);
     SLog.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", ((StringBuilder)localObject2).toString());
     CmdTaskManger.a().a((NetworkRequest)localObject1, new ProfileFeedPlayPageLoader.1(this, paramCallBack));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.ProfileFeedPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

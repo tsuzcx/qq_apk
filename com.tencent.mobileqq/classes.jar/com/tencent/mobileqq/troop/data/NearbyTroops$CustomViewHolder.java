@@ -15,31 +15,31 @@ import java.util.ArrayList;
 public class NearbyTroops$CustomViewHolder
   extends FacePreloadHolder.ViewHolder
 {
-  public int a;
-  public GroupInfo a;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
   public TextView a;
-  public TroopLabelLayout a;
-  public ArrayList<GroupLabel> a;
-  public boolean a;
-  public int b = 2;
-  public ImageView b;
-  public LinearLayout b;
   public TextView b;
-  public TroopLabelLayout b;
-  public String b;
-  public TextView c;
-  public int d;
-  public TextView d;
+  public TroopLabelLayout c;
+  public TroopLabelLayout d;
   public TextView e;
+  public ImageView f;
+  public ImageView g;
+  public int h;
+  public int i = 2;
+  public String j;
+  public boolean k;
+  public ArrayList<GroupLabel> l;
+  public LinearLayout m;
+  public LinearLayout n;
+  public TextView o;
+  public int p;
+  public View q;
+  public GroupInfo r;
+  public TextView s;
+  public RelativeLayout t;
+  public Button u;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.NearbyTroops.CustomViewHolder
  * JD-Core Version:    0.7.0.1
  */

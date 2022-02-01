@@ -16,24 +16,24 @@ class PermissionPrivacyFragment$5$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateIntimateRelationshipFriendCount number:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a);
       QLog.i("PermissionPrivacyFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.a > 0)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqSettingsFragmentPermissionPrivacyFragment$5.this$0.i;
+      localObject = this.b.this$0.l;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append(HardCodeUtil.a(2131701082));
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(HardCodeUtil.a(2131899102));
       ((FormSimpleItem)localObject).setRightText(localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSettingsFragmentPermissionPrivacyFragment$5.this$0.i.setRightText("");
+    this.b.this$0.l.setRightText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PermissionPrivacyFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

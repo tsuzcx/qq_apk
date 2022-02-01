@@ -15,7 +15,7 @@ class SignatureHistoryFragment$DataAdapter
   
   public int getCount()
   {
-    int i = SignatureHistoryFragment.a(this.a).size();
+    int i = SignatureHistoryFragment.g(this.a).size();
     if (i == 0) {
       return 1;
     }
@@ -24,10 +24,10 @@ class SignatureHistoryFragment$DataAdapter
   
   public Object getItem(int paramInt)
   {
-    if (paramInt >= SignatureHistoryFragment.a(this.a).size()) {
+    if (paramInt >= SignatureHistoryFragment.g(this.a).size()) {
       return null;
     }
-    return SignatureHistoryFragment.a(this.a).get(paramInt);
+    return SignatureHistoryFragment.g(this.a).get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -37,7 +37,7 @@ class SignatureHistoryFragment$DataAdapter
   
   public int getItemViewType(int paramInt)
   {
-    int i = SignatureHistoryFragment.a(this.a).size();
+    int i = SignatureHistoryFragment.g(this.a).size();
     if (i == 0) {
       return 2;
     }
@@ -52,8 +52,8 @@ class SignatureHistoryFragment$DataAdapter
     int i = getItemViewType(paramInt);
     if (i == 2)
     {
-      SignatureHistoryFragment.a(this.a).setLayoutParams(new AbsListView.LayoutParams(this.a.a.getWidth(), this.a.a.getHeight()));
-      paramView = SignatureHistoryFragment.a(this.a);
+      SignatureHistoryFragment.j(this.a).setLayoutParams(new AbsListView.LayoutParams(this.a.a.getWidth(), this.a.a.getHeight()));
+      paramView = SignatureHistoryFragment.j(this.a);
     }
     else if (i == 0)
     {
@@ -79,7 +79,7 @@ class SignatureHistoryFragment$DataAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.DataAdapter
  * JD-Core Version:    0.7.0.1
  */

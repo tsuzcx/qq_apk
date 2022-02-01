@@ -19,63 +19,63 @@ class BidDownloader$1
   
   public void loaded(String paramString, int paramInt)
   {
-    int j = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    if ((HtmlOffline.a != null) && (HtmlOffline.a.containsKey(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString))) {
-      HtmlOffline.a.remove(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString);
+    int j = (int)(System.currentTimeMillis() - this.a);
+    if ((HtmlOffline.g != null) && (HtmlOffline.g.containsKey(this.b.b))) {
+      HtmlOffline.g.remove(this.b.b);
     }
-    this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    this.b.o.sendEmptyMessage(0);
     boolean bool = true;
     if (paramInt == 0)
     {
-      OfflinePlugin.d(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_b_of_type_Boolean)
+      OfflinePlugin.h(this.b.b);
+      if (this.b.e)
       {
-        if (!HtmlOffline.a(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString))
+        if (!HtmlOffline.a(this.b.b))
         {
-          Util.b(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_b_of_type_JavaLangString);
+          Util.b(this.b.k);
           paramString = new StringBuilder();
-          paramString.append(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString));
-          paramString.append(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString);
+          paramString.append(OfflineEnvHelper.b(this.b.b));
+          paramString.append(this.b.b);
           Util.a(paramString.toString());
-          paramString = this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, 10, j);
-          this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
-          HtmlOffline.a(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString, 14, 0L, NetworkUtil.getNetWorkType(), "lixian_update", "0");
-          OfflinePlugin.a(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString, "Offline_Update_BSDiff", j, 14, "", "", "");
-          BidDownloader.a(0, this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString, 14, 0, "lixian_update", 0);
+          paramString = this.b.o.obtainMessage(2, 10, j);
+          this.b.o.sendMessage(paramString);
+          HtmlOffline.a(this.b.b, 14, 0L, NetworkUtil.getNetWorkType(), "lixian_update", "0");
+          OfflinePlugin.a(this.b.b, "Offline_Update_BSDiff", j, 14, "", "", "");
+          BidDownloader.a(0, this.b.b, 14, 0, "lixian_update", 0);
         }
       }
-      else if (((this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_d_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.e)) && (!this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.b()))
+      else if (((this.b.g) || (this.b.h)) && (!this.b.e()))
       {
-        paramString = BidDownloader.jdField_d_of_type_JavaLangString;
+        paramString = BidDownloader.s;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("businessId ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b.b);
         localStringBuilder.append(" now un compress file error! ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_b_of_type_JavaLangString);
+        localStringBuilder.append(this.b.k);
         QLog.e(paramString, 1, localStringBuilder.toString());
         return;
       }
-      if (2 == this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_Int)
+      if (2 == this.b.c)
       {
-        bool = HtmlOffline.b(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString);
-        paramString = this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, -1, j);
-        this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+        bool = HtmlOffline.b(this.b.b);
+        paramString = this.b.o.obtainMessage(2, -1, j);
+        this.b.o.sendMessage(paramString);
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_Boolean) {
-          bool = HtmlOffline.b(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString);
+        if (this.b.d) {
+          bool = HtmlOffline.b(this.b.b);
         }
-        paramString = this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, 0, j);
-        this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+        paramString = this.b.o.obtainMessage(2, 0, j);
+        this.b.o.sendMessage(paramString);
       }
-      if (this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_b_of_type_Boolean)
+      if (this.b.e)
       {
-        OfflinePlugin.a(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString, "Offline_Update_BSDiff", j, 0, "", "", "");
+        OfflinePlugin.a(this.b.b, "Offline_Update_BSDiff", j, 0, "", "", "");
       }
       else
       {
-        paramString = this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString;
+        paramString = this.b.b;
         if (bool) {
           i = 0;
         } else {
@@ -83,54 +83,54 @@ class BidDownloader$1
         }
         OfflinePlugin.a(paramString, "Offline_Update", j, i, "", "", "");
       }
-      BaseApplication.getContext().getSharedPreferences("bid_update_success_time", 4).edit().putLong(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
+      BaseApplication.getContext().getSharedPreferences("bid_update_success_time", 4).edit().putLong(this.b.b, System.currentTimeMillis()).commit();
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("success update bid: ");
-        paramString.append(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString);
+        paramString.append(this.b.b);
         QLog.i("OfflinePluginQQ", 2, paramString.toString());
       }
-      paramString = this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString;
+      paramString = this.b.b;
       l = j;
       i = NetworkUtil.getNetWorkType();
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_d_of_type_Int);
+      localStringBuilder.append(this.b.p);
       localStringBuilder.append("");
       HtmlOffline.a(paramString, paramInt, l, i, "lixian_update", localStringBuilder.toString());
-      BidDownloader.a(j, this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString, paramInt, this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_d_of_type_Int, "lixian_update", 0);
+      BidDownloader.a(j, this.b.b, paramInt, this.b.p, "lixian_update", 0);
       return;
     }
-    paramString = this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader;
-    paramString.jdField_b_of_type_Int += 1;
-    if (this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_b_of_type_Int < 3)
+    paramString = this.b;
+    paramString.j += 1;
+    if (this.b.j < 3)
     {
-      BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new BidDownloader.1.1(this));
+      BidDownloader.q.c(new BidDownloader.1.1(this));
       return;
     }
-    paramString = this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, 2, j);
-    this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
-    paramString = this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString;
+    paramString = this.b.o.obtainMessage(2, 2, j);
+    this.b.o.sendMessage(paramString);
+    paramString = this.b.b;
     long l = j;
     int i = NetworkUtil.getNetWorkType();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_d_of_type_Int);
+    localStringBuilder.append(this.b.p);
     localStringBuilder.append("");
     HtmlOffline.a(paramString, paramInt, l, i, "lixian_update", localStringBuilder.toString());
-    OfflinePlugin.a(this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString, "Offline_Update", j, paramInt, "", "", "");
-    BidDownloader.a(j, this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_JavaLangString, paramInt, this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_d_of_type_Int, "lixian_update", 0);
+    OfflinePlugin.a(this.b.b, "Offline_Update", j, paramInt, "", "", "");
+    BidDownloader.a(j, this.b.b, paramInt, this.b.p, "lixian_update", 0);
   }
   
   public void progress(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      ((AsyncBack)this.jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader.jdField_a_of_type_MqqUtilWeakReference.get()).progress(paramInt);
+    if (this.b.a.get() != null) {
+      ((AsyncBack)this.b.a.get()).progress(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.1
  * JD-Core Version:    0.7.0.1
  */

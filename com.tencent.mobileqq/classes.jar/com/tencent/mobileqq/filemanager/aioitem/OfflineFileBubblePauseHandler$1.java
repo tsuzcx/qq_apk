@@ -12,19 +12,19 @@ class OfflineFileBubblePauseHandler$1
 {
   OfflineFileBubblePauseHandler$1(OfflineFileBubblePauseHandler paramOfflineFileBubblePauseHandler, int paramInt, FileManagerEntity paramFileManagerEntity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubblePauseHandler.a, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.jdField_a_of_type_Int, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubblePauseHandler.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      ReportController.b(this.c.b, "dc00898", "", "", "0X800A7F3", "0X800A7F3", this.a, 0, "", "", "", "");
+      this.c.b.getFileManagerEngine().b(this.b.nSessionId);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubblePauseHandler.a();
+    this.c.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.OfflineFileBubblePauseHandler.1
  * JD-Core Version:    0.7.0.1
  */

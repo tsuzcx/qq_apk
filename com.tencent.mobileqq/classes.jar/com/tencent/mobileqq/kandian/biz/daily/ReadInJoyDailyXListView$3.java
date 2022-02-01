@@ -14,7 +14,7 @@ class ReadInJoyDailyXListView$3
   
   public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    Iterator localIterator = this.a.a.iterator();
+    Iterator localIterator = this.a.w.iterator();
     while (localIterator.hasNext()) {
       ((OverScrollViewListener)localIterator.next()).onNotCompleteVisable(paramInt, paramView, paramListView);
     }
@@ -32,7 +32,7 @@ class ReadInJoyDailyXListView$3
   
   public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    Iterator localIterator = this.a.a.iterator();
+    Iterator localIterator = this.a.w.iterator();
     while (localIterator.hasNext()) {
       ((OverScrollViewListener)localIterator.next()).onViewCompleteVisable(paramInt, paramView, paramListView);
     }
@@ -40,7 +40,7 @@ class ReadInJoyDailyXListView$3
   
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    Iterator localIterator = this.a.a.iterator();
+    Iterator localIterator = this.a.w.iterator();
     boolean bool = false;
     while (localIterator.hasNext()) {
       if (((OverScrollViewListener)localIterator.next()).onViewCompleteVisableAndReleased(paramInt, paramView, paramListView)) {
@@ -52,7 +52,7 @@ class ReadInJoyDailyXListView$3
   
   public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    Iterator localIterator = this.a.a.iterator();
+    Iterator localIterator = this.a.w.iterator();
     while (localIterator.hasNext()) {
       ((OverScrollViewListener)localIterator.next()).onViewNotCompleteVisableAndReleased(paramInt, paramView, paramListView);
     }
@@ -60,7 +60,7 @@ class ReadInJoyDailyXListView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyXListView.3
  * JD-Core Version:    0.7.0.1
  */

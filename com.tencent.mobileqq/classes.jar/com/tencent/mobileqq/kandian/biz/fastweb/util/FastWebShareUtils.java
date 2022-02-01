@@ -48,11 +48,11 @@ import org.json.JSONObject;
 
 public class FastWebShareUtils
 {
-  private static final String jdField_a_of_type_JavaLangString = "FastWebShareUtils";
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
+  private static final String a = "FastWebShareUtils";
   private String b;
+  private WXShareHelper.WXShareListener c;
+  private QQProgressDialog d;
+  private AbsBaseArticleInfo e;
   
   private int a(int paramInt)
   {
@@ -114,7 +114,7 @@ public class FastWebShareUtils
     }
     catch (NullPointerException localNullPointerException)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, localNullPointerException, new Object[0]);
+      QLog.e(a, 2, localNullPointerException, new Object[0]);
     }
     return paramString;
   }
@@ -131,8 +131,8 @@ public class FastWebShareUtils
   
   private void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramActivity);
+    if (this.d == null) {
+      this.d = new QQProgressDialog(paramActivity);
     }
   }
   
@@ -233,7 +233,7 @@ public class FastWebShareUtils
         }
         catch (NumberFormatException paramIntent)
         {
-          paramString1 = jdField_a_of_type_JavaLangString;
+          paramString1 = a;
           paramJSONObject = new StringBuilder();
           paramJSONObject.append("[handleShareMsgToQQParams] paramsKey = ");
           paramJSONObject.append(paramString2);
@@ -244,7 +244,7 @@ public class FastWebShareUtils
         }
         catch (JSONException paramIntent)
         {
-          paramString1 = jdField_a_of_type_JavaLangString;
+          paramString1 = a;
           paramJSONObject = new StringBuilder();
           paramJSONObject.append("[handleShareMsgToQQParams] paramsKey = ");
           paramJSONObject.append(paramString2);
@@ -276,14 +276,14 @@ public class FastWebShareUtils
     long l = paramJSONObject.optLong("appid", 0L);
     if (l > 0L)
     {
-      paramJSONObject = (AppInterface)ReadInJoyUtils.a();
+      paramJSONObject = (AppInterface)ReadInJoyUtils.b();
       if (paramJSONObject != null)
       {
         a(paramActivity);
-        if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
+        if (!this.d.isShowing())
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131693895);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+          this.d.c(2131891516);
+          this.d.show();
         }
         paramIntent.putExtra("struct_share_key_source_name", Long.toString(l));
         a(l, paramJSONObject, paramActivity, paramIntent);
@@ -292,16 +292,16 @@ public class FastWebShareUtils
     else
     {
       a(paramActivity);
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      Object localObject1 = this.d;
       if ((localObject1 != null) && (((QQProgressDialog)localObject1).isShowing()))
       {
         l = System.currentTimeMillis();
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("dialog dimiss time :");
         ((StringBuilder)localObject2).append(l);
         QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        this.d.dismiss();
       }
       Object localObject2 = paramJSONObject.optString("puin", null);
       localObject1 = localObject2;
@@ -310,15 +310,15 @@ public class FastWebShareUtils
       }
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject2 = (AppInterface)ReadInJoyUtils.a();
+        localObject2 = (AppInterface)ReadInJoyUtils.b();
         localObject2 = ((AppInterface)localObject2).getEntityManagerFactory(((AppInterface)localObject2).getAccount()).createEntityManager();
         Object localObject3 = (IPublicAccountDetail)((EntityManager)localObject2).find(((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetail.class), (String)localObject1);
         ((EntityManager)localObject2).close();
         localObject2 = paramJSONObject.optString("src_action", "");
         String str = a((IPublicAccountDetail)localObject3, (String)localObject2, paramJSONObject, (String)localObject1);
-        if (str.equalsIgnoreCase(paramActivity.getString(2131699864)))
+        if (str.equalsIgnoreCase(paramActivity.getString(2131897917)))
         {
-          boolean bool = str.equalsIgnoreCase(paramActivity.getString(2131699864));
+          boolean bool = str.equalsIgnoreCase(paramActivity.getString(2131897917));
           if (bool) {
             paramJSONObject = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
           } else {
@@ -346,7 +346,7 @@ public class FastWebShareUtils
         {
           localObject3 = paramJSONObject.optString("puin");
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(ReadInJoyConstants.k);
+          localStringBuilder.append(ReadInJoyConstants.l);
           localStringBuilder.append(Base64Util.encodeToString(((String)localObject3).getBytes(), 2));
           paramJSONObject.put("src_webActionUrl", localStringBuilder.toString());
           a(paramIntent, paramJSONObject, (String)localObject2, (String)localObject1, str);
@@ -362,12 +362,12 @@ public class FastWebShareUtils
       }
       else
       {
-        paramIntent.putExtra("app_name", paramActivity.getString(2131696418));
+        paramIntent.putExtra("app_name", paramActivity.getString(2131894190));
       }
       paramJSONObject = StructMsgFactory.a(paramIntent.getExtras());
       if (paramJSONObject == null)
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "build struct msg fail");
+        QLog.d(a, 2, "build struct msg fail");
         return;
       }
       paramIntent.putExtra("stuctmsg_bytes", paramJSONObject.getBytes());
@@ -386,7 +386,7 @@ public class FastWebShareUtils
       paramIntent.putExtra("struct_share_key_source_action", paramString1);
       if ("web".equals(paramString1))
       {
-        paramString1 = ReadinjoyReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, str1, ReadinjoyReportUtils.f);
+        paramString1 = ReadinjoyReportUtils.a(this.e, str1, ReadinjoyReportUtils.f);
         paramIntent.putExtra("struct_share_key_source_url", paramString1);
         paramIntent.putExtra("source_url", paramString1);
       }
@@ -418,27 +418,27 @@ public class FastWebShareUtils
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
+    if (this.c != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new FastWebShareUtils.1(this, paramAbsBaseArticleInfo, paramInt);
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    this.c = new FastWebShareUtils.1(this, paramAbsBaseArticleInfo, paramInt);
+    WXShareHelper.a().a(this.c);
   }
   
   private void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString7, Activity paramActivity, boolean paramBoolean)
   {
     HashMap localHashMap = new HashMap(1);
-    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.a();
+    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.b();
     int i;
     if (paramInt == 9) {
       i = 3;
     } else {
       i = 4;
     }
-    if (!WXShareHelper.a().a()) {
-      paramInt = 2131720478;
-    } else if (!WXShareHelper.a().b()) {
-      paramInt = 2131720479;
+    if (!WXShareHelper.a().b()) {
+      paramInt = 2131918154;
+    } else if (!WXShareHelper.a().c()) {
+      paramInt = 2131918155;
     } else {
       paramInt = -1;
     }
@@ -455,57 +455,57 @@ public class FastWebShareUtils
       return;
     }
     a(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131693895);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.d.c(2131891516);
+    this.d.show();
     ThreadManager.post(new FastWebShareUtils.3(this, paramString6, paramBoolean, localHashMap, localAppInterface, paramString1), 8, null, false);
   }
   
   private void a(String paramString1, String paramString2, String paramString3, AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString4, Activity paramActivity)
   {
-    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.a();
+    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.b();
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start!");
+      QLog.d(a, 2, "shareMsgToSina start!");
     }
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina installSinaWeibo:false");
+        QLog.d(a, 2, "shareMsgToSina installSinaWeibo:false");
       }
       try
       {
-        paramString1 = a("https://v.t.sina.com.cn/share/share.php?", paramString1, paramString2, paramString3);
+        paramString1 = a("https://service.weibo.com/share/share.php?", paramString1, paramString2, paramString3);
         paramString2 = new Intent(paramActivity, QQBrowserActivity.class);
         paramString2.putExtra("url", paramString1);
         paramActivity.startActivity(paramString2);
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start webview!");
+          QLog.d(a, 2, "shareMsgToSina start webview!");
         }
         a(localAppInterface.getApplication().getApplicationContext(), paramString4, 6, paramAbsBaseArticleInfo);
         ReportUtil.a(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramAbsBaseArticleInfo, 5, -1, false);
       }
       catch (Exception paramString1)
       {
-        QQToast.a(BaseApplication.getContext(), 0, 2131719009, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
-        paramString2 = jdField_a_of_type_JavaLangString;
+        QQToast.makeText(BaseApplication.getContext(), 0, 2131916544, 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
+        paramString2 = a;
         paramString3 = new StringBuilder();
         paramString3.append("shareMsgToSina error! msg=");
         paramString3.append(paramString1);
         QLog.d(paramString2, 2, paramString3.toString());
       }
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina end!");
+        QLog.d(a, 2, "shareMsgToSina end!");
       }
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
+      QLog.d(a, 2, "shareMsgToSina empty title or share_url");
     }
-    QQToast.a(BaseApplication.getContext(), 0, 2131719009, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(BaseApplication.getContext(), 0, 2131916544, 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
   }
   
   private void a(String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, String paramString4, AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString5, Activity paramActivity)
   {
-    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.a();
+    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.b();
     Bundle localBundle = new Bundle();
     localBundle.putString("title", paramString1);
     localBundle.putString("desc", paramString2);
@@ -523,10 +523,10 @@ public class FastWebShareUtils
     localBundle.putStringArrayList("image_url", paramString1);
     localBundle.putLong("req_share_id", 0L);
     localBundle.putInt("iUrlInfoFrm", 1);
-    localBundle.putLong("share_begin_time", SwiftBrowserShareMenuHandler.b);
+    localBundle.putLong("share_begin_time", SwiftBrowserShareMenuHandler.x);
     if (!QZoneShareManager.jumpToQzoneShare(localAppInterface, paramActivity, localBundle, null, 1))
     {
-      QRUtils.a(1, 2131689486);
+      QRUtils.a(1, 2131886094);
       ReportUtil.b(localAppInterface.getApplication().getApplicationContext(), localAppInterface, paramAbsBaseArticleInfo, 2, -1, false, false);
       return;
     }
@@ -536,15 +536,15 @@ public class FastWebShareUtils
   
   public static boolean a()
   {
-    return TextUtils.equals("1", (CharSequence)RIJSPUtils.a("kandian_daily_fast_web_bottom_share", "0"));
+    return TextUtils.equals("1", (CharSequence)RIJSPUtils.b("kandian_daily_fast_web_bottom_share", "0"));
   }
   
-  private boolean a(String paramString)
+  private boolean b(String paramString)
   {
     return (paramString != null) && (paramString.length() >= 5);
   }
   
-  private String b(String paramString)
+  private String c(String paramString)
   {
     Object localObject = paramString;
     if (paramString != null)
@@ -561,7 +561,7 @@ public class FastWebShareUtils
     return localObject;
   }
   
-  private String c(String paramString)
+  private String d(String paramString)
   {
     Object localObject = paramString;
     if (paramString != null)
@@ -578,21 +578,13 @@ public class FastWebShareUtils
     return localObject;
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-  }
-  
   void a(Activity paramActivity, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
   {
     Intent localIntent = new Intent();
     String str1 = paramJSONObject.optString("toUin");
     int i = paramJSONObject.optInt("uinType", 0);
     String str2 = paramJSONObject.optString("friendName");
-    if (a(str1))
+    if (b(str1))
     {
       localIntent.setClass(paramActivity.getApplicationContext(), DirectForwardActivity.class);
       localIntent.putExtra("toUin", str1);
@@ -605,8 +597,8 @@ public class FastWebShareUtils
       localIntent.setClass(paramActivity.getApplicationContext(), ForwardRecentActivity.class);
     }
     localIntent.putExtra("key_flag_from_plugin", true);
-    paramString1 = b(paramString1);
-    paramString2 = c(paramString2);
+    paramString1 = c(paramString1);
+    paramString2 = d(paramString2);
     paramInt = a(paramInt);
     localIntent.putExtra("pluginName", "web_share");
     localIntent.putExtra("title", paramString1);
@@ -617,7 +609,7 @@ public class FastWebShareUtils
     localIntent.putExtra("req_share_id", paramJSONObject.optLong("appid", -1L));
     localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
     localIntent.putExtra("image_url_remote", paramString4);
-    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696401, new Object[] { paramString1 }));
+    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131894173, new Object[] { paramString1 }));
     localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
     a(localIntent, "struct_share_key_content_action", paramJSONObject, "contentAction", false);
     a(localIntent, "struct_share_key_content_action_DATA", paramJSONObject, "actionData", false);
@@ -632,12 +624,12 @@ public class FastWebShareUtils
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, String paramString5)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.a();
-    if (((Boolean)RIJSPUtils.a("is_share_strike", Boolean.valueOf(false))).booleanValue())
+    this.e = paramAbsBaseArticleInfo;
+    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.b();
+    if (((Boolean)RIJSPUtils.b("is_share_strike", Boolean.valueOf(false))).booleanValue())
     {
-      QRUtils.a(1, 2131719009);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "sharing is stroked!");
+      QRUtils.a(1, 2131916544);
+      QLog.d(a, 1, "sharing is stroked!");
       return;
     }
     boolean bool;
@@ -672,7 +664,7 @@ public class FastWebShareUtils
       int i;
       label293:
       label317:
-      paramActivity = jdField_a_of_type_JavaLangString;
+      paramActivity = a;
       paramString1 = new StringBuilder();
       paramString1.append("doShareAction error! msg=");
       paramString1.append(paramAbsBaseArticleInfo);
@@ -700,14 +692,14 @@ public class FastWebShareUtils
       if (paramInt1 == 12)
       {
         a(str2, str4, str5, paramAbsBaseArticleInfo, paramString2, paramActivity);
-        ReadInJoyLogicEngine.a().o();
+        ReadInJoyLogicEngine.a().O();
         return;
       }
     }
     for (;;)
     {
       a(paramString1, str1, paramInt1, str2, str3, str4, str5, paramAbsBaseArticleInfo, paramString2, paramActivity, bool);
-      ReadInJoyLogicEngine.a().o();
+      ReadInJoyLogicEngine.a().O();
       return;
       for (;;)
       {
@@ -739,10 +731,18 @@ public class FastWebShareUtils
       }
     }
   }
+  
+  public void b()
+  {
+    if (this.c != null) {
+      WXShareHelper.a().b(this.c);
+    }
+    this.d = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebShareUtils
  * JD-Core Version:    0.7.0.1
  */

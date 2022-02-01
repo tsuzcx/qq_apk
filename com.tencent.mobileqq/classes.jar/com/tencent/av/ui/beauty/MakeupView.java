@@ -9,12 +9,11 @@ import android.widget.TextView;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.makeup.MakeupMng;
 import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.av.ui.BaseToolbar;
-import com.tencent.av.ui.EffectSettingUi;
 import com.tencent.av.ui.QAVPtvTemplateAdapter;
-import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
 import com.tencent.av.ui.QavListItemBase.ItemInfo;
 import com.tencent.av.ui.QavListItemHelper;
+import com.tencent.av.ui.effect.interfaces.IEffectCallback;
+import com.tencent.av.ui.effect.toolbar.BaseToolbar;
 import com.tencent.av.utils.AVUtil;
 import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -23,17 +22,17 @@ import java.util.ArrayList;
 
 public class MakeupView
   extends BeautyBaseView
-  implements QAVPtvTemplateAdapter.IEffectCallback
+  implements IEffectCallback
 {
-  int jdField_a_of_type_Int = 50;
-  final TextView jdField_a_of_type_AndroidWidgetTextView;
-  MakeupMng jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng = null;
-  QAVPtvTemplateAdapter jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter = null;
-  QavListItemHelper jdField_a_of_type_ComTencentAvUiQavListItemHelper = null;
-  final BeautySeekView jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView;
-  final HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  String jdField_a_of_type_JavaLangString = null;
-  final ArrayList<QavListItemBase.ItemInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
+  final ArrayList<QavListItemBase.ItemInfo> c = new ArrayList(10);
+  final TextView d;
+  final BeautySeekView e;
+  final HorizontalListView f;
+  QAVPtvTemplateAdapter g = null;
+  MakeupMng h = null;
+  String i = null;
+  int j = 50;
+  QavListItemHelper k = null;
   
   public MakeupView(Context paramContext)
   {
@@ -48,29 +47,29 @@ public class MakeupView
   public MakeupView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131559736, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378743));
-    this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView = ((BeautySeekView)findViewById(2131363489));
-    this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.setBeautySeekActionListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131368321));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setStayDisplayOffsetZero(true);
+    inflate(paramContext, 2131625776, this);
+    this.d = ((TextView)findViewById(2131447416));
+    this.e = ((BeautySeekView)findViewById(2131429389));
+    this.e.setBeautySeekActionListener(this);
+    this.f = ((HorizontalListView)findViewById(2131435195));
+    this.f.setStayDisplayOffsetZero(true);
     b();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng != null))
+    if ((this.g != null) && (this.h != null))
     {
       d();
-      this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.notifyDataSetChanged();
+      this.g.a(this.c);
+      this.g.notifyDataSetChanged();
       c();
     }
   }
   
   public void a(long paramLong)
   {
-    EffectSettingUi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramLong);
+    BaseToolbar.keepInToolbar(this.a, paramLong);
   }
   
   public void a(long paramLong, QavListItemBase.ItemInfo paramItemInfo)
@@ -85,19 +84,19 @@ public class MakeupView
       ((StringBuilder)localObject).append("]");
       QLog.i("MakeupView", 2, ((StringBuilder)localObject).toString());
     }
-    EffectSettingUi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramLong);
+    BaseToolbar.keepInToolbar(this.a, paramLong);
     if (paramItemInfo == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+    Object localObject = this.h;
     if (localObject != null) {
-      ((MakeupMng)localObject).a(paramLong, "onEffectClick");
+      ((MakeupMng)localObject).b(paramLong, "onEffectClick");
     }
-    boolean bool = TextUtils.equals("0", paramItemInfo.jdField_a_of_type_JavaLangString);
+    boolean bool = TextUtils.equals("0", paramItemInfo.a);
     localObject = null;
     if (bool)
     {
-      paramItemInfo = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+      paramItemInfo = this.h;
       if (paramItemInfo != null) {
         paramItemInfo.a(paramLong, null);
       }
@@ -105,24 +104,24 @@ public class MakeupView
       AVUtil.a("0X800AA64", 0, 0, "", "", "", "");
       return;
     }
-    MakeupMng localMakeupMng = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+    MakeupMng localMakeupMng = this.h;
     if (localMakeupMng != null) {
-      localObject = (PendantItem)localMakeupMng.a(paramItemInfo.jdField_a_of_type_JavaLangString);
+      localObject = (PendantItem)localMakeupMng.b(paramItemInfo.a);
     }
     if (localObject != null)
     {
       if (TextUtils.isEmpty(((PendantItem)localObject).getId())) {
         return;
       }
-      localMakeupMng = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+      localMakeupMng = this.h;
       if (localMakeupMng != null) {
         localMakeupMng.a(paramLong, (PendantItem)localObject);
       }
-      a(paramItemInfo.jdField_a_of_type_JavaLangString);
+      a(paramItemInfo.a);
     }
     try
     {
-      AVUtil.a("0X800AA62", Integer.parseInt(paramItemInfo.jdField_a_of_type_JavaLangString));
+      AVUtil.a("0X800AA62", Integer.parseInt(paramItemInfo.a));
       return;
     }
     catch (Throwable paramItemInfo) {}
@@ -130,9 +129,9 @@ public class MakeupView
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    MakeupMng localMakeupMng = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+    MakeupMng localMakeupMng = this.h;
     if (localMakeupMng != null) {
-      localMakeupMng.a(paramLong, this.jdField_a_of_type_ComTencentAvUiQavListItemHelper);
+      localMakeupMng.a(paramLong, this.k);
     }
     a();
   }
@@ -141,7 +140,7 @@ public class MakeupView
   
   public void a(String paramString)
   {
-    if (!TextUtils.equals(paramString, this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.equals(paramString, this.i))
     {
       if (QLog.isColorLevel())
       {
@@ -149,16 +148,16 @@ public class MakeupView
         localStringBuilder.append("changeCurSelItem, cur[");
         localStringBuilder.append(paramString);
         localStringBuilder.append("], pre[");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.i);
         localStringBuilder.append("]");
         QLog.i("MakeupView", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramString = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+      this.i = paramString;
+      paramString = this.h;
       if (paramString != null)
       {
-        this.jdField_a_of_type_Int = paramString.a(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+        this.j = paramString.d(this.i);
+        this.h.a(this.i, this.j, false);
       }
       b();
     }
@@ -172,23 +171,23 @@ public class MakeupView
         if (paramInt1 != 3) {
           return;
         }
-        this.jdField_a_of_type_Int = paramInt2;
-        paramString = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+        this.j = paramInt2;
+        paramString = this.h;
         if (paramString != null) {
-          paramString.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+          paramString.a(this.i, this.j, true);
         }
       }
     }
     try
     {
-      AVUtil.a("0X800AA63", Integer.parseInt(this.jdField_a_of_type_JavaLangString));
+      AVUtil.a("0X800AA63", Integer.parseInt(this.i));
       return;
     }
     catch (Throwable paramString) {}
-    this.jdField_a_of_type_Int = paramInt2;
-    paramString = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+    this.j = paramInt2;
+    paramString = this.h;
     if (paramString != null) {
-      paramString.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+      paramString.a(this.i, this.j, false);
     }
     return;
   }
@@ -196,87 +195,87 @@ public class MakeupView
   public void b()
   {
     Object localObject;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.i))
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject = this.d;
       if (localObject != null) {
         ((TextView)localObject).setVisibility(0);
       }
-      localObject = this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView;
+      localObject = this.e;
       if (localObject != null) {
         ((BeautySeekView)localObject).setVisibility(8);
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject = this.d;
       if (localObject != null) {
         ((TextView)localObject).setVisibility(8);
       }
-      localObject = this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView;
+      localObject = this.e;
       if (localObject != null)
       {
         ((BeautySeekView)localObject).setVisibility(0);
-        localObject = getContext().getResources().getString(2131695405);
-        this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.a((String)localObject, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0);
+        localObject = getContext().getResources().getString(2131893151);
+        this.e.a((String)localObject, this.i, this.j, 0);
       }
     }
   }
   
   public void b(long paramLong, boolean paramBoolean)
   {
-    MakeupMng localMakeupMng = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+    MakeupMng localMakeupMng = this.h;
     if (localMakeupMng != null) {
-      localMakeupMng.b(paramLong, this.jdField_a_of_type_ComTencentAvUiQavListItemHelper);
+      localMakeupMng.b(paramLong, this.k);
     }
   }
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng;
+    Object localObject = this.h;
     if (localObject != null)
     {
-      int k = -1;
-      if (!((MakeupMng)localObject).b()) {
-        localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng.b;
+      int i1 = -1;
+      if (!((MakeupMng)localObject).j()) {
+        localObject = this.h.m;
       } else {
         localObject = null;
       }
-      int j = 0;
-      int i;
+      int n = 0;
+      int m;
       for (;;)
       {
-        i = k;
-        if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        m = i1;
+        if (n >= this.c.size()) {
           break;
         }
-        QavListItemBase.ItemInfo localItemInfo = (QavListItemBase.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        if ((localItemInfo != null) && (TextUtils.equals((CharSequence)localObject, localItemInfo.jdField_a_of_type_JavaLangString)))
+        QavListItemBase.ItemInfo localItemInfo = (QavListItemBase.ItemInfo)this.c.get(n);
+        if ((localItemInfo != null) && (TextUtils.equals((CharSequence)localObject, localItemInfo.a)))
         {
-          i = j;
+          m = n;
           break;
         }
-        j += 1;
+        n += 1;
       }
-      j = i;
-      if (i < 1)
+      n = m;
+      if (m < 1)
       {
         localObject = null;
-        j = 0;
+        n = 0;
       }
       a((String)localObject);
-      localObject = this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter;
+      localObject = this.g;
       if (localObject != null) {
-        BaseToolbar.setSelectedListViewItemAndShow(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, (QAVPtvTemplateAdapter)localObject, j);
+        BaseToolbar.setSelectedListViewItemAndShow(this.f, (QAVPtvTemplateAdapter)localObject, n);
       }
     }
   }
   
   void d()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentAvUiQavListItemHelper.a(getContext());
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+    ArrayList localArrayList = this.k.a(getContext());
+    this.c.clear();
+    this.c.addAll(localArrayList);
   }
   
   public void onClick(View paramView) {}
@@ -284,21 +283,21 @@ public class MakeupView
   public void setAppInterface(VideoAppInterface paramVideoAppInterface)
   {
     super.setAppInterface(paramVideoAppInterface);
-    long l = AudioHelper.b();
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    long l = AudioHelper.c();
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng = ((MakeupMng)paramVideoAppInterface.a(13));
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng.a(l, this.jdField_a_of_type_ComTencentAvUiQavListItemHelper);
+      this.h = ((MakeupMng)paramVideoAppInterface.c(13));
+      this.h.a(l, this.k);
     }
-    this.jdField_a_of_type_ComTencentAvUiQavListItemHelper = new QavListItemHelper(4, this.jdField_a_of_type_ComTencentAvBusinessManagerMakeupMakeupMng);
+    this.k = new QavListItemHelper(4, this.h);
     d();
-    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter = new QAVPtvTemplateAdapter(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, getContext(), this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentWidgetHorizontalListView, 5.6F);
-    this.jdField_a_of_type_ComTencentAvUiQavListItemHelper.a(this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter);
-    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.a(this);
-    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.a(this.jdField_a_of_type_ComTencentAvUiQavListItemHelper);
-    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.a(true);
-    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.b(true);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter);
+    this.g = new QAVPtvTemplateAdapter(this.a, getContext(), this.c, this.f, 5.6F);
+    this.k.a(this.g);
+    this.g.a(this);
+    this.g.a(this.k);
+    this.g.a(true);
+    this.g.b(true);
+    this.f.setAdapter(this.g);
     c();
   }
 }

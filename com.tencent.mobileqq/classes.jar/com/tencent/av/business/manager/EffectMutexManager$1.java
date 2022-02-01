@@ -16,9 +16,9 @@ class EffectMutexManager$1
       if (localIMutexItem != null)
       {
         int j = EffectMutexManager.a(this.this$0).keyAt(i);
-        int k = this.jdField_a_of_type_Int;
+        int k = this.a;
         if (j != k) {
-          localIMutexItem.a(k, this.jdField_a_of_type_JavaLangString);
+          localIMutexItem.b(k, this.b);
         }
       }
       i += 1;

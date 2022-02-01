@@ -15,71 +15,71 @@ public class PullActiveManager
 {
   public static String a = "QQ";
   public static String b = "extra_notify_msg";
-  public Intent a;
-  public RecentItemPullActivePush a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+  public RecentItemPullActivePush c;
+  public Intent d;
+  private QQAppInterface e;
+  private MessageForText f;
   
   public PullActiveManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.e = paramQQAppInterface;
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null) {
+    if (this.c == null) {
       return 0;
     }
     return 1;
   }
   
-  public MessageForText a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null) {
-      return null;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)MessageRecordFactory.a(-1000));
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
-      ((MessageForText)localObject).msgtype = -1000;
-      ((MessageForText)localObject).istroop = 9653;
-      ((MessageForText)localObject).isread = false;
-      ((MessageForText)localObject).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.PULL_ACTIVE_PUSH_UIN;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.PULL_ACTIVE_PUSH_UIN;
-      localObject = this.jdField_a_of_type_AndroidContentIntent;
-      if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = ((Intent)localObject).getStringExtra(b);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.mTitleName))) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.mTitleName;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time != this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = null;
-  }
-  
   public void a(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null)
+    if (this.c == null)
     {
       localObject = new RecentUser(AppConstants.PULL_ACTIVE_PUSH_UIN, 9653);
       ((RecentUser)localObject).msgType = -1000;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = new RecentItemPullActivePush((RecentUser)localObject);
+      this.c = new RecentItemPullActivePush((RecentUser)localObject);
     }
     long l = NetConnInfoCenter.getServerTimeMillis();
     Object localObject = paramIntent.getStringExtra(b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.a((String)localObject, l);
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.c.a((String)localObject, l);
+    this.d = paramIntent;
+  }
+  
+  public void b()
+  {
+    this.c = null;
+  }
+  
+  public MessageForText c()
+  {
+    if (this.c == null) {
+      return null;
+    }
+    if (this.f == null)
+    {
+      this.f = ((MessageForText)MessageRecordFactory.a(-1000));
+      Object localObject = this.f;
+      ((MessageForText)localObject).msgtype = -1000;
+      ((MessageForText)localObject).istroop = 9653;
+      ((MessageForText)localObject).isread = false;
+      ((MessageForText)localObject).selfuin = this.e.getCurrentAccountUin();
+      this.f.senderuin = AppConstants.PULL_ACTIVE_PUSH_UIN;
+      this.f.frienduin = AppConstants.PULL_ACTIVE_PUSH_UIN;
+      localObject = this.d;
+      if (localObject != null) {
+        this.f.msg = ((Intent)localObject).getStringExtra(b);
+      }
+      this.f.time = this.c.time;
+    }
+    if ((this.f.msg == null) || (!this.f.msg.equals(this.c.mTitleName))) {
+      this.f.msg = this.c.mTitleName;
+    }
+    if (this.f.time != this.c.time) {
+      this.f.time = this.c.time;
+    }
+    return this.f;
   }
   
   public void onDestroy() {}

@@ -5,15 +5,15 @@ import java.util.List;
 
 public class OCRTextSearchInfo$Group
 {
-  public int a;
   public String a;
-  public List<OCRTextSearchInfo.ResultItem> a = new ArrayList();
-  public String b;
+  public int b;
   public String c;
+  public String d;
+  public List<OCRTextSearchInfo.ResultItem> e = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRTextSearchInfo.Group
  * JD-Core Version:    0.7.0.1
  */

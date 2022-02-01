@@ -8,13 +8,13 @@ class LebaHelper$1
   public void run()
   {
     LebaHelper.a(this.this$0);
-    this.this$0.h();
     this.this$0.i();
+    this.this$0.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.LebaHelper.1
  * JD-Core Version:    0.7.0.1
  */

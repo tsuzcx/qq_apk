@@ -52,7 +52,7 @@ public abstract class ISmartDeviceService$Stub
       if (paramParcel1.readInt() != 0) {
         localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      a(str1, (Bundle)localObject);
+      b(str1, (Bundle)localObject);
       paramParcel2.writeNoException();
       return true;
     }
@@ -76,7 +76,7 @@ public abstract class ISmartDeviceService$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.ipc.ISmartDeviceService.Stub
  * JD-Core Version:    0.7.0.1
  */

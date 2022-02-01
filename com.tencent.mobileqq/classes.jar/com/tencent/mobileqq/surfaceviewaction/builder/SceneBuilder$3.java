@@ -14,15 +14,15 @@ class SceneBuilder$3
   
   public void onClick(View paramView)
   {
-    if (SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder) != null) {
-      SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer, (ISprite)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBaseNode, this.jdField_a_of_type_JavaLangString);
+    if (SceneBuilder.b(this.d) != null) {
+      SceneBuilder.b(this.d).a(this.a, (ISprite)this.b, this.c);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.3
  * JD-Core Version:    0.7.0.1
  */

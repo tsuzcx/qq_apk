@@ -65,11 +65,11 @@ class PlayListDataModel$1
             break label366;
           }
           bool = true;
-          paramBundle.jdField_a_of_type_Boolean = bool;
-          this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+          paramBundle.b = bool;
+          this.a.a = paramArrayOfByte.total.get();
           PlayListDataModel.a(this.a, paramArrayOfByte);
-          PlayListDataModel.a(this.a, PlayListDataModel.a(this.a) + 10);
-          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener;
+          PlayListDataModel.a(this.a, PlayListDataModel.b(this.a) + 10);
+          paramBundle = this.a.e;
           if (paramArrayOfByte.err_code.has()) {
             paramInt = paramArrayOfByte.err_code.get();
           }
@@ -89,7 +89,7 @@ class PlayListDataModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.PlayListDataModel.1
  * JD-Core Version:    0.7.0.1
  */

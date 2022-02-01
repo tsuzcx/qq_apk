@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class TroopRobotMsgSendCallback
   implements ISendMessageCallback
 {
-  public void a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
+  public void afterMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
+  public boolean beforeMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
   {
     paramAIOContext = (AIOShortcutBarHelper)paramAIOContext.a(52);
     if (paramAIOContext != null)
@@ -22,19 +22,19 @@ public class TroopRobotMsgSendCallback
       AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(18);
       localAIOShortcutBarEvent.a().putBoolean("isSendToRobotServer", false);
       paramAIOContext.a(localAIOShortcutBarEvent);
-      paramSendLogicParam.a().i = localAIOShortcutBarEvent.a().getBoolean("result", false);
+      paramSendLogicParam.b().y = localAIOShortcutBarEvent.a().getBoolean("result", false);
     }
     return false;
   }
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
+  public boolean onMessageSending(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.TroopRobotMsgSendCallback
  * JD-Core Version:    0.7.0.1
  */

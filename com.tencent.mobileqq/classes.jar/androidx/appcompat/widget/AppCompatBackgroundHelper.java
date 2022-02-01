@@ -7,6 +7,7 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.R.styleable;
 import androidx.core.view.ViewCompat;
 
@@ -17,9 +18,10 @@ class AppCompatBackgroundHelper
   private final AppCompatDrawableManager mDrawableManager;
   private TintInfo mInternalBackgroundTint;
   private TintInfo mTmpInfo;
+  @NonNull
   private final View mView;
   
-  AppCompatBackgroundHelper(View paramView)
+  AppCompatBackgroundHelper(@NonNull View paramView)
   {
     this.mView = paramView;
     this.mDrawableManager = AppCompatDrawableManager.get();
@@ -99,30 +101,32 @@ class AppCompatBackgroundHelper
     return null;
   }
   
-  void loadFromAttributes(AttributeSet paramAttributeSet, int paramInt)
+  void loadFromAttributes(@Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    paramAttributeSet = TintTypedArray.obtainStyledAttributes(this.mView.getContext(), paramAttributeSet, R.styleable.ViewBackgroundHelper, paramInt, 0);
+    TintTypedArray localTintTypedArray = TintTypedArray.obtainStyledAttributes(this.mView.getContext(), paramAttributeSet, R.styleable.ViewBackgroundHelper, paramInt, 0);
+    View localView = this.mView;
+    ViewCompat.saveAttributeDataForStyleable(localView, localView.getContext(), R.styleable.ViewBackgroundHelper, paramAttributeSet, localTintTypedArray.getWrappedTypeArray(), paramInt, 0);
     try
     {
-      if (paramAttributeSet.hasValue(R.styleable.ViewBackgroundHelper_android_background))
+      if (localTintTypedArray.hasValue(R.styleable.ViewBackgroundHelper_android_background))
       {
-        this.mBackgroundResId = paramAttributeSet.getResourceId(R.styleable.ViewBackgroundHelper_android_background, -1);
-        ColorStateList localColorStateList = this.mDrawableManager.getTintList(this.mView.getContext(), this.mBackgroundResId);
-        if (localColorStateList != null) {
-          setInternalBackgroundTint(localColorStateList);
+        this.mBackgroundResId = localTintTypedArray.getResourceId(R.styleable.ViewBackgroundHelper_android_background, -1);
+        paramAttributeSet = this.mDrawableManager.getTintList(this.mView.getContext(), this.mBackgroundResId);
+        if (paramAttributeSet != null) {
+          setInternalBackgroundTint(paramAttributeSet);
         }
       }
-      if (paramAttributeSet.hasValue(R.styleable.ViewBackgroundHelper_backgroundTint)) {
-        ViewCompat.setBackgroundTintList(this.mView, paramAttributeSet.getColorStateList(R.styleable.ViewBackgroundHelper_backgroundTint));
+      if (localTintTypedArray.hasValue(R.styleable.ViewBackgroundHelper_backgroundTint)) {
+        ViewCompat.setBackgroundTintList(this.mView, localTintTypedArray.getColorStateList(R.styleable.ViewBackgroundHelper_backgroundTint));
       }
-      if (paramAttributeSet.hasValue(R.styleable.ViewBackgroundHelper_backgroundTintMode)) {
-        ViewCompat.setBackgroundTintMode(this.mView, DrawableUtils.parseTintMode(paramAttributeSet.getInt(R.styleable.ViewBackgroundHelper_backgroundTintMode, -1), null));
+      if (localTintTypedArray.hasValue(R.styleable.ViewBackgroundHelper_backgroundTintMode)) {
+        ViewCompat.setBackgroundTintMode(this.mView, DrawableUtils.parseTintMode(localTintTypedArray.getInt(R.styleable.ViewBackgroundHelper_backgroundTintMode, -1), null));
       }
       return;
     }
     finally
     {
-      paramAttributeSet.recycle();
+      localTintTypedArray.recycle();
     }
   }
   

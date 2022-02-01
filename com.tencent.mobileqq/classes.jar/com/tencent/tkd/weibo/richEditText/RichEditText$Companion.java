@@ -11,17 +11,17 @@ public final class RichEditText$Companion
 {
   private final ILogger a()
   {
-    return RichTextBridge.a.a().a();
+    return RichTextBridge.a.a().b();
   }
   
-  private final IEmoJiBridge a()
+  private final IEmoJiBridge b()
   {
     return RichTextBridge.a.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.richEditText.RichEditText.Companion
  * JD-Core Version:    0.7.0.1
  */

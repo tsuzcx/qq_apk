@@ -10,11 +10,11 @@ public abstract interface WSDragLayout$TouchListener
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout.TouchListener
  * JD-Core Version:    0.7.0.1
  */

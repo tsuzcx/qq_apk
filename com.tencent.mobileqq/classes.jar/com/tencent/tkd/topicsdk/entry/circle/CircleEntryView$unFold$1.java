@@ -32,12 +32,12 @@ final class CircleEntryView$unFold$1
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
       if (i > paramValueAnimator.a((Context)localObject, 60.0F))
       {
-        CircleEntryView.a(this.a).setNeedNumProgress(false);
-        CircleEntryView.a(this.a).setVisibility(0);
+        CircleEntryView.f(this.a).setNeedNumProgress(false);
         CircleEntryView.b(this.a).setVisibility(0);
-        CircleEntryView.a(this.a).setVisibility(0);
+        CircleEntryView.c(this.a).setVisibility(0);
+        CircleEntryView.d(this.a).setVisibility(0);
       }
-      paramValueAnimator = CircleEntryView.a(this.a).getLayoutParams();
+      paramValueAnimator = CircleEntryView.e(this.a).getLayoutParams();
       localObject = DisplayUtils.a;
       Context localContext = this.a.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
@@ -50,7 +50,7 @@ final class CircleEntryView$unFold$1
       localObject = this.a.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
       int k = paramValueAnimator.a((Context)localObject, 74.0F);
-      CircleEntryView.a(this.a).setPadding(j + i - k, 0, 0, 0);
+      CircleEntryView.e(this.a).setPadding(j + i - k, 0, 0, 0);
       CircleEntryView.a(this.a).requestLayout();
       return;
     }
@@ -59,7 +59,7 @@ final class CircleEntryView$unFold$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.entry.circle.CircleEntryView.unFold.1
  * JD-Core Version:    0.7.0.1
  */

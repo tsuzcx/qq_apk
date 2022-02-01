@@ -32,49 +32,44 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
 {
   private PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowserShareMenuHandler(PublicAccountBrowserImpl.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void C_()
-  {
-    this.jdField_a_of_type_AndroidAppActivity = null;
-  }
-  
-  public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  public List<ShareActionSheetBuilder.ActionSheetItem>[] aE_()
   {
     ArrayList localArrayList1 = new ArrayList();
-    SwiftBrowserShareMenuHandler localSwiftBrowserShareMenuHandler = (SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.mComponentsProvider.a(4);
+    SwiftBrowserShareMenuHandler localSwiftBrowserShareMenuHandler = (SwiftBrowserShareMenuHandler)this.a.mComponentsProvider.a(4);
     IPublicAccountH5AbilityPlugin localIPublicAccountH5AbilityPlugin = (IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class);
-    if ((localSwiftBrowserShareMenuHandler != null) && (localSwiftBrowserShareMenuHandler.c()) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:diandian")))
+    if ((localSwiftBrowserShareMenuHandler != null) && (localSwiftBrowserShareMenuHandler.l()) && (!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:share:diandian")))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696404);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842738;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894176);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130843691;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 34;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qq")) && ((this.jdField_a_of_type_Long & 0x8) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:share:qq")) && ((this.j & 0x8) == 0L))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(2);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131718905);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846502;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131916439);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848015;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:QZone")) && ((this.jdField_a_of_type_Long & 0x10) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:share:QZone")) && ((this.j & 0x10) == 0L))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(3);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696413);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846508;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894185);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848021;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if (((this.jdField_a_of_type_Long & 0x8000000) != 0L) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isOSVersionSupportReadInJoy()) && (this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.getAppRuntime() != null))
+    if (((this.j & 0x8000000) != 0L) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isOSVersionSupportReadInJoy()) && (this.a.getAppRuntime() != null))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("readinjoy_");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.getAppRuntime().getAccount());
+      ((StringBuilder)localObject1).append(this.a.getAppRuntime().getAccount());
       ((StringBuilder)localObject1).append("_");
       ((StringBuilder)localObject1).append(1);
       localObject1 = ((StringBuilder)localObject1).toString();
@@ -82,67 +77,67 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
       if ((localObject1 != null) && (((SharedPreferences)localObject1).getBoolean("share_to_news", false)))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696414);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130839066;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894186);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130839220;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 13;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
         localArrayList1.add(localObject1);
       }
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:appMessage")) && ((this.jdField_a_of_type_Long & 0x4000) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:share:appMessage")) && ((this.j & 0x4000) == 0L))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(9);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131719003);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846512;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131916538);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848025;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:timeline")) && ((this.jdField_a_of_type_Long & 0x8000) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:share:timeline")) && ((this.j & 0x8000) == 0L))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(10);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131719004);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846514;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131916539);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848027;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if ((localSwiftBrowserShareMenuHandler != null) && (localSwiftBrowserShareMenuHandler.b()) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:sinaWeibo")))
+    if ((localSwiftBrowserShareMenuHandler != null) && (localSwiftBrowserShareMenuHandler.k()) && (!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:share:sinaWeibo")))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696417);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894189);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130839070;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130839224;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 12;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithQQBrowser")) && ((this.jdField_a_of_type_Long & 0x200) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:openWithQQBrowser")) && ((this.j & 0x200) == 0L))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(5);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131718904);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846491;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131916438);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848004;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithSafari")) && ((this.jdField_a_of_type_Long & 0x100) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:openWithSafari")) && ((this.j & 0x100) == 0L))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(4);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131718994);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131916529);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846494;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848007;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
     }
     Object localObject1 = BaseApplicationImpl.getApplication().getPackageManager();
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiDian")) && ((this.jdField_a_of_type_Long & 0x10) == 0L)) {
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:share:qiDian")) && ((this.j & 0x10) == 0L)) {
       QidianManager.a(BaseApplicationImpl.getApplication(), localArrayList1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiYeQQ")) && ((this.jdField_a_of_type_Long & 0x20) == 0L) && (new Intent().setPackage("com.tencent.eim").setData(Uri.parse("eimapi://")).resolveActivity((PackageManager)localObject1) != null))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:share:qiYeQQ")) && ((this.j & 0x20) == 0L) && (new Intent().setPackage("com.tencent.eim").setData(Uri.parse("eimapi://")).resolveActivity((PackageManager)localObject1) != null))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696411);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894183);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130844486;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130845859;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 20;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList1.add(localObject1);
@@ -150,9 +145,9 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
     ArrayList localArrayList2 = new ArrayList();
     Object localObject2;
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem;
-    if ((this.e) && (this.b != null))
+    if ((this.y) && (this.A != null))
     {
-      localObject1 = this.b.iterator();
+      localObject1 = this.A.iterator();
       j = 0;
       for (;;)
       {
@@ -162,14 +157,14 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
         }
         localObject2 = (IPublicAccountJavascriptInterface.ActionItem)((Iterator)localObject1).next();
         localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-        i = ((IPublicAccountJavascriptInterface.ActionItem)localObject2).jdField_a_of_type_Int;
+        i = ((IPublicAccountJavascriptInterface.ActionItem)localObject2).a;
         if (i != 1)
         {
           if (i == 2)
           {
             localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131695251);
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130842735;
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131892985);
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130843688;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 31;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
@@ -181,12 +176,12 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
           {
             j = 1;
             break;
-            if (TextUtils.isEmpty(((IPublicAccountJavascriptInterface.ActionItem)localObject2).jdField_a_of_type_JavaLangString)) {
-              localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695194);
+            if (TextUtils.isEmpty(((IPublicAccountJavascriptInterface.ActionItem)localObject2).b)) {
+              localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131892927);
             } else {
-              localActionSheetItem.label = ((IPublicAccountJavascriptInterface.ActionItem)localObject2).jdField_a_of_type_JavaLangString;
+              localActionSheetItem.label = ((IPublicAccountJavascriptInterface.ActionItem)localObject2).b;
             }
-            localActionSheetItem.icon = 2130842743;
+            localActionSheetItem.icon = 2130843696;
             localActionSheetItem.iconNeedBg = true;
             localActionSheetItem.action = 30;
             localActionSheetItem.argus = "";
@@ -197,12 +192,12 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
     }
     int i = 0;
     int j = i;
-    if (this.f)
+    if (this.z)
     {
       j = i;
-      if (this.b != null)
+      if (this.A != null)
       {
-        localObject1 = this.b.iterator();
+        localObject1 = this.A.iterator();
         for (;;)
         {
           j = i;
@@ -211,14 +206,14 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
           }
           localObject2 = (IPublicAccountJavascriptInterface.ActionItem)((Iterator)localObject1).next();
           localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-          j = ((IPublicAccountJavascriptInterface.ActionItem)localObject2).jdField_a_of_type_Int;
+          j = ((IPublicAccountJavascriptInterface.ActionItem)localObject2).a;
           if (j != 1)
           {
             if (j == 3)
             {
               localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-              ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131696400);
-              ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130842744;
+              ((ShareActionSheetBuilder.ActionSheetItem)localObject2).label = BaseApplicationImpl.getApplication().getString(2131894172);
+              ((ShareActionSheetBuilder.ActionSheetItem)localObject2).icon = 2130843697;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject2).iconNeedBg = true;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject2).action = 35;
               ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = "";
@@ -230,12 +225,12 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
             {
               i = 1;
               break;
-              if (TextUtils.isEmpty(((IPublicAccountJavascriptInterface.ActionItem)localObject2).jdField_a_of_type_JavaLangString)) {
-                localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131695194);
+              if (TextUtils.isEmpty(((IPublicAccountJavascriptInterface.ActionItem)localObject2).b)) {
+                localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131892927);
               } else {
-                localActionSheetItem.label = ((IPublicAccountJavascriptInterface.ActionItem)localObject2).jdField_a_of_type_JavaLangString;
+                localActionSheetItem.label = ((IPublicAccountJavascriptInterface.ActionItem)localObject2).b;
               }
-              localActionSheetItem.icon = 2130842743;
+              localActionSheetItem.icon = 2130843696;
               localActionSheetItem.iconNeedBg = true;
               localActionSheetItem.action = 37;
               localActionSheetItem.argus = "";
@@ -245,85 +240,85 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
         }
       }
     }
-    localObject1 = (SwiftBrowserScreenShotHandler)this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.mComponentsProvider.a(64);
-    if ((localObject1 != null) && (((SwiftBrowserScreenShotHandler)localObject1).a()) && (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:screenShotShare")))
+    localObject1 = (SwiftBrowserScreenShotHandler)this.a.mComponentsProvider.a(64);
+    if ((localObject1 != null) && (((SwiftBrowserScreenShotHandler)localObject1).e()) && (!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:screenShotShare")))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696424);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894196);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842742;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130843695;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 21;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:favorite")) && ((this.jdField_a_of_type_Long & 0x2000) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:favorite")) && ((this.j & 0x2000) == 0L))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(6);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696385);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894157);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846548;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848061;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exportTencentDocs")) && ((((SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(2)).a.b & 0x4000) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:exportTencentDocs")) && ((((SwiftBrowserUIStyleHandler)this.b.d().a(2)).f.d & 0x4000) == 0L))
     {
-      localObject2 = d();
+      localObject2 = g();
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = PublicAccountBrowserImpl.PublicAccountBrowserFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment);
+        localObject1 = PublicAccountBrowserImpl.PublicAccountBrowserFragment.g(this.a);
       }
       if (TeamWorkConvertUtils.a((String)localObject1))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696393);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894165);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130850938;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130852790;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 68;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
         localArrayList2.add(localObject1);
         TeamWorkConvertUtils.a(0, 0);
       }
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:setFont")) && (this.jdField_a_of_type_Boolean))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:setFont")) && (this.g))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(7);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696394);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846531;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894166);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848044;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
     }
-    if ((!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:copyUrl")) && ((this.jdField_a_of_type_Long & 0x20) == 0L))
+    if ((!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:copyUrl")) && ((this.j & 0x20) == 0L))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(1);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696391);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846542;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894163);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848055;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && ((this.jdField_a_of_type_Long & 0x40) == 0L) && (j == 0))
+    if ((!TextUtils.isEmpty(this.n)) && ((this.j & 0x40) == 0L) && (j == 0))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(8);
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
     }
-    if ((localSwiftBrowserShareMenuHandler != null) && (localSwiftBrowserShareMenuHandler.d()))
+    if ((localSwiftBrowserShareMenuHandler != null) && (localSwiftBrowserShareMenuHandler.m()))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696407);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130842740;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894179);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130843693;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).action = 38;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
     }
-    if (!localIPublicAccountH5AbilityPlugin.contains(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exposeArticle"))
+    if (!localIPublicAccountH5AbilityPlugin.contains(this.i, "menuItem:exposeArticle"))
     {
       localObject1 = ShareActionSheetBuilder.ActionSheetItem.build(11);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131696397);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130846574;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).label = BaseApplicationImpl.getApplication().getString(2131894169);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).icon = 2130848087;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).iconNeedBg = true;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).argus = "";
       localArrayList2.add(localObject1);
@@ -331,37 +326,42 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$PublicAccountBrowser
     return (List[])new ArrayList[] { localArrayList1, localArrayList2 };
   }
   
+  public void b()
+  {
+    this.d = null;
+  }
+  
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+    this.h.dismiss();
     int i = paramActionSheetItem.action;
     if (i == 7)
     {
       super.onItemClick(paramActionSheetItem, paramShareActionSheet);
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.a(i);
+      this.a.a(i);
       return;
     }
     if (i == 8)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.a(i);
+      this.a.a(this.n);
+      this.a.a(i);
       return;
     }
     super.onItemClick(paramActionSheetItem, paramShareActionSheet);
     if ((i != 2) && (i != 3))
     {
-      if ((i == 6) && (this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.getAppRuntime() != null)) {
-        ReportController.b(null, "CliOper", "", this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.getAppRuntime().getCurrentAccountUin(), "0X8004B5E", "0X8004B5E", 0, 0, "", "", "", "");
+      if ((i == 6) && (this.a.getAppRuntime() != null)) {
+        ReportController.b(null, "CliOper", "", this.a.getAppRuntime().getCurrentAccountUin(), "0X8004B5E", "0X8004B5E", 0, 0, "", "", "", "");
       }
     }
-    else if (this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.getAppRuntime() != null) {
-      ReportController.b(null, "CliOper", "", this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.getAppRuntime().getCurrentAccountUin(), "0X8004B5D", "0X8004B5D", 0, 0, "", "", "", "");
+    else if (this.a.getAppRuntime() != null) {
+      ReportController.b(null, "CliOper", "", this.a.getAppRuntime().getCurrentAccountUin(), "0X8004B5D", "0X8004B5D", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl.PublicAccountBrowserFragment.PublicAccountBrowserShareMenuHandler
  * JD-Core Version:    0.7.0.1
  */

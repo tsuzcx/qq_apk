@@ -2,6 +2,7 @@ package com.tencent.mobileqq.data;
 
 import com.tencent.imcore.message.InitMsgModule;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,6 +10,7 @@ public class AtTroopMemberInfo
 {
   public static AtTroopMemberInfo.Callback sCallback = new AtTroopMemberInfoDummyCallback();
   public byte flag = 0;
+  public boolean isResvAttr = false;
   public short startPos = 0;
   public short textLen = 0;
   public long uin = 0L;
@@ -26,7 +28,7 @@ public class AtTroopMemberInfo
   
   public static long getLongData(byte[] paramArrayOfByte, int paramInt)
   {
-    return sCallback.a(paramArrayOfByte, paramInt);
+    return sCallback.b(paramArrayOfByte, paramInt);
   }
   
   public static short getShortData(byte[] paramArrayOfByte, int paramInt)
@@ -51,6 +53,7 @@ public class AtTroopMemberInfo
       localAtTroopMemberInfo.uin = paramJSONObject.getLong("uin");
       localAtTroopMemberInfo.startPos = ((short)((Integer)paramJSONObject.get("startPos")).intValue());
       localAtTroopMemberInfo.textLen = ((short)((Integer)paramJSONObject.get("textLen")).intValue());
+      localAtTroopMemberInfo.isResvAttr = paramJSONObject.getBoolean("isResvAttr");
       return localAtTroopMemberInfo;
     }
     catch (ClassCastException paramJSONObject)
@@ -78,6 +81,12 @@ public class AtTroopMemberInfo
   public boolean isIncludingMe(long paramLong)
   {
     return (this.flag == 0) && (this.uin == paramLong);
+  }
+  
+  public boolean isIncludingMeTid(AppRuntime paramAppRuntime)
+  {
+    long l = sCallback.a(paramAppRuntime);
+    return (this.flag == 0) && (this.uin == l);
   }
   
   public boolean isValid()
@@ -111,6 +120,7 @@ public class AtTroopMemberInfo
     localJSONObject.put("uin", this.uin);
     localJSONObject.put("startPos", this.startPos);
     localJSONObject.put("textLen", this.textLen);
+    localJSONObject.put("isResvAttr", this.isResvAttr);
     return localJSONObject;
   }
   
@@ -148,7 +158,7 @@ public class AtTroopMemberInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.AtTroopMemberInfo
  * JD-Core Version:    0.7.0.1
  */

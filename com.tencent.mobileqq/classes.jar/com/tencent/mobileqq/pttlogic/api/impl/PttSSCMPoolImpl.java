@@ -26,21 +26,21 @@ public class PttSSCMPoolImpl
     while (((Iterator)localObject2).hasNext())
     {
       localObject1 = (PttSSCMPoolImpl.PooledSSCM)((Iterator)localObject2).next();
-      if (!((PttSSCMPoolImpl.PooledSSCM)localObject1).jdField_a_of_type_Boolean)
+      if (!((PttSSCMPoolImpl.PooledSSCM)localObject1).b)
       {
-        localObject2 = ((PttSSCMPoolImpl.PooledSSCM)localObject1).jdField_a_of_type_ComTencentWsttSSCMSSCM;
-        ((PttSSCMPoolImpl.PooledSSCM)localObject1).jdField_a_of_type_Boolean = true;
+        localObject2 = ((PttSSCMPoolImpl.PooledSSCM)localObject1).a;
+        ((PttSSCMPoolImpl.PooledSSCM)localObject1).b = true;
         long l = SystemClock.elapsedRealtime();
         if (QLog.isColorLevel())
         {
           String str = TAG;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("query for sscm, get one expired:");
-          localStringBuilder.append(l - ((PttSSCMPoolImpl.PooledSSCM)localObject1).jdField_a_of_type_Long);
+          localStringBuilder.append(l - ((PttSSCMPoolImpl.PooledSSCM)localObject1).c);
           QLog.d(str, 2, localStringBuilder.toString());
         }
-        if (l - ((PttSSCMPoolImpl.PooledSSCM)localObject1).jdField_a_of_type_Long > this.expiredTime) {
-          ((PttSSCMPoolImpl.PooledSSCM)localObject1).jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
+        if (l - ((PttSSCMPoolImpl.PooledSSCM)localObject1).c > this.expiredTime) {
+          ((PttSSCMPoolImpl.PooledSSCM)localObject1).a.a();
         }
         return localObject2;
       }
@@ -104,7 +104,7 @@ public class PttSSCMPoolImpl
       while (((Iterator)localObject).hasNext())
       {
         PttSSCMPoolImpl.PooledSSCM localPooledSSCM = (PttSSCMPoolImpl.PooledSSCM)((Iterator)localObject).next();
-        if (paramSSCM == localPooledSSCM.jdField_a_of_type_ComTencentWsttSSCMSSCM)
+        if (paramSSCM == localPooledSSCM.a)
         {
           if (QLog.isColorLevel())
           {
@@ -120,8 +120,8 @@ public class PttSSCMPoolImpl
           }
           else
           {
-            localPooledSSCM.jdField_a_of_type_Boolean = false;
-            localPooledSSCM.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+            localPooledSSCM.b = false;
+            localPooledSSCM.c = SystemClock.elapsedRealtime();
           }
         }
       }
@@ -136,7 +136,7 @@ public class PttSSCMPoolImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pttlogic.api.impl.PttSSCMPoolImpl
  * JD-Core Version:    0.7.0.1
  */

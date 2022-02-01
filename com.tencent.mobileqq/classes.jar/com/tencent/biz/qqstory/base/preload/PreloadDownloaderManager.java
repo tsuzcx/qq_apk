@@ -13,16 +13,13 @@ import mqq.os.MqqHandler;
 public class PreloadDownloaderManager
   implements IManager
 {
-  public PreloadDownloader a;
-  public PreloadDownloaderManager.IOnQueueStateChangeListener a;
-  protected Runnable a;
-  public List<PreloadQueue> a;
+  public List<PreloadQueue> a = new ArrayList();
+  public PreloadDownloader b = new PreloadDownloader();
+  public PreloadDownloaderManager.IOnQueueStateChangeListener c = new PreloadDownloaderManager.OnQueueStateChangeListener(this);
+  protected Runnable d;
   
   public PreloadDownloaderManager()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader = new PreloadDownloader();
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloaderManager$IOnQueueStateChangeListener = new PreloadDownloaderManager.OnQueueStateChangeListener(this);
     Object localObject1 = new PreloadQueue.Builder();
     ((PreloadQueue.Builder)localObject1).a(0);
     localObject1 = ((PreloadQueue.Builder)localObject1).a();
@@ -36,20 +33,20 @@ public class PreloadDownloaderManager
     localArrayList.add(localObject1);
     localArrayList.add(localObject2);
     localArrayList.add(localObject3);
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
+    this.a = localArrayList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloaderManager$IOnQueueStateChangeListener);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a((PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(0));
+    this.b.a(this.c);
+    this.b.a((PreloadQueue)this.a.get(0));
   }
   
   public void a(int paramInt)
   {
     try
     {
-      Object localObject3 = (PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject3 = (PreloadQueue)this.a.get(paramInt);
       if (localObject3 == null)
       {
         localObject1 = new StringBuilder();
@@ -58,8 +55,8 @@ public class PreloadDownloaderManager
         SLog.d("Q.qqstory.download.preload.PreloadDownloaderManager", ((StringBuilder)localObject1).toString());
         return;
       }
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
-      Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
+      int i = this.b.d();
+      Object localObject1 = this.b.e();
       ((PreloadQueue)localObject3).clearAllTask();
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("try to stop queue ");
@@ -68,7 +65,7 @@ public class PreloadDownloaderManager
       ((StringBuilder)localObject3).append(i);
       SLog.b("Q.qqstory.download.preload.PreloadDownloaderManager", ((StringBuilder)localObject3).toString());
       if (i == paramInt) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a((DownloadTask)localObject1);
+        this.b.a((DownloadTask)localObject1);
       }
       return;
     }
@@ -77,13 +74,13 @@ public class PreloadDownloaderManager
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new PreloadDownloaderManager.1(this);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
+    this.d = new PreloadDownloaderManager.1(this);
+    ThreadManager.getUIHandler().postDelayed(this.d, paramLong);
   }
   
   public void a(IVideoPreloader.OnPreloadListener paramOnPreloadListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(paramOnPreloadListener);
+    this.b.a(paramOnPreloadListener);
   }
   
   public void a(List<DownloadTask> paramList, int paramInt, boolean paramBoolean)
@@ -94,7 +91,7 @@ public class PreloadDownloaderManager
     try
     {
       SLog.d("Q.qqstory.download.preload.PreloadDownloaderManager", "setPreloadTaskList , id = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramList.size()) });
-      PreloadQueue localPreloadQueue = (PreloadQueue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      PreloadQueue localPreloadQueue = (PreloadQueue)this.a.get(paramInt);
       if (localPreloadQueue == null)
       {
         paramList = new StringBuilder();
@@ -103,7 +100,7 @@ public class PreloadDownloaderManager
         SLog.d("Q.qqstory.download.preload.PreloadDownloaderManager", paramList.toString());
         return;
       }
-      DownloadTask localDownloadTask2 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
+      DownloadTask localDownloadTask2 = this.b.e();
       DownloadTask localDownloadTask1;
       if (paramList.size() == 0) {
         localDownloadTask1 = null;
@@ -115,9 +112,9 @@ public class PreloadDownloaderManager
       while (paramList.hasNext()) {
         localPreloadQueue.addTask((DownloadTask)paramList.next(), false);
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a() > paramInt)
+      if (this.b.d() > paramInt)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localPreloadQueue);
+        this.b.a(localPreloadQueue);
         paramBoolean = true;
       }
       boolean bool = paramBoolean;
@@ -133,7 +130,7 @@ public class PreloadDownloaderManager
         }
       }
       if (bool) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a(localDownloadTask2);
+        this.b.a(localDownloadTask2);
       }
       return;
     }
@@ -144,11 +141,6 @@ public class PreloadDownloaderManager
     }
   }
   
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaLangRunnable == null) && (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a());
-  }
-  
   public void b()
   {
     a(10L);
@@ -156,17 +148,22 @@ public class PreloadDownloaderManager
   
   public void c()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    if (this.d != null)
     {
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      ThreadManager.getUIHandler().removeCallbacks(this.d);
+      this.d = null;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a();
+    this.b.a();
+  }
+  
+  public boolean d()
+  {
+    return (this.d == null) && (this.b.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager
  * JD-Core Version:    0.7.0.1
  */

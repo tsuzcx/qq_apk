@@ -10,13 +10,13 @@ class ForwardPreviewMixedMsgController$1
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.a.setImageDrawable(this.b);
     ForwardPreviewMixedMsgController.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewMixedMsgController.1
  * JD-Core Version:    0.7.0.1
  */

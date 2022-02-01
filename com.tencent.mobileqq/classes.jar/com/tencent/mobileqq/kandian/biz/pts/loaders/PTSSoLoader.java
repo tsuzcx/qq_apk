@@ -10,50 +10,21 @@ import java.util.List;
 
 public class PTSSoLoader
 {
-  private static volatile PTSSoLoader jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersPTSSoLoader;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static volatile PTSSoLoader a;
+  private boolean b = false;
   
   public static PTSSoLoader a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersPTSSoLoader == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersPTSSoLoader == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersPTSSoLoader = new PTSSoLoader();
+        if (a == null) {
+          a = new PTSSoLoader();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersPTSSoLoader;
-  }
-  
-  private List<Integer> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return new ArrayList();
-    }
-    paramString = paramString.split("\\.");
-    Object localObject = new ArrayList();
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramString[i];
-      try
-      {
-        ((List)localObject).add(Integer.valueOf(Integer.parseInt(str)));
-        i += 1;
-      }
-      catch (NumberFormatException paramString)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[getVersionList] error, e = ");
-        ((StringBuilder)localObject).append(paramString);
-        QLog.e("PTSSoLoader", 1, ((StringBuilder)localObject).toString());
-        return new ArrayList();
-      }
-    }
-    return localObject;
+    return a;
   }
   
   private void a(String paramString1, int paramInt, String paramString2)
@@ -79,8 +50,8 @@ public class PTSSoLoader
     ((StringBuilder)localObject).append(", supportMinVersion = ");
     ((StringBuilder)localObject).append(paramString2);
     QLog.i("PTSSoLoader", 1, ((StringBuilder)localObject).toString());
-    localObject = a(paramString1);
-    paramString2 = a(paramString2);
+    localObject = b(paramString1);
+    paramString2 = b(paramString2);
     int i = paramString1.length();
     boolean bool = false;
     if (i <= 0)
@@ -117,6 +88,35 @@ public class PTSSoLoader
     return bool;
   }
   
+  private List<Integer> b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return new ArrayList();
+    }
+    paramString = paramString.split("\\.");
+    Object localObject = new ArrayList();
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramString[i];
+      try
+      {
+        ((List)localObject).add(Integer.valueOf(Integer.parseInt(str)));
+        i += 1;
+      }
+      catch (NumberFormatException paramString)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[getVersionList] error, e = ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.e("PTSSoLoader", 1, ((StringBuilder)localObject).toString());
+        return new ArrayList();
+      }
+    }
+    return localObject;
+  }
+  
   public void a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -126,14 +126,14 @@ public class PTSSoLoader
     SoLoadManager.getInstance().load(paramString, new PTSSoLoader.1(this, paramString));
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSSoLoader
  * JD-Core Version:    0.7.0.1
  */

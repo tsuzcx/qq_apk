@@ -34,34 +34,29 @@ import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
 public class AccountIdentityManager
   extends BaseAccountLifecycle
 {
-  private static volatile AccountIdentityManager jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager;
-  private AccountIdentityManager.AccountIdentityFinishReceiver jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager$AccountIdentityFinishReceiver;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  protected AtomicBoolean a;
-  
-  public AccountIdentityManager()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  private static volatile AccountIdentityManager b;
+  protected AtomicBoolean a = new AtomicBoolean(false);
+  private QQCustomDialog c;
+  private AccountIdentityManager.AccountIdentityFinishReceiver d;
   
   public static AccountIdentityManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager == null) {
-          jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager = new AccountIdentityManager();
+        if (b == null) {
+          b = new AccountIdentityManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager;
+    return b;
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    AccountIdentityManager.AccountIdentityFinishReceiver localAccountIdentityFinishReceiver = this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager$AccountIdentityFinishReceiver;
+    this.c = null;
+    AccountIdentityManager.AccountIdentityFinishReceiver localAccountIdentityFinishReceiver = this.d;
     if (localAccountIdentityFinishReceiver != null)
     {
       try
@@ -72,7 +67,7 @@ public class AccountIdentityManager
       {
         QLog.d("AccountIdentityManager", 1, new Object[] { "DismissListener unregisterReceiver error : ", paramContext.getMessage() });
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager$AccountIdentityFinishReceiver = null;
+      this.d = null;
     }
   }
   
@@ -108,12 +103,12 @@ public class AccountIdentityManager
     BaseSharedPreUtil.a(BaseApplication.getContext(), str6, true, "account_identity_time", paramRspBody);
     if (bool1)
     {
-      if (IdentityUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog)) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      if (IdentityUtils.a(this.c)) {
+        this.c.dismiss();
       }
       return;
     }
-    if (IdentityUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog))
+    if (IdentityUtils.a(this.c))
     {
       QLog.d("AccountIdentityManager", 1, "refreshAuthorityState showDialog, but dialog is showing");
       return;
@@ -123,23 +118,14 @@ public class AccountIdentityManager
   
   private void c(Activity paramActivity)
   {
-    if (IdentityUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog))
+    if (IdentityUtils.a(this.c))
     {
-      if (IdentityUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, paramActivity))
+      if (IdentityUtils.a(this.c, paramActivity))
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        this.c.dismiss();
         return;
       }
       b(MobileQQ.sMobileQQ.waitAppRuntime(null));
-    }
-  }
-  
-  public void a()
-  {
-    if (MobileQQ.sProcessId == 1)
-    {
-      a(MobileQQ.sMobileQQ.waitAppRuntime(null));
-      c();
     }
   }
   
@@ -153,11 +139,11 @@ public class AccountIdentityManager
     QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
     if ((localQBaseActivity != null) && (!localQBaseActivity.isFinishing()))
     {
-      boolean bool = IdentityUtils.a(paramString6);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = IdentityUtils.a(localQBaseActivity, paramString1, paramString2, paramString4, paramString5, bool ^ true, new AccountIdentityManager.3(this, bool, localQBaseActivity, paramAppRuntime), new AccountIdentityManager.4(this, paramString3, localQBaseActivity, bool, paramAppRuntime));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new AccountIdentityManager.5(this, localQBaseActivity));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new AccountIdentityManager.6(this, localQBaseActivity));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      boolean bool = IdentityUtils.b(paramString6);
+      this.c = IdentityUtils.a(localQBaseActivity, paramString1, paramString2, paramString4, paramString5, bool ^ true, new AccountIdentityManager.3(this, bool, localQBaseActivity, paramAppRuntime), new AccountIdentityManager.4(this, paramString3, localQBaseActivity, bool, paramAppRuntime));
+      this.c.setOnDismissListener(new AccountIdentityManager.5(this, localQBaseActivity));
+      this.c.setOnCancelListener(new AccountIdentityManager.6(this, localQBaseActivity));
+      this.c.show();
       if (bool) {
         paramString1 = "0X800B275";
       } else {
@@ -173,7 +159,7 @@ public class AccountIdentityManager
   {
     if ((paramAppRuntime != null) && (paramAppRuntime.isLogin()))
     {
-      if (IdentityUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog))
+      if (IdentityUtils.a(this.c))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AccountIdentityManager", 2, "checkAccountIdentityState, dialog is showing");
@@ -196,8 +182,10 @@ public class AccountIdentityManager
   
   public void b()
   {
-    if (MobileQQ.sProcessId == 1) {
+    if (MobileQQ.sProcessId == 1)
+    {
       a(MobileQQ.sMobileQQ.waitAppRuntime(null));
+      d();
     }
   }
   
@@ -212,12 +200,12 @@ public class AccountIdentityManager
       }
       if ((paramAppRuntime != null) && (paramAppRuntime.isLogin()))
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+        if (this.a.get())
         {
           QLog.d("AccountIdentityManager", 1, "refreshAuthorityState, is requesting");
           return;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.a.set(true);
         LoginVerifyServlet.a(paramAppRuntime, new AccountIdentityManager.1(this, paramAppRuntime));
         return;
       }
@@ -227,10 +215,17 @@ public class AccountIdentityManager
     finally {}
   }
   
-  protected void c()
+  public void c()
+  {
+    if (MobileQQ.sProcessId == 1) {
+      a(MobileQQ.sMobileQQ.waitAppRuntime(null));
+    }
+  }
+  
+  protected void d()
   {
     QLog.d("AccountIdentityManager", 1, "checkPhoneQuickLoginNotice");
-    LoginSuccDialogMessage localLoginSuccDialogMessage = LoginStaticField.a();
+    LoginSuccDialogMessage localLoginSuccDialogMessage = LoginStaticField.b();
     if (localLoginSuccDialogMessage == null)
     {
       QLog.d("AccountIdentityManager", 1, "checkPhoneQuickLoginNotice， message is null");
@@ -245,15 +240,15 @@ public class AccountIdentityManager
     HashMap localHashMap = new HashMap();
     localHashMap.put("key_dialog_title", localLoginSuccDialogMessage.b());
     localHashMap.put("key_dialog_msg", localLoginSuccDialogMessage.a());
-    localHashMap.put("key_dialog_ok_btn_text", HardCodeUtil.a(2131694674));
+    localHashMap.put("key_dialog_ok_btn_text", HardCodeUtil.a(2131892366));
     localILoginRegisterApi.showBottomDialog(QBaseActivity.sTopActivity, localHashMap);
-    LoginStaticField.a();
+    LoginStaticField.c();
     ReportController.a(null, "dc00898", "", "", "0X800B8DA", "0X800B8DA", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountIdentityManager
  * JD-Core Version:    0.7.0.1
  */

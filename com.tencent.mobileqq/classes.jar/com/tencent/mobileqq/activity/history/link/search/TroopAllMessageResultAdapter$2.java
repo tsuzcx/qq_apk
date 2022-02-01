@@ -19,7 +19,7 @@ class TroopAllMessageResultAdapter$2
   
   public void run()
   {
-    Object localObject = TroopAllMessageResultAdapter.d(this.this$0).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.g(this.this$0).jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.h(this.this$0).jdField_a_of_type_Int, TroopAllMessageResultAdapter.i(this.this$0).d);
+    Object localObject = TroopAllMessageResultAdapter.p(this.this$0).getMessageFacade().a(this.a, TroopAllMessageResultAdapter.m(this.this$0).b, TroopAllMessageResultAdapter.n(this.this$0).a, TroopAllMessageResultAdapter.o(this.this$0).e);
     int j = 0;
     int i;
     MessageRecord localMessageRecord;
@@ -30,14 +30,14 @@ class TroopAllMessageResultAdapter$2
       {
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
         if (TroopAllMessageResultAdapter.a(this.this$0, localMessageRecord)) {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new MessageItem(TroopAllMessageResultAdapter.e(this.this$0), localMessageRecord));
+          this.this$0.b.add(new MessageItem(TroopAllMessageResultAdapter.q(this.this$0), localMessageRecord));
         }
         i += 1;
       }
     }
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
     {
-      localObject = TroopAllMessageResultAdapter.f(this.this$0).getMessageFacade().a(TroopAllMessageResultAdapter.j(this.this$0).jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.k(this.this$0).jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
+      localObject = TroopAllMessageResultAdapter.t(this.this$0).getMessageFacade().b(TroopAllMessageResultAdapter.r(this.this$0).b, TroopAllMessageResultAdapter.s(this.this$0).a, ((ChatHistorySearchData)localObject).mSearchData2);
       if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
       {
         i = j;
@@ -45,7 +45,7 @@ class TroopAllMessageResultAdapter$2
         {
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
           if (TroopAllMessageResultAdapter.b(this.this$0, localMessageRecord)) {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new MessageItem(TroopAllMessageResultAdapter.g(this.this$0), localMessageRecord));
+            this.this$0.b.add(new MessageItem(TroopAllMessageResultAdapter.u(this.this$0), localMessageRecord));
           }
           i += 1;
         }
@@ -55,19 +55,19 @@ class TroopAllMessageResultAdapter$2
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("localCacheMsgs size: ");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject).append(this.this$0.b.size());
       QLog.d("LinkMessageResultAdapter", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
-    ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    ((HashMap)localObject).put("data", this.jdField_a_of_type_JavaUtilList);
-    TroopAllMessageResultAdapter.c(this.this$0).obtainMessage(6, localObject).sendToTarget();
+    ((HashMap)localObject).put("keyword", this.a);
+    ((HashMap)localObject).put("sequence", Long.valueOf(this.b));
+    ((HashMap)localObject).put("data", this.c);
+    TroopAllMessageResultAdapter.v(this.this$0).obtainMessage(6, localObject).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.2
  * JD-Core Version:    0.7.0.1
  */

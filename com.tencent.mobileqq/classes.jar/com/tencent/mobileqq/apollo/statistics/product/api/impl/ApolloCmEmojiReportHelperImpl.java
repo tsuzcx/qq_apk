@@ -28,7 +28,7 @@ public final class ApolloCmEmojiReportHelperImpl
     {
       DtReportParamsBuilder localDtReportParamsBuilder = new DtReportParamsBuilder();
       paramAppRuntime = (AppInterface)paramAppRuntime;
-      ApolloDtReportUtil.a("aio", "cm_emoji", "expose", (Map)localDtReportParamsBuilder.a(ApolloDtReportUtil.a(paramAppRuntime)).b(ApolloDtReportUtil.a(paramInt)).f(ApolloDtReportUtil.b(paramAppRuntime)).b(paramString).a());
+      ApolloDtReportUtil.a("aio", "cm_emoji", "expose", (Map)localDtReportParamsBuilder.a(ApolloDtReportUtil.a(paramAppRuntime)).b(ApolloDtReportUtil.a(paramInt)).f(ApolloDtReportUtil.b(paramAppRuntime)).c(paramString).a());
     }
   }
   
@@ -39,7 +39,7 @@ public final class ApolloCmEmojiReportHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.api.impl.ApolloCmEmojiReportHelperImpl
  * JD-Core Version:    0.7.0.1
  */

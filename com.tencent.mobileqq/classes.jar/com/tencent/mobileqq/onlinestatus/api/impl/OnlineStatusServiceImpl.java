@@ -10,7 +10,6 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.PopupWindow;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.BatteryBroadcastReceiver;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.onlinestatus.AccountPanel;
@@ -51,8 +50,8 @@ public class OnlineStatusServiceImpl
     int j = getPowerConnect();
     if ((i == 0) || (j == -1))
     {
-      i = OnLineStatusHelper.a();
-      j = OnLineStatusHelper.b();
+      i = OnLineStatusHelper.g();
+      j = OnLineStatusHelper.h();
       setBatteryCapacity(i);
       setPowerConnect(j);
       if (QLog.isColorLevel()) {
@@ -82,6 +81,24 @@ public class OnlineStatusServiceImpl
     return this.uExtOnlineStatus;
   }
   
+  public void getOlympicMedalEventReq(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((this.mApp instanceof AppInterface))
+    {
+      if (OnLineStatusHelper.a().f() == null) {
+        return;
+      }
+      if (this.mApp.getAccount() != null) {
+        ((OnlineStatusHandler)((AppInterface)this.mApp).getBusinessHandler(OnlineStatusHandler.class.getName())).a(paramBoolean1, paramBoolean2);
+      } else {
+        QLog.d("OnlineStatusServiceImpl", 1, String.format("getOlympicMedalEvent not login!", new Object[0]));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("OnlineStatusServiceImpl", 1, "getOlympicMedalEvent");
+      }
+    }
+  }
+  
   public AppRuntime.Status getOnlineStatus()
   {
     return this.onlineStatus;
@@ -107,7 +124,7 @@ public class OnlineStatusServiceImpl
   
   public IAccountPanel newAccountPanel(QBaseActivity paramQBaseActivity)
   {
-    return new AccountPanel(paramQBaseActivity, 0);
+    return new AccountPanel(paramQBaseActivity, 10);
   }
   
   public IAccountPanel newAccountPanel(QBaseActivity paramQBaseActivity, int paramInt)
@@ -247,7 +264,7 @@ public class OnlineStatusServiceImpl
     }
   }
   
-  public void showAIOStatusPopupDialog(BaseSessionInfo paramBaseSessionInfo, Activity paramActivity)
+  public void showAIOStatusPopupDialog(String paramString, Activity paramActivity, int paramInt)
   {
     if (isAIODialogNotShowing())
     {
@@ -255,11 +272,12 @@ public class OnlineStatusServiceImpl
       if (localInputMethodManager.isActive()) {
         localInputMethodManager.hideSoftInputFromWindow(paramActivity.getWindow().getDecorView().getWindowToken(), 0);
       }
-      paramBaseSessionInfo = OnlineStatusAIOPopUpWindow.a((AppInterface)this.mApp, paramActivity, paramBaseSessionInfo, -1, -1);
-      paramBaseSessionInfo.setAnimationStyle(2131755424);
-      paramBaseSessionInfo.showAtLocation(paramActivity.getWindow().getDecorView(), 80, 0, 0);
-      paramBaseSessionInfo.i();
-      this.curDialog = new WeakReference(paramBaseSessionInfo);
+      paramString = OnlineStatusAIOPopUpWindow.a((AppInterface)this.mApp, paramActivity, paramString, -1, -1);
+      paramString.b(paramInt);
+      paramString.setAnimationStyle(2131952195);
+      paramString.showAtLocation(paramActivity.getWindow().getDecorView(), 80, 0, 0);
+      paramString.l();
+      this.curDialog = new WeakReference(paramString);
     }
   }
   
@@ -315,7 +333,7 @@ public class OnlineStatusServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.api.impl.OnlineStatusServiceImpl
  * JD-Core Version:    0.7.0.1
  */

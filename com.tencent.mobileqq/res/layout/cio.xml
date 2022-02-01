@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="160.0dip" android:layout_height="82.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dtx" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="36.0dip" android:src="@drawable/goa" android:layout_alignParentRight="true" />
-    <RelativeLayout android:id="@id/o4w" android:background="@drawable/bx4" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="-4.0dip" android:layout_below="@id/dtx">
-        <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/mqi" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/csy" android:layout_alignParentLeft="true" />
-        <TextView android:textSize="12.0sp" android:textColor="#ff9a9a9a" android:ellipsize="end" android:id="@id/ogz" android:layout_width="fill_parent" android:layout_height="17.0dip" android:layout_marginRight="8.0dip" android:text="在吗？一起来玩吧" android:maxLines="1" android:layout_toRightOf="@id/mqi" android:layout_centerVertical="true" />
+<LinearLayout android:orientation="vertical" android:id="@id/ns4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/aw5" android:textColor="#ff999999" android:id="@id/ntq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/x61" android:includeFontPadding="false" />
+    <RelativeLayout android:id="@id/nsv" android:background="@drawable/dwj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="74.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="@dimen/nj" android:layout_marginRight="16.0dip" android:layout_marginBottom="22.0dip">
+        <com.tencent.mobileqq.guild.widget.RadiusFrameLayout android:layout_gravity="center" android:id="@id/npv" android:layout_width="@dimen/ne" android:layout_height="@dimen/ne" android:layout_marginLeft="@dimen/ms" android:layout_centerVertical="true" app:corner_radius="@dimen/ms">
+            <ImageView android:id="@id/nq8" android:visibility="gone" android:layout_width="@dimen/ne" android:layout_height="@dimen/ne" android:scaleType="fitXY" />
+        </com.tencent.mobileqq.guild.widget.RadiusFrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/npv" android:layout_centerVertical="true">
+            <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/ntr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginRight="@dimen/ms" android:includeFontPadding="false" />
+            <TextView android:textSize="@dimen/aw3" android:textColor="#ff878b99" android:id="@id/ntp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginTop="@dimen/ng" android:layout_marginRight="@dimen/ms" android:includeFontPadding="false" android:layout_below="@id/ntr" />
+        </LinearLayout>
     </RelativeLayout>
-    <RelativeLayout android:background="@drawable/bxn" android:layout_width="fill_parent" android:layout_height="18.0dip" android:layout_marginTop="-4.0dip" android:layout_below="@id/o4w">
-        <TextView android:textSize="10.0sp" android:textColor="#ff333333" android:gravity="center_vertical" android:id="@id/ogh" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="18.0dip" android:text="王者荣耀" android:layout_alignParentLeft="true" />
-        <TextView android:textSize="10.0sp" android:textColor="#ff333333" android:gravity="center_vertical" android:id="@id/kbp" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="18.0dip" android:text="19:22" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/aw5" android:textColor="#ff999999" android:id="@id/nto" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/x5y" android:includeFontPadding="false" />
+</LinearLayout>

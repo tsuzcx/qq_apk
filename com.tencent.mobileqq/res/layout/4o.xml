@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/mt5" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:id="@id/mk2" android:layout_width="fill_parent" android:layout_height="24.0dip" android:contentDescription="@string/whh" />
+        <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/mk4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:text="@string/whh" android:contentDescription="@string/whh" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="312.0dip" android:layout_height="350.0dip" android:layout_marginTop="22.5dip">
+            <android.support.v7.widget.RecyclerView android:id="@id/mi1" android:scrollbars="none" android:clipToPadding="false" android:layout_width="312.0dip" android:layout_height="350.0dip" />
+            <View android:layout_gravity="bottom" android:background="@drawable/3s" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+        </FrameLayout>
+        <Button android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/mi3" android:background="@drawable/3g" android:focusable="false" android:duplicateParentState="false" android:layout_width="296.0dip" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" />
+    </LinearLayout>
+</FrameLayout>

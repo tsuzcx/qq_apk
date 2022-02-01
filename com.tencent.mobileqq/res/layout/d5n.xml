@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/pq3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/pq0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/pq1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:src="@drawable/g76" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/al6" android:gravity="center" android:id="@id/pq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/pq1" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/pql" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="55.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/pqk" android:layout_width="321.0dip" android:layout_height="200.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:id="@id/pqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="#c0ffffff" android:id="@id/pqm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" />
+    </LinearLayout>
+</FrameLayout>

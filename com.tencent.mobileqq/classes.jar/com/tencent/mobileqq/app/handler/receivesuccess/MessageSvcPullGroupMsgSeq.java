@@ -22,7 +22,7 @@ public class MessageSvcPullGroupMsgSeq
         }
         try
         {
-          paramMessageHandler.a().b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          paramMessageHandler.C().b(paramToServiceMsg, paramFromServiceMsg, paramObject);
           return;
         }
         catch (Exception paramObject)
@@ -31,7 +31,7 @@ public class MessageSvcPullGroupMsgSeq
           if (QLog.isColorLevel()) {
             QLog.w("Q.msg.MessageHandler", 2, "handle response - get thirdqq unread number exception ! ", paramObject);
           }
-          paramMessageHandler.a().b(paramToServiceMsg, paramFromServiceMsg);
+          paramMessageHandler.C().b(paramToServiceMsg, paramFromServiceMsg);
           return;
         }
       }
@@ -51,14 +51,14 @@ public class MessageSvcPullGroupMsgSeq
         if (QLog.isColorLevel()) {
           QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgNumResp exception ! ", paramObject);
         }
-        paramMessageHandler.j(paramToServiceMsg, paramFromServiceMsg);
+        paramMessageHandler.k(paramToServiceMsg, paramFromServiceMsg);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MessageSvcPullGroupMsgSeq
  * JD-Core Version:    0.7.0.1
  */

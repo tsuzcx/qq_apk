@@ -25,22 +25,22 @@ class TroopNotificationAIOHelper$2
     if (TroopNotificationAIOHelper.a(this.this$0) == null) {
       return;
     }
-    if ((TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    if ((TroopNotificationAIOHelper.a(this.this$0).d != null) && (TroopNotificationAIOHelper.a(this.this$0).ah != null))
     {
-      if (TextUtils.isEmpty(TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
+      if (TextUtils.isEmpty(TroopNotificationAIOHelper.a(this.this$0).ah.b)) {
         return;
       }
-      RecentUserProxy localRecentUserProxy = TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-      Object localObject1 = TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      RecentUserProxy localRecentUserProxy = TroopNotificationAIOHelper.a(this.this$0).d.getProxyManager().g();
+      Object localObject1 = TroopNotificationAIOHelper.a(this.this$0).ah.b;
       int i = 1;
-      localObject1 = localRecentUserProxy.a((String)localObject1, 1);
-      Object localObject2 = TroopNotificationHelper.a(TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      localObject1 = localRecentUserProxy.b((String)localObject1, 1);
+      Object localObject2 = TroopNotificationHelper.d(TroopNotificationAIOHelper.a(this.this$0).d, TroopNotificationAIOHelper.a(this.this$0).ah.b);
       if ((localObject2 == null) || (((TroopNotificationFlagMsg)localObject2).a.isEmpty())) {
         i = 0;
       }
-      localObject2 = TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+      localObject2 = TroopNotificationAIOHelper.a(this.this$0).d.getHandler(Conversation.class);
       if (i == 0) {
-        if (!TroopAssistantManager.a().a(TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TroopNotificationAIOHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
+        if (!TroopAssistantManager.a().a(TroopNotificationAIOHelper.a(this.this$0).d, TroopNotificationAIOHelper.a(this.this$0).ah.b))
         {
           if ((((RecentUser)localObject1).msg instanceof TroopNotificationMsg))
           {
@@ -70,7 +70,7 @@ class TroopNotificationAIOHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2
  * JD-Core Version:    0.7.0.1
  */

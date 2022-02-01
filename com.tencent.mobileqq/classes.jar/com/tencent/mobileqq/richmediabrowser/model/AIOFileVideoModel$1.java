@@ -11,16 +11,16 @@ class AIOFileVideoModel$1
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    if (this.a != null)
     {
-      AIOFileVideoData localAIOFileVideoData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData;
+      AIOFileVideoData localAIOFileVideoData = this.b;
       if (localAIOFileVideoData != null)
       {
-        AIOFileVideoView localAIOFileVideoView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView;
+        AIOFileVideoView localAIOFileVideoView = this.c;
         if (localAIOFileVideoView != null)
         {
-          localAIOFileVideoData.g = true;
-          localAIOFileVideoView.m();
+          localAIOFileVideoData.x = true;
+          localAIOFileVideoView.o();
         }
       }
     }
@@ -30,7 +30,7 @@ class AIOFileVideoModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoModel.1
  * JD-Core Version:    0.7.0.1
  */

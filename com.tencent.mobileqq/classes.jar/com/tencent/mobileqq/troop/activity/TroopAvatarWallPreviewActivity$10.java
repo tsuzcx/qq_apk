@@ -1,114 +1,84 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.common.util.Util;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.qrscan.ScannerResult;
-import com.tencent.mobileqq.qrscan.api.IScanUtilApi;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import java.net.URL;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicAccountShowPictureReport;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import java.util.ArrayList;
 
 class TroopAvatarWallPreviewActivity$10
-  implements Runnable
+  implements AdapterView.OnItemSelectedListener
 {
-  TroopAvatarWallPreviewActivity$10(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, ActionSheet paramActionSheet) {}
+  TroopAvatarWallPreviewActivity$10(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void run()
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "QR Check Start!");
-      }
-      localObject2 = new Bundle();
-      Object localObject1 = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-      if (this.this$0.mCookieMgr == null)
-      {
-        CookieSyncManager.createInstance(this.this$0.getApplicationContext());
-        this.this$0.mCookieMgr = CookieManager.getInstance();
-      }
-      Object localObject3 = this.this$0.mCookieMgr.getCookie((String)localObject1);
-      if (localObject3 != null)
-      {
-        ((Bundle)localObject2).putString("Cookie", (String)localObject3);
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("Get cookie: ");
-          localStringBuilder.append(Util.c((String)localObject3, new String[0]));
-          localStringBuilder.append(" from ");
-          localStringBuilder.append(Util.b((String)localObject1, new String[0]));
-          QLog.d("TroopAvatarWallPreviewActivity", 2, localStringBuilder.toString());
-        }
-      }
-      localObject2 = ImageUtil.a(BaseApplication.getContext(), (String)localObject1, (Bundle)localObject2);
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("saveTmpImage path = ");
-        ((StringBuilder)localObject3).append((String)localObject2);
-        QLog.d("TroopAvatarWallPreviewActivity", 2, ((StringBuilder)localObject3).toString());
-      }
-      this.this$0.tempPath = ((String)localObject2);
-      com.tencent.qbar.QbarCrashCollector.a = Util.b((String)localObject1, new String[0]);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("file://");
-        ((StringBuilder)localObject1).append(new File((String)localObject2).getAbsolutePath());
-        localObject1 = Uri.parse(((StringBuilder)localObject1).toString());
-        localObject1 = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeQQCodeFromFile((Uri)localObject1, this.this$0, 1, false);
-        if ((localObject1 != null) && (((ScannerResult)localObject1).d()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAvatarWallPreviewActivity", 2, "has QRCode ");
-          }
-          this.this$0.runOnUiThread(new TroopAvatarWallPreviewActivity.10.1(this));
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "no QRCode ");
-      }
-      com.tencent.qbar.QbarCrashCollector.a = null;
+    if (paramView == null) {
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    boolean bool2 = TroopAvatarWallPreviewActivity.access$200(this.a).isReport;
+    boolean bool1 = true;
+    if (bool2)
     {
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("showActionSheet error : ");
-        ((StringBuilder)localObject2).append(localUnsatisfiedLinkError.getMessage());
-        QLog.e("TroopAvatarWallPreviewActivity", 2, ((StringBuilder)localObject2).toString());
-        return;
-      }
+      TroopAvatarWallPreviewActivity.access$200(this.a).addPicIndex(paramInt);
+      paramAdapterView = TroopAvatarWallPreviewActivity.access$200(this.a);
+      paramAdapterView.slide_number += 1;
     }
-    catch (Exception localException)
+    this.a.mIndex = paramInt;
+    paramAdapterView = new StringBuilder();
+    paramAdapterView.append(this.a.mIndex + 1);
+    paramAdapterView.append("/");
+    paramAdapterView.append(this.a.mSeqListLength);
+    paramAdapterView = paramAdapterView.toString();
+    this.a.mTextView.setText(paramAdapterView);
+    if (TroopAvatarWallPreviewActivity.access$300(this.a) != null) {
+      TroopAvatarWallPreviewActivity.access$300(this.a).setText(paramAdapterView);
+    }
+    if (this.a.mIsTroopMember) {
+      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.mTroopUin, "0", "", "");
+    } else {
+      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.mTroopUin, "1", "", "");
+    }
+    if (this.a.mNeedBottomBar)
     {
-      Object localObject2;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("showActionSheet error : ");
-        ((StringBuilder)localObject2).append(localException.getMessage());
-        QLog.e("TroopAvatarWallPreviewActivity", 2, ((StringBuilder)localObject2).toString());
-      }
+      paramAdapterView = this.a;
+      TroopAvatarWallPreviewActivity.access$400(paramAdapterView, paramAdapterView.mIndex);
     }
+    bool2 = this.a.mIsShowMenu;
+    paramAdapterView = TroopAvatarWallPreviewActivity.access$500(this.a);
+    paramInt = 0;
+    if ((paramAdapterView != null) && (TroopAvatarWallPreviewActivity.access$500(this.a).getBoolean("from_personality_label", false)))
+    {
+      paramAdapterView = this.a;
+      if (Long.valueOf((String)paramAdapterView.mPhotoIds.get(this.a.mIndex)).longValue() == -1L) {
+        bool1 = false;
+      }
+      paramAdapterView.mIsShowMenu = bool1;
+    }
+    if (bool2 != this.a.mIsShowMenu)
+    {
+      paramAdapterView = this.a.mMenuBtn;
+      if (!this.a.mIsShowMenu) {
+        paramInt = 8;
+      }
+      paramAdapterView.setVisibility(paramInt);
+    }
+    if (this.a.isGridImageReport) {
+      TroopAvatarWallPreviewActivity.access$600(this.a);
+    }
+    paramAdapterView = this.a;
+    TroopAvatarWallPreviewActivity.access$700(paramAdapterView, paramAdapterView.mIndex);
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.10
  * JD-Core Version:    0.7.0.1
  */

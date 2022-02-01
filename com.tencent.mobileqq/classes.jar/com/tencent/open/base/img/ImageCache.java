@@ -13,10 +13,10 @@ import java.util.concurrent.TimeUnit;
 
 public class ImageCache
 {
-  protected static ImageDbHelper a;
   public static final String a;
-  protected static ThreadPoolExecutor a;
   protected static final String b;
+  protected static ImageDbHelper c = new ImageDbHelper(CommonDataAdapter.a().b());
+  protected static ThreadPoolExecutor d = new ThreadPoolExecutor(3, 5, 120L, TimeUnit.SECONDS, new ArrayBlockingQueue(100));
   
   static
   {
@@ -28,7 +28,7 @@ public class ImageCache
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append(".AppCenterImgCache");
     ((StringBuilder)localObject).append(File.separator);
-    jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    a = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(File.separator);
     ((StringBuilder)localObject).append("tencent");
@@ -41,14 +41,14 @@ public class ImageCache
     try
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(Common.e());
+      ((StringBuilder)localObject).append(Common.f());
       ((StringBuilder)localObject).append(b);
       localObject = new File(((StringBuilder)localObject).toString());
       if (((File)localObject).exists())
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(Common.e());
-        localStringBuilder.append(jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(Common.f());
+        localStringBuilder.append(a);
         ((File)localObject).renameTo(new File(localStringBuilder.toString()));
       }
     }
@@ -56,15 +56,13 @@ public class ImageCache
     {
       localException.printStackTrace();
     }
-    jdField_a_of_type_ComTencentOpenBaseImgImageDbHelper = new ImageDbHelper(CommonDataAdapter.a().a());
-    jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 5, 120L, TimeUnit.SECONDS, new ArrayBlockingQueue(100));
   }
   
   public static String a(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Common.e());
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(Common.f());
+    localStringBuilder.append(a);
     localStringBuilder.append(paramString1);
     localStringBuilder.append(File.separator);
     localStringBuilder.append(FileUtils.a(paramString2));
@@ -77,89 +75,89 @@ public class ImageCache
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 97	com/tencent/open/base/img/ImageCache:jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor	Ljava/util/concurrent/ThreadPoolExecutor;
-    //   6: invokevirtual 110	java/util/concurrent/ThreadPoolExecutor:getQueue	()Ljava/util/concurrent/BlockingQueue;
+    //   3: getstatic 99	com/tencent/open/base/img/ImageCache:d	Ljava/util/concurrent/ThreadPoolExecutor;
+    //   6: invokevirtual 112	java/util/concurrent/ThreadPoolExecutor:getQueue	()Ljava/util/concurrent/BlockingQueue;
     //   9: aload_0
-    //   10: invokeinterface 116 2 0
+    //   10: invokeinterface 118 2 0
     //   15: ifeq +56 -> 71
-    //   18: new 15	java/lang/StringBuilder
+    //   18: new 17	java/lang/StringBuilder
     //   21: dup
-    //   22: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   22: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   25: astore_1
     //   26: aload_1
-    //   27: ldc 118
-    //   29: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: ldc 120
+    //   29: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: pop
     //   33: aload_1
     //   34: aload_0
-    //   35: getfield 121	com/tencent/open/base/img/ImageCache$UpdateTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   38: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: getfield 123	com/tencent/open/base/img/ImageCache$UpdateTask:a	Ljava/lang/String;
+    //   38: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: pop
     //   42: aload_1
-    //   43: ldc 123
-    //   45: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: ldc 125
+    //   45: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: pop
     //   49: aload_1
     //   50: aload_0
-    //   51: getfield 126	com/tencent/open/base/img/ImageCache$UpdateTask:c	Ljava/lang/String;
-    //   54: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: getfield 127	com/tencent/open/base/img/ImageCache$UpdateTask:c	Ljava/lang/String;
+    //   54: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: pop
-    //   58: ldc 128
+    //   58: ldc 129
     //   60: aload_1
-    //   61: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokestatic 133	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   61: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 134	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   67: ldc 2
     //   69: monitorexit
     //   70: return
-    //   71: new 15	java/lang/StringBuilder
+    //   71: new 17	java/lang/StringBuilder
     //   74: dup
-    //   75: invokespecial 18	java/lang/StringBuilder:<init>	()V
+    //   75: invokespecial 20	java/lang/StringBuilder:<init>	()V
     //   78: astore_1
     //   79: aload_1
-    //   80: ldc 135
-    //   82: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: ldc 136
+    //   82: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: pop
     //   86: aload_1
     //   87: aload_0
-    //   88: getfield 121	com/tencent/open/base/img/ImageCache$UpdateTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   91: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: getfield 123	com/tencent/open/base/img/ImageCache$UpdateTask:a	Ljava/lang/String;
+    //   91: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: pop
     //   95: aload_1
-    //   96: ldc 123
-    //   98: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: ldc 125
+    //   98: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: pop
     //   102: aload_1
     //   103: aload_0
-    //   104: getfield 126	com/tencent/open/base/img/ImageCache$UpdateTask:c	Ljava/lang/String;
-    //   107: invokevirtual 27	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: getfield 127	com/tencent/open/base/img/ImageCache$UpdateTask:c	Ljava/lang/String;
+    //   107: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: pop
-    //   111: ldc 128
+    //   111: ldc 129
     //   113: aload_1
-    //   114: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: invokestatic 133	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   120: getstatic 97	com/tencent/open/base/img/ImageCache:jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor	Ljava/util/concurrent/ThreadPoolExecutor;
+    //   114: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokestatic 134	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   120: getstatic 99	com/tencent/open/base/img/ImageCache:d	Ljava/util/concurrent/ThreadPoolExecutor;
     //   123: aload_0
-    //   124: invokevirtual 139	java/util/concurrent/ThreadPoolExecutor:execute	(Ljava/lang/Runnable;)V
+    //   124: invokevirtual 140	java/util/concurrent/ThreadPoolExecutor:execute	(Ljava/lang/Runnable;)V
     //   127: goto +44 -> 171
     //   130: astore_0
     //   131: goto +44 -> 175
     //   134: astore_1
-    //   135: ldc 128
-    //   137: ldc 141
+    //   135: ldc 129
+    //   137: ldc 142
     //   139: aload_1
-    //   140: invokestatic 144	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   140: invokestatic 145	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   143: aload_0
-    //   144: getfield 147	com/tencent/open/base/img/ImageCache$UpdateTask:jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback	Lcom/tencent/open/base/img/ImageDownCallback;
+    //   144: getfield 148	com/tencent/open/base/img/ImageCache$UpdateTask:d	Lcom/tencent/open/base/img/ImageDownCallback;
     //   147: ifnull +24 -> 171
     //   150: aload_0
-    //   151: getfield 147	com/tencent/open/base/img/ImageCache$UpdateTask:jdField_a_of_type_ComTencentOpenBaseImgImageDownCallback	Lcom/tencent/open/base/img/ImageDownCallback;
+    //   151: getfield 148	com/tencent/open/base/img/ImageCache$UpdateTask:d	Lcom/tencent/open/base/img/ImageDownCallback;
     //   154: aload_0
-    //   155: getfield 121	com/tencent/open/base/img/ImageCache$UpdateTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   155: getfield 123	com/tencent/open/base/img/ImageCache$UpdateTask:a	Ljava/lang/String;
     //   158: aload_0
-    //   159: getfield 148	com/tencent/open/base/img/ImageCache$UpdateTask:b	Ljava/lang/String;
+    //   159: getfield 149	com/tencent/open/base/img/ImageCache$UpdateTask:b	Ljava/lang/String;
     //   162: aload_0
-    //   163: getfield 126	com/tencent/open/base/img/ImageCache$UpdateTask:c	Ljava/lang/String;
-    //   166: invokeinterface 153 4 0
+    //   163: getfield 127	com/tencent/open/base/img/ImageCache$UpdateTask:c	Ljava/lang/String;
+    //   166: invokeinterface 154 4 0
     //   171: ldc 2
     //   173: monitorexit
     //   174: return
@@ -212,7 +210,7 @@ public class ImageCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.img.ImageCache
  * JD-Core Version:    0.7.0.1
  */

@@ -39,7 +39,7 @@ class AdReportManager$1
     try
     {
       ReportAction localReportAction = AdReportUtil.a(this.a);
-      Object localObject1 = AdReportUtil.a(this.a);
+      Object localObject1 = AdReportUtil.d(this.a);
       boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
       if (bool)
       {
@@ -51,11 +51,11 @@ class AdReportManager$1
         AdReportManager.a((AdReportManager)localObject1, ((StringBuilder)localObject2).toString(), "reportUrl is empty");
         return;
       }
-      Object localObject2 = AdReportUtil.a(this.a);
+      Object localObject2 = AdReportUtil.c(this.a);
       if ((localObject2 != null) && (((Map)localObject2).size() != 0))
       {
         ReportData localReportData = AdReportUtil.a((Map)localObject2);
-        if (localReportData.a())
+        if (localReportData.d())
         {
           localObject1 = this.this$0;
           localObject2 = new StringBuilder();
@@ -65,7 +65,7 @@ class AdReportManager$1
           AdReportManager.a((AdReportManager)localObject1, ((StringBuilder)localObject2).toString(), "reportData is empty");
           return;
         }
-        if (AdReportManager.b(this.a))
+        if (AdReportManager.c(this.a))
         {
           localObject1 = this.this$0;
           localObject2 = new StringBuilder();
@@ -76,7 +76,7 @@ class AdReportManager$1
           return;
         }
         AdReportManager.a(this.this$0, (String)localObject1, localReportData, localReportAction);
-        if ((localReportAction == ReportAction.EXPOSE) && (this.a.a().intValue() == 2) && (AdReportUtil.a(this.a) == ActionEntity.OutSuperMask))
+        if ((localReportAction == ReportAction.EXPOSE) && (this.a.t().intValue() == 2) && (AdReportUtil.b(this.a) == ActionEntity.OutSuperMask))
         {
           this.a.a(ActionEntity.Default);
           a(localReportAction, (String)localObject1, (Map)localObject2);
@@ -102,7 +102,7 @@ class AdReportManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.AdReportManager.1
  * JD-Core Version:    0.7.0.1
  */

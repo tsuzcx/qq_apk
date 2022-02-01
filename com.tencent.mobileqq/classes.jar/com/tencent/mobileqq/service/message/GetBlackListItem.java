@@ -17,11 +17,11 @@ public class GetBlackListItem
   implements CheckUpdateItemInterface
 {
   public static String a = "GetBlackListItem";
-  private final AppInterface a;
+  private final AppInterface b;
   
   public GetBlackListItem(AppInterface paramAppInterface)
   {
-    this.a = paramAppInterface;
+    this.b = paramAppInterface;
   }
   
   public static long a(long paramLong)
@@ -40,8 +40,8 @@ public class GetBlackListItem
     localReqItem.eServiceID = 116;
     Object localObject = new ReqHeader();
     ((ReqHeader)localObject).shVersion = 0;
-    ((ReqHeader)localObject).lMID = a(Long.parseLong(this.a.getAccount()));
-    ((ReqHeader)localObject).iAppID = AppSetting.a();
+    ((ReqHeader)localObject).lMID = a(Long.parseLong(this.b.getAccount()));
+    ((ReqHeader)localObject).iAppID = AppSetting.d();
     localObject = new ReqGetBlackList((ReqHeader)localObject, 0L, 1, 0);
     UniPacket localUniPacket = new UniPacket();
     localUniPacket.setServantName("AccostObj");
@@ -62,13 +62,13 @@ public class GetBlackListItem
       localObject = new FromServiceMsg();
       ((FromServiceMsg)localObject).setMsgSuccess();
       ((FromServiceMsg)localObject).setServiceCmd("AccostSvc.ReqGetBlackList");
-      ((IMessageHandlerService)QRoute.api(IMessageHandlerService.class)).handleGetBlackList(this.a, null, (FromServiceMsg)localObject, paramRespItem);
+      ((IMessageHandlerService)QRoute.api(IMessageHandlerService.class)).handleGetBlackList(this.b, null, (FromServiceMsg)localObject, paramRespItem);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.GetBlackListItem
  * JD-Core Version:    0.7.0.1
  */

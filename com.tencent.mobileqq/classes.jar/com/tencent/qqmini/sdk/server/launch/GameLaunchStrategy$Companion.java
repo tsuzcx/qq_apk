@@ -19,7 +19,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion;", "", "()V", "TAG", "", "createLaunchIntent", "Landroid/content/Intent;", "context", "Landroid/content/Context;", "config", "Lcom/tencent/qqmini/sdk/server/launch/GameLaunchConfig;", "process", "Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo;", "Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy;", "appId", "Lcom/tencent/qqmini/sdk/server/launch/AppIdentity;", "createLaunchIntent$lib_miniserver_internalRelease", "findExistedProcessForGame", "game", "runningProcesses", "", "findExistedProcessForGame$lib_miniserver_internalRelease", "findProcessForLaunch", "Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;", "processConfig", "findProcessForLaunch$lib_miniserver_internalRelease", "findProcessToClean", "findProcessToClean$lib_miniserver_internalRelease", "findProcessToPreload", "findProcessToPreload$lib_miniserver_internalRelease", "getOrPutFist", "T", "", "condition", "Lkotlin/Function1;", "", "factory", "Lkotlin/Function0;", "(Ljava/util/List;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "moveToFront", "", "value", "(Ljava/util/List;Ljava/lang/Object;)V", "toId", "Lcom/tencent/qqmini/sdk/launcher/model/MiniAppBaseInfo;", "toId$lib_miniserver_internalRelease", "lib_miniserver_internalRelease"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion;", "", "()V", "TAG", "", "createLaunchIntent", "Landroid/content/Intent;", "context", "Landroid/content/Context;", "config", "Lcom/tencent/qqmini/sdk/server/launch/GameLaunchConfig;", "process", "Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo;", "Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy;", "appId", "Lcom/tencent/qqmini/sdk/server/launch/AppIdentity;", "isForceReload", "", "createLaunchIntent$lib_miniserver_internalRelease", "findExistedProcessForGame", "game", "runningProcesses", "", "findExistedProcessForGame$lib_miniserver_internalRelease", "findProcessForLaunch", "Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;", "processConfig", "findProcessForLaunch$lib_miniserver_internalRelease", "findProcessToClean", "findProcessToClean$lib_miniserver_internalRelease", "findProcessToPreload", "findProcessToPreload$lib_miniserver_internalRelease", "getOrPutFist", "T", "", "condition", "Lkotlin/Function1;", "factory", "Lkotlin/Function0;", "(Ljava/util/List;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "moveToFront", "", "value", "(Ljava/util/List;Ljava/lang/Object;)V", "toId", "Lcom/tencent/qqmini/sdk/launcher/model/MiniAppBaseInfo;", "toId$lib_miniserver_internalRelease", "lib_miniserver_internalRelease"}, k=1, mv={1, 1, 16})
 public final class GameLaunchStrategy$Companion
 {
   private final <T> T getOrPutFist(@NotNull List<T> paramList, Function1<? super T, Boolean> paramFunction1, Function0<? extends T> paramFunction0)
@@ -52,7 +52,7 @@ public final class GameLaunchStrategy$Companion
   
   @VisibleForTesting
   @NotNull
-  public final Intent createLaunchIntent$lib_miniserver_internalRelease(@NotNull Context paramContext, @NotNull GameLaunchConfig paramGameLaunchConfig, @NotNull GameLaunchStrategy.RunningProcessInfo paramRunningProcessInfo, @NotNull AppIdentity paramAppIdentity)
+  public final Intent createLaunchIntent$lib_miniserver_internalRelease(@NotNull Context paramContext, @NotNull GameLaunchConfig paramGameLaunchConfig, @NotNull GameLaunchStrategy.RunningProcessInfo paramRunningProcessInfo, @NotNull AppIdentity paramAppIdentity, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramGameLaunchConfig, "config");
@@ -63,12 +63,18 @@ public final class GameLaunchStrategy$Companion
     {
       paramContext.addFlags(524288);
       paramContext.addFlags(8192);
+      paramContext.addFlags(536870912);
       paramContext.addFlags(268435456);
       paramContext.setData(paramAppIdentity.getUri());
-      return paramContext;
     }
-    paramContext.addFlags(536870912);
-    paramContext.addFlags(268435456);
+    else
+    {
+      paramContext.addFlags(536870912);
+      paramContext.addFlags(268435456);
+    }
+    if (paramBoolean) {
+      paramContext.addFlags(32768);
+    }
     return paramContext;
   }
   
@@ -222,7 +228,7 @@ public final class GameLaunchStrategy$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.GameLaunchStrategy.Companion
  * JD-Core Version:    0.7.0.1
  */

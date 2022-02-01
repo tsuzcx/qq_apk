@@ -10,12 +10,12 @@ class TroopFileDownloadMgr$7
   
   public void run()
   {
-    TroopFileDownloadMgr.a(this.this$0, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
+    TroopFileDownloadMgr.a(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.7
  * JD-Core Version:    0.7.0.1
  */

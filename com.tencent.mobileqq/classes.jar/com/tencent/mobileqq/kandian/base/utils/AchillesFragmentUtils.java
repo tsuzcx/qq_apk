@@ -2,8 +2,7 @@ package com.tencent.mobileqq.kandian.base.utils;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,32 +11,31 @@ import org.json.JSONObject;
 
 public class AchillesFragmentUtils
 {
-  private static AchillesFragmentUtils.InstallBroadcastReceiver jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsAchillesFragmentUtils$InstallBroadcastReceiver;
-  private static String jdField_a_of_type_JavaLangString;
-  private static WeakReference<WebViewPlugin.PluginRuntime> jdField_a_of_type_JavaLangRefWeakReference;
+  private static WeakReference<WebViewPlugin.PluginRuntime> a;
+  private static AchillesFragmentUtils.InstallBroadcastReceiver b;
+  private static String c;
   
   public static void a(String paramString1, String paramString2, String paramString3)
   {
-    JSONObject localJSONObject = new JSONObject();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009ECD", "0X8009ECD", 0, 0, paramString1, paramString2, paramString3, localJSONObject.toString(), false);
+    PublicAccountReportUtils.a(null, "", "0X8009ECD", "0X8009ECD", 0, 0, paramString1, paramString2, paramString3, new JSONObject().toString(), false);
   }
   
   public static boolean a(String paramString1, String paramString2, WebViewPlugin.PluginRuntime paramPluginRuntime, boolean paramBoolean)
   {
     try
     {
-      jdField_a_of_type_JavaLangString = paramString1;
-      if (jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsAchillesFragmentUtils$InstallBroadcastReceiver == null)
+      c = paramString1;
+      if (b == null)
       {
         paramString1 = new IntentFilter();
         paramString1.addAction("android.intent.action.PACKAGE_ADDED");
         paramString1.addAction("android.intent.action.PACKAGE_INSTALL");
         paramString1.addAction("android.intent.action.UNINSTALL_PACKAGE");
         paramString1.addDataScheme("package");
-        jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsAchillesFragmentUtils$InstallBroadcastReceiver = new AchillesFragmentUtils.InstallBroadcastReceiver();
-        BaseApplication.getContext().registerReceiver(jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsAchillesFragmentUtils$InstallBroadcastReceiver, paramString1);
+        b = new AchillesFragmentUtils.InstallBroadcastReceiver();
+        BaseApplication.getContext().registerReceiver(b, paramString1);
       }
-      jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramPluginRuntime);
+      a = new WeakReference(paramPluginRuntime);
     }
     catch (Exception paramString1)
     {
@@ -61,7 +59,7 @@ public class AchillesFragmentUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.AchillesFragmentUtils
  * JD-Core Version:    0.7.0.1
  */

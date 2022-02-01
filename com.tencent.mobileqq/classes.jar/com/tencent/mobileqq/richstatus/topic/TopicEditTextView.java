@@ -17,46 +17,31 @@ public class TopicEditTextView
   extends EditText
   implements TextWatcher
 {
-  public static Editable.Factory a;
-  int jdField_a_of_type_Int;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
-  ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback = new TopicEditTextView.2(this);
-  ITopic jdField_a_of_type_ComTencentMobileqqTextITopic;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  public boolean b;
-  
-  static
-  {
-    jdField_a_of_type_AndroidTextEditable$Factory = new TopicEditTextView.1();
-  }
+  public static Editable.Factory a = new TopicEditTextView.1();
+  ITopic b;
+  boolean c;
+  int d;
+  int e;
+  public boolean f = false;
+  ActionMode.Callback g = new TopicEditTextView.2(this);
+  private TextWatcher h;
   
   public TopicEditTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Boolean = false;
-    a();
+    b();
   }
   
   public TopicEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Boolean = false;
-    a();
+    b();
   }
   
   public TopicEditTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Boolean = false;
-    a();
-  }
-  
-  private void a()
-  {
-    setEditableFactory(jdField_a_of_type_AndroidTextEditable$Factory);
-    setCustomSelectionActionModeCallback(this.jdField_a_of_type_AndroidViewActionMode$Callback);
-    super.addTextChangedListener(this);
+    b();
   }
   
   private boolean a()
@@ -76,6 +61,13 @@ public class TopicEditTextView
       }
     }
     return true;
+  }
+  
+  private void b()
+  {
+    setEditableFactory(a);
+    setCustomSelectionActionModeCallback(this.g);
+    super.addTextChangedListener(this);
   }
   
   public void a(Exception paramException)
@@ -103,38 +95,38 @@ public class TopicEditTextView
   
   public void addTextChangedListener(TextWatcher paramTextWatcher)
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = paramTextWatcher;
+    this.h = paramTextWatcher;
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.f) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("TopicEditTextView", 2, String.format("afterTextChanged [delTopic=%s] src=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqTextITopic, paramEditable }));
+      QLog.i("TopicEditTextView", 2, String.format("afterTextChanged [delTopic=%s] src=%s", new Object[] { this.b, paramEditable }));
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+    Object localObject = this.b;
     if (localObject != null)
     {
       int i = paramEditable.getSpanStart(localObject);
-      int j = paramEditable.getSpanEnd(this.jdField_a_of_type_ComTencentMobileqqTextITopic);
+      int j = paramEditable.getSpanEnd(this.b);
       if ((i >= 0) && (j > i))
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.f = true;
         paramEditable.delete(i, j);
         if (QLog.isColorLevel()) {
           QLog.i("TopicEditTextView", 2, String.format("afterTextChanged after delete=%s", new Object[] { paramEditable }));
         }
-        this.jdField_b_of_type_Boolean = false;
+        this.f = false;
         setSelection(i);
       }
     }
     else
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.c;
     }
-    localObject = this.jdField_a_of_type_AndroidTextTextWatcher;
+    localObject = this.h;
     if (localObject != null) {
       ((TextWatcher)localObject).afterTextChanged(paramEditable);
     }
@@ -142,10 +134,10 @@ public class TopicEditTextView
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.f) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
+    this.b = null;
     if ((paramCharSequence instanceof Spannable))
     {
       localObject = (Spannable)paramCharSequence;
@@ -155,7 +147,7 @@ public class TopicEditTextView
         int i = ((Spannable)localObject).getSpanStart(localITopic);
         int j = ((Spannable)localObject).getSpanEnd(localITopic);
         if ((j >= 0) && (j >= i) && (paramInt2 > paramInt3)) {
-          this.jdField_a_of_type_ComTencentMobileqqTextITopic = localITopic;
+          this.b = localITopic;
         }
       }
     }
@@ -165,13 +157,13 @@ public class TopicEditTextView
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt3;
+    this.c = bool;
+    this.d = paramInt1;
+    this.e = paramInt3;
     if (QLog.isColorLevel()) {
-      QLog.i("TopicEditTextView", 2, String.format("beforeTextChanged [bAdd=%b][delTopic=%s][edit=%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_ComTencentMobileqqTextITopic, paramCharSequence }));
+      QLog.i("TopicEditTextView", 2, String.format("beforeTextChanged [bAdd=%b][delTopic=%s][edit=%s]", new Object[] { Boolean.valueOf(this.c), this.b, paramCharSequence }));
     }
-    Object localObject = this.jdField_a_of_type_AndroidTextTextWatcher;
+    Object localObject = this.h;
     if (localObject != null) {
       ((TextWatcher)localObject).beforeTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     }
@@ -225,7 +217,7 @@ public class TopicEditTextView
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    TextWatcher localTextWatcher = this.jdField_a_of_type_AndroidTextTextWatcher;
+    TextWatcher localTextWatcher = this.h;
     if (localTextWatcher != null) {
       localTextWatcher.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     }
@@ -286,7 +278,7 @@ public class TopicEditTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.topic.TopicEditTextView
  * JD-Core Version:    0.7.0.1
  */

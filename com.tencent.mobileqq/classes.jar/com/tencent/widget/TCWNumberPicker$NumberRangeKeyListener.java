@@ -23,7 +23,7 @@ class TCWNumberPicker$NumberRangeKeyListener
     if ("".equals(paramCharSequence)) {
       return paramCharSequence;
     }
-    if (TCWNumberPicker.a(this.a, paramCharSequence) > TCWNumberPicker.a(this.a)) {
+    if (TCWNumberPicker.a(this.a, paramCharSequence) > TCWNumberPicker.c(this.a)) {
       return "";
     }
     return localCharSequence1;
@@ -31,7 +31,7 @@ class TCWNumberPicker$NumberRangeKeyListener
   
   protected char[] getAcceptedChars()
   {
-    return TCWNumberPicker.a();
+    return TCWNumberPicker.c();
   }
   
   public int getInputType()
@@ -41,7 +41,7 @@ class TCWNumberPicker$NumberRangeKeyListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.TCWNumberPicker.NumberRangeKeyListener
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class OrientationDetector$3
   
   public void run()
   {
-    synchronized (OrientationDetector.a(this.this$0))
+    synchronized (OrientationDetector.d(this.this$0))
     {
       if (QLog.isColorLevel())
       {
@@ -19,22 +19,22 @@ class OrientationDetector$3
         localStringBuilder.append("run: innerEnable: enable=");
         localStringBuilder.append(this.a);
         localStringBuilder.append(", mEventListener=");
-        localStringBuilder.append(OrientationDetector.a(this.this$0));
+        localStringBuilder.append(OrientationDetector.e(this.this$0));
         QLog.d((String)???, 2, localStringBuilder.toString());
       }
-      if (OrientationDetector.a(this.this$0) == null) {
+      if (OrientationDetector.e(this.this$0) == null) {
         return;
       }
       try
       {
         if (this.a)
         {
-          if (OrientationDetector.a(this.this$0).canDetectOrientation()) {
-            OrientationDetector.a(this.this$0).enable();
+          if (OrientationDetector.e(this.this$0).canDetectOrientation()) {
+            OrientationDetector.e(this.this$0).enable();
           }
         }
         else {
-          OrientationDetector.a(this.this$0).disable();
+          OrientationDetector.e(this.this$0).disable();
         }
       }
       catch (Throwable localThrowable)
@@ -43,7 +43,7 @@ class OrientationDetector$3
         break label128;
       }
       if (this.b) {
-        synchronized (OrientationDetector.a(this.this$0))
+        synchronized (OrientationDetector.d(this.this$0))
         {
           OrientationDetector.a(this.this$0, null);
         }
@@ -54,7 +54,7 @@ class OrientationDetector$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.OrientationDetector.3
  * JD-Core Version:    0.7.0.1
  */

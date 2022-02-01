@@ -1,19 +1,23 @@
 package com.tencent.open.agent;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.dialog.SlideBottomDialog;
 import com.tencent.open.agent.util.SSOLog;
-import com.tencent.widget.ActionSheet;
+import com.tencent.open.settings.OpensdkFeatureSwitcher;
 
 public class OpenAuthorityAccountView
   extends BaseAuthorityAccountView
 {
-  private OpenCardContainer.AccountEventListener a;
-  private View c;
+  private View r;
+  private OpenCardContainer.AccountEventListener s = null;
+  private SlideBottomDialog t;
+  private boolean u = OpensdkFeatureSwitcher.a(this.e);
   
   public OpenAuthorityAccountView(Context paramContext)
   {
@@ -28,50 +32,36 @@ public class OpenAuthorityAccountView
   public OpenAuthorityAccountView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$AccountEventListener = null;
-    g();
+    a();
   }
   
-  private void g()
+  private void a()
   {
     SSOLog.a("OpenAuthorityAccountView", new Object[] { "-->initUI" });
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     setOrientation(1);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559660, null);
-    addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-    b();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new OpenAuthorityAccountView.1(this));
-    this.c = findViewById(2131377154);
+    this.k = LayoutInflater.from(this.c).inflate(2131625690, null);
+    addView(this.k, localLayoutParams);
+    c();
+    this.m.setOnClickListener(new OpenAuthorityAccountView.1(this));
+    this.r = findViewById(2131445532);
   }
   
-  public void a()
+  private void j()
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      f();
-      this.jdField_a_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-  }
-  
-  protected boolean a()
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivityForOpenSDK)))
-    {
-      OpenCardContainer.AccountEventListener localAccountEventListener = this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$AccountEventListener;
-      if (localAccountEventListener != null) {
-        localAccountEventListener.a();
-      }
-      return true;
-    }
-    return false;
+    this.t = new SlideBottomDialog(getContext());
+    this.t.a(this.l);
+    int i = getResources().getDimensionPixelSize(2131298163);
+    int j = getResources().getDimensionPixelSize(2131298165);
+    int k = getResources().getDimensionPixelSize(2131298164);
+    this.t.a((i + j * 2) * 6 + k);
   }
   
   protected boolean a(String paramString, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivityForOpenSDK))
+    if ((this.c instanceof PublicFragmentActivityForOpenSDK))
     {
-      OpenCardContainer.AccountEventListener localAccountEventListener = this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$AccountEventListener;
+      OpenCardContainer.AccountEventListener localAccountEventListener = this.s;
       if (localAccountEventListener != null)
       {
         localAccountEventListener.a(paramString, paramBoolean);
@@ -81,9 +71,74 @@ public class OpenAuthorityAccountView
     return false;
   }
   
+  protected boolean b()
+  {
+    if ((this.c != null) && ((this.c instanceof PublicFragmentActivityForOpenSDK)))
+    {
+      OpenCardContainer.AccountEventListener localAccountEventListener = this.s;
+      if (localAccountEventListener != null) {
+        localAccountEventListener.a();
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void e()
+  {
+    if (!this.q)
+    {
+      i();
+      this.q = true;
+    }
+    if (this.u)
+    {
+      if (this.t == null) {
+        j();
+      }
+      if (!this.t.isShowing()) {
+        this.t.a();
+      }
+    }
+    else
+    {
+      super.e();
+    }
+  }
+  
+  public void f()
+  {
+    if (this.u)
+    {
+      SlideBottomDialog localSlideBottomDialog = this.t;
+      if ((localSlideBottomDialog != null) && (localSlideBottomDialog.isShowing()))
+      {
+        this.t.b();
+        return;
+      }
+    }
+    super.f();
+  }
+  
+  protected int getAccountListContainerLayoutId()
+  {
+    if (this.u) {
+      return 2131625705;
+    }
+    return super.getAccountListContainerLayoutId();
+  }
+  
+  protected int getAccountListItemLayoutId()
+  {
+    if (this.u) {
+      return 2131625687;
+    }
+    return super.getAccountListItemLayoutId();
+  }
+  
   public void setAccountEventListener(OpenCardContainer.AccountEventListener paramAccountEventListener)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$AccountEventListener = paramAccountEventListener;
+    this.s = paramAccountEventListener;
   }
   
   public void setMainAccountSelect(boolean paramBoolean)
@@ -94,7 +149,7 @@ public class OpenAuthorityAccountView
     localObject = ((StringBuilder)localObject).toString();
     int i = 0;
     SSOLog.a("OpenAuthorityAccountView", new Object[] { localObject });
-    localObject = this.c;
+    localObject = this.r;
     if (!paramBoolean) {
       i = 8;
     }
@@ -103,7 +158,7 @@ public class OpenAuthorityAccountView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityAccountView
  * JD-Core Version:    0.7.0.1
  */

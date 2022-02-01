@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/5a" android:background="@color/aju" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="14.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/gq4" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_centerVertical="true" android:elevation="4.0dip">
+        <com.tencent.mobileqq.vas.adv.qzone.logic.AdvRoundFrameLayout android:id="@id/5b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/5_" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/j9q" android:layout_centerInParent="true" />
+        <LinearLayout android:orientation="vertical" android:background="@drawable/gq7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignBottom="@id/5b" android:layout_alignParentBottom="true">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
+                <com.tencent.mobileqq.vas.adv.qzone.logic.AdvRoundFrameLayout android:layout_gravity="center_vertical" android:id="@id/5c" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="9.0dip">
+                    <ImageView android:id="@id/5e" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+                </com.tencent.mobileqq.vas.adv.qzone.logic.AdvRoundFrameLayout>
+                <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="end" android:layout_gravity="center" android:id="@id/5f" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/vg9" android:maxLines="1" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="7.0dip">
+                <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/5g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:text="广告主文案" android:maxLines="1" android:layout_weight="1.0" />
+                <ImageView android:layout_gravity="center|right" android:id="@id/5d" android:background="@drawable/j9n" android:layout_width="26.0dip" android:layout_height="11.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

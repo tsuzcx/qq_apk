@@ -4,42 +4,42 @@ import com.tencent.mobileqq.qrscan.utils.QRUtils;
 
 public class QRActionEntity$QRActionTLV
 {
-  int jdField_a_of_type_Int = 0;
-  short jdField_a_of_type_Short = 0;
-  byte[] jdField_a_of_type_ArrayOfByte = null;
+  int a = 0;
+  short b = 0;
+  byte[] c = null;
   
   public QRActionEntity$QRActionTLV() {}
   
   public QRActionEntity$QRActionTLV(int paramInt, short paramShort, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Short = paramShort;
+    this.a = paramInt;
+    this.c = paramArrayOfByte;
+    this.b = paramShort;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_ArrayOfByte.length + 4;
+    return this.c.length + 4;
   }
   
-  public long a()
+  public String b()
   {
-    return QRUtils.a(this.jdField_a_of_type_ArrayOfByte);
+    return new String(this.c);
   }
   
-  public String a()
+  public long c()
   {
-    return new String(this.jdField_a_of_type_ArrayOfByte);
+    return QRUtils.b(this.c);
   }
   
   public String toString()
   {
-    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
+    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.a), Short.valueOf(this.b), this.c });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.QRActionEntity.QRActionTLV
  * JD-Core Version:    0.7.0.1
  */

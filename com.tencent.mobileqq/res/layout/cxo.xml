@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:id="@id/fb8" android:paddingLeft="4.0dip" android:paddingTop="8.0dip" android:paddingRight="4.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/notification_icon" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="5.0dip" android:scaleType="centerInside" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/csv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fbe" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0">
-            <TextView android:textAppearance="@style/il" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/notification_title" android:fadingEdge="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.8" />
-            <TextView android:textAppearance="@style/ij" android:ellipsize="marquee" android:gravity="right" android:id="@id/fb4" android:fadingEdge="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.2" />
-        </LinearLayout>
-        <TextView android:textAppearance="@style/ij" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@id/notification_content" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        <LinearLayout android:id="@id/notif_pro_bar_layout" android:paddingRight="12.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="14.0dip">
-            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/notif_pro_bar" android:layout_width="fill_parent" android:layout_height="5.0dip" style="?android:progressBarStyleHorizontal" />
-        </LinearLayout>
-    </LinearLayout>
+    <RelativeLayout android:id="@id/pvk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.5dip" android:layout_marginRight="7.5dip">
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/qlc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/y23" />
+        <ImageView android:id="@id/o56" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/qcircle_skin_icon_general_arrow_right_secondary" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/qcircle_skin_color_text_secondary" android:id="@id/qld" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/y22" android:layout_toLeftOf="@id/o56" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/py2" android:paddingLeft="7.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="12.5dip" />
 </LinearLayout>

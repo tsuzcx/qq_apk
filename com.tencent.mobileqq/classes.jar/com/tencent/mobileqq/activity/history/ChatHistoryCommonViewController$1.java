@@ -13,7 +13,7 @@ class ChatHistoryCommonViewController$1
     if (paramInt == 1)
     {
       ChatHistoryCommonViewController localChatHistoryCommonViewController = this.a;
-      localChatHistoryCommonViewController.b = localChatHistoryCommonViewController.a.getCurrentItem();
+      localChatHistoryCommonViewController.i = localChatHistoryCommonViewController.l.getCurrentItem();
     }
   }
   
@@ -24,7 +24,7 @@ class ChatHistoryCommonViewController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryCommonViewController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ class LiteActivity$37
   
   public void run()
   {
-    if (this.this$0.b != null) {
-      this.this$0.b.setVisibility(8);
+    if (this.this$0.h != null) {
+      this.this$0.h.setVisibility(8);
     }
   }
 }

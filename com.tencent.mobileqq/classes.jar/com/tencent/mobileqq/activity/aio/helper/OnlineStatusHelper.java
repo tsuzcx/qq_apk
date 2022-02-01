@@ -14,65 +14,63 @@ import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 public abstract class OnlineStatusHelper
   implements ILifeCycleHelper
 {
-  protected BaseSessionInfo a;
   protected final AIOContext a;
-  private final FriendListObserver a;
-  protected final QQAppInterface a;
-  protected boolean a;
+  protected final QQAppInterface b;
+  protected BaseSessionInfo c;
+  protected boolean d = false;
+  private final FriendListObserver e = new OnlineStatusHelper.1(this);
   
   public OnlineStatusHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new OnlineStatusHelper.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
+    this.a = paramAIOContext;
+    this.b = paramAIOContext.a();
+    this.c = paramAIOContext.O();
   }
   
-  private TextView b()
+  private TextView c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().b();
-  }
-  
-  protected View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a();
-  }
-  
-  protected TextView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a();
+    return this.a.K().getSubTitleText2();
   }
   
   protected void a() {}
   
   protected void a(Context paramContext, int paramInt)
   {
-    a().setTextColor(paramContext.getResources().getColor(paramInt));
-    b().setTextColor(paramContext.getResources().getColor(paramInt));
+    f().setTextColor(paramContext.getResources().getColor(paramInt));
+    c().setTextColor(paramContext.getResources().getColor(paramInt));
   }
   
   protected void a(String paramString)
   {
-    InputStatusHelper localInputStatusHelper = (InputStatusHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(16);
+    InputStatusHelper localInputStatusHelper = (InputStatusHelper)this.a.a(16);
     if (localInputStatusHelper != null) {
       localInputStatusHelper.a(paramString);
     }
   }
   
-  protected void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.c(paramBoolean);
-  }
-  
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a == 1008;
-  }
-  
   public abstract void b();
   
-  protected void c() {}
+  protected void b(boolean paramBoolean)
+  {
+    this.a.c(paramBoolean);
+  }
+  
+  protected void d() {}
+  
+  protected boolean e()
+  {
+    return this.c.a == 1008;
+  }
+  
+  protected TextView f()
+  {
+    return this.a.K().getSubTitleText();
+  }
+  
+  protected View g()
+  {
+    return this.a.K().getSubTitleLayout();
+  }
   
   public int[] interestedIn()
   {
@@ -90,14 +88,14 @@ public abstract class OnlineStatusHelper
           if (paramInt != 15) {
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+          this.b.removeObserver(this.e);
           return;
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.d = false;
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      c();
+      this.b.addObserver(this.e);
+      d();
       return;
     }
     a();
@@ -105,7 +103,7 @@ public abstract class OnlineStatusHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.OnlineStatusHelper
  * JD-Core Version:    0.7.0.1
  */

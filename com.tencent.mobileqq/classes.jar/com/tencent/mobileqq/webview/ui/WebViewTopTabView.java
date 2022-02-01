@@ -13,25 +13,24 @@ import com.tencent.mobileqq.util.DisplayUtil;
 public class WebViewTopTabView
   extends RadioGroup
 {
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
-  public int[] a;
+  RadioButton a;
   RadioButton b;
+  LayoutInflater c;
+  public int[] d = null;
   
   public WebViewTopTabView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ArrayOfInt = null;
     super.setOrientation(0);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.c = LayoutInflater.from(paramContext);
   }
   
   RadioButton a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      localObject = (RadioButton)((LayoutInflater)localObject).inflate(2131563053, this, false);
+      localObject = (RadioButton)((LayoutInflater)localObject).inflate(2131629669, this, false);
     }
     else
     {
@@ -44,14 +43,14 @@ public class WebViewTopTabView
     return localObject;
   }
   
-  public int[] a()
+  public int[] getRedHotStatus()
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:244)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setButtonBackgroundResource(int paramInt1, int paramInt2, int paramInt3)
   {
-    RadioButton localRadioButton = this.jdField_a_of_type_AndroidWidgetRadioButton;
+    RadioButton localRadioButton = this.a;
     if (localRadioButton != null) {
       localRadioButton.setBackgroundResource(paramInt1);
     }
@@ -82,23 +81,23 @@ public class WebViewTopTabView
     {
       paramInt1 = 0;
     }
-    this.jdField_a_of_type_ArrayOfInt = new int[i];
+    this.d = new int[i];
     paramInt2 = 0;
     while (paramInt2 < i)
     {
-      this.jdField_a_of_type_ArrayOfInt[paramInt2] = paramInt2;
+      this.d[paramInt2] = paramInt2;
       paramInt2 += 1;
     }
     super.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetRadioButton = a(this.jdField_a_of_type_ArrayOfInt[0]);
-    if (this.jdField_a_of_type_AndroidWidgetRadioButton.getLayoutParams() == null)
+    this.a = a(this.d[0]);
+    if (this.a.getLayoutParams() == null)
     {
       localObject = new LinearLayout.LayoutParams(-2, DisplayUtil.a(super.getContext(), 30.0F));
-      super.addView(this.jdField_a_of_type_AndroidWidgetRadioButton, (ViewGroup.LayoutParams)localObject);
+      super.addView(this.a, (ViewGroup.LayoutParams)localObject);
     }
     else
     {
-      super.addView(this.jdField_a_of_type_AndroidWidgetRadioButton);
+      super.addView(this.a);
     }
     paramInt2 = 1;
     int j;
@@ -108,7 +107,7 @@ public class WebViewTopTabView
       if (paramInt2 >= j) {
         break;
       }
-      localObject = a(this.jdField_a_of_type_ArrayOfInt[paramInt2]);
+      localObject = a(this.d[paramInt2]);
       if (((RadioButton)localObject).getLayoutParams() == null) {
         super.addView((View)localObject, new LinearLayout.LayoutParams(-2, DisplayUtil.a(super.getContext(), 30.0F)));
       } else {
@@ -116,7 +115,7 @@ public class WebViewTopTabView
       }
       paramInt2 += 1;
     }
-    this.b = a(this.jdField_a_of_type_ArrayOfInt[j]);
+    this.b = a(this.d[j]);
     Object localObject = this.b;
     if (localObject == null)
     {
@@ -183,9 +182,9 @@ public class WebViewTopTabView
         if ((k >= 0) && (k < super.getChildCount()))
         {
           WebViewTopTabRadioButton localWebViewTopTabRadioButton = (WebViewTopTabRadioButton)super.getChildAt(k);
-          if (localWebViewTopTabRadioButton.a != paramBoolean)
+          if (localWebViewTopTabRadioButton.d != paramBoolean)
           {
-            localWebViewTopTabRadioButton.a = paramBoolean;
+            localWebViewTopTabRadioButton.d = paramBoolean;
             localWebViewTopTabRadioButton.invalidate();
           }
         }
@@ -227,7 +226,7 @@ public class WebViewTopTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTopTabView
  * JD-Core Version:    0.7.0.1
  */

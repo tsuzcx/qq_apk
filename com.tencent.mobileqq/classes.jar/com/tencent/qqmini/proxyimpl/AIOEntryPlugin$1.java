@@ -18,7 +18,7 @@ class AIOEntryPlugin$1
     boolean bool;
     if ((AIOEntryPlugin.a(this.this$0).getAttachedActivity() instanceof GameActivity1))
     {
-      bool = ((GameActivity1)AIOEntryPlugin.b(this.this$0).getAttachedActivity()).showMiniAIOEntrance(this.jdField_a_of_type_OrgJsonJSONObject);
+      bool = ((GameActivity1)AIOEntryPlugin.b(this.this$0).getAttachedActivity()).showMiniAIOEntrance(this.a);
     }
     else
     {
@@ -26,22 +26,22 @@ class AIOEntryPlugin$1
       {
         IPage localIPage = ((BaseRuntime)AIOEntryPlugin.f(this.this$0)).getPage();
         if (localIPage != null) {
-          localIPage.setMiniAIOEntranceVisible(true, this.jdField_a_of_type_OrgJsonJSONObject);
+          localIPage.setMiniAIOEntranceVisible(true, this.a);
         }
       }
       bool = false;
     }
     if (bool)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
+      this.b.ok();
       return;
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
+    this.b.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AIOEntryPlugin.1
  * JD-Core Version:    0.7.0.1
  */

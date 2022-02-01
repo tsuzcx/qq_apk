@@ -5,17 +5,27 @@ import com.tencent.avgame.localvoicerecog.IVoiceRecogEngineType;
 public class VoiceRecogEngineFactory
   implements IVoiceRecogEngineType
 {
-  private static int jdField_a_of_type_Int = 2;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static int a = 2;
+  private static boolean b = false;
   
   public static int a()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public static IVoiceRecogEngine a()
+  public static void a(int paramInt)
   {
-    int i = jdField_a_of_type_Int;
+    a = paramInt;
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    b = paramBoolean;
+  }
+  
+  public static IVoiceRecogEngine b()
+  {
+    int i = a;
     if (i == 2) {
       return WXVoiceRecogEngine.a();
     }
@@ -25,19 +35,9 @@ public class VoiceRecogEngineFactory
     return WXVoiceRecogEngine.a();
   }
   
-  public static void a(int paramInt)
+  public static boolean c()
   {
-    jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
+    return b;
   }
 }
 

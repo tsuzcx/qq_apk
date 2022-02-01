@@ -16,20 +16,8 @@ import java.util.HashMap;
 public class PreviewVideoPresenter
   extends BasePreviewPresent
 {
-  private PreviewVideoView jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewVideoView;
-  private HashMap<String, Drawable> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public Drawable a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-      if (localHashMap != null) {
-        return (Drawable)localHashMap.get(paramString);
-      }
-    }
-    return null;
-  }
+  private PreviewVideoView a;
+  private HashMap<String, Drawable> b = new HashMap();
   
   public LocalMediaInfo a(int paramInt)
   {
@@ -40,23 +28,14 @@ public class PreviewVideoPresenter
     return null;
   }
   
-  public String a(int paramInt)
-  {
-    RichMediaBrowserInfo localRichMediaBrowserInfo = getItem(paramInt);
-    if ((localRichMediaBrowserInfo != null) && ((localRichMediaBrowserInfo.baseData instanceof PreviewVideoData))) {
-      return ((PreviewVideoData)localRichMediaBrowserInfo.baseData).filePath;
-    }
-    return null;
-  }
-  
   public void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.b;
     if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+      this.b.remove(paramString);
     }
   }
   
@@ -67,11 +46,32 @@ public class PreviewVideoPresenter
       if (paramDrawable == null) {
         return;
       }
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+      HashMap localHashMap = this.b;
       if (localHashMap != null) {
         localHashMap.put(paramString, paramDrawable);
       }
     }
+  }
+  
+  public Drawable b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      HashMap localHashMap = this.b;
+      if (localHashMap != null) {
+        return (Drawable)localHashMap.get(paramString);
+      }
+    }
+    return null;
+  }
+  
+  public String b(int paramInt)
+  {
+    RichMediaBrowserInfo localRichMediaBrowserInfo = getItem(paramInt);
+    if ((localRichMediaBrowserInfo != null) && ((localRichMediaBrowserInfo.baseData instanceof PreviewVideoData))) {
+      return ((PreviewVideoData)localRichMediaBrowserInfo.baseData).filePath;
+    }
+    return null;
   }
   
   public URL getFileUrl(File paramFile)
@@ -85,11 +85,11 @@ public class PreviewVideoPresenter
   public void onDestroy()
   {
     super.onDestroy();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewVideoView;
+    Object localObject = this.a;
     if (localObject != null) {
       ((PreviewVideoView)localObject).onDestroy();
     }
-    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    localObject = this.b;
     if (localObject != null) {
       ((HashMap)localObject).clear();
     }
@@ -98,7 +98,7 @@ public class PreviewVideoPresenter
   public void onPause()
   {
     super.onPause();
-    PreviewVideoView localPreviewVideoView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewVideoView;
+    PreviewVideoView localPreviewVideoView = this.a;
     if (localPreviewVideoView != null) {
       localPreviewVideoView.a();
     }
@@ -108,13 +108,13 @@ public class PreviewVideoPresenter
   {
     super.setBrowserView(paramIBaseViewBuilder);
     if ((paramIBaseViewBuilder instanceof PreviewVideoView)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewViewPreviewVideoView = ((PreviewVideoView)paramIBaseViewBuilder);
+      this.a = ((PreviewVideoView)paramIBaseViewBuilder);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.presenter.PreviewVideoPresenter
  * JD-Core Version:    0.7.0.1
  */

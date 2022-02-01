@@ -12,8 +12,8 @@ import java.util.Set;
 
 class ApkExternalInfoTool$ApkSecurityCommentInfo
 {
-  Properties jdField_a_of_type_JavaUtilProperties = new Properties();
-  byte[] jdField_a_of_type_ArrayOfByte;
+  Properties a = new Properties();
+  byte[] b;
   
   void a(byte[] paramArrayOfByte)
   {
@@ -36,7 +36,7 @@ class ApkExternalInfoTool$ApkSecurityCommentInfo
         }
         arrayOfByte = new byte[2];
         ((ByteBuffer)localObject).get(arrayOfByte);
-        j = new ZipShort(arrayOfByte).a();
+        j = new ZipShort(arrayOfByte).b();
         if (paramArrayOfByte.length - i - 2 < j)
         {
           QLog.i("ApkExternalInfoTool", 1, "data.length - securityMarkLength - 2 < len");
@@ -45,7 +45,7 @@ class ApkExternalInfoTool$ApkSecurityCommentInfo
         }
         arrayOfByte = new byte[j];
         ((ByteBuffer)localObject).get(arrayOfByte);
-        this.jdField_a_of_type_JavaUtilProperties.load(new ByteArrayInputStream(arrayOfByte));
+        this.a.load(new ByteArrayInputStream(arrayOfByte));
         i = paramArrayOfByte.length - i - j - 2;
         if (i > 0)
         {
@@ -62,15 +62,15 @@ class ApkExternalInfoTool$ApkSecurityCommentInfo
             }
             paramArrayOfByte = new byte[2];
             ((ByteBuffer)localObject).get(paramArrayOfByte);
-            j = new ZipShort(paramArrayOfByte).a();
+            j = new ZipShort(paramArrayOfByte).b();
             if (i - 2 < j)
             {
               QLog.i("ApkExternalInfoTool", 1, "data.length - oriMarkLength - 2 < len");
               QLog.i("ApkExternalInfoTool", 1, "exit");
               return;
             }
-            this.jdField_a_of_type_ArrayOfByte = new byte[j];
-            ((ByteBuffer)localObject).get(this.jdField_a_of_type_ArrayOfByte);
+            this.b = new byte[j];
+            ((ByteBuffer)localObject).get(this.b);
           }
         }
       }
@@ -87,15 +87,15 @@ class ApkExternalInfoTool$ApkSecurityCommentInfo
         }
         arrayOfByte = new byte[2];
         ((ByteBuffer)localObject).get(arrayOfByte);
-        i = new ZipShort(arrayOfByte).a();
+        i = new ZipShort(arrayOfByte).b();
         if (paramArrayOfByte.length - j - 2 < i)
         {
           QLog.i("ApkExternalInfoTool", 1, "data.length - oriMarkLength - 2 < len");
           QLog.i("ApkExternalInfoTool", 1, "exit");
           return;
         }
-        this.jdField_a_of_type_ArrayOfByte = new byte[i];
-        ((ByteBuffer)localObject).get(this.jdField_a_of_type_ArrayOfByte);
+        this.b = new byte[i];
+        ((ByteBuffer)localObject).get(this.b);
       }
       return;
       label400:
@@ -110,10 +110,10 @@ class ApkExternalInfoTool$ApkSecurityCommentInfo
   byte[] a()
   {
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    if (this.jdField_a_of_type_JavaUtilProperties.size() > 0)
+    if (this.a.size() > 0)
     {
       localByteArrayOutputStream.write(ApkExternalInfoTool.a().a());
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilProperties.keySet().iterator();
+      Iterator localIterator = this.a.keySet().iterator();
       StringBuilder localStringBuilder;
       for (localObject1 = ""; localIterator.hasNext(); localObject1 = localStringBuilder.toString())
       {
@@ -122,26 +122,26 @@ class ApkExternalInfoTool$ApkSecurityCommentInfo
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append(localObject2);
         localStringBuilder.append("=");
-        localStringBuilder.append(this.jdField_a_of_type_JavaUtilProperties.getProperty((String)localObject2));
+        localStringBuilder.append(this.a.getProperty((String)localObject2));
         localStringBuilder.append("\r\n");
       }
       localObject1 = ((String)localObject1).getBytes();
       localByteArrayOutputStream.write(new ZipShort(localObject1.length).a());
       localByteArrayOutputStream.write((byte[])localObject1);
     }
-    Object localObject1 = this.jdField_a_of_type_ArrayOfByte;
+    Object localObject1 = this.b;
     if ((localObject1 != null) && (localObject1.length > 0))
     {
       localByteArrayOutputStream.write(ApkExternalInfoTool.b().a());
-      localByteArrayOutputStream.write(new ZipShort(this.jdField_a_of_type_ArrayOfByte.length).a());
-      localByteArrayOutputStream.write(this.jdField_a_of_type_ArrayOfByte);
+      localByteArrayOutputStream.write(new ZipShort(this.b.length).a());
+      localByteArrayOutputStream.write(this.b);
     }
     return localByteArrayOutputStream.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ApkExternalInfoTool.ApkSecurityCommentInfo
  * JD-Core Version:    0.7.0.1
  */

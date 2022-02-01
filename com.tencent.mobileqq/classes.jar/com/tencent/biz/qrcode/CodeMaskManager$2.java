@@ -9,13 +9,13 @@ class CodeMaskManager$2
   
   public void run()
   {
-    if (this.this$0.a) {
+    if (this.this$0.h) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.a.compareAndSet(false, true))
+    if (this.a.a.compareAndSet(false, true))
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.this$0));
-      CodeMaskManager.a(this.this$0);
+      this.b.a(CodeMaskManager.a(this.this$0));
+      CodeMaskManager.b(this.this$0);
     }
   }
 }

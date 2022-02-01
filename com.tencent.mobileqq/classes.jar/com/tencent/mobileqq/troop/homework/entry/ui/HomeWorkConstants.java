@@ -5,52 +5,38 @@ import java.util.HashMap;
 
 public class HomeWorkConstants
 {
-  public static final String a;
-  public static final HashMap<String, Integer> a;
-  public static final String[] a;
-  public static final String b;
-  public static final String[] b;
-  public static final String c;
-  public static final String[] c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public static final String g;
-  public static final String h;
-  public static final String i;
-  public static final String j;
+  public static final String[] a = { "type" };
+  public static final String[] b = { "str", "img", "video", "voice" };
+  public static final String[] c = { "recite", "calculation" };
+  public static final String d = HardCodeUtil.a(2131903488);
+  public static final String e = HardCodeUtil.a(2131903493);
+  public static final String f = HardCodeUtil.a(2131903498);
+  public static final String g = HardCodeUtil.a(2131903483);
+  public static final String h = HardCodeUtil.a(2131903496);
+  public static final String i = HardCodeUtil.a(2131903494);
+  public static final String j = HardCodeUtil.a(2131903482);
+  public static final String k = HardCodeUtil.a(2131903490);
+  public static final String l = HardCodeUtil.a(2131903491);
+  public static final String m = HardCodeUtil.a(2131903497);
+  public static final HashMap<String, Integer> n = new HashMap();
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "type" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "str", "img", "video", "voice" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "recite", "calculation" };
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705602);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131705607);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131705612);
-    d = HardCodeUtil.a(2131705597);
-    e = HardCodeUtil.a(2131705610);
-    f = HardCodeUtil.a(2131705608);
-    g = HardCodeUtil.a(2131705596);
-    h = HardCodeUtil.a(2131705604);
-    i = HardCodeUtil.a(2131705605);
-    j = HardCodeUtil.a(2131705611);
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_JavaLangString, Integer.valueOf(2130840386));
-    jdField_a_of_type_JavaUtilHashMap.put(jdField_b_of_type_JavaLangString, Integer.valueOf(2130840390));
-    jdField_a_of_type_JavaUtilHashMap.put(jdField_c_of_type_JavaLangString, Integer.valueOf(2130840387));
-    jdField_a_of_type_JavaUtilHashMap.put(d, Integer.valueOf(2130840392));
-    jdField_a_of_type_JavaUtilHashMap.put(e, Integer.valueOf(2130840393));
-    jdField_a_of_type_JavaUtilHashMap.put(f, Integer.valueOf(2130840388));
-    jdField_a_of_type_JavaUtilHashMap.put(g, Integer.valueOf(2130840385));
-    jdField_a_of_type_JavaUtilHashMap.put(h, Integer.valueOf(2130840389));
-    jdField_a_of_type_JavaUtilHashMap.put(i, Integer.valueOf(2130840384));
-    jdField_a_of_type_JavaUtilHashMap.put(j, Integer.valueOf(2130840391));
+    n.put(d, Integer.valueOf(2130841127));
+    n.put(e, Integer.valueOf(2130841131));
+    n.put(f, Integer.valueOf(2130841128));
+    n.put(g, Integer.valueOf(2130841133));
+    n.put(h, Integer.valueOf(2130841134));
+    n.put(i, Integer.valueOf(2130841129));
+    n.put(j, Integer.valueOf(2130841126));
+    n.put(k, Integer.valueOf(2130841130));
+    n.put(l, Integer.valueOf(2130841125));
+    n.put(m, Integer.valueOf(2130841132));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkConstants
  * JD-Core Version:    0.7.0.1
  */

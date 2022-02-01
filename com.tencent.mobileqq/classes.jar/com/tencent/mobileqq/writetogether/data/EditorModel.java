@@ -19,98 +19,65 @@ import java.util.TreeMap;
 public class EditorModel
   implements IEditorModel
 {
-  private int jdField_a_of_type_Int = 10000;
-  private long jdField_a_of_type_Long;
-  private AText jdField_a_of_type_ComTencentMobileqqEasysync2AText;
-  private AttribPool jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool;
-  private IEditorController jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController;
-  private IPartChangeListener jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener;
-  private UserStateController jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController;
-  private CursorManager jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager;
-  private DocMetaData jdField_a_of_type_ComTencentMobileqqWritetogetherDataDocMetaData;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new TreeMap();
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private Map<String, String> jdField_b_of_type_JavaUtilMap = new TreeMap();
-  private String c = "";
-  private String d = "";
-  private String e;
+  private AText a;
+  private AttribPool b;
+  private CursorManager c;
+  private IEditorController d;
+  private IPartChangeListener e;
+  private UserStateController f;
+  private String g = "";
+  private String h = "";
+  private String i = "";
+  private String j = "";
+  private List<String> k = new ArrayList();
+  private Map<String, Long> l = new TreeMap();
+  private List<String> m = new ArrayList();
+  private Map<String, String> n = new TreeMap();
+  private DocMetaData o;
+  private int p = 10000;
+  private long q;
+  private String r;
+  private int s;
   
   public EditorModel(AText paramAText, AttribPool paramAttribPool, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AText = paramAText;
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool = paramAttribPool;
-    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.a = paramAText;
+    this.b = paramAttribPool;
+    this.h = paramString1;
   }
   
   private void a(String paramString1, String paramString2)
   {
-    boolean bool = this.jdField_b_of_type_JavaLangString.equals(paramString1);
+    boolean bool = this.h.equals(paramString1);
     if (!bool)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramString1);
-      this.jdField_a_of_type_JavaUtilList.add(paramString1);
-      this.jdField_b_of_type_JavaUtilList.remove(paramString1);
-      this.jdField_b_of_type_JavaUtilList.add(paramString1);
-      long l = b();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, Long.valueOf(l));
-      b(this.jdField_a_of_type_JavaUtilList);
-      b(this.jdField_b_of_type_JavaUtilList);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener;
+      this.k.remove(paramString1);
+      this.k.add(paramString1);
+      this.m.remove(paramString1);
+      this.m.add(paramString1);
+      long l1 = p();
+      this.l.put(paramString1, Long.valueOf(l1));
+      b(this.k);
+      b(this.m);
+      localObject = this.e;
       if (localObject != null) {
-        ((IPartChangeListener)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, true);
+        ((IPartChangeListener)localObject).a(this.g, this.k, true);
       }
     }
-    this.e = paramString1;
-    this.jdField_a_of_type_Long = b();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController;
+    this.r = paramString1;
+    this.q = p();
+    Object localObject = this.f;
     if (localObject != null)
     {
       if (!bool) {
-        ((UserStateController)localObject).b();
+        ((UserStateController)localObject).a();
       }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqEasysync2AText.jdField_a_of_type_JavaLangString.length());
+      this.f.a(this.p, this.a.a.length());
     }
     if (!bool) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.b(paramString2);
+      this.c.c(paramString2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString1, paramString2);
-  }
-  
-  private long b()
-  {
-    return System.currentTimeMillis();
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener != null)
-    {
-      boolean bool;
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      List localList;
-      if (bool) {
-        localList = this.jdField_a_of_type_JavaUtilList;
-      } else {
-        localList = this.jdField_b_of_type_JavaUtilList;
-      }
-      b(localList);
-      IPartChangeListener localIPartChangeListener = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener;
-      String str = this.jdField_a_of_type_JavaLangString;
-      if (bool) {
-        localList = this.jdField_a_of_type_JavaUtilList;
-      } else {
-        localList = this.jdField_b_of_type_JavaUtilList;
-      }
-      localIPartChangeListener.a(str, localList, bool);
-    }
+    this.c.a(paramString1, paramString2);
   }
   
   private void b(List<String> paramList)
@@ -118,80 +85,52 @@ public class EditorModel
     Collections.sort(paramList, new EditorModel.1(this));
   }
   
-  public int a()
+  private void o()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public AText a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqEasysync2AText;
-  }
-  
-  public AttribPool a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool;
-  }
-  
-  public CreateDocParam a()
-  {
-    CreateDocParam localCreateDocParam = new CreateDocParam();
-    localCreateDocParam.d = this.jdField_a_of_type_ComTencentMobileqqEasysync2AText.jdField_a_of_type_JavaLangString;
-    localCreateDocParam.e = this.jdField_a_of_type_ComTencentMobileqqEasysync2AText.jdField_b_of_type_JavaLangString;
-    localCreateDocParam.c = this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a();
-    return localCreateDocParam;
-  }
-  
-  public DocMetaData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataDocMetaData;
-  }
-  
-  public Pair<Integer, Integer> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a();
-  }
-  
-  public String a()
-  {
-    return this.e;
-  }
-  
-  public String a(String paramString)
-  {
-    Map localMap = this.jdField_b_of_type_JavaUtilMap;
-    if (localMap != null) {
-      return (String)localMap.get(paramString);
+    if (this.e != null)
+    {
+      boolean bool;
+      if (this.k.size() != 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      List localList;
+      if (bool) {
+        localList = this.k;
+      } else {
+        localList = this.m;
+      }
+      b(localList);
+      IPartChangeListener localIPartChangeListener = this.e;
+      String str = this.g;
+      if (bool) {
+        localList = this.k;
+      } else {
+        localList = this.m;
+      }
+      localIPartChangeListener.a(str, localList, bool);
     }
-    return null;
+  }
+  
+  private long p()
+  {
+    return System.currentTimeMillis();
   }
   
   public List<UserEditInfo> a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a();
-  }
-  
-  public void a()
-  {
-    IPartChangeListener localIPartChangeListener = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener;
-    if (localIPartChangeListener != null) {
-      localIPartChangeListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilList, false);
-    }
+    return this.c.a();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.p = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    CursorManager localCursorManager = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager;
+    CursorManager localCursorManager = this.c;
     if (localCursorManager != null) {
       localCursorManager.a(paramInt1, paramInt2, false);
     }
@@ -199,7 +138,7 @@ public class EditorModel
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.q = paramLong;
   }
   
   public void a(AText paramAText)
@@ -208,7 +147,7 @@ public class EditorModel
     if (paramAText == null) {
       localAText = new AText("", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AText = localAText;
+    this.a = localAText;
   }
   
   public void a(AttribPool paramAttribPool)
@@ -217,48 +156,48 @@ public class EditorModel
     if (paramAttribPool == null) {
       localAttribPool = new AttribPool();
     }
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool = localAttribPool;
+    this.b = localAttribPool;
   }
   
   public void a(IEditorController paramIEditorController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController = paramIEditorController;
+    this.d = paramIEditorController;
   }
   
   public void a(IPartChangeListener paramIPartChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener = paramIPartChangeListener;
+    this.e = paramIPartChangeListener;
   }
   
   public void a(UserStateController paramUserStateController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController = paramUserStateController;
+    this.f = paramUserStateController;
   }
   
   public void a(CursorManager paramCursorManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager = paramCursorManager;
+    this.c = paramCursorManager;
   }
   
   public void a(DocMetaData paramDocMetaData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataDocMetaData = paramDocMetaData;
-    this.jdField_a_of_type_JavaLangString = paramDocMetaData.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Long = paramDocMetaData.jdField_a_of_type_Long;
-    if ((this.jdField_a_of_type_Long <= 0L) && (QLog.isColorLevel())) {
+    this.o = paramDocMetaData;
+    this.g = paramDocMetaData.a;
+    this.q = paramDocMetaData.b;
+    if ((this.q <= 0L) && (QLog.isColorLevel())) {
       QLog.e("EditorModel", 2, "metaData.mTime lt 0");
     }
-    paramDocMetaData = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController;
+    paramDocMetaData = this.f;
     if (paramDocMetaData != null) {
-      paramDocMetaData.b();
+      paramDocMetaData.a();
     }
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString);
+    this.k.remove(paramString);
+    o();
+    this.c.b(paramString);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -266,14 +205,14 @@ public class EditorModel
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString, paramInt1, paramInt2);
-    if (!paramString.equals(this.jdField_b_of_type_JavaLangString))
+    this.c.a(paramString, paramInt1, paramInt2);
+    if (!paramString.equals(this.h))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramString);
-      this.jdField_a_of_type_JavaUtilList.add(paramString);
-      long l = b();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
-      b();
+      this.k.remove(paramString);
+      this.k.add(paramString);
+      long l1 = p();
+      this.l.put(paramString, Long.valueOf(l1));
+      o();
     }
   }
   
@@ -281,9 +220,9 @@ public class EditorModel
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramLong > 0L))
     {
-      b();
-      if (!paramUserEditInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString, paramUserEditInfo);
+      o();
+      if (!paramUserEditInfo.a.equals(this.h)) {
+        this.c.a(paramString, paramUserEditInfo);
       }
       return;
     }
@@ -297,9 +236,9 @@ public class EditorModel
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    this.d = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
+    this.j = paramString1;
+    this.h = paramString2;
+    this.i = paramString3;
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
@@ -313,9 +252,9 @@ public class EditorModel
       localStringBuilder.append(paramString1);
       QLog.d("EditorModel", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AText = Changeset.a(paramString1, this.jdField_a_of_type_ComTencentMobileqqEasysync2AText, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
+    this.a = Changeset.a(paramString1, this.a, this.b);
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIEditorController.a(this.jdField_a_of_type_ComTencentMobileqqEasysync2AText.jdField_a_of_type_JavaLangString);
+      this.d.a(this.a.a);
     }
     a(paramString2, paramString1);
   }
@@ -332,81 +271,142 @@ public class EditorModel
     if ((paramList.size() == 0) && (QLog.isColorLevel())) {
       QLog.d("EditorModel", 2, "histories size is 0");
     }
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.m = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       EditUserHistory localEditUserHistory = (EditUserHistory)paramList.next();
       if (localEditUserHistory != null)
       {
-        String str = localEditUserHistory.jdField_a_of_type_JavaLangString;
-        long l = localEditUserHistory.jdField_a_of_type_Long * 1000L;
+        String str = localEditUserHistory.a;
+        long l1 = localEditUserHistory.b * 1000L;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("[setEditUserHistory] uin: ");
           ((StringBuilder)localObject).append(str);
           ((StringBuilder)localObject).append(", editTime: ");
-          ((StringBuilder)localObject).append(l);
+          ((StringBuilder)localObject).append(l1);
           QLog.d("EditorModel", 2, ((StringBuilder)localObject).toString());
         }
-        this.jdField_b_of_type_JavaUtilList.add(str);
-        this.jdField_a_of_type_JavaUtilMap.put(str, Long.valueOf(l));
-        Object localObject = this.jdField_b_of_type_JavaUtilMap;
+        this.m.add(str);
+        this.l.put(str, Long.valueOf(l1));
+        Object localObject = this.n;
         if (localObject != null) {
-          ((Map)localObject).put(str, localEditUserHistory.jdField_b_of_type_JavaLangString);
+          ((Map)localObject).put(str, localEditUserHistory.c);
         }
       }
     }
-    b(this.jdField_b_of_type_JavaUtilList);
-    if (this.jdField_b_of_type_JavaUtilList.size() != 0)
+    b(this.m);
+    if (this.m.size() != 0)
     {
-      this.e = ((String)this.jdField_b_of_type_JavaUtilList.get(0));
-      paramList = (Long)this.jdField_a_of_type_JavaUtilMap.get(this.e);
+      this.r = ((String)this.m.get(0));
+      paramList = (Long)this.l.get(this.r);
       if (paramList != null) {
-        this.jdField_a_of_type_Long = paramList.longValue();
+        this.q = paramList.longValue();
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramBoolean);
+    this.c.a(paramBoolean);
   }
   
-  public int b()
+  public Pair<Integer, Integer> b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.c.c();
   }
   
-  public String b()
+  public String b(String paramString)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    Map localMap = this.n;
+    if (localMap != null) {
+      return (String)localMap.get(paramString);
+    }
+    return null;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.s = paramInt;
   }
   
-  public void b(String paramString)
+  public AText c()
   {
-    this.e = paramString;
+    return this.a;
   }
   
-  public String c()
+  public void c(String paramString)
   {
-    return this.c;
+    this.r = paramString;
   }
   
-  public String d()
+  public AttribPool d()
   {
-    return this.d;
+    return this.b;
+  }
+  
+  public CreateDocParam e()
+  {
+    CreateDocParam localCreateDocParam = new CreateDocParam();
+    localCreateDocParam.e = this.a.a;
+    localCreateDocParam.f = this.a.b;
+    localCreateDocParam.d = this.b.b();
+    return localCreateDocParam;
+  }
+  
+  public void f()
+  {
+    IPartChangeListener localIPartChangeListener = this.e;
+    if (localIPartChangeListener != null) {
+      localIPartChangeListener.a(this.g, this.m, false);
+    }
+  }
+  
+  public DocMetaData g()
+  {
+    return this.o;
+  }
+  
+  public int h()
+  {
+    return this.p;
+  }
+  
+  public long i()
+  {
+    return this.q;
+  }
+  
+  public String j()
+  {
+    return this.r;
+  }
+  
+  public String k()
+  {
+    return this.h;
+  }
+  
+  public String l()
+  {
+    return this.i;
+  }
+  
+  public String m()
+  {
+    return this.j;
+  }
+  
+  public int n()
+  {
+    return this.s;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.EditorModel
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ final class ReportInfo$1
   public ReportInfo a(Parcel paramParcel)
   {
     ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localReportInfo.f = paramParcel.readInt();
+    localReportInfo.a = paramParcel.readInt();
+    localReportInfo.c = paramParcel.readInt();
     localReportInfo.d = paramParcel.readInt();
+    localReportInfo.i = paramParcel.readInt();
     localReportInfo.e = paramParcel.readInt();
-    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localReportInfo.g = paramParcel.readInt();
+    localReportInfo.b = paramParcel.readLong();
+    localReportInfo.f = paramParcel.readLong();
+    localReportInfo.h = paramParcel.readLong();
     return localReportInfo;
   }
   
@@ -28,7 +28,7 @@ final class ReportInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.ReportInfo.1
  * JD-Core Version:    0.7.0.1
  */

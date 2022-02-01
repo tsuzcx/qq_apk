@@ -20,7 +20,7 @@ class LottieAnimDirector$3
     try
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(LottieAnimDirector.a(this.a));
+      localStringBuilder.append(LottieAnimDirector.d(this.a));
       localStringBuilder.append("images/");
       localStringBuilder.append(paramLottieImageAsset.getFileName());
       paramLottieImageAsset = ImageUtil.a(localStringBuilder.toString(), localOptions);
@@ -45,7 +45,7 @@ class LottieAnimDirector$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.LottieAnimDirector.3
  * JD-Core Version:    0.7.0.1
  */

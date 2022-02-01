@@ -10,29 +10,21 @@ import org.jetbrains.annotations.NotNull;
 public final class XAEmptyView
   implements IView
 {
-  public static final XAEmptyView.Companion a;
+  public static final XAEmptyView.Companion a = new XAEmptyView.Companion(null);
   @NotNull
-  private DecorView a;
+  private DecorView b = new DecorView((IView)this);
   
-  static
-  {
-    jdField_a_of_type_ComTencentXactionViewXAEmptyView$Companion = new XAEmptyView.Companion(null);
-  }
-  
-  public XAEmptyView(@NotNull Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentXactionApiBaseDecorView = new DecorView((IView)this);
-  }
+  public XAEmptyView(@NotNull Context paramContext) {}
   
   @NotNull
   public DecorView a()
   {
-    return this.jdField_a_of_type_ComTencentXactionApiBaseDecorView;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.view.XAEmptyView
  * JD-Core Version:    0.7.0.1
  */

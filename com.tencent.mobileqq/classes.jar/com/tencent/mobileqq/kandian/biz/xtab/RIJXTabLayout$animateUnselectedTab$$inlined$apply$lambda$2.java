@@ -3,6 +3,7 @@ package com.tencent.mobileqq.kandian.biz.xtab;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.graphics.Typeface;
+import android.view.View;
 import android.widget.TextView;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
@@ -11,13 +12,16 @@ import org.jetbrains.annotations.Nullable;
 public final class RIJXTabLayout$animateUnselectedTab$$inlined$apply$lambda$2
   implements Animator.AnimatorListener
 {
-  RIJXTabLayout$animateUnselectedTab$$inlined$apply$lambda$2(TextView paramTextView) {}
+  RIJXTabLayout$animateUnselectedTab$$inlined$apply$lambda$2(View paramView) {}
   
   public void onAnimationCancel(@Nullable Animator paramAnimator) {}
   
   public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    this.a.setTypeface(Typeface.defaultFromStyle(0));
+    paramAnimator = this.a;
+    if ((paramAnimator instanceof TextView)) {
+      ((TextView)paramAnimator).setTypeface(Typeface.defaultFromStyle(0));
+    }
   }
   
   public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
@@ -26,7 +30,7 @@ public final class RIJXTabLayout$animateUnselectedTab$$inlined$apply$lambda$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabLayout.animateUnselectedTab..inlined.apply.lambda.2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,35 +6,35 @@ import android.graphics.drawable.Drawable.ConstantState;
 public abstract class DrawableContainer$ContainerState
   extends Drawable.ConstantState
 {
-  public int a;
   public Drawable a;
-  private boolean a;
-  private boolean b;
+  public int b;
+  private boolean c;
+  private boolean d;
   
   public boolean a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
       boolean bool;
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null) {
+      if (this.a.getConstantState() != null) {
         bool = true;
       } else {
         bool = false;
       }
-      this.b = bool;
-      this.jdField_a_of_type_Boolean = true;
+      this.d = bool;
+      this.c = true;
     }
-    return this.b;
+    return this.d;
   }
   
   public int getChangingConfigurations()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DrawableContainer.ContainerState
  * JD-Core Version:    0.7.0.1
  */

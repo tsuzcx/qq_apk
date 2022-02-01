@@ -22,8 +22,8 @@ class ReadInJoyAdCommonBlurImageView$2
       ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdCommonBlurImageView", "urlBitmap is empty");
       return;
     }
-    int m = ReadInJoyAdCommonBlurImageView.a(this.this$0).getComMeasuredWidth();
-    int n = ReadInJoyAdCommonBlurImageView.a(this.this$0).getComMeasuredHeight();
+    int m = ReadInJoyAdCommonBlurImageView.b(this.this$0).getComMeasuredWidth();
+    int n = ReadInJoyAdCommonBlurImageView.b(this.this$0).getComMeasuredHeight();
     int i = localBitmap.getWidth();
     int j = localBitmap.getHeight();
     float f3 = i;
@@ -51,8 +51,8 @@ class ReadInJoyAdCommonBlurImageView$2
     Object localObject2;
     try
     {
-      if (DeviceInfoUtil.a() >= 26) {
-        localObject1 = AdBlurUtils.a.a(localBitmap, ReadInJoyAdCommonBlurImageView.a(this.this$0), j, k, m, n, f1);
+      if (DeviceInfoUtil.d() >= 26) {
+        localObject1 = AdBlurUtils.a.a(localBitmap, ReadInJoyAdCommonBlurImageView.c(this.this$0), j, k, m, n, f1);
       }
     }
     catch (Exception localException)
@@ -64,16 +64,16 @@ class ReadInJoyAdCommonBlurImageView$2
     {
       ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdCommonBlurImageView", "adBlurBitmap is empty");
       CommonImageCacheHelper.a(this.b, localBitmap);
-      ReadInJoyAdCommonBlurImageView.a(this.this$0).sendEmptyMessage(1);
+      ReadInJoyAdCommonBlurImageView.d(this.this$0).sendEmptyMessage(1);
       return;
     }
     CommonImageCacheHelper.a(this.b, localObject2);
-    ReadInJoyAdCommonBlurImageView.a(this.this$0).sendEmptyMessage(1);
+    ReadInJoyAdCommonBlurImageView.d(this.this$0).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdCommonBlurImageView.2
  * JD-Core Version:    0.7.0.1
  */

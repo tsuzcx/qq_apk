@@ -11,8 +11,8 @@ class FriendProfileImageActivity$10
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.clearAnimation();
+    this.a.setVisibility(4);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -21,7 +21,7 @@ class FriendProfileImageActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.10
  * JD-Core Version:    0.7.0.1
  */

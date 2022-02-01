@@ -20,17 +20,17 @@ class WebProteusViewCreator$ProteusItemViewHolder$3
     if ((paramProteusItemData instanceof MiniAppData))
     {
       WebProteusViewCreator.ProteusItemViewHolder.a(this.a, (MiniAppData)paramProteusItemData);
-      paramProteusItemData.b();
-      if (WebProteusViewCreator.a(this.a.a) != null) {
-        WebProteusViewCreator.a(this.a.a).notifyDataSetChanged();
+      paramProteusItemData.p();
+      if (WebProteusViewCreator.b(this.a.a) != null) {
+        WebProteusViewCreator.b(this.a.a).notifyDataSetChanged();
       }
-      RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(paramProteusItemData.b.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_SEE_LATER, 0, 0, 0), 5);
+      RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(paramProteusItemData.aQ.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_SEE_LATER, 0, 0, 0), 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.3
  * JD-Core Version:    0.7.0.1
  */

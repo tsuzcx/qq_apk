@@ -12,1477 +12,1820 @@ class QWalletConfigServiceImpl$4
   public void run()
   {
     // Byte code:
-    //   0: ldc 31
-    //   2: astore 18
-    //   4: ldc 33
-    //   6: astore 17
-    //   8: new 35	java/util/HashMap
-    //   11: dup
-    //   12: bipush 8
-    //   14: invokespecial 38	java/util/HashMap:<init>	(I)V
-    //   17: astore 13
-    //   19: aload_0
-    //   20: getfield 16	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:this$0	Lcom/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl;
+    //   0: ldc 33
+    //   2: astore 19
+    //   4: ldc 35
+    //   6: astore 16
+    //   8: ldc 37
+    //   10: astore 22
+    //   12: new 39	java/util/HashMap
+    //   15: dup
+    //   16: bipush 8
+    //   18: invokespecial 42	java/util/HashMap:<init>	(I)V
+    //   21: astore 15
     //   23: aload_0
-    //   24: getfield 18	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface	Lcom/tencent/common/app/business/BaseQQAppInterface;
-    //   27: invokevirtual 44	com/tencent/common/app/business/BaseQQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   30: aload_0
-    //   31: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   34: invokevirtual 50	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl:getQWalletSettingConfigVersion	(Landroid/content/Context;Ljava/lang/String;)I
-    //   37: istore 7
-    //   39: aload_0
-    //   40: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   43: astore 14
-    //   45: aload 14
-    //   47: ifnull +25 -> 72
-    //   50: aload 14
-    //   52: getfield 56	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   55: ifnull +17 -> 72
-    //   58: aload_0
-    //   59: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   62: getfield 56	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   65: invokevirtual 62	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   68: istore_1
-    //   69: goto +5 -> 74
-    //   72: iconst_0
-    //   73: istore_1
-    //   74: aload_0
-    //   75: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   78: ifnull +201 -> 279
-    //   81: iload_1
-    //   82: iload 7
-    //   84: if_icmpeq +195 -> 279
-    //   87: ldc 64
-    //   89: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   92: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   95: aload_0
-    //   96: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   99: ldc 72
-    //   101: invokeinterface 76 3 0
-    //   106: ldc 64
-    //   108: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   111: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   114: aload_0
-    //   115: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   118: ldc 78
-    //   120: invokeinterface 76 3 0
-    //   125: ldc 64
-    //   127: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   130: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   133: aload_0
-    //   134: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   137: ldc 80
-    //   139: invokeinterface 76 3 0
-    //   144: ldc 64
-    //   146: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   149: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   152: aload_0
-    //   153: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   156: ldc 82
-    //   158: invokeinterface 76 3 0
-    //   163: ldc 64
-    //   165: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   168: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   171: aload_0
-    //   172: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   175: ldc 31
-    //   177: invokeinterface 76 3 0
-    //   182: ldc 64
-    //   184: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   187: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   190: aload_0
-    //   191: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   194: ldc 84
-    //   196: invokeinterface 76 3 0
-    //   201: ldc 64
-    //   203: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   206: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   209: aload_0
-    //   210: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   213: ldc 86
-    //   215: invokeinterface 76 3 0
-    //   220: ldc 64
-    //   222: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   225: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   228: aload_0
-    //   229: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   232: ldc 88
-    //   234: invokeinterface 76 3 0
-    //   239: ldc 64
-    //   241: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   244: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   247: aload_0
-    //   248: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   251: ldc 90
-    //   253: invokeinterface 76 3 0
-    //   258: goto +21 -> 279
-    //   261: astore 14
-    //   263: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   266: ifeq +13 -> 279
-    //   269: ldc 33
-    //   271: iconst_2
-    //   272: ldc 98
-    //   274: aload 14
-    //   276: invokestatic 102	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   279: aload_0
-    //   280: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   283: astore 15
-    //   285: ldc 104
-    //   287: astore 16
-    //   289: ldc 106
-    //   291: astore 25
-    //   293: aconst_null
-    //   294: astore 14
-    //   296: aload 15
-    //   298: ifnull +2474 -> 2772
-    //   301: iload_1
-    //   302: iload 7
-    //   304: if_icmpeq +2468 -> 2772
-    //   307: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   310: istore 8
-    //   312: ldc 108
-    //   314: astore 19
-    //   316: iload 8
-    //   318: ifeq +36 -> 354
-    //   321: ldc 33
-    //   323: iconst_2
-    //   324: ldc 110
-    //   326: iconst_2
-    //   327: anewarray 4	java/lang/Object
-    //   330: dup
-    //   331: iconst_0
-    //   332: iload 7
-    //   334: invokestatic 116	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   337: aastore
-    //   338: dup
-    //   339: iconst_1
-    //   340: iload_1
-    //   341: invokestatic 116	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   344: aastore
-    //   345: invokestatic 122	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   348: invokestatic 126	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   351: goto +3 -> 354
-    //   354: iload_1
-    //   355: iload 7
-    //   357: if_icmpeq +8 -> 365
-    //   360: iload_1
-    //   361: istore_2
-    //   362: goto +6 -> 368
-    //   365: iload 7
-    //   367: istore_2
-    //   368: aload_0
-    //   369: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   372: astore 15
-    //   374: aload 15
-    //   376: ifnull +2353 -> 2729
-    //   379: aload 15
-    //   381: getfield 130	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:content_list	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   384: ifnull +2345 -> 2729
-    //   387: aload_0
-    //   388: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   391: getfield 130	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:content_list	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   394: invokevirtual 135	com/tencent/mobileqq/pb/PBRepeatField:isEmpty	()Z
-    //   397: ifeq +6 -> 403
-    //   400: goto +2329 -> 2729
-    //   403: aload_0
-    //   404: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   407: getfield 130	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:content_list	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   410: invokevirtual 138	com/tencent/mobileqq/pb/PBRepeatField:size	()I
-    //   413: istore 6
-    //   415: iconst_0
-    //   416: istore 5
-    //   418: aload 13
-    //   420: astore 15
-    //   422: aload 18
-    //   424: astore 13
-    //   426: iload 5
-    //   428: iload 6
-    //   430: if_icmpge +2280 -> 2710
-    //   433: aload_0
-    //   434: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   437: getfield 130	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:content_list	Lcom/tencent/mobileqq/pb/PBRepeatField;
-    //   440: iload 5
-    //   442: invokevirtual 141	com/tencent/mobileqq/pb/PBRepeatField:get	(I)Ljava/lang/Object;
-    //   445: checkcast 118	java/lang/String
-    //   448: astore 24
-    //   450: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   453: ifeq +66 -> 519
-    //   456: new 143	java/lang/StringBuilder
-    //   459: dup
-    //   460: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   463: astore 18
-    //   465: aload 18
-    //   467: ldc 146
-    //   469: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   472: pop
-    //   473: aload 18
-    //   475: aload 24
-    //   477: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: pop
-    //   481: aload 18
-    //   483: ldc 152
-    //   485: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   488: pop
-    //   489: aload 18
-    //   491: aload_0
-    //   492: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   495: getfield 56	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   498: invokevirtual 62	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   501: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   504: pop
-    //   505: aload 17
-    //   507: iconst_2
-    //   508: aload 18
-    //   510: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   513: invokestatic 126	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   516: goto +3 -> 519
-    //   519: aload 24
-    //   521: invokestatic 164	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   524: ifeq +32 -> 556
-    //   527: iload_1
-    //   528: istore_3
-    //   529: aload 13
-    //   531: astore 18
-    //   533: aload 15
-    //   535: astore 13
-    //   537: aload 18
-    //   539: astore 15
-    //   541: aload 14
-    //   543: astore 21
-    //   545: iload_2
-    //   546: istore_1
-    //   547: aload 16
-    //   549: astore 14
-    //   551: iload_3
-    //   552: istore_2
-    //   553: goto +2122 -> 2675
-    //   556: aload 13
-    //   558: astore 18
-    //   560: aload 17
-    //   562: astore 23
-    //   564: iload_2
-    //   565: istore_3
-    //   566: aload 16
-    //   568: astore 20
-    //   570: iload_1
-    //   571: istore 4
-    //   573: aload 14
-    //   575: astore 21
-    //   577: aload 15
-    //   579: astore 22
-    //   581: new 166	org/json/JSONObject
-    //   584: dup
-    //   585: aload 24
-    //   587: invokespecial 169	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   590: astore 26
-    //   592: aload 13
-    //   594: astore 18
-    //   596: aload 17
-    //   598: astore 23
-    //   600: iload_2
-    //   601: istore_3
-    //   602: aload 16
-    //   604: astore 20
-    //   606: iload_1
-    //   607: istore 4
-    //   609: aload 14
-    //   611: astore 21
-    //   613: aload 15
-    //   615: astore 22
-    //   617: aload 26
-    //   619: invokevirtual 173	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   622: astore 24
-    //   624: aload 13
-    //   626: astore 18
-    //   628: aload 17
-    //   630: astore 23
-    //   632: iload_2
-    //   633: istore_3
-    //   634: aload 16
-    //   636: astore 20
-    //   638: iload_1
-    //   639: istore 4
-    //   641: aload 14
-    //   643: astore 21
-    //   645: aload 15
-    //   647: astore 22
-    //   649: aload 24
-    //   651: invokeinterface 178 1 0
-    //   656: ifeq +1906 -> 2562
-    //   659: aload 13
-    //   661: astore 18
-    //   663: aload 17
-    //   665: astore 23
-    //   667: iload_2
-    //   668: istore_3
-    //   669: aload 16
-    //   671: astore 20
-    //   673: iload_1
-    //   674: istore 4
-    //   676: aload 14
-    //   678: astore 21
-    //   680: aload 15
-    //   682: astore 22
-    //   684: aload 24
-    //   686: invokeinterface 182 1 0
-    //   691: checkcast 118	java/lang/String
-    //   694: astore 27
-    //   696: aload 13
-    //   698: astore 18
-    //   700: aload 17
-    //   702: astore 23
-    //   704: iload_2
-    //   705: istore_3
-    //   706: aload 16
-    //   708: astore 20
-    //   710: iload_1
-    //   711: istore 4
-    //   713: aload 14
-    //   715: astore 21
-    //   717: aload 15
-    //   719: astore 22
-    //   721: ldc 184
-    //   723: aload 27
-    //   725: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   728: ifeq +88 -> 816
-    //   731: aload 13
-    //   733: astore 18
-    //   735: aload 17
-    //   737: astore 23
-    //   739: iload_2
-    //   740: istore_3
-    //   741: aload 16
-    //   743: astore 20
-    //   745: iload_1
-    //   746: istore 4
-    //   748: aload 14
-    //   750: astore 21
-    //   752: aload 15
-    //   754: astore 22
-    //   756: aload 26
-    //   758: aload 27
-    //   760: invokevirtual 192	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   763: astore 27
-    //   765: aload 13
-    //   767: astore 18
-    //   769: aload 17
-    //   771: astore 23
-    //   773: iload_2
-    //   774: istore_3
-    //   775: aload 16
-    //   777: astore 20
-    //   779: iload_1
-    //   780: istore 4
-    //   782: aload 14
-    //   784: astore 21
-    //   786: aload 15
-    //   788: astore 22
-    //   790: ldc 194
-    //   792: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   795: checkcast 194	com/tencent/mobileqq/qwallet/hb/IHbThemeConfigApi
-    //   798: astore 28
-    //   800: aload 28
-    //   802: aload_0
-    //   803: getfield 18	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface	Lcom/tencent/common/app/business/BaseQQAppInterface;
-    //   806: aload 27
-    //   808: invokeinterface 198 3 0
-    //   813: goto +2231 -> 3044
-    //   816: aload 17
-    //   818: astore 18
-    //   820: aload 16
-    //   822: aload 27
-    //   824: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   827: ifeq +24 -> 851
-    //   830: aload 26
-    //   832: aload 27
-    //   834: invokevirtual 192	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   837: astore 18
-    //   839: iload_1
-    //   840: iload_2
-    //   841: if_icmple +2203 -> 3044
-    //   844: aload 18
-    //   846: astore 14
-    //   848: goto +2196 -> 3044
-    //   851: ldc 200
-    //   853: aload 27
-    //   855: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   858: ifeq +286 -> 1144
-    //   861: aload 26
-    //   863: aload 27
-    //   865: invokevirtual 192	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   868: astore 21
-    //   870: aload 21
-    //   872: ifnull +2214 -> 3086
-    //   875: ldc 64
-    //   877: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   880: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   883: astore 22
-    //   885: aload_0
-    //   886: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   889: astore 23
-    //   891: iload_2
-    //   892: istore 4
-    //   894: aload 16
-    //   896: astore 20
-    //   898: iload_1
-    //   899: istore_3
-    //   900: aload 21
-    //   902: ldc 202
-    //   904: iconst_0
-    //   905: invokevirtual 206	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   908: iconst_1
-    //   909: if_icmpne +2146 -> 3055
-    //   912: iconst_1
-    //   913: istore 8
-    //   915: goto +3 -> 918
-    //   918: aload 22
-    //   920: aload 23
-    //   922: ldc 202
-    //   924: iload 8
-    //   926: invokeinterface 210 4 0
-    //   931: ldc 64
-    //   933: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   936: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   939: astore 22
-    //   941: aload_0
-    //   942: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   945: astore 23
-    //   947: aload 21
-    //   949: ldc 212
-    //   951: iconst_1
-    //   952: invokevirtual 206	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   955: iconst_1
-    //   956: if_icmpne +2105 -> 3061
-    //   959: iconst_1
-    //   960: istore 8
-    //   962: goto +3 -> 965
-    //   965: aload 22
-    //   967: aload 23
-    //   969: ldc 212
-    //   971: iload 8
-    //   973: invokeinterface 210 4 0
-    //   978: ldc 64
-    //   980: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   983: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   986: astore 22
-    //   988: aload_0
-    //   989: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   992: astore 23
-    //   994: aload 21
-    //   996: ldc 214
-    //   998: iconst_1
-    //   999: invokevirtual 206	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   1002: iconst_1
-    //   1003: if_icmpne +2064 -> 3067
-    //   1006: iconst_1
-    //   1007: istore 8
-    //   1009: goto +3 -> 1012
-    //   1012: aload 22
-    //   1014: aload 23
-    //   1016: ldc 214
-    //   1018: iload 8
-    //   1020: invokeinterface 210 4 0
-    //   1025: ldc 216
-    //   1027: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1030: checkcast 216	com/tencent/mobileqq/qwallet/IQWalletApi
-    //   1033: aload 21
-    //   1035: ldc 218
-    //   1037: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1040: invokeinterface 226 2 0
-    //   1045: lstore 9
-    //   1047: ldc 216
-    //   1049: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1052: checkcast 216	com/tencent/mobileqq/qwallet/IQWalletApi
-    //   1055: aload 21
-    //   1057: ldc 228
-    //   1059: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1062: invokeinterface 226 2 0
-    //   1067: lstore 11
-    //   1069: lload 9
-    //   1071: lconst_0
-    //   1072: lcmp
-    //   1073: iflt +2000 -> 3073
-    //   1076: lload 11
-    //   1078: lconst_0
-    //   1079: lcmp
-    //   1080: iflt +1993 -> 3073
-    //   1083: ldc 64
-    //   1085: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1088: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1091: astore 21
-    //   1093: aload_0
-    //   1094: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1097: astore 22
-    //   1099: aload 21
-    //   1101: aload 22
-    //   1103: ldc 230
-    //   1105: lload 9
-    //   1107: ldc2_w 231
-    //   1110: ldiv
-    //   1111: invokeinterface 236 5 0
-    //   1116: ldc 64
-    //   1118: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1121: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1124: aload_0
-    //   1125: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1128: ldc 238
-    //   1130: lload 11
-    //   1132: ldc2_w 231
-    //   1135: ldiv
-    //   1136: invokeinterface 236 5 0
-    //   1141: goto +1945 -> 3086
-    //   1144: aload 13
-    //   1146: astore 21
-    //   1148: iload_2
-    //   1149: istore 4
-    //   1151: aload 16
-    //   1153: astore 20
-    //   1155: iload_1
-    //   1156: istore_3
-    //   1157: ldc 240
-    //   1159: aload 27
-    //   1161: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1164: ifeq +102 -> 1266
-    //   1167: aload 26
-    //   1169: aload 27
-    //   1171: invokevirtual 192	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   1174: astore 20
-    //   1176: aload 20
-    //   1178: ifnull +1908 -> 3086
-    //   1181: aload 20
-    //   1183: ldc 242
-    //   1185: iconst_0
-    //   1186: invokevirtual 206	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   1189: istore_3
-    //   1190: aload 20
-    //   1192: ldc 244
-    //   1194: iconst_0
-    //   1195: invokevirtual 206	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   1198: istore 4
-    //   1200: aload_0
-    //   1201: getfield 18	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface	Lcom/tencent/common/app/business/BaseQQAppInterface;
-    //   1204: ldc 246
-    //   1206: ldc 106
-    //   1208: invokevirtual 250	com/tencent/common/app/business/BaseQQAppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   1211: checkcast 246	com/tencent/mobileqq/qwallet/preload/IPreloadService
-    //   1214: iload_3
-    //   1215: iload 4
-    //   1217: invokeinterface 254 3 0
-    //   1222: ldc 64
-    //   1224: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1227: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1230: aload_0
-    //   1231: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1234: ldc 242
-    //   1236: iload_3
-    //   1237: invokeinterface 258 4 0
-    //   1242: ldc 64
-    //   1244: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1247: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1250: aload_0
-    //   1251: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1254: ldc 244
-    //   1256: iload 4
-    //   1258: invokeinterface 258 4 0
-    //   1263: goto +1823 -> 3086
-    //   1266: ldc_w 260
-    //   1269: aload 27
-    //   1271: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1274: ifeq +6 -> 1280
-    //   1277: goto +1809 -> 3086
-    //   1280: ldc_w 262
-    //   1283: aload 27
-    //   1285: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1288: ifeq +37 -> 1325
-    //   1291: aload 26
-    //   1293: aload 27
-    //   1295: invokevirtual 265	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1298: astore 20
-    //   1300: ldc 64
-    //   1302: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1305: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1308: aload_0
-    //   1309: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1312: ldc_w 262
-    //   1315: aload 20
-    //   1317: invokeinterface 269 4 0
-    //   1322: goto +1764 -> 3086
-    //   1325: ldc_w 271
-    //   1328: aload 27
-    //   1330: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1333: ifeq +35 -> 1368
-    //   1336: aload 26
-    //   1338: aload 27
-    //   1340: invokevirtual 275	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   1343: astore 20
-    //   1345: ldc_w 277
-    //   1348: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1351: checkcast 277	com/tencent/mobileqq/qwallet/utils/IPayInterceptApi
-    //   1354: aload 20
-    //   1356: aload_0
-    //   1357: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1360: invokeinterface 281 3 0
-    //   1365: goto +1721 -> 3086
-    //   1368: ldc_w 283
-    //   1371: aload 27
-    //   1373: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1376: ifeq +52 -> 1428
-    //   1379: aload 26
-    //   1381: aload 27
-    //   1383: ldc 106
-    //   1385: invokevirtual 286	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1388: astore 20
-    //   1390: aload 20
-    //   1392: invokestatic 164	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1395: ifne +1694 -> 3089
-    //   1398: ldc 64
-    //   1400: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1403: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1406: ldc 106
-    //   1408: ldc_w 283
-    //   1411: aload 20
-    //   1413: invokevirtual 290	java/lang/String:getBytes	()[B
-    //   1416: iconst_0
-    //   1417: invokestatic 296	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   1420: invokeinterface 269 4 0
-    //   1425: goto +1661 -> 3086
-    //   1428: ldc_w 298
-    //   1431: aload 27
-    //   1433: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1436: ifeq +603 -> 2039
-    //   1439: aload 26
-    //   1441: aload 27
-    //   1443: invokevirtual 192	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   1446: astore 20
-    //   1448: aload 20
-    //   1450: ifnull +1636 -> 3086
-    //   1453: aload 20
-    //   1455: ldc_w 300
-    //   1458: invokevirtual 303	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   1461: istore_3
-    //   1462: ldc 64
-    //   1464: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1467: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1470: aload_0
-    //   1471: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1474: ldc_w 305
-    //   1477: aload 20
-    //   1479: ldc_w 300
-    //   1482: invokevirtual 303	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   1485: invokeinterface 258 4 0
-    //   1490: ldc 64
-    //   1492: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1495: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1498: astore 21
-    //   1500: aload_0
-    //   1501: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1504: astore 22
-    //   1506: new 143	java/lang/StringBuilder
-    //   1509: dup
-    //   1510: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   1513: astore 23
-    //   1515: aload 23
-    //   1517: ldc_w 307
-    //   1520: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1523: pop
-    //   1524: aload 23
-    //   1526: iload_3
-    //   1527: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1530: pop
-    //   1531: aload 21
-    //   1533: aload 22
-    //   1535: aload 23
-    //   1537: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1540: aload 20
-    //   1542: ldc_w 309
-    //   1545: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1548: invokeinterface 269 4 0
-    //   1553: ldc 64
-    //   1555: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1558: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1561: astore 21
-    //   1563: aload_0
-    //   1564: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1567: astore 22
-    //   1569: new 143	java/lang/StringBuilder
-    //   1572: dup
-    //   1573: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   1576: astore 23
-    //   1578: aload 23
-    //   1580: ldc_w 311
-    //   1583: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1586: pop
-    //   1587: aload 23
-    //   1589: iload_3
-    //   1590: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1593: pop
-    //   1594: aload 21
-    //   1596: aload 22
-    //   1598: aload 23
-    //   1600: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1603: aload 20
-    //   1605: ldc_w 313
-    //   1608: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1611: invokeinterface 269 4 0
-    //   1616: ldc 64
-    //   1618: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1621: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1624: astore 21
-    //   1626: aload_0
-    //   1627: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1630: astore 22
-    //   1632: new 143	java/lang/StringBuilder
-    //   1635: dup
-    //   1636: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   1639: astore 23
-    //   1641: aload 23
-    //   1643: ldc_w 315
-    //   1646: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1649: pop
-    //   1650: aload 23
-    //   1652: iload_3
-    //   1653: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1656: pop
-    //   1657: aload 21
-    //   1659: aload 22
-    //   1661: aload 23
-    //   1663: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1666: aload 20
-    //   1668: ldc_w 317
-    //   1671: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1674: invokeinterface 269 4 0
-    //   1679: ldc 64
-    //   1681: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1684: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1687: astore 21
-    //   1689: aload_0
-    //   1690: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1693: astore 22
-    //   1695: new 143	java/lang/StringBuilder
-    //   1698: dup
-    //   1699: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   1702: astore 23
-    //   1704: aload 23
-    //   1706: ldc_w 319
-    //   1709: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1712: pop
-    //   1713: aload 23
-    //   1715: iload_3
-    //   1716: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1719: pop
-    //   1720: aload 21
-    //   1722: aload 22
-    //   1724: aload 23
-    //   1726: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1729: aload 20
-    //   1731: ldc_w 321
-    //   1734: invokevirtual 303	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   1737: invokeinterface 258 4 0
-    //   1742: ldc 64
-    //   1744: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1747: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1750: astore 21
-    //   1752: aload_0
-    //   1753: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1756: astore 22
-    //   1758: new 143	java/lang/StringBuilder
-    //   1761: dup
-    //   1762: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   1765: astore 23
-    //   1767: aload 23
-    //   1769: ldc_w 323
-    //   1772: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1775: pop
-    //   1776: aload 23
-    //   1778: iload_3
-    //   1779: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1782: pop
-    //   1783: aload 21
-    //   1785: aload 22
-    //   1787: aload 23
-    //   1789: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1792: aload 20
-    //   1794: ldc_w 325
-    //   1797: invokevirtual 303	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   1800: invokeinterface 258 4 0
-    //   1805: ldc 64
-    //   1807: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1810: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1813: astore 21
-    //   1815: aload_0
-    //   1816: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1819: astore 22
-    //   1821: new 143	java/lang/StringBuilder
-    //   1824: dup
-    //   1825: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   1828: astore 23
-    //   1830: aload 23
-    //   1832: ldc_w 327
-    //   1835: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1838: pop
-    //   1839: aload 23
-    //   1841: iload_3
-    //   1842: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1845: pop
-    //   1846: aload 21
-    //   1848: aload 22
-    //   1850: aload 23
-    //   1852: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1855: aload 20
-    //   1857: ldc_w 329
-    //   1860: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1863: invokeinterface 269 4 0
-    //   1868: ldc 216
-    //   1870: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1873: checkcast 216	com/tencent/mobileqq/qwallet/IQWalletApi
-    //   1876: aload 20
-    //   1878: ldc_w 331
-    //   1881: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1884: invokeinterface 226 2 0
-    //   1889: lstore 9
-    //   1891: ldc 216
-    //   1893: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1896: checkcast 216	com/tencent/mobileqq/qwallet/IQWalletApi
-    //   1899: aload 20
-    //   1901: ldc_w 333
-    //   1904: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1907: invokeinterface 226 2 0
-    //   1912: lstore 11
-    //   1914: ldc 64
-    //   1916: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1919: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1922: astore 20
-    //   1924: aload_0
-    //   1925: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1928: astore 21
-    //   1930: new 143	java/lang/StringBuilder
-    //   1933: dup
-    //   1934: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   1937: astore 22
-    //   1939: aload 22
-    //   1941: ldc_w 335
-    //   1944: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1947: pop
-    //   1948: aload 22
-    //   1950: iload_3
-    //   1951: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1954: pop
-    //   1955: aload 20
-    //   1957: aload 21
-    //   1959: aload 22
-    //   1961: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1964: lload 9
-    //   1966: ldc2_w 231
-    //   1969: ldiv
-    //   1970: invokeinterface 236 5 0
-    //   1975: ldc 64
-    //   1977: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1980: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   1983: astore 20
-    //   1985: aload_0
-    //   1986: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1989: astore 21
-    //   1991: new 143	java/lang/StringBuilder
-    //   1994: dup
-    //   1995: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   1998: astore 22
-    //   2000: aload 22
-    //   2002: ldc_w 337
-    //   2005: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2008: pop
-    //   2009: aload 22
-    //   2011: iload_3
-    //   2012: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2015: pop
-    //   2016: aload 20
-    //   2018: aload 21
-    //   2020: aload 22
-    //   2022: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2025: lload 11
-    //   2027: ldc2_w 231
-    //   2030: ldiv
-    //   2031: invokeinterface 236 5 0
-    //   2036: goto +1050 -> 3086
-    //   2039: ldc_w 339
-    //   2042: aload 27
-    //   2044: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2047: ifeq +46 -> 2093
-    //   2050: aload 26
-    //   2052: aload 27
-    //   2054: invokevirtual 192	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2057: astore 20
-    //   2059: aload 20
-    //   2061: ifnull +1025 -> 3086
-    //   2064: ldc 64
-    //   2066: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2069: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2072: aload_0
-    //   2073: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2076: ldc 72
-    //   2078: aload 20
-    //   2080: ldc 72
-    //   2082: invokevirtual 303	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   2085: invokeinterface 258 4 0
-    //   2090: goto +996 -> 3086
-    //   2093: ldc_w 341
+    //   24: getfield 18	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:this$0	Lcom/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl;
+    //   27: aload_0
+    //   28: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:a	Lcom/tencent/common/app/business/BaseQQAppInterface;
+    //   31: invokevirtual 48	com/tencent/common/app/business/BaseQQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   34: aload_0
+    //   35: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   38: invokevirtual 54	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl:getQWalletSettingConfigVersion	(Landroid/content/Context;Ljava/lang/String;)I
+    //   41: istore_1
+    //   42: aload_0
+    //   43: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   46: astore 17
+    //   48: aload 17
+    //   50: ifnull +25 -> 75
+    //   53: aload 17
+    //   55: getfield 60	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   58: ifnull +17 -> 75
+    //   61: aload_0
+    //   62: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   65: getfield 60	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   68: invokevirtual 66	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   71: istore_2
+    //   72: goto +5 -> 77
+    //   75: iconst_0
+    //   76: istore_2
+    //   77: aload_0
+    //   78: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   81: ifnull +333 -> 414
+    //   84: iload_2
+    //   85: iload_1
+    //   86: if_icmpeq +328 -> 414
+    //   89: ldc 68
+    //   91: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   94: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   97: aload_0
+    //   98: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   101: ldc 76
+    //   103: invokeinterface 80 3 0
+    //   108: ldc 68
+    //   110: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   113: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   116: aload_0
+    //   117: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   120: ldc 82
+    //   122: invokeinterface 80 3 0
+    //   127: ldc 68
+    //   129: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   132: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   135: aload_0
+    //   136: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   139: ldc 84
+    //   141: invokeinterface 80 3 0
+    //   146: ldc 68
+    //   148: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   151: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   154: aload_0
+    //   155: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   158: ldc 35
+    //   160: invokeinterface 80 3 0
+    //   165: ldc 68
+    //   167: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   170: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   173: aload_0
+    //   174: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   177: ldc 86
+    //   179: invokeinterface 80 3 0
+    //   184: ldc 68
+    //   186: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   189: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   192: aload_0
+    //   193: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   196: ldc 88
+    //   198: invokeinterface 80 3 0
+    //   203: ldc 68
+    //   205: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   208: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   211: aload_0
+    //   212: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   215: ldc 90
+    //   217: invokeinterface 80 3 0
+    //   222: ldc 68
+    //   224: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   227: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   230: aload_0
+    //   231: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   234: ldc 92
+    //   236: invokeinterface 80 3 0
+    //   241: ldc 68
+    //   243: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   246: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   249: aload_0
+    //   250: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   253: ldc 94
+    //   255: invokeinterface 80 3 0
+    //   260: ldc 68
+    //   262: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   265: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   268: aload_0
+    //   269: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   272: ldc 96
+    //   274: invokeinterface 80 3 0
+    //   279: ldc 68
+    //   281: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   284: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   287: aload_0
+    //   288: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   291: ldc 98
+    //   293: invokeinterface 80 3 0
+    //   298: ldc 68
+    //   300: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   303: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   306: aload_0
+    //   307: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   310: ldc 100
+    //   312: invokeinterface 80 3 0
+    //   317: ldc 68
+    //   319: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   322: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   325: aload_0
+    //   326: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   329: ldc 102
+    //   331: invokeinterface 80 3 0
+    //   336: ldc 68
+    //   338: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   341: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   344: aload_0
+    //   345: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   348: ldc 104
+    //   350: invokeinterface 80 3 0
+    //   355: ldc 68
+    //   357: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   360: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   363: aload_0
+    //   364: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   367: ldc 106
+    //   369: invokeinterface 80 3 0
+    //   374: ldc 68
+    //   376: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   379: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   382: aload_0
+    //   383: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   386: ldc 108
+    //   388: invokeinterface 80 3 0
+    //   393: goto +21 -> 414
+    //   396: astore 17
+    //   398: invokestatic 114	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   401: ifeq +13 -> 414
+    //   404: ldc 37
+    //   406: iconst_2
+    //   407: ldc 116
+    //   409: aload 17
+    //   411: invokestatic 120	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   414: aload_0
+    //   415: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   418: astore 17
+    //   420: ldc 122
+    //   422: astore 21
+    //   424: ldc 124
+    //   426: astore 23
+    //   428: ldc 126
+    //   430: astore 38
+    //   432: aconst_null
+    //   433: astore 18
+    //   435: aconst_null
+    //   436: astore 24
+    //   438: aload 17
+    //   440: ifnull +3105 -> 3545
+    //   443: iload_2
+    //   444: iload_1
+    //   445: if_icmpeq +3100 -> 3545
+    //   448: invokestatic 114	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   451: istore 10
+    //   453: iload 10
+    //   455: ifeq +35 -> 490
+    //   458: ldc 37
+    //   460: iconst_2
+    //   461: ldc 128
+    //   463: iconst_2
+    //   464: anewarray 4	java/lang/Object
+    //   467: dup
+    //   468: iconst_0
+    //   469: iload_1
+    //   470: invokestatic 134	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   473: aastore
+    //   474: dup
+    //   475: iconst_1
+    //   476: iload_2
+    //   477: invokestatic 134	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   480: aastore
+    //   481: invokestatic 140	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   484: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   487: goto +3 -> 490
+    //   490: ldc 86
+    //   492: astore 20
+    //   494: iload_2
+    //   495: iload_1
+    //   496: if_icmpeq +9 -> 505
+    //   499: iload_2
+    //   500: istore 4
+    //   502: goto +6 -> 508
+    //   505: iload_1
+    //   506: istore 4
+    //   508: aload_0
+    //   509: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   512: astore 17
+    //   514: aload 17
+    //   516: ifnull +2986 -> 3502
+    //   519: aload 17
+    //   521: getfield 148	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:content_list	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   524: ifnull +2978 -> 3502
+    //   527: aload_0
+    //   528: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   531: getfield 148	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:content_list	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   534: invokevirtual 153	com/tencent/mobileqq/pb/PBRepeatField:isEmpty	()Z
+    //   537: ifeq +6 -> 543
+    //   540: goto +2962 -> 3502
+    //   543: aload_0
+    //   544: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   547: getfield 148	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:content_list	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   550: invokevirtual 156	com/tencent/mobileqq/pb/PBRepeatField:size	()I
+    //   553: istore 8
+    //   555: iconst_0
+    //   556: istore 9
+    //   558: aload 15
+    //   560: astore 17
+    //   562: aload 24
+    //   564: astore 18
+    //   566: iload_1
+    //   567: istore_3
+    //   568: aload 22
+    //   570: astore 15
+    //   572: iload 4
+    //   574: istore_1
+    //   575: iload 9
+    //   577: iload 8
+    //   579: if_icmpge +2914 -> 3493
+    //   582: aload_0
+    //   583: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   586: getfield 148	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:content_list	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   589: iload 9
+    //   591: invokevirtual 159	com/tencent/mobileqq/pb/PBRepeatField:get	(I)Ljava/lang/Object;
+    //   594: checkcast 136	java/lang/String
+    //   597: astore 30
+    //   599: invokestatic 114	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   602: ifeq +66 -> 668
+    //   605: new 161	java/lang/StringBuilder
+    //   608: dup
+    //   609: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   612: astore 22
+    //   614: aload 22
+    //   616: ldc 164
+    //   618: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: pop
+    //   622: aload 22
+    //   624: aload 30
+    //   626: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   629: pop
+    //   630: aload 22
+    //   632: ldc 170
+    //   634: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   637: pop
+    //   638: aload 22
+    //   640: aload_0
+    //   641: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   644: getfield 60	com/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config:version	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   647: invokevirtual 66	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   650: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   653: pop
+    //   654: aload 15
+    //   656: iconst_2
+    //   657: aload 22
+    //   659: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   662: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   665: goto +3 -> 668
+    //   668: aload 30
+    //   670: invokestatic 182	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   673: ifeq +106 -> 779
+    //   676: aload 20
+    //   678: astore 31
+    //   680: aload 17
+    //   682: astore 33
+    //   684: aload 18
+    //   686: astore 30
+    //   688: aload 21
+    //   690: astore 36
+    //   692: iload_2
+    //   693: istore 5
+    //   695: aload 15
+    //   697: astore 32
+    //   699: aload 16
+    //   701: astore 34
+    //   703: iload_1
+    //   704: istore 7
+    //   706: aload 19
+    //   708: astore 35
+    //   710: iload 5
+    //   712: istore 4
+    //   714: aload 36
+    //   716: astore 22
+    //   718: aload 33
+    //   720: astore 28
+    //   722: aload 31
+    //   724: astore 26
+    //   726: aload 35
+    //   728: astore 24
+    //   730: aload 34
+    //   732: astore 25
+    //   734: aload 32
+    //   736: astore 27
+    //   738: iload 7
+    //   740: istore 5
+    //   742: aload 28
+    //   744: astore 15
+    //   746: aload 27
+    //   748: astore 17
+    //   750: aload 26
+    //   752: astore 19
+    //   754: aload 25
+    //   756: astore 20
+    //   758: aload 30
+    //   760: astore 18
+    //   762: aload 24
+    //   764: astore 16
+    //   766: iload 5
+    //   768: istore_1
+    //   769: aload 22
+    //   771: astore 21
+    //   773: iload 4
+    //   775: istore_2
+    //   776: goto +2680 -> 3456
+    //   779: aload 19
+    //   781: astore 26
+    //   783: iload_1
+    //   784: istore 6
+    //   786: aload 16
+    //   788: astore 25
+    //   790: aload 15
+    //   792: astore 24
+    //   794: iload_2
+    //   795: istore 4
+    //   797: aload 21
+    //   799: astore 29
+    //   801: aload 18
+    //   803: astore 22
+    //   805: aload 17
+    //   807: astore 28
+    //   809: aload 20
+    //   811: astore 27
+    //   813: new 184	org/json/JSONObject
+    //   816: dup
+    //   817: aload 30
+    //   819: invokespecial 187	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   822: astore 39
+    //   824: aload 19
+    //   826: astore 26
+    //   828: iload_1
+    //   829: istore 6
+    //   831: aload 16
+    //   833: astore 25
+    //   835: aload 15
+    //   837: astore 24
+    //   839: iload_2
+    //   840: istore 4
+    //   842: aload 21
+    //   844: astore 29
+    //   846: aload 18
+    //   848: astore 22
+    //   850: aload 17
+    //   852: astore 28
+    //   854: aload 20
+    //   856: astore 27
+    //   858: aload 39
+    //   860: invokevirtual 191	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   863: astore 37
+    //   865: aload 19
+    //   867: astore 35
+    //   869: iload_1
+    //   870: istore 7
+    //   872: aload 16
+    //   874: astore 34
+    //   876: aload 15
+    //   878: astore 32
+    //   880: iload_2
+    //   881: istore 5
+    //   883: aload 21
+    //   885: astore 36
+    //   887: aload 18
+    //   889: astore 30
+    //   891: aload 17
+    //   893: astore 33
+    //   895: aload 20
+    //   897: astore 31
+    //   899: aload 19
+    //   901: astore 26
+    //   903: iload_1
+    //   904: istore 6
+    //   906: aload 16
+    //   908: astore 25
+    //   910: aload 15
+    //   912: astore 24
+    //   914: iload_2
+    //   915: istore 4
+    //   917: aload 21
+    //   919: astore 29
+    //   921: aload 18
+    //   923: astore 22
+    //   925: aload 17
+    //   927: astore 28
+    //   929: aload 20
+    //   931: astore 27
+    //   933: aload 37
+    //   935: invokeinterface 196 1 0
+    //   940: ifeq -230 -> 710
+    //   943: aload 19
+    //   945: astore 26
+    //   947: iload_1
+    //   948: istore 6
+    //   950: aload 16
+    //   952: astore 25
+    //   954: aload 15
+    //   956: astore 24
+    //   958: iload_2
+    //   959: istore 4
+    //   961: aload 21
+    //   963: astore 29
+    //   965: aload 18
+    //   967: astore 22
+    //   969: aload 17
+    //   971: astore 28
+    //   973: aload 20
+    //   975: astore 27
+    //   977: aload 37
+    //   979: invokeinterface 200 1 0
+    //   984: checkcast 136	java/lang/String
+    //   987: astore 30
+    //   989: aload 19
+    //   991: astore 26
+    //   993: iload_1
+    //   994: istore 6
+    //   996: aload 16
+    //   998: astore 25
+    //   1000: aload 15
+    //   1002: astore 24
+    //   1004: iload_2
+    //   1005: istore 4
+    //   1007: aload 21
+    //   1009: astore 29
+    //   1011: aload 18
+    //   1013: astore 22
+    //   1015: aload 17
+    //   1017: astore 28
+    //   1019: aload 20
+    //   1021: astore 27
+    //   1023: ldc 202
+    //   1025: aload 30
+    //   1027: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1030: ifeq +106 -> 1136
+    //   1033: aload 19
+    //   1035: astore 26
+    //   1037: iload_1
+    //   1038: istore 6
+    //   1040: aload 16
+    //   1042: astore 25
+    //   1044: aload 15
+    //   1046: astore 24
+    //   1048: iload_2
+    //   1049: istore 4
+    //   1051: aload 21
+    //   1053: astore 29
+    //   1055: aload 18
+    //   1057: astore 22
+    //   1059: aload 17
+    //   1061: astore 28
+    //   1063: aload 20
+    //   1065: astore 27
+    //   1067: aload 39
+    //   1069: aload 30
+    //   1071: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   1074: astore 30
+    //   1076: aload 19
+    //   1078: astore 26
+    //   1080: iload_1
+    //   1081: istore 6
+    //   1083: aload 16
+    //   1085: astore 25
+    //   1087: aload 15
+    //   1089: astore 24
+    //   1091: iload_2
+    //   1092: istore 4
+    //   1094: aload 21
+    //   1096: astore 29
+    //   1098: aload 18
+    //   1100: astore 22
+    //   1102: aload 17
+    //   1104: astore 28
+    //   1106: aload 20
+    //   1108: astore 27
+    //   1110: ldc 212
+    //   1112: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1115: checkcast 212	com/tencent/mobileqq/qwallet/hb/IHbThemeConfigApi
+    //   1118: astore 31
+    //   1120: aload 31
+    //   1122: aload_0
+    //   1123: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:a	Lcom/tencent/common/app/business/BaseQQAppInterface;
+    //   1126: aload 30
+    //   1128: invokeinterface 216 3 0
+    //   1133: goto +2691 -> 3824
+    //   1136: aload 15
+    //   1138: astore 24
+    //   1140: aload 21
+    //   1142: aload 30
+    //   1144: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1147: ifeq +24 -> 1171
+    //   1150: aload 39
+    //   1152: aload 30
+    //   1154: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   1157: astore 22
+    //   1159: iload_2
+    //   1160: iload_1
+    //   1161: if_icmple +2663 -> 3824
+    //   1164: aload 22
+    //   1166: astore 18
+    //   1168: goto +2656 -> 3824
+    //   1171: ldc 218
+    //   1173: aload 30
+    //   1175: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1178: istore 10
+    //   1180: iload 10
+    //   1182: ifeq +278 -> 1460
+    //   1185: aload 39
+    //   1187: aload 30
+    //   1189: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   1192: astore 22
+    //   1194: aload 22
+    //   1196: ifnull +2661 -> 3857
+    //   1199: ldc 68
+    //   1201: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1204: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1207: astore 25
+    //   1209: aload_0
+    //   1210: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1213: astore 26
+    //   1215: aload 22
+    //   1217: ldc 220
+    //   1219: iconst_0
+    //   1220: invokevirtual 224	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   1223: iconst_1
+    //   1224: if_icmpne +2607 -> 3831
+    //   1227: iconst_1
+    //   1228: istore 10
+    //   1230: goto +3 -> 1233
+    //   1233: aload 25
+    //   1235: aload 26
+    //   1237: ldc 220
+    //   1239: iload 10
+    //   1241: invokeinterface 228 4 0
+    //   1246: ldc 68
+    //   1248: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1251: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1254: astore 25
+    //   1256: aload_0
+    //   1257: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1260: astore 26
+    //   1262: aload 22
+    //   1264: ldc 230
+    //   1266: iconst_1
+    //   1267: invokevirtual 224	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   1270: iconst_1
+    //   1271: if_icmpne +2566 -> 3837
+    //   1274: iconst_1
+    //   1275: istore 10
+    //   1277: goto +3 -> 1280
+    //   1280: aload 25
+    //   1282: aload 26
+    //   1284: ldc 230
+    //   1286: iload 10
+    //   1288: invokeinterface 228 4 0
+    //   1293: ldc 68
+    //   1295: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1298: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1301: astore 25
+    //   1303: aload_0
+    //   1304: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1307: astore 26
+    //   1309: aload 22
+    //   1311: ldc 232
+    //   1313: iconst_1
+    //   1314: invokevirtual 224	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   1317: iconst_1
+    //   1318: if_icmpne +2525 -> 3843
+    //   1321: iconst_1
+    //   1322: istore 10
+    //   1324: goto +3 -> 1327
+    //   1327: aload 25
+    //   1329: aload 26
+    //   1331: ldc 232
+    //   1333: iload 10
+    //   1335: invokeinterface 228 4 0
+    //   1340: ldc 234
+    //   1342: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1345: checkcast 234	com/tencent/mobileqq/qwallet/IQWalletApi
+    //   1348: aload 22
+    //   1350: ldc 236
+    //   1352: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1355: invokeinterface 244 2 0
+    //   1360: lstore 11
+    //   1362: ldc 234
+    //   1364: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1367: checkcast 234	com/tencent/mobileqq/qwallet/IQWalletApi
+    //   1370: aload 22
+    //   1372: ldc 246
+    //   1374: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1377: invokeinterface 244 2 0
+    //   1382: lstore 13
+    //   1384: lload 11
+    //   1386: lconst_0
+    //   1387: lcmp
+    //   1388: iflt +2461 -> 3849
+    //   1391: lload 13
+    //   1393: lconst_0
+    //   1394: lcmp
+    //   1395: iflt +2454 -> 3849
+    //   1398: ldc 68
+    //   1400: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1403: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1406: astore 22
+    //   1408: aload_0
+    //   1409: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1412: astore 25
+    //   1414: aload 22
+    //   1416: aload 25
+    //   1418: ldc 248
+    //   1420: lload 11
+    //   1422: ldc2_w 249
+    //   1425: ldiv
+    //   1426: invokeinterface 254 5 0
+    //   1431: ldc 68
+    //   1433: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1436: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1439: aload_0
+    //   1440: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1443: ldc_w 256
+    //   1446: lload 13
+    //   1448: ldc2_w 249
+    //   1451: ldiv
+    //   1452: invokeinterface 254 5 0
+    //   1457: goto +2400 -> 3857
+    //   1460: iload_1
+    //   1461: istore 5
+    //   1463: aload 16
+    //   1465: astore 22
+    //   1467: iload_2
+    //   1468: istore 4
+    //   1470: aload 21
+    //   1472: astore 25
+    //   1474: ldc_w 258
+    //   1477: aload 30
+    //   1479: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1482: ifeq +110 -> 1592
+    //   1485: aload 39
+    //   1487: aload 30
+    //   1489: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   1492: astore 22
+    //   1494: aload 22
+    //   1496: ifnull +2361 -> 3857
+    //   1499: aload 22
+    //   1501: ldc_w 260
+    //   1504: iconst_0
+    //   1505: invokevirtual 224	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   1508: istore 4
+    //   1510: aload 22
+    //   1512: ldc_w 262
+    //   1515: iconst_0
+    //   1516: invokevirtual 224	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   1519: istore 5
+    //   1521: aload_0
+    //   1522: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:a	Lcom/tencent/common/app/business/BaseQQAppInterface;
+    //   1525: ldc_w 264
+    //   1528: ldc 126
+    //   1530: invokevirtual 268	com/tencent/common/app/business/BaseQQAppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   1533: checkcast 264	com/tencent/mobileqq/qwallet/preload/IPreloadService
+    //   1536: iload 4
+    //   1538: iload 5
+    //   1540: invokeinterface 272 3 0
+    //   1545: ldc 68
+    //   1547: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1550: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1553: aload_0
+    //   1554: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1557: ldc_w 260
+    //   1560: iload 4
+    //   1562: invokeinterface 276 4 0
+    //   1567: ldc 68
+    //   1569: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1572: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1575: aload_0
+    //   1576: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1579: ldc_w 262
+    //   1582: iload 5
+    //   1584: invokeinterface 276 4 0
+    //   1589: goto +2268 -> 3857
+    //   1592: ldc_w 278
+    //   1595: aload 30
+    //   1597: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1600: ifeq +6 -> 1606
+    //   1603: goto +2254 -> 3857
+    //   1606: aload 19
+    //   1608: aload 30
+    //   1610: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1613: ifeq +36 -> 1649
+    //   1616: aload 39
+    //   1618: aload 30
+    //   1620: invokevirtual 281	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1623: astore 22
+    //   1625: ldc 68
+    //   1627: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1630: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1633: aload_0
+    //   1634: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1637: aload 19
+    //   1639: aload 22
+    //   1641: invokeinterface 285 4 0
+    //   1646: goto +2211 -> 3857
+    //   1649: ldc_w 287
+    //   1652: aload 30
+    //   1654: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1657: ifeq +35 -> 1692
+    //   1660: aload 39
+    //   1662: aload 30
+    //   1664: invokevirtual 291	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   1667: astore 22
+    //   1669: ldc_w 293
+    //   1672: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1675: checkcast 293	com/tencent/mobileqq/qwallet/utils/IPayInterceptApi
+    //   1678: aload 22
+    //   1680: aload_0
+    //   1681: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1684: invokeinterface 297 3 0
+    //   1689: goto +2168 -> 3857
+    //   1692: ldc_w 299
+    //   1695: aload 30
+    //   1697: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1700: ifeq +52 -> 1752
+    //   1703: aload 39
+    //   1705: aload 30
+    //   1707: ldc 126
+    //   1709: invokevirtual 302	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1712: astore 22
+    //   1714: aload 22
+    //   1716: invokestatic 182	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1719: ifne +2166 -> 3885
+    //   1722: ldc 68
+    //   1724: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1727: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1730: ldc 126
+    //   1732: ldc_w 299
+    //   1735: aload 22
+    //   1737: invokevirtual 306	java/lang/String:getBytes	()[B
+    //   1740: iconst_0
+    //   1741: invokestatic 312	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   1744: invokeinterface 285 4 0
+    //   1749: goto +2108 -> 3857
+    //   1752: ldc_w 314
+    //   1755: aload 30
+    //   1757: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1760: ifeq +612 -> 2372
+    //   1763: aload 39
+    //   1765: aload 30
+    //   1767: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   1770: astore 22
+    //   1772: aload 22
+    //   1774: ifnull +2083 -> 3857
+    //   1777: aload 22
+    //   1779: ldc_w 316
+    //   1782: invokevirtual 319	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   1785: istore 4
+    //   1787: ldc 68
+    //   1789: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1792: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1795: aload_0
+    //   1796: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1799: ldc_w 321
+    //   1802: aload 22
+    //   1804: ldc_w 316
+    //   1807: invokevirtual 319	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   1810: invokeinterface 276 4 0
+    //   1815: ldc 68
+    //   1817: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1820: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1823: astore 25
+    //   1825: aload_0
+    //   1826: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1829: astore 26
+    //   1831: new 161	java/lang/StringBuilder
+    //   1834: dup
+    //   1835: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   1838: astore 27
+    //   1840: aload 27
+    //   1842: ldc_w 323
+    //   1845: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1848: pop
+    //   1849: aload 27
+    //   1851: iload 4
+    //   1853: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1856: pop
+    //   1857: aload 25
+    //   1859: aload 26
+    //   1861: aload 27
+    //   1863: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1866: aload 22
+    //   1868: ldc_w 325
+    //   1871: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1874: invokeinterface 285 4 0
+    //   1879: ldc 68
+    //   1881: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1884: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1887: astore 25
+    //   1889: aload_0
+    //   1890: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1893: astore 26
+    //   1895: new 161	java/lang/StringBuilder
+    //   1898: dup
+    //   1899: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   1902: astore 27
+    //   1904: aload 27
+    //   1906: ldc_w 327
+    //   1909: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1912: pop
+    //   1913: aload 27
+    //   1915: iload 4
+    //   1917: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1920: pop
+    //   1921: aload 25
+    //   1923: aload 26
+    //   1925: aload 27
+    //   1927: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1930: aload 22
+    //   1932: ldc_w 329
+    //   1935: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1938: invokeinterface 285 4 0
+    //   1943: ldc 68
+    //   1945: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1948: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   1951: astore 25
+    //   1953: aload_0
+    //   1954: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   1957: astore 26
+    //   1959: new 161	java/lang/StringBuilder
+    //   1962: dup
+    //   1963: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   1966: astore 27
+    //   1968: aload 27
+    //   1970: ldc_w 331
+    //   1973: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1976: pop
+    //   1977: aload 27
+    //   1979: iload 4
+    //   1981: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1984: pop
+    //   1985: aload 25
+    //   1987: aload 26
+    //   1989: aload 27
+    //   1991: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1994: aload 22
+    //   1996: ldc_w 333
+    //   1999: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2002: invokeinterface 285 4 0
+    //   2007: ldc 68
+    //   2009: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2012: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2015: astore 25
+    //   2017: aload_0
+    //   2018: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2021: astore 26
+    //   2023: new 161	java/lang/StringBuilder
+    //   2026: dup
+    //   2027: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   2030: astore 27
+    //   2032: aload 27
+    //   2034: ldc_w 335
+    //   2037: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2040: pop
+    //   2041: aload 27
+    //   2043: iload 4
+    //   2045: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2048: pop
+    //   2049: aload 25
+    //   2051: aload 26
+    //   2053: aload 27
+    //   2055: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2058: aload 22
+    //   2060: ldc_w 337
+    //   2063: invokevirtual 319	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   2066: invokeinterface 276 4 0
+    //   2071: ldc 68
+    //   2073: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2076: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2079: astore 25
+    //   2081: aload_0
+    //   2082: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2085: astore 26
+    //   2087: new 161	java/lang/StringBuilder
+    //   2090: dup
+    //   2091: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   2094: astore 27
     //   2096: aload 27
-    //   2098: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2101: istore 8
-    //   2103: iload 8
-    //   2105: ifeq +144 -> 2249
-    //   2108: aload 26
-    //   2110: aload 27
-    //   2112: invokevirtual 192	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2115: astore 27
+    //   2098: ldc_w 339
+    //   2101: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2104: pop
+    //   2105: aload 27
+    //   2107: iload 4
+    //   2109: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2112: pop
+    //   2113: aload 25
+    //   2115: aload 26
     //   2117: aload 27
-    //   2119: ifnull +973 -> 3092
-    //   2122: ldc 64
-    //   2124: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2127: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2130: aload_0
-    //   2131: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2134: ldc 78
-    //   2136: aload 27
-    //   2138: ldc_w 343
-    //   2141: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2144: invokeinterface 269 4 0
-    //   2149: ldc 64
-    //   2151: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2154: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2157: aload_0
-    //   2158: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2161: ldc 80
-    //   2163: aload 27
-    //   2165: ldc_w 345
-    //   2168: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2171: invokeinterface 269 4 0
-    //   2176: ldc 64
-    //   2178: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2181: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2184: aload_0
-    //   2185: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2188: ldc 82
-    //   2190: aload 27
-    //   2192: ldc_w 347
-    //   2195: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2198: invokeinterface 269 4 0
-    //   2203: ldc 64
-    //   2205: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2208: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2211: astore 22
-    //   2213: aload_0
-    //   2214: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2217: astore 23
-    //   2219: aload 27
-    //   2221: ldc_w 349
-    //   2224: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2227: astore 27
-    //   2229: aload 22
-    //   2231: aload 23
-    //   2233: aload 21
-    //   2235: aload 27
-    //   2237: invokeinterface 269 4 0
-    //   2242: aload 14
-    //   2244: astore 22
-    //   2246: goto +802 -> 3048
-    //   2249: ldc_w 351
-    //   2252: aload 27
-    //   2254: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2257: ifeq +136 -> 2393
-    //   2260: aload 26
-    //   2262: aload 27
-    //   2264: invokevirtual 192	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   2267: astore 21
-    //   2269: aload 14
-    //   2271: astore 22
-    //   2273: aload 21
-    //   2275: ifnull +773 -> 3048
-    //   2278: ldc 64
-    //   2280: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2283: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2286: aload_0
-    //   2287: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2290: ldc 84
-    //   2292: aload 21
-    //   2294: ldc_w 353
-    //   2297: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2300: invokeinterface 269 4 0
-    //   2305: ldc 64
-    //   2307: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2310: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2313: aload_0
-    //   2314: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2317: ldc 86
-    //   2319: aload 21
-    //   2321: ldc_w 347
-    //   2324: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2327: invokeinterface 269 4 0
-    //   2332: ldc 64
-    //   2334: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2337: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2340: aload_0
-    //   2341: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2344: ldc 88
-    //   2346: aload 21
-    //   2348: ldc_w 355
-    //   2351: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2354: invokeinterface 269 4 0
-    //   2359: ldc 64
-    //   2361: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2364: checkcast 64	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
-    //   2367: aload_0
-    //   2368: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2371: ldc 90
-    //   2373: aload 21
-    //   2375: ldc_w 357
-    //   2378: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2381: invokeinterface 269 4 0
-    //   2386: aload 14
-    //   2388: astore 22
-    //   2390: goto +658 -> 3048
-    //   2393: aload 14
-    //   2395: astore 22
-    //   2397: ldc_w 359
-    //   2400: aload 27
-    //   2402: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2405: ifne +643 -> 3048
-    //   2408: aload 14
-    //   2410: astore 22
-    //   2412: ldc_w 361
-    //   2415: aload 27
-    //   2417: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2420: ifne +628 -> 3048
-    //   2423: ldc_w 363
-    //   2426: aload 27
-    //   2428: invokevirtual 188	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2431: ifeq +10 -> 2441
-    //   2434: aload 14
-    //   2436: astore 22
-    //   2438: goto +610 -> 3048
-    //   2441: aload 26
-    //   2443: aload 27
-    //   2445: invokevirtual 367	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   2448: astore 22
-    //   2450: aload 15
-    //   2452: astore 13
-    //   2454: aload 13
-    //   2456: aload 27
-    //   2458: aload 22
-    //   2460: invokevirtual 371	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   2463: pop
-    //   2464: aload 21
-    //   2466: astore 13
-    //   2468: goto +25 -> 2493
-    //   2471: astore 16
-    //   2473: aload 21
-    //   2475: astore 15
-    //   2477: aload 14
-    //   2479: astore 21
-    //   2481: iload 4
-    //   2483: istore_1
-    //   2484: aload 20
-    //   2486: astore 14
-    //   2488: iload_3
-    //   2489: istore_2
-    //   2490: goto +158 -> 2648
-    //   2493: goto -1869 -> 624
-    //   2496: astore 16
-    //   2498: aload 14
-    //   2500: astore 21
-    //   2502: iload 4
-    //   2504: istore_1
-    //   2505: iload_3
-    //   2506: istore_2
-    //   2507: goto +125 -> 2632
-    //   2510: iload_1
-    //   2511: istore_3
-    //   2512: aload 16
-    //   2514: astore 17
-    //   2516: iload_2
-    //   2517: istore_1
-    //   2518: astore 16
-    //   2520: aload 13
-    //   2522: astore 20
-    //   2524: aload 15
-    //   2526: astore 13
-    //   2528: aload 20
-    //   2530: astore 15
-    //   2532: aload 14
-    //   2534: astore 21
-    //   2536: aload 17
-    //   2538: astore 14
-    //   2540: iload_3
-    //   2541: istore_2
-    //   2542: goto +106 -> 2648
-    //   2545: aload 17
-    //   2547: astore 18
-    //   2549: astore 17
-    //   2551: aload 16
-    //   2553: astore 20
-    //   2555: aload 18
-    //   2557: astore 16
-    //   2559: goto +55 -> 2614
-    //   2562: iload_1
-    //   2563: istore_3
-    //   2564: aload 13
-    //   2566: astore 18
-    //   2568: aload 15
-    //   2570: astore 13
-    //   2572: aload 18
-    //   2574: astore 15
-    //   2576: aload 14
-    //   2578: astore 21
-    //   2580: iload_2
-    //   2581: istore_1
-    //   2582: aload 16
-    //   2584: astore 14
-    //   2586: iload_3
-    //   2587: istore_2
-    //   2588: goto +87 -> 2675
-    //   2591: astore 17
-    //   2593: aload 23
-    //   2595: astore 16
-    //   2597: aload 22
-    //   2599: astore 15
-    //   2601: aload 21
-    //   2603: astore 14
-    //   2605: iload 4
-    //   2607: istore_1
-    //   2608: iload_3
-    //   2609: istore_2
-    //   2610: aload 18
-    //   2612: astore 13
-    //   2614: iload_2
-    //   2615: istore_3
-    //   2616: iload_1
-    //   2617: istore_2
-    //   2618: iload_3
-    //   2619: istore_1
-    //   2620: aload 16
-    //   2622: astore 18
-    //   2624: aload 17
-    //   2626: astore 16
-    //   2628: aload 14
-    //   2630: astore 21
-    //   2632: aload 15
-    //   2634: astore 17
-    //   2636: aload 20
-    //   2638: astore 14
-    //   2640: aload 13
-    //   2642: astore 15
-    //   2644: aload 17
-    //   2646: astore 13
-    //   2648: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2651: ifeq +20 -> 2671
-    //   2654: aload 18
-    //   2656: astore 17
-    //   2658: aload 17
-    //   2660: iconst_2
-    //   2661: aload 19
-    //   2663: aload 16
-    //   2665: invokestatic 102	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   2668: goto +7 -> 2675
-    //   2671: aload 18
-    //   2673: astore 17
-    //   2675: aload 13
-    //   2677: astore 18
-    //   2679: aload 15
-    //   2681: astore 13
-    //   2683: iload_2
-    //   2684: istore_3
-    //   2685: iload 5
-    //   2687: iconst_1
-    //   2688: iadd
-    //   2689: istore 5
-    //   2691: iload_1
-    //   2692: istore_2
-    //   2693: aload 14
-    //   2695: astore 16
-    //   2697: iload_3
-    //   2698: istore_1
-    //   2699: aload 21
-    //   2701: astore 14
-    //   2703: aload 18
-    //   2705: astore 15
-    //   2707: goto -2281 -> 426
-    //   2710: aload 19
-    //   2712: astore 13
-    //   2714: aload 15
-    //   2716: astore 18
-    //   2718: aload 14
-    //   2720: astore 15
-    //   2722: aload 18
-    //   2724: astore 14
-    //   2726: goto +123 -> 2849
-    //   2729: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2732: ifeq +39 -> 2771
-    //   2735: new 143	java/lang/StringBuilder
-    //   2738: dup
-    //   2739: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   2742: astore 13
-    //   2744: aload 13
-    //   2746: ldc_w 373
-    //   2749: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2752: pop
-    //   2753: aload 13
-    //   2755: iload_1
-    //   2756: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2759: pop
-    //   2760: ldc 33
-    //   2762: iconst_2
-    //   2763: aload 13
-    //   2765: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2768: invokestatic 126	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2771: return
-    //   2772: aload 13
-    //   2774: astore 14
-    //   2776: ldc 104
-    //   2778: astore 16
-    //   2780: ldc 108
-    //   2782: astore 13
-    //   2784: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2787: ifeq +59 -> 2846
-    //   2790: new 143	java/lang/StringBuilder
-    //   2793: dup
-    //   2794: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   2797: astore 15
-    //   2799: aload 15
-    //   2801: ldc_w 375
-    //   2804: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2807: pop
-    //   2808: aload 15
-    //   2810: iload_1
-    //   2811: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2814: pop
-    //   2815: aload 15
-    //   2817: ldc_w 377
-    //   2820: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2823: pop
-    //   2824: aload 15
-    //   2826: iload 7
-    //   2828: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2831: pop
-    //   2832: ldc 33
-    //   2834: iconst_2
-    //   2835: aload 15
-    //   2837: invokevirtual 159	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2840: invokestatic 126	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2843: goto +3 -> 2846
-    //   2846: aconst_null
-    //   2847: astore 15
-    //   2849: aload_0
-    //   2850: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
-    //   2853: ifnull +190 -> 3043
-    //   2856: iload_1
-    //   2857: iload 7
-    //   2859: if_icmpeq +184 -> 3043
-    //   2862: aload_0
-    //   2863: getfield 16	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:this$0	Lcom/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl;
-    //   2866: aload_0
-    //   2867: getfield 18	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface	Lcom/tencent/common/app/business/BaseQQAppInterface;
-    //   2870: invokevirtual 44	com/tencent/common/app/business/BaseQQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2873: aload_0
-    //   2874: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2877: iload_1
-    //   2878: invokevirtual 381	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl:updateQWalletSettingConfigVersion	(Landroid/content/Context;Ljava/lang/String;I)V
-    //   2881: new 166	org/json/JSONObject
-    //   2884: dup
-    //   2885: invokespecial 382	org/json/JSONObject:<init>	()V
-    //   2888: astore 18
-    //   2890: aload 15
-    //   2892: ifnull +13 -> 2905
-    //   2895: aload 18
-    //   2897: aload 16
-    //   2899: aload 15
-    //   2901: invokevirtual 385	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2904: pop
-    //   2905: aload 14
-    //   2907: invokevirtual 386	java/util/HashMap:isEmpty	()Z
-    //   2910: ifne +68 -> 2978
-    //   2913: aload 14
-    //   2915: invokevirtual 390	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   2918: invokeinterface 395 1 0
-    //   2923: astore 15
-    //   2925: aload 15
-    //   2927: invokeinterface 178 1 0
-    //   2932: ifeq +41 -> 2973
-    //   2935: aload 15
-    //   2937: invokeinterface 182 1 0
-    //   2942: checkcast 397	java/util/Map$Entry
-    //   2945: astore 16
-    //   2947: aload 18
-    //   2949: aload 16
-    //   2951: invokeinterface 400 1 0
-    //   2956: checkcast 118	java/lang/String
-    //   2959: aload 16
-    //   2961: invokeinterface 403 1 0
-    //   2966: invokevirtual 385	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   2969: pop
-    //   2970: goto -45 -> 2925
-    //   2973: aload 14
-    //   2975: invokevirtual 406	java/util/HashMap:clear	()V
-    //   2978: ldc 194
-    //   2980: invokestatic 70	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   2983: checkcast 194	com/tencent/mobileqq/qwallet/hb/IHbThemeConfigApi
-    //   2986: astore 15
-    //   2988: aload_0
-    //   2989: getfield 18	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface	Lcom/tencent/common/app/business/BaseQQAppInterface;
-    //   2992: astore 16
-    //   2994: aload 25
-    //   2996: astore 14
-    //   2998: aload 18
-    //   3000: invokevirtual 409	org/json/JSONObject:length	()I
-    //   3003: ifle +10 -> 3013
-    //   3006: aload 18
-    //   3008: invokevirtual 410	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   3011: astore 14
-    //   3013: aload 15
-    //   3015: aload 16
-    //   3017: aload 14
-    //   3019: invokeinterface 414 3 0
-    //   3024: return
-    //   3025: astore 14
-    //   3027: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3030: ifeq +13 -> 3043
-    //   3033: aload 17
-    //   3035: iconst_2
-    //   3036: aload 13
-    //   3038: aload 14
-    //   3040: invokestatic 102	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   3043: return
-    //   3044: aload 14
-    //   3046: astore 22
-    //   3048: aload 22
-    //   3050: astore 14
-    //   3052: goto -559 -> 2493
-    //   3055: iconst_0
-    //   3056: istore 8
-    //   3058: goto -2140 -> 918
-    //   3061: iconst_0
-    //   3062: istore 8
-    //   3064: goto -2099 -> 965
-    //   3067: iconst_0
-    //   3068: istore 8
-    //   3070: goto -2058 -> 1012
-    //   3073: goto +13 -> 3086
-    //   3076: astore 16
-    //   3078: iload 4
-    //   3080: istore_1
-    //   3081: iload_3
-    //   3082: istore_2
-    //   3083: goto -455 -> 2628
-    //   3086: goto -593 -> 2493
-    //   3089: goto -3 -> 3086
-    //   3092: aload 14
-    //   3094: astore 22
-    //   3096: goto -48 -> 3048
-    //   3099: astore 16
-    //   3101: aload 21
-    //   3103: astore 13
-    //   3105: aload 14
-    //   3107: astore 21
-    //   3109: iload 4
-    //   3111: istore_1
-    //   3112: iload_3
-    //   3113: istore_2
-    //   3114: goto -482 -> 2632
+    //   2119: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2122: aload 22
+    //   2124: ldc_w 341
+    //   2127: invokevirtual 319	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   2130: invokeinterface 276 4 0
+    //   2135: ldc 68
+    //   2137: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2140: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2143: astore 25
+    //   2145: aload_0
+    //   2146: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2149: astore 26
+    //   2151: new 161	java/lang/StringBuilder
+    //   2154: dup
+    //   2155: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   2158: astore 27
+    //   2160: aload 27
+    //   2162: ldc_w 343
+    //   2165: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2168: pop
+    //   2169: aload 27
+    //   2171: iload 4
+    //   2173: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2176: pop
+    //   2177: aload 25
+    //   2179: aload 26
+    //   2181: aload 27
+    //   2183: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2186: aload 22
+    //   2188: ldc_w 345
+    //   2191: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2194: invokeinterface 285 4 0
+    //   2199: ldc 234
+    //   2201: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2204: checkcast 234	com/tencent/mobileqq/qwallet/IQWalletApi
+    //   2207: aload 22
+    //   2209: ldc_w 347
+    //   2212: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2215: invokeinterface 244 2 0
+    //   2220: lstore 11
+    //   2222: ldc 234
+    //   2224: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2227: checkcast 234	com/tencent/mobileqq/qwallet/IQWalletApi
+    //   2230: aload 22
+    //   2232: ldc_w 349
+    //   2235: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2238: invokeinterface 244 2 0
+    //   2243: lstore 13
+    //   2245: ldc 68
+    //   2247: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2250: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2253: astore 22
+    //   2255: aload_0
+    //   2256: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2259: astore 25
+    //   2261: new 161	java/lang/StringBuilder
+    //   2264: dup
+    //   2265: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   2268: astore 26
+    //   2270: aload 26
+    //   2272: ldc_w 351
+    //   2275: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2278: pop
+    //   2279: aload 26
+    //   2281: iload 4
+    //   2283: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2286: pop
+    //   2287: aload 22
+    //   2289: aload 25
+    //   2291: aload 26
+    //   2293: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2296: lload 11
+    //   2298: ldc2_w 249
+    //   2301: ldiv
+    //   2302: invokeinterface 254 5 0
+    //   2307: ldc 68
+    //   2309: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2312: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2315: astore 22
+    //   2317: aload_0
+    //   2318: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2321: astore 25
+    //   2323: new 161	java/lang/StringBuilder
+    //   2326: dup
+    //   2327: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   2330: astore 26
+    //   2332: aload 26
+    //   2334: ldc_w 353
+    //   2337: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2340: pop
+    //   2341: aload 26
+    //   2343: iload 4
+    //   2345: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2348: pop
+    //   2349: aload 22
+    //   2351: aload 25
+    //   2353: aload 26
+    //   2355: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2358: lload 13
+    //   2360: ldc2_w 249
+    //   2363: ldiv
+    //   2364: invokeinterface 254 5 0
+    //   2369: goto +1488 -> 3857
+    //   2372: ldc_w 355
+    //   2375: aload 30
+    //   2377: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2380: ifeq +46 -> 2426
+    //   2383: aload 39
+    //   2385: aload 30
+    //   2387: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2390: astore 22
+    //   2392: aload 22
+    //   2394: ifnull +1463 -> 3857
+    //   2397: ldc 68
+    //   2399: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2402: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2405: aload_0
+    //   2406: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2409: ldc 76
+    //   2411: aload 22
+    //   2413: ldc 76
+    //   2415: invokevirtual 319	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   2418: invokeinterface 276 4 0
+    //   2423: goto +1434 -> 3857
+    //   2426: ldc_w 357
+    //   2429: aload 30
+    //   2431: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2434: istore 10
+    //   2436: iload 10
+    //   2438: ifeq +152 -> 2590
+    //   2441: aload 39
+    //   2443: aload 30
+    //   2445: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2448: astore 24
+    //   2450: aload 24
+    //   2452: ifnull +1441 -> 3893
+    //   2455: ldc 68
+    //   2457: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2460: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2463: aload_0
+    //   2464: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2467: ldc 82
+    //   2469: aload 24
+    //   2471: ldc_w 359
+    //   2474: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2477: invokeinterface 285 4 0
+    //   2482: ldc 68
+    //   2484: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2487: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2490: aload_0
+    //   2491: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2494: ldc 84
+    //   2496: aload 24
+    //   2498: ldc_w 361
+    //   2501: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2504: invokeinterface 285 4 0
+    //   2509: ldc 68
+    //   2511: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2514: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2517: astore 25
+    //   2519: aload_0
+    //   2520: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2523: astore 26
+    //   2525: aload 24
+    //   2527: ldc_w 363
+    //   2530: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2533: astore 27
+    //   2535: aload 25
+    //   2537: aload 26
+    //   2539: aload 22
+    //   2541: aload 27
+    //   2543: invokeinterface 285 4 0
+    //   2548: ldc 68
+    //   2550: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2553: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2556: astore 22
+    //   2558: aload_0
+    //   2559: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2562: astore 25
+    //   2564: aload 24
+    //   2566: ldc_w 365
+    //   2569: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2572: astore 24
+    //   2574: aload 22
+    //   2576: aload 25
+    //   2578: aload 20
+    //   2580: aload 24
+    //   2582: invokeinterface 285 4 0
+    //   2587: goto +1306 -> 3893
+    //   2590: aload 20
+    //   2592: astore 26
+    //   2594: ldc_w 367
+    //   2597: aload 30
+    //   2599: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2602: ifeq +128 -> 2730
+    //   2605: aload 39
+    //   2607: aload 30
+    //   2609: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2612: astore 22
+    //   2614: aload 22
+    //   2616: ifnull +1277 -> 3893
+    //   2619: ldc 68
+    //   2621: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2624: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2627: aload_0
+    //   2628: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2631: ldc 88
+    //   2633: aload 22
+    //   2635: ldc_w 369
+    //   2638: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2641: invokeinterface 285 4 0
+    //   2646: ldc 68
+    //   2648: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2651: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2654: aload_0
+    //   2655: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2658: ldc 90
+    //   2660: aload 22
+    //   2662: ldc_w 363
+    //   2665: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2668: invokeinterface 285 4 0
+    //   2673: ldc 68
+    //   2675: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2678: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2681: aload_0
+    //   2682: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2685: ldc 92
+    //   2687: aload 22
+    //   2689: ldc_w 371
+    //   2692: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2695: invokeinterface 285 4 0
+    //   2700: ldc 68
+    //   2702: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2705: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2708: aload_0
+    //   2709: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2712: ldc 94
+    //   2714: aload 22
+    //   2716: ldc_w 373
+    //   2719: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2722: invokeinterface 285 4 0
+    //   2727: goto +1166 -> 3893
+    //   2730: ldc_w 375
+    //   2733: aload 30
+    //   2735: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2738: istore 10
+    //   2740: iload 10
+    //   2742: ifeq +178 -> 2920
+    //   2745: aload 24
+    //   2747: iconst_1
+    //   2748: ldc_w 377
+    //   2751: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2754: aload 39
+    //   2756: aload 30
+    //   2758: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2761: astore 16
+    //   2763: aload 16
+    //   2765: ifnull +102 -> 2867
+    //   2768: ldc 68
+    //   2770: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2773: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2776: astore 24
+    //   2778: aload_0
+    //   2779: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2782: astore 27
+    //   2784: aload 24
+    //   2786: aload 27
+    //   2788: ldc 96
+    //   2790: aload 16
+    //   2792: ldc_w 379
+    //   2795: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2798: invokeinterface 285 4 0
+    //   2803: ldc 68
+    //   2805: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2808: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2811: aload_0
+    //   2812: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2815: ldc 98
+    //   2817: aload 16
+    //   2819: ldc_w 381
+    //   2822: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2825: invokeinterface 285 4 0
+    //   2830: aload 16
+    //   2832: ldc_w 383
+    //   2835: invokevirtual 291	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   2838: astore 16
+    //   2840: ldc 68
+    //   2842: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2845: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2848: aload_0
+    //   2849: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2852: ldc 100
+    //   2854: aload 16
+    //   2856: invokevirtual 386	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   2859: invokeinterface 285 4 0
+    //   2864: goto +357 -> 3221
+    //   2867: goto +354 -> 3221
+    //   2870: astore 16
+    //   2872: goto +3 -> 2875
+    //   2875: aload 19
+    //   2877: astore 21
+    //   2879: aload 15
+    //   2881: astore 19
+    //   2883: aload 17
+    //   2885: astore 15
+    //   2887: aload 16
+    //   2889: astore 29
+    //   2891: aload 19
+    //   2893: astore 17
+    //   2895: aload 26
+    //   2897: astore 19
+    //   2899: aload 22
+    //   2901: astore 20
+    //   2903: aload 21
+    //   2905: astore 16
+    //   2907: iload 5
+    //   2909: istore_1
+    //   2910: aload 25
+    //   2912: astore 21
+    //   2914: iload 4
+    //   2916: istore_2
+    //   2917: goto +489 -> 3406
+    //   2920: aload 19
+    //   2922: astore 27
+    //   2924: ldc_w 388
+    //   2927: aload 30
+    //   2929: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2932: istore 10
+    //   2934: iload 10
+    //   2936: ifeq +184 -> 3120
+    //   2939: aload 24
+    //   2941: iconst_1
+    //   2942: ldc_w 390
+    //   2945: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2948: aload 39
+    //   2950: aload 30
+    //   2952: invokevirtual 210	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   2955: astore 16
+    //   2957: aload 16
+    //   2959: ifnull +262 -> 3221
+    //   2962: ldc 68
+    //   2964: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2967: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2970: aload_0
+    //   2971: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   2974: ldc 102
+    //   2976: aload 16
+    //   2978: ldc_w 392
+    //   2981: invokevirtual 240	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2984: invokeinterface 285 4 0
+    //   2989: ldc 68
+    //   2991: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   2994: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   2997: aload_0
+    //   2998: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   3001: ldc 104
+    //   3003: aload 16
+    //   3005: ldc_w 394
+    //   3008: invokevirtual 319	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   3011: invokeinterface 276 4 0
+    //   3016: ldc 68
+    //   3018: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   3021: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   3024: aload_0
+    //   3025: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   3028: ldc_w 396
+    //   3031: aload 16
+    //   3033: ldc_w 398
+    //   3036: invokevirtual 319	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   3039: invokeinterface 276 4 0
+    //   3044: aload 16
+    //   3046: ldc_w 400
+    //   3049: invokevirtual 291	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   3052: astore 24
+    //   3054: ldc 68
+    //   3056: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   3059: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   3062: aload_0
+    //   3063: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   3066: ldc 106
+    //   3068: aload 24
+    //   3070: invokevirtual 386	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   3073: invokeinterface 285 4 0
+    //   3078: aload 16
+    //   3080: ldc_w 402
+    //   3083: invokevirtual 291	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   3086: astore 16
+    //   3088: ldc 68
+    //   3090: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   3093: checkcast 68	com/tencent/mobileqq/qwallet/IQWalletPreferenceApi
+    //   3096: aload_0
+    //   3097: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   3100: ldc 108
+    //   3102: aload 16
+    //   3104: invokevirtual 386	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   3107: invokeinterface 285 4 0
+    //   3112: goto +109 -> 3221
+    //   3115: astore 16
+    //   3117: goto -242 -> 2875
+    //   3120: ldc_w 404
+    //   3123: aload 30
+    //   3125: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3128: ifne +93 -> 3221
+    //   3131: ldc_w 406
+    //   3134: aload 30
+    //   3136: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3139: ifne +82 -> 3221
+    //   3142: ldc_w 408
+    //   3145: aload 30
+    //   3147: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3150: ifeq +6 -> 3156
+    //   3153: goto +68 -> 3221
+    //   3156: aload 39
+    //   3158: aload 30
+    //   3160: invokevirtual 412	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   3163: astore 16
+    //   3165: aload 17
+    //   3167: astore 15
+    //   3169: aload 15
+    //   3171: aload 30
+    //   3173: aload 16
+    //   3175: invokevirtual 416	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   3178: pop
+    //   3179: aload 24
+    //   3181: astore 15
+    //   3183: goto +38 -> 3221
+    //   3186: astore 16
+    //   3188: aload 24
+    //   3190: astore 17
+    //   3192: aload 26
+    //   3194: astore 19
+    //   3196: aload 22
+    //   3198: astore 20
+    //   3200: aload 18
+    //   3202: astore 22
+    //   3204: aload 27
+    //   3206: astore 18
+    //   3208: iload 5
+    //   3210: istore_1
+    //   3211: aload 25
+    //   3213: astore 21
+    //   3215: iload 4
+    //   3217: istore_2
+    //   3218: goto +176 -> 3394
+    //   3221: aload 22
+    //   3223: astore 16
+    //   3225: goto -2360 -> 865
+    //   3228: astore 16
+    //   3230: aload 17
+    //   3232: astore 15
+    //   3234: aload 24
+    //   3236: astore 17
+    //   3238: aload 26
+    //   3240: astore 19
+    //   3242: aload 22
+    //   3244: astore 20
+    //   3246: aload 18
+    //   3248: astore 22
+    //   3250: aload 27
+    //   3252: astore 18
+    //   3254: iload 5
+    //   3256: istore_1
+    //   3257: aload 25
+    //   3259: astore 21
+    //   3261: iload 4
+    //   3263: istore_2
+    //   3264: goto +130 -> 3394
+    //   3267: astore 22
+    //   3269: goto +50 -> 3319
+    //   3272: astore 24
+    //   3274: aload 16
+    //   3276: astore 22
+    //   3278: aload 24
+    //   3280: astore 16
+    //   3282: aload 15
+    //   3284: astore 25
+    //   3286: aload 17
+    //   3288: astore 15
+    //   3290: aload 19
+    //   3292: astore 24
+    //   3294: aload 25
+    //   3296: astore 17
+    //   3298: aload 20
+    //   3300: astore 19
+    //   3302: aload 22
+    //   3304: astore 20
+    //   3306: aload 18
+    //   3308: astore 22
+    //   3310: aload 24
+    //   3312: astore 18
+    //   3314: goto +80 -> 3394
+    //   3317: astore 22
+    //   3319: aload 19
+    //   3321: astore 24
+    //   3323: aload 16
+    //   3325: astore 25
+    //   3327: aload 20
+    //   3329: astore 19
+    //   3331: aload 15
+    //   3333: astore 20
+    //   3335: aload 22
+    //   3337: astore 16
+    //   3339: aload 17
+    //   3341: astore 15
+    //   3343: aload 20
+    //   3345: astore 17
+    //   3347: aload 25
+    //   3349: astore 20
+    //   3351: aload 18
+    //   3353: astore 22
+    //   3355: aload 24
+    //   3357: astore 18
+    //   3359: goto +35 -> 3394
+    //   3362: astore 16
+    //   3364: iload 6
+    //   3366: istore_1
+    //   3367: iload 4
+    //   3369: istore_2
+    //   3370: aload 29
+    //   3372: astore 21
+    //   3374: aload 28
+    //   3376: astore 15
+    //   3378: aload 27
+    //   3380: astore 19
+    //   3382: aload 26
+    //   3384: astore 18
+    //   3386: aload 25
+    //   3388: astore 20
+    //   3390: aload 24
+    //   3392: astore 17
+    //   3394: aload 16
+    //   3396: astore 29
+    //   3398: aload 18
+    //   3400: astore 16
+    //   3402: aload 22
+    //   3404: astore 18
+    //   3406: aload 15
+    //   3408: astore 28
+    //   3410: aload 17
+    //   3412: astore 27
+    //   3414: aload 19
+    //   3416: astore 26
+    //   3418: aload 20
+    //   3420: astore 25
+    //   3422: aload 18
+    //   3424: astore 30
+    //   3426: aload 16
+    //   3428: astore 24
+    //   3430: iload_1
+    //   3431: istore 5
+    //   3433: aload 21
+    //   3435: astore 22
+    //   3437: iload_2
+    //   3438: istore 4
+    //   3440: invokestatic 114	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3443: ifeq -2701 -> 742
+    //   3446: aload 17
+    //   3448: iconst_2
+    //   3449: aload 23
+    //   3451: aload 29
+    //   3453: invokestatic 120	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   3456: iload 9
+    //   3458: iconst_1
+    //   3459: iadd
+    //   3460: istore 9
+    //   3462: aload 15
+    //   3464: astore 22
+    //   3466: aload 17
+    //   3468: astore 15
+    //   3470: aload 19
+    //   3472: astore 24
+    //   3474: aload 16
+    //   3476: astore 19
+    //   3478: aload 20
+    //   3480: astore 16
+    //   3482: aload 22
+    //   3484: astore 17
+    //   3486: aload 24
+    //   3488: astore 20
+    //   3490: goto -2915 -> 575
+    //   3493: aload 23
+    //   3495: astore 16
+    //   3497: iload_3
+    //   3498: istore_1
+    //   3499: goto +131 -> 3630
+    //   3502: invokestatic 114	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3505: ifeq +39 -> 3544
+    //   3508: new 161	java/lang/StringBuilder
+    //   3511: dup
+    //   3512: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   3515: astore 15
+    //   3517: aload 15
+    //   3519: ldc_w 418
+    //   3522: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3525: pop
+    //   3526: aload 15
+    //   3528: iload_2
+    //   3529: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3532: pop
+    //   3533: ldc 37
+    //   3535: iconst_2
+    //   3536: aload 15
+    //   3538: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3541: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3544: return
+    //   3545: ldc 37
+    //   3547: astore 19
+    //   3549: aload 15
+    //   3551: astore 17
+    //   3553: ldc 122
+    //   3555: astore 21
+    //   3557: aload 23
+    //   3559: astore 16
+    //   3561: invokestatic 114	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3564: ifeq +62 -> 3626
+    //   3567: new 161	java/lang/StringBuilder
+    //   3570: dup
+    //   3571: invokespecial 162	java/lang/StringBuilder:<init>	()V
+    //   3574: astore 15
+    //   3576: aload 15
+    //   3578: ldc_w 420
+    //   3581: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3584: pop
+    //   3585: aload 15
+    //   3587: iload_2
+    //   3588: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3591: pop
+    //   3592: aload 15
+    //   3594: ldc_w 422
+    //   3597: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3600: pop
+    //   3601: aload 15
+    //   3603: iload_1
+    //   3604: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   3607: pop
+    //   3608: aload 19
+    //   3610: iconst_2
+    //   3611: aload 15
+    //   3613: invokevirtual 177	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3616: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3619: aload 19
+    //   3621: astore 15
+    //   3623: goto +7 -> 3630
+    //   3626: aload 19
+    //   3628: astore 15
+    //   3630: aload_0
+    //   3631: getfield 24	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:c	Lcom/tencent/mobileqq/config/struct/splashproto/ConfigurationService$Config;
+    //   3634: ifnull +189 -> 3823
+    //   3637: iload_2
+    //   3638: iload_1
+    //   3639: if_icmpeq +184 -> 3823
+    //   3642: aload_0
+    //   3643: getfield 18	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:this$0	Lcom/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl;
+    //   3646: aload_0
+    //   3647: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:a	Lcom/tencent/common/app/business/BaseQQAppInterface;
+    //   3650: invokevirtual 48	com/tencent/common/app/business/BaseQQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3653: aload_0
+    //   3654: getfield 22	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:b	Ljava/lang/String;
+    //   3657: iload_2
+    //   3658: invokevirtual 426	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl:updateQWalletSettingConfigVersion	(Landroid/content/Context;Ljava/lang/String;I)V
+    //   3661: new 184	org/json/JSONObject
+    //   3664: dup
+    //   3665: invokespecial 427	org/json/JSONObject:<init>	()V
+    //   3668: astore 19
+    //   3670: aload 18
+    //   3672: ifnull +13 -> 3685
+    //   3675: aload 19
+    //   3677: aload 21
+    //   3679: aload 18
+    //   3681: invokevirtual 430	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   3684: pop
+    //   3685: aload 17
+    //   3687: invokevirtual 431	java/util/HashMap:isEmpty	()Z
+    //   3690: ifne +68 -> 3758
+    //   3693: aload 17
+    //   3695: invokevirtual 435	java/util/HashMap:entrySet	()Ljava/util/Set;
+    //   3698: invokeinterface 440 1 0
+    //   3703: astore 18
+    //   3705: aload 18
+    //   3707: invokeinterface 196 1 0
+    //   3712: ifeq +41 -> 3753
+    //   3715: aload 18
+    //   3717: invokeinterface 200 1 0
+    //   3722: checkcast 442	java/util/Map$Entry
+    //   3725: astore 20
+    //   3727: aload 19
+    //   3729: aload 20
+    //   3731: invokeinterface 445 1 0
+    //   3736: checkcast 136	java/lang/String
+    //   3739: aload 20
+    //   3741: invokeinterface 448 1 0
+    //   3746: invokevirtual 430	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   3749: pop
+    //   3750: goto -45 -> 3705
+    //   3753: aload 17
+    //   3755: invokevirtual 451	java/util/HashMap:clear	()V
+    //   3758: ldc 212
+    //   3760: invokestatic 74	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   3763: checkcast 212	com/tencent/mobileqq/qwallet/hb/IHbThemeConfigApi
+    //   3766: astore 18
+    //   3768: aload_0
+    //   3769: getfield 20	com/tencent/mobileqq/qwallet/config/impl/QWalletConfigServiceImpl$4:a	Lcom/tencent/common/app/business/BaseQQAppInterface;
+    //   3772: astore 20
+    //   3774: aload 38
+    //   3776: astore 17
+    //   3778: aload 19
+    //   3780: invokevirtual 454	org/json/JSONObject:length	()I
+    //   3783: ifle +10 -> 3793
+    //   3786: aload 19
+    //   3788: invokevirtual 455	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   3791: astore 17
+    //   3793: aload 18
+    //   3795: aload 20
+    //   3797: aload 17
+    //   3799: invokeinterface 459 3 0
+    //   3804: return
+    //   3805: astore 17
+    //   3807: invokestatic 114	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3810: ifeq +13 -> 3823
+    //   3813: aload 15
+    //   3815: iconst_2
+    //   3816: aload 16
+    //   3818: aload 17
+    //   3820: invokestatic 120	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   3823: return
+    //   3824: aload 16
+    //   3826: astore 22
+    //   3828: goto -607 -> 3221
+    //   3831: iconst_0
+    //   3832: istore 10
+    //   3834: goto -2601 -> 1233
+    //   3837: iconst_0
+    //   3838: istore 10
+    //   3840: goto -2560 -> 1280
+    //   3843: iconst_0
+    //   3844: istore 10
+    //   3846: goto -2519 -> 1327
+    //   3849: goto +8 -> 3857
+    //   3852: astore 22
+    //   3854: goto +16 -> 3870
+    //   3857: aload 24
+    //   3859: astore 15
+    //   3861: aload 16
+    //   3863: astore 22
+    //   3865: goto -644 -> 3221
+    //   3868: astore 22
+    //   3870: aload 16
+    //   3872: astore 24
+    //   3874: aload 22
+    //   3876: astore 16
+    //   3878: aload 24
+    //   3880: astore 22
+    //   3882: goto -600 -> 3282
+    //   3885: goto -28 -> 3857
+    //   3888: astore 22
+    //   3890: goto -621 -> 3269
+    //   3893: goto -69 -> 3824
+    //   3896: astore 22
+    //   3898: goto -629 -> 3269
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	3117	0	this	4
-    //   68	3044	1	i	int
-    //   361	2753	2	j	int
-    //   528	2585	3	k	int
-    //   571	2539	4	m	int
-    //   416	2274	5	n	int
-    //   413	18	6	i1	int
-    //   37	2823	7	i2	int
-    //   310	2759	8	bool	boolean
-    //   1045	920	9	l1	long
-    //   1067	959	11	l2	long
-    //   17	3087	13	localObject1	Object
-    //   43	8	14	localConfig	ConfigurationService.Config
-    //   261	14	14	localException1	java.lang.Exception
-    //   294	2724	14	localObject2	Object
-    //   3025	20	14	localException2	java.lang.Exception
-    //   3050	56	14	localObject3	Object
-    //   283	2731	15	localObject4	Object
-    //   287	865	16	str1	String
-    //   2471	1	16	localException3	java.lang.Exception
-    //   2496	17	16	localException4	java.lang.Exception
-    //   2518	34	16	localException5	java.lang.Exception
-    //   2557	459	16	localObject5	Object
-    //   3076	1	16	localException6	java.lang.Exception
-    //   3099	1	16	localException7	java.lang.Exception
-    //   6	2540	17	localObject6	Object
-    //   2549	1	17	localException8	java.lang.Exception
-    //   2591	34	17	localException9	java.lang.Exception
-    //   2634	400	17	localObject7	Object
-    //   2	3005	18	localObject8	Object
-    //   314	2397	19	str2	String
-    //   568	2069	20	localObject9	Object
-    //   543	2565	21	localObject10	Object
-    //   579	2516	22	localObject11	Object
-    //   562	2032	23	localObject12	Object
-    //   448	237	24	localObject13	Object
-    //   291	2704	25	str3	String
-    //   590	1852	26	localJSONObject	org.json.JSONObject
-    //   694	1763	27	localObject14	Object
-    //   798	3	28	localIHbThemeConfigApi	com.tencent.mobileqq.qwallet.hb.IHbThemeConfigApi
+    //   0	3901	0	this	4
+    //   41	3599	1	i	int
+    //   71	3587	2	j	int
+    //   567	2931	3	k	int
+    //   500	2939	4	m	int
+    //   693	2739	5	n	int
+    //   784	2581	6	i1	int
+    //   704	167	7	i2	int
+    //   553	27	8	i3	int
+    //   556	2905	9	i4	int
+    //   451	3394	10	bool	boolean
+    //   1360	937	11	l1	long
+    //   1382	977	13	l2	long
+    //   21	3839	15	localObject1	Object
+    //   6	2849	16	localObject2	Object
+    //   2870	18	16	localException1	java.lang.Exception
+    //   2905	198	16	localObject3	Object
+    //   3115	1	16	localException2	java.lang.Exception
+    //   3163	11	16	localObject4	Object
+    //   3186	1	16	localException3	java.lang.Exception
+    //   3223	1	16	localObject5	Object
+    //   3228	47	16	localException4	java.lang.Exception
+    //   3280	58	16	localObject6	Object
+    //   3362	33	16	localException5	java.lang.Exception
+    //   3400	477	16	localObject7	Object
+    //   46	8	17	localConfig	ConfigurationService.Config
+    //   396	14	17	localException6	java.lang.Exception
+    //   418	3380	17	localObject8	Object
+    //   3805	14	17	localException7	java.lang.Exception
+    //   433	3361	18	localObject9	Object
+    //   2	3785	19	localObject10	Object
+    //   492	3304	20	localObject11	Object
+    //   422	3256	21	localObject12	Object
+    //   10	3239	22	localObject13	Object
+    //   3267	1	22	localException8	java.lang.Exception
+    //   3276	33	22	localObject14	Object
+    //   3317	19	22	localException9	java.lang.Exception
+    //   3353	474	22	localObject15	Object
+    //   3852	1	22	localException10	java.lang.Exception
+    //   3863	1	22	localObject16	Object
+    //   3868	7	22	localException11	java.lang.Exception
+    //   3880	1	22	localObject17	Object
+    //   3888	1	22	localException12	java.lang.Exception
+    //   3896	1	22	localException13	java.lang.Exception
+    //   426	3132	23	str1	String
+    //   436	2799	24	localObject18	Object
+    //   3272	7	24	localException14	java.lang.Exception
+    //   3292	587	24	localObject19	Object
+    //   732	2689	25	localObject20	Object
+    //   724	2693	26	localObject21	Object
+    //   736	2677	27	localObject22	Object
+    //   720	2689	28	localObject23	Object
+    //   799	2653	29	localObject24	Object
+    //   597	2828	30	localObject25	Object
+    //   678	443	31	localObject26	Object
+    //   697	182	32	localObject27	Object
+    //   682	212	33	localObject28	Object
+    //   701	174	34	localObject29	Object
+    //   708	160	35	localObject30	Object
+    //   690	196	36	localObject31	Object
+    //   863	115	37	localIterator	java.util.Iterator
+    //   430	3345	38	str2	String
+    //   822	2335	39	localJSONObject	org.json.JSONObject
     // Exception table:
     //   from	to	target	type
-    //   74	81	261	java/lang/Exception
-    //   87	258	261	java/lang/Exception
-    //   2454	2464	2471	java/lang/Exception
-    //   2229	2242	2496	java/lang/Exception
-    //   2249	2269	2496	java/lang/Exception
-    //   2278	2386	2496	java/lang/Exception
-    //   2397	2408	2496	java/lang/Exception
-    //   2412	2434	2496	java/lang/Exception
-    //   2441	2450	2496	java/lang/Exception
-    //   1099	1141	2510	java/lang/Exception
-    //   1157	1176	2510	java/lang/Exception
-    //   1181	1263	2510	java/lang/Exception
-    //   1266	1277	2510	java/lang/Exception
-    //   1280	1322	2510	java/lang/Exception
-    //   1325	1365	2510	java/lang/Exception
-    //   1368	1425	2510	java/lang/Exception
-    //   1428	1448	2510	java/lang/Exception
-    //   1453	2036	2510	java/lang/Exception
-    //   2039	2059	2510	java/lang/Exception
-    //   2064	2090	2510	java/lang/Exception
-    //   2093	2103	2510	java/lang/Exception
-    //   800	813	2545	java/lang/Exception
-    //   820	839	2545	java/lang/Exception
-    //   851	870	2545	java/lang/Exception
-    //   875	891	2545	java/lang/Exception
-    //   581	592	2591	java/lang/Exception
-    //   617	624	2591	java/lang/Exception
-    //   649	659	2591	java/lang/Exception
-    //   684	696	2591	java/lang/Exception
-    //   721	731	2591	java/lang/Exception
-    //   756	765	2591	java/lang/Exception
-    //   790	800	2591	java/lang/Exception
-    //   2849	2856	3025	java/lang/Exception
-    //   2862	2890	3025	java/lang/Exception
-    //   2895	2905	3025	java/lang/Exception
-    //   2905	2925	3025	java/lang/Exception
-    //   2925	2970	3025	java/lang/Exception
-    //   2973	2978	3025	java/lang/Exception
-    //   2978	2994	3025	java/lang/Exception
-    //   2998	3013	3025	java/lang/Exception
-    //   3013	3024	3025	java/lang/Exception
-    //   900	912	3076	java/lang/Exception
-    //   918	959	3076	java/lang/Exception
-    //   965	1006	3076	java/lang/Exception
-    //   1012	1069	3076	java/lang/Exception
-    //   1083	1099	3076	java/lang/Exception
-    //   2108	2117	3099	java/lang/Exception
-    //   2122	2229	3099	java/lang/Exception
+    //   77	84	396	java/lang/Exception
+    //   89	393	396	java/lang/Exception
+    //   2745	2763	2870	java/lang/Exception
+    //   2768	2784	2870	java/lang/Exception
+    //   2784	2864	3115	java/lang/Exception
+    //   2939	2957	3115	java/lang/Exception
+    //   2962	3112	3115	java/lang/Exception
+    //   3169	3179	3186	java/lang/Exception
+    //   2924	2934	3228	java/lang/Exception
+    //   3120	3153	3228	java/lang/Exception
+    //   3156	3165	3228	java/lang/Exception
+    //   2574	2587	3267	java/lang/Exception
+    //   2594	2614	3267	java/lang/Exception
+    //   2619	2727	3267	java/lang/Exception
+    //   2730	2740	3267	java/lang/Exception
+    //   1414	1457	3272	java/lang/Exception
+    //   1474	1494	3272	java/lang/Exception
+    //   1499	1589	3272	java/lang/Exception
+    //   1592	1603	3272	java/lang/Exception
+    //   1606	1646	3272	java/lang/Exception
+    //   1649	1689	3272	java/lang/Exception
+    //   1692	1749	3272	java/lang/Exception
+    //   1752	1772	3272	java/lang/Exception
+    //   1777	2369	3272	java/lang/Exception
+    //   2372	2392	3272	java/lang/Exception
+    //   2397	2423	3272	java/lang/Exception
+    //   2426	2436	3272	java/lang/Exception
+    //   1120	1133	3317	java/lang/Exception
+    //   1140	1159	3317	java/lang/Exception
+    //   1171	1180	3317	java/lang/Exception
+    //   813	824	3362	java/lang/Exception
+    //   858	865	3362	java/lang/Exception
+    //   933	943	3362	java/lang/Exception
+    //   977	989	3362	java/lang/Exception
+    //   1023	1033	3362	java/lang/Exception
+    //   1067	1076	3362	java/lang/Exception
+    //   1110	1120	3362	java/lang/Exception
+    //   3630	3637	3805	java/lang/Exception
+    //   3642	3670	3805	java/lang/Exception
+    //   3675	3685	3805	java/lang/Exception
+    //   3685	3705	3805	java/lang/Exception
+    //   3705	3750	3805	java/lang/Exception
+    //   3753	3758	3805	java/lang/Exception
+    //   3758	3774	3805	java/lang/Exception
+    //   3778	3793	3805	java/lang/Exception
+    //   3793	3804	3805	java/lang/Exception
+    //   1215	1227	3852	java/lang/Exception
+    //   1233	1274	3852	java/lang/Exception
+    //   1280	1321	3852	java/lang/Exception
+    //   1327	1384	3852	java/lang/Exception
+    //   1398	1414	3852	java/lang/Exception
+    //   1185	1194	3868	java/lang/Exception
+    //   1199	1215	3868	java/lang/Exception
+    //   2535	2574	3888	java/lang/Exception
+    //   2441	2450	3896	java/lang/Exception
+    //   2455	2535	3896	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.config.impl.QWalletConfigServiceImpl.4
  * JD-Core Version:    0.7.0.1
  */

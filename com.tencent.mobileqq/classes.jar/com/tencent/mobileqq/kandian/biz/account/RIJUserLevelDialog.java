@@ -18,8 +18,7 @@ public class RIJUserLevelDialog
   extends Dialog
   implements View.OnClickListener
 {
-  private RIJUserLevelDialog.DialogClick jdField_a_of_type_ComTencentMobileqqKandianBizAccountRIJUserLevelDialog$DialogClick;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
   private String c;
   private String d;
@@ -28,6 +27,7 @@ public class RIJUserLevelDialog
   private String g;
   private String h;
   private String i;
+  private RIJUserLevelDialog.DialogClick j;
   
   public RIJUserLevelDialog(@NonNull Context paramContext)
   {
@@ -36,15 +36,15 @@ public class RIJUserLevelDialog
   
   private void a()
   {
-    a(2131378784, null, this.jdField_a_of_type_JavaLangString, this.b);
-    a(2131365169, null, this.c, this.d);
-    a(2131369942, this, this.e, this.f);
-    a(2131376561, this, this.g, this.h);
+    a(2131447463, null, this.a, this.b);
+    a(2131431322, null, this.c, this.d);
+    a(2131437091, this, this.e, this.f);
+    a(2131444812, this, this.g, this.h);
   }
   
   private void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizAccountRIJUserLevelDialog$DialogClick;
+    Object localObject = this.j;
     if (localObject != null) {
       ((RIJUserLevelDialog.DialogClick)localObject).a(paramInt, this.i);
     }
@@ -88,24 +88,24 @@ public class RIJUserLevelDialog
     if (paramDialogSettingInfo == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramDialogSettingInfo.jdField_a_of_type_JavaLangString;
+    this.a = paramDialogSettingInfo.a;
     this.c = paramDialogSettingInfo.c;
     this.e = paramDialogSettingInfo.e;
     this.f = paramDialogSettingInfo.f;
     this.g = paramDialogSettingInfo.g;
     this.h = paramDialogSettingInfo.h;
     this.i = paramDialogSettingInfo.i;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccountRIJUserLevelDialog$DialogClick = paramDialogSettingInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAccountRIJUserLevelDialog$DialogClick;
+    this.j = paramDialogSettingInfo.j;
     this.b = paramDialogSettingInfo.b;
     this.d = paramDialogSettingInfo.d;
   }
   
   public void onClick(View paramView)
   {
-    int j = paramView.getId();
-    if (j != 2131369942)
+    int k = paramView.getId();
+    if (k != 2131437091)
     {
-      if (j != 2131376561) {
+      if (k != 2131444812) {
         return;
       }
       a(0);
@@ -122,14 +122,14 @@ public class RIJUserLevelDialog
     if (paramBundle != null) {
       paramBundle.setBackgroundDrawable(new ColorDrawable(0));
     }
-    setContentView(2131560313);
+    setContentView(2131626359);
     a();
     ThreadManager.executeOnSubThread(new RIJUserLevelDialog.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.RIJUserLevelDialog
  * JD-Core Version:    0.7.0.1
  */

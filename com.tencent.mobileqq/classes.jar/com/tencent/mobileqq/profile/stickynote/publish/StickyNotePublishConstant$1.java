@@ -19,12 +19,12 @@ final class StickyNotePublishConstant$1
     add(new BackgroundSelectBean(3L, false, new GradientDrawable(GradientDrawable.Orientation.TL_BR, new int[] { Color.parseColor("#00CF68"), Color.parseColor("#0ECDB9") })));
     add(new BackgroundSelectBean(4L, false, new GradientDrawable(GradientDrawable.Orientation.TL_BR, new int[] { Color.parseColor("#FF73C7"), Color.parseColor("#FF596A") })));
     add(new BackgroundSelectBean(5L, false, new GradientDrawable(GradientDrawable.Orientation.TL_BR, new int[] { Color.parseColor("#4D94FF"), Color.parseColor("#00CAFC") })));
-    add(new BackgroundSelectBean(999L, false, BaseApplicationImpl.getApplication().getResources().getDrawable(2130850659)));
+    add(new BackgroundSelectBean(999L, false, BaseApplicationImpl.getApplication().getResources().getDrawable(2130852463)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishConstant.1
  * JD-Core Version:    0.7.0.1
  */

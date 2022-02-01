@@ -17,9 +17,9 @@ final class GeneralEventPlugin$handleGetActionData$job$1
   {
     try
     {
-      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelArgument.b());
+      Object localObject = new JSONObject(this.a.e());
       long l = ((JSONObject)localObject).optLong("taskId");
-      localObject = SpriteRscBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (JSONObject)localObject);
+      localObject = SpriteRscBuilder.a(this.b, (JSONObject)localObject);
       if (localObject != null)
       {
         JSONObject localJSONObject = new JSONObject();
@@ -29,24 +29,24 @@ final class GeneralEventPlugin$handleGetActionData$job$1
         localJSONObject.put("taskId", l);
         if (QLog.isColorLevel())
         {
-          GeneralEventPlugin.a();
+          GeneralEventPlugin.b();
           QLog.d("[cmshow][GeneralEventPlugin]", 2, new Object[] { "handleGetActionData ReqAction,", localJSONObject.toString() });
         }
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineModelArgument.a("sc.script_notify_action_ready.local", localJSONObject.toString());
+        this.a.a("sc.script_notify_action_ready.local", localJSONObject.toString());
         return;
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      GeneralEventPlugin.a();
+      GeneralEventPlugin.b();
       QLog.e("[cmshow][GeneralEventPlugin]", 1, "handleGetActionData exception:", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.GeneralEventPlugin.handleGetActionData.job.1
  * JD-Core Version:    0.7.0.1
  */

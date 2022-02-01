@@ -27,14 +27,14 @@ class WSDramaHistoryPart$1
   
   public void a(boolean paramBoolean) {}
   
-  public boolean a()
+  public boolean b()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryPart.1
  * JD-Core Version:    0.7.0.1
  */

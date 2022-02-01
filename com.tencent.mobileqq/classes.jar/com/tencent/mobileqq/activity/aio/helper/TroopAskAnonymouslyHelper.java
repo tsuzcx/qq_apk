@@ -33,35 +33,30 @@ import org.jetbrains.annotations.Nullable;
 public final class TroopAskAnonymouslyHelper
   implements Handler.Callback, ILifeCycleHelper
 {
-  public static final TroopAskAnonymouslyHelper.Companion a;
+  public static final TroopAskAnonymouslyHelper.Companion a = new TroopAskAnonymouslyHelper.Companion(null);
   @NotNull
-  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final BaseChatPie b;
   @NotNull
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private final QQAppInterface c;
   @NotNull
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
+  private BaseActivity d;
+  private final MessageObserver e;
+  private final AnonymousObserver f;
   @NotNull
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final AnonymousObserver jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAskAnonymouslyHelper$Companion = new TroopAskAnonymouslyHelper.Companion(null);
-  }
+  private final Handler g;
   
   public TroopAskAnonymouslyHelper(@NotNull BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.b = paramBaseChatPie;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     Intrinsics.checkExpressionValueIsNotNull(localQQAppInterface, "chatPie.app");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = localQQAppInterface;
-    paramBaseChatPie = paramBaseChatPie.a();
+    this.c = localQQAppInterface;
+    paramBaseChatPie = paramBaseChatPie.aX();
     Intrinsics.checkExpressionValueIsNotNull(paramBaseChatPie, "chatPie.activity");
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), (Handler.Callback)this);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = ((MessageObserver)new TroopAskAnonymouslyHelper.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver = ((AnonymousObserver)new TroopAskAnonymouslyHelper.2());
+    this.d = paramBaseChatPie;
+    this.g = new Handler(ThreadManager.getSubThreadLooper(), (Handler.Callback)this);
+    this.e = ((MessageObserver)new TroopAskAnonymouslyHelper.1(this));
+    this.f = ((AnonymousObserver)new TroopAskAnonymouslyHelper.2());
   }
   
   private final void a(Message paramMessage)
@@ -69,8 +64,8 @@ public final class TroopAskAnonymouslyHelper
     if (QLog.isColorLevel()) {
       QLog.i("TroopAskAnonymouslyHelper", 2, "filterAndHandleAskAnonymouslyReplyMsg");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if (((localObject instanceof BaseTroopChatPie)) && (((BaseTroopChatPie)localObject).v()))
+    Object localObject = this.b;
+    if (((localObject instanceof BaseTroopChatPie)) && (((BaseTroopChatPie)localObject).bG()))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopAskAnonymouslyHelper", 2, "filterAndHandleAskAnonymouslyReplyMsg current is in anonymous mode");
@@ -83,19 +78,19 @@ public final class TroopAskAnonymouslyHelper
       if (paramMessage != null)
       {
         long l1 = ((Long)paramMessage).longValue();
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(), l1);
+        paramMessage = this.c.getMessageProxy(this.b.F()).b(this.b.ah.b, this.b.F(), l1);
         if ((paramMessage != null) && ((paramMessage instanceof MessageForReplyText)))
         {
           localObject = (MessageForReplyText)paramMessage;
           if ((((MessageForReplyText)localObject).mSourceMsgInfo != null) && (((MessageForReplyText)localObject).mSourceMsgInfo.mSourceMsgSeq > 0L))
           {
-            localObject = ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.frienduin, paramMessage.istroop, ((MessageForReplyText)localObject).mSourceMsgInfo.mSourceMsgSeq);
+            localObject = ReplyTextItemBuilder.a(this.c, paramMessage.frienduin, paramMessage.istroop, ((MessageForReplyText)localObject).mSourceMsgInfo.mSourceMsgSeq);
             if ((localObject != null) && (AskAnonymousUtil.a((MessageRecord)localObject)))
             {
-              String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d();
+              String str = this.b.ag();
               Intrinsics.checkExpressionValueIsNotNull(str, "mChatPie.curTroopUin");
               l1 = Long.parseLong(str);
-              long l2 = AskAnonymousUtil.a((MessageRecord)localObject);
+              long l2 = AskAnonymousUtil.b((MessageRecord)localObject);
               paramMessage = paramMessage.msg;
               if (QLog.isColorLevel())
               {
@@ -109,7 +104,7 @@ public final class TroopAskAnonymouslyHelper
                 QLog.i("TroopAskAnonymouslyHelper", 2, ((StringBuilder)localObject).toString());
               }
               ReportController.b(null, "dc00899", "Grp_AIO", "", "ask_tab", "ans_send", 0, 0, String.valueOf(l1), "0", paramMessage, "");
-              localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER);
+              localObject = this.c.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER);
               if (localObject != null)
               {
                 ((AnonymousHandler)localObject).replyTroopAskAnonymously(l1, l2, paramMessage);
@@ -128,42 +123,42 @@ public final class TroopAskAnonymouslyHelper
   }
   
   @NotNull
-  public final Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  @NotNull
   public final BaseChatPie a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    return this.b;
   }
   
   @NotNull
-  public final QQAppInterface a()
+  public final QQAppInterface b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    return this.c;
   }
   
-  public final void a()
+  @NotNull
+  public final Handler c()
+  {
+    return this.g;
+  }
+  
+  public final void d()
   {
     if (QLog.isColorLevel()) {
       QLog.i("TroopAskAnonymouslyHelper", 2, "doOnCreate}");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
+    this.c.addObserver((BusinessObserver)this.e);
+    this.c.addObserver((BusinessObserver)this.f);
   }
   
-  public final void b()
+  public final void e()
   {
     if (QLog.isColorLevel()) {
       QLog.i("TroopAskAnonymouslyHelper", 2, "doOnDestroy");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
+    this.c.removeObserver((BusinessObserver)this.e);
+    this.c.removeObserver((BusinessObserver)this.f);
   }
   
-  public final void c()
+  public final void f()
   {
     ThreadManagerV2.executeOnSubThread((Runnable)new TroopAskAnonymouslyHelper.handleAnonymousSwitch.1(this));
   }
@@ -199,15 +194,15 @@ public final class TroopAskAnonymouslyHelper
       if (paramInt != 15) {
         return;
       }
-      b();
+      e();
       return;
     }
-    a();
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAskAnonymouslyHelper
  * JD-Core Version:    0.7.0.1
  */

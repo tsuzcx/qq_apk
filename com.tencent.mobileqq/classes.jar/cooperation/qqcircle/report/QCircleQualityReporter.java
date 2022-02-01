@@ -3,10 +3,10 @@ package cooperation.qqcircle.report;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.utils.QCircleHostStubUtil;
 import cooperation.qzone.QUA;
 import feedcloud.FeedCloudCommon.Entry;
@@ -71,19 +71,17 @@ public class QCircleQualityReporter
       bool = false;
     }
     sIsSampled = bool;
-    if (RFLog.isDevelopLevel())
+    if (QLog.isDevelopLevel())
     {
-      int j = RFLog.DEV;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("抽中的尾数： ");
       localStringBuilder.append(i);
-      RFLog.d("QCircleQualityReporter", j, localStringBuilder.toString());
+      QLog.d("QCircleQualityReporter", 4, localStringBuilder.toString());
     }
-    i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkIsSampled:");
     localStringBuilder.append(sIsSampled);
-    RFLog.d("QCircleQualityReporter", i, localStringBuilder.toString());
+    QLog.d("QCircleQualityReporter", 1, localStringBuilder.toString());
   }
   
   public static List<FeedCloudCommon.Entry> createBaseEntries(String paramString)
@@ -160,9 +158,9 @@ public class QCircleQualityReporter
   
   public static void reportQualityEvent(int paramInt, String paramString, List<FeedCloudCommon.Entry> paramList, boolean paramBoolean)
   {
-    if ((paramBoolean) && (!sIsSampled) && (!RFLog.isColorLevel()) && (QCircleConfigHelper.c()))
+    if ((paramBoolean) && (!sIsSampled) && (!QLog.isColorLevel()) && (QCircleConfigHelper.at()))
     {
-      RFLog.d("QCircleQualityReporter", RFLog.DEV, "reportQualityEvent miss hit Sample,direct return!");
+      QLog.d("QCircleQualityReporter", 4, "reportQualityEvent miss hit Sample,direct return!");
       return;
     }
     QCircleReporter.getInstance().getReportHandler().post(new QCircleQualityReporter.1(paramInt, paramString, paramList));
@@ -175,7 +173,7 @@ public class QCircleQualityReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleQualityReporter
  * JD-Core Version:    0.7.0.1
  */

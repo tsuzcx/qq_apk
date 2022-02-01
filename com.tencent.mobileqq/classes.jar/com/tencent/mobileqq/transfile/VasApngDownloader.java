@@ -140,7 +140,7 @@ public class VasApngDownloader
         return null;
       }
       paramDownloadParams = new DownloadTask(paramOutputStream, localFile);
-      paramDownloadParams.h = true;
+      paramDownloadParams.x = true;
       i = DownloaderFactory.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i != 0) {
         break label434;
@@ -175,7 +175,7 @@ public class VasApngDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VasApngDownloader
  * JD-Core Version:    0.7.0.1
  */

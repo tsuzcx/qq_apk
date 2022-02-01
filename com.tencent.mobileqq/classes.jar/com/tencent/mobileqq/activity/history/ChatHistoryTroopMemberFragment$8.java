@@ -16,7 +16,7 @@ class ChatHistoryTroopMemberFragment$8
   {
     this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
     this.a.getActivity().finish();
-    if (this.a.d == 11) {
+    if (this.a.az == 11) {
       ReportController.b(this.a.getBaseActivity().app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -24,7 +24,7 @@ class ChatHistoryTroopMemberFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.8
  * JD-Core Version:    0.7.0.1
  */

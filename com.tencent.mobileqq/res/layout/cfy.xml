@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nt7" android:layout_width="750.0px" android:layout_height="1334.0px"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/nt9" android:visibility="gone" android:layout_width="750.0px" android:layout_height="280.0px" />
-    <RelativeLayout android:orientation="vertical" android:id="@id/nsp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="78.0px">
-        <ImageView android:id="@id/nso" android:layout_width="178.0px" android:layout_height="178.0px" android:layout_marginTop="142.0px" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/nsn" android:layout_width="750.0px" android:layout_height="432.0px" android:layout_marginTop="68.0px" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/nsm" android:layout_width="450.0px" android:layout_height="440.0px" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="28.0px" android:textColor="@color/al3" android:gravity="center" android:id="@id/nsw" android:layout_width="168.0px" android:layout_height="wrap_content" android:layout_marginTop="24.0px" android:singleLine="true" android:layout_below="@id/nso" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/nt2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="46.0px" android:layout_below="@id/nsp">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/nsx" android:background="@drawable/bkk" android:paddingTop="40.0px" android:paddingBottom="60.0px" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="36.0px">
-            <TextView android:textSize="40.0px" android:textColor="@color/al3" android:id="@id/nsy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0px" android:text="@string/wj9" />
-            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/nsz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0px">
-                <com.tencent.avgame.ui.AVGameSplitNumberView android:id="@id/nt6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <TextView android:textSize="40.0px" android:textColor="@color/al3" android:layout_gravity="bottom" android:id="@id/nt5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0px" />
-            </LinearLayout>
-            <TextView android:textSize="36.0px" android:textColor="@color/al3" android:id="@id/nt0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0px" android:text="@string/wle" />
-            <TextView android:textSize="36.0px" android:textColor="@color/al3" android:id="@id/nt1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0px" android:text="@string/wlf" />
-        </LinearLayout>
-        <ImageView android:id="@id/nt3" android:layout_width="344.0px" android:layout_height="80.0px" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <com.tencent.avgame.widget.RoundCorneredRelativeLayout android:layout_gravity="right" android:id="@id/nsu" android:background="@drawable/bkd" android:layout_width="120.0px" android:layout_height="120.0px" android:layout_marginTop="5.0px" android:layout_marginRight="40.0px" android:layout_marginBottom="40.0px" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
-        <ImageView android:id="@id/nss" android:layout_width="102.0px" android:layout_height="102.0px" android:layout_centerInParent="true" />
-    </com.tencent.avgame.widget.RoundCorneredRelativeLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0px" android:layout_marginBottom="40.0px" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
-        <ImageView android:id="@id/nsv" android:layout_width="246.0px" android:layout_height="46.0px" />
-        <TextView android:textSize="31.0px" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0px" android:text="@string/wld" />
-    </LinearLayout>
+<RelativeLayout android:id="@id/b8b" android:background="@drawable/dn0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="11.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.guild.mainframe.container.discover.view.QQGuildDiscoverRefreshLayout android:id="@id/nnt" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/ntd" layout="@layout/cgu" />
+        <FrameLayout android:id="@id/nte" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/nnu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <com.tencent.mobileqq.guild.mainframe.container.discover.view.HeaderScrollView android:orientation="vertical" android:id="@id/nnr" android:background="@drawable/bl2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tencent.mobileqq.guild.mainframe.container.discover.view.GuildDiscoverSlidingIndicator android:textSize="16.0dip" android:id="@id/nns" android:layout_width="fill_parent" android:layout_height="56.0dip" app:checkTextColor="@color/hd" app:indicatorAlpha="25" app:indicatorColor="@color/hd" app:indicatorMarginBottom="46.0dip" app:indicatorMarginLeftRight="-13.0dip" app:indicatorMarginTop="43.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabContainerPaddingLeftRight="16.0dip" app:tabGap="2.0dip" app:tabPaddingLeftRight="4.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" />
+                    <FrameLayout android:layout_gravity="right" android:id="@id/nxn" android:visibility="gone" android:layout_width="56.0dip" android:layout_height="56.0dip">
+                        <ImageView android:layout_gravity="center" android:id="@id/nxm" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/oa" />
+                    </FrameLayout>
+                </FrameLayout>
+                <com.tencent.mobileqq.guild.mainframe.container.discover.tab.GuildDiscoverViewPager android:id="@id/nnq" android:paddingTop="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </com.tencent.mobileqq.guild.mainframe.container.discover.view.HeaderScrollView>
+        </FrameLayout>
+    </com.tencent.mobileqq.guild.mainframe.container.discover.view.QQGuildDiscoverRefreshLayout>
 </RelativeLayout>

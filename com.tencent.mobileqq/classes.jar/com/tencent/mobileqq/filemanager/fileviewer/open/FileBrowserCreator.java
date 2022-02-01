@@ -15,35 +15,35 @@ import com.tencent.qphone.base.util.QLog;
 
 public class FileBrowserCreator
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private IFileBrowserParams jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams;
-  private Class<?> jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
+  private Context a;
+  private IFileBrowserParams b;
+  private boolean c = false;
+  private boolean d = false;
+  private int e;
+  private Rect f;
+  private String g;
+  private int h;
+  private Class<?> i;
   
   public FileBrowserCreator(Context paramContext, IFileBrowserParams paramIFileBrowserParams)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams = paramIFileBrowserParams;
-    this.jdField_a_of_type_JavaLangClass = FileBrowserActivity.class;
-    this.jdField_b_of_type_Int = -1;
+    this.a = paramContext;
+    this.b = paramIFileBrowserParams;
+    this.i = FileBrowserActivity.class;
+    this.h = -1;
   }
   
-  private boolean a()
+  private boolean b()
   {
-    int i = this.jdField_a_of_type_Int;
+    int j = this.e;
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (i != 1)
+    if (j != 1)
     {
       bool1 = bool2;
-      if (i != 5)
+      if (j != 5)
       {
-        if (i == 3) {
+        if (j == 3) {
           return true;
         }
         bool1 = false;
@@ -52,25 +52,20 @@ public class FileBrowserCreator
     return bool1;
   }
   
-  private void b()
+  private boolean c()
   {
-    d(-1);
-  }
-  
-  private boolean b()
-  {
-    if (!a())
+    if (!b())
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("processNewFileVideoBrowser isFromAIO return false, mEntranceType:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         QLog.w("FileBrowserCreator<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       }
       return false;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.a();
+    Object localObject = this.b.a();
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -78,7 +73,7 @@ public class FileBrowserCreator
       }
       return false;
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.a();
+    SessionInfo localSessionInfo = this.b.b();
     if (localSessionInfo == null)
     {
       if (QLog.isColorLevel()) {
@@ -86,69 +81,74 @@ public class FileBrowserCreator
       }
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.c())
+    if (this.b.j())
     {
       if (QLog.isColorLevel()) {
         QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser set video resume, return true");
       }
       return true;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.d())
+    if (!this.b.k())
     {
       if (QLog.isColorLevel()) {
         QLog.w("FileBrowserCreator<FileAssistant>", 1, "processNewFileVideoBrowser canUseNewVideoBrowser is false, don't start new video browser");
       }
       return false;
     }
-    QFileUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidGraphicsRect, (ChatMessage)localObject, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.e(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.f(), null);
+    QFileUtils.a(this.a, this.f, (ChatMessage)localObject, localSessionInfo, this.b.c(), this.b.l(), this.b.m(), null);
     return true;
   }
   
-  private void c()
+  private void d()
   {
-    FileBrowserCreator.2 local2 = new FileBrowserCreator.2(this);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131692561);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131692563);
-    FMDialogUtil.a(this.jdField_a_of_type_AndroidContentContext, str1, str2, local2);
+    d(-1);
   }
   
   private void d(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.d()) && (b())) {
+    if ((this.b.k()) && (c())) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.a();
+    Object localObject = this.b.i();
     if (localObject == null)
     {
       QLog.i("FileBrowserCreator<FileAssistant>", 1, "openFileBrowser error, intent params is null.");
       return;
     }
-    int i = this.jdField_b_of_type_Int;
-    if (i != -1) {
-      ((Intent)localObject).setFlags(i);
+    int j = this.h;
+    if (j != -1) {
+      ((Intent)localObject).setFlags(j);
     }
-    ((Intent)localObject).setClass(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangClass);
-    ((Intent)localObject).putExtra("file_enter_file_browser_type", this.jdField_a_of_type_Int);
+    ((Intent)localObject).setClass(this.a, this.i);
+    ((Intent)localObject).putExtra("file_enter_file_browser_type", this.e);
     Bundle localBundle = new Bundle();
-    localBundle.putInt("file_enter_file_browser_type", this.jdField_a_of_type_Int);
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localBundle.putInt("file_enter_file_browser_type", this.e);
+    Rect localRect = this.f;
     if (localRect != null) {
       localBundle.putParcelable("file_browser_params_thumb_bound", localRect);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.b(localBundle);
+    this.b.b(localBundle);
     ((Intent)localObject).putExtra("file_browser_extra_params", localBundle);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      ((Intent)localObject).putExtra("selfSet_leftViewText", this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.g)) {
+      ((Intent)localObject).putExtra("selfSet_leftViewText", this.g);
     }
     if (paramInt != -1) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult((Intent)localObject, paramInt);
+      ((Activity)this.a).startActivityForResult((Intent)localObject, paramInt);
     } else {
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      this.a.startActivity((Intent)localObject);
     }
-    localObject = this.jdField_a_of_type_AndroidContentContext;
+    localObject = this.a;
     if ((localObject instanceof Activity)) {
-      ((Activity)localObject).overridePendingTransition(2130772065, 2130772067);
+      ((Activity)localObject).overridePendingTransition(2130772090, 2130772092);
     }
+  }
+  
+  private void e()
+  {
+    FileBrowserCreator.2 local2 = new FileBrowserCreator.2(this);
+    String str1 = this.a.getString(2131889584);
+    String str2 = this.a.getString(2131889586);
+    FMDialogUtil.a(this.a, str1, str2, local2);
   }
   
   public void a()
@@ -158,40 +158,40 @@ public class FileBrowserCreator
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void a(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.f = paramRect;
   }
   
   public void a(Class<?> paramClass)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.i = paramClass;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void c(int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerOpenIFileBrowserParams.b()))
+    if ((this.c) && (this.b.d()))
     {
-      if (QFileUtils.a(this.jdField_a_of_type_AndroidContentContext, false, new FileBrowserCreator.1(this, paramInt))) {
-        c();
+      if (QFileUtils.a(this.a, false, new FileBrowserCreator.1(this, paramInt))) {
+        e();
       }
     }
     else {
@@ -201,7 +201,7 @@ public class FileBrowserCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.open.FileBrowserCreator
  * JD-Core Version:    0.7.0.1
  */

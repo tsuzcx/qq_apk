@@ -6,8 +6,8 @@ import cooperation.qzone.QZoneCommonRequest;
 public class GetPoiListRequset
   extends QZoneCommonRequest
 {
-  private int a;
   public JceStruct a;
+  private int b;
   
   public String getCmdString()
   {
@@ -16,12 +16,12 @@ public class GetPoiListRequset
   
   public JceStruct getReq()
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+    return this.a;
   }
   
   public int getType()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public String uniKey()
@@ -31,7 +31,7 @@ public class GetPoiListRequset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.protocol.GetPoiListRequset
  * JD-Core Version:    0.7.0.1
  */

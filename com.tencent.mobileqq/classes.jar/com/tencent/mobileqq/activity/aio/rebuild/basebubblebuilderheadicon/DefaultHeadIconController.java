@@ -9,23 +9,18 @@ import com.tencent.qphone.base.util.QLog;
 public class DefaultHeadIconController
   extends BaseDefaultHeadIconController
 {
-  public boolean a()
-  {
-    return true;
-  }
-  
   protected void b()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    String str = BaseBubbleBuilderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    int i = this.a.istroop;
+    String str = BaseBubbleBuilderUtil.a(this.b, this.a);
     if (i == 1006) {
       i = 11;
     } else {
       i = 1;
     }
     Object localObject = a(i, str);
-    VasAvatarLoader localVasAvatarLoader = new VasAvatarLoader(str, -1, "small", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-    localVasAvatarLoader.a = ((Drawable)localObject);
+    VasAvatarLoader localVasAvatarLoader = new VasAvatarLoader(str, -1, "small", this.a.uniseq);
+    localVasAvatarLoader.g = ((Drawable)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -35,10 +30,15 @@ public class DefaultHeadIconController
     }
     b(localVasAvatarLoader);
   }
+  
+  public boolean h()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.DefaultHeadIconController
  * JD-Core Version:    0.7.0.1
  */

@@ -526,52 +526,23 @@ public class AdAppDownloadManager
     if (this.mCgdtAppBtnData == null) {
       return;
     }
-    boolean bool2 = true;
     this.mStartedDownload = true;
-    Object localObject2 = this.mCgdtAppBtnData;
-    Object localObject1 = this.ad;
-    if (localObject1 != null) {
-      localObject1 = ((Ad)localObject1).getVia();
+    AdAppBtnData localAdAppBtnData = this.mCgdtAppBtnData;
+    Object localObject = this.ad;
+    if (localObject != null) {
+      localObject = ((Ad)localObject).getVia();
     } else {
-      localObject1 = null;
+      localObject = null;
     }
-    ((AdAppBtnData)localObject2).via = ((String)localObject1);
+    localAdAppBtnData.via = ((String)localObject);
     if (this.downloaderWrapper != null)
     {
-      localObject1 = this.mContext;
-      if ((localObject1 != null) && ((((WeakReference)localObject1).get() instanceof Activity)))
-      {
-        localObject1 = this.downloaderWrapper;
-        localObject2 = (Activity)this.mContext.get();
-        AdAppBtnData localAdAppBtnData = this.mCgdtAppBtnData;
-        Ad localAd = this.ad;
-        if (localAd != null)
-        {
-          bool1 = bool2;
-          if (localAd.canLaunchAppAfterInstalled()) {
-            break label142;
-          }
-          if (!TextUtils.isEmpty(this.ad.getAppDeeplink()))
-          {
-            bool1 = bool2;
-            break label142;
-          }
-        }
-        boolean bool1 = false;
-        label142:
-        ((g)localObject1).startRealDownload((Activity)localObject2, localAdAppBtnData, bool1);
+      localObject = this.mContext;
+      if ((localObject != null) && ((((WeakReference)localObject).get() instanceof Activity))) {
+        this.downloaderWrapper.startRealDownload((Activity)this.mContext.get(), this.mCgdtAppBtnData);
       }
     }
     AdReport.downloadReport(this.ad, this.mCgdtAppBtnData.mGdtAd_appId, this.mCgdtAppBtnData.cProgerss, this.autodownload, this.mCgdtAppBtnData);
-  }
-  
-  public void startRealDownload(Activity paramActivity, AdAppBtnData paramAdAppBtnData, boolean paramBoolean)
-  {
-    this.mStartedDownload = true;
-    g localg = this.downloaderWrapper;
-    if (localg != null) {
-      localg.startRealDownload(paramActivity, paramAdAppBtnData, paramBoolean);
-    }
   }
   
   public void unregisterDownloadListener()

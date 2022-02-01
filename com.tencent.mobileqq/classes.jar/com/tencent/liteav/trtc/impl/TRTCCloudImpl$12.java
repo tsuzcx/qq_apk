@@ -1,22 +1,20 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.trtc.TRTCSubCloud;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-
 class TRTCCloudImpl$12
   implements Runnable
 {
-  TRTCCloudImpl$12(TRTCCloudImpl paramTRTCCloudImpl, TRTCSubCloud paramTRTCSubCloud) {}
+  TRTCCloudImpl$12(TRTCCloudImpl paramTRTCCloudImpl) {}
   
   public void run()
   {
-    this.this$0.mSubClouds.add(new WeakReference(this.val$subCloud));
+    this.this$0.apiOnlineLog("DisconnectOtherRoom");
+    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
+    TRTCCloudImpl.access$1800(localTRTCCloudImpl, localTRTCCloudImpl.mNativeRtcContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.12
  * JD-Core Version:    0.7.0.1
  */

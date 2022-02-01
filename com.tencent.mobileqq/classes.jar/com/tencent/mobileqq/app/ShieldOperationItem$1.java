@@ -9,11 +9,11 @@ final class ShieldOperationItem$1
   public ShieldOperationItem a(Parcel paramParcel)
   {
     ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localShieldOperationItem.a = paramParcel.readInt();
     localShieldOperationItem.b = paramParcel.readInt();
     localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    localShieldOperationItem.d = paramParcel.readInt();
+    localShieldOperationItem.d = paramParcel.createLongArray();
+    localShieldOperationItem.e = paramParcel.readInt();
     return localShieldOperationItem;
   }
   
@@ -24,7 +24,7 @@ final class ShieldOperationItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ShieldOperationItem.1
  * JD-Core Version:    0.7.0.1
  */

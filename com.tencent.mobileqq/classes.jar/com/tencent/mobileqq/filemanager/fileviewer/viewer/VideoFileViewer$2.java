@@ -12,13 +12,13 @@ class VideoFileViewer$2
   
   public void onClick(View paramView)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a, this.jdField_a_of_type_JavaLangString);
+    FileManagerUtil.a(this.b.c, this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer.2
  * JD-Core Version:    0.7.0.1
  */

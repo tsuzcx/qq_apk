@@ -24,17 +24,17 @@ public class SmallEmojiSpan
   extends EmoticonSpan
   implements ISmallEmojiSpan
 {
-  int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
+  int a;
   public int b;
   public int c;
+  public boolean d;
+  private String e;
   
   public SmallEmojiSpan(char[] paramArrayOfChar, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     super(-1, paramInt, 2);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.a = paramInt;
+    this.d = paramBoolean1;
     this.mIsAPNG = paramBoolean2;
     paramArrayOfChar = EmosmUtils.a(paramArrayOfChar);
     if ((paramArrayOfChar != null) && (paramArrayOfChar.length == 2))
@@ -44,14 +44,14 @@ public class SmallEmojiSpan
     }
     paramArrayOfChar = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if (paramArrayOfChar != null) {
-      this.jdField_a_of_type_JavaLangString = paramArrayOfChar.getAccount();
+      this.e = paramArrayOfChar.getAccount();
     }
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.e;
     paramArrayOfChar = str;
     if (str == null) {
       paramArrayOfChar = "";
     }
-    this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+    this.e = paramArrayOfChar;
     if (QLog.isColorLevel())
     {
       paramArrayOfChar = new StringBuilder();
@@ -95,11 +95,11 @@ public class SmallEmojiSpan
   
   protected Drawable doGetDrwable()
   {
-    Object localObject1 = new SmallEmoticonInfo(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = new SmallEmoticonInfo(this.e);
     Object localObject2 = new Emoticon();
     ((Emoticon)localObject2).eId = String.valueOf(this.c);
     ((Emoticon)localObject2).epId = String.valueOf(this.b);
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.d)
     {
       ((Emoticon)localObject2).jobType = 3;
       ((SmallEmoticonInfo)localObject1).emoticon = ((Emoticon)localObject2);
@@ -126,7 +126,7 @@ public class SmallEmojiSpan
     }
     if (localObject1 != null)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       ((Drawable)localObject1).setBounds(0, 0, i, i);
     }
     return localObject1;
@@ -140,7 +140,7 @@ public class SmallEmojiSpan
   public String getDescription()
   {
     String str = QQText.SMALL_EMOJI_SYMBOL;
-    Object localObject = EmoticonPanelUtils.a();
+    Object localObject = EmoticonPanelUtils.d();
     if (localObject != null) {
       localObject = ((IEmoticonManagerService)localObject).syncFindEmoticonById(Integer.toString(this.b), Integer.toString(this.c));
     } else {
@@ -188,12 +188,12 @@ public class SmallEmojiSpan
   {
     if (paramFontMetricsInt != null)
     {
-      paramFontMetricsInt.ascent = (-this.jdField_a_of_type_Int);
+      paramFontMetricsInt.ascent = (-this.a);
       paramFontMetricsInt.descent = 0;
       paramFontMetricsInt.top = paramFontMetricsInt.ascent;
       paramFontMetricsInt.bottom = 0;
     }
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public float getTop()
@@ -203,7 +203,7 @@ public class SmallEmojiSpan
   
   public void setIsAnim(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void setSize(int paramInt)
@@ -215,13 +215,13 @@ public class SmallEmojiSpan
       localStringBuilder.append(paramInt);
       QLog.i("tag.vasFont.enlarge", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     this.size = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.style.SmallEmojiSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -8,46 +8,46 @@ import java.util.Map;
 public class OnLinePushMsgTypeProcessorDispatcher
   implements ProcessorDispatcherInterface
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static Map<Integer, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
-  
-  public static int a(int paramInt)
-  {
-    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).second).intValue();
-  }
+  private static Map<Integer, Pair<String, Integer>> a;
+  private static Object b = new Object();
   
   public static String a(int paramInt)
   {
-    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).first;
+    return (String)((Pair)a.get(Integer.valueOf(paramInt))).first;
   }
   
   public static Map<Integer, Pair<String, Integer>> a()
   {
-    if (jdField_a_of_type_JavaUtilMap == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (a == null) {
+      synchronized (b)
       {
-        if (jdField_a_of_type_JavaUtilMap == null) {
-          a();
+        if (a == null) {
+          b();
         }
       }
     }
-    return jdField_a_of_type_JavaUtilMap;
+    return a;
+  }
+  
+  public static int b(int paramInt)
+  {
+    return ((Integer)((Pair)a.get(Integer.valueOf(paramInt))).second).intValue();
   }
   
   @SuppressLint({"UseSparseArrays"})
-  private static void a()
+  private static void b()
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(193), Pair.create("video_processor", Integer.valueOf(9002)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(734), Pair.create("video_processor", Integer.valueOf(9003)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(524), Pair.create("discuss_update_processor", Integer.valueOf(9010)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(736), Pair.create("info_update_processor", Integer.valueOf(9011)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(526), Pair.create("slave_master_processor", Integer.valueOf(9012)));
+    a = new HashMap();
+    a.put(Integer.valueOf(193), Pair.create("video_processor", Integer.valueOf(9002)));
+    a.put(Integer.valueOf(734), Pair.create("video_processor", Integer.valueOf(9003)));
+    a.put(Integer.valueOf(524), Pair.create("discuss_update_processor", Integer.valueOf(9010)));
+    a.put(Integer.valueOf(736), Pair.create("info_update_processor", Integer.valueOf(9011)));
+    a.put(Integer.valueOf(526), Pair.create("slave_master_processor", Integer.valueOf(9012)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.OnLinePushMsgTypeProcessorDispatcher
  * JD-Core Version:    0.7.0.1
  */

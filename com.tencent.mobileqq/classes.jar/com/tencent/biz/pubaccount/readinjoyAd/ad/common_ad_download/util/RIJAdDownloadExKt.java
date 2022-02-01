@@ -27,29 +27,10 @@ public final class RIJAdDownloadExKt
   public static final IDownloadEngine a(@NotNull ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
     Intrinsics.checkParameterIsNotNull(paramADVideoAppDownloadData, "$this$getDownloadEngine");
-    if (paramADVideoAppDownloadData.jdField_a_of_type_Boolean) {
+    if (paramADVideoAppDownloadData.l) {
       return (IDownloadEngine)GameCenterDownloadEngine.a;
     }
     return (IDownloadEngine)YYBDownloadEngine.a;
-  }
-  
-  @NotNull
-  public static final WadlParams a(@NotNull ADVideoAppDownloadData paramADVideoAppDownloadData)
-  {
-    Intrinsics.checkParameterIsNotNull(paramADVideoAppDownloadData, "$this$convertToWadlParams");
-    WadlParams localWadlParams = new WadlParams(paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString, paramADVideoAppDownloadData.d);
-    localWadlParams.c = 7;
-    localWadlParams.b = 2;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramADVideoAppDownloadData.g);
-    localStringBuilder.append("@");
-    localStringBuilder.append(paramADVideoAppDownloadData.h);
-    localWadlParams.n = localStringBuilder.toString();
-    localWadlParams.e = paramADVideoAppDownloadData.c;
-    localWadlParams.j = paramADVideoAppDownloadData.e;
-    localWadlParams.p = "biz_src_feeds_kandianads";
-    localWadlParams.l = "qq_vas_game";
-    return localWadlParams;
   }
   
   public static final void a(@NotNull AdDownloadInfo paramAdDownloadInfo)
@@ -61,9 +42,9 @@ public final class RIJAdDownloadExKt
       paramAdDownloadInfo.b(100);
       return;
     }
-    if (paramAdDownloadInfo.d() != null)
+    if (paramAdDownloadInfo.g() != null)
     {
-      File localFile = new File(paramAdDownloadInfo.d());
+      File localFile = new File(paramAdDownloadInfo.g());
       if ((localFile.exists()) && (localFile.isFile()))
       {
         paramAdDownloadInfo.a(5);
@@ -71,7 +52,7 @@ public final class RIJAdDownloadExKt
         return;
       }
     }
-    if (paramAdDownloadInfo.a() == 5)
+    if (paramAdDownloadInfo.b() == 5)
     {
       if (ADBaseAppDownloadManager.a((Context)BaseApplicationImpl.getContext(), paramAdDownloadInfo.a()))
       {
@@ -83,12 +64,12 @@ public final class RIJAdDownloadExKt
       paramAdDownloadInfo.b(0);
       return;
     }
-    if ((paramAdDownloadInfo.b() == 0) && (paramAdDownloadInfo.a() != 0))
+    if ((paramAdDownloadInfo.c() == 0) && (paramAdDownloadInfo.b() != 0))
     {
       paramAdDownloadInfo.a(0);
       return;
     }
-    if (paramAdDownloadInfo.b() == 100)
+    if (paramAdDownloadInfo.c() == 100)
     {
       if (PackageUtil.a((Context)BaseApplicationImpl.getContext(), paramAdDownloadInfo.a()))
       {
@@ -102,9 +83,28 @@ public final class RIJAdDownloadExKt
   public static final boolean a(@Nullable AdvertisementInfo paramAdvertisementInfo)
   {
     if (paramAdvertisementInfo != null) {
-      return ReadInJoyAdSwitchUtil.a(paramAdvertisementInfo);
+      return ReadInJoyAdSwitchUtil.d(paramAdvertisementInfo);
     }
     return false;
+  }
+  
+  @NotNull
+  public static final WadlParams b(@NotNull ADVideoAppDownloadData paramADVideoAppDownloadData)
+  {
+    Intrinsics.checkParameterIsNotNull(paramADVideoAppDownloadData, "$this$convertToWadlParams");
+    WadlParams localWadlParams = new WadlParams(paramADVideoAppDownloadData.a, paramADVideoAppDownloadData.d);
+    localWadlParams.d = 7;
+    localWadlParams.c = 2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramADVideoAppDownloadData.i);
+    localStringBuilder.append("@");
+    localStringBuilder.append(paramADVideoAppDownloadData.j);
+    localWadlParams.y = localStringBuilder.toString();
+    localWadlParams.k = paramADVideoAppDownloadData.c;
+    localWadlParams.u = paramADVideoAppDownloadData.e;
+    localWadlParams.A = "biz_src_feeds_kandianads";
+    localWadlParams.w = "qq_vas_game";
+    return localWadlParams;
   }
   
   public static final boolean b(@Nullable AdvertisementInfo paramAdvertisementInfo)
@@ -149,7 +149,7 @@ public final class RIJAdDownloadExKt
       if (paramAdvertisementInfo.mAdvertisementSoftInfo != null)
       {
         bool1 = bool2;
-        if (paramAdvertisementInfo.mAdvertisementSoftInfo.e == 1)
+        if (paramAdvertisementInfo.mAdvertisementSoftInfo.q == 1)
         {
           bool1 = bool2;
           if (paramAdvertisementInfo.mSoftAdType == 2) {
@@ -174,10 +174,10 @@ public final class RIJAdDownloadExKt
         if (paramAdvertisementInfo.mSoftAdType == 1)
         {
           bool1 = bool2;
-          if (paramAdvertisementInfo.gameAdComData.s != null)
+          if (paramAdvertisementInfo.gameAdComData.t != null)
           {
             bool1 = bool2;
-            if (Intrinsics.areEqual(paramAdvertisementInfo.gameAdComData.s, "2")) {
+            if (Intrinsics.areEqual(paramAdvertisementInfo.gameAdComData.t, "2")) {
               bool1 = true;
             }
           }
@@ -200,10 +200,10 @@ public final class RIJAdDownloadExKt
         if (paramAdvertisementInfo.mSoftAdType == 1)
         {
           bool1 = bool2;
-          if (paramAdvertisementInfo.gameAdComData.s != null)
+          if (paramAdvertisementInfo.gameAdComData.t != null)
           {
             bool1 = bool2;
-            if (Intrinsics.areEqual(paramAdvertisementInfo.gameAdComData.s, "1")) {
+            if (Intrinsics.areEqual(paramAdvertisementInfo.gameAdComData.t, "1")) {
               bool1 = true;
             }
           }
@@ -226,10 +226,10 @@ public final class RIJAdDownloadExKt
         if (paramAdvertisementInfo.mSoftAdType == 1)
         {
           bool1 = bool2;
-          if (paramAdvertisementInfo.gameAdComData.s != null)
+          if (paramAdvertisementInfo.gameAdComData.t != null)
           {
             bool1 = bool2;
-            if (Intrinsics.areEqual(paramAdvertisementInfo.gameAdComData.s, "3")) {
+            if (Intrinsics.areEqual(paramAdvertisementInfo.gameAdComData.t, "3")) {
               bool1 = true;
             }
           }
@@ -241,7 +241,7 @@ public final class RIJAdDownloadExKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadExKt
  * JD-Core Version:    0.7.0.1
  */

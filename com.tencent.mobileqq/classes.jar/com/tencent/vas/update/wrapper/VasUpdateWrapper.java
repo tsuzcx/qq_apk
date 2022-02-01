@@ -1,13 +1,15 @@
 package com.tencent.vas.update.wrapper;
 
-import com.tencent.vas.update.callback.ICmdManager;
-import com.tencent.vas.update.callback.ICommonManager;
-import com.tencent.vas.update.callback.IDbManager;
-import com.tencent.vas.update.callback.IHttpDownloader;
-import com.tencent.vas.update.callback.IReportManager;
-import com.tencent.vas.update.callback.IVasLog;
-import com.tencent.vas.update.callback.IVasUpdateFactory;
-import com.tencent.vas.update.module.impl.DefaultVasUpdateFactory;
+import com.tencent.vas.update.factory.api.ICmdManager;
+import com.tencent.vas.update.factory.api.ICommonManager;
+import com.tencent.vas.update.factory.api.IDbManager;
+import com.tencent.vas.update.factory.api.IHttpDownloader;
+import com.tencent.vas.update.factory.api.IReportManager;
+import com.tencent.vas.update.factory.api.IVasLog;
+import com.tencent.vas.update.factory.api.IVasUpdateFactory;
+import com.tencent.vas.update.factory.impl.DefaultVasUpdateFactoryImpl;
+import com.tencent.vas.update.module.api.IVasUpdateSystem;
+import com.tencent.vas.update.module.impl.VasUpdateSystemImpl;
 
 public class VasUpdateWrapper
 {
@@ -17,6 +19,7 @@ public class VasUpdateWrapper
   private static IHttpDownloader mHttpDownloader;
   private static IReportManager mReporter;
   private static IVasLog mVasLog;
+  private static IVasUpdateSystem mVasUpdateSystem;
   private static IVasUpdateFactory mWrapper;
   
   public static ICmdManager getCmdManager()
@@ -25,9 +28,9 @@ public class VasUpdateWrapper
     if (localICmdManager != null) {
       return localICmdManager;
     }
-    mCmdManager = mWrapper.getCmdManager();
+    mCmdManager = mWrapper.f();
     if (mCmdManager == null) {
-      mCmdManager = DefaultVasUpdateFactory.getInstance().getCmdManager();
+      mCmdManager = DefaultVasUpdateFactoryImpl.g().f();
     }
     return mCmdManager;
   }
@@ -38,9 +41,9 @@ public class VasUpdateWrapper
     if (localICommonManager != null) {
       return localICommonManager;
     }
-    mCommonManager = mWrapper.getCommonManager();
+    mCommonManager = mWrapper.e();
     if (mCommonManager == null) {
-      mCommonManager = DefaultVasUpdateFactory.getInstance().getCommonManager();
+      mCommonManager = DefaultVasUpdateFactoryImpl.g().e();
     }
     return mCommonManager;
   }
@@ -51,9 +54,9 @@ public class VasUpdateWrapper
     if (localIDbManager != null) {
       return localIDbManager;
     }
-    mDbManager = mWrapper.getDbManager();
+    mDbManager = mWrapper.d();
     if (mDbManager == null) {
-      mDbManager = DefaultVasUpdateFactory.getInstance().getDbManager();
+      mDbManager = DefaultVasUpdateFactoryImpl.g().d();
     }
     return mDbManager;
   }
@@ -64,9 +67,9 @@ public class VasUpdateWrapper
     if (localIHttpDownloader != null) {
       return localIHttpDownloader;
     }
-    mHttpDownloader = mWrapper.getHttpDownloader();
+    mHttpDownloader = mWrapper.b();
     if (mHttpDownloader == null) {
-      mHttpDownloader = DefaultVasUpdateFactory.getInstance().getHttpDownloader();
+      mHttpDownloader = DefaultVasUpdateFactoryImpl.g().b();
     }
     return mHttpDownloader;
   }
@@ -77,9 +80,9 @@ public class VasUpdateWrapper
     if (localIVasLog != null) {
       return localIVasLog;
     }
-    mVasLog = mWrapper.getLog();
+    mVasLog = mWrapper.a();
     if (mVasLog == null) {
-      mVasLog = DefaultVasUpdateFactory.getInstance().getLog();
+      mVasLog = DefaultVasUpdateFactoryImpl.g().a();
     }
     return mVasLog;
   }
@@ -90,25 +93,33 @@ public class VasUpdateWrapper
     if (localIReportManager != null) {
       return localIReportManager;
     }
-    mReporter = mWrapper.getReportManager();
+    mReporter = mWrapper.c();
     if (mReporter == null) {
-      mReporter = DefaultVasUpdateFactory.getInstance().getReportManager();
+      mReporter = DefaultVasUpdateFactoryImpl.g().c();
     }
     return mReporter;
+  }
+  
+  public static IVasUpdateSystem getVasUpdateSystem()
+  {
+    if (mVasUpdateSystem == null) {
+      mVasUpdateSystem = new VasUpdateSystemImpl();
+    }
+    return mVasUpdateSystem;
   }
   
   public static void setVasUpdateWrapper(IVasUpdateFactory paramIVasUpdateFactory)
   {
     Object localObject = paramIVasUpdateFactory;
     if (paramIVasUpdateFactory == null) {
-      localObject = DefaultVasUpdateFactory.getInstance();
+      localObject = DefaultVasUpdateFactoryImpl.g();
     }
     mWrapper = (IVasUpdateFactory)localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.wrapper.VasUpdateWrapper
  * JD-Core Version:    0.7.0.1
  */

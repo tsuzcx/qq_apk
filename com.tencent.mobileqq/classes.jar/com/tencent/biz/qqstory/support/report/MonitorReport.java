@@ -8,7 +8,7 @@ public class MonitorReport
   {
     MonitorValueRequest localMonitorValueRequest = new MonitorValueRequest();
     localMonitorValueRequest.a(paramInt, 1);
-    localMonitorValueRequest.a = paramString;
+    localMonitorValueRequest.e = paramString;
     CmdTaskManger.a().a(localMonitorValueRequest, new MonitorReport.1());
   }
 }

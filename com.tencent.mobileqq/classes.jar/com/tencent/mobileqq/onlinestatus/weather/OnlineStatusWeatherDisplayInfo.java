@@ -24,21 +24,20 @@ import mqq.app.AppRuntime;
 public class OnlineStatusWeatherDisplayInfo
   extends BaseOnlineStatusDisplayInfo
 {
-  private WeatherObserver a;
+  private WeatherObserver k = new OnlineStatusWeatherDisplayInfo.4(this);
   
   public OnlineStatusWeatherDisplayInfo(long paramLong, BaseOnlineStatusDisplayInfo.UpdateUIListener paramUpdateUIListener, AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
   {
     super(paramLong, paramUpdateUIListener, paramAppInterface, paramQBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver = new OnlineStatusWeatherDisplayInfo.4(this);
-    paramAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver);
+    paramAppInterface.registObserver(this.k);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698508);
-    this.jdField_a_of_type_Boolean = true;
-    Friends localFriends = ((IFriendDataService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), true, true, true);
-    this.jdField_b_of_type_JavaLangString = OnlineStatusUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, localFriends, false);
+    this.a = this.h.getString(2131896450);
+    this.d = true;
+    Friends localFriends = ((IFriendDataService)this.i.getRuntimeService(IFriendDataService.class, "")).getFriend(this.i.getCurrentUin(), true, true, true);
+    this.b = OnlineStatusUtil.a(this.i, localFriends, false);
   }
   
   public void a(OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
@@ -47,18 +46,18 @@ public class OnlineStatusWeatherDisplayInfo
     if (paramOnlineStatusPermissionItem != null) {
       localIntent.putExtra("online_status_permission_item", paramOnlineStatusPermissionItem);
     }
-    ((OnlineStatusDataManager)((IOnlineStatusManagerService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class)).b(8, localIntent);
+    ((OnlineStatusDataManager)((IOnlineStatusManagerService)this.i.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class)).b(8, localIntent);
   }
   
   public void a(boolean paramBoolean)
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.requestPermissions(new OnlineStatusWeatherDisplayInfo.1(this, paramBoolean), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      this.h.requestPermissions(new OnlineStatusWeatherDisplayInfo.1(this, paramBoolean), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
       return;
     }
     if (paramBoolean) {
-      ((OnlineStatusDataManager)((IOnlineStatusManagerService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class)).a(9);
+      ((OnlineStatusDataManager)((IOnlineStatusManagerService)this.i.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class)).b(9);
     }
   }
   
@@ -71,7 +70,7 @@ public class OnlineStatusWeatherDisplayInfo
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.requestPermissions(new OnlineStatusWeatherDisplayInfo.3(this, paramOnlineStatusPermissionItem), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      this.h.requestPermissions(new OnlineStatusWeatherDisplayInfo.3(this, paramOnlineStatusPermissionItem), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
       return;
     }
     a(paramOnlineStatusPermissionItem);
@@ -79,36 +78,36 @@ public class OnlineStatusWeatherDisplayInfo
   
   public void b()
   {
-    Object localObject = ((IFriendDataService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), true, true, true);
-    OnlineAutoStatusBean localOnlineAutoStatusBean = (OnlineAutoStatusBean)QConfigManager.a().a(652);
-    if ((localOnlineAutoStatusBean != null) && (localOnlineAutoStatusBean.a != null) && (!TextUtils.isEmpty(localOnlineAutoStatusBean.a.jdField_a_of_type_JavaLangString)) && (OnlineStatusUtil.a((Friends)localObject)))
+    Object localObject = ((IFriendDataService)this.i.getRuntimeService(IFriendDataService.class, "")).getFriend(this.i.getCurrentUin(), true, true, true);
+    OnlineAutoStatusBean localOnlineAutoStatusBean = (OnlineAutoStatusBean)QConfigManager.b().b(652);
+    if ((localOnlineAutoStatusBean != null) && (localOnlineAutoStatusBean.a != null) && (!TextUtils.isEmpty(localOnlineAutoStatusBean.a.c)) && (OnlineStatusUtil.b((Friends)localObject)))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localOnlineAutoStatusBean.a.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(localOnlineAutoStatusBean.a.c);
       localStringBuilder.append(((Friends)localObject).adCode);
       localObject = localStringBuilder.toString();
-      ConstellationLauncher.a.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, (String)localObject, 4015);
+      ConstellationLauncher.c.a(this.h, (String)localObject, 4015);
       ReportHelperKt.a("0X800AF98");
-    }
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (Build.VERSION.SDK_INT >= 23) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.requestPermissions(new OnlineStatusWeatherDisplayInfo.2(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
     }
   }
   
   public void e()
   {
     super.e();
-    this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver);
+    if (Build.VERSION.SDK_INT >= 23) {
+      this.h.requestPermissions(new OnlineStatusWeatherDisplayInfo.2(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.i.unRegistObserver(this.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.weather.OnlineStatusWeatherDisplayInfo
  * JD-Core Version:    0.7.0.1
  */

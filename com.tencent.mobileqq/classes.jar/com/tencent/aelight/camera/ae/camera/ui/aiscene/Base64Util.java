@@ -2,13 +2,13 @@ package com.tencent.aelight.camera.ae.camera.ui.aiscene;
 
 public class Base64Util
 {
-  private static final char jdField_a_of_type_Char = (char)Integer.parseInt("00000011", 2);
-  private static final char[] jdField_a_of_type_ArrayOfChar = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
+  private static final char a = (char)Integer.parseInt("00000011", 2);
   private static final char b = (char)Integer.parseInt("00001111", 2);
   private static final char c = (char)Integer.parseInt("00111111", 2);
   private static final char d = (char)Integer.parseInt("11111100", 2);
   private static final char e = (char)Integer.parseInt("11110000", 2);
   private static final char f = (char)Integer.parseInt("11000000", 2);
+  private static final char[] g = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
   
   public static String a(byte[] paramArrayOfByte)
   {
@@ -34,7 +34,7 @@ public class Base64Util
               if (j != 6) {
                 break label203;
               }
-              m = (char)((char)(paramArrayOfByte[k] & jdField_a_of_type_Char) << '\004');
+              m = (char)((char)(paramArrayOfByte[k] & a) << '\004');
               n = k + 1;
               i = m;
               if (n >= paramArrayOfByte.length) {
@@ -64,7 +64,7 @@ public class Base64Util
         }
         i = (char)i;
         label203:
-        localStringBuilder.append(jdField_a_of_type_ArrayOfChar[i]);
+        localStringBuilder.append(g[i]);
         j += 6;
       }
       k += 1;
@@ -83,7 +83,7 @@ public class Base64Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.Base64Util
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,7 @@
 package com.tencent.av.ui;
 
 import android.os.Handler;
-import android.widget.TextView;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 
 class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   implements Runnable
@@ -12,23 +10,16 @@ class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695369);
-    if (this.this$0.jdField_c_of_type_Int == 2) {
-      localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3000, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
-    } else if (this.this$0.jdField_c_of_type_Int == 1) {
-      localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
-    }
-    this.this$0.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity$MainUI.a.setText((CharSequence)localObject);
-    localObject = this.this$0;
-    ((MultiVideoEnterPageActivity)localObject).g += 1;
-    if (this.this$0.jdField_c_of_type_JavaLangRunnable != null)
+    MultiVideoEnterPageActivity localMultiVideoEnterPageActivity = this.this$0;
+    localMultiVideoEnterPageActivity.A += 1;
+    if (this.this$0.y != null)
     {
-      if (this.this$0.g < 3)
+      if (this.this$0.A < 3)
       {
-        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.this$0.jdField_c_of_type_JavaLangRunnable, 1000L);
+        this.this$0.t.a().postDelayed(this.this$0.y, 1000L);
         return;
       }
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.this$0.jdField_c_of_type_JavaLangRunnable);
+      this.this$0.t.a().removeCallbacks(this.this$0.y);
     }
   }
 }

@@ -9,27 +9,16 @@ import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class NearbyRedDotCustomInfo
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public String d;
-  
-  public NearbyRedDotCustomInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
+  public int a = 0;
+  public boolean b = false;
+  public boolean c = false;
+  public int d = 1;
+  public int e = 0;
+  public String f;
+  public String g = "";
+  public String h = "";
+  public String i;
+  public long j;
   
   public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
@@ -42,15 +31,15 @@ public class NearbyRedDotCustomInfo
       try
       {
         localObject = new JSONObject((String)localObject);
-        this.jdField_b_of_type_Boolean = ((JSONObject)localObject).optBoolean("isOfficialNotify");
-        this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("redContentType");
-        this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("redContentMsg");
-        this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("topicId");
-        this.jdField_c_of_type_Int = ((JSONObject)localObject).optInt("userType");
-        this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("msgId");
-        this.jdField_a_of_type_Int = Integer.valueOf(paramRedTypeInfo.red_content.get()).intValue();
-        this.d = ((JSONObject)localObject).optString("faceUrl");
-        this.jdField_a_of_type_Long = ((JSONObject)localObject).optLong("uin");
+        this.c = ((JSONObject)localObject).optBoolean("isOfficialNotify");
+        this.d = ((JSONObject)localObject).optInt("redContentType");
+        this.f = ((JSONObject)localObject).optString("redContentMsg");
+        this.g = ((JSONObject)localObject).optString("topicId");
+        this.e = ((JSONObject)localObject).optInt("userType");
+        this.h = ((JSONObject)localObject).optString("msgId");
+        this.a = Integer.valueOf(paramRedTypeInfo.red_content.get()).intValue();
+        this.i = ((JSONObject)localObject).optString("faceUrl");
+        this.j = ((JSONObject)localObject).optLong("uin");
         return;
       }
       catch (Exception paramRedTypeInfo)
@@ -73,23 +62,23 @@ public class NearbyRedDotCustomInfo
       try
       {
         paramRedDotInfo = new JSONObject(paramRedDotInfo);
-        int i = paramRedDotInfo.optInt("official_topic");
+        int k = paramRedDotInfo.optInt("official_topic");
         boolean bool2 = false;
-        if (i != 1) {
+        if (k != 1) {
           break label149;
         }
         bool1 = true;
-        this.jdField_b_of_type_Boolean = bool1;
-        this.jdField_b_of_type_Int = paramRedDotInfo.optInt("red_content_type");
-        this.jdField_a_of_type_JavaLangString = paramRedDotInfo.optString("red_content_msg");
-        this.jdField_b_of_type_JavaLangString = paramRedDotInfo.optString("red_topic_tag");
-        this.jdField_c_of_type_Int = paramRedDotInfo.optInt("red_user_type");
+        this.c = bool1;
+        this.d = paramRedDotInfo.optInt("red_content_type");
+        this.f = paramRedDotInfo.optString("red_content_msg");
+        this.g = paramRedDotInfo.optString("red_topic_tag");
+        this.e = paramRedDotInfo.optInt("red_user_type");
         bool1 = bool2;
         if (paramRedDotInfo.optInt("red_type") == 0) {
           bool1 = true;
         }
-        this.jdField_a_of_type_Boolean = bool1;
-        this.jdField_c_of_type_JavaLangString = paramRedDotInfo.optString("red_msg_id");
+        this.b = bool1;
+        this.h = paramRedDotInfo.optString("red_msg_id");
         return;
       }
       catch (Exception paramRedDotInfo)
@@ -104,7 +93,7 @@ public class NearbyRedDotCustomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.NearbyRedDotCustomInfo
  * JD-Core Version:    0.7.0.1
  */

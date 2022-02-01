@@ -15,7 +15,7 @@ public final class msg_transmit$PbMultiMsgTransmit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msgtransmit.msg_transmit.PbMultiMsgTransmit
  * JD-Core Version:    0.7.0.1
  */

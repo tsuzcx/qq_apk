@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#fffafafa" android:layout_width="wrap_content" android:layout_height="75.0dip" android:minWidth="187.0dip"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/l1" android:layout_width="75.0dip" android:layout_height="75.0dip" android:src="#ff777777" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/l3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/l1" android:layout_centerVertical="true">
-        <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/l2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/y0y" />
-        <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/l0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="124905人拥有" android:layout_below="@id/l2" />
-    </RelativeLayout>
-</RelativeLayout>
+    <com.tencent.biz.qqcircle.richframework.widget.SquareImageView android:id="@id/o6l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/o6h" android:background="@drawable/isx" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/ql2" android:background="@drawable/isw" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+</FrameLayout>

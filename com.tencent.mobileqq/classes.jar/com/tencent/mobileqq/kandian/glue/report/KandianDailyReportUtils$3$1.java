@@ -12,20 +12,20 @@ class KandianDailyReportUtils$3$1
   public void run()
   {
     KandianDailyReportUtils.a(false);
-    if (KandianDailyReportUtils.a().isEmpty()) {
+    if (KandianDailyReportUtils.i().isEmpty()) {
       return;
     }
-    ReadInJoyLogicEngine.a().a(KandianDailyReportUtils.a());
+    ReadInJoyLogicEngine.a().a(KandianDailyReportUtils.i());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("execute feeds 64e export, size : ");
-    localStringBuilder.append(KandianDailyReportUtils.a().size());
+    localStringBuilder.append(KandianDailyReportUtils.i().size());
     QLog.d("KandianDailyReportUtils", 1, localStringBuilder.toString());
-    KandianDailyReportUtils.a().clear();
+    KandianDailyReportUtils.i().clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.KandianDailyReportUtils.3.1
  * JD-Core Version:    0.7.0.1
  */

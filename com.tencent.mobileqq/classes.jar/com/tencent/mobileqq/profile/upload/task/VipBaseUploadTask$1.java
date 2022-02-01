@@ -11,9 +11,9 @@ class VipBaseUploadTask$1
   public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
     paramAbstractUploadTask = this.a;
-    paramAbstractUploadTask.f = 1002;
-    paramAbstractUploadTask.jdField_a_of_type_Int = paramInt;
-    paramAbstractUploadTask.c = paramString;
+    paramAbstractUploadTask.z = 1002;
+    paramAbstractUploadTask.f = paramInt;
+    paramAbstractUploadTask.g = paramString;
     paramAbstractUploadTask.a(1002, new Object[0]);
   }
   
@@ -21,25 +21,25 @@ class VipBaseUploadTask$1
   
   public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
   {
-    if (this.a.f != paramInt)
+    if (this.a.z != paramInt)
     {
       paramAbstractUploadTask = this.a;
-      paramAbstractUploadTask.f = paramInt;
-      paramAbstractUploadTask.a(paramAbstractUploadTask.f, new Object[0]);
+      paramAbstractUploadTask.z = paramInt;
+      paramAbstractUploadTask.a(paramAbstractUploadTask.z, new Object[0]);
     }
   }
   
   public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
   {
     paramAbstractUploadTask = this.a;
-    paramAbstractUploadTask.f = 1001;
-    paramAbstractUploadTask.jdField_a_of_type_JavaLangObject = paramObject;
+    paramAbstractUploadTask.z = 1001;
+    paramAbstractUploadTask.e = paramObject;
     paramAbstractUploadTask.a(1001, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.upload.task.VipBaseUploadTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class EmoticonLinearLayout
   {
     super(paramContext, paramAttributeSet);
     this.context = paramContext;
-    this.emoticonTextColor = super.getResources().getColor(2131167263);
+    this.emoticonTextColor = super.getResources().getColor(2131168261);
     setOrientation(1);
     super.setClickable(true);
     super.setLongClickable(true);
@@ -239,7 +239,7 @@ public class EmoticonLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout
  * JD-Core Version:    0.7.0.1
  */

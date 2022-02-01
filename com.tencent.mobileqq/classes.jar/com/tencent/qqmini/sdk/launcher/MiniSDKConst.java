@@ -17,7 +17,7 @@ public class MiniSDKConst
   public static final int AUDIT_PASS = 6;
   public static final int AUDIT_REJECT = 7;
   public static final String BASE_LIB_PATH_DIR;
-  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.22.0.00008";
+  public static final String CONFIG_DEFAULT_BASE_LIB_VERSION = "1.29.0.00002";
   public static final int DELETED = 5;
   public static final int DEVELOP = 0;
   public static final int DO_USE_SDK = 1;
@@ -50,7 +50,7 @@ public class MiniSDKConst
     PATH_WXAPKG_ROOT = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(PATH_WXAPKG_ROOT);
-    localStringBuilder.append("baseLib");
+    localStringBuilder.append(".baseLib");
     BASE_LIB_PATH_DIR = localStringBuilder.toString();
   }
   
@@ -135,7 +135,7 @@ public class MiniSDKConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniSDKConst
  * JD-Core Version:    0.7.0.1
  */

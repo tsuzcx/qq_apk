@@ -19,48 +19,48 @@ class WSFeedDataManager$1
   public void a(WeishiTask paramWeishiTask)
   {
     boolean bool1;
-    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+    if ((!this.a) && (!this.b)) {
       bool1 = false;
     } else {
       bool1 = true;
     }
-    boolean bool2 = paramWeishiTask.a();
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    WSFeedDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSFeedDataManager, paramWeishiTask, l, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSFeedDataManager$OnDataReceivedListener;
+    boolean bool2 = paramWeishiTask.b();
+    long l = System.currentTimeMillis() - this.c;
+    WSFeedDataManager.a(this.f, paramWeishiTask, l, this.d, this.a);
+    Object localObject = this.e;
     if (localObject != null) {
-      ((WSFeedDataManager.OnDataReceivedListener)localObject).a(this.jdField_a_of_type_Boolean, this.b, bool2, paramWeishiTask.jdField_a_of_type_JavaLangObject);
+      ((WSFeedDataManager.OnDataReceivedListener)localObject).a(this.a, this.b, bool2, paramWeishiTask.m);
     }
     if (!bool2)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSFeedDataManager.java][onTaskResponse] task fail, code: ");
-      ((StringBuilder)localObject).append(paramWeishiTask.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramWeishiTask.d);
       ((StringBuilder)localObject).append(", msg: ");
-      ((StringBuilder)localObject).append(paramWeishiTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramWeishiTask.c);
       WSLog.d("FollowRequest", ((StringBuilder)localObject).toString());
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+      WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, paramWeishiTask.d, paramWeishiTask.c);
       return;
     }
-    if (!(paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stFollowFeedsRsp))
+    if (!(paramWeishiTask.m instanceof stFollowFeedsRsp))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSFeedDataManager.java][onTaskResponse] data error: ");
-      ((StringBuilder)localObject).append(paramWeishiTask.jdField_a_of_type_JavaLangObject);
+      ((StringBuilder)localObject).append(paramWeishiTask.m);
       WSLog.d("FollowRequest", ((StringBuilder)localObject).toString());
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, -1, "数据无法解析或为空");
+      WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, -1, "数据无法解析或为空");
       return;
     }
-    stFollowFeedsRsp localstFollowFeedsRsp = (stFollowFeedsRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSFeedDataManager.jdField_a_of_type_JavaLangString = localstFollowFeedsRsp.attatch_info;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSFeedDataManager.jdField_a_of_type_Int = localstFollowFeedsRsp.cache_size;
-    if (paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean != null) {
-      WSRecommendReportManager.a().a(localstFollowFeedsRsp.trace_id, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean.a);
+    stFollowFeedsRsp localstFollowFeedsRsp = (stFollowFeedsRsp)paramWeishiTask.m;
+    this.f.c = localstFollowFeedsRsp.attatch_info;
+    this.f.e = localstFollowFeedsRsp.cache_size;
+    if (paramWeishiTask.n != null) {
+      WSRecommendReportManager.a().a(localstFollowFeedsRsp.trace_id, paramWeishiTask.n.a);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSFeedDataManager.b = localstFollowFeedsRsp.feeds_source;
-      WSFollowBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSFeedDataManager.b);
+      this.f.d = localstFollowFeedsRsp.feeds_source;
+      WSFollowBeaconReport.a(this.f.d);
     }
     if (WSFeedUtils.a(localstFollowFeedsRsp.feeds))
     {
@@ -79,12 +79,12 @@ class WSFeedDataManager$1
     paramWeishiTask.append("[WSFeedDataManager.java][onTaskResponse] data received, size: ");
     paramWeishiTask.append(localstFollowFeedsRsp.feeds.size());
     WSLog.e("FollowRequest", paramWeishiTask.toString());
-    WSFeedDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSFeedDataManager, localstFollowFeedsRsp.feeds, bool1, this.jdField_a_of_type_Int, localstFollowFeedsRsp.is_finished, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataWSFeedDataManager$OnDataReceivedListener);
+    WSFeedDataManager.a(this.f, localstFollowFeedsRsp.feeds, bool1, this.d, localstFollowFeedsRsp.is_finished, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.data.WSFeedDataManager.1
  * JD-Core Version:    0.7.0.1
  */

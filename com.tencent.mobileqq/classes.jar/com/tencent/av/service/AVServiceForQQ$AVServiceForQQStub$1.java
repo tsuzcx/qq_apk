@@ -11,7 +11,7 @@ class AVServiceForQQ$AVServiceForQQStub$1
   {
     try
     {
-      this.a.a.startForeground(235, this.a.a.a);
+      this.a.a.startForeground(235, this.a.a.b);
       QLog.d("AVServiceForQQ", 1, "setAvServiceForegroud start foreground.");
       return;
     }

@@ -11,7 +11,7 @@ class NowShortVideoProtoManagerImpl$6
   
   public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    INowShortVideoProtoManager.Callback localCallback = this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolINowShortVideoProtoManager$Callback;
+    INowShortVideoProtoManager.Callback localCallback = this.b;
     if (localCallback != null) {
       localCallback.a(paramInt, paramArrayOfByte, paramBundle);
     }
@@ -19,7 +19,7 @@ class NowShortVideoProtoManagerImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.impl.NowShortVideoProtoManagerImpl.6
  * JD-Core Version:    0.7.0.1
  */

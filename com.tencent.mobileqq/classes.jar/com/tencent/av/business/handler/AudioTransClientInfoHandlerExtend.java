@@ -17,22 +17,22 @@ public class AudioTransClientInfoHandlerExtend
   extends AudioTransClientInfoHandler
 {
   static long b;
-  private AppInterface a;
+  private AppInterface c;
   
   public AudioTransClientInfoHandlerExtend(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.a = paramAppInterface;
+    this.c = paramAppInterface;
   }
   
   public static void a(VideoAppInterface paramVideoAppInterface, String paramString1, long paramLong, String paramString2, boolean paramBoolean)
   {
-    Object localObject = (EffectSupportManager)paramVideoAppInterface.a(5);
+    Object localObject = (EffectSupportManager)paramVideoAppInterface.c(5);
     int i = 0;
-    if (((EffectSupportManager)localObject).a(0, "750") == 1) {
+    if (((EffectSupportManager)localObject).b(0, "750") == 1) {
       i = 1;
     }
-    long l1 = AudioHelper.a();
+    long l1 = AudioHelper.b();
     if (i != 0)
     {
       i = 12;
@@ -40,7 +40,7 @@ public class AudioTransClientInfoHandlerExtend
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString2);
       localStringBuilder.append("|");
-      localStringBuilder.append(((AudioTransClientInfoHandler)localObject).a());
+      localStringBuilder.append(((AudioTransClientInfoHandler)localObject).c());
       localStringBuilder.append("|");
       localStringBuilder.append(paramLong);
       localStringBuilder.append("|");
@@ -71,10 +71,33 @@ public class AudioTransClientInfoHandlerExtend
     localStringBuilder.append(l1 - l2);
     localStringBuilder.append("]");
     QLog.w("AudioTransClientInfoHandler", 1, localStringBuilder.toString());
-    paramVideoAppInterface.a().a(i, (String)localObject);
+    paramVideoAppInterface.b().e(i, (String)localObject);
   }
   
-  int a()
+  void a(long paramLong1, long paramLong2)
+  {
+    VideoAppInterface localVideoAppInterface = (VideoAppInterface)this.c;
+    ZimuItem localZimuItem = (ZimuItem)((EffectZimuManager)localVideoAppInterface.c(0)).c();
+    if ((localZimuItem != null) && (!TextUtils.isEmpty(localZimuItem.getId()))) {
+      a(localVideoAppInterface, "sendToPeer", paramLong1, localZimuItem.getId(), true);
+    }
+  }
+  
+  String d()
+  {
+    VideoController localVideoController = ((VideoAppInterface)this.c).b();
+    if ((localVideoController != null) && (localVideoController.k() != null)) {
+      return localVideoController.k().s;
+    }
+    return "";
+  }
+  
+  boolean e()
+  {
+    return ((EffectZimuManager)((VideoAppInterface)this.c).c(0)).k();
+  }
+  
+  int f()
   {
     boolean bool = AppNetConnInfo.isWifiConn();
     int i = 3;
@@ -102,37 +125,14 @@ public class AudioTransClientInfoHandlerExtend
     return i;
   }
   
-  void a(long paramLong1, long paramLong2)
+  boolean g()
   {
-    VideoAppInterface localVideoAppInterface = (VideoAppInterface)this.a;
-    ZimuItem localZimuItem = (ZimuItem)((EffectZimuManager)localVideoAppInterface.a(0)).a();
-    if ((localZimuItem != null) && (!TextUtils.isEmpty(localZimuItem.getId()))) {
-      a(localVideoAppInterface, "sendToPeer", paramLong1, localZimuItem.getId(), true);
-    }
+    return ((AudioTransClientInterfaceHandler)this.c.getBusinessHandler(BusinessHandlerFactory.a)).a();
   }
   
-  int b()
+  int h()
   {
     return UITools.getQQVersion();
-  }
-  
-  String b()
-  {
-    VideoController localVideoController = ((VideoAppInterface)this.a).a();
-    if ((localVideoController != null) && (localVideoController.a() != null)) {
-      return localVideoController.a().c;
-    }
-    return "";
-  }
-  
-  boolean b()
-  {
-    return ((EffectZimuManager)((VideoAppInterface)this.a).a(0)).c();
-  }
-  
-  boolean c()
-  {
-    return ((AudioTransClientInterfaceHandler)this.a.getBusinessHandler(BusinessHandlerFactory.a)).a();
   }
 }
 

@@ -9,12 +9,12 @@ final class b
   
   public final void run()
   {
-    a.a(this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgAccessHttpAA, false, this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgAccessHttpAD, this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgAccessHttpIHttpCallback);
+    a.a(this.c, false, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.access.http.a.b
  * JD-Core Version:    0.7.0.1
  */

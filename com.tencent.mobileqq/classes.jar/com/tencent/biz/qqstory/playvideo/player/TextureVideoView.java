@@ -40,37 +40,37 @@ public class TextureVideoView
   extends TextureView
   implements TextureView.SurfaceTextureListener, MediaController.MediaPlayerControl
 {
-  protected int a;
-  protected Uri a;
-  protected Surface a;
-  protected MediaController a;
-  private IMediaPlayer.OnBufferingUpdateListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener = new TextureVideoView.6(this);
-  protected IMediaPlayer.OnCompletionListener a;
-  protected IMediaPlayer.OnErrorListener a;
-  protected IMediaPlayer.OnInfoListener a;
-  protected IMediaPlayer.OnPreparedListener a;
-  protected IMediaPlayer.OnSeekCompleteListener a;
-  IMediaPlayer.OnVideoSizeChangedListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener = new TextureVideoView.1(this);
-  protected IMediaPlayer.onTextureUpdateListener a;
-  protected IMediaPlayer a;
-  protected String a;
-  protected Map<String, String> a;
-  protected int b;
-  private IMediaPlayer.OnCompletionListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener = new TextureVideoView.3(this);
-  private IMediaPlayer.OnErrorListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener = new TextureVideoView.5(this);
-  private IMediaPlayer.OnInfoListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener = new TextureVideoView.4(this);
-  IMediaPlayer.OnPreparedListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener = new TextureVideoView.2(this);
-  protected boolean b;
-  protected int c;
-  protected boolean c;
-  protected int d;
-  protected boolean d;
-  protected int e;
-  protected boolean e;
-  protected int f;
-  public boolean f;
-  protected int g;
-  protected boolean g;
+  protected boolean A = false;
+  IMediaPlayer.OnVideoSizeChangedListener B = new TextureVideoView.1(this);
+  IMediaPlayer.OnPreparedListener C = new TextureVideoView.2(this);
+  private IMediaPlayer.OnErrorListener D = new TextureVideoView.5(this);
+  private IMediaPlayer.OnBufferingUpdateListener E = new TextureVideoView.6(this);
+  private IMediaPlayer.OnCompletionListener a = new TextureVideoView.3(this);
+  private IMediaPlayer.OnInfoListener b = new TextureVideoView.4(this);
+  protected String c = "Q.qqstory.player.TextureVideoView";
+  protected Uri d;
+  protected Map<String, String> e;
+  protected int f = 0;
+  protected int g = 0;
+  protected Surface h = null;
+  protected IMediaPlayer i = null;
+  protected int j;
+  protected int k;
+  protected int l;
+  protected MediaController m;
+  protected IMediaPlayer.OnCompletionListener n;
+  protected IMediaPlayer.OnPreparedListener o;
+  protected IMediaPlayer.OnSeekCompleteListener p;
+  protected int q;
+  protected IMediaPlayer.OnErrorListener r;
+  protected IMediaPlayer.OnInfoListener s;
+  protected int t;
+  protected boolean u;
+  protected boolean v;
+  protected boolean w;
+  protected boolean x;
+  public boolean y;
+  protected IMediaPlayer.onTextureUpdateListener z;
   
   public TextureVideoView(Context paramContext)
   {
@@ -85,16 +85,190 @@ public class TextureVideoView
   public TextureVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = "Q.qqstory.player.TextureVideoView";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer = null;
-    this.jdField_g_of_type_Boolean = false;
-    b();
+    c();
   }
   
-  private Activity a()
+  private void a(boolean paramBoolean)
+  {
+    if (this.d != null)
+    {
+      if (this.h == null) {
+        return;
+      }
+      b(false);
+      String str;
+      StringBuilder localStringBuilder;
+      if (paramBoolean) {
+        try
+        {
+          ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel())
+          {
+            str = this.c;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("requestAudioFocus Exception: ");
+            localStringBuilder.append(QLog.getStackTraceString(localException));
+            QLog.w(str, 2, localStringBuilder.toString());
+          }
+        }
+      }
+      try
+      {
+        this.i = a();
+        this.i.a(this.x);
+        if (this.j != 0) {
+          this.i.b(this.j);
+        } else {
+          this.j = this.i.o();
+        }
+        this.i.a(this.C);
+        this.i.a(this.B);
+        this.i.a(this.a);
+        this.i.a(this.D);
+        this.i.a(this.b);
+        this.i.a(this.E);
+        if (this.p != null) {
+          this.i.a(this.p);
+        }
+        this.q = 0;
+        this.i.a(getContext().getApplicationContext(), this.d, this.e);
+        this.i.a(this.h);
+        this.i.c(3);
+        this.i.b(true);
+        this.i.b();
+        this.f = 1;
+        e();
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w(this.c, 2, "prepareAsync cause  IllegalStateException", localIllegalStateException);
+        }
+        this.f = -1;
+        this.g = -1;
+        this.D.a(this.i, 1, 0);
+        return;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        if (QLog.isColorLevel())
+        {
+          str = this.c;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Unable to open content: ");
+          localStringBuilder.append(this.d);
+          QLog.w(str, 2, localStringBuilder.toString(), localIllegalArgumentException);
+        }
+        this.f = -1;
+        this.g = -1;
+        this.D.a(this.i, 1, 0);
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        if (QLog.isColorLevel())
+        {
+          str = this.c;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Unable to open content: ");
+          localStringBuilder.append(this.d);
+          QLog.w(str, 2, localStringBuilder.toString(), localIOException);
+        }
+        this.f = -1;
+        this.g = -1;
+        this.D.a(this.i, 1, 0);
+      }
+    }
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    IMediaPlayer localIMediaPlayer = this.i;
+    if (localIMediaPlayer != null)
+    {
+      localIMediaPlayer.f();
+      try
+      {
+        this.i.h();
+        this.i.g();
+      }
+      catch (IllegalStateException localIllegalStateException1)
+      {
+        IllegalStateException localIllegalStateException2 = new IllegalStateException("CatchedException, caused by: ", localIllegalStateException1);
+        QLog.e(this.c, 1, "mMediaPlayer.release() throw a exception!!", localIllegalStateException2);
+      }
+      this.i = null;
+      this.f = 0;
+      if (paramBoolean) {
+        this.g = 0;
+      }
+      ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).abandonAudioFocus(null);
+    }
+  }
+  
+  private void c()
+  {
+    this.k = 0;
+    this.l = 0;
+    super.setSurfaceTextureListener(this);
+    super.setFocusable(true);
+    super.setFocusableInTouchMode(true);
+    super.requestFocus();
+    this.f = 0;
+    this.g = 0;
+  }
+  
+  private void d()
+  {
+    a(this.y ^ true);
+  }
+  
+  private void e()
+  {
+    if (this.i != null)
+    {
+      Object localObject = this.m;
+      if (localObject != null)
+      {
+        ((MediaController)localObject).setMediaPlayer(this);
+        if ((getParent() instanceof View)) {
+          localObject = (View)getParent();
+        } else {
+          localObject = this;
+        }
+        this.m.setAnchorView((View)localObject);
+        this.m.setEnabled(g());
+      }
+    }
+  }
+  
+  private void f()
+  {
+    if (this.m.isShowing())
+    {
+      this.m.hide();
+      return;
+    }
+    this.m.show();
+  }
+  
+  private boolean g()
+  {
+    if (this.i != null)
+    {
+      int i1 = this.f;
+      if ((i1 != -1) && (i1 != 0) && (i1 != 1)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private Activity getActivity()
   {
     try
     {
@@ -111,265 +285,85 @@ public class TextureVideoView
     }
   }
   
-  private void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidNetUri != null)
-    {
-      if (this.jdField_a_of_type_AndroidViewSurface == null) {
-        return;
-      }
-      b(false);
-      String str;
-      StringBuilder localStringBuilder;
-      if (paramBoolean) {
-        try
-        {
-          ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
-        }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel())
-          {
-            str = this.jdField_a_of_type_JavaLangString;
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("requestAudioFocus Exception: ");
-            localStringBuilder.append(QLog.getStackTraceString(localException));
-            QLog.w(str, 2, localStringBuilder.toString());
-          }
-        }
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer = a();
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_e_of_type_Boolean);
-        if (this.jdField_c_of_type_Int != 0) {
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.b(this.jdField_c_of_type_Int);
-        } else {
-          this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.e();
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener);
-        }
-        this.jdField_f_of_type_Int = 0;
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(getContext().getApplicationContext(), this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(this.jdField_a_of_type_AndroidViewSurface);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.c(3);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.b(true);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.b();
-        this.jdField_a_of_type_Int = 1;
-        d();
-        return;
-      }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 2, "prepareAsync cause  IllegalStateException", localIllegalStateException);
-        }
-        this.jdField_a_of_type_Int = -1;
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer, 1, 0);
-        return;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        if (QLog.isColorLevel())
-        {
-          str = this.jdField_a_of_type_JavaLangString;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("Unable to open content: ");
-          localStringBuilder.append(this.jdField_a_of_type_AndroidNetUri);
-          QLog.w(str, 2, localStringBuilder.toString(), localIllegalArgumentException);
-        }
-        this.jdField_a_of_type_Int = -1;
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer, 1, 0);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        if (QLog.isColorLevel())
-        {
-          str = this.jdField_a_of_type_JavaLangString;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("Unable to open content: ");
-          localStringBuilder.append(this.jdField_a_of_type_AndroidNetUri);
-          QLog.w(str, 2, localStringBuilder.toString(), localIOException);
-        }
-        this.jdField_a_of_type_Int = -1;
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer, 1, 0);
-      }
-    }
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null)
-    {
-      int i = this.jdField_a_of_type_Int;
-      if ((i != -1) && (i != 0) && (i != 1)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    super.setSurfaceTextureListener(this);
-    super.setFocusable(true);
-    super.setFocusableInTouchMode(true);
-    super.requestFocus();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    IMediaPlayer localIMediaPlayer = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer;
-    if (localIMediaPlayer != null)
-    {
-      localIMediaPlayer.e();
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.g();
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.f();
-      }
-      catch (IllegalStateException localIllegalStateException1)
-      {
-        IllegalStateException localIllegalStateException2 = new IllegalStateException("CatchedException, caused by: ", localIllegalStateException1);
-        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "mMediaPlayer.release() throw a exception!!", localIllegalStateException2);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer = null;
-      this.jdField_a_of_type_Int = 0;
-      if (paramBoolean) {
-        this.jdField_b_of_type_Int = 0;
-      }
-      ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).abandonAudioFocus(null);
-    }
-  }
-  
-  private void c()
-  {
-    a(this.jdField_f_of_type_Boolean ^ true);
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null)
-    {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetMediaController;
-      if (localObject != null)
-      {
-        ((MediaController)localObject).setMediaPlayer(this);
-        if ((getParent() instanceof View)) {
-          localObject = (View)getParent();
-        } else {
-          localObject = this;
-        }
-        this.jdField_a_of_type_AndroidWidgetMediaController.setAnchorView((View)localObject);
-        this.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(a());
-      }
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetMediaController.isShowing())
-    {
-      this.jdField_a_of_type_AndroidWidgetMediaController.hide();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetMediaController.show();
-  }
-  
   protected IMediaPlayer a()
   {
     return new MediaPlayerWrapper();
   }
   
-  public void a()
+  public void b()
   {
-    IMediaPlayer localIMediaPlayer = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer;
+    IMediaPlayer localIMediaPlayer = this.i;
     if (localIMediaPlayer != null)
     {
-      localIMediaPlayer.e();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.f();
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(null);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(null);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(null);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(null);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(null);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(null);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(null);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer = null;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
+      localIMediaPlayer.f();
+      this.i.g();
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i.a(null);
+      this.i = null;
+      this.f = 0;
+      this.g = 0;
       ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).abandonAudioFocus(null);
     }
   }
   
   public boolean canPause()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.u;
   }
   
   public boolean canSeekBackward()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.v;
   }
   
   public boolean canSeekForward()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.w;
   }
   
   public int getAudioSessionId()
   {
-    if (this.jdField_c_of_type_Int == 0)
+    if (this.j == 0)
     {
       ReportMediaPlayer localReportMediaPlayer = new ReportMediaPlayer();
-      this.jdField_c_of_type_Int = localReportMediaPlayer.getAudioSessionId();
+      this.j = localReportMediaPlayer.getAudioSessionId();
       localReportMediaPlayer.release();
     }
-    return this.jdField_c_of_type_Int;
+    return this.j;
   }
   
   public int getBufferPercentage()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null) {
-      return this.jdField_f_of_type_Int;
+    if (this.i != null) {
+      return this.q;
     }
     return 0;
   }
   
   public int getCurrentPosition()
   {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.b();
+    if (g()) {
+      return this.i.k();
     }
     return 0;
   }
   
   public int getDuration()
   {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a();
+    if (g()) {
+      return this.i.j();
     }
     return -1;
   }
   
   public boolean isPlaying()
   {
-    return (a()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a());
+    return (g()) && (this.i.e());
   }
   
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -386,48 +380,48 @@ public class TextureVideoView
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    int i;
+    int i1;
     if ((paramInt != 4) && (paramInt != 24) && (paramInt != 25) && (paramInt != 164) && (paramInt != 82) && (paramInt != 5) && (paramInt != 6)) {
-      i = 1;
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    if ((a()) && (i != 0) && (this.jdField_a_of_type_AndroidWidgetMediaController != null)) {
+    if ((g()) && (i1 != 0) && (this.m != null)) {
       if ((paramInt != 79) && (paramInt != 85))
       {
         if (paramInt == 126)
         {
-          if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a())
+          if (!this.i.e())
           {
             start();
-            this.jdField_a_of_type_AndroidWidgetMediaController.hide();
+            this.m.hide();
           }
           return true;
         }
         if ((paramInt != 86) && (paramInt != 127))
         {
-          e();
+          f();
         }
         else
         {
-          if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a())
+          if (this.i.e())
           {
             pause();
-            this.jdField_a_of_type_AndroidWidgetMediaController.show();
+            this.m.show();
           }
           return true;
         }
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a())
+        if (this.i.e())
         {
           pause();
-          this.jdField_a_of_type_AndroidWidgetMediaController.show();
+          this.m.show();
           return true;
         }
         start();
-        this.jdField_a_of_type_AndroidWidgetMediaController.hide();
+        this.m.hide();
         return true;
       }
     }
@@ -436,111 +430,111 @@ public class TextureVideoView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int k = TextureView.getDefaultSize(this.jdField_d_of_type_Int, paramInt1);
-    int m = TextureView.getDefaultSize(this.jdField_e_of_type_Int, paramInt2);
-    int j = k;
-    int i = m;
-    if (this.jdField_d_of_type_Int > 0)
+    int i3 = TextureView.getDefaultSize(this.k, paramInt1);
+    int i4 = TextureView.getDefaultSize(this.l, paramInt2);
+    int i2 = i3;
+    int i1 = i4;
+    if (this.k > 0)
     {
-      j = k;
-      i = m;
-      if (this.jdField_e_of_type_Int > 0)
+      i2 = i3;
+      i1 = i4;
+      if (this.l > 0)
       {
-        k = View.MeasureSpec.getMode(paramInt1);
-        i = View.MeasureSpec.getSize(paramInt1);
-        m = View.MeasureSpec.getMode(paramInt2);
+        i3 = View.MeasureSpec.getMode(paramInt1);
+        i1 = View.MeasureSpec.getSize(paramInt1);
+        i4 = View.MeasureSpec.getMode(paramInt2);
         paramInt1 = View.MeasureSpec.getSize(paramInt2);
-        if ((k == 1073741824) && (m == 1073741824))
+        if ((i3 == 1073741824) && (i4 == 1073741824))
         {
-          j = this.jdField_d_of_type_Int;
-          k = this.jdField_e_of_type_Int;
-          if (j * paramInt1 < i * k) {
-            if (!this.jdField_g_of_type_Boolean) {}
+          i2 = this.k;
+          i3 = this.l;
+          if (i2 * paramInt1 < i1 * i3) {
+            if (!this.A) {}
           }
-          for (j = j * paramInt1 / k;; j = j * paramInt1 / k)
+          for (i2 = i2 * paramInt1 / i3;; i2 = i2 * paramInt1 / i3)
           {
-            i = paramInt1;
+            i1 = paramInt1;
             break label343;
-            paramInt1 = k * i / j;
-            paramInt2 = i;
+            paramInt1 = i3 * i1 / i2;
+            paramInt2 = i1;
             break;
-            paramInt2 = i;
-            if (j * paramInt1 <= i * k) {
+            paramInt2 = i1;
+            if (i2 * paramInt1 <= i1 * i3) {
               break;
             }
-            if (this.jdField_g_of_type_Boolean)
+            if (this.A)
             {
-              paramInt1 = k * i / j;
-              paramInt2 = i;
+              paramInt1 = i3 * i1 / i2;
+              paramInt2 = i1;
               break;
             }
           }
         }
-        if (k == 1073741824)
+        if (i3 == 1073741824)
         {
-          paramInt2 = this.jdField_e_of_type_Int * i / this.jdField_d_of_type_Int;
-          if ((m != -2147483648) || (paramInt2 <= paramInt1))
+          paramInt2 = this.l * i1 / this.k;
+          if ((i4 != -2147483648) || (paramInt2 <= paramInt1))
           {
             paramInt1 = paramInt2;
-            paramInt2 = i;
+            paramInt2 = i1;
             break label348;
           }
         }
         else
         {
-          if (m != 1073741824) {
+          if (i4 != 1073741824) {
             break label272;
           }
-          paramInt2 = this.jdField_d_of_type_Int * paramInt1 / this.jdField_e_of_type_Int;
-          if ((k != -2147483648) || (paramInt2 <= i)) {
+          paramInt2 = this.k * paramInt1 / this.l;
+          if ((i3 != -2147483648) || (paramInt2 <= i1)) {
             break label269;
           }
         }
-        paramInt2 = i;
+        paramInt2 = i1;
         label269:
         break label348;
         label272:
-        paramInt2 = this.jdField_d_of_type_Int;
-        j = this.jdField_e_of_type_Int;
-        if ((m == -2147483648) && (j > paramInt1)) {
-          paramInt2 = paramInt2 * paramInt1 / j;
+        paramInt2 = this.k;
+        i2 = this.l;
+        if ((i4 == -2147483648) && (i2 > paramInt1)) {
+          paramInt2 = paramInt2 * paramInt1 / i2;
         } else {
-          paramInt1 = j;
+          paramInt1 = i2;
         }
-        if ((k == -2147483648) && (paramInt2 > i))
+        if ((i3 == -2147483648) && (paramInt2 > i1))
         {
-          paramInt1 = this.jdField_e_of_type_Int * i / this.jdField_d_of_type_Int;
-          paramInt2 = i;
+          paramInt1 = this.l * i1 / this.k;
+          paramInt2 = i1;
           break label348;
         }
         break label348;
       }
     }
     label343:
-    paramInt2 = j;
-    paramInt1 = i;
+    paramInt2 = i2;
+    paramInt1 = i1;
     label348:
     super.setMeasuredDimension(paramInt2, paramInt1);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(paramSurfaceTexture);
+    this.h = new Surface(paramSurfaceTexture);
     if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceTextureAvailable: openVideo");
+      QLog.w(this.c, 1, "onSurfaceTextureAvailable: openVideo");
     }
-    c();
+    d();
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    paramSurfaceTexture = this.jdField_a_of_type_AndroidViewSurface;
+    paramSurfaceTexture = this.h;
     if (paramSurfaceTexture != null)
     {
       paramSurfaceTexture.release();
-      this.jdField_a_of_type_AndroidViewSurface = null;
+      this.h = null;
     }
-    paramSurfaceTexture = this.jdField_a_of_type_AndroidWidgetMediaController;
+    paramSurfaceTexture = this.m;
     if (paramSurfaceTexture != null) {
       paramSurfaceTexture.hide();
     }
@@ -550,21 +544,21 @@ public class TextureVideoView
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    int i = this.jdField_b_of_type_Int;
-    int j = 1;
-    if (i == 3) {
-      i = 1;
+    int i1 = this.g;
+    int i2 = 1;
+    if (i1 == 3) {
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
     if ((paramInt1 > 0) && (paramInt2 > 0)) {
-      paramInt1 = j;
+      paramInt1 = i2;
     } else {
       paramInt1 = 0;
     }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer != null) && (i != 0) && (paramInt1 != 0))
+    if ((this.i != null) && (i1 != 0) && (paramInt1 != 0))
     {
-      paramInt1 = this.jdField_g_of_type_Int;
+      paramInt1 = this.t;
       if (paramInt1 != 0) {
         seekTo(paramInt1);
       }
@@ -574,7 +568,7 @@ public class TextureVideoView
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
-    IMediaPlayer.onTextureUpdateListener localonTextureUpdateListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$onTextureUpdateListener;
+    IMediaPlayer.onTextureUpdateListener localonTextureUpdateListener = this.z;
     if (localonTextureUpdateListener != null) {
       localonTextureUpdateListener.a(paramSurfaceTexture);
     }
@@ -582,50 +576,50 @@ public class TextureVideoView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((a()) && (this.jdField_a_of_type_AndroidWidgetMediaController != null)) {
-      e();
+    if ((g()) && (this.m != null)) {
+      f();
     }
     return false;
   }
   
   public boolean onTrackballEvent(MotionEvent paramMotionEvent)
   {
-    if ((a()) && (this.jdField_a_of_type_AndroidWidgetMediaController != null)) {
-      e();
+    if ((g()) && (this.m != null)) {
+      f();
     }
     return false;
   }
   
   public void pause()
   {
-    if ((a()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a()))
+    if ((g()) && (this.i.e()))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.d();
-      this.jdField_a_of_type_Int = 4;
+      this.i.d();
+      this.f = 4;
     }
-    this.jdField_b_of_type_Int = 4;
+    this.g = 4;
   }
   
   public void seekTo(int paramInt)
   {
-    if (a())
+    if (g())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.a(paramInt);
-      this.jdField_g_of_type_Int = 0;
+      this.i.a(paramInt);
+      this.t = 0;
       return;
     }
-    this.jdField_g_of_type_Int = paramInt;
+    this.t = paramInt;
   }
   
   public void setCenterInside(boolean paramBoolean)
   {
-    this.jdField_g_of_type_Boolean = paramBoolean;
+    this.A = paramBoolean;
   }
   
   public void setLooping(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    IMediaPlayer localIMediaPlayer = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer;
+    this.x = paramBoolean;
+    IMediaPlayer localIMediaPlayer = this.i;
     if (localIMediaPlayer != null) {
       localIMediaPlayer.a(paramBoolean);
     }
@@ -633,28 +627,28 @@ public class TextureVideoView
   
   public void setOnCompletionListener(IMediaPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener = paramOnCompletionListener;
+    this.n = paramOnCompletionListener;
   }
   
   public void setOnErrorListener(IMediaPlayer.OnErrorListener paramOnErrorListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener = paramOnErrorListener;
+    this.r = paramOnErrorListener;
   }
   
   public void setOnInfoListener(IMediaPlayer.OnInfoListener paramOnInfoListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener = paramOnInfoListener;
+    this.s = paramOnInfoListener;
   }
   
   public void setOnPreparedListener(IMediaPlayer.OnPreparedListener paramOnPreparedListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener = paramOnPreparedListener;
+    this.o = paramOnPreparedListener;
   }
   
   public void setOnSeekCompleteListener(IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener = paramOnSeekCompleteListener;
-    IMediaPlayer localIMediaPlayer = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer;
+    this.p = paramOnSeekCompleteListener;
+    IMediaPlayer localIMediaPlayer = this.i;
     if (localIMediaPlayer != null) {
       localIMediaPlayer.a(paramOnSeekCompleteListener);
     }
@@ -677,35 +671,35 @@ public class TextureVideoView
   
   public void setVideoURI(Uri paramUri, Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_AndroidNetUri = paramUri;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_g_of_type_Int = 0;
+    this.d = paramUri;
+    this.e = paramMap;
+    this.t = 0;
     if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setVideoURI: openVideo");
+      QLog.w(this.c, 1, "setVideoURI: openVideo");
     }
-    c();
+    d();
     super.requestLayout();
     super.invalidate();
   }
   
   public void setmOnTextureUpdateListener(IMediaPlayer.onTextureUpdateListener paramonTextureUpdateListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$onTextureUpdateListener = paramonTextureUpdateListener;
+    this.z = paramonTextureUpdateListener;
   }
   
   public void start()
   {
-    if (a())
+    if (g())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer.c();
-      this.jdField_a_of_type_Int = 3;
+      this.i.c();
+      this.f = 3;
     }
-    this.jdField_b_of_type_Int = 3;
+    this.g = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TextureVideoView
  * JD-Core Version:    0.7.0.1
  */

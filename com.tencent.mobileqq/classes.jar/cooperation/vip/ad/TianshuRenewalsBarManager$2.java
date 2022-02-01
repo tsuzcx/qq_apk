@@ -19,26 +19,26 @@ final class TianshuRenewalsBarManager$2
   public void onClick(View paramView)
   {
     Intent localIntent;
-    if ("1".equals(this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.k)) {
-      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-    } else if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.k)) {
-      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQTranslucentBrowserActivity.class);
+    if ("1".equals(this.a.k)) {
+      localIntent = new Intent(this.b, QQBrowserActivity.class);
+    } else if ("2".equals(this.a.k)) {
+      localIntent = new Intent(this.b, QQTranslucentBrowserActivity.class);
     } else {
       localIntent = null;
     }
     if (localIntent != null)
     {
-      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.d);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+      localIntent.putExtra("url", this.a.d);
+      this.b.startActivity(localIntent);
       BannerManager.a().a(RenewalsBannerProcessor.a, 0, null);
     }
-    TianshuReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.a, 102);
+    TianshuReportUtils.a(this.a.a, 102);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuRenewalsBarManager.2
  * JD-Core Version:    0.7.0.1
  */

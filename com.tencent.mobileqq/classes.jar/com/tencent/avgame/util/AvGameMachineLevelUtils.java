@@ -21,9 +21,9 @@ public class AvGameMachineLevelUtils
     Object localObject2 = AvGameConfigUtil.a();
     if (localObject2 != null)
     {
-      localObject1 = ((AvGameConfBean)localObject2).b();
-      localMachineLevelLine1 = ((AvGameConfBean)localObject2).c();
-      localMachineLevelLine2 = ((AvGameConfBean)localObject2).a();
+      localObject1 = ((AvGameConfBean)localObject2).h();
+      localMachineLevelLine1 = ((AvGameConfBean)localObject2).i();
+      localMachineLevelLine2 = ((AvGameConfBean)localObject2).e();
     }
     else
     {
@@ -38,7 +38,7 @@ public class AvGameMachineLevelUtils
       QLog.e("AvGameMachineLevelUtils", 2, "getCurMachineInfo null");
       return 2;
     }
-    if (a()) {}
+    if (b()) {}
     do
     {
       i = 0;
@@ -59,28 +59,28 @@ public class AvGameMachineLevelUtils
     ((StringBuilder)localObject1).append("getCurMachine level is ");
     ((StringBuilder)localObject1).append(i);
     ((StringBuilder)localObject1).append(" api=");
-    ((StringBuilder)localObject1).append(((MachineInfo)localObject2).jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(((MachineInfo)localObject2).a);
     ((StringBuilder)localObject1).append(" cpuNum:");
-    ((StringBuilder)localObject1).append(((MachineInfo)localObject2).jdField_b_of_type_Int);
+    ((StringBuilder)localObject1).append(((MachineInfo)localObject2).b);
     ((StringBuilder)localObject1).append(" maxFreqGHZ=");
-    ((StringBuilder)localObject1).append(((MachineInfo)localObject2).jdField_a_of_type_Float);
+    ((StringBuilder)localObject1).append(((MachineInfo)localObject2).c);
     ((StringBuilder)localObject1).append(" ramSizeGB:");
-    ((StringBuilder)localObject1).append(((MachineInfo)localObject2).jdField_b_of_type_Float);
+    ((StringBuilder)localObject1).append(((MachineInfo)localObject2).d);
     QLog.d("AvGameMachineLevelUtils", 2, ((StringBuilder)localObject1).toString());
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("lowMatchine level is  api=");
-    ((StringBuilder)localObject1).append(localMachineLevelLine1.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(localMachineLevelLine1.a);
     ((StringBuilder)localObject1).append(" cpuNum:");
-    ((StringBuilder)localObject1).append(localMachineLevelLine1.jdField_b_of_type_Int);
+    ((StringBuilder)localObject1).append(localMachineLevelLine1.b);
     ((StringBuilder)localObject1).append(" maxFreqGHZ=");
-    ((StringBuilder)localObject1).append(localMachineLevelLine1.jdField_a_of_type_Float);
+    ((StringBuilder)localObject1).append(localMachineLevelLine1.c);
     ((StringBuilder)localObject1).append(" ramSizeGB:");
-    ((StringBuilder)localObject1).append(localMachineLevelLine1.jdField_b_of_type_Float);
+    ((StringBuilder)localObject1).append(localMachineLevelLine1.d);
     QLog.d("AvGameMachineLevelUtils", 2, ((StringBuilder)localObject1).toString());
     return i;
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     return Build.MODEL.equalsIgnoreCase("MI 5C");
   }

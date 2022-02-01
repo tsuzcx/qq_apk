@@ -8,12 +8,12 @@ public class MemoryManagerApiImpl
 {
   public long getAvailClassSize()
   {
-    return MemoryManager.a();
+    return MemoryManager.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.api.impl.MemoryManagerApiImpl
  * JD-Core Version:    0.7.0.1
  */

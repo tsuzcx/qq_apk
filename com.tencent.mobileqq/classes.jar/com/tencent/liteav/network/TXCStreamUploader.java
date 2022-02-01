@@ -12,7 +12,6 @@ import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
 import com.tencent.liteav.basic.module.TXCStatus;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.f;
 import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -57,7 +56,7 @@ public class TXCStreamUploader
   private long mLastTimeStamp = 0L;
   private TXCStreamUploader.UploadStats mLastUploadStats = null;
   HashMap<String, String> mMetaData;
-  private WeakReference<com.tencent.liteav.basic.b.b> mNotifyListener = null;
+  private WeakReference<com.tencent.liteav.basic.c.b> mNotifyListener = null;
   private h mParam = null;
   private boolean mQuicChannel = false;
   private int mRetryCount = 0;
@@ -78,7 +77,7 @@ public class TXCStreamUploader
   
   static
   {
-    f.f();
+    com.tencent.liteav.basic.util.h.f();
   }
   
   public TXCStreamUploader(Context paramContext, h paramh)
@@ -269,15 +268,15 @@ public class TXCStreamUploader
     }
     if (this.mRtmpProxyEnable)
     {
-      if (this.mLastNetworkType != f.e(this.mContext))
+      if (this.mLastNetworkType != com.tencent.liteav.basic.util.h.e(this.mContext))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("reconnect network switch from ");
         ((StringBuilder)localObject1).append(this.mLastNetworkType);
         ((StringBuilder)localObject1).append(" to ");
-        ((StringBuilder)localObject1).append(f.e(this.mContext));
+        ((StringBuilder)localObject1).append(com.tencent.liteav.basic.util.h.e(this.mContext));
         TXCLog.e("TXCStreamUploader", ((StringBuilder)localObject1).toString());
-        this.mLastNetworkType = f.e(this.mContext);
+        this.mLastNetworkType = com.tencent.liteav.basic.util.h.e(this.mContext);
         this.mRetryCount = 0;
         Monitor.a(2, "WebrtcRoom: need enter again by user", "", 0);
         sendNotifyEvent(1021, String.format("Network type has changed. Need to re-enter the room", new Object[0]));
@@ -312,15 +311,15 @@ public class TXCStreamUploader
       return;
     }
     this.mUploadQualityReport.c();
-    if ((this.mEnableNearestIP) && (this.mLastNetworkType != f.e(this.mContext)))
+    if ((this.mEnableNearestIP) && (this.mLastNetworkType != com.tencent.liteav.basic.util.h.e(this.mContext)))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("reconnect network switch from ");
       ((StringBuilder)localObject1).append(this.mLastNetworkType);
       ((StringBuilder)localObject1).append(" to ");
-      ((StringBuilder)localObject1).append(f.e(this.mContext));
+      ((StringBuilder)localObject1).append(com.tencent.liteav.basic.util.h.e(this.mContext));
       TXCLog.e("TXCStreamUploader", ((StringBuilder)localObject1).toString());
-      this.mLastNetworkType = f.e(this.mContext);
+      this.mLastNetworkType = com.tencent.liteav.basic.util.h.e(this.mContext);
       this.mIntelligentRoute.a(this.mRtmpUrl, this.mChannelType);
       this.mRetryCount = 0;
       return;
@@ -772,7 +771,7 @@ public class TXCStreamUploader
   
   private void rtmpProxySendHeartBeat()
   {
-    Object localObject1 = f.a();
+    Object localObject1 = com.tencent.liteav.basic.util.h.a();
     long l1 = localObject1[0] / 10;
     long l2 = localObject1[1] / 10;
     long l3 = TXCStatus.c(getID(), 7004);
@@ -929,7 +928,8 @@ public class TXCStreamUploader
         ((Bundle)???).putString("EVT_MSG", "The server rejects the connection request. It may be that the push URL has been occupied or expired, or the anti-leech link is wrong.");
       }
       ((Bundle)???).putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
-      f.a(this.mNotifyListener, paramInt, (Bundle)???);
+      ((Bundle)???).putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
+      com.tencent.liteav.basic.util.h.a(this.mNotifyListener, paramInt, (Bundle)???);
     }
   }
   
@@ -940,7 +940,8 @@ public class TXCStreamUploader
       Bundle localBundle = new Bundle();
       localBundle.putString("EVT_MSG", paramString);
       localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
-      f.a(this.mNotifyListener, paramInt, localBundle);
+      localBundle.putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
+      com.tencent.liteav.basic.util.h.a(this.mNotifyListener, paramInt, localBundle);
     }
     else
     {
@@ -1233,7 +1234,7 @@ public class TXCStreamUploader
     }
   }
   
-  public void setNotifyListener(com.tencent.liteav.basic.b.b paramb)
+  public void setNotifyListener(com.tencent.liteav.basic.c.b paramb)
   {
     this.mNotifyListener = new WeakReference(paramb);
   }
@@ -1360,7 +1361,7 @@ public class TXCStreamUploader
     localStringBuilder.append("channel type:");
     localStringBuilder.append(paramInt);
     TXCLog.i("TXCStreamUploader", localStringBuilder.toString());
-    if (f.e(this.mContext) == 0)
+    if (com.tencent.liteav.basic.util.h.e(this.mContext) == 0)
     {
       sendNotifyEvent(-1325);
       return this.mRtmpUrl;
@@ -1375,14 +1376,14 @@ public class TXCStreamUploader
     parseProxyInfo(paramString);
     if (this.mRtmpProxyEnable)
     {
-      this.mLastNetworkType = f.e(this.mContext);
+      this.mLastNetworkType = com.tencent.liteav.basic.util.h.e(this.mContext);
       nativeCacheJNIParams();
       startPushTask(this.mRtmpUrl, this.mQuicChannel, 0);
     }
-    else if ((this.mEnableNearestIP) && (this.mLastNetworkType != f.e(this.mContext)))
+    else if ((this.mEnableNearestIP) && (this.mLastNetworkType != com.tencent.liteav.basic.util.h.e(this.mContext)))
     {
       TXCLog.i("TXCStreamUploader", "fetching nearest ip list");
-      this.mLastNetworkType = f.e(this.mContext);
+      this.mLastNetworkType = com.tencent.liteav.basic.util.h.e(this.mContext);
       this.mIntelligentRoute.a(paramString, paramInt);
     }
     else
@@ -1429,7 +1430,7 @@ public class TXCStreamUploader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.TXCStreamUploader
  * JD-Core Version:    0.7.0.1
  */

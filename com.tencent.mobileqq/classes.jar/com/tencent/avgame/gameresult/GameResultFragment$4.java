@@ -17,17 +17,17 @@ class GameResultFragment$4
   
   public void run()
   {
-    if (GameResultFragment.a(this.this$0) != null)
+    if (GameResultFragment.c(this.this$0) != null)
     {
-      GameResultFragment.a(this.this$0).setDrawingCacheEnabled(true);
-      Bitmap localBitmap = GameResultFragment.a(this.this$0).getDrawingCache();
+      GameResultFragment.c(this.this$0).setDrawingCacheEnabled(true);
+      Bitmap localBitmap = GameResultFragment.c(this.this$0).getDrawingCache();
       if (localBitmap != null)
       {
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("initViewForGameKnowledge save bitmap ");
         ((StringBuilder)localObject).append(localBitmap.getWidth());
         QLog.d("GameResultFragment", 2, ((StringBuilder)localObject).toString());
-        int i = ViewUtils.a(300.0F);
+        int i = ViewUtils.dip2px(300.0F);
         localObject = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
         Canvas localCanvas = new Canvas((Bitmap)localObject);
         localCanvas.drawARGB(255, 255, 255, 255);

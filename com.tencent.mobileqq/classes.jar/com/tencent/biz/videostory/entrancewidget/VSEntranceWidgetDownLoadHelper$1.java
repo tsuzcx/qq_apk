@@ -15,38 +15,38 @@ class VSEntranceWidgetDownLoadHelper$1
   
   public void onCancel(DownloadTask paramDownloadTask)
   {
-    paramDownloadTask = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+    paramDownloadTask = this.a;
     if (paramDownloadTask != null) {
-      paramDownloadTask.onDownloadCanceled(this.jdField_a_of_type_JavaLangString);
+      paramDownloadTask.onDownloadCanceled(this.b);
     }
-    VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper$DownLoadStatus, 3);
+    VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.c, 3);
     QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "onDownloadCanceled" });
   }
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramDownloadTask.a == 0)
+    if (paramDownloadTask.c == 0)
     {
-      if (new File(VSEntranceWidgetDownLoadHelper.jdField_a_of_type_JavaLangString).exists())
+      if (new File(VSEntranceWidgetDownLoadHelper.a).exists())
       {
-        paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
+        paramDownloadTask = new File(this.b);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(VSEntranceWidgetDownLoadHelper.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(VSEntranceWidgetDownLoadHelper.a);
         localStringBuilder.append("/");
-        localStringBuilder.append(this.b);
+        localStringBuilder.append(this.d);
         boolean bool = FileUtils.unzip(paramDownloadTask, new File(localStringBuilder.toString()));
         if (bool)
         {
-          paramDownloadTask = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+          paramDownloadTask = this.a;
           if (paramDownloadTask != null) {
-            paramDownloadTask.onDownloadSucceed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
+            paramDownloadTask.onDownloadSucceed(this.b, new DownloadResult(this.e));
           }
-          new File(this.jdField_a_of_type_JavaLangString).delete();
-          VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper$DownLoadStatus, 0);
+          new File(this.b).delete();
+          VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.c, 0);
         }
         else
         {
-          VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper$DownLoadStatus, 2);
+          VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.c, 2);
         }
         paramDownloadTask = new StringBuilder();
         paramDownloadTask.append("downLoadByIdsuccess:");
@@ -56,27 +56,27 @@ class VSEntranceWidgetDownLoadHelper$1
     }
     else
     {
-      paramDownloadTask = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+      paramDownloadTask = this.a;
       if (paramDownloadTask != null) {
-        paramDownloadTask.onDownloadFailed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
+        paramDownloadTask.onDownloadFailed(this.b, new DownloadResult(this.e));
       }
-      VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper$DownLoadStatus, 2);
+      VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.c, 2);
       QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByIdonDownloadFailed:" });
     }
   }
   
   public void onProgress(DownloadTask paramDownloadTask)
   {
-    paramDownloadTask = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+    paramDownloadTask = this.a;
     if (paramDownloadTask != null) {
-      paramDownloadTask.onDownloadProgress(this.jdField_a_of_type_JavaLangString, 0L, 0.0F);
+      paramDownloadTask.onDownloadProgress(this.b, 0L, 0.0F);
     }
-    VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetDownLoadHelper$DownLoadStatus, 1);
+    VSEntranceWidgetDownLoadHelper.DownLoadStatus.a(this.c, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetDownLoadHelper.1
  * JD-Core Version:    0.7.0.1
  */

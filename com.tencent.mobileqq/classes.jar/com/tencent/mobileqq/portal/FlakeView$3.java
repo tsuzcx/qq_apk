@@ -12,7 +12,7 @@ class FlakeView$3
     try
     {
       this.this$0.a = BitmapFactory.decodeFile(this.a);
-      this.this$0.e = true;
+      this.this$0.r = true;
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -23,7 +23,7 @@ class FlakeView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.FlakeView.3
  * JD-Core Version:    0.7.0.1
  */

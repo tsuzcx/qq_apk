@@ -11,20 +11,20 @@ class SmallScreenActivityPluginHelperApiImpl$1
   
   public void run()
   {
-    long l = this.jdField_a_of_type_Long;
-    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp();
+    long l = this.a;
+    BaseApplication localBaseApplication = this.b.getApp();
     boolean bool;
-    if ((this.jdField_a_of_type_Boolean) && (this.b) && (!this.c)) {
+    if ((this.c) && (this.d) && (!this.e)) {
       bool = true;
     } else {
       bool = false;
     }
-    SmallScreenUtils.a(l, 2, localBaseApplication, bool, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getCurrentAccountUin(), this.d);
+    SmallScreenUtils.a(l, 2, localBaseApplication, bool, this.b.getCurrentAccountUin(), this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.api.impl.SmallScreenActivityPluginHelperApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ public class IliveJumpParser
     if (paramString.startsWith("mqqapi://vaslive"))
     {
       paramBaseQQAppInterface = new IliveJumpAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-      paramBaseQQAppInterface.a = paramString;
-      paramBaseQQAppInterface.b = "vaslive";
+      paramBaseQQAppInterface.c = paramString;
+      paramBaseQQAppInterface.d = "vaslive";
       if (paramString.startsWith("mqqapi://vaslive/watch")) {
-        paramBaseQQAppInterface.c = "watch";
+        paramBaseQQAppInterface.e = "watch";
       } else if (paramString.startsWith("mqqapi://vaslive/myshopping")) {
-        paramBaseQQAppInterface.c = "mqqapi://vaslive/myshopping";
+        paramBaseQQAppInterface.e = "mqqapi://vaslive/myshopping";
       }
       paramContext = paramString.split("\\?");
       if (paramContext.length != 2) {
@@ -44,7 +44,7 @@ public class IliveJumpParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.IliveJumpParser
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.trtc;
 public class TRTCStatistics$TRTCLocalStatistics
 {
   public int audioBitrate;
+  public int audioCaptureState;
   public int audioSampleRate;
   public int frameRate;
   public int height;

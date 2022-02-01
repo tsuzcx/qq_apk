@@ -16,10 +16,10 @@ public class BottomVideoInfoWidget$GetUserInfoReceiver
   
   public void a(@NonNull BottomVideoInfoWidget paramBottomVideoInfoWidget, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if (paramUpdateUserInfoEvent.a.isSuccess())
+    if (paramUpdateUserInfoEvent.g.isSuccess())
     {
-      SLog.a(paramBottomVideoInfoWidget.b, "receive user info event. %s.", paramUpdateUserInfoEvent.toString());
-      paramBottomVideoInfoWidget.i();
+      SLog.a(paramBottomVideoInfoWidget.i, "receive user info event. %s.", paramUpdateUserInfoEvent.toString());
+      paramBottomVideoInfoWidget.x();
     }
   }
   

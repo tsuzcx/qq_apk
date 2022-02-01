@@ -39,24 +39,24 @@ import org.json.JSONObject;
 
 public class DynamicChannelDataModule
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private ConcurrentHashMap<Integer, ConcurrentHashMap<String, DynamicChannelDataModel>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  private ConcurrentHashMap<Integer, ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig> b = new ConcurrentHashMap();
+  private EntityManager a;
+  private ExecutorService b;
+  private Handler c;
+  private ConcurrentHashMap<Integer, ConcurrentHashMap<String, DynamicChannelDataModel>> d = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig> e = new ConcurrentHashMap();
   
   public DynamicChannelDataModule(EntityManager paramEntityManager, Handler paramHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.a = paramEntityManager;
+    this.b = MonitorTimeExecutor.a();
+    this.c = paramHandler;
   }
   
   public static DynamicChannelDataModule a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.b();
     if (localQQAppInterface != null) {
-      return ((ReadInJoyLogicManager)localQQAppInterface.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().a();
+      return ((ReadInJoyLogicManager)localQQAppInterface.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().f();
     }
     return null;
   }
@@ -183,7 +183,7 @@ public class DynamicChannelDataModule
       }
       if (localArrayList.size() > 0)
       {
-        b(paramInt);
+        d(paramInt);
         a(true, paramInt, true, paramBoolean, a(paramInt, localArrayList, true));
       }
       return localArrayList;
@@ -192,90 +192,18 @@ public class DynamicChannelDataModule
     return null;
   }
   
-  private JSONObject a(int paramInt1, int paramInt2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject1 = ReadInJoyUtils.b();
-        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-        if (bool) {
-          localObject1 = "";
-        }
-        localJSONObject.put("imei", localObject1);
-        localJSONObject.put("platform", "Android");
-        localJSONObject.put("qqVersionID", "8.7.0");
-        localObject2 = (QQAppInterface)ReadInJoyUtils.a();
-        localObject1 = ((QQAppInterface)localObject2).getAccount();
-        localObject2 = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
-        localJSONObject.put("uin", localObject1);
-        if (localObject2 == null) {
-          localObject1 = "";
-        } else {
-          localObject1 = ReadInJoyWebDataManager.a((String)localObject2);
-        }
-        localJSONObject.put("token", localObject1);
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("readinjoy_dynamic_channel_cookie_");
-        ((StringBuilder)localObject1).append(paramInt1);
-        localJSONObject.put("cookieString", RIJSPUtils.a(((StringBuilder)localObject1).toString(), ""));
-        if (paramInt2 == 2) {
-          break label337;
-        }
-        if (paramInt2 != 1) {
-          break label332;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        Object localObject1;
-        Object localObject2;
-        QLog.d("DynamicChannelDataModule", 2, "makeRequestParams, e = ", localJSONException);
-      }
-      localJSONObject.put("isPullDownRefresh", i);
-      localObject1 = new JSONArray();
-      localObject2 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
-      if ((paramInt2 == 0) && (localObject2 != null))
-      {
-        localObject2 = ((ConcurrentHashMap)localObject2).keySet().iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          ((JSONArray)localObject1).put((String)((Iterator)localObject2).next());
-          continue;
-        }
-      }
-      localJSONObject.put("dataIDList", localObject1);
-      QLog.d("DynamicChannelDataModule", 2, new Object[] { "makeRequestParams params = ", localJSONObject });
-      return localJSONObject;
-      label332:
-      paramInt2 = 0;
-      break label339;
-      label337:
-      paramInt2 = 1;
-      label339:
-      if (paramInt2 != 0) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-    }
-  }
-  
   private JSONObject a(JSONObject paramJSONObject, int paramInt)
   {
-    Object localObject = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramInt));
+    Object localObject = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.d(paramInt));
     if (localObject != null)
     {
-      localObject = ((TemplateFactory)localObject).a();
+      localObject = ((TemplateFactory)localObject).f();
       if (localObject != null)
       {
         String str = ((DynamicChannelConfig)localObject).a("dp_environment_id");
-        localObject = (ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)this.b.get(Integer.valueOf(paramInt));
+        localObject = (ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)this.e.get(Integer.valueOf(paramInt));
         if (localObject != null) {
-          localObject = ((ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)localObject).c;
+          localObject = ((ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)localObject).d;
         } else {
           localObject = "";
         }
@@ -308,52 +236,29 @@ public class DynamicChannelDataModule
     if (paramDynamicChannelDataModel == null) {
       return;
     }
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.d.get(Integer.valueOf(paramInt));
     Object localObject = localConcurrentHashMap;
     if (localConcurrentHashMap == null)
     {
       localObject = new ConcurrentHashMap();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject);
+      this.d.put(Integer.valueOf(paramInt), localObject);
     }
     ((ConcurrentHashMap)localObject).put(paramDynamicChannelDataModel.uniqueID, paramDynamicChannelDataModel);
     if (paramBoolean)
     {
       localObject = new DynamicChannelDataModule.9(this, paramDynamicChannelDataModel);
-      if (a())
+      if (c())
       {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute((Runnable)localObject);
+        this.b.execute((Runnable)localObject);
         return;
       }
       QLog.d("DynamicChannelDataModule", 2, new Object[] { "saveDataModel failed, dataModel = ", paramDynamicChannelDataModel });
     }
   }
   
-  private void a(Entity paramEntity)
-  {
-    if (((paramEntity instanceof DynamicChannelDataModel)) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.tabbleIsExist(DynamicChannelDataModel.class.getSimpleName())))
-    {
-      paramEntity = (DynamicChannelDataModel)paramEntity;
-      paramEntity = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(DynamicChannelDataModel.class, "uniqueID = ? and channelID = ?", new String[] { paramEntity.uniqueID, String.valueOf(paramEntity.channelID) });
-    }
-    else
-    {
-      paramEntity = null;
-    }
-    if (paramEntity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramEntity);
-    }
-    QLog.d("DynamicChannelDataModule", 2, new Object[] { "removeEntityIfExistsInDB entity = ", paramEntity });
-  }
-  
   private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, List<DynamicChannelDataModel> paramList)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new DynamicChannelDataModule.7(this, paramBoolean1, paramInt, paramBoolean2, paramBoolean3, paramList));
-  }
-  
-  private boolean a()
-  {
-    ExecutorService localExecutorService = this.jdField_a_of_type_JavaUtilConcurrentExecutorService;
-    return (localExecutorService != null) && (!localExecutorService.isShutdown());
+    this.c.post(new DynamicChannelDataModule.7(this, paramBoolean1, paramInt, paramBoolean2, paramBoolean3, paramList));
   }
   
   private boolean a(int paramInt, DynamicChannelDataModel paramDynamicChannelDataModel)
@@ -362,7 +267,7 @@ public class DynamicChannelDataModule
     if (paramDynamicChannelDataModel == null) {
       return false;
     }
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.d.get(Integer.valueOf(paramInt));
     boolean bool1 = bool2;
     if (localConcurrentHashMap != null)
     {
@@ -379,7 +284,7 @@ public class DynamicChannelDataModule
     if ((paramJSONArray != null) && (paramJSONArray.length() != 0))
     {
       ArrayList localArrayList = new ArrayList();
-      long l1 = a(paramInt) + 1L;
+      long l1 = c(paramInt) + 1L;
       int i = 0;
       while (i < paramJSONArray.length())
       {
@@ -423,19 +328,19 @@ public class DynamicChannelDataModule
   {
     long l = System.currentTimeMillis();
     QLog.d("DynamicChannelDataModule", 1, "preProcessReqData, begin.");
-    Object localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramInt));
+    Object localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.d(paramInt));
     Object localObject1 = paramJSONObject;
     JSONObject localJSONObject;
     if (localObject2 != null)
     {
-      localObject2 = ((TemplateFactory)localObject2).a();
+      localObject2 = ((TemplateFactory)localObject2).f();
       localObject1 = paramJSONObject;
       if (localObject2 != null)
       {
         localObject2 = ((DynamicChannelConfig)localObject2).a("dp_environment_id");
-        localObject1 = (ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)this.b.get(Integer.valueOf(paramInt));
+        localObject1 = (ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)this.e.get(Integer.valueOf(paramInt));
         if (localObject1 != null) {
-          localObject1 = ((ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)localObject1).b;
+          localObject1 = ((ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)localObject1).c;
         } else {
           localObject1 = "";
         }
@@ -460,27 +365,16 @@ public class DynamicChannelDataModule
     return localJSONObject;
   }
   
-  private void b(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
-    if (a())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new DynamicChannelDataModule.10(this, paramInt));
-      return;
-    }
-    QLog.d("DynamicChannelDataModule", 2, "clearDataModelList failed.");
-  }
-  
   private void b(int paramInt1, int paramInt2)
   {
-    Object localObject = (ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)this.b.get(Integer.valueOf(paramInt1));
+    Object localObject = (ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)this.e.get(Integer.valueOf(paramInt1));
     if (localObject != null) {
       localObject = ((ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig)localObject).a;
     } else {
       localObject = "";
     }
-    JSONObject localJSONObject = b(a(paramInt1, paramInt2), paramInt1);
-    Bundle localBundle = JSONUtils.a(localJSONObject);
+    JSONObject localJSONObject = b(c(paramInt1, paramInt2), paramInt1);
+    Bundle localBundle = JSONUtils.b(localJSONObject);
     HashMap localHashMap = new HashMap();
     localHashMap.put("BUNDLE", localBundle);
     localHashMap.put("CONTEXT", BaseApplicationImpl.getApplication());
@@ -498,9 +392,229 @@ public class DynamicChannelDataModule
     new HttpWebCgiAsyncTask2(JSONUtils.a(localJSONObject, (String)localObject), "POST", new DynamicChannelDataModule.6(this, paramInt1), 1000, localBundle).a(localHashMap);
   }
   
-  public long a(int paramInt)
+  private void b(Entity paramEntity)
   {
-    Object localObject = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (((paramEntity instanceof DynamicChannelDataModel)) && (this.a.tabbleIsExist(DynamicChannelDataModel.class.getSimpleName())))
+    {
+      paramEntity = (DynamicChannelDataModel)paramEntity;
+      paramEntity = this.a.find(DynamicChannelDataModel.class, "uniqueID = ? and channelID = ?", new String[] { paramEntity.uniqueID, String.valueOf(paramEntity.channelID) });
+    }
+    else
+    {
+      paramEntity = null;
+    }
+    if (paramEntity != null) {
+      this.a.remove(paramEntity);
+    }
+    QLog.d("DynamicChannelDataModule", 2, new Object[] { "removeEntityIfExistsInDB entity = ", paramEntity });
+  }
+  
+  private JSONObject c(int paramInt1, int paramInt2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localObject1 = ReadInJoyUtils.c();
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+        if (bool) {
+          localObject1 = "";
+        }
+        localJSONObject.put("imei", localObject1);
+        localJSONObject.put("platform", "Android");
+        localJSONObject.put("qqVersionID", "8.8.17");
+        localObject2 = (QQAppInterface)ReadInJoyUtils.b();
+        localObject1 = ((QQAppInterface)localObject2).getAccount();
+        localObject2 = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
+        localJSONObject.put("uin", localObject1);
+        if (localObject2 == null) {
+          localObject1 = "";
+        } else {
+          localObject1 = ReadInJoyWebDataManager.a((String)localObject2);
+        }
+        localJSONObject.put("token", localObject1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("readinjoy_dynamic_channel_cookie_");
+        ((StringBuilder)localObject1).append(paramInt1);
+        localJSONObject.put("cookieString", RIJSPUtils.b(((StringBuilder)localObject1).toString(), ""));
+        if (paramInt2 == 2) {
+          break label337;
+        }
+        if (paramInt2 != 1) {
+          break label332;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        Object localObject1;
+        Object localObject2;
+        QLog.d("DynamicChannelDataModule", 2, "makeRequestParams, e = ", localJSONException);
+      }
+      localJSONObject.put("isPullDownRefresh", i);
+      localObject1 = new JSONArray();
+      localObject2 = (ConcurrentHashMap)this.d.get(Integer.valueOf(paramInt1));
+      if ((paramInt2 == 0) && (localObject2 != null))
+      {
+        localObject2 = ((ConcurrentHashMap)localObject2).keySet().iterator();
+        if (((Iterator)localObject2).hasNext())
+        {
+          ((JSONArray)localObject1).put((String)((Iterator)localObject2).next());
+          continue;
+        }
+      }
+      localJSONObject.put("dataIDList", localObject1);
+      QLog.d("DynamicChannelDataModule", 2, new Object[] { "makeRequestParams params = ", localJSONObject });
+      return localJSONObject;
+      label332:
+      paramInt2 = 0;
+      break label339;
+      label337:
+      paramInt2 = 1;
+      label339:
+      if (paramInt2 != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    }
+  }
+  
+  private boolean c()
+  {
+    ExecutorService localExecutorService = this.b;
+    return (localExecutorService != null) && (!localExecutorService.isShutdown());
+  }
+  
+  private void d(int paramInt)
+  {
+    this.d.remove(Integer.valueOf(paramInt));
+    if (c())
+    {
+      this.b.execute(new DynamicChannelDataModule.10(this, paramInt));
+      return;
+    }
+    QLog.d("DynamicChannelDataModule", 2, "clearDataModelList failed.");
+  }
+  
+  public void a(int paramInt)
+  {
+    if (c())
+    {
+      this.b.execute(new DynamicChannelDataModule.3(this, paramInt));
+      return;
+    }
+    QLog.d("DynamicChannelDataModule", 2, "pullDownRefresh failed.");
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    QLog.d("DynamicChannelDataModule", 2, new Object[] { "loadDataFromDB, channelID = ", Integer.valueOf(paramInt1), ", count = ", Integer.valueOf(paramInt2) });
+    Object localObject = b(paramInt1);
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      this.c.post(new DynamicChannelDataModule.1(this, paramInt1, (List)localObject));
+      return;
+    }
+    localObject = new DynamicChannelDataModule.2(this, paramInt1, paramInt2);
+    if (c())
+    {
+      this.b.execute((Runnable)localObject);
+      return;
+    }
+    QLog.d("DynamicChannelDataModule", 2, "loadDataFromDB failed, executor is not available.");
+  }
+  
+  public void a(int paramInt1, long paramLong, int paramInt2)
+  {
+    Object localObject = CollectionUtils.a(b(paramInt1), new DynamicChannelDataModule.4(this, paramLong));
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      a(false, paramInt1, true, true, (List)localObject);
+      return;
+    }
+    localObject = new DynamicChannelDataModule.5(this, paramInt1, paramLong, paramInt2);
+    if (c())
+    {
+      this.b.execute((Runnable)localObject);
+      return;
+    }
+    QLog.d("DynamicChannelDataModule", 2, "pullUpLoadMore failed.");
+  }
+  
+  public void a(int paramInt, ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig paramOfflineBodyConfig)
+  {
+    if ((paramInt != -1) && (paramOfflineBodyConfig != null))
+    {
+      this.e.put(Integer.valueOf(paramInt), paramOfflineBodyConfig);
+      return;
+    }
+    QLog.d("DynamicChannelDataModule", 2, "channelID of config is not valid.");
+  }
+  
+  public boolean a(Entity paramEntity)
+  {
+    try
+    {
+      int i = paramEntity.getStatus();
+      boolean bool = false;
+      if (i == 1000)
+      {
+        b(paramEntity);
+        this.a.persistOrReplace(paramEntity);
+        i = paramEntity.getStatus();
+        if (i == 1001) {
+          bool = true;
+        }
+        return bool;
+      }
+      if (paramEntity.getStatus() != 1001)
+      {
+        i = paramEntity.getStatus();
+        if (i != 1002) {
+          return false;
+        }
+      }
+      bool = this.a.update(paramEntity);
+      return bool;
+    }
+    finally {}
+  }
+  
+  public List<DynamicChannelDataModel> b(int paramInt)
+  {
+    Object localObject = (ConcurrentHashMap)this.d.get(Integer.valueOf(paramInt));
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).size() != 0))
+    {
+      ArrayList localArrayList = new ArrayList(((ConcurrentHashMap)localObject).size());
+      localObject = ((ConcurrentHashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)((Iterator)localObject).next();
+        if (localDynamicChannelDataModel != null) {
+          localArrayList.add(localDynamicChannelDataModel);
+        }
+      }
+      Collections.sort(localArrayList, new DynamicChannelDataModule.8(this));
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    this.d.clear();
+    this.e.clear();
+    ExecutorService localExecutorService = this.b;
+    if (localExecutorService != null) {
+      localExecutorService.shutdownNow();
+    }
+  }
+  
+  public long c(int paramInt)
+  {
+    Object localObject = (ConcurrentHashMap)this.d.get(Integer.valueOf(paramInt));
     long l1 = -1L;
     long l2 = l1;
     if (localObject != null)
@@ -520,124 +634,10 @@ public class DynamicChannelDataModule
     }
     return l2;
   }
-  
-  public List<DynamicChannelDataModel> a(int paramInt)
-  {
-    Object localObject = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if ((localObject != null) && (((ConcurrentHashMap)localObject).size() != 0))
-    {
-      ArrayList localArrayList = new ArrayList(((ConcurrentHashMap)localObject).size());
-      localObject = ((ConcurrentHashMap)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)((Iterator)localObject).next();
-        if (localDynamicChannelDataModel != null) {
-          localArrayList.add(localDynamicChannelDataModel);
-        }
-      }
-      Collections.sort(localArrayList, new DynamicChannelDataModule.8(this));
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.b.clear();
-    ExecutorService localExecutorService = this.jdField_a_of_type_JavaUtilConcurrentExecutorService;
-    if (localExecutorService != null) {
-      localExecutorService.shutdownNow();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new DynamicChannelDataModule.3(this, paramInt));
-      return;
-    }
-    QLog.d("DynamicChannelDataModule", 2, "pullDownRefresh failed.");
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    QLog.d("DynamicChannelDataModule", 2, new Object[] { "loadDataFromDB, channelID = ", Integer.valueOf(paramInt1), ", count = ", Integer.valueOf(paramInt2) });
-    Object localObject = a(paramInt1);
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new DynamicChannelDataModule.1(this, paramInt1, (List)localObject));
-      return;
-    }
-    localObject = new DynamicChannelDataModule.2(this, paramInt1, paramInt2);
-    if (a())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute((Runnable)localObject);
-      return;
-    }
-    QLog.d("DynamicChannelDataModule", 2, "loadDataFromDB failed, executor is not available.");
-  }
-  
-  public void a(int paramInt1, long paramLong, int paramInt2)
-  {
-    Object localObject = CollectionUtils.a(a(paramInt1), new DynamicChannelDataModule.4(this, paramLong));
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      a(false, paramInt1, true, true, (List)localObject);
-      return;
-    }
-    localObject = new DynamicChannelDataModule.5(this, paramInt1, paramLong, paramInt2);
-    if (a())
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute((Runnable)localObject);
-      return;
-    }
-    QLog.d("DynamicChannelDataModule", 2, "pullUpLoadMore failed.");
-  }
-  
-  public void a(int paramInt, ReadInJoyDynamicChannelBaseFragment.OfflineBodyConfig paramOfflineBodyConfig)
-  {
-    if ((paramInt != -1) && (paramOfflineBodyConfig != null))
-    {
-      this.b.put(Integer.valueOf(paramInt), paramOfflineBodyConfig);
-      return;
-    }
-    QLog.d("DynamicChannelDataModule", 2, "channelID of config is not valid.");
-  }
-  
-  public boolean a(Entity paramEntity)
-  {
-    try
-    {
-      int i = paramEntity.getStatus();
-      boolean bool = false;
-      if (i == 1000)
-      {
-        a(paramEntity);
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-        i = paramEntity.getStatus();
-        if (i == 1001) {
-          bool = true;
-        }
-        return bool;
-      }
-      if (paramEntity.getStatus() != 1001)
-      {
-        i = paramEntity.getStatus();
-        if (i != 1002) {
-          return false;
-        }
-      }
-      bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
-      return bool;
-    }
-    finally {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.DynamicChannelDataModule
  * JD-Core Version:    0.7.0.1
  */

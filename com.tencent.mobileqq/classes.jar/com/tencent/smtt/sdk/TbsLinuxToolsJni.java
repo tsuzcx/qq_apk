@@ -30,19 +30,10 @@ class TbsLinuxToolsJni
       b = true;
       try
       {
-        Object localObject2;
-        if (TbsShareManager.isThirdPartyApp(paramContext))
-        {
-          localObject2 = TbsShareManager.a();
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = TbsShareManager.c(paramContext);
-          }
-          localObject1 = new File((String)localObject1);
-        }
-        else
-        {
-          localObject1 = p.a().q(paramContext);
+        if (TbsShareManager.isThirdPartyApp(paramContext)) {
+          localObject1 = new File(TbsShareManager.a());
+        } else {
+          localObject1 = p.a().r(paramContext);
         }
         if (localObject1 != null)
         {
@@ -50,12 +41,12 @@ class TbsLinuxToolsJni
           localStringBuilder.append(((File)localObject1).getAbsolutePath());
           localStringBuilder.append(File.separator);
           localStringBuilder.append("liblinuxtoolsfortbssdk_jni.so");
-          localObject2 = localObject1;
+          Object localObject2 = localObject1;
           if (!new File(localStringBuilder.toString()).exists())
           {
             localObject2 = localObject1;
             if (!TbsShareManager.isThirdPartyApp(paramContext)) {
-              localObject2 = p.a().p(paramContext);
+              localObject2 = p.a().q(paramContext);
             }
           }
           if (localObject2 != null)
@@ -102,7 +93,7 @@ class TbsLinuxToolsJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLinuxToolsJni
  * JD-Core Version:    0.7.0.1
  */

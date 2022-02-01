@@ -23,118 +23,50 @@ import mqq.app.AppRuntime;
 public class MaterialViewModel
   extends ViewModel
 {
-  private int jdField_a_of_type_Int;
-  private final MutableLiveData<Pair<Integer, String>> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private String jdField_a_of_type_JavaLangString;
-  private List<MetaCategory> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private final MutableLiveData<Boolean> jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private List<MetaCategory> jdField_b_of_type_JavaUtilList;
-  private int jdField_c_of_type_Int = -1;
-  private List<MetaCategory> jdField_c_of_type_JavaUtilList;
-  private List<MetaCategory> d;
-  private List<MetaCategory> e;
-  private List<MetaCategory> f;
+  private int a;
+  private String b;
+  private boolean c;
+  private final MutableLiveData<Pair<Integer, String>> d = new MutableLiveData();
+  private final MutableLiveData<Boolean> e = new MutableLiveData();
+  private int f;
+  private List<MetaCategory> g;
+  private List<MetaCategory> h;
+  private List<MetaCategory> i;
+  private List<MetaCategory> j;
+  private List<MetaCategory> k;
+  private List<MetaCategory> l;
+  private int m = -1;
   
   private boolean a(@NonNull Bundle paramBundle, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString(paramString, null);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.b = paramBundle.getString(paramString, null);
+    if (!TextUtils.isEmpty(this.b))
     {
-      AEQLog.b("MaterialViewModel", String.format("jump from scheme, materialType=%s, materialId=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
+      AEQLog.b("MaterialViewModel", String.format("jump from scheme, materialType=%s, materialId=%s", new Object[] { Integer.valueOf(this.a), this.b }));
       paramBundle.putString(paramString, "");
-      this.jdField_a_of_type_Int = paramInt;
+      this.a = paramInt;
       return true;
     }
     return false;
   }
   
-  public int a()
-  {
-    Object localObject1 = new MaterialViewModel.1(this).entrySet().iterator();
-    int i = -1;
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      k = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
-      if (localObject2 != null)
-      {
-        localObject2 = (List)((Map.Entry)localObject2).getValue();
-        if (localObject2 != null)
-        {
-          localObject2 = ((List)localObject2).iterator();
-          j = i;
-          do
-          {
-            i = j;
-            if (!((Iterator)localObject2).hasNext()) {
-              break;
-            }
-            localObject3 = (MetaCategory)((Iterator)localObject2).next();
-          } while ((localObject3 == null) || (((MetaCategory)localObject3).materials == null));
-          localObject3 = ((MetaCategory)localObject3).materials.iterator();
-          i = j;
-          for (;;)
-          {
-            j = i;
-            if (!((Iterator)localObject3).hasNext()) {
-              break;
-            }
-            MetaMaterial localMetaMaterial = (MetaMaterial)((Iterator)localObject3).next();
-            if (localMetaMaterial != null)
-            {
-              this.jdField_c_of_type_Int = MetaMaterialKt.a(localMetaMaterial, this.jdField_c_of_type_Int);
-              if (this.jdField_c_of_type_Int == MetaMaterialKt.b(localMetaMaterial)) {
-                i = k;
-              }
-            }
-          }
-        }
-      }
-    }
-    localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject2 = AECameraPrefsUtil.a();
-    Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(((AppRuntime)localObject1).getAccount());
-    ((StringBuilder)localObject3).append("SP_KEY_RED_POINT_TIME_STAMP");
-    int j = ((AECameraPrefsUtil)localObject2).a(((StringBuilder)localObject3).toString(), -1, 0);
-    int k = this.jdField_c_of_type_Int;
-    if ((k != -1) && (k > j))
-    {
-      if (k <= (int)(System.currentTimeMillis() / 1000L)) {
-        return -1;
-      }
-      return i;
-    }
-    return -1;
-  }
-  
   public LiveData<Pair<Integer, String>> a()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Int += 1;
-    if (this.jdField_b_of_type_Int == 6) {
-      this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.postValue(Boolean.valueOf(true));
-    }
+    return this.d;
   }
   
   public void a(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Int) {
+    if (paramInt != this.a) {
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.b)) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(new Pair(Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString));
+      this.c = true;
+      this.d.postValue(new Pair(Integer.valueOf(paramInt), this.b));
     }
   }
   
@@ -163,47 +95,136 @@ public class MaterialViewModel
   
   public void a(List<MetaCategory> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
+    this.g = paramList;
   }
   
   public LiveData<Boolean> b()
   {
-    return this.jdField_b_of_type_AndroidxLifecycleMutableLiveData;
+    return this.e;
   }
   
   public void b(List<MetaCategory> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList = paramList;
+    this.h = paramList;
+  }
+  
+  public void c()
+  {
+    this.f += 1;
+    if (this.f == 6) {
+      this.e.postValue(Boolean.valueOf(true));
+    }
   }
   
   public void c(List<MetaCategory> paramList)
   {
-    this.jdField_c_of_type_JavaUtilList = paramList;
+    this.i = paramList;
+  }
+  
+  public int d()
+  {
+    Object localObject3 = new MaterialViewModel.1(this).entrySet().iterator();
+    Object localObject1 = "";
+    int i1 = -1;
+    int n = -1;
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject2 = (Map.Entry)((Iterator)localObject3).next();
+      int i4 = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
+      if (localObject2 != null)
+      {
+        localObject2 = (List)((Map.Entry)localObject2).getValue();
+        if (localObject2 != null)
+        {
+          localObject4 = ((List)localObject2).iterator();
+          i3 = n;
+          localObject2 = localObject1;
+          i2 = i1;
+          do
+          {
+            i1 = i2;
+            localObject1 = localObject2;
+            n = i3;
+            if (!((Iterator)localObject4).hasNext()) {
+              break;
+            }
+            localObject1 = (MetaCategory)((Iterator)localObject4).next();
+          } while ((localObject1 == null) || (((MetaCategory)localObject1).materials == null));
+          Iterator localIterator = ((MetaCategory)localObject1).materials.iterator();
+          i1 = i3;
+          localObject1 = localObject2;
+          n = i2;
+          for (;;)
+          {
+            i2 = n;
+            localObject2 = localObject1;
+            i3 = i1;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localObject2 = (MetaMaterial)localIterator.next();
+            if (localObject2 != null)
+            {
+              this.m = MetaMaterialKt.c((MetaMaterial)localObject2, this.m);
+              if (this.m == MetaMaterialKt.f((MetaMaterial)localObject2))
+              {
+                localObject1 = ((MetaMaterial)localObject2).id;
+                i1 = this.m;
+                n = i4;
+              }
+            }
+          }
+        }
+      }
+    }
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+    localObject3 = AECameraPrefsUtil.a();
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(((AppRuntime)localObject2).getAccount());
+    ((StringBuilder)localObject4).append("SP_KEY_RED_POINT_TIME_STAMP");
+    int i2 = ((AECameraPrefsUtil)localObject3).b(((StringBuilder)localObject4).toString(), -1, 0);
+    int i3 = this.m;
+    if ((i3 != -1) && (i3 > i2))
+    {
+      if (i3 <= (int)(System.currentTimeMillis() / 1000L)) {
+        return -1;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("redpoint info:redpoint view:");
+      ((StringBuilder)localObject2).append(i1);
+      ((StringBuilder)localObject2).append(", material: ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(", redpoint timestamp: ");
+      ((StringBuilder)localObject2).append(n);
+      AEQLog.b("MaterialViewModel", ((StringBuilder)localObject2).toString());
+      return i1;
+    }
+    return -1;
   }
   
   public void d(List<MetaCategory> paramList)
   {
-    this.d = paramList;
+    this.j = paramList;
+  }
+  
+  public int e()
+  {
+    return this.m;
   }
   
   public void e(List<MetaCategory> paramList)
   {
-    this.e = paramList;
+    this.k = paramList;
   }
   
   public void f(List<MetaCategory> paramList)
   {
-    this.f = paramList;
+    this.l = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.MaterialViewModel
  * JD-Core Version:    0.7.0.1
  */

@@ -14,11 +14,11 @@ import java.util.List;
 public class BlockPart
   extends Part
 {
-  private final int a;
-  protected BlockContainer a;
-  protected final ArrayList<MultiViewBlock> a;
-  private int b;
-  private int c;
+  protected final ArrayList<MultiViewBlock> a = new ArrayList();
+  protected BlockContainer b;
+  private final int d;
+  private int e;
+  private int f;
   
   public BlockPart()
   {
@@ -37,18 +37,17 @@ public class BlockPart
   
   public BlockPart(int paramInt1, List<MultiViewBlock> paramList, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.a.addAll(paramList);
     }
-    this.c = paramInt2;
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.f = paramInt2;
+    this.e = paramInt3;
+    this.d = paramInt1;
   }
   
   public BlockContainer a()
   {
-    return this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
+    return this.b;
   }
   
   protected BlockContainer a(Context paramContext)
@@ -56,67 +55,67 @@ public class BlockPart
     return new BlockContainer(paramContext);
   }
   
-  public String a()
-  {
-    return "BlockPart";
-  }
-  
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((a() != null) && (a().a() != null)) {
-      a().a().a(paramInt1, paramInt2, paramIntent);
+    if ((a() != null) && (a().getBlockMerger() != null)) {
+      a().getBlockMerger().a(paramInt1, paramInt2, paramIntent);
     }
   }
   
   protected void a(View paramView)
   {
     super.a(paramView);
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = ((BlockContainer)paramView.findViewById(i));
+      this.b = ((BlockContainer)paramView.findViewById(i));
     }
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer == null) {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = a(paramView.getContext());
+    if (this.b == null) {
+      this.b = a(paramView.getContext());
     }
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setLayoutManagerType(this.c, this.b);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setBlockWrapper(this);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setParentFragment(a());
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.c();
+    this.b.setLayoutManagerType(this.f, this.e);
+    this.b.setBlockWrapper(this);
+    this.b.setParentFragment(d());
+    this.b.a(this.a);
+    this.b.e();
   }
   
-  public boolean a()
+  public String b()
   {
-    BlockContainer localBlockContainer = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
-    if ((localBlockContainer != null) && (localBlockContainer.a())) {
+    return "BlockPart";
+  }
+  
+  public boolean c()
+  {
+    BlockContainer localBlockContainer = this.b;
+    if ((localBlockContainer != null) && (localBlockContainer.b())) {
       return true;
     }
-    return super.a();
+    return super.c();
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    if ((a() != null) && (a().a() != null)) {
-      a().a().onActivityDestroyed(paramActivity);
+    if ((a() != null) && (a().getBlockMerger() != null)) {
+      a().getBlockMerger().onActivityDestroyed(paramActivity);
     }
     if (a() != null) {
-      a().b();
+      a().c();
     }
   }
   
   public void onActivityPaused(Activity paramActivity)
   {
-    if ((a() != null) && (a().a() != null)) {
-      a().a().onActivityPaused(paramActivity);
+    if ((a() != null) && (a().getBlockMerger() != null)) {
+      a().getBlockMerger().onActivityPaused(paramActivity);
     }
   }
   
   public void onActivityResumed(Activity paramActivity)
   {
-    if ((a() != null) && (a().a() != null)) {
-      a().a().onActivityResumed(paramActivity);
+    if ((a() != null) && (a().getBlockMerger() != null)) {
+      a().getBlockMerger().onActivityResumed(paramActivity);
     }
   }
   
@@ -124,15 +123,15 @@ public class BlockPart
   
   public void onActivityStarted(Activity paramActivity)
   {
-    if ((a() != null) && (a().a() != null)) {
-      a().a().onActivityStarted(paramActivity);
+    if ((a() != null) && (a().getBlockMerger() != null)) {
+      a().getBlockMerger().onActivityStarted(paramActivity);
     }
   }
   
   public void onActivityStopped(Activity paramActivity)
   {
-    if ((a() != null) && (a().a() != null)) {
-      a().a().onActivityStopped(paramActivity);
+    if ((a() != null) && (a().getBlockMerger() != null)) {
+      a().getBlockMerger().onActivityStopped(paramActivity);
     }
   }
 }

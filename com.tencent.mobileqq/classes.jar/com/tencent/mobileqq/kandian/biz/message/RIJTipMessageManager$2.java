@@ -7,14 +7,14 @@ class RIJTipMessageManager$2
 {
   RIJTipMessageManager$2(RIJTipMessageManager paramRIJTipMessageManager) {}
   
-  public void aD_()
+  public void da_()
   {
-    this.a.b();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.RIJTipMessageManager.2
  * JD-Core Version:    0.7.0.1
  */

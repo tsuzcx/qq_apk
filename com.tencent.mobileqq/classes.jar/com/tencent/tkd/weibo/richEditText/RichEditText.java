@@ -58,34 +58,29 @@ import org.json.JSONObject;
 public final class RichEditText
   extends EditText
 {
-  public static final RichEditText.Companion a;
-  private int jdField_a_of_type_Int;
+  public static final RichEditText.Companion a = new RichEditText.Companion(null);
+  private int b;
+  private boolean c;
+  private int d;
+  private boolean e = true;
+  private boolean f = true;
   @Nullable
-  private EditObjectListener jdField_a_of_type_ComTencentTkdWeiboRichEditTextEditObjectListener;
-  private final HashMap<Pair<EditObject.EditObjectType, String>, EditObject> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private Function1<? super Integer, Unit> g;
   @Nullable
-  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
+  private Function0<Unit> h;
   @Nullable
-  private Function1<? super Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  private EditObjectListener i;
   @Nullable
-  private Function2<? super Integer, ? super Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction2;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = true;
-  private boolean c = true;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText$Companion = new RichEditText.Companion(null);
-  }
+  private Function2<? super Integer, ? super Integer, Unit> j;
+  private final HashMap<Pair<EditObject.EditObjectType, String>, EditObject> k = new HashMap();
   
   public RichEditText(@NotNull Context paramContext, @NotNull AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(R.color.jdField_a_of_type_Int);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_a_of_type_ArrayOfInt);
-    setCountLimit(paramContext.getInt(R.styleable.jdField_a_of_type_Int, 12));
-    this.jdField_a_of_type_Int = paramContext.getColor(R.styleable.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+    this.b = paramContext.getResources().getColor(R.color.a);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.a);
+    setCountLimit(paramContext.getInt(R.styleable.b, 12));
+    this.b = paramContext.getColor(R.styleable.c, this.b);
     paramContext.recycle();
     a();
     b();
@@ -94,155 +89,72 @@ public final class RichEditText
   private final int a(int paramInt)
   {
     Object localObject1 = getText();
-    int i = getText().length();
-    int j = 0;
-    localObject1 = (RichSpan[])((Editable)localObject1).getSpans(0, i, RichSpan.class);
-    if ((paramInt == 0) && (!this.jdField_b_of_type_Boolean))
+    int m = getText().length();
+    int n = 0;
+    localObject1 = (RichSpan[])((Editable)localObject1).getSpans(0, m, RichSpan.class);
+    if ((paramInt == 0) && (!this.e))
     {
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "baseRichSpans");
       if (localObject1.length == 0) {
-        i = 1;
+        m = 1;
       } else {
-        i = 0;
+        m = 0;
       }
-      if (((i ^ 0x1) != 0) && (localObject1[0].a() == EditObject.EditObjectType.TYPE_TOPIC))
+      if (((m ^ 0x1) != 0) && (localObject1[0].a() == EditObject.EditObjectType.TYPE_TOPIC))
       {
-        i = 1;
-        break label92;
+        m = 1;
+        break label93;
       }
     }
-    i = 0;
-    label92:
-    if (i != 0) {
+    m = 0;
+    label93:
+    if (m != 0) {
       return getText().getSpanEnd(localObject1[0]);
     }
-    int k = localObject1.length;
-    i = j;
-    while (i < k)
+    int i1 = localObject1.length;
+    m = n;
+    while (m < i1)
     {
-      Object localObject2 = localObject1[i];
-      j = getText().getSpanStart(localObject2);
-      int m = getText().getSpanEnd(localObject2);
-      if ((j + 1 <= paramInt) && (m >= paramInt)) {
-        return m;
+      Object localObject2 = localObject1[m];
+      n = getText().getSpanStart(localObject2);
+      int i2 = getText().getSpanEnd(localObject2);
+      if ((n + 1 <= paramInt) && (i2 >= paramInt)) {
+        return i2;
       }
-      i += 1;
+      m += 1;
     }
     return paramInt;
   }
   
   private final EditObject a(String paramString, RichSpan paramRichSpan)
   {
-    EditObject localEditObject = (EditObject)this.jdField_a_of_type_JavaUtilHashMap.get(new Pair(paramRichSpan.a(), paramRichSpan.a()));
+    EditObject localEditObject = (EditObject)this.k.get(new Pair(paramRichSpan.a(), paramRichSpan.b()));
     if (localEditObject != null) {
       return localEditObject;
     }
     return new EditObject(paramString, paramRichSpan.a());
   }
   
-  private final RichSpan a(int paramInt)
-  {
-    Object localObject = (RichSpan)null;
-    Editable localEditable = getText();
-    int j = getText().length();
-    int i = 0;
-    RichSpan[] arrayOfRichSpan = (RichSpan[])localEditable.getSpans(0, j, RichSpan.class);
-    j = arrayOfRichSpan.length;
-    while (i < j)
-    {
-      localEditable = arrayOfRichSpan[i];
-      int k = getText().getSpanStart(localEditable);
-      int m = getText().getSpanEnd(localEditable);
-      if ((k + 1 <= paramInt) && (m >= paramInt)) {
-        localObject = localEditable;
-      }
-      i += 1;
-    }
-    return localObject;
-  }
-  
-  private final String a(int paramInt1, int paramInt2)
-  {
-    Object localObject1 = getText().toString();
-    if (localObject1 != null)
-    {
-      localObject1 = ((String)localObject1).substring(paramInt1, paramInt2);
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      StringBuilder localStringBuilder = new StringBuilder();
-      Object localObject2 = (EmotionSpan[])getText().getSpans(paramInt1, ((String)localObject1).length() + paramInt1, EmotionSpan.class);
-      List localList = (List)new ArrayList();
-      int i = localObject2.length;
-      paramInt2 = 0;
-      Object localObject3;
-      while (paramInt2 < i)
-      {
-        localObject3 = localObject2[paramInt2];
-        localList.add(new Pair(Integer.valueOf(getText().getSpanStart(localObject3)), ((EmotionSpan)localObject3).a()));
-        paramInt2 += 1;
-      }
-      int j = ((CharSequence)localObject1).length();
-      paramInt2 = 0;
-      while (paramInt2 < j)
-      {
-        char c1 = ((String)localObject1).charAt(paramInt2);
-        localObject3 = (Iterable)localList;
-        localObject2 = (Collection)new ArrayList();
-        localObject3 = ((Iterable)localObject3).iterator();
-        for (;;)
-        {
-          boolean bool = ((Iterator)localObject3).hasNext();
-          i = 1;
-          if (!bool) {
-            break;
-          }
-          Object localObject4 = ((Iterator)localObject3).next();
-          Integer localInteger = (Integer)((Pair)localObject4).first;
-          if ((localInteger == null) || (localInteger.intValue() != paramInt2 + paramInt1)) {
-            i = 0;
-          }
-          if (i != 0) {
-            ((Collection)localObject2).add(localObject4);
-          }
-        }
-        localObject2 = (List)localObject2;
-        if ((Intrinsics.areEqual(String.valueOf(c1), "^")) && ((((Collection)localObject2).isEmpty() ^ true))) {
-          localStringBuilder.append((String)((Pair)((List)localObject2).get(0)).second);
-        } else {
-          localStringBuilder.append(c1);
-        }
-        paramInt2 += 1;
-      }
-      localObject1 = localStringBuilder.toString();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "stringBuilder.toString()");
-      return localObject1;
-    }
-    localObject1 = new TypeCastException("null cannot be cast to non-null type java.lang.String");
-    for (;;)
-    {
-      throw ((Throwable)localObject1);
-    }
-  }
-  
   private final ArrayList<EditObject> a(int paramInt1, int paramInt2)
   {
-    int i = paramInt1;
-    Object localObject1 = RichEditText.Companion.a(jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText$Companion);
+    int m = paramInt1;
+    Object localObject1 = RichEditText.Companion.a(a);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("getCurrentDataList: startPos:");
-    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(m);
     ((StringBuilder)localObject2).append(", endPos:");
     ((StringBuilder)localObject2).append(paramInt2);
     ((ILogger)localObject1).a("RichEditText", ((StringBuilder)localObject2).toString(), null);
     localObject1 = new ArrayList();
-    if (i == paramInt2) {
+    if (m == paramInt2) {
       return localObject1;
     }
-    localObject2 = (RichSpan[])getText().getSpans(i, paramInt2, RichSpan.class);
-    Object localObject3 = RichEditText.Companion.a(jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText$Companion);
+    localObject2 = (RichSpan[])getText().getSpans(m, paramInt2, RichSpan.class);
+    Object localObject3 = RichEditText.Companion.a(a);
     Object localObject4 = new StringBuilder();
     ((StringBuilder)localObject4).append("getCurrentDataList | spanList: ");
     ((StringBuilder)localObject4).append("startPos = ");
-    ((StringBuilder)localObject4).append(i);
+    ((StringBuilder)localObject4).append(m);
     ((StringBuilder)localObject4).append(", endPos = ");
     ((StringBuilder)localObject4).append(paramInt2);
     ((StringBuilder)localObject4).append(", size = ");
@@ -254,39 +166,39 @@ public final class RichEditText
     Intrinsics.checkExpressionValueIsNotNull(localObject4, "text");
     localObject2 = ((CollectionUtil)localObject3).a((RichSpan[])localObject2, (Editable)localObject4);
     localObject3 = (Collection)localObject2;
-    if ((((((Collection)localObject3).isEmpty() ^ true)) && (i < getText().getSpanStart(((ArrayList)localObject2).get(0)))) || (((ArrayList)localObject2).isEmpty())) {
-      j = 1;
+    if ((((((Collection)localObject3).isEmpty() ^ true)) && (m < getText().getSpanStart(((ArrayList)localObject2).get(0)))) || (((ArrayList)localObject2).isEmpty())) {
+      n = 1;
     } else {
-      j = 0;
+      n = 0;
     }
-    paramInt1 = i;
-    if (j != 0)
+    paramInt1 = m;
+    if (n != 0)
     {
       if ((((Collection)localObject3).isEmpty() ^ true)) {
         paramInt1 = getText().getSpanStart(((ArrayList)localObject2).get(0));
       } else {
         paramInt1 = paramInt2;
       }
-      a(i, paramInt1, (ArrayList)localObject1);
+      a(m, paramInt1, (ArrayList)localObject1);
     }
-    int j = ((ArrayList)localObject2).size();
-    i = 0;
-    while (i < j)
+    int n = ((ArrayList)localObject2).size();
+    m = 0;
+    while (m < n)
     {
-      localObject3 = ((ArrayList)localObject2).get(i);
+      localObject3 = ((ArrayList)localObject2).get(m);
       Intrinsics.checkExpressionValueIsNotNull(localObject3, "sortedSpans[spanPos]");
       localObject3 = (RichSpan)localObject3;
-      int k = getText().getSpanEnd(localObject3);
+      int i1 = getText().getSpanEnd(localObject3);
       localObject4 = getText();
       Intrinsics.checkExpressionValueIsNotNull(localObject4, "text");
-      localObject4 = a(((CharSequence)localObject4).subSequence(paramInt1, k).toString(), (RichSpan)localObject3);
-      ILogger localILogger = RichEditText.Companion.a(jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText$Companion);
+      localObject4 = a(((CharSequence)localObject4).subSequence(paramInt1, i1).toString(), (RichSpan)localObject3);
+      ILogger localILogger = RichEditText.Companion.a(a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getCurrentDataList | getObjectInLocalMap: ");
       localStringBuilder.append("key = [type: ");
       localStringBuilder.append(((RichSpan)localObject3).a());
       localStringBuilder.append(" , id: ");
-      localStringBuilder.append(((RichSpan)localObject3).a());
+      localStringBuilder.append(((RichSpan)localObject3).b());
       localStringBuilder.append(']');
       localStringBuilder.append("curObject = ");
       localStringBuilder.append(localObject4);
@@ -295,21 +207,21 @@ public final class RichEditText
       localStringBuilder.append(", DataList added.");
       localILogger.a("RichEditText", localStringBuilder.toString(), null);
       ((ArrayList)localObject1).add(localObject4);
-      if (k >= paramInt2) {
+      if (i1 >= paramInt2) {
         return localObject1;
       }
-      if (i < ((ArrayList)localObject2).size() - 1) {
+      if (m < ((ArrayList)localObject2).size() - 1) {
         paramInt1 = 1;
       } else {
         paramInt1 = 0;
       }
       if (paramInt1 != 0) {
-        paramInt1 = getText().getSpanStart(((ArrayList)localObject2).get(i + 1));
+        paramInt1 = getText().getSpanStart(((ArrayList)localObject2).get(m + 1));
       } else {
         paramInt1 = paramInt2;
       }
-      a(k, paramInt1, (ArrayList)localObject1);
-      i += 1;
+      a(i1, paramInt1, (ArrayList)localObject1);
+      m += 1;
     }
     return localObject1;
   }
@@ -319,15 +231,6 @@ public final class RichEditText
     addTextChangedListener((TextWatcher)new RichEditText.initTextWatcherListener.1(this));
   }
   
-  private final void a(int paramInt)
-  {
-    RichSpan localRichSpan = a(paramInt);
-    if (localRichSpan != null) {
-      getText().removeSpan(localRichSpan);
-    }
-    getText().delete(paramInt, paramInt + 1);
-  }
-  
   private final void a(int paramInt1, int paramInt2, ArrayList<EditObject> paramArrayList)
   {
     Object localObject = getText().toString();
@@ -335,17 +238,17 @@ public final class RichEditText
     {
       localObject = ((String)localObject).substring(paramInt1, paramInt2);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      int i;
+      int m;
       if (((CharSequence)localObject).length() > 0) {
-        i = 1;
+        m = 1;
       } else {
-        i = 0;
+        m = 0;
       }
-      if (i != 0)
+      if (m != 0)
       {
-        localObject = new EditObject(a(paramInt1, paramInt2), null, 2, null);
+        localObject = new EditObject(b(paramInt1, paramInt2), null, 2, null);
         paramArrayList.add(localObject);
-        paramArrayList = RichEditText.Companion.a(jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText$Companion);
+        paramArrayList = RichEditText.Companion.a(a);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getCurrentDataList | curObject = ");
         localStringBuilder.append(localObject);
@@ -362,17 +265,17 @@ public final class RichEditText
   private final void a(int paramInt, String paramString, List<Integer> paramList, List<String> paramList1)
   {
     setSelection(paramInt);
-    int j = ((Collection)paramList).size();
+    int n = ((Collection)paramList).size();
     paramInt = 0;
-    int k;
-    int m;
-    for (int i = 0; paramInt < j; i = m + k)
+    int i1;
+    int i2;
+    for (int m = 0; paramInt < n; m = i2 + i1)
     {
-      k = ((Number)paramList.get(paramInt)).intValue();
+      i1 = ((Number)paramList.get(paramInt)).intValue();
       String str = (String)paramList1.get(paramInt);
-      m = str.length();
-      getText().insert(getSelectionStart(), paramString.subSequence(i, k));
-      Object localObject = RichEditText.Companion.a(jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText$Companion);
+      i2 = str.length();
+      getText().insert(getSelectionStart(), paramString.subSequence(m, i1));
+      Object localObject = RichEditText.Companion.b(a);
       if (localObject != null) {
         localObject = ((IEmoJiBridge)localObject).a(str);
       } else {
@@ -385,35 +288,35 @@ public final class RichEditText
       }
       paramInt += 1;
     }
-    if (i < paramString.length() - 1) {
-      getText().insert(getSelectionStart(), paramString.subSequence(i, paramString.length() - 1));
+    if (m < paramString.length() - 1) {
+      getText().insert(getSelectionStart(), paramString.subSequence(m, paramString.length() - 1));
     }
   }
   
   private final void a(EditObject paramEditObject, int paramInt)
   {
     EmoJiParser localEmoJiParser = new EmoJiParser(paramEditObject.getWording());
-    int i;
-    if ((localEmoJiParser.a()) && (localEmoJiParser.b())) {
-      i = 1;
+    int m;
+    if ((localEmoJiParser.a()) && (localEmoJiParser.d())) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    if (i == 0)
+    if (m == 0)
     {
       getText().insert(paramInt, (CharSequence)paramEditObject.getWording());
       return;
     }
-    a(paramInt, paramEditObject.getWording(), localEmoJiParser.b(), localEmoJiParser.a());
+    a(paramInt, paramEditObject.getWording(), localEmoJiParser.c(), localEmoJiParser.b());
   }
   
   private final void a(EditObject paramEditObject, int paramInt, boolean paramBoolean)
   {
     Object localObject2 = paramEditObject.getWording();
-    if ((getText().length() + ((String)localObject2).length() > this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Boolean))
+    if ((getText().length() + ((String)localObject2).length() > this.d) && (this.c))
     {
       a((String)localObject2, paramInt);
-      localObject1 = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextEditObjectListener;
+      localObject1 = this.i;
       if (localObject1 != null) {
         EditObjectListener.DefaultImpls.a((EditObjectListener)localObject1, paramEditObject, null, 2, null);
       }
@@ -422,20 +325,20 @@ public final class RichEditText
     {
       getText().insert(paramInt, (CharSequence)localObject2);
     }
-    Object localObject1 = new RichSpan(this.jdField_a_of_type_Int, paramEditObject.getType(), paramEditObject.getId());
+    Object localObject1 = new RichSpan(this.b, paramEditObject.getType(), paramEditObject.getId());
     if (getSelectionStart() - paramInt == ((String)localObject2).length())
     {
       getText().setSpan(localObject1, paramInt, getSelectionStart(), 33);
-      if (!TextUtils.isEmpty((CharSequence)((RichSpan)localObject1).a())) {
-        ((Map)this.jdField_a_of_type_JavaUtilHashMap).put(new Pair(((RichSpan)localObject1).a(), ((RichSpan)localObject1).a()), paramEditObject);
+      if (!TextUtils.isEmpty((CharSequence)((RichSpan)localObject1).b())) {
+        ((Map)this.k).put(new Pair(((RichSpan)localObject1).a(), ((RichSpan)localObject1).b()), paramEditObject);
       }
-      localObject2 = RichEditText.Companion.a(jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText$Companion);
+      localObject2 = RichEditText.Companion.a(a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addEditObject: Add to local map: ");
       localStringBuilder.append("key = [type: ");
       localStringBuilder.append(((RichSpan)localObject1).a());
       localStringBuilder.append(",id: ");
-      localStringBuilder.append(((RichSpan)localObject1).a());
+      localStringBuilder.append(((RichSpan)localObject1).b());
       localStringBuilder.append("], value: ");
       localStringBuilder.append(paramEditObject);
       ((ILogger)localObject2).a("RichEditText", localStringBuilder.toString(), null);
@@ -449,24 +352,24 @@ public final class RichEditText
   
   private final void a(EditObject paramEditObject, int paramInt, boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.e)
     {
       b(paramEditObject, paramInt, paramBoolean, paramJSONObject);
       return;
     }
-    RichSpan localRichSpan = b();
+    RichSpan localRichSpan = getFirstTopicSpan();
     if (localRichSpan != null)
     {
       paramInt = getText().getSpanStart(localRichSpan);
-      int i = getText().getSpanEnd(localRichSpan);
-      if ((getText().length() > i) && (getText().charAt(i) == ' ')) {
-        getText().delete(i, i + 1);
+      int m = getText().getSpanEnd(localRichSpan);
+      if ((getText().length() > m) && (getText().charAt(m) == ' ')) {
+        getText().delete(m, m + 1);
       }
-      getText().delete(paramInt, i);
+      getText().delete(paramInt, m);
       getText().removeSpan(localRichSpan);
-      EditObjectListener localEditObjectListener = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextEditObjectListener;
+      EditObjectListener localEditObjectListener = this.i;
       if (localEditObjectListener != null) {
-        localEditObjectListener.a(false, EditObject.EditObjectType.TYPE_TOPIC, localRichSpan.a(), paramJSONObject);
+        localEditObjectListener.a(false, EditObject.EditObjectType.TYPE_TOPIC, localRichSpan.b(), paramJSONObject);
       }
     }
     b(paramEditObject, 0, paramBoolean, paramJSONObject);
@@ -484,14 +387,14 @@ public final class RichEditText
   
   private final void a(String paramString, int paramInt)
   {
-    int j = getText().length();
-    int i = this.jdField_b_of_type_Int;
-    int k = getText().length();
-    if (j == paramInt)
+    int n = getText().length();
+    int m = this.d;
+    int i1 = getText().length();
+    if (n == paramInt)
     {
       if (paramString != null)
       {
-        paramString = paramString.substring(0, i - k);
+        paramString = paramString.substring(0, m - i1);
         Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
       }
       else
@@ -501,24 +404,24 @@ public final class RichEditText
     }
     else
     {
-      k = RangesKt.coerceAtMost(paramString.length() + j - this.jdField_b_of_type_Int, j - paramInt);
-      i = j - 1;
-      j -= k;
-      if (i >= j) {
+      i1 = RangesKt.coerceAtMost(paramString.length() + n - this.d, n - paramInt);
+      m = n - 1;
+      n -= i1;
+      if (m >= n) {
         for (;;)
         {
-          a(i);
-          if (i == j) {
+          b(m);
+          if (m == n) {
             break;
           }
-          i -= 1;
+          m -= 1;
         }
       }
-      i = RangesKt.coerceAtMost(paramString.length(), this.jdField_b_of_type_Int - paramInt);
+      m = RangesKt.coerceAtMost(paramString.length(), this.d - paramInt);
       if (paramString == null) {
         break label173;
       }
-      paramString = paramString.substring(0, i);
+      paramString = paramString.substring(0, m);
       Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     }
     getText().insert(paramInt, (CharSequence)paramString);
@@ -541,30 +444,73 @@ public final class RichEditText
     if (paramInt != 0)
     {
       if (getSelectionStart() == getSelectionEnd()) {
-        return b();
+        return d();
       }
       c();
     }
     return false;
   }
   
-  private final RichSpan b()
+  private final String b(int paramInt1, int paramInt2)
   {
-    Object localObject = getText();
-    int j = getText().length();
-    int i = 0;
-    localObject = (RichSpan[])((Editable)localObject).getSpans(0, j, RichSpan.class);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "spans");
-    j = localObject.length;
-    while (i < j)
+    Object localObject1 = getText().toString();
+    if (localObject1 != null)
     {
-      RichSpan localRichSpan = localObject[i];
-      if (localRichSpan.a() == EditObject.EditObjectType.TYPE_TOPIC) {
-        return localRichSpan;
+      localObject1 = ((String)localObject1).substring(paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject2 = (EmotionSpan[])getText().getSpans(paramInt1, ((String)localObject1).length() + paramInt1, EmotionSpan.class);
+      List localList = (List)new ArrayList();
+      int m = localObject2.length;
+      paramInt2 = 0;
+      Object localObject3;
+      while (paramInt2 < m)
+      {
+        localObject3 = localObject2[paramInt2];
+        localList.add(new Pair(Integer.valueOf(getText().getSpanStart(localObject3)), ((EmotionSpan)localObject3).a()));
+        paramInt2 += 1;
       }
-      i += 1;
+      int n = ((CharSequence)localObject1).length();
+      paramInt2 = 0;
+      while (paramInt2 < n)
+      {
+        char c1 = ((String)localObject1).charAt(paramInt2);
+        localObject3 = (Iterable)localList;
+        localObject2 = (Collection)new ArrayList();
+        localObject3 = ((Iterable)localObject3).iterator();
+        for (;;)
+        {
+          boolean bool = ((Iterator)localObject3).hasNext();
+          m = 1;
+          if (!bool) {
+            break;
+          }
+          Object localObject4 = ((Iterator)localObject3).next();
+          Integer localInteger = (Integer)((Pair)localObject4).first;
+          if ((localInteger == null) || (localInteger.intValue() != paramInt2 + paramInt1)) {
+            m = 0;
+          }
+          if (m != 0) {
+            ((Collection)localObject2).add(localObject4);
+          }
+        }
+        localObject2 = (List)localObject2;
+        if ((Intrinsics.areEqual(String.valueOf(c1), "^")) && ((((Collection)localObject2).isEmpty() ^ true))) {
+          localStringBuilder.append((String)((Pair)((List)localObject2).get(0)).second);
+        } else {
+          localStringBuilder.append(c1);
+        }
+        paramInt2 += 1;
+      }
+      localObject1 = localStringBuilder.toString();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "stringBuilder.toString()");
+      return localObject1;
     }
-    return null;
+    localObject1 = new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
+    }
   }
   
   private final void b()
@@ -572,19 +518,28 @@ public final class RichEditText
     setOnKeyListener((View.OnKeyListener)new RichEditText.initKeyListener.1(this));
   }
   
+  private final void b(int paramInt)
+  {
+    RichSpan localRichSpan = c(paramInt);
+    if (localRichSpan != null) {
+      getText().removeSpan(localRichSpan);
+    }
+    getText().delete(paramInt, paramInt + 1);
+  }
+  
   private final void b(EditObject paramEditObject, int paramInt, boolean paramBoolean, JSONObject paramJSONObject)
   {
-    int i;
+    int m;
     if (((CharSequence)paramEditObject.getWording()).length() == 0) {
-      i = 1;
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    if ((i == 0) && (paramInt >= 0))
+    if ((m == 0) && (paramInt >= 0))
     {
-      if ((getText().length() >= this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Boolean))
+      if ((getText().length() >= this.d) && (this.c))
       {
-        paramJSONObject = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextEditObjectListener;
+        paramJSONObject = this.i;
         if (paramJSONObject != null) {
           EditObjectListener.DefaultImpls.a(paramJSONObject, paramEditObject, null, 2, null);
         }
@@ -597,7 +552,7 @@ public final class RichEditText
         return;
       }
       a(paramEditObject, paramInt, paramBoolean);
-      EditObjectListener localEditObjectListener = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextEditObjectListener;
+      EditObjectListener localEditObjectListener = this.i;
       if (localEditObjectListener != null) {
         localEditObjectListener.a(true, paramEditObject.getType(), paramEditObject.getId(), paramJSONObject);
       }
@@ -609,56 +564,77 @@ public final class RichEditText
     paramJSONObject.append(", inputPos:");
     paramJSONObject.append(paramInt);
     paramEditObject = paramJSONObject.toString();
-    RichEditText.Companion.a(jdField_a_of_type_ComTencentTkdWeiboRichEditTextRichEditText$Companion).b("RichEditText", paramEditObject, null);
+    RichEditText.Companion.a(a).b("RichEditText", paramEditObject, null);
   }
   
-  private final boolean b()
+  private final RichSpan c(int paramInt)
+  {
+    Object localObject = (RichSpan)null;
+    Editable localEditable = getText();
+    int n = getText().length();
+    int m = 0;
+    RichSpan[] arrayOfRichSpan = (RichSpan[])localEditable.getSpans(0, n, RichSpan.class);
+    n = arrayOfRichSpan.length;
+    while (m < n)
+    {
+      localEditable = arrayOfRichSpan[m];
+      int i1 = getText().getSpanStart(localEditable);
+      int i2 = getText().getSpanEnd(localEditable);
+      if ((i1 + 1 <= paramInt) && (i2 >= paramInt)) {
+        localObject = localEditable;
+      }
+      m += 1;
+    }
+    return localObject;
+  }
+  
+  private final void c()
+  {
+    RichSpan[] arrayOfRichSpan = (RichSpan[])getText().getSpans(getSelectionStart(), getSelectionEnd() - getSelectionStart(), RichSpan.class);
+    int n = arrayOfRichSpan.length;
+    int m = 0;
+    while (m < n)
+    {
+      RichSpan localRichSpan = arrayOfRichSpan[m];
+      EditObjectListener localEditObjectListener = this.i;
+      if (localEditObjectListener != null) {
+        EditObjectListener.DefaultImpls.a(localEditObjectListener, false, localRichSpan.a(), localRichSpan.b(), null, 8, null);
+      }
+      m += 1;
+    }
+  }
+  
+  private final boolean d()
   {
     Log.d("RichEditText", "delKeyOnSameSelection.");
-    RichSpan localRichSpan = a();
+    RichSpan localRichSpan = getRichSpanOrNullIfBehind();
     if (localRichSpan != null)
     {
-      int i = getText().getSpanStart(localRichSpan);
-      int j = getText().getSpanEnd(localRichSpan);
-      if ((localRichSpan.a() == EditObject.EditObjectType.TYPE_TOPIC) && (!this.jdField_b_of_type_Boolean))
+      int m = getText().getSpanStart(localRichSpan);
+      int n = getText().getSpanEnd(localRichSpan);
+      if ((localRichSpan.a() == EditObject.EditObjectType.TYPE_TOPIC) && (!this.e))
       {
-        if (!this.c) {
+        if (!this.f) {
           return true;
         }
-        getText().delete(i, j);
-        EditObjectListener localEditObjectListener = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextEditObjectListener;
+        getText().delete(m, n);
+        EditObjectListener localEditObjectListener = this.i;
         if (localEditObjectListener != null)
         {
-          EditObjectListener.DefaultImpls.a(localEditObjectListener, false, EditObject.EditObjectType.TYPE_TOPIC, localRichSpan.a(), null, 8, null);
+          EditObjectListener.DefaultImpls.a(localEditObjectListener, false, EditObject.EditObjectType.TYPE_TOPIC, localRichSpan.b(), null, 8, null);
           return true;
         }
       }
       else
       {
-        setSelection(i, j);
+        setSelection(m, n);
       }
       return true;
     }
     return false;
   }
   
-  private final void c()
-  {
-    RichSpan[] arrayOfRichSpan = (RichSpan[])getText().getSpans(getSelectionStart(), getSelectionEnd() - getSelectionStart(), RichSpan.class);
-    int j = arrayOfRichSpan.length;
-    int i = 0;
-    while (i < j)
-    {
-      RichSpan localRichSpan = arrayOfRichSpan[i];
-      EditObjectListener localEditObjectListener = this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextEditObjectListener;
-      if (localEditObjectListener != null) {
-        EditObjectListener.DefaultImpls.a(localEditObjectListener, false, localRichSpan.a(), localRichSpan.a(), null, 8, null);
-      }
-      i += 1;
-    }
-  }
-  
-  private final boolean c()
+  private final boolean e()
   {
     if (getSelectionStart() == getSelectionEnd()) {
       return false;
@@ -688,7 +664,7 @@ public final class RichEditText
     }
   }
   
-  private final boolean d()
+  private final boolean f()
   {
     Object localObject1 = getContext().getSystemService("clipboard");
     if (localObject1 != null)
@@ -737,44 +713,23 @@ public final class RichEditText
     }
   }
   
-  public final int a()
+  private final RichSpan getFirstTopicSpan()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @Nullable
-  public final RichSpan a()
-  {
-    RichSpan[] arrayOfRichSpan = (RichSpan[])getText().getSpans(getSelectionEnd(), getSelectionEnd(), RichSpan.class);
-    Intrinsics.checkExpressionValueIsNotNull(arrayOfRichSpan, "baseRichSpans");
-    int i;
-    if (arrayOfRichSpan.length == 0) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (((i ^ 0x1) != 0) && (getText().getSpanEnd(arrayOfRichSpan[0]) == getSelectionEnd())) {
-      return arrayOfRichSpan[0];
+    Object localObject = getText();
+    int n = getText().length();
+    int m = 0;
+    localObject = (RichSpan[])((Editable)localObject).getSpans(0, n, RichSpan.class);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "spans");
+    n = localObject.length;
+    while (m < n)
+    {
+      RichSpan localRichSpan = localObject[m];
+      if (localRichSpan.a() == EditObject.EditObjectType.TYPE_TOPIC) {
+        return localRichSpan;
+      }
+      m += 1;
     }
     return null;
-  }
-  
-  @NotNull
-  public final ArrayList<EditObject> a()
-  {
-    return a(0, getText().length());
-  }
-  
-  @Nullable
-  public final Function0<Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  }
-  
-  @Nullable
-  public final Function1<Integer, Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
   }
   
   public final void a(@NotNull Drawable paramDrawable, @NotNull String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -782,7 +737,7 @@ public final class RichEditText
     Intrinsics.checkParameterIsNotNull(paramDrawable, "drawable");
     Intrinsics.checkParameterIsNotNull(paramString, "name");
     paramInt2 = RangesKt.coerceAtLeast(paramInt2, 0);
-    if ((getText().length() + 1 <= this.jdField_b_of_type_Int) || (!this.jdField_a_of_type_Boolean))
+    if ((getText().length() + 1 <= this.d) || (!this.c))
     {
       paramDrawable.setBounds(0, 0, paramInt1, paramInt1);
       paramDrawable = new EmotionSpan(paramDrawable, paramString, paramInt3);
@@ -803,18 +758,76 @@ public final class RichEditText
     a(paramEditObject, true, paramJSONObject);
   }
   
-  public final void a(@NotNull List<EditObject> paramList)
+  public final boolean getAllowDeletedTopic()
   {
-    Intrinsics.checkParameterIsNotNull(paramList, "editObjectList");
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext()) {
-      a(this, (EditObject)paramList.next(), false, null, 4, null);
-    }
+    return this.f;
   }
   
-  public final boolean a()
+  public final boolean getAllowMultiTopic()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.e;
+  }
+  
+  @Nullable
+  public final Function0<Unit> getAtInputListener()
+  {
+    return this.h;
+  }
+  
+  @Nullable
+  public final Function1<Integer, Unit> getCountChangeListener()
+  {
+    return this.g;
+  }
+  
+  public final int getCountLimit()
+  {
+    return this.d;
+  }
+  
+  @NotNull
+  public final ArrayList<EditObject> getDataList()
+  {
+    return a(0, getText().length());
+  }
+  
+  @Nullable
+  public final EditObjectListener getEditObjectListener()
+  {
+    return this.i;
+  }
+  
+  public final boolean getNeedTextTruncation()
+  {
+    return this.c;
+  }
+  
+  @Nullable
+  public final Function2<Integer, Integer, Unit> getOnSelectionChangeListener()
+  {
+    return this.j;
+  }
+  
+  @Nullable
+  public final RichSpan getRichSpanOrNullIfBehind()
+  {
+    RichSpan[] arrayOfRichSpan = (RichSpan[])getText().getSpans(getSelectionEnd(), getSelectionEnd(), RichSpan.class);
+    Intrinsics.checkExpressionValueIsNotNull(arrayOfRichSpan, "baseRichSpans");
+    int m;
+    if (arrayOfRichSpan.length == 0) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    if (((m ^ 0x1) != 0) && (getText().getSpanEnd(arrayOfRichSpan[0]) == getSelectionEnd())) {
+      return arrayOfRichSpan[0];
+    }
+    return null;
+  }
+  
+  public final int getRichTextColor()
+  {
+    return this.b;
   }
   
   @NotNull
@@ -828,7 +841,7 @@ public final class RichEditText
   protected void onSelectionChanged(int paramInt1, int paramInt2)
   {
     super.onSelectionChanged(paramInt1, paramInt2);
-    Object localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
+    Object localObject = this.j;
     if (localObject != null) {
       localObject = (Unit)((Function2)localObject).invoke(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     }
@@ -839,11 +852,11 @@ public final class RichEditText
   {
     if (paramInt == 16908321)
     {
-      if (c()) {
+      if (e()) {
         return true;
       }
     }
-    else if ((paramInt == 16908322) && (d())) {
+    else if ((paramInt == 16908322) && (f())) {
       return true;
     }
     return super.onTextContextMenuItem(paramInt);
@@ -851,58 +864,58 @@ public final class RichEditText
   
   public final void setAllowDeletedTopic(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.f = paramBoolean;
   }
   
   public final void setAllowMultiTopic(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public final void setAtInputListener(@Nullable Function0<Unit> paramFunction0)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+    this.h = paramFunction0;
   }
   
   public final void setCountChangeListener(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.g = paramFunction1;
   }
   
   public final void setCountLimit(int paramInt)
   {
     if (paramInt > 0)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Boolean) {
-        setFilters(new InputFilter[] { (InputFilter)new InputFilter.LengthFilter(this.jdField_b_of_type_Int) });
+      this.d = paramInt;
+      if (this.c) {
+        setFilters(new InputFilter[] { (InputFilter)new InputFilter.LengthFilter(this.d) });
       }
     }
   }
   
   public final void setEditObjectListener(@Nullable EditObjectListener paramEditObjectListener)
   {
-    this.jdField_a_of_type_ComTencentTkdWeiboRichEditTextEditObjectListener = paramEditObjectListener;
+    this.i = paramEditObjectListener;
   }
   
   public final void setNeedTextTruncation(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public final void setOnSelectionChangeListener(@Nullable Function2<? super Integer, ? super Integer, Unit> paramFunction2)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction2 = paramFunction2;
+    this.j = paramFunction2;
   }
   
   public final void setRichTextColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.richEditText.RichEditText
  * JD-Core Version:    0.7.0.1
  */

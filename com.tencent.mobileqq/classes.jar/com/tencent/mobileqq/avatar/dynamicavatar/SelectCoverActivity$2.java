@@ -7,23 +7,23 @@ class SelectCoverActivity$2
   
   public void run()
   {
-    if (this.this$0.b) {
+    if (this.this$0.F) {
       return;
     }
     if (this.this$0.a())
     {
-      if (this.this$0.b) {
+      if (this.this$0.F) {
         return;
       }
       int i = 0;
-      while (i < this.this$0.a)
+      while (i < this.this$0.k)
       {
-        if (!this.this$0.b) {
-          this.this$0.a(i);
+        if (!this.this$0.F) {
+          this.this$0.b(i);
         }
         i += 1;
       }
-      if ((this.this$0.d == 1) || (this.this$0.d == 3)) {
+      if ((this.this$0.x == 1) || (this.this$0.x == 3)) {
         SelectCoverActivity.a(this.this$0);
       }
     }
@@ -31,7 +31,7 @@ class SelectCoverActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.2
  * JD-Core Version:    0.7.0.1
  */

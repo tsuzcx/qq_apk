@@ -20,6 +20,8 @@ public abstract interface IMiniServer
   
   public abstract void onHostAppBackground();
   
+  public abstract void preDownloadPkg(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver);
+  
   public abstract void preloadMiniApp(Bundle paramBundle);
   
   public abstract void registerClientMessenger(String paramString, Messenger paramMessenger);
@@ -30,7 +32,7 @@ public abstract interface IMiniServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.shell.IMiniServer
  * JD-Core Version:    0.7.0.1
  */

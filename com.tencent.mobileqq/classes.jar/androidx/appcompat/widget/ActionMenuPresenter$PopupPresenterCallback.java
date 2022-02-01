@@ -1,6 +1,7 @@
 package androidx.appcompat.widget;
 
 import android.view.MenuItem;
+import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPresenter.Callback;
 import androidx.appcompat.view.menu.SubMenuBuilder;
@@ -10,7 +11,7 @@ class ActionMenuPresenter$PopupPresenterCallback
 {
   ActionMenuPresenter$PopupPresenterCallback(ActionMenuPresenter paramActionMenuPresenter) {}
   
-  public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
+  public void onCloseMenu(@NonNull MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
     if ((paramMenuBuilder instanceof SubMenuBuilder)) {
       paramMenuBuilder.getRootMenu().close(false);
@@ -21,16 +22,17 @@ class ActionMenuPresenter$PopupPresenterCallback
     }
   }
   
-  public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
+  public boolean onOpenSubMenu(@NonNull MenuBuilder paramMenuBuilder)
   {
+    Object localObject = ActionMenuPresenter.access$300(this.this$0);
     boolean bool = false;
-    if (paramMenuBuilder == null) {
+    if (paramMenuBuilder == localObject) {
       return false;
     }
     this.this$0.mOpenSubMenuId = ((SubMenuBuilder)paramMenuBuilder).getItem().getItemId();
-    MenuPresenter.Callback localCallback = this.this$0.getCallback();
-    if (localCallback != null) {
-      bool = localCallback.onOpenSubMenu(paramMenuBuilder);
+    localObject = this.this$0.getCallback();
+    if (localObject != null) {
+      bool = ((MenuPresenter.Callback)localObject).onOpenSubMenu(paramMenuBuilder);
     }
     return bool;
   }

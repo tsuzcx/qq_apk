@@ -96,7 +96,7 @@ class QQGAudioCtrl$NativeEventCallback
             paramMessage = QQGAudioCtrl.getAVInfoListFromByte2(arrayOfByte, m);
             if (paramMessage != null)
             {
-              this.a.mMavCallback.b(l1, paramMessage);
+              this.a.mMavCallback.c(l1, paramMessage);
               return true;
             }
           }
@@ -104,7 +104,7 @@ class QQGAudioCtrl$NativeEventCallback
         else
         {
           this.a.processMicAuthAfterEnterRoom(((MavNativeEventParams)localObject).detail);
-          if (AudioDump.a())
+          if (AudioDump.c())
           {
             AudioDump.a().a(null, this.a);
             return true;
@@ -114,7 +114,7 @@ class QQGAudioCtrl$NativeEventCallback
       else
       {
         this.a.processMicAuthAfterEnterRoom(((MavNativeEventParams)localObject).detail);
-        if (AudioDump.a())
+        if (AudioDump.c())
         {
           AudioDump.a().a(null, this.a);
           return true;
@@ -132,7 +132,7 @@ class QQGAudioCtrl$NativeEventCallback
       {
         l2 = this.a.mMavCallback.a(k, j, l1);
         localObject = new ArrayList(paramMessage.size());
-        long l3 = AudioHelper.a() / 1000L;
+        long l3 = AudioHelper.b() / 1000L;
         paramMessage = paramMessage.iterator();
         while (paramMessage.hasNext()) {
           ((ArrayList)localObject).add(new Memberinfo(((AVInviteAccount)paramMessage.next()).account, l3));

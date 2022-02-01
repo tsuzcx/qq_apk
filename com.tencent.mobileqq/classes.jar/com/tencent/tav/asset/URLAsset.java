@@ -15,6 +15,11 @@ public final class URLAsset
     super(paramString);
   }
   
+  public URLAsset(@NonNull String paramString, boolean paramBoolean)
+  {
+    super(paramString, paramBoolean);
+  }
+  
   public URLAsset(URL paramURL)
   {
     super(paramURL);
@@ -39,7 +44,7 @@ public final class URLAsset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.asset.URLAsset
  * JD-Core Version:    0.7.0.1
  */

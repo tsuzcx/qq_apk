@@ -23,32 +23,32 @@ public class EmptyViewHoder
   extends RecyclerView.ViewHolder
   implements View.OnTouchListener
 {
-  private final int jdField_a_of_type_Int;
-  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private final SquareItemClickListener jdField_a_of_type_ComTencentMobileqqQqexpandFragmentSquareItemClickListener;
-  private final int b;
+  URLImageView a;
+  TextView b;
+  RelativeLayout c;
+  RecyclerView d;
+  private final int e;
+  private final SquareItemClickListener f;
+  private final int g;
   
   public EmptyViewHoder(View paramView, RecyclerView paramRecyclerView, int paramInt1, SquareItemClickListener paramSquareItemClickListener, int paramInt2)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.b = paramInt2;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378460));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentSquareItemClickListener = paramSquareItemClickListener;
+    this.d = paramRecyclerView;
+    this.g = paramInt2;
+    this.c = ((RelativeLayout)paramView);
+    this.a = ((URLImageView)paramView.findViewById(2131435219));
+    this.b = ((TextView)paramView.findViewById(2131447062));
+    this.e = paramInt1;
+    this.f = paramSquareItemClickListener;
     paramView.setOnTouchListener(this);
   }
   
   public void a(EmptyViewHoder paramEmptyViewHoder, StrangerInfo paramStrangerInfo, int paramInt)
   {
-    paramStrangerInfo = paramEmptyViewHoder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight();
-    int j = this.jdField_a_of_type_Int;
+    paramStrangerInfo = paramEmptyViewHoder.c.getLayoutParams();
+    int i = this.d.getHeight();
+    int j = this.e;
     paramStrangerInfo.height = (i - j);
     if ((paramStrangerInfo instanceof RecyclerView.LayoutParams)) {
       ((RecyclerView.LayoutParams)paramStrangerInfo).topMargin = j;
@@ -62,35 +62,35 @@ public class EmptyViewHoder
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
       paramStrangerInfo = ExpandResourceUtil.a(paramStrangerInfo, localOptions);
-      paramEmptyViewHoder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable(paramStrangerInfo));
+      paramEmptyViewHoder.a.setImageDrawable(new BitmapDrawable(paramStrangerInfo));
     }
     if (paramInt == 1)
     {
-      if (this.b == 0) {
-        paramInt = 2131698816;
+      if (this.g == 0) {
+        paramInt = 2131896781;
       } else {
-        paramInt = 2131698812;
+        paramInt = 2131896777;
       }
     }
-    else if (this.b == 0) {
-      paramInt = 2131698815;
+    else if (this.g == 0) {
+      paramInt = 2131896780;
     } else {
-      paramInt = 2131698811;
+      paramInt = 2131896776;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.b.setText(paramInt);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentSquareItemClickListener != null) && (paramMotionEvent.getAction() == 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentSquareItemClickListener.e();
+    if ((this.f != null) && (paramMotionEvent.getAction() == 0)) {
+      this.f.g();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.feed.EmptyViewHoder
  * JD-Core Version:    0.7.0.1
  */

@@ -2,65 +2,58 @@ package com.tencent.biz.qqstory.album.segment;
 
 public class ScanInfo
 {
-  private long jdField_a_of_type_Long = -1L;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long b;
-  public String b;
-  
-  public ScanInfo()
-  {
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public String a = "";
+  public String b = "";
+  private long c = -1L;
+  private long d = -1L;
+  private boolean e;
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
+    return this.c;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.e = paramBoolean;
   }
   
   public long b()
   {
-    return this.jdField_b_of_type_Long;
+    return this.d;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.d = paramLong;
+  }
+  
+  public boolean c()
+  {
+    return this.e;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ScanInfo{lastAlbum=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", lastPic=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", isIncScan=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.segment.ScanInfo
  * JD-Core Version:    0.7.0.1
  */

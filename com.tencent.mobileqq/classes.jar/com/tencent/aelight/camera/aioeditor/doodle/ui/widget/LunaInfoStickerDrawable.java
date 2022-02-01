@@ -26,45 +26,44 @@ import org.json.JSONObject;
 public class LunaInfoStickerDrawable
   extends InfoStickerDrawable
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = null;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = null;
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  PerLineFontBitmapsInfo jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo;
-  int jdField_b_of_type_Int = 0;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private PorterDuffXfermode jdField_b_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
-  private Rect jdField_b_of_type_AndroidGraphicsRect = null;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = null;
-  PerLineFontBitmapsInfo jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo;
-  private String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2064515397);
-  private int jdField_c_of_type_Int;
-  private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_c_of_type_AndroidGraphicsRect = null;
-  private String jdField_c_of_type_JavaLangString = HardCodeUtil.a(2064515400);
-  private int jdField_d_of_type_Int;
-  private Rect jdField_d_of_type_AndroidGraphicsRect = null;
-  private String jdField_d_of_type_JavaLangString = HardCodeUtil.a(2064515398);
-  private int jdField_e_of_type_Int = 0;
-  private String jdField_e_of_type_JavaLangString = HardCodeUtil.a(2064515399);
-  private String f;
-  private String g = null;
-  private int jdField_h_of_type_Int = 0;
-  private String jdField_h_of_type_JavaLangString = null;
-  private int i = 0;
+  private String A = HardCodeUtil.a(2064187687);
+  private String B = HardCodeUtil.a(2064187685);
+  private String C = HardCodeUtil.a(2064187686);
+  private int D = 0;
+  private int E = 0;
+  private int F = 0;
+  private Typeface G = null;
+  private String H = null;
+  private String I = null;
+  private String J = null;
+  private PorterDuffXfermode K = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+  private PorterDuffXfermode L = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+  private float M = 0.0F;
+  PerLineFontBitmapsInfo a;
+  PerLineFontBitmapsInfo b;
+  int c = 0;
+  int d = 0;
+  private int e;
+  private int n;
+  private Bitmap o;
+  private Rect p = null;
+  private RectF q = null;
+  private Rect r = null;
+  private Rect s = null;
+  private RectF t = null;
+  private Rect u = null;
+  private Bitmap v;
+  private Paint w = new Paint();
+  private Paint x = new Paint();
+  private TextPaint y = new TextPaint();
+  private String z = HardCodeUtil.a(2064187684);
   
   public LunaInfoStickerDrawable(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
-    this.jdField_f_of_type_JavaLangString = null;
     a(paramString);
     b();
-    c();
+    e();
   }
   
   public static String a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -102,89 +101,89 @@ public class LunaInfoStickerDrawable
     }
     try
     {
-      int j = a(8.5F, this.jdField_a_of_type_AndroidContentContext.getResources()) + 0;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      float f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_JavaLangString.length());
-      this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(((Integer)paramArrayList.get(this.jdField_e_of_type_Int)).intValue());
-      PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.jdField_e_of_type_Int)).intValue(), this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_JavaLangString.length(), (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_a_of_type_Float) / 2.0F, j + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-      j = j + a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(8.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      int i = a(8.5F, this.h.getResources()) + 0;
+      this.y.setTypeface(this.G);
+      this.y.setTextSize(a(45.0F, this.h.getResources()));
+      float f1 = Math.abs(this.y.getFontMetrics().ascent);
+      this.M = this.y.measureText(this.z, 0, this.z.length());
+      this.y.setAlpha(((Integer)paramArrayList.get(this.D)).intValue());
+      PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.D)).intValue(), this.y);
+      paramCanvas.drawText(this.z, 0, this.z.length(), (this.q.width() - this.M) / 2.0F, i + f1, this.y);
+      i = i + a(45.0F, this.h.getResources()) + a(8.5F, this.h.getResources());
+      this.y.setTypeface(this.G);
+      this.y.setTextSize(a(45.0F, this.h.getResources()));
       if (Build.VERSION.SDK_INT >= 21) {
-        this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+        this.y.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
       }
-      f1 = Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent);
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_c_of_type_JavaLangString, 0, this.jdField_c_of_type_JavaLangString.length());
-      this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(((Integer)paramArrayList.get(this.jdField_h_of_type_Int)).intValue());
-      PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.jdField_h_of_type_Int)).intValue(), this.jdField_a_of_type_AndroidTextTextPaint);
-      paramCanvas.drawText(this.jdField_c_of_type_JavaLangString, 0, this.jdField_c_of_type_JavaLangString.length(), (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_a_of_type_Float) / 2.0F, j + f1, this.jdField_a_of_type_AndroidTextTextPaint);
-      j = j + a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(8.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      int k = (int)((this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_a_of_type_Float) / 2.0F);
-      PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.i)).intValue(), this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (((Integer)paramArrayList.get(this.i)).intValue() == a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+      f1 = Math.abs(this.y.getFontMetrics().ascent);
+      this.M = this.y.measureText(this.A, 0, this.A.length());
+      this.y.setAlpha(((Integer)paramArrayList.get(this.E)).intValue());
+      PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.E)).intValue(), this.y);
+      paramCanvas.drawText(this.A, 0, this.A.length(), (this.q.width() - this.M) / 2.0F, i + f1, this.y);
+      i = i + a(45.0F, this.h.getResources()) + a(8.5F, this.h.getResources());
+      this.w.setColor(-1);
+      this.w.setStrokeWidth(a(2.0F, this.h.getResources()));
+      this.w.setStyle(Paint.Style.FILL_AND_STROKE);
+      int j = (int)((this.q.width() - this.M) / 2.0F);
+      PerLineFontBitmapsInfo.a(((Integer)paramArrayList.get(this.F)).intValue(), this.w);
+      if (((Integer)paramArrayList.get(this.F)).intValue() == a(45.0F, this.h.getResources())) {
+        this.w.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+        this.w.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
       }
-      f1 = k;
-      float f2 = j;
-      paramCanvas.drawLine(f1, f2, k + ((Integer)paramArrayList.get(this.i)).intValue(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      j += a(8.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      f1 = j;
+      float f2 = i;
+      paramCanvas.drawLine(f1, f2, j + ((Integer)paramArrayList.get(this.F)).intValue(), f2, this.w);
+      i += a(8.5F, this.h.getResources());
+      localObject = this.a.g.iterator();
       FontBitmapInfo localFontBitmapInfo;
       Bitmap localBitmap;
       TextPaint localTextPaint;
       while (((Iterator)localObject).hasNext())
       {
         localFontBitmapInfo = (FontBitmapInfo)((Iterator)localObject).next();
-        localBitmap = localFontBitmapInfo.jdField_a_of_type_AndroidGraphicsBitmap;
-        localTextPaint = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_AndroidTextTextPaint;
-        localTextPaint.setAlpha(((Integer)paramArrayList.get(localFontBitmapInfo.jdField_b_of_type_Int)).intValue());
-        this.jdField_a_of_type_Float = localTextPaint.measureText(this.jdField_d_of_type_JavaLangString, 0, this.jdField_d_of_type_JavaLangString.length());
-        paramCanvas.drawBitmap(localBitmap, (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_a_of_type_Float) / 2.0F + this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_Int + localFontBitmapInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_b_of_type_Int + j, localTextPaint);
+        localBitmap = localFontBitmapInfo.a;
+        localTextPaint = this.a.a;
+        localTextPaint.setAlpha(((Integer)paramArrayList.get(localFontBitmapInfo.c)).intValue());
+        this.M = localTextPaint.measureText(this.B, 0, this.B.length());
+        paramCanvas.drawBitmap(localBitmap, (this.q.width() - this.M) / 2.0F + this.a.b + localFontBitmapInfo.b, this.a.c + i, localTextPaint);
       }
-      k = a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int m = a(8.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localObject = this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      j = a(14.0F, this.h.getResources());
+      int k = a(8.5F, this.h.getResources());
+      localObject = this.b.g.iterator();
       while (((Iterator)localObject).hasNext())
       {
         localFontBitmapInfo = (FontBitmapInfo)((Iterator)localObject).next();
-        localBitmap = localFontBitmapInfo.jdField_a_of_type_AndroidGraphicsBitmap;
-        localTextPaint = this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_AndroidTextTextPaint;
-        localTextPaint.setAlpha(((Integer)paramArrayList.get(localFontBitmapInfo.jdField_b_of_type_Int)).intValue());
-        this.jdField_a_of_type_Float = localTextPaint.measureText(this.jdField_e_of_type_JavaLangString, 0, this.jdField_e_of_type_JavaLangString.length());
-        paramCanvas.drawBitmap(localBitmap, (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_a_of_type_Float) / 2.0F + this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_a_of_type_Int + localFontBitmapInfo.jdField_a_of_type_Int, this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo.jdField_b_of_type_Int + (j + k + m), localTextPaint);
+        localBitmap = localFontBitmapInfo.a;
+        localTextPaint = this.b.a;
+        localTextPaint.setAlpha(((Integer)paramArrayList.get(localFontBitmapInfo.c)).intValue());
+        this.M = localTextPaint.measureText(this.C, 0, this.C.length());
+        paramCanvas.drawBitmap(localBitmap, (this.q.width() - this.M) / 2.0F + this.b.b + localFontBitmapInfo.b, this.b.c + (i + j + k), localTextPaint);
       }
       if (paramArrayList != null)
       {
-        j = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicHeight(), this.jdField_a_of_type_AndroidGraphicsPaint, 31);
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        i = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicHeight(), this.w, 31);
+        if (this.o != null) {
+          paramCanvas.drawBitmap(this.o, this.p, this.q, this.w);
         }
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        this.jdField_b_of_type_AndroidGraphicsRect.set(0, ((Integer)paramArrayList.get(this.jdField_a_of_type_Int)).intValue(), a(88.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), a(180.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-        paramCanvas.drawRect(this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-        paramCanvas.restoreToCount(j);
-        j = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicHeight(), this.jdField_b_of_type_AndroidGraphicsPaint, 31);
-        if (this.jdField_c_of_type_AndroidGraphicsBitmap != null) {
-          paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsPaint);
+        this.w.setXfermode(this.K);
+        this.w.setColor(-65536);
+        this.w.setStyle(Paint.Style.FILL_AND_STROKE);
+        this.r.set(0, ((Integer)paramArrayList.get(this.c)).intValue(), a(88.0F, this.h.getResources()), a(180.0F, this.h.getResources()));
+        paramCanvas.drawRect(this.r, this.w);
+        this.w.setXfermode(null);
+        paramCanvas.restoreToCount(i);
+        i = paramCanvas.saveLayer(0.0F, 0.0F, getIntrinsicWidth(), getIntrinsicHeight(), this.x, 31);
+        if (this.v != null) {
+          paramCanvas.drawBitmap(this.v, this.s, this.t, this.x);
         }
-        this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_b_of_type_AndroidGraphicsPorterDuffXfermode);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-65536);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        this.jdField_d_of_type_AndroidGraphicsRect.set(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_c_of_type_Int + a(77.5F, this.jdField_a_of_type_AndroidContentContext.getResources()), this.jdField_d_of_type_Int + ((Integer)paramArrayList.get(this.jdField_b_of_type_Int)).intValue());
-        paramCanvas.drawRect(this.jdField_d_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsPaint);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(null);
-        paramCanvas.restoreToCount(j);
+        this.x.setXfermode(this.L);
+        this.x.setColor(-65536);
+        this.x.setStyle(Paint.Style.FILL_AND_STROKE);
+        this.u.set(this.e, this.n, this.e + a(77.5F, this.h.getResources()), this.n + ((Integer)paramArrayList.get(this.d)).intValue());
+        paramCanvas.drawRect(this.u, this.x);
+        this.x.setXfermode(null);
+        paramCanvas.restoreToCount(i);
         return;
       }
     }
@@ -217,97 +216,97 @@ public class LunaInfoStickerDrawable
     }
     if (paramString != null)
     {
-      this.jdField_f_of_type_Int = paramString.optInt("type", 0);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("first_line", "");
-      this.jdField_c_of_type_JavaLangString = paramString.optString("second_line", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("third_line", "");
-      this.jdField_e_of_type_JavaLangString = paramString.optString("fourth_line", "");
-      this.jdField_f_of_type_JavaLangString = paramString.optString("font_file_name", "");
-      this.g = paramString.optString("out_side_border", "");
-      this.jdField_h_of_type_JavaLangString = paramString.optString("in_side_border", "");
+      this.j = paramString.optInt("type", 0);
+      this.z = paramString.optString("first_line", "");
+      this.A = paramString.optString("second_line", "");
+      this.B = paramString.optString("third_line", "");
+      this.C = paramString.optString("fourth_line", "");
+      this.H = paramString.optString("font_file_name", "");
+      this.I = paramString.optString("out_side_border", "");
+      this.J = paramString.optString("in_side_border", "");
     }
-    return new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, this.g, this.jdField_h_of_type_JavaLangString };
+    return new String[] { this.z, this.A, this.B, this.C, this.H, this.I, this.J };
   }
   
   protected void b()
   {
-    if (new File(this.g).exists()) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.g);
+    if (new File(this.I).exists()) {
+      this.o = BitmapFactory.decodeFile(this.I);
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.o;
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, ((Bitmap)localObject).getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      this.p = new Rect(0, 0, ((Bitmap)localObject).getWidth(), this.o.getHeight());
     }
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, a(88.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), a(180.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    if (new File(this.jdField_h_of_type_JavaLangString).exists()) {
-      this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_h_of_type_JavaLangString);
+    this.q = new RectF(0.0F, 0.0F, a(88.0F, this.h.getResources()), a(180.0F, this.h.getResources()));
+    if (new File(this.J).exists()) {
+      this.v = BitmapFactory.decodeFile(this.J);
     }
-    localObject = this.jdField_c_of_type_AndroidGraphicsBitmap;
+    localObject = this.v;
     if (localObject != null) {
-      this.jdField_c_of_type_AndroidGraphicsRect = new Rect(0, 0, ((Bitmap)localObject).getWidth(), this.jdField_c_of_type_AndroidGraphicsBitmap.getHeight());
+      this.s = new Rect(0, 0, ((Bitmap)localObject).getWidth(), this.v.getHeight());
     }
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, a(77.5F, this.jdField_a_of_type_AndroidContentContext.getResources()), a(169.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, a(88.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), a(180.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("out", 0L, 500L, 0, a(180.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), new LinearInterpolator());
-    this.jdField_c_of_type_Int = ((int)((this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_b_of_type_AndroidGraphicsRectF.width()) / 2.0F));
-    this.jdField_d_of_type_Int = ((int)((this.jdField_a_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_AndroidGraphicsRectF.height()) / 2.0F));
-    int j = this.jdField_c_of_type_Int;
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(j, this.jdField_d_of_type_Int, j + a(77.5F, this.jdField_a_of_type_AndroidContentContext.getResources()), this.jdField_d_of_type_Int + a(169.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    j = this.jdField_c_of_type_Int;
-    this.jdField_d_of_type_AndroidGraphicsRect = new Rect(j, this.jdField_d_of_type_Int, a(77.5F, this.jdField_a_of_type_AndroidContentContext.getResources()) + j, this.jdField_d_of_type_Int + a(169.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("in", 150L, 700L, a(180.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, new LinearInterpolator());
-    this.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("firstFont", 500L, 200L, 0, 255, new LinearInterpolator());
-    this.jdField_h_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("SecondFont", 600L, 200L, 0, 255, new LinearInterpolator());
-    this.i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("thirdLine", 700L, 200L, 0, a(45.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), new LinearInterpolator());
-    if (new File(this.jdField_f_of_type_JavaLangString).exists()) {}
+    this.t = new RectF(0.0F, 0.0F, a(77.5F, this.h.getResources()), a(169.0F, this.h.getResources()));
+    this.r = new Rect(0, 0, a(88.0F, this.h.getResources()), a(180.0F, this.h.getResources()));
+    this.c = this.f.a("out", 0L, 500L, 0, a(180.0F, this.h.getResources()), new LinearInterpolator());
+    this.e = ((int)((this.q.width() - this.t.width()) / 2.0F));
+    this.n = ((int)((this.q.height() - this.t.height()) / 2.0F));
+    int i = this.e;
+    this.t = new RectF(i, this.n, i + a(77.5F, this.h.getResources()), this.n + a(169.0F, this.h.getResources()));
+    i = this.e;
+    this.u = new Rect(i, this.n, a(77.5F, this.h.getResources()) + i, this.n + a(169.0F, this.h.getResources()));
+    this.d = this.f.a("in", 150L, 700L, a(180.0F, this.h.getResources()), 0, new LinearInterpolator());
+    this.D = this.f.a("firstFont", 500L, 200L, 0, 255, new LinearInterpolator());
+    this.E = this.f.a("SecondFont", 600L, 200L, 0, 255, new LinearInterpolator());
+    this.F = this.f.a("thirdLine", 700L, 200L, 0, a(45.0F, this.h.getResources()), new LinearInterpolator());
+    if (new File(this.H).exists()) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(this.jdField_f_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-      localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      this.G = Typeface.createFromFile(this.H);
+      this.y.setTypeface(this.G);
+      localObject = this.y.getFontMetrics();
       if ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top) <= 0) {
-        this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT;
+        this.G = Typeface.DEFAULT;
       }
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
+      this.y.setTypeface(Typeface.DEFAULT);
     }
     catch (Exception localException)
     {
       label663:
       break label663;
     }
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT;
+    this.G = Typeface.DEFAULT;
     break label680;
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT;
+    this.G = Typeface.DEFAULT;
     label680:
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo = PerLineFontBitmapsInfo.a(this.jdField_d_of_type_JavaLangString, a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1, 0, 0, 700, 500, this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator);
-    this.jdField_b_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetPerLineFontBitmapsInfo = PerLineFontBitmapsInfo.a(this.jdField_e_of_type_JavaLangString, a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1, 0, 0, 1100, 300, this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
+    this.a = PerLineFontBitmapsInfo.a(this.B, a(15.0F, this.h.getResources()), -1, 0, 0, 700, 500, this.G, this.f);
+    this.b = PerLineFontBitmapsInfo.a(this.C, a(15.0F, this.h.getResources()), -1, 0, 0, 1100, 300, this.G, this.f);
+    this.w = new Paint();
+    this.w.setAntiAlias(true);
+    this.w.setDither(true);
+    this.w.setColor(-1);
+    this.x = new Paint();
+    this.x.setAntiAlias(true);
+    this.x.setDither(true);
+    this.x.setColor(-1);
+    this.y = new TextPaint();
+    this.y.setAntiAlias(true);
+    this.y.setDither(true);
+    this.y.setColor(-1);
   }
   
   public int getIntrinsicHeight()
   {
-    return a(180.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return a(180.0F, this.h.getResources());
   }
   
   public int getIntrinsicWidth()
   {
-    return a(88.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return a(88.0F, this.h.getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.LunaInfoStickerDrawable
  * JD-Core Version:    0.7.0.1
  */

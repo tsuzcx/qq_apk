@@ -12,86 +12,86 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
     //   0: aload_0
     //   1: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   4: iconst_1
-    //   5: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   5: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   8: aload_0
     //   9: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   12: getfield 30	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Int	I
+    //   12: getfield 31	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:b	I
     //   15: iconst_1
     //   16: if_icmpge +27 -> 43
     //   19: aload_0
     //   20: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   23: iconst_0
-    //   24: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   24: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   27: aload_0
     //   28: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   31: invokevirtual 32	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
+    //   31: invokevirtual 33	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
     //   34: aload_0
     //   35: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   38: iconst_0
-    //   39: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   39: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   42: return
-    //   43: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   43: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   46: ifeq +11 -> 57
-    //   49: ldc 40
+    //   49: ldc 41
     //   51: iconst_2
-    //   52: ldc 42
-    //   54: invokestatic 46	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   52: ldc 43
+    //   54: invokestatic 47	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   57: aload_0
     //   58: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   61: getfield 49	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataCallBack	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$LoadMediaDataCallBack;
+    //   61: getfield 51	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:o	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$LoadMediaDataCallBack;
     //   64: ifnonnull +37 -> 101
     //   67: aload_0
     //   68: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   71: getfield 52	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataListener	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$LoadMediaDataListener;
+    //   71: getfield 55	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:p	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$LoadMediaDataListener;
     //   74: ifnonnull +27 -> 101
     //   77: aload_0
     //   78: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   81: iconst_0
-    //   82: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   82: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   85: aload_0
     //   86: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   89: invokevirtual 32	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
+    //   89: invokevirtual 33	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
     //   92: aload_0
     //   93: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   96: iconst_0
-    //   97: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   97: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   100: return
-    //   101: invokestatic 58	java/lang/System:currentTimeMillis	()J
+    //   101: invokestatic 61	java/lang/System:currentTimeMillis	()J
     //   104: lstore_2
-    //   105: getstatic 64	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   105: getstatic 67	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   108: aload_0
     //   109: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   112: getfield 67	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   115: invokevirtual 71	com/tencent/common/app/BaseApplicationImpl:getAppRuntime	(Ljava/lang/String;)Lmqq/app/AppRuntime;
-    //   118: checkcast 73	com/tencent/mobileqq/app/QQAppInterface
+    //   112: getfield 71	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:c	Ljava/lang/String;
+    //   115: invokevirtual 75	com/tencent/common/app/BaseApplicationImpl:getAppRuntime	(Ljava/lang/String;)Lmqq/app/AppRuntime;
+    //   118: checkcast 77	com/tencent/mobileqq/app/QQAppInterface
     //   121: astore 8
-    //   123: new 75	java/util/ArrayList
+    //   123: new 79	java/util/ArrayList
     //   126: dup
-    //   127: invokespecial 76	java/util/ArrayList:<init>	()V
+    //   127: invokespecial 80	java/util/ArrayList:<init>	()V
     //   130: astore 7
-    //   132: new 75	java/util/ArrayList
+    //   132: new 79	java/util/ArrayList
     //   135: dup
-    //   136: invokespecial 76	java/util/ArrayList:<init>	()V
+    //   136: invokespecial 80	java/util/ArrayList:<init>	()V
     //   139: astore 5
     //   141: aload_0
     //   142: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   145: getfield 79	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Boolean	Z
+    //   145: getfield 83	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:e	Z
     //   148: ifne +368 -> 516
     //   151: aload_0
     //   152: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   155: getfield 81	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   155: getfield 85	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:d	Ljava/lang/String;
     //   158: ifnonnull +27 -> 185
     //   161: aload_0
     //   162: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   165: iconst_0
-    //   166: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   166: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   169: aload_0
     //   170: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   173: invokevirtual 32	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
+    //   173: invokevirtual 33	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
     //   176: aload_0
     //   177: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   180: iconst_0
-    //   181: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   181: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   184: return
     //   185: bipush 8
     //   187: newarray int
@@ -130,158 +130,158 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
     //   248: iastore
     //   249: aload_0
     //   250: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   253: getfield 84	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_c_of_type_Boolean	Z
+    //   253: getfield 88	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:f	Z
     //   256: ifne +95 -> 351
     //   259: aload 8
     //   261: aload_0
     //   262: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   265: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
-    //   268: invokevirtual 90	com/tencent/mobileqq/app/QQAppInterface:getMessageProxy	(I)Lcom/tencent/imcore/message/BaseMsgProxy;
+    //   265: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
+    //   268: invokevirtual 95	com/tencent/mobileqq/app/QQAppInterface:getMessageProxy	(I)Lcom/tencent/imcore/message/BaseMsgProxy;
     //   271: aload_0
     //   272: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   275: getfield 81	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   275: getfield 85	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:d	Ljava/lang/String;
     //   278: aload_0
     //   279: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   282: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
+    //   282: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
     //   285: aload 9
-    //   287: invokevirtual 95	com/tencent/imcore/message/BaseMsgProxy:a	(Ljava/lang/String;I[I)Ljava/util/List;
+    //   287: invokevirtual 100	com/tencent/imcore/message/BaseMsgProxy:a	(Ljava/lang/String;I[I)Ljava/util/List;
     //   290: astore 6
     //   292: aload 6
     //   294: astore 4
     //   296: aload 6
-    //   298: invokeinterface 101 1 0
+    //   298: invokeinterface 106 1 0
     //   303: iconst_1
     //   304: if_icmpge +250 -> 554
     //   307: aload 8
-    //   309: invokevirtual 105	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   309: invokevirtual 110	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
     //   312: aload_0
     //   313: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   316: getfield 81	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   316: getfield 85	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:d	Ljava/lang/String;
     //   319: aload_0
     //   320: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   323: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
+    //   323: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
     //   326: aload 9
     //   328: iconst_1
-    //   329: invokevirtual 110	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;I[II)Ljava/util/List;
+    //   329: invokevirtual 115	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;I[II)Ljava/util/List;
     //   332: astore 4
     //   334: aload_0
     //   335: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   338: aload 4
-    //   340: invokeinterface 101 1 0
-    //   345: putfield 30	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Int	I
+    //   340: invokeinterface 106 1 0
+    //   345: putfield 31	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:b	I
     //   348: goto +206 -> 554
     //   351: aload_0
     //   352: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   355: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
-    //   358: invokestatic 116	com/tencent/imcore/message/UinTypeUtil:g	(I)Z
+    //   355: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
+    //   358: invokestatic 121	com/tencent/imcore/message/UinTypeUtil:h	(I)Z
     //   361: ifeq +72 -> 433
     //   364: aload_0
     //   365: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   368: astore 4
     //   370: aload 4
     //   372: aload 4
-    //   374: getfield 119	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Long	J
+    //   374: getfield 125	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:j	J
     //   377: lconst_1
     //   378: lsub
-    //   379: putfield 119	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Long	J
+    //   379: putfield 125	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:j	J
     //   382: aload 8
-    //   384: invokevirtual 105	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   384: invokevirtual 110	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
     //   387: aload_0
     //   388: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   391: getfield 81	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   391: getfield 85	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:d	Ljava/lang/String;
     //   394: aload_0
     //   395: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   398: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
+    //   398: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
     //   401: aload_0
     //   402: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   405: getfield 121	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_c_of_type_Long	J
+    //   405: getfield 128	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:l	J
     //   408: aload_0
     //   409: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   412: getfield 123	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_c_of_type_Int	I
+    //   412: getfield 131	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:i	I
     //   415: aload_0
     //   416: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   419: getfield 119	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Long	J
+    //   419: getfield 125	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:j	J
     //   422: aload 9
     //   424: iconst_1
-    //   425: invokevirtual 126	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;IJIJ[II)Ljava/util/List;
+    //   425: invokevirtual 134	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;IJIJ[II)Ljava/util/List;
     //   428: astore 4
     //   430: goto +51 -> 481
     //   433: aload 8
-    //   435: invokevirtual 105	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   435: invokevirtual 110	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
     //   438: aload_0
     //   439: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   442: getfield 81	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   442: getfield 85	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:d	Ljava/lang/String;
     //   445: aload_0
     //   446: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   449: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
+    //   449: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
     //   452: aload_0
     //   453: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   456: getfield 121	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_c_of_type_Long	J
+    //   456: getfield 128	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:l	J
     //   459: aload_0
     //   460: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   463: getfield 123	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_c_of_type_Int	I
+    //   463: getfield 131	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:i	I
     //   466: aload_0
     //   467: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   470: getfield 128	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_d_of_type_Long	J
+    //   470: getfield 137	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:q	J
     //   473: aload 9
     //   475: iconst_1
-    //   476: invokevirtual 126	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;IJIJ[II)Ljava/util/List;
+    //   476: invokevirtual 134	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;IJIJ[II)Ljava/util/List;
     //   479: astore 4
     //   481: aload_0
     //   482: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   485: aload 4
-    //   487: invokeinterface 101 1 0
-    //   492: putfield 30	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Int	I
+    //   487: invokeinterface 106 1 0
+    //   492: putfield 31	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:b	I
     //   495: aload_0
     //   496: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   499: astore 6
     //   501: aload 6
     //   503: aload 6
-    //   505: getfield 130	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_d_of_type_Int	I
+    //   505: getfield 140	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:k	I
     //   508: iconst_1
     //   509: iadd
-    //   510: putfield 130	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_d_of_type_Int	I
+    //   510: putfield 140	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:k	I
     //   513: goto +41 -> 554
     //   516: aload 8
-    //   518: invokevirtual 134	com/tencent/mobileqq/app/QQAppInterface:getMultiMessageProxy	()Lcom/tencent/mobileqq/app/message/MultiMsgProxy;
+    //   518: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:getMultiMessageProxy	()Lcom/tencent/mobileqq/app/message/MultiMsgProxy;
     //   521: ifnull +547 -> 1068
     //   524: aload_0
     //   525: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   528: getfield 84	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_c_of_type_Boolean	Z
+    //   528: getfield 88	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:f	Z
     //   531: ifeq +6 -> 537
     //   534: goto +534 -> 1068
     //   537: aload 8
-    //   539: invokevirtual 134	com/tencent/mobileqq/app/QQAppInterface:getMultiMessageProxy	()Lcom/tencent/mobileqq/app/message/MultiMsgProxy;
+    //   539: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:getMultiMessageProxy	()Lcom/tencent/mobileqq/app/message/MultiMsgProxy;
     //   542: aload_0
     //   543: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   546: getfield 136	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Long	J
-    //   549: invokevirtual 141	com/tencent/mobileqq/app/message/MultiMsgProxy:a	(J)Ljava/util/ArrayList;
+    //   546: getfield 146	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:h	J
+    //   549: invokevirtual 151	com/tencent/mobileqq/app/message/MultiMsgProxy:a	(J)Ljava/util/ArrayList;
     //   552: astore 4
     //   554: aload_0
     //   555: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   558: getfield 84	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_c_of_type_Boolean	Z
+    //   558: getfield 88	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:f	Z
     //   561: ifne +43 -> 604
     //   564: aload 7
     //   566: aload 4
-    //   568: invokeinterface 145 2 0
+    //   568: invokeinterface 155 2 0
     //   573: pop
     //   574: aload 5
     //   576: aload_0
     //   577: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   580: aload 8
     //   582: aload 4
-    //   584: invokestatic 148	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	(Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)Ljava/util/List;
-    //   587: invokeinterface 145 2 0
+    //   584: invokestatic 158	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	(Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)Ljava/util/List;
+    //   587: invokeinterface 155 2 0
     //   592: pop
     //   593: aload_0
     //   594: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   597: iconst_1
-    //   598: putfield 84	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_c_of_type_Boolean	Z
+    //   598: putfield 88	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:f	Z
     //   601: goto +34 -> 635
     //   604: aload 7
     //   606: iconst_0
     //   607: aload 4
-    //   609: invokeinterface 151 3 0
+    //   609: invokeinterface 161 3 0
     //   614: pop
     //   615: aload 5
     //   617: iconst_0
@@ -289,67 +289,67 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
     //   619: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   622: aload 8
     //   624: aload 4
-    //   626: invokestatic 148	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	(Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)Ljava/util/List;
-    //   629: invokeinterface 151 3 0
+    //   626: invokestatic 158	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	(Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)Ljava/util/List;
+    //   629: invokeinterface 161 3 0
     //   634: pop
     //   635: aload_0
     //   636: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   639: getfield 79	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Boolean	Z
+    //   639: getfield 83	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:e	Z
     //   642: ifne +27 -> 669
     //   645: aload 5
-    //   647: invokeinterface 101 1 0
+    //   647: invokeinterface 106 1 0
     //   652: ifge +17 -> 669
     //   655: aload_0
     //   656: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   659: getfield 30	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Int	I
+    //   659: getfield 31	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:b	I
     //   662: iconst_1
     //   663: if_icmpge +509 -> 1172
     //   666: goto +3 -> 669
     //   669: aload 5
-    //   671: invokeinterface 101 1 0
+    //   671: invokeinterface 106 1 0
     //   676: ifle +274 -> 950
     //   679: aload_0
     //   680: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   683: getfield 49	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataCallBack	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$LoadMediaDataCallBack;
+    //   683: getfield 51	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:o	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$LoadMediaDataCallBack;
     //   686: astore 6
     //   688: aload 6
     //   690: ifnull +205 -> 895
-    //   693: new 75	java/util/ArrayList
+    //   693: new 79	java/util/ArrayList
     //   696: dup
-    //   697: invokespecial 76	java/util/ArrayList:<init>	()V
+    //   697: invokespecial 80	java/util/ArrayList:<init>	()V
     //   700: astore 8
     //   702: aload_0
     //   703: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   706: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
+    //   706: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
     //   709: iconst_1
     //   710: if_icmpeq +465 -> 1175
     //   713: aload_0
     //   714: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   717: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
+    //   717: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
     //   720: sipush 1026
     //   723: if_icmpne +6 -> 729
     //   726: goto +449 -> 1175
     //   729: aload_0
     //   730: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   733: getfield 154	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   733: getfield 165	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:m	Ljava/util/List;
     //   736: astore 4
     //   738: goto +3 -> 741
     //   741: aload_0
     //   742: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   745: getfield 86	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Int	I
+    //   745: getfield 91	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:g	I
     //   748: iconst_1
     //   749: if_icmpne +28 -> 777
     //   752: aload 4
     //   754: aload 4
-    //   756: invokeinterface 101 1 0
-    //   761: anewarray 156	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
-    //   764: invokeinterface 160 2 0
-    //   769: checkcast 162	[Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   756: invokeinterface 106 1 0
+    //   761: anewarray 167	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
+    //   764: invokeinterface 171 2 0
+    //   769: checkcast 173	[Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   772: astore 4
     //   774: goto +94 -> 868
     //   777: aload_0
     //   778: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   781: getfield 154	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   781: getfield 165	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:m	Ljava/util/List;
     //   784: astore 9
     //   786: aload 9
     //   788: monitorenter
@@ -357,32 +357,32 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
     //   790: istore_1
     //   791: iload_1
     //   792: aload 4
-    //   794: invokeinterface 101 1 0
+    //   794: invokeinterface 106 1 0
     //   799: if_icmpge +44 -> 843
     //   802: aload 4
     //   804: iload_1
-    //   805: invokeinterface 166 2 0
-    //   810: checkcast 156	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
+    //   805: invokeinterface 177 2 0
+    //   810: checkcast 167	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
     //   813: astore 10
     //   815: aload_0
     //   816: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   819: aload 10
-    //   821: invokevirtual 169	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	(Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;)Z
+    //   821: invokevirtual 180	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	(Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;)Z
     //   824: ifeq +6 -> 830
     //   827: goto +355 -> 1182
     //   830: aload 8
     //   832: aload 10
-    //   834: invokeinterface 173 2 0
+    //   834: invokeinterface 184 2 0
     //   839: pop
     //   840: goto +342 -> 1182
     //   843: aload 9
     //   845: monitorexit
     //   846: aload 8
     //   848: aload 8
-    //   850: invokeinterface 101 1 0
-    //   855: anewarray 156	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
-    //   858: invokeinterface 160 2 0
-    //   863: checkcast 162	[Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   850: invokeinterface 106 1 0
+    //   855: anewarray 167	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
+    //   858: invokeinterface 171 2 0
+    //   863: checkcast 173	[Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   866: astore 4
     //   868: aload 4
     //   870: arraylength
@@ -390,7 +390,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
     //   874: aload 6
     //   876: aload 4
     //   878: iconst_m1
-    //   879: invokeinterface 178 3 0
+    //   879: invokeinterface 189 3 0
     //   884: goto +11 -> 895
     //   887: astore 4
     //   889: aload 9
@@ -399,16 +399,16 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
     //   894: athrow
     //   895: aload_0
     //   896: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   899: getfield 52	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOImageGeter$LoadMediaDataListener	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$LoadMediaDataListener;
+    //   899: getfield 55	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:p	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$LoadMediaDataListener;
     //   902: astore 4
     //   904: aload 4
     //   906: ifnull +51 -> 957
     //   909: aload 5
     //   911: aload 5
-    //   913: invokeinterface 101 1 0
-    //   918: anewarray 156	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
-    //   921: invokeinterface 160 2 0
-    //   926: checkcast 162	[Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
+    //   913: invokeinterface 106 1 0
+    //   918: anewarray 167	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
+    //   921: invokeinterface 171 2 0
+    //   926: checkcast 173	[Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   929: astore 6
     //   931: aload 6
     //   933: arraylength
@@ -416,103 +416,103 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
     //   937: aload 4
     //   939: aload 6
     //   941: iconst_m1
-    //   942: invokeinterface 181 3 0
+    //   942: invokeinterface 192 3 0
     //   947: goto +10 -> 957
     //   950: aload_0
     //   951: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   954: invokevirtual 32	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
-    //   957: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   954: invokevirtual 33	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
+    //   957: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   960: ifeq +181 -> 1141
-    //   963: new 183	java/lang/StringBuilder
+    //   963: new 194	java/lang/StringBuilder
     //   966: dup
-    //   967: invokespecial 184	java/lang/StringBuilder:<init>	()V
+    //   967: invokespecial 195	java/lang/StringBuilder:<init>	()V
     //   970: astore 4
     //   972: aload 4
-    //   974: ldc 186
-    //   976: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   974: ldc 197
+    //   976: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   979: pop
     //   980: aload 4
     //   982: aload_0
     //   983: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   986: getfield 79	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_b_of_type_Boolean	Z
-    //   989: invokevirtual 193	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   986: getfield 83	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:e	Z
+    //   989: invokevirtual 204	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   992: pop
     //   993: aload 4
-    //   995: ldc 195
-    //   997: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   995: ldc 206
+    //   997: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1000: pop
     //   1001: aload 4
     //   1003: aload 7
-    //   1005: invokeinterface 101 1 0
-    //   1010: invokevirtual 198	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1005: invokeinterface 106 1 0
+    //   1010: invokevirtual 209	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1013: pop
     //   1014: aload 4
-    //   1016: ldc 200
-    //   1018: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1016: ldc 211
+    //   1018: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1021: pop
     //   1022: aload 4
     //   1024: aload 5
-    //   1026: invokeinterface 101 1 0
-    //   1031: invokevirtual 198	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1026: invokeinterface 106 1 0
+    //   1031: invokevirtual 209	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1034: pop
     //   1035: aload 4
-    //   1037: ldc 202
-    //   1039: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1037: ldc 213
+    //   1039: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1042: pop
     //   1043: aload 4
-    //   1045: invokestatic 58	java/lang/System:currentTimeMillis	()J
+    //   1045: invokestatic 61	java/lang/System:currentTimeMillis	()J
     //   1048: lload_2
     //   1049: lsub
-    //   1050: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1050: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1053: pop
-    //   1054: ldc 40
+    //   1054: ldc 41
     //   1056: iconst_2
     //   1057: aload 4
-    //   1059: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1062: invokestatic 46	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1059: invokevirtual 220	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1062: invokestatic 47	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1065: goto +76 -> 1141
     //   1068: aload_0
     //   1069: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   1072: astore 4
     //   1074: aload 4
     //   1076: iconst_0
-    //   1077: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   1077: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   1080: aload_0
     //   1081: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
-    //   1084: invokevirtual 32	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
+    //   1084: invokevirtual 33	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	()V
     //   1087: aload_0
     //   1088: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   1091: iconst_0
-    //   1092: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   1092: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   1095: return
     //   1096: astore 4
     //   1098: goto +52 -> 1150
     //   1101: astore 4
     //   1103: goto +47 -> 1150
     //   1106: astore 4
-    //   1108: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1108: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1111: ifeq +30 -> 1141
-    //   1114: ldc 40
+    //   1114: ldc 41
     //   1116: iconst_2
-    //   1117: ldc 211
+    //   1117: ldc 222
     //   1119: aload 4
-    //   1121: invokestatic 214	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1121: invokestatic 225	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1124: goto +17 -> 1141
-    //   1127: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1127: invokestatic 39	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1130: ifeq +11 -> 1141
-    //   1133: ldc 40
+    //   1133: ldc 41
     //   1135: iconst_2
-    //   1136: ldc 216
-    //   1138: invokestatic 46	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1136: ldc 227
+    //   1138: invokestatic 47	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1141: aload_0
     //   1142: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   1145: iconst_0
-    //   1146: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   1146: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   1149: return
     //   1150: aload_0
     //   1151: getfield 12	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter$IncreasinglyLoadMediaTask:this$0	Lcom/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter;
     //   1154: iconst_0
-    //   1155: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:jdField_a_of_type_Boolean	Z
+    //   1155: putfield 27	com/tencent/mobileqq/activity/chathistory/TroopAIOImageGeter:a	Z
     //   1158: goto +6 -> 1164
     //   1161: aload 4
     //   1163: athrow
@@ -649,7 +649,7 @@ class TroopAIOImageGeter$IncreasinglyLoadMediaTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOImageGeter.IncreasinglyLoadMediaTask
  * JD-Core Version:    0.7.0.1
  */

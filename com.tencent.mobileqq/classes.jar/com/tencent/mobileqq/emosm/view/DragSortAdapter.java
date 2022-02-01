@@ -30,56 +30,56 @@ import org.json.JSONObject;
 public class DragSortAdapter<T>
   extends BaseAdapter
 {
-  public int a;
-  protected Context a;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  private LruCache<String, Drawable> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(30);
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private HashMap<EmoticonPackage, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   protected List<T> a;
-  JSONArray jdField_a_of_type_OrgJsonJSONArray;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  protected Context b;
+  JSONArray c;
+  Handler d;
+  public int e;
+  private boolean f;
+  private LruCache<String, Drawable> g = new LruCache(30);
+  private Drawable h;
+  private Object i = new Object();
+  private boolean j;
+  private HashMap<EmoticonPackage, Boolean> k = new HashMap();
   
   public DragSortAdapter(Context paramContext, List<T> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839126);
+    this.b = paramContext;
+    this.a = paramList;
+    this.h = this.b.getResources().getDrawable(2130839282);
     ClubContentJsonTask.a((BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), ClubContentJsonTask.d);
-    paramContext = ClubContentJsonTask.d.a(this.jdField_a_of_type_AndroidContentContext);
+    paramContext = ClubContentJsonTask.d.a(this.b);
     if (paramContext != null) {
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONArray = paramContext.getJSONArray("wording");
+        this.c = paramContext.getJSONArray("wording");
       }
       catch (JSONException paramContext)
       {
         paramContext.printStackTrace();
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.d = new Handler();
   }
   
   private Drawable a(EmoticonPackage paramEmoticonPackage)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId) != null) {
-      return (Drawable)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramEmoticonPackage.epId);
+    if (this.g.get(paramEmoticonPackage.epId) != null) {
+      return (Drawable)this.g.get(paramEmoticonPackage.epId);
     }
     Drawable localDrawable = EmosmUtils.a(2, paramEmoticonPackage.epId);
     if (localDrawable != null)
     {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramEmoticonPackage.epId, localDrawable);
+      this.g.put(paramEmoticonPackage.epId, localDrawable);
       return localDrawable;
     }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.h;
   }
   
   public List<EmoticonPackage> a()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.k.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -90,29 +90,24 @@ public class DragSortAdapter<T>
     return localArrayList;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
   public void a(int paramInt)
   {
-    boolean bool = a(paramInt);
+    boolean bool = b(paramInt);
     EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
-    this.jdField_a_of_type_JavaUtilHashMap.put(localEmoticonPackage, Boolean.valueOf(bool ^ true));
+    this.k.put(localEmoticonPackage, Boolean.valueOf(bool ^ true));
   }
   
   public void a(T paramT)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.i)
     {
       if ((paramT instanceof EmoticonPackage))
       {
         EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramT;
-        this.jdField_a_of_type_JavaUtilHashMap.remove(localEmoticonPackage);
+        this.k.remove(localEmoticonPackage);
       }
-      this.jdField_a_of_type_JavaUtilList.remove(paramT);
-      if (this.b) {
+      this.a.remove(paramT);
+      if (this.j) {
         notifyDataSetChanged();
       }
       return;
@@ -121,10 +116,10 @@ public class DragSortAdapter<T>
   
   public void a(T paramT, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.i)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
-      if (this.b) {
+      this.a.add(paramInt, paramT);
+      if (this.j) {
         notifyDataSetChanged();
       }
       return;
@@ -133,31 +128,36 @@ public class DragSortAdapter<T>
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localEmoticonPackage)) {
-      return ((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(localEmoticonPackage)).booleanValue();
-    }
-    return false;
+    this.f = paramBoolean;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+    this.k.clear();
   }
   
   public void b(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.j = paramBoolean;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)getItem(paramInt);
+    if (this.k.containsKey(localEmoticonPackage)) {
+      return ((Boolean)this.k.get(localEmoticonPackage)).booleanValue();
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    this.g.evictAll();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList == null) {
       return 0;
     }
@@ -166,7 +166,7 @@ public class DragSortAdapter<T>
   
   public T getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -180,88 +180,88 @@ public class DragSortAdapter<T>
     if (paramView == null)
     {
       localViewHolder = new DragSortAdapter.ViewHolder(this);
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561590, null);
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366165));
-      localViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366170));
-      localViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365886));
-      localViewHolder.d = ((ImageView)paramView.findViewById(2131365887));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366169));
-      localViewHolder.e = ((ImageView)paramView.findViewById(2131366166));
-      localViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366171));
-      localViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131377351);
-      localViewHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131380217);
-      localViewHolder.f = ((ImageView)paramView.findViewById(2131366167));
-      localViewHolder.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131366164);
+      paramView = View.inflate(this.b, 2131627953, null);
+      localViewHolder.a = ((ImageView)paramView.findViewById(2131432452));
+      localViewHolder.b = ((ImageView)paramView.findViewById(2131432457));
+      localViewHolder.c = ((ImageView)paramView.findViewById(2131432152));
+      localViewHolder.d = ((ImageView)paramView.findViewById(2131432153));
+      localViewHolder.g = ((TextView)paramView.findViewById(2131432456));
+      localViewHolder.h = ((ImageView)paramView.findViewById(2131432453));
+      localViewHolder.j = ((TextView)paramView.findViewById(2131432458));
+      localViewHolder.e = paramView.findViewById(2131445741);
+      localViewHolder.f = paramView.findViewById(2131449135);
+      localViewHolder.i = ((ImageView)paramView.findViewById(2131432454));
+      localViewHolder.k = paramView.findViewById(2131432451);
       paramView.setTag(localViewHolder);
       paramViewGroup.setTag(localViewHolder);
-      paramView.setBackgroundResource(2130839631);
+      paramView.setBackgroundResource(2130840100);
     }
     else
     {
       localViewHolder = (DragSortAdapter.ViewHolder)paramView.getTag();
     }
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localEmoticonPackage.name);
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(localEmoticonPackage));
-    localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.get(paramInt);
+    localViewHolder.g.setText(localEmoticonPackage.name);
+    localViewHolder.a.setImageDrawable(a(localEmoticonPackage));
+    localViewHolder.e.setVisibility(8);
     if (localEmoticonPackage.hasSound)
     {
-      localViewHolder.e.setVisibility(0);
+      localViewHolder.h.setVisibility(0);
       if (localEmoticonPackage.isNewVoiceType()) {
-        localViewHolder.e.setImageResource(2130838234);
+        localViewHolder.h.setImageResource(2130838299);
       } else {
-        localViewHolder.e.setImageResource(2130839643);
+        localViewHolder.h.setImageResource(2130840112);
       }
     }
     else
     {
-      localViewHolder.e.setVisibility(8);
+      localViewHolder.h.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
       StringBuilder localStringBuilder;
-      if (!a(paramInt))
+      if (!b(paramInt))
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692134));
+        localStringBuilder.append(this.b.getString(2131889115));
         localStringBuilder.append(" ");
         localStringBuilder.append(localEmoticonPackage.name);
         paramView.setContentDescription(localStringBuilder.toString());
-        localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847352);
+        localViewHolder.b.setImageResource(2130849003);
       }
       else
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692124));
+        localStringBuilder.append(this.b.getString(2131889105));
         localStringBuilder.append(" ");
         localStringBuilder.append(localEmoticonPackage.name);
         paramView.setContentDescription(localStringBuilder.toString());
-        localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847353);
+        localViewHolder.b.setImageResource(2130849004);
       }
-      localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      localViewHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      localViewHolder.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      localViewHolder.b.setVisibility(0);
+      localViewHolder.c.setVisibility(0);
+      localViewHolder.k.setVisibility(8);
     }
     else
     {
       paramView.setContentDescription(localEmoticonPackage.name);
-      localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      localViewHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      localViewHolder.jdField_c_of_type_AndroidViewView.setVisibility(0);
+      localViewHolder.b.setVisibility(8);
+      localViewHolder.c.setVisibility(8);
+      localViewHolder.k.setVisibility(0);
     }
     if (localEmoticonPackage.mobileFeetype == 4)
     {
-      localViewHolder.f.setVisibility(0);
-      localViewHolder.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839642));
+      localViewHolder.i.setVisibility(0);
+      localViewHolder.i.setBackgroundDrawable(this.b.getResources().getDrawable(2130840111));
     }
     else if (localEmoticonPackage.mobileFeetype == 5)
     {
-      localViewHolder.f.setVisibility(0);
-      localViewHolder.f.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847662));
+      localViewHolder.i.setVisibility(0);
+      localViewHolder.i.setBackgroundDrawable(this.b.getResources().getDrawable(2130849322));
     }
     else
     {
-      localViewHolder.f.setVisibility(8);
+      localViewHolder.i.setVisibility(8);
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -270,12 +270,12 @@ public class DragSortAdapter<T>
   public void notifyDataSetChanged()
   {
     super.notifyDataSetChanged();
-    this.b = true;
+    this.j = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortAdapter
  * JD-Core Version:    0.7.0.1
  */

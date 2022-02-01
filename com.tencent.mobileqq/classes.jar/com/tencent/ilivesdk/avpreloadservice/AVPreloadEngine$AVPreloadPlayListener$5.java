@@ -15,14 +15,14 @@ class AVPreloadEngine$AVPreloadPlayListener$5
   {
     try
     {
-      long l = new JSONObject(this.jdField_a_of_type_JavaLangString).getLong("gapTime");
-      AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener).i(l);
-      Iterator localIterator = AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener.a).iterator();
+      long l = new JSONObject(this.a).getLong("gapTime");
+      AVPreloadEngine.AVPreloadPlayListener.a(this.b).i(l);
+      Iterator localIterator = AVPreloadEngine.a(this.b.a).iterator();
       while (localIterator.hasNext())
       {
         AVPreloadEngine.PreloadResultListener localPreloadResultListener = (AVPreloadEngine.PreloadResultListener)localIterator.next();
         if (localPreloadResultListener != null) {
-          localPreloadResultListener.a(AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener), AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener).b(), l);
+          localPreloadResultListener.a(AVPreloadEngine.AVPreloadPlayListener.a(this.b), AVPreloadEngine.AVPreloadPlayListener.a(this.b).s(), l);
         }
       }
       return;
@@ -35,7 +35,7 @@ class AVPreloadEngine$AVPreloadPlayListener$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine.AVPreloadPlayListener.5
  * JD-Core Version:    0.7.0.1
  */

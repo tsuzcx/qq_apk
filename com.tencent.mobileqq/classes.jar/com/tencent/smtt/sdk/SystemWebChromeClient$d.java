@@ -1,13 +1,13 @@
 package com.tencent.smtt.sdk;
 
 class SystemWebChromeClient$d
-  implements com.tencent.smtt.export.external.interfaces.JsPromptResult
+  implements com.tencent.smtt.export.external.interfaces.JsResult
 {
-  android.webkit.JsPromptResult a;
+  android.webkit.JsResult a;
   
-  SystemWebChromeClient$d(SystemWebChromeClient paramSystemWebChromeClient, android.webkit.JsPromptResult paramJsPromptResult)
+  SystemWebChromeClient$d(SystemWebChromeClient paramSystemWebChromeClient, android.webkit.JsResult paramJsResult)
   {
-    this.a = paramJsPromptResult;
+    this.a = paramJsResult;
   }
   
   public void cancel()
@@ -19,15 +19,10 @@ class SystemWebChromeClient$d
   {
     this.a.confirm();
   }
-  
-  public void confirm(String paramString)
-  {
-    this.a.confirm(paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient.d
  * JD-Core Version:    0.7.0.1
  */

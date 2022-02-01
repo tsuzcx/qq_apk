@@ -14,7 +14,7 @@ class WSVerticalDataManager$1
   
   protected WSVerticalDataManager.ResponseModel a(WSRequest<stSimpleGetFeedListRsp> paramWSRequest, stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp, RspHeaderBean paramRspHeaderBean)
   {
-    return WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, paramWSRequest, paramstSimpleGetFeedListRsp, paramRspHeaderBean, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener, this.b, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Long);
+    return WSVerticalDataManager.a(this.f, paramWSRequest, paramstSimpleGetFeedListRsp, paramRspHeaderBean, this.a, this.b, this.c, this.d, this.e);
   }
   
   protected void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
@@ -22,18 +22,18 @@ class WSVerticalDataManager$1
   protected void a(WSVerticalDataManager.ResponseModel paramResponseModel)
   {
     super.a(paramResponseModel);
-    WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, paramResponseModel, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
+    WSVerticalDataManager.a(this.f, paramResponseModel, this.b);
   }
   
   protected void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
     super.b(paramWSServiceErrorInfo);
-    WSVerticalDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalDataManager, this.jdField_a_of_type_Boolean, this.b, paramWSServiceErrorInfo, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
+    WSVerticalDataManager.a(this.f, this.a, this.c, paramWSServiceErrorInfo, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager.1
  * JD-Core Version:    0.7.0.1
  */

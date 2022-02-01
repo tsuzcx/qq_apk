@@ -21,9 +21,9 @@ import com.tencent.mobileqq.widget.SquareImageView;
 public class SubscribeFollowInfoView
   extends BaseWidgetView<CertifiedAccountMeta.StFeed>
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FollowTextView jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView;
-  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+  private SquareImageView c;
+  private TextView d;
+  private FollowTextView e;
   
   public SubscribeFollowInfoView(@NonNull Context paramContext)
   {
@@ -40,74 +40,84 @@ public class SubscribeFollowInfoView
     super(paramContext, paramAttributeSet);
   }
   
-  protected int a()
-  {
-    return 2131558744;
-  }
-  
   protected void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
     SubscribeFollowInfoView.1 local1 = new SubscribeFollowInfoView.1(this, paramStFeed);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((SquareImageView)localObject).getLayoutParams().width = ScreenUtil.dip2px(27.0F);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().height = ScreenUtil.dip2px(27.0F);
-      SubImageLoader.a(paramStFeed.poster.icon.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setOnClickListener(local1);
+      this.c.getLayoutParams().height = ScreenUtil.dip2px(27.0F);
+      SubImageLoader.a(paramStFeed.poster.icon.get(), this.c);
+      this.c.setOnClickListener(local1);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.d;
     if (localObject != null)
     {
       ((TextView)localObject).setText(paramStFeed.poster.nick.get());
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(local1);
+      this.d.setOnClickListener(local1);
     }
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView != null)
+    if (this.e != null)
     {
       if (SubscribeUtils.a(paramStFeed.poster.attr.get()))
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setVisibility(8);
+        this.e.setVisibility(8);
         return;
       }
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setFeedData(paramStFeed);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setExtraTypeInfo(a());
+      this.e.setVisibility(0);
+      this.e.setFeedData(paramStFeed);
+      this.e.setExtraTypeInfo(getExtraTypeInfo());
     }
   }
   
   protected void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369284));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379529));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView = ((FollowTextView)paramView.findViewById(2131379687));
+    this.c = ((SquareImageView)paramView.findViewById(2131436269));
+    this.d = ((TextView)paramView.findViewById(2131448280));
+    this.e = ((FollowTextView)paramView.findViewById(2131448469));
   }
   
   protected boolean a()
   {
-    return (a() != null) && (StringUtil.a(((CertifiedAccountMeta.StFeed)a()).poster.nick.get()));
+    return (getData() != null) && (StringUtil.isEmpty(((CertifiedAccountMeta.StFeed)getData()).poster.nick.get()));
   }
   
   public void b(CertifiedAccountMeta.StFeed paramStFeed)
   {
     if (paramStFeed != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+      Object localObject = this.c;
       if (localObject != null)
       {
         ((SquareImageView)localObject).getLayoutParams().width = ScreenUtil.dip2px(27.0F);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().height = ScreenUtil.dip2px(27.0F);
-        SubImageLoader.a(paramStFeed.poster.icon.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
+        this.c.getLayoutParams().height = ScreenUtil.dip2px(27.0F);
+        SubImageLoader.a(paramStFeed.poster.icon.get(), this.c);
       }
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject = this.d;
       if (localObject != null) {
         ((TextView)localObject).setText(paramStFeed.poster.nick.get());
       }
     }
   }
+  
+  public TextView getFeedAuthorName()
+  {
+    return this.d;
+  }
+  
+  public FollowTextView getFollowTextView()
+  {
+    return this.e;
+  }
+  
+  protected int getLayoutId()
+  {
+    return 2131624364;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeFollowInfoView
  * JD-Core Version:    0.7.0.1
  */

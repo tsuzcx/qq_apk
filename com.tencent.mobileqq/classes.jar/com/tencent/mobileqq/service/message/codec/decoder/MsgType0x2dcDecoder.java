@@ -49,11 +49,11 @@ public class MsgType0x2dcDecoder
       localStringBuilder.append(paramArrayOfByte);
       QLog.i("MsgType0x2dcDecoder", 2, localStringBuilder.toString());
     }
-    paramArrayOfByte = (IHotChatHandler)paramMessageHandler.a.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName());
-    paramMessageHandler = (HotChatManager)paramMessageHandler.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+    paramArrayOfByte = (IHotChatHandler)paramMessageHandler.n.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName());
+    paramMessageHandler = (HotChatManager)paramMessageHandler.n.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
     if ((paramArrayOfByte != null) && (paramMessageHandler != null))
     {
-      paramMessageHandler = paramMessageHandler.a(str);
+      paramMessageHandler = paramMessageHandler.c(str);
       if (paramMessageHandler != null)
       {
         if (paramMessageHandler.userCreate == 1)
@@ -108,29 +108,29 @@ public class MsgType0x2dcDecoder
           localObject2 = new MsgType0x2dcDecoder.Parse0x2dcContext(this);
           if (localObject1.length > 7)
           {
-            localObject3 = (TroopTipsMsgMgr)paramMessageHandler.a.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER);
+            localObject3 = (TroopTipsMsgMgr)paramMessageHandler.n.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER);
             byte[] arrayOfByte = new byte[localObject1.length - 7];
             PkgTools.copyData(arrayOfByte, 0, (byte[])localObject1, 7, arrayOfByte.length);
-            paramList.add(((TroopTipsMsgMgr)localObject3).a(paramMessageHandler.a, arrayOfByte, i, paramMsg.msg_head.msg_time.get(), 0L, 0, true, paramDecodeProtoPkgContext.d, (MsgType0x2dcDecoder.Parse0x2dcContext)localObject2, false));
+            paramList.add(((TroopTipsMsgMgr)localObject3).a(paramMessageHandler.n, arrayOfByte, i, paramMsg.msg_head.msg_time.get(), 0L, 0, true, paramDecodeProtoPkgContext.j, (MsgType0x2dcDecoder.Parse0x2dcContext)localObject2, false));
           }
           if (((MsgType0x2dcDecoder.Parse0x2dcContext)localObject2).a)
           {
-            MessageProtoCodec.a(l1, i, l2, j, paramMessageHandler.a.getMsgHandler().a());
+            MessageProtoCodec.a(l1, i, l2, j, paramMessageHandler.n.getMsgHandler().b());
             if (QLog.isColorLevel()) {
               QLog.d("MsgType0x2dcDecoder", 2, String.format("handle0x2dcMessage==>sendDelMsgReqToServer fromUin:%d, seq:%d, msgUid:%d, msgType:%d", new Object[] { Long.valueOf(l1), Integer.valueOf(i), Long.valueOf(l2), Integer.valueOf(j) }));
             }
           }
         }
       }
-      else if (((TroopGagMgr)paramMessageHandler.a.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a((byte[])localObject2, i)) {
-        MessageProtoCodec.a(l1, i, l2, j, paramMessageHandler.a.getMsgHandler().a());
+      else if (((TroopGagMgr)paramMessageHandler.n.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a((byte[])localObject2, i)) {
+        MessageProtoCodec.a(l1, i, l2, j, paramMessageHandler.n.getMsgHandler().b());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.MsgType0x2dcDecoder
  * JD-Core Version:    0.7.0.1
  */

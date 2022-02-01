@@ -16,32 +16,32 @@ class WebViewSurfaceInjectorImpl$2
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getHostActivity().startActivity(this.jdField_a_of_type_AndroidContentIntent);
-      if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      this.a.getHostActivity().startActivity(this.b);
+      if ((this.c) && (!TextUtils.isEmpty(this.d)))
       {
-        boolean bool1 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("keyIsDownLoad", false);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getHostActivity().finish();
+        boolean bool1 = this.b.getBooleanExtra("keyIsDownLoad", false);
+        this.a.getHostActivity().finish();
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("forcedClosedAfterJump appName=");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.d);
           QLog.d("WebViewSurfaceInjectorImpl", 2, ((StringBuilder)localObject).toString());
         }
-        boolean bool2 = this.b;
+        boolean bool2 = this.e;
         Object localObject = "";
         if ((bool2) && (!bool1))
         {
-          if (this.jdField_a_of_type_Long != -1L) {
-            localObject = String.valueOf(this.jdField_a_of_type_Long);
+          if (this.f != -1L) {
+            localObject = String.valueOf(this.f);
           }
           ReportController.b(null, "dc00898", "", "", "0X800A86A", "0X800A86A", 0, 0, (String)localObject, "", "", "");
           return;
         }
-        if (this.b)
+        if (this.e)
         {
-          if (this.jdField_a_of_type_Long != -1L) {
-            localObject = String.valueOf(this.jdField_a_of_type_Long);
+          if (this.f != -1L) {
+            localObject = String.valueOf(this.f);
           }
           ReportController.b(null, "dc00898", "", "", "0X800A86B", "0X800A86B", 0, 0, (String)localObject, "", "", "");
           return;
@@ -56,7 +56,7 @@ class WebViewSurfaceInjectorImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewSurfaceInjectorImpl.2
  * JD-Core Version:    0.7.0.1
  */

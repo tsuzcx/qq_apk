@@ -221,6 +221,11 @@ public class TintTypedArray
     return this.mWrapped.getValue(paramInt, paramTypedValue);
   }
   
+  public TypedArray getWrappedTypeArray()
+  {
+    return this.mWrapped;
+  }
+  
   public boolean hasValue(int paramInt)
   {
     return this.mWrapped.hasValue(paramInt);

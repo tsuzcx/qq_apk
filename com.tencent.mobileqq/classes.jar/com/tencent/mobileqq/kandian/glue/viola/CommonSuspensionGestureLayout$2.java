@@ -15,21 +15,21 @@ class CommonSuspensionGestureLayout$2
     {
       paramView = (FrameLayout.LayoutParams)CommonSuspensionGestureLayout.a(this.a).getLayoutParams();
       CommonSuspensionGestureLayout localCommonSuspensionGestureLayout = this.a;
-      CommonSuspensionGestureLayout.a(localCommonSuspensionGestureLayout, CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.a(localCommonSuspensionGestureLayout)));
-      if (paramView.bottomMargin != CommonSuspensionGestureLayout.a(this.a))
+      CommonSuspensionGestureLayout.a(localCommonSuspensionGestureLayout, CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.b(localCommonSuspensionGestureLayout)));
+      if (paramView.bottomMargin != CommonSuspensionGestureLayout.c(this.a))
       {
         paramView.gravity = 80;
-        paramView.bottomMargin = CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.a(this.a));
+        paramView.bottomMargin = CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.b(this.a));
         CommonSuspensionGestureLayout.a(this.a).setLayoutParams(paramView);
       }
-      this.a.c();
+      this.a.e();
     }
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.CommonSuspensionGestureLayout.2
  * JD-Core Version:    0.7.0.1
  */

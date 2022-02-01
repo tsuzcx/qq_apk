@@ -69,7 +69,8 @@ public class FileJsPlugin
   private static final String ERR_UNLINK_OPERATION_BAN = "operation not permitted, unlink ";
   private static final String ERR_WRITEFILE_ERROR = "failed to  write file";
   private static final String TAG = "FileJsPlugin";
-  private static Set<String> sSupportEncodingRead = new FileJsPlugin.1();
+  private static final Map<String, String> correctType = new FileJsPlugin.1();
+  private static Set<String> sSupportEncodingRead = new FileJsPlugin.2();
   private static int shouldReport = -1;
   public int curPreloadTaskId = 0;
   private ConcurrentHashMap<String, String> downloadMap = new ConcurrentHashMap();
@@ -91,8 +92,8 @@ public class FileJsPlugin
     }
     catch (JSONException paramString)
     {
-      label70:
-      break label70;
+      label71:
+      break label71;
     }
     QMLog.e("FileJsPlugin", "download onDownloadSucceed callback fail exception.", paramException);
   }
@@ -141,7 +142,7 @@ public class FileJsPlugin
     paramString2 = StringUtil.json2map((JSONObject)localObject);
     paramString2.put("Referer", getRequestReferer());
     localObject = StringUtil.json2map(localJSONObject);
-    ((UploaderProxy)ProxyManager.get(UploaderProxy.class)).upload(paramString1, paramString2, paramString4, paramString3, paramJSONObject, (Map)localObject, 60, new FileJsPlugin.3(this, i, paramRequestEvent, paramLong, paramFile));
+    ((UploaderProxy)ProxyManager.get(UploaderProxy.class)).upload(paramString1, paramString2, paramString4, paramString3, paramJSONObject, (Map)localObject, 60, new FileJsPlugin.4(this, i, paramRequestEvent, paramLong, paramFile));
     return i;
   }
   
@@ -150,7 +151,7 @@ public class FileJsPlugin
     if (paramString.endsWith("Sync")) {
       return paramFileTask.run();
     }
-    ThreadManager.executeOnDiskIOThreadPool(new FileJsPlugin.17(this, paramFileTask));
+    ThreadManager.executeOnDiskIOThreadPool(new FileJsPlugin.18(this, paramFileTask));
     return "";
   }
   
@@ -403,7 +404,7 @@ public class FileJsPlugin
     if (shouldReport == 0) {
       return;
     }
-    ThreadManager.executeOnComputationThreadPool(new FileJsPlugin.18(this, paramString1, paramBoolean, paramLong1, paramLong2));
+    ThreadManager.executeOnComputationThreadPool(new FileJsPlugin.19(this, paramString1, paramBoolean, paramLong1, paramLong2));
   }
   
   private Object readFile(String paramString1, String paramString2)
@@ -619,7 +620,7 @@ public class FileJsPlugin
   public String access(RequestEvent paramRequestEvent)
   {
     long l = System.currentTimeMillis();
-    return execFileTask(paramRequestEvent.event, new FileJsPlugin.4(this, paramRequestEvent, l));
+    return execFileTask(paramRequestEvent.event, new FileJsPlugin.5(this, paramRequestEvent, l));
   }
   
   @JsEvent({"fs_appendFile", "fs_appendFileSync"})
@@ -638,7 +639,7 @@ public class FileJsPlugin
         if (localObject != null)
         {
           localObject = ((NativeBuffer)localObject).buf;
-          paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.5(this, str3, paramRequestEvent, l, str1, str2, (byte[])localObject));
+          paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.6(this, str3, paramRequestEvent, l, str1, str2, (byte[])localObject));
           return paramRequestEvent;
         }
       }
@@ -660,7 +661,7 @@ public class FileJsPlugin
       Object localObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = ((JSONObject)localObject).optString("srcPath");
       localObject = ((JSONObject)localObject).optString("destPath");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.7(this, str, paramRequestEvent, l, (String)localObject));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.8(this, str, paramRequestEvent, l, (String)localObject));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -859,7 +860,7 @@ public class FileJsPlugin
   
   public void doDownload(RequestEvent paramRequestEvent, JSONObject paramJSONObject, String paramString1, MiniAppFileManager paramMiniAppFileManager, String paramString2, int paramInt, String paramString3, Map paramMap, String paramString4)
   {
-    ThreadManager.executeOnNetworkIOThreadPool(new FileJsPlugin.2(this, paramString1, paramRequestEvent, System.currentTimeMillis(), paramString4, paramString3, paramMiniAppFileManager, paramInt, paramJSONObject, paramString2, paramMap));
+    ThreadManager.executeOnNetworkIOThreadPool(new FileJsPlugin.3(this, paramString1, paramRequestEvent, System.currentTimeMillis(), paramString4, paramString3, paramMiniAppFileManager, paramInt, paramJSONObject, paramString2, paramMap));
   }
   
   public String getDownloadUrl(String paramString)
@@ -1067,7 +1068,7 @@ public class FileJsPlugin
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = localJSONObject.optString("dirPath");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.8(this, str, localJSONObject, paramRequestEvent, l));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.9(this, str, localJSONObject, paramRequestEvent, l));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -1123,7 +1124,7 @@ public class FileJsPlugin
       }
       catch (Throwable paramRequestEvent)
       {
-        break label104;
+        break label106;
       }
       paramRequestEvent = paramRequestEvent;
       paramRequestEvent.printStackTrace();
@@ -1162,7 +1163,7 @@ public class FileJsPlugin
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
           localObject = "__internal__array_buffer";
-          paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.9(this, str, paramRequestEvent, l, (String)localObject));
+          paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.10(this, str, paramRequestEvent, l, (String)localObject));
           return paramRequestEvent;
         }
       }
@@ -1182,7 +1183,7 @@ public class FileJsPlugin
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = localJSONObject.optString("dirPath");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.10(this, str, localJSONObject, paramRequestEvent, l));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.11(this, str, localJSONObject, paramRequestEvent, l));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -1248,7 +1249,7 @@ public class FileJsPlugin
       Object localObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = ((JSONObject)localObject).optString("oldPath");
       localObject = ((JSONObject)localObject).optString("newPath");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.11(this, str, paramRequestEvent, l, (String)localObject));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.12(this, str, paramRequestEvent, l, (String)localObject));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -1267,7 +1268,7 @@ public class FileJsPlugin
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = localJSONObject.optString("dirPath");
       boolean bool = localJSONObject.optBoolean("recursive");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.12(this, str, localJSONObject, paramRequestEvent, l, bool));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.13(this, str, localJSONObject, paramRequestEvent, l, bool));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -1286,7 +1287,7 @@ public class FileJsPlugin
       Object localObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = ((JSONObject)localObject).optString("tempFilePath");
       localObject = ((JSONObject)localObject).optString("filePath");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.6(this, str, paramRequestEvent, l, (String)localObject));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.7(this, str, paramRequestEvent, l, (String)localObject));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -1305,7 +1306,7 @@ public class FileJsPlugin
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = localJSONObject.optString("path");
       boolean bool = localJSONObject.optBoolean("recursive");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.13(this, str, paramRequestEvent, l, bool));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.14(this, str, paramRequestEvent, l, bool));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -1322,7 +1323,7 @@ public class FileJsPlugin
     try
     {
       String str = new JSONObject(paramRequestEvent.jsonParams).optString("filePath");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.14(this, str, paramRequestEvent, l));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.15(this, str, paramRequestEvent, l));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -1341,7 +1342,7 @@ public class FileJsPlugin
       Object localObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = ((JSONObject)localObject).optString("zipFilePath");
       localObject = ((JSONObject)localObject).optString("targetPath");
-      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.15(this, str, paramRequestEvent, l, (String)localObject));
+      paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.16(this, str, paramRequestEvent, l, (String)localObject));
       return paramRequestEvent;
     }
     catch (JSONException paramRequestEvent)
@@ -1372,7 +1373,7 @@ public class FileJsPlugin
         if (localObject != null)
         {
           localObject = ((NativeBuffer)localObject).buf;
-          paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.16(this, str1, (byte[])localObject, paramRequestEvent, l, str2, str3));
+          paramRequestEvent = execFileTask(paramRequestEvent.event, new FileJsPlugin.17(this, str1, (byte[])localObject, paramRequestEvent, l, str2, str3));
           return paramRequestEvent;
         }
       }
@@ -1387,7 +1388,7 @@ public class FileJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin
  * JD-Core Version:    0.7.0.1
  */

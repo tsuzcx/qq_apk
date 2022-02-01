@@ -10,45 +10,45 @@ import com.tencent.qphone.base.util.QLog;
 public class LSRecordAnimations$ChangeBgColorAnimation
   extends Animation
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  private LSRecordAnimations.TrackInfo jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo;
+  private View a;
   private int b;
+  private int c;
+  private LSRecordAnimations.TrackInfo d;
+  private Animation.AnimationListener e;
   
   public LSRecordAnimations$ChangeBgColorAnimation(View paramView, int paramInt1, int paramInt2, LSRecordAnimations.TrackInfo paramTrackInfo)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo = paramTrackInfo;
+    this.a = paramView;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramTrackInfo;
   }
   
   public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation = this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    paramTransformation = this.e;
     if ((paramTransformation != null) && ((paramTransformation instanceof LSRecordAnimations.LSRecordAnimationCallback))) {
       ((LSRecordAnimations.LSRecordAnimationCallback)paramTransformation).a(this, paramFloat);
     }
-    paramTransformation = this.jdField_a_of_type_AndroidViewView;
+    paramTransformation = this.a;
     if (paramTransformation == null) {
       return;
     }
-    int i = this.b;
+    int i = this.c;
     if (paramFloat < 1.0F)
     {
-      i = Color.argb((int)(Color.alpha(this.jdField_a_of_type_Int) + (Color.alpha(this.b) - Color.alpha(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.red(this.jdField_a_of_type_Int) + (Color.red(this.b) - Color.red(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.green(this.jdField_a_of_type_Int) + (Color.green(this.b) - Color.green(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.blue(this.jdField_a_of_type_Int) + (Color.blue(this.b) - Color.blue(this.jdField_a_of_type_Int)) * paramFloat));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
+      i = Color.argb((int)(Color.alpha(this.b) + (Color.alpha(this.c) - Color.alpha(this.b)) * paramFloat), (int)(Color.red(this.b) + (Color.red(this.c) - Color.red(this.b)) * paramFloat), (int)(Color.green(this.b) + (Color.green(this.c) - Color.green(this.b)) * paramFloat), (int)(Color.blue(this.b) + (Color.blue(this.c) - Color.blue(this.b)) * paramFloat));
+      this.a.setBackgroundColor(i);
     }
     else
     {
       paramTransformation.setBackgroundColor(i);
-      this.jdField_a_of_type_AndroidViewView = null;
+      this.a = null;
     }
-    paramTransformation = this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo;
+    paramTransformation = this.d;
     if (paramTransformation != null) {
-      paramTransformation.jdField_a_of_type_Int = i;
+      paramTransformation.b = i;
     }
     if (QLog.isDevelopLevel())
     {
@@ -64,12 +64,12 @@ public class LSRecordAnimations$ChangeBgColorAnimation
   public void setAnimationListener(Animation.AnimationListener paramAnimationListener)
   {
     super.setAnimationListener(paramAnimationListener);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = paramAnimationListener;
+    this.e = paramAnimationListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordAnimations.ChangeBgColorAnimation
  * JD-Core Version:    0.7.0.1
  */

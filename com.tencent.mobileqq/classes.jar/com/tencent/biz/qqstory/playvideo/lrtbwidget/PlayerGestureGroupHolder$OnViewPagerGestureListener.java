@@ -21,19 +21,19 @@ class PlayerGestureGroupHolder$OnViewPagerGestureListener
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    Object localObject = (StoryPlayerGroupHolder)this.a.a();
-    if (((StoryPlayerGroupHolder)localObject).a() == null) {
+    Object localObject = (StoryPlayerGroupHolder)this.a.d();
+    if (((StoryPlayerGroupHolder)localObject).h() == null) {
       return super.onDoubleTap(paramMotionEvent);
     }
     localObject = (BottomVideoInfoWidget)((StoryPlayerGroupHolder)localObject).b(BottomVideoInfoWidget.class);
-    if ((localObject != null) && (((BottomVideoInfoWidget)localObject).d()))
+    if ((localObject != null) && (((BottomVideoInfoWidget)localObject).h()))
     {
       int i = 0;
       try
       {
-        localObject = (AnimationDrawable)this.a.a().getResources().getDrawable(2130847151);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        localObject = (AnimationDrawable)this.a.a().getResources().getDrawable(2130848703);
+        this.a.i.setBackgroundDrawable((Drawable)localObject);
+        this.a.i.setVisibility(0);
         ((AnimationDrawable)localObject).start();
         int j = 0;
         while (i < ((AnimationDrawable)localObject).getNumberOfFrames())
@@ -42,7 +42,7 @@ class PlayerGestureGroupHolder$OnViewPagerGestureListener
           i += 1;
         }
         ThreadManager.getUIHandler().postDelayed(new PlayerGestureGroupHolder.OnViewPagerGestureListener.1(this, (AnimationDrawable)localObject), j);
-        SLog.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap handle");
+        SLog.c(this.a.a, "onDoubleTap handle");
       }
       catch (OutOfMemoryError paramMotionEvent)
       {
@@ -52,7 +52,7 @@ class PlayerGestureGroupHolder$OnViewPagerGestureListener
     }
     else
     {
-      SLog.c(this.a.jdField_a_of_type_JavaLangString, "onDoubleTap not handle");
+      SLog.c(this.a.a, "onDoubleTap not handle");
     }
     return super.onDoubleTap(paramMotionEvent);
   }
@@ -64,11 +64,11 @@ class PlayerGestureGroupHolder$OnViewPagerGestureListener
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    paramMotionEvent = (StoryPlayerGroupHolder)this.a.a();
-    VideoViewVideoHolder localVideoViewVideoHolder = paramMotionEvent.a();
+    paramMotionEvent = (StoryPlayerGroupHolder)this.a.d();
+    VideoViewVideoHolder localVideoViewVideoHolder = paramMotionEvent.r();
     if (localVideoViewVideoHolder != null)
     {
-      int i = localVideoViewVideoHolder.a();
+      int i = localVideoViewVideoHolder.q();
       if (i != 1)
       {
         if (i == 2)
@@ -83,13 +83,13 @@ class PlayerGestureGroupHolder$OnViewPagerGestureListener
         StoryReportor.a("play_video", "clk_video", 0, 0, new String[] { "", "2", "", "" });
       }
     }
-    SLog.c(this.a.jdField_a_of_type_JavaLangString, "onSingleTapConfirmed");
+    SLog.c(this.a.a, "onSingleTapConfirmed");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.PlayerGestureGroupHolder.OnViewPagerGestureListener
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class MaterialCategoryAdapter$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter.a(this.jdField_a_of_type_Int);
-    MaterialCategoryAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialCategoryAdapter).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaCategory);
+    this.c.a(this.a);
+    MaterialCategoryAdapter.a(this.c).b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialCategoryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

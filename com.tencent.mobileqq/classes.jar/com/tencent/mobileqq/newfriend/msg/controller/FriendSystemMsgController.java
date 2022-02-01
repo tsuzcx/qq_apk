@@ -11,62 +11,33 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class FriendSystemMsgController
 {
-  private static FriendSystemMsgController jdField_a_of_type_ComTencentMobileqqNewfriendMsgControllerFriendSystemMsgController;
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString = null;
-  private HashMap<Long, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private long b = -1L;
+  private static FriendSystemMsgController a;
+  private boolean b = false;
+  private HashMap<Long, structmsg.StructMsg> c = new HashMap();
+  private long d = -1L;
+  private long e = -1L;
+  private String f = null;
   
   public static FriendSystemMsgController a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqNewfriendMsgControllerFriendSystemMsgController == null) {
-      jdField_a_of_type_ComTencentMobileqqNewfriendMsgControllerFriendSystemMsgController = new FriendSystemMsgController();
+    if (a == null) {
+      a = new FriendSystemMsgController();
     }
-    return jdField_a_of_type_ComTencentMobileqqNewfriendMsgControllerFriendSystemMsgController;
-  }
-  
-  public int a(AppInterface paramAppInterface)
-  {
-    paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0);
-    if (paramAppInterface != null) {
-      return paramAppInterface.getInt("sp_unread_friendsys_count", 0);
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public long a(AppInterface paramAppInterface)
-  {
-    paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0);
-    long l = 0L;
-    if (paramAppInterface != null) {
-      l = paramAppInterface.getLong("sp_oldest_friendmsg", 0L);
-    }
-    return l;
+    return a;
   }
   
   public structmsg.StructMsg a(Long paramLong)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.c;
     if (localHashMap != null) {
       return (structmsg.StructMsg)localHashMap.get(paramLong);
     }
     return null;
   }
   
-  public void a()
-  {
-    jdField_a_of_type_ComTencentMobileqqNewfriendMsgControllerFriendSystemMsgController = null;
-  }
-  
   public void a(long paramLong)
   {
-    this.b = paramLong;
+    this.e = paramLong;
   }
   
   public void a(AppInterface paramAppInterface, int paramInt)
@@ -102,7 +73,7 @@ public class FriendSystemMsgController
   
   public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    if (this.c != null)
     {
       if (QLog.isColorLevel())
       {
@@ -111,45 +82,51 @@ public class FriendSystemMsgController
         localStringBuilder.append(paramLong);
         QLog.d("FriendSystemMsgController", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, paramStructMsg);
+      this.c.put(paramLong, paramStructMsg);
     }
   }
   
   public void a(boolean paramBoolean, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
+    this.b = paramBoolean;
+    this.f = paramAppInterface.getCurrentAccountUin();
     ThreadManagerV2.excute(new FriendSystemMsgController.1(this, paramAppInterface, paramBoolean), 128, null, false);
   }
   
   public boolean a(AppInterface paramAppInterface)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.f;
     if ((str != null) && (!str.equals(paramAppInterface.getCurrentAccountUin()))) {
-      this.jdField_a_of_type_Boolean = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0).getBoolean("friend_system_msg_nomore_msg", false);
+      this.b = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0).getBoolean("friend_system_msg_nomore_msg", false);
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
-  public long b()
+  public int b(AppInterface paramAppInterface)
   {
-    return this.jdField_a_of_type_Long;
+    paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0);
+    if (paramAppInterface != null) {
+      return paramAppInterface.getInt("sp_unread_friendsys_count", 0);
+    }
+    return 0;
   }
   
   public void b()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    if (localHashMap != null) {
-      localHashMap.clear();
-    }
+    a = null;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramLong;
   }
   
-  public boolean b(AppInterface paramAppInterface)
+  public long c()
+  {
+    return this.e;
+  }
+  
+  public boolean c(AppInterface paramAppInterface)
   {
     paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0);
     if (paramAppInterface != null) {
@@ -157,10 +134,33 @@ public class FriendSystemMsgController
     }
     return false;
   }
+  
+  public long d()
+  {
+    return this.d;
+  }
+  
+  public long d(AppInterface paramAppInterface)
+  {
+    paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0);
+    long l = 0L;
+    if (paramAppInterface != null) {
+      l = paramAppInterface.getLong("sp_oldest_friendmsg", 0L);
+    }
+    return l;
+  }
+  
+  public void e()
+  {
+    HashMap localHashMap = this.c;
+    if (localHashMap != null) {
+      localHashMap.clear();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.msg.controller.FriendSystemMsgController
  * JD-Core Version:    0.7.0.1
  */

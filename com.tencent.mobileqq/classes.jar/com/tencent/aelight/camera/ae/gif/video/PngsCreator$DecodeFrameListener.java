@@ -76,38 +76,38 @@ class PngsCreator$DecodeFrameListener
   @TargetApi(19)
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    QLog.d(PngsCreator.a(), 4, "PngsCreator onFrameAvailable()");
+    QLog.d(PngsCreator.b(), 4, "PngsCreator onFrameAvailable()");
     paramSurfaceTexture.updateTexImage();
-    PngsCreator.a(this.a).RenderProcess(PngsCreator.a(this.a), 960, 480, -1, 0.0D, PngsCreator.a(this.a));
-    Object localObject = PngsCreator.a(this.a);
-    Frame localFrame = PngsCreator.a(this.a);
-    if (PngsCreator.b(this.a) < PngsCreator.a(this.a).size()) {
-      paramSurfaceTexture = a((PTFaceAttr)PngsCreator.a(this.a).get(PngsCreator.b(this.a)));
+    PngsCreator.b(this.a).RenderProcess(PngsCreator.a(this.a), 960, 480, -1, 0.0D, PngsCreator.f(this.a));
+    Object localObject = PngsCreator.c(this.a);
+    Frame localFrame = PngsCreator.f(this.a);
+    if (PngsCreator.h(this.a) < PngsCreator.i(this.a).size()) {
+      paramSurfaceTexture = a((PTFaceAttr)PngsCreator.i(this.a).get(PngsCreator.h(this.a)));
     } else {
       paramSurfaceTexture = new PTFaceAttr(new PTFaceAttr.Builder());
     }
     paramSurfaceTexture = RendererUtils.saveTexture(((GifFilterProcess)localObject).a(localFrame, 480, 480, paramSurfaceTexture));
     paramSurfaceTexture.setPremultiplied(false);
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(PngsCreator.a(this.a));
+    ((StringBuilder)localObject).append(PngsCreator.j(this.a));
     ((StringBuilder)localObject).append("/frame_%03d.png");
-    Util.a(String.format(((StringBuilder)localObject).toString(), new Object[] { Integer.valueOf(PngsCreator.b(this.a)) }), paramSurfaceTexture);
+    Util.a(String.format(((StringBuilder)localObject).toString(), new Object[] { Integer.valueOf(PngsCreator.h(this.a)) }), paramSurfaceTexture);
     paramSurfaceTexture.recycle();
-    PngsCreator.c(this.a);
-    if (!PngsCreator.a(this.a).a())
+    PngsCreator.k(this.a);
+    if (!PngsCreator.e(this.a).a())
     {
-      paramSurfaceTexture = PngsCreator.a();
+      paramSurfaceTexture = PngsCreator.b();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("pngs create duration = ");
-      ((StringBuilder)localObject).append(System.currentTimeMillis() - PngsCreator.a(this.a));
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - PngsCreator.l(this.a));
       QLog.d(paramSurfaceTexture, 4, ((StringBuilder)localObject).toString());
-      PngsCreator.a(this.a).a(PngsCreator.a(this.a));
+      PngsCreator.m(this.a).a(PngsCreator.j(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsCreator.DecodeFrameListener
  * JD-Core Version:    0.7.0.1
  */

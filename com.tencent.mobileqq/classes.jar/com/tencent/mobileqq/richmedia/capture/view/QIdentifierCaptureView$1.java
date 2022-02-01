@@ -24,9 +24,9 @@ class QIdentifierCaptureView$1
       QLog.d("QIdentifierCaptureView", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.a;
-    ((QIdentifierCaptureView)localObject).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
-    ((QIdentifierCaptureView)localObject).jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-    return this.a.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+    ((QIdentifierCaptureView)localObject).q = paramEGLConfig;
+    ((QIdentifierCaptureView)localObject).r = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    return this.a.r;
   }
   
   public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
@@ -58,7 +58,7 @@ class QIdentifierCaptureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QIdentifierCaptureView.1
  * JD-Core Version:    0.7.0.1
  */

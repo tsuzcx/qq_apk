@@ -16,22 +16,22 @@ class HealthBusinessPlugin$10
   
   public void onClick(View paramView)
   {
-    if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).isOutputMute())
+    if (((ISuperPlayer)this.c.l.get(this.a)).isOutputMute())
     {
-      ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(false);
-      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846615));
+      ((ISuperPlayer)this.c.l.get(this.a)).setOutputMute(false);
+      ((ImageView)paramView).setImageDrawable(this.b.getResources().getDrawable(2130848167));
     }
     else
     {
-      ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(true);
-      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846614));
+      ((ISuperPlayer)this.c.l.get(this.a)).setOutputMute(true);
+      ((ImageView)paramView).setImageDrawable(this.b.getResources().getDrawable(2130848166));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.10
  * JD-Core Version:    0.7.0.1
  */

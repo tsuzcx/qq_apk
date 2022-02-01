@@ -7,16 +7,16 @@ class ReadInJoyFastWebBottomSocialViewNew$11
 {
   ReadInJoyFastWebBottomSocialViewNew$11(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew) {}
   
-  public void e()
+  public void cD_()
   {
     ReadInJoyFastWebBottomSocialViewNew localReadInJoyFastWebBottomSocialViewNew = this.a;
-    localReadInJoyFastWebBottomSocialViewNew.setData(ReadInJoyFastWebBottomSocialViewNew.a(localReadInJoyFastWebBottomSocialViewNew), ReadInJoyFastWebBottomSocialViewNew.a(this.a));
-    ReadInJoyFastWebBottomSocialViewNew.a(this.a);
+    localReadInJoyFastWebBottomSocialViewNew.setData(ReadInJoyFastWebBottomSocialViewNew.g(localReadInJoyFastWebBottomSocialViewNew), ReadInJoyFastWebBottomSocialViewNew.b(this.a));
+    ReadInJoyFastWebBottomSocialViewNew.h(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialViewNew.11
  * JD-Core Version:    0.7.0.1
  */

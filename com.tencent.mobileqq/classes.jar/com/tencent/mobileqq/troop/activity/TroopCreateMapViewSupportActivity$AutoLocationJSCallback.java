@@ -10,17 +10,17 @@ import org.json.JSONObject;
 public class TroopCreateMapViewSupportActivity$AutoLocationJSCallback
   implements AutoLocationMapView.AutoLocationCallback
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<TroopCreateMapViewSupportActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<TroopCreateMapViewSupportActivity> a;
+  private String b;
   
   public void a(int paramInt, GeoPoint paramGeoPoint)
   {
-    TroopCreateMapViewSupportActivity localTroopCreateMapViewSupportActivity = (TroopCreateMapViewSupportActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    TroopCreateMapViewSupportActivity localTroopCreateMapViewSupportActivity = (TroopCreateMapViewSupportActivity)this.a.get();
     if (localTroopCreateMapViewSupportActivity == null) {
       return;
     }
     localTroopCreateMapViewSupportActivity.stopTitleProgress();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
       JSONObject localJSONObject = new JSONObject();
       try
@@ -44,13 +44,13 @@ public class TroopCreateMapViewSupportActivity$AutoLocationJSCallback
       {
         paramGeoPoint.printStackTrace();
       }
-      localTroopCreateMapViewSupportActivity.a(this.jdField_a_of_type_JavaLangString, localJSONObject.toString());
+      localTroopCreateMapViewSupportActivity.a(this.b, localJSONObject.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateMapViewSupportActivity.AutoLocationJSCallback
  * JD-Core Version:    0.7.0.1
  */

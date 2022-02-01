@@ -48,24 +48,23 @@ import java.util.HashMap;
 public class TextTranslationItemBuilder
   extends TextItemBuilder
 {
-  static int g;
-  private static int h;
-  private static int i;
-  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-  Trans_entity jdField_a_of_type_ComRookeryTranslateModelTrans_entity;
-  HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  AlphaAnimation b = new AlphaAnimation(1.0F, 0.0F);
-  private long c;
-  private boolean f = true;
+  static int G;
+  private static int J;
+  private static int K;
+  Trans_entity F;
+  private boolean H = true;
+  private long I = -1L;
+  AlphaAnimation a = new AlphaAnimation(0.0F, 1.0F);
+  AlphaAnimation w = new AlphaAnimation(1.0F, 0.0F);
+  HashMap<Long, Long> x = new HashMap();
   
   public TextTranslationItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
-    this.b.setDuration(150L);
-    this.b.setFillAfter(true);
+    this.a.setDuration(300L);
+    this.a.setFillAfter(true);
+    this.w.setDuration(150L);
+    this.w.setFillAfter(true);
   }
   
   public static int a(int paramInt, QQAppInterface paramQQAppInterface)
@@ -80,18 +79,18 @@ public class TextTranslationItemBuilder
     } else {
       str = "";
     }
-    if (h != 0) {
-      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountRes(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Clk_bubble__translate", 0, h, 0, "", str, "", "");
+    if (J != 0) {
+      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountRes(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Clk_bubble__translate", 0, J, 0, "", str, "", "");
     }
-    if (i != 0) {
-      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountRes(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Back_original_text", 0, i, 0, "", str, "", "");
+    if (K != 0) {
+      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountRes(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Back_original_text", 0, K, 0, "", str, "", "");
     }
-    if (g != 0) {
-      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountRes(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Same_language", 0, g, 0, "", str, "", "");
+    if (G != 0) {
+      StatisticCollector.getInstance(BaseApplication.getContext()).reportActionCountRes(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Same_language", 0, G, 0, "", str, "", "");
     }
-    h = 0;
-    i = 0;
-    g = 0;
+    J = 0;
+    K = 0;
+    G = 0;
     return 0;
   }
   
@@ -104,21 +103,21 @@ public class TextTranslationItemBuilder
   
   private void a(BaseChatItemLayout paramBaseChatItemLayout, TextTranslationItemBuilder.Holder paramHolder)
   {
-    paramHolder.jdField_c_of_type_AndroidViewView = paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379099);
-    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView = ((RotateableView)paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379098));
-    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView.setBackgroundResource(2130847256);
+    paramHolder.s = paramHolder.a.findViewById(2131447833);
+    paramHolder.t = ((RotateableView)paramHolder.a.findViewById(2131447832));
+    paramHolder.t.setBackgroundResource(2130848842);
   }
   
   private void a(TextTranslationItemBuilder.Holder paramHolder)
   {
-    if (paramHolder.jdField_c_of_type_AndroidViewView != null) {
-      paramHolder.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    if (paramHolder.s != null) {
+      paramHolder.s.setVisibility(0);
     }
-    if (paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView != null) {
-      paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView.a();
+    if (paramHolder.t != null) {
+      paramHolder.t.a();
     }
-    if (paramHolder.jdField_a_of_type_AndroidViewViewGroup != null) {
-      paramHolder.jdField_a_of_type_AndroidViewViewGroup.setPadding(paramHolder.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft(), paramHolder.jdField_a_of_type_AndroidViewViewGroup.getPaddingTop() - 2, a(this.jdField_a_of_type_AndroidContentContext, 1.5D), a(this.jdField_a_of_type_AndroidContentContext, 4.0D));
+    if (paramHolder.a != null) {
+      paramHolder.a.setPadding(paramHolder.a.getPaddingLeft(), paramHolder.a.getPaddingTop() - 2, a(this.e, 1.5D), a(this.e, 4.0D));
     }
   }
   
@@ -130,135 +129,135 @@ public class TextTranslationItemBuilder
   
   private void a(TextTranslationItemBuilder.Holder paramHolder, MessageForText paramMessageForText, String paramString1, String paramString2)
   {
-    if (paramHolder.e == 100000)
+    if (paramHolder.b == 100000)
     {
-      TransDiskCache localTransDiskCache = TranslateCache.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+      TransDiskCache localTransDiskCache = TranslateCache.b(this.e.getApplicationContext());
       if (localTransDiskCache != null) {
-        this.jdField_a_of_type_ComRookeryTranslateModelTrans_entity = localTransDiskCache.a(paramString1, paramHolder.jdField_b_of_type_Long, paramString2);
+        this.F = localTransDiskCache.a(paramString1, paramHolder.c, paramString2);
       }
-      paramString1 = this.jdField_a_of_type_ComRookeryTranslateModelTrans_entity;
-      if ((paramString1 != null) && (paramString1.a().booleanValue()) && (!paramMessageForText.isSend()))
+      paramString1 = this.F;
+      if ((paramString1 != null) && (paramString1.c().booleanValue()) && (!paramMessageForText.isSend()))
       {
-        paramHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = BubbleUtils.a(100001, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidWidgetBaseAdapter);
+        paramHolder.i = BubbleUtils.a(100001, this.d, this.e.getResources(), this.c);
         return;
       }
-      paramHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = BubbleUtils.a(100000, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidWidgetBaseAdapter);
+      paramHolder.i = BubbleUtils.a(100000, this.d, this.e.getResources(), this.c);
     }
-  }
-  
-  private boolean a(TextTranslationItemBuilder.Holder paramHolder, MessageForText paramMessageForText)
-  {
-    if (paramMessageForText.isSend()) {
-      return true;
-    }
-    if (paramHolder.jdField_a_of_type_Boolean)
-    {
-      paramHolder.jdField_a_of_type_Boolean = false;
-      return true;
-    }
-    long l2 = System.currentTimeMillis();
-    long l1;
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramHolder.jdField_b_of_type_Long)) == null) {
-      l1 = 0L;
-    } else {
-      l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramHolder.jdField_b_of_type_Long))).longValue();
-    }
-    if (l2 - l1 < 800L) {
-      return true;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramHolder.jdField_b_of_type_Long), Long.valueOf(l2));
-    if (QLog.isColorLevel())
-    {
-      paramMessageForText = new StringBuilder();
-      paramMessageForText.append("on click translate status:");
-      paramMessageForText.append(paramHolder.h);
-      QLog.i("Translator", 2, paramMessageForText.toString());
-    }
-    return paramHolder.h != 0;
   }
   
   private static void b(Context paramContext, TextTranslationItemBuilder.Holder paramHolder)
   {
-    if (paramHolder.jdField_c_of_type_AndroidViewView != null) {
-      paramHolder.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (paramHolder.s != null) {
+      paramHolder.s.setVisibility(8);
     }
-    if (paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView != null) {
-      paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView.b();
+    if (paramHolder.t != null) {
+      paramHolder.t.b();
     }
-    if (paramHolder.jdField_a_of_type_AndroidViewViewGroup != null) {
-      paramHolder.jdField_a_of_type_AndroidViewViewGroup.setPadding(paramHolder.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft(), paramHolder.jdField_a_of_type_AndroidViewViewGroup.getPaddingTop() - 2, a(paramContext, 14.0D), a(paramContext, 5.0D));
+    if (paramHolder.a != null) {
+      paramHolder.a.setPadding(paramHolder.a.getPaddingLeft(), paramHolder.a.getPaddingTop() - 2, a(paramContext, 14.0D), a(paramContext, 5.0D));
     }
   }
   
   private void b(TextTranslationItemBuilder.Holder paramHolder, MessageForText paramMessageForText)
   {
-    paramHolder.e = ((int)paramMessageForText.vipBubbleID);
-    paramHolder.jdField_b_of_type_Long = paramMessageForText.uniseq;
-    paramHolder.g = paramMessageForText.istroop;
-    paramHolder.jdField_b_of_type_JavaLangString = paramMessageForText.msg;
-    paramHolder.jdField_c_of_type_JavaLangString = paramMessageForText.msg;
+    paramHolder.b = ((int)paramMessageForText.vipBubbleID);
+    paramHolder.c = paramMessageForText.uniseq;
+    paramHolder.d = paramMessageForText.istroop;
+    paramHolder.e = paramMessageForText.msg;
+    paramHolder.g = paramMessageForText.msg;
   }
   
   private void c(TextTranslationItemBuilder.Holder paramHolder, MessageForText paramMessageForText)
   {
-    paramHolder.jdField_b_of_type_JavaLangString = paramMessageForText.msg;
+    paramHolder.e = paramMessageForText.msg;
     Object localObject2 = paramMessageForText.sb;
     Object localObject1 = localObject2;
-    if (paramHolder.e == 100000)
+    if (paramHolder.b == 100000)
     {
-      paramHolder.jdField_c_of_type_JavaLangString = paramMessageForText.msg;
-      localObject1 = LocaleUtil.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
-      this.jdField_a_of_type_ComRookeryTranslateModelTrans_entity = null;
-      Object localObject3 = TranslateCache.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+      paramHolder.g = paramMessageForText.msg;
+      localObject1 = LocaleUtil.a(this.e.getApplicationContext());
+      this.F = null;
+      Object localObject3 = TranslateCache.b(this.e.getApplicationContext());
       if (localObject3 != null) {
-        this.jdField_a_of_type_ComRookeryTranslateModelTrans_entity = ((TransDiskCache)localObject3).a(paramMessageForText.msg, paramHolder.jdField_b_of_type_Long, (String)localObject1);
+        this.F = ((TransDiskCache)localObject3).a(paramMessageForText.msg, paramHolder.c, (String)localObject1);
       }
-      localObject3 = this.jdField_a_of_type_ComRookeryTranslateModelTrans_entity;
+      localObject3 = this.F;
       localObject1 = localObject2;
       if (localObject3 != null)
       {
         localObject1 = localObject2;
-        if (((Trans_entity)localObject3).a().booleanValue())
+        if (((Trans_entity)localObject3).c().booleanValue())
         {
           localObject1 = localObject2;
           if (!paramMessageForText.isSend())
           {
-            paramHolder.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComRookeryTranslateModelTrans_entity.a();
-            localObject1 = new QQText(paramHolder.jdField_b_of_type_JavaLangString, 13, 32, paramMessageForText);
+            paramHolder.e = this.F.a();
+            localObject1 = new QQText(paramHolder.e, 13, 32, paramMessageForText);
           }
         }
       }
     }
-    if (paramHolder.e == 100000)
+    if (paramHolder.b == 100000)
     {
-      if (paramHolder.h == 0)
+      if (paramHolder.f == 0)
       {
-        paramHolder.d.setText((CharSequence)localObject1);
+        paramHolder.v.setText((CharSequence)localObject1);
         return;
       }
-      if ((!paramMessageForText.isSend()) && (this.jdField_a_of_type_ComRookeryTranslateModelTrans_entity != null) && (paramHolder.h == 1))
+      if ((!paramMessageForText.isSend()) && (this.F != null) && (paramHolder.f == 1))
       {
-        paramMessageForText = paramHolder.d.getText();
-        int m = paramHolder.d.getMeasuredWidth();
-        int k = paramHolder.d.getMeasuredHeight();
-        paramHolder.d.setText((CharSequence)localObject1);
-        localObject2 = paramHolder.d;
-        int j = 0;
+        paramMessageForText = paramHolder.v.getText();
+        int k = paramHolder.v.getMeasuredWidth();
+        int j = paramHolder.v.getMeasuredHeight();
+        paramHolder.v.setText((CharSequence)localObject1);
+        localObject2 = paramHolder.v;
+        int i = 0;
         ((TextView)localObject2).measure(0, 0);
-        if (paramHolder.d.getMeasuredWidth() < BaseChatItemLayout.e) {
-          j = paramHolder.d.getMeasuredWidth() - m;
+        if (paramHolder.v.getMeasuredWidth() < BaseChatItemLayout.e) {
+          i = paramHolder.v.getMeasuredWidth() - k;
         }
-        m = paramHolder.d.getMeasuredHeight();
-        paramHolder.d.setText(paramMessageForText);
-        paramMessageForText = new BubbleResizeAnimation(paramHolder.jdField_a_of_type_AndroidViewViewGroup, 300, j, m - k);
-        paramMessageForText.setAnimationListener(new TextTranslationItemBuilder.TextTranslateAnimationListener((CharSequence)localObject1, paramHolder, this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation, this.b));
-        paramHolder.jdField_a_of_type_AndroidViewViewGroup.startAnimation(paramMessageForText);
+        k = paramHolder.v.getMeasuredHeight();
+        paramHolder.v.setText(paramMessageForText);
+        paramMessageForText = new BubbleResizeAnimation(paramHolder.a, 300, i, k - j);
+        paramMessageForText.setAnimationListener(new TextTranslationItemBuilder.TextTranslateAnimationListener((CharSequence)localObject1, paramHolder, this.a, this.w));
+        paramHolder.a.startAnimation(paramMessageForText);
       }
     }
     else
     {
-      paramHolder.d.setText((CharSequence)localObject1);
+      paramHolder.v.setText((CharSequence)localObject1);
     }
+  }
+  
+  private boolean d(TextTranslationItemBuilder.Holder paramHolder, MessageForText paramMessageForText)
+  {
+    if (paramMessageForText.isSend()) {
+      return true;
+    }
+    if (paramHolder.u)
+    {
+      paramHolder.u = false;
+      return true;
+    }
+    long l2 = System.currentTimeMillis();
+    long l1;
+    if (this.x.get(Long.valueOf(paramHolder.c)) == null) {
+      l1 = 0L;
+    } else {
+      l1 = ((Long)this.x.get(Long.valueOf(paramHolder.c))).longValue();
+    }
+    if (l2 - l1 < 800L) {
+      return true;
+    }
+    this.x.put(Long.valueOf(paramHolder.c), Long.valueOf(l2));
+    if (QLog.isColorLevel())
+    {
+      paramMessageForText = new StringBuilder();
+      paramMessageForText.append("on click translate status:");
+      paramMessageForText.append(paramHolder.f);
+      QLog.i("Translator", 2, paramMessageForText.toString());
+    }
+    return paramHolder.f != 0;
   }
   
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -281,27 +280,27 @@ public class TextTranslationItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = (LinearLayout)((Activity)paramBaseChatItemLayout).getLayoutInflater().inflate(2131561864, null);
-      localHolder.jdField_a_of_type_AndroidViewViewGroup = paramViewHolder;
-      localHolder.d = ((AnimationTextView)paramViewHolder.findViewById(2131364524));
-      localHolder.d.setMaxWidth(BaseChatItemLayout.e);
-      localHolder.d.setMovementMethod(new LinkMovementMethod());
+      paramViewHolder = (LinearLayout)((Activity)paramBaseChatItemLayout).getLayoutInflater().inflate(2131628282, null);
+      localHolder.a = paramViewHolder;
+      localHolder.v = ((AnimationTextView)paramViewHolder.findViewById(2131430581));
+      localHolder.v.setMaxWidth(BaseChatItemLayout.e);
+      localHolder.v.setMovementMethod(new LinkMovementMethod());
     }
-    localHolder.d.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-    int k = BaseChatItemLayout.o;
-    int j = BaseChatItemLayout.p;
+    localHolder.v.setTextSize(0, this.f.r);
+    int j = BaseChatItemLayout.getTextPaddingAlignHead();
+    int i = BaseChatItemLayout.getTextPaddingAlignError();
     if (paramChatMessage.isSend())
     {
-      k = BaseChatItemLayout.p;
-      j = BaseChatItemLayout.o;
+      j = BaseChatItemLayout.getTextPaddingAlignError();
+      i = BaseChatItemLayout.getTextPaddingAlignHead();
     }
-    localHolder.d.setPadding(k, BaseChatItemLayout.m, j, BaseChatItemLayout.n);
-    localHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
-    localHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
-    localHolder.d.setOnClickListener(this);
-    localHolder.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    if ((localHolder.d instanceof AnimationTextView)) {
-      ((AnimationTextView)localHolder.d).onDoubleClick = new TextTranslationItemBuilder.1(this);
+    localHolder.v.setPadding(j, BaseChatItemLayout.n, i, BaseChatItemLayout.o);
+    localHolder.v.setOnTouchListener(paramOnLongClickAndTouchListener);
+    localHolder.v.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    localHolder.v.setOnClickListener(this);
+    localHolder.a.setOnClickListener(this);
+    if ((localHolder.v instanceof AnimationTextView)) {
+      ((AnimationTextView)localHolder.v).onDoubleClick = new TextTranslationItemBuilder.1(this);
     }
     return paramViewHolder;
   }
@@ -314,17 +313,17 @@ public class TextTranslationItemBuilder
   @Deprecated
   void a(int paramInt)
   {
-    Toast.makeText(this.jdField_a_of_type_AndroidContentContext, paramInt, 0).show();
+    Toast.makeText(this.e, paramInt, 0).show();
   }
   
   protected void a(View paramView, ChatMessage paramChatMessage)
   {
     if (paramChatMessage.isSend())
     {
-      paramView.setPadding(BaseChatItemLayout.k, BaseChatItemLayout.h, BaseChatItemLayout.j, BaseChatItemLayout.i);
+      paramView.setPadding(BaseChatItemLayout.getBubblePaddingAlignError(), BaseChatItemLayout.k, BaseChatItemLayout.getBubblePaddingAlignHead(), BaseChatItemLayout.l);
       return;
     }
-    paramView.setPadding(BaseChatItemLayout.j, BaseChatItemLayout.h, BaseChatItemLayout.k, BaseChatItemLayout.i);
+    paramView.setPadding(BaseChatItemLayout.getBubblePaddingAlignHead(), BaseChatItemLayout.k, BaseChatItemLayout.getBubblePaddingAlignError(), BaseChatItemLayout.l);
   }
   
   @TargetApi(16)
@@ -333,51 +332,51 @@ public class TextTranslationItemBuilder
     if (paramHolder == null) {
       return;
     }
-    if ((paramHolder.e == 100000) && (paramMessageForText.msgtype == -1000))
+    if ((paramHolder.b == 100000) && (paramMessageForText.msgtype == -1000))
     {
-      if (a(paramHolder, paramMessageForText)) {
+      if (d(paramHolder, paramMessageForText)) {
         return;
       }
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      Context localContext = this.e;
       String str = LocaleUtil.a(localContext);
       paramMessageForText = null;
-      TransDiskCache localTransDiskCache = TranslateCache.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+      TransDiskCache localTransDiskCache = TranslateCache.b(this.e.getApplicationContext());
       if (localTransDiskCache != null) {
-        paramMessageForText = localTransDiskCache.a(paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, str);
+        paramMessageForText = localTransDiskCache.a(paramHolder.g, paramHolder.c, str);
       }
       if (paramMessageForText != null)
       {
-        if (!paramMessageForText.a().equalsIgnoreCase(paramHolder.jdField_c_of_type_JavaLangString))
+        if (!paramMessageForText.a().equalsIgnoreCase(paramHolder.g))
         {
-          if ((paramMessageForText.a().booleanValue()) && (!TranslateCache.a(localContext).b(str, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long)))
+          if ((paramMessageForText.c().booleanValue()) && (!TranslateCache.a(localContext).b(str, paramHolder.g, paramHolder.c)))
           {
-            i += 1;
-            TranslateCache.a(localContext).b(str, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, Boolean.valueOf(true));
+            K += 1;
+            TranslateCache.a(localContext).b(str, paramHolder.g, paramHolder.c, Boolean.valueOf(true));
           }
-          paramMessageForText.a();
-          TranslateCache.a(localContext).a(str, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, paramMessageForText.a());
-          paramHolder.h = 1;
-          this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+          paramMessageForText.b();
+          TranslateCache.b(localContext).a(str, paramHolder.g, paramHolder.c, paramMessageForText.c());
+          paramHolder.f = 1;
+          this.c.notifyDataSetChanged();
           return;
         }
-        a(2131716732);
+        a(2131914204);
         return;
       }
-      h += 1;
-      paramHolder.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-      if (!AITranslator.a().a(localContext, paramHolder, paramHolder.jdField_b_of_type_JavaLangString, Language.fromString(str), new TextTranslationItemBuilder.TextTranslateItemCallback(this.jdField_a_of_type_AndroidContentContext, paramHolder, str, this.jdField_a_of_type_AndroidWidgetBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)).booleanValue())
+      J += 1;
+      paramHolder.D = SystemClock.uptimeMillis();
+      if (!AITranslator.a().a(localContext, paramHolder, paramHolder.e, Language.fromString(str), new TextTranslationItemBuilder.TextTranslateItemCallback(this.e, paramHolder, str, this.c, this.d)).booleanValue())
       {
-        b(this.jdField_a_of_type_AndroidContentContext, paramHolder);
-        if (AITranslator.a().a(this.jdField_a_of_type_AndroidContentContext).booleanValue())
+        b(this.e, paramHolder);
+        if (AITranslator.a().a(this.e).booleanValue())
         {
-          a(2131716732);
+          a(2131914204);
           return;
         }
-        a(2131716734);
+        a(2131914206);
         return;
       }
       a(paramHolder);
-      TranslateCache.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext()).a(str, paramHolder.jdField_c_of_type_JavaLangString, paramHolder.jdField_b_of_type_Long, Boolean.valueOf(true));
+      TranslateCache.a(this.e.getApplicationContext()).a(str, paramHolder.g, paramHolder.c, Boolean.valueOf(true));
     }
   }
   
@@ -390,8 +389,8 @@ public class TextTranslationItemBuilder
       localObject = str;
       if (((MessageForText)paramChatMessage).vipBubbleID == 100000L)
       {
-        paramString = LocaleUtil.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
-        localObject = TranslateCache.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+        paramString = LocaleUtil.a(this.e.getApplicationContext());
+        localObject = TranslateCache.b(this.e.getApplicationContext());
         if (localObject != null) {
           paramString = ((TransDiskCache)localObject).a(paramChatMessage.msg, paramChatMessage.uniseq, paramString);
         } else {
@@ -401,7 +400,7 @@ public class TextTranslationItemBuilder
         if (paramString != null)
         {
           localObject = str;
-          if (paramString.a().booleanValue())
+          if (paramString.c().booleanValue())
           {
             localObject = str;
             if (!paramChatMessage.isSend()) {
@@ -411,33 +410,33 @@ public class TextTranslationItemBuilder
         }
       }
     }
-    QfavBuilder.a(null, (String)localObject).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage).a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 1);
+    QfavBuilder.a(null, (String)localObject).b(this.d, paramChatMessage).a((Activity)this.e, this.d.getAccount());
+    QfavReport.a(this.d, 6, 1);
   }
   
-  protected boolean b()
+  protected boolean h()
   {
     return false;
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() != 2131364521) && (paramView.getId() != 2131364524))
+    if ((paramView.getId() != 2131430578) && (paramView.getId() != 2131430581))
     {
       super.onClick(paramView);
     }
     else
     {
       MessageForText localMessageForText = (MessageForText)AIOUtils.a(paramView);
-      a((TextTranslationItemBuilder.Holder)AIOUtils.a(paramView), localMessageForText);
-      AIOUtils.o = true;
+      a((TextTranslationItemBuilder.Holder)AIOUtils.b(paramView), localMessageForText);
+      AIOUtils.q = true;
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder
  * JD-Core Version:    0.7.0.1
  */

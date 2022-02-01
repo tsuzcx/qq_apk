@@ -50,24 +50,24 @@ public class TogetherBusinessForWebPlugin
   extends WebViewPlugin
   implements Handler.Callback, View.OnClickListener, WatchFloatingWindowController.FloatingWindowListener, EIPCResultCallback
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TogetherBusinessServlet.RspOpenIdentify jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify;
-  private TogetherBusinessServlet.RspOpenStart jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenStart;
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean = true;
-  private String jdField_b_of_type_JavaLangString = null;
-  private boolean jdField_b_of_type_Boolean = false;
+  private long a = -1L;
+  private int b = -1;
   private String c = null;
-  private String d;
+  private String d = null;
+  private String e = null;
+  private Handler f = new Handler(Looper.getMainLooper(), this);
+  private boolean g = true;
+  private TogetherBusinessServlet.RspOpenIdentify h;
+  private TogetherBusinessServlet.RspOpenStart i;
+  private View j;
+  private Button k;
+  private String l;
+  private boolean m = false;
   
   public TogetherBusinessForWebPlugin()
   {
     this.mPluginNameSpace = "together_business";
-    WatchFloatingWindowController.a().a(this);
+    WatchFloatingWindowController.c().a(this);
     try
     {
       QIPCClientHelper.getInstance().register(WatchTogetherClientIPCModule.a());
@@ -79,28 +79,20 @@ public class TogetherBusinessForWebPlugin
     }
   }
   
-  private Intent a()
-  {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
-      return this.mRuntime.a().getIntent();
-    }
-    return null;
-  }
-  
   private Bundle a(String paramString1, String paramString2, String paramString3, Intent paramIntent)
   {
-    int i = paramIntent.getIntExtra("uinType", -1);
-    int j = i;
-    if (i == -1) {
-      j = paramIntent.getIntExtra("curtype", -1);
+    int n = paramIntent.getIntExtra("uinType", -1);
+    int i1 = n;
+    if (n == -1) {
+      i1 = paramIntent.getIntExtra("curtype", -1);
     }
-    i = 1;
-    if (j != 0)
+    n = 1;
+    if (i1 != 0)
     {
-      if (j != 1)
+      if (i1 != 1)
       {
         paramIntent = null;
-        i = -1;
+        n = -1;
       }
       else
       {
@@ -110,91 +102,43 @@ public class TogetherBusinessForWebPlugin
     else
     {
       paramIntent = paramIntent.getStringExtra("friend_uin");
-      i = 2;
+      n = 2;
     }
-    if ((!TextUtils.isEmpty(paramIntent)) && (i != -1)) {}
+    if ((!TextUtils.isEmpty(paramIntent)) && (n != -1)) {}
     try
     {
-      l = Long.parseLong(paramIntent);
+      l1 = Long.parseLong(paramIntent);
     }
     catch (NumberFormatException paramIntent)
     {
-      long l;
+      long l1;
       label104:
       break label104;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TogetherBusinessForWebPlugin", 2, "uin string to long error");
     }
-    l = -1L;
-    if (l == -1L) {
+    l1 = -1L;
+    if (l1 == -1L) {
       return null;
     }
-    a(l, i, paramString1, paramString2, paramString3);
+    a(l1, n, paramString1, paramString2, paramString3);
     paramIntent = new Bundle();
     paramIntent.putString("req_data", paramString1);
     paramIntent.putString("req_sign", paramString2);
-    paramIntent.putInt("session_type", i);
-    paramIntent.putLong("uin", l);
+    paramIntent.putInt("session_type", n);
+    paramIntent.putLong("uin", l1);
     paramIntent.putString("appid", paramString3);
     return paramIntent;
     if (QLog.isColorLevel())
     {
       paramString1 = new StringBuilder();
       paramString1.append("curType or uin is error: uinType=");
-      paramString1.append(j);
+      paramString1.append(i1);
       paramString1.append(" chatId=");
       paramString1.append(paramIntent);
       QLog.d("TogetherBusinessForWebPlugin", 2, paramString1.toString());
     }
-    return null;
-  }
-  
-  private Bundle a(String... paramVarArgs)
-  {
-    if (paramVarArgs != null)
-    {
-      if (paramVarArgs.length <= 0) {
-        return null;
-      }
-      try
-      {
-        Object localObject1 = new JSONObject(paramVarArgs[0]);
-        paramVarArgs = ((JSONObject)localObject1).optString("req_data");
-        localObject1 = ((JSONObject)localObject1).optString("req_sign");
-        boolean bool = TextUtils.isEmpty(paramVarArgs);
-        if (((bool) || (TextUtils.isEmpty((CharSequence)localObject1))) && (QLog.isColorLevel()))
-        {
-          localObject2 = new StringBuilder("call parseParam param error");
-          ((StringBuilder)localObject2).append(" data=");
-          ((StringBuilder)localObject2).append(paramVarArgs);
-          ((StringBuilder)localObject2).append(" sign=");
-          ((StringBuilder)localObject2).append((String)localObject1);
-          QLog.d("TogetherBusinessForWebPlugin", 2, ((StringBuilder)localObject2).toString());
-        }
-        Object localObject2 = new JSONObject(paramVarArgs).optString("appid");
-        Intent localIntent = a();
-        if (localIntent == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break label172;
-          }
-          QLog.d("TogetherBusinessForWebPlugin", 2, "call parseParam intent is null");
-          return null;
-        }
-        paramVarArgs = a(paramVarArgs, (String)localObject1, (String)localObject2, localIntent);
-        return paramVarArgs;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        paramVarArgs.printStackTrace();
-      }
-    }
-    else
-    {
-      return null;
-    }
-    label172:
     return null;
   }
   
@@ -247,43 +191,19 @@ public class TogetherBusinessForWebPlugin
     return ((JSONObject)localObject).toString();
   }
   
-  private JSONObject a(int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("quitOrCloseMsg type=");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.d("TogetherBusinessForWebPlugin", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = new JSONObject();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("type", paramInt);
-      ((JSONObject)localObject).put("data", localJSONObject);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return localObject;
-  }
-  
   private void a(int paramInt, String paramString)
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    QQToast.a(localBaseApplication, paramInt, paramString, 1).b(localBaseApplication.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(localBaseApplication, paramInt, paramString, 1).show(localBaseApplication.getResources().getDimensionPixelSize(2131299920));
   }
   
   private void a(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
+    this.a = paramLong;
+    this.b = paramInt;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
   }
   
   private void a(String paramString)
@@ -295,7 +215,7 @@ public class TogetherBusinessForWebPlugin
         paramString = new JSONObject(paramString);
         String str2 = paramString.optString("uin");
         String str3 = paramString.optString("url");
-        int i = paramString.optInt("aio_type");
+        int n = paramString.optInt("aio_type");
         bool1 = paramString.optBoolean("author");
         double d1 = paramString.optDouble("video_width", 0.0D);
         double d2 = paramString.optDouble("video_height", 0.0D);
@@ -304,12 +224,12 @@ public class TogetherBusinessForWebPlugin
         WatchTogetherFloatingData localWatchTogetherFloatingData = new WatchTogetherFloatingData();
         localWatchTogetherFloatingData.setSmallUrl(str3);
         localWatchTogetherFloatingData.setCurUin(str2);
-        localWatchTogetherFloatingData.setCurType(i);
+        localWatchTogetherFloatingData.setCurType(n);
         localWatchTogetherFloatingData.setIsAdm(bool1);
         localWatchTogetherFloatingData.setFrom(str4);
-        if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+        if ((this.mRuntime != null) && (this.mRuntime.f() != null))
         {
-          paramString = this.mRuntime.a().getCurrentUrl();
+          paramString = this.mRuntime.f().getCurrentUrl();
         }
         else
         {
@@ -334,7 +254,7 @@ public class TogetherBusinessForWebPlugin
         localStringBuilder.append(" roomUrl=");
         localStringBuilder.append(str3);
         localStringBuilder.append(" sessionType=");
-        localStringBuilder.append(i);
+        localStringBuilder.append(n);
         localStringBuilder.append(" author=");
         localStringBuilder.append(bool1);
         localStringBuilder.append(" videoWidth");
@@ -350,7 +270,7 @@ public class TogetherBusinessForWebPlugin
         QLog.d("TogetherBusinessForWebPlugin", 2, localStringBuilder.toString());
         if ("watchroom".equals(str4))
         {
-          if ((this.jdField_b_of_type_Boolean) && (!((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).checkPermission(BaseApplication.getContext())))
+          if ((this.m) && (!((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).checkPermission(BaseApplication.getContext())))
           {
             if (QLog.isColorLevel()) {
               QLog.d("TogetherBusinessForWebPlugin", 2, "SHOW_FLOATING_WINDOW no permission");
@@ -358,25 +278,25 @@ public class TogetherBusinessForWebPlugin
             callJs(str1, new String[] { a(true) });
             return;
           }
-          i = WatchFloatingWindowController.a().a(BaseApplication.getContext(), localWatchTogetherFloatingData);
-          if (i != 1) {
+          n = WatchFloatingWindowController.c().a(BaseApplication.getContext(), localWatchTogetherFloatingData);
+          if (n != 1) {
             break label599;
           }
           bool1 = true;
-          this.jdField_b_of_type_Boolean = bool1;
-          if (i != 1) {
+          this.m = bool1;
+          if (n != 1) {
             callJs(str1, new String[] { "" });
           }
           if (QLog.isColorLevel())
           {
             paramString = new StringBuilder("SHOW_FLOATING_WINDOW resultCode=");
-            paramString.append(i);
+            paramString.append(n);
             QLog.d("TogetherBusinessForWebPlugin", 2, paramString.toString());
           }
         }
         else
         {
-          WatchFloatingWindowController.a().a(localWatchTogetherFloatingData);
+          WatchFloatingWindowController.c().a(localWatchTogetherFloatingData);
           return;
         }
       }
@@ -399,11 +319,11 @@ public class TogetherBusinessForWebPlugin
   {
     if (this.mRuntime != null)
     {
-      if (this.mRuntime.a() == null) {
+      if (this.mRuntime.d() == null) {
         return;
       }
-      QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.mRuntime.a(), 2131756189);
-      localQQCustomDialog.setContentView(2131558978);
+      QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.mRuntime.d(), 2131953338);
+      localQQCustomDialog.setContentView(2131624611);
       if (!TextUtils.isEmpty(paramString1)) {
         localQQCustomDialog.setTitle(paramString1);
       } else {
@@ -412,32 +332,9 @@ public class TogetherBusinessForWebPlugin
       localQQCustomDialog.setMessage(paramString2);
       localQQCustomDialog.setCanceledOnTouchOutside(false);
       localQQCustomDialog.setCancelable(false);
-      localQQCustomDialog.setNegativeButton(this.mRuntime.a().getString(2131690707), new TogetherBusinessForWebPlugin.3(this, localQQCustomDialog));
-      localQQCustomDialog.setPositiveButton(this.mRuntime.a().getString(2131690709), paramOnClickListener);
+      localQQCustomDialog.setNegativeButton(this.mRuntime.d().getString(2131887626), new TogetherBusinessForWebPlugin.3(this, localQQCustomDialog));
+      localQQCustomDialog.setPositiveButton(this.mRuntime.d().getString(2131887629), paramOnClickListener);
       localQQCustomDialog.show();
-    }
-  }
-  
-  private void a(String... paramVarArgs)
-  {
-    try
-    {
-      this.d = new JSONObject(paramVarArgs[0]).optString("callback", "");
-      return;
-    }
-    catch (Throwable paramVarArgs)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("TogetherBusinessForWebPlugin", 2, paramVarArgs, new Object[0]);
-        return;
-      }
-    }
-    catch (JSONException paramVarArgs)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherBusinessForWebPlugin", 2, paramVarArgs, new Object[0]);
-      }
     }
   }
   
@@ -445,10 +342,10 @@ public class TogetherBusinessForWebPlugin
   {
     if (!NetworkUtil.isNetSupport(null))
     {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+      Message localMessage = this.f.obtainMessage(1);
       localMessage.obj = "当前网络不可用，请检查网络设置。";
       localMessage.arg1 = 1;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      this.f.sendMessage(localMessage);
       if (QLog.isColorLevel()) {
         QLog.d("TogetherBusinessForWebPlugin", 2, "call click_together_button network not well");
       }
@@ -459,16 +356,16 @@ public class TogetherBusinessForWebPlugin
   
   private boolean a(Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.confirmText))
+    if (TextUtils.isEmpty(this.h.confirmText))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TogetherBusinessForWebPlugin", 2, "call click_together_button confirmText is empty");
       }
       return false;
     }
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-    localMessage.obj = new TogetherBusinessForWebPlugin.DialogElement(this, null, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.confirmText, new TogetherBusinessForWebPlugin.2(this, paramBundle));
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    Message localMessage = this.f.obtainMessage(2);
+    localMessage.obj = new TogetherBusinessForWebPlugin.DialogElement(this, null, this.h.confirmText, new TogetherBusinessForWebPlugin.2(this, paramBundle));
+    this.f.sendMessage(localMessage);
     return true;
   }
   
@@ -483,10 +380,10 @@ public class TogetherBusinessForWebPlugin
         }
         return false;
       }
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+      Message localMessage = this.f.obtainMessage(1);
       localMessage.obj = paramResultInfo.errorMsg;
       localMessage.arg1 = 0;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      this.f.sendMessage(localMessage);
       return true;
     }
     if (QLog.isColorLevel()) {
@@ -515,61 +412,164 @@ public class TogetherBusinessForWebPlugin
     return true;
   }
   
+  private Intent b()
+  {
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null)) {
+      return this.mRuntime.d().getIntent();
+    }
+    return null;
+  }
+  
   private void b(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidViewView;
+    Object localObject1 = this.j;
     if (localObject1 != null)
     {
       ((View)localObject1).setVisibility(0);
-      localObject1 = this.jdField_a_of_type_AndroidWidgetButton;
+      localObject1 = this.k;
       if (localObject1 != null) {
         ((Button)localObject1).setText(paramString);
       }
       return;
     }
-    localObject1 = (WebViewFragment)this.mRuntime.a();
+    localObject1 = (WebViewFragment)this.mRuntime.f();
     if (localObject1 != null)
     {
-      localObject2 = (ViewGroup)LayoutInflater.from(this.mRuntime.a()).inflate(2131559953, null);
+      localObject2 = (ViewGroup)LayoutInflater.from(this.mRuntime.d()).inflate(2131625996, null);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams.addRule(12);
-      if (((WebViewFragment)localObject1).getUIStyleHandler().d != null) {
-        ((WebViewFragment)localObject1).getUIStyleHandler().d.addView((View)localObject2, localLayoutParams);
+      if (((WebViewFragment)localObject1).getUIStyleHandler().x != null) {
+        ((WebViewFragment)localObject1).getUIStyleHandler().x.addView((View)localObject2, localLayoutParams);
       }
     }
     else
     {
-      localObject1 = ((ViewStub)this.mRuntime.a().findViewById(2131372242)).inflate();
+      localObject1 = ((ViewStub)this.mRuntime.d().findViewById(2131439747)).inflate();
       localObject2 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject2).height = -2;
       ((RelativeLayout.LayoutParams)localObject2).addRule(12);
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
-    this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.mRuntime.a().findViewById(2131373196));
-    localObject1 = this.jdField_a_of_type_AndroidViewView;
+    this.j = ((ViewGroup)this.mRuntime.d().findViewById(2131440805));
+    localObject1 = this.j;
     if (localObject1 == null) {
       return;
     }
-    ((View)localObject1).setBackgroundColor(((View)localObject1).getResources().getColor(2131167028));
-    localObject1 = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject1).height = AIOUtils.b(75.0F, this.jdField_a_of_type_AndroidViewView.getResources());
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    ((ImageView)this.mRuntime.a().findViewById(2131365759)).setVisibility(8);
-    localObject1 = (ViewGroup)this.mRuntime.a().findViewById(2131363728);
-    int i = AIOUtils.b(16.0F, ((ViewGroup)localObject1).getResources());
-    ((ViewGroup)localObject1).setPadding(i, 0, i, 0);
-    Object localObject2 = new Button(this.mRuntime.a());
+    ((View)localObject1).setBackgroundColor(((View)localObject1).getResources().getColor(2131167964));
+    localObject1 = this.j.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject1).height = AIOUtils.b(75.0F, this.j.getResources());
+    this.j.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    this.j.setVisibility(0);
+    ((ImageView)this.mRuntime.d().findViewById(2131432003)).setVisibility(8);
+    localObject1 = (ViewGroup)this.mRuntime.d().findViewById(2131429651);
+    int n = AIOUtils.b(16.0F, ((ViewGroup)localObject1).getResources());
+    ((ViewGroup)localObject1).setPadding(n, 0, n, 0);
+    Object localObject2 = new Button(this.mRuntime.d());
     ((Button)localObject2).setText(paramString);
     ((Button)localObject2).setGravity(17);
-    ((Button)localObject2).setTextColor(this.mRuntime.a().getResources().getColor(2131167089));
-    ((Button)localObject2).setBackground(this.mRuntime.a().getDrawable(2130839280));
+    ((Button)localObject2).setTextColor(this.mRuntime.d().getResources().getColor(2131168041));
+    ((Button)localObject2).setBackground(this.mRuntime.d().getDrawable(2130839460));
     ((Button)localObject2).setTextSize(1, 17.0F);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localObject2);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    paramString = new RelativeLayout.LayoutParams(-1, AIOUtils.b(45.0F, this.jdField_a_of_type_AndroidViewView.getResources()));
+    this.k = ((Button)localObject2);
+    this.k.setOnClickListener(this);
+    paramString = new RelativeLayout.LayoutParams(-1, AIOUtils.b(45.0F, this.j.getResources()));
     paramString.addRule(15);
     ((ViewGroup)localObject1).addView((View)localObject2, paramString);
+  }
+  
+  private void b(String... paramVarArgs)
+  {
+    try
+    {
+      this.l = new JSONObject(paramVarArgs[0]).optString("callback", "");
+      return;
+    }
+    catch (Throwable paramVarArgs)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("TogetherBusinessForWebPlugin", 2, paramVarArgs, new Object[0]);
+        return;
+      }
+    }
+    catch (JSONException paramVarArgs)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherBusinessForWebPlugin", 2, paramVarArgs, new Object[0]);
+      }
+    }
+  }
+  
+  private Bundle c(String... paramVarArgs)
+  {
+    if (paramVarArgs != null)
+    {
+      if (paramVarArgs.length <= 0) {
+        return null;
+      }
+      try
+      {
+        Object localObject1 = new JSONObject(paramVarArgs[0]);
+        paramVarArgs = ((JSONObject)localObject1).optString("req_data");
+        localObject1 = ((JSONObject)localObject1).optString("req_sign");
+        boolean bool = TextUtils.isEmpty(paramVarArgs);
+        if (((bool) || (TextUtils.isEmpty((CharSequence)localObject1))) && (QLog.isColorLevel()))
+        {
+          localObject2 = new StringBuilder("call parseParam param error");
+          ((StringBuilder)localObject2).append(" data=");
+          ((StringBuilder)localObject2).append(paramVarArgs);
+          ((StringBuilder)localObject2).append(" sign=");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.d("TogetherBusinessForWebPlugin", 2, ((StringBuilder)localObject2).toString());
+        }
+        Object localObject2 = new JSONObject(paramVarArgs).optString("appid");
+        Intent localIntent = b();
+        if (localIntent == null)
+        {
+          if (!QLog.isColorLevel()) {
+            break label176;
+          }
+          QLog.d("TogetherBusinessForWebPlugin", 2, "call parseParam intent is null");
+          return null;
+        }
+        paramVarArgs = a(paramVarArgs, (String)localObject1, (String)localObject2, localIntent);
+        return paramVarArgs;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+      }
+    }
+    else
+    {
+      return null;
+    }
+    label176:
+    return null;
+  }
+  
+  private JSONObject c(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("quitOrCloseMsg type=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("TogetherBusinessForWebPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("type", paramInt);
+      ((JSONObject)localObject).put("data", localJSONObject);
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return localObject;
   }
   
   public void a(int paramInt)
@@ -581,7 +581,7 @@ public class TogetherBusinessForWebPlugin
       localStringBuilder.append(paramInt);
       QLog.d("TogetherBusinessForWebPlugin", 2, localStringBuilder.toString());
     }
-    dispatchJsEvent("close_business", a(paramInt), null);
+    dispatchJsEvent("close_business", c(paramInt), null);
   }
   
   public void b(int paramInt)
@@ -593,7 +593,7 @@ public class TogetherBusinessForWebPlugin
       localStringBuilder.append(paramInt);
       QLog.d("TogetherBusinessForWebPlugin", 2, localStringBuilder.toString());
     }
-    dispatchJsEvent("play_control", a(paramInt), null);
+    dispatchJsEvent("play_control", c(paramInt), null);
   }
   
   protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -612,7 +612,7 @@ public class TogetherBusinessForWebPlugin
         paramMap.append(paramString);
         QLog.d("TogetherBusinessForWebPlugin", 2, paramMap.toString());
       }
-      WatchFloatingWindowController.a().b(2);
+      WatchFloatingWindowController.c().b(2);
       return true;
     }
     if (paramLong == 8589934623L)
@@ -620,7 +620,7 @@ public class TogetherBusinessForWebPlugin
       if (QLog.isColorLevel()) {
         QLog.d("TogetherBusinessForWebPlugin", 2, "handleEvent type =init_webview_complete");
       }
-      WatchFloatingWindowController.a().c();
+      WatchFloatingWindowController.c().d();
       return true;
     }
     if ((paramLong == 8589934600L) && (paramMap != null)) {
@@ -636,7 +636,7 @@ public class TogetherBusinessForWebPlugin
         }
         if (localInteger.intValue() == 200)
         {
-          WatchFloatingWindowController.a().a(null);
+          WatchFloatingWindowController.c().a(null);
           return true;
         }
       }
@@ -668,13 +668,13 @@ public class TogetherBusinessForWebPlugin
           QLog.d("TogetherBusinessForWebPlugin", 2, "call show_together_button");
         }
         a(-1L, -1, null, null, null);
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify = null;
-        paramJsBridgeListener = a(paramVarArgs);
-        a(paramVarArgs);
+        this.g = true;
+        this.h = null;
+        paramJsBridgeListener = c(paramVarArgs);
+        b(paramVarArgs);
         if (paramJsBridgeListener != null)
         {
-          this.jdField_a_of_type_Boolean = a(paramVarArgs);
+          this.g = a(paramVarArgs);
           QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_open_identify", paramJsBridgeListener, this);
           return true;
         }
@@ -687,34 +687,34 @@ public class TogetherBusinessForWebPlugin
           {
             paramJsBridgeListener = new StringBuilder();
             paramJsBridgeListener.append("call click_together_button mRspOpenIdentify=");
-            paramJsBridgeListener.append(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify);
+            paramJsBridgeListener.append(this.h);
             QLog.d("TogetherBusinessForWebPlugin", 2, paramJsBridgeListener.toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenStart = null;
+          this.i = null;
           a(-1L, -1, null, null, null);
-          paramString1 = a(paramVarArgs);
+          paramString1 = c(paramVarArgs);
           if (paramString1 != null)
           {
-            paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify;
+            paramJsBridgeListener = this.h;
             if (paramJsBridgeListener != null)
             {
               paramString1.putInt("business_type", paramJsBridgeListener.businessType);
-              if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.businessType == 2)
+              if (this.h.businessType == 2)
               {
-                if (this.jdField_a_of_type_Int == 2) {
+                if (this.b == 2) {
                   paramJsBridgeListener = "c2c_AIO";
                 } else {
                   paramJsBridgeListener = "Grp_AIO";
                 }
                 paramString2 = new StringBuilder();
-                paramString2.append(this.jdField_a_of_type_Long);
+                paramString2.append(this.a);
                 paramString2.append("");
-                ReportController.b(null, "dc00899", paramJsBridgeListener, "", "video_tab", "clk_share_grp", 0, 0, paramString2.toString(), this.c, "", "");
+                ReportController.b(null, "dc00899", paramJsBridgeListener, "", "video_tab", "clk_share_grp", 0, 0, paramString2.toString(), this.e, "", "");
               }
               if (a()) {
                 return true;
               }
-              if (a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.resultInfo)) {
+              if (a(this.h.resultInfo)) {
                 return true;
               }
               if (a(paramString1)) {
@@ -731,7 +731,7 @@ public class TogetherBusinessForWebPlugin
         }
         if ("dispear_together_button".equals(paramString3))
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+          this.f.sendEmptyMessage(4);
           return true;
         }
         if ("show_floating_window".equals(paramString3))
@@ -739,23 +739,23 @@ public class TogetherBusinessForWebPlugin
           a(paramVarArgs[0]);
           return true;
         }
-        int i;
+        int n;
         if ("close_floating_window".equals(paramString3)) {
           try
           {
             paramString1 = new JSONObject(paramVarArgs[0]);
             paramJsBridgeListener = paramString1.optString("uin");
-            i = paramString1.optInt("aio_type");
+            n = paramString1.optInt("aio_type");
             paramString1 = new WatchTogetherFloatingData();
             paramString1.setCurUin(paramJsBridgeListener);
-            paramString1.setCurType(i);
+            paramString1.setCurType(n);
             if (QLog.isColorLevel())
             {
               paramString1 = new StringBuilder("CLOSE_FLOATING_WINDOW ");
               paramString1.append("uin=");
               paramString1.append(paramJsBridgeListener);
               paramString1.append(" sessionType=");
-              paramString1.append(i);
+              paramString1.append(n);
               QLog.d("TogetherBusinessForWebPlugin", 2, paramString1.toString());
             }
             paramJsBridgeListener = new TogetherBusinessForWebPlugin.1(this);
@@ -772,7 +772,7 @@ public class TogetherBusinessForWebPlugin
           try
           {
             paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-            i = paramJsBridgeListener.optInt("status");
+            n = paramJsBridgeListener.optInt("status");
             double d1 = paramJsBridgeListener.optDouble("video_width", 0.0D);
             double d2 = paramJsBridgeListener.optDouble("video_height", 0.0D);
             if (QLog.isColorLevel())
@@ -783,11 +783,11 @@ public class TogetherBusinessForWebPlugin
               paramJsBridgeListener.append(" videoHeight=");
               paramJsBridgeListener.append(d2);
               paramJsBridgeListener.append(" status=");
-              paramJsBridgeListener.append(i);
+              paramJsBridgeListener.append(n);
               QLog.d("TogetherBusinessForWebPlugin", 2, paramJsBridgeListener.toString());
             }
-            WatchFloatingWindowController.a().a(d1, d2);
-            WatchFloatingWindowController.a().b(i);
+            WatchFloatingWindowController.c().a(d1, d2);
+            WatchFloatingWindowController.c().b(n);
             return true;
           }
           catch (JSONException paramJsBridgeListener)
@@ -812,7 +812,7 @@ public class TogetherBusinessForWebPlugin
     if (paramMessage.what == 2)
     {
       paramMessage = (TogetherBusinessForWebPlugin.DialogElement)paramMessage.obj;
-      a(paramMessage.jdField_a_of_type_JavaLangString, paramMessage.jdField_b_of_type_JavaLangString, paramMessage.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      a(paramMessage.a, paramMessage.b, paramMessage.c);
       return true;
     }
     if (paramMessage.what == 3)
@@ -822,7 +822,7 @@ public class TogetherBusinessForWebPlugin
     }
     if (paramMessage.what == 4)
     {
-      paramMessage = this.jdField_a_of_type_AndroidViewView;
+      paramMessage = this.j;
       if (paramMessage != null) {
         paramMessage.setVisibility(8);
       }
@@ -841,38 +841,38 @@ public class TogetherBusinessForWebPlugin
       Object localObject = paramEIPCResult.data.getSerializable("QQAIOMediaSvc.open_identify");
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify = ((TogetherBusinessServlet.RspOpenIdentify)localObject);
-        boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.buttonText) ^ true;
+        this.h = ((TogetherBusinessServlet.RspOpenIdentify)localObject);
+        boolean bool = TextUtils.isEmpty(this.h.buttonText) ^ true;
         if (QLog.isColorLevel())
         {
           paramEIPCResult = new StringBuilder();
           paramEIPCResult.append("callback from CMD_OPEN_IDENTIFY isShowButton=");
           paramEIPCResult.append(bool);
           paramEIPCResult.append(" mDrawButtonByQQ=");
-          paramEIPCResult.append(this.jdField_a_of_type_Boolean);
+          paramEIPCResult.append(this.g);
           QLog.d("TogetherBusinessForWebPlugin", 2, paramEIPCResult.toString());
         }
-        if ((bool) && (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.businessType == 2))
+        if ((bool) && (this.h.businessType == 2))
         {
-          if (this.jdField_a_of_type_Int == 2) {
+          if (this.b == 2) {
             paramEIPCResult = "c2c_AIO";
           } else {
             paramEIPCResult = "Grp_AIO";
           }
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)localObject).append(this.a);
           ((StringBuilder)localObject).append("");
-          ReportController.b(null, "dc00899", paramEIPCResult, "", "video_tab", "exp_share_grp", 0, 0, ((StringBuilder)localObject).toString(), this.c, "", "");
+          ReportController.b(null, "dc00899", paramEIPCResult, "", "video_tab", "exp_share_grp", 0, 0, ((StringBuilder)localObject).toString(), this.e, "", "");
         }
-        paramEIPCResult = a(bool, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.buttonText);
-        if (!TextUtils.isEmpty(this.d)) {
-          callJs(this.d, new String[] { paramEIPCResult });
+        paramEIPCResult = a(bool, this.h.buttonText);
+        if (!TextUtils.isEmpty(this.l)) {
+          callJs(this.l, new String[] { paramEIPCResult });
         }
-        if ((bool) && (this.jdField_a_of_type_Boolean))
+        if ((bool) && (this.g))
         {
-          paramEIPCResult = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-          paramEIPCResult.obj = this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.buttonText;
-          this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramEIPCResult);
+          paramEIPCResult = this.f.obtainMessage(3);
+          paramEIPCResult.obj = this.h.buttonText;
+          this.f.sendMessage(paramEIPCResult);
         }
         return;
       }
@@ -883,15 +883,15 @@ public class TogetherBusinessForWebPlugin
       if (paramEIPCResult == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenStart = ((TogetherBusinessServlet.RspOpenStart)paramEIPCResult);
-      if (!a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenStart.resultInfo)) {}
+      this.i = ((TogetherBusinessServlet.RspOpenStart)paramEIPCResult);
+      if (!a(this.i.resultInfo)) {}
     }
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenStart = null;
-    Object localObject = a();
+    this.i = null;
+    Object localObject = b();
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -900,54 +900,54 @@ public class TogetherBusinessForWebPlugin
     }
     else
     {
-      Bundle localBundle = a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, (Intent)localObject);
+      Bundle localBundle = a(this.c, this.d, this.e, (Intent)localObject);
       if (localBundle != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify;
+        localObject = this.h;
         if (localObject != null)
         {
           localBundle.putInt("business_type", ((TogetherBusinessServlet.RspOpenIdentify)localObject).businessType);
-          if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.businessType == 2)
+          if (this.h.businessType == 2)
           {
-            if (this.jdField_a_of_type_Int == 2) {
+            if (this.b == 2) {
               localObject = "c2c_AIO";
             } else {
               localObject = "Grp_AIO";
             }
             StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(this.jdField_a_of_type_Long);
+            localStringBuilder.append(this.a);
             localStringBuilder.append("");
-            ReportController.b(null, "dc00899", (String)localObject, "", "video_tab", "clk_share_grp", 0, 0, localStringBuilder.toString(), this.c, "", "");
+            ReportController.b(null, "dc00899", (String)localObject, "", "video_tab", "clk_share_grp", 0, 0, localStringBuilder.toString(), this.e, "", "");
           }
-          if ((a()) || (a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanTogetherBusinessServlet$RspOpenIdentify.resultInfo)) || (a(localBundle))) {
-            break label238;
+          if ((a()) || (a(this.h.resultInfo)) || (a(localBundle))) {
+            break label239;
           }
           QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_open_start", localBundle, this);
-          break label238;
+          break label239;
         }
       }
       if (QLog.isColorLevel()) {
         QLog.d("TogetherBusinessForWebPlugin", 2, "call click_together_button bundle or mRspOpenIdentify is null");
       }
     }
-    label238:
+    label239:
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.f;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
-    WatchFloatingWindowController.a().b(this);
+    WatchFloatingWindowController.c().b(this);
     QIPCClientHelper.getInstance().getClient().unRegisterModule(WatchTogetherClientIPCModule.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessForWebPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class SimpleHttpInterfaceTransfer$2
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    SimpleCoreHttpResponse localSimpleCoreHttpResponse = this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreHttpResponse;
+    SimpleCoreHttpResponse localSimpleCoreHttpResponse = this.a;
     if (localSimpleCoreHttpResponse != null) {
       localSimpleCoreHttpResponse.onResponse(paramInt, paramJSONObject);
     }
@@ -19,7 +19,7 @@ class SimpleHttpInterfaceTransfer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.SimpleHttpInterfaceTransfer.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ class WSLiveAnimationManager$1
   
   public void a(ImageRequest paramImageRequest, ICloseableBitmap paramICloseableBitmap)
   {
-    WSLiveAnimationManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newLiveWSLiveAnimationManager, this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, paramICloseableBitmap.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newLiveWSLiveAnimationManager$WSLiveAnimationCallback);
+    WSLiveAnimationManager.a(this.c, this.a, paramICloseableBitmap.b(), this.b);
   }
   
   public void a(ImageRequest paramImageRequest, Throwable paramThrowable)
   {
-    paramImageRequest = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newLiveWSLiveAnimationManager$WSLiveAnimationCallback;
+    paramImageRequest = this.b;
     if (paramImageRequest != null) {
       paramImageRequest.a();
     }
@@ -27,7 +27,7 @@ class WSLiveAnimationManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.live.WSLiveAnimationManager.1
  * JD-Core Version:    0.7.0.1
  */

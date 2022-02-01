@@ -11,7 +11,7 @@ public class TroopManager$LiangGroupHelper
   public static void a(Context paramContext, String paramString1, String paramString2)
   {
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", QVIPPrettyTroopProcessor.c().a(paramString2, paramString1));
+    localIntent.putExtra("url", QVIPPrettyTroopProcessor.e().a(paramString2, paramString1));
     localIntent.putExtra("hide_operation_bar", true);
     paramContext.startActivity(localIntent);
   }
@@ -33,7 +33,7 @@ public class TroopManager$LiangGroupHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.LiangGroupHelper
  * JD-Core Version:    0.7.0.1
  */

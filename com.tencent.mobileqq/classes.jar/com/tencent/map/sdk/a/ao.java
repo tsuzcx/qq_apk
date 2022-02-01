@@ -190,52 +190,52 @@ public final class ao
     //   72: ldc 177
     //   74: invokevirtual 187	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   77: checkcast 216	android/net/wifi/WifiManager
-    //   80: invokevirtual 220	android/net/wifi/WifiManager:getConnectionInfo	()Landroid/net/wifi/WifiInfo;
+    //   80: invokestatic 222	com/tencent/mobileqq/qmethodmonitor/monitor/NetworkMonitor:getConnectionInfo	(Landroid/net/wifi/WifiManager;)Landroid/net/wifi/WifiInfo;
     //   83: astore_3
-    //   84: new 222	java/lang/StringBuilder
+    //   84: new 224	java/lang/StringBuilder
     //   87: dup
-    //   88: ldc 224
-    //   90: invokespecial 225	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   88: ldc 226
+    //   90: invokespecial 227	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   93: astore 4
     //   95: aload 4
     //   97: aload_3
-    //   98: invokevirtual 230	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
-    //   101: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 232	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
+    //   101: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: pop
     //   105: aload 4
     //   107: aload_3
-    //   108: invokevirtual 237	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
-    //   111: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: invokevirtual 239	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
+    //   111: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: aload 4
-    //   117: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   120: putstatic 167	com/tencent/map/sdk/a/ao:d	Ljava/lang/String;
     //   123: goto +280 -> 403
     //   126: aload_3
-    //   127: invokevirtual 243	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   127: invokevirtual 245	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   130: astore 4
     //   132: aload 4
     //   134: ifnull +214 -> 348
     //   137: aload 4
-    //   139: invokevirtual 246	java/lang/String:trim	()Ljava/lang/String;
-    //   142: invokevirtual 249	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   139: invokevirtual 248	java/lang/String:trim	()Ljava/lang/String;
+    //   142: invokevirtual 251	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   145: putstatic 181	com/tencent/map/sdk/a/ao:c	Ljava/lang/String;
     //   148: iload_1
     //   149: ifne +174 -> 323
-    //   152: new 222	java/lang/StringBuilder
+    //   152: new 224	java/lang/StringBuilder
     //   155: dup
-    //   156: ldc 251
-    //   158: invokespecial 225	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   156: ldc 253
+    //   158: invokespecial 227	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   161: astore 4
     //   163: aload 4
     //   165: getstatic 181	com/tencent/map/sdk/a/ao:c	Ljava/lang/String;
-    //   168: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: pop
     //   172: aload 4
-    //   174: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   174: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   177: putstatic 167	com/tencent/map/sdk/a/ao:d	Ljava/lang/String;
     //   180: aload_3
-    //   181: invokevirtual 254	android/net/NetworkInfo:getSubtype	()I
+    //   181: invokevirtual 256	android/net/NetworkInfo:getSubtype	()I
     //   184: istore_1
     //   185: iload_1
     //   186: putstatic 209	com/tencent/map/sdk/a/ao:g	I
@@ -258,7 +258,7 @@ public final class ao
     //   221: iconst_2
     //   222: putstatic 169	com/tencent/map/sdk/a/ao:e	I
     //   225: getstatic 181	com/tencent/map/sdk/a/ao:c	Ljava/lang/String;
-    //   228: ldc_w 256
+    //   228: ldc_w 258
     //   231: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   234: istore_2
     //   235: iload_2
@@ -269,7 +269,7 @@ public final class ao
     //   246: getstatic 56	com/tencent/map/sdk/a/ao:l	Ljava/lang/String;
     //   249: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   252: ifeq +14 -> 266
-    //   255: ldc_w 258
+    //   255: ldc_w 260
     //   258: astore_3
     //   259: aload_3
     //   260: putstatic 48	com/tencent/map/sdk/a/ao:j	Ljava/lang/String;
@@ -278,21 +278,21 @@ public final class ao
     //   269: getstatic 52	com/tencent/map/sdk/a/ao:k	Ljava/lang/String;
     //   272: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   275: ifeq +10 -> 285
-    //   278: ldc_w 258
+    //   278: ldc_w 260
     //   281: astore_3
     //   282: goto -23 -> 259
     //   285: getstatic 181	com/tencent/map/sdk/a/ao:c	Ljava/lang/String;
     //   288: getstatic 60	com/tencent/map/sdk/a/ao:m	Ljava/lang/String;
     //   291: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   294: ifeq +10 -> 304
-    //   297: ldc_w 258
+    //   297: ldc_w 260
     //   300: astore_3
     //   301: goto -42 -> 259
     //   304: getstatic 181	com/tencent/map/sdk/a/ao:c	Ljava/lang/String;
     //   307: getstatic 64	com/tencent/map/sdk/a/ao:n	Ljava/lang/String;
     //   310: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   313: ifeq +361 -> 674
-    //   316: ldc_w 260
+    //   316: ldc_w 262
     //   319: astore_3
     //   320: goto -61 -> 259
     //   323: ldc 17
@@ -330,7 +330,7 @@ public final class ao
     //   395: iconst_0
     //   396: putstatic 203	com/tencent/map/sdk/a/ao:b	Z
     //   399: iconst_0
-    //   400: putstatic 262	com/tencent/map/sdk/a/ao:a	B
+    //   400: putstatic 264	com/tencent/map/sdk/a/ao:a	B
     //   403: iload_0
     //   404: getstatic 169	com/tencent/map/sdk/a/ao:e	I
     //   407: if_icmpeq +158 -> 565
@@ -339,19 +339,19 @@ public final class ao
     //   414: aload_3
     //   415: monitorenter
     //   416: getstatic 41	com/tencent/map/sdk/a/ao:h	Ljava/util/Map;
-    //   419: invokeinterface 266 1 0
-    //   424: invokeinterface 269 1 0
+    //   419: invokeinterface 268 1 0
+    //   424: invokeinterface 271 1 0
     //   429: astore 4
     //   431: aload 4
     //   433: invokeinterface 93 1 0
     //   438: ifeq +28 -> 466
     //   441: aload 4
     //   443: invokeinterface 97 1 0
-    //   448: checkcast 271	com/tencent/map/sdk/a/at
+    //   448: checkcast 273	com/tencent/map/sdk/a/at
     //   451: ifnull -20 -> 431
     //   454: getstatic 169	com/tencent/map/sdk/a/ao:e	I
     //   457: getstatic 167	com/tencent/map/sdk/a/ao:d	Ljava/lang/String;
-    //   460: invokestatic 274	com/tencent/map/sdk/a/at:a	(ILjava/lang/String;)V
+    //   460: invokestatic 276	com/tencent/map/sdk/a/at:a	(ILjava/lang/String;)V
     //   463: goto -32 -> 431
     //   466: aload_3
     //   467: monitorexit
@@ -367,7 +367,7 @@ public final class ao
     //   481: goto +88 -> 569
     //   484: astore_3
     //   485: aload_3
-    //   486: invokevirtual 277	java/lang/Throwable:printStackTrace	()V
+    //   486: invokevirtual 279	java/lang/Throwable:printStackTrace	()V
     //   489: iload_0
     //   490: getstatic 169	com/tencent/map/sdk/a/ao:e	I
     //   493: if_icmpeq +72 -> 565
@@ -376,19 +376,19 @@ public final class ao
     //   500: aload_3
     //   501: monitorenter
     //   502: getstatic 41	com/tencent/map/sdk/a/ao:h	Ljava/util/Map;
-    //   505: invokeinterface 266 1 0
-    //   510: invokeinterface 269 1 0
+    //   505: invokeinterface 268 1 0
+    //   510: invokeinterface 271 1 0
     //   515: astore 4
     //   517: aload 4
     //   519: invokeinterface 93 1 0
     //   524: ifeq +28 -> 552
     //   527: aload 4
     //   529: invokeinterface 97 1 0
-    //   534: checkcast 271	com/tencent/map/sdk/a/at
+    //   534: checkcast 273	com/tencent/map/sdk/a/at
     //   537: ifnull -20 -> 517
     //   540: getstatic 169	com/tencent/map/sdk/a/ao:e	I
     //   543: getstatic 167	com/tencent/map/sdk/a/ao:d	Ljava/lang/String;
-    //   546: invokestatic 274	com/tencent/map/sdk/a/at:a	(ILjava/lang/String;)V
+    //   546: invokestatic 276	com/tencent/map/sdk/a/at:a	(ILjava/lang/String;)V
     //   549: goto -32 -> 517
     //   552: aload_3
     //   553: monitorexit
@@ -411,19 +411,19 @@ public final class ao
     //   580: aload_3
     //   581: monitorenter
     //   582: getstatic 41	com/tencent/map/sdk/a/ao:h	Ljava/util/Map;
-    //   585: invokeinterface 266 1 0
-    //   590: invokeinterface 269 1 0
+    //   585: invokeinterface 268 1 0
+    //   590: invokeinterface 271 1 0
     //   595: astore 5
     //   597: aload 5
     //   599: invokeinterface 93 1 0
     //   604: ifeq +28 -> 632
     //   607: aload 5
     //   609: invokeinterface 97 1 0
-    //   614: checkcast 271	com/tencent/map/sdk/a/at
+    //   614: checkcast 273	com/tencent/map/sdk/a/at
     //   617: ifnull -20 -> 597
     //   620: getstatic 169	com/tencent/map/sdk/a/ao:e	I
     //   623: getstatic 167	com/tencent/map/sdk/a/ao:d	Ljava/lang/String;
-    //   626: invokestatic 274	com/tencent/map/sdk/a/at:a	(ILjava/lang/String;)V
+    //   626: invokestatic 276	com/tencent/map/sdk/a/at:a	(ILjava/lang/String;)V
     //   629: goto -32 -> 597
     //   632: aload_3
     //   633: monitorexit
@@ -733,7 +733,7 @@ public final class ao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ao
  * JD-Core Version:    0.7.0.1
  */

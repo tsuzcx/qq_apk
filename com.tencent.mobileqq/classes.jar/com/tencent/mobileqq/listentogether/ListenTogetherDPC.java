@@ -9,24 +9,16 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ListenTogetherDPC
 {
-  public static final String a;
-  public int a;
-  public long a;
-  public DPCObserver a;
-  public int b = 0;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = DPCNames.ltcfg.name();
-  }
+  public static final String a = DPCNames.ltcfg.name();
+  public int b = 50;
+  public int c = 0;
+  public long d = 3000L;
+  public DPCObserver e = new ListenTogetherDPC.1(this);
   
   private ListenTogetherDPC()
   {
-    this.jdField_a_of_type_Int = 50;
-    this.jdField_a_of_type_Long = 3000L;
-    this.jdField_a_of_type_ComTencentMobileqqDpcDPCObserver = new ListenTogetherDPC.1(this);
-    a();
-    ((IDPCApi)QRoute.api(IDPCApi.class)).addObserver(this.jdField_a_of_type_ComTencentMobileqqDpcDPCObserver);
+    b();
+    ((IDPCApi)QRoute.api(IDPCApi.class)).addObserver(this.e);
   }
   
   public static ListenTogetherDPC a()
@@ -34,9 +26,9 @@ public class ListenTogetherDPC
     return ListenTogetherDPC.SingletonHolder.a();
   }
   
-  private void a()
+  private void b()
   {
-    String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(jdField_a_of_type_JavaLangString);
+    String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(a);
     try
     {
       if (!TextUtils.isEmpty(str))
@@ -44,18 +36,18 @@ public class ListenTogetherDPC
         String[] arrayOfString = str.split("\\|");
         if (arrayOfString.length >= 4)
         {
-          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-          this.b = Integer.valueOf(arrayOfString[1]).intValue();
-          this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
+          this.b = Integer.valueOf(arrayOfString[0]).intValue();
+          this.c = Integer.valueOf(arrayOfString[1]).intValue();
+          this.d = Long.valueOf(arrayOfString[2]).longValue();
         }
       }
     }
     catch (Exception localException)
     {
       QLog.d("ListenTogether.dpc", 1, "loadDpc", localException);
-      this.jdField_a_of_type_Int = 50;
-      this.b = 0;
-      this.jdField_a_of_type_Long = 3000L;
+      this.b = 50;
+      this.c = 0;
+      this.d = 3000L;
     }
     if (QLog.isColorLevel()) {
       QLog.d("ListenTogether.dpc", 2, String.format("loadDpc, dpcValue: %s, [%s]", new Object[] { str, this }));
@@ -66,18 +58,18 @@ public class ListenTogetherDPC
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ListenTogetherDPC{maxCacheCount=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", preDownloadNetType=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", preDownloadNetType=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", playingAdjustInterval=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherDPC
  * JD-Core Version:    0.7.0.1
  */

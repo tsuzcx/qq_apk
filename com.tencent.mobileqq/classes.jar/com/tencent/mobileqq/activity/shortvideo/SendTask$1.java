@@ -22,36 +22,36 @@ class SendTask$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidContentIntent != null)
+    if (this.this$0.b != null)
     {
-      int i = this.this$0.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_business_type", 2);
+      int i = this.this$0.b.getIntExtra("file_send_business_type", 2);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("#SendTask# run(), busiType = ");
         ((StringBuilder)localObject1).append(i);
         ((StringBuilder)localObject1).append(",VideoFileDir = ");
-        ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_AndroidContentIntent.getStringExtra("file_video_source_dir"));
+        ((StringBuilder)localObject1).append(this.this$0.b.getStringExtra("file_video_source_dir"));
         QLog.d("SendVideoActivity", 2, ((StringBuilder)localObject1).toString());
       }
-      int j = this.this$0.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
+      int j = this.this$0.b.getIntExtra("uintype", -1);
       if (j == 9501) {
         i = 4;
       }
       Object localObject2 = SVBusiUtil.a(0, i);
-      Object localObject1 = ShortVideoBusiManager.a(this.this$0.jdField_a_of_type_AndroidContentIntent, (ShortVideoReq)localObject2);
+      Object localObject1 = ShortVideoBusiManager.a(this.this$0.b, (ShortVideoReq)localObject2);
       ((ShortVideoReq)localObject2).a((ShortVideoUploadInfo)localObject1);
       if (j == 9501)
       {
-        localObject2 = new DevLittleVideoSendOperator(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+        localObject2 = new DevLittleVideoSendOperator(this.this$0.a.app);
         ((DevLittleVideoSendOperator)localObject2).a(((DevLittleVideoSendOperator)localObject2).a((ShortVideoUploadInfo)localObject1));
       }
       else
       {
-        localObject2 = ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getAioShortVideoSendOperator(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+        localObject2 = ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getAioShortVideoSendOperator(this.this$0.a.app);
         localObject1 = ((IShortVideoOperator)localObject2).a((ShortVideoUploadInfo)localObject1);
-        if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) {
-          ((IOrderMediaMsgService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getRuntimeService(IOrderMediaMsgService.class)).enqueueMediaMsgByUniseq(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).uniseq);
+        if (this.this$0.a.app != null) {
+          ((IOrderMediaMsgService)this.this$0.a.app.getRuntimeService(IOrderMediaMsgService.class)).enqueueMediaMsgByUniseq(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).uniseq);
         }
         ((IShortVideoOperator)localObject2).a((MessageRecord)localObject1);
       }
@@ -59,16 +59,16 @@ class SendTask$1
         QLog.d("SendVideoActivity", 2, "#SendTask# run(): success");
       }
     }
-    if (!this.this$0.jdField_a_of_type_Boolean)
+    if (!this.this$0.c)
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, this.this$0.jdField_a_of_type_AndroidContentIntent);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      this.this$0.a.setResult(-1, this.this$0.b);
+      this.this$0.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.SendTask.1
  * JD-Core Version:    0.7.0.1
  */

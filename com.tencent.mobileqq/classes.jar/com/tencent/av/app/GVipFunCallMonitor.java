@@ -7,38 +7,38 @@ import mqq.app.MobileQQ;
 
 public class GVipFunCallMonitor
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean = false;
+  private VideoAppInterface a;
+  private boolean b = false;
+  private BroadcastReceiver c;
   
   public GVipFunCallMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new GVipFunCallMonitor.VipFunCallReceiver(this);
+    this.a = paramVideoAppInterface;
+    this.c = new GVipFunCallMonitor.VipFunCallReceiver(this);
   }
   
   public void a()
   {
     Object localObject = new IntentFilter("tencent.video.q2v.MultiVideo");
     ((IntentFilter)localObject).addAction("tencent.video.q2v.AnnimateDownloadFinish");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject) != null) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.a.getApplication().registerReceiver(this.c, (IntentFilter)localObject) != null) {
+      this.b = true;
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("regist vipFunCall ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("GVipFunCallMonitor", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      this.a.getApplication().unregisterReceiver(this.c);
+      this.b = false;
     }
   }
 }

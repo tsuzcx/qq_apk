@@ -4,13 +4,13 @@ import wtlogin.qrlogin.scanresult.QrLogin.ScanResultInfo;
 
 public class QRLoginAuthActivity$VerifyCodeTlvInfo
 {
-  public String a;
   public QrLogin.ScanResultInfo a;
+  public String b;
   
   public QRLoginAuthActivity$VerifyCodeTlvInfo(QrLogin.ScanResultInfo paramScanResultInfo, String paramString)
   {
-    this.jdField_a_of_type_WtloginQrloginScanresultQrLogin$ScanResultInfo = paramScanResultInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramScanResultInfo;
+    this.b = paramString;
   }
 }
 

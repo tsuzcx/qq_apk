@@ -20,6 +20,8 @@ public abstract interface AppConstants$Key
   public static final String BIND_TYPE = "bind_type";
   public static final String BUSI_TYPE = "BUSI_TYPE";
   public static final String CALL_DIRECT_ARTIFICIAL = "strDirectartificial";
+  public static final String CHANNEL_NAME = "channel_name";
+  public static final String CHANNEL_TYPE = "channel_type";
   public static final String COLUMN_EXTRA_FLAG = "extraflag";
   public static final String COLUMN_EXT_INT = "extInt";
   public static final String COLUMN_EXT_LONG = "extLong";
@@ -173,8 +175,15 @@ public abstract interface AppConstants$Key
   @Deprecated
   public static final String FREE_CALL_SHOWN_FREE_CALL_BAR = "free_call_shown_free_call_bar";
   public static final String FRINEDPHONENUM = "friend_phonenum";
+  public static final String FROM_TYPE = "from_type";
   public static final String GENDER = "gender";
   public static final String GROUPMAN_REFUSE = "groupman_refuse";
+  public static final String GUILD_EXTAR_JOIN_SIG = "guild_extra_join_sig";
+  public static final String GUILD_EXTRA = "guild_extra";
+  public static final String GUILD_EXTRA_JOIN_FROM = "guild_extra_join_from";
+  public static final String GUILD_FROM = "guild_from";
+  public static final String GUILD_FROM_APP_NAME = "guild_from_app_name";
+  public static final String GUILD_ID = "guild_id";
   public static final String H5_ARK_APP_DESCRIPTION = "h5_ark_app_des";
   public static final String H5_ARK_APP_NAME = "h5_ark_app_name";
   public static final String H5_ARK_APP_PATH = "h5_ark_app_path";
@@ -220,7 +229,10 @@ public abstract interface AppConstants$Key
   public static final String KEY_FROM_BABYQ = "from_babyq";
   public static final String KEY_FROM_TIP = "from_tip";
   public static final String KEY_FROM_WPA_FOR_CRM = "from_wpa_for_crm";
+  public static final String KEY_GAME_CHATPIE_HASHCODE = "game_chatpie_hashcode";
   public static final String KEY_GAME_ID = "cmshow_game_id";
+  public static final String KEY_GAME_IS_SHILED = "game_is_shiled";
+  public static final String KEY_GAME_MSG = "game_msg";
   public static final String KEY_GAME_MSG_ENTER_FROM = "game_msg_enter_from";
   public static final String KEY_GAME_MSG_FRIEND_ROLEID = "game_msg_friend_role_id";
   public static final String KEY_GAME_MSG_MY_ROLEID = "game_msg_my_role_id";
@@ -261,6 +273,7 @@ public abstract interface AppConstants$Key
   public static final String KEY_REGISTER_EXIT_TIME = "key_register_exit_time";
   public static final String KEY_REGISTER_FAIL_PAID_LH = "key_register_fail_paid_lh";
   public static final String KEY_REGISTER_FROM = "key_register_from";
+  public static final String KEY_REGISTER_FROM_FACE_VERIFY = "key_register_from_face_verify";
   public static final String KEY_REGISTER_FROM_FAIL_PAY_LH = "key_register_from_fail_pay_lh";
   public static final String KEY_REGISTER_FROM_FRIEND_VERIFY = "key_register_from_friend_verify";
   public static final String KEY_REGISTER_FROM_QUICK_REGISTER = "key_register_from_quick_register";
@@ -363,6 +376,7 @@ public abstract interface AppConstants$Key
   public static final String SHARE_REQ_QQ_TYPE = "shareQQType";
   public static final String SHARE_REQ_QZONE_MSG = "qzone_extra_msg";
   public static final String SHARE_REQ_SCHEME_CONTENT = "scheme_content";
+  public static final String SHARE_REQ_SCHEME_CONTENT_ORIGINAL = "scheme_content_original";
   public static final String SHARE_REQ_SHARE_JFROM = "jfrom";
   public static final String SHARE_REQ_SHARE_QZONE_INFO = "share_qzone_info";
   public static final String SHARE_REQ_SHARE_UIN = "share_uin";
@@ -375,6 +389,8 @@ public abstract interface AppConstants$Key
   public static final String SHARE_RES_COMMENT_MESSAGE = "share_comment_message";
   public static final String SHARE_RES_COMMENT_MESSAGE_FOR_SERVER = "share_comment_message_for_server";
   public static final String SHARE_RES_DETAIL_URL = "res_detail_url";
+  public static final String SHARE_RES_EXTRA_DATA = "share_res_extra_data";
+  public static final String SHARE_RES_GUILD_ID = "guild_id";
   public static final String SHARE_RES_ID = "res_share_id";
   public static final String SHARE_RES_IMAGE_URL = "share_image_url";
   public static final String SHARE_RES_IS_SHARE_TO_QZONE = "is_share_to_qzone";
@@ -385,6 +401,7 @@ public abstract interface AppConstants$Key
   public static final String SHARE_RES_TYPE = "type";
   public static final String SHARE_RES_UIN = "uin";
   public static final String SHARE_RES_UIN_NAME = "uin_name";
+  public static final String SHARE_SDK_SHARE_TYPE = "sdk_share_type";
   public static final String SHARE_SEND_MSG_BY_SERVER = "share_send_msg_by_server";
   public static final String SHARE_SOURCE_URL = "source_url";
   public static final String SHARE_SUCCESS_STAY_QQ = "com.tencent.tauth.opensdk.SHARE_SUCCESS_AND_STAY_QQ_";
@@ -484,7 +501,7 @@ public abstract interface AppConstants$Key
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.AppConstants.Key
  * JD-Core Version:    0.7.0.1
  */

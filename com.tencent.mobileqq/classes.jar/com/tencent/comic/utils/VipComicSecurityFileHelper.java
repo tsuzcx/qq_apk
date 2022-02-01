@@ -11,8 +11,8 @@ import mqq.app.ISecurityFileHelper;
 public class VipComicSecurityFileHelper
   implements ISecurityFileHelper
 {
-  private FilenameFilter jdField_a_of_type_JavaIoFilenameFilter = new VipComicSecurityFileHelper.1(this);
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
+  private Pattern a = Pattern.compile("\\d{5,}");
+  private FilenameFilter b = new VipComicSecurityFileHelper.1(this);
   
   public String declareBusinessFileName()
   {
@@ -22,7 +22,7 @@ public class VipComicSecurityFileHelper
   public boolean doMigrate(File paramFile)
   {
     File localFile1 = new File(AppConstants.SDCARD_ROOT, "/tencent/MobileQQ/qqcomic/offline/");
-    String[] arrayOfString = localFile1.list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    String[] arrayOfString = localFile1.list(this.b);
     if (arrayOfString != null)
     {
       if (arrayOfString.length == 0) {
@@ -63,7 +63,7 @@ public class VipComicSecurityFileHelper
   
   public boolean needMigration()
   {
-    Object localObject = new File(AppConstants.SDCARD_ROOT, "/tencent/MobileQQ/qqcomic/offline/").list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    Object localObject = new File(AppConstants.SDCARD_ROOT, "/tencent/MobileQQ/qqcomic/offline/").list(this.b);
     boolean bool;
     if ((localObject != null) && (localObject.length > 0)) {
       bool = true;
@@ -104,7 +104,7 @@ public class VipComicSecurityFileHelper
   {
     String[] arrayOfString1 = new String[2];
     Object localObject = new File(AppConstants.SDCARD_ROOT, "/tencent/MobileQQ/qqcomic/offline/");
-    String[] arrayOfString2 = ((File)localObject).list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    String[] arrayOfString2 = ((File)localObject).list(this.b);
     if ((arrayOfString2 != null) && (arrayOfString2.length > 0))
     {
       int j = arrayOfString2.length;
@@ -134,7 +134,7 @@ public class VipComicSecurityFileHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.utils.VipComicSecurityFileHelper
  * JD-Core Version:    0.7.0.1
  */

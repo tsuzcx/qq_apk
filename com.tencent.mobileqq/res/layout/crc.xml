@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="11.0sp" android:textColor="@color/alh" android:ellipsize="end" android:id="@id/mmy" android:paddingLeft="6.0dip" android:paddingTop="4.0dip" android:paddingRight="6.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.tencent.mobileqq.kandian.base.view.widget.FixWidthRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:ratioH="1" app:ratioW="1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.image.URLImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <TextView android:textSize="10.0sp" android:textColor="#ffffffff" android:id="@id/qkt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="6.0dip" android:text="" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/qrs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/eu7" android:alpha="0.4" />
+    <FrameLayout android:id="@id/enp" android:background="@drawable/ery" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/inm" />
+    </FrameLayout>
+</com.tencent.mobileqq.kandian.base.view.widget.FixWidthRatioRelativeLayout>

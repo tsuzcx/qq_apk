@@ -24,41 +24,36 @@ import java.util.List;
 public class CommonMenuWrapper
   implements SelectablePopupMenu
 {
-  private static final int e = ViewUtils.b(72.0F);
-  private static final int f = ViewUtils.b(63.0F);
-  public int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private SelectableDelegate jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
-  QQCustomMenu jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
-  private BubblePopupWindow.OnDismissListener jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  public int b;
-  private QQCustomMenu b;
-  private int jdField_c_of_type_Int;
-  private QQCustomMenu jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
-  private int d;
+  private static final int l = ViewUtils.dpToPx(72.0F);
+  private static final int m = ViewUtils.dpToPx(63.0F);
+  private SelectableDelegate a;
+  QQCustomMenu b;
+  public int c;
+  public int d;
+  private BubblePopupWindow e;
+  private View.OnClickListener f;
+  private BubblePopupWindow.OnDismissListener g;
+  private QQCustomMenu h;
+  private QQCustomMenu i;
+  private int j;
+  private int k;
   
-  private void c()
+  private void h()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate != null) {
+    if (this.a != null) {
       return;
     }
     throw new IllegalStateException("Delegate has not bound.");
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
   }
   
   public CommonMenuWrapper.MenuPlaceInfo a(View paramView, BaseChatPie paramBaseChatPie)
   {
     int[] arrayOfInt = new int[2];
     paramView.getLocationInWindow(arrayOfInt);
-    int k = 1;
-    int n = arrayOfInt[1];
-    int i1 = arrayOfInt[1];
-    int i2 = paramView.getHeight();
+    int i2 = 1;
+    int i4 = arrayOfInt[1];
+    int i5 = arrayOfInt[1];
+    int i6 = paramView.getHeight();
     paramView = paramBaseChatPie;
     if (paramBaseChatPie == null)
     {
@@ -67,174 +62,169 @@ public class CommonMenuWrapper
         paramView = ((AIOMenuWrapper)this).a;
       }
     }
-    int i;
-    if ((paramView != null) && (paramView.a != null) && (paramView.a.getVisibility() == 0))
+    int n;
+    if ((paramView != null) && (paramView.X != null) && (paramView.X.getVisibility() == 0))
     {
-      paramView.a.getLocationInWindow(arrayOfInt);
-      i = arrayOfInt[1];
+      paramView.X.getLocationInWindow(arrayOfInt);
+      n = arrayOfInt[1];
     }
     else
     {
-      i = ViewUtils.b();
+      n = ViewUtils.getScreenHeight();
     }
-    int m = n + 0;
-    int i3 = e;
-    int i4 = ImmersiveUtils.statusHeight;
-    int j = 0;
-    if (m < i3 + i4)
+    int i3 = i4 + 0;
+    int i7 = l;
+    int i8 = ImmersiveUtils.statusHeight;
+    int i1 = 0;
+    if (i3 < i7 + i8)
     {
-      m = i1 + i2 + 0;
-      if (m < e + ImmersiveUtils.statusHeight)
+      i3 = i5 + i6 + 0;
+      if (i3 < l + ImmersiveUtils.statusHeight)
       {
-        k = this.jdField_a_of_type_Int;
-        if ((k != 0) && (k - 0 > e + ImmersiveUtils.statusHeight))
+        i2 = this.c;
+        if ((i2 != 0) && (i2 - 0 > l + ImmersiveUtils.statusHeight))
         {
-          i = this.jdField_a_of_type_Int - 0;
+          n = this.c - 0;
         }
         else
         {
-          k = this.jdField_a_of_type_Int;
-          if ((k != 0) && (f + k - 0 < i))
+          i2 = this.c;
+          if ((i2 != 0) && (m + i2 - 0 < n))
           {
-            i = k + 0;
-            j = 1;
+            n = i2 + 0;
+            i1 = 1;
           }
           else
           {
-            i = e + ImmersiveUtils.statusHeight;
+            n = l + ImmersiveUtils.statusHeight;
           }
         }
       }
       else
       {
-        j = m;
-        if (f + m > i)
+        i1 = i3;
+        if (m + i3 > n)
         {
-          j = this.jdField_a_of_type_Int;
-          if ((j != 0) && (j - 0 > e + ImmersiveUtils.statusHeight))
+          i1 = this.c;
+          if ((i1 != 0) && (i1 - 0 > l + ImmersiveUtils.statusHeight))
           {
-            i = this.jdField_a_of_type_Int + 0;
+            n = this.c + 0;
           }
           else
           {
-            j = this.jdField_a_of_type_Int;
-            if ((j != 0) && (f + j - 0 < i))
+            i1 = this.c;
+            if ((i1 != 0) && (m + i1 - 0 < n))
             {
-              j += 0;
+              i1 += 0;
               break label328;
             }
-            i = e + ImmersiveUtils.statusHeight + f + 0;
+            n = l + ImmersiveUtils.statusHeight + m + 0;
           }
-          j = 0;
+          i1 = 0;
           break label335;
         }
         label328:
-        i = j;
-        j = k;
+        n = i1;
+        i1 = i2;
       }
     }
     else
     {
       label335:
-      if (n <= i) {
-        i = m;
+      if (i4 <= n) {
+        n = i3;
       }
     }
-    return new CommonMenuWrapper.MenuPlaceInfo(i, j);
-  }
-  
-  @Nullable
-  public SelectableDelegate a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
+    return new CommonMenuWrapper.MenuPlaceInfo(n, i1);
   }
   
   public void a()
   {
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if ((localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.dismiss();
+    QQCustomMenu localQQCustomMenu = this.b;
+    if (localQQCustomMenu != null)
+    {
+      localQQCustomMenu.a(2131431492, HardCodeUtil.a(2131900427), 2130839057);
+      this.b.a(2131445511, HardCodeUtil.a(2131900425), 2130839077);
+      this.b.a(2131433636, HardCodeUtil.a(2131900429), 2130839066);
+      this.b.a(2131432813, HardCodeUtil.a(2131900426), 2130839065);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.j = paramInt;
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.f = paramOnClickListener;
   }
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    c();
+    h();
     QQCustomMenu localQQCustomMenu;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.c())
+    if (this.a.l())
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.c();
-      int j = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a() == i - j)
+      int n = this.a.f();
+      int i1 = this.a.e();
+      if (this.a.c() == n - i1)
       {
-        localQQCustomMenu = this.b;
+        localQQCustomMenu = this.h;
       }
       else
       {
-        localQQCustomMenu = this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
+        localQQCustomMenu = this.i;
         if (localQQCustomMenu == null)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu == null)
+          if (this.b == null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = new QQCustomMenu();
-            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131365311, HardCodeUtil.a(2131702424), 2130838903);
-            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131377136, HardCodeUtil.a(2131702422), 2130838923);
-            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131367180, HardCodeUtil.a(2131702426), 2130838912);
-            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131366494, HardCodeUtil.a(2131702423), 2130838911);
+            this.b = new QQCustomMenu();
+            a();
           }
-          localQQCustomMenu = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
+          localQQCustomMenu = this.b;
         }
       }
     }
     else
     {
-      localQQCustomMenu = this.b;
+      localQQCustomMenu = this.h;
     }
     a(localQQCustomMenu, paramView, paramInt1, paramInt2, paramInt3);
   }
   
   protected void a(View paramView, int paramInt1, int paramInt2, QQCustomMenu paramQQCustomMenu, int paramInt3, boolean paramBoolean1, Activity paramActivity, boolean paramBoolean2, Integer paramInteger)
   {
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    BubblePopupWindow localBubblePopupWindow = this.e;
     if ((localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.dismiss();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+      this.e.dismiss();
+      this.e = null;
     }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    paramQQCustomMenu = BubbleContextMenu.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.e = new BubblePopupWindow(-2, -2);
+    paramQQCustomMenu = BubbleContextMenu.a(this.e, paramView.getContext(), paramQQCustomMenu, this.f);
     paramQQCustomMenu.setIgnoreTouchLocation(paramBoolean2);
     paramQQCustomMenu.setContainerBottom(paramInteger);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setContentView(paramQQCustomMenu);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setBackgroundDrawable(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOutsideTouchable(paramBoolean1);
+    this.e.setContentView(paramQQCustomMenu);
+    this.e.setBackgroundDrawable(new ColorDrawable(0));
+    this.e.setOutsideTouchable(paramBoolean1);
     paramBoolean2 = true;
     if (paramBoolean1) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setFocusable(true);
+      this.e.setFocusable(true);
     }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setSoftInputMode(1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setInputMethodMode(2);
-    paramQQCustomMenu = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    this.e.setSoftInputMode(1);
+    this.e.setInputMethodMode(2);
+    paramQQCustomMenu = this.e;
     if (paramInt3 == 1) {
       paramBoolean1 = paramBoolean2;
     } else {
       paramBoolean1 = false;
     }
     paramQQCustomMenu.setKeepAbove(paramBoolean1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOnDismissListener(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener);
+    this.e.setOnDismissListener(this.g);
     paramView.post(new CommonMenuWrapper.1(this, paramActivity, paramView, paramInt1, paramInt2));
-    this.jdField_c_of_type_Int = paramInt1;
-    this.d = paramInt2;
+    this.j = paramInt1;
+    this.k = paramInt2;
   }
   
   protected void a(View paramView, int paramInt1, int paramInt2, QQCustomMenu paramQQCustomMenu, int paramInt3, boolean paramBoolean, Integer paramInteger)
@@ -244,21 +234,21 @@ public class CommonMenuWrapper
   
   public void a(View paramView, int paramInt1, int paramInt2, QQCustomMenu paramQQCustomMenu, boolean paramBoolean, int paramInt3, Activity paramActivity)
   {
-    this.b = paramQQCustomMenu;
-    this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = null;
+    this.h = paramQQCustomMenu;
+    this.i = null;
     a(paramView, paramInt1, paramInt2, paramQQCustomMenu, paramInt3, paramBoolean, paramActivity, false, null);
   }
   
   public void a(View paramView, int paramInt1, int paramInt2, QQCustomMenu paramQQCustomMenu, boolean paramBoolean, int paramInt3, Integer paramInteger)
   {
-    this.b = paramQQCustomMenu;
-    this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = null;
+    this.h = paramQQCustomMenu;
+    this.i = null;
     a(paramView, paramInt1, paramInt2, paramQQCustomMenu, paramInt3, paramBoolean, null, true, paramInteger);
   }
   
   public void a(@Nullable SelectableDelegate paramSelectableDelegate)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate = paramSelectableDelegate;
+    this.a = paramSelectableDelegate;
   }
   
   void a(QQCustomMenu paramQQCustomMenu, View paramView, int paramInt1, int paramInt2, int paramInt3)
@@ -268,39 +258,39 @@ public class CommonMenuWrapper
   
   public void a(QQCustomMenu paramQQCustomMenu, boolean paramBoolean)
   {
-    this.b = paramQQCustomMenu;
-    this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = null;
+    this.h = paramQQCustomMenu;
+    this.i = null;
     if ((paramBoolean) && (paramQQCustomMenu != null))
     {
-      Object localObject = paramQQCustomMenu.a();
+      Object localObject = paramQQCustomMenu.d();
       if ((localObject != null) && (localObject.length > 0))
       {
         paramQQCustomMenu = new ArrayList(Arrays.asList((Object[])localObject));
-        int k = 0;
-        int i = 0;
-        int j;
+        int i2 = 0;
+        int n = 0;
+        int i1;
         for (;;)
         {
-          j = k;
-          if (i >= localObject.length) {
+          i1 = i2;
+          if (n >= localObject.length) {
             break;
           }
-          if (localObject[i].a() == 2131365311)
+          if (localObject[n].b() == 2131431492)
           {
-            j = i;
+            i1 = n;
             break;
           }
-          i += 1;
+          n += 1;
         }
-        localObject = new QQCustomMenuItem(2131377136, HardCodeUtil.a(2131702425));
-        ((QQCustomMenuItem)localObject).a(2130838923);
-        paramQQCustomMenu.add(j + 1, localObject);
-        this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = new QQCustomMenu();
+        localObject = new QQCustomMenuItem(2131445511, HardCodeUtil.a(2131900428));
+        ((QQCustomMenuItem)localObject).a(2130839077);
+        paramQQCustomMenu.add(i1 + 1, localObject);
+        this.i = new QQCustomMenu();
         paramQQCustomMenu = paramQQCustomMenu.iterator();
         while (paramQQCustomMenu.hasNext())
         {
           localObject = (QQCustomMenuItem)paramQQCustomMenu.next();
-          this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a((QQCustomMenuItem)localObject);
+          this.i.a((QQCustomMenuItem)localObject);
         }
       }
     }
@@ -308,33 +298,52 @@ public class CommonMenuWrapper
   
   public void a(BubblePopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener = paramOnDismissListener;
+    this.g = paramOnDismissListener;
   }
   
-  public boolean a()
+  @Nullable
+  public SelectableDelegate b()
   {
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    return (localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing());
-  }
-  
-  public int b()
-  {
-    return this.d;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+    return this.a;
   }
   
   public void b(int paramInt)
   {
-    this.d = paramInt;
+    this.k = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.j;
+  }
+  
+  public int d()
+  {
+    return this.k;
+  }
+  
+  public boolean e()
+  {
+    BubblePopupWindow localBubblePopupWindow = this.e;
+    return (localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing());
+  }
+  
+  public void f()
+  {
+    BubblePopupWindow localBubblePopupWindow = this.e;
+    if ((localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing())) {
+      this.e.dismiss();
+    }
+  }
+  
+  public void g()
+  {
+    this.e = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.CommonMenuWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -28,16 +28,11 @@ public class TroopSurveyHandler
   implements ITroopSurveyHandler
 {
   public static String a = "OidbSvc.0xb36_1";
-  protected Set<String> a;
+  protected Set<String> b;
   
   public TroopSurveyHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-  }
-  
-  protected String a()
-  {
-    return "TroopSurveyHandler";
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -53,7 +48,7 @@ public class TroopSurveyHandler
     if (!paramFromServiceMsg.isSuccess())
     {
       QLog.e(".troop.survey", 1, new Object[] { "handle_oidb_0xb36_1, resp not success: ", paramFromServiceMsg.getBusinessFailMsg(), paramFromServiceMsg.toString() });
-      notifyUI(TroopSurveyObserver.jdField_a_of_type_Int, false, new Object[] { str });
+      notifyUI(TroopSurveyObserver.b, false, new Object[] { str });
       return;
     }
     paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -61,13 +56,13 @@ public class TroopSurveyHandler
     {
       paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
       TroopSurveyHandlerProcessorConfig.a().a(this.appRuntime, paramToServiceMsg, str, paramFromServiceMsg);
-      notifyUI(TroopSurveyObserver.jdField_a_of_type_Int, true, new Object[] { str });
+      notifyUI(TroopSurveyObserver.b, true, new Object[] { str });
       return;
     }
     catch (Exception paramToServiceMsg)
     {
       QLog.e(".troop.survey", 1, "handle_oidb_0xb36_1, pkg.mergeFrom error! ", paramToServiceMsg);
-      notifyUI(TroopSurveyObserver.jdField_a_of_type_Int, false, new Object[] { str });
+      notifyUI(TroopSurveyObserver.b, false, new Object[] { str });
     }
   }
   
@@ -91,7 +86,7 @@ public class TroopSurveyHandler
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(2870);
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
       ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xb36.ReqBody)localObject2).toByteArray()));
-      localObject2 = createToServiceMsg(jdField_a_of_type_JavaLangString);
+      localObject2 = createToServiceMsg(a);
       ((ToServiceMsg)localObject2).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
       ((ToServiceMsg)localObject2).extraData.putString("troopUin", paramString);
       sendPbReq((ToServiceMsg)localObject2);
@@ -105,11 +100,11 @@ public class TroopSurveyHandler
   
   public boolean a(TroopUnreadMsgInfo paramTroopUnreadMsgInfo, submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum paramSubCmd0x1UpdateAppUnreadNum, int paramInt)
   {
-    if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long != 1106717414L) {
+    if (paramTroopUnreadMsgInfo.a != 1106717414L) {
       return false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(".troop.survey", 2, new Object[] { "handle_push_msginfo receive TROOP_SURVEY_REDPOINT troopuin: ", paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, " newNum: ", Integer.valueOf(paramTroopUnreadMsgInfo.b), " unreadNumber: ", Integer.valueOf(paramTroopUnreadMsgInfo.jdField_a_of_type_Int), " from: ", Integer.valueOf(paramInt) });
+      QLog.d(".troop.survey", 2, new Object[] { "handle_push_msginfo receive TROOP_SURVEY_REDPOINT troopuin: ", paramTroopUnreadMsgInfo.b, " newNum: ", Integer.valueOf(paramTroopUnreadMsgInfo.d), " unreadNumber: ", Integer.valueOf(paramTroopUnreadMsgInfo.c), " from: ", Integer.valueOf(paramInt) });
     }
     if ((paramSubCmd0x1UpdateAppUnreadNum != null) && (paramSubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.has()))
     {
@@ -117,30 +112,35 @@ public class TroopSurveyHandler
       if (!TextUtils.isEmpty(paramSubCmd0x1UpdateAppUnreadNum))
       {
         if (QLog.isColorLevel()) {
-          QLog.d(".troop.survey", 2, new Object[] { "handle_push_msginfo receive TROOP_SURVEY_REDPOINT troopuin: ", paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, " will notify ark com.tencent.groupDragon, data: ", paramSubCmd0x1UpdateAppUnreadNum });
+          QLog.d(".troop.survey", 2, new Object[] { "handle_push_msginfo receive TROOP_SURVEY_REDPOINT troopuin: ", paramTroopUnreadMsgInfo.b, " will notify ark com.tencent.groupDragon, data: ", paramSubCmd0x1UpdateAppUnreadNum });
         }
         TroopSurveyHandlerProcessorConfig.a().a(paramSubCmd0x1UpdateAppUnreadNum);
       }
     }
-    if ((paramInt != 2) && (paramTroopUnreadMsgInfo.b == 0))
+    if ((paramInt != 2) && (paramTroopUnreadMsgInfo.d == 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(".troop.survey", 2, new Object[] { "handle_push_msginfo receive TROOP_SURVEY_REDPOINT troopuin: ", paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, " newNum: ", Integer.valueOf(paramTroopUnreadMsgInfo.b), " unreadNumber: ", Integer.valueOf(paramTroopUnreadMsgInfo.jdField_a_of_type_Int), " no need to send_oidb_0xb36 , from is: ", Integer.valueOf(paramInt) });
+        QLog.d(".troop.survey", 2, new Object[] { "handle_push_msginfo receive TROOP_SURVEY_REDPOINT troopuin: ", paramTroopUnreadMsgInfo.b, " newNum: ", Integer.valueOf(paramTroopUnreadMsgInfo.d), " unreadNumber: ", Integer.valueOf(paramTroopUnreadMsgInfo.c), " no need to send_oidb_0xb36 , from is: ", Integer.valueOf(paramInt) });
       }
       return true;
     }
-    a(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, paramTroopUnreadMsgInfo.b);
+    a(paramTroopUnreadMsgInfo.b, paramTroopUnreadMsgInfo.d);
     return true;
+  }
+  
+  protected String dv_()
+  {
+    return "TroopSurveyHandler";
   }
   
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_a_of_type_JavaLangString);
+      this.b = new HashSet();
+      this.b.add(a);
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.b;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -164,7 +164,7 @@ public class TroopSurveyHandler
         }
         return;
       }
-      if (jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      if (a.equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
         a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       }
       return;
@@ -176,7 +176,7 @@ public class TroopSurveyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsurvey.handler.TroopSurveyHandler
  * JD-Core Version:    0.7.0.1
  */

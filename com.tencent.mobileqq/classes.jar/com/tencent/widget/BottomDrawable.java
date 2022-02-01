@@ -11,35 +11,35 @@ import com.tencent.qphone.base.util.QLog;
 public class BottomDrawable
   extends Drawable
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private int jdField_b_of_type_Int;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private int c;
-  private int d;
+  Rect a = new Rect();
+  Rect b = new Rect();
+  private Bitmap c;
+  private Paint d = new Paint();
   private int e;
   private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
   
   public BottomDrawable(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramBitmap.getWidth();
-    this.jdField_b_of_type_Int = paramBitmap.getHeight();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    if (this.c <= 0) {
-      this.c = 1080;
+    this.e = paramBitmap.getWidth();
+    this.f = paramBitmap.getHeight();
+    this.c = paramBitmap;
+    this.g = paramInt1;
+    this.h = paramInt2;
+    if (this.g <= 0) {
+      this.g = 1080;
     }
-    if (this.d <= 0) {
-      this.d = 1920;
+    if (this.h <= 0) {
+      this.h = 1920;
     }
-    this.f = (this.d * this.jdField_a_of_type_Int / this.c);
-    int i = this.jdField_b_of_type_Int;
-    int j = this.f;
-    if (i > j) {
-      this.e = (i - j);
+    this.j = (this.h * this.e / this.g);
+    int k = this.f;
+    int m = this.j;
+    if (k > m) {
+      this.i = (k - m);
     }
     if (QLog.isColorLevel())
     {
@@ -51,34 +51,34 @@ public class BottomDrawable
       QLog.i("UserGuideWeiShiActivity", 2, paramBitmap.toString());
       paramBitmap = new StringBuilder();
       paramBitmap.append("mWidth");
-      paramBitmap.append(this.jdField_a_of_type_Int);
+      paramBitmap.append(this.e);
       paramBitmap.append(" mHeight ");
-      paramBitmap.append(this.jdField_b_of_type_Int);
+      paramBitmap.append(this.f);
       QLog.i("UserGuideWeiShiActivity", 2, paramBitmap.toString());
       paramBitmap = new StringBuilder();
       paramBitmap.append("mNewBitmMapHeight");
-      paramBitmap.append(this.f);
+      paramBitmap.append(this.j);
       paramBitmap.append(" mTop ");
-      paramBitmap.append(this.e);
+      paramBitmap.append(this.i);
       QLog.i("UserGuideWeiShiActivity", 2, paramBitmap.toString());
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, this.e, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_Int, this.f);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.a.set(0, this.i, this.e, this.f);
+    this.b.set(0, 0, this.e, this.j);
+    paramCanvas.drawBitmap(this.c, this.a, this.b, this.d);
   }
   
   public int getIntrinsicHeight()
   {
-    return this.f;
+    return this.j;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
   
   public int getOpacity()
@@ -88,22 +88,22 @@ public class BottomDrawable
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.d.getAlpha())
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.d.setAlpha(paramInt);
       super.invalidateSelf();
     }
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.d.setColorFilter(paramColorFilter);
     super.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.BottomDrawable
  * JD-Core Version:    0.7.0.1
  */

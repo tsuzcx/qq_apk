@@ -9,39 +9,39 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class TagItem$TagInfoBase
 {
-  public final int a;
   public final long a;
-  public final String a;
-  public volatile long b;
   public final String b;
+  public final String c;
+  public final int d;
+  public volatile long e;
   
   public TagItem$TagInfoBase(long paramLong, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramLong;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramInt;
   }
   
   public TagItem$TagInfoBase(TagEntry paramTagEntry)
   {
-    this.jdField_a_of_type_Long = paramTagEntry.id;
-    this.jdField_a_of_type_JavaLangString = paramTagEntry.name;
-    this.jdField_b_of_type_JavaLangString = paramTagEntry.desc;
-    this.jdField_a_of_type_Int = paramTagEntry.type;
+    this.a = paramTagEntry.id;
+    this.b = paramTagEntry.name;
+    this.c = paramTagEntry.desc;
+    this.d = paramTagEntry.type;
   }
   
   public TagItem$TagInfoBase(qqstory_struct.TagInfoBase paramTagInfoBase)
   {
-    this.jdField_a_of_type_Long = paramTagInfoBase.tag_id.get();
-    this.jdField_a_of_type_JavaLangString = paramTagInfoBase.tag_name.get();
-    this.jdField_b_of_type_JavaLangString = paramTagInfoBase.tag_desc.get();
-    this.jdField_a_of_type_Int = paramTagInfoBase.tag_type.get();
+    this.a = paramTagInfoBase.tag_id.get();
+    this.b = paramTagInfoBase.tag_name.get();
+    this.c = paramTagInfoBase.tag_desc.get();
+    this.d = paramTagInfoBase.tag_type.get();
   }
   
   public static boolean a(TagInfoBase paramTagInfoBase)
   {
-    return (paramTagInfoBase != null) && (Math.abs(System.currentTimeMillis() - paramTagInfoBase.jdField_b_of_type_Long) < 60000L);
+    return (paramTagInfoBase != null) && (Math.abs(System.currentTimeMillis() - paramTagInfoBase.e) < 60000L);
   }
   
   public TagEntry a()
@@ -49,15 +49,15 @@ public class TagItem$TagInfoBase
     return new TagEntry();
   }
   
-  public qqstory_struct.TagInfoBase a()
+  public qqstory_struct.TagInfoBase b()
   {
     qqstory_struct.TagInfoBase localTagInfoBase = new qqstory_struct.TagInfoBase();
-    localTagInfoBase.tag_id.set(this.jdField_a_of_type_Long);
-    localTagInfoBase.tag_name.set(this.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localTagInfoBase.tag_desc.set(this.jdField_b_of_type_JavaLangString);
+    localTagInfoBase.tag_id.set(this.a);
+    localTagInfoBase.tag_name.set(this.b);
+    if (!TextUtils.isEmpty(this.c)) {
+      localTagInfoBase.tag_desc.set(this.c);
     }
-    localTagInfoBase.tag_type.set(this.jdField_a_of_type_Int);
+    localTagInfoBase.tag_type.set(this.d);
     return localTagInfoBase;
   }
   
@@ -72,33 +72,33 @@ public class TagItem$TagInfoBase
         return false;
       }
       paramObject = (TagInfoBase)paramObject;
-      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
+      if (this.a != paramObject.a) {
         return false;
       }
-      return this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int;
+      return this.d == paramObject.d;
     }
     return false;
   }
   
   public int hashCode()
   {
-    long l = this.jdField_a_of_type_Long;
-    return (int)(l ^ l >>> 32) * 31 + this.jdField_a_of_type_Int;
+    long l = this.a;
+    return (int)(l ^ l >>> 32) * 31 + this.d;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TagInfoBase{id=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", name='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", desc='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

@@ -15,17 +15,17 @@ final class AEEditorTextPagUtils$2
   {
     if (paramStatus == ApplyMaterialTask.Status.SUCCEEDED)
     {
-      AEEditorTextPagUtils.a(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask$MaterialStatusCallback);
+      AEEditorTextPagUtils.a(this.a, this.b);
       return;
     }
     if (paramStatus == ApplyMaterialTask.Status.FAILED) {
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      this.c.countDown();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.util.AEEditorTextPagUtils.2
  * JD-Core Version:    0.7.0.1
  */

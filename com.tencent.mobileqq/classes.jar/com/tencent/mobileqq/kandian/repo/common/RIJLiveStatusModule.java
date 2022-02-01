@@ -39,29 +39,6 @@ public class RIJLiveStatusModule
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
   }
   
-  private ToServiceMsg a(List<Long> paramList)
-  {
-    oidb_cmd0xee9.ReqBody localReqBody = new oidb_cmd0xee9.ReqBody();
-    Object localObject = new oidb_cmd0xee9.ClientInfo();
-    ((oidb_cmd0xee9.ClientInfo)localObject).uint32_req_client_type.set(1);
-    ((oidb_cmd0xee9.ClientInfo)localObject).str_version.set(AppSetting.f());
-    localReqBody.client_info.set((MessageMicro)localObject);
-    localObject = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Long localLong = (Long)paramList.next();
-      oidb_cmd0xee9.AccountInfo localAccountInfo = new oidb_cmd0xee9.AccountInfo();
-      localAccountInfo.uint64_uin.set(localLong.longValue());
-      ((List)localObject).add(localAccountInfo);
-    }
-    localReqBody.rpt_acount_info.set((List)localObject);
-    paramList = new oidb_cmd0xee9.UserInfoOption();
-    paramList.uint32_live_status.set(1);
-    localReqBody.msg_user_option.set(paramList);
-    return ReadInJoyOidbHelper.a("OidbSvc.0xee9", 3817, 2, localReqBody.toByteArray());
-  }
-  
   private void a(int paramInt, List<RIJLiveStatusModule.UserInfoItem> paramList)
   {
     Object localObject = this.a;
@@ -93,17 +70,17 @@ public class RIJLiveStatusModule
         Object localObject = (oidb_cmd0xee9.UserInfoItem)paramFromServiceMsg.next();
         oidb_cmd0xee9.LiveStatus localLiveStatus = (oidb_cmd0xee9.LiveStatus)PBFieldUtils.a(((oidb_cmd0xee9.UserInfoItem)localObject).msg_live_status, null);
         paramObject = new RIJLiveStatusModule.UserInfoItem();
-        paramObject.jdField_a_of_type_Long = RIJPBFieldUtils.a(((oidb_cmd0xee9.UserInfoItem)localObject).uint64_uin, 0L);
-        paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus = new LiveStatus();
+        paramObject.a = RIJPBFieldUtils.a(((oidb_cmd0xee9.UserInfoItem)localObject).uint64_uin, 0L);
+        paramObject.b = new LiveStatus();
         if (localLiveStatus != null)
         {
-          paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.jdField_a_of_type_Int = RIJPBFieldUtils.a(localLiveStatus.uint32_liveing);
-          paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.jdField_a_of_type_Long = RIJPBFieldUtils.a(localLiveStatus.uint64_live_time, 0L);
-          paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.jdField_b_of_type_Int = RIJPBFieldUtils.a(localLiveStatus.uint32_source, 0);
-          paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(localLiveStatus.str_account, null);
-          paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.jdField_b_of_type_JavaLangString = RIJPBFieldUtils.a(localLiveStatus.str_roomid, null);
-          paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.c = RIJPBFieldUtils.a(localLiveStatus.rowkey, null);
-          paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.d = RIJPBFieldUtils.a(localLiveStatus.str_url, null);
+          paramObject.b.a = RIJPBFieldUtils.a(localLiveStatus.uint32_liveing);
+          paramObject.b.b = RIJPBFieldUtils.a(localLiveStatus.uint64_live_time, 0L);
+          paramObject.b.c = RIJPBFieldUtils.a(localLiveStatus.uint32_source, 0);
+          paramObject.b.d = RIJPBFieldUtils.a(localLiveStatus.str_account, null);
+          paramObject.b.e = RIJPBFieldUtils.a(localLiveStatus.str_roomid, null);
+          paramObject.b.f = RIJPBFieldUtils.a(localLiveStatus.rowkey, null);
+          paramObject.b.g = RIJPBFieldUtils.a(localLiveStatus.str_url, null);
         }
         paramToServiceMsg.add(paramObject);
         if (QLog.isColorLevel())
@@ -120,6 +97,29 @@ public class RIJLiveStatusModule
     a(i, null);
   }
   
+  private ToServiceMsg b(List<Long> paramList)
+  {
+    oidb_cmd0xee9.ReqBody localReqBody = new oidb_cmd0xee9.ReqBody();
+    Object localObject = new oidb_cmd0xee9.ClientInfo();
+    ((oidb_cmd0xee9.ClientInfo)localObject).uint32_req_client_type.set(1);
+    ((oidb_cmd0xee9.ClientInfo)localObject).str_version.set(AppSetting.h());
+    localReqBody.client_info.set((MessageMicro)localObject);
+    localObject = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Long localLong = (Long)paramList.next();
+      oidb_cmd0xee9.AccountInfo localAccountInfo = new oidb_cmd0xee9.AccountInfo();
+      localAccountInfo.uint64_uin.set(localLong.longValue());
+      ((List)localObject).add(localAccountInfo);
+    }
+    localReqBody.rpt_acount_info.set((List)localObject);
+    paramList = new oidb_cmd0xee9.UserInfoOption();
+    paramList.uint32_live_status.set(1);
+    localReqBody.msg_user_option.set(paramList);
+    return ReadInJoyOidbHelper.a("OidbSvc.0xee9", 3817, 2, localReqBody.toByteArray());
+  }
+  
   public void a(RIJLiveStatusModule.LiveStatusCallback paramLiveStatusCallback)
   {
     if (this.a == null) {
@@ -130,7 +130,7 @@ public class RIJLiveStatusModule
   
   public void a(List<Long> paramList)
   {
-    sendPbReq(a(paramList));
+    sendPbReq(b(paramList));
   }
   
   public void b(RIJLiveStatusModule.LiveStatusCallback paramLiveStatusCallback)
@@ -155,7 +155,7 @@ public class RIJLiveStatusModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.RIJLiveStatusModule
  * JD-Core Version:    0.7.0.1
  */

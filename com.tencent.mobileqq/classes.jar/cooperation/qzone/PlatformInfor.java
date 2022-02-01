@@ -223,13 +223,13 @@ public class PlatformInfor
     ((StringBuilder)localObject).append(DeviceInfoUtil.a() / 1048576L);
     ((StringBuilder)localObject).append('&');
     ((StringBuilder)localObject).append("cf=");
-    ((StringBuilder)localObject).append(DeviceInfoUtil.b());
+    ((StringBuilder)localObject).append(DeviceInfoUtil.k());
     ((StringBuilder)localObject).append('&');
     ((StringBuilder)localObject).append("cc=");
-    ((StringBuilder)localObject).append(DeviceInfoUtil.b());
+    ((StringBuilder)localObject).append(DeviceInfoUtil.h());
     ((StringBuilder)localObject).append('&');
     ((StringBuilder)localObject).append("qqversion=");
-    ((StringBuilder)localObject).append("8.7.0");
+    ((StringBuilder)localObject).append("8.8.17");
     return ((StringBuilder)localObject).toString();
   }
   
@@ -244,7 +244,7 @@ public class PlatformInfor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.PlatformInfor
  * JD-Core Version:    0.7.0.1
  */

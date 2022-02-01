@@ -24,7 +24,7 @@ class DetailFeedAllInfoPuller$FeedItemPullSegment$1
   
   public void a(@NonNull BatchGetFriendStoryFeedInfoRequest paramBatchGetFriendStoryFeedInfoRequest, @Nullable BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp paramGetFriendStoryFeedInfoResp, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull commentLikeFeedItem cancel on net respond");
       return;
@@ -35,33 +35,33 @@ class DetailFeedAllInfoPuller$FeedItemPullSegment$1
       if (paramGetFriendStoryFeedInfoResp.a.size() < 1)
       {
         SLog.e("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
-        paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a));
+        paramBatchGetFriendStoryFeedInfoRequest.e(DetailFeedAllInfoPuller.a(this.b.a));
         paramBatchGetFriendStoryFeedInfoRequest = new ErrorMessage(2222, "no feed data back.");
-        DetailFeedAllInfoPuller.FeedItemPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment, paramBatchGetFriendStoryFeedInfoRequest);
+        DetailFeedAllInfoPuller.FeedItemPullSegment.b(this.b, paramBatchGetFriendStoryFeedInfoRequest);
         return;
       }
       paramGetFriendStoryFeedInfoResp = (CommentLikeHomeFeed)paramGetFriendStoryFeedInfoResp.a.get(0);
       if ((paramGetFriendStoryFeedInfoResp instanceof VideoListHomeFeed))
       {
         paramErrorMessage = (VideoListHomeFeed)paramGetFriendStoryFeedInfoResp;
-        if ((DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a == null) || (DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoSeq != paramErrorMessage.a().mVideoSeq))
+        if ((DetailFeedAllInfoPuller.b(this.b.a).a == null) || (DetailFeedAllInfoPuller.b(this.b.a).f().mVideoSeq != paramErrorMessage.i().mVideoSeq))
         {
-          DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a = paramGetFriendStoryFeedInfoResp.a();
-          DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a(paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a), paramGetFriendStoryFeedInfoResp.a(), true), true);
-          ((FeedVideoManager)SuperManager.a(12)).a(2, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a.feedId, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoSeq, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a(), DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoNextCookie, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mIsVideoEnd, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoPullType, true);
+          DetailFeedAllInfoPuller.b(this.b.a).a = paramGetFriendStoryFeedInfoResp.c();
+          DetailFeedAllInfoPuller.b(this.b.a).a(paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.b.a), paramGetFriendStoryFeedInfoResp.a(), true), true);
+          ((FeedVideoManager)SuperManager.a(12)).a(2, DetailFeedAllInfoPuller.b(this.b.a).a.feedId, DetailFeedAllInfoPuller.b(this.b.a).f().mVideoSeq, DetailFeedAllInfoPuller.b(this.b.a).a(), DetailFeedAllInfoPuller.b(this.b.a).f().mVideoNextCookie, DetailFeedAllInfoPuller.b(this.b.a).f().mIsVideoEnd, DetailFeedAllInfoPuller.b(this.b.a).f().mVideoPullType, true);
         }
       }
       else
       {
-        DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a = paramGetFriendStoryFeedInfoResp.a();
+        DetailFeedAllInfoPuller.b(this.b.a).a = paramGetFriendStoryFeedInfoResp.c();
       }
-      DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a = ((CommentLikeFeedItem)paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a));
-      paramBatchGetFriendStoryFeedInfoRequest = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment;
-      DetailFeedAllInfoPuller.FeedItemPullSegment.a(paramBatchGetFriendStoryFeedInfoRequest, DetailFeedAllInfoPuller.a(paramBatchGetFriendStoryFeedInfoRequest.a));
+      DetailFeedAllInfoPuller.b(this.b.a).a = ((CommentLikeFeedItem)paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.b(this.b.a).a));
+      paramBatchGetFriendStoryFeedInfoRequest = this.b;
+      DetailFeedAllInfoPuller.FeedItemPullSegment.a(paramBatchGetFriendStoryFeedInfoRequest, DetailFeedAllInfoPuller.b(paramBatchGetFriendStoryFeedInfoRequest.a));
       return;
     }
     SLog.a("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
-    DetailFeedAllInfoPuller.FeedItemPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment, paramErrorMessage);
+    DetailFeedAllInfoPuller.FeedItemPullSegment.a(this.b, paramErrorMessage);
   }
 }
 

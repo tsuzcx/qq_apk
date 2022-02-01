@@ -28,6 +28,7 @@ import com.tencent.mobileqq.loginregister.LoginProxy;
 import com.tencent.mobileqq.loginregister.LoginUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.qqfeatureswitch.IFeatureRuntimeService;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -74,49 +75,15 @@ public class LoginActivity
     }
   }
   
-  private void doAfterLoginSuccess()
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("only kandian tab switch, login delayTime:");
-      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.startDelayTime);
-      QLog.e("LoginActivity", 2, ((StringBuilder)localObject).toString());
-    }
-    if (PhoneNumLoginImpl.a().a()) {
-      return;
-    }
-    Object localObject = this.mLoginProxy;
-    AppRuntime localAppRuntime = this.app;
-    if (((LoginProxy)localObject).a(localAppRuntime, this, localAppRuntime.getAccount())) {
-      finish();
-    }
-    if (!isFinishing()) {
-      dismissDialogById(0);
-    }
-  }
-  
-  private boolean isSupportMultiWindow()
-  {
-    if (("Meizu".equalsIgnoreCase(DeviceInfoUtil.h())) && (Build.VERSION.SDK_INT < 24))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity", 2, "onMultiWindowModeChanged meizu < 7.0 not support!");
-      }
-      return false;
-    }
-    return true;
-  }
-  
   @TargetApi(11)
   public void changeGuideBaseView(GuideBaseFragment paramGuideBaseFragment)
   {
     Object localObject = getSupportFragmentManager();
     FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
-    localObject = ((FragmentManager)localObject).findFragmentById(2131367906);
+    localObject = ((FragmentManager)localObject).findFragmentById(2131434494);
     if ((this.mCurrentView == null) && (localObject == null))
     {
-      localFragmentTransaction.add(2131367906, paramGuideBaseFragment);
+      localFragmentTransaction.add(2131434494, paramGuideBaseFragment);
       if (VersionUtils.e()) {
         localFragmentTransaction.commitAllowingStateLoss();
       } else {
@@ -132,7 +99,7 @@ public class LoginActivity
       if (localObject != null) {
         ((GuideBaseFragment)localObject).a(null);
       }
-      localFragmentTransaction.replace(2131367906, paramGuideBaseFragment);
+      localFragmentTransaction.replace(2131434494, paramGuideBaseFragment);
       if (VersionUtils.e()) {
         localFragmentTransaction.commitAllowingStateLoss();
       } else {
@@ -163,28 +130,52 @@ public class LoginActivity
     return bool;
   }
   
+  protected void doAfterLoginSuccess()
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("only kandian tab switch, login delayTime:");
+      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.startDelayTime);
+      QLog.e("LoginActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    if (PhoneNumLoginImpl.a().b()) {
+      return;
+    }
+    Object localObject = this.mLoginProxy;
+    AppRuntime localAppRuntime = this.app;
+    if (((LoginProxy)localObject).a(localAppRuntime, this, localAppRuntime.getAccount())) {
+      finish();
+    }
+    if (!isFinishing()) {
+      dismissDialogById(0);
+    }
+  }
+  
   protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    Object localObject = getWindow();
-    ((Window)localObject).addFlags(1024);
+    Object localObject1 = getWindow();
+    ((Window)localObject1).addFlags(1024);
     this.app = getAppRuntime();
-    if (this.app == null)
+    Object localObject2 = this.app;
+    if (localObject2 == null)
     {
       finish();
       QLog.e("LoginActivity", 1, "app is null, finish");
       return true;
     }
+    ((IFeatureRuntimeService)((AppRuntime)localObject2).getRuntimeService(IFeatureRuntimeService.class, "all")).initSdk(this);
     if (Build.VERSION.SDK_INT >= 28)
     {
-      View localView = ((Window)localObject).getDecorView();
-      WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+      localObject2 = ((Window)localObject1).getDecorView();
+      WindowManager.LayoutParams localLayoutParams = ((Window)localObject1).getAttributes();
       localLayoutParams.layoutInDisplayCutoutMode = 1;
-      ((Window)localObject).setAttributes(localLayoutParams);
-      int i = localView.getSystemUiVisibility();
-      ((Window)localObject).getDecorView().setSystemUiVisibility(0x400 | i);
+      ((Window)localObject1).setAttributes(localLayoutParams);
+      int i = ((View)localObject2).getSystemUiVisibility();
+      ((Window)localObject1).getDecorView().setSystemUiVisibility(0x400 | i);
     }
     this.isChange = getIntent().getBooleanExtra("is_change_account", false);
     this.isAddAccount = getIntent().getBooleanExtra("IS_ADD_ACCOUNT", false);
@@ -193,25 +184,25 @@ public class LoginActivity
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       SoftInputResizeLayout.assistActivity(this);
     }
-    localObject = sCurrent;
-    if (localObject != null) {
-      ((Activity)localObject).finish();
+    localObject1 = sCurrent;
+    if (localObject1 != null) {
+      ((Activity)localObject1).finish();
     }
     sCurrent = this;
     LoginUtils.a(this.app, LoginProgressClazz.class, this.mHandler);
     this.mLoginProxy = new LoginProxy();
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("LoginActivity app is ");
-      ((StringBuilder)localObject).append(this.app);
-      QLog.d("LoginActivity", 2, ((StringBuilder)localObject).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("LoginActivity app is ");
+      ((StringBuilder)localObject1).append(this.app);
+      QLog.d("LoginActivity", 2, ((StringBuilder)localObject1).toString());
     }
     this.mNeedFinishLoginActivity = true;
-    super.setContentView(2131562751);
+    super.setContentView(2131629188);
     if (paramBundle != null)
     {
-      this.mCurrentView = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131367906));
+      this.mCurrentView = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131434494));
       paramBundle = this.mCurrentView;
       if (paramBundle != null) {
         paramBundle.a(this);
@@ -249,7 +240,7 @@ public class LoginActivity
       return;
     }
     sCurrent = null;
-    LoginUtils.a((AppRuntime)localObject, LoginProgressClazz.class);
+    LoginUtils.b((AppRuntime)localObject, LoginProgressClazz.class);
     if (this.mFirstBitmap != null) {
       this.mFirstBitmap = null;
     }
@@ -343,6 +334,18 @@ public class LoginActivity
     return true;
   }
   
+  protected boolean isSupportMultiWindow()
+  {
+    if (("Meizu".equalsIgnoreCase(DeviceInfoUtil.t())) && (Build.VERSION.SDK_INT < 24))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity", 2, "onMultiWindowModeChanged meizu < 7.0 not support!");
+      }
+      return false;
+    }
+    return true;
+  }
+  
   protected boolean isWrapContent()
   {
     return false;
@@ -352,7 +355,7 @@ public class LoginActivity
   {
     super.onAccountChanged();
     QLog.d("login", 1, "LoginActivity onAccountChanged");
-    LoginUtils.a(this.app, LoginProgressClazz.class);
+    LoginUtils.b(this.app, LoginProgressClazz.class);
     this.app = getAppRuntime();
     LoginUtils.a(this.app, LoginProgressClazz.class, this.mHandler);
     Object localObject = this.mCurrentView;
@@ -439,7 +442,7 @@ public class LoginActivity
     }
     finish();
     if ((bool2) && (bool4)) {
-      overridePendingTransition(2130772004, 2130772015);
+      overridePendingTransition(2130772007, 2130772018);
     }
     return true;
   }
@@ -501,7 +504,7 @@ public class LoginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginActivity
  * JD-Core Version:    0.7.0.1
  */

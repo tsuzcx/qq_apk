@@ -13,52 +13,48 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CandidateCaptureManager;", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CapturePreparedListener;", "Landroid/media/MediaPlayer$OnSeekCompleteListener;", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnTaskListener;", "()V", "captureProxy", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ICaptureProxy;", "captureVideoInfo", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "currentCaptureTask", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask;", "executor", "Ljava/util/concurrent/ExecutorService;", "height", "", "isRunningTask", "", "()Z", "setRunningTask", "(Z)V", "onCaptureCallback", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnCaptureCallback;", "position", "getPosition", "()I", "setPosition", "(I)V", "width", "cancelCurrentCaptureTask", "", "doCapture", "init", "containerView", "Landroid/view/ViewGroup;", "listener", "onCapturePrepared", "duration", "", "onSeekComplete", "mp", "Landroid/media/MediaPlayer;", "onTaskComplete", "task", "onTaskStart", "seekCandidateImage", "setFinalCaptureCallback", "captureCallback", "stop", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CandidateCaptureManager;", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CapturePreparedListener;", "Landroid/media/MediaPlayer$OnSeekCompleteListener;", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnTaskListener;", "()V", "captureProxy", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ICaptureProxy;", "getCaptureProxy", "()Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ICaptureProxy;", "captureVideoInfo", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "currentCaptureTask", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask;", "executor", "Ljava/util/concurrent/ExecutorService;", "height", "", "isRunningTask", "", "()Z", "setRunningTask", "(Z)V", "onCaptureCallback", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask$OnCaptureCallback;", "position", "getPosition", "()I", "setPosition", "(I)V", "width", "cancelCurrentCaptureTask", "", "doCapture", "init", "containerView", "Landroid/view/ViewGroup;", "listener", "onCapturePrepared", "duration", "", "onSeekComplete", "mp", "Landroid/media/MediaPlayer;", "onTaskComplete", "task", "onTaskStart", "seekCandidateImage", "setFinalCaptureCallback", "captureCallback", "stop", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class CandidateCaptureManager
   implements MediaPlayer.OnSeekCompleteListener, CapturePreparedListener, CaptureTask.OnTaskListener
 {
-  public static final CandidateCaptureManager.Companion a;
-  private int jdField_a_of_type_Int = -1;
-  private CaptureTask.OnCaptureCallback jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask$OnCaptureCallback;
-  private CaptureTask jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask;
-  private final ICaptureProxy jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy = (ICaptureProxy)new SystemCaptureProxy(true);
-  private VideoCaptureView.CaptureVideoInfo jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
-  private final ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCandidateCaptureManager$Companion = new CandidateCaptureManager.Companion(null);
-  }
+  public static final CandidateCaptureManager.Companion a = new CandidateCaptureManager.Companion(null);
+  @NotNull
+  private final ICaptureProxy b = (ICaptureProxy)new SystemCaptureProxy(true);
+  private int c = -1;
+  private VideoCaptureView.CaptureVideoInfo d;
+  private int e;
+  private int f;
+  private CaptureTask.OnCaptureCallback g;
+  private CaptureTask h;
+  private final ExecutorService i;
+  private boolean j;
   
   public CandidateCaptureManager()
   {
     ExecutorService localExecutorService = Executors.newSingleThreadExecutor();
     Intrinsics.checkExpressionValueIsNotNull(localExecutorService, "Executors.newSingleThreadExecutor()");
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = localExecutorService;
-  }
-  
-  private final void b()
-  {
-    c();
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
-    if (localObject == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
-    }
-    localObject = new CaptureTask(2, ((VideoCaptureView.CaptureVideoInfo)localObject).a(), this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask$OnCaptureCallback);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask = ((CaptureTask)localObject);
-    ((CaptureTask)localObject).a((CaptureTask.OnTaskListener)this);
-    ((CaptureTask)localObject).a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy);
-    ((CaptureTask)localObject).executeOnExecutor((Executor)this.jdField_a_of_type_JavaUtilConcurrentExecutorService, new Unit[] { null });
+    this.i = localExecutorService;
   }
   
   private final void c()
   {
+    d();
+    Object localObject = this.d;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("captureVideoInfo");
+    }
+    localObject = new CaptureTask(2, ((VideoCaptureView.CaptureVideoInfo)localObject).f(), this.c, this.e, this.f, this.g);
+    this.h = ((CaptureTask)localObject);
+    ((CaptureTask)localObject).a((CaptureTask.OnTaskListener)this);
+    ((CaptureTask)localObject).a(this.b);
+    ((CaptureTask)localObject).executeOnExecutor((Executor)this.i, new Unit[] { null });
+  }
+  
+  private final void d()
+  {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cancelCurrentCaptureTask id: ");
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask;
+    Object localObject = this.h;
     if (localObject != null) {
       localObject = ((CaptureTask)localObject).a();
     } else {
@@ -66,85 +62,86 @@ public final class CandidateCaptureManager
     }
     localStringBuilder.append((String)localObject);
     TLog.b("CandidateCaptureManager", localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask;
+    localObject = this.h;
     if (localObject != null) {
       ((CaptureTask)localObject).cancel(true);
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask = ((CaptureTask)null);
+    this.h = ((CaptureTask)null);
   }
   
-  public final void a()
+  @NotNull
+  public final ICaptureProxy a()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask$OnCaptureCallback = ((CaptureTask.OnCaptureCallback)null);
-    c();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
+    return this.b;
   }
   
   public final void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == paramInt) {
+    if (this.c == paramInt) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a(paramInt, (MediaPlayer.OnSeekCompleteListener)this);
+    this.c = paramInt;
+    this.b.a(paramInt, (MediaPlayer.OnSeekCompleteListener)this);
   }
   
   public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
   
   public final void a(@Nullable CaptureTask.OnCaptureCallback paramOnCaptureCallback)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask$OnCaptureCallback = paramOnCaptureCallback;
+    this.g = paramOnCaptureCallback;
   }
   
   public void a(@NotNull CaptureTask paramCaptureTask)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "task");
-    this.jdField_a_of_type_Boolean = true;
+    this.j = true;
   }
   
   public final void a(@NotNull VideoCaptureView.CaptureVideoInfo paramCaptureVideoInfo, @Nullable ViewGroup paramViewGroup, @NotNull CapturePreparedListener paramCapturePreparedListener)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureVideoInfo, "captureVideoInfo");
     Intrinsics.checkParameterIsNotNull(paramCapturePreparedListener, "listener");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo = paramCaptureVideoInfo;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a(paramCaptureVideoInfo, paramViewGroup);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a(paramCapturePreparedListener);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureICaptureProxy.a((CapturePreparedListener)this);
+    this.d = paramCaptureVideoInfo;
+    this.b.a(paramCaptureVideoInfo, paramViewGroup);
+    this.b.a(paramCapturePreparedListener);
+    this.b.a((CapturePreparedListener)this);
   }
   
-  public final boolean a()
+  public final void b()
   {
-    return this.jdField_a_of_type_Boolean;
+    this.g = ((CaptureTask.OnCaptureCallback)null);
+    d();
+    this.b.b();
+    this.i.shutdown();
   }
   
   public void b(@NotNull CaptureTask paramCaptureTask)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "task");
     String str = paramCaptureTask.a();
-    paramCaptureTask = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask;
+    paramCaptureTask = this.h;
     if (paramCaptureTask != null) {
       paramCaptureTask = paramCaptureTask.a();
     } else {
       paramCaptureTask = null;
     }
     if (Intrinsics.areEqual(str, paramCaptureTask)) {
-      this.jdField_a_of_type_Boolean = false;
+      this.j = false;
     }
   }
   
   public void onSeekComplete(@Nullable MediaPlayer paramMediaPlayer)
   {
-    b();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.CandidateCaptureManager
  * JD-Core Version:    0.7.0.1
  */

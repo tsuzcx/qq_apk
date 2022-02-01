@@ -37,16 +37,16 @@ public class MaterialCardView
   extends CardView
   implements Checkable, Shapeable
 {
-  private static final int jdField_a_of_type_Int = R.style.u;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842911 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 16842912 };
-  private static final int[] jdField_c_of_type_ArrayOfInt = { R.attr.N };
-  private MaterialCardView.OnCheckedChangeListener jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardView$OnCheckedChangeListener;
+  private static final int[] a = { 16842911 };
+  private static final int[] b = { 16842912 };
+  private static final int[] c = { R.attr.V };
+  private static final int d = R.style.w;
   @NonNull
-  private final MaterialCardViewHelper jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean jdField_c_of_type_Boolean = false;
+  private final MaterialCardViewHelper e;
+  private boolean f = true;
+  private boolean g = false;
+  private boolean h = false;
+  private MaterialCardView.OnCheckedChangeListener i;
   
   public MaterialCardView(Context paramContext)
   {
@@ -55,44 +55,44 @@ public class MaterialCardView
   
   public MaterialCardView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.A);
+    this(paramContext, paramAttributeSet, R.attr.H);
   }
   
   public MaterialCardView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
-    paramContext = ThemeEnforcement.a(getContext(), paramAttributeSet, R.styleable.T, paramInt, jdField_a_of_type_Int, new int[0]);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper = new MaterialCardViewHelper(this, paramAttributeSet, paramInt, jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.b(super.getCardBackgroundColor());
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(super.getContentPaddingLeft(), super.getContentPaddingTop(), super.getContentPaddingRight(), super.getContentPaddingBottom());
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(paramContext);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, d), paramAttributeSet, paramInt);
+    paramContext = ThemeEnforcement.a(getContext(), paramAttributeSet, R.styleable.ev, paramInt, d, new int[0]);
+    this.e = new MaterialCardViewHelper(this, paramAttributeSet, paramInt, d);
+    this.e.b(super.getCardBackgroundColor());
+    this.e.a(super.getContentPaddingLeft(), super.getContentPaddingTop(), super.getContentPaddingRight(), super.getContentPaddingBottom());
+    this.e.a(paramContext);
     paramContext.recycle();
   }
   
-  @NonNull
-  private RectF a()
-  {
-    RectF localRectF = new RectF();
-    localRectF.set(this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a().getBounds());
-    return localRectF;
-  }
-  
-  private void a()
+  private void c()
   {
     if (Build.VERSION.SDK_INT > 26) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.f();
+      this.e.v();
     }
   }
   
-  float a()
+  @NonNull
+  private RectF getBoundsAsRectF()
   {
-    return a(this);
+    RectF localRectF = new RectF();
+    localRectF.set(this.e.e().getBounds());
+    return localRectF;
   }
   
-  @NonNull
-  public ShapeAppearanceModel a()
+  public boolean G_()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a();
+    return this.h;
+  }
+  
+  public boolean H_()
+  {
+    MaterialCardViewHelper localMaterialCardViewHelper = this.e;
+    return (localMaterialCardViewHelper != null) && (localMaterialCardViewHelper.p());
   }
   
   void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -100,75 +100,130 @@ public class MaterialCardView
     super.setContentPadding(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  void a(Drawable paramDrawable)
-  {
-    super.setBackgroundDrawable(paramDrawable);
-  }
-  
-  public boolean a_()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    MaterialCardViewHelper localMaterialCardViewHelper = this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper;
-    return (localMaterialCardViewHelper != null) && (localMaterialCardViewHelper.b());
-  }
-  
   @NonNull
   public ColorStateList getCardBackgroundColor()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a();
+    return this.e.f();
+  }
+  
+  @NonNull
+  public ColorStateList getCardForegroundColor()
+  {
+    return this.e.g();
+  }
+  
+  float getCardViewRadius()
+  {
+    return a(this);
+  }
+  
+  @Nullable
+  public Drawable getCheckedIcon()
+  {
+    return this.e.s();
+  }
+  
+  @Dimension
+  public int getCheckedIconMargin()
+  {
+    return this.e.u();
+  }
+  
+  @Dimension
+  public int getCheckedIconSize()
+  {
+    return this.e.t();
+  }
+  
+  @Nullable
+  public ColorStateList getCheckedIconTint()
+  {
+    return this.e.q();
   }
   
   public int getContentPaddingBottom()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a().bottom;
+    return this.e.h().bottom;
   }
   
   public int getContentPaddingLeft()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a().left;
+    return this.e.h().left;
   }
   
   public int getContentPaddingRight()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a().right;
+    return this.e.h().right;
   }
   
   public int getContentPaddingTop()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a().top;
+    return this.e.h().top;
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float getProgress()
+  {
+    return this.e.k();
   }
   
   public float getRadius()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a();
+    return this.e.j();
+  }
+  
+  public ColorStateList getRippleColor()
+  {
+    return this.e.r();
+  }
+  
+  @NonNull
+  public ShapeAppearanceModel getShapeAppearanceModel()
+  {
+    return this.e.w();
+  }
+  
+  @Deprecated
+  @ColorInt
+  public int getStrokeColor()
+  {
+    return this.e.b();
+  }
+  
+  @Nullable
+  public ColorStateList getStrokeColorStateList()
+  {
+    return this.e.c();
+  }
+  
+  @Dimension
+  public int getStrokeWidth()
+  {
+    return this.e.d();
   }
   
   public boolean isChecked()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.g;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    MaterialShapeUtils.a(this, this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a());
+    MaterialShapeUtils.a(this, this.e.e());
   }
   
   protected int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 3);
-    if (b()) {
-      mergeDrawableStates(arrayOfInt, jdField_a_of_type_ArrayOfInt);
+    if (H_()) {
+      mergeDrawableStates(arrayOfInt, a);
     }
     if (isChecked()) {
-      mergeDrawableStates(arrayOfInt, jdField_b_of_type_ArrayOfInt);
+      mergeDrawableStates(arrayOfInt, b);
     }
-    if (a_()) {
-      mergeDrawableStates(arrayOfInt, jdField_c_of_type_ArrayOfInt);
+    if (G_()) {
+      mergeDrawableStates(arrayOfInt, c);
     }
     return arrayOfInt;
   }
@@ -184,7 +239,7 @@ public class MaterialCardView
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     paramAccessibilityNodeInfo.setClassName("androidx.cardview.widget.CardView");
-    paramAccessibilityNodeInfo.setCheckable(b());
+    paramAccessibilityNodeInfo.setCheckable(H_());
     paramAccessibilityNodeInfo.setClickable(isClickable());
     paramAccessibilityNodeInfo.setChecked(isChecked());
   }
@@ -192,7 +247,7 @@ public class MaterialCardView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(getMeasuredWidth(), getMeasuredHeight());
+    this.e.a(getMeasuredWidth(), getMeasuredHeight());
   }
   
   public void setBackground(Drawable paramDrawable)
@@ -202,110 +257,115 @@ public class MaterialCardView
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
-      if (!this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a())
+      if (!this.e.a())
       {
         Log.i("MaterialCardView", "Setting a custom background is not supported.");
-        this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(true);
+        this.e.a(true);
       }
       super.setBackgroundDrawable(paramDrawable);
     }
   }
   
+  void setBackgroundInternal(Drawable paramDrawable)
+  {
+    super.setBackgroundDrawable(paramDrawable);
+  }
+  
   public void setCardBackgroundColor(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.b(ColorStateList.valueOf(paramInt));
+    this.e.b(ColorStateList.valueOf(paramInt));
   }
   
   public void setCardBackgroundColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.b(paramColorStateList);
+    this.e.b(paramColorStateList);
   }
   
   public void setCardElevation(float paramFloat)
   {
     super.setCardElevation(paramFloat);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.b();
+    this.e.l();
   }
   
   public void setCardForegroundColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.c(paramColorStateList);
+    this.e.c(paramColorStateList);
   }
   
   public void setCheckable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.b(paramBoolean);
+    this.e.b(paramBoolean);
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean) {
+    if (this.g != paramBoolean) {
       toggle();
     }
   }
   
   public void setCheckedIcon(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(paramDrawable);
+    this.e.a(paramDrawable);
   }
   
   public void setCheckedIconMargin(@Dimension int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.c(paramInt);
+    this.e.c(paramInt);
   }
   
   public void setCheckedIconMarginResource(@DimenRes int paramInt)
   {
     if (paramInt != -1) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.c(getResources().getDimensionPixelSize(paramInt));
+      this.e.c(getResources().getDimensionPixelSize(paramInt));
     }
   }
   
   public void setCheckedIconResource(@DrawableRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(AppCompatResources.getDrawable(getContext(), paramInt));
+    this.e.a(AppCompatResources.getDrawable(getContext(), paramInt));
   }
   
   public void setCheckedIconSize(@Dimension int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.b(paramInt);
+    this.e.b(paramInt);
   }
   
   public void setCheckedIconSizeResource(@DimenRes int paramInt)
   {
     if (paramInt != 0) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.b(getResources().getDimensionPixelSize(paramInt));
+      this.e.b(getResources().getDimensionPixelSize(paramInt));
     }
   }
   
   public void setCheckedIconTint(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.e(paramColorStateList);
+    this.e.e(paramColorStateList);
   }
   
   public void setClickable(boolean paramBoolean)
   {
     super.setClickable(paramBoolean);
-    MaterialCardViewHelper localMaterialCardViewHelper = this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper;
+    MaterialCardViewHelper localMaterialCardViewHelper = this.e;
     if (localMaterialCardViewHelper != null) {
-      localMaterialCardViewHelper.a();
+      localMaterialCardViewHelper.i();
     }
   }
   
   public void setContentPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.e.a(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setDragged(boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Boolean != paramBoolean)
+    if (this.h != paramBoolean)
     {
-      this.jdField_c_of_type_Boolean = paramBoolean;
+      this.h = paramBoolean;
       refreshDrawableState();
-      a();
+      c();
       invalidate();
     }
   }
@@ -313,89 +373,89 @@ public class MaterialCardView
   public void setMaxCardElevation(float paramFloat)
   {
     super.setMaxCardElevation(paramFloat);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.c();
+    this.e.m();
   }
   
   public void setOnCheckedChangeListener(@Nullable MaterialCardView.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardView$OnCheckedChangeListener = paramOnCheckedChangeListener;
+    this.i = paramOnCheckedChangeListener;
   }
   
   public void setPreventCornerOverlap(boolean paramBoolean)
   {
     super.setPreventCornerOverlap(paramBoolean);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.c();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.e();
+    this.e.m();
+    this.e.o();
   }
   
   public void setProgress(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.b(paramFloat);
+    this.e.b(paramFloat);
   }
   
   public void setRadius(float paramFloat)
   {
     super.setRadius(paramFloat);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(paramFloat);
+    this.e.a(paramFloat);
   }
   
   public void setRippleColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.d(paramColorStateList);
+    this.e.d(paramColorStateList);
   }
   
   public void setRippleColorResource(@ColorRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.d(AppCompatResources.getColorStateList(getContext(), paramInt));
+    this.e.d(AppCompatResources.getColorStateList(getContext(), paramInt));
   }
   
   public void setShapeAppearanceModel(@NonNull ShapeAppearanceModel paramShapeAppearanceModel)
   {
     if (Build.VERSION.SDK_INT >= 21) {
-      setClipToOutline(paramShapeAppearanceModel.a(a()));
+      setClipToOutline(paramShapeAppearanceModel.a(getBoundsAsRectF()));
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(paramShapeAppearanceModel);
+    this.e.a(paramShapeAppearanceModel);
   }
   
   public void setStrokeColor(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(ColorStateList.valueOf(paramInt));
+    this.e.a(ColorStateList.valueOf(paramInt));
   }
   
   public void setStrokeColor(ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(paramColorStateList);
+    this.e.a(paramColorStateList);
   }
   
   public void setStrokeWidth(@Dimension int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.a(paramInt);
+    this.e.a(paramInt);
   }
   
   public void setUseCompatPadding(boolean paramBoolean)
   {
     super.setUseCompatPadding(paramBoolean);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.c();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardViewHelper.e();
+    this.e.m();
+    this.e.o();
   }
   
   public void toggle()
   {
-    if ((b()) && (isEnabled()))
+    if ((H_()) && (isEnabled()))
     {
-      this.jdField_b_of_type_Boolean ^= true;
+      this.g ^= true;
       refreshDrawableState();
-      a();
-      MaterialCardView.OnCheckedChangeListener localOnCheckedChangeListener = this.jdField_a_of_type_ComGoogleAndroidMaterialCardMaterialCardView$OnCheckedChangeListener;
+      c();
+      MaterialCardView.OnCheckedChangeListener localOnCheckedChangeListener = this.i;
       if (localOnCheckedChangeListener != null) {
-        localOnCheckedChangeListener.a(this, this.jdField_b_of_type_Boolean);
+        localOnCheckedChangeListener.a(this, this.g);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.card.MaterialCardView
  * JD-Core Version:    0.7.0.1
  */

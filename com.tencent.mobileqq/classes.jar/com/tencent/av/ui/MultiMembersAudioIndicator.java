@@ -34,7 +34,7 @@ public class MultiMembersAudioIndicator
   public RadioButton a()
   {
     MultiMembersAudioIndicator.1 local1 = new MultiMembersAudioIndicator.1(this, super.getContext());
-    local1.setButtonDrawable(2130842262);
+    local1.setButtonDrawable(2130843199);
     local1.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()));
@@ -48,7 +48,7 @@ public class MultiMembersAudioIndicator
     return local1;
   }
   
-  public void a()
+  public void b()
   {
     Object localObject = this.a;
     if (localObject == null) {
@@ -81,6 +81,11 @@ public class MultiMembersAudioIndicator
       return;
     }
     super.setVisibility(0);
+  }
+  
+  public ViewPager getViewPager()
+  {
+    return this.a;
   }
   
   public void onPageScrollStateChanged(int paramInt) {}

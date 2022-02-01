@@ -7,7 +7,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.av.smallscreen.SmallScreenUtils;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
 import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.gamecenter.util.QQGameTroopManager;
@@ -38,7 +42,7 @@ public class TroopUtilApiImpl
       while (paramList.hasNext())
       {
         GameTroopSelectMemberInfo localGameTroopSelectMemberInfo = (GameTroopSelectMemberInfo)paramList.next();
-        localArrayList.add(new ResultRecord(localGameTroopSelectMemberInfo.jdField_a_of_type_JavaLangString, localGameTroopSelectMemberInfo.jdField_b_of_type_JavaLangString, localGameTroopSelectMemberInfo.jdField_a_of_type_Int, localGameTroopSelectMemberInfo.jdField_b_of_type_Int, localGameTroopSelectMemberInfo.c, localGameTroopSelectMemberInfo.d, localGameTroopSelectMemberInfo.jdField_a_of_type_Long, localGameTroopSelectMemberInfo.jdField_a_of_type_Boolean, localGameTroopSelectMemberInfo.e));
+        localArrayList.add(new ResultRecord(localGameTroopSelectMemberInfo.a, localGameTroopSelectMemberInfo.b, localGameTroopSelectMemberInfo.c, localGameTroopSelectMemberInfo.d, localGameTroopSelectMemberInfo.e, localGameTroopSelectMemberInfo.f, localGameTroopSelectMemberInfo.g, localGameTroopSelectMemberInfo.h, localGameTroopSelectMemberInfo.i));
       }
     }
     return localArrayList;
@@ -46,12 +50,12 @@ public class TroopUtilApiImpl
   
   public int QAVHrMeeting_hrExtra(long paramLong)
   {
-    return QAVHrMeeting.a(paramLong);
+    return QAVHrMeeting.c(paramLong);
   }
   
   public void addLocalSetTopDataIgnore(AppRuntime paramAppRuntime, String paramString)
   {
-    SharedPreUtils.h(paramAppRuntime.getApplication().getApplicationContext(), paramAppRuntime.getCurrentAccountUin(), paramString);
+    SharedPreUtils.k(paramAppRuntime.getApplication().getApplicationContext(), paramAppRuntime.getCurrentAccountUin(), paramString);
   }
   
   public void doReqGameFriends(AppInterface paramAppInterface, String paramString, Activity paramActivity)
@@ -76,7 +80,7 @@ public class TroopUtilApiImpl
   
   public boolean hasSetTroopHead(String paramString)
   {
-    return TroopUtils.a(paramString);
+    return TroopUtils.b(paramString);
   }
   
   public void initTaskSet(AppInterface paramAppInterface)
@@ -91,12 +95,20 @@ public class TroopUtilApiImpl
   
   public boolean isLocalSetTopDataIgnoreContain(AppRuntime paramAppRuntime, String paramString)
   {
-    return SharedPreUtils.a(paramAppRuntime.getApplication(), paramAppRuntime.getCurrentAccountUin()).contains(paramString);
+    return SharedPreUtils.as(paramAppRuntime.getApplication(), paramAppRuntime.getCurrentAccountUin()).contains(paramString);
   }
   
   public boolean isNeedReqGameInfo(Activity paramActivity)
   {
     return QQGameTroopManager.a(paramActivity);
+  }
+  
+  public boolean isUsingCameraOnVideo(AppRuntime paramAppRuntime)
+  {
+    if (!(paramAppRuntime instanceof QQAppInterface)) {
+      return false;
+    }
+    return ((QQAppInterface)paramAppRuntime).isUsingCameraOnVideo();
   }
   
   public void joinRecommendTroop(Context paramContext, Object paramObject, int paramInt)
@@ -166,6 +178,23 @@ public class TroopUtilApiImpl
     ((QQGameTroopManager)paramAppInterface.getManager(QQManagerFactory.GAME_TROOP_MANAGER)).a((PinnedDividerListView)paramObject, paramActivity);
   }
   
+  public void sendReadConfirm(AppRuntime paramAppRuntime, String paramString)
+  {
+    SessionInfo localSessionInfo = new SessionInfo();
+    localSessionInfo.b = paramString;
+    localSessionInfo.c = paramString;
+    localSessionInfo.a = 1;
+    ChatActivityFacade.a((QQAppInterface)paramAppRuntime, localSessionInfo);
+  }
+  
+  public void showGroupQavActionSheet(AppInterface paramAppInterface, Context paramContext, String paramString, boolean paramBoolean)
+  {
+    SessionInfo localSessionInfo = new SessionInfo();
+    localSessionInfo.b = paramString;
+    localSessionInfo.a = 1;
+    VideoItemBuilder.a((QQAppInterface)paramAppInterface, paramContext, localSessionInfo, 10, false, paramAppInterface.getCurrentUin(), "");
+  }
+  
   public void smallScreenUtils_getTrace(String paramString)
   {
     SmallScreenUtils.a(paramString);
@@ -184,7 +213,7 @@ public class TroopUtilApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopUtilApiImpl
  * JD-Core Version:    0.7.0.1
  */

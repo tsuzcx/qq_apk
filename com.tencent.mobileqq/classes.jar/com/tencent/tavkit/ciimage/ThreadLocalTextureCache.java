@@ -1,17 +1,17 @@
 package com.tencent.tavkit.ciimage;
 
-import android.support.annotation.NonNull;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tavkit.composition.video.Releasable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class ThreadLocalTextureCache
+  implements Releasable
 {
   private static final ThreadLocal<ThreadLocalTextureCache> TEXTURE_CACHE = new ThreadLocalTextureCache.1();
-  private final String TAG;
-  @NonNull
+  private final String mTAG;
   private final HashMap<String, TextureInfo> textureCache;
   
   private ThreadLocalTextureCache()
@@ -19,8 +19,8 @@ public class ThreadLocalTextureCache
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("ThreadLocalTextureCache@");
     ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
-    this.TAG = ((StringBuilder)localObject).toString();
-    localObject = this.TAG;
+    this.mTAG = ((StringBuilder)localObject).toString();
+    localObject = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ThreadLocalTextureCache() called, thread = ");
     localStringBuilder.append(Thread.currentThread().getName());
@@ -51,7 +51,7 @@ public class ThreadLocalTextureCache
   {
     try
     {
-      String str = this.TAG;
+      String str = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("putTextureInfo() called with: key = [");
       localStringBuilder.append(paramString);
@@ -73,7 +73,7 @@ public class ThreadLocalTextureCache
   {
     try
     {
-      Object localObject1 = this.TAG;
+      Object localObject1 = this.mTAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("release() called, textureCache = ");
       localStringBuilder.append(this.textureCache);
@@ -108,7 +108,7 @@ public class ThreadLocalTextureCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.ThreadLocalTextureCache
  * JD-Core Version:    0.7.0.1
  */

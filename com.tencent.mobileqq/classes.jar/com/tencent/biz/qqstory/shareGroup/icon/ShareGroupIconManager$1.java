@@ -17,7 +17,7 @@ class ShareGroupIconManager$1
     paramShareGroupDrawableState2.append("entryRemoved key = %s");
     paramShareGroupDrawableState2.append(paramString);
     IconLog.a("story.icon.ShareGroupIconManager", paramShareGroupDrawableState2.toString());
-    paramShareGroupDrawableState1.a();
+    paramShareGroupDrawableState1.c();
   }
 }
 

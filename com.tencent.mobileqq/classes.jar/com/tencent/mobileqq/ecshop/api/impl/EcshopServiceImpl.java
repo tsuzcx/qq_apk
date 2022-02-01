@@ -50,20 +50,20 @@ public class EcshopServiceImpl
     {
       paramAdInfo = new GdtAd(paramAdInfo);
       GdtHandler.Params localParams = new GdtHandler.Params();
-      localParams.jdField_c_of_type_Int = 1;
-      localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramAdInfo;
-      localParams.jdField_a_of_type_Boolean = paramBoolean;
-      localParams.jdField_b_of_type_Boolean = false;
-      localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.mGdtAppReceiver);
-      localParams.jdField_c_of_type_Boolean = true;
-      paramActivity = localParams.jdField_a_of_type_AndroidOsBundle;
+      localParams.q = 1;
+      localParams.r = new WeakReference(paramActivity);
+      localParams.a = paramAdInfo;
+      localParams.b = paramBoolean;
+      localParams.e = false;
+      localParams.s = new WeakReference(this.mGdtAppReceiver);
+      localParams.f = true;
+      paramActivity = localParams.p;
       paramAdInfo = paramActivity;
       if (paramActivity == null) {
         paramAdInfo = new Bundle();
       }
       paramAdInfo.putString("big_brother_ref_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(paramString));
-      localParams.jdField_a_of_type_AndroidOsBundle = paramAdInfo;
+      localParams.p = paramAdInfo;
       GdtHandler.a(localParams);
       return;
     }
@@ -101,19 +101,19 @@ public class EcshopServiceImpl
         return false;
       }
       localParams = new GdtHandler.Params();
-      localParams.jdField_c_of_type_Int = 1;
-      localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramAdInfo;
-      localParams.jdField_a_of_type_Boolean = paramBoolean;
-      localParams.jdField_b_of_type_Boolean = bool;
-      localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.mGdtAppReceiver);
-      paramActivity = localParams.jdField_a_of_type_AndroidOsBundle;
+      localParams.q = 1;
+      localParams.r = new WeakReference(paramActivity);
+      localParams.a = paramAdInfo;
+      localParams.b = paramBoolean;
+      localParams.e = bool;
+      localParams.s = new WeakReference(this.mGdtAppReceiver);
+      paramActivity = localParams.p;
       paramAdInfo = paramActivity;
       if (paramActivity == null) {
         paramAdInfo = new Bundle();
       }
       paramAdInfo.putString("big_brother_ref_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(paramString));
-      localParams.jdField_a_of_type_AndroidOsBundle = paramAdInfo;
+      localParams.p = paramAdInfo;
       GdtHandler.a(localParams);
       return true;
       label153:
@@ -260,7 +260,7 @@ public class EcshopServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.api.impl.EcshopServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -13,24 +13,24 @@ final class WSVerticalJumpUtils$2
   public void a()
   {
     super.a();
-    WSVerticalBeaconReport.a(this.jdField_a_of_type_JavaLangString, this.b, 1000003, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData, this.jdField_a_of_type_UserGrowthStSchema.schema, this.jdField_a_of_type_Boolean);
+    WSVerticalBeaconReport.a(this.a, this.b, 1000003, this.c, this.d.schema, this.e);
   }
   
   public void b()
   {
     super.b();
-    WSVerticalBeaconReport.a(this.jdField_a_of_type_JavaLangString, this.b, 1000007, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData, this.jdField_a_of_type_UserGrowthStSchema.miniAppSchema, this.jdField_a_of_type_Boolean);
+    WSVerticalBeaconReport.a(this.a, this.b, 1000007, this.c, this.d.miniAppSchema, this.e);
   }
   
   public void c()
   {
     super.c();
-    WSVerticalBeaconReport.a(this.jdField_a_of_type_JavaLangString, this.b, 1000004, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSVerticalItemData, this.jdField_a_of_type_UserGrowthStSchema.H5Url, this.jdField_a_of_type_Boolean);
+    WSVerticalBeaconReport.a(this.a, this.b, 1000004, this.c, this.d.H5Url, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalJumpUtils.2
  * JD-Core Version:    0.7.0.1
  */

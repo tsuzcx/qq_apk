@@ -14,13 +14,13 @@ class ReadInJoyVideoSearchTagFragment$6
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = ReadInJoyVideoSearchTagFragment.a(this.a).getCompoundDrawables()[2];
+    paramView = ReadInJoyVideoSearchTagFragment.b(this.a).getCompoundDrawables()[2];
     if ((paramMotionEvent.getAction() == 0) && (paramView != null))
     {
-      float f = ReadInJoyVideoSearchTagFragment.a(this.a).getRight() - paramView.getBounds().width();
+      float f = ReadInJoyVideoSearchTagFragment.b(this.a).getRight() - paramView.getBounds().width();
       if (paramMotionEvent.getRawX() >= f)
       {
-        ReadInJoyVideoSearchTagFragment.a(this.a);
+        ReadInJoyVideoSearchTagFragment.c(this.a);
         return true;
       }
     }
@@ -29,7 +29,7 @@ class ReadInJoyVideoSearchTagFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyVideoSearchTagFragment.6
  * JD-Core Version:    0.7.0.1
  */

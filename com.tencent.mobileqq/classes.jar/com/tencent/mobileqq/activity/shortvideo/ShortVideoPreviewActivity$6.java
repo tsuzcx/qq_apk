@@ -29,11 +29,11 @@ class ShortVideoPreviewActivity$6
     Object localObject = this.a.mSurfaceView.getHolder();
     if ((localObject != null) && (((SurfaceHolder)localObject).getSurface().isValid()))
     {
-      SurfaceViewUtil.a(this.a.mSurfaceView, this.a.mSurfaceViewWidth, this.a.mSurfaceViewHeight, this.a.mMediaPlayer.d(), this.a.mMediaPlayer.e());
+      SurfaceViewUtil.a(this.a.mSurfaceView, this.a.mSurfaceViewWidth, this.a.mSurfaceViewHeight, this.a.mMediaPlayer.i(), this.a.mMediaPlayer.j());
       if (this.a.mDestType == 10)
       {
         paramIMediaPlayer.a((SurfaceHolder)localObject);
-        this.a.duration = paramIMediaPlayer.c();
+        this.a.duration = paramIMediaPlayer.h();
         if (this.a.duration > 0)
         {
           if (QLog.isColorLevel())
@@ -49,12 +49,12 @@ class ShortVideoPreviewActivity$6
       }
       return;
     }
-    FMToastUtil.a(2131691305);
+    FMToastUtil.a(2131888257);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.6
  * JD-Core Version:    0.7.0.1
  */

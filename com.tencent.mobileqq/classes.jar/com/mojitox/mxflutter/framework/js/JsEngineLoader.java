@@ -5,73 +5,78 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.mojitox.mxflutter.framework.callback.ExecuteScriptCallback;
 import com.mojitox.mxflutter.framework.callback.InvokeJSValueCallback;
+import com.mojitox.mxflutter.framework.utils.MxLog;
 
 public class JsEngineLoader
 {
-  private Context jdField_a_of_type_AndroidContentContext;
+  private Context a;
+  private volatile boolean b;
+  private BaseJsEngine c;
+  private boolean d;
+  private volatile boolean e;
   @Nullable
-  private InvokeJSValueCallback jdField_a_of_type_ComMojitoxMxflutterFrameworkCallbackInvokeJSValueCallback;
-  private BaseJsEngine jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsEngine;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private volatile boolean c;
+  private InvokeJSValueCallback f;
   
   public static JsEngineLoader a()
   {
     return JsEngineLoader.SingletonHolder.a();
   }
   
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public BaseJsEngine a()
-  {
-    if (this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsEngine == null) {
-      this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsEngine = JsEngineProvider.a();
-    }
-    return this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsEngine;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkCallbackInvokeJSValueCallback = null;
-    BaseJsEngine localBaseJsEngine = this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsEngine;
-    if (localBaseJsEngine != null) {
-      localBaseJsEngine.b().a(this.b ^ true, new JsEngineLoader.1(this));
-    }
-  }
-  
   public void a(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public void a(@NonNull ExecuteScriptCallback paramExecuteScriptCallback)
   {
-    this.c = false;
-    a().a(paramExecuteScriptCallback);
+    this.e = false;
+    d().a(paramExecuteScriptCallback);
   }
   
   public void a(@Nullable InvokeJSValueCallback paramInvokeJSValueCallback)
   {
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkCallbackInvokeJSValueCallback = paramInvokeJSValueCallback;
+    this.f = paramInvokeJSValueCallback;
   }
   
-  public boolean a()
+  public void b()
   {
-    return this.jdField_a_of_type_Boolean;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("#closeEngine begin jsEngine=");
+    ((StringBuilder)localObject).append(this.c);
+    MxLog.a("JsEngineLoader", ((StringBuilder)localObject).toString());
+    this.f = null;
+    localObject = this.c;
+    if (localObject != null) {
+      ((BaseJsEngine)localObject).b().a(this.d ^ true, new JsEngineLoader.1(this));
+    }
   }
   
-  public boolean b()
+  public Context c()
   {
-    return (this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsBaseJsEngine != null) && (this.c);
+    return this.a;
+  }
+  
+  public BaseJsEngine d()
+  {
+    if (this.c == null) {
+      this.c = JsEngineProvider.a();
+    }
+    return this.c;
+  }
+  
+  public boolean e()
+  {
+    return this.b;
+  }
+  
+  public boolean f()
+  {
+    return (this.c != null) && (this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.JsEngineLoader
  * JD-Core Version:    0.7.0.1
  */

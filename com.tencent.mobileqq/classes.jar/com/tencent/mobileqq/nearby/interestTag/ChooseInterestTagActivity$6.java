@@ -29,7 +29,7 @@ class ChooseInterestTagActivity$6
       {
         paramList1 = paramString2;
         if (TextUtils.isEmpty(paramString2)) {
-          paramList1 = HardCodeUtil.a(2131701999);
+          paramList1 = HardCodeUtil.a(2131900012);
         }
         ChooseInterestTagActivity.access$1700(this.a).setText(paramList1);
         ChooseInterestTagActivity.access$1700(this.a).setOnClickListener(ChooseInterestTagActivity.access$1800(this.a));
@@ -39,7 +39,7 @@ class ChooseInterestTagActivity$6
       {
         paramList1 = paramString2;
         if (TextUtils.isEmpty(paramString2)) {
-          paramList1 = HardCodeUtil.a(2131702018);
+          paramList1 = HardCodeUtil.a(2131900030);
         }
         ChooseInterestTagActivity.access$2000(this.a).setText(paramList1);
         ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
@@ -58,13 +58,13 @@ class ChooseInterestTagActivity$6
     {
       if (ChooseInterestTagActivity.access$900(this.a).getVisibility() == 0)
       {
-        ChooseInterestTagActivity.access$1700(this.a).setText(HardCodeUtil.a(2131702026));
+        ChooseInterestTagActivity.access$1700(this.a).setText(HardCodeUtil.a(2131900038));
         ChooseInterestTagActivity.access$1700(this.a).setOnClickListener(null);
         return;
       }
       if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() == 0)
       {
-        ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131701990));
+        ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131900003));
         ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
       }
       return;
@@ -145,13 +145,13 @@ class ChooseInterestTagActivity$6
     }
     if (ChooseInterestTagActivity.access$900(this.a).getVisibility() == 0)
     {
-      ChooseInterestTagActivity.access$1700(this.a).setText(HardCodeUtil.a(2131702004));
+      ChooseInterestTagActivity.access$1700(this.a).setText(HardCodeUtil.a(2131900017));
       ChooseInterestTagActivity.access$1700(this.a).setOnClickListener(null);
       return;
     }
     if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() == 0)
     {
-      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131702012));
+      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131900024));
       ChooseInterestTagActivity.access$2100(this.a).setVisibility(0);
       return;
     }
@@ -170,12 +170,12 @@ class ChooseInterestTagActivity$6
     {
       if (TextUtils.isEmpty(paramString2))
       {
-        ChooseInterestTagActivity.access$2500(this.a, 2, HardCodeUtil.a(2131702016), 500);
+        ChooseInterestTagActivity.access$2500(this.a, 2, HardCodeUtil.a(2131900028), 500);
         return;
       }
       paramString1 = this.a;
       paramList = new StringBuilder();
-      paramList.append(HardCodeUtil.a(2131701989));
+      paramList.append(HardCodeUtil.a(2131900002));
       paramList.append(paramString2);
       ChooseInterestTagActivity.access$2500(paramString1, 0, paramList.toString(), 500);
       return;
@@ -186,8 +186,8 @@ class ChooseInterestTagActivity$6
       paramList = new Intent(this.a, QQBrowserActivity.class);
       paramList.putExtra("isShowAd", false);
       paramList.putExtra("url", paramString1);
-      paramList.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131702005));
-      paramList.putExtra("title", HardCodeUtil.a(2131702027));
+      paramList.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
+      paramList.putExtra("title", HardCodeUtil.a(2131900039));
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder();
@@ -199,12 +199,12 @@ class ChooseInterestTagActivity$6
       this.a.finish();
       return;
     }
-    ChooseInterestTagActivity.access$2500(this.a, 1, HardCodeUtil.a(2131702006), 500);
+    ChooseInterestTagActivity.access$2500(this.a, 1, HardCodeUtil.a(2131900018), 500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class AnonymousGiftAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130851088;
+    return 2130853323;
   }
   
   public int getAppID()
@@ -26,12 +26,12 @@ public class AnonymousGiftAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697239);
+    return BaseApplicationImpl.getContext().getString(2131895012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AnonymousGiftAppInfo
  * JD-Core Version:    0.7.0.1
  */

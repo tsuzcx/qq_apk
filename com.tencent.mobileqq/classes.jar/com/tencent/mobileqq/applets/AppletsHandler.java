@@ -60,15 +60,15 @@ import tencent.im.oidb.qqconnect.Appinfo;
 public class AppletsHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final Map<String, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private final Set<Long> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private final Map<String, Integer> a = new ConcurrentHashMap();
+  private final Object b = new Object();
+  private final Set<Long> c = new HashSet();
+  private QQAppInterface d;
   
   public AppletsHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.d = paramQQAppInterface;
   }
   
   private String a(MessageRecord paramMessageRecord)
@@ -77,97 +77,6 @@ public class AppletsHandler
       return paramMessageRecord.mExJsonObject.optString("appid");
     }
     return null;
-  }
-  
-  private List<MessageRecord> a()
-  {
-    Object localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735");
-    long l2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a((String)localObject, 1038);
-    long l1 = l2;
-    if (l2 > System.currentTimeMillis()) {
-      l1 = -1L;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(1038).a((String)localObject, 1038, l1);
-    if (localObject != null)
-    {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = ((List)localObject).iterator();
-      for (;;)
-      {
-        localObject = localArrayList;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (ChatMessage)localIterator.next();
-        if (!((ChatMessage)localObject).isread) {
-          localArrayList.add(localObject);
-        }
-      }
-    }
-    localObject = null;
-    return localObject;
-  }
-  
-  private <T extends MessageRecord> Map<String, Integer> a(List<T> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      HashMap localHashMap = new HashMap();
-      Iterator localIterator = paramList.iterator();
-      for (;;)
-      {
-        paramList = localHashMap;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        String str = a((MessageRecord)localIterator.next());
-        if (!TextUtils.isEmpty(str))
-        {
-          paramList = (Integer)localHashMap.get(str);
-          if (paramList != null) {
-            paramList = Integer.valueOf(paramList.intValue() + 1);
-          } else {
-            paramList = Integer.valueOf(1);
-          }
-          localHashMap.put(str, paramList);
-        }
-      }
-    }
-    paramList = null;
-    return paramList;
-  }
-  
-  private oidb_sso.OIDBSSOPkg a(ArrayList<AppletItem> paramArrayList, boolean paramBoolean)
-  {
-    oidb_cmd0xc76.ReqBody localReqBody = new oidb_cmd0xc76.ReqBody();
-    localReqBody.cmd.set(2);
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      AppletItem localAppletItem = (AppletItem)paramArrayList.next();
-      oidb_cmd0xc76.Item localItem = new oidb_cmd0xc76.Item();
-      if (paramBoolean)
-      {
-        localItem.puin.set(Long.parseLong(localAppletItem.c()));
-        localItem.name.set(localAppletItem.a());
-        localItem.value.set(localAppletItem.b());
-      }
-      else
-      {
-        localItem.id.set(localAppletItem.a());
-        localItem.type.set(localAppletItem.a());
-        localItem.value.set(localAppletItem.b());
-      }
-      localArrayList.add(localItem);
-    }
-    localReqBody.apps.set(localArrayList);
-    paramArrayList = new oidb_sso.OIDBSSOPkg();
-    paramArrayList.uint32_command.set(3190);
-    paramArrayList.uint32_result.set(0);
-    paramArrayList.uint32_service_type.set(0);
-    paramArrayList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    return paramArrayList;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -334,9 +243,9 @@ public class AppletsHandler
           ((List)localObject1).add(localBuilder.a());
         }
       }
-      ((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList = ((List)localObject1);
+      ((AppletsSetting)localObject2).b = ((List)localObject1);
       if (paramFromServiceMsg.desc.has()) {
-        ((AppletsSetting)localObject2).jdField_a_of_type_JavaLangString = paramFromServiceMsg.desc.get();
+        ((AppletsSetting)localObject2).a = paramFromServiceMsg.desc.get();
       }
       paramToServiceMsg.add(localObject2);
     }
@@ -370,9 +279,9 @@ public class AppletsHandler
           paramFromServiceMsg.add(((AppletItem.Builder)localObject4).a());
         }
       }
-      ((AppletsSetting)localObject1).jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
+      ((AppletsSetting)localObject1).b = paramFromServiceMsg;
       if (paramRspBody.desc.has()) {
-        ((AppletsSetting)localObject1).jdField_a_of_type_JavaLangString = paramRspBody.desc.get();
+        ((AppletsSetting)localObject1).a = paramRspBody.desc.get();
       }
       paramToServiceMsg.add(localObject1);
     }
@@ -382,6 +291,39 @@ public class AppletsHandler
       return;
     }
     notifyUI(2, false, null);
+  }
+  
+  private oidb_sso.OIDBSSOPkg b(ArrayList<AppletItem> paramArrayList, boolean paramBoolean)
+  {
+    oidb_cmd0xc76.ReqBody localReqBody = new oidb_cmd0xc76.ReqBody();
+    localReqBody.cmd.set(2);
+    ArrayList localArrayList = new ArrayList();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      AppletItem localAppletItem = (AppletItem)paramArrayList.next();
+      oidb_cmd0xc76.Item localItem = new oidb_cmd0xc76.Item();
+      if (paramBoolean)
+      {
+        localItem.puin.set(Long.parseLong(localAppletItem.f()));
+        localItem.name.set(localAppletItem.b());
+        localItem.value.set(localAppletItem.e());
+      }
+      else
+      {
+        localItem.id.set(localAppletItem.a());
+        localItem.type.set(localAppletItem.d());
+        localItem.value.set(localAppletItem.e());
+      }
+      localArrayList.add(localItem);
+    }
+    localReqBody.apps.set(localArrayList);
+    paramArrayList = new oidb_sso.OIDBSSOPkg();
+    paramArrayList.uint32_command.set(3190);
+    paramArrayList.uint32_result.set(0);
+    paramArrayList.uint32_service_type.set(0);
+    paramArrayList.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
+    return paramArrayList;
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -446,7 +388,7 @@ public class AppletsHandler
         } else {
           i = 0;
         }
-        ((AppletsFolderManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a(paramToServiceMsg, i);
+        ((AppletsFolderManager)this.d.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a(paramToServiceMsg, i);
         if (paramFromServiceMsg.get_uin_info_rsp.has()) {
           paramToServiceMsg = (oidb_cmd0xc7a.GetUinInfoRsp)paramFromServiceMsg.get_uin_info_rsp.get();
         } else {
@@ -500,6 +442,35 @@ public class AppletsHandler
       return;
     }
     notifyUI(3, false, paramToServiceMsg);
+  }
+  
+  private <T extends MessageRecord> Map<String, Integer> c(List<T> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = paramList.iterator();
+      for (;;)
+      {
+        paramList = localHashMap;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        String str = a((MessageRecord)localIterator.next());
+        if (!TextUtils.isEmpty(str))
+        {
+          paramList = (Integer)localHashMap.get(str);
+          if (paramList != null) {
+            paramList = Integer.valueOf(paramList.intValue() + 1);
+          } else {
+            paramList = Integer.valueOf(1);
+          }
+          localHashMap.put(str, paramList);
+        }
+      }
+    }
+    paramList = null;
+    return paramList;
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -579,6 +550,35 @@ public class AppletsHandler
     notifyUI(i, false, null);
   }
   
+  private List<MessageRecord> d()
+  {
+    Object localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735");
+    long l2 = this.d.getConversationFacade().e((String)localObject, 1038);
+    long l1 = l2;
+    if (l2 > System.currentTimeMillis()) {
+      l1 = -1L;
+    }
+    localObject = this.d.getMessageFacade().a(1038).a((String)localObject, 1038, l1);
+    if (localObject != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = ((List)localObject).iterator();
+      for (;;)
+      {
+        localObject = localArrayList;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (ChatMessage)localIterator.next();
+        if (!((ChatMessage)localObject).isread) {
+          localArrayList.add(localObject);
+        }
+      }
+    }
+    localObject = null;
+    return localObject;
+  }
+  
   public void a()
   {
     Object localObject = new oidb_cmd0xc76.ReqBody();
@@ -598,10 +598,10 @@ public class AppletsHandler
     Object localObject1;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject1 = a();
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      localObject1 = d();
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+        this.a.remove(paramString);
         if (localObject1 != null)
         {
           ??? = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735");
@@ -612,12 +612,12 @@ public class AppletsHandler
             MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
             if (paramString.equals(a(localMessageRecord)))
             {
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((String)???, 1038, localMessageRecord.uniseq, "isread", Boolean.valueOf(true));
+              this.d.getMessageFacade().a((String)???, 1038, localMessageRecord.uniseq, "isread", Boolean.valueOf(true));
               i -= 1;
             }
           }
           if (i != 0) {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().d((String)???, 1038, i);
+            this.d.getConversationFacade().e((String)???, 1038, i);
           }
           if (!QLog.isColorLevel()) {
             return;
@@ -658,7 +658,7 @@ public class AppletsHandler
     ArrayList localArrayList = new ArrayList();
     AppletItem.Builder localBuilder = new AppletItem.Builder();
     localBuilder.a(paramString2);
-    localBuilder.a(paramString1);
+    localBuilder.c(paramString1);
     localBuilder.b(paramInt);
     localArrayList.add(localBuilder.a());
     a(localArrayList, true);
@@ -671,7 +671,7 @@ public class AppletsHandler
   
   public void a(ArrayList<AppletItem> paramArrayList, boolean paramBoolean)
   {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = a(paramArrayList, paramBoolean);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = b(paramArrayList, paramBoolean);
     ToServiceMsg localToServiceMsg = createToServiceMsg("OidbSvc.0xc76");
     localToServiceMsg.putWupBuffer(localOIDBSSOPkg.toByteArray());
     if (paramBoolean)
@@ -754,10 +754,10 @@ public class AppletsHandler
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.a.clear();
+      this.c.clear();
       notifyUI(8, true, null);
       return;
     }
@@ -769,40 +769,40 @@ public class AppletsHandler
       return;
     }
     Object localObject2 = new LinkedList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
       paramList = paramList.iterator();
       Object localObject3;
       while (paramList.hasNext())
       {
         localObject3 = (MessageRecord)paramList.next();
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(((MessageRecord)localObject3).msgUid)))
+        if (!this.c.contains(Long.valueOf(((MessageRecord)localObject3).msgUid)))
         {
           ((List)localObject2).add(localObject3);
-          this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(((MessageRecord)localObject3).msgUid));
+          this.c.add(Long.valueOf(((MessageRecord)localObject3).msgUid));
         }
       }
       if (((List)localObject2).size() < 1) {
         return;
       }
-      paramList = a((List)localObject2);
+      paramList = c((List)localObject2);
       if ((paramList != null) && (paramList.size() > 0)) {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.b)
         {
           localObject2 = paramList.entrySet().iterator();
           while (((Iterator)localObject2).hasNext())
           {
             paramList = (Map.Entry)((Iterator)localObject2).next();
             localObject3 = (String)paramList.getKey();
-            Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject3);
+            Integer localInteger = (Integer)this.a.get(localObject3);
             if (localInteger != null) {
               paramList = Integer.valueOf(localInteger.intValue() + ((Integer)paramList.getValue()).intValue());
             } else {
               paramList = (Integer)paramList.getValue();
             }
-            this.jdField_a_of_type_JavaUtilMap.put(localObject3, paramList);
+            this.a.put(localObject3, paramList);
           }
-          notifyUI(8, true, this.jdField_a_of_type_JavaUtilMap);
+          notifyUI(8, true, this.a);
           return;
         }
       }
@@ -817,26 +817,26 @@ public class AppletsHandler
   public void c()
   {
     QLog.d("AppletsHandler", 1, "requestGetAppletsMsgUnreadInfo");
-    ??? = a();
+    ??? = d();
     if ((??? != null) && (((List)???).size() > 0))
     {
-      Map localMap = a((List)???);
+      Map localMap = c((List)???);
       if ((localMap == null) || (localMap.size() <= 0)) {
-        break label118;
+        break label117;
       }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        this.jdField_a_of_type_JavaUtilMap.putAll(localMap);
-        notifyUI(8, true, this.jdField_a_of_type_JavaUtilMap);
+        this.a.clear();
+        this.a.putAll(localMap);
+        notifyUI(8, true, this.a);
         return;
       }
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.a.clear();
       notifyUI(8, true, null);
-      label118:
+      label117:
       return;
     }
   }
@@ -888,7 +888,7 @@ public class AppletsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.AppletsHandler
  * JD-Core Version:    0.7.0.1
  */

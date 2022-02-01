@@ -9,12 +9,12 @@ final class Friend$1
   public Friend a(Parcel paramParcel)
   {
     Friend localFriend = new Friend();
-    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localFriend.a = paramParcel.readString();
     localFriend.b = paramParcel.readString();
     localFriend.c = paramParcel.readString();
     localFriend.d = paramParcel.readString();
-    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
-    localFriend.e = paramParcel.readString();
+    localFriend.e = paramParcel.readInt();
+    localFriend.f = paramParcel.readString();
     return localFriend;
   }
   
@@ -25,7 +25,7 @@ final class Friend$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.datamodel.Friend.1
  * JD-Core Version:    0.7.0.1
  */

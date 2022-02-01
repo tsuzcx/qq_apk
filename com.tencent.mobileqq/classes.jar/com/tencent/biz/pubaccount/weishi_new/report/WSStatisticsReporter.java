@@ -1,6 +1,8 @@
 package com.tencent.biz.pubaccount.weishi_new.report;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.combo.WSComboExpHelper;
+import com.tencent.biz.pubaccount.weishi_new.combo.WSComboHelper;
 import com.tencent.biz.pubaccount.weishi_new.net.common.WSNetService;
 import com.tencent.biz.pubaccount.weishi_new.net.common.WSNetUtil;
 import com.tencent.biz.pubaccount.weishi_new.request.newreq.WSBeaconSendRequest;
@@ -41,7 +43,10 @@ public class WSStatisticsReporter
   {
     paramMap.put("scenes_channel_from", getEnterPublicAccFrom());
     paramMap.put("last_test_id", WSPublicAccReport.getInstance().getLocalTestId());
-    paramMap.put("teen", String.valueOf(WSNetUtil.a()));
+    paramMap.put("teen", String.valueOf(WSNetUtil.b()));
+    if (WSComboExpHelper.a.a()) {
+      paramMap.put("bottom_tab_id", WSComboHelper.a.a());
+    }
   }
   
   private void beaconData2Server()
@@ -52,28 +57,77 @@ public class WSStatisticsReporter
   private static String getEnterPublicAccFrom()
   {
     String str = WSPublicAccReport.getInstance().getEnterPublicAccFrom();
-    if (TextUtils.equals(str, "from_trends_tab")) {
-      return "1";
+    switch (str.hashCode())
+    {
+    default: 
+      break;
+    case 1977485053: 
+      if (str.equals("from_search_rzh_ws")) {
+        i = 1;
+      }
+      break;
+    case 1949083137: 
+      if (str.equals("from_trends_tab")) {
+        i = 0;
+      }
+      break;
+    case 1330251343: 
+      if (str.equals("from_qq_scheme")) {
+        i = 6;
+      }
+      break;
+    case 1312853792: 
+      if (str.equals("from_audio_assistant")) {
+        i = 3;
+      }
+      break;
+    case 712893722: 
+      if (str.equals("from_operation_h5")) {
+        i = 7;
+      }
+      break;
+    case 403146370: 
+      if (str.equals("from_qq_chat")) {
+        i = 4;
+      }
+      break;
+    case 15659634: 
+      if (str.equals("from_user_contacts")) {
+        i = 2;
+      }
+      break;
+    case -314972999: 
+      if (str.equals("from_open_home_then_video")) {
+        i = 8;
+      }
+      break;
+    case -1142266013: 
+      if (str.equals("from_search_trends_ws")) {
+        i = 5;
+      }
+      break;
     }
-    if (TextUtils.equals(str, "from_search_rzh_ws")) {
+    int i = -1;
+    switch (i)
+    {
+    default: 
+      return "0";
+    case 6: 
+    case 7: 
+    case 8: 
+      return WSPublicAccReport.getInstance().getScenesChannelFrom();
+    case 5: 
+      return "10";
+    case 4: 
+      return "6";
+    case 3: 
+      return "5";
+    case 2: 
+      return "3";
+    case 1: 
       return "2";
     }
-    if (TextUtils.equals(str, "from_user_contacts")) {
-      return "3";
-    }
-    if (TextUtils.equals(str, "from_audio_assistant")) {
-      return "5";
-    }
-    if (TextUtils.equals(str, "from_qq_chat")) {
-      return "6";
-    }
-    if (TextUtils.equals(str, "from_search_trends_ws")) {
-      return "10";
-    }
-    if ((!TextUtils.equals(str, "from_qq_scheme")) && (!TextUtils.equals(str, "from_operation_h5"))) {
-      return "0";
-    }
-    return WSPublicAccReport.getInstance().getScenesChannelFrom();
+    return "1";
   }
   
   private void printReportLog()
@@ -108,7 +162,7 @@ public class WSStatisticsReporter
       localStringBuilder.append(localHashMap.toString());
       localStringBuilder.append(", mBaseParams:");
       localStringBuilder.append(this.mBaseCollector.getBaseParams().toString());
-      WSLog.a("WSStatisticsReporter", localStringBuilder.toString());
+      WSLog.e("WSStatisticsReporter", localStringBuilder.toString());
     }
   }
   
@@ -148,13 +202,13 @@ public class WSStatisticsReporter
   
   public void report()
   {
-    String str = WSReportUtils.b();
+    String str = WSReportUtils.c();
     ThreadManager.getSubThreadHandler().post(new WSStatisticsReporter.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter
  * JD-Core Version:    0.7.0.1
  */

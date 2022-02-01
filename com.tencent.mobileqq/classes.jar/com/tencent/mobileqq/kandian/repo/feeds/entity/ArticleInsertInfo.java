@@ -8,33 +8,33 @@ import org.jetbrains.annotations.NotNull;
 public final class ArticleInsertInfo
 {
   @JvmField
-  public int a;
-  @JvmField
   public boolean a;
   @JvmField
   public boolean b;
   @JvmField
-  public boolean c;
+  public int c;
+  @JvmField
+  public boolean d;
   
   @NotNull
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ArticleInsertInfo(isFeedsDynamicInsert=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", needFilterAd=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", leastAdDis=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", hadBeenFiltered=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", hadBeenFiltered=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(')');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.ArticleInsertInfo
  * JD-Core Version:    0.7.0.1
  */

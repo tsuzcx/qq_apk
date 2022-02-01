@@ -21,19 +21,18 @@ import java.util.List;
 public class QQEncodeFilterRender
   implements QQSpecialAVFilter.MusicWaveformSupporter, Mp4ReEncoder.EncodeFilterRender
 {
-  private int jdField_a_of_type_Int;
-  private MusicSoundFile jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile;
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = QQFilterRenderManagerHolder.a();
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  public boolean a = false;
+  private MusicItemInfo b;
+  private MusicSoundFile c;
+  private boolean d;
+  private int e;
+  private QQFilterRenderManager f = QQFilterRenderManagerHolder.a();
+  private int g;
+  private int h;
+  private boolean i;
   
   public QQEncodeFilterRender(List<FilterDesc> paramList, MusicItemInfo paramMusicItemInfo, int paramInt1, int paramInt2, PublishVideoEntry paramPublishVideoEntry)
   {
-    this.jdField_a_of_type_Boolean = false;
     if (paramList != null)
     {
       paramPublishVideoEntry = new ArrayList();
@@ -43,35 +42,35 @@ public class QQEncodeFilterRender
         FilterDesc localFilterDesc = (FilterDesc)paramList.next();
         if (localFilterDesc != null)
         {
-          int i = QQAVImageFilterConstants.getFilterType(localFilterDesc.id);
-          if (i == 0)
+          int j = QQAVImageFilterConstants.getFilterType(localFilterDesc.id);
+          if (j == 0)
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.a = false;
             paramPublishVideoEntry.add(localFilterDesc);
           }
-          else if (i == 2)
+          else if (j == 2)
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.a = false;
             paramPublishVideoEntry.add(localFilterDesc);
           }
-          else if (i == 5)
+          else if (j == 5)
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.a = false;
             paramPublishVideoEntry.add(localFilterDesc);
           }
-          else if (i == 1)
+          else if (j == 1)
           {
-            this.jdField_a_of_type_Boolean = true;
+            this.a = true;
             paramPublishVideoEntry.clear();
             paramPublishVideoEntry.add(localFilterDesc);
           }
         }
       }
       if (paramPublishVideoEntry.size() > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getBusinessOperation().setFilterEffectList(paramPublishVideoEntry);
+        this.f.getBusinessOperation().setFilterEffectList(paramPublishVideoEntry);
       }
     }
-    paramList = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getQQFilters(80);
+    paramList = this.f.getQQFilters(80);
     if ((paramMusicItemInfo != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
@@ -79,11 +78,11 @@ public class QQEncodeFilterRender
         ((QQSpecialAVFilter)paramList.next()).setMusicWaveformSupporter(this);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) {
+    this.b = paramMusicItemInfo;
+    this.d = false;
+    this.g = paramInt1;
+    this.h = paramInt2;
+    if (this.b != null) {
       b();
     }
   }
@@ -91,23 +90,23 @@ public class QQEncodeFilterRender
   @TargetApi(17)
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null)
+    if (this.b != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile = new MusicSoundFile();
-      if (MusicSoundFile.a())
+      this.c = new MusicSoundFile();
+      if (MusicSoundFile.c())
       {
-        this.jdField_c_of_type_Boolean = true;
+        this.i = true;
         if (QLog.isColorLevel()) {
           QLog.e("QQEncodeFilterRender", 2, "musicSoundFile create give up, is rubbish Meizu");
         }
         return;
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.d = true;
       Object localObject = new QQEncodeFilterRender.1(this);
       try
       {
         long l = SystemClock.elapsedRealtimeNanos();
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, (MusicSoundFile.ProgressListener)localObject, 0);
+        boolean bool = this.c.a(this.b, (MusicSoundFile.ProgressListener)localObject, 0);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -118,7 +117,7 @@ public class QQEncodeFilterRender
         }
         if (!bool)
         {
-          this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile = null;
+          this.c = null;
           if (QLog.isColorLevel())
           {
             QLog.e("QQEncodeFilterRender", 2, "create MusicSoundFile fail");
@@ -132,53 +131,53 @@ public class QQEncodeFilterRender
         if (QLog.isColorLevel()) {
           QLog.e("QQEncodeFilterRender", 2, localException.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile = null;
+        this.c = null;
       }
     }
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    this.jdField_a_of_type_Int = ((int)(paramLong / 1000000L));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getBusinessOperation().SetTimeStamp(paramLong, paramLong);
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.drawFrame(paramInt3);
+    this.e = ((int)(paramLong / 1000000L));
+    this.f.getBusinessOperation().SetTimeStamp(paramLong, paramLong);
+    return this.f.drawFrame(paramInt3);
   }
   
   public int a(int paramInt, long paramLong)
   {
-    return a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, paramInt, paramLong);
+    return a(this.g, this.h, paramInt, paramLong);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceDestroyed();
-    this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile = null;
+    this.f.surfaceDestroyed();
+    this.c = null;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceCreate(paramInt1, paramInt2, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceChange(paramInt1, paramInt2, paramInt1, paramInt2);
+    this.f.surfaceCreate(paramInt1, paramInt2, paramInt1, paramInt2);
+    this.f.surfaceChange(paramInt1, paramInt2, paramInt1, paramInt2);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceCreate(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.f.surfaceCreate(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public float getCurrentMusicGain()
   {
-    float f = -1.0F;
+    float f1 = -1.0F;
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile != null)
+      if (this.c != null)
       {
-        if (this.jdField_c_of_type_Boolean) {
+        if (this.i) {
           return 0.5F;
         }
-        f = this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile.a(this.jdField_a_of_type_Int);
+        f1 = this.c.a(this.e);
       }
-      return f;
+      return f1;
     }
     catch (Exception localException)
     {
@@ -195,12 +194,12 @@ public class QQEncodeFilterRender
   
   public MusicItemInfo getMusicItemInfo()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filter.QQEncodeFilterRender
  * JD-Core Version:    0.7.0.1
  */

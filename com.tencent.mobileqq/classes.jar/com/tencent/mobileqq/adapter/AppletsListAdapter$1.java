@@ -15,14 +15,14 @@ class AppletsListAdapter$1
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int i = ((Integer)paramCompoundButton.getTag()).intValue();
-    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
+    AppletItem localAppletItem = (AppletItem)this.a.b.get(i);
     AppletsListAdapter.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AppletsListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

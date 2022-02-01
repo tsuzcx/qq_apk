@@ -40,7 +40,7 @@ public class ContactReportUtils
   public static void a()
   {
     boolean bool;
-    if ((a.a()) && (a.a() > 0L) && (a.b() > 0L)) {
+    if ((a.b()) && (a.c() > 0L) && (a.d() > 0L)) {
       bool = true;
     } else {
       bool = false;
@@ -77,11 +77,11 @@ public class ContactReportUtils
         localStringBuilder.append("com.tencent.mobileqq.ReportExposeInterval_");
         localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
         localObject = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit();
-        ((SharedPreferences.Editor)localObject).putBoolean("ReportExposeInterval_enable", paramReportExposeIntervalConfig.jdField_a_of_type_Boolean);
-        ((SharedPreferences.Editor)localObject).putLong("ReportExposeInterval_interval", paramReportExposeIntervalConfig.jdField_a_of_type_Long);
+        ((SharedPreferences.Editor)localObject).putBoolean("ReportExposeInterval_enable", paramReportExposeIntervalConfig.a);
+        ((SharedPreferences.Editor)localObject).putLong("ReportExposeInterval_interval", paramReportExposeIntervalConfig.b);
         ((SharedPreferences.Editor)localObject).apply();
-        a.b(paramReportExposeIntervalConfig.jdField_a_of_type_Boolean);
-        a.a(paramReportExposeIntervalConfig.jdField_a_of_type_Long);
+        a.b(paramReportExposeIntervalConfig.a);
+        a.a(paramReportExposeIntervalConfig.b);
       }
     }
   }
@@ -343,9 +343,9 @@ public class ContactReportUtils
     if (QLog.isColorLevel()) {
       QLog.d("ContactReportUtils", 2, "reportRecommendExposeInterval");
     }
-    if (a.a())
+    if (a.b())
     {
-      if (a.a() > 0L)
+      if (a.c() > 0L)
       {
         a.a(paramQQAppInterface, paramInt1, paramArrayList1, paramArrayList2, paramArrayList, paramArrayList3, paramInt2, paramString);
         a.a(false);
@@ -359,7 +359,7 @@ public class ContactReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.ContactReportUtils
  * JD-Core Version:    0.7.0.1
  */

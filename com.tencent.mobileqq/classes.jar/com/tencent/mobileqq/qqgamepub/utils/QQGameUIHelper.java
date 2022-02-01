@@ -53,7 +53,7 @@ public class QQGameUIHelper
     localTextView.setBackgroundColor(0);
     localTextView.setText(TimeFormatterUtils.a(paramContext, 3, paramQQGameMsgInfo.msgTime * 1000L));
     localTextView.setPadding(12, 0, 12, 0);
-    localTextView.setId(2131378720);
+    localTextView.setId(2131447379);
     paramContext = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
     paramQQGameMsgInfo = paramContext;
     if (paramContext == null) {
@@ -95,13 +95,13 @@ public class QQGameUIHelper
     paramLinearLayout = new DisplayMetrics();
     ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(paramLinearLayout);
     int i = paramLinearLayout.heightPixels;
-    paramView = (LinearLayout)paramView.findViewById(2131370350);
+    paramView = (LinearLayout)paramView.findViewById(2131437612);
     int j = UIUtils.a(418.0F, MobileQQ.sMobileQQ.getResources());
     paramLinearLayout = paramView.getLayoutParams();
     paramLinearLayout.height = UIUtils.a(i - j, MobileQQ.sMobileQQ.getResources());
     paramView.setLayoutParams(paramLinearLayout);
     PreloadStaticApi.a();
-    PreloadStaticApi.a("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", false, 0);
+    PreloadStaticApi.b("https://i.gtimg.cn/channel/imglib/202003/upload_0408e905d4fe21d5749b1902145804d9.png", false, 0);
     a(paramView, paramContext);
   }
   
@@ -111,12 +111,12 @@ public class QQGameUIHelper
     TextView localTextView = new TextView(paramContext);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.leftMargin = UIUtils.a(7.0F, paramContext.getResources());
-    localTextView.setText(HardCodeUtil.a(2131695209));
+    localTextView.setText(HardCodeUtil.a(2131892943));
     localTextView.setTextColor(2130706432);
     paramContext = new ImageView(paramContext);
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130847408);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130847408);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130849062);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130849062);
     paramContext.setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_refresh_small_gray@2x.png", (URLDrawable.URLDrawableOptions)localObject));
     paramContext.setVisibility(0);
     localObject = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
@@ -136,7 +136,7 @@ public class QQGameUIHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.QQGameUIHelper
  * JD-Core Version:    0.7.0.1
  */

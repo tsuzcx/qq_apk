@@ -19,41 +19,41 @@ public class CmGameTmpPanelBarLoader
   
   protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.o);
+    this.a.add(AIOPanelUtiles.p);
     b();
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.h);
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.X);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    return paramSessionInfo.a == 1036;
+    this.a.add(AIOPanelUtiles.i);
+    this.a.add(AIOPanelUtiles.Y);
   }
   
   protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
-    paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
+    boolean bool = this.c.a().i();
+    paramSessionInfo = this.a;
     if (bool) {
-      paramQQAppInterface = AIOPanelUtiles.p;
+      paramQQAppInterface = AIOPanelUtiles.q;
     } else {
-      paramQQAppInterface = AIOPanelUtiles.l;
+      paramQQAppInterface = AIOPanelUtiles.m;
     }
     paramSessionInfo.add(paramQQAppInterface);
     c();
-    paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
+    paramSessionInfo = this.a;
     if (bool) {
-      paramQQAppInterface = AIOPanelUtiles.i;
+      paramQQAppInterface = AIOPanelUtiles.j;
     } else {
-      paramQQAppInterface = AIOPanelUtiles.e;
+      paramQQAppInterface = AIOPanelUtiles.f;
     }
     paramSessionInfo.add(paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.X);
+    this.a.add(AIOPanelUtiles.Y);
+  }
+  
+  public boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    return paramSessionInfo.a == 1036;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.CmGameTmpPanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

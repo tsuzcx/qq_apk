@@ -11,9 +11,9 @@ class ApolloPanelListAdapter$1$1$1$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.a = null;
+    this.a.a.a.b.setVisibility(8);
+    this.a.a.a.c.removeView(this.a.a.a.b);
+    this.a.a.a.d.o = null;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -22,7 +22,7 @@ class ApolloPanelListAdapter$1$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanelListAdapter.1.1.1.1
  * JD-Core Version:    0.7.0.1
  */

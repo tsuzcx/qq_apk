@@ -25,9 +25,9 @@ public class ContentElement
     localStringBuilder.append("ContentElement [content=");
     localStringBuilder.append(this.a);
     localStringBuilder.append(", startPosition=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(", endPosition=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", endPosition=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
@@ -36,7 +36,7 @@ public class ContentElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement
  * JD-Core Version:    0.7.0.1
  */

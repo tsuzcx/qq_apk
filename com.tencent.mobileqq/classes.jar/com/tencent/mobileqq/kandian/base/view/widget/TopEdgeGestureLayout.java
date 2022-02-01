@@ -10,10 +10,10 @@ import com.tencent.mobileqq.util.DisplayUtil;
 public class TopEdgeGestureLayout
   extends TopGestureLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private float a;
+  private float b;
+  private int c;
+  private int d;
   
   public TopEdgeGestureLayout(Context paramContext)
   {
@@ -33,22 +33,22 @@ public class TopEdgeGestureLayout
   
   private void a()
   {
-    this.jdField_a_of_type_Int = DisplayUtil.a(getContext(), 25.0F);
-    this.jdField_b_of_type_Int = ViewConfiguration.getTouchSlop();
+    this.c = DisplayUtil.a(getContext(), 25.0F);
+    this.d = ViewConfiguration.getTouchSlop();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.jdField_b_of_type_Float = paramMotionEvent.getX();
+      this.a = paramMotionEvent.getY();
+      this.b = paramMotionEvent.getX();
     }
     else if (paramMotionEvent.getAction() == 2)
     {
       int i = getWidth();
-      float f = this.jdField_b_of_type_Float;
-      if (((f < this.jdField_a_of_type_Int) || (Math.abs(i - f) < this.jdField_a_of_type_Int)) && (Math.abs(this.jdField_b_of_type_Float - paramMotionEvent.getX()) > this.jdField_b_of_type_Int)) {
+      float f = this.b;
+      if (((f < this.c) || (Math.abs(i - f) < this.c)) && (Math.abs(this.b - paramMotionEvent.getX()) > this.d)) {
         return super.onInterceptTouchEvent(paramMotionEvent);
       }
       return false;
@@ -58,7 +58,7 @@ public class TopEdgeGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.TopEdgeGestureLayout
  * JD-Core Version:    0.7.0.1
  */

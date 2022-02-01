@@ -11,17 +11,17 @@ class CameraPanelProvider$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(CameraPanelProvider.a(this.a).a(), paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(CameraPanelProvider.a(this.a).b(), paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.CameraPanelProvider.1
  * JD-Core Version:    0.7.0.1
  */

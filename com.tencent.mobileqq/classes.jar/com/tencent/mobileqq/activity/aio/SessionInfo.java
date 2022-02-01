@@ -9,18 +9,18 @@ public class SessionInfo
   implements Parcelable, Cloneable
 {
   public static final Parcelable.Creator<SessionInfo> CREATOR = new SessionInfo.1();
-  public ChatBackground a;
+  public ChatBackground H;
   
   public SessionInfo() {}
   
   protected SessionInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
     this.b = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    this.c = paramParcel.readString();
     this.e = paramParcel.readString();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.t = paramParcel.readInt();
     a(paramParcel.readString());
     b(paramParcel.readString());
     a(paramParcel.readBundle(getClass().getClassLoader()));
@@ -43,20 +43,20 @@ public class SessionInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
+    paramParcel.writeString(this.c);
     paramParcel.writeString(this.e);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(a());
-    paramParcel.writeString(b());
-    paramParcel.writeBundle(a());
+    paramParcel.writeString(this.f);
+    paramParcel.writeInt(this.t);
+    paramParcel.writeString(c());
+    paramParcel.writeString(d());
+    paramParcel.writeBundle(b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.SessionInfo
  * JD-Core Version:    0.7.0.1
  */

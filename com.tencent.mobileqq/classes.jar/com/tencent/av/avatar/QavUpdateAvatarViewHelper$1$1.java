@@ -10,8 +10,8 @@ class QavUpdateAvatarViewHelper$1$1
   
   public void run()
   {
-    if (QavUpdateAvatarViewHelper.a(this.jdField_a_of_type_ComTencentAvAvatarQavUpdateAvatarViewHelper$1.a) != null) {
-      QavUpdateAvatarViewHelper.a(this.jdField_a_of_type_ComTencentAvAvatarQavUpdateAvatarViewHelper$1.a).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (QavUpdateAvatarViewHelper.b(this.b.a) != null) {
+      QavUpdateAvatarViewHelper.b(this.b.a).setImageBitmap(this.a);
     }
   }
 }

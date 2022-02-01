@@ -11,12 +11,12 @@ class NewFriendServiceImpl$4$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      synchronized (NewFriendServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqNewfriendApiImplNewFriendServiceImpl$4.a))
+    if (this.a) {
+      synchronized (NewFriendServiceImpl.access$100(this.b.a))
       {
-        Iterator localIterator = NewFriendServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqNewfriendApiImplNewFriendServiceImpl$4.a).iterator();
+        Iterator localIterator = NewFriendServiceImpl.access$100(this.b.a).iterator();
         while (localIterator.hasNext()) {
-          ((INewFriendListener)localIterator.next()).ac_();
+          ((INewFriendListener)localIterator.next()).bR_();
         }
         return;
       }
@@ -25,7 +25,7 @@ class NewFriendServiceImpl$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.api.impl.NewFriendServiceImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,10 +27,10 @@ public final class GameJsPluginScope
   static
   {
     EVENT_HANDLERS = new HashMap();
-    PRELOAD_PLUGINS.add(ProfileJsPlugin.class);
     PRELOAD_PLUGINS.add(LifecycleJsPlugin.class);
-    PRELOAD_PLUGINS.add(OrientationJsPlugin.class);
+    PRELOAD_PLUGINS.add(ProfileJsPlugin.class);
     PRELOAD_PLUGINS.add(UpdateManagerJsPlugin.class);
+    PRELOAD_PLUGINS.add(OrientationJsPlugin.class);
     EVENT_HANDLERS.put("getSystemInfo", GameSystemInfoPlugin.class);
     EVENT_HANDLERS.put("getSystemInfoSync", GameSystemInfoPlugin.class);
     EVENT_HANDLERS.put("downloadWithCache", GameFileJsPlugin.class);
@@ -50,11 +50,11 @@ public final class GameJsPluginScope
     EVENT_HANDLERS.put("onAppStop", LifecycleJsPlugin.class);
     EVENT_HANDLERS.put("registerProfile", ProfileJsPlugin.class);
     EVENT_HANDLERS.put("timePerformanceResult", ProfileJsPlugin.class);
+    EVENT_HANDLERS.put("operateCustomButton", CustomButtonPlugin.class);
     EVENT_HANDLERS.put("insertVideoPlayer", VideoJsPlugin.class);
     EVENT_HANDLERS.put("updateVideoPlayer", VideoJsPlugin.class);
     EVENT_HANDLERS.put("operateVideoPlayer", VideoJsPlugin.class);
     EVENT_HANDLERS.put("removeVideoPlayer", VideoJsPlugin.class);
-    EVENT_HANDLERS.put("operateCustomButton", CustomButtonPlugin.class);
     EVENT_HANDLERS.put("onMemoryWarning", MemoryJsPlugin.class);
     EVENT_HANDLERS.put("getLaunchOptionsSync", GameDataJsPlugin.class);
     EVENT_HANDLERS.put("recordOffLineResourceState", GameDataJsPlugin.class);
@@ -66,7 +66,7 @@ public final class GameJsPluginScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.GameJsPluginScope
  * JD-Core Version:    0.7.0.1
  */

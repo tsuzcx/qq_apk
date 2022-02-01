@@ -1,40 +1,43 @@
 package com.tencent.mobileqq.mini.launch;
 
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.mini.apkg.BaseLibManager.UpdateListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import org.json.JSONObject;
 
 class AppBrandLaunchManager$9
-  implements BaseLibManager.UpdateListener
+  implements MiniAppCmdInterface
 {
-  AppBrandLaunchManager$9(AppBrandLaunchManager paramAppBrandLaunchManager) {}
+  AppBrandLaunchManager$9(AppBrandLaunchManager paramAppBrandLaunchManager, IMiniCallback paramIMiniCallback) {}
   
-  public void onUpdateResult(int paramInt)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("updateBaseLib ret=");
-    ((StringBuilder)localObject).append(paramInt);
-    QLog.w("miniapp-process_AppBrandLaunchManager", 1, ((StringBuilder)localObject).toString());
-    if (paramInt == 0) {
-      return;
-    }
-    if (paramInt == 1)
+    if (paramJSONObject == null)
     {
-      QLog.w("miniapp-process_AppBrandLaunchManager", 1, HardCodeUtil.a(2131700816));
+      AppBrandLaunchManager.access$400(this.this$0, -1, "request MiniAppInfo error! ret is null.", this.val$miniCallback);
       return;
     }
-    localObject = HardCodeUtil.a(2131700813);
-    if (paramInt == 1100) {
-      localObject = HardCodeUtil.a(2131700819);
-    } else if (paramInt == 1101) {
-      localObject = HardCodeUtil.a(2131700822);
+    if (paramBoolean)
+    {
+      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      if (paramJSONObject != null)
+      {
+        MiniSdkLauncher.preDownloadPkg(BaseApplicationImpl.getContext(), new MiniAppConfig(paramJSONObject), this.val$miniCallback);
+        return;
+      }
+      AppBrandLaunchManager.access$400(this.this$0, -1, "request MiniAppInfo error! appInfo is null.", this.val$miniCallback);
+      return;
     }
-    QLog.w("miniapp-process_AppBrandLaunchManager", 1, (String)localObject);
+    int i = (int)paramJSONObject.optLong("retCode");
+    paramJSONObject = paramJSONObject.optString("errMsg");
+    AppBrandLaunchManager.access$400(this.this$0, i, paramJSONObject, this.val$miniCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.9
  * JD-Core Version:    0.7.0.1
  */

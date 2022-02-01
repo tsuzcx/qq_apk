@@ -11,7 +11,7 @@ final class HiBoomConstants$2
 {
   public String a()
   {
-    return HiBoomFont.b;
+    return HiBoomFont.f;
   }
   
   public void a(int paramInt)
@@ -25,14 +25,14 @@ final class HiBoomConstants$2
       localStringBuilder.append(paramInt);
       localIVasQuickUpdateService.downloadItem(5L, localStringBuilder.toString(), "HiBoomDownloader");
       localObject = ((IVasService)((AppRuntime)localObject).getRuntimeService(IVasService.class, "")).getHiBoomManager().getHiBoomItemById(paramInt);
-      ((HiBoomItem)localObject).b = true;
-      ((HiBoomItem)localObject).c = 0;
+      ((HiBoomItem)localObject).k = true;
+      ((HiBoomItem)localObject).j = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomConstants.2
  * JD-Core Version:    0.7.0.1
  */

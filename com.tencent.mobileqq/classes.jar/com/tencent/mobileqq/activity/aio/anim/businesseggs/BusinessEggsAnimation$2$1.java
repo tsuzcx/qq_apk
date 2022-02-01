@@ -14,11 +14,11 @@ class BusinessEggsAnimation$2$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!BusinessEggsAnimation.a(this.a.a).isEmpty())
+    if (!BusinessEggsAnimation.b(this.a.a).isEmpty())
     {
-      paramAnimator = (BusinessEggsElement)BusinessEggsAnimation.a(this.a.a).remove();
-      BusinessEggsAnimation.b(this.a.a).add(paramAnimator);
-      paramAnimator.b();
+      paramAnimator = (BusinessEggsElement)BusinessEggsAnimation.b(this.a.a).remove();
+      BusinessEggsAnimation.c(this.a.a).add(paramAnimator);
+      paramAnimator.c();
       if (QLog.isColorLevel()) {
         QLog.i("BusinessEggsAnimation", 2, "[onAnimationEnd]");
       }
@@ -31,7 +31,7 @@ class BusinessEggsAnimation$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation.2.1
  * JD-Core Version:    0.7.0.1
  */

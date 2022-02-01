@@ -28,15 +28,15 @@ import java.util.ArrayList;
 public class CommodityListView
   extends BaseWidgetView<ArrayList>
 {
-  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CommodityListView.CommodityAdapter jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter;
-  private CommodityListView.onDataChangeListener jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$onDataChangeListener;
-  private boolean jdField_a_of_type_Boolean;
-  private TextView b;
+  private RecyclerView c;
+  private LinearLayoutManager d;
+  private CommodityListView.onDataChangeListener e;
+  private TextView f;
+  private CertifiedAccountMeta.StFeed g;
+  private CommodityListView.CommodityAdapter h;
+  private TextView i;
+  private View j;
+  private boolean k;
   
   public CommodityListView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -48,21 +48,50 @@ public class CommodityListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected int a()
+  public void a()
   {
-    return 2131558736;
+    CommodityListView.CommodityAdapter localCommodityAdapter = this.h;
+    if (localCommodityAdapter != null)
+    {
+      localCommodityAdapter.b();
+      this.h.notifyDataSetChanged();
+    }
   }
   
-  public String a()
+  protected void a(Context paramContext, View paramView)
   {
-    if (a() == null) {
+    this.c = ((RecyclerView)paramView.findViewById(2131445205));
+    this.i = ((TextView)paramView.findViewById(2131448814));
+    this.f = ((TextView)paramView.findViewById(2131448714));
+    this.j = paramView.findViewById(2131449305);
+    this.d = new LinearLayoutManager(getContext(), 0, false);
+    this.c.setLayoutManager(this.d);
+    this.h = new CommodityListView.CommodityAdapter(this);
+    this.c.setAdapter(this.h);
+  }
+  
+  protected void a(ArrayList paramArrayList) {}
+  
+  public CommodityListView.CommodityAdapter getCommodityAdapter()
+  {
+    return this.h;
+  }
+  
+  protected int getLayoutId()
+  {
+    return 2131624356;
+  }
+  
+  public String getSelectedIds()
+  {
+    if (getData() == null) {
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < ((ArrayList)a()).size())
+    int m = 0;
+    while (m < ((ArrayList)getData()).size())
     {
-      Object localObject = ((ArrayList)a()).get(i);
+      Object localObject = ((ArrayList)getData()).get(m);
       if ((localObject instanceof CommodityBean))
       {
         localObject = (CommodityBean)localObject;
@@ -83,55 +112,31 @@ public class CommodityListView
         }
       }
       localStringBuilder.append((String)localObject);
-      if (i != ((ArrayList)a()).size() - 1) {
+      if (m != ((ArrayList)getData()).size() - 1) {
         localStringBuilder.append(",");
       }
-      i += 1;
+      m += 1;
     }
     return localStringBuilder.toString();
   }
   
-  public void a()
-  {
-    CommodityListView.CommodityAdapter localCommodityAdapter = this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter;
-    if (localCommodityAdapter != null)
-    {
-      localCommodityAdapter.a();
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376871));
-    this.b = ((TextView)paramView.findViewById(2131379930));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379857));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380360);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter = new CommodityListView.CommodityAdapter(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter);
-  }
-  
-  protected void a(ArrayList paramArrayList) {}
-  
   public void setData(ArrayList paramArrayList)
   {
     super.setData(paramArrayList);
-    CommodityListView.CommodityAdapter localCommodityAdapter = this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter;
+    CommodityListView.CommodityAdapter localCommodityAdapter = this.h;
     if (localCommodityAdapter != null) {
-      localCommodityAdapter.a(paramArrayList);
+      localCommodityAdapter.b(paramArrayList);
     }
   }
   
   public void setOnDataChangeListener(CommodityListView.onDataChangeListener paramonDataChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$onDataChangeListener = paramonDataChangeListener;
+    this.e = paramonDataChangeListener;
   }
   
   public void setOrientation(int paramInt)
   {
-    LinearLayoutManager localLinearLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+    LinearLayoutManager localLinearLayoutManager = this.d;
     if (localLinearLayoutManager != null) {
       localLinearLayoutManager.setOrientation(paramInt);
     }
@@ -139,41 +144,41 @@ public class CommodityListView
   
   public void setPublishUI(boolean paramBoolean)
   {
-    Object localObject = this.b;
-    int j = 8;
-    int i;
+    Object localObject = this.i;
+    int n = 8;
+    int m;
     if (localObject != null)
     {
       if (paramBoolean) {
-        i = 8;
+        m = 8;
       } else {
-        i = 0;
+        m = 0;
       }
-      ((TextView)localObject).setVisibility(i);
+      ((TextView)localObject).setVisibility(m);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.f;
     if (localObject != null)
     {
       if (paramBoolean) {
-        i = 8;
+        m = 8;
       } else {
-        i = 0;
+        m = 0;
       }
-      ((TextView)localObject).setVisibility(i);
+      ((TextView)localObject).setVisibility(m);
     }
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.j;
     if (localObject != null)
     {
       if (paramBoolean) {
-        i = j;
+        m = n;
       } else {
-        i = 0;
+        m = 0;
       }
-      ((View)localObject).setVisibility(i);
+      ((View)localObject).setVisibility(m);
     }
     setOrientation(1);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    this.k = paramBoolean;
+    localObject = this.c;
     if (localObject != null)
     {
       ((RecyclerView)localObject).getLayoutParams().height = ImmersiveUtils.dpToPx(250.0F);
@@ -184,30 +189,30 @@ public class CommodityListView
   public void setShopData(CertifiedAccountMeta.StFeed paramStFeed)
   {
     CertifiedAccountMeta.StUser localStUser = paramStFeed.poster;
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (localStUser.youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)localStUser.youZhan.get(0)).goodNum.get() > 0))
+    this.g = paramStFeed;
+    if ((this.f != null) && (localStUser.youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)localStUser.youZhan.get(0)).goodNum.get() > 0))
     {
       paramStFeed = localStUser.id.get();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("auth_");
-      ((StringBuilder)localObject).append(SubscribeShareHelper.a(a()));
+      ((StringBuilder)localObject).append(SubscribeShareHelper.a(getExtraTypeInfo()));
       VSReporter.a(paramStFeed, ((StringBuilder)localObject).toString(), "exp_shop", 0, 0, new String[0]);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-      String str = HardCodeUtil.a(2131719354);
+      this.f.setVisibility(0);
+      localObject = this.f;
+      String str = HardCodeUtil.a(2131916906);
       if (SubscribeUtils.a(localStUser.attr.get())) {
-        paramStFeed = HardCodeUtil.a(2131702405);
+        paramStFeed = HardCodeUtil.a(2131900409);
       } else {
         paramStFeed = localStUser.nick.get();
       }
       ((TextView)localObject).setText(String.format(str, new Object[] { paramStFeed }));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new CommodityListView.1(this, localStUser));
+      this.f.setOnClickListener(new CommodityListView.1(this, localStUser));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityListView
  * JD-Core Version:    0.7.0.1
  */

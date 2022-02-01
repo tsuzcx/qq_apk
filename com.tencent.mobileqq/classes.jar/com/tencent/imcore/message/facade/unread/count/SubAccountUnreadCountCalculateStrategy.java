@@ -14,7 +14,7 @@ class SubAccountUnreadCountCalculateStrategy
 {
   public int a(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, StringBuilder paramStringBuilder)
   {
-    if (paramQQAppInterface.getConversationFacade().b(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000))
+    if (paramQQAppInterface.getConversationFacade().o(AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000))
     {
       paramQQMessageFacade = (IConversationFacade)paramQQAppInterface.getRuntimeService(IConversationFacade.class, "");
       int i = ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).getAllSubAccountMsgUnreadNum(paramQQAppInterface, paramQQMessageFacade);
@@ -26,7 +26,7 @@ class SubAccountUnreadCountCalculateStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.unread.count.SubAccountUnreadCountCalculateStrategy
  * JD-Core Version:    0.7.0.1
  */

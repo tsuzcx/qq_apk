@@ -8,11 +8,11 @@ final class FeedbackSheetHelper$3
 {
   public void onDismiss()
   {
-    FeedbackSheetHelper.ResultListener localResultListener = this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ResultListener;
+    FeedbackSheetHelper.ResultListener localResultListener = this.a;
     if (localResultListener != null) {
       localResultListener.a(false);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 

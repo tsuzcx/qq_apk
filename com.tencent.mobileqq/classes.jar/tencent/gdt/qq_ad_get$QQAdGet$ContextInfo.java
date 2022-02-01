@@ -34,6 +34,7 @@ public final class qq_ad_get$QQAdGet$ContextInfo
   public final PBBytesField page_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field public_id = PBField.initUInt64(0L);
   public final PBRepeatMessageField<qq_ad_get.QQAdGet.QQPublicCategoryInfo> qq_public_category = PBField.initRepeatMessage(qq_ad_get.QQAdGet.QQPublicCategoryInfo.class);
+  public qq_ad_get.QQAdGet.SessionInfo session_info = new qq_ad_get.QQAdGet.SessionInfo();
   public final PBUInt32Field source_from = PBField.initUInt32(0);
   public final PBStringField str_source_from = PBField.initString("");
   public final PBUInt32Field tribe_id_tag = PBField.initUInt32(0);
@@ -44,12 +45,12 @@ public final class qq_ad_get$QQAdGet$ContextInfo
     Integer localInteger = Integer.valueOf(0);
     Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 66, 74, 80, 88, 98, 104 }, new String[] { "public_id", "article_id", "tribe_tag", "tribe_id_tag", "source_from", "page_url", "existed_mini_program_ids", "str_source_from", "qq_public_category", "load_type", "mini_program_status", "call_from", "launch_channel" }, new Object[] { localLong, localLong, localInteger, localInteger, localInteger, localByteStringMicro, localLong, "", null, localInteger, localInteger, "", localInteger }, ContextInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 66, 74, 80, 88, 98, 104, 114 }, new String[] { "public_id", "article_id", "tribe_tag", "tribe_id_tag", "source_from", "page_url", "existed_mini_program_ids", "str_source_from", "qq_public_category", "load_type", "mini_program_status", "call_from", "launch_channel", "session_info" }, new Object[] { localLong, localLong, localInteger, localInteger, localInteger, localByteStringMicro, localLong, "", null, localInteger, localInteger, "", localInteger, null }, ContextInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.gdt.qq_ad_get.QQAdGet.ContextInfo
  * JD-Core Version:    0.7.0.1
  */

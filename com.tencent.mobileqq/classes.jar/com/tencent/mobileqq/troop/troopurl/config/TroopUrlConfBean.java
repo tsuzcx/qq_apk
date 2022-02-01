@@ -8,15 +8,9 @@ import org.json.JSONObject;
 
 public class TroopUrlConfBean
 {
-  public String a;
-  public boolean a;
+  public String a = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
   public String b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
-  
-  public TroopUrlConfBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public boolean c = false;
   
   public static TroopUrlConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -30,8 +24,8 @@ public class TroopUrlConfBean
       if (i < j)
       {
         localObject = paramArrayOfQConfItem[i];
-        if ((localObject != null) && (((QConfItem)localObject).jdField_a_of_type_JavaLangString != null)) {
-          localObject = ((QConfItem)localObject).jdField_a_of_type_JavaLangString;
+        if ((localObject != null) && (((QConfItem)localObject).b != null)) {
+          localObject = ((QConfItem)localObject).b;
         }
       }
     }
@@ -41,7 +35,7 @@ public class TroopUrlConfBean
       {
         JSONObject localJSONObject = new JSONObject((String)localObject);
         if (localJSONObject.has("announcementUrl")) {
-          localTroopUrlConfBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("announcementUrl");
+          localTroopUrlConfBean.a = localJSONObject.optString("announcementUrl");
         }
         if (localJSONObject.has("autoApprovalUrl")) {
           localTroopUrlConfBean.b = localJSONObject.optString("autoApprovalUrl");
@@ -53,11 +47,11 @@ public class TroopUrlConfBean
           if (k != 1) {
             break label254;
           }
-          localTroopUrlConfBean.jdField_a_of_type_Boolean = bool;
+          localTroopUrlConfBean.c = bool;
         }
         else
         {
-          localTroopUrlConfBean.jdField_a_of_type_Boolean = false;
+          localTroopUrlConfBean.c = false;
         }
       }
       catch (JSONException localJSONException)
@@ -73,8 +67,8 @@ public class TroopUrlConfBean
       }
       i += 1;
       break;
-      if (TextUtils.isEmpty(localTroopUrlConfBean.jdField_a_of_type_JavaLangString)) {
-        localTroopUrlConfBean.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+      if (TextUtils.isEmpty(localTroopUrlConfBean.a)) {
+        localTroopUrlConfBean.a = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
       }
       if (TextUtils.isEmpty(localTroopUrlConfBean.b)) {
         localTroopUrlConfBean.b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
@@ -89,18 +83,18 @@ public class TroopUrlConfBean
   {
     StringBuilder localStringBuilder = new StringBuilder(200);
     localStringBuilder.append("TroopUrlConfBean [announcement: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", autoApproval: ");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", freqLimitVisible: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopurl.config.TroopUrlConfBean
  * JD-Core Version:    0.7.0.1
  */

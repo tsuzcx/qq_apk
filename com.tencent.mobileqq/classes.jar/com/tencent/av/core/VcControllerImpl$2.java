@@ -13,11 +13,11 @@ class VcControllerImpl$2
   {
     QLog.d("VcControllerImpl", 1, "closeVideo start.");
     ??? = this.this$0;
-    VcControllerImpl.access$002((VcControllerImpl)???, ((VcControllerImpl)???).close(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int));
+    VcControllerImpl.access$002((VcControllerImpl)???, ((VcControllerImpl)???).close(this.a, this.b));
     ThreadManager.getUIHandler().removeCallbacks(VcControllerImpl.access$400(this.this$0));
     VcControllerImpl.access$202(this.this$0, -1);
     VcControllerImpl.access$102(this.this$0, null);
-    VcControllerImpl.access$500(this.this$0).a(this.jdField_a_of_type_Long);
+    VcControllerImpl.access$500(this.this$0).a(this.a);
     ??? = new StringBuilder();
     ((StringBuilder)???).append("closeVideo end. mCloseResult = ");
     ((StringBuilder)???).append(VcControllerImpl.access$000(this.this$0));

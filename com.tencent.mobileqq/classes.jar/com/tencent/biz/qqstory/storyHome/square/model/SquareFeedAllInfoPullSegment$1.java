@@ -25,29 +25,29 @@ class SquareFeedAllInfoPullSegment$1
     if ((paramGetSquareFeedInfoResp != null) && (paramErrorMessage.isSuccess()))
     {
       paramBatchGetSquareFeedInfoRequest = new SquareFeedData(new ErrorMessage());
-      paramBatchGetSquareFeedInfoRequest.c = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult.jdField_a_of_type_Boolean;
-      paramBatchGetSquareFeedInfoRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult.b;
-      paramBatchGetSquareFeedInfoRequest.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
-      paramBatchGetSquareFeedInfoRequest.b = paramGetSquareFeedInfoResp.jdField_a_of_type_JavaUtilList;
+      paramBatchGetSquareFeedInfoRequest.c = this.a.b;
+      paramBatchGetSquareFeedInfoRequest.a = this.a.c;
+      paramBatchGetSquareFeedInfoRequest.e = this.b;
+      paramBatchGetSquareFeedInfoRequest.f = paramGetSquareFeedInfoResp.a;
       paramGetSquareFeedInfoResp = (ShareGroupManager)SuperManager.a(7);
       paramErrorMessage = (StoryManager)SuperManager.a(5);
-      Iterator localIterator1 = paramBatchGetSquareFeedInfoRequest.b.iterator();
+      Iterator localIterator1 = paramBatchGetSquareFeedInfoRequest.f.iterator();
       while (localIterator1.hasNext())
       {
         SquareFeed localSquareFeed = (SquareFeed)localIterator1.next();
-        localSquareFeed.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramGetSquareFeedInfoResp.a(localSquareFeed.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-        ArrayList localArrayList = new ArrayList(localSquareFeed.jdField_a_of_type_JavaUtilList.size());
-        Iterator localIterator2 = localSquareFeed.jdField_a_of_type_JavaUtilList.iterator();
+        localSquareFeed.b = paramGetSquareFeedInfoResp.a(localSquareFeed.b);
+        ArrayList localArrayList = new ArrayList(localSquareFeed.c.size());
+        Iterator localIterator2 = localSquareFeed.c.iterator();
         while (localIterator2.hasNext()) {
           localArrayList.add(paramErrorMessage.a((StoryVideoItem)localIterator2.next()));
         }
-        localSquareFeed.jdField_a_of_type_JavaUtilList = localArrayList;
-        paramErrorMessage.a(localSquareFeed.jdField_a_of_type_JavaLangString, localSquareFeed.b, true);
+        localSquareFeed.c = localArrayList;
+        paramErrorMessage.a(localSquareFeed.a, localSquareFeed.d, true);
       }
-      SquareFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedAllInfoPullSegment, paramBatchGetSquareFeedInfoRequest);
+      SquareFeedAllInfoPullSegment.a(this.c, paramBatchGetSquareFeedInfoRequest);
       return;
     }
-    SquareFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedAllInfoPullSegment, paramErrorMessage);
+    SquareFeedAllInfoPullSegment.a(this.c, paramErrorMessage);
   }
 }
 

@@ -14,16 +14,16 @@ class RedPacketKuaKuaFragment$4$1$1$1
   
   public void run()
   {
-    ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    RedPacketKuaKuaFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1$1.a.a.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1$1.a.a.a));
-    RedPacketKuaKuaFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1$1.a.a.a).postDelayed(RedPacketKuaKuaFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1$1.a.a.a), RedPacketKuaKuaFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1$1.a.a.a) * 1000L);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKuaKuaFragment$4$1$1.a.a.a.a(HardCodeUtil.a(R.string.bk));
+    ((Animatable)this.a).stop();
+    this.b.setVisibility(8);
+    RedPacketKuaKuaFragment.f(this.c.b.a.a).removeCallbacks(RedPacketKuaKuaFragment.e(this.c.b.a.a));
+    RedPacketKuaKuaFragment.f(this.c.b.a.a).postDelayed(RedPacketKuaKuaFragment.e(this.c.b.a.a), RedPacketKuaKuaFragment.g(this.c.b.a.a) * 1000L);
+    this.c.b.a.a.a(HardCodeUtil.a(R.string.bo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKuaKuaFragment.4.1.1.1
  * JD-Core Version:    0.7.0.1
  */

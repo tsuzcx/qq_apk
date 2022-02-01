@@ -10,8 +10,8 @@ import org.json.JSONObject;
 public class GdtOpenMvPageHandler
   implements GdtJsCallHandler
 {
-  private WeakReference<GdtAdWebPlugin> jdField_a_of_type_JavaLangRefWeakReference;
-  private Map<Long, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private WeakReference<GdtAdWebPlugin> a;
+  private Map<Long, String> b = new ConcurrentHashMap();
   
   public long a(long paramLong, String paramString1, String paramString2)
   {
@@ -22,11 +22,11 @@ public class GdtOpenMvPageHandler
   {
     if (paramGdtMotiveVideoPageData != null)
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(a(paramGdtMotiveVideoPageData.adId, paramGdtMotiveVideoPageData.url, paramGdtMotiveVideoPageData.adsContent)));
+      String str = (String)this.b.get(Long.valueOf(a(paramGdtMotiveVideoPageData.adId, paramGdtMotiveVideoPageData.url, paramGdtMotiveVideoPageData.adsContent)));
       if (str != null)
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramGdtMotiveVideoPageData);
-        paramGdtMotiveVideoPageData = this.jdField_a_of_type_JavaLangRefWeakReference;
+        this.b.remove(paramGdtMotiveVideoPageData);
+        paramGdtMotiveVideoPageData = this.a;
         if (paramGdtMotiveVideoPageData != null)
         {
           paramGdtMotiveVideoPageData = (GdtAdWebPlugin)paramGdtMotiveVideoPageData.get();
@@ -67,7 +67,7 @@ public class GdtOpenMvPageHandler
     //   3: aload_1
     //   4: ifnull +12 -> 16
     //   7: aload_1
-    //   8: invokevirtual 124	com/tencent/gdtad/jsbridge/GdtAdWebPlugin:a	()Landroid/app/Activity;
+    //   8: invokevirtual 125	com/tencent/gdtad/jsbridge/GdtAdWebPlugin:a	()Landroid/app/Activity;
     //   11: astore 8
     //   13: goto +6 -> 19
     //   16: aconst_null
@@ -81,65 +81,65 @@ public class GdtOpenMvPageHandler
     //   32: istore 4
     //   34: iconst_0
     //   35: istore 5
-    //   37: new 74	java/lang/StringBuilder
+    //   37: new 75	java/lang/StringBuilder
     //   40: dup
-    //   41: invokespecial 75	java/lang/StringBuilder:<init>	()V
+    //   41: invokespecial 76	java/lang/StringBuilder:<init>	()V
     //   44: astore 7
     //   46: aload 7
-    //   48: ldc 126
-    //   50: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: ldc 127
+    //   50: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: pop
     //   54: aload 7
     //   56: aload_3
     //   57: iconst_0
     //   58: aaload
-    //   59: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: pop
-    //   63: ldc 87
+    //   63: ldc 88
     //   65: aload 7
-    //   67: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokestatic 131	com/tencent/gdtad/log/GdtLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   73: new 99	org/json/JSONObject
+    //   67: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   70: invokestatic 132	com/tencent/gdtad/log/GdtLog:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   73: new 100	org/json/JSONObject
     //   76: dup
     //   77: aload_3
     //   78: iconst_0
     //   79: aaload
-    //   80: invokespecial 134	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   80: invokespecial 135	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   83: astore 7
     //   85: aload 7
-    //   87: ldc 136
-    //   89: invokevirtual 140	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   87: ldc 137
+    //   89: invokevirtual 141	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   92: istore 6
     //   94: iload 5
     //   96: istore 4
     //   98: aload 7
-    //   100: ldc 142
-    //   102: invokevirtual 146	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   100: ldc 143
+    //   102: invokevirtual 147	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   105: astore_3
     //   106: iload 5
     //   108: istore 4
     //   110: aload 7
-    //   112: ldc 148
+    //   112: ldc 149
     //   114: iconst_0
-    //   115: invokevirtual 151	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   115: invokevirtual 152	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   118: istore 5
     //   120: iload 5
     //   122: istore 4
-    //   124: ldc 153
-    //   126: new 153	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
+    //   124: ldc 154
+    //   126: new 154	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
     //   129: dup
-    //   130: invokespecial 154	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo:<init>	()V
-    //   133: new 99	org/json/JSONObject
+    //   130: invokespecial 155	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo:<init>	()V
+    //   133: new 100	org/json/JSONObject
     //   136: dup
     //   137: aload_3
-    //   138: invokespecial 134	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   141: invokestatic 159	com/tencent/gdtad/json/GdtJsonPbUtil:a	(Lcom/tencent/mobileqq/pb/PBField;Ljava/lang/Object;)Lcom/tencent/mobileqq/pb/PBField;
-    //   144: invokevirtual 164	java/lang/Class:cast	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   147: checkcast 153	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
+    //   138: invokespecial 135	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   141: invokestatic 160	com/tencent/gdtad/json/GdtJsonPbUtil:a	(Lcom/tencent/mobileqq/pb/PBField;Ljava/lang/Object;)Lcom/tencent/mobileqq/pb/PBField;
+    //   144: invokevirtual 165	java/lang/Class:cast	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   147: checkcast 154	tencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo
     //   150: astore_3
     //   151: aload 7
-    //   153: ldc 166
-    //   155: invokevirtual 146	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   153: ldc 167
+    //   155: invokevirtual 147	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   158: astore 7
     //   160: iload 5
     //   162: istore 4
@@ -163,74 +163,74 @@ public class GdtOpenMvPageHandler
     //   198: astore_3
     //   199: iconst_0
     //   200: istore 5
-    //   202: ldc 87
+    //   202: ldc 88
     //   204: iconst_1
-    //   205: ldc 168
+    //   205: ldc 169
     //   207: aload 7
-    //   209: invokestatic 172	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   212: ldc 174
+    //   209: invokestatic 173	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   212: ldc 175
     //   214: astore 7
     //   216: aload_3
     //   217: iload 5
-    //   219: invokestatic 179	com/tencent/gdtad/util/GdtUtil:a	(I)I
-    //   222: invokestatic 182	com/tencent/gdtad/util/GdtUtil:a	(Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;I)Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData;
+    //   219: invokestatic 180	com/tencent/gdtad/util/GdtUtil:a	(I)I
+    //   222: invokestatic 183	com/tencent/gdtad/util/GdtUtil:a	(Ltencent/gdt/qq_ad_get$QQAdGetRsp$AdInfo;I)Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData;
     //   225: astore 11
     //   227: aload 11
     //   229: ifnull +138 -> 367
     //   232: aload_0
-    //   233: getfield 20	com/tencent/gdtad/jsbridge/GdtOpenMvPageHandler:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   233: getfield 21	com/tencent/gdtad/jsbridge/GdtOpenMvPageHandler:b	Ljava/util/Map;
     //   236: aload_0
     //   237: aload 11
-    //   239: getfield 39	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:adId	J
+    //   239: getfield 40	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:adId	J
     //   242: aload 11
-    //   244: getfield 43	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:url	Ljava/lang/String;
+    //   244: getfield 44	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:url	Ljava/lang/String;
     //   247: aload 11
-    //   249: getfield 46	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:adsContent	Ljava/lang/String;
-    //   252: invokevirtual 48	com/tencent/gdtad/jsbridge/GdtOpenMvPageHandler:a	(JLjava/lang/String;Ljava/lang/String;)J
-    //   255: invokestatic 54	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   249: getfield 47	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:adsContent	Ljava/lang/String;
+    //   252: invokevirtual 49	com/tencent/gdtad/jsbridge/GdtOpenMvPageHandler:a	(JLjava/lang/String;Ljava/lang/String;)J
+    //   255: invokestatic 55	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   258: aload_2
-    //   259: invokeinterface 185 3 0
+    //   259: invokeinterface 186 3 0
     //   264: pop
     //   265: aload_0
-    //   266: new 67	java/lang/ref/WeakReference
+    //   266: new 68	java/lang/ref/WeakReference
     //   269: dup
     //   270: aload_1
-    //   271: invokespecial 188	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   274: putfield 65	com/tencent/gdtad/jsbridge/GdtOpenMvPageHandler:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   271: invokespecial 189	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   274: putfield 66	com/tencent/gdtad/jsbridge/GdtOpenMvPageHandler:a	Ljava/lang/ref/WeakReference;
     //   277: aload 8
-    //   279: invokevirtual 194	android/app/Activity:getIntent	()Landroid/content/Intent;
-    //   282: ldc 196
-    //   284: invokevirtual 201	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   279: invokevirtual 195	android/app/Activity:getIntent	()Landroid/content/Intent;
+    //   282: ldc 197
+    //   284: invokevirtual 202	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   287: astore 10
     //   289: aload 10
     //   291: astore_2
     //   292: aload 10
-    //   294: invokestatic 207	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   294: invokestatic 208	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   297: ifeq +14 -> 311
     //   300: aload 8
-    //   302: invokevirtual 194	android/app/Activity:getIntent	()Landroid/content/Intent;
-    //   305: ldc 209
-    //   307: invokevirtual 201	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   302: invokevirtual 195	android/app/Activity:getIntent	()Landroid/content/Intent;
+    //   305: ldc 210
+    //   307: invokevirtual 202	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   310: astore_2
     //   311: aload 11
     //   313: aload_2
-    //   314: putfield 212	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:refId	Ljava/lang/String;
+    //   314: putfield 213	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:refId	Ljava/lang/String;
     //   317: iload 4
     //   319: ifle +10 -> 329
     //   322: aload 11
     //   324: iload 4
-    //   326: invokevirtual 216	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:setVideoCountDown	(I)V
+    //   326: invokevirtual 217	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:setVideoCountDown	(I)V
     //   329: aload 7
-    //   331: invokestatic 207	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   331: invokestatic 208	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   334: ifne +10 -> 344
     //   337: aload 11
     //   339: aload 7
-    //   341: invokevirtual 219	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:setRewardText	(Ljava/lang/String;)V
-    //   344: ldc 221
-    //   346: invokestatic 227	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   349: checkcast 221	com/tencent/gdtad/IGdtAPI
+    //   341: invokevirtual 220	com/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData:setRewardText	(Ljava/lang/String;)V
+    //   344: ldc 222
+    //   346: invokestatic 228	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   349: checkcast 222	com/tencent/gdtad/IGdtAPI
     //   352: aload_1
-    //   353: invokevirtual 124	com/tencent/gdtad/jsbridge/GdtAdWebPlugin:a	()Landroid/app/Activity;
+    //   353: invokevirtual 125	com/tencent/gdtad/jsbridge/GdtAdWebPlugin:a	()Landroid/app/Activity;
     //   356: aload 11
     //   358: aconst_null
     //   359: invokestatic 233	com/tencent/gdtad/basics/motivevideo/data/StartGdtMotiveVideoParams:b	(Landroid/app/Activity;Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoPageData;Landroid/os/ResultReceiver;)Lcom/tencent/gdtad/basics/motivevideo/data/StartGdtMotiveVideoParams;
@@ -238,7 +238,7 @@ public class GdtOpenMvPageHandler
     //   367: aload_1
     //   368: ifnull +11 -> 379
     //   371: aload_1
-    //   372: invokevirtual 124	com/tencent/gdtad/jsbridge/GdtAdWebPlugin:a	()Landroid/app/Activity;
+    //   372: invokevirtual 125	com/tencent/gdtad/jsbridge/GdtAdWebPlugin:a	()Landroid/app/Activity;
     //   375: astore_2
     //   376: goto +5 -> 381
     //   379: aconst_null
@@ -248,7 +248,7 @@ public class GdtOpenMvPageHandler
     //   385: aload_1
     //   386: ifnull +9 -> 395
     //   389: aload_1
-    //   390: invokevirtual 239	com/tencent/gdtad/jsbridge/GdtAdWebPlugin:a	()Ljava/lang/String;
+    //   390: invokevirtual 239	com/tencent/gdtad/jsbridge/GdtAdWebPlugin:b	()Ljava/lang/String;
     //   393: astore 7
     //   395: aload_2
     //   396: iconst_1
@@ -261,7 +261,7 @@ public class GdtOpenMvPageHandler
     //   409: invokestatic 252	com/tencent/ad/tangram/statistics/AdAnalysisHelperForUtil:reportForJSBridgeInvoked	(Landroid/content/Context;ZLjava/lang/String;Ljava/lang/String;Lcom/tencent/ad/tangram/Ad;)V
     //   412: iconst_1
     //   413: ireturn
-    //   414: ldc 87
+    //   414: ldc 88
     //   416: ldc 254
     //   418: invokestatic 257	com/tencent/gdtad/log/GdtLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   421: iconst_1
@@ -295,7 +295,7 @@ public class GdtOpenMvPageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtOpenMvPageHandler
  * JD-Core Version:    0.7.0.1
  */

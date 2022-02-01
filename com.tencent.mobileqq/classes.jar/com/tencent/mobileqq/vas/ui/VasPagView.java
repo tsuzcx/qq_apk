@@ -28,14 +28,14 @@ public class VasPagView
   }
   
   @NotNull
-  public final IVasPagViewApi a()
+  public final IVasPagViewApi g()
   {
     return (IVasPagViewApi)this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.VasPagView
  * JD-Core Version:    0.7.0.1
  */

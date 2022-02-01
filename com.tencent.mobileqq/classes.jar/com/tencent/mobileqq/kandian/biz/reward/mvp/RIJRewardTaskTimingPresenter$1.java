@@ -21,12 +21,12 @@ class RIJRewardTaskTimingPresenter$1
       QLog.e("RIJRewardTaskTimingPresenter", 1, "timingRunnable --> curTask == null");
       return;
     }
-    if (RIJRewardTaskTimingPresenter.a(this.this$0).a() >= RIJRewardTaskConfig.b()) {
+    if (RIJRewardTaskTimingPresenter.a(this.this$0).c() >= RIJRewardTaskConfig.c()) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    if (localRIJRewardTask.c() > this.jdField_a_of_type_Int) {
+    if (localRIJRewardTask.e() > this.a) {
       bool2 = true;
     } else {
       bool2 = false;
@@ -40,16 +40,16 @@ class RIJRewardTaskTimingPresenter$1
       localStringBuilder.append(", overMaxTaskTime: ");
       localStringBuilder.append(bool2);
       localStringBuilder.append(", rowKey: ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(", maxTaskTimeInMs: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append(", type: ");
       localStringBuilder.append(this.b);
+      localStringBuilder.append(", maxTaskTimeInMs: ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(", type: ");
+      localStringBuilder.append(this.c);
       localStringBuilder.append(", timeDiff: ");
-      localStringBuilder.append(RIJRewardTaskTimingPresenter.a(this.this$0));
+      localStringBuilder.append(RIJRewardTaskTimingPresenter.b(this.this$0));
       QLog.d("RIJRewardTaskTimingPresenter", 2, localStringBuilder.toString());
     }
-    boolean bool2 = RIJRewardTaskTimingPresenter.a(this.this$0, bool1, localRIJRewardTask, this.jdField_a_of_type_Int);
+    boolean bool2 = RIJRewardTaskTimingPresenter.a(this.this$0, bool1, localRIJRewardTask, this.a);
     boolean bool3 = RIJRewardTaskTimingPresenter.a(this.this$0, localRIJRewardTask);
     if ((bool2) && (bool3))
     {
@@ -59,19 +59,19 @@ class RIJRewardTaskTimingPresenter$1
         localStringBuilder.append("force stopTime: taskAllCompletedToday=");
         localStringBuilder.append(bool1);
         localStringBuilder.append(", maxTaskTimeInMs=");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a);
         localStringBuilder.append("curTask=");
         localStringBuilder.append(localRIJRewardTask);
         QLog.i("RIJRewardTaskTimingPresenter", 2, localStringBuilder.toString());
       }
       return;
     }
-    int i = RIJRewardTaskTimingPresenter.a(this.this$0);
+    int i = RIJRewardTaskTimingPresenter.b(this.this$0);
     RIJRewardTaskTimingPresenter.a(this.this$0, NetConnInfoCenter.getServerTimeMillis());
-    int j = RIJRewardTaskConfig.a();
+    int j = RIJRewardTaskConfig.b();
     int k = RIJRewardTaskTimingPresenter.a(this.this$0).a(true);
     int m = RIJRewardTaskTimingPresenter.a(this.this$0).a(false);
-    localRIJRewardTask.a().a(localRIJRewardTask.c() + i).a("RIJ_REWARD_TASK_KEY_KEY_CURRENT_TASK");
+    localRIJRewardTask.a().a(localRIJRewardTask.e() + i).a("RIJ_REWARD_TASK_KEY_KEY_CURRENT_TASK");
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -86,8 +86,8 @@ class RIJRewardTaskTimingPresenter$1
     if (bool1)
     {
       RIJRewardTaskTimingPresenter.a(this.this$0).a(0, true);
-      if (RIJRewardTaskTimingPresenter.a(this.this$0) != null) {
-        RIJRewardTaskTimingPresenter.a(this.this$0).a(0);
+      if (RIJRewardTaskTimingPresenter.c(this.this$0) != null) {
+        RIJRewardTaskTimingPresenter.c(this.this$0).a(0);
       }
     }
     if (bool2) {
@@ -95,7 +95,7 @@ class RIJRewardTaskTimingPresenter$1
     }
     if ((bool1) && (bool2))
     {
-      RIJRewardTaskTimingPresenter.a(this.this$0).postDelayed(RIJRewardTaskTimingPresenter.a(this.this$0), 33L);
+      RIJRewardTaskTimingPresenter.e(this.this$0).postDelayed(RIJRewardTaskTimingPresenter.d(this.this$0), 33L);
       return;
     }
     if (!bool1) {
@@ -117,16 +117,16 @@ class RIJRewardTaskTimingPresenter$1
       localRIJRewardTask.a().a(0).a("RIJ_REWARD_TASK_KEY_KEY_CURRENT_TASK");
       RIJRewardTaskTimingPresenter.a(this.this$0).a(0, true);
       RIJRewardTaskTimingPresenter.a(this.this$0).a(0, false);
-      if (RIJRewardTaskTimingPresenter.a(this.this$0) != null) {
-        RIJRewardTaskTimingPresenter.a(this.this$0).a(0);
+      if (RIJRewardTaskTimingPresenter.c(this.this$0) != null) {
+        RIJRewardTaskTimingPresenter.c(this.this$0).a(0);
       }
     }
-    RIJRewardTaskTimingPresenter.a(this.this$0).postDelayed(RIJRewardTaskTimingPresenter.a(this.this$0), 33L);
+    RIJRewardTaskTimingPresenter.e(this.this$0).postDelayed(RIJRewardTaskTimingPresenter.d(this.this$0), 33L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.mvp.RIJRewardTaskTimingPresenter.1
  * JD-Core Version:    0.7.0.1
  */

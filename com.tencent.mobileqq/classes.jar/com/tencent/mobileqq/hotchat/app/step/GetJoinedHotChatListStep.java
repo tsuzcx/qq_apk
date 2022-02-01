@@ -16,12 +16,12 @@ public class GetJoinedHotChatListStep
   
   protected int doStep()
   {
-    if (!HotChatManager.a(this.mAutomator.a)) {
+    if (!HotChatManager.a(this.mAutomator.k)) {
       return 7;
     }
-    IHotChatHandler localIHotChatHandler = (IHotChatHandler)this.mAutomator.a.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName());
+    IHotChatHandler localIHotChatHandler = (IHotChatHandler)this.mAutomator.k.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName());
     this.a = new GetJoinedHotChatListStep.GetJoindedHotChatListObserver(this, null);
-    this.mAutomator.a.addObserver(this.a);
+    this.mAutomator.k.addObserver(this.a);
     localIHotChatHandler.getMyHotChatList();
     return 2;
   }
@@ -30,14 +30,14 @@ public class GetJoinedHotChatListStep
   {
     if (this.a != null)
     {
-      this.mAutomator.a.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.app.step.GetJoinedHotChatListStep
  * JD-Core Version:    0.7.0.1
  */

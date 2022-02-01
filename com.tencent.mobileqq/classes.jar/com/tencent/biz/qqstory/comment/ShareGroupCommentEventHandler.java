@@ -10,53 +10,53 @@ import com.tencent.widget.ActionSheet;
 public class ShareGroupCommentEventHandler
   extends FeedCommentEventHandler
 {
-  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  ShareGroupItem e;
+  boolean f = false;
+  boolean g = false;
   
   public ShareGroupCommentEventHandler(FeedCommentLego paramFeedCommentLego, ShareGroupItem paramShareGroupItem)
   {
     super(paramFeedCommentLego);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
-    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
+    this.e = paramShareGroupItem;
+    this.f = this.e.isOwner();
+    this.g = this.e.isPublic();
   }
   
   protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
+    if (this.e == null) {
       super.a(paramView, paramCommentEntry, paramInt);
     }
-    paramView = QQStoryContext.a().b();
-    ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a);
+    paramView = QQStoryContext.a().i();
+    ActionSheet localActionSheet = ActionSheet.create(this.a.p);
     if (paramCommentEntry.authorUnionId.equals(paramView))
     {
       if (paramCommentEntry.status == 2) {
-        localActionSheet.addButton(HardCodeUtil.a(2131713809));
+        localActionSheet.addButton(HardCodeUtil.a(2131911349));
       } else {
-        localActionSheet.addButton(HardCodeUtil.a(2131713786));
+        localActionSheet.addButton(HardCodeUtil.a(2131911326));
       }
-      localActionSheet.addButton(HardCodeUtil.a(2131713803), 3);
+      localActionSheet.addButton(HardCodeUtil.a(2131911343), 3);
     }
-    else if ((this.b) && (this.jdField_a_of_type_Boolean))
+    else if ((this.g) && (this.f))
     {
-      localActionSheet.addButton(HardCodeUtil.a(2131713797));
-      localActionSheet.addButton(HardCodeUtil.a(2131713806), 3);
-      localActionSheet.addButton(HardCodeUtil.a(2131713813));
+      localActionSheet.addButton(HardCodeUtil.a(2131911337));
+      localActionSheet.addButton(HardCodeUtil.a(2131911346), 3);
+      localActionSheet.addButton(HardCodeUtil.a(2131911353));
     }
     else
     {
-      localActionSheet.addButton(HardCodeUtil.a(2131713796));
-      localActionSheet.addButton(HardCodeUtil.a(2131713804));
+      localActionSheet.addButton(HardCodeUtil.a(2131911336));
+      localActionSheet.addButton(HardCodeUtil.a(2131911344));
     }
-    localActionSheet.addCancelButton(HardCodeUtil.a(2131713785));
+    localActionSheet.addCancelButton(HardCodeUtil.a(2131898212));
     localActionSheet.setOnButtonClickListener(new FeedCommentEventHandler.OnActionSheetButtonClickListener(this, localActionSheet, paramCommentEntry, paramInt));
     localActionSheet.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.ShareGroupCommentEventHandler
  * JD-Core Version:    0.7.0.1
  */

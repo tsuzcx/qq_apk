@@ -27,7 +27,7 @@ class TraeAudioManager$speakerSwitchThread
       if (!TraeAudioManager.enableDeviceSwitchFlag)
       {
         if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "connect speakerPhone: disableDeviceSwitchFlag");
+          QLog.w("TraeAudioManager", 2, "connect speakerPhone: disableDeviceSwitchFlag");
         }
         return;
       }
@@ -38,7 +38,7 @@ class TraeAudioManager$speakerSwitchThread
         ((StringBuilder)localObject).append(getDeviceName());
         ((StringBuilder)localObject).append(" _running:");
         ((StringBuilder)localObject).append(this._running);
-        QLog.w("TRAE", 2, ((StringBuilder)localObject).toString());
+        QLog.w("TraeAudioManager", 2, ((StringBuilder)localObject).toString());
       }
       i = 0;
     }
@@ -66,7 +66,7 @@ class TraeAudioManager$speakerSwitchThread
         continue;
         return;
         if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "connect speakerPhone: do nothing");
+          QLog.w("TraeAudioManager", 2, "connect speakerPhone: do nothing");
         }
         return;
       }
@@ -84,7 +84,7 @@ class TraeAudioManager$speakerSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.speakerSwitchThread
  * JD-Core Version:    0.7.0.1
  */

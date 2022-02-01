@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.feeds.channelcover;
 
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.ChannelListDynamicOrderConfigHandler;
@@ -9,7 +9,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.ChannelCoverInfoModule;
 import com.tencent.mobileqq.kandian.repo.feeds.SelectPositionModule;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelCoverInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.PositionData;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
 import org.json.JSONObject;
@@ -23,49 +22,49 @@ final class ChannelCoverView$3
   {
     for (;;)
     {
-      String str1;
+      String str;
       try
       {
         Object localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("folder_status", RIJKanDianFolderStatus.reportFolderStatus);
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo != null) {
-          ((JSONObject)localObject1).put("channel_id", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mChannelCoverId);
+        if (this.a != null) {
+          ((JSONObject)localObject1).put("channel_id", this.a.mChannelCoverId);
         }
         ((JSONObject)localObject1).put("current_channel_id", 0);
         if (!NetworkState.isWifiConn()) {
-          break label528;
+          break label514;
         }
         i = 2;
         ((JSONObject)localObject1).put("network_type", i);
-        i = this.jdField_a_of_type_Int;
-        int j = ChannelCoverView.jdField_a_of_type_Int;
+        i = this.b;
+        int j = ChannelCoverView.a;
         if (i == j) {
           ((JSONObject)localObject1).put("channel_type", "2");
-        } else if (this.jdField_a_of_type_Int == ChannelCoverView.b) {
+        } else if (this.b == ChannelCoverView.b) {
           ((JSONObject)localObject1).put("channel_type", "1");
         }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo;
-        if ((localObject2 != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mColumnType == 0)) {
+        localObject2 = this.a;
+        if ((localObject2 != null) && (this.a.mColumnType == 0)) {
           ((JSONObject)localObject1).put("content_type", 1);
         } else {
           ((JSONObject)localObject1).put("content_type", 2);
         }
-        if (this.b != -1) {
-          ((JSONObject)localObject1).put("reddot_status", this.b);
-        }
         if (this.c != -1) {
-          ((JSONObject)localObject1).put("location", this.c + 1);
+          ((JSONObject)localObject1).put("reddot_status", this.c);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo != null) {
-          ((JSONObject)localObject1).put("is_change", ChannelListDynamicOrderConfigHandler.a(ReadInJoyUtils.a(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mChannelCoverId));
+        if (this.d != -1) {
+          ((JSONObject)localObject1).put("location", this.d + 1);
+        }
+        if (this.a != null) {
+          ((JSONObject)localObject1).put("is_change", ChannelListDynamicOrderConfigHandler.b(ReadInJoyUtils.b(), this.a.mChannelCoverId));
         }
         ((JSONObject)localObject1).put("style", 0);
-        if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mChannelCoverId == 41695))
+        if ((this.a != null) && (this.a.mChannelCoverId == 41695))
         {
-          localObject2 = ReadInJoyLogicEngine.a().a();
+          localObject2 = ReadInJoyLogicEngine.a().j();
           if (localObject2 != null)
           {
-            localObject2 = ((SelectPositionModule)localObject2).a();
+            localObject2 = ((SelectPositionModule)localObject2).b();
             if (localObject2 != null)
             {
               ((JSONObject)localObject1).put("channel_city", ((PositionData)localObject2).city);
@@ -79,11 +78,11 @@ final class ChannelCoverView$3
             }
           }
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo != null)
+        if (this.a != null)
         {
-          i = ChannelCoverInfoModule.a();
-          j = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mChannelCoverId;
-          if ((i == j) && (ChannelCoverInfoModule.a() != 0)) {
+          i = ChannelCoverInfoModule.g();
+          j = this.a.mChannelCoverId;
+          if ((i == j) && (ChannelCoverInfoModule.g() != 0)) {
             ((JSONObject)localObject1).put("channelid_to_mainfeeds", 1);
           } else {
             ((JSONObject)localObject1).put("channelid_to_mainfeeds", 0);
@@ -100,29 +99,28 @@ final class ChannelCoverView$3
           ((StringBuilder)localObject2).append(localException.getMessage());
           QLog.d("ChannelCoverView", 2, ((StringBuilder)localObject2).toString());
         }
-        str1 = "";
+        str = "";
       }
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("reportRecommendEvent actionName =");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.e);
         ((StringBuilder)localObject2).append("; reportString = ");
-        ((StringBuilder)localObject2).append(str1);
+        ((StringBuilder)localObject2).append(str);
         QLog.d("ChannelCoverView", 2, ((StringBuilder)localObject2).toString());
       }
-      Object localObject2 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      String str2 = this.jdField_a_of_type_JavaLangString;
-      ((IPublicAccountReportUtils)localObject2).publicAccountReportClickEvent(null, "", str2, str2, 0, 0, "", "", "", str1, false);
+      Object localObject2 = this.e;
+      PublicAccountReportUtils.a(null, "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", str, false);
       return;
-      label528:
+      label514:
       int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelcover.ChannelCoverView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,34 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class Conversation$61
-  extends AccountObserver
+  implements Runnable
 {
-  Conversation$61(Conversation paramConversation) {}
+  Conversation$61(Conversation paramConversation, Object paramObject) {}
   
-  protected void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, long paramLong1, boolean paramBoolean2, boolean paramBoolean3, long paramLong2, boolean paramBoolean4)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
+    Object localObject = this.a;
+    int i;
+    if ((localObject instanceof String)) {
+      try
+      {
+        i = Integer.parseInt((String)localObject);
       }
-      this.a.a.a("AccountObserver.onOnlineStatusChanged");
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+    } else {
+      i = 0;
     }
-  }
-  
-  protected void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
-    }
-    this.a.a.a("AccountObserver.onOnlineStatusPush");
+    ReportController.b(this.this$0.aF, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "1", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.61
  * JD-Core Version:    0.7.0.1
  */

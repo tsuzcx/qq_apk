@@ -26,7 +26,7 @@ final class HippyBuffer$Parser
     this.mPropsCharBuffer = new char[33];
   }
   
-  private final int hashCodeOfBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private int hashCodeOfBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     int i = 0;
     int j = 0;
@@ -38,7 +38,7 @@ final class HippyBuffer$Parser
     return j;
   }
   
-  private final Object parse()
+  private Object parse()
   {
     Object localObject2 = readObject();
     Object localObject1 = localObject2;
@@ -48,7 +48,7 @@ final class HippyBuffer$Parser
     return localObject1;
   }
   
-  private final HippyArray readArray()
+  private HippyArray readArray()
   {
     int j = readUnsignedInt();
     HippyArray localHippyArray = new HippyArray();
@@ -61,7 +61,7 @@ final class HippyBuffer$Parser
     return localHippyArray;
   }
   
-  private final byte readDataType()
+  private byte readDataType()
   {
     byte[] arrayOfByte = this.mBuffer;
     int i = this.mPosition;
@@ -70,7 +70,7 @@ final class HippyBuffer$Parser
     return b;
   }
   
-  private final Object readDouble()
+  private Object readDouble()
   {
     double d1 = Double.longBitsToDouble(readLong());
     if (d1 > 2147483647.0D)
@@ -85,13 +85,13 @@ final class HippyBuffer$Parser
     return Double.valueOf(d1);
   }
   
-  private final int readInteger()
+  private int readInteger()
   {
     int i = readUnsignedInt();
     return i & 0x80000000 ^ (i << 31 >> 31 ^ i) >> 1;
   }
   
-  private final long readLong()
+  private long readLong()
   {
     byte[] arrayOfByte = this.mBuffer;
     int i = this.mPosition;
@@ -107,7 +107,7 @@ final class HippyBuffer$Parser
     return (l1 & 0xFF) + ((l2 & 0xFF) << 8) + ((l3 & 0xFF) << 16) + ((l4 & 0xFF) << 24) + ((l5 & 0xFF) << 32) + ((l6 & 0xFF) << 40) + ((0xFF & l7) << 48) + (l8 << 56);
   }
   
-  private final HippyMap readMap()
+  private HippyMap readMap()
   {
     int j = readUnsignedInt();
     HippyMap localHippyMap = new HippyMap();
@@ -124,12 +124,12 @@ final class HippyBuffer$Parser
     return localHippyMap;
   }
   
-  private final Object readObject()
+  private Object readObject()
   {
     return readObject(null);
   }
   
-  private final Object readObject(String paramString)
+  private Object readObject(String paramString)
   {
     int i = readDataType();
     switch (i)
@@ -165,7 +165,7 @@ final class HippyBuffer$Parser
     return HippyBuffer.access$700();
   }
   
-  private final String readProperty()
+  private String readProperty()
   {
     int n = readUnsignedInt();
     Object localObject1;
@@ -284,7 +284,7 @@ final class HippyBuffer$Parser
     return paramString;
   }
   
-  private final int readUnsignedInt()
+  private int readUnsignedInt()
   {
     int j = 0;
     int i = 0;
@@ -307,7 +307,7 @@ final class HippyBuffer$Parser
     return j | m << i;
   }
   
-  private final void release()
+  private void release()
   {
     this.mPosition = 0;
     this.mBuffer = null;
@@ -319,7 +319,7 @@ final class HippyBuffer$Parser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.HippyBuffer.Parser
  * JD-Core Version:    0.7.0.1
  */

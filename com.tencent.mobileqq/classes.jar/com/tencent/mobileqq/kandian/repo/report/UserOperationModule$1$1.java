@@ -17,7 +17,7 @@ class UserOperationModule$1$1
     localStringBuilder.append(", errMsg=");
     localStringBuilder.append(paramString2);
     QLog.e("UserOperationModule", 1, localStringBuilder.toString());
-    UserOperationModule.access$000(this.a.this$0, this.a.jdField_a_of_type_Int, "", this.a.b, 2, this.a.jdField_a_of_type_Boolean);
+    UserOperationModule.access$000(this.a.this$0, this.a.c, "", this.a.b, 2, this.a.d);
   }
   
   public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
@@ -27,12 +27,12 @@ class UserOperationModule$1$1
     } else {
       paramString = "";
     }
-    UserOperationModule.access$000(this.a.this$0, this.a.jdField_a_of_type_Int, paramString, this.a.b, 2, this.a.jdField_a_of_type_Boolean);
+    UserOperationModule.access$000(this.a.this$0, this.a.c, paramString, this.a.b, 2, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.UserOperationModule.1.1
  * JD-Core Version:    0.7.0.1
  */

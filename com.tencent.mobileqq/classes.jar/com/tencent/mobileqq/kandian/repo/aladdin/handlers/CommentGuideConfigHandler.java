@@ -21,25 +21,6 @@ public class CommentGuideConfigHandler
 {
   public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd");
   
-  public static int a()
-  {
-    String[] arrayOfString = ((String)RIJSPUtils.a("readinjoy_comment_guide_show_num_one_day", "0_0")).split("_");
-    if ((arrayOfString != null) && (arrayOfString.length >= 2) && (a(System.currentTimeMillis()).equals(arrayOfString[0]))) {
-      return Integer.valueOf(arrayOfString[1]).intValue();
-    }
-    return 0;
-  }
-  
-  public static String a()
-  {
-    String str = (String)RIJSPUtils.a("readinjoy_comment_guide_wording", HardCodeUtil.a(2131702368));
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("wording = ");
-    localStringBuilder.append(str);
-    QLog.d("CommentGuideConfigHandler", 1, localStringBuilder.toString());
-    return str;
-  }
-  
   public static String a(long paramLong)
   {
     Date localDate = new Date(paramLong);
@@ -48,7 +29,7 @@ public class CommentGuideConfigHandler
   
   public static String a(String paramString)
   {
-    String str = (String)RIJSPUtils.a("readinjoy_comment_guide_base_jump_url", "");
+    String str = (String)RIJSPUtils.b("readinjoy_comment_guide_base_jump_url", "");
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("jump = ");
     ((StringBuilder)localObject).append(str);
@@ -84,25 +65,6 @@ public class CommentGuideConfigHandler
     return str;
   }
   
-  public static JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("style_ID", "ReadInJoy_comment_pop_guide");
-      localJSONObject.put("guide_image", RIJSPUtils.a("readinjoy_comment_guide_image_url", "readinjoy_comment_guide_big_bg"));
-      localJSONObject.put("guide_wording", a());
-      localJSONObject.put("jump_button_text", HardCodeUtil.a(2131702367));
-      localJSONObject.put("dismiss_button_image", "readinjoy_comment_guide_close");
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("CommentGuideConfigHandler", 1, "getGuidePopupWindowData ", localJSONException);
-    }
-    return localJSONObject;
-  }
-  
   public static void a(int paramInt)
   {
     String str = a(System.currentTimeMillis());
@@ -116,7 +78,7 @@ public class CommentGuideConfigHandler
   public static boolean a()
   {
     boolean bool;
-    if (((Integer)RIJSPUtils.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(-1))).intValue() == 1) {
+    if (((Integer)RIJSPUtils.b("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(-1))).intValue() == 1) {
       bool = true;
     } else {
       bool = false;
@@ -131,7 +93,7 @@ public class CommentGuideConfigHandler
   public static boolean b()
   {
     boolean bool1;
-    if (((Integer)RIJSPUtils.a("readinjoy_comment_guide_should_show", Integer.valueOf(-1))).intValue() == 1) {
+    if (((Integer)RIJSPUtils.b("readinjoy_comment_guide_should_show", Integer.valueOf(-1))).intValue() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -139,8 +101,8 @@ public class CommentGuideConfigHandler
     boolean bool2 = bool1;
     if (bool1)
     {
-      int i = ((Integer)RIJSPUtils.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(3))).intValue();
-      int j = a();
+      int i = ((Integer)RIJSPUtils.b("readinjoy_comment_guide_max_show_count", Integer.valueOf(3))).intValue();
+      int j = c();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("count = ");
       localStringBuilder.append(i);
@@ -162,6 +124,44 @@ public class CommentGuideConfigHandler
     localStringBuilder.append(bool2);
     QLog.d("CommentGuideConfigHandler", 1, localStringBuilder.toString());
     return bool2;
+  }
+  
+  public static int c()
+  {
+    String[] arrayOfString = ((String)RIJSPUtils.b("readinjoy_comment_guide_show_num_one_day", "0_0")).split("_");
+    if ((arrayOfString != null) && (arrayOfString.length >= 2) && (a(System.currentTimeMillis()).equals(arrayOfString[0]))) {
+      return Integer.valueOf(arrayOfString[1]).intValue();
+    }
+    return 0;
+  }
+  
+  public static String d()
+  {
+    String str = (String)RIJSPUtils.b("readinjoy_comment_guide_wording", HardCodeUtil.a(2131900372));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("wording = ");
+    localStringBuilder.append(str);
+    QLog.d("CommentGuideConfigHandler", 1, localStringBuilder.toString());
+    return str;
+  }
+  
+  public static JSONObject e()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("style_ID", "ReadInJoy_comment_pop_guide");
+      localJSONObject.put("guide_image", RIJSPUtils.b("readinjoy_comment_guide_image_url", "readinjoy_comment_guide_big_bg"));
+      localJSONObject.put("guide_wording", d());
+      localJSONObject.put("jump_button_text", HardCodeUtil.a(2131900371));
+      localJSONObject.put("dismiss_button_image", "readinjoy_comment_guide_close");
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "getGuidePopupWindowData ", localJSONException);
+    }
+    return localJSONObject;
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -209,7 +209,7 @@ public class CommentGuideConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.CommentGuideConfigHandler
  * JD-Core Version:    0.7.0.1
  */

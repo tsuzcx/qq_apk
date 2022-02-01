@@ -12,17 +12,17 @@ class AECropperImageView$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView.getImageMatrix();
-    float f2 = AECropperImageView.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView, this.jdField_a_of_type_AndroidGraphicsMatrix, 2);
-    float f3 = AECropperImageView.a(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView, this.jdField_a_of_type_AndroidGraphicsMatrix, 5);
-    paramValueAnimator.postTranslate(this.jdField_a_of_type_Float * f1 - (f2 - this.b), this.c * f1 - (f3 - this.d));
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView.setImageMatrix(paramValueAnimator);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperAECropperImageView.invalidate();
+    paramValueAnimator = this.f.getImageMatrix();
+    float f2 = AECropperImageView.a(this.f, this.a, 2);
+    float f3 = AECropperImageView.a(this.f, this.a, 5);
+    paramValueAnimator.postTranslate(this.b * f1 - (f2 - this.c), this.d * f1 - (f3 - this.e));
+    this.f.setImageMatrix(paramValueAnimator);
+    this.f.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.nocropper.AECropperImageView.3
  * JD-Core Version:    0.7.0.1
  */

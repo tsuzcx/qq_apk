@@ -22,7 +22,7 @@ class AIORevokeMsgHelper$7
   
   public void onMsgForwardWXResult(int paramInt)
   {
-    if ((AIORevokeMsgHelper.a(this.a).a == 0) || (AIORevokeMsgHelper.a(this.a).a == 3000) || (AIORevokeMsgHelper.a(this.a).a == 1)) {
+    if ((AIORevokeMsgHelper.c(this.a).a == 0) || (AIORevokeMsgHelper.c(this.a).a == 3000) || (AIORevokeMsgHelper.c(this.a).a == 1)) {
       AIORevokeMsgHelper.a(this.a, paramInt);
     }
   }
@@ -36,8 +36,8 @@ class AIORevokeMsgHelper$7
       ((StringBuilder)localObject1).append(paramBoolean1);
       QLog.d("MsgRevoke", 4, ((StringBuilder)localObject1).toString());
     }
-    boolean bool = AIORevokeMsgHelper.a(this.a).getMsgCache().e();
-    AIORevokeMsgHelper.a(this.a).a().removeMessages(267387140);
+    boolean bool = AIORevokeMsgHelper.b(this.a).getMsgCache().D();
+    AIORevokeMsgHelper.d(this.a).j().removeMessages(267387140);
     Object localObject1 = new ArrayList();
     Object localObject2;
     if ((paramList != null) && (paramList.size() > 0))
@@ -60,7 +60,7 @@ class AIORevokeMsgHelper$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIORevokeMsgHelper.7
  * JD-Core Version:    0.7.0.1
  */

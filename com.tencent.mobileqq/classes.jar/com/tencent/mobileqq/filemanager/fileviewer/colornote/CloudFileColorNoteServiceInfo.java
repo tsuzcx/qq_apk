@@ -72,7 +72,7 @@ public class CloudFileColorNoteServiceInfo
     localBuilder.a((String)localObject);
     localBuilder.b(this.a.fileName);
     localBuilder.c(FileUtil.a(this.a.fileSize));
-    int i = FileManagerUtil.a(FileManagerUtil.a(this.a.fileName));
+    int i = FileManagerUtil.c(FileManagerUtil.c(this.a.fileName));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("resdrawable://");
     ((StringBuilder)localObject).append(i);
@@ -86,7 +86,7 @@ public class CloudFileColorNoteServiceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.CloudFileColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

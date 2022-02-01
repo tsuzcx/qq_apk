@@ -23,8 +23,8 @@ public class TroopDNANavBar
   extends NavigateBar
   implements Animation.AnimationListener
 {
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ImageView g;
+  private Animation h;
   
   public TroopDNANavBar(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
@@ -51,37 +51,32 @@ public class TroopDNANavBar
     return paramQQAppInterface.toString();
   }
   
-  public static void e()
+  public static void h()
   {
     ThreadManager.postImmediately(new TroopDNANavBar.3(), null, false);
   }
   
-  public long a()
-  {
-    return 15000L;
-  }
-  
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560951, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362982));
+    View localView = LayoutInflater.from(this.c).inflate(2131627292, null);
+    this.g = ((ImageView)localView.findViewById(2131428783));
     return localView;
   }
   
-  public void a()
+  public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a != null)) {
-      ((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a.b(true);
+    if ((this.a != null) && (((ChatDrawerHelper)this.a.q(124)).b != null)) {
+      ((ChatDrawerHelper)this.a.q(124)).b.b(true);
     }
     ReportController.b(null, "dc00898", "", "", "0X800A469", "0X800A469", 0, 0, "", "", "", "");
   }
   
-  public boolean a()
+  public boolean c()
   {
-    boolean bool = TroopMemberRecommendManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a != null))
+    boolean bool = TroopMemberRecommendManager.a(this.a.d).a(this.a.ah.c);
+    if ((this.a != null) && (((ChatDrawerHelper)this.a.q(124)).b != null))
     {
-      int i = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
+      int i = PreferenceManager.getDefaultSharedPreferences(this.c).getInt(a(this.b), 0);
       if (QLog.isColorLevel()) {
         QLog.d("NavigateBarManager.TroopDNANavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
       }
@@ -91,23 +86,28 @@ public class TroopDNANavBar
     return false;
   }
   
-  public void b()
+  public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopDNANavBar.1(this), 500L);
+    this.g.postDelayed(new TroopDNANavBar.1(this), 500L);
     ThreadManager.postImmediately(new TroopDNANavBar.2(this), null, false);
   }
   
-  public void c() {}
+  public void e() {}
   
-  public void d()
+  public void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.g.clearAnimation();
+  }
+  
+  public long g()
+  {
+    return 15000L;
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.g.clearAnimation();
+    this.g.startAnimation(this.h);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -116,7 +116,7 @@ public class TroopDNANavBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.TroopDNANavBar
  * JD-Core Version:    0.7.0.1
  */

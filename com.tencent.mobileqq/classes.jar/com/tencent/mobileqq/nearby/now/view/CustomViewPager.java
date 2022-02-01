@@ -33,7 +33,7 @@ public class CustomViewPager
     if ((getAdapter() instanceof VideoPlayerPagerAdapter))
     {
       VideoPlayerPagerAdapter localVideoPlayerPagerAdapter = (VideoPlayerPagerAdapter)getAdapter();
-      return super.getCurrentItem() - 50 + localVideoPlayerPagerAdapter.jdField_a_of_type_Int;
+      return super.getCurrentItem() - 50 + localVideoPlayerPagerAdapter.h;
     }
     return super.getCurrentItem();
   }
@@ -45,8 +45,8 @@ public class CustomViewPager
     if ((getAdapter() instanceof VideoPlayerPagerAdapter))
     {
       VideoPlayerPagerAdapter localVideoPlayerPagerAdapter = (VideoPlayerPagerAdapter)getAdapter();
-      j = super.getCurrentItem() - 50 + localVideoPlayerPagerAdapter.jdField_a_of_type_Int;
-      i = localVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilList.size();
+      j = super.getCurrentItem() - 50 + localVideoPlayerPagerAdapter.h;
+      i = localVideoPlayerPagerAdapter.d.size();
     }
     else
     {
@@ -118,7 +118,7 @@ public class CustomViewPager
   {
     if ((getAdapter() instanceof VideoPlayerPagerAdapter))
     {
-      super.setCurrentItem(paramInt + 50 - ((VideoPlayerPagerAdapter)getAdapter()).jdField_a_of_type_Int);
+      super.setCurrentItem(paramInt + 50 - ((VideoPlayerPagerAdapter)getAdapter()).h);
       return;
     }
     super.setCurrentItem(paramInt);
@@ -128,7 +128,7 @@ public class CustomViewPager
   {
     if ((getAdapter() instanceof VideoPlayerPagerAdapter))
     {
-      super.setCurrentItem(paramInt + 50 - ((VideoPlayerPagerAdapter)getAdapter()).jdField_a_of_type_Int, paramBoolean);
+      super.setCurrentItem(paramInt + 50 - ((VideoPlayerPagerAdapter)getAdapter()).h, paramBoolean);
       return;
     }
     super.setCurrentItem(paramInt, paramBoolean);
@@ -136,7 +136,7 @@ public class CustomViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.CustomViewPager
  * JD-Core Version:    0.7.0.1
  */

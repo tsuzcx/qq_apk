@@ -10,13 +10,13 @@ public class HbSkinInfo$HbSkinFactory
 {
   public static HbSkinInfo a(String paramString)
   {
-    HbSkinInfo localHbSkinInfo = new HbSkinInfo(HardCodeUtil.a(R.string.aO));
-    localHbSkinInfo.jdField_b_of_type_Int = -2;
-    localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
-    localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    localHbSkinInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase.title = paramString;
-    localHbSkinInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase.icon = null;
-    localHbSkinInfo.jdField_a_of_type_Int = 0;
+    HbSkinInfo localHbSkinInfo = new HbSkinInfo(HardCodeUtil.a(R.string.aT));
+    localHbSkinInfo.b = -2;
+    localHbSkinInfo.f.skin_id = -2;
+    localHbSkinInfo.f.skin_permission_state = 1L;
+    localHbSkinInfo.g.title = paramString;
+    localHbSkinInfo.g.icon = null;
+    localHbSkinInfo.a = 0;
     return localHbSkinInfo;
   }
   
@@ -26,7 +26,7 @@ public class HbSkinInfo$HbSkinFactory
     while (paramList.hasNext())
     {
       HbSkinInfo localHbSkinInfo = (HbSkinInfo)paramList.next();
-      if (localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
+      if (localHbSkinInfo.f.skin_id == paramInt) {
         return localHbSkinInfo;
       }
     }
@@ -35,31 +35,31 @@ public class HbSkinInfo$HbSkinFactory
   
   public static HbSkinInfo b(String paramString)
   {
-    HbSkinInfo localHbSkinInfo = new HbSkinInfo(HardCodeUtil.a(R.string.aQ));
-    localHbSkinInfo.jdField_b_of_type_Int = -1;
-    localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
-    localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.is_hide_title = 0;
-    localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.blessing = HardCodeUtil.a(R.string.L);
-    localHbSkinInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase.title = paramString;
-    localHbSkinInfo.jdField_a_of_type_Int = -1;
+    HbSkinInfo localHbSkinInfo = new HbSkinInfo(HardCodeUtil.a(R.string.aV));
+    localHbSkinInfo.b = -1;
+    localHbSkinInfo.f.skin_id = 0;
+    localHbSkinInfo.f.skin_permission_state = 1L;
+    localHbSkinInfo.f.is_hide_title = 0;
+    localHbSkinInfo.f.blessing = HardCodeUtil.a(R.string.L);
+    localHbSkinInfo.g.title = paramString;
+    localHbSkinInfo.a = -1;
     return localHbSkinInfo;
   }
   
   public static HbSkinInfo c(String paramString)
   {
-    HbSkinInfo localHbSkinInfo = new HbSkinInfo(HardCodeUtil.a(R.string.aP));
-    localHbSkinInfo.jdField_b_of_type_JavaLangString = paramString;
-    localHbSkinInfo.jdField_b_of_type_Int = 1;
-    localHbSkinInfo.jdField_a_of_type_Int = 1000;
-    localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
-    localHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    HbSkinInfo localHbSkinInfo = new HbSkinInfo(HardCodeUtil.a(R.string.aU));
+    localHbSkinInfo.h = paramString;
+    localHbSkinInfo.b = 1;
+    localHbSkinInfo.a = 1000;
+    localHbSkinInfo.f.skin_id = -1;
+    localHbSkinInfo.f.skin_permission_state = 1L;
     return localHbSkinInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinInfo.HbSkinFactory
  * JD-Core Version:    0.7.0.1
  */

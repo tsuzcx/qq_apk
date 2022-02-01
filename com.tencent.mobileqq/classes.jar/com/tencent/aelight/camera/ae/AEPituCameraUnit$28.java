@@ -1,32 +1,28 @@
 package com.tencent.aelight.camera.ae;
 
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
+import android.support.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import com.tencent.aelight.camera.log.AEQLog;
 
 class AEPituCameraUnit$28
-  implements Runnable
+  implements Observer<Boolean>
 {
-  AEPituCameraUnit$28(AEPituCameraUnit paramAEPituCameraUnit, LazyLoadAnimationDrawable paramLazyLoadAnimationDrawable) {}
+  AEPituCameraUnit$28(AEPituCameraUnit paramAEPituCameraUnit) {}
   
-  public void run()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (AEPituCameraUnit.a(this.this$0) == null)
-    {
-      ViewStub localViewStub = (ViewStub)this.this$0.jdField_a_of_type_AndroidViewView.findViewById(2064122649);
-      AEPituCameraUnit.a(this.this$0, (ImageView)localViewStub.inflate().findViewById(2064121956));
-    }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(AEPituCameraUnit.a(this.this$0), this.a.getTotalDuration());
-    AEPituCameraUnit.a(this.this$0).setVisibility(0);
-    AEPituCameraUnit.a(this.this$0).setImageDrawable(this.a);
-    this.a.start();
+    String str = this.a.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getBeautyFilterPanelVisibleLiveData--isShow=");
+    localStringBuilder.append(paramBoolean);
+    AEQLog.b(str, localStringBuilder.toString());
+    AEPituCameraUnit.d(this.a, Boolean.TRUE.equals(paramBoolean));
+    AEPituCameraUnit.n(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.28
  * JD-Core Version:    0.7.0.1
  */

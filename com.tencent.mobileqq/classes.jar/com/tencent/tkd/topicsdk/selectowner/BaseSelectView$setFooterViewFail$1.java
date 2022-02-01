@@ -13,12 +13,12 @@ final class BaseSelectView$setFooterViewFail$1
   
   public final void onClick(View paramView)
   {
-    BaseSelectView.a(this.a).b();
+    BaseSelectView.b(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.selectowner.BaseSelectView.setFooterViewFail.1
  * JD-Core Version:    0.7.0.1
  */

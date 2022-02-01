@@ -11,12 +11,12 @@ class QCircleChatIceBreakItemBuilder$1
   
   public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQCircleChatIceBreakItemBuilder$IceBreakViewHolder.a.setClickable(paramBoolean ^ true);
+    this.a.j.setClickable(paramBoolean ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QCircleChatIceBreakItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

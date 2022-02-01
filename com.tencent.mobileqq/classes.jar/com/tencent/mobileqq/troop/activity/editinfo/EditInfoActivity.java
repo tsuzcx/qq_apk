@@ -165,7 +165,7 @@ public class EditInfoActivity
       try
       {
         if (this.mCountType == 2) {
-          i = ((IEditInfoApi)localObject).a();
+          i = ((IEditInfoApi)localObject).d();
         } else if (this.mCountType == 0) {
           i = paramQQText.toString().getBytes("utf-8").length;
         } else {
@@ -230,7 +230,7 @@ public class EditInfoActivity
     else {
       showSingEditer();
     }
-    this.mEditInfo.setOnClickListener(this.editInfoApi.a());
+    this.mEditInfo.setOnClickListener(this.editInfoApi.e());
     if (!this.mIsEditMode) {
       noEdit();
     }
@@ -259,15 +259,15 @@ public class EditInfoActivity
   
   private void initEditNum()
   {
-    this.mEditInfo = ((EditText)super.findViewById(2131366086));
-    this.mNum = ((TextView)super.findViewById(2131366087));
+    this.mEditInfo = ((EditText)super.findViewById(2131432366));
+    this.mNum = ((TextView)super.findViewById(2131432367));
     this.mEditInfo.addTextChangedListener(new EditInfoActivity.5(this));
     initEditStr();
   }
   
   private void initTitleBar()
   {
-    Object localObject = findViewById(2131376636);
+    Object localObject = findViewById(2131444897);
     if ((localObject instanceof NavBarCommon))
     {
       NavBarCommon localNavBarCommon = (NavBarCommon)localObject;
@@ -277,10 +277,10 @@ public class EditInfoActivity
       }
       localObject = this.mRightStr;
       if (localObject == null) {
-        localObject = getString(2131696100);
+        localObject = getString(2131893865);
       }
       localNavBarCommon.setRightButton((String)localObject);
-      localNavBarCommon.setOnItemSelectListener(this.editInfoApi.a());
+      localNavBarCommon.setOnItemSelectListener(this.editInfoApi.b());
       if (!this.mIsEditMode) {
         localNavBarCommon.setRightViewTextVisible(8);
       }
@@ -295,11 +295,11 @@ public class EditInfoActivity
   {
     initEditInfo();
     initTitleBar();
-    RelativeLayout localRelativeLayout1 = (RelativeLayout)super.findViewById(2131366072);
-    RelativeLayout localRelativeLayout2 = (RelativeLayout)super.findViewById(2131366047);
-    View localView = findViewById(2131364829);
+    RelativeLayout localRelativeLayout1 = (RelativeLayout)super.findViewById(2131432348);
+    RelativeLayout localRelativeLayout2 = (RelativeLayout)super.findViewById(2131432323);
+    View localView = findViewById(2131430954);
     if (localView == null) {
-      setContentBackgroundResource(2130838739);
+      setContentBackgroundResource(2130838958);
     } else if (ThemeUtil.isInNightMode(this.mApp)) {
       localView.setVisibility(0);
     } else {
@@ -327,14 +327,14 @@ public class EditInfoActivity
   
   private void showMultiEditer()
   {
-    super.setContentView(2131559082);
-    this.mRoot = ((InputMethodLinearLayout)super.findViewById(2131376809));
+    super.setContentView(2131624743);
+    this.mRoot = ((InputMethodLinearLayout)super.findViewById(2131445137));
     this.mRoot.setOnSizeChangedListenner(this);
     initEditNum();
     if (!this.mIsFullScreen)
     {
       this.mEditInfo.getLayoutParams().height = ((int)DisplayUtils.a(this, 149.0F));
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mRoot.findViewById(2131366073).getLayoutParams();
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mRoot.findViewById(2131432349).getLayoutParams();
       localLayoutParams.height = ((int)DisplayUtils.a(this, 151.0F));
       localLayoutParams.weight = 0.0F;
     }
@@ -346,7 +346,7 @@ public class EditInfoActivity
   
   private void showSingEditer()
   {
-    super.setContentView(2131559083);
+    super.setContentView(2131624744);
     initEditNum();
   }
   
@@ -429,7 +429,7 @@ public class EditInfoActivity
   
   public TextView getTipsView()
   {
-    return (TextView)findViewById(2131366085);
+    return (TextView)findViewById(2131432365);
   }
   
   public void hideInputMethod()
@@ -453,12 +453,15 @@ public class EditInfoActivity
   
   void initEmoj()
   {
-    this.mEmojLayout = ((LinearLayout)super.findViewById(2131366151));
-    this.mSwitchButton = ((ImageView)findViewById(2131378167));
+    this.mEmojLayout = ((LinearLayout)super.findViewById(2131432437));
+    this.mSwitchButton = ((ImageView)findViewById(2131446680));
     this.mSwitchButton.setVisibility(0);
     this.mSwitchButton.setOnClickListener(new EditInfoActivity.3(this));
-    this.mEmojPanel = new SystemAndEmojiUniversalPanel.Builder(this).setFilterSysFaceBeyond255Enable(true).setEmoticonCallback(this.editInfoApi.a()).setShowDeleteButton(this.mEditInfo).create(((IEmoticonMainPanelAppService)QRoute.api(IEmoticonMainPanelAppService.class)).createEmoticonMainPanelApp(this.mApp));
+    this.mEmojPanel = new SystemAndEmojiUniversalPanel.Builder(this).setFilterSysFaceBeyond255Enable(true).setEmoticonCallback(this.editInfoApi.f()).setShowDeleteButton(this.mEditInfo).create(((IEmoticonMainPanelAppService)QRoute.api(IEmoticonMainPanelAppService.class)).createEmoticonMainPanelApp(this.mApp));
     this.mEmojPanel.setVisibility(0);
+    if (ThemeUtil.isNowThemeIsNight(this.mApp, true, null)) {
+      this.mEmojPanel.setBackgroundResource(2130838958);
+    }
     this.mEmojLayout.addView(this.mEmojPanel);
     this.mEditInfo.setOnClickListener(new EditInfoActivity.4(this));
   }
@@ -471,14 +474,14 @@ public class EditInfoActivity
   public void loadingProgress(boolean paramBoolean)
   {
     if (this.centerView == null) {
-      this.centerView = ((TextView)findViewById(2131369249));
+      this.centerView = ((TextView)findViewById(2131436227));
     }
     if (paramBoolean)
     {
       this.rightViewText.setEnabled(false);
       if (this.mAnimDrawable3 == null)
       {
-        this.mAnimDrawable3 = getResources().getDrawable(2130839401);
+        this.mAnimDrawable3 = getResources().getDrawable(2130839585);
         this.centerView.setCompoundDrawablesWithIntrinsicBounds(this.mAnimDrawable3, null, null, null);
         ((Animatable)this.mAnimDrawable3).start();
       }
@@ -530,8 +533,8 @@ public class EditInfoActivity
       if ((localLinearLayout != null) && (this.mSwitchButton != null))
       {
         localLinearLayout.setVisibility(8);
-        this.mSwitchButton.setImageResource(2130848134);
-        this.mSwitchButton.setContentDescription(HardCodeUtil.a(2131703791));
+        this.mSwitchButton.setImageResource(2130849798);
+        this.mSwitchButton.setContentDescription(HardCodeUtil.a(2131901737));
       }
     }
     else if (this.mIsShowEmojiboard)
@@ -588,7 +591,7 @@ public class EditInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editinfo.EditInfoActivity
  * JD-Core Version:    0.7.0.1
  */

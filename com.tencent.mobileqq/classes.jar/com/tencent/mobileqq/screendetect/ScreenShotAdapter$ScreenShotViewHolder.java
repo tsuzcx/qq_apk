@@ -11,29 +11,29 @@ public class ScreenShotAdapter$ScreenShotViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  public final TextView a;
-  private ScreenShotAdapter.OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter$OnHolderItemClickListener;
   public RecentDynamicAvatarView a;
+  public final TextView b;
+  private ScreenShotAdapter.OnHolderItemClickListener d;
   
   public ScreenShotAdapter$ScreenShotViewHolder(ScreenShotAdapter paramScreenShotAdapter, View paramView, ScreenShotAdapter.OnHolderItemClickListener paramOnHolderItemClickListener)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371877));
-    this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter$OnHolderItemClickListener = paramOnHolderItemClickListener;
+    this.a = ((RecentDynamicAvatarView)paramView.findViewById(2131435219));
+    this.b = ((TextView)paramView.findViewById(2131439320));
+    this.d = paramOnHolderItemClickListener;
     paramView.setOnClickListener(this);
     paramView.setTag(this);
   }
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter$OnHolderItemClickListener != null) && (ScreenShotAdapter.a(this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter)))
+    if ((this.d != null) && (ScreenShotAdapter.a(this.c)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter$OnHolderItemClickListener.a(paramView, getAdapterPosition() - 1);
+      this.d.a(paramView, getAdapterPosition() - 1);
     }
     else
     {
-      ScreenShotAdapter.OnHolderItemClickListener localOnHolderItemClickListener = this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotAdapter$OnHolderItemClickListener;
+      ScreenShotAdapter.OnHolderItemClickListener localOnHolderItemClickListener = this.d;
       if (localOnHolderItemClickListener != null) {
         localOnHolderItemClickListener.a(paramView, getAdapterPosition());
       }
@@ -43,7 +43,7 @@ public class ScreenShotAdapter$ScreenShotViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotAdapter.ScreenShotViewHolder
  * JD-Core Version:    0.7.0.1
  */

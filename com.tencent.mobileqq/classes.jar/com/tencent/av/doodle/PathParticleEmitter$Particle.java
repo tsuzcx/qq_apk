@@ -10,11 +10,9 @@ import android.graphics.drawable.BitmapDrawable;
 public class PathParticleEmitter$Particle
   extends BitmapDrawable
 {
-  protected float a;
+  private float A = 0.0F;
+  private Matrix B = new Matrix();
   protected int a;
-  private Matrix a = new Matrix();
-  protected float[] a;
-  protected float b;
   protected int b;
   protected float c;
   protected float d;
@@ -30,14 +28,16 @@ public class PathParticleEmitter$Particle
   protected float n;
   protected float o;
   protected float p;
-  private float q = 0.0F;
-  private float r = 0.0F;
-  private float s = 0.0F;
-  private float t = 1.0F;
+  protected float q;
+  protected float r;
+  protected float[] s;
+  private float t = 0.0F;
   private float u = 0.0F;
   private float v = 0.0F;
-  private float w = 0.0F;
+  private float w = 1.0F;
   private float x = 0.0F;
+  private float y = 0.0F;
+  private float z = 0.0F;
   
   public PathParticleEmitter$Particle(BitmapDrawable paramBitmapDrawable)
   {
@@ -46,41 +46,41 @@ public class PathParticleEmitter$Particle
   
   private void a()
   {
-    this.a.reset();
-    this.a.preRotate(this.s, this.q, this.r);
-    Matrix localMatrix = this.a;
-    float f1 = this.t;
-    localMatrix.preScale(f1, f1, this.q, this.r);
+    this.B.reset();
+    this.B.preRotate(this.v, this.t, this.u);
+    Matrix localMatrix = this.B;
+    float f1 = this.w;
+    localMatrix.preScale(f1, f1, this.t, this.u);
   }
   
   public void a(float paramFloat)
   {
-    if (this.s != paramFloat)
+    if (this.v != paramFloat)
     {
-      this.s = paramFloat;
+      this.v = paramFloat;
       a();
     }
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    a(this.u + paramFloat1, this.v + paramFloat2, this.w, this.x);
+    a(this.x + paramFloat1, this.y + paramFloat2, this.z, this.A);
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     Rect localRect1 = getBounds();
     Rect localRect2 = new Rect();
-    this.u = paramFloat1;
-    this.v = paramFloat2;
-    this.w = paramFloat3;
-    this.x = paramFloat4;
-    paramFloat1 = this.u;
+    this.x = paramFloat1;
+    this.y = paramFloat2;
+    this.z = paramFloat3;
+    this.A = paramFloat4;
+    paramFloat1 = this.x;
     localRect2.left = ((int)paramFloat1);
-    paramFloat2 = this.v;
+    paramFloat2 = this.y;
     localRect2.top = ((int)paramFloat2);
-    localRect2.right = ((int)(paramFloat1 + this.w));
-    localRect2.bottom = ((int)(paramFloat2 + this.x));
+    localRect2.right = ((int)(paramFloat1 + this.z));
+    localRect2.bottom = ((int)(paramFloat2 + this.A));
     if (!localRect1.equals(localRect2)) {
       setBounds(localRect2);
     }
@@ -88,9 +88,9 @@ public class PathParticleEmitter$Particle
   
   public void b(float paramFloat)
   {
-    if (this.t != paramFloat)
+    if (this.w != paramFloat)
     {
-      this.t = paramFloat;
+      this.w = paramFloat;
       a();
     }
   }
@@ -104,7 +104,7 @@ public class PathParticleEmitter$Particle
   public void draw(Canvas paramCanvas)
   {
     paramCanvas.save();
-    paramCanvas.concat(this.a);
+    paramCanvas.concat(this.B);
     super.draw(paramCanvas);
     paramCanvas.restore();
   }
@@ -114,18 +114,18 @@ public class PathParticleEmitter$Particle
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     float f1 = (paramInt1 + paramInt3) / 2;
     float f2 = (paramInt2 + paramInt4) / 2;
-    if (this.q != f1)
+    if (this.t != f1)
     {
-      this.q = f1;
+      this.t = f1;
       paramInt1 = 1;
     }
     else
     {
       paramInt1 = 0;
     }
-    if (this.r != f2)
+    if (this.u != f2)
     {
-      this.r = f2;
+      this.u = f2;
       paramInt1 = 1;
     }
     if (paramInt1 != 0) {

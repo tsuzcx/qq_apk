@@ -34,25 +34,25 @@ public class FTSSearchOpenMixWebAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("FTSSearchOpenMixWebAction", 1, localStringBuilder.toString());
-      b_("FTSSearchOpenMixWebAction");
+      h_("FTSSearchOpenMixWebAction");
     }
     return false;
   }
   
   public boolean b()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("url")) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove("url");
+    Intent localIntent = new Intent(this.b, QQBrowserActivity.class);
+    if (this.f.containsKey("url")) {
+      this.f.remove("url");
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Object localObject = this.f.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
       localIntent.putExtra((String)localEntry.getKey(), Uri.decode((String)localEntry.getValue()));
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("weburl")) {
-      localObject = Uri.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("weburl"));
+    if (this.f.containsKey("weburl")) {
+      localObject = Uri.decode((String)this.f.get("weburl"));
     } else {
       localObject = "";
     }
@@ -61,16 +61,16 @@ public class FTSSearchOpenMixWebAction
     }
     localIntent.putExtra("url", (String)localObject);
     localIntent.putExtra("fragment_class", "com.tencent.mobileqq.search.activity.MixSearchWebFragment");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (!"1".equals(this.jdField_a_of_type_JavaUtilHashMap.get("openanimtype")))) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
+    this.b.startActivity(localIntent);
+    if (((this.b instanceof Activity)) && (!"1".equals(this.f.get("openanimtype")))) {
+      ((Activity)this.b).overridePendingTransition(0, 0);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.FTSSearchOpenMixWebAction
  * JD-Core Version:    0.7.0.1
  */

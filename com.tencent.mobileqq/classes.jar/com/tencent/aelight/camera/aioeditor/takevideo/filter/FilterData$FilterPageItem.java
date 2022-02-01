@@ -7,14 +7,13 @@ import android.view.ViewGroup;
 
 public abstract class FilterData$FilterPageItem<T extends FilterData>
 {
-  protected int a;
-  public final View a;
-  public T a;
+  public final View a = a(paramContext, paramViewGroup);
+  public T b;
+  protected int c;
   
   protected FilterData$FilterPageItem(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
+    if (this.a != null) {
       return;
     }
     throw new NullPointerException("onCreateView can not return null");
@@ -24,25 +23,25 @@ public abstract class FilterData$FilterPageItem<T extends FilterData>
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData = null;
-    this.jdField_a_of_type_Int = -1;
+    this.b = null;
+    this.c = -1;
   }
   
   public void a(T paramT, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData = paramT;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramT;
+    this.c = paramInt;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    FilterData localFilterData = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData;
+    FilterData localFilterData = this.b;
     return (localFilterData != null) && (localFilterData.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.filter.FilterData.FilterPageItem
  * JD-Core Version:    0.7.0.1
  */

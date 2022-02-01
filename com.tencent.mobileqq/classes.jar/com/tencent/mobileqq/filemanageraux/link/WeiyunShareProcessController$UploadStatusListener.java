@@ -10,8 +10,8 @@ import mqq.util.WeakReference;
 final class WeiyunShareProcessController$UploadStatusListener
   implements UploadManager.IUploadStatusListener
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<WeiyunShareProcessController> jdField_a_of_type_MqqUtilWeakReference;
+  private final WeakReference<WeiyunShareProcessController> a;
+  private final String b;
   
   private WeiyunShareProcessController$UploadStatusListener(WeiyunShareProcessController paramWeiyunShareProcessController, String paramString)
   {
@@ -20,15 +20,15 @@ final class WeiyunShareProcessController$UploadStatusListener
     } else {
       paramWeiyunShareProcessController = new WeakReference(paramWeiyunShareProcessController);
     }
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeiyunShareProcessController;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramWeiyunShareProcessController;
+    this.b = paramString;
   }
   
   public void onUploadJobAdded(String paramString, long paramLong) {}
   
   public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
   {
-    paramString = this.jdField_a_of_type_MqqUtilWeakReference;
+    paramString = this.a;
     Object localObject = null;
     WeiyunShareProcessController localWeiyunShareProcessController;
     if (paramString == null) {
@@ -41,7 +41,7 @@ final class WeiyunShareProcessController$UploadStatusListener
       if (WeiyunShareProcessController.a(localWeiyunShareProcessController)) {
         return;
       }
-      if (WeiyunShareProcessController.a(localWeiyunShareProcessController) == null) {
+      if (WeiyunShareProcessController.b(localWeiyunShareProcessController) == null) {
         return;
       }
       if (paramBoolean)
@@ -60,7 +60,7 @@ final class WeiyunShareProcessController$UploadStatusListener
             {
               paramString = new StringBuilder();
               paramString.append("upload is canceled, for file:");
-              paramString.append(this.jdField_a_of_type_JavaLangString);
+              paramString.append(this.b);
               QLog.i("WeiyunShareProcessController<FileAssistant>", 2, paramString.toString());
               paramString = localObject;
             }
@@ -76,7 +76,7 @@ final class WeiyunShareProcessController$UploadStatusListener
         {
           paramString = new Message();
           paramString.what = 2;
-          paramString.obj = new Object[] { paramStatusInfo, this.jdField_a_of_type_JavaLangString };
+          paramString.obj = new Object[] { paramStatusInfo, this.b };
         }
       }
       else
@@ -92,14 +92,14 @@ final class WeiyunShareProcessController$UploadStatusListener
         paramString.obj = new Object[] { Float.valueOf(f) };
       }
       if (paramString != null) {
-        WeiyunShareProcessController.a(localWeiyunShareProcessController).sendMessage(paramString);
+        WeiyunShareProcessController.c(localWeiyunShareProcessController).sendMessage(paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.WeiyunShareProcessController.UploadStatusListener
  * JD-Core Version:    0.7.0.1
  */

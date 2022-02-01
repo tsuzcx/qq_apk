@@ -21,11 +21,11 @@ import java.util.ArrayList;
 public class DataReportSettingFragment
   extends IphoneTitleBarFragment
 {
-  protected ListView a;
-  protected DataReportSettingFragment.DataAdapter a;
   protected FormSwitchItem a;
-  protected ArrayList<BaseReportDataConfig> a;
   protected FormSwitchItem b;
+  protected ListView c;
+  protected ArrayList<BaseReportDataConfig> d;
+  protected DataReportSettingFragment.DataAdapter e;
   
   protected void a()
   {
@@ -34,41 +34,41 @@ public class DataReportSettingFragment
     ((StringBuilder)localObject).append("/tencent/MobileQQ/data/0e9a7ce1473f44db9732a452360195ae.json");
     localObject = ((StringBuilder)localObject).toString();
     DownloadTask localDownloadTask = new DownloadTask("https://pub.idqqimg.com/pc/misc/files/20180717/0e9a7ce1473f44db9732a452360195ae.json", new File((String)localObject));
-    localDownloadTask.d = 60L;
+    localDownloadTask.u = 60L;
     ((DownloaderFactory)getBaseActivity().app.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).startDownload(localDownloadTask, new DataReportSettingFragment.4(this, (String)localObject), new Bundle());
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131366247));
-    this.b = ((FormSwitchItem)this.mContentView.findViewById(2131363089));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.mContentView.findViewById(2131377335));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(DataReportViewerFloatViewHelper.a().a());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new DataReportSettingFragment.1(this));
+    this.a = ((FormSwitchItem)this.mContentView.findViewById(2131432539));
+    this.b = ((FormSwitchItem)this.mContentView.findViewById(2131428941));
+    this.c = ((ListView)this.mContentView.findViewById(2131445724));
+    this.a.setChecked(DataReportViewerFloatViewHelper.a().f());
+    this.a.setOnCheckedChangeListener(new DataReportSettingFragment.1(this));
     this.b.setOnCheckedChangeListener(new DataReportSettingFragment.2(this));
-    setRightButton(2131689589, new DataReportSettingFragment.3(this));
-    this.jdField_a_of_type_JavaUtilArrayList = DataReportViewerFloatViewHelper.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment$DataAdapter = new DataReportSettingFragment.DataAdapter(this);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment$DataAdapter);
+    setRightButton(2131886199, new DataReportSettingFragment.3(this));
+    this.d = DataReportViewerFloatViewHelper.a().g();
+    this.e = new DataReportSettingFragment.DataAdapter(this);
+    this.c.setAdapter(this.e);
     a();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131559596;
+    return 2131625625;
   }
   
   protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(HardCodeUtil.a(2131702940));
+    setTitle(HardCodeUtil.a(2131900916));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportSettingFragment
  * JD-Core Version:    0.7.0.1
  */

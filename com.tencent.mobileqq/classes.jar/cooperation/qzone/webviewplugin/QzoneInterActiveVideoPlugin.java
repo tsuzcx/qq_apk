@@ -96,8 +96,8 @@ public class QzoneInterActiveVideoPlugin
             paramString1 = new Intent("com.qzone.module.browser.plugin.QzLivePlugin.liveMusicSelect");
             paramString1.putExtra("get_live_music_song_mid", paramJsBridgeListener);
             BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
-            if ((this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null)) {
-              this.parentPlugin.mRuntime.a().finish();
+            if ((this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.d() != null)) {
+              this.parentPlugin.mRuntime.d().finish();
             }
           }
           return true;
@@ -127,8 +127,8 @@ public class QzoneInterActiveVideoPlugin
           paramJsBridgeListener.putExtra("result", i);
           paramJsBridgeListener.putExtra("from", j);
           BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
-          if ((this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null)) {
-            this.parentPlugin.mRuntime.a().finish();
+          if ((this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.d() != null)) {
+            this.parentPlugin.mRuntime.d().finish();
           } else if (this.parentPlugin.mRuntime == null) {
             QLog.i("QzoneInternalWebViewPlugin", 1, " the parentPlugin.mRuntime is null");
           } else {
@@ -233,7 +233,7 @@ public class QzoneInterActiveVideoPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneInterActiveVideoPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -27,115 +27,91 @@ import java.util.List;
 public class AVGameQuestionClassSelectDialog
   extends ReportDialog
 {
-  public static final int a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private IGameListView jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView;
-  private AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter jdField_a_of_type_ComTencentAvgameUiAVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter;
-  private String jdField_a_of_type_JavaLangString;
-  private List<QuestionClassInfoItem> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  
-  static
-  {
-    jdField_a_of_type_Int = AVGameUtil.d();
-  }
+  public static final int a = ;
+  private int b;
+  private List<QuestionClassInfoItem> c = new ArrayList();
+  private String d;
+  private String e;
+  private RecyclerView f;
+  private AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter g;
+  private GridLayoutManager h;
+  private Button i;
+  private IGameListView j;
+  private boolean k;
+  private int l;
+  private Handler m;
   
   public AVGameQuestionClassSelectDialog(Context paramContext, int paramInt, List<QuestionClassInfoItem> paramList, String paramString1, String paramString2, IGameListView paramIGameListView)
   {
-    super(paramContext, 2131756189);
+    super(paramContext, 2131953338);
     boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new AVGameQuestionClassSelectDialog.1(this));
-    this.jdField_b_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_Boolean) && (paramList.size() >= 9)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList.subList(0, 8));
+    this.k = false;
+    this.m = new Handler(new AVGameQuestionClassSelectDialog.1(this));
+    this.b = paramInt;
+    if ((this.k) && (paramList.size() >= 9)) {
+      this.c.addAll(paramList.subList(0, 8));
     } else {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.c.addAll(paramList);
     }
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView = paramIGameListView;
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView != null) {
+    this.d = paramString1;
+    this.e = paramString2;
+    this.j = paramIGameListView;
+    if (this.j != null) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.k = bool;
     a();
     QLog.d("AVGameQuestionClassSelectDialog", 2, "AVGameQuestionClassSelectDialog init");
   }
   
-  private List<Player> a()
-  {
-    if (IGameEngine.k()) {
-      return new ArrayList();
-    }
-    List localList = IGameEngine.a().a().a().getPlayers();
-    ArrayList localArrayList = new ArrayList(localList.size());
-    int i = 0;
-    while (i < localList.size())
-    {
-      Player localPlayer = (Player)localList.get(i);
-      if ((localPlayer != null) && (localPlayer.status == 0)) {
-        localArrayList.add(localPlayer);
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
   private void a()
   {
-    setContentView(2131558691);
+    setContentView(2131624308);
     getWindow().setLayout(-1, -1);
-    Object localObject = (ImageView)findViewById(2131363322);
-    TextView localTextView = (TextView)findViewById(2131363324);
-    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = (ImageView)findViewById(2131429196);
+    TextView localTextView = (TextView)findViewById(2131429198);
+    String str = this.d;
     if ((str != null) && (str.length() > 0))
     {
-      ((ImageView)localObject).setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString));
+      ((ImageView)localObject).setImageDrawable(URLDrawable.getDrawable(this.d));
     }
     else
     {
       ((ImageView)localObject).setVisibility(8);
       localTextView.setVisibility(0);
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363251));
-    if (this.jdField_a_of_type_Boolean)
+    this.i = ((Button)findViewById(2131429125));
+    if (this.k)
     {
-      this.c = jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidWidgetButton.setTypeface(AVGameText.a());
+      this.l = a;
+      this.i.setTypeface(AVGameText.getTypeface());
       b();
     }
     else
     {
-      localObject = this.jdField_b_of_type_JavaLangString;
+      localObject = this.e;
       if ((localObject != null) && (((String)localObject).length() > 0))
       {
-        localObject = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable((Drawable)localObject);
+        localObject = URLDrawable.getDrawable(this.e);
+        this.i.setBackgroundDrawable((Drawable)localObject);
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690435));
+        this.i.setText(getContext().getString(2131887346));
       }
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new AVGameQuestionClassSelectDialog.2(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363249));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(getContext(), 3);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter = new AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter(this, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAvgameUiAVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new AVGameQuestionClassSelectDialog.AVGameQuestionClassItemDecoration(this, 0, 0));
-    findViewById(2131376809).setOnClickListener(new AVGameQuestionClassSelectDialog.3(this));
-    findViewById(2131364401).setOnClickListener(new AVGameQuestionClassSelectDialog.4(this));
-    if (this.jdField_a_of_type_Boolean)
+    this.i.setOnClickListener(new AVGameQuestionClassSelectDialog.2(this));
+    this.f = ((RecyclerView)findViewById(2131429123));
+    this.f.setHasFixedSize(true);
+    this.h = new GridLayoutManager(getContext(), 3);
+    this.f.setLayoutManager(this.h);
+    this.g = new AVGameQuestionClassSelectDialog.AVGameQuestionClassViewAdapter(this, this.c);
+    this.f.setAdapter(this.g);
+    this.f.setOverScrollMode(2);
+    this.f.addItemDecoration(new AVGameQuestionClassSelectDialog.AVGameQuestionClassItemDecoration(this, 0, 0));
+    findViewById(2131445137).setOnClickListener(new AVGameQuestionClassSelectDialog.3(this));
+    findViewById(2131430430).setOnClickListener(new AVGameQuestionClassSelectDialog.4(this));
+    if (this.k)
     {
       setCancelable(false);
       setCanceledOnTouchOutside(false);
@@ -155,33 +131,33 @@ public class AVGameQuestionClassSelectDialog
   
   private void a(String paramString)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView != null))
+    if ((this.k) && (this.j != null))
     {
-      localObject = a();
+      localObject = c();
       if (!((List)localObject).isEmpty())
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomGamelistIGameListView.a(AVGameUtil.a(getContext(), (List)localObject));
+        this.j.a(AVGameUtil.a(getContext(), (List)localObject));
         dismiss();
         return;
       }
     }
-    IGameEngine.a().a(this.jdField_b_of_type_Int, paramString);
+    IGameEngine.I().a(this.b, paramString);
     dismiss();
     Object localObject = paramString;
     if (paramString == null) {
-      localObject = getContext().getString(2131690435);
+      localObject = getContext().getString(2131887346);
     }
-    ReportController.b(null, "dc00898", "", "", "0X800B1F0", "0X800B1F0", this.jdField_b_of_type_Int, 0, "", "", (String)localObject, "");
+    ReportController.b(null, "dc00898", "", "", "0X800B1F0", "0X800B1F0", this.b, 0, "", "", (String)localObject, "");
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    if (this.c > 0)
+    this.m.removeMessages(0);
+    if (this.l > 0)
     {
-      String str = getContext().getString(2131690436);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(String.format(str, new Object[] { Integer.valueOf(this.c) }));
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1000L);
+      String str = getContext().getString(2131887347);
+      this.i.setText(String.format(str, new Object[] { Integer.valueOf(this.l) }));
+      this.m.sendEmptyMessageDelayed(0, 1000L);
       return;
     }
     a(null);
@@ -199,6 +175,25 @@ public class AVGameQuestionClassSelectDialog
         paramImageView.setImageDrawable(paramString);
       }
     }
+  }
+  
+  private List<Player> c()
+  {
+    if (IGameEngine.J()) {
+      return new ArrayList();
+    }
+    List localList = IGameEngine.I().s().e().getPlayers();
+    ArrayList localArrayList = new ArrayList(localList.size());
+    int n = 0;
+    while (n < localList.size())
+    {
+      Player localPlayer = (Player)localList.get(n);
+      if ((localPlayer != null) && (localPlayer.status == 0)) {
+        localArrayList.add(localPlayer);
+      }
+      n += 1;
+    }
+    return localArrayList;
   }
 }
 

@@ -8,21 +8,21 @@ import com.tencent.biz.videostory.capture.widgets.VideoStoryScrollItemTransforme
 public class AECircleScaleTransformer
   implements VideoStoryScrollItemTransformer
 {
-  private float jdField_a_of_type_Float = 0.8F;
-  private Pivot jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsPivot = Pivot.a(1);
-  private float jdField_b_of_type_Float = 0.2F;
-  private Pivot jdField_b_of_type_ComTencentBizVideostoryCaptureWidgetsPivot = Pivot.b(1);
+  private Pivot a = Pivot.a(1);
+  private Pivot b = Pivot.b(1);
+  private float c = 0.8F;
+  private float d = 0.2F;
   
   public void a(View paramView, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsPivot.a(paramView);
-    this.jdField_b_of_type_ComTencentBizVideostoryCaptureWidgetsPivot.a(paramView);
+    this.a.a(paramView);
+    this.b.a(paramView);
     float f = Math.abs(paramFloat);
-    f = this.jdField_a_of_type_Float + this.jdField_b_of_type_Float * (1.0F - f);
+    f = this.c + this.d * (1.0F - f);
     paramView.setScaleX(f);
     paramView.setScaleY(f);
-    Object localObject = paramView.findViewById(2064122818);
-    View localView = paramView.findViewById(2064122832);
+    Object localObject = paramView.findViewById(2063991592);
+    View localView = paramView.findViewById(2063991606);
     if (localObject != null) {
       ((View)localObject).setAlpha(Math.abs(paramFloat));
     }
@@ -39,7 +39,7 @@ public class AECircleScaleTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AECircleScaleTransformer
  * JD-Core Version:    0.7.0.1
  */

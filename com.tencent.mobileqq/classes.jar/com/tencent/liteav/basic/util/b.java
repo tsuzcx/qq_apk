@@ -131,14 +131,14 @@ public class b
   protected void finalize()
   {
     super.finalize();
-    c.a(this.d);
-    c.a(this.e);
+    d.a(this.d);
+    d.a(this.e);
     TXCLog.i("CpuUsageMeasurer", "measurer is released");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.util.b
  * JD-Core Version:    0.7.0.1
  */

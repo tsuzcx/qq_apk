@@ -105,9 +105,9 @@ public class PublicAccountAdUtil
             if ((localObject5 instanceof AbsStructMsgItem))
             {
               localObject5 = (AbsStructMsgItem)localObject5;
-              if ((((AbsStructMsgItem)localObject5).a != null) && (((AbsStructMsgItem)localObject5).a.size() > 0))
+              if ((((AbsStructMsgItem)localObject5).ax != null) && (((AbsStructMsgItem)localObject5).ax.size() > 0))
               {
-                localObject5 = ((AbsStructMsgItem)localObject5).a.iterator();
+                localObject5 = ((AbsStructMsgItem)localObject5).ax.iterator();
                 int j = i;
                 for (;;)
                 {
@@ -119,13 +119,13 @@ public class PublicAccountAdUtil
                   if ((localObject6 instanceof StructMsgItemVideo))
                   {
                     localObject6 = (StructMsgItemVideo)localObject6;
-                    if ((!TextUtils.isEmpty(((StructMsgItemVideo)localObject6).ac)) && (!TextUtils.isEmpty(((StructMsgItemVideo)localObject6).ad)))
+                    if ((!TextUtils.isEmpty(((StructMsgItemVideo)localObject6).au)) && (!TextUtils.isEmpty(((StructMsgItemVideo)localObject6).av)))
                     {
-                      localObject6 = new VideoCoverItem(j, ((StructMsgItemVideo)localObject6).ac, ((StructMsgItemVideo)localObject6).ad);
+                      localObject6 = new VideoCoverItem(j, ((StructMsgItemVideo)localObject6).au, ((StructMsgItemVideo)localObject6).av);
                       j += 1;
                       ((ArrayList)localObject3).add(localObject6);
-                      ((ArrayList)localObject1).add(((VideoCoverItem)localObject6).b);
-                      localArrayList.add(((VideoCoverItem)localObject6).a);
+                      ((ArrayList)localObject1).add(((VideoCoverItem)localObject6).c);
+                      localArrayList.add(((VideoCoverItem)localObject6).b);
                     }
                   }
                 }
@@ -156,11 +156,11 @@ public class PublicAccountAdUtil
                 localObject1 = localObject2;
                 if (((AdvertisementItem)localObject3).b())
                 {
-                  ((AdvertisementItem)localObject3).c = String.valueOf(localMessageForStructing.structingMsg.msgId);
+                  ((AdvertisementItem)localObject3).d = String.valueOf(localMessageForStructing.structingMsg.msgId);
                   if (!paramBoolean)
                   {
-                    ((AdvertisementItem)localObject3).a = NetConnInfoCenter.getServerTimeMillis();
-                    paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_push_time", String.valueOf(((AdvertisementItem)localObject3).a));
+                    ((AdvertisementItem)localObject3).e = NetConnInfoCenter.getServerTimeMillis();
+                    paramMessageRecord.saveExtInfoToExtStr("recent_list_advertisement_message_push_time", String.valueOf(((AdvertisementItem)localObject3).e));
                   }
                   else
                   {
@@ -175,19 +175,19 @@ public class PublicAccountAdUtil
     }
     try
     {
-      ((AdvertisementItem)localObject3).a = Long.parseLong(paramMessageRecord);
+      ((AdvertisementItem)localObject3).e = Long.parseLong(paramMessageRecord);
     }
     catch (Exception paramMessageRecord)
     {
       label573:
       break label573;
     }
-    ((AdvertisementItem)localObject3).a = 0L;
+    ((AdvertisementItem)localObject3).e = 0L;
     if (QLog.isColorLevel())
     {
       paramMessageRecord = new StringBuilder();
       paramMessageRecord.append("start preload msgid:");
-      paramMessageRecord.append(((AdvertisementItem)localObject3).c);
+      paramMessageRecord.append(((AdvertisementItem)localObject3).d);
       QLog.d("AD_Util", 2, paramMessageRecord.toString());
     }
     ThreadManager.executeOnSubThread(new PublicAccountAdUtil.1(localArrayList));
@@ -202,12 +202,12 @@ public class PublicAccountAdUtil
     return localObject1;
   }
   
-  public static String a()
+  public static boolean a(MessageRecord paramMessageRecord)
   {
-    return new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date(System.currentTimeMillis()));
+    return "1".equalsIgnoreCase(paramMessageRecord.getExtInfoFromExtStr("recent_list_advertisement_message"));
   }
   
-  public static oidb_cmd0x886.PhoneInfo a()
+  public static oidb_cmd0x886.PhoneInfo b()
   {
     oidb_cmd0x886.PhoneInfo localPhoneInfo = new oidb_cmd0x886.PhoneInfo();
     Object localObject = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getIMEI();
@@ -235,7 +235,7 @@ public class PublicAccountAdUtil
     i = 0;
     try
     {
-      int j = DeviceInfoUtil.g();
+      int j = DeviceInfoUtil.X();
       i = j;
     }
     catch (Exception localException)
@@ -244,11 +244,11 @@ public class PublicAccountAdUtil
       break label154;
     }
     localPhoneInfo.uint32_carrier.set(i);
-    str = DeviceInfoUtil.e();
+    str = DeviceInfoUtil.g();
     localPhoneInfo.bytes_os_ver.set(ByteStringMicro.copyFromUtf8(str));
-    str = DeviceInfoUtil.c();
+    str = DeviceInfoUtil.e();
     localPhoneInfo.bytes_qq_ver.set(ByteStringMicro.copyFromUtf8(str));
-    i = AppSetting.a();
+    i = AppSetting.d();
     localPhoneInfo.bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
     str = DatalineMathUtil.a(DatalineMathUtil.a());
     localPhoneInfo.bytes_client_ip.set(ByteStringMicro.copyFromUtf8(str));
@@ -259,14 +259,14 @@ public class PublicAccountAdUtil
     return localPhoneInfo;
   }
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public static String c()
   {
-    return "1".equalsIgnoreCase(paramMessageRecord.getExtInfoFromExtStr("recent_list_advertisement_message"));
+    return new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date(System.currentTimeMillis()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.util.PublicAccountAdUtil
  * JD-Core Version:    0.7.0.1
  */

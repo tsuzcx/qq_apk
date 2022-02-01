@@ -6,24 +6,23 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioAgent.Message;
 import java.util.List;
 
 public class TroopAioMsgNavigateReceipt
-  extends BaseTroopAioMsgNavigateBarDelegate
+  extends BaseAioMsgNavigateBarDelegate
 {
   public TroopAioMsgNavigateReceipt(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
     super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
-    this.jdField_a_of_type_Int = 13;
+    this.c = 13;
   }
   
   @Nullable
-  public BaseTroopAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public BaseAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, paramLong1);
+    paramList = this.d.getMessageFacade().b(this.f.b, this.f.a, paramLong1);
     if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new BaseTroopAioMsgNavigateBarDelegate.Entity(true, this.jdField_a_of_type_AndroidContentContext.getString(2131698563), TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+      return new BaseAioMsgNavigateBarDelegate.Entity(true, this.e.getString(2131896510), AioAgent.Message.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
     return null;
   }
@@ -34,7 +33,7 @@ public class TroopAioMsgNavigateReceipt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateReceipt
  * JD-Core Version:    0.7.0.1
  */

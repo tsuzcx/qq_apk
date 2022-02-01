@@ -12,92 +12,92 @@ import com.tencent.qphone.base.util.QLog;
 @SuppressLint({"NewApi"})
 public class MusicWaveformManager
 {
-  private int jdField_a_of_type_Int;
-  private MusicSoundFile.ProgressListener jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile$ProgressListener = new MusicWaveformManager.1(this);
-  private MusicSoundFile jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile;
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MusicWaveformManager.2(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = false;
-  private boolean c = false;
+  private boolean a;
+  private MusicSoundFile b;
+  private MusicItemInfo c;
+  private int d;
+  private boolean e = false;
+  private boolean f = false;
+  private MusicSoundFile.ProgressListener g = new MusicWaveformManager.1(this);
+  private Runnable h = new MusicWaveformManager.2(this);
   
   public static boolean a()
   {
     return ("Meizu".equals(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT <= 22);
   }
   
-  private void b()
+  private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile = new MusicSoundFile();
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManager.postImmediately(this.jdField_a_of_type_JavaLangRunnable, null, true);
+    this.b = new MusicSoundFile();
+    this.a = true;
+    ThreadManager.postImmediately(this.h, null, true);
   }
   
   public float a(int paramInt)
   {
-    if ((this.b) && (this.c)) {
+    if ((this.e) && (this.f)) {
       return 0.5F;
     }
-    if (this.b)
+    if (this.e)
     {
-      MusicSoundFile localMusicSoundFile = this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile;
-      if ((localMusicSoundFile != null) && (localMusicSoundFile.jdField_a_of_type_Boolean))
+      MusicSoundFile localMusicSoundFile = this.b;
+      if ((localMusicSoundFile != null) && (localMusicSoundFile.a))
       {
-        int i = this.jdField_a_of_type_Int;
+        int i = this.d;
         if (paramInt >= i) {
-          return this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile.a(paramInt - i);
+          return this.b.a(paramInt - i);
         }
       }
     }
     return -1.0F;
   }
   
-  public void a()
-  {
-    if (!this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile = null;
-    }
-    this.b = false;
-  }
-  
   public void a(MusicItemInfo paramMusicItemInfo, int paramInt)
   {
     if (paramMusicItemInfo == null)
     {
-      a();
+      b();
       return;
     }
-    if (this.b)
+    if (this.e)
     {
-      if ((paramMusicItemInfo.equals(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo)) && (this.jdField_a_of_type_Int <= paramInt) && (paramMusicItemInfo.musicStart == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart) && (paramMusicItemInfo.musicEnd == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd)) {
+      if ((paramMusicItemInfo.equals(this.c)) && (this.d <= paramInt) && (paramMusicItemInfo.musicStart == this.c.musicStart) && (paramMusicItemInfo.musicEnd == this.c.musicEnd)) {
         return;
       }
-      a();
+      b();
     }
-    this.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo.copy();
-    this.jdField_a_of_type_ComTencentMobileqqFilterMusicMusicSoundFile = null;
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = true;
+    this.c = paramMusicItemInfo.copy();
+    this.b = null;
+    this.d = paramInt;
     if (a())
     {
-      this.c = true;
+      this.f = true;
       if (QLog.isColorLevel()) {
         QLog.e("MusicWaveformManager", 2, "musicSoundFile create give up, is rubbish Meizu");
       }
     }
     else
     {
-      b();
+      c();
     }
+  }
+  
+  public void b()
+  {
+    if (!this.e) {
+      return;
+    }
+    this.a = false;
+    if (this.b != null) {
+      this.b = null;
+    }
+    this.e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.musicwavesupport.MusicWaveformManager
  * JD-Core Version:    0.7.0.1
  */

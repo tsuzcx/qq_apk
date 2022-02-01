@@ -7,8 +7,6 @@ import com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.Bubble
 import com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.ChatLayoutListenerController;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.IChatLayoutListener;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.IChatLayoutListener.ChatLayoutListenerInfo;
-import com.tencent.mobileqq.activity.aio.vasbubbleanimation.BubbleAnimation;
-import com.tencent.mobileqq.data.ChatMessage;
 
 class BaseBubbleBuilder$1
   implements IChatLayoutListener
@@ -20,33 +18,42 @@ class BaseBubbleBuilder$1
     if ((paramInt == ChatLayoutListenerController.c) && (paramChatLayoutListenerInfo != null))
     {
       boolean bool = paramChatLayoutListenerInfo instanceof BubbleBgHandler.BubbleBgHandlerListenerInfo;
-      if ((bool) && (((BubbleBgHandler.BubbleBgHandlerListenerInfo)paramChatLayoutListenerInfo).a != ChatLayoutBubbleBgExecutorImpl.b))
+      if ((bool) && (((BubbleBgHandler.BubbleBgHandlerListenerInfo)paramChatLayoutListenerInfo).a != ChatLayoutBubbleBgExecutorImpl.e))
       {
-        this.a.a(paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqDataChatMessage, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
-        this.a.a(paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-        this.a.b(paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        this.a.a(paramChatLayoutListenerInfo.g, paramChatLayoutListenerInfo.f, paramChatLayoutListenerInfo.e, paramChatLayoutListenerInfo.g.i);
+        this.a.a(paramChatLayoutListenerInfo.g, paramChatLayoutListenerInfo.e);
+        this.a.b(paramChatLayoutListenerInfo.g, paramChatLayoutListenerInfo.e);
       }
-      if ((bool) && (!BubbleAnimation.a().a(paramChatLayoutListenerInfo)) && (((BubbleBgHandler.BubbleBgHandlerListenerInfo)paramChatLayoutListenerInfo).a == ChatLayoutBubbleBgExecutorImpl.a))
+      if ((bool) && (((BubbleBgHandler.BubbleBgHandlerListenerInfo)paramChatLayoutListenerInfo).a == ChatLayoutBubbleBgExecutorImpl.d))
       {
-        if ((paramChatLayoutListenerInfo.b == paramChatLayoutListenerInfo.c - 1) && (paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqDataChatMessage.mAnimFlag)) {
-          BaseBubbleBuilder.jdField_a_of_type_AndroidOsHandler.post(new BaseBubbleBuilder.1.1(this, paramChatLayoutListenerInfo));
+        BaseBubbleBuilder.1.1 local1 = new BaseBubbleBuilder.1.1(this, paramChatLayoutListenerInfo);
+        if (paramChatLayoutListenerInfo.b == paramChatLayoutListenerInfo.c - 1)
+        {
+          if (BaseBubbleBuilder.a(this.a) != null) {
+            BaseBubbleBuilder.h.removeCallbacks(BaseBubbleBuilder.a(this.a));
+          }
+          BaseBubbleBuilder.a(this.a, local1);
+          BaseBubbleBuilder.h.postDelayed(BaseBubbleBuilder.a(this.a), 200L);
         }
-        paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqDataChatMessage.mAnimFlag = false;
+        else
+        {
+          BaseBubbleBuilder.h.postDelayed(local1, 0L);
+        }
       }
-      if (paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView != null)
+      if (paramChatLayoutListenerInfo.g.h != null)
       {
-        paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setBubbleView(paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView);
-        this.a.a(paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-        paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView.setTag(2131364116, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
-        paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView.setTag(2131364568, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        paramChatLayoutListenerInfo.f.setBubbleView(paramChatLayoutListenerInfo.g.h);
+        this.a.a(paramChatLayoutListenerInfo.g.h, paramChatLayoutListenerInfo.e);
+        paramChatLayoutListenerInfo.g.h.setTag(2131430083, paramChatLayoutListenerInfo.g.i);
+        paramChatLayoutListenerInfo.g.h.setTag(2131430627, paramChatLayoutListenerInfo.e);
       }
-      this.a.a(paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_AndroidContentContext, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, paramChatLayoutListenerInfo.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder, paramChatLayoutListenerInfo.b, paramChatLayoutListenerInfo.c);
+      this.a.a(paramChatLayoutListenerInfo.e, this.a.e, paramChatLayoutListenerInfo.f, paramChatLayoutListenerInfo.g, paramChatLayoutListenerInfo.b, paramChatLayoutListenerInfo.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.1
  * JD-Core Version:    0.7.0.1
  */

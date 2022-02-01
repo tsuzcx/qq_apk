@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="17.0sp" android:textColor="@android:color/holo_red_light" android:padding="@dimen/aes" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/avd" android:text="安装前如果已经打开过插件，请先重启进程" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nsa" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="打开自定义加载" />
-            <EditText android:textSize="17.0sp" android:id="@id/ns_" android:background="@color/al3" android:padding="@dimen/aes" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/avd" android:hint="输入pluginId，如StudyRoom" />
-            <EditText android:textSize="17.0sp" android:id="@id/ns9" android:background="@color/al3" android:padding="@dimen/aes" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/avd" android:hint="如feature/plugin_8.0，不要feature/" />
-            <Spinner android:id="@id/mq9" android:padding="@dimen/aes" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/avd" />
-            <Button android:textColor="@android:color/holo_red_dark" android:id="@id/n9f" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/avd" android:text="下载并安装插件" />
-        </LinearLayout>
-    </com.tencent.mobileqq.widget.BounceScrollView>
-</LinearLayout>
+<RelativeLayout android:id="@id/p_1" android:background="@drawable/qcircle_skin_bg_card_shadow_heavy_radius16px" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="12.0dip" android:paddingBottom="10.0dip" android:clipChildren="false" android:layout_width="180.0dip" android:layout_height="260.0dip" android:layout_marginRight="-15.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.richframework.widget.RoundCorneredRelativeLayout android:id="@id/p9w" android:layout_width="156.0dip" android:layout_height="236.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/p9x" android:layout_width="156.0dip" android:layout_height="156.0dip" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/p9y" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="9.0dip" android:src="@drawable/isx" android:layout_alignParentRight="true" />
+        <FrameLayout android:id="@id/pd8" android:background="@drawable/qcircle_skin_bg_avatar_shadow" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="140.0dip">
+            <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:layout_gravity="center" android:id="@id/p9u" android:layout_width="36.0dip" android:layout_height="36.0dip" />
+        </FrameLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:ellipsize="end" android:id="@id/p_0" android:paddingLeft="2.5dip" android:paddingTop="7.0dip" android:paddingRight="14.0dip" android:paddingBottom="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/pd8" android:layout_below="@id/p9x" />
+        <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="12.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:ellipsize="end" android:id="@id/p9v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.5dip" android:layout_marginTop="7.0dip" android:layout_marginRight="7.0dip" android:maxLines="2" android:layout_below="@id/pd8" android:layout_alignLeft="@id/pd8" />
+    </com.tencent.biz.qqcircle.richframework.widget.RoundCorneredRelativeLayout>
+</RelativeLayout>

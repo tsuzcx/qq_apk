@@ -9,12 +9,12 @@ class TroopNotificationApplicantInfoController$1
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    this.this$0.b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationApplicantInfoController.1
  * JD-Core Version:    0.7.0.1
  */

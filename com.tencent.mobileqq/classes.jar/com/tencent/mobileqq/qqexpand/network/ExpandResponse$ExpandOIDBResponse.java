@@ -12,7 +12,7 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class ExpandResponse$ExpandOIDBResponse
   extends ExpandResponse
 {
-  private oidb_sso.OIDBSSOPkg a;
+  private oidb_sso.OIDBSSOPkg d;
   
   public ExpandResponse$ExpandOIDBResponse(int paramInt, String paramString)
   {
@@ -21,17 +21,17 @@ public class ExpandResponse$ExpandOIDBResponse
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    if (this.jdField_a_of_type_Int == 1000)
+    this.d = new oidb_sso.OIDBSSOPkg();
+    if (this.a == 1000)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       try
       {
-        this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.get();
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.str_error_msg.get();
+        this.d.mergeFrom(paramArrayOfByte);
+        this.a = this.d.uint32_result.get();
+        this.b = this.d.str_error_msg.get();
         localStringBuilder.append("parseOIDBPkg, errMsg: ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
@@ -47,9 +47,9 @@ public class ExpandResponse$ExpandOIDBResponse
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("cmd error=");
-      paramArrayOfByte.append(this.jdField_a_of_type_Int);
+      paramArrayOfByte.append(this.a);
       paramArrayOfByte.append(" msg=");
-      paramArrayOfByte.append(this.jdField_a_of_type_JavaLangString);
+      paramArrayOfByte.append(this.b);
       QLog.w("expand.cmd.ExpandOIDBResponse", 1, paramArrayOfByte.toString());
     }
   }
@@ -57,16 +57,16 @@ public class ExpandResponse$ExpandOIDBResponse
   @Nullable
   public byte[] a()
   {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
-    if ((localOIDBSSOPkg != null) && (localOIDBSSOPkg.bytes_bodybuffer.has()) && (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.bytes_bodybuffer.get() != null)) {
-      return this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = this.d;
+    if ((localOIDBSSOPkg != null) && (localOIDBSSOPkg.bytes_bodybuffer.has()) && (this.d.bytes_bodybuffer.get() != null)) {
+      return this.d.bytes_bodybuffer.get().toByteArray();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.ExpandResponse.ExpandOIDBResponse
  * JD-Core Version:    0.7.0.1
  */

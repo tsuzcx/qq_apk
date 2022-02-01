@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.AssetExtractor;
+import com.tencent.tav.extractor.ExtractorUtils;
 
 class VideoDecoder$1
   implements Runnable
@@ -20,7 +21,7 @@ class VideoDecoder$1
       while (((AssetExtractor)localObject).getSampleTrackIndex() != -1) {
         ((AssetExtractor)localObject).unselectTrack(((AssetExtractor)localObject).getSampleTrackIndex());
       }
-      ((AssetExtractor)localObject).selectTrack(DecoderUtils.getFirstTrackIndex((AssetExtractor)localObject, "video/"));
+      ((AssetExtractor)localObject).selectTrack(ExtractorUtils.getFirstTrackIndex((AssetExtractor)localObject, "video/"));
       long l1;
       if (VideoDecoder.access$100(this.this$0) == null) {
         l1 = 0L;
@@ -47,7 +48,7 @@ class VideoDecoder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoder.1
  * JD-Core Version:    0.7.0.1
  */

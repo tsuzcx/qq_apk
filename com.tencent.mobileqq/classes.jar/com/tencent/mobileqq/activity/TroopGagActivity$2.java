@@ -25,7 +25,7 @@ class TroopGagActivity$2
   {
     if (paramGagStatus != null)
     {
-      if (!paramGagStatus.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+      if (!paramGagStatus.a.equals(this.a.c)) {
         return;
       }
       Object localObject;
@@ -33,88 +33,88 @@ class TroopGagActivity$2
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onTroopGagStatusChange, statuCode=");
-        ((StringBuilder)localObject).append(paramGagStatus.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramGagStatus.b);
         QLog.d("TroopGagActivity", 2, ((StringBuilder)localObject).toString());
       }
       TroopGagActivity.GagMemInfo localGagMemInfo;
-      if (paramGagStatus.jdField_a_of_type_Int == 3)
+      if (paramGagStatus.b == 3)
       {
-        this.a.jdField_a_of_type_JavaUtilList.clear();
-        if (paramGagStatus.jdField_a_of_type_JavaUtilArrayList != null)
+        this.a.i.clear();
+        if (paramGagStatus.e != null)
         {
-          paramGagStatus = paramGagStatus.jdField_a_of_type_JavaUtilArrayList.iterator();
+          paramGagStatus = paramGagStatus.e.iterator();
           while (paramGagStatus.hasNext())
           {
             localObject = (MemberGagInfo)paramGagStatus.next();
             localGagMemInfo = new TroopGagActivity.GagMemInfo();
-            localGagMemInfo.jdField_a_of_type_JavaLangString = ((MemberGagInfo)localObject).jdField_a_of_type_JavaLangString;
-            localGagMemInfo.jdField_a_of_type_Long = ((MemberGagInfo)localObject).jdField_a_of_type_Long;
-            this.a.jdField_a_of_type_JavaUtilList.add(localGagMemInfo);
+            localGagMemInfo.a = ((MemberGagInfo)localObject).a;
+            localGagMemInfo.c = ((MemberGagInfo)localObject).b;
+            this.a.i.add(localGagMemInfo);
           }
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$TroopGagMemberAdapter.notifyDataSetChanged();
+        this.a.b.notifyDataSetChanged();
       }
-      else if (paramGagStatus.jdField_a_of_type_Int == 1)
+      else if (paramGagStatus.b == 1)
       {
-        paramGagStatus = paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopTroopgagDataTroopGagInfo;
-        this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-        if (paramGagStatus.jdField_a_of_type_Long != 0L) {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
+        paramGagStatus = paramGagStatus.c;
+        this.a.h.setOnCheckedChangeListener(null);
+        if (paramGagStatus.b != 0L) {
+          this.a.h.setChecked(true);
         } else {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
+          this.a.h.setChecked(false);
         }
-        this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+        this.a.h.setOnCheckedChangeListener(this.a);
       }
-      else if (paramGagStatus.jdField_a_of_type_Int == 5)
+      else if (paramGagStatus.b == 5)
       {
-        if (!paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopTroopgagDataGagTroopMemberResult.jdField_a_of_type_Boolean)
+        if (!paramGagStatus.g.a)
         {
           ThreadManager.post(new TroopGagActivity.2.1(this, new Handler(Looper.getMainLooper())), 8, null, false);
         }
         else
         {
-          this.a.jdField_a_of_type_JavaUtilList.clear();
-          if (paramGagStatus.jdField_a_of_type_JavaUtilArrayList != null)
+          this.a.i.clear();
+          if (paramGagStatus.e != null)
           {
-            paramGagStatus = paramGagStatus.jdField_a_of_type_JavaUtilArrayList.iterator();
+            paramGagStatus = paramGagStatus.e.iterator();
             while (paramGagStatus.hasNext())
             {
               localObject = (MemberGagInfo)paramGagStatus.next();
               localGagMemInfo = new TroopGagActivity.GagMemInfo();
-              localGagMemInfo.jdField_a_of_type_JavaLangString = ((MemberGagInfo)localObject).jdField_a_of_type_JavaLangString;
-              localGagMemInfo.jdField_a_of_type_Long = ((MemberGagInfo)localObject).jdField_a_of_type_Long;
-              this.a.jdField_a_of_type_JavaUtilList.add(localGagMemInfo);
+              localGagMemInfo.a = ((MemberGagInfo)localObject).a;
+              localGagMemInfo.c = ((MemberGagInfo)localObject).b;
+              this.a.i.add(localGagMemInfo);
             }
           }
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$TroopGagMemberAdapter.notifyDataSetChanged();
+          this.a.b.notifyDataSetChanged();
         }
       }
-      else if (paramGagStatus.jdField_a_of_type_Int == 4)
+      else if (paramGagStatus.b == 4)
       {
-        paramGagStatus = paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopTroopgagDataGagTroopResult;
-        if (!paramGagStatus.jdField_a_of_type_Boolean)
+        paramGagStatus = paramGagStatus.f;
+        if (!paramGagStatus.a)
         {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-          if (paramGagStatus.jdField_a_of_type_Long != 0L) {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
+          this.a.h.setOnCheckedChangeListener(null);
+          if (paramGagStatus.b != 0L) {
+            this.a.h.setChecked(false);
           } else {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
+            this.a.h.setChecked(true);
           }
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+          this.a.h.setOnCheckedChangeListener(this.a);
         }
       }
-      if (this.a.jdField_a_of_type_JavaUtilList.size() == 0)
+      if (this.a.i.size() == 0)
       {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.a.f.setVisibility(8);
         return;
       }
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.f.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopGagActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public class RIJSmartCropUtils
 {
   public static String a(String paramString, int paramInt1, int paramInt2)
   {
-    if (!ReadInJoyHelper.b(RIJQQAppInterfaceUtil.a()))
+    if (!ReadInJoyHelper.b(RIJQQAppInterfaceUtil.e()))
     {
       if (QLog.isColorLevel())
       {
@@ -108,7 +108,7 @@ public class RIJSmartCropUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.utils.RIJSmartCropUtils
  * JD-Core Version:    0.7.0.1
  */

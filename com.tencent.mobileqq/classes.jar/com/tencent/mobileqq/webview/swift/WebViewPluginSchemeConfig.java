@@ -1,93 +1,52 @@
 package com.tencent.mobileqq.webview.swift;
 
+import java.util.HashMap;
+
 public class WebViewPluginSchemeConfig
 {
+  public static final HashMap<Long, String> a = new HashMap(50, 0.75F);
+  
+  static
+  {
+    a.put(Long.valueOf(1L), "http");
+    a.put(Long.valueOf(2L), "https");
+    a.put(Long.valueOf(4L), "publicaccount");
+    a.put(Long.valueOf(8L), "pay");
+    a.put(Long.valueOf(16L), "qqvip");
+    a.put(Long.valueOf(32L), "qqjsbridge");
+    a.put(Long.valueOf(64L), "tel");
+    a.put(Long.valueOf(128L), "sms");
+    a.put(Long.valueOf(256L), "mqqapi");
+    a.put(Long.valueOf(512L), "mqqopensdkapi");
+    a.put(Long.valueOf(1024L), "mqqmdpass");
+    a.put(Long.valueOf(2048L), "mqq");
+    a.put(Long.valueOf(4096L), "qapp");
+    a.put(Long.valueOf(8192L), "mqqflyticket");
+    a.put(Long.valueOf(16384L), "mqqwpa");
+    a.put(Long.valueOf(32768L), "wtloginmqq");
+    a.put(Long.valueOf(65536L), "qqwifi");
+    a.put(Long.valueOf(131072L), "apollo");
+    a.put(Long.valueOf(262144L), "mqqverifycode");
+    a.put(Long.valueOf(524288L), "mqqconnect");
+    a.put(Long.valueOf(1048576L), "mqqvoipivr");
+    a.put(Long.valueOf(2097152L), "mqqdevlock");
+    a.put(Long.valueOf(4194304L), "qqfav");
+    a.put(Long.valueOf(16777216L), "readinjoy");
+    a.put(Long.valueOf(33554432L), "nowmqqapi");
+    a.put(Long.valueOf(67108864L), "auth");
+  }
+  
   static String a(long paramLong)
   {
-    if (paramLong == 1L) {
-      return "http";
-    }
-    if (paramLong == 2L) {
-      return "https";
-    }
-    if (paramLong == 4L) {
-      return "publicaccount";
-    }
-    if (paramLong == 8L) {
-      return "pay";
-    }
-    if (paramLong == 16L) {
-      return "qqvip";
-    }
-    if (paramLong == 32L) {
-      return "qqjsbridge";
-    }
-    if (paramLong == 64L) {
-      return "tel";
-    }
-    if (paramLong == 128L) {
-      return "sms";
-    }
-    if (paramLong == 256L) {
-      return "mqqapi";
-    }
-    if (paramLong == 512L) {
-      return "mqqopensdkapi";
-    }
-    if (paramLong == 1024L) {
-      return "mqqmdpass";
-    }
-    if (paramLong == 2048L) {
-      return "mqq";
-    }
-    if (paramLong == 4096L) {
-      return "qapp";
-    }
-    if (paramLong == 8192L) {
-      return "mqqflyticket";
-    }
-    if (paramLong == 16384L) {
-      return "mqqwpa";
-    }
-    if (paramLong == 32768L) {
-      return "wtloginmqq";
-    }
-    if (paramLong == 65536L) {
-      return "qqwifi";
-    }
-    if (paramLong == 131072L) {
-      return "apollo";
-    }
-    if (paramLong == 262144L) {
-      return "mqqverifycode";
-    }
-    if (paramLong == 524288L) {
-      return "mqqconnect";
-    }
-    if (paramLong == 1048576L) {
-      return "mqqvoipivr";
-    }
-    if (paramLong == 2097152L) {
-      return "mqqdevlock";
-    }
-    if (paramLong == 4194304L) {
-      return "qqfav";
-    }
-    if (paramLong == 16777216L) {
-      return "readinjoy";
-    }
-    if (paramLong == 33554432L) {
-      return "nowmqqapi";
-    }
-    if (paramLong == 67108864L) {
-      return "auth";
+    if (a.containsKey(Long.valueOf(paramLong))) {
+      return (String)a.get(Long.valueOf(paramLong));
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPluginSchemeConfig
  * JD-Core Version:    0.7.0.1
  */

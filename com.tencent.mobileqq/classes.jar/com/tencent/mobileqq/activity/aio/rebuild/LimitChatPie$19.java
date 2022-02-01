@@ -11,12 +11,12 @@ class LimitChatPie$19
   public void run()
   {
     LimitChatPie localLimitChatPie = this.this$0;
-    LimitChatPie.a(localLimitChatPie, ExpandFriendData.getMatchSrc(localLimitChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+    LimitChatPie.c(localLimitChatPie, ExpandFriendData.getMatchSrc(localLimitChatPie.d, this.this$0.ah.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.19
  * JD-Core Version:    0.7.0.1
  */

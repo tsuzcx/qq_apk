@@ -19,8 +19,8 @@ import eipc.EIPCResult;
 public class ThemeIPCModule
   extends QIPCModule
 {
-  private static ThemeIPCModule jdField_a_of_type_ComTencentMobileqqVasThemeThemeIPCModule;
-  private static String jdField_a_of_type_JavaLangString = "setup";
+  private static String a = "setup";
+  private static ThemeIPCModule b;
   
   private ThemeIPCModule(String paramString)
   {
@@ -31,10 +31,10 @@ public class ThemeIPCModule
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqVasThemeThemeIPCModule == null) {
-        jdField_a_of_type_ComTencentMobileqqVasThemeThemeIPCModule = new ThemeIPCModule("ThemeIPCModule");
+      if (b == null) {
+        b = new ThemeIPCModule("ThemeIPCModule");
       }
-      ThemeIPCModule localThemeIPCModule = jdField_a_of_type_ComTencentMobileqqVasThemeThemeIPCModule;
+      ThemeIPCModule localThemeIPCModule = b;
       return localThemeIPCModule;
     }
     finally {}
@@ -47,7 +47,7 @@ public class ThemeIPCModule
       localBundle.putParcelable("binder", new BinderWarpper(paramISwitchCallback.asBinder()));
     }
     localBundle.putString("themeId", paramString);
-    QIPCClientHelper.getInstance().callServer("ThemeIPCModule", jdField_a_of_type_JavaLangString, localBundle, null);
+    QIPCClientHelper.getInstance().callServer("ThemeIPCModule", a, localBundle, null);
   }
   
   public static void a(String paramString, QueryCallback<ThemeLocator> paramQueryCallback)
@@ -81,7 +81,7 @@ public class ThemeIPCModule
     } else {
       localObject = null;
     }
-    if (jdField_a_of_type_JavaLangString.equals(paramString))
+    if (a.equals(paramString))
     {
       if (localObject != null) {
         paramString = new ThemeIPCModule.1(this, ISwitchCallback.Stub.asInterface((IBinder)localObject));
@@ -100,7 +100,7 @@ public class ThemeIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.ThemeIPCModule
  * JD-Core Version:    0.7.0.1
  */

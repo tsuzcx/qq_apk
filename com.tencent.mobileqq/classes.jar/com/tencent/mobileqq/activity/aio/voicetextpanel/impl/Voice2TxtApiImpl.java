@@ -10,12 +10,12 @@ public class Voice2TxtApiImpl
 {
   public BaseVoicetoTextView getVoice2TxtView(Context paramContext)
   {
-    return (BaseVoicetoTextView)View.inflate(paramContext, 2131558599, null);
+    return (BaseVoicetoTextView)View.inflate(paramContext, 2131624159, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.impl.Voice2TxtApiImpl
  * JD-Core Version:    0.7.0.1
  */

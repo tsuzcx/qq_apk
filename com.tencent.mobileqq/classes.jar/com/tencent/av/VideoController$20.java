@@ -11,10 +11,10 @@ class VideoController$20
   
   public void run()
   {
-    String str1 = this.this$0.a(this.jdField_a_of_type_JavaUtilArrayList);
-    if (this.this$0.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startVideoRecv(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean) == 0)
+    String str1 = this.this$0.a(this.a);
+    if (this.this$0.U.startVideoRecv(this.a, this.b) == 0)
     {
-      String str2 = VideoController.jdField_a_of_type_JavaLangString;
+      String str2 = VideoController.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("RequestGVideo failed. viewInfos = ");
       localStringBuilder.append(str1);

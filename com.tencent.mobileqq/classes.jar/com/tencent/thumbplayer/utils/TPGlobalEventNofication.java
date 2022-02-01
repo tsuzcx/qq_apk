@@ -7,6 +7,7 @@ public class TPGlobalEventNofication
 {
   public static final int EVENT_ID_APP_ENTER_BACKGROUND = 100001;
   public static final int EVENT_ID_APP_ENTER_FOREGROUND = 100002;
+  public static final int EVENT_ID_GUID_CHANGED = 100004;
   public static final int EVENT_ID_UPC_CHANGED = 100003;
   private static final String TAG = "TPGlobalEventNofication";
   private static CopyOnWriteArrayList<TPGlobalEventNofication.OnGlobalEventChangeListener> mListeners = new CopyOnWriteArrayList();
@@ -76,7 +77,7 @@ public class TPGlobalEventNofication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPGlobalEventNofication
  * JD-Core Version:    0.7.0.1
  */

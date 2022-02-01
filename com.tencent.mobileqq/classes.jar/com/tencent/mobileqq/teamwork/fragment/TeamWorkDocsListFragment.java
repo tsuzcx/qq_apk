@@ -23,15 +23,15 @@ public class TeamWorkDocsListFragment
       if ((localShare != null) && (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsUrl(localShare.getShareUrl())))
       {
         getHostActivity().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
-        localSwiftBrowserShareMenuHandler.a = new TeamWorkShareActionSheetBuilder(getHostActivity());
+        localSwiftBrowserShareMenuHandler.h = new TeamWorkShareActionSheetBuilder(getHostActivity());
       }
-      localSwiftBrowserShareMenuHandler.a(localShare, getUIStyle().a);
+      localSwiftBrowserShareMenuHandler.a(localShare, getUIStyle().c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkDocsListFragment
  * JD-Core Version:    0.7.0.1
  */

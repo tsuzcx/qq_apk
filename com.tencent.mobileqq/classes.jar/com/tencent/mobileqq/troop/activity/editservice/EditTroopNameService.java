@@ -13,39 +13,19 @@ import com.tencent.mobileqq.widget.navbar.OnItemSelectListener;
 public class EditTroopNameService
   implements IEditInfoApi
 {
-  private static String jdField_a_of_type_JavaLangString = "EditTroopNameService";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IEditInfoActivity jdField_a_of_type_ComTencentMobileqqTroopActivityEditinfoIEditInfoActivity = null;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  private String c;
-  
-  public int a()
-  {
-    return 0;
-  }
+  private static String a = "EditTroopNameService";
+  private IEditInfoActivity b = null;
+  private Context c;
+  private String d;
+  private String e;
+  private boolean f;
   
   public Intent a(Intent paramIntent)
   {
-    this.b = paramIntent.getStringExtra("default_text");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("edit_mode", false);
-    this.c = paramIntent.getStringExtra("troopUin");
+    this.d = paramIntent.getStringExtra("default_text");
+    this.f = paramIntent.getBooleanExtra("edit_mode", false);
+    this.e = paramIntent.getStringExtra("troopUin");
     return paramIntent;
-  }
-  
-  public View.OnClickListener a()
-  {
-    return new EditTroopNameService.2(this);
-  }
-  
-  public EmoticonCallback a()
-  {
-    return null;
-  }
-  
-  public OnItemSelectListener a()
-  {
-    return new EditTroopNameService.1(this);
   }
   
   public void a(int paramInt) {}
@@ -56,15 +36,35 @@ public class EditTroopNameService
   
   public void a(IEditInfoActivity paramIEditInfoActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityEditinfoIEditInfoActivity = paramIEditInfoActivity;
-    this.jdField_a_of_type_AndroidContentContext = paramIEditInfoActivity.getContext();
+    this.b = paramIEditInfoActivity;
+    this.c = paramIEditInfoActivity.getContext();
   }
   
-  public void b() {}
+  public OnItemSelectListener b()
+  {
+    return new EditTroopNameService.1(this);
+  }
+  
+  public void c() {}
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public View.OnClickListener e()
+  {
+    return new EditTroopNameService.2(this);
+  }
+  
+  public EmoticonCallback f()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editservice.EditTroopNameService
  * JD-Core Version:    0.7.0.1
  */

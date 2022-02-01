@@ -14,28 +14,23 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
   implements OnPublishTaskListener
 {
   public BasePublishTask<T> a;
-  public ArrayList<T> a;
   public ArrayList<T> b = new ArrayList();
-  
-  public BasePublishTaskManager()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public ArrayList<T> c = new ArrayList();
   
   private void a(ErrorMessage paramErrorMessage)
   {
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         BaseTaskInfo localBaseTaskInfo = (BaseTaskInfo)localIterator.next();
-        localBaseTaskInfo.jdField_a_of_type_Int = 6;
-        localBaseTaskInfo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-        this.b.add(localBaseTaskInfo);
+        localBaseTaskInfo.a = 6;
+        localBaseTaskInfo.f = paramErrorMessage;
+        this.c.add(localBaseTaskInfo);
         a(localBaseTaskInfo);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.b.clear();
       return;
     }
     finally {}
@@ -45,16 +40,14 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
     }
   }
   
-  protected abstract BasePublishTask a(T paramT);
-  
   public void a() {}
   
   protected void a(BasePublishTask<T> paramBasePublishTask)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask == paramBasePublishTask) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask = null;
+      if (this.a == paramBasePublishTask) {
+        this.a = null;
       }
       return;
     }
@@ -73,14 +66,14 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
       return;
     }
     BaseTaskInfo localBaseTaskInfo = paramBasePublishTask.a();
-    paramBasePublishTask.a().jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((localBaseTaskInfo.jdField_a_of_type_Int == 6) || (localBaseTaskInfo.jdField_a_of_type_Int == 5) || (localBaseTaskInfo.jdField_a_of_type_Int == 3) || (localBaseTaskInfo.jdField_a_of_type_Int == 7))
+    paramBasePublishTask.a().f = paramErrorMessage;
+    if ((localBaseTaskInfo.a == 6) || (localBaseTaskInfo.a == 5) || (localBaseTaskInfo.a == 3) || (localBaseTaskInfo.a == 7))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("finish task:");
       localStringBuilder.append(paramBasePublishTask);
       SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", localStringBuilder.toString());
-      if (localBaseTaskInfo.jdField_a_of_type_Int != 5)
+      if (localBaseTaskInfo.a != 5)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("task fail:");
@@ -95,7 +88,7 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
       else
       {
         a(paramBasePublishTask);
-        d();
+        e();
       }
       b(localBaseTaskInfo, paramErrorMessage);
     }
@@ -110,7 +103,7 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
   {
     try
     {
-      this.b.addAll(paramList);
+      this.c.addAll(paramList);
       return;
     }
     finally
@@ -120,50 +113,52 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
     }
   }
   
+  protected abstract BasePublishTask b(T paramT);
+  
   public void b()
   {
     super.b();
-    c();
-  }
-  
-  protected void b(T paramT)
-  {
-    try
-    {
-      this.b.remove(paramT);
-      if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramT))
-      {
-        SLog.d("Q.qqstory.publish.upload:BasePublishTaskManager", "the task is already exist ");
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramT);
-      return;
-    }
-    finally {}
+    d();
   }
   
   protected void b(T paramT, ErrorMessage paramErrorMessage)
   {
-    if (b())
+    if (i())
     {
       SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "manager had stopped");
       return;
     }
     try
     {
-      this.b.add(paramT);
+      this.c.add(paramT);
       a(paramT, paramErrorMessage);
       return;
     }
     finally {}
   }
   
-  protected void c()
+  protected void c(T paramT)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.b();
+      this.c.remove(paramT);
+      if (this.b.contains(paramT))
+      {
+        SLog.d("Q.qqstory.publish.upload:BasePublishTaskManager", "the task is already exist ");
+        return;
+      }
+      this.b.add(paramT);
+      return;
+    }
+    finally {}
+  }
+  
+  protected void d()
+  {
+    try
+    {
+      if (this.a != null) {
+        this.a.c();
       }
       return;
     }
@@ -174,14 +169,14 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
     }
   }
   
-  protected void c(T paramT)
+  protected void d(T paramT)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramT);
       this.b.remove(paramT);
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a().equals(paramT))) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a();
+      this.c.remove(paramT);
+      if ((this.a != null) && (this.a.a().equals(paramT))) {
+        this.a.b();
       }
       return;
     }
@@ -192,39 +187,39 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
     }
   }
   
-  protected void d()
+  protected void e()
   {
     Bosses.get().postLightWeightJob(new BasePublishTaskManager.1(this), 10);
   }
   
-  protected void e()
+  protected void f()
   {
     try
     {
       Object localObject1;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask != null)
+      if (this.a != null)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("task waiting list size:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        ((StringBuilder)localObject1).append(this.b.size());
         SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", ((StringBuilder)localObject1).toString());
         return;
       }
-      if (b())
+      if (i())
       {
         SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", "manager had stopped");
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.b.size() > 0)
       {
-        localObject1 = (BaseTaskInfo)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask = a((BaseTaskInfo)localObject1);
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.a(this);
+        localObject1 = (BaseTaskInfo)this.b.remove(0);
+        this.a = b((BaseTaskInfo)localObject1);
+        this.a.a(this);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("start publish task:");
         localStringBuilder.append(localObject1);
         SLog.c("Q.qqstory.publish.upload:BasePublishTaskManager", localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask.run();
+        this.a.run();
       }
       else
       {
@@ -237,7 +232,7 @@ public abstract class BasePublishTaskManager<T extends BaseTaskInfo>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.BasePublishTaskManager
  * JD-Core Version:    0.7.0.1
  */

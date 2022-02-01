@@ -14,9 +14,9 @@ public class ClickPreventableTextView
   extends TextView
   implements View.OnClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean a;
+  private View.OnClickListener b;
+  private boolean c;
   
   public ClickPreventableTextView(Context paramContext)
   {
@@ -33,25 +33,25 @@ public class ClickPreventableTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
   public boolean a()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public void b()
+  {
+    this.a = true;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
     else
     {
-      View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      View.OnClickListener localOnClickListener = this.b;
       if (localOnClickListener != null) {
         localOnClickListener.onClick(paramView);
       }
@@ -64,21 +64,21 @@ public class ClickPreventableTextView
     if (getMovementMethod() != null) {
       getMovementMethod().onTouchEvent(this, (Spannable)getText(), paramMotionEvent);
     }
-    this.b = true;
+    this.c = true;
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    this.b = false;
+    this.c = false;
     return bool;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.b = paramOnClickListener;
     super.setOnClickListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ClickPreventableTextView
  * JD-Core Version:    0.7.0.1
  */

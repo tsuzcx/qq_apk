@@ -23,13 +23,13 @@ import com.tencent.mobileqq.qroute.QRoute;
 
 public class FastWebRecommendAdHelper
 {
-  public static long a = -2147483648L;
   public static GdtHandler.Params a;
+  public static long b = -2147483648L;
   
   public static void a()
   {
-    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
-    jdField_a_of_type_Long = -2147483648L;
+    a = null;
+    b = -2147483648L;
   }
   
   public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, boolean paramBoolean, int paramInt)
@@ -60,8 +60,8 @@ public class FastWebRecommendAdHelper
         return;
       }
       localObject = new ReadInJoyGdtAdParams();
-      ((ReadInJoyGdtAdParams)localObject).d = paramBoolean1;
-      ((ReadInJoyGdtAdParams)localObject).b = paramBoolean2;
+      ((ReadInJoyGdtAdParams)localObject).g = paramBoolean1;
+      ((ReadInJoyGdtAdParams)localObject).c = paramBoolean2;
       if (paramAdvertisementInfo.mChannelID != 3L) {
         ReadInJoyAdActionManager.a(paramAdvertisementInfo, (Activity)paramContext, 1, 1, 3, (ReadInJoyGdtAdParams)localObject);
       } else {
@@ -70,7 +70,7 @@ public class FastWebRecommendAdHelper
       if (((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isGameComponentType(paramAdvertisementInfo)) {
         return;
       }
-      if ((paramAdvertisementInfo.isSoftAd()) && (paramAdvertisementInfo.mAdvertisementSoftInfo.c != 0)) {
+      if ((paramAdvertisementInfo.isSoftAd()) && (paramAdvertisementInfo.mAdvertisementSoftInfo.o != 0)) {
         return;
       }
       paramAdvertisementInfo.setClickPos(paramInt);
@@ -78,9 +78,9 @@ public class FastWebRecommendAdHelper
       if (paramContext == null) {
         return;
       }
-      paramContext.f = ReadInJoyAdSwitchUtil.b(paramAdvertisementInfo);
-      jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramContext;
-      jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      paramContext.l = ReadInJoyAdSwitchUtil.e(paramAdvertisementInfo);
+      a = paramContext;
+      b = SystemClock.elapsedRealtime();
       return;
     }
     ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("FastWebRecommendAdHelper", "onAdJump error: advertisementInfo is null or context is not activity");
@@ -94,7 +94,7 @@ public class FastWebRecommendAdHelper
         return;
       }
       AdData localAdData = (AdData)paramBaseData;
-      AdvertisementInfo localAdvertisementInfo = localAdData.a;
+      AdvertisementInfo localAdvertisementInfo = localAdData.j;
       paramBaseData = localAdvertisementInfo;
       if (localAdvertisementInfo == null) {
         paramBaseData = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(localAdData);
@@ -105,13 +105,13 @@ public class FastWebRecommendAdHelper
   
   public static void b()
   {
-    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
-    jdField_a_of_type_Long = -2147483648L;
+    a = null;
+    b = -2147483648L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRecommendAdHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class GestureToLaunchPageHelper
   extends FlingGestureHandler
 {
-  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList;
+  private CertifiedAccountMeta.StFeed a;
+  private CertifiedAccountMeta.StUser b;
+  private ArrayList<View> c;
   
   public GestureToLaunchPageHelper(Activity paramActivity)
   {
@@ -33,7 +33,7 @@ public class GestureToLaunchPageHelper
   
   public void a(CertifiedAccountMeta.StUser paramStUser)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
+    this.b = paramStUser;
   }
   
   public void a(View paramView)
@@ -41,15 +41,15 @@ public class GestureToLaunchPageHelper
     if (paramView == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.c == null) {
+      this.c = new ArrayList();
     }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramView)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
+    if (!this.c.contains(paramView)) {
+      this.c.add(paramView);
     }
   }
   
-  protected boolean a()
+  protected boolean canWrapContent()
   {
     return true;
   }
@@ -58,13 +58,13 @@ public class GestureToLaunchPageHelper
   {
     if (this.mTopLayout != null)
     {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser != null)
+      if (this.b != null)
       {
-        SubscribeLaucher.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+        SubscribeLaucher.a(this.mTopLayout.getContext(), this.b);
         return;
       }
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-        SubscribeLaucher.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+      if (this.a != null) {
+        SubscribeLaucher.a(this.mTopLayout.getContext(), this.a);
       }
     }
   }

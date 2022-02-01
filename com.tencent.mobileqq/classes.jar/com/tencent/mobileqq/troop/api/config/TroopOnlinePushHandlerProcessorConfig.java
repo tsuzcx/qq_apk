@@ -14,29 +14,29 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.MsgBody.SubCmd0
 
 public class TroopOnlinePushHandlerProcessorConfig
 {
-  private static TroopOnlinePushHandlerProcessorConfig jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopOnlinePushHandlerProcessorConfig;
-  private static ArrayList<AbsTroopOnlinePushHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<AbsTroopOnlinePushHandlerProcessor> a = new ArrayList();
+  private static TroopOnlinePushHandlerProcessorConfig b;
   
   private TroopOnlinePushHandlerProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static TroopOnlinePushHandlerProcessorConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopOnlinePushHandlerProcessorConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopOnlinePushHandlerProcessorConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopOnlinePushHandlerProcessorConfig = new TroopOnlinePushHandlerProcessorConfig();
+        if (b == null) {
+          b = new TroopOnlinePushHandlerProcessorConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopOnlinePushHandlerProcessorConfig;
+    return b;
   }
   
-  private static void a()
+  private static void b()
   {
     if (BizTroopCustomizedProcessorRegister.f != null)
     {
@@ -47,7 +47,7 @@ public class TroopOnlinePushHandlerProcessorConfig
         try
         {
           localObject = (AbsTroopOnlinePushHandlerProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          a.add(localObject);
         }
         catch (Throwable localThrowable)
         {
@@ -59,7 +59,7 @@ public class TroopOnlinePushHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, TroopEnterEffectData paramTroopEnterEffectData)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopOnlinePushHandlerProcessor)localIterator.next()).a(paramAppInterface, paramTroopEnterEffectData);
     }
@@ -67,7 +67,7 @@ public class TroopOnlinePushHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopOnlinePushHandlerProcessor)localIterator.next()).a(paramAppInterface, paramTroopUnreadMsgInfo);
     }
@@ -75,7 +75,7 @@ public class TroopOnlinePushHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, TroopUnreadMsgInfo paramTroopUnreadMsgInfo, submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum paramSubCmd0x1UpdateAppUnreadNum, long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopOnlinePushHandlerProcessor)localIterator.next()).a(paramAppInterface, paramTroopUnreadMsgInfo, paramSubCmd0x1UpdateAppUnreadNum, paramArrayOfLong, paramInt1, paramInt2, paramInt3);
     }
@@ -83,7 +83,7 @@ public class TroopOnlinePushHandlerProcessorConfig
   
   public void a(AppInterface paramAppInterface, String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopOnlinePushHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString);
     }
@@ -96,7 +96,7 @@ public class TroopOnlinePushHandlerProcessorConfig
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = a.iterator();
       while (localIterator.hasNext()) {
         ((AbsTroopOnlinePushHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString1, paramString2, paramTroopInfo);
       }
@@ -110,7 +110,7 @@ public class TroopOnlinePushHandlerProcessorConfig
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = a.iterator();
       while (localIterator.hasNext()) {
         ((AbsTroopOnlinePushHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString1, paramString2, paramTroopInfo, paramArrayList);
       }
@@ -119,7 +119,7 @@ public class TroopOnlinePushHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopOnlinePushHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

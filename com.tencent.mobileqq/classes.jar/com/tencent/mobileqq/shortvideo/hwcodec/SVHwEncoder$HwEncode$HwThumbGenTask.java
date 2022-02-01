@@ -13,14 +13,14 @@ class SVHwEncoder$HwEncode$HwThumbGenTask
   {
     long l = System.currentTimeMillis();
     paramVarArgs = new StringBuilder();
-    paramVarArgs.append(SVHwEncoder.HwEncode.a(this.a));
+    paramVarArgs.append(SVHwEncoder.HwEncode.e(this.a));
     paramVarArgs.append("shortvideo_thumb.jpg");
     paramVarArgs = paramVarArgs.toString();
-    int j = this.a.a.a(SVHwEncoder.HwEncode.b(this.a), SVHwEncoder.f(this.a.this$0), SVHwEncoder.g(this.a.this$0), SVHwEncoder.a(this.a.this$0), SVHwEncoder.b(this.a.this$0), paramVarArgs);
+    int j = this.a.a.a(SVHwEncoder.HwEncode.f(this.a), SVHwEncoder.n(this.a.this$0), SVHwEncoder.o(this.a.this$0), SVHwEncoder.p(this.a.this$0), SVHwEncoder.q(this.a.this$0), paramVarArgs);
     int i = j;
     if (j == 0)
     {
-      String str = SVUtils.a(this.a.a.jdField_a_of_type_JavaLangString, "jpg");
+      String str = SVUtils.a(this.a.a.a, "jpg");
       if (FileUtils.rename(paramVarArgs, str))
       {
         this.a.a.b = str;
@@ -42,15 +42,15 @@ class SVHwEncoder$HwEncode$HwThumbGenTask
         }
       }
     }
-    this.a.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-    this.a.a.jdField_a_of_type_Int = i;
+    this.a.a.d = (System.currentTimeMillis() - l);
+    this.a.a.c = i;
     SVHwEncoder.HwEncode.a(this.a, true);
     return Integer.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode.HwThumbGenTask
  * JD-Core Version:    0.7.0.1
  */

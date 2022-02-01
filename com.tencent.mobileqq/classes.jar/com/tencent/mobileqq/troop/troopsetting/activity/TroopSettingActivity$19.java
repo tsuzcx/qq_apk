@@ -16,45 +16,45 @@ class TroopSettingActivity$19
 {
   TroopSettingActivity$19(TroopSettingActivity paramTroopSettingActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null)
+    if (this.b.n == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity;
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(paramView);
+      paramView = this.b;
+      paramView.n = new QQProgressNotifier(paramView);
     }
-    if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity))
+    if (NetworkUtil.isNetSupport(this.b))
     {
-      paramView = (ITroopMngHandler)TroopSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity).getBusinessHandler(TroopMngHandler.class.getName());
+      paramView = (ITroopMngHandler)TroopSettingActivity.a(this.b).getBusinessHandler(TroopMngHandler.class.getName());
       if (paramView != null)
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity.i & 0x1) == 0)
+        if ((this.b.ax & 0x1) == 0)
         {
-          TroopSettingActivity localTroopSettingActivity = this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity;
-          localTroopSettingActivity.i |= 0x1;
-          paramView.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+          TroopSettingActivity localTroopSettingActivity = this.b;
+          localTroopSettingActivity.ax |= 0x1;
+          paramView.b(this.b.i.troopUin);
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(0, 2131692090, 1000);
+        this.b.n.b(0, 2131889068, 1000);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(2, 2131692085, 1500);
+        this.b.n.b(2, 2131889057, 1500);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b(2, 2131694475, 1500);
+      this.b.n.b(2, 2131892157, 1500);
     }
-    ReportController.b(TroopSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity), "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    ReportController.b(TroopSettingActivity.a(this.b), "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+    this.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.19
  * JD-Core Version:    0.7.0.1
  */

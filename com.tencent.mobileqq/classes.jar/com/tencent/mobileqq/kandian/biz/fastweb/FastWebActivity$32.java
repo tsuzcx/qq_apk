@@ -13,8 +13,8 @@ class FastWebActivity$32
   
   public void a(FastWebActivityStackUtil.SaveState paramSaveState)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramSaveState.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    int i = FastWebActivity.f(this.a);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramSaveState.a;
+    int i = FastWebActivity.P(this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -22,12 +22,12 @@ class FastWebActivity$32
       localStringBuilder.append(localAbsBaseArticleInfo);
       QLog.i("FastWebActivity", 2, localStringBuilder.toString());
     }
-    ReportUtil.a(localAbsBaseArticleInfo, FastWebActivity.g(this.a), i, paramSaveState.jdField_a_of_type_Boolean, this.a.b, FastWebActivity.h(this.a));
+    ReportUtil.a(localAbsBaseArticleInfo, FastWebActivity.Q(this.a), i, paramSaveState.e, this.a.j, FastWebActivity.R(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.32
  * JD-Core Version:    0.7.0.1
  */

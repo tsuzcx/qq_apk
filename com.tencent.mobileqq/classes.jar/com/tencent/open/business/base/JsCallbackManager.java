@@ -5,51 +5,51 @@ import java.util.ArrayList;
 public class JsCallbackManager
 {
   protected static JsCallbackManager a;
-  protected ArrayList<IJsCallBack> a;
+  protected ArrayList<IJsCallBack> b;
   
   public static JsCallbackManager a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager == null)
+      if (a == null)
       {
-        jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager = new JsCallbackManager();
-        jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        a = new JsCallbackManager();
+        a.b = new ArrayList();
       }
-      JsCallbackManager localJsCallbackManager = jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager;
+      JsCallbackManager localJsCallbackManager = a;
       return localJsCallbackManager;
     }
     finally {}
   }
   
-  public ArrayList<IJsCallBack> a()
-  {
-    return jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
   public void a(IJsCallBack paramIJsCallBack)
   {
-    int j = jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = a.b.size();
     int i = 0;
     while (i < j)
     {
-      if ((IJsCallBack)jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager.jdField_a_of_type_JavaUtilArrayList.get(i) == paramIJsCallBack) {
+      if ((IJsCallBack)a.b.get(i) == paramIJsCallBack) {
         return;
       }
       i += 1;
     }
-    jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager.jdField_a_of_type_JavaUtilArrayList.add(paramIJsCallBack);
+    a.b.add(paramIJsCallBack);
+  }
+  
+  public ArrayList<IJsCallBack> b()
+  {
+    return a.b;
   }
   
   public void b(IJsCallBack paramIJsCallBack)
   {
-    int j = jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = a.b.size();
     int i = 0;
     while (i < j)
     {
-      if ((IJsCallBack)jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager.jdField_a_of_type_JavaUtilArrayList.get(i) == paramIJsCallBack)
+      if ((IJsCallBack)a.b.get(i) == paramIJsCallBack)
       {
-        jdField_a_of_type_ComTencentOpenBusinessBaseJsCallbackManager.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        a.b.remove(i);
         return;
       }
       i += 1;
@@ -58,7 +58,7 @@ public class JsCallbackManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.JsCallbackManager
  * JD-Core Version:    0.7.0.1
  */

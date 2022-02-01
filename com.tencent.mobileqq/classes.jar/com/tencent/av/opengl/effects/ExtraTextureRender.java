@@ -7,19 +7,19 @@ import com.tencent.ttpic.openapi.filter.TextureRender;
 
 public class ExtraTextureRender
 {
-  private int jdField_a_of_type_Int = 0;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private final float[] b;
+  private RenderBuffer a = null;
+  private TextureRender b = null;
+  private final float[] c = new float[16];
+  private final float[] d;
+  private int e = 0;
   
   public ExtraTextureRender()
   {
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    this.b = new float[16];
-    Matrix.setIdentityM(this.b, 0);
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender == null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    Matrix.setIdentityM(this.c, 0);
+    this.d = new float[16];
+    Matrix.setIdentityM(this.d, 0);
+    if (this.b == null) {
+      this.b = new TextureRender();
     }
   }
   
@@ -27,51 +27,35 @@ public class ExtraTextureRender
   {
     if ((paramGLTexture != null) && (paramGLTexture.b != -1) && (paramInt1 != 0) && (paramInt2 != 0))
     {
-      RenderBuffer localRenderBuffer = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-      if ((localRenderBuffer == null) || (paramInt1 != localRenderBuffer.getWidth()) || (paramInt2 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight()))
+      RenderBuffer localRenderBuffer = this.a;
+      if ((localRenderBuffer == null) || (paramInt1 != localRenderBuffer.getWidth()) || (paramInt2 != this.a.getHeight()))
       {
-        localRenderBuffer = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+        localRenderBuffer = this.a;
         if (localRenderBuffer != null) {
           localRenderBuffer.destroy();
         }
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
+        this.a = new RenderBuffer(paramInt1, paramInt2, 33984);
       }
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramGLTexture.b, this.jdField_a_of_type_ArrayOfFloat, this.b);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      return GLTexture.a(0, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+      this.a.bind();
+      this.b.drawTexture(3553, paramGLTexture.b, this.c, this.d);
+      this.a.unbind();
+      return GLTexture.a(0, this.a.getTexId());
     }
     return null;
   }
   
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-    if (localObject != null)
-    {
-      ((RenderBuffer)localObject).destroy();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-    if (localObject != null)
-    {
-      ((TextureRender)localObject).release();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-    }
-  }
-  
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == paramInt) {
+    if (this.e == paramInt) {
       return;
     }
-    Matrix.setIdentityM(this.b, 0);
+    Matrix.setIdentityM(this.d, 0);
     if (paramInt == 1) {
-      Matrix.scaleM(this.b, 0, -1.0F, 1.0F, 1.0F);
+      Matrix.scaleM(this.d, 0, -1.0F, 1.0F, 1.0F);
     } else if (paramInt == 2) {
-      Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
+      Matrix.scaleM(this.d, 0, 1.0F, -1.0F, 1.0F);
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
     if (QLog.isDevelopLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -84,7 +68,23 @@ public class ExtraTextureRender
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int != 0;
+    return this.e != 0;
+  }
+  
+  public void b()
+  {
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      ((RenderBuffer)localObject).destroy();
+      this.a = null;
+    }
+    localObject = this.b;
+    if (localObject != null)
+    {
+      ((TextureRender)localObject).release();
+      this.b = null;
+    }
   }
 }
 

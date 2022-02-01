@@ -10,24 +10,24 @@ import com.tencent.ttpic.openapi.filter.TextureRender;
 
 public class QQVideoGaussianBlurFilter
 {
-  int jdField_a_of_type_Int;
-  GaussianBlurFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter;
-  GaussianBlurFilterCompose jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose;
-  RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  float[] jdField_a_of_type_ArrayOfFloat;
-  int jdField_b_of_type_Int;
-  RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  int jdField_c_of_type_Int;
-  float[] jdField_c_of_type_ArrayOfFloat;
-  int d;
-  int e;
+  GaussianBlurFilterCompose a;
+  GaussianBlurFilter b;
+  TextureRender c;
+  RenderBuffer d;
+  RenderBuffer e;
+  float[] f;
+  float[] g;
+  float[] h;
+  int i;
+  int j;
+  int k;
+  int l;
+  int m;
   
   public QQVideoGaussianBlurFilter(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfFloat = a(this.jdField_c_of_type_Int);
+    this.k = paramInt;
+    this.f = a(this.k);
   }
   
   private float[] a(float paramFloat)
@@ -40,50 +40,50 @@ public class QQVideoGaussianBlurFilter
   
   private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose = new GaussianBlurFilterCompose();
-    if (this.jdField_c_of_type_Int % 180 != 0)
+    this.c = new TextureRender();
+    this.a = new GaussianBlurFilterCompose();
+    if (this.k % 180 != 0)
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.init(paramInt2, paramInt1);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt2, paramInt1, 33984);
-      this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(paramInt2, paramInt1, paramInt3, paramInt4);
-      this.jdField_c_of_type_ArrayOfFloat = GPUBaseFilter.caculateFitCenterMvpMatrix(paramInt2, paramInt1, paramInt3, paramInt4);
+      this.a.init(paramInt2, paramInt1);
+      this.d = new RenderBuffer(paramInt2, paramInt1, 33984);
+      this.g = GPUBaseFilter.caculateCenterCropMvpMatrix(paramInt2, paramInt1, paramInt3, paramInt4);
+      this.h = GPUBaseFilter.caculateFitCenterMvpMatrix(paramInt2, paramInt1, paramInt3, paramInt4);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.init(paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
-      this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(paramInt1, paramInt2, paramInt3, paramInt4);
-      this.jdField_c_of_type_ArrayOfFloat = GPUBaseFilter.caculateFitCenterMvpMatrix(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.a.init(paramInt1, paramInt2);
+      this.d = new RenderBuffer(paramInt1, paramInt2, 33984);
+      this.g = GPUBaseFilter.caculateCenterCropMvpMatrix(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.h = GPUBaseFilter.caculateFitCenterMvpMatrix(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.getFilter();
-    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt3, paramInt4, 33984);
+    this.b = this.a.getFilter();
+    this.e = new RenderBuffer(paramInt3, paramInt4, 33984);
   }
   
   public int a(int paramInt)
   {
-    int i = paramInt;
-    if (this.jdField_c_of_type_Int != 0)
+    int n = paramInt;
+    if (this.k != 0)
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt, null, this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      i = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+      this.d.bind();
+      this.c.drawTexture(3553, paramInt, null, this.f);
+      this.d.unbind();
+      n = this.d.getTexId();
     }
-    GaussianBlurFilter localGaussianBlurFilter = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter;
+    GaussianBlurFilter localGaussianBlurFilter = this.b;
     if ((localGaussianBlurFilter != null) && (localGaussianBlurFilter.isInitSucc())) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.drawTexture(i);
+      this.a.drawTexture(n);
     }
-    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    this.e.bind();
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES20.glClear(16384);
-    localGaussianBlurFilter = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter;
+    localGaussianBlurFilter = this.b;
     if ((localGaussianBlurFilter != null) && (localGaussianBlurFilter.isInitSucc()))
     {
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(32771, 771);
       GLES20.glBlendColor(0.0F, 0.0F, 0.0F, 0.75F);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose.getTextureId(), null, this.jdField_b_of_type_ArrayOfFloat);
+      this.c.drawTexture(3553, this.a.getTextureId(), null, this.g);
       GLES20.glDisable(3042);
     }
     else
@@ -91,33 +91,33 @@ public class QQVideoGaussianBlurFilter
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(32771, 771);
       GLES20.glBlendColor(0.0F, 0.0F, 0.0F, 0.1F);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, i, null, this.jdField_b_of_type_ArrayOfFloat);
+      this.c.drawTexture(3553, n, null, this.g);
       GLES20.glDisable(3042);
     }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, i, null, this.jdField_c_of_type_ArrayOfFloat);
-    this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-    return this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+    this.c.drawTexture(3553, n, null, this.h);
+    this.e.unbind();
+    return this.e.getTexId();
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilter;
+    Object localObject = this.b;
     if (localObject != null) {
       ((GaussianBlurFilter)localObject).destroy();
     }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterGaussianBlurFilterCompose;
+    localObject = this.a;
     if (localObject != null) {
       ((GaussianBlurFilterCompose)localObject).destroy();
     }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+    localObject = this.c;
     if (localObject != null) {
       ((TextureRender)localObject).release();
     }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    localObject = this.d;
     if (localObject != null) {
       ((RenderBuffer)localObject).destroy();
     }
-    localObject = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    localObject = this.e;
     if (localObject != null) {
       ((RenderBuffer)localObject).destroy();
     }
@@ -125,26 +125,26 @@ public class QQVideoGaussianBlurFilter
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.d != paramInt1) || (this.e != paramInt2))
+    if ((this.l != paramInt1) || (this.m != paramInt2))
     {
-      this.d = paramInt1;
-      this.e = paramInt2;
-      b(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.d, this.e);
+      this.l = paramInt1;
+      this.m = paramInt2;
+      b(this.i, this.j, this.l, this.m);
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
-    this.e = paramInt4;
-    b(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.d, this.e);
+    this.i = paramInt1;
+    this.j = paramInt2;
+    this.l = paramInt3;
+    this.m = paramInt4;
+    b(this.i, this.j, this.l, this.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filter.QQVideoGaussianBlurFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ final class SdkDynamicAvatarSettingHelper$4
   {
     if (paramInt == 0)
     {
-      SdkDynamicAvatarSettingHelper.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      SdkDynamicAvatarSettingHelper.a(this.a, false, this.b, this.c, false);
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SdkDynamicAvatarSettingHelper.4
  * JD-Core Version:    0.7.0.1
  */

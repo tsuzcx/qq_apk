@@ -14,20 +14,20 @@ import com.tencent.qphone.base.util.QLog;
 
 public final class QavSharpnessSVIPHelper
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VideoController jdField_a_of_type_ComTencentAvVideoController;
-  private IToolProcStart jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new QavSharpnessSVIPHelper.1(this);
-  private boolean jdField_a_of_type_Boolean;
+  private VideoController a;
+  private Activity b;
+  private Boolean c;
+  private boolean d;
+  private QQProgressDialog e;
+  private Handler f;
+  private final Runnable g = new QavSharpnessSVIPHelper.1(this);
+  private IToolProcStart h;
   
   public QavSharpnessSVIPHelper(VideoController paramVideoController, AVActivity paramAVActivity)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
-    this.jdField_a_of_type_AndroidAppActivity = paramAVActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.a = paramVideoController;
+    this.b = paramAVActivity;
+    this.f = new Handler();
   }
   
   public void a() {}
@@ -36,41 +36,16 @@ public final class QavSharpnessSVIPHelper
   {
     QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction");
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart == null) {
-      this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart = ((IQRToolProcStartApi)QRoute.api(IQRToolProcStartApi.class)).get();
+    if (this.h == null) {
+      this.h = ((IQRToolProcStartApi)QRoute.api(IQRToolProcStartApi.class)).get();
     }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.f;
     if (localHandler != null)
     {
-      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      localHandler.removeCallbacks(this.g);
+      this.f.postDelayed(this.g, 1000L);
     }
-    this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart.a("doubleVideo", 5000L, new QavSharpnessSVIPHelper.2(this, paramActivity, l));
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaLangBoolean == null)
-    {
-      this.jdField_a_of_type_JavaLangBoolean = new Boolean(false);
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.m());
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("isSVIP:= ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangBoolean);
-        QLog.w("QavSharpnessSVIPHelper", 1, localStringBuilder.toString());
-      }
-    }
-    return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("QavSharpnessSVIPHelper", 1, "promotionSVIPSuccess");
-    }
-    this.jdField_a_of_type_JavaLangBoolean = new Boolean(true);
+    this.h.a("doubleVideo", 5000L, new QavSharpnessSVIPHelper.2(this, paramActivity, l));
   }
   
   public void b(Activity paramActivity)
@@ -78,37 +53,62 @@ public final class QavSharpnessSVIPHelper
     if (QLog.isColorLevel()) {
       QLog.w("QavSharpnessSVIPHelper", 1, "doRealLaunchQQPayFuntion");
     }
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart;
+    paramActivity = this.h;
     if (paramActivity != null)
     {
       paramActivity.a();
-      this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart = null;
+      this.h = null;
     }
-    VasH5PayUtil.a(this.jdField_a_of_type_AndroidAppActivity, "https://h5.vip.qq.com/p/pay/index?_wv=17301507&aid=mvip.n.a.hdvcall&type=!svip&isAskFriendPay=0&isSend=0");
+    VasH5PayUtil.a(this.b, "https://h5.vip.qq.com/p/pay/index?_wv=17301507&aid=mvip.n.a.hdvcall&type=!svip&isAskFriendPay=0&isSend=0");
+  }
+  
+  public boolean b()
+  {
+    if (this.c == null)
+    {
+      this.c = new Boolean(false);
+      this.c = Boolean.valueOf(this.a.af());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isSVIP:= ");
+        localStringBuilder.append(this.c);
+        QLog.w("QavSharpnessSVIPHelper", 1, localStringBuilder.toString());
+      }
+    }
+    return this.c.booleanValue();
   }
   
   public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("QavSharpnessSVIPHelper", 1, "promotionSVIPSuccess");
+    }
+    this.c = new Boolean(true);
+  }
+  
+  public void d()
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("showProgress mProgressShowing:");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d);
       QLog.d("QavSharpnessSVIPHelper", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.e == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131708933));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
+        this.e = new QQProgressDialog(this.b, this.b.getResources().getDimensionPixelSize(2131299920));
+        this.e.a(HardCodeUtil.a(2131906700));
+        this.e.c(false);
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.d = true;
+      this.e.show();
       return;
     }
     catch (Exception localException)
@@ -121,24 +121,24 @@ public final class QavSharpnessSVIPHelper
     }
   }
   
-  public void d()
+  public void e()
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("hideProgress  mProgressShowing:");
-      localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder1.append(this.d);
       QLog.d("QavSharpnessSVIPHelper", 2, localStringBuilder1.toString());
     }
     try
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      if (this.f != null) {
+        this.f.removeCallbacks(this.g);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if ((this.e != null) && (this.e.isShowing())) {
+        this.e.dismiss();
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       return;
     }
     catch (Exception localException)
@@ -154,21 +154,21 @@ public final class QavSharpnessSVIPHelper
     }
   }
   
-  public void e()
+  public void f()
   {
-    this.jdField_a_of_type_JavaLangBoolean = null;
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    this.c = null;
+    this.b = null;
+    Object localObject = this.f;
     if (localObject != null)
     {
       ((Handler)localObject).removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.f = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart;
+    localObject = this.h;
     if (localObject != null)
     {
       ((IToolProcStart)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqQrscanIToolProcStart = null;
+      this.h = null;
     }
   }
 }

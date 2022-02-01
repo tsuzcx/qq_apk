@@ -5,9 +5,9 @@ import org.json.JSONObject;
 
 public abstract class BaseTavEvent
 {
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private String a;
   private String b;
+  private JSONObject c;
   
   BaseTavEvent(JSONObject paramJSONObject)
   {
@@ -15,20 +15,13 @@ public abstract class BaseTavEvent
       this.b = paramJSONObject.getString("methodName");
     }
     if (paramJSONObject.has("param")) {
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject.getJSONObject("param");
+      this.c = paramJSONObject.getJSONObject("param");
     }
-  }
-  
-  @Nullable
-  public Object a(String paramString)
-  {
-    paramString = a(this.jdField_a_of_type_OrgJsonJSONObject, paramString);
-    return TavObjPool.a().a(paramString);
   }
   
   String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   String a(JSONObject paramJSONObject)
@@ -44,14 +37,16 @@ public abstract class BaseTavEvent
     return paramJSONObject.getJSONObject(paramString).getString("identifier");
   }
   
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
   void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
+  }
+  
+  @Nullable
+  public Object b(String paramString)
+  {
+    paramString = a(this.c, paramString);
+    return TavObjPool.a().a(paramString);
   }
   
   public String b()
@@ -59,17 +54,22 @@ public abstract class BaseTavEvent
     return this.b;
   }
   
+  public JSONObject c()
+  {
+    return this.c;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("BaseEvent{className='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", methodName='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", param=");
-    localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", objPool=");
     localStringBuilder.append(TavObjPool.a());
     localStringBuilder.append('}');
@@ -78,7 +78,7 @@ public abstract class BaseTavEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.BaseTavEvent
  * JD-Core Version:    0.7.0.1
  */

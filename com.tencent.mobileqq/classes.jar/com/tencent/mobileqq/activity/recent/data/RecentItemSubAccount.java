@@ -36,7 +36,7 @@ public class RecentItemSubAccount
       StringBuilder localStringBuilder;
       if (AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(this.mUser.uin))
       {
-        this.mTitleName = paramContext.getString(2131719282);
+        this.mTitleName = paramContext.getString(2131916834);
       }
       else
       {
@@ -45,7 +45,7 @@ public class RecentItemSubAccount
           this.mTitleName = this.mUser.uin;
         }
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramContext.getString(2131719304));
+        localStringBuilder.append(paramContext.getString(2131916856));
         localStringBuilder.append("（");
         localStringBuilder.append(this.mTitleName);
         localStringBuilder.append("）");
@@ -71,7 +71,7 @@ public class RecentItemSubAccount
       }
       if (!TextUtils.isEmpty(this.mMsgExtroInfo))
       {
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
       else
       {
@@ -82,7 +82,7 @@ public class RecentItemSubAccount
       this.mDisplayTime = getLastMsgTime();
       dealStatus(paramBaseQQAppInterface);
       extraUpdate(paramBaseQQAppInterface, paramContext, localMsgSummary);
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramBaseQQAppInterface = new StringBuilder();
         paramBaseQQAppInterface.append(this.mTitleName);
@@ -120,7 +120,7 @@ public class RecentItemSubAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemSubAccount
  * JD-Core Version:    0.7.0.1
  */

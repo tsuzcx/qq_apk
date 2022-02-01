@@ -20,32 +20,32 @@ class BusinessBrowser$BusinessBrowserFragment$4
     {
       paramContext = paramIntent.getStringExtra("uin");
       paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
+      if ((this.a.f != null) && (this.a.f.equals(paramContext)) && (paramIntent != null)) {
+        this.a.c.setImageBitmap(paramIntent);
       }
     }
-    else if (("action_follow_status_finish".equals(paramContext)) && (String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)))
+    else if (("action_follow_status_finish".equals(paramContext)) && (String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.f)))
     {
-      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+      this.a.h = paramIntent.getBooleanExtra("isFollow", false);
+      if (this.a.a != null)
       {
-        if (this.a.jdField_a_of_type_Boolean)
+        if (this.a.h)
         {
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701473));
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+          this.a.a.setText(HardCodeUtil.a(2131899497));
+          this.a.a.setEnabled(false);
+          this.a.a.setBackgroundResource(0);
           return;
         }
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701485));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130847326);
+        this.a.a.setText(HardCodeUtil.a(2131899712));
+        this.a.a.setEnabled(true);
+        this.a.a.setBackgroundResource(2130848977);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment.4
  * JD-Core Version:    0.7.0.1
  */

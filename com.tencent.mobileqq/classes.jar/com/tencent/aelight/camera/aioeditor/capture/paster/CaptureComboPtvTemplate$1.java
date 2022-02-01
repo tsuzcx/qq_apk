@@ -14,7 +14,7 @@ class CaptureComboPtvTemplate$1
     {
       if (paramPtvTemplateInfo.a.equals(CaptureComboPtvTemplate.a(this.a).a))
       {
-        CaptureComboPtvTemplate.a(this.a).c = true;
+        CaptureComboPtvTemplate.a(this.a).h = true;
         CaptureComboPtvTemplate.a(this.a, paramInt * 1.0F / 100.0F);
         CaptureComboPtvTemplate.a(this.a, 1);
       }
@@ -28,8 +28,8 @@ class CaptureComboPtvTemplate$1
     {
       if (paramPtvTemplateInfo.a.equals(CaptureComboPtvTemplate.a(this.a).a))
       {
-        CaptureComboPtvTemplate.a(this.a).c = false;
-        CaptureComboPtvTemplate.a(this.a).b = paramBoolean;
+        CaptureComboPtvTemplate.a(this.a).h = false;
+        CaptureComboPtvTemplate.a(this.a).g = paramBoolean;
       }
       if (paramBoolean)
       {
@@ -51,7 +51,7 @@ class CaptureComboPtvTemplate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.CaptureComboPtvTemplate.1
  * JD-Core Version:    0.7.0.1
  */

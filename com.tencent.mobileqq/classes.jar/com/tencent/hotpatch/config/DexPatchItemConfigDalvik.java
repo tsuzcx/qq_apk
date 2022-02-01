@@ -10,27 +10,58 @@ import org.json.JSONObject;
 public class DexPatchItemConfigDalvik
   extends AbscractPatchItemConfig
 {
-  private ArrayList<String> a;
+  private ArrayList<String> d = new ArrayList();
   
   public DexPatchItemConfigDalvik(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     a(paramJSONObject);
   }
   
-  public String a()
+  protected void a(JSONObject paramJSONObject)
   {
-    String str1 = super.a();
+    super.a(paramJSONObject);
+    this.a = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    int i = 0;
+    this.c = paramJSONObject.optInt("patchSize", 0);
+    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
+    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
+    {
+      int j = paramJSONObject.length;
+      while (i < j)
+      {
+        CharSequence localCharSequence = paramJSONObject[i];
+        if (!TextUtils.isEmpty(localCharSequence)) {
+          this.d.add(localCharSequence);
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.d.size() <= 0)
+    {
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
+      return false;
+    }
+    return super.a(paramString);
+  }
+  
+  public String b()
+  {
+    String str1 = super.b();
     try
     {
       Object localObject = new JSONObject(str1);
-      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchName", this.a);
       ((JSONObject)localObject).put("patchUrl", this.b);
-      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("patchSize", this.c);
       StringBuilder localStringBuilder = new StringBuilder("");
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((this.d != null) && (this.d.size() > 0))
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.d.iterator();
         while (localIterator.hasNext())
         {
           String str2 = (String)localIterator.next();
@@ -51,47 +82,10 @@ public class DexPatchItemConfigDalvik
     }
     return str1;
   }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    int i = 0;
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
-    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
-    {
-      int j = paramJSONObject.length;
-      while (i < j)
-      {
-        CharSequence localCharSequence = paramJSONObject[i];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
-      return false;
-    }
-    return super.a(paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hotpatch.config.DexPatchItemConfigDalvik
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class MatchingView$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (MatchingView.a(this.a)) {
-      MatchingView.a(this.a).start();
+    if (MatchingView.d(this.a)) {
+      MatchingView.e(this.a).start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.MatchingView.3
  * JD-Core Version:    0.7.0.1
  */

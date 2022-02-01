@@ -3,7 +3,7 @@ package com.tencent.viola.module;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.util.Map;
 
-final class ViolaModuleManager$1
+class ViolaModuleManager$1
   implements Runnable
 {
   ViolaModuleManager$1(String paramString, boolean paramBoolean, IModuleHolder paramIModuleHolder) {}
@@ -47,7 +47,7 @@ final class ViolaModuleManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.ViolaModuleManager.1
  * JD-Core Version:    0.7.0.1
  */

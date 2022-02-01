@@ -1,37 +1,77 @@
 package com.tencent.mobileqq.settings.message;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.QVipUtils;
-import com.tencent.mobileqq.vas.config.business.qvip.QVipAutoPttConfig;
-import com.tencent.mobileqq.vas.config.business.qvip.QVipAutoPttProcessor;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.contacts.topentry.CTEntry;
+import com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HeightAdaptableListView;
+import mqq.app.AppRuntime;
 
 class AssistantSettingFragment$40
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
   AssistantSettingFragment$40(AssistantSettingFragment paramAssistantSettingFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QLog.e("vip_ptt.AssistantSettingFragment", 1, "click pay for auto ptt");
-    paramDialogInterface = QVipAutoPttProcessor.c();
-    if (TextUtils.isEmpty(paramDialogInterface.a))
+    int j = this.a.g.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-      QVipUtils.a(this.a.getBaseActivity(), "https://h5.vip.qq.com/p/pay/index?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
+      localObject = this.a.g.getChildAt(i);
+      if ((localObject instanceof FormSwitchItem))
+      {
+        localObject = (FormSwitchItem)localObject;
+        if (paramCompoundButton == ((FormSwitchItem)localObject).getSwitch()) {
+          break label70;
+        }
+      }
+      i += 1;
     }
-    else
+    Object localObject = null;
+    label70:
+    if ((localObject != null) && ((((FormSwitchItem)localObject).getTag() instanceof CTEntry)))
     {
-      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
-      QVipUtils.a(this.a.getBaseActivity(), paramDialogInterface);
+      CTEntry localCTEntry = (CTEntry)((FormSwitchItem)localObject).getTag();
+      localCTEntry.m = (paramBoolean ^ true);
+      if (this.a.i != null) {
+        this.a.i.a(localCTEntry, localCTEntry.m);
+      }
+      localObject = AssistantSettingFragment.c(this.a);
+      j = localCTEntry.a;
+      if (localCTEntry.m) {
+        i = 2;
+      } else {
+        i = 1;
+      }
+      ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X80097A0", "0X80097A0", j, 0, String.valueOf(i), "", "", "");
+      if (localCTEntry.a == 3)
+      {
+        QQAppInterface localQQAppInterface = AssistantSettingFragment.c(this.a);
+        if (paramBoolean) {
+          localObject = "0X8009C0A";
+        } else {
+          localObject = "0X8009C0B";
+        }
+        String str;
+        if (paramBoolean) {
+          str = "0X8009C0A";
+        } else {
+          str = "0X8009C0B";
+        }
+        ReportController.b(localQQAppInterface, "dc00898", "", "", (String)localObject, str, localCTEntry.a, 0, "", "", "", "");
+      }
     }
-    this.a.b();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.40
  * JD-Core Version:    0.7.0.1
  */

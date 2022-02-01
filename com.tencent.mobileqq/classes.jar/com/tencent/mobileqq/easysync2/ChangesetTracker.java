@@ -10,58 +10,33 @@ import java.util.Iterator;
 public class ChangesetTracker
   implements IChangesetTracker
 {
-  protected AText a;
   protected AttribPool a;
-  private EditorCallback jdField_a_of_type_ComTencentMobileqqEasysync2EditorCallback;
-  private UserChangeCallback jdField_a_of_type_ComTencentMobileqqEasysync2UserChangeCallback;
-  protected String a;
-  private boolean jdField_a_of_type_Boolean = false;
-  protected String b;
-  private boolean b;
+  protected AText b = Changeset.b("\n", null);
+  protected String c;
+  protected String d = Changeset.b(1);
+  private boolean e = false;
+  private boolean f = false;
+  private EditorCallback g;
+  private UserChangeCallback h;
   
   public ChangesetTracker(AttribPool paramAttribPool, EditorCallback paramEditorCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AText = Changeset.a("\n", null);
-    this.jdField_b_of_type_JavaLangString = Changeset.b(1);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool = paramAttribPool;
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2EditorCallback = paramEditorCallback;
-  }
-  
-  private String a(String paramString)
-  {
-    Object localObject1 = "";
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a.size())
-    {
-      int j = this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a.keyAt(i);
-      Pair localPair = (Pair)this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a.get(j);
-      Object localObject2 = localObject1;
-      if (((String)localPair.first).equals("author"))
-      {
-        localObject2 = localObject1;
-        if (((String)localPair.second).equals(paramString)) {
-          localObject2 = Integer.toString(j, Changeset.jdField_a_of_type_Int);
-        }
-      }
-      i += 1;
-      localObject1 = localObject2;
-    }
-    return localObject1;
+    this.a = paramAttribPool;
+    this.g = paramEditorCallback;
   }
   
   @NonNull
   private String a(String paramString, Changeset paramChangeset)
   {
-    paramChangeset = Changeset.a(paramChangeset.jdField_a_of_type_JavaLangString);
+    paramChangeset = Changeset.d(paramChangeset.e);
     MergingOpAssembler localMergingOpAssembler = new MergingOpAssembler();
     while (paramChangeset.hasNext())
     {
       Operation localOperation = (Operation)paramChangeset.next();
-      if (localOperation.jdField_a_of_type_Char == '+')
+      if (localOperation.a == '+')
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        String[] arrayOfString = localOperation.jdField_a_of_type_JavaLangString.split("\\*");
+        String[] arrayOfString = localOperation.d.split("\\*");
         int j = arrayOfString.length;
         int i = 0;
         while (i < j)
@@ -69,7 +44,7 @@ public class ChangesetTracker
           String str = arrayOfString[i];
           if (!Utils.a(str))
           {
-            Pair localPair = this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a(Integer.parseInt(str, Changeset.jdField_a_of_type_Int));
+            Pair localPair = this.a.a(Integer.parseInt(str, Changeset.a));
             if (localPair != null) {
               if ("author".equals(localPair.first))
               {
@@ -85,7 +60,7 @@ public class ChangesetTracker
           }
           i += 1;
         }
-        localOperation.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        localOperation.d = localStringBuilder.toString();
       }
       localMergingOpAssembler.a(localOperation);
     }
@@ -93,39 +68,168 @@ public class ChangesetTracker
     return localMergingOpAssembler.toString();
   }
   
-  public AttribPool a()
+  private String c(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool;
+    Object localObject1 = "";
+    int i = 0;
+    while (i < this.a.a.size())
+    {
+      int j = this.a.a.keyAt(i);
+      Pair localPair = (Pair)this.a.a.get(j);
+      Object localObject2 = localObject1;
+      if (((String)localPair.first).equals("author"))
+      {
+        localObject2 = localObject1;
+        if (((String)localPair.second).equals(paramString)) {
+          localObject2 = Integer.toString(j, Changeset.a);
+        }
+      }
+      i += 1;
+      localObject1 = localObject2;
+    }
+    return localObject1;
   }
   
-  public UserChangeData a(String paramString)
+  public void a()
   {
-    boolean bool = Utils.a(this.jdField_a_of_type_JavaLangString);
+    if (!Utils.a(this.c))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("WriteTogether applying committed changeset: ");
+        localStringBuilder.append(this.c);
+        QLog.i("ChangesetTracker", 2, localStringBuilder.toString());
+      }
+      this.b = Changeset.a(this.c, this.b, this.a);
+      this.c = null;
+      return;
+    }
+    throw new IllegalStateException("applySubmittedChangesToBase: no submitted changes to apply");
+  }
+  
+  public void a(AText paramAText, String paramString)
+  {
+    this.e = true;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WriteTogether|setBaseAttributedText: ");
+      ((StringBuilder)localObject).append(paramAText.a);
+      QLog.i("ChangesetTracker", 2, ((StringBuilder)localObject).toString());
+    }
+    this.b = Changeset.a(paramAText);
+    if (!Utils.a(paramString))
+    {
+      paramString = AttribPool.a(paramString);
+      localObject = this.b;
+      ((AText)localObject).b = Changeset.a(((AText)localObject).b, paramString, this.a);
+    }
+    this.c = null;
+    this.d = Changeset.b(paramAText.a.length());
+    this.f = true;
+    try
+    {
+      this.g.a(paramAText);
+      return;
+    }
+    finally
+    {
+      this.f = false;
+    }
+  }
+  
+  public void a(UserChangeCallback paramUserChangeCallback)
+  {
+    this.h = paramUserChangeCallback;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!this.e) {
+      return;
+    }
+    if (this.f) {
+      return;
+    }
+    if (Changeset.h(paramString)) {
+      return;
+    }
+    this.d = Changeset.b(this.d, paramString, this.a);
+    paramString = this.h;
+    if (paramString != null) {
+      paramString.a();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, AttribPool paramAttribPool)
+  {
+    if (!this.e) {
+      return;
+    }
+    String str = paramString1;
+    if (paramAttribPool != null) {
+      str = Changeset.a(paramString1, paramAttribPool, this.a);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("WriteTogether|applyChangesToBase: ");
+      paramString1.append(this.b.a);
+      QLog.i("ChangesetTracker", 2, paramString1.toString());
+    }
+    this.b = Changeset.a(str, this.b, this.a);
+    paramString1 = str;
+    if (!Utils.a(this.c))
+    {
+      paramString1 = this.c;
+      this.c = Changeset.b(str, paramString1, false, this.a);
+      paramString1 = Changeset.b(paramString1, str, true, this.a);
+    }
+    paramAttribPool = this.d;
+    this.d = Changeset.b(paramString1, paramAttribPool, true, this.a);
+    paramString1 = Changeset.b(paramAttribPool, paramString1, false, this.a);
+    this.f = true;
+    try
+    {
+      this.g.a(paramString1, true, paramString2);
+      return;
+    }
+    finally
+    {
+      this.f = false;
+    }
+  }
+  
+  public UserChangeData b(String paramString)
+  {
+    boolean bool = Utils.a(this.c);
     AttribPool localAttribPool = null;
     if (!bool)
     {
-      paramString = Changeset.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
+      paramString = Changeset.b(this.c, this.d, this.a);
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool.a != null)
+      if (this.a.a != null)
       {
-        str = a(paramString);
-        paramString = Changeset.a(this.jdField_b_of_type_JavaLangString);
+        str = c(paramString);
+        paramString = Changeset.e(this.d);
         str = a(str, paramString);
-        this.jdField_b_of_type_JavaLangString = Changeset.a(paramString.jdField_b_of_type_Int, paramString.c, str, paramString.jdField_b_of_type_JavaLangString);
-        Changeset.a(this.jdField_b_of_type_JavaLangString);
+        this.d = Changeset.a(paramString.c, paramString.d, str, paramString.f);
+        Changeset.a(this.d);
       }
-      if (Changeset.a(this.jdField_b_of_type_JavaLangString)) {
+      if (Changeset.h(this.d)) {
         paramString = null;
       } else {
-        paramString = this.jdField_b_of_type_JavaLangString;
+        paramString = this.d;
       }
     }
     if (!Utils.a(paramString))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_b_of_type_JavaLangString = Changeset.b(Changeset.b(paramString));
+      this.c = paramString;
+      this.d = Changeset.b(Changeset.c(paramString));
     }
     else
     {
@@ -134,138 +238,31 @@ public class ChangesetTracker
     String str = paramString;
     if (!Utils.a(paramString))
     {
-      paramString = Changeset.a(paramString, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-      localAttribPool = paramString.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool;
-      str = paramString.jdField_a_of_type_JavaLangString;
+      paramString = Changeset.a(paramString, this.a);
+      localAttribPool = paramString.b;
+      str = paramString.a;
     }
     return new UserChangeData(str, localAttribPool);
   }
   
-  public void a()
-  {
-    if (!Utils.a(this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("WriteTogether applying committed changeset: ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        QLog.i("ChangesetTracker", 2, localStringBuilder.toString());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqEasysync2AText = Changeset.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqEasysync2AText, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-      this.jdField_a_of_type_JavaLangString = null;
-      return;
-    }
-    throw new IllegalStateException("applySubmittedChangesToBase: no submitted changes to apply");
-  }
-  
-  public void a(AText paramAText, String paramString)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("WriteTogether|setBaseAttributedText: ");
-      ((StringBuilder)localObject).append(paramAText.jdField_a_of_type_JavaLangString);
-      QLog.i("ChangesetTracker", 2, ((StringBuilder)localObject).toString());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AText = Changeset.a(paramAText);
-    if (!Utils.a(paramString))
-    {
-      paramString = AttribPool.a(paramString);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqEasysync2AText;
-      ((AText)localObject).jdField_b_of_type_JavaLangString = Changeset.a(((AText)localObject).jdField_b_of_type_JavaLangString, paramString, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-    }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = Changeset.b(paramAText.jdField_a_of_type_JavaLangString.length());
-    this.jdField_b_of_type_Boolean = true;
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEasysync2EditorCallback.a(paramAText);
-      return;
-    }
-    finally
-    {
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  public void a(UserChangeCallback paramUserChangeCallback)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2UserChangeCallback = paramUserChangeCallback;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (Changeset.a(paramString)) {
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = Changeset.b(this.jdField_b_of_type_JavaLangString, paramString, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqEasysync2UserChangeCallback;
-    if (paramString != null) {
-      paramString.a();
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, AttribPool paramAttribPool)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    String str = paramString1;
-    if (paramAttribPool != null) {
-      str = Changeset.a(paramString1, paramAttribPool, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder();
-      paramString1.append("WriteTogether|applyChangesToBase: ");
-      paramString1.append(this.jdField_a_of_type_ComTencentMobileqqEasysync2AText.jdField_a_of_type_JavaLangString);
-      QLog.i("ChangesetTracker", 2, paramString1.toString());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2AText = Changeset.a(str, this.jdField_a_of_type_ComTencentMobileqqEasysync2AText, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-    paramString1 = str;
-    if (!Utils.a(this.jdField_a_of_type_JavaLangString))
-    {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_JavaLangString = Changeset.b(str, paramString1, false, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-      paramString1 = Changeset.b(paramString1, str, true, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-    }
-    paramAttribPool = this.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = Changeset.b(paramString1, paramAttribPool, true, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-    paramString1 = Changeset.b(paramAttribPool, paramString1, false, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
-    this.jdField_b_of_type_Boolean = true;
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEasysync2EditorCallback.a(paramString1, true, paramString2);
-      return;
-    }
-    finally
-    {
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (!Utils.a(this.jdField_a_of_type_JavaLangString)) || (!Changeset.a(this.jdField_b_of_type_JavaLangString));
-  }
-  
   public boolean b()
   {
-    return Utils.a(this.jdField_a_of_type_JavaLangString) ^ true;
+    return (!Utils.a(this.c)) || (!Changeset.h(this.d));
+  }
+  
+  public boolean c()
+  {
+    return Utils.a(this.c) ^ true;
+  }
+  
+  public AttribPool d()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.ChangesetTracker
  * JD-Core Version:    0.7.0.1
  */

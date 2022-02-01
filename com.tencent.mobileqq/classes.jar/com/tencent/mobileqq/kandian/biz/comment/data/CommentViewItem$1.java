@@ -8,9 +8,8 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.kandian.biz.comment.CommentReportR5Builder;
 import com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils;
 import com.tencent.mobileqq.kandian.biz.comment.entity.SubCommentData;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 
 class CommentViewItem$1
   extends ClickableSpan
@@ -19,16 +18,16 @@ class CommentViewItem$1
   
   public void onClick(View paramView)
   {
-    ReadInJoyCommentUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntitySubCommentData.uin, QBaseActivity.sTopActivity);
-    paramView = new CommentReportR5Builder(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem).a().a();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, ReadInJoyCommentUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a.mArticleID), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a.mAlgorithmID), this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a.innerUniqueID, paramView, false);
+    ReadInJoyCommentUtils.a(this.a.uin, QBaseActivity.sTopActivity);
+    paramView = new CommentReportR5Builder(this.b).a().b();
+    PublicAccountReportUtils.a(null, ReadInJoyCommentUtils.a(this.b.d), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.d.mArticleID), String.valueOf(this.b.d.mAlgorithmID), this.b.d.innerUniqueID, paramView, false);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
     String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntitySubCommentData.isAuthorSelection()) {
+    if (this.a.isAuthorSelection()) {
       str = "#FF8444";
     } else {
       str = "#737373";
@@ -39,7 +38,7 @@ class CommentViewItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.CommentViewItem.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,18 @@ class WyDownloader$9
   
   public Void a(ThreadPool.JobContext paramJobContext)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    paramJobContext = this.a.iterator();
     while (paramJobContext.hasNext())
     {
       long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadWyDownloader.b(l);
+      this.b.c(l);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.download.WyDownloader.9
  * JD-Core Version:    0.7.0.1
  */

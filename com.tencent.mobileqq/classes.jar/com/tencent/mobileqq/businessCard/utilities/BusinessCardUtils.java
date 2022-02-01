@@ -29,7 +29,7 @@ public class BusinessCardUtils
     BusinessCardManager localBusinessCardManager = (BusinessCardManager)paramAppInterface.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
     if (paramProfileCardInfo.allInOne.pa == 0)
     {
-      paramAppInterface = localBusinessCardManager.a();
+      paramAppInterface = localBusinessCardManager.c();
     }
     else if (paramProfileCardInfo.card != null)
     {
@@ -37,7 +37,7 @@ public class BusinessCardUtils
       if ((paramProfileCardInfo.card.bCardInfo != null) && (!TextUtils.isEmpty(paramAppInterface.cardId))) {
         localBusinessCardManager.a(paramProfileCardInfo.allInOne.uin, paramAppInterface);
       } else {
-        paramAppInterface = localBusinessCardManager.b(paramProfileCardInfo.allInOne.uin);
+        paramAppInterface = localBusinessCardManager.c(paramProfileCardInfo.allInOne.uin);
       }
     }
     else
@@ -55,7 +55,7 @@ public class BusinessCardUtils
   {
     paramQQAppInterface = (BusinessCardManager)paramQQAppInterface.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
     if (paramQQAppInterface != null) {
-      paramQQAppInterface = paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.c();
     } else {
       paramQQAppInterface = null;
     }
@@ -120,7 +120,7 @@ public class BusinessCardUtils
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mRequestWidth = paramInt1;
         localURLDrawableOptions.mRequestHeight = paramInt2;
-        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130844945);
+        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130846381);
         paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
         paramURLImageView.setURLDrawableDownListener(new BusinessCardUtils.1(paramURLImageView));
         return;
@@ -140,7 +140,7 @@ public class BusinessCardUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils
  * JD-Core Version:    0.7.0.1
  */

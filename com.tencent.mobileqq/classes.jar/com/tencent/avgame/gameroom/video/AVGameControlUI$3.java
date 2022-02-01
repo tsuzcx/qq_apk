@@ -11,10 +11,10 @@ class AVGameControlUI$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a;
+    paramDialogInterface = this.b.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showPermissionNormalDialog.Cancel, seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(paramDialogInterface, 1, localStringBuilder.toString());
   }

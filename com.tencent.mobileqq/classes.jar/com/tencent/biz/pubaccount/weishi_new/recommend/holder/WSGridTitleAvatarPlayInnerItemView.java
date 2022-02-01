@@ -15,37 +15,37 @@ public class WSGridTitleAvatarPlayInnerItemView
     super(paramContext, paramView, paramWSRecommendAdapter);
   }
   
-  protected int a()
+  public void b()
   {
-    return 0;
+    super.b();
+    a(2131435991, new WSGridFeedInnerTitleController(this.b));
+    a(2131435989, new WSGridFeedInnerAvatarController(this.b));
+    a(2131435990, new WSGridFeedInnerPlayCountController(this.b));
   }
   
-  protected boolean a()
+  protected boolean e()
   {
     return true;
   }
   
-  protected int b()
-  {
-    return 2130841887;
-  }
-  
-  public void b()
-  {
-    super.b();
-    a(2131369028, new WSGridFeedInnerTitleController(this.a));
-    a(2131369026, new WSGridFeedInnerAvatarController(this.a));
-    a(2131369027, new WSGridFeedInnerPlayCountController(this.a));
-  }
-  
-  protected boolean b()
+  protected boolean f()
   {
     return false;
+  }
+  
+  protected int g()
+  {
+    return 0;
+  }
+  
+  protected int h()
+  {
+    return 2130842805;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridTitleAvatarPlayInnerItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.qqlive.module.videoreport.dtreport.constants;
 
 public final class DTPublicParamKey
 {
+  public static final String DT_ACCOUNT_ID = "dt_accountid";
   public static final String DT_AD_CODE = "dt_adcode";
   public static final String DT_CALL_FROM = "dt_callfrom";
   public static final String DT_CALL_SCHEME = "dt_callschema";
@@ -23,7 +24,7 @@ public final class DTPublicParamKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.constants.DTPublicParamKey
  * JD-Core Version:    0.7.0.1
  */

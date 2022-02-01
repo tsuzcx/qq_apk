@@ -6,17 +6,17 @@ import mqq.app.AppRuntime;
 
 public class UpdateRedTouchParam
 {
-  public int a;
-  public long a;
-  public Context a;
-  public RedTouch a;
-  public String a;
   public AppRuntime a;
-  public boolean a;
+  public Context b;
+  public RedTouch c;
+  public long d;
+  public String e;
+  public int f;
+  public boolean g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.entity.UpdateRedTouchParam
  * JD-Core Version:    0.7.0.1
  */

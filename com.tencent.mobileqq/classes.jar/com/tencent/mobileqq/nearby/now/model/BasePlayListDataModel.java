@@ -7,56 +7,50 @@ import java.util.ArrayList;
 public abstract class BasePlayListDataModel
 {
   protected int a;
-  public AppInterface a;
-  protected BasePlayListDataModel.OnDataComeListener a;
-  protected ArrayList<VideoData> a;
-  protected boolean a;
-  
-  public BasePlayListDataModel()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  protected boolean b = false;
+  public AppInterface c;
+  protected ArrayList<VideoData> d = new ArrayList();
+  protected BasePlayListDataModel.OnDataComeListener e;
   
   public ArrayList<VideoData> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
+    return this.d;
   }
   
   public abstract void a(Bundle paramBundle);
   
   public void a(BasePlayListDataModel.OnDataComeListener paramOnDataComeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener = paramOnDataComeListener;
+    this.e = paramOnDataComeListener;
   }
   
   public void a(String paramString1, String paramString2) {}
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
-  public boolean a()
+  public void b()
   {
-    return this.jdField_a_of_type_Boolean;
+    if (this.b) {}
   }
   
-  public void b() {}
+  public void c() {}
+  
+  public int d()
+  {
+    return this.a;
+  }
+  
+  public boolean e()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.BasePlayListDataModel
  * JD-Core Version:    0.7.0.1
  */

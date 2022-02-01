@@ -10,27 +10,25 @@ public abstract class BaseNestScrollWebView
   extends DtWebView
 {
   public int a;
-  private IHeaderView jdField_a_of_type_ComTencentLibraryIHeaderView;
-  private ILoadingView jdField_a_of_type_ComTencentLibraryILoadingView;
-  public boolean a;
+  public boolean b = true;
+  private IHeaderView c;
+  private ILoadingView d;
   
   public BaseNestScrollWebView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
     a();
   }
   
   public BaseNestScrollWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
     a();
   }
   
   protected void a() {}
   
-  public boolean a()
+  public boolean b()
   {
     if (canGoBack())
     {
@@ -45,8 +43,8 @@ public abstract class BaseNestScrollWebView
     super.loadUrl(paramString);
     if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
     {
-      paramString = this.jdField_a_of_type_ComTencentLibraryILoadingView;
-      if ((paramString != null) && (this.jdField_a_of_type_Boolean)) {
+      paramString = this.d;
+      if ((paramString != null) && (this.b)) {
         paramString.a(this);
       }
     }
@@ -56,7 +54,7 @@ public abstract class BaseNestScrollWebView
   {
     boolean bool;
     if (paramInt == 4) {
-      bool = a();
+      bool = b();
     } else {
       bool = false;
     }
@@ -69,37 +67,37 @@ public abstract class BaseNestScrollWebView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    IHeaderView localIHeaderView = this.jdField_a_of_type_ComTencentLibraryIHeaderView;
+    IHeaderView localIHeaderView = this.c;
     if ((localIHeaderView != null) && (!localIHeaderView.a())) {
-      this.jdField_a_of_type_ComTencentLibraryIHeaderView.a(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.c.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    this.jdField_a_of_type_Int = paramInt2;
+    this.a = paramInt2;
   }
   
   public void setLoadingView(ILoadingView paramILoadingView)
   {
-    if ((paramILoadingView == null) || (!this.jdField_a_of_type_Boolean))
+    if ((paramILoadingView == null) || (!this.b))
     {
-      ILoadingView localILoadingView = this.jdField_a_of_type_ComTencentLibraryILoadingView;
+      ILoadingView localILoadingView = this.d;
       if (localILoadingView != null) {
         localILoadingView.b(this);
       }
     }
-    if (this.jdField_a_of_type_ComTencentLibraryILoadingView == null) {
-      this.jdField_a_of_type_ComTencentLibraryILoadingView = paramILoadingView;
+    if (this.d == null) {
+      this.d = paramILoadingView;
     }
-    paramILoadingView = this.jdField_a_of_type_ComTencentLibraryILoadingView;
+    paramILoadingView = this.d;
     if (paramILoadingView != null) {
       paramILoadingView.a(this);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
   public void setPaddingTop(int paramInt)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("if (document.body && document.body.style) {document.body.style.paddingTop='");
-    ((StringBuilder)localObject).append(UIUtil.a(getContext(), paramInt, this.jdField_a_of_type_ComTencentLibraryIHeaderView));
+    ((StringBuilder)localObject).append(UIUtil.a(getContext(), paramInt, this.c));
     ((StringBuilder)localObject).append("px';} void 0");
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();

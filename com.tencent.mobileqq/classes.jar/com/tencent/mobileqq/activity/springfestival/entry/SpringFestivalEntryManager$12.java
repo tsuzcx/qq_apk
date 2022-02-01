@@ -7,16 +7,16 @@ class SpringFestivalEntryManager$12
   
   public void run()
   {
-    if (SpringFestivalEntryManager.b(this.this$0, this.a.a))
+    if (SpringFestivalEntryManager.b(this.this$0, this.a.c))
     {
-      SpringFestivalEntryManager.a(this.this$0).b(SpringFestivalEntryManager.a(this.this$0));
+      SpringFestivalEntryManager.g(this.this$0).b(SpringFestivalEntryManager.i(this.this$0));
       SpringFestivalEntryManager.a(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager.12
  * JD-Core Version:    0.7.0.1
  */

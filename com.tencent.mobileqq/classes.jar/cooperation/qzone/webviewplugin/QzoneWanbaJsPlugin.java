@@ -33,7 +33,7 @@ public class QzoneWanbaJsPlugin
       QZLog.i("QzoneWanbaJsPlugin", "registerBroadcast");
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("QZONE.ACTION_NOTIFY_ADV_PLAY");
-      Activity localActivity = this.parentPlugin.mRuntime.a();
+      Activity localActivity = this.parentPlugin.mRuntime.d();
       boolean bool = this.mReceiverRegistered;
       if (!bool) {
         try
@@ -63,7 +63,7 @@ public class QzoneWanbaJsPlugin
       if (this.mReceiverRegistered)
       {
         QZLog.i("QzoneWanbaJsPlugin", "removeBroadcast");
-        Activity localActivity = this.parentPlugin.mRuntime.a();
+        Activity localActivity = this.parentPlugin.mRuntime.d();
         try
         {
           localActivity.unregisterReceiver(this.mReceiver);
@@ -122,7 +122,7 @@ public class QzoneWanbaJsPlugin
         paramString1.append(paramJsBridgeListener);
         QZLog.i("QzoneWanbaJsPlugin", paramString1.toString());
         registerBroadcast();
-        QZoneHelper.launchQZoneEncourageAdvActivity(this.parentPlugin.mRuntime.a(), paramString3);
+        QZoneHelper.launchQZoneEncourageAdvActivity(this.parentPlugin.mRuntime.d(), paramString3);
         return true;
       }
       catch (Exception paramJsBridgeListener)
@@ -142,7 +142,7 @@ public class QzoneWanbaJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneWanbaJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -44,79 +44,79 @@ public class RegisterQQNumberActivity
   extends RegisterNewBaseActivity
   implements View.OnClickListener, IRegisterView
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ContactProxy jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy;
-  private RegisterLiangHaoHelper jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper = null;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private String jdField_a_of_type_JavaLangString = null;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new RegisterQQNumberActivity.2(this);
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new RegisterQQNumberActivity.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private String jdField_b_of_type_JavaLangString = null;
-  private boolean jdField_b_of_type_Boolean = false;
-  private byte[] jdField_b_of_type_ArrayOfByte = null;
-  private boolean c = false;
-  private boolean d = true;
-  private boolean e = true;
+  WtloginObserver a = new RegisterQQNumberActivity.1(this);
+  private TextView b;
+  private String c = null;
+  private byte[] d = null;
+  private byte[] e = null;
   private boolean f = false;
   private boolean g = false;
-  private boolean h = false;
+  private QQProgressDialog h;
+  private boolean i = false;
+  private String j = null;
+  private boolean k = true;
+  private boolean l = true;
+  private boolean m = false;
+  private boolean n = false;
+  private boolean o = false;
+  private RegisterLiangHaoHelper p = null;
+  private ContactProxy q;
+  private AccountObserver r = new RegisterQQNumberActivity.2(this);
   
   private void a()
   {
-    int i;
-    if (this.d) {
-      i = 2131716646;
+    int i1;
+    if (this.k) {
+      i1 = 2131914109;
     } else {
-      i = 2131716565;
+      i1 = 2131914028;
     }
-    setTitleText(i);
+    setTitleText(i1);
     setBackListener();
     setBarProgress(100);
-    Object localObject1 = (ImageView)findViewById(2131374670);
+    Object localObject1 = (ImageView)findViewById(2131442851);
     ((ImageView)localObject1).setVisibility(0);
     Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
     ((LinearLayout.LayoutParams)localObject2).rightMargin = ((int)(getResources().getDisplayMetrics().density * 10.0F));
     ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    Object localObject5 = (ImageView)findViewById(2131374670);
-    Object localObject3 = (TextView)findViewById(2131380055);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380045));
-    Object localObject4 = (Button)findViewById(2131363959);
+    Object localObject5 = (ImageView)findViewById(2131442851);
+    Object localObject3 = (TextView)findViewById(2131448962);
+    this.b = ((TextView)findViewById(2131448952));
+    Object localObject4 = (Button)findViewById(2131429915);
     ((Button)localObject4).setOnClickListener(this);
-    localObject2 = (TextView)findViewById(2131372549);
-    localObject1 = (TextView)findViewById(2131371956);
-    View localView = findViewById(2131368949);
-    if (!this.d)
+    localObject2 = (TextView)findViewById(2131440087);
+    localObject1 = (TextView)findViewById(2131439401);
+    View localView = findViewById(2131435901);
+    if (!this.k)
     {
-      ((ImageView)localObject5).setImageResource(2130847199);
+      ((ImageView)localObject5).setImageResource(2130848779);
       ((TextView)localObject3).setVisibility(8);
       localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131374665);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131442846);
       ((RelativeLayout.LayoutParams)localObject3).topMargin = ((int)(getResources().getDisplayMetrics().density * 50.0F));
       ((RelativeLayout.LayoutParams)localObject3).leftMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((RelativeLayout.LayoutParams)localObject3).rightMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
-      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 20.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131716566);
+      this.b.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      this.b.setTextSize(2, 20.0F);
+      this.b.setText(2131914029);
       ((TextView)localObject2).setVisibility(8);
       localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131380045);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131448952);
       ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(getResources().getDisplayMetrics().density * 50.0F));
       ((RelativeLayout.LayoutParams)localObject2).leftMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((RelativeLayout.LayoutParams)localObject2).rightMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((Button)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((Button)localObject4).setText(2131699824);
+      ((Button)localObject4).setText(2131897869);
       ((TextView)localObject1).setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    if (this.c)
+    this.b.setText(this.c);
+    if (this.i)
     {
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.j))
       {
-        localObject4 = new SpannableString(String.format(getString(2131716635), new Object[] { this.jdField_b_of_type_JavaLangString }));
-        ((SpannableString)localObject4).setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 8, this.jdField_b_of_type_JavaLangString.length() + 8, 33);
+        localObject4 = new SpannableString(String.format(getString(2131914098), new Object[] { this.j }));
+        ((SpannableString)localObject4).setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 8, this.j.length() + 8, 33);
         ((TextView)localObject2).setText((CharSequence)localObject4);
       }
       else
@@ -124,7 +124,7 @@ public class RegisterQQNumberActivity
         ((TextView)localObject2).setVisibility(8);
       }
     }
-    else if (!this.jdField_b_of_type_Boolean)
+    else if (!this.g)
     {
       localObject4 = new StringBuilder("+");
       ((StringBuilder)localObject4).append(this.countryCode);
@@ -135,7 +135,7 @@ public class RegisterQQNumberActivity
       ((StringBuilder)localObject4).append("-");
       ((StringBuilder)localObject4).append(this.phoneNum.substring(7));
       localObject4 = ((StringBuilder)localObject4).toString();
-      localObject5 = new SpannableString(String.format(getString(2131716592), new Object[] { localObject4 }));
+      localObject5 = new SpannableString(String.format(getString(2131914055), new Object[] { localObject4 }));
       ((SpannableString)localObject5).setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 9, ((String)localObject4).length() + 9, 33);
       ((TextView)localObject2).setText((CharSequence)localObject5);
     }
@@ -143,13 +143,13 @@ public class RegisterQQNumberActivity
     {
       ((TextView)localObject2).setVisibility(8);
     }
-    if (this.e)
+    if (this.l)
     {
-      ((TextView)localObject3).setText(2131716600);
+      ((TextView)localObject3).setText(2131914063);
       ((TextView)localObject1).setVisibility(8);
       return;
     }
-    ((TextView)localObject3).setText(2131716599);
+    ((TextView)localObject3).setText(2131914062);
     ((TextView)localObject1).setVisibility(0);
     if (!TextUtils.isEmpty(this.inviteCode)) {
       localView.setVisibility(0);
@@ -159,7 +159,7 @@ public class RegisterQQNumberActivity
   private void a(String paramString)
   {
     boolean bool = getIntent().getBooleanExtra("key_register_chose_bind_phone", false);
-    if (this.c) {
+    if (this.i) {
       ReportController.a(this.mRuntime, "dc00898", "", "", paramString, paramString, 1, 0, "", "", "", "");
     }
     if (!this.mIsPhoneNumRegistered) {
@@ -204,7 +204,7 @@ public class RegisterQQNumberActivity
   private void c()
   {
     PhoneNumLoginImpl.a().a(true);
-    PhoneNumLoginImpl.a().b(this.mRuntime, this.countryCode, this.phoneNum, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    PhoneNumLoginImpl.a().b(this.mRuntime, this.countryCode, this.phoneNum, this.a);
   }
   
   private void d()
@@ -221,25 +221,25 @@ public class RegisterQQNumberActivity
   {
     if (paramString != null)
     {
-      if (!paramString.equals(this.jdField_a_of_type_JavaLangString)) {
+      if (!paramString.equals(this.c)) {
         return;
       }
-      this.f = paramBoolean;
-      if ((!this.f) && (this.g))
+      this.m = paramBoolean;
+      if ((!this.m) && (this.n))
       {
         e();
-        notifyToast(2131716598, 0);
+        notifyToast(2131914061, 0);
       }
-      else if ((this.f) && (this.g))
+      else if ((this.m) && (this.n))
       {
-        if (this.jdField_b_of_type_Boolean) {
-          getAppRuntime().login(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
+        if (this.g) {
+          getAppRuntime().login(this.c, this.e, this.r);
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this.mRuntime, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString);
+          this.q.a(this.mRuntime, this.d, this.c);
         }
       }
-      this.g = false;
-      this.h = false;
+      this.n = false;
+      this.o = false;
     }
   }
   
@@ -257,12 +257,12 @@ public class RegisterQQNumberActivity
     return false;
   }
   
-  public void k()
+  public void m()
   {
     c();
   }
   
-  public void l()
+  public void n()
   {
     e();
   }
@@ -273,62 +273,62 @@ public class RegisterQQNumberActivity
     if (QLog.isColorLevel()) {
       QLog.d("RegisterQQNumberActivity", 2, "onAccountChanged success");
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.g)
     {
-      this.mRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this));
-      if (this.c)
+      this.mRuntime.unRegistObserver(this.q.a(this));
+      if (this.i)
       {
         this.mRuntime = getAppRuntime();
-        this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this.mRuntime, this.jdField_a_of_type_JavaLangString);
+        this.q.a(this.mRuntime, this.c);
       }
       b();
       e();
       return;
     }
-    if (!PhoneNumLoginImpl.a().a())
+    if (!PhoneNumLoginImpl.a().b())
     {
       if (QLog.isColorLevel()) {
         QLog.d("RegisterQQNumberActivity", 2, "onAccountChanged not phonenum login");
       }
       return;
     }
-    this.mRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this));
+    this.mRuntime.unRegistObserver(this.q.a(this));
     this.mRuntime = getAppRuntime();
-    this.mRuntime.registObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this));
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this.mRuntime);
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this.mRuntime, this.jdField_a_of_type_JavaLangString);
+    this.mRuntime.registObserver(this.q.a(this));
+    this.q.a(this.mRuntime);
+    this.q.a(this.mRuntime, this.c);
     b();
     e();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363959)
+    if (paramView.getId() == 2131429915)
     {
       ReportController.b(this.mRuntime, "CliOper", "", "", "0X8006655", "0X8006655", 0, 0, "", "", "", "");
-      ReportController.a(this.mRuntime, "new_reg", "result_page", "login_clk", "", 1, "", this.jdField_a_of_type_JavaLangString, "", "", "", "", "", "", " ");
-      if (this.d)
+      ReportController.a(this.mRuntime, "new_reg", "result_page", "login_clk", "", 1, "", this.c, "", "", "", "", "", "", " ");
+      if (this.k)
       {
         ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007CCB", "0X8007CCB", 0, 0, "", "", "", "");
         a("0X8007CCB");
-        if (this.c) {
+        if (this.i) {
           ReportController.a(this.mRuntime, "dc00898", "", "", "0X80072FC", "0X80072FC", 0, 0, "", "", "", "");
         }
         if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
         {
-          notifyToast(2131692183, 0);
+          notifyToast(2131889169, 0);
         }
-        else if ((this.e) && (!this.f))
+        else if ((this.l) && (!this.m))
         {
-          if (!this.h)
+          if (!this.o)
           {
-            this.h = true;
-            if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper == null) {
-              this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper = new RegisterLiangHaoHelper(this, null);
+            this.o = true;
+            if (this.p == null) {
+              this.p = new RegisterLiangHaoHelper(this, null);
             }
-            this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper.a(this.jdField_a_of_type_JavaLangString, new RegisterQQNumberActivity.LHCallback(this));
+            this.p.a(this.c, new RegisterQQNumberActivity.LHCallback(this));
           }
-          this.g = true;
+          this.n = true;
           d();
         }
         else
@@ -338,13 +338,13 @@ public class RegisterQQNumberActivity
           }
           d();
           if (QLog.isColorLevel()) {
-            if (this.jdField_a_of_type_ArrayOfByte != null)
+            if (this.d != null)
             {
               if (QLog.isColorLevel())
               {
                 StringBuilder localStringBuilder = new StringBuilder();
                 localStringBuilder.append("swz mSign = ");
-                localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+                localStringBuilder.append(HexUtil.bytes2HexStr(this.d));
                 QLog.d("RegisterQQNumberActivity", 2, localStringBuilder.toString());
               }
             }
@@ -352,16 +352,16 @@ public class RegisterQQNumberActivity
               QLog.d("RegisterQQNumberActivity", 2, "swz mSign = null");
             }
           }
-          if (this.jdField_b_of_type_Boolean)
+          if (this.g)
           {
-            getAppRuntime().login(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
+            getAppRuntime().login(this.c, this.e, this.r);
           }
           else
           {
             if (QLog.isDevelopLevel()) {
-              QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onClick  uin: %s, sign: %s", new Object[] { this.jdField_a_of_type_JavaLangString, com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte) }));
+              QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onClick  uin: %s, sign: %s", new Object[] { this.c, com.tencent.qphone.base.util.MD5.toMD5(this.d) }));
             }
-            this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this.mRuntime, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString);
+            this.q.a(this.mRuntime, this.d, this.c);
           }
         }
       }
@@ -383,28 +383,28 @@ public class RegisterQQNumberActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561856);
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy = new ContactProxy();
+    setContentView(2131628274);
+    this.q = new ContactProxy();
     if (QLog.isDevelopLevel()) {
       RegisterLHAssistant.a(getClass().getSimpleName(), getIntent());
     }
-    this.c = getIntent().getBooleanExtra("key_register_from_quick_register", false);
-    if (this.c) {
-      this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key_register_secret_phone");
+    this.i = getIntent().getBooleanExtra("key_register_from_quick_register", false);
+    if (this.i) {
+      this.j = getIntent().getStringExtra("key_register_secret_phone");
     }
     this.phoneNum = getIntent().getStringExtra("phonenum");
     this.inviteCode = getIntent().getStringExtra("invite_code");
     this.countryCode = getIntent().getStringExtra("key");
     this.mIsPhoneNumRegistered = getIntent().getBooleanExtra("key_register_is_phone_num_registered", false);
     this.mHasPwd = getIntent().getBooleanExtra("key_register_has_pwd", true);
-    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("uin");
-    this.jdField_a_of_type_ArrayOfByte = getIntent().getByteArrayExtra("key_register_sign");
+    this.c = getIntent().getStringExtra("uin");
+    this.d = getIntent().getByteArrayExtra("key_register_sign");
     Object localObject1;
     if (QLog.isDevelopLevel())
     {
       localObject1 = Locale.getDefault();
-      localObject2 = this.jdField_a_of_type_JavaLangString;
-      String str = com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte);
+      localObject2 = this.c;
+      String str = com.tencent.qphone.base.util.MD5.toMD5(this.d);
       if (this.inviteCode == null) {
         paramBundle = "";
       } else {
@@ -414,7 +414,7 @@ public class RegisterQQNumberActivity
     }
     paramBundle = getIntent().getStringExtra("key_register_password");
     if (paramBundle != null) {
-      this.jdField_b_of_type_ArrayOfByte = com.tencent.mobileqq.mqsafeedit.MD5.toMD5Byte(paramBundle);
+      this.e = com.tencent.mobileqq.mqsafeedit.MD5.toMD5Byte(paramBundle);
     }
     if (QLog.isColorLevel())
     {
@@ -422,42 +422,42 @@ public class RegisterQQNumberActivity
       ((StringBuilder)localObject1).append("onCreate ,pwd = ");
       ((StringBuilder)localObject1).append(paramBundle);
       ((StringBuilder)localObject1).append(",mPassByte = ");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_ArrayOfByte);
+      ((StringBuilder)localObject1).append(this.e);
       QLog.d("RegisterQQNumberActivity", 2, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("key_register_unbind", false);
+    this.g = getIntent().getBooleanExtra("key_register_unbind", false);
     if (this.mRuntime == null)
     {
       QLog.d("RegisterQQNumberActivity", 2, "onCreate app is null");
       finish();
       return;
     }
-    this.mRuntime.registObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this));
-    this.d = getIntent().getBooleanExtra("key_register_result", true);
-    this.e = getIntent().getBooleanExtra("key_register_is_lh", false);
-    if ((this.d) && (this.e))
+    this.mRuntime.registObserver(this.q.a(this));
+    this.k = getIntent().getBooleanExtra("key_register_result", true);
+    this.l = getIntent().getBooleanExtra("key_register_is_lh", false);
+    if ((this.k) && (this.l))
     {
-      this.g = false;
-      this.h = true;
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper = new RegisterLiangHaoHelper(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper.a(this.jdField_a_of_type_JavaLangString, new RegisterQQNumberActivity.LHCallback(this));
+      this.n = false;
+      this.o = true;
+      this.p = new RegisterLiangHaoHelper(this, null);
+      this.p.a(this.c, new RegisterQQNumberActivity.LHCallback(this));
     }
     a();
     closeAllActs(true);
     ReportController.b(this.mRuntime, "CliOper", "", "", "0X8006654", "0X8006654", 0, 0, "", "", "", "");
     Object localObject2 = this.mRuntime;
-    if (this.d) {
+    if (this.k) {
       paramBundle = "0X800735F";
     } else {
       paramBundle = "0X8007CCA";
     }
-    if (this.d) {
+    if (this.k) {
       localObject1 = "0X800735F";
     } else {
       localObject1 = "0X8007CCA";
     }
     ReportController.a((AppRuntime)localObject2, "dc00898", "", "", paramBundle, (String)localObject1, 0, 0, "", "", "", "");
-    ReportController.a(this.mRuntime, "new_reg", "result_page", "page_exp", "", 1, "", this.jdField_a_of_type_JavaLangString, "", "", "", "", "", "", "");
+    ReportController.a(this.mRuntime, "new_reg", "result_page", "page_exp", "", 1, "", this.c, "", "", "", "", "", "", "");
     a("0X800735F");
   }
   
@@ -465,7 +465,7 @@ public class RegisterQQNumberActivity
   {
     super.onDestroy();
     if (this.mRuntime != null) {
-      this.mRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactProxy.a(this));
+      this.mRuntime.unRegistObserver(this.q.a(this));
     }
     closeDialog();
     e();
@@ -476,22 +476,22 @@ public class RegisterQQNumberActivity
     super.onPause();
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+      if ((this.h != null) && (this.h.isShowing()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+        this.h.dismiss();
+        this.h.cancel();
       }
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+    this.h = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity
  * JD-Core Version:    0.7.0.1
  */

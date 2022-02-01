@@ -25,18 +25,18 @@ import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 public class EcshopMinusViewChatPie
   implements IEcshopChatPieDelegate
 {
-  private final IEcshopChatPieCallback jdField_a_of_type_ComTencentMobileqqEcshopAioIEcshopChatPieCallback;
-  private List<ChatMessage> jdField_a_of_type_JavaUtilList;
-  private final boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private final IEcshopChatPieCallback a;
+  private final boolean b;
+  private boolean c;
+  private List<ChatMessage> d;
   
   private void b(List<ChatMessage> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (this.d.size() > 0)
     {
-      paramList = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(0);
+      paramList = (ChatMessage)this.d.get(0);
       if ((paramList != null) && (EcshopUtils.b(((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).getLastMsgType(paramList)))) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramList);
+        this.d.remove(paramList);
       }
     }
   }
@@ -63,12 +63,12 @@ public class EcshopMinusViewChatPie
     if (paramMessageRecord == null) {
       return;
     }
-    EcshopUtils.a(paramMessageRecord.uniseq);
+    EcshopUtils.b(paramMessageRecord.uniseq);
   }
   
   public void a(List<Long> paramList)
   {
-    EcshopAdUtil.a(this.jdField_a_of_type_ComTencentMobileqqEcshopAioIEcshopChatPieCallback, paramList);
+    EcshopAdUtil.a(this.a, paramList);
   }
   
   public void a(List<ChatMessage> paramList, IEcshopChatPieDelegate.IRefreshCallback paramIRefreshCallback)
@@ -77,7 +77,7 @@ public class EcshopMinusViewChatPie
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("messageArrayList.size: ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      localStringBuilder.append(this.d.size());
       QLog.i("EcshopMinusViewChatPie", 2, localStringBuilder.toString());
     }
     b(paramList);
@@ -85,19 +85,19 @@ public class EcshopMinusViewChatPie
     if ((paramList != null) && (EcshopUtils.b(((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).getLastMsgType(paramList))))
     {
       paramList.saveExtInfoToExtStr("add_title", "minus_view_title_first");
-      this.jdField_a_of_type_JavaUtilList.add(0, paramList);
+      this.d.add(0, paramList);
     }
     if (paramIRefreshCallback != null) {
-      paramIRefreshCallback.a(this.jdField_a_of_type_JavaUtilList);
+      paramIRefreshCallback.a(this.d);
     }
-    if (this.b) {
+    if (this.c) {
       return;
     }
-    this.b = true;
+    this.c = true;
     paramList = new qq_ad.QQAdGet();
     try
     {
-      if (EcshopUtils.a()) {
+      if (EcshopUtils.c()) {
         paramList.trigger_type.set(22);
       } else {
         paramList.trigger_type.set(18);
@@ -117,7 +117,7 @@ public class EcshopMinusViewChatPie
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public boolean a(Context paramContext, RelativeLayout paramRelativeLayout)
@@ -143,7 +143,7 @@ public class EcshopMinusViewChatPie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.keep.EcshopMinusViewChatPie
  * JD-Core Version:    0.7.0.1
  */

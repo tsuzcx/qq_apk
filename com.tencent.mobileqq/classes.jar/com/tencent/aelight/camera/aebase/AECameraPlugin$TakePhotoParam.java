@@ -2,18 +2,18 @@ package com.tencent.aelight.camera.aebase;
 
 public class AECameraPlugin$TakePhotoParam
 {
-  public double a;
   public int a;
-  public String a;
-  public boolean a;
   public int b;
-  public boolean b;
-  public boolean c;
+  public double c;
   public boolean d;
+  public String e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.AECameraPlugin.TakePhotoParam
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class EqqAccountDetailActivityImpl$9
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.showCallConfirm(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.b);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.reportItemEvent(this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
+    this.e.showCallConfirm(this.a, this.b, this.c);
+    this.e.reportItemEvent(this.d.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.EqqAccountDetailActivityImpl.9
  * JD-Core Version:    0.7.0.1
  */

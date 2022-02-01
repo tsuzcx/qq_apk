@@ -7,7 +7,7 @@ class AutoStartProgressBar$ProgressThread
   
   private boolean a()
   {
-    if (this.this$0.jdField_a_of_type_Boolean) {
+    if (this.this$0.e) {
       return a(this.this$0.c, 400, 0.3300000131130219D, false);
     }
     return false;
@@ -30,26 +30,26 @@ class AutoStartProgressBar$ProgressThread
       if (paramInt2 < 0) {
         return false;
       }
-      if (this.this$0.e < paramInt1)
+      if (this.this$0.h < paramInt1)
       {
-        int i = (paramInt1 - this.this$0.e) / (paramInt2 / AutoStartProgressBar.jdField_a_of_type_Int);
+        int i = (paramInt1 - this.this$0.h) / (paramInt2 / AutoStartProgressBar.a);
         paramInt2 = i;
         if (i == 0) {
           paramInt2 = 1;
         }
-        while (this.this$0.e <= paramInt1)
+        while (this.this$0.h <= paramInt1)
         {
           if ((paramBoolean) && (a())) {
             return false;
           }
           AutoStartProgressBar localAutoStartProgressBar = this.this$0;
-          localAutoStartProgressBar.e += paramInt2;
+          localAutoStartProgressBar.h += paramInt2;
           localAutoStartProgressBar = this.this$0;
-          localAutoStartProgressBar.setAnimProgress(localAutoStartProgressBar.e, this.this$0.jdField_a_of_type_JavaLangString);
+          localAutoStartProgressBar.setAnimProgress(localAutoStartProgressBar.h, this.this$0.d);
           this.this$0.postInvalidate();
           try
           {
-            double d2 = AutoStartProgressBar.jdField_a_of_type_Int;
+            double d2 = AutoStartProgressBar.a;
             double d1;
             if (paramDouble < 0.0D) {
               d1 = AutoStartProgressBar.a(this.this$0, (int)paramDouble);
@@ -80,7 +80,7 @@ class AutoStartProgressBar$ProgressThread
     if (!a(this.this$0.c * 90 / 100, 1500)) {
       return;
     }
-    a(this.this$0.c * 99 / 100, AutoStartProgressBar.jdField_a_of_type_Int * 10, AutoStartProgressBar.b);
+    a(this.this$0.c * 99 / 100, AutoStartProgressBar.a * 10, AutoStartProgressBar.b);
   }
 }
 

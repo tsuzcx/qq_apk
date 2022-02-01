@@ -10,7 +10,7 @@ import java.util.Map;
 final class SPBeaconReporter$2
   implements Runnable
 {
-  SPBeaconReporter$2(String paramString, Map paramMap) {}
+  SPBeaconReporter$2(String paramString, Map paramMap1, Map paramMap2) {}
   
   public void run()
   {
@@ -18,6 +18,12 @@ final class SPBeaconReporter$2
     {
       this.val$copyMap.put("param_uin", SuperPlayerSDKMgr.getUid());
       this.val$copyMap.put("param_netType", String.valueOf(NetworkUtil.getNetWorkType()));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report eventName=");
+      localStringBuilder.append(this.val$eventName);
+      localStringBuilder.append(", dataMap=");
+      localStringBuilder.append(this.val$dataMap);
+      LogUtil.d(".SPBeaconReporter", localStringBuilder.toString());
       BeaconAdapter.onUserActionToTunnel("00000U7O8S3BLETM", this.val$eventName, true, -1L, -1L, this.val$copyMap, true, true);
       return;
     }
@@ -31,7 +37,7 @@ final class SPBeaconReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.report.SPBeaconReporter.2
  * JD-Core Version:    0.7.0.1
  */

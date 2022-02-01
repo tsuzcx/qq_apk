@@ -33,13 +33,13 @@ class AccountDetailVideoManager$3
       paramTVK_IMediaPlayer.append(paramObject.toString());
       QLog.e("AccountDetailVideoManager", 2, paramTVK_IMediaPlayer.toString());
     }
-    this.a.a.runOnUiThread(new AccountDetailVideoManager.3.1(this));
+    this.a.b.runOnUiThread(new AccountDetailVideoManager.3.1(this));
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailVideoManager.3
  * JD-Core Version:    0.7.0.1
  */

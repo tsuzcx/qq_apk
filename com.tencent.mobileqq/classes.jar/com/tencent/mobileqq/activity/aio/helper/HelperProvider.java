@@ -65,12 +65,15 @@ public class HelperProvider
     a(5, new UnreadCountHelper(paramBaseChatPie));
     a(6, new ChatPieInputHelper(paramBaseChatPie));
     a(7, new PhotoListHelper(this, paramBaseChatPie));
-    Object localObject = (IApolloAIOHelper)QRoute.api(IApolloAIOHelper.class);
-    ((IApolloAIOHelper)localObject).init(paramBaseChatPie);
-    a(8, (ILifeCycleHelper)localObject);
+    if (!b())
+    {
+      localObject = (IApolloAIOHelper)QRoute.api(IApolloAIOHelper.class);
+      ((IApolloAIOHelper)localObject).init(paramBaseChatPie);
+      a(8, (ILifeCycleHelper)localObject);
+    }
     a(9, new QzoneGiftHelper(paramBaseChatPie));
     a(10, new IceBreakHelper(paramBaseChatPie));
-    localObject = new MultiFavoriteHelper(paramBaseChatPie);
+    Object localObject = new MultiFavoriteHelper(paramBaseChatPie);
     a(11, (ILifeCycleHelper)localObject);
     a((OnActivityResultCallback)localObject);
     a(13, new ForwardShareByServerHelper(paramBaseChatPie));
@@ -111,7 +114,7 @@ public class HelperProvider
     a((Handler.Callback)localObject);
     a(65, new AIOShakeHelper(paramBaseChatPie));
     a(66, new AIOMultiActionHelper(paramBaseChatPie));
-    a(67, new PokeAndEmoPanelHelper(paramBaseChatPie.b()));
+    a(67, new PokeAndEmoPanelHelper(paramBaseChatPie.bv()));
     a(68, ((IHongBaoPanelHelper)QRoute.api(IHongBaoPanelHelper.class)).init(paramBaseChatPie));
     a(69, new EnterForSendHelper(paramBaseChatPie));
     a(70, new AIOJubaoDialogHelper(this, paramBaseChatPie));
@@ -134,35 +137,38 @@ public class HelperProvider
     a(120, new AIOBubbleAnimHelper());
     a(123, new AIOTianShuTraceInfoHelper(paramBaseChatPie));
     a(111, new AIODraftHelper(paramBaseChatPie));
-    a(106, new AVHelper(paramBaseChatPie.b()));
-    a(107, new FraudHelper(paramBaseChatPie.b()));
-    a(108, new QQOperateTipsHelper(paramBaseChatPie.b()));
-    a(109, new TipsHelper(paramBaseChatPie.b()));
-    a(110, new ArkHelper(paramBaseChatPie.b(), paramBaseChatPie));
-    localObject = new JdTipHelper(paramBaseChatPie.b());
+    a(106, new AVHelper(paramBaseChatPie.bv()));
+    a(107, new FraudHelper(paramBaseChatPie.bv()));
+    a(108, new QQOperateTipsHelper(paramBaseChatPie.bv()));
+    a(109, new TipsHelper(paramBaseChatPie.bv()));
+    a(110, new ArkHelper(paramBaseChatPie.bv(), paramBaseChatPie));
+    localObject = new JdTipHelper(paramBaseChatPie.bv());
     a(112, (ILifeCycleHelper)localObject);
     a((Handler.Callback)localObject);
-    a(52, new AIOShortcutBarHelper(paramBaseChatPie.b()));
-    localObject = new DoutuHelper(paramBaseChatPie.b());
+    a(52, new AIOShortcutBarHelper(paramBaseChatPie.bv()));
+    localObject = new DoutuHelper(paramBaseChatPie.bv());
     a(115, (ILifeCycleHelper)localObject);
     a((Handler.Callback)localObject);
     a((AIOOnTouchListener)localObject);
-    localObject = new AIOZhituHelper(paramBaseChatPie.b());
+    localObject = new AIOZhituHelper(paramBaseChatPie.bv());
     a(116, (ILifeCycleHelper)localObject);
     a((Handler.Callback)localObject);
     a(117, new AIOInputRightHelper(paramBaseChatPie));
-    a(118, new ReceiptHelper(paramBaseChatPie.b()));
-    localObject = new ReplyHelper(paramBaseChatPie.b());
+    a(118, new ReceiptHelper(paramBaseChatPie.bv()));
+    localObject = new ReplyHelper(paramBaseChatPie.bv());
     a(119, (ILifeCycleHelper)localObject);
     a((OnActivityResultCallback)localObject);
-    a(121, new DoodlePanelLifeHelper(paramBaseChatPie.b(), this));
-    a(124, new ChatDrawerHelper(paramBaseChatPie.b()));
+    a(121, new DoodlePanelLifeHelper(paramBaseChatPie.bv(), this));
+    if (!b(paramBaseChatPie)) {
+      a(124, new ChatDrawerHelper(paramBaseChatPie.bv()));
+    }
     a(126, new RichTextPanelProviderHelper(paramBaseChatPie));
-    a(127, new HotPicPanelProvider(paramBaseChatPie.b()));
+    a(127, new HotPicPanelProvider(paramBaseChatPie.bv()));
+    a(137, new NetStateTipsHelper(paramBaseChatPie.bv()));
     localObject = new PtvPanelProviderHelper(paramBaseChatPie);
     a(131, (ILifeCycleHelper)localObject);
     a((OnActivityResultCallback)localObject);
-    a(132, new AioOnClickHelper(paramBaseChatPie.b()));
+    a(132, new AioOnClickHelper(paramBaseChatPie.bv()));
     a(133, new EmojiStickerHelper(paramBaseChatPie));
     localObject = new SignatureHelper(paramBaseChatPie);
     a(135, (ILifeCycleHelper)localObject);
@@ -174,10 +180,20 @@ public class HelperProvider
   {
     this.a.add(paramOnTroopChatMsgChangedCallback);
   }
+  
+  protected boolean b()
+  {
+    return false;
+  }
+  
+  protected boolean b(BaseChatPie paramBaseChatPie)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.HelperProvider
  * JD-Core Version:    0.7.0.1
  */

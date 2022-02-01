@@ -52,7 +52,7 @@ class AdProxyImpl$2
             if ((localObject1 != null) && (((GdtAd)localObject1).info != null) && (((GdtAd)localObject1).info.report_info != null) && (((GdtAd)localObject1).info.report_info.trace_info != null))
             {
               long l = ((GdtAd)localObject1).info.report_info.trace_info.aid.get();
-              this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onSelectAdProcessDone(paramJSONObject, l);
+              this.a.onSelectAdProcessDone(paramJSONObject, l);
               return;
             }
           }
@@ -63,7 +63,7 @@ class AdProxyImpl$2
         QLog.e("MiniLoadingAdManager", 1, "selectAd getRewardedVideoADInfo error", paramJSONObject);
       }
     }
-    paramJSONObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener;
+    paramJSONObject = this.a;
     if (paramJSONObject != null) {
       paramJSONObject.onSelectAdProcessDone(null, -1L);
     }
@@ -71,7 +71,7 @@ class AdProxyImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

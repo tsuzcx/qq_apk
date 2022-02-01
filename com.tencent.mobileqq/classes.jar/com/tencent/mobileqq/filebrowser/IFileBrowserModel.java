@@ -13,25 +13,23 @@ import org.json.JSONObject;
 
 public abstract interface IFileBrowserModel
 {
-  public abstract float a();
+  public abstract void A();
   
-  public abstract int a();
+  public abstract void B();
   
-  public abstract Intent a();
+  public abstract void C();
   
-  public abstract BaseAdapter a();
+  public abstract IServiceInfo D();
   
-  public abstract IServiceInfo a();
+  public abstract TeamWorkFileImportInfo E();
+  
+  public abstract boolean F();
+  
+  public abstract BaseAdapter G();
   
   public abstract IFileBrowserData a();
   
-  public abstract TeamWorkFileImportInfo a();
-  
-  public abstract String a();
-  
   public abstract String a(Context paramContext);
-  
-  public abstract void a();
   
   public abstract void a(int paramInt);
   
@@ -40,8 +38,6 @@ public abstract interface IFileBrowserModel
   public abstract void a(Activity paramActivity, int paramInt, String paramString);
   
   public abstract void a(Activity paramActivity, String paramString);
-  
-  public abstract void a(Context paramContext);
   
   public abstract void a(Context paramContext, String paramString);
   
@@ -63,59 +59,63 @@ public abstract interface IFileBrowserModel
   
   public abstract void a(JSONObject paramJSONObject, String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, Activity paramActivity);
   
-  public abstract boolean a();
-  
   public abstract boolean a(Context paramContext, IFileBrowserModel.OnAppStorePromoteListener paramOnAppStorePromoteListener);
-  
-  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] a();
-  
-  public abstract int b();
-  
-  public abstract String b();
   
   public abstract void b();
   
-  public abstract boolean b();
-  
-  public abstract int c();
-  
-  public abstract String c();
+  public abstract void b(Context paramContext);
   
   public abstract void c();
   
-  public abstract boolean c();
-  
-  public abstract String d();
-  
   public abstract void d();
   
-  public abstract boolean d();
-  
-  public abstract String e();
-  
-  public abstract void e();
-  
-  public abstract boolean e();
+  public abstract int e();
   
   public abstract String f();
   
-  public abstract void f();
+  public abstract int g();
   
-  public abstract boolean f();
+  public abstract String h();
   
-  public abstract String g();
+  public abstract String i();
   
-  public abstract void g();
+  public abstract boolean j();
   
-  public abstract void h();
+  public abstract int k();
   
-  public abstract void i();
+  public abstract float l();
   
-  public abstract void j();
+  public abstract String m();
+  
+  public abstract boolean n();
+  
+  public abstract boolean o();
+  
+  public abstract boolean p();
+  
+  public abstract String q();
+  
+  public abstract String r();
+  
+  public abstract String s();
+  
+  public abstract boolean t();
+  
+  public abstract Intent u();
+  
+  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] v();
+  
+  public abstract void w();
+  
+  public abstract void x();
+  
+  public abstract void y();
+  
+  public abstract void z();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.IFileBrowserModel
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import java.util.List;
 public class BubbleViewGroup
   extends ViewGroup
 {
-  public static final int HORIZONTAL_SPACE = ViewUtils.b(12.0F);
+  public static final int HORIZONTAL_SPACE = ViewUtils.dpToPx(12.0F);
   public static final int MAX_ROW = 3;
   public static final int VERTICAL_SPACE = HORIZONTAL_SPACE;
   private List<BubbleViewGroup.WarpLine> mRowLayoutList;
@@ -196,7 +196,7 @@ public class BubbleViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.widget.BubbleViewGroup
  * JD-Core Version:    0.7.0.1
  */

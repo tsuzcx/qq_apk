@@ -2,54 +2,54 @@ package com.tencent.mobileqq.uftransfer.proto;
 
 public class UFTTroopUploadReReq
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int a;
+  private long b = 0L;
+  private byte[] c;
+  private String d;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.c = paramArrayOfByte;
   }
   
-  public byte[] a()
+  public long b()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    return this.b;
+  }
+  
+  public byte[] c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.proto.UFTTroopUploadReReq
  * JD-Core Version:    0.7.0.1
  */

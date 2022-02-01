@@ -1,21 +1,50 @@
 package com.tencent.mobileqq.apollo.utils.api.impl;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-final class ApolloUtilImpl$8
+class ApolloUtilImpl$8
   implements Runnable
 {
-  ApolloUtilImpl$8(String paramString) {}
+  ApolloUtilImpl$8(ApolloUtilImpl paramApolloUtilImpl, boolean paramBoolean) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), this.a, 0).a();
+    try
+    {
+      File localFile = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo");
+      if (!localFile.exists()) {
+        return;
+      }
+      if (!localFile.isDirectory())
+      {
+        QLog.e("[cmshow]ApolloUtil", 1, "deleteApolloResource .apollo is not directory");
+        FileUtils.delete("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", false);
+        return;
+      }
+      if (this.a)
+      {
+        FileUtils.delete("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", false);
+        return;
+      }
+      FileUtils.delete("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/", false);
+      FileUtils.delete("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/", false);
+      FileUtils.delete("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/", false);
+      FileUtils.delete(ApolloConstant.V, false);
+      com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl.sBasicScript = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("[cmshow]ApolloUtil", 1, localException, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl.8
  * JD-Core Version:    0.7.0.1
  */

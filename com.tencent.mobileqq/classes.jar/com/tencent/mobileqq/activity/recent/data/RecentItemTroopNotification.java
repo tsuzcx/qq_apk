@@ -75,12 +75,12 @@ public class RecentItemTroopNotification
       }
       super.a(paramQQAppInterface, paramContext);
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131691101);
+        this.mTitleName = paramContext.getString(2131888047);
       }
       this.mUnreadNum = TroopNotificationUtils.a(paramQQAppInterface);
       String str = GroupSystemMsgController.a().a(paramQQAppInterface);
-      structmsg.StructMsg localStructMsg = GroupSystemMsgController.a().a();
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
+      structmsg.StructMsg localStructMsg = GroupSystemMsgController.a().e();
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().h(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
       if (paramQQAppInterface != null)
       {
         paramQQAppInterface = a(paramQQAppInterface);
@@ -113,7 +113,7 @@ public class RecentItemTroopNotification
       int i;
       if (this.mUnreadNum == 0)
       {
-        i = TroopNotifyHelper.c();
+        i = TroopNotifyHelper.g();
         this.unDealMsgCountNumFlag = TroopNotifyHelper.a(i);
       }
       else
@@ -127,15 +127,15 @@ public class RecentItemTroopNotification
         long l = System.currentTimeMillis();
         this.mUnreadNum = i;
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(paramContext.getString(2131719994));
+        paramQQAppInterface.append(paramContext.getString(2131917599));
         paramQQAppInterface.append(String.valueOf(this.mUnreadNum));
-        paramQQAppInterface.append(paramContext.getString(2131719995));
+        paramQQAppInterface.append(paramContext.getString(2131917600));
         this.mLastMsg = paramQQAppInterface.toString();
         TroopNotifyHelper.a(true);
         i = TroopNotifyHelper.a() + 1;
-        TroopNotifyHelper.a(i);
-        int j = TroopNotifyHelper.b() + 1;
-        TroopNotifyHelper.b(j);
+        TroopNotifyHelper.b(i);
+        int j = TroopNotifyHelper.c() + 1;
+        TroopNotifyHelper.c(j);
         TroopNotifyHelper.b(System.currentTimeMillis());
         if (QLog.isColorLevel())
         {
@@ -148,7 +148,7 @@ public class RecentItemTroopNotification
         TroopNotifyHelper.a(false);
       }
       this.mUser.jumpTabMode = 1;
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
@@ -181,7 +181,7 @@ public class RecentItemTroopNotification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopNotification
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,19 @@ public class ThreadUtils
   private static final AtomicInteger NUMBER = new AtomicInteger(1);
   private static IThreadTaskInterceptor sTaskInterceptor = null;
   
+  public static void ensureRunOnUiThread(Runnable paramRunnable)
+  {
+    if (paramRunnable == null) {
+      return;
+    }
+    if (isMainThread())
+    {
+      paramRunnable.run();
+      return;
+    }
+    runOnUiThread(paramRunnable);
+  }
+  
   public static void execTask(Runnable paramRunnable)
   {
     if (paramRunnable != null) {
@@ -87,7 +100,7 @@ public class ThreadUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.task.ThreadUtils
  * JD-Core Version:    0.7.0.1
  */

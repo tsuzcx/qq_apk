@@ -6,13 +6,13 @@ import java.util.Calendar;
 
 public class StateMachine$LogRec
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private IState jdField_a_of_type_ComTencentMobileqqQassistantStatemachineIState;
-  private StateMachine jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine;
-  private String jdField_a_of_type_JavaLangString;
-  private IState b;
-  private IState c;
+  private StateMachine a;
+  private long b;
+  private int c;
+  private String d;
+  private IState e;
+  private IState f;
+  private IState g;
   
   StateMachine$LogRec(StateMachine paramStateMachine, Message paramMessage, String paramString, IState paramIState1, IState paramIState2, IState paramIState3)
   {
@@ -21,19 +21,19 @@ public class StateMachine$LogRec
   
   public void a(StateMachine paramStateMachine, Message paramMessage, String paramString, IState paramIState1, IState paramIState2, IState paramIState3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine = paramStateMachine;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = paramStateMachine;
+    this.b = System.currentTimeMillis();
     int i;
     if (paramMessage != null) {
       i = paramMessage.what;
     } else {
       i = 0;
     }
-    this.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineIState = paramIState1;
-    this.b = paramIState2;
-    this.c = paramIState3;
+    this.c = i;
+    this.d = paramString;
+    this.e = paramIState1;
+    this.f = paramIState2;
+    this.g = paramIState3;
   }
   
   public String toString()
@@ -41,62 +41,62 @@ public class StateMachine$LogRec
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("time=");
     Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis(this.jdField_a_of_type_Long);
+    ((Calendar)localObject).setTimeInMillis(this.b);
     localStringBuilder.append(String.format("%tm-%td %tH:%tM:%tS.%tL", new Object[] { localObject, localObject, localObject, localObject, localObject, localObject }));
     localStringBuilder.append(" processed=");
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineIState;
+    localObject = this.e;
     String str = "<null>";
     if (localObject == null) {
       localObject = "<null>";
     } else {
-      localObject = ((IState)localObject).a();
+      localObject = ((IState)localObject).d();
     }
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(" org=");
-    localObject = this.b;
+    localObject = this.f;
     if (localObject == null) {
       localObject = "<null>";
     } else {
-      localObject = ((IState)localObject).a();
+      localObject = ((IState)localObject).d();
     }
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(" dest=");
-    localObject = this.c;
+    localObject = this.g;
     if (localObject == null) {
       localObject = str;
     } else {
-      localObject = ((IState)localObject).a();
+      localObject = ((IState)localObject).d();
     }
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(" what=");
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine;
+    localObject = this.a;
     if (localObject != null) {
-      localObject = ((StateMachine)localObject).a(this.jdField_a_of_type_Int);
+      localObject = ((StateMachine)localObject).a(this.c);
     } else {
       localObject = "";
     }
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("(0x");
-      localStringBuilder.append(Integer.toHexString(this.jdField_a_of_type_Int));
+      localStringBuilder.append(Integer.toHexString(this.c));
       localStringBuilder.append(")");
     }
     else
     {
       localStringBuilder.append((String)localObject);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.d))
     {
       localStringBuilder.append(" ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.StateMachine.LogRec
  * JD-Core Version:    0.7.0.1
  */

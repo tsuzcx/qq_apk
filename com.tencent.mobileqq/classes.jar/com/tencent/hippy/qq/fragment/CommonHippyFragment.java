@@ -19,18 +19,17 @@ import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
 import com.tencent.hippy.qq.utils.HippyReporter;
 import com.tencent.hippy.qq.utils.SerializableMap;
 import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.utils.FlymeOSStatusBarFontUtils;
 import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.qqlive.module.videoreport.detection.DetectionPolicy;
 import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.HashMap;
 import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class CommonHippyFragment
@@ -60,14 +59,16 @@ public class CommonHippyFragment
   public static boolean isInNightMode()
   {
     if (MobileQQ.sMobileQQ.waitAppRuntime(null) != null) {
-      return QQTheme.a();
+      return QQTheme.isNowThemeIsNight();
     }
     return false;
   }
   
   private void prepareForDTReport()
   {
-    ThreadManager.getUIHandler().post(new CommonHippyFragment.1(this));
+    if (!DetectionPolicy.isAbleToDetect(getActivity())) {
+      VideoReport.addToDetectionWhitelist(getActivity());
+    }
   }
   
   private void reportTimeOut()
@@ -125,7 +126,7 @@ public class CommonHippyFragment
   
   protected int getLayoutResId()
   {
-    return 2131558481;
+    return 2131624025;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -145,7 +146,7 @@ public class CommonHippyFragment
   
   protected void initNetworkErrorView(ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
-    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131366297);
+    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131432596);
     if (paramViewGroup.getVisibility() != 0) {
       paramViewGroup.setVisibility(0);
     }
@@ -166,7 +167,7 @@ public class CommonHippyFragment
     if (getParameters().getBoolean("isTransparent")) {
       this.mRootView.setBackgroundColor(0);
     }
-    this.mHippyContainer = ((ViewGroup)this.mRootView.findViewById(2131368190));
+    this.mHippyContainer = ((ViewGroup)this.mRootView.findViewById(2131435055));
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -223,7 +224,6 @@ public class CommonHippyFragment
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
-    VideoReport.registerEventDynamicParams(null);
     super.onDestroy();
   }
   
@@ -234,7 +234,7 @@ public class CommonHippyFragment
       paramString.removeMessages(1);
     }
     this.mProgressBarWrapper.hideProgressBar();
-    initNetworkErrorView(this.mRootView, new CommonHippyFragment.2(this));
+    initNetworkErrorView(this.mRootView, new CommonHippyFragment.1(this));
   }
   
   protected void onLoadHippySuccess()
@@ -280,7 +280,7 @@ public class CommonHippyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.fragment.CommonHippyFragment
  * JD-Core Version:    0.7.0.1
  */

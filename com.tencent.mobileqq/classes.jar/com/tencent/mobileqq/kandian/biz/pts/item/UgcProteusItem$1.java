@@ -12,13 +12,13 @@ class UgcProteusItem$1
   
   public void a()
   {
-    RIJJumpUtils.a = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), 2);
+    RIJJumpUtils.a = this.a.k();
+    RIJJumpUtils.a(this.b.a(), this.a.k(), 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.UgcProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

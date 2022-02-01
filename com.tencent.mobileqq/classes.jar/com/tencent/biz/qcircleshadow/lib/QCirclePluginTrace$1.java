@@ -19,7 +19,7 @@ class QCirclePluginTrace$1
     {
       String str = (String)localIterator.next();
       long l = ((Long)QCirclePluginTrace.access$000(this.this$0).remove(str)).longValue();
-      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id(str).setPluginVersion(this.val$pluginVersion).setPluginType(this.val$pluginType).setTimeCost(String.valueOf(l)).setExt1(String.valueOf(this.val$hasPreload)));
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEventId(str).setPluginVersion(this.val$pluginVersion).setPluginType(this.val$pluginType).setTimeCost(String.valueOf(l)).setExt1(String.valueOf(this.val$hasPreload)));
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("flush  trace:");
       localStringBuilder.append(str);
@@ -33,7 +33,7 @@ class QCirclePluginTrace$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclePluginTrace.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class FileVideoMediaPlayHelper$2
   public void run()
   {
     if (FileVideoMediaPlayHelper.a(this.this$0) != null) {
-      FileVideoMediaPlayHelper.a(this.this$0).stopPreLoad(FileVideoMediaPlayHelper.a(this.this$0));
+      FileVideoMediaPlayHelper.a(this.this$0).stopPreLoad(FileVideoMediaPlayHelper.b(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.FileVideoMediaPlayHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,16 @@ class QIMProviderContainerView$3
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (QIMProviderContainerView.a(this.a) != null)
+    if (QIMProviderContainerView.e(this.a) != null)
     {
-      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
-      QIMProviderContainerView.a(this.a).setVisibility(0);
+      QIMProviderContainerView.e(this.a).setAlpha(1.0F);
+      QIMProviderContainerView.e(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMProviderContainerView.3
  * JD-Core Version:    0.7.0.1
  */

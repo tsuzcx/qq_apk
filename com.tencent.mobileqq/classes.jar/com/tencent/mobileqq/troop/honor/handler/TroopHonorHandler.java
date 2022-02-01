@@ -31,13 +31,13 @@ import tencent.im.oidb.oidb_0xdc9.oidb_0xdc9.RspBody;
 public class TroopHonorHandler
   extends TroopBaseHandler
 {
-  private static final String jdField_a_of_type_JavaLangString = ((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopListHandlerName();
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private static final String a = ((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopListHandlerName();
+  private AppRuntime b;
   
   protected TroopHonorHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppInterface;
+    this.b = paramAppInterface;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -60,8 +60,8 @@ public class TroopHonorHandler
         } else {
           l = 0L;
         }
-        ((ITroopHonorService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopHonorService.class, "")).updateHostHonorList(paramFromServiceMsg, paramToServiceMsg.extraData.getBoolean("not_update_honors", false));
-        paramToServiceMsg = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), 0);
+        ((ITroopHonorService)this.b.getRuntimeService(ITroopHonorService.class, "")).updateHostHonorList(paramFromServiceMsg, paramToServiceMsg.extraData.getBoolean("not_update_honors", false));
+        paramToServiceMsg = this.b.getApplication().getSharedPreferences(this.b.getCurrentAccountUin(), 0);
         paramToServiceMsg.edit().putLong("SP_HOST_HONOR_LIST_REQUEST_LIMIT_INTERVAL", l).apply();
         paramToServiceMsg.edit().putLong("SP_HOST_HONOR_LIST_LAST_REQUEST_TIMESTAMP", NetConnInfoCenter.getServerTime()).apply();
         i = 1;
@@ -71,7 +71,7 @@ public class TroopHonorHandler
         i = 0;
       }
       if (i != 0) {
-        ((ITroopListHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(jdField_a_of_type_JavaLangString)).a(TroopObserver.TYPE_NOTIFY_UPDATE_RECENT_LIST, true, null);
+        ((ITroopListHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(a)).a(TroopObserver.TYPE_NOTIFY_UPDATE_RECENT_LIST, true, null);
       }
       if (QLog.isColorLevel()) {
         QLog.d("TroopHonorHandler", 2, String.format("handleGetHostTroopHonorList, result = %s", new Object[] { Integer.valueOf(j) }));
@@ -81,14 +81,9 @@ public class TroopHonorHandler
     QLog.d("TroopHonorHandler", 2, "handleGetHostTroopHonorList, data error");
   }
   
-  protected String a()
-  {
-    return "TroopHonorHandler";
-  }
-  
   public void a(boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), 0);
+    Object localObject1 = this.b.getApplication().getSharedPreferences(this.b.getCurrentAccountUin(), 0);
     long l1 = ((SharedPreferences)localObject1).getLong("SP_HOST_HONOR_LIST_REQUEST_LIMIT_INTERVAL", 0L);
     long l2 = ((SharedPreferences)localObject1).getLong("SP_HOST_HONOR_LIST_LAST_REQUEST_TIMESTAMP", 0L);
     l2 = NetConnInfoCenter.getServerTime() - l2;
@@ -101,7 +96,7 @@ public class TroopHonorHandler
       return;
     }
     localObject1 = new ArrayList();
-    Object localObject2 = ((ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
+    Object localObject2 = ((ITroopInfoService)this.b.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
     if (localObject2 != null)
     {
       localObject2 = ((List)localObject2).iterator();
@@ -135,6 +130,11 @@ public class TroopHonorHandler
     sendPbReq((ToServiceMsg)localObject1);
   }
   
+  protected String dv_()
+  {
+    return "TroopHonorHandler";
+  }
+  
   protected Class<? extends BusinessObserver> observerClass()
   {
     return TroopObserver.class;
@@ -145,7 +145,7 @@ public class TroopHonorHandler
     if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
-    if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+    if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopHonorHandler", 2, "REQ_TAG doesn't match.");
@@ -159,7 +159,7 @@ public class TroopHonorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.handler.TroopHonorHandler
  * JD-Core Version:    0.7.0.1
  */

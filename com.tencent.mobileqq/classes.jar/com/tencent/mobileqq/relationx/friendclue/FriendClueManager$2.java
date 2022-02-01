@@ -17,8 +17,8 @@ class FriendClueManager$2
     if (QLog.isColorLevel()) {
       QLog.d("FriendClueManager", 2, String.format("the result of onCardDownload is:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    FriendClueManager.a(this.a).removeMessages(1);
-    FriendClueManager.a(this.a).removeObserver(this.a.a);
+    FriendClueManager.b(this.a).removeMessages(1);
+    FriendClueManager.c(this.a).removeObserver(this.a.a);
     if (paramBoolean)
     {
       Card localCard = null;
@@ -30,19 +30,19 @@ class FriendClueManager$2
         paramObject = new Message();
         paramObject.obj = localCard;
         paramObject.what = 2;
-        FriendClueManager.a(this.a).sendMessage(paramObject);
+        FriendClueManager.b(this.a).sendMessage(paramObject);
       }
     }
     else
     {
-      FriendClueManager.a(this.a).post(new FriendClueManager.2.1(this));
+      FriendClueManager.b(this.a).post(new FriendClueManager.2.1(this));
       QLog.e("FriendClueManager", 1, "get intimateInfo failed");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueManager.2
  * JD-Core Version:    0.7.0.1
  */

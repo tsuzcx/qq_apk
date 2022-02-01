@@ -17,8 +17,8 @@ public class WSVerticalItemRightOperationController
   extends WSVerticalItemBottomOperationController
 {
   @Nullable
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean;
+  private ImageView m;
+  private boolean n;
   
   public WSVerticalItemRightOperationController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
@@ -28,29 +28,29 @@ public class WSVerticalItemRightOperationController
   private Map<String, String> a(@Nullable WSVerticalPageContract.Presenter paramPresenter)
   {
     if ((paramPresenter instanceof AbsWSVerticalPagePresenter)) {
-      return ((AbsWSVerticalPagePresenter)paramPresenter).b();
+      return ((AbsWSVerticalPagePresenter)paramPresenter).n();
     }
     return null;
   }
   
   private void c(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+    if (this.m == null) {
       return;
     }
     int i;
     if (paramBoolean) {
-      i = 2130851284;
+      i = 2130853548;
     } else {
-      i = 2130851285;
+      i = 2130853549;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
+    this.m.setImageResource(i);
   }
   
-  private void j()
+  private void u()
   {
-    WSSimpleEventBus.a().a(new WSClearModeEvent(this.jdField_a_of_type_Boolean ^ true));
-    WSVerticalBeaconReport.g(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), a((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()));
+    WSSimpleEventBus.a().a(new WSClearModeEvent(this.n ^ true));
+    WSVerticalBeaconReport.h(this.g.k(), this.g.l(), this.g.F(), a((WSVerticalPageContract.Presenter)this.g.aO_()));
   }
   
   public void a(boolean paramBoolean)
@@ -58,63 +58,63 @@ public class WSVerticalItemRightOperationController
     if (!paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((ViewStub)a(2131381012)).inflate());
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-  }
-  
-  protected boolean a()
-  {
-    return (super.a()) && (!this.jdField_a_of_type_Boolean);
-  }
-  
-  protected int b()
-  {
-    return 2131560044;
+    this.m = ((ImageView)((ViewStub)c(2131450020)).inflate());
+    this.m.setOnClickListener(this);
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.n = paramBoolean;
     c(paramBoolean);
-    a(this.jdField_a_of_type_AndroidViewViewGroup, a());
-    a(this.jdField_a_of_type_AndroidWidgetTextView, b());
-    a(this.b, c());
-    a(this.c, d());
-    a(this.d, e());
+    a(this.i, l());
+    a(this.h, m());
+    a(this.j, n());
+    a(this.k, o());
+    a(this.l, p());
   }
   
-  protected boolean b()
+  protected int i()
   {
-    return (super.b()) && (!this.jdField_a_of_type_Boolean);
+    return 2131626088;
   }
   
-  protected boolean c()
+  protected boolean l()
   {
-    return (super.c()) && (!this.jdField_a_of_type_Boolean);
+    return (super.l()) && (!this.n);
   }
   
-  protected boolean d()
+  protected boolean m()
   {
-    return (super.d()) && (!this.jdField_a_of_type_Boolean);
+    return (super.m()) && (!this.n);
   }
   
-  protected boolean e()
+  protected boolean n()
   {
-    return (super.e()) && (!this.jdField_a_of_type_Boolean);
+    return (super.n()) && (!this.n);
+  }
+  
+  protected boolean o()
+  {
+    return (super.o()) && (!this.n);
   }
   
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    if (paramView.getId() != 2131380544) {
+    if (paramView.getId() != 2131449501) {
       return;
     }
-    j();
+    u();
+  }
+  
+  protected boolean p()
+  {
+    return (super.p()) && (!this.n);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemRightOperationController
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ final class TabLayoutController$goToTabPage$1
   
   public final void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    paramBundle = TabLayoutController.a(this.a);
+    paramBundle = TabLayoutController.c(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onLaunchResult");
     localStringBuilder.append(paramBoolean);
@@ -22,7 +22,7 @@ final class TabLayoutController$goToTabPage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TabLayoutController.goToTabPage.1
  * JD-Core Version:    0.7.0.1
  */

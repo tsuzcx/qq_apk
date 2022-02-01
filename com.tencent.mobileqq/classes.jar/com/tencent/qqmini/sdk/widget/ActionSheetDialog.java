@@ -165,7 +165,7 @@ public class ActionSheetDialog
   
   private void setTransparentStatusBar()
   {
-    if (DisplayUtil.isImmersiveSupported) {
+    if (DisplayUtil.IS_IMMERSIVE_SUPPORTED) {
       getWindow().addFlags(67108864);
     }
   }
@@ -412,7 +412,7 @@ public class ActionSheetDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.ActionSheetDialog
  * JD-Core Version:    0.7.0.1
  */

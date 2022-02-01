@@ -21,12 +21,12 @@ class StructMsgItemLayout31$1
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
-      int i = this.jdField_a_of_type_JavaLangString.indexOf(':');
+      int i = this.a.indexOf(':');
       if (i != -1)
       {
-        Object localObject = this.jdField_a_of_type_JavaLangString.substring(0, i);
+        Object localObject = this.a.substring(0, i);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           localObject = ((String)localObject).toLowerCase();
@@ -36,16 +36,16 @@ class StructMsgItemLayout31$1
             {
               if (((String)localObject).compareTo("mqqapi") == 0)
               {
-                localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class);
-                ((Intent)localObject).setData(Uri.parse(this.jdField_a_of_type_JavaLangString));
-                this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+                localObject = new Intent(this.b, JumpActivity.class);
+                ((Intent)localObject).setData(Uri.parse(this.a));
+                this.b.startActivity((Intent)localObject);
               }
             }
             else
             {
-              localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-              ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+              localObject = new Intent(this.b, QQBrowserActivity.class);
+              ((Intent)localObject).putExtra("url", this.a);
+              this.b.startActivity((Intent)localObject);
             }
           }
           catch (Throwable localThrowable)
@@ -54,7 +54,7 @@ class StructMsgItemLayout31$1
               localThrowable.printStackTrace();
             }
           }
-          ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "public.tailad.click", 0, 0, "", ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).getString(this.b, "walletPubMsgTail_busiType", ""), this.c, "");
+          ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "public.tailad.click", 0, 0, "", ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).getString(this.c, "walletPubMsgTail_busiType", ""), this.d, "");
         }
       }
     }
@@ -63,7 +63,7 @@ class StructMsgItemLayout31$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout31.1
  * JD-Core Version:    0.7.0.1
  */

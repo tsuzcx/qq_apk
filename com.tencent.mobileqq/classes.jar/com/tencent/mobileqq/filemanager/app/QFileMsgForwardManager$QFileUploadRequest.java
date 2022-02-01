@@ -10,152 +10,152 @@ import java.util.List;
 
 class QFileMsgForwardManager$QFileUploadRequest
 {
-  int jdField_a_of_type_Int;
-  QFileMsgForwardRequest jdField_a_of_type_ComTencentMobileqqFilemanagerDataMsgforwardQFileMsgForwardRequest;
-  String jdField_a_of_type_JavaLangString;
-  HashMap<String, ArrayList<MessageRecord>> jdField_a_of_type_JavaUtilHashMap;
-  List<QFileMsgForwardManager.FileUploadTask> jdField_a_of_type_JavaUtilList;
-  List<QFileMsgForwardManager.FileUploadTask> b;
-  List<QFileMsgForwardManager.FileUploadTask> c;
+  String a;
+  QFileMsgForwardRequest b;
+  int c;
   List<QFileMsgForwardManager.FileUploadTask> d;
   List<QFileMsgForwardManager.FileUploadTask> e;
+  List<QFileMsgForwardManager.FileUploadTask> f;
+  List<QFileMsgForwardManager.FileUploadTask> g;
+  List<QFileMsgForwardManager.FileUploadTask> h;
+  HashMap<String, ArrayList<MessageRecord>> i;
   
   QFileMsgForwardManager$QFileUploadRequest(String paramString, QFileMsgForwardRequest paramQFileMsgForwardRequest, HashMap<String, ArrayList<MessageRecord>> paramHashMap)
   {
-    this.jdField_a_of_type_JavaLangString = paramQFileMsgForwardRequest;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataMsgforwardQFileMsgForwardRequest = paramHashMap;
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramQFileMsgForwardRequest;
+    this.b = paramHashMap;
+    this.c = 0;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilHashMap = localObject;
-    this.b = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.c = new ArrayList();
-    this.d = new ArrayList();
+    this.i = localObject;
     this.e = new ArrayList();
-  }
-  
-  int a()
-  {
-    return this.b.size();
+    this.d = new ArrayList();
+    this.f = new ArrayList();
+    this.g = new ArrayList();
+    this.h = new ArrayList();
   }
   
   void a()
   {
     c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((QFileMsgForwardManager.FileUploadTask)localIterator.next()).a();
     }
-    this.jdField_a_of_type_Int = 1;
+    this.c = 1;
   }
   
   void a(QFileMsgForwardManager.FileUploadTask paramFileUploadTask)
   {
     if (paramFileUploadTask != null) {
-      this.b.add(paramFileUploadTask);
+      this.e.add(paramFileUploadTask);
     }
   }
   
   void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((QFileMsgForwardManager.FileUploadTask)localIterator.next()).b();
     }
-    this.jdField_a_of_type_Int = 5;
+    this.c = 5;
   }
   
   void c()
   {
-    int j = this.b.size();
-    int i = 10;
-    if (10 > j) {
-      i = this.b.size();
+    int m = this.e.size();
+    int k = 10;
+    if (10 > m) {
+      k = this.e.size();
     }
-    ArrayList localArrayList = new ArrayList(i);
-    j = 0;
-    while (j < i)
+    ArrayList localArrayList = new ArrayList(k);
+    m = 0;
+    while (m < k)
     {
-      QFileMsgForwardManager.FileUploadTask localFileUploadTask = (QFileMsgForwardManager.FileUploadTask)this.b.get(j);
-      this.jdField_a_of_type_JavaUtilList.add(localFileUploadTask);
+      QFileMsgForwardManager.FileUploadTask localFileUploadTask = (QFileMsgForwardManager.FileUploadTask)this.e.get(m);
+      this.d.add(localFileUploadTask);
       localArrayList.add(localFileUploadTask);
-      j += 1;
+      m += 1;
     }
-    this.b.removeAll(localArrayList);
+    this.e.removeAll(localArrayList);
   }
   
-  void d()
+  int d()
   {
-    int j = this.c.size();
-    int k = this.e.size();
-    int m = this.d.size();
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
+    return this.e.size();
+  }
+  
+  void e()
+  {
+    int m = this.f.size();
+    int n = this.h.size();
+    int i1 = this.g.size();
+    Object localObject = this.d.iterator();
+    int k = 0;
     if (((Iterator)localObject).hasNext())
     {
       QFileMsgForwardManager.FileUploadTask localFileUploadTask = (QFileMsgForwardManager.FileUploadTask)((Iterator)localObject).next();
-      if ((localFileUploadTask.b == 2) || (localFileUploadTask.b == 3) || (localFileUploadTask.b == 4)) {
+      if ((localFileUploadTask.g == 2) || (localFileUploadTask.g == 3) || (localFileUploadTask.g == 4)) {
         ((Iterator)localObject).remove();
       }
-      if (localFileUploadTask.b == 2) {
-        this.c.add(localFileUploadTask);
+      if (localFileUploadTask.g == 2) {
+        this.f.add(localFileUploadTask);
       }
       for (;;)
       {
-        i += 1;
+        k += 1;
         break;
-        if (localFileUploadTask.b == 3)
+        if (localFileUploadTask.g == 3)
         {
-          this.e.add(localFileUploadTask);
+          this.h.add(localFileUploadTask);
         }
         else
         {
-          if (localFileUploadTask.b != 4) {
+          if (localFileUploadTask.g != 4) {
             break;
           }
-          this.d.add(localFileUploadTask);
+          this.g.add(localFileUploadTask);
         }
       }
     }
     c();
     if (QLog.isColorLevel())
     {
-      int n = this.jdField_a_of_type_JavaUtilList.size();
-      int i1 = this.b.size();
+      int i2 = this.d.size();
+      int i3 = this.e.size();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("request update, forwardSeq[ ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append("] removeCount[");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(k);
       ((StringBuilder)localObject).append("] leftCount[");
-      ((StringBuilder)localObject).append(n + i1);
+      ((StringBuilder)localObject).append(i2 + i3);
       ((StringBuilder)localObject).append("] finishCount[");
-      ((StringBuilder)localObject).append(j + k + m);
+      ((StringBuilder)localObject).append(m + n + i1);
       ((StringBuilder)localObject).append("]");
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((QFileMsgForwardManager.FileUploadTask)((Iterator)localObject).next()).a();
     }
-    if ((this.jdField_a_of_type_JavaUtilList.size() <= 0) && (this.b.size() <= 0))
+    if ((this.d.size() <= 0) && (this.e.size() <= 0))
     {
-      this.jdField_a_of_type_Int = 5;
+      this.c = 5;
       if (QLog.isDevelopLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("all task upload finish , remove multi request: forwardSeq[ ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append("]");
         QLog.i("FileMultiMsgManager<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       }
-      QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager, this.jdField_a_of_type_JavaLangString);
+      QFileMsgForwardManager.a(this.j, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.QFileUploadRequest
  * JD-Core Version:    0.7.0.1
  */

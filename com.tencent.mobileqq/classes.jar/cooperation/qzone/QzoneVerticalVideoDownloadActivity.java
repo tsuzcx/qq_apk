@@ -152,7 +152,7 @@ public class QzoneVerticalVideoDownloadActivity
       i = j;
       if (localObject != null)
       {
-        localObject = ((IPluginManager)localObject).a("qzone_plugin.apk");
+        localObject = ((IPluginManager)localObject).d("qzone_plugin.apk");
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(" qzone_plugin info.mState = ");
         j = -2;
@@ -266,7 +266,7 @@ public class QzoneVerticalVideoDownloadActivity
     QLog.i("QzoneVerticalVideoDownloadActivity", 1, " installQzonePlugin");
     if (this.app == null)
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131712386));
+      ToastUtil.a().a(HardCodeUtil.a(2131909981));
       QLog.e("QzoneVerticalVideoDownloadActivity", 1, " installQzonePlugin, app == null");
       finish();
       return;
@@ -293,12 +293,12 @@ public class QzoneVerticalVideoDownloadActivity
         {
           if ((i != 3) && (i != 5))
           {
-            ToastUtil.a().a(HardCodeUtil.a(2131712395));
+            ToastUtil.a().a(HardCodeUtil.a(2131909990));
             finish();
           }
           else
           {
-            ToastUtil.a().a(HardCodeUtil.a(2131712393));
+            ToastUtil.a().a(HardCodeUtil.a(2131909988));
             finish();
           }
         }
@@ -349,7 +349,7 @@ public class QzoneVerticalVideoDownloadActivity
     }
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      QQToast.a(this, HardCodeUtil.a(2131712377), 0).a();
+      QQToast.makeText(this, HardCodeUtil.a(2131909972), 0).show();
       localObject = this.mPluginId;
       double d = System.currentTimeMillis() - this.mLaunchTime;
       Double.isNaN(d);
@@ -433,12 +433,12 @@ public class QzoneVerticalVideoDownloadActivity
     }
     if (paramBoolean1)
     {
-      localTextView.setText(HardCodeUtil.a(2131712378));
+      localTextView.setText(HardCodeUtil.a(2131909973));
       return;
     }
     if (paramBoolean2)
     {
-      localTextView.setText(HardCodeUtil.a(2131712382));
+      localTextView.setText(HardCodeUtil.a(2131909977));
       return;
     }
     this.progress %= 3;
@@ -448,15 +448,15 @@ public class QzoneVerticalVideoDownloadActivity
       if (i != 1)
       {
         if (i == 2) {
-          localTextView.setText(HardCodeUtil.a(2131712392));
+          localTextView.setText(HardCodeUtil.a(2131909987));
         }
       }
       else {
-        localTextView.setText(HardCodeUtil.a(2131712380));
+        localTextView.setText(HardCodeUtil.a(2131909975));
       }
     }
     else {
-      localTextView.setText(HardCodeUtil.a(2131712383));
+      localTextView.setText(HardCodeUtil.a(2131909978));
     }
     this.progress += 1;
   }
@@ -496,14 +496,14 @@ public class QzoneVerticalVideoDownloadActivity
     QLog.i("QzoneVerticalVideoDownloadActivity", 1, ((StringBuilder)localObject).toString());
     this.mWaitingView.setVisibility(8);
     this.mDownloadRoot.setVisibility(0);
-    this.mTxtPluginSize = ((TextView)findViewById(2131372876));
+    this.mTxtPluginSize = ((TextView)findViewById(2131440439));
     localObject = QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginSizeText", "插件约1M");
     this.mTxtPluginSize.setText((CharSequence)localObject);
-    ((TextView)findViewById(2131380225)).setText(QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginUpdateTips", "升级插件，体验精彩小视频"));
-    this.mDownloadingBar = ((ProgressBar)findViewById(2131365848));
-    this.mBtnAction = ((TextView)findViewById(2131363840));
-    this.mBtnClose = ((ImageView)findViewById(2131363890));
-    this.mLiveVideoImgIv = ((ImageView)findViewById(2131375517));
+    ((TextView)findViewById(2131449143)).setText(QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginUpdateTips", "升级插件，体验精彩小视频"));
+    this.mDownloadingBar = ((ProgressBar)findViewById(2131432106));
+    this.mBtnAction = ((TextView)findViewById(2131429786));
+    this.mBtnClose = ((ImageView)findViewById(2131429840));
+    this.mLiveVideoImgIv = ((ImageView)findViewById(2131443708));
     try
     {
       localObject = QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalDownloadProgressBackgroundUrl", "https://qzonestyle.gtimg.cn/aoi/sola/20180412205352_WOHxRvJEI2.png");
@@ -523,9 +523,9 @@ public class QzoneVerticalVideoDownloadActivity
     }
     this.mBtnClose.setOnClickListener(this.cancelInstallListener);
     if (paramInt == 0) {
-      this.mBtnAction.setText(HardCodeUtil.a(2131712394));
+      this.mBtnAction.setText(HardCodeUtil.a(2131909989));
     } else {
-      this.mBtnAction.setText(HardCodeUtil.a(2131712379));
+      this.mBtnAction.setText(HardCodeUtil.a(2131909974));
     }
     this.mBtnAction.setOnClickListener(this.installListener);
   }
@@ -533,9 +533,9 @@ public class QzoneVerticalVideoDownloadActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131562363);
-    this.mDownloadRoot = ((FrameLayout)findViewById(2131365857));
-    this.mWaitingView = findViewById(2131381014);
+    setContentView(2131628794);
+    this.mDownloadRoot = ((FrameLayout)findViewById(2131432116));
+    this.mWaitingView = findViewById(2131450023);
     if (!checkEnvironment())
     {
       finish();
@@ -591,7 +591,7 @@ public class QzoneVerticalVideoDownloadActivity
     case 1009: 
     default: 
     case 1012: 
-      ToastUtil.a().a(HardCodeUtil.a(2131712389));
+      ToastUtil.a().a(HardCodeUtil.a(2131909984));
       finish();
       return;
     case 1011: 
@@ -727,13 +727,13 @@ public class QzoneVerticalVideoDownloadActivity
     }
     installPlugin();
     QZLog.e("QzoneVerticalVideoDownloadActivity", 1, new Object[] { "[onPluginManagerLoaded] no PluginManagerClient" });
-    ToastUtil.a().a(HardCodeUtil.a(2131712384));
+    ToastUtil.a().a(HardCodeUtil.a(2131909979));
     finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneVerticalVideoDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

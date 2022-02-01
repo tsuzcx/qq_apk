@@ -11,17 +11,17 @@ class LocationPickFragment$10
   
   public void onClick(View paramView)
   {
-    if (LocationPickFragment.a(this.a).b()) {
-      LocationPickFragment.a(this.a).b();
+    if (LocationPickFragment.d(this.a).h()) {
+      LocationPickFragment.d(this.a).b();
     } else {
-      LocationPickFragment.a(this.a).a();
+      LocationPickFragment.d(this.a).a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.10
  * JD-Core Version:    0.7.0.1
  */

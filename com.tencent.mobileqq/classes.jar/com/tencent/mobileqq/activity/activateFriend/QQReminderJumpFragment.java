@@ -52,14 +52,14 @@ public class QQReminderJumpFragment
   {
     super.onResume();
     String str = getArguments().getString("msgid");
-    if (!StringUtil.a(str)) {
+    if (!StringUtil.isEmpty(str)) {
       ThreadManagerV2.excute(new QQReminderJumpFragment.1(this, str), 32, null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQReminderJumpFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -77,12 +77,12 @@ public class AvGameRoomListHandler
   extends BusinessHandler
 {
   public static final String a = "com.tencent.avgame.business.handler.AvGameRoomListHandler";
-  private BaseQQAppInterface a;
+  private BaseQQAppInterface b;
   
   public AvGameRoomListHandler(BaseQQAppInterface paramBaseQQAppInterface)
   {
     super(paramBaseQQAppInterface);
-    this.a = paramBaseQQAppInterface;
+    this.b = paramBaseQQAppInterface;
   }
   
   public static int a(int paramInt)
@@ -237,7 +237,7 @@ public class AvGameRoomListHandler
       {
         localObject = (AvGameLobbyInfo.PlayerInfo)paramPKCardInfo.player_list.get().get(i);
         if ((((AvGameLobbyInfo.PlayerInfo)localObject).has()) && (((AvGameLobbyInfo.PlayerInfo)((AvGameLobbyInfo.PlayerInfo)localObject).get()).uid.has())) {
-          localAVGameLobbySurvivalContentInfo.a().add(Long.valueOf(((AvGameLobbyInfo.PlayerInfo)((AvGameLobbyInfo.PlayerInfo)localObject).get()).uid.get()));
+          localAVGameLobbySurvivalContentInfo.k().add(Long.valueOf(((AvGameLobbyInfo.PlayerInfo)((AvGameLobbyInfo.PlayerInfo)localObject).get()).uid.get()));
         }
         i += 1;
       }
@@ -344,7 +344,7 @@ public class AvGameRoomListHandler
     int k = paramToServiceMsg.extraData.getInt("_result_file_type");
     paramFromServiceMsg = paramToServiceMsg.extraData.getString("_result_game_id");
     String str = paramToServiceMsg.extraData.getString("_result_url");
-    IAvGameManager localIAvGameManager = (IAvGameManager)this.a.getRuntimeService(IAvGameManager.class);
+    IAvGameManager localIAvGameManager = (IAvGameManager)this.b.getRuntimeService(IAvGameManager.class);
     if (i == 0)
     {
       localIAvGameManager.getGameResultShareMgr().a(paramFromServiceMsg, k);
@@ -398,7 +398,7 @@ public class AvGameRoomListHandler
       ((StringBuilder)localObject1).append(paramString);
       QLog.d("AvGameRoomListHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = this.a.getCurrentAccountUin();
+    Object localObject2 = this.b.getCurrentAccountUin();
     for (;;)
     {
       try
@@ -424,10 +424,10 @@ public class AvGameRoomListHandler
               QLog.e("AvGameRoomListHandler", 1, paramString.toString());
             }
           }
-          if ((IGameEngine.a().f()) && (IGameEngine.a().a() != null))
+          if ((IGameEngine.I().A()) && (IGameEngine.I().s() != null))
           {
-            ((AvGameRoomManager.CmdRoomCreateReq)localObject1).pk_id.set(IGameEngine.a().a().k());
-            ((AvGameRoomManager.CmdRoomCreateReq)localObject1).pool_id.set(IGameEngine.a().a().j());
+            ((AvGameRoomManager.CmdRoomCreateReq)localObject1).pk_id.set(IGameEngine.I().s().Q());
+            ((AvGameRoomManager.CmdRoomCreateReq)localObject1).pool_id.set(IGameEngine.I().s().P());
           }
           paramString = createToServiceMsg("qqvgame.RoomManager-RoomCreate");
           paramString.putWupBuffer(((AvGameRoomManager.CmdRoomCreateReq)localObject1).toByteArray());
@@ -448,7 +448,7 @@ public class AvGameRoomListHandler
   
   public void a(int paramInt, String paramString1, String paramString2)
   {
-    long l = this.a.getLongAccountUin();
+    long l = this.b.getLongAccountUin();
     AvGameResultShare.FileUploadReq localFileUploadReq = new AvGameResultShare.FileUploadReq();
     localFileUploadReq.file_type.set(paramInt);
     localFileUploadReq.file_url.set(paramString2);
@@ -481,7 +481,7 @@ public class AvGameRoomListHandler
       ((StringBuilder)localObject1).append(paramString1);
       QLog.d("AvGameRoomListHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = this.a.getCurrentAccountUin();
+    Object localObject2 = this.b.getCurrentAccountUin();
     for (;;)
     {
       try
@@ -513,8 +513,8 @@ public class AvGameRoomListHandler
             ((AvGameRoomManager.CmdRoomEnterReq)localObject1).invitor_uin.set(AvGameEntranceUtil.a(paramString2));
           }
           ((AvGameRoomManager.CmdRoomEnterReq)localObject1).init_status.set(1);
-          if ((IGameEngine.a().f()) && (IGameEngine.a().a() != null)) {
-            ((AvGameRoomManager.CmdRoomEnterReq)localObject1).pk_opponent_uin.set(IGameEngine.a().a().b);
+          if ((IGameEngine.I().A()) && (IGameEngine.I().s() != null)) {
+            ((AvGameRoomManager.CmdRoomEnterReq)localObject1).pk_opponent_uin.set(IGameEngine.I().s().y);
           }
           paramString1 = createToServiceMsg("qqvgame.RoomManager-RoomEnter");
           paramString1.putWupBuffer(((AvGameRoomManager.CmdRoomEnterReq)localObject1).toByteArray());
@@ -555,7 +555,7 @@ public class AvGameRoomListHandler
   
   public void a(long paramLong)
   {
-    long l = AvGameEntranceUtil.a(this.a.getCurrentUin());
+    long l = AvGameEntranceUtil.a(this.b.getCurrentUin());
     Object localObject = new AvGameRoomManager.CmdRoomLeaveReq();
     ((AvGameRoomManager.CmdRoomLeaveReq)localObject).roomid.set(paramLong);
     ((AvGameRoomManager.CmdRoomLeaveReq)localObject).reason.set(1);
@@ -846,7 +846,7 @@ public class AvGameRoomListHandler
       ((StringBuilder)localObject1).append(paramString);
       QLog.d("AvGameRoomListHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = this.a.getCurrentAccountUin();
+    Object localObject2 = this.b.getCurrentAccountUin();
     try
     {
       localObject1 = new AvGameRoomManager.CmdRoomDestroyReq();
@@ -880,7 +880,7 @@ public class AvGameRoomListHandler
       ((StringBuilder)localObject1).append(paramInt2);
       QLog.d("AvGameRoomListHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = this.a.getCurrentAccountUin();
+    Object localObject2 = this.b.getCurrentAccountUin();
     try
     {
       localObject1 = new AvGameRoomManager.CmdRoomBatchForGroupReq();
@@ -1615,13 +1615,13 @@ public class AvGameRoomListHandler
             } else {
               paramToServiceMsg = "";
             }
-            localBannerInfo.jdField_a_of_type_JavaLangString = paramToServiceMsg;
+            localBannerInfo.a = paramToServiceMsg;
             if (((AvGameLobbyInfo.BannerInfo)paramFromServiceMsg.get(j)).skip_url.has()) {
               paramToServiceMsg = ((AvGameLobbyInfo.BannerInfo)paramFromServiceMsg.get(j)).skip_url.get();
             } else {
               paramToServiceMsg = "";
             }
-            localBannerInfo.jdField_b_of_type_JavaLangString = paramToServiceMsg;
+            localBannerInfo.b = paramToServiceMsg;
             localArrayList1.add(localBannerInfo);
             j += 1;
           }
@@ -1653,49 +1653,49 @@ public class AvGameRoomListHandler
               else
               {
                 localObject1 = new AVGameLobbyCommonContentInfo(8);
-                ((AVGameLobbyCommonContentInfo)localObject1).jdField_a_of_type_Int = k;
+                ((AVGameLobbyCommonContentInfo)localObject1).a = k;
                 if (((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).title_url.has()) {
                   paramFromServiceMsg = ((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).title_url.get();
                 } else {
                   paramFromServiceMsg = paramToServiceMsg;
                 }
-                ((AVGameLobbyCommonContentInfo)localObject1).jdField_a_of_type_JavaLangString = paramFromServiceMsg;
+                ((AVGameLobbyCommonContentInfo)localObject1).b = paramFromServiceMsg;
                 if (((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).backgroud_url.has()) {
                   paramFromServiceMsg = ((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).backgroud_url.get();
                 } else {
                   paramFromServiceMsg = paramToServiceMsg;
                 }
-                ((AVGameLobbyCommonContentInfo)localObject1).jdField_b_of_type_JavaLangString = paramFromServiceMsg;
+                ((AVGameLobbyCommonContentInfo)localObject1).c = paramFromServiceMsg;
                 if (((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).game_type.has()) {
                   k = ((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).game_type.get();
                 } else {
                   k = 0;
                 }
-                ((AVGameLobbyCommonContentInfo)localObject1).e = k;
+                ((AVGameLobbyCommonContentInfo)localObject1).i = k;
                 if (((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).play_user_num.has()) {
                   k = ((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).play_user_num.get();
                 } else {
                   k = 0;
                 }
-                ((AVGameLobbyCommonContentInfo)localObject1).jdField_b_of_type_Int = k;
+                ((AVGameLobbyCommonContentInfo)localObject1).d = k;
                 if (((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).wording.has()) {
                   paramFromServiceMsg = ((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).wording.get();
                 } else {
                   paramFromServiceMsg = paramToServiceMsg;
                 }
-                ((AVGameLobbyCommonContentInfo)localObject1).jdField_c_of_type_JavaLangString = paramFromServiceMsg;
+                ((AVGameLobbyCommonContentInfo)localObject1).h = paramFromServiceMsg;
                 if (((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).color_start.has()) {
                   k = ((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).color_start.get();
                 } else {
                   k = 0;
                 }
-                ((AVGameLobbyCommonContentInfo)localObject1).jdField_c_of_type_Int = k;
+                ((AVGameLobbyCommonContentInfo)localObject1).f = k;
                 if (((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).color_end.has()) {
                   k = ((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).color_end.get();
                 } else {
                   k = 0;
                 }
-                ((AVGameLobbyCommonContentInfo)localObject1).d = k;
+                ((AVGameLobbyCommonContentInfo)localObject1).g = k;
                 paramFromServiceMsg = paramToServiceMsg;
                 if (((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).player_list.has())
                 {
@@ -1708,7 +1708,7 @@ public class AvGameRoomListHandler
                     }
                     paramFromServiceMsg = (AvGameLobbyInfo.PlayerInfo)((AvGameLobbyInfo.PKCardInfo)((List)localObject3).get(j)).player_list.get().get(k);
                     if ((paramFromServiceMsg.has()) && (((AvGameLobbyInfo.PlayerInfo)paramFromServiceMsg.get()).uid.has())) {
-                      ((AVGameLobbyCommonContentInfo)localObject1).jdField_a_of_type_JavaUtilList.add(Long.valueOf(((AvGameLobbyInfo.PlayerInfo)paramFromServiceMsg.get()).uid.get()));
+                      ((AVGameLobbyCommonContentInfo)localObject1).e.add(Long.valueOf(((AvGameLobbyInfo.PlayerInfo)paramFromServiceMsg.get()).uid.get()));
                     }
                     k += 1;
                   }
@@ -1735,32 +1735,32 @@ public class AvGameRoomListHandler
             } else {
               paramToServiceMsg = paramFromServiceMsg;
             }
-            ((AVGameLobbyRandomMatchContentInfo)localObject2).jdField_a_of_type_JavaLangString = paramToServiceMsg;
+            ((AVGameLobbyRandomMatchContentInfo)localObject2).d = paramToServiceMsg;
             if (((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).backgroud_url.has()) {
               paramToServiceMsg = ((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).backgroud_url.get();
             } else {
               paramToServiceMsg = paramFromServiceMsg;
             }
-            ((AVGameLobbyRandomMatchContentInfo)localObject2).jdField_b_of_type_JavaLangString = paramToServiceMsg;
+            ((AVGameLobbyRandomMatchContentInfo)localObject2).e = paramToServiceMsg;
             if (((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).game_type.has()) {
               k = ((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).game_type.get();
             } else {
               k = 0;
             }
-            ((AVGameLobbyRandomMatchContentInfo)localObject2).jdField_b_of_type_Int = k;
+            ((AVGameLobbyRandomMatchContentInfo)localObject2).c = k;
             if (((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).players_num.has()) {
               k = ((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).players_num.get();
             } else {
               k = 0;
             }
-            ((AVGameLobbyRandomMatchContentInfo)localObject2).jdField_a_of_type_Int = k;
+            ((AVGameLobbyRandomMatchContentInfo)localObject2).a = k;
             if (((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).wording.has()) {
               paramToServiceMsg = ((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).wording.get();
             } else {
               paramToServiceMsg = paramFromServiceMsg;
             }
-            ((AVGameLobbyRandomMatchContentInfo)localObject2).jdField_c_of_type_JavaLangString = paramToServiceMsg;
-            ((AVGameLobbyRandomMatchContentInfo)localObject2).jdField_c_of_type_Int = j;
+            ((AVGameLobbyRandomMatchContentInfo)localObject2).f = paramToServiceMsg;
+            ((AVGameLobbyRandomMatchContentInfo)localObject2).g = j;
             if (((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).player_list.has())
             {
               k = 0;
@@ -1768,7 +1768,7 @@ public class AvGameRoomListHandler
               {
                 paramToServiceMsg = (AvGameLobbyInfo.PlayerInfo)((AvGameLobbyInfo.RandomMatchInfo)((List)localObject1).get(j)).player_list.get().get(k);
                 if ((paramToServiceMsg.has()) && (((AvGameLobbyInfo.PlayerInfo)paramToServiceMsg.get()).uid.has())) {
-                  ((AVGameLobbyRandomMatchContentInfo)localObject2).jdField_a_of_type_JavaUtilList.add(Long.valueOf(((AvGameLobbyInfo.PlayerInfo)paramToServiceMsg.get()).uid.get()));
+                  ((AVGameLobbyRandomMatchContentInfo)localObject2).b.add(Long.valueOf(((AvGameLobbyInfo.PlayerInfo)paramToServiceMsg.get()).uid.get()));
                 }
                 k += 1;
               }
@@ -1784,7 +1784,7 @@ public class AvGameRoomListHandler
               } else {
                 j = 0;
               }
-              localRandomMatchInfo.jdField_a_of_type_Int = j;
+              localRandomMatchInfo.a = j;
               if (paramToServiceMsg.player_list.has())
               {
                 j = 0;
@@ -1792,7 +1792,7 @@ public class AvGameRoomListHandler
                 {
                   paramFromServiceMsg = (AvGameLobbyInfo.PlayerInfo)paramToServiceMsg.player_list.get().get(j);
                   if ((paramFromServiceMsg.has()) && (((AvGameLobbyInfo.PlayerInfo)paramFromServiceMsg.get()).uid.has())) {
-                    localRandomMatchInfo.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((AvGameLobbyInfo.PlayerInfo)paramFromServiceMsg.get()).uid.get()));
+                    localRandomMatchInfo.b.add(Long.valueOf(((AvGameLobbyInfo.PlayerInfo)paramFromServiceMsg.get()).uid.get()));
                   }
                   j += 1;
                 }

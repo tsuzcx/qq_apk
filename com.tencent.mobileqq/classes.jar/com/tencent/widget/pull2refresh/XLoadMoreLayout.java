@@ -104,19 +104,19 @@ public class XLoadMoreLayout
   
   private void initResources()
   {
-    this.mWillLoadMoreText = HardCodeUtil.a(2131695286);
-    this.mCanMoreText = HardCodeUtil.a(2131695282);
-    this.mNoMoreDataText = HardCodeUtil.a(2131695285);
-    this.mLoadingText = getResources().getString(2131695284);
-    this.mLoadMoreError = HardCodeUtil.a(2131695283);
+    this.mWillLoadMoreText = HardCodeUtil.a(2131893021);
+    this.mCanMoreText = HardCodeUtil.a(2131893017);
+    this.mNoMoreDataText = HardCodeUtil.a(2131893020);
+    this.mLoadingText = getResources().getString(2131893019);
+    this.mLoadMoreError = HardCodeUtil.a(2131893018);
   }
   
   private void initView()
   {
-    LayoutInflater.from(getContext()).inflate(2131559641, this, true);
-    this.mLoadLayout = findViewById(2131373269);
-    this.mProgressBar = ((ProgressBar)this.mLoadLayout.findViewById(2131373273));
-    this.mTextView = ((TextView)this.mLoadLayout.findViewById(2131373274));
+    LayoutInflater.from(getContext()).inflate(2131625670, this, true);
+    this.mLoadLayout = findViewById(2131440878);
+    this.mProgressBar = ((ProgressBar)this.mLoadLayout.findViewById(2131440882));
+    this.mTextView = ((TextView)this.mLoadLayout.findViewById(2131440883));
     updateState(0);
   }
   
@@ -188,7 +188,7 @@ public class XLoadMoreLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.XLoadMoreLayout
  * JD-Core Version:    0.7.0.1
  */

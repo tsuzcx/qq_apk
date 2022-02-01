@@ -35,14 +35,15 @@ import mqq.app.Packet;
 public class WeatherServlet
   extends MSFServlet
 {
-  public static void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, AppActivity paramAppActivity)
+  public static void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, int paramInt3)
   {
     NewIntent localNewIntent = new NewIntent(MobileQQ.sMobileQQ, WeatherServlet.class);
     localNewIntent.putExtra("cmd", "QQWeatherReport.getWeatherByLbs");
     localNewIntent.putExtra("req_type", 8888);
     localNewIntent.putExtra("latitide", paramInt1);
     localNewIntent.putExtra("longtitude", paramInt2);
-    a(paramAppInterface, localNewIntent, paramAppActivity);
+    localNewIntent.putExtra("adcode", paramInt3);
+    paramAppInterface.startServlet(localNewIntent);
   }
   
   public static void a(AppInterface paramAppInterface, AppActivity paramAppActivity)
@@ -127,7 +128,7 @@ public class WeatherServlet
   private static void b(AppInterface paramAppInterface, NewIntent paramNewIntent, AppActivity paramAppActivity)
   {
     paramAppInterface = new WeatherServlet.1(paramAppActivity, paramAppInterface, paramNewIntent);
-    paramAppInterface = DialogUtil.a(paramAppActivity, 230, paramAppActivity.getString(2131720361), paramAppActivity.getString(2131720360), 2131720359, 2131720358, paramAppInterface, paramAppInterface);
+    paramAppInterface = DialogUtil.a(paramAppActivity, 230, paramAppActivity.getString(2131917998), paramAppActivity.getString(2131917997), 2131917996, 2131917995, paramAppInterface, paramAppInterface);
     if (paramAppInterface != null) {
       paramAppInterface.show();
     }
@@ -252,7 +253,7 @@ public class WeatherServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.WeatherServlet
  * JD-Core Version:    0.7.0.1
  */

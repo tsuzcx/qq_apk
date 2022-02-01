@@ -32,21 +32,12 @@ import tencent.gdt.qq_ad_get.QQAdGet;
 public class GdtBannerFragmentForJS
   extends GdtBaseBannerFragment
 {
-  private AdButtonController jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonController;
-  private AdButtonView jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonView;
-  private GdtAdListener jdField_a_of_type_ComTencentGdtadApiGdtAdListener = new GdtBannerFragmentForJS.2(this);
-  private GdtBannerParams jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams;
-  private GdtBannerView jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
-  private IGdtBannerAd jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd;
-  
-  protected GdtAd a()
-  {
-    IGdtBannerAd localIGdtBannerAd = this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd;
-    if ((localIGdtBannerAd instanceof GdtAd)) {
-      return (GdtAd)localIGdtBannerAd;
-    }
-    return null;
-  }
+  private IGdtBannerAd b;
+  private GdtBannerParams c;
+  private GdtBannerView d;
+  private AdButtonView e;
+  private AdButtonController f;
+  private GdtAdListener g = new GdtBannerFragmentForJS.2(this);
   
   protected void a()
   {
@@ -56,20 +47,20 @@ public class GdtBannerFragmentForJS
     ((LinearLayout.LayoutParams)localObject).gravity = 1;
     ((LinearLayout.LayoutParams)localObject).topMargin = 100;
     ((LinearLayout.LayoutParams)localObject).bottomMargin = 100;
-    this.jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonView = new AdButtonView(getQBaseActivity(), i, j);
-    this.jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonController = new AdButtonController(GdtHandler.a(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params));
-    this.jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonController.registerView(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonView), true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonView.getButtonView(), (ViewGroup.LayoutParams)localObject);
+    this.e = new AdButtonView(getQBaseActivity(), i, j);
+    this.f = new AdButtonController(GdtHandler.b(this.c.b));
+    this.f.registerView(new WeakReference(this.e), true);
+    this.a.addView(this.e.getButtonView(), (ViewGroup.LayoutParams)localObject);
     i = GdtUIUtils.a(getBaseActivity(), 1080, 1026);
-    j = GdtBannerViewBuilder.b(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView = this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd.render(getBaseActivity(), i, j);
-    localObject = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
+    j = GdtBannerViewBuilder.b(this.c.c, i);
+    this.d = this.b.render(getBaseActivity(), i, j);
+    localObject = this.d;
     if (localObject == null)
     {
       Toast.makeText(getBaseActivity().getApplicationContext(), "ad is rendered", 0).show();
       return;
     }
-    if (((GdtBannerView)localObject).a() == null)
+    if (((GdtBannerView)localObject).getView() == null)
     {
       Toast.makeText(getBaseActivity().getApplicationContext(), "error", 0).show();
       return;
@@ -78,32 +69,41 @@ public class GdtBannerFragmentForJS
     ((LinearLayout.LayoutParams)localObject).gravity = 1;
     ((LinearLayout.LayoutParams)localObject).topMargin = 100;
     ((LinearLayout.LayoutParams)localObject).bottomMargin = 100;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView.a(), (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd.onDisplay();
+    this.a.addView(this.d.getView(), (ViewGroup.LayoutParams)localObject);
+    this.b.onDisplay();
     AdThreadManager.INSTANCE.postDelayed(new GdtBannerFragmentForJS.1(this), 0, 5000L);
   }
   
   protected void a(String paramString, qq_ad_get.QQAdGet paramQQAdGet, GdtHandler.Params paramParams)
   {
-    this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams = new GdtBannerParams();
-    GdtBannerParams localGdtBannerParams = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams;
-    localGdtBannerParams.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramQQAdGet;
-    localGdtBannerParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramParams;
+    this.c = new GdtBannerParams();
+    GdtBannerParams localGdtBannerParams = this.c;
+    localGdtBannerParams.a = paramQQAdGet;
+    localGdtBannerParams.b = paramParams;
     try
     {
       int i = new JSONObject(paramString).getInt("style");
-      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams.jdField_a_of_type_Int = i;
+      this.c.c = i;
       i = GdtUIUtils.a(getBaseActivity(), 1080, 1026);
-      int j = GdtBannerViewBuilder.b(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams.jdField_a_of_type_Int, i);
-      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams.b = i;
-      this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams.c = j;
+      int j = GdtBannerViewBuilder.b(this.c.c, i);
+      this.c.d = i;
+      this.c.e = j;
     }
     catch (JSONException paramString)
     {
       GdtLog.d("GdtBannerFragmentForJS", "createParams error", paramString);
     }
-    this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd = ((IGdtBannerAdAPI)QRoute.api(IGdtBannerAdAPI.class)).buildBannerAd(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerParams);
-    this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd.setListener(new WeakReference(this.jdField_a_of_type_ComTencentGdtadApiGdtAdListener));
+    this.b = ((IGdtBannerAdAPI)QRoute.api(IGdtBannerAdAPI.class)).buildBannerAd(this.c);
+    this.b.setListener(new WeakReference(this.g));
+  }
+  
+  protected GdtAd b()
+  {
+    IGdtBannerAd localIGdtBannerAd = this.b;
+    if ((localIGdtBannerAd instanceof GdtAd)) {
+      return (GdtAd)localIGdtBannerAd;
+    }
+    return null;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -122,11 +122,11 @@ public class GdtBannerFragmentForJS
   
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
+    Object localObject = this.d;
     if (localObject != null) {
       ((GdtBannerView)localObject).c(getBaseActivity());
     }
-    localObject = this.jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonController;
+    localObject = this.f;
     if (localObject != null) {
       ((AdButtonController)localObject).onActivityDestoryed();
     }
@@ -135,7 +135,7 @@ public class GdtBannerFragmentForJS
   
   public void onPause()
   {
-    GdtBannerView localGdtBannerView = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
+    GdtBannerView localGdtBannerView = this.d;
     if (localGdtBannerView != null) {
       localGdtBannerView.a(getBaseActivity());
     }
@@ -145,11 +145,11 @@ public class GdtBannerFragmentForJS
   public void onResume()
   {
     super.onResume();
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
+    Object localObject = this.d;
     if (localObject != null) {
       ((GdtBannerView)localObject).b(getBaseActivity());
     }
-    localObject = this.jdField_a_of_type_ComTencentAdTangramViewsButtonAdButtonController;
+    localObject = this.f;
     if (localObject != null) {
       ((AdButtonController)localObject).onActivityResume();
     }
@@ -157,7 +157,7 @@ public class GdtBannerFragmentForJS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS
  * JD-Core Version:    0.7.0.1
  */

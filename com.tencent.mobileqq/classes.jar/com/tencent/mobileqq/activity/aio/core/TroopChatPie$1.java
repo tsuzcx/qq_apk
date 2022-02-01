@@ -18,8 +18,8 @@ class TroopChatPie$1
   
   public void run()
   {
-    TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    Object localObject = localTroopManager.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    TroopManager localTroopManager = (TroopManager)this.this$0.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    Object localObject = localTroopManager.w(this.this$0.ah.b);
     if (localObject != null)
     {
       long l = NetConnInfoCenter.getServerTime() + 2592000L;
@@ -27,24 +27,24 @@ class TroopChatPie$1
       while (((Iterator)localObject).hasNext())
       {
         TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject).next();
-        if ((localTroopMemberInfo.mUniqueTitleExpire > 0) && (localTroopMemberInfo.mUniqueTitleExpire - NetConnInfoCenter.getServerTime() < 259200L) && (!localTroopManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopMemberInfo.memberuin)))
+        if ((localTroopMemberInfo.mUniqueTitleExpire > 0) && (localTroopMemberInfo.mUniqueTitleExpire - NetConnInfoCenter.getServerTime() < 259200L) && (!localTroopManager.b(this.this$0.ah.b, localTroopMemberInfo.memberuin)))
         {
-          ((TroopTipsMsgMgr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.a(localTroopMemberInfo), NetConnInfoCenter.getServerTime(), localTroopMemberInfo.mUniqueTitleExpire, 0, 1);
-          localTroopManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopMemberInfo.memberuin, true);
-          ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_manage", "", "grp_aio", "exp_expire", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+          ((TroopTipsMsgMgr)this.this$0.d.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER)).a(this.this$0.ah.b, this.this$0.a(localTroopMemberInfo), NetConnInfoCenter.getServerTime(), localTroopMemberInfo.mUniqueTitleExpire, 0, 1);
+          localTroopManager.a(this.this$0.ah.b, localTroopMemberInfo.memberuin, true);
+          ReportController.b(this.this$0.d, "P_CliOper", "Grp_manage", "", "grp_aio", "exp_expire", 0, 0, this.this$0.ah.b, "", "", "");
         }
         else if ((localTroopMemberInfo.mUniqueTitleExpire != 0) && (localTroopMemberInfo.mUniqueTitleExpire != -1) && (localTroopMemberInfo.mUniqueTitleExpire < l))
         {
           l = localTroopMemberInfo.mUniqueTitleExpire;
         }
       }
-      localTroopManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l);
+      localTroopManager.a(this.this$0.ah.b, l);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,17 +24,17 @@ public class VideoDecoder
 {
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    if (paramDecodeProtoPkgContext.d) {
+    if (paramDecodeProtoPkgContext.j) {
       return;
     }
-    if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()) && (!paramDecodeProtoPkgContext.a) && (!paramDecodeProtoPkgContext.f))
+    if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()) && (!paramDecodeProtoPkgContext.g) && (!paramDecodeProtoPkgContext.l))
     {
       long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
       long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
       long l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
       long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
       long l5 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
-      Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
+      Long.valueOf(paramMessageHandler.n.getCurrentAccountUin()).longValue();
       paramMessageHandler = new StringBuilder();
       paramMessageHandler.append(l1);
       paramMessageHandler.append("-");
@@ -52,7 +52,7 @@ public class VideoDecoder
         QLog.d("VideoDecoder", 2, paramList.toString());
       }
       paramMessageHandler = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-      l2 = MessageCache.a() - l2;
+      l2 = MessageCache.c() - l2;
       int i = AVMsgUtil.a(paramMessageHandler);
       if (!VcSystemInfo.isSupportSharpAudio())
       {
@@ -108,16 +108,16 @@ public class VideoDecoder
       paramMessageHandler.append(",hasMsgContent");
       paramMessageHandler.append(((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
       paramMessageHandler.append(",isReaded:");
-      paramMessageHandler.append(paramDecodeProtoPkgContext.a);
+      paramMessageHandler.append(paramDecodeProtoPkgContext.g);
       paramMessageHandler.append("syncOther:");
-      paramMessageHandler.append(paramDecodeProtoPkgContext.f);
+      paramMessageHandler.append(paramDecodeProtoPkgContext.l);
       QLog.e("VideoDecoder", 2, paramMessageHandler.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.VideoDecoder
  * JD-Core Version:    0.7.0.1
  */

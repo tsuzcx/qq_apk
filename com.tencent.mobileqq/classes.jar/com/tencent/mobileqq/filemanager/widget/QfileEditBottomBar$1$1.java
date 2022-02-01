@@ -12,13 +12,13 @@ class QfileEditBottomBar$1$1
   
   public void run()
   {
-    ((IQQFileEngine)((BaseQQAppInterface)QfileEditBottomBar.a(this.a.a)).getRuntimeService(IQQFileEngine.class)).delAllSelectedFiles(false);
+    ((IQQFileEngine)((BaseQQAppInterface)QfileEditBottomBar.a(this.a.b)).getRuntimeService(IQQFileEngine.class)).delAllSelectedFiles(false);
     ThreadManager.getUIHandler().post(new QfileEditBottomBar.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar.1.1
  * JD-Core Version:    0.7.0.1
  */

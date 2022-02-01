@@ -10,7 +10,7 @@ public class CameraEmoConstant
   
   public static String a(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     paramString = paramString.split("_");
@@ -22,9 +22,9 @@ public class CameraEmoConstant
   
   public static String a(String paramString1, String paramString2)
   {
-    if ((!StringUtil.a(paramString1)) && (!StringUtil.a(paramString2)))
+    if ((!StringUtil.isEmpty(paramString1)) && (!StringUtil.isEmpty(paramString2)))
     {
-      paramString2 = MD5.a(paramString2);
+      paramString2 = MD5.b(paramString2);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(AppConstants.SDCARD_IMG_CAMERA_EMO);
       localStringBuilder.append(paramString2);
@@ -36,7 +36,7 @@ public class CameraEmoConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoConstant
  * JD-Core Version:    0.7.0.1
  */

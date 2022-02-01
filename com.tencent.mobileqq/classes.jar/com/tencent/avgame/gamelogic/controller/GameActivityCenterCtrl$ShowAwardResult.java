@@ -37,17 +37,17 @@ class GameActivityCenterCtrl$ShowAwardResult
   
   private void a(Context paramContext)
   {
-    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().a();
+    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().f();
     String str1 = localBaseAVGameAppInterface.getCurrentAccountUin();
-    EngineData localEngineData = GameEngine.a().a();
-    long l = localEngineData.a();
-    String str2 = localEngineData.a().getNick(str1);
-    AVGameShareUtil.a().a(localBaseAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localEngineData.d(), new GameActivityCenterCtrl.ShowAwardResult.1(this, paramContext, str2));
+    EngineData localEngineData = GameEngine.a().s();
+    long l = localEngineData.i();
+    String str2 = localEngineData.e().getNick(str1);
+    AVGameShareUtil.a().a(localBaseAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localEngineData.p(), new GameActivityCenterCtrl.ShowAwardResult.1(this, paramContext, str2));
   }
   
   public void run()
   {
-    Activity localActivity = GameActivityCenterCtrl.a(GameActivityCenterCtrl.a());
+    Activity localActivity = GameActivityCenterCtrl.c(GameActivityCenterCtrl.a());
     Object localObject = localActivity;
     if (localActivity == null) {
       localObject = BaseApplicationImpl.getContext();

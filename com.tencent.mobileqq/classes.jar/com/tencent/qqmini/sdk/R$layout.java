@@ -2,52 +2,52 @@ package com.tencent.qqmini.sdk;
 
 public final class R$layout
 {
-  public static final int mini_sdk_action_sheet = 2131559415;
-  public static final int mini_sdk_action_sheet_base = 2131559416;
-  public static final int mini_sdk_action_sheet_cancel_button = 2131559417;
-  public static final int mini_sdk_action_sheet_common_button = 2131559418;
-  public static final int mini_sdk_action_sheet_title = 2131559419;
-  public static final int mini_sdk_add_phone_number = 2131559421;
-  public static final int mini_sdk_app_close_dialog = 2131559422;
-  public static final int mini_sdk_appinfo_loading_layout = 2131559423;
-  public static final int mini_sdk_auth_detail_dialog = 2131559424;
-  public static final int mini_sdk_auth_detail_dialog_center = 2131559425;
-  public static final int mini_sdk_auth_detail_dialog_item_layout = 2131559426;
-  public static final int mini_sdk_auth_dialog = 2131559427;
-  public static final int mini_sdk_custom_commen_title = 2131559428;
-  public static final int mini_sdk_custom_dialog_for_delphonenumber = 2131559429;
-  public static final int mini_sdk_custom_dialog_list_item = 2131559430;
-  public static final int mini_sdk_custom_dialog_temp = 2131559431;
-  public static final int mini_sdk_fragment_activity = 2131559434;
-  public static final int mini_sdk_fragment_browser = 2131559435;
-  public static final int mini_sdk_full_screen_loading_bar = 2131559436;
-  public static final int mini_sdk_game_loading_layout = 2131559439;
-  public static final int mini_sdk_keyboard_confirm = 2131559440;
-  public static final int mini_sdk_loading_layout = 2131559442;
-  public static final int mini_sdk_loading_toast = 2131559443;
-  public static final int mini_sdk_main_page_dialog_layout = 2131559444;
-  public static final int mini_sdk_main_page_layout = 2131559445;
-  public static final int mini_sdk_midas_dialog_bg_corner = 2131559446;
-  public static final int mini_sdk_more_actionsheet_layout = 2131559447;
-  public static final int mini_sdk_more_item_view = 2131559448;
-  public static final int mini_sdk_once_sub_auth_dialog = 2131559450;
-  public static final int mini_sdk_once_sub_item_switcher = 2131559451;
-  public static final int mini_sdk_once_sub_item_title = 2131559452;
-  public static final int mini_sdk_permission_setting_layout = 2131559453;
-  public static final int mini_sdk_phone_number_auth_dialog = 2131559454;
-  public static final int mini_sdk_phone_number_manager = 2131559455;
-  public static final int mini_sdk_player_view = 2131559456;
-  public static final int mini_sdk_popup_monitor_layout = 2131559457;
-  public static final int mini_sdk_progress_dialog = 2131559458;
-  public static final int mini_sdk_submsg_permission_setting_layout = 2131559463;
-  public static final int mini_sdk_subscribe_permission_setting_layout = 2131559464;
-  public static final int mini_sdk_toast_main_layout = 2131559465;
-  public static final int mini_sdk_vconsole_layout = 2131559466;
-  public static final int mini_sdk_video_gesture_layout = 2131559467;
+  public static final int mini_sdk_action_sheet = com.tencent.qqmini.R.layout.a;
+  public static final int mini_sdk_action_sheet_base = com.tencent.qqmini.R.layout.b;
+  public static final int mini_sdk_action_sheet_cancel_button = com.tencent.qqmini.R.layout.c;
+  public static final int mini_sdk_action_sheet_common_button = com.tencent.qqmini.R.layout.d;
+  public static final int mini_sdk_action_sheet_title = com.tencent.qqmini.R.layout.e;
+  public static final int mini_sdk_add_phone_number = com.tencent.qqmini.R.layout.g;
+  public static final int mini_sdk_app_close_dialog = com.tencent.qqmini.R.layout.h;
+  public static final int mini_sdk_appinfo_loading_layout = com.tencent.qqmini.R.layout.i;
+  public static final int mini_sdk_auth_detail_dialog = com.tencent.qqmini.R.layout.j;
+  public static final int mini_sdk_auth_detail_dialog_center = com.tencent.qqmini.R.layout.k;
+  public static final int mini_sdk_auth_detail_dialog_item_layout = com.tencent.qqmini.R.layout.l;
+  public static final int mini_sdk_auth_dialog = com.tencent.qqmini.R.layout.m;
+  public static final int mini_sdk_custom_commen_title = com.tencent.qqmini.R.layout.n;
+  public static final int mini_sdk_custom_dialog_for_delphonenumber = com.tencent.qqmini.R.layout.o;
+  public static final int mini_sdk_custom_dialog_list_item = com.tencent.qqmini.R.layout.p;
+  public static final int mini_sdk_custom_dialog_temp = com.tencent.qqmini.R.layout.q;
+  public static final int mini_sdk_fragment_activity = com.tencent.qqmini.R.layout.t;
+  public static final int mini_sdk_fragment_browser = com.tencent.qqmini.R.layout.u;
+  public static final int mini_sdk_full_screen_loading_bar = com.tencent.qqmini.R.layout.v;
+  public static final int mini_sdk_game_loading_layout = com.tencent.qqmini.R.layout.y;
+  public static final int mini_sdk_keyboard_confirm = com.tencent.qqmini.R.layout.z;
+  public static final int mini_sdk_loading_layout = com.tencent.qqmini.R.layout.B;
+  public static final int mini_sdk_loading_toast = com.tencent.qqmini.R.layout.C;
+  public static final int mini_sdk_main_page_dialog_layout = com.tencent.qqmini.R.layout.D;
+  public static final int mini_sdk_main_page_layout = com.tencent.qqmini.R.layout.E;
+  public static final int mini_sdk_midas_dialog_bg_corner = com.tencent.qqmini.R.layout.F;
+  public static final int mini_sdk_more_actionsheet_layout = com.tencent.qqmini.R.layout.G;
+  public static final int mini_sdk_more_item_view = com.tencent.qqmini.R.layout.H;
+  public static final int mini_sdk_once_sub_auth_dialog = com.tencent.qqmini.R.layout.J;
+  public static final int mini_sdk_once_sub_item_switcher = com.tencent.qqmini.R.layout.K;
+  public static final int mini_sdk_once_sub_item_title = com.tencent.qqmini.R.layout.L;
+  public static final int mini_sdk_permission_setting_layout = com.tencent.qqmini.R.layout.M;
+  public static final int mini_sdk_phone_number_auth_dialog = com.tencent.qqmini.R.layout.N;
+  public static final int mini_sdk_phone_number_manager = com.tencent.qqmini.R.layout.O;
+  public static final int mini_sdk_player_view = com.tencent.qqmini.R.layout.P;
+  public static final int mini_sdk_popup_monitor_layout = com.tencent.qqmini.R.layout.Q;
+  public static final int mini_sdk_progress_dialog = com.tencent.qqmini.R.layout.R;
+  public static final int mini_sdk_submsg_permission_setting_layout = com.tencent.qqmini.R.layout.W;
+  public static final int mini_sdk_subscribe_permission_setting_layout = com.tencent.qqmini.R.layout.X;
+  public static final int mini_sdk_toast_main_layout = com.tencent.qqmini.R.layout.Y;
+  public static final int mini_sdk_vconsole_layout = com.tencent.qqmini.R.layout.Z;
+  public static final int mini_sdk_video_gesture_layout = com.tencent.qqmini.R.layout.aa;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.R.layout
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ final class IntimatePlayTogetherMiniGameCardView$2
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+    this.a.destory();
     if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
     {
       if (paramBitmap.isRecycled()) {
@@ -27,7 +27,7 @@ final class IntimatePlayTogetherMiniGameCardView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView.2
  * JD-Core Version:    0.7.0.1
  */

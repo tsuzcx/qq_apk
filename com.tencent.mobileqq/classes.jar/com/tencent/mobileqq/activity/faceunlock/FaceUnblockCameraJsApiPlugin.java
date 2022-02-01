@@ -24,13 +24,12 @@ import java.util.Arrays;
 public class FaceUnblockCameraJsApiPlugin
   extends WebViewPlugin
 {
-  public BroadcastReceiver a;
-  private String a;
+  public BroadcastReceiver a = new FaceUnblockCameraJsApiPlugin.1(this);
   private String b;
+  private String c;
   
   public FaceUnblockCameraJsApiPlugin()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new FaceUnblockCameraJsApiPlugin.1(this);
     this.mPluginNameSpace = "faceUnblockCamera";
   }
   
@@ -40,7 +39,7 @@ public class FaceUnblockCameraJsApiPlugin
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("edit_video_type", 10025);
-      localBundle.putInt("VIDEO_STORY_FROM_TYPE", AECameraEntry.M.a());
+      localBundle.putInt("VIDEO_STORY_FROM_TYPE", AECameraEntry.O.a());
       localBundle.putInt("entrance_type", 132);
       localBundle.putBoolean("enable_local_video", false);
       localBundle.putBoolean("PeakConstants.ARG_BEAUTY", false);
@@ -58,9 +57,9 @@ public class FaceUnblockCameraJsApiPlugin
       return;
     }
     QLog.d("FaceUnblockCameraJsApiPlugin", 1, "openQIMCameraCaptureActivity failed: not support media codec");
-    this.b = ShortVideoUtils.getLocalShortVideoPath();
+    this.c = ShortVideoUtils.getLocalShortVideoPath();
     paramActivity = new Intent("android.media.action.VIDEO_CAPTURE");
-    paramActivity.putExtra("output", Uri.fromFile(new File(this.b)));
+    paramActivity.putExtra("output", Uri.fromFile(new File(this.c)));
     paramActivity.putExtra("android.intent.extra.videoQuality", 1);
     startActivityForResult(paramActivity, (byte)0);
   }
@@ -97,9 +96,9 @@ public class FaceUnblockCameraJsApiPlugin
           paramJsBridgeListener.append(paramVarArgs);
           QLog.d("FaceUnblockCameraJsApiPlugin", 2, paramJsBridgeListener.toString());
         }
-        this.jdField_a_of_type_JavaLangString = paramString1.split("#")[1];
+        this.b = paramString1.split("#")[1];
         if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-          a(this.mRuntime.a(), paramVarArgs[0]);
+          a(this.mRuntime.d(), paramVarArgs[0]);
         }
       }
       return true;
@@ -115,7 +114,7 @@ public class FaceUnblockCameraJsApiPlugin
       if (QLog.isColorLevel()) {
         QLog.i("FaceUnblockCameraJsApiPlugin", 2, "onActivityResult: RESULT_OK, doParseData");
       }
-      a(this.b);
+      a(this.c);
     }
   }
   
@@ -124,18 +123,18 @@ public class FaceUnblockCameraJsApiPlugin
     super.onCreate();
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.mobileqq.FaceUnblockCameraJsApiPlugin");
-    this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.mRuntime.d().registerReceiver(this.a, localIntentFilter);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.mRuntime.d().unregisterReceiver(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.faceunlock.FaceUnblockCameraJsApiPlugin
  * JD-Core Version:    0.7.0.1
  */

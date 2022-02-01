@@ -20,16 +20,16 @@ class QavDoubleVideoSharpnessMangaer$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = QavDoubleVideoSharpnessMangaer.a(this.a).a();
+    boolean bool = QavDoubleVideoSharpnessMangaer.c(this.a).b();
     if (paramMotionEvent.getAction() != 0) {
       return false;
     }
     int i = Calendar.getInstance().get(11) * 60 + Calendar.getInstance().get(12);
-    if (paramView.getId() == 2131373599)
+    if (paramView.getId() == 2131441264)
     {
       QavDoubleVideoSharpnessMangaer.a(this.a, 0);
     }
-    else if (paramView.getId() == 2131373602)
+    else if (paramView.getId() == 2131441267)
     {
       QavDoubleVideoSharpnessMangaer.a(this.a, 1);
     }
@@ -39,24 +39,24 @@ class QavDoubleVideoSharpnessMangaer$2
       paramMotionEvent.append("hdModeFreeUse. curMinute = ");
       paramMotionEvent.append(i);
       paramMotionEvent.append(", startTime = ");
-      paramMotionEvent.append(QavDoubleVideoSharpnessMangaer.a(this.a).a().x);
+      paramMotionEvent.append(QavDoubleVideoSharpnessMangaer.a(this.a).k().aj);
       paramMotionEvent.append(", endTime = ");
-      paramMotionEvent.append(QavDoubleVideoSharpnessMangaer.a(this.a).a().y);
+      paramMotionEvent.append(QavDoubleVideoSharpnessMangaer.a(this.a).k().ak);
       paramMotionEvent.append(", tips = ");
-      paramMotionEvent.append(QavDoubleVideoSharpnessMangaer.a(this.a).a().m);
+      paramMotionEvent.append(QavDoubleVideoSharpnessMangaer.a(this.a).k().al);
       QLog.i("QavDoubleVideoSharpnessMangaer", 1, paramMotionEvent.toString());
-      if ((!bool) && ((QavDoubleVideoSharpnessMangaer.a(this.a).a().x > i) || (i >= QavDoubleVideoSharpnessMangaer.a(this.a).a().y)))
+      if ((!bool) && ((QavDoubleVideoSharpnessMangaer.a(this.a).k().aj > i) || (i >= QavDoubleVideoSharpnessMangaer.a(this.a).k().ak)))
       {
         QavDoubleVideoSharpnessMangaer.a(this.a, true);
-        if (paramView.getId() == 2131373609) {
+        if (paramView.getId() == 2131441274) {
           QavDoubleVideoSharpnessMangaer.b(this.a, 2);
         } else {
           QavDoubleVideoSharpnessMangaer.b(this.a, 3);
         }
         paramView = new QavDoubleVideoSharpnessMangaer.2.1(this);
-        if ((QavDoubleVideoSharpnessMangaer.a(this.a).a().x > i) || (i >= QavDoubleVideoSharpnessMangaer.a(this.a).a().y))
+        if ((QavDoubleVideoSharpnessMangaer.a(this.a).k().aj > i) || (i >= QavDoubleVideoSharpnessMangaer.a(this.a).k().ak))
         {
-          paramView = DialogUtil.a(QavDoubleVideoSharpnessMangaer.a(this.a), 0, HardCodeUtil.a(2131708894), null, HardCodeUtil.a(2131708895), HardCodeUtil.a(2131708896), paramView, paramView);
+          paramView = DialogUtil.a(QavDoubleVideoSharpnessMangaer.d(this.a), 0, HardCodeUtil.a(2131906665), null, HardCodeUtil.a(2131898212), HardCodeUtil.a(2131906666), paramView, paramView);
           if (paramView != null) {
             paramView.show();
           }
@@ -64,36 +64,36 @@ class QavDoubleVideoSharpnessMangaer$2
         ReportController.b(null, "CliOper", "", "", "0X800A562", "0X800A562", 0, 0, "", "", "", "");
         return false;
       }
-      if (paramView.getId() == 2131373609) {
+      if (paramView.getId() == 2131441274) {
         QavDoubleVideoSharpnessMangaer.a(this.a, 2);
       } else {
         QavDoubleVideoSharpnessMangaer.a(this.a, 3);
       }
     }
-    if (((QavDoubleVideoSharpnessMangaer.a(this.a).a().w == 2) || (QavDoubleVideoSharpnessMangaer.a(this.a).a().w == 3)) && (QavDoubleVideoSharpnessMangaer.b(this.a) != 2) && (QavDoubleVideoSharpnessMangaer.b(this.a) != 3) && (!bool) && (UITools.b()))
+    if (((QavDoubleVideoSharpnessMangaer.a(this.a).k().ai == 2) || (QavDoubleVideoSharpnessMangaer.a(this.a).k().ai == 3)) && (QavDoubleVideoSharpnessMangaer.e(this.a) != 2) && (QavDoubleVideoSharpnessMangaer.e(this.a) != 3) && (!bool) && (UITools.b()))
     {
       QavDoubleVideoSharpnessMangaer.a(this.a, true);
       paramView = new QavDoubleVideoSharpnessMangaer.2.2(this);
-      if ((QavDoubleVideoSharpnessMangaer.a(this.a).a().x <= i) && (i < QavDoubleVideoSharpnessMangaer.a(this.a).a().y))
+      if ((QavDoubleVideoSharpnessMangaer.a(this.a).k().aj <= i) && (i < QavDoubleVideoSharpnessMangaer.a(this.a).k().ak))
       {
         this.a.c();
         QavDoubleVideoSharpnessMangaer.a(this.a, false);
-        QavDoubleVideoSharpnessMangaer.a(this.a);
+        QavDoubleVideoSharpnessMangaer.f(this.a);
       }
       else
       {
-        paramView = DialogUtil.a(QavDoubleVideoSharpnessMangaer.a(this.a), 0, null, HardCodeUtil.a(2131708900), HardCodeUtil.a(2131708898), HardCodeUtil.a(2131708897), paramView, paramView);
+        paramView = DialogUtil.a(QavDoubleVideoSharpnessMangaer.d(this.a), 0, null, HardCodeUtil.a(2131906669), HardCodeUtil.a(2131898212), HardCodeUtil.a(2131906667), paramView, paramView);
         if (paramView != null)
         {
           paramView.show();
-          UITools.a();
+          UITools.c();
         }
       }
       ReportController.b(null, "CliOper", "", "", "0X800A564", "0X800A564", 0, 0, "", "", "", "");
       return false;
     }
-    QavDoubleVideoSharpnessMangaer.a(this.a);
-    ReportController.b(null, "CliOper", "", "", "0X800A344", "0X800A344", QavDoubleVideoSharpnessMangaer.b(this.a) + 1, 0, "", "", "", "");
+    QavDoubleVideoSharpnessMangaer.f(this.a);
+    ReportController.b(null, "CliOper", "", "", "0X800A344", "0X800A344", QavDoubleVideoSharpnessMangaer.e(this.a) + 1, 0, "", "", "", "");
     return false;
   }
 }

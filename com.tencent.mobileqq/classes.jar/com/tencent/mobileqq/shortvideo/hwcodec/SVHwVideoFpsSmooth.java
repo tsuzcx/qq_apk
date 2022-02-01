@@ -2,54 +2,54 @@ package com.tencent.mobileqq.shortvideo.hwcodec;
 
 public class SVHwVideoFpsSmooth
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private long jdField_a_of_type_Long = 0L;
-  private float jdField_b_of_type_Float = 0.0F;
-  private long jdField_b_of_type_Long = 0L;
-  private float jdField_c_of_type_Float = 0.0F;
-  private long jdField_c_of_type_Long = 0L;
-  
-  public long a(float paramFloat)
-  {
-    this.jdField_b_of_type_Long += (paramFloat * 1000.0F);
-    return this.jdField_b_of_type_Long;
-  }
+  private long a = 0L;
+  private long b = 0L;
+  private long c = 0L;
+  private float d = 0.0F;
+  private float e = 0.0F;
+  private float f = 0.0F;
   
   public long a(long paramLong)
   {
-    if (this.jdField_a_of_type_Long == 0L)
+    if (this.a == 0L)
     {
       long l = paramLong * 1000L;
-      this.jdField_a_of_type_Long = l;
-      this.jdField_b_of_type_Long = l;
-      this.jdField_c_of_type_Long = paramLong;
+      this.a = l;
+      this.b = l;
+      this.c = paramLong;
     }
     return paramLong * 1000L;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
+    this.a = 0L;
+    this.b = 0L;
+    this.c = 0L;
+    this.d = 0.0F;
+    this.e = 0.0F;
+    this.f = 0.0F;
   }
   
   public void a(float paramFloat)
   {
-    double d = paramFloat;
-    Double.isNaN(d);
-    this.jdField_a_of_type_Float = ((float)(1000.0D / d));
-    paramFloat = this.jdField_a_of_type_Float;
-    this.jdField_b_of_type_Float = (0.3F + paramFloat);
-    this.jdField_c_of_type_Float = (paramFloat - 0.7F);
+    double d1 = paramFloat;
+    Double.isNaN(d1);
+    this.d = ((float)(1000.0D / d1));
+    paramFloat = this.d;
+    this.e = (0.3F + paramFloat);
+    this.f = (paramFloat - 0.7F);
+  }
+  
+  public long b(float paramFloat)
+  {
+    this.b += (paramFloat * 1000.0F);
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.hwcodec.SVHwVideoFpsSmooth
  * JD-Core Version:    0.7.0.1
  */

@@ -47,164 +47,278 @@ import org.json.JSONObject;
 public class SwiftBrowserStatistics
   extends SwiftBrowserComponentsProvider.SwiftBrowserComponent
 {
-  public static long B = 0L;
-  public static long C = 0L;
-  public static long D = 0L;
   public static long E = 0L;
-  public static long V = 0L;
-  public static long W = 0L;
-  public static long X = 0L;
-  public static long Y = 0L;
-  public static long Z = 0L;
-  public static HashMap<String, SwiftBrowserStatistics.AntiPasswdUsage> a;
-  public static long aa = 0L;
-  public static long ab = 0L;
-  public static boolean b = false;
-  public static int d = 10;
-  public static volatile boolean o = false;
-  public static volatile boolean p = false;
-  public static volatile boolean q = false;
-  public static boolean u;
-  public static boolean v;
-  public static boolean w;
+  public static long F = 0L;
+  public static long G = 0L;
+  public static boolean H = false;
+  public static long I = 0L;
+  public static volatile boolean aC = false;
+  public static volatile boolean aD = false;
+  public static volatile boolean aE = false;
+  public static int aJ = 10;
+  public static boolean aL = SwiftBrowserStatisticsConfigUtils.b(1, false);
+  public static boolean aM = SwiftBrowserStatisticsConfigUtils.b(2, false);
+  public static boolean aN = SwiftBrowserStatisticsConfigUtils.b(4, false);
+  public static HashMap<String, SwiftBrowserStatistics.AntiPasswdUsage> aX = new HashMap();
+  public static long ac;
+  public static long ad;
+  public static long ae;
+  public static long af;
+  public static long ag;
+  public static long ah;
+  public static long ai;
   public long A = 0L;
-  public long F = 0L;
-  public long G = 0L;
-  public long H = 0L;
-  public long I = 0L;
+  public long B = 0L;
+  public long C = 0L;
+  public long D = 0L;
   public long J = 0L;
   public long K = 0L;
   public long L = 0L;
   public long M = 0L;
-  public long N = 0L;
-  public long O = 0L;
+  public String N;
+  public boolean O = false;
   public long P = 0L;
-  public long Q = 0L;
+  public boolean Q = false;
   public long R = 0L;
   public long S = 0L;
   public long T = 0L;
   public long U = 0L;
-  public int a;
-  public long a;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  private SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(8);
-  public SwiftBrowserStatistics.CrashStepStatsEntry a;
-  private ISwiftBrowserStatisticInjector jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserStatisticInjector;
-  public Runnable a;
-  public String a;
-  public List<String> a;
-  public JSONObject a;
-  public boolean a;
-  public long ac = 0L;
-  public long ad = 0L;
-  public long ae = 0L;
-  public long af = 0L;
-  public int b;
-  public long b;
-  public String b;
-  private HashMap<String, Long> b;
-  public int c;
+  public long V = 0L;
+  public long W = 0L;
+  public long X = 0L;
+  public long Y = 0L;
+  public long Z = 0L;
+  public long a = 0L;
+  boolean aA;
+  public boolean aB = false;
+  public boolean aF = false;
+  public boolean aG = false;
+  public boolean aH = false;
+  public JSONObject aI = null;
+  public List<String> aK = new ArrayList();
+  public String aO;
+  public String aP;
+  public int aQ = 0;
+  public String aR = "";
+  public boolean aS = false;
+  public boolean aT = false;
+  public boolean aU = false;
+  Activity aV;
+  public SwiftBrowserStatistics.CrashStepStatsEntry aW = new SwiftBrowserStatistics.CrashStepStatsEntry();
+  private SparseArray<String> aY = new SparseArray(8);
+  private HashMap<String, Long> aZ = new HashMap(7);
+  public long aa = 0L;
+  public long ab = 0L;
+  public long aj = 0L;
+  public long ak = 0L;
+  public long al = 0L;
+  public long am = 0L;
+  public int an = -1;
+  public boolean ao = false;
+  public boolean ap = false;
+  public boolean aq = true;
+  public int ar = 0;
+  public boolean as = false;
+  public boolean at = true;
+  public boolean au = true;
+  public boolean av;
+  public String aw;
+  public int ax = 0;
+  public boolean ay = false;
+  public Runnable az;
+  private String ba = "state_activity_init";
+  private ISwiftBrowserStatisticInjector bb;
   public long c;
-  public String c;
-  public boolean c;
   public long d;
-  public String d;
-  public boolean d;
-  public int e;
   public long e;
-  public String e;
-  public boolean e;
-  public long f;
-  public String f;
-  public boolean f;
-  public long g;
-  private String g;
-  public boolean g;
+  public boolean f = false;
+  public String g = "";
   public long h;
-  public boolean h = false;
   public long i;
-  public boolean i;
   public long j;
-  public boolean j = true;
-  public long k = 0L;
-  public boolean k;
+  public long k;
   public long l;
-  public boolean l;
-  public long m = 0L;
-  boolean m;
-  public long n;
-  public boolean n;
+  public long m;
+  public long n = 0L;
   public long o = 0L;
-  public long p;
+  public long p = 0L;
   public long q = 0L;
-  public long r;
-  public boolean r;
-  public long s;
-  public boolean s;
-  public long t;
-  public boolean t;
-  public long u;
-  public long v;
-  public long w;
-  public long x;
-  public boolean x;
-  public long y;
-  public boolean y;
-  public long z;
-  public boolean z;
+  public long r = 0L;
+  public long s = 0L;
+  public long t = 0L;
+  public long u = -1L;
+  public long v = 0L;
+  public long w = 0L;
+  public long x = -1L;
+  public long y = 0L;
+  public long z = 0L;
   
-  static
+  private void a(Context paramContext, String paramString1, Intent paramIntent, long paramLong, String paramString2)
   {
-    jdField_u_of_type_Boolean = SwiftBrowserStatisticsConfigUtils.b(1, false);
-    jdField_v_of_type_Boolean = SwiftBrowserStatisticsConfigUtils.b(2, false);
-    jdField_w_of_type_Boolean = SwiftBrowserStatisticsConfigUtils.b(4, false);
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    ThreadManager.post(new SwiftBrowserStatistics.3(this, paramString1, paramIntent, paramContext, paramLong, paramString2), 5, null, false);
   }
   
-  public SwiftBrowserStatistics()
+  public static void a(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_l_of_type_Long = 0L;
-    this.jdField_n_of_type_Long = 0L;
-    this.jdField_p_of_type_Long = 0L;
-    this.jdField_r_of_type_Long = -1L;
-    this.jdField_s_of_type_Long = 0L;
-    this.jdField_t_of_type_Long = 0L;
-    this.jdField_u_of_type_Long = -1L;
-    this.jdField_v_of_type_Long = 0L;
-    this.jdField_w_of_type_Long = 0L;
-    this.jdField_x_of_type_Long = 0L;
-    this.jdField_y_of_type_Long = 0L;
-    this.jdField_z_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap(7);
-    this.jdField_g_of_type_JavaLangString = "state_activity_init";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_i_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_l_of_type_Boolean = false;
-    this.jdField_n_of_type_Boolean = false;
-    this.jdField_r_of_type_Boolean = false;
-    this.jdField_s_of_type_Boolean = false;
-    this.jdField_t_of_type_Boolean = false;
-    this.jdField_a_of_type_OrgJsonJSONObject = null;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_x_of_type_Boolean = false;
-    this.jdField_y_of_type_Boolean = false;
-    this.jdField_z_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics$CrashStepStatsEntry = new SwiftBrowserStatistics.CrashStepStatsEntry();
+    String str = SwiftWebViewUtils.b(paramString1);
+    if (!"http".equals(str))
+    {
+      if ("https".equals(str)) {
+        return;
+      }
+      if (!aN) {
+        return;
+      }
+      Object localObject;
+      if (paramString2 == null) {
+        localObject = null;
+      } else {
+        localObject = Uri.parse(paramString2);
+      }
+      if (localObject == null) {
+        paramString2 = "";
+      } else {
+        paramString2 = ((Uri)localObject).getHost();
+      }
+      if (localObject == null) {
+        localObject = "";
+      } else {
+        localObject = ((Uri)localObject).getPath();
+      }
+      ReportController.b(null, "dc00899", "WV_Analysis", "", "scheme_call", "total", paramInt, 0, paramString2, (String)localObject, str, SwiftWebViewUtils.e(paramString1));
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserStatistics", 2, new Object[] { "reportScheme ", str, " method:", SwiftWebViewUtils.e(paramString1) });
+      }
+    }
   }
   
-  public static Bundle a(String paramString)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    try
+    {
+      if ((TextUtils.isEmpty(paramString2)) && (QLog.isColorLevel()))
+      {
+        QLog.d("SwiftBrowserStatistics", 2, "curUrl is null");
+        return;
+      }
+      if (!aX.containsKey(paramString2)) {
+        aX.put(paramString2, new SwiftBrowserStatistics.AntiPasswdUsage());
+      }
+      SwiftBrowserStatistics.AntiPasswdUsage localAntiPasswdUsage = (SwiftBrowserStatistics.AntiPasswdUsage)aX.get(paramString2);
+      localAntiPasswdUsage.b = paramString2;
+      if (!TextUtils.isEmpty(paramString1)) {
+        localAntiPasswdUsage.a = paramString1;
+      }
+      if (!TextUtils.isEmpty(paramString3)) {
+        localAntiPasswdUsage.c = paramString3;
+      }
+      if (!TextUtils.isEmpty(paramString4)) {
+        localAntiPasswdUsage.d = paramString4;
+      }
+      if (paramBoolean1) {
+        localAntiPasswdUsage.e = paramBoolean1;
+      }
+      if (paramBoolean2) {
+        localAntiPasswdUsage.f = paramBoolean2;
+      }
+      localAntiPasswdUsage.g = paramBoolean3;
+      aX.put(paramString2, localAntiPasswdUsage);
+      return;
+    }
+    finally {}
+  }
+  
+  public static void c()
+  {
+    for (;;)
+    {
+      try
+      {
+        Object localObject = aX;
+        aX = new HashMap();
+        localObject = ((HashMap)localObject).values();
+        if (localObject != null)
+        {
+          Iterator localIterator = ((Collection)localObject).iterator();
+          if (localIterator.hasNext())
+          {
+            SwiftBrowserStatistics.AntiPasswdUsage localAntiPasswdUsage = (SwiftBrowserStatistics.AntiPasswdUsage)localIterator.next();
+            HashMap localHashMap = new HashMap();
+            localHashMap.put("originUrl", localAntiPasswdUsage.a);
+            localHashMap.put("curUrl", localAntiPasswdUsage.b);
+            if (!TextUtils.isEmpty(localAntiPasswdUsage.c)) {
+              localHashMap.put("recognisedText", localAntiPasswdUsage.c);
+            }
+            boolean bool = localAntiPasswdUsage.e;
+            String str2 = "1";
+            if (bool) {
+              localObject = "1";
+            } else {
+              localObject = "0";
+            }
+            localHashMap.put("passwdTyped", localObject);
+            if (!localAntiPasswdUsage.f) {
+              break label225;
+            }
+            localObject = str2;
+            localHashMap.put("showPasswd", localObject);
+            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "wvAntiPasswd", true, 0L, 0L, localHashMap, "");
+            continue;
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("SwiftBrowserStatistics", 2, "nothing to report");
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("SwiftBrowserStatistics", 2, localThrowable, new Object[0]);
+      }
+      return;
+      label225:
+      String str1 = "0";
+    }
+  }
+  
+  public static String f(String paramString)
+  {
+    if (paramString == null) {
+      return "null";
+    }
+    int i1 = paramString.indexOf('?');
+    int i2 = paramString.indexOf('#');
+    if (i1 == -1)
+    {
+      if (i2 == -1) {
+        i1 = paramString.length();
+      } else {
+        i1 = i2;
+      }
+    }
+    else if (i2 != -1) {
+      i1 = Math.min(i1, i2);
+    }
+    if (i1 == 0) {
+      return "null";
+    }
+    return paramString.substring(0, i1);
+  }
+  
+  public static boolean g(String paramString)
+  {
+    String str = SwiftWebViewUtils.b(paramString);
+    if ((!"null".equals(paramString)) && (paramString.length() <= 1024) && (("http".equals(str)) || ("https".equals(str)))) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SwiftBrowserStatistics", 2, new Object[] { "not report url:", paramString });
+    }
+    return false;
+  }
+  
+  public static Bundle h(String paramString)
   {
     for (;;)
     {
@@ -232,12 +346,12 @@ public class SwiftBrowserStatistics
         if (bool) {
           return localBundle;
         }
-        if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+        if (aX.containsKey(paramString))
         {
-          paramString = (SwiftBrowserStatistics.AntiPasswdUsage)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          if (paramString.jdField_c_of_type_JavaLangString != null)
+          paramString = (SwiftBrowserStatistics.AntiPasswdUsage)aX.get(paramString);
+          if (paramString.c != null)
           {
-            String[] arrayOfString = paramString.jdField_c_of_type_JavaLangString.split(",");
+            String[] arrayOfString = paramString.c.split(",");
             ArrayList localArrayList = new ArrayList(arrayOfString.length);
             int i2 = arrayOfString.length;
             i1 = 0;
@@ -249,20 +363,20 @@ public class SwiftBrowserStatistics
             }
             localBundle.putStringArrayList("text_features", localArrayList);
           }
-          if (TextUtils.isEmpty(paramString.jdField_d_of_type_JavaLangString)) {
-            localBundle.putString("inputText", paramString.jdField_d_of_type_JavaLangString);
+          if (TextUtils.isEmpty(paramString.d)) {
+            localBundle.putString("inputText", paramString.d);
           }
-          if (!paramString.jdField_b_of_type_Boolean) {
+          if (!paramString.f) {
             continue;
           }
           i1 = 1;
           localBundle.putInt("passwdShow", i1);
-          if (!paramString.jdField_a_of_type_Boolean) {
+          if (!paramString.e) {
             continue;
           }
           i1 = 1;
           localBundle.putInt("passwdInput", i1);
-          if (!paramString.jdField_c_of_type_Boolean) {
+          if (!paramString.g) {
             continue;
           }
           i1 = 1;
@@ -277,172 +391,12 @@ public class SwiftBrowserStatistics
     return localBundle;
   }
   
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return "null";
-    }
-    int i1 = paramString.indexOf('?');
-    int i2 = paramString.indexOf('#');
-    if (i1 == -1)
-    {
-      if (i2 == -1) {
-        i1 = paramString.length();
-      } else {
-        i1 = i2;
-      }
-    }
-    else if (i2 != -1) {
-      i1 = Math.min(i1, i2);
-    }
-    if (i1 == 0) {
-      return "null";
-    }
-    return paramString.substring(0, i1);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    String str = SwiftWebViewUtils.b(paramString1);
-    if (!"http".equals(str))
-    {
-      if ("https".equals(str)) {
-        return;
-      }
-      if (!jdField_w_of_type_Boolean) {
-        return;
-      }
-      Object localObject;
-      if (paramString2 == null) {
-        localObject = null;
-      } else {
-        localObject = Uri.parse(paramString2);
-      }
-      if (localObject == null) {
-        paramString2 = "";
-      } else {
-        paramString2 = ((Uri)localObject).getHost();
-      }
-      if (localObject == null) {
-        localObject = "";
-      } else {
-        localObject = ((Uri)localObject).getPath();
-      }
-      ReportController.b(null, "dc00899", "WV_Analysis", "", "scheme_call", "total", paramInt, 0, paramString2, (String)localObject, str, SwiftWebViewUtils.d(paramString1));
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserStatistics", 2, new Object[] { "reportScheme ", str, " method:", SwiftWebViewUtils.d(paramString1) });
-      }
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    try
-    {
-      if ((TextUtils.isEmpty(paramString2)) && (QLog.isColorLevel()))
-      {
-        QLog.d("SwiftBrowserStatistics", 2, "curUrl is null");
-        return;
-      }
-      if (!jdField_a_of_type_JavaUtilHashMap.containsKey(paramString2)) {
-        jdField_a_of_type_JavaUtilHashMap.put(paramString2, new SwiftBrowserStatistics.AntiPasswdUsage());
-      }
-      SwiftBrowserStatistics.AntiPasswdUsage localAntiPasswdUsage = (SwiftBrowserStatistics.AntiPasswdUsage)jdField_a_of_type_JavaUtilHashMap.get(paramString2);
-      localAntiPasswdUsage.jdField_b_of_type_JavaLangString = paramString2;
-      if (!TextUtils.isEmpty(paramString1)) {
-        localAntiPasswdUsage.jdField_a_of_type_JavaLangString = paramString1;
-      }
-      if (!TextUtils.isEmpty(paramString3)) {
-        localAntiPasswdUsage.jdField_c_of_type_JavaLangString = paramString3;
-      }
-      if (!TextUtils.isEmpty(paramString4)) {
-        localAntiPasswdUsage.jdField_d_of_type_JavaLangString = paramString4;
-      }
-      if (paramBoolean1) {
-        localAntiPasswdUsage.jdField_a_of_type_Boolean = paramBoolean1;
-      }
-      if (paramBoolean2) {
-        localAntiPasswdUsage.jdField_b_of_type_Boolean = paramBoolean2;
-      }
-      localAntiPasswdUsage.jdField_c_of_type_Boolean = paramBoolean3;
-      jdField_a_of_type_JavaUtilHashMap.put(paramString2, localAntiPasswdUsage);
-      return;
-    }
-    finally {}
-  }
-  
-  public static boolean a(String paramString)
-  {
-    String str = SwiftWebViewUtils.b(paramString);
-    if ((!"null".equals(paramString)) && (paramString.length() <= 1024) && (("http".equals(str)) || ("https".equals(str)))) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SwiftBrowserStatistics", 2, new Object[] { "not report url:", paramString });
-    }
-    return false;
-  }
-  
-  public static void c()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject = jdField_a_of_type_JavaUtilHashMap;
-        jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        localObject = ((HashMap)localObject).values();
-        if (localObject != null)
-        {
-          Iterator localIterator = ((Collection)localObject).iterator();
-          if (localIterator.hasNext())
-          {
-            SwiftBrowserStatistics.AntiPasswdUsage localAntiPasswdUsage = (SwiftBrowserStatistics.AntiPasswdUsage)localIterator.next();
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("originUrl", localAntiPasswdUsage.jdField_a_of_type_JavaLangString);
-            localHashMap.put("curUrl", localAntiPasswdUsage.jdField_b_of_type_JavaLangString);
-            if (!TextUtils.isEmpty(localAntiPasswdUsage.jdField_c_of_type_JavaLangString)) {
-              localHashMap.put("recognisedText", localAntiPasswdUsage.jdField_c_of_type_JavaLangString);
-            }
-            boolean bool = localAntiPasswdUsage.jdField_a_of_type_Boolean;
-            String str2 = "1";
-            if (bool) {
-              localObject = "1";
-            } else {
-              localObject = "0";
-            }
-            localHashMap.put("passwdTyped", localObject);
-            if (!localAntiPasswdUsage.jdField_b_of_type_Boolean) {
-              break label225;
-            }
-            localObject = str2;
-            localHashMap.put("showPasswd", localObject);
-            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "wvAntiPasswd", true, 0L, 0L, localHashMap, "");
-            continue;
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("SwiftBrowserStatistics", 2, "nothing to report");
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("SwiftBrowserStatistics", 2, localThrowable, new Object[0]);
-      }
-      return;
-      label225:
-      String str1 = "0";
-    }
-  }
-  
   public String a(TouchWebView paramTouchWebView)
   {
     paramTouchWebView = paramTouchWebView.getPluginEngine();
     if (paramTouchWebView != null)
     {
-      paramTouchWebView = paramTouchWebView.a("offline");
+      paramTouchWebView = paramTouchWebView.b("offline");
       if ((paramTouchWebView != null) && ((paramTouchWebView instanceof OfflinePlugin)))
       {
         paramTouchWebView = (OfflinePlugin)paramTouchWebView;
@@ -451,8 +405,8 @@ public class SwiftBrowserStatistics
     }
     paramTouchWebView = null;
     label38:
-    if ((paramTouchWebView != null) && (paramTouchWebView.a() != null)) {
-      return paramTouchWebView.a();
+    if ((paramTouchWebView != null) && (paramTouchWebView.d() != null)) {
+      return paramTouchWebView.d();
     }
     return "";
   }
@@ -460,8 +414,8 @@ public class SwiftBrowserStatistics
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserStatisticInjector = SwiftBrowserStatisticInjectorUtil.a();
+    this.aV = this.b.b();
+    this.bb = SwiftBrowserStatisticInjectorUtil.a();
   }
   
   public void a(int paramInt, Bundle paramBundle)
@@ -471,7 +425,7 @@ public class SwiftBrowserStatistics
   
   void a(Context paramContext, SwiftBrowserStatistics.CrashStepStatsEntry paramCrashStepStatsEntry)
   {
-    Object localObject = ClubContentJsonTask.e.jdField_a_of_type_JavaLangString;
+    Object localObject = ClubContentJsonTask.e.a;
     paramContext = new File(paramContext.getFilesDir(), (String)localObject);
     if (!paramContext.exists()) {
       return;
@@ -484,17 +438,17 @@ public class SwiftBrowserStatistics
     {
       paramContext = new JSONObject(paramContext);
       int i1 = paramContext.getInt("sample_rate");
-      SwiftBrowserStatistics.CrashStepStatsEntry.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(i1));
+      SwiftBrowserStatistics.CrashStepStatsEntry.e.put("sample_rate", Integer.valueOf(i1));
       localObject = paramContext.getJSONArray("rules");
       int i2 = ((JSONArray)localObject).length();
       i1 = 0;
       while (i1 < i2)
       {
         JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i1);
-        SwiftBrowserStatistics.CrashStepStatsEntry.jdField_a_of_type_JavaUtilHashMap.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
+        SwiftBrowserStatistics.CrashStepStatsEntry.e.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
         i1 += 1;
       }
-      paramCrashStepStatsEntry.jdField_c_of_type_Int = paramContext.getInt("tail_number");
+      paramCrashStepStatsEntry.f = paramContext.getInt("tail_number");
       return;
     }
     catch (Throwable paramContext)
@@ -514,8 +468,8 @@ public class SwiftBrowserStatistics
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics$CrashStepStatsEntry.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics$CrashStepStatsEntry.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("WebView_Report_Step", 0);
+    if (this.aW.a == null) {
+      this.aW.a = paramContext.getSharedPreferences("WebView_Report_Step", 0);
     }
     str3 = "UNKNOWN";
     try
@@ -538,7 +492,7 @@ public class SwiftBrowserStatistics
         String str2 = str3;
       }
     }
-    ThreadManager.post(new SwiftBrowserStatistics.3(this, paramString, paramIntent, paramContext, System.currentTimeMillis(), str1), 5, null, false);
+    a(paramContext, paramString, paramIntent, System.currentTimeMillis(), str1);
   }
   
   public void a(Intent paramIntent, String paramString)
@@ -561,10 +515,10 @@ public class SwiftBrowserStatistics
       i1 = 1;
     }
     int i2 = 0;
-    while (i2 < this.jdField_a_of_type_JavaUtilList.size())
+    while (i2 < this.aK.size())
     {
-      String str1 = (String)this.jdField_a_of_type_JavaUtilList.get(i2);
-      if (i2 == this.jdField_a_of_type_JavaUtilList.size() - 1) {
+      String str1 = (String)this.aK.get(i2);
+      if (i2 == this.aK.size() - 1) {
         localObject1 = String.valueOf(paramInt);
       } else {
         localObject1 = "10001";
@@ -575,7 +529,7 @@ public class SwiftBrowserStatistics
       } else {
         localObject2 = "unknown";
       }
-      VasBaseWebviewUtil.reportQBWebInfo(str2, "qbweb_load_redirect", "", ((String)localObject2).replace("|", "%7C"), i1, 0, "0", String.valueOf(this.jdField_c_of_type_Int), HttpUtil.getNetWorkTypeByStr(), 0, 0, "", (String)localObject1);
+      VasBaseWebviewUtil.reportQBWebInfo(str2, "qbweb_load_redirect", "", ((String)localObject2).replace("|", "%7C"), i1, 0, "0", String.valueOf(this.ax), HttpUtil.getNetWorkTypeByStr(), 0, 0, "", (String)localObject1);
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -587,8 +541,8 @@ public class SwiftBrowserStatistics
       }
       i2 += 1;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserStatisticInjector;
+    this.aK.clear();
+    Object localObject1 = this.bb;
     if (localObject1 != null) {
       ((ISwiftBrowserStatisticInjector)localObject1).a(paramTouchWebView, paramInt, paramString1, paramString2);
     }
@@ -609,7 +563,7 @@ public class SwiftBrowserStatistics
     if (paramInt == 0) {
       return;
     }
-    if (!this.h) {
+    if (!this.as) {
       return;
     }
     if (TextUtils.isEmpty(paramString)) {
@@ -620,13 +574,13 @@ public class SwiftBrowserStatistics
   
   public void a(String paramString1, long paramLong, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserStatisticInjector;
+    Object localObject = this.bb;
     if (localObject != null) {
-      ((ISwiftBrowserStatisticInjector)localObject).a(paramString1, paramLong, paramString2, this.jdField_c_of_type_JavaLangString);
+      ((ISwiftBrowserStatisticInjector)localObject).a(paramString1, paramLong, paramString2, this.aw);
     }
-    localObject = this.jdField_d_of_type_JavaLangString;
-    int i3 = this.jdField_x_of_type_Boolean;
-    boolean bool = this.jdField_y_of_type_Boolean;
+    localObject = this.aO;
+    int i3 = this.aS;
+    boolean bool = this.aT;
     int i2 = 0;
     int i1;
     if (bool) {
@@ -634,10 +588,10 @@ public class SwiftBrowserStatistics
     } else {
       i1 = 0;
     }
-    if (this.jdField_z_of_type_Boolean) {
+    if (this.aU) {
       i2 = 4;
     }
-    ReportController.b(null, "dc00899", "WV_Analysis", "", paramString1, (String)localObject, i3 | i1 | i2, (int)paramLong, String.valueOf(this.jdField_e_of_type_Int), this.jdField_f_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, paramString2);
+    ReportController.b(null, "dc00899", "WV_Analysis", "", paramString1, (String)localObject, i3 | i1 | i2, (int)paramLong, String.valueOf(this.aQ), this.aR, this.aP, paramString2);
   }
   
   public void a(String paramString1, long paramLong, AppRuntime paramAppRuntime, String paramString2, String paramString3)
@@ -650,8 +604,8 @@ public class SwiftBrowserStatistics
     try
     {
       HashMap localHashMap = new HashMap();
-      paramString1 = a(paramString1);
-      if (!a(paramString1)) {
+      paramString1 = f(paramString1);
+      if (!g(paramString1)) {
         return;
       }
       localHashMap.put("url", paramString1);
@@ -690,15 +644,15 @@ public class SwiftBrowserStatistics
       long l8 = localJSONObject.optLong("init_all_end");
       long l9 = localJSONObject.optLong("tbs_load_so_begin");
       long l10 = localJSONObject.optLong("tbs_load_so_end");
-      this.jdField_w_of_type_Long = (l2 - l1);
-      this.jdField_x_of_type_Long = (l4 - l3);
-      this.jdField_y_of_type_Long = (l10 - l9);
-      this.jdField_z_of_type_Long = (l6 - l5);
-      this.A = (l8 - l7);
+      this.z = (l2 - l1);
+      this.A = (l4 - l3);
+      this.B = (l10 - l9);
+      this.C = (l6 - l5);
+      this.D = (l8 - l7);
       if (QLog.isColorLevel())
       {
         QLog.d("SwiftBrowserStatistics", 2, new Object[] { "performance: ", paramJSONObject.toString() });
-        QLog.d("SwiftBrowserStatistics", 2, new Object[] { "firstInitTbs: ", Boolean.valueOf(bool), " x5core: ", Long.valueOf(this.jdField_w_of_type_Long), " webview: ", Long.valueOf(this.jdField_x_of_type_Long), " loadSo:", Long.valueOf(this.jdField_y_of_type_Long), " tbsLog:", Long.valueOf(this.jdField_z_of_type_Long), " initAll:", Long.valueOf(this.A) });
+        QLog.d("SwiftBrowserStatistics", 2, new Object[] { "firstInitTbs: ", Boolean.valueOf(bool), " x5core: ", Long.valueOf(this.z), " webview: ", Long.valueOf(this.A), " loadSo:", Long.valueOf(this.B), " tbsLog:", Long.valueOf(this.C), " initAll:", Long.valueOf(this.D) });
         return;
       }
     }
@@ -710,42 +664,42 @@ public class SwiftBrowserStatistics
   
   public void b()
   {
-    ISwiftBrowserStatisticInjector localISwiftBrowserStatisticInjector = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserStatisticInjector;
+    ISwiftBrowserStatisticInjector localISwiftBrowserStatisticInjector = this.bb;
     if (localISwiftBrowserStatisticInjector != null) {
-      localISwiftBrowserStatisticInjector.a(this.j, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Long);
+      localISwiftBrowserStatisticInjector.a(this.au, this.aw, this.e);
     }
   }
   
   public void b(Intent paramIntent, String paramString)
   {
-    if (!jdField_u_of_type_Boolean) {
+    if (!aL) {
       return;
     }
     HashMap localHashMap = new HashMap();
-    paramString = a(paramString);
-    if (!a(paramString)) {
+    paramString = f(paramString);
+    if (!g(paramString)) {
       return;
     }
     localHashMap.put("url", paramString);
     localHashMap.put("source_activity", paramIntent.getStringExtra("SourceActivityName"));
-    long l1 = B;
-    long l2 = this.F;
+    long l1 = E;
+    long l2 = this.J;
     boolean bool2 = true;
     if (l1 > l2) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    paramIntent = this.jdField_b_of_type_JavaUtilHashMap.keySet().iterator();
+    paramIntent = this.aZ.keySet().iterator();
     while (paramIntent.hasNext())
     {
       paramString = (String)paramIntent.next();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).longValue() - this.F);
+      localStringBuilder.append(((Long)this.aZ.get(paramString)).longValue() - this.J);
       localStringBuilder.append("");
       localHashMap.put(paramString, localStringBuilder.toString());
     }
-    localHashMap.put("bounce_rate_state", this.jdField_g_of_type_JavaLangString);
+    localHashMap.put("bounce_rate_state", this.ba);
     paramIntent = new StringBuilder();
     paramIntent.append("");
     paramIntent.append(bool1);
@@ -755,40 +709,40 @@ public class SwiftBrowserStatistics
     paramIntent.append(Build.MODEL);
     paramIntent.append(Build.VERSION.SDK_INT);
     localHashMap.put("system_os", paramIntent.toString());
-    localHashMap.put("QQ_version", AppSetting.g());
+    localHashMap.put("QQ_version", AppSetting.i());
     paramIntent = new StringBuilder();
-    paramIntent.append(jdField_b_of_type_Boolean);
+    paramIntent.append(H);
     paramIntent.append("");
     localHashMap.put("use_offline_package", paramIntent.toString());
     paramIntent = new StringBuilder();
-    paramIntent.append(this.jdField_d_of_type_Boolean);
+    paramIntent.append(this.Q);
     paramIntent.append("");
     localHashMap.put("use_sonic", paramIntent.toString());
     paramIntent = new StringBuilder();
     paramIntent.append("");
-    paramIntent.append(jdField_p_of_type_Boolean);
+    paramIntent.append(aD);
     localHashMap.put("use_pre_load", paramIntent.toString());
     paramIntent = new StringBuilder();
     boolean bool1 = bool2;
-    if (E > this.F) {
+    if (I > this.J) {
       bool1 = false;
     }
     paramIntent.append(bool1);
     paramIntent.append("");
     localHashMap.put("is_x5_init", paramIntent.toString());
     paramIntent = new StringBuilder();
-    paramIntent.append(this.jdField_e_of_type_Int);
+    paramIntent.append(this.aQ);
     paramIntent.append("");
     localHashMap.put("core_type", paramIntent.toString());
-    localHashMap.put("activity_create_final", String.valueOf(this.H - this.G));
-    localHashMap.put("origin_url", this.jdField_d_of_type_JavaLangString);
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    localHashMap.put("activity_create_final", String.valueOf(this.L - this.K));
+    localHashMap.put("origin_url", this.aO);
+    if (this.aK.size() > 0)
     {
       paramIntent = new StringBuilder();
       paramIntent.append("");
-      paramIntent.append(this.jdField_a_of_type_JavaUtilList.size());
+      paramIntent.append(this.aK.size());
       localHashMap.put("redirect_time", paramIntent.toString());
-      localHashMap.put("first_url", this.jdField_a_of_type_JavaUtilList.get(0));
+      localHashMap.put("first_url", this.aK.get(0));
     }
     if (QLog.isColorLevel())
     {
@@ -801,48 +755,48 @@ public class SwiftBrowserStatistics
   
   public void b(String paramString)
   {
-    if (!jdField_u_of_type_Boolean) {
+    if (!aL) {
       return;
     }
     HashMap localHashMap = new HashMap();
-    paramString = a(paramString);
-    if (!a(paramString)) {
+    paramString = f(paramString);
+    if (!g(paramString)) {
       return;
     }
     localHashMap.put("url", paramString);
-    localHashMap.put("source_activity", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("process_start_spending_time", String.valueOf(this.I));
-    localHashMap.put("init_tbs_time", String.valueOf(this.jdField_z_of_type_Long));
-    localHashMap.put("init_x5_core_time", String.valueOf(this.jdField_w_of_type_Long));
-    localHashMap.put("init_x5_webview_time", String.valueOf(this.jdField_x_of_type_Long));
-    localHashMap.put("init_tbs_so_time", String.valueOf(this.jdField_y_of_type_Long));
-    localHashMap.put("init_all_time", String.valueOf(this.A));
-    localHashMap.put("activity_on_create_time", String.valueOf(this.G - this.F));
+    localHashMap.put("source_activity", this.N);
+    localHashMap.put("process_start_spending_time", String.valueOf(this.M));
+    localHashMap.put("init_tbs_time", String.valueOf(this.C));
+    localHashMap.put("init_x5_core_time", String.valueOf(this.z));
+    localHashMap.put("init_x5_webview_time", String.valueOf(this.A));
+    localHashMap.put("init_tbs_so_time", String.valueOf(this.B));
+    localHashMap.put("init_all_time", String.valueOf(this.D));
+    localHashMap.put("activity_on_create_time", String.valueOf(this.K - this.J));
     paramString = new StringBuilder();
     paramString.append("");
-    paramString.append(this.jdField_c_of_type_Boolean);
+    paramString.append(this.O);
     localHashMap.put("is_cold_launch", paramString.toString());
-    localHashMap.put("network_type", this.jdField_e_of_type_JavaLangString);
+    localHashMap.put("network_type", this.aP);
     paramString = new StringBuilder();
     paramString.append(Build.MODEL);
     paramString.append(Build.VERSION.SDK_INT);
     localHashMap.put("system_os", paramString.toString());
-    localHashMap.put("QQ_version", AppSetting.g());
+    localHashMap.put("QQ_version", AppSetting.i());
     paramString = new StringBuilder();
-    paramString.append(jdField_b_of_type_Boolean);
+    paramString.append(H);
     paramString.append("");
     localHashMap.put("use_offline_package", paramString.toString());
     paramString = new StringBuilder();
-    paramString.append(this.jdField_d_of_type_Boolean);
+    paramString.append(this.Q);
     paramString.append("");
     localHashMap.put("use_sonic", paramString.toString());
     paramString = new StringBuilder();
     paramString.append("");
-    paramString.append(jdField_p_of_type_Boolean);
+    paramString.append(aD);
     localHashMap.put("use_pre_load", paramString.toString());
     paramString = new StringBuilder();
     boolean bool;
-    if (E > this.F) {
+    if (I > this.J) {
       bool = false;
     } else {
       bool = true;
@@ -850,24 +804,24 @@ public class SwiftBrowserStatistics
     paramString.append(bool);
     paramString.append("");
     localHashMap.put("is_x5_init", paramString.toString());
-    localHashMap.put("webview_create_time", String.valueOf(this.J));
-    localHashMap.put("core_type", String.valueOf(this.jdField_e_of_type_Int));
-    localHashMap.put("fragment_create_final", String.valueOf(this.H - this.G));
-    localHashMap.put("browser_act_create_cost", String.valueOf(this.H - C));
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    localHashMap.put("webview_create_time", String.valueOf(this.P));
+    localHashMap.put("core_type", String.valueOf(this.aQ));
+    localHashMap.put("fragment_create_final", String.valueOf(this.L - this.K));
+    localHashMap.put("browser_act_create_cost", String.valueOf(this.L - F));
+    if (this.aK.size() > 0)
     {
       paramString = new StringBuilder();
       paramString.append("");
-      paramString.append(this.jdField_a_of_type_JavaUtilList.size());
+      paramString.append(this.aK.size());
       localHashMap.put("redirect_time", paramString.toString());
-      localHashMap.put("first_url", this.jdField_a_of_type_JavaUtilList.get(0));
+      localHashMap.put("first_url", this.aK.get(0));
     }
-    localHashMap.put("int_tbs_env", String.valueOf(SwiftWebAccelerator.TbsAccelerator.jdField_a_of_type_Long));
-    localHashMap.put("init_plugin", String.valueOf(D));
-    localHashMap.put("fragment_create_time", String.valueOf(this.G - C));
-    localHashMap.put("step_initUIFrame", String.valueOf(this.K));
-    localHashMap.put("step_initUIContent", String.valueOf(this.M));
-    localHashMap.put("step_initTitleBar", String.valueOf(this.L));
+    localHashMap.put("int_tbs_env", String.valueOf(SwiftWebAccelerator.TbsAccelerator.b));
+    localHashMap.put("init_plugin", String.valueOf(G));
+    localHashMap.put("fragment_create_time", String.valueOf(this.K - F));
+    localHashMap.put("step_initUIFrame", String.valueOf(this.R));
+    localHashMap.put("step_initUIContent", String.valueOf(this.T));
+    localHashMap.put("step_initTitleBar", String.valueOf(this.S));
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder("webviewSpendingTimeCollection: ");
@@ -881,37 +835,37 @@ public class SwiftBrowserStatistics
   {
     if (paramString.equals("state_back"))
     {
-      if (!this.jdField_g_of_type_JavaLangString.equals("state_final")) {
-        this.jdField_b_of_type_JavaUtilHashMap.put("state_back", Long.valueOf(SystemClock.elapsedRealtime()));
+      if (!this.ba.equals("state_final")) {
+        this.aZ.put("state_back", Long.valueOf(SystemClock.elapsedRealtime()));
       }
       return;
     }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)
+    if (this.aY.size() == 0)
     {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(0, "state_activity_init");
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(1, "state_activity_create");
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(2, "state_webview_create");
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(3, "state_load_url");
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(4, "state_activity_first_line");
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(5, "state_first_screen");
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(6, "state_page_finished");
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(7, "state_final");
+      this.aY.put(0, "state_activity_init");
+      this.aY.put(1, "state_activity_create");
+      this.aY.put(2, "state_webview_create");
+      this.aY.put(3, "state_load_url");
+      this.aY.put(4, "state_activity_first_line");
+      this.aY.put(5, "state_first_screen");
+      this.aY.put(6, "state_page_finished");
+      this.aY.put(7, "state_final");
     }
-    int i1 = this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(paramString);
-    int i2 = this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(this.jdField_g_of_type_JavaLangString);
+    int i1 = this.aY.indexOfValue(paramString);
+    int i2 = this.aY.indexOfValue(this.ba);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setBounceRateState state=");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" mCurr=");
-      localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+      localStringBuilder.append(this.ba);
       QLog.d("SwiftBrowserStatistics", 4, localStringBuilder.toString());
     }
     if (i1 > i2)
     {
-      this.jdField_g_of_type_JavaLangString = paramString;
-      this.jdField_b_of_type_JavaUtilHashMap.put(this.jdField_g_of_type_JavaLangString, Long.valueOf(SystemClock.elapsedRealtime()));
+      this.ba = paramString;
+      this.aZ.put(this.ba, Long.valueOf(SystemClock.elapsedRealtime()));
     }
   }
   
@@ -920,11 +874,11 @@ public class SwiftBrowserStatistics
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = Uri.parse(paramString);
-      if (this.jdField_l_of_type_Boolean)
+      if (this.ay)
       {
         String str = paramString.getQueryParameter("appid");
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append((int)((System.nanoTime() - this.jdField_i_of_type_Long) / 1000000L));
+        localStringBuilder.append((int)((System.nanoTime() - this.l) / 1000000L));
         localStringBuilder.append("");
         ReportController.b(null, "P_CliOper", "Grp_open", "", "time", "wide_time", 0, 1, 0, "", str, localStringBuilder.toString(), paramString.getQueryParameter("group_openid"));
       }
@@ -933,21 +887,21 @@ public class SwiftBrowserStatistics
     {
       paramString = new StringBuilder();
       paramString.append("web_stay_in_url, cost = ");
-      paramString.append((System.nanoTime() - this.jdField_i_of_type_Long) / 1000000L);
+      paramString.append((System.nanoTime() - this.l) / 1000000L);
       paramString.append(", url = ");
-      paramString.append(Util.b(this.jdField_c_of_type_JavaLangString, new String[0]));
+      paramString.append(Util.b(this.aw, new String[0]));
       paramString.append(", isFromLeba = ");
-      paramString.append(this.jdField_e_of_type_Boolean);
+      paramString.append(this.ao);
       paramString.append(", hasRedDot = ");
-      paramString.append(this.jdField_f_of_type_Boolean);
+      paramString.append(this.ap);
       QLog.d("web_report", 4, paramString.toString());
     }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.az != null) {
+      ThreadManager.getUIHandler().removeCallbacks(this.az);
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftInjectorISwiftBrowserStatisticInjector;
+    paramString = this.bb;
     if (paramString != null) {
-      paramString.a(this.j, this.jdField_c_of_type_JavaLangString);
+      paramString.a(this.au, this.aw);
     }
   }
   
@@ -957,14 +911,14 @@ public class SwiftBrowserStatistics
     localStringBuilder.append("shouldOverrideUrlLoading detect 302, url: ");
     localStringBuilder.append(paramString);
     QLog.i("SwiftBrowserStatistics", 1, localStringBuilder.toString());
-    this.jdField_u_of_type_Long = System.currentTimeMillis();
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.x = System.currentTimeMillis();
+    this.aq = true;
+    this.aK.add(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics
  * JD-Core Version:    0.7.0.1
  */

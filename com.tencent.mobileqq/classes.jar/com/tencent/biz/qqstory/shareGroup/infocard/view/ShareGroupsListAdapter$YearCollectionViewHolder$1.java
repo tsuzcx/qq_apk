@@ -14,14 +14,14 @@ class ShareGroupsListAdapter$YearCollectionViewHolder$1
   public void onClick(View paramView)
   {
     ShareGroupsListAdapter.ChangeVideoSortEvent localChangeVideoSortEvent = new ShareGroupsListAdapter.ChangeVideoSortEvent();
-    if (this.a.a.a)
+    if (this.a.g.j)
     {
-      this.a.a.a = false;
+      this.a.g.j = false;
       localChangeVideoSortEvent.a = 0;
     }
     else
     {
-      this.a.a.a = true;
+      this.a.g.j = true;
       localChangeVideoSortEvent.a = 1;
     }
     StoryDispatcher.a().dispatch(localChangeVideoSortEvent);

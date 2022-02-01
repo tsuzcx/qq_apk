@@ -19,8 +19,8 @@ public class BandwidthPredictor
   public BandwidthPredictor()
   {
     HashMap localHashMap = new HashMap();
-    int i = BandWidthConfig.a.a();
-    int j = BandWidthConfig.a.b();
+    int i = BandWidthConfig.a.b();
+    int j = BandWidthConfig.a.c();
     localHashMap.put("reset_time_threshold_wifi", String.valueOf(i));
     localHashMap.put("reset_time_threshold_xg", String.valueOf(j));
     this.predictor = SuperPlayerFactory.createBandwidthPredictor(BaseApplicationImpl.context, null, null, localHashMap);
@@ -62,7 +62,7 @@ public class BandwidthPredictor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.bandwidth.BandwidthPredictor
  * JD-Core Version:    0.7.0.1
  */

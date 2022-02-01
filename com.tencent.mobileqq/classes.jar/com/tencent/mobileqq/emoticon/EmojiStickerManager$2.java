@@ -13,7 +13,7 @@ final class EmojiStickerManager$2
     if (QLog.isColorLevel()) {
       QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, start");
     }
-    Object localObject1 = EmojiStickerManager.a();
+    Object localObject1 = EmojiStickerManager.c();
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
@@ -69,7 +69,7 @@ final class EmojiStickerManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ import org.json.JSONObject;
 class BridgeModule$DownloadListenerImp
   implements DownloadListener
 {
-  private String jdField_a_of_type_JavaLangString;
   private String b;
+  private String c;
   
   public BridgeModule$DownloadListenerImp(BridgeModule paramBridgeModule, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.b = paramString1;
+    this.c = paramString2;
   }
   
   private String a(DownloadInfo paramDownloadInfo)
@@ -42,7 +42,7 @@ class BridgeModule$DownloadListenerImp
     {
       paramString1 = new JSONObject();
       paramString1.put("type", 6);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, paramString1);
+      this.a.invokeCallJS(this.c, paramString1);
     }
     catch (Exception paramString1)
     {
@@ -66,10 +66,10 @@ class BridgeModule$DownloadListenerImp
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("type", 3);
-      if ((paramDownloadInfo != null) && (this.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.d))) {
-        localJSONObject.put("data", paramDownloadInfo.f);
+      if ((paramDownloadInfo != null) && (this.b.equals(paramDownloadInfo.d))) {
+        localJSONObject.put("data", paramDownloadInfo.t);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
+      this.a.invokeCallJS(this.c, localJSONObject);
     }
     catch (Exception localException)
     {
@@ -96,7 +96,7 @@ class BridgeModule$DownloadListenerImp
     {
       paramString = new JSONObject();
       paramString.put("type", 4);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, paramString);
+      this.a.invokeCallJS(this.c, paramString);
     }
     catch (Exception paramString)
     {
@@ -123,7 +123,7 @@ class BridgeModule$DownloadListenerImp
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("type", 2);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
+      this.a.invokeCallJS(this.c, localJSONObject);
     }
     catch (Exception localException)
     {
@@ -150,10 +150,10 @@ class BridgeModule$DownloadListenerImp
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("type", 5);
-      if ((paramDownloadInfo != null) && (this.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.d))) {
-        localJSONObject.put("data", paramDownloadInfo.f);
+      if ((paramDownloadInfo != null) && (this.b.equals(paramDownloadInfo.d))) {
+        localJSONObject.put("data", paramDownloadInfo.t);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
+      this.a.invokeCallJS(this.c, localJSONObject);
     }
     catch (Exception localException)
     {
@@ -180,13 +180,13 @@ class BridgeModule$DownloadListenerImp
     while (paramList.hasNext())
     {
       DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-      if (this.jdField_a_of_type_JavaLangString.equals(localDownloadInfo.d)) {
+      if (this.b.equals(localDownloadInfo.d)) {
         try
         {
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("type", 1);
-          localJSONObject.put("data", localDownloadInfo.f);
-          this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, localJSONObject);
+          localJSONObject.put("data", localDownloadInfo.t);
+          this.a.invokeCallJS(this.c, localJSONObject);
         }
         catch (Exception localException)
         {
@@ -205,7 +205,7 @@ class BridgeModule$DownloadListenerImp
         localStringBuilder1.append(" , packageName = ");
         localStringBuilder1.append(localDownloadInfo.e);
         localStringBuilder1.append(" process = ");
-        localStringBuilder1.append(localDownloadInfo.f);
+        localStringBuilder1.append(localDownloadInfo.t);
         QLog.d("BridgeModule", 2, localStringBuilder1.toString());
       }
     }
@@ -230,7 +230,7 @@ class BridgeModule$DownloadListenerImp
     {
       paramString1 = new JSONObject();
       paramString1.put("type", 6);
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.b, paramString1);
+      this.a.invokeCallJS(this.c, paramString1);
     }
     catch (Exception paramString1)
     {
@@ -261,7 +261,7 @@ class BridgeModule$DownloadListenerImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule.DownloadListenerImp
  * JD-Core Version:    0.7.0.1
  */

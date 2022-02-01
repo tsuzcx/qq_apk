@@ -7,31 +7,31 @@ import androidx.annotation.RestrictTo;
 public final class CancelableFontCallback
   extends TextAppearanceFontCallback
 {
-  private final Typeface jdField_a_of_type_AndroidGraphicsTypeface;
-  private final CancelableFontCallback.ApplyFont jdField_a_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback$ApplyFont;
-  private boolean jdField_a_of_type_Boolean;
+  private final Typeface a;
+  private final CancelableFontCallback.ApplyFont b;
+  private boolean c;
   
   public CancelableFontCallback(CancelableFontCallback.ApplyFont paramApplyFont, Typeface paramTypeface)
   {
-    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback$ApplyFont = paramApplyFont;
+    this.a = paramTypeface;
+    this.b = paramApplyFont;
   }
   
   private void a(Typeface paramTypeface)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesCancelableFontCallback$ApplyFont.a(paramTypeface);
+    if (!this.c) {
+      this.b.a(paramTypeface);
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
   }
   
   public void a(int paramInt)
   {
-    a(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    a(this.a);
   }
   
   public void a(Typeface paramTypeface, boolean paramBoolean)
@@ -41,7 +41,7 @@ public final class CancelableFontCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.resources.CancelableFontCallback
  * JD-Core Version:    0.7.0.1
  */

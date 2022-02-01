@@ -24,31 +24,31 @@ class BaseActivity2$MyShakeListener
       i = 0;
     }
     localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("screen_shot", i).getString("currentactivity", null);
-    if ((BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 != null) && (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getClass().getName().equals(localObject)))
+    if ((BaseActivity2.q != null) && (BaseActivity2.q.getClass().getName().equals(localObject)))
     {
-      boolean bool1 = SettingCloneUtil.readValue(BaseApplicationImpl.sApplication, null, BaseApplicationImpl.sApplication.getString(2131694975), "qqsetting_screenshot_key", false);
+      boolean bool1 = SettingCloneUtil.readValue(BaseApplicationImpl.sApplication, null, BaseApplicationImpl.sApplication.getString(2131892702), "qqsetting_screenshot_key", false);
       boolean bool2 = ReflectionUtil.a(BaseApplication.getContext());
       if ((bool1) && (bool2))
       {
-        if (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot == null)
+        if (BaseActivity2.q.r == null)
         {
-          if (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.f) {
-            localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getApplicationContext();
+          if (BaseActivity2.q.s) {
+            localObject = BaseActivity2.q.getApplicationContext();
           } else {
-            localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2;
+            localObject = BaseActivity2.q;
           }
-          BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot = new ScreenShot((Context)localObject, BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
+          BaseActivity2.q.r = new ScreenShot((Context)localObject, BaseActivity2.q.getWindow());
         }
-        bool1 = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.b();
+        bool1 = BaseActivity2.q.r.b();
         if (bool1)
         {
           ScreenShot.a("BaseActivity2 is showing");
           return;
         }
-        if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.c()) {
-          BaseActivity2.a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2);
+        if (!BaseActivity2.q.r.c()) {
+          BaseActivity2.a(BaseActivity2.q);
         } else if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
-          KapalaiAdapterUtil.a().a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
+          KapalaiAdapterUtil.a().a(BaseActivity2.q.getWindow());
         }
         if (QLog.isColorLevel())
         {
@@ -63,7 +63,7 @@ class BaseActivity2$MyShakeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BaseActivity2.MyShakeListener
  * JD-Core Version:    0.7.0.1
  */

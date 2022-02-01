@@ -13,7 +13,7 @@ public class PicValueImpl
   public void fillStickInfo(MessageForPic paramMessageForPic)
   {
     Object localObject;
-    if (((paramMessageForPic.extLong & 0x4) > 0) && (EmojiStickerManager.f))
+    if (((paramMessageForPic.extLong & 0x4) > 0) && (EmojiStickerManager.n))
     {
       System.currentTimeMillis();
       localObject = paramMessageForPic.getExtInfoFromExtStr("sticker_info");
@@ -48,12 +48,12 @@ public class PicValueImpl
   
   public int getAioOtherSpaceValue()
   {
-    return BaseChatItemLayout.j + 108 + BaseChatItemLayout.k;
+    return BaseChatItemLayout.getBubblePaddingAlignHead() + 108 + BaseChatItemLayout.getBubblePaddingAlignError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.PicValueImpl
  * JD-Core Version:    0.7.0.1
  */

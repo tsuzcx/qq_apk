@@ -39,7 +39,7 @@ public final class ExtendFriendSquareInfo$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.extendfriend.ExtendFriendSquareInfo.RspBody
  * JD-Core Version:    0.7.0.1
  */

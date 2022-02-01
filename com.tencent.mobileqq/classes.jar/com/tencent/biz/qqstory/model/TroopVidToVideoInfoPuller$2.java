@@ -22,12 +22,12 @@ class TroopVidToVideoInfoPuller$2
     }
     localStringBuilder.append(str);
     SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
+    this.b.a(this.a, new ErrorMessage(), true, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller.2
  * JD-Core Version:    0.7.0.1
  */

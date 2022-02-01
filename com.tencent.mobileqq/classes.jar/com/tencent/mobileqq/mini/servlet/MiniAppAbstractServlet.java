@@ -34,6 +34,7 @@ public class MiniAppAbstractServlet
   public static final String KEY_APPID = "key_appid";
   public static final String KEY_APP_STORE_GET_APP_LIST_TYPE = "key_app_store_get_app_list_type";
   public static final String KEY_CMD_NAME = "key_cmd_name";
+  public static final String KEY_CODE = "key_code";
   public static final String KEY_DATA = "key_data";
   public static final String KEY_LANG = "key_lang";
   public static final String KEY_LINK = "key_link";
@@ -258,7 +259,7 @@ public class MiniAppAbstractServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppAbstractServlet
  * JD-Core Version:    0.7.0.1
  */

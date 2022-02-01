@@ -11,10 +11,10 @@ class ScrolledTabHost$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.a.setVisibility(4);
     this.b.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
+    this.d.d.setVisibility(8);
+    this.d.b(this.c);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -23,7 +23,7 @@ class ScrolledTabHost$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.widget.ScrolledTabHost.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ final class PublishArticlePage$initTitleBar$1
   
   public final void onClick(View paramView)
   {
-    if (PublishArticlePage.a(this.a))
+    if (PublishArticlePage.i(this.a))
     {
-      paramView = this.a.a();
+      paramView = this.a.b();
       if (paramView != null) {
         paramView.finish();
       }
@@ -28,7 +28,7 @@ final class PublishArticlePage$initTitleBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initTitleBar.1
  * JD-Core Version:    0.7.0.1
  */

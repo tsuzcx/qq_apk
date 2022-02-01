@@ -32,59 +32,49 @@ import org.xmlpull.v1.XmlPullParser;
 
 public class HotReactiveHelper
 {
-  static String jdField_a_of_type_JavaLangString = "HotReactiveHelper";
-  private static final HashSet<ExtensionInfo> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private static boolean jdField_a_of_type_Boolean;
-  static String jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath();
-  private static boolean jdField_b_of_type_Boolean;
+  static String a = "HotReactiveHelper";
+  static String b = Environment.getExternalStorageDirectory().getAbsolutePath();
   static String c;
   static String d;
-  static String e;
-  static String f;
-  static String g;
+  static String e = "friendshipres/";
+  static String f = "friendshipres2/";
+  static String g = "poke/";
+  private static boolean h = false;
+  private static boolean i = false;
+  private static final HashSet<ExtensionInfo> j = new HashSet();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("/Tencent/MobileQQ/");
     c = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(c);
     localStringBuilder.append("hotimage/");
     d = localStringBuilder.toString();
-    e = "friendshipres/";
-    f = "friendshipres2/";
-    g = "poke/";
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
   }
   
   public static int a()
   {
     long l = NetConnInfoCenter.getServerTimeMillis();
-    int k = TimeFormatterUtils.a(l);
-    int i = 60 - TimeFormatterUtils.b(l);
-    int j = ((23 - k) * 60 + i) * 60;
-    i = ((17 - k) * 60 + i) * 60;
+    int n = TimeFormatterUtils.a(l);
+    int k = 60 - TimeFormatterUtils.b(l);
+    int m = ((23 - n) * 60 + k) * 60;
+    k = ((17 - n) * 60 + k) * 60;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("contact resume  offlast=");
-      localStringBuilder.append(j);
+      localStringBuilder.append(m);
       localStringBuilder.append("off18last=");
-      localStringBuilder.append(i);
+      localStringBuilder.append(k);
       QLog.d("FriendReactive", 2, localStringBuilder.toString());
     }
-    if (k >= 18) {
-      i = j;
+    if (n >= 18) {
+      k = m;
     }
-    return i;
-  }
-  
-  public static String a()
-  {
-    return VFSAssistantUtils.getSDKPrivatePath(d);
+    return k;
   }
   
   public static String a(Context paramContext, int paramInt)
@@ -120,247 +110,247 @@ public class HotReactiveHelper
                         paramContext = "";
                         break;
                       case 171: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BestFriend3Downgrade", paramContext.getString(2131693206));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BestFriend3Downgrade", paramContext.getString(2131890746));
                         break;
                       case 170: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BestFriend2Downgrade", paramContext.getString(2131693204));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BestFriend2Downgrade", paramContext.getString(2131890744));
                         break;
                       case 169: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BestFriend2Upgrade", paramContext.getString(2131693205));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BestFriend2Upgrade", paramContext.getString(2131890745));
                         break;
                       case 168: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BestFriend1Upgrade", paramContext.getString(2131693203));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BestFriend1Upgrade", paramContext.getString(2131890743));
                         break;
                       case 167: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BecomeLightTip", paramContext.getString(2131693202));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BecomeLightTip", paramContext.getString(2131890742));
                         break;
                       case 166: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BecomeGrayTip", paramContext.getString(2131693201));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BecomeGrayTip", paramContext.getString(2131890741));
                         break;
                       case 165: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_UnBind3Tip", paramContext.getString(2131693222));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_UnBind3Tip", paramContext.getString(2131890762));
                         break;
                       case 164: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_UnBind2Tip", paramContext.getString(2131693221));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_UnBind2Tip", paramContext.getString(2131890761));
                         break;
                       case 163: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_UnBind1Tip", paramContext.getString(2131693220));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_UnBind1Tip", paramContext.getString(2131890760));
                         break;
                       case 162: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BindTip", paramContext.getString(2131693207));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_BindTip", paramContext.getString(2131890747));
                         break;
                       case 161: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_LadyBro3Downgrade", paramContext.getString(2131693215));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_LadyBro3Downgrade", paramContext.getString(2131890755));
                         break;
                       case 160: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_LadyBro2Downgrade", paramContext.getString(2131693213));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_LadyBro2Downgrade", paramContext.getString(2131890753));
                         break;
                       case 159: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_LadyBro2Upgrade", paramContext.getString(2131693214));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_LadyBro2Upgrade", paramContext.getString(2131890754));
                         break;
                       case 158: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_LadyBro1Upgrade", paramContext.getString(2131693212));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_LadyBro1Upgrade", paramContext.getString(2131890752));
                         break;
                       case 157: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Buddy3Downgrade", paramContext.getString(2131693211));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Buddy3Downgrade", paramContext.getString(2131890751));
                         break;
                       case 156: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Buddy2Downgrade", paramContext.getString(2131693209));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Buddy2Downgrade", paramContext.getString(2131890749));
                         break;
                       case 155: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Buddy2Upgrade", paramContext.getString(2131693210));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Buddy2Upgrade", paramContext.getString(2131890750));
                         break;
                       case 154: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Buddy1Upgrade", paramContext.getString(2131693208));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Buddy1Upgrade", paramContext.getString(2131890748));
                         break;
                       case 153: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Lover3Downgrade", paramContext.getString(2131693219));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Lover3Downgrade", paramContext.getString(2131890759));
                         break;
                       case 152: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Lover2Downgrade", paramContext.getString(2131693217));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Lover2Downgrade", paramContext.getString(2131890757));
                         break;
                       case 151: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Lover2Upgrade", paramContext.getString(2131693218));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Lover2Upgrade", paramContext.getString(2131890758));
                         break;
                       case 150: 
-                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Lover1Upgrade", paramContext.getString(2131693216));
+                        paramContext = ((SharedPreferences)localObject).getString("hot_intimate_Lover1Upgrade", paramContext.getString(2131890756));
                       }
                       break;
                     case 107: 
-                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_3_downgrade", paramContext.getString(2131693012));
+                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_3_downgrade", paramContext.getString(2131890126));
                       break;
                     case 106: 
-                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_3_will_downgrade", paramContext.getString(2131693014));
+                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_3_will_downgrade", paramContext.getString(2131890128));
                       break;
                     case 105: 
-                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_3_upgrade", paramContext.getString(2131693013));
+                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_3_upgrade", paramContext.getString(2131890127));
                       break;
                     case 104: 
-                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_2_downgrade", paramContext.getString(2131693009));
+                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_2_downgrade", paramContext.getString(2131890123));
                       break;
                     case 103: 
-                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_2_will_downgrade", paramContext.getString(2131693011));
+                      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_2_will_downgrade", paramContext.getString(2131890125));
                     }
                     break;
                   case 101: 
-                    paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_2_upgrade", paramContext.getString(2131693010));
+                    paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_2_upgrade", paramContext.getString(2131890124));
                     break;
                   case 100: 
-                    paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_1_downgrade", paramContext.getString(2131693006));
+                    paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_1_downgrade", paramContext.getString(2131890120));
                     break;
                   case 99: 
-                    paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_1_will_downgrade", paramContext.getString(2131693008));
+                    paramContext = ((SharedPreferences)localObject).getString("hot_friendship_graytips_1_will_downgrade", paramContext.getString(2131890122));
                   }
                   break;
                 case 90: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_big_close_setting", paramContext.getString(2131718835));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_big_close_setting", paramContext.getString(2131916367));
                   break;
                 case 89: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_small_close_setting", paramContext.getString(2131718836));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_small_close_setting", paramContext.getString(2131916368));
                   break;
                 case 88: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_downgrade2", paramContext.getString(2131692998));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_downgrade2", paramContext.getString(2131890112));
                   break;
                 case 87: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_downgrade", paramContext.getString(2131692997));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_downgrade", paramContext.getString(2131890111));
                   break;
                 case 86: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_upgrade3", paramContext.getString(2131693001));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_upgrade3", paramContext.getString(2131890115));
                   break;
                 case 85: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_upgrade2", paramContext.getString(2131693000));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_upgrade2", paramContext.getString(2131890114));
                   break;
                 case 84: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_upgrade", paramContext.getString(2131692999));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_upcoming_upgrade", paramContext.getString(2131890113));
                   break;
                 case 83: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_down3", paramContext.getString(2131693025));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_down3", paramContext.getString(2131890139));
                   break;
                 case 82: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_down2", paramContext.getString(2131693024));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_down2", paramContext.getString(2131890138));
                   break;
                 case 81: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_down", paramContext.getString(2131693023));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_down", paramContext.getString(2131890137));
                   break;
                 case 80: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_up3", paramContext.getString(2131693028));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_up3", paramContext.getString(2131890142));
                   break;
                 case 79: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_up2", paramContext.getString(2131693027));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_up2", paramContext.getString(2131890141));
                   break;
                 case 78: 
-                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_up", paramContext.getString(2131693026));
+                  paramContext = ((SharedPreferences)localObject).getString("hot_friend_new_boat_graytip_close_up", paramContext.getString(2131890140));
                 }
                 break;
               case 74: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_update2", paramContext.getString(2131693046));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_update2", paramContext.getString(2131890160));
                 break;
               case 73: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_update", paramContext.getString(2131693045));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_update", paramContext.getString(2131890159));
                 break;
               case 72: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_open2", paramContext.getString(2131693044));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_open2", paramContext.getString(2131890158));
                 break;
               case 71: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_open", paramContext.getString(2131693043));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_open", paramContext.getString(2131890157));
                 break;
               case 70: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_close2", paramContext.getString(2131693040));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_close2", paramContext.getString(2131890154));
                 break;
               case 69: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_close", paramContext.getString(2131693039));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_close", paramContext.getString(2131890153));
                 break;
               case 68: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_up2", paramContext.getString(2131693048));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_up2", paramContext.getString(2131890162));
                 break;
               case 67: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_dis", paramContext.getString(2131693042));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_dis", paramContext.getString(2131890156));
                 break;
               case 66: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_down", paramContext.getString(2131693041));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_down", paramContext.getString(2131890155));
                 break;
               case 65: 
-                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_up", paramContext.getString(2131693047));
+                paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_lover_up", paramContext.getString(2131890161));
               }
               break;
             case 54: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_pcqall_dis_remind", paramContext.getString(2131693029));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_pcqall_dis_remind", paramContext.getString(2131890143));
               break;
             case 53: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_praiseandqone_dis_remind", paramContext.getString(2131693030));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_praiseandqone_dis_remind", paramContext.getString(2131890144));
               break;
             case 52: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chatandqzone_dis_remind", paramContext.getString(2131693016));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chatandqzone_dis_remind", paramContext.getString(2131890130));
               break;
             case 51: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_praiseandchat_dis_remind", paramContext.getString(2131693015));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_praiseandchat_dis_remind", paramContext.getString(2131890129));
               break;
             case 50: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_qzone_dis_remind", paramContext.getString(2131693038));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_qzone_dis_remind", paramContext.getString(2131890152));
               break;
             case 49: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_qozne_down_remind", paramContext.getString(2131693037));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_qozne_down_remind", paramContext.getString(2131890151));
               break;
             case 48: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_dis_remind", paramContext.getString(2131693020));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_dis_remind", paramContext.getString(2131890134));
               break;
             case 47: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_down_remind", paramContext.getString(2131693018));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_down_remind", paramContext.getString(2131890132));
               break;
             case 46: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_praise_dis_remind", paramContext.getString(2131693034));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_praise_dis_remind", paramContext.getString(2131890148));
               break;
             case 45: 
-              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_down_remind", paramContext.getString(2131693032));
+              paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_down_remind", paramContext.getString(2131890146));
             }
             break;
           case 43: 
-            paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_close_up2", paramContext.getString(2131693005));
+            paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_close_up2", paramContext.getString(2131890119));
             break;
           case 42: 
-            paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_up2", paramContext.getString(2131693036));
+            paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_up2", paramContext.getString(2131890150));
             break;
           case 41: 
-            paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_up2", paramContext.getString(2131693022));
+            paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_up2", paramContext.getString(2131890136));
           }
           break;
         case 28: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_close_dis", paramContext.getString(2131693003));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_close_dis", paramContext.getString(2131890117));
           break;
         case 27: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_dis", paramContext.getString(2131693033));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_dis", paramContext.getString(2131890147));
           break;
         case 26: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_dis", paramContext.getString(2131693019));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_dis", paramContext.getString(2131890133));
           break;
         case 25: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_close_down", paramContext.getString(2131693002));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_close_down", paramContext.getString(2131890116));
           break;
         case 24: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_down", paramContext.getString(2131693031));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_down", paramContext.getString(2131890145));
           break;
         case 23: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_down", paramContext.getString(2131693017));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_down", paramContext.getString(2131890131));
           break;
         case 22: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_close_up", paramContext.getString(2131693004));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_close_up", paramContext.getString(2131890118));
           break;
         case 21: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_up", paramContext.getString(2131693035));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_priase_up", paramContext.getString(2131890149));
           break;
         case 20: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_up", paramContext.getString(2131693021));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_graytip_chat_up", paramContext.getString(2131890135));
           break;
         case 19: 
-          paramContext = ((SharedPreferences)localObject).getString("hot_friend_chat_num_des", paramContext.getString(2131691091));
+          paramContext = ((SharedPreferences)localObject).getString("hot_friend_chat_num_des", paramContext.getString(2131888037));
           break;
         }
       } else {
-        paramContext = ((SharedPreferences)localObject).getString("show_hot_friend_reactive_will_downgrade_push_tip", paramContext.getString(2131693200));
+        paramContext = ((SharedPreferences)localObject).getString("show_hot_friend_reactive_will_downgrade_push_tip", paramContext.getString(2131890740));
       }
     }
     else {
-      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_1_upgrade", paramContext.getString(2131693007));
+      paramContext = ((SharedPreferences)localObject).getString("hot_friendship_1_upgrade", paramContext.getString(2131890121));
     }
     if (QLog.isColorLevel())
     {
@@ -372,45 +362,6 @@ public class HotReactiveHelper
       QLog.d("HotFriend_GET_LOCAL_CONFIG", 2, ((StringBuilder)localObject).toString());
     }
     return paramContext;
-  }
-  
-  public static HashSet<ExtensionInfo> a()
-  {
-    return jdField_a_of_type_JavaUtilHashSet;
-  }
-  
-  public static List<HotReactiveHelper.HighLightUrlPattern> a(Context paramContext, String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramContext = paramString;
-    int j = 0;
-    int i = 0;
-    while (j >= 0)
-    {
-      j = paramContext.indexOf("(", i);
-      if (j < 0) {
-        break;
-      }
-      i = paramContext.indexOf(")[", j);
-      if (i < 0) {
-        break;
-      }
-      int k = paramContext.indexOf("]", i);
-      if (k < 0) {
-        break;
-      }
-      paramString = new HotReactiveHelper.HighLightUrlPattern();
-      paramString.jdField_a_of_type_JavaLangString = paramContext.substring(j + 1, i);
-      paramString.jdField_a_of_type_Int = j;
-      paramString.jdField_b_of_type_JavaLangString = paramContext.substring(i + 2, k);
-      paramContext = paramContext.replace(paramContext.substring(j, k + 1), paramString.jdField_a_of_type_JavaLangString);
-      i = paramString.jdField_a_of_type_JavaLangString.length() + k;
-      localArrayList.add(paramString);
-    }
-    paramString = new HotReactiveHelper.HighLightUrlPattern();
-    paramString.jdField_a_of_type_JavaLangString = paramContext;
-    localArrayList.add(0, paramString);
-    return localArrayList;
   }
   
   public static List<String> a(AppInterface paramAppInterface, String paramString1, String paramString2)
@@ -611,7 +562,7 @@ public class HotReactiveHelper
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramFriendsManager.e);
+      ((StringBuilder)localObject).append(paramFriendsManager.f);
       localObject = paramString1.replace("#likelevel1", ((StringBuilder)localObject).toString());
     }
     paramString1 = (String)localObject;
@@ -619,7 +570,7 @@ public class HotReactiveHelper
     {
       paramString1 = new StringBuilder();
       paramString1.append("");
-      paramString1.append(paramFriendsManager.f);
+      paramString1.append(paramFriendsManager.g);
       paramString1 = ((String)localObject).replace("#likelevel2", paramString1.toString());
     }
     localObject = paramString1;
@@ -627,7 +578,7 @@ public class HotReactiveHelper
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramFriendsManager.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramFriendsManager.b);
       localObject = paramString1.replace("#chatlevel1", ((StringBuilder)localObject).toString());
     }
     paramString1 = (String)localObject;
@@ -635,7 +586,7 @@ public class HotReactiveHelper
     {
       paramString1 = new StringBuilder();
       paramString1.append("");
-      paramString1.append(paramFriendsManager.b);
+      paramString1.append(paramFriendsManager.c);
       paramString1 = ((String)localObject).replace("#chatlevel2", paramString1.toString());
     }
     localObject = paramString1;
@@ -643,7 +594,7 @@ public class HotReactiveHelper
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramFriendsManager.g);
+      ((StringBuilder)localObject).append(paramFriendsManager.h);
       localObject = paramString1.replace("#oftenchat1", ((StringBuilder)localObject).toString());
     }
     paramString1 = (String)localObject;
@@ -651,7 +602,7 @@ public class HotReactiveHelper
     {
       paramString1 = new StringBuilder();
       paramString1.append("");
-      paramString1.append(paramFriendsManager.h);
+      paramString1.append(paramFriendsManager.i);
       paramString1 = ((String)localObject).replace("#oftenchat2", paramString1.toString());
     }
     localObject = paramString1;
@@ -659,7 +610,7 @@ public class HotReactiveHelper
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramFriendsManager.c);
+      ((StringBuilder)localObject).append(paramFriendsManager.d);
       localObject = paramString1.replace("#loveroftenchat1", ((StringBuilder)localObject).toString());
     }
     paramString1 = (String)localObject;
@@ -667,7 +618,7 @@ public class HotReactiveHelper
     {
       paramString1 = new StringBuilder();
       paramString1.append("");
-      paramString1.append(paramFriendsManager.d);
+      paramString1.append(paramFriendsManager.e);
       paramString1 = ((String)localObject).replace("#loveroftenchat2", paramString1.toString());
     }
     localObject = paramString1;
@@ -675,7 +626,7 @@ public class HotReactiveHelper
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramFriendsManager.i);
+      ((StringBuilder)localObject).append(paramFriendsManager.j);
       localObject = paramString1.replace("#qzonelevel1", ((StringBuilder)localObject).toString());
     }
     paramString1 = (String)localObject;
@@ -683,7 +634,7 @@ public class HotReactiveHelper
     {
       paramString1 = new StringBuilder();
       paramString1.append("");
-      paramString1.append(paramFriendsManager.j);
+      paramString1.append(paramFriendsManager.k);
       paramString1 = ((String)localObject).replace("#qzonelevel2", paramString1.toString());
     }
     localObject = paramString1;
@@ -691,7 +642,7 @@ public class HotReactiveHelper
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramFriendsManager.l);
+      ((StringBuilder)localObject).append(paramFriendsManager.m);
       localObject = paramString1.replace("#friendshipday1", ((StringBuilder)localObject).toString());
     }
     paramString1 = (String)localObject;
@@ -699,7 +650,7 @@ public class HotReactiveHelper
     {
       paramString1 = new StringBuilder();
       paramString1.append("");
-      paramString1.append(paramFriendsManager.m);
+      paramString1.append(paramFriendsManager.n);
       paramString1 = ((String)localObject).replace("#friendshipday2", paramString1.toString());
     }
     paramFriendsManager = paramString1;
@@ -870,7 +821,7 @@ public class HotReactiveHelper
       paramString1 = paramFriendsManager.replace("#brothername3", paramAppInterface);
       localArrayList.add(paramAppInterface);
     }
-    localArrayList.add(0, paramString1.replace(HardCodeUtil.a(2131705699), paramString2));
+    localArrayList.add(0, paramString1.replace(HardCodeUtil.a(2131903584), paramString2));
     return localArrayList;
   }
   
@@ -878,7 +829,7 @@ public class HotReactiveHelper
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateIntimateRelationshipConfig begin  keys.length");
       localStringBuilder.append(paramArrayOfString1.length);
@@ -886,9 +837,9 @@ public class HotReactiveHelper
       localStringBuilder.append(paramArrayOfString2.length);
       QLog.i(str, 2, localStringBuilder.toString());
     }
-    paramFriendsManager.n = paramInt1;
-    paramFriendsManager.o = paramInt2;
-    paramFriendsManager.p = paramInt3;
+    paramFriendsManager.o = paramInt1;
+    paramFriendsManager.p = paramInt2;
+    paramFriendsManager.q = paramInt3;
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
     if (paramInt1 > 0) {
       paramContext.putInt("hot_intimate_min_days", paramInt1);
@@ -912,7 +863,7 @@ public class HotReactiveHelper
       }
       paramContext.commit();
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "updateIntimateRelationshipConfig end");
+        QLog.i(a, 2, "updateIntimateRelationshipConfig end");
       }
       return;
     }
@@ -1194,9 +1145,9 @@ public class HotReactiveHelper
   public static void a(Context paramContext, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    jdField_a_of_type_Boolean = paramBoolean;
-    jdField_b_of_type_Boolean = true;
-    paramContext.putBoolean("hot_friend_new_boat_big_use_new", jdField_a_of_type_Boolean);
+    h = paramBoolean;
+    i = true;
+    paramContext.putBoolean("hot_friend_new_boat_big_use_new", h);
     paramContext.putString("hot_friend_new_boat_small_close_setting", paramString1);
     paramContext.putString("hot_friend_new_boat_big_close_setting", paramString2);
     paramContext.putString("hot_friend_new_boat_small_close_key", paramString3);
@@ -1206,17 +1157,17 @@ public class HotReactiveHelper
   
   public static void a(SharedPreferences paramSharedPreferences, FriendsManager paramFriendsManager)
   {
-    int i = paramSharedPreferences.getInt("hot_intimate_min_days", paramFriendsManager.n);
-    if (i > 0) {
-      paramFriendsManager.n = i;
+    int k = paramSharedPreferences.getInt("hot_intimate_min_days", paramFriendsManager.o);
+    if (k > 0) {
+      paramFriendsManager.o = k;
     }
-    i = paramSharedPreferences.getInt("hot_intimate_max_days", paramFriendsManager.o);
-    if (i > 0) {
-      paramFriendsManager.o = i;
+    k = paramSharedPreferences.getInt("hot_intimate_max_days", paramFriendsManager.p);
+    if (k > 0) {
+      paramFriendsManager.p = k;
     }
-    i = paramSharedPreferences.getInt("hot_intimate_day_msg_count", paramFriendsManager.p);
-    if (i > 0) {
-      paramFriendsManager.p = i;
+    k = paramSharedPreferences.getInt("hot_intimate_day_msg_count", paramFriendsManager.q);
+    if (k > 0) {
+      paramFriendsManager.q = k;
     }
   }
   
@@ -1226,7 +1177,7 @@ public class HotReactiveHelper
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("parsNewBoatConfig:");
       ((StringBuilder)localObject2).append(paramString);
@@ -1237,13 +1188,13 @@ public class HotReactiveHelper
       try
       {
         paramString = new JSONObject(paramString);
-        int i = paramString.optInt("useBoat", 1);
+        int k = paramString.optInt("useBoat", 1);
         localObject1 = paramString.optString("boatSSetting", "");
         localObject2 = paramString.optString("boatBSetting", "");
         String str1 = paramString.optString("boatSName", "");
         String str2 = paramString.optString("boatBName", "");
         Object localObject3 = paramQQAppInterface.getApp();
-        if (i == 1)
+        if (k == 1)
         {
           bool = true;
           a((Context)localObject3, bool, (String)localObject1, (String)localObject2, str1, str2);
@@ -1266,7 +1217,7 @@ public class HotReactiveHelper
       {
         if (QLog.isColorLevel())
         {
-          paramString = jdField_a_of_type_JavaLangString;
+          paramString = a;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("parsNewBoatConfig:error->");
           ((StringBuilder)localObject1).append(paramQQAppInterface.toString());
@@ -1284,7 +1235,7 @@ public class HotReactiveHelper
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("parsXMLConfig: {\n");
       ((StringBuilder)localObject2).append(paramString);
@@ -1305,7 +1256,7 @@ public class HotReactiveHelper
         HashMap localHashMap1 = new HashMap();
         HashMap localHashMap2 = new HashMap();
         localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i14 = localXmlPullParser.getEventType();
+        i16 = localXmlPullParser.getEventType();
         localObject37 = "";
         localObject36 = localObject37;
         localObject35 = localObject36;
@@ -1343,41 +1294,41 @@ public class HotReactiveHelper
         localObject3 = localObject4;
         localObject2 = localObject3;
         localObject1 = localObject2;
-        i13 = 30;
-        i12 = 3;
+        i15 = 30;
+        i14 = 3;
+        i13 = 3;
+        n = 3;
+        k = 30;
+        i12 = 30;
         i11 = 3;
-        k = 3;
-        i = 30;
         i10 = 30;
-        i9 = 3;
-        i8 = 30;
-        i7 = 5;
-        i6 = 7;
-        i5 = 30;
-        i2 = 7;
-        i1 = 30;
+        i9 = 5;
+        i8 = 7;
+        i7 = 30;
+        i4 = 7;
+        i3 = 30;
         boolean bool2 = false;
         boolean bool1 = false;
-        i4 = 0;
-        i3 = 7;
-        n = 30;
-        m = 6;
-        if (i14 != 1)
+        i6 = 0;
+        i5 = 7;
+        i2 = 30;
+        i1 = 6;
+        if (i16 != 1)
         {
-          if (i14 != 2)
+          if (i16 != 2)
           {
-            j = i13;
-            i14 = i12;
-            i15 = i11;
-            i16 = i10;
-            i17 = i9;
-            i18 = i8;
-            i19 = i7;
-            i20 = i6;
-            i21 = i5;
-            i22 = i2;
-            i23 = i1;
+            m = i15;
+            i16 = i14;
+            i17 = i13;
+            i18 = i12;
+            i19 = i11;
+            i20 = i10;
+            i21 = i9;
+            i22 = i8;
+            i23 = i7;
             i24 = i4;
+            i25 = i3;
+            i26 = i6;
             localObject38 = localObject37;
             localObject39 = localObject36;
             localObject40 = localObject35;
@@ -1414,9 +1365,9 @@ public class HotReactiveHelper
             localObject71 = localObject4;
             localObject72 = localObject3;
             localObject73 = localObject2;
-            i25 = i3;
-            i26 = n;
-            i27 = m;
+            i27 = i5;
+            i28 = i2;
+            i29 = i1;
             localObject74 = localObject1;
             break label27830;
           }
@@ -1439,129 +1390,129 @@ public class HotReactiveHelper
             }
             if (str.equalsIgnoreCase("minInteractiveDays"))
             {
-              i17 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i17 > 0) {
+              i19 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i19 > 0) {
                 break label25090;
               }
-              j = i;
-              i = k;
-              i9 = 3;
+              m = k;
+              k = n;
+              i11 = 3;
             }
             else if (str.equalsIgnoreCase("maxInteractiveDays"))
             {
-              i16 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i16 > 0) {
+              i18 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i18 > 0) {
                 break label25297;
               }
-              j = i;
-              i = k;
-              i10 = 30;
+              m = k;
+              k = n;
+              i12 = 30;
             }
             else if (str.equalsIgnoreCase("minLoverInteractiveDays"))
             {
-              i20 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i20 > 0) {
+              i22 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i22 > 0) {
                 break label25504;
               }
-              j = i;
-              i = k;
-              i6 = 3;
+              m = k;
+              k = n;
+              i8 = 3;
             }
             else if (str.equalsIgnoreCase("maxLoverInteractiveDays"))
             {
-              i21 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i21 > 0) {
+              i23 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i23 > 0) {
                 break label25711;
               }
-              j = i;
-              i = k;
-              i5 = 30;
+              m = k;
+              k = n;
+              i7 = 30;
             }
             else if (str.equalsIgnoreCase("minLinkDays"))
             {
-              i15 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i15 > 0) {
+              i17 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i17 > 0) {
                 break label25918;
               }
-              j = i;
-              i = k;
-              i11 = 3;
+              m = k;
+              k = n;
+              i13 = 3;
             }
             else if (str.equalsIgnoreCase("maxLinkDays"))
             {
-              j = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (j > 0) {
+              m = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (m > 0) {
                 break label26125;
               }
-              j = i;
-              i = k;
-              i13 = 30;
+              m = k;
+              k = n;
+              i15 = 30;
             }
             else if (str.equalsIgnoreCase("minIntimacyDays"))
             {
-              i14 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i14 > 0) {
+              i16 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i16 > 0) {
                 break label26332;
               }
-              j = i;
-              i = k;
-              i12 = 3;
+              m = k;
+              k = n;
+              i14 = 3;
             }
             else if (str.equalsIgnoreCase("maxIntimacyDays"))
             {
-              i16 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i16 > 0) {
+              i18 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i18 > 0) {
                 break label26539;
               }
-              i = k;
-              j = 30;
+              k = n;
+              m = 30;
             }
             else if (str.equalsIgnoreCase("minQzoneVisitDays"))
             {
-              j = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (j > 0) {
+              m = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (m > 0) {
                 break label26546;
               }
-              j = i;
-              i = 3;
+              m = k;
+              k = 3;
             }
             else if (str.equalsIgnoreCase("maxQzoneVisitDays"))
             {
-              i18 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i18 > 0) {
+              i20 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i20 > 0) {
                 break label26559;
               }
-              j = i;
-              i = k;
-              i8 = 30;
+              m = k;
+              k = n;
+              i10 = 30;
             }
             else if (str.equalsIgnoreCase("maxRemindTimes"))
             {
-              i19 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
-              if (i19 > 0) {
+              i21 = Integer.valueOf(localXmlPullParser.nextText()).intValue();
+              if (i21 > 0) {
                 break label26766;
               }
-              j = i;
-              i = k;
-              i7 = 5;
+              m = k;
+              k = n;
+              i9 = 5;
             }
             else
             {
               if (str.equalsIgnoreCase("fireNumDescription"))
               {
                 localObject60 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -1597,27 +1548,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayPraiseUpgrade"))
               {
                 localHashMap1.put("grayPraiseUp", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -1654,27 +1605,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayChatUpgrade"))
               {
                 localHashMap1.put("grayChatUp", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -1711,27 +1662,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayColseUpgrade"))
               {
                 localHashMap1.put("grayCloseUp", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -1768,27 +1719,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverUpgrade"))
               {
                 localHashMap1.put("grayQzoneLoverUp", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -1825,27 +1776,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayQzoneVisitUpgrade"))
               {
                 localHashMap1.put("grayQzoneVisitUp", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -1882,27 +1833,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayPraise2Upgrade"))
               {
                 localHashMap1.put("grayPraiseUp2", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -1939,27 +1890,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayChat2Upgrade"))
               {
                 localHashMap1.put("grayChatUp2", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -1996,27 +1947,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayColse2Upgrade"))
               {
                 localHashMap1.put("grayCloseUp2", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2053,27 +2004,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLover2Upgrade"))
               {
                 localHashMap1.put("grayQzoneLoverUp2", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2110,27 +2061,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayQzoneVisit2Upgrade"))
               {
                 localHashMap1.put("grayQzoneVisitUp2", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2167,27 +2118,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayPraiseDegrade"))
               {
                 localHashMap1.put("grayPriaseDown", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2224,27 +2175,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayChatDegrade"))
               {
                 localHashMap1.put("grayChatDown", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2281,27 +2232,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayColseDegrade"))
               {
                 localHashMap1.put("grayCloseDown", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2338,27 +2289,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverDegrade"))
               {
                 localHashMap1.put("grayQzoneLoverDown", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2395,27 +2346,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverOpen"))
               {
                 localHashMap1.put("grayQzoneLoverOpen", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2452,27 +2403,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverOpen2"))
               {
                 localHashMap1.put("grayQzoneLoverOpen2", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2509,27 +2460,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverUpdate"))
               {
                 localHashMap1.put("grayQzoneLoverUpdate", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2566,27 +2517,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverUpdate2"))
               {
                 localHashMap1.put("grayQzoneLoverUpdate2", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2623,27 +2574,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverClose"))
               {
                 localHashMap1.put("grayQzoneLoverClose", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2680,27 +2631,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverClose2"))
               {
                 localHashMap1.put("grayQzoneLoverClose2", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2737,27 +2688,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayQzoneVisitDegrade"))
               {
                 localHashMap1.put("grayQzoneVisitDown", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2794,27 +2745,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayPraiseDis"))
               {
                 localHashMap1.put("grayPriaseDis", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2851,27 +2802,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayChatDis"))
               {
                 localHashMap1.put("grayChatDis", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2908,27 +2859,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayColseDis"))
               {
                 localHashMap1.put("grayCloseDis", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -2965,27 +2916,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayLoverDis"))
               {
                 localHashMap1.put("grayQzoneLoverDis", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3022,27 +2973,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayQzoneVisitDis"))
               {
                 localHashMap1.put("grayQzoneVisitDis", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3079,27 +3030,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayPraiseDegradeRemind"))
               {
                 localObject61 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3135,27 +3086,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayPraiseDisRemind"))
               {
                 localObject62 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3191,27 +3142,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayChatDegradeRemind"))
               {
                 localObject63 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3247,27 +3198,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayChatDisRemind"))
               {
                 localObject64 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3303,27 +3254,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayQzoneDegradeRemind"))
               {
                 localObject65 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3359,27 +3310,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayQzoneDisRemind"))
               {
                 localObject66 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3415,27 +3366,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayChatAndPraiseRemind"))
               {
                 localObject67 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3471,27 +3422,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayChatAnQzoneRemind"))
               {
                 localObject68 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3527,27 +3478,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayPraiseAndQzoneRemind"))
               {
                 localObject69 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3583,27 +3534,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("grayPCQallRemind"))
               {
                 localObject70 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3639,27 +3590,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship1Upgrade"))
               {
                 localHashMap1.put("graytipFriendship1Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3696,27 +3647,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship1WillDowngrade"))
               {
                 localObject71 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3752,27 +3703,27 @@ public class HotReactiveHelper
                 localObject70 = localObject5;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship1Downgrade"))
               {
                 localHashMap1.put("graytipFriendship1Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3809,27 +3760,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship2Upgrade"))
               {
                 localHashMap1.put("graytipFriendship2Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3866,27 +3817,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship2WillDowngrade"))
               {
                 localObject72 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3922,27 +3873,27 @@ public class HotReactiveHelper
                 localObject70 = localObject5;
                 localObject71 = localObject4;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship2Downgrade"))
               {
                 localHashMap1.put("graytipFriendship2Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -3979,27 +3930,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship3Upgrade"))
               {
                 localHashMap1.put("graytipFriendship3Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4036,27 +3987,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship3WillDowngrade"))
               {
                 localObject73 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4092,27 +4043,27 @@ public class HotReactiveHelper
                 localObject70 = localObject5;
                 localObject71 = localObject4;
                 localObject72 = localObject3;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipFriendship3Downgrade"))
               {
                 localHashMap1.put("graytipFriendship3Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4149,42 +4100,42 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("friendshipMinDays"))
               {
-                j = Integer.parseInt(localXmlPullParser.nextText());
-                if (j <= 0) {
+                m = Integer.parseInt(localXmlPullParser.nextText());
+                if (m <= 0) {
                   break label26973;
                 }
                 break label26977;
               }
               if (str.equalsIgnoreCase("friendshipMaxDays"))
               {
-                j = Integer.parseInt(localXmlPullParser.nextText());
-                if (j <= 0) {
+                m = Integer.parseInt(localXmlPullParser.nextText());
+                if (m <= 0) {
                   break label27188;
                 }
                 break label27192;
               }
               if (str.equalsIgnoreCase("friendship"))
               {
-                i24 = Integer.parseInt(localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                i26 = Integer.parseInt(localXmlPullParser.nextText());
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
+                i24 = i4;
+                i25 = i3;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4221,27 +4172,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("intimateMinDays"))
               {
-                int i28 = Integer.parseInt(localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                int i30 = Integer.parseInt(localXmlPullParser.nextText());
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4278,26 +4229,26 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
-                if (i28 <= 0) {
+                if (i30 <= 0) {
                   break label27830;
                 }
-                i25 = i28;
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                i27 = i30;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4334,23 +4285,23 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i26 = n;
-                i27 = m;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("intimateMaxDays"))
               {
-                j = Integer.parseInt(localXmlPullParser.nextText());
-                if (j <= 0) {
+                m = Integer.parseInt(localXmlPullParser.nextText());
+                if (m <= 0) {
                   break label27403;
                 }
                 break label27407;
               }
               if (str.equalsIgnoreCase("intimateDayMsgCount"))
               {
-                j = Integer.parseInt(localXmlPullParser.nextText());
-                if (j <= 0) {
+                m = Integer.parseInt(localXmlPullParser.nextText());
+                if (m <= 0) {
                   break label27618;
                 }
                 break label27622;
@@ -4358,18 +4309,18 @@ public class HotReactiveHelper
               if (str.equalsIgnoreCase("graytipLover1Upgrade"))
               {
                 localHashMap2.put("graytipLover1Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4406,27 +4357,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipLover2Upgrade"))
               {
                 localHashMap2.put("graytipLover2Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4463,27 +4414,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipLover2Downgrade"))
               {
                 localHashMap2.put("graytipLover2Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4520,27 +4471,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipLover3Downgrade"))
               {
                 localHashMap2.put("graytipLover3Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4577,27 +4528,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipBuddy1Upgrade"))
               {
                 localHashMap2.put("graytipBuddy1Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4634,27 +4585,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipBuddy2Upgrade"))
               {
                 localHashMap2.put("graytipBuddy2Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4691,27 +4642,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipBuddy2Downgrade"))
               {
                 localHashMap2.put("graytipBuddy2Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4748,27 +4699,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipBuddy3Downgrade"))
               {
                 localHashMap2.put("graytipBuddy3Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4805,27 +4756,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipLadyBro1Upgrade"))
               {
                 localHashMap2.put("graytipLadyBro1Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4862,27 +4813,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipLadyBro2Upgrade"))
               {
                 localHashMap2.put("graytipLadyBro2Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4919,27 +4870,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipLadyBro2Downgrade"))
               {
                 localHashMap2.put("graytipLadyBro2Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -4976,27 +4927,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipLadyBro3Downgrade"))
               {
                 localHashMap2.put("graytipLadyBro3Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5033,27 +4984,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipBestFriend1Upgrade"))
               {
                 localHashMap2.put("graytipBestFriend1Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5090,27 +5041,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipBestFriend2Upgrade"))
               {
                 localHashMap2.put("graytipBestFriend2Upgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5147,27 +5098,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipBestFriend2Downgrade"))
               {
                 localHashMap2.put("graytipBestFriend2Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5204,27 +5155,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipBestFriend3Downgrade"))
               {
                 localHashMap2.put("graytipBestFriend3Downgrade", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5261,27 +5212,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipIntimateshipBindTip"))
               {
                 localHashMap2.put("graytipIntimateshipBindTip", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5318,27 +5269,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipIntimateshipUnBind1Tip"))
               {
                 localHashMap2.put("graytipIntimateshipUnBind1Tip", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5375,27 +5326,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipIntimateshipUnBind2Tip"))
               {
                 localHashMap2.put("graytipIntimateshipUnBind2Tip", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5432,27 +5383,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipIntimateshipUnBind3Tip"))
               {
                 localHashMap2.put("graytipIntimateshipUnBind3Tip", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5489,27 +5440,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipIntimateshipBecomeGrayTip"))
               {
                 localHashMap2.put("graytipIntimateshipBecomeGrayTip", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5546,27 +5497,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipIntimateshipBecomeLightTip"))
               {
                 localHashMap2.put("graytipIntimateshipBecomeLightTip", localXmlPullParser.nextText());
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5603,27 +5554,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("graytipWillDowngradeWording"))
               {
                 localObject74 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5660,26 +5611,26 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("smallChatSVipKey"))
               {
                 localObject38 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
                 localObject41 = localObject34;
@@ -5715,27 +5666,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("smallChatUnionVipKey"))
               {
                 localObject39 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject40 = localObject35;
                 localObject41 = localObject34;
@@ -5771,27 +5722,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("bigChatSVipKey"))
               {
                 localObject40 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject41 = localObject34;
@@ -5827,27 +5778,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("bigChatUnionVipKey"))
               {
                 localObject41 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5883,27 +5834,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("smallCloseSvipKey"))
               {
                 localObject42 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5939,27 +5890,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("smallCloseUnionVipKey"))
               {
                 localObject43 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -5995,27 +5946,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("bigCloseSVipKey"))
               {
                 localObject44 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6051,27 +6002,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("bigCloseUnionVipKey"))
               {
                 localObject45 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6107,27 +6058,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("intimateLover1VipKey"))
               {
                 localObject54 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6163,27 +6114,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("intimateLover2VipKey"))
               {
                 localObject55 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6219,27 +6170,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("intimateLover3VipKey"))
               {
                 localObject56 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6275,27 +6226,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("intimateLover1VipSetting"))
               {
                 localObject57 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6331,27 +6282,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("intimateLover2VipSetting"))
               {
                 localObject58 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6387,27 +6338,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("intimateLover3VipSetting"))
               {
                 localObject59 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6443,27 +6394,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("smallChatSVipSetting"))
               {
                 localObject46 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6499,27 +6450,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("smallChatUnionVipSetting"))
               {
                 localObject47 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6555,27 +6506,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("bigChatSVipSetting"))
               {
                 localObject48 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6611,27 +6562,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("bigChatUnionVipSetting"))
               {
                 localObject49 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6667,27 +6618,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("smallCloseSVipSetting"))
               {
                 localObject50 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6723,27 +6674,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("smallCloseUnionSetting"))
               {
                 localObject51 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6779,27 +6730,27 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
               if (str.equalsIgnoreCase("bigCloseSVipSetting"))
               {
                 localObject52 = localXmlPullParser.nextText();
-                j = i13;
-                i14 = i12;
-                i15 = i11;
-                i16 = i10;
-                i17 = i9;
-                i18 = i8;
-                i19 = i7;
-                i20 = i6;
-                i21 = i5;
-                i22 = i2;
-                i23 = i1;
+                m = i15;
+                i16 = i14;
+                i17 = i13;
+                i18 = i12;
+                i19 = i11;
+                i20 = i10;
+                i21 = i9;
+                i22 = i8;
+                i23 = i7;
                 i24 = i4;
+                i25 = i3;
+                i26 = i6;
                 localObject38 = localObject37;
                 localObject39 = localObject36;
                 localObject40 = localObject35;
@@ -6835,24 +6786,24 @@ public class HotReactiveHelper
                 localObject71 = localObject4;
                 localObject72 = localObject3;
                 localObject73 = localObject2;
-                i25 = i3;
-                i26 = n;
-                i27 = m;
+                i27 = i5;
+                i28 = i2;
+                i29 = i1;
                 localObject74 = localObject1;
                 break label27830;
               }
-              j = i13;
-              i14 = i12;
-              i15 = i11;
-              i16 = i10;
-              i17 = i9;
-              i18 = i8;
-              i19 = i7;
-              i20 = i6;
-              i21 = i5;
-              i22 = i2;
-              i23 = i1;
+              m = i15;
+              i16 = i14;
+              i17 = i13;
+              i18 = i12;
+              i19 = i11;
+              i20 = i10;
+              i21 = i9;
+              i22 = i8;
+              i23 = i7;
               i24 = i4;
+              i25 = i3;
+              i26 = i6;
               localObject38 = localObject37;
               localObject39 = localObject36;
               localObject40 = localObject35;
@@ -6889,26 +6840,26 @@ public class HotReactiveHelper
               localObject71 = localObject4;
               localObject72 = localObject3;
               localObject73 = localObject2;
-              i25 = i3;
-              i26 = n;
-              i27 = m;
+              i27 = i5;
+              i28 = i2;
+              i29 = i1;
               localObject74 = localObject1;
               if (!str.equalsIgnoreCase("bigCloseUnionSetting")) {
                 break label27830;
               }
               localObject53 = localXmlPullParser.nextText();
-              j = i13;
-              i14 = i12;
-              i15 = i11;
-              i16 = i10;
-              i17 = i9;
-              i18 = i8;
-              i19 = i7;
-              i20 = i6;
-              i21 = i5;
-              i22 = i2;
-              i23 = i1;
+              m = i15;
+              i16 = i14;
+              i17 = i13;
+              i18 = i12;
+              i19 = i11;
+              i20 = i10;
+              i21 = i9;
+              i22 = i8;
+              i23 = i7;
               i24 = i4;
+              i25 = i3;
+              i26 = i6;
               localObject38 = localObject37;
               localObject39 = localObject36;
               localObject40 = localObject35;
@@ -6944,50 +6895,50 @@ public class HotReactiveHelper
               localObject71 = localObject4;
               localObject72 = localObject3;
               localObject73 = localObject2;
-              i25 = i3;
-              i26 = n;
-              i27 = m;
+              i27 = i5;
+              i28 = i2;
+              i29 = i1;
               localObject74 = localObject1;
               break label27830;
             }
-            i14 = localXmlPullParser.next();
-            k = i;
-            i = j;
+            i16 = localXmlPullParser.next();
+            n = k;
+            k = m;
           }
         }
         else
         {
           localObject38 = new StringBuilder();
-          ((StringBuilder)localObject38).append(i9);
-          ((StringBuilder)localObject38).append("|");
-          ((StringBuilder)localObject38).append(i10);
-          ((StringBuilder)localObject38).append("|");
           ((StringBuilder)localObject38).append(i11);
-          ((StringBuilder)localObject38).append("|");
-          ((StringBuilder)localObject38).append(i13);
           ((StringBuilder)localObject38).append("|");
           ((StringBuilder)localObject38).append(i12);
           ((StringBuilder)localObject38).append("|");
-          ((StringBuilder)localObject38).append(i);
+          ((StringBuilder)localObject38).append(i13);
+          ((StringBuilder)localObject38).append("|");
+          ((StringBuilder)localObject38).append(i15);
+          ((StringBuilder)localObject38).append("|");
+          ((StringBuilder)localObject38).append(i14);
           ((StringBuilder)localObject38).append("|");
           ((StringBuilder)localObject38).append(k);
+          ((StringBuilder)localObject38).append("|");
+          ((StringBuilder)localObject38).append(n);
+          ((StringBuilder)localObject38).append("|");
+          ((StringBuilder)localObject38).append(i10);
+          ((StringBuilder)localObject38).append("|");
+          ((StringBuilder)localObject38).append(i9);
           ((StringBuilder)localObject38).append("|");
           ((StringBuilder)localObject38).append(i8);
           ((StringBuilder)localObject38).append("|");
           ((StringBuilder)localObject38).append(i7);
           ((StringBuilder)localObject38).append("|");
-          ((StringBuilder)localObject38).append(i6);
+          ((StringBuilder)localObject38).append(i4);
           ((StringBuilder)localObject38).append("|");
-          ((StringBuilder)localObject38).append(i5);
-          ((StringBuilder)localObject38).append("|");
-          ((StringBuilder)localObject38).append(i2);
-          ((StringBuilder)localObject38).append("|");
-          ((StringBuilder)localObject38).append(i1);
+          ((StringBuilder)localObject38).append(i3);
           localObject38 = ((StringBuilder)localObject38).toString();
           if (!QLog.isColorLevel()) {
             break label28051;
           }
-          localObject39 = jdField_a_of_type_JavaLangString;
+          localObject39 = a;
           localObject40 = new StringBuilder();
           ((StringBuilder)localObject40).append("handleRespGetHotDaysConfig success：showInContact|ShowInChat|settingdays=");
           ((StringBuilder)localObject40).append(bool2);
@@ -6998,15 +6949,15 @@ public class HotReactiveHelper
           ((StringBuilder)localObject40).append("version=");
           ((StringBuilder)localObject40).append(paramInt);
           ((StringBuilder)localObject40).append("maxRemindTimes=");
-          ((StringBuilder)localObject40).append(i7);
+          ((StringBuilder)localObject40).append(i9);
           QLog.d((String)localObject39, 2, ((StringBuilder)localObject40).toString());
           SharedPreUtils.q(paramQQAppInterface.getApp(), paramInt, paramQQAppInterface.getCurrentAccountUin());
           SharedPreUtils.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), bool2, bool1, (String)localObject38);
-          SharedPreUtils.q(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin(), i4);
+          SharedPreUtils.r(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin(), i6);
           localObject38 = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-          ((FriendsManager)localObject38).a(bool2, bool1, i9, i10, i11, i13, i12, i, k, i8, i2, i1, i7);
+          ((FriendsManager)localObject38).a(bool2, bool1, i11, i12, i13, i15, i14, k, n, i10, i4, i3, i9);
           a(paramQQAppInterface.getApp(), (String)localObject37, localObject36, localObject35, localObject34, localObject33, localObject32, localObject31, localObject30, localObject29, localObject28, localObject27, localObject26, localObject25, (String)localObject24, (String)localObject23, (String)localObject22, (String)localObject21, (String)localObject20, (String)localObject19, (String)localObject18, (String)localObject17, (String)localObject16);
-          b(paramQQAppInterface.getApp(), (String)localObject15);
+          c(paramQQAppInterface.getApp(), (String)localObject15);
           a(paramQQAppInterface.getApp(), (String)localHashMap1.get("grayChatUp"), (String)localHashMap1.get("grayPraiseUp"), (String)localHashMap1.get("grayCloseUp"), (String)localHashMap1.get("grayQzoneLoverUp"), (String)localHashMap1.get("grayQzoneVisitUp"), (String)localHashMap1.get("grayChatUp2"), (String)localHashMap1.get("grayPraiseUp2"), (String)localHashMap1.get("grayCloseUp2"), (String)localHashMap1.get("grayQzoneLoverUp2"), (String)localHashMap1.get("grayQzoneVisitUp2"), (String)localHashMap1.get("grayChatDown"), (String)localHashMap1.get("grayPriaseDown"), (String)localHashMap1.get("grayCloseDown"), (String)localHashMap1.get("grayQzoneLoverDown"), (String)localHashMap1.get("grayQzoneVisitDown"), (String)localHashMap1.get("grayChatDis"), (String)localHashMap1.get("grayPriaseDis"), (String)localHashMap1.get("grayCloseDis"), (String)localHashMap1.get("grayQzoneLoverDis"), (String)localHashMap1.get("grayQzoneVisitDis"), (String)localHashMap1.get("grayQzoneLoverClose"), (String)localHashMap1.get("grayQzoneLoverClose2"), (String)localHashMap1.get("grayQzoneLoverOpen"), (String)localHashMap1.get("grayQzoneLoverOpen2"), (String)localHashMap1.get("grayQzoneLoverUpdate"), (String)localHashMap1.get("grayQzoneLoverUpdate2"), (String)localHashMap1.get("graytipFriendship1Upgrade"), (String)localHashMap1.get("graytipFriendship1Downgrade"), (String)localHashMap1.get("graytipFriendship2Upgrade"), (String)localHashMap1.get("graytipFriendship2Downgrade"), (String)localHashMap1.get("graytipFriendship3Upgrade"), (String)localHashMap1.get("graytipFriendship3Downgrade"));
           a(paramQQAppInterface.getApp(), (String)localObject14, (String)localObject13, (String)localObject12, (String)localObject11, (String)localObject10, (String)localObject9, (String)localObject8, (String)localObject7, (String)localObject6, (String)localObject5, (String)localObject4, (String)localObject3, (String)localObject2);
           localObject2 = paramQQAppInterface.getApp();
@@ -7032,7 +6983,7 @@ public class HotReactiveHelper
           localObject22 = (String)localHashMap2.get("graytipIntimateshipUnBind3Tip");
           localObject23 = (String)localHashMap2.get("graytipIntimateshipBecomeGrayTip");
           localObject24 = (String)localHashMap2.get("graytipIntimateshipBecomeLightTip");
-          a((Context)localObject2, (FriendsManager)localObject38, i3, n, m, new String[] { "hot_intimate_Lover1Upgrade", "hot_intimate_Lover2Upgrade", "hot_intimate_Lover2Downgrade", "hot_intimate_Lover3Downgrade", "hot_intimate_Buddy1Upgrade", "hot_intimate_Buddy2Upgrade", "hot_intimate_Buddy2Downgrade", "hot_intimate_Buddy3Downgrade", "hot_intimate_LadyBro1Upgrade", "hot_intimate_LadyBro2Upgrade", "hot_intimate_LadyBro2Downgrade", "hot_intimate_LadyBro3Downgrade", "hot_intimate_BestFriend1Upgrade", "hot_intimate_BestFriend2Upgrade", "hot_intimate_BestFriend2Downgrade", "hot_intimate_BestFriend3Downgrade", "hot_intimate_BindTip", "hot_intimate_UnBind1Tip", "hot_intimate_UnBind2Tip", "hot_intimate_UnBind3Tip", "hot_intimate_BecomeGrayTip", "hot_intimate_BecomeLightTip" }, new String[] { localObject3, localObject4, localObject5, localObject6, localObject7, localObject8, localObject9, localObject10, localObject11, localObject12, localObject13, localObject14, localObject15, localObject16, localObject17, localObject18, localObject19, localObject20, localObject21, localObject22, localObject23, localObject24 });
+          a((Context)localObject2, (FriendsManager)localObject38, i5, i2, i1, new String[] { "hot_intimate_Lover1Upgrade", "hot_intimate_Lover2Upgrade", "hot_intimate_Lover2Downgrade", "hot_intimate_Lover3Downgrade", "hot_intimate_Buddy1Upgrade", "hot_intimate_Buddy2Upgrade", "hot_intimate_Buddy2Downgrade", "hot_intimate_Buddy3Downgrade", "hot_intimate_LadyBro1Upgrade", "hot_intimate_LadyBro2Upgrade", "hot_intimate_LadyBro2Downgrade", "hot_intimate_LadyBro3Downgrade", "hot_intimate_BestFriend1Upgrade", "hot_intimate_BestFriend2Upgrade", "hot_intimate_BestFriend2Downgrade", "hot_intimate_BestFriend3Downgrade", "hot_intimate_BindTip", "hot_intimate_UnBind1Tip", "hot_intimate_UnBind2Tip", "hot_intimate_UnBind3Tip", "hot_intimate_BecomeGrayTip", "hot_intimate_BecomeLightTip" }, new String[] { localObject3, localObject4, localObject5, localObject6, localObject7, localObject8, localObject9, localObject10, localObject11, localObject12, localObject13, localObject14, localObject15, localObject16, localObject17, localObject18, localObject19, localObject20, localObject21, localObject22, localObject23, localObject24 });
           a(paramQQAppInterface.getApp(), (String)localObject1);
           return;
         }
@@ -7040,28 +6991,28 @@ public class HotReactiveHelper
       catch (Exception paramQQAppInterface)
       {
         if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, paramString, paramQQAppInterface);
+          QLog.e(a, 2, paramString, paramQQAppInterface);
         }
         return;
       }
-      int j = i;
-      int i = k;
+      int m = k;
+      int k = n;
       continue;
       label25081:
-      j = i;
-      i = k;
+      m = k;
+      k = n;
       continue;
-      j = i13;
-      int i14 = i12;
-      int i15 = i11;
-      int i16 = i10;
-      int i18 = i8;
-      int i19 = i7;
-      int i20 = i6;
-      int i21 = i5;
-      int i22 = i2;
-      int i23 = i1;
+      m = i15;
+      int i16 = i14;
+      int i17 = i13;
+      int i18 = i12;
+      int i20 = i10;
+      int i21 = i9;
+      int i22 = i8;
+      int i23 = i7;
       int i24 = i4;
+      int i25 = i3;
+      int i26 = i6;
       Object localObject38 = localObject37;
       Object localObject39 = localObject36;
       Object localObject40 = localObject35;
@@ -7098,23 +7049,23 @@ public class HotReactiveHelper
       Object localObject71 = localObject4;
       Object localObject72 = localObject3;
       Object localObject73 = localObject2;
-      int i25 = i3;
-      int i26 = n;
-      int i27 = m;
+      int i27 = i5;
+      int i28 = i2;
+      int i29 = i1;
       Object localObject74 = localObject1;
       break label27830;
       label25297:
-      j = i13;
-      i14 = i12;
-      i15 = i11;
-      int i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i20 = i6;
-      i21 = i5;
-      i22 = i2;
-      i23 = i1;
+      m = i15;
+      i16 = i14;
+      i17 = i13;
+      int i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i22 = i8;
+      i23 = i7;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7151,23 +7102,23 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
       label25504:
-      j = i13;
-      i14 = i12;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i21 = i5;
-      i22 = i2;
-      i23 = i1;
+      m = i15;
+      i16 = i14;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i23 = i7;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7204,23 +7155,23 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
       label25711:
-      j = i13;
-      i14 = i12;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i20 = i6;
-      i22 = i2;
-      i23 = i1;
+      m = i15;
+      i16 = i14;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i22 = i8;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7257,23 +7208,23 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
       label25918:
-      j = i13;
-      i14 = i12;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i20 = i6;
-      i21 = i5;
-      i22 = i2;
-      i23 = i1;
+      m = i15;
+      i16 = i14;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i22 = i8;
+      i23 = i7;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7310,22 +7261,22 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
-      i14 = i12;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i20 = i6;
-      i21 = i5;
-      i22 = i2;
-      i23 = i1;
+      i16 = i14;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i22 = i8;
+      i23 = i7;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7362,23 +7313,23 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
       label26332:
-      j = i13;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i20 = i6;
-      i21 = i5;
-      i22 = i2;
-      i23 = i1;
+      m = i15;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i22 = i8;
+      i23 = i7;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7415,31 +7366,31 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
       label26539:
-      j = i13;
+      m = i15;
       break label28037;
       label26546:
-      int k = i;
-      i = j;
-      j = k;
+      int n = k;
+      k = m;
+      m = n;
       continue;
       label26559:
-      j = i13;
-      i14 = i12;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i19 = i7;
-      i20 = i6;
-      i21 = i5;
-      i22 = i2;
-      i23 = i1;
+      m = i15;
+      i16 = i14;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i21 = i9;
+      i22 = i8;
+      i23 = i7;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7476,22 +7427,22 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
-      j = i13;
-      i14 = i12;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i20 = i6;
-      i21 = i5;
-      i22 = i2;
-      i23 = i1;
+      m = i15;
+      i16 = i14;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i22 = i8;
+      i23 = i7;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7528,26 +7479,26 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
       label26973:
-      j = i2;
+      m = i4;
       label26977:
-      i22 = j;
-      j = i13;
-      i14 = i12;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i20 = i6;
-      i21 = i5;
-      i23 = i1;
-      i24 = i4;
+      i24 = m;
+      m = i15;
+      i16 = i14;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i22 = i8;
+      i23 = i7;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7584,26 +7535,26 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
       label27188:
-      j = i1;
+      m = i3;
       label27192:
-      i23 = j;
-      j = i13;
-      i14 = i12;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i20 = i6;
-      i21 = i5;
-      i22 = i2;
+      i25 = m;
+      m = i15;
+      i16 = i14;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i22 = i8;
+      i23 = i7;
       i24 = i4;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7640,25 +7591,25 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i26 = n;
-      i27 = m;
+      i27 = i5;
+      i28 = i2;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
-      j = n;
-      i26 = j;
-      j = i13;
-      i14 = i12;
-      i15 = i11;
-      i16 = i10;
-      i17 = i9;
-      i18 = i8;
-      i19 = i7;
-      i20 = i6;
-      i21 = i5;
-      i22 = i2;
-      i23 = i1;
+      m = i2;
+      i28 = m;
+      m = i15;
+      i16 = i14;
+      i17 = i13;
+      i18 = i12;
+      i19 = i11;
+      i20 = i10;
+      i21 = i9;
+      i22 = i8;
+      i23 = i7;
       i24 = i4;
+      i25 = i3;
+      i26 = i6;
       localObject38 = localObject37;
       localObject39 = localObject36;
       localObject40 = localObject35;
@@ -7695,17 +7646,17 @@ public class HotReactiveHelper
       localObject71 = localObject4;
       localObject72 = localObject3;
       localObject73 = localObject2;
-      i25 = i3;
-      i27 = m;
+      i27 = i5;
+      i29 = i1;
       localObject74 = localObject1;
       break label27830;
       label27618:
-      j = m;
+      m = i1;
       label27622:
       localObject74 = localObject1;
-      i27 = j;
-      i26 = n;
-      i25 = i3;
+      i29 = m;
+      i28 = i2;
+      i27 = i5;
       localObject73 = localObject2;
       localObject72 = localObject3;
       localObject71 = localObject4;
@@ -7742,23 +7693,23 @@ public class HotReactiveHelper
       localObject40 = localObject35;
       localObject39 = localObject36;
       localObject38 = localObject37;
+      i26 = i6;
+      i25 = i3;
       i24 = i4;
-      i23 = i1;
-      i22 = i2;
-      i21 = i5;
-      i20 = i6;
-      i19 = i7;
-      i18 = i8;
-      i17 = i9;
-      i16 = i10;
-      i15 = i11;
-      i14 = i12;
-      j = i13;
+      i23 = i7;
+      i22 = i8;
+      i21 = i9;
+      i20 = i10;
+      i19 = i11;
+      i18 = i12;
+      i17 = i13;
+      i16 = i14;
+      m = i15;
       label27830:
       localObject1 = localObject74;
-      int m = i27;
-      int n = i26;
-      int i3 = i25;
+      int i1 = i29;
+      int i2 = i28;
+      int i5 = i27;
       localObject2 = localObject73;
       Object localObject3 = localObject72;
       Object localObject4 = localObject71;
@@ -7795,47 +7746,29 @@ public class HotReactiveHelper
       Object localObject35 = localObject40;
       Object localObject36 = localObject39;
       Object localObject37 = localObject38;
+      int i6 = i26;
+      int i3 = i25;
       int i4 = i24;
-      int i1 = i23;
-      int i2 = i22;
-      int i5 = i21;
-      int i6 = i20;
-      int i7 = i19;
-      int i8 = i18;
-      int i9 = i17;
-      int i10 = i16;
-      i16 = i;
-      int i11 = i15;
-      int i12 = i14;
-      i = k;
-      int i13 = j;
-      j = i16;
+      int i7 = i23;
+      int i8 = i22;
+      int i9 = i21;
+      int i10 = i20;
+      int i11 = i19;
+      int i12 = i18;
+      i18 = k;
+      int i13 = i17;
+      int i14 = i16;
+      k = n;
+      int i15 = m;
+      m = i18;
     }
   }
   
   public static void a(ExtensionInfo paramExtensionInfo)
   {
     if (paramExtensionInfo != null) {
-      jdField_a_of_type_JavaUtilHashSet.add(paramExtensionInfo);
+      j.add(paramExtensionInfo);
     }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_b_of_type_Boolean) {
-      return jdField_a_of_type_Boolean;
-    }
-    jdField_a_of_type_Boolean = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getBoolean("hot_friend_new_boat_big_use_new", false);
-    jdField_b_of_type_Boolean = true;
-    if (QLog.isColorLevel())
-    {
-      String str = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isNewVersionBoat local:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
-      QLog.d(str, 2, localStringBuilder.toString());
-    }
-    return jdField_a_of_type_Boolean;
   }
   
   public static boolean a(int paramInt, long paramLong)
@@ -7850,7 +7783,7 @@ public class HotReactiveHelper
       bool1 = bool2;
       if (paramInt < 24)
       {
-        if (TimeFormatterUtils.c(paramLong) == 2131719716) {
+        if (TimeFormatterUtils.c(paramLong) == 2131917319) {
           return false;
         }
         bool1 = true;
@@ -7864,16 +7797,46 @@ public class HotReactiveHelper
     return TimeFormatterUtils.a(NetConnInfoCenter.getServerTimeMillis());
   }
   
-  public static String b()
+  public static List<HotReactiveHelper.HighLightUrlPattern> b(Context paramContext, String paramString)
   {
-    String str = a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append(e);
-    return localStringBuilder.toString();
+    ArrayList localArrayList = new ArrayList();
+    paramContext = paramString;
+    int m = 0;
+    int k = 0;
+    while (m >= 0)
+    {
+      m = paramContext.indexOf("(", k);
+      if (m < 0) {
+        break;
+      }
+      k = paramContext.indexOf(")[", m);
+      if (k < 0) {
+        break;
+      }
+      int n = paramContext.indexOf("]", k);
+      if (n < 0) {
+        break;
+      }
+      paramString = new HotReactiveHelper.HighLightUrlPattern();
+      paramString.a = paramContext.substring(m + 1, k);
+      paramString.c = m;
+      paramString.b = paramContext.substring(k + 2, n);
+      paramContext = paramContext.replace(paramContext.substring(m, n + 1), paramString.a);
+      k = paramString.a.length() + n;
+      localArrayList.add(paramString);
+    }
+    paramString = new HotReactiveHelper.HighLightUrlPattern();
+    paramString.a = paramContext;
+    localArrayList.add(0, paramString);
+    return localArrayList;
   }
   
-  public static void b(Context paramContext, String paramString)
+  public static String c()
+  {
+    return VFSAssistantUtils.getSDKPrivatePath(d);
+  }
+  
+  public static void c(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
     if (!TextUtils.isEmpty(paramString)) {
@@ -7882,18 +7845,50 @@ public class HotReactiveHelper
     paramContext.commit();
   }
   
-  public static String c()
+  public static String d()
   {
-    String str = a();
+    String str = c();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(e);
+    return localStringBuilder.toString();
+  }
+  
+  public static String e()
+  {
+    String str = c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append(f);
     return localStringBuilder.toString();
   }
+  
+  public static HashSet<ExtensionInfo> f()
+  {
+    return j;
+  }
+  
+  public static boolean g()
+  {
+    if (i) {
+      return h;
+    }
+    h = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getBoolean("hot_friend_new_boat_big_use_new", false);
+    i = true;
+    if (QLog.isColorLevel())
+    {
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isNewVersionBoat local:");
+      localStringBuilder.append(h);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    return h;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.HotReactiveHelper
  * JD-Core Version:    0.7.0.1
  */

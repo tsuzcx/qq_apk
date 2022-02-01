@@ -36,7 +36,7 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
       localStringBuilder.append(" ");
       localStringBuilder.append(interfaceDesc());
       localStringBuilder.append(" _addAction");
-      QLog.w("TRAE", 2, localStringBuilder.toString());
+      QLog.w("TraeAudioManager", 2, localStringBuilder.toString());
     }
     paramIntentFilter.addAction("android.bluetooth.headset.action.AUDIO_STATE_CHANGED");
     paramIntentFilter.addAction("android.bluetooth.headset.action.STATE_CHANGED");
@@ -57,21 +57,21 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
         paramContext = new StringBuilder();
         paramContext.append("++ AUDIO_STATE_CHANGED|  STATE ");
         paramContext.append(i);
-        QLog.w("TRAE", 2, paramContext.toString());
+        QLog.w("TraeAudioManager", 2, paramContext.toString());
       }
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("       PREVIOUS_STATE ");
         paramContext.append(j);
-        QLog.w("TRAE", 2, paramContext.toString());
+        QLog.w("TraeAudioManager", 2, paramContext.toString());
       }
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("       AUDIO_STATE ");
         paramContext.append(k);
-        QLog.w("TRAE", 2, paramContext.toString());
+        QLog.w("TraeAudioManager", 2, paramContext.toString());
       }
       if (k == 2)
       {
@@ -92,21 +92,21 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
         paramContext = new StringBuilder();
         paramContext.append("++ STATE_CHANGED|  STATE ");
         paramContext.append(i);
-        QLog.w("TRAE", 2, paramContext.toString());
+        QLog.w("TraeAudioManager", 2, paramContext.toString());
       }
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("       PREVIOUS_STATE ");
         paramContext.append(j);
-        QLog.w("TRAE", 2, paramContext.toString());
+        QLog.w("TraeAudioManager", 2, paramContext.toString());
       }
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("       AUDIO_STATE ");
         paramContext.append(k);
-        QLog.w("TRAE", 2, paramContext.toString());
+        QLog.w("TraeAudioManager", 2, paramContext.toString());
       }
       if (k == 2)
       {
@@ -139,7 +139,7 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
       break label43;
     }
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, "BTLooperThread BluetoothHeadset class not found");
+      QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset class not found");
     }
     if (this.BluetoothHeadsetClass == null) {
       return false;
@@ -155,7 +155,7 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("BTLooperThread BluetoothHeadset.ServiceListener class not found:");
         localStringBuilder.append(paramDeviceConfigManager);
-        QLog.e("TRAE", 2, localStringBuilder.toString());
+        QLog.e("TraeAudioManager", 2, localStringBuilder.toString());
       }
     }
     paramDeviceConfigManager = this.ListenerClass;
@@ -174,7 +174,7 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
       break label141;
     }
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset NoSuchMethodException");
+      QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset NoSuchMethodException");
     }
     if (this.getCurrentHeadsetMethod == null) {
       return false;
@@ -206,22 +206,22 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
     }
     if (QLog.isColorLevel())
     {
-      QLog.e("TRAE", 2, "BTLooperThread BluetoothHeadset getConstructor NoSuchMethodException");
+      QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor NoSuchMethodException");
       break label291;
       if (QLog.isColorLevel())
       {
-        QLog.e("TRAE", 2, "BTLooperThread BluetoothHeadset getConstructor InvocationTargetException");
+        QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor InvocationTargetException");
         break label291;
         if (QLog.isColorLevel())
         {
-          QLog.e("TRAE", 2, "BTLooperThread BluetoothHeadset getConstructor IllegalAccessException");
+          QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor IllegalAccessException");
           break label291;
           if (QLog.isColorLevel())
           {
-            QLog.e("TRAE", 2, "BTLooperThread BluetoothHeadset getConstructor InstantiationException");
+            QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor InstantiationException");
             break label291;
             if (QLog.isColorLevel()) {
-              QLog.e("TRAE", 2, "BTLooperThread BluetoothHeadset getConstructor IllegalArgumentException");
+              QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor IllegalArgumentException");
             }
           }
         }
@@ -283,14 +283,14 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
     }
     if (QLog.isColorLevel())
     {
-      QLog.w("TRAE", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset InvocationTargetException");
+      QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset InvocationTargetException");
       break label83;
       if (QLog.isColorLevel())
       {
-        QLog.w("TRAE", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalAccessException");
+        QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalAccessException");
         break label83;
         if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalArgumentException");
+          QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalArgumentException");
         }
       }
     }
@@ -306,7 +306,7 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
         str = "N";
       }
       localStringBuilder.append(str);
-      QLog.w("TRAE", 2, localStringBuilder.toString());
+      QLog.w("TraeAudioManager", 2, localStringBuilder.toString());
     }
     bool1 = bool2;
     if (localObject != null) {
@@ -332,7 +332,7 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
       break label30;
     }
     if (QLog.isColorLevel()) {
-      QLog.e("TRAE", 2, "BTLooperThread _uninitHeadsetfor2x method close NoSuchMethodException");
+      QLog.e("TraeAudioManager", 2, "BTLooperThread _uninitHeadsetfor2x method close NoSuchMethodException");
     }
     localMethod = null;
     if (localMethod == null) {
@@ -349,7 +349,7 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("close bluetooth headset failed.");
         localStringBuilder.append(localException.getMessage());
-        QLog.e("TRAE", 2, localStringBuilder.toString());
+        QLog.e("TraeAudioManager", 2, localStringBuilder.toString());
       }
     }
     this.BluetoothHeadsetClass = null;
@@ -361,7 +361,7 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.BluetoohHeadsetCheckFor2x
  * JD-Core Version:    0.7.0.1
  */

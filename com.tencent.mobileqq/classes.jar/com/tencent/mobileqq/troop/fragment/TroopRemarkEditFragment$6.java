@@ -21,9 +21,9 @@ class TroopRemarkEditFragment$6
     Object localObject = new QQText(paramCharSequence, 3);
     try
     {
-      if ((((QQText)localObject).toString().getBytes("utf-8").length > TroopRemarkEditFragment.a) && ((paramCharSequence instanceof Editable)))
+      if ((((QQText)localObject).toString().getBytes("utf-8").length > TroopRemarkEditFragment.e) && ((paramCharSequence instanceof Editable)))
       {
-        TextUtils.backspace(TroopRemarkEditFragment.a(this.a));
+        TextUtils.backspace(TroopRemarkEditFragment.b(this.a));
         return;
       }
     }
@@ -41,7 +41,7 @@ class TroopRemarkEditFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fragment.TroopRemarkEditFragment.6
  * JD-Core Version:    0.7.0.1
  */

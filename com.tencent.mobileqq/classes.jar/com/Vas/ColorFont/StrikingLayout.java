@@ -15,42 +15,42 @@ import java.util.List;
 public class StrikingLayout
   extends FounderColorLayout
 {
-  private Paint c;
-  private int[] h;
+  private Paint I;
+  private int[] J;
   
   public StrikingLayout(IETextView paramIETextView, ETFont paramETFont)
   {
     super(paramIETextView, paramETFont);
   }
   
-  private void l()
+  private void o()
   {
-    if (this.jdField_c_of_type_AndroidGraphicsCanvas == null) {
-      this.jdField_c_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (this.d == null) {
+      this.d = new Canvas(this.o);
     } else {
-      this.jdField_c_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.d.setBitmap(this.o);
     }
-    if (this.jdField_c_of_type_AndroidGraphicsPaint == null)
+    if (this.I == null)
     {
-      this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_c_of_type_AndroidGraphicsPaint.setColor(-16777216);
+      this.I = new Paint();
+      this.I.setColor(-16777216);
     }
-    this.jdField_h_of_type_ArrayOfInt = new int[this.jdField_b_of_type_JavaUtilList.size()];
+    this.J = new int[this.f.size()];
     int i = 0;
-    while (i < this.jdField_b_of_type_JavaUtilList.size())
+    while (i < this.f.size())
     {
-      ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)this.jdField_b_of_type_JavaUtilList.get(i);
-      if (!localModelFastColorFont.jdField_a_of_type_Boolean)
+      ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)this.f.get(i);
+      if (!localModelFastColorFont.h)
       {
-        this.jdField_h_of_type_ArrayOfInt[i] = 0;
+        this.J[i] = 0;
       }
       else
       {
-        this.jdField_h_of_type_ArrayOfInt[i] = 1;
-        this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(localModelFastColorFont.jdField_c_of_type_Int);
-        float f1 = localModelFastColorFont.jdField_c_of_type_Int / 2.0F;
-        float f2 = (this.jdField_c_of_type_AndroidGraphicsPaint.descent() + this.jdField_c_of_type_AndroidGraphicsPaint.ascent()) / 2.0F;
-        this.jdField_c_of_type_AndroidGraphicsCanvas.drawText(String.valueOf(localModelFastColorFont.jdField_a_of_type_Char), localModelFastColorFont.jdField_d_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + (f1 - f2), this.jdField_c_of_type_AndroidGraphicsPaint);
+        this.J[i] = 1;
+        this.I.setTextSize(localModelFastColorFont.d);
+        float f1 = localModelFastColorFont.d / 2.0F;
+        float f2 = (this.I.descent() + this.I.ascent()) / 2.0F;
+        this.d.drawText(String.valueOf(localModelFastColorFont.b), localModelFastColorFont.e, localModelFastColorFont.f + (f1 - f2), this.I);
       }
       i += 1;
     }
@@ -58,67 +58,67 @@ public class StrikingLayout
   
   public boolean a(Canvas paramCanvas)
   {
-    if (b())
+    if (m())
     {
       a("StrikingLayout::onDraw view宽高为0或超过屏幕尺寸！");
       return false;
     }
-    if (!a())
+    if (!k())
     {
       a("StrikingLayout::onDraw 创建bitmap失败！");
       return false;
     }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((this.e != null) && (!this.e.isEmpty()))
     {
-      if (this.jdField_a_of_type_ArrayOfInt.length <= 0)
+      if (this.m.length <= 0)
       {
-        a(HardCodeUtil.a(2131714371));
+        a(HardCodeUtil.a(2131911884));
         return false;
       }
       long l = System.nanoTime();
       c();
-      b(paramCanvas);
-      l();
-      FastColorFontCache.b(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-      int i = FastColorFontCache.g(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
+      c(paramCanvas);
+      o();
+      FastColorFontCache.b(this.q.mFontId);
+      int i = FastColorFontCache.g(this.q.mFontId);
       StringBuilder localStringBuilder;
-      if ((!this.jdField_b_of_type_Boolean) && (this.jdField_h_of_type_Int > 0) && (this.jdField_h_of_type_Int < 6))
+      if ((!this.D) && (this.x > 0) && (this.x < 6))
       {
-        if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation)
+        if (this.q.mShouldDisplayAnimation)
         {
-          FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_h_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.g - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.j, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_i_of_type_ArrayOfInt, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex);
-          k();
-          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
-          if (this.jdField_e_of_type_Int == 0) {
+          FastColorFontHelper.a().a(this.q.mFontId, this.m, this.n, this.u, this.v, this.w, this.J, this.o, null, this.k - this.g - this.h, this.l - this.i - this.j, this.x, this.y, this.z, this.q.mAnimationId, this.s, this.p, this.q.mComboIndex);
+          n();
+          paramCanvas.drawBitmap(this.o, this.g, this.i, null);
+          if (this.s == 0) {
             b();
           }
-          if (FastColorFontHelper.jdField_a_of_type_Boolean)
+          if (FastColorFontHelper.a)
           {
-            paramCanvas = a();
+            paramCanvas = f();
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("字数：");
-            localStringBuilder.append(this.jdField_a_of_type_ArrayOfInt.length);
+            localStringBuilder.append(this.m.length);
             localStringBuilder.append("\n   字号：");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getTextSize());
+            localStringBuilder.append(this.b.getTextSize());
             localStringBuilder.append("px\n");
             FastColorFontLog.a(paramCanvas, l, localStringBuilder.toString());
             a("StrikingLayout::onDraw......");
           }
           return true;
         }
-        if ((!this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation) && (i == 1))
+        if ((!this.q.mShouldDisplayAnimation) && (i == 1))
         {
-          FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_h_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.g - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.j, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_i_of_type_ArrayOfInt[0], this.jdField_i_of_type_ArrayOfInt, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex);
-          k();
-          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
-          if (FastColorFontHelper.jdField_a_of_type_Boolean)
+          FastColorFontHelper.a().a(this.q.mFontId, this.m, this.n, this.u, this.v, this.w, this.J, this.o, null, this.k - this.g - this.h, this.l - this.i - this.j, this.x, this.y, this.z, this.q.mAnimationId, this.p[0], this.p, this.q.mComboIndex);
+          n();
+          paramCanvas.drawBitmap(this.o, this.g, this.i, null);
+          if (FastColorFontHelper.a)
           {
-            paramCanvas = a();
+            paramCanvas = f();
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("字数：");
-            localStringBuilder.append(this.jdField_a_of_type_ArrayOfInt.length);
+            localStringBuilder.append(this.m.length);
             localStringBuilder.append("\n   字号：");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getTextSize());
+            localStringBuilder.append(this.b.getTextSize());
             localStringBuilder.append("px\n");
             FastColorFontLog.a(paramCanvas, l, localStringBuilder.toString());
             a("StrikingLayout::onDraw......");
@@ -126,119 +126,119 @@ public class StrikingLayout
           return true;
         }
       }
-      this.jdField_f_of_type_ArrayOfInt = new int[0];
-      FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.g - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.k, this.jdField_f_of_type_ArrayOfInt, this.l);
-      j();
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
-      if (jdField_a_of_type_Boolean) {
-        a(paramCanvas);
+      this.B = new int[0];
+      FastColorFontHelper.a().a(this.q.mFontId, this.m, this.n, this.u, this.v, this.w, this.o, this.k - this.g - this.h, this.l - this.i - this.j, this.A, this.B, this.C);
+      l();
+      paramCanvas.drawBitmap(this.o, this.g, this.i, null);
+      if (a) {
+        b(paramCanvas);
       }
-      if (FastColorFontHelper.jdField_a_of_type_Boolean)
+      if (FastColorFontHelper.a)
       {
-        paramCanvas = a();
+        paramCanvas = f();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("字数：");
-        localStringBuilder.append(this.jdField_a_of_type_ArrayOfInt.length);
+        localStringBuilder.append(this.m.length);
         localStringBuilder.append("\n   字号：");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getTextSize());
+        localStringBuilder.append(this.b.getTextSize());
         localStringBuilder.append("px\n");
         FastColorFontLog.a(paramCanvas, l, localStringBuilder.toString());
         a("StrikingLayout::onDraw......");
       }
       return true;
     }
-    a(HardCodeUtil.a(2131714370));
+    a(HardCodeUtil.a(2131911883));
     return false;
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (!b()))
+    if ((this.q != null) && (!m()))
     {
-      if (this.jdField_a_of_type_ArrayOfInt.length <= 0) {
+      if (this.m.length <= 0) {
         return;
       }
-      if ((this.jdField_h_of_type_Int > 0) && (this.jdField_h_of_type_Int <= 5) && (!this.jdField_b_of_type_Boolean))
+      if ((this.x > 0) && (this.x <= 5) && (!this.D))
       {
-        if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
+        if ((this.r != null) && (this.r.isRunning())) {
           return;
         }
-        if (FastColorFontHelper.jdField_a_of_type_Boolean)
+        if (FastColorFontHelper.a)
         {
-          str = a();
+          str = f();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("StartAnimation......animInfo:");
-          localStringBuilder.append(Arrays.toString(this.jdField_i_of_type_ArrayOfInt));
+          localStringBuilder.append(Arrays.toString(this.p));
           FastColorFontLog.a(str, localStringBuilder.toString());
         }
-        if ((this.jdField_i_of_type_ArrayOfInt[0] > 0) && (this.jdField_i_of_type_ArrayOfInt[1] > 0))
+        if ((this.p[0] > 0) && (this.p[1] > 0))
         {
-          h();
+          i();
           return;
         }
-        this.jdField_e_of_type_Int = 0;
-        FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_h_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.g - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.j, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_i_of_type_ArrayOfInt, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex);
-        if ((this.jdField_i_of_type_ArrayOfInt[0] > 0) && (this.jdField_i_of_type_ArrayOfInt[1] > 0))
+        this.s = 0;
+        FastColorFontHelper.a().a(this.q.mFontId, this.m, this.n, this.u, this.v, this.w, this.J, this.o, null, this.k - this.g - this.h, this.l - this.i - this.j, this.x, this.y, this.z, this.q.mAnimationId, this.s, this.p, this.q.mComboIndex);
+        if ((this.p[0] > 0) && (this.p[1] > 0))
         {
-          h();
+          i();
           return;
         }
-        str = a();
+        str = f();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("StartAnimation......动画帧数和帧间隔数据异常 animInfo:");
-        localStringBuilder.append(Arrays.toString(this.jdField_i_of_type_ArrayOfInt));
+        localStringBuilder.append(Arrays.toString(this.p));
         FastColorFontLog.b(str, localStringBuilder.toString());
         return;
       }
-      String str = a();
+      String str = f();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("0行或超过5行或全EMOJI不支持播放动画...");
-      localStringBuilder.append(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath);
+      localStringBuilder.append(this.q.mFontPath);
       FastColorFontLog.b(str, localStringBuilder.toString());
     }
   }
   
-  protected void k()
+  protected void n()
   {
-    int j = (int)(this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getTextSize() / 15.0F);
-    if (this.jdField_b_of_type_AndroidGraphicsCanvas == null) {
-      this.jdField_b_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    int j = (int)(this.b.getTextSize() / 15.0F);
+    if (this.c == null) {
+      this.c = new Canvas(this.o);
     } else {
-      this.jdField_b_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.c.setBitmap(this.o);
     }
-    int k = this.jdField_b_of_type_JavaUtilList.size();
+    int k = this.f.size();
     int i = 0;
     while (i < k)
     {
-      ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)this.jdField_b_of_type_JavaUtilList.get(i);
-      int m = localModelFastColorFont.jdField_a_of_type_Int;
+      ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)this.f.get(i);
+      int m = localModelFastColorFont.a;
       Object localObject;
       if (m != 1)
       {
         if (m == 2)
         {
-          this.jdField_b_of_type_AndroidGraphicsCanvas.drawRect(localModelFastColorFont.jdField_d_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int, localModelFastColorFont.jdField_d_of_type_Int + localModelFastColorFont.jdField_b_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-          if ((localModelFastColorFont.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof EmoticonSpan))
+          this.c.drawRect(localModelFastColorFont.e, localModelFastColorFont.f, localModelFastColorFont.e + localModelFastColorFont.c, localModelFastColorFont.f + localModelFastColorFont.d, this.E);
+          if ((localModelFastColorFont.i instanceof EmoticonSpan))
           {
-            localObject = (EmoticonSpan)localModelFastColorFont.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-            Canvas localCanvas = this.jdField_b_of_type_AndroidGraphicsCanvas;
-            float f = localModelFastColorFont.jdField_d_of_type_Int;
-            m = localModelFastColorFont.jdField_e_of_type_Int;
-            int n = localModelFastColorFont.jdField_e_of_type_Int;
-            ((EmoticonSpan)localObject).draw(localCanvas, null, 0, 0, f, m, localModelFastColorFont.jdField_c_of_type_Int + n, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaint());
+            localObject = (EmoticonSpan)localModelFastColorFont.i;
+            Canvas localCanvas = this.c;
+            float f = localModelFastColorFont.e;
+            m = localModelFastColorFont.f;
+            int n = localModelFastColorFont.f;
+            ((EmoticonSpan)localObject).draw(localCanvas, null, 0, 0, f, m, localModelFastColorFont.d + n, localModelFastColorFont.f + localModelFastColorFont.d, this.b.getPaint());
           }
-          else if ((localModelFastColorFont.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof SignatureActionSpan))
+          else if ((localModelFastColorFont.i instanceof SignatureActionSpan))
           {
-            localObject = (SignatureActionSpan)localModelFastColorFont.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-            ((SignatureActionSpan)localObject).jdField_a_of_type_Boolean = false;
-            ((SignatureActionSpan)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localModelFastColorFont.jdField_d_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaint());
+            localObject = (SignatureActionSpan)localModelFastColorFont.i;
+            ((SignatureActionSpan)localObject).c = false;
+            ((SignatureActionSpan)localObject).draw(this.c, null, 0, 0, localModelFastColorFont.e, localModelFastColorFont.f, localModelFastColorFont.f, localModelFastColorFont.f + localModelFastColorFont.d, this.b.getPaint());
           }
         }
       }
       else
       {
-        localObject = a(localModelFastColorFont.jdField_b_of_type_Int, j);
-        this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, localModelFastColorFont.jdField_d_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int - j, this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaint());
+        localObject = a(localModelFastColorFont.c, j);
+        this.c.drawBitmap((Bitmap)localObject, localModelFastColorFont.e, localModelFastColorFont.f + localModelFastColorFont.d - j, this.b.getPaint());
       }
       i += 1;
     }

@@ -17,34 +17,8 @@ import mqq.app.AppRuntime;
 public class QzoneQbossHelper
   extends QZoneObserver
 {
-  private static QzoneQbossHelper jdField_a_of_type_CooperationVipQbossQzoneQbossHelper;
-  private WeakReference<IQbossCallback> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public QzoneQbossHelper()
-  {
-    this.a = null;
-  }
-  
-  public static Boolean a(String paramString)
-  {
-    boolean bool = PackageUtil.a(BaseApplicationImpl.getContext(), paramString);
-    if (QZLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("QBoss filter : ");
-      String str;
-      if (bool) {
-        str = "";
-      } else {
-        str = "not ";
-      }
-      localStringBuilder.append(str);
-      localStringBuilder.append("install PkgName = ");
-      localStringBuilder.append(paramString);
-      QZLog.d("QzoneQbossHelper", 4, localStringBuilder.toString());
-    }
-    return Boolean.valueOf(bool);
-  }
+  private static QzoneQbossHelper a;
+  private WeakReference<IQbossCallback> b = null;
   
   public static String a(String paramString)
   {
@@ -75,10 +49,31 @@ public class QzoneQbossHelper
     return null;
   }
   
+  public static Boolean b(String paramString)
+  {
+    boolean bool = PackageUtil.d(BaseApplicationImpl.getContext(), paramString);
+    if (QZLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QBoss filter : ");
+      String str;
+      if (bool) {
+        str = "";
+      } else {
+        str = "not ";
+      }
+      localStringBuilder.append(str);
+      localStringBuilder.append("install PkgName = ");
+      localStringBuilder.append(paramString);
+      QZLog.d("QzoneQbossHelper", 4, localStringBuilder.toString());
+    }
+    return Boolean.valueOf(bool);
+  }
+  
   protected void h(boolean paramBoolean, Bundle paramBundle)
   {
     String str1 = paramBundle.getString("requestType");
-    Object localObject = this.a;
+    Object localObject = this.b;
     if (localObject != null) {
       localObject = (IQbossCallback)((WeakReference)localObject).get();
     } else {
@@ -105,7 +100,7 @@ public class QzoneQbossHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qboss.QzoneQbossHelper
  * JD-Core Version:    0.7.0.1
  */

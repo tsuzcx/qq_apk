@@ -9,7 +9,7 @@ import java.util.ArrayList;
 class DownloadManager$22
   implements ITMAssistantDownloadLogListener
 {
-  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
+  SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
   
   DownloadManager$22(DownloadManager paramDownloadManager) {}
   
@@ -22,7 +22,7 @@ class DownloadManager$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.22
  * JD-Core Version:    0.7.0.1
  */

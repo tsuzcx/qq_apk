@@ -15,7 +15,7 @@ final class AutoReplyUtil$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 0);
+    Object localObject = this.a.getMessageFacade().h(this.b, 0);
     if (localObject == null) {
       return;
     }
@@ -29,7 +29,7 @@ final class AutoReplyUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.chat.autoreply.AutoReplyUtil.1
  * JD-Core Version:    0.7.0.1
  */

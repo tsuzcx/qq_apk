@@ -36,52 +36,6 @@ public class SonicTemplateUpdateManager
     this.a = paramQQAppInterface;
   }
   
-  @Nullable
-  private JSONArray a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicTemplateUpdateManager", 2, "parseJson begin");
-    }
-    Object localObject = a();
-    if (localObject == null)
-    {
-      QLog.e("SonicTemplateUpdateManager", 1, "parseJson rootObj = null");
-      return null;
-    }
-    localObject = ((JSONObject)localObject).optJSONArray("sonicTemplateUpdate");
-    if ((localObject != null) && (((JSONArray)localObject).length() >= 1)) {
-      return localObject;
-    }
-    QLog.e("SonicTemplateUpdateManager", 1, "parseJson configs = null or len < 1");
-    return null;
-  }
-  
-  private JSONObject a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.a.getApplication().getFilesDir());
-    ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append("sonicTemplateUpdate.json");
-    localObject = new File(((StringBuilder)localObject).toString());
-    if (((File)localObject).exists()) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(FileUtils.readFileContent((File)localObject));
-        return localJSONObject;
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("SonicTemplateUpdateManager", 2, "getJsonOOM,json_name:sonicTemplateUpdate.json", localThrowable);
-        }
-        ((File)localObject).delete();
-      }
-    } else {
-      ((IVasQuickUpdateService)this.a.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1001L, "sonicTemplateUpdate.json", "getJSONFromLocal");
-    }
-    return null;
-  }
-  
   private void a(JSONArray paramJSONArray, int paramInt, Map<String, Long> paramMap)
   {
     int i = 0;
@@ -127,6 +81,52 @@ public class SonicTemplateUpdateManager
     return bool;
   }
   
+  private JSONObject c()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.a.getApplication().getFilesDir());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("sonicTemplateUpdate.json");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (((File)localObject).exists()) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(FileUtils.readFileContent((File)localObject));
+        return localJSONObject;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("SonicTemplateUpdateManager", 2, "getJsonOOM,json_name:sonicTemplateUpdate.json", localThrowable);
+        }
+        ((File)localObject).delete();
+      }
+    } else {
+      ((IVasQuickUpdateService)this.a.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1001L, "sonicTemplateUpdate.json", "getJSONFromLocal");
+    }
+    return null;
+  }
+  
+  @Nullable
+  private JSONArray d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicTemplateUpdateManager", 2, "parseJson begin");
+    }
+    Object localObject = c();
+    if (localObject == null)
+    {
+      QLog.e("SonicTemplateUpdateManager", 1, "parseJson rootObj = null");
+      return null;
+    }
+    localObject = ((JSONObject)localObject).optJSONArray("sonicTemplateUpdate");
+    if ((localObject != null) && (((JSONArray)localObject).length() >= 1)) {
+      return localObject;
+    }
+    QLog.e("SonicTemplateUpdateManager", 1, "parseJson configs = null or len < 1");
+    return null;
+  }
+  
   public void a()
   {
     boolean bool;
@@ -152,7 +152,7 @@ public class SonicTemplateUpdateManager
   
   public void b()
   {
-    Object localObject1 = a();
+    Object localObject1 = d();
     if (localObject1 == null) {
       return;
     }
@@ -211,7 +211,7 @@ public class SonicTemplateUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SonicTemplateUpdateManager
  * JD-Core Version:    0.7.0.1
  */

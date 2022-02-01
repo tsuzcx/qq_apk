@@ -17,15 +17,15 @@ class TianshuBigInsertPage$2
   public void onClick(View paramView)
   {
     TianshuBigInsertPage.a(this.a);
-    if ((TianshuBigInsertPage.a(this.a) != null) && (TianshuBigInsertPage.a(this.a).a() != null) && (((BaseActivity)TianshuBigInsertPage.a(this.a).a()).app != null) && (TianshuBigInsertPage.a(this.a) != null)) {
-      TianshuAdUtils.a(((BaseActivity)TianshuBigInsertPage.a(this.a).a()).app, 122, String.valueOf(TianshuBigInsertPage.a(this.a).iAdId.get()), TianshuBigInsertPage.a(this.a).traceinfo.get());
+    if ((TianshuBigInsertPage.b(this.a) != null) && (TianshuBigInsertPage.b(this.a).P() != null) && (((BaseActivity)TianshuBigInsertPage.b(this.a).P()).app != null) && (TianshuBigInsertPage.c(this.a) != null)) {
+      TianshuAdUtils.a(((BaseActivity)TianshuBigInsertPage.b(this.a).P()).app, 122, String.valueOf(TianshuBigInsertPage.c(this.a).iAdId.get()), TianshuBigInsertPage.c(this.a).traceinfo.get());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBigInsertPage.2
  * JD-Core Version:    0.7.0.1
  */

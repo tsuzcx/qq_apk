@@ -16,7 +16,7 @@ public abstract class ShareGroupIconManager$LoadBitmapCallBack
   
   public final void b(@NonNull ShareGroupDrawableState paramShareGroupDrawableState)
   {
-    a(paramShareGroupDrawableState.a());
+    a(paramShareGroupDrawableState.b());
   }
 }
 

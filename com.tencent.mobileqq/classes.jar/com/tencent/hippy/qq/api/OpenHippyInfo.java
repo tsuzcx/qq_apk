@@ -46,38 +46,78 @@ public class OpenHippyInfo
   public static final String EXTRA_KEY_PAGE_URL = "url";
   public static final String EXTRA_KEY_PARAMS = "params";
   public static final String EXTRA_KEY_PROCESS_NAME = "processName";
+  public static final String EXTRA_KEY_UPDATE_JS_BUNDLE_TYPE = "updateJsBundleType";
   public static final String PROCESS_NAME_LOCAL = "local";
   public static final String PROCESS_NAME_MAIN = "main";
   public static final String PROCESS_NAME_TOOL = "tool";
   public static final String TAG = "HippyAccessHelper";
+  public static final int UPDATE_JS_BUNDLE_TYPE_DEFAULT = 0;
+  public static final int UPDATE_JS_BUNDLE_TYPE_NO_WAIT = 1;
   public Class<? extends QPublicFragmentActivity> activityClass;
   public String bundleName = null;
-  public String bundleUrl = null;
+  public String bundleUrl;
   public String domain = null;
   public String errorUrl = null;
   public Class<? extends QPublicBaseFragment> fragmentClass;
-  public String framework = null;
-  public String from = null;
-  public boolean isAnimated = false;
-  public boolean isDisablePreload = false;
-  public boolean isEnbaleRightFling = false;
-  private boolean isInToolProcess = false;
-  public boolean isLandscapeScreen = false;
-  public boolean isPredraw = false;
-  public boolean isPredrawWhenClosed = false;
-  public boolean isPreload = false;
-  public boolean isPreloadFromExitPage = false;
-  public boolean isPreloadWhenClosed = false;
-  public boolean isStatusBarDarkFont = false;
-  public boolean isTransparent = false;
+  public String framework;
+  public String from;
+  public boolean isAnimated;
+  public boolean isDisablePreload;
+  public boolean isEnbaleRightFling;
+  private boolean isInToolProcess;
+  public boolean isLandscapeScreen;
+  public boolean isPredraw;
+  public boolean isPredrawWhenClosed;
+  public boolean isPreload;
+  public boolean isPreloadFromExitPage;
+  public boolean isPreloadWhenClosed;
+  public boolean isStatusBarDarkFont;
+  public boolean isTransparent;
   public SerializableMap mExtraMap;
-  public String processName = null;
+  public String processName;
+  public int updateJsBundleType;
   public String url = null;
   
-  public OpenHippyInfo() {}
+  public OpenHippyInfo()
+  {
+    this.isPreload = false;
+    this.isPreloadWhenClosed = false;
+    this.isPredraw = false;
+    this.isPredrawWhenClosed = false;
+    this.isPreloadFromExitPage = false;
+    this.isDisablePreload = false;
+    this.isAnimated = false;
+    this.isTransparent = false;
+    this.isStatusBarDarkFont = false;
+    this.processName = null;
+    this.isInToolProcess = false;
+    this.isEnbaleRightFling = false;
+    this.from = null;
+    this.bundleUrl = null;
+    this.framework = null;
+    this.isLandscapeScreen = false;
+    this.updateJsBundleType = 0;
+  }
   
   public OpenHippyInfo(Bundle paramBundle)
   {
+    this.isPreload = false;
+    this.isPreloadWhenClosed = false;
+    this.isPredraw = false;
+    this.isPredrawWhenClosed = false;
+    this.isPreloadFromExitPage = false;
+    this.isDisablePreload = false;
+    this.isAnimated = false;
+    this.isTransparent = false;
+    this.isStatusBarDarkFont = false;
+    this.processName = null;
+    this.isInToolProcess = false;
+    this.isEnbaleRightFling = false;
+    this.from = null;
+    this.bundleUrl = null;
+    this.framework = null;
+    this.isLandscapeScreen = false;
+    this.updateJsBundleType = 0;
     if (paramBundle == null) {
       return;
     }
@@ -101,10 +141,28 @@ public class OpenHippyInfo
     this.from = paramBundle.getString("from");
     this.bundleUrl = paramBundle.getString("bundleUrl");
     this.framework = paramBundle.getString("framework");
+    this.updateJsBundleType = paramBundle.getInt("updateJsBundleType");
   }
   
   public OpenHippyInfo(HippyMap paramHippyMap)
   {
+    this.isPreload = false;
+    this.isPreloadWhenClosed = false;
+    this.isPredraw = false;
+    this.isPredrawWhenClosed = false;
+    this.isPreloadFromExitPage = false;
+    this.isDisablePreload = false;
+    this.isAnimated = false;
+    this.isTransparent = false;
+    this.isStatusBarDarkFont = false;
+    this.processName = null;
+    this.isInToolProcess = false;
+    this.isEnbaleRightFling = false;
+    this.from = null;
+    this.bundleUrl = null;
+    this.framework = null;
+    this.isLandscapeScreen = false;
+    this.updateJsBundleType = 0;
     if (paramHippyMap == null) {
       return;
     }
@@ -127,10 +185,29 @@ public class OpenHippyInfo
     this.from = paramHippyMap.getString("from");
     this.bundleUrl = paramHippyMap.getString("bundleUrl");
     this.framework = paramHippyMap.getString("framework");
+    this.updateJsBundleType = paramHippyMap.getInt("updateJsBundleType");
   }
   
   public OpenHippyInfo(HashMap<String, String> paramHashMap)
   {
+    int i = 0;
+    this.isPreload = false;
+    this.isPreloadWhenClosed = false;
+    this.isPredraw = false;
+    this.isPredrawWhenClosed = false;
+    this.isPreloadFromExitPage = false;
+    this.isDisablePreload = false;
+    this.isAnimated = false;
+    this.isTransparent = false;
+    this.isStatusBarDarkFont = false;
+    this.processName = null;
+    this.isInToolProcess = false;
+    this.isEnbaleRightFling = false;
+    this.from = null;
+    this.bundleUrl = null;
+    this.framework = null;
+    this.isLandscapeScreen = false;
+    this.updateJsBundleType = 0;
     if (paramHashMap == null) {
       return;
     }
@@ -153,10 +230,31 @@ public class OpenHippyInfo
     this.from = ((String)paramHashMap.get("from"));
     this.bundleUrl = ((String)paramHashMap.get("bundleUrl"));
     this.framework = ((String)paramHashMap.get("framework"));
+    if (paramHashMap.containsKey("updateJsBundleType")) {
+      i = Integer.parseInt((String)paramHashMap.get("updateJsBundleType"));
+    }
+    this.updateJsBundleType = i;
   }
   
   public OpenHippyInfo(JSONObject paramJSONObject)
   {
+    this.isPreload = false;
+    this.isPreloadWhenClosed = false;
+    this.isPredraw = false;
+    this.isPredrawWhenClosed = false;
+    this.isPreloadFromExitPage = false;
+    this.isDisablePreload = false;
+    this.isAnimated = false;
+    this.isTransparent = false;
+    this.isStatusBarDarkFont = false;
+    this.processName = null;
+    this.isInToolProcess = false;
+    this.isEnbaleRightFling = false;
+    this.from = null;
+    this.bundleUrl = null;
+    this.framework = null;
+    this.isLandscapeScreen = false;
+    this.updateJsBundleType = 0;
     if (paramJSONObject == null) {
       return;
     }
@@ -179,6 +277,7 @@ public class OpenHippyInfo
     this.from = paramJSONObject.optString("from");
     this.bundleUrl = paramJSONObject.optString("bundleUrl");
     this.framework = paramJSONObject.optString("framework");
+    this.updateJsBundleType = paramJSONObject.optInt("updateJsBundleType");
   }
   
   private Class<? extends QPublicFragmentActivity> getMainProcessStartActivityClass()
@@ -228,7 +327,7 @@ public class OpenHippyInfo
   
   public boolean checkData()
   {
-    return (!TextUtils.isEmpty(this.bundleName)) || (getProcessName() == null);
+    return (!TextUtils.isEmpty(this.bundleName)) && (getProcessName() != null);
   }
   
   public String getProcessName()
@@ -308,12 +407,13 @@ public class OpenHippyInfo
     localBundle.putString("from", this.from);
     localBundle.putString("bundleUrl", this.bundleUrl);
     localBundle.putString("framework", this.framework);
+    localBundle.putInt("updateJsBundleType", this.updateJsBundleType);
     return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.api.OpenHippyInfo
  * JD-Core Version:    0.7.0.1
  */

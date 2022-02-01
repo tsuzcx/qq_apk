@@ -12,17 +12,17 @@ final class VipInfoHandler$1
   {
     synchronized ()
     {
-      if (VipInfoHandler.a().get(this.jdField_a_of_type_JavaLangString) != this.jdField_a_of_type_MQQPayRuleCfg) {
+      if (VipInfoHandler.b().get(this.a) != this.b) {
         return;
       }
-      VipInfoHandler.a(this.jdField_a_of_type_JavaLangString, "payRule.cfg", this.jdField_a_of_type_MQQPayRuleCfg);
+      VipInfoHandler.a(this.a, "payRule.cfg", this.b);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.VipInfoHandler.1
  * JD-Core Version:    0.7.0.1
  */

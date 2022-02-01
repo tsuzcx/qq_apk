@@ -31,7 +31,7 @@ public class GamePubAccountHeadView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131559151, this);
+    LayoutInflater.from(getContext()).inflate(2131624906, this);
   }
   
   public NativeGestureDispatcher getGestureDispatcher()
@@ -43,7 +43,7 @@ public class GamePubAccountHeadView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.view.GamePubAccountHeadView
  * JD-Core Version:    0.7.0.1
  */

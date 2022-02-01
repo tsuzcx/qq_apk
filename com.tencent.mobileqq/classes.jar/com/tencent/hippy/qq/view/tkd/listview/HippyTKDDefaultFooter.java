@@ -14,7 +14,7 @@ public class HippyTKDDefaultFooter
 {
   private static final int BALL_COUNT = 3;
   private static final String TAG = "DefaultFooterView";
-  private int ballColor = ResourceUtil.getColor(2131167302);
+  private int ballColor = ResourceUtil.getColor(2131168341);
   private int mBallColorId;
   private AnimatingBall[] mBalls = new AnimatingBall[3];
   private Integer mCustomBallColor = null;
@@ -116,7 +116,7 @@ public class HippyTKDDefaultFooter
       if (localInteger != null) {
         this.ballColor = localInteger.intValue();
       } else {
-        this.ballColor = ResourceUtil.getColor(2131167302);
+        this.ballColor = ResourceUtil.getColor(2131168341);
       }
       this.mBallColorId = 0;
       paramInt = i;
@@ -126,7 +126,7 @@ public class HippyTKDDefaultFooter
       this.mBalls[paramInt].setInitialColor(this.ballColor);
       paramInt += 1;
     }
-    this.mPullDownToRefreshSucIcon = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130851017), this.ballColor);
+    this.mPullDownToRefreshSucIcon = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130853246), this.ballColor);
     setTextColor(this.ballColor);
   }
   
@@ -165,35 +165,35 @@ public class HippyTKDDefaultFooter
     if (paramInt1 == 3)
     {
       stopLoading();
-      setText(ResourceUtil.getString(2131718158));
+      setText(ResourceUtil.getString(2131915636));
       setImageDrawable(this.mPullDownToRefreshFailIcon);
       return;
     }
     if (paramInt1 == 4)
     {
       stopLoading();
-      setText(ResourceUtil.getString(2131718165));
+      setText(ResourceUtil.getString(2131915643));
       setImageDrawable(this.mPullDownToRefreshFailIcon);
       return;
     }
     if (paramInt1 == 9)
     {
       stopLoading();
-      setText(ResourceUtil.getString(2131718159));
+      setText(ResourceUtil.getString(2131915637));
       setImageDrawable(null);
       return;
     }
     if (paramInt1 == 10)
     {
       stopLoading();
-      setText(ResourceUtil.getString(2131718160));
+      setText(ResourceUtil.getString(2131915638));
       setImageDrawable(null);
       return;
     }
     if (paramInt1 == 5)
     {
       stopLoading();
-      setText(ResourceUtil.getString(2131718158));
+      setText(ResourceUtil.getString(2131915636));
       setImageDrawable(this.mPullDownToRefreshFailIcon);
       postDelayed(new HippyTKDDefaultFooter.2(this), 2000L);
       return;
@@ -201,7 +201,7 @@ public class HippyTKDDefaultFooter
     if (paramInt1 == 6)
     {
       stopLoading();
-      setText(ResourceUtil.getString(2131718157));
+      setText(ResourceUtil.getString(2131915635));
       setImageDrawable(null);
       return;
     }
@@ -294,7 +294,7 @@ public class HippyTKDDefaultFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDDefaultFooter
  * JD-Core Version:    0.7.0.1
  */

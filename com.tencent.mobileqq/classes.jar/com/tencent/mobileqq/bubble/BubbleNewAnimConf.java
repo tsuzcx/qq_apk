@@ -9,70 +9,58 @@ import org.json.JSONObject;
 
 public class BubbleNewAnimConf
 {
-  public int a;
-  public long a;
-  public Rect a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Rect b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  
-  public BubbleNewAnimConf()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Int = 0;
-  }
+  public String a = "";
+  public long b = 0L;
+  public int c = 1;
+  public int d = 0;
+  public String e = "";
+  public boolean f;
+  public int g = 0;
+  public String h = "";
+  public Rect i;
+  public Rect j;
+  public String k;
+  public int l = 0;
   
   public void a(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_d_of_type_Int = paramInt;
+    this.a = paramString;
+    this.l = paramInt;
     paramString = BaseApplicationImpl.getContext();
     if (paramJSONObject.has("rect"))
     {
       JSONArray localJSONArray = paramJSONObject.getJSONArray("rect");
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidGraphicsRect.left = AIOUtils.b(localJSONArray.getInt(0) / 2, paramString.getResources());
-      this.jdField_a_of_type_AndroidGraphicsRect.top = AIOUtils.b(localJSONArray.getInt(1) / 2, paramString.getResources());
-      this.jdField_a_of_type_AndroidGraphicsRect.right = AIOUtils.b(localJSONArray.getInt(2) / 2, paramString.getResources());
-      this.jdField_a_of_type_AndroidGraphicsRect.bottom = AIOUtils.b(localJSONArray.getInt(3) / 2, paramString.getResources());
+      this.i = new Rect();
+      this.i.left = AIOUtils.b(localJSONArray.getInt(0) / 2, paramString.getResources());
+      this.i.top = AIOUtils.b(localJSONArray.getInt(1) / 2, paramString.getResources());
+      this.i.right = AIOUtils.b(localJSONArray.getInt(2) / 2, paramString.getResources());
+      this.i.bottom = AIOUtils.b(localJSONArray.getInt(3) / 2, paramString.getResources());
     }
-    this.jdField_a_of_type_Long = paramJSONObject.optInt("time", 0);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("cycle_count", 1);
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("count", 0);
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("img_prefix", "");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("alpha", 0);
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("align", "");
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("zip_name", "");
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("img_reverse", true);
+    this.b = paramJSONObject.optInt("time", 0);
+    this.c = paramJSONObject.optInt("cycle_count", 1);
+    this.d = paramJSONObject.optInt("count", 0);
+    this.e = paramJSONObject.optString("img_prefix", "");
+    this.g = paramJSONObject.optInt("alpha", 0);
+    this.h = paramJSONObject.optString("align", "");
+    this.k = paramJSONObject.optString("zip_name", "");
+    this.f = paramJSONObject.optBoolean("img_reverse", true);
     paramJSONObject = paramJSONObject.optJSONArray("padding");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
-      this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_b_of_type_AndroidGraphicsRect.left = AIOUtils.b(paramJSONObject.getInt(0) / 2, paramString.getResources());
-      this.jdField_b_of_type_AndroidGraphicsRect.top = AIOUtils.b(paramJSONObject.getInt(1) / 2, paramString.getResources());
-      this.jdField_b_of_type_AndroidGraphicsRect.right = AIOUtils.b(paramJSONObject.getInt(2) / 2, paramString.getResources());
-      this.jdField_b_of_type_AndroidGraphicsRect.bottom = AIOUtils.b(paramJSONObject.getInt(3) / 2, paramString.getResources());
+      this.j = new Rect();
+      this.j.left = AIOUtils.b(paramJSONObject.getInt(0) / 2, paramString.getResources());
+      this.j.top = AIOUtils.b(paramJSONObject.getInt(1) / 2, paramString.getResources());
+      this.j.right = AIOUtils.b(paramJSONObject.getInt(2) / 2, paramString.getResources());
+      this.j.bottom = AIOUtils.b(paramJSONObject.getInt(3) / 2, paramString.getResources());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAnimConf
  * JD-Core Version:    0.7.0.1
  */

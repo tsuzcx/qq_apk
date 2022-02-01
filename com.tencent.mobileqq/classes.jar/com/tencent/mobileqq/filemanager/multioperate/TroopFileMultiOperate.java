@@ -28,29 +28,29 @@ import java.util.UUID;
 public class TroopFileMultiOperate
   implements IQFileMultiOperate<TroopFileInfo>
 {
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface a;
+  private Activity b;
+  private long c;
   
   public TroopFileMultiOperate(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramQQAppInterface;
+    this.b = paramActivity;
+    this.c = paramLong;
   }
   
   private void a(List<TroopFileInfo> paramList)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a, this.c);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       TroopFileInfo localTroopFileInfo = (TroopFileInfo)paramList.next();
-      TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, localTroopFileInfo.jdField_a_of_type_JavaUtilUUID.toString(), localTroopFileInfo.jdField_b_of_type_JavaLangString, localTroopFileInfo.jdField_c_of_type_JavaLangString, localTroopFileInfo.jdField_a_of_type_Long, localTroopFileInfo.jdField_a_of_type_Int);
-      if ((localTroopFileStatusInfo != null) && (localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID != null) && ((localTroopFileStatusInfo.jdField_b_of_type_Int == 10) || (localTroopFileStatusInfo.jdField_b_of_type_Int == 9))) {
-        localTroopFileTransferManager.c(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+      TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.a, this.c, localTroopFileInfo.b.toString(), localTroopFileInfo.c, localTroopFileInfo.d, localTroopFileInfo.e, localTroopFileInfo.f);
+      if ((localTroopFileStatusInfo != null) && (localTroopFileStatusInfo.a != null) && ((localTroopFileStatusInfo.e == 10) || (localTroopFileStatusInfo.e == 9))) {
+        localTroopFileTransferManager.d(localTroopFileStatusInfo.a);
       } else {
-        localTroopFileTransferManager.a(localTroopFileInfo.jdField_b_of_type_JavaLangString, localTroopFileInfo.jdField_c_of_type_JavaLangString, localTroopFileInfo.jdField_a_of_type_Long, localTroopFileInfo.jdField_a_of_type_Int);
+        localTroopFileTransferManager.a(localTroopFileInfo.c, localTroopFileInfo.d, localTroopFileInfo.e, localTroopFileInfo.f);
       }
     }
   }
@@ -68,46 +68,46 @@ public class TroopFileMultiOperate
     {
       paramQFileMultiOperateCallback = (TroopFileInfo)paramList.next();
       Object localObject = new TroopFileStatusInfo();
-      ((TroopFileStatusInfo)localObject).g = paramQFileMultiOperateCallback.jdField_c_of_type_JavaLangString;
-      ((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaLangString = paramQFileMultiOperateCallback.i;
-      ((TroopFileStatusInfo)localObject).jdField_c_of_type_Long = paramQFileMultiOperateCallback.jdField_a_of_type_Long;
-      ((TroopFileStatusInfo)localObject).jdField_d_of_type_Long = paramQFileMultiOperateCallback.jdField_d_of_type_Long;
-      ((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID = paramQFileMultiOperateCallback.jdField_a_of_type_JavaUtilUUID;
-      ((TroopFileStatusInfo)localObject).jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      ((TroopFileStatusInfo)localObject).h = paramQFileMultiOperateCallback.jdField_a_of_type_Int;
-      ((TroopFileStatusInfo)localObject).e = paramQFileMultiOperateCallback.jdField_b_of_type_JavaLangString;
-      ((TroopFileStatusInfo)localObject).f = paramQFileMultiOperateCallback.jdField_d_of_type_JavaLangString;
-      ((TroopFileStatusInfo)localObject).jdField_b_of_type_JavaLangString = paramQFileMultiOperateCallback.j;
-      ((TroopFileStatusInfo)localObject).jdField_c_of_type_JavaLangString = paramQFileMultiOperateCallback.k;
-      ((TroopFileStatusInfo)localObject).jdField_d_of_type_JavaLangString = paramQFileMultiOperateCallback.l;
-      ((TroopFileStatusInfo)localObject).jdField_b_of_type_Int = paramQFileMultiOperateCallback.e;
-      TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long).a(((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID);
+      ((TroopFileStatusInfo)localObject).t = paramQFileMultiOperateCallback.d;
+      ((TroopFileStatusInfo)localObject).k = paramQFileMultiOperateCallback.t;
+      ((TroopFileStatusInfo)localObject).i = paramQFileMultiOperateCallback.e;
+      ((TroopFileStatusInfo)localObject).j = paramQFileMultiOperateCallback.r;
+      ((TroopFileStatusInfo)localObject).a = paramQFileMultiOperateCallback.b;
+      ((TroopFileStatusInfo)localObject).d = this.c;
+      ((TroopFileStatusInfo)localObject).u = paramQFileMultiOperateCallback.f;
+      ((TroopFileStatusInfo)localObject).r = paramQFileMultiOperateCallback.c;
+      ((TroopFileStatusInfo)localObject).s = paramQFileMultiOperateCallback.l;
+      ((TroopFileStatusInfo)localObject).l = paramQFileMultiOperateCallback.w;
+      ((TroopFileStatusInfo)localObject).m = paramQFileMultiOperateCallback.x;
+      ((TroopFileStatusInfo)localObject).n = paramQFileMultiOperateCallback.y;
+      ((TroopFileStatusInfo)localObject).e = paramQFileMultiOperateCallback.p;
+      TroopFileManager.a(this.a, this.c).b(((TroopFileStatusInfo)localObject).a);
       localObject = FileManagerUtil.a((TroopFileStatusInfo)localObject);
-      if (paramQFileMultiOperateCallback.jdField_b_of_type_Long != 0L)
+      if (paramQFileMultiOperateCallback.g != 0L)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
-        localStringBuilder.append(paramQFileMultiOperateCallback.jdField_b_of_type_Long);
+        localStringBuilder.append(paramQFileMultiOperateCallback.g);
         ((FileManagerEntity)localObject).selfUin = localStringBuilder.toString();
       }
-      if (paramQFileMultiOperateCallback.jdField_c_of_type_Int != 0) {
-        ((FileManagerEntity)localObject).lastTime = paramQFileMultiOperateCallback.jdField_c_of_type_Int;
+      if (paramQFileMultiOperateCallback.j != 0) {
+        ((FileManagerEntity)localObject).lastTime = paramQFileMultiOperateCallback.j;
       }
-      ((FileManagerEntity)localObject).bSend = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(((FileManagerEntity)localObject).selfUin);
-      if (!new QfavBuilder(3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, (FileManagerEntity)localObject, null, false)) {
+      ((FileManagerEntity)localObject).bSend = this.a.getAccount().equals(((FileManagerEntity)localObject).selfUin);
+      if (!new QfavBuilder(3).a(this.a, this.b, (FileManagerEntity)localObject, null, false)) {
         i = 1;
       }
     }
     if (i != 0) {
-      FileManagerUtil.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131698195));
+      FileManagerUtil.l(this.b.getString(2131896096));
     }
   }
   
   private void b(List<TroopFileInfo> paramList)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidAppActivity))
+    if (!NetworkUtil.isNetSupport(this.b))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694475, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.b, 2131892157, 1).show(this.b.getResources().getDimensionPixelSize(2131299920));
       return;
     }
     Iterator localIterator = paramList.iterator();
@@ -115,36 +115,36 @@ public class TroopFileMultiOperate
     while (localIterator.hasNext())
     {
       Object localObject = (TroopFileInfo)localIterator.next();
-      localObject = QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, (TroopFileInfo)localObject);
+      localObject = QFileUtils.a(this.a, this.c, (TroopFileInfo)localObject);
       if (localObject != null) {
-        bool = QFileUtils.a(false, ((TroopFileStatusInfo)localObject).jdField_c_of_type_Long, ((TroopFileStatusInfo)localObject).e);
+        bool = QFileUtils.a(false, ((TroopFileStatusInfo)localObject).i, ((TroopFileStatusInfo)localObject).r);
       }
     }
     if (bool)
     {
-      FMDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131692561, 2131692566, new TroopFileMultiOperate.3(this, paramList));
+      FMDialogUtil.a(this.b, 2131889584, 2131889589, new TroopFileMultiOperate.3(this, paramList));
       return;
     }
-    QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Long);
+    QFileUtils.a(this.a, paramList, this.b, this.c);
   }
   
   private void b(List<TroopFileInfo> paramList, QFileMultiOperateCallback paramQFileMultiOperateCallback)
   {
-    if (TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Long) == 0) {
+    if (TroopFileUtils.a(this.a, this.b, this.c) == 0) {
       return;
     }
-    paramQFileMultiOperateCallback = TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    paramQFileMultiOperateCallback = TroopFileManager.a(this.a, this.c);
     if (paramQFileMultiOperateCallback == null) {
       return;
     }
     int i = 0;
-    boolean bool1 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    boolean bool1 = TroopFileUtils.a(this.a, this.c);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       TroopFileInfo localTroopFileInfo = (TroopFileInfo)paramList.next();
-      boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localTroopFileInfo.b());
-      if ((localTroopFileInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true)) && ((bool2) || (bool1)))
+      boolean bool2 = this.a.getCurrentAccountUin().equals(localTroopFileInfo.b());
+      if ((localTroopFileInfo.a(this.a, this.c, true)) && ((bool2) || (bool1)))
       {
         paramQFileMultiOperateCallback.b(localTroopFileInfo);
         i = 1;
@@ -152,22 +152,22 @@ public class TroopFileMultiOperate
     }
     if (bool1)
     {
-      FMToastUtil.b(2131692404);
+      FMToastUtil.b(2131889392);
       return;
     }
     if (i != 0)
     {
-      FMToastUtil.b(2131692406);
+      FMToastUtil.b(2131889394);
       return;
     }
-    FMToastUtil.c(2131692405);
+    FMToastUtil.c(2131889393);
   }
   
   private void c(List<TroopFileInfo> paramList)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidAppActivity))
+    if (!NetworkUtil.isNetSupport(this.b))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694475, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.b, 2131892157, 1).show(this.b.getResources().getDimensionPixelSize(2131299920));
       return;
     }
     Iterator localIterator = paramList.iterator();
@@ -175,45 +175,45 @@ public class TroopFileMultiOperate
     while (localIterator.hasNext())
     {
       Object localObject = (TroopFileInfo)localIterator.next();
-      localObject = QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, (TroopFileInfo)localObject);
+      localObject = QFileUtils.a(this.a, this.c, (TroopFileInfo)localObject);
       if (localObject != null) {
-        bool = QFileUtils.a(false, ((TroopFileStatusInfo)localObject).jdField_c_of_type_Long, ((TroopFileStatusInfo)localObject).e);
+        bool = QFileUtils.a(false, ((TroopFileStatusInfo)localObject).i, ((TroopFileStatusInfo)localObject).r);
       }
     }
     if (bool)
     {
-      if (FreeWifiHelper.a(this.jdField_a_of_type_AndroidAppActivity, 5, new TroopFileMultiOperate.4(this, paramList))) {
-        FMDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131692561, 2131692564, new TroopFileMultiOperate.5(this, paramList));
+      if (FreeWifiHelper.a(this.b, 5, new TroopFileMultiOperate.4(this, paramList))) {
+        FMDialogUtil.a(this.b, 2131889584, 2131889587, new TroopFileMultiOperate.5(this, paramList));
       }
     }
     else
     {
-      FMToastUtil.d(this.jdField_a_of_type_AndroidAppActivity.getString(2131692690));
-      TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, paramList);
+      FMToastUtil.d(this.b.getString(2131889761));
+      TroopFileUtils.a(this.a, this.c, paramList);
     }
   }
   
   private void c(List<TroopFileInfo> paramList, QFileMultiOperateCallback paramQFileMultiOperateCallback)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidAppActivity))
+    if (!NetworkUtil.isNetSupport(this.b))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694475, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.b, 2131892157, 1).show(this.b.getResources().getDimensionPixelSize(2131299920));
       return;
     }
     long l = 0L;
     Object localObject = paramList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      l += ((TroopFileInfo)((Iterator)localObject).next()).jdField_a_of_type_Long;
+      l += ((TroopFileInfo)((Iterator)localObject).next()).e;
     }
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-    if ((FileManagerUtil.a()) && (l > 3145728L))
+    TroopFileTransferManager.a(this.a, this.c);
+    if ((FileManagerUtil.b()) && (l > 3145728L))
     {
-      if (FreeWifiHelper.a(this.jdField_a_of_type_AndroidAppActivity, 1, new TroopFileMultiOperate.1(this, paramList, paramQFileMultiOperateCallback)))
+      if (FreeWifiHelper.a(this.b, 1, new TroopFileMultiOperate.1(this, paramList, paramQFileMultiOperateCallback)))
       {
         paramList = new TroopFileMultiOperate.2(this, paramList, paramQFileMultiOperateCallback);
-        paramQFileMultiOperateCallback = this.jdField_a_of_type_AndroidAppActivity.getString(2131697397);
-        localObject = this.jdField_a_of_type_AndroidAppActivity;
-        DialogUtil.a((Context)localObject, 230, ((Activity)localObject).getString(2131697613), paramQFileMultiOperateCallback, 2131690728, 2131697333, paramList, paramList).show();
+        paramQFileMultiOperateCallback = this.b.getString(2131895170);
+        localObject = this.b;
+        DialogUtil.a((Context)localObject, 230, ((Activity)localObject).getString(2131895386), paramQFileMultiOperateCallback, 2131887648, 2131895106, paramList, paramList).show();
       }
     }
     else
@@ -265,7 +265,7 @@ public class TroopFileMultiOperate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.TroopFileMultiOperate
  * JD-Core Version:    0.7.0.1
  */

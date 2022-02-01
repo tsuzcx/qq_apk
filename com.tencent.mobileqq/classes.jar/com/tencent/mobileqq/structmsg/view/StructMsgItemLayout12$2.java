@@ -26,29 +26,29 @@ class StructMsgItemLayout12$2
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.a.onClick(this.jdField_a_of_type_AndroidViewView);
+        this.b.aC.onClick(this.a);
       }
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131374282);
+      this.b.aD = false;
+      paramView = (ObjectAnimator)paramView.getTag(2131442445);
       if (paramView != null) {
         paramView.reverse();
       }
       return false;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b)
+    if (!this.b.aD)
     {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = true;
-      ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131374282);
+      this.b.aD = true;
+      ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131442445);
       paramMotionEvent = localObjectAnimator;
       if (localObjectAnimator == null)
       {
         if (QLog.isColorLevel()) {
           QLog.i("StructMsgItemLayout12", 2, "animator is null");
         }
-        paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
+        paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.a, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
         paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
         paramMotionEvent.setDuration(100L);
-        paramView.setTag(2131374282, paramMotionEvent);
+        paramView.setTag(2131442445, paramMotionEvent);
       }
       paramMotionEvent.start();
     }
@@ -57,7 +57,7 @@ class StructMsgItemLayout12$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,154 +24,154 @@ public class HeartBeatController
   implements HeartBeatListener
 {
   public static int a = 2000;
-  private static HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new HeartBeatController.1(this);
-  private IDataCtrl<EngineData> jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl;
-  private SyncListener jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener;
-  private BaseAVGameAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private long b;
-  private long c;
+  private static HashMap<Integer, Integer> k = new HashMap();
+  private BaseAVGameAppInterface b;
+  private SyncListener c;
+  private IDataCtrl<EngineData> d;
+  private volatile boolean e;
+  private long f;
+  private long g;
+  private long h;
+  private String i;
+  private Handler j = new HeartBeatController.1(this);
   
   static
   {
-    Object localObject1 = jdField_a_of_type_JavaUtilHashMap;
+    Object localObject1 = k;
     Object localObject2 = Integer.valueOf(1);
     ((HashMap)localObject1).put(Integer.valueOf(0), localObject2);
-    Object localObject3 = jdField_a_of_type_JavaUtilHashMap;
+    Object localObject3 = k;
     localObject1 = Integer.valueOf(2);
     ((HashMap)localObject3).put(localObject2, localObject1);
-    jdField_a_of_type_JavaUtilHashMap.put(localObject1, localObject1);
-    localObject2 = jdField_a_of_type_JavaUtilHashMap;
+    k.put(localObject1, localObject1);
+    localObject2 = k;
     localObject3 = Integer.valueOf(3);
     ((HashMap)localObject2).put(localObject3, localObject1);
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(4), localObject1);
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10), localObject3);
+    k.put(Integer.valueOf(4), localObject1);
+    k.put(Integer.valueOf(10), localObject3);
   }
   
   public HeartBeatController(BaseAVGameAppInterface paramBaseAVGameAppInterface, SyncListener paramSyncListener, GameRoomStatusListener paramGameRoomStatusListener, IDataCtrl<EngineData> paramIDataCtrl)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface = paramBaseAVGameAppInterface;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener = paramSyncListener;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl = paramIDataCtrl;
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.addObserver(this, false);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_Long == ((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a();
+    this.b = paramBaseAVGameAppInterface;
+    this.c = paramSyncListener;
+    this.d = paramIDataCtrl;
+    this.b.addObserver(this, false);
   }
   
   private void b(long paramLong, String paramString)
   {
-    GameRoomHandler localGameRoomHandler = (GameRoomHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface.getBusinessHandler(HandlerFactory.jdField_a_of_type_JavaLangString);
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a()));
-    int i;
+    GameRoomHandler localGameRoomHandler = (GameRoomHandler)this.b.getBusinessHandler(HandlerFactory.a);
+    Integer localInteger = (Integer)k.get(Integer.valueOf(((EngineData)this.d.H()).j()));
+    int m;
     if (localInteger == null) {
-      i = 0;
+      m = 0;
     } else {
-      i = localInteger.intValue();
+      m = localInteger.intValue();
     }
-    localGameRoomHandler.a(paramLong, paramString, i);
-    com.tencent.avgame.gamelogic.QualityReporter.jdField_a_of_type_Long = System.currentTimeMillis();
+    localGameRoomHandler.a(paramLong, paramString, m);
+    com.tencent.avgame.gamelogic.QualityReporter.a = System.currentTimeMillis();
   }
   
-  private void c()
+  private void e()
   {
-    int i;
+    int m;
     if (NetworkUtil.isNetworkAvailable()) {
-      i = 2131690331;
+      m = 2131887242;
     } else {
-      i = 2131690403;
+      m = 2131887314;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("stopHeartBeatByLocalTimeOut() then do exitRoom() isNetworkAvailable =");
     localStringBuilder.append(NetworkUtil.isNetworkAvailable());
     QLog.d("HeartBeatController", 1, localStringBuilder.toString());
-    IGameEngine.a().a(5, MobileQQ.sMobileQQ.getApplicationContext().getString(i), IGameEngine.a().a());
+    IGameEngine.I().a(5, MobileQQ.sMobileQQ.getApplicationContext().getString(m), IGameEngine.I().s());
   }
   
-  private void d()
+  private void f()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 35000L);
+    this.j.removeMessages(2);
+    this.j.sendEmptyMessageDelayed(2, 35000L);
   }
   
-  private void e()
+  private void g()
   {
-    QLog.d("HeartBeatController", 1, String.format("maintainHeartBeat() [isStop]=[%b]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-    if (!this.jdField_a_of_type_Boolean)
+    QLog.d("HeartBeatController", 1, String.format("maintainHeartBeat() [isStop]=[%b]", new Object[] { Boolean.valueOf(this.e) }));
+    if (!this.e)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, jdField_a_of_type_Int);
+      this.j.removeMessages(1);
+      this.j.sendEmptyMessageDelayed(1, a);
     }
   }
   
-  public long a()
+  private boolean h()
   {
-    return this.b;
+    return this.f == ((EngineData)this.d.H()).i();
   }
   
   public void a()
   {
-    e();
-    d();
+    g();
+    f();
   }
   
   public void a(int paramInt)
   {
-    com.tencent.avgame.gamelogic.QualityReporter.jdField_a_of_type_Long = 0L;
-    QLog.d("HeartBeatController", 1, String.format("stopHeartBeat() [roomId,fromType]=[%d,%d]", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(paramInt) }));
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    com.tencent.avgame.gamelogic.QualityReporter.a = 0L;
+    QLog.d("HeartBeatController", 1, String.format("stopHeartBeat() [roomId,fromType]=[%d,%d]", new Object[] { Long.valueOf(this.f), Integer.valueOf(paramInt) }));
+    this.e = true;
+    this.j.removeCallbacksAndMessages(null);
   }
   
   public void a(long paramLong1, int paramInt1, long paramLong2, String paramString, int paramInt2)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (a()))
+    if ((!this.e) && (h()))
     {
       if ((paramInt2 != 303) && (paramInt2 != 302))
       {
-        this.b = paramLong1;
-        this.c = SystemClock.elapsedRealtime();
-        this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSyncListener.a(paramLong1, paramLong2, jdField_a_of_type_Int, paramInt2);
-        jdField_a_of_type_Int = Math.max(paramInt1, jdField_a_of_type_Int);
-        d();
+        this.g = paramLong1;
+        this.h = SystemClock.elapsedRealtime();
+        this.c.a(paramLong1, paramLong2, a, paramInt2);
+        a = Math.max(paramInt1, a);
+        f();
         return;
       }
       QLog.d("HeartBeatController", 1, String.format("onRespHeartBeatSuccess() EC_HEARTBEAT_USER_NOT_IN_ROOM exitRoom() [roomId]=[%d]", new Object[] { Long.valueOf(paramLong2) }));
       ObserverCenter.a().a(GameRoomObserver.class, 7, true, new Object[] { Long.valueOf(paramLong2), Integer.valueOf(4) });
       return;
     }
-    QLog.d("HeartBeatController", 1, String.format("onRespHeartBeatSuccess() isStop or validRoomId just return  [roomId,data.getRoomId()]=[%d,%d]", new Object[] { Long.valueOf(paramLong2), Long.valueOf(((EngineData)this.jdField_a_of_type_ComTencentAvgameGamelogicListenerIDataCtrl.a()).a()) }));
+    QLog.d("HeartBeatController", 1, String.format("onRespHeartBeatSuccess() isStop or validRoomId just return  [roomId,data.getRoomId()]=[%d,%d]", new Object[] { Long.valueOf(paramLong2), Long.valueOf(((EngineData)this.d.H()).i()) }));
   }
   
   public void a(long paramLong, String paramString)
   {
     QLog.d("HeartBeatController", 1, String.format("startHeartBeat() [roomId,userUin]=[%d,%s]", new Object[] { Long.valueOf(paramLong), paramString }));
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = false;
+    this.j.removeCallbacksAndMessages(null);
+    this.f = paramLong;
+    this.i = paramString;
+    this.e = false;
     b(paramLong, paramString);
-    e();
-    d();
-  }
-  
-  public long b()
-  {
-    return this.c;
+    g();
+    f();
   }
   
   public void b()
   {
-    BaseAVGameAppInterface localBaseAVGameAppInterface = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseAVGameAppInterface;
+    BaseAVGameAppInterface localBaseAVGameAppInterface = this.b;
     if (localBaseAVGameAppInterface != null) {
       localBaseAVGameAppInterface.removeObserver(this);
     }
     a(1);
+  }
+  
+  public long c()
+  {
+    return this.g;
+  }
+  
+  public long d()
+  {
+    return this.h;
   }
 }
 

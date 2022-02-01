@@ -11,7 +11,7 @@ import com.tencent.ad.tangram.protocol.gdt_analysis_event;
 import com.tencent.ad.tangram.util.AdUriUtil;
 import java.lang.ref.WeakReference;
 
-final class a
+public final class a
 {
   private static final String TAG = "AdAnalysisHelperForStatistics";
   
@@ -77,6 +77,11 @@ final class a
   static void reportForSdkMsgStatisticsStart(Context paramContext, Ad paramAd, String paramString)
   {
     reportForStatisticsStart(paramContext, 6, paramAd, paramString);
+  }
+  
+  public static void reportForSettingsStatisticsEnd(Context paramContext, Ad paramAd, AdHttp.Params paramParams, int paramInt)
+  {
+    reportForStatisticsEnd(paramContext, paramInt, new int[] { 200 }, paramAd, paramParams);
   }
   
   private static void reportForStatisticsEnd(Context paramContext, int paramInt, int[] paramArrayOfInt, Ad paramAd, AdHttp.Params paramParams)

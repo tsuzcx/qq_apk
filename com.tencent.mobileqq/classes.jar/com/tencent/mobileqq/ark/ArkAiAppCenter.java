@@ -24,17 +24,11 @@ import org.json.JSONObject;
 @Deprecated
 public class ArkAiAppCenter
 {
-  public static String a;
-  private static final List<String> a;
-  public static Map<String, List<ApiFrequencyConfig>> a;
   public static boolean a = false;
   public static boolean b = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public static String c;
+  public static Map<String, List<ApiFrequencyConfig>> d = new HashMap();
+  private static final List<String> e = new ArrayList();
   
   public ArkAiAppCenter()
   {
@@ -42,13 +36,13 @@ public class ArkAiAppCenter
     ((IArkDictManager)localObject).initWordData();
     ((IArkDictManager)localObject).updateLocalDict();
     localObject = (ArkAIKeyWordConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkAIKeyWordConfBean.class);
-    if ((localObject != null) && (((ArkAIKeyWordConfBean)localObject).a() != null))
+    if ((localObject != null) && (((ArkAIKeyWordConfBean)localObject).c() != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ArkAiAppCenter updateDialogConfig content =");
-      localStringBuilder.append(((ArkAIKeyWordConfBean)localObject).a());
+      localStringBuilder.append(((ArkAIKeyWordConfBean)localObject).d());
       QLog.i("ArkApp.AI", 1, localStringBuilder.toString());
-      a(((ArkAIKeyWordConfBean)localObject).a());
+      a(((ArkAIKeyWordConfBean)localObject).c());
     }
   }
   
@@ -64,23 +58,23 @@ public class ArkAiAppCenter
       ark.SetUseAndroidHTTP(paramDialogConfig.b);
       ark.arkSetAndroid9EmojiFeatureSupport(paramDialogConfig.c);
     }
-    jdField_a_of_type_Boolean = paramDialogConfig.d;
+    a = paramDialogConfig.d;
     BaseApplication localBaseApplication = BaseApplication.getContext();
     Object localObject;
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       localObject = "true";
     } else {
       localObject = "false";
     }
     SharePreferenceUtils.a(localBaseApplication, "ark_engine_multi_thread", (String)localObject);
-    jdField_a_of_type_JavaLangString = paramDialogConfig.jdField_a_of_type_JavaLangString;
+    c = paramDialogConfig.e;
     if (((INativeLibLoader)QRoute.api(INativeLibLoader.class)).isArkLibraryLoaded())
     {
-      ArkEnvironmentManager.getInstance().setSingleThreadMode(jdField_a_of_type_Boolean ^ true);
+      ArkEnvironmentManager.getInstance().setSingleThreadMode(a ^ true);
       ArkEnvironmentManager.getInstance().setThreadMode();
       try
       {
-        localObject = new JSONObject(jdField_a_of_type_JavaLangString);
+        localObject = new JSONObject(c);
         ArkEnvironmentManager.getInstance().setHardwareDisableList((JSONObject)localObject);
       }
       catch (JSONException localJSONException)
@@ -88,17 +82,17 @@ public class ArkAiAppCenter
         QLog.i("ArkApp.AI", 1, String.format("updateDialogConfig, parse json failed, err=%s", new Object[] { localJSONException.getMessage() }));
       }
     }
-    b = paramDialogConfig.e;
+    b = paramDialogConfig.f;
   }
   
   public static boolean a(String paramString)
   {
-    return jdField_a_of_type_JavaUtilList.contains(paramString);
+    return e.contains(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiAppCenter
  * JD-Core Version:    0.7.0.1
  */

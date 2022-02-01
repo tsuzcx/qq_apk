@@ -7,20 +7,20 @@ final class QQFileManagerUtilImpl$12
   
   public void run()
   {
-    if (FileUtil.a(this.jdField_a_of_type_JavaLangString))
+    if (FileUtil.b(this.a))
     {
-      QQFileManagerUtil.IThumbResult localIThumbResult = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$IThumbResult;
+      QQFileManagerUtil.IThumbResult localIThumbResult = this.b;
       if (localIThumbResult != null) {
-        localIThumbResult.a(this.jdField_a_of_type_JavaLangString);
+        localIThumbResult.a(this.a);
       }
       return;
     }
-    if (QQFileManagerUtilImpl.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$IThumbResult, this.jdField_a_of_type_JavaLangString)) {}
+    if (QQFileManagerUtilImpl.a(this.c, this.d, this.e, this.b, this.a)) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.12
  * JD-Core Version:    0.7.0.1
  */

@@ -22,21 +22,21 @@ class FeedManager$3$1
   {
     paramBatchGetFriendStoryFeedInfoRequest = (BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp)paramBaseResponse;
     paramBaseResponse = new FeedManager.GetFeedItemEvent();
-    paramBaseResponse.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramBaseResponse.g = paramErrorMessage;
     if ((!paramErrorMessage.isFail()) && (paramBatchGetFriendStoryFeedInfoRequest != null))
     {
       if (!paramBatchGetFriendStoryFeedInfoRequest.a.isEmpty())
       {
-        paramBaseResponse.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((StoryHomeFeed)paramBatchGetFriendStoryFeedInfoRequest.a.get(0)).a());
+        paramBaseResponse.a = this.a.this$0.a(((StoryHomeFeed)paramBatchGetFriendStoryFeedInfoRequest.a.get(0)).g());
       }
       else
       {
         SLog.e("Q.qqstory.home.data.FeedManager", "request feed item, no data return for feedId:%s", new Object[] { this.a.a });
-        FeedManager.a().remove(this.a.a);
+        FeedManager.k().remove(this.a.a);
       }
     }
     else {
-      FeedManager.a().remove(this.a.a);
+      FeedManager.k().remove(this.a.a);
     }
     SLog.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
     StoryDispatcher.a().dispatch(paramBaseResponse);

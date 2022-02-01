@@ -15,28 +15,28 @@ class AVGameCameraAssistant$3
   
   public void run()
   {
-    Object localObject = (AVGameAppInterface)AVGameCameraAssistant.a(this.this$0).get();
+    Object localObject = (AVGameAppInterface)AVGameCameraAssistant.b(this.this$0).get();
     if (localObject != null)
     {
-      long l = QQAudioHelper.b();
-      AVGameCameraAssistant.a(this.this$0);
+      long l = QQAudioHelper.d();
+      AVGameCameraAssistant.c(this.this$0);
       boolean bool;
-      if ((AVGameCameraAssistant.a(this.this$0) != null) && (AVGameCameraAssistant.a(this.this$0).a((AVGameAppInterface)localObject))) {
+      if ((AVGameCameraAssistant.d(this.this$0) != null) && (AVGameCameraAssistant.d(this.this$0).a((AVGameAppInterface)localObject))) {
         bool = true;
       } else {
         bool = false;
       }
-      if ((!bool) && ((AVGameCameraAssistant.a(this.this$0).isCameraOpened(l)) || (AVGameCameraAssistant.a(this.this$0).isCameraOpening(l))) && (AVGameCameraAssistant.b(this.this$0) < 5) && (AVGameCameraAssistant.b(this.this$0) > 0)) {
-        AVGameCameraAssistant.a(this.this$0).sendEmptyMessageDelayed(1, 10000L);
+      if ((!bool) && ((AVGameCameraAssistant.e(this.this$0).isCameraOpened(l)) || (AVGameCameraAssistant.e(this.this$0).isCameraOpening(l))) && (AVGameCameraAssistant.f(this.this$0) < 5) && (AVGameCameraAssistant.f(this.this$0) > 0)) {
+        AVGameCameraAssistant.g(this.this$0).sendEmptyMessageDelayed(1, 10000L);
       }
-      if ((!bool) && (AVGameCameraAssistant.a(this.this$0) == null))
+      if ((!bool) && (AVGameCameraAssistant.h(this.this$0) == null))
       {
         AVGameCameraAssistant.a(this.this$0, new AVGameCameraAssistant.3.1(this));
-        ObserverCenter.a().a(AVGameCameraAssistant.a(this.this$0), true);
+        ObserverCenter.a().a(AVGameCameraAssistant.h(this.this$0), true);
       }
-      else if ((bool) && (AVGameCameraAssistant.a(this.this$0) != null))
+      else if ((bool) && (AVGameCameraAssistant.h(this.this$0) != null))
       {
-        AVGameCameraAssistant.a(this.this$0);
+        AVGameCameraAssistant.i(this.this$0);
       }
       if (QLog.isColorLevel())
       {

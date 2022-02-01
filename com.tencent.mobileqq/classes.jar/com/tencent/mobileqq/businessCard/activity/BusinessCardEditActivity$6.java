@@ -18,7 +18,7 @@ class BusinessCardEditActivity$6
   {
     Object localObject = (BusinessCardEditActivity.ItemHolder)paramView.getTag();
     int i;
-    if (!((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(((BusinessCardEditActivity.ItemHolder)localObject).a)) {
+    if (!((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(((BusinessCardEditActivity.ItemHolder)localObject).a)) {
       i = 35;
     } else {
       i = 1;
@@ -30,7 +30,7 @@ class BusinessCardEditActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.6
  * JD-Core Version:    0.7.0.1
  */

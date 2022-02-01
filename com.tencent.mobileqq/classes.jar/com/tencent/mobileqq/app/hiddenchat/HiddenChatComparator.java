@@ -25,12 +25,12 @@ import java.util.List;
 public class HiddenChatComparator
   implements Comparator<RecentBaseData>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  private QQAppInterface a;
+  private StringBuilder b = new StringBuilder();
   
   public HiddenChatComparator(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private int a(RecentUserBaseData paramRecentUserBaseData, int paramInt)
@@ -44,7 +44,7 @@ public class HiddenChatComparator
       if (paramRecentUserBaseData.mUser.getType() == 0)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localStringBuilder.append(this.a.getCurrentAccountUin());
         localStringBuilder.append(paramRecentUserBaseData.mUser.uin);
         i = j;
         if (QvipSpecialCareUtil.a(localStringBuilder.toString()))
@@ -76,23 +76,23 @@ public class HiddenChatComparator
   
   private void a()
   {
-    if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel()))
+    if ((this.b != null) && (QLog.isDevelopLevel()))
     {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("]");
-      QLog.i("Q.recent", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+      this.b.append("]");
+      QLog.i("Q.recent", 4, this.b.toString());
     }
   }
   
   private void a(String... paramVarArgs)
   {
-    if ((this.jdField_a_of_type_JavaLangStringBuilder != null) && (QLog.isDevelopLevel()) && (paramVarArgs != null))
+    if ((this.b != null) && (QLog.isDevelopLevel()) && (paramVarArgs != null))
     {
       int j = paramVarArgs.length;
       int i = 0;
       while (i < j)
       {
         String str = paramVarArgs[i];
-        this.jdField_a_of_type_JavaLangStringBuilder.append(str);
+        this.b.append(str);
         i += 1;
       }
     }
@@ -100,47 +100,47 @@ public class HiddenChatComparator
   
   private boolean a(RecentUserBaseData paramRecentUserBaseData)
   {
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((paramRecentUserBaseData.mUser.getType() == 1) && (!((IHotChatUtil)QRoute.api(IHotChatUtil.class)).checkIsHCRecentUser(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUserBaseData.mUser))) {
-      return localTroopManager.a(paramRecentUserBaseData.getRecentUserUin());
+    TroopManager localTroopManager = (TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER);
+    if ((paramRecentUserBaseData.mUser.getType() == 1) && (!((IHotChatUtil)QRoute.api(IHotChatUtil.class)).checkIsHCRecentUser(this.a, paramRecentUserBaseData.mUser))) {
+      return localTroopManager.o(paramRecentUserBaseData.getRecentUserUin());
     }
-    return FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUserBaseData.mUser);
+    return FriendsStatusUtil.a(this.a, paramRecentUserBaseData.mUser);
   }
   
   private boolean a(String paramString, int paramInt)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().d(paramString, paramInt) > 0);
+    return (this.a.getConversationFacade() != null) && (this.a.getConversationFacade().d(paramString, paramInt) > 0);
   }
   
   private void b(List<RecentUser> paramList)
   {
     if (QLog.isDevelopLevel())
     {
-      Object localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+      Object localObject = this.b;
       if (localObject == null) {
-        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+        this.b = new StringBuilder();
       } else {
         ((StringBuilder)localObject).setLength(0);
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
+      this.b.append("checkRUList, src[");
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         localObject = (RecentUser)paramList.next();
         if (localObject == null)
         {
-          this.jdField_a_of_type_JavaLangStringBuilder.append("null | null,");
+          this.b.append("null | null,");
         }
         else
         {
-          StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+          StringBuilder localStringBuilder = this.b;
           localStringBuilder.append(((RecentUser)localObject).uin);
           localStringBuilder.append("|");
           localStringBuilder.append(((RecentUser)localObject).getType());
           localStringBuilder.append(",");
         }
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("], [");
+      this.b.append("], [");
     }
   }
   
@@ -248,7 +248,7 @@ public class HiddenChatComparator
           localObject2 = localObject1;
           if (localObject1 == null)
           {
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            localObject3 = this.a;
             localObject2 = localObject1;
             if (localObject3 != null) {
               localObject2 = ((QQAppInterface)localObject3).getHotChatMng(true);
@@ -268,11 +268,11 @@ public class HiddenChatComparator
         }
         else if (localRecentUser.getType() == 3000)
         {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          localObject2 = this.a;
           localObject3 = localObject1;
           if (localObject2 != null)
           {
-            localObject2 = ((DiscussionManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(localRecentUser.uin);
+            localObject2 = ((DiscussionManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(localRecentUser.uin);
             if ((localObject2 != null) && (!((DiscussionInfo)localObject2).isUIControlFlag_Hidden_RecentUser()))
             {
               localObject3 = localObject1;
@@ -289,9 +289,9 @@ public class HiddenChatComparator
         else if (localRecentUser.lFlag == 16L)
         {
           localObject3 = localObject1;
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+          if (this.a != null)
           {
-            AdvertisementRecentUserManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser);
+            AdvertisementRecentUserManager.a().a(this.a, localRecentUser);
             localObject3 = localObject1;
           }
         }
@@ -301,9 +301,9 @@ public class HiddenChatComparator
           if (localRecentUser.getType() == 10005)
           {
             localObject3 = localObject1;
-            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+            if (this.a != null)
             {
-              ImaxAdRecentUserManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser);
+              ImaxAdRecentUserManager.a().a(this.a, localRecentUser);
               localObject3 = localObject1;
             }
           }
@@ -322,7 +322,7 @@ public class HiddenChatComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatComparator
  * JD-Core Version:    0.7.0.1
  */

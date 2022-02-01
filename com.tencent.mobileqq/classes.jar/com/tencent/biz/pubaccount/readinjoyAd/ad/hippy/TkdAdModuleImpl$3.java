@@ -17,10 +17,10 @@ class TkdAdModuleImpl$3
   {
     try
     {
-      String str1 = this.jdField_a_of_type_ComTencentMttHippyCommonHippyMap.getString("title");
+      String str1 = this.a.getString("title");
       if (!TextUtils.isEmpty(str1))
       {
-        ((TextView)((Activity)this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs().getContext()).findViewById(2131369249)).setText(str1);
+        ((TextView)((Activity)this.b.getGlobalConfigs().getContext()).findViewById(2131436227)).setText(str1);
         return;
       }
     }
@@ -36,7 +36,7 @@ class TkdAdModuleImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdModuleImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -8,30 +8,30 @@ public class ResultRecord
   implements Parcelable
 {
   public static final Parcelable.Creator<ResultRecord> CREATOR = new ResultRecord.1();
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private int c;
   
   public ResultRecord() {}
   
   protected ResultRecord(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.c = paramParcel.readInt();
   }
   
   private ResultRecord(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
   }
   
   private ResultRecord(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public static ResultRecord a(String paramString1, String paramString2)
@@ -44,24 +44,24 @@ public class ResultRecord
     return new ResultRecord(paramString1, paramString2, paramInt);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public String b()
   {
     return this.b;
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
   
   public int describeContents()
@@ -77,21 +77,21 @@ public class ResultRecord
     if ((paramObject != null) && (getClass() == paramObject.getClass()))
     {
       paramObject = (ResultRecord)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      return this.a.equals(paramObject.a);
     }
     return false;
   }
   
   public int hashCode()
   {
-    return this.jdField_a_of_type_JavaLangString.hashCode() * 31 + this.b.hashCode();
+    return this.a.hashCode() * 31 + this.b.hashCode();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ResultRecord{uin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", name='");
     localStringBuilder.append(this.b);
@@ -102,14 +102,14 @@ public class ResultRecord
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.ResultRecord
  * JD-Core Version:    0.7.0.1
  */

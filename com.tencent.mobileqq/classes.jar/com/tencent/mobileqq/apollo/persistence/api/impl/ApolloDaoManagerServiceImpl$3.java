@@ -7,13 +7,13 @@ class ApolloDaoManagerServiceImpl$3
   
   public void run()
   {
-    ApolloDaoManagerServiceImpl.access$300(this.this$0);
     ApolloDaoManagerServiceImpl.access$400(this.this$0);
+    ApolloDaoManagerServiceImpl.access$500(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

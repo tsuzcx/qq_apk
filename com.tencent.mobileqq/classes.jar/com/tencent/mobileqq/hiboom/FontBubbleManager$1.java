@@ -17,7 +17,7 @@ class FontBubbleManager$1
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)FontBubbleManager.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(FontBubbleManager.a(this.this$0).getAccount());
+    ExtensionInfo localExtensionInfo = ((FriendsManager)FontBubbleManager.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).x(FontBubbleManager.a(this.this$0).getAccount());
     if (localExtensionInfo == null)
     {
       QLog.e("FontBubbleManager", 1, "setFontBubble fail no ExtensionInfo");
@@ -26,13 +26,13 @@ class FontBubbleManager$1
     ISVIPHandler localISVIPHandler = (ISVIPHandler)FontBubbleManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
     FontBubble localFontBubble = new FontBubble();
     localFontBubble.fontId = ((int)localExtensionInfo.uVipFont);
-    localFontBubble.bubbleId = localISVIPHandler.b();
-    FontBubbleManager.a(this.this$0).obtainMessage(1000, new Object[] { localFontBubble, this.a }).sendToTarget();
+    localFontBubble.bubbleId = localISVIPHandler.d();
+    FontBubbleManager.b(this.this$0).obtainMessage(1000, new Object[] { localFontBubble, this.a }).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubbleManager.1
  * JD-Core Version:    0.7.0.1
  */

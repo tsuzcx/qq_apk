@@ -14,28 +14,28 @@ class Conversation$UICallBack$5
   
   public void run()
   {
-    UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a(this.a.a.a());
+    UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a(this.a.a.s());
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent", 2, new Object[] { "UpgradeTIMWrapper MSG_TIM_UPGRADE_BAR_SHOW, tips on: ", Boolean.valueOf(localUpgradeTIMWrapper.a()) });
     }
     if (!localUpgradeTIMWrapper.a())
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqBannerBannerManager.a(TimUpgradeBannerProcessor.a, 3000, 0L, true);
+      this.a.a.y.a(TimUpgradeBannerProcessor.a, 3000, 0L, true);
       return;
     }
-    if (PackageUtil.a(((QQAppInterface)this.a.a.jdField_a_of_type_MqqAppAppRuntime).getApp(), "com.tencent.tim"))
+    if (PackageUtil.a(((QQAppInterface)this.a.a.aF).getApp(), "com.tencent.tim"))
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqBannerBannerManager.a(TimUpgradeBannerProcessor.a, 3000, 0L, true);
+      this.a.a.y.a(TimUpgradeBannerProcessor.a, 3000, 0L, true);
       return;
     }
-    if ((!UpgradeTIMWrapper.b()) && (Conversation.a(this.a.a) == null)) {
+    if ((!UpgradeTIMWrapper.c()) && (Conversation.k(this.a.a) == null)) {
       this.a.a.b(new Conversation.UICallBack.5.1(this, localUpgradeTIMWrapper));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.5
  * JD-Core Version:    0.7.0.1
  */

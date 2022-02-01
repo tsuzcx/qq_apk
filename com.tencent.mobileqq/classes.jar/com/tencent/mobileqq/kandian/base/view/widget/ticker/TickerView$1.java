@@ -11,13 +11,13 @@ class TickerView$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     TickerView.a(this.a).a(paramValueAnimator.getAnimatedFraction());
-    TickerView.a(this.a);
+    TickerView.b(this.a);
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerView.1
  * JD-Core Version:    0.7.0.1
  */

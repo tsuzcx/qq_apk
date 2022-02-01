@@ -17,9 +17,9 @@ class AutoReplyEditActivity$3
   {
     OnlineStatusDataReporter.a(AutoReplyEditActivity.a(this.a), true);
     Intent localIntent = new Intent();
-    localIntent.putExtra("AutoReplyEditActivity:new_text", AutoReplyEditActivity.b(this.a));
-    if (AutoReplyEditActivity.a(this.a) != null) {
-      localIntent.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.a(this.a).getText()), false), AutoReplyEditActivity.a(this.a).getTextId()));
+    localIntent.putExtra("AutoReplyEditActivity:new_text", AutoReplyEditActivity.f(this.a));
+    if (AutoReplyEditActivity.c(this.a) != null) {
+      localIntent.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.b(this.a).getText()), false), AutoReplyEditActivity.c(this.a).getTextId()));
     }
     this.a.getQBaseActivity().setResult(325, localIntent);
     this.a.getQBaseActivity().finish();
@@ -28,7 +28,7 @@ class AutoReplyEditActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -24,18 +24,6 @@ public class RealTimeController
     a();
   }
   
-  public static RealTimeTemplateFactory a(String paramString)
-  {
-    if (a.containsKey(paramString))
-    {
-      paramString = (RealTimeController.DefaultRealTimeConfig)a.get(paramString);
-      if ((paramString != null) && (paramString.jdField_a_of_type_ComTencentMobileqqKandianBizPtsRealtimeRealTimeStyleLoaderHelper != null)) {
-        return paramString.jdField_a_of_type_ComTencentMobileqqKandianBizPtsRealtimeRealTimeStyleLoaderHelper.a();
-      }
-    }
-    return null;
-  }
-  
   public static String a(String paramString)
   {
     JSONObject localJSONObject = new JSONObject();
@@ -43,14 +31,14 @@ public class RealTimeController
     {
       Object localObject = (RealTimeController.DefaultRealTimeConfig)a.get(paramString);
       localJSONObject.put("app", "QQ");
-      localJSONObject.put("appVersion", "8.7.0");
+      localJSONObject.put("appVersion", "8.8.17");
       localJSONObject.put("businessID", ((RealTimeController.DefaultRealTimeConfig)localObject).b);
       localJSONObject.put("os", "android");
       localObject = new JSONObject();
-      paramString = RealTimeTemplateFactory.a(paramString, false);
+      paramString = RealTimeTemplateFactory.b(paramString, false);
       if (paramString != null)
       {
-        paramString = paramString.a().entrySet().iterator();
+        paramString = paramString.g().entrySet().iterator();
         while (paramString.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)paramString.next();
@@ -77,12 +65,12 @@ public class RealTimeController
   
   public static void a(RealTimeController.DefaultRealTimeConfig paramDefaultRealTimeConfig)
   {
-    if (paramDefaultRealTimeConfig.jdField_a_of_type_JavaLangString != null)
+    if (paramDefaultRealTimeConfig.a != null)
     {
       if (paramDefaultRealTimeConfig.b == null) {
         return;
       }
-      a.put(paramDefaultRealTimeConfig.jdField_a_of_type_JavaLangString, paramDefaultRealTimeConfig);
+      a.put(paramDefaultRealTimeConfig.a, paramDefaultRealTimeConfig);
     }
   }
   
@@ -101,7 +89,7 @@ public class RealTimeController
     if (localObject1 == null) {
       return;
     }
-    paramString1 = RealTimeTemplateFactory.a(paramString1, true);
+    paramString1 = RealTimeTemplateFactory.b(paramString1, true);
     if (paramString1 == null)
     {
       paramString1 = new StringBuilder();
@@ -112,7 +100,7 @@ public class RealTimeController
     }
     try
     {
-      paramString1.a(StyleLoaderHelper.a());
+      paramString1.a(StyleLoaderHelper.b());
       Object localObject2 = new JSONObject(paramString2);
       paramString2 = ((JSONObject)localObject2).getString("businessID");
       Object localObject3 = new StringBuilder();
@@ -135,13 +123,13 @@ public class RealTimeController
           paramString1.d(str);
           i += 1;
         }
-        ((RealTimeController.DefaultRealTimeConfig)localObject1).jdField_a_of_type_ComTencentMobileqqKandianBizPtsRealtimeRealTimeStyleLoaderHelper.a((List)localObject3);
+        ((RealTimeController.DefaultRealTimeConfig)localObject1).c.a((List)localObject3);
         i = j;
       }
       while (i < paramString2.length())
       {
         localObject2 = (JSONObject)paramString2.get(i);
-        ((RealTimeController.DefaultRealTimeConfig)localObject1).jdField_a_of_type_ComTencentMobileqqKandianBizPtsRealtimeRealTimeStyleLoaderHelper.a(paramString1, (JSONObject)localObject2, true);
+        ((RealTimeController.DefaultRealTimeConfig)localObject1).c.a(paramString1, (JSONObject)localObject2, true);
         i += 1;
       }
       return;
@@ -151,10 +139,22 @@ public class RealTimeController
       QLog.d("RealTimeController", 1, "", paramString1);
     }
   }
+  
+  public static RealTimeTemplateFactory b(String paramString)
+  {
+    if (a.containsKey(paramString))
+    {
+      paramString = (RealTimeController.DefaultRealTimeConfig)a.get(paramString);
+      if ((paramString != null) && (paramString.c != null)) {
+        return paramString.c.a();
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.RealTimeController
  * JD-Core Version:    0.7.0.1
  */

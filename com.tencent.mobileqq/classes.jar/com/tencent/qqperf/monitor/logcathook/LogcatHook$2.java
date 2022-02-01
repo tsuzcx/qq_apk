@@ -17,7 +17,7 @@ final class LogcatHook$2
       if (!LogcatHook.sLogcatHooked.get())
       {
         System.loadLibrary("logcathook");
-        LogcatHookThread.a("com.tencent.mobileqq", MobileQQ.processName, AppSetting.a, 0L);
+        LogcatHookThread.a("com.tencent.mobileqq", MobileQQ.processName, AppSetting.b, 0L);
         LogcatHook.access$000(false);
         LogcatHook.updateLogPath(LogcatHookThread.a());
         if (LogcatHook.ENABEL_SYSLOG_IN_ALL_SO)
@@ -58,7 +58,7 @@ final class LogcatHook$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.logcathook.LogcatHook.2
  * JD-Core Version:    0.7.0.1
  */

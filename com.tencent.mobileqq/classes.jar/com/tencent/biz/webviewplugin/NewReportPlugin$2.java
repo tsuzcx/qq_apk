@@ -1,31 +1,73 @@
 package com.tencent.biz.webviewplugin;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 
 final class NewReportPlugin$2
-  extends FaceScoreCallBack
+  implements Runnable
 {
-  NewReportPlugin$2(QBaseActivity paramQBaseActivity, String paramString1, String paramString2, int paramInt, String paramString3, QQProgressDialog paramQQProgressDialog, Bundle paramBundle, long paramLong) {}
+  NewReportPlugin$2(Bundle paramBundle, String paramString1, int paramInt, QBaseActivity paramQBaseActivity, String paramString2, String paramString3, String paramString4, QQProgressDialog paramQQProgressDialog) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void run()
   {
-    if (paramLong2 > 0L) {
-      NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, String.valueOf(paramLong2), this.jdField_a_of_type_JavaLangString, this.b, NewReportPlugin.b(this.jdField_a_of_type_Int), NewReportPlugin.a(this.jdField_a_of_type_Int, this.c), this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog, this.jdField_a_of_type_AndroidOsBundle);
-    } else {
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.runOnUiThread(new NewReportPlugin.2.1(this));
+    String str1;
+    try
+    {
+      localObject2 = this.a;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new Bundle();
+      }
+      str2 = ((Bundle)localObject1).getString("text_evidence", "");
+      str3 = ((Bundle)localObject1).getString("img_evidence", "");
+      str4 = ((Bundle)localObject1).getString("url_evidence", "");
+      str5 = ((Bundle)localObject1).getString("video_evidence", "");
+      str6 = ((Bundle)localObject1).getString("file_evidence", "");
+      str7 = ((Bundle)localObject1).getString("audio_evidence", "");
+      str8 = ((Bundle)localObject1).getString("user_input_param", "");
+      if (!TextUtils.isEmpty(this.b)) {
+        localObject2 = this.b;
+      } else {
+        localObject2 = NewReportPlugin.a(this.c);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("NewReportPlugin", 2, String.format("handleGetTinyId [%s, %s, %s] ", new Object[] { Long.valueOf(paramLong2), Long.valueOf(paramLong1), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
+    catch (Exception localException)
+    {
+      Object localObject2;
+      Object localObject1;
+      String str2;
+      String str3;
+      String str4;
+      String str5;
+      String str6;
+      String str7;
+      String str8;
+      this.d.runOnUiThread(new NewReportPlugin.2.2(this, localException));
+      return;
+    }
+    if ((this.d.getAppRuntime() instanceof QQAppInterface)) {
+      str1 = NewReportPlugin.a((QQAppInterface)this.d.getAppRuntime(), this.e, this.f, this.c, (Bundle)localObject1);
+    }
+    for (;;)
+    {
+      localObject1 = NewReportPlugin.a(this.d, this.g, "", "", this.f, "", "", this.c, (String)localObject2, str1, str2, str3, str4, str5, str6, str7, str8, (Bundle)localObject1);
+      if (QLog.isColorLevel()) {
+        QLog.i("NewReportPlugin", 2, String.format("nearbySafetyRealReport post: %s", new Object[] { localObject1 }));
+      }
+      this.d.runOnUiThread(new NewReportPlugin.2.1(this, (String)localObject1));
+      return;
+      break;
+      str1 = "chatmsg%3A";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.2
  * JD-Core Version:    0.7.0.1
  */

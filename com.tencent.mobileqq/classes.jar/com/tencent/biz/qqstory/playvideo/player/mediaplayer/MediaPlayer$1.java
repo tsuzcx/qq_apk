@@ -7,11 +7,11 @@ class MediaPlayer$1
   
   public void a(MediaCodecDecoder paramMediaCodecDecoder)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerDecoders.b() < 2000000L) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerDecoders.b()))
+    if ((this.a.p != null) && (!this.a.p.a()) && (!this.a.L) && (this.a.K.h() < 2000000L) && (!this.a.K.i()))
     {
       paramMediaCodecDecoder = this.a;
-      paramMediaCodecDecoder.e = true;
-      paramMediaCodecDecoder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$EventHandler.sendMessage(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$EventHandler.obtainMessage(200, 701, 0));
+      paramMediaCodecDecoder.L = true;
+      paramMediaCodecDecoder.w.sendMessage(this.a.w.obtainMessage(200, 701, 0));
     }
   }
 }

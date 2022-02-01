@@ -17,15 +17,15 @@ class GameRoomFragment$15
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("showDialogTip content:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("GameRoomFragment", 2, ((StringBuilder)localObject).toString());
-      if ((GameRoomFragment.a(this.this$0) != null) && (GameRoomFragment.a(this.this$0).isShowing())) {
-        GameRoomFragment.a(this.this$0).dismiss();
+      if ((GameRoomFragment.h(this.this$0) != null) && (GameRoomFragment.h(this.this$0).isShowing())) {
+        GameRoomFragment.h(this.this$0).dismiss();
       }
       localObject = this.this$0;
-      GameRoomFragment.a((GameRoomFragment)localObject, DialogUtil.a(((GameRoomFragment)localObject).getActivity(), 0, null, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, null, new GameRoomFragment.15.1(this), new GameRoomFragment.15.2(this), new GameRoomFragment.15.3(this)));
-      GameRoomFragment.a(this.this$0).setCancelable(this.jdField_a_of_type_Boolean);
-      GameRoomFragment.a(this.this$0).show();
+      GameRoomFragment.a((GameRoomFragment)localObject, DialogUtil.a(((GameRoomFragment)localObject).getActivity(), 0, null, this.a, this.b, this.c, null, new GameRoomFragment.15.1(this), new GameRoomFragment.15.2(this), new GameRoomFragment.15.3(this)));
+      GameRoomFragment.h(this.this$0).setCancelable(this.g);
+      GameRoomFragment.h(this.this$0).show();
     }
   }
 }

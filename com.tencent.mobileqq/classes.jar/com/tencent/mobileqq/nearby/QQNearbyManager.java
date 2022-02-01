@@ -6,20 +6,6 @@ import com.tencent.mobileqq.qroute.QRoute;
 
 public class QQNearbyManager
 {
-  public static int a()
-  {
-    try
-    {
-      int i = ((INearbyService)QRoute.api(INearbyService.class)).getQQNearbyFactoryCountManager();
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("QQNearbyManager", "[getQQNearbyFactoryCountManager]", localThrowable);
-    }
-    return 0;
-  }
-  
   public static Class a()
   {
     try
@@ -30,20 +16,6 @@ public class QQNearbyManager
     catch (Throwable localThrowable)
     {
       Log.e("QQNearbyManager", "[getWerewolvesDataManagerClass]", localThrowable);
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    try
-    {
-      String str = ((INearbyService)QRoute.api(INearbyService.class)).getNearbyRelevantHandlerClassName();
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("QQNearbyManager", "[getNearbyRelevantHandlerClass]", localThrowable);
     }
     return null;
   }
@@ -62,20 +34,6 @@ public class QQNearbyManager
     return null;
   }
   
-  public static String b()
-  {
-    try
-    {
-      String str = ((INearbyService)QRoute.api(INearbyService.class)).getNearbyCardHandlerClassName();
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("QQNearbyManager", "[getNearbyCardHandlerClassName]", localThrowable);
-    }
-    return null;
-  }
-  
   public static Class c()
   {
     try
@@ -86,20 +44,6 @@ public class QQNearbyManager
     catch (Throwable localThrowable)
     {
       Log.e("QQNearbyManager", "[getNearbyMomentManagerClass]", localThrowable);
-    }
-    return null;
-  }
-  
-  public static String c()
-  {
-    try
-    {
-      String str = ((INearbyService)QRoute.api(INearbyService.class)).getHuayangPluginNewDownloaderClassName();
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("QQNearbyManager", "[getHuayangPluginNewDownloaderClassName]", localThrowable);
     }
     return null;
   }
@@ -118,21 +62,21 @@ public class QQNearbyManager
     return null;
   }
   
-  public static String d()
+  public static int e()
   {
     try
     {
-      String str = ((INearbyService)QRoute.api(INearbyService.class)).getHuayangPluginLauncherClassName();
-      return str;
+      int i = ((INearbyService)QRoute.api(INearbyService.class)).getQQNearbyFactoryCountManager();
+      return i;
     }
     catch (Throwable localThrowable)
     {
-      Log.e("QQNearbyManager", "[getHuayangPluginLauncherClassName]", localThrowable);
+      Log.e("QQNearbyManager", "[getQQNearbyFactoryCountManager]", localThrowable);
     }
-    return null;
+    return 0;
   }
   
-  public static Class e()
+  public static Class f()
   {
     try
     {
@@ -146,21 +90,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static String e()
-  {
-    try
-    {
-      String str = ((INearbyService)QRoute.api(INearbyService.class)).getNowChannerHandlerV2ClassName();
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("QQNearbyManager", "[getNowChannerHandlerV2ClassName]", localThrowable);
-    }
-    return null;
-  }
-  
-  public static Class f()
+  public static Class g()
   {
     try
     {
@@ -174,7 +104,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class g()
+  public static Class h()
   {
     try
     {
@@ -188,7 +118,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class h()
+  public static Class i()
   {
     try
     {
@@ -202,7 +132,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class i()
+  public static Class j()
   {
     try
     {
@@ -216,7 +146,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class j()
+  public static Class k()
   {
     try
     {
@@ -230,7 +160,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class k()
+  public static Class l()
   {
     try
     {
@@ -244,7 +174,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class l()
+  public static Class m()
   {
     try
     {
@@ -258,7 +188,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class m()
+  public static Class n()
   {
     try
     {
@@ -272,7 +202,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class n()
+  public static Class o()
   {
     try
     {
@@ -286,7 +216,7 @@ public class QQNearbyManager
     return null;
   }
   
-  public static Class o()
+  public static Class p()
   {
     try
     {
@@ -299,10 +229,80 @@ public class QQNearbyManager
     }
     return null;
   }
+  
+  public static String q()
+  {
+    try
+    {
+      String str = ((INearbyService)QRoute.api(INearbyService.class)).getNearbyRelevantHandlerClassName();
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("QQNearbyManager", "[getNearbyRelevantHandlerClass]", localThrowable);
+    }
+    return null;
+  }
+  
+  public static String r()
+  {
+    try
+    {
+      String str = ((INearbyService)QRoute.api(INearbyService.class)).getNearbyCardHandlerClassName();
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("QQNearbyManager", "[getNearbyCardHandlerClassName]", localThrowable);
+    }
+    return null;
+  }
+  
+  public static String s()
+  {
+    try
+    {
+      String str = ((INearbyService)QRoute.api(INearbyService.class)).getHuayangPluginNewDownloaderClassName();
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("QQNearbyManager", "[getHuayangPluginNewDownloaderClassName]", localThrowable);
+    }
+    return null;
+  }
+  
+  public static String t()
+  {
+    try
+    {
+      String str = ((INearbyService)QRoute.api(INearbyService.class)).getHuayangPluginLauncherClassName();
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("QQNearbyManager", "[getHuayangPluginLauncherClassName]", localThrowable);
+    }
+    return null;
+  }
+  
+  public static String u()
+  {
+    try
+    {
+      String str = ((INearbyService)QRoute.api(INearbyService.class)).getNowChannerHandlerV2ClassName();
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("QQNearbyManager", "[getNowChannerHandlerV2ClassName]", localThrowable);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.QQNearbyManager
  * JD-Core Version:    0.7.0.1
  */

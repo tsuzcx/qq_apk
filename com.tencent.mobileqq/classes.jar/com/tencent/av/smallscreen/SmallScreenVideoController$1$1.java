@@ -12,42 +12,42 @@ class SmallScreenVideoController$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$1.this$0.jdField_a_of_type_ComTencentAvVideoController == null)
+    if (this.c.this$0.s == null)
     {
       AVLog.printErrorLog("SmallScreenVideoController", "mVideoController is null");
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$1.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+    Object localObject = this.c.this$0.s.k();
     if (localObject != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("AsyncReadDoubleGlassConfig Timer lCurrent=");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", lLastTick=");
       localStringBuilder.append(this.b);
       localStringBuilder.append(", mCurrentVideoGlassWaitTime=");
-      localStringBuilder.append(((SessionInfo)localObject).Q);
+      localStringBuilder.append(((SessionInfo)localObject).bT);
       localStringBuilder.append(", mCurrentDefaultTimeOutRule=");
-      localStringBuilder.append(((SessionInfo)localObject).R);
+      localStringBuilder.append(((SessionInfo)localObject).bU);
       localStringBuilder.append(", mCurrentVideoGlassSwitch=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$1.this$0.jdField_a_of_type_Int);
+      localStringBuilder.append(this.c.this$0.d);
       QLog.d("SmallScreenVideoController", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$1.this$0.a(((SessionInfo)localObject).R);
+      this.c.this$0.b(((SessionInfo)localObject).bU);
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("AsyncReadDoubleGlassConfig Timer lCurrent=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(", lLastTick=");
     ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append(", sessionInfo is null, mCurrentVideoGlassSwitch=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$1.this$0.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.c.this$0.d);
     AVLog.printErrorLog("SmallScreenVideoController", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoController.1.1
  * JD-Core Version:    0.7.0.1
  */

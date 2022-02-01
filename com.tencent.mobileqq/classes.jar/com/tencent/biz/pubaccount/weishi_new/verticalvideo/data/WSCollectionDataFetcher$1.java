@@ -14,7 +14,7 @@ class WSCollectionDataFetcher$1
   
   protected WSCollectionDataFetcher.ResponseModel a(WSRequest<stGetCollectionRsp> paramWSRequest, stGetCollectionRsp paramstGetCollectionRsp, RspHeaderBean paramRspHeaderBean)
   {
-    return WSCollectionDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionDataFetcher, paramstGetCollectionRsp, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionRequestParams);
+    return WSCollectionDataFetcher.a(this.c, paramstGetCollectionRsp, this.a);
   }
   
   protected void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
@@ -22,25 +22,25 @@ class WSCollectionDataFetcher$1
   protected void a(WSCollectionDataFetcher.ResponseModel paramResponseModel)
   {
     super.a(paramResponseModel);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener != null)
+    if (this.b != null)
     {
-      int i = WSCollectionDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionDataFetcher, paramResponseModel.jdField_a_of_type_Boolean, paramResponseModel.b);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener.a(paramResponseModel.jdField_a_of_type_JavaUtilList, false, paramResponseModel.jdField_a_of_type_Boolean, Integer.valueOf(i));
+      int i = WSCollectionDataFetcher.a(this.c, paramResponseModel.b, paramResponseModel.c);
+      this.b.a(paramResponseModel.a, false, paramResponseModel.b, Integer.valueOf(i));
     }
   }
   
   protected void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
     super.b(paramWSServiceErrorInfo);
-    IFetchDataRspListener localIFetchDataRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+    IFetchDataRspListener localIFetchDataRspListener = this.b;
     if (localIFetchDataRspListener != null) {
-      localIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionRequestParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSCollectionRequestParams.b);
+      localIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.b(), this.a.a, this.a.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSCollectionDataFetcher.1
  * JD-Core Version:    0.7.0.1
  */

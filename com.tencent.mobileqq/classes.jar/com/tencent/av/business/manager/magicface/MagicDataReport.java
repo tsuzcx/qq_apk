@@ -13,29 +13,29 @@ import java.util.Map;
 
 public class MagicDataReport
 {
-  static int jdField_a_of_type_Int = 0;
-  static long jdField_a_of_type_Long = 0L;
-  static String jdField_a_of_type_JavaLangString = "";
+  static long a = 0L;
   static String b = "";
   static String c = "";
   static String d = "";
+  static String e = "";
+  static int f;
   
   public static void a(int paramInt)
   {
-    if ((paramInt != 1) && (paramInt != 3) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
+    if ((paramInt != 1) && (paramInt != 3) && (!TextUtils.isEmpty(b)))
     {
       long l = System.currentTimeMillis();
-      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
-      jdField_a_of_type_JavaLangString = "";
-      jdField_a_of_type_Int = 0;
+      a(b, (l - a) / 1000L, f);
+      b = "";
+      f = 0;
     }
   }
   
   public static void a(int paramInt, String paramString)
   {
     g(paramString);
-    if (!TextUtils.isEmpty(c)) {
-      a("0X8008025", c);
+    if (!TextUtils.isEmpty(d)) {
+      a("0X8008025", d);
     }
   }
   
@@ -44,7 +44,7 @@ public class MagicDataReport
     if ((paramVideoAppInterface != null) && (paramString != null))
     {
       g(paramString);
-      paramVideoAppInterface = (EffectSupportManager)paramVideoAppInterface.a(5);
+      paramVideoAppInterface = (EffectSupportManager)paramVideoAppInterface.c(5);
       boolean bool = paramVideoAppInterface.a(3, "normal");
       if ((!paramVideoAppInterface.a(3, "interact")) && (!bool))
       {
@@ -65,14 +65,14 @@ public class MagicDataReport
   {
     if ((paramInt != 1) && (paramInt != 3))
     {
-      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!paramString.equals(jdField_a_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(b)) && (!paramString.equals(b)))
       {
         long l = System.currentTimeMillis();
-        a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
+        a(b, (l - a) / 1000L, f);
       }
-      jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_Int = paramInt;
-      jdField_a_of_type_Long = System.currentTimeMillis();
+      b = paramString;
+      f = paramInt;
+      a = System.currentTimeMillis();
       return;
     }
     a(paramString, 10L, paramInt);
@@ -81,7 +81,7 @@ public class MagicDataReport
   public static void a(String paramString1, int paramInt, String paramString2)
   {
     g(paramString2);
-    c = paramString1;
+    d = paramString1;
   }
   
   public static void a(String paramString, long paramLong, int paramInt)
@@ -142,9 +142,9 @@ public class MagicDataReport
     localStringBuilder.append(", value = ");
     localStringBuilder.append(paramString3);
     localStringBuilder.append(", mRoomId = ");
-    localStringBuilder.append(d);
+    localStringBuilder.append(e);
     AVLog.printColorLog("MagicDataReport", localStringBuilder.toString());
-    ReportController.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", d, paramString3);
+    ReportController.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", e, paramString3);
   }
   
   public static void b(int paramInt, String paramString)
@@ -160,18 +160,18 @@ public class MagicDataReport
     else {
       paramInt = 3;
     }
-    if ((TextUtils.isEmpty(d)) || (d.equals("0")))
+    if ((TextUtils.isEmpty(e)) || (e.equals("0")))
     {
-      VideoController localVideoController = VideoController.a();
+      VideoController localVideoController = VideoController.f();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localVideoController.a(localVideoController.a().c));
+      localStringBuilder.append(localVideoController.p(localVideoController.k().s));
       localStringBuilder.append("");
-      d = localStringBuilder.toString();
+      e = localStringBuilder.toString();
     }
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramString)) && (!paramString.equals(b)))
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramString)) && (!paramString.equals(c)))
     {
       a("dc00898", "0X800BB5E", paramInt, paramString);
-      b = paramString;
+      c = paramString;
     }
   }
   
@@ -189,13 +189,13 @@ public class MagicDataReport
     ((StringBuilder)localObject).append(", id = ");
     ((StringBuilder)localObject).append(paramString);
     AVLog.printColorLog("MagicDataReport", ((StringBuilder)localObject).toString());
-    if ((TextUtils.isEmpty(d)) || (d.equals("0")))
+    if ((TextUtils.isEmpty(e)) || (e.equals("0")))
     {
-      localObject = VideoController.a();
+      localObject = VideoController.f();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((VideoController)localObject).a(((VideoController)localObject).a().c));
+      localStringBuilder.append(((VideoController)localObject).p(((VideoController)localObject).k().s));
       localStringBuilder.append("");
-      d = localStringBuilder.toString();
+      e = localStringBuilder.toString();
     }
     if (paramInt == 5)
     {
@@ -232,7 +232,7 @@ public class MagicDataReport
   static void g(String paramString)
   {
     if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("0"))) {
-      d = paramString;
+      e = paramString;
     }
   }
 }

@@ -13,23 +13,23 @@ class ActivateFriendGrid$3
   
   public void b()
   {
-    if (ActivateFriendGrid.a(this.a) != null)
+    if (ActivateFriendGrid.f(this.a) != null)
     {
-      if (ActivateFriendGrid.b(this.a) == null) {
+      if (ActivateFriendGrid.h(this.a) == null) {
         return;
       }
       int i = 0;
-      while (i < ActivateFriendGrid.a(this.a).size())
+      while (i < ActivateFriendGrid.f(this.a).size())
       {
-        if (this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
+        if (this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.f(this.a).get(i)).uin, 2))
         {
-          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689549));
+          ((ActivateFriendGridItem)ActivateFriendGrid.h(this.a).get(i)).setChecked(false);
+          ((ActivateFriendGridItem)ActivateFriendGrid.h(this.a).get(i)).setBirthday(this.a.getResources().getString(2131886159));
         }
-        else if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
+        else if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.f(this.a).get(i)).uin, 2))
         {
-          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
-          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689552));
+          ((ActivateFriendGridItem)ActivateFriendGrid.h(this.a).get(i)).setChecked(false);
+          ((ActivateFriendGridItem)ActivateFriendGrid.h(this.a).get(i)).setBirthday(this.a.getResources().getString(2131886162));
         }
         i += 1;
       }
@@ -38,7 +38,7 @@ class ActivateFriendGrid$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.3
  * JD-Core Version:    0.7.0.1
  */

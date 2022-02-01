@@ -136,14 +136,14 @@ public class MiniAppInfoLoadingFragment
     }
   }
   
-  private void getAppInfoById(String paramString1, String paramString2, String paramString3, MiniAppInfoLoadingFragment.onGetMiniAppInfoListener paramonGetMiniAppInfoListener)
+  private void getAppInfoById(String paramString1, String paramString2, String paramString3, MiniAppInfoLoadingFragment.OnGetMiniAppInfoListener paramOnGetMiniAppInfoListener)
   {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramString1, paramString2, paramString3, new MiniAppInfoLoadingFragment.4(this, paramonGetMiniAppInfoListener));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoById(paramString1, paramString2, paramString3, new MiniAppInfoLoadingFragment.4(this, paramOnGetMiniAppInfoListener));
   }
   
-  private void getAppInfoByLink(String paramString, int paramInt, MiniAppInfoLoadingFragment.onGetMiniAppInfoListener paramonGetMiniAppInfoListener)
+  private void getAppInfoByLink(String paramString, int paramInt, MiniAppInfoLoadingFragment.OnGetMiniAppInfoListener paramOnGetMiniAppInfoListener)
   {
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(paramString, paramInt, new MiniAppInfoLoadingFragment.5(this, paramonGetMiniAppInfoListener));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getAppInfoByLink(paramString, paramInt, new MiniAppInfoLoadingFragment.5(this, paramOnGetMiniAppInfoListener));
   }
   
   private static boolean isMiniAppInfoValid(MiniAppInfo paramMiniAppInfo)
@@ -281,7 +281,7 @@ public class MiniAppInfoLoadingFragment
         paramMiniAppInfo.launchParam.scene = paramLaunchParam.scene;
       }
       if (paramMiniAppInfo.verType != 3) {
-        paramMiniAppInfo.forceReroad = 3;
+        paramMiniAppInfo.launchParam.forceReload = 3;
       }
       setEntryPath(paramMiniAppInfo);
       if (paramString2 != null) {
@@ -318,7 +318,7 @@ public class MiniAppInfoLoadingFragment
       paramMiniAppInfo.launchParam.navigateExtData = paramMiniAppInfo.extraData;
       updateLaunchParam(paramMiniAppInfo, paramLaunchParam);
       if (paramMiniAppInfo.verType != 3) {
-        paramMiniAppInfo.forceReroad = 3;
+        paramMiniAppInfo.launchParam.forceReload = 3;
       }
       setEntryPath(paramMiniAppInfo);
       if (paramMiniAppInfo.clearAuths == 1) {
@@ -335,8 +335,8 @@ public class MiniAppInfoLoadingFragment
     }
     catch (Exception paramString2)
     {
-      label126:
-      break label126;
+      label129:
+      break label129;
     }
     if (paramString3 != null) {
       paramMiniAppInfo.customInfo = paramString3;
@@ -430,7 +430,7 @@ public class MiniAppInfoLoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppInfoLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

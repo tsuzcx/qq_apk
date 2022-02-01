@@ -14,7 +14,7 @@ final class SetSplash$2
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369593)
+    if (paramView.getId() == 2131436701)
     {
       this.a.a(15, 1, 0L);
       ISplashMiniGameStarterService localISplashMiniGameStarterService = (ISplashMiniGameStarterService)QRoute.api(ISplashMiniGameStarterService.class);
@@ -26,7 +26,7 @@ final class SetSplash$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.2
  * JD-Core Version:    0.7.0.1
  */

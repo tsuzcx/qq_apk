@@ -20,12 +20,12 @@ final class DeviceBridgeInvokeHandler$register$1
   
   public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    this.this$0.a().getDeviceInfo(paramString, true);
+    this.this$0.d().getDeviceInfo(paramString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.DeviceBridgeInvokeHandler.register.1
  * JD-Core Version:    0.7.0.1
  */

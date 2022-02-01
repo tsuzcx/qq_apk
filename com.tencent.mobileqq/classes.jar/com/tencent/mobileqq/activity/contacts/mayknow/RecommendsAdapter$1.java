@@ -31,7 +31,7 @@ class RecommendsAdapter$1
       {
         paramAbsListView = (MayKnowRecommend)this.a.getItem(i);
         if (paramAbsListView != null) {
-          this.a.a.b(paramAbsListView, 20, 0, 1);
+          this.a.f.b(paramAbsListView, 20, 0, 1);
         }
       }
     }
@@ -40,7 +40,7 @@ class RecommendsAdapter$1
     {
       paramAbsListView = (MayKnowRecommend)this.a.getItem(paramInt1);
       if (paramAbsListView != null) {
-        this.a.a.b(paramAbsListView, 20, 0, 1);
+        this.a.f.b(paramAbsListView, 20, 0, 1);
       }
     }
   }
@@ -55,7 +55,7 @@ class RecommendsAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.RecommendsAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,15 +17,15 @@ final class RIJAdGameGiftUtil$showGiftDialog$1$1$1$1
     if (paramInt == 0)
     {
       paramDialogInterface.dismiss();
-      GameComponentReport.a(Integer.valueOf(0), this.a.a.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 10, (String)this.a.a.a.element);
+      GameComponentReport.a(Integer.valueOf(0), this.a.a.this$0.a, 10, (String)this.a.a.d.element);
       return;
     }
-    RIJAdGameGiftUtil.a(RIJAdGameGiftUtil.a, this.a.a.this$0.jdField_a_of_type_AndroidContentContext, this.a.a.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.a.a.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, this.a.a.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+    RIJAdGameGiftUtil.a(RIJAdGameGiftUtil.a, this.a.a.this$0.b, this.a.a.this$0.a, this.a.a.this$0.c, this.a.a.this$0.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdGameGiftUtil.showGiftDialog.1.1.1.1
  * JD-Core Version:    0.7.0.1
  */

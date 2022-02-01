@@ -14,8 +14,8 @@ public class PAHelperProvider
   
   private void a(PublicAccountChatPie paramPublicAccountChatPie)
   {
-    a(109, new PATipsHelper(paramPublicAccountChatPie.b()));
-    PAAddFriendHelper localPAAddFriendHelper = new PAAddFriendHelper(paramPublicAccountChatPie.b());
+    a(109, new PATipsHelper(paramPublicAccountChatPie.bv()));
+    PAAddFriendHelper localPAAddFriendHelper = new PAAddFriendHelper(paramPublicAccountChatPie.bv());
     a(113, localPAAddFriendHelper);
     a(localPAAddFriendHelper);
     a(90, new QQGamePubAIOHelper(paramPublicAccountChatPie));
@@ -29,7 +29,7 @@ public class PAHelperProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PAHelperProvider
  * JD-Core Version:    0.7.0.1
  */

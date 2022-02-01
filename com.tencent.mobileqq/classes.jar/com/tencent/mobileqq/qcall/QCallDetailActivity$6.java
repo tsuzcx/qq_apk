@@ -14,18 +14,18 @@ class QCallDetailActivity$6
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      QCallDetailActivity.a(this.a).setPressed(true);
+      QCallDetailActivity.f(this.a).setPressed(true);
       return false;
     }
     if (1 == paramMotionEvent.getAction()) {
-      QCallDetailActivity.a(this.a).setPressed(false);
+      QCallDetailActivity.f(this.a).setPressed(false);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.6
  * JD-Core Version:    0.7.0.1
  */

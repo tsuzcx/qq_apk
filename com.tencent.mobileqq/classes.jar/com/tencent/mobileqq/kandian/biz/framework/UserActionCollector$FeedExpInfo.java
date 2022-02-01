@@ -2,20 +2,20 @@ package com.tencent.mobileqq.kandian.biz.framework;
 
 public class UserActionCollector$FeedExpInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public boolean b;
   public int c;
-  public long c;
-  public String c;
-  public boolean c;
   public int d;
-  public String d;
+  public int e;
+  public boolean f;
+  public boolean g;
+  public int h;
+  public boolean i;
+  public long j;
+  public long k;
+  public long l;
+  public String m;
+  public String n;
   
   public UserActionCollector$FeedExpInfo(UserActionCollector paramUserActionCollector) {}
   
@@ -23,36 +23,36 @@ public class UserActionCollector$FeedExpInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nFeedExpInfo{feedID='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", recReason='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", style=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", wordCnt=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", viewHeight=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", isFirstScreen=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", isLastScreen=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", expPosition=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", isClick=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", readDuration=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", expDuration=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", expInAZDuration=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", gyroscopeData='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.m);
     localStringBuilder.append('\'');
     localStringBuilder.append(", articleID='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.n);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -60,7 +60,7 @@ public class UserActionCollector$FeedExpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.UserActionCollector.FeedExpInfo
  * JD-Core Version:    0.7.0.1
  */

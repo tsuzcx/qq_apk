@@ -5,21 +5,21 @@ import com.tencent.biz.qqstory.view.segment.SegmentView;
 
 public abstract interface IMyStoryListView
 {
-  public abstract StoryInputBarView a();
-  
-  public abstract SegmentView a(String paramString);
-  
   public abstract void a(boolean paramBoolean);
   
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
   
-  public abstract boolean a();
+  public abstract SegmentView b(String paramString);
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract void g();
+  public abstract StoryInputBarView h();
   
-  public abstract void h();
+  public abstract boolean i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

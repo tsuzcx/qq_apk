@@ -16,12 +16,7 @@ import mqq.app.AppRuntime;
 public class ThemeVersionUpdateBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.A;
-  }
+  public static final int a = BannerTypeCollections.B;
   
   public ThemeVersionUpdateBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -35,23 +30,23 @@ public class ThemeVersionUpdateBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131691313));
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130838218));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsText(this.f.getString(2131888268));
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130839452));
     paramBanner.setVisibility(8);
     return paramBanner;
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity == null) {
+    if (this.f == null) {
       return;
     }
-    paramBanner.a.setVisibility(0);
-    ((TipsBar)paramBanner.a).setTipsText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131691313));
+    paramBanner.c.setVisibility(0);
+    ((TipsBar)paramBanner.c).setTipsText(this.f.getString(2131888268));
     AppRuntime localAppRuntime;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {
-      localAppRuntime = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    if (this.f != null) {
+      localAppRuntime = this.f.getAppRuntime();
     } else {
       localAppRuntime = null;
     }
@@ -64,19 +59,19 @@ public class ThemeVersionUpdateBannerProcessor
         return;
       }
       paramMessage = (String)paramMessage.obj;
-      ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 16, 0, "", "", "", "");
-      paramBanner.a.setOnClickListener(new ThemeVersionUpdateBannerProcessor.1(this, paramMessage));
+      ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 16, 0, "", "", "", "");
+      paramBanner.c.setOnClickListener(new ThemeVersionUpdateBannerProcessor.1(this, paramMessage));
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ThemeVersionUpdateBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

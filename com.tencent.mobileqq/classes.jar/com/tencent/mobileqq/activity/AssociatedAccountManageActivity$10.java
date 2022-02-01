@@ -13,8 +13,8 @@ class AssociatedAccountManageActivity$10
   {
     try
     {
-      FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.this$0.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368343);
+      FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.this$0.app, this.a, (byte)3);
+      ImageView localImageView = (ImageView)this.b.findViewById(2131435219);
       if (localImageView != null)
       {
         localImageView.setImageDrawable(localFaceDrawable);
@@ -29,7 +29,7 @@ class AssociatedAccountManageActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.10
  * JD-Core Version:    0.7.0.1
  */

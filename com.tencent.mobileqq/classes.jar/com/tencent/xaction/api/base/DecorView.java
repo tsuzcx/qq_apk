@@ -21,64 +21,54 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/DecorView;", "Lcom/tencent/xaction/api/IDecorView;", "iView", "Lcom/tencent/xaction/api/IView;", "(Lcom/tencent/xaction/api/IView;)V", "data", "Lcom/tencent/xaction/api/data/ViewData;", "getData", "()Lcom/tencent/xaction/api/data/ViewData;", "setData", "(Lcom/tencent/xaction/api/data/ViewData;)V", "value", "Landroid/graphics/drawable/Drawable;", "drawable", "getDrawable", "()Landroid/graphics/drawable/Drawable;", "setDrawable", "(Landroid/graphics/drawable/Drawable;)V", "drawableImpl", "engine", "Lcom/tencent/xaction/openapi/api/IXAEngine;", "getEngine", "()Lcom/tencent/xaction/openapi/api/IXAEngine;", "setEngine", "(Lcom/tencent/xaction/openapi/api/IXAEngine;)V", "isStyle", "", "linkViews", "Ljava/util/ArrayList;", "Landroid/view/View;", "Lkotlin/collections/ArrayList;", "proxyView", "bindData", "", "destroy", "getProxy", "getStyle", "init", "viewLayout", "Landroid/view/ViewGroup;", "linkAnim", "setProxy", "view", "setStyle", "viewData", "stateNotify", "status", "", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/DecorView;", "Lcom/tencent/xaction/api/IDecorView;", "", "iView", "Lcom/tencent/xaction/api/IView;", "(Lcom/tencent/xaction/api/IView;)V", "data", "Lcom/tencent/xaction/api/data/ViewData;", "getData", "()Lcom/tencent/xaction/api/data/ViewData;", "setData", "(Lcom/tencent/xaction/api/data/ViewData;)V", "value", "Landroid/graphics/drawable/Drawable;", "drawable", "getDrawable", "()Landroid/graphics/drawable/Drawable;", "setDrawable", "(Landroid/graphics/drawable/Drawable;)V", "drawableImpl", "engine", "Lcom/tencent/xaction/openapi/api/IXAEngine;", "getEngine", "()Lcom/tencent/xaction/openapi/api/IXAEngine;", "setEngine", "(Lcom/tencent/xaction/openapi/api/IXAEngine;)V", "getIView", "()Lcom/tencent/xaction/api/IView;", "setIView", "isStyle", "", "isStyle$XActionCore_release", "()Z", "setStyle$XActionCore_release", "(Z)V", "linkViews", "Ljava/util/ArrayList;", "Landroid/view/View;", "Lkotlin/collections/ArrayList;", "proxyView", "getProxyView", "()Landroid/view/View;", "setProxyView", "(Landroid/view/View;)V", "bindData", "", "destroy", "getProxy", "getStyle", "init", "viewLayout", "Landroid/view/ViewGroup;", "linkAnim", "anims", "Lcom/tencent/xaction/api/base/BaseAnim;", "timeline", "Lcom/tencent/xaction/impl/XATimeline;", "setProxy", "view", "setStyle", "viewData", "stateNotify", "status", "", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public class DecorView
-  implements IDecorView
+  implements IDecorView, Cloneable
 {
-  private transient Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private IView jdField_a_of_type_ComTencentXactionApiIView;
   @Nullable
-  private ViewData jdField_a_of_type_ComTencentXactionApiDataViewData;
+  private IXAEngine a;
   @Nullable
-  private IXAEngine jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
+  private ViewData b;
+  @Nullable
+  private IView c;
+  @Nullable
+  private View d;
+  private ArrayList<View> e;
+  private boolean f;
+  private transient Drawable g;
   
   public DecorView(@Nullable IView paramIView)
   {
-    this.jdField_a_of_type_ComTencentXactionApiIView = paramIView;
+    this.c = paramIView;
     if ((paramIView instanceof View)) {
       paramIView = (View)paramIView;
     } else {
       paramIView = null;
     }
-    this.jdField_a_of_type_AndroidViewView = paramIView;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  @Nullable
-  public final ViewData a()
-  {
-    return this.jdField_a_of_type_ComTencentXactionApiDataViewData;
-  }
-  
-  @Nullable
-  public final IXAEngine a()
-  {
-    return this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine;
+    this.d = paramIView;
+    this.f = true;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentXactionApiDataViewData != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    if (this.b != null)
     {
-      if (this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine == null) {
+      if (this.a == null) {
         return;
       }
       IView localIView;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.f)
       {
         localCompanion = XAEmptyView.a;
-        localObject = this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine;
+        localObject = this.a;
         if (localObject != null)
         {
           localObject = (XAEngine)localObject;
-          localIView = this.jdField_a_of_type_ComTencentXactionApiIView;
+          localIView = this.c;
           if (localIView == null) {
             Intrinsics.throwNpe();
           }
-          localCompanion.c((XAEngine)localObject, localIView, this.jdField_a_of_type_ComTencentXactionApiDataViewData);
+          localCompanion.c((XAEngine)localObject, localIView, this.b);
         }
         else
         {
@@ -86,35 +76,66 @@ public class DecorView
         }
       }
       XAEmptyView.Companion localCompanion = XAEmptyView.a;
-      Object localObject = this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine;
+      Object localObject = this.a;
       if (localObject != null)
       {
         localObject = (XAEngine)localObject;
-        localIView = this.jdField_a_of_type_ComTencentXactionApiIView;
+        localIView = this.c;
         if (localIView == null) {
           Intrinsics.throwNpe();
         }
-        localCompanion.a((XAEngine)localObject, localIView, this.jdField_a_of_type_ComTencentXactionApiDataViewData);
+        localCompanion.a((XAEngine)localObject, localIView, this.b);
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.impl.XAEngine");
     }
   }
   
-  public final void a(@Nullable View paramView)
+  protected final void a(@Nullable View paramView)
   {
-    if (paramView == null) {
-      Intrinsics.throwNpe();
+    this.d = paramView;
+  }
+  
+  public void a(@Nullable View paramView, boolean paramBoolean)
+  {
+    this.f = paramBoolean;
+    b(paramView);
+  }
+  
+  public final void a(@Nullable ViewData paramViewData)
+  {
+    this.b = paramViewData;
+  }
+  
+  public final void a(@Nullable IXAEngine paramIXAEngine)
+  {
+    this.a = paramIXAEngine;
+  }
+  
+  public void a(@NotNull IXAEngine paramIXAEngine, @Nullable ViewGroup paramViewGroup)
+  {
+    Intrinsics.checkParameterIsNotNull(paramIXAEngine, "engine");
+    this.a = paramIXAEngine;
+    if (b() != null)
+    {
+      paramIXAEngine = this.b;
+      if (paramIXAEngine != null)
+      {
+        if (paramIXAEngine == null) {
+          Intrinsics.throwNpe();
+        }
+        if ((!paramIXAEngine.getTemplate()) && (paramViewGroup != null)) {
+          paramViewGroup.addView(b());
+        }
+      }
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
   }
   
   public final void a(@NotNull String paramString, @NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "status");
     Intrinsics.checkParameterIsNotNull(paramView, "view");
-    Object localObject1 = this.jdField_a_of_type_ComTencentXactionApiDataViewData;
+    Object localObject1 = this.b;
     if (localObject1 != null)
     {
       if (localObject1 == null) {
@@ -122,7 +143,7 @@ public class DecorView
       }
       if (((ViewData)localObject1).getTag() == null)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentXactionApiDataViewData;
+        localObject1 = this.b;
         if (localObject1 == null) {
           Intrinsics.throwNpe();
         }
@@ -130,7 +151,7 @@ public class DecorView
       }
       else
       {
-        localObject1 = this.jdField_a_of_type_ComTencentXactionApiDataViewData;
+        localObject1 = this.b;
         if (localObject1 == null) {
           Intrinsics.throwNpe();
         }
@@ -142,124 +163,125 @@ public class DecorView
           localObject1 = localObject2;
         }
       }
-      Object localObject2 = XAEngine.Companion;
-      IXAEngine localIXAEngine = this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine;
-      if (localIXAEngine == null) {
-        Intrinsics.throwNpe();
+      Object localObject2 = this.a;
+      if (localObject2 != null) {
+        XAEngine.Companion.a((String)localObject1, paramString, paramView, (IXAEngine)localObject2);
       }
-      ((XAEngine.Companion)localObject2).a((String)localObject1, paramString, paramView, localIXAEngine);
     }
   }
   
-  public void destroy()
+  public void a(@NotNull ArrayList<View> paramArrayList, @NotNull ArrayList<BaseAnim> paramArrayList1, @NotNull XATimeline paramXATimeline)
   {
-    this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine = ((IXAEngine)null);
+    Intrinsics.checkParameterIsNotNull(paramArrayList, "linkViews");
+    Intrinsics.checkParameterIsNotNull(paramArrayList1, "anims");
+    Intrinsics.checkParameterIsNotNull(paramXATimeline, "timeline");
+    this.e = paramArrayList;
+    if (this.a != null)
+    {
+      if (paramArrayList1.size() == 0) {
+        return;
+      }
+      long l1 = 0L;
+      paramArrayList = this.e;
+      if (paramArrayList == null) {
+        Intrinsics.throwNpe();
+      }
+      paramArrayList = ((Iterable)paramArrayList).iterator();
+      if (paramArrayList.hasNext())
+      {
+        View localView = (View)paramArrayList.next();
+        Iterator localIterator = paramArrayList1.iterator();
+        Object localObject;
+        for (long l2 = l1;; l2 += ((ViewData)localObject).getLinkDelay())
+        {
+          l1 = l2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject = ((BaseAnim)localIterator.next()).clone();
+          ((BaseAnim)localObject).setDelay(((BaseAnim)localObject).getDelay() + l2);
+          IXAEngine localIXAEngine = this.a;
+          if (localIXAEngine == null) {
+            Intrinsics.throwNpe();
+          }
+          ((BaseAnim)localObject).init(localView, localIXAEngine);
+          paramXATimeline.a((ITimeline)localObject);
+          localObject = this.b;
+          if (localObject == null) {
+            Intrinsics.throwNpe();
+          }
+        }
+      }
+    }
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.f = paramBoolean;
+  }
+  
+  @Nullable
+  public View b()
+  {
+    return this.d;
+  }
+  
+  public final void b(@Nullable View paramView)
+  {
+    this.d = paramView;
+    a();
+  }
+  
+  public void c()
+  {
+    this.a = ((IXAEngine)null);
+  }
+  
+  @NotNull
+  public Object clone()
+  {
+    return super.clone();
+  }
+  
+  @Nullable
+  public final IXAEngine d()
+  {
+    return this.a;
+  }
+  
+  @Nullable
+  public final ViewData e()
+  {
+    return this.b;
   }
   
   @Nullable
   public Drawable getDrawable()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  @Nullable
-  public View getProxy()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.g;
   }
   
   @Nullable
   public ViewData getStyle()
   {
-    return this.jdField_a_of_type_ComTencentXactionApiDataViewData;
-  }
-  
-  public void init(@NotNull IXAEngine paramIXAEngine, @Nullable ViewGroup paramViewGroup)
-  {
-    Intrinsics.checkParameterIsNotNull(paramIXAEngine, "engine");
-    this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine = paramIXAEngine;
-    if ((getProxy() != null) && (paramViewGroup != null)) {
-      paramViewGroup.addView(getProxy());
-    }
-  }
-  
-  public void linkAnim(@NotNull ArrayList<View> paramArrayList)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayList, "linkViews");
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    if (this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine == null) {
-      return;
-    }
-    long l1 = 0L;
-    paramArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (paramArrayList == null) {
-      Intrinsics.throwNpe();
-    }
-    paramArrayList = ((Iterable)paramArrayList).iterator();
-    if (paramArrayList.hasNext())
-    {
-      View localView = (View)paramArrayList.next();
-      Object localObject1 = this.jdField_a_of_type_ComTencentXactionApiDataViewData;
-      if (localObject1 == null) {
-        Intrinsics.throwNpe();
-      }
-      localObject1 = ((ViewData)localObject1).getAnim().iterator();
-      long l2 = l1;
-      for (;;)
-      {
-        l1 = l2;
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        Object localObject2 = (BaseAnim)((Iterator)localObject1).next();
-        if (localObject2 != null)
-        {
-          localObject2 = ((BaseAnim)localObject2).clone();
-          ((BaseAnim)localObject2).setDelay(((BaseAnim)localObject2).getDelay() + l2);
-          Object localObject3 = this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine;
-          if (localObject3 == null) {
-            Intrinsics.throwNpe();
-          }
-          ((BaseAnim)localObject2).init(localView, (IXAEngine)localObject3);
-          localObject3 = this.jdField_a_of_type_ComTencentXactionApiDataViewData;
-          if (localObject3 == null) {
-            Intrinsics.throwNpe();
-          }
-          localObject3 = ((ViewData)localObject3).getTl();
-          if (localObject3 != null) {
-            ((XATimeline)localObject3).a((ITimeline)localObject2);
-          }
-          localObject2 = this.jdField_a_of_type_ComTencentXactionApiDataViewData;
-          if (localObject2 == null) {
-            Intrinsics.throwNpe();
-          }
-          l2 += ((ViewData)localObject2).getLinkDelay();
-        }
-      }
-    }
+    return this.b;
   }
   
   public void setDrawable(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  public void setProxy(@Nullable View paramView, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a(paramView);
+    this.g = paramDrawable;
   }
   
   public void setStyle(@NotNull ViewData paramViewData)
   {
     Intrinsics.checkParameterIsNotNull(paramViewData, "viewData");
-    this.jdField_a_of_type_ComTencentXactionApiDataViewData = paramViewData;
+    this.b = paramViewData;
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.base.DecorView
  * JD-Core Version:    0.7.0.1
  */

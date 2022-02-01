@@ -9,41 +9,41 @@ import android.view.animation.Transformation;
 class RotatePageInAnimation
   extends Animation
 {
-  private int jdField_a_of_type_Int;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  private Camera a;
+  private Matrix b;
+  private int c;
+  private int d;
+  private View e;
   
   public RotatePageInAnimation(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.e = paramView;
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(90.0F - paramFloat * 90.0F);
-    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, -this.b / 2);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, this.b / 2);
-    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.a.save();
+    this.a.rotateX(90.0F - paramFloat * 90.0F);
+    this.a.getMatrix(this.b);
+    this.a.restore();
+    this.b.preTranslate(-this.c / 2, -this.d / 2);
+    this.b.postTranslate(this.c / 2, this.d / 2);
+    paramTransformation.getMatrix().postConcat(this.b);
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = new Camera();
+    this.b = new Matrix();
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RotatePageInAnimation
  * JD-Core Version:    0.7.0.1
  */

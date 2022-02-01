@@ -12,12 +12,12 @@ public class PicTypeTroopBar
     super(paramCompressInfo);
   }
   
-  protected int a()
+  protected int c()
   {
-    if (this.a.g == 2) {
+    if (this.l.p == 2) {
       return 100;
     }
-    int i = this.a.h;
+    int i = this.l.q;
     if (i != 1)
     {
       if (i != 4) {}
@@ -28,7 +28,7 @@ public class PicTypeTroopBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.PicTypeTroopBar
  * JD-Core Version:    0.7.0.1
  */

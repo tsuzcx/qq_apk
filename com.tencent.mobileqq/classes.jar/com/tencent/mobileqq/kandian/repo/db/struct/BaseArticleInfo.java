@@ -16,7 +16,7 @@ import com.tencent.mobileqq.kandian.repo.feeds.PolymericInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.RecommendFollowInfos;
 import com.tencent.mobileqq.kandian.repo.feeds.ScripCmsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.ShortWithLongContentUtil;
-import com.tencent.mobileqq.kandian.repo.feeds.api.IVideoCardUIModelFactory;
+import com.tencent.mobileqq.kandian.repo.feeds.api.impl.VideoCardUIModelFactory;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ExtraBiuBriefInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.FeedsInfoUser;
@@ -39,7 +39,6 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
 import com.tencent.pts.core.itemview.PTSItemData;
 import com.tencent.qphone.base.util.QLog;
@@ -90,13 +89,13 @@ public class BaseArticleInfo
   private void convertToPB()
   {
     if (this.mSocialFeedInfo != null) {
-      this.mSocialFeedInfoByte = this.mSocialFeedInfo.a();
+      this.mSocialFeedInfoByte = this.mSocialFeedInfo.b();
     }
     if (this.mVideoColumnInfo != null) {
-      this.mVideoColumnInfoBytes = this.mVideoColumnInfo.a();
+      this.mVideoColumnInfoBytes = this.mVideoColumnInfo.b();
     }
     if (this.mSimpleVideoColumnInfo != null) {
-      this.mSimpleVideoColumnInfoBytes = this.mSimpleVideoColumnInfo.a();
+      this.mSimpleVideoColumnInfoBytes = this.mSimpleVideoColumnInfo.b();
     }
     if (this.mNewPolymericInfo != null) {
       this.mNewPackInfoBytes = this.mNewPolymericInfo.a();
@@ -119,7 +118,7 @@ public class BaseArticleInfo
   
   private void handleFeedsTypeInOldVersionDatabaseForGalleryCard()
   {
-    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.c == 1) && ((this.mSocialFeedInfo.jdField_a_of_type_Int == 9) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 3) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 8)))
+    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.t != null) && (this.mSocialFeedInfo.t.g == 1) && ((this.mSocialFeedInfo.b == 9) || (this.mSocialFeedInfo.b == 3) || (this.mSocialFeedInfo.b == 8)))
     {
       if (QLog.isColorLevel())
       {
@@ -130,12 +129,12 @@ public class BaseArticleInfo
       }
       if (this.mFeedType == 1)
       {
-        if (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo == null) {
-          this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo = new BiuInfo();
+        if (this.mSocialFeedInfo.n == null) {
+          this.mSocialFeedInfo.n = new BiuInfo();
         }
-        if ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.intValue() != 23))
+        if ((this.mSocialFeedInfo.n.c == null) || (this.mSocialFeedInfo.n.c.intValue() != 23))
         {
-          this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b = new Long(23L);
+          this.mSocialFeedInfo.n.c = new Long(23L);
           if (QLog.isColorLevel()) {
             QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu gallery card");
           }
@@ -153,7 +152,7 @@ public class BaseArticleInfo
   
   private void handleFeedsTypeInOldVersionDatabaseForNewPolymericInfo()
   {
-    if ((this.mNewPolymericInfo != null) && (this.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null) && (this.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.size() > 1))
+    if ((this.mNewPolymericInfo != null) && (this.mNewPolymericInfo.p != null) && (this.mNewPolymericInfo.p.size() > 1))
     {
       if (QLog.isColorLevel())
       {
@@ -174,7 +173,7 @@ public class BaseArticleInfo
   
   private void handleFeedsTypeInOldVersionDatabaseForQACard()
   {
-    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityWendaInfo != null))
+    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.x != null))
     {
       if (QLog.isColorLevel())
       {
@@ -183,32 +182,32 @@ public class BaseArticleInfo
         localStringBuilder.append(toString());
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, localStringBuilder.toString());
       }
-      if ((this.mFeedType == 1) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null))
+      if ((this.mFeedType == 1) && (this.mSocialFeedInfo.n != null) && (this.mSocialFeedInfo.n.c != null) && (this.mSocialFeedInfo.s != null))
       {
-        if ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 3) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.intValue() != 21))
+        if ((this.mSocialFeedInfo.s.i == 3) && (this.mSocialFeedInfo.n.c.intValue() != 21))
         {
-          this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b = Long.valueOf(21L);
+          this.mSocialFeedInfo.n.c = Long.valueOf(21L);
           if (QLog.isColorLevel()) {
             QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu question card");
           }
         }
-        else if ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 4) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.intValue() != 22))
+        else if ((this.mSocialFeedInfo.s.i == 4) && (this.mSocialFeedInfo.n.c.intValue() != 22))
         {
-          this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b = Long.valueOf(22L);
+          this.mSocialFeedInfo.n.c = Long.valueOf(22L);
           if (QLog.isColorLevel()) {
             QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu answer card");
           }
         }
       }
-      else if ((this.mFeedType != 1) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)) {
-        if ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 3) && (this.mFeedType != 21))
+      else if ((this.mFeedType != 1) && (this.mSocialFeedInfo.s != null)) {
+        if ((this.mSocialFeedInfo.s.i == 3) && (this.mFeedType != 21))
         {
           this.mFeedType = 21;
           if (QLog.isColorLevel()) {
             QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for question card");
           }
         }
-        else if ((this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b == 4) && (this.mFeedType != 22))
+        else if ((this.mSocialFeedInfo.s.i == 4) && (this.mFeedType != 22))
         {
           this.mFeedType = 22;
           if (QLog.isColorLevel()) {
@@ -221,8 +220,8 @@ public class BaseArticleInfo
   
   private void handlePBValueFromStream1()
   {
-    this.mCommentsObj = RIJPBFieldUtils.a(this.mCommentInfoBytes, articlesummary.CommentInfo.class);
-    this.mMultiBiuSameListObj = RIJPBFieldUtils.a(this.mMultiBiuSameListBytes, articlesummary.MultiBiuSameContent.class);
+    this.mCommentsObj = RIJPBFieldUtils.b(this.mCommentInfoBytes, articlesummary.CommentInfo.class);
+    this.mMultiBiuSameListObj = RIJPBFieldUtils.b(this.mMultiBiuSameListBytes, articlesummary.MultiBiuSameContent.class);
     if (this.mMultiBiuSameListObj != null) {
       this.multiBiuSameContentList = MultiBiuSameContentUtils.a(this.mMultiBiuSameListObj);
     }
@@ -265,7 +264,7 @@ public class BaseArticleInfo
   
   private void handlePBValueFromStream2()
   {
-    this.mLabelListObj = RIJPBFieldUtils.a(this.mLableListInfoBytes, articlesummary.ChannelInfo.class);
+    this.mLabelListObj = RIJPBFieldUtils.b(this.mLableListInfoBytes, articlesummary.ChannelInfo.class);
     Object localObject = (articlesummary.TopicRecommendFeedsInfo)RIJPBFieldUtils.a(this.mTopicRecommendFeedsInfoByte, new articlesummary.TopicRecommendFeedsInfo());
     if (localObject != null) {
       this.mTopicRecommendFeedsInfo = TopicRecommendFeedsInfo.a((articlesummary.TopicRecommendFeedsInfo)localObject);
@@ -274,7 +273,7 @@ public class BaseArticleInfo
     if (localObject != null) {
       this.mArkAppFeedsInfo = ArkAppFeedsInfo.a((articlesummary.ArkAppFeedsInfo)localObject);
     }
-    this.mSubSummaryListObj = RIJPBFieldUtils.a(this.mSubArticleListBytes, articlesummary.ArticleSummary.class);
+    this.mSubSummaryListObj = RIJPBFieldUtils.b(this.mSubArticleListBytes, articlesummary.ArticleSummary.class);
     if ((this.mSubSummaryListObj != null) && (this.mSubSummaryListObj.size() > 0))
     {
       localObject = new ArrayList(this.mSubSummaryListObj.size());
@@ -304,7 +303,7 @@ public class BaseArticleInfo
     this.mGalleryFeedsInfo = ((galleryFeeds.GalleryFeedsInfo)RIJPBFieldUtils.a(this.bytesBusiData, new galleryFeeds.GalleryFeedsInfo()));
     this.mVideoDownloadBarInfo = ((articlesummary.VideoDownloadBarInfo)RIJPBFieldUtils.a(this.mVideoDownloadBarInfoBytes, new articlesummary.VideoDownloadBarInfo()));
     this.mPartnerAccountInfo = ((articlesummary.PartnerAccountInfo)RIJPBFieldUtils.a(this.mPartnerAccountInfoBytes, new articlesummary.PartnerAccountInfo()));
-    this.srtUniversalID = RIJPBFieldUtils.a(this.srtUniversalIDBytesList, articlesummary.SRTUniversalID.class);
+    this.srtUniversalID = RIJPBFieldUtils.b(this.srtUniversalIDBytesList, articlesummary.SRTUniversalID.class);
     this.weishiUGInfo = ((articlesummary.WeishiUGInfo)RIJPBFieldUtils.a(this.mWeishiUGInfo, new articlesummary.WeishiUGInfo()));
     ShortWithLongContentUtil.a(this);
   }
@@ -402,7 +401,7 @@ public class BaseArticleInfo
     paramBaseArticleInfo.mTopicPicWHRatio = paramParcel.readDouble();
     paramBaseArticleInfo.mTopicPicInfo = paramParcel.readString();
     readPictureInfo(paramBaseArticleInfo, paramParcel);
-    paramBaseArticleInfo.mVideoCoverUrl = RIJConvertString2URL.a(paramParcel.readString());
+    paramBaseArticleInfo.mVideoCoverUrl = RIJConvertString2URL.b(paramParcel.readString());
     paramBaseArticleInfo.mVideoVid = paramParcel.readString();
     paramBaseArticleInfo.mVideoDuration = paramParcel.readInt();
     paramBaseArticleInfo.mCommentIconType = paramParcel.readInt();
@@ -546,11 +545,11 @@ public class BaseArticleInfo
       int i = 0;
       while (i < j)
       {
-        paramAbsBaseArticleInfo.mPictures[i] = RIJConvertString2URL.a(paramParcel.readString());
+        paramAbsBaseArticleInfo.mPictures[i] = RIJConvertString2URL.b(paramParcel.readString());
         i += 1;
       }
     }
-    paramAbsBaseArticleInfo.mSinglePicture = RIJConvertString2URL.a(paramParcel.readString());
+    paramAbsBaseArticleInfo.mSinglePicture = RIJConvertString2URL.b(paramParcel.readString());
   }
   
   private void readPtsItemData(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull Parcel paramParcel)
@@ -657,10 +656,10 @@ public class BaseArticleInfo
   
   private void setPublishUinBySubscribeId()
   {
-    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null)) {
-      this.publishUin = this.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long;
+    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.c != null)) {
+      this.publishUin = this.mSocialFeedInfo.c.a;
     }
-    if ((this.mNewPolymericInfo != null) && (this.mNewPolymericInfo.jdField_a_of_type_Boolean) && (this.publishUin == 0L) && ((this.mNewPolymericInfo.jdField_a_of_type_Int == 6) || (this.mNewPolymericInfo.jdField_a_of_type_Int == 11))) {
+    if ((this.mNewPolymericInfo != null) && (this.mNewPolymericInfo.a) && (this.publishUin == 0L) && ((this.mNewPolymericInfo.d == 6) || (this.mNewPolymericInfo.d == 11))) {
       try
       {
         this.publishUin = Long.parseLong(this.mSubscribeID);
@@ -763,7 +762,7 @@ public class BaseArticleInfo
   
   protected IVideoCardUIModel getLazyModel()
   {
-    return ((IVideoCardUIModelFactory)QRoute.api(IVideoCardUIModelFactory.class)).createModel(this);
+    return VideoCardUIModelFactory.INSTANCE.createModel(this);
   }
   
   public PTSComposer.IPTSUpdateDataListener getPTSUpdateDataListener()
@@ -810,7 +809,7 @@ public class BaseArticleInfo
       this.mTopicRecommendFeedsInfoByte = this.mTopicRecommendFeedsInfo.a().toByteArray();
     }
     if (this.mArkAppFeedsInfo != null) {
-      this.mArkAppFeedsInfoBytes = toByteArrayOrNull(this.mArkAppFeedsInfo.a());
+      this.mArkAppFeedsInfoBytes = toByteArrayOrNull(this.mArkAppFeedsInfo.b());
     }
     this.mLableListInfoBytes = RIJPBFieldUtils.a(this.mLabelListObj, articlesummary.ChannelInfo.class);
     this.mSubArticleListBytes = RIJPBFieldUtils.a(this.mSubSummaryListObj, articlesummary.ArticleSummary.class);
@@ -827,7 +826,7 @@ public class BaseArticleInfo
       while (localIterator.hasNext()) {
         localPBRepeatMessageField.add(((VideoColumnInfo)localIterator.next()).a());
       }
-      this.columnEntrancesBytes = RIJPBFieldUtils.a(localPBRepeatMessageField);
+      this.columnEntrancesBytes = RIJPBFieldUtils.b(localPBRepeatMessageField);
     }
     if (this.ptsItemData != null) {
       this.ptsItemDataBytes = PTSParcelableUtil.a(this.ptsItemData);
@@ -885,7 +884,7 @@ public class BaseArticleInfo
     localStringBuilder.append("\n, mFeedId=");
     long l;
     if (this.mSocialFeedInfo != null) {
-      l = this.mSocialFeedInfo.jdField_a_of_type_Long;
+      l = this.mSocialFeedInfo.a;
     } else {
       l = 0L;
     }
@@ -1009,7 +1008,7 @@ public class BaseArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfo
  * JD-Core Version:    0.7.0.1
  */

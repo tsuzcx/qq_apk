@@ -10,12 +10,12 @@ class EditVideoPartManager$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditVideoPartManager.b(this.a);
+    EditVideoPartManager.h(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoPartManager.9
  * JD-Core Version:    0.7.0.1
  */

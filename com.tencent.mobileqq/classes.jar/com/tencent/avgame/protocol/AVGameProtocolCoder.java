@@ -11,12 +11,12 @@ import java.util.HashMap;
 public class AVGameProtocolCoder
   extends BaseProtocolCoder
 {
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "ProfileService", "OnlinePush" };
-  private final HashMap<String, ProtocolCoder> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  static final String[] a = { "ProfileService", "OnlinePush" };
+  private final HashMap<String, ProtocolCoder> b = new HashMap();
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return a;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -26,7 +26,7 @@ public class AVGameProtocolCoder
     Object localObject = null;
     ProtocolCoder localProtocolCoder;
     if (!bool) {
-      localProtocolCoder = (ProtocolCoder)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      localProtocolCoder = (ProtocolCoder)this.b.get(str);
     } else {
       localProtocolCoder = null;
     }
@@ -53,7 +53,7 @@ public class AVGameProtocolCoder
     String str = paramToServiceMsg.getServiceCmd();
     ProtocolCoder localProtocolCoder;
     if (!TextUtils.isEmpty(str)) {
-      localProtocolCoder = (ProtocolCoder)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      localProtocolCoder = (ProtocolCoder)this.b.get(str);
     } else {
       localProtocolCoder = null;
     }

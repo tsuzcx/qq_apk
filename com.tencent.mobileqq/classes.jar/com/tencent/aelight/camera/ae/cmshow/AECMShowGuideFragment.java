@@ -35,9 +35,9 @@ public class AECMShowGuideFragment
   extends PublicBaseFragment
   implements View.OnClickListener, PublicFragmentActivityCallBackInterface
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView a;
   private ImageView b;
+  private TextView c;
   
   private void a()
   {
@@ -51,19 +51,19 @@ public class AECMShowGuideFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122310));
-    this.b = ((ImageView)paramView.findViewById(2064122311));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122766));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.a = ((ImageView)paramView.findViewById(2063991191));
+    this.b = ((ImageView)paramView.findViewById(2063991192));
+    this.c = ((TextView)paramView.findViewById(2063991541));
+    this.c.setOnClickListener(this);
     new InitMemoryCache().step();
     new InitUrlDrawable().step();
     Drawable localDrawable;
     try
     {
       paramView = URLDrawable.URLDrawableOptions.obtain();
-      paramView.mRequestWidth = ViewUtils.a();
-      paramView.mRequestHeight = ViewUtils.b();
-      localDrawable = getResources().getDrawable(2063925254);
+      paramView.mRequestWidth = ViewUtils.getScreenWidth();
+      paramView.mRequestHeight = ViewUtils.getScreenHeight();
+      localDrawable = getResources().getDrawable(2063794182);
       paramView.mFailedDrawable = localDrawable;
       paramView.mLoadingDrawable = localDrawable;
       paramView.mRetryCount = 3;
@@ -71,7 +71,7 @@ public class AECMShowGuideFragment
       if (paramView.getStatus() == 2) {
         paramView.restartDownload();
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+      this.a.setImageDrawable(paramView);
     }
     catch (Exception paramView)
     {
@@ -80,7 +80,7 @@ public class AECMShowGuideFragment
     try
     {
       paramView = URLDrawable.URLDrawableOptions.obtain();
-      localDrawable = getResources().getDrawable(2063925254);
+      localDrawable = getResources().getDrawable(2063794182);
       paramView.mFailedDrawable = localDrawable;
       paramView.mLoadingDrawable = localDrawable;
       paramView.mRetryCount = 3;
@@ -136,10 +136,10 @@ public class AECMShowGuideFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2064122766)
+    if (paramView.getId() == 2063991541)
     {
       a();
-      AEBaseDataReporter.a().aC();
+      AEBaseDataReporter.a().aH();
     }
   }
   
@@ -155,13 +155,13 @@ public class AECMShowGuideFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2064318491, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2064056358, paramViewGroup, false);
   }
   
   public void onResume()
   {
     super.onResume();
-    AEBaseDataReporter.a().aB();
+    AEBaseDataReporter.a().aG();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -171,7 +171,7 @@ public class AECMShowGuideFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowGuideFragment
  * JD-Core Version:    0.7.0.1
  */

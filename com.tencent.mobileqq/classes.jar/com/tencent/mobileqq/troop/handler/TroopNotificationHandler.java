@@ -37,66 +37,6 @@ public class TroopNotificationHandler
     super(paramAppInterface);
   }
   
-  private List<TroopNotifyApplicantInfo> a(List<oidb_0x5eb.UdcUinData> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    ITroopNotificationService localITroopNotificationService = (ITroopNotificationService)this.appRuntime.getRuntimeService(ITroopNotificationService.class, "");
-    if ((paramList != null) && (!paramList.isEmpty()) && (localITroopNotificationService != null))
-    {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (oidb_0x5eb.UdcUinData)localIterator.next();
-        if (localObject != null)
-        {
-          long l = ((oidb_0x5eb.UdcUinData)localObject).uint64_uin.get();
-          int i = ((oidb_0x5eb.UdcUinData)localObject).uint32_age.get();
-          if (((oidb_0x5eb.UdcUinData)localObject).bytes_country.has()) {
-            paramList = ((oidb_0x5eb.UdcUinData)localObject).bytes_country.get().toStringUtf8();
-          } else {
-            paramList = "";
-          }
-          String str1;
-          if (((oidb_0x5eb.UdcUinData)localObject).bytes_province.has()) {
-            str1 = ((oidb_0x5eb.UdcUinData)localObject).bytes_province.get().toStringUtf8();
-          } else {
-            str1 = "";
-          }
-          String str2;
-          if (((oidb_0x5eb.UdcUinData)localObject).bytes_city.has()) {
-            str2 = ((oidb_0x5eb.UdcUinData)localObject).bytes_city.get().toStringUtf8();
-          } else {
-            str2 = "";
-          }
-          int j = ((oidb_0x5eb.UdcUinData)localObject).uint32_gender.get();
-          boolean bool;
-          if ((((oidb_0x5eb.UdcUinData)localObject).uint32_400_flag.get() != 1) && (((oidb_0x5eb.UdcUinData)localObject).uint32_business_user.get() != 1)) {
-            bool = false;
-          } else {
-            bool = true;
-          }
-          localObject = localITroopNotificationService.getApplicantInfo(Long.valueOf(l));
-          if (localObject != null)
-          {
-            ((TroopNotifyApplicantInfo)localObject).b(j);
-            ((TroopNotifyApplicantInfo)localObject).c(str2);
-            ((TroopNotifyApplicantInfo)localObject).a(paramList);
-            ((TroopNotifyApplicantInfo)localObject).b(str1);
-            ((TroopNotifyApplicantInfo)localObject).a(i);
-            ((TroopNotifyApplicantInfo)localObject).a(true);
-            ((TroopNotifyApplicantInfo)localObject).c(bool);
-            localArrayList.add(localObject);
-          }
-          else
-          {
-            localArrayList.add(new TroopNotifyApplicantInfo(l, i, paramList, str1, str2, j, bool, true));
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
@@ -116,7 +56,7 @@ public class TroopNotificationHandler
         } else {
           paramToServiceMsg = null;
         }
-        localITroopNotificationService.saveApplicantInfoListToCacheFrom0x5eb(a(paramToServiceMsg));
+        localITroopNotificationService.saveApplicantInfoListToCacheFrom0x5eb(c(paramToServiceMsg));
         notifyUI(TroopSystemNotificationConstants.a, true, new Object[] { paramToServiceMsg });
       }
     }
@@ -255,6 +195,66 @@ public class TroopNotificationHandler
     }
   }
   
+  private List<TroopNotifyApplicantInfo> c(List<oidb_0x5eb.UdcUinData> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    ITroopNotificationService localITroopNotificationService = (ITroopNotificationService)this.appRuntime.getRuntimeService(ITroopNotificationService.class, "");
+    if ((paramList != null) && (!paramList.isEmpty()) && (localITroopNotificationService != null))
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (oidb_0x5eb.UdcUinData)localIterator.next();
+        if (localObject != null)
+        {
+          long l = ((oidb_0x5eb.UdcUinData)localObject).uint64_uin.get();
+          int i = ((oidb_0x5eb.UdcUinData)localObject).uint32_age.get();
+          if (((oidb_0x5eb.UdcUinData)localObject).bytes_country.has()) {
+            paramList = ((oidb_0x5eb.UdcUinData)localObject).bytes_country.get().toStringUtf8();
+          } else {
+            paramList = "";
+          }
+          String str1;
+          if (((oidb_0x5eb.UdcUinData)localObject).bytes_province.has()) {
+            str1 = ((oidb_0x5eb.UdcUinData)localObject).bytes_province.get().toStringUtf8();
+          } else {
+            str1 = "";
+          }
+          String str2;
+          if (((oidb_0x5eb.UdcUinData)localObject).bytes_city.has()) {
+            str2 = ((oidb_0x5eb.UdcUinData)localObject).bytes_city.get().toStringUtf8();
+          } else {
+            str2 = "";
+          }
+          int j = ((oidb_0x5eb.UdcUinData)localObject).uint32_gender.get();
+          boolean bool;
+          if ((((oidb_0x5eb.UdcUinData)localObject).uint32_400_flag.get() != 1) && (((oidb_0x5eb.UdcUinData)localObject).uint32_business_user.get() != 1)) {
+            bool = false;
+          } else {
+            bool = true;
+          }
+          localObject = localITroopNotificationService.getApplicantInfo(Long.valueOf(l));
+          if (localObject != null)
+          {
+            ((TroopNotifyApplicantInfo)localObject).b(j);
+            ((TroopNotifyApplicantInfo)localObject).c(str2);
+            ((TroopNotifyApplicantInfo)localObject).a(paramList);
+            ((TroopNotifyApplicantInfo)localObject).b(str1);
+            ((TroopNotifyApplicantInfo)localObject).a(i);
+            ((TroopNotifyApplicantInfo)localObject).a(true);
+            ((TroopNotifyApplicantInfo)localObject).c(bool);
+            localArrayList.add(localObject);
+          }
+          else
+          {
+            localArrayList.add(new TroopNotifyApplicantInfo(l, i, paramList, str1, str2, j, bool, true));
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
   public void a(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     paramString = new ToServiceMsg("mobileqq.service", this.appRuntime.getAccount(), paramString);
@@ -335,7 +335,7 @@ public class TroopNotificationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopNotificationHandler
  * JD-Core Version:    0.7.0.1
  */

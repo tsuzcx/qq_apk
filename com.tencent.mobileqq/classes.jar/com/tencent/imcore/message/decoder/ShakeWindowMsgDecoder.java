@@ -15,20 +15,20 @@ public class ShakeWindowMsgDecoder
   {
     if (paramMessage.msgtype == -2020)
     {
-      paramMessage.msg = paramAppRuntime.getApp().getString(2131718861);
-      if (MessageRecordInfo.a(paramMessage.issend))
+      paramMessage.msg = paramAppRuntime.getApp().getString(2131916394);
+      if (MessageRecordInfo.b(paramMessage.issend))
       {
         paramIMessageManager = ContactUtils.a((QQAppInterface)paramAppRuntime, paramMessage.frienduin, "", 0, 0);
-        paramMessage.msg = paramAppRuntime.getApp().getString(2131718862, new Object[] { paramIMessageManager });
+        paramMessage.msg = paramAppRuntime.getApp().getString(2131916395, new Object[] { paramIMessageManager });
         return;
       }
-      paramMessage.msg = paramAppRuntime.getApp().getString(2131718861);
+      paramMessage.msg = paramAppRuntime.getApp().getString(2131916394);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.decoder.ShakeWindowMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

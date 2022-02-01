@@ -10,17 +10,17 @@ class VideoController$28
   
   public void run()
   {
-    QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "GAudioCtrl.quitRoom start.");
+    QLog.d(VideoController.a, 1, "GAudioCtrl.quitRoom start.");
     ??? = this.this$0;
-    VideoController.b((VideoController)???, ((VideoController)???).jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quitRoom(this.a));
-    ??? = VideoController.jdField_a_of_type_JavaLangString;
+    VideoController.b((VideoController)???, ((VideoController)???).U.quitRoom(this.a));
+    ??? = VideoController.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GAudioCtrl.quitRoom end. mQuitResult = ");
-    localStringBuilder.append(VideoController.a(this.this$0));
+    localStringBuilder.append(VideoController.b(this.this$0));
     QLog.d((String)???, 1, localStringBuilder.toString());
-    synchronized (VideoController.a(this.this$0))
+    synchronized (VideoController.c(this.this$0))
     {
-      VideoController.a(this.this$0).notify();
+      VideoController.c(this.this$0).notify();
       return;
     }
   }

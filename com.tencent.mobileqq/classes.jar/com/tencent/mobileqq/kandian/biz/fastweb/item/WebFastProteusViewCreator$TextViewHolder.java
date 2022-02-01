@@ -26,8 +26,8 @@ class WebFastProteusViewCreator$TextViewHolder
   
   private JSONObject a(ProteusBookData paramProteusBookData)
   {
-    if (paramProteusBookData.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo != null) {
-      return paramProteusBookData.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo.a(paramProteusBookData.b);
+    if (paramProteusBookData.aR != null) {
+      return paramProteusBookData.aR.a(paramProteusBookData.c);
     }
     return null;
   }
@@ -39,24 +39,24 @@ class WebFastProteusViewCreator$TextViewHolder
   
   public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    if (paramBaseData2.u != 18) {
+    if (paramBaseData2.aP != 18) {
       return;
     }
     if (this.a == null) {
       return;
     }
     paramBaseData1 = (ProteusBookData)paramBaseData2;
-    if (paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
+    if (paramBaseData1.b != null)
     {
-      paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.putDynamicJson(a(paramBaseData1));
-      ProteusSupportUtil.a(this.a.getVirtualView(), paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getViewBean());
+      paramBaseData1.b.putDynamicJson(a(paramBaseData1));
+      ProteusSupportUtil.a(this.a.getVirtualView(), paramBaseData1.b.getViewBean());
     }
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebFastProteusViewCreator.TextViewHolder
  * JD-Core Version:    0.7.0.1
  */

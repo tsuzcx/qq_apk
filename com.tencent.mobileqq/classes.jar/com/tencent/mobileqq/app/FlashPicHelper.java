@@ -8,13 +8,6 @@ import com.tencent.qphone.base.util.QLog;
 
 public class FlashPicHelper
 {
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null) {
-      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
-    }
-  }
-  
   public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
     StringBuilder localStringBuilder;
@@ -113,10 +106,17 @@ public class FlashPicHelper
     }
     return false;
   }
+  
+  public static void c(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null) {
+      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FlashPicHelper
  * JD-Core Version:    0.7.0.1
  */

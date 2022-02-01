@@ -18,13 +18,13 @@ class QfileBaseLocalFileTabView$7
   {
     super.a(paramInt, paramLong, paramString);
     QQFileManagerUtil.a(paramLong, paramInt, paramString);
-    ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(this.a.a, paramInt);
+    ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(this.a.C, paramInt);
   }
   
   protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
     super.a(paramLong, paramString1, paramInt, paramString2);
-    QQFileManagerUtil.a(paramLong);
+    QQFileManagerUtil.b(paramLong);
   }
   
   protected void a(ThumbnailInfo paramThumbnailInfo)
@@ -32,13 +32,13 @@ class QfileBaseLocalFileTabView$7
     if (paramThumbnailInfo == null) {
       return;
     }
-    if ((paramThumbnailInfo.a instanceof FileManagerEntity))
+    if ((paramThumbnailInfo.c instanceof FileManagerEntity))
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-      if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0))
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.c;
+      if ((paramThumbnailInfo.d != null) && (paramThumbnailInfo.d.length() > 0))
       {
-        localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-        ((IQQFileDataCenter)QfileBaseLocalFileTabView.b(this.a).getRuntimeService(IQQFileDataCenter.class, "")).updateFileEntity(localFileManagerEntity);
+        localFileManagerEntity.strThumbPath = paramThumbnailInfo.d;
+        ((IQQFileDataCenter)QfileBaseLocalFileTabView.e(this.a).getRuntimeService(IQQFileDataCenter.class, "")).updateFileEntity(localFileManagerEntity);
         this.a.i();
       }
     }
@@ -62,7 +62,7 @@ class QfileBaseLocalFileTabView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7
  * JD-Core Version:    0.7.0.1
  */

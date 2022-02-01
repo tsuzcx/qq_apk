@@ -9,12 +9,12 @@ class FlatBuffersConfig$1
   
   public void run()
   {
-    if (this.this$0.a().exists())
+    if (this.this$0.i().exists())
     {
-      this.this$0.a();
+      this.this$0.f();
       return;
     }
-    this.this$0.c();
+    this.this$0.h();
   }
 }
 

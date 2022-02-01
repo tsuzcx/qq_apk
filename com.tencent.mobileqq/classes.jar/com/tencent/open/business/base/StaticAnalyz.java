@@ -634,7 +634,7 @@ public class StaticAnalyz
       localStringBuilder.append(", appid=");
       localStringBuilder.append(paramString3);
       LogUtility.b("reportForVia", localStringBuilder.toString());
-      OpenSdkStatic.a().a(String.valueOf(CommonDataAdapter.a().a()), paramString3, paramString2, paramString1, paramString4, false, false);
+      OpenSdkStatic.a().a(String.valueOf(CommonDataAdapter.a().c()), paramString3, paramString2, paramString1, paramString4, false, false);
     }
   }
   
@@ -653,8 +653,8 @@ public class StaticAnalyz
       localStringBuilder.append(", appid=");
       localStringBuilder.append(paramString3);
       LogUtility.b("reportForVia", localStringBuilder.toString());
-      long l = CommonDataAdapter.a().a();
-      OpenSdkStatic.a().a(String.valueOf(l), paramString3, paramString2, paramString1, CommonDataAdapter.a().f(), paramBundle, paramString4, false, false);
+      long l = CommonDataAdapter.a().c();
+      OpenSdkStatic.a().a(String.valueOf(l), paramString3, paramString2, paramString1, CommonDataAdapter.a().l(), paramBundle, paramString4, false, false);
     }
   }
   
@@ -673,7 +673,7 @@ public class StaticAnalyz
       localStringBuilder.append(", appid=");
       localStringBuilder.append(paramString3);
       LogUtility.b("reportForVia", localStringBuilder.toString());
-      OpenSdkStatic.a().a(String.valueOf(CommonDataAdapter.a().a()), paramString3, paramString2, paramString1, "", false, paramBoolean);
+      OpenSdkStatic.a().a(String.valueOf(CommonDataAdapter.a().c()), paramString3, paramString2, paramString1, "", false, paramBoolean);
     }
   }
   
@@ -698,7 +698,7 @@ public class StaticAnalyz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.StaticAnalyz
  * JD-Core Version:    0.7.0.1
  */

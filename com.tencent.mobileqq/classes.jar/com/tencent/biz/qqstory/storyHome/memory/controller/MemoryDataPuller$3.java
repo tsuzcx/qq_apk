@@ -24,18 +24,18 @@ class MemoryDataPuller$3
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
     paramJobContext = (MemoryManager)SuperManager.a(19);
-    paramVarArgs = paramJobContext.a(DateCollectionListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.b));
-    MemoryDataPuller.GetMemoryCollectionKeyEvent localGetMemoryCollectionKeyEvent = new MemoryDataPuller.GetMemoryCollectionKeyEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.c);
+    paramVarArgs = paramJobContext.c(DateCollectionListPageLoader.b(this.b.c));
+    MemoryDataPuller.GetMemoryCollectionKeyEvent localGetMemoryCollectionKeyEvent = new MemoryDataPuller.GetMemoryCollectionKeyEvent(this.b.d);
     ArrayList localArrayList = new ArrayList();
-    localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
-    localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    localGetMemoryCollectionKeyEvent.a = paramJobContext.a(this.a, localArrayList);
+    localGetMemoryCollectionKeyEvent.b = localArrayList;
     boolean bool = true;
     if ((paramVarArgs == null) || (paramVarArgs.isEnd != 1)) {
       bool = false;
     }
-    localGetMemoryCollectionKeyEvent.jdField_a_of_type_Boolean = bool;
+    localGetMemoryCollectionKeyEvent.c = bool;
     StoryDispatcher.a().dispatch(localGetMemoryCollectionKeyEvent);
-    SLog.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList);
+    SLog.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localGetMemoryCollectionKeyEvent.a);
     return null;
   }
 }

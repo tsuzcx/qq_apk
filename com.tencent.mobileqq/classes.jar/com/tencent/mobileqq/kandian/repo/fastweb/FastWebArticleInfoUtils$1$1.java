@@ -14,18 +14,18 @@ class FastWebArticleInfoUtils$1$1
   {
     if ((paramBoolean1) && (paramFastWebArticleInfo != null))
     {
-      this.a.a.jdField_b_of_type_Long = paramFastWebArticleInfo.jdField_b_of_type_Long;
-      if (paramFastWebArticleInfo.a > this.a.a.a) {
-        this.a.a.a = paramFastWebArticleInfo.a;
+      this.a.b.d = paramFastWebArticleInfo.d;
+      if (paramFastWebArticleInfo.c > this.a.b.c) {
+        this.a.b.c = paramFastWebArticleInfo.c;
       }
-      this.a.a.jdField_b_of_type_Boolean = false;
+      this.a.b.w = false;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("update fastweb info, rowkey : ");
-      localStringBuilder.append(paramFastWebArticleInfo.j);
+      localStringBuilder.append(paramFastWebArticleInfo.q);
       localStringBuilder.append(",  commentCnt : ");
-      localStringBuilder.append(paramFastWebArticleInfo.jdField_b_of_type_Long);
+      localStringBuilder.append(paramFastWebArticleInfo.d);
       localStringBuilder.append(", readCnt :");
-      localStringBuilder.append(paramFastWebArticleInfo.a);
+      localStringBuilder.append(paramFastWebArticleInfo.c);
       QLog.d("Q.readinjoy.fast_web", 2, localStringBuilder.toString());
     }
     ThreadManager.getUIHandler().post(new FastWebArticleInfoUtils.1.1.1(this));
@@ -33,7 +33,7 @@ class FastWebArticleInfoUtils$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.fastweb.FastWebArticleInfoUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

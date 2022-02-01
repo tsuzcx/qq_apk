@@ -13,15 +13,15 @@ class EditTextDialog$2
   public void onClick(View paramView)
   {
     EditTextDialog.a(this.a, true);
-    if (this.a.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem != null)
+    if (this.a.z != null)
     {
       EditTextDialog.b(this.a, false);
       paramView = this.a;
-      paramView.a = paramView.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextItem;
-      this.a.a.a(EditTextDialog.a(this.a), this.a.jdField_b_of_type_JavaLangString);
-      this.a.a.c(this.a.i);
-      if ((this.a.a instanceof NormalTextItem)) {
-        ((NormalTextItem)this.a.a).a(this.a.h);
+      paramView.y = paramView.z;
+      this.a.y.a(EditTextDialog.a(this.a), this.a.A);
+      this.a.y.g(this.a.C);
+      if ((this.a.y instanceof NormalTextItem)) {
+        ((NormalTextItem)this.a.y).a(this.a.B);
       }
       this.a.a(false);
     }
@@ -29,7 +29,7 @@ class EditTextDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog.2
  * JD-Core Version:    0.7.0.1
  */

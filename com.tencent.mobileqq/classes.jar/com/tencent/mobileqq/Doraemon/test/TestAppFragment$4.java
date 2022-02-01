@@ -18,9 +18,9 @@ class TestAppFragment$4
     super.a(paramJSONObject);
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("rankingID", 11002);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("topCount", 11);
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getRankingList", this.jdField_a_of_type_OrgJsonJSONObject, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_AndroidWidgetEditText));
+      this.a.put("rankingID", 11002);
+      this.a.put("topCount", 11);
+      this.b.c.a("getRankingList", this.a, new TestAppFragment.MyAPICallback(this.b.d));
       return;
     }
     catch (JSONException paramJSONObject)
@@ -31,7 +31,7 @@ class TestAppFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.test.TestAppFragment.4
  * JD-Core Version:    0.7.0.1
  */

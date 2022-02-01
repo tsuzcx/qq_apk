@@ -9,25 +9,25 @@ public class AvGameConfigUtil
 {
   public static AvGameConfBean a()
   {
-    AvGameConfBean localAvGameConfBean = (AvGameConfBean)QConfigManager.a().a(642);
+    AvGameConfBean localAvGameConfBean = (AvGameConfBean)QConfigManager.b().b(642);
     if (localAvGameConfBean != null) {
       return localAvGameConfBean;
     }
     return new AvGameConfBean();
   }
   
-  public static AvGameLobbyConfBean a()
+  public static AvGameLobbyConfBean b()
   {
-    AvGameLobbyConfBean localAvGameLobbyConfBean = (AvGameLobbyConfBean)QConfigManager.a().a(713);
+    AvGameLobbyConfBean localAvGameLobbyConfBean = (AvGameLobbyConfBean)QConfigManager.b().b(713);
     if (localAvGameLobbyConfBean != null) {
       return localAvGameLobbyConfBean;
     }
     return new AvGameLobbyConfBean();
   }
   
-  public static CJPreloadConfBean a()
+  public static CJPreloadConfBean c()
   {
-    CJPreloadConfBean localCJPreloadConfBean = (CJPreloadConfBean)QConfigManager.a().a(721);
+    CJPreloadConfBean localCJPreloadConfBean = (CJPreloadConfBean)QConfigManager.b().b(721);
     if (localCJPreloadConfBean != null) {
       return localCJPreloadConfBean;
     }

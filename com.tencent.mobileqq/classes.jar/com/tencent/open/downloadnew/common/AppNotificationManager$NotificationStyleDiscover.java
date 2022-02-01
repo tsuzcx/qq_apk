@@ -12,40 +12,28 @@ import android.widget.TextView;
 
 public class AppNotificationManager$NotificationStyleDiscover
 {
-  protected float a;
-  protected DisplayMetrics a;
-  protected Integer a;
-  protected final String a;
-  protected float b;
-  protected Integer b;
-  protected final String b;
+  protected Integer a = null;
+  protected float b = 14.0F;
+  protected Integer c = null;
+  protected float d = 16.0F;
+  protected final String e = "SearchForText";
+  protected final String f = "SearchForTitle";
+  protected DisplayMetrics g = new DisplayMetrics();
   
   AppNotificationManager$NotificationStyleDiscover(AppNotificationManager paramAppNotificationManager, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangInteger = null;
-    this.jdField_a_of_type_Float = 14.0F;
-    this.jdField_b_of_type_JavaLangInteger = null;
-    this.jdField_b_of_type_Float = 16.0F;
-    this.jdField_a_of_type_JavaLangString = "SearchForText";
-    this.jdField_b_of_type_JavaLangString = "SearchForTitle";
-    this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.g);
     a(paramContext);
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
   }
   
   public Integer a()
   {
-    return this.jdField_a_of_type_JavaLangInteger;
+    return this.a;
   }
   
   protected void a(Context paramContext)
   {
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
+    if ((this.a != null) && (this.c != null)) {
       return;
     }
     try
@@ -71,9 +59,9 @@ public class AppNotificationManager$NotificationStyleDiscover
         TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
         if ("SearchForTitle".equals(localTextView.getText().toString()))
         {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          this.c = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.d = localTextView.getTextSize();
+          this.d /= this.g.scaledDensity;
           return true;
         }
       }
@@ -88,12 +76,7 @@ public class AppNotificationManager$NotificationStyleDiscover
   
   public float b()
   {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public Integer b()
-  {
-    return this.jdField_b_of_type_JavaLangInteger;
+    return this.b;
   }
   
   protected boolean b(ViewGroup paramViewGroup)
@@ -107,9 +90,9 @@ public class AppNotificationManager$NotificationStyleDiscover
         TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
         if ("SearchForText".equals(localTextView.getText().toString()))
         {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          this.a = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.b = localTextView.getTextSize();
+          this.b /= this.g.scaledDensity;
           return true;
         }
       }
@@ -121,10 +104,20 @@ public class AppNotificationManager$NotificationStyleDiscover
     }
     return false;
   }
+  
+  public Integer c()
+  {
+    return this.c;
+  }
+  
+  public float d()
+  {
+    return this.d;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.AppNotificationManager.NotificationStyleDiscover
  * JD-Core Version:    0.7.0.1
  */

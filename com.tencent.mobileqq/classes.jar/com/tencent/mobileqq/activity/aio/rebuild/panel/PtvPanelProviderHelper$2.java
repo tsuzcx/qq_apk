@@ -11,17 +11,17 @@ class PtvPanelProviderHelper$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(PtvPanelProviderHelper.a(this.a).a());
+    DialogUtil.a(PtvPanelProviderHelper.a(this.a).b());
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a(true);
+    this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.PtvPanelProviderHelper.2
  * JD-Core Version:    0.7.0.1
  */

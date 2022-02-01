@@ -37,50 +37,48 @@ import java.util.List;
 public class RoundBorderImageView
   extends ImageView
 {
-  public static final String[] a;
-  public static final int c;
-  private double jdField_a_of_type_Double;
-  private float jdField_a_of_type_Float;
-  public int a;
-  private DashPathEffect jdField_a_of_type_AndroidGraphicsDashPathEffect;
-  public Paint a;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  public Rect a;
-  public Drawable a;
-  private ShapeDrawable jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable;
-  public boolean a;
-  public float[] a;
-  private float jdField_b_of_type_Float;
-  public int b;
-  private DashPathEffect jdField_b_of_type_AndroidGraphicsDashPathEffect;
-  public Paint b;
-  public boolean b;
-  public float[] b;
-  private float c;
-  public boolean c;
+  public static final String[] m = { "HUAWEI ALE-CL00" };
+  public static final int n = 0;
+  private int A = AIOUtils.b(3.0F, getResources());
+  private float B = 0.0F;
+  private boolean C = true;
+  private DashPathEffect D;
+  private DashPathEffect E;
+  private Path F;
+  private boolean G = false;
+  public int a = AIOUtils.b(8.0F, getResources());
+  public boolean b = false;
+  public Paint c;
+  public Paint d;
+  public Drawable e;
+  public boolean f = true;
+  public float[] g;
+  public float[] h;
+  public Rect i;
+  public boolean j = true;
+  public int k = 25;
+  public boolean l = false;
   @RoundBorderImageView.BadgeDisplayMode
-  public int d;
-  public boolean d;
-  private int jdField_e_of_type_Int = AIOUtils.b(8.0F, getResources());
-  private boolean jdField_e_of_type_Boolean = true;
-  private int jdField_f_of_type_Int = AIOUtils.b(1.5F, getResources());
-  private boolean jdField_f_of_type_Boolean = true;
-  private int jdField_g_of_type_Int = 9;
-  private boolean jdField_g_of_type_Boolean = false;
-  private int h = 5;
-  private int i = -16776961;
-  private int j = -7829368;
-  private int k = AIOUtils.b(3.0F, getResources());
+  public int o = 2;
+  private int p = AIOUtils.b(8.0F, getResources());
+  private int q = AIOUtils.b(1.5F, getResources());
+  private float r;
+  private float s;
+  private double t;
+  private boolean u = true;
+  private ShapeDrawable v;
+  private int w = 9;
+  private int x = 5;
+  private int y = -16776961;
+  private int z = -7829368;
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "HUAWEI ALE-CL00" };
-    if (Arrays.asList(jdField_a_of_type_ArrayOfJavaLangString).contains(Build.MODEL))
+    if (Arrays.asList(m).contains(Build.MODEL))
     {
-      jdField_c_of_type_Int = 1;
+      n = 1;
       return;
     }
-    jdField_c_of_type_Int = 0;
   }
   
   public RoundBorderImageView(Context paramContext)
@@ -91,148 +89,124 @@ public class RoundBorderImageView
   public RoundBorderImageView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = AIOUtils.b(8.0F, getResources());
-    this.jdField_c_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 25;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_d_of_type_Int = 2;
     e();
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+    if (this.e == null) {
       return;
     }
-    int n = this.jdField_d_of_type_Int;
-    int m = 0;
-    if (n != 1) {
-      if (n != 2) {
-        if (n == 3) {}
+    int i2 = this.o;
+    int i1 = 0;
+    if (i2 != 1) {
+      if (i2 != 2) {
+        if (i2 == 3) {}
       }
     }
     for (;;)
     {
-      n = 0;
+      i2 = 0;
       break;
-      m = getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-      n = getHeight() - -getPaddingBottom();
-      int i1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+      i1 = getWidth() - getPaddingRight() - this.e.getIntrinsicWidth();
+      i2 = getHeight() - -getPaddingBottom();
+      int i3 = this.e.getIntrinsicHeight();
       break label106;
-      m = getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-      n = getHeight();
-      i1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+      i1 = getWidth() - getPaddingRight() - this.e.getIntrinsicWidth();
+      i2 = getHeight();
+      i3 = this.e.getIntrinsicHeight();
       label106:
-      n -= i1;
+      i2 -= i3;
       break;
-      m = getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+      i1 = getWidth() - getPaddingRight() - this.e.getIntrinsicWidth();
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    localDrawable.setBounds(m, n, localDrawable.getIntrinsicWidth() + m, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() + n);
+    Drawable localDrawable = this.e;
+    localDrawable.setBounds(i1, i2, localDrawable.getIntrinsicWidth() + i1, this.e.getIntrinsicHeight() + i2);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.rgb(200, 200, 200));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.rgb(128, 128, 128));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-    this.jdField_a_of_type_ArrayOfFloat = new float[8];
-    this.jdField_b_of_type_ArrayOfFloat = new float[8];
-    this.jdField_a_of_type_Int = (this.jdField_e_of_type_Int - getPaddingTop() + this.jdField_f_of_type_Int / 2);
-    Arrays.fill(this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Int);
-    Arrays.fill(this.jdField_b_of_type_ArrayOfFloat, this.jdField_e_of_type_Int);
-    float[] arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable = new ShapeDrawable(new RoundRectShape(arrayOfFloat, null, arrayOfFloat));
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setColor(-65536);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setStrokeWidth(this.jdField_f_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setAntiAlias(true);
+    this.c = new Paint();
+    this.c.setColor(Color.rgb(200, 200, 200));
+    this.c.setStrokeWidth(1.0F);
+    this.d = new Paint();
+    this.d.setColor(Color.rgb(128, 128, 128));
+    this.d.setStrokeWidth(1.0F);
+    this.g = new float[8];
+    this.h = new float[8];
+    this.a = (this.p - getPaddingTop() + this.q / 2);
+    Arrays.fill(this.g, this.a);
+    Arrays.fill(this.h, this.p);
+    float[] arrayOfFloat = this.h;
+    this.v = new ShapeDrawable(new RoundRectShape(arrayOfFloat, null, arrayOfFloat));
+    this.v.getPaint().setColor(-65536);
+    this.v.getPaint().setStrokeWidth(this.q);
+    this.v.getPaint().setStyle(Paint.Style.STROKE);
+    this.v.getPaint().setStrokeCap(Paint.Cap.ROUND);
+    this.v.getPaint().setAntiAlias(true);
   }
   
   private void f()
   {
-    this.jdField_e_of_type_Int = (this.jdField_a_of_type_Int + getPaddingTop() - this.jdField_f_of_type_Int / 2);
-    Arrays.fill(this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Int);
-    Arrays.fill(this.jdField_b_of_type_ArrayOfFloat, this.jdField_e_of_type_Int);
-    float[] arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable = new ShapeDrawable(new RoundRectShape(arrayOfFloat, null, arrayOfFloat));
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setColor(-65536);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setStrokeWidth(this.jdField_f_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.getPaint().setAntiAlias(true);
+    this.p = (this.a + getPaddingTop() - this.q / 2);
+    Arrays.fill(this.g, this.a);
+    Arrays.fill(this.h, this.p);
+    float[] arrayOfFloat = this.h;
+    this.v = new ShapeDrawable(new RoundRectShape(arrayOfFloat, null, arrayOfFloat));
+    this.v.getPaint().setColor(-65536);
+    this.v.getPaint().setStrokeWidth(this.q);
+    this.v.getPaint().setStyle(Paint.Style.STROKE);
+    this.v.getPaint().setStrokeCap(Paint.Cap.ROUND);
+    this.v.getPaint().setAntiAlias(true);
   }
   
   private void g()
   {
-    int m = getWidth();
-    int n = getHeight();
-    float f1 = m;
-    int i1 = this.jdField_e_of_type_Int;
-    float f2 = i1;
-    int i2 = this.jdField_f_of_type_Int;
-    this.jdField_a_of_type_Float = (f1 - (f2 + i2 / 2.0F) * 2.0F);
-    f2 = n;
-    this.jdField_b_of_type_Float = (f2 - (i1 + i2 / 2.0F) * 2.0F);
-    double d1 = i1;
+    int i1 = getWidth();
+    int i2 = getHeight();
+    float f1 = i1;
+    int i3 = this.p;
+    float f2 = i3;
+    int i4 = this.q;
+    this.r = (f1 - (f2 + i4 / 2.0F) * 2.0F);
+    f2 = i2;
+    this.s = (f2 - (i3 + i4 / 2.0F) * 2.0F);
+    double d1 = i3;
     Double.isNaN(d1);
-    this.jdField_a_of_type_Double = (d1 * 3.141592653589793D / 2.0D);
-    RectF localRectF = new RectF(i2 / 2.0F, i2 / 2.0F, f1 - i2 / 2.0F, f2 - i2 / 2.0F);
+    this.t = (d1 * 3.141592653589793D / 2.0D);
+    RectF localRectF = new RectF(i4 / 2.0F, i4 / 2.0F, f1 - i4 / 2.0F, f2 - i4 / 2.0F);
     Path localPath = new Path();
-    localPath.addRoundRect(localRectF, this.jdField_b_of_type_ArrayOfFloat, Path.Direction.CW);
-    this.jdField_c_of_type_Float = new PathMeasure(localPath, true).getLength();
-    SLog.b("RoundBorderImageView", "width=%d, height=%d, hLength=%f, vLength=%f, roundLength=%f, mStrokeWidth=%d", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Double.valueOf(this.jdField_a_of_type_Double), Integer.valueOf(this.jdField_f_of_type_Int) });
-    localRectF = new RectF(getPaddingLeft(), getPaddingTop(), m - getPaddingRight(), n - getPaddingBottom());
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
-    i1 = this.jdField_f_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(i1 / 2, i1 / 2, m - i1 / 2, n - i1 / 2);
-    f1 = this.jdField_c_of_type_Float;
+    localPath.addRoundRect(localRectF, this.h, Path.Direction.CW);
+    this.B = new PathMeasure(localPath, true).getLength();
+    SLog.b("RoundBorderImageView", "width=%d, height=%d, hLength=%f, vLength=%f, roundLength=%f, mStrokeWidth=%d", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2), Float.valueOf(this.r), Float.valueOf(this.s), Double.valueOf(this.t), Integer.valueOf(this.q) });
+    localRectF = new RectF(getPaddingLeft(), getPaddingTop(), i1 - getPaddingRight(), i2 - getPaddingBottom());
+    this.F = new Path();
+    this.F.addRoundRect(localRectF, this.g, Path.Direction.CW);
+    i3 = this.q;
+    this.i = new Rect(i3 / 2, i3 / 2, i1 - i3 / 2, i2 - i3 / 2);
+    f1 = this.B;
     if (f1 > 0.0F)
     {
-      this.jdField_b_of_type_Int = ((int)Math.floor(f1 * 1.0F / (this.k * 2)));
-      SLog.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count = %d", Float.valueOf(this.jdField_c_of_type_Float), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
+      this.k = ((int)Math.floor(f1 * 1.0F / (this.A * 2)));
+      SLog.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count = %d", Float.valueOf(this.B), Integer.valueOf(this.A), Integer.valueOf(this.k));
       return;
     }
-    this.jdField_b_of_type_Int = 1;
-    SLog.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count fallback to %d", Float.valueOf(f1), Integer.valueOf(this.k), Integer.valueOf(this.jdField_b_of_type_Int));
-  }
-  
-  float a()
-  {
-    if (jdField_c_of_type_Int == 0)
-    {
-      double d1 = this.jdField_b_of_type_Float;
-      double d2 = this.jdField_a_of_type_Double;
-      Double.isNaN(d1);
-      double d3 = this.jdField_a_of_type_Float / 2.0F;
-      Double.isNaN(d3);
-      double d4 = this.k / 2;
-      Double.isNaN(d4);
-      return (float)-(d1 + d2 + d3 + d4);
-    }
-    return this.jdField_a_of_type_Float / 2.0F - this.k;
+    this.k = 1;
+    SLog.a("RoundBorderImageView", "mBoarderLength = %f, gapLength = %d, max segment count fallback to %d", Float.valueOf(f1), Integer.valueOf(this.A), Integer.valueOf(this.k));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.e = null;
     invalidate();
   }
   
   public void a(float paramFloat)
   {
-    int m = AIOUtils.b(paramFloat, getResources());
-    if (m != this.jdField_f_of_type_Int)
+    int i1 = AIOUtils.b(paramFloat, getResources());
+    if (i1 != this.q)
     {
-      this.jdField_f_of_type_Int = m;
+      this.q = i1;
       f();
       g();
       c();
@@ -242,7 +216,7 @@ public class RoundBorderImageView
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_g_of_type_Boolean = paramBoolean;
+    this.G = paramBoolean;
     invalidate();
   }
   
@@ -257,18 +231,18 @@ public class RoundBorderImageView
       {
         if (paramDrawable != null)
         {
-          int m = paramDrawable.getIntrinsicWidth();
-          int n = paramDrawable.getIntrinsicHeight();
+          int i1 = paramDrawable.getIntrinsicWidth();
+          int i2 = paramDrawable.getIntrinsicHeight();
           paramDrawable = ImageView.class.getDeclaredField("mDrawableWidth");
           Field localField = ImageView.class.getDeclaredField("mDrawableHeight");
           paramDrawable.setAccessible(true);
           localField.setAccessible(true);
-          int i1 = ((Integer)paramDrawable.get(this)).intValue();
-          int i2 = ((Integer)localField.get(this)).intValue();
-          if ((i1 != m) || (i2 != n))
+          int i3 = ((Integer)paramDrawable.get(this)).intValue();
+          int i4 = ((Integer)localField.get(this)).intValue();
+          if ((i3 != i1) || (i4 != i2))
           {
-            paramDrawable.setInt(this, m);
-            localField.setInt(this, n);
+            paramDrawable.setInt(this, i1);
+            localField.setInt(this, i2);
             paramDrawable = ImageView.class.getDeclaredMethod("configureBounds", new Class[0]);
             paramDrawable.setAccessible(true);
             paramDrawable.invoke(this, new Object[0]);
@@ -293,110 +267,126 @@ public class RoundBorderImageView
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.u = paramBoolean;
     invalidate();
   }
   
   public void c()
   {
-    int m = Math.min(this.jdField_b_of_type_Int, this.jdField_g_of_type_Int);
-    Math.min(this.jdField_b_of_type_Int, this.h);
-    int i2 = this.jdField_g_of_type_Int;
-    int i3 = this.jdField_b_of_type_Int;
-    int n = 0;
-    int i1 = 0;
+    int i1 = Math.min(this.k, this.w);
+    Math.min(this.k, this.x);
+    int i4 = this.w;
+    int i5 = this.k;
+    int i2 = 0;
+    int i3 = 0;
     float[] arrayOfFloat;
-    if (i2 > i3)
+    if (i4 > i5)
     {
-      d1 = this.jdField_c_of_type_Float;
+      d1 = this.B;
       Double.isNaN(d1);
-      double d2 = i2;
+      double d2 = i4;
       Double.isNaN(d2);
       float f2 = (float)Math.floor(d1 * 0.5D / d2);
       f1 = f2;
-      if (f2 < this.jdField_f_of_type_Int + AIOUtils.b(1.0F, getResources())) {
-        f1 = this.jdField_f_of_type_Int + AIOUtils.b(1.0F, getResources());
+      if (f2 < this.q + AIOUtils.b(1.0F, getResources())) {
+        f1 = this.q + AIOUtils.b(1.0F, getResources());
       }
-      f2 = a();
-      d1 = this.jdField_c_of_type_Float / this.jdField_g_of_type_Int - f1;
-      if ((d1 > 0.0D) && (!Double.isNaN(d1)) && (m > 1))
+      f2 = getDashOffset();
+      d1 = this.B / this.w - f1;
+      if ((d1 > 0.0D) && (!Double.isNaN(d1)) && (i1 > 1))
       {
-        arrayOfFloat = new float[this.jdField_g_of_type_Int * 2];
-        m = 0;
-        while (m < this.jdField_g_of_type_Int * 2)
+        arrayOfFloat = new float[this.w * 2];
+        i1 = 0;
+        while (i1 < this.w * 2)
         {
-          arrayOfFloat[m] = ((float)d1);
-          arrayOfFloat[(m + 1)] = f1;
-          m += 2;
+          arrayOfFloat[i1] = ((float)d1);
+          arrayOfFloat[(i1 + 1)] = f1;
+          i1 += 2;
         }
-        this.jdField_a_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(arrayOfFloat, f2);
-        arrayOfFloat = new float[this.jdField_g_of_type_Int * 2];
-        m = i1;
-        while (m < this.jdField_g_of_type_Int * 2)
+        this.D = new DashPathEffect(arrayOfFloat, f2);
+        arrayOfFloat = new float[this.w * 2];
+        i1 = i3;
+        while (i1 < this.w * 2)
         {
-          if (m < this.h * 2)
+          if (i1 < this.x * 2)
           {
-            arrayOfFloat[m] = ((float)d1);
-            arrayOfFloat[(m + 1)] = f1;
+            arrayOfFloat[i1] = ((float)d1);
+            arrayOfFloat[(i1 + 1)] = f1;
           }
           else
           {
-            arrayOfFloat[m] = 0.0F;
-            arrayOfFloat[(m + 1)] = ((float)d1 + f1);
+            arrayOfFloat[i1] = 0.0F;
+            arrayOfFloat[(i1 + 1)] = ((float)d1 + f1);
           }
-          m += 2;
+          i1 += 2;
         }
-        this.jdField_b_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(arrayOfFloat, f2);
+        this.E = new DashPathEffect(arrayOfFloat, f2);
         return;
       }
-      this.jdField_a_of_type_AndroidGraphicsDashPathEffect = null;
-      this.jdField_b_of_type_AndroidGraphicsDashPathEffect = null;
+      this.D = null;
+      this.E = null;
       return;
     }
-    float f1 = a();
-    double d1 = this.jdField_c_of_type_Float / this.jdField_g_of_type_Int - this.k;
+    float f1 = getDashOffset();
+    double d1 = this.B / this.w - this.A;
     if ((d1 > 0.0D) && (!Double.isNaN(d1)))
     {
-      m = this.jdField_g_of_type_Int;
-      if (m > 1)
+      i1 = this.w;
+      if (i1 > 1)
       {
-        arrayOfFloat = new float[m * 2];
-        m = 0;
-        while (m < this.jdField_g_of_type_Int * 2)
+        arrayOfFloat = new float[i1 * 2];
+        i1 = 0;
+        while (i1 < this.w * 2)
         {
-          arrayOfFloat[m] = ((float)d1);
-          arrayOfFloat[(m + 1)] = this.k;
-          m += 2;
+          arrayOfFloat[i1] = ((float)d1);
+          arrayOfFloat[(i1 + 1)] = this.A;
+          i1 += 2;
         }
-        this.jdField_a_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(arrayOfFloat, f1);
-        arrayOfFloat = new float[this.jdField_g_of_type_Int * 2];
-        m = n;
-        while (m < this.jdField_g_of_type_Int * 2)
+        this.D = new DashPathEffect(arrayOfFloat, f1);
+        arrayOfFloat = new float[this.w * 2];
+        i1 = i2;
+        while (i1 < this.w * 2)
         {
-          if (m < this.h * 2)
+          if (i1 < this.x * 2)
           {
-            arrayOfFloat[m] = ((float)d1);
-            arrayOfFloat[(m + 1)] = this.k;
+            arrayOfFloat[i1] = ((float)d1);
+            arrayOfFloat[(i1 + 1)] = this.A;
           }
           else
           {
-            arrayOfFloat[m] = 0.0F;
-            arrayOfFloat[(m + 1)] = ((float)d1 + this.k);
+            arrayOfFloat[i1] = 0.0F;
+            arrayOfFloat[(i1 + 1)] = ((float)d1 + this.A);
           }
-          m += 2;
+          i1 += 2;
         }
-        this.jdField_b_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(arrayOfFloat, f1);
-        SLog.a("RoundBorderImageView", "buildDashes length (%d), %s, %s, hash:%d", Integer.valueOf(arrayOfFloat.length), this.jdField_a_of_type_AndroidGraphicsDashPathEffect, this.jdField_b_of_type_AndroidGraphicsDashPathEffect, Integer.valueOf(hashCode()));
+        this.E = new DashPathEffect(arrayOfFloat, f1);
+        SLog.a("RoundBorderImageView", "buildDashes length (%d), %s, %s, hash:%d", Integer.valueOf(arrayOfFloat.length), this.D, this.E, Integer.valueOf(hashCode()));
         return;
       }
     }
-    this.jdField_a_of_type_AndroidGraphicsDashPathEffect = null;
-    this.jdField_b_of_type_AndroidGraphicsDashPathEffect = null;
+    this.D = null;
+    this.E = null;
+  }
+  
+  float getDashOffset()
+  {
+    if (n == 0)
+    {
+      double d1 = this.s;
+      double d2 = this.t;
+      Double.isNaN(d1);
+      double d3 = this.r / 2.0F;
+      Double.isNaN(d3);
+      double d4 = this.A / 2;
+      Double.isNaN(d4);
+      return (float)-(d1 + d2 + d3 + d4);
+    }
+    return this.r / 2.0F - this.A;
   }
   
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    if (this.jdField_d_of_type_Boolean) {
+    if (this.l) {
       SLog.a("RoundBorderImageView", "[DEBUG] before invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     if (a(paramDrawable)) {
@@ -404,7 +394,7 @@ public class RoundBorderImageView
     } else {
       super.invalidateDrawable(paramDrawable);
     }
-    if (this.jdField_d_of_type_Boolean) {
+    if (this.l) {
       SLog.a("RoundBorderImageView", "[DEBUG] after invalidateDrawable %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     paramDrawable = getDrawable();
@@ -415,15 +405,15 @@ public class RoundBorderImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int m = paramCanvas.getSaveCount();
+    int i1 = paramCanvas.getSaveCount();
     paramCanvas.save();
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    paramCanvas.clipPath(this.F);
     super.onDraw(paramCanvas);
-    paramCanvas.restoreToCount(m);
-    if (this.jdField_g_of_type_Boolean) {
+    paramCanvas.restoreToCount(i1);
+    if (this.G) {
       paramCanvas.drawColor(Color.parseColor("#7fffffff"));
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.e;
     if (localDrawable != null) {
       localDrawable.draw(paramCanvas);
     }
@@ -437,7 +427,7 @@ public class RoundBorderImageView
   
   public void requestLayout()
   {
-    if (this.jdField_d_of_type_Boolean) {
+    if (this.l) {
       SLog.a("RoundBorderImageView", "[DEBUG] requestLayout %d %d type %s, matrix:%s", Integer.valueOf(getDrawable().getIntrinsicWidth()), Integer.valueOf(getDrawable().getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     super.requestLayout();
@@ -446,58 +436,58 @@ public class RoundBorderImageView
   public void setBadgeIcon(int paramInt1, @RoundBorderImageView.BadgeDisplayMode int paramInt2)
   {
     if (paramInt1 == 0) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      this.e = null;
     } else {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(paramInt1);
+      this.e = getResources().getDrawable(paramInt1);
     }
-    this.jdField_d_of_type_Int = paramInt2;
+    this.o = paramInt2;
     d();
     invalidate();
   }
   
   public void setBadgeIcon(int paramInt, boolean paramBoolean)
   {
-    int m;
+    int i1;
     if (paramBoolean) {
-      m = 2;
+      i1 = 2;
     } else {
-      m = 3;
+      i1 = 3;
     }
-    setBadgeIcon(paramInt, m);
+    setBadgeIcon(paramInt, i1);
   }
   
   public void setImageDrawable(@Nullable Drawable paramDrawable)
   {
-    if ((this.jdField_d_of_type_Boolean) && (paramDrawable != null)) {
+    if ((this.l) && (paramDrawable != null)) {
       SLog.a("RoundBorderImageView", "[DEBUG] before set %d %d type %s matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
     super.setImageDrawable(paramDrawable);
-    if ((this.jdField_d_of_type_Boolean) && (paramDrawable != null)) {
+    if ((this.l) && (paramDrawable != null)) {
       SLog.a("RoundBorderImageView", "[DEBUG] after set %d %d type %s, matrix:%s", Integer.valueOf(paramDrawable.getIntrinsicWidth()), Integer.valueOf(paramDrawable.getIntrinsicHeight()), getScaleType(), getImageMatrix().toShortString());
     }
   }
   
   public void setSegmentAttrs(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_g_of_type_Int = paramInt1;
-    this.h = paramInt2;
-    this.i = paramInt3;
-    this.j = paramInt4;
+    this.w = paramInt1;
+    this.x = paramInt2;
+    this.y = paramInt3;
+    this.z = paramInt4;
     c();
     invalidate();
   }
   
   public void setSegmentColor(int paramInt1, int paramInt2)
   {
-    this.i = paramInt1;
-    this.j = paramInt2;
+    this.y = paramInt1;
+    this.z = paramInt2;
     invalidate();
   }
   
   public void setSegmentCount(int paramInt1, int paramInt2)
   {
-    this.jdField_g_of_type_Int = paramInt1;
-    this.h = paramInt2;
+    this.w = paramInt1;
+    this.x = paramInt2;
     f();
     c();
     invalidate();
@@ -505,7 +495,7 @@ public class RoundBorderImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView
  * JD-Core Version:    0.7.0.1
  */

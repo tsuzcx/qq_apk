@@ -1,59 +1,52 @@
 package com.tencent.liteav.trtc.impl;
 
 import com.tencent.liteav.audio.TXCAudioEngine;
-import com.tencent.liteav.basic.module.Monitor;
+import com.tencent.liteav.audio.impl.TXCAudioEngineJNI;
+import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
+import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
+import com.tencent.liteav.d;
 
 class TRTCCloudImpl$52
   implements Runnable
 {
-  TRTCCloudImpl$52(TRTCCloudImpl paramTRTCCloudImpl, String paramString, boolean paramBoolean) {}
+  TRTCCloudImpl$52(TRTCCloudImpl paramTRTCCloudImpl) {}
   
   public void run()
   {
-    Object localObject1 = this.this$0.mRoomInfo.getUser(this.val$userId);
-    if (localObject1 == null)
+    if (TRTCCloudImpl.access$1400(this.this$0))
     {
-      localObject1 = this.this$0;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("muteRemoteAudio ");
-      ((StringBuilder)localObject2).append(this.val$userId);
-      ((StringBuilder)localObject2).append(" no exist.");
-      ((TRTCCloudImpl)localObject1).apiLog(((StringBuilder)localObject2).toString());
-      localObject1 = TRTCCloudImpl.access$2300(this.this$0, this.val$userId);
-      ((TRTCRoomInfo.UserInfo)localObject1).mainRender.muteAudio = this.val$mute;
-      this.this$0.mRoomInfo.addUserInfo(this.val$userId, (TRTCRoomInfo.UserInfo)localObject1);
+      this.this$0.apiLog("startLocalAudio when enable custom audio capturing, ignore!!!");
       return;
     }
-    ((TRTCRoomInfo.UserInfo)localObject1).mainRender.muteAudio = this.val$mute;
-    Object localObject2 = this.this$0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("muteRemoteAudio ");
-    localStringBuilder.append(this.val$userId);
-    localStringBuilder.append(", ");
-    localStringBuilder.append(this.val$mute);
-    ((TRTCCloudImpl)localObject2).apiLog(localStringBuilder.toString());
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(String.format("muteRemoteAudio userId:%s mute:%b", new Object[] { this.val$userId, Boolean.valueOf(this.val$mute) }));
-    ((StringBuilder)localObject2).append(" self:");
-    ((StringBuilder)localObject2).append(this.this$0.hashCode());
-    Monitor.a(1, ((StringBuilder)localObject2).toString(), "", 0);
-    if (((TRTCRoomInfo.UserInfo)localObject1).tinyID == 0L) {
-      return;
-    }
-    TXCAudioEngine.getInstance().muteRemoteAudio(String.valueOf(((TRTCRoomInfo.UserInfo)localObject1).tinyID), this.val$mute);
-    if (this.val$mute)
+    if (TRTCCloudImpl.access$1500(this.this$0))
     {
-      localObject2 = this.this$0;
-      TRTCCloudImpl.access$2700((TRTCCloudImpl)localObject2, ((TRTCCloudImpl)localObject2).mNativeRtcContext, ((TRTCRoomInfo.UserInfo)localObject1).tinyID, 1, true);
+      this.this$0.apiLog("startLocalAudio when capturing audio, ignore!!!");
       return;
     }
-    localObject2 = this.this$0;
-    TRTCCloudImpl.access$2600((TRTCCloudImpl)localObject2, ((TRTCCloudImpl)localObject2).mNativeRtcContext, ((TRTCRoomInfo.UserInfo)localObject1).tinyID, 1, true);
+    if (this.this$0.mCurrentRole == 21)
+    {
+      this.this$0.runOnListenerThread(new TRTCCloudImpl.52.1(this));
+      this.this$0.apiLog("ignore startLocalAudio,for role audience");
+    }
+    this.this$0.apiOnlineLog("startLocalAudio");
+    TXCEventRecorderProxy.a("18446744073709551615", 3001, 0L, -1L, "", 0);
+    TXCKeyPointReportProxy.a(30002);
+    TRTCCloudImpl.access$1502(this.this$0, true);
+    this.this$0.mCaptureAndEnc.a(this.this$0.mConfig);
+    TRTCCloudImpl.access$5200(this.this$0);
+    TXCAudioEngine.getInstance().enableCaptureEOSMode(this.this$0.mEnableEosMode);
+    TXCAudioEngineJNI.nativeUseSysAudioDevice(false);
+    TXCAudioEngine.getInstance().startLocalAudio(11, false);
+    TXCAudioEngine.getInstance().enableEncodedDataPackWithTRAEHeaderCallback(true);
+    TXCAudioEngine.getInstance().muteLocalAudio(this.this$0.mRoomInfo.muteLocalAudio);
+    TXCEventRecorderProxy.a("18446744073709551615", 3003, 11L, -1L, "", 0);
+    this.this$0.enableAudioStream(true);
+    TXCKeyPointReportProxy.a(40050, 1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.52
  * JD-Core Version:    0.7.0.1
  */

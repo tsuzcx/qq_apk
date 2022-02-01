@@ -9,14 +9,14 @@ class PublicAccountFragment$5
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.initPublicAccountDataManager();
+    if (this.this$0.f != null) {
+      this.this$0.f.initPublicAccountDataManager();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.5
  * JD-Core Version:    0.7.0.1
  */

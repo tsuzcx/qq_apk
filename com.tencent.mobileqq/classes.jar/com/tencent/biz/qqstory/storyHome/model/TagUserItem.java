@@ -19,8 +19,8 @@ public class TagUserItem
     if (paramTagItem.has())
     {
       this.tagItem = new TagItem(paramTagItem);
-      this.tagId = this.tagItem.a.jdField_a_of_type_Long;
-      this.tagName = this.tagItem.a.jdField_a_of_type_JavaLangString;
+      this.tagId = this.tagItem.a.a;
+      this.tagName = this.tagItem.a.b;
     }
   }
   

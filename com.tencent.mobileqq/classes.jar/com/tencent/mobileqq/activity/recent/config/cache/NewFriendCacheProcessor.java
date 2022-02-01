@@ -26,7 +26,7 @@ public class NewFriendCacheProcessor
     localStringBuilder.append("new_friend_upgrade_pref");
     localStringBuilder.append(paramQQAppInterface.getAccount());
     localObject = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
-    if (a(paramQQAppInterface, paramList, (SharedPreferences)localObject)) {
+    if (b(paramQQAppInterface, paramList, (SharedPreferences)localObject)) {
       return;
     }
     a(paramQQAppInterface, paramList, (SharedPreferences)localObject);
@@ -61,7 +61,7 @@ public class NewFriendCacheProcessor
     }
   }
   
-  private boolean a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList, SharedPreferences paramSharedPreferences)
+  private boolean b(QQAppInterface paramQQAppInterface, List<RecentUser> paramList, SharedPreferences paramSharedPreferences)
   {
     if (paramSharedPreferences.getBoolean("check_newfriend_when_upgrade", true))
     {
@@ -104,14 +104,14 @@ public class NewFriendCacheProcessor
     }
   }
   
-  public boolean a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
+  public boolean b(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
     return (!TextUtils.equals(paramRecentUser.uin, AppConstants.RECOMMEND_CONTACT_UIN)) || (!paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.NewFriendCacheProcessor
  * JD-Core Version:    0.7.0.1
  */

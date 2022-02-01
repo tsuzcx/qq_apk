@@ -183,7 +183,9 @@ public class Flow
       if (paramConstraintWidget.mMatchConstraintDefaultHeight == 2)
       {
         paramInt = (int)(paramConstraintWidget.mMatchConstraintPercentHeight * paramInt);
-        if (paramInt != paramConstraintWidget.getHeight()) {
+        if (paramInt != paramConstraintWidget.getHeight())
+        {
+          paramConstraintWidget.setMeasureRequested(true);
           measure(paramConstraintWidget, paramConstraintWidget.getHorizontalDimensionBehaviour(), paramConstraintWidget.getWidth(), ConstraintWidget.DimensionBehaviour.FIXED, paramInt);
         }
         return paramInt;
@@ -211,7 +213,9 @@ public class Flow
       if (paramConstraintWidget.mMatchConstraintDefaultWidth == 2)
       {
         paramInt = (int)(paramConstraintWidget.mMatchConstraintPercentWidth * paramInt);
-        if (paramInt != paramConstraintWidget.getWidth()) {
+        if (paramInt != paramConstraintWidget.getWidth())
+        {
+          paramConstraintWidget.setMeasureRequested(true);
           measure(paramConstraintWidget, ConstraintWidget.DimensionBehaviour.FIXED, paramInt, paramConstraintWidget.getVerticalDimensionBehaviour(), paramConstraintWidget.getHeight());
         }
         return paramInt;
@@ -700,14 +704,13 @@ public class Flow
     paramArrayOfInt[1] = localWidgetsList.getHeight();
   }
   
-  public void addToSolver(LinearSystem paramLinearSystem)
+  public void addToSolver(LinearSystem paramLinearSystem, boolean paramBoolean)
   {
-    super.addToSolver(paramLinearSystem);
-    boolean bool1;
+    super.addToSolver(paramLinearSystem, paramBoolean);
     if (getParent() != null) {
-      bool1 = ((ConstraintWidgetContainer)getParent()).isRtl();
+      paramBoolean = ((ConstraintWidgetContainer)getParent()).isRtl();
     } else {
-      bool1 = false;
+      paramBoolean = false;
     }
     int i = this.mWrapMode;
     if (i != 0)
@@ -715,7 +718,7 @@ public class Flow
       if (i != 1)
       {
         if (i == 2) {
-          createAlignedConstraints(bool1);
+          createAlignedConstraints(paramBoolean);
         }
       }
       else
@@ -725,19 +728,19 @@ public class Flow
         while (i < j)
         {
           paramLinearSystem = (Flow.WidgetsList)this.mChainList.get(i);
-          boolean bool2;
+          boolean bool;
           if (i == j - 1) {
-            bool2 = true;
+            bool = true;
           } else {
-            bool2 = false;
+            bool = false;
           }
-          paramLinearSystem.createConstraints(bool1, i, bool2);
+          paramLinearSystem.createConstraints(paramBoolean, i, bool);
           i += 1;
         }
       }
     }
     else if (this.mChainList.size() > 0) {
-      ((Flow.WidgetsList)this.mChainList.get(0)).createConstraints(bool1, 0, true);
+      ((Flow.WidgetsList)this.mChainList.get(0)).createConstraints(paramBoolean, 0, true);
     }
     needsCallbackFromSolver(false);
   }
@@ -976,7 +979,7 @@ public class Flow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.Flow
  * JD-Core Version:    0.7.0.1
  */

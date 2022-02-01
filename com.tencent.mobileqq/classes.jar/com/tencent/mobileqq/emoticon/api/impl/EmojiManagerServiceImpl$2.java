@@ -20,8 +20,8 @@ class EmojiManagerServiceImpl$2
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    Object localObject = paramDownloadTask.a();
-    int j = ((Bundle)localObject).getInt(paramDownloadTask.c);
+    Object localObject = paramDownloadTask.b();
+    int j = ((Bundle)localObject).getInt(paramDownloadTask.h);
     localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
     if (QLog.isColorLevel())
     {
@@ -40,9 +40,9 @@ class EmojiManagerServiceImpl$2
       QLog.d(str, 2, localStringBuilder.toString());
     }
     int i;
-    if (paramDownloadTask.a() != 3)
+    if (paramDownloadTask.e() != 3)
     {
-      i = EmosmUtils.a(paramDownloadTask.a);
+      i = EmosmUtils.a(paramDownloadTask.c);
       if (EmojiManagerServiceConstant.isCover(j)) {
         EmojiManagerServiceImpl.listenerManager.notifyEmoticonCoverListener((EmoticonPackage)localObject, j, -1, i);
       }
@@ -53,15 +53,15 @@ class EmojiManagerServiceImpl$2
       EmojiManagerServiceImpl.listenerManager.notifyEmoticonCoverListener((EmoticonPackage)localObject, j, 0, 0);
       i = 0;
     }
-    long l1 = paramDownloadTask.h;
-    long l2 = paramDownloadTask.g;
-    this.a.reportEmoticonDownData((EmoticonPackage)localObject, i, l1 - l2, paramDownloadTask.d);
+    long l1 = paramDownloadTask.B;
+    long l2 = paramDownloadTask.A;
+    this.a.reportEmoticonDownData((EmoticonPackage)localObject, i, l1 - l2, paramDownloadTask.r);
   }
   
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    Object localObject = paramDownloadTask.a();
-    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
+    Object localObject = paramDownloadTask.b();
+    int i = ((Bundle)localObject).getInt(paramDownloadTask.h);
     localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
     if (QLog.isColorLevel())
     {
@@ -84,7 +84,7 @@ class EmojiManagerServiceImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.api.impl.EmojiManagerServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

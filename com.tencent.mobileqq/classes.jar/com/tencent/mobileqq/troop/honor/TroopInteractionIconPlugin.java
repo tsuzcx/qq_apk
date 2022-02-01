@@ -27,9 +27,9 @@ public class TroopInteractionIconPlugin
     if (!str2.equals("dragonPrivilege")) {
       return false;
     }
-    TroopDragonKingAnimEntryConfig localTroopDragonKingAnimEntryConfig = (TroopDragonKingAnimEntryConfig)QConfigManager.a().a(609);
+    TroopDragonKingAnimEntryConfig localTroopDragonKingAnimEntryConfig = (TroopDragonKingAnimEntryConfig)QConfigManager.b().b(609);
     int i;
-    if ((localTroopDragonKingAnimEntryConfig != null) && (localTroopDragonKingAnimEntryConfig.a(paramJSONObject))) {
+    if ((localTroopDragonKingAnimEntryConfig != null) && (localTroopDragonKingAnimEntryConfig.b(paramJSONObject))) {
       i = 1;
     } else {
       i = 0;
@@ -59,14 +59,14 @@ public class TroopInteractionIconPlugin
   {
     String str = paramJSONObject.optString("gc");
     paramJSONObject = paramJSONObject.optString("text");
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     Intent localIntent = AIOUtils.a(new Intent(localActivity, SplashActivity.class), new int[] { 2 });
     localIntent.addFlags(4194304);
     localIntent.putExtra("uin", str);
     localIntent.putExtra("uintype", 1);
     localIntent.putExtra("chat_inputBarContent", paramJSONObject);
     localActivity.startActivity(localIntent);
-    localActivity.overridePendingTransition(2130772004, 2130772344);
+    localActivity.overridePendingTransition(2130772007, 2130772436);
     return true;
   }
   
@@ -89,13 +89,13 @@ public class TroopInteractionIconPlugin
       }
       return false;
     }
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.d();
     Intent localIntent = AIOUtils.a(new Intent((Context)localObject, SplashActivity.class), new int[] { 2 });
     localIntent.addFlags(4194304);
     localIntent.putExtra("uin", paramJSONObject);
     localIntent.putExtra("uintype", 1);
     ((Activity)localObject).startActivity(localIntent);
-    ((Activity)localObject).overridePendingTransition(2130772004, 2130772344);
+    ((Activity)localObject).overridePendingTransition(2130772007, 2130772436);
     return true;
   }
   
@@ -118,9 +118,9 @@ public class TroopInteractionIconPlugin
     ((StringBuilder)localObject).append(paramJSONObject);
     ((StringBuilder)localObject).append("&state=1");
     paramJSONObject = ((StringBuilder)localObject).toString();
-    localObject = new Intent(this.mRuntime.a(), QQBrowserActivity.class);
+    localObject = new Intent(this.mRuntime.d(), QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", paramJSONObject);
-    this.mRuntime.a().startActivity((Intent)localObject);
+    this.mRuntime.d().startActivity((Intent)localObject);
     return true;
   }
   
@@ -141,7 +141,7 @@ public class TroopInteractionIconPlugin
     }
     if (this.mRuntime != null)
     {
-      localObject = this.mRuntime.a();
+      localObject = this.mRuntime.d();
       if (localObject != null)
       {
         Intent localIntent = AIOUtils.a(new Intent((Context)localObject, SplashActivity.class), new int[] { 2 });
@@ -150,7 +150,7 @@ public class TroopInteractionIconPlugin
         localIntent.putExtra("uintype", 1);
         localIntent.putExtra("open_together_panel", true);
         ((Activity)localObject).startActivity(localIntent);
-        ((Activity)localObject).overridePendingTransition(2130772004, 2130772344);
+        ((Activity)localObject).overridePendingTransition(2130772007, 2130772436);
         return true;
       }
     }
@@ -194,7 +194,7 @@ public class TroopInteractionIconPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.TroopInteractionIconPlugin
  * JD-Core Version:    0.7.0.1
  */

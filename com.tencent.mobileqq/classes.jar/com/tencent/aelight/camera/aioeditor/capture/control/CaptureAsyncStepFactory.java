@@ -18,12 +18,12 @@ public class CaptureAsyncStepFactory
       if (str.startsWith("{"))
       {
         paramString = new CaptureAsyncStepFactory.CaptureLinearGroup();
-        paramString.a = str;
+        paramString.c = str;
       }
       else if (str.startsWith("["))
       {
         paramString = new CaptureAsyncStepFactory.CaptureParallGroup();
-        paramString.a = str;
+        paramString.c = str;
       }
       else
       {
@@ -85,7 +85,7 @@ public class CaptureAsyncStepFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.CaptureAsyncStepFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public final class QQCircleMsgPaelem$PubAcc_Trans
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.QQCircleMsgPaelem.PubAcc_Trans
  * JD-Core Version:    0.7.0.1
  */

@@ -54,23 +54,23 @@ class MessengerService$4
               break label239;
             }
           }
-          if (this.a.a != null)
+          if (this.a.b != null)
           {
             localObject = Message.obtain(null, 5);
             ((Message)localObject).setData(paramObject);
-            this.a.a.send((Message)localObject);
+            this.a.b.send((Message)localObject);
           }
         }
       }
-      else if (this.a.a != null)
+      else if (this.a.b != null)
       {
         localObject = Message.obtain(null, 5);
         paramObject.putInt("srcType", 7);
         ((Message)localObject).setData(paramObject);
-        this.a.a.send((Message)localObject);
+        this.a.b.send((Message)localObject);
       }
       label239:
-      paramObject = (QQAppInterface)MessengerService.a(this.a);
+      paramObject = (QQAppInterface)MessengerService.c(this.a);
       if (paramObject == null) {
         return;
       }
@@ -89,7 +89,7 @@ class MessengerService$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.4
  * JD-Core Version:    0.7.0.1
  */

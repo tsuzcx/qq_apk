@@ -29,7 +29,7 @@ class SignatureManagerForTool$3
             return;
           }
           i = ((Bundle)localObject).getInt("key_history_signature_num");
-          SignatureManagerForTool.f(this.a);
+          SignatureManagerForTool.i(this.a);
           paramEIPCResult = new ArrayList();
           paramEIPCResult.add(Integer.valueOf(8));
           paramEIPCResult.add(Integer.valueOf(i));
@@ -47,7 +47,7 @@ class SignatureManagerForTool$3
             if (TextUtils.isDigitsOnly(paramEIPCResult))
             {
               i = Integer.parseInt(paramEIPCResult);
-              SignatureManagerForTool.e(this.a);
+              SignatureManagerForTool.h(this.a);
               paramEIPCResult = new ArrayList();
               paramEIPCResult.add(Integer.valueOf(7));
               paramEIPCResult.add(Integer.valueOf(i));
@@ -62,7 +62,7 @@ class SignatureManagerForTool$3
         ((HashMap)localObject).put("change_status_callback_data", paramEIPCResult.data);
         i = paramEIPCResult.data.getInt("result");
         int j = paramEIPCResult.data.getInt("type");
-        SignatureManagerForTool.d(this.a);
+        SignatureManagerForTool.g(this.a);
         paramEIPCResult = new ArrayList();
         paramEIPCResult.add(Integer.valueOf(6));
         paramEIPCResult.add(Integer.valueOf(i));
@@ -76,7 +76,7 @@ class SignatureManagerForTool$3
       paramEIPCResult = ((Bundle)localObject).getSerializable("my_signature");
       if ((paramEIPCResult instanceof RichStatus))
       {
-        SignatureManagerForTool.c(this.a);
+        SignatureManagerForTool.f(this.a);
         localObject = new ArrayList();
         ((ArrayList)localObject).add(Integer.valueOf(5));
         ((ArrayList)localObject).add(paramEIPCResult);
@@ -87,7 +87,7 @@ class SignatureManagerForTool$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureManagerForTool.3
  * JD-Core Version:    0.7.0.1
  */

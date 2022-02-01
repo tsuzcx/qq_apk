@@ -19,7 +19,7 @@ class ReadinjoySubscriptManagerActivity$2
   
   public void run()
   {
-    Object localObject = TroopBarAssistantManager.a().c(this.this$0.app);
+    Object localObject = TroopBarAssistantManager.a().j(this.this$0.app);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     if (localObject != null)
@@ -31,7 +31,7 @@ class ReadinjoySubscriptManagerActivity$2
         ReadinjoySubscriptManagerActivity.SubscribeFeedData localSubscribeFeedData = new ReadinjoySubscriptManagerActivity.SubscribeFeedData(this.this$0, null);
         ReadinjoySubscriptManagerActivity.SubscribeFeedData.a(localSubscribeFeedData, localPublicAccountInfo.getUin());
         ReadinjoySubscriptManagerActivity.SubscribeFeedData.b(localSubscribeFeedData, localPublicAccountInfo.name);
-        ReadinjoySubscriptManagerActivity.SubscribeFeedData.c(localSubscribeFeedData, ChnToSpell.a(ReadinjoySubscriptManagerActivity.SubscribeFeedData.b(localSubscribeFeedData), 2));
+        ReadinjoySubscriptManagerActivity.SubscribeFeedData.c(localSubscribeFeedData, ChnToSpell.b(ReadinjoySubscriptManagerActivity.SubscribeFeedData.b(localSubscribeFeedData), 2));
         if (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isInterestAccount(this.this$0.app, localPublicAccountInfo.getUin())) {
           localArrayList2.add(localSubscribeFeedData);
         } else {
@@ -47,7 +47,7 @@ class ReadinjoySubscriptManagerActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.activity.ReadinjoySubscriptManagerActivity.2
  * JD-Core Version:    0.7.0.1
  */

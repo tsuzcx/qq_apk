@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/owa" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/ow9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textColor="@color/black" android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="16.0dip" android:text="@string/zfu" />
+            <ImageView android:layout_gravity="right" android:id="@id/qz5" android:background="@drawable/gzu" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="16.0dip" />
+        </FrameLayout>
+        <View android:id="@id/ocn" android:background="#b4e1e1e1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/ow9" />
+        <TextView android:textSize="16.0dip" android:textColor="#ffff596a" android:gravity="center_vertical" android:id="@id/ow_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="16.0dip" android:text="@string/zfv" android:layout_below="@id/ocn" />
+    </RelativeLayout>
+    <include android:id="@id/owb" android:layout_width="fill_parent" android:layout_height="@dimen/brb" android:layout_marginTop="12.0dip" layout="@layout/dfu" />
+</LinearLayout>

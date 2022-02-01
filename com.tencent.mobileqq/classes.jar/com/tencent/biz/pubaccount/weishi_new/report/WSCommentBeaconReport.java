@@ -10,11 +10,6 @@ import java.util.Map;
 
 public class WSCommentBeaconReport
 {
-  private static WSStatisticsReporter.Builder a(String paramString)
-  {
-    return new WSStatisticsReporter.Builder().setTabId(d(paramString)).setSopName(paramString).setTestId(WeishiUtils.a(10003)).setPushId(WSInitializeHelper.a().a()).setFlush(true);
-  }
-  
   public static String a(String paramString)
   {
     if ("fullscreen_videoplay".equals(paramString)) {
@@ -35,14 +30,14 @@ public class WSCommentBeaconReport
   public static void a(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("dynamics_comment_like");
+    localStringBuilder.append("dynamics_comment_entry_text");
     localStringBuilder.append(paramInt1);
     a(localStringBuilder.toString(), paramString, paramInt2, null, paramstSimpleMetaFeed);
   }
   
   public static void a(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    a(paramString2, paramString1, paramInt, null, paramstSimpleMetaFeed);
+    a(paramString1, paramString2, paramInt, null, paramstSimpleMetaFeed);
   }
   
   public static void a(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean1, boolean paramBoolean2, Map<String, String> paramMap)
@@ -80,11 +75,24 @@ public class WSCommentBeaconReport
   
   public static void a(String paramString1, String paramString2, int paramInt, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    paramString1 = a(paramString2).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString1, paramInt, paramstSimpleMetaFeed));
+    paramString1 = f(paramString2).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString1, paramInt, paramstSimpleMetaFeed));
     if ((paramMap != null) && (!paramMap.isEmpty())) {
       paramString1.addExtParams(paramMap);
     }
     a(paramString1, "gzh_click");
+  }
+  
+  public static void a(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
+  {
+    Object localObject = paramMap;
+    if (paramMap == null) {
+      localObject = new HashMap();
+    }
+    if (!TextUtils.equals(paramString1, "focus")) {
+      ((Map)localObject).put("play_scene", paramString2);
+    }
+    ((Map)localObject).put("btn_status", "0");
+    a("comment_page_send", paramString1, 1000001, (Map)localObject, paramstSimpleMetaFeed);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
@@ -144,23 +152,60 @@ public class WSCommentBeaconReport
     a(paramString3, paramString1, (Map)localObject, paramstSimpleMetaFeed);
   }
   
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
+  {
+    Object localObject = paramMap;
+    if (paramMap == null) {
+      localObject = new HashMap();
+    }
+    if (!TextUtils.equals(paramString2, "focus")) {
+      ((Map)localObject).put("play_scene", paramString3);
+    }
+    ((Map)localObject).put("uid", paramString4);
+    ((Map)localObject).put("uid_type", "1");
+    ((Map)localObject).put("index", String.valueOf(paramInt + 1));
+    a(paramString1, paramString2, 1000001, (Map)localObject, paramstSimpleMetaFeed);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
+  {
+    Object localObject = paramMap;
+    if (paramMap == null) {
+      localObject = new HashMap();
+    }
+    if (!TextUtils.equals(paramString1, "focus")) {
+      ((Map)localObject).put("play_scene", paramString2);
+    }
+    ((Map)localObject).put("comment_id", paramString3);
+    ((Map)localObject).put("comment_reply_id", paramString4);
+    ((Map)localObject).put("uid", paramString5);
+    ((Map)localObject).put("uid_type", paramString6);
+    ((Map)localObject).put("index", String.valueOf(paramInt + 1));
+    a("comment_page_comment", paramString1, (Map)localObject, paramstSimpleMetaFeed);
+  }
+  
   public static void a(String paramString1, String paramString2, Map<String, String> paramMap, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    paramString1 = a(paramString2).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString1, 0, paramstSimpleMetaFeed));
+    paramString1 = f(paramString2).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString1, 0, paramstSimpleMetaFeed));
     if ((paramMap != null) && (!paramMap.isEmpty())) {
       paramString1.addExtParams(paramMap);
     }
     a(paramString1, "gzh_exposure");
   }
   
-  public static boolean a(String paramString)
+  public static void b(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return (TextUtils.equals(paramString, "fullscreen_videoplay")) || (TextUtils.equals(paramString, "collection_videoplay")) || (TextUtils.equals(paramString, "feeds_fullscreen")) || (TextUtils.equals(paramString, "drama_fullscreen_videoplay"));
+    a(paramString2, paramString1, paramInt, null, paramstSimpleMetaFeed);
   }
   
-  public static String b(String paramString)
+  public static boolean b(String paramString)
   {
-    if (a(paramString)) {
+    return (TextUtils.equals(paramString, "fullscreen_videoplay")) || (TextUtils.equals(paramString, "collection_videoplay")) || (TextUtils.equals(paramString, "monofeed")) || (TextUtils.equals(paramString, "feeds_fullscreen")) || (TextUtils.equals(paramString, "drama_fullscreen_videoplay"));
+  }
+  
+  public static String c(String paramString)
+  {
+    if (b(paramString)) {
       return "comment_page";
     }
     if ("focus".equals(paramString)) {
@@ -170,17 +215,9 @@ public class WSCommentBeaconReport
     return "dynamics_comment_page";
   }
   
-  public static void b(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public static String d(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("dynamics_comment_entry_text");
-    localStringBuilder.append(paramInt1);
-    a(localStringBuilder.toString(), paramString, paramInt2, null, paramstSimpleMetaFeed);
-  }
-  
-  public static String c(String paramString)
-  {
-    if (a(paramString)) {
+    if (b(paramString)) {
       return "comment_tag";
     }
     if ("focus".equals(paramString)) {
@@ -190,17 +227,22 @@ public class WSCommentBeaconReport
     return "dynamics_comment_tag";
   }
   
-  public static String d(String paramString)
+  public static String e(String paramString)
   {
-    if (a(paramString)) {
+    if (b(paramString)) {
       return WSVerticalBeaconReport.a();
     }
     return "";
   }
+  
+  private static WSStatisticsReporter.Builder f(String paramString)
+  {
+    return new WSStatisticsReporter.Builder().setTabId(e(paramString)).setSopName(paramString).setTestId(WeishiUtils.a(10003)).setPushId(WSInitializeHelper.a().f()).setFlush(true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSCommentBeaconReport
  * JD-Core Version:    0.7.0.1
  */

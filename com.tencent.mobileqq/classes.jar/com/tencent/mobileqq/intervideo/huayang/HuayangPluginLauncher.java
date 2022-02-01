@@ -72,7 +72,7 @@ public class HuayangPluginLauncher
     if (str != null) {
       localIntent.setData(Uri.parse(str));
     }
-    localIntent.putExtras(this.mPluginInfo.a);
+    localIntent.putExtras(this.mPluginInfo.h);
     int i;
     if (this.isMainPlugin) {
       i = 1;
@@ -81,7 +81,7 @@ public class HuayangPluginLauncher
     }
     localIntent.putExtra("PluginStartMode", i);
     localIntent.putExtra("isNeedTransparent", true);
-    localIntent.putExtra("qqVersion", "8.7.0");
+    localIntent.putExtra("qqVersion", "8.8.17");
     return localIntent;
   }
   
@@ -89,7 +89,7 @@ public class HuayangPluginLauncher
   {
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705728));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131903613));
     ((StringBuilder)localObject).append(this.installedPlugin.pluginFile);
     log("HuayangPluginLauncher", ((StringBuilder)localObject).toString());
     localObject = getPluginIntentData();
@@ -105,9 +105,9 @@ public class HuayangPluginLauncher
       ((IHuayangCrashReport)QRoute.api(IHuayangCrashReport.class)).report(paramRunningPlugin);
     }
     paramRunningPlugin = new StringBuilder();
-    paramRunningPlugin.append(HardCodeUtil.a(2131705726));
+    paramRunningPlugin.append(HardCodeUtil.a(2131903611));
     paramRunningPlugin.append(this.installedPlugin.pluginFile);
-    paramRunningPlugin.append(HardCodeUtil.a(2131705723));
+    paramRunningPlugin.append(HardCodeUtil.a(2131903608));
     paramRunningPlugin.append(System.currentTimeMillis() - l);
     log("HuayangPluginLauncher", paramRunningPlugin.toString());
   }
@@ -115,14 +115,14 @@ public class HuayangPluginLauncher
   private RunningPlugin loadPlugin()
   {
     long l = System.currentTimeMillis();
-    log("HuayangPluginLauncher", HardCodeUtil.a(2131705724));
+    log("HuayangPluginLauncher", HardCodeUtil.a(2131903609));
     try
     {
       Object localObject1 = this.pluginLoader.loadPlugin(this.appContext, this.installedPlugin);
       if (localObject1 == null)
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131705734));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131903619));
         ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
         log("HuayangPluginLauncher", ((StringBuilder)localObject1).toString());
         notifyCompleted(false, new Exception("loadFuture == null"));
@@ -150,9 +150,9 @@ public class HuayangPluginLauncher
       }
       publishProgress(80);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131705738));
+      localStringBuilder.append(HardCodeUtil.a(2131903623));
       localStringBuilder.append(this.installedPlugin.pluginFile);
-      localStringBuilder.append(HardCodeUtil.a(2131705733));
+      localStringBuilder.append(HardCodeUtil.a(2131903618));
       localStringBuilder.append(System.currentTimeMillis() - l);
       log("HuayangPluginLauncher", localStringBuilder.toString());
       return localObject1;
@@ -204,7 +204,7 @@ public class HuayangPluginLauncher
       return;
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705732));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131903617));
     ((StringBuilder)localObject).append(paramInt);
     log("HuayangPluginLauncher", ((StringBuilder)localObject).toString());
     this.mProgress = paramInt;
@@ -227,7 +227,7 @@ public class HuayangPluginLauncher
     this.mStartPluginCalled = true;
     long l = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131705722));
+    localStringBuilder.append(HardCodeUtil.a(2131903607));
     localStringBuilder.append(this.installedPlugin.pluginFile);
     log("HuayangPluginLauncher", localStringBuilder.toString());
     paramRunningPlugin = paramRunningPlugin.startLauncherActivity(getPluginIntentData());
@@ -259,9 +259,9 @@ public class HuayangPluginLauncher
       notifyCompleted(false, paramRunningPlugin);
     }
     paramRunningPlugin = new StringBuilder();
-    paramRunningPlugin.append(HardCodeUtil.a(2131705737));
+    paramRunningPlugin.append(HardCodeUtil.a(2131903622));
     paramRunningPlugin.append(this.installedPlugin.pluginFile);
-    paramRunningPlugin.append(HardCodeUtil.a(2131705730));
+    paramRunningPlugin.append(HardCodeUtil.a(2131903615));
     paramRunningPlugin.append(System.currentTimeMillis() - l);
     log("HuayangPluginLauncher", paramRunningPlugin.toString());
   }
@@ -323,7 +323,7 @@ public class HuayangPluginLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher
  * JD-Core Version:    0.7.0.1
  */

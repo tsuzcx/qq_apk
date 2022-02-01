@@ -1,30 +1,40 @@
 package com.tencent.featuretoggle;
 
 import android.content.Context;
+import com.tencent.featuretoggle.models.FeatureTriggered;
+import com.tencent.featuretoggle.models.FeatureTypedTriggered;
 import java.util.Map;
+import org.json.JSONObject;
 
 public final class Toggle
 {
   private static ToggleImpl a;
+  private static ToggleDataTransfer b = new ToggleDataTransfer();
   
-  private static ToggleImpl a()
+  public static FeatureTriggered a(String paramString1, String paramString2)
   {
-    if (a == null) {
-      a = ToggleImpl.a();
+    try
+    {
+      paramString1 = b().a(paramString1, null, paramString2);
+      return paramString1;
     }
-    return a;
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
   }
   
   public static Map<String, String> a()
   {
-    return a().a();
+    return b().d();
   }
   
   public static void a(Context paramContext, ToggleConfig paramToggleConfig)
   {
     try
     {
-      a().a(paramContext, paramToggleConfig);
+      b().a(paramContext, paramToggleConfig);
       return;
     }
     finally
@@ -36,15 +46,15 @@ public final class Toggle
   
   public static void a(OnToggleListener paramOnToggleListener)
   {
-    a().a(paramOnToggleListener);
+    b().a(paramOnToggleListener);
   }
   
-  public static void a(String paramString, boolean paramBoolean)
+  public static boolean a(String paramString, boolean paramBoolean)
   {
     try
     {
-      a().a(paramString, paramBoolean);
-      return;
+      paramBoolean = b().a(paramString, paramBoolean);
+      return paramBoolean;
     }
     finally
     {
@@ -53,12 +63,35 @@ public final class Toggle
     }
   }
   
-  public static boolean a(String paramString, boolean paramBoolean)
+  private static ToggleImpl b()
+  {
+    if (a == null) {
+      a = ToggleImpl.a();
+    }
+    return a;
+  }
+  
+  public static FeatureTypedTriggered<JSONObject> b(String paramString1, String paramString2)
   {
     try
     {
-      paramBoolean = a().a(paramString, paramBoolean);
-      return paramBoolean;
+      paramString1 = b().a(paramString1, null, paramString2);
+      paramString1 = b.a().a(paramString1);
+      return paramString1;
+    }
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
+  }
+  
+  public static void b(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      b().b(paramString, paramBoolean);
+      return;
     }
     finally
     {
@@ -69,7 +102,7 @@ public final class Toggle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.Toggle
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import org.json.JSONObject;
 
 public class PttWithTextSwitchBean
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 3000L;
+  private int a = 0;
+  private long b = 3000L;
   
   public static PttWithTextSwitchBean a(String paramString)
   {
@@ -17,8 +17,8 @@ public class PttWithTextSwitchBean
     {
       PttWithTextSwitchBean localPttWithTextSwitchBean = new PttWithTextSwitchBean();
       paramString = new JSONObject(paramString);
-      localPttWithTextSwitchBean.jdField_a_of_type_Int = paramString.optInt("pttWithTextSwitch", -1);
-      localPttWithTextSwitchBean.jdField_a_of_type_Long = paramString.optLong("aioSttSpliceTimeout", 45000L);
+      localPttWithTextSwitchBean.a = paramString.optInt("pttWithTextSwitch", -1);
+      localPttWithTextSwitchBean.b = paramString.optLong("aioSttSpliceTimeout", 45000L);
       return localPttWithTextSwitchBean;
     }
     catch (Exception paramString)
@@ -30,29 +30,29 @@ public class PttWithTextSwitchBean
     return null;
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
+  }
+  
+  public long b()
+  {
+    return this.b;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("open:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("  |  aioSttSpliceTimeout:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PttWithTextSwitchBean
  * JD-Core Version:    0.7.0.1
  */

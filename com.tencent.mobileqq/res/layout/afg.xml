@@ -8,5 +8,5 @@
         <TextView android:textSize="14.0sp" android:textColor="@color/u8" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/at5" android:visibility="visible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:text="@string/q26" android:singleLine="true" />
         <TextView android:textColor="@color/u2" android:layout_gravity="center_vertical" android:id="@id/at6" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/e3v" />
     </LinearLayout>
-    <TextView android:gravity="center" android:id="@id/orb" android:background="#fff5f6fa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="可以使用微信支付包红包啦，快试试" android:drawableLeft="@drawable/h49" android:drawableRight="@drawable/gl2" android:drawablePadding="0.0dip" />
+    <TextView android:textColor="@color/black" android:gravity="center" android:id="@id/r3h" android:background="#fff5f6fa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/inu" android:drawableRight="@drawable/gl2" android:drawablePadding="0.0dip" />
 </LinearLayout>

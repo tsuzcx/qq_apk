@@ -18,7 +18,7 @@ class BindGroupConfirmActivity$6
     if (!this.a.app.getCurrentAccountUin().equals(localObject)) {
       return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.B.removeCallbacks(this.a.C);
     if (paramBoolean)
     {
       localObject = new GetAppInfoProto.GetAppinfoResponse();
@@ -30,10 +30,10 @@ class BindGroupConfirmActivity$6
           ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
           if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
           {
-            paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+            paramBundle = this.a.B.obtainMessage();
             paramBundle.what = 3;
             paramBundle.obj = localObject;
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
+            this.a.B.sendMessage(paramBundle);
             return;
           }
         }
@@ -47,7 +47,7 @@ class BindGroupConfirmActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.6
  * JD-Core Version:    0.7.0.1
  */

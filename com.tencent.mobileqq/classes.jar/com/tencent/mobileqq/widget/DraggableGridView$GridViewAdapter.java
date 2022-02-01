@@ -10,27 +10,27 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class DraggableGridView$GridViewAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public DraggableGridView$GridViewAdapter(DraggableGridView paramDraggableGridView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int);
+    return DraggableGridView.a(this.a).b(this.b);
   }
   
   public Object getItem(int paramInt)
   {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, paramInt);
+    return DraggableGridView.a(this.a).c(this.b, paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -42,13 +42,13 @@ class DraggableGridView$GridViewAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext()), this.jdField_a_of_type_Int, paramInt, paramViewGroup);
+      localView = DraggableGridView.a(this.a).a(LayoutInflater.from(this.a.getContext()), this.b, paramInt, paramViewGroup);
     }
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(localView, this.jdField_a_of_type_Int, paramInt);
-    paramView = new DraggableGridView.GridItemAction(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int, paramInt);
+    DraggableGridView.a(this.a).a(localView, this.b, paramInt);
+    paramView = new DraggableGridView.GridItemAction(this.a, this.b, paramInt);
     localView.setOnClickListener(paramView);
     localView.setOnLongClickListener(paramView);
-    if ((!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && ((DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y != this.jdField_a_of_type_Int) || (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x != paramInt) || (!DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))) {
+    if ((!DraggableGridView.d(this.a)) && ((DraggableGridView.e(this.a).y != this.b) || (DraggableGridView.e(this.a).x != paramInt) || (!DraggableGridView.f(this.a)))) {
       localView.setVisibility(0);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
@@ -57,7 +57,7 @@ class DraggableGridView$GridViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.GridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

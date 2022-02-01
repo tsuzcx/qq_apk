@@ -18,8 +18,8 @@ public final class DetailVideoInfoWidget$GetFeedItemReceiver
   
   public void a(@NonNull DetailVideoInfoWidget paramDetailVideoInfoWidget, @NonNull FeedManager.GetFeedItemEvent paramGetFeedItemEvent)
   {
-    if ((paramGetFeedItemEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetFeedItemEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramDetailVideoInfoWidget.a != null) && (TextUtils.equals(paramGetFeedItemEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramDetailVideoInfoWidget.a.b))) {
-      paramDetailVideoInfoWidget.i();
+    if ((paramGetFeedItemEvent.g.isSuccess()) && (paramGetFeedItemEvent.a != null) && (paramDetailVideoInfoWidget.p != null) && (TextUtils.equals(paramGetFeedItemEvent.a.feedId, paramDetailVideoInfoWidget.p.c))) {
+      paramDetailVideoInfoWidget.x();
     }
   }
   

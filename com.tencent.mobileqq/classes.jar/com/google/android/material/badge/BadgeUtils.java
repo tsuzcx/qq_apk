@@ -81,20 +81,20 @@ public class BadgeUtils
     if (paramBadgeDrawable == null) {
       return;
     }
-    if ((!a) && (paramBadgeDrawable.a() == null))
+    if ((!a) && (paramBadgeDrawable.b() == null))
     {
       paramView.getOverlay().remove(paramBadgeDrawable);
       return;
     }
-    paramBadgeDrawable.a().setForeground(null);
+    paramBadgeDrawable.b().setForeground(null);
   }
   
   public static void a(@NonNull BadgeDrawable paramBadgeDrawable, @NonNull View paramView, @Nullable FrameLayout paramFrameLayout)
   {
     b(paramBadgeDrawable, paramView, paramFrameLayout);
-    if (paramBadgeDrawable.a() != null)
+    if (paramBadgeDrawable.b() != null)
     {
-      paramBadgeDrawable.a().setForeground(paramBadgeDrawable);
+      paramBadgeDrawable.b().setForeground(paramBadgeDrawable);
       return;
     }
     if (!a)
@@ -115,7 +115,7 @@ public class BadgeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.badge.BadgeUtils
  * JD-Core Version:    0.7.0.1
  */

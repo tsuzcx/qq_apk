@@ -26,61 +26,61 @@ import java.util.Set;
 
 public class DatalineDeviceChooseModel
 {
-  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
-  private ForwardFileOption jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption = null;
-  private ArrayList<ForwardFileInfo> jdField_a_of_type_JavaUtilArrayList = null;
-  private List<FileManagerEntity> jdField_a_of_type_JavaUtilList = null;
-  private Set<FileInfo> jdField_a_of_type_JavaUtilSet = null;
-  private List<ChatMessage> b = null;
-  private List<String> c = null;
+  private List<FileManagerEntity> a = null;
+  private FileManagerEntity b = null;
+  private List<ChatMessage> c = null;
+  private List<String> d = null;
+  private Set<FileInfo> e = null;
+  private ArrayList<ForwardFileInfo> f = null;
+  private ForwardFileOption g = null;
   
   public static DatalineDeviceChooseModel a(FileManagerEntity paramFileManagerEntity)
   {
     DatalineDeviceChooseModel localDatalineDeviceChooseModel = new DatalineDeviceChooseModel();
-    localDatalineDeviceChooseModel.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    localDatalineDeviceChooseModel.b = paramFileManagerEntity;
     return localDatalineDeviceChooseModel;
   }
   
   public static DatalineDeviceChooseModel a(ForwardFileOption paramForwardFileOption)
   {
     DatalineDeviceChooseModel localDatalineDeviceChooseModel = new DatalineDeviceChooseModel();
-    localDatalineDeviceChooseModel.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption = paramForwardFileOption;
+    localDatalineDeviceChooseModel.g = paramForwardFileOption;
     return localDatalineDeviceChooseModel;
   }
   
   public static DatalineDeviceChooseModel a(ArrayList<ForwardFileInfo> paramArrayList)
   {
     DatalineDeviceChooseModel localDatalineDeviceChooseModel = new DatalineDeviceChooseModel();
-    localDatalineDeviceChooseModel.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    localDatalineDeviceChooseModel.f = paramArrayList;
     return localDatalineDeviceChooseModel;
   }
   
   public static DatalineDeviceChooseModel a(List<String> paramList)
   {
     DatalineDeviceChooseModel localDatalineDeviceChooseModel = new DatalineDeviceChooseModel();
-    localDatalineDeviceChooseModel.c = paramList;
+    localDatalineDeviceChooseModel.d = paramList;
     return localDatalineDeviceChooseModel;
   }
   
   public static DatalineDeviceChooseModel a(List<FileManagerEntity> paramList, Set<FileInfo> paramSet)
   {
     DatalineDeviceChooseModel localDatalineDeviceChooseModel = new DatalineDeviceChooseModel();
-    localDatalineDeviceChooseModel.jdField_a_of_type_JavaUtilList = paramList;
-    localDatalineDeviceChooseModel.jdField_a_of_type_JavaUtilSet = paramSet;
+    localDatalineDeviceChooseModel.a = paramList;
+    localDatalineDeviceChooseModel.e = paramSet;
     return localDatalineDeviceChooseModel;
   }
   
   private void a(Context paramContext, DatalineDeviceChooseModel.DeviceChooseInterface paramDeviceChooseInterface)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
-    String str = FileUtil.a(QFileAssistantUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime())).replace(".00", "");
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(paramContext, null);
+    String str = FileUtil.a(QFileAssistantUtils.d((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime())).replace(".00", "");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
-    localStringBuilder.append(paramContext.getResources().getString(2131698283));
+    localStringBuilder.append(paramContext.getResources().getString(2131896184));
     localActionSheet.setMainTitle(localStringBuilder.toString());
-    localActionSheet.addButton(2131698282, 5);
-    localActionSheet.addButton(2131698281, 5);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addButton(2131896183, 5);
+    localActionSheet.addButton(2131896182, 5);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnDismissListener(new DatalineDeviceChooseModel.1(this, paramDeviceChooseInterface));
     localActionSheet.setOnButtonClickListener(new DatalineDeviceChooseModel.2(this, paramDeviceChooseInterface, localActionSheet));
     localActionSheet.show();
@@ -88,7 +88,7 @@ public class DatalineDeviceChooseModel
   
   private boolean a(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    if (!FileUtil.a(paramFileManagerEntity.getFilePath()))
+    if (!FileUtil.b(paramFileManagerEntity.getFilePath()))
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("checkEntity:");
@@ -97,7 +97,7 @@ public class DatalineDeviceChooseModel
       QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, paramQQAppInterface.toString());
       return false;
     }
-    long l = QFileAssistantUtils.a(paramQQAppInterface);
+    long l = QFileAssistantUtils.d(paramQQAppInterface);
     if (paramFileManagerEntity.fileSize < l)
     {
       paramQQAppInterface = new StringBuilder();
@@ -122,19 +122,19 @@ public class DatalineDeviceChooseModel
   
   private boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject1 = this.f;
     if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0) && (!paramBoolean))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("checkForwardFileInfo forwardFileInfos size : ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      ((StringBuilder)localObject1).append(this.f.size());
       QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, ((StringBuilder)localObject1).toString());
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = this.f.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (ForwardFileInfo)((Iterator)localObject1).next();
-        int i = ((ForwardFileInfo)localObject2).b();
-        long l1 = QFileAssistantUtils.a(paramQQAppInterface);
+        int i = ((ForwardFileInfo)localObject2).c();
+        long l1 = QFileAssistantUtils.d(paramQQAppInterface);
         if ((i != 10000) && (i != 10001) && (i != 10006))
         {
           localObject2 = new StringBuilder();
@@ -144,9 +144,9 @@ public class DatalineDeviceChooseModel
         }
         else
         {
-          boolean bool = FileUtil.a(((ForwardFileInfo)localObject2).a());
-          long l2 = ((ForwardFileInfo)localObject2).d();
-          if ((bool) && (((ForwardFileInfo)localObject2).d() > l1))
+          boolean bool = FileUtil.b(((ForwardFileInfo)localObject2).d());
+          long l2 = ((ForwardFileInfo)localObject2).j();
+          if ((bool) && (((ForwardFileInfo)localObject2).j() > l1))
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("checkForwardFileInfo size[");
@@ -175,13 +175,13 @@ public class DatalineDeviceChooseModel
   public static DatalineDeviceChooseModel b(List<ChatMessage> paramList)
   {
     DatalineDeviceChooseModel localDatalineDeviceChooseModel = new DatalineDeviceChooseModel();
-    localDatalineDeviceChooseModel.b = paramList;
+    localDatalineDeviceChooseModel.c = paramList;
     return localDatalineDeviceChooseModel;
   }
   
   private void b(Context paramContext, QQAppInterface paramQQAppInterface, DatalineDeviceChooseModel.DeviceChooseInterface paramDeviceChooseInterface)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -195,7 +195,7 @@ public class DatalineDeviceChooseModel
     }
     boolean bool1 = false;
     label57:
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    localObject = this.b;
     boolean bool2 = bool1;
     if (localObject != null)
     {
@@ -213,14 +213,14 @@ public class DatalineDeviceChooseModel
     }
     bool2 = a(paramQQAppInterface, b(paramQQAppInterface, c(paramQQAppInterface, d(paramQQAppInterface, bool2))));
     bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption != null)
+    if (this.g != null)
     {
       bool1 = bool2;
       if (!bool2)
       {
-        long l = QFileAssistantUtils.a(paramQQAppInterface);
+        long l = QFileAssistantUtils.d(paramQQAppInterface);
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption.a() > l) {
+        if (this.g.p() > l) {
           bool1 = true;
         }
       }
@@ -231,7 +231,7 @@ public class DatalineDeviceChooseModel
       paramDeviceChooseInterface.a();
       return;
     }
-    if (!QFileAssistantUtils.b(paramQQAppInterface))
+    if (!QFileAssistantUtils.e(paramQQAppInterface))
     {
       QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkFiles isNeedShowPadOpts is false ");
       paramDeviceChooseInterface.a();
@@ -242,10 +242,10 @@ public class DatalineDeviceChooseModel
   
   private boolean b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!paramBoolean))
+    if ((this.e != null) && (!paramBoolean))
     {
-      long l1 = QFileAssistantUtils.a(paramQQAppInterface);
-      paramQQAppInterface = this.jdField_a_of_type_JavaUtilSet.iterator();
+      long l1 = QFileAssistantUtils.d(paramQQAppInterface);
+      paramQQAppInterface = this.e.iterator();
       FileInfo localFileInfo;
       long l2;
       do
@@ -255,8 +255,8 @@ public class DatalineDeviceChooseModel
           break;
         }
         localFileInfo = (FileInfo)paramQQAppInterface.next();
-        l2 = localFileInfo.a();
-      } while (localFileInfo.a() <= l1);
+        l2 = localFileInfo.f();
+      } while (localFileInfo.f() <= l1);
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("checkLocalFileInfos troopFileStatusInfo size[");
       paramQQAppInterface.append(l2);
@@ -280,10 +280,10 @@ public class DatalineDeviceChooseModel
   
   private boolean c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if ((this.c != null) && (!paramBoolean))
+    if ((this.d != null) && (!paramBoolean))
     {
-      long l1 = QFileAssistantUtils.a(paramQQAppInterface);
-      paramQQAppInterface = this.c.iterator();
+      long l1 = QFileAssistantUtils.d(paramQQAppInterface);
+      paramQQAppInterface = this.d.iterator();
       long l2;
       do
       {
@@ -295,7 +295,7 @@ public class DatalineDeviceChooseModel
             break label171;
           }
           str = (String)paramQQAppInterface.next();
-          if (FileUtil.a(str)) {
+          if (FileUtil.b(str)) {
             break;
           }
           StringBuilder localStringBuilder = new StringBuilder();
@@ -303,7 +303,7 @@ public class DatalineDeviceChooseModel
           localStringBuilder.append(str);
           QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, localStringBuilder.toString());
         }
-        l2 = FileManagerUtil.a(str);
+        l2 = FileManagerUtil.h(str);
       } while (l2 <= l1);
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("checkLocalPaths troopFileStatusInfo size[");
@@ -329,14 +329,14 @@ public class DatalineDeviceChooseModel
   
   private boolean d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if ((this.b != null) && (!paramBoolean))
+    if ((this.c != null) && (!paramBoolean))
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("checkMsgList: lstMsg size : ");
-      ((StringBuilder)localObject1).append(this.b.size());
+      ((StringBuilder)localObject1).append(this.c.size());
       QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, ((StringBuilder)localObject1).toString());
-      long l = QFileAssistantUtils.a(paramQQAppInterface);
-      localObject1 = this.b.iterator();
+      long l = QFileAssistantUtils.d(paramQQAppInterface);
+      localObject1 = this.c.iterator();
       boolean bool;
       Object localObject2;
       do
@@ -363,17 +363,17 @@ public class DatalineDeviceChooseModel
           QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList: troopFileStatusInfo null ");
           break;
         }
-        if (!FileUtil.a(((TroopFileStatusInfo)localObject2).a))
+        if (!FileUtil.b(((TroopFileStatusInfo)localObject2).k))
         {
           QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "checkMsgList troopFileStatusInfo not localFile ");
           break;
         }
-        if (((TroopFileStatusInfo)localObject2).c <= l) {
+        if (((TroopFileStatusInfo)localObject2).i <= l) {
           break;
         }
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append("checkMsgList troopFileStatusInfo size[");
-        paramQQAppInterface.append(((TroopFileStatusInfo)localObject2).c);
+        paramQQAppInterface.append(((TroopFileStatusInfo)localObject2).i);
         paramQQAppInterface.append(" > onlyOfflineLimitSize[");
         paramQQAppInterface.append(l);
         paramQQAppInterface.append("] ");
@@ -395,13 +395,13 @@ public class DatalineDeviceChooseModel
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
+    this.a = null;
     this.b = null;
     this.c = null;
-    this.jdField_a_of_type_JavaUtilSet = null;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption = null;
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.g = null;
     QLog.i("DatalineDeviceChooseModel<FileAssistant>.ACT", 1, "setHideActionSheet clear all parames");
   }
   
@@ -428,7 +428,7 @@ public class DatalineDeviceChooseModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel
  * JD-Core Version:    0.7.0.1
  */

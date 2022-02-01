@@ -58,8 +58,8 @@ public abstract class XmlData
   public static String packageNameOf(AppInterface paramAppInterface, String paramString)
   {
     paramAppInterface = ((IEarlyDownloadService)paramAppInterface.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler(paramString);
-    if ((paramAppInterface != null) && (paramAppInterface.a() != null)) {
-      return paramAppInterface.a().strPkgName;
+    if ((paramAppInterface != null) && (paramAppInterface.h() != null)) {
+      return paramAppInterface.h().strPkgName;
     }
     return "(null)";
   }
@@ -121,7 +121,7 @@ public abstract class XmlData
     if (paramXmlData == null) {
       return;
     }
-    Field[] arrayOfField = EarlyDataFactory.a(paramXmlData.getClass());
+    Field[] arrayOfField = EarlyDataFactory.b(paramXmlData.getClass());
     if (arrayOfField != null)
     {
       if (arrayOfField.length == 0) {
@@ -153,7 +153,7 @@ public abstract class XmlData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.XmlData
  * JD-Core Version:    0.7.0.1
  */

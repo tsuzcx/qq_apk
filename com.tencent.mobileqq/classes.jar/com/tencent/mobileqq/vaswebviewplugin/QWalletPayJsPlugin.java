@@ -77,11 +77,11 @@ public class QWalletPayJsPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin", "");
-    if ((!StringUtil.a(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
+    if ((!StringUtil.isEmpty(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
     {
       Object localObject = ((ITenCookie)QRoute.api(ITenCookie.class)).getTempArgs(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (StringUtil.a((String)localObject))
+      if (StringUtil.isEmpty((String)localObject))
       {
         paramJSONObject = SharedPreferencesProxyManager.getInstance();
         localObject = new StringBuilder();
@@ -259,7 +259,7 @@ public class QWalletPayJsPlugin
       paramString.putLong("payparmas_h5_start", this.mReceiveRequestTime);
       paramString.putLong("vacreport_key_seq", this.mReportSeq);
       paramString.putString("payparmas_h5_url", (String)localObject2);
-      PayBridgeActivity.tenpay(this.mRuntime.a(), 11, paramString);
+      PayBridgeActivity.tenpay(this.mRuntime.d(), 11, paramString);
       return true;
     }
     catch (JSONException localJSONException)
@@ -356,7 +356,7 @@ public class QWalletPayJsPlugin
     ((Bundle)localObject).putString("callbackSn", paramString);
     ((Bundle)localObject).putInt("payparmas_paytype", 1);
     ((Bundle)localObject).putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.tenpay(this.mRuntime.a(), 7, (Bundle)localObject);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), 7, (Bundle)localObject);
   }
   
   public long getWebViewSchemaByNameSpace(String paramString)
@@ -467,11 +467,11 @@ public class QWalletPayJsPlugin
     super.onCreate();
     if (this.mRuntime != null)
     {
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       this.mActivity = localActivity;
       if (localActivity != null)
       {
-        this.app = this.mRuntime.a();
+        this.app = this.mRuntime.b();
         this.mContext = this.mActivity.getApplicationContext();
         this.mRecevicer = new QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver(this, new Handler());
       }
@@ -480,9 +480,9 @@ public class QWalletPayJsPlugin
   
   protected void onDestroy()
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null))
     {
-      localObject = this.mRuntime.a();
+      localObject = this.mRuntime.d();
       mFirstUrls.remove(localObject.hashCode());
       mSequence.remove(Integer.valueOf(localObject.hashCode()));
     }
@@ -498,9 +498,9 @@ public class QWalletPayJsPlugin
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null))
     {
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       Intent localIntent = localActivity.getIntent();
       if (localIntent != null)
       {
@@ -532,7 +532,7 @@ public class QWalletPayJsPlugin
     ((Bundle)localObject).putString("callbackSn", paramString);
     ((Bundle)localObject).putInt("payparmas_paytype", 1);
     ((Bundle)localObject).putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.tenpay(this.mRuntime.a(), 4, (Bundle)localObject);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), 4, (Bundle)localObject);
   }
   
   public void openTenpayView(JSONObject paramJSONObject, String paramString)
@@ -549,7 +549,7 @@ public class QWalletPayJsPlugin
     ((Bundle)localObject).putString("callbackSn", paramString);
     ((Bundle)localObject).putInt("payparmas_paytype", 1);
     ((Bundle)localObject).putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.tenpay(this.mRuntime.a(), 5, (Bundle)localObject);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), 5, (Bundle)localObject);
   }
   
   public void pay(JSONObject paramJSONObject, String paramString)
@@ -567,7 +567,7 @@ public class QWalletPayJsPlugin
     ((Bundle)localObject).putString("payparmas_url_appinfo", getPayAppInfo());
     ((Bundle)localObject).putInt("payparmas_paytype", 1);
     ((Bundle)localObject).putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.tenpay(this.mRuntime.a(), 9, (Bundle)localObject);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), 9, (Bundle)localObject);
   }
   
   public void rechargeGameCurrency(JSONObject paramJSONObject, String paramString)
@@ -584,7 +584,7 @@ public class QWalletPayJsPlugin
     ((Bundle)localObject).putString("callbackSn", paramString);
     ((Bundle)localObject).putInt("payparmas_paytype", 1);
     ((Bundle)localObject).putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.tenpay(this.mRuntime.a(), 6, (Bundle)localObject);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), 6, (Bundle)localObject);
   }
   
   public void rechargeQb(JSONObject paramJSONObject, String paramString)
@@ -601,12 +601,12 @@ public class QWalletPayJsPlugin
     ((Bundle)localObject).putString("callbackSn", paramString);
     ((Bundle)localObject).putInt("payparmas_paytype", 1);
     ((Bundle)localObject).putLong("payparmas_h5_start", this.mReceiveRequestTime);
-    PayBridgeActivity.tenpay(this.mRuntime.a(), 8, (Bundle)localObject);
+    PayBridgeActivity.tenpay(this.mRuntime.d(), 8, (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

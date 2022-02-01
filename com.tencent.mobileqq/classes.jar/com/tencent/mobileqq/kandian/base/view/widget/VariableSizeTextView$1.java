@@ -12,19 +12,19 @@ class VariableSizeTextView$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f == this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView.b)
+    if (f == this.b.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView.setFocusable(true);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView.setClickable(true);
+      this.b.setFocusable(true);
+      this.b.setClickable(true);
     }
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams;
+    paramValueAnimator = this.a;
     paramValueAnimator.height = ((int)(f + 0.5F));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVariableSizeTextView.setLayoutParams(paramValueAnimator);
+    this.b.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.VariableSizeTextView.1
  * JD-Core Version:    0.7.0.1
  */

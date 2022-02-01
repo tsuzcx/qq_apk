@@ -10,18 +10,18 @@ public class TroopUsingTimeReport
   extends BaseUsingTimeReport
 {
   private WeakReference<QQAppInterface> a;
-  private String d;
+  private String e;
   
   public TroopUsingTimeReport(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     super(paramString2, paramString3, paramString4);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.d = paramString1;
+    this.a = new WeakReference(paramQQAppInterface);
+    this.e = paramString1;
   }
   
   public UsingTimeReportManager a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject == null) {
       return null;
     }
@@ -34,7 +34,7 @@ public class TroopUsingTimeReport
   
   public void a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -42,8 +42,8 @@ public class TroopUsingTimeReport
     if (localObject == null) {
       return;
     }
-    ReportTask localReportTask = new ReportTask((AppRuntime)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
-    localObject = this.d;
+    ReportTask localReportTask = new ReportTask((AppRuntime)localObject).a("dc00899").b(this.b).c(this.c).d(this.d);
+    localObject = this.e;
     if (localObject == null) {
       localObject = "";
     }
@@ -52,7 +52,7 @@ public class TroopUsingTimeReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopUsingTimeReport
  * JD-Core Version:    0.7.0.1
  */

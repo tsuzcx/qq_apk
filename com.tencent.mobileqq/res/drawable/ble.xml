@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-vector android:drawable="@drawable/bld"
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <target android:name="icon_null" android:animation="@anim/jd" />
-    <target android:name="check_path_merged" android:animation="@anim/jc" />
-    <target android:name="box_inner_merged" android:animation="@anim/jb" />
-</animated-vector>
+    <solid android:color="#fff2f3f4" />
+    <corners android:radius="15.0dip" />
+</shape>

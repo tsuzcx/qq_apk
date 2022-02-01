@@ -18,7 +18,7 @@ class QRScanEntryView$6
     ((StringBuilder)localObject1).append("file://");
     ((StringBuilder)localObject1).append(this.a);
     localObject1 = Uri.parse(((StringBuilder)localObject1).toString());
-    localObject1 = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeQQCodeFromFile((Uri)localObject1, this.this$0.a, 3, false);
+    localObject1 = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeQQCodeFromFile((Uri)localObject1, this.this$0.E, 3, false);
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
@@ -27,13 +27,13 @@ class QRScanEntryView$6
       QLog.d("AREngine_QRScanEntryView", 2, ((StringBuilder)localObject2).toString());
     }
     Object localObject2 = new ScannerMultiResultSelectView.ImageData();
-    ((ScannerMultiResultSelectView.ImageData)localObject2).a = this.a;
+    ((ScannerMultiResultSelectView.ImageData)localObject2).d = this.a;
     QRScanEntryView.a(this.this$0, (ScannerResult)localObject1, (ScannerMultiResultSelectView.ImageData)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.6
  * JD-Core Version:    0.7.0.1
  */

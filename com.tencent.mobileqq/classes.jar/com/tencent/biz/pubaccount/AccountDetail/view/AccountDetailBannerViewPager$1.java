@@ -58,14 +58,14 @@ class AccountDetailBannerViewPager$1
         ((ViewPager.OnPageChangeListener)((Iterator)localObject).next()).onPageSelected(paramInt);
       }
     }
-    if (AccountDetailBannerViewPager.a(this.a) != null) {
-      AccountDetailBannerViewPager.a(this.a).a(paramInt);
+    if (AccountDetailBannerViewPager.b(this.a) != null) {
+      AccountDetailBannerViewPager.b(this.a).a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailBannerViewPager.1
  * JD-Core Version:    0.7.0.1
  */

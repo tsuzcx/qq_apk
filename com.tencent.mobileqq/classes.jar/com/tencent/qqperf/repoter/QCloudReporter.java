@@ -15,20 +15,20 @@ import org.json.JSONObject;
 public class QCloudReporter
   implements IReporter
 {
-  private static final String jdField_a_of_type_JavaLangString;
+  private static final String a;
   private static final String b;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private MqqHandler c;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://sngapm.qq.com/entrance/");
-    localStringBuilder.append(MagnifierSDK.b());
+    localStringBuilder.append(MagnifierSDK.m());
     localStringBuilder.append("/uploadFile/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://sngapm.qq.com/entrance/");
-    localStringBuilder.append(MagnifierSDK.b());
+    localStringBuilder.append(MagnifierSDK.m());
     localStringBuilder.append("/uploadJson/");
     b = localStringBuilder.toString();
   }
@@ -36,13 +36,13 @@ public class QCloudReporter
   public QCloudReporter(HandlerThread paramHandlerThread)
   {
     if (paramHandlerThread != null) {
-      this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(paramHandlerThread.getLooper());
+      this.c = new MqqHandler(paramHandlerThread.getLooper());
     }
   }
   
   public boolean a(ResultObject paramResultObject, IReporter.ReportResultCallback paramReportResultCallback)
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
+    if (this.c == null) {
       return false;
     }
     JSONObject localJSONObject = paramResultObject.params;
@@ -64,7 +64,7 @@ public class QCloudReporter
         str1 = (String)((Iterator)localObject2).next();
         localJSONObject.put(str1, ((JSONObject)localObject1).getString(str1));
       }
-      localJSONObject.put("version", MagnifierSDK.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("version", MagnifierSDK.a);
       localJSONObject.put("manu", Build.BRAND);
       localJSONObject.put("device", Build.MODEL);
       localObject2 = ((JSONObject)localObject1).getString("rdmuuid");
@@ -101,7 +101,7 @@ public class QCloudReporter
         }
         ((StringBuffer)localObject1).append("&a=1");
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject3).append(a);
         ((StringBuilder)localObject3).append("?");
         ((StringBuilder)localObject3).append(((StringBuffer)localObject1).toString());
         localObject1 = ((StringBuilder)localObject3).toString();
@@ -112,8 +112,8 @@ public class QCloudReporter
           ((StringBuilder)localObject3).append((String)localObject1);
           QLog.i("Magnifier_QCloudReporter", 2, ((StringBuilder)localObject3).toString());
         }
-        paramResultObject = new QCloudFileUploadRunnable(new URL((String)localObject1), (String)localObject2, localJSONObject, paramReportResultCallback, paramResultObject.dbId, this.jdField_a_of_type_MqqOsMqqHandler);
-        this.jdField_a_of_type_MqqOsMqqHandler.post(paramResultObject);
+        paramResultObject = new QCloudFileUploadRunnable(new URL((String)localObject1), (String)localObject2, localJSONObject, paramReportResultCallback, paramResultObject.dbId, this.c);
+        this.c.post(paramResultObject);
         return true;
       }
       ((StringBuffer)localObject1).append("p_id=");
@@ -121,7 +121,7 @@ public class QCloudReporter
       ((StringBuffer)localObject1).append("&plugin=");
       ((StringBuffer)localObject1).append(i);
       ((StringBuffer)localObject1).append("&version=");
-      ((StringBuffer)localObject1).append(URLEncoder.encode(MagnifierSDK.jdField_a_of_type_JavaLangString, "UTF-8"));
+      ((StringBuffer)localObject1).append(URLEncoder.encode(MagnifierSDK.a, "UTF-8"));
       ((StringBuffer)localObject1).append("&a=1");
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(b);
@@ -137,8 +137,8 @@ public class QCloudReporter
         ((StringBuilder)localObject2).append(localJSONObject.toString());
         QLog.i("Magnifier_QCloudReporter", 2, ((StringBuilder)localObject2).toString());
       }
-      paramResultObject = new JsonUploadRunnable(new URL((String)localObject1), localJSONObject, paramReportResultCallback, paramResultObject.dbId, this.jdField_a_of_type_MqqOsMqqHandler);
-      this.jdField_a_of_type_MqqOsMqqHandler.post(paramResultObject);
+      paramResultObject = new JsonUploadRunnable(new URL((String)localObject1), localJSONObject, paramReportResultCallback, paramResultObject.dbId, this.c);
+      this.c.post(paramResultObject);
       return true;
     }
     catch (Throwable paramResultObject)
@@ -152,7 +152,7 @@ public class QCloudReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.repoter.QCloudReporter
  * JD-Core Version:    0.7.0.1
  */

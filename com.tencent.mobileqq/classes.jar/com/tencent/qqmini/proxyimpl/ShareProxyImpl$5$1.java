@@ -10,12 +10,12 @@ class ShareProxyImpl$5$1
   
   public void run()
   {
-    ShareProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$5.this$0, this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$5.a.sharePicPath, new ShareProxyImpl.5.1.1(this));
+    ShareProxyImpl.a(this.b.this$0, this.b.b.sharePicPath, new ShareProxyImpl.5.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl.5.1
  * JD-Core Version:    0.7.0.1
  */

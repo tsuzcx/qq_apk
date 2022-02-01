@@ -523,10 +523,10 @@ public class QzoneOfflinePluginJsForQQ
   public static Object shouldInterceptRequest(AppInterface paramAppInterface, WebView paramWebView, String paramString1, String paramString2)
   {
     Object localObject1;
-    if ((paramWebView != null) && (WebSoPlugin.a(paramWebView)) && (WebSoUtils.b(paramString1)) && (!checkOfflineUrl(paramString1)) && (!checkDownloadFont(paramString1)))
+    if ((paramWebView != null) && (WebSoPlugin.b(paramWebView)) && (WebSoUtils.b(paramString1)) && (!checkOfflineUrl(paramString1)) && (!checkDownloadFont(paramString1)))
     {
-      Object localObject2 = paramWebView.getTag(2131374373);
-      localObject1 = paramWebView.getTag(2131374374);
+      Object localObject2 = paramWebView.getTag(2131442538);
+      localObject1 = paramWebView.getTag(2131442539);
       if ((localObject2 instanceof String))
       {
         localObject2 = (String)localObject2;
@@ -534,8 +534,8 @@ public class QzoneOfflinePluginJsForQQ
           try
           {
             paramAppInterface = new BufferedInputStream(new ByteArrayInputStream(((String)localObject2).getBytes("UTF-8")), INPUTSTREAM_BUFFER_SIZE);
-            paramWebView.setTag(2131374373, null);
-            paramWebView.setTag(2131374374, null);
+            paramWebView.setTag(2131442538, null);
+            paramWebView.setTag(2131442539, null);
             paramAppInterface = new WebResourceResponse("text/html", "UTF-8", paramAppInterface);
             if (QLog.isColorLevel())
             {
@@ -655,15 +655,15 @@ public class QzoneOfflinePluginJsForQQ
   
   public Object handleEvent(String paramString, long paramLong)
   {
-    CustomWebView localCustomWebView = null;
+    WebView localWebView = null;
     if (paramLong == 8L)
     {
       AppInterface localAppInterface;
       if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null))
       {
-        localAppInterface = this.parentPlugin.mRuntime.a();
+        localAppInterface = this.parentPlugin.mRuntime.b();
         mWebView = new WeakReference(this.parentPlugin.mRuntime.a());
-        mActivity = new WeakReference(this.parentPlugin.mRuntime.a());
+        mActivity = new WeakReference(this.parentPlugin.mRuntime.d());
       }
       else
       {
@@ -671,7 +671,7 @@ public class QzoneOfflinePluginJsForQQ
       }
       Object localObject;
       if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null)) {
-        localObject = this.parentPlugin.mRuntime.a();
+        localObject = this.parentPlugin.mRuntime.d();
       } else {
         localObject = null;
       }
@@ -687,9 +687,9 @@ public class QzoneOfflinePluginJsForQQ
       }
       WeakReference localWeakReference = mWebView;
       if (localWeakReference != null) {
-        localCustomWebView = (CustomWebView)localWeakReference.get();
+        localWebView = (WebView)localWeakReference.get();
       }
-      return shouldInterceptRequest(localAppInterface, localCustomWebView, paramString, (String)localObject);
+      return shouldInterceptRequest(localAppInterface, localWebView, paramString, (String)localObject);
     }
     return null;
   }
@@ -701,7 +701,7 @@ public class QzoneOfflinePluginJsForQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneOfflinePluginJsForQQ
  * JD-Core Version:    0.7.0.1
  */

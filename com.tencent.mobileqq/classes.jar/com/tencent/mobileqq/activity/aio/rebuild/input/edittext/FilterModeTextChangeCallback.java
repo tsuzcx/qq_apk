@@ -24,14 +24,14 @@ public class FilterModeTextChangeCallback
   private void a(AIOContext paramAIOContext)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("troop_uin", paramAIOContext.a().jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("troop_uin", paramAIOContext.O().b);
     localIntent.putExtra("param_from", 11);
     localIntent.putExtra("param_is_pop_up_style", true);
     localIntent.setFlags(603979776);
-    if (paramAIOContext.a() == 21) {
+    if (paramAIOContext.k() == 21) {
       localIntent.putExtra("param_troop_send_apollo_msg", true);
     }
-    RouteUtils.a(paramAIOContext.a(), localIntent, "/troop/memberlist/TroopMemberList", 6001);
+    RouteUtils.a(paramAIOContext.b(), localIntent, "/troop/memberlist/TroopMemberList", 6001);
   }
   
   private void a(AIOContext paramAIOContext, int paramInt)
@@ -39,7 +39,7 @@ public class FilterModeTextChangeCallback
     if (QLog.isColorLevel()) {
       QLog.d("FilterModeTextChangeCallback", 2, "inputing @ in TroopChatPie.");
     }
-    Object localObject1 = ((TroopManager)paramAIOContext.a().getManager(QQManagerFactory.TROOP_MANAGER)).b(paramAIOContext.a().jdField_a_of_type_JavaLangString);
+    Object localObject1 = ((TroopManager)paramAIOContext.a().getManager(QQManagerFactory.TROOP_MANAGER)).f(paramAIOContext.O().b);
     if (localObject1 != null)
     {
       Intent localIntent = new Intent();
@@ -47,7 +47,7 @@ public class FilterModeTextChangeCallback
       localIntent.putExtra("param_from", 3);
       localIntent.putExtra("param_is_pop_up_style", true);
       localIntent.setFlags(603979776);
-      boolean bool2 = AnonymousChatHelper.a().a(paramAIOContext.a().jdField_a_of_type_JavaLangString);
+      boolean bool2 = AnonymousChatHelper.a().a(paramAIOContext.O().b);
       boolean bool1 = false;
       if (bool2) {
         localIntent.putExtra("param_chat_mode", 1);
@@ -71,13 +71,13 @@ public class FilterModeTextChangeCallback
       if (bool1) {
         localIntent.putExtra("param_filter_robot", true);
       }
-      if (paramAIOContext.a() == 21) {
+      if (paramAIOContext.k() == 21) {
         localIntent.putExtra("param_troop_send_apollo_msg", true);
       }
       if (QLog.isColorLevel()) {
         QLog.d("FilterModeTextChangeCallback", 2, "open TroopMemberListActivity to choose @ user target.");
       }
-      RouteUtils.a(paramAIOContext.a(), localIntent, "/troop/memberlist/TroopMemberList", 6001);
+      RouteUtils.a(paramAIOContext.b(), localIntent, "/troop/memberlist/TroopMemberList", 6001);
       if (paramInt == 1) {
         return;
       }
@@ -88,7 +88,7 @@ public class FilterModeTextChangeCallback
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onTextChanged(). troopInfo is null. while inputing @.  troopUin is ");
-      ((StringBuilder)localObject1).append(paramAIOContext.a().jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramAIOContext.O().b);
       QLog.d("FilterModeTextChangeCallback", 2, ((StringBuilder)localObject1).toString());
     }
   }
@@ -135,24 +135,24 @@ public class FilterModeTextChangeCallback
   
   public void b(AIOContext paramAIOContext, CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramAIOContext.a().jdField_a_of_type_Int == 3000)
+    if (paramAIOContext.O().a == 3000)
     {
-      if (BaseChatpieHelper.a(paramAIOContext, paramCharSequence, paramAIOContext.a().jdField_a_of_type_Int))
+      if (BaseChatpieHelper.a(paramAIOContext, paramCharSequence, paramAIOContext.O().a))
       {
-        paramAIOContext.a().l = true;
+        paramAIOContext.O().z = true;
         a(paramAIOContext);
       }
     }
-    else if ((paramAIOContext.a().jdField_a_of_type_Int == 1) && (BaseChatpieHelper.a(paramAIOContext, paramCharSequence, paramAIOContext.a().jdField_a_of_type_Int)))
+    else if ((paramAIOContext.O().a == 1) && (BaseChatpieHelper.a(paramAIOContext, paramCharSequence, paramAIOContext.O().a)))
     {
-      paramAIOContext.a().l = true;
+      paramAIOContext.O().z = true;
       a(paramAIOContext, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.edittext.FilterModeTextChangeCallback
  * JD-Core Version:    0.7.0.1
  */

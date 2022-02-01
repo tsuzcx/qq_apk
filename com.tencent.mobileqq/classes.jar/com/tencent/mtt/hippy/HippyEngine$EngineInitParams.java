@@ -35,7 +35,7 @@ public class HippyEngine$EngineInitParams
   public Context context;
   public String coreJSAssetsPath;
   public String coreJSFilePath;
-  public String debugBundleName = "index.bundle";
+  public final String debugBundleName = "index.bundle";
   public boolean debugMode = false;
   public String debugServerHost = "localhost:38989";
   public HippyDeviceAdapter deviceAdapter;
@@ -47,7 +47,6 @@ public class HippyEngine$EngineInitParams
   public HippyFontScaleAdapter fontScaleAdapter;
   public int groupId = -1;
   public HippyHttpAdapter httpAdapter;
-  public HippyEngine.EngineType iEngineType = HippyEngine.EngineType.RN;
   public HippyImageLoader imageLoader;
   public HippyBundleLoader jsPreloadAssetsPath;
   public HippyBundleLoader jsPreloadFilePath;
@@ -122,7 +121,7 @@ public class HippyEngine$EngineInitParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngine.EngineInitParams
  * JD-Core Version:    0.7.0.1
  */

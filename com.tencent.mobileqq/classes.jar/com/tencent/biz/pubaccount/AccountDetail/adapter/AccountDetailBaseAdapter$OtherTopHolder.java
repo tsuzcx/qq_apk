@@ -6,25 +6,25 @@ import android.widget.TextView;
 
 class AccountDetailBaseAdapter$OtherTopHolder
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View jdField_d_of_type_AndroidViewView;
-  ImageView jdField_d_of_type_AndroidWidgetImageView;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
+  View a;
+  View b;
+  ImageView c;
+  ImageView d;
   ImageView e;
+  ImageView f;
+  TextView g;
+  TextView h;
+  TextView i;
+  ImageView j;
+  TextView k;
+  View l;
+  View m;
   
   AccountDetailBaseAdapter$OtherTopHolder(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.OtherTopHolder
  * JD-Core Version:    0.7.0.1
  */

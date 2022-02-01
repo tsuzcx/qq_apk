@@ -28,7 +28,7 @@ public class PublicAccountColorNoteController
     {
       super.e();
       a();
-      paramBundle = super.a();
+      paramBundle = super.i();
       if (paramBundle != null) {
         paramBundle.disablePostTable();
       }
@@ -56,7 +56,7 @@ public class PublicAccountColorNoteController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.PublicAccountColorNoteController
  * JD-Core Version:    0.7.0.1
  */

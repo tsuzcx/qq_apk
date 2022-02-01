@@ -10,8 +10,10 @@ public class ArkAppMessage$Config
   public Integer height;
   public Integer hintHeight;
   public Integer hintWidth;
+  public Integer menuMode;
   public Integer round;
   public Integer showSender;
+  public Integer showTime;
   public String type;
   public Integer width;
   
@@ -59,6 +61,12 @@ public class ArkAppMessage$Config
       {
         this.hintWidth = Integer.valueOf(paramJSONObject.optInt("hintWidth", -1));
         this.hintHeight = Integer.valueOf(paramJSONObject.optInt("hintHeight", -1));
+      }
+      if (paramJSONObject.has("showTime")) {
+        this.showTime = Integer.valueOf(paramJSONObject.optInt("showTime", 1));
+      }
+      if (paramJSONObject.has("menuMode")) {
+        this.menuMode = Integer.valueOf(paramJSONObject.optInt("menuMode", -1));
       }
       return true;
     }
@@ -114,19 +122,25 @@ public class ArkAppMessage$Config
       if (this.hintWidth != null) {
         localJSONObject2.put("hintWidth", this.hintWidth.intValue());
       }
-      localJSONObject1 = localJSONObject2;
-      if (this.hintHeight == null) {
-        break label221;
+      if (this.hintHeight != null) {
+        localJSONObject2.put("hintHeight", this.hintHeight.intValue());
       }
-      localJSONObject2.put("hintHeight", this.hintHeight.intValue());
+      if (this.showTime != null) {
+        localJSONObject2.put("showTime", this.showTime.intValue());
+      }
+      localJSONObject1 = localJSONObject2;
+      if (this.menuMode == null) {
+        break label263;
+      }
+      localJSONObject2.put("menuMode", this.menuMode.intValue());
       return localJSONObject2;
     }
     catch (Exception localException)
     {
       JSONObject localJSONObject1;
-      label219:
-      label221:
-      break label219;
+      label261:
+      label263:
+      break label261;
     }
     localJSONObject1 = null;
     return localJSONObject1;
@@ -143,7 +157,7 @@ public class ArkAppMessage$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ArkAppMessage.Config
  * JD-Core Version:    0.7.0.1
  */

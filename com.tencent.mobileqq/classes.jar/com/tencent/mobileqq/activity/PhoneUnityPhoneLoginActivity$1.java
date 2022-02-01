@@ -26,13 +26,13 @@ class PhoneUnityPhoneLoginActivity$1
     {
       ReportController.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
       paramString = this.a;
-      DialogUtil.a(paramString, 230, paramString.getString(2131694752), this.a.getString(2131694751), null, this.a.getString(2131692016), new PhoneUnityPhoneLoginActivity.1.1(this), null).show();
+      DialogUtil.a(paramString, 230, paramString.getString(2131892455), this.a.getString(2131892454), null, this.a.getString(2131888983), new PhoneUnityPhoneLoginActivity.1.1(this), null).show();
       return;
     }
     if (TextUtils.isEmpty(paramString)) {
-      paramString = this.a.getString(2131694750);
+      paramString = this.a.getString(2131892453);
     }
-    QQToast.a(this.a, paramString, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, paramString, 0).show(this.a.getTitleBarHeight());
   }
   
   public void b(int paramInt, String paramString)
@@ -47,21 +47,21 @@ class PhoneUnityPhoneLoginActivity$1
     String str;
     if (paramInt == 36)
     {
-      str = this.a.getString(2131694756);
+      str = this.a.getString(2131892459);
     }
     else
     {
       str = paramString;
       if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131694755);
+        str = this.a.getString(2131892458);
       }
     }
-    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, str, 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity.1
  * JD-Core Version:    0.7.0.1
  */

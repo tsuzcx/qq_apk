@@ -11,22 +11,22 @@ class MayknowRecommendManager$8
 {
   MayknowRecommendManager$8(MayknowRecommendManager paramMayknowRecommendManager, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.h();
+      this.b.r();
       ReportController.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.a.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.8
  * JD-Core Version:    0.7.0.1
  */

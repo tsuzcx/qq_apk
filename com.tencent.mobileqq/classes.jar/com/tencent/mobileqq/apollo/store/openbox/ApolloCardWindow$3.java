@@ -29,9 +29,9 @@ class ApolloCardWindow$3
           {
             ??? = localObject3.getName();
             String str = ((String)???).substring(0, ((String)???).indexOf("."));
-            synchronized (ApolloCardWindow.a)
+            synchronized (ApolloCardWindow.f)
             {
-              ApolloCardWindow.a.put(str, this.this$0.a(localObject3.getPath()));
+              ApolloCardWindow.f.put(str, this.this$0.a(localObject3.getPath()));
             }
           }
           i += 1;
@@ -47,7 +47,7 @@ class ApolloCardWindow$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow.3
  * JD-Core Version:    0.7.0.1
  */

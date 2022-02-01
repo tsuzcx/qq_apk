@@ -17,27 +17,27 @@ import java.util.List;
 public class WorkerHandler
   extends Handler
 {
-  private final BaseMessageHandler jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List<Message> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final BaseMessageHandler a;
+  private HashSet<String> b = new HashSet();
+  private List<Message> c = new ArrayList();
   
   public WorkerHandler(BaseMessageHandler paramBaseMessageHandler, Looper paramLooper)
   {
     super(paramLooper);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler = paramBaseMessageHandler;
+    this.a = paramBaseMessageHandler;
   }
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.c.size() > 0)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext()) {
           sendMessage((Message)localIterator.next());
         }
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.c.clear();
       }
       if (QLog.isColorLevel()) {
         QLog.d("MessageHandler", 2, "updateUnreadWorker doC2CUpdateNow");
@@ -52,7 +52,7 @@ public class WorkerHandler
   
   public void a(Message paramMessage)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    synchronized (this.b)
     {
       Object localObject = paramMessage.getData();
       if ((localObject != null) && (((Bundle)localObject).containsKey("update_unread_uin")) && (((Bundle)localObject).containsKey("update_unread_time")))
@@ -60,7 +60,7 @@ public class WorkerHandler
         paramMessage = ((Bundle)localObject).getString("update_unread_uin");
         int i = ((Bundle)localObject).getInt("update_unread_type", 0);
         long l = ((Bundle)localObject).getLong("update_unread_time");
-        localObject = this.jdField_a_of_type_JavaUtilHashSet;
+        localObject = this.b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(UinTypeUtil.a(paramMessage, i));
         localStringBuilder.append("&");
@@ -73,16 +73,16 @@ public class WorkerHandler
   
   public void a(String paramString, int paramInt, long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    synchronized (this.b)
     {
-      HashSet localHashSet2 = this.jdField_a_of_type_JavaUtilHashSet;
+      HashSet localHashSet2 = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(UinTypeUtil.a(paramString, paramInt));
       localStringBuilder.append("&");
       localStringBuilder.append(paramLong);
       if (localHashSet2.contains(localStringBuilder.toString()))
       {
-        localHashSet2 = this.jdField_a_of_type_JavaUtilHashSet;
+        localHashSet2 = this.b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(UinTypeUtil.a(paramString, paramInt));
         localStringBuilder.append("&");
@@ -93,9 +93,9 @@ public class WorkerHandler
     }
   }
   
-  public boolean a(Message paramMessage)
+  public boolean b(Message paramMessage)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    synchronized (this.b)
     {
       Object localObject = paramMessage.getData();
       if ((localObject != null) && (((Bundle)localObject).containsKey("update_unread_uin")) && (((Bundle)localObject).containsKey("update_unread_time")))
@@ -103,7 +103,7 @@ public class WorkerHandler
         paramMessage = ((Bundle)localObject).getString("update_unread_uin");
         int i = ((Bundle)localObject).getInt("update_unread_type", 0);
         long l = ((Bundle)localObject).getLong("update_unread_time");
-        localObject = this.jdField_a_of_type_JavaUtilHashSet;
+        localObject = this.b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(UinTypeUtil.a(paramMessage, i));
         localStringBuilder.append("&");
@@ -115,11 +115,11 @@ public class WorkerHandler
     }
   }
   
-  public void b(Message paramMessage)
+  public void c(Message paramMessage)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessage);
+      this.c.add(paramMessage);
       return;
     }
   }
@@ -156,14 +156,14 @@ public class WorkerHandler
         QLog.d("MessageHandler", 2, ((StringBuilder)localObject).toString());
       }
       a(paramMessage, i, l);
-      ((IMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getRuntimeService(IMessageFacade.class, "")).setReadFrom(paramMessage, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(2002, true, null);
+      ((IMessageFacade)this.a.b().getRuntimeService(IMessageFacade.class, "")).setReadFrom(paramMessage, i, l);
+      this.a.a(2002, true, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.messagehandler.WorkerHandler
  * JD-Core Version:    0.7.0.1
  */

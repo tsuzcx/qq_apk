@@ -14,57 +14,57 @@ class TroopAioKeywordTipManager$3
   
   public void run()
   {
-    Object localObject3 = this.this$0.a(this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int);
+    Object localObject3 = this.this$0.a(this.a, this.b, this.c);
     Integer localInteger1 = (Integer)((Pair)localObject3).second;
     localObject3 = (MessageRecord)((Pair)localObject3).first;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback != null) {
+    if (this.d != null) {
       ThreadManager.getUIHandler().post(new TroopAioKeywordTipManager.3.1(this, (MessageRecord)localObject3, localInteger1));
     }
     if (localInteger1 != null)
     {
-      ??? = (TroopAioKeywordRuleInfo)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(localInteger1.intValue());
-      ??? = this.this$0.jdField_a_of_type_AndroidUtilSparseArray;
+      ??? = (TroopAioKeywordRuleInfo)this.this$0.d.get(localInteger1.intValue());
+      ??? = this.this$0.d;
       if (??? == null) {}
       try
       {
-        TroopAioKeywordTipManager.a(this.this$0, (MessageRecord)localObject3, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback);
+        TroopAioKeywordTipManager.a(this.this$0, (MessageRecord)localObject3, null, this.d);
         return;
       }
       finally {}
     }
     for (;;)
     {
-      synchronized (this.this$0.b)
+      synchronized (this.this$0.e)
       {
-        TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)this.this$0.b.get(localInteger1.intValue());
+        TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)this.this$0.e.get(localInteger1.intValue());
         int j = 1;
         if (localTroopAioKeywordTipInfo != null)
         {
-          if (localTroopAioKeywordTipInfo.version != ((TroopAioKeywordRuleInfo)???).e)
+          if (localTroopAioKeywordTipInfo.version != ((TroopAioKeywordRuleInfo)???).f)
           {
             i = j;
           }
           else
           {
-            TroopAioKeywordTipManager.a(this.this$0, (MessageRecord)localObject3, localTroopAioKeywordTipInfo, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback);
+            TroopAioKeywordTipManager.a(this.this$0, (MessageRecord)localObject3, localTroopAioKeywordTipInfo, this.d);
             break label345;
           }
         }
         else
         {
-          ??? = TroopAioKeywordHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localInteger1));
+          ??? = TroopAioKeywordHelper.a(this.this$0.a, String.valueOf(localInteger1));
           i = j;
           if (??? != null) {
-            if (((TroopAioKeywordRuleInfo)???).e != ((TroopAioKeywordTipInfo)???).version)
+            if (((TroopAioKeywordRuleInfo)???).f != ((TroopAioKeywordTipInfo)???).version)
             {
               i = j;
             }
             else
             {
-              TroopAioKeywordTipManager.a(this.this$0, (MessageRecord)localObject3, (TroopAioKeywordTipInfo)???, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback);
-              synchronized (this.this$0.b)
+              TroopAioKeywordTipManager.a(this.this$0, (MessageRecord)localObject3, (TroopAioKeywordTipInfo)???, this.d);
+              synchronized (this.this$0.e)
               {
-                this.this$0.b.put(((TroopAioKeywordTipInfo)???).ruleId, ???);
+                this.this$0.e.put(((TroopAioKeywordTipInfo)???).ruleId, ???);
               }
             }
           }
@@ -72,10 +72,10 @@ class TroopAioKeywordTipManager$3
         if (i == 0) {
           break label344;
         }
-        TroopAioKeywordTipManager.a(this.this$0, localInteger2, (MessageRecord)localObject3, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback);
+        TroopAioKeywordTipManager.a(this.this$0, localInteger2, (MessageRecord)localObject3, this.d);
         return;
       }
-      TroopAioKeywordTipManager.a(this.this$0, null, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback);
+      TroopAioKeywordTipManager.a(this.this$0, null, null, this.d);
       label344:
       return;
       label345:
@@ -85,7 +85,7 @@ class TroopAioKeywordTipManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.3
  * JD-Core Version:    0.7.0.1
  */

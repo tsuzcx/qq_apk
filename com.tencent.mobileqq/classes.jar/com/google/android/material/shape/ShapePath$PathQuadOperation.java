@@ -33,12 +33,12 @@ public class ShapePath$PathQuadOperation
   
   private float d()
   {
-    return this.jdField_a_of_type_Float;
+    return this.a;
   }
   
   public void a(@NonNull Matrix paramMatrix, @NonNull Path paramPath)
   {
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    Matrix localMatrix = this.g;
     paramMatrix.invert(localMatrix);
     paramPath.transform(localMatrix);
     paramPath.quadTo(d(), b(), a(), c());
@@ -47,7 +47,7 @@ public class ShapePath$PathQuadOperation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.ShapePath.PathQuadOperation
  * JD-Core Version:    0.7.0.1
  */

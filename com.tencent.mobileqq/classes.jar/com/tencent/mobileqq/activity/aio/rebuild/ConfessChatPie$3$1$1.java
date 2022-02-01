@@ -14,11 +14,11 @@ class ConfessChatPie$3$1$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (ConfessChatPie.a(this.a.a.this$0) != null) {
-      ConfessChatPie.a(this.a.a.this$0).setVisibility(0);
+    if (ConfessChatPie.c(this.a.a.this$0) != null) {
+      ConfessChatPie.c(this.a.a.this$0).setVisibility(0);
     }
-    if (ConfessChatPie.a(this.a.a.this$0) != null) {
-      ConfessChatPie.a(this.a.a.this$0).setVisibility(4);
+    if (ConfessChatPie.d(this.a.a.this$0) != null) {
+      ConfessChatPie.d(this.a.a.this$0).setVisibility(4);
     }
   }
   
@@ -28,7 +28,7 @@ class ConfessChatPie$3$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.1
  * JD-Core Version:    0.7.0.1
  */

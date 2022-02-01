@@ -21,26 +21,26 @@ public class VipGeneralPopupWndHelper
       paramView.getLocationOnScreen(paramActivity);
       int i = paramActivity[0] + paramClickedPoint.a() + paramClickedPoint.c() / 2;
       int j = paramActivity[1] + paramClickedPoint.b() + paramClickedPoint.d() / 2;
-      int k = ViewUtils.b();
-      int m = paramVipGeneralAdvPopWindow.a();
+      int k = ViewUtils.getScreenHeight();
+      int m = paramVipGeneralAdvPopWindow.h();
       int n = paramClickedPoint.c() / 4;
       int i1 = paramClickedPoint.c() / 4;
-      int i2 = paramVipGeneralAdvPopWindow.b();
+      int i2 = paramVipGeneralAdvPopWindow.i();
       if (k - j - n >= m)
       {
         if (paramVipGeneralAdvPopWindow.a(i, j + paramClickedPoint.c() / 4)) {
-          paramVipGeneralAdvPopWindow.b();
+          paramVipGeneralAdvPopWindow.c();
         }
       }
       else if ((j - i1 - i2 >= m) && (paramVipGeneralAdvPopWindow.a(i, j - m - paramClickedPoint.c() / 4))) {
-        paramVipGeneralAdvPopWindow.a();
+        paramVipGeneralAdvPopWindow.b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.webview.controller.VipGeneralPopupWndHelper
  * JD-Core Version:    0.7.0.1
  */

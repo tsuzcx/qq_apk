@@ -12,7 +12,7 @@ public class IPSiteModel$Gxzb
   public static final String BUBBLE;
   public static final String CARD;
   public static final Parcelable.Creator<Gxzb> CREATOR = new IPSiteModel.Gxzb.1();
-  public static final String EMOJI = MobileQQ.sMobileQQ.getString(2131719425);
+  public static final String EMOJI = MobileQQ.sMobileQQ.getString(2131916985);
   public static final String FONT;
   public static final String FUNCALL;
   public static final String PENDANT;
@@ -27,14 +27,14 @@ public class IPSiteModel$Gxzb
   
   static
   {
-    BUBBLE = MobileQQ.sMobileQQ.getString(2131719422);
-    THEME = MobileQQ.sMobileQQ.getString(2131719433);
-    PENDANT = MobileQQ.sMobileQQ.getString(2131719429);
-    FONT = MobileQQ.sMobileQQ.getString(2131719427);
-    BACKGROUND = MobileQQ.sMobileQQ.getString(2131719421);
-    FUNCALL = MobileQQ.sMobileQQ.getString(2131719428);
-    CARD = MobileQQ.sMobileQQ.getString(2131719423);
-    REDPACKT = MobileQQ.sMobileQQ.getString(2131719431);
+    BUBBLE = MobileQQ.sMobileQQ.getString(2131916982);
+    THEME = MobileQQ.sMobileQQ.getString(2131916993);
+    PENDANT = MobileQQ.sMobileQQ.getString(2131916989);
+    FONT = MobileQQ.sMobileQQ.getString(2131916987);
+    BACKGROUND = MobileQQ.sMobileQQ.getString(2131916981);
+    FUNCALL = MobileQQ.sMobileQQ.getString(2131916988);
+    CARD = MobileQQ.sMobileQQ.getString(2131916983);
+    REDPACKT = MobileQQ.sMobileQQ.getString(2131916991);
   }
   
   public IPSiteModel$Gxzb() {}
@@ -89,7 +89,7 @@ public class IPSiteModel$Gxzb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Gxzb
  * JD-Core Version:    0.7.0.1
  */

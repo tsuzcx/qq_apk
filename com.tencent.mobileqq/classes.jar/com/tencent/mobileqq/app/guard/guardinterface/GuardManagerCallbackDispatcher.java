@@ -42,7 +42,7 @@ public class GuardManagerCallbackDispatcher
         QGuardUtils.a(new String[] { "Application is Foreground" });
         Iterator localIterator = a.iterator();
         while (localIterator.hasNext()) {
-          ((IGuardInterface)localIterator.next()).G_();
+          ((IGuardInterface)localIterator.next()).onApplicationForeground();
         }
         return;
       }
@@ -62,7 +62,7 @@ public class GuardManagerCallbackDispatcher
     {
       Iterator localIterator = a.iterator();
       while (localIterator.hasNext()) {
-        ((IGuardInterface)localIterator.next()).a(paramLong);
+        ((IGuardInterface)localIterator.next()).onBackgroundTimeTick(paramLong);
       }
       return;
     }
@@ -92,7 +92,7 @@ public class GuardManagerCallbackDispatcher
     {
       Iterator localIterator = a.iterator();
       while (localIterator.hasNext()) {
-        ((IGuardInterface)localIterator.next()).a(paramBoolean);
+        ((IGuardInterface)localIterator.next()).onScreensStateChanged(paramBoolean);
       }
       return;
     }
@@ -115,7 +115,7 @@ public class GuardManagerCallbackDispatcher
         QGuardUtils.a(new String[] { "Application is Background" });
         Iterator localIterator = a.iterator();
         while (localIterator.hasNext()) {
-          ((IGuardInterface)localIterator.next()).H_();
+          ((IGuardInterface)localIterator.next()).onApplicationBackground();
         }
         return;
       }
@@ -135,7 +135,7 @@ public class GuardManagerCallbackDispatcher
     {
       Iterator localIterator = a.iterator();
       while (localIterator.hasNext()) {
-        ((IGuardInterface)localIterator.next()).b(paramLong);
+        ((IGuardInterface)localIterator.next()).onLiteTimeTick(paramLong);
       }
       return;
     }
@@ -165,7 +165,7 @@ public class GuardManagerCallbackDispatcher
     {
       Iterator localIterator = a.iterator();
       while (localIterator.hasNext()) {
-        ((IGuardInterface)localIterator.next()).c(paramLong);
+        ((IGuardInterface)localIterator.next()).onBackgroundUnguardTimeTick(paramLong);
       }
       return;
     }
@@ -178,7 +178,7 @@ public class GuardManagerCallbackDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.guard.guardinterface.GuardManagerCallbackDispatcher
  * JD-Core Version:    0.7.0.1
  */

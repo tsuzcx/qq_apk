@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b8q" android:background="@drawable/eeg" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/h_o" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:text="深圳大学" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/nc4" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/hae" android:scaleType="centerInside" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/black" android:gravity="center" android:id="@id/r0h" android:background="@drawable/jl1" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="right" android:id="@id/r0g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/jk7" />
+</LinearLayout>

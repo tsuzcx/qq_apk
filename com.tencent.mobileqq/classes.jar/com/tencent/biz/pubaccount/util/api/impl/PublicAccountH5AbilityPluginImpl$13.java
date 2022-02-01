@@ -22,15 +22,15 @@ final class PublicAccountH5AbilityPluginImpl$13
     ((StringBuilder)localObject).append("getUserInfoIpc is ");
     ((StringBuilder)localObject).append(paramEIPCResult);
     QLog.e("PublicAccountH5AbilityPlugin", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallJs;
+    localObject = this.a;
     if (localObject != null) {
-      ((CallJs)localObject).a(this.jdField_a_of_type_JavaLangString, paramEIPCResult);
+      ((CallJs)localObject).a(this.b, paramEIPCResult);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.13
  * JD-Core Version:    0.7.0.1
  */

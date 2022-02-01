@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.dinifly.animation.content;
 
-import android.support.annotation.RestrictTo;
+import androidx.annotation.RestrictTo;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
 abstract interface package-info {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.package-info
  * JD-Core Version:    0.7.0.1
  */

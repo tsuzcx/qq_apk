@@ -32,7 +32,7 @@ public class QFileDatalineConfigProcessor
   {
     QLog.i("QFileDatalineConfigProcessor", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QFileDatalineConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QFileDatalineConfigBean.class);
+      return (QFileDatalineConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QFileDatalineConfigBean.class);
     }
     return null;
   }
@@ -45,7 +45,7 @@ public class QFileDatalineConfigProcessor
       return;
     }
     QLog.i("QFileDatalineConfigProcessor", 1, "onUpdate");
-    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
     if (localBaseQQAppInterface != null)
     {
       Object localObject = localBaseQQAppInterface.getApplicationContext();
@@ -53,7 +53,7 @@ public class QFileDatalineConfigProcessor
       localStringBuilder.append("file_config_");
       localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
       localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("file_dataline_key", paramQFileDatalineConfigBean.a);
+      ((SharedPreferences.Editor)localObject).putString("file_dataline_key", paramQFileDatalineConfigBean.f);
       ((SharedPreferences.Editor)localObject).apply();
       QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileDatalineConfigBean);
     }
@@ -95,7 +95,7 @@ public class QFileDatalineConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileDatalineConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

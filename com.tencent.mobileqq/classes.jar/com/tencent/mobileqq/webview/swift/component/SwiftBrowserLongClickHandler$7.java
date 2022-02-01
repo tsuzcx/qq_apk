@@ -17,7 +17,7 @@ class SwiftBrowserLongClickHandler$7
     Object localObject1 = null;
     try
     {
-      Object localObject2 = FileUtils.readFile(this.jdField_a_of_type_JavaLangString);
+      Object localObject2 = FileUtils.readFile(this.a);
       if (localObject2 != null)
       {
         localObject2 = Base64.encodeToString((byte[])localObject2, 0);
@@ -27,7 +27,7 @@ class SwiftBrowserLongClickHandler$7
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("x5QueryImage. FileUtils.readFile returns null, filepath:");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.a);
         QLog.e("SwiftBrowserLongClickHandler", 1, ((StringBuilder)localObject2).toString());
       }
     }
@@ -39,7 +39,7 @@ class SwiftBrowserLongClickHandler$7
     {
       Bundle localBundle = new Bundle();
       localBundle.putCharSequence("imageBase64", (CharSequence)localObject1);
-      localObject1 = (Boolean)this.jdField_a_of_type_ComTencentSmttExportExternalExtensionInterfacesIX5WebViewExtension.invokeMiscMethod("imageQuery", localBundle);
+      localObject1 = (Boolean)this.b.invokeMiscMethod("imageQuery", localBundle);
       if (localObject1 != null) {
         bool = ((Boolean)localObject1).booleanValue();
       }
@@ -52,7 +52,7 @@ class SwiftBrowserLongClickHandler$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.7
  * JD-Core Version:    0.7.0.1
  */

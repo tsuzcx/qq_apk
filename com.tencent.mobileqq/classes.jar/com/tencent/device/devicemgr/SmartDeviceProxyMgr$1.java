@@ -54,7 +54,7 @@ class SmartDeviceProxyMgr$1
           paramMessage = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
           boolean bool2 = SmartDevicePluginLoader.a().a(paramMessage);
           boolean bool3 = NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext());
-          boolean bool4 = DeviceInfoUtil.h();
+          boolean bool4 = DeviceInfoUtil.U();
           if (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F) {
             bool1 = true;
           }
@@ -71,7 +71,7 @@ class SmartDeviceProxyMgr$1
           SmartDeviceProxyMgr.a(paramMessage, ((StringBuilder)localObject).toString());
           if ((!bool2) && (bool3) && (!bool4) && (!bool1))
           {
-            SmartDevicePluginLoader.a().a();
+            SmartDevicePluginLoader.a().b();
             return true;
             this.a.a();
           }
@@ -85,7 +85,7 @@ class SmartDeviceProxyMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.devicemgr.SmartDeviceProxyMgr.1
  * JD-Core Version:    0.7.0.1
  */

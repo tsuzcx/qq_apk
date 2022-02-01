@@ -1,37 +1,23 @@
 package com.tencent.gdtad.basics.motivevideo;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
 
 class GdtMotiveVideoFragment$3
-  implements IMotiveVideoView
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  GdtMotiveVideoFragment$3(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
+  GdtMotiveVideoFragment$3(GdtMotiveVideoFragment paramGdtMotiveVideoFragment, View paramView) {}
   
-  public Activity a()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    return this.a.getQBaseActivity();
-  }
-  
-  public void a()
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.finish();
-    }
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.setResult(paramInt, paramIntent);
+    if ((paramInt & 0x4) == 0) {
+      this.a.setSystemUiVisibility(7942);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMotiveVideoFragment.3
  * JD-Core Version:    0.7.0.1
  */

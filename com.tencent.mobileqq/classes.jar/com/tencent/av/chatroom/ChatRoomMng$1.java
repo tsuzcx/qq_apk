@@ -30,24 +30,24 @@ class ChatRoomMng$1
               if ((!paramChatRoomMsg1.a()) || (!paramChatRoomMsg2.a())) {
                 break label87;
               }
-              if (paramChatRoomMsg1.d == paramChatRoomMsg2.d) {
+              if (paramChatRoomMsg1.k == paramChatRoomMsg2.k) {
                 break;
               }
-            } while (paramChatRoomMsg2.d <= paramChatRoomMsg1.d);
+            } while (paramChatRoomMsg2.k <= paramChatRoomMsg1.k);
             break;
-            if (paramChatRoomMsg1.b == paramChatRoomMsg2.b) {
+            if (paramChatRoomMsg1.h == paramChatRoomMsg2.h) {
               break label134;
             }
-          } while (paramChatRoomMsg2.b <= paramChatRoomMsg1.b);
+          } while (paramChatRoomMsg2.h <= paramChatRoomMsg1.h);
           break;
           if (paramChatRoomMsg1.a()) {
             break;
           }
         } while (paramChatRoomMsg2.a());
-        if (paramChatRoomMsg1.b == paramChatRoomMsg2.b) {
+        if (paramChatRoomMsg1.h == paramChatRoomMsg2.h) {
           break label134;
         }
-      } while (paramChatRoomMsg2.b <= paramChatRoomMsg1.b);
+      } while (paramChatRoomMsg2.h <= paramChatRoomMsg1.h);
     }
     label134:
     return 0;

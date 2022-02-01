@@ -23,140 +23,155 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/repo/webarticle/RIJWebResourceUtil;", "", "()V", "ARTICLE_CSS_URL", "", "ARTICLE_NEW_CSS_URL", "BEACON_WEB_SCRIPT_URL", "CSS_EXT", "DEFAULT_ARTICLE_CSS", "DEFAULT_ARTICLE_NEW_CSS", "DEFAULT_BEACON_WEB_SCRIPT", "JS_EXT", "RES_BID", "TAG", "fileMap", "Ljava/util/concurrent/ConcurrentHashMap;", "resourceUrlList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getFileContent", "filePath", "getResDir", "getWebResourceContent", "url", "getWebResourceResponse", "Lcom/tencent/smtt/export/external/interfaces/WebResourceResponse;", "isResourceUrlIntercept", "", "loadFile", "", "preloadResource", "forceLoad", "updateResourceOfflinePkg", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJWebResourceUtil
 {
-  public static final RIJWebResourceUtil a;
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = CollectionsKt.arrayListOf(new String[] { "https://tkd-fe.cdn-go.cn/KdDetailPage/latest/themes/default/client/article/article.css", "https://watchspot.cdn-go.cn/article-new/latest/css/article_new.css", "https://beaconcdn.qq.com/sdk/3.1.50/beacon_web.min.js", "https://watchspot.cdn-go.cn/article-new/latest/css/article_related_card_new.css", "https://watchspot.cdn-go.cn/article-new/latest/css/article_recommend_new.css" });
-  private static final ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public static final RIJWebResourceUtil a = new RIJWebResourceUtil();
+  private static final ConcurrentHashMap<String, String> b = new ConcurrentHashMap();
+  private static final ArrayList<String> c = CollectionsKt.arrayListOf(new String[] { "https://tkd-fe.cdn-go.cn/KdDetailPage/latest/themes/default/client/article/article.css", "https://watchspot.cdn-go.cn/article-new/latest/css/article_new.css", "https://beaconcdn.qq.com/sdk/3.1.50/beacon_web.min.js", "https://watchspot.cdn-go.cn/article-new/latest/css/article_related_card_new.css", "https://watchspot.cdn-go.cn/article-new/latest/css/article_recommend_new.css" });
   
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoWebarticleRIJWebResourceUtil = new RIJWebResourceUtil();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  private final String a()
+  private final String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(OfflineEnvHelper.a("3948"));
+    localStringBuilder.append(OfflineEnvHelper.b("3948"));
     localStringBuilder.append("3948");
     return localStringBuilder.toString();
   }
   
+  private final String c(String paramString)
+  {
+    if (TextUtils.isEmpty((CharSequence)b.get(paramString)))
+    {
+      e(paramString);
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getFileContent] hit cache, filePath = ");
+      localStringBuilder.append(paramString);
+      QLog.i("RIJWebResourceUtil", 1, localStringBuilder.toString());
+    }
+    return (String)b.get(paramString);
+  }
+  
+  private final boolean d(String paramString)
+  {
+    return c.contains(paramString);
+  }
+  
   /* Error */
-  private final void a(String paramString)
+  private final void e(String paramString)
   {
     // Byte code:
     //   0: aload_1
-    //   1: checkcast 118	java/lang/CharSequence
-    //   4: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: checkcast 121	java/lang/CharSequence
+    //   4: invokestatic 127	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifeq +12 -> 19
-    //   10: ldc 126
+    //   10: ldc 131
     //   12: iconst_1
-    //   13: ldc 128
-    //   15: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   13: ldc 151
+    //   15: invokestatic 137	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   18: return
     //   19: aconst_null
-    //   20: checkcast 136	java/io/InputStream
+    //   20: checkcast 153	java/io/InputStream
     //   23: astore_3
-    //   24: new 138	java/io/File
+    //   24: new 155	java/io/File
     //   27: dup
     //   28: aload_1
-    //   29: invokespecial 140	java/io/File:<init>	(Ljava/lang/String;)V
+    //   29: invokespecial 157	java/io/File:<init>	(Ljava/lang/String;)V
     //   32: astore 4
     //   34: aload_3
     //   35: astore_2
     //   36: aload 4
-    //   38: invokevirtual 144	java/io/File:exists	()Z
+    //   38: invokevirtual 161	java/io/File:exists	()Z
     //   41: ifne +47 -> 88
     //   44: aload_3
     //   45: astore_2
-    //   46: new 85	java/lang/StringBuilder
+    //   46: new 99	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   50: invokespecial 100	java/lang/StringBuilder:<init>	()V
     //   53: astore 4
     //   55: aload_3
     //   56: astore_2
     //   57: aload 4
-    //   59: ldc 146
-    //   61: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: ldc 163
+    //   61: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: pop
     //   65: aload_3
     //   66: astore_2
     //   67: aload 4
     //   69: aload_1
-    //   70: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   73: pop
     //   74: aload_3
     //   75: astore_2
-    //   76: ldc 126
+    //   76: ldc 131
     //   78: iconst_1
     //   79: aload 4
-    //   81: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   84: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   81: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   84: invokestatic 137	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   87: return
     //   88: aload_3
     //   89: astore_2
-    //   90: new 148	java/io/FileInputStream
+    //   90: new 165	java/io/FileInputStream
     //   93: dup
     //   94: aload 4
-    //   96: invokespecial 151	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   99: checkcast 136	java/io/InputStream
+    //   96: invokespecial 168	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   99: checkcast 153	java/io/InputStream
     //   102: astore 4
     //   104: aload 4
-    //   106: invokevirtual 155	java/io/InputStream:available	()I
+    //   106: invokevirtual 172	java/io/InputStream:available	()I
     //   109: newarray byte
     //   111: astore_2
     //   112: aload 4
     //   114: aload_2
-    //   115: invokevirtual 159	java/io/InputStream:read	([B)I
+    //   115: invokevirtual 176	java/io/InputStream:read	([B)I
     //   118: pop
-    //   119: getstatic 60	com/tencent/mobileqq/kandian/repo/webarticle/RIJWebResourceUtil:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   122: checkcast 161	java/util/Map
+    //   119: getstatic 62	com/tencent/mobileqq/kandian/repo/webarticle/RIJWebResourceUtil:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   122: checkcast 178	java/util/Map
     //   125: aload_1
-    //   126: new 62	java/lang/String
+    //   126: new 64	java/lang/String
     //   129: dup
     //   130: aload_2
-    //   131: getstatic 167	kotlin/text/Charsets:UTF_8	Ljava/nio/charset/Charset;
-    //   134: invokespecial 170	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
-    //   137: invokeinterface 174 3 0
+    //   131: getstatic 184	kotlin/text/Charsets:UTF_8	Ljava/nio/charset/Charset;
+    //   134: invokespecial 187	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
+    //   137: invokeinterface 191 3 0
     //   142: pop
-    //   143: new 85	java/lang/StringBuilder
+    //   143: new 99	java/lang/StringBuilder
     //   146: dup
-    //   147: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   147: invokespecial 100	java/lang/StringBuilder:<init>	()V
     //   150: astore_2
     //   151: aload_2
-    //   152: ldc 176
-    //   154: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   152: ldc 193
+    //   154: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   157: pop
     //   158: aload_2
     //   159: aload_1
-    //   160: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: pop
-    //   164: ldc 126
+    //   164: ldc 131
     //   166: iconst_1
     //   167: aload_2
-    //   168: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   171: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   168: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   171: invokestatic 137	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   174: aload 4
-    //   176: invokevirtual 179	java/io/InputStream:close	()V
+    //   176: invokevirtual 196	java/io/InputStream:close	()V
     //   179: return
     //   180: astore_2
-    //   181: new 85	java/lang/StringBuilder
+    //   181: new 99	java/lang/StringBuilder
     //   184: dup
-    //   185: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   185: invokespecial 100	java/lang/StringBuilder:<init>	()V
     //   188: astore_1
     //   189: aload_1
-    //   190: ldc 181
-    //   192: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   190: ldc 198
+    //   192: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   195: pop
     //   196: aload_1
     //   197: aload_2
-    //   198: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   198: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   201: pop
-    //   202: ldc 126
+    //   202: ldc 131
     //   204: iconst_1
     //   205: aload_1
-    //   206: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   206: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   209: invokestatic 137	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   212: return
     //   213: astore_1
     //   214: aload 4
@@ -175,101 +190,101 @@ public final class RIJWebResourceUtil
     //   238: astore_1
     //   239: aload_3
     //   240: astore_2
-    //   241: new 85	java/lang/StringBuilder
+    //   241: new 99	java/lang/StringBuilder
     //   244: dup
-    //   245: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   245: invokespecial 100	java/lang/StringBuilder:<init>	()V
     //   248: astore 4
     //   250: aload_3
     //   251: astore_2
     //   252: aload 4
-    //   254: ldc 186
-    //   256: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: ldc 203
+    //   256: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   259: pop
     //   260: aload_3
     //   261: astore_2
     //   262: aload 4
     //   264: aload_1
-    //   265: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   265: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   268: pop
     //   269: aload_3
     //   270: astore_2
-    //   271: ldc 126
+    //   271: ldc 131
     //   273: iconst_1
     //   274: aload 4
-    //   276: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   279: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   276: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   279: invokestatic 137	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   282: aload_3
     //   283: ifnull +85 -> 368
     //   286: aload_3
-    //   287: invokevirtual 179	java/io/InputStream:close	()V
+    //   287: invokevirtual 196	java/io/InputStream:close	()V
     //   290: return
     //   291: astore_2
-    //   292: new 85	java/lang/StringBuilder
+    //   292: new 99	java/lang/StringBuilder
     //   295: dup
-    //   296: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   296: invokespecial 100	java/lang/StringBuilder:<init>	()V
     //   299: astore_1
     //   300: goto -111 -> 189
     //   303: astore_1
     //   304: aload_3
     //   305: astore_2
-    //   306: new 85	java/lang/StringBuilder
+    //   306: new 99	java/lang/StringBuilder
     //   309: dup
-    //   310: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   310: invokespecial 100	java/lang/StringBuilder:<init>	()V
     //   313: astore 4
     //   315: aload_3
     //   316: astore_2
     //   317: aload 4
-    //   319: ldc 181
-    //   321: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   319: ldc 198
+    //   321: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   324: pop
     //   325: aload_3
     //   326: astore_2
     //   327: aload 4
     //   329: aload_1
-    //   330: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   330: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   333: pop
     //   334: aload_3
     //   335: astore_2
-    //   336: ldc 126
+    //   336: ldc 131
     //   338: iconst_1
     //   339: aload 4
-    //   341: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   344: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   341: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   344: invokestatic 137	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   347: aload_3
     //   348: ifnull +20 -> 368
     //   351: aload_3
-    //   352: invokevirtual 179	java/io/InputStream:close	()V
+    //   352: invokevirtual 196	java/io/InputStream:close	()V
     //   355: return
     //   356: astore_2
-    //   357: new 85	java/lang/StringBuilder
+    //   357: new 99	java/lang/StringBuilder
     //   360: dup
-    //   361: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   361: invokespecial 100	java/lang/StringBuilder:<init>	()V
     //   364: astore_1
     //   365: goto -176 -> 189
     //   368: return
     //   369: aload_2
     //   370: ifnull +42 -> 412
     //   373: aload_2
-    //   374: invokevirtual 179	java/io/InputStream:close	()V
+    //   374: invokevirtual 196	java/io/InputStream:close	()V
     //   377: goto +35 -> 412
     //   380: astore_2
-    //   381: new 85	java/lang/StringBuilder
+    //   381: new 99	java/lang/StringBuilder
     //   384: dup
-    //   385: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   385: invokespecial 100	java/lang/StringBuilder:<init>	()V
     //   388: astore_3
     //   389: aload_3
-    //   390: ldc 181
-    //   392: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   390: ldc 198
+    //   392: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   395: pop
     //   396: aload_3
     //   397: aload_2
-    //   398: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   398: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   401: pop
-    //   402: ldc 126
+    //   402: ldc 131
     //   404: iconst_1
     //   405: aload_3
-    //   406: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   409: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   406: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   409: invokestatic 137	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   412: goto +5 -> 417
     //   415: aload_1
     //   416: athrow
@@ -324,37 +339,16 @@ public final class RIJWebResourceUtil
     //   373	377	380	java/io/IOException
   }
   
-  private final boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilArrayList.contains(paramString);
-  }
-  
-  private final String b(String paramString)
-  {
-    if (TextUtils.isEmpty((CharSequence)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)))
-    {
-      a(paramString);
-    }
-    else
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[getFileContent] hit cache, filePath = ");
-      localStringBuilder.append(paramString);
-      QLog.i("RIJWebResourceUtil", 1, localStringBuilder.toString());
-    }
-    return (String)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
   @Nullable
   public final WebResourceResponse a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "url");
-    boolean bool = RIJWebArticleUtil.a.f();
+    boolean bool = RIJWebArticleUtil.a.g();
     Object localObject1 = null;
     if (!bool) {
       return null;
     }
-    if (a(paramString))
+    if (d(paramString))
     {
       Object localObject2 = (CharSequence)paramString;
       String str = paramString.substring(StringsKt.lastIndexOf$default((CharSequence)localObject2, '/', 0, false, 6, null) + 1, paramString.length());
@@ -369,10 +363,10 @@ public final class RIJWebResourceUtil
           paramString = "text/javascript";
         }
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(a());
+        ((StringBuilder)localObject2).append(b());
         ((StringBuilder)localObject2).append('/');
         ((StringBuilder)localObject2).append(str);
-        str = b(((StringBuilder)localObject2).toString());
+        str = c(((StringBuilder)localObject2).toString());
         if (!TextUtils.isEmpty((CharSequence)str))
         {
           if (str != null)
@@ -395,26 +389,6 @@ public final class RIJWebResourceUtil
     return null;
   }
   
-  @Nullable
-  public final String a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "url");
-    if (a(paramString))
-    {
-      paramString = paramString.substring(StringsKt.lastIndexOf$default((CharSequence)paramString, '/', 0, false, 6, null) + 1, paramString.length());
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a());
-      localStringBuilder.append('/');
-      localStringBuilder.append(paramString);
-      paramString = b(localStringBuilder.toString());
-      if (!TextUtils.isEmpty((CharSequence)paramString)) {
-        return paramString;
-      }
-    }
-    return "";
-  }
-  
   public final void a()
   {
     ThreadManager.excute((Runnable)RIJWebResourceUtil.updateResourceOfflinePkg.runnable.1.a, 128, null, true);
@@ -422,22 +396,42 @@ public final class RIJWebResourceUtil
   
   public final void a(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
+    if ((!paramBoolean) && (b.size() > 0))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[preloadResource] do not preload, forceLoad = ");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(", size = ");
-      localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      localStringBuilder.append(b.size());
       QLog.i("RIJWebResourceUtil", 1, localStringBuilder.toString());
       return;
     }
     ThreadManager.excute((Runnable)RIJWebResourceUtil.preloadResource.runnable.1.a, 64, null, true);
   }
+  
+  @Nullable
+  public final String b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "url");
+    if (d(paramString))
+    {
+      paramString = paramString.substring(StringsKt.lastIndexOf$default((CharSequence)paramString, '/', 0, false, 6, null) + 1, paramString.length());
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b());
+      localStringBuilder.append('/');
+      localStringBuilder.append(paramString);
+      paramString = c(localStringBuilder.toString());
+      if (!TextUtils.isEmpty((CharSequence)paramString)) {
+        return paramString;
+      }
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJWebResourceUtil
  * JD-Core Version:    0.7.0.1
  */

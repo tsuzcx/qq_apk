@@ -32,17 +32,16 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class TroopShortcutBarHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopShortcutBarManager jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarManager;
-  private ConcurrentHashMap<Long, Oidb0xea3Sender> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public AtomicLong a;
+  public AtomicLong a = new AtomicLong(0L);
+  private ConcurrentHashMap<Long, Oidb0xea3Sender> b = new ConcurrentHashMap();
+  private TroopShortcutBarManager c;
+  private QQAppInterface d;
   
   public TroopShortcutBarHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarManager = ((TroopShortcutBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER));
+    this.d = paramQQAppInterface;
+    this.c = ((TroopShortcutBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER));
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -80,7 +79,7 @@ public class TroopShortcutBarHandler
         }
       }
       paramFromServiceMsg = new TroopShortcutBarInfo(l1, k, m, n, i1, l2, paramFromServiceMsg);
-      paramObject = (TroopShortcutBarManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER);
+      paramObject = (TroopShortcutBarManager)this.d.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER);
       if (i == 1) {
         bool = true;
       } else {
@@ -88,12 +87,12 @@ public class TroopShortcutBarHandler
       }
       paramObject.a(Long.valueOf(l1), paramFromServiceMsg, bool, paramToServiceMsg);
       paramToServiceMsg = new StringBuilder();
-      if (!paramFromServiceMsg.a().isEmpty())
+      if (!paramFromServiceMsg.d().isEmpty())
       {
         i = 0;
-        while (i < paramFromServiceMsg.a().size() - 1)
+        while (i < paramFromServiceMsg.d().size() - 1)
         {
-          paramToServiceMsg.append(((TroopShortcutBarApp)paramFromServiceMsg.a().get(i)).b());
+          paramToServiceMsg.append(((TroopShortcutBarApp)paramFromServiceMsg.d().get(i)).d());
           paramToServiceMsg.append("|");
           i += 1;
         }
@@ -118,7 +117,7 @@ public class TroopShortcutBarHandler
   
   private boolean a(long paramLong)
   {
-    TroopShortcutBarInfo localTroopShortcutBarInfo = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarManager.a(Long.valueOf(paramLong));
+    TroopShortcutBarInfo localTroopShortcutBarInfo = this.c.a(Long.valueOf(paramLong));
     if (localTroopShortcutBarInfo == null)
     {
       if (QLog.isColorLevel()) {
@@ -126,7 +125,7 @@ public class TroopShortcutBarHandler
       }
       return true;
     }
-    if ((localTroopShortcutBarInfo.a().size() > 0) && (System.currentTimeMillis() > localTroopShortcutBarInfo.b()))
+    if ((localTroopShortcutBarInfo.d().size() > 0) && (System.currentTimeMillis() > localTroopShortcutBarInfo.e()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopShortcutBar", 2, "checkPullRedPoint return true");
@@ -145,7 +144,7 @@ public class TroopShortcutBarHandler
     int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
     if (j == 0)
     {
-      ((TroopShortcutBarManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(l, i, bool);
+      ((TroopShortcutBarManager)this.d.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(l, i, bool);
       if (QLog.isColorLevel())
       {
         paramToServiceMsg = new StringBuilder();
@@ -169,8 +168,8 @@ public class TroopShortcutBarHandler
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     long l = paramToServiceMsg.extraData.getLong("sendSeq", 0L);
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(l))) && (((Oidb0xea3Sender)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(l))).a(paramFromServiceMsg, paramObject))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(l));
+    if ((this.b.containsKey(Long.valueOf(l))) && (((Oidb0xea3Sender)this.b.get(Long.valueOf(l))).a(paramFromServiceMsg, paramObject))) {
+      this.b.remove(Long.valueOf(l));
     }
   }
   
@@ -188,7 +187,7 @@ public class TroopShortcutBarHandler
     Object localObject1 = new cmd0xe82.ReqBody();
     ((cmd0xe82.ReqBody)localObject1).group_id.set(paramLong);
     ((cmd0xe82.ReqBody)localObject1).group_type.set(paramInt);
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       ((cmd0xe82.ReqBody)localObject1).mode.set(1);
     }
     if (a(paramLong)) {
@@ -196,13 +195,13 @@ public class TroopShortcutBarHandler
     }
     Object localObject2 = new cmd0xe82.ClientInfo();
     ((cmd0xe82.ClientInfo)localObject2).platform.set(2);
-    ((cmd0xe82.ClientInfo)localObject2).version.set("8.7.0");
+    ((cmd0xe82.ClientInfo)localObject2).version.set("8.8.17");
     ((cmd0xe82.ReqBody)localObject1).client.set((MessageMicro)localObject2);
     localObject2 = makeOIDBPkg("OidbSvc.0xe82", 3714, 1, ((cmd0xe82.ReqBody)localObject1).toByteArray(), 30000L);
     ((ToServiceMsg)localObject2).addAttribute("troopcode", Long.valueOf(paramLong));
     ((ToServiceMsg)localObject2).addAttribute("trooptype", Integer.valueOf(paramInt));
     ((ToServiceMsg)localObject2).addAttribute("extData", paramObject);
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       ((ToServiceMsg)localObject2).addAttribute("mode", Integer.valueOf(1));
     }
     if ((((cmd0xe82.ReqBody)localObject1).redpoint.has()) && (((cmd0xe82.ReqBody)localObject1).redpoint.get() == 1)) {
@@ -222,7 +221,7 @@ public class TroopShortcutBarHandler
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("TroopShortcutBar", 2, ((StringBuilder)localObject).toString());
     }
-    if (((TroopShortcutBarManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(paramLong)) == null) {
+    if (((TroopShortcutBarManager)this.d.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(paramLong)) == null) {
       return;
     }
     Object localObject = new Oidb_0xe0e.ReqBody();
@@ -240,9 +239,9 @@ public class TroopShortcutBarHandler
     if (paramArrayList == null) {
       return;
     }
-    long l = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
-    Oidb0xea3Sender localOidb0xea3Sender = new Oidb0xea3Sender(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(l), localOidb0xea3Sender);
+    long l = this.a.getAndIncrement();
+    Oidb0xea3Sender localOidb0xea3Sender = new Oidb0xea3Sender(this.d);
+    this.b.put(Long.valueOf(l), localOidb0xea3Sender);
     localOidb0xea3Sender.a(paramLong, l, paramArrayList);
     localOidb0xea3Sender.a();
   }
@@ -313,7 +312,7 @@ public class TroopShortcutBarHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarHandler
  * JD-Core Version:    0.7.0.1
  */

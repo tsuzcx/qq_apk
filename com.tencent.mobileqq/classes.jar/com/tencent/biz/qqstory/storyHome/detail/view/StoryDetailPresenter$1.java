@@ -11,11 +11,11 @@ class StoryDetailPresenter$1
       return;
     }
     if (paramInt == 1) {
-      StoryDetailPresenter.a(this.a);
-    } else if (paramInt == 2) {
       StoryDetailPresenter.b(this.a);
+    } else if (paramInt == 2) {
+      StoryDetailPresenter.c(this.a);
     }
-    this.a.h();
+    this.a.i();
   }
 }
 

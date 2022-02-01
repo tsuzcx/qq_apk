@@ -14,31 +14,31 @@ class CustomHttpService$4
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    LogInterface localLogInterface = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+    LogInterface localLogInterface = CustomHttpService.a(this.c).getLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("url = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", onFailure e = ");
     localStringBuilder.append(paramIOException);
     localLogInterface.i("HttpComponent", localStringBuilder.toString(), new Object[0]);
-    this.jdField_a_of_type_Okhttp3Callback.onFailure(paramCall, paramIOException);
+    this.b.onFailure(paramCall, paramIOException);
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    LogInterface localLogInterface = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+    LogInterface localLogInterface = CustomHttpService.a(this.c).getLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("url = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", onResponse code = ");
     localStringBuilder.append(paramResponse.code());
     localLogInterface.i("HttpComponent", localStringBuilder.toString(), new Object[0]);
-    this.jdField_a_of_type_Okhttp3Callback.onResponse(paramCall, paramResponse);
+    this.b.onResponse(paramCall, paramResponse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService.4
  * JD-Core Version:    0.7.0.1
  */

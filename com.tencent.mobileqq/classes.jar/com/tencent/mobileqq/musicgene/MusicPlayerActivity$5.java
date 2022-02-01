@@ -31,15 +31,15 @@ class MusicPlayerActivity$5
           {
             GetAppInfoProto.AndroidInfo localAndroidInfo = paramBundle.androidInfo;
             localObject = Share.a(paramBundle.iconsURL, 16);
-            this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_url", localAndroidInfo.sourceUrl.get());
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            this.a.putExtra("struct_share_key_source_url", localAndroidInfo.sourceUrl.get());
+            Intent localIntent = this.a;
             paramBundle = (Bundle)localObject;
             if (localObject == null) {
               paramBundle = "";
             }
             localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_name", localAndroidInfo.messagetail.get());
-            this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_a_action_data", localAndroidInfo.packName.get());
+            this.a.putExtra("struct_share_key_source_name", localAndroidInfo.messagetail.get());
+            this.a.putExtra("struct_share_key_source_a_action_data", localAndroidInfo.packName.get());
           }
         }
       }
@@ -50,7 +50,7 @@ class MusicPlayerActivity$5
         }
       }
     }
-    paramBundle = StructMsgFactory.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+    paramBundle = StructMsgFactory.a(this.a.getExtras());
     if (paramBundle == null)
     {
       if (QLog.isColorLevel()) {
@@ -59,14 +59,14 @@ class MusicPlayerActivity$5
     }
     else
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 0);
+      this.a.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+      this.b.startActivityForResult(this.a, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.5
  * JD-Core Version:    0.7.0.1
  */

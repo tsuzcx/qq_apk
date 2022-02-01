@@ -3,6 +3,8 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 public abstract class DesktopItemInfo
 {
   public static final int TYPE_APP_LIST = 6;
+  public static final int TYPE_CHESS_ROOM_CARD_ENTRY = 14;
+  public static final int TYPE_CHESS_ROOM_ENTRY = 15;
   public static final int TYPE_MINI_APP = 2;
   public static final int TYPE_MINI_EMPTY = 3;
   public static final int TYPE_MINI_MODULE_GUIDE = 4;
@@ -52,7 +54,7 @@ public abstract class DesktopItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopItemInfo
  * JD-Core Version:    0.7.0.1
  */

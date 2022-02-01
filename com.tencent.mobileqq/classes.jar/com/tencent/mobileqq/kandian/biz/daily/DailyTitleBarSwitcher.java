@@ -14,13 +14,13 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class DailyTitleBarSwitcher
   extends FrameLayout
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new DailyTitleBarSwitcher.1(this);
-  private DailyTitleBar jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
-  private final AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new DailyTitleBarSwitcher.2(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private DailyTitleBar jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
+  private boolean a = false;
+  private DailyTitleBar b;
+  private DailyTitleBar c;
+  private View.OnClickListener d;
+  private View.OnClickListener e;
+  private final Interpolator f = new DailyTitleBarSwitcher.1(this);
+  private final AbsListView.OnScrollListener g = new DailyTitleBarSwitcher.2(this);
   
   public DailyTitleBarSwitcher(@NonNull Context paramContext)
   {
@@ -41,21 +41,21 @@ public class DailyTitleBarSwitcher
   {
     if (getChildCount() >= 2)
     {
-      this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar = ((DailyTitleBar)getChildAt(0));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar = ((DailyTitleBar)getChildAt(1));
+      this.c = ((DailyTitleBar)getChildAt(0));
+      this.b = ((DailyTitleBar)getChildAt(1));
       a(0.0F);
       ImmersiveUtils.setStatusTextColor(false, ((Activity)getContext()).getWindow());
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
   }
   
   private void a(float paramFloat)
   {
-    DailyTitleBar localDailyTitleBar = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
-    if ((localDailyTitleBar != null) && (this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar != null))
+    DailyTitleBar localDailyTitleBar = this.b;
+    if ((localDailyTitleBar != null) && (this.c != null))
     {
       localDailyTitleBar.setAlpha(paramFloat);
-      this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setAlpha(1.0F - paramFloat);
+      this.c.setAlpha(1.0F - paramFloat);
       if (paramFloat > 0.0F) {
         ImmersiveUtils.setStatusTextColor(true, ((Activity)getContext()).getWindow());
       } else {
@@ -67,111 +67,111 @@ public class DailyTitleBarSwitcher
   
   private void b()
   {
-    if (this.jdField_b_of_type_AndroidViewView$OnClickListener == null) {
+    if (this.e == null) {
       return;
     }
-    DailyTitleBar localDailyTitleBar = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
-    if ((localDailyTitleBar != null) && (this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar != null))
+    DailyTitleBar localDailyTitleBar = this.b;
+    if ((localDailyTitleBar != null) && (this.c != null))
     {
       if (localDailyTitleBar.getAlpha() < 0.1F)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnTitleClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-        this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnTitleClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+        this.b.setOnTitleClickListener(this.e);
+        this.c.setOnTitleClickListener(this.e);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnTitleClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnTitleClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.b.setOnTitleClickListener(this.d);
+      this.c.setOnTitleClickListener(this.d);
     }
   }
   
-  public AbsListView.OnScrollListener a()
+  public AbsListView.OnScrollListener getOnScrollListener()
   {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+    return this.g;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       a();
     }
   }
   
   public void setBackgroundViewTitle(String paramString, float paramFloat)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       a();
     }
-    DailyTitleBar localDailyTitleBar = this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
+    DailyTitleBar localDailyTitleBar = this.c;
     if (localDailyTitleBar != null)
     {
       localDailyTitleBar.setTitleText(paramString);
-      this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setTitleTextSize(paramFloat);
+      this.c.setTitleTextSize(paramFloat);
     }
   }
   
   public void setOnLeftButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       a();
     }
-    DailyTitleBar localDailyTitleBar = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
-    if ((localDailyTitleBar != null) && (this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar != null))
+    DailyTitleBar localDailyTitleBar = this.b;
+    if ((localDailyTitleBar != null) && (this.c != null))
     {
       localDailyTitleBar.setOnLeftButtonClickListener(paramOnClickListener);
-      this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnLeftButtonClickListener(paramOnClickListener);
+      this.c.setOnLeftButtonClickListener(paramOnClickListener);
     }
   }
   
   public void setOnRightButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       a();
     }
-    DailyTitleBar localDailyTitleBar = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
-    if ((localDailyTitleBar != null) && (this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar != null))
+    DailyTitleBar localDailyTitleBar = this.b;
+    if ((localDailyTitleBar != null) && (this.c != null))
     {
       localDailyTitleBar.setOnRightButtonClickListener(paramOnClickListener);
-      this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnRightButtonClickListener(paramOnClickListener);
+      this.c.setOnRightButtonClickListener(paramOnClickListener);
     }
   }
   
   public void setOnTitleClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       a();
     }
-    DailyTitleBar localDailyTitleBar = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
-    if ((localDailyTitleBar != null) && (this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar != null))
+    DailyTitleBar localDailyTitleBar = this.b;
+    if ((localDailyTitleBar != null) && (this.c != null))
     {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+      this.d = paramOnClickListener;
       localDailyTitleBar.setOnTitleClickListener(paramOnClickListener);
-      this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnTitleClickListener(paramOnClickListener);
+      this.c.setOnTitleClickListener(paramOnClickListener);
     }
   }
   
   public void setOnTitleClickWeatherListener(View.OnClickListener paramOnClickListener)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       a();
     }
-    DailyTitleBar localDailyTitleBar = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar;
-    if ((localDailyTitleBar != null) && (this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar != null))
+    DailyTitleBar localDailyTitleBar = this.b;
+    if ((localDailyTitleBar != null) && (this.c != null))
     {
-      this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+      this.e = paramOnClickListener;
       localDailyTitleBar.setOnTitleClickListener(paramOnClickListener);
-      this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnTitleClickListener(paramOnClickListener);
-      if (this.jdField_b_of_type_AndroidViewView$OnClickListener == null)
+      this.c.setOnTitleClickListener(paramOnClickListener);
+      if (this.e == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnTitleClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        this.jdField_b_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBar.setOnTitleClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        this.b.setOnTitleClickListener(this.d);
+        this.c.setOnTitleClickListener(this.d);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyTitleBarSwitcher
  * JD-Core Version:    0.7.0.1
  */

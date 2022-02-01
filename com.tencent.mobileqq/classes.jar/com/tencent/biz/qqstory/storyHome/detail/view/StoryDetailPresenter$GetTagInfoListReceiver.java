@@ -26,13 +26,13 @@ public final class StoryDetailPresenter$GetTagInfoListReceiver
       SLog.b("Q.qqstory.detail.StoryDetailPresenter", "ignore this tag info event. %s.", paramFeedTagListUpdateEvent.toString());
       return;
     }
-    if (paramFeedTagListUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramFeedTagListUpdateEvent.g.isSuccess())
     {
       SLog.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramFeedTagListUpdateEvent.toString());
-      paramFeedTagListUpdateEvent = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.jdField_a_of_type_JavaUtilMap.get(StoryDetailPresenter.a(paramStoryDetailPresenter));
+      paramFeedTagListUpdateEvent = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.a.get(StoryDetailPresenter.f(paramStoryDetailPresenter));
       if (paramFeedTagListUpdateEvent != null)
       {
-        paramFeedTagListUpdateEvent = ((TagManager)SuperManager.a(27)).a(StoryDetailPresenter.a(paramStoryDetailPresenter).a(), paramFeedTagListUpdateEvent.a);
+        paramFeedTagListUpdateEvent = ((TagManager)SuperManager.a(27)).a(StoryDetailPresenter.a(paramStoryDetailPresenter).a(), paramFeedTagListUpdateEvent.b);
         StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramFeedTagListUpdateEvent, true);
         paramStoryDetailPresenter.a();
       }

@@ -12,7 +12,7 @@ class AudioMediaModule$4
   public void a(List<String> paramList, int paramInt)
   {
     AudioMediaModule.a(this.a).i("AudioMediaModule", "requestMicPermission: permission denied.", new Object[0]);
-    AudioMediaModule.c(this.a);
+    AudioMediaModule.f(this.a);
     AudioMediaModule.a(this.a, null);
   }
   
@@ -21,12 +21,12 @@ class AudioMediaModule$4
     AudioMediaModule.a(this.a).i("AudioMediaModule", "requestMicPermission: permission grated.", new Object[0]);
     AudioMediaModule.a(this.a, null);
     paramArrayOfString = this.a;
-    AudioMediaModule.a(paramArrayOfString, AudioMediaModule.a(paramArrayOfString));
+    AudioMediaModule.b(paramArrayOfString, AudioMediaModule.e(paramArrayOfString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.module.AudioMediaModule.4
  * JD-Core Version:    0.7.0.1
  */

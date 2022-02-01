@@ -19,26 +19,26 @@ class ApolloLottieAnim$1
       }
       return;
     }
-    if (ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim))
+    if (ApolloLottieAnim.a(this.c))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ApolloLottieAnim", 2, "anim is destroy ,return");
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new ApolloLottieAnim.1.1(this));
-    if (this.jdField_a_of_type_Boolean)
+    this.a.setComposition(paramLottieComposition);
+    this.a.setImageAssetDelegate(new ApolloLottieAnim.1.1(this));
+    if (this.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+      this.a.setVisibility(0);
+      this.a.playAnimation();
     }
-    ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim, true);
+    ApolloLottieAnim.a(this.c, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ApolloLottieAnim.1
  * JD-Core Version:    0.7.0.1
  */

@@ -29,15 +29,15 @@ class CouponActivity$CouponWebViewFragment$1
     super.onFinalState(paramBundle);
     if (!CouponActivity.CouponWebViewFragment.c(this.a).hasExtra("source"))
     {
-      this.a.getSwiftTitleUI().a.setVisibility(8);
-      this.a.getSwiftTitleUI().c.setVisibility(0);
-      this.a.getSwiftTitleUI().c.setText(2131696088);
-      this.a.getSwiftTitleUI().c.setOnClickListener(this.a);
+      this.a.getSwiftTitleUI().h.setVisibility(8);
+      this.a.getSwiftTitleUI().f.setVisibility(0);
+      this.a.getSwiftTitleUI().f.setText(2131893853);
+      this.a.getSwiftTitleUI().f.setOnClickListener(this.a);
       return;
     }
     CouponActivity.CouponWebViewFragment.d(this.a).removeExtra("source");
-    this.a.getSwiftTitleUI().a.setVisibility(8);
-    this.a.getSwiftTitleUI().c.setVisibility(8);
+    this.a.getSwiftTitleUI().h.setVisibility(8);
+    this.a.getSwiftTitleUI().f.setVisibility(8);
   }
   
   public void onInitTitleBar(Bundle paramBundle)
@@ -45,19 +45,19 @@ class CouponActivity$CouponWebViewFragment$1
     super.onInitTitleBar(paramBundle);
     if (!CouponActivity.CouponWebViewFragment.b(this.a).hasExtra("source"))
     {
-      this.a.getSwiftTitleUI().a.setVisibility(8);
-      this.a.getSwiftTitleUI().c.setVisibility(0);
-      this.a.getSwiftTitleUI().c.setText(2131696088);
-      this.a.getSwiftTitleUI().c.setClickable(false);
+      this.a.getSwiftTitleUI().h.setVisibility(8);
+      this.a.getSwiftTitleUI().f.setVisibility(0);
+      this.a.getSwiftTitleUI().f.setText(2131893853);
+      this.a.getSwiftTitleUI().f.setClickable(false);
       return;
     }
-    this.a.getSwiftTitleUI().a.setVisibility(8);
-    this.a.getSwiftTitleUI().c.setVisibility(8);
+    this.a.getSwiftTitleUI().h.setVisibility(8);
+    this.a.getSwiftTitleUI().f.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.coupon.CouponActivity.CouponWebViewFragment.1
  * JD-Core Version:    0.7.0.1
  */

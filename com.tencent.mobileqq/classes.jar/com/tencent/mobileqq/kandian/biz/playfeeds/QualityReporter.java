@@ -4,8 +4,8 @@ import com.tencent.biz.pubaccount.api.IPublicAccountProxy;
 import com.tencent.biz.pubaccount.api.IPublicAccountServlet;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.video.player.data.AbsReadInJoyVideoReportData;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.qroute.QRoute;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
@@ -24,12 +24,12 @@ public class QualityReporter
     localNewIntent.putExtra("cmd", "FeedsContentCenter.QualityReport");
     localNewIntent.putExtra("data", paramReportInfoReq.toByteArray());
     localNewIntent.setObserver(new QualityReporter.ResponseObserver(localNewIntent));
-    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().startServlet(localNewIntent);
+    RIJQQAppInterfaceUtil.e().startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.QualityReporter
  * JD-Core Version:    0.7.0.1
  */

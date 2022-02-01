@@ -9,15 +9,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class QlinkServiceManager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QlinkServiceProxy jdField_a_of_type_CooperationQlinkQlinkServiceProxy;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private AtomicInteger a;
+  private QlinkServiceProxy b;
+  private QQAppInterface c;
   
   public QlinkServiceManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-    this.jdField_a_of_type_CooperationQlinkQlinkServiceProxy = new QlinkServiceProxy(paramQQAppInterface);
+    this.c = paramQQAppInterface;
+    this.a = new AtomicInteger(1);
+    this.b = new QlinkServiceProxy(paramQQAppInterface);
   }
   
   private int a(String paramString, Bundle paramBundle, Handler paramHandler, long paramLong)
@@ -28,16 +28,16 @@ public class QlinkServiceManager
       paramString = new Bundle();
     }
     if ((paramString != null) && (paramString.size() > 0)) {
-      paramHandler.a.putAll(paramString);
+      paramHandler.b.putAll(paramString);
     }
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    int i = this.a.incrementAndGet();
     paramHandler.a(i);
     if (paramLong > 0L) {
       paramHandler.a(paramLong);
     }
     try
     {
-      this.jdField_a_of_type_CooperationQlinkQlinkServiceProxy.a(paramHandler);
+      this.b.a(paramHandler);
       return i;
     }
     catch (Exception paramString)
@@ -88,7 +88,7 @@ public class QlinkServiceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkServiceManager
  * JD-Core Version:    0.7.0.1
  */

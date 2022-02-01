@@ -10,10 +10,14 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
+import android.provider.Settings.Global;
+import android.provider.Settings.System;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
 @TargetApi(14)
 public class DisplayUtil
@@ -61,16 +65,16 @@ public class DisplayUtil
   
   public static void a(Canvas paramCanvas, GestureHelper paramGestureHelper, GestureHelper.ZoomItem paramZoomItem, int paramInt1, int paramInt2, int paramInt3)
   {
-    float f1 = a() / paramZoomItem.a();
-    paramCanvas.concat(paramGestureHelper.b(paramZoomItem));
-    int i = (int)(paramZoomItem.n * paramZoomItem.j * paramZoomItem.p) + paramZoomItem.i * 2;
-    int j = (int)(paramZoomItem.o * paramZoomItem.j * paramZoomItem.p) + paramZoomItem.i * 2;
+    float f1 = a() / paramZoomItem.d();
+    paramCanvas.concat(paramGestureHelper.c(paramZoomItem));
+    int i = (int)(paramZoomItem.G * paramZoomItem.B * paramZoomItem.K) + paramZoomItem.N * 2;
+    int j = (int)(paramZoomItem.H * paramZoomItem.B * paramZoomItem.K) + paramZoomItem.N * 2;
     float f3 = -i * 1.0F / 2.0F;
     float f2 = -j;
     paramCanvas.translate(f3, f2 * 1.0F / 2.0F);
     paramGestureHelper = new Paint();
     paramGestureHelper.setStyle(Paint.Style.STROKE);
-    paramGestureHelper.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131167408));
+    paramGestureHelper.setColor(BaseApplicationImpl.getApplication().getResources().getColor(2131168485));
     paramGestureHelper.setStrokeWidth(b(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F));
     int k = b(BaseApplicationImpl.getApplication().getBaseContext(), 3.0F);
     f3 = i;
@@ -129,10 +133,47 @@ public class DisplayUtil
   {
     return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
+  
+  public static boolean c(@NonNull Context paramContext)
+  {
+    Object localObject = paramContext.getResources();
+    int i = ((Resources)localObject).getIdentifier("config_showNavigationBar", "bool", "android");
+    boolean bool1;
+    if (i > 0) {
+      bool1 = ((Resources)localObject).getBoolean(i);
+    } else {
+      bool1 = false;
+    }
+    try
+    {
+      localObject = Class.forName("android.os.SystemProperties");
+      localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class }).invoke(localObject, new Object[] { "qemu.hw.mainkeys" });
+      i = Build.VERSION.SDK_INT;
+      if (i < 21) {
+        i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+      } else {
+        i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+      }
+      if ((!"1".equals(localObject)) && (1 != i))
+      {
+        boolean bool2 = "0".equals(localObject);
+        if (bool2) {
+          return true;
+        }
+      }
+      else
+      {
+        bool1 = false;
+      }
+      return bool1;
+    }
+    catch (Exception paramContext) {}
+    return bool1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.util.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

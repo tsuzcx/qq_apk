@@ -1,19 +1,26 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-
 final class r
-  implements ServiceConnection
+  implements Runnable
 {
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder) {}
+  r(q.a parama, Runnable paramRunnable) {}
   
-  public void onServiceDisconnected(ComponentName paramComponentName) {}
+  public void run()
+  {
+    q.a locala = this.a;
+    if (locala != null) {
+      locala.a();
+    }
+    this.b.run();
+    locala = this.a;
+    if (locala != null) {
+      locala.b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.r
  * JD-Core Version:    0.7.0.1
  */

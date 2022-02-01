@@ -13,14 +13,14 @@ import org.json.JSONObject;
 class HealthBusinessPlugin$MyNetInfoHandler
   implements INetInfoHandler
 {
-  WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
+  WebViewPlugin a;
   
   HealthBusinessPlugin$MyNetInfoHandler(HealthBusinessPlugin paramHealthBusinessPlugin1, HealthBusinessPlugin paramHealthBusinessPlugin2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramHealthBusinessPlugin2;
+    this.a = paramHealthBusinessPlugin2;
     paramHealthBusinessPlugin1 = new StringBuilder();
     paramHealthBusinessPlugin1.append("plugin to do:");
-    paramHealthBusinessPlugin1.append(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin);
+    paramHealthBusinessPlugin1.append(this.a);
     QLog.d("HealthBusinessPlugin", 2, paramHealthBusinessPlugin1.toString());
   }
   
@@ -34,14 +34,14 @@ class HealthBusinessPlugin$MyNetInfoHandler
       localJSONObject2.put("status", "0");
       localJSONObject1.put("source", "none");
       int i = 0;
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+      Iterator localIterator = this.b.l.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying())
+        if (((ISuperPlayer)this.b.l.get(str)).isPlaying())
         {
-          ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).pause();
-          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.a.post(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b);
+          ((ISuperPlayer)this.b.l.get(str)).pause();
+          this.b.z.post(this.b.y);
           QLog.d("HealthBusinessPlugin", 1, "onNetMobile2None Broadcast");
           i = 1;
         }
@@ -49,7 +49,7 @@ class HealthBusinessPlugin$MyNetInfoHandler
       if (i == 0) {
         break label181;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject2, localJSONObject1);
+      this.a.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject2, localJSONObject1);
       return;
     }
     catch (Exception localException)
@@ -70,12 +70,12 @@ class HealthBusinessPlugin$MyNetInfoHandler
       Object localObject = new JSONObject();
       ((JSONObject)localObject).put("status", "1");
       paramString.put("source", "none");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", (JSONObject)localObject, paramString);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+      this.a.dispatchJsEvent("healthSport_networkStatusChanged", (JSONObject)localObject, paramString);
+      paramString = this.b.l.keySet().iterator();
       while (paramString.hasNext())
       {
         localObject = (String)paramString.next();
-        ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject)).start();
+        ((ISuperPlayer)this.b.l.get(localObject)).start();
       }
       QLog.d("HealthBusinessPlugin", 1, "onNetMobile2Wifi Broadcast");
       return;
@@ -98,22 +98,22 @@ class HealthBusinessPlugin$MyNetInfoHandler
       localJSONObject.put("status", "2");
       paramString.put("source", "none");
       int i = 0;
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+      Iterator localIterator = this.b.l.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("mVideoPlayerManager.get(key).isPlaying():");
-        localStringBuilder.append(((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying());
+        localStringBuilder.append(((ISuperPlayer)this.b.l.get(str)).isPlaying());
         QLog.d("HealthBusinessPlugin", 2, localStringBuilder.toString());
-        if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying())
+        if (((ISuperPlayer)this.b.l.get(str)).isPlaying())
         {
-          ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).pause();
+          ((ISuperPlayer)this.b.l.get(str)).pause();
           i = 1;
         }
       }
       if (i != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject, paramString);
+        this.a.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject, paramString);
       }
       QLog.d("HealthBusinessPlugin", 1, "onNetNone2Mobile Broadcast");
       return;
@@ -135,12 +135,12 @@ class HealthBusinessPlugin$MyNetInfoHandler
       Object localObject = new JSONObject();
       ((JSONObject)localObject).put("status", "1");
       paramString.put("source", "none");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", (JSONObject)localObject, paramString);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+      this.a.dispatchJsEvent("healthSport_networkStatusChanged", (JSONObject)localObject, paramString);
+      paramString = this.b.l.keySet().iterator();
       while (paramString.hasNext())
       {
         localObject = (String)paramString.next();
-        ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject)).start();
+        ((ISuperPlayer)this.b.l.get(localObject)).start();
       }
       QLog.d("HealthBusinessPlugin", 1, "onNetNone2Wifi Broadcast");
       return;
@@ -163,22 +163,22 @@ class HealthBusinessPlugin$MyNetInfoHandler
       localJSONObject.put("status", "2");
       paramString.put("source", "none");
       int i = 0;
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+      Iterator localIterator = this.b.l.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("mVideoPlayerManager.get(key).isPlaying():");
-        localStringBuilder.append(((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying());
+        localStringBuilder.append(((ISuperPlayer)this.b.l.get(str)).isPlaying());
         QLog.d("HealthBusinessPlugin", 2, localStringBuilder.toString());
-        if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying())
+        if (((ISuperPlayer)this.b.l.get(str)).isPlaying())
         {
-          ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).pause();
+          ((ISuperPlayer)this.b.l.get(str)).pause();
           i = 1;
         }
       }
       if (i != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject, paramString);
+        this.a.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject, paramString);
       }
       QLog.d("HealthBusinessPlugin", 1, "onNetWifi2Mobile Broadcast");
       return;
@@ -201,14 +201,14 @@ class HealthBusinessPlugin$MyNetInfoHandler
       localJSONObject2.put("status", "0");
       localJSONObject1.put("source", "none");
       int i = 0;
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+      Iterator localIterator = this.b.l.keySet().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).isPlaying())
+        if (((ISuperPlayer)this.b.l.get(str)).isPlaying())
         {
-          ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(str)).pause();
-          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.a.post(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b);
+          ((ISuperPlayer)this.b.l.get(str)).pause();
+          this.b.z.post(this.b.y);
           QLog.d("HealthBusinessPlugin", 1, "onNetWifi2None Broadcast");
           i = 1;
         }
@@ -216,7 +216,7 @@ class HealthBusinessPlugin$MyNetInfoHandler
       if (i == 0) {
         break label181;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject2, localJSONObject1);
+      this.a.dispatchJsEvent("healthSport_networkStatusChanged", localJSONObject2, localJSONObject1);
       return;
     }
     catch (Exception localException)
@@ -230,7 +230,7 @@ class HealthBusinessPlugin$MyNetInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.MyNetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

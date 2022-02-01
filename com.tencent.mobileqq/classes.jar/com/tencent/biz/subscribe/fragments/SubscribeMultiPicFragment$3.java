@@ -12,7 +12,7 @@ class SubscribeMultiPicFragment$3
   {
     if (SubscribeMultiPicFragment.a(this.this$0) != null)
     {
-      SubscribeMultiPicFragment.a(this.this$0).a(SubscribeMultiPicFragment.a(this.this$0), false);
+      SubscribeMultiPicFragment.a(this.this$0).a(SubscribeMultiPicFragment.b(this.this$0), false);
       SubscribeMultiPicFragment.a(this.this$0).c(this.a);
     }
   }

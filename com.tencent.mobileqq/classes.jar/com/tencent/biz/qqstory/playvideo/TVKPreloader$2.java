@@ -10,8 +10,8 @@ final class TVKPreloader$2
   {
     synchronized ()
     {
-      TVKPreloader.PreloadItem localPreloadItem = TVKPreloader.a();
-      TVKPreloader.a().post(new TVKPreloader.2.2(this, localPreloadItem, paramString1, paramInt, paramString2));
+      TVKPreloader.PreloadItem localPreloadItem = TVKPreloader.d();
+      TVKPreloader.f().post(new TVKPreloader.2.2(this, localPreloadItem, paramString1, paramInt, paramString2));
       return;
     }
   }
@@ -20,15 +20,15 @@ final class TVKPreloader$2
   {
     synchronized ()
     {
-      paramString2 = TVKPreloader.a();
-      TVKPreloader.a().post(new TVKPreloader.2.1(this, paramString2));
+      paramString2 = TVKPreloader.d();
+      TVKPreloader.f().post(new TVKPreloader.2.1(this, paramString2));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.TVKPreloader.2
  * JD-Core Version:    0.7.0.1
  */

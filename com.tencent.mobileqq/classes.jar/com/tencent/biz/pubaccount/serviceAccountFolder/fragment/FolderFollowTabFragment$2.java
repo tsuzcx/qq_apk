@@ -16,11 +16,11 @@ class FolderFollowTabFragment$2
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(FolderFollowTabFragment.d))
+    if (!TextUtils.isEmpty(FolderFollowTabFragment.i))
     {
-      Intent localIntent = new Intent(FolderFollowTabFragment.a(this.a), QQBrowserActivity.class);
-      localIntent.putExtra("url", FolderFollowTabFragment.d);
-      FolderFollowTabFragment.a(this.a).startActivity(localIntent);
+      Intent localIntent = new Intent(FolderFollowTabFragment.c(this.a), QQBrowserActivity.class);
+      localIntent.putExtra("url", FolderFollowTabFragment.i);
+      FolderFollowTabFragment.c(this.a).startActivity(localIntent);
       MobileReportManager.getInstance().reportActionLive("", "25", "qq_live", "tab_page", "bottom_button", 102, 1, System.currentTimeMillis(), "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -28,7 +28,7 @@ class FolderFollowTabFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ class HasClockView$2
   public void run()
   {
     if (HasClockView.a(this.this$0)) {
-      HasClockView.a(this.this$0);
+      HasClockView.b(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.HasClockView.2
  * JD-Core Version:    0.7.0.1
  */

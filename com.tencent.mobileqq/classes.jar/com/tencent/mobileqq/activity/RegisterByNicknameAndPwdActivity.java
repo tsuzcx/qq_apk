@@ -25,6 +25,7 @@ import com.tencent.mobileqq.register.RegisterManager;
 import com.tencent.mobileqq.register.RegisterWithNickAndPwd;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant;
 import com.tencent.mobileqq.widget.ClearableEditText;
@@ -39,12 +40,15 @@ public class RegisterByNicknameAndPwdActivity
   extends RegisterNewBaseActivity
   implements TextWatcher, View.OnClickListener
 {
+  private static final String EDIT_TEXT_EMPTY = "0";
+  private static final String EDIT_TEXT_HAS_TEXT = "1";
   private static final int FROM_TYPE_DEFAULT = 0;
   private static final int FROM_TYPE_FRIEND_VERIFY = 2;
   private static final int FROM_TYPE_VERIFY_CODE = 1;
   public static final int MIN_PWD_LENGTH = 8;
+  private static final String REPORT_ACTION_RETURN = "0X800BC96";
   private static final String REPORT_ACTION_SHOW = "0X800B532";
-  private static final String REPORT_ACTION_SUCCESS = "0X800B533";
+  private static final String REPORT_REG_AND_LOGIN_CLICK = "0X8006653";
   private static final String TAG = "RegisterByNicknameAndPwdActivity";
   private Button btnLogin;
   private Button btnRegister;
@@ -62,32 +66,6 @@ public class RegisterByNicknameAndPwdActivity
   private ImageView rule2Img;
   private View rule2Root;
   private View vipQQView;
-  
-  public static int getMixStringLength(String paramString)
-  {
-    int j = 0;
-    int i = 0;
-    while (j < paramString.length())
-    {
-      int k = j + 1;
-      if (paramString.substring(j, k).matches("[Α-￥]")) {
-        i += 2;
-      } else {
-        i += 1;
-      }
-      j = k;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getMixStringLength, str :");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(",length :");
-      localStringBuilder.append(i);
-      QLog.d("RegisterByNicknameAndPwdActivity", 2, localStringBuilder.toString());
-    }
-    return i;
-  }
   
   public static void gotoRegisterByNicknameAndPwdActivity(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4, int paramInt, String paramString5, String paramString6, boolean paramBoolean3, boolean paramBoolean4)
   {
@@ -129,48 +107,48 @@ public class RegisterByNicknameAndPwdActivity
     this.mFromFriendVerify = getIntent().getBooleanExtra("key_register_from_friend_verify", false);
     Object localObject = getIntent().getStringExtra("key_register_nick");
     String str = getIntent().getStringExtra("key_register_password");
-    setTitleText(HardCodeUtil.a(2131713261));
+    setTitleText(HardCodeUtil.a(2131910814));
     setBackListener();
     setBarProgress(100);
-    this.rule1Root = findViewById(2131373302);
-    this.rule2Root = findViewById(2131373305);
-    this.rule1Img = ((ImageView)findViewById(2131373301));
-    this.rule2Img = ((ImageView)findViewById(2131373304));
-    this.editPassword = ((ClearableEditText)findViewById(2131372346));
+    this.rule1Root = findViewById(2131440913);
+    this.rule2Root = findViewById(2131440916);
+    this.rule1Img = ((ImageView)findViewById(2131440912));
+    this.rule2Img = ((ImageView)findViewById(2131440915));
+    this.editPassword = ((ClearableEditText)findViewById(2131439861));
     this.editPassword.addTextChangedListener(this);
-    this.editNickname = ((ClearableEditText)findViewById(2131371880));
+    this.editNickname = ((ClearableEditText)findViewById(2131439323));
     this.editNickname.addTextChangedListener(this);
-    this.btnRegister = ((Button)findViewById(2131364032));
+    this.btnRegister = ((Button)findViewById(2131429987));
     this.btnRegister.setOnClickListener(this);
-    this.btnLogin = ((Button)findViewById(2131370448));
+    this.btnLogin = ((Button)findViewById(2131437716));
     this.btnLogin.setOnClickListener(this);
-    this.vipQQView = findViewById(2131380944);
+    this.vipQQView = findViewById(2131449934);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       this.editNickname.setText((CharSequence)localObject);
     }
     if (!TextUtils.isEmpty(str)) {
       this.editPassword.setText(str);
     }
-    this.passwordEye = ((ImageView)findViewById(2131372347));
+    this.passwordEye = ((ImageView)findViewById(2131439862));
     this.passwordEye.setOnClickListener(this);
     if (this.mPassInvisible)
     {
       this.editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-      this.passwordEye.setImageResource(2130847210);
-      this.passwordEye.setContentDescription(HardCodeUtil.a(2131713281));
+      this.passwordEye.setImageResource(2130848790);
+      this.passwordEye.setContentDescription(HardCodeUtil.a(2131910834));
     }
     else
     {
       this.editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-      this.passwordEye.setImageResource(2130847211);
-      this.passwordEye.setContentDescription(HardCodeUtil.a(2131713264));
+      this.passwordEye.setImageResource(2130848791);
+      this.passwordEye.setContentDescription(HardCodeUtil.a(2131910817));
     }
     this.passwordEye.setVisibility(8);
     this.editPassword.setOnFocusChangeListener(new RegisterByNicknameAndPwdActivity.1(this));
-    if (AccessibilityUtil.a(this))
+    if (AccessibilityUtil.b(this))
     {
-      this.editNickname.setHint(2131694459);
-      this.editPassword.setHint(2131694700);
+      this.editNickname.setHint(2131892139);
+      this.editPassword.setHint(2131892392);
     }
     localObject = this.lhAssistant;
     if (localObject != null)
@@ -178,7 +156,7 @@ public class RegisterByNicknameAndPwdActivity
       ((RegisterLHAssistant)localObject).a();
       return;
     }
-    this.lhAssistant = new RegisterLHAssistant(this, findViewById(2131369737), 1);
+    this.lhAssistant = new RegisterLHAssistant(this, findViewById(2131436855), 1);
   }
   
   private boolean isPwdValid(String paramString)
@@ -289,12 +267,12 @@ public class RegisterByNicknameAndPwdActivity
     {
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).length() >= 8))
       {
-        this.rule1Img.setBackgroundResource(2130840575);
+        this.rule1Img.setBackgroundResource(2130841341);
         i = 1;
       }
       else
       {
-        this.rule1Img.setBackgroundResource(2130840572);
+        this.rule1Img.setBackgroundResource(2130841338);
       }
     }
     else {
@@ -305,12 +283,12 @@ public class RegisterByNicknameAndPwdActivity
     {
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (isPwdValid((String)localObject2)))
       {
-        this.rule2Img.setBackgroundResource(2130840575);
+        this.rule2Img.setBackgroundResource(2130841341);
         j = 1;
       }
       else
       {
-        this.rule2Img.setBackgroundResource(2130840572);
+        this.rule2Img.setBackgroundResource(2130841338);
       }
     }
     else {
@@ -374,26 +352,26 @@ public class RegisterByNicknameAndPwdActivity
       String str = this.editNickname.getText().toString();
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        notifyToast(2131694813, 1);
+        notifyToast(2131892516, 1);
         return false;
       }
       if (hasSpace((String)localObject))
       {
-        notifyToast(2131716628, 1);
+        notifyToast(2131914091, 1);
         return false;
       }
       if (!isPwdValid((String)localObject))
       {
-        notifyToast(2131716627, 1);
+        notifyToast(2131914090, 1);
         return false;
       }
       if ((!TextUtils.isEmpty(str)) && (str.trim().length() != 0))
       {
         try
         {
-          if (getMixStringLength(str) > 24L)
+          if (Utils.n(str) > 24L)
           {
-            notifyToast(2131716582, 1);
+            notifyToast(2131914045, 1);
             return false;
           }
         }
@@ -403,7 +381,7 @@ public class RegisterByNicknameAndPwdActivity
         }
         return true;
       }
-      notifyToast(2131716581, 1);
+      notifyToast(2131914044, 1);
     }
     return false;
   }
@@ -421,8 +399,8 @@ public class RegisterByNicknameAndPwdActivity
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     RegisterLHAssistant localRegisterLHAssistant = this.lhAssistant;
-    if ((localRegisterLHAssistant != null) && (localRegisterLHAssistant.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount != null)) {
-      this.lhAssistant.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount.a(paramInt1, paramInt2, paramIntent);
+    if ((localRegisterLHAssistant != null) && (localRegisterLHAssistant.e != null)) {
+      this.lhAssistant.e.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -449,7 +427,7 @@ public class RegisterByNicknameAndPwdActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    RegisterManager.a().a(6);
+    RegisterManager.b().a(6);
     RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.registerWithNickAndPwd;
     if (localRegisterWithNickAndPwd != null) {
       localRegisterWithNickAndPwd.b();
@@ -470,38 +448,52 @@ public class RegisterByNicknameAndPwdActivity
     }
   }
   
+  protected boolean onBackEvent()
+  {
+    String str1;
+    if (TextUtils.isEmpty(this.editPassword.getText())) {
+      str1 = "0";
+    } else {
+      str1 = "1";
+    }
+    String str2;
+    if (TextUtils.isEmpty(this.editNickname.getText())) {
+      str2 = "0";
+    } else {
+      str2 = "1";
+    }
+    ReportController.a(this.mRuntime, "dc00898", "", "", "0X800BC96", "0X800BC96", 0, 0, str2, str1, this.phoneNum, "");
+    return super.onBackEvent();
+  }
+  
   public void onClick(View paramView)
   {
     int i = paramView.getId();
     Object localObject;
-    if (i == 2131364032)
+    if (i == 2131429987)
     {
       localObject = this.lhAssistant;
-      if ((localObject != null) && (((RegisterLHAssistant)localObject).jdField_a_of_type_Boolean))
+      if ((localObject != null) && (((RegisterLHAssistant)localObject).c))
       {
         this.lhAssistant.a(this.isPhoneNumBindNewQQ);
       }
-      else
+      else if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        ReportController.b(this.mRuntime, "CliOper", "", "", "0X8006653", "0X8006653", 0, 0, "", "", "", "");
-        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-        {
-          notifyToast(2131692183, 0);
+        notifyToast(2131889169, 0);
+      }
+      else if (checkNickAndPwd())
+      {
+        ReportController.a(this.mRuntime, "dc00898", "", "", "0X8006653", "0X8006653", 0, 0, "", "", this.phoneNum, "");
+        localObject = String.valueOf(this.editPassword.getText());
+        String str = this.editNickname.getText().toString();
+        if (this.registerWithNickAndPwd == null) {
+          this.registerWithNickAndPwd = new RegisterWithNickAndPwd(this);
         }
-        else if (checkNickAndPwd())
-        {
-          localObject = String.valueOf(this.editPassword.getText());
-          String str = this.editNickname.getText().toString();
-          if (this.registerWithNickAndPwd == null) {
-            this.registerWithNickAndPwd = new RegisterWithNickAndPwd(this);
-          }
-          this.registerWithNickAndPwd.a(str, (String)localObject, true, this.isPhoneNumBindNewQQ);
-          ReportController.a(this.mRuntime, "new_reg_805", "setting_page", "reg_clk", "", 1, "");
-          ReportController.a(this.mRuntime, "dc00898", "", "", "0X800B533", "0X800B533", 0, 0, "", "", this.phoneNum, "");
-        }
+        this.registerWithNickAndPwd.a(str, (String)localObject, true, this.isPhoneNumBindNewQQ);
+        ReportController.a(this.mRuntime, "new_reg_805", "setting_page", "reg_clk", "", 1, "");
       }
     }
-    else if (i == 2131372347)
+    else if (i == 2131439862)
     {
       localObject = this.editPassword.getText().toString();
       if (this.mPassInvisible)
@@ -510,14 +502,14 @@ public class RegisterByNicknameAndPwdActivity
           ReportController.a(this.mRuntime, "dc00898", "", "", "0X80072FA", "0X80072FA", 0, 0, "", "", "", "");
         }
         this.editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-        this.passwordEye.setImageResource(2130847211);
-        this.passwordEye.setContentDescription(HardCodeUtil.a(2131713271));
+        this.passwordEye.setImageResource(2130848791);
+        this.passwordEye.setContentDescription(HardCodeUtil.a(2131910824));
       }
       else
       {
         this.editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        this.passwordEye.setImageResource(2130847210);
-        this.passwordEye.setContentDescription(HardCodeUtil.a(2131713278));
+        this.passwordEye.setImageResource(2130848790);
+        this.passwordEye.setContentDescription(HardCodeUtil.a(2131910831));
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
@@ -526,12 +518,12 @@ public class RegisterByNicknameAndPwdActivity
       }
       this.mPassInvisible ^= true;
     }
-    else if (i == 2131369202)
+    else if (i == 2131436180)
     {
       InputMethodUtil.a(this);
       new Handler().postDelayed(new RegisterByNicknameAndPwdActivity.2(this), 200L);
     }
-    else if (i == 2131370448)
+    else if (i == 2131437716)
     {
       localObject = this.registerWithNickAndPwd;
       if (localObject != null) {
@@ -551,7 +543,7 @@ public class RegisterByNicknameAndPwdActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131561854);
+    setContentView(2131628272);
     if (QLog.isDevelopLevel()) {
       RegisterLHAssistant.a(getClass().getSimpleName(), getIntent());
     }
@@ -571,6 +563,7 @@ public class RegisterByNicknameAndPwdActivity
     if (getIntent().getBooleanExtra("key_register_from_send_sms", false)) {
       ReportController.a(this.mRuntime, "dc00898", "", "", "0X800735E", "0X800735E", 5, 0, "", "", "", "");
     }
+    this.mFrom = getIntent().getIntExtra("key_register_from", -1);
     if (this.mFrom == 4) {
       ReportController.a(this.mRuntime, "new_reg_805", "setting_page", "page_exp", "3", 1, "", "1", "", "", "", "", "", "", "");
     } else if (this.mFrom == 5) {
@@ -611,7 +604,7 @@ public class RegisterByNicknameAndPwdActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity
  * JD-Core Version:    0.7.0.1
  */

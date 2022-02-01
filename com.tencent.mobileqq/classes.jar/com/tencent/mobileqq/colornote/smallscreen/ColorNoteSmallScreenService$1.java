@@ -40,48 +40,48 @@ class ColorNoteSmallScreenService$1
               return;
             }
             boolean bool = paramIntent.getBooleanExtra("param_custom_night_mode", false);
-            this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.setCustomNightMode(bool);
+            this.a.m.setCustomNightMode(bool);
             paramIntent = new StringBuilder();
             paramIntent.append("[onReceive->FromType_CustomNightMode]\n[setCustomNightMode]: ");
             paramIntent.append(bool);
-            ColorNoteUtils.a("ColorNoteSmallScreenService", paramIntent.toString());
+            ColorNoteUtils.b("ColorNoteSmallScreenService", paramIntent.toString());
             return;
           }
-          paramIntent = ColorNoteSmallScreenService.a(this.a);
-          if ((!ColorNoteRecentView.a(ColorNoteSmallScreenService.b(this.a))) && (((paramIntent.size() == 1) && (ColorNoteUtils.b((ColorNote)paramIntent.get(0)))) || (paramIntent.size() == 0))) {
-            this.a.f();
+          paramIntent = ColorNoteSmallScreenService.b(this.a);
+          if ((!ColorNoteRecentView.a(ColorNoteSmallScreenService.d(this.a))) && (((paramIntent.size() == 1) && (ColorNoteUtils.d((ColorNote)paramIntent.get(0)))) || (paramIntent.size() == 0))) {
+            this.a.h();
           }
         }
         else
         {
-          paramIntent = ColorNoteSmallScreenService.a(this.a);
+          paramIntent = ColorNoteSmallScreenService.b(this.a);
           if ((paramIntent != null) && (paramIntent.size() != 0))
           {
-            this.a.jdField_a_of_type_Int = paramIntent.size();
-            this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.a(paramIntent);
-            if (ColorNoteUtils.a(paramIntent)) {
-              ColorNoteSmallScreenService.a(this.a).a();
+            this.a.k = paramIntent.size();
+            this.a.m.a(paramIntent);
+            if (ColorNoteUtils.b(paramIntent)) {
+              ColorNoteSmallScreenService.c(this.a).a();
             }
             if (QLog.isColorLevel())
             {
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("[onReceive->FromType_UpdateData]\n[visibleColorNotes]: ");
-              localStringBuilder.append(this.a.jdField_a_of_type_Int);
+              localStringBuilder.append(this.a.k);
               localStringBuilder.append("\n");
-              localStringBuilder.append(ColorNoteUtils.b(paramIntent));
-              ColorNoteUtils.a("ColorNoteSmallScreenService", localStringBuilder.toString());
+              localStringBuilder.append(ColorNoteUtils.c(paramIntent));
+              ColorNoteUtils.b("ColorNoteSmallScreenService", localStringBuilder.toString());
             }
           }
         }
       }
       else
       {
-        ColorNoteSmallScreenService.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("param_shoule_show_smallscreen", true);
+        ColorNoteSmallScreenService.a = paramIntent.getBooleanExtra("param_shoule_show_smallscreen", true);
         if (QLog.isDevelopLevel())
         {
           paramIntent = new StringBuilder();
           paramIntent.append("mReceiver from : FromType_BusinessLimit mShouldShow = ");
-          paramIntent.append(ColorNoteSmallScreenService.jdField_a_of_type_Boolean);
+          paramIntent.append(ColorNoteSmallScreenService.a);
           QLog.w("ColorNoteSmallScreenService", 1, paramIntent.toString());
         }
       }
@@ -158,9 +158,9 @@ class ColorNoteSmallScreenService$1
     boolean bool1 = bool2;
     try
     {
-      if (this.a.b != null)
+      if (this.a.i != null)
       {
-        this.a.a().removeCallbacks(this.a.b);
+        this.a.f().removeCallbacks(this.a.i);
         if (str2.equals("action_update_cn_smallscreen_state"))
         {
           a(paramIntent);
@@ -182,8 +182,8 @@ class ColorNoteSmallScreenService$1
       }
       if (bool1)
       {
-        this.a.a().removeCallbacks(this.a.b);
-        this.a.a().postDelayed(this.a.b, 200L);
+        this.a.f().removeCallbacks(this.a.i);
+        this.a.f().postDelayed(this.a.i, 200L);
         return;
       }
     }
@@ -197,7 +197,7 @@ class ColorNoteSmallScreenService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService.1
  * JD-Core Version:    0.7.0.1
  */

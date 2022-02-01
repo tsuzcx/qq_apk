@@ -6,21 +6,21 @@ import android.text.TextPaint;
 public abstract class BaseTextModel
 {
   protected int a;
-  protected RectF a;
-  protected TextPaint a;
   protected int b;
+  protected RectF c;
+  protected TextPaint d;
   
   public BaseTextModel(int paramInt1, int paramInt2, TextPaint paramTextPaint, RectF paramRectF)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+    this.d = paramTextPaint;
+    this.c = paramRectF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.BaseTextModel
  * JD-Core Version:    0.7.0.1
  */

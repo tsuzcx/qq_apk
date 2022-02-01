@@ -28,28 +28,6 @@ public class AioTitleLayout
     super(paramContext, paramAttributeSet);
   }
   
-  private int a()
-  {
-    int i = getChildCount() - 1;
-    while (i >= 0)
-    {
-      View localView = getChildAt(i);
-      if (localView.getVisibility() != 8) {
-        return localView.getRight();
-      }
-      i -= 1;
-    }
-    return -2147483647;
-  }
-  
-  private TextView a()
-  {
-    if (this.a == null) {
-      this.a = ((TextView)findViewById(2131365729));
-    }
-    return this.a;
-  }
-  
   private void a()
   {
     int i = 0;
@@ -103,7 +81,7 @@ public class AioTitleLayout
     }
   }
   
-  private int b()
+  private int getContentLeft()
   {
     int i = 0;
     while (i < getChildCount())
@@ -117,10 +95,32 @@ public class AioTitleLayout
     return 2147483647;
   }
   
-  private TextView b()
+  private int getContentRight()
+  {
+    int i = getChildCount() - 1;
+    while (i >= 0)
+    {
+      View localView = getChildAt(i);
+      if (localView.getVisibility() != 8) {
+        return localView.getRight();
+      }
+      i -= 1;
+    }
+    return -2147483647;
+  }
+  
+  private TextView getTitleCountTv()
+  {
+    if (this.a == null) {
+      this.a = ((TextView)findViewById(2131431971));
+    }
+    return this.a;
+  }
+  
+  private TextView getTitleTv()
   {
     if (this.b == null) {
-      this.b = ((TextView)findViewById(2131378784));
+      this.b = ((TextView)findViewById(2131447463));
     }
     return this.b;
   }
@@ -146,8 +146,8 @@ public class AioTitleLayout
     }
     a();
     i = getResources().getDisplayMetrics().widthPixels;
-    Object localObject1 = b();
-    Object localObject2 = a();
+    Object localObject1 = getTitleTv();
+    Object localObject2 = getTitleCountTv();
     j = i / 2;
     int k = ((TextView)localObject1).getLeft() + paramInt1;
     int m = ((TextView)localObject1).getRight();
@@ -203,7 +203,7 @@ public class AioTitleLayout
     }
     else if (i > 0)
     {
-      paramInt2 = getMeasuredWidth() - a();
+      paramInt2 = getMeasuredWidth() - getContentRight();
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -215,7 +215,7 @@ public class AioTitleLayout
     }
     else
     {
-      paramInt2 = b();
+      paramInt2 = getContentLeft();
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -255,7 +255,7 @@ public class AioTitleLayout
         {
           paramInt2 = j;
           paramInt1 = i;
-          if (((View)localObject1).getId() != 2131378784)
+          if (((View)localObject1).getId() != 2131447463)
           {
             localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
             paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
@@ -293,7 +293,7 @@ public class AioTitleLayout
         ((StringBuilder)localObject1).append("]");
         QLog.e("AioTitleLayout", 1, "onMeasure: ", new IllegalArgumentException(((StringBuilder)localObject1).toString()));
       }
-      Object localObject1 = b();
+      Object localObject1 = getTitleTv();
       ((TextView)localObject1).setMaxWidth(k);
       paramInt2 = 0;
       do
@@ -351,7 +351,7 @@ public class AioTitleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AioTitleLayout
  * JD-Core Version:    0.7.0.1
  */

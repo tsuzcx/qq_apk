@@ -11,8 +11,8 @@ import java.util.HashMap;
 
 public class AEFontManager
 {
-  private static volatile boolean jdField_a_of_type_Boolean = false;
-  private final HashMap<String, Typeface> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static volatile boolean a = false;
+  private final HashMap<String, Typeface> b = new HashMap();
   
   public static AEFontManager a()
   {
@@ -34,23 +34,12 @@ public class AEFontManager
     if (TextUtils.isEmpty(paramString)) {
       return Typeface.DEFAULT;
     }
-    Typeface localTypeface = (Typeface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    Typeface localTypeface = (Typeface)this.b.get(paramString);
     paramString = localTypeface;
     if (localTypeface == null) {
       paramString = Typeface.DEFAULT;
     }
     return paramString;
-  }
-  
-  public void a()
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      AEQLog.b("AEFontManager", "[preDownloadAndRegisterGifFonts] already triggered");
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    ThreadManager.excute(new AEFontManager.1(this), 128, null, false);
   }
   
   public void a(String paramString, Typeface paramTypeface)
@@ -60,7 +49,7 @@ public class AEFontManager
       if (paramTypeface == null) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramTypeface);
+      this.b.put(paramString, paramTypeface);
     }
   }
   
@@ -98,10 +87,21 @@ public class AEFontManager
       }
     }
   }
+  
+  public void b()
+  {
+    if (a)
+    {
+      AEQLog.b("AEFontManager", "[preDownloadAndRegisterGifFonts] already triggered");
+      return;
+    }
+    a = true;
+    ThreadManager.excute(new AEFontManager.1(this), 128, null, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.font.AEFontManager
  * JD-Core Version:    0.7.0.1
  */

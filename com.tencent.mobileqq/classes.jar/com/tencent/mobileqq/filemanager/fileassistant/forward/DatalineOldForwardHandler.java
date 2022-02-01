@@ -28,23 +28,71 @@ import mqq.app.MobileQQ;
 public class DatalineOldForwardHandler
   extends DatalineForwardHandler
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ForwardBaseOption jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption;
+  private Activity c;
+  private ForwardBaseOption d;
   
   public DatalineOldForwardHandler(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
+    this.c = ((Activity)paramContext);
   }
   
   private Intent a()
   {
-    return this.jdField_a_of_type_AndroidAppActivity.getIntent();
+    return this.c.getIntent();
   }
   
-  private boolean a(Intent paramIntent)
+  private void c(Intent paramIntent)
   {
-    StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_file");
+    int i = paramIntent.getIntExtra("dataline_forward_type", -1);
+    if (i == -1) {
+      return;
+    }
+    if (paramIntent.getBooleanExtra("sendMultiple", false))
+    {
+      if (g(paramIntent)) {}
+    }
+    else
+    {
+      if (h(paramIntent)) {
+        return;
+      }
+      switch (i)
+      {
+      default: 
+        StatisticAssist.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), "dl_forwardin_other");
+        return;
+      case 102: 
+        d(paramIntent);
+        return;
+      case 101: 
+        if (!f(paramIntent)) {}
+        break;
+      case 100: 
+        if (e(paramIntent)) {
+          break;
+        }
+      }
+    }
+  }
+  
+  private void d(Intent paramIntent)
+  {
+    paramIntent = paramIntent.getStringExtra("dataline_forward_text");
+    if ((paramIntent != null) && (paramIntent.length() > 0))
+    {
+      if (Patterns.d.matcher(paramIntent).find()) {
+        StatisticAssist.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), "dl_forwardin_link");
+      } else {
+        StatisticAssist.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), "dl_forwardin_text");
+      }
+      a(paramIntent);
+    }
+  }
+  
+  private boolean e(Intent paramIntent)
+  {
+    StatisticAssist.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), "dl_forwardin_file");
     ArrayList localArrayList = new ArrayList();
     String str = paramIntent.getStringExtra("dataline_forward_path");
     if ((str != null) && (!str.equals("")))
@@ -101,7 +149,7 @@ public class DatalineOldForwardHandler
         b(localArrayList);
         if (paramIntent.getBooleanExtra("isMigSdkShare", false))
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004932", "0X8004932", 0, 0, "", "", "", "");
+          ReportController.b(this.a, "CliOper", "", "", "0X8004932", "0X8004932", 0, 0, "", "", "", "");
           if (QLog.isColorLevel()) {
             QLog.e("qqdataline", 2, "shareFromMigSdk|report send file:0X8004932.");
           }
@@ -111,48 +159,14 @@ public class DatalineOldForwardHandler
     }
     else
     {
-      b(this.jdField_a_of_type_AndroidContentContext.getString(2131693764));
+      b(this.b.getString(2131891339));
       return true;
     }
   }
   
-  private void b(Intent paramIntent)
+  private boolean f(Intent paramIntent)
   {
-    int i = paramIntent.getIntExtra("dataline_forward_type", -1);
-    if (i == -1) {
-      return;
-    }
-    if (paramIntent.getBooleanExtra("sendMultiple", false))
-    {
-      if (c(paramIntent)) {}
-    }
-    else
-    {
-      if (d(paramIntent)) {
-        return;
-      }
-      switch (i)
-      {
-      default: 
-        StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_other");
-        return;
-      case 102: 
-        c(paramIntent);
-        return;
-      case 101: 
-        if (!b(paramIntent)) {}
-        break;
-      case 100: 
-        if (a(paramIntent)) {
-          break;
-        }
-      }
-    }
-  }
-  
-  private boolean b(Intent paramIntent)
-  {
-    StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_image");
+    StatisticAssist.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), "dl_forwardin_image");
     ArrayList localArrayList = new ArrayList();
     Object localObject = paramIntent.getStringExtra("dataline_forward_path");
     if (localObject == null)
@@ -193,7 +207,7 @@ public class DatalineOldForwardHandler
         else
         {
           a((String)localObject);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800492E", "0X800492E", 0, 0, "", "", "", "");
+          ReportController.b(this.a, "CliOper", "", "", "0X800492E", "0X800492E", 0, 0, "", "", "", "");
           if (QLog.isColorLevel()) {
             QLog.e("qqdataline", 2, "shareFromMigSdk|report send link:0X800492E.");
           }
@@ -223,7 +237,7 @@ public class DatalineOldForwardHandler
       if (paramIntent.getBooleanExtra("isMigSdkShare", false)) {
         if (localArrayList.size() > 1)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004930", "0X8004930", 0, 0, "", "", "", "");
+          ReportController.b(this.a, "CliOper", "", "", "0X8004930", "0X8004930", 0, 0, "", "", "", "");
           if (QLog.isColorLevel())
           {
             QLog.e("qqdataline", 2, "shareFromMigSdk|report send multi pic:0X8004930.");
@@ -232,7 +246,7 @@ public class DatalineOldForwardHandler
         }
         else if (localArrayList.size() == 1)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800492F", "0X800492F", 0, 0, "", "", "", "");
+          ReportController.b(this.a, "CliOper", "", "", "0X800492F", "0X800492F", 0, 0, "", "", "", "");
           if (QLog.isColorLevel()) {
             QLog.e("qqdataline", 2, "shareFromMigSdk|report single pics:0X800492F.");
           }
@@ -242,21 +256,7 @@ public class DatalineOldForwardHandler
     return true;
   }
   
-  private void c(Intent paramIntent)
-  {
-    paramIntent = paramIntent.getStringExtra("dataline_forward_text");
-    if ((paramIntent != null) && (paramIntent.length() > 0))
-    {
-      if (Patterns.d.matcher(paramIntent).find()) {
-        StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_link");
-      } else {
-        StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_text");
-      }
-      a(paramIntent);
-    }
-  }
-  
-  private boolean c(Intent paramIntent)
+  private boolean g(Intent paramIntent)
   {
     ArrayList localArrayList = paramIntent.getStringArrayListExtra("dataline_forward_pathlist");
     Object localObject4;
@@ -285,7 +285,7 @@ public class DatalineOldForwardHandler
     }
     if (localObject1 == null)
     {
-      b(this.jdField_a_of_type_AndroidContentContext.getString(2131693764));
+      b(this.b.getString(2131891339));
       return false;
     }
     localObject3 = new ArrayList();
@@ -293,8 +293,8 @@ public class DatalineOldForwardHandler
     while (((Iterator)localObject1).hasNext())
     {
       localObject4 = (ForwardFileInfo)((Iterator)localObject1).next();
-      if (FileUtils.fileExistsAndNotEmpty(((ForwardFileInfo)localObject4).a())) {
-        ((List)localObject3).add(((ForwardFileInfo)localObject4).a());
+      if (FileUtils.fileExistsAndNotEmpty(((ForwardFileInfo)localObject4).d())) {
+        ((List)localObject3).add(((ForwardFileInfo)localObject4).d());
       }
     }
     if ((localArrayList != null) && (!localArrayList.isEmpty()))
@@ -303,7 +303,7 @@ public class DatalineOldForwardHandler
     }
     else
     {
-      b(this.jdField_a_of_type_AndroidContentContext.getString(2131693764));
+      b(this.b.getString(2131891339));
       return false;
       localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
@@ -315,7 +315,7 @@ public class DatalineOldForwardHandler
       }
       if (localArrayList.isEmpty())
       {
-        b(this.jdField_a_of_type_AndroidContentContext.getString(2131693764));
+        b(this.b.getString(2131891339));
         return false;
       }
       a(localArrayList, paramIntent.getIntExtra("KEY_MSG_FORWARD_ID", -1));
@@ -323,7 +323,7 @@ public class DatalineOldForwardHandler
     return true;
   }
   
-  private boolean d(Intent paramIntent)
+  private boolean h(Intent paramIntent)
   {
     return (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo") != null;
   }
@@ -332,19 +332,19 @@ public class DatalineOldForwardHandler
   {
     if (paramIntent.getBooleanExtra("MigSdkShareNotDone", false))
     {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption = ForwardOptionBuilder.a(paramIntent, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext);
+      this.d = ForwardOptionBuilder.a(paramIntent, this.a, (Activity)this.b);
       paramIntent = new Bundle();
       paramIntent.putString("uin", AppConstants.DATALINE_PC_UIN);
       paramIntent.putInt("uintype", -1);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.f.intValue(), paramIntent);
+      this.d.a(ForwardAbility.ForwardAbilityType.g.intValue(), paramIntent);
       return;
     }
-    b(paramIntent);
+    c(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.forward.DatalineOldForwardHandler
  * JD-Core Version:    0.7.0.1
  */

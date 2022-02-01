@@ -5,7 +5,6 @@ import com.mojitox.mxflutter.framework.JsFlutterEngine;
 import com.mojitox.mxflutter.framework.executor.UiThread;
 import com.mojitox.mxflutter.framework.js.JsEngineProvider;
 import com.mojitox.mxflutter.framework.utils.MxLog;
-import io.flutter.plugin.common.MethodChannel;
 import java.util.HashMap;
 import java.util.Map;
 import kotlin.Metadata;
@@ -18,7 +17,7 @@ public final class JsLoadErrorMsg
 {
   public static final JsLoadErrorMsg a = new JsLoadErrorMsg();
   
-  private final HashMap<String, Object> a(Error paramError, String paramString)
+  private final HashMap<String, Object> b(Error paramError, String paramString)
   {
     HashMap localHashMap = new HashMap();
     Object localObject1 = paramError.getCause();
@@ -41,11 +40,14 @@ public final class JsLoadErrorMsg
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("fileName:");
     ((StringBuilder)localObject3).append(paramString);
-    ((StringBuilder)localObject3).append("\nselfMessage:");
+    ((StringBuilder)localObject3).append('\n');
+    ((StringBuilder)localObject3).append("selfMessage:");
     ((StringBuilder)localObject3).append(paramError.getMessage());
-    ((StringBuilder)localObject3).append("\nexceptionMessage:");
+    ((StringBuilder)localObject3).append('\n');
+    ((StringBuilder)localObject3).append("exceptionMessage:");
     ((StringBuilder)localObject3).append(localObject2);
-    ((StringBuilder)localObject3).append("\nexceptionStack:");
+    ((StringBuilder)localObject3).append('\n');
+    ((StringBuilder)localObject3).append("exceptionStack:");
     ((StringBuilder)localObject3).append((String)localObject1);
     paramError = ((StringBuilder)localObject3).toString();
     MxLog.a("JsLoadErrorMsg", paramError);
@@ -70,24 +72,17 @@ public final class JsLoadErrorMsg
   {
     Intrinsics.checkParameterIsNotNull(paramError, "error");
     Intrinsics.checkParameterIsNotNull(paramString, "filePath");
-    MXFlutterPlugin localMXFlutterPlugin = MXFlutterPlugin.a();
-    Intrinsics.checkExpressionValueIsNotNull(localMXFlutterPlugin, "MXFlutterPlugin.get()");
-    if (localMXFlutterPlugin.a() != null)
-    {
-      if (UiThread.a())
-      {
-        localMXFlutterPlugin = MXFlutterPlugin.a();
-        Intrinsics.checkExpressionValueIsNotNull(localMXFlutterPlugin, "MXFlutterPlugin.get()");
-        localMXFlutterPlugin.a().a.invokeMethod("mxflutterJSExceptionHandler", a.a(paramError, paramString));
-        return;
-      }
-      UiThread.a((Runnable)new JsLoadErrorMsg.invokeJsErrorMethodChannel..inlined.run.lambda.1(paramError, paramString));
+    Object localObject = MXFlutterPlugin.a();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "MXFlutterPlugin.get()");
+    localObject = ((MXFlutterPlugin)localObject).e();
+    if (localObject != null) {
+      UiThread.c((Runnable)new JsLoadErrorMsg.invokeJsErrorMethodChannel..inlined.run.lambda.1((JsFlutterEngine)localObject, paramError, paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.common.JsLoadErrorMsg
  * JD-Core Version:    0.7.0.1
  */

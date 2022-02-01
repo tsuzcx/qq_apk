@@ -10,12 +10,12 @@ class RIJUgcVideoPublishManager$10
   
   public void run()
   {
-    RIJUgcVideoPublishManager.a(this.this$0).update(this.a);
+    RIJUgcVideoPublishManager.g(this.this$0).update(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.RIJUgcVideoPublishManager.10
  * JD-Core Version:    0.7.0.1
  */

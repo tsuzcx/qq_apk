@@ -15,44 +15,44 @@ public final class RIJMethodChannel
   extends BaseMethodChannel
 {
   @NotNull
-  private final MethodCodec jdField_a_of_type_IoFlutterPluginCommonMethodCodec;
+  private final MethodCodec d;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
+  private final String e;
   
   public RIJMethodChannel(@Nullable BinaryMessenger paramBinaryMessenger)
   {
     paramBinaryMessenger = StandardMethodCodec.INSTANCE;
     Intrinsics.checkExpressionValueIsNotNull(paramBinaryMessenger, "StandardMethodCodec.INSTANCE");
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodCodec = ((MethodCodec)paramBinaryMessenger);
-    this.jdField_a_of_type_JavaLangString = "com.tencent.qflutter/RIJMethodChannel";
-  }
-  
-  @Nullable
-  public MethodChannel.MethodCallHandler a()
-  {
-    return (MethodChannel.MethodCallHandler)new RIJChannelHandler();
-  }
-  
-  @Nullable
-  public MethodCodec a()
-  {
-    return this.jdField_a_of_type_IoFlutterPluginCommonMethodCodec;
+    this.d = ((MethodCodec)paramBinaryMessenger);
+    this.e = "com.tencent.qflutter/RIJMethodChannel";
   }
   
   @Nullable
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.e;
   }
   
-  public void a()
+  @Nullable
+  public MethodCodec b()
   {
-    super.a();
+    return this.d;
+  }
+  
+  @Nullable
+  public MethodChannel.MethodCallHandler c()
+  {
+    return (MethodChannel.MethodCallHandler)new RIJChannelHandler();
+  }
+  
+  public void f()
+  {
+    super.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.kandian.RIJMethodChannel
  * JD-Core Version:    0.7.0.1
  */

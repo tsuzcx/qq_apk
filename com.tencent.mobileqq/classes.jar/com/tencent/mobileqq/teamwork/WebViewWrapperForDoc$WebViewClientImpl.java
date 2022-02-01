@@ -34,7 +34,7 @@ import java.util.Map;
 class WebViewWrapperForDoc$WebViewClientImpl
   extends WebViewClient
 {
-  ArrayMap<String, Object> a;
+  ArrayMap<String, Object> b;
   
   WebViewWrapperForDoc$WebViewClientImpl(WebViewWrapperForDoc paramWebViewWrapperForDoc) {}
   
@@ -79,7 +79,7 @@ class WebViewWrapperForDoc$WebViewClientImpl
       }
     }
     Object localObject1;
-    if ((paramWebView.startsWith("jsbridge:")) && (WebViewWrapperForDoc.j(this.b) != null))
+    if ((paramWebView.startsWith("jsbridge:")) && (WebViewWrapperForDoc.ac(this.c) != null))
     {
       ThreadManagerV2.getUIHandlerV2().post(new WebViewWrapperForDoc.WebViewClientImpl.1(this, localWebViewPluginEngine, paramWebView));
       localObject1 = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
@@ -96,10 +96,10 @@ class WebViewWrapperForDoc$WebViewClientImpl
     {
       try
       {
-        if (WebViewWrapperForDoc.a(this.b) == null) {
+        if (WebViewWrapperForDoc.ad(this.c) == null) {
           break label457;
         }
-        localObject1 = WebViewWrapperForDoc.b(this.b).requestResource(paramWebView);
+        localObject1 = WebViewWrapperForDoc.ae(this.c).requestResource(paramWebView);
         paramString = localObject2;
         if (!(localObject1 instanceof WebResourceResponse)) {
           break label388;
@@ -152,16 +152,16 @@ class WebViewWrapperForDoc$WebViewClientImpl
     localStringBuilder.append(", url:");
     localStringBuilder.append(paramString);
     QLog.i("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
-    if (WebViewWrapperForDoc.K(this.b) != null) {
-      WebViewWrapperForDoc.L(this.b).onDetectedBlankScreen(paramString, paramInt);
+    if (WebViewWrapperForDoc.aa(this.c) != null) {
+      WebViewWrapperForDoc.ab(this.c).onDetectedBlankScreen(paramString, paramInt);
     }
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (!WebViewWrapperForDoc.b(this.b).isFinishing())
+    if (!WebViewWrapperForDoc.z(this.c).isFinishing())
     {
-      if (WebViewWrapperForDoc.b(this.b) == null) {
+      if (WebViewWrapperForDoc.A(this.c) == null) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -169,23 +169,23 @@ class WebViewWrapperForDoc$WebViewClientImpl
       localStringBuilder.append(paramString);
       QLog.d("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
       super.onPageFinished(paramWebView, paramString);
-      if (WebViewWrapperForDoc.x(this.b) != null) {
-        WebViewWrapperForDoc.y(this.b).onPageFinished(paramWebView, paramString);
+      if (WebViewWrapperForDoc.B(this.c) != null) {
+        WebViewWrapperForDoc.C(this.c).onPageFinished(paramWebView, paramString);
       }
       paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
       if (paramWebView != null) {
         paramWebView.a(paramString, 8589934594L, null);
       }
-      ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).paramInitFinish(WebViewWrapperForDoc.a(this.b));
+      ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).paramInitFinish(WebViewWrapperForDoc.D(this.c));
     }
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
-    if (!WebViewWrapperForDoc.a(this.b).isFinishing())
+    if (!WebViewWrapperForDoc.u(this.c).isFinishing())
     {
-      if (WebViewWrapperForDoc.a(this.b) == null) {
+      if (WebViewWrapperForDoc.v(this.c) == null) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -193,10 +193,10 @@ class WebViewWrapperForDoc$WebViewClientImpl
       localStringBuilder.append(paramString);
       QLog.d("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
       super.onPageStarted(paramWebView, paramString, paramBitmap);
-      if (WebViewWrapperForDoc.u(this.b) != null)
+      if (WebViewWrapperForDoc.w(this.c) != null)
       {
-        WebViewWrapperForDoc.v(this.b).onPageStarted(paramWebView, paramString, paramBitmap);
-        WebViewWrapperForDoc.w(this.b).onWebViewClientImplPageStarted(paramWebView, paramString, paramBitmap);
+        WebViewWrapperForDoc.x(this.c).onPageStarted(paramWebView, paramString, paramBitmap);
+        WebViewWrapperForDoc.y(this.c).onWebViewClientImplPageStarted(paramWebView, paramString, paramBitmap);
       }
       paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
       if (paramWebView != null) {
@@ -207,9 +207,9 @@ class WebViewWrapperForDoc$WebViewClientImpl
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if (!WebViewWrapperForDoc.d(this.b).isFinishing())
+    if (!WebViewWrapperForDoc.I(this.c).isFinishing())
     {
-      if (WebViewWrapperForDoc.d(this.b) == null) {
+      if (WebViewWrapperForDoc.J(this.c) == null) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -220,8 +220,8 @@ class WebViewWrapperForDoc$WebViewClientImpl
       localStringBuilder.append(", url=");
       localStringBuilder.append(paramString2);
       QLog.e("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
-      if (WebViewWrapperForDoc.B(this.b) != null) {
-        WebViewWrapperForDoc.C(this.b).onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+      if (WebViewWrapperForDoc.K(this.c) != null) {
+        WebViewWrapperForDoc.L(this.c).onReceivedError(paramWebView, paramInt, paramString1, paramString2);
       }
       paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
       if (paramWebView != null) {
@@ -246,14 +246,14 @@ class WebViewWrapperForDoc$WebViewClientImpl
         paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
         if (paramWebView != null)
         {
-          if (this.a == null) {
-            this.a = new ArrayMap(4);
+          if (this.b == null) {
+            this.b = new ArrayMap(4);
           }
-          this.a.put("requestData", paramWebResourceRequest);
-          this.a.put("responseData", paramWebResourceResponse);
-          this.a.put("errorCode", Integer.valueOf(paramWebResourceResponse.getStatusCode()));
-          paramWebView.a((String)localObject, 64L, this.a);
-          paramWebView.a((String)localObject, 8589934612L, this.a);
+          this.b.put("requestData", paramWebResourceRequest);
+          this.b.put("responseData", paramWebResourceResponse);
+          this.b.put("errorCode", Integer.valueOf(paramWebResourceResponse.getStatusCode()));
+          paramWebView.a((String)localObject, 64L, this.b);
+          paramWebView.a((String)localObject, 8589934612L, this.b);
         }
       }
     }
@@ -261,9 +261,9 @@ class WebViewWrapperForDoc$WebViewClientImpl
   
   public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
-    if (!WebViewWrapperForDoc.c(this.b).isFinishing())
+    if (!WebViewWrapperForDoc.E(this.c).isFinishing())
     {
-      if (WebViewWrapperForDoc.c(this.b) == null) {
+      if (WebViewWrapperForDoc.F(this.c) == null) {
         return;
       }
       Object localObject = paramSslError.getCertificate();
@@ -281,8 +281,8 @@ class WebViewWrapperForDoc$WebViewClientImpl
       localStringBuilder.append(", pageUrl=");
       localStringBuilder.append(Util.b(str, new String[0]));
       QLog.e("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
-      if (WebViewWrapperForDoc.z(this.b) != null) {
-        WebViewWrapperForDoc.A(this.b).onReceivedSslError(paramWebView, paramSslError);
+      if (WebViewWrapperForDoc.G(this.c) != null) {
+        WebViewWrapperForDoc.H(this.c).onReceivedSslError(paramWebView, paramSslError);
       }
       paramSslErrorHandler.cancel();
     }
@@ -291,7 +291,7 @@ class WebViewWrapperForDoc$WebViewClientImpl
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
     Object localObject1 = paramString;
-    if ((WebViewWrapperForDoc.e(this.b) != null) && (!WebViewWrapperForDoc.e(this.b).isFinishing()))
+    if ((WebViewWrapperForDoc.M(this.c) != null) && (!WebViewWrapperForDoc.N(this.c).isFinishing()))
     {
       if ((!TextUtils.isEmpty(paramString)) && (!"about:blank;".equals(localObject1)) && (!"about:blank".equals(localObject1)))
       {
@@ -299,13 +299,13 @@ class WebViewWrapperForDoc$WebViewClientImpl
         if ((((String)localObject1).startsWith("mqqapi:")) && (((String)localObject1).contains("getTcntDocData")) && (((TencentDocPreloadConfigBean)localObject2).a()))
         {
           paramWebView = Uri.parse(paramString).getQueryParameter("id");
-          TenDocWebViewPool.a(paramWebView, WebViewWrapperForDoc.f(this.b));
-          if (((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).isInstanceTeamWorkDocEditBrowserFragment(WebViewWrapperForDoc.D(this.b)))
+          TenDocWebViewPool.a(paramWebView, WebViewWrapperForDoc.O(this.c));
+          if (((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).isInstanceTeamWorkDocEditBrowserFragment(WebViewWrapperForDoc.P(this.c)))
           {
-            TenDocWebViewPool.a(paramWebView, WebViewWrapperForDoc.g(this.b));
+            TenDocWebViewPool.a(paramWebView, WebViewWrapperForDoc.Q(this.c));
             return true;
           }
-          TenDocWebViewPool.a().a(this.b.a());
+          TenDocWebViewPool.a().a(this.c.c());
           return true;
         }
         if (((String)localObject1).startsWith("https://jsbridge/"))
@@ -335,9 +335,9 @@ class WebViewWrapperForDoc$WebViewClientImpl
             QLog.d("WebLog_WebViewWrapper", 2, ((StringBuilder)localObject1).toString());
           }
         }
-        ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).endUrlLoad(WebViewWrapperForDoc.b(this.b), paramString);
+        ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).endUrlLoad(WebViewWrapperForDoc.R(this.c), paramString);
         localObject1 = CommonUtils.b(paramString);
-        if ((WebViewWrapperForDoc.E(this.b) != null) && (WebViewWrapperForDoc.F(this.b).beforeWebViewEngineHandleOverrideUrl(WebViewWrapperForDoc.h(this.b), paramString)))
+        if ((WebViewWrapperForDoc.S(this.c) != null) && (WebViewWrapperForDoc.U(this.c).beforeWebViewEngineHandleOverrideUrl(WebViewWrapperForDoc.T(this.c), paramString)))
         {
           QLog.d("WebLog_WebViewWrapper", 1, "shouldOverrideUrlLoading callback handle override url");
           return true;
@@ -356,12 +356,12 @@ class WebViewWrapperForDoc$WebViewClientImpl
           if ((localObject2 != null) && (((WebViewPluginEngine)localObject2).a(paramString))) {
             return true;
           }
-          if ((WebViewWrapperForDoc.G(this.b) != null) && (WebViewWrapperForDoc.H(this.b).shouldOverrideUrlLoading(paramWebView, paramString))) {
+          if ((WebViewWrapperForDoc.V(this.c) != null) && (WebViewWrapperForDoc.W(this.c).shouldOverrideUrlLoading(paramWebView, paramString))) {
             return true;
           }
           if ((!"http".equals(localObject1)) && (!"https".equals(localObject1)) && (!"data".equals(localObject1)) && (!"file".equals(localObject1)))
           {
-            if ((WebViewWrapperForDoc.I(this.b) != null) && (WebViewWrapperForDoc.J(this.b).afterWebViewEngineHandleOverrideUrl(WebViewWrapperForDoc.i(this.b), paramString))) {
+            if ((WebViewWrapperForDoc.X(this.c) != null) && (WebViewWrapperForDoc.Z(this.c).afterWebViewEngineHandleOverrideUrl(WebViewWrapperForDoc.Y(this.c), paramString))) {
               return true;
             }
           }
@@ -402,7 +402,7 @@ class WebViewWrapperForDoc$WebViewClientImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.WebViewWrapperForDoc.WebViewClientImpl
  * JD-Core Version:    0.7.0.1
  */

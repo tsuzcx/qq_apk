@@ -11,13 +11,13 @@ class DownloadManagerInterceptor$1
   public void a(int paramInt)
   {
     if (paramInt == 0) {
-      ThreadManager.excute(this.jdField_a_of_type_JavaLangRunnable, 16, null, true);
+      ThreadManager.excute(this.a, 16, null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.DownloadManagerInterceptor.1
  * JD-Core Version:    0.7.0.1
  */

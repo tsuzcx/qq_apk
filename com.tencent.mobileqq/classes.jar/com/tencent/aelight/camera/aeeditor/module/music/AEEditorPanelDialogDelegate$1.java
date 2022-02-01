@@ -12,7 +12,7 @@ class AEEditorPanelDialogDelegate$1
   public void onAnimationEnd(Animation paramAnimation)
   {
     AEEditorPanelDialogDelegate.a(this.a, false);
-    AEEditorPanelDialogDelegate.a(this.a).post(new AEEditorPanelDialogDelegate.1.1(this));
+    AEEditorPanelDialogDelegate.b(this.a).post(new AEEditorPanelDialogDelegate.1.1(this));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -24,7 +24,7 @@ class AEEditorPanelDialogDelegate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorPanelDialogDelegate.1
  * JD-Core Version:    0.7.0.1
  */

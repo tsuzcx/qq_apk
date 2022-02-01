@@ -19,6 +19,27 @@ public class ShortVideoGuideUtil
 {
   public static String a = "ShortVideoGuideUtil";
   
+  public static boolean a()
+  {
+    if (VideoEnvironment.getShortVideoSoLibName() == null) {
+      return false;
+    }
+    if (!ShortVideoUtils.isVideoSoLibLoaded()) {
+      if (ShortVideoUtils.checkShortVideoSoReadyToLoad()) {
+        ThreadManager.excute(new ShortVideoGuideUtil.1(), 64, null, false);
+      } else {
+        return false;
+      }
+    }
+    if (((IAEResUtil)QRoute.api(IAEResUtil.class)).isLightCameraBaseResNotAllExist()) {
+      return false;
+    }
+    if (!GestureMgr.e().b()) {
+      return false;
+    }
+    return PtvFilterSoLoad.g() != 2;
+  }
+  
   public static boolean a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt)
   {
     if (QLog.isColorLevel())
@@ -73,27 +94,6 @@ public class ShortVideoGuideUtil
     if (VideoEnvironment.getShortVideoSoLibName() == null) {
       return false;
     }
-    if (!ShortVideoUtils.isVideoSoLibLoaded()) {
-      if (ShortVideoUtils.checkShortVideoSoReadyToLoad(paramAppInterface)) {
-        ThreadManager.excute(new ShortVideoGuideUtil.1(), 64, null, false);
-      } else {
-        return false;
-      }
-    }
-    if (((IAEResUtil)QRoute.api(IAEResUtil.class)).isLightCameraBaseResNotAllExist()) {
-      return false;
-    }
-    if (!GestureMgr.a().a()) {
-      return false;
-    }
-    return PtvFilterSoLoad.a() != 2;
-  }
-  
-  public static boolean b(AppInterface paramAppInterface)
-  {
-    if (VideoEnvironment.getShortVideoSoLibName() == null) {
-      return false;
-    }
     if (!ShortVideoUtils.isVideoSoLibLoaded())
     {
       VideoEnvironment.loadAVCodecSo();
@@ -106,7 +106,7 @@ public class ShortVideoGuideUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.util.ShortVideoGuideUtil
  * JD-Core Version:    0.7.0.1
  */

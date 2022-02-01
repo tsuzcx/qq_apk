@@ -22,28 +22,28 @@ import java.util.List;
 public class FoodAloneTextItem
   extends DynamicTextItem
 {
-  private float jdField_a_of_type_Float = 0.73F;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter = null;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private String jdField_a_of_type_JavaLangString = "#ffffff";
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float jdField_b_of_type_Float = 0.31F;
-  private int jdField_b_of_type_Int;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private InputFilter A = null;
+  private int a;
+  private int b;
   private int c;
   private int d;
   private int e;
   private int f;
-  private int g;
+  private TextPaint g;
   private int h;
   private int i;
   private int j;
-  private int k;
-  private int l;
-  private int m;
+  private String p = "#ffffff";
+  private float q = 0.73F;
+  private float r = 0.31F;
+  private int s;
+  private int t;
+  private Bitmap u;
+  private Resources v;
+  private RectF w = new RectF();
+  private RectF x = new RectF();
+  private int y;
+  private ArrayList<String> z = new ArrayList();
   
   public FoodAloneTextItem(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface, Bitmap paramBitmap)
   {
@@ -56,162 +56,144 @@ public class FoodAloneTextItem
   
   private int a(float paramFloat)
   {
-    return (int)(this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * paramFloat);
+    return (int)(this.v.getDisplayMetrics().density * paramFloat);
   }
   
   private void a(Typeface paramTypeface)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+    this.g = new TextPaint();
+    this.g.setAntiAlias(true);
+    this.g.setColor(Color.parseColor(this.p));
+    this.g.setTypeface(paramTypeface);
+    this.g.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.g.setTextAlign(Paint.Align.CENTER);
   }
   
   private void a(Typeface paramTypeface, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidContentResResources = BaseApplicationImpl.getContext().getResources();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.v = BaseApplicationImpl.getContext().getResources();
+    this.u = paramBitmap;
     a(paramTypeface);
-    this.e = a(48.75F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.e);
-    this.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(HardCodeUtil.a(2131704808)));
-    this.f = a(27.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.f);
-    this.c = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(HardCodeUtil.a(2131704807)));
-    this.g = a(18.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.g);
-    this.d = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(HardCodeUtil.a(2131704809)));
-    this.k = a(0.0F);
-    this.l = a(0.0F);
-    double d1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    this.d = a(48.75F);
+    this.g.setTextSize(this.d);
+    this.a = ((int)this.g.measureText(HardCodeUtil.a(2131902709)));
+    this.e = a(27.0F);
+    this.g.setTextSize(this.e);
+    this.b = ((int)this.g.measureText(HardCodeUtil.a(2131902708)));
+    this.f = a(18.0F);
+    this.g.setTextSize(this.f);
+    this.c = ((int)this.g.measureText(HardCodeUtil.a(2131902710)));
+    this.s = a(0.0F);
+    this.t = a(0.0F);
+    double d1 = this.u.getWidth();
     Double.isNaN(d1);
     this.h = ((int)(d1 * 0.98D));
-    d1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    d1 = this.u.getHeight();
     Double.isNaN(d1);
     this.i = ((int)(d1 * 0.98D));
-  }
-  
-  public float a()
-  {
-    return this.h;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new FoodAloneTextItem.2(this, 20);
-    }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
   }
   
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
     paramString = super.a(paramInt, new FoodAloneTextItem.1(this));
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    int n = paramString.length();
-    if (n > 10)
+    this.z.clear();
+    int k = paramString.length();
+    if (k > 10)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString.substring(0, 10));
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString.substring(10, Math.min(n, 20)));
-      this.j = this.g;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
-      this.m = this.d;
-      n = this.m;
-      paramInt = n * 2 + this.k;
-      n = n * 10 + this.l * 9;
-    }
-    else if (n > 5)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      this.z.add(paramString.substring(0, 10));
+      this.z.add(paramString.substring(10, Math.min(k, 20)));
       this.j = this.f;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
-      this.m = this.c;
-      paramInt = this.m;
-      n = paramInt * n + this.l * Math.max(n - 1, 0);
+      this.g.setTextSize(this.j);
+      this.y = this.c;
+      k = this.y;
+      paramInt = k * 2 + this.s;
+      k = k * 10 + this.t * 9;
+    }
+    else if (k > 5)
+    {
+      this.z.add(paramString);
+      this.j = this.e;
+      this.g.setTextSize(this.j);
+      this.y = this.b;
+      paramInt = this.y;
+      k = paramInt * k + this.t * Math.max(k - 1, 0);
       paramInt *= 1;
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      this.j = this.e;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.j);
-      this.m = this.jdField_b_of_type_Int;
-      i1 = this.m;
-      paramInt = n;
-      if (n == 0) {
+      this.z.add(paramString);
+      this.j = this.d;
+      this.g.setTextSize(this.j);
+      this.y = this.a;
+      m = this.y;
+      paramInt = k;
+      if (k == 0) {
         paramInt = 2;
       }
-      int i2 = this.m;
-      int i3 = this.l;
-      int i4 = Math.max(paramInt - 1, 0);
-      n = i1 * 1;
-      i1 = i2 * paramInt + i3 * i4;
-      paramInt = n;
-      n = i1;
+      int n = this.y;
+      int i1 = this.t;
+      int i2 = Math.max(paramInt - 1, 0);
+      k = m * 1;
+      m = n * paramInt + i1 * i2;
+      paramInt = k;
+      k = m;
     }
-    float f1 = n;
-    n = this.i;
-    float f2 = n;
-    float f3 = this.jdField_a_of_type_Float;
+    float f1 = k;
+    k = this.i;
+    float f2 = k;
+    float f3 = this.q;
     if (f1 > f2 * f3)
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, f1 - n * f3, this.h, n * (1.0F - f3) + f1);
-      paramString = this.jdField_b_of_type_AndroidGraphicsRectF;
-      n = this.h;
-      f2 = n - paramInt;
-      f3 = this.jdField_b_of_type_Float;
-      paramString.set(f2 * f3, 0.0F, n * f3 + paramInt * (1.0F - f3), f1);
+      this.w.set(0.0F, f1 - k * f3, this.h, k * (1.0F - f3) + f1);
+      paramString = this.x;
+      k = this.h;
+      f2 = k - paramInt;
+      f3 = this.r;
+      paramString.set(f2 * f3, 0.0F, k * f3 + paramInt * (1.0F - f3), f1);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.h, n);
-    paramString = this.jdField_b_of_type_AndroidGraphicsRectF;
-    n = this.h;
-    f2 = n - paramInt;
-    f3 = this.jdField_b_of_type_Float;
-    int i1 = this.i;
-    float f4 = i1;
-    float f5 = this.jdField_a_of_type_Float;
-    paramString.set(f2 * f3, (f4 * f5 - f1) / 2.0F, n * f3 + paramInt * (1.0F - f3), (i1 * f5 + f1) / 2.0F);
+    this.w.set(0.0F, 0.0F, this.h, k);
+    paramString = this.x;
+    k = this.h;
+    f2 = k - paramInt;
+    f3 = this.r;
+    int m = this.i;
+    float f4 = m;
+    float f5 = this.q;
+    paramString.set(f2 * f3, (f4 * f5 - f1) / 2.0F, k * f3 + paramInt * (1.0F - f3), (m * f5 + f1) / 2.0F);
   }
   
   protected void a(Canvas paramCanvas)
   {
     Object localObject = new Rect();
-    ((Rect)localObject).set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsRectF, null);
-    if (super.b(0)) {
-      paramCanvas.drawRoundRect(new RectF(this.jdField_b_of_type_AndroidGraphicsRectF.left, this.jdField_b_of_type_AndroidGraphicsRectF.top, this.jdField_b_of_type_AndroidGraphicsRectF.right, this.jdField_b_of_type_AndroidGraphicsRectF.bottom + this.m * 0.1F), 6.0F, 6.0F, a());
+    ((Rect)localObject).set(0, 0, this.u.getWidth(), this.u.getHeight());
+    paramCanvas.drawBitmap(this.u, (Rect)localObject, this.w, null);
+    if (super.f(0)) {
+      paramCanvas.drawRoundRect(new RectF(this.x.left, this.x.top, this.x.right, this.x.bottom + this.y * 0.1F), 6.0F, 6.0F, s());
     }
-    double d1 = this.jdField_b_of_type_AndroidGraphicsRectF.left;
-    double d2 = this.m;
+    double d1 = this.x.left;
+    double d2 = this.y;
     Double.isNaN(d2);
     Double.isNaN(d1);
-    int i2 = (int)(d1 + d2 * 0.5D);
-    int n = (int)(this.jdField_b_of_type_AndroidGraphicsRectF.top + this.m);
-    int i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    while (i1 >= 0)
+    int n = (int)(d1 + d2 * 0.5D);
+    int k = (int)(this.x.top + this.y);
+    int m = this.z.size() - 1;
+    while (m >= 0)
     {
-      localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      int i5 = ((String)localObject).length();
-      int i4 = 0;
-      int i3 = n;
-      for (n = i4; n < i5; n = i4)
+      localObject = (String)this.z.get(m);
+      int i3 = ((String)localObject).length();
+      int i2 = 0;
+      int i1 = k;
+      for (k = i2; k < i3; k = i2)
       {
-        i4 = n + 1;
-        paramCanvas.drawText(((String)localObject).substring(n, i4), i2, i3, this.jdField_a_of_type_AndroidTextTextPaint);
-        i3 += this.m + this.l;
+        i2 = k + 1;
+        paramCanvas.drawText(((String)localObject).substring(k, i2), n, i1, this.g);
+        i1 += this.y + this.t;
       }
-      i2 += this.m + this.k;
-      n = (int)(this.jdField_b_of_type_AndroidGraphicsRectF.top + this.m);
-      i1 -= 1;
+      n += this.y + this.s;
+      k = (int)(this.x.top + this.y);
+      m -= 1;
     }
   }
   
@@ -220,14 +202,32 @@ public class FoodAloneTextItem
     return true;
   }
   
-  public float b()
+  public int b()
   {
-    return this.jdField_a_of_type_AndroidGraphicsRectF.bottom - Math.min(this.jdField_b_of_type_AndroidGraphicsRectF.top, this.jdField_a_of_type_AndroidGraphicsRectF.top);
+    return 1;
+  }
+  
+  public float c()
+  {
+    return this.h;
+  }
+  
+  public float d()
+  {
+    return this.w.bottom - Math.min(this.x.top, this.w.top);
+  }
+  
+  public InputFilter f()
+  {
+    if (this.A == null) {
+      this.A = new FoodAloneTextItem.2(this, 20);
+    }
+    return this.A;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.FoodAloneTextItem
  * JD-Core Version:    0.7.0.1
  */

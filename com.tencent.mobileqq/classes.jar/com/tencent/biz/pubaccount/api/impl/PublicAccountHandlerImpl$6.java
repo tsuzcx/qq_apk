@@ -29,8 +29,8 @@ class PublicAccountHandlerImpl$6
       ((StringBuilder)localObject).append(bool);
       QLog.d("PublicAccountHandler", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountHandlerImpl;
-    int i = this.jdField_a_of_type_Int;
+    Object localObject = this.e;
+    int i = this.a;
     int j = this.b;
     int k = this.c;
     int m = this.d;
@@ -42,7 +42,7 @@ class PublicAccountHandlerImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountHandlerImpl.6
  * JD-Core Version:    0.7.0.1
  */

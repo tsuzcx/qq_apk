@@ -37,56 +37,6 @@ public class SwiftWebViewUtils
     return paramInt1 + (paramInt2 << 8);
   }
   
-  public static Bundle a()
-  {
-    if ((SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_Boolean) || (SwiftWebViewUtils.CdnCacheConfig.b))
-    {
-      StringBuilder localStringBuilder1 = new StringBuilder("_tcvassp_0_=");
-      if ((SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_Int != -1) && (SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_JavaUtilArrayList.size() != 0))
-      {
-        localStringBuilder1.append(SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_Int);
-        if (SwiftWebViewUtils.CdnCacheConfig.b) {
-          localObject = "shp";
-        } else {
-          localObject = "webp";
-        }
-        localStringBuilder1.append((String)localObject);
-        Object localObject = new Bundle();
-        ((Bundle)localObject).putString("argument", localStringBuilder1.toString());
-        ((Bundle)localObject).putStringArrayList("domains", SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_JavaUtilArrayList);
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("getCDNExtensionData, arg: ");
-          localStringBuilder2.append(localStringBuilder1.toString());
-          QLog.i("SwiftWebViewUtils", 2, localStringBuilder2.toString());
-          localStringBuilder1 = new StringBuilder();
-          localStringBuilder1.append("getCDNExtensionData, domainList: ");
-          localStringBuilder1.append(TextUtils.join(", ", SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_JavaUtilArrayList));
-          QLog.i("SwiftWebViewUtils", 2, localStringBuilder1.toString());
-        }
-        return localObject;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("SwiftWebViewUtils", 2, "CdnCacheConfig did not parse!!!");
-      }
-    }
-    return null;
-  }
-  
-  public static WebResourceResponse a()
-  {
-    WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
-    Map localMap = localWebResourceResponse.getResponseHeaders();
-    Object localObject = localMap;
-    if (localMap == null) {
-      localObject = new HashMap();
-    }
-    ((Map)localObject).put("cache-control", "must-revalidate，no-store");
-    localWebResourceResponse.setResponseHeaders((Map)localObject);
-    return localWebResourceResponse;
-  }
-  
   public static String a(Intent paramIntent)
   {
     String str = "";
@@ -123,7 +73,7 @@ public class SwiftWebViewUtils
   
   public static void a()
   {
-    if ((SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_JavaUtilArrayList.size() != 0) && (SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_Int != -1)) {
+    if ((SwiftWebViewUtils.CdnCacheConfig.a.size() != 0) && (SwiftWebViewUtils.CdnCacheConfig.b != -1)) {
       return;
     }
     Object localObject1 = ClubContentJsonTask.e.a;
@@ -162,13 +112,13 @@ public class SwiftWebViewUtils
           localObject2 = ((String)localObject2).replace("[", "").replace("]", "").replace("\"", "").split(",");
           if (localObject2.length > 0)
           {
-            SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_JavaUtilArrayList.clear();
+            SwiftWebViewUtils.CdnCacheConfig.a.clear();
             j = localObject2.length;
             i = 0;
             if (i < j)
             {
               localObject3 = localObject2[i];
-              SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_JavaUtilArrayList.add(((String)localObject3).trim());
+              SwiftWebViewUtils.CdnCacheConfig.a.add(((String)localObject3).trim());
               i += 1;
               continue;
             }
@@ -177,7 +127,7 @@ public class SwiftWebViewUtils
           localObject2 = ((String)localObject1).substring(1, ((String)localObject1).length() - 1).split("\\],\\[");
           if (localObject2.length > 0)
           {
-            SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_Int = -1;
+            SwiftWebViewUtils.CdnCacheConfig.b = -1;
             int k = localObject2.length;
             i = 0;
             if (i < k)
@@ -196,10 +146,10 @@ public class SwiftWebViewUtils
                 int m = Integer.parseInt(localObject3[0].trim());
                 int n = Integer.parseInt(localObject3[1].trim());
                 if ((j < m) || (j > n)) {
-                  break label566;
+                  break label561;
                 }
                 i = Integer.parseInt(localObject3[2]);
-                SwiftWebViewUtils.CdnCacheConfig.jdField_a_of_type_Int = i;
+                SwiftWebViewUtils.CdnCacheConfig.b = i;
                 if (QLog.isColorLevel())
                 {
                   localObject2 = new StringBuilder();
@@ -230,30 +180,9 @@ public class SwiftWebViewUtils
         }
       }
       return;
-      label566:
+      label561:
       i += 1;
     }
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplication.getContext().getSharedPreferences("webview_report_config", 0).getBoolean("hide_back_text", false);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    paramString = Uri.parse(paramString);
-    if (paramString.isHierarchical())
-    {
-      paramString = paramString.getQueryParameter("_tbs_xv");
-      if ((!TextUtils.isEmpty(paramString)) && (1L == (Long.parseLong(paramString) & 1L))) {
-        return true;
-      }
-    }
-    return false;
   }
   
   public static boolean a(String paramString1, String paramString2)
@@ -277,8 +206,8 @@ public class SwiftWebViewUtils
         catch (Exception localException1)
         {
           int j;
-          label65:
-          break label65;
+          label63:
+          break label63;
         }
         j = 0;
         if (i < paramString2.length) {}
@@ -289,8 +218,8 @@ public class SwiftWebViewUtils
         catch (Exception localException2)
         {
           int k;
-          label84:
-          break label84;
+          label82:
+          break label82;
         }
         k = 0;
         if (i != m - 1)
@@ -335,46 +264,8 @@ public class SwiftWebViewUtils
         QLog.e("SwiftWebViewUtils", 1, paramString.toString());
         return false;
       }
-      if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(paramJSONObject.optString("business", "")))) {
-        bool2 = true;
-      } else {
-        bool2 = false;
-      }
+      boolean bool2 = b(paramJSONObject, paramString);
       boolean bool1 = bool2;
-      if (bool2)
-      {
-        bool1 = bool2;
-        if (paramJSONObject.has("minVersion"))
-        {
-          paramString = paramJSONObject.optString("minVersion");
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(paramString))
-          {
-            bool1 = bool2;
-            if (!a(paramString, "8.7.0.5295")) {
-              bool1 = false;
-            }
-          }
-        }
-      }
-      boolean bool2 = bool1;
-      if (bool1)
-      {
-        bool2 = bool1;
-        if (paramJSONObject.has("maxVersion"))
-        {
-          paramString = paramJSONObject.optString("maxVersion");
-          bool2 = bool1;
-          if (!TextUtils.isEmpty(paramString))
-          {
-            bool2 = bool1;
-            if (!a("8.7.0.5295", paramString)) {
-              bool2 = false;
-            }
-          }
-        }
-      }
-      bool1 = bool2;
       if (bool2)
       {
         paramString = ((AppRuntime)localObject).getAccount();
@@ -396,13 +287,13 @@ public class SwiftWebViewUtils
               if ((l1 >= l2) && (l1 <= l3))
               {
                 bool1 = true;
-                break label392;
+                break label247;
               }
             }
           }
         }
         bool1 = false;
-        label392:
+        label247:
         if (!bool1)
         {
           localObject = paramJSONObject.optString("uinWhiteList");
@@ -439,6 +330,19 @@ public class SwiftWebViewUtils
     return paramInt >> 8 & 0xFF;
   }
   
+  public static WebResourceResponse b()
+  {
+    WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
+    Map localMap = localWebResourceResponse.getResponseHeaders();
+    Object localObject = localMap;
+    if (localMap == null) {
+      localObject = new HashMap();
+    }
+    ((Map)localObject).put("cache-control", "must-revalidate，no-store");
+    localWebResourceResponse.setResponseHeaders((Map)localObject);
+    return localWebResourceResponse;
+  }
+  
   public static String b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
@@ -449,16 +353,6 @@ public class SwiftWebViewUtils
       }
     }
     return "";
-  }
-  
-  public static boolean b()
-  {
-    int i = com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[14].intValue();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isSupportPreRend: ");
-    localStringBuilder.append(i);
-    QLog.d("SwiftWebViewUtils", 1, localStringBuilder.toString());
-    return i == 1;
   }
   
   public static boolean b(String paramString1, String paramString2)
@@ -482,8 +376,8 @@ public class SwiftWebViewUtils
         catch (Exception localException1)
         {
           int j;
-          label65:
-          break label65;
+          label63:
+          break label63;
         }
         j = 0;
         if (i < paramString2.length) {}
@@ -494,8 +388,8 @@ public class SwiftWebViewUtils
         catch (Exception localException2)
         {
           int k;
-          label84:
-          break label84;
+          label82:
+          break label82;
         }
         k = 0;
         if (i != m - 1)
@@ -520,6 +414,87 @@ public class SwiftWebViewUtils
       }
     }
     return false;
+  }
+  
+  private static boolean b(JSONObject paramJSONObject, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(paramJSONObject.optString("business", "")))) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    boolean bool1 = bool2;
+    if (bool2)
+    {
+      bool1 = bool2;
+      if (paramJSONObject.has("minVersion"))
+      {
+        paramString = paramJSONObject.optString("minVersion");
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          bool1 = bool2;
+          if (!a(paramString, "8.8.17.5770")) {
+            bool1 = false;
+          }
+        }
+      }
+    }
+    boolean bool2 = bool1;
+    if (bool1)
+    {
+      bool2 = bool1;
+      if (paramJSONObject.has("maxVersion"))
+      {
+        paramJSONObject = paramJSONObject.optString("maxVersion");
+        bool2 = bool1;
+        if (!TextUtils.isEmpty(paramJSONObject))
+        {
+          bool2 = bool1;
+          if (!a("8.8.17.5770", paramJSONObject)) {
+            bool2 = false;
+          }
+        }
+      }
+    }
+    return bool2;
+  }
+  
+  public static Bundle c()
+  {
+    if ((SwiftWebViewUtils.CdnCacheConfig.c) || (SwiftWebViewUtils.CdnCacheConfig.d))
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder("_tcvassp_0_=");
+      if ((SwiftWebViewUtils.CdnCacheConfig.b != -1) && (SwiftWebViewUtils.CdnCacheConfig.a.size() != 0))
+      {
+        localStringBuilder1.append(SwiftWebViewUtils.CdnCacheConfig.b);
+        if (SwiftWebViewUtils.CdnCacheConfig.d) {
+          localObject = "shp";
+        } else {
+          localObject = "webp";
+        }
+        localStringBuilder1.append((String)localObject);
+        Object localObject = new Bundle();
+        ((Bundle)localObject).putString("argument", localStringBuilder1.toString());
+        ((Bundle)localObject).putStringArrayList("domains", SwiftWebViewUtils.CdnCacheConfig.a);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("getCDNExtensionData, arg: ");
+          localStringBuilder2.append(localStringBuilder1.toString());
+          QLog.i("SwiftWebViewUtils", 2, localStringBuilder2.toString());
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("getCDNExtensionData, domainList: ");
+          localStringBuilder1.append(TextUtils.join(", ", SwiftWebViewUtils.CdnCacheConfig.a));
+          QLog.i("SwiftWebViewUtils", 2, localStringBuilder1.toString());
+        }
+        return localObject;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("SwiftWebViewUtils", 2, "CdnCacheConfig did not parse!!!");
+      }
+    }
+    return null;
   }
   
   public static String c(String paramString)
@@ -553,7 +528,28 @@ public class SwiftWebViewUtils
     return localStringBuilder.toString();
   }
   
-  public static String d(String paramString)
+  public static boolean d()
+  {
+    return BaseApplication.getContext().getSharedPreferences("webview_report_config", 0).getBoolean("hide_back_text", false);
+  }
+  
+  public static boolean d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    paramString = Uri.parse(paramString);
+    if (paramString.isHierarchical())
+    {
+      paramString = paramString.getQueryParameter("_tbs_xv");
+      if ((!TextUtils.isEmpty(paramString)) && (1L == (Long.parseLong(paramString) & 1L))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static String e(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
@@ -576,10 +572,20 @@ public class SwiftWebViewUtils
     }
     return "";
   }
+  
+  public static boolean e()
+  {
+    int i = com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[14].intValue();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSupportPreRend: ");
+    localStringBuilder.append(i);
+    QLog.d("SwiftWebViewUtils", 1, localStringBuilder.toString());
+    return i == 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class ConfigHandler$9
   {
     try
     {
-      HttpDownloadUtil.download(this.this$0.a, new URL(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+      HttpDownloadUtil.download(this.this$0.c, new URL(this.a), this.b);
       return;
     }
     catch (Exception localException) {}
@@ -21,7 +21,7 @@ class ConfigHandler$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.9
  * JD-Core Version:    0.7.0.1
  */

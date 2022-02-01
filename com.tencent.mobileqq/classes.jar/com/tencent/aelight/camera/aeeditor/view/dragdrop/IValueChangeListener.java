@@ -10,15 +10,15 @@ public abstract interface IValueChangeListener
   
   public abstract void a(IDragView paramIDragView);
   
-  public abstract boolean a();
-  
   public abstract long b(View paramView, long paramLong);
   
   public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.dragdrop.IValueChangeListener
  * JD-Core Version:    0.7.0.1
  */

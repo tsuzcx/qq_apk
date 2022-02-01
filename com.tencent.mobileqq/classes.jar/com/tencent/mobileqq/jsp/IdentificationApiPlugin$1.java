@@ -11,18 +11,18 @@ class IdentificationApiPlugin$1
   
   public void ipJudgeSuccess(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspIdentificationApiPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager);
+    this.b.a(this.a);
   }
   
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
     ReportController.a(null, "dc00898", "", "", "0X800B0EB", "0X800B0EB", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqJspIdentificationApiPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager);
+    this.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.IdentificationApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

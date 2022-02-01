@@ -22,7 +22,7 @@ class TroopGiftManager$4
   
   public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null)) {
+    if ((paramInt == 0) && (paramArrayOfByte != null) && (this.b != null)) {
       try
       {
         oidb_0x6b5.RspBody localRspBody = new oidb_0x6b5.RspBody();
@@ -35,20 +35,20 @@ class TroopGiftManager$4
           {
             paramArrayOfByte = (oidb_0x6b5.Player)localRspBody.msg_grab_result.get();
             paramBundle = new StringBuilder();
-            paramBundle.append(this.jdField_a_of_type_JavaLangString);
+            paramBundle.append(this.c);
             paramBundle.append("_");
-            paramBundle.append(this.b);
+            paramBundle.append(this.d);
             paramBundle = paramBundle.toString();
-            paramBundle = (TroopGiftBagInfo)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a.get(paramBundle);
+            paramBundle = (TroopGiftBagInfo)this.e.b.get(paramBundle);
             if (paramBundle != null)
             {
               paramBundle.myGrabResult = new TroopGiftBagPlayer(paramArrayOfByte.uint64_uin.get(), paramArrayOfByte.uint64_time.get(), paramArrayOfByte.int32_amount.get(), paramArrayOfByte.int32_index.get(), paramArrayOfByte.bytes_tips.get().toStringUtf8());
-              this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(paramBundle);
+              this.e.a(paramBundle);
             }
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramArrayOfByte.uint64_uin.get(), paramArrayOfByte.uint64_time.get(), paramArrayOfByte.int32_amount.get(), paramArrayOfByte.int32_index.get(), paramArrayOfByte.bytes_tips.get().toStringUtf8());
+            this.b.a(paramArrayOfByte.uint64_uin.get(), paramArrayOfByte.uint64_time.get(), paramArrayOfByte.int32_amount.get(), paramArrayOfByte.int32_index.get(), paramArrayOfByte.bytes_tips.get().toStringUtf8());
             return;
           }
-          paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+          paramArrayOfByte = this.b;
           paramBundle = new StringBuilder();
           paramBundle.append("Invalid RspData. subCmd:");
           paramBundle.append(paramInt);
@@ -56,7 +56,7 @@ class TroopGiftManager$4
           return;
         }
         paramArrayOfByte = localRspBody.bytes_errmsg.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, paramArrayOfByte);
+        this.b.a(paramInt, paramArrayOfByte);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -68,7 +68,7 @@ class TroopGiftManager$4
           paramBundle.append(paramArrayOfByte);
           QLog.i(".troop.send_gift", 2, paramBundle.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(-1, "InvalidProtocolBufferMicroException");
+        this.b.a(-1, "InvalidProtocolBufferMicroException");
         return;
       }
     }
@@ -80,10 +80,10 @@ class TroopGiftManager$4
       paramBundle.append(" data=");
       paramBundle.append(paramArrayOfByte);
       paramBundle.append(" callback=");
-      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback);
+      paramBundle.append(this.b);
       QLog.i(".troop.send_gift", 2, paramBundle.toString());
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+    paramArrayOfByte = this.b;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(paramInt, "sso request error or callback is null.");
     }
@@ -91,7 +91,7 @@ class TroopGiftManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager.4
  * JD-Core Version:    0.7.0.1
  */

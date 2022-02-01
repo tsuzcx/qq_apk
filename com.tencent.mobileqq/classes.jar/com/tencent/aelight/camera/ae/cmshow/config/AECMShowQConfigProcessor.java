@@ -23,9 +23,9 @@ public class AECMShowQConfigProcessor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onParsed] content=");
-      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      localStringBuilder.append(paramArrayOfQConfItem[0].b);
       AEQLog.a("AECMShowQConfigProcessor", localStringBuilder.toString());
-      return AECMShowConfigManager.a(paramArrayOfQConfItem[0].a);
+      return AECMShowConfigManager.a(paramArrayOfQConfItem[0].b);
     }
     AEQLog.a("AECMShowQConfigProcessor", "[onParsed] config invalid");
     return null;
@@ -34,7 +34,7 @@ public class AECMShowQConfigProcessor
   public void a(AECMShowConfig paramAECMShowConfig)
   {
     AEQLog.a("AECMShowQConfigProcessor", "[onUpdate]");
-    AECMShowConfigManager.a().a(paramAECMShowConfig);
+    AECMShowConfigManager.d().a(paramAECMShowConfig);
   }
   
   public Class<AECMShowConfig> clazz()
@@ -82,7 +82,7 @@ public class AECMShowQConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.config.AECMShowQConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

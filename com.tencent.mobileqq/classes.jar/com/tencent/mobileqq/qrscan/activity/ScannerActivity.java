@@ -24,8 +24,8 @@ import com.tencent.mobileqq.qrscan.QrImageScan;
 import com.tencent.mobileqq.qrscan.QrImageScan.FileDecodeListener;
 import com.tencent.mobileqq.qrscan.ScannerParams;
 import com.tencent.mobileqq.qrscan.ScannerResult;
+import com.tencent.mobileqq.qrscan.api.IQRScanAbilityApi;
 import com.tencent.mobileqq.qrscan.api.IQRScanMainProcService;
-import com.tencent.mobileqq.qrscan.api.IQRScanTempApi;
 import com.tencent.mobileqq.qrscan.inject.QRScanProcessorFactory;
 import com.tencent.mobileqq.qrscan.ipc.PreCallUpToolProc;
 import com.tencent.mobileqq.qrscan.utils.QRUtils;
@@ -139,7 +139,7 @@ public class ScannerActivity
   {
     Iterator localIterator = this.qrResultProcessors.iterator();
     while (localIterator.hasNext()) {
-      ((IQRScanResultProcessor)localIterator.next()).a();
+      ((IQRScanResultProcessor)localIterator.next()).c();
     }
     this.qrResultProcessors.clear();
   }
@@ -170,7 +170,7 @@ public class ScannerActivity
             if (paramIntent.hasExtra("filePath")) {
               this.photoPathForMd5 = paramIntent.getStringExtra("filePath");
             }
-            this.mScannerParams.jdField_c_of_type_JavaLangString = this.photoPathForMd5;
+            this.mScannerParams.d = this.photoPathForMd5;
             paramInt1 = paramIntent.getIntExtra("detectType", 1);
             String str = paramIntent.getStringExtra("scannerResult");
             paramIntent = paramIntent.getStringExtra("scannerType");
@@ -218,7 +218,7 @@ public class ScannerActivity
     if (paramInt == 0) {
       i = 3;
     }
-    this.mScannerParams.jdField_c_of_type_JavaLangString = paramString;
+    this.mScannerParams.d = paramString;
     this.photoPathForMd5 = paramString;
     this.mQrImageScan.a(paramString, i);
   }
@@ -230,31 +230,31 @@ public class ScannerActivity
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handlePreResult detectType:");
-      ((StringBuilder)localObject).append(this.mScannerParams.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.mScannerParams.h);
       ((StringBuilder)localObject).append(" preResult:");
-      ((StringBuilder)localObject).append(this.mScannerParams.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.mScannerParams.i);
       ((StringBuilder)localObject).append(" preScanResult:");
-      ((StringBuilder)localObject).append(this.mScannerParams.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult);
+      ((StringBuilder)localObject).append(this.mScannerParams.j);
       QLog.d("IQRScanConst_ScannerActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.mScannerParams.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult != null) && (this.mScannerParams.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.b()))
+    if ((this.mScannerParams.j != null) && (this.mScannerParams.j.f()))
     {
-      handleScannerResult(this.mScannerParams.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult, this.mScannerParams.jdField_a_of_type_Int);
+      handleScannerResult(this.mScannerParams.j, this.mScannerParams.h);
       return true;
     }
-    if (!TextUtils.isEmpty(this.mScannerParams.jdField_d_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.mScannerParams.i))
     {
       localObject = null;
       try
       {
-        JSONObject localJSONObject = new JSONObject(this.mScannerParams.jdField_d_of_type_JavaLangString);
+        JSONObject localJSONObject = new JSONObject(this.mScannerParams.i);
         localObject = localJSONObject;
       }
       catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
       }
-      int k = this.mScannerParams.jdField_a_of_type_Int;
+      int k = this.mScannerParams.h;
       int i;
       if ((QRUtils.a(k)) && (localObject != null)) {
         i = 1;
@@ -274,7 +274,8 @@ public class ScannerActivity
       }
       if (j != 0)
       {
-        handleScannerResult(2, "", ((JSONObject)localObject).optString("strMini"), k);
+        String str = ((JSONObject)localObject).optString("strMini");
+        handleScannerResult(2, ((JSONObject)localObject).optString("type"), str, k);
         return true;
       }
     }
@@ -299,7 +300,7 @@ public class ScannerActivity
       QLog.i("IQRScanConst_ScannerActivity", 1, ((StringBuilder)localObject).toString());
     }
     String str = paramString2.trim();
-    if (this.mScannerParams.jdField_a_of_type_Boolean)
+    if (this.mScannerParams.a)
     {
       Util.a(this.app);
       setResult(-1, getIntent().putExtra("scanResult", str));
@@ -348,14 +349,15 @@ public class ScannerActivity
   
   private void handleScannerResult(ScannerResult paramScannerResult, int paramInt)
   {
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("handleScannerResult requestType:");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append(" scannerResult:");
-      localStringBuilder.append(paramScannerResult);
-      QLog.d("IQRScanConst_ScannerActivity", 2, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleScannerResult requestType:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" scannerResult:");
+      ((StringBuilder)localObject).append(paramScannerResult);
+      QLog.d("IQRScanConst_ScannerActivity", 2, ((StringBuilder)localObject).toString());
     }
     if (paramScannerResult == null) {
       return;
@@ -365,16 +367,17 @@ public class ScannerActivity
       showMultiResultSelectPage(paramScannerResult, paramInt);
       return;
     }
-    if (paramScannerResult.d())
+    if (paramScannerResult.h())
     {
-      paramScannerResult = paramScannerResult.a();
+      paramScannerResult = paramScannerResult.b();
       if (paramScannerResult != null) {
         handleScannerResult(1, ((StringBuilder)paramScannerResult.second).toString(), ((StringBuilder)paramScannerResult.first).toString(), paramInt);
       }
     }
-    else if (paramScannerResult.c())
+    else if (paramScannerResult.g())
     {
-      handleScannerResult(2, "", paramScannerResult.a(), paramInt);
+      localObject = paramScannerResult.c();
+      handleScannerResult(2, paramScannerResult.d(), (String)localObject, paramInt);
     }
   }
   
@@ -391,42 +394,42 @@ public class ScannerActivity
   {
     this.mScannerParams = new ScannerParams();
     Object localObject = getIntent();
-    this.mScannerParams.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("from");
-    if ("addcontacts".equals(this.mScannerParams.jdField_a_of_type_JavaLangString))
+    this.mScannerParams.b = ((Intent)localObject).getStringExtra("from");
+    if ("addcontacts".equals(this.mScannerParams.b))
     {
       StatisticCollector.getInstance(getApplicationContext()).reportButtonClick(this.app, "", "addfriend_QR", 1);
     }
-    else if ("ImagePreviewActivity".equals(this.mScannerParams.jdField_a_of_type_JavaLangString))
+    else if ("ImagePreviewActivity".equals(this.mScannerParams.b))
     {
       StatisticCollector.getInstance(getApplicationContext()).reportButtonClick(this.app, "", "bigpicture_QR", 1);
     }
-    else if ("Conversation".equals(this.mScannerParams.jdField_a_of_type_JavaLangString))
+    else if ("Conversation".equals(this.mScannerParams.b))
     {
-      this.mScannerParams.jdField_c_of_type_Boolean = true;
+      this.mScannerParams.f = true;
       StatisticCollector.getInstance(getApplicationContext()).reportButtonClick(this.app, "", "bulb_QR", 1);
     }
-    else if (TextUtils.isEmpty(this.mScannerParams.jdField_a_of_type_JavaLangString))
+    else if (TextUtils.isEmpty(this.mScannerParams.b))
     {
       StatisticCollector.getInstance(getApplicationContext()).reportButtonClick(this.app, "", "find_QR", 1);
     }
-    else if ("publicAccountNew".equals(this.mScannerParams.jdField_a_of_type_JavaLangString))
+    else if ("publicAccountNew".equals(this.mScannerParams.b))
     {
       ((Intent)localObject).putExtra("scanForResult", true);
     }
-    else if ("QRDisplayActivity".equals(this.mScannerParams.jdField_a_of_type_JavaLangString))
+    else if ("QRDisplayActivity".equals(this.mScannerParams.b))
     {
-      this.mScannerParams.jdField_c_of_type_Boolean = true;
+      this.mScannerParams.f = true;
     }
-    this.mScannerParams.jdField_b_of_type_Boolean = ((Intent)localObject).getBooleanExtra("fromPicQRDecode", false);
-    this.mScannerParams.jdField_a_of_type_Int = ((Intent)localObject).getIntExtra("detectType", 3);
-    this.mScannerParams.jdField_d_of_type_JavaLangString = ((Intent)localObject).getStringExtra("preResult");
-    this.mScannerParams.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult = ((ScannerResult)((Intent)localObject).getParcelableExtra("preScanResult"));
-    this.mScannerParams.jdField_d_of_type_Boolean = super.getPackageManager().hasSystemFeature("android.hardware.camera");
-    this.mScannerParams.jdField_b_of_type_JavaLangString = ((Intent)localObject).getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+    this.mScannerParams.e = ((Intent)localObject).getBooleanExtra("fromPicQRDecode", false);
+    this.mScannerParams.h = ((Intent)localObject).getIntExtra("detectType", 3);
+    this.mScannerParams.i = ((Intent)localObject).getStringExtra("preResult");
+    this.mScannerParams.j = ((ScannerResult)((Intent)localObject).getParcelableExtra("preScanResult"));
+    this.mScannerParams.g = super.getPackageManager().hasSystemFeature("android.hardware.camera");
+    this.mScannerParams.c = ((Intent)localObject).getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
     ScannerParams localScannerParams = this.mScannerParams;
-    localScannerParams.jdField_c_of_type_JavaLangString = localScannerParams.jdField_b_of_type_JavaLangString;
-    this.mScannerParams.jdField_a_of_type_Boolean = ((Intent)localObject).getBooleanExtra("scanForResult", false);
-    this.progressBar = findViewById(2131376932);
+    localScannerParams.d = localScannerParams.c;
+    this.mScannerParams.a = ((Intent)localObject).getBooleanExtra("scanForResult", false);
+    this.progressBar = findViewById(2131445292);
     ViewCompat.setImportantForAccessibility(this.progressBar, 2);
     this.start_time = ((Intent)localObject).getLongExtra("start_time", -1L);
     localObject = new StringBuilder();
@@ -442,9 +445,9 @@ public class ScannerActivity
       this.mScannerMultiResultSelectView = new ScannerMultiResultSelectView(this);
       this.mScannerMultiResultSelectView.setMultiSelectListener(this.mMultiSelectListener);
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376933);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131445294);
     ScannerMultiResultSelectView.ImageData localImageData = new ScannerMultiResultSelectView.ImageData();
-    localImageData.jdField_a_of_type_JavaLangString = this.mScannerParams.jdField_c_of_type_JavaLangString;
+    localImageData.d = this.mScannerParams.d;
     this.mScannerMultiResultSelectView.a(localRelativeLayout, paramScannerResult, paramInt, localImageData, 2);
     Util.a(this.app);
   }
@@ -474,7 +477,7 @@ public class ScannerActivity
     localObject = new Intent(this, WebProcessReceiver.class);
     ((Intent)localObject).setAction("action_download_tbs");
     sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-    ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).launchAR(this, this.app, this.mScannerParams.jdField_a_of_type_JavaLangString, this.mClickTime, this.mToolProcExist, mFirstEnterAR, this.start_time);
+    ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).launchAR(this, this.app, this.mScannerParams.b, this.mClickTime, this.mToolProcExist, mFirstEnterAR, this.start_time);
     mFirstEnterAR = false;
     this.mHasStartedAR = true;
   }
@@ -531,7 +534,7 @@ public class ScannerActivity
     int i = 0;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561618);
+    super.setContentView(2131627997);
     this.app = getAppRuntime();
     initQrData();
     initQRScanResultProcessors();
@@ -557,9 +560,9 @@ public class ScannerActivity
     }
     else
     {
-      ReportController.b(null, "dc00898", "", "", "0X80085AA", "0X80085AA", 0, 0, "", "", this.mScannerParams.jdField_a_of_type_JavaLangString, "");
+      ReportController.b(null, "dc00898", "", "", "0X80085AA", "0X80085AA", 0, 0, "", "", this.mScannerParams.b, "");
     }
-    if ((TextUtils.isEmpty(this.mScannerParams.jdField_b_of_type_JavaLangString)) && (i == 0)) {
+    if ((TextUtils.isEmpty(this.mScannerParams.c)) && (i == 0)) {
       launchAr();
     }
     if (this.app.isLogin())
@@ -585,16 +588,20 @@ public class ScannerActivity
     }
     if ((!this.mHasStartedAR) || (this.mHasARBack))
     {
-      if ("com.tencent.ark.scan".equals(this.mScannerParams.jdField_a_of_type_JavaLangString))
+      if ("com.tencent.ark.scan".equals(this.mScannerParams.b))
       {
         localObject = new Intent("com.tencent.mobileqq.ark.api.scanResultAction");
         ((Intent)localObject).putExtra("com.tencent.ark.scanResultData", "");
         ((Intent)localObject).putExtra("com.tencent.ark.scanResultType", "");
         sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
       }
-      localObject = (IQRScanMainProcService)this.app.getRuntimeService(IQRScanMainProcService.class, "");
-      if (localObject != null) {
-        ((IQRScanMainProcService)localObject).onScannerDestroy();
+      localObject = this.app;
+      if ((localObject != null) && (((AppRuntime)localObject).isLogin()))
+      {
+        localObject = (IQRScanMainProcService)this.app.getRuntimeService(IQRScanMainProcService.class, "");
+        if (localObject != null) {
+          ((IQRScanMainProcService)localObject).onScannerDestroy();
+        }
       }
       if (QLog.isColorLevel()) {
         QLog.d("IQRScanConst_ScannerActivity", 2, "doOnDestroy in onScannerDestroy");
@@ -636,7 +643,7 @@ public class ScannerActivity
       QLog.d("IQRScanConst_ScannerActivity", 2, "doOnNewIntent");
     }
     super.doOnNewIntent(paramIntent);
-    this.mScannerParams.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+    this.mScannerParams.c = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
   }
   
   protected void doOnPause()
@@ -653,15 +660,15 @@ public class ScannerActivity
       QLog.d("IQRScanConst_ScannerActivity", 2, "onResume");
     }
     super.doOnResume();
-    if (!TextUtils.isEmpty(this.mScannerParams.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.mScannerParams.c))
     {
       ScannerParams localScannerParams = this.mScannerParams;
-      localScannerParams.jdField_c_of_type_JavaLangString = localScannerParams.jdField_b_of_type_JavaLangString;
+      localScannerParams.d = localScannerParams.c;
       this.progressBar.setVisibility(0);
       if (!handlePreScanResult()) {
-        handleDecodeFile(this.mScannerParams.jdField_b_of_type_JavaLangString, this.mScannerParams.jdField_a_of_type_Int);
+        handleDecodeFile(this.mScannerParams.c, this.mScannerParams.h);
       }
-      this.mScannerParams.jdField_b_of_type_JavaLangString = null;
+      this.mScannerParams.c = null;
     }
     if ((QLog.isColorLevel()) && (this.isFirstCreate) && (this.start_time > 0L))
     {
@@ -774,7 +781,7 @@ public class ScannerActivity
       if (this.mLoadingProgress == null)
       {
         this.mLoadingProgress = new QQProgressDialog(this, getTitleBarHeight());
-        this.mLoadingProgress.a(HardCodeUtil.a(2131716717));
+        this.mLoadingProgress.a(HardCodeUtil.a(2131914189));
         this.mLoadingProgress.c(false);
       }
       this.mProgressShowing = true;
@@ -835,7 +842,7 @@ public class ScannerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.ScannerActivity
  * JD-Core Version:    0.7.0.1
  */

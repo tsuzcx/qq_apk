@@ -12,13 +12,13 @@ class OnlineStatusPermissionManager$3
   {
     super.a(paramBoolean, paramBundle);
     if (paramBoolean) {
-      OnlineStatusPermissionManager.a(this.a);
+      OnlineStatusPermissionManager.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.OnlineStatusPermissionManager.3
  * JD-Core Version:    0.7.0.1
  */

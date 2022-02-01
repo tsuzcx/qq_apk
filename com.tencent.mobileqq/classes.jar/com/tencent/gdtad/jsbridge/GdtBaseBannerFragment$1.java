@@ -15,8 +15,8 @@ class GdtBaseBannerFragment$1
   public void onClick(View paramView)
   {
     boolean bool;
-    if (this.a.a() != null) {
-      bool = this.a.a().load(this.a.getBaseActivity());
+    if (this.a.b() != null) {
+      bool = this.a.b().load(this.a.getBaseActivity());
     } else {
       bool = false;
     }
@@ -32,7 +32,7 @@ class GdtBaseBannerFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtBaseBannerFragment.1
  * JD-Core Version:    0.7.0.1
  */

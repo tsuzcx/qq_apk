@@ -22,23 +22,23 @@ import com.tencent.qphone.base.util.QLog;
 class NormalFaceAdapter$NormalItemLayout
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private BaseFaceListAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter;
+  private int a;
   private int b;
   private int c;
-  private int d;
+  private View.OnClickListener d;
+  private int e;
+  private BaseFaceListAdapter f;
   
   public NormalFaceAdapter$NormalItemLayout(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener, BaseFaceListAdapter paramBaseFaceListAdapter)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramOnClickListener;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterBaseFaceListAdapter = paramBaseFaceListAdapter;
+    this.f = paramBaseFaceListAdapter;
     paramInt1 /= this.b;
     this.c = ((int)(paramInt1 * paramFloat));
-    this.d = (paramInt1 - this.c * 2);
+    this.e = (paramInt1 - this.c * 2);
     a();
   }
   
@@ -47,7 +47,7 @@ class NormalFaceAdapter$NormalItemLayout
     int i = 0;
     setOrientation(0);
     setGravity(17);
-    int j = this.jdField_a_of_type_Int / this.b;
+    int j = this.a / this.b;
     while (i < this.b)
     {
       URLImageView localURLImageView = new URLImageView(getContext());
@@ -96,7 +96,7 @@ class NormalFaceAdapter$NormalItemLayout
     int j = this.b;
     int i = paramInt1 * j;
     if (paramInt1 == paramInt2 - 1) {
-      paramInt1 = paramNormalFacePackage.b();
+      paramInt1 = paramNormalFacePackage.d();
     } else {
       paramInt1 = i + j;
     }
@@ -105,19 +105,19 @@ class NormalFaceAdapter$NormalItemLayout
     while (paramInt2 < paramInt1)
     {
       ImageView localImageView = (ImageView)getChildAt(paramInt2 - i);
-      localImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localImageView.setOnClickListener(this.d);
       Object localObject = paramNormalFacePackage.a(paramInt2);
-      localImageView.setTag(2131378314, localObject);
-      localImageView.setTag(2131378301, Integer.valueOf(paramInt2));
+      localImageView.setTag(2131446833, localObject);
+      localImageView.setTag(2131446820, Integer.valueOf(paramInt2));
       ImageLoader localImageLoader;
-      if (paramNormalFacePackage.a(paramInt2) == 1)
+      if (paramNormalFacePackage.c(paramInt2) == 1)
       {
         if ((getContext() instanceof EditPicActivity))
         {
           localObject = paramNormalFacePackage.b(paramInt2);
-          localImageView.setTag(2131378314, localObject);
+          localImageView.setTag(2131446833, localObject);
           localImageLoader = ImageLoader.a();
-          j = this.d;
+          j = this.e;
           localImageLoader.a(localImageView, (String)localObject, j, j, paramBoolean);
         }
         else
@@ -143,7 +143,7 @@ class NormalFaceAdapter$NormalItemLayout
       else
       {
         localImageLoader = ImageLoader.a();
-        j = this.d;
+        j = this.e;
         localImageLoader.a(localImageView, (String)localObject, j, j, paramBoolean);
       }
       paramInt2 += 1;
@@ -152,7 +152,7 @@ class NormalFaceAdapter$NormalItemLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.NormalFaceAdapter.NormalItemLayout
  * JD-Core Version:    0.7.0.1
  */

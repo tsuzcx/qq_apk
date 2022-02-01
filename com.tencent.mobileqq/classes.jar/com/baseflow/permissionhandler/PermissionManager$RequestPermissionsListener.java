@@ -10,29 +10,29 @@ import java.util.Map;
 final class PermissionManager$RequestPermissionsListener
   implements PluginRegistry.RequestPermissionsResultListener
 {
-  final Activity jdField_a_of_type_AndroidAppActivity;
-  final PermissionManager.RequestPermissionsSuccessCallback jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$RequestPermissionsSuccessCallback;
-  final Map<Integer, Integer> jdField_a_of_type_JavaUtilMap;
-  boolean jdField_a_of_type_Boolean = false;
+  final Activity a;
+  boolean b = false;
+  final PermissionManager.RequestPermissionsSuccessCallback c;
+  final Map<Integer, Integer> d;
   
   @VisibleForTesting
   PermissionManager$RequestPermissionsListener(Activity paramActivity, Map<Integer, Integer> paramMap, PermissionManager.RequestPermissionsSuccessCallback paramRequestPermissionsSuccessCallback)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$RequestPermissionsSuccessCallback = paramRequestPermissionsSuccessCallback;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.a = paramActivity;
+    this.c = paramRequestPermissionsSuccessCallback;
+    this.d = paramMap;
   }
   
   public boolean onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.b;
     int i = 0;
     if (!bool)
     {
       if (paramInt != 24) {
         return false;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       paramInt = i;
       while (paramInt < paramArrayOfString.length)
       {
@@ -44,26 +44,26 @@ final class PermissionManager$RequestPermissionsListener
           Map localMap;
           if (j == 7)
           {
-            if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(7))) {
-              this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(7), Integer.valueOf(PermissionUtils.a(this.jdField_a_of_type_AndroidAppActivity, str, i)));
+            if (!this.d.containsKey(Integer.valueOf(7))) {
+              this.d.put(Integer.valueOf(7), Integer.valueOf(PermissionUtils.a(this.a, str, i)));
             }
-            if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(14))) {
-              localMap = this.jdField_a_of_type_JavaUtilMap;
+            if (!this.d.containsKey(Integer.valueOf(14))) {
+              localMap = this.d;
             }
           }
           else
           {
             for (Integer localInteger = Integer.valueOf(14);; localInteger = Integer.valueOf(j))
             {
-              localMap.put(localInteger, Integer.valueOf(PermissionUtils.a(this.jdField_a_of_type_AndroidAppActivity, str, i)));
+              localMap.put(localInteger, Integer.valueOf(PermissionUtils.a(this.a, str, i)));
               break;
               if (j == 4)
               {
-                i = PermissionUtils.a(this.jdField_a_of_type_AndroidAppActivity, str, i);
-                if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(4))) {
+                i = PermissionUtils.a(this.a, str, i);
+                if (this.d.containsKey(Integer.valueOf(4))) {
                   break;
                 }
-                localMap = this.jdField_a_of_type_JavaUtilMap;
+                localMap = this.d;
               }
               for (localInteger = Integer.valueOf(4);; localInteger = Integer.valueOf(j))
               {
@@ -72,27 +72,27 @@ final class PermissionManager$RequestPermissionsListener
                 if (j != 3) {
                   break;
                 }
-                i = PermissionUtils.a(this.jdField_a_of_type_AndroidAppActivity, str, i);
-                if ((Build.VERSION.SDK_INT < 29) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(4)))) {
-                  this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), Integer.valueOf(i));
+                i = PermissionUtils.a(this.a, str, i);
+                if ((Build.VERSION.SDK_INT < 29) && (!this.d.containsKey(Integer.valueOf(4)))) {
+                  this.d.put(Integer.valueOf(4), Integer.valueOf(i));
                 }
-                if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(5))) {
-                  this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(5), Integer.valueOf(i));
+                if (!this.d.containsKey(Integer.valueOf(5))) {
+                  this.d.put(Integer.valueOf(5), Integer.valueOf(i));
                 }
-                localMap = this.jdField_a_of_type_JavaUtilMap;
+                localMap = this.d;
               }
-              if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(j))) {
+              if (this.d.containsKey(Integer.valueOf(j))) {
                 break;
               }
-              localMap = this.jdField_a_of_type_JavaUtilMap;
+              localMap = this.d;
             }
           }
           label384:
-          PermissionUtils.a(this.jdField_a_of_type_AndroidAppActivity, j);
+          PermissionUtils.a(this.a, j);
         }
         paramInt += 1;
       }
-      this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$RequestPermissionsSuccessCallback.a(this.jdField_a_of_type_JavaUtilMap);
+      this.c.a(this.d);
       return true;
     }
     return false;

@@ -36,7 +36,7 @@ class ChatBackgroundUiPlugin$1
       }
       if ((paramBundle != null) && (paramBundle.equals("chatbackground_setbg")))
       {
-        paramBundle = this.this$0.mRuntime.a();
+        paramBundle = this.this$0.mRuntime.d();
         if (paramBundle != null)
         {
           if (QLog.isColorLevel()) {
@@ -54,7 +54,7 @@ class ChatBackgroundUiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatBackgroundUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

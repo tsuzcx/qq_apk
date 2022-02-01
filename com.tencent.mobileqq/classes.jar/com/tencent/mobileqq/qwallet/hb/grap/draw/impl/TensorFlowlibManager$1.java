@@ -12,14 +12,14 @@ class TensorFlowlibManager$1
   {
     if (paramInt == 0)
     {
-      TensorFlowlibManager.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplTensorFlowlibManager, true);
-      paramLoadExtResult = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplTensorFlowlibManager$OnInitLibListener;
+      TensorFlowlibManager.a(this.b, true);
+      paramLoadExtResult = this.a;
       if (paramLoadExtResult != null) {
         paramLoadExtResult.a(true);
       }
       return;
     }
-    paramLoadExtResult = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplTensorFlowlibManager$OnInitLibListener;
+    paramLoadExtResult = this.a;
     if (paramLoadExtResult != null) {
       paramLoadExtResult.a(false);
     }
@@ -27,7 +27,7 @@ class TensorFlowlibManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.TensorFlowlibManager.1
  * JD-Core Version:    0.7.0.1
  */

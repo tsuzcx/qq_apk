@@ -9,13 +9,13 @@ class BaseAuthorityPresenter$4
   
   public void run()
   {
-    String str = AuthorityUtil.a(new Object[] { "ret", Integer.valueOf(this.jdField_a_of_type_Int), "msg", this.jdField_a_of_type_JavaLangString });
-    this.this$0.a(this.jdField_a_of_type_Int, str, null, null);
+    String str = AuthorityUtil.b(new Object[] { "ret", Integer.valueOf(this.a), "msg", this.b });
+    this.this$0.a(this.a, str, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.BaseAuthorityPresenter.4
  * JD-Core Version:    0.7.0.1
  */

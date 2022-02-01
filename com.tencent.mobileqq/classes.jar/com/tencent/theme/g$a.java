@@ -9,13 +9,14 @@ class g$a
   
   protected Void a(Void... paramVarArgs)
   {
-    this.a.c();
+    h.a("SkinEngine", 1, "mRecordTask start");
+    this.a.d();
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.g.a
  * JD-Core Version:    0.7.0.1
  */

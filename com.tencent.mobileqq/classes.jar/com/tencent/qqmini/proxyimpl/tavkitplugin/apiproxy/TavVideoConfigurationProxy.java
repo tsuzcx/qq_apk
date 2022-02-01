@@ -63,7 +63,7 @@ class TavVideoConfigurationProxy
       f(paramSendMsgTavEvent, paramTAVVideoConfiguration);
       return;
     }
-    paramTAVVideoConfiguration.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.valueOf(paramSendMsgTavEvent.a().getString("contentMode")));
+    paramTAVVideoConfiguration.setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode.valueOf(paramSendMsgTavEvent.c().getString("contentMode")));
     a();
   }
   
@@ -74,7 +74,7 @@ class TavVideoConfigurationProxy
       g(paramSendMsgTavEvent, paramTAVVideoConfiguration);
       return;
     }
-    paramTAVVideoConfiguration.setFrame(ObjConvector.a(paramSendMsgTavEvent.a().getJSONObject("frame")));
+    paramTAVVideoConfiguration.setFrame(ObjConvector.f(paramSendMsgTavEvent.c().getJSONObject("frame")));
     a();
   }
   
@@ -85,7 +85,7 @@ class TavVideoConfigurationProxy
       h(paramSendMsgTavEvent, paramTAVVideoConfiguration);
       return;
     }
-    paramTAVVideoConfiguration.setTransform(ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray("matrix")));
+    paramTAVVideoConfiguration.setTransform(ObjConvector.a(paramSendMsgTavEvent.c().getJSONArray("matrix")));
     a();
   }
   
@@ -96,7 +96,7 @@ class TavVideoConfigurationProxy
       c();
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("effect");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("effect");
     if ((paramSendMsgTavEvent instanceof TAVVideoEffect))
     {
       paramTAVVideoConfiguration.addEffect((TAVVideoEffect)paramSendMsgTavEvent);
@@ -115,7 +115,7 @@ class TavVideoConfigurationProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TAVVideoConfiguration))
     {
       b();
@@ -126,7 +126,7 @@ class TavVideoConfigurationProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavVideoConfigurationProxy
  * JD-Core Version:    0.7.0.1
  */

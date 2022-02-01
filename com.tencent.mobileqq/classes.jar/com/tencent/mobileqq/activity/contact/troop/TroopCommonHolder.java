@@ -11,16 +11,16 @@ import com.tencent.mobileqq.troop.adapter.base.ViewHolder;
 public class TroopCommonHolder
   extends ViewHolder
 {
-  public int a;
   public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public String a;
-  public LinearLayout b;
-  public TextView b;
   public String b;
+  public LinearLayout c;
+  public ImageView d;
+  public LinearLayout e;
+  public TextView f;
+  public TextView g;
+  public Button h;
+  public int i;
+  public String j;
   
   public TroopCommonHolder(Context paramContext, View paramView)
   {
@@ -29,7 +29,7 @@ public class TroopCommonHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopCommonHolder
  * JD-Core Version:    0.7.0.1
  */

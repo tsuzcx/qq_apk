@@ -7,12 +7,12 @@ class ScanOcrActivity$6$4$1
   
   public void run()
   {
-    ScanOcrActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a, this.a.jdField_a_of_type_JavaLangString, false);
+    ScanOcrActivity.a(this.a.b.a, this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4.1
  * JD-Core Version:    0.7.0.1
  */

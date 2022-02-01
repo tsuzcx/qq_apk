@@ -7,39 +7,39 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopModifyObserver
   implements BusinessObserver
 {
-  public static final int a;
+  private static int a;
   public static final int b;
   public static final int c;
   public static final int d;
   public static final int e;
   public static final int f;
-  private static int g;
+  public static final int g;
   
   static
   {
-    int i = g;
-    g = i + 1;
-    a = i;
-    i = g;
-    g = i + 1;
+    int i = a;
+    a = i + 1;
     b = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     c = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     d = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     e = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     f = i;
+    i = a;
+    a = i + 1;
+    g = i;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != b) {
+    if (paramInt != c) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -53,7 +53,7 @@ public class TroopModifyObserver
   
   private void b(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != a) {
+    if (paramInt != b) {
       return;
     }
     try
@@ -72,7 +72,7 @@ public class TroopModifyObserver
   
   private void c(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != c) {
+    if (paramInt != d) {
       return;
     }
     if ((paramObject instanceof String)) {
@@ -82,7 +82,7 @@ public class TroopModifyObserver
   
   private void d(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != d) {
+    if (paramInt != e) {
       return;
     }
     if (!(paramObject instanceof Object[])) {
@@ -102,7 +102,7 @@ public class TroopModifyObserver
   
   private void e(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != e) {
+    if (paramInt != f) {
       return;
     }
     if (!(paramObject instanceof Object[])) {
@@ -119,7 +119,7 @@ public class TroopModifyObserver
   
   private void f(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != f) {
+    if (paramInt != g) {
       return;
     }
     paramObject = (Object[])paramObject;
@@ -150,7 +150,7 @@ public class TroopModifyObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.observer.TroopModifyObserver
  * JD-Core Version:    0.7.0.1
  */

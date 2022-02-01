@@ -16,7 +16,7 @@ public class NearbyUtilsDelegateImpl
 {
   public String convertFrom4Report(int paramInt)
   {
-    return NearbyUtilsReal.a(paramInt);
+    return NearbyUtilsReal.b(paramInt);
   }
   
   public void createTagView(TextView paramTextView, String paramString, int paramInt1, int paramInt2, Drawable paramDrawable)
@@ -106,7 +106,7 @@ public class NearbyUtilsDelegateImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.api.impl.NearbyUtilsDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

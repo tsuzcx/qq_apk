@@ -10,29 +10,29 @@ class GroupSearchRecommendView$1
   
   public void a()
   {
-    if ((this.a.a != null) && (this.a.a.a() != null))
+    if ((this.a.a != null) && (this.a.a.b() != null))
     {
-      if (this.a.a.a().isFinishing()) {
+      if (this.a.a.b().isFinishing()) {
         return;
       }
-      GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+      GroupSearchRecommendView.b(this.a).sendEmptyMessage(2);
     }
   }
   
   public void b()
   {
-    if ((this.a.a != null) && (this.a.a.a() != null))
+    if ((this.a.a != null) && (this.a.a.b() != null))
     {
-      if (this.a.a.a().isFinishing()) {
+      if (this.a.a.b().isFinishing()) {
         return;
       }
-      GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
+      GroupSearchRecommendView.b(this.a).sendEmptyMessage(3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView.1
  * JD-Core Version:    0.7.0.1
  */

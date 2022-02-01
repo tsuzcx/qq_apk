@@ -32,7 +32,52 @@ public class QBrowserUtils
     return 7;
   }
   
-  public static String a(long paramLong)
+  public static void a(long paramLong)
+  {
+    int i;
+    if (paramLong < 51200L) {
+      i = 1;
+    } else if (paramLong < 102400L) {
+      i = 2;
+    } else if (paramLong < 512000L) {
+      i = 3;
+    } else if (paramLong < 1024000L) {
+      i = 4;
+    } else if (paramLong < 3072000L) {
+      i = 5;
+    } else if (paramLong < 10240000L) {
+      i = 6;
+    } else {
+      i = 7;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
+  }
+  
+  public static int b(int paramInt)
+  {
+    if (paramInt != 3)
+    {
+      if (paramInt != 4)
+      {
+        if (paramInt != 6)
+        {
+          if (paramInt != 7)
+          {
+            if (paramInt != 9) {
+              return 6;
+            }
+            return 4;
+          }
+          return 2;
+        }
+        return 3;
+      }
+      return 5;
+    }
+    return 1;
+  }
+  
+  public static String b(long paramLong)
   {
     if (paramLong <= 0L) {
       return "00:00:00";
@@ -90,51 +135,6 @@ public class QBrowserUtils
     return localStringBuilder.toString();
   }
   
-  public static void a(long paramLong)
-  {
-    int i;
-    if (paramLong < 51200L) {
-      i = 1;
-    } else if (paramLong < 102400L) {
-      i = 2;
-    } else if (paramLong < 512000L) {
-      i = 3;
-    } else if (paramLong < 1024000L) {
-      i = 4;
-    } else if (paramLong < 3072000L) {
-      i = 5;
-    } else if (paramLong < 10240000L) {
-      i = 6;
-    } else {
-      i = 7;
-    }
-    ReportController.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
-  }
-  
-  public static int b(int paramInt)
-  {
-    if (paramInt != 3)
-    {
-      if (paramInt != 4)
-      {
-        if (paramInt != 6)
-        {
-          if (paramInt != 7)
-          {
-            if (paramInt != 9) {
-              return 6;
-            }
-            return 4;
-          }
-          return 2;
-        }
-        return 3;
-      }
-      return 5;
-    }
-    return 1;
-  }
-  
   public static int c(int paramInt)
   {
     if (paramInt != 13) {
@@ -155,7 +155,7 @@ public class QBrowserUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QBrowserUtils
  * JD-Core Version:    0.7.0.1
  */

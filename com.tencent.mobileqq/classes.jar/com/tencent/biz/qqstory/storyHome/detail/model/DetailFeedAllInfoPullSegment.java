@@ -12,34 +12,34 @@ import com.tribe.async.parallel.ParallelStream;
 public class DetailFeedAllInfoPullSegment
   extends JobSegment<DetailFeedItem, DetailFeedItem>
 {
-  private DetailFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
-  private JobContext jdField_a_of_type_ComTribeAsyncAsyncJobContext;
-  private ParallelStream jdField_a_of_type_ComTribeAsyncParallelParallelStream;
+  private DetailFeedItem a;
+  private JobContext b;
+  private ParallelStream c;
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new DetailFeedAllInfoPullSegment.RequestViewCountSegment(this), paramString);
+    this.c = ParallelStream.of(new DetailFeedAllInfoPullSegment.RequestViewCountSegment(this), paramString);
     FeedCommentSync localFeedCommentSync1;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a())
+    if (this.a.b())
     {
       localFeedCommentSync1 = new FeedCommentSync(paramString, 2, "", 0);
       FeedCommentSync localFeedCommentSync2 = new FeedCommentSync(paramString, 2, "", 1);
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, 0), paramString).map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, 1), paramString).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync1).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync2);
+      this.c = this.c.map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, 0), paramString).map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, 1), paramString).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync1).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync2);
     }
     else
     {
       localFeedCommentSync1 = new FeedCommentSync(paramString, 2, "");
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, -1), paramString).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync1);
+      this.c = this.c.map(new DetailFeedAllInfoPullSegment.RequestLikeListSegment(this, -1), paramString).map(new DetailFeedAllInfoPullSegment.RequestCommentListSegment(this), localFeedCommentSync1);
     }
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new DetailFeedAllInfoPullSegment.Observer(this));
+    this.c.subscribe(new DetailFeedAllInfoPullSegment.Observer(this));
   }
   
   protected void a(JobContext paramJobContext, DetailFeedItem paramDetailFeedItem)
   {
     if ((paramDetailFeedItem != null) && (paramDetailFeedItem.a != null) && (!TextUtils.isEmpty(paramDetailFeedItem.a.feedId)))
     {
-      this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
+      this.b = paramJobContext;
+      this.a = paramDetailFeedItem;
       a(paramDetailFeedItem.a.feedId);
       return;
     }
@@ -50,7 +50,7 @@ public class DetailFeedAllInfoPullSegment
   protected void onCancel()
   {
     super.onCancel();
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
+    this.c.cancel();
   }
 }
 

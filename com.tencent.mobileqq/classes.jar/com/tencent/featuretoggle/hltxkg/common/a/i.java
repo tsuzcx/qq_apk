@@ -27,53 +27,6 @@ public class i
     this.a = ((ThreadPoolExecutor)Executors.newCachedThreadPool(new com.tencent.featuretoggle.hltxkg.common.a.a.a(localStringBuilder.toString())));
   }
   
-  private static int a(String paramString, int paramInt)
-  {
-    if (paramString.equals("HLDisconnEvent")) {
-      return -2;
-    }
-    int j = 1;
-    int i;
-    if (paramInt != 0)
-    {
-      if ((paramInt != -4) && (paramInt != -3) && (paramInt != -288)) {
-        i = 0;
-      } else {
-        i = 1;
-      }
-      if (i == 0)
-      {
-        paramString = "self_report_fail_denominator_value";
-        break label63;
-      }
-    }
-    paramString = "self_report_succ_denominator_value";
-    label63:
-    if (paramInt != 0)
-    {
-      i = j;
-      if (paramInt != -4)
-      {
-        i = j;
-        if (paramInt != -3) {
-          if (paramInt == -288) {
-            i = j;
-          } else {
-            i = 0;
-          }
-        }
-      }
-      if (i == 0)
-      {
-        paramInt = 2;
-        break label112;
-      }
-    }
-    paramInt = 100;
-    label112:
-    return a(paramString, 0, 2147483647, paramInt);
-  }
-  
   public static int a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     try
@@ -99,10 +52,10 @@ public class i
   {
     int i = 2;
     if (paramInt1 == 2) {
-      return a(paramString, paramInt2);
+      return b(paramString, paramInt2);
     }
     if (("HLHttpDirect".equals(paramString)) && (paramMap != null) && ("event".equals((String)paramMap.get("B15")))) {
-      return a(paramString, paramInt2);
+      return b(paramString, paramInt2);
     }
     if ("HLConnEvent".equals(paramString))
     {
@@ -309,6 +262,53 @@ public class i
     return false;
   }
   
+  private static int b(String paramString, int paramInt)
+  {
+    if (paramString.equals("HLDisconnEvent")) {
+      return -2;
+    }
+    int j = 1;
+    int i;
+    if (paramInt != 0)
+    {
+      if ((paramInt != -4) && (paramInt != -3) && (paramInt != -288)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (i == 0)
+      {
+        paramString = "self_report_fail_denominator_value";
+        break label63;
+      }
+    }
+    paramString = "self_report_succ_denominator_value";
+    label63:
+    if (paramInt != 0)
+    {
+      i = j;
+      if (paramInt != -4)
+      {
+        i = j;
+        if (paramInt != -3) {
+          if (paramInt == -288) {
+            i = j;
+          } else {
+            i = 0;
+          }
+        }
+      }
+      if (i == 0)
+      {
+        paramInt = 2;
+        break label112;
+      }
+    }
+    paramInt = 100;
+    label112:
+    return a(paramString, 0, 2147483647, paramInt);
+  }
+  
   public static boolean b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -437,7 +437,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.i
  * JD-Core Version:    0.7.0.1
  */

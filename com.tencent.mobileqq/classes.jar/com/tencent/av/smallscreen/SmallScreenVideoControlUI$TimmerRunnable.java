@@ -13,25 +13,25 @@ class SmallScreenVideoControlUI$TimmerRunnable
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_b_of_type_Boolean))
+    if ((this.this$0.z != null) && (this.this$0.s))
     {
-      long l = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-      if ((this.this$0.jdField_b_of_type_JavaLangString == null) || (l != 0L))
+      long l = this.this$0.z.z();
+      if ((this.this$0.u == null) || (l != 0L))
       {
-        this.this$0.jdField_b_of_type_JavaLangString = UITools.a(l);
-        if ((this.this$0.jdField_a_of_type_AndroidWidgetTextView != null) && (!this.this$0.c))
+        this.this$0.u = UITools.a(l);
+        if ((this.this$0.B != null) && (!this.this$0.t))
         {
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(UITools.a(this.this$0.jdField_b_of_type_JavaLangString));
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.this$0.jdField_b_of_type_JavaLangString);
+          this.this$0.B.setContentDescription(UITools.a(this.this$0.u));
+          this.this$0.B.setText(this.this$0.u);
         }
       }
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+      this.this$0.y.a().postDelayed(this, 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoControlUI.TimmerRunnable
  * JD-Core Version:    0.7.0.1
  */

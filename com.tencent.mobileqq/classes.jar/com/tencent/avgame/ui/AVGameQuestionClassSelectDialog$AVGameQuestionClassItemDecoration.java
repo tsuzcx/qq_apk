@@ -9,13 +9,13 @@ import android.view.View;
 public class AVGameQuestionClassSelectDialog$AVGameQuestionClassItemDecoration
   extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int;
   private int b;
+  private int c;
   
   public AVGameQuestionClassSelectDialog$AVGameQuestionClassItemDecoration(AVGameQuestionClassSelectDialog paramAVGameQuestionClassSelectDialog, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)

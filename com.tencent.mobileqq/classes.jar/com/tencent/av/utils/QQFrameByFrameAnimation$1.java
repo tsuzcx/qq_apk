@@ -9,23 +9,23 @@ class QQFrameByFrameAnimation$1
   
   public void run()
   {
-    if ((this.this$0.d > 0) && (this.this$0.c >= this.this$0.d))
+    if ((this.this$0.g > 0) && (this.this$0.f >= this.this$0.g))
     {
       this.this$0.c();
       return;
     }
-    if ((this.this$0.b > 0) && (this.this$0.c / this.this$0.jdField_a_of_type_ArrayOfInt.length >= this.this$0.b))
+    if ((this.this$0.e > 0) && (this.this$0.f / this.this$0.c.length >= this.this$0.e))
     {
       this.this$0.c();
       return;
     }
     this.this$0.a();
-    this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.this$0.jdField_a_of_type_Int);
-    if (this.this$0.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener != null)
+    this.this$0.h.postDelayed(this, this.this$0.d);
+    if (this.this$0.b != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener.c();
-      if ((this.this$0.jdField_a_of_type_ArrayOfInt.length > 0) && (this.this$0.c % this.this$0.jdField_a_of_type_ArrayOfInt.length == 0)) {
-        this.this$0.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener.b();
+      this.this$0.b.c();
+      if ((this.this$0.c.length > 0) && (this.this$0.f % this.this$0.c.length == 0)) {
+        this.this$0.b.b();
       }
     }
   }

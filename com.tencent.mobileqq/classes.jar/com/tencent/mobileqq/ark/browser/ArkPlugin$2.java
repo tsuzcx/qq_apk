@@ -13,16 +13,16 @@ class ArkPlugin$2
   
   public void onClick(View paramView)
   {
-    if ((ArkPlugin.a(this.a) == 0) && (!TextUtils.isEmpty(ArkPlugin.b(this.a)))) {
+    if ((ArkPlugin.a(this.a) == 0) && (!TextUtils.isEmpty(ArkPlugin.c(this.a)))) {
       ArkPlugin.a(this.a, null);
     }
-    ArkPlugin.a(this.a).dismiss();
+    ArkPlugin.e(this.a).dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkPlugin.2
  * JD-Core Version:    0.7.0.1
  */

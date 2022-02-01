@@ -20,32 +20,32 @@ import java.util.List;
 public class ReadInJoyCameraCaptureSoManager
   implements IAEDownloadCallBack, IReadInJoyCameraCaptureSoManager, ShortVideoResourceManager.INet_ShortVideoResource, ShortVideoResourceStatus.ISVConfig
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Callback jdField_a_of_type_ComTencentMobileqqKandianBizUgcCameraApiCallback;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private QQAppInterface b;
+  private Context c;
+  private Callback d;
+  private boolean e;
+  private boolean f;
+  private boolean g;
   
   public ReadInJoyCameraCaptureSoManager(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     boolean bool = true;
-    this.jdField_a_of_type_Boolean = true;
-    this.b = false;
-    this.c = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.e = true;
+    this.f = false;
+    this.g = false;
+    this.b = paramQQAppInterface;
+    this.c = paramContext;
     int i = ((IAEResUtil)QRoute.api(IAEResUtil.class)).getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE);
     paramQQAppInterface = (IAEResUtil)QRoute.api(IAEResUtil.class);
     if (i == 0) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.e = bool;
   }
   
   private void a()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.b;
     if (localQQAppInterface != null)
     {
       ShortVideoResourceManager.b(localQQAppInterface, this);
@@ -56,7 +56,7 @@ public class ReadInJoyCameraCaptureSoManager
   private void a(int paramInt)
   {
     a();
-    Callback localCallback = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCameraApiCallback;
+    Callback localCallback = this.d;
     if (localCallback != null) {
       localCallback.a(paramInt);
     }
@@ -64,7 +64,7 @@ public class ReadInJoyCameraCaptureSoManager
   
   private void b()
   {
-    if ((this.b) && ((this.c) || (!this.jdField_a_of_type_Boolean))) {
+    if ((this.f) && ((this.g) || (!this.e))) {
       a(1);
     }
   }
@@ -83,7 +83,7 @@ public class ReadInJoyCameraCaptureSoManager
         return;
       }
       AEQLog.d("ReadInJoyCameraCaptureSoManager", "[onAEDownloadFinish] success");
-      this.c = true;
+      this.g = true;
       b();
     }
   }
@@ -113,9 +113,9 @@ public class ReadInJoyCameraCaptureSoManager
     {
       localObject = new ArrayList(1);
       i = j;
-      if (ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject) == 0)
+      if (ShortVideoResourceManager.a(this.b, (List)localObject) == 0)
       {
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject, this);
+        ShortVideoResourceManager.a(this.b, (List)localObject, this);
         paramInt1 = ((IAEResUtil)QRoute.api(IAEResUtil.class)).getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE);
         localObject = (IAEResUtil)QRoute.api(IAEResUtil.class);
         if (paramInt1 != 2)
@@ -124,7 +124,7 @@ public class ReadInJoyCameraCaptureSoManager
           localObject = (IAEResUtil)QRoute.api(IAEResUtil.class);
           if (paramInt1 != 2)
           {
-            this.c = true;
+            this.g = true;
             VideoEnvironment.LogDownLoad("ReadInJoyCameraCaptureSoManager", "onConfigResult| getFilterSoState != 2", null);
             break label293;
           }
@@ -157,7 +157,7 @@ public class ReadInJoyCameraCaptureSoManager
       }
       else
       {
-        this.b = true;
+        this.f = true;
         b();
       }
     }
@@ -180,7 +180,7 @@ public class ReadInJoyCameraCaptureSoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.capture.ReadInJoyCameraCaptureSoManager
  * JD-Core Version:    0.7.0.1
  */

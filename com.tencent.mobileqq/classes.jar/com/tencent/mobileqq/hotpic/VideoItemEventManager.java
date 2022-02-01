@@ -9,43 +9,43 @@ import java.util.ArrayList;
 
 public class VideoItemEventManager
 {
-  private static volatile VideoItemEventManager jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new VideoItemEventManager.2(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new VideoItemEventManager.1(this);
-  private ArrayList<VideoItemEventManager.onVideoItemEventListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private static volatile VideoItemEventManager b;
+  BroadcastReceiver a = new VideoItemEventManager.2(this);
+  private Context c;
+  private boolean d = false;
+  private ArrayList<VideoItemEventManager.onVideoItemEventListener> e = new ArrayList();
+  private INetInfoHandler f = new VideoItemEventManager.1(this);
   
   private VideoItemEventManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.c = paramContext.getApplicationContext();
     a(true);
   }
   
   public static VideoItemEventManager a(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager == null) {
-          jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager = new VideoItemEventManager(paramContext);
+        if (b == null) {
+          b = new VideoItemEventManager(paramContext);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager;
+    return b;
   }
   
   public void a(VideoItemEventManager.onVideoItemEventListener paramonVideoItemEventListener)
   {
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramonVideoItemEventListener)) && (paramonVideoItemEventListener != null)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramonVideoItemEventListener);
+    if ((!this.e.contains(paramonVideoItemEventListener)) && (paramonVideoItemEventListener != null)) {
+      this.e.add(paramonVideoItemEventListener);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    if (this.d == paramBoolean) {
       return;
     }
     if (paramBoolean)
@@ -57,18 +57,18 @@ public class VideoItemEventManager
       localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
       localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
       localIntentFilter.addAction("VolumeBtnDown");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      this.c.registerReceiver(this.a, localIntentFilter);
+      AppNetConnInfo.registerConnectionChangeReceiver(this.c, this.f);
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    this.c.unregisterReceiver(this.a);
+    this.e.clear();
+    AppNetConnInfo.unregisterNetInfoHandler(this.f);
   }
   
   public boolean a()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     boolean bool = false;
     if (localArrayList == null) {
       return false;
@@ -81,14 +81,14 @@ public class VideoItemEventManager
   
   public void b(VideoItemEventManager.onVideoItemEventListener paramonVideoItemEventListener)
   {
-    if ((paramonVideoItemEventListener != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramonVideoItemEventListener))) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramonVideoItemEventListener);
+    if ((paramonVideoItemEventListener != null) && (this.e.contains(paramonVideoItemEventListener))) {
+      this.e.remove(paramonVideoItemEventListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoItemEventManager
  * JD-Core Version:    0.7.0.1
  */

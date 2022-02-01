@@ -14,25 +14,25 @@ class TroopPhotoController$3
   public void run()
   {
     Object localObject = this.this$0;
-    if (!((TroopPhotoController)localObject).a(((TroopPhotoController)localObject).jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin)) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin);
+    if (!((TroopPhotoController)localObject).b(((TroopPhotoController)localObject).o.troopuin)) {
+      this.this$0.r.a(this.this$0.o.troopuin);
     }
-    localObject = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+    localObject = this.this$0.z.iterator();
     while (((Iterator)localObject).hasNext())
     {
       TroopClipPic localTroopClipPic = (TroopClipPic)((Iterator)localObject).next();
-      if (localTroopClipPic.ts == this.jdField_a_of_type_ComTencentMobileqqTroopAvatarAvatarInfo.a) {
-        this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(localTroopClipPic);
+      if (localTroopClipPic.ts == this.a.n) {
+        this.this$0.z.remove(localTroopClipPic);
       }
     }
-    this.this$0.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqTroopAvatarAvatarInfo);
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqTroopAvatarAvatarInfo);
-    TroopPhotoController.a(this.jdField_a_of_type_JavaLangString);
+    this.this$0.y.remove(this.a);
+    this.this$0.a(this.a);
+    TroopPhotoController.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.TroopPhotoController.3
  * JD-Core Version:    0.7.0.1
  */

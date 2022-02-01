@@ -21,9 +21,9 @@ public class HttpOpenMicroAppAction
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("mini_appid")))
+      if ((this.f != null) && (this.f.containsKey("mini_appid")))
       {
-        bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey("fakeUrl");
+        bool = this.f.containsKey("fakeUrl");
         if (!bool)
         {
           j = 1;
@@ -36,11 +36,11 @@ public class HttpOpenMicroAppAction
       int i = k;
       try
       {
-        if (this.jdField_a_of_type_JavaUtilHashMap != null)
+        if (this.f != null)
         {
           i = k;
-          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("appscene")) {
-            i = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("appscene"));
+          if (this.f.containsKey("appscene")) {
+            i = Integer.parseInt((String)this.f.get("appscene"));
           }
         }
       }
@@ -50,9 +50,9 @@ public class HttpOpenMicroAppAction
         i = 2016;
       }
       if (j != 0) {
-        return MiniAppLauncher.launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+        return MiniAppLauncher.launchMiniAppByScheme(this.b, this.f);
       }
-      boolean bool = ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppByScheme(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap, i, null, null);
+      boolean bool = ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppByScheme(this.b, this.f, i, null, null);
       return bool;
     }
     catch (Exception localException2)
@@ -61,14 +61,14 @@ public class HttpOpenMicroAppAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException2.getMessage());
       QLog.e("HttpOpenMicroAppAction", 1, localStringBuilder.toString());
-      b_("HttpOpenMicroAppAction");
+      h_("HttpOpenMicroAppAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.HttpOpenMicroAppAction
  * JD-Core Version:    0.7.0.1
  */

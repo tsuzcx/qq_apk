@@ -14,20 +14,20 @@ public class PngFrameDrawable
   extends Drawable
   implements IRedrawNotify
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private PngFrameDrawable.PngFrameState jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState;
-  private PngGifEngine jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine;
+  private int a;
+  private PngFrameDrawable.PngFrameState b;
+  private PngGifEngine c;
+  private Bitmap d;
   
   private PngFrameDrawable(PngFrameDrawable.PngFrameState paramPngFrameState, Resources paramResources)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState = paramPngFrameState;
+    this.b = paramPngFrameState;
     if (paramResources != null) {
-      this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
+      this.a = paramResources.getDisplayMetrics().densityDpi;
     } else {
-      this.jdField_a_of_type_Int = paramPngFrameState.d;
+      this.a = paramPngFrameState.j;
     }
-    a();
+    c();
   }
   
   public PngFrameDrawable(PngPlayParam paramPngPlayParam, Resources paramResources)
@@ -35,38 +35,33 @@ public class PngFrameDrawable
     this(new PngFrameDrawable.PngFrameState(paramPngPlayParam), paramResources);
   }
   
-  private void a()
+  private void c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PngFrameDrawable", 2, "func initGifEngine");
     }
     PngGifEngine.PngGifTaskParam localPngGifTaskParam = new PngGifEngine.PngGifTaskParam();
-    localPngGifTaskParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawableIRedrawNotify = this;
-    localPngGifTaskParam.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_b_of_type_Int;
-    localPngGifTaskParam.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_Int;
-    if (!this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_Boolean) {
-      localPngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString = null;
+    localPngGifTaskParam.e = this;
+    localPngGifTaskParam.a = this.b.d;
+    localPngGifTaskParam.b = this.b.c;
+    if (!this.b.f) {
+      localPngGifTaskParam.c = null;
     } else {
-      localPngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_ArrayOfJavaLangString;
+      localPngGifTaskParam.c = this.b.a;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine = new PngGifEngine();
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine.a(localPngGifTaskParam);
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.c = new PngGifEngine();
+    this.c.a(localPngGifTaskParam);
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine == null) {
+    if (this.c == null) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_b_of_type_ArrayOfJavaLangString != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_b_of_type_ArrayOfJavaLangString.length)) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_b_of_type_ArrayOfJavaLangString[paramInt]);
+    if ((this.b.b != null) && (paramInt >= 0) && (paramInt < this.b.b.length)) {
+      this.c.a(this.b.b[paramInt]);
     }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine.a();
+    this.c.a();
   }
   
   public void a(Bitmap paramBitmap)
@@ -81,18 +76,23 @@ public class PngFrameDrawable
     if (paramBitmap == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.d;
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.d.recycle();
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.d = paramBitmap;
     invalidateSelf();
   }
   
   public boolean a()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.d;
     return (localBitmap != null) && (!localBitmap.isRecycled());
+  }
+  
+  public Bitmap b()
+  {
+    return this.d;
   }
   
   public void draw(Canvas paramCanvas)
@@ -101,18 +101,18 @@ public class PngFrameDrawable
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("func draw,bitmap:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      ((StringBuilder)localObject).append(this.d);
       QLog.d("PngFrameDrawable", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.d;
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, getBounds(), this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(this.d, null, getBounds(), this.b.g);
     }
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState;
+    return this.b;
   }
   
   public int getOpacity()
@@ -122,22 +122,22 @@ public class PngFrameDrawable
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.b.g.getAlpha())
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.b.g.setAlpha(paramInt);
       invalidateSelf();
     }
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.b.g.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameDrawable
  * JD-Core Version:    0.7.0.1
  */

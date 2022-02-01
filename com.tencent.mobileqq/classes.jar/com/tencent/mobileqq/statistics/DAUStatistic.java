@@ -17,16 +17,16 @@ public class DAUStatistic
   implements Handler.Callback, UEC.IReporter, Manager
 {
   public static boolean a = false;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private HashMap<String, ActivityDAUInfo> jdField_a_of_type_JavaUtilHashMap;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private EntityManager b;
+  private MqqHandler c;
+  private HashMap<String, ActivityDAUInfo> d;
+  private QQAppInterface e;
   
   public DAUStatistic(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(ThreadManager.getSubThreadLooper(), this);
+    this.e = paramQQAppInterface;
+    this.d = new HashMap(4);
+    this.c = new CustomHandler(ThreadManager.getSubThreadLooper(), this);
     a();
   }
   
@@ -86,9 +86,9 @@ public class DAUStatistic
   {
     try
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+      String str = this.e.getCurrentUin();
       if (Long.valueOf(str).longValue() / 1000L % 1000L < 50L) {
-        jdField_a_of_type_Boolean = true;
+        a = true;
       }
       if (QLog.isColorLevel())
       {
@@ -96,7 +96,7 @@ public class DAUStatistic
         localStringBuilder.append("dau uin=");
         localStringBuilder.append(str);
         localStringBuilder.append(" result=");
-        localStringBuilder.append(jdField_a_of_type_Boolean);
+        localStringBuilder.append(a);
         QLog.d("UEC", 2, localStringBuilder.toString());
         return;
       }
@@ -109,12 +109,12 @@ public class DAUStatistic
   
   public void a(ArrayList<UEC.UECItem> paramArrayList)
   {
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
       Message localMessage = new Message();
       localMessage.what = 0;
       localMessage.obj = paramArrayList;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      this.c.sendMessage(localMessage);
     }
   }
   
@@ -123,470 +123,470 @@ public class DAUStatistic
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 158	android/os/Message:what	I
+    //   1: getfield 161	android/os/Message:what	I
     //   4: ifne +454 -> 458
     //   7: aload_1
-    //   8: getfield 162	android/os/Message:obj	Ljava/lang/Object;
-    //   11: checkcast 173	java/util/ArrayList
+    //   8: getfield 165	android/os/Message:obj	Ljava/lang/Object;
+    //   11: checkcast 176	java/util/ArrayList
     //   14: astore_1
     //   15: aload_1
     //   16: ifnull +387 -> 403
     //   19: aload_1
-    //   20: invokevirtual 177	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   20: invokevirtual 180	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   23: astore_1
     //   24: aload_1
-    //   25: invokeinterface 182 1 0
+    //   25: invokeinterface 185 1 0
     //   30: ifeq +373 -> 403
     //   33: aload_1
-    //   34: invokeinterface 186 1 0
-    //   39: checkcast 188	com/tencent/mobileqq/statistics/UEC$UECItem
+    //   34: invokeinterface 189 1 0
+    //   39: checkcast 191	com/tencent/mobileqq/statistics/UEC$UECItem
     //   42: astore_3
     //   43: aload_3
-    //   44: getfield 191	com/tencent/mobileqq/statistics/UEC$UECItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   44: getfield 194	com/tencent/mobileqq/statistics/UEC$UECItem:a	Ljava/lang/String;
     //   47: astore_2
     //   48: aload_0
-    //   49: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   49: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
     //   52: aload_2
-    //   53: invokevirtual 195	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   53: invokevirtual 198	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   56: ifeq +115 -> 171
     //   59: aload_0
-    //   60: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   60: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
     //   63: aload_2
-    //   64: invokevirtual 199	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   67: checkcast 201	com/tencent/mobileqq/data/ActivityDAUInfo
+    //   64: invokevirtual 202	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   67: checkcast 204	com/tencent/mobileqq/data/ActivityDAUInfo
     //   70: astore 4
     //   72: aload 4
     //   74: aload 4
-    //   76: getfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   76: getfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
     //   79: iconst_1
     //   80: iadd
-    //   81: putfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   81: putfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
     //   84: aload 4
     //   86: aload 4
-    //   88: getfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   88: getfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   91: aload_3
-    //   92: getfield 210	com/tencent/mobileqq/statistics/UEC$UECItem:jdField_a_of_type_Long	J
+    //   92: getfield 213	com/tencent/mobileqq/statistics/UEC$UECItem:c	J
     //   95: ladd
-    //   96: putfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   96: putfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   99: aload 4
     //   101: aload 4
-    //   103: getfield 213	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
+    //   103: getfield 216	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
     //   106: aload_3
-    //   107: getfield 216	com/tencent/mobileqq/statistics/UEC$UECItem:jdField_b_of_type_Int	I
+    //   107: getfield 218	com/tencent/mobileqq/statistics/UEC$UECItem:d	I
     //   110: iadd
-    //   111: putfield 213	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
+    //   111: putfield 216	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
     //   114: aload 4
     //   116: aload_0
     //   117: aload 4
-    //   119: getfield 219	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   119: getfield 221	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
     //   122: aload_3
-    //   123: getfield 221	com/tencent/mobileqq/statistics/UEC$UECItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   126: invokevirtual 223	com/tencent/mobileqq/statistics/DAUStatistic:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   129: putfield 219	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   123: getfield 224	com/tencent/mobileqq/statistics/UEC$UECItem:g	Ljava/lang/String;
+    //   126: invokevirtual 226	com/tencent/mobileqq/statistics/DAUStatistic:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   129: putfield 221	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
     //   132: aload 4
     //   134: aload_3
-    //   135: getfield 226	com/tencent/mobileqq/statistics/UEC$UECItem:c	Ljava/lang/String;
-    //   138: putfield 229	com/tencent/mobileqq/data/ActivityDAUInfo:webTitle	Ljava/lang/String;
+    //   135: getfield 229	com/tencent/mobileqq/statistics/UEC$UECItem:h	Ljava/lang/String;
+    //   138: putfield 232	com/tencent/mobileqq/data/ActivityDAUInfo:webTitle	Ljava/lang/String;
     //   141: aload 4
     //   143: aload_3
-    //   144: getfield 231	com/tencent/mobileqq/statistics/UEC$UECItem:d	Ljava/lang/String;
-    //   147: putfield 234	com/tencent/mobileqq/data/ActivityDAUInfo:domain	Ljava/lang/String;
+    //   144: getfield 235	com/tencent/mobileqq/statistics/UEC$UECItem:i	Ljava/lang/String;
+    //   147: putfield 238	com/tencent/mobileqq/data/ActivityDAUInfo:domain	Ljava/lang/String;
     //   150: aload 4
     //   152: aload_3
-    //   153: getfield 237	com/tencent/mobileqq/statistics/UEC$UECItem:e	Ljava/lang/String;
-    //   156: putfield 240	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
+    //   153: getfield 241	com/tencent/mobileqq/statistics/UEC$UECItem:j	Ljava/lang/String;
+    //   156: putfield 244	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
     //   159: aload 4
     //   161: aload_3
-    //   162: getfield 243	com/tencent/mobileqq/statistics/UEC$UECItem:f	Ljava/lang/String;
-    //   165: putfield 246	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
+    //   162: getfield 247	com/tencent/mobileqq/statistics/UEC$UECItem:k	Ljava/lang/String;
+    //   165: putfield 250	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
     //   168: goto +98 -> 266
-    //   171: new 201	com/tencent/mobileqq/data/ActivityDAUInfo
+    //   171: new 204	com/tencent/mobileqq/data/ActivityDAUInfo
     //   174: dup
-    //   175: invokespecial 247	com/tencent/mobileqq/data/ActivityDAUInfo:<init>	()V
+    //   175: invokespecial 251	com/tencent/mobileqq/data/ActivityDAUInfo:<init>	()V
     //   178: astore 4
     //   180: aload 4
     //   182: iconst_1
-    //   183: putfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   183: putfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
     //   186: aload 4
     //   188: aload_2
-    //   189: putfield 250	com/tencent/mobileqq/data/ActivityDAUInfo:activityName	Ljava/lang/String;
+    //   189: putfield 254	com/tencent/mobileqq/data/ActivityDAUInfo:activityName	Ljava/lang/String;
     //   192: aload 4
     //   194: aload_3
-    //   195: getfield 210	com/tencent/mobileqq/statistics/UEC$UECItem:jdField_a_of_type_Long	J
-    //   198: putfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   195: getfield 213	com/tencent/mobileqq/statistics/UEC$UECItem:c	J
+    //   198: putfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   201: aload 4
     //   203: aload_3
-    //   204: getfield 216	com/tencent/mobileqq/statistics/UEC$UECItem:jdField_b_of_type_Int	I
-    //   207: putfield 213	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
+    //   204: getfield 218	com/tencent/mobileqq/statistics/UEC$UECItem:d	I
+    //   207: putfield 216	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
     //   210: aload 4
     //   212: aload_3
-    //   213: getfield 221	com/tencent/mobileqq/statistics/UEC$UECItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   216: putfield 219	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   213: getfield 224	com/tencent/mobileqq/statistics/UEC$UECItem:g	Ljava/lang/String;
+    //   216: putfield 221	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
     //   219: aload 4
     //   221: aload_3
-    //   222: getfield 226	com/tencent/mobileqq/statistics/UEC$UECItem:c	Ljava/lang/String;
-    //   225: putfield 229	com/tencent/mobileqq/data/ActivityDAUInfo:webTitle	Ljava/lang/String;
+    //   222: getfield 229	com/tencent/mobileqq/statistics/UEC$UECItem:h	Ljava/lang/String;
+    //   225: putfield 232	com/tencent/mobileqq/data/ActivityDAUInfo:webTitle	Ljava/lang/String;
     //   228: aload 4
     //   230: aload_3
-    //   231: getfield 231	com/tencent/mobileqq/statistics/UEC$UECItem:d	Ljava/lang/String;
-    //   234: putfield 234	com/tencent/mobileqq/data/ActivityDAUInfo:domain	Ljava/lang/String;
+    //   231: getfield 235	com/tencent/mobileqq/statistics/UEC$UECItem:i	Ljava/lang/String;
+    //   234: putfield 238	com/tencent/mobileqq/data/ActivityDAUInfo:domain	Ljava/lang/String;
     //   237: aload 4
     //   239: aload_3
-    //   240: getfield 237	com/tencent/mobileqq/statistics/UEC$UECItem:e	Ljava/lang/String;
-    //   243: putfield 240	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
+    //   240: getfield 241	com/tencent/mobileqq/statistics/UEC$UECItem:j	Ljava/lang/String;
+    //   243: putfield 244	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
     //   246: aload 4
     //   248: aload_3
-    //   249: getfield 243	com/tencent/mobileqq/statistics/UEC$UECItem:f	Ljava/lang/String;
-    //   252: putfield 246	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
+    //   249: getfield 247	com/tencent/mobileqq/statistics/UEC$UECItem:k	Ljava/lang/String;
+    //   252: putfield 250	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
     //   255: aload_0
-    //   256: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   256: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
     //   259: aload_2
     //   260: aload 4
-    //   262: invokevirtual 254	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   262: invokevirtual 258	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   265: pop
-    //   266: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   266: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   269: ifeq -245 -> 24
     //   272: aload_0
-    //   273: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   273: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
     //   276: aload_2
-    //   277: invokevirtual 199	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   280: checkcast 201	com/tencent/mobileqq/data/ActivityDAUInfo
+    //   277: invokevirtual 202	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   280: checkcast 204	com/tencent/mobileqq/data/ActivityDAUInfo
     //   283: astore_3
     //   284: aload_3
     //   285: ifnull -261 -> 24
-    //   288: new 98	java/lang/StringBuilder
+    //   288: new 102	java/lang/StringBuilder
     //   291: dup
-    //   292: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   292: invokespecial 103	java/lang/StringBuilder:<init>	()V
     //   295: astore 4
     //   297: aload 4
-    //   299: ldc_w 256
-    //   302: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: ldc_w 260
+    //   302: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   305: pop
     //   306: aload 4
     //   308: aload_2
-    //   309: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   312: pop
     //   313: aload 4
-    //   315: ldc_w 258
-    //   318: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: ldc_w 262
+    //   318: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: pop
     //   322: aload 4
     //   324: aload_3
-    //   325: getfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
-    //   328: invokevirtual 261	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   325: getfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   328: invokevirtual 265	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   331: pop
     //   332: aload 4
-    //   334: ldc_w 263
-    //   337: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: ldc_w 267
+    //   337: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: pop
     //   341: aload 4
     //   343: aload_3
-    //   344: getfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
-    //   347: invokevirtual 266	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   344: getfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   347: invokevirtual 270	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   350: pop
     //   351: aload 4
-    //   353: ldc_w 268
-    //   356: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   353: ldc_w 272
+    //   356: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   359: pop
     //   360: aload 4
     //   362: aload_3
-    //   363: getfield 240	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
-    //   366: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   363: getfield 244	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
+    //   366: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   369: pop
     //   370: aload 4
-    //   372: ldc_w 270
-    //   375: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: ldc_w 274
+    //   375: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   378: pop
     //   379: aload 4
     //   381: aload_3
-    //   382: getfield 246	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
-    //   385: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   382: getfield 250	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
+    //   385: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   388: pop
-    //   389: ldc 110
+    //   389: ldc 114
     //   391: iconst_2
     //   392: aload 4
-    //   394: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   397: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   394: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   397: invokestatic 121	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   400: goto -376 -> 24
     //   403: aload_0
-    //   404: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   407: invokevirtual 273	java/util/HashMap:size	()I
+    //   404: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
+    //   407: invokevirtual 277	java/util/HashMap:size	()I
     //   410: iconst_4
     //   411: if_icmplt +22 -> 433
     //   414: aload_0
-    //   415: getfield 47	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   415: getfield 51	com/tencent/mobileqq/statistics/DAUStatistic:c	Lmqq/os/MqqHandler;
     //   418: iconst_1
-    //   419: invokevirtual 276	mqq/os/MqqHandler:removeMessages	(I)V
+    //   419: invokevirtual 280	mqq/os/MqqHandler:removeMessages	(I)V
     //   422: aload_0
-    //   423: getfield 47	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   423: getfield 51	com/tencent/mobileqq/statistics/DAUStatistic:c	Lmqq/os/MqqHandler;
     //   426: iconst_1
-    //   427: invokevirtual 280	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   427: invokevirtual 284	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   430: pop
     //   431: iconst_0
     //   432: ireturn
     //   433: aload_0
-    //   434: getfield 47	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   434: getfield 51	com/tencent/mobileqq/statistics/DAUStatistic:c	Lmqq/os/MqqHandler;
     //   437: iconst_1
-    //   438: invokevirtual 283	mqq/os/MqqHandler:hasMessages	(I)Z
+    //   438: invokevirtual 287	mqq/os/MqqHandler:hasMessages	(I)Z
     //   441: ifne +555 -> 996
     //   444: aload_0
-    //   445: getfield 47	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   445: getfield 51	com/tencent/mobileqq/statistics/DAUStatistic:c	Lmqq/os/MqqHandler;
     //   448: iconst_1
-    //   449: ldc2_w 284
-    //   452: invokevirtual 289	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
+    //   449: ldc2_w 288
+    //   452: invokevirtual 293	mqq/os/MqqHandler:sendEmptyMessageDelayed	(IJ)Z
     //   455: pop
     //   456: iconst_0
     //   457: ireturn
     //   458: aload_1
-    //   459: getfield 158	android/os/Message:what	I
+    //   459: getfield 161	android/os/Message:what	I
     //   462: iconst_1
     //   463: if_icmpne +533 -> 996
-    //   466: ldc 201
+    //   466: ldc 204
     //   468: monitorenter
     //   469: aload_0
-    //   470: getfield 291	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   470: getfield 295	com/tencent/mobileqq/statistics/DAUStatistic:b	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   473: ifnonnull +32 -> 505
     //   476: aload_0
-    //   477: getfield 27	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   480: invokevirtual 294	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
+    //   477: getfield 31	com/tencent/mobileqq/statistics/DAUStatistic:e	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   480: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
     //   483: ifne +8 -> 491
-    //   486: ldc 201
+    //   486: ldc 204
     //   488: monitorexit
     //   489: iconst_0
     //   490: ireturn
     //   491: aload_0
     //   492: aload_0
-    //   493: getfield 27	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   496: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   499: invokevirtual 304	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   502: putfield 291	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   493: getfield 31	com/tencent/mobileqq/statistics/DAUStatistic:e	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   496: invokevirtual 302	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   499: invokevirtual 308	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   502: putfield 295	com/tencent/mobileqq/statistics/DAUStatistic:b	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   505: aload_0
-    //   506: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   509: invokevirtual 308	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   506: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
+    //   509: invokevirtual 312	java/util/HashMap:keySet	()Ljava/util/Set;
     //   512: astore_1
     //   513: aload_0
-    //   514: getfield 291	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   517: invokevirtual 314	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   514: getfield 295	com/tencent/mobileqq/statistics/DAUStatistic:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   517: invokevirtual 318	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   520: astore_2
     //   521: aload_2
-    //   522: invokevirtual 319	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   522: invokevirtual 323	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   525: aload_1
-    //   526: invokeinterface 322 1 0
+    //   526: invokeinterface 326 1 0
     //   531: astore_3
     //   532: aload_3
-    //   533: invokeinterface 182 1 0
+    //   533: invokeinterface 185 1 0
     //   538: ifeq +367 -> 905
     //   541: aload_3
-    //   542: invokeinterface 186 1 0
-    //   547: checkcast 56	java/lang/String
+    //   542: invokeinterface 189 1 0
+    //   547: checkcast 60	java/lang/String
     //   550: astore 4
     //   552: aload_0
-    //   553: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   553: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
     //   556: aload 4
-    //   558: invokevirtual 199	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   561: checkcast 201	com/tencent/mobileqq/data/ActivityDAUInfo
+    //   558: invokevirtual 202	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   561: checkcast 204	com/tencent/mobileqq/data/ActivityDAUInfo
     //   564: astore 5
     //   566: aload_0
-    //   567: getfield 291	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   570: ldc 201
+    //   567: getfield 295	com/tencent/mobileqq/statistics/DAUStatistic:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   570: ldc 204
     //   572: aload 4
-    //   574: invokevirtual 326	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   577: checkcast 201	com/tencent/mobileqq/data/ActivityDAUInfo
+    //   574: invokevirtual 330	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   577: checkcast 204	com/tencent/mobileqq/data/ActivityDAUInfo
     //   580: astore_1
     //   581: aload_1
     //   582: ifnonnull +56 -> 638
-    //   585: new 201	com/tencent/mobileqq/data/ActivityDAUInfo
+    //   585: new 204	com/tencent/mobileqq/data/ActivityDAUInfo
     //   588: dup
-    //   589: invokespecial 247	com/tencent/mobileqq/data/ActivityDAUInfo:<init>	()V
+    //   589: invokespecial 251	com/tencent/mobileqq/data/ActivityDAUInfo:<init>	()V
     //   592: astore_1
     //   593: aload_1
     //   594: aload 4
-    //   596: putfield 250	com/tencent/mobileqq/data/ActivityDAUInfo:activityName	Ljava/lang/String;
+    //   596: putfield 254	com/tencent/mobileqq/data/ActivityDAUInfo:activityName	Ljava/lang/String;
     //   599: aload_1
     //   600: aload 5
-    //   602: getfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
-    //   605: putfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   602: getfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   605: putfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
     //   608: aload_1
     //   609: aload 5
-    //   611: getfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
-    //   614: putfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   611: getfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   614: putfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   617: aload_1
     //   618: aload 5
-    //   620: getfield 213	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
-    //   623: putfield 213	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
+    //   620: getfield 216	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
+    //   623: putfield 216	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
     //   626: aload_1
     //   627: aload 5
-    //   629: getfield 219	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
-    //   632: putfield 219	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   629: getfield 221	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   632: putfield 221	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
     //   635: goto +62 -> 697
     //   638: aload_1
     //   639: aload_1
-    //   640: getfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   640: getfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
     //   643: aload 5
-    //   645: getfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   645: getfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
     //   648: iadd
-    //   649: putfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   649: putfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
     //   652: aload_1
     //   653: aload_1
-    //   654: getfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   654: getfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   657: aload 5
-    //   659: getfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   659: getfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   662: ladd
-    //   663: putfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   663: putfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   666: aload_1
     //   667: aload_1
-    //   668: getfield 213	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
+    //   668: getfield 216	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
     //   671: aload 5
-    //   673: getfield 213	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
+    //   673: getfield 216	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
     //   676: iadd
-    //   677: putfield 213	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
+    //   677: putfield 216	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
     //   680: aload_1
     //   681: aload_0
     //   682: aload_1
-    //   683: getfield 219	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   683: getfield 221	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
     //   686: aload 5
-    //   688: getfield 219	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
-    //   691: invokevirtual 223	com/tencent/mobileqq/statistics/DAUStatistic:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   694: putfield 219	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   688: getfield 221	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
+    //   691: invokevirtual 226	com/tencent/mobileqq/statistics/DAUStatistic:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   694: putfield 221	com/tencent/mobileqq/data/ActivityDAUInfo:preActivityList	Ljava/lang/String;
     //   697: aload_1
     //   698: aload 5
-    //   700: getfield 229	com/tencent/mobileqq/data/ActivityDAUInfo:webTitle	Ljava/lang/String;
-    //   703: putfield 229	com/tencent/mobileqq/data/ActivityDAUInfo:webTitle	Ljava/lang/String;
+    //   700: getfield 232	com/tencent/mobileqq/data/ActivityDAUInfo:webTitle	Ljava/lang/String;
+    //   703: putfield 232	com/tencent/mobileqq/data/ActivityDAUInfo:webTitle	Ljava/lang/String;
     //   706: aload_1
     //   707: aload 5
-    //   709: getfield 234	com/tencent/mobileqq/data/ActivityDAUInfo:domain	Ljava/lang/String;
-    //   712: putfield 234	com/tencent/mobileqq/data/ActivityDAUInfo:domain	Ljava/lang/String;
+    //   709: getfield 238	com/tencent/mobileqq/data/ActivityDAUInfo:domain	Ljava/lang/String;
+    //   712: putfield 238	com/tencent/mobileqq/data/ActivityDAUInfo:domain	Ljava/lang/String;
     //   715: aload_1
     //   716: aload 5
-    //   718: getfield 240	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
-    //   721: putfield 240	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
+    //   718: getfield 244	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
+    //   721: putfield 244	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
     //   724: aload_1
     //   725: aload 5
-    //   727: getfield 246	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
-    //   730: putfield 246	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
+    //   727: getfield 250	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
+    //   730: putfield 250	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
     //   733: aload_1
-    //   734: invokevirtual 329	com/tencent/mobileqq/data/ActivityDAUInfo:getStatus	()I
+    //   734: invokevirtual 333	com/tencent/mobileqq/data/ActivityDAUInfo:getStatus	()I
     //   737: sipush 1000
     //   740: if_icmpne +14 -> 754
     //   743: aload_0
-    //   744: getfield 291	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   744: getfield 295	com/tencent/mobileqq/statistics/DAUStatistic:b	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   747: aload_1
-    //   748: invokevirtual 333	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   748: invokevirtual 337	com/tencent/mobileqq/persistence/EntityManager:persistOrReplace	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   751: goto +32 -> 783
     //   754: aload_1
-    //   755: invokevirtual 329	com/tencent/mobileqq/data/ActivityDAUInfo:getStatus	()I
+    //   755: invokevirtual 333	com/tencent/mobileqq/data/ActivityDAUInfo:getStatus	()I
     //   758: sipush 1001
     //   761: if_icmpeq +13 -> 774
     //   764: aload_1
-    //   765: invokevirtual 329	com/tencent/mobileqq/data/ActivityDAUInfo:getStatus	()I
+    //   765: invokevirtual 333	com/tencent/mobileqq/data/ActivityDAUInfo:getStatus	()I
     //   768: sipush 1002
     //   771: if_icmpne +12 -> 783
     //   774: aload_0
-    //   775: getfield 291	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   775: getfield 295	com/tencent/mobileqq/statistics/DAUStatistic:b	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   778: aload_1
-    //   779: invokevirtual 337	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   779: invokevirtual 341	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   782: pop
-    //   783: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   783: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   786: ifeq -254 -> 532
-    //   789: new 98	java/lang/StringBuilder
+    //   789: new 102	java/lang/StringBuilder
     //   792: dup
-    //   793: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   793: invokespecial 103	java/lang/StringBuilder:<init>	()V
     //   796: astore 5
     //   798: aload 5
-    //   800: ldc_w 339
-    //   803: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   800: ldc_w 343
+    //   803: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   806: pop
     //   807: aload 5
     //   809: aload 4
-    //   811: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   811: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   814: pop
     //   815: aload 5
-    //   817: ldc_w 258
-    //   820: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   817: ldc_w 262
+    //   820: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   823: pop
     //   824: aload 5
     //   826: aload_1
-    //   827: getfield 204	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
-    //   830: invokevirtual 261	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   827: getfield 207	com/tencent/mobileqq/data/ActivityDAUInfo:count	I
+    //   830: invokevirtual 265	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   833: pop
     //   834: aload 5
-    //   836: ldc_w 263
-    //   839: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   836: ldc_w 267
+    //   839: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   842: pop
     //   843: aload 5
     //   845: aload_1
-    //   846: getfield 208	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
-    //   849: invokevirtual 266	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   846: getfield 211	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
+    //   849: invokevirtual 270	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   852: pop
     //   853: aload 5
-    //   855: ldc_w 268
-    //   858: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   855: ldc_w 272
+    //   858: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   861: pop
     //   862: aload 5
     //   864: aload_1
-    //   865: getfield 240	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
-    //   868: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   865: getfield 244	com/tencent/mobileqq/data/ActivityDAUInfo:reportVersion	Ljava/lang/String;
+    //   868: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   871: pop
     //   872: aload 5
-    //   874: ldc_w 270
-    //   877: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   874: ldc_w 274
+    //   877: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   880: pop
     //   881: aload 5
     //   883: aload_1
-    //   884: getfield 246	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
-    //   887: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   884: getfield 250	com/tencent/mobileqq/data/ActivityDAUInfo:pageName	Ljava/lang/String;
+    //   887: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   890: pop
-    //   891: ldc 110
+    //   891: ldc 114
     //   893: iconst_2
     //   894: aload 5
-    //   896: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   899: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   896: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   899: invokestatic 121	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   902: goto -370 -> 532
     //   905: aload_2
-    //   906: invokevirtual 342	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   906: invokevirtual 346	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   909: aload_2
-    //   910: invokevirtual 345	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   910: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   913: goto +15 -> 928
     //   916: astore_1
     //   917: goto +67 -> 984
     //   920: astore_1
     //   921: aload_1
-    //   922: invokevirtual 150	java/lang/Exception:printStackTrace	()V
+    //   922: invokevirtual 153	java/lang/Exception:printStackTrace	()V
     //   925: goto -16 -> 909
-    //   928: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   928: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   931: ifeq +41 -> 972
-    //   934: new 98	java/lang/StringBuilder
+    //   934: new 102	java/lang/StringBuilder
     //   937: dup
-    //   938: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   938: invokespecial 103	java/lang/StringBuilder:<init>	()V
     //   941: astore_1
     //   942: aload_1
-    //   943: ldc_w 347
-    //   946: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   943: ldc_w 351
+    //   946: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   949: pop
     //   950: aload_1
     //   951: aload_0
-    //   952: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   955: invokevirtual 273	java/util/HashMap:size	()I
-    //   958: invokevirtual 261	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   952: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
+    //   955: invokevirtual 277	java/util/HashMap:size	()I
+    //   958: invokevirtual 265	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   961: pop
-    //   962: ldc 110
+    //   962: ldc 114
     //   964: iconst_2
     //   965: aload_1
-    //   966: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   969: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   966: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   969: invokestatic 121	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   972: aload_0
-    //   973: getfield 34	com/tencent/mobileqq/statistics/DAUStatistic:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   976: invokevirtual 350	java/util/HashMap:clear	()V
-    //   979: ldc 201
+    //   973: getfield 38	com/tencent/mobileqq/statistics/DAUStatistic:d	Ljava/util/HashMap;
+    //   976: invokevirtual 354	java/util/HashMap:clear	()V
+    //   979: ldc 204
     //   981: monitorexit
     //   982: iconst_0
     //   983: ireturn
     //   984: aload_2
-    //   985: invokevirtual 345	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   985: invokevirtual 349	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   988: aload_1
     //   989: athrow
     //   990: astore_1
-    //   991: ldc 201
+    //   991: ldc 204
     //   993: monitorexit
     //   994: aload_1
     //   995: athrow
@@ -633,8 +633,8 @@ public class DAUStatistic
   
   public void onDestroy()
   {
-    jdField_a_of_type_Boolean = false;
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    a = false;
+    EntityManager localEntityManager = this.b;
     if (localEntityManager != null) {
       try
       {
@@ -650,7 +650,7 @@ public class DAUStatistic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.DAUStatistic
  * JD-Core Version:    0.7.0.1
  */

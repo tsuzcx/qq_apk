@@ -10,7 +10,7 @@ import java.util.Map;
 public class DtX5WebView
   extends WebView
 {
-  private JsBinderHelper mJsBinderHelper = new JsBinderHelper();
+  private JsBinderHelper mJsBinderHelper;
   
   public DtX5WebView(Context paramContext)
   {
@@ -27,9 +27,32 @@ public class DtX5WebView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public DtX5WebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, Map<String, Object> paramMap, boolean paramBoolean)
+  {
+    super(paramContext, paramAttributeSet, paramInt, paramMap, paramBoolean);
+  }
+  
+  public DtX5WebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, boolean paramBoolean)
+  {
+    super(paramContext, paramAttributeSet, paramInt, paramBoolean);
+  }
+  
+  public DtX5WebView(Context paramContext, boolean paramBoolean)
+  {
+    super(paramContext, paramBoolean);
+  }
+  
+  private JsBinderHelper getJsBinderHelper()
+  {
+    if (this.mJsBinderHelper == null) {
+      this.mJsBinderHelper = new JsBinderHelper();
+    }
+    return this.mJsBinderHelper;
+  }
+  
   private void onLoad()
   {
-    if (!this.mJsBinderHelper.allowInjectOnLoad()) {
+    if (!getJsBinderHelper().allowInjectOnLoad()) {
       return;
     }
     addJavascriptInterface(new BridgeInterface(this), "DTJsBridgeInterface");
@@ -37,7 +60,7 @@ public class DtX5WebView
   
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    if (this.mJsBinderHelper.interceptOnAddJavascriptInterface(paramString)) {
+    if (getJsBinderHelper().interceptOnAddJavascriptInterface(paramString)) {
       return;
     }
     super.addJavascriptInterface(paramObject, paramString);
@@ -69,7 +92,7 @@ public class DtX5WebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView
  * JD-Core Version:    0.7.0.1
  */

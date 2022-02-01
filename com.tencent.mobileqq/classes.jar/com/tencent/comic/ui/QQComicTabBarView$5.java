@@ -15,14 +15,14 @@ class QQComicTabBarView$5
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
+    this.this$0.h = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
     QQComicTabBarView localQQComicTabBarView = this.this$0;
-    localQQComicTabBarView.jdField_a_of_type_ComTencentComicApiIQQComicRedTouchService = ((IQQComicRedTouchService)localQQComicTabBarView.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQComicRedTouchService.class, "all"));
-    if (this.this$0.jdField_a_of_type_ComTencentComicApiIQQComicRedTouchService != null) {
-      this.this$0.jdField_a_of_type_ComTencentComicApiIQQComicRedTouchService.addObserver(this.this$0.jdField_a_of_type_ComTencentComicApiImplQQComicRedTouchServiceImpl$PluginRedTouchObserver);
+    localQQComicTabBarView.G = ((IQQComicRedTouchService)localQQComicTabBarView.h.getRuntimeService(IQQComicRedTouchService.class, "all"));
+    if (this.this$0.G != null) {
+      this.this$0.G.addObserver(this.this$0.H);
     }
-    if (QQComicPluginBridge.a != null) {
-      QQComicPluginBridge.a.a(this.this$0.jdField_a_of_type_ComTencentComicJspQQComicDownloadCountObserver);
+    if (QQComicPluginBridge.c != null) {
+      QQComicPluginBridge.c.a(this.this$0.I);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "register observers");
@@ -31,7 +31,7 @@ class QQComicTabBarView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTabBarView.5
  * JD-Core Version:    0.7.0.1
  */

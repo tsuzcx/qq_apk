@@ -36,7 +36,7 @@ public class NearbyGrayTipsManager$GreetWording
   public static String getPath(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NearbyGrayTipsManager.a());
+    localStringBuilder.append(NearbyGrayTipsManager.d());
     localStringBuilder.append(GreetWording.class.getSimpleName());
     localStringBuilder.append("_");
     localStringBuilder.append(paramInt);
@@ -137,7 +137,7 @@ public class NearbyGrayTipsManager$GreetWording
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager.GreetWording
  * JD-Core Version:    0.7.0.1
  */

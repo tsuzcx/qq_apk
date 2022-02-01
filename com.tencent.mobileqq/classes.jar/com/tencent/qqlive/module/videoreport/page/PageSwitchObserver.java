@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
@@ -21,8 +20,7 @@ import com.tencent.qqlive.module.videoreport.trace.SimpleTracer;
 import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
 import com.tencent.qqlive.module.videoreport.utils.DelayedIdleHandler;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
-import com.tencent.qqlive.module.videoreport.utils.ReflectUtils;
-import com.tencent.qqlive.module.videoreport.utils.ViewCompatUtils;
+import com.tencent.qqlive.module.videoreport.utils.UIUtils;
 import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.List;
@@ -133,33 +131,6 @@ public class PageSwitchObserver
   private boolean detectActivePage(Window paramWindow, int paramInt)
   {
     return (paramWindow != null) && (detectActivePage(paramWindow.getDecorView(), paramInt));
-  }
-  
-  private Activity findAttachedActivity(View paramView)
-  {
-    boolean bool = ViewCompatUtils.isAttachedToWindow(paramView);
-    Object localObject1 = null;
-    if (!bool) {
-      return null;
-    }
-    Object localObject2 = paramView.getRootView();
-    Object localObject3 = ViewContainerBinder.getInstance().getBoundContainer((View)localObject2);
-    if ((localObject3 instanceof Activity)) {
-      return (Activity)localObject3;
-    }
-    if ((localObject3 instanceof Dialog)) {
-      return DialogListUtil.getDialogActivity((Dialog)localObject3);
-    }
-    if ((localObject2 instanceof ViewGroup))
-    {
-      localObject1 = ((ViewGroup)localObject2).getChildAt(0);
-      localObject1 = this.mViewActivityMap.getActivity((View)localObject1);
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = this.mViewActivityMap.getActivity(paramView);
-    }
-    return localObject2;
   }
   
   public static PageSwitchObserver getInstance()
@@ -348,9 +319,7 @@ public class PageSwitchObserver
       localStringBuilder.append(paramDialog);
       Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
-    if ((ReflectUtils.getField(Dialog.class, "mDecor", paramDialog) == null) && (checkPageDisappear(paramDialog.getWindow()))) {
-      postAppearDetectionTask(paramActivity);
-    }
+    postAppearDetectionTask(paramActivity);
   }
   
   public void onDialogShow(Activity paramActivity, Dialog paramDialog)
@@ -476,7 +445,7 @@ public class PageSwitchObserver
       localStringBuilder.append(paramView);
       Log.d("PageSwitchObserver", localStringBuilder.toString());
     }
-    postAppearDetectionTask(findAttachedActivity(paramView));
+    postAppearDetectionTask(UIUtils.findAttachedActivity(paramView));
   }
   
   public void register(PageSwitchObserver.IPageSwitchListener paramIPageSwitchListener)
@@ -491,7 +460,7 @@ public class PageSwitchObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageSwitchObserver
  * JD-Core Version:    0.7.0.1
  */

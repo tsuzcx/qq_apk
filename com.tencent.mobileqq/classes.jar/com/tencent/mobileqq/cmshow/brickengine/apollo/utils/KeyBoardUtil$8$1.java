@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.cmshow.brickengine.apollo.utils;
 
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IApolloRunnableTask;
 
 class KeyBoardUtil$8$1
   extends IApolloRunnableTask
@@ -12,14 +12,14 @@ class KeyBoardUtil$8$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloSurfaceView.getRender() != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloSurfaceView.getRender().getSavaWrapper().editorOnClickCallBack(this.this$0.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditorAddr, this.a);
+    if (this.this$0.b.getRender() != null) {
+      this.this$0.b.getRender().getSavaWrapper().editorOnClickCallBack(this.this$0.a.mEditorAddr, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.KeyBoardUtil.8.1
  * JD-Core Version:    0.7.0.1
  */

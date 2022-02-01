@@ -11,7 +11,7 @@ public final class ReadInJoySessionManagerImpl
 {
   public int getSceneSeriesNum()
   {
-    return ReadInJoySessionManager.a.a();
+    return ReadInJoySessionManager.a.b();
   }
   
   @Nullable
@@ -22,7 +22,7 @@ public final class ReadInJoySessionManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.api.impl.ReadInJoySessionManagerImpl
  * JD-Core Version:    0.7.0.1
  */

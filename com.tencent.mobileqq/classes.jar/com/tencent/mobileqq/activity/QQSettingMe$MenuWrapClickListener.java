@@ -17,41 +17,41 @@ import java.lang.ref.WeakReference;
 class QQSettingMe$MenuWrapClickListener
   implements View.OnClickListener
 {
-  private final QQSettingMeBizBean.Action jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Action;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<QQSettingMe> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<QQSettingMe> a;
+  private final String b;
+  private final QQSettingMeBizBean.Action c;
   
   private QQSettingMe$MenuWrapClickListener(String paramString, QQSettingMeBizBean.Action paramAction, QQSettingMe paramQQSettingMe)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeConfigQQSettingMeBizBean$Action = paramAction;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
+    this.b = paramString;
+    this.c = paramAction;
+    this.a = new WeakReference(paramQQSettingMe);
   }
   
   public void onClick(View paramView)
   {
-    QQSettingMe localQQSettingMe = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localQQSettingMe != null) && (paramView != null) && (localQQSettingMe.a))
+    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
+    if ((localQQSettingMe != null) && (paramView != null) && (localQQSettingMe.b))
     {
-      Object localObject = QQSettingMe.a(this.jdField_a_of_type_JavaLangString);
+      Object localObject = QQSettingMe.c(this.b);
       int i;
-      if ((localObject != null) && (((RedTouch)localObject).c())) {
+      if ((localObject != null) && (((RedTouch)localObject).h())) {
         i = 1;
       } else {
         i = 0;
       }
-      localQQSettingMe.a().a(this.jdField_a_of_type_JavaLangString).onClick(paramView);
-      if (QQSettingMeConstant.a(this.jdField_a_of_type_JavaLangString))
+      localQQSettingMe.a().a(this.b).onClick(paramView);
+      if (QQSettingMeConstant.a(this.b))
       {
-        localObject = QQSettingMe.a(this.jdField_a_of_type_JavaLangString);
-        if ((localObject != null) && (!TextUtils.isEmpty(((QQSettingMeBizBean)localObject).b())))
+        localObject = QQSettingMe.a(this.b);
+        if ((localObject != null) && (!TextUtils.isEmpty(((QQSettingMeBizBean)localObject).c())))
         {
           VideoReport.setElementParam(paramView, "is_red_tips_em", Integer.valueOf(i));
           VideoReport.reportEvent("clck", paramView, null);
         }
       }
-      if ((this.jdField_a_of_type_JavaLangString.equals("d_document")) && (QQSettingMe.a(localQQSettingMe) != null) && (QQSettingMe.a(localQQSettingMe).getVisibility() == 0)) {
-        QQSettingMe.a(localQQSettingMe).setVisibility(8);
+      if ((this.b.equals("d_document")) && (QQSettingMe.c(localQQSettingMe) != null) && (QQSettingMe.c(localQQSettingMe).getVisibility() == 0)) {
+        QQSettingMe.c(localQQSettingMe).setVisibility(8);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -59,7 +59,7 @@ class QQSettingMe$MenuWrapClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.MenuWrapClickListener
  * JD-Core Version:    0.7.0.1
  */

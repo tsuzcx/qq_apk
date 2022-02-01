@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.view.menu.ListMenuItemView android:layout_width="fill_parent" android:layout_height="?a62"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="?a64" android:layout_marginRight="?a65" android:layout_weight="1.0">
-        <TextView android:textAppearance="?a9g" android:ellipsize="marquee" android:id="@id/title" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/o8c" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/title" android:layout_alignParentLeft="true" />
-    </RelativeLayout>
-</androidx.appcompat.view.menu.ListMenuItemView>
+    <com.tencent.ark.open.ArkView android:layout_gravity="center|top" android:id="@id/cvu" android:layout_width="350.0dip" android:layout_height="wrap_content" />
+</LinearLayout>

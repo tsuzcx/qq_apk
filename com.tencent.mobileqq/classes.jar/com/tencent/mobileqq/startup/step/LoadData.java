@@ -88,7 +88,7 @@ public class LoadData
   
   protected boolean doStep()
   {
-    Object localObject = this.mDirector.a;
+    Object localObject = this.mDirector.e;
     long l = System.currentTimeMillis();
     SafeModeUtil.a = l;
     boolean bool3 = false;
@@ -105,7 +105,7 @@ public class LoadData
       {
         localObject = BaseApplicationImpl.sApplication.waitAppRuntime(null);
         boolean bool1;
-        if (this.mId == 19) {
+        if (this.mId == 20) {
           bool1 = true;
         } else {
           bool1 = false;
@@ -125,7 +125,7 @@ public class LoadData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadData
  * JD-Core Version:    0.7.0.1
  */

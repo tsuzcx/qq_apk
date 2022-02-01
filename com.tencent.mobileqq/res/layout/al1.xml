@@ -12,7 +12,7 @@
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="17.0dip" android:layout_toLeftOf="@id/lh1" android:layout_toRightOf="@id/c3f" android:layout_centerVertical="true">
             <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/c3m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="70.0dip" android:maxLines="2" android:minLines="1" android:includeFontPadding="false" android:lineSpacingExtra="4.0dip" />
             <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/lh2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:maxHeight="70.0dip" android:maxLines="1" android:minLines="1" android:includeFontPadding="false" android:lineSpacingExtra="4.0dip" />
-            <include layout="@layout/csn" />
+            <include layout="@layout/d1x" />
             <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:gravity="bottom|center|left" android:id="@id/c3i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxLines="2" android:includeFontPadding="false" android:lineSpacingExtra="1.0dip" android:lineSpacingMultiplier="1.2" />
         </LinearLayout>
     </RelativeLayout>

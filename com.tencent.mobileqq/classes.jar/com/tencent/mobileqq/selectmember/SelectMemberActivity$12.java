@@ -70,12 +70,12 @@ class SelectMemberActivity$12
       if (paramInt == 1000)
       {
         paramString = this.a;
-        QQToast.a(paramString, paramString.getString(2131697625), 2000).b(this.a.mTitleBar.getHeight());
+        QQToast.makeText(paramString, paramString.getString(2131895398), 2000).show(this.a.mTitleBar.getHeight());
         ReportController.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
         return;
       }
       paramString = this.a;
-      QQToast.a(paramString, paramString.getString(2131691759), 2000).b(this.a.mTitleBar.getHeight());
+      QQToast.makeText(paramString, paramString.getString(2131888721), 2000).show(this.a.mTitleBar.getHeight());
     }
   }
   
@@ -128,7 +128,7 @@ class SelectMemberActivity$12
         ReportController.b(this.a.app, "dc00899", "Grp_set", "", "Grp_data", "forbid_discuss", 0, 0, "", "", "", "");
       }
       paramArrayList = this.a;
-      QQToast.a(paramArrayList, paramArrayList.getString(2131691757), 2000).b(this.a.mTitleBar.getHeight());
+      QQToast.makeText(paramArrayList, paramArrayList.getString(2131888719), 2000).show(this.a.mTitleBar.getHeight());
     }
   }
   
@@ -149,13 +149,13 @@ class SelectMemberActivity$12
       paramArrayOfObject.append(i);
       QLog.d("SelectMemberActivity", 2, paramArrayOfObject.toString());
       paramArrayOfObject = this.a;
-      QQToast.a(paramArrayOfObject, paramArrayOfObject.getString(2131691757), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(paramArrayOfObject, paramArrayOfObject.getString(2131888719), 0).show(this.a.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberActivity.12
  * JD-Core Version:    0.7.0.1
  */

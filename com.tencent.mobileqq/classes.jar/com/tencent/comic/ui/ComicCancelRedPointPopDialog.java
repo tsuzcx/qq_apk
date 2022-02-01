@@ -24,23 +24,21 @@ public class ComicCancelRedPointPopDialog
   extends Dialog
   implements View.OnClickListener
 {
-  public int a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private ComicHorizontalCenterScrollView.OnCustomScrollListener jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView$OnCustomScrollListener = new ComicCancelRedPointPopDialog.1(this);
-  private ComicHorizontalCenterScrollView jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView = null;
-  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
-  public boolean a;
-  private Rect[] jdField_a_of_type_ArrayOfAndroidGraphicsRect = new Rect[5];
-  private ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[5];
-  private ComicCancelRedPointPopItemView[] jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView = new ComicCancelRedPointPopItemView[5];
+  public boolean a = false;
+  public int b = 0;
+  private ComicHorizontalCenterScrollView c = null;
+  private ComicCancelRedPointPopItemView[] d = new ComicCancelRedPointPopItemView[5];
+  private ImageView[] e = new ImageView[5];
+  private Rect[] f = new Rect[5];
+  private LinearLayout g = null;
+  private TextView h = null;
+  private WeakReference<Activity> i;
+  private ComicHorizontalCenterScrollView.OnCustomScrollListener j = new ComicCancelRedPointPopDialog.1(this);
   
   public ComicCancelRedPointPopDialog(@NonNull Context paramContext, Activity paramActivity, int paramInt)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
+    this.i = new WeakReference(paramActivity);
     setContentView(1996816384);
     a(paramContext);
     setCanceledOnTouchOutside(false);
@@ -48,99 +46,78 @@ public class ComicCancelRedPointPopDialog
   
   private int a(int paramInt)
   {
-    int i = 0;
+    int k = 0;
     for (;;)
     {
-      Rect[] arrayOfRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
-      if (i >= arrayOfRect.length) {
+      Rect[] arrayOfRect = this.f;
+      if (k >= arrayOfRect.length) {
         break;
       }
-      if ((arrayOfRect[i].left <= paramInt) && (paramInt <= this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].right)) {
-        return i;
+      if ((arrayOfRect[k].left <= paramInt) && (paramInt <= this.f[k].right)) {
+        return k;
       }
-      i += 1;
+      k += 1;
     }
     return 0;
-  }
-  
-  private void a(int paramInt)
-  {
-    int i = 0;
-    for (;;)
-    {
-      Object localObject = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-      if (i >= localObject.length) {
-        break;
-      }
-      localObject = localObject[i];
-      int j;
-      if (i == paramInt) {
-        j = 1996685313;
-      } else {
-        j = 1996685312;
-      }
-      ((ImageView)localObject).setImageResource(j);
-      i += 1;
-    }
   }
   
   private void a(Context paramContext)
   {
     Size localSize = DisplayUtil.a(paramContext);
-    this.jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView = ((ComicHorizontalCenterScrollView)findViewById(1996750856));
-    Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView.getLayoutParams();
+    this.c = ((ComicHorizontalCenterScrollView)findViewById(1996750856));
+    Object localObject = (LinearLayout.LayoutParams)this.c.getLayoutParams();
     if (localObject == null)
     {
-      localObject = new LinearLayout.LayoutParams(localSize.jdField_a_of_type_Int, DisplayUtil.a(paramContext, 346.5F));
+      localObject = new LinearLayout.LayoutParams(localSize.a, DisplayUtil.a(paramContext, 346.5F));
       ((LinearLayout.LayoutParams)localObject).topMargin = DisplayUtil.a(paramContext, 15.0F);
     }
     else
     {
-      ((LinearLayout.LayoutParams)localObject).width = localSize.jdField_a_of_type_Int;
+      ((LinearLayout.LayoutParams)localObject).width = localSize.a;
     }
-    this.jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    int j = DisplayUtil.a(paramContext, 260.0F);
-    int k = DisplayUtil.a(paramContext, 8.0F);
-    this.jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView.setBaseInfo(j, k, this.jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView$OnCustomScrollListener);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(1996750858));
-    paramContext = this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView;
+    this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    int m = DisplayUtil.a(paramContext, 260.0F);
+    int n = DisplayUtil.a(paramContext, 8.0F);
+    this.c.setBaseInfo(m, n, this.j);
+    this.h = ((TextView)findViewById(1996750858));
+    paramContext = this.d;
     localObject = (ComicCancelRedPointPopItemView)findViewById(1996750859);
-    int i = 0;
+    int k = 0;
     paramContext[0] = localObject;
-    this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[1] = ((ComicCancelRedPointPopItemView)findViewById(1996750860));
-    this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[2] = ((ComicCancelRedPointPopItemView)findViewById(1996750861));
-    this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[3] = ((ComicCancelRedPointPopItemView)findViewById(1996750862));
-    this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[4] = ((ComicCancelRedPointPopItemView)findViewById(1996750863));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)findViewById(1996750848));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)findViewById(1996750849));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)findViewById(1996750850));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[3] = ((ImageView)findViewById(1996750851));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[4] = ((ImageView)findViewById(1996750852));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(1996750853));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    j += k;
+    this.d[1] = ((ComicCancelRedPointPopItemView)findViewById(1996750860));
+    this.d[2] = ((ComicCancelRedPointPopItemView)findViewById(1996750861));
+    this.d[3] = ((ComicCancelRedPointPopItemView)findViewById(1996750862));
+    this.d[4] = ((ComicCancelRedPointPopItemView)findViewById(1996750863));
+    this.e[0] = ((ImageView)findViewById(1996750848));
+    this.e[1] = ((ImageView)findViewById(1996750849));
+    this.e[2] = ((ImageView)findViewById(1996750850));
+    this.e[3] = ((ImageView)findViewById(1996750851));
+    this.e[4] = ((ImageView)findViewById(1996750852));
+    this.g = ((LinearLayout)findViewById(1996750853));
+    this.h.setOnClickListener(this);
+    m += n;
     for (;;)
     {
-      paramContext = this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView;
-      if (i >= paramContext.length) {
+      paramContext = this.d;
+      if (k >= paramContext.length) {
         break;
       }
-      paramContext[i].jdField_a_of_type_Int = i;
-      paramContext[i].setOnClickListener(this);
+      paramContext[k].b = k;
+      paramContext[k].setOnClickListener(this);
       paramContext = new Rect();
-      paramContext.left = (i * j);
-      paramContext.right = (paramContext.left + j);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i] = paramContext;
-      i += 1;
+      paramContext.left = (k * m);
+      paramContext.right = (paramContext.left + m);
+      this.f[k] = paramContext;
+      k += 1;
     }
   }
   
   private void a(ComicCancelRedPointPopItemData paramComicCancelRedPointPopItemData)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Activity localActivity = (Activity)this.i.get();
     if ((localActivity != null) && (paramComicCancelRedPointPopItemData != null))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       VipComicDC01327ReportData localVipComicDC01327ReportData = new VipComicDC01327ReportData().a("2000").b("2").c("20249").d("4").e(paramComicCancelRedPointPopItemData.comicId);
       ComicHippyBackEventInterceptorProxy.INSTANCE.reportData(localVipComicDC01327ReportData);
     }
@@ -157,32 +134,53 @@ public class ComicCancelRedPointPopDialog
     }
   }
   
+  private void b(int paramInt)
+  {
+    int k = 0;
+    for (;;)
+    {
+      Object localObject = this.e;
+      if (k >= localObject.length) {
+        break;
+      }
+      localObject = localObject[k];
+      int m;
+      if (k == paramInt) {
+        m = 1996685313;
+      } else {
+        m = 1996685312;
+      }
+      ((ImageView)localObject).setImageResource(m);
+      k += 1;
+    }
+  }
+  
   public void a(List<ComicCancelRedPointPopItemData> paramList)
   {
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_Int = 0;
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView.length)
+    this.b = 0;
+    int k = 0;
+    while (k < this.d.length)
     {
-      if (i >= paramList.size())
+      if (k >= paramList.size())
       {
-        this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[i].setVisibility(8);
-        this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setVisibility(8);
-        this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[i].setData(null);
+        this.d[k].setVisibility(8);
+        this.e[k].setVisibility(8);
+        this.d[k].setData(null);
       }
       else
       {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[i].setVisibility(0);
-        this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setVisibility(0);
-        this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[i].setData((ComicCancelRedPointPopItemData)paramList.get(i));
+        this.b += 1;
+        this.d[k].setVisibility(0);
+        this.e[k].setVisibility(0);
+        this.d[k].setData((ComicCancelRedPointPopItemData)paramList.get(k));
       }
-      i += 1;
+      k += 1;
     }
-    this.jdField_a_of_type_ComTencentComicUiComicHorizontalCenterScrollView.scrollTo(0, 0);
-    a(0);
+    this.c.scrollTo(0, 0);
+    b(0);
   }
   
   public void onClick(View paramView)
@@ -192,19 +190,19 @@ public class ComicCancelRedPointPopDialog
     default: 
       return;
     case 1996750863: 
-      paramView = this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[4].jdField_a_of_type_ComTencentComicDataComicCancelRedPointPopItemData;
+      paramView = this.d[4].a;
       break;
     case 1996750862: 
-      paramView = this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[3].jdField_a_of_type_ComTencentComicDataComicCancelRedPointPopItemData;
+      paramView = this.d[3].a;
       break;
     case 1996750861: 
-      paramView = this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[2].jdField_a_of_type_ComTencentComicDataComicCancelRedPointPopItemData;
+      paramView = this.d[2].a;
       break;
     case 1996750860: 
-      paramView = this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[1].jdField_a_of_type_ComTencentComicDataComicCancelRedPointPopItemData;
+      paramView = this.d[1].a;
       break;
     case 1996750859: 
-      paramView = this.jdField_a_of_type_ArrayOfComTencentComicUiComicCancelRedPointPopItemView[0].jdField_a_of_type_ComTencentComicDataComicCancelRedPointPopItemData;
+      paramView = this.d[0].a;
       a(paramView);
       return;
     }
@@ -220,7 +218,7 @@ public class ComicCancelRedPointPopDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.ComicCancelRedPointPopDialog
  * JD-Core Version:    0.7.0.1
  */

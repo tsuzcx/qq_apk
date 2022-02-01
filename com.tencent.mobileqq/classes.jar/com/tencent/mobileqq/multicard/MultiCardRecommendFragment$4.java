@@ -20,14 +20,14 @@ class MultiCardRecommendFragment$4
       paramList.append(paramString);
       QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, paramList.toString());
     }
-    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(4);
+    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.f(this.a))) && (this.a.d != null)) {
+      this.a.d.sendEmptyMessage(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRecommendFragment.4
  * JD-Core Version:    0.7.0.1
  */

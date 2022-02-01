@@ -10,12 +10,12 @@ class AddFriendCheckFragment$8$1
   
   public void run()
   {
-    ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).addFriendToFriendList(AddFriendCheckFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendCheckFragment$8.a), this.jdField_a_of_type_JavaLangString, 0, 3999, "", true, false, -1L);
+    ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).addFriendToFriendList(AddFriendCheckFragment.f(this.b.a), this.a, 0, 3999, "", true, false, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendCheckFragment.8.1
  * JD-Core Version:    0.7.0.1
  */

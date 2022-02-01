@@ -8,23 +8,23 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class HotRecommendGroupListAdapter$ViewHolder
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  int a;
+  String b;
+  TextView c;
   
   protected HotRecommendGroupListAdapter$ViewHolder(HotRecommendGroupListAdapter paramHotRecommendGroupListAdapter) {}
   
   public void onClick(View paramView)
   {
-    if (HotRecommendGroupListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter) != null) {
-      HotRecommendGroupListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter).a(this.jdField_a_of_type_JavaLangString);
+    if (HotRecommendGroupListAdapter.a(this.d) != null) {
+      HotRecommendGroupListAdapter.a(this.d).a(this.b);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.HotRecommendGroupListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

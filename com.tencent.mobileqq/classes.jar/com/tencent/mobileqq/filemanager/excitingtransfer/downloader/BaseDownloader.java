@@ -16,32 +16,16 @@ import java.util.concurrent.Executor;
 public abstract class BaseDownloader
   implements IFileHttpBase, IExcitingTransferRecvListener
 {
-  protected int a;
-  protected long a;
-  protected IFMSettings a;
-  protected BaseDataReport a;
-  private ExcitingTransferDownloadReqInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo = null;
-  private boolean jdField_a_of_type_Boolean = true;
+  protected BaseDataReport a = a(paramQQAppInterface);
+  protected int b = 0;
+  protected IFMSettings c = null;
+  protected long d = -1L;
+  private ExcitingTransferDownloadReqInfo e = null;
+  private boolean f = true;
   
-  public BaseDownloader(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiIFMSettings = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferBaseDataReport = a(paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
+  public BaseDownloader(QQAppInterface paramQQAppInterface) {}
   
   protected abstract BaseDataReport a(QQAppInterface paramQQAppInterface);
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_Long = ExcitingTransferEngine.getInstance().recvFileEx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo, ((IExcitingTransferAdapter)QQFileManagerUtil.a().getRuntimeService(IExcitingTransferAdapter.class, "")).getC2CDownloadConfig(), this);
-  }
   
   protected abstract void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo);
   
@@ -49,45 +33,55 @@ public abstract class BaseDownloader
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.f;
       return bool;
     }
     finally {}
   }
   
-  public void c()
+  public int b()
+  {
+    return 1;
+  }
+  
+  protected void d()
+  {
+    this.d = ExcitingTransferEngine.getInstance().recvFileEx(this.e, ((IExcitingTransferAdapter)QQFileManagerUtil.f().getRuntimeService(IExcitingTransferAdapter.class, "")).getC2CDownloadConfig(), this);
+  }
+  
+  public void f()
   {
     try
     {
-      this.jdField_a_of_type_Boolean = true;
-      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
+      this.f = true;
+      ExcitingTransferEngine.getInstance().cancelRecvFile(this.d);
       return;
     }
     finally {}
   }
   
-  public void d()
+  public void j()
   {
-    c();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferBaseDataReport.a();
+    f();
+    this.a.d();
   }
   
-  public void e()
+  public void k()
   {
-    c();
+    f();
   }
   
-  public void f()
+  public void l()
   {
-    c();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferBaseDataReport.b();
+    f();
+    this.a.e();
   }
   
-  public void g()
+  public void m()
   {
     try
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
       QQFileManagerUtil.FileExecutor.a().execute(new BaseDownloader.1(this));
       return;
     }
@@ -96,7 +90,7 @@ public abstract class BaseDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -15,20 +15,20 @@ class SdkDynamicAvatarSettingHelper$2$1
     if (QLog.isColorLevel()) {
       QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSdkDynamicAvatarSettingHelper$2.a.isFinishing())
+    if (!this.b.c.isFinishing())
     {
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L) {
+      if (System.currentTimeMillis() - this.a > 5000L) {
         return;
       }
       if (paramInt == 16) {
-        SdkDynamicAvatarSettingHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSdkDynamicAvatarSettingHelper$2.a);
+        SdkDynamicAvatarSettingHelper.b(this.b.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SdkDynamicAvatarSettingHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

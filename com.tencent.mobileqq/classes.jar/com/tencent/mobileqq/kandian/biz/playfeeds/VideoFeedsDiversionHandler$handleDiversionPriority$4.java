@@ -19,14 +19,14 @@ final class VideoFeedsDiversionHandler$handleDiversionPriority$4
   
   public final void invoke()
   {
-    VideoInfo.ECommerceEntranceInfo localECommerceEntranceInfo = this.$videoInfo.a;
+    VideoInfo.ECommerceEntranceInfo localECommerceEntranceInfo = this.$videoInfo.aG;
     VideoFeedsDiversionHandler.a(VideoFeedsDiversionHandler.a, this.$videoInfo);
-    this.$videoInfo.a = localECommerceEntranceInfo;
+    this.$videoInfo.aG = localECommerceEntranceInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsDiversionHandler.handleDiversionPriority.4
  * JD-Core Version:    0.7.0.1
  */

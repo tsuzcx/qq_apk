@@ -24,8 +24,8 @@ class WebBundleFragment$1
   
   public boolean interceptStartLoadUrl()
   {
-    if (((WebBundleFragment.a(this.a) == null) || (!WebBundleFragment.a(this.a).interceptLoadUrl(WebBundleFragment.a(this.a)))) && (!TextUtils.isEmpty(WebBundleFragment.a(this.a)))) {
-      WebBundleFragment.a(this.a).loadUrl(WebBundleFragment.b(this.a));
+    if (((WebBundleFragment.a(this.a) == null) || (!WebBundleFragment.a(this.a).interceptLoadUrl(WebBundleFragment.b(this.a)))) && (!TextUtils.isEmpty(WebBundleFragment.c(this.a)))) {
+      WebBundleFragment.e(this.a).loadUrl(WebBundleFragment.d(this.a));
     }
     return true;
   }
@@ -33,11 +33,11 @@ class WebBundleFragment$1
   public void onDataInit(Bundle paramBundle)
   {
     Object localObject = this.a;
-    WebBundleFragment.a((WebBundleFragment)localObject, WebBundleFragment.b((WebBundleFragment)localObject).getStringExtra("real_url"));
+    WebBundleFragment.a((WebBundleFragment)localObject, WebBundleFragment.f((WebBundleFragment)localObject).getStringExtra("real_url"));
     localObject = this.a;
-    WebBundleFragment.b((WebBundleFragment)localObject, WebBundleFragment.c((WebBundleFragment)localObject).getStringExtra("preload_url"));
-    localObject = WebBundleFragment.d(this.a).getStringExtra("bundle_data");
-    if ((!TextUtils.isEmpty(WebBundleFragment.c(this.a))) && (!TextUtils.isEmpty(WebBundleFragment.d(this.a))) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+    WebBundleFragment.b((WebBundleFragment)localObject, WebBundleFragment.g((WebBundleFragment)localObject).getStringExtra("preload_url"));
+    localObject = WebBundleFragment.h(this.a).getStringExtra("bundle_data");
+    if ((!TextUtils.isEmpty(WebBundleFragment.i(this.a))) && (!TextUtils.isEmpty(WebBundleFragment.j(this.a))) && (!TextUtils.isEmpty((CharSequence)localObject))) {
       WebBundleFragment.a(this.a, new WebBundleClient("comic"));
     }
     super.onDataInit(paramBundle);
@@ -60,7 +60,7 @@ class WebBundleFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.webbundle.WebBundleFragment.1
  * JD-Core Version:    0.7.0.1
  */

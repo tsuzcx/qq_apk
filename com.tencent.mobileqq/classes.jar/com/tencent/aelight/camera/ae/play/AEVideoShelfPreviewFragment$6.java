@@ -9,7 +9,7 @@ class AEVideoShelfPreviewFragment$6
   {
     if (AEVideoShelfPreviewFragment.access$1100(this.this$0))
     {
-      AEVideoShelfPreviewFragment.access$1200(this.this$0);
+      AEVideoShelfPreviewFragment.access$1300(this.this$0);
       AEVideoShelfPreviewFragment localAEVideoShelfPreviewFragment = this.this$0;
       AEVideoShelfPreviewFragment.access$1002(localAEVideoShelfPreviewFragment, AEVideoShelfPreviewFragment.access$700(localAEVideoShelfPreviewFragment));
     }
@@ -17,7 +17,7 @@ class AEVideoShelfPreviewFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEVideoShelfPreviewFragment.6
  * JD-Core Version:    0.7.0.1
  */

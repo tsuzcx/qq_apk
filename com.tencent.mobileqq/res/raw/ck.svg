@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>LoadingBlack备份 2</title>
+    <defs>
+        <linearGradient x1="94.0869141%" y1="0%" x2="94.0869141%" y2="90.559082%" id="linearGradient-1">
+            <stop stop-color="#606060" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#606060" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="8.67370605%" x2="100%" y2="90.6286621%" id="linearGradient-2">
+            <stop stop-color="#606060" offset="0%"></stop>
+            <stop stop-color="#606060" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.9">
+        <g id="对话页" transform="translate(-287.000000, -642.000000)">
+            <g id="LoadingBlack备份-2" transform="translate(287.000000, 642.000000)">
+                <path d="M24,0 C37.254834,0 48,10.745166 48,24 C48,37.254834 37.254834,48 24,48 L24,43.8 C34.935238,43.8 43.8,34.935238 43.8,24 C43.8,13.064762 34.935238,4.2 24,4.2 L24,0 Z" id="路径" fill="url(#linearGradient-1)"></path>
+                <path d="M24,0 L24,4.2 C13.064762,4.2 4.2,13.064762 4.2,24 C4.2,34.935238 13.064762,43.8 24,43.8 L24,48 C10.745166,48 0,37.254834 0,24 C0,10.745166 10.745166,0 24,0 Z" id="路径" fill="url(#linearGradient-2)"></path>
+                <circle id="Oval" fill="#606060" cx="24.3" cy="2.1" r="2.1"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

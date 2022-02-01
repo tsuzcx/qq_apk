@@ -20,54 +20,39 @@ public class WSOpenWeiShiTipsDialog
   extends Dialog
   implements View.OnClickListener
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSOnDialogItemClickListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newOpenwsWSOnDialogItemClickListener;
-  private WSOpenWeiShiData jdField_a_of_type_ComTencentBizPubaccountWeishi_newOpenwsDataWSOpenWeiShiData;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
+  private KandianUrlImageView a;
   private TextView b;
   private TextView c;
+  private TextView d;
+  private WSOpenWeiShiData e;
+  private WSOnDialogItemClickListener f;
   
   public WSOpenWeiShiTipsDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 1929773056);
+    super(paramContext, 1929904129);
     a();
     b();
     setCanceledOnTouchOutside(false);
   }
   
-  @NonNull
-  private Drawable a()
-  {
-    return getContext().getResources().getDrawable(2130842789);
-  }
-  
-  @NonNull
-  private String a(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
-  {
-    if ((paramWSOpenWeiShiData != null) && (paramWSOpenWeiShiData.a() != null)) {
-      return paramWSOpenWeiShiData.a();
-    }
-    return "";
-  }
-  
   private void a()
   {
-    setContentView(1929641984);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)findViewById(1929576458));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(1929576470));
-    this.b = ((TextView)findViewById(1929576469));
-    this.c = ((TextView)findViewById(1929576468));
-    this.c.setOnClickListener(this);
-    findViewById(1929576457).setOnClickListener(this);
+    setContentView(1929773060);
+    this.a = ((KandianUrlImageView)findViewById(1929707544));
+    this.b = ((TextView)findViewById(1929707600));
+    this.c = ((TextView)findViewById(1929707599));
+    this.d = ((TextView)findViewById(1929707598));
+    this.d.setOnClickListener(this);
+    findViewById(1929707543).setOnClickListener(this);
   }
   
   @NonNull
   private String b(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
   {
-    if ((paramWSOpenWeiShiData != null) && (!TextUtils.isEmpty(paramWSOpenWeiShiData.d()))) {
-      return paramWSOpenWeiShiData.d();
+    if ((paramWSOpenWeiShiData != null) && (paramWSOpenWeiShiData.c() != null)) {
+      return paramWSOpenWeiShiData.c();
     }
-    return getContext().getString(1929707533);
+    return "";
   }
   
   private void b()
@@ -83,17 +68,32 @@ public class WSOpenWeiShiTipsDialog
   }
   
   @NonNull
-  private String c(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
+  private Drawable c()
   {
-    if ((paramWSOpenWeiShiData != null) && (!TextUtils.isEmpty(paramWSOpenWeiShiData.c()))) {
-      return paramWSOpenWeiShiData.c();
-    }
-    return getContext().getString(1929707532);
+    return getContext().getResources().getDrawable(2130843742);
   }
   
-  private void c()
+  @NonNull
+  private String c(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
   {
-    WSOnDialogItemClickListener localWSOnDialogItemClickListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOpenwsWSOnDialogItemClickListener;
+    if ((paramWSOpenWeiShiData != null) && (!TextUtils.isEmpty(paramWSOpenWeiShiData.f()))) {
+      return paramWSOpenWeiShiData.f();
+    }
+    return getContext().getString(1929838636);
+  }
+  
+  @NonNull
+  private String d(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
+  {
+    if ((paramWSOpenWeiShiData != null) && (!TextUtils.isEmpty(paramWSOpenWeiShiData.e()))) {
+      return paramWSOpenWeiShiData.e();
+    }
+    return getContext().getString(1929838624);
+  }
+  
+  private void d()
+  {
+    WSOnDialogItemClickListener localWSOnDialogItemClickListener = this.f;
     if (localWSOnDialogItemClickListener != null) {
       localWSOnDialogItemClickListener.a();
     }
@@ -101,68 +101,68 @@ public class WSOpenWeiShiTipsDialog
   }
   
   @NonNull
-  private String d(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
+  private String e(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
   {
-    if ((paramWSOpenWeiShiData != null) && (!TextUtils.isEmpty(paramWSOpenWeiShiData.b()))) {
-      return paramWSOpenWeiShiData.b();
+    if ((paramWSOpenWeiShiData != null) && (!TextUtils.isEmpty(paramWSOpenWeiShiData.d()))) {
+      return paramWSOpenWeiShiData.d();
     }
-    return getContext().getString(1929707531);
+    return getContext().getString(1929838618);
   }
   
-  private void d()
+  private void e()
   {
-    WSOnDialogItemClickListener localWSOnDialogItemClickListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOpenwsWSOnDialogItemClickListener;
+    WSOnDialogItemClickListener localWSOnDialogItemClickListener = this.f;
     if (localWSOnDialogItemClickListener != null) {
-      localWSOnDialogItemClickListener.a(e(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOpenwsDataWSOpenWeiShiData));
+      localWSOnDialogItemClickListener.a(f(this.e));
     }
     dismiss();
   }
   
   @NonNull
-  private String e(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
+  private String f(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
   {
-    if ((paramWSOpenWeiShiData != null) && (paramWSOpenWeiShiData.e() != null)) {
-      return paramWSOpenWeiShiData.e();
+    if ((paramWSOpenWeiShiData != null) && (paramWSOpenWeiShiData.g() != null)) {
+      return paramWSOpenWeiShiData.g();
     }
     return "";
   }
   
   public void a(@Nullable WSOnDialogItemClickListener paramWSOnDialogItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOpenwsWSOnDialogItemClickListener = paramWSOnDialogItemClickListener;
+    this.f = paramWSOnDialogItemClickListener;
   }
   
   public void a(@Nullable WSOpenWeiShiData paramWSOpenWeiShiData)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newOpenwsDataWSOpenWeiShiData = paramWSOpenWeiShiData;
-    WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, a(paramWSOpenWeiShiData), a());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(d(paramWSOpenWeiShiData));
-    this.b.setText(c(paramWSOpenWeiShiData));
-    this.c.setText(b(paramWSOpenWeiShiData));
+    this.e = paramWSOpenWeiShiData;
+    WSPicLoader.a().a(this.a, b(paramWSOpenWeiShiData), c());
+    this.b.setText(e(paramWSOpenWeiShiData));
+    this.c.setText(d(paramWSOpenWeiShiData));
+    this.d.setText(c(paramWSOpenWeiShiData));
   }
   
   public void onBackPressed()
   {
-    c();
+    d();
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 1929576457)
+    if (i != 1929707543)
     {
-      if (i != 1929576468) {
+      if (i != 1929707598) {
         return;
       }
-      d();
+      e();
       return;
     }
-    c();
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.openws.WSOpenWeiShiTipsDialog
  * JD-Core Version:    0.7.0.1
  */

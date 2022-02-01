@@ -24,30 +24,30 @@ class PublicAccountH5AbilityPluginImpl$3
     {
       try
       {
-        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        if (i < this.a.size())
         {
           String str = UUID.randomUUID().toString();
           Object localObject = new StringBuilder();
           ((StringBuilder)localObject).append("mqqpa://resourceid/");
           ((StringBuilder)localObject).append(str);
           str = ((StringBuilder)localObject).toString();
-          this.jdField_a_of_type_OrgJsonJSONArray.put(i, str);
-          localObject = new CompressInfo((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), 0);
-          ((CompressInfo)localObject).f = 0;
+          this.b.put(i, str);
+          localObject = new CompressInfo((String)this.a.get(i), 0);
+          ((CompressInfo)localObject).o = 0;
           ((ICompressOperator)QRoute.api(ICompressOperator.class)).start((CompressInfo)localObject);
-          if (!StringUtil.a(((CompressInfo)localObject).e)) {
-            PublicAccountH5AbilityPluginImpl.localIdMap.put(str, ((CompressInfo)localObject).e);
+          if (!StringUtil.isEmpty(((CompressInfo)localObject).l)) {
+            PublicAccountH5AbilityPluginImpl.localIdMap.put(str, ((CompressInfo)localObject).l);
           } else {
-            PublicAccountH5AbilityPluginImpl.localIdMap.put(str, this.jdField_a_of_type_JavaUtilArrayList.get(i));
+            PublicAccountH5AbilityPluginImpl.localIdMap.put(str, this.a.get(i));
           }
         }
         else
         {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("value", this.jdField_a_of_type_OrgJsonJSONArray);
-          this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
-          this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
-          this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "album");
-          this.this$0.callJs(this.this$0.cameraCallback, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+          this.c.put("value", this.b);
+          this.c.put("retCode", 0);
+          this.c.put("msg", "Success");
+          this.c.put("sourceType", "album");
+          this.this$0.callJs(this.this$0.cameraCallback, new String[] { this.c.toString() });
           this.this$0.cameraCallback = "";
           ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
           return;
@@ -64,7 +64,7 @@ class PublicAccountH5AbilityPluginImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.3
  * JD-Core Version:    0.7.0.1
  */

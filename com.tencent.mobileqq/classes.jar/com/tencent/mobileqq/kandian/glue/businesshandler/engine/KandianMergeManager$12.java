@@ -11,7 +11,7 @@ class KandianMergeManager$12
   
   public void run()
   {
-    Object localObject = RIJSPUtils.a(KandianMergeManager.a(this.this$0), true, false);
+    Object localObject = RIJSPUtils.a(KandianMergeManager.c(this.this$0), true, false);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -25,7 +25,7 @@ class KandianMergeManager$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.12
  * JD-Core Version:    0.7.0.1
  */

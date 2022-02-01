@@ -9,15 +9,15 @@ class HWEditLocalVideoPlayer$3
   
   public void run()
   {
-    if (this.this$0.a.p) {
+    if (this.this$0.t.E) {
       return;
     }
-    this.this$0.a.a(Message.obtain(null, 13, new Long[] { Long.valueOf(this.a / 1000000L), Long.valueOf(this.a) }));
+    this.this$0.t.a(Message.obtain(null, 13, new Long[] { Long.valueOf(this.a / 1000000L), Long.valueOf(this.a) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.HWEditLocalVideoPlayer.3
  * JD-Core Version:    0.7.0.1
  */

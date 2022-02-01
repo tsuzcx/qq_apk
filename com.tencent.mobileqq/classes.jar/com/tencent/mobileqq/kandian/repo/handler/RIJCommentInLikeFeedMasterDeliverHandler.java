@@ -77,7 +77,7 @@ public class RIJCommentInLikeFeedMasterDeliverHandler
       paramFromServiceMsg.append(str);
       QLog.d("RIJCommentInLikeFeedMasterDeliverHandler", 1, paramFromServiceMsg.toString());
     }
-    paramFromServiceMsg = BaseApplication.getContext().getString(2131717876);
+    paramFromServiceMsg = BaseApplication.getContext().getString(2131915349);
     if (((oidb_cmd0x83e.RspBody)localObject).bytes_result_desc.has())
     {
       paramFromServiceMsg = ((oidb_cmd0x83e.RspBody)localObject).bytes_result_desc.get().toStringUtf8();
@@ -86,7 +86,7 @@ public class RIJCommentInLikeFeedMasterDeliverHandler
       ((StringBuilder)localObject).append(paramFromServiceMsg);
       QLog.d("RIJCommentInLikeFeedMasterDeliverHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJCommentInLikeFeedMasterDeliverHandler.1(this, paramToServiceMsg, i, l, paramObject, j, str, paramFromServiceMsg));
+    this.b.post(new RIJCommentInLikeFeedMasterDeliverHandler.1(this, paramToServiceMsg, i, l, paramObject, j, str, paramFromServiceMsg));
   }
   
   public void a(String paramString1, String paramString2, Bundle paramBundle, ArrayList<BiuCommentInfo> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, TroopBarPOI paramTroopBarPOI, VisibleSetParam paramVisibleSetParam)
@@ -154,7 +154,7 @@ public class RIJCommentInLikeFeedMasterDeliverHandler
     {
       paramString2 = new feeds_info.VisibleSetParam();
       paramString2.uint32_visible_type.set(paramVisibleSetParam.a());
-      paramString2.rpt_uint64_uin.addAll(paramVisibleSetParam.a());
+      paramString2.rpt_uint64_uin.addAll(paramVisibleSetParam.b());
       paramVisibleSetParam = new feeds_info.VisibleInfo();
       paramVisibleSetParam.visible_param.set(paramString2);
       paramString1.visible_info.set(paramVisibleSetParam);
@@ -175,9 +175,9 @@ public class RIJCommentInLikeFeedMasterDeliverHandler
         paramString2 = (TagInfo)((Iterator)localObject3).next();
         localObject4 = new feeds_info.TagInfo();
         ((feeds_info.TagInfo)localObject4).uint64_tag_id.set(paramString2.a());
-        ((feeds_info.TagInfo)localObject4).bytes_tag_name.set(ByteStringMicro.copyFromUtf8(paramString2.a()));
-        ((feeds_info.TagInfo)localObject4).double_tag_score.set(paramString2.a());
-        ((feeds_info.TagInfo)localObject4).uint64_channel.set(paramString2.b());
+        ((feeds_info.TagInfo)localObject4).bytes_tag_name.set(ByteStringMicro.copyFromUtf8(paramString2.b()));
+        ((feeds_info.TagInfo)localObject4).double_tag_score.set(paramString2.c());
+        ((feeds_info.TagInfo)localObject4).uint64_channel.set(paramString2.d());
         paramVisibleSetParam.rpt_msg_tag_info_list.add((MessageMicro)localObject4);
       }
     }
@@ -258,28 +258,28 @@ public class RIJCommentInLikeFeedMasterDeliverHandler
       {
         paramString1 = new feeds_info.LocationInfo();
         paramString1.bytes_name.set(ByteStringMicro.copyFromUtf8(paramTroopBarPOI.c));
-        paramString1.uint32_longitude.set(paramTroopBarPOI.a);
-        paramString1.uint32_latitude.set(paramTroopBarPOI.b);
+        paramString1.uint32_longitude.set(paramTroopBarPOI.d);
+        paramString1.uint32_latitude.set(paramTroopBarPOI.f);
         paramString2.location_info.set(paramString1);
       }
       ((oidb_cmd0x83e.FeedsInfo)localObject2).msg_social_feeds_info.set(paramString2);
       ((oidb_cmd0x83e.ReqBody)localObject1).msg_feeds_info.set((MessageMicro)localObject2);
       paramString1 = new StringBuilder();
-      paramString1.append(String.valueOf(RIJQQAppInterfaceUtil.a()));
+      paramString1.append(String.valueOf(RIJQQAppInterfaceUtil.d()));
       paramString1.append(System.currentTimeMillis());
       paramString1 = paramString1.toString();
       ((oidb_cmd0x83e.ReqBody)localObject1).bytes_req_seq.set(ByteStringMicro.copyFromUtf8(paramString1));
       paramString1 = ReadInJoyOidbHelper.a("OidbSvc.0x83e", 2110, 0, ((oidb_cmd0x83e.ReqBody)localObject1).toByteArray());
       paramString1.addAttribute("up_master_deliver", Integer.valueOf(1));
       paramString1.addAttribute("up_master_deliver_uuid", paramBundle.getString("up_master_deliver_uuid"));
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReqWithAutoRetry(paramString1);
+      this.a.sendPbReqWithAutoRetry(paramString1);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedMasterDeliverHandler
  * JD-Core Version:    0.7.0.1
  */

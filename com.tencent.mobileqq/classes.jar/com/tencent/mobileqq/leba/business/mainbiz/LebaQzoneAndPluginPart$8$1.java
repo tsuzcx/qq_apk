@@ -14,30 +14,30 @@ class LebaQzoneAndPluginPart$8$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.a > 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.b != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.b.setVisibility(0);
+      if (this.b.this$0.c != null) {
+        this.b.this$0.c.setVisibility(0);
       }
-      CustomWidgetUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.b, 9, this.jdField_a_of_type_Int, 0);
-      if (AppSetting.d) {
-        AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.a, HardCodeUtil.a(2131706088), Button.class.getName());
+      CustomWidgetUtil.a(this.b.this$0.c, 9, this.a, 0);
+      if (AppSetting.e) {
+        AccessibilityUtil.a(this.b.this$0.w, HardCodeUtil.a(2131903960), Button.class.getName());
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.b != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.b.setVisibility(8);
+      if (this.b.this$0.c != null) {
+        this.b.this$0.c.setVisibility(8);
       }
-      if (AppSetting.d) {
-        AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.a, HardCodeUtil.a(2131719439), Button.class.getName());
+      if (AppSetting.e) {
+        AccessibilityUtil.a(this.b.this$0.w, HardCodeUtil.a(2131916999), Button.class.getName());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.8.1
  * JD-Core Version:    0.7.0.1
  */

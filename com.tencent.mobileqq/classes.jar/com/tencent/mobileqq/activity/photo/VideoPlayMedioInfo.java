@@ -7,50 +7,39 @@ import java.util.ArrayList;
 
 public class VideoPlayMedioInfo
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public MessageForShortVideo a;
-  public String a;
-  public ArrayList<String> a;
   public boolean a;
-  public String[] a;
-  public int b;
-  public long b;
   public String b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
-  public boolean d = false;
-  public long e = 0L;
-  public boolean e;
-  
-  public VideoPlayMedioInfo()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsBundle = null;
-  }
+  public String[] c;
+  public ArrayList<String> d;
+  public String e;
+  public MessageForShortVideo f;
+  public int g;
+  public boolean h = false;
+  public boolean i = false;
+  public boolean j = false;
+  public long k = -1L;
+  public int l = -1;
+  public boolean m;
+  public long n = 0L;
+  public long o = 0L;
+  public long p;
+  public long q = 0L;
+  public Bundle r = null;
   
   public String a()
   {
-    MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    MessageForShortVideo localMessageForShortVideo = this.f;
     if (localMessageForShortVideo == null) {
-      return this.jdField_a_of_type_JavaLangString;
+      return this.b;
     }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = SVUtils.a(localMessageForShortVideo, "mp4");
-    return this.jdField_a_of_type_JavaLangString;
+    this.b = null;
+    this.b = SVUtils.a(localMessageForShortVideo, "mp4");
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayMedioInfo
  * JD-Core Version:    0.7.0.1
  */

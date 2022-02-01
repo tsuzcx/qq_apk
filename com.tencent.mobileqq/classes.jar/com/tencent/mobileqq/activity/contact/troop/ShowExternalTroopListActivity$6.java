@@ -15,18 +15,18 @@ class ShowExternalTroopListActivity$6
     if (i != 100)
     {
       if (i == 101) {
-        this.a.a.springBackOverScrollHeaderView();
+        this.a.c.springBackOverScrollHeaderView();
       }
     }
     else {
-      this.a.a.springBackOverScrollHeaderView();
+      this.a.c.springBackOverScrollHeaderView();
     }
     super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.6
  * JD-Core Version:    0.7.0.1
  */

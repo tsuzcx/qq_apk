@@ -11,18 +11,18 @@ class VideoListPageLoader$1
 {
   public void run()
   {
-    ??? = ((FeedVideoManager)SuperManager.a(12)).a(VideoListPageLoader.a(this.this$0), VideoListPageLoader.a(this.this$0));
+    ??? = ((FeedVideoManager)SuperManager.a(12)).a(VideoListPageLoader.a(this.this$0), VideoListPageLoader.b(this.this$0));
     VideoListPageLoader.GetVideoListEvent localGetVideoListEvent = new VideoListPageLoader.GetVideoListEvent(new ErrorMessage(), VideoListPageLoader.a(this.this$0));
     localGetVideoListEvent.d = false;
     localGetVideoListEvent.b = true;
     localGetVideoListEvent.c = true;
-    localGetVideoListEvent.jdField_a_of_type_Boolean = true;
+    localGetVideoListEvent.a = true;
     if (??? != null) {
-      localGetVideoListEvent.jdField_a_of_type_JavaUtilList = ((FeedVideoInfo)???).mVideoItemList;
+      localGetVideoListEvent.h = ((FeedVideoInfo)???).mVideoItemList;
     }
     synchronized (this.this$0)
     {
-      if (!this.this$0.b)
+      if (!this.this$0.e)
       {
         VideoListPageLoader.a(this.this$0, localGetVideoListEvent);
         SLog.a("Q.qqstory.home.data:VideoListPageLoader", "dispatch video list return from cache: %s", localGetVideoListEvent);

@@ -13,15 +13,15 @@ import java.util.List;
 public class StoryAlbumResourceDownloader
 {
   public static int a;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
+  private List<String> c = new ArrayList();
   
   private String a(int paramInt)
   {
-    if (paramInt == jdField_a_of_type_Int)
+    if (paramInt == a)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(OfflineEnvHelper.a("3408"));
+      localStringBuilder.append(OfflineEnvHelper.b("3408"));
       localStringBuilder.append("3408");
       localStringBuilder.append(File.separator);
       localStringBuilder.append("loading");
@@ -33,9 +33,9 @@ public class StoryAlbumResourceDownloader
   
   private void a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.c = new ArrayList();
     HashMap localHashMap = new HashMap();
-    Object localObject1 = new File(a(jdField_a_of_type_Int));
+    Object localObject1 = new File(a(a));
     boolean bool = ((File)localObject1).exists();
     int j = 0;
     Object localObject2;
@@ -67,7 +67,7 @@ public class StoryAlbumResourceDownloader
       }
       i += 1;
     }
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
+    this.c = ((List)localObject1);
   }
   
   private void a(boolean paramBoolean)
@@ -78,7 +78,7 @@ public class StoryAlbumResourceDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryAlbumResourceDownloader
  * JD-Core Version:    0.7.0.1
  */

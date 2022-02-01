@@ -8,8 +8,8 @@ import android.os.Build.VERSION;
 
 public class SensorUtil
 {
-  private static final int jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-  private static float[] jdField_a_of_type_ArrayOfFloat;
+  private static final int a = Build.VERSION.SDK_INT;
+  private static float[] b;
   
   public static void a(float[] paramArrayOfFloat, SensorEvent paramSensorEvent)
   {
@@ -18,22 +18,22 @@ public class SensorUtil
     {
       if (arrayOfFloat.length > 4)
       {
-        if (jdField_a_of_type_Int >= 9)
+        if (a >= 9)
         {
-          c(paramArrayOfFloat, (float[])arrayOfFloat.clone());
+          d(paramArrayOfFloat, (float[])arrayOfFloat.clone());
           return;
         }
-        if (jdField_a_of_type_ArrayOfFloat == null) {
-          jdField_a_of_type_ArrayOfFloat = new float[4];
+        if (b == null) {
+          b = new float[4];
         }
-        System.arraycopy(arrayOfFloat, 0, jdField_a_of_type_ArrayOfFloat, 0, 4);
-        c(paramArrayOfFloat, jdField_a_of_type_ArrayOfFloat);
+        System.arraycopy(arrayOfFloat, 0, b, 0, 4);
+        d(paramArrayOfFloat, b);
         return;
       }
-      c(paramArrayOfFloat, (float[])arrayOfFloat.clone());
+      d(paramArrayOfFloat, (float[])arrayOfFloat.clone());
       return;
     }
-    c(paramArrayOfFloat, (float[])arrayOfFloat.clone());
+    d(paramArrayOfFloat, (float[])arrayOfFloat.clone());
   }
   
   public static void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -77,26 +77,26 @@ public class SensorUtil
     float f7 = -f1;
     float f8 = -f3;
     float f9 = -f5;
-    paramArrayOfFloat = a(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, f2, f1, 0.0F, f7, f2 }, new float[] { f4, 0.0F, f3, 0.0F, 1.0F, 0.0F, f8, 0.0F, f4 });
-    return a(new float[] { f6, f5, 0.0F, f9, f6, 0.0F, 0.0F, 0.0F, 1.0F }, paramArrayOfFloat);
+    paramArrayOfFloat = b(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, f2, f1, 0.0F, f7, f2 }, new float[] { f4, 0.0F, f3, 0.0F, 1.0F, 0.0F, f8, 0.0F, f4 });
+    return b(new float[] { f6, f5, 0.0F, f9, f6, 0.0F, 0.0F, 0.0F, 1.0F }, paramArrayOfFloat);
   }
   
-  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public static float[] b(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     return new float[] { paramArrayOfFloat1[0] * paramArrayOfFloat2[0] + paramArrayOfFloat1[1] * paramArrayOfFloat2[3] + paramArrayOfFloat1[2] * paramArrayOfFloat2[6], paramArrayOfFloat1[0] * paramArrayOfFloat2[1] + paramArrayOfFloat1[1] * paramArrayOfFloat2[4] + paramArrayOfFloat1[2] * paramArrayOfFloat2[7], paramArrayOfFloat1[0] * paramArrayOfFloat2[2] + paramArrayOfFloat1[1] * paramArrayOfFloat2[5] + paramArrayOfFloat1[2] * paramArrayOfFloat2[8], paramArrayOfFloat1[3] * paramArrayOfFloat2[0] + paramArrayOfFloat1[4] * paramArrayOfFloat2[3] + paramArrayOfFloat1[5] * paramArrayOfFloat2[6], paramArrayOfFloat1[3] * paramArrayOfFloat2[1] + paramArrayOfFloat1[4] * paramArrayOfFloat2[4] + paramArrayOfFloat1[5] * paramArrayOfFloat2[7], paramArrayOfFloat1[3] * paramArrayOfFloat2[2] + paramArrayOfFloat1[4] * paramArrayOfFloat2[5] + paramArrayOfFloat1[5] * paramArrayOfFloat2[8], paramArrayOfFloat1[6] * paramArrayOfFloat2[0] + paramArrayOfFloat1[7] * paramArrayOfFloat2[3] + paramArrayOfFloat1[8] * paramArrayOfFloat2[6], paramArrayOfFloat1[6] * paramArrayOfFloat2[1] + paramArrayOfFloat1[7] * paramArrayOfFloat2[4] + paramArrayOfFloat1[8] * paramArrayOfFloat2[7], paramArrayOfFloat1[6] * paramArrayOfFloat2[2] + paramArrayOfFloat1[7] * paramArrayOfFloat2[5] + paramArrayOfFloat1[8] * paramArrayOfFloat2[8] };
   }
   
   @TargetApi(9)
-  public static void b(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public static void c(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     SensorManager.getRotationMatrixFromVector(paramArrayOfFloat1, paramArrayOfFloat2);
   }
   
-  public static void c(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public static void d(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if (jdField_a_of_type_Int >= 9)
+    if (a >= 9)
     {
-      b(paramArrayOfFloat1, paramArrayOfFloat2);
+      c(paramArrayOfFloat1, paramArrayOfFloat2);
       return;
     }
     float f3 = paramArrayOfFloat2[0];
@@ -165,7 +165,7 @@ public class SensorUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.SensorUtil
  * JD-Core Version:    0.7.0.1
  */

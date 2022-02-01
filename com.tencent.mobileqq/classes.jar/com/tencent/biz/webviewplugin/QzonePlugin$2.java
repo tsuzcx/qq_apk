@@ -15,9 +15,9 @@ class QzonePlugin$2
   {
     if (QzonePlugin.a(this.this$0) != null)
     {
-      String str = QzonePlugin.a(this.this$0);
-      if (this.this$0.mRuntime.a().getIntent().getExtras().getString("url") != null) {
-        str = this.this$0.mRuntime.a().getIntent().getExtras().getString("url");
+      String str = QzonePlugin.b(this.this$0);
+      if (this.this$0.mRuntime.d().getIntent().getExtras().getString("url") != null) {
+        str = this.this$0.mRuntime.d().getIntent().getExtras().getString("url");
       }
       QzonePlugin.a(this.this$0).loadData(new String(str).replaceAll("#", "%23").replaceAll("%", "%25").replaceAll("'", "%27"), "text/html", "utf-8");
     }
@@ -25,7 +25,7 @@ class QzonePlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.QzonePlugin.2
  * JD-Core Version:    0.7.0.1
  */

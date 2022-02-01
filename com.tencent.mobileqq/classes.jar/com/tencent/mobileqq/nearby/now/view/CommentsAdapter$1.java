@@ -20,7 +20,7 @@ class CommentsAdapter$1
     if ((localObject instanceof BaseActivity))
     {
       localObject = (BaseActivity)localObject;
-      if ((((BaseActivity)localObject).app != null) && (this.jdField_a_of_type_Long == Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin())))
+      if ((((BaseActivity)localObject).app != null) && (this.a == Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin())))
       {
         i = 2;
         break label49;
@@ -44,7 +44,7 @@ class CommentsAdapter$1
     ((StringBuilder)localObject).append(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("mqq://card/show_pslcard/?uin=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("&card_type=nearby");
     localStringBuilder.append(((StringBuilder)localObject).toString());
     localObject = localStringBuilder.toString();
@@ -53,7 +53,7 @@ class CommentsAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.CommentsAdapter.1
  * JD-Core Version:    0.7.0.1
  */

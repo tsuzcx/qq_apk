@@ -23,47 +23,39 @@ import java.util.LinkedHashMap;
 public class TroopFeedViewFactory
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 1000;
-  long jdField_a_of_type_Long = 0L;
   protected Context a;
-  protected Drawable a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
-  protected TroopFeedsDataManager a;
-  protected TroopFeedsCenterLogic a;
-  protected HashMap<Integer, TroopFeedViewFactory.ViewProvider> a;
-  protected Drawable b = null;
-  protected Drawable c = null;
+  protected QQAppInterface b;
+  protected SessionInfo c;
+  protected Drawable d = null;
+  protected Drawable e = null;
+  protected Drawable f = null;
+  protected TroopFeedsDataManager g;
+  protected TroopFeedsCenterLogic h;
+  protected HashMap<Integer, TroopFeedViewFactory.ViewProvider> i = new LinkedHashMap();
+  long j = 0L;
+  int k = 1000;
   
   public TroopFeedViewFactory(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, TroopFeedsDataManager paramTroopFeedsDataManager, TroopFeedsCenterLogic paramTroopFeedsCenterLogic)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager = paramTroopFeedsDataManager;
-    this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic = paramTroopFeedsCenterLogic;
-  }
-  
-  protected int a(int paramInt)
-  {
-    if ((paramInt != 0) && (paramInt != 5) && (paramInt != 10) && (paramInt != 12) && (paramInt != 18) && (paramInt != 19) && (paramInt != 131)) {}
-    return 0;
+    this.a = paramContext;
+    this.c = paramSessionInfo;
+    this.b = paramQQAppInterface;
+    this.g = paramTroopFeedsDataManager;
+    this.h = paramTroopFeedsCenterLogic;
   }
   
   public View a(TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2)) != null) {
+    if (this.i.get(Integer.valueOf(2)) != null) {
       return null;
     }
-    int i = a(paramTroopFeedItem.type);
-    TroopFeedViewFactory.ViewProvider localViewProvider2 = (TroopFeedViewFactory.ViewProvider)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+    int m = b(paramTroopFeedItem.type);
+    TroopFeedViewFactory.ViewProvider localViewProvider2 = (TroopFeedViewFactory.ViewProvider)this.i.get(Integer.valueOf(m));
     TroopFeedViewFactory.ViewProvider localViewProvider1 = localViewProvider2;
     if (localViewProvider2 == null)
     {
-      localViewProvider1 = a(i);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localViewProvider1);
+      localViewProvider1 = a(m);
+      this.i.put(Integer.valueOf(m), localViewProvider1);
     }
     if (localViewProvider1 != null) {
       return localViewProvider1.a(paramTroopFeedItem, paramInt, paramBoolean);
@@ -85,44 +77,50 @@ public class TroopFeedViewFactory
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(2));
+    this.i.remove(Integer.valueOf(2));
+  }
+  
+  protected int b(int paramInt)
+  {
+    if ((paramInt != 0) && (paramInt != 5) && (paramInt != 10) && (paramInt != 12) && (paramInt != 18) && (paramInt != 19) && (paramInt != 131)) {}
+    return 0;
   }
   
   public void onClick(View paramView)
   {
     if ((paramView.getTag() instanceof TroopFeedViewFactory.ADViewProvider.ViewHolder))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.b(true);
+      this.h.b(true);
     }
-    else if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long >= this.jdField_a_of_type_Int)
+    else if (SystemClock.uptimeMillis() - this.j >= this.k)
     {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.j = SystemClock.uptimeMillis();
+      Object localObject = new Intent(this.a, QQBrowserActivity.class);
+      TroopInfo localTroopInfo = ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.c.b);
+      String str = this.b.getCurrentAccountUin();
       if ((localTroopInfo != null) && (str != null))
       {
         if (str.equals(localTroopInfo.troopowneruin))
         {
-          i = 0;
+          m = 0;
           break label152;
         }
         if ((localTroopInfo.Administrator != null) && (localTroopInfo.Administrator.contains(str)))
         {
-          i = 1;
+          m = 1;
           break label152;
         }
       }
-      int i = 2;
+      int m = 2;
       label152:
-      ((Intent)localObject).putExtra("url", String.format("https://web.qun.qq.com/qqweb/m/qun/notification/index.html?gc=%s&role=%d&_bid=2223&_wv=1031", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, Integer.valueOf(i) }));
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      ((Intent)localObject).putExtra("url", String.format("https://web.qun.qq.com/qqweb/m/qun/notification/index.html?gc=%s&role=%d&_bid=2223&_wv=1031", new Object[] { this.c.b, Integer.valueOf(m) }));
+      this.a.startActivity((Intent)localObject);
       localObject = paramView.getTag();
       if ((localObject instanceof TroopFeedViewFactory.ViewHolder))
       {
-        localObject = ((TroopFeedViewFactory.ViewHolder)localObject).a;
+        localObject = ((TroopFeedViewFactory.ViewHolder)localObject).f;
         if ((localObject != null) && (((TroopFeedItem)localObject).isStoryType())) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_story_pgc", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+          ReportController.b(this.b, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_story_pgc", 0, 0, this.c.b, "", "", "");
         }
       }
     }
@@ -131,7 +129,7 @@ public class TroopFeedViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopFeedViewFactory
  * JD-Core Version:    0.7.0.1
  */

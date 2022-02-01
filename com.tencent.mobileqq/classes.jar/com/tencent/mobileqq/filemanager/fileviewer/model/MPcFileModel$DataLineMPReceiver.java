@@ -38,8 +38,8 @@ class MPcFileModel$DataLineMPReceiver
     } else {
       paramFileManagerEntity.fProgress = 1.0F;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.a(paramFileManagerEntity.fProgress);
+    if (this.a.q != null) {
+      this.a.q.a(paramFileManagerEntity.fProgress);
     }
   }
   
@@ -65,19 +65,19 @@ class MPcFileModel$DataLineMPReceiver
     paramIntent.uSessionID = l1;
     paramIntent.uChannelType = 6;
     paramIntent.bSend = false;
-    paramIntent.uNotifyTime = MPcFileModel.a(this.a);
+    paramIntent.uNotifyTime = MPcFileModel.c(this.a);
     paramIntent.uFileSize = l2;
     paramIntent.bFileExist = false;
     paramIntent.uStartPos = 0L;
-    paramIntent.uTaskStart = MPcFileModel.a(this.a);
-    paramIntent.uTaskEnd = MPcFileModel.b(this.a);
-    paramIntent.uDuration = (MPcFileModel.b(this.a) - MPcFileModel.a(this.a));
+    paramIntent.uTaskStart = MPcFileModel.c(this.a);
+    paramIntent.uTaskEnd = MPcFileModel.d(this.a);
+    paramIntent.uDuration = (MPcFileModel.d(this.a) - MPcFileModel.c(this.a));
     paramIntent.bUserRetry = false;
     paramIntent.sSuffix = "";
     int i;
     if (bool) {
       i = 2;
-    } else if (MPcFileModel.b(this.a)) {
+    } else if (MPcFileModel.e(this.a)) {
       i = 32;
     } else {
       i = 41;
@@ -85,11 +85,11 @@ class MPcFileModel$DataLineMPReceiver
     paramIntent.emResult = i;
     paramIntent.nFailCode = 0;
     paramIntent.nUserCode = j;
-    Object localObject = ((DataLineHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a().a();
+    Object localObject = ((DataLineHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a().c();
     if (localObject != null)
     {
-      paramIntent.dwServerIP = DBNetworkUtil.a(((ServerInfo)localObject).jdField_a_of_type_JavaLangString);
-      paramIntent.wServerPort = ((short)((ServerInfo)localObject).jdField_a_of_type_Int);
+      paramIntent.dwServerIP = DBNetworkUtil.a(((ServerInfo)localObject).a);
+      paramIntent.wServerPort = ((short)((ServerInfo)localObject).b);
     }
     else
     {
@@ -97,7 +97,7 @@ class MPcFileModel$DataLineMPReceiver
       paramIntent.wServerPort = 0;
     }
     paramIntent.dwClientIP = DBNetworkUtil.a(DBNetworkUtil.a());
-    localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject = this.a.a;
     if (paramFileManagerEntity.peerDin == 0L) {
       i = QualityReportUtil.b;
     } else {
@@ -110,9 +110,9 @@ class MPcFileModel$DataLineMPReceiver
       if ((j != 2) && (j != 3) && (j != 4) && (j != 5) && (j != 8))
       {
         if (j == 1) {
-          FMToastUtil.a(2131694245);
+          FMToastUtil.a(2131891883);
         } else if (j == 1004) {
-          FMToastUtil.a(2131694246);
+          FMToastUtil.a(2131891884);
         } else if (j == 11) {
           QLog.d("MPcFileModel<FileAssistant>", 2, "cancel file download!");
         } else if (j == 12) {
@@ -122,16 +122,16 @@ class MPcFileModel$DataLineMPReceiver
         }
       }
       else {
-        FMToastUtil.a(2131694247);
+        FMToastUtil.a(2131891885);
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.g();
+      if (this.a.q != null) {
+        this.a.q.g();
       }
     }
     else
     {
       paramFileManagerEntity.status = 1;
-      paramIntent = ((DataLineHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a().b();
+      paramIntent = ((DataLineHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a().e();
       if (paramIntent == null)
       {
         if (QLog.isColorLevel()) {
@@ -143,24 +143,24 @@ class MPcFileModel$DataLineMPReceiver
         paramFileManagerEntity.setFilePath(String.format("%s/%s", new Object[] { paramIntent, paramFileManagerEntity.fileName }));
         paramFileManagerEntity.setCloudType(3);
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.f();
+      if (this.a.q != null) {
+        this.a.q.f();
       }
     }
-    ((DataLineHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a().a(paramFileManagerEntity.strDataLineMPFileID);
-    if (!MPcFileModel.a(this.a))
+    ((DataLineHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a().b(paramFileManagerEntity.strDataLineMPFileID);
+    if (!MPcFileModel.b(this.a))
     {
       paramFileManagerEntity.mContext = "needMPFileC2C";
       paramIntent = new StringBuilder();
       paramIntent.append("mConnPCSuc:");
-      paramIntent.append(MPcFileModel.a(this.a));
+      paramIntent.append(MPcFileModel.b(this.a));
       paramIntent.append(",create mEntity.mContext");
       QLog.d("MPcFileModel<FileAssistant>", 2, paramIntent.toString());
       return;
     }
     paramIntent = new StringBuilder();
     paramIntent.append("mConnPCSuc:");
-    paramIntent.append(MPcFileModel.a(this.a));
+    paramIntent.append(MPcFileModel.b(this.a));
     paramIntent.append("mEntity.mContext = null");
     QLog.d("MPcFileModel<FileAssistant>", 2, paramIntent.toString());
     paramFileManagerEntity.mContext = null;
@@ -179,7 +179,7 @@ class MPcFileModel$DataLineMPReceiver
     paramIntent.append("mainReceiver MPFILE_ACTION_HOST_INFO_UPDATE,ret:");
     paramIntent.append(i);
     QLog.d("MPcFileModel<FileAssistant>[MPFile]", 1, paramIntent.toString());
-    if (MPcFileModel.c(this.a) != l) {
+    if (MPcFileModel.f(this.a) != l) {
       return;
     }
     if (i == 0)
@@ -198,10 +198,10 @@ class MPcFileModel$DataLineMPReceiver
         QLog.d("MPcFileModel<FileAssistant>", 1, paramIntent.toString());
         return;
       case 8: 
-        this.a.t();
+        this.a.ay();
         return;
       case 7: 
-        this.a.s();
+        this.a.ax();
         return;
       case 6: 
         this.a.a(paramIntent);
@@ -214,13 +214,13 @@ class MPcFileModel$DataLineMPReceiver
       case 3: 
       case 4: 
         MPcFileModel.a(this.a, i + 2000);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser == null) {
+        if (this.a.k == null) {
           break;
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(false);
+        this.a.k.a(false);
         return;
       case 0: 
-        this.a.r();
+        this.a.aw();
         return;
       }
     }
@@ -228,24 +228,24 @@ class MPcFileModel$DataLineMPReceiver
     {
       if (i == 1013)
       {
-        FMToastUtil.a(2131694232);
+        FMToastUtil.a(2131891870);
         return;
       }
       if (i == 1014)
       {
-        FMToastUtil.a(2131694274);
+        FMToastUtil.a(2131891912);
         return;
       }
       MPcFileModel.a(this.a, i);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(false);
+      if (this.a.k != null) {
+        this.a.k.a(false);
       }
     }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
+    paramContext = this.a.c.r();
     if (paramIntent == null) {
       return;
     }
@@ -272,13 +272,13 @@ class MPcFileModel$DataLineMPReceiver
     {
       MPcFileModel.a(this.a, false);
       QLog.d("MPcFileModel<FileAssistant>[MPFile]", 1, "channelReceiver MPFILE_ACTION_CHANNEL_DISCONNECT!");
-      FMToastUtil.a(2131694246);
+      FMToastUtil.a(2131891884);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel.DataLineMPReceiver
  * JD-Core Version:    0.7.0.1
  */

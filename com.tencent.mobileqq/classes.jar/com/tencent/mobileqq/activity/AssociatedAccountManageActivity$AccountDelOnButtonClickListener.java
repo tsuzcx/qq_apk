@@ -8,34 +8,34 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 class AssociatedAccountManageActivity$AccountDelOnButtonClickListener
   implements ActionSheet.OnButtonClickListener
 {
-  SimpleAccount jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount;
+  SimpleAccount a;
   
   AssociatedAccountManageActivity$AccountDelOnButtonClickListener(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(SimpleAccount paramSimpleAccount)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.menuDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.menuDialog.dismiss();
+    this.a = paramSimpleAccount;
+  }
+  
+  public void onClick(View paramView, int paramInt)
+  {
+    if (this.b.menuDialog != null) {
+      this.b.menuDialog.dismiss();
     }
     if (paramInt != 0)
     {
       if (paramInt != 1) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.deleteAccount(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, true);
+      this.b.deleteAccount(this.a, true);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.deleteAccount(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount, false);
-  }
-  
-  public void a(SimpleAccount paramSimpleAccount)
-  {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = paramSimpleAccount;
+    this.b.deleteAccount(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.AccountDelOnButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

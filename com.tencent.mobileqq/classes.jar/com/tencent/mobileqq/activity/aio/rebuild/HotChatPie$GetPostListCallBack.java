@@ -15,21 +15,21 @@ import org.json.JSONObject;
 public class HotChatPie$GetPostListCallBack
   implements HttpCgiAsyncTask.Callback
 {
-  int jdField_a_of_type_Int = 1;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<Context> a;
   WeakReference<IHotChatPostListAdapter> b;
   WeakReference<XListView> c;
   WeakReference<PullRefreshHeader> d;
   WeakReference<TextView> e;
+  int f = 1;
   
   public HotChatPie$GetPostListCallBack(Context paramContext, XListView paramXListView, IHotChatPostListAdapter paramIHotChatPostListAdapter, PullRefreshHeader paramPullRefreshHeader, TextView paramTextView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.a = new WeakReference(paramContext);
     this.c = new WeakReference(paramXListView);
     this.b = new WeakReference(paramIHotChatPostListAdapter);
     this.d = new WeakReference(paramPullRefreshHeader);
     this.e = new WeakReference(paramTextView);
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(Exception paramException)
@@ -70,7 +70,7 @@ public class HotChatPie$GetPostListCallBack
       ((TextView)localObject2).setVisibility(8);
       localXListView.setVisibility(0);
       localObject2 = paramJSONObject.optJSONObject("result");
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.f == 1)
       {
         ((IHotChatPostListAdapter)localObject1).setListItemsAndNotify(((JSONObject)localObject2).optJSONArray("posts"));
       }
@@ -93,31 +93,31 @@ public class HotChatPie$GetPostListCallBack
         localXListView.springBackOverScrollHeaderView();
       }
       if (j == 0) {
-        HotChatPie.c = System.currentTimeMillis();
+        HotChatPie.cj = System.currentTimeMillis();
       }
       return;
       label246:
-      paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramJSONObject = (Context)this.a.get();
       if (paramJSONObject != null) {
-        QQToast.a(paramJSONObject, 2, HardCodeUtil.a(2131705664), 0).a();
+        QQToast.makeText(paramJSONObject, 2, HardCodeUtil.a(2131903550), 0).show();
       }
       ((IHotChatPostListAdapter)localObject1).setPullUpEnded();
       return;
     }
     if (localXListView.getVisibility() == 8) {
-      ((TextView)localObject2).setText(HardCodeUtil.a(2131705672));
+      ((TextView)localObject2).setText(HardCodeUtil.a(2131903557));
     }
-    paramJSONObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramJSONObject = (Context)this.a.get();
     if (paramJSONObject != null)
     {
-      QQToast.a(paramJSONObject, 1, HardCodeUtil.a(2131705674), 0).a();
+      QQToast.makeText(paramJSONObject, 1, HardCodeUtil.a(2131903559), 0).show();
       ((IHotChatPostListAdapter)localObject1).setPullUpEnded();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.GetPostListCallBack
  * JD-Core Version:    0.7.0.1
  */

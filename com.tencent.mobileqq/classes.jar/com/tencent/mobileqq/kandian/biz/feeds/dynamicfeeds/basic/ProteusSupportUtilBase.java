@@ -18,28 +18,6 @@ import org.json.JSONObject;
 
 public class ProteusSupportUtilBase
 {
-  public static TemplateBean a(VafContext paramVafContext, String paramString1, String paramString2)
-  {
-    QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getTemplateBean, styleID = ", paramString1, ", serviceID = ", paramString2 });
-    TemplateFactory localTemplateFactory = (TemplateFactory)paramVafContext.getTemplateFactory();
-    paramVafContext = localTemplateFactory;
-    if (localTemplateFactory == null) {
-      paramVafContext = TemplateFactory.a(paramString2, true);
-    }
-    if (paramVafContext != null) {
-      try
-      {
-        paramVafContext = paramVafContext.getTemplateBean(new ProteusItemDataBuilder().a(paramString1).a());
-        return paramVafContext;
-      }
-      catch (JSONException paramVafContext)
-      {
-        QLog.e("ProteusSupportUtilBase", 1, new Object[] { "getTemplateBean failed, styleID = ", paramString1, ", serviceID = ", paramString2, ", e = ", paramVafContext });
-      }
-    }
-    return null;
-  }
-  
   public static TemplateBean a(VafContext paramVafContext, JSONObject paramJSONObject, String paramString)
   {
     QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getTemplateBean, data = ", paramJSONObject, ", serviceID = ", paramString });
@@ -64,11 +42,11 @@ public class ProteusSupportUtilBase
   
   public static ProteusItemView a(VafContext paramVafContext, String paramString1, String paramString2)
   {
-    paramString1 = a(paramVafContext, paramString2, paramString1);
+    paramString1 = b(paramVafContext, paramString2, paramString1);
     paramString1 = paramVafContext.getViewFactory().inflate(paramVafContext, paramString1);
     if (paramString1 != null)
     {
-      paramString1.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841773));
+      paramString1.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842690));
       paramVafContext = new ProteusItemView(paramVafContext.getContext());
       paramVafContext.a(paramString1);
       return paramVafContext;
@@ -82,7 +60,7 @@ public class ProteusSupportUtilBase
     paramString = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
     if (paramString != null)
     {
-      paramString.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841773));
+      paramString.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842690));
       paramVafContext = new ProteusItemView(paramVafContext.getContext());
       paramVafContext.a(paramString);
       return paramVafContext;
@@ -119,22 +97,22 @@ public class ProteusSupportUtilBase
   
   public static void a(ProteusItemView paramProteusItemView, VafContext paramVafContext, String paramString1, String paramString2)
   {
-    if ((paramProteusItemView != null) && (paramProteusItemView.a() != null))
+    if ((paramProteusItemView != null) && (paramProteusItemView.getContainer() != null))
     {
-      TemplateBean localTemplateBean = paramProteusItemView.a();
+      TemplateBean localTemplateBean = paramProteusItemView.getTemplateBean();
       paramString1 = a(paramVafContext, a(paramString2), paramString1);
       if ((localTemplateBean != null) && (paramString1 != null) && (!paramString1.equals(localTemplateBean)))
       {
         paramString2 = paramVafContext.getViewFactory().inflate(paramVafContext, paramString1);
         if (paramString2 != null)
         {
-          paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841773));
-          paramProteusItemView.c();
+          paramString2.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842690));
+          paramProteusItemView.d();
           paramProteusItemView.a(paramString2);
         }
       }
-      paramProteusItemView = paramProteusItemView.a();
-      paramProteusItemView.setTag(2131376110, paramString1);
+      paramProteusItemView = paramProteusItemView.getContainer();
+      paramProteusItemView.setTag(2131444313, paramString1);
       if (paramString1 != null) {
         ProteusSupportUtil.a(paramProteusItemView, localTemplateBean, paramString1);
       }
@@ -143,10 +121,32 @@ public class ProteusSupportUtilBase
     }
     QLog.d("ProteusSupportUtilBase", 1, new Object[] { "bindData proteusItemVIew is null, data = ", paramString2 });
   }
+  
+  public static TemplateBean b(VafContext paramVafContext, String paramString1, String paramString2)
+  {
+    QLog.d("ProteusSupportUtilBase", 2, new Object[] { "getTemplateBean, styleID = ", paramString1, ", serviceID = ", paramString2 });
+    TemplateFactory localTemplateFactory = (TemplateFactory)paramVafContext.getTemplateFactory();
+    paramVafContext = localTemplateFactory;
+    if (localTemplateFactory == null) {
+      paramVafContext = TemplateFactory.a(paramString2, true);
+    }
+    if (paramVafContext != null) {
+      try
+      {
+        paramVafContext = paramVafContext.getTemplateBean(new ProteusItemDataBuilder().a(paramString1).a());
+        return paramVafContext;
+      }
+      catch (JSONException paramVafContext)
+      {
+        QLog.e("ProteusSupportUtilBase", 1, new Object[] { "getTemplateBean failed, styleID = ", paramString1, ", serviceID = ", paramString2, ", e = ", paramVafContext });
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.basic.ProteusSupportUtilBase
  * JD-Core Version:    0.7.0.1
  */

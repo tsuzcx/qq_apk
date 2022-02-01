@@ -24,13 +24,40 @@ import mqq.observer.BusinessObserver;
 public class ApolloStoreStabilityReportManager
   implements BusinessObserver
 {
-  private static ApolloStoreStabilityReportManager jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreStabilityReportManager;
-  private long jdField_a_of_type_Long = 0L;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ApolloStoreStabilityReportManager.3(this);
-  private ArrayList<HashMap> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private static ApolloStoreStabilityReportManager a;
+  private ArrayList<HashMap> b = new ArrayList();
+  private boolean c;
+  private long d = 0L;
+  private Runnable e = new ApolloStoreStabilityReportManager.3(this);
   
-  public static AppInterface a()
+  public static ApolloStoreStabilityReportManager a()
+  {
+    try
+    {
+      if (a == null) {
+        a = new ApolloStoreStabilityReportManager();
+      }
+      ApolloStoreStabilityReportManager localApolloStoreStabilityReportManager = a;
+      return localApolloStoreStabilityReportManager;
+    }
+    finally {}
+  }
+  
+  private void a(HashMap paramHashMap)
+  {
+    try
+    {
+      this.b.add(paramHashMap);
+      return;
+    }
+    finally
+    {
+      paramHashMap = finally;
+      throw paramHashMap;
+    }
+  }
+  
+  public static AppInterface b()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     if (localObject != null)
@@ -47,43 +74,16 @@ public class ApolloStoreStabilityReportManager
     return null;
   }
   
-  public static ApolloStoreStabilityReportManager a()
-  {
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreStabilityReportManager == null) {
-        jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreStabilityReportManager = new ApolloStoreStabilityReportManager();
-      }
-      ApolloStoreStabilityReportManager localApolloStoreStabilityReportManager = jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreStabilityReportManager;
-      return localApolloStoreStabilityReportManager;
-    }
-    finally {}
-  }
-  
-  private void a()
+  private void c()
   {
     ThreadManagerV2.excute(new ApolloStoreStabilityReportManager.1(this), 64, null, true);
   }
   
-  private void a(HashMap paramHashMap)
+  private void d()
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramHashMap);
-      return;
-    }
-    finally
-    {
-      paramHashMap = finally;
-      throw paramHashMap;
-    }
-  }
-  
-  private void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.b.clear();
       return;
     }
     finally
@@ -140,7 +140,7 @@ public class ApolloStoreStabilityReportManager
     {
       paramString2 = new StringBuilder();
       paramString2.append("addTaskToApolloStoreStabilityQueue. add one task. count:");
-      paramString2.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      paramString2.append(this.b.size());
       QLog.d("[cmshow]ApolloStoreStabilityReportManager_apollo_store_stability_", 2, paramString2.toString());
     }
     a(paramString1, paramInt1);
@@ -152,9 +152,9 @@ public class ApolloStoreStabilityReportManager
       QLog.e("[cmshow]ApolloStoreStabilityReportManager_apollo_store_stability_", 1, paramString2.toString());
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
       ThreadManagerV2.getUIHandlerV2().postDelayed(new ApolloStoreStabilityReportManager.2(this), 10000L);
     }
   }
@@ -185,8 +185,8 @@ public class ApolloStoreStabilityReportManager
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow]ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue.  cmdSet is null. filter all reporting cmd");
         }
-        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L) {
-          a();
+        if (System.currentTimeMillis() - this.d > 30000L) {
+          c();
         }
         return false;
       }
@@ -230,8 +230,8 @@ public class ApolloStoreStabilityReportManager
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow]ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue.  urlSet is null. filter all reporting url");
         }
-        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L) {
-          a();
+        if (System.currentTimeMillis() - this.d > 30000L) {
+          c();
         }
         return false;
       }
@@ -280,7 +280,7 @@ public class ApolloStoreStabilityReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreStabilityReportManager
  * JD-Core Version:    0.7.0.1
  */

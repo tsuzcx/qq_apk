@@ -2,25 +2,25 @@ package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
 public class ImportantMsgEntryConfig$EntryConfig
 {
-  public int a;
-  public long a;
   public String a;
-  public String b;
+  public long b;
+  public int c;
+  public String d;
   
   public ImportantMsgEntryConfig$EntryConfig()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.b = "";
+    this.a = "";
+    this.b = -1L;
+    this.c = -1;
+    this.d = "";
   }
   
   public ImportantMsgEntryConfig$EntryConfig(String paramString1, long paramLong, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
+    this.a = paramString1;
+    this.b = paramLong;
+    this.c = paramInt;
+    this.d = paramString2;
   }
   
   public String toString()
@@ -28,22 +28,22 @@ public class ImportantMsgEntryConfig$EntryConfig
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("iconUrl");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", appid");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", titleType");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", defTitle");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgEntryConfig.EntryConfig
  * JD-Core Version:    0.7.0.1
  */

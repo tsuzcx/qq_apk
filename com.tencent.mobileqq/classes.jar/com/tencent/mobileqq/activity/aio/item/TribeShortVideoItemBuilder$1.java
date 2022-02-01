@@ -12,10 +12,10 @@ class TribeShortVideoItemBuilder$1
   
   public void onClick(View paramView)
   {
-    TribeShortVideoItemBuilder.TribeShortVideoMsgHolder localTribeShortVideoMsgHolder = (TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)AIOUtils.a(paramView);
-    if (paramView == localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetFrameLayout) {
+    TribeShortVideoItemBuilder.TribeShortVideoMsgHolder localTribeShortVideoMsgHolder = (TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)AIOUtils.b(paramView);
+    if (paramView == localTribeShortVideoMsgHolder.f) {
       this.a.b(localTribeShortVideoMsgHolder);
-    } else if (paramView == localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+    } else if (paramView == localTribeShortVideoMsgHolder.a) {
       this.a.a(localTribeShortVideoMsgHolder);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -23,7 +23,7 @@ class TribeShortVideoItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

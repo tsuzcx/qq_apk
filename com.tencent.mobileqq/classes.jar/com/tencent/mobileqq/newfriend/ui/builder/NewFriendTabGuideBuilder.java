@@ -42,19 +42,19 @@ public class NewFriendTabGuideBuilder
     else
     {
       localNewFriendTabInfoHolder = new NewFriendTabGuideBuilder.NewFriendTabInfoHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561249, null);
+      paramView = LayoutInflater.from(this.c).inflate(2131627605, null);
       Object localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      a(paramView, ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168) - ViewUtils.a(80.0F));
-      localNewFriendTabInfoHolder.a = ((Button)paramView.findViewById(2131367892));
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentCommonAppAppInterface, false, null)) {
-        localNewFriendTabInfoHolder.a.setBackgroundResource(2130839302);
+      ((Activity)this.c).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+      a(paramView, ((Rect)localObject).height() - this.c.getResources().getDimensionPixelSize(2131299920) - ViewUtils.dip2px(80.0F));
+      localNewFriendTabInfoHolder.a = ((Button)paramView.findViewById(2131434476));
+      if (ThemeUtil.isNowThemeIsNight(this.d, false, null)) {
+        localNewFriendTabInfoHolder.a.setBackgroundResource(2130839482);
       }
-      localObject = (ThemeImageView)paramView.findViewById(2131367889);
+      localObject = (ThemeImageView)paramView.findViewById(2131434471);
       ((ThemeImageView)localObject).setSupportMaskView(true);
       ((ThemeImageView)localObject).setMaskShape(ThemeImageWrapper.MODE_SQURE);
       paramView.setTag(localNewFriendTabInfoHolder);
-      ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
+      ReportController.b(this.d, "dc00898", "", "", "0X800A5D3", "0X800A5D3", 0, 0, "1", "", "", "");
     }
     localNewFriendTabInfoHolder.a.setOnClickListener(this);
     return paramView;
@@ -62,18 +62,18 @@ public class NewFriendTabGuideBuilder
   
   public void onClick(View paramView)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
-    if (NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext)) {
-      ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).setConnectionsSwitch(true, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    ReportController.b(this.d, "dc00898", "", "", "0X800A5D4", "0X800A5D4", 0, 0, "1", "", "", "");
+    if (NetworkUtil.isNetSupport(this.c)) {
+      ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).setConnectionsSwitch(true, this.d);
     } else {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692183), 0).a();
+      QQToast.makeText(this.c, this.c.getResources().getString(2131889169), 0).show();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendTabGuideBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class CmShowAESurfaceView$8
   
   public void run()
   {
-    if (CmShowAESurfaceView.a(this.this$0) != null) {
-      CmShowAESurfaceView.a(this.this$0).cmShowUpdateTouchScale(this.a);
+    if (CmShowAESurfaceView.d(this.this$0) != null) {
+      CmShowAESurfaceView.d(this.this$0).cmShowUpdateTouchScale(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView.8
  * JD-Core Version:    0.7.0.1
  */

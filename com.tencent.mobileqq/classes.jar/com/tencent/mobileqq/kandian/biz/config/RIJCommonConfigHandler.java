@@ -13,7 +13,7 @@ import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.kandian.base.report.ReadInJoyDoingSomething;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.base.view.api.IKanDianOptUtils;
+import com.tencent.mobileqq.kandian.base.view.api.impl.KanDianOptUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.biz.push.api.IKanDianMergeManager;
@@ -26,7 +26,6 @@ import com.tencent.mobileqq.kandian.repo.common.constant.ReadInJoyConstants;
 import com.tencent.mobileqq.kandian.repo.fastweb.FastWebSPUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.FeedsSPUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -54,8 +53,8 @@ import org.w3c.dom.NodeList;
 public final class RIJCommonConfigHandler
 {
   @NotNull
-  private final String jdField_a_of_type_JavaLangString = "RIJCommonConfigHandler";
-  private final Map<String, Function4<String, String, Document, Node, Unit>> jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
+  private final String a = "RIJCommonConfigHandler";
+  private final Map<String, Function4<String, String, Document, Node, Unit>> b = (Map)new LinkedHashMap();
   
   public RIJCommonConfigHandler()
   {
@@ -64,7 +63,7 @@ public final class RIJCommonConfigHandler
   
   private final void A(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.z((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.A((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void B(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -76,7 +75,7 @@ public final class RIJCommonConfigHandler
   private final void C(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     boolean bool = Intrinsics.areEqual("1", paramString2);
-    ReadInJoyHelper.t((AppRuntime)RIJQQAppInterfaceUtil.b(), bool);
+    ReadInJoyHelper.u((AppRuntime)RIJQQAppInterfaceUtil.b(), bool);
   }
   
   private final void D(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -88,7 +87,7 @@ public final class RIJCommonConfigHandler
   {
     paramString1 = Integer.valueOf(paramString2);
     RIJSPUtils.a("sp_key_kandian_subscribe_auto_refresh_config", paramString1);
-    paramString2 = this.jdField_a_of_type_JavaLangString;
+    paramString2 = this.a;
     paramDocument = new StringBuilder();
     paramDocument.append("update kandian subscribe auto refresh config : ");
     paramDocument.append(paramString1);
@@ -109,13 +108,13 @@ public final class RIJCommonConfigHandler
     }
     catch (IllegalArgumentException paramString1)
     {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "handleReadInJoyCommonConfig: video_type_color", (Throwable)paramString1);
+      QLog.e(this.a, 2, "handleReadInJoyCommonConfig: video_type_color", (Throwable)paramString1);
     }
   }
   
   private final void H(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    paramString1 = this.jdField_a_of_type_JavaLangString;
+    paramString1 = this.a;
     paramDocument = new StringBuilder();
     paramDocument.append("video_switch: ");
     paramDocument.append(paramString2);
@@ -134,7 +133,7 @@ public final class RIJCommonConfigHandler
       }
       catch (NumberFormatException paramString1)
       {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "handleReadInJoyCommonConfig: video_switch ", (Throwable)paramString1);
+        QLog.e(this.a, 2, "handleReadInJoyCommonConfig: video_switch ", (Throwable)paramString1);
         return;
       }
       boolean bool = false;
@@ -145,20 +144,20 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("ReadInJoy_Red_Pnt_Push_Article_Preload_Switch: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.k((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.l((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void J(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("ReadInJoy_Fast_Web_Biu_Cnt_CLose_Switch: ");
       paramDocument.append(paramString2);
@@ -171,13 +170,13 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("multi_video_shunt_bar_config: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.E((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.G((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void L(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -186,14 +185,14 @@ public final class RIJCommonConfigHandler
     paramString1.append("is_jump_to_video_content: ");
     paramString1.append(paramString2);
     QLog.d("ReadinjoyCommonConfProcessor", 2, paramString1.toString());
-    ReadInJoyHelper.J((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.M((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void M(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("should show weishi entrance : ");
       paramDocument.append(paramString2);
@@ -202,40 +201,40 @@ public final class RIJCommonConfigHandler
     paramString1 = (AppRuntime)RIJQQAppInterfaceUtil.b();
     paramString2 = Integer.valueOf(paramString2);
     Intrinsics.checkExpressionValueIsNotNull(paramString2, "Integer.valueOf(value)");
-    ReadInJoyHelper.B(paramString1, paramString2.intValue());
+    ReadInJoyHelper.D(paramString1, paramString2.intValue());
   }
   
   private final void N(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("ReadInJoy_Message_Auto_Refresh_Time_Duration :");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.I((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.L((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void O(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("ReadInJoy_Tab_Auto_Refresh_Time_Duration :");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.H((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.K((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void P(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("record_duration_count :");
       paramDocument.append(paramString2);
@@ -244,40 +243,40 @@ public final class RIJCommonConfigHandler
     paramString1 = (AppRuntime)RIJQQAppInterfaceUtil.b();
     paramString2 = Integer.valueOf(paramString2);
     Intrinsics.checkExpressionValueIsNotNull(paramString2, "Integer.valueOf(value)");
-    ReadInJoyHelper.g(paramString1, paramString2.intValue());
+    ReadInJoyHelper.i(paramString1, paramString2.intValue());
   }
   
   private final void Q(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("multi_video_interrupted_ad_config: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.C((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.E((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void R(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("multi_video_ad_config :");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.A((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.B((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void S(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("readinjoy_short_video_max_duration_limit :");
       paramDocument.append(paramString2);
@@ -293,7 +292,7 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("readinjoy_short_video_width_height_ratio :");
       paramDocument.append(paramString2);
@@ -309,46 +308,46 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("native comment biu switch:");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.t((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.u((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void V(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("comment biu switch :");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.s((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.t((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void W(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("comment_zhitu_switch:");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.j((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.k((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void X(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("get proteus switch from config: ");
       paramDocument.append(paramString2);
@@ -361,144 +360,144 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("get wx share from readinjoy :");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.r((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.s((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void Z(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("readinjoy_QA_square_autoTimeval: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.q((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.r((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void a()
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.b;
     RIJCommonConfigHandler localRIJCommonConfigHandler = (RIJCommonConfigHandler)this;
     localMap.put("smartcrop_pic", new RIJCommonConfigHandler.registerNameToValueMap.1(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("feeds_group", new RIJCommonConfigHandler.registerNameToValueMap.2(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("remind_only_wifi", new RIJCommonConfigHandler.registerNameToValueMap.3(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_individual_time_push", new RIJCommonConfigHandler.registerNameToValueMap.4(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("push_switch", new RIJCommonConfigHandler.registerNameToValueMap.5(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("sticky_times", new RIJCommonConfigHandler.registerNameToValueMap.6(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("socializeWebUrl", new RIJCommonConfigHandler.registerNameToValueMap.7(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("free_time_refresh_push", new RIJCommonConfigHandler.registerNameToValueMap.8(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_my_tab_page", new RIJCommonConfigHandler.registerNameToValueMap.9(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_gallery_channel_bar_hidden", new RIJCommonConfigHandler.registerNameToValueMap.10(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_gallery_channel_waterfall_bar_hidden", new RIJCommonConfigHandler.registerNameToValueMap.11(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("tab_click_gap_in_seconds", new RIJCommonConfigHandler.registerNameToValueMap.12(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("tab_click_count_limit", new RIJCommonConfigHandler.registerNameToValueMap.13(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("tab_click_push_algo_id", new RIJCommonConfigHandler.registerNameToValueMap.14(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("tab_click_forbid_report_time_in_seconds", new RIJCommonConfigHandler.registerNameToValueMap.15(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("fore_ground_gap_in_seconds", new RIJCommonConfigHandler.registerNameToValueMap.16(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("screen_switch_in_seconds", new RIJCommonConfigHandler.registerNameToValueMap.17(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("user_idle_repor", new RIJCommonConfigHandler.registerNameToValueMap.18(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_report_tt", new RIJCommonConfigHandler.registerNameToValueMap.19(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_report_user_apps_switch", new RIJCommonConfigHandler.registerNameToValueMap.20(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("actKandianReportManyApps", new RIJCommonConfigHandler.registerNameToValueMap.21(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_optimize_strategy", new RIJCommonConfigHandler.registerNameToValueMap.22(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("maintab_reddot_times", new RIJCommonConfigHandler.registerNameToValueMap.23(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("maintab_reddot_feeds", new RIJCommonConfigHandler.registerNameToValueMap.24(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("feedsbackWebUrl", new RIJCommonConfigHandler.registerNameToValueMap.25(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("feedsbackSwitch", new RIJCommonConfigHandler.registerNameToValueMap.26(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("feedsbackName", new RIJCommonConfigHandler.registerNameToValueMap.27(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("biufeedsSwitch", new RIJCommonConfigHandler.registerNameToValueMap.28(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("biufeedsName", new RIJCommonConfigHandler.registerNameToValueMap.29(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("biufeedsWebUrl", new RIJCommonConfigHandler.registerNameToValueMap.30(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("badgeNumber", new RIJCommonConfigHandler.registerNameToValueMap.31(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("biu_word_count", new RIJCommonConfigHandler.registerNameToValueMap.32(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("new_channel_style", new RIJCommonConfigHandler.registerNameToValueMap.33(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("local_record_time", new RIJCommonConfigHandler.registerNameToValueMap.34(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("local_record_feeds", new RIJCommonConfigHandler.registerNameToValueMap.35(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("local_record_time_weishi", new RIJCommonConfigHandler.registerNameToValueMap.36(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("local_record_feeds_weishi", new RIJCommonConfigHandler.registerNameToValueMap.37(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandianWebPreLoadData", new RIJCommonConfigHandler.registerNameToValueMap.38(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("ExitAIO_Android_Uin", new RIJCommonConfigHandler.registerNameToValueMap.39(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_tab_type", new RIJCommonConfigHandler.registerNameToValueMap.40(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("DiaobaodeKandian", new RIJCommonConfigHandler.registerNameToValueMap.41(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("topic_card_jump", new RIJCommonConfigHandler.registerNameToValueMap.42(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("topic_card_jump_url", new RIJCommonConfigHandler.registerNameToValueMap.43(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("comment_word_count", new RIJCommonConfigHandler.registerNameToValueMap.44(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("KW", new RIJCommonConfigHandler.registerNameToValueMap.45(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("comment_gif_switch", new RIJCommonConfigHandler.registerNameToValueMap.46(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("ugc_gif_switch", new RIJCommonConfigHandler.registerNameToValueMap.47(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("biu_at_switch", new RIJCommonConfigHandler.registerNameToValueMap.48(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("UGC_at_switch", new RIJCommonConfigHandler.registerNameToValueMap.49(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("comment_at_switch", new RIJCommonConfigHandler.registerNameToValueMap.50(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("biu_profile_switch", new RIJCommonConfigHandler.registerNameToValueMap.51(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("IconMerge_BiuMsg", new RIJCommonConfigHandler.registerNameToValueMap.52(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("IconMerge_InteractiveMsg", new RIJCommonConfigHandler.registerNameToValueMap.53(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("IconMerge_SubscribeMsg", new RIJCommonConfigHandler.registerNameToValueMap.54(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("nw_support", new RIJCommonConfigHandler.registerNameToValueMap.55(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("nw_preload", new RIJCommonConfigHandler.registerNameToValueMap.56(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("arkapp_enable_switch", new RIJCommonConfigHandler.registerNameToValueMap.57(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("exposure_strengthen", new RIJCommonConfigHandler.registerNameToValueMap.58(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("native_timeout", new RIJCommonConfigHandler.registerNameToValueMap.59(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("diandian_publish_switch_new", new RIJCommonConfigHandler.registerNameToValueMap.60(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_publish_switch_new", new RIJCommonConfigHandler.registerNameToValueMap.61(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("readinjoy_QA_square_autoTimeval", new RIJCommonConfigHandler.registerNameToValueMap.62(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("WXShareFromKandian_Switch", new RIJCommonConfigHandler.registerNameToValueMap.63(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("proteus_enable", new RIJCommonConfigHandler.registerNameToValueMap.64(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("zhitu", new RIJCommonConfigHandler.registerNameToValueMap.65(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("comment_biu_switch", new RIJCommonConfigHandler.registerNameToValueMap.66(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("native_comment_biu", new RIJCommonConfigHandler.registerNameToValueMap.67(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("readinjoy_short_video_width_height_ratio", new RIJCommonConfigHandler.registerNameToValueMap.68(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("readinjoy_short_video_max_duration_limit", new RIJCommonConfigHandler.registerNameToValueMap.69(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("multi_video_ad_config", new RIJCommonConfigHandler.registerNameToValueMap.70(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("multi_video_interrupted_ad_config", new RIJCommonConfigHandler.registerNameToValueMap.71(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("record_duration_count", new RIJCommonConfigHandler.registerNameToValueMap.72(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("ReadInJoy_Tab_Auto_Refresh_Time_Duration", new RIJCommonConfigHandler.registerNameToValueMap.73(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("ReadInJoy_Message_Auto_Refresh_Time_Duration", new RIJCommonConfigHandler.registerNameToValueMap.74(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("is_show_weishi_entrance", new RIJCommonConfigHandler.registerNameToValueMap.75(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("is_jump_to_video_content", new RIJCommonConfigHandler.registerNameToValueMap.76(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("multi_video_ecommerce_entrance_config", new RIJCommonConfigHandler.registerNameToValueMap.77(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("ReadInJoy_Fast_Web_Biu_Cnt_CLose_Switch", new RIJCommonConfigHandler.registerNameToValueMap.78(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("ReadInJoy_Red_Pnt_Push_Article_Preload_Switch", new RIJCommonConfigHandler.registerNameToValueMap.79(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("video_switch", new RIJCommonConfigHandler.registerNameToValueMap.80(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("video_type_color", new RIJCommonConfigHandler.registerNameToValueMap.81(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("play_time", new RIJCommonConfigHandler.registerNameToValueMap.82(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("ReadInJoy_guanzhu_Auto_Refresh_Time_Duration", new RIJCommonConfigHandler.registerNameToValueMap.83(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("sharp_pic_support_switch", new RIJCommonConfigHandler.registerNameToValueMap.84(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("video_feeds_preload_switch", new RIJCommonConfigHandler.registerNameToValueMap.85(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("enable_preoutput_kandianvideo_first_frame", new RIJCommonConfigHandler.registerNameToValueMap.86(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("rij_discover_entrance_show", new RIJCommonConfigHandler.registerNameToValueMap.87(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("hot_comment_number", new RIJCommonConfigHandler.registerNameToValueMap.88(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("hot_comment_likes_number", new RIJCommonConfigHandler.registerNameToValueMap.89(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("weishi_with_channel_discovery_switch", new RIJCommonConfigHandler.registerNameToValueMap.90(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("ugc_upload_lbs_switch", new RIJCommonConfigHandler.registerNameToValueMap.91(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("local_record_time_weishi_recommend", new RIJCommonConfigHandler.registerNameToValueMap.92(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("local_record_feeds_counts_weishi_recommend", new RIJCommonConfigHandler.registerNameToValueMap.93(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_aladdin_configuration_switch", new RIJCommonConfigHandler.registerNameToValueMap.94(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("publish_topic", new RIJCommonConfigHandler.registerNameToValueMap.95(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("coin_item_jump_url", new RIJCommonConfigHandler.registerNameToValueMap.96(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("coin_item_wording", new RIJCommonConfigHandler.registerNameToValueMap.97(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("user_behavior_norm_switch", new RIJCommonConfigHandler.registerNameToValueMap.98(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("user_behavior_norm_jump_url", new RIJCommonConfigHandler.registerNameToValueMap.99(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_feature_compute", new RIJCommonConfigHandler.registerNameToValueMap.100(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kdad_exposure_report_threshold", new RIJCommonConfigHandler.registerNameToValueMap.101(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_daily_fast_web_bottom_share", new RIJCommonConfigHandler.registerNameToValueMap.102(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_comment_limit_number", new RIJCommonConfigHandler.registerNameToValueMap.103(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("title_label_number_of_lines", new RIJCommonConfigHandler.registerNameToValueMap.104(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("is_play_comment_button_show", new RIJCommonConfigHandler.registerNameToValueMap.105(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("readinjoy_video_ff_probesize", new RIJCommonConfigHandler.registerNameToValueMap.106(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("readinjoy_video_is_ff_probelist_switch", new RIJCommonConfigHandler.registerNameToValueMap.107(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("readinjoy_video_is_download_async_io", new RIJCommonConfigHandler.registerNameToValueMap.108(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_daily_wrapper_alpha", new RIJCommonConfigHandler.registerNameToValueMap.109(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_daily_wrapper_default_text", new RIJCommonConfigHandler.registerNameToValueMap.110(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("kandian_daily_wrapper_drag_text", new RIJCommonConfigHandler.registerNameToValueMap.111(localRIJCommonConfigHandler));
-    this.jdField_a_of_type_JavaUtilMap.put("video_extract_frame", new RIJCommonConfigHandler.registerNameToValueMap.112(localRIJCommonConfigHandler));
+    this.b.put("feeds_group", new RIJCommonConfigHandler.registerNameToValueMap.2(localRIJCommonConfigHandler));
+    this.b.put("remind_only_wifi", new RIJCommonConfigHandler.registerNameToValueMap.3(localRIJCommonConfigHandler));
+    this.b.put("kandian_individual_time_push", new RIJCommonConfigHandler.registerNameToValueMap.4(localRIJCommonConfigHandler));
+    this.b.put("push_switch", new RIJCommonConfigHandler.registerNameToValueMap.5(localRIJCommonConfigHandler));
+    this.b.put("sticky_times", new RIJCommonConfigHandler.registerNameToValueMap.6(localRIJCommonConfigHandler));
+    this.b.put("socializeWebUrl", new RIJCommonConfigHandler.registerNameToValueMap.7(localRIJCommonConfigHandler));
+    this.b.put("free_time_refresh_push", new RIJCommonConfigHandler.registerNameToValueMap.8(localRIJCommonConfigHandler));
+    this.b.put("kandian_my_tab_page", new RIJCommonConfigHandler.registerNameToValueMap.9(localRIJCommonConfigHandler));
+    this.b.put("kandian_gallery_channel_bar_hidden", new RIJCommonConfigHandler.registerNameToValueMap.10(localRIJCommonConfigHandler));
+    this.b.put("kandian_gallery_channel_waterfall_bar_hidden", new RIJCommonConfigHandler.registerNameToValueMap.11(localRIJCommonConfigHandler));
+    this.b.put("tab_click_gap_in_seconds", new RIJCommonConfigHandler.registerNameToValueMap.12(localRIJCommonConfigHandler));
+    this.b.put("tab_click_count_limit", new RIJCommonConfigHandler.registerNameToValueMap.13(localRIJCommonConfigHandler));
+    this.b.put("tab_click_push_algo_id", new RIJCommonConfigHandler.registerNameToValueMap.14(localRIJCommonConfigHandler));
+    this.b.put("tab_click_forbid_report_time_in_seconds", new RIJCommonConfigHandler.registerNameToValueMap.15(localRIJCommonConfigHandler));
+    this.b.put("fore_ground_gap_in_seconds", new RIJCommonConfigHandler.registerNameToValueMap.16(localRIJCommonConfigHandler));
+    this.b.put("screen_switch_in_seconds", new RIJCommonConfigHandler.registerNameToValueMap.17(localRIJCommonConfigHandler));
+    this.b.put("user_idle_repor", new RIJCommonConfigHandler.registerNameToValueMap.18(localRIJCommonConfigHandler));
+    this.b.put("kandian_report_tt", new RIJCommonConfigHandler.registerNameToValueMap.19(localRIJCommonConfigHandler));
+    this.b.put("kandian_report_user_apps_switch", new RIJCommonConfigHandler.registerNameToValueMap.20(localRIJCommonConfigHandler));
+    this.b.put("actKandianReportManyApps", new RIJCommonConfigHandler.registerNameToValueMap.21(localRIJCommonConfigHandler));
+    this.b.put("kandian_optimize_strategy", new RIJCommonConfigHandler.registerNameToValueMap.22(localRIJCommonConfigHandler));
+    this.b.put("maintab_reddot_times", new RIJCommonConfigHandler.registerNameToValueMap.23(localRIJCommonConfigHandler));
+    this.b.put("maintab_reddot_feeds", new RIJCommonConfigHandler.registerNameToValueMap.24(localRIJCommonConfigHandler));
+    this.b.put("feedsbackWebUrl", new RIJCommonConfigHandler.registerNameToValueMap.25(localRIJCommonConfigHandler));
+    this.b.put("feedsbackSwitch", new RIJCommonConfigHandler.registerNameToValueMap.26(localRIJCommonConfigHandler));
+    this.b.put("feedsbackName", new RIJCommonConfigHandler.registerNameToValueMap.27(localRIJCommonConfigHandler));
+    this.b.put("biufeedsSwitch", new RIJCommonConfigHandler.registerNameToValueMap.28(localRIJCommonConfigHandler));
+    this.b.put("biufeedsName", new RIJCommonConfigHandler.registerNameToValueMap.29(localRIJCommonConfigHandler));
+    this.b.put("biufeedsWebUrl", new RIJCommonConfigHandler.registerNameToValueMap.30(localRIJCommonConfigHandler));
+    this.b.put("badgeNumber", new RIJCommonConfigHandler.registerNameToValueMap.31(localRIJCommonConfigHandler));
+    this.b.put("biu_word_count", new RIJCommonConfigHandler.registerNameToValueMap.32(localRIJCommonConfigHandler));
+    this.b.put("new_channel_style", new RIJCommonConfigHandler.registerNameToValueMap.33(localRIJCommonConfigHandler));
+    this.b.put("local_record_time", new RIJCommonConfigHandler.registerNameToValueMap.34(localRIJCommonConfigHandler));
+    this.b.put("local_record_feeds", new RIJCommonConfigHandler.registerNameToValueMap.35(localRIJCommonConfigHandler));
+    this.b.put("local_record_time_weishi", new RIJCommonConfigHandler.registerNameToValueMap.36(localRIJCommonConfigHandler));
+    this.b.put("local_record_feeds_weishi", new RIJCommonConfigHandler.registerNameToValueMap.37(localRIJCommonConfigHandler));
+    this.b.put("kandianWebPreLoadData", new RIJCommonConfigHandler.registerNameToValueMap.38(localRIJCommonConfigHandler));
+    this.b.put("ExitAIO_Android_Uin", new RIJCommonConfigHandler.registerNameToValueMap.39(localRIJCommonConfigHandler));
+    this.b.put("kandian_tab_type", new RIJCommonConfigHandler.registerNameToValueMap.40(localRIJCommonConfigHandler));
+    this.b.put("DiaobaodeKandian", new RIJCommonConfigHandler.registerNameToValueMap.41(localRIJCommonConfigHandler));
+    this.b.put("topic_card_jump", new RIJCommonConfigHandler.registerNameToValueMap.42(localRIJCommonConfigHandler));
+    this.b.put("topic_card_jump_url", new RIJCommonConfigHandler.registerNameToValueMap.43(localRIJCommonConfigHandler));
+    this.b.put("comment_word_count", new RIJCommonConfigHandler.registerNameToValueMap.44(localRIJCommonConfigHandler));
+    this.b.put("KW", new RIJCommonConfigHandler.registerNameToValueMap.45(localRIJCommonConfigHandler));
+    this.b.put("comment_gif_switch", new RIJCommonConfigHandler.registerNameToValueMap.46(localRIJCommonConfigHandler));
+    this.b.put("ugc_gif_switch", new RIJCommonConfigHandler.registerNameToValueMap.47(localRIJCommonConfigHandler));
+    this.b.put("biu_at_switch", new RIJCommonConfigHandler.registerNameToValueMap.48(localRIJCommonConfigHandler));
+    this.b.put("UGC_at_switch", new RIJCommonConfigHandler.registerNameToValueMap.49(localRIJCommonConfigHandler));
+    this.b.put("comment_at_switch", new RIJCommonConfigHandler.registerNameToValueMap.50(localRIJCommonConfigHandler));
+    this.b.put("biu_profile_switch", new RIJCommonConfigHandler.registerNameToValueMap.51(localRIJCommonConfigHandler));
+    this.b.put("IconMerge_BiuMsg", new RIJCommonConfigHandler.registerNameToValueMap.52(localRIJCommonConfigHandler));
+    this.b.put("IconMerge_InteractiveMsg", new RIJCommonConfigHandler.registerNameToValueMap.53(localRIJCommonConfigHandler));
+    this.b.put("IconMerge_SubscribeMsg", new RIJCommonConfigHandler.registerNameToValueMap.54(localRIJCommonConfigHandler));
+    this.b.put("nw_support", new RIJCommonConfigHandler.registerNameToValueMap.55(localRIJCommonConfigHandler));
+    this.b.put("nw_preload", new RIJCommonConfigHandler.registerNameToValueMap.56(localRIJCommonConfigHandler));
+    this.b.put("arkapp_enable_switch", new RIJCommonConfigHandler.registerNameToValueMap.57(localRIJCommonConfigHandler));
+    this.b.put("exposure_strengthen", new RIJCommonConfigHandler.registerNameToValueMap.58(localRIJCommonConfigHandler));
+    this.b.put("native_timeout", new RIJCommonConfigHandler.registerNameToValueMap.59(localRIJCommonConfigHandler));
+    this.b.put("diandian_publish_switch_new", new RIJCommonConfigHandler.registerNameToValueMap.60(localRIJCommonConfigHandler));
+    this.b.put("kandian_publish_switch_new", new RIJCommonConfigHandler.registerNameToValueMap.61(localRIJCommonConfigHandler));
+    this.b.put("readinjoy_QA_square_autoTimeval", new RIJCommonConfigHandler.registerNameToValueMap.62(localRIJCommonConfigHandler));
+    this.b.put("WXShareFromKandian_Switch", new RIJCommonConfigHandler.registerNameToValueMap.63(localRIJCommonConfigHandler));
+    this.b.put("proteus_enable", new RIJCommonConfigHandler.registerNameToValueMap.64(localRIJCommonConfigHandler));
+    this.b.put("zhitu", new RIJCommonConfigHandler.registerNameToValueMap.65(localRIJCommonConfigHandler));
+    this.b.put("comment_biu_switch", new RIJCommonConfigHandler.registerNameToValueMap.66(localRIJCommonConfigHandler));
+    this.b.put("native_comment_biu", new RIJCommonConfigHandler.registerNameToValueMap.67(localRIJCommonConfigHandler));
+    this.b.put("readinjoy_short_video_width_height_ratio", new RIJCommonConfigHandler.registerNameToValueMap.68(localRIJCommonConfigHandler));
+    this.b.put("readinjoy_short_video_max_duration_limit", new RIJCommonConfigHandler.registerNameToValueMap.69(localRIJCommonConfigHandler));
+    this.b.put("multi_video_ad_config", new RIJCommonConfigHandler.registerNameToValueMap.70(localRIJCommonConfigHandler));
+    this.b.put("multi_video_interrupted_ad_config", new RIJCommonConfigHandler.registerNameToValueMap.71(localRIJCommonConfigHandler));
+    this.b.put("record_duration_count", new RIJCommonConfigHandler.registerNameToValueMap.72(localRIJCommonConfigHandler));
+    this.b.put("ReadInJoy_Tab_Auto_Refresh_Time_Duration", new RIJCommonConfigHandler.registerNameToValueMap.73(localRIJCommonConfigHandler));
+    this.b.put("ReadInJoy_Message_Auto_Refresh_Time_Duration", new RIJCommonConfigHandler.registerNameToValueMap.74(localRIJCommonConfigHandler));
+    this.b.put("is_show_weishi_entrance", new RIJCommonConfigHandler.registerNameToValueMap.75(localRIJCommonConfigHandler));
+    this.b.put("is_jump_to_video_content", new RIJCommonConfigHandler.registerNameToValueMap.76(localRIJCommonConfigHandler));
+    this.b.put("multi_video_ecommerce_entrance_config", new RIJCommonConfigHandler.registerNameToValueMap.77(localRIJCommonConfigHandler));
+    this.b.put("ReadInJoy_Fast_Web_Biu_Cnt_CLose_Switch", new RIJCommonConfigHandler.registerNameToValueMap.78(localRIJCommonConfigHandler));
+    this.b.put("ReadInJoy_Red_Pnt_Push_Article_Preload_Switch", new RIJCommonConfigHandler.registerNameToValueMap.79(localRIJCommonConfigHandler));
+    this.b.put("video_switch", new RIJCommonConfigHandler.registerNameToValueMap.80(localRIJCommonConfigHandler));
+    this.b.put("video_type_color", new RIJCommonConfigHandler.registerNameToValueMap.81(localRIJCommonConfigHandler));
+    this.b.put("play_time", new RIJCommonConfigHandler.registerNameToValueMap.82(localRIJCommonConfigHandler));
+    this.b.put("ReadInJoy_guanzhu_Auto_Refresh_Time_Duration", new RIJCommonConfigHandler.registerNameToValueMap.83(localRIJCommonConfigHandler));
+    this.b.put("sharp_pic_support_switch", new RIJCommonConfigHandler.registerNameToValueMap.84(localRIJCommonConfigHandler));
+    this.b.put("video_feeds_preload_switch", new RIJCommonConfigHandler.registerNameToValueMap.85(localRIJCommonConfigHandler));
+    this.b.put("enable_preoutput_kandianvideo_first_frame", new RIJCommonConfigHandler.registerNameToValueMap.86(localRIJCommonConfigHandler));
+    this.b.put("rij_discover_entrance_show", new RIJCommonConfigHandler.registerNameToValueMap.87(localRIJCommonConfigHandler));
+    this.b.put("hot_comment_number", new RIJCommonConfigHandler.registerNameToValueMap.88(localRIJCommonConfigHandler));
+    this.b.put("hot_comment_likes_number", new RIJCommonConfigHandler.registerNameToValueMap.89(localRIJCommonConfigHandler));
+    this.b.put("weishi_with_channel_discovery_switch", new RIJCommonConfigHandler.registerNameToValueMap.90(localRIJCommonConfigHandler));
+    this.b.put("ugc_upload_lbs_switch", new RIJCommonConfigHandler.registerNameToValueMap.91(localRIJCommonConfigHandler));
+    this.b.put("local_record_time_weishi_recommend", new RIJCommonConfigHandler.registerNameToValueMap.92(localRIJCommonConfigHandler));
+    this.b.put("local_record_feeds_counts_weishi_recommend", new RIJCommonConfigHandler.registerNameToValueMap.93(localRIJCommonConfigHandler));
+    this.b.put("kandian_aladdin_configuration_switch", new RIJCommonConfigHandler.registerNameToValueMap.94(localRIJCommonConfigHandler));
+    this.b.put("publish_topic", new RIJCommonConfigHandler.registerNameToValueMap.95(localRIJCommonConfigHandler));
+    this.b.put("coin_item_jump_url", new RIJCommonConfigHandler.registerNameToValueMap.96(localRIJCommonConfigHandler));
+    this.b.put("coin_item_wording", new RIJCommonConfigHandler.registerNameToValueMap.97(localRIJCommonConfigHandler));
+    this.b.put("user_behavior_norm_switch", new RIJCommonConfigHandler.registerNameToValueMap.98(localRIJCommonConfigHandler));
+    this.b.put("user_behavior_norm_jump_url", new RIJCommonConfigHandler.registerNameToValueMap.99(localRIJCommonConfigHandler));
+    this.b.put("kandian_feature_compute", new RIJCommonConfigHandler.registerNameToValueMap.100(localRIJCommonConfigHandler));
+    this.b.put("kdad_exposure_report_threshold", new RIJCommonConfigHandler.registerNameToValueMap.101(localRIJCommonConfigHandler));
+    this.b.put("kandian_daily_fast_web_bottom_share", new RIJCommonConfigHandler.registerNameToValueMap.102(localRIJCommonConfigHandler));
+    this.b.put("kandian_comment_limit_number", new RIJCommonConfigHandler.registerNameToValueMap.103(localRIJCommonConfigHandler));
+    this.b.put("title_label_number_of_lines", new RIJCommonConfigHandler.registerNameToValueMap.104(localRIJCommonConfigHandler));
+    this.b.put("is_play_comment_button_show", new RIJCommonConfigHandler.registerNameToValueMap.105(localRIJCommonConfigHandler));
+    this.b.put("readinjoy_video_ff_probesize", new RIJCommonConfigHandler.registerNameToValueMap.106(localRIJCommonConfigHandler));
+    this.b.put("readinjoy_video_is_ff_probelist_switch", new RIJCommonConfigHandler.registerNameToValueMap.107(localRIJCommonConfigHandler));
+    this.b.put("readinjoy_video_is_download_async_io", new RIJCommonConfigHandler.registerNameToValueMap.108(localRIJCommonConfigHandler));
+    this.b.put("kandian_daily_wrapper_alpha", new RIJCommonConfigHandler.registerNameToValueMap.109(localRIJCommonConfigHandler));
+    this.b.put("kandian_daily_wrapper_default_text", new RIJCommonConfigHandler.registerNameToValueMap.110(localRIJCommonConfigHandler));
+    this.b.put("kandian_daily_wrapper_drag_text", new RIJCommonConfigHandler.registerNameToValueMap.111(localRIJCommonConfigHandler));
+    this.b.put("video_extract_frame", new RIJCommonConfigHandler.registerNameToValueMap.112(localRIJCommonConfigHandler));
   }
   
   private final void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -508,7 +507,7 @@ public final class RIJCommonConfigHandler
     ((StringBuilder)localObject).append(paramString);
     QLog.d("KandianConfigServlet", 1, ((StringBuilder)localObject).toString());
     long l1 = System.currentTimeMillis();
-    localObject = (Boolean)RIJSPUtils.a("local_kd_tab_has_set", Boolean.valueOf(false));
+    localObject = (Boolean)RIJSPUtils.b("local_kd_tab_has_set", Boolean.valueOf(false));
     boolean bool3 = TextUtils.equals((CharSequence)"1", (CharSequence)paramString);
     RIJShowKanDianTabSp.a((AppRuntime)paramQQAppInterface, "remote_kd_tab_switch", Boolean.valueOf(bool3));
     boolean bool1;
@@ -519,12 +518,12 @@ public final class RIJCommonConfigHandler
       if (bool2)
       {
         bool1 = bool2;
-        if (!RIJAppSetting.d())
+        if (!RIJAppSetting.g())
         {
           bool1 = bool2;
-          if (!((IKanDianOptUtils)QRoute.api(IKanDianOptUtils.class)).isMainFrameInInit())
+          if (!KanDianOptUtils.INSTANCE.isMainFrameInInit())
           {
-            ReadInJoyHelper.e();
+            ReadInJoyHelper.s();
             ReadInJoyLogicEngineEventDispatcher.a().a(0, null);
             bool1 = bool2;
           }
@@ -549,7 +548,7 @@ public final class RIJCommonConfigHandler
   
   private final void a(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    Function4 localFunction4 = (Function4)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
+    Function4 localFunction4 = (Function4)this.b.get(paramString1);
     if (localFunction4 != null) {
       paramString1 = (Unit)localFunction4.invoke(paramString1, paramString2, paramDocument, paramNode);
     }
@@ -557,37 +556,37 @@ public final class RIJCommonConfigHandler
   
   private final boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+    return this.b.containsKey(paramString);
   }
   
   private final void aA(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("local_record_feeds = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
     paramString1 = Integer.valueOf(paramString2);
-    paramString2 = RIJQQAppInterfaceUtil.a();
+    paramString2 = RIJQQAppInterfaceUtil.e();
     Intrinsics.checkExpressionValueIsNotNull(paramString1, "cnt");
-    ReadInJoyHelper.x(paramString2, paramString1.intValue());
+    ReadInJoyHelper.z(paramString2, paramString1.intValue());
   }
   
   private final void aB(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("local_record_time = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
     paramString1 = Long.valueOf(paramString2);
-    paramString2 = RIJQQAppInterfaceUtil.a();
+    paramString2 = RIJQQAppInterfaceUtil.e();
     Intrinsics.checkExpressionValueIsNotNull(paramString1, "time");
     ReadInJoyHelper.a(paramString2, paramString1.longValue());
   }
@@ -596,95 +595,95 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("new_channel_style = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    paramString1 = RIJQQAppInterfaceUtil.a();
+    paramString1 = RIJQQAppInterfaceUtil.e();
     paramString2 = Integer.valueOf(paramString2);
     Intrinsics.checkExpressionValueIsNotNull(paramString2, "Integer.valueOf(value)");
-    ReadInJoyHelper.k(paramString1, paramString2.intValue());
+    ReadInJoyHelper.m(paramString1, paramString2.intValue());
   }
   
   private final void aD(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("biu_word_count = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.f(RIJQQAppInterfaceUtil.a(), paramString2);
+    ReadInJoyHelper.g(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aE(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("badgeNumber = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    paramString1 = RIJQQAppInterfaceUtil.a();
+    paramString1 = RIJQQAppInterfaceUtil.e();
     paramString2 = Integer.valueOf(paramString2);
     Intrinsics.checkExpressionValueIsNotNull(paramString2, "Integer.valueOf(value)");
-    ReadInJoyHelper.w(paramString1, paramString2.intValue());
+    ReadInJoyHelper.y(paramString1, paramString2.intValue());
   }
   
   private final void aF(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("biufeedsWebUrl = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.e(RIJQQAppInterfaceUtil.a(), paramString2);
+    ReadInJoyHelper.f(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aG(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("biufeedsName = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.d(RIJQQAppInterfaceUtil.a(), paramString2);
+    ReadInJoyHelper.e(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aH(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("biufeedsSwitch = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    paramString1 = RIJQQAppInterfaceUtil.a();
+    paramString1 = RIJQQAppInterfaceUtil.e();
     paramString2 = Integer.valueOf(paramString2);
     Intrinsics.checkExpressionValueIsNotNull(paramString2, "Integer.valueOf(value)");
-    ReadInJoyHelper.j(paramString1, paramString2.intValue());
+    ReadInJoyHelper.l(paramString1, paramString2.intValue());
   }
   
   private final void aI(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.b(RIJQQAppInterfaceUtil.a(), paramString1, paramString2);
+    ReadInJoyHelper.b(RIJQQAppInterfaceUtil.e(), paramString1, paramString2);
     if (QLog.isColorLevel())
     {
-      paramDocument = this.jdField_a_of_type_JavaLangString;
+      paramDocument = this.a;
       paramNode = new StringBuilder();
       paramNode.append("name: ");
       paramNode.append(paramString1);
@@ -698,32 +697,32 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("maintab_reddot_feeds = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    paramString1 = RIJQQAppInterfaceUtil.a();
+    paramString1 = RIJQQAppInterfaceUtil.e();
     paramString2 = Integer.valueOf(paramString2);
     Intrinsics.checkExpressionValueIsNotNull(paramString2, "Integer.valueOf(value)");
-    ReadInJoyHelper.i(paramString1, paramString2.intValue());
+    ReadInJoyHelper.k(paramString1, paramString2.intValue());
   }
   
   private final void aK(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("maintab_reddot_times = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    paramString1 = RIJQQAppInterfaceUtil.a();
+    paramString1 = RIJQQAppInterfaceUtil.e();
     paramString2 = Integer.valueOf(paramString2);
     Intrinsics.checkExpressionValueIsNotNull(paramString2, "Integer.valueOf(value)");
-    ReadInJoyHelper.h(paramString1, paramString2.intValue());
+    ReadInJoyHelper.j(paramString1, paramString2.intValue());
   }
   
   private final void aL(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -741,7 +740,7 @@ public final class RIJCommonConfigHandler
     boolean bool = TextUtils.equals((CharSequence)paramString2, (CharSequence)"1");
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramString2 = new StringBuilder();
       paramString2.append("kandian_report_user_apps_switch: ");
       paramString2.append(bool);
@@ -754,7 +753,7 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("kandian_report_tt = ");
       paramDocument.append(TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
@@ -762,50 +761,50 @@ public final class RIJCommonConfigHandler
     }
     if (TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"))
     {
-      ReadInJoyHelper.s(RIJQQAppInterfaceUtil.a(), true);
+      ReadInJoyHelper.t(RIJQQAppInterfaceUtil.e(), true);
       return;
     }
-    ReadInJoyHelper.s(RIJQQAppInterfaceUtil.a(), false);
+    ReadInJoyHelper.t(RIJQQAppInterfaceUtil.e(), false);
   }
   
   private final void aP(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    SPEventReportSwitch.g(RIJQQAppInterfaceUtil.a(), paramString2);
+    SPEventReportSwitch.g(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aQ(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    SPEventReportSwitch.f(RIJQQAppInterfaceUtil.a(), paramString2);
+    SPEventReportSwitch.f(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aR(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    SPEventReportSwitch.e(RIJQQAppInterfaceUtil.a(), paramString2);
+    SPEventReportSwitch.e(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aS(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    SPEventReportSwitch.d(RIJQQAppInterfaceUtil.a(), paramString2);
+    SPEventReportSwitch.d(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aT(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    SPEventReportSwitch.c(RIJQQAppInterfaceUtil.a(), paramString2);
+    SPEventReportSwitch.c(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aU(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    SPEventReportSwitch.b(RIJQQAppInterfaceUtil.a(), paramString2);
+    SPEventReportSwitch.b(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aV(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    SPEventReportSwitch.a(RIJQQAppInterfaceUtil.a(), paramString2);
+    SPEventReportSwitch.a(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aW(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.x(RIJQQAppInterfaceUtil.a(), paramString2);
+    ReadInJoyHelper.y(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aX(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -825,11 +824,11 @@ public final class RIJCommonConfigHandler
         }
         if (ReadInJoyHelper.a(paramDocument))
         {
-          ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a(), paramDocument, paramString2);
+          ReadInJoyHelper.a(RIJQQAppInterfaceUtil.e(), paramDocument, paramString2);
         }
         else
         {
-          paramNode = this.jdField_a_of_type_JavaLangString;
+          paramNode = this.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("find unrecognized key:");
           localStringBuilder.append(paramDocument);
@@ -902,7 +901,7 @@ public final class RIJCommonConfigHandler
       catch (Exception paramString1)
       {
         paramString1.printStackTrace();
-        paramString2 = this.jdField_a_of_type_JavaLangString;
+        paramString2 = this.a;
         paramDocument = new StringBuilder();
         paramDocument.append("covert stickyTime and effectiveTime has error : ");
         paramDocument.append(paramString1);
@@ -916,39 +915,39 @@ public final class RIJCommonConfigHandler
   
   private final void aZ(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.w(RIJQQAppInterfaceUtil.a(), paramString2);
+    ReadInJoyHelper.x(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void aa(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("kan dian right button new config: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.p((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.q((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void ab(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("dian dian right button new config: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.o((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.p((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void ac(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.G((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
-    paramString1 = this.jdField_a_of_type_JavaLangString;
+    ReadInJoyHelper.J((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    paramString1 = this.a;
     paramDocument = new StringBuilder();
     paramDocument.append("update native engine timeout config : ");
     paramDocument.append(paramString2);
@@ -957,20 +956,20 @@ public final class RIJCommonConfigHandler
   
   private final void ad(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.y((AppRuntime)RIJQQAppInterfaceUtil.b(), Intrinsics.areEqual("1", paramString2));
+    ReadInJoyHelper.z((AppRuntime)RIJQQAppInterfaceUtil.b(), Intrinsics.areEqual("1", paramString2));
   }
   
   private final void ae(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "arkapp_enable_switch, value: ", paramString2 });
+      QLog.d(this.a, 2, new Object[] { "arkapp_enable_switch, value: ", paramString2 });
     }
-    ReadInJoyHelper.b((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.c((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void af(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.x((AppRuntime)RIJQQAppInterfaceUtil.b(), TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
+    ReadInJoyHelper.y((AppRuntime)RIJQQAppInterfaceUtil.b(), TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
   }
   
   private final void ag(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -982,20 +981,20 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("IconMerge_InteractiveMsg = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.c(paramString2);
+    ReadInJoyHelper.e(paramString2);
   }
   
   private final void ai(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("IconMerge_InteractiveMsg = ");
       paramDocument.append(paramString2);
@@ -1020,78 +1019,78 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("biu_profile_switch = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.n((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.o((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void al(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("comment_at_switch = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.u((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.v((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void am(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("UGC_at_switch = ");
-      paramDocument.append(paramString2);
-      QLog.d(paramString1, 2, paramDocument.toString());
-    }
-    ReadInJoyHelper.l((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
-  }
-  
-  private final void an(String paramString1, String paramString2, Document paramDocument, Node paramNode)
-  {
-    if (QLog.isColorLevel())
-    {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
-      paramDocument = new StringBuilder();
-      paramDocument.append("biu_at_switch = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
     ReadInJoyHelper.m((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
+  private final void an(String paramString1, String paramString2, Document paramDocument, Node paramNode)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramString1 = this.a;
+      paramDocument = new StringBuilder();
+      paramDocument.append("biu_at_switch = ");
+      paramDocument.append(paramString2);
+      QLog.d(paramString1, 2, paramDocument.toString());
+    }
+    ReadInJoyHelper.n((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+  }
+  
   private final void ao(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("ugc_gif_switch = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.i((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.j((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void ap(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("comment_gif_switch = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.h((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.i((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void aq(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -1137,13 +1136,13 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("comment_word_count = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.g((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.h((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void as(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -1158,20 +1157,20 @@ public final class RIJCommonConfigHandler
   
   private final void au(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.F((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
+    ReadInJoyHelper.I((AppRuntime)RIJQQAppInterfaceUtil.b(), paramString2);
   }
   
   private final void av(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     RIJShowKanDianTabSp.a((AppRuntime)RIJQQAppInterfaceUtil.b(), "remote_kd_tab_type", paramString2);
-    paramString1 = (Boolean)RIJSPUtils.a("local_kd_tab_has_set", Boolean.valueOf(false));
+    paramString1 = (Boolean)RIJSPUtils.b("local_kd_tab_has_set", Boolean.valueOf(false));
     if (!paramString1.booleanValue())
     {
       RIJShowKanDianTabSp.a((AppRuntime)RIJQQAppInterfaceUtil.b(), "local_kd_tab_type", paramString2);
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, new Object[] { "receiveKDTabTypeRemoteSP, userHasSetKDTab = ", paramString1, ", updateLocalTabSwitch tabType = ", paramString2 });
+      QLog.d(this.a, 1, new Object[] { "receiveKDTabTypeRemoteSP, userHasSetKDTab = ", paramString1, ", updateLocalTabSwitch tabType = ", paramString2 });
       return;
     }
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, new Object[] { "receiveKDTabTypeRemoteSP, userHasSetKDTab = ", paramString1, ", no need to updateTabType." });
+    QLog.d(this.a, 1, new Object[] { "receiveKDTabTypeRemoteSP, userHasSetKDTab = ", paramString1, ", no need to updateTabType." });
   }
   
   private final void aw(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -1204,7 +1203,7 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("kandianWebPreLoadData = ");
       paramDocument.append(paramString2);
@@ -1212,40 +1211,40 @@ public final class RIJCommonConfigHandler
     }
     if (TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"))
     {
-      ReadInJoyHelper.w(RIJQQAppInterfaceUtil.a(), true);
+      ReadInJoyHelper.x(RIJQQAppInterfaceUtil.e(), true);
       return;
     }
-    ReadInJoyHelper.w(RIJQQAppInterfaceUtil.a(), false);
+    ReadInJoyHelper.x(RIJQQAppInterfaceUtil.e(), false);
   }
   
   private final void ay(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("local_record_feeds_weishi = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
     paramString1 = Integer.valueOf(paramString2);
-    paramString2 = RIJQQAppInterfaceUtil.a();
+    paramString2 = RIJQQAppInterfaceUtil.e();
     Intrinsics.checkExpressionValueIsNotNull(paramString1, "cnt");
-    ReadInJoyHelper.y(paramString2, paramString1.intValue());
+    ReadInJoyHelper.A(paramString2, paramString1.intValue());
   }
   
   private final void az(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("local_record_time_weishi = ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
     paramString1 = Long.valueOf(paramString2);
-    paramString2 = RIJQQAppInterfaceUtil.a();
+    paramString2 = RIJQQAppInterfaceUtil.e();
     Intrinsics.checkExpressionValueIsNotNull(paramString1, "time");
     ReadInJoyHelper.b(paramString2, paramString1.longValue());
   }
@@ -1254,7 +1253,7 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("video_extract_frame = ");
       paramDocument.append(paramString2);
@@ -1265,7 +1264,7 @@ public final class RIJCommonConfigHandler
   
   private final void ba(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.c(RIJQQAppInterfaceUtil.a(), paramString2);
+    ReadInJoyHelper.H(RIJQQAppInterfaceUtil.e(), paramString2);
   }
   
   private final void bb(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -1277,22 +1276,22 @@ public final class RIJCommonConfigHandler
       paramString1.append(TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
       QLog.d("ReadinjoyCommonConfProcessor", 2, paramString1.toString());
     }
-    ReadInJoyHelper.r(RIJQQAppInterfaceUtil.a(), TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
+    ReadInJoyHelper.s(RIJQQAppInterfaceUtil.e(), TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
   }
   
   private final void bc(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.d(RIJQQAppInterfaceUtil.a(), TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
+    ReadInJoyHelper.d(RIJQQAppInterfaceUtil.e(), TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
   }
   
   private final void bd(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a(), TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
+    ReadInJoyHelper.a(RIJQQAppInterfaceUtil.e(), TextUtils.equals((CharSequence)paramString2, (CharSequence)"1"));
   }
   
   private final void be(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    paramString1 = RIJQQAppInterfaceUtil.a();
+    paramString1 = RIJQQAppInterfaceUtil.e();
     if (paramString1 != null)
     {
       ReadInJoyHelper.b((QQAppInterface)paramString1, paramString2);
@@ -1303,7 +1302,7 @@ public final class RIJCommonConfigHandler
   
   private final void bf(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    paramString1 = RIJQQAppInterfaceUtil.a();
+    paramString1 = RIJQQAppInterfaceUtil.e();
     if (paramString1 != null)
     {
       ReadInJoyHelper.a((QQAppInterface)paramString1, paramString2);
@@ -1314,7 +1313,7 @@ public final class RIJCommonConfigHandler
   
   private final void bg(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
-    paramString1 = RIJQQAppInterfaceUtil.a();
+    paramString1 = RIJQQAppInterfaceUtil.e();
     if (paramString1 != null)
     {
       ReadInJoyHelper.c((QQAppInterface)paramString1, paramString2);
@@ -1344,7 +1343,7 @@ public final class RIJCommonConfigHandler
     {
       if (QLog.isColorLevel())
       {
-        paramString1 = this.jdField_a_of_type_JavaLangString;
+        paramString1 = this.a;
         paramDocument = new StringBuilder();
         paramDocument.append("readinjoy_video_is_download_async_io: ");
         paramDocument.append(paramString2);
@@ -1368,7 +1367,7 @@ public final class RIJCommonConfigHandler
     {
       if (QLog.isColorLevel())
       {
-        paramString1 = this.jdField_a_of_type_JavaLangString;
+        paramString1 = this.a;
         paramDocument = new StringBuilder();
         paramDocument.append("readinjoy_video_is_ff_probelist_switch: ");
         paramDocument.append(paramString2);
@@ -1392,7 +1391,7 @@ public final class RIJCommonConfigHandler
     {
       if (QLog.isColorLevel())
       {
-        paramString1 = this.jdField_a_of_type_JavaLangString;
+        paramString1 = this.a;
         paramDocument = new StringBuilder();
         paramDocument.append("readinjoy_video_ff_probesize: ");
         paramDocument.append(paramString2);
@@ -1416,7 +1415,7 @@ public final class RIJCommonConfigHandler
     try
     {
       Intrinsics.throwNpe();
-      ReadInJoyHelper.d(Integer.parseInt(paramString2));
+      ReadInJoyHelper.l(Integer.parseInt(paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -1431,7 +1430,7 @@ public final class RIJCommonConfigHandler
     try
     {
       Intrinsics.throwNpe();
-      ReadInJoyHelper.c(Integer.parseInt(paramString2));
+      ReadInJoyHelper.k(Integer.parseInt(paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -1446,7 +1445,7 @@ public final class RIJCommonConfigHandler
     try
     {
       Intrinsics.throwNpe();
-      ReadInJoyHelper.b(Integer.parseInt(paramString2));
+      ReadInJoyHelper.j(Integer.parseInt(paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -1474,7 +1473,7 @@ public final class RIJCommonConfigHandler
     {
       Intrinsics.throwNpe();
       int k = Integer.parseInt(paramString2);
-      int j = ReadInJoyConstants.c;
+      int j = ReadInJoyConstants.v;
       int i = j;
       if (k == 1) {
         if (paramNode != null)
@@ -1496,7 +1495,7 @@ public final class RIJCommonConfigHandler
           throw new TypeCastException("null cannot be cast to non-null type org.w3c.dom.Element");
         }
       }
-      ReadInJoyHelper.C((AppRuntime)RIJQQAppInterfaceUtil.b(), i);
+      ReadInJoyHelper.E((AppRuntime)RIJQQAppInterfaceUtil.b(), i);
       return;
     }
     catch (Exception paramString1)
@@ -1526,7 +1525,7 @@ public final class RIJCommonConfigHandler
     paramString1.putString(paramDocument.toString(), paramString2).apply();
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("user_behavior_norm_jump_url: ");
       paramDocument.append(paramString2);
@@ -1547,7 +1546,7 @@ public final class RIJCommonConfigHandler
     paramString1.putString(paramDocument.toString(), paramString2).apply();
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("user_behavior_norm_switch: ");
       paramDocument.append(paramString2);
@@ -1560,7 +1559,7 @@ public final class RIJCommonConfigHandler
     RIJSPUtils.a("readinjoy_coin_item_title", paramString2);
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("coin_item_wording: ");
       paramDocument.append(paramString2);
@@ -1573,7 +1572,7 @@ public final class RIJCommonConfigHandler
     RIJSPUtils.a("readinjoy_coin_item_jump_url", paramString2);
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("coin_item_jump_url: ");
       paramDocument.append(paramString2);
@@ -1603,7 +1602,7 @@ public final class RIJCommonConfigHandler
     RIJSPUtils.a("sp_key_create_topic_switch", Boolean.valueOf(bool));
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("publish_topic: ");
       paramDocument.append(paramString2);
@@ -1615,7 +1614,7 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("kandian_aladdin_configuration_switch: ");
       paramDocument.append(paramString2);
@@ -1628,26 +1627,26 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("local_record_feeds_counts_weishi_recommend: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.b(paramString2);
+    ReadInJoyHelper.c(paramString2);
   }
   
   private final void v(String paramString1, String paramString2, Document paramDocument, Node paramNode)
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("local_record_time_weishi_recommend: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.a(paramString2);
+    ReadInJoyHelper.b(paramString2);
   }
   
   private final void w(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -1663,13 +1662,13 @@ public final class RIJCommonConfigHandler
   {
     if (QLog.isColorLevel())
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramDocument = new StringBuilder();
       paramDocument.append("weishi_with_channel_discovery_switch: ");
       paramDocument.append(paramString2);
       QLog.d(paramString1, 2, paramDocument.toString());
     }
-    ReadInJoyHelper.d(paramString2);
+    ReadInJoyHelper.g(paramString2);
   }
   
   private final void y(String paramString1, String paramString2, Document paramDocument, Node paramNode)
@@ -1701,7 +1700,7 @@ public final class RIJCommonConfigHandler
     int m;
     try
     {
-      paramQConfItem = paramQConfItem.jdField_a_of_type_JavaLangString;
+      paramQConfItem = paramQConfItem.b;
       Intrinsics.checkExpressionValueIsNotNull(paramQConfItem, "configItme.content");
       paramQConfItem = (CharSequence)paramQConfItem;
       j = paramQConfItem.length() - 1;
@@ -1733,7 +1732,7 @@ public final class RIJCommonConfigHandler
       str1 = paramQConfItem.subSequence(i, j + 1).toString();
       if (QLog.isColorLevel())
       {
-        paramQConfItem = this.jdField_a_of_type_JavaLangString;
+        paramQConfItem = this.a;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("receiveAllConfigs|type: 92,content: ");
         ((StringBuilder)localObject1).append(str1);
@@ -1784,17 +1783,17 @@ public final class RIJCommonConfigHandler
           {
             if (QLog.isColorLevel())
             {
-              paramQConfItem = this.jdField_a_of_type_JavaLangString;
+              paramQConfItem = this.a;
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("kandiansettings :");
               ((StringBuilder)localObject2).append(str1);
               QLog.d(paramQConfItem, 2, ((StringBuilder)localObject2).toString());
             }
-            ReadInJoyHelper.B((AppRuntime)RIJQQAppInterfaceUtil.b(), str1);
+            ReadInJoyHelper.C((AppRuntime)RIJQQAppInterfaceUtil.b(), str1);
           }
           else if (TextUtils.equals((CharSequence)paramQConfItem, (CharSequence)"readinjoy_small_video_pack_ui_style"))
           {
-            ReadInJoyHelper.y((AppRuntime)RIJQQAppInterfaceUtil.b(), str1);
+            ReadInJoyHelper.z((AppRuntime)RIJQQAppInterfaceUtil.b(), str1);
           }
           else if (TextUtils.equals((CharSequence)paramQConfItem, (CharSequence)"awake_time"))
           {
@@ -1851,7 +1850,7 @@ public final class RIJCommonConfigHandler
               k = Integer.parseInt((String)localObject2);
               if ((j >= 0) && (j <= 86400) && (i >= 0) && (k >= 0) && (k <= 1))
               {
-                paramQConfItem = RIJQQAppInterfaceUtil.a();
+                paramQConfItem = RIJQQAppInterfaceUtil.e();
                 if (paramQConfItem != null)
                 {
                   paramQConfItem = ((QQAppInterface)paramQConfItem).getManager(QQManagerFactory.KANDIAN_SUBSCRIBE_MANAGER);
@@ -1926,7 +1925,7 @@ public final class RIJCommonConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.config.RIJCommonConfigHandler
  * JD-Core Version:    0.7.0.1
  */

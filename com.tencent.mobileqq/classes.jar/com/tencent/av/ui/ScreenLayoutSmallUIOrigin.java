@@ -12,27 +12,22 @@ import com.tencent.qphone.base.util.QLog;
 public class ScreenLayoutSmallUIOrigin
   extends ScreenLayout
 {
-  protected Display a;
+  protected Display e;
   
   protected ScreenLayoutSmallUIOrigin(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
     super(paramContext, paramVideoAppInterface);
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-  }
-  
-  public int a()
-  {
-    return 1;
+    this.e = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
   }
   
   public void a(SessionInfo paramSessionInfo, GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (this.a == null) {
       return;
     }
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299267);
+    int i = this.a.getResources().getDimensionPixelSize(2131300023);
     if (paramInt4 != 0) {
-      paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299268);
+      paramInt3 = this.a.getResources().getDimensionPixelSize(2131300024);
     } else {
       paramInt3 = i;
     }
@@ -41,52 +36,52 @@ public class ScreenLayoutSmallUIOrigin
     paramInt3 = paramInt2 - paramInt3 - paramInt4;
     if (paramBoolean)
     {
-      paramInt1 = paramArrayOfGLVideoView[1].b().left;
-      paramInt2 = paramArrayOfGLVideoView[1].b().right;
+      paramInt1 = paramArrayOfGLVideoView[1].f().left;
+      paramInt2 = paramArrayOfGLVideoView[1].f().right;
     }
     else
     {
       paramInt2 = paramInt1 - i;
       paramInt1 = paramInt1 - k - i;
     }
-    paramArrayOfGLVideoView[1].b(paramInt1, j, paramInt2, paramInt3);
+    paramArrayOfGLVideoView[1].c(paramInt1, j, paramInt2, paramInt3);
     if (paramBoolean)
     {
-      paramInt1 = paramArrayOfGLVideoView[2].b().left;
-      paramInt2 = paramArrayOfGLVideoView[2].b().right;
+      paramInt1 = paramArrayOfGLVideoView[2].f().left;
+      paramInt2 = paramArrayOfGLVideoView[2].f().right;
     }
     else
     {
       paramInt2 = paramInt1;
       paramInt1 -= k;
     }
-    paramArrayOfGLVideoView[2].b(paramInt1, j, paramInt2, paramInt3);
+    paramArrayOfGLVideoView[2].c(paramInt1, j, paramInt2, paramInt3);
     if (paramBoolean)
     {
-      paramInt1 = paramArrayOfGLVideoView[3].b().left;
-      paramInt2 = paramArrayOfGLVideoView[3].b().right;
+      paramInt1 = paramArrayOfGLVideoView[3].f().left;
+      paramInt2 = paramArrayOfGLVideoView[3].f().right;
     }
     else
     {
       paramInt2 = paramInt1;
       paramInt1 -= k;
     }
-    paramArrayOfGLVideoView[3].b(paramInt1, j, paramInt2, paramInt3);
+    paramArrayOfGLVideoView[3].c(paramInt1, j, paramInt2, paramInt3);
     if (paramBoolean)
     {
-      paramInt1 = paramArrayOfGLVideoView[4].b().left;
-      paramInt2 = paramArrayOfGLVideoView[4].b().right;
+      paramInt1 = paramArrayOfGLVideoView[4].f().left;
+      paramInt2 = paramArrayOfGLVideoView[4].f().right;
     }
     else
     {
       paramInt2 = paramInt1;
       paramInt1 -= k;
     }
-    paramArrayOfGLVideoView[4].b(paramInt1, j, paramInt2, paramInt3);
-    paramArrayOfGLVideoView[1].d(-15197410);
-    paramArrayOfGLVideoView[2].d(-15197410);
-    paramArrayOfGLVideoView[3].d(-15197410);
-    paramArrayOfGLVideoView[4].d(-15197410);
+    paramArrayOfGLVideoView[4].c(paramInt1, j, paramInt2, paramInt3);
+    paramArrayOfGLVideoView[1].e(-15197410);
+    paramArrayOfGLVideoView[2].e(-15197410);
+    paramArrayOfGLVideoView[3].e(-15197410);
+    paramArrayOfGLVideoView[4].e(-15197410);
     paramArrayOfGLVideoView[1].a(2, 3, 3, 3);
     paramArrayOfGLVideoView[2].a(2, 3, 2, 3);
     paramArrayOfGLVideoView[3].a(2, 3, 2, 3);
@@ -102,33 +97,33 @@ public class ScreenLayoutSmallUIOrigin
       localStringBuilder.append(paramInt1);
       QLog.d("ScreenLayoutSmallUIOrigin", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_AndroidContentContext == null)
+    if (this.a == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ScreenLayoutSmallUIOrigin", 2, "setSmallVideoViewLayout mContext == null");
       }
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299269);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299266);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299267);
-    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299268);
+    this.a.getResources().getDimensionPixelSize(2131300025);
+    this.a.getResources().getDimensionPixelSize(2131300022);
+    this.a.getResources().getDimensionPixelSize(2131300023);
+    this.a.getResources().getDimensionPixelSize(2131300024);
     int m;
     int k;
     int i;
-    if (this.jdField_a_of_type_AndroidViewDisplay.getRotation() % 2 == 0)
+    if (this.e.getRotation() % 2 == 0)
     {
-      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297972);
-      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297969);
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297970);
-      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297971);
+      m = this.a.getResources().getDimensionPixelSize(2131298642);
+      k = this.a.getResources().getDimensionPixelSize(2131298639);
+      i = this.a.getResources().getDimensionPixelSize(2131298640);
+      j = this.a.getResources().getDimensionPixelSize(2131298641);
     }
     else
     {
-      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297969);
-      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297972);
-      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297971);
-      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297970);
+      m = this.a.getResources().getDimensionPixelSize(2131298639);
+      k = this.a.getResources().getDimensionPixelSize(2131298642);
+      i = this.a.getResources().getDimensionPixelSize(2131298641);
+      j = this.a.getResources().getDimensionPixelSize(2131298640);
     }
     int n = j;
     if (paramInt5 == 0) {
@@ -174,17 +169,22 @@ public class ScreenLayoutSmallUIOrigin
     }
     paramInt3 = paramInt2 + k;
     label384:
-    paramArrayOfGLVideoView[1].b(i, paramInt2, paramInt1, paramInt3);
+    paramArrayOfGLVideoView[1].c(i, paramInt2, paramInt1, paramInt3);
   }
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
     paramArrayOfGLVideoView[1].a(3, 3, 3, 3);
-    paramArrayOfGLVideoView[1].d(-15197410);
+    paramArrayOfGLVideoView[1].e(-15197410);
     a(paramArrayOfGLVideoView, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
   }
   
-  public boolean b()
+  public int b()
+  {
+    return 1;
+  }
+  
+  public boolean d()
   {
     return false;
   }

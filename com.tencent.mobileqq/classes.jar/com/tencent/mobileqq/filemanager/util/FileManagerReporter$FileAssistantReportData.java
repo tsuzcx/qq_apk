@@ -2,27 +2,20 @@ package com.tencent.mobileqq.filemanager.util;
 
 public class FileManagerReporter$FileAssistantReportData
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = 1;
-  public long b;
+  public String a = "share_file";
   public String b;
-  public String c;
+  public int c = 0;
   public String d;
-  private String e;
-  
-  public FileManagerReporter$FileAssistantReportData()
-  {
-    this.jdField_a_of_type_JavaLangString = "share_file";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public long e;
+  public String f;
+  public int g = 1;
+  public long h;
+  public boolean i = true;
+  private String j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerReporter.FileAssistantReportData
  * JD-Core Version:    0.7.0.1
  */

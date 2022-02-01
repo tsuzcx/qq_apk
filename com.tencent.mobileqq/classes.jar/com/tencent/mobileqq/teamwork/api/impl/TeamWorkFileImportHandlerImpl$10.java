@@ -24,7 +24,7 @@ class TeamWorkFileImportHandlerImpl$10
       Object localObject1 = this.a;
       if (localObject1 != null)
       {
-        if (TextUtils.isEmpty(((TeamWorkFileImportInfo)localObject1).c)) {
+        if (TextUtils.isEmpty(((TeamWorkFileImportInfo)localObject1).d)) {
           return;
         }
         long l1 = System.currentTimeMillis();
@@ -48,18 +48,18 @@ class TeamWorkFileImportHandlerImpl$10
         {
           str = "";
         }
-        Object localObject2 = HardCodeUtil.a(2131714606);
-        if (this.a.e == 3) {
+        Object localObject2 = HardCodeUtil.a(2131912115);
+        if (this.a.u == 3) {
           localObject2 = "word";
         }
         for (;;)
         {
           break;
-          if (this.a.e == 6) {
+          if (this.a.u == 6) {
             localObject2 = "excel";
-          } else if (this.a.e == 7) {
+          } else if (this.a.u == 7) {
             localObject2 = "ppt";
-          } else if (this.a.e == 9) {
+          } else if (this.a.u == 9) {
             localObject2 = "pdf";
           }
         }
@@ -86,7 +86,7 @@ class TeamWorkFileImportHandlerImpl$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkFileImportHandlerImpl.10
  * JD-Core Version:    0.7.0.1
  */

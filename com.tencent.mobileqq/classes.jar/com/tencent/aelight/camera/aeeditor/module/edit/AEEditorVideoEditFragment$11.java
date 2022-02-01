@@ -10,8 +10,8 @@ import com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextViewModel;
 import com.tencent.aelight.camera.aeeditor.module.text.TextMetaMaterialKt;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.utils.CustomHandler;
-import com.tencent.tavcut.bean.TextEditorData;
-import com.tencent.tavcut.session.callback.StickerOperationCallback;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
+import com.tencent.qcircle.tavcut.session.callback.StickerOperationCallback;
 
 class AEEditorVideoEditFragment$11
   implements StickerOperationCallback
@@ -20,28 +20,28 @@ class AEEditorVideoEditFragment$11
   
   public void onAddStickerDone(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a(paramString);
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramString);
+    this.a.v.c(paramString);
+    this.a.w.c(paramString);
   }
   
   public void onDeleteButtonClick(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a();
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a();
-    AEQLog.a(AEEditorVideoEditFragment.h(), "[onDeleteButtonClick]textEditorData = null");
+    this.a.v.a();
+    this.a.w.a();
+    AEQLog.a(AEEditorVideoEditFragment.aj(), "[onDeleteButtonClick]textEditorData = null");
   }
   
   public void onStickerClick(TextEditorData paramTextEditorData)
   {
     int i;
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramTextEditorData.getItemID()) != null) {
+    if (this.a.w.a(paramTextEditorData.getItemID()) != null) {
       i = 1;
     } else {
       i = 0;
     }
     if (i != 0)
     {
-      if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextControlPanel.getVisibility() != 0)
+      if (this.a.k.getVisibility() != 0)
       {
         onStickerSelect(paramTextEditorData);
         return;
@@ -49,7 +49,7 @@ class AEEditorVideoEditFragment$11
       onTextEditButtonClick(paramTextEditorData);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel.getVisibility() != 0)
+    if (this.a.h.getVisibility() != 0)
     {
       onStickerSelect(paramTextEditorData);
       return;
@@ -61,8 +61,8 @@ class AEEditorVideoEditFragment$11
   
   public void onStickerOutsideClick()
   {
-    AEEditorVideoEditFragment.c(this.a);
-    AEQLog.a(AEEditorVideoEditFragment.h(), "[onStickerOutsideClick]textEditorData = null");
+    AEEditorVideoEditFragment.n(this.a);
+    AEQLog.a(AEEditorVideoEditFragment.aj(), "[onStickerOutsideClick]textEditorData = null");
   }
   
   public void onStickerSelect(TextEditorData paramTextEditorData)
@@ -70,16 +70,16 @@ class AEEditorVideoEditFragment$11
     if (paramTextEditorData == null) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a(paramTextEditorData.getItemID()) != null)
+    if (this.a.v.a(paramTextEditorData.getItemID()) != null)
     {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView.a(2064122562);
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a(paramTextEditorData);
+      this.a.l.a(2063991380);
+      this.a.v.a(paramTextEditorData);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramTextEditorData.getItemID()) != null)
+    if (this.a.w.a(paramTextEditorData.getItemID()) != null)
     {
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView.a(2064122349);
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramTextEditorData);
+      this.a.l.a(2063991222);
+      this.a.w.a(paramTextEditorData);
     }
   }
   
@@ -88,37 +88,37 @@ class AEEditorVideoEditFragment$11
     if (paramTextEditorData == null) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a(paramTextEditorData.getItemID()) != null)
+    if (this.a.v.a(paramTextEditorData.getItemID()) != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel.getVisibility() != 0)
+      if (this.a.h.getVisibility() != 0)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.removeMessages(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.sendEmptyMessageDelayed(0, 2000L);
+        this.a.r.removeMessages(0);
+        this.a.r.sendEmptyMessageDelayed(0, 2000L);
       }
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView.a(2064122562);
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a(paramTextEditorData);
+      this.a.l.a(2063991380);
+      this.a.v.a(paramTextEditorData);
     }
-    else if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramTextEditorData.getItemID()) != null)
+    else if (this.a.w.a(paramTextEditorData.getItemID()) != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextControlPanel.getVisibility() != 0)
+      if (this.a.k.getVisibility() != 0)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.removeMessages(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.sendEmptyMessageDelayed(0, 2000L);
+        this.a.r.removeMessages(0);
+        this.a.r.sendEmptyMessageDelayed(0, 2000L);
       }
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView.a(2064122349);
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramTextEditorData);
+      this.a.l.a(2063991222);
+      this.a.w.a(paramTextEditorData);
     }
     else if ("sticker_lyric".equals(paramTextEditorData.getStickerType()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.removeMessages(0);
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.sendEmptyMessageDelayed(0, 2000L);
+      this.a.r.removeMessages(0);
+      this.a.r.sendEmptyMessageDelayed(0, 2000L);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.removeMessages(0);
+    this.a.r.removeMessages(0);
   }
   
   public void onStickerTouchStart(TextEditorData paramTextEditorData)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsCustomHandler.removeMessages(0);
+    this.a.r.removeMessages(0);
   }
   
   public void onTextEditButtonClick(TextEditorData paramTextEditorData)
@@ -126,25 +126,25 @@ class AEEditorVideoEditFragment$11
     if (paramTextEditorData == null) {
       return;
     }
-    MetaMaterial localMetaMaterial2 = this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a(paramTextEditorData.getItemID());
+    MetaMaterial localMetaMaterial2 = this.a.v.a(paramTextEditorData.getItemID());
     MetaMaterial localMetaMaterial1 = localMetaMaterial2;
     if (localMetaMaterial2 == null) {
-      localMetaMaterial1 = this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramTextEditorData.getItemID());
+      localMetaMaterial1 = this.a.w.a(paramTextEditorData.getItemID());
     }
     if (localMetaMaterial1 != null)
     {
-      if ("blur".equals(TextMetaMaterialKt.a(localMetaMaterial1))) {
+      if ("blur".equals(TextMetaMaterialKt.b(localMetaMaterial1))) {
         this.a.d(false);
       }
-      this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerPart.a(this.a.getActivity(), localMetaMaterial1, paramTextEditorData);
+      this.a.p.a(this.a.getActivity(), localMetaMaterial1, paramTextEditorData);
     }
   }
   
   public void onUpdateTextStickerDone(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerViewModel.a(paramString);
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextViewModel.a(paramString);
-    String str = AEEditorVideoEditFragment.h();
+    this.a.v.c(paramString);
+    this.a.w.c(paramString);
+    String str = AEEditorVideoEditFragment.aj();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onUpdateTextStickerDone] uniqueId:");
     localStringBuilder.append(paramString);
@@ -153,7 +153,7 @@ class AEEditorVideoEditFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.11
  * JD-Core Version:    0.7.0.1
  */

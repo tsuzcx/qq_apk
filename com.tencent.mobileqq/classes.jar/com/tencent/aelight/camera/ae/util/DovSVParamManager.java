@@ -33,71 +33,38 @@ import org.json.JSONObject;
 
 public class DovSVParamManager
 {
-  private static DovSVParamManager jdField_a_of_type_ComTencentAelightCameraAeUtilDovSVParamManager;
-  public float a;
-  private int jdField_a_of_type_Int = 1;
-  public String a;
-  public Map<Integer, Float> a;
-  public boolean a;
-  private int jdField_b_of_type_Int = 1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private Map<Integer, Size> jdField_b_of_type_JavaUtilMap = new HashMap();
-  public boolean b;
-  private Map<Integer, Size> c;
-  public boolean c;
-  public boolean d = false;
+  private static DovSVParamManager i;
+  public String a = "";
+  public boolean b = false;
+  public boolean c = false;
+  public boolean d = true;
   public boolean e = false;
+  public boolean f = false;
+  public float g = 0.5F;
+  public Map<Integer, Float> h = new HashMap();
+  private String j = "";
+  private Map<Integer, Size> k = new HashMap();
+  private Map<Integer, Size> l = new HashMap();
+  private int m = 1;
+  private int n = 1;
   
   private DovSVParamManager()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 0.5F;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilMap = new HashMap();
-    a();
+    b();
   }
   
   public static DovSVParamManager a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeUtilDovSVParamManager == null) {
+    if (i == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeUtilDovSVParamManager == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeUtilDovSVParamManager = new DovSVParamManager();
+        if (i == null) {
+          i = new DovSVParamManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeUtilDovSVParamManager;
-  }
-  
-  private String a()
-  {
-    String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_gpu_config", 0).getString("cfg_content", "");
-    String str1;
-    if (TextUtils.isEmpty(str2))
-    {
-      str2 = FileUtils.readStringFromAsset("short_video_device_rule_config.xml");
-      str1 = str2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("DovSVParamManager", 2, "take local config");
-        return str2;
-      }
-    }
-    else
-    {
-      str1 = str2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("DovSVParamManager", 2, "take server config");
-        str1 = str2;
-      }
-    }
-    return str1;
+    return i;
   }
   
   private void a(String paramString)
@@ -108,24 +75,24 @@ public class DovSVParamManager
     String[] arrayOfString = paramString.split(";");
     for (;;)
     {
-      int i;
+      int i1;
       try
       {
-        boolean bool1 = this.jdField_a_of_type_JavaLangString.contains("Mali");
+        boolean bool1 = this.a.contains("Mali");
         boolean bool2 = false;
-        int j;
+        int i2;
         Object localObject;
-        int k;
-        int m;
-        int n;
+        int i3;
+        int i4;
+        int i5;
         if (bool1)
         {
-          j = arrayOfString.length;
-          i = 0;
+          i2 = arrayOfString.length;
+          i1 = 0;
           bool1 = bool2;
-          if (i < j)
+          if (i1 < i2)
           {
-            paramString = arrayOfString[i].split("#");
+            paramString = arrayOfString[i1].split("#");
             bool1 = bool2;
             if (paramString.length == 4)
             {
@@ -133,25 +100,25 @@ public class DovSVParamManager
               ((StringBuilder)localObject).append(paramString[0]);
               ((StringBuilder)localObject).append(paramString[1]);
               localObject = ((StringBuilder)localObject).toString();
-              if (!this.jdField_a_of_type_JavaLangString.contains((CharSequence)localObject)) {
+              if (!this.a.contains((CharSequence)localObject)) {
                 break label391;
               }
-              localObject = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(this.jdField_a_of_type_JavaLangString);
+              localObject = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(this.a);
               bool1 = ((Matcher)localObject).find();
               if (!bool1) {
                 break label391;
               }
               try
               {
-                k = Integer.parseInt(((Matcher)localObject).group(4));
-                m = Integer.parseInt(paramString[2]);
-                n = Integer.parseInt(paramString[3]);
+                i3 = Integer.parseInt(((Matcher)localObject).group(4));
+                i4 = Integer.parseInt(paramString[2]);
+                i5 = Integer.parseInt(paramString[3]);
                 bool1 = bool2;
-                if (k > n) {
+                if (i3 > i5) {
                   continue;
                 }
                 bool1 = bool2;
-                if (k < m) {
+                if (i3 < i4) {
                   continue;
                 }
                 bool1 = true;
@@ -167,36 +134,36 @@ public class DovSVParamManager
         else
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.contains("Adreno"))
+          if (this.a.contains("Adreno"))
           {
-            j = arrayOfString.length;
-            i = 0;
+            i2 = arrayOfString.length;
+            i1 = 0;
             bool1 = bool2;
-            if (i < j)
+            if (i1 < i2)
             {
-              localObject = arrayOfString[i].split("#");
+              localObject = arrayOfString[i1].split("#");
               paramString = "0";
-              Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(this.jdField_a_of_type_JavaLangString);
+              Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(this.a);
               if (localMatcher.find()) {
                 paramString = localMatcher.group(1);
               }
               if ((localObject.length != 3) || (!paramString.substring(0, 1).equals(localObject[0])))
               {
-                k = localObject.length;
-                if (k != 2) {
+                i3 = localObject.length;
+                if (i3 != 2) {
                   break label398;
                 }
               }
               try
               {
-                k = Integer.parseInt(paramString);
-                m = Integer.parseInt(localObject[(localObject.length - 2)]);
-                n = Integer.parseInt(localObject[(localObject.length - 1)]);
+                i3 = Integer.parseInt(paramString);
+                i4 = Integer.parseInt(localObject[(localObject.length - 2)]);
+                i5 = Integer.parseInt(localObject[(localObject.length - 1)]);
                 bool1 = bool2;
-                if (k <= n)
+                if (i3 <= i5)
                 {
                   bool1 = bool2;
-                  if (k >= m) {
+                  if (i3 >= i4) {
                     continue;
                   }
                 }
@@ -217,10 +184,10 @@ public class DovSVParamManager
         return;
       }
       label391:
-      i += 1;
+      i1 += 1;
       continue;
       label398:
-      i += 1;
+      i1 += 1;
     }
   }
   
@@ -254,23 +221,23 @@ public class DovSVParamManager
     String[] arrayOfString1 = paramString.split(";");
     for (;;)
     {
-      int i;
+      int i1;
       try
       {
-        boolean bool1 = this.jdField_a_of_type_JavaLangString.contains("Mali");
+        boolean bool1 = this.a.contains("Mali");
         boolean bool2 = false;
-        int j;
+        int i2;
         String[] arrayOfString2;
-        int k;
-        int m;
+        int i3;
+        int i4;
         if (bool1)
         {
-          j = arrayOfString1.length;
-          i = 0;
+          i2 = arrayOfString1.length;
+          i1 = 0;
           bool1 = bool2;
-          if (i < j)
+          if (i1 < i2)
           {
-            arrayOfString2 = arrayOfString1[i].split("#");
+            arrayOfString2 = arrayOfString1[i1].split("#");
             if (arrayOfString2.length == 2)
             {
               paramString = arrayOfString2[0];
@@ -286,26 +253,26 @@ public class DovSVParamManager
               paramString.append(arrayOfString2[1]);
               paramString = paramString.toString();
             }
-            if (!this.jdField_a_of_type_JavaLangString.contains(paramString)) {
+            if (!this.a.contains(paramString)) {
               break label415;
             }
-            paramString = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(this.jdField_a_of_type_JavaLangString);
-            k = arrayOfString2.length;
+            paramString = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(this.a);
+            i3 = arrayOfString2.length;
             bool1 = paramString.find();
             if (!bool1) {
               break label415;
             }
             try
             {
-              k = Integer.parseInt(paramString.group((k - 1) * 2));
-              m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
-              if ((!paramBoolean) || (k < m))
+              i3 = Integer.parseInt(paramString.group((i3 - 1) * 2));
+              i4 = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
+              if ((!paramBoolean) || (i3 < i4))
               {
                 bool1 = bool2;
                 if (!paramBoolean)
                 {
                   bool1 = bool2;
-                  if (k > m) {}
+                  if (i3 > i4) {}
                 }
               }
               else
@@ -323,38 +290,38 @@ public class DovSVParamManager
         else
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.contains("Adreno"))
+          if (this.a.contains("Adreno"))
           {
-            j = arrayOfString1.length;
-            i = 0;
+            i2 = arrayOfString1.length;
+            i1 = 0;
             bool1 = bool2;
-            if (i < j)
+            if (i1 < i2)
             {
-              arrayOfString2 = arrayOfString1[i].split("#");
+              arrayOfString2 = arrayOfString1[i1].split("#");
               paramString = "0";
-              Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(this.jdField_a_of_type_JavaLangString);
+              Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(this.a);
               if (localMatcher.find()) {
                 paramString = localMatcher.group(1);
               }
               if ((arrayOfString2.length != 2) || (!paramString.substring(0, 1).equals(arrayOfString2[0])))
               {
-                k = arrayOfString2.length;
-                if (k != 1) {
+                i3 = arrayOfString2.length;
+                if (i3 != 1) {
                   break label422;
                 }
               }
               try
               {
-                k = Integer.parseInt(paramString);
-                m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
-                if ((paramBoolean) && (k >= m)) {
+                i3 = Integer.parseInt(paramString);
+                i4 = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
+                if ((paramBoolean) && (i3 >= i4)) {
                   continue;
                 }
                 bool1 = bool2;
                 if (!paramBoolean)
                 {
                   bool1 = bool2;
-                  if (k <= m) {
+                  if (i3 <= i4) {
                     continue;
                   }
                 }
@@ -375,35 +342,35 @@ public class DovSVParamManager
         return;
       }
       label415:
-      i += 1;
+      i1 += 1;
       continue;
       label422:
-      i += 1;
+      i1 += 1;
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if ("white".equals(this.jdField_b_of_type_JavaLangString))
+    if ("white".equals(this.j))
     {
       if (paramBoolean)
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Boolean = false;
+        this.c = true;
+        this.b = false;
         return;
       }
-      this.jdField_b_of_type_Boolean = false;
+      this.c = false;
       return;
     }
-    if ("black".equals(this.jdField_b_of_type_JavaLangString))
+    if ("black".equals(this.j))
     {
       if (!paramBoolean)
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.b = false;
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = false;
+      this.b = true;
+      this.c = false;
     }
   }
   
@@ -415,17 +382,17 @@ public class DovSVParamManager
     paramString = paramString.split(";");
     for (;;)
     {
-      int i;
+      int i1;
       try
       {
-        int j = paramString.length;
+        int i2 = paramString.length;
         boolean bool2 = false;
-        i = 0;
+        i1 = 0;
         boolean bool1 = bool2;
-        if (i < j)
+        if (i1 < i2)
         {
-          CharSequence localCharSequence = paramString[i];
-          if (!this.jdField_a_of_type_JavaLangString.contains(localCharSequence)) {
+          CharSequence localCharSequence = paramString[i1];
+          if (!this.a.contains(localCharSequence)) {
             break label68;
           }
           bool1 = true;
@@ -439,7 +406,7 @@ public class DovSVParamManager
         return;
       }
       label68:
-      i += 1;
+      i1 += 1;
     }
   }
   
@@ -448,15 +415,15 @@ public class DovSVParamManager
     try
     {
       String[] arrayOfString = paramJSONObject.getString("verdor").split(";");
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+      int i2 = arrayOfString.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        String str = arrayOfString[i];
-        if (this.jdField_a_of_type_JavaLangString.contains(str)) {
+        String str = arrayOfString[i1];
+        if (this.a.contains(str)) {
           d(paramJSONObject.getJSONObject(str));
         }
-        i += 1;
+        i1 += 1;
       }
       return;
     }
@@ -471,15 +438,15 @@ public class DovSVParamManager
     try
     {
       String[] arrayOfString = paramJSONObject.getString("strategy").split(";");
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+      int i2 = arrayOfString.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        String str = arrayOfString[i];
+        String str = arrayOfString[i1];
         JSONObject localJSONObject = paramJSONObject.getJSONObject(str);
-        this.jdField_b_of_type_JavaLangString = str;
+        this.j = str;
         e(localJSONObject);
-        i += 1;
+        i1 += 1;
       }
       return;
     }
@@ -494,13 +461,13 @@ public class DovSVParamManager
     try
     {
       String[] arrayOfString = paramJSONObject.getString("rule").split(";");
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+      int i2 = arrayOfString.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        String str = arrayOfString[i];
+        String str = arrayOfString[i1];
         a(str, paramJSONObject.getString(str));
-        i += 1;
+        i1 += 1;
       }
       return;
     }
@@ -510,18 +477,44 @@ public class DovSVParamManager
     }
   }
   
+  private String f()
+  {
+    String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_gpu_config", 0).getString("cfg_content", "");
+    String str1;
+    if (TextUtils.isEmpty(str2))
+    {
+      str2 = FileUtils.readStringFromAsset("short_video_device_rule_config.xml");
+      str1 = str2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("DovSVParamManager", 2, "take local config");
+        return str2;
+      }
+    }
+    else
+    {
+      str1 = str2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("DovSVParamManager", 2, "take server config");
+        str1 = str2;
+      }
+    }
+    return str1;
+  }
+  
   private void f(JSONObject paramJSONObject)
   {
     try
     {
-      this.jdField_a_of_type_Float = Float.valueOf(paramJSONObject.getString("maxWeight")).floatValue();
+      this.g = Float.valueOf(paramJSONObject.getString("maxWeight")).floatValue();
       paramJSONObject = paramJSONObject.getJSONObject("renderListWeight");
       Iterator localIterator = paramJSONObject.keys();
       while (localIterator.hasNext())
       {
         String str1 = (String)localIterator.next();
         String str2 = paramJSONObject.getString(str1);
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(str1), Float.valueOf(str2));
+        this.h.put(Integer.valueOf(str1), Float.valueOf(str2));
       }
       return;
     }
@@ -539,17 +532,17 @@ public class DovSVParamManager
       paramJSONObject = paramJSONObject.getString("cpResolutionList").split(";");
       if (arrayOfString1.length == paramJSONObject.length)
       {
-        int i = 0;
-        while (i < arrayOfString1.length)
+        int i1 = 0;
+        while (i1 < arrayOfString1.length)
         {
-          String[] arrayOfString2 = arrayOfString1[i].split("\\*");
-          String[] arrayOfString3 = paramJSONObject[i].split("\\*");
+          String[] arrayOfString2 = arrayOfString1[i1].split("\\*");
+          String[] arrayOfString3 = paramJSONObject[i1].split("\\*");
           if ((arrayOfString2.length == 2) && (arrayOfString3.length == 2))
           {
-            this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(i), new Size(Integer.valueOf(arrayOfString2[0]).intValue(), Integer.valueOf(arrayOfString2[1]).intValue()));
-            this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(i), new Size(Integer.valueOf(arrayOfString3[0]).intValue(), Integer.valueOf(arrayOfString3[1]).intValue()));
+            this.k.put(Integer.valueOf(i1), new Size(Integer.valueOf(arrayOfString2[0]).intValue(), Integer.valueOf(arrayOfString2[1]).intValue()));
+            this.l.put(Integer.valueOf(i1), new Size(Integer.valueOf(arrayOfString3[0]).intValue(), Integer.valueOf(arrayOfString3[1]).intValue()));
           }
-          i += 1;
+          i1 += 1;
         }
       }
       return;
@@ -570,13 +563,13 @@ public class DovSVParamManager
       ((StringBuilder)localObject).append(Build.MODEL);
       localObject = ((StringBuilder)localObject).toString();
       JSONArray localJSONArray = paramJSONObject.getJSONArray("blackList");
-      int i = 0;
-      while (i < localJSONArray.length())
+      int i1 = 0;
+      while (i1 < localJSONArray.length())
       {
-        paramJSONObject = localJSONArray.getString(i);
+        paramJSONObject = localJSONArray.getString(i1);
         if (paramJSONObject.trim().equals(((String)localObject).trim()))
         {
-          this.d = true;
+          this.e = true;
           if (!QLog.isColorLevel()) {
             break;
           }
@@ -586,7 +579,7 @@ public class DovSVParamManager
           QLog.d("DovSVParamManager", 2, ((StringBuilder)localObject).toString());
           return;
         }
-        i += 1;
+        i1 += 1;
       }
       return;
     }
@@ -602,13 +595,13 @@ public class DovSVParamManager
     {
       Object localObject = DeviceInstance.getInstance().getDeviceName();
       JSONArray localJSONArray = paramJSONObject.getJSONArray("qijianList");
-      int i = 0;
-      while (i < localJSONArray.length())
+      int i1 = 0;
+      while (i1 < localJSONArray.length())
       {
-        paramJSONObject = localJSONArray.getString(i);
+        paramJSONObject = localJSONArray.getString(i1);
         if (paramJSONObject.trim().equals(((String)localObject).trim()))
         {
-          this.jdField_c_of_type_Boolean = true;
+          this.d = true;
           if (!QLog.isColorLevel()) {
             break;
           }
@@ -618,7 +611,7 @@ public class DovSVParamManager
           QLog.d("DovSVParamManager", 2, ((StringBuilder)localObject).toString());
           return;
         }
-        i += 1;
+        i1 += 1;
       }
       return;
     }
@@ -632,12 +625,12 @@ public class DovSVParamManager
   {
     try
     {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("faceDetectSwitch", 1);
+      this.m = paramJSONObject.optInt("faceDetectSwitch", 1);
       if (QLog.isColorLevel())
       {
         paramJSONObject = new StringBuilder();
         paramJSONObject.append("parseJSONFaceDetectSwitch mFaceDetectType:");
-        paramJSONObject.append(this.jdField_a_of_type_Int);
+        paramJSONObject.append(this.m);
         QLog.d("DovSVParamManager", 2, paramJSONObject.toString());
         return;
       }
@@ -646,16 +639,6 @@ public class DovSVParamManager
     {
       paramJSONObject.printStackTrace();
     }
-  }
-  
-  public float a(int paramInt)
-  {
-    return 1.0F;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4000;
   }
   
   public AECaptureParam a(Context paramContext, int paramInt)
@@ -673,10 +656,10 @@ public class DovSVParamManager
       paramContext.c(localSize2.a());
       paramContext.d(localSize2.b());
     }
-    paramContext.a(a(paramInt));
-    int i = a(paramInt) * 1000;
-    paramContext.e(i);
-    com.tencent.mobileqq.editor.composite.CodecParam.mMaxrate = i;
+    paramContext.a(c(paramInt));
+    int i1 = d(paramInt) * 1000;
+    paramContext.e(i1);
+    com.tencent.mobileqq.editor.composite.CodecParam.mMaxrate = i1;
     paramContext.f(1);
     paramContext.g(paramInt);
     if ((((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isCqBitrateModeSwitchOpen()) && (Build.VERSION.SDK_INT < 27)) {
@@ -688,26 +671,26 @@ public class DovSVParamManager
   public AECaptureParam a(AECameraConfig paramAECameraConfig)
   {
     AECaptureParam localAECaptureParam = new AECaptureParam();
-    localAECaptureParam.a(paramAECameraConfig.a().a());
-    localAECaptureParam.b(paramAECameraConfig.a().b());
-    localAECaptureParam.a(paramAECameraConfig.a().floatValue());
-    localAECaptureParam.e(paramAECameraConfig.a().intValue());
-    com.tencent.mobileqq.editor.composite.CodecParam.mMaxrate = paramAECameraConfig.a().intValue();
+    localAECaptureParam.a(paramAECameraConfig.n().a());
+    localAECaptureParam.b(paramAECameraConfig.n().b());
+    localAECaptureParam.a(paramAECameraConfig.l().floatValue());
+    localAECaptureParam.e(paramAECameraConfig.k().intValue());
+    com.tencent.mobileqq.editor.composite.CodecParam.mMaxrate = paramAECameraConfig.k().intValue();
     localAECaptureParam.f(1);
-    localAECaptureParam.g(paramAECameraConfig.g());
+    localAECaptureParam.g(paramAECameraConfig.s());
     return localAECaptureParam;
   }
   
   public Size a(int paramInt)
   {
-    if (this.d)
+    if (this.e)
     {
-      localObject = this.jdField_b_of_type_JavaUtilMap;
+      localObject = this.k;
       paramInt = 1;
     }
     else
     {
-      localObject = this.jdField_b_of_type_JavaUtilMap;
+      localObject = this.k;
       paramInt = 0;
     }
     Object localObject = (Size)((Map)localObject).get(Integer.valueOf(paramInt));
@@ -715,7 +698,7 @@ public class DovSVParamManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getCameraResolution inBlackPhone = ");
-      localStringBuilder.append(this.d);
+      localStringBuilder.append(this.e);
       localStringBuilder.append(" dpcSize=");
       localStringBuilder.append(localObject);
       QLog.d("DovSVParamManager", 2, localStringBuilder.toString());
@@ -723,20 +706,13 @@ public class DovSVParamManager
     return localObject;
   }
   
-  public Size a(Context paramContext)
-  {
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return new Size(localDisplayMetrics.heightPixels, localDisplayMetrics.widthPixels);
-  }
-  
   public CameraCaptureView.CaptureParam a(Context paramContext)
   {
     CameraCaptureView.CaptureParam localCaptureParam = new CameraCaptureView.CaptureParam();
-    int i = CameraHelper.a();
-    Size localSize1 = a(i);
-    Size localSize2 = b(i);
-    paramContext = a(paramContext);
+    int i1 = CameraHelper.a();
+    Size localSize1 = a(i1);
+    Size localSize2 = b(i1);
+    paramContext = b(paramContext);
     if (localSize1 != null)
     {
       localCaptureParam.a(localSize1.a());
@@ -752,23 +728,120 @@ public class DovSVParamManager
       localCaptureParam.e(paramContext.a());
       localCaptureParam.f(paramContext.b());
     }
-    localCaptureParam.a(a(i));
-    int j = a(i) * 1000;
-    localCaptureParam.h(j);
-    com.tencent.mobileqq.editor.composite.CodecParam.mMaxrate = j;
+    localCaptureParam.a(c(i1));
+    int i2 = d(i1) * 1000;
+    localCaptureParam.h(i2);
+    com.tencent.mobileqq.editor.composite.CodecParam.mMaxrate = i2;
     localCaptureParam.i(1);
-    localCaptureParam.g(i);
+    localCaptureParam.g(i1);
     if ((((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isCqBitrateModeSwitchOpen()) && (Build.VERSION.SDK_INT < 27)) {
       localCaptureParam.j(0);
     }
     return localCaptureParam;
   }
   
-  public void a()
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((!Build.MODEL.contains("Pixel")) && (!Build.MODEL.contains("Nexus")) && (Build.VERSION.SDK_INT < 24) && (Build.VERSION.SDK_INT >= 21))
+    {
+      if (TextUtils.isEmpty(this.a))
+      {
+        this.a = new OpenclInfoManager().b();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("GPUInfo:");
+        localStringBuilder.append(this.a);
+        QLog.d("DovSVParamManager", 1, localStringBuilder.toString());
+      }
+      if (TextUtils.isEmpty(this.a)) {
+        this.b = (a(4, 1200000L, 2573741824L, 17) ^ true);
+      }
+    }
+    else
+    {
+      this.b = (a(4, 1200000L, 2573741824L, 17) ^ true);
+    }
+    c(paramJSONObject);
+  }
+  
+  public boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
+  {
+    int i1 = DeviceInfoUtil.d();
+    StringBuilder localStringBuilder;
+    if (i1 < paramInt2)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice error OSversion: ");
+      localStringBuilder.append(i1);
+      AVLog.printColorLog("DovSVParamManager", localStringBuilder.toString());
+      return false;
+    }
+    paramInt2 = VcSystemInfo.getNumCores();
+    if (paramInt2 < paramInt1)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice error cpucount: ");
+      localStringBuilder.append(paramInt2);
+      AVLog.printColorLog("DovSVParamManager", localStringBuilder.toString());
+      return false;
+    }
+    long l1 = VcSystemInfo.getMaxCpuFreq();
+    if (l1 < paramLong1)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice error cpuFrequency: ");
+      localStringBuilder.append(l1);
+      AVLog.printColorLog("DovSVParamManager", localStringBuilder.toString());
+      return false;
+    }
+    paramLong1 = DeviceInfoUtil.a();
+    if (paramLong1 < paramLong2)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportOfDevice error memory: ");
+      localStringBuilder.append(paramLong1);
+      AVLog.printColorLog("DovSVParamManager", localStringBuilder.toString());
+      return false;
+    }
+    return true;
+  }
+  
+  public Size b(int paramInt)
+  {
+    if (this.e)
+    {
+      localObject = this.l;
+      paramInt = 1;
+    }
+    else
+    {
+      localObject = this.l;
+      paramInt = 0;
+    }
+    Object localObject = (Size)((Map)localObject).get(Integer.valueOf(paramInt));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDpcCompressResolution inBlackPhone = ");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append(" dpcCompressSize=");
+      localStringBuilder.append(localObject);
+      QLog.d("DovSVParamManager", 2, localStringBuilder.toString());
+    }
+    return localObject;
+  }
+  
+  public Size b(Context paramContext)
+  {
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+    return new Size(localDisplayMetrics.heightPixels, localDisplayMetrics.widthPixels);
+  }
+  
+  public void b()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(a());
+      JSONObject localJSONObject = new JSONObject(f());
       g(localJSONObject);
       f(localJSONObject);
       a(localJSONObject);
@@ -790,111 +863,16 @@ public class DovSVParamManager
     }
   }
   
-  public void a(JSONObject paramJSONObject)
-  {
-    if ((!Build.MODEL.contains("Pixel")) && (!Build.MODEL.contains("Nexus")) && (Build.VERSION.SDK_INT < 24) && (Build.VERSION.SDK_INT >= 21))
-    {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_JavaLangString = new OpenclInfoManager().a();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("GPUInfo:");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        QLog.d("DovSVParamManager", 1, localStringBuilder.toString());
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_Boolean = (a(4, 1200000L, 2573741824L, 17) ^ true);
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Boolean = (a(4, 1200000L, 2573741824L, 17) ^ true);
-    }
-    c(paramJSONObject);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
-  {
-    int i = DeviceInfoUtil.a();
-    StringBuilder localStringBuilder;
-    if (i < paramInt2)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isSupportOfDevice error OSversion: ");
-      localStringBuilder.append(i);
-      AVLog.printColorLog("DovSVParamManager", localStringBuilder.toString());
-      return false;
-    }
-    paramInt2 = VcSystemInfo.getNumCores();
-    if (paramInt2 < paramInt1)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isSupportOfDevice error cpucount: ");
-      localStringBuilder.append(paramInt2);
-      AVLog.printColorLog("DovSVParamManager", localStringBuilder.toString());
-      return false;
-    }
-    long l = VcSystemInfo.getMaxCpuFreq();
-    if (l < paramLong1)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isSupportOfDevice error cpuFrequency: ");
-      localStringBuilder.append(l);
-      AVLog.printColorLog("DovSVParamManager", localStringBuilder.toString());
-      return false;
-    }
-    paramLong1 = DeviceInfoUtil.a();
-    if (paramLong1 < paramLong2)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isSupportOfDevice error memory: ");
-      localStringBuilder.append(paramLong1);
-      AVLog.printColorLog("DovSVParamManager", localStringBuilder.toString());
-      return false;
-    }
-    return true;
-  }
-  
-  public Size b(int paramInt)
-  {
-    if (this.d)
-    {
-      localObject = this.jdField_c_of_type_JavaUtilMap;
-      paramInt = 1;
-    }
-    else
-    {
-      localObject = this.jdField_c_of_type_JavaUtilMap;
-      paramInt = 0;
-    }
-    Object localObject = (Size)((Map)localObject).get(Integer.valueOf(paramInt));
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getDpcCompressResolution inBlackPhone = ");
-      localStringBuilder.append(this.d);
-      localStringBuilder.append(" dpcCompressSize=");
-      localStringBuilder.append(localObject);
-      QLog.d("DovSVParamManager", 2, localStringBuilder.toString());
-    }
-    return localObject;
-  }
-  
   public void b(JSONObject paramJSONObject)
   {
     try
     {
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("samSungCameraSwitch", 1);
+      this.n = paramJSONObject.optInt("samSungCameraSwitch", 1);
       if (QLog.isColorLevel())
       {
         paramJSONObject = new StringBuilder();
         paramJSONObject.append("parseJsonSamSungSwitch parseJsonSamSungSwitch:");
-        paramJSONObject.append(this.jdField_b_of_type_Int);
+        paramJSONObject.append(this.n);
         QLog.d("DovSVParamManager", 2, paramJSONObject.toString());
       }
       return;
@@ -902,19 +880,34 @@ public class DovSVParamManager
     catch (Exception paramJSONObject) {}
   }
   
-  public boolean b()
+  public float c(int paramInt)
   {
-    return this.jdField_b_of_type_Int == 1;
+    return 1.0F;
   }
   
   public boolean c()
   {
     return this.d;
   }
+  
+  public int d(int paramInt)
+  {
+    return 4000;
+  }
+  
+  public boolean d()
+  {
+    return this.n == 1;
+  }
+  
+  public boolean e()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.util.DovSVParamManager
  * JD-Core Version:    0.7.0.1
  */

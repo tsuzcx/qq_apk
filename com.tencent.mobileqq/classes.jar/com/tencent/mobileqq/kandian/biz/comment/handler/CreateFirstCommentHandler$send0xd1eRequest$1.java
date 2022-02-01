@@ -13,8 +13,9 @@ public final class CreateFirstCommentHandler$send0xd1eRequest$1
   public boolean onError(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
   {
     this.a.a(paramInt, paramBundle);
+    CreateFirstCommentHandler.a(this.a, paramInt, paramString);
     paramBundle = this.a;
-    oidb_0xd1e.FirstCommentCreateRsp localFirstCommentCreateRsp = CreateFirstCommentHandler.a(paramBundle, null);
+    oidb_0xd1e.FirstCommentCreateRsp localFirstCommentCreateRsp = CreateFirstCommentHandler.b(paramBundle, null);
     if (paramString == null) {
       paramString = "Empty error message.";
     }
@@ -25,18 +26,19 @@ public final class CreateFirstCommentHandler$send0xd1eRequest$1
   public void onResult(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
     this.a.a(paramInt, paramBundle);
+    CreateFirstCommentHandler.a(this.a, paramInt, null);
     if ((paramInt == 0) && (paramArrayOfByte != null))
     {
       CreateFirstCommentHandler.a(this.a, paramArrayOfByte);
       return;
     }
     paramBundle = this.a;
-    paramBundle.a(CreateFirstCommentHandler.a(paramBundle, paramArrayOfByte), paramInt, "Empty error message.");
+    paramBundle.a(CreateFirstCommentHandler.b(paramBundle, paramArrayOfByte), paramInt, "Empty error message.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.handler.CreateFirstCommentHandler.send0xd1eRequest.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,34 +10,28 @@ import com.tencent.mobileqq.kandian.biz.video.playfeeds.api.IVideoUIDelegate;
 
 public class VideoPlayParam
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public View a;
   public ViewGroup a;
-  public IVideoPlayerWrapper a;
-  public AbsReadInJoyVideoReportData a;
-  public ReadinjoyAdVideoReportData a;
-  public IVideoUIDelegate a;
-  public VideoInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c;
+  public View b;
+  public VideoInfo c;
+  public int d = 0;
+  public AbsReadInJoyVideoReportData e;
+  public ReadinjoyAdVideoReportData f;
+  public Bundle g = new Bundle();
+  public IVideoPlayerWrapper h;
+  public boolean i;
+  public long j;
+  public int k;
+  public boolean l;
+  public String m;
+  public boolean n;
+  public IVideoUIDelegate o;
   
-  public VideoPlayParam()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
+  public boolean a(String paramString, boolean paramBoolean)
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean(paramString, paramBoolean);
-      return;
+      paramBoolean = this.g.getBoolean(paramString, paramBoolean);
+      return paramBoolean;
     }
     finally
     {
@@ -46,12 +40,12 @@ public class VideoPlayParam
     }
   }
   
-  public boolean a(String paramString, boolean paramBoolean)
+  public void b(String paramString, boolean paramBoolean)
   {
     try
     {
-      paramBoolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean(paramString, paramBoolean);
-      return paramBoolean;
+      this.g.putBoolean(paramString, paramBoolean);
+      return;
     }
     finally
     {
@@ -62,7 +56,7 @@ public class VideoPlayParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoPlayParam
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,21 @@ class ChatHistoryMediaBaseFragment$1
 {
   ChatHistoryMediaBaseFragment$1(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     paramView = new ArrayList();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView != null))
+    if ((this.b.t != null) && (this.b.s != null))
     {
-      List localList = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView.a();
+      List localList = this.b.s.o();
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (ChatMessage)localIterator.next();
         if (((ChatMessage)localObject).msgtype == -2005)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(((ChatMessage)localObject).uniseq, ((ChatMessage)localObject).frienduin, ((ChatMessage)localObject).istroop);
+          localObject = this.b.a.getFileManagerDataCenter().a(((ChatMessage)localObject).uniseq, ((ChatMessage)localObject).frienduin, ((ChatMessage)localObject).istroop);
           if (localObject != null) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(((FileManagerEntity)localObject).nSessionId);
+            this.b.a.getFileManagerEngine().c(((FileManagerEntity)localObject).nSessionId);
           }
         }
       }
@@ -42,14 +42,14 @@ class ChatHistoryMediaBaseFragment$1
     if (paramView.size() > 0) {
       ThreadManager.post(new ChatHistoryMediaBaseFragment.1.1(this, paramView), 8, null, true);
     }
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

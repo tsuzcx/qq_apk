@@ -6,29 +6,17 @@ import com.tencent.mobileqq.qassistant.audio.AudioNewController;
 public class CommandRecognizeState
   extends State
 {
-  private AudioNewController jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController;
-  private VoiceAssistantStateMachine jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine;
+  private VoiceAssistantStateMachine a;
+  private AudioNewController b;
   
   public CommandRecognizeState(VoiceAssistantStateMachine paramVoiceAssistantStateMachine)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine = paramVoiceAssistantStateMachine;
+    this.a = paramVoiceAssistantStateMachine;
   }
   
   public AudioNewController a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController;
-  }
-  
-  public String a()
-  {
-    return CommandRecognizeState.class.getSimpleName();
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController = new AudioNewController();
-    this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController.b(1);
+    return this.b;
   }
   
   public boolean a(Message paramMessage)
@@ -36,11 +24,11 @@ public class CommandRecognizeState
     if (paramMessage.what != 4) {
       return super.a(paramMessage);
     }
-    VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine;
+    VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.a;
     if (localVoiceAssistantStateMachine != null)
     {
-      localVoiceAssistantStateMachine.c(5);
-      this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.a(paramMessage);
+      localVoiceAssistantStateMachine.e(5);
+      this.a.a(paramMessage);
     }
     return true;
   }
@@ -48,17 +36,29 @@ public class CommandRecognizeState
   public void b()
   {
     super.b();
-    AudioNewController localAudioNewController = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController;
+    this.b = new AudioNewController();
+    this.b.b(1);
+  }
+  
+  public void c()
+  {
+    super.c();
+    AudioNewController localAudioNewController = this.b;
     if (localAudioNewController != null)
     {
       localAudioNewController.a();
-      this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController = null;
+      this.b = null;
     }
+  }
+  
+  public String d()
+  {
+    return CommandRecognizeState.class.getSimpleName();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.CommandRecognizeState
  * JD-Core Version:    0.7.0.1
  */

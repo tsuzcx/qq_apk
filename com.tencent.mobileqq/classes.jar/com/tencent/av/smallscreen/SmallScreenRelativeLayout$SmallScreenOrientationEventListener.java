@@ -6,7 +6,7 @@ import android.view.OrientationEventListener;
 class SmallScreenRelativeLayout$SmallScreenOrientationEventListener
   extends OrientationEventListener
 {
-  private int jdField_a_of_type_Int = -1;
+  private int b = -1;
   
   SmallScreenRelativeLayout$SmallScreenOrientationEventListener(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
   {
@@ -32,16 +32,16 @@ class SmallScreenRelativeLayout$SmallScreenOrientationEventListener
     else {
       paramInt = 0;
     }
-    if (paramInt != this.jdField_a_of_type_Int)
+    if (paramInt != this.b)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
+      this.b = paramInt;
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenRelativeLayout.SmallScreenOrientationEventListener
  * JD-Core Version:    0.7.0.1
  */

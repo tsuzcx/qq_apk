@@ -17,14 +17,14 @@ class DoodleColorAndModeView$ColorListAdapter$1
       bool = false;
     }
     localDoodleColorAndModeView.a(bool);
-    if (DoodleColorAndModeView.a(this.a.a) != null) {
-      DoodleColorAndModeView.a(this.a.a).a(paramPenMode);
+    if (DoodleColorAndModeView.c(this.a.a) != null) {
+      DoodleColorAndModeView.c(this.a.a).a(paramPenMode);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleColorAndModeView.ColorListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

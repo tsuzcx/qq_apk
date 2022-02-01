@@ -19,34 +19,34 @@ class HomeFeedListPageLoader$FeedIdPullSegment$1
   
   public void a(@NonNull GetStoryFeedIdListRequest paramGetStoryFeedIdListRequest, @Nullable GetStoryFeedIdListRequest.GetStoryFeedIdListResponse paramGetStoryFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
       return;
     }
     if ((!paramErrorMessage.isFail()) && (paramGetStoryFeedIdListResponse != null))
     {
-      HomeFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment);
-      HomeFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment).a(paramGetStoryFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetStoryFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetStoryFeedIdListResponse.jdField_a_of_type_Boolean);
-      ((FeedManager)SuperManager.a(11)).a(paramGetStoryFeedIdListResponse.jdField_a_of_type_JavaUtilList);
-      boolean bool = HomeFeedListPageLoader.FeedIdPullSegment.a(paramGetStoryFeedIdListResponse, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-      SLog.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramGetStoryFeedIdListResponse.b), Integer.valueOf(HomeFeedListPageLoader.FeedIdPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment)), Boolean.valueOf(bool) });
-      if ((!paramGetStoryFeedIdListResponse.jdField_a_of_type_Boolean) && (HomeFeedListPageLoader.FeedIdPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment) < 10) && ((!paramGetStoryFeedIdListResponse.b) || (bool)))
+      HomeFeedListPageLoader.FeedIdPullSegment.a(this.d);
+      HomeFeedListPageLoader.FeedIdPullSegment.b(this.d).a(paramGetStoryFeedIdListResponse.e, paramGetStoryFeedIdListResponse.b, paramGetStoryFeedIdListResponse.a);
+      ((FeedManager)SuperManager.a(11)).c(paramGetStoryFeedIdListResponse.e);
+      boolean bool = HomeFeedListPageLoader.FeedIdPullSegment.a(paramGetStoryFeedIdListResponse, this.b);
+      SLog.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramGetStoryFeedIdListResponse.f), Integer.valueOf(HomeFeedListPageLoader.FeedIdPullSegment.c(this.d)), Boolean.valueOf(bool) });
+      if ((!paramGetStoryFeedIdListResponse.a) && (HomeFeedListPageLoader.FeedIdPullSegment.c(this.d) < 10) && ((!paramGetStoryFeedIdListResponse.f) || (bool)))
       {
         SLog.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
-        paramGetStoryFeedIdListRequest.b = HomeFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment).a();
+        paramGetStoryFeedIdListRequest.f = HomeFeedListPageLoader.FeedIdPullSegment.b(this.d).c();
         CmdTaskManger.a().a(paramGetStoryFeedIdListRequest, this);
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
-        HomeFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment).c();
+      if (this.b.getAndSet(false)) {
+        HomeFeedListPageLoader.FeedIdPullSegment.b(this.d).d();
       }
-      paramGetStoryFeedIdListRequest = HomeFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-      HomeFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment, paramGetStoryFeedIdListRequest);
+      paramGetStoryFeedIdListRequest = HomeFeedListPageLoader.FeedIdPullSegment.b(this.d).a(this.c.intValue(), 5);
+      HomeFeedListPageLoader.FeedIdPullSegment.a(this.d, paramGetStoryFeedIdListRequest);
       return;
     }
     SLog.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-    HomeFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedListPageLoader$FeedIdPullSegment, paramErrorMessage);
+    HomeFeedListPageLoader.FeedIdPullSegment.a(this.d, paramErrorMessage);
   }
 }
 

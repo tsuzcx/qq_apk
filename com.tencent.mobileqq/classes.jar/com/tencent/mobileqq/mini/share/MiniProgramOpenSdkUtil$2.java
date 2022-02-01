@@ -21,7 +21,7 @@ final class MiniProgramOpenSdkUtil$2
       if ((localTimeOutInfo.progressDialog != null) && (this.val$outInfo.progressDialog.isShowing())) {
         this.val$outInfo.progressDialog.dismiss();
       }
-      QQToast.a(this.val$context, HardCodeUtil.a(2131692110), 0).b(this.val$context.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.val$context, HardCodeUtil.a(2131889091), 0).show(this.val$context.getResources().getDimensionPixelSize(2131299920));
       MiniProgramOpenSdkUtil.access$100(this.val$context);
       return;
     }
@@ -36,7 +36,7 @@ final class MiniProgramOpenSdkUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil.2
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public final class TroopTips0x857$QQGroupDigestMsgSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsgSummary
  * JD-Core Version:    0.7.0.1
  */

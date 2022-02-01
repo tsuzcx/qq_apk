@@ -13,7 +13,7 @@ class BaseChatPie$30
   {
     try
     {
-      Settings.System.putInt(this.this$0.a.getApp().getContentResolver(), "listview_oversroll", this.a);
+      Settings.System.putInt(this.this$0.d.getApp().getContentResolver(), "listview_oversroll", this.a);
       return;
     }
     catch (SecurityException localSecurityException)
@@ -24,7 +24,7 @@ class BaseChatPie$30
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.30
  * JD-Core Version:    0.7.0.1
  */

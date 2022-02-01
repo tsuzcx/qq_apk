@@ -15,13 +15,13 @@ class RewardNoticeActivity$1
     }
     paramMessage = new RewardNoticeActivity.1.1(this);
     RewardNoticeActivity localRewardNoticeActivity = this.a;
-    localRewardNoticeActivity.a(localRewardNoticeActivity.a, paramMessage, 4.0F, 500L, 4);
+    localRewardNoticeActivity.a(localRewardNoticeActivity.c, paramMessage, 4.0F, 500L, 4);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RewardNoticeActivity.1
  * JD-Core Version:    0.7.0.1
  */

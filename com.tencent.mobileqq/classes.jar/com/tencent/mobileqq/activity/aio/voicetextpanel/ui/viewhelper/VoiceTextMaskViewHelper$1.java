@@ -13,15 +13,15 @@ class VoiceTextMaskViewHelper$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (VoiceTextMaskViewHelper.a(this.a).a() != null) {
-      VoiceTextMaskViewHelper.a(this.a).a().a(paramMotionEvent);
+    if (VoiceTextMaskViewHelper.a(this.a).getVoiceTextUserOpListener() != null) {
+      VoiceTextMaskViewHelper.a(this.a).getVoiceTextUserOpListener().a(paramMotionEvent);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextMaskViewHelper.1
  * JD-Core Version:    0.7.0.1
  */

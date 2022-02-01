@@ -9,15 +9,15 @@ import java.util.ArrayList;
 public class PerLineBackgoundDrawer
   extends BaseBackgroundDrawer
 {
-  private final int a;
+  private final int b;
   
   public PerLineBackgoundDrawer(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_Int = paramInt2;
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.a.setColor(paramInt1);
+    this.b = paramInt2;
   }
   
   public void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2)
@@ -28,12 +28,12 @@ public class PerLineBackgoundDrawer
         return;
       }
       float f1 = paramRectF.left;
-      float f2 = this.jdField_a_of_type_Int;
+      float f2 = this.b;
       float f3 = paramInt1;
       float f4 = paramRectF.top;
-      float f5 = this.jdField_a_of_type_Int;
+      float f5 = this.b;
       float f6 = paramInt2;
-      paramCanvas.drawRect(f1 - f2 + f3, f4 - f5 + f6, paramRectF.right + this.jdField_a_of_type_Int + f3, paramRectF.bottom + this.jdField_a_of_type_Int + f6, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(f1 - f2 + f3, f4 - f5 + f6, paramRectF.right + this.b + f3, paramRectF.bottom + this.b + f6, this.a);
     }
   }
   
@@ -41,7 +41,7 @@ public class PerLineBackgoundDrawer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.PerLineBackgoundDrawer
  * JD-Core Version:    0.7.0.1
  */

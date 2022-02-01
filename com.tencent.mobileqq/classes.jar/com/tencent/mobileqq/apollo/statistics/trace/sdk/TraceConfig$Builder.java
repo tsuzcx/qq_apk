@@ -10,40 +10,40 @@ import com.tencent.mobileqq.apollo.statistics.trace.sdk.component.ITraceStorage;
 
 public class TraceConfig$Builder
 {
-  int jdField_a_of_type_Int;
-  private ITraceMapping jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceMapping;
-  private ITraceNetwork jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceNetwork;
-  private ITraceStorage jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceStorage;
-  String jdField_a_of_type_JavaLangString;
-  int b = 30000;
+  int a;
+  String b;
+  int c = 30000;
+  private ITraceStorage d;
+  private ITraceNetwork e;
+  private ITraceMapping f;
   
   public Builder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public TraceConfig a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceStorage == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceStorage = new DefaultTraceStorage();
+    if (this.d == null) {
+      this.d = new DefaultTraceStorage();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceNetwork == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceNetwork = new DefaultTraceNetwork();
+    if (this.e == null) {
+      this.e = new DefaultTraceNetwork();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceMapping == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceMapping = new TraceMappingIml();
+    if (this.f == null) {
+      this.f = new TraceMappingIml();
     }
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.a != 0)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        return new TraceConfig(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceStorage, this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceNetwork, this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkComponentITraceMapping, null);
+      if (!TextUtils.isEmpty(this.b)) {
+        return new TraceConfig(this.a, this.b, this.c, this.d, this.e, this.f, null);
       }
       throw new IllegalArgumentException("current account uid is required.");
     }
@@ -52,7 +52,7 @@ public class TraceConfig$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

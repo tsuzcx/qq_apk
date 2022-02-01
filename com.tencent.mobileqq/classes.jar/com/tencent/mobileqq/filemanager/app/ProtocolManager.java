@@ -40,12 +40,12 @@ import tencent.im.cs.cmd0x346.cmd0x346.UploadSuccRsp;
 public class ProtocolManager
   implements ProtoReqManagerImpl.IProtoRespBack
 {
-  private static int jdField_a_of_type_Int;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+  private static int b;
+  private BaseQQAppInterface a;
   
   public ProtocolManager(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
+    this.a = paramBaseQQAppInterface;
   }
   
   private void a(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -184,7 +184,7 @@ public class ProtocolManager
     localProtoReq.tryCount = paramInt2;
     localProtoReq.fixScheduleCount = paramInt3;
     localProtoReq.callback = this;
-    ((IProtoReqManager)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IProtoReqManager.class, "")).sendProtoReq(localProtoReq);
+    ((IProtoReqManager)this.a.getRuntimeService(IProtoReqManager.class, "")).sendProtoReq(localProtoReq);
   }
   
   private void b(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -501,23 +501,23 @@ public class ProtocolManager
   {
     cmd0x345.ReqBody.SubCmd0x6ReqBody localSubCmd0x6ReqBody = new cmd0x345.ReqBody.SubCmd0x6ReqBody();
     localSubCmd0x6ReqBody.uint32_dst_bus_id.set(paramInt2);
-    localSubCmd0x6ReqBody.uint64_file_size.set(paramProtocolFileInfo.jdField_a_of_type_Long);
-    localSubCmd0x6ReqBody.bytes_uuid.set(ByteStringMicro.copyFrom(paramProtocolFileInfo.b.getBytes()));
-    if (!TextUtils.isEmpty(paramProtocolFileInfo.c)) {
-      localSubCmd0x6ReqBody.bytes_file_md5.set(ByteStringMicro.copyFrom(paramProtocolFileInfo.c.getBytes()));
+    localSubCmd0x6ReqBody.uint64_file_size.set(paramProtocolFileInfo.b);
+    localSubCmd0x6ReqBody.bytes_uuid.set(ByteStringMicro.copyFrom(paramProtocolFileInfo.c.getBytes()));
+    if (!TextUtils.isEmpty(paramProtocolFileInfo.d)) {
+      localSubCmd0x6ReqBody.bytes_file_md5.set(ByteStringMicro.copyFrom(paramProtocolFileInfo.d.getBytes()));
     }
     localSubCmd0x6ReqBody.uint64_src_uin.set(Long.parseLong(paramString2));
     paramString2 = paramString1.replace("+", "");
     localSubCmd0x6ReqBody.uint64_dst_uin.set(Long.parseLong(paramString2));
-    localSubCmd0x6ReqBody.str_file_name.set(paramProtocolFileInfo.jdField_a_of_type_JavaLangString);
-    localSubCmd0x6ReqBody.str_src_file_path.set(paramProtocolFileInfo.b);
+    localSubCmd0x6ReqBody.str_file_name.set(paramProtocolFileInfo.a);
+    localSubCmd0x6ReqBody.str_src_file_path.set(paramProtocolFileInfo.c);
     localSubCmd0x6ReqBody.str_src_parent_folder.set("/");
     localSubCmd0x6ReqBody.uint32_client_type.set(104);
     if ((paramInt1 != 1) && (paramInt1 != 0))
     {
       localSubCmd0x6ReqBody.uint64_app_id.set(3L);
       localSubCmd0x6ReqBody.uint64_talk_type.set(paramInt1);
-      paramString1 = QQFileManagerUtil.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramString1, paramInt1);
+      paramString1 = QQFileManagerUtil.a(this.a, paramString1, paramInt1);
       if (paramString1 != null) {
         localSubCmd0x6ReqBody.bytes_sig.set(ByteStringMicro.copyFrom(paramString1));
       }
@@ -541,7 +541,7 @@ public class ProtocolManager
   public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, ProtocolFileCallback.OnForwardOfflineResult paramOnForwardOfflineResult)
   {
     cmd0x346.ApplyForwardFileReq localApplyForwardFileReq = new cmd0x346.ApplyForwardFileReq();
-    localApplyForwardFileReq.uint64_sender_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin()));
+    localApplyForwardFileReq.uint64_sender_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     paramString1 = paramString1.replace("+", "");
     localApplyForwardFileReq.uint64_recver_uin.set(Long.parseLong(paramString1));
     localApplyForwardFileReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
@@ -549,8 +549,8 @@ public class ProtocolManager
     paramString2.msg_apply_forward_file_req.set(localApplyForwardFileReq);
     paramString2.uint32_cmd.set(700);
     Object localObject = paramString2.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
+    int i = b;
+    b = i + 1;
     ((PBUInt32Field)localObject).set(i);
     paramString2.uint32_business_id.set(3);
     paramString2.uint32_client_type.set(104);
@@ -559,7 +559,7 @@ public class ProtocolManager
       localObject = new cmd0x346.ExtensionReq();
       ((cmd0x346.ExtensionReq)localObject).uint64_id.set(3L);
       ((cmd0x346.ExtensionReq)localObject).uint64_type.set(paramInt1);
-      byte[] arrayOfByte = QQFileManagerUtil.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramString1, paramInt1);
+      byte[] arrayOfByte = QQFileManagerUtil.a(this.a, paramString1, paramInt1);
       if (arrayOfByte != null) {
         ((cmd0x346.ExtensionReq)localObject).bytes_sig.set(ByteStringMicro.copyFrom(arrayOfByte));
       }
@@ -573,7 +573,7 @@ public class ProtocolManager
         QLog.i("ProtocolManager", 2, ((StringBuilder)localObject).toString());
       }
     }
-    if ((!((IQFileConfigManager)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).isMediaPlatformEnabled()) && (!QQFileAssistantUtils.a(paramString1)))
+    if ((!((IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "")).isMediaPlatformEnabled()) && (!QQFileAssistantUtils.a(paramString1)))
     {
       QLog.d("ProtocolManager", 1, "forwardOfflineFileToBuddy: UseMediaPlatform not enabled");
     }
@@ -597,7 +597,7 @@ public class ProtocolManager
   public void a(String paramString1, String paramString2, ProtocolFileInfo paramProtocolFileInfo, int paramInt1, int paramInt2, int paramInt3, ProtocolFileCallback.OnForwardOfflineResult paramOnForwardOfflineResult)
   {
     cmd0x346.ApplyCopyToReq localApplyCopyToReq = new cmd0x346.ApplyCopyToReq();
-    String str = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount().replace("+", "");
+    String str = this.a.getAccount().replace("+", "");
     localApplyCopyToReq.uint64_dst_id.set(Long.parseLong(str));
     if ((paramInt1 == 106) || (paramInt1 == 102) || (paramInt1 == 104))
     {
@@ -606,15 +606,15 @@ public class ProtocolManager
     }
     localApplyCopyToReq.uint32_dst_svcid.set(paramInt1);
     localApplyCopyToReq.uint64_src_uin.set(Long.parseLong(str));
-    localApplyCopyToReq.uint64_file_size.set(paramProtocolFileInfo.jdField_a_of_type_Long);
-    localApplyCopyToReq.str_file_name.set(paramProtocolFileInfo.jdField_a_of_type_JavaLangString);
+    localApplyCopyToReq.uint64_file_size.set(paramProtocolFileInfo.b);
+    localApplyCopyToReq.str_file_name.set(paramProtocolFileInfo.a);
     localApplyCopyToReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
     paramString1 = new cmd0x346.ReqBody();
     paramString1.msg_apply_copy_to_req.set(localApplyCopyToReq);
     paramString1.uint32_cmd.set(60100);
     paramString2 = paramString1.uint32_seq;
-    paramInt1 = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = paramInt1 + 1;
+    paramInt1 = b;
+    b = paramInt1 + 1;
     paramString2.set(paramInt1);
     paramString1.uint32_business_id.set(3);
     paramString1.uint32_client_type.set(104);
@@ -628,13 +628,13 @@ public class ProtocolManager
     cmd0x345.ReqBody.SubCmd0x5ReqBody localSubCmd0x5ReqBody = new cmd0x345.ReqBody.SubCmd0x5ReqBody();
     localSubCmd0x5ReqBody.uint32_src_bus_id.set(106);
     localSubCmd0x5ReqBody.bytes_src_parent_folder.set(ByteStringMicro.copyFrom("/".getBytes()));
-    localSubCmd0x5ReqBody.bytes_src_file_path.set(ByteStringMicro.copyFrom(paramProtocolFileInfo.b.getBytes()));
+    localSubCmd0x5ReqBody.bytes_src_file_path.set(ByteStringMicro.copyFrom(paramProtocolFileInfo.c.getBytes()));
     localSubCmd0x5ReqBody.uint32_dst_uin.set(Integer.parseInt(paramString1));
-    localSubCmd0x5ReqBody.uint64_file_size.set(paramProtocolFileInfo.jdField_a_of_type_Long);
+    localSubCmd0x5ReqBody.uint64_file_size.set(paramProtocolFileInfo.b);
     localSubCmd0x5ReqBody.uint32_from_uin.set(Integer.parseInt(paramString2));
-    localSubCmd0x5ReqBody.str_file_name.set(paramProtocolFileInfo.jdField_a_of_type_JavaLangString);
-    if ((paramProtocolFileInfo.c != null) && (paramProtocolFileInfo.c.length() > 0)) {
-      localSubCmd0x5ReqBody.bytes_md5.set(ByteStringMicro.copyFrom(paramProtocolFileInfo.c.getBytes()));
+    localSubCmd0x5ReqBody.str_file_name.set(paramProtocolFileInfo.a);
+    if ((paramProtocolFileInfo.d != null) && (paramProtocolFileInfo.d.length() > 0)) {
+      localSubCmd0x5ReqBody.bytes_md5.set(ByteStringMicro.copyFrom(paramProtocolFileInfo.d.getBytes()));
     }
     paramString1 = new cmd0x345.ReqBody();
     paramString1.msg_subcmd_0x5_req_body.set(localSubCmd0x5ReqBody);
@@ -646,14 +646,14 @@ public class ProtocolManager
   
   public void a(String paramString1, String paramString2, String paramString3, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, ProtocolFileCallback.OnSendLocalFileToBuddy paramOnSendLocalFileToBuddy)
   {
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin());
+    long l = Long.parseLong(this.a.getCurrentAccountUin());
     cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
     localReqBody.uint32_cmd.set(1700);
     localReqBody.uint32_business_id.set(3);
     localReqBody.uint32_client_type.set(104);
     Object localObject = localReqBody.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
+    int i = b;
+    b = i + 1;
     ((PBUInt32Field)localObject).set(i);
     localObject = new cmd0x346.ApplyUploadReqV3();
     ((cmd0x346.ApplyUploadReqV3)localObject).uint64_sender_uin.set(l);
@@ -674,7 +674,7 @@ public class ProtocolManager
   public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ProtocolFileCallback.SetSendBuddyFileSuccessResult paramSetSendBuddyFileSuccessResult)
   {
     cmd0x346.UploadSuccReq localUploadSuccReq = new cmd0x346.UploadSuccReq();
-    localUploadSuccReq.uint64_sender_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin()));
+    localUploadSuccReq.uint64_sender_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     paramString = paramString.replace("+", "");
     localUploadSuccReq.uint64_recver_uin.set(Long.parseLong(paramString));
     localUploadSuccReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramArrayOfByte));
@@ -682,8 +682,8 @@ public class ProtocolManager
     paramArrayOfByte.msg_upload_succ_req.set(localUploadSuccReq);
     paramArrayOfByte.uint32_cmd.set(800);
     paramString = paramArrayOfByte.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
+    int i = b;
+    b = i + 1;
     paramString.set(i);
     paramArrayOfByte.uint32_business_id.set(3);
     paramArrayOfByte.uint32_client_type.set(104);
@@ -708,7 +708,7 @@ public class ProtocolManager
     else if ("GTalkFileAppSvr.CMD_DISCUSS_FILE".equals(paramProtoReq.ssoCmd))
     {
       ProtocolManager.CustomData localCustomData = (ProtocolManager.CustomData)paramProtoReq.busiData;
-      int i = localCustomData.a();
+      int i = localCustomData.b();
       if (i == 6)
       {
         c(paramProtoReq, paramProtoResp);
@@ -721,7 +721,7 @@ public class ProtocolManager
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("unspourt:");
-        localStringBuilder.append(localCustomData.a());
+        localStringBuilder.append(localCustomData.b());
         QLog.w("ProtocolManager", 1, localStringBuilder.toString());
       }
     }
@@ -736,7 +736,7 @@ public class ProtocolManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.ProtocolManager
  * JD-Core Version:    0.7.0.1
  */

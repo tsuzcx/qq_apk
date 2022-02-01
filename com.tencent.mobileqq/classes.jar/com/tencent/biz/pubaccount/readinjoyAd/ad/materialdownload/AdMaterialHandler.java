@@ -21,12 +21,12 @@ public class AdMaterialHandler
   extends BusinessHandler
 {
   public static long a = 1800L;
-  private QQAppInterface a;
+  private QQAppInterface b;
   
   public AdMaterialHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   public void a()
@@ -34,15 +34,15 @@ public class AdMaterialHandler
     oidb_0x6cf.ReqBody localReqBody = new oidb_0x6cf.ReqBody();
     oidb_0x6cf.ReqAdvertisePara localReqAdvertisePara = new oidb_0x6cf.ReqAdvertisePara();
     Object localObject = new oidb_0x885.AdReqInfo();
-    QQAppInterface localQQAppInterface = this.a;
+    QQAppInterface localQQAppInterface = this.b;
     if ((localQQAppInterface != null) && (localQQAppInterface.getLongAccountUin() != 0L))
     {
-      localReqBody.uint64_uin.set(this.a.getLongAccountUin());
+      localReqBody.uint64_uin.set(this.b.getLongAccountUin());
       try
       {
         ((oidb_0x885.AdReqInfo)localObject).int32_req_type.set(3);
         localReqAdvertisePara.msg_ad_req_info.set((MessageMicro)localObject);
-        localReqAdvertisePara.msg_phone_info.set(AdDeviceInfoUtil.a());
+        localReqAdvertisePara.msg_phone_info.set(AdDeviceInfoUtil.g());
         localReqBody.req_advertise_para.set(localReqAdvertisePara);
       }
       catch (Exception localException)
@@ -55,7 +55,7 @@ public class AdMaterialHandler
           QLog.d("AdMaterialHandler", 2, ((StringBuilder)localObject).toString());
         }
       }
-      ProtoUtils.a(this.a, new AdMaterialHandler.1(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
+      ProtoUtils.a(this.b, new AdMaterialHandler.1(this), localReqBody.toByteArray(), "OidbSvc.0x6cf", 1743, 0, new Bundle(), 6000L);
     }
   }
   
@@ -68,7 +68,7 @@ public class AdMaterialHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialHandler
  * JD-Core Version:    0.7.0.1
  */

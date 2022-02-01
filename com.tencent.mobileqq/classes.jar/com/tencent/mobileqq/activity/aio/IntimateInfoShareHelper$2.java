@@ -17,8 +17,8 @@ class IntimateInfoShareHelper$2
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int j = ((ShareActionSheetBuilder.ActionSheetItem)IntimateInfoShareHelper.a(this.a)[0].get(paramInt)).action;
-    IntimateInfoShareHelper.a(this.a).dismiss();
+    int j = ((ShareActionSheetBuilder.ActionSheetItem)IntimateInfoShareHelper.d(this.a)[0].get(paramInt)).action;
+    IntimateInfoShareHelper.c(this.a).dismiss();
     int i;
     if (j != 0)
     {
@@ -68,13 +68,13 @@ class IntimateInfoShareHelper$2
       QLog.i("IntimateInfoShareHelper", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.a;
-    ((IntimateInfoShareHelper)localObject).a(j, IntimateInfoShareHelper.a((IntimateInfoShareHelper)localObject));
+    ((IntimateInfoShareHelper)localObject).a(j, IntimateInfoShareHelper.b((IntimateInfoShareHelper)localObject));
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper.2
  * JD-Core Version:    0.7.0.1
  */

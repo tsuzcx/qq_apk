@@ -17,12 +17,12 @@ final class ForwardUtils$5
   
   public void run()
   {
-    String str = FileManagerUtil.a(this.jdField_a_of_type_JavaLangString);
+    String str = FileManagerUtil.a(this.a);
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("---forwardToNewDataLine--- forwardID:");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(this.b);
     QLog.i("Dataline_FileAssistant", 1, ((StringBuilder)localObject1).toString());
-    if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString))
+    if (FileUtils.fileExistsAndNotEmpty(this.a))
     {
       Object localObject2 = FileUtil.a(str);
       localObject1 = localObject2;
@@ -34,15 +34,15 @@ final class ForwardUtils$5
       ((StringBuilder)localObject2).append(str);
       ((StringBuilder)localObject2).append((String)localObject1);
       localObject1 = ((StringBuilder)localObject2).toString();
-      FileUtils.copyFile(this.jdField_a_of_type_JavaLangString, (String)localObject1);
+      FileUtils.copyFile(this.a, (String)localObject1);
       QLog.i("Dataline_FileAssistant", 1, "---forwardToNewDataLine--- sendLocalFile");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a((String)localObject1, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_b_of_type_Int, true, 0L, this.jdField_a_of_type_Int);
+      this.c.getFileManagerEngine().a((String)localObject1, this.d, this.e, this.f, true, 0L, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.5
  * JD-Core Version:    0.7.0.1
  */

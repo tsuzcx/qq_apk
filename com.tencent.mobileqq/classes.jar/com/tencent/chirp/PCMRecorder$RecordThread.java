@@ -45,46 +45,46 @@ class PCMRecorder$RecordThread
     //   61: astore_3
     //   62: aload_0
     //   63: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   66: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lcom/tencent/chirp/PCMRecorder$OnQQRecorderListener;
+    //   66: invokestatic 57	com/tencent/chirp/PCMRecorder:b	(Lcom/tencent/chirp/PCMRecorder;)Lcom/tencent/chirp/PCMRecorder$OnQQRecorderListener;
     //   69: iconst_m1
-    //   70: invokeinterface 61 2 0
+    //   70: invokeinterface 62 2 0
     //   75: aload_0
     //   76: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   79: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
+    //   79: invokestatic 66	com/tencent/chirp/PCMRecorder:c	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   82: iconst_0
-    //   83: invokestatic 69	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
+    //   83: invokestatic 71	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
     //   86: pop
     //   87: aload 4
-    //   89: invokevirtual 72	android/media/AudioRecord:release	()V
+    //   89: invokevirtual 74	android/media/AudioRecord:release	()V
     //   92: aload_0
     //   93: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   96: aconst_null
-    //   97: invokestatic 75	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;Lcom/tencent/chirp/PCMRecorder$RecordThread;)Lcom/tencent/chirp/PCMRecorder$RecordThread;
+    //   97: invokestatic 77	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;Lcom/tencent/chirp/PCMRecorder$RecordThread;)Lcom/tencent/chirp/PCMRecorder$RecordThread;
     //   100: pop
     //   101: invokestatic 27	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   104: ifeq +11 -> 115
     //   107: ldc 29
     //   109: iconst_2
-    //   110: ldc 77
+    //   110: ldc 79
     //   112: invokestatic 35	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   115: return
     //   116: aload 4
     //   118: astore_3
     //   119: aload_0
     //   120: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   123: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
+    //   123: invokestatic 66	com/tencent/chirp/PCMRecorder:c	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   126: iconst_1
-    //   127: invokestatic 69	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
+    //   127: invokestatic 71	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
     //   130: pop
     //   131: aload 4
     //   133: astore_3
     //   134: aload 4
-    //   136: invokevirtual 80	android/media/AudioRecord:startRecording	()V
+    //   136: invokevirtual 82	android/media/AudioRecord:startRecording	()V
     //   139: aload 4
     //   141: astore_3
     //   142: aload_0
     //   143: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   146: invokestatic 83	com/tencent/chirp/PCMRecorder:b	(Lcom/tencent/chirp/PCMRecorder;)I
+    //   146: invokestatic 84	com/tencent/chirp/PCMRecorder:d	(Lcom/tencent/chirp/PCMRecorder;)I
     //   149: newarray byte
     //   151: astore 5
     //   153: goto +276 -> 429
@@ -101,10 +101,10 @@ class PCMRecorder$RecordThread
     //   174: iload_1
     //   175: aload_0
     //   176: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   179: invokestatic 83	com/tencent/chirp/PCMRecorder:b	(Lcom/tencent/chirp/PCMRecorder;)I
+    //   179: invokestatic 84	com/tencent/chirp/PCMRecorder:d	(Lcom/tencent/chirp/PCMRecorder;)I
     //   182: iload_1
     //   183: isub
-    //   184: invokevirtual 87	android/media/AudioRecord:read	([BII)I
+    //   184: invokevirtual 88	android/media/AudioRecord:read	([BII)I
     //   187: iadd
     //   188: istore_2
     //   189: iload_2
@@ -114,28 +114,28 @@ class PCMRecorder$RecordThread
     //   194: iload_2
     //   195: aload_0
     //   196: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   199: invokestatic 83	com/tencent/chirp/PCMRecorder:b	(Lcom/tencent/chirp/PCMRecorder;)I
+    //   199: invokestatic 84	com/tencent/chirp/PCMRecorder:d	(Lcom/tencent/chirp/PCMRecorder;)I
     //   202: if_icmpne -46 -> 156
     //   205: aload 4
     //   207: astore_3
     //   208: aload_0
     //   209: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   212: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lcom/tencent/chirp/PCMRecorder$OnQQRecorderListener;
+    //   212: invokestatic 57	com/tencent/chirp/PCMRecorder:b	(Lcom/tencent/chirp/PCMRecorder;)Lcom/tencent/chirp/PCMRecorder$OnQQRecorderListener;
     //   215: aload 5
-    //   217: invokeinterface 90 2 0
+    //   217: invokeinterface 91 2 0
     //   222: goto +207 -> 429
     //   225: aload_0
     //   226: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   229: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
+    //   229: invokestatic 66	com/tencent/chirp/PCMRecorder:c	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   232: iconst_0
-    //   233: invokestatic 69	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
+    //   233: invokestatic 71	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
     //   236: pop
     //   237: aload 4
-    //   239: invokevirtual 72	android/media/AudioRecord:release	()V
+    //   239: invokevirtual 74	android/media/AudioRecord:release	()V
     //   242: aload_0
     //   243: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   246: aconst_null
-    //   247: invokestatic 75	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;Lcom/tencent/chirp/PCMRecorder$RecordThread;)Lcom/tencent/chirp/PCMRecorder$RecordThread;
+    //   247: invokestatic 77	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;Lcom/tencent/chirp/PCMRecorder$RecordThread;)Lcom/tencent/chirp/PCMRecorder$RecordThread;
     //   250: pop
     //   251: invokestatic 27	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   254: ifeq +120 -> 374
@@ -157,65 +157,65 @@ class PCMRecorder$RecordThread
     //   288: astore_3
     //   289: ldc 29
     //   291: iconst_2
-    //   292: ldc 92
+    //   292: ldc 93
     //   294: aload 5
-    //   296: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   296: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   299: aload 4
     //   301: astore_3
     //   302: aload_0
     //   303: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   306: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lcom/tencent/chirp/PCMRecorder$OnQQRecorderListener;
+    //   306: invokestatic 57	com/tencent/chirp/PCMRecorder:b	(Lcom/tencent/chirp/PCMRecorder;)Lcom/tencent/chirp/PCMRecorder$OnQQRecorderListener;
     //   309: ifnull +20 -> 329
     //   312: aload 4
     //   314: astore_3
     //   315: aload_0
     //   316: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   319: invokestatic 56	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Lcom/tencent/chirp/PCMRecorder$OnQQRecorderListener;
+    //   319: invokestatic 57	com/tencent/chirp/PCMRecorder:b	(Lcom/tencent/chirp/PCMRecorder;)Lcom/tencent/chirp/PCMRecorder$OnQQRecorderListener;
     //   322: bipush 254
-    //   324: invokeinterface 61 2 0
+    //   324: invokeinterface 62 2 0
     //   329: aload_0
     //   330: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   333: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
+    //   333: invokestatic 66	com/tencent/chirp/PCMRecorder:c	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   336: iconst_0
-    //   337: invokestatic 69	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
+    //   337: invokestatic 71	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
     //   340: pop
     //   341: aload 4
     //   343: ifnull +8 -> 351
     //   346: aload 4
-    //   348: invokevirtual 72	android/media/AudioRecord:release	()V
+    //   348: invokevirtual 74	android/media/AudioRecord:release	()V
     //   351: aload_0
     //   352: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   355: aconst_null
-    //   356: invokestatic 75	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;Lcom/tencent/chirp/PCMRecorder$RecordThread;)Lcom/tencent/chirp/PCMRecorder$RecordThread;
+    //   356: invokestatic 77	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;Lcom/tencent/chirp/PCMRecorder$RecordThread;)Lcom/tencent/chirp/PCMRecorder$RecordThread;
     //   359: pop
     //   360: invokestatic 27	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   363: ifeq +11 -> 374
     //   366: ldc 29
     //   368: iconst_2
-    //   369: ldc 77
+    //   369: ldc 79
     //   371: invokestatic 35	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   374: return
     //   375: astore 4
     //   377: aload_0
     //   378: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
-    //   381: invokestatic 64	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
+    //   381: invokestatic 66	com/tencent/chirp/PCMRecorder:c	(Lcom/tencent/chirp/PCMRecorder;)Landroid/content/Context;
     //   384: iconst_0
-    //   385: invokestatic 69	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
+    //   385: invokestatic 71	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Landroid/content/Context;Z)Z
     //   388: pop
     //   389: aload_3
     //   390: ifnull +7 -> 397
     //   393: aload_3
-    //   394: invokevirtual 72	android/media/AudioRecord:release	()V
+    //   394: invokevirtual 74	android/media/AudioRecord:release	()V
     //   397: aload_0
     //   398: getfield 12	com/tencent/chirp/PCMRecorder$RecordThread:this$0	Lcom/tencent/chirp/PCMRecorder;
     //   401: aconst_null
-    //   402: invokestatic 75	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;Lcom/tencent/chirp/PCMRecorder$RecordThread;)Lcom/tencent/chirp/PCMRecorder$RecordThread;
+    //   402: invokestatic 77	com/tencent/chirp/PCMRecorder:a	(Lcom/tencent/chirp/PCMRecorder;Lcom/tencent/chirp/PCMRecorder$RecordThread;)Lcom/tencent/chirp/PCMRecorder$RecordThread;
     //   405: pop
     //   406: invokestatic 27	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   409: ifeq +11 -> 420
     //   412: ldc 29
     //   414: iconst_2
-    //   415: ldc 77
+    //   415: ldc 79
     //   417: invokestatic 35	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   420: goto +6 -> 426
     //   423: aload 4
@@ -267,7 +267,7 @@ class PCMRecorder$RecordThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.chirp.PCMRecorder.RecordThread
  * JD-Core Version:    0.7.0.1
  */

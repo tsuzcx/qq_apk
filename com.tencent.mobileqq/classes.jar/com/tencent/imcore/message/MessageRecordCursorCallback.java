@@ -12,7 +12,7 @@ public class MessageRecordCursorCallback
 {
   public Object a(String paramString, AppRuntime paramAppRuntime)
   {
-    return Integer.valueOf(((FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString));
+    return Integer.valueOf(((FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER)).r(paramString));
   }
   
   public Object a(AppRuntime paramAppRuntime, String paramString, int paramInt)
@@ -21,7 +21,7 @@ public class MessageRecordCursorCallback
       return ContactUtils.a((QQAppInterface)paramAppRuntime, paramString);
     }
     if (paramInt == 1) {
-      return ((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString);
+      return ((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).i(paramString);
     }
     return ContactUtils.a((QQAppInterface)paramAppRuntime, paramString);
   }
@@ -33,7 +33,7 @@ public class MessageRecordCursorCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MessageRecordCursorCallback
  * JD-Core Version:    0.7.0.1
  */

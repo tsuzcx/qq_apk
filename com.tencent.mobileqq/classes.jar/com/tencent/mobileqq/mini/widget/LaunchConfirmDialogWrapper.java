@@ -21,11 +21,11 @@ public class LaunchConfirmDialogWrapper
   
   private LaunchConfirmDialogWrapper(@NonNull Activity paramActivity, String paramString, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
-    this.mContentView = LayoutInflater.from(paramActivity).inflate(2030305280, null);
-    this.mDialog = ActionSheetHelper.a(paramActivity, this.mContentView);
+    this.mContentView = LayoutInflater.from(paramActivity).inflate(2030370818, null);
+    this.mDialog = ActionSheetHelper.b(paramActivity, this.mContentView);
     initIconView(paramString);
-    bindCloseableBtnListener(2030239745, paramOnClickListener1);
-    bindCloseableBtnListener(2030239744, paramOnClickListener2);
+    bindCloseableBtnListener(2030305296, paramOnClickListener1);
+    bindCloseableBtnListener(2030305295, paramOnClickListener2);
   }
   
   private void bindCloseableBtnListener(@IdRes int paramInt, View.OnClickListener paramOnClickListener)
@@ -35,8 +35,8 @@ public class LaunchConfirmDialogWrapper
   
   private void initIconView(String paramString)
   {
-    RoundRectURLImageView localRoundRectURLImageView = (RoundRectURLImageView)this.mContentView.findViewById(2030239755);
-    localRoundRectURLImageView.setRadius(ViewUtils.a(5.0F));
+    RoundRectURLImageView localRoundRectURLImageView = (RoundRectURLImageView)this.mContentView.findViewById(2030305308);
+    localRoundRectURLImageView.setRadius(ViewUtils.dip2px(5.0F));
     if (!TextUtils.isEmpty(paramString)) {
       localRoundRectURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, null));
     }
@@ -54,7 +54,7 @@ public class LaunchConfirmDialogWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.LaunchConfirmDialogWrapper
  * JD-Core Version:    0.7.0.1
  */

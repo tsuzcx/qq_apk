@@ -10,8 +10,8 @@ final class ViolaAccessHelper$1
 {
   public void run()
   {
-    ViolaAccessHelper.b(Integer.toString(3256));
-    ViolaAccessHelper.b(ViolaBizUtils.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547"));
+    ViolaAccessHelper.j(Integer.toString(3256));
+    ViolaAccessHelper.j(ViolaBizUtils.a("https://kd.qpic.cn/viola/lib/viola.js?v_bid=3547"));
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if (localObject != null)
     {
@@ -27,12 +27,12 @@ final class ViolaAccessHelper$1
     }
     localObject = null;
     label77:
-    ViolaAccessHelper.b(null, (String)localObject);
+    ViolaAccessHelper.c(null, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper.1
  * JD-Core Version:    0.7.0.1
  */

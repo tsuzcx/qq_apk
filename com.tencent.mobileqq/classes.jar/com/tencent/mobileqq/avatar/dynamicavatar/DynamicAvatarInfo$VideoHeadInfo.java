@@ -9,8 +9,8 @@ import tencent.im.oidb.cmd0x74b.oidb_0x74b.VideoHeadInfo;
 
 public class DynamicAvatarInfo$VideoHeadInfo
 {
-  public int a;
   public String a;
+  public int b;
   
   public static VideoHeadInfo a(oidb_0x74b.VideoHeadInfo paramVideoHeadInfo)
   {
@@ -19,10 +19,10 @@ public class DynamicAvatarInfo$VideoHeadInfo
     }
     VideoHeadInfo localVideoHeadInfo = new VideoHeadInfo();
     if (paramVideoHeadInfo.str_url.has()) {
-      localVideoHeadInfo.jdField_a_of_type_JavaLangString = paramVideoHeadInfo.str_url.get();
+      localVideoHeadInfo.a = paramVideoHeadInfo.str_url.get();
     }
     if (paramVideoHeadInfo.uint32_video_size.has()) {
-      localVideoHeadInfo.jdField_a_of_type_Int = paramVideoHeadInfo.uint32_video_size.get();
+      localVideoHeadInfo.b = paramVideoHeadInfo.uint32_video_size.get();
     }
     return localVideoHeadInfo;
   }
@@ -47,7 +47,7 @@ public class DynamicAvatarInfo$VideoHeadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo.VideoHeadInfo
  * JD-Core Version:    0.7.0.1
  */

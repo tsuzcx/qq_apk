@@ -314,28 +314,28 @@ public class PublicAccountDetailActivityImpl
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = new ShareActionSheetBuilder.ActionSheetItem();
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = super.getString(2131696399);
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839067;
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = super.getString(2131894171);
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839221;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).iconNeedBg = true;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).action = 2;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus = "";
     localArrayList.add(localObject);
     localObject = new ShareActionSheetBuilder.ActionSheetItem();
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = super.getString(2131696413);
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839068;
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = super.getString(2131894185);
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839222;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).iconNeedBg = true;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).action = 3;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus = "";
     localArrayList.add(localObject);
     localObject = new ShareActionSheetBuilder.ActionSheetItem();
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = super.getString(2131696420);
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839071;
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = super.getString(2131894192);
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839225;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).action = 9;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus = "";
     localArrayList.add(localObject);
     localObject = new ShareActionSheetBuilder.ActionSheetItem();
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = super.getString(2131696402);
-    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839065;
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).label = super.getString(2131894174);
+    ((ShareActionSheetBuilder.ActionSheetItem)localObject).icon = 2130839219;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).action = 10;
     ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus = "";
     localArrayList.add(localObject);
@@ -344,23 +344,23 @@ public class PublicAccountDetailActivityImpl
     if (needShowUnFollowBtnInActionSheet())
     {
       localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-      localActionSheetItem.label = super.getString(2131695194);
-      localActionSheetItem.icon = 2130842743;
+      localActionSheetItem.label = super.getString(2131892927);
+      localActionSheetItem.icon = 2130843696;
       localActionSheetItem.iconNeedBg = true;
       localActionSheetItem.action = 30;
       localActionSheetItem.argus = "";
       ((ArrayList)localObject).add(localActionSheetItem);
     }
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = super.getString(2131695251);
-    localActionSheetItem.icon = 2130842735;
+    localActionSheetItem.label = super.getString(2131892985);
+    localActionSheetItem.icon = 2130843688;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 31;
     localActionSheetItem.argus = "";
     ((ArrayList)localObject).add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = super.getString(2131695238);
-    localActionSheetItem.icon = 2130842727;
+    localActionSheetItem.label = super.getString(2131892972);
+    localActionSheetItem.icon = 2130843680;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 11;
     localActionSheetItem.argus = "";
@@ -368,8 +368,8 @@ public class PublicAccountDetailActivityImpl
     if (needShowUnFollowBtnInActionSheet())
     {
       localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-      localActionSheetItem.label = super.getString(2131695271);
-      localActionSheetItem.icon = 2130842753;
+      localActionSheetItem.label = super.getString(2131893006);
+      localActionSheetItem.icon = 2130843706;
       localActionSheetItem.iconNeedBg = true;
       localActionSheetItem.action = 32;
       localActionSheetItem.argus = "";
@@ -419,9 +419,9 @@ public class PublicAccountDetailActivityImpl
   
   private boolean isPublicAccountMsgTabSetTop(String paramString)
   {
-    Object localObject = this.app.getProxyManager().a();
+    Object localObject = this.app.getProxyManager().g();
     int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.app, this.uin);
-    RecentUser localRecentUser = ((RecentUserProxy)localObject).b(paramString, i);
+    RecentUser localRecentUser = ((RecentUserProxy)localObject).c(paramString, i);
     localObject = localRecentUser;
     if (localRecentUser == null)
     {
@@ -494,25 +494,25 @@ public class PublicAccountDetailActivityImpl
   
   private void reportShareDetail(String paramString, ShareActionSheet.Detail paramDetail)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramDetail.jdField_c_of_type_Int == ShareActionSheet.Detail.b))
+    if ((!TextUtils.isEmpty(paramString)) && (paramDetail.f == ShareActionSheet.Detail.b))
     {
       QQAppInterface localQQAppInterface = this.app;
       String str2 = paramDetail.a();
       String str1;
-      if (paramDetail.a) {
+      if (paramDetail.g) {
         str1 = "02";
       } else {
         str1 = "01";
       }
-      ReportController.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", str2, "0X8007CA6", "0X8007CA6", 0, 0, str1, paramString, String.valueOf(paramDetail.d), "");
+      ReportController.b(localQQAppInterface, "dc01160", "Pb_account_lifeservice", str2, "0X8007CA6", "0X8007CA6", 0, 0, str1, paramString, String.valueOf(paramDetail.h), "");
       return;
     }
   }
   
   private boolean sendSystemMsgAction(int paramInt)
   {
-    Object localObject = GroupSystemMsgController.a().b();
-    localObject = GroupSystemMsgController.a().a((String)localObject);
+    Object localObject = GroupSystemMsgController.a().f();
+    localObject = GroupSystemMsgController.a().b((String)localObject);
     if (localObject != null)
     {
       int i = ((structmsg.StructMsg)localObject).msg_type.get();
@@ -525,7 +525,7 @@ public class PublicAccountDetailActivityImpl
       localObject = ((structmsg.StructMsg)localObject).msg.actions.get();
       if ((localObject != null) && (paramInt < ((List)localObject).size()))
       {
-        this.app.getMsgHandler().a().a(i, l1, l2, j, k, m, n, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)((List)localObject).get(paramInt)).action_info.get(), paramInt);
+        this.app.getMsgHandler().B().a(i, l1, l2, j, k, m, n, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)((List)localObject).get(paramInt)).action_info.get(), paramInt);
         return true;
       }
     }
@@ -591,8 +591,8 @@ public class PublicAccountDetailActivityImpl
       ((StringBuilder)localObject).append(" is UIN_TYPE_BUSINESS_CMR_TMP");
       QLog.d("com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity", 1, ((StringBuilder)localObject).toString());
     }
-    RecentUserProxy localRecentUserProxy = this.app.getProxyManager().a();
-    RecentUser localRecentUser = localRecentUserProxy.b(paramString, i);
+    RecentUserProxy localRecentUserProxy = this.app.getProxyManager().g();
+    RecentUser localRecentUser = localRecentUserProxy.c(paramString, i);
     Object localObject = localRecentUser;
     if (localRecentUser == null)
     {
@@ -765,8 +765,8 @@ public class PublicAccountDetailActivityImpl
       setResult(-1, (Intent)localObject);
     }
     Object localObject = this.mAccountDetailAdapter;
-    if ((localObject != null) && (((AccountDetailBaseAdapter)localObject).a() != null)) {
-      this.mAccountDetailAdapter.a().b();
+    if ((localObject != null) && (((AccountDetailBaseAdapter)localObject).k() != null)) {
+      this.mAccountDetailAdapter.k().b();
     }
     super.doOnBackPressed();
   }
@@ -833,8 +833,8 @@ public class PublicAccountDetailActivityImpl
     }
     localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str1, "0X8007800", "0X8007800", 0, 0, str2, "", (String)localObject, String.valueOf(PublicAccountDetailImpl.getReportAccountType(this.app, this.uin, this.accountDetail)), false);
     localObject = this.mAccountDetailAdapter;
-    if ((localObject != null) && (((AccountDetailBaseAdapter)localObject).a() != null)) {
-      this.mAccountDetailAdapter.a().b();
+    if ((localObject != null) && (((AccountDetailBaseAdapter)localObject).k() != null)) {
+      this.mAccountDetailAdapter.k().b();
     }
     ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).setKeepOldPublicAccountData(false);
   }
@@ -860,8 +860,8 @@ public class PublicAccountDetailActivityImpl
     }
     this.mProgress = null;
     localObject = this.mAccountDetailAdapter;
-    if ((localObject != null) && (((AccountDetailBaseAdapter)localObject).a() != null)) {
-      this.mAccountDetailAdapter.a().a();
+    if ((localObject != null) && (((AccountDetailBaseAdapter)localObject).k() != null)) {
+      this.mAccountDetailAdapter.k().a();
     }
     AbstractGifImage.pauseAll();
   }
@@ -888,7 +888,7 @@ public class PublicAccountDetailActivityImpl
     }
     this.needUpdateView = true;
     this.followBtn.postDelayed(new PublicAccountDetailActivityImpl.7(this), 3000L);
-    delayShowLoading(2131695190);
+    delayShowLoading(2131892923);
     if (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getAccountType(this.accountDetail.accountFlag) == -4)
     {
       this.followIntent = new NewIntent(super.getApplicationContext(), PublicAccountServletImpl.class);
@@ -1009,7 +1009,7 @@ public class PublicAccountDetailActivityImpl
     if (localObject != null) {
       return localObject;
     }
-    localObject = new File(FaceUtil.a(this.uin));
+    localObject = new File(FaceUtil.b(this.uin));
     if (((File)localObject).isFile())
     {
       loadHDFace(((File)localObject).getAbsolutePath());
@@ -1240,9 +1240,9 @@ public class PublicAccountDetailActivityImpl
     if (localObject != null)
     {
       localObject = new ShareActionSheet.Detail(((PublicAccountDetailImpl)localObject).uin, this.accountDetail.name, this.accountDetail.summary);
-      ((ShareActionSheet.Detail)localObject).jdField_c_of_type_Int = ShareActionSheet.Detail.b;
-      ((ShareActionSheet.Detail)localObject).a = isFollowed();
-      ((ShareActionSheet.Detail)localObject).d = PublicAccountDetailImpl.getReportAccountType(this.app, this.uin, this.accountDetail);
+      ((ShareActionSheet.Detail)localObject).f = ShareActionSheet.Detail.b;
+      ((ShareActionSheet.Detail)localObject).g = isFollowed();
+      ((ShareActionSheet.Detail)localObject).h = PublicAccountDetailImpl.getReportAccountType(this.app, this.uin, this.accountDetail);
       return localObject;
     }
     return null;
@@ -1282,7 +1282,7 @@ public class PublicAccountDetailActivityImpl
     }
     paramIntent = this.mProfileParams;
     if (paramIntent != null) {
-      return paramIntent.a().b;
+      return paramIntent.d().b;
     }
     return null;
   }
@@ -1377,7 +1377,7 @@ public class PublicAccountDetailActivityImpl
   @TargetApi(9)
   protected void initAccountDetailListView()
   {
-    this.mAccountDetailListView = ((AccountDetailXListView)super.findViewById(2131361865));
+    this.mAccountDetailListView = ((AccountDetailXListView)super.findViewById(2131427418));
     this.screenHeight = getWindowManager().getDefaultDisplay().getHeight();
     if (Build.VERSION.SDK_INT >= 9) {
       this.mAccountDetailListView.setOverScrollMode(2);
@@ -1389,31 +1389,31 @@ public class PublicAccountDetailActivityImpl
   
   void initBottomContainer()
   {
-    this.bottomContainer = super.findViewById(2131361923);
+    this.bottomContainer = super.findViewById(2131427477);
     this.bottomContainer.setVisibility(8);
     this.bottomHeight = this.bottomContainer.getLayoutParams().height;
-    this.btnsDivider1 = super.findViewById(2131361880);
-    this.callBtn = super.findViewById(2131364235);
+    this.btnsDivider1 = super.findViewById(2131427434);
+    this.callBtn = super.findViewById(2131430247);
     this.btnsDivider1.setVisibility(8);
     this.callBtn.setVisibility(8);
-    this.followBtn = super.findViewById(2131367061);
+    this.followBtn = super.findViewById(2131433514);
     this.followBtn.setVisibility(8);
-    this.btnsDivider2 = super.findViewById(2131361881);
+    this.btnsDivider2 = super.findViewById(2131427435);
     this.btnsDivider2.setVisibility(8);
-    super.setTitle(2131695182);
+    super.setTitle(2131892915);
     this.mProgress = new QQProgressDialog(this, super.getTitleBarHeight());
     this.mProgress.setCanceledOnTouchOutside(true);
-    this.searchBtn = ((Button)super.findViewById(2131377043));
+    this.searchBtn = ((Button)super.findViewById(2131445409));
     this.searchBtn.setOnClickListener(this);
-    this.sendMsgBtn = ((Button)super.findViewById(2131377221));
-    this.sendMsgBtn.setText(2131693618);
+    this.sendMsgBtn = ((Button)super.findViewById(2131445604));
+    this.sendMsgBtn.setText(2131891193);
     this.sendMsgBtn.setOnClickListener(this);
     this.sendMsgBtn.setVisibility(8);
-    this.unfollowBtn = ((Button)super.findViewById(2131380165));
-    this.unfollowBtn.setText(2131693619);
+    this.unfollowBtn = ((Button)super.findViewById(2131449080));
+    this.unfollowBtn.setText(2131891194);
     this.unfollowBtn.setOnClickListener(this);
     this.unfollowBtn.setVisibility(8);
-    this.btnsDivider3 = super.findViewById(2131361882);
+    this.btnsDivider3 = super.findViewById(2131427436);
     this.btnsDivider3.setVisibility(8);
   }
   
@@ -1434,45 +1434,42 @@ public class PublicAccountDetailActivityImpl
   
   void initTitleView()
   {
-    this.titleViewLayout = ((RelativeLayout)super.findViewById(2131370013));
+    this.titleViewLayout = ((RelativeLayout)super.findViewById(2131437168));
     this.titleViewLayout.setOnClickListener(null);
     float f1;
-    int i;
     float f2;
     if (isNoTransparentTitleBar())
     {
-      f1 = this.density;
-      i = (int)(64.0F * f1);
-      f2 = 4.0F;
+      f1 = 64.0F;
+      f2 = this.density;
     }
     else
     {
-      f1 = this.density;
-      i = (int)(75.0F * f1);
-      f2 = 25.0F;
+      f1 = 75.0F;
+      f2 = this.density;
     }
-    int j = (int)(f1 * f2);
+    int i = (int)(f2 * f1);
     Object localObject = new RelativeLayout.LayoutParams(-1, i);
     this.titleViewLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.titleViewLayout.setPadding(0, j, 0, 0);
+    this.titleViewLayout.setPadding(0, 0, 0, 0);
     this.titleHeight = i;
     localObject = this.mTopGestureLayout;
     if (localObject != null) {
       ((AccountDetailTopGestureLayout)localObject).setTitleHeight(this.titleHeight);
     }
-    this.titleLeftIcon = ((ImageView)super.findViewById(2131370012));
+    this.titleLeftIcon = ((ImageView)super.findViewById(2131437167));
     this.titleLeftIcon.setOnClickListener(this);
-    this.rightViewText = ((TextView)super.findViewById(2131369233));
+    this.rightViewText = ((TextView)super.findViewById(2131436211));
     this.rightViewText.setText("");
-    this.rightViewImg = ((ImageView)super.findViewById(2131369216));
-    this.rightViewImg.setImageResource(2130843861);
-    this.rightViewImg.setContentDescription(getString(2131697523));
+    this.rightViewImg = ((ImageView)super.findViewById(2131436194));
+    this.rightViewImg.setImageResource(2130844816);
+    this.rightViewImg.setContentDescription(getString(2131895296));
     this.rightViewImg.setVisibility(0);
     this.rightViewImg.setOnClickListener(this);
-    this.iconTop = ((ImageView)super.findViewById(2131368383));
-    this.iconCicleTop = ((ImageView)super.findViewById(2131368355));
-    this.iconCertifiedTop = ((ImageView)super.findViewById(2131364430));
-    this.topFollowed = ((Button)super.findViewById(2131361897));
+    this.iconTop = ((ImageView)super.findViewById(2131435263));
+    this.iconCicleTop = ((ImageView)super.findViewById(2131435233));
+    this.iconCertifiedTop = ((ImageView)super.findViewById(2131430461));
+    this.topFollowed = ((Button)super.findViewById(2131427451));
     this.topFollowed.setOnClickListener(this);
     updateTitleStyle();
   }
@@ -1482,9 +1479,9 @@ public class PublicAccountDetailActivityImpl
     if (QLog.isColorLevel()) {
       QLog.d("com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity", 2, "initView");
     }
-    super.setContentView(2131558429);
+    super.setContentView(2131623965);
     this.density = super.getResources().getDisplayMetrics().density;
-    View localView = super.findViewById(2131361892);
+    View localView = super.findViewById(2131427446);
     if (this.isUseStyleAfter839) {
       localView.setBackgroundColor(-657926);
     } else {
@@ -1493,8 +1490,8 @@ public class PublicAccountDetailActivityImpl
     initTitleView();
     initBottomContainer();
     initAccountDetailListView();
-    this.mask = super.findViewById(2131374032);
-    if (QQTheme.a())
+    this.mask = super.findViewById(2131442126);
+    if (QQTheme.isNowThemeIsNight())
     {
       localView = this.mask;
       if (localView != null) {
@@ -1508,8 +1505,8 @@ public class PublicAccountDetailActivityImpl
         localView.setVisibility(8);
       }
     }
-    this.errorContainer = ((LinearLayout)super.findViewById(2131366292));
-    this.detailRootView = ((ViewGroup)findViewById(2131361896));
+    this.errorContainer = ((LinearLayout)super.findViewById(2131432591));
+    this.detailRootView = ((ViewGroup)findViewById(2131427450));
     this.accountMoreDetailController = new AccountMoreDetailController(this, this, this.detailRootView);
   }
   
@@ -1607,13 +1604,13 @@ public class PublicAccountDetailActivityImpl
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateCurrentImage uin=");
-      localStringBuilder.append(paramProfileImageInfo.d);
+      localStringBuilder.append(paramProfileImageInfo.g);
       localStringBuilder.append(", state=");
-      localStringBuilder.append(paramProfileImageInfo.a);
+      localStringBuilder.append(paramProfileImageInfo.d);
       QLog.d("com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity", 2, localStringBuilder.toString());
     }
-    if (paramProfileImageInfo.a == 6) {
-      loadHDFace(paramProfileImageInfo.jdField_c_of_type_JavaLangString);
+    if (paramProfileImageInfo.d == 6) {
+      loadHDFace(paramProfileImageInfo.c);
     }
   }
   
@@ -1659,7 +1656,7 @@ public class PublicAccountDetailActivityImpl
     if (paramView != this.followBtn)
     {
       localObject = this.mAccountDetailAdapter;
-      if (((localObject == null) || (paramView != ((AccountDetailBaseAdapter)localObject).a) || (isFollowed())) && ((paramView != this.topFollowed) || (isFollowed())))
+      if (((localObject == null) || (paramView != ((AccountDetailBaseAdapter)localObject).E) || (isFollowed())) && ((paramView != this.topFollowed) || (isFollowed())))
       {
         if (paramView == this.sendMsgBtn)
         {
@@ -1729,13 +1726,13 @@ public class PublicAccountDetailActivityImpl
                 gotoMiniGamePublicAccountActivity();
               }
             }
-            else if ((TextUtils.equals(AppConstants.QQ_VIP_UIN, this.uin)) && (QQVipHelper.b(getApplicationContext())))
+            else if ((TextUtils.equals(AppConstants.QQ_VIP_UIN, this.uin)) && (QQVipHelper.d(getApplicationContext())))
             {
               QQVipHelper.b(getApplicationContext());
             }
             else if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isNeedRedirectAIOToMainPage(this.uin))
             {
-              if (!((IQQHealthService)this.app.getRuntimeService(IQQHealthService.class, "multi")).redirectAIOToMainPage(this, getAccountName(), 162)) {
+              if (!((IQQHealthService)this.app.getRuntimeService(IQQHealthService.class, "multi")).redirectAIOToMainPage(this, 162)) {
                 gotoChatActivity();
               }
             }
@@ -1762,7 +1759,7 @@ public class PublicAccountDetailActivityImpl
           doOnBackPressed();
           return;
         }
-        if ((paramView != this.rightViewImg) && ((paramView == null) || (paramView.getId() != 2131369216)))
+        if ((paramView != this.rightViewImg) && ((paramView == null) || (paramView.getId() != 2131436194)))
         {
           if (paramView == this.unfollowBtn)
           {
@@ -1770,21 +1767,21 @@ public class PublicAccountDetailActivityImpl
             OfficialAccountReporter.a.e(this.uin);
             return;
           }
-          if ((paramView != null) && (paramView.getId() == 2131378122))
+          if ((paramView != null) && (paramView.getId() == 2131446629))
           {
             this.detailRootView.setVisibility(0);
             this.accountMoreDetailController.a(this.accountDetail);
             OfficialAccountReporter.a.f(this.uin);
             return;
           }
-          if ((paramView == null) || (paramView.getId() != 2131368197)) {
+          if ((paramView == null) || (paramView.getId() != 2131435062)) {
             return;
           }
           paramView = PublicAccountUtilImpl.getMessageHistoryInfo(this.accountDetail);
           if (paramView == null) {
             return;
           }
-          jumpWebView(paramView.jdField_c_of_type_JavaLangString);
+          jumpWebView(paramView.h);
           return;
         }
         if (this.isSubscriptAccount) {
@@ -1814,7 +1811,7 @@ public class PublicAccountDetailActivityImpl
       ((EcshopReportHandler)this.app.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a(134243868, this.uin, null, null, null, 1L, false);
     }
     ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.app, "P_CliOper", "Pb_account_lifeservice", this.uin, "0X8005A25", "0X8005A25", this.fromwhere, 0, "", "", "", "", false);
-    ((IPublicAccountDetailReportUtil)QRoute.api(IPublicAccountDetailReportUtil.class)).setAttrSearchAttention(4, this.uin, 0, UniteSearchActivity.d, PAOfflineSearchManager.a().a(this.uin));
+    ((IPublicAccountDetailReportUtil)QRoute.api(IPublicAccountDetailReportUtil.class)).setAttrSearchAttention(4, this.uin, 0, UniteSearchActivity.f, PAOfflineSearchManager.a().a(this.uin));
     Object localObject = this.app;
     String str = this.uin;
     if (isFollowed()) {
@@ -1882,7 +1879,7 @@ public class PublicAccountDetailActivityImpl
     }
     localObject = this.mAccountDetailAdapter;
     if (localObject != null) {
-      ((AccountDetailBaseAdapter)localObject).a();
+      ((AccountDetailBaseAdapter)localObject).d();
     }
     localObject = this.mAccountDetailListView;
     if (localObject != null) {
@@ -1900,13 +1897,13 @@ public class PublicAccountDetailActivityImpl
     super.onResume();
     if (isInMultiWindow())
     {
-      QQToast.a(this, getString(2131695223), 0).a();
+      QQToast.makeText(this, getString(2131892957), 0).show();
       finish();
       return;
     }
     AccountDetailBaseAdapter localAccountDetailBaseAdapter = this.mAccountDetailAdapter;
-    if ((localAccountDetailBaseAdapter != null) && (localAccountDetailBaseAdapter.a() != null)) {
-      this.mAccountDetailAdapter.a().a(true);
+    if ((localAccountDetailBaseAdapter != null) && (localAccountDetailBaseAdapter.k() != null)) {
+      this.mAccountDetailAdapter.k().a(true);
     }
     AbstractGifImage.resumeAll();
     OfficialAccountReporter.a.c(this.uin);
@@ -2010,7 +2007,7 @@ public class PublicAccountDetailActivityImpl
     }
     if (i != 0)
     {
-      Object localObject2 = this.mProfileParams.c();
+      Object localObject2 = this.mProfileParams.e();
       Object localObject3 = this.mProfileParams.a();
       Object localObject4 = this.mProfileParams.b();
       Object localObject1 = localObject2;
@@ -2240,7 +2237,7 @@ public class PublicAccountDetailActivityImpl
     while (i < j)
     {
       IPublicAccountConfigAttr.PaConfigInfo localPaConfigInfo = (IPublicAccountConfigAttr.PaConfigInfo)paramList.get(i);
-      if ((localPaConfigInfo.a == 3) && ((localPaConfigInfo.jdField_c_of_type_Int == 7) || (localPaConfigInfo.jdField_c_of_type_Int == 8))) {
+      if ((localPaConfigInfo.a == 3) && ((localPaConfigInfo.e == 7) || (localPaConfigInfo.e == 8))) {
         localArrayList.add(localPaConfigInfo);
       }
       i += 1;
@@ -2250,13 +2247,13 @@ public class PublicAccountDetailActivityImpl
   
   void resetFootView()
   {
-    if (this.mAccountDetailAdapter.d)
+    if (this.mAccountDetailAdapter.N)
     {
       this.mAccountDetailListView.setAdapter(null);
       this.mAccountDetailListView.a(true);
       this.mAccountDetailListView.setAdapter(this.mAccountDetailAdapter);
     }
-    this.mAccountDetailAdapter.d = false;
+    this.mAccountDetailAdapter.N = false;
   }
   
   protected void saveAccountDetailInSubThread()
@@ -2335,7 +2332,7 @@ public class PublicAccountDetailActivityImpl
     this.detailIntent = new NewIntent(super.getApplicationContext(), PublicAccountServletImpl.class);
     this.detailIntent.putExtra("cmd", "get_detail_info");
     localObject = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).versionInfo.set("8.7.0,3,5295");
+    ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).versionInfo.set("8.8.17,3,5770");
     ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).version.set(1);
     if (this.accountDetail != null) {
       ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).seqno.set(this.accountDetail.seqno);
@@ -2446,7 +2443,7 @@ public class PublicAccountDetailActivityImpl
     if (QLog.isColorLevel()) {
       QLog.d("com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity", 1, "ActionSheet showActionSheet");
     }
-    PublicAccountDetailActivityImpl.ActionSheetBuilder localActionSheetBuilder = new PublicAccountDetailActivityImpl.ActionSheetBuilder(this, (ActionSheet)ActionSheetHelper.a(this, null));
+    PublicAccountDetailActivityImpl.ActionSheetBuilder localActionSheetBuilder = new PublicAccountDetailActivityImpl.ActionSheetBuilder(this, (ActionSheet)ActionSheetHelper.b(this, null));
     localActionSheetBuilder.a();
     localActionSheetBuilder.b();
     if ((!this.uin.equals("1770946116")) && (!CrmUtils.b(this.app, this.uin)))
@@ -2472,7 +2469,7 @@ public class PublicAccountDetailActivityImpl
       localActionSheetBuilder.c();
     }
     localActionSheetBuilder.f();
-    this.actionSheet = localActionSheetBuilder.a();
+    this.actionSheet = localActionSheetBuilder.g();
     if (!this.actionSheet.isShowing()) {
       this.actionSheet.show();
     }
@@ -2484,7 +2481,7 @@ public class PublicAccountDetailActivityImpl
     if (localShareActionSheetBuilder == null)
     {
       this.mShareDialogBuilder = new ShareActionSheetBuilder(this);
-      this.mShareDialogBuilder.setActionSheetTitle(getString(2131719029));
+      this.mShareDialogBuilder.setActionSheetTitle(getString(2131916565));
       this.mShareDialogBuilder.setActionSheetItems(getActionSheetItems());
       this.mShareDialogBuilder.setItemClickListener(this.itemClickListener);
     }
@@ -2514,11 +2511,11 @@ public class PublicAccountDetailActivityImpl
     if (this.mShareAttentionSuccessDlg == null) {
       this.mShareAttentionSuccessDlg = new ShareAioResultDialog(paramActivity);
     }
-    this.mShareAttentionSuccessDlg.a(HardCodeUtil.a(2131699968));
-    String str = this.app.getApplication().getString(2131718866);
+    this.mShareAttentionSuccessDlg.a(HardCodeUtil.a(2131898014));
+    String str = this.app.getApplication().getString(2131916399);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
-    localStringBuilder.append(HardCodeUtil.a(2131699969));
+    localStringBuilder.append(HardCodeUtil.a(2131898015));
     str = localStringBuilder.toString();
     paramActivity = new PublicAccountDetailActivityImpl.10(this, paramActivity);
     this.mShareAttentionSuccessDlg.a(str, paramActivity);
@@ -2581,16 +2578,16 @@ public class PublicAccountDetailActivityImpl
   
   protected void showPhoneConfirm(String paramString)
   {
-    Dialog localDialog = new Dialog(this, 2131756189);
-    localDialog.setContentView(2131561033);
-    ((TextView)localDialog.findViewById(2131365681)).setVisibility(8);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131365669);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131365667);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131365673);
+    Dialog localDialog = new Dialog(this, 2131953338);
+    localDialog.setContentView(2131627374);
+    ((TextView)localDialog.findViewById(2131431915)).setVisibility(8);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131431902);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131431900);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131431907);
     localTextView1.setText(paramString);
     localTextView1.setGravity(3);
-    localTextView2.setText(2131690728);
-    localTextView3.setText(2131691600);
+    localTextView2.setText(2131887648);
+    localTextView3.setText(2131888562);
     localDialog.setCanceledOnTouchOutside(false);
     localTextView2.setOnClickListener(new PublicAccountDetailActivityImpl.26(this, localDialog));
     localTextView3.setOnClickListener(new PublicAccountDetailActivityImpl.27(this, paramString));
@@ -2605,10 +2602,10 @@ public class PublicAccountDetailActivityImpl
   void showUnFollowActionSheet()
   {
     this.unFollowActionSheet = ActionSheet.create(this);
-    String str = getString(2131695273, new Object[] { getAccountName() });
+    String str = getString(2131893008, new Object[] { getAccountName() });
     this.unFollowActionSheet.setMainTitle(str);
-    this.unFollowActionSheet.addButton(2131696446, 3);
-    this.unFollowActionSheet.addCancelButton(2131690728);
+    this.unFollowActionSheet.addButton(2131894218, 3);
+    this.unFollowActionSheet.addCancelButton(2131887648);
     this.unFollowActionSheet.setOnDismissListener(new PublicAccountDetailActivityImpl.14(this));
     this.unFollowActionSheet.setOnButtonClickListener(new PublicAccountDetailActivityImpl.15(this));
     if (!this.unFollowActionSheet.isShowing())
@@ -2702,7 +2699,7 @@ public class PublicAccountDetailActivityImpl
     if (QLog.isColorLevel()) {
       QLog.d("com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity", 2, "unfollow");
     }
-    delayShowLoading(2131695272);
+    delayShowLoading(2131893007);
     if ((this.accountDetail != null) && (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getAccountType(this.accountDetail.accountFlag) != -4))
     {
       localObject = this.newUnFollowObserver;
@@ -2830,7 +2827,7 @@ public class PublicAccountDetailActivityImpl
   
   void updateListView()
   {
-    if ((this.mAccountDetailAdapter != null) && (this.mAccountDetailListView.getAdapter() != null) && ((this.accountDetail == null) || (this.mAccountDetailAdapter.a() != null)))
+    if ((this.mAccountDetailAdapter != null) && (this.mAccountDetailListView.getAdapter() != null) && ((this.accountDetail == null) || (this.mAccountDetailAdapter.b() != null)))
     {
       setInfoForAdapter();
       this.mAccountDetailAdapter.notifyDataSetChanged();
@@ -2838,7 +2835,7 @@ public class PublicAccountDetailActivityImpl
     }
     if (this.mAccountDetailListView.getAdapter() != null)
     {
-      ((AccountDetailBaseAdapter)this.mAccountDetailListView.getAdapter()).a();
+      ((AccountDetailBaseAdapter)this.mAccountDetailListView.getAdapter()).d();
       this.mAccountDetailListView.setAdapter(null);
     }
     this.mAccountDetailAdapter = new AccountDetailBaseAdapter(this.app, this, this.accountDetail, this.uin, this.isSubscriptAccount, this.mAccountDetailListView, this.mTopGestureLayout);
@@ -2855,12 +2852,12 @@ public class PublicAccountDetailActivityImpl
   {
     if (this.isUseStyleAfter839)
     {
-      this.titleLeftIcon.setImageResource(2130850440);
-      this.rightViewImg.setImageResource(2130842551);
+      this.titleLeftIcon.setImageResource(2130852236);
+      this.rightViewImg.setImageResource(2130843504);
       return;
     }
-    this.titleLeftIcon.setImageResource(2130851067);
-    this.rightViewImg.setImageResource(2130843861);
+    this.titleLeftIcon.setImageResource(2130853298);
+    this.rightViewImg.setImageResource(2130844816);
   }
   
   @TargetApi(16)
@@ -2874,7 +2871,7 @@ public class PublicAccountDetailActivityImpl
       if (isFollowed())
       {
         this.topFollowed.setBackgroundDrawable(null);
-        this.topFollowed.setText(2131695269);
+        this.topFollowed.setText(2131893004);
         this.topFollowed.setAlpha(0.5F);
         ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountDetailActivityImpl.17(this), 0L);
       }
@@ -2902,12 +2899,12 @@ public class PublicAccountDetailActivityImpl
     setImmersiveStatus();
     if (!this.mActNeedImmersive)
     {
-      i = getResources().getColor(2131167114);
+      i = getResources().getColor(2131168092);
       if (this.mSystemBarComp == null)
       {
         this.mSystemBarComp = new SystemBarCompact(this, true, i);
-        if (QQTheme.b()) {
-          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130846361));
+        if (QQTheme.isDefaultOrDIYTheme()) {
+          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130847834));
         } else {
           this.mSystemBarComp.setStatusDrawable(null);
         }
@@ -2950,7 +2947,7 @@ public class PublicAccountDetailActivityImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl
  * JD-Core Version:    0.7.0.1
  */

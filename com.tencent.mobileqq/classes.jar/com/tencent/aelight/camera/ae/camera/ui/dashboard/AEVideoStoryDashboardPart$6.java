@@ -1,23 +1,29 @@
 package com.tencent.aelight.camera.ae.camera.ui.dashboard;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 class AEVideoStoryDashboardPart$6
-  implements EIPCResultCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
   AEVideoStoryDashboardPart$6(AEVideoStoryDashboardPart paramAEVideoStoryDashboardPart) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.6.1(this, paramEIPCResult));
+    paramCompoundButton = AEVideoStoryDashboardPart.e(this.a);
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    paramCompoundButton.setVisibility(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.6
  * JD-Core Version:    0.7.0.1
  */

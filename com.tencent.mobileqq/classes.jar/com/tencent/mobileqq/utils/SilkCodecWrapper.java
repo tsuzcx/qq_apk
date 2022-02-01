@@ -13,13 +13,13 @@ import java.io.PipedInputStream;
 public final class SilkCodecWrapper
   extends AudioComponentProcessor
 {
-  private static boolean jdField_b_of_type_Boolean = false;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  private int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long;
+  private static boolean o = false;
+  long j;
+  boolean k;
+  long l;
+  int m;
+  long n;
+  private int p = 0;
   
   public SilkCodecWrapper(Context paramContext)
   {
@@ -35,20 +35,20 @@ public final class SilkCodecWrapper
   
   private void a(boolean paramBoolean)
   {
-    if (!jdField_b_of_type_Boolean)
+    if (!o)
     {
-      SilkSoLoader.a(this.jdField_a_of_type_AndroidContentContext, "codecsilk");
-      jdField_b_of_type_Boolean = true;
+      SilkSoLoader.a(this.a, "codecsilk");
+      o = true;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Long = 0L;
+    this.k = paramBoolean;
+    this.l = 0L;
+    this.m = 0;
+    this.n = 0L;
   }
   
-  public static boolean a()
+  public static boolean b()
   {
-    return jdField_b_of_type_Boolean;
+    return o;
   }
   
   public native long SilkDecoderNew(int paramInt1, int paramInt2);
@@ -58,7 +58,7 @@ public final class SilkCodecWrapper
   public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
   {
     long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.j;
     if (l2 == 0L) {
       return 0;
     }
@@ -66,11 +66,11 @@ public final class SilkCodecWrapper
     {
       paramInt1 = decode(l2, paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
       l1 = SystemClock.uptimeMillis() - l1;
-      this.jdField_b_of_type_Long += l1;
-      if (l1 > this.jdField_c_of_type_Long) {
-        this.jdField_c_of_type_Long = l1;
+      this.l += l1;
+      if (l1 > this.n) {
+        this.n = l1;
       }
-      this.jdField_b_of_type_Int += 1;
+      this.m += 1;
       return paramInt1;
     }
     catch (Throwable paramArrayOfByte1)
@@ -82,21 +82,21 @@ public final class SilkCodecWrapper
   
   public IAudioProcessor.ProcessData a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    long l = SystemClock.uptimeMillis();
+    long l1 = SystemClock.uptimeMillis();
     paramArrayOfByte = super.a(paramArrayOfByte, paramInt1, paramInt2);
-    l = SystemClock.uptimeMillis() - l;
-    if (l > this.jdField_c_of_type_Long) {
-      this.jdField_c_of_type_Long = l;
+    l1 = SystemClock.uptimeMillis() - l1;
+    if (l1 > this.n) {
+      this.n = l1;
     }
-    this.jdField_b_of_type_Long += l;
-    this.jdField_b_of_type_Int += 1;
+    this.l += l1;
+    this.m += 1;
     return paramArrayOfByte;
   }
   
   public void a()
   {
     super.a();
-    b();
+    c();
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -104,10 +104,10 @@ public final class SilkCodecWrapper
     super.a(paramInt1, paramInt2, paramInt3);
     try
     {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Long = SilkEncoderNew(paramInt1, paramInt2);
+      if (this.k) {
+        this.j = SilkEncoderNew(paramInt1, paramInt2);
       } else {
-        this.jdField_a_of_type_Long = SilkDecoderNew(paramInt1, paramInt2);
+        this.j = SilkDecoderNew(paramInt1, paramInt2);
       }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -119,42 +119,42 @@ public final class SilkCodecWrapper
         localStringBuilder.append(localUnsatisfiedLinkError.toString());
         QLog.d("SilkCodecWrapper", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Long = 0L;
-      jdField_b_of_type_Boolean = false;
+      this.j = 0L;
+      o = false;
     }
-    this.jdField_a_of_type_Int = QQAudioUtils.a(paramInt1);
-    this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-    this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-    this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData = new IAudioProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
+    this.i = QQAudioUtils.a(paramInt1);
+    this.d = new byte[this.i];
+    this.e = new byte[this.i];
+    this.f = new byte[this.i];
+    this.g = new IAudioProcessor.ProcessData(this.f, 0);
   }
   
-  public void b()
+  public void c()
   {
-    long l = this.jdField_a_of_type_Long;
-    if (l != 0L)
+    long l1 = this.j;
+    if (l1 != 0L)
     {
-      deleteCodec(l);
-      l = this.jdField_b_of_type_Long;
-      if (l > 0L)
+      deleteCodec(l1);
+      l1 = this.l;
+      if (l1 > 0L)
       {
-        int i = this.jdField_b_of_type_Int;
+        int i = this.m;
         if (i > 0) {
-          if (this.jdField_a_of_type_Boolean) {
-            QQAudioReporter.a(l, i, this.jdField_c_of_type_Long, 0);
+          if (this.k) {
+            QQAudioReporter.a(l1, i, this.n, 0);
           } else {
-            QQAudioReporter.a(l, i, this.jdField_c_of_type_Long, 1);
+            QQAudioReporter.a(l1, i, this.n, 1);
           }
         }
       }
     }
-    this.jdField_a_of_type_Long = 0L;
+    this.j = 0L;
   }
   
   public void close()
   {
     super.close();
-    b();
+    c();
   }
   
   public native int decode(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2);
@@ -165,23 +165,23 @@ public final class SilkCodecWrapper
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
+    if (this.j == 0L) {
       return 0;
     }
-    if (this.jdField_a_of_type_JavaIoPipedInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int) == -1) {
+    if (this.c.read(this.d, 0, this.i) == -1) {
       return -1;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_c_of_type_Int = encode(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
+    if (this.k) {
+      this.p = encode(this.j, this.d, this.e, this.i);
     }
-    QQAudioUtils.a(this.jdField_c_of_type_Int, paramArrayOfByte, paramInt1);
-    System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1 + 2, this.jdField_c_of_type_Int);
-    return this.jdField_c_of_type_Int + 2;
+    QQAudioUtils.a(this.p, paramArrayOfByte, paramInt1);
+    System.arraycopy(this.e, 0, paramArrayOfByte, paramInt1 + 2, this.p);
+    return this.p + 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SilkCodecWrapper
  * JD-Core Version:    0.7.0.1
  */

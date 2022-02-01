@@ -10,45 +10,45 @@ import com.tencent.qphone.base.util.QLog;
 class AVSchema$MyTroopObserver
   extends TroopObserver
 {
-  String jdField_a_of_type_JavaLangString;
+  String a;
   
   private AVSchema$MyTroopObserver(AVSchema paramAVSchema) {}
   
   protected void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
   {
-    long l = AudioHelper.b();
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {
+    long l = AudioHelper.c();
+    if (this.b.a("onGetSimpleTroopInfoResult", l)) {
       return;
     }
     if (paramTroopInfo == null) {
       return;
     }
     paramString = paramTroopInfo.troopuin;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       return;
     }
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
+    if (!TextUtils.equals(this.a, paramString)) {
       return;
     }
-    paramString = AVSchema.a();
+    paramString = AVSchema.e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onGetSimpleTroopInfoResult, isSuc[");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("], enumVerifyStatus[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareAVSchema.a.a);
+    localStringBuilder.append(this.b.a.c);
     localStringBuilder.append("], seq[");
     localStringBuilder.append(l);
     localStringBuilder.append("]");
     QLog.w(paramString, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.a.b = paramTroopInfo.troopname;
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a.a == 0)
+    this.b.a.b = paramTroopInfo.troopname;
+    if (this.b.a.c == 0)
     {
-      if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getBaseActivity(), true, new AVSchema.MyTroopObserver.1(this, l)))
+      if (ChatActivityUtils.b(this.b.getBaseActivity(), true, new AVSchema.MyTroopObserver.1(this, l)))
       {
-        this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
+        this.b.b(l, this.a);
         return;
       }
-      paramTroopInfo = AVSchema.a();
+      paramTroopInfo = AVSchema.e();
       paramString = new StringBuilder();
       paramString.append("onGetSimpleTroopInfoResult, 等权限确认, seq[");
       paramString.append(l);
@@ -61,7 +61,7 @@ class AVSchema$MyTroopObserver
   {
     if (QLog.isColorLevel())
     {
-      String str = AVSchema.a();
+      String str = AVSchema.e();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onUpdateTroopList, isSuccess[");
       localStringBuilder.append(paramBoolean);
@@ -72,7 +72,7 @@ class AVSchema$MyTroopObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.MyTroopObserver
  * JD-Core Version:    0.7.0.1
  */

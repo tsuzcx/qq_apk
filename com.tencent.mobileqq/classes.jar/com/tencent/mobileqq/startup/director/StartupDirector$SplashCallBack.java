@@ -2,12 +2,12 @@ package com.tencent.mobileqq.startup.director;
 
 public abstract class StartupDirector$SplashCallBack
 {
-  public Object a;
   public boolean a;
+  public Object b;
   
   protected StartupDirector$SplashCallBack(Object paramObject)
   {
-    this.a = paramObject;
+    this.b = paramObject;
   }
   
   protected abstract void a();
@@ -16,7 +16,7 @@ public abstract class StartupDirector$SplashCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.director.StartupDirector.SplashCallBack
  * JD-Core Version:    0.7.0.1
  */

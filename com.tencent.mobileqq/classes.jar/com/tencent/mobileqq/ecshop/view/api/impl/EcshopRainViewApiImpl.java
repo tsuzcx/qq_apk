@@ -53,7 +53,7 @@ public final class EcshopRainViewApiImpl
     if (((IEcshopMessageApi)localObject).isMessageForArkApp(paramMessageRecord))
     {
       paramMessageRecord = ((IEcshopMessageApi)localObject).getArkMsgMetaList(paramMessageRecord);
-      if (!StringUtil.a(paramMessageRecord))
+      if (!StringUtil.isEmpty(paramMessageRecord))
       {
         paramMessageRecord = new JSONObject(paramMessageRecord).optJSONObject("gdt");
         if (paramMessageRecord != null)
@@ -150,11 +150,11 @@ public final class EcshopRainViewApiImpl
       }
       if (getMsgPromotion(paramMessageRecord) != -1)
       {
-        paramMessageRecord = ((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).getEcshopConfBean().a;
+        paramMessageRecord = ((IEcshopUtilApi)QRoute.api(IEcshopUtilApi.class)).getEcshopConfBean().m;
         PreloadStaticApi.a().getResPath(paramMessageRecord.d, null);
-        if (paramMessageRecord.jdField_a_of_type_Int == 1)
+        if (paramMessageRecord.e == 1)
         {
-          Object localObject = paramMessageRecord.jdField_a_of_type_JavaUtilMap;
+          Object localObject = paramMessageRecord.f;
           Intrinsics.checkExpressionValueIsNotNull(localObject, "promotionConf.warmUpUrls");
           localObject = ((Map)localObject).entrySet().iterator();
           while (((Iterator)localObject).hasNext())
@@ -162,7 +162,7 @@ public final class EcshopRainViewApiImpl
             String str = (String)((Map.Entry)((Iterator)localObject).next()).getValue();
             PreloadStaticApi.a().getResPath(str, null);
           }
-          paramMessageRecord = paramMessageRecord.jdField_b_of_type_JavaUtilMap;
+          paramMessageRecord = paramMessageRecord.g;
           Intrinsics.checkExpressionValueIsNotNull(paramMessageRecord, "promotionConf.highTideUrls");
           paramMessageRecord = paramMessageRecord.entrySet().iterator();
           while (paramMessageRecord.hasNext())
@@ -187,10 +187,10 @@ public final class EcshopRainViewApiImpl
     try
     {
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-      Date localDate = localSimpleDateFormat.parse(paramPromotionConfBean.jdField_a_of_type_JavaLangString);
+      Date localDate = localSimpleDateFormat.parse(paramPromotionConfBean.a);
       Intrinsics.checkExpressionValueIsNotNull(localDate, "sSdf.parse(confBean.beginTime)");
       long l1 = localDate.getTime();
-      paramPromotionConfBean = localSimpleDateFormat.parse(paramPromotionConfBean.jdField_b_of_type_JavaLangString);
+      paramPromotionConfBean = localSimpleDateFormat.parse(paramPromotionConfBean.b);
       Intrinsics.checkExpressionValueIsNotNull(paramPromotionConfBean, "sSdf.parse(confBean.endTime)");
       long l2 = paramPromotionConfBean.getTime();
       if (QLog.isColorLevel())
@@ -222,7 +222,7 @@ public final class EcshopRainViewApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.api.impl.EcshopRainViewApiImpl
  * JD-Core Version:    0.7.0.1
  */

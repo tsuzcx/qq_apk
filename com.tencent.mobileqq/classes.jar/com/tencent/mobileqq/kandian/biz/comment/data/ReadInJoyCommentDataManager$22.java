@@ -12,12 +12,12 @@ class ReadInJoyCommentDataManager$22
   
   void a(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
   {
-    paramOnDataChangeListener.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, ReadInJoyCommentDataManager.d(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentDataManager), 2, 2);
+    paramOnDataChangeListener.onCommentListLoad(1, this.a, this.b, ReadInJoyCommentDataManager.i(this.c), 2, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.22
  * JD-Core Version:    0.7.0.1
  */

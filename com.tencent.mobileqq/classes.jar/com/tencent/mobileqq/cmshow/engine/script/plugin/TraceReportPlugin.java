@@ -20,25 +20,20 @@ public final class TraceReportPlugin
   implements IEventPlugin
 {
   @Deprecated
-  public static final TraceReportPlugin.Companion a;
+  public static final TraceReportPlugin.Companion a = new TraceReportPlugin.Companion(null);
   @NotNull
-  private static final List<String> jdField_a_of_type_JavaUtilList = CollectionsKt.listOf(new String[] { "cs.trace_begin.local", "cs.trace_end.local", "cs.trace_log.local", "cs.trace_span_begin.local", "cs.trace_span_end.local", "cs.xy_error_info.local" });
-  private final SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+  private static final List<String> e = CollectionsKt.listOf(new String[] { "cs.trace_begin.local", "cs.trace_end.local", "cs.trace_log.local", "cs.trace_span_begin.local", "cs.trace_span_end.local", "cs.xy_error_info.local" });
   @NotNull
-  private final PluginCmdConstant.PlugPriority jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginTraceReportPlugin$Companion = new TraceReportPlugin.Companion(null);
-  }
+  private final PluginCmdConstant.PlugPriority c;
+  private final SpriteContext d;
   
   public TraceReportPlugin(@NotNull SpriteContext paramSpriteContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.DATA;
+    this.d = paramSpriteContext;
+    this.c = PluginCmdConstant.PlugPriority.DATA;
   }
   
-  private final String a(String paramString)
+  private final String b(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -59,7 +54,7 @@ public final class TraceReportPlugin
     return null;
   }
   
-  private final String b(String paramString)
+  private final String c(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -73,10 +68,10 @@ public final class TraceReportPlugin
       try
       {
         j = new JSONObject(paramString).optInt("featureId");
-        if (j == TraceReportUtil.a(1)) {
+        if (j == TraceReportUtil.c(1)) {
           break label144;
         }
-        if (j != TraceReportUtil.a(2)) {
+        if (j != TraceReportUtil.c(2)) {
           break label139;
         }
       }
@@ -86,12 +81,12 @@ public final class TraceReportPlugin
         QLog.e("[cmshow][TraceReportPlugin]", 1, "handleTraceEnd:", paramString);
       }
       if (i != 0) {
-        TraceReportUtil.a(j, null, new int[] { TraceMappingIml.a(j, false, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.b, -1, true) });
+        TraceReportUtil.a(j, null, new int[] { TraceMappingIml.a(j, false, this.d.d, -1, true) });
       }
       TraceReportUtil.b(j);
       if (i != 0)
       {
-        TraceReportUtil.a(TraceReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d), false);
+        TraceReportUtil.a(TraceReportUtil.c(this.d.i), false);
         return null;
       }
       return null;
@@ -103,7 +98,7 @@ public final class TraceReportPlugin
     }
   }
   
-  private final String c(String paramString)
+  private final String d(String paramString)
   {
     Object localObject;
     if (QLog.isColorLevel())
@@ -151,7 +146,7 @@ public final class TraceReportPlugin
     }
   }
   
-  private final String d(String paramString)
+  private final String e(String paramString)
   {
     Object localObject;
     if (QLog.isColorLevel())
@@ -201,7 +196,7 @@ public final class TraceReportPlugin
     }
   }
   
-  private final String e(String paramString)
+  private final String f(String paramString)
   {
     try
     {
@@ -218,13 +213,13 @@ public final class TraceReportPlugin
     return null;
   }
   
-  private final String f(String paramString)
+  private final String g(String paramString)
   {
     try
     {
-      QLog.d("[cmshow][TraceReportPlugin]", 1, new Object[] { "handleJsError mSpriteFrom:", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d) });
+      QLog.d("[cmshow][TraceReportPlugin]", 1, new Object[] { "handleJsError mSpriteFrom:", Integer.valueOf(this.d.i) });
       paramString = new JSONObject(paramString).optString("data");
-      TraceReportUtil.a(TraceReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d), 1000, 50, new Object[] { paramString });
+      TraceReportUtil.a(TraceReportUtil.c(this.d.i), 1000, 50, new Object[] { paramString });
     }
     catch (Exception paramString)
     {
@@ -236,61 +231,50 @@ public final class TraceReportPlugin
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
+    return this.c;
   }
   
   @Nullable
   public String a(@NotNull Argument paramArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramArgument, "argument");
-    String str = paramArgument.c();
+    String str = paramArgument.f();
     switch (str.hashCode())
     {
     default: 
       break;
     case 1845576411: 
       if (str.equals("cs.trace_span_end.local")) {
-        return d(paramArgument.b());
+        return e(paramArgument.e());
       }
       break;
     case 1439065070: 
       if (str.equals("cs.trace_begin.local")) {
-        return a(paramArgument.b());
+        return b(paramArgument.e());
       }
       break;
     case 1183980393: 
       if (str.equals("cs.trace_span_begin.local")) {
-        return c(paramArgument.b());
+        return d(paramArgument.e());
       }
       break;
     case 146460745: 
       if (str.equals("cs.trace_log.local")) {
-        return e(paramArgument.b());
+        return f(paramArgument.e());
       }
       break;
     case -196613984: 
       if (str.equals("cs.trace_end.local")) {
-        return b(paramArgument.b());
+        return c(paramArgument.e());
       }
       break;
     case -857476158: 
       if (str.equals("cs.xy_error_info.local")) {
-        return f(paramArgument.b());
+        return g(paramArgument.e());
       }
       break;
     }
     return null;
-  }
-  
-  @NotNull
-  public List<String> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return IEventPlugin.DefaultImpls.a(this);
   }
   
   public boolean a(@NotNull String paramString)
@@ -298,10 +282,21 @@ public final class TraceReportPlugin
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IEventPlugin.DefaultImpls.a(this, paramString);
   }
+  
+  @NotNull
+  public List<String> c()
+  {
+    return e;
+  }
+  
+  public boolean d()
+  {
+    return IEventPlugin.DefaultImpls.a(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.TraceReportPlugin
  * JD-Core Version:    0.7.0.1
  */

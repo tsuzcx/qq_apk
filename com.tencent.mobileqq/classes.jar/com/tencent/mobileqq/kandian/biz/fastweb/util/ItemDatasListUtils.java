@@ -34,7 +34,7 @@ public class ItemDatasListUtils
     int i = 0;
     Object localObject = paramList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (((BaseData)((Iterator)localObject).next()).u == 6) {
+      if (((BaseData)((Iterator)localObject).next()).aP == 6) {
         i += 1;
       }
     }
@@ -43,7 +43,7 @@ public class ItemDatasListUtils
     while (paramList.hasNext())
     {
       localObject = (BaseData)paramList.next();
-      int k = ((BaseData)localObject).u;
+      int k = ((BaseData)localObject).aP;
       if (k != 6)
       {
         if (k == 9) {}
@@ -68,7 +68,7 @@ public class ItemDatasListUtils
     while (localIterator.hasNext())
     {
       BaseData localBaseData = (BaseData)localIterator.next();
-      if (localBaseData.u == paramInt) {
+      if (localBaseData.aP == paramInt) {
         localArrayList.add(localBaseData);
       }
     }
@@ -150,7 +150,7 @@ public class ItemDatasListUtils
       {
         paramList1 = (BaseData)paramList.get(i);
         k = j;
-        if (paramList1.u == 12)
+        if (paramList1.aP == 12)
         {
           paramList1 = (CommentData)paramList1;
           k = j;
@@ -179,7 +179,7 @@ public class ItemDatasListUtils
       while (localIterator.hasNext())
       {
         BaseData localBaseData = (BaseData)localIterator.next();
-        if ((localBaseData.u == 7) || (localBaseData.u == 6) || (localBaseData.u == 8)) {
+        if ((localBaseData.aP == 7) || (localBaseData.aP == 6) || (localBaseData.aP == 8)) {
           ((List)localObject).add(localBaseData);
         }
       }
@@ -191,8 +191,8 @@ public class ItemDatasListUtils
       while (paramList2.hasNext())
       {
         localObject = (BaseData)paramList2.next();
-        ((BaseData)localObject).b = paramAbsBaseArticleInfo;
-        ((BaseData)localObject).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo = paramFastWebArticleInfo;
+        ((BaseData)localObject).aQ = paramAbsBaseArticleInfo;
+        ((BaseData)localObject).aR = paramFastWebArticleInfo;
         if ((localObject instanceof ProteusItemData)) {
           FastWebRequestUtil.a(paramAbsBaseArticleInfo, (ProteusItemData)localObject, 5, paramSparseArray);
         }
@@ -222,7 +222,7 @@ public class ItemDatasListUtils
   {
     if ((paramList != null) && (!paramList.isEmpty()) && (paramFastWebArticleInfo != null))
     {
-      if ((paramBoolean) && (paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList == null)) {
+      if ((paramBoolean) && (paramFastWebArticleInfo.A == null)) {
         return;
       }
       Object localObject2 = null;
@@ -243,7 +243,7 @@ public class ItemDatasListUtils
         else
         {
           k = j;
-          if (((BaseData)localObject1).u == 15)
+          if (((BaseData)localObject1).aP == 15)
           {
             localObject1 = (ArticleTopicData)localObject1;
             break;
@@ -261,18 +261,18 @@ public class ItemDatasListUtils
       {
         if (localObject1 != null)
         {
-          ((ArticleTopicData)localObject1).jdField_a_of_type_JavaUtilList = paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList;
-          ((ArticleTopicData)localObject1).b = paramAbsBaseArticleInfo;
-          ((ArticleTopicData)localObject1).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo = paramFastWebArticleInfo;
-          ((ArticleTopicData)localObject1).jdField_a_of_type_Boolean = false;
+          ((ArticleTopicData)localObject1).a = paramFastWebArticleInfo.A;
+          ((ArticleTopicData)localObject1).aQ = paramAbsBaseArticleInfo;
+          ((ArticleTopicData)localObject1).aR = paramFastWebArticleInfo;
+          ((ArticleTopicData)localObject1).b = false;
           return;
         }
         if (j != -1)
         {
           localObject1 = new ArticleTopicData();
-          ((ArticleTopicData)localObject1).jdField_a_of_type_JavaUtilList = paramFastWebArticleInfo.jdField_a_of_type_JavaUtilList;
-          ((ArticleTopicData)localObject1).b = paramAbsBaseArticleInfo;
-          ((ArticleTopicData)localObject1).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo = paramFastWebArticleInfo;
+          ((ArticleTopicData)localObject1).a = paramFastWebArticleInfo.A;
+          ((ArticleTopicData)localObject1).aQ = paramAbsBaseArticleInfo;
+          ((ArticleTopicData)localObject1).aR = paramFastWebArticleInfo;
           paramList.add(j + 1, localObject1);
         }
       }
@@ -292,7 +292,7 @@ public class ItemDatasListUtils
       if (!localIterator.hasNext()) {
         break;
       }
-    } while (((BaseData)localIterator.next()).u != 16);
+    } while (((BaseData)localIterator.next()).aP != 16);
     int i = 1;
     if (i == 0) {
       paramList.add(new NoCommentPlaceHolderData());
@@ -311,7 +311,7 @@ public class ItemDatasListUtils
       while (localIterator.hasNext())
       {
         BaseData localBaseData = (BaseData)localIterator.next();
-        if (localBaseData.u == 23) {
+        if (localBaseData.aP == 23) {
           localArrayList.add(localBaseData);
         }
       }
@@ -329,7 +329,7 @@ public class ItemDatasListUtils
     while (localIterator.hasNext())
     {
       BaseData localBaseData = (BaseData)localIterator.next();
-      if (localBaseData.u == 16) {
+      if (localBaseData.aP == 16) {
         paramList.remove(localBaseData);
       }
     }
@@ -345,10 +345,10 @@ public class ItemDatasListUtils
     while (localIterator.hasNext())
     {
       BaseData localBaseData = (BaseData)localIterator.next();
-      if ((localBaseData.u == 26) && ((localBaseData instanceof ProteusItemData)))
+      if ((localBaseData.aP == 26) && ((localBaseData instanceof ProteusItemData)))
       {
         ProteusItemData localProteusItemData = (ProteusItemData)localBaseData;
-        if ((localProteusItemData.c != null) && (TextUtils.equals(localProteusItemData.c.optString("style_ID", ""), "readinjoy_native_tag"))) {
+        if ((localProteusItemData.bb != null) && (TextUtils.equals(localProteusItemData.bb.optString("style_ID", ""), "readinjoy_native_tag"))) {
           localArrayList.add(localBaseData);
         }
       }
@@ -371,7 +371,7 @@ public class ItemDatasListUtils
         break;
       }
       localObject1 = (BaseData)paramList.get(i);
-      if (((BaseData)localObject1).u == 16)
+      if (((BaseData)localObject1).aP == 16)
       {
         localObject1 = (NoCommentPlaceHolderData)localObject1;
         paramList.remove(i);
@@ -386,7 +386,7 @@ public class ItemDatasListUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.ItemDatasListUtils
  * JD-Core Version:    0.7.0.1
  */

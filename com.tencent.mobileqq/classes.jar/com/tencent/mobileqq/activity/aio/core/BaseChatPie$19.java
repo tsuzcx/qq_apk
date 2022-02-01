@@ -14,10 +14,10 @@ class BaseChatPie$19
   
   public void run()
   {
-    MessageRecord localMessageRecord = ChatActivityFacade.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    MessageRecord localMessageRecord = ChatActivityFacade.f(this.this$0.d, this.this$0.ah);
     if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"))))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
+      this.this$0.d.getMessageFacade().d(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
       if (QLog.isColorLevel()) {
         QLog.i("BabyQReportCookie", 2, "now enter the aio!!!");
       }
@@ -26,7 +26,7 @@ class BaseChatPie$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.19
  * JD-Core Version:    0.7.0.1
  */

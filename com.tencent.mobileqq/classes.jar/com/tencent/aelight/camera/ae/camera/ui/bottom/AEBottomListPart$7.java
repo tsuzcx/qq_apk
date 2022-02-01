@@ -10,18 +10,18 @@ class AEBottomListPart$7
   
   public void run()
   {
-    if ((AEBottomListPart.a(this.this$0) != null) && (!AEBottomListPart.b(this.this$0).isFinishing()))
+    if ((AEBottomListPart.h(this.this$0) != null) && (!AEBottomListPart.i(this.this$0).isFinishing()))
     {
-      if (AEBottomListPart.b(this.this$0)) {
-        this.this$0.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.setVisibility(0);
+      if (AEBottomListPart.j(this.this$0)) {
+        this.this$0.b.setVisibility(0);
       }
-      this.this$0.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a(this.a);
+      this.this$0.c.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="a3l" parent="@style/a_7" />
-    <style name="a3m" parent="@style/a_8" />
-    <style name="a_7" parent="@android:style/Theme.Material.NoActionBar" />
-    <style name="a_8" parent="@android:style/Theme.Material.Light.NoActionBar" />
+    <style name="7m" parent="@style/ae4" />
+    <style name="7n" parent="@style/ae5" />
+    <style name="ae4" parent="@android:style/Theme.Material.NoActionBar" />
+    <style name="ae5" parent="@android:style/Theme.Material.Light.NoActionBar" />
 </resources>

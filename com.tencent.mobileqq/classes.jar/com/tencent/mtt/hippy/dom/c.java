@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class c<T>
 {
-  static Map<Class, Map<String, c.a>> a = new HashMap();
+  static final Map<Class, Map<String, c.a>> a = new HashMap();
   
   private Map<String, c.a> a(Class paramClass)
   {
@@ -129,7 +129,7 @@ public class c<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.c
  * JD-Core Version:    0.7.0.1
  */

@@ -27,24 +27,13 @@ import mqq.app.AppRuntime;
 public class StructMsgItemLayout27
   extends AbsStructMsgItem
 {
-  protected final float a;
-  private boolean a;
-  
-  public StructMsgItemLayout27()
-  {
-    this.jdField_a_of_type_Float = 10.0F;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected int b()
-  {
-    return 27;
-  }
+  private boolean aA = false;
+  protected final float az = 10.0F;
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     boolean bool = paramBundle.getBoolean("isSend", true);
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("pre_dialog", false);
+    this.aA = paramBundle.getBoolean("pre_dialog", false);
     Resources localResources = paramContext.getResources();
     LinearLayout localLinearLayout;
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
@@ -58,10 +47,10 @@ public class StructMsgItemLayout27
       localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
       localLinearLayout.setOrientation(1);
     }
-    localLinearLayout.setId(2131370772);
+    localLinearLayout.setId(2131438078);
     BubbleViewLayout localBubbleViewLayout = new BubbleViewLayout(paramContext);
-    localBubbleViewLayout.setId(2131370771);
-    if (this.jdField_a_of_type_Boolean) {
+    localBubbleViewLayout.setId(2131438077);
+    if (this.aA) {
       localBubbleViewLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     } else {
       localBubbleViewLayout.setLayoutParams(new LinearLayout.LayoutParams(BaseChatItemLayout.e - AIOUtils.b(20.0F, localResources), -2));
@@ -72,15 +61,15 @@ public class StructMsgItemLayout27
     }
     localLinearLayout.addView(localBubbleViewLayout);
     Object localObject3 = new RelativeLayout(paramContext);
-    ((RelativeLayout)localObject3).setId(2131370765);
+    ((RelativeLayout)localObject3).setId(2131438071);
     paramView = new RelativeLayout.LayoutParams(-1, -2);
     localBubbleViewLayout.addView((View)localObject3, 0);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.aA)
     {
-      if (this.o == 1) {
-        ((RelativeLayout)localObject3).setBackgroundResource(2130844740);
+      if (this.au == 1) {
+        ((RelativeLayout)localObject3).setBackgroundResource(2130846172);
       } else {
-        ((RelativeLayout)localObject3).setBackgroundResource(2130844741);
+        ((RelativeLayout)localObject3).setBackgroundResource(2130846173);
       }
       localBubbleViewLayout.a(false);
       localBubbleViewLayout.b(false);
@@ -99,27 +88,27 @@ public class StructMsgItemLayout27
       if (!bool)
       {
         ((RelativeLayout.LayoutParams)localObject1).addRule(9);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131370765);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131438071);
       }
       else
       {
         ((RelativeLayout.LayoutParams)localObject1).addRule(11);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131370765);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131438071);
       }
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      paramView.setId(2131374040);
-      if (localBubbleViewLayout.jdField_a_of_type_Boolean != bool) {
-        localBubbleViewLayout.jdField_a_of_type_Boolean = bool;
+      paramView.setId(2131442134);
+      if (localBubbleViewLayout.a != bool) {
+        localBubbleViewLayout.a = bool;
       }
-      if (this.o == 1)
+      if (this.au == 1)
       {
-        ((RelativeLayout)localObject3).setBackgroundResource(2130844733);
-        paramView.setImageDrawable(localResources.getDrawable(2130844736));
+        ((RelativeLayout)localObject3).setBackgroundResource(2130846165);
+        paramView.setImageDrawable(localResources.getDrawable(2130846168));
       }
       else
       {
-        ((RelativeLayout)localObject3).setBackgroundResource(2130844734);
-        paramView.setImageDrawable(localResources.getDrawable(2130844735));
+        ((RelativeLayout)localObject3).setBackgroundResource(2130846166);
+        paramView.setImageDrawable(localResources.getDrawable(2130846167));
       }
       ((RelativeLayout)localObject3).setFocusable(false);
       ((RelativeLayout)localObject3).setFocusableInTouchMode(false);
@@ -127,33 +116,33 @@ public class StructMsgItemLayout27
       localBubbleViewLayout.setRadius(10.0F);
       localBubbleViewLayout.a(false);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.ax.iterator();
     Object localObject2 = null;
     Object localObject1 = null;
     paramView = (View)localObject1;
     while (localIterator.hasNext())
     {
       Object localObject4 = (AbsStructMsgElement)localIterator.next();
-      Object localObject5 = ((AbsStructMsgElement)localObject4).a;
+      Object localObject5 = ((AbsStructMsgElement)localObject4).b;
       if ("title".equals(localObject5))
       {
         localObject2 = (TextView)((AbsStructMsgElement)localObject4).a(paramContext, (View)localObject2, paramBundle);
         ((TextView)localObject2).setSingleLine();
         localObject4 = new RelativeLayout.LayoutParams(-1, -2);
-        int i = localResources.getDimensionPixelSize(2131296894);
-        int j = localResources.getDimensionPixelSize(2131296449);
+        int i = localResources.getDimensionPixelSize(2131297273);
+        int j = localResources.getDimensionPixelSize(2131296683);
         if (bool) {
           ((RelativeLayout.LayoutParams)localObject4).setMargins(0, 0, 0, 0);
         } else {
           ((RelativeLayout.LayoutParams)localObject4).setMargins(0, 0, 0, 0);
         }
         ((RelativeLayout.LayoutParams)localObject4).addRule(12);
-        ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131370765);
+        ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131438071);
         ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject4);
         ((TextView)localObject2).setPadding(i, j, i, j);
         ((TextView)localObject2).setSingleLine();
         ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-        ((TextView)localObject2).setBackgroundColor(localResources.getColor(2131167394));
+        ((TextView)localObject2).setBackgroundColor(localResources.getColor(2131168464));
         localBubbleViewLayout.addView((View)localObject2);
       }
       else if ("summary".equals(localObject5))
@@ -162,15 +151,15 @@ public class StructMsgItemLayout27
       }
       try
       {
-        long l = Long.parseLong(((StructMsgItemSummary)localObject2).ai);
+        long l = Long.parseLong(((StructMsgItemSummary)localObject2).aA);
         localObject2 = Calendar.getInstance();
         ((Calendar)localObject2).setTimeInMillis(l * 1000L);
         localObject4 = new TextView(paramContext);
-        ((TextView)localObject4).setId(2131378688);
+        ((TextView)localObject4).setId(2131447345);
         localObject5 = new RelativeLayout.LayoutParams(AIOUtils.b(68.0F, localResources), AIOUtils.b(18.0F, localResources));
         ((RelativeLayout.LayoutParams)localObject5).addRule(14);
-        if (!this.jdField_a_of_type_Boolean) {
-          break label1329;
+        if (!this.aA) {
+          break label1331;
         }
         f = 51.0F;
       }
@@ -192,9 +181,9 @@ public class StructMsgItemLayout27
         ((TextView)localObject4).setIncludeFontPadding(false);
         ((TextView)localObject4).setGravity(17);
         ((TextView)localObject4).setTextSize(14.0F);
-        if (this.o == 1)
+        if (this.au == 1)
         {
-          ((TextView)localObject4).setTextColor(localResources.getColor(2131165244));
+          ((TextView)localObject4).setTextColor(localResources.getColor(2131165449));
         }
         else
         {
@@ -204,17 +193,17 @@ public class StructMsgItemLayout27
       }
       catch (Exception localException2)
       {
-        label1068:
-        break label1068;
+        label1069:
+        break label1069;
       }
-      break label1068;
+      break label1069;
       if (("head".equals(localObject5)) && ((localObject4 instanceof StructMsgItemAvatar)))
       {
         paramBundle.putInt("bundle_args_avatar_width", AIOUtils.b(52.0F, localResources));
         paramBundle.putInt("bundle_args_avatar_height", AIOUtils.b(52.0F, localResources));
         paramBundle.putInt("bundle_args_cover_width", AIOUtils.b(52.0F, localResources));
         paramBundle.putInt("bundle_args_cover_height", AIOUtils.b(52.0F, localResources));
-        if (BaseApplicationImpl.sApplication.getRuntime().getAccount().equalsIgnoreCase(((StructMsgItemAvatar)localObject4).ac)) {
+        if (BaseApplicationImpl.sApplication.getRuntime().getAccount().equalsIgnoreCase(((StructMsgItemAvatar)localObject4).av)) {
           localObject1 = (LinearLayout)((AbsStructMsgElement)localObject4).a(paramContext, null, paramBundle);
         } else {
           paramView = (LinearLayout)((AbsStructMsgElement)localObject4).a(paramContext, null, paramBundle);
@@ -223,15 +212,15 @@ public class StructMsgItemLayout27
       localObject2 = null;
     }
     localObject2 = new RelativeLayout(paramContext);
-    ((RelativeLayout)localObject2).setId(2131363169);
+    ((RelativeLayout)localObject2).setId(2131429043);
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.addRule(14);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.aA) {
       paramBundle.topMargin = AIOUtils.b(9.0F, localResources);
     } else {
       paramBundle.topMargin = AIOUtils.b(7.0F, localResources);
     }
-    paramBundle.addRule(3, 2131378688);
+    paramBundle.addRule(3, 2131447345);
     ((RelativeLayout)localObject2).setLayoutParams(paramBundle);
     ((RelativeLayout)localObject3).addView((View)localObject2);
     localObject3 = new RelativeLayout.LayoutParams(AIOUtils.b(52.0F, localResources), AIOUtils.b(52.0F, localResources));
@@ -239,32 +228,37 @@ public class StructMsgItemLayout27
     if (localObject1 == null) {
       paramBundle = new LinearLayout(paramContext);
     }
-    paramBundle.setId(2131377185);
+    paramBundle.setId(2131445566);
     paramBundle.setGravity(5);
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject3);
     ((RelativeLayout)localObject2).addView(paramBundle);
     localObject1 = new RelativeLayout.LayoutParams(AIOUtils.b(52.0F, localResources), AIOUtils.b(52.0F, localResources));
-    ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131377185);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131445566);
     ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.b(15.0F, localResources);
     paramBundle = paramView;
     if (paramView == null) {
       paramBundle = new LinearLayout(paramContext);
     }
-    paramBundle.setId(2131367322);
+    paramBundle.setId(2131433779);
     paramBundle.setGravity(3);
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     ((RelativeLayout)localObject2).addView(paramBundle);
     return localLinearLayout;
   }
   
-  public String b()
+  protected int c()
+  {
+    return 27;
+  }
+  
+  public String e()
   {
     return "layout27";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout27
  * JD-Core Version:    0.7.0.1
  */

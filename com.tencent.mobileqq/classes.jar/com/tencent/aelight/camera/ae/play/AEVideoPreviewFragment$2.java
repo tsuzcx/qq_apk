@@ -4,8 +4,8 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import com.tencent.aelight.camera.aeeditor.util.TimeUtils;
+import com.tencent.qcircle.tavcut.player.MoviePlayer;
 import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.player.MoviePlayer;
 
 class AEVideoPreviewFragment$2
   implements SeekBar.OnSeekBarChangeListener
@@ -36,7 +36,7 @@ class AEVideoPreviewFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEVideoPreviewFragment.2
  * JD-Core Version:    0.7.0.1
  */

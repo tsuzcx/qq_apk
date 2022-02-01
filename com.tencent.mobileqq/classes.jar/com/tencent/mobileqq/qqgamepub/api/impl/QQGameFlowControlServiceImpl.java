@@ -64,7 +64,7 @@ public class QQGameFlowControlServiceImpl
       return "";
     }
     Object localObject = paramString;
-    if (!URLUtil.a(paramString))
+    if (!URLUtil.e(paramString))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("https://");
@@ -108,8 +108,8 @@ public class QQGameFlowControlServiceImpl
         {
           paramString = new JSONObject(paramString);
           localObject = new QQGameFlowControlConfig();
-          ((QQGameFlowControlConfig)localObject).jdField_a_of_type_Int = paramString.optInt("resState");
-          ((QQGameFlowControlConfig)localObject).jdField_a_of_type_Long = paramString.optLong("canReqTime");
+          ((QQGameFlowControlConfig)localObject).a = paramString.optInt("resState");
+          ((QQGameFlowControlConfig)localObject).b = paramString.optLong("canReqTime");
           return localObject;
         }
       }
@@ -147,7 +147,7 @@ public class QQGameFlowControlServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameFlowControlServiceImpl
  * JD-Core Version:    0.7.0.1
  */

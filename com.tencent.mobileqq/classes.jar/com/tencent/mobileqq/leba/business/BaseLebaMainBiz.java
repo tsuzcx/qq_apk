@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.leba.business;
 
 import android.content.Intent;
+import android.os.Looper;
 import android.view.View;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.leba.entity.LeabOnPauseInfo;
 import com.tencent.mobileqq.leba.entity.LebaClickReportInfo;
 import com.tencent.mobileqq.leba.entity.LebaViewItem;
 import com.tencent.mobileqq.leba.proxy.ILebaProxy;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -19,53 +21,9 @@ public abstract class BaseLebaMainBiz
   {
     ILebaProxy localILebaProxy = this.a;
     if (localILebaProxy != null) {
-      return localILebaProxy.a();
+      return localILebaProxy.d();
     }
     return 0;
-  }
-  
-  public QBaseActivity a()
-  {
-    ILebaProxy localILebaProxy = this.a;
-    if (localILebaProxy != null) {
-      return localILebaProxy.a();
-    }
-    return null;
-  }
-  
-  public HashMap<String, LebaViewItem> a()
-  {
-    ILebaProxy localILebaProxy = this.a;
-    if (localILebaProxy != null) {
-      return localILebaProxy.a();
-    }
-    return new HashMap();
-  }
-  
-  public List<LebaViewItem> a()
-  {
-    ILebaProxy localILebaProxy = this.a;
-    if (localILebaProxy != null) {
-      return localILebaProxy.a();
-    }
-    return null;
-  }
-  
-  public AppRuntime a()
-  {
-    ILebaProxy localILebaProxy = this.a;
-    if (localILebaProxy != null) {
-      return localILebaProxy.a();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    ILebaProxy localILebaProxy = this.a;
-    if (localILebaProxy != null) {
-      localILebaProxy.a();
-    }
   }
   
   public void a(Intent paramIntent)
@@ -113,61 +71,99 @@ public abstract class BaseLebaMainBiz
     }
   }
   
-  public boolean a()
+  public AppRuntime b()
   {
     ILebaProxy localILebaProxy = this.a;
     if (localILebaProxy != null) {
       return localILebaProxy.a();
     }
-    return false;
-  }
-  
-  public void b()
-  {
-    ILebaProxy localILebaProxy = this.a;
-    if (localILebaProxy != null) {
-      localILebaProxy.b();
-    }
+    return null;
   }
   
   public void b(boolean paramBoolean) {}
   
-  public boolean b()
-  {
-    return a() == 1;
-  }
-  
   public void c()
   {
-    ILebaProxy localILebaProxy = this.a;
-    if (localILebaProxy != null) {
-      localILebaProxy.c();
+    if (this.a != null) {
+      try
+      {
+        if (Looper.myLooper() != Looper.getMainLooper())
+        {
+          this.a.a(new BaseLebaMainBiz.1(this));
+          return;
+        }
+        this.a.b();
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.i("BaseLebaMainBiz", 1, "notifyDataSetChanged", localException);
+      }
     }
   }
   
   public void c(boolean paramBoolean) {}
   
-  public void d()
+  public QBaseActivity d()
   {
     ILebaProxy localILebaProxy = this.a;
     if (localILebaProxy != null) {
-      localILebaProxy.d();
+      return localILebaProxy.c();
+    }
+    return null;
+  }
+  
+  public void e()
+  {
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.e();
     }
   }
   
-  public void e() {}
+  public List<LebaViewItem> f()
+  {
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      return localILebaProxy.f();
+    }
+    return null;
+  }
   
-  public void f() {}
+  public boolean g()
+  {
+    return false;
+  }
   
-  public void g() {}
+  public void h()
+  {
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.g();
+    }
+  }
   
-  public void h() {}
+  public void i()
+  {
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.h();
+    }
+  }
   
-  public void i() {}
+  public HashMap<String, LebaViewItem> j()
+  {
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      return localILebaProxy.i();
+    }
+    return new HashMap();
+  }
   
-  public void j() {}
-  
-  public void k() {}
+  public boolean k()
+  {
+    return a() == 1;
+  }
   
   public void l() {}
   
@@ -176,10 +172,24 @@ public abstract class BaseLebaMainBiz
   public void n() {}
   
   public void o() {}
+  
+  public void p() {}
+  
+  public void q() {}
+  
+  public void r() {}
+  
+  public void s() {}
+  
+  public void t() {}
+  
+  public void u() {}
+  
+  public void v() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.BaseLebaMainBiz
  * JD-Core Version:    0.7.0.1
  */

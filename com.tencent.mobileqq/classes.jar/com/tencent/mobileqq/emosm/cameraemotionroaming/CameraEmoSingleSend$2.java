@@ -15,26 +15,26 @@ class CameraEmoSingleSend$2
   
   public void onGifCreateFail()
   {
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateFail, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
-    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, false, null);
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateFail, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.c).emoId) });
+    CameraEmoSingleSend.a(this.c, false, null);
     HashMap localHashMap = new HashMap();
     localHashMap.put("sucFlag", "0");
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend.a().collectPerformance(null, "CamEmoCreateGIF", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, null);
+    this.c.f().collectPerformance(null, "CamEmoCreateGIF", false, System.currentTimeMillis() - this.b, 0L, localHashMap, null);
   }
   
   public void onGifCreateSuccess(String paramString)
   {
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateSuccess, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
-    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, true, paramString);
-    ((IEmosmService)QRoute.api(IEmosmService.class)).clearFrameFilesGifCreator(this.jdField_a_of_type_JavaLangObject);
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateSuccess, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.c).emoId) });
+    CameraEmoSingleSend.a(this.c, true, paramString);
+    ((IEmosmService)QRoute.api(IEmosmService.class)).clearFrameFilesGifCreator(this.a);
     paramString = new HashMap();
     paramString.put("sucFlag", "1");
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend.a().collectPerformance(null, "CamEmoCreateGIF", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, paramString, null);
+    this.c.f().collectPerformance(null, "CamEmoCreateGIF", true, System.currentTimeMillis() - this.b, 0L, paramString, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend.2
  * JD-Core Version:    0.7.0.1
  */

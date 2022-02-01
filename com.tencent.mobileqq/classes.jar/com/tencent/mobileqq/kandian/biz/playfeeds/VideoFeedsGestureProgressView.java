@@ -9,8 +9,8 @@ import android.view.View;
 public class VideoFeedsGestureProgressView
   extends View
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private Paint a = new Paint();
+  private float b = 0.0F;
   
   public VideoFeedsGestureProgressView(Context paramContext)
   {
@@ -30,21 +30,21 @@ public class VideoFeedsGestureProgressView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1711276032);
-    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawRect(0.0F, getHeight() - getHeight() * this.jdField_a_of_type_Float, getWidth(), getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.a.setColor(1711276032);
+    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.a);
+    this.a.setColor(-1);
+    paramCanvas.drawRect(0.0F, getHeight() - getHeight() * this.b, getWidth(), getHeight(), this.a);
   }
   
   public void setProgress(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramFloat;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsGestureProgressView
  * JD-Core Version:    0.7.0.1
  */

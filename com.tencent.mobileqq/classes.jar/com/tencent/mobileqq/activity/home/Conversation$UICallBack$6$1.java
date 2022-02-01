@@ -9,12 +9,12 @@ class Conversation$UICallBack$6$1
   
   public void run()
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation$UICallBack$6.a.a, this.jdField_a_of_type_AndroidOsMessage);
+    Conversation.a(this.b.a.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.6.1
  * JD-Core Version:    0.7.0.1
  */

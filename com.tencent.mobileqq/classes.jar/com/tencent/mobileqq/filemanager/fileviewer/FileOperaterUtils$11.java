@@ -14,16 +14,16 @@ final class FileOperaterUtils$11
   
   public void onClick(View paramView)
   {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.a;
     if (localActivity != null) {
-      LinkByWeiyunFragment.a(localActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_JavaLangString, false);
+      LinkByWeiyunFragment.a(localActivity, this.b, this.c, false);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.11
  * JD-Core Version:    0.7.0.1
  */

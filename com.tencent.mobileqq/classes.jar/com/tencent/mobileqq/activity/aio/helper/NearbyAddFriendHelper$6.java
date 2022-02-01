@@ -17,19 +17,19 @@ class NearbyAddFriendHelper$6
   protected void a(boolean paramBoolean, List<Long> paramList)
   {
     ChatActivityUtils.b();
-    Object localObject = this.a.jdField_a_of_type_AndroidContentContext;
-    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.a.d;
+    Context localContext = this.a.d;
     int i;
     if (paramBoolean) {
-      i = 2131719059;
+      i = 2131916595;
     } else {
-      i = 2131719048;
+      i = 2131916584;
     }
-    QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.b());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    QQToast.makeText((Context)localObject, 2, localContext.getString(i), 0).show(this.a.a.v());
+    if (this.a.e == null) {
       return;
     }
-    localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    localObject = this.a.e.b;
     if (paramList == null) {
       i = 0;
     } else {
@@ -46,9 +46,9 @@ class NearbyAddFriendHelper$6
     }
     if (k != 0)
     {
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidAppActivity, paramBoolean, false);
+      ChatActivityUtils.a(this.a.c, paramBoolean, false);
       if (paramBoolean) {
-        this.a.e();
+        this.a.g();
       }
     }
   }
@@ -56,10 +56,10 @@ class NearbyAddFriendHelper$6
   protected void b(boolean paramBoolean, List<Long> paramList)
   {
     
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    if (this.a.e == null) {
       return;
     }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    String str = this.a.e.b;
     int k = 0;
     int i;
     if (paramList == null) {
@@ -79,14 +79,14 @@ class NearbyAddFriendHelper$6
     {
       ChatActivityUtils.b();
       if (paramBoolean) {
-        this.a.e();
+        this.a.g();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.NearbyAddFriendHelper.6
  * JD-Core Version:    0.7.0.1
  */

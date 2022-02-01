@@ -12,12 +12,12 @@ class PopAnimState$2
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    PopAnimState.a(this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState).setTranslationY(0.0F);
+    PopAnimState.a(this.b).setTranslationY(0.0F);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    PopAnimState.a(this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState).setTranslationY(0.0F);
+    PopAnimState.a(this.b).setTranslationY(0.0F);
   }
   
   public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
@@ -29,8 +29,8 @@ class PopAnimState$2
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    PopAnimState.a(this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState).setTranslationY(this.jdField_a_of_type_Float);
-    PopOutAnimViewHelper.a(0, new View[] { PopAnimState.a(this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState), PopAnimState.a(this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState), PopAnimState.b(this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState) });
+    PopAnimState.a(this.b).setTranslationY(this.a);
+    PopOutAnimViewHelper.a(0, new View[] { PopAnimState.b(this.b), PopAnimState.a(this.b), PopAnimState.c(this.b) });
   }
   
   public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
@@ -40,7 +40,7 @@ class PopAnimState$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.state.PopAnimState.2
  * JD-Core Version:    0.7.0.1
  */

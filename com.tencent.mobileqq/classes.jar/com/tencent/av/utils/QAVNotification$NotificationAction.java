@@ -5,14 +5,14 @@ import android.app.PendingIntent;
 class QAVNotification$NotificationAction
 {
   public final int a;
-  public final PendingIntent a;
-  public final String a;
+  public final String b;
+  public final PendingIntent c;
   
   public QAVNotification$NotificationAction(int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
+    this.a = paramInt;
+    this.b = paramString;
+    this.c = paramPendingIntent;
   }
 }
 

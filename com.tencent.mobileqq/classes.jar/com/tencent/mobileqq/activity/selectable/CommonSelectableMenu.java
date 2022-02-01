@@ -19,124 +19,119 @@ import java.lang.ref.WeakReference;
 public class CommonSelectableMenu<T extends BaseActivity>
   implements View.OnClickListener
 {
-  private static int jdField_b_of_type_Int = -1;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
-  private AIOSelectableDelegateProxy jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy;
+  private static int l = -1;
   protected CommonMenuWrapper a;
-  protected TextSelectableHelper a;
-  public String a;
-  protected WeakReference<QQAppInterface> a;
-  private boolean jdField_a_of_type_Boolean;
-  protected WeakReference<T> b;
-  private boolean jdField_b_of_type_Boolean;
-  private int c = -1;
-  private int d = -1;
+  protected TextSelectableHelper b;
+  protected WeakReference<QQAppInterface> c;
+  protected WeakReference<T> d;
+  public String e;
+  private Point f = new Point();
+  private AIOSelectableDelegateProxy g;
+  private boolean h;
+  private boolean i;
+  private long j = -1L;
+  private int k;
+  private int m = -1;
+  private int n = -1;
   
   protected String a()
   {
-    if (AIOSelectableDelegateImpl.a().c()) {
-      return AIOSelectableDelegateImpl.a().b();
+    if (AIOSelectableDelegateImpl.a().l()) {
+      return AIOSelectableDelegateImpl.a().d();
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    return this.e;
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
     AIOSelectableDelegateImpl localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
-    if (localAIOSelectableDelegateImpl.c())
+    if (localAIOSelectableDelegateImpl.l())
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.h) {
         return;
       }
-      int i = paramMotionEvent.getAction();
-      int j = (int)paramMotionEvent.getRawX();
-      int k = (int)paramMotionEvent.getRawY();
-      if (i == 0)
+      int i1 = paramMotionEvent.getAction();
+      int i2 = (int)paramMotionEvent.getRawX();
+      int i3 = (int)paramMotionEvent.getRawY();
+      if (i1 == 0)
       {
-        this.jdField_b_of_type_Boolean = (localAIOSelectableDelegateImpl.a(j, k) ^ true);
-        this.jdField_a_of_type_Long = localAIOSelectableDelegateImpl.jdField_a_of_type_Long;
-        if (this.jdField_b_of_type_Boolean)
+        this.i = (localAIOSelectableDelegateImpl.d(i2, i3) ^ true);
+        this.j = localAIOSelectableDelegateImpl.b;
+        if (this.i)
         {
-          this.c = j;
-          this.d = k;
+          this.m = i2;
+          this.n = i3;
         }
         else
         {
-          this.c = -1;
-          this.d = -1;
+          this.m = -1;
+          this.n = -1;
         }
-        this.jdField_a_of_type_Int = 0;
+        this.k = 0;
         return;
       }
-      if (i == 2)
+      if (i1 == 2)
       {
-        if ((this.jdField_b_of_type_Boolean) && (Math.pow(this.c - j, 2.0D) + Math.pow(this.d - k, 2.0D) > jdField_b_of_type_Int))
+        if ((this.i) && (Math.pow(this.m - i2, 2.0D) + Math.pow(this.n - i3, 2.0D) > l))
         {
-          this.jdField_a_of_type_Int = 2;
+          this.k = 2;
           if (com.tencent.TMG.utils.QLog.isColorLevel()) {
             com.tencent.TMG.utils.QLog.d("CommonSelectableMenu", 0, "detect scrolling.");
           }
         }
       }
-      else if (((i == 1) || (i == 3)) && (this.jdField_b_of_type_Boolean))
+      else if (((i1 == 1) || (i1 == 3)) && (this.i))
       {
-        if (this.jdField_a_of_type_Int == 0)
+        if (this.k == 0)
         {
           if (com.tencent.TMG.utils.QLog.isColorLevel()) {
             com.tencent.TMG.utils.QLog.d("CommonSelectableMenu", 0, "detect taping.");
           }
-          long l1 = localAIOSelectableDelegateImpl.jdField_a_of_type_Long;
-          long l2 = this.jdField_a_of_type_Long;
+          long l1 = localAIOSelectableDelegateImpl.b;
+          long l2 = this.j;
           if ((l2 != -1L) && (l1 != -1L))
           {
             if (l2 == l1) {
-              localAIOSelectableDelegateImpl.d();
+              localAIOSelectableDelegateImpl.n();
             }
           }
           else {
-            localAIOSelectableDelegateImpl.d();
+            localAIOSelectableDelegateImpl.n();
           }
         }
-        this.jdField_a_of_type_Int = 1;
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Long = -1L;
+        this.k = 1;
+        this.i = false;
+        this.j = -1L;
       }
     }
   }
   
   public void a(T paramT, ContainerView paramContainerView)
   {
-    this.jdField_a_of_type_JavaLangString = paramContainerView.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextSelectableHelper = new TextSelectableHelper();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT.app);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
+    this.e = paramContainerView.getText();
+    this.b = new TextSelectableHelper();
+    this.c = new WeakReference(paramT.app);
+    this.d = new WeakReference(paramT);
     a(paramContainerView);
-    if (jdField_b_of_type_Int == -1)
+    if (l == -1)
     {
-      int i = ViewConfiguration.get(paramT).getScaledTouchSlop();
-      jdField_b_of_type_Int = i * i;
+      int i1 = ViewConfiguration.get(paramT).getScaledTouchSlop();
+      l = i1 * i1;
     }
   }
   
   protected void a(QQCustomMenu paramQQCustomMenu)
   {
-    paramQQCustomMenu.a(2131365311, HardCodeUtil.a(2131702432), 2130838903);
-    paramQQCustomMenu.a(2131367180, HardCodeUtil.a(2131702430), 2130838912);
-    paramQQCustomMenu.a(2131366494, HardCodeUtil.a(2131702431), 2130838911);
+    paramQQCustomMenu.a(2131431492, HardCodeUtil.a(2131900435), 2130839057);
+    paramQQCustomMenu.a(2131433636, HardCodeUtil.a(2131900433), 2130839066);
+    paramQQCustomMenu.a(2131432813, HardCodeUtil.a(2131900434), 2130839065);
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   protected void a(ContainerView paramContainerView)
   {
-    paramContainerView.a.setOnTouchListener(new CommonSelectableMenu.1(this));
-    paramContainerView.a.setOnLongClickListener(new CommonSelectableMenu.2(this, paramContainerView));
+    paramContainerView.c.setOnTouchListener(new CommonSelectableMenu.1(this));
+    paramContainerView.c.setOnLongClickListener(new CommonSelectableMenu.2(this, paramContainerView));
   }
   
   protected void a(ContainerView paramContainerView, View paramView)
@@ -148,80 +143,85 @@ public class CommonSelectableMenu<T extends BaseActivity>
       {
         Object localObject = new QQCustomMenu();
         a((QQCustomMenu)localObject);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper == null)
+        if (this.a == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper = new TextPreviewMenuWrapper();
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper.a(this);
+          this.a = new TextPreviewMenuWrapper();
+          this.a.a(this);
         }
-        int i = this.jdField_a_of_type_AndroidGraphicsPoint.y - AIOUtils.b(10.0F, paramView.getResources());
-        int j = this.jdField_a_of_type_AndroidGraphicsPoint.x - ViewUtils.b(14.0F);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper.a((QQCustomMenu)localObject, false);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper.a(j);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper.b(i);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper;
-        ((CommonMenuWrapper)localObject).jdField_a_of_type_Int = i;
-        ((CommonMenuWrapper)localObject).jdField_b_of_type_Int = j;
+        int i1 = this.f.y - AIOUtils.b(10.0F, paramView.getResources());
+        int i2 = this.f.x - ViewUtils.dpToPx(14.0F);
+        this.a.a((QQCustomMenu)localObject, false);
+        this.a.a(i2);
+        this.a.b(i1);
+        localObject = this.a;
+        ((CommonMenuWrapper)localObject).c = i1;
+        ((CommonMenuWrapper)localObject).d = i2;
         if (com.tencent.qphone.base.util.QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("showMenuView: pointY -> ");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(i1);
           ((StringBuilder)localObject).append(", lastShowX -> ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsPoint.x);
+          ((StringBuilder)localObject).append(this.f.x);
           com.tencent.qphone.base.util.QLog.d("CommonSelectableMenu", 2, ((StringBuilder)localObject).toString());
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy == null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy = new AIOSelectableDelegateProxy();
+        if (this.g == null) {
+          this.g = new AIOSelectableDelegateProxy();
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.a(localSelectableComponent);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.a(paramContainerView, paramContainerView);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextSelectableHelper.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper);
+        this.g.a(localSelectableComponent);
+        this.g.a(paramContainerView, paramContainerView);
+        this.g.a(this.a);
+        this.b.a(paramView, this.a);
       }
     }
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    AIOSelectableDelegateImpl localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
-    if ((localAIOSelectableDelegateImpl.c()) && (localAIOSelectableDelegateImpl.a())) {
-      localAIOSelectableDelegateImpl.d();
-    }
+    this.h = true;
   }
   
   public void b(ContainerView paramContainerView)
   {
-    if ((paramContainerView != null) && (paramContainerView.a != null))
+    if ((paramContainerView != null) && (paramContainerView.c != null))
     {
-      paramContainerView.a.setOnLongClickListener(null);
-      paramContainerView.a.setOnClickListener(null);
+      paramContainerView.c.setOnLongClickListener(null);
+      paramContainerView.c.setOnClickListener(null);
     }
-    paramContainerView = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy;
+    paramContainerView = this.g;
     if (paramContainerView != null)
     {
-      paramContainerView.d();
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableAIOSelectableDelegateProxy = null;
+      paramContainerView.n();
+      this.g = null;
     }
-    paramContainerView = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper;
+    paramContainerView = this.a;
     if (paramContainerView != null)
     {
       paramContainerView.a(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableCommonMenuWrapper = null;
+      this.a = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextSelectableHelper = null;
+    this.b = null;
+  }
+  
+  public void c()
+  {
+    this.h = false;
+    AIOSelectableDelegateImpl localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
+    if ((localAIOSelectableDelegateImpl.l()) && (localAIOSelectableDelegateImpl.i())) {
+      localAIOSelectableDelegateImpl.n();
+    }
+  }
+  
+  public boolean d()
+  {
+    return false;
   }
   
   public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.CommonSelectableMenu
  * JD-Core Version:    0.7.0.1
  */

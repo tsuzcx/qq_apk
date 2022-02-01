@@ -16,32 +16,32 @@ class AIOPictureView$10
   
   public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView.b.setVisibility(8);
+    this.e.y.setVisibility(8);
     if (paramBoolean)
     {
-      AIOPictureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
+      AIOPictureView.a(this.e, this.a, this.b, this.c, paramInt);
       return;
     }
-    AIOPictureView localAIOPictureView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView;
-    if (!AIOPictureView.a(localAIOPictureView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, localAIOPictureView.a.imageView))
+    AIOPictureView localAIOPictureView = this.e;
+    if (!AIOPictureView.a(localAIOPictureView, this.d, localAIOPictureView.k.imageView))
     {
-      localAIOPictureView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView;
-      if (!AIOPictureView.a(localAIOPictureView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, localAIOPictureView.a.imageView))
+      localAIOPictureView = this.e;
+      if (!AIOPictureView.a(localAIOPictureView, this.d, localAIOPictureView.k.imageView))
       {
-        localAIOPictureView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView;
-        if (!AIOPictureView.b(localAIOPictureView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, localAIOPictureView.a.imageView))
+        localAIOPictureView = this.e;
+        if (!AIOPictureView.b(localAIOPictureView, this.d, localAIOPictureView.k.imageView))
         {
-          localAIOPictureView = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView;
-          AIOPictureView.a(localAIOPictureView, localAIOPictureView.a.imageView);
+          localAIOPictureView = this.e;
+          AIOPictureView.a(localAIOPictureView, localAIOPictureView.k.imageView);
         }
       }
     }
-    AIOPictureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOPictureView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Int, 2);
+    AIOPictureView.a(this.e, this.d.a, this.d.b, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOPictureView.10
  * JD-Core Version:    0.7.0.1
  */

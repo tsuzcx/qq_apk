@@ -12,15 +12,15 @@ final class QAVGroupConfig$2
   
   protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
+    if (!TextUtils.equals(this.a, paramString)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    this.b.removeObserver(this);
     paramString = new StringBuilder();
     paramString.append("onGetTroopInfoResult[");
-    paramString.append(this.b);
+    paramString.append(this.c);
     paramString.append("], troopuin[");
-    paramString.append(this.jdField_a_of_type_JavaLangString);
+    paramString.append(this.a);
     paramString.append("], isSuc[");
     paramString.append(paramBoolean);
     paramString.append("]");
@@ -28,16 +28,16 @@ final class QAVGroupConfig$2
     if (paramBoolean)
     {
       paramString = new StringBuilder();
-      paramString.append(this.b);
+      paramString.append(this.c);
       paramString.append(".onGetTroopInfoResult");
-      QAVGroupConfig.GroupInviteFlag.a(paramString.toString(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      QAVGroupConfig.GroupInviteFlag.a(paramString.toString(), this.b, this.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    this.b.removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QAVGroupConfig.2
  * JD-Core Version:    0.7.0.1
  */

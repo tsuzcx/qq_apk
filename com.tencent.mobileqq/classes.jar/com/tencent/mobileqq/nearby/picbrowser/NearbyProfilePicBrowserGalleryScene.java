@@ -22,9 +22,9 @@ public class NearbyProfilePicBrowserGalleryScene
   extends PicBrowserGalleryScene
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  private TextView f;
+  private TextView g;
+  private int h = 0;
   
   public NearbyProfilePicBrowserGalleryScene(PicBrowserActivity paramPicBrowserActivity, AbstractImageListModel paramAbstractImageListModel)
   {
@@ -33,71 +33,71 @@ public class NearbyProfilePicBrowserGalleryScene
   
   protected RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559493, null);
+    return (RelativeLayout)LayoutInflater.from(this.w).inflate(2131625514, null);
   }
   
   protected void a(int paramInt)
   {
-    if (paramInt == this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    if (paramInt == this.h) {
+      this.f.setVisibility(8);
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.f.setVisibility(0);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a() <= 1)
+    if (this.c.a() <= 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.b.setVisibility(8);
+      this.f.setVisibility(8);
+      this.g.setVisibility(8);
     }
   }
   
   public void b(ViewGroup paramViewGroup)
   {
     super.b(paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377300));
-    this.b = ((TextView)paramViewGroup.findViewById(2131365483));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b.setOnClickListener(this);
+    this.f = ((TextView)paramViewGroup.findViewById(2131445688));
+    this.g = ((TextView)paramViewGroup.findViewById(2131431697));
+    this.f.setOnClickListener(this);
+    this.g.setOnClickListener(this);
   }
   
-  public void l()
+  public void n()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a();
-    int i = this.jdField_a_of_type_Int;
+    ArrayList localArrayList = this.c.f();
+    int i = this.h;
     if ((i != 0) && (i < localArrayList.size())) {
-      localArrayList.add(0, (PicInfo)localArrayList.remove(this.jdField_a_of_type_Int));
+      localArrayList.add(0, (PicInfo)localArrayList.remove(this.h));
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("intent_param_pic_infos", localArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity.setResult(-1, localIntent);
-    super.l();
+    this.b.setResult(-1, localIntent);
+    super.n();
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131365483)
+    if (i != 2131431697)
     {
-      if (i != 2131377300) {
+      if (i != 2131445688) {
         return;
       }
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.b();
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694414), 0).a();
+      this.h = this.c.b();
+      this.f.setVisibility(8);
+      QQToast.makeText(this.w, this.w.getResources().getString(2131892093), 0).show();
       return;
     }
-    i = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.b();
-    int j = this.jdField_a_of_type_Int;
+    i = this.c.b();
+    int j = this.h;
     if (i < j) {
-      this.jdField_a_of_type_Int = (j - 1);
+      this.h = (j - 1);
     } else if (i == j) {
-      if (i == this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a() - 1) {
-        this.jdField_a_of_type_Int = (i - 1);
+      if (i == this.c.a() - 1) {
+        this.h = (i - 1);
       } else {
-        this.jdField_a_of_type_Int = i;
+        this.h = i;
       }
     }
-    d();
-    a(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.b());
+    E();
+    a(this.c.b());
   }
   
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -108,7 +108,7 @@ public class NearbyProfilePicBrowserGalleryScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserGalleryScene
  * JD-Core Version:    0.7.0.1
  */

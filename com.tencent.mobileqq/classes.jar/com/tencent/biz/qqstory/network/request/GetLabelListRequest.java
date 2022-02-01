@@ -15,17 +15,17 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetLabelListRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.video_tag_search");
-  public String b;
-  public int c;
-  public String c;
+  public static final String e = StoryApi.a("StorySvc.video_tag_search");
+  public String f;
+  public String g = "";
+  public int h;
   
-  public GetLabelListRequest()
+  public String a()
   {
-    this.jdField_c_of_type_JavaLangString = "";
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     Object localObject = new qqstory_service.RspGetLabelList();
     try
@@ -43,17 +43,12 @@ public class GetLabelListRequest
     return null;
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetLabelList localReqGetLabelList = new qqstory_service.ReqGetLabelList();
-    localReqGetLabelList.keyword.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqGetLabelList.count.set(this.jdField_c_of_type_Int);
-    localReqGetLabelList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localReqGetLabelList.keyword.set(ByteStringMicro.copyFromUtf8(this.f));
+    localReqGetLabelList.count.set(this.h);
+    localReqGetLabelList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.g));
     return localReqGetLabelList.toByteArray();
   }
   
@@ -61,12 +56,12 @@ public class GetLabelListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetLabelListRequest{count=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", keyword='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", startCookie='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -74,7 +69,7 @@ public class GetLabelListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetLabelListRequest
  * JD-Core Version:    0.7.0.1
  */

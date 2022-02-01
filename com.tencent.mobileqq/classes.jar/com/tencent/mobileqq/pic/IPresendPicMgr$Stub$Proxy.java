@@ -13,25 +13,6 @@ class IPresendPicMgr$Stub$Proxy
     this.a = paramIBinder;
   }
   
-  public int a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.pic.IPresendPicMgr");
-      this.a.transact(5, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public void a()
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -120,17 +101,22 @@ class IPresendPicMgr$Stub$Proxy
     }
   }
   
-  public int[] a()
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public int b()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.mobileqq.pic.IPresendPicMgr");
-      this.a.transact(7, localParcel1, localParcel2, 0);
+      this.a.transact(5, localParcel1, localParcel2, 0);
       localParcel2.readException();
-      int[] arrayOfInt = localParcel2.createIntArray();
-      return arrayOfInt;
+      int i = localParcel2.readInt();
+      return i;
     }
     finally
     {
@@ -139,7 +125,7 @@ class IPresendPicMgr$Stub$Proxy
     }
   }
   
-  public boolean[] a()
+  public boolean[] c()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -158,14 +144,28 @@ class IPresendPicMgr$Stub$Proxy
     }
   }
   
-  public IBinder asBinder()
+  public int[] d()
   {
-    return this.a;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.pic.IPresendPicMgr");
+      this.a.transact(7, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int[] arrayOfInt = localParcel2.createIntArray();
+      return arrayOfInt;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.IPresendPicMgr.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

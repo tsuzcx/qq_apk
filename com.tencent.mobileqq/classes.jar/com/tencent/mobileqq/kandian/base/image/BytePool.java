@@ -7,30 +7,25 @@ import java.util.List;
 
 public class BytePool
 {
-  protected static final Comparator<byte[]> a;
-  private int jdField_a_of_type_Int = 0;
-  private List<byte[]> jdField_a_of_type_JavaUtilList = new ArrayList(64);
-  private final int b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilComparator = new BytePool.1();
-  }
+  protected static final Comparator<byte[]> a = new BytePool.1();
+  private List<byte[]> b = new ArrayList(64);
+  private int c = 0;
+  private final int d;
   
   public BytePool(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
   }
   
   private void b()
   {
     try
     {
-      while (this.jdField_a_of_type_Int > this.b)
+      while (this.c > this.d)
       {
-        byte[] arrayOfByte = (byte[])this.jdField_a_of_type_JavaUtilList.get(0);
-        this.jdField_a_of_type_JavaUtilList.remove(arrayOfByte);
-        this.jdField_a_of_type_Int -= arrayOfByte.length;
+        byte[] arrayOfByte = (byte[])this.b.get(0);
+        this.b.remove(arrayOfByte);
+        this.c -= arrayOfByte.length;
       }
       return;
     }
@@ -48,7 +43,7 @@ public class BytePool
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
       return;
     }
     finally
@@ -63,15 +58,15 @@ public class BytePool
     if (paramArrayOfByte != null) {
       try
       {
-        if (paramArrayOfByte.length <= this.b)
+        if (paramArrayOfByte.length <= this.d)
         {
-          int j = Collections.binarySearch(this.jdField_a_of_type_JavaUtilList, paramArrayOfByte, jdField_a_of_type_JavaUtilComparator);
+          int j = Collections.binarySearch(this.b, paramArrayOfByte, a);
           int i = j;
           if (j < 0) {
             i = -j - 1;
           }
-          this.jdField_a_of_type_JavaUtilList.add(i, paramArrayOfByte);
-          this.jdField_a_of_type_Int += paramArrayOfByte.length;
+          this.b.add(i, paramArrayOfByte);
+          this.c += paramArrayOfByte.length;
           b();
           return;
         }
@@ -85,13 +80,13 @@ public class BytePool
     int i = 0;
     try
     {
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.b.size())
       {
-        arrayOfByte = (byte[])this.jdField_a_of_type_JavaUtilList.get(i);
+        arrayOfByte = (byte[])this.b.get(i);
         if (arrayOfByte.length >= paramInt)
         {
-          this.jdField_a_of_type_Int -= arrayOfByte.length;
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+          this.c -= arrayOfByte.length;
+          this.b.remove(i);
           return arrayOfByte;
         }
         i += 1;
@@ -108,7 +103,7 @@ public class BytePool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.BytePool
  * JD-Core Version:    0.7.0.1
  */

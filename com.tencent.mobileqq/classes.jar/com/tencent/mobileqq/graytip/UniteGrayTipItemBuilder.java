@@ -81,9 +81,9 @@ import mqq.app.AppRuntime;
 public class UniteGrayTipItemBuilder
   extends AbstractChatItemBuilder
 {
-  private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray(5);
-  private HashMap<Long, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  private ConcurrentHashMap<Long, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
+  private SparseBooleanArray e = new SparseBooleanArray(5);
+  private ConcurrentHashMap<Long, Boolean> f = new ConcurrentHashMap(5);
+  private HashMap<Long, Boolean> g = new HashMap(10);
   
   public UniteGrayTipItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -98,7 +98,7 @@ public class UniteGrayTipItemBuilder
   private void a(ChatMessage paramChatMessage, BaseActivity paramBaseActivity)
   {
     if (PaiYiPaiMsgUtil.a(paramChatMessage)) {
-      ((AioPaiYiPaiHelper)paramBaseActivity.getChatFragment().a().a(84)).a(paramChatMessage);
+      ((AioPaiYiPaiHelper)paramBaseActivity.getChatFragment().k().q(84)).a(paramChatMessage);
     }
   }
   
@@ -125,11 +125,11 @@ public class UniteGrayTipItemBuilder
       {
         if (Long.valueOf(paramMessageForUniteGrayTip).equals(Long.valueOf(1111L)))
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B1A2", "0X800B1A2", 0, 0, "", "", "", "");
+          ReportController.b(this.a, "dc00898", "", "", "0X800B1A2", "0X800B1A2", 0, 0, "", "", "", "");
           return;
         }
         if (Long.valueOf(paramMessageForUniteGrayTip).equals(Long.valueOf(1112L))) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B1A4", "0X800AD82", 0, 0, "", "", "", "");
+          ReportController.b(this.a, "dc00898", "", "", "0X800B1A4", "0X800AD82", 0, 0, "", "", "", "");
         }
       }
     }
@@ -141,8 +141,8 @@ public class UniteGrayTipItemBuilder
     {
       paramMessageForUniteGrayTip.troopLuckyCharacterTipsHasReport = true;
       int i = (int)(Long.valueOf(paramString).longValue() - 1069L);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "Luckyword_tips_exp", 0, 0, "", "", "", "");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "Luckyword_tips_exp", i + 1, 0, "", "", "", "");
+      ReportController.b(this.a, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "Luckyword_tips_exp", 0, 0, "", "", "", "");
+      ReportController.b(this.a, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "Luckyword_tips_exp", i + 1, 0, "", "", "", "");
     }
   }
   
@@ -159,7 +159,7 @@ public class UniteGrayTipItemBuilder
       long l2 = Long.parseLong(paramMessageRecord);
       if ((l1 == 2L) && (l2 == 1024L))
       {
-        paramMessageRecord = paramMessageForUniteGrayTip.tipParam.a();
+        paramMessageRecord = paramMessageForUniteGrayTip.tipParam.b();
         if (paramMessageRecord != null)
         {
           paramMessageRecord = (GrayTipsMessageConstants.HighlightItem)paramMessageRecord.get(0);
@@ -180,15 +180,15 @@ public class UniteGrayTipItemBuilder
       if (!TextUtils.isEmpty(str)) {
         if (str.contains("动作"))
         {
-          if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq)))
+          if (!this.g.containsKey(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq)))
           {
-            this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq), Boolean.valueOf(true));
+            this.g.put(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq), Boolean.valueOf(true));
             ReportController.b(null, "dc00898", "", "", "0X800B43D", "0X800B43D", 0, 0, "", "", "", "");
           }
         }
-        else if ((str.contains("效果")) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq))))
+        else if ((str.contains("效果")) && (!this.g.containsKey(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq))))
         {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq), Boolean.valueOf(true));
+          this.g.put(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq), Boolean.valueOf(true));
           ReportController.b(null, "dc00898", "", "", "0X800B43F", "0X800B43F", 0, 0, "", "", "", "");
         }
       }
@@ -200,7 +200,7 @@ public class UniteGrayTipItemBuilder
     if ((Long.valueOf(paramString).equals(Long.valueOf(1021L))) && (!paramMessageForUniteGrayTip.dkTipHasReport))
     {
       paramMessageForUniteGrayTip.dkTipHasReport = true;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD82", "0X800AD82", 0, 0, "", "", "", "");
+      ReportController.b(this.a, "dc00898", "", "", "0X800AD82", "0X800AD82", 0, 0, "", "", "", "");
     }
   }
   
@@ -215,13 +215,13 @@ public class UniteGrayTipItemBuilder
       return;
     }
     Object localObject1;
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))
+    if ((this.c instanceof BaseActivity))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ChatItemBuilder", 2, "revoke msg click handle del msg");
       }
-      localObject1 = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if ((localObject1 == null) || (((ChatFragment)localObject1).a() == null)) {}
+      localObject1 = ((BaseActivity)this.c).getChatFragment();
+      if ((localObject1 == null) || (((ChatFragment)localObject1).k() == null)) {}
     }
     for (;;)
     {
@@ -233,18 +233,18 @@ public class UniteGrayTipItemBuilder
         localObject1 = (MessageForUniteGrayTip)paramChatMessage;
         if (((MessageForUniteGrayTip)localObject1).istroop == 0)
         {
-          if (((MessageForUniteGrayTip)localObject1).senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+          if (((MessageForUniteGrayTip)localObject1).senderuin.equals(this.a.getCurrentAccountUin())) {
             i = 1;
           }
         }
         else if (((MessageForUniteGrayTip)localObject1).istroop == 1)
         {
-          boolean bool1 = TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-          boolean bool2 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-          localObject2 = ((MessageForUniteGrayTip)localObject1).tipParam.c;
+          boolean bool1 = TroopUtils.a(this.a, paramChatMessage.frienduin, this.a.getCurrentUin());
+          boolean bool2 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(this.a, paramChatMessage.frienduin, this.a.getCurrentUin());
+          localObject2 = ((MessageForUniteGrayTip)localObject1).tipParam.g;
           Object localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(HardCodeUtil.a(2131715667));
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131697710));
+          ((StringBuilder)localObject3).append(HardCodeUtil.a(2131913135));
+          ((StringBuilder)localObject3).append(this.a.getApp().getString(2131895483));
           localObject3 = ((StringBuilder)localObject3).toString();
           if (bool1)
           {
@@ -254,7 +254,7 @@ public class UniteGrayTipItemBuilder
             }
             else
             {
-              if (!((MessageForUniteGrayTip)localObject1).senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+              if (!((MessageForUniteGrayTip)localObject1).senderuin.equals(this.a.getCurrentAccountUin())) {
                 break label540;
               }
               i = 4;
@@ -268,7 +268,7 @@ public class UniteGrayTipItemBuilder
             }
             else
             {
-              if (!((MessageForUniteGrayTip)localObject1).senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+              if (!((MessageForUniteGrayTip)localObject1).senderuin.equals(this.a.getCurrentAccountUin())) {
                 break label540;
               }
               i = 6;
@@ -276,7 +276,7 @@ public class UniteGrayTipItemBuilder
           }
           else
           {
-            if (!((MessageForUniteGrayTip)localObject1).senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+            if (!((MessageForUniteGrayTip)localObject1).senderuin.equals(this.a.getCurrentAccountUin())) {
               break label540;
             }
             i = 7;
@@ -284,23 +284,23 @@ public class UniteGrayTipItemBuilder
         }
         else if (((MessageForUniteGrayTip)localObject1).istroop == 3000)
         {
-          if (!((MessageForUniteGrayTip)localObject1).senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+          if (!((MessageForUniteGrayTip)localObject1).senderuin.equals(this.a.getCurrentAccountUin())) {
             break label546;
           }
           i = 9;
         }
         else
         {
-          localObject1 = ((MessageForUniteGrayTip)localObject1).tipParam.c;
+          localObject1 = ((MessageForUniteGrayTip)localObject1).tipParam.g;
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(HardCodeUtil.a(2131715666));
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694325));
+          ((StringBuilder)localObject2).append(HardCodeUtil.a(2131913134));
+          ((StringBuilder)localObject2).append(this.a.getApp().getString(2131891963));
           if (((String)localObject1).equals(((StringBuilder)localObject2).toString())) {
             break label552;
           }
           i = 11;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject1 = this.a;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(i);
         ((StringBuilder)localObject2).append("");
@@ -312,7 +312,7 @@ public class UniteGrayTipItemBuilder
           QLog.i("ChatItemBuilder", 1, "0X800A613", localRuntimeException);
         }
       }
-      ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+      ChatActivityFacade.a(this.c, this.a, paramChatMessage);
       return;
       label540:
       i = 8;
@@ -351,10 +351,10 @@ public class UniteGrayTipItemBuilder
     Object localObject1 = (UniteGrayTipItemBuilder.Holder)paramViewHolder;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558861, null);
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b = ((TextView)paramViewHolder.findViewById(2131367798));
-      ((UniteGrayTipItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView = ((AutoBgImageView)paramViewHolder.findViewById(2131376507));
-      paramView = ((UniteGrayTipItemBuilder.Holder)localObject1).b.getLayoutParams();
+      paramViewHolder = LayoutInflater.from(this.c).inflate(2131624481, null);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d = ((TextView)paramViewHolder.findViewById(2131434371));
+      ((UniteGrayTipItemBuilder.Holder)localObject1).e = ((AutoBgImageView)paramViewHolder.findViewById(2131444751));
+      paramView = ((UniteGrayTipItemBuilder.Holder)localObject1).d.getLayoutParams();
       if ((paramView instanceof ViewGroup.MarginLayoutParams))
       {
         paramView = (ViewGroup.MarginLayoutParams)paramView;
@@ -367,12 +367,12 @@ public class UniteGrayTipItemBuilder
     {
       paramViewHolder = paramView;
     }
-    ((UniteGrayTipItemBuilder.Holder)localObject1).b.setLineSpacing(0.0F, 1.0F);
-    ((UniteGrayTipItemBuilder.Holder)localObject1).b.setIncludeFontPadding(true);
-    ((UniteGrayTipItemBuilder.Holder)localObject1).b.setMovementMethod(null);
-    ((UniteGrayTipItemBuilder.Holder)localObject1).b.setTextColor(paramViewHolder.getResources().getColorStateList(2131167362));
-    ((UniteGrayTipItemBuilder.Holder)localObject1).b.setGravity(19);
-    ((UniteGrayTipItemBuilder.Holder)localObject1).b.setBackgroundResource(0);
+    ((UniteGrayTipItemBuilder.Holder)localObject1).d.setLineSpacing(0.0F, 1.0F);
+    ((UniteGrayTipItemBuilder.Holder)localObject1).d.setIncludeFontPadding(true);
+    ((UniteGrayTipItemBuilder.Holder)localObject1).d.setMovementMethod(null);
+    ((UniteGrayTipItemBuilder.Holder)localObject1).d.setTextColor(paramViewHolder.getResources().getColorStateList(2131168417));
+    ((UniteGrayTipItemBuilder.Holder)localObject1).d.setGravity(19);
+    ((UniteGrayTipItemBuilder.Holder)localObject1).d.setBackgroundResource(0);
     bool1 = paramViewHolder instanceof StickerGrayTipLayout;
     Object localObject4;
     label441:
@@ -383,12 +383,12 @@ public class UniteGrayTipItemBuilder
       StartupTracker.a(null, "AIO_Handle_Sticker_Cost");
       StickerGrayTipLayout localStickerGrayTipLayout = (StickerGrayTipLayout)paramViewHolder;
       localStickerGrayTipLayout.removeAllStickers();
-      paramView = EmojiStickerManager.a().a(paramMessageRecord);
-      int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
+      paramView = EmojiStickerManager.a().c(paramMessageRecord);
+      int m = this.c.getResources().getDisplayMetrics().widthPixels;
       if ((paramView != null) && (paramView.size() > 0))
       {
-        IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEmoticonManagerService.class);
-        localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView);
+        IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)this.a.getRuntimeService(IEmoticonManagerService.class);
+        localObject4 = this.a.getMessageFacade().a(this.d.b, this.d.a, paramView);
         int n = ((List)localObject4).size() - 1;
         j = 0;
         i = 0;
@@ -404,12 +404,12 @@ public class UniteGrayTipItemBuilder
           }
           else
           {
-            localObject3 = EmojiStickerManager.a((MessageRecord)localObject5);
+            localObject3 = EmojiStickerManager.d((MessageRecord)localObject5);
             k = j;
             if (localObject3 != null)
             {
               k = j;
-              if (EmojiStickerManager.c((MessageRecord)localObject5))
+              if (EmojiStickerManager.h((MessageRecord)localObject5))
               {
                 k = j + 1;
                 if (k <= QVipStickerProcessor.c) {
@@ -465,14 +465,14 @@ public class UniteGrayTipItemBuilder
           }
           j = 0;
           label636:
-          f1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+          f1 = this.c.getResources().getDisplayMetrics().density;
           localObject3 = "";
           if ((paramViewHolder instanceof IPicEmoticonInfo))
           {
             localObject5 = (IPicEmoticonInfo)paramViewHolder;
             if (((IPicEmoticonInfo)localObject5).getEmoticon() != null)
             {
-              if ((!EmojiStickerManager.g) && (FileUtils.getAvailableInnernalMemorySize() > 1.048576E+008F)) {
+              if ((!EmojiStickerManager.u) && (FileUtils.getAvailableInnernalMemorySize() > 1.048576E+008F)) {
                 i1 = 1;
               } else {
                 i1 = 0;
@@ -480,7 +480,7 @@ public class UniteGrayTipItemBuilder
               if (i1 != 0) {
                 paramViewHolder = ((IPicEmoticonInfo)localObject5).getLoadingDrawable("fromAIO", true, false, null, i3, i3);
               } else {
-                paramViewHolder = ((IPicEmoticonInfo)localObject5).getDrawable(this.jdField_a_of_type_AndroidContentContext, f1);
+                paramViewHolder = ((IPicEmoticonInfo)localObject5).getDrawable(this.c, f1);
               }
               localObject3 = ((IPicEmoticonInfo)localObject5).getEmoticon().epId;
             }
@@ -494,7 +494,7 @@ public class UniteGrayTipItemBuilder
             if (!(paramViewHolder instanceof SystemAndEmojiEmoticonInfo)) {
               break label787;
             }
-            paramViewHolder = ((SystemAndEmojiEmoticonInfo)paramViewHolder).getBigDrawable(this.jdField_a_of_type_AndroidContentContext, f1);
+            paramViewHolder = ((SystemAndEmojiEmoticonInfo)paramViewHolder).getBigDrawable(this.c, f1);
           }
           for (;;)
           {
@@ -502,11 +502,11 @@ public class UniteGrayTipItemBuilder
             label787:
             if ((paramViewHolder instanceof ISmallEmoticonInfo))
             {
-              paramViewHolder = ((ISmallEmoticonInfo)paramViewHolder).getBigDrawable(this.jdField_a_of_type_AndroidContentContext, f1);
+              paramViewHolder = ((ISmallEmoticonInfo)paramViewHolder).getBigDrawable(this.c, f1);
             }
             else if ((localObject5 instanceof MessageForPic))
             {
-              paramViewHolder = PicItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, (MessageForPic)localObject5);
+              paramViewHolder = PicItemBuilder.a(this.c, (MessageForPic)localObject5);
               localObject5 = new UniteGrayTipItemBuilder.1(this, (MessageRecord)localObject5);
               ThreadManager.post((Runnable)localObject5, 5, null, true);
             }
@@ -545,16 +545,16 @@ public class UniteGrayTipItemBuilder
     }
     if (!(paramMessageRecord instanceof MessageForUniteGrayTip))
     {
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setText(paramMessageRecord.msg);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setText(paramMessageRecord.msg);
       return paramView;
     }
     Object localObject3 = (MessageForUniteGrayTip)paramMessageRecord;
     if (!AIOUtils.i) {
-      UniteGrayTipUtil.a((MessageForUniteGrayTip)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      UniteGrayTipUtil.a((MessageForUniteGrayTip)localObject3, this.a);
     }
-    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.b == 655381))
+    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.i == 655381))
     {
-      localObject2 = ((MessageForUniteGrayTip)localObject3).tipParam.a();
+      localObject2 = ((MessageForUniteGrayTip)localObject3).tipParam.b();
       localObject2 = (GrayTipsMessageConstants.HighlightItem)((ArrayList)localObject2).get(((ArrayList)localObject2).size() - 1);
       if ((localObject2 == null) || (((GrayTipsMessageConstants.HighlightItem)localObject2).actionType != 38)) {}
     }
@@ -587,16 +587,16 @@ public class UniteGrayTipItemBuilder
       QLog.d(paramViewHolder, 2, ((StringBuilder)localObject4).toString());
     }
     int j = 0;
-    if (this.jdField_a_of_type_AndroidUtilSparseBooleanArray.get(i, true))
+    if (this.e.get(i, true))
     {
       ReportController.b(null, "dc00898", "", "", "0X8009979", "0X8009979", i, i, "", "", "", "");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800BB8F", "0X800BB8F", j, 0, "", "", "", "");
-      this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(i, false);
+      ReportController.b(this.a, "dc00898", "", "", "0X800BB8F", "0X800BB8F", j, 0, "", "", "", "");
+      this.e.put(i, false);
     }
     localObject2 = paramViewHolder;
-    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.b == 655383))
+    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.i == 655383))
     {
-      paramViewHolder = ((MessageForUniteGrayTip)localObject3).tipParam.a();
+      paramViewHolder = ((MessageForUniteGrayTip)localObject3).tipParam.b();
       if (paramViewHolder == null) {
         if (paramMessageRecord.istroop == 0) {
           i = PushNotificationManager.b;
@@ -635,7 +635,7 @@ public class UniteGrayTipItemBuilder
     label1376:
     i = 0;
     label1379:
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(((MessageForUniteGrayTip)localObject3).uniseq)))
+    if (!this.f.containsKey(Long.valueOf(((MessageForUniteGrayTip)localObject3).uniseq)))
     {
       if (QLog.isColorLevel())
       {
@@ -645,52 +645,52 @@ public class UniteGrayTipItemBuilder
         QLog.d((String)localObject2, 2, paramViewHolder.toString());
       }
       ReportController.b(null, "dc00898", "", "", "0X8009ACF", "0X8009ACF", i, i, "", "", "", "");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((MessageForUniteGrayTip)localObject3).uniseq), Boolean.valueOf(false));
+      this.f.put(Long.valueOf(((MessageForUniteGrayTip)localObject3).uniseq), Boolean.valueOf(false));
     }
-    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.b == 655397))
+    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.i == 655397))
     {
-      UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject3);
+      UniteGrayTipUtil.a(this.a, (MessageForUniteGrayTip)localObject3);
       paramViewHolder = ((MessageForUniteGrayTip)localObject3).getExtInfoFromExtStr("unite_gray_tips_align");
       if ((!TextUtils.isEmpty(paramViewHolder)) && (paramViewHolder.equals("center"))) {
-        ((UniteGrayTipItemBuilder.Holder)localObject1).b.setGravity(17);
+        ((UniteGrayTipItemBuilder.Holder)localObject1).d.setGravity(17);
       }
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setLineSpacing(8.0F, 1.0F);
-      if ((!"null".equals(((ChatBackgroundManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) || ((!ThemeUtil.isDefaultTheme()) && (!ThemeUtil.isNowThemeIsNight(null, false, null)) && (!ThemeUtil.isNowThemeIsSimple(null, false, null))))
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setLineSpacing(8.0F, 1.0F);
+      if ((!"null".equals(((ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).c(this.d.b))) || ((!ThemeUtil.isDefaultTheme()) && (!ThemeUtil.isNowThemeIsNight(null, false, null)) && (!ThemeUtil.isNowThemeIsSimple(null, false, null))))
       {
-        ((UniteGrayTipItemBuilder.Holder)localObject1).b.setTextColor(paramView.getResources().getColorStateList(2131167266));
-        ((UniteGrayTipItemBuilder.Holder)localObject1).b.setBackgroundResource(2130851157);
+        ((UniteGrayTipItemBuilder.Holder)localObject1).d.setTextColor(paramView.getResources().getColorStateList(2131168264));
+        ((UniteGrayTipItemBuilder.Holder)localObject1).d.setBackgroundResource(2130853402);
       }
       a(paramMessageRecord, (MessageForUniteGrayTip)localObject3);
     }
-    if ((((MessageForUniteGrayTip)localObject3).editState == 1) && ((((MessageForUniteGrayTip)localObject3).tipParam == null) || ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.a() == null))) && (QLog.isColorLevel()))
+    if ((((MessageForUniteGrayTip)localObject3).editState == 1) && ((((MessageForUniteGrayTip)localObject3).tipParam == null) || ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.b() == null))) && (QLog.isColorLevel()))
     {
       localObject4 = ((MessageForUniteGrayTip)localObject3).tipParam;
       if (((MessageForUniteGrayTip)localObject3).tipParam != null) {
-        paramViewHolder = ((MessageForUniteGrayTip)localObject3).tipParam.a();
+        paramViewHolder = ((MessageForUniteGrayTip)localObject3).tipParam.b();
       } else {
         paramViewHolder = null;
       }
       QLog.d((String)localObject2, 2, new Object[] { "revoke msg grayTipItemBuilder edit param error grayMsg.tipParam = ", localObject4, " highlightItems=", paramViewHolder });
     }
-    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.b == 2)) {
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setGravity(17);
+    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.i == 2)) {
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setGravity(17);
     }
     try
     {
-      if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.b == 1))
+      if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.i == 1))
       {
-        paramViewHolder = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849874);
-        ((UniteGrayTipItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setImageDrawable(paramViewHolder);
-        ((UniteGrayTipItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691476));
-        ((UniteGrayTipItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setVisibility(0);
-        ((UniteGrayTipItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setOnClickListener(new UniteGrayTipItemBuilder.3(this, (UniteGrayTipItemBuilder.Holder)localObject1));
-        ((UniteGrayTipItemBuilder.Holder)localObject1).b.setMaxWidth(ViewUtils.a() - ViewUtils.b(31.0F));
-        ((ViewGroup.MarginLayoutParams)((UniteGrayTipItemBuilder.Holder)localObject1).b.getLayoutParams()).rightMargin = 0;
+        paramViewHolder = this.c.getResources().getDrawable(2130851581);
+        ((UniteGrayTipItemBuilder.Holder)localObject1).e.setImageDrawable(paramViewHolder);
+        ((UniteGrayTipItemBuilder.Holder)localObject1).e.setContentDescription(this.c.getResources().getString(2131888434));
+        ((UniteGrayTipItemBuilder.Holder)localObject1).e.setVisibility(0);
+        ((UniteGrayTipItemBuilder.Holder)localObject1).e.setOnClickListener(new UniteGrayTipItemBuilder.3(this, (UniteGrayTipItemBuilder.Holder)localObject1));
+        ((UniteGrayTipItemBuilder.Holder)localObject1).d.setMaxWidth(ViewUtils.getScreenWidth() - ViewUtils.dpToPx(31.0F));
+        ((ViewGroup.MarginLayoutParams)((UniteGrayTipItemBuilder.Holder)localObject1).d.getLayoutParams()).rightMargin = 0;
       }
       else
       {
-        ((UniteGrayTipItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setVisibility(8);
-        paramViewHolder = ((UniteGrayTipItemBuilder.Holder)localObject1).b.getLayoutParams();
+        ((UniteGrayTipItemBuilder.Holder)localObject1).e.setVisibility(8);
+        paramViewHolder = ((UniteGrayTipItemBuilder.Holder)localObject1).d.getLayoutParams();
         if ((paramViewHolder instanceof ViewGroup.MarginLayoutParams))
         {
           paramViewHolder = (ViewGroup.MarginLayoutParams)paramViewHolder;
@@ -698,8 +698,8 @@ public class UniteGrayTipItemBuilder
             paramViewHolder.rightMargin = BaseChatItemLayout.y;
           }
         }
-        ((UniteGrayTipItemBuilder.Holder)localObject1).b.setMaxWidth(2147483647);
-        ((UniteGrayTipItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setOnClickListener(null);
+        ((UniteGrayTipItemBuilder.Holder)localObject1).d.setMaxWidth(2147483647);
+        ((UniteGrayTipItemBuilder.Holder)localObject1).e.setOnClickListener(null);
       }
     }
     catch (RuntimeException paramViewHolder)
@@ -708,15 +708,15 @@ public class UniteGrayTipItemBuilder
         QLog.d((String)localObject2, 2, "deal revoke tips fail", paramViewHolder);
       }
     }
-    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.a() != null))
+    if ((((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.b() != null))
     {
       l1 = ((MessageForUniteGrayTip)localObject3).uniseq;
-      l2 = ((UniteGrayTipItemBuilder.Holder)localObject1).jdField_a_of_type_Int;
+      l2 = ((UniteGrayTipItemBuilder.Holder)localObject1).c;
       if (QLog.isColorLevel()) {
         QLog.d((String)localObject2, 2, new Object[] { "revoke msg grayTipItemBuilder msg uinseq=", Long.valueOf(l1), ",holder.mPosition=", Long.valueOf(l2) });
       }
-      paramViewHolder = ((MessageForUniteGrayTip)localObject3).tipParam.a();
-      if ((((MessageForUniteGrayTip)localObject3).tipParam.b != 2097155) && (((MessageForUniteGrayTip)localObject3).tipParam.b != 2097153) && (((MessageForUniteGrayTip)localObject3).tipParam.b != 2097154) && (((MessageForUniteGrayTip)localObject3).tipParam.b != 655397)) {
+      paramViewHolder = ((MessageForUniteGrayTip)localObject3).tipParam.b();
+      if ((((MessageForUniteGrayTip)localObject3).tipParam.i != 2097155) && (((MessageForUniteGrayTip)localObject3).tipParam.i != 2097153) && (((MessageForUniteGrayTip)localObject3).tipParam.i != 2097154) && (((MessageForUniteGrayTip)localObject3).tipParam.i != 655397)) {
         bool3 = false;
       }
       do
@@ -729,7 +729,7 @@ public class UniteGrayTipItemBuilder
           bool1 = false;
         }
         bool3 = bool1;
-      } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(((MessageForUniteGrayTip)localObject3).uniseq)));
+      } while (this.f.containsKey(Long.valueOf(((MessageForUniteGrayTip)localObject3).uniseq)));
       localObject4 = paramMessageRecord.getExtInfoFromExtStr("friendIconType");
       if ((!TextUtils.isEmpty((CharSequence)localObject4)) && ((((String)localObject4).equals("3")) || (((String)localObject4).equals("6"))))
       {
@@ -738,44 +738,44 @@ public class UniteGrayTipItemBuilder
         } else if (((String)localObject4).equals("6")) {
           LpReportInfo_dc03950.report(new LpReportInfo_dc03950("16", "7", "1"));
         }
-        LoverZoneUtils.a("6", "1", "1", LpReportInfo_dc03950.getReportUserType(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+        LoverZoneUtils.a("6", "1", "1", LpReportInfo_dc03950.getReportUserType(this.a));
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((MessageForUniteGrayTip)localObject3).uniseq), Boolean.valueOf(false));
-      paramLinearLayout = ((MessageForUniteGrayTip)localObject3).getHightlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinearLayout.getContext(), bool1, ((UniteGrayTipItemBuilder.Holder)localObject1).b);
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setText(paramLinearLayout);
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setClickable(true);
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setFocusable(true);
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setMovementMethod(ClickLinkMovementMethod.a());
-      if (AppSetting.d) {
-        ((UniteGrayTipItemBuilder.Holder)localObject1).b.setAccessibilityDelegate(new UniteGrayTipItemBuilder.4(this, l1, l2, paramViewHolder, paramLinearLayout));
+      this.f.put(Long.valueOf(((MessageForUniteGrayTip)localObject3).uniseq), Boolean.valueOf(false));
+      paramLinearLayout = ((MessageForUniteGrayTip)localObject3).getHightlightMsgText(this.a, paramLinearLayout.getContext(), bool1, ((UniteGrayTipItemBuilder.Holder)localObject1).d);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setText(paramLinearLayout);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setClickable(true);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setFocusable(true);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setMovementMethod(ClickLinkMovementMethod.a());
+      if (AppSetting.e) {
+        ((UniteGrayTipItemBuilder.Holder)localObject1).d.setAccessibilityDelegate(new UniteGrayTipItemBuilder.4(this, l1, l2, paramViewHolder, paramLinearLayout));
       }
     }
     else
     {
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setText(((MessageForUniteGrayTip)localObject3).msg);
-      if (AppSetting.d) {
-        ((UniteGrayTipItemBuilder.Holder)localObject1).b.setAccessibilityDelegate(null);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setText(((MessageForUniteGrayTip)localObject3).msg);
+      if (AppSetting.e) {
+        ((UniteGrayTipItemBuilder.Holder)localObject1).d.setAccessibilityDelegate(null);
       }
     }
-    ((UniteGrayTipItemBuilder.Holder)localObject1).b.setOnTouchListener(paramOnLongClickAndTouchListener);
-    ((UniteGrayTipItemBuilder.Holder)localObject1).b.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    ((UniteGrayTipItemBuilder.Holder)localObject1).d.setOnTouchListener(paramOnLongClickAndTouchListener);
+    ((UniteGrayTipItemBuilder.Holder)localObject1).d.setOnLongClickListener(paramOnLongClickAndTouchListener);
     if (!TextUtils.isEmpty(((MessageForUniteGrayTip)localObject3).contentDescription)) {
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setContentDescription(((MessageForUniteGrayTip)localObject3).contentDescription);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setContentDescription(((MessageForUniteGrayTip)localObject3).contentDescription);
     }
-    paramLinearLayout = ((UniteGrayTipItemBuilder.Holder)localObject1).b.getLayoutParams();
-    if ((localObject3 != null) && (((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.b == 3276801))
+    paramLinearLayout = ((UniteGrayTipItemBuilder.Holder)localObject1).d.getLayoutParams();
+    if ((localObject3 != null) && (((MessageForUniteGrayTip)localObject3).tipParam != null) && (((MessageForUniteGrayTip)localObject3).tipParam.i == 3276801))
     {
-      paramOnLongClickAndTouchListener = this.jdField_a_of_type_AndroidContentContext.getResources();
+      paramOnLongClickAndTouchListener = this.c.getResources();
       if (Build.VERSION.SDK_INT >= 21) {
-        paramViewHolder = paramOnLongClickAndTouchListener.getDrawable(2130850945, this.jdField_a_of_type_AndroidContentContext.getTheme());
+        paramViewHolder = paramOnLongClickAndTouchListener.getDrawable(2130852797, this.c.getTheme());
       } else {
-        paramViewHolder = paramOnLongClickAndTouchListener.getDrawable(2130850945);
+        paramViewHolder = paramOnLongClickAndTouchListener.getDrawable(2130852797);
       }
       if (paramViewHolder != null) {
         paramViewHolder.setBounds(0, 0, paramViewHolder.getIntrinsicWidth(), paramViewHolder.getIntrinsicHeight());
       }
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setCompoundDrawables(paramViewHolder, null, null, null);
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setCompoundDrawablePadding(AIOUtils.b(8.0F, paramOnLongClickAndTouchListener));
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setCompoundDrawables(paramViewHolder, null, null, null);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setCompoundDrawablePadding(AIOUtils.b(8.0F, paramOnLongClickAndTouchListener));
       if ((paramLinearLayout instanceof LinearLayout.LayoutParams)) {
         ((LinearLayout.LayoutParams)paramLinearLayout).gravity = 16;
       }
@@ -788,9 +788,9 @@ public class UniteGrayTipItemBuilder
         paramViewHolder.append("TencentDocGrayTips, msg[");
         paramViewHolder.append(((MessageForUniteGrayTip)localObject3).msg);
         paramViewHolder.append("], getText[");
-        paramViewHolder.append(((UniteGrayTipItemBuilder.Holder)localObject1).b.getText());
+        paramViewHolder.append(((UniteGrayTipItemBuilder.Holder)localObject1).d.getText());
         paramViewHolder.append("], getLayoutParams[");
-        paramViewHolder.append(((LinearLayout.LayoutParams)((UniteGrayTipItemBuilder.Holder)localObject1).b.getLayoutParams()).gravity);
+        paramViewHolder.append(((LinearLayout.LayoutParams)((UniteGrayTipItemBuilder.Holder)localObject1).d.getLayoutParams()).gravity);
         paramViewHolder.append("], gravity[");
         paramViewHolder.append(((LinearLayout.LayoutParams)paramLinearLayout).gravity);
         paramViewHolder.append("]");
@@ -799,8 +799,8 @@ public class UniteGrayTipItemBuilder
     }
     else
     {
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setCompoundDrawables(null, null, null, null);
-      ((UniteGrayTipItemBuilder.Holder)localObject1).b.setCompoundDrawablePadding(0);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setCompoundDrawables(null, null, null, null);
+      ((UniteGrayTipItemBuilder.Holder)localObject1).d.setCompoundDrawablePadding(0);
       if ((paramLinearLayout instanceof LinearLayout.LayoutParams)) {
         ((LinearLayout.LayoutParams)paramLinearLayout).gravity = 17;
       }
@@ -820,7 +820,7 @@ public class UniteGrayTipItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt != 2131371562) {
+    if (paramInt != 2131438943) {
       return;
     }
     b(paramChatMessage);
@@ -835,9 +835,9 @@ public class UniteGrayTipItemBuilder
       paramView = (UniteGrayTipItemBuilder.Holder)paramView.getTag();
       if (paramView != null)
       {
-        paramView.b.setText(paramChatMessage.msg);
+        paramView.d.setText(paramChatMessage.msg);
         if (!TextUtils.isEmpty(localMessageForUniteGrayTip.contentDescription)) {
-          paramView.b.setContentDescription(localMessageForUniteGrayTip.contentDescription);
+          paramView.d.setContentDescription(localMessageForUniteGrayTip.contentDescription);
         }
       }
     }
@@ -847,18 +847,18 @@ public class UniteGrayTipItemBuilder
   {
     if ((paramMessageForUniteGrayTip != null) && (paramMessageForUniteGrayTip.tipParam != null))
     {
-      int i = paramMessageForUniteGrayTip.tipParam.b;
+      int i = paramMessageForUniteGrayTip.tipParam.i;
       if (i != 3)
       {
-        if ((i == 131088) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramMessageForUniteGrayTip.msgseq))))
+        if ((i == 131088) && (!this.g.containsKey(Long.valueOf(paramMessageForUniteGrayTip.msgseq))))
         {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageForUniteGrayTip.msgseq), Boolean.valueOf(true));
-          TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForUniteGrayTip);
+          this.g.put(Long.valueOf(paramMessageForUniteGrayTip.msgseq), Boolean.valueOf(true));
+          TroopUtils.a(this.a, paramMessageForUniteGrayTip);
         }
       }
-      else if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq)))
+      else if (!this.g.containsKey(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq)))
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq), Boolean.valueOf(true));
+        this.g.put(Long.valueOf(paramMessageForUniteGrayTip.shmsgseq), Boolean.valueOf(true));
         CustomizeGrayTipsManager.b(paramMessageForUniteGrayTip.istroop);
       }
       b(paramMessageForUniteGrayTip);
@@ -868,20 +868,20 @@ public class UniteGrayTipItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    paramView = ((ChatItemBuilder.BaseHolder)AIOUtils.a(paramView)).a;
+    paramView = ((ChatItemBuilder.BaseHolder)AIOUtils.b(paramView)).q;
     if ((PaiYiPaiMsgUtil.b(paramView)) && (NetConnInfoCenter.getServerTimeMillis() - paramView.time * 1000L < 120000L))
     {
-      paramView = new QQCustomMenuItem(2131371562, this.jdField_a_of_type_AndroidContentContext.getString(2131694322));
-      paramView.a(2130838920);
+      paramView = new QQCustomMenuItem(2131438943, this.c.getString(2131891960));
+      paramView.a(2130839074);
       localQQCustomMenu.a(paramView);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800BAD3", "0X800BAD3", 0, 0, "", "", "", "");
+      ReportController.b(this.a, "dc00898", "", "", "0X800BAD3", "0X800BAD3", 0, 0, "", "", "", "");
     }
-    return localQQCustomMenu.a();
+    return localQQCustomMenu.d();
   }
   
   protected void b(ChatMessage paramChatMessage)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_AndroidContentContext;
+    BaseActivity localBaseActivity = (BaseActivity)this.c;
     if ((paramChatMessage != null) && (localBaseActivity != null) && (localBaseActivity.getChatFragment() != null))
     {
       a(paramChatMessage, localBaseActivity);
@@ -897,7 +897,7 @@ public class UniteGrayTipItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder
  * JD-Core Version:    0.7.0.1
  */

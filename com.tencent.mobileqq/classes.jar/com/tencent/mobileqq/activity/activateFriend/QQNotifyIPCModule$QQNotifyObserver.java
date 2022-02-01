@@ -11,18 +11,18 @@ import mqq.util.WeakReference;
 public class QQNotifyIPCModule$QQNotifyObserver
   implements EIPCResultCallback, BusinessObserver
 {
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private WeakReference<QQNotifyUtils.QQNotifyListener> jdField_a_of_type_MqqUtilWeakReference;
+  private WeakReference<QQNotifyUtils.QQNotifyListener> a;
+  private Bundle b;
   
   public QQNotifyIPCModule$QQNotifyObserver(QQNotifyUtils.QQNotifyListener paramQQNotifyListener, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQNotifyListener);
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.a = new WeakReference(paramQQNotifyListener);
+    this.b = paramBundle;
   }
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    QQNotifyUtils.QQNotifyListener localQQNotifyListener = (QQNotifyUtils.QQNotifyListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    QQNotifyUtils.QQNotifyListener localQQNotifyListener = (QQNotifyUtils.QQNotifyListener)this.a.get();
     if (localQQNotifyListener == null)
     {
       if (QLog.isColorLevel()) {
@@ -35,7 +35,7 @@ public class QQNotifyIPCModule$QQNotifyObserver
     } else {
       paramEIPCResult = QQNotifyUtils.a(-100, "client_unknown_error");
     }
-    localQQNotifyListener.queryHasSetNotify(paramEIPCResult, this.jdField_a_of_type_AndroidOsBundle);
+    localQQNotifyListener.queryHasSetNotify(paramEIPCResult, this.b);
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
@@ -49,7 +49,7 @@ public class QQNotifyIPCModule$QQNotifyObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("QQNotifyObserver", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (QQNotifyUtils.QQNotifyListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject = (QQNotifyUtils.QQNotifyListener)this.a.get();
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -71,12 +71,12 @@ public class QQNotifyIPCModule$QQNotifyObserver
     {
       paramBundle = "client_unknown_error";
     }
-    ((QQNotifyUtils.QQNotifyListener)localObject).queryHasSetNotify(QQNotifyUtils.a(paramInt, paramBundle, i), this.jdField_a_of_type_AndroidOsBundle);
+    ((QQNotifyUtils.QQNotifyListener)localObject).queryHasSetNotify(QQNotifyUtils.a(paramInt, paramBundle, i), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifyIPCModule.QQNotifyObserver
  * JD-Core Version:    0.7.0.1
  */

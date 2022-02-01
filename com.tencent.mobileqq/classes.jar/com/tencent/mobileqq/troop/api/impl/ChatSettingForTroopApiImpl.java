@@ -160,7 +160,7 @@ public class ChatSettingForTroopApiImpl
       } else {
         bool1 = true;
       }
-      if ((bool1) && (QVipBigTroopExpiredProcessor.c().mIsEnable) && (((TroopInfoData)localObject2).mIsFreezed == 1) && (((TroopInfoData)localObject2).isOwnerOrAdim()))
+      if ((bool1) && (QVipBigTroopExpiredProcessor.e().mIsEnable) && (((TroopInfoData)localObject2).mIsFreezed == 1) && (((TroopInfoData)localObject2).isOwnerOrAdim()))
       {
         paramBoolean = TroopManager.LiangGroupHelper.c(((TroopInfoData)localObject2).groupFreezeReason);
         if (((TroopInfoData)localObject2).bOwner)
@@ -171,8 +171,8 @@ public class ChatSettingForTroopApiImpl
           } else {
             paramInt1 = 8;
           }
-          str = VipUtils.a(0, paramInt1).toString();
-          localObject2 = HardCodeUtil.a(2131701933);
+          str = VipUtils.c(0, paramInt1).toString();
+          localObject2 = HardCodeUtil.a(2131899948);
           localObject3 = new ChatSettingForTroopApiImpl.1(this, paramBoolean);
           if (paramBoolean) {
             paramObject = "0X800A57F";
@@ -210,16 +210,16 @@ public class ChatSettingForTroopApiImpl
       ((Intent)localObject3).putExtra("edit_mode", 2);
       int j;
       if (bool1) {
-        j = 2131701952;
+        j = 2131899967;
       } else {
-        j = 2131701951;
+        j = 2131899966;
       }
       ((Intent)localObject3).putExtra("title", HardCodeUtil.a(j));
       ((Intent)localObject3).putExtra("default_text", (String)localObject1);
       ((Intent)localObject3).putExtra("max_num", paramInt1);
       ((Intent)localObject3).putExtra("canPostNull", false);
       if (bool1) {
-        paramObject = HardCodeUtil.a(2131701937);
+        paramObject = HardCodeUtil.a(2131899952);
       } else {
         paramObject = "";
       }
@@ -237,14 +237,14 @@ public class ChatSettingForTroopApiImpl
   
   public Object actionSheetHelperCreateDialog(Context paramContext, View paramView)
   {
-    return ActionSheetHelper.a(paramContext, paramView);
+    return ActionSheetHelper.b(paramContext, paramView);
   }
   
   public void addRecentTroopItemIntoRecentMsgList(AppRuntime paramAppRuntime, String paramString)
   {
     paramAppRuntime = (TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER);
     if (paramAppRuntime != null) {
-      paramAppRuntime.e(paramAppRuntime.b(paramString));
+      paramAppRuntime.e(paramAppRuntime.f(paramString));
     }
   }
   
@@ -320,7 +320,7 @@ public class ChatSettingForTroopApiImpl
     paramAppRuntime = (QQAppInterface)paramAppRuntime;
     StringBuilder localStringBuilder = new StringBuilder();
     int i = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getMessageHistoryCont(paramAppRuntime, paramString1, 1, localStringBuilder);
-    List localList = paramAppRuntime.getMessageFacade().a(paramString1, 1);
+    List localList = paramAppRuntime.getMessageFacade().h(paramString1, 1);
     long l1;
     if ((localList != null) && (!localList.isEmpty())) {
       l1 = ((MessageRecord)localList.get(localList.size() - 1)).shmsgseq;
@@ -335,17 +335,17 @@ public class ChatSettingForTroopApiImpl
         if (l1 > 0L) {
           paramAppRuntime.getMsgCache().a(paramString1, 1, l1);
         }
-        if (((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString1))
+        if (((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).o(paramString1))
         {
-          FriendsStatusUtil.a(paramAppRuntime, paramString1, 1);
-          paramAppRuntime.getMessageFacade().a(paramString1, 1, true, false);
+          FriendsStatusUtil.b(paramAppRuntime, paramString1, 1);
+          paramAppRuntime.getMessageFacade().b(paramString1, 1, true, false);
         }
         else
         {
-          paramAppRuntime.getMessageFacade().a(paramString1, 1);
+          paramAppRuntime.getMessageFacade().c(paramString1, 1);
           TroopAssistantManager.a().b(paramString1, paramAppRuntime);
         }
-        paramAppRuntime.getMessageFacade().c(paramString1, 1);
+        paramAppRuntime.getMessageFacade().g(paramString1, 1);
         ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(paramAppRuntime, "chat_history_confirm_del_msg");
         paramAppRuntime = paramAppRuntime.getHandler(Conversation.class);
         paramString2 = paramAppRuntime.obtainMessage(1017);
@@ -367,7 +367,7 @@ public class ChatSettingForTroopApiImpl
   
   public void clearTroopAssistTipTime(AppRuntime paramAppRuntime, String paramString)
   {
-    TroopAssistantManager.a().c((QQAppInterface)paramAppRuntime, paramString);
+    TroopAssistantManager.a().f((QQAppInterface)paramAppRuntime, paramString);
   }
   
   public String configTroopStoryProfileFromAIO(Intent paramIntent, String paramString1, String paramString2)
@@ -382,13 +382,13 @@ public class ChatSettingForTroopApiImpl
   
   public void deleteTroop(AppRuntime paramAppRuntime, String paramString)
   {
-    ((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+    ((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).d(paramString);
   }
   
   public void doReportTroop(Object paramObject1, Object paramObject2, AppRuntime paramAppRuntime)
   {
     if (((paramObject1 instanceof QBaseActivity)) && ((paramObject2 instanceof TroopInfoData)) && ((paramAppRuntime instanceof QQAppInterface))) {
-      TroopUtils.a((QBaseActivity)paramObject1, (TroopInfoData)paramObject2, (QQAppInterface)paramAppRuntime);
+      TroopUtils.b((QBaseActivity)paramObject1, (TroopInfoData)paramObject2, (QQAppInterface)paramAppRuntime);
     }
   }
   
@@ -414,7 +414,7 @@ public class ChatSettingForTroopApiImpl
   
   public SpannableString getSpannableStringFromColorNickText(CharSequence paramCharSequence, int paramInt)
   {
-    return new ColorNickText(paramCharSequence, paramInt).a();
+    return new ColorNickText(paramCharSequence, paramInt).b();
   }
   
   public Intent getSplashActivityIntent(Activity paramActivity)
@@ -424,7 +424,7 @@ public class ChatSettingForTroopApiImpl
   
   public Object getStrOpenIDFromCacheAndDB(AppInterface paramAppInterface, String paramString)
   {
-    return ((QQAppInterface)paramAppInterface).getMsgHandler().a(paramString);
+    return ((QQAppInterface)paramAppInterface).getMsgHandler().e(paramString);
   }
   
   public int getTroopMask(AppRuntime paramAppRuntime, String paramString)
@@ -465,7 +465,7 @@ public class ChatSettingForTroopApiImpl
   public void handleAppClick1101236949(Object paramObject, Activity paramActivity)
   {
     paramObject = (TroopInfoData)paramObject;
-    if ((QVipBigTroopExpiredProcessor.c().mIsEnable) && (paramObject.mIsFreezed == 1) && (paramObject.isOwnerOrAdim()))
+    if ((QVipBigTroopExpiredProcessor.e().mIsEnable) && (paramObject.mIsFreezed == 1) && (paramObject.isOwnerOrAdim()))
     {
       boolean bool = TroopManager.LiangGroupHelper.c(paramObject.groupFreezeReason);
       if (paramObject.bOwner)
@@ -477,8 +477,8 @@ public class ChatSettingForTroopApiImpl
         } else {
           i = 8;
         }
-        String str2 = VipUtils.a(0, i).toString();
-        String str3 = HardCodeUtil.a(2131701953);
+        String str2 = VipUtils.c(0, i).toString();
+        String str3 = HardCodeUtil.a(2131898212);
         ChatSettingForTroopApiImpl.5 local5 = new ChatSettingForTroopApiImpl.5(this, bool);
         if (bool) {
           paramObject = "0X800A57F";
@@ -563,10 +563,10 @@ public class ChatSettingForTroopApiImpl
     localIntent.putExtra("param_type", 1);
     localIntent.putExtra("param_subtype", 1);
     localIntent.putExtra("param_is_troop_admin", paramBoolean);
-    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131692486));
+    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131889474));
     localIntent.putExtra("param_uins_selected_default", paramArrayList);
     localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", paramActivity.getString(2131696061));
+    localIntent.putExtra("param_title", paramActivity.getString(2131893825));
     localIntent.putExtra("param_max", 100);
     if (!paramBoolean) {
       localIntent.putExtra("filer_robot", true);
@@ -577,19 +577,19 @@ public class ChatSettingForTroopApiImpl
   
   public boolean isGrayTroopForTroopAssociations(String paramString, int paramInt, long paramLong)
   {
-    TroopAssociationsEntryConfig localTroopAssociationsEntryConfig = (TroopAssociationsEntryConfig)QConfigManager.a().a(686);
+    TroopAssociationsEntryConfig localTroopAssociationsEntryConfig = (TroopAssociationsEntryConfig)QConfigManager.b().b(686);
     return (localTroopAssociationsEntryConfig != null) && (localTroopAssociationsEntryConfig.a(paramString, paramInt, paramLong));
   }
   
   public boolean isGrayTroopForTroopGameCard(String paramString)
   {
-    TroopGameCardConfig localTroopGameCardConfig = (TroopGameCardConfig)QConfigManager.a().a(695);
-    return (localTroopGameCardConfig != null) && (localTroopGameCardConfig.a(paramString));
+    TroopGameCardConfig localTroopGameCardConfig = (TroopGameCardConfig)QConfigManager.b().b(695);
+    return (localTroopGameCardConfig != null) && (localTroopGameCardConfig.d(paramString));
   }
   
   public boolean isGroupEntranceSwitchOn()
   {
-    TroopFansEntryConfig localTroopFansEntryConfig = (TroopFansEntryConfig)QConfigManager.a().a(701);
+    TroopFansEntryConfig localTroopFansEntryConfig = (TroopFansEntryConfig)QConfigManager.b().b(701);
     if (localTroopFansEntryConfig != null) {
       return localTroopFansEntryConfig.isGroupEntranceSwitchOn();
     }
@@ -617,9 +617,9 @@ public class ChatSettingForTroopApiImpl
     localIntent.putExtra("troop_uin", paramString);
     new SessionInfo();
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString;
-    localSessionInfo.jdField_a_of_type_Int = 1;
     localSessionInfo.b = paramString;
+    localSessionInfo.a = 1;
+    localSessionInfo.c = paramString;
     localIntent.putExtra("session_info", localSessionInfo);
     localIntent.putExtra("fling_action_key", 2);
     localIntent.putExtra("fling_code_key", hashCode());
@@ -679,12 +679,12 @@ public class ChatSettingForTroopApiImpl
     paramObject = (TroopInfoData)paramObject;
     Bundle localBundle = TroopInfoUIUtil.a(paramObject.troopUin, 3, paramObject.troopLat, paramObject.troopLon, paramObject.cityId, paramObject.troopLocation);
     localBundle.putInt("troop_type_ex", paramObject.troopTypeExt);
-    localBundle.putString("leftViewText", HardCodeUtil.a(2131719940));
+    localBundle.putString("leftViewText", HardCodeUtil.a(2131917545));
     localBundle.putInt("troop_auth_submit_time", paramInt);
     localBundle.putInt("PARAM_EXIT_ANIMATION", 1);
-    localBundle.putBoolean(TroopInfoActivityConstant.jdField_a_of_type_JavaLangString, true);
+    localBundle.putBoolean(TroopInfoActivityConstant.a, true);
     ((ITroopInfoActivityApi)QRoute.api(ITroopInfoActivityApi.class)).openTroopProfile(paramActivity, localBundle);
-    paramActivity.overridePendingTransition(2130771993, 2130771994);
+    paramActivity.overridePendingTransition(2130771996, 2130771997);
   }
   
   public void openTroopmemberCard(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, Bundle paramBundle)
@@ -760,7 +760,7 @@ public class ChatSettingForTroopApiImpl
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("troop_keyword_expire_list_");
     localStringBuilder.append(paramString1);
-    QVipConfigManager.a(paramAppRuntime, localStringBuilder.toString(), paramString2);
+    QVipConfigManager.b(paramAppRuntime, localStringBuilder.toString(), paramString2);
   }
   
   public void setTroopMsgFilterToServer(AppRuntime paramAppRuntime, String paramString, int paramInt)
@@ -855,7 +855,7 @@ public class ChatSettingForTroopApiImpl
         localObject = new Intent();
         ((Intent)localObject).putExtra("edit_type", 5);
         ((Intent)localObject).putExtra("edit_mode", 0);
-        ((Intent)localObject).putExtra("title", HardCodeUtil.a(2131697577));
+        ((Intent)localObject).putExtra("title", HardCodeUtil.a(2131895350));
         ((Intent)localObject).putExtra("default_text", paramObject2);
         ((Intent)localObject).putExtra("max_num", 60);
         ((Intent)localObject).putExtra("default_nick_id", paramObject1.troopColorNickId);
@@ -878,7 +878,7 @@ public class ChatSettingForTroopApiImpl
         return;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtra(TroopRemarkEditFragment.jdField_a_of_type_JavaLangString, paramString1);
+      localIntent.putExtra(TroopRemarkEditFragment.a, paramString1);
       localIntent.putExtra(TroopRemarkEditFragment.c, paramString3);
       localIntent.putExtra(TroopRemarkEditFragment.b, paramString2);
       if (!TextUtils.isEmpty(paramString4)) {
@@ -891,7 +891,7 @@ public class ChatSettingForTroopApiImpl
   public boolean troopNoticeFreezed(Activity paramActivity, Object paramObject)
   {
     paramObject = (TroopInfoData)paramObject;
-    if ((QVipBigTroopExpiredProcessor.c().mIsEnable) && (paramObject.mIsFreezed == 1) && (paramObject.isOwnerOrAdim()))
+    if ((QVipBigTroopExpiredProcessor.e().mIsEnable) && (paramObject.mIsFreezed == 1) && (paramObject.isOwnerOrAdim()))
     {
       boolean bool = TroopManager.LiangGroupHelper.c(paramObject.groupFreezeReason);
       if (paramObject.bOwner)
@@ -903,8 +903,8 @@ public class ChatSettingForTroopApiImpl
         } else {
           i = 8;
         }
-        String str2 = VipUtils.a(0, i).toString();
-        String str3 = HardCodeUtil.a(2131701946);
+        String str2 = VipUtils.c(0, i).toString();
+        String str3 = HardCodeUtil.a(2131898212);
         ChatSettingForTroopApiImpl.2 local2 = new ChatSettingForTroopApiImpl.2(this, bool);
         if (bool) {
           paramObject = "0X800A57F";
@@ -940,7 +940,7 @@ public class ChatSettingForTroopApiImpl
   
   public void updateEntryItem(AppRuntime paramAppRuntime, View paramView, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, boolean paramBoolean, String paramString1, String paramString2)
   {
-    TroopUtils.a(paramView, paramCharSequence1, null, null, paramBoolean, paramString1, HardCodeUtil.a(2131691297), new ChatSettingForTroopApiImpl.4(this, paramAppRuntime));
+    TroopUtils.a(paramView, paramCharSequence1, null, null, paramBoolean, paramString1, HardCodeUtil.a(2131888248), new ChatSettingForTroopApiImpl.4(this, paramAppRuntime));
   }
   
   public void updateHiddenChat(AppRuntime paramAppRuntime, Object paramObject)
@@ -950,7 +950,7 @@ public class ChatSettingForTroopApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.ChatSettingForTroopApiImpl
  * JD-Core Version:    0.7.0.1
  */

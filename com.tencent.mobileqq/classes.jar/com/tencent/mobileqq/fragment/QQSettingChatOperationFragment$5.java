@@ -10,13 +10,13 @@ class QQSettingChatOperationFragment$5
   protected void onSetMessageRaoam(boolean paramBoolean)
   {
     if (paramBoolean) {
-      QQSettingChatOperationFragment.a(this.a);
+      QQSettingChatOperationFragment.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.5
  * JD-Core Version:    0.7.0.1
  */

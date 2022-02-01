@@ -23,7 +23,7 @@ public final class kua_kua_hb_srv$TopicMatchReply
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.qqwallet.kua_kua_hb_srv.TopicMatchReply
  * JD-Core Version:    0.7.0.1
  */

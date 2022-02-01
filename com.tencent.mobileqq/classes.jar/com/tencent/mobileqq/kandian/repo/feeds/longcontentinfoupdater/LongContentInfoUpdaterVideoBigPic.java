@@ -12,32 +12,32 @@ import kotlin.Metadata;
 public final class LongContentInfoUpdaterVideoBigPic
   extends LongContentInfoUpdater
 {
-  protected void a()
+  protected void e()
   {
-    Object localObject = a();
+    Object localObject = b();
     if (localObject != null) {
-      ((SocializeFeedsInfo)localObject).a = 6;
+      ((SocializeFeedsInfo)localObject).b = 6;
     }
-    localObject = a();
+    localObject = d();
     if (localObject != null) {
-      ((PGCFeedsInfo)localObject).a = true;
+      ((PGCFeedsInfo)localObject).f = true;
     }
-    localObject = a();
+    localObject = c();
     if (localObject != null)
     {
-      localObject = ((LongContentInfo)localObject).a;
+      localObject = ((LongContentInfo)localObject).c;
       if (localObject != null)
       {
-        a().mTitle = ((PGCVideoInfo)localObject).g;
+        a().mTitle = ((PGCVideoInfo)localObject).k;
         a().mVideoVid = ((PGCVideoInfo)localObject).e;
       }
     }
     try
     {
-      localObject = a();
+      localObject = c();
       if (localObject != null)
       {
-        localObject = ((LongContentInfo)localObject).a;
+        localObject = ((LongContentInfo)localObject).c;
         if (localObject != null)
         {
           localObject = ((PGCVideoInfo)localObject).d;
@@ -57,7 +57,7 @@ public final class LongContentInfoUpdaterVideoBigPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.longcontentinfoupdater.LongContentInfoUpdaterVideoBigPic
  * JD-Core Version:    0.7.0.1
  */

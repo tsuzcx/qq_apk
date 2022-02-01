@@ -22,44 +22,64 @@ import java.util.List;
 public class RecyclerViewWithHeaderFooterFix
   extends RecyclerViewCompat
 {
-  private RecyclerViewHeaderViewAdapter.ContentDataObserver jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$ContentDataObserver;
-  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public boolean a;
+  public boolean a = false;
   private final List<View> b = new ArrayList();
+  private final List<View> c = new ArrayList();
+  private RecyclerViewHeaderViewAdapter.ContentDataObserver d;
   
   public RecyclerViewWithHeaderFooterFix(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooterFix(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public RecyclerViewWithHeaderFooterFix(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramView);
+    this.b.add(paramView);
   }
   
   public void b(View paramView)
   {
-    this.b.add(paramView);
+    this.c.add(paramView);
+  }
+  
+  public RecyclerViewHeaderViewAdapter.ContentDataObserver getContentDataObserver()
+  {
+    return this.d;
+  }
+  
+  public int getFooterViewsCount()
+  {
+    List localList = this.c;
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
+  }
+  
+  public int getHeaderViewsCount()
+  {
+    List localList = this.b;
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       super.onInterceptTouchEvent(paramMotionEvent);
       return true;
@@ -69,10 +89,10 @@ public class RecyclerViewWithHeaderFooterFix
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       if (paramMotionEvent.getAction() == 1) {
-        this.jdField_a_of_type_Boolean = false;
+        this.a = false;
       }
       return true;
     }
@@ -82,19 +102,19 @@ public class RecyclerViewWithHeaderFooterFix
   public void setAdapter(RecyclerView.Adapter paramAdapter)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0)
+    if (this.b.size() <= 0)
     {
       localObject = paramAdapter;
-      if (this.b.size() <= 0) {}
+      if (this.c.size() <= 0) {}
     }
     else
     {
       localObject = new RecyclerViewWithHeaderFooterFix.1(this, paramAdapter);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
         ((RecyclerViewHeaderViewAdapter)localObject).addHeader((View)localIterator.next());
       }
-      localIterator = this.b.iterator();
+      localIterator = this.c.iterator();
       while (localIterator.hasNext()) {
         ((RecyclerViewHeaderViewAdapter)localObject).addFooter((View)localIterator.next());
       }
@@ -104,7 +124,7 @@ public class RecyclerViewWithHeaderFooterFix
         paramAdapter = (GridLayoutManager)getLayoutManager();
         paramAdapter.setSpanSizeLookup(new HeaderSpanSizeLookup((RecyclerViewHeaderViewAdapter)localObject, paramAdapter));
       }
-      paramAdapter = this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewHeaderViewAdapter$ContentDataObserver;
+      paramAdapter = this.d;
       if (paramAdapter != null) {
         ((RecyclerViewHeaderViewAdapter)localObject).setContentDataObserver(paramAdapter);
       }
@@ -135,7 +155,7 @@ public class RecyclerViewWithHeaderFooterFix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.RecyclerViewWithHeaderFooterFix
  * JD-Core Version:    0.7.0.1
  */

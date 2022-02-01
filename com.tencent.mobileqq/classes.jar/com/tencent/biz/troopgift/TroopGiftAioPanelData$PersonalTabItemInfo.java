@@ -7,28 +7,27 @@ import org.json.JSONObject;
 
 public class TroopGiftAioPanelData$PersonalTabItemInfo
 {
-  public String a;
-  public ArrayList<Integer> a;
-  public ArrayList<Object> b;
+  public String a = null;
+  public ArrayList<Integer> b;
+  public ArrayList<Object> c;
   
   public TroopGiftAioPanelData$PersonalTabItemInfo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangString = null;
     try
     {
       if (paramJSONObject.has("name")) {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+        this.a = paramJSONObject.optString("name");
       }
       if (paramJSONObject.has("packageIDs"))
       {
         paramJSONObject = paramJSONObject.optJSONArray("packageIDs");
         int j = paramJSONObject.length();
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
         this.b = new ArrayList();
+        this.c = new ArrayList();
         int i = 0;
         while (i < j)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          this.b.add(Integer.valueOf(paramJSONObject.getInt(i)));
           i += 1;
         }
       }
@@ -44,7 +43,7 @@ public class TroopGiftAioPanelData$PersonalTabItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftAioPanelData.PersonalTabItemInfo
  * JD-Core Version:    0.7.0.1
  */

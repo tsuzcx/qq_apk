@@ -14,9 +14,9 @@ public class GetQZoneFeedCount
 {
   protected int doStep()
   {
-    if ((this.mAutomator != null) && (this.mAutomator.a != null))
+    if ((this.mAutomator != null) && (this.mAutomator.k != null))
     {
-      QZoneManager localQZoneManager = (QZoneManager)this.mAutomator.a.getManager(QQManagerFactory.QZONE_MANAGER);
+      QZoneManager localQZoneManager = (QZoneManager)this.mAutomator.k.getManager(QQManagerFactory.QZONE_MANAGER);
       if (localQZoneManager != null)
       {
         if (QLog.isColorLevel())
@@ -25,25 +25,25 @@ public class GetQZoneFeedCount
           localStringBuilder.append("GetQZoneFeedCount isFirstGetUnread:");
           localStringBuilder.append(localQZoneManager.a());
           localStringBuilder.append(",isBackground_Pause:");
-          localStringBuilder.append(this.mAutomator.a.isBackgroundPause);
+          localStringBuilder.append(this.mAutomator.k.isBackgroundPause);
           QLog.d("GetQZoneFeedCount", 2, localStringBuilder.toString());
         }
         if (localQZoneManager.a()) {
-          localQZoneManager.a(this.mAutomator.a.getAccount(), null);
-        } else if (this.mAutomator.a.isBackgroundPause) {
+          localQZoneManager.a(this.mAutomator.k.getAccount(), null);
+        } else if (this.mAutomator.k.isBackgroundPause) {
           localQZoneManager.b(6);
         } else {
           localQZoneManager.a(5);
         }
       }
-      QCircleUtils.a().requestWhiteList(this.mAutomator.a.getCurrentUin());
+      QCircleUtils.c().requestWhiteList(this.mAutomator.k.getCurrentUin());
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetQZoneFeedCount
  * JD-Core Version:    0.7.0.1
  */

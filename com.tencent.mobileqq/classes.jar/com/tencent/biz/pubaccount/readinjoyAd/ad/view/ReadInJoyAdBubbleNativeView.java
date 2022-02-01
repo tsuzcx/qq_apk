@@ -26,16 +26,16 @@ public class ReadInJoyAdBubbleNativeView
   extends FrameLayout
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  private ReadInJoyAdBubbleNativeView.UpdateUIHandler jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleNativeView$UpdateUIHandler;
-  private List<ReadInJoyAdBubbleNativeView.SingleBubble> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Queue<String> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private TextView b;
+  private Context a;
+  private View b;
   private TextView c;
+  private TextView d;
+  private TextView e;
+  private AdvertisementInfo f;
+  private List<ReadInJoyAdBubbleNativeView.SingleBubble> g = new ArrayList();
+  private Queue<String> h = new LinkedList();
+  private ReadInJoyAdBubbleNativeView.UpdateUIHandler i;
+  private boolean j = true;
   
   public ReadInJoyAdBubbleNativeView(@NonNull Context paramContext)
   {
@@ -55,7 +55,7 @@ public class ReadInJoyAdBubbleNativeView
   
   private void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext()) {
       ((ReadInJoyAdBubbleNativeView.SingleBubble)localIterator.next()).a();
     }
@@ -64,9 +64,9 @@ public class ReadInJoyAdBubbleNativeView
   private void b()
   {
     c();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleNativeView$UpdateUIHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_JavaUtilQueue.clear();
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo;
+    this.i.removeCallbacksAndMessages(null);
+    this.h.clear();
+    Object localObject = this.f.mAdExtInfo;
     if (localObject == null)
     {
       ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdBubbleNativeView", "adExtInfo is empty");
@@ -83,14 +83,14 @@ public class ReadInJoyAdBubbleNativeView
             break label157;
           }
           continue;
-          if (i >= ((JSONArray)localObject).length()) {
+          if (k >= ((JSONArray)localObject).length()) {
             continue;
           }
-          String str = (String)((JSONArray)localObject).get(i);
+          String str = (String)((JSONArray)localObject).get(k);
           if (TextUtils.isEmpty(str)) {
             break label162;
           }
-          this.jdField_a_of_type_JavaUtilQueue.offer(str);
+          this.h.offer(str);
           break label162;
         }
         ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdBubbleNativeView", "parseBuuble JSONArray is empty");
@@ -99,52 +99,52 @@ public class ReadInJoyAdBubbleNativeView
       catch (Exception localException)
       {
         localException.printStackTrace();
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleNativeView$UpdateUIHandler.sendEmptyMessage(2);
+        if (this.j) {
+          this.i.sendEmptyMessage(2);
         }
         return;
       }
       label157:
-      int i = 0;
+      int k = 0;
       continue;
       label162:
-      i += 1;
+      k += 1;
     }
   }
   
   private void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
+    Iterator localIterator = this.g.iterator();
+    int k = 0;
     while (localIterator.hasNext())
     {
       ReadInJoyAdBubbleNativeView.SingleBubble localSingleBubble = (ReadInJoyAdBubbleNativeView.SingleBubble)localIterator.next();
-      localSingleBubble.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      localSingleBubble.jdField_a_of_type_Int = i;
-      i -= 1;
+      localSingleBubble.a.setVisibility(8);
+      localSingleBubble.b = k;
+      k -= 1;
     }
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131560057, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362063));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362064));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362065));
-    paramContext = new ReadInJoyAdBubbleNativeView.SingleBubble(this.jdField_a_of_type_AndroidWidgetTextView, 0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilQueue);
-    ReadInJoyAdBubbleNativeView.SingleBubble localSingleBubble1 = new ReadInJoyAdBubbleNativeView.SingleBubble(this.b, -1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilQueue);
-    ReadInJoyAdBubbleNativeView.SingleBubble localSingleBubble2 = new ReadInJoyAdBubbleNativeView.SingleBubble(this.c, -2, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilQueue);
-    this.jdField_a_of_type_JavaUtilList.add(paramContext);
-    this.jdField_a_of_type_JavaUtilList.add(localSingleBubble1);
-    this.jdField_a_of_type_JavaUtilList.add(localSingleBubble2);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleNativeView$UpdateUIHandler = new ReadInJoyAdBubbleNativeView.UpdateUIHandler(this);
+    this.a = paramContext;
+    this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater")).inflate(2131626102, this);
+    this.c = ((TextView)this.b.findViewById(2131427641));
+    this.d = ((TextView)this.b.findViewById(2131427642));
+    this.e = ((TextView)this.b.findViewById(2131427643));
+    paramContext = new ReadInJoyAdBubbleNativeView.SingleBubble(this.c, 0, this.a, this.h);
+    ReadInJoyAdBubbleNativeView.SingleBubble localSingleBubble1 = new ReadInJoyAdBubbleNativeView.SingleBubble(this.d, -1, this.a, this.h);
+    ReadInJoyAdBubbleNativeView.SingleBubble localSingleBubble2 = new ReadInJoyAdBubbleNativeView.SingleBubble(this.e, -2, this.a, this.h);
+    this.g.add(paramContext);
+    this.g.add(localSingleBubble1);
+    this.g.add(localSingleBubble2);
+    this.i = new ReadInJoyAdBubbleNativeView.UpdateUIHandler(this);
   }
   
   public void a(AdvertisementInfo paramAdvertisementInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+    this.j = true;
+    this.f = paramAdvertisementInfo;
     try
     {
       b();
@@ -162,7 +162,7 @@ public class ReadInJoyAdBubbleNativeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBubbleNativeView
  * JD-Core Version:    0.7.0.1
  */

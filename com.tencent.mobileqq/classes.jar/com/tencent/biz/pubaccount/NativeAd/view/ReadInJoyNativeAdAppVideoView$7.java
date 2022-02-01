@@ -17,9 +17,9 @@ class ReadInJoyNativeAdAppVideoView$7
     GdtLog.a("ReadInJoyNativeAdAppVideoView", localStringBuilder.toString());
     if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
     {
-      ReadInJoyNativeAdAppVideoView.a(this.a).start();
+      ReadInJoyNativeAdAppVideoView.f(this.a).start();
       ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-      ReadInJoyNativeAdAppVideoView.a(this.a);
+      ReadInJoyNativeAdAppVideoView.e(this.a);
       ReadInJoyNativeAdAppVideoView.f(this.a, 2);
     }
   }
@@ -28,7 +28,7 @@ class ReadInJoyNativeAdAppVideoView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.7
  * JD-Core Version:    0.7.0.1
  */

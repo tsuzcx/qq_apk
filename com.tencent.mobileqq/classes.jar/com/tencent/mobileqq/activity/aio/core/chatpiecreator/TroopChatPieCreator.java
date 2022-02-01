@@ -25,7 +25,7 @@ public class TroopChatPieCreator
     if ((!bool1) && (!bool2)) {
       return new TroopChatPie(paramQQAppInterface, paramTopGestureLayout, paramBaseActivity, paramBaseActivity);
     }
-    paramIntent = localHotChatManager.a(str);
+    paramIntent = localHotChatManager.c(str);
     if (((paramIntent != null) && (paramIntent.isGameRoom)) || (bool2)) {
       return new GameRoomChatPie(paramQQAppInterface, paramTopGestureLayout, paramBaseActivity, paramBaseActivity);
     }
@@ -56,7 +56,7 @@ public class TroopChatPieCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.chatpiecreator.TroopChatPieCreator
  * JD-Core Version:    0.7.0.1
  */

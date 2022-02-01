@@ -7,12 +7,12 @@ public class FTSFetcherImpl
 {
   public void setIntoFTSMessagePage(boolean paramBoolean)
   {
-    com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.a = paramBoolean;
+    com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.q = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.api.impl.FTSFetcherImpl
  * JD-Core Version:    0.7.0.1
  */

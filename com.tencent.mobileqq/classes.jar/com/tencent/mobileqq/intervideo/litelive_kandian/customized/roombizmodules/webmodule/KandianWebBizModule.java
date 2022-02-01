@@ -26,39 +26,14 @@ public class KandianWebBizModule
 {
   private RoomExtInfo a;
   private boolean b;
-  private boolean c;
+  private boolean n;
   
-  private int a()
-  {
-    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null)) {
-      return this.roomBizContext.getEnterRoomInfo().bootModulesIndex;
-    }
-    return 0;
-  }
-  
-  private boolean b()
-  {
-    int j = a();
-    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
-    boolean bool = false;
-    int i;
-    if (localIAudienceRoomPager != null) {
-      i = getAudienceRoomPager().getCurrentIndex();
-    } else {
-      i = 0;
-    }
-    if (j == i) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private void c()
+  private void a()
   {
     if (this.b) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    Object localObject = this.a;
     if ((localObject != null) && ("4".equals(((RoomExtInfo)localObject).state)))
     {
       localObject = BizEngineMgr.getInstance().getLiveEngine();
@@ -71,7 +46,7 @@ public class KandianWebBizModule
             localObject = ((QualityReportServiceInterface)localObject).getAudQualityReporter();
             if (localObject != null)
             {
-              boolean bool = this.c;
+              boolean bool = this.n;
               if (bool)
               {
                 ((AudQualityServiceInterface)localObject).reportSwitchOver();
@@ -90,21 +65,41 @@ public class KandianWebBizModule
           localException.printStackTrace();
         }
       }
-      DataReportMgr.a().a(this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo);
+      DataReportMgr.a().a(this.a);
       this.b = true;
     }
   }
   
-  public RoomExtInfo a()
+  private boolean b()
   {
-    return this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    int j = m();
+    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
+    boolean bool = false;
+    int i;
+    if (localIAudienceRoomPager != null) {
+      i = getAudienceRoomPager().getCurrentIndex();
+    } else {
+      i = 0;
+    }
+    if (j == i) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private int m()
+  {
+    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null)) {
+      return this.roomBizContext.getEnterRoomInfo().bootModulesIndex;
+    }
+    return 0;
   }
   
   public String a(String paramString)
   {
     String str = Build.VERSION.RELEASE;
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
-    if ((!StringUtil.a(paramString)) && (paramString.contains("NowSDK/"))) {
+    if ((!StringUtil.isEmpty(paramString)) && (paramString.contains("NowSDK/"))) {
       return paramString;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -122,16 +117,16 @@ public class KandianWebBizModule
   protected void a(RoomExtInfo paramRoomExtInfo)
   {
     super.a(paramRoomExtInfo);
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo = paramRoomExtInfo;
+    this.a = paramRoomExtInfo;
     if (b()) {
-      c();
+      a();
     }
   }
   
   protected void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    RoomExtInfo localRoomExtInfo = this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo;
+    RoomExtInfo localRoomExtInfo = this.a;
     if (localRoomExtInfo != null)
     {
       String str;
@@ -144,60 +139,65 @@ public class KandianWebBizModule
     }
   }
   
-  public String b()
+  public RoomExtInfo c()
   {
-    return "https://ilive.qq.com/1014/h5/lite_room.html";
-  }
-  
-  protected void b()
-  {
-    super.b();
-    WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://now.qq.com/");
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
-  }
-  
-  public String c()
-  {
-    return "https://fastest.ilive.qq.com/1014/h5/lite_room.html";
+    return this.a;
   }
   
   public String d()
   {
-    return "https://ilive.qq.com/1014/h5/lite_record.html";
+    return "https://ilive.qq.com/1014/h5/lite_room.html";
   }
   
   public String e()
   {
-    return "https://fastest.ilive.qq.com/1014/h5/lite_record.html";
+    return "https://fastest.ilive.qq.com/1014/h5/lite_room.html";
   }
   
   public String f()
   {
-    return "https://ilive.qq.com/1014/h5/lite_temporary.html";
+    return "https://ilive.qq.com/1014/h5/lite_record.html";
   }
   
   public String g()
   {
+    return "https://fastest.ilive.qq.com/1014/h5/lite_record.html";
+  }
+  
+  public String h()
+  {
+    return "https://ilive.qq.com/1014/h5/lite_temporary.html";
+  }
+  
+  public String i()
+  {
     return "https://fastest.ilive.qq.com/1014/h5/lite_temporary.html";
+  }
+  
+  protected void l()
+  {
+    super.l();
+    WebCookieManager.a().a(BaseApplicationImpl.getContext(), "https://now.qq.com/");
+    this.l.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleModelRoomExtInfo = null;
-    this.c = false;
+    this.a = null;
+    this.n = false;
     this.b = false;
   }
   
   public void onSwitchRoom(SwitchRoomInfo paramSwitchRoomInfo)
   {
     super.onSwitchRoom(paramSwitchRoomInfo);
-    this.c = true;
+    this.n = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.webmodule.KandianWebBizModule
  * JD-Core Version:    0.7.0.1
  */

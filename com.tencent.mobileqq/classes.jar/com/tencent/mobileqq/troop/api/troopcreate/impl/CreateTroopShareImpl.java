@@ -31,7 +31,7 @@ public class CreateTroopShareImpl
     paramJSONObject = paramJSONObject.optString("shareIcon");
     Object localObject2 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(149);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131715062));
+    localStringBuilder.append(HardCodeUtil.a(2131912550));
     localStringBuilder.append(str1);
     localObject1 = ((AbsShareMsg.Builder)localObject2).a(localStringBuilder.toString()).e((String)localObject1).a();
     localObject2 = StructMsgElementFactory.a(2);
@@ -47,13 +47,13 @@ public class CreateTroopShareImpl
   {
     Object localObject = this.mForwardOption;
     if (localObject != null) {
-      ((ForwardBaseOption)localObject).z();
+      ((ForwardBaseOption)localObject).ad();
     }
     localObject = this.mApp;
     if ((localObject instanceof QQAppInterface))
     {
       this.mForwardOption = ForwardOptionBuilder.a(paramIntent, (QQAppInterface)localObject, paramActivity);
-      this.mForwardOption.a(ForwardAbility.ForwardAbilityType.a.intValue(), paramIntent.getExtras());
+      this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b.intValue(), paramIntent.getExtras());
     }
   }
   
@@ -61,13 +61,13 @@ public class CreateTroopShareImpl
   {
     Object localObject = this.mForwardOption;
     if (localObject != null) {
-      ((ForwardBaseOption)localObject).z();
+      ((ForwardBaseOption)localObject).ad();
     }
     localObject = this.mApp;
     if ((localObject instanceof QQAppInterface))
     {
       this.mForwardOption = ForwardOptionBuilder.a(paramIntent, (QQAppInterface)localObject, paramActivity);
-      this.mForwardOption.r();
+      this.mForwardOption.T();
     }
   }
   
@@ -80,13 +80,13 @@ public class CreateTroopShareImpl
   {
     ForwardBaseOption localForwardBaseOption = this.mForwardOption;
     if (localForwardBaseOption != null) {
-      localForwardBaseOption.z();
+      localForwardBaseOption.ad();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.troopcreate.impl.CreateTroopShareImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,28 +10,18 @@ import mqq.app.AppRuntime;
 public class VasRes
   implements Handler.Callback, AbsVasRes
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private VasResAdapter jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter;
-  private VasResController jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController;
+  private VasResAdapter a;
+  private Handler b = new Handler(Looper.getMainLooper(), this);
+  private VasResController c;
   
   public VasRes(AppRuntime paramAppRuntime, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController = new VasResController(paramInt, this.jdField_a_of_type_AndroidOsHandler);
-  }
-  
-  public VasResAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter;
-  }
-  
-  public VasResController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController;
+    this.c = new VasResController(paramInt, this.b);
   }
   
   public void a()
   {
-    VasResAdapter localVasResAdapter = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter;
+    VasResAdapter localVasResAdapter = this.a;
     if (localVasResAdapter != null) {
       localVasResAdapter.b();
     }
@@ -39,13 +29,23 @@ public class VasRes
   
   public void a(VasResAdapter paramVasResAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter = paramVasResAdapter;
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.a();
+    this.a = paramVasResAdapter;
+    this.a.a();
+  }
+  
+  public VasResController b()
+  {
+    return this.c;
+  }
+  
+  public VasResAdapter c()
+  {
+    return this.a;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter == null) {
+    if (this.a == null) {
       return false;
     }
     int i = paramMessage.what;
@@ -54,16 +54,16 @@ public class VasRes
       if (i != 10003) {
         return true;
       }
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.a();
+      this.a.a();
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResAdapter.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+    this.a.a(paramMessage.arg1, (Bundle)paramMessage.obj);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasRes
  * JD-Core Version:    0.7.0.1
  */

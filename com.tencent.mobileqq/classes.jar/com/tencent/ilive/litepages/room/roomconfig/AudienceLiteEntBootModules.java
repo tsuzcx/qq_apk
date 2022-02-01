@@ -49,7 +49,7 @@ public class AudienceLiteEntBootModules
   
   protected ViewGroup onCreateBottomLayout()
   {
-    return (ViewGroup)LayoutInflater.from(this.context).inflate(2131559238, null);
+    return (ViewGroup)LayoutInflater.from(this.context).inflate(2131625158, null);
   }
   
   protected void onCreateNormalBizModules()
@@ -76,7 +76,7 @@ public class AudienceLiteEntBootModules
   
   protected ViewGroup onCreateNormalLayout()
   {
-    this.normalLayout = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131559240, null));
+    this.normalLayout = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131625160, null));
     return this.normalLayout;
   }
   
@@ -84,7 +84,7 @@ public class AudienceLiteEntBootModules
   
   protected ViewGroup onCreateTopLayout()
   {
-    return (ViewGroup)LayoutInflater.from(this.context).inflate(2131559239, null);
+    return (ViewGroup)LayoutInflater.from(this.context).inflate(2131625159, null);
   }
   
   public void setRoomBizContext(RoomBizContext paramRoomBizContext)
@@ -94,7 +94,7 @@ public class AudienceLiteEntBootModules
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.roomconfig.AudienceLiteEntBootModules
  * JD-Core Version:    0.7.0.1
  */

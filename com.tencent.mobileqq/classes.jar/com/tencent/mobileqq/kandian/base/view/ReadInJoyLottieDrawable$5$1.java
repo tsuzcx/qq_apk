@@ -12,14 +12,14 @@ class ReadInJoyLottieDrawable$5$1
   
   public void run()
   {
-    if (FileUtils.unzip(this.this$0.jdField_a_of_type_JavaIoFile, this.this$0.b)) {}
+    if (FileUtils.unzip(this.this$0.c, this.this$0.d)) {}
     try
     {
-      localObject = (ReadInJoyLottieDrawable)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get();
+      localObject = (ReadInJoyLottieDrawable)this.this$0.e.get();
       if (localObject != null) {
-        ReadInJoyLottieDrawable.a((ReadInJoyLottieDrawable)localObject, this.this$0.b);
+        ReadInJoyLottieDrawable.a((ReadInJoyLottieDrawable)localObject, this.this$0.d);
       }
-      this.this$0.jdField_a_of_type_JavaIoFile.delete();
+      this.this$0.c.delete();
       return;
     }
     catch (Exception localException)
@@ -31,7 +31,7 @@ class ReadInJoyLottieDrawable$5$1
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.this$0.a);
       ((StringBuilder)localObject).append(" download lottie resource fail!");
       QLog.e("ReadInJoyLottieDrawable", 1, ((StringBuilder)localObject).toString());
     }
@@ -39,7 +39,7 @@ class ReadInJoyLottieDrawable$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.ReadInJoyLottieDrawable.5.1
  * JD-Core Version:    0.7.0.1
  */

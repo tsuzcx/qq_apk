@@ -21,45 +21,39 @@ import java.lang.reflect.Field;
 public class PinnedHeaderIphoneTreeView
   extends PinnedHeaderExpandableListView
 {
-  int jdField_a_of_type_Int = -1;
-  public final Rect a;
-  public Drawable a;
-  public View.OnTouchListener a;
-  View jdField_a_of_type_AndroidViewView;
-  public boolean a;
-  public Drawable b;
+  View a;
   public View b;
-  public boolean b;
   public View c;
+  int d = -1;
+  public Drawable e;
+  public Drawable f;
+  public final Rect g = new Rect();
+  public boolean h;
+  public boolean i;
+  public View.OnTouchListener j = new PinnedHeaderIphoneTreeView.1(this);
   
   public PinnedHeaderIphoneTreeView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new PinnedHeaderIphoneTreeView.1(this);
     a();
   }
   
   public PinnedHeaderIphoneTreeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new PinnedHeaderIphoneTreeView.1(this);
     a();
   }
   
   public PinnedHeaderIphoneTreeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new PinnedHeaderIphoneTreeView.1(this);
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)a("mGroupIndicator"));
-    setGroupIndicator(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.e = ((Drawable)a("mGroupIndicator"));
+    setGroupIndicator(this.e);
   }
   
   public Object a(String paramString)
@@ -115,13 +109,13 @@ public class PinnedHeaderIphoneTreeView
         return;
       }
     }
-    int m = getChildCount();
-    if (m != 0)
+    int i1 = getChildCount();
+    if (i1 != 0)
     {
       Object localObject5 = null;
       View localView;
       Object localObject2;
-      if (m != 1)
+      if (i1 != 1)
       {
         localView = getChildAt(0);
         localObject2 = getChildAt(1);
@@ -131,72 +125,72 @@ public class PinnedHeaderIphoneTreeView
         localView = getChildAt(0);
         localObject2 = null;
       }
-      this.jdField_a_of_type_Boolean = true;
-      int j = getFirstVisiblePosition();
-      int i = j;
+      this.h = true;
+      int m = getFirstVisiblePosition();
+      int k = m;
       if (Build.VERSION.SDK_INT < 8) {
-        i = j - getHeaderViewsCount();
+        k = m - getHeaderViewsCount();
       }
-      j = 0;
+      m = 0;
       Object localObject4;
       Object localObject3;
-      int k;
+      int n;
       for (;;)
       {
         localObject4 = localView;
         localObject3 = localObject2;
-        k = i;
-        if (j >= m) {
+        n = k;
+        if (m >= i1) {
           break;
         }
-        localObject4 = getChildAt(j);
+        localObject4 = getChildAt(m);
         if (((View)localObject4).getBottom() > 0)
         {
-          k = j + 1;
-          if (k < m)
+          n = m + 1;
+          if (n < i1)
           {
-            localObject3 = getChildAt(k);
-            k = i + j;
+            localObject3 = getChildAt(n);
+            n = k + m;
             break;
           }
         }
-        j += 1;
+        m += 1;
       }
-      long l = getExpandableListPosition(k);
-      i = getPackedPositionGroup(l);
+      long l = getExpandableListPosition(n);
+      k = getPackedPositionGroup(l);
       getPackedPositionType(l);
-      this.jdField_b_of_type_AndroidViewView = null;
-      if ((i != -1) && (isGroupExpanded(i)))
+      this.b = null;
+      if ((k != -1) && (isGroupExpanded(k)))
       {
-        if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Int != i))
+        if ((this.a == null) || (this.i) || (this.d != k))
         {
-          this.jdField_a_of_type_Int = i;
-          this.jdField_a_of_type_AndroidViewView = getExpandableListAdapter().getGroupView(i, true, this.c, this);
-          localView = this.jdField_a_of_type_AndroidViewView;
+          this.d = k;
+          this.a = getExpandableListAdapter().getGroupView(k, true, this.c, this);
+          localView = this.a;
           if (localView != null)
           {
             localView.setSelected(((View)localObject4).isSelected());
-            this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+            this.a.setOnTouchListener(this.j);
           }
         }
-        localView = this.jdField_a_of_type_AndroidViewView;
+        localView = this.a;
         if (localView != this.c) {
           this.c = localView;
         }
         if (getPackedPositionType(l) == 0) {
-          this.jdField_b_of_type_AndroidViewView = ((View)localObject4);
+          this.b = ((View)localObject4);
         }
-        localView = this.jdField_a_of_type_AndroidViewView;
+        localView = this.a;
         if (localView != null)
         {
-          a(localView, i, 0, ((View)localObject4).getWidth());
-          localView = this.jdField_a_of_type_AndroidViewView;
-          localView.layout(0, 0, localView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+          a(localView, k, 0, ((View)localObject4).getWidth());
+          localView = this.a;
+          localView.layout(0, 0, localView.getMeasuredWidth(), this.a.getMeasuredHeight());
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView = null;
+        this.a = null;
       }
       try
       {
@@ -208,64 +202,64 @@ public class PinnedHeaderIphoneTreeView
           QLog.d("PinnedHeaderIphoneTreeView", 2, localNullPointerException.getMessage());
         }
       }
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      if (this.a != null)
       {
-        if ((getPackedPositionType(getExpandableListPosition(k + 1)) == 0) && (localObject3 != null))
+        if ((getPackedPositionType(getExpandableListPosition(n + 1)) == 0) && (localObject3 != null))
         {
-          i = ((View)localObject3).getTop();
-          j = this.jdField_a_of_type_AndroidViewView.getBottom();
-          if (i < j)
+          k = ((View)localObject3).getTop();
+          m = this.a.getBottom();
+          if (k < m)
           {
-            i -= j;
+            k -= m;
             localObject1 = getDivider();
             break label474;
           }
         }
-        i = 0;
+        k = 0;
         Object localObject1 = localObject5;
         label474:
-        paramCanvas.translate(0.0F, i);
-        if (this.jdField_a_of_type_AndroidViewView.isPressed())
+        paramCanvas.translate(0.0F, k);
+        if (this.a.isPressed())
         {
           localObject2 = getSelector();
-          ((Drawable)localObject2).setBounds(new Rect(((Drawable)localObject2).getBounds().left, this.jdField_a_of_type_AndroidViewView.getTop(), ((Drawable)localObject2).getBounds().right, this.jdField_a_of_type_AndroidViewView.getBottom()));
+          ((Drawable)localObject2).setBounds(new Rect(((Drawable)localObject2).getBounds().left, this.a.getTop(), ((Drawable)localObject2).getBounds().right, this.a.getBottom()));
           getSelector().draw(paramCanvas);
         }
         paramCanvas.translate(getPaddingLeft(), 0.0F);
-        this.jdField_a_of_type_AndroidViewView.draw(paramCanvas);
+        this.a.draw(paramCanvas);
         paramCanvas.translate(-getPaddingLeft(), 0.0F);
-        localObject2 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        localObject2 = this.f;
         if (localObject2 != null)
         {
           if (((Drawable)localObject2).isStateful()) {
-            this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(new int[] { 16842920 });
+            this.f.setState(new int[] { 16842920 });
           }
           localObject2 = (Integer)a("mIndicatorLeft");
           localObject3 = (Integer)a("mIndicatorRight");
-          localObject4 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+          localObject4 = this.f;
           if (localObject2 == null) {
-            j = 0;
+            m = 0;
           } else {
-            j = ((Integer)localObject2).intValue();
+            m = ((Integer)localObject2).intValue();
           }
-          m = this.jdField_a_of_type_AndroidViewView.getTop();
+          i1 = this.a.getTop();
           if (localObject3 == null) {
-            k = 0;
+            n = 0;
           } else {
-            k = ((Integer)localObject3).intValue();
+            n = ((Integer)localObject3).intValue();
           }
-          ((Drawable)localObject4).setBounds(j, m, k, this.jdField_a_of_type_AndroidViewView.getBottom());
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+          ((Drawable)localObject4).setBounds(m, i1, n, this.a.getBottom());
+          this.f.draw(paramCanvas);
         }
         if (localObject1 != null)
         {
-          ((Drawable)localObject1).setBounds(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getBottom() - getDividerHeight(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
-          paramCanvas.clipRect(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getBottom() - getDividerHeight() + i, this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom() + i);
+          ((Drawable)localObject1).setBounds(this.a.getLeft(), this.a.getBottom() - getDividerHeight(), this.a.getRight(), this.a.getBottom());
+          paramCanvas.clipRect(this.a.getLeft(), this.a.getBottom() - getDividerHeight() + k, this.a.getRight(), this.a.getBottom() + k);
         }
-        paramCanvas.translate(0.0F, -i);
+        paramCanvas.translate(0.0F, -k);
       }
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = false;
+      this.i = false;
+      this.h = false;
       return;
     }
     try
@@ -283,21 +277,21 @@ public class PinnedHeaderIphoneTreeView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.a;
     boolean bool;
     if (localView != null)
     {
-      localView.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-      if (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      localView.getGlobalVisibleRect(this.g);
+      if (this.g.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
       {
-        bool = this.jdField_a_of_type_AndroidViewView.dispatchTouchEvent(paramMotionEvent);
+        bool = this.a.dispatchTouchEvent(paramMotionEvent);
         if (bool) {
           return bool;
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView.setPressed(false);
+        this.a.setPressed(false);
         invalidate();
       }
     }
@@ -316,7 +310,7 @@ public class PinnedHeaderIphoneTreeView
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    if (paramView != this.jdField_b_of_type_AndroidViewView) {
+    if (paramView != this.b) {
       return super.drawChild(paramCanvas, paramView, paramLong);
     }
     return true;
@@ -325,14 +319,14 @@ public class PinnedHeaderIphoneTreeView
   public View getChildAt(int paramInt)
   {
     View localView = super.getChildAt(paramInt);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      if ((this.jdField_a_of_type_AndroidViewView != null) && (localView == this.jdField_b_of_type_AndroidViewView))
+      if ((this.a != null) && (localView == this.b))
       {
         super.setGroupIndicator(null);
         return localView;
       }
-      super.setGroupIndicator(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      super.setGroupIndicator(this.e);
     }
     return localView;
   }
@@ -345,21 +339,21 @@ public class PinnedHeaderIphoneTreeView
   public void requestLayout()
   {
     super.requestLayout();
-    this.jdField_b_of_type_Boolean = true;
+    this.i = true;
   }
   
   public void setGroupIndicator(Drawable paramDrawable)
   {
     super.setGroupIndicator(paramDrawable);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if ((paramDrawable != null) && (paramDrawable != this.jdField_b_of_type_AndroidGraphicsDrawableDrawable)) {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.e = paramDrawable;
+    if ((paramDrawable != null) && (paramDrawable != this.f)) {
+      this.f = paramDrawable;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView
  * JD-Core Version:    0.7.0.1
  */

@@ -18,11 +18,11 @@ class DetailCommentHelper$2
       if (!DetailCommentHelper.a(this.a))
       {
         paramView = this.a;
-        paramView.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(paramView), DetailCommentHelper.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a).jdField_a_of_type_Boolean);
-        DetailCommentHelper.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+        paramView.b = StoryInputBarView.a(DetailCommentHelper.b(paramView), DetailCommentHelper.c(this.a), this.a.a, DetailCommentHelper.d(this.a).e);
+        DetailCommentHelper.d(this.a).g = this.a.b;
         paramView = this.a;
         boolean bool;
-        if (paramView.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {
+        if (paramView.b != null) {
           bool = true;
         } else {
           bool = false;

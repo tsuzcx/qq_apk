@@ -11,14 +11,14 @@ class HBEntryShareActivity$3$1
   public void run()
   {
     HBEntryShareActivity.a(this.a.this$0, false);
-    if (FileUtil.b(HBEntryShareActivity.a(this.a.this$0))) {
+    if (FileUtil.d(HBEntryShareActivity.a(this.a.this$0))) {
       ScreenShotHelper.a(this.a.this$0, HBEntryShareActivity.a(this.a.this$0), true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.HBEntryShareActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

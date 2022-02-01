@@ -405,7 +405,7 @@ public class TextUtils
           if (k == 0)
           {
             paramString = new StringBuilder();
-            paramString.append(HardCodeUtil.a(2131719425));
+            paramString.append(HardCodeUtil.a(2131916985));
             paramString.append(str);
             paramString = paramString.toString();
           }
@@ -974,7 +974,7 @@ public class TextUtils
     try
     {
       paramResources = paramResources.getDrawable(paramInt);
-      paramInt = SkinUtils.a(paramResources);
+      paramInt = SkinUtils.b(paramResources);
       if (paramInt > 0) {
         GlobalImageCache.a.put(localObject, new Pair(paramResources.getConstantState(), Integer.valueOf(paramInt)));
       }
@@ -1296,7 +1296,7 @@ public class TextUtils
         return paramString;
       }
       int i1 = paramString.length();
-      int i2 = ViewUtils.a(paramInt2);
+      int i2 = ViewUtils.dip2px(paramInt2);
       StringBuilder localStringBuilder = new StringBuilder();
       int k = 0;
       int j = 0;
@@ -1494,7 +1494,7 @@ public class TextUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.TextUtils
  * JD-Core Version:    0.7.0.1
  */

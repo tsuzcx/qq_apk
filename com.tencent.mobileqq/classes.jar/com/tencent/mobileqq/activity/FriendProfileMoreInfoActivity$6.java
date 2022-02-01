@@ -13,14 +13,14 @@ class FriendProfileMoreInfoActivity$6
   
   public void run()
   {
-    Card localCard = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.app.getCurrentAccountUin());
+    Card localCard = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).g(this.this$0.app.getCurrentAccountUin());
     this.this$0.app.runOnUiThread(new FriendProfileMoreInfoActivity.6.1(this, localCard));
     ((IProfileProtocolService)this.this$0.app.getRuntimeService(IProfileProtocolService.class, "all")).getProfileDetailForEdit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.6
  * JD-Core Version:    0.7.0.1
  */

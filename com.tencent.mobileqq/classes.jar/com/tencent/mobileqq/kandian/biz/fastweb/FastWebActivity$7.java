@@ -11,25 +11,25 @@ class FastWebActivity$7
   
   public void a()
   {
-    FastWebActivity.b(this.a, true);
+    FastWebActivity.c(this.a, true);
     QLog.d("FastWebActivity", 1, "onPageSwipeClose");
   }
   
   public void b()
   {
-    if (FastWebActivity.a(this.a) == 0L)
+    if (FastWebActivity.i(this.a) == 0L)
     {
       FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPageSwipeNotClose time :");
-      localStringBuilder.append(FastWebActivity.a(this.a));
+      localStringBuilder.append(FastWebActivity.i(this.a));
       QLog.d("FastWebActivity", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.7
  * JD-Core Version:    0.7.0.1
  */

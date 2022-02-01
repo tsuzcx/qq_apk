@@ -12,14 +12,14 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI$MyGAudioUIObserver.a.a() == this.jdField_a_of_type_Long) && (!SharedPreUtils.a(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI$MyGAudioUIObserver.a.a.getApp().getApplicationContext()).getBoolean("kick_out_self", false))) {
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI$MyGAudioUIObserver.a.d(true);
+    if ((this.b.b.r() == this.a) && (!SharedPreUtils.B(this.b.b.y.getApp().getApplicationContext()).getBoolean("kick_out_self", false))) {
+      this.b.b.d(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.MyGAudioUIObserver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ import com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.Scen
 import com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.impl.ScenesRecommendManagerImpl;
 import com.tencent.mobileqq.apollo.script.api.ISpriteUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.QConfigServlet;
+import com.tencent.mobileqq.config.QConfigHelper;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.cooperation.ApkUtils;
 import com.tencent.mobileqq.core.util.EmotionSharedPreUtils;
@@ -85,6 +85,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.ThrowablesUtils;
+import cooperation.qzone.QUA;
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -143,6 +144,7 @@ public class StickerRecManagerImpl
   private StickerRecFavoriteEmoHandleListener mFavEmoticonHandleListener;
   private HashSet<String> mLocalKeywordsSet = null;
   private File mLocalWordsFile;
+  private String mSessionId = "";
   private List<IStickerRecLocalEmoticonHandleListener> mStickerRecLocalEmoticonChangeListeners;
   private List<StickerReportItem> mStickerReportItems = new ArrayList();
   private File mWordsFile;
@@ -225,13 +227,13 @@ public class StickerRecManagerImpl
           localStickerRecData.a(((PicSearchSvr.EmotionInfo)localObject).bytes_url.get().toStringUtf8());
         }
       }
-      if ((localStickerRecData.e() == 3) && (QLog.isColorLevel()))
+      if ((localStickerRecData.s() == 3) && (QLog.isColorLevel()))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("reveice cmsEmo  from:");
-        ((StringBuilder)localObject).append(localStickerRecData.e());
+        ((StringBuilder)localObject).append(localStickerRecData.s());
         ((StringBuilder)localObject).append(", CmShowinfo:");
-        ((StringBuilder)localObject).append(localStickerRecData.e());
+        ((StringBuilder)localObject).append(localStickerRecData.n());
         QLog.i("StickerRecManager", 2, ((StringBuilder)localObject).toString());
       }
       localArrayList.add(localStickerRecData);
@@ -266,7 +268,7 @@ public class StickerRecManagerImpl
     {
       paramString = Utils.Crc64String(paramString);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(StickerRecConstants.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(StickerRecConstants.a);
       localStringBuilder.append(paramString);
       paramString = new File(localStringBuilder.toString());
       return paramString;
@@ -316,14 +318,16 @@ public class StickerRecManagerImpl
       PicSearchSvr.ReqBody localReqBody = new PicSearchSvr.ReqBody();
       localReqBody.setHasFlag(true);
       int i = getcmShowIsEnable();
+      this.mSessionId = paramString1;
       localReqBody.bytes_session_id.set(ByteStringMicro.copyFromUtf8(paramString1));
       localReqBody.uint64_src_uin.set(Long.parseLong(paramString2));
       localReqBody.uint32_src_term.set(paramInt1);
       localReqBody.uint32_aio_type.set(paramInt2);
       localReqBody.uint64_to_uin.set(Long.parseLong(paramString3));
       localReqBody.uint32_open_emotion.set(i);
-      localReqBody.bytes_app_qua.set(ByteStringMicro.copyFromUtf8(AppSetting.e()));
+      localReqBody.bytes_app_qua.set(ByteStringMicro.copyFromUtf8(QUA.getQUA3()));
       localReqBody.uint32_support_emotion.set(1);
+      localReqBody.bytes_ext_info.set(ByteStringMicro.copyFromUtf8(""));
       if (paramList != null)
       {
         paramString1 = new ArrayList();
@@ -579,7 +583,7 @@ public class StickerRecManagerImpl
   
   public static boolean isStickerRecFromLocal(IStickerRecEmoticon paramIStickerRecEmoticon)
   {
-    return paramIStickerRecEmoticon.a();
+    return paramIStickerRecEmoticon.b();
   }
   
   public static boolean isStickerRecFromRemote(IStickerRecEmoticon paramIStickerRecEmoticon)
@@ -625,28 +629,28 @@ public class StickerRecManagerImpl
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 885	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 895	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: new 887	java/io/ObjectInputStream
+    //   9: new 897	java/io/ObjectInputStream
     //   12: dup
-    //   13: new 889	java/io/BufferedInputStream
+    //   13: new 899	java/io/BufferedInputStream
     //   16: dup
-    //   17: new 891	java/io/FileInputStream
+    //   17: new 901	java/io/FileInputStream
     //   20: dup
     //   21: aload_1
-    //   22: invokespecial 892	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   25: invokespecial 895	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   28: invokespecial 896	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   22: invokespecial 902	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 905	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   28: invokespecial 906	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   31: astore 4
     //   33: aload 4
     //   35: astore_3
     //   36: aload 4
-    //   38: invokevirtual 899	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   38: invokevirtual 909	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
     //   41: astore 5
     //   43: aload 4
-    //   45: invokevirtual 902	java/io/ObjectInputStream:close	()V
+    //   45: invokevirtual 912	java/io/ObjectInputStream:close	()V
     //   48: aload 5
     //   50: areturn
     //   51: astore 5
@@ -659,18 +663,18 @@ public class StickerRecManagerImpl
     //   63: astore 4
     //   65: aload 4
     //   67: astore_3
-    //   68: invokestatic 192	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   68: invokestatic 195	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   71: ifeq +15 -> 86
     //   74: aload 4
     //   76: astore_3
     //   77: ldc 45
     //   79: iconst_2
-    //   80: ldc_w 904
-    //   83: invokestatic 422	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   80: ldc_w 914
+    //   83: invokestatic 427	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   86: aload 4
     //   88: ifnull +126 -> 214
     //   91: aload 4
-    //   93: invokevirtual 902	java/io/ObjectInputStream:close	()V
+    //   93: invokevirtual 912	java/io/ObjectInputStream:close	()V
     //   96: aconst_null
     //   97: areturn
     //   98: astore 5
@@ -678,59 +682,59 @@ public class StickerRecManagerImpl
     //   101: astore 4
     //   103: aload 4
     //   105: astore_3
-    //   106: invokestatic 192	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   106: invokestatic 195	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   109: ifeq +77 -> 186
     //   112: aload 4
     //   114: astore_3
-    //   115: new 403	java/lang/StringBuilder
+    //   115: new 407	java/lang/StringBuilder
     //   118: dup
-    //   119: invokespecial 404	java/lang/StringBuilder:<init>	()V
+    //   119: invokespecial 408	java/lang/StringBuilder:<init>	()V
     //   122: astore 6
     //   124: aload 4
     //   126: astore_3
     //   127: aload 6
-    //   129: ldc_w 906
-    //   132: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: ldc_w 916
+    //   132: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: pop
     //   136: aload 4
     //   138: astore_3
     //   139: aload 6
     //   141: aload_1
-    //   142: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   145: pop
     //   146: aload 4
     //   148: astore_3
     //   149: aload 6
-    //   151: ldc_w 908
-    //   154: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: ldc_w 918
+    //   154: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   157: pop
     //   158: aload 4
     //   160: astore_3
     //   161: aload 6
     //   163: aload 5
-    //   165: invokevirtual 909	java/lang/Exception:toString	()Ljava/lang/String;
-    //   168: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: invokevirtual 919	java/lang/Exception:toString	()Ljava/lang/String;
+    //   168: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: pop
     //   172: aload 4
     //   174: astore_3
     //   175: ldc 45
     //   177: iconst_2
     //   178: aload 6
-    //   180: invokevirtual 420	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: invokestatic 422	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   180: invokevirtual 425	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   183: invokestatic 427	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   186: aload 4
     //   188: astore_3
     //   189: aload 5
-    //   191: instanceof 911
+    //   191: instanceof 921
     //   194: istore_2
     //   195: aload 4
     //   197: ifnull +8 -> 205
     //   200: aload 4
-    //   202: invokevirtual 902	java/io/ObjectInputStream:close	()V
+    //   202: invokevirtual 912	java/io/ObjectInputStream:close	()V
     //   205: iload_2
     //   206: ifeq +8 -> 214
     //   209: aload_1
-    //   210: invokestatic 917	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   210: invokestatic 927	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
     //   213: pop
     //   214: aconst_null
     //   215: areturn
@@ -738,7 +742,7 @@ public class StickerRecManagerImpl
     //   217: aload_3
     //   218: ifnull +7 -> 225
     //   221: aload_3
-    //   222: invokevirtual 902	java/io/ObjectInputStream:close	()V
+    //   222: invokevirtual 912	java/io/ObjectInputStream:close	()V
     //   225: aload_1
     //   226: athrow
     //   227: astore_1
@@ -1186,31 +1190,31 @@ public class StickerRecManagerImpl
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 885	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 895	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +4 -> 8
     //   7: return
     //   8: aconst_null
     //   9: astore 5
     //   11: aconst_null
     //   12: astore_3
-    //   13: new 1210	java/io/ObjectOutputStream
+    //   13: new 1220	java/io/ObjectOutputStream
     //   16: dup
-    //   17: new 1212	java/io/BufferedOutputStream
+    //   17: new 1222	java/io/BufferedOutputStream
     //   20: dup
-    //   21: new 1214	java/io/FileOutputStream
+    //   21: new 1224	java/io/FileOutputStream
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 1215	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   29: invokespecial 1218	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   32: invokespecial 1219	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   26: invokespecial 1225	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   29: invokespecial 1228	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   32: invokespecial 1229	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   35: astore 4
     //   37: aload 4
     //   39: aload_2
-    //   40: invokevirtual 1223	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   40: invokevirtual 1233	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   43: aload 4
-    //   45: invokevirtual 1226	java/io/ObjectOutputStream:flush	()V
+    //   45: invokevirtual 1236	java/io/ObjectOutputStream:flush	()V
     //   48: aload 4
-    //   50: invokevirtual 1227	java/io/ObjectOutputStream:close	()V
+    //   50: invokevirtual 1237	java/io/ObjectOutputStream:close	()V
     //   53: return
     //   54: astore_1
     //   55: aload 4
@@ -1229,63 +1233,63 @@ public class StickerRecManagerImpl
     //   79: astore_2
     //   80: aload_2
     //   81: astore_3
-    //   82: invokestatic 192	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   82: invokestatic 195	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   85: ifeq +71 -> 156
     //   88: aload_2
     //   89: astore_3
-    //   90: new 403	java/lang/StringBuilder
+    //   90: new 407	java/lang/StringBuilder
     //   93: dup
-    //   94: invokespecial 404	java/lang/StringBuilder:<init>	()V
+    //   94: invokespecial 408	java/lang/StringBuilder:<init>	()V
     //   97: astore 5
     //   99: aload_2
     //   100: astore_3
     //   101: aload 5
-    //   103: ldc_w 1229
-    //   106: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc_w 1239
+    //   106: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: pop
     //   110: aload_2
     //   111: astore_3
     //   112: aload 5
     //   114: aload_1
-    //   115: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: pop
     //   119: aload_2
     //   120: astore_3
     //   121: aload 5
-    //   123: ldc_w 908
-    //   126: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: ldc_w 918
+    //   126: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: pop
     //   130: aload_2
     //   131: astore_3
     //   132: aload 5
     //   134: aload 4
-    //   136: invokevirtual 909	java/lang/Exception:toString	()Ljava/lang/String;
-    //   139: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: invokevirtual 919	java/lang/Exception:toString	()Ljava/lang/String;
+    //   139: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: pop
     //   143: aload_2
     //   144: astore_3
     //   145: ldc 45
     //   147: iconst_2
     //   148: aload 5
-    //   150: invokevirtual 420	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 422	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   150: invokevirtual 425	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokestatic 427	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   156: aload_2
     //   157: ifnull +13 -> 170
     //   160: aload_2
-    //   161: invokevirtual 1227	java/io/ObjectOutputStream:close	()V
+    //   161: invokevirtual 1237	java/io/ObjectOutputStream:close	()V
     //   164: return
     //   165: astore_1
     //   166: aload_1
-    //   167: invokevirtual 1230	java/io/IOException:printStackTrace	()V
+    //   167: invokevirtual 1240	java/io/IOException:printStackTrace	()V
     //   170: return
     //   171: aload_3
     //   172: ifnull +15 -> 187
     //   175: aload_3
-    //   176: invokevirtual 1227	java/io/ObjectOutputStream:close	()V
+    //   176: invokevirtual 1237	java/io/ObjectOutputStream:close	()V
     //   179: goto +8 -> 187
     //   182: astore_2
     //   183: aload_2
-    //   184: invokevirtual 1230	java/io/IOException:printStackTrace	()V
+    //   184: invokevirtual 1240	java/io/IOException:printStackTrace	()V
     //   187: aload_1
     //   188: athrow
     // Local variable table:
@@ -1397,7 +1401,7 @@ public class StickerRecManagerImpl
   public boolean analyze(String paramString, BaseSessionInfo paramBaseSessionInfo)
   {
     if (paramBaseSessionInfo != null) {
-      return analyze(paramString, paramBaseSessionInfo.jdField_a_of_type_Int, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, false, true, paramBaseSessionInfo);
+      return analyze(paramString, paramBaseSessionInfo.a, paramBaseSessionInfo.b, false, true, paramBaseSessionInfo);
     }
     return false;
   }
@@ -1414,7 +1418,7 @@ public class StickerRecManagerImpl
     if (paramScenesRecommendItem != null) {}
     try
     {
-      if ((paramScenesRecommendItem.a() != null) && (!StringUtil.a(paramScenesRecommendItem.a())))
+      if ((paramScenesRecommendItem.e() != null) && (!StringUtil.isEmpty(paramScenesRecommendItem.a())))
       {
         String str = paramScenesRecommendItem.a();
         this.mDbHandler.post(new StickerRecManagerImpl.3(this, str, paramInt, paramString, paramScenesRecommendItem));
@@ -1463,7 +1467,7 @@ public class StickerRecManagerImpl
       {
         IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)paramList.next();
         if (localIStickerRecEmoticon != null) {
-          if (localIStickerRecEmoticon.c()) {
+          if (localIStickerRecEmoticon.g()) {
             localArrayList1.add(localIStickerRecEmoticon);
           } else {
             localArrayList2.add(localIStickerRecEmoticon);
@@ -1471,18 +1475,18 @@ public class StickerRecManagerImpl
         }
       }
       paramList = new StickerReportItem();
-      paramList.jdField_a_of_type_JavaLangString = paramString1;
-      paramList.jdField_b_of_type_JavaLangString = paramString2;
-      paramList.jdField_a_of_type_JavaUtilList = localArrayList1;
-      paramList.jdField_b_of_type_JavaUtilList = localArrayList2;
-      paramList.jdField_a_of_type_Int = paramInt;
+      paramList.b = paramString1;
+      paramList.c = paramString2;
+      paramList.d = localArrayList1;
+      paramList.e = localArrayList2;
+      paramList.a = paramInt;
       this.mStickerReportItems.add(paramList);
     }
   }
   
   public void deletePicCache()
   {
-    Object localObject = new File(StickerRecConstants.jdField_a_of_type_JavaLangString);
+    Object localObject = new File(StickerRecConstants.a);
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
       localObject = ((File)localObject).listFiles();
@@ -1554,7 +1558,7 @@ public class StickerRecManagerImpl
     }
     if (i != j)
     {
-      paramConfig = QConfigServlet.a(paramConfig, j, paramInt);
+      paramConfig = QConfigHelper.a(paramConfig, j, paramInt);
       if (!android.text.TextUtils.isEmpty(paramConfig)) {
         try
         {
@@ -1686,7 +1690,7 @@ public class StickerRecManagerImpl
             {
               this.mLocalKeywordsSet = ((HashSet)readObjectAbsPath(this.mLocalWordsFile.getAbsolutePath()));
               if (this.mLocalKeywordsSet == null) {
-                FileUtil.c(this.mLocalWordsFile.getAbsolutePath());
+                FileUtil.e(this.mLocalWordsFile.getAbsolutePath());
               }
             }
             else
@@ -1710,7 +1714,7 @@ public class StickerRecManagerImpl
               }
               if (!((HashSet)localObject1).isEmpty())
               {
-                FileUtil.c(this.mLocalWordsFile.getAbsolutePath());
+                FileUtil.e(this.mLocalWordsFile.getAbsolutePath());
                 writeObjectAbsPath(this.mLocalWordsFile.getAbsolutePath(), localObject1);
               }
               this.mLocalKeywordsSet = ((HashSet)localObject1);
@@ -1900,7 +1904,7 @@ public class StickerRecManagerImpl
         while (paramList.hasNext())
         {
           IStickerRecEmoticon localIStickerRecEmoticon = (IStickerRecEmoticon)paramList.next();
-          if ((!(localIStickerRecEmoticon instanceof StickerRecData)) || (((StickerRecData)localIStickerRecEmoticon).e() != 3) || ((paramBoolean2) && (!paramBoolean1) && (paramInt != 4))) {
+          if ((!(localIStickerRecEmoticon instanceof StickerRecData)) || (((StickerRecData)localIStickerRecEmoticon).s() != 3) || ((paramBoolean2) && (!paramBoolean1) && (paramInt != 4))) {
             localArrayList.add(localIStickerRecEmoticon);
           }
         }
@@ -1916,7 +1920,7 @@ public class StickerRecManagerImpl
   
   public String preProcessUsrText(String paramString)
   {
-    return com.tencent.mobileqq.text.TextUtils.cToe(StringUtil.c(com.tencent.mobileqq.text.TextUtils.emoticonToTextWithoutSysEmotion(paramString)).toLowerCase());
+    return com.tencent.mobileqq.text.TextUtils.cToe(StringUtil.toSemiAngleString(com.tencent.mobileqq.text.TextUtils.emoticonToTextWithoutSysEmotion(paramString)).toLowerCase());
   }
   
   public String preProcessUsrTextUseLocalSearch(String paramString)
@@ -1924,7 +1928,7 @@ public class StickerRecManagerImpl
     if (android.text.TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    return com.tencent.mobileqq.text.TextUtils.cToe(StringUtil.c(com.tencent.mobileqq.text.TextUtils.emoticonToTextWithoutSysEmotion(paramString)));
+    return com.tencent.mobileqq.text.TextUtils.cToe(StringUtil.toSemiAngleString(com.tencent.mobileqq.text.TextUtils.emoticonToTextWithoutSysEmotion(paramString)));
   }
   
   public void pullWords()
@@ -1946,8 +1950,8 @@ public class StickerRecManagerImpl
         Object localObject4 = (StickerReportItem)localIterator1.next();
         if (localObject4 != null)
         {
-          String str = ((StickerReportItem)localObject4).jdField_a_of_type_JavaLangString;
-          Object localObject2 = ((StickerReportItem)localObject4).jdField_a_of_type_JavaUtilList;
+          String str = ((StickerReportItem)localObject4).b;
+          Object localObject2 = ((StickerReportItem)localObject4).d;
           Object localObject6 = new StringBuilder();
           Object localObject5 = new StringBuilder();
           if (paramBoolean)
@@ -1974,21 +1978,21 @@ public class StickerRecManagerImpl
           {
             localObject3 = (IStickerRecEmoticon)localIterator2.next();
             ((IStickerRecEmoticon)localObject3).b(System.currentTimeMillis());
-            if (((IStickerRecEmoticon)localObject3).c() != null)
+            if (((IStickerRecEmoticon)localObject3).l() != null)
             {
-              localObject2 = ((IStickerRecEmoticon)localObject3).d();
+              localObject2 = ((IStickerRecEmoticon)localObject3).m();
               if (!android.text.TextUtils.isEmpty((CharSequence)localObject2)) {
                 ((StringBuilder)localObject6).append((String)localObject2);
               }
-              ((StringBuilder)localObject6).append(((IStickerRecEmoticon)localObject3).c());
+              ((StringBuilder)localObject6).append(((IStickerRecEmoticon)localObject3).l());
               ((StringBuilder)localObject6).append(";");
-              if (((IStickerRecEmoticon)localObject3).a() != null)
+              if (((IStickerRecEmoticon)localObject3).e() != null)
               {
-                ((StringBuilder)localObject5).append(((IStickerRecEmoticon)localObject3).a());
+                ((StringBuilder)localObject5).append(((IStickerRecEmoticon)localObject3).e());
                 ((StringBuilder)localObject5).append(";");
               }
               localObject2 = localObject1;
-              if (((IStickerRecEmoticon)localObject3).b()) {
+              if (((IStickerRecEmoticon)localObject3).d()) {
                 localObject2 = localObject3;
               }
               localObject1 = localObject2;
@@ -2002,35 +2006,36 @@ public class StickerRecManagerImpl
           localObject6 = ((StringBuilder)localObject6).toString();
           localObject5 = ((StringBuilder)localObject5).toString();
           long l = Long.valueOf(this.mApp.getCurrentAccountUin()).longValue();
-          if (((StickerReportItem)localObject4).jdField_a_of_type_Int == 1)
+          if (((StickerReportItem)localObject4).a == 1)
           {
             localObject2 = new ScenesRecReportData();
-            ((ScenesRecReportData)localObject2).l = "dc05550";
+            ((ScenesRecReportData)localObject2).m = "dc05550";
             ((ScenesRecReportData)localObject2).c = str;
-            ((ScenesRecReportData)localObject2).jdField_a_of_type_JavaLangString = String.valueOf(l);
-            ((ScenesRecReportData)localObject2).jdField_b_of_type_JavaLangString = paramString;
+            ((ScenesRecReportData)localObject2).a = String.valueOf(l);
+            ((ScenesRecReportData)localObject2).b = paramString;
             ((ScenesRecReportData)localObject2).d = paramList;
             paramList = (List<StickerReportItem>)localObject2;
           }
           else
           {
             localObject2 = new StickerRecReportData();
-            ((StickerRecReportData)localObject2).l = "dc04577";
-            ((StickerRecReportData)localObject2).jdField_b_of_type_JavaLangString = str;
+            ((StickerRecReportData)localObject2).m = "dc04577";
+            ((StickerRecReportData)localObject2).b = str;
             if (QLog.isColorLevel()) {
-              ((StickerRecReportData)localObject2).jdField_b_of_type_JavaLangString = stringToUnicode(((StickerRecReportData)localObject2).jdField_b_of_type_JavaLangString);
+              ((StickerRecReportData)localObject2).b = stringToUnicode(((StickerRecReportData)localObject2).b);
             }
-            ((StickerRecReportData)localObject2).jdField_a_of_type_JavaLangString = String.valueOf(l);
+            ((StickerRecReportData)localObject2).a = String.valueOf(l);
             ((StickerRecReportData)localObject2).d = paramString;
             ((StickerRecReportData)localObject2).c = paramList;
             paramList = (List<StickerReportItem>)localObject2;
           }
-          paramList.k = ((StickerReportItem)localObject4).jdField_b_of_type_JavaLangString;
-          paramList.e = String.valueOf(AppSetting.a());
+          paramList.l = this.mSessionId;
+          paramList.k = ((StickerReportItem)localObject4).c;
+          paramList.e = String.valueOf(AppSetting.d());
           if (localObject1 != null)
           {
-            localObject3 = ((IStickerRecEmoticon)localObject1).c();
-            localObject4 = ((IStickerRecEmoticon)localObject1).d();
+            localObject3 = ((IStickerRecEmoticon)localObject1).l();
+            localObject4 = ((IStickerRecEmoticon)localObject1).m();
             localObject2 = localObject3;
             if (!android.text.TextUtils.isEmpty((CharSequence)localObject4))
             {
@@ -2040,7 +2045,7 @@ public class StickerRecManagerImpl
               localObject2 = ((StringBuilder)localObject2).toString();
             }
             paramList.h = ((String)localObject2);
-            paramList.i = ((IStickerRecEmoticon)localObject1).a();
+            paramList.i = ((IStickerRecEmoticon)localObject1).e();
             StickerRecReport.a(false, str, paramInt, paramString, (IStickerRecEmoticon)localObject1);
           }
           paramList.f = ((String)localObject6);
@@ -2117,7 +2122,7 @@ public class StickerRecManagerImpl
       if (localObject1 == null) {
         return;
       }
-      if (!StringUtil.c(paramString))
+      if (!StringUtil.isValideUin(paramString))
       {
         QLog.e("StickerRecManager", 2, " fromUin is invalid!!");
         return;
@@ -2128,8 +2133,8 @@ public class StickerRecManagerImpl
       ((StringBuilder)localObject2).append(paramString);
       ((StringBuilder)localObject2).append(SystemClock.uptimeMillis());
       localObject2 = ((StringBuilder)localObject2).toString();
-      String str1 = String.valueOf(AppSetting.a());
-      String str2 = ApkUtils.a(this.mApp.getApp());
+      String str1 = String.valueOf(AppSetting.d());
+      String str2 = ApkUtils.b(this.mApp.getApp());
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -2180,7 +2185,7 @@ public class StickerRecManagerImpl
           ((StringBuilder)localObject1).append(paramString1);
           ((StringBuilder)localObject1).append(SystemClock.uptimeMillis());
           localObject1 = ((StringBuilder)localObject1).toString();
-          Object localObject2 = getPullPicsRequestBody((String)localObject1, paramString1, paramInt1, paramInt2, paramString2, paramScenesRecommendItem.a()).toByteArray();
+          Object localObject2 = getPullPicsRequestBody((String)localObject1, paramString1, paramInt1, paramInt2, paramString2, paramScenesRecommendItem.e()).toByteArray();
           Object localObject3 = ByteBuffer.allocate(localObject2.length + 4);
           ((ByteBuffer)localObject3).putInt(localObject2.length + 4).put((byte[])localObject2);
           localObject3 = ((ByteBuffer)localObject3).array();
@@ -2311,7 +2316,7 @@ public class StickerRecManagerImpl
     if (paramBaseSessionInfo == null) {
       reportEvent((List)localObject1, false, 0, null);
     } else {
-      reportEvent((List)localObject1, true, paramBaseSessionInfo.jdField_a_of_type_Int, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      reportEvent((List)localObject1, true, paramBaseSessionInfo.a, paramBaseSessionInfo.b);
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -2319,8 +2324,8 @@ public class StickerRecManagerImpl
       Object localObject2 = (StickerReportItem)((Iterator)localObject1).next();
       if (localObject2 != null)
       {
-        Object localObject3 = ((StickerReportItem)localObject2).jdField_a_of_type_JavaLangString;
-        int i = ((StickerReportItem)localObject2).jdField_a_of_type_Int;
+        Object localObject3 = ((StickerReportItem)localObject2).b;
+        int i = ((StickerReportItem)localObject2).a;
         if (i == 1) {
           paramBaseSessionInfo = (StickerRecommendSortEntity)this.entityManager.find(StickerRecommendSortEntity.class, "usrMessage=? AND recommendType==1", new String[] { localObject3 });
         } else {
@@ -2330,15 +2335,15 @@ public class StickerRecManagerImpl
         if (paramBaseSessionInfo != null)
         {
           paramBaseSessionInfo.convertToList();
-          localObject2 = ((StickerReportItem)localObject2).jdField_a_of_type_JavaUtilList.iterator();
+          localObject2 = ((StickerReportItem)localObject2).d.iterator();
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (IStickerRecEmoticon)((Iterator)localObject2).next();
-            if (!((IStickerRecEmoticon)localObject3).a())
+            if (!((IStickerRecEmoticon)localObject3).b())
             {
               localObject3 = (StickerRecData)localObject3;
-              localObject4 = Integer.valueOf(((StickerRecData)localObject3).d());
-              if (((StickerRecData)localObject3).b())
+              localObject4 = Integer.valueOf(((StickerRecData)localObject3).r());
+              if (((StickerRecData)localObject3).d())
               {
                 if (paramBaseSessionInfo.clickedList.contains(localObject4)) {
                   paramBaseSessionInfo.removeClicked((Integer)localObject4);
@@ -2377,26 +2382,26 @@ public class StickerRecManagerImpl
         else
         {
           paramBaseSessionInfo = new StickerRecommendSortEntity((String)localObject3);
-          localObject3 = ((StickerReportItem)localObject2).jdField_a_of_type_JavaUtilList.iterator();
+          localObject3 = ((StickerReportItem)localObject2).d.iterator();
           while (((Iterator)localObject3).hasNext())
           {
             localObject4 = (IStickerRecEmoticon)((Iterator)localObject3).next();
-            if (!((IStickerRecEmoticon)localObject4).a())
+            if (!((IStickerRecEmoticon)localObject4).b())
             {
               localObject4 = (StickerRecData)localObject4;
-              if (((StickerRecData)localObject4).b()) {
-                paramBaseSessionInfo.addClicked(Integer.valueOf(((StickerRecData)localObject4).d()));
+              if (((StickerRecData)localObject4).d()) {
+                paramBaseSessionInfo.addClicked(Integer.valueOf(((StickerRecData)localObject4).r()));
               } else {
-                paramBaseSessionInfo.addExposed(Integer.valueOf(((StickerRecData)localObject4).d()));
+                paramBaseSessionInfo.addExposed(Integer.valueOf(((StickerRecData)localObject4).r()));
               }
             }
           }
-          localObject2 = ((StickerReportItem)localObject2).jdField_b_of_type_JavaUtilList.iterator();
+          localObject2 = ((StickerReportItem)localObject2).e.iterator();
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (IStickerRecEmoticon)((Iterator)localObject2).next();
-            if (!((IStickerRecEmoticon)localObject3).a()) {
-              paramBaseSessionInfo.addNoExpose(Integer.valueOf(((StickerRecData)localObject3).d()));
+            if (!((IStickerRecEmoticon)localObject3).b()) {
+              paramBaseSessionInfo.addNoExpose(Integer.valueOf(((StickerRecData)localObject3).r()));
             }
           }
           if ((paramBaseSessionInfo.noExposeList != null) && (paramBaseSessionInfo.noExposeList.size() == 0))
@@ -2435,7 +2440,7 @@ public class StickerRecManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.impl.StickerRecManagerImpl
  * JD-Core Version:    0.7.0.1
  */

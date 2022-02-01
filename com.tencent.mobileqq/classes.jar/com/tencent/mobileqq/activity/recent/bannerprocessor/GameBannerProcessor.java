@@ -29,17 +29,12 @@ public class GameBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.I;
-  }
+  public static final int a = BannerTypeCollections.J;
   
   public GameBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public int a()
@@ -52,16 +47,11 @@ public class GameBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("GameBar", 2, "initGameBar");
     }
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130838310));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130838358));
     paramBanner.setVisibility(8);
     paramBanner.b(true);
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Message paramMessage)
@@ -74,7 +64,7 @@ public class GameBannerProcessor
       ImageLoader.a().a(str, new GameBannerProcessor.3(this, localBundle, paramMessage));
       return;
     }
-    BannerManager.a().a(jdField_a_of_type_Int, 2, paramMessage);
+    BannerManager.a().a(a, 2, paramMessage);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
@@ -91,19 +81,19 @@ public class GameBannerProcessor
       }
       if (paramMessage.what == 1134050)
       {
-        paramBanner.a.setVisibility(8);
+        paramBanner.c.setVisibility(8);
         return;
       }
-      if (((paramMessage.obj instanceof Bundle)) && ((paramBanner.a instanceof TipsBar)))
+      if (((paramMessage.obj instanceof Bundle)) && ((paramBanner.c instanceof TipsBar)))
       {
-        paramBanner = (TipsBar)paramBanner.a;
+        paramBanner = (TipsBar)paramBanner.c;
         paramMessage = (Bundle)paramMessage.obj;
         localObject = (String)paramMessage.getCharSequence("tips");
         int i = paramMessage.getInt("icon");
         if (paramMessage.containsKey("iconURLBitmap")) {
           paramBanner.setTipsIcon(new BitmapDrawable((Bitmap)paramMessage.getParcelable("iconURLBitmap")));
         } else if (i != 1) {
-          paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(i));
+          paramBanner.setTipsIcon(this.f.getResources().getDrawable(i));
         }
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
@@ -111,9 +101,9 @@ public class GameBannerProcessor
           paramBanner.setOnClickListener(new GameBannerProcessor.1(this, paramMessage));
           paramBanner.setCloseListener(new GameBannerProcessor.2(this));
           paramBanner.setVisibility(0);
-          this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
-          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, paramMessage.getInt("timeout", 900000));
-          ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDF", "0X8009EDF", 4, 0, "", "", "", "");
+          this.g.removeMessages(1000);
+          this.g.sendEmptyMessageDelayed(1000, paramMessage.getInt("timeout", 900000));
+          ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDF", "0X8009EDF", 4, 0, "", "", "", "");
         }
       }
       return;
@@ -129,20 +119,25 @@ public class GameBannerProcessor
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b() {}
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
+  }
+  
+  public void d() {}
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1000) {
-      BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
+      BannerManager.a().a(a, 0, paramMessage);
     } else if (paramMessage.what == 1134049) {
       a(paramMessage);
     }
@@ -151,7 +146,7 @@ public class GameBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.GameBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

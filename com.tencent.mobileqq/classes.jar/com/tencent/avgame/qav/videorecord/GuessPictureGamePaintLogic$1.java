@@ -12,27 +12,27 @@ class GuessPictureGamePaintLogic$1
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setDrawingCacheEnabled(true);
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidViewView.getDrawingCache();
+    this.a.setDrawingCacheEnabled(true);
+    Bitmap localBitmap = this.a.getDrawingCache();
     if (localBitmap != null)
     {
-      int j = this.jdField_a_of_type_AndroidViewView.getWidth();
-      int i = this.jdField_a_of_type_AndroidViewView.getHeight();
+      int j = this.a.getWidth();
+      int i = this.a.getHeight();
       j = (GuessPictureGamePaintLogic.a(this.this$0) - j) / 2;
       i = (GuessPictureGamePaintLogic.b(this.this$0) - i) / 2;
-      synchronized (GuessPictureGamePaintLogic.a(this.this$0))
+      synchronized (GuessPictureGamePaintLogic.c(this.this$0))
       {
         GuessPictureGamePaintLogic.a(this.this$0, new GameImageData());
-        GuessPictureGamePaintLogic.a(this.this$0).jdField_a_of_type_AndroidGraphicsBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
-        GuessPictureGamePaintLogic.a(this.this$0).e = this.jdField_a_of_type_Int;
-        GuessPictureGamePaintLogic.a(this.this$0).c = j;
-        GuessPictureGamePaintLogic.a(this.this$0).d = i;
-        GuessPictureGamePaintLogic.a(this.this$0).jdField_a_of_type_JavaLangString = "Answer";
-        GuessPictureGamePaintLogic.a(this.this$0).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+        GuessPictureGamePaintLogic.d(this.this$0).a = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
+        GuessPictureGamePaintLogic.d(this.this$0).f = this.b;
+        GuessPictureGamePaintLogic.d(this.this$0).d = j;
+        GuessPictureGamePaintLogic.d(this.this$0).e = i;
+        GuessPictureGamePaintLogic.d(this.this$0).g = "Answer";
+        GuessPictureGamePaintLogic.d(this.this$0).i = this.c;
         GuessPictureGamePaintLogic.a(this.this$0, true);
       }
     }
-    this.jdField_a_of_type_AndroidViewView.setDrawingCacheEnabled(false);
+    this.a.setDrawingCacheEnabled(false);
     if (QLog.isColorLevel()) {
       QLog.d("GuessPictureGamePaintLogic", 2, "onAnswerViewShow indeed");
     }

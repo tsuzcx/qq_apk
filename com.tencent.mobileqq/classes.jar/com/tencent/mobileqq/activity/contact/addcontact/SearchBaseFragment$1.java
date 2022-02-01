@@ -14,21 +14,21 @@ class SearchBaseFragment$1
   
   public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<ISearchResultGroupModel> paramList)
   {
-    this.a.j();
+    this.a.m();
     if (paramBoolean)
     {
       if (paramInt3 == 1)
       {
-        if (this.a.a != null) {
-          this.a.a.sendMessage(this.a.a.obtainMessage(4, paramList));
+        if (this.a.v != null) {
+          this.a.v.sendMessage(this.a.v.obtainMessage(4, paramList));
         }
         return;
       }
       paramInt1 = 2;
       if (paramInt3 == 2)
       {
-        if (this.a.a != null) {
-          this.a.a.sendEmptyMessage(5);
+        if (this.a.v != null) {
+          this.a.v.sendEmptyMessage(5);
         }
         return;
       }
@@ -39,10 +39,10 @@ class SearchBaseFragment$1
         paramInt2 = 3;
         if (paramInt3 == 0)
         {
-          if (this.a.a != null)
+          if (this.a.v != null)
           {
-            paramObject = this.a.a;
-            if (this.a.b) {
+            paramObject = this.a.v;
+            if (this.a.g) {
               paramInt1 = paramInt2;
             } else {
               paramInt1 = 2;
@@ -50,7 +50,7 @@ class SearchBaseFragment$1
             paramObject.sendEmptyMessage(paramInt1);
           }
           if (QLog.isColorLevel()) {
-            QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
+            QLog.d(SearchBaseFragment.r(), 2, "error! SearchResult is null!");
           }
           return;
         }
@@ -62,18 +62,18 @@ class SearchBaseFragment$1
           catch (Exception paramObject)
           {
             if (QLog.isColorLevel()) {
-              QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
+              QLog.d(SearchBaseFragment.r(), 2, "", paramObject);
             }
-            paramObject = this.a.a;
-            if (this.a.b) {
+            paramObject = this.a.v;
+            if (this.a.g) {
               paramInt1 = 3;
             }
             paramObject.sendEmptyMessage(paramInt1);
             return;
           }
         }
-        if ((this.a.a(paramObject)) && (this.a.a != null)) {
-          this.a.a.sendEmptyMessage(0);
+        if ((this.a.a(paramObject)) && (this.a.v != null)) {
+          this.a.v.sendEmptyMessage(0);
         }
       }
     }
@@ -85,7 +85,7 @@ class SearchBaseFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,19 +8,14 @@ import org.json.JSONObject;
 
 public class MutualMarkConfigIRType$TypeItem
 {
-  public long a;
-  public MutualMarkConfigIRType a;
   public String a;
-  public ArrayList<MutualMarkConfigIRType.SubLevelInfo> a;
-  public boolean a;
-  public long b;
   public String b;
-  public String c;
-  
-  public MutualMarkConfigIRType$TypeItem()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public boolean c = true;
+  public long d;
+  public long e;
+  public String f;
+  public MutualMarkConfigIRType g;
+  public ArrayList<MutualMarkConfigIRType.SubLevelInfo> h;
   
   public static TypeItem a(JSONObject paramJSONObject)
   {
@@ -30,22 +25,22 @@ public class MutualMarkConfigIRType$TypeItem
     Object localObject = new TypeItem();
     try
     {
-      ((TypeItem)localObject).jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
-      ((TypeItem)localObject).jdField_a_of_type_Long = MutualMarkUtils.b(((TypeItem)localObject).jdField_a_of_type_JavaLangString);
-      ((TypeItem)localObject).jdField_b_of_type_Long = MutualMarkUtils.a(((TypeItem)localObject).jdField_a_of_type_JavaLangString);
-      ((TypeItem)localObject).jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
-      ((TypeItem)localObject).c = paramJSONObject.optString("Android_iconPath");
-      ((TypeItem)localObject).jdField_a_of_type_Boolean = true;
+      ((TypeItem)localObject).a = paramJSONObject.optString("id");
+      ((TypeItem)localObject).d = MutualMarkUtils.b(((TypeItem)localObject).a);
+      ((TypeItem)localObject).e = MutualMarkUtils.a(((TypeItem)localObject).a);
+      ((TypeItem)localObject).b = paramJSONObject.optString("name");
+      ((TypeItem)localObject).f = paramJSONObject.optString("Android_iconPath");
+      ((TypeItem)localObject).c = true;
       if (paramJSONObject.has("subLevelInfo"))
       {
         paramJSONObject = paramJSONObject.optJSONArray("subLevelInfo");
-        ((TypeItem)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        ((TypeItem)localObject).h = new ArrayList();
         int i = 0;
         while (i < paramJSONObject.length())
         {
           MutualMarkConfigIRType.SubLevelInfo localSubLevelInfo = MutualMarkConfigIRType.SubLevelInfo.a(paramJSONObject.getJSONObject(i));
           if (localSubLevelInfo != null) {
-            ((TypeItem)localObject).jdField_a_of_type_JavaUtilArrayList.add(localSubLevelInfo);
+            ((TypeItem)localObject).h.add(localSubLevelInfo);
           }
           i += 1;
         }
@@ -66,32 +61,32 @@ public class MutualMarkConfigIRType$TypeItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("type=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("|");
     localStringBuilder.append("level=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("|");
     localStringBuilder.append("name=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("|");
     localStringBuilder.append("iconPath=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("|");
     localStringBuilder.append("enable=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("|");
     localStringBuilder.append("subLevelInfoArrayList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.info.MutualMarkConfigIRType.TypeItem
  * JD-Core Version:    0.7.0.1
  */

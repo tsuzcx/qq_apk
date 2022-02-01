@@ -13,19 +13,24 @@ import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_8410;
 public class NewerGuideBannerManager
   implements Manager
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  NewerGuideBannerObserver jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerObserver;
-  NewerGuideBannerSharePreferenceHelper jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper = NewerGuideBannerSharePreferenceHelper.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper;
-  private oidb_0x59f.Guidelines_8410 jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410;
+  NewerGuideBannerObserver a;
+  NewerGuideBannerSharePreferenceHelper b = NewerGuideBannerSharePreferenceHelper.a;
+  private AppInterface c;
+  private oidb_0x59f.Guidelines_8410 d;
   
   public NewerGuideBannerManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerObserver = new NewerGuideBannerObserver(paramAppInterface);
-    paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerObserver);
+    this.c = paramAppInterface;
+    this.a = new NewerGuideBannerObserver(paramAppInterface);
+    paramAppInterface.addObserver(this.a);
   }
   
-  private <T> void a(List<T> paramList)
+  private <T> boolean a(T paramT)
+  {
+    return ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).isMayKnowRecentBaseData(paramT);
+  }
+  
+  private <T> void b(List<T> paramList)
   {
     paramList = paramList.iterator();
     int i = 0;
@@ -48,15 +53,10 @@ public class NewerGuideBannerManager
     }
   }
   
-  private <T> boolean a(T paramT)
-  {
-    return ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).isMayKnowRecentBaseData(paramT);
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).getNewerGuideHandler(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a();
+    if (this.c != null) {
+      ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).getNewerGuideHandler(this.c).a();
     }
   }
   
@@ -67,9 +67,9 @@ public class NewerGuideBannerManager
       if (paramBannerManager == null) {
         return;
       }
-      if (paramBannerManager.b(((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).getBannerId()))
+      if (paramBannerManager.d(((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).getBannerId()))
       {
-        a(paramList);
+        b(paramList);
         return;
       }
       if (!a(paramList)) {
@@ -80,8 +80,8 @@ public class NewerGuideBannerManager
   
   void a(oidb_0x59f.Guidelines_8410 paramGuidelines_8410)
   {
-    this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410 = paramGuidelines_8410;
-    boolean bool = a(paramGuidelines_8410);
+    this.d = paramGuidelines_8410;
+    boolean bool = b(paramGuidelines_8410);
     if (QLog.isColorLevel())
     {
       paramGuidelines_8410 = new StringBuilder();
@@ -116,48 +116,48 @@ public class NewerGuideBannerManager
     return false;
   }
   
-  boolean a(oidb_0x59f.Guidelines_8410 paramGuidelines_8410)
+  void b()
   {
-    if ((paramGuidelines_8410 != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuideBannerManager", 2, "hideNewerGuideBanner");
+    }
+    if (this.c != null) {
+      ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).hideNewerGuideBanner(this.c);
+    }
+  }
+  
+  boolean b(oidb_0x59f.Guidelines_8410 paramGuidelines_8410)
+  {
+    if ((paramGuidelines_8410 != null) && (this.c != null))
     {
       int i = paramGuidelines_8410.uint32_banner_status.get();
       if (i == 0) {
         return false;
       }
-      paramGuidelines_8410 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      paramGuidelines_8410 = this.c.getCurrentAccountUin();
       if (i == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper.a(paramGuidelines_8410);
+        this.b.a(paramGuidelines_8410);
         return true;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper.a(paramGuidelines_8410) <= 0L) {
+      if (this.b.c(paramGuidelines_8410) <= 0L) {
         return true;
       }
     }
     return false;
   }
   
-  void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuideBannerManager", 2, "hideNewerGuideBanner");
-    }
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).hideNewerGuideBanner(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    }
-  }
-  
   void c()
   {
-    oidb_0x59f.Guidelines_8410 localGuidelines_8410 = this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410;
-    if ((localGuidelines_8410 != null) && (localGuidelines_8410.uint32_banner_status.has()) && (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.uint32_banner_status.get() == 2)) {
-      this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410.uint32_banner_status.set(1);
+    oidb_0x59f.Guidelines_8410 localGuidelines_8410 = this.d;
+    if ((localGuidelines_8410 != null) && (localGuidelines_8410.uint32_banner_status.has()) && (this.d.uint32_banner_status.get() == 2)) {
+      this.d.uint32_banner_status.set(1);
     }
   }
   
   public void d()
   {
-    a(this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410);
+    a(this.d);
   }
   
   void e()
@@ -165,8 +165,8 @@ public class NewerGuideBannerManager
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuideBannerManager", 2, "showNewerGuideBanner called");
     }
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410 != null)) {
-      ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).showNewerGuideBanner(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410);
+    if ((this.c != null) && (this.d != null)) {
+      ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).showNewerGuideBanner(this.c, this.d);
     }
   }
   
@@ -179,19 +179,19 @@ public class NewerGuideBannerManager
       ((StringBuilder)localObject).append(this);
       QLog.d("NewerGuideBannerManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      ((AppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerObserver);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+      ((AppInterface)localObject).removeObserver(this.a);
+      this.c = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerObserver = null;
-    this.jdField_a_of_type_TencentImOidbCmd0x59fOidb_0x59f$Guidelines_8410 = null;
+    this.a = null;
+    this.d = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerManager
  * JD-Core Version:    0.7.0.1
  */

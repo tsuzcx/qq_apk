@@ -14,16 +14,21 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class MsgTabCheckActiveRequest
   extends NetworkRequest
 {
-  public static String a = StoryApi.a("StorySvc.check_activity");
-  public String b;
-  public final String c;
+  public static String e = StoryApi.a("StorySvc.check_activity");
+  public String f;
+  public final String g;
   
   public MsgTabCheckActiveRequest(String paramString)
   {
-    this.c = paramString;
+    this.g = paramString;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
     try
@@ -37,19 +42,14 @@ public class MsgTabCheckActiveRequest
     return new MsgTabCheckActiveRequest.MsgTabCheckActiveResponse(localRspCheckActivity);
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
-    if (!TextUtils.isEmpty(this.c)) {
-      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
+    if (!TextUtils.isEmpty(this.g)) {
+      localReqCheckActivity.adcode.set(Long.valueOf(this.g).longValue());
     }
-    SLog.a("MsgTabCheckActiveRequest", "client version=%s", "8.7.0");
-    localReqCheckActivity.version.set("8.7.0");
+    SLog.a("MsgTabCheckActiveRequest", "client version=%s", "8.8.17");
+    localReqCheckActivity.version.set("8.8.17");
     return localReqCheckActivity.toByteArray();
   }
   
@@ -57,10 +57,10 @@ public class MsgTabCheckActiveRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MsgTabCheckActiveRequest{value='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", adCode='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -68,7 +68,7 @@ public class MsgTabCheckActiveRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabCheckActiveRequest
  * JD-Core Version:    0.7.0.1
  */

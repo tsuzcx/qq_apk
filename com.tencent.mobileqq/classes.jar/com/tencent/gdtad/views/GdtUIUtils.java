@@ -73,22 +73,6 @@ public class GdtUIUtils
     return paramInt1 & 0xFFFFFF | paramInt2 << 24;
   }
   
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    double d1 = paramInt1;
-    Double.isNaN(d1);
-    double d2 = paramInt3;
-    Double.isNaN(d2);
-    double d3 = paramInt2;
-    Double.isNaN(d3);
-    return Double.valueOf(d1 * 1.0D * d2 / d3).intValue();
-  }
-  
-  private static int a(Activity paramActivity)
-  {
-    return b(paramActivity);
-  }
-  
   public static int a(Context paramContext)
   {
     if ((paramContext != null) && (paramContext.getResources() != null) && (paramContext.getResources().getConfiguration() != null)) {
@@ -186,28 +170,6 @@ public class GdtUIUtils
     return String.format("%02d:%02d", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
   }
   
-  public static void a(Activity paramActivity)
-  {
-    if (LiuHaiUtils.enableNotch(paramActivity))
-    {
-      a(paramActivity);
-      GdtLog.a("GdtUIUtils", "enableNotch && updateLiuhaiTopHeight 0");
-    }
-  }
-  
-  public static void a(View paramView)
-  {
-    if (paramView == null) {
-      return;
-    }
-    if (ThemeUtil.isNowThemeIsNight(null, false, null))
-    {
-      paramView.setVisibility(0);
-      return;
-    }
-    paramView.setVisibility(8);
-  }
-  
   public static void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramView == null) {
@@ -226,16 +188,6 @@ public class GdtUIUtils
   public static boolean a(int paramInt)
   {
     return (paramInt == 185) || (paramInt == 585);
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    LiuHaiUtils.a(paramActivity);
-    paramActivity = new StringBuilder();
-    paramActivity.append("hasTopLiuHai  ");
-    paramActivity.append(LiuHaiUtils.a);
-    GdtLog.a("GdtUIUtils", paramActivity.toString());
-    return LiuHaiUtils.a;
   }
   
   @TargetApi(17)
@@ -289,20 +241,15 @@ public class GdtUIUtils
     return new int[] { j, i };
   }
   
-  private static int b(Activity paramActivity)
+  public static int b(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getNotchInScreenHeight apiVersion: ");
-      localStringBuilder.append(i);
-      QLog.i("GdtUIUtils", 1, localStringBuilder.toString());
-    }
-    if (i > 27) {
-      return LiuHaiUtils.a(paramActivity);
-    }
-    return LiuHaiUtils.b(paramActivity);
+    double d1 = paramInt1;
+    Double.isNaN(d1);
+    double d2 = paramInt3;
+    Double.isNaN(d2);
+    double d3 = paramInt2;
+    Double.isNaN(d3);
+    return Double.valueOf(d1 * 1.0D * d2 / d3).intValue();
   }
   
   public static int b(Context paramContext)
@@ -315,6 +262,29 @@ public class GdtUIUtils
     return paramContext.getResources().getDisplayMetrics().widthPixels;
   }
   
+  public static void b(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (ThemeUtil.isNowThemeIsNight(null, false, null))
+    {
+      paramView.setVisibility(0);
+      return;
+    }
+    paramView.setVisibility(8);
+  }
+  
+  public static boolean b(Activity paramActivity)
+  {
+    LiuHaiUtils.f(paramActivity);
+    paramActivity = new StringBuilder();
+    paramActivity.append("hasTopLiuHai  ");
+    paramActivity.append(LiuHaiUtils.b);
+    GdtLog.a("GdtUIUtils", paramActivity.toString());
+    return LiuHaiUtils.b;
+  }
+  
   public static int c(Context paramContext)
   {
     if ((paramContext == null) || (paramContext.getResources() == null) || (paramContext.getResources().getDisplayMetrics() == null))
@@ -323,6 +293,20 @@ public class GdtUIUtils
       return -2147483648;
     }
     return paramContext.getResources().getDisplayMetrics().heightPixels;
+  }
+  
+  public static void c(Activity paramActivity)
+  {
+    if (LiuHaiUtils.enableNotch(paramActivity))
+    {
+      d(paramActivity);
+      GdtLog.a("GdtUIUtils", "enableNotch && updateLiuhaiTopHeight 0");
+    }
+  }
+  
+  private static int d(Activity paramActivity)
+  {
+    return e(paramActivity);
   }
   
   public static int d(Context paramContext)
@@ -342,6 +326,22 @@ public class GdtUIUtils
       j = 1920;
     }
     return j;
+  }
+  
+  private static int e(Activity paramActivity)
+  {
+    int i = Build.VERSION.SDK_INT;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNotchInScreenHeight apiVersion: ");
+      localStringBuilder.append(i);
+      QLog.i("GdtUIUtils", 1, localStringBuilder.toString());
+    }
+    if (i > 27) {
+      return LiuHaiUtils.d(paramActivity);
+    }
+    return LiuHaiUtils.d(paramActivity);
   }
   
   public static int e(Context paramContext)
@@ -365,7 +365,7 @@ public class GdtUIUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.GdtUIUtils
  * JD-Core Version:    0.7.0.1
  */

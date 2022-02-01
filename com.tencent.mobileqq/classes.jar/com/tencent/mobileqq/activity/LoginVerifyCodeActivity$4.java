@@ -9,10 +9,10 @@ class LoginVerifyCodeActivity$4
   {
     try
     {
-      if ((LoginVerifyCodeActivity.a(this.this$0) != null) && (LoginVerifyCodeActivity.a(this.this$0).isShowing()))
+      if ((LoginVerifyCodeActivity.n(this.this$0) != null) && (LoginVerifyCodeActivity.n(this.this$0).isShowing()))
       {
-        LoginVerifyCodeActivity.a(this.this$0).dismiss();
-        LoginVerifyCodeActivity.a(this.this$0).cancel();
+        LoginVerifyCodeActivity.n(this.this$0).dismiss();
+        LoginVerifyCodeActivity.n(this.this$0).cancel();
       }
     }
     catch (Throwable localThrowable)
@@ -24,7 +24,7 @@ class LoginVerifyCodeActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity.4
  * JD-Core Version:    0.7.0.1
  */

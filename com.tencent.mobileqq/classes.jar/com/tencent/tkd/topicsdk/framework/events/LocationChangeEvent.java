@@ -10,21 +10,16 @@ import org.jetbrains.annotations.Nullable;
 public final class LocationChangeEvent
   implements IEvent
 {
-  public static final LocationChangeEvent.Companion a;
-  private static final int c = 1;
-  private static final int d = 2;
-  private final int a;
+  public static final LocationChangeEvent.Companion a = new LocationChangeEvent.Companion(null);
+  private static final int d = 1;
+  private static final int e = 2;
   private final int b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventsLocationChangeEvent$Companion = new LocationChangeEvent.Companion(null);
-  }
+  private final int c;
   
   public LocationChangeEvent(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -33,7 +28,7 @@ public final class LocationChangeEvent
       if ((paramObject instanceof LocationChangeEvent))
       {
         paramObject = (LocationChangeEvent)paramObject;
-        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b)) {}
+        if ((this.b == paramObject.b) && (this.c == paramObject.c)) {}
       }
       else
       {
@@ -45,7 +40,7 @@ public final class LocationChangeEvent
   
   public int hashCode()
   {
-    return .r8.java8methods.utility.Integer.hashCode.II.hashCode(this.jdField_a_of_type_Int) * 31 + .r8.java8methods.utility.Integer.hashCode.II.hashCode(this.b);
+    return .r8.java8methods.utility.Integer.hashCode.II.hashCode(this.b) * 31 + .r8.java8methods.utility.Integer.hashCode.II.hashCode(this.c);
   }
   
   @NotNull
@@ -53,16 +48,16 @@ public final class LocationChangeEvent
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LocationChangeEvent(eventKey=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", pageId=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", pageId=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.events.LocationChangeEvent
  * JD-Core Version:    0.7.0.1
  */

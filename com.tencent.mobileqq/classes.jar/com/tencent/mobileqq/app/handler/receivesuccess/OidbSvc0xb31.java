@@ -22,7 +22,7 @@ public class OidbSvc0xb31
   public static void a(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, String paramString)
   {
     if ("OidbSvc.0xb31".equalsIgnoreCase(paramString)) {
-      a(paramMessageHandler.a, paramToServiceMsg, paramFromServiceMsg, paramObject);
+      a(paramMessageHandler.n, paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
   
@@ -118,7 +118,7 @@ public class OidbSvc0xb31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.OidbSvc0xb31
  * JD-Core Version:    0.7.0.1
  */

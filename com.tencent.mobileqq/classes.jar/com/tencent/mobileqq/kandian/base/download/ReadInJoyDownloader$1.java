@@ -78,21 +78,21 @@ class ReadInJoyDownloader$1
       ((StringBuilder)localObject2).append(i);
       QLog.e("ReadInJoyDownloader", 1, ((StringBuilder)localObject2).toString(), localException2);
     }
-    int j = ReadInJoyDownloader.WrappedDownloadInfo.a(this.a);
+    int j = ReadInJoyDownloader.WrappedDownloadInfo.b(this.a);
     if ((i != 4) && (j > 0))
     {
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("[startDownload] failed, retry, remain retry: ");
       localStringBuilder2.append(j);
       QLog.d("ReadInJoyDownloader", 2, localStringBuilder2.toString());
-      ReadInJoyDownloader.WrappedDownloadInfo.a(this.a);
-      ThreadManager.getSubThreadHandler().postDelayed(this, ReadInJoyDownloader.WrappedDownloadInfo.a());
+      ReadInJoyDownloader.WrappedDownloadInfo.c(this.a);
+      ThreadManager.getSubThreadHandler().postDelayed(this, ReadInJoyDownloader.WrappedDownloadInfo.b());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.download.ReadInJoyDownloader.1
  * JD-Core Version:    0.7.0.1
  */

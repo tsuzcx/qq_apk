@@ -13,10 +13,10 @@ class ForwardFileOption$7
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = ForwardFileOption.b(this.a);
+    int i = ForwardFileOption.c(this.a);
     if (paramMotionEvent.getAction() == 0)
     {
-      paramMotionEvent = paramView.findViewById(2131367186);
+      paramMotionEvent = paramView.findViewById(2131433642);
       if (paramMotionEvent != null) {
         paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
       }
@@ -25,17 +25,17 @@ class ForwardFileOption$7
       }
       if (i == 3)
       {
-        paramView = (ImageView)paramView.findViewById(2131367192);
+        paramView = (ImageView)paramView.findViewById(2131433648);
         if (paramView != null)
         {
-          paramView.setImageResource(2130840136);
+          paramView.setImageResource(2130840440);
           return false;
         }
       }
     }
     else if (paramMotionEvent.getAction() == 1)
     {
-      paramMotionEvent = paramView.findViewById(2131367186);
+      paramMotionEvent = paramView.findViewById(2131433642);
       if (paramMotionEvent != null) {
         paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
       }
@@ -44,9 +44,9 @@ class ForwardFileOption$7
       }
       if (i == 3)
       {
-        paramView = (ImageView)paramView.findViewById(2131367192);
+        paramView = (ImageView)paramView.findViewById(2131433648);
         if (paramView != null) {
-          paramView.setImageResource(2130840135);
+          paramView.setImageResource(2130840439);
         }
       }
     }
@@ -55,7 +55,7 @@ class ForwardFileOption$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileOption.7
  * JD-Core Version:    0.7.0.1
  */

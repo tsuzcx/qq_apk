@@ -25,7 +25,7 @@ class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$6
       try
       {
         if (!TextUtils.isEmpty(str1)) {
-          this.a.e = Long.parseLong(str1);
+          this.a.h = Long.parseLong(str1);
         }
       }
       catch (NumberFormatException localNumberFormatException)
@@ -42,9 +42,9 @@ class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$6
   
   public boolean interceptStartLoadUrl()
   {
-    this.a.b = System.currentTimeMillis();
+    this.a.e = System.currentTimeMillis();
     ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment localReadInJoyArticleDetailFragment = this.a;
-    if (!ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(localReadInJoyArticleDetailFragment, ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.b(localReadInJoyArticleDetailFragment))) {
+    if (!ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(localReadInJoyArticleDetailFragment, ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.f(localReadInJoyArticleDetailFragment))) {
       super.interceptStartLoadUrl();
     }
     return true;
@@ -59,7 +59,7 @@ class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$6
   public void onInitUIContent(Bundle paramBundle)
   {
     super.onInitUIContent(paramBundle);
-    ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(this.a);
+    ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.e(this.a);
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
@@ -84,7 +84,7 @@ class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.detail.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.6
  * JD-Core Version:    0.7.0.1
  */

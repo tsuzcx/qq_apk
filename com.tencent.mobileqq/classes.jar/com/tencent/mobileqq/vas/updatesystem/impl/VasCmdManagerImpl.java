@@ -2,29 +2,29 @@ package com.tencent.mobileqq.vas.updatesystem.impl;
 
 import com.tencent.mobileqq.vas.updatesystem.api.IVasApolloExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.ICmdManager;
 import com.tencent.vas.update.callback.listener.ICmdListener;
+import com.tencent.vas.update.factory.api.ICmdManager;
 
 public class VasCmdManagerImpl
   implements ICmdManager
 {
-  IVasApolloExtensionHandler jdField_a_of_type_ComTencentMobileqqVasUpdatesystemApiIVasApolloExtensionHandler;
-  private ICmdListener jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener;
+  IVasApolloExtensionHandler a;
+  private ICmdListener b;
   
   public ICmdListener a()
   {
-    return this.jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener;
+    return this.b;
   }
   
   public void a(IVasApolloExtensionHandler paramIVasApolloExtensionHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemApiIVasApolloExtensionHandler = paramIVasApolloExtensionHandler;
+    this.a = paramIVasApolloExtensionHandler;
   }
   
-  public boolean sendPbRequest(String paramString1, String paramString2, ICmdListener paramICmdListener)
+  public boolean a(String paramString1, String paramString2, ICmdListener paramICmdListener)
   {
-    this.jdField_a_of_type_ComTencentVasUpdateCallbackListenerICmdListener = paramICmdListener;
-    paramICmdListener = this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemApiIVasApolloExtensionHandler;
+    this.b = paramICmdListener;
+    paramICmdListener = this.a;
     if (paramICmdListener != null) {
       return paramICmdListener.requestQuickUpdate(paramString1, paramString2);
     }
@@ -34,7 +34,7 @@ public class VasCmdManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasCmdManagerImpl
  * JD-Core Version:    0.7.0.1
  */

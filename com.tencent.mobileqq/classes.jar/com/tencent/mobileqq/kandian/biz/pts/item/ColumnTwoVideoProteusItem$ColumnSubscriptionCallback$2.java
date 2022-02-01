@@ -11,12 +11,12 @@ class ColumnTwoVideoProteusItem$ColumnSubscriptionCallback$2
   
   public void run()
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("subscribeAction");
-    if ((i == 1) && (this.jdField_a_of_type_Int != 0))
+    int i = this.a.getInt("subscribeAction");
+    if ((i == 1) && (this.b != 0))
     {
-      i = this.jdField_a_of_type_AndroidOsBundle.getInt("columnId");
-      String str = this.jdField_a_of_type_AndroidOsBundle.getString("columnIconUrl", "");
-      RIJPushNotifyManager.Companion.a().showPushNotifyDialog(this.jdField_a_of_type_Int, str, String.valueOf(i), 1);
+      i = this.a.getInt("columnId");
+      String str = this.a.getString("columnIconUrl", "");
+      RIJPushNotifyManager.Companion.a().showPushNotifyDialog(this.b, str, String.valueOf(i), 1);
       return;
     }
     if (i == 2) {
@@ -26,7 +26,7 @@ class ColumnTwoVideoProteusItem$ColumnSubscriptionCallback$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.2
  * JD-Core Version:    0.7.0.1
  */

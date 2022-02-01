@@ -1,6 +1,9 @@
 package com.tencent.av.ui;
 
-import android.content.IntentFilter;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class AVActivity$4
@@ -10,19 +13,25 @@ class AVActivity$4
   
   public void run()
   {
-    try
-    {
-      this.this$0.a = new AVActivity.MyBroadCastReceiver(this.this$0);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.this$0.registerReceiver(this.this$0.a, localIntentFilter);
+    if (this.this$0.isDestroyed()) {
       return;
     }
-    catch (Exception localException)
+    long l = AudioHelper.c();
+    View localView = this.this$0.b(l);
+    if (localView != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.this$0.b, 2, "Exception", localException);
+      String str = this.this$0.i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qav_UserGuide_for_more, 计划显示, seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
+      localView.setAlpha(0.01F);
+      localView.setVisibility(0);
+      if (this.this$0.K != null) {
+        this.this$0.K.I(l);
       }
+      this.this$0.H.a().postDelayed(new AVActivity.4.1(this, l), 500L);
     }
   }
 }

@@ -9,39 +9,34 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/ucrop/util/RotationGestureDetector;", "", "mListener", "Lcom/tencent/tkd/topicsdk/ucrop/util/RotationGestureDetector$OnRotationGestureListener;", "(Lcom/tencent/tkd/topicsdk/ucrop/util/RotationGestureDetector$OnRotationGestureListener;)V", "<set-?>", "", "angle", "getAngle", "()F", "fX", "fY", "mIsFirstTouch", "", "mPointerIndex1", "", "mPointerIndex2", "sX", "sY", "calculateAngleBetweenLines", "fx1", "fy1", "fx2", "fy2", "sx1", "sy1", "sx2", "sy2", "calculateAngleDelta", "angleFrom", "angleTo", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "Companion", "OnRotationGestureListener", "SimpleOnRotationGestureListener", "topicsdk-ucrop_release"}, k=1, mv={1, 1, 16})
 public final class RotationGestureDetector
 {
-  public static final RotationGestureDetector.Companion a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private final RotationGestureDetector.OnRotationGestureListener jdField_a_of_type_ComTencentTkdTopicsdkUcropUtilRotationGestureDetector$OnRotationGestureListener;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  public static final RotationGestureDetector.Companion a = new RotationGestureDetector.Companion(null);
+  private float b;
   private float c;
   private float d;
   private float e;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkUcropUtilRotationGestureDetector$Companion = new RotationGestureDetector.Companion(null);
-  }
+  private int f;
+  private int g;
+  private float h;
+  private boolean i;
+  private final RotationGestureDetector.OnRotationGestureListener j;
   
   public RotationGestureDetector(@Nullable RotationGestureDetector.OnRotationGestureListener paramOnRotationGestureListener)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkUcropUtilRotationGestureDetector$OnRotationGestureListener = paramOnRotationGestureListener;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    this.j = paramOnRotationGestureListener;
+    this.f = -1;
+    this.g = -1;
   }
   
   private final float a(float paramFloat1, float paramFloat2)
   {
-    this.e = (paramFloat2 % 360.0F - paramFloat1 % 360.0F);
-    paramFloat1 = this.e;
+    this.h = (paramFloat2 % 360.0F - paramFloat1 % 360.0F);
+    paramFloat1 = this.h;
     if (paramFloat1 < -180.0F) {
-      this.e = (paramFloat1 + 360.0F);
+      this.h = (paramFloat1 + 360.0F);
     } else if (paramFloat1 > 180.0F) {
-      this.e = (paramFloat1 - 360.0F);
+      this.h = (paramFloat1 - 360.0F);
     }
-    return this.e;
+    return this.h;
   }
   
   private final float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8)
@@ -51,80 +46,80 @@ public final class RotationGestureDetector
   
   public final float a()
   {
-    return this.e;
+    return this.h;
   }
   
   public final boolean a(@NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    int i = paramMotionEvent.getActionMasked();
-    if (i != 0)
+    int k = paramMotionEvent.getActionMasked();
+    if (k != 0)
     {
-      if (i != 1)
+      if (k != 1)
       {
-        if (i != 2)
+        if (k != 2)
         {
-          if (i != 5)
+          if (k != 5)
           {
-            if (i != 6) {
+            if (k != 6) {
               return true;
             }
-            this.jdField_b_of_type_Int = -1;
+            this.g = -1;
             return true;
           }
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
-          this.jdField_b_of_type_Float = paramMotionEvent.getY();
-          this.jdField_b_of_type_Int = paramMotionEvent.findPointerIndex(paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
-          this.e = 0.0F;
-          this.jdField_a_of_type_Boolean = true;
+          this.b = paramMotionEvent.getX();
+          this.c = paramMotionEvent.getY();
+          this.g = paramMotionEvent.findPointerIndex(paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+          this.h = 0.0F;
+          this.i = true;
           return true;
         }
-        if ((this.jdField_a_of_type_Int != -1) && (this.jdField_b_of_type_Int != -1) && (paramMotionEvent.getPointerCount() > this.jdField_b_of_type_Int))
+        if ((this.f != -1) && (this.g != -1) && (paramMotionEvent.getPointerCount() > this.g))
         {
-          float f1 = paramMotionEvent.getX(this.jdField_a_of_type_Int);
-          float f2 = paramMotionEvent.getY(this.jdField_a_of_type_Int);
-          float f3 = paramMotionEvent.getX(this.jdField_b_of_type_Int);
-          float f4 = paramMotionEvent.getY(this.jdField_b_of_type_Int);
-          if (this.jdField_a_of_type_Boolean)
+          float f1 = paramMotionEvent.getX(this.f);
+          float f2 = paramMotionEvent.getY(this.f);
+          float f3 = paramMotionEvent.getX(this.g);
+          float f4 = paramMotionEvent.getY(this.g);
+          if (this.i)
           {
-            this.e = 0.0F;
-            this.jdField_a_of_type_Boolean = false;
+            this.h = 0.0F;
+            this.i = false;
           }
           else
           {
-            a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, this.d, f3, f4, f1, f2);
+            a(this.b, this.c, this.d, this.e, f3, f4, f1, f2);
           }
-          paramMotionEvent = this.jdField_a_of_type_ComTencentTkdTopicsdkUcropUtilRotationGestureDetector$OnRotationGestureListener;
+          paramMotionEvent = this.j;
           if (paramMotionEvent != null) {
             paramMotionEvent.a(this);
           }
-          this.jdField_a_of_type_Float = f3;
-          this.jdField_b_of_type_Float = f4;
-          this.c = f1;
-          this.d = f2;
+          this.b = f3;
+          this.c = f4;
+          this.d = f1;
+          this.e = f2;
           return true;
         }
       }
       else
       {
-        this.jdField_a_of_type_Int = -1;
+        this.f = -1;
         return true;
       }
     }
     else
     {
-      this.c = paramMotionEvent.getX();
-      this.d = paramMotionEvent.getY();
-      this.jdField_a_of_type_Int = paramMotionEvent.findPointerIndex(paramMotionEvent.getPointerId(0));
-      this.e = 0.0F;
-      this.jdField_a_of_type_Boolean = true;
+      this.d = paramMotionEvent.getX();
+      this.e = paramMotionEvent.getY();
+      this.f = paramMotionEvent.findPointerIndex(paramMotionEvent.getPointerId(0));
+      this.h = 0.0F;
+      this.i = true;
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.ucrop.util.RotationGestureDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ class WebPreviewPictureView$2
   
   public void run()
   {
-    this.this$0.a.setImageDrawable(this.a);
-    this.this$0.a.initDrawable(this.a, this.this$0.mScreenWidthPx, this.this$0.mScreenHeightPx, 0);
+    this.this$0.b.setImageDrawable(this.a);
+    this.this$0.b.initDrawable(this.a, this.this$0.mScreenWidthPx, this.this$0.mScreenHeightPx, 0);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -30,7 +30,7 @@ class WebPreviewPictureView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.view.WebPreviewPictureView.2
  * JD-Core Version:    0.7.0.1
  */

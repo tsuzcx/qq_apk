@@ -13,24 +13,24 @@ import java.util.List;
 public class ZimuViewFilm
   extends ZimuView
 {
-  WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference;
-  final int[] jdField_a_of_type_ArrayOfInt = { 44, 30 };
-  IZimuItemView.FontPara[] jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara;
+  WeakReference<ZimuView> j;
+  final int[] k = { 44, 30 };
+  IZimuItemView.FontPara[] l;
   
   public ZimuViewFilm(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramLong, paramVideoAppInterface, paramContext, paramAttributeSet);
     paramVideoAppInterface = new IZimuItemView.FontPara(Color.parseColor("#ffffff"), Color.parseColor("#000000"), 5);
-    int k = 0;
-    this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara = new IZimuItemView.FontPara[] { paramVideoAppInterface, new IZimuItemView.FontPara(Color.parseColor("#fdeabd"), Color.parseColor("#000000"), 4) };
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
-    float f = this.jdField_a_of_type_Float * 0.48F;
+    int n = 0;
+    this.l = new IZimuItemView.FontPara[] { paramVideoAppInterface, new IZimuItemView.FontPara(Color.parseColor("#fdeabd"), Color.parseColor("#000000"), 4) };
+    this.j = new WeakReference(this);
+    float f = this.g * 0.48F;
     int i = 0;
-    int j;
+    int m;
     for (;;)
     {
-      paramVideoAppInterface = this.jdField_a_of_type_ArrayOfInt;
-      j = k;
+      paramVideoAppInterface = this.k;
+      m = n;
       if (i >= paramVideoAppInterface.length) {
         break;
       }
@@ -39,36 +39,26 @@ public class ZimuViewFilm
     }
     for (;;)
     {
-      paramVideoAppInterface = this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara;
-      if (j >= paramVideoAppInterface.length) {
+      paramVideoAppInterface = this.l;
+      if (m >= paramVideoAppInterface.length) {
         break;
       }
-      paramVideoAppInterface = paramVideoAppInterface[j];
-      paramVideoAppInterface.jdField_a_of_type_Float *= f;
-      j += 1;
+      paramVideoAppInterface = paramVideoAppInterface[m];
+      paramVideoAppInterface.c *= f;
+      m += 1;
     }
   }
   
-  public int a()
-  {
-    return (int)getContext().getResources().getDimension(2131297774);
-  }
-  
-  public String a()
-  {
-    return "film";
-  }
-  
-  protected List<ZimuItemView> a(SentenceInfo paramSentenceInfo, boolean paramBoolean)
+  protected List<ZimuItemView> b(SentenceInfo paramSentenceInfo, boolean paramBoolean)
   {
     a();
-    ZimuItemViewFilm localZimuItemViewFilm = new ZimuItemViewFilm(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_Float);
+    ZimuItemViewFilm localZimuItemViewFilm = new ZimuItemViewFilm(getContext(), this.j, this.e, 0, this.g);
     localZimuItemViewFilm.a(paramBoolean);
     localZimuItemViewFilm.a(0, 0);
-    localZimuItemViewFilm.a(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara[0]);
-    localZimuItemViewFilm.b(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_ArrayOfInt[1], this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara[1]);
+    localZimuItemViewFilm.a(this.b, this.k[0], this.l[0]);
+    localZimuItemViewFilm.b(this.b, this.k[1], this.l[1]);
     localZimuItemViewFilm.a(paramSentenceInfo);
-    localZimuItemViewFilm.a(0L);
+    localZimuItemViewFilm.b(0L);
     paramSentenceInfo = new ArrayList();
     paramSentenceInfo.add(localZimuItemViewFilm);
     return paramSentenceInfo;
@@ -76,10 +66,20 @@ public class ZimuViewFilm
   
   void d()
   {
-    ZimuItemViewFilm localZimuItemViewFilm = (ZimuItemViewFilm)this.jdField_a_of_type_JavaUtilList.get(0);
-    if ((localZimuItemViewFilm != null) && (localZimuItemViewFilm.f())) {
+    ZimuItemViewFilm localZimuItemViewFilm = (ZimuItemViewFilm)this.h.get(0);
+    if ((localZimuItemViewFilm != null) && (localZimuItemViewFilm.p())) {
       e();
     }
+  }
+  
+  public String getID()
+  {
+    return "film";
+  }
+  
+  public int getViewHeight()
+  {
+    return (int)getContext().getResources().getDimension(2131298444);
   }
 }
 

@@ -14,19 +14,19 @@ class StoryPlayControllerImpl$8
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    if (this.a.c != null)
     {
-      ((IVideoPlayerView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowImplStoryPlayControllerImpl.mVideoPlayer).resume();
-      if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_Int)) != null) {
-        ((IVideoInfoListener)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_Int))).scrollToTop();
+      ((IVideoPlayerView)this.c.mVideoPlayer).resume();
+      if (this.b.get(Integer.valueOf(this.a.a)) != null) {
+        ((IVideoInfoListener)this.b.get(Integer.valueOf(this.a.a))).scrollToTop();
       }
     }
-    StoryPlayControllerImpl.access$402(this.jdField_a_of_type_ComTencentMobileqqNearbyNowImplStoryPlayControllerImpl, null);
+    StoryPlayControllerImpl.access$402(this.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.impl.StoryPlayControllerImpl.8
  * JD-Core Version:    0.7.0.1
  */

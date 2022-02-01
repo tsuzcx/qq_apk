@@ -25,26 +25,6 @@ public class VideoPackageUtils
     return paramShort & 0xFFFF;
   }
   
-  public static int a(byte[] paramArrayOfByte, int paramInt)
-  {
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    if (j == paramInt)
-    {
-      if (paramArrayOfByte.length > 4) {
-        return 0;
-      }
-      j = 0;
-      while (i < paramInt)
-      {
-        j = (int)(j | (paramArrayOfByte[i] & 0xFF) << (paramInt - i - 1) * 8);
-        i += 1;
-      }
-      return j;
-    }
-    return 0;
-  }
-  
   public static long a(int paramInt)
   {
     return paramInt & 0xFFFFFFFF;
@@ -70,7 +50,7 @@ public class VideoPackageUtils
         str1 = paramString.substring(1);
       }
       str2 = str1;
-      long l = CharacterUtil.a(str1);
+      long l = CharacterUtil.b(str1);
       if (l < 10000L) {
         return 0L;
       }
@@ -128,17 +108,17 @@ public class VideoPackageUtils
         if (paramArrayOfByte.msg_video_head.has())
         {
           localObject = (hd_video.VideoHead)paramArrayOfByte.msg_video_head.get();
-          localVideoPacket.jdField_a_of_type_JavaLangString = ((hd_video.VideoHead)localObject).str_from_mobile.get();
-          localVideoPacket.jdField_b_of_type_JavaLangString = ((hd_video.VideoHead)localObject).str_from_nation.get();
-          localVideoPacket.jdField_a_of_type_Int = ((hd_video.VideoHead)localObject).enum_body_type.get();
-          localVideoPacket.jdField_b_of_type_Long = ((hd_video.VideoHead)localObject).uint64_uin.get();
+          localVideoPacket.a = ((hd_video.VideoHead)localObject).str_from_mobile.get();
+          localVideoPacket.b = ((hd_video.VideoHead)localObject).str_from_nation.get();
+          localVideoPacket.d = ((hd_video.VideoHead)localObject).enum_body_type.get();
+          localVideoPacket.e = ((hd_video.VideoHead)localObject).uint64_uin.get();
           if (!((hd_video.VideoHead)localObject).int32_sub_service_type.has()) {
             break label319;
           }
           i = ((hd_video.VideoHead)localObject).int32_sub_service_type.get();
-          localVideoPacket.jdField_b_of_type_Int = i;
-          localVideoPacket.jdField_c_of_type_Int = ((hd_video.VideoHead)localObject).uint32_seq.get();
-          localVideoPacket.jdField_a_of_type_Long = ((hd_video.VideoHead)localObject).uint64_room_id.get();
+          localVideoPacket.f = i;
+          localVideoPacket.g = ((hd_video.VideoHead)localObject).uint32_seq.get();
+          localVideoPacket.c = ((hd_video.VideoHead)localObject).uint64_room_id.get();
         }
         else if (QLog.isColorLevel())
         {
@@ -147,14 +127,14 @@ public class VideoPackageUtils
         if (paramArrayOfByte.msg_invite_body.has())
         {
           paramArrayOfByte = (hd_video.CmdS2CInviteReqBody)paramArrayOfByte.msg_invite_body.get();
-          localVideoPacket.jdField_c_of_type_Long = paramArrayOfByte.uint64_from_uin.get();
-          localVideoPacket.jdField_d_of_type_Int = paramArrayOfByte.uint32_new_business_flag.get();
-          localVideoPacket.jdField_a_of_type_Boolean = paramArrayOfByte.bool_terminal_switch_flag.get();
+          localVideoPacket.h = paramArrayOfByte.uint64_from_uin.get();
+          localVideoPacket.i = paramArrayOfByte.uint32_new_business_flag.get();
+          localVideoPacket.j = paramArrayOfByte.bool_terminal_switch_flag.get();
           if (paramArrayOfByte.msg_temp_session.has())
           {
             paramArrayOfByte = paramArrayOfByte.msg_temp_session;
-            localVideoPacket.jdField_d_of_type_Long = paramArrayOfByte.uint64_group_uin.get();
-            localVideoPacket.e = paramArrayOfByte.uint32_relationship_type.get();
+            localVideoPacket.l = paramArrayOfByte.uint64_group_uin.get();
+            localVideoPacket.k = paramArrayOfByte.uint32_relationship_type.get();
           }
         }
         paramArrayOfByte = new StringBuilder();
@@ -176,27 +156,27 @@ public class VideoPackageUtils
     }
   }
   
-  public static short a(byte[] paramArrayOfByte, int paramInt)
+  public static int b(byte[] paramArrayOfByte, int paramInt)
   {
     int j = paramArrayOfByte.length;
     int i = 0;
     if (j == paramInt)
     {
-      if (paramArrayOfByte.length > 2) {
+      if (paramArrayOfByte.length > 4) {
         return 0;
       }
-      short s = 0;
+      j = 0;
       while (i < paramInt)
       {
-        s = (short)(int)(s | (paramArrayOfByte[i] & 0xFF) << (paramInt - i - 1) * 8);
+        j = (int)(j | (paramArrayOfByte[i] & 0xFF) << (paramInt - i - 1) * 8);
         i += 1;
       }
-      return s;
+      return j;
     }
     return 0;
   }
   
-  public static long b(byte[] paramArrayOfByte, int paramInt)
+  public static long c(byte[] paramArrayOfByte, int paramInt)
   {
     int i = paramArrayOfByte.length;
     long l1 = 0L;
@@ -218,6 +198,26 @@ public class VideoPackageUtils
       }
     }
     return l2;
+  }
+  
+  public static short d(byte[] paramArrayOfByte, int paramInt)
+  {
+    int j = paramArrayOfByte.length;
+    int i = 0;
+    if (j == paramInt)
+    {
+      if (paramArrayOfByte.length > 2) {
+        return 0;
+      }
+      short s = 0;
+      while (i < paramInt)
+      {
+        s = (short)(int)(s | (paramArrayOfByte[i] & 0xFF) << (paramInt - i - 1) * 8);
+        i += 1;
+      }
+      return s;
+    }
+    return 0;
   }
 }
 

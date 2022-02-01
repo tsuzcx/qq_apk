@@ -18,34 +18,34 @@ class PoiMapActivity$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getLayoutParams();
-    LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).getLayoutParams();
-    ViewGroup.LayoutParams localLayoutParams2 = PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.e.u.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)PoiMapActivity.a(this.e).getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams2 = PoiMapActivity.b(this.e).getLayoutParams();
     int i;
     int j;
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (paramAnimation == this.a)
     {
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      i = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight();
-      j = this.jdField_a_of_type_Int;
+      this.b.show();
+      i = this.e.u.getHeight();
+      j = this.c;
       localLayoutParams.height = (i + j);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(j / 2, true);
+      this.e.a(j / 2, true);
     }
-    else if (paramAnimation == this.b)
+    else if (paramAnimation == this.d)
     {
-      i = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight();
-      j = this.jdField_a_of_type_Int;
+      i = this.e.u.getHeight();
+      j = this.c;
       localLayoutParams.height = (i - j);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(-j / 2, true);
+      this.e.a(-j / 2, true);
     }
     localLayoutParams1.height = -1;
     localLayoutParams2.height = -1;
-    PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams2);
-    PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams1);
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.setLayoutParams(localLayoutParams);
-    PoiMapActivity.c(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(true);
-    if ((this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (paramAnimation == this.b)) {
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.e();
+    PoiMapActivity.c(this.e).setLayoutParams(localLayoutParams2);
+    PoiMapActivity.d(this.e).setLayoutParams(localLayoutParams1);
+    this.e.u.setLayoutParams(localLayoutParams);
+    PoiMapActivity.e(this.e).setEnabled(true);
+    if ((this.e.W) && (paramAnimation == this.d)) {
+      this.e.f();
     }
   }
   

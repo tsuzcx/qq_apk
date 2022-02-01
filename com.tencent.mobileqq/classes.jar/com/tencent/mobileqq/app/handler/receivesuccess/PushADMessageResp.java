@@ -25,16 +25,16 @@ public class PushADMessageResp
         if (paramFromServiceMsg.uMsgType == 9)
         {
           paramObject = MessageRecordFactory.a(-2003);
-          paramObject.selfuin = paramMessageHandler.a.getCurrentAccountUin();
+          paramObject.selfuin = paramMessageHandler.n.getCurrentAccountUin();
           paramObject.frienduin = String.valueOf(AppConstants.QQBROADCAST_MSG_UIN);
           paramObject.senderuin = String.valueOf(AppConstants.QQBROADCAST_MSG_UIN);
           paramObject.msg = paramToServiceMsg;
           paramObject.time = l;
           paramObject.msgtype = -2003;
           paramObject.istroop = 0;
-          if (!MessageHandlerUtils.a(paramMessageHandler.a, paramObject, false))
+          if (!MessageHandlerUtils.a(paramMessageHandler.n, paramObject, false))
           {
-            paramMessageHandler.a.getMessageFacade().a(paramObject, paramMessageHandler.a.getCurrentAccountUin());
+            paramMessageHandler.n.getMessageFacade().a(paramObject, paramMessageHandler.n.getCurrentAccountUin());
             paramToServiceMsg = new StringBuilder();
             paramToServiceMsg.append("0_");
             paramToServiceMsg.append(String.valueOf(paramFromServiceMsg.uSrcUin));
@@ -43,8 +43,8 @@ public class PushADMessageResp
         }
         else if (paramFromServiceMsg.uMsgType == 513)
         {
-          int i = ADParser.a(paramToServiceMsg);
-          paramObject = ADParser.a(paramToServiceMsg);
+          int i = ADParser.b(paramToServiceMsg);
+          paramObject = ADParser.c(paramToServiceMsg);
           if (i != 0)
           {
             if (i == 1) {
@@ -57,16 +57,16 @@ public class PushADMessageResp
           if ((paramObject != null) && ((paramObject.equals("WAP")) || (paramObject.equals("WAPI")) || (paramObject.equals("TMTWAP")) || (paramObject.equals("TMTWAPI")) || (paramObject.equals("LOCAL"))))
           {
             paramObject = MessageRecordFactory.a(-2004);
-            paramObject.selfuin = paramMessageHandler.a.getCurrentAccountUin();
+            paramObject.selfuin = paramMessageHandler.n.getCurrentAccountUin();
             paramObject.frienduin = String.valueOf(AppConstants.QQBROADCAST_MSG_UIN);
             paramObject.senderuin = String.valueOf(AppConstants.QQBROADCAST_MSG_UIN);
             paramObject.msg = paramToServiceMsg;
             paramObject.time = l;
             paramObject.msgtype = -2004;
             paramObject.istroop = 0;
-            if (!MessageHandlerUtils.a(paramMessageHandler.a, paramObject, false))
+            if (!MessageHandlerUtils.a(paramMessageHandler.n, paramObject, false))
             {
-              paramMessageHandler.a.getMessageFacade().a(paramObject, paramMessageHandler.a.getCurrentAccountUin());
+              paramMessageHandler.n.getMessageFacade().a(paramObject, paramMessageHandler.n.getCurrentAccountUin());
               paramToServiceMsg = new StringBuilder();
               paramToServiceMsg.append("0_");
               paramToServiceMsg.append(String.valueOf(paramFromServiceMsg.uSrcUin));
@@ -80,7 +80,7 @@ public class PushADMessageResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.PushADMessageResp
  * JD-Core Version:    0.7.0.1
  */

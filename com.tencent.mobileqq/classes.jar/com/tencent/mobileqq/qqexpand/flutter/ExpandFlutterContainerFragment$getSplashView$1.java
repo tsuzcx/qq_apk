@@ -14,13 +14,13 @@ final class ExpandFlutterContainerFragment$getSplashView$1
   
   public final void onClick(View paramView)
   {
-    if (!ExpandFlutterContainerFragment.a(this.a))
+    if (!ExpandFlutterContainerFragment.c(this.a))
     {
       paramView = new StringBuilder();
       paramView.append("close splash ");
-      paramView.append(ExpandFlutterContainerFragment.a(this.a));
+      paramView.append(ExpandFlutterContainerFragment.c(this.a));
       QLog.d("ExpandFlutterContainerFragment", 1, paramView.toString());
-      ReportHelper.a(ExpandFlutterContainerFragment.a(this.a), 1, ExpandFlutterUtils.a.a());
+      ReportHelper.a(ExpandFlutterContainerFragment.d(this.a), 1, ExpandFlutterUtils.a.f());
     }
     paramView = this.a.getQBaseActivity();
     if (paramView != null) {
@@ -30,7 +30,7 @@ final class ExpandFlutterContainerFragment$getSplashView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterContainerFragment.getSplashView.1
  * JD-Core Version:    0.7.0.1
  */

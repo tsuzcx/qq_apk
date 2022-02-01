@@ -102,7 +102,7 @@ public class PreloadInfoCheckUpdateItem
     Object localObject4 = new PreloadInfoCheckUpdate.ControlReqHead();
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject4).protocol_ver.set(1);
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject4).client_plat_id.set(109);
-    ((PreloadInfoCheckUpdate.ControlReqHead)localObject4).client_ver.set("8.7.0");
+    ((PreloadInfoCheckUpdate.ControlReqHead)localObject4).client_ver.set("8.8.17");
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject4).os_ver.set(Build.VERSION.SDK);
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject4).uin.set(this.a.getLongAccountUin());
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject4).mem.set((int)DeviceInfoUtil.a() / 1048576);
@@ -355,7 +355,7 @@ public class PreloadInfoCheckUpdateItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PreloadInfoCheckUpdateItem
  * JD-Core Version:    0.7.0.1
  */

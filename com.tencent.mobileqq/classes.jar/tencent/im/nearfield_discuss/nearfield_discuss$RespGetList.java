@@ -32,7 +32,7 @@ public final class nearfield_discuss$RespGetList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.RespGetList
  * JD-Core Version:    0.7.0.1
  */

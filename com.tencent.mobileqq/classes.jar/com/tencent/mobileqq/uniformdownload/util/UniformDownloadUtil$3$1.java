@@ -7,12 +7,12 @@ class UniformDownloadUtil$3$1
   
   public void run()
   {
-    UniformDownloadUtil.a(this.this$0.a, this.this$0.b);
+    UniformDownloadUtil.b(this.this$0.a, this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.util.UniformDownloadUtil.3.1
  * JD-Core Version:    0.7.0.1
  */

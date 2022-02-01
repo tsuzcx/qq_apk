@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<vector android:height="40.0dip" android:width="40.0dip" android:viewportWidth="40.0" android:viewportHeight="40.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/ea" />
-    <gradient android:startColor="#ffffac58" android:endColor="#ffff4d64" android:angle="360.0" />
-    <corners android:radius="6.0dip" />
-</shape>
+    <path android:fillColor="#ff000000" android:pathData="M10.0804,19.7716m-2.6786,0a2.6786,2.6786 0,1 1,5.3571 0a2.6786,2.6786 0,1 1,-5.3571 0" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    <path android:fillColor="#00000000" android:pathData="M17.0197,26.711C18.7728,24.9579 19.8571,22.536 19.8571,19.8609C19.8571,17.1858 18.7728,14.7639 17.0197,13.0108" android:strokeColor="#ff000000" android:strokeWidth="3.2142856" android:strokeLineCap="square" android:strokeLineJoin="round" android:fillType="evenOdd" />
+    <path android:fillColor="#00000000" android:pathData="M23.8698,33.5611C27.376,30.0549 29.5446,25.2112 29.5446,19.8609C29.5446,14.5106 27.376,9.6669 23.8698,6.1607" android:strokeColor="#ff000000" android:strokeWidth="3.2142856" android:strokeLineCap="square" android:strokeLineJoin="round" android:fillType="evenOdd" />
+</vector>

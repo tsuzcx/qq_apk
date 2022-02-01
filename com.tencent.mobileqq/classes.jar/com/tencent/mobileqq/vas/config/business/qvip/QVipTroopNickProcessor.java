@@ -11,9 +11,9 @@ public class QVipTroopNickProcessor
   extends BaseQVipConfigProcessor<QVipTroopNickConfig>
 {
   @NonNull
-  public static QVipTroopNickConfig c()
+  public static QVipTroopNickConfig e()
   {
-    QVipTroopNickConfig localQVipTroopNickConfig2 = (QVipTroopNickConfig)QConfigManager.a().a(684);
+    QVipTroopNickConfig localQVipTroopNickConfig2 = (QVipTroopNickConfig)QConfigManager.b().b(684);
     QVipTroopNickConfig localQVipTroopNickConfig1 = localQVipTroopNickConfig2;
     if (localQVipTroopNickConfig2 == null) {
       localQVipTroopNickConfig1 = new QVipTroopNickConfig();
@@ -30,7 +30,7 @@ public class QVipTroopNickProcessor
   @NonNull
   public QVipTroopNickConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
-    String str = paramArrayOfQConfItem[0].a;
+    String str = paramArrayOfQConfItem[0].b;
     if (!TextUtils.isEmpty(str))
     {
       localObject = (QVipTroopNickConfig)JSONConverter.a(str, QVipTroopNickConfig.class);
@@ -75,7 +75,7 @@ public class QVipTroopNickProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipTroopNickProcessor
  * JD-Core Version:    0.7.0.1
  */

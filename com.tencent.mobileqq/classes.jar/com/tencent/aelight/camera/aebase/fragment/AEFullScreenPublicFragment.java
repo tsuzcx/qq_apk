@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 
@@ -13,9 +14,16 @@ public class AEFullScreenPublicFragment
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     paramActivity.requestWindowFeature(1);
-    paramActivity.getWindow().clearFlags(2048);
-    paramActivity.getWindow().addFlags(1024);
-    paramActivity.getWindow().addFlags(256);
+    paramActivity = paramActivity.getWindow();
+    paramActivity.clearFlags(2048);
+    paramActivity.addFlags(1024);
+    paramActivity.addFlags(256);
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      WindowManager.LayoutParams localLayoutParams = paramActivity.getAttributes();
+      localLayoutParams.layoutInDisplayCutoutMode = 1;
+      paramActivity.setAttributes(localLayoutParams);
+    }
   }
   
   public boolean isWrapContent()
@@ -60,7 +68,7 @@ public class AEFullScreenPublicFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.fragment.AEFullScreenPublicFragment
  * JD-Core Version:    0.7.0.1
  */

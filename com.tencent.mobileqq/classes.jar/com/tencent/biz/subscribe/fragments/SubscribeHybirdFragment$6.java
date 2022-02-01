@@ -14,7 +14,7 @@ class SubscribeHybirdFragment$6
   
   public void a(int paramInt)
   {
-    SubscribeHybirdFragment.a(this.a).a(paramInt);
+    SubscribeHybirdFragment.e(this.a).a(paramInt);
   }
   
   public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
@@ -24,7 +24,7 @@ class SubscribeHybirdFragment$6
       SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
       return;
     }
-    QQToast.a(this.a.getHostActivity(), HardCodeUtil.a(2131714439), 0).a();
+    QQToast.makeText(this.a.getHostActivity(), HardCodeUtil.a(2131911949), 0).show();
   }
 }
 

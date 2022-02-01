@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/ozg" android:background="@color/5" android:layout_width="fill_parent" android:layout_height="112.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/bmn" android:id="@id/mns" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/xcy" android:layout_marginStart="8.0dip" app:layout_constraintBottom_toBottomOf="@id/qy5" app:layout_constraintStart_toEndOf="@id/qy5" app:layout_constraintTop_toTopOf="@id/qy5" style="@style/6m" />
+    <View android:id="@id/qy5" android:background="@color/ajr" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip" app:layout_constraintBottom_toBottomOf="fic" app:layout_constraintEnd_toEndOf="fic" app:layout_constraintStart_toStartOf="fic" app:layout_constraintTop_toTopOf="fic" />
+    <TextView android:textSize="@dimen/bmn" android:id="@id/mnr" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/xcx" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="@id/qy5" app:layout_constraintEnd_toStartOf="@id/qy5" app:layout_constraintTop_toTopOf="@id/qy5" style="@style/6t" />
+</androidx.constraintlayout.widget.ConstraintLayout>

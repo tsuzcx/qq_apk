@@ -11,41 +11,40 @@ import java.util.Random;
 class UnifiedMonitor$StackGetterJob
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString = "android.support.v4.";
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(1024);
-  private Thread jdField_a_of_type_JavaLangThread;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { "java.", "android.", "com.android.", "dalvik.", "com.google", "libcore.", "sun.", "com.qihoo360.", "com.lbe." };
+  private int a;
   private int b;
   private int c;
-  private final int d;
+  private final int d = 10;
+  private ArrayList<String> e;
+  private StringBuilder f = new StringBuilder(1024);
+  private Thread g;
+  private final String[] h = { "java.", "android.", "com.android.", "dalvik.", "com.google", "libcore.", "sun.", "com.qihoo360.", "com.lbe." };
+  private final String i = "android.support.v4.";
   
   public UnifiedMonitor$StackGetterJob(UnifiedMonitor paramUnifiedMonitor, int paramInt, Thread paramThread)
   {
-    this.jdField_d_of_type_Int = 10;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].jdField_a_of_type_Int;
-    int i;
-    if (UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].jdField_d_of_type_Int > UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].jdField_a_of_type_Int) {
-      i = UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].jdField_d_of_type_Int - UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].jdField_a_of_type_Int;
+    this.a = paramInt;
+    this.b = UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].a;
+    int j;
+    if (UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].f > UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].a) {
+      j = UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].f - UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].a;
     } else {
-      i = UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].jdField_d_of_type_Int;
+      j = UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].f;
     }
-    this.c = i;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].c);
-    this.jdField_a_of_type_JavaLangThread = paramThread;
+    this.c = j;
+    this.e = new ArrayList(UnifiedMonitor.a(paramUnifiedMonitor)[paramInt].e);
+    this.g = paramThread;
   }
   
   private String a(boolean paramBoolean)
   {
     for (;;)
     {
-      int k;
+      int m;
       try
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        localObject = this.jdField_a_of_type_JavaLangThread.getStackTrace();
+        this.e.clear();
+        localObject = this.g.getStackTrace();
         if (localObject == null) {
           return null;
         }
@@ -59,49 +58,49 @@ class UnifiedMonitor$StackGetterJob
         Object localObject;
         String str;
         String[] arrayOfString;
-        int m;
+        int n;
         if (!QLog.isColorLevel()) {
           break label269;
         }
         QLog.d("UnifiedMonitor_QAPM", 2, "", localThrowable);
       }
-      if (k < localObject.length)
+      if (m < localObject.length)
       {
-        str = localObject[k].toString();
-        arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-        m = arrayOfString.length;
-        j = 0;
-        if (j >= m) {
+        str = localObject[m].toString();
+        arrayOfString = this.h;
+        n = arrayOfString.length;
+        k = 0;
+        if (k >= n) {
           break label291;
         }
-        if (!str.startsWith(arrayOfString[j])) {
+        if (!str.startsWith(arrayOfString[k])) {
           break label284;
         }
         if (str.startsWith("android.support.v4."))
         {
           break label291;
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
+          this.e.add(str);
           break label317;
         }
       }
       else
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        if (this.e.size() > 0)
         {
-          this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-          j = UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].i;
-          i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1 - j;
-          if ((i >= 0) && (i > this.jdField_a_of_type_JavaUtilArrayList.size() - 1 - j - UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].c))
+          this.f.setLength(0);
+          k = UnifiedMonitor.a(this.this$0)[this.a].s;
+          j = this.e.size() - 1 - k;
+          if ((j >= 0) && (j > this.e.size() - 1 - k - UnifiedMonitor.a(this.this$0)[this.a].e))
           {
-            localObject = this.jdField_a_of_type_JavaLangStringBuilder;
-            ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+            localObject = this.f;
+            ((StringBuilder)localObject).append((String)this.e.get(j));
             ((StringBuilder)localObject).append(",");
-            i -= 1;
+            j -= 1;
             continue;
           }
-          if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0)
+          if (this.f.length() > 0)
           {
-            localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+            localObject = this.f.toString();
             return localObject;
           }
           return null;
@@ -109,35 +108,35 @@ class UnifiedMonitor$StackGetterJob
         label269:
         return null;
         label271:
-        k = 0;
-        i = 0;
+        m = 0;
+        j = 0;
         continue;
       }
-      int j = 1;
+      int k = 1;
       break label293;
       label284:
-      j += 1;
+      k += 1;
       continue;
       label291:
-      j = 0;
+      k = 0;
       label293:
-      if (j != 0)
+      if (k != 0)
       {
-        j = i;
-        if (i == 0) {}
+        k = j;
+        if (j == 0) {}
       }
       else
       {
-        j = i;
-        if (i != 0) {
+        k = j;
+        if (j != 0) {
           continue;
         }
-        j = 1;
+        k = 1;
         continue;
       }
       label317:
-      k += 1;
-      int i = j;
+      m += 1;
+      int j = k;
     }
   }
   
@@ -146,15 +145,15 @@ class UnifiedMonitor$StackGetterJob
     Random localRandom = new Random();
     for (;;)
     {
-      if (UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].g >= UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Int)
+      if (UnifiedMonitor.a(this.this$0)[this.a].i >= UnifiedMonitor.a(this.this$0)[this.a].b)
       {
-        UnifiedMonitor.a(this.this$0, this.jdField_a_of_type_Int);
+        UnifiedMonitor.a(this.this$0, this.a);
         return;
       }
-      if (UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Long == 0L) {}
+      if (UnifiedMonitor.a(this.this$0)[this.a].o == 0L) {}
       try
       {
-        Thread.sleep(this.jdField_b_of_type_Int);
+        Thread.sleep(this.b);
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -162,64 +161,64 @@ class UnifiedMonitor$StackGetterJob
         long l1;
         long l2;
         Object localObject;
-        int i;
+        int j;
         break label85;
       }
       continue;
-      l1 = UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Long;
+      l1 = UnifiedMonitor.a(this.this$0)[this.a].o;
       if (l1 == 0L)
       {
-        Thread.sleep(this.jdField_b_of_type_Int);
+        Thread.sleep(this.b);
       }
       else
       {
-        l2 = SystemClock.uptimeMillis() - UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Long - UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_a_of_type_Int;
+        l2 = SystemClock.uptimeMillis() - UnifiedMonitor.a(this.this$0)[this.a].o - UnifiedMonitor.a(this.this$0)[this.a].a;
         if (l2 < -10L)
         {
           l2 = -l2;
           Thread.sleep(l2);
         }
-        if (l1 == UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Long)
+        if (l1 == UnifiedMonitor.a(this.this$0)[this.a].o)
         {
           localObject = UnifiedMonitor.a(this.this$0);
-          i = this.jdField_a_of_type_Int;
-          localObject[i].jdField_b_of_type_Boolean = this.this$0.whetherReportThisTime(i, false);
-          i = this.jdField_a_of_type_Int;
-          if (((i == 0) || (i == 10) || (i == 14) || (i == 19)) && (QLog.isColorLevel()))
+          j = this.a;
+          localObject[j].m = this.this$0.whetherReportThisTime(j, false);
+          j = this.a;
+          if (((j == 0) || (j == 10) || (j == 14) || (j == 19)) && (QLog.isColorLevel()))
           {
             Thread.sleep(200L);
-            if (l1 == UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Long)
+            if (l1 == UnifiedMonitor.a(this.this$0)[this.a].o)
             {
               localObject = a(true);
               QLog.w("UnifiedMonitor_QAPM", 2, (String)localObject);
-              UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = ((String)localObject);
-              localObject = Message.obtain(UnifiedMonitor.a(this.this$0), 2);
-              ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-              UnifiedMonitor.a(this.this$0).sendMessageDelayed((Message)localObject, -SystemClock.uptimeMillis() + l1 + 3000L);
+              UnifiedMonitor.a(this.this$0)[this.a].n = ((String)localObject);
+              localObject = Message.obtain(UnifiedMonitor.b(this.this$0), 2);
+              ((Message)localObject).arg1 = this.a;
+              UnifiedMonitor.b(this.this$0).sendMessageDelayed((Message)localObject, -SystemClock.uptimeMillis() + l1 + 3000L);
             }
           }
-          else if (UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Boolean)
+          else if (UnifiedMonitor.a(this.this$0)[this.a].m)
           {
             l2 = localRandom.nextInt(this.c);
             Thread.sleep(l2);
-            if (l1 == UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Long) {
-              if (UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_d_of_type_Boolean)
+            if (l1 == UnifiedMonitor.a(this.this$0)[this.a].o) {
+              if (UnifiedMonitor.a(this.this$0)[this.a].t)
               {
                 localObject = new StringBuilder();
-                ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangThread);
+                ((StringBuilder)localObject).append(this.g);
                 ((StringBuilder)localObject).append(" held: ");
                 ((StringBuilder)localObject).append(a(true));
                 QLog.e("UnifiedMonitor_QAPM", 1, ((StringBuilder)localObject).toString());
-                this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangThread);
+                this.this$0.a(this.a, this.g);
               }
               else
               {
-                UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = a(true);
+                UnifiedMonitor.a(this.this$0)[this.a].n = a(true);
               }
             }
           }
-          if (l1 == UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Long) {
-            UnifiedMonitor.a(this.this$0)[this.jdField_a_of_type_Int].jdField_b_of_type_Long = 0L;
+          if (l1 == UnifiedMonitor.a(this.this$0)[this.a].o) {
+            UnifiedMonitor.a(this.this$0)[this.a].o = 0L;
           }
         }
       }
@@ -228,7 +227,7 @@ class UnifiedMonitor$StackGetterJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.UnifiedMonitor.StackGetterJob
  * JD-Core Version:    0.7.0.1
  */

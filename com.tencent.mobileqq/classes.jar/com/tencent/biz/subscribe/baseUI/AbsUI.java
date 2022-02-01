@@ -11,46 +11,25 @@ import android.view.View;
 public abstract class AbsUI<T>
   implements Handler.Callback
 {
-  protected int a;
   protected Context a;
-  protected Handler a;
-  protected View a;
-  protected int b = -1;
+  protected View b;
+  protected int c = -1;
+  protected int d = -1;
+  protected Handler e = new Handler(Looper.getMainLooper(), this);
   
   public AbsUI(Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     if (paramBoolean) {
       a();
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  protected Resources a()
-  {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    if (localContext != null) {
-      return localContext.getResources();
-    }
-    return null;
   }
   
   protected abstract void a();
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   protected final void a(Runnable paramRunnable)
@@ -58,23 +37,37 @@ public abstract class AbsUI<T>
     if (paramRunnable == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    this.e.post(paramRunnable);
   }
   
   protected abstract void b();
   
   protected final void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.e.sendEmptyMessage(1);
   }
   
   protected abstract void d();
   
-  protected abstract void e();
-  
-  public void f()
+  protected Context e()
   {
-    e();
+    return this.a;
+  }
+  
+  protected Resources f()
+  {
+    Context localContext = this.a;
+    if (localContext != null) {
+      return localContext.getResources();
+    }
+    return null;
+  }
+  
+  protected abstract void g();
+  
+  public void h()
+  {
+    g();
     a(-1);
   }
   
@@ -85,6 +78,11 @@ public abstract class AbsUI<T>
     }
     d();
     return true;
+  }
+  
+  public int i()
+  {
+    return this.c;
   }
 }
 

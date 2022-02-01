@@ -46,11 +46,11 @@ public final class VBarrage
   {
     BarrageController localBarrageController = this.barrageController;
     if (localBarrageController != null) {
-      localBarrageController.c();
+      localBarrageController.e();
     }
     localBarrageController = this.barrageController;
     if (localBarrageController != null) {
-      localBarrageController.d();
+      localBarrageController.f();
     }
   }
   
@@ -430,7 +430,7 @@ public final class VBarrage
   {
     BarrageController localBarrageController = this.barrageController;
     if (localBarrageController != null) {
-      localBarrageController.b();
+      localBarrageController.d();
     }
   }
   
@@ -439,7 +439,7 @@ public final class VBarrage
   {
     BarrageController localBarrageController = this.barrageController;
     if (localBarrageController != null) {
-      localBarrageController.a();
+      localBarrageController.c();
     }
   }
   
@@ -460,13 +460,13 @@ public final class VBarrage
   {
     BarrageController localBarrageController = this.barrageController;
     if (localBarrageController != null) {
-      localBarrageController.c();
+      localBarrageController.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.VBarrage
  * JD-Core Version:    0.7.0.1
  */

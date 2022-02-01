@@ -7,29 +7,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ArticlePatchStatus
 {
   @notColumn
-  public AtomicBoolean a;
+  public AtomicInteger a = new AtomicInteger(0);
   @notColumn
-  public AtomicInteger a;
+  public AtomicBoolean b = new AtomicBoolean(false);
   @notColumn
-  public AtomicBoolean b;
-  @notColumn
-  public AtomicInteger b;
-  @notColumn
-  public AtomicBoolean c = new AtomicBoolean(false);
+  public AtomicInteger c = new AtomicInteger(0);
   @notColumn
   public AtomicBoolean d = new AtomicBoolean(false);
-  
-  public ArticlePatchStatus()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  @notColumn
+  public AtomicBoolean e = new AtomicBoolean(false);
+  @notColumn
+  public AtomicBoolean f = new AtomicBoolean(false);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticlePatchStatus
  * JD-Core Version:    0.7.0.1
  */

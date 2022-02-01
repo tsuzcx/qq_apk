@@ -13,13 +13,14 @@ class DBFixDialogUI$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.cancel();
-    QLog.d(DBFixDialogUI.a(), 1, "showConfirmDialog, cancel click");
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, DBFixDialogUI.d, DBFixDialogUI.d, 0, 0, "", "", "", "");
+    QLog.d(DBFixDialogUI.b(), 1, "showConfirmDialog, cancel click");
+    ReportController.b(this.a.a, "CliOper", "", this.a.c, DBFixDialogUI.g, DBFixDialogUI.g, 0, 0, "", "", "", "");
+    DBFixReportHelper.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.3
  * JD-Core Version:    0.7.0.1
  */

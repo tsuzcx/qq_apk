@@ -9,20 +9,20 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class CardItem$OperationCardInfo
 {
-  private qqstory_struct.OperationCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+  private qqstory_struct.OperationCardInfo a;
+  private CardItem.CardVideoInfo b;
   
   public CardItem$OperationCardInfo(qqstory_struct.OperationCardInfo paramOperationCardInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = paramOperationCardInfo;
+    this.a = paramOperationCardInfo;
   }
   
   public CardItem$OperationCardInfo(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = new qqstory_struct.OperationCardInfo();
+    this.a = new qqstory_struct.OperationCardInfo();
     try
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.mergeFrom(paramArrayOfByte);
+      this.a.mergeFrom(paramArrayOfByte);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -33,14 +33,14 @@ public class CardItem$OperationCardInfo
   
   public CardItem.CardVideoInfo a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    if (this.b == null)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.size() == 0) {
+      if (this.a.card_info.story_video_info.size() == 0) {
         return null;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.get(0));
+      this.b = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.a.card_info.story_video_info.get(0));
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+    return this.b;
   }
 }
 

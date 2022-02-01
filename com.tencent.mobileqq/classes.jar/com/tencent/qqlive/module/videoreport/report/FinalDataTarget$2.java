@@ -1,6 +1,5 @@
 package com.tencent.qqlive.module.videoreport.report;
 
-import android.text.TextUtils;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
 import java.util.HashMap;
@@ -26,17 +25,13 @@ final class FinalDataTarget$2
       FinalDataTarget.access$400(this.val$finalData);
       return;
     }
-    if (TextUtils.isEmpty(this.val$appKey)) {
-      FinalDataTarget.access$500(this.val$object, this.val$finalData.eventKey, localHashMap);
-    } else {
-      FinalDataTarget.access$600(this.val$object, this.val$finalData.eventKey, localHashMap, this.val$appKey);
-    }
+    FinalDataTarget.access$500(this.val$object, this.val$finalData.eventKey, localHashMap, this.val$appKey);
     FinalDataTarget.access$400(this.val$finalData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.FinalDataTarget.2
  * JD-Core Version:    0.7.0.1
  */

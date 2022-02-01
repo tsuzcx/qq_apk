@@ -6,77 +6,75 @@ import android.util.AttributeSet;
 public class SpriteVideoView
   extends SpriteGLView
 {
-  protected int a;
   protected VideoSprite a;
+  protected int b = 0;
   
   public SpriteVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
     a(true);
   }
   
   public SpriteVideoView(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, 1);
-    this.jdField_a_of_type_Int = 0;
     a(paramBoolean);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.j();
+    this.a.w();
   }
   
   public void a(String paramString, int paramInt, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramString, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramOnFrameEndListener);
+    this.a.a(paramString, paramInt);
+    this.a.a(paramOnFrameEndListener);
   }
   
   public void a(String paramString, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramOnFrameEndListener);
+    this.a.c(paramString);
+    this.a.a(paramOnFrameEndListener);
   }
   
   protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new SpriteVideoView.1(this, this, getContext(), paramBoolean);
-    VideoSprite localVideoSprite = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite;
-    localVideoSprite.b = true;
-    localVideoSprite.c = true;
+    this.a = new SpriteVideoView.1(this, this, getContext(), paramBoolean);
+    VideoSprite localVideoSprite = this.a;
+    localVideoSprite.s = true;
+    localVideoSprite.t = true;
     a(localVideoSprite);
   }
   
   public void setCenterCrop(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.d = paramBoolean;
+    this.a.u = paramBoolean;
   }
   
   public void setFilePath(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b(paramString);
+    this.a.b(paramString);
   }
   
   public void setLooping(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramBoolean);
+    this.a.a(paramBoolean);
   }
   
   public void setOnPlayedListener(VideoSprite.OnOnPlayedListener paramOnOnPlayedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramOnOnPlayedListener);
+    this.a.a(paramOnOnPlayedListener);
   }
   
   public void setOnProgressChangedListener(VideoSprite.OnProgressChangedListener paramOnProgressChangedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(paramOnProgressChangedListener);
+    this.a.a(paramOnProgressChangedListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ class ReportInfoManager$1
     if (paramMessage.what != 2) {
       return;
     }
-    TrafficStatistics.a("post report", this.jdField_a_of_type_Long, (short)1);
+    TrafficStatistics.a("post report", this.a, (short)1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ReportInfoManager.1
  * JD-Core Version:    0.7.0.1
  */

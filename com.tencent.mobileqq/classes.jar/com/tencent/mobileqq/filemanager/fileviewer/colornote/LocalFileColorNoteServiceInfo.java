@@ -64,8 +64,8 @@ public class LocalFileColorNoteServiceInfo
     localBuilder.a((String)localObject);
     localObject = FileManagerUtil.a(this.a);
     localBuilder.b((String)localObject);
-    localBuilder.c(FileUtil.a(FileManagerUtil.a(this.a)));
-    int i = FileManagerUtil.a(FileManagerUtil.a((String)localObject));
+    localBuilder.c(FileUtil.a(FileManagerUtil.h(this.a)));
+    int i = FileManagerUtil.c(FileManagerUtil.c((String)localObject));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("resdrawable://");
     ((StringBuilder)localObject).append(i);
@@ -79,7 +79,7 @@ public class LocalFileColorNoteServiceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.LocalFileColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

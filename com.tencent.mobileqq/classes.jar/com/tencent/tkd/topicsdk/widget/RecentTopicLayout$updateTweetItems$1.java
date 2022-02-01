@@ -6,7 +6,6 @@ import com.tencent.tkd.topicsdk.bean.TweetTopicItem;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
 final class RecentTopicLayout$updateTweetItems$1
@@ -16,18 +15,15 @@ final class RecentTopicLayout$updateTweetItems$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetRecentTopicLayout.a();
-    if (paramView != null)
-    {
-      TweetTopicItem localTweetTopicItem = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanTweetTopicItem;
-      Intrinsics.checkExpressionValueIsNotNull(localTweetTopicItem, "topicItem");
-      paramView = (Unit)paramView.invoke(localTweetTopicItem);
+    paramView = this.a.getOnItemClickListener();
+    if (paramView != null) {
+      paramView = (Unit)paramView.invoke(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.RecentTopicLayout.updateTweetItems.1
  * JD-Core Version:    0.7.0.1
  */

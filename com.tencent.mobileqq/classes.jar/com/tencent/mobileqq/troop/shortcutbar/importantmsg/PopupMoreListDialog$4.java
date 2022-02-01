@@ -20,20 +20,20 @@ class PopupMoreListDialog$4
       }
       if ((paramView.getTag() instanceof ShortcutBarInfo))
       {
-        PopupMoreListDialog.a(this.a).onClick(paramView);
-        PopupMoreListDialog.a(this.a).a(paramView, 1);
+        PopupMoreListDialog.e(this.a).onClick(paramView);
+        PopupMoreListDialog.b(this.a).a(paramView, 1);
       }
     }
   }
   
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public boolean b(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.PopupMoreListDialog.4
  * JD-Core Version:    0.7.0.1
  */

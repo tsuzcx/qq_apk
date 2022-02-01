@@ -16,6 +16,8 @@ import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.wxmini.api.IWxMiniManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
@@ -70,23 +72,29 @@ class MiniAppDesktopAdapter$4
       ((StringBuilder)localObject2).append(", moduleType = ");
       ((StringBuilder)localObject2).append(((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).moduleType);
       QLog.d("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject2).toString());
-      if ((((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).moduleType == 2) && (((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).desktopAppInfo != null) && (((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).desktopAppInfo.fromBackup == 1))
+      if (paramView.isQQMiniApp())
       {
-        localObject2 = new LaunchParam();
-        ((LaunchParam)localObject2).scene = i;
-        MiniAppController.startAppByAppid((Context)MiniAppDesktopAdapter.access$2500(this.this$0).get(), paramView.appId, null, null, (LaunchParam)localObject2, null);
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("--- click appid:");
-        ((StringBuilder)localObject2).append(paramView.appId);
-        ((StringBuilder)localObject2).append(", moduleType = ");
-        ((StringBuilder)localObject2).append(((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).moduleType);
-        ((StringBuilder)localObject2).append(", fromBackup: ");
-        ((StringBuilder)localObject2).append(((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).desktopAppInfo.fromBackup);
-        QLog.w("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject2).toString());
+        if ((((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).moduleType == 2) && (((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).desktopAppInfo != null) && (((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).desktopAppInfo.fromBackup == 1))
+        {
+          localObject2 = new LaunchParam();
+          ((LaunchParam)localObject2).scene = i;
+          MiniAppController.startAppByAppid((Context)MiniAppDesktopAdapter.access$2500(this.this$0).get(), paramView.appId, null, null, (LaunchParam)localObject2, null);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("--- click appid:");
+          ((StringBuilder)localObject2).append(paramView.appId);
+          ((StringBuilder)localObject2).append(", moduleType = ");
+          ((StringBuilder)localObject2).append(((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).moduleType);
+          ((StringBuilder)localObject2).append(", fromBackup: ");
+          ((StringBuilder)localObject2).append(((MiniAppDesktopAdapter.MicroAppViewHolder)localObject1).desktopAppInfo.fromBackup);
+          QLog.w("MiniAppDesktopAdapter", 1, ((StringBuilder)localObject2).toString());
+        }
+        else
+        {
+          MiniAppDesktopAdapter.startMiniApp((Activity)MiniAppDesktopAdapter.access$2500(this.this$0).get(), paramView, i);
+        }
       }
-      else
-      {
-        MiniAppDesktopAdapter.startMiniApp((Activity)MiniAppDesktopAdapter.access$2500(this.this$0).get(), paramView, i);
+      else if (paramView.isWxMiniApp()) {
+        ((IWxMiniManager)QRoute.api(IWxMiniManager.class)).startWxMiniAppById((Context)MiniAppDesktopAdapter.access$2500(this.this$0).get(), paramView.appId, "", i);
       }
       int j = MiniAppDesktopAdapter.access$2600(this.this$0, paramView.appId);
       localObject1 = new MiniAppConfig(paramView);
@@ -129,7 +137,7 @@ class MiniAppDesktopAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.4
  * JD-Core Version:    0.7.0.1
  */

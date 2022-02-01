@@ -21,10 +21,10 @@ class ARPromotionSoundPlayer$1
       {
         ARPromotionSoundPlayer.ARSoundModel localARSoundModel = (ARPromotionSoundPlayer.ARSoundModel)((Map.Entry)localIterator.next()).getValue();
         if (localARSoundModel != null) {
-          ARPromotionSoundPlayer.a(this.this$0).stop(localARSoundModel.a);
+          ARPromotionSoundPlayer.b(this.this$0).stop(localARSoundModel.a);
         }
       }
-      ARPromotionSoundPlayer.a(this.this$0).release();
+      ARPromotionSoundPlayer.b(this.this$0).release();
       ARPromotionSoundPlayer.a(this.this$0).clear();
       return;
     }
@@ -39,7 +39,7 @@ class ARPromotionSoundPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer.1
  * JD-Core Version:    0.7.0.1
  */

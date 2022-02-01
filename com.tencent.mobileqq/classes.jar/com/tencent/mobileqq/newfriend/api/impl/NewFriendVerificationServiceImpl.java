@@ -112,6 +112,17 @@ public class NewFriendVerificationServiceImpl
   
   private boolean saveConfigToSp(String paramString, Object paramObject)
   {
+    if (this.mApp == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" saveConfigToSp(key[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("],value[");
+      ((StringBuilder)localObject).append(paramObject);
+      ((StringBuilder)localObject).append("])-->  failed,mapp is null!!  ");
+      QLog.e("NEW_FRD.NewFriendVerificationServiceImpl", 2, ((StringBuilder)localObject).toString());
+      return false;
+    }
     Object localObject = MobileQQ.sMobileQQ;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this.mApp.getCurrentUin());
@@ -369,7 +380,7 @@ public class NewFriendVerificationServiceImpl
       }
       localObject = this.addFriendBlockedInfoList.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((AddFriendBlockedInfo)((Iterator)localObject).next()).a = true;
+        ((AddFriendBlockedInfo)((Iterator)localObject).next()).g = true;
       }
     }
   }
@@ -394,7 +405,7 @@ public class NewFriendVerificationServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.api.impl.NewFriendVerificationServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -34,8 +34,8 @@ class AbsSpinner$RecycleBin
     {
       View localView = (View)localSparseArray.valueAt(i);
       boolean bool;
-      if ((localView != null) && ((localView.getTag(2131367432) instanceof Boolean))) {
-        bool = ((Boolean)localView.getTag(2131367432)).booleanValue();
+      if ((localView != null) && ((localView.getTag(2131433935) instanceof Boolean))) {
+        bool = ((Boolean)localView.getTag(2131433935)).booleanValue();
       } else {
         bool = true;
       }
@@ -63,7 +63,7 @@ class AbsSpinner$RecycleBin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AbsSpinner.RecycleBin
  * JD-Core Version:    0.7.0.1
  */

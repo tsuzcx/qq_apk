@@ -17,38 +17,38 @@ class VideoJsProxyImpl$5
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("start copy from ");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
+    ((StringBuilder)localObject1).append(this.a.path);
     QZLog.i("VideoJsPlugin", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = ((IMiniAppFileManager)VideoJsProxyImpl.a(this.this$0).getManager(IMiniAppFileManager.class)).getTmpPath(this.jdField_a_of_type_JavaLangString);
+    localObject1 = ((IMiniAppFileManager)VideoJsProxyImpl.c(this.this$0).getManager(IMiniAppFileManager.class)).getTmpPath(this.b);
     if (((String)localObject1).contains(" "))
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("wrong copy path ");
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.w("VideoJsPlugin", 1, ((StringBuilder)localObject2).toString());
-      localObject1 = ((IMiniAppFileManager)VideoJsProxyImpl.a(this.this$0).getManager(IMiniAppFileManager.class)).getWxFilePath(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
-      VideoJsProxyImpl.a(this.this$0, (String)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+      localObject1 = ((IMiniAppFileManager)VideoJsProxyImpl.c(this.this$0).getManager(IMiniAppFileManager.class)).getWxFilePath(this.a.path);
+      VideoJsProxyImpl.a(this.this$0, (String)localObject1, this.a.fileSize, this.a);
       return;
     }
     Object localObject2 = new File((String)localObject1);
     if (((File)localObject2).exists()) {
       ((File)localObject2).delete();
     }
-    if (FileUtils.copyFile(new File(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path), (File)localObject2))
+    if (FileUtils.copyFile(new File(this.a.path), (File)localObject2))
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      localObject2 = this.a;
       ((LocalMediaInfo)localObject2).path = ((String)localObject1);
-      VideoJsProxyImpl.a(this.this$0, (LocalMediaInfo)localObject2, this.jdField_a_of_type_Boolean);
+      VideoJsProxyImpl.a(this.this$0, (LocalMediaInfo)localObject2, this.c);
       return;
     }
     QLog.w("VideoJsPlugin", 1, "copy file failed");
-    localObject1 = ((IMiniAppFileManager)VideoJsProxyImpl.a(this.this$0).getManager(IMiniAppFileManager.class)).getWxFilePath(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
-    VideoJsProxyImpl.a(this.this$0, (String)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    localObject1 = ((IMiniAppFileManager)VideoJsProxyImpl.c(this.this$0).getManager(IMiniAppFileManager.class)).getWxFilePath(this.a.path);
+    VideoJsProxyImpl.a(this.this$0, (String)localObject1, this.a.fileSize, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.5
  * JD-Core Version:    0.7.0.1
  */

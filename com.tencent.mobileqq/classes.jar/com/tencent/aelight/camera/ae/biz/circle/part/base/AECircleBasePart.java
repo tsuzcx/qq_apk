@@ -20,46 +20,19 @@ import java.util.ArrayList;
 public abstract class AECircleBasePart
   implements Application.ActivityLifecycleCallbacks, SimpleEventReceiver
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  protected final Handler a;
-  private View jdField_a_of_type_AndroidViewView;
-  protected AECirclePhotoListLogic a;
-  private AECircleBasePartFragment jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECircleBasePartFragment;
-  private AECirclePartManager jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager;
-  protected PhotoListBaseData a;
+  private AECirclePartManager a;
+  private View b;
+  protected AECirclePhotoListLogic c;
+  protected PhotoListBaseData d;
+  protected final Handler e = new Handler(Looper.getMainLooper());
+  private Activity f;
+  private AECircleBasePartFragment g;
   
   public AECircleBasePart(AECirclePhotoListLogic paramAECirclePhotoListLogic)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic = paramAECirclePhotoListLogic;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData;
+    this.c = paramAECirclePhotoListLogic;
+    this.d = this.c.d;
   }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public Context a()
-  {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-    if (localActivity != null) {
-      return localActivity;
-    }
-    return null;
-  }
-  
-  public Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public AECircleBasePartFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECircleBasePartFragment;
-  }
-  
-  public abstract String a();
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
@@ -67,19 +40,19 @@ public abstract class AECircleBasePart
   
   protected void a(View paramView)
   {
-    paramView = a();
+    paramView = b();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
+    localStringBuilder.append(b());
     localStringBuilder.append("->onInitView");
     QLog.d(paramView, 1, localStringBuilder.toString());
   }
   
   public void a(AECircleBasePartFragment paramAECircleBasePartFragment, View paramView, AECirclePartManager paramAECirclePartManager)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramAECircleBasePartFragment.getActivity();
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECircleBasePartFragment = paramAECircleBasePartFragment;
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager = paramAECirclePartManager;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.f = paramAECircleBasePartFragment.getActivity();
+    this.g = paramAECircleBasePartFragment;
+    this.a = paramAECirclePartManager;
+    this.b = paramView;
   }
   
   public boolean a()
@@ -87,14 +60,40 @@ public abstract class AECircleBasePart
     return true;
   }
   
-  public boolean b()
+  public boolean am_()
   {
     return false;
+  }
+  
+  public abstract String b();
+  
+  public AECircleBasePartFragment f()
+  {
+    return this.g;
+  }
+  
+  public Activity g()
+  {
+    return this.f;
   }
   
   public ArrayList<Class> getEventClass()
   {
     return null;
+  }
+  
+  public Context h()
+  {
+    Activity localActivity = this.f;
+    if (localActivity != null) {
+      return localActivity;
+    }
+    return null;
+  }
+  
+  public Handler i()
+  {
+    return this.e;
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
@@ -105,7 +104,7 @@ public abstract class AECircleBasePart
   public void onActivityDestroyed(Activity paramActivity)
   {
     SimpleEventBus.getInstance().unRegisterReceiver(this);
-    paramActivity = this.jdField_a_of_type_AndroidOsHandler;
+    paramActivity = this.e;
     if (paramActivity != null) {
       paramActivity.removeCallbacksAndMessages(null);
     }
@@ -125,7 +124,7 @@ public abstract class AECircleBasePart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.base.AECircleBasePart
  * JD-Core Version:    0.7.0.1
  */

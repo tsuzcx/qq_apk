@@ -69,15 +69,15 @@ class TroopFileSearchEngine$4
               else
               {
                 localObject1 = paramObject.bytes_key_word.get().toStringUtf8();
-                if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(TroopFileSearchEngine.a(this.a))))
+                if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(TroopFileSearchEngine.d(this.a))))
                 {
                   QLog.i("TroopFileSearchEngine<QFile>", 1, "keyword is update, current result is old");
                   return;
                 }
-                TroopFileSearchEngine.b(this.a, paramObject.bytes_sync_cookie.get().toStringUtf8());
+                TroopFileSearchEngine.c(this.a, paramObject.bytes_sync_cookie.get().toStringUtf8());
                 localObject1 = this.a;
                 if (paramObject.uint32_is_end.get() != 1) {
-                  break label834;
+                  break label835;
                 }
                 paramBoolean = true;
                 TroopFileSearchEngine.b((TroopFileSearchEngine)localObject1, paramBoolean);
@@ -87,11 +87,11 @@ class TroopFileSearchEngine$4
                   localObject1 = new StringBuilder();
                   localObject2 = new StringBuilder();
                   ((StringBuilder)localObject2).append("onRspTroopFileSearch cookie = ");
-                  ((StringBuilder)localObject2).append(TroopFileSearchEngine.b(this.a));
+                  ((StringBuilder)localObject2).append(TroopFileSearchEngine.k(this.a));
                   ((StringBuilder)localObject1).append(((StringBuilder)localObject2).toString());
                   localObject2 = new StringBuilder();
                   ((StringBuilder)localObject2).append(", isEnd = ");
-                  ((StringBuilder)localObject2).append(TroopFileSearchEngine.c(this.a));
+                  ((StringBuilder)localObject2).append(TroopFileSearchEngine.l(this.a));
                   ((StringBuilder)localObject1).append(((StringBuilder)localObject2).toString());
                   localObject2 = new StringBuilder();
                   ((StringBuilder)localObject2).append(", keyWord = ");
@@ -107,22 +107,22 @@ class TroopFileSearchEngine$4
                 if (paramObject != null)
                 {
                   if (paramObject.size() != 0) {
-                    break label839;
+                    break label840;
                   }
                   continue;
                   if (i < paramObject.size())
                   {
-                    localObject1 = new TroopFileSearchItemData(TroopFileSearchEngine.a(this.a), (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
-                    if (((TroopFileSearchItemData)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo != null)
+                    localObject1 = new TroopFileSearchItemData(TroopFileSearchEngine.f(this.a), (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
+                    if (((TroopFileSearchItemData)localObject1).i != null)
                     {
-                      localObject2 = TroopFileManager.a(TroopFileSearchEngine.a(this.a), ((TroopFileSearchItemData)localObject1).jdField_a_of_type_Long);
-                      TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject2).a(((TroopFileSearchItemData)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
+                      localObject2 = TroopFileManager.a(TroopFileSearchEngine.f(this.a), ((TroopFileSearchItemData)localObject1).a);
+                      TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject2).a(((TroopFileSearchItemData)localObject1).i.c);
                       if (localTroopFileInfo != null) {
-                        ((TroopFileSearchItemData)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a = localTroopFileInfo.a;
+                        ((TroopFileSearchItemData)localObject1).i.b = localTroopFileInfo.b;
                       } else {
-                        ((TroopFileSearchItemData)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a = UUID.randomUUID();
+                        ((TroopFileSearchItemData)localObject1).i.b = UUID.randomUUID();
                       }
-                      ((TroopFileManager)localObject2).a(((TroopFileSearchItemData)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b, ((TroopFileSearchItemData)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
+                      ((TroopFileManager)localObject2).a(((TroopFileSearchItemData)localObject1).i.c, ((TroopFileSearchItemData)localObject1).i);
                     }
                     if (QLog.isColorLevel())
                     {
@@ -150,7 +150,7 @@ class TroopFileSearchEngine$4
         catch (InvalidProtocolBufferMicroException paramObject)
         {
           if (!QLog.isDevelopLevel()) {
-            break label814;
+            break label815;
           }
         }
         QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
@@ -159,7 +159,7 @@ class TroopFileSearchEngine$4
       {
         Object localObject1;
         if (!QLog.isDevelopLevel()) {
-          break label814;
+          break label815;
         }
         QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
       }
@@ -172,21 +172,21 @@ class TroopFileSearchEngine$4
         ((StringBuilder)localObject1).append(paramBoolean);
         QLog.d("TroopFileSearchEngine<QFile>", 4, ((StringBuilder)localObject1).toString());
       }
-      label814:
+      label815:
       QLog.i("TroopFileSearchEngine<QFile>", 1, "error, can not handle search response, return a empty list.");
       TroopFileSearchEngine.a(this.a, false, localArrayList);
       return;
-      label834:
+      label835:
       paramBoolean = false;
       continue;
-      label839:
+      label840:
       int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.4
  * JD-Core Version:    0.7.0.1
  */

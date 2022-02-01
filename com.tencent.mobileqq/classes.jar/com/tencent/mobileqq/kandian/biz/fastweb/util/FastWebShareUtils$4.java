@@ -21,7 +21,7 @@ class FastWebShareUtils$4
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    FastWebShareUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebUtilFastWebShareUtils).dismiss();
+    FastWebShareUtils.b(this.c).dismiss();
     if (paramBoolean) {
       try
       {
@@ -34,7 +34,7 @@ class FastWebShareUtils$4
           {
             GetAppInfoProto.AndroidInfo localAndroidInfo = paramBundle.androidInfo;
             Object localObject2 = Share.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            Intent localIntent = this.a;
             paramBundle = localAndroidInfo.sourceUrl;
             localObject1 = "";
             if (paramBundle == null) {
@@ -43,20 +43,20 @@ class FastWebShareUtils$4
               paramBundle = localAndroidInfo.sourceUrl.get();
             }
             localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            localIntent = this.a;
             paramBundle = (Bundle)localObject2;
             if (localObject2 == null) {
               paramBundle = "";
             }
             localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject2 = this.jdField_a_of_type_AndroidContentIntent;
+            localObject2 = this.a;
             if (localAndroidInfo.messagetail == null) {
               paramBundle = "";
             } else {
               paramBundle = localAndroidInfo.messagetail.get();
             }
             ((Intent)localObject2).putExtra("struct_share_key_source_name", paramBundle);
-            localObject2 = this.jdField_a_of_type_AndroidContentIntent;
+            localObject2 = this.a;
             if (localAndroidInfo.packName == null) {
               paramBundle = (Bundle)localObject1;
             } else {
@@ -68,22 +68,22 @@ class FastWebShareUtils$4
       }
       catch (Exception paramBundle)
       {
-        QLog.e(FastWebShareUtils.a(), 2, paramBundle.getMessage());
+        QLog.e(FastWebShareUtils.c(), 2, paramBundle.getMessage());
       }
     }
-    paramBundle = StructMsgFactory.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+    paramBundle = StructMsgFactory.a(this.a.getExtras());
     if (paramBundle == null)
     {
-      QLog.e(FastWebShareUtils.a(), 2, "build struct msg fail");
+      QLog.e(FastWebShareUtils.c(), 2, "build struct msg fail");
       return;
     }
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-    this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1);
+    this.a.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+    this.b.startActivityForResult(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebShareUtils.4
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.R.id;
+import androidx.appcompat.R.layout;
+import androidx.appcompat.R.string;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ActivityChooserView$ActivityChooserViewAdapter
@@ -120,9 +123,9 @@ class ActivityChooserView$ActivityChooserViewAdapter
         }
         else
         {
-          localView = LayoutInflater.from(this.this$0.getContext()).inflate(2131558407, paramViewGroup, false);
+          localView = LayoutInflater.from(this.this$0.getContext()).inflate(R.layout.abc_activity_chooser_view_list_item, paramViewGroup, false);
           localView.setId(1);
-          ((TextView)localView.findViewById(2131378784)).setText(this.this$0.getContext().getString(2131689497));
+          ((TextView)localView.findViewById(R.id.title)).setText(this.this$0.getContext().getString(R.string.abc_activity_chooser_view_see_all));
         }
       }
       else {
@@ -134,17 +137,17 @@ class ActivityChooserView$ActivityChooserViewAdapter
       if (paramView != null)
       {
         localView = paramView;
-        if (paramView.getId() == 2131370131) {}
+        if (paramView.getId() == R.id.list_item) {}
       }
       else
       {
-        localView = LayoutInflater.from(this.this$0.getContext()).inflate(2131558407, paramViewGroup, false);
+        localView = LayoutInflater.from(this.this$0.getContext()).inflate(R.layout.abc_activity_chooser_view_list_item, paramViewGroup, false);
       }
       paramView = this.this$0.getContext().getPackageManager();
-      ImageView localImageView = (ImageView)localView.findViewById(2131368343);
+      ImageView localImageView = (ImageView)localView.findViewById(R.id.icon);
       ResolveInfo localResolveInfo = (ResolveInfo)getItem(paramInt);
       localImageView.setImageDrawable(localResolveInfo.loadIcon(paramView));
-      ((TextView)localView.findViewById(2131378784)).setText(localResolveInfo.loadLabel(paramView));
+      ((TextView)localView.findViewById(R.id.title)).setText(localResolveInfo.loadLabel(paramView));
       if ((this.mShowDefaultActivity) && (paramInt == 0) && (this.mHighlightDefaultActivity)) {
         localView.setActivated(true);
       } else {

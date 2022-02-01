@@ -13,7 +13,7 @@ class StoryHaloManager$2
   
   public void run()
   {
-    MsgTabNodeInfo localMsgTabNodeInfo = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin());
+    MsgTabNodeInfo localMsgTabNodeInfo = this.this$0.b(this.a.getRecentUserUin());
     if (localMsgTabNodeInfo == null) {
       return;
     }
@@ -22,7 +22,7 @@ class StoryHaloManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.StoryHaloManager.2
  * JD-Core Version:    0.7.0.1
  */

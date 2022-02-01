@@ -95,7 +95,7 @@ public class SpecialCareProcessor
         if ((paramSet != null) && (paramSet.contains(paramString1))) {
           paramList1.add(paramString1);
         }
-        if ((paramList2 != null) && (QvipSpecialCareUtil.b(paramString1, paramQQAppInterface))) {
+        if ((paramList2 != null) && (QvipSpecialCareUtil.e(paramString1, paramQQAppInterface))) {
           paramList2.add(paramString1);
         }
       }
@@ -181,7 +181,7 @@ public class SpecialCareProcessor
       if ((paramSet != null) && (paramSet.contains(paramString1))) {
         paramList2.add(paramString1);
       }
-      if (QvipSpecialCareUtil.b(paramString1, paramQQAppInterface)) {
+      if (QvipSpecialCareUtil.e(paramString1, paramQQAppInterface)) {
         paramList3.add(paramString1);
       }
       if (QLog.isColorLevel()) {
@@ -227,7 +227,7 @@ public class SpecialCareProcessor
     Object localObject5 = new ArrayList();
     Object localObject2 = new HashMap();
     Object localObject1 = new ArrayList();
-    paramExtRspData = QvipSpecialCareUtil.a(localQQAppInterface);
+    paramExtRspData = QvipSpecialCareUtil.d(localQQAppInterface);
     Iterator localIterator = paramList.iterator();
     paramList = (List<Pair<ExtensionInfo, FriendInfo>>)localObject5;
     Object localObject7;
@@ -321,7 +321,7 @@ public class SpecialCareProcessor
         localObject2 = paramList;
         localObject1 = localObject9;
         paramExtRspData = localObject11;
-        if (QvipSpecialCareUtil.b((String)localObject6, localQQAppInterface))
+        if (QvipSpecialCareUtil.e((String)localObject6, localQQAppInterface))
         {
           ((List)localObject8).add(localObject6);
           paramExtRspData = localObject11;
@@ -389,10 +389,10 @@ public class SpecialCareProcessor
         {
           a(i, paramFriendInfo, str);
           continue;
-          if (QvipSpecialCareUtil.a(paramExtRspData, paramExtensionInfo)) {
+          if (QvipSpecialCareUtil.d(paramExtRspData, paramExtensionInfo)) {
             QvipSpecialCareUtil.b(paramExtRspData, paramExtensionInfo);
           }
-          if (QvipSpecialCareUtil.b(paramExtRspData, paramExtensionInfo)) {
+          if (QvipSpecialCareUtil.e(paramExtRspData, paramExtensionInfo)) {
             QvipSpecialCareUtil.c(paramExtRspData, paramExtensionInfo);
           }
         }
@@ -402,7 +402,7 @@ public class SpecialCareProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.processor.SpecialCareProcessor
  * JD-Core Version:    0.7.0.1
  */

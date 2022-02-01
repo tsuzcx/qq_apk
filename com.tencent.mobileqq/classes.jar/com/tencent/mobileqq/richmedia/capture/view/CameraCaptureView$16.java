@@ -15,7 +15,7 @@ class CameraCaptureView$16
   public void run()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.this$0.a.b);
+    ((StringBuilder)localObject).append(this.this$0.N.h);
     ((StringBuilder)localObject).append("/");
     ((StringBuilder)localObject).append(System.currentTimeMillis());
     ((StringBuilder)localObject).append(".jpg");
@@ -24,22 +24,22 @@ class CameraCaptureView$16
     File localFile = new File((String)localObject);
     try
     {
-      ImageUtil.a(this.a, localFile);
-      ImageUtil.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
-      this.this$0.a(new CameraCaptureView.PhotoCaptureResult(0, 0, (String)localObject, null, this.this$0.u));
+      ImageUtil.b(this.a, localFile);
+      ImageUtil.b(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+      this.this$0.a(new CameraCaptureView.PhotoCaptureResult(0, 0, (String)localObject, null, this.this$0.P));
     }
     catch (IOException localIOException)
     {
       localIOException.printStackTrace();
       CameraCaptureView localCameraCaptureView = this.this$0;
-      localCameraCaptureView.a(new CameraCaptureView.PhotoCaptureResult(0, -1, (String)localObject, null, localCameraCaptureView.u));
+      localCameraCaptureView.a(new CameraCaptureView.PhotoCaptureResult(0, -1, (String)localObject, null, localCameraCaptureView.P));
     }
     this.a.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.16
  * JD-Core Version:    0.7.0.1
  */

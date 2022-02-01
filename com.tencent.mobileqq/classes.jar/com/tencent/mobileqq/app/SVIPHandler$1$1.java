@@ -17,7 +17,7 @@ class SVIPHandler$1$1
   {
     try
     {
-      String str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler$1.this$0.b());
+      String str = String.valueOf(this.b.this$0.d());
       if ((paramObject instanceof List))
       {
         paramObject = (List)paramObject;
@@ -37,7 +37,7 @@ class SVIPHandler$1$1
               ((StringBuilder)localObject2).append("_TL_");
               ((StringBuilder)localObject2).append(((BubbleDiyEntity)localObject1).topLeftId);
               localObject2 = ((StringBuilder)localObject2).toString();
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject2);
+              this.a.i.add(localObject2);
             }
             if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject1).topRightId))
             {
@@ -47,7 +47,7 @@ class SVIPHandler$1$1
               ((StringBuilder)localObject2).append("_TR_");
               ((StringBuilder)localObject2).append(((BubbleDiyEntity)localObject1).topRightId);
               localObject2 = ((StringBuilder)localObject2).toString();
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject2);
+              this.a.i.add(localObject2);
             }
             if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject1).bottomRightId))
             {
@@ -57,7 +57,7 @@ class SVIPHandler$1$1
               ((StringBuilder)localObject2).append("_BR_");
               ((StringBuilder)localObject2).append(((BubbleDiyEntity)localObject1).bottomRightId);
               localObject2 = ((StringBuilder)localObject2).toString();
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject2);
+              this.a.i.add(localObject2);
             }
             if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject1).bottomLeftId))
             {
@@ -67,10 +67,10 @@ class SVIPHandler$1$1
               ((StringBuilder)localObject2).append("_BL_");
               ((StringBuilder)localObject2).append(((BubbleDiyEntity)localObject1).bottomLeftId);
               localObject1 = ((StringBuilder)localObject2).toString();
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject1);
+              this.a.i.add(localObject1);
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b();
+          this.a.c();
           return;
         }
       }
@@ -85,7 +85,7 @@ class SVIPHandler$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SVIPHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -28,268 +28,163 @@ import org.json.JSONObject;
 
 public class OfflineWebResManager
 {
-  public static ConcurrentLinkedQueue<String> a;
-  static boolean a;
-  static boolean b = true;
+  public static ConcurrentLinkedQueue<String> c = new ConcurrentLinkedQueue();
+  static boolean e = false;
+  static boolean f = true;
   public AppInterface a;
-  public EntityManager a;
-  public String a;
-  public AtomicBoolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    jdField_a_of_type_Boolean = false;
-  }
+  public EntityManager b;
+  public String d = "";
+  public AtomicBoolean g = new AtomicBoolean(false);
   
   public OfflineWebResManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    paramAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory();
+    this.a = paramAppInterface;
+    paramAppInterface = this.a.getEntityManagerFactory();
     if (paramAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.createEntityManager();
+      this.b = paramAppInterface.createEntityManager();
     }
   }
   
-  /* Error */
-  private JSONObject a(String paramString)
+  private void a(File paramFile)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 66	com/tencent/biz/common/offline/OfflineEnvHelper:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   4: astore_3
-    //   5: aload_3
-    //   6: invokestatic 72	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: istore_2
-    //   10: aconst_null
-    //   11: astore 6
-    //   13: iload_2
-    //   14: ifeq +5 -> 19
-    //   17: aconst_null
-    //   18: areturn
-    //   19: new 74	java/lang/StringBuilder
-    //   22: dup
-    //   23: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   26: astore 4
-    //   28: aload 4
-    //   30: aload_3
-    //   31: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: pop
-    //   35: aload 4
-    //   37: aload_1
-    //   38: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: pop
-    //   42: aload 4
-    //   44: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: astore_3
-    //   48: new 85	java/io/File
-    //   51: dup
-    //   52: aload_3
-    //   53: invokespecial 88	java/io/File:<init>	(Ljava/lang/String;)V
-    //   56: invokevirtual 92	java/io/File:exists	()Z
-    //   59: ifne +10 -> 69
-    //   62: aload_0
-    //   63: aload_1
-    //   64: invokevirtual 95	com/tencent/biz/webviewplugin/OfflineWebResManager:c	(Ljava/lang/String;)V
-    //   67: aconst_null
-    //   68: areturn
-    //   69: getstatic 100	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   72: ifnull +28 -> 100
-    //   75: getstatic 100	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   78: aload_1
-    //   79: invokevirtual 106	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   82: ifeq +18 -> 100
-    //   85: getstatic 100	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   88: aload_1
-    //   89: invokevirtual 110	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   92: checkcast 112	java/lang/String
-    //   95: astore 4
-    //   97: goto +185 -> 282
-    //   100: new 74	java/lang/StringBuilder
-    //   103: dup
-    //   104: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   107: astore 4
-    //   109: aload 4
-    //   111: aload_3
-    //   112: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: pop
-    //   116: aload 4
-    //   118: ldc 114
-    //   120: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: pop
-    //   124: new 116	java/io/BufferedInputStream
-    //   127: dup
-    //   128: new 118	java/io/FileInputStream
-    //   131: dup
-    //   132: aload 4
-    //   134: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: invokespecial 119	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   140: invokespecial 122	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   143: astore 4
-    //   145: aload 4
-    //   147: astore 6
-    //   149: aload 4
-    //   151: invokestatic 127	com/tencent/biz/common/util/OfflineSecurity:a	(Ljava/io/BufferedInputStream;)Ljava/lang/String;
-    //   154: astore_3
-    //   155: aload 4
-    //   157: astore 6
-    //   159: getstatic 100	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   162: ifnull +16 -> 178
-    //   165: aload 4
-    //   167: astore 6
-    //   169: getstatic 100	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   172: aload_1
-    //   173: aload_3
-    //   174: invokevirtual 131	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   177: pop
-    //   178: aload_3
-    //   179: astore 6
-    //   181: aload 4
-    //   183: invokevirtual 134	java/io/BufferedInputStream:close	()V
-    //   186: aload_3
-    //   187: astore 4
-    //   189: goto +93 -> 282
-    //   192: astore_3
-    //   193: aload_3
-    //   194: invokevirtual 137	java/io/IOException:printStackTrace	()V
-    //   197: aload 6
-    //   199: astore 4
-    //   201: goto +81 -> 282
-    //   204: astore 7
-    //   206: aload 4
-    //   208: astore 5
-    //   210: goto +29 -> 239
-    //   213: astore_3
-    //   214: goto +11 -> 225
-    //   217: astore_1
-    //   218: goto +124 -> 342
-    //   221: astore_3
-    //   222: aconst_null
-    //   223: astore 4
-    //   225: ldc 31
-    //   227: astore 6
-    //   229: aload_3
-    //   230: astore 7
-    //   232: aload 4
-    //   234: astore 5
-    //   236: aload 6
-    //   238: astore_3
-    //   239: aload 5
-    //   241: astore 6
-    //   243: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   246: ifeq +17 -> 263
-    //   249: aload 5
-    //   251: astore 6
-    //   253: ldc 144
-    //   255: iconst_2
-    //   256: ldc 31
-    //   258: aload 7
-    //   260: invokestatic 148	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   263: aload_3
-    //   264: astore 4
-    //   266: aload 5
-    //   268: ifnull +14 -> 282
-    //   271: aload_3
-    //   272: astore 6
-    //   274: aload 5
-    //   276: invokevirtual 134	java/io/BufferedInputStream:close	()V
-    //   279: aload_3
-    //   280: astore 4
-    //   282: aload 4
-    //   284: invokestatic 72	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   287: ifne +33 -> 320
-    //   290: new 150	org/json/JSONObject
-    //   293: dup
-    //   294: aload 4
-    //   296: invokespecial 151	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   299: astore_1
-    //   300: aload_1
-    //   301: areturn
-    //   302: astore_1
-    //   303: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   306: ifeq +12 -> 318
-    //   309: ldc 144
-    //   311: iconst_2
-    //   312: ldc 31
-    //   314: aload_1
-    //   315: invokestatic 148	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   318: aconst_null
-    //   319: areturn
-    //   320: aload_0
-    //   321: aload_1
-    //   322: invokevirtual 95	com/tencent/biz/webviewplugin/OfflineWebResManager:c	(Ljava/lang/String;)V
-    //   325: getstatic 100	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   328: ifnull +11 -> 339
-    //   331: getstatic 100	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   334: aload_1
-    //   335: invokevirtual 154	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   338: pop
-    //   339: aconst_null
-    //   340: areturn
-    //   341: astore_1
-    //   342: aload 6
-    //   344: ifnull +16 -> 360
-    //   347: aload 6
-    //   349: invokevirtual 134	java/io/BufferedInputStream:close	()V
-    //   352: goto +8 -> 360
-    //   355: astore_3
-    //   356: aload_3
-    //   357: invokevirtual 137	java/io/IOException:printStackTrace	()V
-    //   360: aload_1
-    //   361: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	362	0	this	OfflineWebResManager
-    //   0	362	1	paramString	String
-    //   9	5	2	bool	boolean
-    //   4	183	3	str	String
-    //   192	2	3	localIOException1	java.io.IOException
-    //   213	1	3	localException1	Exception
-    //   221	9	3	localException2	Exception
-    //   238	42	3	localObject1	Object
-    //   355	2	3	localIOException2	java.io.IOException
-    //   26	269	4	localObject2	Object
-    //   208	67	5	localObject3	Object
-    //   11	337	6	localObject4	Object
-    //   204	1	7	localException3	Exception
-    //   230	29	7	localException4	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   181	186	192	java/io/IOException
-    //   274	279	192	java/io/IOException
-    //   159	165	204	java/lang/Exception
-    //   169	178	204	java/lang/Exception
-    //   149	155	213	java/lang/Exception
-    //   100	145	217	finally
-    //   100	145	221	java/lang/Exception
-    //   290	300	302	java/lang/Exception
-    //   149	155	341	finally
-    //   159	165	341	finally
-    //   169	178	341	finally
-    //   243	249	341	finally
-    //   253	263	341	finally
-    //   347	352	355	java/io/IOException
+    if (QLog.isColorLevel()) {
+      QLog.i("OfflineWebResManager", 2, "cache data size exceed threshold value ");
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("select * from ");
+    ((StringBuilder)localObject1).append(OfflineWebRes.class.getSimpleName());
+    ((StringBuilder)localObject1).append(" where hitcount=1 limit 100");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = this.b.rawQuery(OfflineWebRes.class, (String)localObject1, null);
+    if ((localObject2 != null) && (((List)localObject2).size() > 0))
+    {
+      localObject1 = new StringBuilder(((List)localObject2).size() * 64);
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        OfflineWebRes localOfflineWebRes = (OfflineWebRes)((Iterator)localObject2).next();
+        File localFile = new File(paramFile, localOfflineWebRes.hashName);
+        if (localFile.exists())
+        {
+          if (QLog.isColorLevel())
+          {
+            ((StringBuilder)localObject1).append("delete file: ");
+            ((StringBuilder)localObject1).append(localFile.getPath());
+            ((StringBuilder)localObject1).append("\n");
+          }
+          localFile.delete();
+        }
+        this.b.remove(localOfflineWebRes);
+      }
+      if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(((StringBuilder)localObject1).toString()))) {
+        QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject1).toString());
+      }
+    }
   }
   
   public static void a(String paramString)
   {
-    if (!jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramString)) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramString);
+    if (!c.contains(paramString)) {
+      c.add(paramString);
     }
+  }
+  
+  private boolean a(File paramFile, long paramLong)
+  {
+    double d1 = paramLong;
+    Double.isNaN(d1);
+    paramLong = (d1 - 4194304.0D);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("cache data size exceed cache max value ");
+      ((StringBuilder)localObject1).append(paramLong);
+      QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("select * from ");
+    ((StringBuilder)localObject1).append(OfflineWebRes.class.getSimpleName());
+    ((StringBuilder)localObject1).append(" order by hitcount");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = this.b.rawQuery(OfflineWebRes.class, (String)localObject1, null);
+    localObject1 = new StringBuilder("");
+    long l = paramLong;
+    if (localObject2 != null)
+    {
+      l = paramLong;
+      if (((List)localObject2).size() > 0)
+      {
+        localObject2 = ((List)localObject2).iterator();
+        for (;;)
+        {
+          l = paramLong;
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          OfflineWebRes localOfflineWebRes = (OfflineWebRes)((Iterator)localObject2).next();
+          if (paramLong <= 0L)
+          {
+            l = paramLong;
+            break;
+          }
+          File localFile = new File(paramFile, localOfflineWebRes.hashName);
+          l = paramLong;
+          if (localFile.exists())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("delete file: ");
+            localStringBuilder.append(localFile.getPath());
+            localStringBuilder.append("\n");
+            ((StringBuilder)localObject1).append(localStringBuilder.toString());
+            l = paramLong - localFile.length();
+            localFile.delete();
+          }
+          this.b.remove(localOfflineWebRes);
+          paramLong = l;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (l > 0L)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("cache data size still exceed cache max value ");
+      ((StringBuilder)localObject1).append(l);
+      ((StringBuilder)localObject1).append(", now delete folder and database!");
+      QLog.w("OfflineWebResManager", 1, ((StringBuilder)localObject1).toString());
+      paramFile = paramFile.listFiles();
+      if (paramFile != null)
+      {
+        if (paramFile.length == 0) {
+          return true;
+        }
+        int j = paramFile.length;
+        int i = 0;
+        while (i < j)
+        {
+          paramFile[i].delete();
+          i += 1;
+        }
+        this.b.drop(OfflineWebRes.class.getSimpleName());
+        return false;
+      }
+      return true;
+    }
+    return false;
   }
   
   public static void c()
   {
     try
     {
-      Object localObject = new File(BaseApplication.getContext().getApplicationContext().getFilesDir(), ClubContentJsonTask.e.jdField_a_of_type_JavaLangString);
+      Object localObject = new File(BaseApplication.getContext().getApplicationContext().getFilesDir(), ClubContentJsonTask.e.a);
       if (((File)localObject).exists())
       {
         localObject = new JSONObject(FileUtils.readFileContent((File)localObject));
         if (((JSONObject)localObject).has("offinePkgReadFromDataCache")) {
-          b = ((JSONObject)localObject).getBoolean("offinePkgReadFromDataCache");
+          f = ((JSONObject)localObject).getBoolean("offinePkgReadFromDataCache");
         }
       }
     }
@@ -299,20 +194,229 @@ public class OfflineWebResManager
         QLog.e("OfflineWebResManager", 2, "parse offline globle config error!", localException);
       }
     }
-    if (!b) {
+    if (!f) {
       QLog.w("OfflineWebResManager", 1, "can not use offline /data cache mode!");
     }
   }
   
-  public OfflineWebRes a(String paramString)
+  /* Error */
+  private JSONObject e(String paramString)
   {
-    if (!b) {
-      return null;
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (OfflineWebRes)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(OfflineWebRes.class, paramString);
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 261	com/tencent/biz/common/offline/OfflineEnvHelper:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: astore_3
+    //   5: aload_3
+    //   6: invokestatic 157	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   9: istore_2
+    //   10: aconst_null
+    //   11: astore 6
+    //   13: iload_2
+    //   14: ifeq +5 -> 19
+    //   17: aconst_null
+    //   18: areturn
+    //   19: new 78	java/lang/StringBuilder
+    //   22: dup
+    //   23: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   26: astore 4
+    //   28: aload 4
+    //   30: aload_3
+    //   31: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: pop
+    //   35: aload 4
+    //   37: aload_1
+    //   38: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: pop
+    //   42: aload 4
+    //   44: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: astore_3
+    //   48: new 128	java/io/File
+    //   51: dup
+    //   52: aload_3
+    //   53: invokespecial 262	java/io/File:<init>	(Ljava/lang/String;)V
+    //   56: invokevirtual 137	java/io/File:exists	()Z
+    //   59: ifne +10 -> 69
+    //   62: aload_0
+    //   63: aload_1
+    //   64: invokevirtual 264	com/tencent/biz/webviewplugin/OfflineWebResManager:d	(Ljava/lang/String;)V
+    //   67: aconst_null
+    //   68: areturn
+    //   69: getstatic 269	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   72: ifnull +28 -> 100
+    //   75: getstatic 269	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   78: aload_1
+    //   79: invokevirtual 274	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   82: ifeq +18 -> 100
+    //   85: getstatic 269	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   88: aload_1
+    //   89: invokevirtual 278	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   92: checkcast 280	java/lang/String
+    //   95: astore 4
+    //   97: goto +186 -> 283
+    //   100: new 78	java/lang/StringBuilder
+    //   103: dup
+    //   104: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   107: astore 4
+    //   109: aload 4
+    //   111: aload_3
+    //   112: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: pop
+    //   116: aload 4
+    //   118: ldc_w 282
+    //   121: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: pop
+    //   125: new 284	java/io/BufferedInputStream
+    //   128: dup
+    //   129: new 286	java/io/FileInputStream
+    //   132: dup
+    //   133: aload 4
+    //   135: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: invokespecial 287	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   141: invokespecial 290	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   144: astore 4
+    //   146: aload 4
+    //   148: astore 6
+    //   150: aload 4
+    //   152: invokestatic 295	com/tencent/biz/common/util/OfflineSecurity:a	(Ljava/io/BufferedInputStream;)Ljava/lang/String;
+    //   155: astore_3
+    //   156: aload 4
+    //   158: astore 6
+    //   160: getstatic 269	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   163: ifnull +16 -> 179
+    //   166: aload 4
+    //   168: astore 6
+    //   170: getstatic 269	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   173: aload_1
+    //   174: aload_3
+    //   175: invokevirtual 299	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   178: pop
+    //   179: aload_3
+    //   180: astore 6
+    //   182: aload 4
+    //   184: invokevirtual 302	java/io/BufferedInputStream:close	()V
+    //   187: aload_3
+    //   188: astore 4
+    //   190: goto +93 -> 283
+    //   193: astore_3
+    //   194: aload_3
+    //   195: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   198: aload 6
+    //   200: astore 4
+    //   202: goto +81 -> 283
+    //   205: astore 7
+    //   207: aload 4
+    //   209: astore 5
+    //   211: goto +29 -> 240
+    //   214: astore_3
+    //   215: goto +11 -> 226
+    //   218: astore_1
+    //   219: goto +124 -> 343
+    //   222: astore_3
+    //   223: aconst_null
+    //   224: astore 4
+    //   226: ldc 36
+    //   228: astore 6
+    //   230: aload_3
+    //   231: astore 7
+    //   233: aload 4
+    //   235: astore 5
+    //   237: aload 6
+    //   239: astore_3
+    //   240: aload 5
+    //   242: astore 6
+    //   244: invokestatic 68	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   247: ifeq +17 -> 264
+    //   250: aload 5
+    //   252: astore 6
+    //   254: ldc 70
+    //   256: iconst_2
+    //   257: ldc 36
+    //   259: aload 7
+    //   261: invokestatic 251	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   264: aload_3
+    //   265: astore 4
+    //   267: aload 5
+    //   269: ifnull +14 -> 283
+    //   272: aload_3
+    //   273: astore 6
+    //   275: aload 5
+    //   277: invokevirtual 302	java/io/BufferedInputStream:close	()V
+    //   280: aload_3
+    //   281: astore 4
+    //   283: aload 4
+    //   285: invokestatic 157	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   288: ifne +33 -> 321
+    //   291: new 231	org/json/JSONObject
+    //   294: dup
+    //   295: aload 4
+    //   297: invokespecial 238	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   300: astore_1
+    //   301: aload_1
+    //   302: areturn
+    //   303: astore_1
+    //   304: invokestatic 68	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   307: ifeq +12 -> 319
+    //   310: ldc 70
+    //   312: iconst_2
+    //   313: ldc 36
+    //   315: aload_1
+    //   316: invokestatic 251	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   319: aconst_null
+    //   320: areturn
+    //   321: aload_0
+    //   322: aload_1
+    //   323: invokevirtual 264	com/tencent/biz/webviewplugin/OfflineWebResManager:d	(Ljava/lang/String;)V
+    //   326: getstatic 269	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   329: ifnull +11 -> 340
+    //   332: getstatic 269	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   335: aload_1
+    //   336: invokevirtual 307	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   339: pop
+    //   340: aconst_null
+    //   341: areturn
+    //   342: astore_1
+    //   343: aload 6
+    //   345: ifnull +16 -> 361
+    //   348: aload 6
+    //   350: invokevirtual 302	java/io/BufferedInputStream:close	()V
+    //   353: goto +8 -> 361
+    //   356: astore_3
+    //   357: aload_3
+    //   358: invokevirtual 305	java/io/IOException:printStackTrace	()V
+    //   361: aload_1
+    //   362: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	363	0	this	OfflineWebResManager
+    //   0	363	1	paramString	String
+    //   9	5	2	bool	boolean
+    //   4	184	3	str	String
+    //   193	2	3	localIOException1	java.io.IOException
+    //   214	1	3	localException1	Exception
+    //   222	9	3	localException2	Exception
+    //   239	42	3	localObject1	Object
+    //   356	2	3	localIOException2	java.io.IOException
+    //   26	270	4	localObject2	Object
+    //   209	67	5	localObject3	Object
+    //   11	338	6	localObject4	Object
+    //   205	1	7	localException3	Exception
+    //   231	29	7	localException4	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   182	187	193	java/io/IOException
+    //   275	280	193	java/io/IOException
+    //   160	166	205	java/lang/Exception
+    //   170	179	205	java/lang/Exception
+    //   150	156	214	java/lang/Exception
+    //   100	146	218	finally
+    //   100	146	222	java/lang/Exception
+    //   291	301	303	java/lang/Exception
+    //   150	156	342	finally
+    //   160	166	342	finally
+    //   170	179	342	finally
+    //   244	250	342	finally
+    //   254	264	342	finally
+    //   348	353	356	java/io/IOException
   }
   
   public void a()
@@ -333,10 +437,10 @@ public class OfflineWebResManager
   
   public void a(int paramInt)
   {
-    if (!b) {
+    if (!f) {
       return;
     }
-    if ((paramInt > 0) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
+    if ((paramInt > 0) && (this.g.get())) {
       return;
     }
     if (QLog.isColorLevel())
@@ -346,7 +450,7 @@ public class OfflineWebResManager
       localStringBuilder.append(paramInt);
       QLog.i("OfflineWebResManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.g.set(true);
     ThreadManager.post(new OfflineWebResManager.2(this, paramInt), 5, null, false);
   }
   
@@ -358,7 +462,7 @@ public class OfflineWebResManager
     Object localObject1;
     if (paramOfflineWebRes.getStatus() == 1000)
     {
-      localObject1 = OfflineEnvHelper.a(paramOfflineWebRes.bid);
+      localObject1 = OfflineEnvHelper.b(paramOfflineWebRes.bid);
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(paramOfflineWebRes.bid);
@@ -381,7 +485,7 @@ public class OfflineWebResManager
           ((StringBuilder)localObject1).append(" into /data");
           QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject1).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramOfflineWebRes);
+        this.b.persistOrReplace(paramOfflineWebRes);
         return;
       }
       paramOfflineWebRes = new StringBuilder();
@@ -409,17 +513,17 @@ public class OfflineWebResManager
             ((StringBuilder)localObject1).append(paramOfflineWebRes.hitCount);
             QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject1).toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramOfflineWebRes);
+          this.b.update(paramOfflineWebRes);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramOfflineWebRes);
+        this.b.remove(paramOfflineWebRes);
       }
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(OfflineWebRes.class, false, "bid= ? and fileName= ?", new String[] { paramString2, paramString1 }, null, null, null, null);
+    Object localObject1 = this.b.query(OfflineWebRes.class, false, "bid= ? and fileName= ?", new String[] { paramString2, paramString1 }, null, null, null, null);
     if (localObject1 != null)
     {
       if (((List)localObject1).size() == 0) {
@@ -436,7 +540,7 @@ public class OfflineWebResManager
           if (localFile2.exists()) {
             localFile2.delete();
           }
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject2, "bid= ? and fileName= ?", new String[] { paramString2, paramString1 });
+          this.b.remove((Entity)localObject2, "bid= ? and fileName= ?", new String[] { paramString2, paramString1 });
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -451,194 +555,94 @@ public class OfflineWebResManager
     }
   }
   
+  public OfflineWebRes b(String paramString)
+  {
+    if (!f) {
+      return null;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (OfflineWebRes)this.b.find(OfflineWebRes.class, paramString);
+  }
+  
   public void b()
   {
     if (QLog.isColorLevel()) {
       QLog.i("OfflineWebResManager", 2, "now begin check cache size!");
     }
-    Object localObject1 = new File(BaseApplication.getContext().getFilesDir(), "WebOfflineRes");
-    if (((File)localObject1).exists())
+    Object localObject = new File(BaseApplication.getContext().getFilesDir(), "WebOfflineRes");
+    long l;
+    if (((File)localObject).exists())
     {
-      if (!((File)localObject1).isDirectory()) {
+      if (!((File)localObject).isDirectory()) {
         return;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.tabbleIsExist(OfflineWebRes.class.getSimpleName())) {
+      if (!this.b.tabbleIsExist(OfflineWebRes.class.getSimpleName())) {
         return;
       }
+      l = 0L;
     }
     for (;;)
     {
       int i;
       try
       {
-        Object localObject2 = ((File)localObject1).listFiles();
-        if (localObject2 != null)
+        File[] arrayOfFile = ((File)localObject).listFiles();
+        if (arrayOfFile != null)
         {
-          if (localObject2.length == 0) {
+          if (arrayOfFile.length == 0) {
             return;
           }
-          int j = localObject2.length;
-          long l1 = 0L;
+          int j = arrayOfFile.length;
           i = 0;
           if (i < j)
           {
-            localObject3 = localObject2[i];
-            if (!((File)localObject3).isDirectory())
+            File localFile = arrayOfFile[i];
+            if (!localFile.isDirectory())
             {
-              l1 += ((File)localObject3).length();
-              break label904;
+              l += localFile.length();
+              break label241;
             }
-            ((File)localObject3).delete();
-            break label904;
+            localFile.delete();
+            break label241;
           }
-          double d = l1;
-          if (d < 4194304.0D)
+          double d1 = l;
+          if (d1 < 4194304.0D)
           {
-            if (QLog.isColorLevel())
-            {
-              localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append("now /data cache size :");
-              ((StringBuilder)localObject1).append(l1);
-              QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject1).toString());
+            if (!QLog.isColorLevel()) {
+              break;
             }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("now /data cache size :");
+            ((StringBuilder)localObject).append(l);
+            QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject).toString());
             return;
           }
-          OfflineWebRes localOfflineWebRes;
-          File localFile;
-          if ((d >= 4194304.0D) && (l1 < 5242880L))
+          if ((d1 >= 4194304.0D) && (l < 5242880L))
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("OfflineWebResManager", 2, "cache data size exceed threshold value ");
-            }
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("select * from ");
-            ((StringBuilder)localObject2).append(OfflineWebRes.class.getSimpleName());
-            ((StringBuilder)localObject2).append(" where hitcount=1 limit 100");
-            localObject2 = ((StringBuilder)localObject2).toString();
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.rawQuery(OfflineWebRes.class, (String)localObject2, null);
-            if ((localObject3 == null) || (((List)localObject3).size() <= 0)) {
-              break label903;
-            }
-            localObject2 = new StringBuilder(((List)localObject3).size() * 64);
-            localObject3 = ((List)localObject3).iterator();
-            if (((Iterator)localObject3).hasNext())
-            {
-              localOfflineWebRes = (OfflineWebRes)((Iterator)localObject3).next();
-              localFile = new File((File)localObject1, localOfflineWebRes.hashName);
-              if (localFile.exists())
-              {
-                if (QLog.isColorLevel())
-                {
-                  ((StringBuilder)localObject2).append("delete file: ");
-                  ((StringBuilder)localObject2).append(localFile.getPath());
-                  ((StringBuilder)localObject2).append("\n");
-                }
-                localFile.delete();
-              }
-              this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localOfflineWebRes);
-              continue;
-            }
-            if ((!QLog.isColorLevel()) || (TextUtils.isEmpty(((StringBuilder)localObject2).toString()))) {
-              break label903;
-            }
-            QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject2).toString());
+            a((File)localObject);
             return;
           }
-          Double.isNaN(d);
-          l1 = (d - 4194304.0D);
-          if (QLog.isColorLevel())
-          {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("cache data size exceed cache max value ");
-            ((StringBuilder)localObject2).append(l1);
-            QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject2).toString());
-          }
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("select * from ");
-          ((StringBuilder)localObject2).append(OfflineWebRes.class.getSimpleName());
-          ((StringBuilder)localObject2).append(" order by hitcount");
-          localObject2 = ((StringBuilder)localObject2).toString();
-          Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.rawQuery(OfflineWebRes.class, (String)localObject2, null);
-          localObject2 = new StringBuilder("");
-          long l2 = l1;
-          if (localObject3 != null)
-          {
-            l2 = l1;
-            if (((List)localObject3).size() > 0)
-            {
-              localObject3 = ((List)localObject3).iterator();
-              l2 = l1;
-              if (((Iterator)localObject3).hasNext())
-              {
-                localOfflineWebRes = (OfflineWebRes)((Iterator)localObject3).next();
-                if (l1 <= 0L)
-                {
-                  l2 = l1;
-                }
-                else
-                {
-                  localFile = new File((File)localObject1, localOfflineWebRes.hashName);
-                  l2 = l1;
-                  if (localFile.exists())
-                  {
-                    StringBuilder localStringBuilder = new StringBuilder();
-                    localStringBuilder.append("delete file: ");
-                    localStringBuilder.append(localFile.getPath());
-                    localStringBuilder.append("\n");
-                    ((StringBuilder)localObject2).append(localStringBuilder.toString());
-                    l2 = l1 - localFile.length();
-                    localFile.delete();
-                  }
-                  this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localOfflineWebRes);
-                  l1 = l2;
-                  continue;
-                }
-              }
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject2).toString());
-          }
-          if (l2 <= 0L) {
-            break label903;
-          }
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("cache data size still exceed cache max value ");
-          ((StringBuilder)localObject2).append(l2);
-          ((StringBuilder)localObject2).append(", now delete folder and database!");
-          QLog.w("OfflineWebResManager", 1, ((StringBuilder)localObject2).toString());
-          localObject1 = ((File)localObject1).listFiles();
-          if (localObject1 != null)
-          {
-            if (localObject1.length == 0) {
-              return;
-            }
-            j = localObject1.length;
-            i = 0;
-            if (i < j)
-            {
-              localObject1[i].delete();
-              i += 1;
-              continue;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(OfflineWebRes.class.getSimpleName());
-            return;
-          }
+          boolean bool = a((File)localObject, l);
+          if (!bool) {}
         }
-        return;
+        else
+        {
+          return;
+        }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
-      label903:
       return;
-      label904:
+      label241:
       i += 1;
     }
   }
   
-  public void b(String paramString)
+  public void c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
@@ -647,27 +651,27 @@ public class OfflineWebResManager
     Object localObject1 = Uri.parse(paramString).getQueryParameter("_bid");
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.d;
     }
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       return;
     }
-    localObject1 = HtmlOffline.d(paramString);
+    localObject1 = HtmlOffline.g(paramString);
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
-    Object localObject3 = a((String)localObject2);
+    Object localObject3 = e((String)localObject2);
     if (localObject3 == null) {
       return;
     }
     String str1 = ((JSONObject)localObject3).optString((String)localObject1);
     if (!TextUtils.isEmpty(str1))
     {
-      OfflineWebRes localOfflineWebRes = a(str1);
+      OfflineWebRes localOfflineWebRes = b(str1);
       localObject1 = localOfflineWebRes;
       if (localOfflineWebRes == null)
       {
-        String str2 = HtmlOffline.d(paramString);
+        String str2 = HtmlOffline.g(paramString);
         a(str2, (String)localObject2);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(str2);
@@ -710,7 +714,7 @@ public class OfflineWebResManager
           ((StringBuilder)localObject5).append(paramString);
           QLog.e("OfflineWebResManager", 1, ((StringBuilder)localObject5).toString());
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            c((String)localObject2);
+            d((String)localObject2);
           }
           localException.printStackTrace();
           localObject4 = localObject1;
@@ -730,14 +734,14 @@ public class OfflineWebResManager
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("add or update url ");
-        ((StringBuilder)localObject1).append(HtmlOffline.d(paramString));
+        ((StringBuilder)localObject1).append(HtmlOffline.g(paramString));
         ((StringBuilder)localObject1).append(", cost: ");
         ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
         QLog.i("OfflineWebResManager", 2, ((StringBuilder)localObject1).toString());
       }
       return;
     }
-    paramString = HtmlOffline.d(paramString);
+    paramString = HtmlOffline.g(paramString);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -748,9 +752,9 @@ public class OfflineWebResManager
     a(paramString, (String)localObject2);
   }
   
-  public void c(String paramString)
+  public void d(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(OfflineWebRes.class, false, "bid=?", new String[] { paramString }, null, null, null, null);
+    Object localObject1 = this.b.query(OfflineWebRes.class, false, "bid=?", new String[] { paramString }, null, null, null, null);
     if (localObject1 != null)
     {
       if (((List)localObject1).size() == 0) {
@@ -767,7 +771,7 @@ public class OfflineWebResManager
           if (localFile2.exists()) {
             localFile2.delete();
           }
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject2, "bid=?", new String[] { paramString });
+          this.b.remove((Entity)localObject2, "bid=?", new String[] { paramString });
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -782,7 +786,7 @@ public class OfflineWebResManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflineWebResManager
  * JD-Core Version:    0.7.0.1
  */

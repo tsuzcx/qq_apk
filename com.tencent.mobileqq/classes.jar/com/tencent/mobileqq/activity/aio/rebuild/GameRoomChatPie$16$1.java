@@ -16,26 +16,26 @@ class GameRoomChatPie$16$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.this$0.b;
+      String str = this.a.this$0.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initPlugin! hasDestory = ");
-      localStringBuilder.append(this.a.this$0.B);
+      localStringBuilder.append(this.a.this$0.aY);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if ((!this.a.this$0.B) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView != null))
+    if ((!this.a.this$0.aY) && (this.a.this$0.bE != null))
     {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
-      GameRoomChatPie.a(this.a.this$0).removeView(this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setBackgroundDrawable(null);
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.b.setBackgroundDrawable(null);
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a((ViewGroup)this.a.this$0.g);
+      this.a.this$0.bE.c();
+      GameRoomChatPie.c(this.a.this$0).removeView(this.a.this$0.bE);
+      this.a.this$0.bE.setBackgroundDrawable(null);
+      this.a.this$0.bE.d.setBackgroundDrawable(null);
+      this.a.this$0.bC.a((ViewGroup)this.a.this$0.br);
       this.a.this$0.b(false, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.16.1
  * JD-Core Version:    0.7.0.1
  */

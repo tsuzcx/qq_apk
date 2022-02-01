@@ -9,7 +9,7 @@ class AVGameControlUIImpl$3$4
   
   public void run()
   {
-    long l = QQAudioHelper.b();
+    long l = QQAudioHelper.d();
     this.a.a.a(l, "android.permission.CAMERA");
   }
 }

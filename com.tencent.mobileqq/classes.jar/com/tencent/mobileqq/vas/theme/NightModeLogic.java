@@ -21,29 +21,29 @@ import mqq.app.AppRuntime;
 
 public class NightModeLogic
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new NightModeLogic.2(this, Looper.getMainLooper());
-  IThemeSwitchManager jdField_a_of_type_ComTencentMobileqqVasManagerApiIThemeSwitchManager;
-  ThemeSwitchCallback jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitchCallback = new NightModeLogic.1(this);
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  ArrayList<NightModeLogic.NightModeCallback> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  AppRuntime a;
+  IThemeSwitchManager b;
+  ArrayList<NightModeLogic.NightModeCallback> c = new ArrayList();
+  ThemeSwitchCallback d = new NightModeLogic.1(this);
+  Handler e = new NightModeLogic.2(this, Looper.getMainLooper());
+  private WeakReference<Activity> f;
   
   public NightModeLogic(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqVasManagerApiIThemeSwitchManager = VasUtil.a().getThemeSwitchManager();
+    this.a = paramAppRuntime;
+    this.b = VasUtil.a().getThemeSwitchManager();
   }
   
   public int a()
   {
-    if (a())
+    if (b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("NightModeLogic", 2, "switchRightViewImage status: juhua");
       }
       return 0;
     }
-    if (ThemeUtil.isInNightMode(this.jdField_a_of_type_MqqAppAppRuntime))
+    if (ThemeUtil.isInNightMode(this.a))
     {
       if (QLog.isColorLevel()) {
         QLog.i("NightModeLogic", 2, "switchRightViewImage status: sun");
@@ -56,14 +56,9 @@ public class NightModeLogic
     return 2;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_MqqAppAppRuntime = null;
-  }
-  
   public void a(int paramInt, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       NightModeLogic.NightModeCallback localNightModeCallback = (NightModeLogic.NightModeCallback)localIterator.next();
@@ -77,7 +72,7 @@ public class NightModeLogic
   
   public void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
+    if (this.a == null)
     {
       QLog.e("NightModeLogic", 1, "startNightMode Err mRuntime == null");
       return;
@@ -86,17 +81,17 @@ public class NightModeLogic
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startNightMode, isNightMode=");
-      localStringBuilder.append(ThemeUtil.isInNightMode(this.jdField_a_of_type_MqqAppAppRuntime));
+      localStringBuilder.append(ThemeUtil.isInNightMode(this.a));
       localStringBuilder.append(", nowThemeId=");
       localStringBuilder.append(ThemeUtil.getCurrentThemeId());
       localStringBuilder.append(", userThemeId=");
-      localStringBuilder.append(ThemeUtil.getUserCurrentThemeId(this.jdField_a_of_type_MqqAppAppRuntime));
+      localStringBuilder.append(ThemeUtil.getUserCurrentThemeId(this.a));
       localStringBuilder.append(", mRuntime=");
-      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime);
+      localStringBuilder.append(this.a);
       QLog.d("NightModeLogic", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    boolean bool = b();
+    this.f = new WeakReference(paramActivity);
+    boolean bool = c();
     if (QLog.isColorLevel())
     {
       paramActivity = new StringBuilder();
@@ -110,21 +105,21 @@ public class NightModeLogic
   {
     if (paramNightModeCallback != null)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramNightModeCallback);
+      this.c.remove(paramNightModeCallback);
       if (paramBoolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramNightModeCallback);
+        this.c.add(paramNightModeCallback);
       }
     }
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.a = paramAppRuntime;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    boolean bool = ThemeSwitcher.a();
+    boolean bool = ThemeSwitcher.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isDownloadOrSwtich: ");
     localStringBuilder.append(bool);
@@ -132,20 +127,12 @@ public class NightModeLogic
     return bool;
   }
   
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVasManagerApiIThemeSwitchManager.onPostThemeChanged();
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof AppRuntime)) {
-      ((ISimpleUIHandler)QRoute.api(ISimpleUIHandler.class)).onPostThemeChanged();
-    }
-  }
-  
-  public boolean b()
+  public boolean c()
   {
     if (QLog.isColorLevel()) {
       QLog.i("NightModeLogic", 2, "setupNightTheme");
     }
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
+    if (this.a == null)
     {
       QLog.e("NightModeLogic", 1, "setupNightTheme Err mRuntime == null");
       return false;
@@ -153,8 +140,8 @@ public class NightModeLogic
     Object localObject1 = new Bundle();
     ((Bundle)localObject1).putInt("start_status", 1);
     a(1, (Bundle)localObject1);
-    boolean bool1 = ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_MqqAppAppRuntime, false, null);
-    boolean bool2 = SimpleUIUtil.a();
+    boolean bool1 = ThemeUtil.isNowThemeIsNight(this.a, false, null);
+    boolean bool2 = SimpleUIUtil.e();
     if (!bool1)
     {
       if (bool2) {
@@ -162,15 +149,15 @@ public class NightModeLogic
       } else {
         localObject1 = "1103";
       }
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Setting_tab", "Night_mode", 0, 0, "1", "", "", "");
+      ReportController.b(this.a, "CliOper", "", "", "Setting_tab", "Night_mode", 1, 0, "", "", "", "");
     }
     else if (bool2)
     {
-      localObject1 = SimpleUIUtil.a(SimpleUIUtil.g());
+      localObject1 = SimpleUIUtil.a(SimpleUIUtil.j());
     }
     else
     {
-      localObject2 = ThemeSwitchUtil.a(this.jdField_a_of_type_MqqAppAppRuntime);
+      localObject2 = ThemeSwitchUtil.a(this.a);
       localObject1 = ((Bundle)localObject2).getString("themeID");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setupNightTheme, pre themeID=");
@@ -181,19 +168,32 @@ public class NightModeLogic
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         localObject1 = "1000";
       }
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Setting_tab", "Night_mode", 0, 0, "0", "", "", "");
+      ReportController.b(this.a, "CliOper", "", "", "Setting_tab", "Night_mode", 0, 0, "", "", "", "");
     }
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("setupNightTheme themeID=");
     ((StringBuilder)localObject2).append((String)localObject1);
     QLog.d("NightModeLogic", 1, ((StringBuilder)localObject2).toString());
-    ThemeSwitcher.a((String)localObject1, "202", this.jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitchCallback);
+    ThemeSwitcher.a((String)localObject1, "202", this.d);
     return true;
+  }
+  
+  public void d()
+  {
+    this.a = null;
+  }
+  
+  public void e()
+  {
+    this.b.onPostThemeChanged();
+    if ((this.a instanceof AppRuntime)) {
+      ((ISimpleUIHandler)QRoute.api(ISimpleUIHandler.class)).onPostThemeChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.NightModeLogic
  * JD-Core Version:    0.7.0.1
  */

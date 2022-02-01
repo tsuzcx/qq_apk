@@ -10,15 +10,15 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Virtu
 class ReadInJoyAdLocationView$BoringViewImpl
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int jdField_b_of_type_Int = 0;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private int a = 0;
+  private int b = 0;
   private int c = 0;
   private int d = 0;
   private int e = 0;
   private int f = 0;
   private int g = -16777216;
+  private Paint h;
+  private Paint i;
   
   public ReadInJoyAdLocationView$BoringViewImpl(Context paramContext)
   {
@@ -28,7 +28,7 @@ class ReadInJoyAdLocationView$BoringViewImpl
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void b(int paramInt)
@@ -48,39 +48,39 @@ class ReadInJoyAdLocationView$BoringViewImpl
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.a != 0)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.h == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+        this.h = new Paint();
+        this.h.setAntiAlias(true);
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      VirtualViewUtils.drawBackground(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+      this.h.setColor(this.a);
+      VirtualViewUtils.drawBackground(paramCanvas, this.h, getWidth(), getHeight(), this.f, this.b, this.c, this.d, this.e);
     }
     super.onDraw(paramCanvas);
     if (this.f > 0)
     {
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+      if (this.i == null)
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+        this.i = new Paint();
+        this.i.setStyle(Paint.Style.STROKE);
+        this.i.setAntiAlias(true);
       }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
-      VirtualViewUtils.drawBorder(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+      this.i.setStrokeWidth(this.f);
+      this.i.setColor(this.g);
+      VirtualViewUtils.drawBorder(paramCanvas, this.i, getWidth(), getHeight(), this.f, this.b, this.c, this.d, this.e);
     }
   }
   
   public void setBackgroundColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyAdLocationView.BoringViewImpl
  * JD-Core Version:    0.7.0.1
  */

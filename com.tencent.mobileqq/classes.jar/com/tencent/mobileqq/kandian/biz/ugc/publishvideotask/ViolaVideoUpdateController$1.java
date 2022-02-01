@@ -11,12 +11,12 @@ class ViolaVideoUpdateController$1
   public void run()
   {
     ViolaVideoUpdateController.a(this.this$0).run();
-    ThreadManagerV2.getUIHandlerV2().postDelayed(this, ViolaVideoUpdateController.a(this.this$0));
+    ThreadManagerV2.getUIHandlerV2().postDelayed(this, ViolaVideoUpdateController.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.ViolaVideoUpdateController.1
  * JD-Core Version:    0.7.0.1
  */

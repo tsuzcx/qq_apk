@@ -23,15 +23,15 @@ public class RIJOnScrollChangeListener
   {
     paramInt2 = 0;
     paramInt1 = 0;
-    while (paramInt1 < this.a.a().a().a().getChildCount())
+    while (paramInt1 < this.a.a().v().d().getChildCount())
     {
-      localObject1 = this.a.a().a().a().getChildAt(paramInt1);
+      localObject1 = this.a.a().v().d().getChildAt(paramInt1);
       if ((localObject1 instanceof ProteusItemView))
       {
-        localObject1 = ((ProteusItemView)localObject1).a();
+        localObject1 = ((ProteusItemView)localObject1).getContainer();
         if (localObject1 != null)
         {
-          localObject1 = (IReadInJoyListItemAutoPlayCallback)((Container)localObject1).getTag(2131376090);
+          localObject1 = (IReadInJoyListItemAutoPlayCallback)((Container)localObject1).getTag(2131444293);
           if ((localObject1 != null) && (((IReadInJoyListItemAutoPlayCallback)localObject1).a())) {
             break label106;
           }
@@ -41,14 +41,14 @@ public class RIJOnScrollChangeListener
     }
     Object localObject1 = null;
     label106:
-    ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)this.a.a().a().a();
+    ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)this.a.a().v().d();
     paramInt1 = paramInt2;
     if (localObject1 != null)
     {
       paramInt1 = paramInt2;
-      if (!localReadInJoyXListView.a())
+      if (!localReadInJoyXListView.c())
       {
-        ((IReadInJoyListItemAutoPlayCallback)localObject1).a();
+        ((IReadInJoyListItemAutoPlayCallback)localObject1).b();
         paramInt1 = paramInt2;
       }
     }
@@ -57,12 +57,12 @@ public class RIJOnScrollChangeListener
       Object localObject2 = localReadInJoyXListView.getChildAt(paramInt1);
       if ((localObject2 instanceof ProteusItemView))
       {
-        localObject2 = ((ProteusItemView)localObject2).a();
+        localObject2 = ((ProteusItemView)localObject2).getContainer();
         if (localObject2 != null)
         {
-          localObject2 = (IReadInJoyListItemAutoPlayCallback)((Container)localObject2).getTag(2131376090);
+          localObject2 = (IReadInJoyListItemAutoPlayCallback)((Container)localObject2).getTag(2131444293);
           if ((localObject2 != null) && (localObject2 != localObject1)) {
-            ((IReadInJoyListItemAutoPlayCallback)localObject2).b();
+            ((IReadInJoyListItemAutoPlayCallback)localObject2).c();
           }
         }
       }
@@ -72,7 +72,7 @@ public class RIJOnScrollChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJOnScrollChangeListener
  * JD-Core Version:    0.7.0.1
  */

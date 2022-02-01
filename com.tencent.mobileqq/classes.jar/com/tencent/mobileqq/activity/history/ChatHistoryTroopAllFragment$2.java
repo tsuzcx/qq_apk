@@ -13,7 +13,7 @@ class ChatHistoryTroopAllFragment$2
   
   public void run()
   {
-    List localList = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_b_of_type_JavaLangString, 1, 9223372036854775807L, 20);
+    List localList = this.this$0.v.getMessageFacade().a(this.this$0.s, 1, 9223372036854775807L, 20);
     if (localList != null) {
       ThreadManager.getUIHandler().post(new ChatHistoryTroopAllFragment.2.1(this, localList));
     }
@@ -21,7 +21,7 @@ class ChatHistoryTroopAllFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment.2
  * JD-Core Version:    0.7.0.1
  */

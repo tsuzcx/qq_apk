@@ -172,12 +172,12 @@ public class MainBrowserScene
       this.recyclerView.scrollToPosition(this.mainBrowserPresenter.browserModel.getSelectedIndex());
     }
     this.recyclerView.setVisibility(0);
-    this.mDragView = ((DragView)this.mRoot.findViewById(2131365892));
+    this.mDragView = ((DragView)this.mRoot.findViewById(2131432158));
     this.mDragView.setGestureChangeListener(this);
     this.mDragView.setRatioModify(true);
     this.mDragView.init();
     if (this.mainBrowserPresenter != null) {
-      this.mDragView.setEnableDrag(this.mainBrowserPresenter.getParamsBuilder().c);
+      this.mDragView.setEnableDrag(this.mainBrowserPresenter.getParamsBuilder().f);
     }
   }
   
@@ -484,7 +484,7 @@ public class MainBrowserScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.MainBrowserScene
  * JD-Core Version:    0.7.0.1
  */

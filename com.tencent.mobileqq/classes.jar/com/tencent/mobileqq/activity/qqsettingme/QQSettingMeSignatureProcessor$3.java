@@ -11,12 +11,12 @@ class QQSettingMeSignatureProcessor$3
   
   public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.b(paramAppInfo);
+    this.a.b(paramAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSignatureProcessor.3
  * JD-Core Version:    0.7.0.1
  */

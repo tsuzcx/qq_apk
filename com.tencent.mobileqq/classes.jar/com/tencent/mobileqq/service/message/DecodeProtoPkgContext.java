@@ -5,49 +5,43 @@ import android.util.SparseArray;
 public class DecodeProtoPkgContext
   extends PBDecodeContext
 {
-  public int a;
   public long a;
-  private SparseArray<Object> a;
-  public String a;
-  public boolean a;
-  public int b;
   public long b;
-  public boolean b = false;
-  public int c;
   public long c;
-  public boolean c = false;
-  public int d;
   public long d;
-  public boolean d = false;
   public int e;
-  public long e;
-  public boolean e;
-  public long f;
-  public boolean f;
-  public boolean g;
+  public int f;
+  public boolean g = false;
   public boolean h = false;
   public boolean i = false;
+  public boolean j = false;
+  public boolean k = false;
+  public boolean l = false;
+  public boolean m = true;
+  public boolean n = false;
+  public boolean o = false;
+  public int p;
+  public int q;
+  public long r = -1L;
+  public long s = -1L;
+  public String t;
+  public int u = 0;
+  public long v;
+  private SparseArray<Object> z;
   
   public DecodeProtoPkgContext(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_e_of_type_Long = -1L;
-    this.jdField_f_of_type_Long = -1L;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_g_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
+    this.a = paramLong1;
+    this.x = paramLong2;
+    this.g = paramBoolean1;
+    this.h = paramBoolean2;
+    this.i = paramBoolean3;
+    this.j = paramBoolean4;
   }
   
   public Object a(int paramInt)
   {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    SparseArray localSparseArray = this.z;
     if (localSparseArray != null) {
       return localSparseArray.get(paramInt);
     }
@@ -56,15 +50,15 @@ public class DecodeProtoPkgContext
   
   public void a(int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    if (this.z == null) {
+      this.z = new SparseArray();
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
+    this.z.put(paramInt, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.DecodeProtoPkgContext
  * JD-Core Version:    0.7.0.1
  */

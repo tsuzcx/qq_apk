@@ -37,7 +37,7 @@ class CameraManagerApiImpl$CameraAvailabilityReceiver
       }
       boolean bool = true;
       label120:
-      if (QQAudioHelper.c())
+      if (QQAudioHelper.f())
       {
         paramContext = new StringBuilder();
         paramContext.append("CameraAvailabilityReceiver, sendReopenCameraMsg, result[");
@@ -53,7 +53,7 @@ class CameraManagerApiImpl$CameraAvailabilityReceiver
     }
     else
     {
-      if (QQAudioHelper.c())
+      if (QQAudioHelper.f())
       {
         paramContext = new StringBuilder();
         paramContext.append("CameraAvailabilityReceiver, removeReopenCameraMsg, seq[");
@@ -67,7 +67,7 @@ class CameraManagerApiImpl$CameraAvailabilityReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.camera.api.impl.CameraManagerApiImpl.CameraAvailabilityReceiver
  * JD-Core Version:    0.7.0.1
  */

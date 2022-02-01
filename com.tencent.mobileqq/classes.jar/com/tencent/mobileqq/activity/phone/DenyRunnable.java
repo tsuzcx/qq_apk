@@ -10,38 +10,38 @@ import java.lang.ref.WeakReference;
 public class DenyRunnable
   implements IReqPermissionRunnable
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private DenyRunnable.OnCancelAction jdField_a_of_type_ComTencentMobileqqActivityPhoneDenyRunnable$OnCancelAction = null;
-  private final WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<Context> a;
+  private long b = 0L;
+  private DenyRunnable.OnCancelAction c = null;
+  private int d = 0;
   
   public DenyRunnable(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramContext);
+    this.d = paramInt;
   }
   
   public DenyRunnable(Context paramContext, DenyRunnable.OnCancelAction paramOnCancelAction)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDenyRunnable$OnCancelAction = paramOnCancelAction;
+    this.a = new WeakReference(paramContext);
+    this.c = paramOnCancelAction;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.b = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReqPermission: ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       QLog.i("DenyRunnable", 2, localStringBuilder.toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Context localContext = (Context)this.a.get();
     if (QLog.isColorLevel()) {
       QLog.i("DenyRunnable", 2, String.format("defaultAction [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean), localContext }));
     }
@@ -51,7 +51,7 @@ public class DenyRunnable
     if (!paramBoolean)
     {
       Intent localIntent = new Intent(localContext, GuideBindPhoneActivity.class);
-      localIntent.putExtra("fromKeyForContactBind", this.jdField_a_of_type_Int);
+      localIntent.putExtra("fromKeyForContactBind", this.d);
       localContext.startActivity(localIntent);
     }
   }
@@ -59,7 +59,7 @@ public class DenyRunnable
   public void run()
   {
     long l2 = SystemClock.elapsedRealtime();
-    long l1 = this.jdField_a_of_type_Long;
+    long l1 = this.b;
     l2 -= l1;
     boolean bool;
     if ((l1 != 0L) && (Math.abs(l2) >= 800L)) {
@@ -68,12 +68,12 @@ public class DenyRunnable
       bool = false;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("DenyRunnable", 2, String.format("run [%s, %s, %s]", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(l2), Boolean.valueOf(bool) }));
+      QLog.i("DenyRunnable", 2, String.format("run [%s, %s, %s]", new Object[] { Long.valueOf(this.b), Long.valueOf(l2), Boolean.valueOf(bool) }));
     }
-    DenyRunnable.OnCancelAction localOnCancelAction = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDenyRunnable$OnCancelAction;
+    DenyRunnable.OnCancelAction localOnCancelAction = this.c;
     if (localOnCancelAction != null)
     {
-      localOnCancelAction.onCancel((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), bool);
+      localOnCancelAction.onCancel((Context)this.a.get(), bool);
       return;
     }
     a(bool);
@@ -81,7 +81,7 @@ public class DenyRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.DenyRunnable
  * JD-Core Version:    0.7.0.1
  */

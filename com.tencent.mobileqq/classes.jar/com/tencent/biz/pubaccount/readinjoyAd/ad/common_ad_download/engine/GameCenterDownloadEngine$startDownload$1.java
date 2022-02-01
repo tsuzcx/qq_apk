@@ -16,33 +16,33 @@ final class GameCenterDownloadEngine$startDownload$1
 {
   public final void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData == null) {
+      if (this.b == null) {
         return;
       }
-      Object localObject2 = GameCenterDownloadEngine.a(GameCenterDownloadEngine.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+      Object localObject2 = GameCenterDownloadEngine.a(GameCenterDownloadEngine.a, this.b);
       Object localObject1 = new AdDownloadInfo();
-      ((AdDownloadInfo)localObject1).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d);
-      ((AdDownloadInfo)localObject1).c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.jdField_a_of_type_JavaLangString);
+      ((AdDownloadInfo)localObject1).a(this.b.d);
+      ((AdDownloadInfo)localObject1).c(this.b.a);
       if (localObject2 == null)
       {
         localAdDownloadStateHandler = AdDownloadStateHandler.OnErrorDownload;
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+        localObject2 = this.a;
         ((AdDownloadInfo)localObject1).c(-1);
         ((AdDownloadInfo)localObject1).b("wadlParams is empty");
         ((AdDownloadInfo)localObject1).a(6);
         localAdDownloadStateHandler.doCallBack((RIJDownloadView)localObject2, (AdDownloadInfo)localObject1);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.jdField_a_of_type_Int == 4) {
-        AdDownloadStateHandler.OnResumeDownload.doCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, (AdDownloadInfo)localObject1);
+      if (this.b.f == 4) {
+        AdDownloadStateHandler.OnResumeDownload.doCallBack(this.a, (AdDownloadInfo)localObject1);
       } else {
-        AdDownloadStateHandler.OnStartDownload.doCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, (AdDownloadInfo)localObject1);
+        AdDownloadStateHandler.OnStartDownload.doCallBack(this.a, (AdDownloadInfo)localObject1);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startDownload: pkg = ");
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+      localObject1 = this.b;
       AdDownloadStateHandler localAdDownloadStateHandler = null;
       if (localObject1 != null) {
         localObject1 = ((ADVideoAppDownloadData)localObject1).d;
@@ -51,7 +51,7 @@ final class GameCenterDownloadEngine$startDownload$1
       }
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append("  url = ");
-      ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+      ADVideoAppDownloadData localADVideoAppDownloadData = this.b;
       localObject1 = localAdDownloadStateHandler;
       if (localADVideoAppDownloadData != null) {
         localObject1 = localADVideoAppDownloadData.c;
@@ -64,7 +64,7 @@ final class GameCenterDownloadEngine$startDownload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.GameCenterDownloadEngine.startDownload.1
  * JD-Core Version:    0.7.0.1
  */

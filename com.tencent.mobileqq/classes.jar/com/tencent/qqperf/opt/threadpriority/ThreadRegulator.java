@@ -12,41 +12,35 @@ import mqq.os.MqqRegulatorCallback;
 public class ThreadRegulator
   implements MqqRegulatorCallback
 {
-  private static ThreadRegulator jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator;
-  private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(ThreadRegulator.CpuBusyness.class, 2);
-  private volatile ThreadRegulator.CpuBusyness jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness = null;
-  Runnable jdField_a_of_type_JavaLangRunnable = new ThreadRegulator.2(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new ThreadRegulator.1(this, ThreadManager.getSubThreadLooper());
+  private static ThreadRegulator b;
+  Runnable a = new ThreadRegulator.2(this);
+  private final RecyclablePool c = new RecyclablePool(ThreadRegulator.CpuBusyness.class, 2);
+  private volatile ThreadRegulator.CpuBusyness d = null;
+  private MqqHandler e = new ThreadRegulator.1(this, ThreadManager.getSubThreadLooper());
   
   public static ThreadRegulator a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator == null) {
-        jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator = new ThreadRegulator();
+      if (b == null) {
+        b = new ThreadRegulator();
       }
-      ThreadRegulator localThreadRegulator = jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator;
+      ThreadRegulator localThreadRegulator = b;
       return localThreadRegulator;
     }
     finally {}
   }
   
-  public void a()
-  {
-    MqqHandler.sRegulatorCallback = this;
-    mqq.app.MainService.sRegulatorCallback = this;
-  }
-  
   public void a(int paramInt)
   {
-    if (!ThreadOptimizer.a().a()) {
+    if (!ThreadOptimizer.a().d()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness = ((ThreadRegulator.CpuBusyness)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(ThreadRegulator.CpuBusyness.class));
-      this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.d = ((ThreadRegulator.CpuBusyness)this.c.obtain(ThreadRegulator.CpuBusyness.class));
+      this.d.a = paramInt;
+      this.d.b = SystemClock.uptimeMillis();
       try
       {
         ThreadExcutor.getInstance().shrinkMaxPoolSize(true);
@@ -63,20 +57,31 @@ public class ThreadRegulator
   {
     if (paramLong == 0L)
     {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      this.a.run();
       return;
     }
-    ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
+    ThreadManager.getUIHandlerV2().postDelayed(this.a, paramLong);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness == null) {
+    MqqHandler.sRegulatorCallback = this;
+    mqq.app.MainService.sRegulatorCallback = this;
+  }
+  
+  public void b(int paramInt)
+  {
+    a(paramInt, 0L);
+  }
+  
+  public void c()
+  {
+    if (this.d == null) {
       return;
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadRegulator$CpuBusyness != null) {}
+      if (this.d != null) {}
       try
       {
         Thread.sleep(100L);
@@ -86,14 +91,9 @@ public class ThreadRegulator
     return;
   }
   
-  public void b(int paramInt)
-  {
-    a(paramInt, 0L);
-  }
-  
   public void checkInRegulatorMsg()
   {
-    b();
+    c();
   }
   
   public boolean regulatorThread(Thread paramThread)
@@ -105,7 +105,7 @@ public class ThreadRegulator
       }
       if ("MSF-Receiver".equals(paramThread.getName()))
       {
-        if (ThreadOptimizer.a().b()) {
+        if (ThreadOptimizer.a().e()) {
           paramThread.setPriority(1);
         }
         return true;
@@ -117,7 +117,7 @@ public class ThreadRegulator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadRegulator
  * JD-Core Version:    0.7.0.1
  */

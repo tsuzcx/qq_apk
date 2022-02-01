@@ -35,15 +35,15 @@ public class ColorNoteDataServiceImpl
   public static final int COLOR_NOTE_OP_ADD = 1;
   public static final int COLOR_NOTE_OP_DEL = 2;
   private static final String TAG = "ColorNoteProxy";
+  static Comparator<ColorNote> mComparator = new ColorNoteDataServiceImpl.1();
   private AppRuntime mAppRuntime;
   protected List<ColorNote> mCache = new ArrayList();
   ArrayList<IColorNoteListener> mColorNoteListener;
-  private Comparator<ColorNote> mComparator = new ColorNoteDataServiceImpl.1(this);
   private EntityManager mEntityManager;
   
-  private int judgeColorNotePosition(ColorNote paramColorNote1, ColorNote paramColorNote2)
+  private static int judgeColorNotePosition(ColorNote paramColorNote1, ColorNote paramColorNote2)
   {
-    long l = paramColorNote1.mTime - paramColorNote2.mTime;
+    long l = paramColorNote1.getTime() - paramColorNote2.getTime();
     if (l == 0L) {
       return 0;
     }
@@ -91,7 +91,7 @@ public class ColorNoteDataServiceImpl
       }
       synchronized (CACHE_LOCK)
       {
-        if (ColorNoteUtils.b(paramColorNote)) {
+        if (ColorNoteUtils.d(paramColorNote)) {
           this.mCache.add(0, paramColorNote);
         } else {
           this.mCache.add(paramColorNote);
@@ -99,16 +99,14 @@ public class ColorNoteDataServiceImpl
         if (paramColorNote.getServiceType() != 16973824) {
           saveToDB(paramString, paramColorNote, paramProxyListener, paramBoolean);
         }
+        QLog.d("ColorNoteProxy", 1, new Object[] { "[addColorNote] add ColorNote: ", paramColorNote.toString() });
         return true;
       }
     }
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("addColorNote error! isAfterSyncMsg = ");
-      paramString.append(ColorNoteSmallScreenUtil.b());
-      QLog.e("ColorNoteProxy", 2, paramString.toString());
-    }
+    paramString = new StringBuilder();
+    paramString.append("addColorNote error! isAfterSyncMsg = ");
+    paramString.append(ColorNoteSmallScreenUtil.b());
+    QLog.e("ColorNoteProxy", 1, paramString.toString());
     return false;
   }
   
@@ -130,23 +128,28 @@ public class ColorNoteDataServiceImpl
   
   public boolean canAddColorNote()
   {
-    boolean bool = false;
-    Object localObject2 = getColorNotes(false);
-    int i = ((List)localObject2).size();
+    List localList = getVisiableColorNotes();
+    int i = localList.size();
     synchronized (CACHE_LOCK)
     {
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      Iterator localIterator = localList.iterator();
+      while (localIterator.hasNext())
       {
-        ColorNote localColorNote = (ColorNote)((Iterator)localObject2).next();
+        ColorNote localColorNote = (ColorNote)localIterator.next();
         int j = i;
-        if (ColorNoteUtils.b(localColorNote)) {
+        if (ColorNoteUtils.d(localColorNote)) {
           j = i - 1;
         }
         i = j;
         if (localColorNote.getServiceType() == 16973824) {
           i = j - 1;
         }
+      }
+      boolean bool = false;
+      QLog.d("ColorNoteProxy", 1, new Object[] { "[canAddColorNote] notes.size: ", Integer.valueOf(localList.size()), ", count: ", Integer.valueOf(i), ", MAX_COUNT: ", Integer.valueOf(ColorNoteConstants.a) });
+      ??? = localList.iterator();
+      while (((Iterator)???).hasNext()) {
+        QLog.d("ColorNoteProxy", 1, new Object[] { "[canAddColorNote] query: ", ((ColorNote)((Iterator)???).next()).toString() });
       }
       if (i < ColorNoteConstants.a) {
         bool = true;
@@ -155,20 +158,19 @@ public class ColorNoteDataServiceImpl
     }
     for (;;)
     {
-      throw localObject3;
+      throw localObject2;
     }
   }
   
   public void clearAllUpcomingMindFlag()
   {
-    Object localObject2 = this.mCache;
     synchronized (CACHE_LOCK)
     {
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      Iterator localIterator = this.mCache.iterator();
+      while (localIterator.hasNext())
       {
-        ColorNote localColorNote = (ColorNote)((Iterator)localObject2).next();
-        if (ColorNoteUtils.c(localColorNote))
+        ColorNote localColorNote = (ColorNote)localIterator.next();
+        if (ColorNoteUtils.h(localColorNote))
         {
           if (QLog.isColorLevel())
           {
@@ -185,7 +187,7 @@ public class ColorNoteDataServiceImpl
     }
     for (;;)
     {
-      throw localObject3;
+      throw localObject2;
     }
   }
   
@@ -209,6 +211,7 @@ public class ColorNoteDataServiceImpl
       }
       this.mCache.removeAll(paramProxyListener);
       batchDelete(paramProxyListener);
+      QLog.d("ColorNoteProxy", 1, new Object[] { "[deleteAllColorNote] delete all, extra: ", Integer.valueOf(paramInt), ", size: ", Integer.valueOf(paramProxyListener.size()) });
       return paramProxyListener;
     }
     for (;;)
@@ -223,6 +226,7 @@ public class ColorNoteDataServiceImpl
       synchronized (CACHE_LOCK)
       {
         this.mCache.remove(paramColorNote);
+        QLog.d("ColorNoteProxy", 1, new Object[] { "[deleteColorNote] delete: ", paramColorNote });
         ThreadManagerV2.excute(new ColorNoteDataServiceImpl.2(this, paramColorNote), 32, null, false);
         return;
       }
@@ -232,27 +236,31 @@ public class ColorNoteDataServiceImpl
   public List<ColorNote> extraTypeFilter(List<ColorNote> paramList, int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    synchronized (CACHE_LOCK)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ColorNote localColorNote = (ColorNote)paramList.next();
-        if (localColorNote.mExtra == paramInt) {
-          localArrayList.add(localColorNote);
-        }
+      ColorNote localColorNote = (ColorNote)paramList.next();
+      if (localColorNote.mExtra == paramInt) {
+        localArrayList.add(localColorNote);
       }
-      return localArrayList;
     }
-    for (;;)
-    {
-      throw paramList;
-    }
+    return localArrayList;
   }
   
   boolean filterColorNote(ColorNote paramColorNote)
   {
-    return (!this.mCache.isEmpty()) && (findColorNoteByKey(paramColorNote.getUniKey(), paramColorNote.mExtra) != null);
+    for (;;)
+    {
+      synchronized (CACHE_LOCK)
+      {
+        if ((!this.mCache.isEmpty()) && (findColorNoteByKey(paramColorNote.getUniKey(), paramColorNote.mExtra) != null))
+        {
+          bool = true;
+          return bool;
+        }
+      }
+      boolean bool = false;
+    }
   }
   
   public ColorNote findColorNoteByKey(String paramString)
@@ -305,21 +313,12 @@ public class ColorNoteDataServiceImpl
   
   public final List<ColorNote> getColorNotes(boolean paramBoolean)
   {
-    try
-    {
-      List localList = getColorNotes(paramBoolean, 0);
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return getColorNotes(paramBoolean, 0);
   }
   
   public List<ColorNote> getColorNotes(boolean paramBoolean, int paramInt)
   {
-    try
+    synchronized (CACHE_LOCK)
     {
       if ((this.mCache.isEmpty()) && (paramBoolean))
       {
@@ -331,7 +330,6 @@ public class ColorNoteDataServiceImpl
       List localList = extraTypeFilter(this.mCache, paramInt);
       return localList;
     }
-    finally {}
   }
   
   public final int getCurrentColorNoteCount()
@@ -350,79 +348,57 @@ public class ColorNoteDataServiceImpl
   
   public List<ColorNote> getVisiableColorNotes()
   {
-    try
-    {
-      List localList = getVisiableColorNotes(this.mCache);
-      return localList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return getVisiableColorNotes(this.mCache);
   }
   
   public List<ColorNote> getVisiableColorNotes(List<ColorNote> paramList)
   {
-    try
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    label107:
+    synchronized (CACHE_LOCK)
     {
-      ArrayList localArrayList = new ArrayList();
       if (!paramList.isEmpty())
       {
         i = paramList.size() - 1;
         if (i >= 0)
         {
           ColorNote localColorNote = (ColorNote)paramList.get(i);
-          if ((localColorNote.isOpen()) && (!ColorNoteUtils.d(localColorNote))) {
-            break label102;
+          if ((localColorNote.isOpen()) && (!ColorNoteUtils.i(localColorNote))) {
+            break label107;
           }
           localArrayList.add(localColorNote);
-          break label102;
+          break label107;
         }
       }
-      Collections.sort(localArrayList, this.mComparator);
-      paramList = extraTypeFilter(localArrayList, 0);
-      return paramList;
-    }
-    finally
-    {
-      for (;;)
-      {
-        int i;
-        for (;;)
-        {
-          throw paramList;
-        }
-        label102:
-        i -= 1;
-      }
+      Collections.sort(localArrayList, mComparator);
+      return extraTypeFilter(localArrayList, 0);
     }
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
   {
     this.mAppRuntime = paramAppRuntime;
-    if (QLog.isColorLevel()) {
-      QLog.e("ColorNoteProxy", 2, "init ~~ ");
-    }
     this.mEntityManager = paramAppRuntime.getEntityManagerFactory().createEntityManager();
     List localList = this.mEntityManager.query(ColorNote.class, true, null, null, null, null, null, null);
     if ((localList != null) && (!localList.isEmpty()))
     {
       this.mCache = localList;
       ColorNoteSmallScreenUtil.a(paramAppRuntime, false, false);
+      QLog.d("ColorNoteProxy", 1, new Object[] { "[onCreate] colorNotes.size(query from db): ", Integer.valueOf(localList.size()) });
+      paramAppRuntime = localList.iterator();
+      while (paramAppRuntime.hasNext()) {
+        QLog.d("ColorNoteProxy", 1, new Object[] { "[onCreate] init note: ", ((ColorNote)paramAppRuntime.next()).toString() });
+      }
     }
     paramAppRuntime = ColorNoteConfigProcessor.a();
     if ((paramAppRuntime != null) && (paramAppRuntime.a() != -1))
     {
       ColorNoteConstants.a = paramAppRuntime.a();
-      if (QLog.isColorLevel())
-      {
-        paramAppRuntime = new StringBuilder();
-        paramAppRuntime.append("init MAX_COUNT ");
-        paramAppRuntime.append(ColorNoteConstants.a);
-        QLog.e("ColorNoteConfigProcessor", 2, paramAppRuntime.toString());
-      }
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("init MAX_COUNT ");
+      paramAppRuntime.append(ColorNoteConstants.a);
+      QLog.d("ColorNoteConfigProcessor", 1, paramAppRuntime.toString());
     }
     ColorNoteSmallScreenUtil.a(MobileQQ.getContext(), 3, true);
   }
@@ -458,7 +434,11 @@ public class ColorNoteDataServiceImpl
   @Deprecated
   public void setCache(List<ColorNote> paramList)
   {
-    this.mCache = paramList;
+    synchronized (CACHE_LOCK)
+    {
+      this.mCache = paramList;
+      return;
+    }
   }
   
   public void setEntityManager(EntityManager paramEntityManager)
@@ -468,13 +448,12 @@ public class ColorNoteDataServiceImpl
   
   public void setUpcomingColorNoteExtLong(ColorNote paramColorNote)
   {
-    Object localObject2 = this.mCache;
     synchronized (CACHE_LOCK)
     {
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      Iterator localIterator = this.mCache.iterator();
+      while (localIterator.hasNext())
       {
-        ColorNote localColorNote = (ColorNote)((Iterator)localObject2).next();
+        ColorNote localColorNote = (ColorNote)localIterator.next();
         if (localColorNote.equals(paramColorNote))
         {
           localColorNote.mExtLong |= 1L;
@@ -587,15 +566,15 @@ public class ColorNoteDataServiceImpl
   
   public boolean updateRecentNote(String paramString, ColorNote paramColorNote)
   {
-    List localList = this.mCache;
     ArrayList localArrayList = new ArrayList();
     synchronized (CACHE_LOCK)
     {
+      List localList = this.mCache;
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
         ColorNote localColorNote = (ColorNote)localIterator.next();
-        if (ColorNoteUtils.b(localColorNote)) {
+        if (ColorNoteUtils.d(localColorNote)) {
           localArrayList.add(localColorNote);
         }
       }
@@ -617,7 +596,7 @@ public class ColorNoteDataServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.api.impl.ColorNoteDataServiceImpl
  * JD-Core Version:    0.7.0.1
  */

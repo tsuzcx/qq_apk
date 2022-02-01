@@ -42,7 +42,6 @@ import com.tencent.viola.ui.dom.DomObjectWaterfallList;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
 import com.tencent.viola.utils.ViolaUtils;
-import com.tencent.viola.vinstance.VInstanceManager;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
@@ -67,6 +66,7 @@ public class ViolaInstance
   private boolean compatMode;
   private String currentVInstanceId;
   private boolean enableLayerType = true;
+  private boolean hasPageSuccess;
   private boolean isDestroy;
   private boolean isGlobalMode;
   private boolean isResume;
@@ -117,19 +117,20 @@ public class ViolaInstance
   private int mWidth;
   private VComponentContainer preCreateBodyRootComp;
   private View preCreateBodyView;
+  private String runtimeName;
   private volatile boolean supportNativeVue;
   private int transformCount;
   
-  public ViolaInstance(Application paramApplication, String paramString)
+  public ViolaInstance(Application paramApplication, String paramString1, String paramString2)
   {
-    this(paramApplication, null, null, null, 0L, paramString);
+    this(paramApplication, null, null, null, 0L, paramString1, paramString2);
     this.isGlobalMode = true;
   }
   
-  public ViolaInstance(Application paramApplication, WeakReference paramWeakReference1, WeakReference paramWeakReference2, Object paramObject, long paramLong, String paramString)
+  public ViolaInstance(Application paramApplication, WeakReference paramWeakReference1, WeakReference paramWeakReference2, Object paramObject, long paramLong, String paramString1, String paramString2)
   {
     pageStart = System.currentTimeMillis();
-    this.mUrl = paramString;
+    this.mUrl = paramString1;
     ViolaSDKManager.getInstance().setCurrentViolaInstance(this);
     this.mContextReference = paramWeakReference1;
     this.mFragmentReference = paramWeakReference2;
@@ -140,7 +141,8 @@ public class ViolaInstance
     ViolaLogUtils.d("ViolaInstance", paramWeakReference1.toString());
     init();
     ViolaEnvironment.sApplication = paramApplication;
-    detectCompatMode(paramString);
+    detectCompatMode(paramString1);
+    setRuntimeName(paramString2);
   }
   
   private void addRealBody(VComponentContainer paramVComponentContainer)
@@ -159,20 +161,7 @@ public class ViolaInstance
   
   private void dealReportWhenDestroy()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(ViolaEnvironment.JS_ERROR_AFTER_RENDER, Integer.toString(this.mJsErrorCountRunning));
-    localHashMap.putAll(getReportCommonData());
-    IReportDelegate localIReportDelegate = ViolaSDKManager.getInstance().getReportDelegate();
-    if (localIReportDelegate != null) {
-      localIReportDelegate.reportRunningData(localHashMap, this.mUrl);
-    }
-    ViolaReportManager.getInstance().postDataToBeacon("actKanDianViolaJsError", localHashMap);
-    if ((!this.mIsReportEnded) && (!this.mReportDataMap.isEmpty()))
-    {
-      this.mIsReportEnded = true;
-      this.mReportDataMap.putAll(getReportCommonData());
-      ViolaReportManager.getInstance().postDataToBeacon("actKanDianViolaData", this.mReportDataMap);
-    }
+    ViolaSDKManager.getInstance().postOnThreadPool(new ViolaInstance.5(this));
   }
   
   private void destroyView(View paramView)
@@ -235,8 +224,13 @@ public class ViolaInstance
   private HashMap<String, String> getReportCommonData()
   {
     HashMap localHashMap = new HashMap();
-    if ((ViolaSDKManager.getInstance().getReportDelegate() != null) && (ViolaSDKManager.getInstance().getReportDelegate().getBaseReportData(this.mUrl) != null)) {
-      localHashMap.putAll(ViolaSDKManager.getInstance().getReportDelegate().getBaseReportData(this.mUrl));
+    Object localObject = ViolaSDKManager.getInstance().getReportDelegate();
+    if (localObject != null)
+    {
+      localObject = ((IReportDelegate)localObject).getBaseReportData(this.mUrl);
+      if (localObject != null) {
+        localHashMap.putAll((Map)localObject);
+      }
     }
     localHashMap.put(ViolaEnvironment.COMMON_OPERATION_VERSION, Build.VERSION.RELEASE);
     localHashMap.put(ViolaEnvironment.COMMON_PHONE_TYPE, Build.MODEL);
@@ -266,6 +260,23 @@ public class ViolaInstance
     return true;
   }
   
+  private void onPageSuccess()
+  {
+    if (this.hasPageSuccess) {
+      return;
+    }
+    this.hasPageSuccess = true;
+    if (!this.mRendered)
+    {
+      ViolaLogUtils.e("ViolaInstance", "violaInstance pageEndMonitor end!");
+      pageEndMonitor();
+    }
+    this.mRendered = true;
+    if (this.isResume) {
+      this.mRootComp.onActivityResume();
+    }
+  }
+  
   private void onRootCompCreateInNativeVueMode(VComponentContainer paramVComponentContainer, boolean paramBoolean)
   {
     if (paramVComponentContainer != null)
@@ -281,6 +292,7 @@ public class ViolaInstance
         return;
       }
       addRealBody(paramVComponentContainer);
+      onPageSuccess();
     }
   }
   
@@ -298,15 +310,7 @@ public class ViolaInstance
       } else {
         this.mRenderContainer.addView((View)paramVComponentContainer.getRealView().getParent());
       }
-      if (!this.mRendered)
-      {
-        ViolaLogUtils.e("ViolaInstance", "violaInstance pageEndMonitor end!");
-        pageEndMonitor();
-      }
-      this.mRendered = true;
-      if (this.isResume) {
-        this.mRootComp.onActivityResume();
-      }
+      onPageSuccess();
     }
   }
   
@@ -495,9 +499,6 @@ public class ViolaInstance
   
   public Context getContext()
   {
-    if (this.isGlobalMode) {
-      return VInstanceManager.getInstance().getCurrentContext(this.currentVInstanceId);
-    }
     WeakReference localWeakReference = this.mContextReference;
     if (localWeakReference != null) {
       return (Context)localWeakReference.get();
@@ -664,6 +665,11 @@ public class ViolaInstance
     return this.mJsErrorCountRunning;
   }
   
+  public String getRuntimeName()
+  {
+    return this.runtimeName;
+  }
+  
   public String getUrl()
   {
     return this.mUrl;
@@ -755,6 +761,7 @@ public class ViolaInstance
         ((BaseModule)((Iterator)localObject).next()).onActivityBack();
       }
     }
+    ViolaLogUtils.d("ViolaInstance", "onViolaActivityBack");
     return false;
   }
   
@@ -780,6 +787,7 @@ public class ViolaInstance
         ((BaseModule)((Iterator)localObject).next()).onActivityCreate();
       }
     }
+    ViolaLogUtils.d("ViolaInstance", "onViolaActivityCreate");
   }
   
   public void onActivityDestroy()
@@ -810,6 +818,7 @@ public class ViolaInstance
     if (this.mViolaPageListener != null) {
       this.mViolaPageListener = null;
     }
+    ViolaLogUtils.d("ViolaInstance", "onViolaActivityDestroy");
   }
   
   public void onActivityPause()
@@ -834,6 +843,7 @@ public class ViolaInstance
         ((BaseModule)((Iterator)localObject).next()).onActivityPause();
       }
     }
+    ViolaLogUtils.d("ViolaInstance", "onViolaActivityPause");
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -871,6 +881,12 @@ public class ViolaInstance
         ((BaseModule)localObject2).onActivityResult(paramInt1, paramInt2, paramIntent);
       }
     }
+    paramIntent = new StringBuilder();
+    paramIntent.append("onViolaActivityResult, requestCode: ");
+    paramIntent.append(paramInt1);
+    paramIntent.append(", resultCode: ");
+    paramIntent.append(paramInt2);
+    ViolaLogUtils.d("ViolaInstance", paramIntent.toString());
   }
   
   public void onActivityResume()
@@ -896,6 +912,7 @@ public class ViolaInstance
         ((BaseModule)((Iterator)localObject).next()).onActivityResume();
       }
     }
+    ViolaLogUtils.d("ViolaInstance", "onViolaActivityResume");
   }
   
   public void onActivityStart()
@@ -920,6 +937,7 @@ public class ViolaInstance
         ((BaseModule)((Iterator)localObject).next()).onActivityStart();
       }
     }
+    ViolaLogUtils.d("ViolaInstance", "onViolaActivityStart");
   }
   
   public void onActivityStop()
@@ -944,6 +962,7 @@ public class ViolaInstance
         ((BaseModule)((Iterator)localObject).next()).onActivityStop();
       }
     }
+    ViolaLogUtils.d("ViolaInstance", "onViolaActivityStop");
   }
   
   public void onLayoutChangeCallBack(View paramView) {}
@@ -1236,6 +1255,11 @@ public class ViolaInstance
     this.mMeasuredExactly = paramBoolean;
   }
   
+  public void setRuntimeName(String paramString)
+  {
+    this.runtimeName = paramString;
+  }
+  
   public void setSize(int paramInt1, int paramInt2)
   {
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
@@ -1324,7 +1348,7 @@ public class ViolaInstance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaInstance
  * JD-Core Version:    0.7.0.1
  */

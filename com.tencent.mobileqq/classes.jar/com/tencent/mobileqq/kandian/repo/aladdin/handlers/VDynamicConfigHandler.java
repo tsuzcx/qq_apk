@@ -18,11 +18,6 @@ import org.json.JSONObject;
 public class VDynamicConfigHandler
   extends SimpleConfigHandler
 {
-  public static JSONObject a()
-  {
-    return a(299);
-  }
-  
   public static JSONObject a(int paramInt)
   {
     localJSONObject = new JSONObject();
@@ -54,7 +49,7 @@ public class VDynamicConfigHandler
   {
     try
     {
-      Object localObject1 = (String)RIJSPUtils.a("key_viola_dynamic", "");
+      Object localObject1 = (String)RIJSPUtils.b("key_viola_dynamic", "");
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return null;
       }
@@ -83,6 +78,11 @@ public class VDynamicConfigHandler
   
   public static JSONObject b()
   {
+    return a(299);
+  }
+  
+  public static JSONObject c()
+  {
     return a(291);
   }
   
@@ -96,7 +96,7 @@ public class VDynamicConfigHandler
       while (paramString.hasNext())
       {
         Object localObject2 = (Map.Entry)paramString.next();
-        localObject1 = (String)RIJSPUtils.a("key_viola_dynamic", "");
+        localObject1 = (String)RIJSPUtils.b("key_viola_dynamic", "");
         localObject2 = (String)((Map.Entry)localObject2).getValue();
         RIJSPUtils.a("key_viola_dynamic", localObject2);
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals(localObject1)) && (RIJQQAppInterfaceUtil.a() != null)) {
@@ -122,7 +122,7 @@ public class VDynamicConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.VDynamicConfigHandler
  * JD-Core Version:    0.7.0.1
  */

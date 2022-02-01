@@ -1,16 +1,9 @@
 package cooperation.qzone.networkedmodule;
 
 import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.hotpatch.PatchResolveForDalvik;
-import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.Arrays;
-import java.util.Locale;
 
 public class QzoneModuleLoader
 {
@@ -78,71 +71,13 @@ public class QzoneModuleLoader
     boolean bool = loadModuleDex(paramString1, paramContext, QzoneModuleConst.class.getClassLoader(), paramString2, paramQzoneModuleRecord, true);
     if (bool)
     {
-      if (Build.VERSION.SDK_INT < 21) {
-        try
-        {
-          if (!sIsLibLoaded)
-          {
-            bool = Build.CPU_ABI.toLowerCase(Locale.US).contains("x86");
-            if ((!bool) && (!SoLoadUtil.b()))
-            {
-              sIsLibLoaded = SoLoadUtilNew.loadSoByName(paramContext.getApplicationContext(), "qq_patch");
-            }
-            else
-            {
-              QLog.d("QzoneModuleLoader", 4, "is x86,so call loadNativeLibrary.");
-              sIsLibLoaded = SoLoadUtil.a(paramContext.getApplicationContext(), "qq_patch", 0, false, false);
-            }
-          }
-          if (sIsLibLoaded)
-          {
-            i = PatchResolveForDalvik.a(Arrays.asList(paramQzoneModuleRecord.mClassIds.split(";")), paramQzoneModuleRecord.mClassIdsCount);
-            break label213;
-          }
-          paramContext = new StringBuilder();
-          paramContext.append("resolvePatchClass failed: ");
-          paramContext.append(paramString1);
-          paramContext.append(" ,load so failed.");
-          QLog.e("QzoneModuleLoader", 1, paramContext.toString());
-          QzoneModuleReport.reportResolveClassRes(paramQzoneModuleRecord, "-1", (System.nanoTime() - l) / 1000000L);
-        }
-        catch (Throwable paramContext)
-        {
-          QLog.e("QzoneModuleLoader", 1, "catch an exception:", paramContext);
-          i = -1;
-          break label213;
-        }
-      }
-      int i = 0;
-      label213:
-      if (i != 0)
-      {
-        paramContext = new StringBuilder();
-        paramContext.append("resolvePatchClass failed: ");
-        paramContext.append(paramString1);
-        paramContext.append(" ,resolveRes: ");
-        paramContext.append(i);
-        paramContext.append(",classIdCount:");
-        paramContext.append(paramQzoneModuleRecord.mClassIdsCount);
-        QLog.e("QzoneModuleLoader", 1, paramContext.toString());
-        paramString1 = QzoneModuleInjector.unloadDexElement(QzoneModuleConst.class.getClassLoader(), 0);
-        l = (System.nanoTime() - l) / 1000000L;
-        QzoneModuleReport.reportResolveClassRes(paramQzoneModuleRecord, "0", l);
-        paramContext = new StringBuilder();
-        paramContext.append("----------unloadDexElement ");
-        paramContext.append(paramString1);
-        paramContext.append(" , cost:");
-        paramContext.append(l);
-        QLog.i("QzoneModuleLoader", 1, paramContext.toString());
-        return false;
-      }
       l = (System.nanoTime() - l) / 1000000L;
       paramString1 = new StringBuilder();
       paramString1.append("----------resolve class successful, cost:");
       paramString1.append(l);
       QLog.i("QzoneModuleLoader", 1, paramString1.toString());
       QzoneModuleReport.reportResolveClassRes(paramQzoneModuleRecord, "1", l);
-      return true;
+      return bool;
     }
     paramContext = new StringBuilder();
     paramContext.append("loadModule failed: ");
@@ -154,7 +89,7 @@ public class QzoneModuleLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleLoader
  * JD-Core Version:    0.7.0.1
  */

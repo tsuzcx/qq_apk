@@ -12,21 +12,21 @@ public class ComponentAccountSummary$MoreSpan
   extends ClickableSpan
   implements ClickableSpanPressed
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
+  AbsBaseArticleInfo b;
+  private int d = -1;
+  private TextPaint e;
   
   public ComponentAccountSummary$MoreSpan(ComponentAccountSummary paramComponentAccountSummary, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramAbsBaseArticleInfo;
+    this.d = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.a = paramBoolean;
+    TextPaint localTextPaint = this.e;
     if (localTextPaint != null) {
       updateDrawState(localTextPaint);
     }
@@ -34,28 +34,28 @@ public class ComponentAccountSummary$MoreSpan
   
   public void onClick(View paramView)
   {
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentAccountSummary.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 3);
+    RIJJumpUtils.a(this.c.getContext(), this.b, 3);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.e = paramTextPaint;
+    this.e.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.e;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = this.jdField_a_of_type_Int;
+    if (this.a) {
+      i = this.d;
     } else {
       i = 16119285;
     }
     paramTextPaint.bgColor = i;
-    this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+    this.e.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentAccountSummary.MoreSpan
  * JD-Core Version:    0.7.0.1
  */

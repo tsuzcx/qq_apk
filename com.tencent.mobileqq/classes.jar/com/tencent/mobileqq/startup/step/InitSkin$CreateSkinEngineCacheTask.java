@@ -188,7 +188,7 @@ class InitSkin$CreateSkinEngineCacheTask
     //   354: invokespecial 124	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   357: astore_1
     //   358: aload_1
-    //   359: invokestatic 129	com/tencent/common/config/AppSetting:a	()I
+    //   359: invokestatic 129	com/tencent/common/config/AppSetting:d	()I
     //   362: invokevirtual 133	java/io/ObjectOutputStream:writeInt	(I)V
     //   365: aload_1
     //   366: ldc 135
@@ -298,7 +298,7 @@ class InitSkin$CreateSkinEngineCacheTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitSkin.CreateSkinEngineCacheTask
  * JD-Core Version:    0.7.0.1
  */

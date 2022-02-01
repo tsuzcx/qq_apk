@@ -19,7 +19,7 @@ class CountDownClockNumLottieView$3
       QLog.d("CountDownClockNumLottieView", 2, localStringBuilder.toString());
     }
     if (paramLottieDrawable != null) {
-      this.a.a = paramLottieDrawable;
+      this.a.b = paramLottieDrawable;
     }
   }
 }

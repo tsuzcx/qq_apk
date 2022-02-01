@@ -5,14 +5,14 @@ import com.tencent.mtt.hippy.uimanager.HippyViewEvent;
 class HippyImageView$OnLoadStartEvent
   extends HippyViewEvent
 {
-  HippyImageView$OnLoadStartEvent(HippyImageView paramHippyImageView, String paramString)
+  HippyImageView$OnLoadStartEvent(HippyImageView paramHippyImageView)
   {
-    super(paramString);
+    super("onLoadStart");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.image.HippyImageView.OnLoadStartEvent
  * JD-Core Version:    0.7.0.1
  */

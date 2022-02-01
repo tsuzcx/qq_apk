@@ -26,17 +26,12 @@ public class BrowserBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.G;
-  }
+  public static final int a = BannerTypeCollections.H;
   
   public BrowserBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public int a()
@@ -49,8 +44,8 @@ public class BrowserBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("BrowserBar", 2, "initBrowserBar");
     }
-    paramBanner = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).inflate(2131558584, null);
-    paramBanner.findViewById(2131362501).setVisibility(8);
+    paramBanner = LayoutInflater.from(this.f).inflate(2131624142, null);
+    paramBanner.findViewById(2131428110).setVisibility(8);
     return paramBanner;
   }
   
@@ -67,25 +62,25 @@ public class BrowserBannerProcessor
       }
       if (paramMessage.what == 1134042)
       {
-        paramBanner.a.setVisibility(8);
+        paramBanner.c.setVisibility(8);
         return;
       }
-      Object localObject = (TextView)paramBanner.a.findViewById(2131362504);
+      Object localObject = (TextView)paramBanner.c.findViewById(2131428113);
       if (((paramMessage.obj instanceof Bundle)) && (localObject != null))
       {
         paramMessage = (Bundle)paramMessage.obj;
         String str = (String)paramMessage.getCharSequence("tips");
         int i = paramMessage.getInt("icon");
         if (i != -1) {
-          ((ImageView)paramBanner.a.findViewById(2131362503)).setImageResource(i);
+          ((ImageView)paramBanner.c.findViewById(2131428112)).setImageResource(i);
         }
         if (!TextUtils.isEmpty(str))
         {
           ((TextView)localObject).setText(str);
-          paramBanner.a.setOnClickListener(new BrowserBannerProcessor.1(this, paramMessage));
-          paramBanner.a.findViewById(2131362501).setVisibility(0);
-          this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
-          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, paramMessage.getInt("timeout", 120000));
+          paramBanner.c.setOnClickListener(new BrowserBannerProcessor.1(this, paramMessage));
+          paramBanner.c.findViewById(2131428110).setVisibility(0);
+          this.g.removeMessages(1000);
+          this.g.sendEmptyMessageDelayed(1000, paramMessage.getInt("timeout", 120000));
         }
       }
       return;
@@ -101,27 +96,27 @@ public class BrowserBannerProcessor
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b() {}
+  public void d() {}
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1000) {
-      BannerManager.a().a(jdField_a_of_type_Int, 0, null);
+      BannerManager.a().a(a, 0, null);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BrowserBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

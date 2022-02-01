@@ -10,7 +10,6 @@ public class ApolloActionPackage
   public static final int PACKAGE_ID_3D_SEGMENT = 300;
   public static final int PACKAGE_ID_BATTLE_GAME = 10;
   public static final int PACKAGE_ID_BATTLE_GAME_3D = 302;
-  public static final int PACKAGE_ID_CMS = 9;
   public static final int PACKAGE_ID_COLLECT = 4;
   public static final int PACKAGE_ID_DOUBLE = 1;
   public static final int PACKAGE_ID_DOUBLE_3D = 301;
@@ -19,6 +18,8 @@ public class ApolloActionPackage
   @Deprecated
   public static final int PACKAGE_ID_GAME = 100;
   public static final int PACKAGE_ID_GUIDE = 400;
+  public static final int PACKAGE_ID_MEME = 9;
+  public static final int PACKAGE_ID_MEME_3D = 303;
   public static final int PACKAGE_ID_RECOMMEND = 8;
   public static final int PACKAGE_ID_SINGLE = 0;
   public static final int PACKAGE_ID_SINGLE_3D = 300;
@@ -65,7 +66,7 @@ public class ApolloActionPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.model.ApolloActionPackage
  * JD-Core Version:    0.7.0.1
  */

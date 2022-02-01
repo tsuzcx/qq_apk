@@ -15,13 +15,13 @@ class EditTroopMemberNickService$6
     {
       ColorClearableEditText localColorClearableEditText = (ColorClearableEditText)this.a.a;
       localColorClearableEditText.setCustomCloth(paramInt2, true);
-      EditTroopMemberNickService.a(this.a).updateEditTextAndNum(localColorClearableEditText.getText().toString());
+      EditTroopMemberNickService.d(this.a).updateEditTextAndNum(localColorClearableEditText.getText().toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.6
  * JD-Core Version:    0.7.0.1
  */

@@ -22,14 +22,14 @@ class WebIPCOperator$5
       }
       Object localObject = new Bundle();
       this.a.a((Bundle)localObject, 1001);
-      localRequestItem.a.putBundle("response", (Bundle)localObject);
+      localRequestItem.b.putBundle("response", (Bundle)localObject);
       this.a.a(new WebIPCOperator.5.1(this, localRequestItem));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.WebIPCOperator.5
  * JD-Core Version:    0.7.0.1
  */

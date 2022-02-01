@@ -10,8 +10,8 @@ class CommentBottomBar$6
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      CommentBottomBar.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar);
+    if (!this.a) {
+      CommentBottomBar.g(this.b);
     }
   }
   

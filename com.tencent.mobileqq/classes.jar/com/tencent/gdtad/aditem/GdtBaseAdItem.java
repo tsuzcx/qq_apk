@@ -12,28 +12,28 @@ public class GdtBaseAdItem
   implements Parcelable
 {
   public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new GdtBaseAdItem.1();
-  public Bundle a;
-  public Class a;
   public String a;
-  public boolean a;
   public String b;
-  public boolean b;
   public String c;
   public String d;
   public String e;
-  public String f;
+  public boolean f;
+  public Class g;
+  public boolean h;
+  public String i;
+  public Bundle j;
   
   private GdtBaseAdItem()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.h = false;
   }
   
   protected GdtBaseAdItem(Parcel paramParcel)
   {
     boolean bool2 = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.h = false;
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
     this.e = paramParcel.readString();
@@ -42,15 +42,15 @@ public class GdtBaseAdItem
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-    this.jdField_a_of_type_JavaLangClass = ((Class)paramParcel.readSerializable());
+    this.f = bool1;
+    this.g = ((Class)paramParcel.readSerializable());
     boolean bool1 = bool2;
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     }
-    this.jdField_b_of_type_Boolean = bool1;
-    this.f = paramParcel.readString();
-    this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle(getClass().getClassLoader());
+    this.h = bool1;
+    this.i = paramParcel.readString();
+    this.j = paramParcel.readBundle(getClass().getClassLoader());
   }
   
   public static GdtBaseAdItem a()
@@ -87,19 +87,19 @@ public class GdtBaseAdItem
   
   public GdtBaseAdItem a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.j = paramBundle;
     return this;
   }
   
   public GdtBaseAdItem a(Class paramClass)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.g = paramClass;
     return this;
   }
   
   public GdtBaseAdItem a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     return this;
   }
   
@@ -117,7 +117,7 @@ public class GdtBaseAdItem
   
   public GdtBaseAdItem d(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
@@ -128,7 +128,7 @@ public class GdtBaseAdItem
   
   public GdtBaseAdItem e(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
@@ -140,7 +140,7 @@ public class GdtBaseAdItem
   
   public GdtBaseAdItem g(String paramString)
   {
-    this.f = paramString;
+    this.i = paramString;
     return this;
   }
   
@@ -148,9 +148,9 @@ public class GdtBaseAdItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GdtBaseAdItem|");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n");
     localStringBuilder.append(this.c);
     localStringBuilder.append("\n");
@@ -162,21 +162,21 @@ public class GdtBaseAdItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeSerializable(this.jdField_a_of_type_JavaLangClass);
-    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
-    paramParcel.writeString(this.f);
-    paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
+    paramParcel.writeByte((byte)this.f);
+    paramParcel.writeSerializable(this.g);
+    paramParcel.writeByte((byte)this.h);
+    paramParcel.writeString(this.i);
+    paramParcel.writeBundle(this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtBaseAdItem
  * JD-Core Version:    0.7.0.1
  */

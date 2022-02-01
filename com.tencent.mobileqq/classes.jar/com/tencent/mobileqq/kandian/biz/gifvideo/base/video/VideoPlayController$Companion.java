@@ -14,10 +14,30 @@ public final class VideoPlayController$Companion
 {
   public final int a()
   {
-    return VideoPlayController.d();
+    return VideoPlayController.x();
   }
   
-  public final void a()
+  public final void a(int paramInt)
+  {
+    VideoPlayController.f(paramInt);
+  }
+  
+  public final int b()
+  {
+    return VideoPlayController.y();
+  }
+  
+  public final int c()
+  {
+    return VideoPlayController.z();
+  }
+  
+  public final int d()
+  {
+    return VideoPlayController.A();
+  }
+  
+  public final void e()
   {
     Companion localCompanion = (Companion)this;
     localCompanion.a(Aladdin.getConfig(406).getIntegerFromString("play_config", localCompanion.b()));
@@ -27,12 +47,7 @@ public final class VideoPlayController$Companion
     QLog.d("VideoPlayController", 1, localStringBuilder.toString());
   }
   
-  public final void a(int paramInt)
-  {
-    VideoPlayController.f(paramInt);
-  }
-  
-  public final boolean a()
+  public final boolean f()
   {
     Companion localCompanion = (Companion)this;
     int i = localCompanion.d();
@@ -55,25 +70,10 @@ public final class VideoPlayController$Companion
     label56:
     return false;
   }
-  
-  public final int b()
-  {
-    return VideoPlayController.e();
-  }
-  
-  public final int c()
-  {
-    return VideoPlayController.f();
-  }
-  
-  public final int d()
-  {
-    return VideoPlayController.g();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController.Companion
  * JD-Core Version:    0.7.0.1
  */

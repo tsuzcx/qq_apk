@@ -16,15 +16,15 @@ class ChatHistoryFileActivity$MyFMObserver
   
   protected void a(int paramInt, long paramLong, String paramString)
   {
-    if ((((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
+    if ((((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt)) && (this.a.w != null)) {
+      this.a.w.sendEmptyMessage(102);
     }
   }
   
   protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    if ((((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
+    if ((((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt)) && (this.a.w != null)) {
+      this.a.w.sendEmptyMessage(102);
     }
   }
   
@@ -46,14 +46,14 @@ class ChatHistoryFileActivity$MyFMObserver
       QLog.d("ChatHistoryFIleActivity", 2, paramString2.toString());
     }
     paramString1 = this.a.app.getFileManagerDataCenter().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt2)) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(102);
+    if ((paramString1 != null) && (paramString1.nOpType == 6) && (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt2)) && (this.a.w != null)) {
+      this.a.w.sendEmptyMessage(102);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.MyFMObserver
  * JD-Core Version:    0.7.0.1
  */

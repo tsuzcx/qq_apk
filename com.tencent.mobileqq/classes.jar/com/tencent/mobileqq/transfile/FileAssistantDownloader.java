@@ -493,6 +493,7 @@ public class FileAssistantDownloader
     {
       f3 = this.application.getResources().getDisplayMetrics().density;
       i1 = this.application.getResources().getDisplayMetrics().densityDpi;
+      f4 = URLDrawableHelper.getRoundCorner();
       k = FilePicConstants.b;
       m = FilePicConstants.c;
       j = paramBitmap.getWidth();
@@ -502,20 +503,21 @@ public class FileAssistantDownloader
       n = FilePicURLDrawlableHelper.a;
       int i2 = FilePicURLDrawlableHelper.b;
       if (j < i2) {
-        break label134;
+        break label139;
       }
       if (i >= i2) {
-        break label310;
+        break label316;
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      label134:
-      label394:
+      label139:
+      label400:
       for (;;)
       {
         float f3;
         int i1;
+        float f4;
         int k;
         int m;
         int j;
@@ -524,16 +526,16 @@ public class FileAssistantDownloader
         int n;
         Object localObject1;
         Object localObject2;
-        float f4;
+        float f5;
         float f1;
         float f2;
         Bitmap localBitmap;
         continue;
-        label310:
+        label316:
         if ((j < n) && (i < n))
         {
           f1 = f3;
-          label327:
+          label333:
           j = (int)(j * f1 + 0.5F);
           i = (int)(i * f1 + 0.5F);
         }
@@ -555,14 +557,14 @@ public class FileAssistantDownloader
         }
       }
     }
-    f4 = localObject1 / localObject2;
+    f5 = localObject1 / localObject2;
     if (j > i)
     {
       f1 = k;
       f2 = i;
       f1 /= f2;
-      f1 = Math.max(f4, f1);
-      break label327;
+      f1 = Math.max(f5, f1);
+      break label333;
       if (j < i)
       {
         f1 = k / j;
@@ -581,17 +583,17 @@ public class FileAssistantDownloader
         j = (int)(j * f1 + 0.5F);
         i = j;
         if (j <= m) {
-          break label394;
+          break label400;
         }
         i = m;
-        break label394;
+        break label400;
       }
       localBitmap = Bitmap.createBitmap(j, i, URLDrawableHelper.mThumbConfig);
       localBitmap.setDensity(i1);
       new Canvas(localBitmap).drawBitmap(paramBitmap, null, new Rect(0, 0, j, i), (Paint)localObject3);
-      localObject3 = new RoundRectBitmap(localBitmap, 14.0F * f3);
+      localObject3 = new RoundRectBitmap(localBitmap, (f4 + 2.0F) * f3);
       return localObject3;
-      return new RoundRectBitmap(paramBitmap, 8.0F);
+      return new RoundRectBitmap(paramBitmap, URLDrawableHelper.getAioFilePicRoundCorner());
     }
   }
   
@@ -611,7 +613,7 @@ public class FileAssistantDownloader
       return null;
     }
     int i;
-    if (FileManagerUtil.a(paramURLDrawableHandler.path) == 2) {
+    if (FileManagerUtil.c(paramURLDrawableHandler.path) == 2) {
       i = 1;
     } else {
       i = 0;
@@ -634,7 +636,7 @@ public class FileAssistantDownloader
       if (paramFile != null) {
         paramFile = drawableToBitmap(paramFile);
       } else {
-        paramFile = drawableToBitmap(BaseApplicationImpl.getContext().getResources().getDrawable(2130844325));
+        paramFile = drawableToBitmap(BaseApplicationImpl.getContext().getResources().getDrawable(2130845642));
       }
     }
     else
@@ -645,8 +647,8 @@ public class FileAssistantDownloader
     if (paramFile == null)
     {
       paramFile = BaseApplicationImpl.getContext();
-      i = FileManagerUtil.a(paramURLDrawableHandler.path);
-      paramDownloadParams = drawableToBitmap(paramFile.getResources().getDrawable(FileManagerUtil.a(i)));
+      i = FileManagerUtil.c(paramURLDrawableHandler.path);
+      paramDownloadParams = drawableToBitmap(paramFile.getResources().getDrawable(FileManagerUtil.c(i)));
     }
     if (paramDownloadParams == null) {
       return null;
@@ -780,7 +782,7 @@ public class FileAssistantDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FileAssistantDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ class SendBottomBar$4
   
   public void onClick(View paramView)
   {
-    if (!SendBottomBar.b(this.a))
+    if (!SendBottomBar.h(this.a))
     {
       SendBottomBar.a(this.a, true);
       new Handler().postDelayed(new SendBottomBar.4.1(this), 800L);
-      SendBottomBar.b(this.a);
-      int i = SendBottomBar.a(this.a).b();
+      SendBottomBar.i(this.a);
+      int i = SendBottomBar.c(this.a).u();
       if (i != 1)
       {
         if (i != 5) {
@@ -29,11 +29,11 @@ class SendBottomBar$4
           default: 
             if (!AppNetConnInfo.isNetSupport())
             {
-              FMToastUtil.a(2131698210);
+              FMToastUtil.a(2131896111);
             }
             else
             {
-              int j = SendBottomBar.a(this.a).a();
+              int j = SendBottomBar.c(this.a).t();
               if (j == 1) {
                 i = 1;
               } else {
@@ -41,32 +41,32 @@ class SendBottomBar$4
               }
               if (j == 5) {
                 this.a.c();
-              } else if (i != 0) {
-                SendBottomBar.a(this.a, true);
+              } else if ((i == 0) && (!SendBottomBar.c(this.a).m)) {
+                SendBottomBar.o(this.a);
               } else {
-                SendBottomBar.h(this.a);
+                SendBottomBar.b(this.a, true);
               }
             }
             break;
           case 10: 
-            SendBottomBar.d(this.a);
+            SendBottomBar.k(this.a);
             break;
           case 9: 
             this.a.b();
             break;
           case 8: 
-            SendBottomBar.g(this.a);
+            SendBottomBar.n(this.a);
             break;
           case 7: 
-            SendBottomBar.c(this.a);
+            SendBottomBar.j(this.a);
             break;
           }
         } else {
-          SendBottomBar.f(this.a);
+          SendBottomBar.m(this.a);
         }
       }
       else {
-        SendBottomBar.e(this.a);
+        SendBottomBar.l(this.a);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -74,7 +74,7 @@ class SendBottomBar$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.4
  * JD-Core Version:    0.7.0.1
  */

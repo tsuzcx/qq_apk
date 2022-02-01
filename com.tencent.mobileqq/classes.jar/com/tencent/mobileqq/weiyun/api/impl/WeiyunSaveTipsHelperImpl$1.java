@@ -14,15 +14,15 @@ class WeiyunSaveTipsHelperImpl$1
   {
     if (Build.VERSION.SDK_INT >= 28)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, 2131697389, 1).b(this.jdField_a_of_type_Int);
+      QQToast.makeText(this.a.getApplicationContext(), 2, 2131895162, 1).show(this.b);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, 2131691300, 1).b(this.jdField_a_of_type_Int, 2131563083, new WeiyunSaveTipsHelperImpl.1.1(this));
+    QQToast.makeText(this.a.getApplicationContext(), 2, 2131888251, 1).showTouchableToast(this.b, 2131629721, new WeiyunSaveTipsHelperImpl.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiyunSaveTipsHelperImpl.1
  * JD-Core Version:    0.7.0.1
  */

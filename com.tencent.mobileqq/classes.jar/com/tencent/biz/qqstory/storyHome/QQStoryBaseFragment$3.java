@@ -9,7 +9,7 @@ class QQStoryBaseFragment$3
   
   public void run()
   {
-    this.this$0.a.dismiss();
+    this.this$0.n.dismiss();
   }
 }
 

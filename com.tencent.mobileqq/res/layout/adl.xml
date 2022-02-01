@@ -29,7 +29,7 @@
         <View style="@style/t7" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/x1" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingRight="15.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e17" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e17" />
                 <TextView android:textSize="14.0sp" android:textColor="@color/gm" android:id="@id/a1t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" />
             </LinearLayout>
             <com.tenpay.sdk.view.Switch android:id="@id/a1v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" />

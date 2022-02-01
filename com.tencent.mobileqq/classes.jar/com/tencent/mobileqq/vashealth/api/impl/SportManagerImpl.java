@@ -76,7 +76,7 @@ public class SportManagerImpl
       QLog.e("SportManager", 1, "registerReceiver error", localException);
     }
     HealthTimerConfigBean localHealthTimerConfigBean = HealthTimerConfigProcessor.a();
-    boolean bool = localHealthTimerConfigBean.a();
+    boolean bool = localHealthTimerConfigBean.n();
     if (bool)
     {
       Object localObject2 = new Intent("action_sport_timer1");
@@ -261,7 +261,7 @@ public class SportManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.SportManagerImpl
  * JD-Core Version:    0.7.0.1
  */

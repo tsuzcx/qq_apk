@@ -68,7 +68,7 @@ public class RedtouchHandler
         {
           paramObject.a(paramFromServiceMsg);
           paramObject.a(paramToServiceMsg);
-          paramObject.a();
+          paramObject.b();
         }
       }
     }
@@ -197,11 +197,11 @@ public class RedtouchHandler
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 8.7.0");
+      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 8.8.17");
     }
     cmd0x6f5.ReqBody localReqBody = new cmd0x6f5.ReqBody();
     localReqBody.uint32_qq_platform.set(1);
-    localReqBody.str_qq_version.set("8.7.0");
+    localReqBody.str_qq_version.set("8.8.17");
     sendPbReq(makeOIDBPkg("OidbSvc.cmd0x6f5", 1781, 0, localReqBody.toByteArray()));
   }
   
@@ -296,7 +296,7 @@ public class RedtouchHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.RedtouchHandler
  * JD-Core Version:    0.7.0.1
  */

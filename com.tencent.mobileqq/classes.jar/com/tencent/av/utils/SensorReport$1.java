@@ -17,7 +17,7 @@ final class SensorReport$1
       if (paramIntent.getAction() == null) {
         return;
       }
-      if (SensorReport.a.equals(paramIntent.getAction()))
+      if (SensorReport.n.equals(paramIntent.getAction()))
       {
         if (QLog.isDevelopLevel()) {
           QLog.w("SensorReport", 1, "H264_decode");
@@ -26,7 +26,7 @@ final class SensorReport$1
         paramIntent = paramIntent.getStringExtra("key");
         paramContext = paramIntent;
         if (paramIntent == null) {
-          paramContext = SensorReport.a;
+          paramContext = SensorReport.n;
         }
         UserAction.onUserAction(paramContext, true, -1L, -1L, localHashMap, true, true);
       }

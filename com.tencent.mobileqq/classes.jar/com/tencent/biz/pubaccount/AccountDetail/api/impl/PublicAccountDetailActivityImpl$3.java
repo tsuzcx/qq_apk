@@ -30,7 +30,7 @@ class PublicAccountDetailActivityImpl$3
       }
     }
     this.this$0.mHandler.sendEmptyMessage(2);
-    this.this$0.app.getMessageFacade().a(this.this$0.uin, 1008);
+    this.this$0.app.getMessageFacade().c(this.this$0.uin, 1008);
     this.this$0.publicAccountHandler.onUnfollowPublicAccount(this.this$0.accountDetail);
     PublicAccountDetailActivityImpl localPublicAccountDetailActivityImpl = this.this$0;
     localPublicAccountDetailActivityImpl.deleteAccount(localPublicAccountDetailActivityImpl.accountDetail);
@@ -41,7 +41,7 @@ class PublicAccountDetailActivityImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.3
  * JD-Core Version:    0.7.0.1
  */

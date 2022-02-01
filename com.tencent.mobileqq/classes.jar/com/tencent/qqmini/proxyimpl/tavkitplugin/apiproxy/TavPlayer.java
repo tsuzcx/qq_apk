@@ -6,6 +6,7 @@ import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Surface;
+import com.tencent.qqmini.proxyimpl.tavkitplugin.ITAVReleaseAble;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.logger.Logger;
@@ -18,54 +19,55 @@ import com.tencent.tavkit.composition.TAVComposition;
 import com.tencent.tavkit.composition.TAVSource;
 import com.tencent.tavkit.composition.builder.TAVCompositionBuilder;
 
-public class TavPlayer
+class TavPlayer
+  implements ITAVReleaseAble
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener;
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private CMTime jdField_a_of_type_ComTencentTavCoremediaCMTime;
-  private CMTimeRange jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
-  private IPlayer.PlayerListener jdField_a_of_type_ComTencentTavPlayerIPlayer$PlayerListener;
-  private OnCompositionUpdateListener jdField_a_of_type_ComTencentTavPlayerOnCompositionUpdateListener;
-  private Player jdField_a_of_type_ComTencentTavPlayerPlayer;
-  private TAVComposition jdField_a_of_type_ComTencentTavkitCompositionTAVComposition;
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private final String a;
+  private Context b;
+  private AudioManager c;
   private boolean d;
   private boolean e;
-  private boolean f;
+  private Player f;
+  private TAVComposition g;
+  private int h;
+  private int i;
+  private IPlayer.PlayerListener j;
+  private boolean k;
+  private CMTimeRange l;
+  private float m;
+  private CMTime n;
+  private OnCompositionUpdateListener o;
+  private Surface p;
+  private boolean q;
+  private boolean r;
+  private float s;
+  private int t;
+  private boolean u;
+  private AudioManager.OnAudioFocusChangeListener v;
   
-  public TavPlayer()
+  TavPlayer()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WS_TavPlayer@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_ComTencentTavCoremediaCMTime = CMTime.CMTimeZero;
+    this.a = localStringBuilder.toString();
     this.d = true;
     this.e = true;
-    this.jdField_b_of_type_Float = 1.0F;
-    this.jdField_c_of_type_Int = -16777216;
-    this.f = false;
-    this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new TavPlayer.4(this);
+    this.k = false;
+    this.m = 1.0F;
+    this.n = CMTime.CMTimeZero;
+    this.q = true;
+    this.r = true;
+    this.s = 1.0F;
+    this.t = -16777216;
+    this.u = false;
+    this.v = new TavPlayer.4(this);
   }
   
   @NonNull
   private Player a(PlayerItem paramPlayerItem, CMTime paramCMTime, boolean paramBoolean)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("newPlayer() called with: playerItem = [");
     localStringBuilder.append(paramPlayerItem);
@@ -75,39 +77,39 @@ public class TavPlayer
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("]");
     Logger.d(str, localStringBuilder.toString());
-    Log.d(this.jdField_a_of_type_JavaLangString, "newVersion, onSurfaceTextureAvailable: use surfaceTexture");
+    Log.d(this.a, "newVersion, onSurfaceTextureAvailable: use surfaceTexture");
     paramPlayerItem = new Player(paramPlayerItem);
-    paramPlayerItem.setPlayerListener(this.jdField_a_of_type_ComTencentTavPlayerIPlayer$PlayerListener);
-    paramPlayerItem.setLoop(this.jdField_c_of_type_Boolean);
-    paramPlayerItem.setRate(this.jdField_b_of_type_Float);
-    paramPlayerItem.setBgColor(this.jdField_c_of_type_Int);
-    paramPlayerItem.setPlayRange(this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange);
-    paramPlayerItem.setVolume(this.jdField_a_of_type_Float);
+    paramPlayerItem.setPlayerListener(this.j);
+    paramPlayerItem.setLoop(this.k);
+    paramPlayerItem.setRate(this.s);
+    paramPlayerItem.setBgColor(this.t);
+    paramPlayerItem.setPlayRange(this.l);
+    paramPlayerItem.setVolume(this.m);
     paramPlayerItem.seekToTime(paramCMTime);
-    new PlayerLayer(this.jdField_a_of_type_AndroidViewSurface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int).setPlayer(paramPlayerItem);
-    if ((paramBoolean) && (a())) {
+    new PlayerLayer(this.p, this.h, this.i).setPlayer(paramPlayerItem);
+    if ((paramBoolean) && (e())) {
       paramPlayerItem.play();
     }
-    paramCMTime = this.jdField_a_of_type_ComTencentTavPlayerOnCompositionUpdateListener;
+    paramCMTime = this.o;
     if (paramCMTime != null) {
       paramCMTime.onUpdated(paramPlayerItem, true);
     }
-    this.f = false;
+    this.u = false;
     return paramPlayerItem;
   }
   
   @NonNull
   private PlayerItem a(TAVComposition paramTAVComposition)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("buildPlayerItem() called with: tavComposition = [");
     localStringBuilder.append(paramTAVComposition);
     localStringBuilder.append("]");
     Logger.d((String)localObject, localStringBuilder.toString());
     paramTAVComposition = new TAVCompositionBuilder(paramTAVComposition);
-    paramTAVComposition.setVideoTracksMerge(this.d);
-    paramTAVComposition.setAudioTracksMerge(this.e);
+    paramTAVComposition.setVideoTracksMerge(this.q);
+    paramTAVComposition.setAudioTracksMerge(this.r);
     paramTAVComposition = paramTAVComposition.buildSource();
     localObject = new PlayerItem(paramTAVComposition.getAsset());
     ((PlayerItem)localObject).setVideoComposition(paramTAVComposition.getVideoComposition());
@@ -117,55 +119,66 @@ public class TavPlayer
   
   private void a(IPlayer.PlayerListener paramPlayerListener)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setPlayerListener() called with: playerListener = [");
     localStringBuilder.append(paramPlayerListener);
     localStringBuilder.append("],player = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTavPlayerPlayer);
+    localStringBuilder.append(this.f);
     Logger.d((String)localObject, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentTavPlayerIPlayer$PlayerListener = paramPlayerListener;
-    localObject = this.jdField_a_of_type_ComTencentTavPlayerPlayer;
+    this.j = paramPlayerListener;
+    localObject = this.f;
     if (localObject != null) {
       ((Player)localObject).setPlayerListener(paramPlayerListener);
     }
   }
   
-  private boolean a()
+  private boolean e()
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.b;
     if (localContext == null) {
       return true;
     }
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)localContext.getSystemService("audio"));
+    if (this.c == null) {
+      this.c = ((AudioManager)localContext.getSystemService("audio"));
     }
-    return this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 1) == 1;
+    return this.c.requestAudioFocus(this.v, 3, 1) == 1;
   }
   
-  private void d()
+  private void f()
   {
-    AudioManager localAudioManager = this.jdField_a_of_type_AndroidMediaAudioManager;
+    AudioManager localAudioManager = this.c;
     if (localAudioManager == null) {
       return;
     }
-    localAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+    localAudioManager.abandonAudioFocus(this.v);
   }
   
   public void a()
   {
-    Player localPlayer = this.jdField_a_of_type_ComTencentTavPlayerPlayer;
-    if ((localPlayer != null) && (!localPlayer.isReleased()))
+    try
     {
-      this.jdField_a_of_type_ComTencentTavCoremediaCMTime = this.jdField_a_of_type_ComTencentTavPlayerPlayer.position();
-      this.jdField_a_of_type_ComTencentTavPlayerPlayer.release();
+      String str = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release: player = ");
+      localStringBuilder.append(this.f);
+      Logger.d(str, localStringBuilder.toString());
+      if (this.f != null)
+      {
+        this.n = this.f.position();
+        f();
+        this.f.release();
+        this.f = null;
+      }
+      this.u = false;
+      return;
     }
-    this.jdField_a_of_type_AndroidViewSurface = null;
+    finally {}
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Player localPlayer = this.jdField_a_of_type_ComTencentTavPlayerPlayer;
+    Player localPlayer = this.f;
     if (localPlayer != null) {
       localPlayer.updateViewport(paramInt1, paramInt2);
     }
@@ -173,34 +186,34 @@ public class TavPlayer
   
   public void a(Surface paramSurface, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
-    a(this.jdField_a_of_type_ComTencentTavkitCompositionTAVComposition, this.jdField_a_of_type_ComTencentTavCoremediaCMTime, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentTavPlayerOnCompositionUpdateListener);
+    this.h = paramInt1;
+    this.i = paramInt2;
+    this.p = paramSurface;
+    a(this.g, this.n, this.e, this.o);
   }
   
   public void a(TavPlayer.PlayerListener paramPlayerListener)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setPlayerListener() called with: playerListener = [");
     localStringBuilder.append(paramPlayerListener);
     localStringBuilder.append("],player = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTavPlayerPlayer);
+    localStringBuilder.append(this.f);
     Logger.d(str, localStringBuilder.toString());
     a(new TavPlayer.2(this, paramPlayerListener));
   }
   
   public void a(CMTime paramCMTime)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("seekToTime() called with: cmTime = [");
     localStringBuilder.append(paramCMTime);
     localStringBuilder.append("],player = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTavPlayerPlayer);
+    localStringBuilder.append(this.f);
     Logger.d((String)localObject, localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_ComTencentTavPlayerPlayer;
+    localObject = this.f;
     if (localObject != null) {
       ((Player)localObject).seekToTime(paramCMTime);
     }
@@ -213,7 +226,7 @@ public class TavPlayer
   
   public void a(TAVComposition paramTAVComposition, CMTime paramCMTime, boolean paramBoolean, OnCompositionUpdateListener paramOnCompositionUpdateListener)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateComposition() called with: tavComposition = [");
     localStringBuilder.append(paramTAVComposition);
@@ -223,33 +236,33 @@ public class TavPlayer
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("]");
     Logger.d((String)localObject, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentTavkitCompositionTAVComposition = paramTAVComposition;
-    this.jdField_a_of_type_ComTencentTavCoremediaCMTime = paramCMTime;
-    this.jdField_a_of_type_ComTencentTavPlayerOnCompositionUpdateListener = paramOnCompositionUpdateListener;
+    this.g = paramTAVComposition;
+    this.n = paramCMTime;
+    this.o = paramOnCompositionUpdateListener;
     if (paramTAVComposition == null)
     {
-      this.f = false;
+      this.u = false;
       return;
     }
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidViewSurface == null)
+    this.e = paramBoolean;
+    if (this.p == null)
     {
-      this.f = false;
+      this.u = false;
       return;
     }
     paramTAVComposition = a(paramTAVComposition);
-    localObject = this.jdField_a_of_type_ComTencentTavPlayerPlayer;
+    localObject = this.f;
     if ((localObject != null) && (!((Player)localObject).isReleased()))
     {
-      localObject = this.jdField_a_of_type_ComTencentTavPlayerPlayer;
+      localObject = this.f;
       if (paramOnCompositionUpdateListener == null) {
         paramOnCompositionUpdateListener = new TavPlayer.3(this, paramCMTime);
       }
       ((Player)localObject).update(paramTAVComposition, paramCMTime, paramOnCompositionUpdateListener);
-      this.jdField_a_of_type_ComTencentTavPlayerOnCompositionUpdateListener = null;
+      this.o = null;
       return;
     }
-    this.jdField_a_of_type_ComTencentTavPlayerPlayer = a(paramTAVComposition, paramCMTime, paramBoolean);
+    this.f = a(paramTAVComposition, paramCMTime, paramBoolean);
   }
   
   public void a(TAVComposition paramTAVComposition, boolean paramBoolean)
@@ -259,44 +272,50 @@ public class TavPlayer
   
   public void b()
   {
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("pause: player = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentTavPlayerPlayer);
-      Logger.d(str, localStringBuilder.toString());
-      if (this.jdField_a_of_type_ComTencentTavPlayerPlayer != null)
-      {
-        d();
-        this.jdField_a_of_type_ComTencentTavPlayerPlayer.pause();
-      }
-      else
-      {
-        this.jdField_b_of_type_Boolean = false;
-      }
-      return;
-    }
-    finally {}
+    a();
+    this.p = null;
   }
   
   public void c()
   {
     try
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pause: player = ");
+      localStringBuilder.append(this.f);
+      Logger.d(str, localStringBuilder.toString());
+      if (this.f != null)
+      {
+        f();
+        this.f.pause();
+      }
+      else
+      {
+        this.e = false;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void d()
+  {
+    try
+    {
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("play: player = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentTavPlayerPlayer);
+      localStringBuilder.append(this.f);
       Logger.d(str, localStringBuilder.toString());
-      if (this.jdField_a_of_type_ComTencentTavPlayerPlayer != null)
+      if (this.f != null)
       {
-        if (a()) {
-          this.jdField_a_of_type_ComTencentTavPlayerPlayer.play();
+        if (e()) {
+          this.f.play();
         }
       }
       else {
-        this.jdField_b_of_type_Boolean = true;
+        this.e = true;
       }
       return;
     }
@@ -305,7 +324,7 @@ public class TavPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavPlayer
  * JD-Core Version:    0.7.0.1
  */

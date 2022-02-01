@@ -14,13 +14,13 @@ class ComponentComment$1
   
   public void onClick(View paramView)
   {
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentComment.getContext(), this.jdField_a_of_type_JavaLangString);
-    ReadInJoyFooterPresenter.a(1, RIJFeedsType.c(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo));
+    ReadInJoyUtils.a(this.c.getContext(), this.a);
+    ReadInJoyFooterPresenter.a(1, RIJFeedsType.k(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentComment.1
  * JD-Core Version:    0.7.0.1
  */

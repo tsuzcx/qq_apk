@@ -144,12 +144,12 @@ public class VipResources
   public static Drawable a(int paramInt1, int paramInt2, ZipResLoadListener paramZipResLoadListener)
   {
     if (a.containsKey(Integer.valueOf(paramInt1))) {
-      return ZipResDownloadManager.a().a("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone_vip_icon/qzone_yellow_icon_v8.zip", paramInt2, (String)a.get(Integer.valueOf(paramInt1)), paramZipResLoadListener);
+      return ZipResDownloadManager.a().c("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone_vip_icon/qzone_yellow_icon_v8.zip", paramInt2, (String)a.get(Integer.valueOf(paramInt1)), paramZipResLoadListener);
     }
     if (paramInt1 != 1) {
       return null;
     }
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130849598);
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130851282);
   }
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2, int paramInt3, ZipResLoadListener paramZipResLoadListener)
@@ -162,7 +162,7 @@ public class VipResources
     if (paramInt4 != 0)
     {
       if (paramInt4 == 1) {
-        ZipResDownloadManager.a().a(paramString, paramInt1, "border", paramZipResLoadListener);
+        ZipResDownloadManager.a().c(paramString, paramInt1, "border", paramZipResLoadListener);
       }
     }
     else {
@@ -175,13 +175,13 @@ public class VipResources
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("bottom_lv");
         localStringBuilder.append(paramInt2);
-        return localZipResDownloadManager.a(paramString, paramInt1, localStringBuilder.toString(), paramZipResLoadListener);
+        return localZipResDownloadManager.c(paramString, paramInt1, localStringBuilder.toString(), paramZipResLoadListener);
       case 5: 
       case 6: 
       case 8: 
-        return ZipResDownloadManager.a().a(paramString, paramInt1, "right", paramZipResLoadListener);
+        return ZipResDownloadManager.a().c(paramString, paramInt1, "right", paramZipResLoadListener);
       case 4: 
-        return ZipResDownloadManager.a().a(paramString, paramInt1, "head", paramZipResLoadListener);
+        return ZipResDownloadManager.a().c(paramString, paramInt1, "head", paramZipResLoadListener);
       }
     }
     return null;
@@ -340,7 +340,7 @@ public class VipResources
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.vipcomponent.util.VipResources
  * JD-Core Version:    0.7.0.1
  */

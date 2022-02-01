@@ -16,30 +16,30 @@ class AVGameBusinessVideoLayer$1
   public void run()
   {
     long l1;
-    if (!this.this$0.jdField_b_of_type_JavaUtilList.isEmpty())
+    if (!this.this$0.I.isEmpty())
     {
-      if (this.this$0.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView == null) {
+      if (this.this$0.L == null) {
         return;
       }
-      l1 = this.this$0.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getLongAccountUin();
+      l1 = this.this$0.J.getLongAccountUin();
     }
     for (;;)
     {
       int i;
-      synchronized (this.this$0.jdField_b_of_type_JavaUtilList)
+      synchronized (this.this$0.I)
       {
         HashSet localHashSet = new HashSet();
-        Object localObject2 = this.this$0.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
+        Object localObject2 = this.this$0.L;
         int j = localObject2.length;
         i = 0;
         Object localObject3;
         if (i < j)
         {
           localObject3 = localObject2[i];
-          if (!((AVGameVideoView)localObject3).a()) {
+          if (!((AVGameVideoView)localObject3).c()) {
             break label370;
           }
-          long l2 = Long.valueOf(((AVGameVideoView)localObject3).c()).longValue();
+          long l2 = Long.valueOf(((AVGameVideoView)localObject3).R()).longValue();
           if (!AVGameBusinessVideoLayer.a(this.this$0, l2))
           {
             ((AVGameVideoView)localObject3).a(null, 0);
@@ -49,26 +49,26 @@ class AVGameBusinessVideoLayer$1
           localHashSet.add(Long.valueOf(l2));
           break label370;
         }
-        localObject2 = this.this$0.jdField_b_of_type_JavaUtilList.iterator();
+        localObject2 = this.this$0.I.iterator();
         if (((Iterator)localObject2).hasNext())
         {
           localObject3 = (MemberVideoDisplayInfo)((Iterator)localObject2).next();
-          if ((l1 == ((MemberVideoDisplayInfo)localObject3).jdField_a_of_type_Long) && (((MemberVideoDisplayInfo)localObject3).c)) {
-            this.this$0.d = new Rect(((MemberVideoDisplayInfo)localObject3).f, ((MemberVideoDisplayInfo)localObject3).g, ((MemberVideoDisplayInfo)localObject3).f + ((MemberVideoDisplayInfo)localObject3).h, ((MemberVideoDisplayInfo)localObject3).g + ((MemberVideoDisplayInfo)localObject3).i);
+          if ((l1 == ((MemberVideoDisplayInfo)localObject3).a) && (((MemberVideoDisplayInfo)localObject3).m)) {
+            this.this$0.N = new Rect(((MemberVideoDisplayInfo)localObject3).i, ((MemberVideoDisplayInfo)localObject3).j, ((MemberVideoDisplayInfo)localObject3).i + ((MemberVideoDisplayInfo)localObject3).k, ((MemberVideoDisplayInfo)localObject3).j + ((MemberVideoDisplayInfo)localObject3).l);
           }
-          if ((((MemberVideoDisplayInfo)localObject3).jdField_a_of_type_Boolean) || (localHashSet.contains(Long.valueOf(((MemberVideoDisplayInfo)localObject3).jdField_a_of_type_Long)))) {
+          if ((((MemberVideoDisplayInfo)localObject3).g) || (localHashSet.contains(Long.valueOf(((MemberVideoDisplayInfo)localObject3).a)))) {
             continue;
           }
-          localObject3 = Long.toString(((MemberVideoDisplayInfo)localObject3).jdField_a_of_type_Long);
-          i = this.this$0.g();
-          AVGameVideoView localAVGameVideoView = this.this$0.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i];
-          localAVGameVideoView.a(this.this$0.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler.a((String)localObject3, (byte)1));
+          localObject3 = Long.toString(((MemberVideoDisplayInfo)localObject3).a);
+          i = this.this$0.G();
+          AVGameVideoView localAVGameVideoView = this.this$0.L[i];
+          localAVGameVideoView.a(this.this$0.P.a((String)localObject3, (byte)1));
           localAVGameVideoView.a((String)localObject3, 0);
-          localAVGameVideoView.a(this.this$0.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin());
+          localAVGameVideoView.a(this.this$0.J.getCurrentAccountUin());
           localAVGameVideoView.a(0);
           continue;
         }
-        this.this$0.b();
+        this.this$0.m();
         return;
       }
       return;

@@ -28,14 +28,14 @@ class EditTroopNameService$1
       Object localObject = new QQText(EditTroopNameService.a(this.a).getText(), 3);
       paramView = ((QQText)localObject).toString();
       localObject = ((QQText)localObject).trim();
-      if (((String)localObject).equals(EditTroopNameService.a(this.a)))
+      if (((String)localObject).equals(EditTroopNameService.b(this.a)))
       {
         EditTroopNameService.a(this.a).onFinish();
         return;
       }
       if ((!TextUtils.isEmpty(paramView)) && (TextUtils.isEmpty((CharSequence)localObject)))
       {
-        QQToast.a(EditTroopNameService.a(this.a).getContext(), EditTroopNameService.a(this.a).getString(2131693393), 0).a();
+        QQToast.makeText(EditTroopNameService.a(this.a).getContext(), EditTroopNameService.c(this.a).getString(2131890942), 0).show();
         return;
       }
       paramView = new Intent();
@@ -48,7 +48,7 @@ class EditTroopNameService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editservice.EditTroopNameService.1
  * JD-Core Version:    0.7.0.1
  */

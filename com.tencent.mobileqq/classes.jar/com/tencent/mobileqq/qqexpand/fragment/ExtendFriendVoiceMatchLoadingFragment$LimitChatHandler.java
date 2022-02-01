@@ -14,11 +14,11 @@ public class ExtendFriendVoiceMatchLoadingFragment$LimitChatHandler
   public static int c = 3;
   public static int d = 4;
   public static int e = 5200;
-  private final WeakReference<ExtendFriendVoiceMatchLoadingFragment> a;
+  private final WeakReference<ExtendFriendVoiceMatchLoadingFragment> f;
   
   public ExtendFriendVoiceMatchLoadingFragment$LimitChatHandler(ExtendFriendVoiceMatchLoadingFragment paramExtendFriendVoiceMatchLoadingFragment)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExtendFriendVoiceMatchLoadingFragment);
+    this.f = new WeakReference(paramExtendFriendVoiceMatchLoadingFragment);
   }
   
   public void handleMessage(Message paramMessage)
@@ -26,14 +26,14 @@ public class ExtendFriendVoiceMatchLoadingFragment$LimitChatHandler
     super.handleMessage(paramMessage);
     if (paramMessage.what == d)
     {
-      paramMessage = (ExtendFriendVoiceMatchLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramMessage = (ExtendFriendVoiceMatchLoadingFragment)this.f.get();
       if (paramMessage != null) {
-        ExtendFriendVoiceMatchLoadingFragment.b(paramMessage);
+        ExtendFriendVoiceMatchLoadingFragment.d(paramMessage);
       }
     }
-    else if (paramMessage.what == jdField_a_of_type_Int)
+    else if (paramMessage.what == a)
     {
-      paramMessage = (ExtendFriendVoiceMatchLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramMessage = (ExtendFriendVoiceMatchLoadingFragment)this.f.get();
       if (paramMessage != null)
       {
         QLog.e("ExtendFriendVoiceMatchLoadingFragment", 1, "limitchat matching time out from ui");
@@ -42,10 +42,10 @@ public class ExtendFriendVoiceMatchLoadingFragment$LimitChatHandler
     }
     else if (paramMessage.what == b)
     {
-      paramMessage = (ExtendFriendVoiceMatchLoadingFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramMessage = (ExtendFriendVoiceMatchLoadingFragment)this.f.get();
       if (paramMessage != null)
       {
-        ExtendFriendVoiceMatchLoadingFragment.c(paramMessage);
+        ExtendFriendVoiceMatchLoadingFragment.e(paramMessage);
         paramMessage = paramMessage.getBaseActivity();
         if (paramMessage != null) {
           paramMessage.finish();
@@ -61,7 +61,7 @@ public class ExtendFriendVoiceMatchLoadingFragment$LimitChatHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendVoiceMatchLoadingFragment.LimitChatHandler
  * JD-Core Version:    0.7.0.1
  */

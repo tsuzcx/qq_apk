@@ -48,22 +48,22 @@ public class HBEntryBannerView
   implements View.OnClickListener
 {
   public static int a = 10;
-  public static long a = -1L;
-  public static int b = -1;
-  private float jdField_a_of_type_Float = 2.62F;
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private HBEntryBannerData jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData;
-  private HBEntryBannerServlet jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerServlet;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private final ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private final RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private final ImageView c;
-  private final ImageView d;
-  private final ImageView e;
-  private final ImageView f;
+  public static long b = -1L;
+  public static int c = -1;
+  private HBEntryBannerServlet d;
+  private WeakReference<Activity> e;
+  private HBEntryBannerData f;
+  private float g = 2.62F;
+  private final ImageView h;
+  private final ImageView i;
+  private final ImageView j;
+  private final ImageView k;
+  private final ImageView l;
+  private final ImageView m;
+  private final TextView n;
+  private final TextView o;
+  private final RelativeLayout p;
+  private final RelativeLayout q;
   
   public HBEntryBannerView(Context paramContext)
   {
@@ -78,55 +78,39 @@ public class HBEntryBannerView
   public HBEntryBannerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131559219, this);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerServlet = new HBEntryBannerServlet();
+    inflate(paramContext, 2131625136, this);
+    this.d = new HBEntryBannerServlet();
     a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367964));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367968));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367973));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367967));
-    this.c = ((ImageView)findViewById(2131367965));
-    this.d = ((ImageView)findViewById(2131367969));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367972));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367966));
-    this.e = ((ImageView)findViewById(2131367970));
-    this.f = ((ImageView)findViewById(2131367971));
-    this.e.setOnClickListener(this);
-    this.f.setOnClickListener(this);
-    this.c.setOnClickListener(this);
-  }
-  
-  private RelativeLayout.LayoutParams a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.height = AIOUtils.b(32.0F, getResources());
-      localLayoutParams.addRule(1, 2131367973);
-      localLayoutParams.addRule(15);
-      return localLayoutParams;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.height = AIOUtils.b(32.0F, getResources());
-    localLayoutParams.addRule(13);
-    return localLayoutParams;
+    this.p = ((RelativeLayout)findViewById(2131434807));
+    this.q = ((RelativeLayout)findViewById(2131434811));
+    this.n = ((TextView)findViewById(2131434816));
+    this.o = ((TextView)findViewById(2131434810));
+    this.j = ((ImageView)findViewById(2131434808));
+    this.k = ((ImageView)findViewById(2131434812));
+    this.h = ((ImageView)findViewById(2131434815));
+    this.i = ((ImageView)findViewById(2131434809));
+    this.l = ((ImageView)findViewById(2131434813));
+    this.m = ((ImageView)findViewById(2131434814));
+    this.l.setOnClickListener(this);
+    this.m.setOnClickListener(this);
+    this.j.setOnClickListener(this);
   }
   
   private void a()
   {
     boolean bool;
-    if (Math.abs(System.currentTimeMillis() - jdField_a_of_type_Long) > jdField_a_of_type_Int * 60 * 1000) {
+    if (Math.abs(System.currentTimeMillis() - b) > a * 60 * 1000) {
       bool = true;
     } else {
       bool = false;
     }
-    if ((jdField_a_of_type_Long == -1L) || (bool))
+    if ((b == -1L) || (bool))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerServlet == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerServlet = new HBEntryBannerServlet();
+      if (this.d == null) {
+        this.d = new HBEntryBannerServlet();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerServlet.a();
-      jdField_a_of_type_Long = System.currentTimeMillis();
+      this.d.a();
+      b = System.currentTimeMillis();
     }
     if (QLog.isColorLevel())
     {
@@ -175,7 +159,7 @@ public class HBEntryBannerView
       {
         if (paramString.startsWith("mqqapi://"))
         {
-          paramString = JumpParser.a((BaseQQAppInterface)localObject1, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString);
+          paramString = JumpParser.a((BaseQQAppInterface)localObject1, (Context)this.e.get(), paramString);
           if (paramString != null) {
             paramString.a();
           }
@@ -200,20 +184,20 @@ public class HBEntryBannerView
       paramMap.append(paramString);
       QLog.d("HBEntryBannerView", 2, paramMap.toString());
     }
-    ((Map)localObject).put("active_id", this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.n());
+    ((Map)localObject).put("active_id", this.f.r());
     SpringHbReporter.a(ReportConstant.Event.m, 0, 1, (Map)localObject, paramString);
   }
   
   private void a(WeakReference<Activity> paramWeakReference)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.a();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.a();
+    int i1 = this.f.b();
+    Object localObject1 = this.f.c();
     Object localObject2;
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("playFireWorkAnimation fireWorkPlayCount = ");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(i1);
       ((StringBuilder)localObject2).append(",fireWorkImgUrl = ");
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.d("HBEntryBannerView", 2, ((StringBuilder)localObject2).toString());
@@ -239,12 +223,12 @@ public class HBEntryBannerView
       {
         localObject1 = new ApngOptions();
         ((ApngOptions)localObject1).a(URLDrawableHelper.TRANSPARENT);
-        ((ApngOptions)localObject1).a(i);
+        ((ApngOptions)localObject1).a(i1);
         paramWeakReference = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", (ApngOptions)localObject1, paramWeakReference);
-        this.d.setImageDrawable(paramWeakReference);
+        this.k.setImageDrawable(paramWeakReference);
         return;
       }
-      ((SpringFestivalEntryManager)localObject2).a(new HBEntryBannerView.1(this, (String)localObject1, i, (SpringFestivalEntryManager)localObject2));
+      ((SpringFestivalEntryManager)localObject2).a(new HBEntryBannerView.1(this, (String)localObject1, i1, (SpringFestivalEntryManager)localObject2));
     }
   }
   
@@ -253,17 +237,17 @@ public class HBEntryBannerView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130840330));
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.p.setBackgroundDrawable(getResources().getDrawable(2130841070));
+      this.n.setVisibility(0);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.p.setBackgroundColor(0);
+      this.n.setVisibility(8);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    this.o.setVisibility(0);
+    this.i.setVisibility(0);
+    TextView localTextView = this.o;
     String str;
     if (paramBoolean) {
       str = "#E9FEFF";
@@ -271,7 +255,23 @@ public class HBEntryBannerView
       str = "#F7E5C3";
     }
     localTextView.setTextColor(Color.parseColor(str));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(14.0F);
+    this.o.setTextSize(14.0F);
+  }
+  
+  private RelativeLayout.LayoutParams b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.height = AIOUtils.b(32.0F, getResources());
+      localLayoutParams.addRule(1, 2131434816);
+      localLayoutParams.addRule(15);
+      return localLayoutParams;
+    }
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    localLayoutParams.height = AIOUtils.b(32.0F, getResources());
+    localLayoutParams.addRule(13);
+    return localLayoutParams;
   }
   
   private void b(String paramString)
@@ -284,12 +284,12 @@ public class HBEntryBannerView
       ((StringBuilder)localObject).append(paramString);
       QLog.d("HBEntryBannerView", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    if (this.e.get() != null)
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      localObject = new Intent((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), QQBrowserActivity.class);
+      localObject = new Intent((Context)this.e.get(), QQBrowserActivity.class);
       BaseApplicationImpl.getApplication().startActivity(((Intent)localObject).putExtra("url", paramString));
     }
   }
@@ -297,49 +297,49 @@ public class HBEntryBannerView
   @SuppressLint({"UseCompatLoadingForDrawables"})
   public void a(WeakReference<Activity> paramWeakReference, HBEntryBannerData paramHBEntryBannerData, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData = paramHBEntryBannerData;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.f = paramHBEntryBannerData;
+    this.e = paramWeakReference;
     a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData == null) {
+    if (this.f == null) {
       return;
     }
     if (paramBoolean) {
       a("exp", null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.b() == 0)
+    if (this.f.p() == 0)
     {
-      this.c.setImageDrawable(getResources().getDrawable(2130840327));
-      this.jdField_a_of_type_Float = 3.42F;
+      this.j.setImageDrawable(getResources().getDrawable(2130841067));
+      this.g = 3.42F;
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.b() == 1)
+    else if (this.f.p() == 1)
     {
-      this.c.setImageDrawable(getResources().getDrawable(2130840326));
-      this.jdField_a_of_type_Float = 2.62F;
+      this.j.setImageDrawable(getResources().getDrawable(2130841066));
+      this.g = 2.62F;
     }
     if (QLog.isColorLevel())
     {
       paramHBEntryBannerData = new StringBuilder();
       paramHBEntryBannerData.append("updateHbEntryData:");
-      paramHBEntryBannerData.append(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.b());
+      paramHBEntryBannerData.append(this.f.d());
       QLog.d("HBEntryBannerView", 2, paramHBEntryBannerData.toString());
       paramHBEntryBannerData = new StringBuilder();
       paramHBEntryBannerData.append("updateHbEntryData hbBannerRatio:");
-      paramHBEntryBannerData.append(this.jdField_a_of_type_Float);
+      paramHBEntryBannerData.append(this.g);
       paramHBEntryBannerData.append(",isDesktopOpened: ");
       paramHBEntryBannerData.append(paramBoolean);
       paramHBEntryBannerData.append(", imgUrl:");
-      paramHBEntryBannerData.append(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.d());
+      paramHBEntryBannerData.append(this.f.f());
       QLog.d("HBEntryBannerView", 2, paramHBEntryBannerData.toString());
     }
-    if ((this.c.getMeasuredWidth() > 0) && (this.c.getMeasuredHeight() > 0))
+    if ((this.j.getMeasuredWidth() > 0) && (this.j.getMeasuredHeight() > 0))
     {
-      paramHBEntryBannerData = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
-      int i = this.c.getMeasuredWidth() - paramHBEntryBannerData.leftMargin - paramHBEntryBannerData.rightMargin;
-      int j = (int)(i / this.jdField_a_of_type_Float);
-      paramHBEntryBannerData.width = this.c.getMeasuredWidth();
-      paramHBEntryBannerData.height = (paramHBEntryBannerData.topMargin + j + paramHBEntryBannerData.bottomMargin);
-      this.c.setLayoutParams(paramHBEntryBannerData);
-      Object localObject = Utils.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.d(), i, j, true);
+      paramHBEntryBannerData = (RelativeLayout.LayoutParams)this.j.getLayoutParams();
+      int i1 = this.j.getMeasuredWidth() - paramHBEntryBannerData.leftMargin - paramHBEntryBannerData.rightMargin;
+      int i2 = (int)(i1 / this.g);
+      paramHBEntryBannerData.width = this.j.getMeasuredWidth();
+      paramHBEntryBannerData.height = (paramHBEntryBannerData.topMargin + i2 + paramHBEntryBannerData.bottomMargin);
+      this.j.setLayoutParams(paramHBEntryBannerData);
+      Object localObject = Utils.a(this.f.f(), i1, i2, true);
       if (QLog.isColorLevel())
       {
         QLog.d("HBEntryBannerView", 2, "updateHbEntryData setImageDrawable");
@@ -349,20 +349,20 @@ public class HBEntryBannerView
         localStringBuilder.append(",params.height = ");
         localStringBuilder.append(paramHBEntryBannerData.height);
         localStringBuilder.append(",img backBgWidth = ");
-        localStringBuilder.append(i);
+        localStringBuilder.append(i1);
         localStringBuilder.append(",img backBgHeiht = ");
-        localStringBuilder.append(j);
+        localStringBuilder.append(i2);
         QLog.d("HBEntryBannerView", 2, localStringBuilder.toString());
       }
-      this.c.setImageDrawable((Drawable)localObject);
-      this.d.setVisibility(8);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.a())
+      this.j.setImageDrawable((Drawable)localObject);
+      this.k.setVisibility(8);
+      if (this.f.a())
       {
-        localObject = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
+        localObject = (RelativeLayout.LayoutParams)this.k.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).width = paramHBEntryBannerData.width;
         ((RelativeLayout.LayoutParams)localObject).height = paramHBEntryBannerData.height;
-        this.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.d.setVisibility(0);
+        this.k.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.k.setVisibility(0);
         try
         {
           a(paramWeakReference);
@@ -374,63 +374,63 @@ public class HBEntryBannerView
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.b() == 1) {
+    if (this.f.p() == 1) {
       paramBoolean = true;
     } else {
       paramBoolean = false;
     }
     a(paramBoolean);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.i()))
+    if (!TextUtils.isEmpty(this.f.k()))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.i());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams(a(true));
+      this.n.setVisibility(0);
+      this.o.setText(this.f.k());
+      this.p.setVisibility(0);
+      this.q.setLayoutParams(b(true));
     }
-    else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.j()))
+    else if (!TextUtils.isEmpty(this.f.l()))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.j());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams(a(false));
+      this.n.setVisibility(8);
+      this.o.setText(this.f.l());
+      this.p.setVisibility(0);
+      this.q.setLayoutParams(b(false));
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.p.setVisibility(8);
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+    if (this.p.getVisibility() == 0)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setFocusable(true);
-      this.jdField_b_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.c() == 3)
+      this.o.setFocusable(true);
+      this.o.setFocusableInTouchMode(true);
+      if (this.f.q() == 3)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.j())) {
-          paramWeakReference = getResources().getString(2131699329);
+        this.n.setVisibility(8);
+        if (TextUtils.isEmpty(this.f.l())) {
+          paramWeakReference = getResources().getString(2131897346);
         } else {
-          paramWeakReference = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.j();
+          paramWeakReference = this.f.l();
         }
-        if (jdField_b_of_type_Int != -1)
+        if (c != -1)
         {
           paramHBEntryBannerData = new StringBuilder();
-          paramHBEntryBannerData.append(jdField_b_of_type_Int);
+          paramHBEntryBannerData.append(c);
           paramHBEntryBannerData.append(paramWeakReference);
           paramWeakReference = paramHBEntryBannerData.toString();
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(paramWeakReference);
+          this.o.setText(paramWeakReference);
         }
         else
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getText(2131699330));
+          this.o.setText(getResources().getText(2131897347));
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#E9FEFF"));
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(18.0F);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.o.setTextColor(Color.parseColor("#E9FEFF"));
+        this.o.setTextSize(18.0F);
+        this.i.setVisibility(8);
       }
     }
-    a(this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.f(), false);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.e(), true);
-    a(this.e, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.g(), false);
-    a(this.f, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData.h(), false);
+    a(this.i, this.f.h(), false);
+    a(this.h, this.f.g(), true);
+    a(this.l, this.f.i(), false);
+    a(this.m, this.f.j(), false);
     requestLayout();
     invalidate();
   }
@@ -438,54 +438,54 @@ public class HBEntryBannerView
   @SuppressLint({"NonConstantResourceId"})
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    int j = 2;
-    switch (i)
+    int i1 = paramView.getId();
+    int i2 = 2;
+    switch (i1)
     {
     default: 
-      i = -1;
+      i1 = -1;
       break;
-    case 2131367971: 
+    case 2131434814: 
       if (QLog.isColorLevel()) {
         QLog.d("HBEntryBannerView", 2, "onClick hb_applets_banner_lantern2");
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData;
-      i = j;
+      localObject = this.f;
+      i1 = i2;
       if (localObject != null)
       {
-        b(((HBEntryBannerData)localObject).l());
-        i = j;
+        b(((HBEntryBannerData)localObject).n());
+        i1 = i2;
       }
       break;
-    case 2131367970: 
+    case 2131434813: 
       if (QLog.isColorLevel()) {
         QLog.d("HBEntryBannerView", 2, "onClick hb_applets_banner_lantern1");
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData;
+      localObject = this.f;
       if (localObject != null) {
-        b(((HBEntryBannerData)localObject).k());
+        b(((HBEntryBannerData)localObject).m());
       }
-      i = 1;
+      i1 = 1;
       break;
-    case 2131367965: 
+    case 2131434808: 
       if (QLog.isColorLevel()) {
         QLog.d("HBEntryBannerView", 2, "onClick hb_applets_banner_background");
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerData;
+      localObject = this.f;
       if (localObject != null) {
-        a(((HBEntryBannerData)localObject).m());
+        a(((HBEntryBannerData)localObject).o());
       }
-      i = 3;
+      i1 = 3;
     }
     Object localObject = new HashMap();
-    ((Map)localObject).put("refer", String.valueOf(i));
+    ((Map)localObject).put("refer", String.valueOf(i1));
     a("clk", (Map)localObject);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.HBEntryBannerView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class VasADCountDownInmersionBannerManager$4$1
     if (VasADCountDownInmersionBannerManager.a(this.a.this$0) == null) {
       return;
     }
-    long l = (VasADCountDownInmersionBannerManager.a(this.a.this$0) - System.currentTimeMillis()) / 1000L;
+    long l = (VasADCountDownInmersionBannerManager.b(this.a.this$0) - System.currentTimeMillis()) / 1000L;
     if (QZLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -22,14 +22,14 @@ class VasADCountDownInmersionBannerManager$4$1
       localStringBuilder.append(" currentTime = ");
       localStringBuilder.append(l);
       localStringBuilder.append(" mCountDownTime = ");
-      localStringBuilder.append(VasADCountDownInmersionBannerManager.a(this.a.this$0));
+      localStringBuilder.append(VasADCountDownInmersionBannerManager.b(this.a.this$0));
       localStringBuilder.append(" millis = ");
-      localStringBuilder.append(VasADCountDownInmersionBannerManager.a(this.a.this$0) - System.currentTimeMillis());
+      localStringBuilder.append(VasADCountDownInmersionBannerManager.b(this.a.this$0) - System.currentTimeMillis());
       QZLog.i("QbossADCountDownInmersi", 2, localStringBuilder.toString());
     }
     if (l <= 0L)
     {
-      VasADCountDownInmersionBannerManager.a(this.a.this$0);
+      VasADCountDownInmersionBannerManager.c(this.a.this$0);
       return;
     }
     VasADCountDownInmersionBannerManager.a(this.a.this$0).setText(VasADCountDownInmersionBannerManager.a(this.a.this$0, l));
@@ -37,7 +37,7 @@ class VasADCountDownInmersionBannerManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADCountDownInmersionBannerManager.4.1
  * JD-Core Version:    0.7.0.1
  */

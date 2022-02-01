@@ -30,6 +30,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.view.menu.ShowableListMenu;
 import androidx.core.view.ViewCompat;
@@ -69,7 +70,6 @@ public class ListPopupWindow
   private boolean mForceIgnoreOutsideTouch = false;
   final Handler mHandler;
   private final ListPopupWindow.ListSelectorHider mHideSelector = new ListPopupWindow.ListSelectorHider(this);
-  private boolean mIsAnimatedFromAnchor = true;
   private AdapterView.OnItemClickListener mItemClickListener;
   private AdapterView.OnItemSelectedListener mItemSelectedListener;
   int mListItemExpandMaximum = 2147483647;
@@ -125,12 +125,12 @@ public class ListPopupWindow
   
   public ListPopupWindow(@NonNull Context paramContext)
   {
-    this(paramContext, null, 2131034749);
+    this(paramContext, null, R.attr.listPopupWindowStyle);
   }
   
   public ListPopupWindow(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034749);
+    this(paramContext, paramAttributeSet, R.attr.listPopupWindowStyle);
   }
   
   public ListPopupWindow(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt)

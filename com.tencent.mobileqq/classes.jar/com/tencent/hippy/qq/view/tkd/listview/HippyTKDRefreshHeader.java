@@ -95,9 +95,9 @@ public class HippyTKDRefreshHeader
   public int mPullDownToRefreshDistanceBetweenIconText = ImmersiveUtils.dpToPx(8.0F);
   public Drawable mPullDownToRefreshFailIcon;
   public Drawable mPullDownToRefreshSucIcon;
-  public String mPullDownToRefreshTextFail = ResourceUtil.getString(2131718166);
+  public String mPullDownToRefreshTextFail = ResourceUtil.getString(2131915644);
   public HippyTKDUISize mPullDownToRefreshTextFailTextSize = new HippyTKDUISize();
-  public String mPullDownToRefreshTextSuc = ResourceUtil.getString(2131718167);
+  public String mPullDownToRefreshTextSuc = ResourceUtil.getString(2131915645);
   public HippyTKDUISize mPullDownToRefreshTextSucTextSize = new HippyTKDUISize();
   public Drawable mRefreshDrawable;
   public int mRefreshOffset;
@@ -183,7 +183,7 @@ public class HippyTKDRefreshHeader
     this.hideAnimator.setEvaluator(new FloatEvaluator());
     this.hideAnimator.setInterpolator(new CurvedInterpolator(3));
     this.mCustomRefreshViewLayoutChangeListener = new HippyTKDRefreshHeader.2(this);
-    this.mDescriptionTextColor = ResourceUtil.getColor(2131167299);
+    this.mDescriptionTextColor = ResourceUtil.getColor(2131168338);
   }
   
   private String getStateStr(int paramInt)
@@ -793,7 +793,7 @@ public class HippyTKDRefreshHeader
           {
             if (this.mPullDownToRefreshSucIcon == null)
             {
-              localObject2 = ResourceUtil.getBitmap(2130851017);
+              localObject2 = ResourceUtil.getBitmap(2130853246);
               j = this.mCustomTipTextColor;
               if (j == 0) {
                 j = this.mColor;
@@ -806,7 +806,7 @@ public class HippyTKDRefreshHeader
           {
             if (this.mPullDownToRefreshFailIcon == null)
             {
-              localObject2 = ResourceUtil.getBitmap(2130851016);
+              localObject2 = ResourceUtil.getBitmap(2130853245);
               j = this.mCustomTipTextColor;
               if (j == 0) {
                 j = this.mColor;
@@ -822,7 +822,7 @@ public class HippyTKDRefreshHeader
             } else {
               j = 0;
             }
-            localDrawable = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130851015), j);
+            localDrawable = UIBitmapUtils.getColorImage(ResourceUtil.getBitmap(2130853244), j);
           }
           i3 = this.mCb.getWidth();
           i4 = ((Drawable)localObject2).getIntrinsicWidth();
@@ -1002,12 +1002,12 @@ public class HippyTKDRefreshHeader
   {
     this.mColorType = 3;
     if (paramInt2 == 0) {
-      this.refreshBgColor = ResourceUtil.getColor(2131167306);
+      this.refreshBgColor = ResourceUtil.getColor(2131168345);
     } else {
       this.refreshBgColor = paramInt2;
     }
     if (paramInt3 == 0) {
-      this.mTipsBgColor = ResourceUtil.getColor(2131167300);
+      this.mTipsBgColor = ResourceUtil.getColor(2131168339);
     } else {
       this.mTipsBgColor = paramInt3;
     }
@@ -1035,8 +1035,8 @@ public class HippyTKDRefreshHeader
   public void setRefreshBallColor(int paramInt)
   {
     this.mColorType = paramInt;
-    this.refreshBgColor = ResourceUtil.getColor(2131167306);
-    this.mTipsBgColor = ResourceUtil.getColor(2131167300);
+    this.refreshBgColor = ResourceUtil.getColor(2131168345);
+    this.mTipsBgColor = ResourceUtil.getColor(2131168339);
     paramInt = this.mColorType;
     if (paramInt != -1)
     {
@@ -1045,22 +1045,22 @@ public class HippyTKDRefreshHeader
         if (paramInt != 1)
         {
           if (paramInt == 2) {
-            this.mColor = ResourceUtil.getColor(2131167305);
+            this.mColor = ResourceUtil.getColor(2131168344);
           }
         }
         else {
-          this.mColor = ResourceUtil.getColor(2131167301);
+          this.mColor = ResourceUtil.getColor(2131168340);
         }
       }
       else {
-        this.mColor = ResourceUtil.getColor(2131167304);
+        this.mColor = ResourceUtil.getColor(2131168343);
       }
     }
     else
     {
-      this.mColor = ResourceUtil.getColor(2131167303);
-      this.refreshBgColor = ResourceUtil.getColor(2131167307);
-      this.mTipsBgColor = ResourceUtil.getColor(2131167300);
+      this.mColor = ResourceUtil.getColor(2131168342);
+      this.refreshBgColor = ResourceUtil.getColor(2131168346);
+      this.mTipsBgColor = ResourceUtil.getColor(2131168339);
     }
     paramInt = 0;
     while (paramInt < 3)
@@ -1363,7 +1363,7 @@ public class HippyTKDRefreshHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

@@ -44,106 +44,74 @@ public class QIdentifierCaptureView
   extends GLSurfaceView
   implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, SizeListener
 {
+  private GLSurfaceView.EGLContextFactory A = new QIdentifierCaptureView.1(this);
+  private Handler B;
+  private boolean C = false;
+  private volatile boolean D = false;
+  private boolean E = false;
+  private int F;
+  private int G;
+  private boolean H = false;
+  private boolean I;
+  private boolean J;
+  private volatile boolean K = false;
+  private volatile boolean L = false;
+  private boolean M = true;
+  private boolean N;
+  private ICamera O;
   protected int a;
-  protected SurfaceTexture a;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new QIdentifierCaptureView.1(this);
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  protected OrientationEventListener a;
-  private ICamera jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera;
-  public CaptureParam a;
-  public OutPreviewCallback a;
-  protected QIdentifierCaptureView.CameraPermissionListener a;
-  protected EglHandlerThread a;
-  protected TextureRender a;
-  protected Map<String, RenderBuffer> a;
-  public EGLConfig a;
-  public EGLContext a;
-  protected boolean a;
-  protected final float[] a;
   protected int b;
-  public boolean b;
   protected int c;
-  protected boolean c;
   protected int d;
-  protected boolean d;
   protected int e;
-  private boolean e;
   protected int f;
-  private volatile boolean f;
-  protected int g;
-  private boolean g;
-  protected int h;
-  private boolean h;
-  protected int i;
-  private boolean i;
+  protected QIdentifierCaptureView.CameraPermissionListener g;
+  protected boolean h = false;
+  public OutPreviewCallback i;
   protected int j;
-  private boolean j;
   protected int k;
-  private volatile boolean k;
-  private int jdField_l_of_type_Int;
-  private volatile boolean jdField_l_of_type_Boolean = false;
-  private int jdField_m_of_type_Int;
-  private boolean jdField_m_of_type_Boolean = true;
-  private boolean n;
+  protected SurfaceTexture l;
+  protected final float[] m = new float[16];
+  protected Map<String, RenderBuffer> n = new HashMap();
+  protected TextureRender o;
+  protected EglHandlerThread p;
+  public EGLConfig q = null;
+  public EGLContext r = null;
+  public CaptureParam s;
+  protected OrientationEventListener t;
+  protected int u = 90;
+  protected int v = 0;
+  public boolean w = true;
+  protected int x = 90;
+  protected boolean y = false;
+  protected boolean z = true;
   
   public QIdentifierCaptureView(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_i_of_type_Int = 90;
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_k_of_type_Int = 90;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_k_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = true;
-    setEGLContextFactory(this.jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory);
-    g();
+    setEGLContextFactory(this.A);
+    h();
   }
   
   public QIdentifierCaptureView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_i_of_type_Int = 90;
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_k_of_type_Int = 90;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_k_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = true;
-    setEGLContextFactory(this.jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory);
-    g();
+    setEGLContextFactory(this.A);
+    h();
   }
   
   private int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
     float f1 = paramInt1;
-    int i1 = c((int)(f1 * paramFloat));
+    int i1 = d((int)(f1 * paramFloat));
     float f2 = paramInt2;
-    int i2 = c((int)(f2 * paramFloat));
+    int i2 = d((int)(f2 * paramFloat));
     f1 = f2 * 1.0F / f1;
     f2 = paramInt4 * 1.0F / paramInt3;
     if (f1 > f2) {
-      i2 = c((int)(i1 * f2));
+      i2 = d((int)(i1 * f2));
     } else {
-      i1 = c((int)(i2 / f2));
+      i1 = d((int)(i2 / f2));
     }
     if (QLog.isColorLevel())
     {
@@ -168,7 +136,7 @@ public class QIdentifierCaptureView
     return new int[] { i1, i2 };
   }
   
-  private int c(int paramInt)
+  private int d(int paramInt)
   {
     int i2 = paramInt % 16;
     int i1 = paramInt;
@@ -182,15 +150,10 @@ public class QIdentifierCaptureView
     return i1;
   }
   
-  private void g()
+  private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera = new FaceCameraProxy();
-    this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera.a(this);
-  }
-  
-  protected int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.O = new FaceCameraProxy();
+    this.O.a(this);
   }
   
   protected int a(int paramInt)
@@ -202,7 +165,7 @@ public class QIdentifierCaptureView
   {
     int i2 = Build.VERSION.SDK_INT;
     int i1 = 0;
-    if ((i2 >= 23) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView$CameraPermissionListener != null))
+    if ((i2 >= 23) && (this.g != null))
     {
       i2 = ((Activity)getContext()).checkSelfPermission("android.permission.CAMERA");
       if (QLog.isColorLevel()) {
@@ -210,42 +173,35 @@ public class QIdentifierCaptureView
       }
       if (i2 != 0)
       {
-        if (this.jdField_k_of_type_Boolean) {
+        if (this.K) {
           break label88;
         }
-        this.jdField_k_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView$CameraPermissionListener.a();
+        this.K = true;
+        this.g.a();
         return;
       }
     }
     i1 = 1;
     label88:
-    if ((i1 != 0) || (this.jdField_l_of_type_Boolean))
+    if ((i1 != 0) || (this.L))
     {
       b();
       d();
     }
   }
   
-  protected void a(int paramInt)
-  {
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glViewport(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt, null, null);
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_d_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    Object localObject = a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.jdField_d_of_type_Int, 1.0F);
-    this.jdField_e_of_type_Int = localObject[0];
-    this.jdField_f_of_type_Int = localObject[1];
+    this.d = paramInt1;
+    this.c = paramInt2;
+    Object localObject = a(this.c, this.d, this.s.c, this.s.d, 1.0F);
+    this.e = localObject[0];
+    this.f = localObject[1];
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("key_aio_fbo");
-    ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
-    ((StringBuilder)localObject).append(this.jdField_f_of_type_Int);
-    CaptureParam.a = ((StringBuilder)localObject).toString();
+    ((StringBuilder)localObject).append(this.e);
+    ((StringBuilder)localObject).append(this.f);
+    CaptureParam.g = ((StringBuilder)localObject).toString();
     queueEvent(new QIdentifierCaptureView.2(this));
     if (QLog.isColorLevel())
     {
@@ -260,12 +216,7 @@ public class QIdentifierCaptureView
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera.a(paramBoolean);
-  }
-  
-  protected int b()
-  {
-    return this.jdField_b_of_type_Int;
+    this.O.a(paramBoolean);
   }
   
   protected int b(int paramInt)
@@ -275,91 +226,78 @@ public class QIdentifierCaptureView
   
   protected void b()
   {
-    if (!this.jdField_e_of_type_Boolean) {
+    if (!this.C) {
       return;
     }
-    if (this.jdField_f_of_type_Boolean) {
+    if (this.D) {
       return;
     }
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_l_of_type_Int = 0;
-    this.jdField_m_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera.a();
-    this.jdField_f_of_type_Boolean = true;
-  }
-  
-  protected int c()
-  {
-    int i1 = this.jdField_g_of_type_Int;
-    RenderBuffer localRenderBuffer = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(CaptureParam.a);
-    if (localRenderBuffer != null)
-    {
-      localRenderBuffer.bind();
-      synchronized (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture)
-      {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-        float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, localRenderBuffer.getWidth(), localRenderBuffer.getHeight());
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_g_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat);
-        QmcfManager.getInstance().setSTMatrix(this.jdField_a_of_type_ArrayOfFloat);
-        localRenderBuffer.unbind();
-        return localRenderBuffer.getTexId();
-      }
-    }
-    return i1;
+    this.E = false;
+    this.F = 0;
+    this.G = 0;
+    this.O.a();
+    this.D = true;
   }
   
   public void c()
   {
-    if (!this.jdField_e_of_type_Boolean) {
+    if (!this.C) {
       return;
     }
-    if (!this.jdField_f_of_type_Boolean) {
+    if (!this.D) {
       return;
     }
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera.b();
-    this.jdField_f_of_type_Boolean = false;
+    this.E = false;
+    this.O.b();
+    this.D = false;
+  }
+  
+  protected void c(int paramInt)
+  {
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glViewport(0, 0, this.a, this.b);
+    this.o.drawTexture(3553, paramInt, null, null);
   }
   
   public void d()
   {
-    if (!this.jdField_e_of_type_Boolean) {
+    if (!this.C) {
       return;
     }
-    if ((this.jdField_h_of_type_Boolean) && (this.jdField_f_of_type_Boolean) && ((!this.jdField_g_of_type_Boolean) || (this.jdField_l_of_type_Int != this.jdField_a_of_type_Int) || (this.jdField_m_of_type_Int != this.jdField_b_of_type_Int)))
+    if ((this.H) && (this.D) && ((!this.E) || (this.F != this.a) || (this.G != this.b)))
     {
       Object localObject;
-      if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.jdField_c_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.jdField_d_of_type_Int == 0) || (this.jdField_m_of_type_Boolean))
+      if ((this.s.c == 0) || (this.s.d == 0) || (this.M))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam;
-        ((CaptureParam)localObject).jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-        ((CaptureParam)localObject).jdField_d_of_type_Int = this.jdField_b_of_type_Int;
+        localObject = this.s;
+        ((CaptureParam)localObject).c = this.a;
+        ((CaptureParam)localObject).d = this.b;
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("startCameraPreview, clipWidth:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append(this.s.c);
         ((StringBuilder)localObject).append(", clipHeight:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam.jdField_d_of_type_Int);
+        ((StringBuilder)localObject).append(this.s.d);
         ((StringBuilder)localObject).append(", surfaceWidth:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append(", surfaceHeight:");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(this.b);
         QLog.d("QIdentifierCaptureView", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, null, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewOutPreviewCallback, true);
-      this.jdField_g_of_type_Boolean = true;
-      this.jdField_l_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_m_of_type_Int = this.jdField_b_of_type_Int;
+      this.O.a(this.l, null, this.i, true);
+      this.E = true;
+      this.F = this.a;
+      this.G = this.b;
     }
   }
   
   protected void e()
   {
-    this.jdField_a_of_type_AndroidViewOrientationEventListener = new QIdentifierCaptureView.3(this, getContext());
-    if (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation()) {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
+    this.t = new QIdentifierCaptureView.3(this, getContext());
+    if (this.t.canDetectOrientation()) {
+      this.t.enable();
     }
   }
   
@@ -368,47 +306,77 @@ public class QIdentifierCaptureView
     if (QLog.isColorLevel()) {
       QLog.d("QIdentifierCaptureView", 2, "onSurfaceDestroy");
     }
-    this.jdField_h_of_type_Boolean = false;
+    this.H = false;
     if (!MediaCodecUtil.b())
     {
-      localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      localObject = this.n.values().iterator();
       while (((Iterator)localObject).hasNext()) {
         ((RenderBuffer)((Iterator)localObject).next()).destroy();
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      GlUtil.deleteTexture(this.jdField_g_of_type_Int);
-      localObject = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+      this.n.clear();
+      GlUtil.deleteTexture(this.j);
+      localObject = this.l;
       if (localObject != null) {
         ((SurfaceTexture)localObject).release();
       }
-      localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+      localObject = this.o;
       if (localObject != null) {
         ((TextureRender)localObject).release();
       }
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    Object localObject = this.l;
     if (localObject != null) {
       ((SurfaceTexture)localObject).setOnFrameAvailableListener(null);
     }
     c();
   }
   
+  protected int g()
+  {
+    int i1 = this.j;
+    RenderBuffer localRenderBuffer = (RenderBuffer)this.n.get(CaptureParam.g);
+    if (localRenderBuffer != null)
+    {
+      localRenderBuffer.bind();
+      synchronized (this.l)
+      {
+        this.l.getTransformMatrix(this.m);
+        float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.c, this.d, localRenderBuffer.getWidth(), localRenderBuffer.getHeight());
+        this.o.drawTexture(36197, this.j, this.m, arrayOfFloat);
+        QmcfManager.getInstance().setSTMatrix(this.m);
+        localRenderBuffer.unbind();
+        return localRenderBuffer.getTexId();
+      }
+    }
+    return i1;
+  }
+  
+  protected int getFocusSurfaceHeight()
+  {
+    return this.b;
+  }
+  
+  protected int getFocusSurfaceWidth()
+  {
+    return this.a;
+  }
+  
   public void onDrawFrame(GL10 paramGL10)
   {
-    if ((this.jdField_c_of_type_Int != 0) && (this.jdField_d_of_type_Int != 0) && (this.jdField_a_of_type_JavaUtilMap.size() != 0))
+    if ((this.c != 0) && (this.d != 0) && (this.n.size() != 0))
     {
-      if (!this.jdField_f_of_type_Boolean)
+      if (!this.D)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("QIdentifierCaptureView", 2, new Object[] { "onDrawFrame ignore , cameraPreviewWidth : ", Boolean.valueOf(this.jdField_f_of_type_Boolean) });
+          QLog.d("QIdentifierCaptureView", 2, new Object[] { "onDrawFrame ignore , cameraPreviewWidth : ", Boolean.valueOf(this.D) });
         }
         return;
       }
-      this.jdField_h_of_type_Int = c();
-      a(b(a(this.jdField_h_of_type_Int)));
-      if (!this.jdField_a_of_type_Boolean)
+      this.k = g();
+      c(b(a(this.k)));
+      if (!this.h)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.h = true;
         e();
       }
       FrameBufferCache.getInstance().forceRecycle();
@@ -417,15 +385,15 @@ public class QIdentifierCaptureView
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES20.glClear(16384);
     if (QLog.isColorLevel()) {
-      QLog.d("QIdentifierCaptureView", 2, new Object[] { "onDrawFrame clean , cameraPreviewWidth : ", Integer.valueOf(this.jdField_e_of_type_Int), " cameraPreviewHeight : ", Integer.valueOf(this.jdField_d_of_type_Int), " mCacheRenderBuffers size : ", Integer.valueOf(this.jdField_a_of_type_JavaUtilMap.size()) });
+      QLog.d("QIdentifierCaptureView", 2, new Object[] { "onDrawFrame clean , cameraPreviewWidth : ", Integer.valueOf(this.e), " cameraPreviewHeight : ", Integer.valueOf(this.d), " mCacheRenderBuffers size : ", Integer.valueOf(this.n.size()) });
     }
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.isInitSuccess()) && (!this.jdField_c_of_type_Boolean))
+    if ((this.p.isInitSuccess()) && (!this.y))
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.getHandler().post(new QIdentifierCaptureView.4(this, paramSurfaceTexture));
+      this.p.getHandler().post(new QIdentifierCaptureView.4(this, paramSurfaceTexture));
       return;
     }
     queueEvent(new QIdentifierCaptureView.5(this, paramSurfaceTexture));
@@ -436,11 +404,11 @@ public class QIdentifierCaptureView
     if (QLog.isColorLevel()) {
       QLog.d("QIdentifierCaptureView", 2, "onPause");
     }
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_j_of_type_Boolean = true;
+    this.I = false;
+    this.J = true;
     c();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    OrientationEventListener localOrientationEventListener = this.jdField_a_of_type_AndroidViewOrientationEventListener;
+    this.B.removeCallbacksAndMessages(null);
+    OrientationEventListener localOrientationEventListener = this.t;
     if (localOrientationEventListener != null) {
       localOrientationEventListener.disable();
     }
@@ -451,16 +419,16 @@ public class QIdentifierCaptureView
     if (QLog.isColorLevel()) {
       QLog.d("QIdentifierCaptureView", 2, "onResume");
     }
-    this.jdField_j_of_type_Boolean = false;
-    if (this.jdField_i_of_type_Boolean)
+    this.J = false;
+    if (this.I)
     {
       QLog.d("QIdentifierCaptureView", 1, "onResume, blockCameraFlag return");
       return;
     }
     a();
-    OrientationEventListener localOrientationEventListener = this.jdField_a_of_type_AndroidViewOrientationEventListener;
+    OrientationEventListener localOrientationEventListener = this.t;
     if ((localOrientationEventListener != null) && (localOrientationEventListener.canDetectOrientation())) {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
+      this.t.enable();
     }
   }
   
@@ -475,19 +443,19 @@ public class QIdentifierCaptureView
       paramGL10.append(paramInt2);
       QLog.d("QIdentifierCaptureView", 2, paramGL10.toString());
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_h_of_type_Boolean = true;
-    if ((!this.jdField_i_of_type_Boolean) && (!this.jdField_j_of_type_Boolean))
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.H = true;
+    if ((!this.I) && (!this.J))
     {
-      if (!this.n)
+      if (!this.N)
       {
         a();
-        this.n = true;
+        this.N = true;
       }
       return;
     }
-    QLog.d("QIdentifierCaptureView", 1, new Object[] { "onSurfaceChanged, blockCameraFlag return, ", Boolean.valueOf(this.jdField_i_of_type_Boolean), " ", Boolean.valueOf(this.jdField_j_of_type_Boolean) });
+    QLog.d("QIdentifierCaptureView", 1, new Object[] { "onSurfaceChanged, blockCameraFlag return, ", Boolean.valueOf(this.I), " ", Boolean.valueOf(this.J) });
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
@@ -495,38 +463,38 @@ public class QIdentifierCaptureView
     if (QLog.isColorLevel()) {
       QLog.d("QIdentifierCaptureView", 2, "onSurfaceCreated");
     }
-    this.jdField_h_of_type_Boolean = false;
-    paramGL10 = this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread = new EglHandlerThread("update_texture", EGL14.eglGetCurrentContext());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.start();
+    this.H = false;
+    paramGL10 = this.p;
+    this.p = new EglHandlerThread("update_texture", EGL14.eglGetCurrentContext());
+    this.p.start();
     if (paramGL10 != null) {
       paramGL10.quitSafely();
     }
-    this.jdField_g_of_type_Int = GlUtil.createTexture(36197);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_g_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.jdField_c_of_type_Boolean = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isNeedDrawOnOpenGLSingleThread();
+    this.j = GlUtil.createTexture(36197);
+    this.l = new SurfaceTexture(this.j);
+    this.l.setOnFrameAvailableListener(this);
+    this.o = new TextureRender();
+    this.y = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isNeedDrawOnOpenGLSingleThread();
   }
   
   public void setCaptureListener(CaptureListener paramCaptureListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera.a(paramCaptureListener);
+    this.O.a(paramCaptureListener);
   }
   
   public void setCaptureParam(CaptureParam paramCaptureParam)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam == null)
+    if (this.s == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureParam = paramCaptureParam;
-      if (this.jdField_d_of_type_Boolean) {
+      this.s = paramCaptureParam;
+      if (this.z) {
         setEGLContextClientVersion(2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiICamera.a(paramCaptureParam);
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      this.O.a(paramCaptureParam);
+      this.B = new Handler(Looper.getMainLooper());
       setRenderer(this);
       setRenderMode(0);
-      this.jdField_e_of_type_Boolean = true;
+      this.C = true;
       return;
     }
     throw new RuntimeException("setCaptureParam is already called");
@@ -534,7 +502,7 @@ public class QIdentifierCaptureView
   
   public void setPreviewCallback(OutPreviewCallback paramOutPreviewCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewOutPreviewCallback = paramOutPreviewCallback;
+    this.i = paramOutPreviewCallback;
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
@@ -555,7 +523,7 @@ public class QIdentifierCaptureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QIdentifierCaptureView
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ class TroopFileThumbnailFetchWorker$2
   
   public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {
+    if (paramBundle.getLong("troopUin") != this.a.a) {
       return;
     }
     String str = paramBundle.getString("itemKey");
@@ -34,7 +34,7 @@ class TroopFileThumbnailFetchWorker$2
     if (!UUID.fromString(str).equals(this.a.a())) {
       return;
     }
-    if (this.a.jdField_a_of_type_Boolean) {
+    if (this.a.d) {
       return;
     }
     int j = paramBundle.getInt("thumbNail");
@@ -42,16 +42,16 @@ class TroopFileThumbnailFetchWorker$2
     boolean bool = paramBundle.getBoolean("isPreview", false);
     if ((j != 0) && (!bool))
     {
-      if (j != this.a.jdField_a_of_type_Int) {
+      if (j != this.a.k) {
         return;
       }
       if ((paramDownloadFileRspBody != null) && (paramBoolean))
       {
         j = paramDownloadFileRspBody.int32_ret_code.get();
-        int k = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        int k = TroopFileTransferUtil.Log.b;
         paramBundle = new StringBuilder();
         paramBundle.append("[");
-        paramBundle.append(this.a.jdField_a_of_type_JavaLangString);
+        paramBundle.append(this.a.c);
         paramBundle.append("] onReqFetchResult isSuccess:true  errCode:");
         paramBundle.append(paramInt);
         paramBundle.append(" retCode:");
@@ -64,57 +64,57 @@ class TroopFileThumbnailFetchWorker$2
           }
           else
           {
-            paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+            paramInt = TroopFileTransferUtil.Log.b;
             paramBundle = new StringBuilder();
             paramBundle.append("[");
-            paramBundle.append(this.a.jdField_a_of_type_JavaLangString);
+            paramBundle.append(this.a.c);
             paramBundle.append("] onReqFetchResult  file is not exsit. retCode:");
             paramBundle.append(j);
             TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", paramInt, paramBundle.toString());
             paramBundle = this.a;
-            paramBundle.jdField_a_of_type_Boolean = true;
+            paramBundle.d = true;
             paramBundle.b(4);
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ErrorCode = 0;
-            TroopFileDataCenter.a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 12);
-            if (this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener != null) {
-              this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener.a(this.a.a(), false, j, this.a);
+            this.a.b.ErrorCode = 0;
+            TroopFileDataCenter.a(this.a.a, this.a.b, 12);
+            if (this.a.f != null) {
+              this.a.f.a(this.a.b(), false, j, this.a);
             }
           }
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue.toLowerCase();
+        this.a.b.cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+        if (this.a.b.cookieValue != null) {
+          this.a.b.cookieValue = this.a.b.cookieValue.toLowerCase();
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-        if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp))
+        this.a.b.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+        this.a.b.DownloadDNS = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
+        this.a.b.DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+        this.a.b.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+        this.a.b.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+        if (TextUtils.isEmpty(this.a.b.DownloadIp))
         {
-          paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+          paramInt = TroopFileTransferUtil.Log.b;
           paramBundle = new StringBuilder();
           paramBundle.append("[");
-          paramBundle.append(this.a.jdField_a_of_type_JavaLangString);
+          paramBundle.append(this.a.c);
           paramBundle.append("] onReqFetchResult DownloadIp is null");
           TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", paramInt, paramBundle.toString());
           TroopTechReportUtils.a("gfile", "ipnull", "", "", "", "");
         }
         j = paramDownloadFileRspBody.uint32_preview_port.get();
-        paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        paramInt = TroopFileTransferUtil.Log.b;
         paramBundle = new StringBuilder();
         paramBundle.append("[");
-        paramBundle.append(this.a.jdField_a_of_type_JavaLangString);
+        paramBundle.append(this.a.c);
         paramBundle.append("] onReqFetchResult DownloadIp:");
-        paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
+        paramBundle.append(this.a.b.DownloadIp);
         paramBundle.append(" DownloadDNS:");
-        paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
+        paramBundle.append(this.a.b.DownloadDNS);
         paramBundle.append(" videoPort:");
         paramBundle.append(j);
         paramBundle.append(" DownloadUrl:");
-        paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl);
+        paramBundle.append(this.a.b.DownloadUrl);
         paramBundle.append(" cookieValue:");
-        paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue);
+        paramBundle.append(this.a.b.cookieValue);
         TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", paramInt, paramBundle.toString());
         paramInt = i;
         if (paramDownloadFileRspBody.uint32_preview_port_https.has()) {
@@ -127,10 +127,10 @@ class TroopFileThumbnailFetchWorker$2
         this.a.a(j, paramBundle, paramInt);
         return;
       }
-      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      i = TroopFileTransferUtil.Log.b;
       paramDownloadFileRspBody = new StringBuilder();
       paramDownloadFileRspBody.append("[");
-      paramDownloadFileRspBody.append(this.a.jdField_a_of_type_JavaLangString);
+      paramDownloadFileRspBody.append(this.a.c);
       paramDownloadFileRspBody.append("] onReqFetchResult isSuccess:false  errCode:");
       paramDownloadFileRspBody.append(paramInt);
       TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, paramDownloadFileRspBody.toString());
@@ -140,7 +140,7 @@ class TroopFileThumbnailFetchWorker$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchWorker.2
  * JD-Core Version:    0.7.0.1
  */

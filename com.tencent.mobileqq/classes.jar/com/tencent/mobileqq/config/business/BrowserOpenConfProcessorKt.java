@@ -16,7 +16,7 @@ public final class BrowserOpenConfProcessorKt
   @NotNull
   public static final BrowserOpenBean a()
   {
-    BrowserOpenBean localBrowserOpenBean = (BrowserOpenBean)QConfigManager.a().a(627);
+    BrowserOpenBean localBrowserOpenBean = (BrowserOpenBean)QConfigManager.b().b(627);
     if (localBrowserOpenBean != null) {
       return localBrowserOpenBean;
     }
@@ -113,7 +113,7 @@ public final class BrowserOpenConfProcessorKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.BrowserOpenConfProcessorKt
  * JD-Core Version:    0.7.0.1
  */

@@ -16,34 +16,34 @@ import tencent.im.login.GatewayVerify.SelfPhoneUrl;
 public class MultiGatewayCallback
   implements GatewayCallback
 {
-  private int jdField_a_of_type_Int;
-  private IGatewayEntrance jdField_a_of_type_ComTencentMobileqqLoginwelcomeIGatewayEntrance;
-  private String jdField_a_of_type_JavaLangString;
-  private final GatewayVerify.ReqBody jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private String a;
+  private IGatewayEntrance b;
   private int c;
+  private int d;
+  private boolean e;
+  private final GatewayVerify.ReqBody f;
+  private int g;
   
   public MultiGatewayCallback(Context paramContext, String paramString, int paramInt, IGatewayEntrance paramIGatewayEntrance)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeIGatewayEntrance = paramIGatewayEntrance;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody = new GatewayVerify.ReqBody();
-    this.jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody.msg_req_self_phone.msg_req_check_phone_v4.str_msg_id.set(this.jdField_a_of_type_JavaLangString);
+    this.a = paramString;
+    this.b = paramIGatewayEntrance;
+    this.c = paramInt;
+    this.f = new GatewayVerify.ReqBody();
+    this.f.msg_req_self_phone.msg_req_check_phone_v4.str_msg_id.set(this.a);
     paramString = IPUtils.a();
     if ((!NetworkUtil.isWifiConnected(paramContext)) && (paramString != null)) {
-      this.jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody.msg_req_self_phone.msg_req_check_phone_v4.str_cell_ip.set(paramString);
+      this.f.msg_req_self_phone.msg_req_check_phone_v4.str_cell_ip.set(paramString);
     }
-    this.jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody.msg_req_self_phone.msg_req_check_phone_v4.setHasFlag(true);
-    this.jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody.msg_req_self_phone.setHasFlag(true);
-    this.jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody.setHasFlag(true);
+    this.f.msg_req_self_phone.msg_req_check_phone_v4.setHasFlag(true);
+    this.f.msg_req_self_phone.setHasFlag(true);
+    this.f.setHasFlag(true);
   }
   
-  private void a()
+  private void b()
   {
-    byte[] arrayOfByte = this.jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody.toByteArray();
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeIGatewayEntrance.a(arrayOfByte);
+    byte[] arrayOfByte = this.f.toByteArray();
+    this.b.a(arrayOfByte);
   }
   
   public void a(Exception paramException)
@@ -57,13 +57,13 @@ public class MultiGatewayCallback
         QLog.d("MultiGatewayCallback", 1, "not finish request");
         return;
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.e)
       {
         QLog.e("MultiGatewayCallback", 1, "no success request");
-        this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeIGatewayEntrance.a(paramException);
+        this.b.a(paramException);
         return;
       }
-      a();
+      b();
       return;
     }
     finally {}
@@ -71,8 +71,8 @@ public class MultiGatewayCallback
   
   public void a(GatewayVerify.SelfPhoneUrl paramSelfPhoneUrl)
   {
-    this.c += 1;
-    if (this.c > 5)
+    this.g += 1;
+    if (this.g > 5)
     {
       QLog.e("MultiGatewayCallback", 1, "onRedirect time out of max time");
       b(-100000, new Exception("onRedirect time out"));
@@ -92,22 +92,22 @@ public class MultiGatewayCallback
       return;
     }
     finally {}
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
     boolean bool = a();
     GatewayVerify.SelfPhoneToken localSelfPhoneToken = new GatewayVerify.SelfPhoneToken();
-    QLog.d("MultiGatewayCallback", 1, new Object[] { "onResponse, current success request count: ", Integer.valueOf(this.b), " totalCount : ", Integer.valueOf(this.jdField_a_of_type_Int), " request channelId : ", Integer.valueOf(paramSelfPhoneUrl.int32_channel_id.get()) });
+    QLog.d("MultiGatewayCallback", 1, new Object[] { "onResponse, current success request count: ", Integer.valueOf(this.d), " totalCount : ", Integer.valueOf(this.c), " request channelId : ", Integer.valueOf(paramSelfPhoneUrl.int32_channel_id.get()) });
     localSelfPhoneToken.str_token.set(paramString);
     localSelfPhoneToken.int32_channel_id.set(paramSelfPhoneUrl.int32_channel_id.get());
-    this.jdField_a_of_type_TencentImLoginGatewayVerify$ReqBody.msg_req_self_phone.msg_req_check_phone_v4.rpt_self_phone_token.add(localSelfPhoneToken);
+    this.f.msg_req_self_phone.msg_req_check_phone_v4.rpt_self_phone_token.add(localSelfPhoneToken);
     if (bool) {
-      a();
+      b();
     }
   }
   
   public boolean a()
   {
-    this.b += 1;
-    return this.b >= this.jdField_a_of_type_Int;
+    this.d += 1;
+    return this.d >= this.c;
   }
   
   public void b(int paramInt, Exception paramException)
@@ -121,13 +121,13 @@ public class MultiGatewayCallback
         QLog.e("MultiGatewayCallback", 1, "not finish request");
         return;
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.e)
       {
         QLog.e("MultiGatewayCallback", 1, "no success request");
-        this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeIGatewayEntrance.a(paramInt, paramException);
+        this.b.a(paramInt, paramException);
         return;
       }
-      a();
+      b();
       return;
     }
     finally {}
@@ -135,7 +135,7 @@ public class MultiGatewayCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.MultiGatewayCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ class GMEAVManager$1
   public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
     QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
-    if (this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener != null) {
-      this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener.a(paramInt, paramArrayOfString);
+    if (this.a.c != null) {
+      this.a.c.a(paramInt, paramArrayOfString);
     }
   }
   
@@ -31,19 +31,19 @@ class GMEAVManager$1
     localStringBuilder.append(paramString);
     QLog.i("AVManager", 1, localStringBuilder.toString());
     if (paramInt != 0) {
-      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+      this.a.a.getAudioCtrl().stopTRAEService();
     }
-    if (this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$EnterRoomCallback != null) {
-      this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$EnterRoomCallback.a(paramInt, paramString);
+    if (this.a.b != null) {
+      this.a.b.a(paramInt, paramString);
     }
   }
   
   public void onExitRoomComplete()
   {
     QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
-    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
-    if (this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener != null) {
-      this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener.a();
+    this.a.a.getAudioCtrl().stopTRAEService();
+    if (this.a.c != null) {
+      this.a.c.a();
     }
   }
   
@@ -55,8 +55,8 @@ class GMEAVManager$1
   
   public void onRoomDisconnect(int paramInt, String paramString)
   {
-    if (this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener != null) {
-      this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener.a(paramInt, paramString);
+    if (this.a.c != null) {
+      this.a.c.a(paramInt, paramString);
     }
   }
   
@@ -65,8 +65,8 @@ class GMEAVManager$1
   public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
   {
     QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
-    if (this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener != null) {
-      this.a.jdField_a_of_type_CooperationGmersdk_warperGMEAVManager$RoomInfoListener.a(paramArrayOfString);
+    if (this.a.c != null) {
+      this.a.c.a(paramArrayOfString);
     }
   }
   
@@ -78,7 +78,7 @@ class GMEAVManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,17 +9,17 @@ class ForwardBaseOption$9
   
   public void a()
   {
-    this.a.a.setProgressBarVisibility(0);
+    this.a.A.setProgressBarVisibility(0);
   }
   
   public void b()
   {
-    this.a.a.setProgressBarVisibility(8);
+    this.a.A.setProgressBarVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.9
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ final class LiteActivity$20
   
   public void run()
   {
-    String str = FileUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    LiteActivity.CreateThumbCB localCreateThumbCB = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$CreateThumbCB;
+    String str = FileUtil.a(this.a, this.b);
+    LiteActivity.CreateThumbCB localCreateThumbCB = this.c;
     if (localCreateThumbCB != null) {
       localCreateThumbCB.a(str);
     }

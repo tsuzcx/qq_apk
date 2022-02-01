@@ -10,7 +10,7 @@ import com.tencent.avcore.util.AVCoreLog;
 public abstract class GLContextThread
   extends OffscreenSurface
 {
-  protected Handler a;
+  protected Handler i;
   
   public GLContextThread()
   {
@@ -19,22 +19,22 @@ public abstract class GLContextThread
     ((StringBuilder)localObject).append((int)(Math.random() * 100.0D));
     localObject = new HandlerThread(((StringBuilder)localObject).toString());
     ((HandlerThread)localObject).start();
-    this.a = new GLContextThread.MyHandler(((HandlerThread)localObject).getLooper(), this);
+    this.i = new GLContextThread.MyHandler(((HandlerThread)localObject).getLooper(), this);
   }
   
   protected abstract void a(Message paramMessage);
   
-  protected void b()
+  protected void g()
   {
-    super.b();
+    super.g();
     Process.setThreadPriority(0);
     AVCoreLog.i("GLContextThread", "init:");
   }
   
-  protected void c()
+  protected void h()
   {
-    super.f();
-    this.a.getLooper().quit();
+    super.n();
+    this.i.getLooper().quit();
   }
 }
 

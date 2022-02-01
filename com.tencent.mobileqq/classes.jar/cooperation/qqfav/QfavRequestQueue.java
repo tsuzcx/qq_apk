@@ -11,54 +11,49 @@ import java.util.List;
 
 public class QfavRequestQueue
 {
-  private static QfavRequestQueue jdField_a_of_type_CooperationQqfavQfavRequestQueue;
-  private ArrayList<QfavRequestQueue.RequestItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
-  
-  private QfavRequestQueue()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  private static QfavRequestQueue b;
+  public boolean a = false;
+  private ArrayList<QfavRequestQueue.RequestItem> c = new ArrayList();
   
   public static QfavRequestQueue a()
   {
-    if (jdField_a_of_type_CooperationQqfavQfavRequestQueue == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_CooperationQqfavQfavRequestQueue == null) {
-          jdField_a_of_type_CooperationQqfavQfavRequestQueue = new QfavRequestQueue();
+        if (b == null) {
+          b = new QfavRequestQueue();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CooperationQqfavQfavRequestQueue;
+    return b;
   }
   
   public QfavRequestQueue.RequestItem a(long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      if (this.c.size() == 0)
       {
         if (QLog.isColorLevel()) {
           QLog.d("QfavRequestQueue", 2, "pop, request list is empty");
         }
         return null;
       }
-      Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject2 = this.c.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         QfavRequestQueue.RequestItem localRequestItem = (QfavRequestQueue.RequestItem)((Iterator)localObject2).next();
-        if (localRequestItem.jdField_a_of_type_Long == paramLong)
+        if (localRequestItem.b == paramLong)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localRequestItem);
+          this.c.remove(localRequestItem);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("pop, id: ");
             ((StringBuilder)localObject2).append(paramLong);
             ((StringBuilder)localObject2).append("pendingsize:");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+            ((StringBuilder)localObject2).append(this.c.size());
             QLog.d("QfavRequestQueue", 2, ((StringBuilder)localObject2).toString());
           }
           return localRequestItem;
@@ -86,26 +81,26 @@ public class QfavRequestQueue
     return null;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+      boolean bool = this.c.isEmpty();
       return bool;
     }
   }
   
-  public byte[] a()
+  public byte[] c()
   {
     Object localObject1 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      if (this.c.isEmpty()) {
         return null;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext()) {
-        ((ArrayList)localObject1).add(((QfavRequestQueue.RequestItem)localIterator.next()).jdField_a_of_type_AndroidContentIntent.getExtras());
+        ((ArrayList)localObject1).add(((QfavRequestQueue.RequestItem)localIterator.next()).a.getExtras());
       }
       if (((ArrayList)localObject1).isEmpty()) {
         return null;
@@ -126,7 +121,7 @@ public class QfavRequestQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavRequestQueue
  * JD-Core Version:    0.7.0.1
  */

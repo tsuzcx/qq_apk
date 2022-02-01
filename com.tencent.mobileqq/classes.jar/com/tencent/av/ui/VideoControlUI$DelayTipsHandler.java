@@ -22,10 +22,10 @@ public class VideoControlUI$DelayTipsHandler
       if (i != 257) {
         return;
       }
-      TipsUtil.a(this.a.a, 1036, str);
+      TipsUtil.a(this.a.al, 1036, str);
       return;
     }
-    TipsUtil.a(this.a.a, 1037, str);
+    TipsUtil.a(this.a.al, 1037, str);
   }
 }
 

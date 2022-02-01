@@ -36,7 +36,7 @@ public final class ReadInJoyMSFServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.msf.api.impl.ReadInJoyMSFServiceImpl
  * JD-Core Version:    0.7.0.1
  */

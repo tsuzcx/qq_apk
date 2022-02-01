@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.timi.game.userinfo.api.view.AvatarRoundImageView android:layout_gravity="center_horizontal" android:id="@id/pxu" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginBottom="6.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.timi.game.userinfo.api.view.AvatarTextView android:textSize="20.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/m1g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="300.0dip" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" app:timiTextStyleMediumBold="true" />
+        <com.tencent.timi.game.userinfo.api.view.AvatarSexImageView android:id="@id/q1r" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:scaleType="fitXY" />
+    </LinearLayout>
+</merge>

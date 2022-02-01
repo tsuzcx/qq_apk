@@ -50,10 +50,10 @@ public class DownloadDialogFragment
     localBaseActivity.finish();
     if (paramInt != 1)
     {
-      localBaseActivity.overridePendingTransition(2130772008, 2130772009);
+      localBaseActivity.overridePendingTransition(2130772011, 2130772012);
       return;
     }
-    localBaseActivity.overridePendingTransition(0, 2130772007);
+    localBaseActivity.overridePendingTransition(0, 2130772010);
   }
   
   public static void a(DownloadInfo paramDownloadInfo, long paramLong)
@@ -62,7 +62,7 @@ public class DownloadDialogFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("listener_flag", paramLong);
     localIntent.setFlags(268435456);
-    localIntent.putExtra("big_brother_source_key", paramDownloadInfo.m);
+    localIntent.putExtra("big_brother_source_key", paramDownloadInfo.r);
     localIntent.putExtra("key_url", paramDownloadInfo.d);
     localIntent.putExtra("key_appid", paramDownloadInfo.c);
     PublicFragmentActivity.Launcher.a(BaseApplicationImpl.sApplication, localIntent, PublicTransFragmentActivity.class, DownloadDialogFragment.class);
@@ -70,15 +70,15 @@ public class DownloadDialogFragment
   
   private static void b(Activity paramActivity)
   {
-    Object localObject1 = AppSetting.f();
-    Object localObject2 = AppSetting.f();
+    Object localObject1 = AppSetting.h();
+    Object localObject2 = AppSetting.h();
     int i = Build.VERSION.SDK_INT;
     int j = NetworkUtil.getNetworkType(paramActivity);
     String str1 = QQDeviceInfo.getIMEI("0");
     Object localObject3 = paramActivity.getIntent().getStringExtra("big_brother_source_key");
     String str3 = paramActivity.getIntent().getStringExtra("key_url");
     String str2 = paramActivity.getIntent().getStringExtra("key_appid");
-    str3 = StringUtil.a(str3, 0, 50);
+    str3 = StringUtil.substring(str3, 0, 50);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("source=");
     localStringBuilder.append((String)localObject3);
@@ -115,7 +115,7 @@ public class DownloadDialogFragment
   public void a()
   {
     Object localObject = DownloadConfigProcessor.a();
-    localObject = DialogUtil.a(getBaseActivity(), 0, ((DownloadConfigBean)localObject).a, ((DownloadConfigBean)localObject).b, ((DownloadConfigBean)localObject).d, ((DownloadConfigBean)localObject).c, ((DownloadConfigBean)localObject).e, new DownloadDialogFragment.1(this), new DownloadDialogFragment.2(this), new DownloadDialogFragment.3(this));
+    localObject = DialogUtil.a(getBaseActivity(), 0, ((DownloadConfigBean)localObject).c, ((DownloadConfigBean)localObject).d, ((DownloadConfigBean)localObject).f, ((DownloadConfigBean)localObject).e, ((DownloadConfigBean)localObject).g, new DownloadDialogFragment.1(this), new DownloadDialogFragment.2(this), new DownloadDialogFragment.3(this));
     ((QQCustomDialog)localObject).setOnCancelListener(new DownloadDialogFragment.4(this));
     try
     {
@@ -152,9 +152,9 @@ public class DownloadDialogFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559298, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625234, null);
     paramLayoutInflater.setAlpha(0.5F);
-    getBaseActivity().overridePendingTransition(2130772008, 2130772009);
+    getBaseActivity().overridePendingTransition(2130772011, 2130772012);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -167,7 +167,7 @@ public class DownloadDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.DownloadDialogFragment
  * JD-Core Version:    0.7.0.1
  */

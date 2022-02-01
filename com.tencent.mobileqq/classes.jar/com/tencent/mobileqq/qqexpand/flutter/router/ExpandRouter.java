@@ -19,8 +19,8 @@ import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActi
 import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
 import com.tencent.mobileqq.qqexpand.chat.utils.LimitChatUtil;
 import com.tencent.mobileqq.qqexpand.fragment.ExpandBirthPickFragment;
-import com.tencent.mobileqq.qqexpand.fragment.ExpandEditFragment;
 import com.tencent.mobileqq.qqexpand.fragment.ExpandPublicFragmentActivity;
+import com.tencent.mobileqq.qqexpand.fragment.ExtendFriendNewEditFragment;
 import com.tencent.mobileqq.qqexpand.fragment.ExtendFriendVoiceMatchLoadingFragment;
 import com.tencent.mobileqq.qqexpand.utils.ILog;
 import com.tencent.mobileqq.qqexpand.utils.LogUtils;
@@ -42,48 +42,6 @@ public final class ExpandRouter
   extends BaseRouter
 {
   public static final ExpandRouter.Companion a = new ExpandRouter.Companion(null);
-  
-  private final void a()
-  {
-    Object localObject1 = BaseApplicationImpl.getApplication();
-    if (localObject1 != null)
-    {
-      localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();
-      if (localObject1 != null)
-      {
-        localObject1 = ((AppRuntime)localObject1).getAccount();
-        if (localObject1 != null) {
-          break label32;
-        }
-      }
-    }
-    localObject1 = "";
-    label32:
-    Object localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject2 = BaseApplicationImpl.context;
-      if (localObject2 != null)
-      {
-        Intent localIntent = new Intent((Context)localObject2, QQBrowserActivity.class);
-        Object localObject3 = StringCompanionObject.INSTANCE;
-        localObject3 = new Object[2];
-        localObject3[0] = localObject1;
-        localObject3[1] = Integer.valueOf(1);
-        localObject1 = String.format("https://ti.qq.com/v2/anonymous/answer?_wv=16777218&_wwv=129&uin=%s&from=%d", Arrays.copyOf((Object[])localObject3, localObject3.length));
-        Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
-        localIntent.putExtra("url", (String)localObject1);
-        localIntent.setFlags(268435456);
-        ((BaseApplication)localObject2).startActivity(localIntent);
-      }
-    }
-    else
-    {
-      localObject1 = LogUtils.a;
-      localObject2 = (Throwable)null;
-      ((LogUtils)localObject1).a().a("ExpandRouter", 1, "jump photo stickynote account is null", (Throwable)localObject2);
-    }
-  }
   
   private final void a(Integer paramInteger)
   {
@@ -148,7 +106,7 @@ public final class ExpandRouter
       case 830494773: 
         if (paramString.equals("personal_label"))
         {
-          d();
+          e();
           return;
         }
         break;
@@ -168,21 +126,21 @@ public final class ExpandRouter
       case -1173124183: 
         if (paramString.equals("feature_photo"))
         {
-          c();
+          d();
           return;
         }
         break;
       case -1177041573: 
         if (paramString.equals("stickynote"))
         {
-          b();
+          c();
           return;
         }
         break;
       case -2095811475: 
         if (paramString.equals("anonymous"))
         {
-          a();
+          b();
           return;
         }
         break;
@@ -218,8 +176,8 @@ public final class ExpandRouter
     catch (NumberFormatException paramHashMap)
     {
       int i;
-      label41:
-      break label41;
+      label39:
+      break label39;
     }
     i = 0;
     paramHashMap = new Intent();
@@ -228,6 +186,48 @@ public final class ExpandRouter
   }
   
   private final void b()
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication();
+    if (localObject1 != null)
+    {
+      localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();
+      if (localObject1 != null)
+      {
+        localObject1 = ((AppRuntime)localObject1).getAccount();
+        if (localObject1 != null) {
+          break label32;
+        }
+      }
+    }
+    localObject1 = "";
+    label32:
+    Object localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = BaseApplicationImpl.context;
+      if (localObject2 != null)
+      {
+        Intent localIntent = new Intent((Context)localObject2, QQBrowserActivity.class);
+        Object localObject3 = StringCompanionObject.INSTANCE;
+        localObject3 = new Object[2];
+        localObject3[0] = localObject1;
+        localObject3[1] = Integer.valueOf(1);
+        localObject1 = String.format("https://ti.qq.com/v2/anonymous/answer?_wv=16777218&_wwv=129&uin=%s&from=%d", Arrays.copyOf((Object[])localObject3, localObject3.length));
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
+        localIntent.putExtra("url", (String)localObject1);
+        localIntent.setFlags(268435456);
+        ((BaseApplication)localObject2).startActivity(localIntent);
+      }
+    }
+    else
+    {
+      localObject1 = LogUtils.a;
+      localObject2 = (Throwable)null;
+      ((LogUtils)localObject1).a().a("ExpandRouter", 1, "jump photo stickynote account is null", (Throwable)localObject2);
+    }
+  }
+  
+  private final void c()
   {
     Object localObject1 = BaseApplicationImpl.getApplication();
     if (localObject1 != null)
@@ -263,7 +263,7 @@ public final class ExpandRouter
     }
   }
   
-  private final void c()
+  private final void d()
   {
     Object localObject1 = BaseApplicationImpl.getApplication();
     if (localObject1 != null)
@@ -306,7 +306,7 @@ public final class ExpandRouter
     }
   }
   
-  private final void d()
+  private final void e()
   {
     Object localObject1 = BaseApplicationImpl.getApplication();
     if (localObject1 != null)
@@ -431,7 +431,7 @@ public final class ExpandRouter
           paramMap1.setFlags(268435456);
           paramMap1.putExtra("fling_action_key", 2);
           paramMap1.putExtra("fling_code_key", hashCode());
-          QPublicFragmentActivity.Launcher.a((Context)paramUri, paramMap1, QPublicFragmentActivity.class, ExpandEditFragment.class);
+          QPublicFragmentActivity.Launcher.a((Context)paramUri, paramMap1, QPublicFragmentActivity.class, ExtendFriendNewEditFragment.class);
           return;
         }
         break;
@@ -451,7 +451,7 @@ public final class ExpandRouter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.router.ExpandRouter
  * JD-Core Version:    0.7.0.1
  */

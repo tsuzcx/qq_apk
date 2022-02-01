@@ -8,6 +8,7 @@ import android.widget.TextView.OnEditorActionListener;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.XEditTextEx;
 
 class EnterForSendHelper$EnterForSend
@@ -17,20 +18,26 @@ class EnterForSendHelper$EnterForSend
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    boolean bool;
     if (paramInt == 4)
     {
       if (QLog.isColorLevel()) {
         QLog.d("EnterForSendHelper", 2, "IME_ACTION_SEND");
       }
-      EnterForSendHelper.a(this.a).S();
-      return true;
+      EnterForSendHelper.a(this.a).ay();
+      bool = true;
     }
-    return false;
+    else
+    {
+      bool = false;
+    }
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
+    return bool;
   }
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramView = EnterForSendHelper.a(this.a).a;
+    paramView = EnterForSendHelper.a(this.a).Y;
     if (paramKeyEvent.getKeyCode() == 66)
     {
       if (paramKeyEvent.getAction() == 1)
@@ -44,7 +51,7 @@ class EnterForSendHelper$EnterForSend
           QLog.d("EnterForSendHelper", 2, paramKeyEvent.toString());
         }
         if ((this.a.a) && (paramView.length() > 0)) {
-          EnterForSendHelper.a(this.a).R();
+          EnterForSendHelper.a(this.a).ax();
         }
       }
       if (this.a.a) {
@@ -61,16 +68,16 @@ class EnterForSendHelper$EnterForSend
         paramKeyEvent.append(", end: ");
         paramKeyEvent.append(paramView.getSelectionEnd());
         paramKeyEvent.append(", span: ");
-        paramKeyEvent.append(paramView.getTag(2131373876));
+        paramKeyEvent.append(paramView.getTag(2131441550));
         QLog.i("EnterForSendHelper", 2, paramKeyEvent.toString());
       }
-      if ((paramView.getSelectionStart() == 0) && (paramView.getSelectionEnd() == 0) && (paramView.getTag(2131373876) != null))
+      if ((paramView.getSelectionStart() == 0) && (paramView.getSelectionEnd() == 0) && (paramView.getTag(2131441550) != null))
       {
         paramKeyEvent = paramView.getCompoundDrawables();
         paramView.setCompoundDrawables(paramKeyEvent[0], null, paramKeyEvent[2], paramKeyEvent[3]);
-        paramView.setTag(2131373876, null);
+        paramView.setTag(2131441550, null);
         paramView.setSelection(0);
-        ((ReplyHelper)EnterForSendHelper.a(this.a).a(119)).a(null);
+        ((ReplyHelper)EnterForSendHelper.a(this.a).q(119)).a(null);
         ReportController.b(null, "dc00898", "", "", "0X800A9AC", "0X800A9AC", 0, 1, "", "", "", "");
         return true;
       }
@@ -80,7 +87,7 @@ class EnterForSendHelper$EnterForSend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.EnterForSendHelper.EnterForSend
  * JD-Core Version:    0.7.0.1
  */

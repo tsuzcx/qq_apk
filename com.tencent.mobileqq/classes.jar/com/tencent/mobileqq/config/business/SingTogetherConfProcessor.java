@@ -19,7 +19,7 @@ public class SingTogetherConfProcessor
   public SingTogetherConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      return SingTogetherConfigBean.a(paramArrayOfQConfItem[0].a);
+      return SingTogetherConfigBean.a(paramArrayOfQConfItem[0].b);
     }
     if (QLog.isColorLevel()) {
       QLog.d("SingTogetherConfProcessor", 2, "onParsed is null");
@@ -75,7 +75,7 @@ public class SingTogetherConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.SingTogetherConfProcessor
  * JD-Core Version:    0.7.0.1
  */

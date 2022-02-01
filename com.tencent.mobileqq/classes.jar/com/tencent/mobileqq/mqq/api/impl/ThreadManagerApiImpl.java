@@ -18,12 +18,12 @@ public class ThreadManagerApiImpl
     com.tencent.mobileqq.app.ThreadPoolParams localThreadPoolParams = new com.tencent.mobileqq.app.ThreadPoolParams();
     if (paramThreadPoolParams != null)
     {
-      localThreadPoolParams.poolThreadName = paramThreadPoolParams.jdField_a_of_type_JavaLangString;
-      localThreadPoolParams.priority = paramThreadPoolParams.jdField_a_of_type_Int;
-      localThreadPoolParams.corePoolsize = paramThreadPoolParams.b;
-      localThreadPoolParams.maxPooolSize = paramThreadPoolParams.c;
-      localThreadPoolParams.keepAliveTime = paramThreadPoolParams.d;
-      localThreadPoolParams.queue = paramThreadPoolParams.jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+      localThreadPoolParams.poolThreadName = paramThreadPoolParams.a;
+      localThreadPoolParams.priority = paramThreadPoolParams.b;
+      localThreadPoolParams.corePoolsize = paramThreadPoolParams.c;
+      localThreadPoolParams.maxPooolSize = paramThreadPoolParams.d;
+      localThreadPoolParams.keepAliveTime = paramThreadPoolParams.e;
+      localThreadPoolParams.queue = paramThreadPoolParams.f;
     }
     return localThreadPoolParams;
   }
@@ -125,7 +125,7 @@ public class ThreadManagerApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mqq.api.impl.ThreadManagerApiImpl
  * JD-Core Version:    0.7.0.1
  */

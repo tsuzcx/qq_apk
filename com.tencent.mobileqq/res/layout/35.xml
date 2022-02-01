@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/3r" android:layout_width="fill_parent" android:layout_height="@dimen/25" android:layout_marginTop="@dimen/2r"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/fuz" android:layout_width="@dimen/0w" android:layout_height="@dimen/0w" android:layout_marginLeft="@dimen/3q" android:src="@drawable/ie1" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/3w" android:textColor="@color/b51" android:id="@id/ozm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/4" android:text="00:00" android:layout_toRightOf="@id/fuz" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/3w" android:textColor="@color/b51" android:id="@id/ozo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/2r" android:text="00:00" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/ozo" android:layout_toRightOf="@id/ozm" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center|left" android:id="@id/p03" android:background="@color/aw8" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/2r" android:layout_marginRight="@dimen/2r" />
+        <ImageView android:layout_gravity="center|left" android:id="@id/p04" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/2r" android:layout_marginRight="@dimen/2r" />
+        <ImageView android:id="@id/p06" android:paddingLeft="@dimen/4" android:paddingTop="@dimen/4" android:paddingRight="@dimen/4" android:paddingBottom="@dimen/4" android:layout_width="@dimen/25" android:layout_height="@dimen/25" android:layout_marginLeft="@dimen/3q" android:src="@drawable/idz" />
+    </FrameLayout>
+</RelativeLayout>

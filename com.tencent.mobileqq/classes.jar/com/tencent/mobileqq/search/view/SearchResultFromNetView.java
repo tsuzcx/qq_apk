@@ -3,10 +3,12 @@ package com.tencent.mobileqq.search.view;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.search.base.view.SearchResultView;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -19,97 +21,119 @@ import com.tencent.widget.ThemeImageWrapper;
 public class SearchResultFromNetView
   extends SearchResultView
 {
-  private View jdField_a_of_type_AndroidViewView;
   public Button a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TroopActiveLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
-  private TroopLabelLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
-  private FolderTextView jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TroopLabelLayout jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+  public ImageView b;
   public ImageView c;
-  private TextView c;
-  private View d;
-  public ImageView d;
-  private View jdField_e_of_type_AndroidViewView;
-  private ImageView jdField_e_of_type_AndroidWidgetImageView;
+  private int d;
+  private TroopLabelLayout n;
+  private TextView o;
+  private ImageView p;
+  private TextView q;
+  private TroopLabelLayout r;
+  private TextView s;
+  private View t;
+  private View u;
+  private View v;
+  private TroopActiveLayout w;
+  private FolderTextView x;
   
   public SearchResultFromNetView(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    paramInt = this.jdField_b_of_type_Int;
+    this.d = paramInt;
+    paramInt = this.d;
     if (paramInt != 3)
     {
-      if (paramInt != 268435456)
-      {
-        if (paramInt != 1001)
+      if (paramInt != 1107) {
+        if (paramInt != 268435456)
         {
-          if (paramInt != 1002) {
-            this.jdField_a_of_type_Int = 2131559831;
-          } else {
-            this.jdField_a_of_type_Int = 2131561239;
+          if (paramInt != 1001)
+          {
+            if (paramInt != 1002)
+            {
+              this.m = 2131625874;
+              break label88;
+            }
+          }
+          else
+          {
+            this.m = 2131627594;
+            break label88;
           }
         }
-        else {
-          this.jdField_a_of_type_Int = 2131561238;
+        else
+        {
+          this.m = 2131625840;
+          break label88;
         }
       }
-      else {
-        this.jdField_a_of_type_Int = 2131559797;
-      }
+      this.m = 2131627595;
     }
-    else {
-      this.jdField_a_of_type_Int = 2131560448;
+    else
+    {
+      this.m = 2131626493;
     }
+    label88:
     paramViewGroup.getResources();
     LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
     localLinearLayout.setOrientation(1);
-    localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, null, false), new LinearLayout.LayoutParams(-1, -2));
+    localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(this.m, null, false), new LinearLayout.LayoutParams(-1, -2));
     localLinearLayout.setClickable(true);
     localLinearLayout.setFocusable(true);
-    this.jdField_b_of_type_AndroidViewView = localLinearLayout;
+    this.e = localLinearLayout;
     a();
   }
   
   public View a(String paramString)
   {
     if ("ActiveEntitySearchResultPresenter_add_troop".equals(paramString)) {
-      return this.jdField_a_of_type_AndroidViewView;
+      return this.t;
     }
     if ("ActiveEntitySearchResultPresenter_pay_troop".equals(paramString)) {
-      return this.jdField_d_of_type_AndroidViewView;
+      return this.u;
     }
     if ("ActiveEntitySearchResultPresenter_hot_troop".equals(paramString)) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+      return this.w;
     }
     if ("ActiveEntitySearchResultPresenter_expand_desc".equals(paramString)) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+      return this.x;
     }
     return super.a(paramString);
-  }
-  
-  public TroopLabelLayout a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
   }
   
   protected void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368343));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365295));
-    int i = this.jdField_b_of_type_Int;
+    this.o = ((TextView)this.e.findViewById(2131435219));
+    this.p = ((ImageView)this.e.findViewById(2131431472));
+    int i = this.d;
     if (i != 1001)
     {
-      if (i == 1002)
+      if (i != 1002)
       {
-        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379177));
-        this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379139));
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131379273));
-        if (this.d != null)
+        if (i == 1107)
         {
-          localObject = this.d;
+          this.b = ((ImageView)this.e.findViewById(2131447913));
+          this.b.setVisibility(8);
+          localObject = (LinearLayout)this.e.findViewById(2131447506);
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
+          localLayoutParams.addRule(15, -1);
+          localLayoutParams.addRule(10, 0);
+          ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
+          this.t = this.e.findViewById(2131431377);
+          localObject = (RelativeLayout.LayoutParams)this.t.getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+          ((RelativeLayout.LayoutParams)localObject).addRule(10, 0);
+          this.t.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+      }
+      else
+      {
+        this.b = ((ImageView)this.e.findViewById(2131447913));
+        this.c = ((ImageView)this.e.findViewById(2131447875));
+        this.n = ((TroopLabelLayout)this.e.findViewById(2131448010));
+        if (this.f != null)
+        {
+          localObject = this.f;
           int j = ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(187.0F);
           i = j;
           if (j <= 0) {
@@ -121,77 +145,82 @@ public class SearchResultFromNetView
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131376477));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376485));
-      this.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131379273));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131370723));
-      this.jdField_e_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131379859);
+      this.a = ((Button)this.e.findViewById(2131444718));
+      this.q = ((TextView)this.e.findViewById(2131444726));
+      this.r = ((TroopLabelLayout)this.e.findViewById(2131448010));
+      this.s = ((TextView)this.e.findViewById(2131438023));
+      this.v = this.e.findViewById(2131448716);
     }
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365211);
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    this.t = this.e.findViewById(2131431377);
+    Object localObject = this.t;
     if (localObject != null) {
       ((View)localObject).setTag("ActiveEntitySearchResultPresenter_add_troop");
     }
-    this.jdField_d_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131373070);
-    localObject = this.jdField_d_of_type_AndroidViewView;
+    this.u = this.e.findViewById(2131440656);
+    localObject = this.u;
     if (localObject != null)
     {
       ((View)localObject).setTag("ActiveEntitySearchResultPresenter_pay_troop");
-      localObject = this.jdField_d_of_type_AndroidViewView;
+      localObject = this.u;
       if ((localObject instanceof ThemeImageView)) {
         ((ThemeImageView)localObject).setMaskShape(ThemeImageWrapper.MODE_OTHER);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout = ((TroopActiveLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131362024));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout;
+    this.w = ((TroopActiveLayout)this.e.findViewById(2131427602));
+    localObject = this.w;
     if (localObject != null) {
       ((TroopActiveLayout)localObject).setTag("ActiveEntitySearchResultPresenter_hot_troop");
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView = ((FolderTextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131367054));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView;
+    this.x = ((FolderTextView)this.e.findViewById(2131433503));
+    localObject = this.x;
     if (localObject != null) {
       ((FolderTextView)localObject).setTag("ActiveEntitySearchResultPresenter_expand_desc");
     }
   }
   
-  public View b()
+  public ImageView j()
   {
-    return this.jdField_e_of_type_AndroidViewView;
+    return this.p;
   }
   
-  public TroopLabelLayout b()
+  public TroopLabelLayout k()
   {
-    return this.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout;
+    return this.n;
   }
   
-  public ImageView c()
+  public TextView l()
   {
-    return this.jdField_e_of_type_AndroidWidgetImageView;
+    return this.o;
   }
   
-  public TextView e()
+  public View m()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.v;
   }
   
-  public TextView f()
+  public TextView n()
   {
-    return this.jdField_a_of_type_AndroidWidgetButton;
+    return this.a;
   }
   
-  public TextView g()
+  public TroopLabelLayout o()
   {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    return this.r;
   }
   
-  public TextView h()
+  public TextView p()
   {
-    return this.jdField_c_of_type_AndroidWidgetTextView;
+    return this.q;
+  }
+  
+  public TextView q()
+  {
+    return this.s;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.SearchResultFromNetView
  * JD-Core Version:    0.7.0.1
  */

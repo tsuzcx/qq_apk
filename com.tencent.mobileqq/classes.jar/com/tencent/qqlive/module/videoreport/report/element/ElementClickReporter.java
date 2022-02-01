@@ -82,9 +82,6 @@ public class ElementClickReporter
         Log.d("ElementClickReporter", ((StringBuilder)localObject).toString());
       }
       localObject = ReversedDataCollector.collect(paramView);
-      if (localObject == null) {
-        return;
-      }
       localObject = DataBuilderFactory.obtain().build("clck", (PathData)localObject);
       if (localObject == null) {
         return;
@@ -108,7 +105,7 @@ public class ElementClickReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ElementClickReporter
  * JD-Core Version:    0.7.0.1
  */

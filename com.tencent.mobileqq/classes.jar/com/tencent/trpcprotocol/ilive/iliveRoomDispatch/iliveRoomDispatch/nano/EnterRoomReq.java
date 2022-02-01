@@ -9,9 +9,9 @@ public final class EnterRoomReq
   extends MessageNano
 {
   public long a;
-  public String a;
   public String b;
   public String c;
+  public String d;
   
   public EnterRoomReq()
   {
@@ -20,10 +20,10 @@ public final class EnterRoomReq
   
   public EnterRoomReq a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a = 0L;
     this.b = "";
     this.c = "";
+    this.d = "";
     this.cachedSize = -1;
     return this;
   }
@@ -49,19 +49,19 @@ public final class EnterRoomReq
               }
             }
             else {
-              this.c = paramCodedInputByteBufferNano.readString();
+              this.d = paramCodedInputByteBufferNano.readString();
             }
           }
           else {
-            this.b = paramCodedInputByteBufferNano.readString();
+            this.c = paramCodedInputByteBufferNano.readString();
           }
         }
         else {
-          this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+          this.b = paramCodedInputByteBufferNano.readString();
         }
       }
       else {
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+        this.a = paramCodedInputByteBufferNano.readUInt64();
       }
     }
     return this;
@@ -70,47 +70,47 @@ public final class EnterRoomReq
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     int i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
     j = i;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
     i = j;
-    if (!this.b.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.b);
+    if (!this.c.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.c);
     }
     j = i;
-    if (!this.c.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(4, this.c);
+    if (!this.d.equals("")) {
+      j = i + CodedOutputByteBufferNano.computeStringSize(4, this.d);
     }
     return j;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
-    }
     if (!this.b.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(3, this.b);
+      paramCodedOutputByteBufferNano.writeString(2, this.b);
     }
     if (!this.c.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(4, this.c);
+      paramCodedOutputByteBufferNano.writeString(3, this.c);
+    }
+    if (!this.d.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(4, this.d);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.EnterRoomReq
  * JD-Core Version:    0.7.0.1
  */

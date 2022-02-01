@@ -16,11 +16,11 @@ class QavPanel$2
     if (i != 0)
     {
       if ((i == 1) || (i == 3)) {
-        this.a.a.setAlpha(255);
+        this.a.K.setAlpha(255);
       }
     }
     else {
-      this.a.a.setAlpha(127);
+      this.a.K.setAlpha(127);
     }
     return false;
   }

@@ -10,12 +10,12 @@ class PlusPanelRepository$4
   
   public void run()
   {
-    PlusPanelRepository.a(this.this$0).setValue(Integer.valueOf(this.this$0.a.a()));
+    PlusPanelRepository.a(this.this$0).setValue(Integer.valueOf(this.this$0.a.c()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelRepository.4
  * JD-Core Version:    0.7.0.1
  */

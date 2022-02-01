@@ -17,29 +17,29 @@ final class WeishiReportUtil$2
     oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(1);
     localAttributeList.att_name.set("ExitType");
-    localAttributeList.att_value.set(WeishiReportUtil.a(this.jdField_a_of_type_Int));
+    localAttributeList.att_value.set(WeishiReportUtil.a(this.a));
     localArrayList.add(localAttributeList);
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(2);
     localAttributeList.att_name.set("FolderStatus");
-    localAttributeList.att_value.set(String.valueOf(this.jdField_a_of_type_JavaLangString));
+    localAttributeList.att_value.set(String.valueOf(this.b));
     localArrayList.add(localAttributeList);
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(3);
     localAttributeList.att_name.set("Time");
-    localAttributeList.att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Long) / 1000L));
+    localAttributeList.att_value.set(String.valueOf(ReadinjoySPEventReport.b(this.c) / 1000L));
     localArrayList.add(localAttributeList);
-    if (!"1".equals(this.jdField_a_of_type_JavaLangString))
+    if (!"1".equals(this.b))
     {
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(5);
       localAttributeList.att_name.set("StrategyID");
-      localAttributeList.att_value.set(this.b);
+      localAttributeList.att_value.set(this.d);
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(6);
       localAttributeList.att_name.set("AlgorithmID");
-      localAttributeList.att_value.set(this.c);
+      localAttributeList.att_value.set(this.e);
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(7);
@@ -47,7 +47,7 @@ final class WeishiReportUtil$2
       PBStringField localPBStringField = localAttributeList.att_value;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(this.d);
+      localStringBuilder.append(this.f);
       localPBStringField.set(localStringBuilder.toString());
       localArrayList.add(localAttributeList);
     }
@@ -56,7 +56,7 @@ final class WeishiReportUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.WeishiReportUtil.2
  * JD-Core Version:    0.7.0.1
  */

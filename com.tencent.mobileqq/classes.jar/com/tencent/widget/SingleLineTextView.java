@@ -113,15 +113,15 @@ public class SingleLineTextView
     this.mCurTextColor = this.mTextColor.getDefaultColor();
     if (paramAttributeSet != null)
     {
-      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bm);
-      paramInt = paramAttributeSet.getDimensionPixelSize(R.styleable.bw, (int)DisplayUtils.a(paramContext, 12.0F));
-      paramContext = paramAttributeSet.getColorStateList(R.styleable.bx);
-      localObject = paramAttributeSet.getString(R.styleable.bz);
-      this.mMaxWidth = paramAttributeSet.getDimensionPixelSize(R.styleable.by, 2147483647);
+      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.dT);
+      paramInt = paramAttributeSet.getDimensionPixelSize(R.styleable.dU, (int)DisplayUtils.a(paramContext, 12.0F));
+      paramContext = paramAttributeSet.getColorStateList(R.styleable.dV);
+      localObject = paramAttributeSet.getString(R.styleable.dX);
+      this.mMaxWidth = paramAttributeSet.getDimensionPixelSize(R.styleable.dW, 2147483647);
       this.mTextPaint.setTextSize(paramInt);
       setTextColor(paramContext);
       setText((CharSequence)localObject);
-      this.mIncludePad = paramAttributeSet.getBoolean(R.styleable.bA, true);
+      this.mIncludePad = paramAttributeSet.getBoolean(R.styleable.dY, true);
       paramAttributeSet.recycle();
     }
   }
@@ -162,7 +162,7 @@ public class SingleLineTextView
     int i = getIconDrawablesWidth();
     if ((i > 0) && (i > (int)DisplayUtils.a(getContext(), 105.0F)))
     {
-      int k = Math.min(getDesiredWidth(), getResources().getDimensionPixelSize(2131296810));
+      int k = Math.min(getDesiredWidth(), getResources().getDimensionPixelSize(2131297141));
       if (paramInt < k)
       {
         SingleLineTextView.IconDrawable[] arrayOfIconDrawable = this.mIconDrawables;
@@ -1832,7 +1832,7 @@ public class SingleLineTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.SingleLineTextView
  * JD-Core Version:    0.7.0.1
  */

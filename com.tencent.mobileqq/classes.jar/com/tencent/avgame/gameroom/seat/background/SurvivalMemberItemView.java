@@ -17,11 +17,11 @@ import java.util.Random;
 public class SurvivalMemberItemView
   extends RelativeLayout
 {
-  private Animator.AnimatorListener a;
-  public ImageView a;
   public SurvivalMemberInfo a;
-  public RoundCorneredRelativeLayout a;
-  private Animator.AnimatorListener b = new SurvivalMemberItemView.2(this);
+  public ImageView b;
+  public RoundCorneredRelativeLayout c;
+  private Animator.AnimatorListener d = new SurvivalMemberItemView.1(this);
+  private Animator.AnimatorListener e = new SurvivalMemberItemView.2(this);
   
   public SurvivalMemberItemView(Context paramContext)
   {
@@ -36,7 +36,6 @@ public class SurvivalMemberItemView
   public SurvivalMemberItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new SurvivalMemberItemView.1(this);
   }
   
   private Bitmap a(long paramLong, UserInfoHandler paramUserInfoHandler)
@@ -49,36 +48,36 @@ public class SurvivalMemberItemView
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout = ((RoundCorneredRelativeLayout)findViewById(2131378987));
+    this.c = ((RoundCorneredRelativeLayout)findViewById(2131447698));
     float f = GameRoomViewLayoutParamsDef.K / 6;
-    this.jdField_a_of_type_ComTencentAvgameWidgetRoundCorneredRelativeLayout.setRadius(f, f, f, f);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372550));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    this.c.setRadius(f, f, f, f);
+    this.b = ((ImageView)findViewById(2131440088));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
     localLayoutParams.width = GameRoomViewLayoutParamsDef.K;
     localLayoutParams.height = GameRoomViewLayoutParamsDef.L;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    this.b.setLayoutParams(localLayoutParams);
   }
   
   public void a(UserInfoHandler paramUserInfoHandler, SurvivalMemberInfo paramSurvivalMemberInfo, ISurvivalSeatBgPresenter paramISurvivalSeatBgPresenter)
   {
-    if ((paramSurvivalMemberInfo != null) && (paramSurvivalMemberInfo.a() >= 0L) && (paramSurvivalMemberInfo.b() != -1) && (IGameEngine.a() != null))
+    if ((paramSurvivalMemberInfo != null) && (paramSurvivalMemberInfo.a() >= 0L) && (paramSurvivalMemberInfo.c() != -1) && (IGameEngine.K() != null))
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberInfo = paramSurvivalMemberInfo;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramSurvivalMemberInfo.a(), paramUserInfoHandler));
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-      if (paramSurvivalMemberInfo.a() == 0) {
-        paramISurvivalSeatBgPresenter.a(this, this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
+      this.a = paramSurvivalMemberInfo;
+      this.b.setImageBitmap(a(paramSurvivalMemberInfo.a(), paramUserInfoHandler));
+      this.b.setAlpha(0.5F);
+      if (paramSurvivalMemberInfo.b() == 0) {
+        paramISurvivalSeatBgPresenter.a(this, this.d);
       }
       return;
     }
-    paramUserInfoHandler = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberInfo;
-    if ((paramUserInfoHandler != null) && (paramUserInfoHandler.a() < 0L) && (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberInfo.b() >= 0) && (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberInfo.a() != 0)) {
-      paramISurvivalSeatBgPresenter.b(this, this.b);
+    paramUserInfoHandler = this.a;
+    if ((paramUserInfoHandler != null) && (paramUserInfoHandler.a() < 0L) && (this.a.c() >= 0) && (this.a.b() != 0)) {
+      paramISurvivalSeatBgPresenter.b(this, this.e);
     } else {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
+      this.b.setImageBitmap(null);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(getContext().getResources().getColor(2131165315));
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberInfo = paramSurvivalMemberInfo;
+    this.b.setBackgroundColor(getContext().getResources().getColor(2131165551));
+    this.a = paramSurvivalMemberInfo;
   }
 }
 

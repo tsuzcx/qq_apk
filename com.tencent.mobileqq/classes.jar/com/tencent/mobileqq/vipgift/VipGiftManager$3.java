@@ -16,24 +16,24 @@ class VipGiftManager$3
       paramString.append("checkUpAndNotifyByBid loaded,code:");
       paramString.append(paramInt);
       paramString.append(",cost:");
-      paramString.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      paramString.append(System.currentTimeMillis() - this.a);
       QLog.d("VipGiftManager", 2, paramString.toString());
     }
-    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+    if (this.b.equalsIgnoreCase("280")) {
+      this.e.a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
     }
     if ((paramInt != 0) && (8 != paramInt) && (5 != paramInt))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(5L, this.jdField_b_of_type_Long))
+      if (this.e.a(5L, this.c))
       {
-        paramString = this.jdField_b_of_type_JavaLangString;
+        paramString = this.d;
         if (paramString != null) {
-          this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(paramString, this.jdField_b_of_type_Long);
+          this.e.a(paramString, this.c);
         }
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(2L, this.jdField_b_of_type_Long)) {
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
+    else if (this.e.a(2L, this.c)) {
+      this.e.a(this.b, this.c);
     }
   }
   
@@ -50,7 +50,7 @@ class VipGiftManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipgift.VipGiftManager.3
  * JD-Core Version:    0.7.0.1
  */

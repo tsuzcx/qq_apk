@@ -9,12 +9,31 @@ public class WadlConfigUtils
   {
     FloatingPermissionConfBean localFloatingPermissionConfBean = FloatingPermissionConfProcessor.a();
     if (localFloatingPermissionConfBean != null) {
-      return localFloatingPermissionConfBean.jdField_a_of_type_Int;
+      return localFloatingPermissionConfBean.a;
     }
     return -1;
   }
   
-  public static boolean a()
+  public static boolean a(String paramString)
+  {
+    Object localObject = FloatingPermissionConfProcessor.a();
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((FloatingPermissionConfBean)localObject).c;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((String)((Iterator)localObject).next()).equals(paramString)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean b()
   {
     FloatingPermissionConfBean localFloatingPermissionConfBean = FloatingPermissionConfProcessor.a();
     boolean bool2 = false;
@@ -28,29 +47,10 @@ public class WadlConfigUtils
     }
     return bool1;
   }
-  
-  public static boolean a(String paramString)
-  {
-    Object localObject = FloatingPermissionConfProcessor.a();
-    if (localObject == null) {
-      return false;
-    }
-    localObject = ((FloatingPermissionConfBean)localObject).jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((String)((Iterator)localObject).next()).equals(paramString)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.config.WadlConfigUtils
  * JD-Core Version:    0.7.0.1
  */

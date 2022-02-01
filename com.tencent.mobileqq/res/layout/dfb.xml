@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/n3z" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/enf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="-20.0dip" android:layout_above="@id/iet" />
+    <LinearLayout android:orientation="vertical" android:id="@id/iet" android:background="#f3101016" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="68.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="56.0dip">
+            <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="16.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="出装展示" />
+            <ImageView android:layout_gravity="center|right" android:id="@id/az2" android:layout_width="24.0dip" android:layout_height="54.0dip" android:src="@drawable/jfk" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="56.0dip">
+            <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="展示你的王者出装铭文" />
+            <com.tencent.widget.Switch android:layout_gravity="center|right" android:id="@id/q8l" android:layout_width="51.0dip" android:layout_height="wrap_content" android:maxHeight="31.0dip" app:thumb="@drawable/gz0" app:track="@drawable/gz3" />
+        </FrameLayout>
+        <View android:background="#ff252544" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginBottom="24.0dip" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff878b99" android:id="@id/1a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择要展示的帐号" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="160.0dip">
+            <ScrollView android:id="@id/pww" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+                <LinearLayout android:orientation="vertical" android:id="@id/pwv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </ScrollView>
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/mwj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_width="90.0dip" android:layout_height="90.0dip" android:src="@drawable/jes" />
+                <TextView android:textSize="12.0dip" android:textColor="#ff595980" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="开启出装展示，可以吸引更多粉丝哦" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+    <com.tencent.timi.game.base.ui.TimiGamePageLoadingView android:id="@id/ef6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/enf" />
+</RelativeLayout>

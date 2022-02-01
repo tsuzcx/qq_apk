@@ -180,11 +180,6 @@ public class TroopAvatarHandler
     return localHashSet;
   }
   
-  protected String a()
-  {
-    return "TroopAvatarHandler";
-  }
-  
   /* Error */
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
@@ -221,114 +216,114 @@ public class TroopAvatarHandler
     //   57: checkcast 232	[B
     //   60: iconst_m1
     //   61: invokespecial 235	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg:<init>	(Lcom/tencent/mobileqq/troop/handler/TroopAvatarHandler;[BI)V
-    //   64: invokevirtual 238	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg:a	()Lcom/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg;
+    //   64: invokevirtual 239	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg:c	()Lcom/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg;
     //   67: astore_3
     //   68: aload_3
-    //   69: invokevirtual 240	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg:a	()I
+    //   69: invokevirtual 241	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg:a	()I
     //   72: istore 5
     //   74: aload_3
-    //   75: invokevirtual 243	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg:a	()Ltencent/im/oidb/oidb_sso$OIDBSSOPkg;
+    //   75: invokevirtual 245	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$DecodeGetTroopAvatarWallPkg:b	()Ltencent/im/oidb/oidb_sso$OIDBSSOPkg;
     //   78: astore_3
     //   79: aload_3
     //   80: ifnull +439 -> 519
     //   83: aload_3
-    //   84: getfield 249	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   87: invokevirtual 252	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   84: getfield 251	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   87: invokevirtual 254	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   90: ifeq +429 -> 519
     //   93: aload_3
-    //   94: getfield 249	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   97: invokevirtual 255	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   94: getfield 251	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   97: invokevirtual 257	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   100: ifnull +419 -> 519
     //   103: aload_3
-    //   104: getfield 249	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   107: invokevirtual 255	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   110: invokevirtual 261	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   104: getfield 251	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   107: invokevirtual 257	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   110: invokevirtual 263	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   113: astore 12
     //   115: aload_1
     //   116: astore_3
-    //   117: new 263	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo
+    //   117: new 265	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo
     //   120: dup
     //   121: aload_0
     //   122: aconst_null
     //   123: lload 9
     //   125: iload 5
     //   127: aload 12
-    //   129: invokespecial 266	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:<init>	(Lcom/tencent/mobileqq/troop/handler/TroopAvatarHandler;Ljava/lang/String;JI[B)V
-    //   132: invokevirtual 269	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:a	()Lcom/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo;
+    //   129: invokespecial 268	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:<init>	(Lcom/tencent/mobileqq/troop/handler/TroopAvatarHandler;Ljava/lang/String;JI[B)V
+    //   132: invokevirtual 271	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:d	()Lcom/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo;
     //   135: astore 12
     //   137: aload_1
     //   138: astore_3
     //   139: aload 12
-    //   141: invokevirtual 271	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:a	()Ljava/lang/String;
+    //   141: invokevirtual 273	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:a	()Ljava/lang/String;
     //   144: astore_1
     //   145: aload_1
     //   146: astore_3
     //   147: aload 12
-    //   149: invokevirtual 272	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:a	()I
+    //   149: invokevirtual 275	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:b	()I
     //   152: istore 4
     //   154: aload 12
-    //   156: invokevirtual 275	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:a	()Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo;
+    //   156: invokevirtual 278	com/tencent/mobileqq/troop/handler/TroopAvatarHandler$HandleGetTroopAvatarWallGetGroupInfo:c	()Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo;
     //   159: astore 13
     //   161: aload 13
     //   163: ifnull +248 -> 411
     //   166: aload_0
-    //   167: getfield 279	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:appRuntime	Lcom/tencent/common/app/AppInterface;
-    //   170: ldc_w 281
+    //   167: getfield 282	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:appRuntime	Lcom/tencent/common/app/AppInterface;
+    //   170: ldc_w 284
     //   173: ldc 163
-    //   175: invokevirtual 287	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   178: checkcast 281	com/tencent/mobileqq/troop/api/ITroopInfoService
+    //   175: invokevirtual 290	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   178: checkcast 284	com/tencent/mobileqq/troop/api/ITroopInfoService
     //   181: astore 12
     //   183: aload 12
     //   185: lload 9
-    //   187: invokestatic 290	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   190: invokeinterface 294 2 0
+    //   187: invokestatic 293	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   190: invokeinterface 297 2 0
     //   195: astore_3
     //   196: aload 13
-    //   198: getfield 300	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:msg_head_portrait	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait;
-    //   201: invokevirtual 301	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait:has	()Z
+    //   198: getfield 303	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:msg_head_portrait	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait;
+    //   201: invokevirtual 304	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait:has	()Z
     //   204: ifeq +152 -> 356
     //   207: aload 13
-    //   209: getfield 304	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_head_portrait_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   209: getfield 307	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_head_portrait_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   212: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   215: ifeq +141 -> 356
     //   218: aload 13
-    //   220: getfield 300	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:msg_head_portrait	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait;
+    //   220: getfield 303	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:msg_head_portrait	Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait;
     //   223: astore 15
     //   225: aload 13
-    //   227: getfield 304	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_head_portrait_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   227: getfield 307	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_head_portrait_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   230: invokevirtual 25	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   233: istore 5
     //   235: aload 15
     //   237: aload 14
-    //   239: invokestatic 306	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:a	(Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait;Ljava/util/List;)I
+    //   239: invokestatic 309	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:a	(Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait;Ljava/util/List;)I
     //   242: istore 8
     //   244: aload 15
-    //   246: invokestatic 308	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:a	(Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait;)Ljava/util/Set;
+    //   246: invokestatic 311	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:a	(Ltencent/im/oidb/cmd0x88d/oidb_0x88d$GroupHeadPortrait;)Ljava/util/Set;
     //   249: astore 13
     //   251: aload_3
     //   252: ifnull +59 -> 311
     //   255: aload_3
-    //   256: getfield 314	com/tencent/mobileqq/data/troop/TroopInfo:mTroopPicList	Ljava/util/List;
-    //   259: invokeinterface 317 1 0
+    //   256: getfield 317	com/tencent/mobileqq/data/troop/TroopInfo:mTroopPicList	Ljava/util/List;
+    //   259: invokeinterface 320 1 0
     //   264: aload_3
-    //   265: getfield 314	com/tencent/mobileqq/data/troop/TroopInfo:mTroopPicList	Ljava/util/List;
+    //   265: getfield 317	com/tencent/mobileqq/data/troop/TroopInfo:mTroopPicList	Ljava/util/List;
     //   268: aload 14
-    //   270: invokeinterface 321 2 0
+    //   270: invokeinterface 324 2 0
     //   275: pop
     //   276: aload_3
-    //   277: getfield 325	com/tencent/mobileqq/data/troop/TroopInfo:mTroopVerifyingPics	Ljava/util/Set;
-    //   280: invokeinterface 326 1 0
+    //   277: getfield 328	com/tencent/mobileqq/data/troop/TroopInfo:mTroopVerifyingPics	Ljava/util/Set;
+    //   280: invokeinterface 329 1 0
     //   285: aload_3
-    //   286: getfield 325	com/tencent/mobileqq/data/troop/TroopInfo:mTroopVerifyingPics	Ljava/util/Set;
+    //   286: getfield 328	com/tencent/mobileqq/data/troop/TroopInfo:mTroopVerifyingPics	Ljava/util/Set;
     //   289: aload 13
-    //   291: invokeinterface 327 2 0
+    //   291: invokeinterface 330 2 0
     //   296: pop
     //   297: aload_3
     //   298: iload 8
-    //   300: putfield 330	com/tencent/mobileqq/data/troop/TroopInfo:mTroopAvatarId	I
+    //   300: putfield 333	com/tencent/mobileqq/data/troop/TroopInfo:mTroopAvatarId	I
     //   303: aload 12
     //   305: aload_3
-    //   306: invokeinterface 334 2 0
+    //   306: invokeinterface 337 2 0
     //   311: iconst_1
     //   312: istore 11
     //   314: iload 4
@@ -353,11 +348,11 @@ public class TroopAvatarHandler
     //   351: astore 13
     //   353: goto +119 -> 472
     //   356: aload 13
-    //   358: getfield 304	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_head_portrait_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   358: getfield 307	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_head_portrait_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   361: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   364: ifeq +19 -> 383
     //   367: aload 13
-    //   369: getfield 304	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_head_portrait_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   369: getfield 307	tencent/im/oidb/cmd0x88d/oidb_0x88d$GroupInfo:uint32_head_portrait_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   372: invokevirtual 25	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   375: istore 5
     //   377: iconst_1
@@ -424,10 +419,10 @@ public class TroopAvatarHandler
     //   484: istore 6
     //   486: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   489: ifeq +15 -> 504
-    //   492: ldc_w 336
+    //   492: ldc_w 339
     //   495: iconst_2
     //   496: aload 12
-    //   498: invokevirtual 337	java/lang/Exception:toString	()Ljava/lang/String;
+    //   498: invokevirtual 340	java/lang/Exception:toString	()Ljava/lang/String;
     //   501: invokestatic 133	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   504: iload 8
     //   506: istore 5
@@ -456,14 +451,14 @@ public class TroopAvatarHandler
     //   546: aload_3
     //   547: ifnull +51 -> 598
     //   550: aload_0
-    //   551: getstatic 342	com/tencent/mobileqq/troop/api/observer/TroopAvatarObserver:TYPE_GET_TROOP_AVATAR	I
+    //   551: getstatic 345	com/tencent/mobileqq/troop/api/observer/TroopAvatarObserver:TYPE_GET_TROOP_AVATAR	I
     //   554: iload 11
     //   556: iconst_5
     //   557: anewarray 110	java/lang/Object
     //   560: dup
     //   561: iconst_0
     //   562: lload 9
-    //   564: invokestatic 290	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   564: invokestatic 293	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   567: aastore
     //   568: dup
     //   569: iconst_1
@@ -483,17 +478,17 @@ public class TroopAvatarHandler
     //   589: iconst_4
     //   590: aconst_null
     //   591: aastore
-    //   592: invokevirtual 346	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   592: invokevirtual 349	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:notifyUI	(IZLjava/lang/Object;)V
     //   595: goto +49 -> 644
     //   598: aload_0
-    //   599: getstatic 342	com/tencent/mobileqq/troop/api/observer/TroopAvatarObserver:TYPE_GET_TROOP_AVATAR	I
+    //   599: getstatic 345	com/tencent/mobileqq/troop/api/observer/TroopAvatarObserver:TYPE_GET_TROOP_AVATAR	I
     //   602: iload 11
     //   604: iconst_5
     //   605: anewarray 110	java/lang/Object
     //   608: dup
     //   609: iconst_0
     //   610: lload 9
-    //   612: invokestatic 290	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   612: invokestatic 293	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   615: aastore
     //   616: dup
     //   617: iconst_1
@@ -513,28 +508,28 @@ public class TroopAvatarHandler
     //   637: iconst_4
     //   638: aload 14
     //   640: aastore
-    //   641: invokevirtual 346	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   641: invokevirtual 349	com/tencent/mobileqq/troop/handler/TroopAvatarHandler:notifyUI	(IZLjava/lang/Object;)V
     //   644: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   647: ifeq +139 -> 786
     //   650: new 160	java/lang/StringBuilder
     //   653: dup
     //   654: sipush 150
-    //   657: invokespecial 349	java/lang/StringBuilder:<init>	(I)V
+    //   657: invokespecial 352	java/lang/StringBuilder:<init>	(I)V
     //   660: astore_3
     //   661: aload_3
-    //   662: ldc_w 351
+    //   662: ldc_w 354
     //   665: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   668: pop
     //   669: aload_3
-    //   670: ldc_w 353
+    //   670: ldc_w 356
     //   673: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   676: pop
     //   677: aload_3
     //   678: iload 11
-    //   680: invokevirtual 356	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   680: invokevirtual 359	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   683: pop
     //   684: aload_3
-    //   685: ldc_w 358
+    //   685: ldc_w 361
     //   688: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   691: pop
     //   692: aload_3
@@ -543,15 +538,15 @@ public class TroopAvatarHandler
     //   697: invokevirtual 170	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   700: pop
     //   701: aload_3
-    //   702: ldc_w 360
+    //   702: ldc_w 363
     //   705: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   708: pop
     //   709: aload_3
     //   710: lload 9
-    //   712: invokevirtual 363	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   712: invokevirtual 366	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   715: pop
     //   716: aload_3
-    //   717: ldc_w 365
+    //   717: ldc_w 368
     //   720: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   723: pop
     //   724: aload_3
@@ -559,7 +554,7 @@ public class TroopAvatarHandler
     //   727: invokevirtual 170	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   730: pop
     //   731: aload_3
-    //   732: ldc_w 367
+    //   732: ldc_w 370
     //   735: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   738: pop
     //   739: aload_3
@@ -567,7 +562,7 @@ public class TroopAvatarHandler
     //   742: invokevirtual 170	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   745: pop
     //   746: aload_3
-    //   747: ldc_w 369
+    //   747: ldc_w 372
     //   750: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   753: pop
     //   754: aload_3
@@ -575,14 +570,14 @@ public class TroopAvatarHandler
     //   757: invokevirtual 170	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   760: pop
     //   761: aload_3
-    //   762: ldc_w 371
+    //   762: ldc_w 374
     //   765: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   768: pop
     //   769: aload_3
     //   770: aload_1
     //   771: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   774: pop
-    //   775: ldc_w 336
+    //   775: ldc_w 339
     //   778: iconst_2
     //   779: aload_3
     //   780: invokevirtual 175	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -665,7 +660,7 @@ public class TroopAvatarHandler
     {
       ((oidb_0x8b8.ReqBody)localObject1).uint64_group_uin.set(Long.parseLong(paramString));
       ((oidb_0x8b8.ReqBody)localObject1).uint32_subcmd.set(paramInt + 1);
-      ((oidb_0x8b8.ReqBody)localObject1).uint32_client_ver.set(AppSetting.a());
+      ((oidb_0x8b8.ReqBody)localObject1).uint32_client_ver.set(AppSetting.d());
       ((oidb_0x8b8.ReqBody)localObject1).uint32_sequence.set(23);
       Object localObject2;
       if (paramInt == 0)
@@ -834,6 +829,11 @@ public class TroopAvatarHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopAvatarHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -866,7 +866,7 @@ public class TroopAvatarHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -894,7 +894,7 @@ public class TroopAvatarHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopAvatarHandler
  * JD-Core Version:    0.7.0.1
  */

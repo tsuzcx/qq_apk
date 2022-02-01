@@ -16,25 +16,16 @@ import com.google.android.material.animation.AnimationUtils;
 class ClearTextEndIconDelegate
   extends EndIconDelegate
 {
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private final TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ClearTextEndIconDelegate.1(this);
-  private final View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new ClearTextEndIconDelegate.2(this);
-  private final TextInputLayout.OnEditTextAttachedListener jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEditTextAttachedListener = new ClearTextEndIconDelegate.3(this);
-  private final TextInputLayout.OnEndIconChangedListener jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEndIconChangedListener = new ClearTextEndIconDelegate.4(this);
+  private final TextWatcher d = new ClearTextEndIconDelegate.1(this);
+  private final View.OnFocusChangeListener e = new ClearTextEndIconDelegate.2(this);
+  private final TextInputLayout.OnEditTextAttachedListener f = new ClearTextEndIconDelegate.3(this);
+  private final TextInputLayout.OnEndIconChangedListener g = new ClearTextEndIconDelegate.4(this);
+  private AnimatorSet h;
+  private ValueAnimator i;
   
   ClearTextEndIconDelegate(@NonNull TextInputLayout paramTextInputLayout)
   {
     super(paramTextInputLayout);
-  }
-  
-  private ValueAnimator a()
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.8F, 1.0F });
-    localValueAnimator.setInterpolator(AnimationUtils.d);
-    localValueAnimator.setDuration(150L);
-    localValueAnimator.addUpdateListener(new ClearTextEndIconDelegate.9(this));
-    return localValueAnimator;
   }
   
   private ValueAnimator a(float... paramVarArgs)
@@ -46,39 +37,28 @@ class ClearTextEndIconDelegate
     return paramVarArgs;
   }
   
-  private void b()
-  {
-    ValueAnimator localValueAnimator1 = a();
-    ValueAnimator localValueAnimator2 = a(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localValueAnimator1, localValueAnimator2 });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new ClearTextEndIconDelegate.6(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = a(new float[] { 1.0F, 0.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new ClearTextEndIconDelegate.7(this));
-  }
-  
   private void b(boolean paramBoolean)
   {
-    int i;
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.d() == paramBoolean) {
-      i = 1;
+    int j;
+    if (this.a.g() == paramBoolean) {
+      j = 1;
     } else {
-      i = 0;
+      j = 0;
     }
-    if ((paramBoolean) && (!this.jdField_a_of_type_AndroidAnimationAnimatorSet.isRunning()))
+    if ((paramBoolean) && (!this.h.isRunning()))
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-      if (i != 0) {
-        this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      this.i.cancel();
+      this.h.start();
+      if (j != 0) {
+        this.h.end();
       }
     }
     else if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-      if (i != 0) {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
+      this.h.cancel();
+      this.i.start();
+      if (j != 0) {
+        this.i.end();
       }
     }
   }
@@ -88,19 +68,39 @@ class ClearTextEndIconDelegate
     return paramEditable.length() > 0;
   }
   
+  private void c()
+  {
+    ValueAnimator localValueAnimator1 = d();
+    ValueAnimator localValueAnimator2 = a(new float[] { 0.0F, 1.0F });
+    this.h = new AnimatorSet();
+    this.h.playTogether(new Animator[] { localValueAnimator1, localValueAnimator2 });
+    this.h.addListener(new ClearTextEndIconDelegate.6(this));
+    this.i = a(new float[] { 1.0F, 0.0F });
+    this.i.addListener(new ClearTextEndIconDelegate.7(this));
+  }
+  
+  private ValueAnimator d()
+  {
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.8F, 1.0F });
+    localValueAnimator.setInterpolator(AnimationUtils.d);
+    localValueAnimator.setDuration(150L);
+    localValueAnimator.addUpdateListener(new ClearTextEndIconDelegate.9(this));
+    return localValueAnimator;
+  }
+  
   void a()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconDrawable(AppCompatResources.getDrawable(this.jdField_a_of_type_AndroidContentContext, R.drawable.g));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconContentDescription(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.getResources().getText(R.string.e));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconOnClickListener(new ClearTextEndIconDelegate.5(this));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEditTextAttachedListener);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEndIconChangedListener);
-    b();
+    this.a.setEndIconDrawable(AppCompatResources.getDrawable(this.b, R.drawable.g));
+    this.a.setEndIconContentDescription(this.a.getResources().getText(R.string.e));
+    this.a.setEndIconOnClickListener(new ClearTextEndIconDelegate.5(this));
+    this.a.a(this.f);
+    this.a.a(this.g);
+    c();
   }
   
   void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.c() == null) {
+    if (this.a.getSuffixText() == null) {
       return;
     }
     b(paramBoolean);
@@ -108,7 +108,7 @@ class ClearTextEndIconDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.ClearTextEndIconDelegate
  * JD-Core Version:    0.7.0.1
  */

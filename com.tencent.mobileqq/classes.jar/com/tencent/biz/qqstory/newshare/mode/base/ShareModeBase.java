@@ -30,23 +30,12 @@ import mqq.os.MqqHandler;
 
 public abstract class ShareModeBase
 {
-  public static Map<String, String> a;
-  private int a;
-  public OnPrepareShareListener a;
-  public JobExecutor a;
-  public WeakReference<Activity> a;
-  public Map<String, String> b = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
-  
-  public ShareModeBase()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor = new JobExecutor();
-    this.jdField_a_of_type_Int = 0;
-  }
+  public static Map<String, String> t = new ConcurrentHashMap();
+  private int a = 0;
+  public OnPrepareShareListener q;
+  public JobExecutor r = new JobExecutor();
+  public WeakReference<Activity> s;
+  public Map<String, String> u = new ConcurrentHashMap();
   
   public static String a(String paramString, Map<String, String> paramMap)
   {
@@ -93,7 +82,7 @@ public abstract class ShareModeBase
     return paramString;
   }
   
-  private void b(int paramInt)
+  private void d(int paramInt)
   {
     SLog.b("Q.qqstory.share.ShareModeBase", "handlePrepareShareData() action=%d", Integer.valueOf(paramInt));
     switch (paramInt)
@@ -107,12 +96,12 @@ public abstract class ShareModeBase
     case 11: 
     case 12: 
       localObject = new ShareData();
-      ((ShareData)localObject).jdField_a_of_type_Int = paramInt;
+      ((ShareData)localObject).c = paramInt;
       new JobExecutor.OnJobExecuteResultCallback(this, (ShareData)localObject).a();
       return;
     case 6: 
       localObject = new ShareCopyLinkData();
-      ((ShareCopyLinkData)localObject).jdField_a_of_type_Int = paramInt;
+      ((ShareCopyLinkData)localObject).c = paramInt;
       a_((ShareData)localObject);
       a((ShareCopyLinkData)localObject);
       b((ShareData)localObject);
@@ -120,7 +109,7 @@ public abstract class ShareModeBase
       return;
     case 5: 
       localObject = new ShareSinaData();
-      ((ShareSinaData)localObject).jdField_a_of_type_Int = paramInt;
+      ((ShareSinaData)localObject).c = paramInt;
       a_((ShareData)localObject);
       a((ShareSinaData)localObject);
       b((ShareData)localObject);
@@ -128,8 +117,8 @@ public abstract class ShareModeBase
       return;
     case 4: 
       localObject = new ShareWeChatData();
-      ((ShareWeChatData)localObject).jdField_a_of_type_Int = paramInt;
-      ((ShareWeChatData)localObject).jdField_a_of_type_Boolean = true;
+      ((ShareWeChatData)localObject).c = paramInt;
+      ((ShareWeChatData)localObject).j = true;
       a_((ShareData)localObject);
       b((ShareWeChatData)localObject);
       b((ShareData)localObject);
@@ -137,7 +126,7 @@ public abstract class ShareModeBase
       return;
     case 3: 
       localObject = new ShareWeChatData();
-      ((ShareWeChatData)localObject).jdField_a_of_type_Int = paramInt;
+      ((ShareWeChatData)localObject).c = paramInt;
       a_((ShareData)localObject);
       a((ShareWeChatData)localObject);
       b((ShareData)localObject);
@@ -145,7 +134,7 @@ public abstract class ShareModeBase
       return;
     case 2: 
       localObject = new ShareQZoneData();
-      ((ShareQZoneData)localObject).jdField_a_of_type_Int = paramInt;
+      ((ShareQZoneData)localObject).c = paramInt;
       a_((ShareData)localObject);
       a((ShareQZoneData)localObject);
       b((ShareData)localObject);
@@ -153,7 +142,7 @@ public abstract class ShareModeBase
       return;
     }
     Object localObject = new ShareQQData();
-    ((ShareQQData)localObject).jdField_a_of_type_Int = paramInt;
+    ((ShareQQData)localObject).c = paramInt;
     a_((ShareData)localObject);
     a((ShareQQData)localObject);
     b((ShareData)localObject);
@@ -165,11 +154,11 @@ public abstract class ShareModeBase
   protected String a(String paramString, ShareData paramShareData)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.putAll(jdField_a_of_type_JavaUtilMap);
+    localHashMap.putAll(t);
     if (paramShareData != null) {
-      localHashMap.putAll(paramShareData.jdField_a_of_type_JavaUtilMap);
+      localHashMap.putAll(paramShareData.d);
     }
-    localHashMap.putAll(this.b);
+    localHashMap.putAll(this.u);
     return a(paramString, localHashMap);
   }
   
@@ -178,16 +167,10 @@ public abstract class ShareModeBase
     a(true);
   }
   
-  public final void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-  }
-  
   public void a(@NonNull Activity paramActivity)
   {
     AssertUtils.checkNotNull(paramActivity);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.s = new WeakReference(paramActivity);
   }
   
   public void a(ShareCopyLinkData paramShareCopyLinkData) {}
@@ -200,18 +183,18 @@ public abstract class ShareModeBase
   
   public void a(ShareWeChatData paramShareWeChatData)
   {
-    paramShareWeChatData.jdField_a_of_type_Boolean = false;
+    paramShareWeChatData.j = false;
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.16(this));
+      this.r.a(new ShareModeBase.16(this));
       return;
     }
     ShareData localShareData = new ShareData();
-    localShareData.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localShareData.c = this.a;
     d(localShareData);
   }
   
@@ -238,8 +221,8 @@ public abstract class ShareModeBase
   
   protected void b(ShareCopyLinkData paramShareCopyLinkData)
   {
-    String str = paramShareCopyLinkData.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.11(this, str, null, false, paramShareCopyLinkData)).a(new ShareModeBase.10(this, paramShareCopyLinkData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareCopyLinkData));
+    String str = paramShareCopyLinkData.a;
+    this.r.a(new ShareModeBase.11(this, str, null, false, paramShareCopyLinkData)).a(new ShareModeBase.10(this, paramShareCopyLinkData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareCopyLinkData));
   }
   
   protected final void b(ShareData paramShareData)
@@ -249,68 +232,74 @@ public abstract class ShareModeBase
     if ((paramShareData instanceof ShareWeChatData))
     {
       localObject = (ShareWeChatData)paramShareData;
-      ((ShareWeChatData)localObject).d = a(((ShareWeChatData)localObject).d, paramShareData);
+      ((ShareWeChatData)localObject).h = a(((ShareWeChatData)localObject).h, paramShareData);
       return;
     }
     if ((paramShareData instanceof ShareCopyLinkData))
     {
       localObject = (ShareCopyLinkData)paramShareData;
-      ((ShareCopyLinkData)localObject).jdField_a_of_type_JavaLangString = a(((ShareCopyLinkData)localObject).jdField_a_of_type_JavaLangString, paramShareData);
+      ((ShareCopyLinkData)localObject).a = a(((ShareCopyLinkData)localObject).a, paramShareData);
       return;
     }
     if ((paramShareData instanceof ShareSinaData))
     {
       localObject = (ShareSinaData)paramShareData;
-      ((ShareSinaData)localObject).c = a(((ShareSinaData)localObject).c, paramShareData);
+      ((ShareSinaData)localObject).f = a(((ShareSinaData)localObject).f, paramShareData);
       return;
     }
     if ((paramShareData instanceof ShareQZoneData))
     {
       localObject = (ShareQZoneData)paramShareData;
-      ((ShareQZoneData)localObject).e = a(((ShareQZoneData)localObject).e, paramShareData);
+      ((ShareQZoneData)localObject).h = a(((ShareQZoneData)localObject).h, paramShareData);
       return;
     }
     if ((paramShareData instanceof ShareQQData))
     {
       localObject = (ShareQQData)paramShareData;
-      ((ShareQQData)localObject).h = a(((ShareQQData)localObject).h, paramShareData);
+      ((ShareQQData)localObject).m = a(((ShareQQData)localObject).m, paramShareData);
     }
   }
   
   protected void b(ShareQQData paramShareQQData)
   {
-    if ((paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.1(this, paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareQQData));
+    if ((paramShareQQData.e != null) && (paramShareQQData.e.isPollVideo())) {
+      this.r.a(new ShareModeBase.1(this, paramShareQQData.e, paramShareQQData));
     }
-    String str = paramShareQQData.h;
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.2(this, str, null, true, paramShareQQData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareQQData));
+    String str = paramShareQQData.m;
+    this.r.a(new ShareModeBase.2(this, str, null, true, paramShareQQData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareQQData));
   }
   
   protected void b(ShareQZoneData paramShareQZoneData)
   {
-    String str = paramShareQZoneData.e;
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.7(this, str, null, false, paramShareQZoneData));
-    if ((paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.9(this, paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)).a(new ShareModeBase.8(this, paramShareQZoneData));
+    String str = paramShareQZoneData.h;
+    this.r.a(new ShareModeBase.7(this, str, null, false, paramShareQZoneData));
+    if ((paramShareQZoneData.e != null) && (paramShareQZoneData.e.isPollVideo())) {
+      this.r.a(new ShareModeBase.9(this, paramShareQZoneData.e)).a(new ShareModeBase.8(this, paramShareQZoneData));
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareQZoneData));
+    this.r.a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareQZoneData));
   }
   
   protected void b(ShareSinaData paramShareSinaData)
   {
-    String str = paramShareSinaData.c;
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.12(this, str, null, false, paramShareSinaData));
-    if ((paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.15(this, paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareSinaData)).a(new ShareModeBase.14(this, paramShareSinaData)).a(new ShareModeBase.13(this, paramShareSinaData));
+    String str = paramShareSinaData.f;
+    this.r.a(new ShareModeBase.12(this, str, null, false, paramShareSinaData));
+    if ((paramShareSinaData.e != null) && (paramShareSinaData.e.isPollVideo())) {
+      this.r.a(new ShareModeBase.15(this, paramShareSinaData.e, paramShareSinaData)).a(new ShareModeBase.14(this, paramShareSinaData)).a(new ShareModeBase.13(this, paramShareSinaData));
     } else {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new DownloadPic2FileJob(paramShareSinaData.e, paramShareSinaData.d, paramShareSinaData.jdField_a_of_type_Boolean));
+      this.r.a(new DownloadPic2FileJob(paramShareSinaData.h, paramShareSinaData.g, paramShareSinaData.i));
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareSinaData));
+    this.r.a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareSinaData));
   }
   
   public void b(ShareWeChatData paramShareWeChatData)
   {
-    paramShareWeChatData.jdField_a_of_type_Boolean = true;
+    paramShareWeChatData.j = true;
+  }
+  
+  public final void c(int paramInt)
+  {
+    this.a = paramInt;
+    a();
   }
   
   public void c(ShareData paramShareData)
@@ -318,17 +307,17 @@ public abstract class ShareModeBase
     if (QLog.isColorLevel()) {
       QLog.i("Q.qqstory.share.ShareModeBase", 2, "notifyResult");
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener != null)
+    if (this.q != null)
     {
       ShareData localShareData = paramShareData;
       if (paramShareData == null)
       {
         localShareData = new ShareData();
-        localShareData.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localShareData.c = this.a;
       }
       if (Looper.myLooper() == Looper.getMainLooper())
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener.a(localShareData);
+        this.q.a(localShareData);
         return;
       }
       ThreadManager.getUIHandler().post(new ShareModeBase.17(this, localShareData));
@@ -337,13 +326,13 @@ public abstract class ShareModeBase
   
   protected void c(ShareWeChatData paramShareWeChatData)
   {
-    String str = paramShareWeChatData.d;
+    String str = paramShareWeChatData.h;
     SLog.b("Q.qqstory.share.ShareModeBase", "handleShareToWeChatJob url: %s", str);
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.3(this, str, null, false, paramShareWeChatData));
-    if ((paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.4(this, paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareWeChatData));
+    this.r.a(new ShareModeBase.3(this, str, null, false, paramShareWeChatData));
+    if ((paramShareWeChatData.e != null) && (paramShareWeChatData.e.isPollVideo())) {
+      this.r.a(new ShareModeBase.4(this, paramShareWeChatData.e, paramShareWeChatData));
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareModeBase.6(this, paramShareWeChatData.e)).a(new ShareModeBase.5(this, paramShareWeChatData.b, paramShareWeChatData.c, paramShareWeChatData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareWeChatData));
+    this.r.a(new ShareModeBase.6(this, paramShareWeChatData.i)).a(new ShareModeBase.5(this, paramShareWeChatData.k, paramShareWeChatData.l, paramShareWeChatData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareWeChatData));
   }
   
   public void d(ShareData paramShareData)
@@ -351,17 +340,17 @@ public abstract class ShareModeBase
     if (QLog.isColorLevel()) {
       QLog.w("Q.qqstory.share.ShareModeBase", 2, "notifyError");
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener != null)
+    if (this.q != null)
     {
       ShareData localShareData = paramShareData;
       if (paramShareData == null)
       {
         localShareData = new ShareData();
-        localShareData.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localShareData.c = this.a;
       }
       if (Looper.myLooper() == Looper.getMainLooper())
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener.b(localShareData);
+        this.q.b(localShareData);
         return;
       }
       ThreadManager.getUIHandler().post(new ShareModeBase.18(this, localShareData));
@@ -373,17 +362,17 @@ public abstract class ShareModeBase
     if (QLog.isColorLevel()) {
       QLog.w("Q.qqstory.share.ShareModeBase", 2, "notifyCancel");
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener != null)
+    if (this.q != null)
     {
       ShareData localShareData = paramShareData;
       if (paramShareData == null)
       {
         localShareData = new ShareData();
-        localShareData.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localShareData.c = this.a;
       }
       if (Looper.myLooper() == Looper.getMainLooper())
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener.c(localShareData);
+        this.q.c(localShareData);
         return;
       }
       ThreadManager.getUIHandler().post(new ShareModeBase.19(this, localShareData));
@@ -392,7 +381,7 @@ public abstract class ShareModeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase
  * JD-Core Version:    0.7.0.1
  */

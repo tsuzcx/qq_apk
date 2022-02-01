@@ -10,13 +10,13 @@ class SmartDeviceIPCHost$3
   
   public void run()
   {
-    this.this$0.a.add(this.a);
+    this.this$0.d.add(this.a);
     this.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.ipc.SmartDeviceIPCHost.3
  * JD-Core Version:    0.7.0.1
  */

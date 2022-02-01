@@ -36,18 +36,18 @@ import mqq.os.MqqHandler;
 public class AIOMessageSpreadManager
   implements Manager
 {
-  long jdField_a_of_type_Long = 0L;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private BaseTimAIOTipsProcessor jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBaseTimAIOTipsProcessor = null;
-  private ConfigSetting jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting;
-  private String jdField_a_of_type_JavaLangString = "https://docs.qq.com/scenario/createpad.html?";
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private long b;
+  long a = 0L;
+  private QQAppInterface b;
+  private ConfigSetting c;
+  private BaseTimAIOTipsProcessor d = null;
+  private String e = "https://docs.qq.com/scenario/createpad.html?";
+  private long f;
+  private List<MessageRecord> g = new ArrayList();
   
   public AIOMessageSpreadManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting = new ConfigSetting(paramQQAppInterface);
+    this.b = paramQQAppInterface;
+    this.c = new ConfigSetting(paramQQAppInterface);
   }
   
   private float a(String paramString1, String paramString2)
@@ -171,7 +171,7 @@ public class AIOMessageSpreadManager
   
   private void a(ChatMessage paramChatMessage, String paramString1, String paramString2, String paramString3, TencentDocTipsConfigBean.TeamworkKeyWords paramTeamworkKeyWords)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.a()) && (QLog.isColorLevel()))
+    if ((!this.c.b()) && (QLog.isColorLevel()))
     {
       QLog.i("AIOMessageSpreadManager", 1, "last insert time less");
       return;
@@ -185,7 +185,7 @@ public class AIOMessageSpreadManager
       localStringBuilder.append(paramString2);
       QLog.i("AIOMessageSpreadManager", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.a(paramChatMessage);
+    this.c.a(paramChatMessage);
     new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new AIOMessageSpreadManager.2(this, paramChatMessage, paramString1, paramTeamworkKeyWords, paramString2, paramString3), 1000L);
   }
   
@@ -199,10 +199,15 @@ public class AIOMessageSpreadManager
     return (a(paramChar1)) && (b(paramChar2));
   }
   
-  private boolean a(ChatMessage paramChatMessage)
+  static boolean b(char paramChar)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.a();
-    int j = TencentDocTipsConfigProcessor.a().a();
+    return (paramChar >= 56320) && (paramChar < 57344);
+  }
+  
+  private boolean b(ChatMessage paramChatMessage)
+  {
+    int i = this.c.a();
+    int j = TencentDocTipsConfigProcessor.a().b();
     if (j == 0)
     {
       if (QLog.isColorLevel()) {
@@ -237,14 +242,9 @@ public class AIOMessageSpreadManager
     return true;
   }
   
-  static boolean b(char paramChar)
-  {
-    return (paramChar >= 56320) && (paramChar < 57344);
-  }
-  
   public void a(TencentDocTipsConfigBean paramTencentDocTipsConfigBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.a(paramTencentDocTipsConfigBean);
+    this.c.a(paramTencentDocTipsConfigBean);
   }
   
   public void a(ChatMessage paramChatMessage)
@@ -258,14 +258,14 @@ public class AIOMessageSpreadManager
       localStringBuilder.append(paramChatMessage.hashCode());
       QLog.i("AIOMessageSpreadManager", 4, localStringBuilder.toString());
       if (paramChatMessage.msgUid == 0L) {
-        FileManagerUtil.a();
+        FileManagerUtil.d();
       }
     }
-    if ((this.b == paramChatMessage.uniseq) && ((paramChatMessage instanceof MessageForText))) {
+    if ((this.f == paramChatMessage.uniseq) && ((paramChatMessage instanceof MessageForText))) {
       return;
     }
     if ((paramChatMessage instanceof MessageForText)) {
-      this.b = paramChatMessage.uniseq;
+      this.f = paramChatMessage.uniseq;
     }
     ThreadManager.executeOnSubThread(new AIOMessageSpreadManager.1(this, paramChatMessage));
   }
@@ -283,7 +283,7 @@ public class AIOMessageSpreadManager
       QLog.e("AIOMessageSpreadManager", 1, localException1.toString());
       l = 0L;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramChatMessage.frienduin, paramChatMessage.istroop, l);
+    Object localObject1 = this.b.getMessageFacade().b(paramChatMessage.frienduin, paramChatMessage.istroop, l);
     if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
@@ -293,15 +293,15 @@ public class AIOMessageSpreadManager
     }
     Object localObject2 = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_type");
     if (((String)localObject2).equalsIgnoreCase("keyword")) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009078", "0X8009078", 0, 0, "", "", "", "");
+      ReportController.b(this.b, "dc00898", "", "", "0X8009078", "0X8009078", 0, 0, "", "", "", "");
     } else if (((String)localObject2).equalsIgnoreCase("precent")) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800907B", "0X800907B", 0, 0, "", "", "", "");
+      ReportController.b(this.b, "dc00898", "", "", "0X800907B", "0X800907B", 0, 0, "", "", "", "");
     } else if (((String)localObject2).equalsIgnoreCase("text_keyword")) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009072", "0X800907B", 0, 0, "", "", "", "");
+      ReportController.b(this.b, "dc00898", "", "", "0X8009072", "0X800907B", 0, 0, "", "", "", "");
     }
     if ((localObject1 instanceof MessageForFile))
     {
-      paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(l, paramChatMessage.frienduin, paramChatMessage.istroop);
+      paramChatMessage = this.b.getFileManagerProxy().a(l, paramChatMessage.frienduin, paramChatMessage.istroop);
       if (paramChatMessage == null)
       {
         paramChatMessage = new StringBuilder();
@@ -311,29 +311,29 @@ public class AIOMessageSpreadManager
         QLog.e("AIOMessageSpreadManager", 1, paramChatMessage.toString());
         return;
       }
-      TeamWorkConvertUtils.a(paramChatMessage, paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
+      TeamWorkConvertUtils.a(paramChatMessage, paramContext, this.b, 2);
       return;
     }
     if ((localObject1 instanceof MessageForTroopFile))
     {
       paramChatMessage = (MessageForTroopFile)localObject1;
-      localObject1 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+      localObject1 = TroopFileUtils.a(this.b, paramChatMessage);
       localObject2 = new TeamWorkFileImportInfo();
-      ((TeamWorkFileImportInfo)localObject2).c = ((TroopFileStatusInfo)localObject1).jdField_a_of_type_JavaLangString;
-      ((TeamWorkFileImportInfo)localObject2).jdField_b_of_type_JavaLangString = ((TroopFileStatusInfo)localObject1).g;
-      ((TeamWorkFileImportInfo)localObject2).j = FileManagerUtil.a(((TroopFileStatusInfo)localObject1).g);
-      ((TeamWorkFileImportInfo)localObject2).jdField_b_of_type_Boolean = true;
-      ((TeamWorkFileImportInfo)localObject2).jdField_d_of_type_Int = 1;
-      ((TeamWorkFileImportInfo)localObject2).jdField_d_of_type_Long = paramChatMessage.fileSize;
-      ((TeamWorkFileImportInfo)localObject2).jdField_d_of_type_JavaLangString = ((TroopFileStatusInfo)localObject1).jdField_e_of_type_JavaLangString;
-      ((TeamWorkFileImportInfo)localObject2).jdField_b_of_type_Int = ((TroopFileStatusInfo)localObject1).h;
-      ((TeamWorkFileImportInfo)localObject2).jdField_e_of_type_JavaLangString = paramSessionInfo.jdField_b_of_type_JavaLangString;
-      ((TeamWorkFileImportInfo)localObject2).jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      if (((TroopFileStatusInfo)localObject1).jdField_b_of_type_Int != 12) {
-        ((TeamWorkFileImportInfo)localObject2).jdField_a_of_type_Boolean = true;
+      ((TeamWorkFileImportInfo)localObject2).d = ((TroopFileStatusInfo)localObject1).k;
+      ((TeamWorkFileImportInfo)localObject2).c = ((TroopFileStatusInfo)localObject1).t;
+      ((TeamWorkFileImportInfo)localObject2).J = FileManagerUtil.c(((TroopFileStatusInfo)localObject1).t);
+      ((TeamWorkFileImportInfo)localObject2).o = true;
+      ((TeamWorkFileImportInfo)localObject2).n = 1;
+      ((TeamWorkFileImportInfo)localObject2).K = paramChatMessage.fileSize;
+      ((TeamWorkFileImportInfo)localObject2).g = ((TroopFileStatusInfo)localObject1).r;
+      ((TeamWorkFileImportInfo)localObject2).h = ((TroopFileStatusInfo)localObject1).u;
+      ((TeamWorkFileImportInfo)localObject2).j = paramSessionInfo.c;
+      ((TeamWorkFileImportInfo)localObject2).b = paramSessionInfo.b;
+      if (((TroopFileStatusInfo)localObject1).e != 12) {
+        ((TeamWorkFileImportInfo)localObject2).m = true;
       }
-      ((TeamWorkFileImportInfo)localObject2).jdField_a_of_type_Int = 1;
-      TeamWorkConvertUtils.a((TeamWorkFileImportInfo)localObject2, paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((TeamWorkFileImportInfo)localObject2).jdField_d_of_type_Int);
+      ((TeamWorkFileImportInfo)localObject2).a = 1;
+      TeamWorkConvertUtils.a((TeamWorkFileImportInfo)localObject2, paramContext, this.b, ((TeamWorkFileImportInfo)localObject2).n);
       return;
     }
     if ((localObject1 instanceof MessageForText))
@@ -348,9 +348,9 @@ public class AIOMessageSpreadManager
         try
         {
           if (Integer.parseInt((String)localObject2) == 0) {
-            localTeamWorkFileImportInfo.jdField_e_of_type_Int = 3;
+            localTeamWorkFileImportInfo.u = 3;
           } else {
-            localTeamWorkFileImportInfo.jdField_e_of_type_Int = 6;
+            localTeamWorkFileImportInfo.u = 6;
           }
         }
         catch (Exception localException2)
@@ -358,7 +358,7 @@ public class AIOMessageSpreadManager
           QLog.e("AIOMessageSpreadManager", 2, localException2.getMessage());
         }
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.e);
         localStringBuilder.append("type=");
         localStringBuilder.append((String)localObject2);
         localStringBuilder.append("&template_id=");
@@ -367,12 +367,12 @@ public class AIOMessageSpreadManager
         localStringBuilder.append(paramChatMessage);
         localBundle.putString("url", localStringBuilder.toString());
         localBundle.putBoolean("doc_from_aio", true);
-        localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = true;
-        localTeamWorkFileImportInfo.jdField_d_of_type_Int = 1;
-        localTeamWorkFileImportInfo.jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
-        localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-        localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = paramSessionInfo.jdField_b_of_type_JavaLangString;
-        localTeamWorkFileImportInfo.f = true;
+        localTeamWorkFileImportInfo.o = true;
+        localTeamWorkFileImportInfo.n = 1;
+        localTeamWorkFileImportInfo.a = paramSessionInfo.a;
+        localTeamWorkFileImportInfo.b = paramSessionInfo.b;
+        localTeamWorkFileImportInfo.j = paramSessionInfo.c;
+        localTeamWorkFileImportInfo.s = true;
         localBundle.putParcelable("key_team_work_file_import_info", localTeamWorkFileImportInfo);
         localBundle.putString("tdsourcetag", "s_qq_aio_grey");
         TeamWorkDocEditBrowserActivity.a(paramContext, localBundle, false);
@@ -388,7 +388,7 @@ public class AIOMessageSpreadManager
   {
     if (paramMessageRecord == null)
     {
-      QLog.e("AIOMessageSpreadManager", 1, FileManagerUtil.a());
+      QLog.e("AIOMessageSpreadManager", 1, FileManagerUtil.d());
       return;
     }
     if (QLog.isColorLevel())
@@ -401,15 +401,15 @@ public class AIOMessageSpreadManager
     ThreadManager.getUIHandler().postDelayed(new AIOMessageSpreadManager.3(this), 1000L);
     try
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.g.add(paramMessageRecord);
+      this.a = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
         paramMessageRecord = new StringBuilder();
         paramMessageRecord.append("lastInsertTime[");
-        paramMessageRecord.append(this.jdField_a_of_type_Long);
+        paramMessageRecord.append(this.a);
         paramMessageRecord.append("],lstCache size[");
-        paramMessageRecord.append(this.jdField_a_of_type_JavaUtilList.size());
+        paramMessageRecord.append(this.g.size());
         paramMessageRecord.append("]");
         QLog.i("AIOMessageSpreadManager", 1, paramMessageRecord.toString());
       }
@@ -436,7 +436,7 @@ public class AIOMessageSpreadManager
       try
       {
         long l = Long.parseLong(str);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramMessageRecord.frienduin, paramMessageRecord.istroop, l, true);
+        this.b.getMessageFacade().b(paramMessageRecord.frienduin, paramMessageRecord.istroop, l, true);
         return;
       }
       catch (Exception paramMessageRecord)
@@ -451,7 +451,7 @@ public class AIOMessageSpreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager
  * JD-Core Version:    0.7.0.1
  */

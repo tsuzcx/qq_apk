@@ -10,14 +10,14 @@ class AEPhotoListLogicBase$13
   
   public void run()
   {
-    if (((AEAbstractPhotoListFragment)this.this$0.a.get()).a == null) {
-      ((AEAbstractPhotoListFragment)this.this$0.a.get()).a(true, true);
+    if (((AEAbstractPhotoListFragment)this.this$0.b.get()).B == null) {
+      ((AEAbstractPhotoListFragment)this.this$0.b.get()).a(true, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.13
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class HippyViewGroupController
   extends HippyGroupController<HippyViewGroup>
 {
   public static final String CLASS_NAME = "View";
-  public static WeakHashMap<View, Integer> mZIndexHash = new WeakHashMap();
+  public static final WeakHashMap<View, Integer> mZIndexHash = new WeakHashMap();
   
   public static Integer getViewZIndex(View paramView)
   {
@@ -37,19 +37,19 @@ public class HippyViewGroupController
     return new HippyViewGroup(paramContext);
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="backgroundImage")
+  @HippyControllerProps(defaultType="string", name="backgroundImage")
   public void setBackgroundImage(HippyViewGroup paramHippyViewGroup, String paramString)
   {
     paramHippyViewGroup.setUrl(paramString);
   }
   
-  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="backgroundPositionX")
+  @HippyControllerProps(defaultType="number", name="backgroundPositionX")
   public void setBackgroundImagePositionX(HippyViewGroup paramHippyViewGroup, int paramInt)
   {
     paramHippyViewGroup.setImagePositionX((int)PixelUtil.dp2px(paramInt));
   }
   
-  @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="backgroundPositionY")
+  @HippyControllerProps(defaultType="number", name="backgroundPositionY")
   public void setBackgroundImagePositionY(HippyViewGroup paramHippyViewGroup, int paramInt)
   {
     paramHippyViewGroup.setImagePositionY((int)PixelUtil.dp2px(paramInt));
@@ -85,7 +85,7 @@ public class HippyViewGroupController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.view.HippyViewGroupController
  * JD-Core Version:    0.7.0.1
  */

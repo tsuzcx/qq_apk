@@ -11,34 +11,31 @@ import com.tencent.qphone.base.util.QLog;
 public class PicProgressView
   extends MessageProgressView
 {
-  int jdField_a_of_type_Int = 0;
-  PicProgressView.RefreshProgressRunnable jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable;
-  private BaseTransProcessor jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
-  public String a;
-  public boolean a;
-  private boolean b = false;
+  private boolean D = false;
+  public boolean a = false;
+  PicProgressView.RefreshProgressRunnable b;
+  public String c;
+  int d = 0;
+  private BaseTransProcessor e;
   
   public PicProgressView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public PicProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public PicProgressView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+    Object localObject = this.e;
     if (localObject == null) {
       return;
     }
@@ -52,17 +49,17 @@ public class PicProgressView
       i = paramInt1;
       if (paramInt1 >= 100)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = null;
+        this.e = null;
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.setCurrentProgress(i);
-    paramInt1 = Math.max(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress(), 0);
+    this.e.setCurrentProgress(i);
+    paramInt1 = Math.max(this.e.getRealProgress(), 0);
     long l = 25L;
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getRealProgress() < 0) {
+    if (this.e.getRealProgress() < 0) {
       l = 1000L;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getCurrentProgress() <= paramInt1)
+    if (this.e.getCurrentProgress() <= paramInt1)
     {
       if (QLog.isColorLevel())
       {
@@ -74,17 +71,17 @@ public class PicProgressView
         ((StringBuilder)localObject).append("addProgress");
         ((StringBuilder)localObject).append(paramInt2);
         ((StringBuilder)localObject).append(" processor.getKey() ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey());
+        ((StringBuilder)localObject).append(this.e.getKey());
         ((StringBuilder)localObject).append(" processor ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+        ((StringBuilder)localObject).append(this.e);
         QLog.d("PicProgressView", 2, ((StringBuilder)localObject).toString());
       }
       setProgress(i);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable;
+      localObject = this.b;
       if (localObject == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable = new PicProgressView.RefreshProgressRunnable(this, i, paramInt2);
-        postDelayed(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable, l);
+        this.b = new PicProgressView.RefreshProgressRunnable(this, i, paramInt2);
+        postDelayed(this.b, l);
         return;
       }
       if (paramInt2 != 1) {
@@ -103,12 +100,12 @@ public class PicProgressView
         ((StringBuilder)localObject).append("addProgress");
         ((StringBuilder)localObject).append(paramInt2);
         ((StringBuilder)localObject).append(" processor.getKey() ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.getKey());
+        ((StringBuilder)localObject).append(this.e.getKey());
         ((StringBuilder)localObject).append(" processor ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+        ((StringBuilder)localObject).append(this.e);
         QLog.d("PicProgressView", 2, ((StringBuilder)localObject).toString());
       }
-      if (paramInt1 >= this.jdField_a_of_type_Int) {
+      if (paramInt1 >= this.d) {
         setProgress(paramInt1);
       }
     }
@@ -120,10 +117,10 @@ public class PicProgressView
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateProgress processor:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
+      ((StringBuilder)localObject).append(this.e);
       QLog.d("PicProgressView", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+    Object localObject = this.e;
     if (localObject != null) {
       a(((BaseTransProcessor)localObject).getCurrentProgress(), 1);
     }
@@ -131,31 +128,40 @@ public class PicProgressView
   
   protected void a(Canvas paramCanvas)
   {
-    BaseTransProcessor localBaseTransProcessor = this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
+    BaseTransProcessor localBaseTransProcessor = this.e;
     if ((localBaseTransProcessor != null) && ((localBaseTransProcessor instanceof IPicTransFile.IPicUploadPro)) && (localBaseTransProcessor.getFileStatus() < 1001L)) {
       return;
     }
     super.a(paramCanvas);
   }
   
+  public int getProgress()
+  {
+    BaseTransProcessor localBaseTransProcessor = this.e;
+    if (localBaseTransProcessor != null) {
+      return localBaseTransProcessor.getCurrentProgress();
+    }
+    return 0;
+  }
+  
   protected void onDetachedFromWindow()
   {
-    removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable);
+    removeCallbacks(this.b);
     super.onDetachedFromWindow();
   }
   
   public void setProcessor(BaseTransProcessor paramBaseTransProcessor)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == paramBaseTransProcessor) {
+    if (this.e == paramBaseTransProcessor) {
       return;
     }
-    PicProgressView.RefreshProgressRunnable localRefreshProgressRunnable = this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable;
+    PicProgressView.RefreshProgressRunnable localRefreshProgressRunnable = this.b;
     if (localRefreshProgressRunnable != null)
     {
       removeCallbacks(localRefreshProgressRunnable);
-      this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable = null;
+      this.b = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = paramBaseTransProcessor;
+    this.e = paramBaseTransProcessor;
   }
   
   public void setProgress(int paramInt)
@@ -163,25 +169,25 @@ public class PicProgressView
     if (paramInt == 100) {
       setProcessor(null);
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
     setDrawStatus(1);
-    setAnimProgress(paramInt, this.jdField_a_of_type_JavaLangString);
+    setAnimProgress(paramInt, this.c);
   }
   
   public void setProgressKey(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
     a(paramString);
   }
   
   public void setShowProgress(boolean paramBoolean)
   {
-    boolean bool = this.b;
+    boolean bool = this.D;
     int i = 1;
     if ((bool) || (paramBoolean != true)) {
       i = 0;
     }
-    this.b = paramBoolean;
+    this.D = paramBoolean;
     if (i != 0) {
       invalidate();
     }
@@ -189,7 +195,7 @@ public class PicProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.PicProgressView
  * JD-Core Version:    0.7.0.1
  */

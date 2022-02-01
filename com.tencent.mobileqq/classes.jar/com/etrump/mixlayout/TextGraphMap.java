@@ -9,12 +9,12 @@ import com.tencent.util.LongSparseArray;
 
 public class TextGraphMap
 {
-  private LongSparseArray<CharacterStyle> jdField_a_of_type_ComTencentUtilLongSparseArray;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private CharSequence a;
+  private LongSparseArray<CharacterStyle> b;
   
   public TextGraphMap(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.a = paramCharSequence;
     if ((paramCharSequence instanceof Spanned))
     {
       Spanned localSpanned = (Spanned)paramCharSequence;
@@ -23,7 +23,7 @@ public class TextGraphMap
       paramCharSequence = (CharacterStyle[])localSpanned.getSpans(0, j, CharacterStyle.class);
       if ((paramCharSequence != null) && (paramCharSequence.length > 0))
       {
-        this.jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray(paramCharSequence.length);
+        this.b = new LongSparseArray(paramCharSequence.length);
         while (i < paramCharSequence.length)
         {
           Object localObject = paramCharSequence[i];
@@ -31,7 +31,7 @@ public class TextGraphMap
           {
             j = localSpanned.getSpanStart(localObject);
             int k = localSpanned.getSpanEnd(localObject);
-            this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(a(j, k), localObject);
+            this.b.b(a(j, k), localObject);
           }
           i += 1;
         }
@@ -58,9 +58,9 @@ public class TextGraphMap
     localStringBuilder.append(",");
     localStringBuilder.append(paramInt2);
     localStringBuilder.append(" > ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence.length());
+    localStringBuilder.append(this.a.length());
     localStringBuilder.append(":");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append(this.a);
     QLog.e("ETTextView", 1, localStringBuilder.toString());
   }
   
@@ -71,22 +71,22 @@ public class TextGraphMap
   
   public int a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangCharSequence;
+    Object localObject = this.a;
     if (localObject == null) {
       return paramInt;
     }
     int j = 0;
     if ((paramInt >= 0) && (paramInt <= ((CharSequence)localObject).length()))
     {
-      localObject = this.jdField_a_of_type_ComTencentUtilLongSparseArray;
+      localObject = this.b;
       int i = paramInt;
       if (localObject != null)
       {
-        int k = ((LongSparseArray)localObject).a();
+        int k = ((LongSparseArray)localObject).b();
         i = paramInt;
         while (j < k)
         {
-          long l = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(j);
+          long l = this.b.b(j);
           int m = a(l);
           int n = b(l);
           if (m < paramInt) {
@@ -112,17 +112,17 @@ public class TextGraphMap
   
   public int b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangCharSequence;
+    Object localObject = this.a;
     if (localObject == null) {
       return paramInt;
     }
     int j = 0;
     if ((paramInt >= 0) && (paramInt <= ((CharSequence)localObject).length()))
     {
-      localObject = this.jdField_a_of_type_ComTencentUtilLongSparseArray;
+      localObject = this.b;
       if (localObject != null)
       {
-        int m = ((LongSparseArray)localObject).a();
+        int m = ((LongSparseArray)localObject).b();
         int i = paramInt;
         for (;;)
         {
@@ -130,7 +130,7 @@ public class TextGraphMap
           if (j >= m) {
             break;
           }
-          long l = this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(j);
+          long l = this.b.b(j);
           k = a(l);
           int n = b(l);
           if (k >= i)
@@ -143,7 +143,7 @@ public class TextGraphMap
         }
       }
       int k = paramInt;
-      if (k > this.jdField_a_of_type_JavaLangCharSequence.length())
+      if (k > this.a.length())
       {
         a("convertToTextIndex2", paramInt, k);
         return -1;

@@ -25,21 +25,21 @@ class VideoFeedsShareController$9
   
   public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    paramView = RIJQQAppInterfaceUtil.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo != null)
+    paramView = RIJQQAppInterfaceUtil.d();
+    if (this.a != null)
     {
-      if (VideoFeedsShareController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsShareController).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null) {
-        VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo);
+      if (VideoFeedsShareController.e(this.b).aB == null) {
+        VideoFeedsHelper.a(this.a);
       }
-      ReadInJoyLogicEngine.a().a(Long.valueOf(paramView).longValue(), BaseArticleInfoKt.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramArrayList, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.g));
-      AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
+      ReadInJoyLogicEngine.a().a(Long.valueOf(paramView).longValue(), BaseArticleInfoKt.a(this.a.aB, paramArrayList, this.a.l));
+      AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(this.a.as);
       long l2 = 0L;
       long l1 = l2;
       if (paramObject != null)
       {
         l1 = l2;
         if ((paramObject instanceof DislikeInfo)) {
-          l1 = ((DislikeInfo)paramObject).jdField_a_of_type_Long;
+          l1 = ((DislikeInfo)paramObject).e;
         }
       }
       Object localObject2 = "";
@@ -54,11 +54,11 @@ class VideoFeedsShareController$9
         {
           paramView = new StringBuilder();
           paramView.append((String)localObject2);
-          paramView.append(localDislikeInfo.jdField_a_of_type_Long);
+          paramView.append(localDislikeInfo.e);
           localObject2 = paramView.toString();
           paramView = new StringBuilder();
           paramView.append((String)localObject1);
-          paramView.append(localDislikeInfo.jdField_a_of_type_JavaLangString);
+          paramView.append(localDislikeInfo.c);
           localObject1 = paramView.toString();
           paramObject = localObject2;
           paramView = (View)localObject1;
@@ -78,16 +78,16 @@ class VideoFeedsShareController$9
         localObject2 = paramObject;
         localObject1 = paramView;
       }
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(VideoFeedsShareController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsShareController)).a(3).b(10).a(localAdvertisementInfo).a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo).a(l1).a((String)localObject2).b((String)localObject1));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(VideoFeedsShareController.f(this.b)).a(3).b(10).a(localAdvertisementInfo).a(this.a.as).a(l1).a((String)localObject2).b((String)localObject1));
     }
-    QQToast.a(VideoFeedsShareController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsShareController), -1, VideoFeedsShareController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsShareController).getString(2131699886), 0).b(VideoFeedsShareController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsShareController).getResources().getDimensionPixelSize(2131299168));
-    VideoFeedsShareController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsShareController).dismiss();
+    QQToast.makeText(VideoFeedsShareController.f(this.b), -1, VideoFeedsShareController.f(this.b).getString(2131897939), 0).show(VideoFeedsShareController.f(this.b).getResources().getDimensionPixelSize(2131299920));
+    VideoFeedsShareController.k(this.b).dismiss();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.9
  * JD-Core Version:    0.7.0.1
  */

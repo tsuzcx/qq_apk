@@ -49,7 +49,7 @@ public class StackAdapter
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
         localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
-        localURLDrawableOptions.mPlayGifImage = BaseImageUtil.b(str);
+        localURLDrawableOptions.mPlayGifImage = BaseImageUtil.c(str);
         localURLDrawableOptions.mUseAutoScaleParams = true;
         localImageView.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
       }
@@ -73,12 +73,12 @@ public class StackAdapter
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new StackAdapter.MyViewHolder(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559087, paramViewGroup, false));
+    return new StackAdapter.MyViewHolder(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624748, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.StackAdapter
  * JD-Core Version:    0.7.0.1
  */

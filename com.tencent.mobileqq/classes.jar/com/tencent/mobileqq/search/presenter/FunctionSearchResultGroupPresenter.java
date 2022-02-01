@@ -30,30 +30,30 @@ public class FunctionSearchResultGroupPresenter
   {
     Object localObject1 = (ISearchResultGroupModel)paramIModel;
     paramIModel = (FunctionSearchResultGroupView)paramISearchResultGroupView;
-    LinearLayout localLinearLayout = paramIModel.a();
+    LinearLayout localLinearLayout = paramIModel.d();
     if (localLinearLayout != null)
     {
-      List localList = ((ISearchResultGroupModel)localObject1).a();
+      List localList = ((ISearchResultGroupModel)localObject1).b();
       if (localList != null)
       {
         localLinearLayout.removeAllViews();
-        int j = Math.min(localList.size(), ((ISearchResultGroupModel)localObject1).a());
+        int j = Math.min(localList.size(), ((ISearchResultGroupModel)localObject1).d());
         int i = 0;
         while (i < j)
         {
-          localObject1 = new SearchResultFromNetView(paramIModel.a(), 268435456);
-          Object localObject2 = ((SearchResultFromNetView)localObject1).a();
+          localObject1 = new SearchResultFromNetView(paramIModel.e(), 268435456);
+          Object localObject2 = ((SearchResultFromNetView)localObject1).h();
           ISearchResultModel localISearchResultModel = (ISearchResultModel)localList.get(i);
-          ((View)localObject2).setTag(2131380884, localISearchResultModel);
-          ((View)localObject2).setTag(2131380889, localObject1);
-          ((View)localObject2).setTag(2131380885, Integer.valueOf(i));
-          ((View)localObject2).setTag(2131380883, Integer.valueOf(localList.size()));
-          ((View)localObject2).setTag(2131380886, this.a);
+          ((View)localObject2).setTag(2131449867, localISearchResultModel);
+          ((View)localObject2).setTag(2131449873, localObject1);
+          ((View)localObject2).setTag(2131449868, Integer.valueOf(i));
+          ((View)localObject2).setTag(2131449866, Integer.valueOf(localList.size()));
+          ((View)localObject2).setTag(2131449869, this.a);
           if ((localISearchResultModel instanceof GroupBaseNetSearchModelItem)) {
             SearchViewUtils.a((GroupBaseNetSearchModelItem)localISearchResultModel, j, i);
           }
           localObject2 = new LinearLayout.LayoutParams(-1, -2);
-          localLinearLayout.addView(((SearchResultFromNetView)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
+          localLinearLayout.addView(((SearchResultFromNetView)localObject1).h(), (ViewGroup.LayoutParams)localObject2);
           this.a.a(localISearchResultModel, (IView)localObject1);
           i += 1;
         }
@@ -66,7 +66,7 @@ public class FunctionSearchResultGroupPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.FunctionSearchResultGroupPresenter
  * JD-Core Version:    0.7.0.1
  */

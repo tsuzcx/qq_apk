@@ -64,7 +64,7 @@ public class DecodeC2CMsgPkgBubbleID
       }
       long l2;
       if (l1 == 4294967295L) {
-        l2 = LastC2CBubbleID.a(paramBaseMessageHandler.a(), paramString1, paramString2);
+        l2 = LastC2CBubbleID.a(paramBaseMessageHandler.b(), paramString1, paramString2);
       } else {
         l2 = -1L;
       }
@@ -100,7 +100,7 @@ public class DecodeC2CMsgPkgBubbleID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.DecodeC2CMsgPkgBubbleID
  * JD-Core Version:    0.7.0.1
  */

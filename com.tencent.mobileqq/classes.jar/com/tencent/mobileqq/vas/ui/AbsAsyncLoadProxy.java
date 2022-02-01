@@ -23,17 +23,6 @@ public abstract class AbsAsyncLoadProxy<T>
     }
   }
   
-  private final void b()
-  {
-    Object localObject = c();
-    if (localObject != null) {
-      a(localObject);
-    }
-    if (this.a == null) {
-      a(b());
-    }
-  }
-  
   private final void b(AbsAsyncLoadProxy.Loader paramLoader)
   {
     AbsAsyncLoadProxy.MyLoaderCallback localMyLoaderCallback = new AbsAsyncLoadProxy.MyLoaderCallback(new WeakReference(this));
@@ -45,21 +34,23 @@ public abstract class AbsAsyncLoadProxy<T>
     localMyLoaderCallback.a();
   }
   
-  private final void c()
+  private final void g()
   {
+    Object localObject = f();
+    if (localObject != null) {
+      a(localObject);
+    }
     if (this.a == null) {
-      a(b());
+      a(e());
     }
   }
   
-  @Nullable
-  public final T a()
+  private final void h()
   {
-    return this.a;
+    if (this.a == null) {
+      a(e());
+    }
   }
-  
-  @NotNull
-  public abstract Function0<T> a();
   
   protected abstract void a();
   
@@ -67,7 +58,7 @@ public abstract class AbsAsyncLoadProxy<T>
   {
     Intrinsics.checkParameterIsNotNull(paramLoader, "loader");
     if (!paramLoader.a()) {
-      c();
+      h();
     }
     if (paramLoader.a())
     {
@@ -82,9 +73,21 @@ public abstract class AbsAsyncLoadProxy<T>
   @Nullable
   public final T b()
   {
+    return this.a;
+  }
+  
+  @NotNull
+  public abstract Function0<T> c();
+  
+  @NotNull
+  public abstract Function0<T> d();
+  
+  @Nullable
+  public final T e()
+  {
     try
     {
-      Object localObject = a().invoke();
+      Object localObject = c().invoke();
       return localObject;
     }
     catch (Throwable localThrowable)
@@ -95,15 +98,12 @@ public abstract class AbsAsyncLoadProxy<T>
     return null;
   }
   
-  @NotNull
-  public abstract Function0<T> b();
-  
   @Nullable
-  public final T c()
+  public final T f()
   {
     try
     {
-      Object localObject = b().invoke();
+      Object localObject = d().invoke();
       return localObject;
     }
     catch (Throwable localThrowable)
@@ -116,7 +116,7 @@ public abstract class AbsAsyncLoadProxy<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.AbsAsyncLoadProxy
  * JD-Core Version:    0.7.0.1
  */

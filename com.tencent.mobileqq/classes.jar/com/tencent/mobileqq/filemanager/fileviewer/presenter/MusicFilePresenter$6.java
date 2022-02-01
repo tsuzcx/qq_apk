@@ -16,22 +16,22 @@ class MusicFilePresenter$6
         return;
       }
       QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      if (!MusicFilePresenter.a(this.a)) {
-        MusicFilePresenter.b(this.a);
+      if (!MusicFilePresenter.b(this.a)) {
+        MusicFilePresenter.d(this.a);
       }
     }
     else
     {
       QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-      if (MusicFilePresenter.a(this.a)) {
-        MusicFilePresenter.a(this.a);
+      if (MusicFilePresenter.b(this.a)) {
+        MusicFilePresenter.c(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.6
  * JD-Core Version:    0.7.0.1
  */

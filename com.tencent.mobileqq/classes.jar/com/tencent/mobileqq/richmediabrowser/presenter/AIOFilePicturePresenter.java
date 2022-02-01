@@ -41,7 +41,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class AIOFilePicturePresenter
   extends AIOBrowserBasePresenter
 {
-  public AIOFilePictureView a;
+  public AIOFilePictureView e;
   
   private void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, RichMediaBrowserInfo paramRichMediaBrowserInfo)
   {
@@ -63,13 +63,13 @@ public class AIOFilePicturePresenter
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
       ((URLDrawable.URLDrawableOptions)localObject1).mUseExifOrientation = false;
-      localObject2 = new AIOFilePictureModel().a((AIOFilePictureData)paramRichMediaBrowserInfo.baseData, 20);
+      localObject2 = new AIOFilePictureModel().b((AIOFilePictureData)paramRichMediaBrowserInfo.baseData, 20);
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         BrowserLogHelper.getInstance().getGalleryLog().d("AIOFilePicPresenter", 2, "null url");
         return;
       }
-      Object localObject3 = ((AIOFilePictureData)paramRichMediaBrowserInfo.baseData).jdField_b_of_type_JavaLangString;
+      Object localObject3 = ((AIOFilePictureData)paramRichMediaBrowserInfo.baseData).l;
       paramString = null;
       localObject3 = URLDrawable.getFileDrawable((String)localObject3, null);
       if (localObject3 != null)
@@ -79,7 +79,7 @@ public class AIOFilePicturePresenter
       }
       else
       {
-        paramRichMediaBrowserInfo = URLDrawable.getFileDrawable(((AIOFilePictureData)paramRichMediaBrowserInfo.baseData).jdField_a_of_type_JavaLangString, null);
+        paramRichMediaBrowserInfo = URLDrawable.getFileDrawable(((AIOFilePictureData)paramRichMediaBrowserInfo.baseData).k, null);
         if (paramRichMediaBrowserInfo != null)
         {
           paramRichMediaBrowserInfo.downloadImediatly();
@@ -103,44 +103,44 @@ public class AIOFilePicturePresenter
       }
       if (paramString == null)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_AndroidContentContext.getString(2131718254), 0).a();
+        QQToast.makeText(this.e.c, this.e.c.getString(2131915746), 0).show();
         return;
       }
-      paramRichMediaBrowserInfo = (GalleryUrlImageView)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_ComTencentRichmediabrowserViewBrowserBaseView.mBrowserItemView.findViewById(2131368461);
+      paramRichMediaBrowserInfo = (GalleryUrlImageView)this.e.h.mBrowserItemView.findViewById(2131435357);
       if (paramRichMediaBrowserInfo != null)
       {
         paramRichMediaBrowserInfo.setGalleryImageListener(new AIOFilePicturePresenter.1(this, paramString));
         paramRichMediaBrowserInfo.setImageDrawable(paramString);
-        paramRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView;
-        paramRichMediaBrowserInfo.jdField_a_of_type_JavaLangRunnable = RichMediaBrowserUtils.a(paramRichMediaBrowserInfo.b, paramString);
+        paramRichMediaBrowserInfo = this.e;
+        paramRichMediaBrowserInfo.u = RichMediaBrowserUtils.a(paramRichMediaBrowserInfo.t, paramString);
       }
-      if (!a().a)
+      if (!g().a)
       {
-        a().b();
-        a().a();
+        g().b();
+        g().a();
       }
     }
     else
     {
       if (!"TroopFileError".equals(paramString)) {
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_AndroidContentContext.getString(2131718242).equals(paramString)) {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_AndroidContentContext, paramString, 0).a();
+        if (this.e.c.getString(2131915734).equals(paramString)) {
+          QQToast.makeText(this.e.c, paramString, 0).show();
         } else {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_AndroidContentContext.getString(2131718254), 0).a();
+          QQToast.makeText(this.e.c, this.e.c.getString(2131915746), 0).show();
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.g(true);
+      this.e.g(true);
     }
   }
   
   public Intent a(AIOFilePictureData paramAIOFilePictureData, Activity paramActivity)
   {
-    if ((paramAIOFilePictureData != null) && ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.getParamsBuilder().a() instanceof IProvider)) && (((IProvider)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.getParamsBuilder().a()).a()))
+    if ((paramAIOFilePictureData != null) && ((this.a.getParamsBuilder().a() instanceof IProvider)) && (((IProvider)this.a.getParamsBuilder().a()).c()))
     {
-      Intent localIntent = ((IProvider)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.getParamsBuilder().a()).a(paramAIOFilePictureData.jdField_a_of_type_Long, paramAIOFilePictureData.jdField_a_of_type_Int, 0);
+      Intent localIntent = ((IProvider)this.a.getParamsBuilder().a()).c(paramAIOFilePictureData.a, paramAIOFilePictureData.b, 0);
       if (localIntent != null)
       {
-        int i = paramAIOFilePictureData.jdField_b_of_type_Int;
+        int i = paramAIOFilePictureData.f;
         boolean bool = true;
         if (i != 1) {
           bool = false;
@@ -153,42 +153,13 @@ public class AIOFilePicturePresenter
     return null;
   }
   
-  public AIOFilePictureData a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel != null)
-    {
-      RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.getSelectedItem();
-      if ((localRichMediaBrowserInfo != null) && ((localRichMediaBrowserInfo.baseData instanceof AIOFilePictureData)) && (localRichMediaBrowserInfo.baseData.getType() == 102)) {
-        return (AIOFilePictureData)localRichMediaBrowserInfo.baseData;
-      }
-    }
-    return null;
-  }
-  
-  public void a(int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.remove(Integer.valueOf(paramInt));
-      return;
-    }
-    catch (Exception localException)
-    {
-      IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onRevokeMsg exception = ");
-      localStringBuilder.append(localException.getMessage());
-      localIBrowserLog.d("AIOFilePicPresenter", 4, localStringBuilder.toString());
-    }
-  }
-  
   public void a(int paramInt, URLDrawable paramURLDrawable)
   {
-    if ((paramURLDrawable != null) && (this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter != null))
+    if ((paramURLDrawable != null) && (this.c != null))
     {
-      this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.put(Integer.valueOf(paramInt), paramURLDrawable);
-      if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView != null) && (paramInt == this.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getCurrentPosition())) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.a(paramInt);
+      this.c.mActiveDrawable.put(Integer.valueOf(paramInt), paramURLDrawable);
+      if ((this.e != null) && (paramInt == this.c.getCurrentPosition())) {
+        this.e.a(paramInt);
       }
     }
   }
@@ -212,15 +183,15 @@ public class AIOFilePicturePresenter
       localAIOFilePictureData.status = paramInt1;
       localAIOFilePictureData.progress = paramInt3;
       localRichMediaBrowserInfo.baseData = localAIOFilePictureData;
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.browserModel != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.browserModel.updateItem(localRichMediaBrowserInfo);
+      if (this.a.browserModel != null) {
+        this.a.browserModel.updateItem(localRichMediaBrowserInfo);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.browserModel != null)
+    if (this.a.browserModel != null)
     {
-      localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.browserModel.getSelectedItem();
-      if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).jdField_a_of_type_Long == paramLong1)) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.a();
+      localRichMediaBrowserInfo = this.a.browserModel.getSelectedItem();
+      if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null) && (((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).a == paramLong1)) {
+        this.e.a();
       }
     }
   }
@@ -243,14 +214,14 @@ public class AIOFilePicturePresenter
       ((AIOFilePictureData)localObject2).status = 0;
       ((AIOFilePictureData)localObject2).progress = 0;
       ((RichMediaBrowserInfo)localObject1).baseData = ((RichMediaBaseData)localObject2);
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.browserModel != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.browserModel.updateItem((RichMediaBrowserInfo)localObject1);
+      if (this.a.browserModel != null) {
+        this.a.browserModel.updateItem((RichMediaBrowserInfo)localObject1);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.browserModel != null)
+    if (this.a.browserModel != null)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.browserModel.getSelectedItem();
-      if ((localObject2 != null) && (((RichMediaBrowserInfo)localObject2).baseData != null) && (((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject2).baseData).jdField_a_of_type_Long == paramLong))
+      localObject2 = this.a.browserModel.getSelectedItem();
+      if ((localObject2 != null) && (((RichMediaBrowserInfo)localObject2).baseData != null) && (((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject2).baseData).a == paramLong))
       {
         if (paramInt2 == 18)
         {
@@ -263,10 +234,10 @@ public class AIOFilePicturePresenter
           if ((paramInt3 == 2) && (!TextUtils.isEmpty(paramString))) {
             new AIOFilePictureModel().b((AIOFilePictureData)((RichMediaBrowserInfo)localObject2).baseData, paramInt2, paramString);
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_ComTencentRichmediabrowserViewBrowserBaseView != null)
+          if (this.e.h != null)
           {
-            paramString = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView;
-            paramString.a(paramInt1, paramString.jdField_a_of_type_ComTencentRichmediabrowserViewBrowserBaseView.mBrowserItemView, paramBoolean);
+            paramString = this.e;
+            paramString.a(paramInt1, paramString.h.mBrowserItemView, paramBoolean);
           }
           else
           {
@@ -282,7 +253,7 @@ public class AIOFilePicturePresenter
         {
           a(paramLong, paramInt1, paramInt2, paramInt3, paramString, (RichMediaBrowserInfo)localObject2);
         }
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.a();
+        this.e.a();
       }
     }
   }
@@ -291,27 +262,44 @@ public class AIOFilePicturePresenter
   {
     super.a(paramIDecoratorView);
     if ((paramIDecoratorView instanceof AIOFilePictureView)) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView = ((AIOFilePictureView)paramIDecoratorView);
+      this.e = ((AIOFilePictureView)paramIDecoratorView);
     }
   }
   
-  public void b()
+  public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.a() != null))
+    try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      if (LiuHaiUtils.b()) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.a().a((int)Utils.a(LiuHaiUtils.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_AndroidContentContext.getResources()) + 40);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.a().a(40);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.a().c();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.a().e();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.a();
+      this.c.mActiveDrawable.remove(Integer.valueOf(paramInt));
+      return;
+    }
+    catch (Exception localException)
+    {
+      IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRevokeMsg exception = ");
+      localStringBuilder.append(localException.getMessage());
+      localIBrowserLog.d("AIOFilePicPresenter", 4, localStringBuilder.toString());
     }
   }
   
-  public boolean b()
+  public void e()
+  {
+    if ((this.a != null) && (this.a.a != null) && (this.a.d() != null))
+    {
+      this.d.clear();
+      if (LiuHaiUtils.b()) {
+        this.a.d().a((int)Utils.a(LiuHaiUtils.d, this.e.c.getResources()) + 40);
+      } else {
+        this.a.d().a(40);
+      }
+      this.a.d().d();
+      this.a.d().g();
+      this.a.a.b();
+    }
+  }
+  
+  public boolean h()
   {
     if (QLog.isColorLevel())
     {
@@ -326,14 +314,26 @@ public class AIOFilePicturePresenter
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.b.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFilePictureView.jdField_a_of_type_JavaLangRunnable);
+    if (this.e.u != null) {
+      this.e.t.removeCallbacks(this.e.u);
     }
+  }
+  
+  public AIOFilePictureData r()
+  {
+    if (this.a.b != null)
+    {
+      RichMediaBrowserInfo localRichMediaBrowserInfo = this.a.b.getSelectedItem();
+      if ((localRichMediaBrowserInfo != null) && ((localRichMediaBrowserInfo.baseData instanceof AIOFilePictureData)) && (localRichMediaBrowserInfo.baseData.getType() == 102)) {
+        return (AIOFilePictureData)localRichMediaBrowserInfo.baseData;
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.presenter.AIOFilePicturePresenter
  * JD-Core Version:    0.7.0.1
  */

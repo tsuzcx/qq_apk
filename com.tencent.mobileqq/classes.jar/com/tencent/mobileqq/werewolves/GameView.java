@@ -30,13 +30,13 @@ public class GameView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    ((GiftPanelHelper)this.a.a(136)).b();
+    ((GiftPanelHelper)this.a.q(136)).e();
     return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.GameView
  * JD-Core Version:    0.7.0.1
  */

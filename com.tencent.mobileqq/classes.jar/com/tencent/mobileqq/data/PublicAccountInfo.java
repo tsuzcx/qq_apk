@@ -152,8 +152,8 @@ public class PublicAccountInfo
   {
     PublicAccountInfo localPublicAccountInfo = new PublicAccountInfo();
     localPublicAccountInfo.uin = 0L;
-    localPublicAccountInfo.name = paramContext.getString(2131689689);
-    localPublicAccountInfo.displayNumber = paramContext.getString(2131689689);
+    localPublicAccountInfo.name = paramContext.getString(2131886301);
+    localPublicAccountInfo.displayNumber = paramContext.getString(2131886301);
     localPublicAccountInfo.summary = "";
     localPublicAccountInfo.extendType = 1;
     return localPublicAccountInfo;
@@ -750,7 +750,7 @@ public class PublicAccountInfo
     boolean bool1 = bool2;
     if (2 == i)
     {
-      if (!CrmUtils.a)
+      if (!CrmUtils.b)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("PublicAccountInfo", 4, "Don't support sharp");
@@ -777,7 +777,7 @@ public class PublicAccountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicAccountInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,30 +16,29 @@ import org.json.JSONObject;
 public class LebaPlugin
   extends WebViewPlugin
 {
-  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-  public BusinessObserver a;
-  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  String jdField_a_of_type_JavaLangString = null;
-  QQCustomDialog b = null;
+  QQCustomDialog a;
+  TroopMemberApiClient b = null;
+  QQCustomDialog c = null;
+  String d = null;
+  public BusinessObserver e = new LebaPlugin.1(this);
   
   public LebaPlugin()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new LebaPlugin.1(this);
     this.mPluginNameSpace = "lebaPlugin";
   }
   
   private void a(int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    if (this.mRuntime.a() != null)
+    if (this.mRuntime.d() != null)
     {
-      if (this.mRuntime.a().isFinishing()) {
+      if (this.mRuntime.d().isFinishing()) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = Utils.createPluginSetDialogForWeb(this.mRuntime.a(), this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, paramInt, paramLong, paramString1, paramString2);
+      if (this.a == null) {
+        this.a = Utils.createPluginSetDialogForWeb(this.mRuntime.d(), this.b, this.e, paramInt, paramLong, paramString1, paramString2);
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      if (!this.a.isShowing()) {
+        this.a.show();
       }
     }
   }
@@ -67,7 +66,7 @@ public class LebaPlugin
         paramString2.putString("msg", paramJsBridgeListener);
         paramString2.putString("callback", paramString1);
         paramString2.putInt("dialogType", 1);
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(18, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+        this.b.a(18, paramString2, this.e);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -88,7 +87,7 @@ public class LebaPlugin
         paramString1.putInt("reqCode", 10002);
         paramString1.putLong("uiResId", l);
         paramString1.putString("callback", paramJsBridgeListener);
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(18, paramString1, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+        this.b.a(18, paramString1, this.e);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -102,7 +101,7 @@ public class LebaPlugin
         paramJsBridgeListener = new JSONObject(paramJsBridgeListener).optString("keyWord");
         if (!TextUtils.isEmpty(paramJsBridgeListener))
         {
-          this.mRuntime.a();
+          this.mRuntime.d();
           SearchUtils.a("hot_list", "clk_hot_list", new String[] { paramJsBridgeListener });
           return true;
         }
@@ -119,26 +118,26 @@ public class LebaPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+    this.b = TroopMemberApiClient.a();
+    this.b.e();
   }
   
   protected void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    Object localObject = this.b;
     if (localObject != null) {
-      ((TroopMemberApiClient)localObject).b();
+      ((TroopMemberApiClient)localObject).f();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    localObject = this.a;
     if ((localObject != null) && (((QQCustomDialog)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.a.dismiss();
     }
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaPlugin
  * JD-Core Version:    0.7.0.1
  */

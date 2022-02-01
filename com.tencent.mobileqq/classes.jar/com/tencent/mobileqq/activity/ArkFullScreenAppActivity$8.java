@@ -14,32 +14,32 @@ class ArkFullScreenAppActivity$8
 {
   ArkFullScreenAppActivity$8(ArkFullScreenAppActivity paramArkFullScreenAppActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity) != null)
+    if (ArkFullScreenAppActivity.b(this.b) != null)
     {
-      ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).a, null, ArkAppDataReport.d, 0, 0);
-      ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity.app, ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).a, "FullScreenShareOper", 0, 0, 0L, 0L, 0L, "", "");
+      ArkAppDataReport.a(this.b.app, "FullScreenClickOper", ArkFullScreenAppActivity.b(this.b).a, null, ArkAppDataReport.d, 0, 0);
+      ArkAppDataReport.a(this.b.app, ArkFullScreenAppActivity.b(this.b).a, "FullScreenShareOper", 0, 0, 0L, 0L, 0L, "", "");
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("share click:");
-      if (ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity) == null) {
+      if (ArkFullScreenAppActivity.b(this.b) == null) {
         paramView = "none";
       } else {
-        paramView = ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).a;
+        paramView = ArkFullScreenAppActivity.b(this.b).a;
       }
       localStringBuilder.append(paramView);
       QLog.d("ArkFullScreenAppActivity", 2, localStringBuilder.toString());
     }
-    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).a, new ArkFullScreenAppActivity.8.1(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkFullScreenAppActivity.b(this.b).a, new ArkFullScreenAppActivity.8.1(this));
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -13,20 +13,20 @@ class DownloadManager$7
   {
     try
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a.d);
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.h(this.a.d);
       if (localTMAssistantDownloadTaskInfo != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onDownloadError taskInfo != null！info.writeCodeState = ");
-        localStringBuilder.append(this.a.j);
+        localStringBuilder.append(this.a.D);
         LogUtility.c("DownloadManager_", localStringBuilder.toString());
-        this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        this.a.jdField_c_of_type_Long = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        this.this$0.e(this.a);
-        if (this.a.j == 0)
+        this.a.q = localTMAssistantDownloadTaskInfo.mSavePath;
+        this.a.E = localTMAssistantDownloadTaskInfo.mTotalDataLen;
+        this.this$0.f(this.a);
+        if (this.a.D == 0)
         {
           this.this$0.a(4, this.a);
-          if (!this.a.jdField_c_of_type_JavaLangString.equals("1101070898"))
+          if (!this.a.c.equals("1101070898"))
           {
             long l = localTMAssistantDownloadTaskInfo.mTotalDataLen;
             this.this$0.a(this.a, l);
@@ -43,16 +43,16 @@ class DownloadManager$7
     catch (Exception localException)
     {
       LogUtility.c("DownloadManager_", "downloadSDKClient>>>", localException);
-      StaticAnalyz.a("300", this.a.h, this.a.jdField_c_of_type_JavaLangString, this.a.o);
-      if (this.a.a) {
-        this.this$0.c(this.a);
+      StaticAnalyz.a("300", this.a.h, this.a.c, this.a.F);
+      if (this.a.w) {
+        this.this$0.d(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.7
  * JD-Core Version:    0.7.0.1
  */

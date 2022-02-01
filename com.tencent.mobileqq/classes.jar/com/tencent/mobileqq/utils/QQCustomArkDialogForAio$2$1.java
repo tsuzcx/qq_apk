@@ -9,15 +9,15 @@ class QQCustomArkDialogForAio$2$1
   
   public void run()
   {
-    QQCustomArkDialogForAio localQQCustomArkDialogForAio = (QQCustomArkDialogForAio)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQCustomArkDialogForAio localQQCustomArkDialogForAio = (QQCustomArkDialogForAio)this.a.get();
     if (localQQCustomArkDialogForAio != null) {
-      QQCustomArkDialogForAio.a(localQQCustomArkDialogForAio, this.jdField_a_of_type_Int);
+      QQCustomArkDialogForAio.a(localQQCustomArkDialogForAio, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialogForAio.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,14 +21,14 @@ class QfileBaseCloudFileTabView$11
     if (bool2)
     {
       localObject = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
-      i = ((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)localObject).c;
-      localObject = (WeiYunFileInfo)((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)localObject).a;
+      i = ((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)localObject).e;
+      localObject = (WeiYunFileInfo)((QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)localObject).k;
     }
     else if ((localObject instanceof ImageHolder))
     {
       localObject = (ImageHolder)paramView.getTag();
       i = -1;
-      localObject = (WeiYunFileInfo)((ImageHolder)localObject).a;
+      localObject = (WeiYunFileInfo)((ImageHolder)localObject).i;
     }
     else
     {
@@ -37,11 +37,11 @@ class QfileBaseCloudFileTabView$11
     }
     if (localObject != null)
     {
-      if ((paramView.getId() == 2131366781) && (QfileBaseCloudFileTabView.c(this.a))) {
-        ReportController.b(QfileBaseCloudFileTabView.d(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+      if ((paramView.getId() == 2131433103) && (QfileBaseCloudFileTabView.g(this.a))) {
+        ReportController.b(QfileBaseCloudFileTabView.h(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
       }
       QfileBaseCloudFileTabView localQfileBaseCloudFileTabView = this.a;
-      if (paramView.getId() == 2131366781) {
+      if (paramView.getId() == 2131433103) {
         bool1 = true;
       }
       localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool1);
@@ -51,7 +51,7 @@ class QfileBaseCloudFileTabView$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.11
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ final class MultiVoiceFloatingWindowModule$onNetworkListener$1$1$1
   
   public final void run()
   {
-    this.a.setText(2131694541);
+    this.a.setText(2131892225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceFloatingWindowModule.onNetworkListener.1.1.1
  * JD-Core Version:    0.7.0.1
  */

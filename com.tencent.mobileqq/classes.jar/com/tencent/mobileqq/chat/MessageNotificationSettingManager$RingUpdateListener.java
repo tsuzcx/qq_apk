@@ -9,19 +9,19 @@ import java.lang.ref.WeakReference;
 public class MessageNotificationSettingManager$RingUpdateListener
   implements QuickUpdateListener
 {
-  final int jdField_a_of_type_Int;
-  final WeakReference<MessageNotificationSettingManager> jdField_a_of_type_JavaLangRefWeakReference;
+  final WeakReference<MessageNotificationSettingManager> a;
+  final int b;
   
   public MessageNotificationSettingManager$RingUpdateListener(MessageNotificationSettingManager paramMessageNotificationSettingManager, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessageNotificationSettingManager);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramMessageNotificationSettingManager);
+    this.b = paramInt;
   }
   
   public void onCompleted(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "onCompleted: invoked. ", " bid: ", Long.valueOf(paramLong), " ringId: ", Integer.valueOf(this.jdField_a_of_type_Int) });
+      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "onCompleted: invoked. ", " bid: ", Long.valueOf(paramLong), " ringId: ", Integer.valueOf(this.b) });
     }
     paramString1 = new MessageNotificationSettingManager.RingUpdateListener.1(this);
     ThreadManagerV2.getUIHandlerV2().post(paramString1);
@@ -31,7 +31,7 @@ public class MessageNotificationSettingManager$RingUpdateListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.chat.MessageNotificationSettingManager.RingUpdateListener
  * JD-Core Version:    0.7.0.1
  */

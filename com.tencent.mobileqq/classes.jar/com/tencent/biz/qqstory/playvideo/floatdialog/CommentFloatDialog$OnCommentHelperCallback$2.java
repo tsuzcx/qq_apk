@@ -16,20 +16,20 @@ class CommentFloatDialog$OnCommentHelperCallback$2
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    a(-1, HardCodeUtil.a(2131702366));
+    a(-1, HardCodeUtil.a(2131900370));
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131702363), 0).a();
+    this.a.status = 0;
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131900367), 0).show();
     SLog.e("Q.qqstory.player.CommentFloatDialog", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
   }
   
   public void a(MessageMicro paramMessageMicro)
   {
-    if (!CommentFloatDialog.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialog$OnCommentHelperCallback.a)) {
-      CommentFloatDialog.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialog$OnCommentHelperCallback.a).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
+    if (!CommentFloatDialog.j(this.c.a)) {
+      CommentFloatDialog.i(this.c.a).a(this.a, this.b);
     }
   }
   
@@ -37,7 +37,7 @@ class CommentFloatDialog$OnCommentHelperCallback$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentHelperCallback.2
  * JD-Core Version:    0.7.0.1
  */

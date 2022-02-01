@@ -46,17 +46,17 @@ import java.util.ArrayList;
 public class CommodityAdapter
   extends HorizontalRVBlock
 {
-  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private CertifiedAccountMeta.StFeed a;
+  private FrameLayout b;
   
   public CommodityAdapter(Bundle paramBundle)
   {
     super(paramBundle);
   }
   
-  private FrameLayout a()
+  private FrameLayout f()
   {
-    FrameLayout localFrameLayout = a(null);
+    FrameLayout localFrameLayout = c(null);
     Object localObject = (FrameLayout.LayoutParams)localFrameLayout.getLayoutParams();
     ((FrameLayout.LayoutParams)localObject).width = -1;
     ((FrameLayout.LayoutParams)localObject).height = -2;
@@ -65,46 +65,41 @@ public class CommodityAdapter
     ((FrameLayout.LayoutParams)localObject).leftMargin = ImmersiveUtils.dpToPx(16.0F);
     ((FrameLayout.LayoutParams)localObject).rightMargin = ImmersiveUtils.dpToPx(16.0F);
     localFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = new ImageView(a());
+    localObject = new ImageView(H());
     ((ImageView)localObject).setLayoutParams(new FrameLayout.LayoutParams(-1, ImmersiveUtils.dpToPx(1.0F)));
     ((ImageView)localObject).setBackgroundColor(Color.parseColor("#D8D8D8"));
     localFrameLayout.addView((View)localObject);
     return localFrameLayout;
   }
   
-  public int a()
-  {
-    return 3;
-  }
-  
   public HorizontalRVBlock.CommonRvVH a(ViewGroup paramViewGroup, int paramInt)
   {
     paramViewGroup = new CommodityItemView(paramViewGroup.getContext());
-    paramViewGroup.setCurrentFeed(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    paramViewGroup.setCurrentFeed(this.a);
     return new HorizontalRVBlock.CommonRvVH(paramViewGroup);
   }
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
     Object localObject1 = paramStFeed.poster;
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    this.a = paramStFeed;
     if ((((CertifiedAccountMeta.StUser)localObject1).youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)((CertifiedAccountMeta.StUser)localObject1).youZhan.get(0)).goodNum.get() > 0))
     {
       paramStFeed = new FrameLayout.LayoutParams(-2, -2);
       paramStFeed.gravity = 21;
       paramStFeed.rightMargin = ImmersiveUtils.dpToPx(14.0F);
-      LinearLayout localLinearLayout = new LinearLayout(a());
+      LinearLayout localLinearLayout = new LinearLayout(H());
       localLinearLayout.setOrientation(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localLinearLayout, paramStFeed);
+      this.b.addView(localLinearLayout, paramStFeed);
       CommodityAdapter.1 local1 = new CommodityAdapter.1(this, (CertifiedAccountMeta.StUser)localObject1);
       paramStFeed = ((CertifiedAccountMeta.StUser)localObject1).id.get();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("auth_");
-      ((StringBuilder)localObject2).append(SubscribeShareHelper.a(a()));
+      ((StringBuilder)localObject2).append(SubscribeShareHelper.a(K()));
       VSReporter.a(paramStFeed, ((StringBuilder)localObject2).toString(), "exp_shop", 0, 0, new String[0]);
-      localObject2 = a();
+      localObject2 = G();
       if (SubscribeUtils.a(((CertifiedAccountMeta.StUser)localObject1).attr.get())) {
-        paramStFeed = HardCodeUtil.a(2131702405);
+        paramStFeed = HardCodeUtil.a(2131900409);
       } else {
         paramStFeed = ((CertifiedAccountMeta.StUser)localObject1).nick.get();
       }
@@ -115,10 +110,10 @@ public class CommodityAdapter
       paramStFeed.setEllipsize(TextUtils.TruncateAt.END);
       paramStFeed.setOnClickListener(local1);
       localLinearLayout.addView(paramStFeed, new LinearLayout.LayoutParams(-2, -2));
-      paramStFeed = ViewUtils.a(a(), 13.5F, "#878B99", "的小店");
+      paramStFeed = ViewUtils.a(G(), 13.5F, "#878B99", "的小店");
       localObject1 = new LinearLayout.LayoutParams(-2, -2);
       paramStFeed.setCompoundDrawablePadding(ImmersiveUtils.dpToPx(2.0F));
-      localObject2 = a().getResources().getDrawable(2130839270);
+      localObject2 = G().getResources().getDrawable(2130839446);
       ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
       paramStFeed.setCompoundDrawables(null, null, (Drawable)localObject2, null);
       paramStFeed.setOnClickListener(local1);
@@ -128,20 +123,20 @@ public class CommodityAdapter
   
   public void a(Bundle paramBundle)
   {
-    paramBundle = ViewUtils.a(a(), 16.0F, "#222222", HardCodeUtil.a(2131701699));
+    paramBundle = ViewUtils.a(H(), 16.0F, "#222222", HardCodeUtil.a(2131899721));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 3;
     localLayoutParams.leftMargin = ImmersiveUtils.dpToPx(14.0F);
     paramBundle.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = a(paramBundle);
+    this.b = c(paramBundle);
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (!ArrayUtils.a(paramInt, b()))
+    if (!ArrayUtils.isOutOfArrayIndex(paramInt, N()))
     {
-      ((CommodityItemView)paramViewHolder.itemView).setData(b().get(paramInt));
-      ((CommodityItemView)paramViewHolder.itemView).setExtraTypeInfo(a());
+      ((CommodityItemView)paramViewHolder.itemView).setData(N().get(paramInt));
+      ((CommodityItemView)paramViewHolder.itemView).setExtraTypeInfo(K());
     }
   }
   
@@ -149,8 +144,8 @@ public class CommodityAdapter
   
   public void a(HorizontalRvInnerView paramHorizontalRvInnerView)
   {
-    if (((a().a(0) instanceof DetailBaseBlock)) && (((DetailBaseBlock)a().a(0)).a() != null)) {
-      ((DetailBaseBlock)a().a(0)).a().a(paramHorizontalRvInnerView);
+    if (((B().a(0) instanceof DetailBaseBlock)) && (((DetailBaseBlock)B().a(0)).d() != null)) {
+      ((DetailBaseBlock)B().a(0)).d().a(paramHorizontalRvInnerView);
     }
   }
   
@@ -159,21 +154,26 @@ public class CommodityAdapter
     super.a(paramString, paramShareData);
     if ((paramString.equals("share_key_subscribe_feeds_update")) && (paramShareData.a != null))
     {
-      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = ((CertifiedAccountMeta.StFeed)paramShareData.a);
-      if (a() != null) {
-        a().post(new CommodityAdapter.2(this));
+      this.a = ((CertifiedAccountMeta.StFeed)paramShareData.a);
+      if (M() != null) {
+        M().post(new CommodityAdapter.2(this));
       }
     }
   }
   
-  public int b()
+  public int c()
   {
-    return b().size();
+    return 3;
+  }
+  
+  public int d()
+  {
+    return N().size();
   }
   
   public int getItemCount()
   {
-    if (b().size() > 0) {
+    if (N().size() > 0) {
       return 3;
     }
     return 0;
@@ -198,9 +198,9 @@ public class CommodityAdapter
     default: 
       return super.onCreateViewHolder(paramViewGroup, paramInt);
     case 100001: 
-      return new BaseListViewAdapter.BaseVH(this, a());
+      return new BaseListViewAdapter.BaseVH(this, f());
     }
-    return new BaseListViewAdapter.BaseVH(this, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    return new BaseListViewAdapter.BaseVH(this, this.b);
   }
 }
 

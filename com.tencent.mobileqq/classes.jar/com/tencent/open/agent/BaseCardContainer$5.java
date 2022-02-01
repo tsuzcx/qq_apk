@@ -11,14 +11,14 @@ class BaseCardContainer$5
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentBaseCardContainer.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    this.b.setBackgroundColor(0);
+    this.a.getLayoutParams().width = -1;
+    this.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseCardContainer.5
  * JD-Core Version:    0.7.0.1
  */

@@ -14,25 +14,25 @@ class ChannelCoverInfoModule$9
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("notifyUIToRefresh channelId=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" ;size = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      localStringBuilder.append(this.b.size());
       QLog.d("ChannelCoverInfoModule", 2, localStringBuilder.toString());
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 0) {
-      ReadInJoyLogicEngineEventDispatcher.a().f(true, this.jdField_a_of_type_JavaUtilList);
+      ReadInJoyLogicEngineEventDispatcher.a().f(true, this.b);
     } else if (i == 56) {
-      ReadInJoyLogicEngineEventDispatcher.a().g(true, this.jdField_a_of_type_JavaUtilList);
+      ReadInJoyLogicEngineEventDispatcher.a().g(true, this.b);
     } else if (i == 41402) {
-      ReadInJoyLogicEngineEventDispatcher.a().h(true, this.jdField_a_of_type_JavaUtilList);
+      ReadInJoyLogicEngineEventDispatcher.a().h(true, this.b);
     }
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.a, true, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ChannelCoverInfoModule.9
  * JD-Core Version:    0.7.0.1
  */

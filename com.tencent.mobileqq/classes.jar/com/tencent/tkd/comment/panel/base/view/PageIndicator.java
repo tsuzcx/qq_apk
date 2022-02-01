@@ -16,14 +16,14 @@ import com.tencent.tkd.comment.panel.base.R.styleable;
 public class PageIndicator
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private int a;
   private int b;
   private int c;
   private int d;
   private int e;
-  private int f;
+  private Paint f;
+  private int g;
+  private float h;
   
   public PageIndicator(Context paramContext)
   {
@@ -45,7 +45,7 @@ public class PageIndicator
     {
       try
       {
-        paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_a_of_type_ArrayOfInt);
+        paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.a);
         localContext2 = paramContext;
         localContext1 = paramContext;
         int i = paramContext.getIndexCount();
@@ -79,35 +79,35 @@ public class PageIndicator
       paramContext.recycle();
     }
     label93:
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.f = 0;
-    this.jdField_a_of_type_Float = 1.0F;
+    this.f = new Paint();
+    this.g = 0;
+    this.h = 1.0F;
   }
   
   private void a(TypedArray paramTypedArray, int paramInt)
   {
     paramInt = paramTypedArray.getIndex(paramInt);
-    if (paramInt == R.styleable.b)
+    if (paramInt == R.styleable.c)
     {
       this.c = paramTypedArray.getInt(paramInt, 0);
       return;
     }
-    if (paramInt == R.styleable.jdField_a_of_type_Int)
+    if (paramInt == R.styleable.b)
     {
-      this.jdField_a_of_type_Int = paramTypedArray.getColor(paramInt, getResources().getColor(R.color.jdField_a_of_type_Int));
+      this.a = paramTypedArray.getColor(paramInt, getResources().getColor(R.color.a));
       return;
     }
-    if (paramInt == R.styleable.e)
+    if (paramInt == R.styleable.f)
     {
       this.b = paramTypedArray.getColor(paramInt, getResources().getColor(R.color.b));
       return;
     }
-    if (paramInt == R.styleable.c)
+    if (paramInt == R.styleable.d)
     {
       this.e = paramTypedArray.getDimensionPixelSize(paramInt, (int)TypedValue.applyDimension(1, 4.0F, getResources().getDisplayMetrics()));
       return;
     }
-    if (paramInt == R.styleable.d) {
+    if (paramInt == R.styleable.e) {
       this.d = paramTypedArray.getDimensionPixelOffset(paramInt, (int)TypedValue.applyDimension(1, 24.0F, getResources().getDisplayMetrics()));
     }
   }
@@ -120,17 +120,17 @@ public class PageIndicator
     float f1 = (float)(d1 / 2.0D);
     float f2 = paramInt1 * (this.d + i);
     float f3 = getHeight() / 2.0F;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)Math.ceil(paramFloat * 255.0F));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    paramCanvas.drawCircle(f2 + f1, f3, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.f.setColor(paramInt2);
+    this.f.setAlpha((int)Math.ceil(paramFloat * 255.0F));
+    this.f.setAntiAlias(true);
+    this.f.setDither(true);
+    paramCanvas.drawCircle(f2 + f1, f3, f1, this.f);
   }
   
   public void a(int paramInt, float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.f = paramInt;
+    this.h = paramFloat;
+    this.g = paramInt;
     invalidate();
   }
   
@@ -140,15 +140,15 @@ public class PageIndicator
     if (this.c <= 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    this.f.setColor(this.a);
     int i = 0;
     while (i < this.c)
     {
       a(paramCanvas, i, this.b, 1.0F);
       i += 1;
     }
-    a(paramCanvas, this.f, this.jdField_a_of_type_Int, 1.0F - this.jdField_a_of_type_Float);
-    a(paramCanvas, (this.f + 1) % this.c, this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
+    a(paramCanvas, this.g, this.a, 1.0F - this.h);
+    a(paramCanvas, (this.g + 1) % this.c, this.a, this.h);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -179,7 +179,7 @@ public class PageIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.base.view.PageIndicator
  * JD-Core Version:    0.7.0.1
  */

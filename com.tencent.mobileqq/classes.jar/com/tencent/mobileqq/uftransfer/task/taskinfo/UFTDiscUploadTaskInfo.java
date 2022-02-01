@@ -10,14 +10,14 @@ import java.io.File;
 public class UFTDiscUploadTaskInfo
   extends UFTBaseTaskInfo
 {
-  private final UFTDiscUploadInfo jdField_a_of_type_ComTencentMobileqqUftransferApiUFTDiscUploadInfo;
-  private UFTUploadSrvBusiProp.DiscUploadSrvBusiProp jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$DiscUploadSrvBusiProp;
+  private final UFTDiscUploadInfo a;
+  private UFTUploadSrvBusiProp.DiscUploadSrvBusiProp b;
   
   private UFTDiscUploadTaskInfo(long paramLong, int paramInt, UFTDiscUploadInfo paramUFTDiscUploadInfo, UFTTransferConfig paramUFTTransferConfig)
   {
     super(paramLong, paramInt, paramUFTTransferConfig, true);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTDiscUploadInfo = paramUFTDiscUploadInfo;
-    a(UFTDependFeatureApi.a(paramUFTDiscUploadInfo.a()));
+    this.a = paramUFTDiscUploadInfo;
+    a(UFTDependFeatureApi.e(paramUFTDiscUploadInfo.a()));
     paramUFTDiscUploadInfo = new File(paramUFTDiscUploadInfo.a());
     if (paramUFTDiscUploadInfo.exists()) {
       a(paramUFTDiscUploadInfo.length());
@@ -41,48 +41,48 @@ public class UFTDiscUploadTaskInfo
     return new UFTDiscUploadTaskInfo(paramLong, paramInt, paramUFTDiscUploadInfo, paramUFTTransferConfig);
   }
   
-  public int a()
+  public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTDiscUploadInfo.a();
-  }
-  
-  public UFTUploadSrvBusiProp.DiscUploadSrvBusiProp a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$DiscUploadSrvBusiProp;
+    return this.a.a();
   }
   
   public void a(UFTUploadSrvBusiProp.DiscUploadSrvBusiProp paramDiscUploadSrvBusiProp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$DiscUploadSrvBusiProp = paramDiscUploadSrvBusiProp;
+    this.b = paramDiscUploadSrvBusiProp;
   }
   
-  public boolean a()
+  public int b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTDiscUploadInfo.a();
+    return this.a.c();
   }
   
   public String c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTDiscUploadInfo.a();
+    return this.a.b();
   }
   
-  public String d()
+  public boolean d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTDiscUploadInfo.b();
+    return this.a.d();
   }
   
   public String e()
   {
-    UFTUploadSrvBusiProp.DiscUploadSrvBusiProp localDiscUploadSrvBusiProp = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$DiscUploadSrvBusiProp;
+    UFTUploadSrvBusiProp.DiscUploadSrvBusiProp localDiscUploadSrvBusiProp = this.b;
     if (localDiscUploadSrvBusiProp != null) {
-      return localDiscUploadSrvBusiProp.f();
+      return localDiscUploadSrvBusiProp.j();
     }
     return "";
+  }
+  
+  public UFTUploadSrvBusiProp.DiscUploadSrvBusiProp f()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.taskinfo.UFTDiscUploadTaskInfo
  * JD-Core Version:    0.7.0.1
  */

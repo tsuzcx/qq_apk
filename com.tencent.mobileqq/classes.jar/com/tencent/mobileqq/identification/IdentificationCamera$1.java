@@ -12,7 +12,7 @@ class IdentificationCamera$1
   
   public void a(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    OutPreviewCallback localOutPreviewCallback = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewOutPreviewCallback;
+    OutPreviewCallback localOutPreviewCallback = this.a;
     if (localOutPreviewCallback != null) {
       localOutPreviewCallback.onPreviewFrame(paramArrayOfByte, paramCamera);
     }
@@ -21,7 +21,7 @@ class IdentificationCamera$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationCamera.1
  * JD-Core Version:    0.7.0.1
  */

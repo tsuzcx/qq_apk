@@ -19,58 +19,50 @@ public class ArCloudConfigInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new ArCloudConfigInfo.1();
-  public static int f = 3;
+  public static int h = 3;
   public int a;
-  public ARTransferDoorConfigInfo a;
-  public ARRelationShip a;
-  public ArAwardInfo a;
-  public ArFeatureInfo a;
-  public ArLBSActivity a;
-  public ArModelResource a;
-  public ArWebInfo a;
-  public String a;
-  public ArrayList<ArVideoResourceInfo> a;
-  public boolean a;
-  public int b;
   public String b;
   public int c;
   public int d;
   public int e;
+  public String f;
   public int g;
+  public ArrayList<ArVideoResourceInfo> i = new ArrayList();
+  public ArFeatureInfo j;
+  public ArModelResource k;
+  public ArAwardInfo l;
+  public ArWebInfo m;
+  public int n;
+  public ARRelationShip o;
+  public boolean p = false;
+  public ArLBSActivity q;
+  public ARTransferDoorConfigInfo r = null;
   
-  public ArCloudConfigInfo()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo = null;
-  }
+  public ArCloudConfigInfo() {}
   
   protected ArCloudConfigInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo = null;
-    this.jdField_a_of_type_Boolean = true;
+    this.p = true;
     QLog.i("ArCloudConfigInfo", 1, "readParcel  start ");
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readInt();
     this.d = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.g = paramParcel.readInt();
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      paramParcel.readList(this.jdField_a_of_type_JavaUtilArrayList, ArVideoResourceInfo.class.getClassLoader());
-      this.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = ((ArFeatureInfo)paramParcel.readParcelable(ArFeatureInfo.class.getClassLoader()));
-      this.jdField_a_of_type_ComTencentMobileqqArModelArModelResource = ((ArModelResource)paramParcel.readParcelable(ArModelResource.class.getClassLoader()));
-      this.jdField_a_of_type_ComTencentMobileqqArModelArAwardInfo = ((ArAwardInfo)paramParcel.readParcelable(ArAwardInfo.class.getClassLoader()));
-      this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo = ((ArWebInfo)paramParcel.readParcelable(ArWebInfo.class.getClassLoader()));
+      this.i = new ArrayList();
+      paramParcel.readList(this.i, ArVideoResourceInfo.class.getClassLoader());
+      this.j = ((ArFeatureInfo)paramParcel.readParcelable(ArFeatureInfo.class.getClassLoader()));
+      this.k = ((ArModelResource)paramParcel.readParcelable(ArModelResource.class.getClassLoader()));
+      this.l = ((ArAwardInfo)paramParcel.readParcelable(ArAwardInfo.class.getClassLoader()));
+      this.m = ((ArWebInfo)paramParcel.readParcelable(ArWebInfo.class.getClassLoader()));
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.p = false;
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("ArVideoResourceInfo read fail= ");
       localStringBuilder2.append(localException.getMessage());
@@ -79,18 +71,18 @@ public class ArCloudConfigInfo
     StringBuilder localStringBuilder1;
     try
     {
-      if (19 <= f)
+      if (19 <= h)
       {
-        this.g = paramParcel.readInt();
-        this.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip = ((ARRelationShip)paramParcel.readParcelable(ARRelationShip.class.getClassLoader()));
-        if (20 <= f) {
-          this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity = ((ArLBSActivity)paramParcel.readParcelable(ArLBSActivity.class.getClassLoader()));
+        this.n = paramParcel.readInt();
+        this.o = ((ARRelationShip)paramParcel.readParcelable(ARRelationShip.class.getClassLoader()));
+        if (20 <= h) {
+          this.q = ((ArLBSActivity)paramParcel.readParcelable(ArLBSActivity.class.getClassLoader()));
         }
       }
     }
     catch (Exception paramParcel)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.p = false;
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("readParcel failed. msg = ");
       localStringBuilder1.append(paramParcel.getMessage());
@@ -100,30 +92,30 @@ public class ArCloudConfigInfo
     {
       paramParcel = new StringBuilder();
       paramParcel.append("readParcel  businessId = ");
-      paramParcel.append(this.jdField_a_of_type_Int);
+      paramParcel.append(this.a);
       paramParcel.append(",  sDKVersion = ");
-      paramParcel.append(this.jdField_a_of_type_JavaLangString);
+      paramParcel.append(this.b);
       paramParcel.append(",  closeCache = ");
-      paramParcel.append(this.jdField_b_of_type_Int);
-      paramParcel.append(",  trackMode = ");
       paramParcel.append(this.c);
-      paramParcel.append(",  type = ");
+      paramParcel.append(",  trackMode = ");
       paramParcel.append(this.d);
+      paramParcel.append(",  type = ");
+      paramParcel.append(this.e);
       paramParcel.append(",  picId = ");
-      paramParcel.append(this.jdField_b_of_type_JavaLangString);
+      paramParcel.append(this.f);
       paramParcel.append(",  mArFeatureInfo = ");
-      paramParcel.append(this.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo);
+      paramParcel.append(this.j);
       paramParcel.append(",  modelResource = ");
-      paramParcel.append(this.jdField_a_of_type_ComTencentMobileqqArModelArModelResource);
+      paramParcel.append(this.k);
       paramParcel.append(",  mArWebInfo = ");
-      paramParcel.append(this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo);
+      paramParcel.append(this.m);
       paramParcel.append(", mArLBSActivity = ");
-      paramParcel.append(this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+      paramParcel.append(this.q);
       QLog.i("ArCloudConfigInfo", 1, paramParcel.toString());
     }
     catch (Exception paramParcel)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.p = false;
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("IQLog");
       localStringBuilder1.append(paramParcel.getMessage());
@@ -131,30 +123,30 @@ public class ArCloudConfigInfo
     }
     paramParcel = new StringBuilder();
     paramParcel.append("readParcel  end flag = ");
-    paramParcel.append(this.jdField_a_of_type_Boolean);
+    paramParcel.append(this.p);
     paramParcel.append("  VersionCode :");
-    paramParcel.append(f);
+    paramParcel.append(h);
     QLog.i("ArCloudConfigInfo", 1, paramParcel.toString());
   }
   
   public boolean a()
   {
-    return this.d == 100;
+    return this.e == 100;
   }
   
   public boolean b()
   {
-    return (this.g == 1) && (this.d == 7);
+    return (this.n == 1) && (this.e == 7);
   }
   
   public boolean c()
   {
-    return this.d == 8;
+    return this.e == 8;
   }
   
   public boolean d()
   {
-    return this.c == 0;
+    return this.d == 0;
   }
   
   public int describeContents()
@@ -164,17 +156,17 @@ public class ArCloudConfigInfo
   
   public boolean e()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
   }
   
   public boolean f()
   {
-    return (this.d != 6) && ((!e()) || (this.e != 0));
+    return (this.e != 6) && ((!e()) || (this.g != 0));
   }
   
   public boolean g()
   {
-    ArWebInfo localArWebInfo = this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo;
+    ArWebInfo localArWebInfo = this.m;
     if (localArWebInfo == null) {
       return false;
     }
@@ -183,12 +175,12 @@ public class ArCloudConfigInfo
   
   public boolean h()
   {
-    ArWebInfo localArWebInfo = this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo;
+    ArWebInfo localArWebInfo = this.m;
     boolean bool = false;
     if (localArWebInfo == null) {
       return false;
     }
-    if (((this.jdField_a_of_type_Int == 1) && (this.e == 1)) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString))) {
+    if (((this.a == 1) && (this.g == 1)) || (!TextUtils.isEmpty(this.m.c))) {
       bool = true;
     }
     return bool;
@@ -196,26 +188,26 @@ public class ArCloudConfigInfo
   
   public boolean i()
   {
-    return this.c == 2;
+    return this.d == 2;
   }
   
   public boolean j()
   {
-    return this.c == 1;
+    return this.d == 1;
   }
   
   public boolean k()
   {
-    ArWebInfo localArWebInfo = this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo;
+    ArWebInfo localArWebInfo = this.m;
     boolean bool2 = false;
     if (localArWebInfo == null) {
       return false;
     }
     boolean bool1 = bool2;
-    if (TextUtils.isEmpty(localArWebInfo.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(localArWebInfo.c))
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Int != 1)
+      if (this.a != 1)
       {
         bool1 = bool2;
         if (!d()) {
@@ -230,14 +222,14 @@ public class ArCloudConfigInfo
   {
     StringBuffer localStringBuffer = new StringBuffer("ArCloudConfigInfo{");
     localStringBuffer.append("mArFeatureInfo='");
-    localStringBuffer.append(this.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo);
+    localStringBuffer.append(this.j);
     localStringBuffer.append('\'');
     localStringBuffer.append(", modelResource=");
-    localStringBuffer.append(this.jdField_a_of_type_ComTencentMobileqqArModelArModelResource);
+    localStringBuffer.append(this.k);
     localStringBuffer.append(", mIsRelationShip=");
-    localStringBuffer.append(this.g);
+    localStringBuffer.append(this.n);
     localStringBuffer.append(", mArLBSActivity = ");
-    localStringBuffer.append(this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    localStringBuffer.append(this.q);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -245,20 +237,20 @@ public class ArCloudConfigInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     QLog.i("ArCloudConfigInfo", 1, "writeToParcel  start ");
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeInt(this.c);
     paramParcel.writeInt(this.d);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
+    paramParcel.writeInt(this.g);
     try
     {
-      paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo, paramInt);
-      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqArModelArModelResource, paramInt);
-      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqArModelArAwardInfo, paramInt);
-      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo, paramInt);
+      paramParcel.writeList(this.i);
+      paramParcel.writeParcelable(this.j, paramInt);
+      paramParcel.writeParcelable(this.k, paramInt);
+      paramParcel.writeParcelable(this.l, paramInt);
+      paramParcel.writeParcelable(this.m, paramInt);
     }
     catch (Exception localException)
     {
@@ -270,9 +262,9 @@ public class ArCloudConfigInfo
     StringBuilder localStringBuilder1;
     try
     {
-      paramParcel.writeInt(this.g);
-      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip, paramInt);
-      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity, paramInt);
+      paramParcel.writeInt(this.n);
+      paramParcel.writeParcelable(this.o, paramInt);
+      paramParcel.writeParcelable(this.q, paramInt);
     }
     catch (Exception paramParcel)
     {
@@ -285,25 +277,25 @@ public class ArCloudConfigInfo
     {
       paramParcel = new StringBuilder();
       paramParcel.append("writeToParcel  businessId = ");
-      paramParcel.append(this.jdField_a_of_type_Int);
+      paramParcel.append(this.a);
       paramParcel.append(",  sDKVersion = ");
-      paramParcel.append(this.jdField_a_of_type_JavaLangString);
+      paramParcel.append(this.b);
       paramParcel.append(",  closeCache = ");
-      paramParcel.append(this.jdField_b_of_type_Int);
-      paramParcel.append(",  trackMode = ");
       paramParcel.append(this.c);
-      paramParcel.append(",  type = ");
+      paramParcel.append(",  trackMode = ");
       paramParcel.append(this.d);
+      paramParcel.append(",  type = ");
+      paramParcel.append(this.e);
       paramParcel.append(",  picId = ");
-      paramParcel.append(this.jdField_b_of_type_JavaLangString);
+      paramParcel.append(this.f);
       paramParcel.append(",  mArFeatureInfo = ");
-      paramParcel.append(this.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo);
+      paramParcel.append(this.j);
       paramParcel.append(",  modelResource = ");
-      paramParcel.append(this.jdField_a_of_type_ComTencentMobileqqArModelArModelResource);
+      paramParcel.append(this.k);
       paramParcel.append(",  mArWebInfo = ");
-      paramParcel.append(this.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo);
+      paramParcel.append(this.m);
       paramParcel.append(", mArLBSActivity = ");
-      paramParcel.append(this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+      paramParcel.append(this.q);
       QLog.i("ArCloudConfigInfo", 1, paramParcel.toString());
     }
     catch (Exception paramParcel)
@@ -315,13 +307,13 @@ public class ArCloudConfigInfo
     }
     paramParcel = new StringBuilder();
     paramParcel.append("writeToParcel  end VersionCode");
-    paramParcel.append(f);
+    paramParcel.append(h);
     QLog.i("ArCloudConfigInfo", 1, paramParcel.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo
  * JD-Core Version:    0.7.0.1
  */

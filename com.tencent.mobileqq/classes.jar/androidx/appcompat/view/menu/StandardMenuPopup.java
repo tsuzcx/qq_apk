@@ -18,6 +18,8 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
+import androidx.appcompat.R.dimen;
+import androidx.appcompat.R.layout;
 import androidx.appcompat.widget.MenuPopupWindow;
 import androidx.core.view.ViewCompat;
 
@@ -25,7 +27,7 @@ final class StandardMenuPopup
   extends MenuPopup
   implements View.OnKeyListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener, MenuPresenter
 {
-  private static final int ITEM_LAYOUT = 2131558419;
+  private static final int ITEM_LAYOUT = R.layout.abc_popup_menu_item_layout;
   private final MenuAdapter mAdapter;
   private View mAnchorView;
   private final View.OnAttachStateChangeListener mAttachStateChangeListener = new StandardMenuPopup.2(this);
@@ -56,7 +58,7 @@ final class StandardMenuPopup
     this.mPopupStyleAttr = paramInt1;
     this.mPopupStyleRes = paramInt2;
     Resources localResources = paramContext.getResources();
-    this.mPopupMaxWidth = Math.max(localResources.getDisplayMetrics().widthPixels / 2, localResources.getDimensionPixelSize(2131296279));
+    this.mPopupMaxWidth = Math.max(localResources.getDisplayMetrics().widthPixels / 2, localResources.getDimensionPixelSize(R.dimen.abc_config_prefDialogWidth));
     this.mAnchorView = paramView;
     this.mPopup = new MenuPopupWindow(this.mContext, null, this.mPopupStyleAttr, this.mPopupStyleRes);
     paramMenuBuilder.addMenuPresenter(this, paramContext);
@@ -104,7 +106,7 @@ final class StandardMenuPopup
       ((ListView)localObject).setOnKeyListener(this);
       if ((this.mShowTitle) && (this.mMenu.getHeaderTitle() != null))
       {
-        FrameLayout localFrameLayout = (FrameLayout)LayoutInflater.from(this.mContext).inflate(2131558418, (ViewGroup)localObject, false);
+        FrameLayout localFrameLayout = (FrameLayout)LayoutInflater.from(this.mContext).inflate(R.layout.abc_popup_menu_header_item_layout, (ViewGroup)localObject, false);
         TextView localTextView = (TextView)localFrameLayout.findViewById(16908310);
         if (localTextView != null) {
           localTextView.setText(this.mMenu.getHeaderTitle());

@@ -44,21 +44,21 @@ import org.json.JSONObject;
 public class ProfileCardCheckUpdate
   implements CheckUpdateItemInterface
 {
-  int jdField_a_of_type_Int = 0;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  QQAppInterface a;
+  int b = 0;
   
   public ProfileCardCheckUpdate(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private SummaryCardUpdate.SUpdateReq a(int paramInt, String paramString)
   {
     SummaryCardUpdate.SUpdateReq localSUpdateReq = new SummaryCardUpdate.SUpdateReq();
     localSUpdateReq.cmd.set(paramInt);
-    localSUpdateReq.uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    localSUpdateReq.uin.set(this.a.getLongAccountUin());
     localSUpdateReq.version.set(paramString);
-    localSUpdateReq.client_version.set("8.7.0");
+    localSUpdateReq.client_version.set("8.8.17");
     localSUpdateReq.platform.set(109);
     if (paramInt == 5) {
       localSUpdateReq.appname.set("fun_call");
@@ -66,7 +66,196 @@ public class ProfileCardCheckUpdate
     return localSUpdateReq;
   }
   
-  private List<ProfileLabelTypeInfo> a(String paramString)
+  /* Error */
+  private void a(File paramFile)
+  {
+    // Byte code:
+    //   0: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +37 -> 40
+    //   6: new 89	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   13: astore_3
+    //   14: aload_3
+    //   15: ldc 92
+    //   17: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: pop
+    //   21: aload_3
+    //   22: aload_1
+    //   23: invokevirtual 101	java/io/File:exists	()Z
+    //   26: invokevirtual 104	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   29: pop
+    //   30: ldc 106
+    //   32: iconst_2
+    //   33: aload_3
+    //   34: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   40: aload_1
+    //   41: invokevirtual 101	java/io/File:exists	()Z
+    //   44: ifeq +211 -> 255
+    //   47: aconst_null
+    //   48: astore 5
+    //   50: aconst_null
+    //   51: astore_3
+    //   52: new 116	java/io/FileInputStream
+    //   55: dup
+    //   56: aload_1
+    //   57: invokespecial 118	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   60: astore 4
+    //   62: new 120	java/io/ByteArrayOutputStream
+    //   65: dup
+    //   66: invokespecial 121	java/io/ByteArrayOutputStream:<init>	()V
+    //   69: astore_3
+    //   70: sipush 4096
+    //   73: newarray byte
+    //   75: astore 5
+    //   77: aload 4
+    //   79: aload 5
+    //   81: iconst_0
+    //   82: sipush 4096
+    //   85: invokevirtual 127	java/io/InputStream:read	([BII)I
+    //   88: istore_2
+    //   89: iload_2
+    //   90: iconst_m1
+    //   91: if_icmpeq +14 -> 105
+    //   94: aload_3
+    //   95: aload 5
+    //   97: iconst_0
+    //   98: iload_2
+    //   99: invokevirtual 131	java/io/ByteArrayOutputStream:write	([BII)V
+    //   102: goto -25 -> 77
+    //   105: aload 4
+    //   107: invokevirtual 134	java/io/InputStream:close	()V
+    //   110: aload_1
+    //   111: new 98	java/io/File
+    //   114: dup
+    //   115: aload_0
+    //   116: getfield 19	com/tencent/mobileqq/profile/ProfileCardCheckUpdate:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   119: invokevirtual 138	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   122: invokestatic 143	com/tencent/mobileqq/util/ProfileCardTemplateUtil:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   125: invokespecial 145	java/io/File:<init>	(Ljava/lang/String;)V
+    //   128: invokevirtual 149	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   131: pop
+    //   132: goto +8 -> 140
+    //   135: astore_1
+    //   136: aload_1
+    //   137: invokevirtual 152	java/lang/Exception:printStackTrace	()V
+    //   140: new 154	java/lang/String
+    //   143: dup
+    //   144: aload_3
+    //   145: invokevirtual 158	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   148: ldc 160
+    //   150: invokespecial 163	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   153: astore_1
+    //   154: aload_1
+    //   155: invokevirtual 167	java/lang/String:length	()I
+    //   158: ifle +8 -> 166
+    //   161: aload_0
+    //   162: aload_1
+    //   163: invokespecial 169	com/tencent/mobileqq/profile/ProfileCardCheckUpdate:a	(Ljava/lang/String;)V
+    //   166: aload 4
+    //   168: invokevirtual 134	java/io/InputStream:close	()V
+    //   171: return
+    //   172: astore_1
+    //   173: goto +57 -> 230
+    //   176: astore_3
+    //   177: aload 4
+    //   179: astore_1
+    //   180: aload_3
+    //   181: astore 4
+    //   183: goto +15 -> 198
+    //   186: astore_1
+    //   187: aload_3
+    //   188: astore 4
+    //   190: goto +40 -> 230
+    //   193: astore 4
+    //   195: aload 5
+    //   197: astore_1
+    //   198: aload_1
+    //   199: astore_3
+    //   200: ldc 106
+    //   202: iconst_1
+    //   203: ldc 171
+    //   205: aload 4
+    //   207: invokestatic 175	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   210: aload_1
+    //   211: ifnull +44 -> 255
+    //   214: aload_1
+    //   215: invokevirtual 134	java/io/InputStream:close	()V
+    //   218: return
+    //   219: astore_1
+    //   220: ldc 106
+    //   222: iconst_1
+    //   223: ldc 171
+    //   225: aload_1
+    //   226: invokestatic 175	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   229: return
+    //   230: aload 4
+    //   232: ifnull +21 -> 253
+    //   235: aload 4
+    //   237: invokevirtual 134	java/io/InputStream:close	()V
+    //   240: goto +13 -> 253
+    //   243: astore_3
+    //   244: ldc 106
+    //   246: iconst_1
+    //   247: ldc 171
+    //   249: aload_3
+    //   250: invokestatic 175	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   253: aload_1
+    //   254: athrow
+    //   255: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	256	0	this	ProfileCardCheckUpdate
+    //   0	256	1	paramFile	File
+    //   88	11	2	i	int
+    //   13	132	3	localObject1	Object
+    //   176	12	3	localException1	Exception
+    //   199	1	3	localFile	File
+    //   243	7	3	localException2	Exception
+    //   60	129	4	localObject2	Object
+    //   193	43	4	localException3	Exception
+    //   48	148	5	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   110	132	135	java/lang/Exception
+    //   62	77	172	finally
+    //   77	89	172	finally
+    //   94	102	172	finally
+    //   105	110	172	finally
+    //   110	132	172	finally
+    //   136	140	172	finally
+    //   140	166	172	finally
+    //   62	77	176	java/lang/Exception
+    //   77	89	176	java/lang/Exception
+    //   94	102	176	java/lang/Exception
+    //   105	110	176	java/lang/Exception
+    //   136	140	176	java/lang/Exception
+    //   140	166	176	java/lang/Exception
+    //   52	62	186	finally
+    //   200	210	186	finally
+    //   52	62	193	java/lang/Exception
+    //   166	171	219	java/lang/Exception
+    //   214	218	219	java/lang/Exception
+    //   235	240	243	java/lang/Exception
+  }
+  
+  private void a(String paramString)
+  {
+    paramString = b(paramString);
+    if (paramString != null)
+    {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
+      localObjectOutputStream.writeObject(paramString);
+      localObjectOutputStream.flush();
+      localObjectOutputStream.close();
+      localByteArrayOutputStream.close();
+      FileUtils.pushData2File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "labelList").getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+    }
+  }
+  
+  private List<ProfileLabelTypeInfo> b(String paramString)
   {
     if (paramString != null)
     {
@@ -121,201 +310,12 @@ public class ProfileCardCheckUpdate
     return paramString;
   }
   
-  /* Error */
-  private void a(File paramFile)
-  {
-    // Byte code:
-    //   0: invokestatic 81	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +37 -> 40
-    //   6: new 83	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 84	java/lang/StringBuilder:<init>	()V
-    //   13: astore_3
-    //   14: aload_3
-    //   15: ldc 201
-    //   17: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: pop
-    //   21: aload_3
-    //   22: aload_1
-    //   23: invokevirtual 206	java/io/File:exists	()Z
-    //   26: invokevirtual 209	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   29: pop
-    //   30: ldc 101
-    //   32: iconst_2
-    //   33: aload_3
-    //   34: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   40: aload_1
-    //   41: invokevirtual 206	java/io/File:exists	()Z
-    //   44: ifeq +214 -> 258
-    //   47: aconst_null
-    //   48: astore 5
-    //   50: aconst_null
-    //   51: astore_3
-    //   52: new 211	java/io/FileInputStream
-    //   55: dup
-    //   56: aload_1
-    //   57: invokespecial 213	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   60: astore 4
-    //   62: new 215	java/io/ByteArrayOutputStream
-    //   65: dup
-    //   66: invokespecial 216	java/io/ByteArrayOutputStream:<init>	()V
-    //   69: astore_3
-    //   70: sipush 4096
-    //   73: newarray byte
-    //   75: astore 5
-    //   77: aload 4
-    //   79: aload 5
-    //   81: iconst_0
-    //   82: sipush 4096
-    //   85: invokevirtual 222	java/io/InputStream:read	([BII)I
-    //   88: istore_2
-    //   89: iload_2
-    //   90: iconst_m1
-    //   91: if_icmpeq +14 -> 105
-    //   94: aload_3
-    //   95: aload 5
-    //   97: iconst_0
-    //   98: iload_2
-    //   99: invokevirtual 226	java/io/ByteArrayOutputStream:write	([BII)V
-    //   102: goto -25 -> 77
-    //   105: aload 4
-    //   107: invokevirtual 229	java/io/InputStream:close	()V
-    //   110: aload_1
-    //   111: new 203	java/io/File
-    //   114: dup
-    //   115: aload_0
-    //   116: getfield 18	com/tencent/mobileqq/profile/ProfileCardCheckUpdate:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   119: invokevirtual 233	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   122: invokestatic 238	com/tencent/mobileqq/util/ProfileCardTemplateUtil:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   125: invokespecial 239	java/io/File:<init>	(Ljava/lang/String;)V
-    //   128: invokevirtual 243	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   131: pop
-    //   132: goto +8 -> 140
-    //   135: astore_1
-    //   136: aload_1
-    //   137: invokevirtual 246	java/lang/Exception:printStackTrace	()V
-    //   140: new 92	java/lang/String
-    //   143: dup
-    //   144: aload_3
-    //   145: invokevirtual 250	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   148: ldc 252
-    //   150: invokespecial 255	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   153: astore_1
-    //   154: aload_1
-    //   155: invokevirtual 96	java/lang/String:length	()I
-    //   158: ifle +8 -> 166
-    //   161: aload_0
-    //   162: aload_1
-    //   163: invokespecial 257	com/tencent/mobileqq/profile/ProfileCardCheckUpdate:a	(Ljava/lang/String;)V
-    //   166: aload 4
-    //   168: invokevirtual 229	java/io/InputStream:close	()V
-    //   171: return
-    //   172: astore_1
-    //   173: goto +59 -> 232
-    //   176: astore_3
-    //   177: aload 4
-    //   179: astore_1
-    //   180: aload_3
-    //   181: astore 4
-    //   183: goto +15 -> 198
-    //   186: astore_1
-    //   187: aload_3
-    //   188: astore 4
-    //   190: goto +42 -> 232
-    //   193: astore 4
-    //   195: aload 5
-    //   197: astore_1
-    //   198: aload_1
-    //   199: astore_3
-    //   200: ldc 101
-    //   202: iconst_1
-    //   203: ldc_w 259
-    //   206: aload 4
-    //   208: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   211: aload_1
-    //   212: ifnull +46 -> 258
-    //   215: aload_1
-    //   216: invokevirtual 229	java/io/InputStream:close	()V
-    //   219: return
-    //   220: astore_1
-    //   221: ldc 101
-    //   223: iconst_1
-    //   224: ldc_w 259
-    //   227: aload_1
-    //   228: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   231: return
-    //   232: aload 4
-    //   234: ifnull +22 -> 256
-    //   237: aload 4
-    //   239: invokevirtual 229	java/io/InputStream:close	()V
-    //   242: goto +14 -> 256
-    //   245: astore_3
-    //   246: ldc 101
-    //   248: iconst_1
-    //   249: ldc_w 259
-    //   252: aload_3
-    //   253: invokestatic 263	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   256: aload_1
-    //   257: athrow
-    //   258: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	259	0	this	ProfileCardCheckUpdate
-    //   0	259	1	paramFile	File
-    //   88	11	2	i	int
-    //   13	132	3	localObject1	Object
-    //   176	12	3	localException1	Exception
-    //   199	1	3	localFile	File
-    //   245	8	3	localException2	Exception
-    //   60	129	4	localObject2	Object
-    //   193	45	4	localException3	Exception
-    //   48	148	5	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   110	132	135	java/lang/Exception
-    //   62	77	172	finally
-    //   77	89	172	finally
-    //   94	102	172	finally
-    //   105	110	172	finally
-    //   110	132	172	finally
-    //   136	140	172	finally
-    //   140	166	172	finally
-    //   62	77	176	java/lang/Exception
-    //   77	89	176	java/lang/Exception
-    //   94	102	176	java/lang/Exception
-    //   105	110	176	java/lang/Exception
-    //   136	140	176	java/lang/Exception
-    //   140	166	176	java/lang/Exception
-    //   52	62	186	finally
-    //   200	211	186	finally
-    //   52	62	193	java/lang/Exception
-    //   166	171	220	java/lang/Exception
-    //   215	219	220	java/lang/Exception
-    //   237	242	245	java/lang/Exception
-  }
-  
-  private void a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString != null)
-    {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
-      localObjectOutputStream.writeObject(paramString);
-      localObjectOutputStream.flush();
-      localObjectOutputStream.close();
-      localByteArrayOutputStream.close();
-      FileUtils.pushData2File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "labelList").getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
-    }
-  }
-  
-  private boolean b()
+  private boolean c()
   {
     return false;
   }
   
-  private boolean c()
+  private boolean d()
   {
     boolean bool2 = false;
     for (;;)
@@ -365,14 +365,14 @@ public class ProfileCardCheckUpdate
     }
   }
   
-  private boolean d()
+  private boolean e()
   {
     boolean bool2 = false;
     for (;;)
     {
       try
       {
-        long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("nextCheckUpdateTimeMillis", 0L);
+        long l1 = this.a.getPreferences().getLong("nextCheckUpdateTimeMillis", 0L);
         long l2 = System.currentTimeMillis();
         if (QLog.isColorLevel())
         {
@@ -409,14 +409,14 @@ public class ProfileCardCheckUpdate
     }
   }
   
-  private boolean e()
+  private boolean f()
   {
     boolean bool2 = false;
     for (;;)
     {
       try
       {
-        long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("nextCheckLabelUpdateTimeMillis", 0L);
+        long l1 = this.a.getPreferences().getLong("nextCheckLabelUpdateTimeMillis", 0L);
         long l2 = System.currentTimeMillis();
         Object localObject;
         if (QLog.isColorLevel())
@@ -438,7 +438,7 @@ public class ProfileCardCheckUpdate
         }
         else
         {
-          localObject = new File(ProfileCardTemplateUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()));
+          localObject = new File(ProfileCardTemplateUtil.a(this.a.getApplication()));
           if (l2 <= l1)
           {
             boolean bool3 = ((File)localObject).exists();
@@ -461,7 +461,7 @@ public class ProfileCardCheckUpdate
     }
   }
   
-  private boolean f()
+  private boolean g()
   {
     return false;
   }
@@ -473,10 +473,10 @@ public class ProfileCardCheckUpdate
   
   public ReqItem a(int paramInt)
   {
-    if (!a()) {
+    if (!b()) {
       return null;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+    Object localObject1 = this.a.getPreferences();
     long l = System.currentTimeMillis();
     ((SharedPreferences)localObject1).edit().putLong("nextCheckUpdateTimeMillis", l + 3600000L).commit();
     String str1 = ((SharedPreferences)localObject1).getString("cardTemplateVersion", "0");
@@ -487,28 +487,28 @@ public class ProfileCardCheckUpdate
     ((ReqItem)localObject1).eServiceID = 122;
     Object localObject2 = new SummaryCardUpdate.SUpdateReqBatch();
     SummaryCardUpdate.SUpdateReq localSUpdateReq;
-    if ((this.jdField_a_of_type_Int & 0x1) != 0)
+    if ((this.b & 0x1) != 0)
     {
       localSUpdateReq = a(3, str1);
       ((SummaryCardUpdate.SUpdateReqBatch)localObject2).reqs.add(localSUpdateReq);
     }
-    if ((this.jdField_a_of_type_Int & 0x2) != 0)
+    if ((this.b & 0x2) != 0)
     {
       localSUpdateReq = a(4, str2);
       ((SummaryCardUpdate.SUpdateReqBatch)localObject2).reqs.add(localSUpdateReq);
     }
-    if ((this.jdField_a_of_type_Int & 0x4) != 0)
+    if ((this.b & 0x4) != 0)
     {
       localSUpdateReq = a(5, (String)localObject3);
       ((SummaryCardUpdate.SUpdateReqBatch)localObject2).reqs.add(localSUpdateReq);
     }
-    if ((this.jdField_a_of_type_Int & 0x8) != 0)
+    if ((this.b & 0x8) != 0)
     {
       localObject3 = a(5, (String)localObject3);
       ((SummaryCardUpdate.SUpdateReq)localObject3).appname.set("special_remind");
       ((SummaryCardUpdate.SUpdateReqBatch)localObject2).reqs.add((MessageMicro)localObject3);
     }
-    if ((this.jdField_a_of_type_Int & 0x10) != 0)
+    if ((this.b & 0x10) != 0)
     {
       localObject3 = a(6, str3);
       ((SummaryCardUpdate.SUpdateReq)localObject3).appname.set("white_list");
@@ -525,13 +525,13 @@ public class ProfileCardCheckUpdate
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("getCheckUpdateItemData uin=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+      ((StringBuilder)localObject2).append(this.a.getLongAccountUin());
       ((StringBuilder)localObject2).append(",cardVersion=");
       ((StringBuilder)localObject2).append(str1);
       ((StringBuilder)localObject2).append("labelVersion=");
       ((StringBuilder)localObject2).append(str2);
       ((StringBuilder)localObject2).append(",client_version=");
-      ((StringBuilder)localObject2).append("8.7.0");
+      ((StringBuilder)localObject2).append("8.8.17");
       ((StringBuilder)localObject2).append(",dataLen=");
       ((StringBuilder)localObject2).append(i);
       QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, ((StringBuilder)localObject2).toString());
@@ -655,57 +655,13 @@ public class ProfileCardCheckUpdate
       }
     }
     else {
-      ReportCenter.a().a("SummaryCardUpdate.EM_RT_FUN_CALL", 100, i, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131708442), true);
+      ReportCenter.a().a("SummaryCardUpdate.EM_RT_FUN_CALL", 100, i, this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131906228), true);
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
     ThreadManagerV2.excute(new ProfileCardCheckUpdate.2(this, paramString1, paramString2), 128, null, false);
-  }
-  
-  public boolean a()
-  {
-    int k = d();
-    boolean bool3 = e();
-    boolean bool4 = b();
-    boolean bool5 = c();
-    boolean bool2 = f();
-    this.jdField_a_of_type_Int |= k;
-    int j = this.jdField_a_of_type_Int;
-    boolean bool1 = false;
-    int i;
-    if (bool3) {
-      i = 2;
-    } else {
-      i = 0;
-    }
-    this.jdField_a_of_type_Int = (j | i);
-    j = this.jdField_a_of_type_Int;
-    if (bool4) {
-      i = 4;
-    } else {
-      i = 0;
-    }
-    this.jdField_a_of_type_Int = (j | i);
-    j = this.jdField_a_of_type_Int;
-    if (bool5) {
-      i = 8;
-    } else {
-      i = 0;
-    }
-    this.jdField_a_of_type_Int = (j | i);
-    j = this.jdField_a_of_type_Int;
-    if (bool2) {
-      i = 16;
-    } else {
-      i = 0;
-    }
-    this.jdField_a_of_type_Int = (j | i);
-    if ((k != 0) || (bool3) || (bool4) || (bool5) || (bool2)) {
-      bool1 = true;
-    }
-    return bool1;
   }
   
   public void b(SummaryCardUpdate.SUpdateRsp paramSUpdateRsp)
@@ -747,8 +703,52 @@ public class ProfileCardCheckUpdate
     }
     else
     {
-      ReportCenter.a().a("SummaryCardUpdate.EM_RT_SPECIAL_REMIND", 100, i, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131708477), true);
+      ReportCenter.a().a("SummaryCardUpdate.EM_RT_SPECIAL_REMIND", 100, i, this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131906263), true);
     }
+  }
+  
+  public boolean b()
+  {
+    int k = e();
+    boolean bool3 = f();
+    boolean bool4 = c();
+    boolean bool5 = d();
+    boolean bool2 = g();
+    this.b |= k;
+    int j = this.b;
+    boolean bool1 = false;
+    int i;
+    if (bool3) {
+      i = 2;
+    } else {
+      i = 0;
+    }
+    this.b = (j | i);
+    j = this.b;
+    if (bool4) {
+      i = 4;
+    } else {
+      i = 0;
+    }
+    this.b = (j | i);
+    j = this.b;
+    if (bool5) {
+      i = 8;
+    } else {
+      i = 0;
+    }
+    this.b = (j | i);
+    j = this.b;
+    if (bool2) {
+      i = 16;
+    } else {
+      i = 0;
+    }
+    this.b = (j | i);
+    if ((k != 0) || (bool3) || (bool4) || (bool5) || (bool2)) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public void c(SummaryCardUpdate.SUpdateRsp paramSUpdateRsp) {}
@@ -774,7 +774,7 @@ public class ProfileCardCheckUpdate
     }
     if (i == 0)
     {
-      paramSUpdateRsp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      paramSUpdateRsp = this.a.getPreferences();
       if (j >= 0)
       {
         long l1 = System.currentTimeMillis();
@@ -787,7 +787,7 @@ public class ProfileCardCheckUpdate
     }
     else
     {
-      ReportCenter.a().a("SummaryCardUpdate.EM_RT_SUMMARY_LABEL", 100, i, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131708447), true);
+      ReportCenter.a().a("SummaryCardUpdate.EM_RT_SUMMARY_LABEL", 100, i, this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131906233), true);
     }
   }
   
@@ -814,7 +814,7 @@ public class ProfileCardCheckUpdate
     {
       if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (j >= 0))
       {
-        paramSUpdateRsp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+        paramSUpdateRsp = this.a.getPreferences().edit();
         paramSUpdateRsp.putLong("nextCheckUpdateTimeMillis", System.currentTimeMillis() + j * 1000);
         paramSUpdateRsp.putString("cardTemplateServerUrl", str2);
         paramSUpdateRsp.putString("cardTemplateServerVersion", str1);
@@ -822,13 +822,13 @@ public class ProfileCardCheckUpdate
       }
     }
     else {
-      ReportCenter.a().a("SummaryCardUpdate.EM_RT_SUMMARY_UPDATE", 100, i, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131708467), true);
+      ReportCenter.a().a("SummaryCardUpdate.EM_RT_SUMMARY_UPDATE", 100, i, this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131906253), true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardCheckUpdate
  * JD-Core Version:    0.7.0.1
  */

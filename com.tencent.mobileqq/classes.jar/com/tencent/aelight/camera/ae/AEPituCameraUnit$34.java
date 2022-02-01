@@ -1,7 +1,7 @@
 package com.tencent.aelight.camera.ae;
 
-import com.tencent.aelight.camera.ae.camera.ui.FilterPagerViewStubHolder;
-import com.tencent.aelight.camera.ae.mode.AECaptureMode;
+import android.widget.ImageView;
+import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 
 class AEPituCameraUnit$34
   implements Runnable
@@ -10,19 +10,18 @@ class AEPituCameraUnit$34
   
   public void run()
   {
-    FilterPagerViewStubHolder localFilterPagerViewStubHolder = this.this$0.a;
-    boolean bool;
-    if (this.this$0.b == AECaptureMode.NORMAL) {
-      bool = true;
-    } else {
-      bool = false;
+    AEPituCameraUnit.p(this.this$0).setVisibility(8);
+    if (AEPituCameraUnit.p(this.this$0).getDrawable() != null)
+    {
+      LazyLoadAnimationDrawable localLazyLoadAnimationDrawable = (LazyLoadAnimationDrawable)AEPituCameraUnit.p(this.this$0).getDrawable();
+      localLazyLoadAnimationDrawable.stop();
+      localLazyLoadAnimationDrawable.clear();
     }
-    localFilterPagerViewStubHolder.d(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.34
  * JD-Core Version:    0.7.0.1
  */

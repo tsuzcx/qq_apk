@@ -10,133 +10,133 @@ import org.xmlpull.v1.XmlSerializer;
 public class AbsStructMsg$XmlSerializerWithFilter
   implements XmlSerializer
 {
-  XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
+  XmlSerializer a;
   
   public AbsStructMsg$XmlSerializerWithFilter(AbsStructMsg paramAbsStructMsg, XmlSerializer paramXmlSerializer)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = paramXmlSerializer;
+    this.a = paramXmlSerializer;
   }
   
   public XmlSerializer attribute(String paramString1, String paramString2, String paramString3)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(paramString1, paramString2, paramString3);
+    return this.a.attribute(paramString1, paramString2, paramString3);
   }
   
   public void cdsect(String paramString)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.cdsect(paramString);
+    this.a.cdsect(paramString);
   }
   
   public void comment(String paramString)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.comment(paramString);
+    this.a.comment(paramString);
   }
   
   public void docdecl(String paramString)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.docdecl(paramString);
+    this.a.docdecl(paramString);
   }
   
   public void endDocument()
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+    this.a.endDocument();
   }
   
   public XmlSerializer endTag(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(paramString1, paramString2);
+    return this.a.endTag(paramString1, paramString2);
   }
   
   public void entityRef(String paramString)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.entityRef(paramString);
+    this.a.entityRef(paramString);
   }
   
   public void flush()
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.flush();
+    this.a.flush();
   }
   
   public int getDepth()
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getDepth();
+    return this.a.getDepth();
   }
   
   public boolean getFeature(String paramString)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getFeature(paramString);
+    return this.a.getFeature(paramString);
   }
   
   public String getName()
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getName();
+    return this.a.getName();
   }
   
   public String getNamespace()
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getNamespace();
+    return this.a.getNamespace();
   }
   
   public String getPrefix(String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getPrefix(paramString, paramBoolean);
+    return this.a.getPrefix(paramString, paramBoolean);
   }
   
   public Object getProperty(String paramString)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getProperty(paramString);
+    return this.a.getProperty(paramString);
   }
   
   public void ignorableWhitespace(String paramString)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.ignorableWhitespace(paramString);
+    this.a.ignorableWhitespace(paramString);
   }
   
   public void processingInstruction(String paramString)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.processingInstruction(paramString);
+    this.a.processingInstruction(paramString);
   }
   
   public void setFeature(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setFeature(paramString, paramBoolean);
+    this.a.setFeature(paramString, paramBoolean);
   }
   
   public void setOutput(OutputStream paramOutputStream, String paramString)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramOutputStream, paramString);
+    this.a.setOutput(paramOutputStream, paramString);
   }
   
   public void setOutput(Writer paramWriter)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramWriter);
+    this.a.setOutput(paramWriter);
   }
   
   public void setPrefix(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setPrefix(paramString1, paramString2);
+    this.a.setPrefix(paramString1, paramString2);
   }
   
   public void setProperty(String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setProperty(paramString, paramObject);
+    this.a.setProperty(paramString, paramObject);
   }
   
   public void startDocument(String paramString, Boolean paramBoolean)
   {
-    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument(paramString, paramBoolean);
+    this.a.startDocument(paramString, paramBoolean);
   }
   
   public XmlSerializer startTag(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(paramString1, paramString2);
+    return this.a.startTag(paramString1, paramString2);
   }
   
   public XmlSerializer text(@NonNull String paramString)
   {
     try
     {
-      paramString = this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(MessageUtils.a(paramString, false));
+      paramString = this.a.text(MessageUtils.a(paramString, false));
       return paramString;
     }
     catch (Exception paramString)
@@ -147,17 +147,17 @@ public class AbsStructMsg$XmlSerializerWithFilter
     if (QLog.isDevelopLevel()) {
       QLog.d("StructMsg", 4, "XmlSerializer . text  IllegalArgumentException。。。。。");
     }
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text("");
+    return this.a.text("");
   }
   
   public XmlSerializer text(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramArrayOfChar, paramInt1, paramInt2);
+    return this.a.text(paramArrayOfChar, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsg.XmlSerializerWithFilter
  * JD-Core Version:    0.7.0.1
  */

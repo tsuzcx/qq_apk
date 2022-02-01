@@ -31,60 +31,44 @@ import mqq.app.AppRuntime;
 public class MagicfaceActionManager
   implements ActionGlobalData.ActionCountdownOver, MagicfaceContainerView.MagicfaceGestureListener
 {
-  static final float[] jdField_a_of_type_ArrayOfFloat = { 1.4F, 1.5F, 1.6F, 1.7F, 1.8F, 1.9F, 2.0F, 2.1F, 2.2F, 2.3F };
-  static final int[] jdField_a_of_type_ArrayOfInt = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
-  public int a;
-  long jdField_a_of_type_Long;
-  public ShakeListener a;
-  Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
-  Action jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction;
-  ActionGlobalData jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = null;
-  MagicfaceActionDecoder jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder;
-  MagicfaceResLoader jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader;
-  public RecordVolume a;
-  MagicfaceActionManager.MagicfaceActionListener jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceActionListener;
-  MagicfaceActionManager.MagicfaceCloseListener jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceCloseListener;
-  MagicfaceActionManager.MagicfaceSensorOperation jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation = new MagicfaceActionManager.1(this);
-  MagicfaceActionManager.MagicfaceTextUpdateListener jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener;
-  MagicfacePlayManager jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager;
-  SoundPoolUtil jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
-  MagicfaceViewController jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController;
-  String jdField_a_of_type_JavaLangString;
-  List<Action> jdField_a_of_type_JavaUtilList;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long;
-  volatile boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  volatile boolean jdField_c_of_type_Boolean = false;
+  static final float[] v = { 1.4F, 1.5F, 1.6F, 1.7F, 1.8F, 1.9F, 2.0F, 2.1F, 2.2F, 2.3F };
+  static final int[] w = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+  public int a = 0;
+  Emoticon b;
+  String c;
+  MagicfaceActionDecoder d;
+  MagicfacePlayManager e;
+  List<Action> f;
+  MagicfaceResLoader g;
+  Action h;
+  volatile boolean i = false;
+  volatile boolean j = false;
+  volatile boolean k = false;
+  MagicfaceActionManager.MagicfaceActionListener l;
+  MagicfaceActionManager.MagicfaceTextUpdateListener m;
+  MagicfaceActionManager.MagicfaceCloseListener n;
+  SoundPoolUtil o;
+  ActionGlobalData p = null;
+  int q = 0;
+  long r;
+  long s;
+  MagicfaceViewController t;
+  MagicfaceActionManager.MagicfaceSensorOperation u = new MagicfaceActionManager.1(this);
+  int x = 0;
+  public ShakeListener y = new MagicfaceActionManager.3(this);
+  public RecordVolume z = new RecordVolume(new MagicfaceActionManager.4(this));
   
   public MagicfaceActionManager(MagicfaceViewController paramMagicfaceViewController)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppShakeListener = new MagicfaceActionManager.3(this);
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume = new RecordVolume(new MagicfaceActionManager.4(this));
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceActionManager", 2, "func MagicfaceActionManager begins");
     }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController = paramMagicfaceViewController;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder = new MagicfaceActionDecoder();
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil = new SoundPoolUtil();
+    this.t = paramMagicfaceViewController;
+    this.d = new MagicfaceActionDecoder();
+    this.o = new SoundPoolUtil();
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceActionManager", 2, "func MagicfaceActionManager ends");
     }
-  }
-  
-  public static int a(Emoticon paramEmoticon, int paramInt)
-  {
-    paramEmoticon = new MagicfaceResLoader(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", paramEmoticon.epId));
-    if (paramInt == 0) {
-      paramEmoticon = paramEmoticon.a("send.xml");
-    } else if (paramInt == 1) {
-      paramEmoticon = paramEmoticon.a("receive.xml");
-    } else {
-      paramEmoticon = null;
-    }
-    return new MagicfaceActionDecoder().a(paramEmoticon);
   }
   
   public static ActionGlobalData a(Emoticon paramEmoticon, int paramInt)
@@ -142,37 +126,41 @@ public class MagicfaceActionManager
     if (paramEmoticon == null) {
       return null;
     }
-    return new MagicfaceActionDecoder().a(paramEmoticon);
+    return new MagicfaceActionDecoder().b(paramEmoticon);
     label219:
     return null;
   }
   
-  public int a()
+  public static int b(Emoticon paramEmoticon, int paramInt)
   {
-    ActionGlobalData localActionGlobalData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
-    if ((localActionGlobalData != null) && (localActionGlobalData.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfacebackText != null)) {
-      return this.jdField_b_of_type_Int;
+    paramEmoticon = new MagicfaceResLoader(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", paramEmoticon.epId));
+    if (paramInt == 0) {
+      paramEmoticon = paramEmoticon.a("send.xml");
+    } else if (paramInt == 1) {
+      paramEmoticon = paramEmoticon.a("receive.xml");
+    } else {
+      paramEmoticon = null;
     }
-    return 0;
+    return new MagicfaceActionDecoder().c(paramEmoticon);
   }
   
   public List<Action> a(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext())
     {
       Action localAction = (Action)localIterator.next();
       if (localAction != null) {
         if (paramBoolean)
         {
-          if ("default".equals(localAction.jdField_a_of_type_JavaLangString))
+          if ("default".equals(localAction.b))
           {
             localArrayList.add(localAction);
             return localArrayList;
           }
         }
-        else if (!"default".equals(localAction.jdField_a_of_type_JavaLangString)) {
+        else if (!"default".equals(localAction.b)) {
           localArrayList.add(localAction);
         }
       }
@@ -182,41 +170,19 @@ public class MagicfaceActionManager
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction;
+    this.j = true;
+    Object localObject = this.h;
     if (localObject != null)
     {
-      ((Action)localObject).c();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction.d();
+      ((Action)localObject).d();
+      this.h.e();
     }
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener != null) && (((ActionGlobalData)localObject).e != null))
+    this.s = System.currentTimeMillis();
+    localObject = this.p;
+    if ((localObject != null) && (this.m != null) && (((ActionGlobalData)localObject).k != null))
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener.c(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfacebackText.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_Float));
-    }
-  }
-  
-  void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceActionManager", 2, "func initActionData begins.");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a();
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader = new MagicfaceResLoader(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId));
-    } else if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader = new MagicfaceResLoader(EmotionPanelConstans.giftBigAnimationPath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId), 2);
-    } else if (paramInt == 3) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader = new MagicfaceResLoader(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId), 3);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader);
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil);
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceActionManager", 2, "func initActionData ends.");
+      this.q = this.p.i;
+      this.m.c(this.p.m.a(this.q, this.p.p));
     }
   }
   
@@ -231,17 +197,17 @@ public class MagicfaceActionManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("func doAction begins. isStart:");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.i);
       localStringBuilder.append(",isRelease:");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.k);
       QLog.d("MagicfaceActionManager", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.i) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramEmoticon;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramEmoticon;
+    this.a = paramInt1;
+    this.c = paramString;
     ThreadManager.post(new MagicfaceActionManager.2(this, paramInt2, paramInt1), 8, null, true);
   }
   
@@ -253,31 +219,31 @@ public class MagicfaceActionManager
       return;
     }
     c(paramActionGlobalData);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceActionListener;
+    Object localObject = this.l;
     if (localObject != null) {
       ((MagicfaceActionManager.MagicfaceActionListener)localObject).a(paramActionGlobalData);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener;
+    localObject = this.m;
     if (localObject != null)
     {
-      ((MagicfaceActionManager.MagicfaceTextUpdateListener)localObject).a(paramActionGlobalData.jdField_d_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Int == 1) {
-        if (paramActionGlobalData.f != null)
+      ((MagicfaceActionManager.MagicfaceTextUpdateListener)localObject).a(paramActionGlobalData.j);
+      if (this.a == 1) {
+        if (paramActionGlobalData.l != null)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener;
-          String str = paramActionGlobalData.f;
+          localObject = this.m;
+          String str = paramActionGlobalData.l;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(paramActionGlobalData.jdField_b_of_type_Int);
+          localStringBuilder.append(paramActionGlobalData.i);
           ((MagicfaceActionManager.MagicfaceTextUpdateListener)localObject).b(str.replace("%param%", localStringBuilder.toString()));
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener.b("");
+          this.m.b("");
         }
       }
     }
-    if (paramActionGlobalData.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfacebackText != null)
+    if (paramActionGlobalData.m != null)
     {
       paramActionGlobalData.a(this);
       paramActionGlobalData.a();
@@ -286,20 +252,20 @@ public class MagicfaceActionManager
   
   public void a(MagicfaceActionManager.MagicfaceActionListener paramMagicfaceActionListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceActionListener = paramMagicfaceActionListener;
+    this.l = paramMagicfaceActionListener;
   }
   
   public void a(MagicfaceActionManager.MagicfaceCloseListener paramMagicfaceCloseListener)
   {
     if (paramMagicfaceCloseListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceCloseListener = paramMagicfaceCloseListener;
+      this.n = paramMagicfaceCloseListener;
     }
-    this.jdField_b_of_type_Boolean = true;
-    paramMagicfaceCloseListener = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction;
+    this.j = true;
+    paramMagicfaceCloseListener = this.h;
     if (paramMagicfaceCloseListener != null) {
-      paramMagicfaceCloseListener.d();
+      paramMagicfaceCloseListener.e();
     }
-    paramMagicfaceCloseListener = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
+    paramMagicfaceCloseListener = this.p;
     if (paramMagicfaceCloseListener != null) {
       paramMagicfaceCloseListener.a(null);
     }
@@ -307,29 +273,19 @@ public class MagicfaceActionManager
   
   public void a(MagicfaceActionManager.MagicfaceTextUpdateListener paramMagicfaceTextUpdateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener = paramMagicfaceTextUpdateListener;
+    this.m = paramMagicfaceTextUpdateListener;
   }
   
   public void a(MagicfacePlayManager paramMagicfacePlayManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager = paramMagicfacePlayManager;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putBoolean("sendSound", paramBoolean).commit();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.e = paramMagicfacePlayManager;
   }
   
   public boolean a(int paramInt)
   {
-    Action localAction = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction;
+    Action localAction = this.h;
     if (localAction != null) {
-      localAction.b(paramInt, this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation);
+      localAction.b(paramInt, this.u);
     }
     return false;
   }
@@ -347,32 +303,32 @@ public class MagicfaceActionManager
       return null;
     }
     Object localObject = new int[3];
-    int j = 0;
-    int i = 0;
-    while (i < 3)
+    int i2 = 0;
+    int i1 = 0;
+    while (i1 < 3)
     {
-      localObject[i] = 0;
-      i += 1;
+      localObject[i1] = 0;
+      i1 += 1;
     }
     paramString = paramString.split("\\.");
     if ((paramString != null) && (paramString.length > 1))
     {
-      i = j;
+      i1 = i2;
       try
       {
-        while (i < localObject.length)
+        while (i1 < localObject.length)
         {
-          localObject[i] = Integer.valueOf(paramString[i]).intValue();
+          localObject[i1] = Integer.valueOf(paramString[i1]).intValue();
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("func splitVersion, intVers[");
-            localStringBuilder.append(i);
+            localStringBuilder.append(i1);
             localStringBuilder.append("],=");
-            localStringBuilder.append(localObject[i]);
+            localStringBuilder.append(localObject[i1]);
             QLog.d("MagicfaceActionManager", 2, localStringBuilder.toString());
           }
-          i += 1;
+          i1 += 1;
         }
         if (!QLog.isColorLevel()) {
           break label205;
@@ -390,27 +346,49 @@ public class MagicfaceActionManager
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction;
+    Object localObject = this.h;
     if (localObject == null) {
       return;
     }
-    localObject = ((Action)localObject).jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionProcess;
-    if ((localObject != null) && ("gravity".equalsIgnoreCase(((ActionProcess)localObject).jdField_b_of_type_JavaLangString))) {
-      if ("record".equalsIgnoreCase(((ActionProcess)localObject).jdField_a_of_type_JavaLangString))
+    localObject = ((Action)localObject).i;
+    if ((localObject != null) && ("gravity".equalsIgnoreCase(((ActionProcess)localObject).b))) {
+      if ("record".equalsIgnoreCase(((ActionProcess)localObject).a))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener != null)
+        if (this.m != null)
         {
-          this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Int;
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener.c(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.e);
+          this.q = this.p.i;
+          this.m.c(this.p.k);
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceTextUpdateListener;
+        localObject = this.m;
         if (localObject != null) {
-          ((MagicfaceActionManager.MagicfaceTextUpdateListener)localObject).c(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfacebackText.a(1, this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_a_of_type_Float));
+          ((MagicfaceActionManager.MagicfaceTextUpdateListener)localObject).c(this.p.m.a(1, this.p.p));
         }
       }
+    }
+  }
+  
+  void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceActionManager", 2, "func initActionData begins.");
+    }
+    this.i = true;
+    this.j = false;
+    this.e.a();
+    if (paramInt == 1) {
+      this.g = new MagicfaceResLoader(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", this.b.epId));
+    } else if (paramInt == 2) {
+      this.g = new MagicfaceResLoader(EmotionPanelConstans.giftBigAnimationPath.replace("[epId]", this.b.epId), 2);
+    } else if (paramInt == 3) {
+      this.g = new MagicfaceResLoader(EmotionPanelConstans.emoticonPackageFolderPath.replace("[epId]", this.b.epId), 3);
+    }
+    this.e.a(this.g);
+    this.e.a(this.o);
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceActionManager", 2, "func initActionData ends.");
     }
   }
   
@@ -419,15 +397,15 @@ public class MagicfaceActionManager
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceActionManager", 2, "func onEndMagicface, 【magic end】");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceCloseListener;
+    Object localObject = this.n;
     if (localObject != null) {
       ((MagicfaceActionManager.MagicfaceCloseListener)localObject).a();
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.i = false;
     if (paramActionGlobalData != null) {
       d(paramActionGlobalData);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceActionListener;
+    localObject = this.l;
     if (localObject != null) {
       ((MagicfaceActionManager.MagicfaceActionListener)localObject).b(paramActionGlobalData);
     }
@@ -435,62 +413,49 @@ public class MagicfaceActionManager
   
   public void b(boolean paramBoolean)
   {
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putBoolean("receiveSound", paramBoolean).commit();
-  }
-  
-  public boolean b()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime().getPreferences().getBoolean("sendSound", false);
+    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putBoolean("sendSound", paramBoolean).commit();
   }
   
   void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController != null) && (this.jdField_a_of_type_Int == 0))
+    if ((this.t != null) && (this.a == 0))
     {
-      Action localAction = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction;
-      if ((localAction != null) && (localAction.jdField_d_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.e();
+      Action localAction = this.h;
+      if ((localAction != null) && (localAction.n)) {
+        this.t.f();
       }
     }
   }
   
   public void c(ActionGlobalData paramActionGlobalData)
   {
-    if ("mic".equalsIgnoreCase(paramActionGlobalData.c))
+    if ("mic".equalsIgnoreCase(paramActionGlobalData.h))
     {
-      ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume);
+      ThreadManager.executeOnNetWorkThread(this.z);
       return;
     }
-    if ("gravity".equalsIgnoreCase(paramActionGlobalData.c))
+    if ("gravity".equalsIgnoreCase(paramActionGlobalData.h))
     {
       paramActionGlobalData = (SensorManager)BaseApplicationImpl.getContext().getSystemService("sensor");
-      paramActionGlobalData.registerListener(this.jdField_a_of_type_ComTencentMobileqqAppShakeListener, paramActionGlobalData.getDefaultSensor(1), 0);
+      paramActionGlobalData.registerListener(this.y, paramActionGlobalData.getDefaultSensor(1), 0);
       return;
     }
-    "touch".equalsIgnoreCase(paramActionGlobalData.c);
+    "touch".equalsIgnoreCase(paramActionGlobalData.h);
   }
   
   public void c(boolean paramBoolean)
   {
-    ActionGlobalData localActionGlobalData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
-    if (localActionGlobalData != null) {
-      localActionGlobalData.jdField_d_of_type_Boolean = true;
-    }
-  }
-  
-  public boolean c()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime().getPreferences().getBoolean("receiveSound", false);
+    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putBoolean("receiveSound", paramBoolean).commit();
   }
   
   public void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
+    Object localObject = this.p;
     boolean bool = false;
-    if ((localObject != null) && (!"non-ver".equals(((ActionGlobalData)localObject).jdField_b_of_type_JavaLangString)))
+    if ((localObject != null) && (!"non-ver".equals(((ActionGlobalData)localObject).f)))
     {
-      localObject = a("8.7.0");
-      int[] arrayOfInt = a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_JavaLangString);
+      localObject = a("8.8.17");
+      int[] arrayOfInt = a(this.p.f);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -502,13 +467,13 @@ public class MagicfaceActionManager
       }
       if ((localObject != null) && (arrayOfInt != null) && (localObject.length == arrayOfInt.length))
       {
-        int i = 0;
-        while ((i < arrayOfInt.length) && (localObject[i] <= arrayOfInt[i]))
+        int i1 = 0;
+        while ((i1 < arrayOfInt.length) && (localObject[i1] <= arrayOfInt[i1]))
         {
-          if (localObject[i] < arrayOfInt[i]) {
+          if (localObject[i1] < arrayOfInt[i1]) {
             break label168;
           }
-          i += 1;
+          i1 += 1;
         }
       }
       bool = true;
@@ -520,21 +485,29 @@ public class MagicfaceActionManager
         ((StringBuilder)localObject).append(bool);
         QLog.d("MagicfaceActionManager", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_JavaUtilList = a(bool ^ true);
+      this.f = a(bool ^ true);
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = a(false);
+    this.f = a(false);
   }
   
   public void d(ActionGlobalData paramActionGlobalData)
   {
-    if ("mic".equalsIgnoreCase(paramActionGlobalData.c))
+    if ("mic".equalsIgnoreCase(paramActionGlobalData.h))
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume.a();
+      this.z.a();
       return;
     }
-    if ("gravity".equalsIgnoreCase(paramActionGlobalData.c)) {
-      ((SensorManager)BaseApplicationImpl.getContext().getSystemService("sensor")).unregisterListener(this.jdField_a_of_type_ComTencentMobileqqAppShakeListener);
+    if ("gravity".equalsIgnoreCase(paramActionGlobalData.h)) {
+      ((SensorManager)BaseApplicationImpl.getContext().getSystemService("sensor")).unregisterListener(this.y);
+    }
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    ActionGlobalData localActionGlobalData = this.p;
+    if (localActionGlobalData != null) {
+      localActionGlobalData.n = true;
     }
   }
   
@@ -545,17 +518,17 @@ public class MagicfaceActionManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("func parseReceiveValue, magicValue:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
+      ((StringBuilder)localObject).append(this.b.magicValue);
       QLog.d("MagicfaceActionManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue != null)
+    if (this.b.magicValue != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue.split("&");
+      localObject = this.b.magicValue.split("&");
       if ((localObject.length >= 0) && (localObject[0].contains("value")))
       {
         localObject = localObject[0].split("=");
         if ((localObject != null) && (localObject.length == 2)) {
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Int = Integer.parseInt(localObject[1]);
+          this.p.i = Integer.parseInt(localObject[1]);
         }
       }
     }
@@ -563,7 +536,7 @@ public class MagicfaceActionManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("func parseReceiveValue, value:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.p.i);
       QLog.d("MagicfaceActionManager", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -576,41 +549,65 @@ public class MagicfaceActionManager
   public void g()
   {
     f();
-    a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    a(this.b, this.a, this.c);
   }
   
-  public void h()
+  public boolean h()
   {
-    this.jdField_c_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
+    return this.i;
+  }
+  
+  public void i()
+  {
+    this.k = true;
+    Object localObject = this.p;
     if (localObject != null) {
       ((ActionGlobalData)localObject).a(null);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager;
+    localObject = this.e;
     if (localObject != null)
     {
       ((MagicfacePlayManager)localObject).a(null);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.c();
+      this.e.c();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil;
+    localObject = this.o;
     if (localObject != null)
     {
       ((SoundPoolUtil)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil = null;
+      this.o = null;
     }
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long > 0L))
+    if ((this.a == 0) && (this.s - this.r > 0L))
     {
       localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
-        ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "MbFasong", "MbZhizuoShichang", 0, 0, String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long), "", "", "");
+        ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "MbFasong", "MbZhizuoShichang", 0, 0, String.valueOf(this.s - this.r), "", "", "");
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController = null;
+    this.t = null;
+  }
+  
+  public int j()
+  {
+    ActionGlobalData localActionGlobalData = this.p;
+    if ((localActionGlobalData != null) && (localActionGlobalData.m != null)) {
+      return this.q;
+    }
+    return 0;
+  }
+  
+  public boolean k()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime().getPreferences().getBoolean("sendSound", false);
+  }
+  
+  public boolean l()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime().getPreferences().getBoolean("receiveSound", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.service.MagicfaceActionManager
  * JD-Core Version:    0.7.0.1
  */

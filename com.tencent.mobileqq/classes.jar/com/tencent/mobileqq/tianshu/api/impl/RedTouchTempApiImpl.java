@@ -39,11 +39,11 @@ public class RedTouchTempApiImpl
     if ((paramTextView1 != null) && (paramTextView2 != null))
     {
       Context localContext = paramTextView2.getContext();
-      Animation localAnimation1 = AnimationUtils.loadAnimation(localContext, 2130772114);
-      Animation localAnimation2 = AnimationUtils.loadAnimation(localContext, 2130772115);
+      Animation localAnimation1 = AnimationUtils.loadAnimation(localContext, 2130772160);
+      Animation localAnimation2 = AnimationUtils.loadAnimation(localContext, 2130772161);
       if (paramAtomicBoolean.get())
       {
-        paramAtomicBoolean = AnimationUtils.loadAnimation(localContext, 2130772114);
+        paramAtomicBoolean = AnimationUtils.loadAnimation(localContext, 2130772160);
         paramTextView2.setVisibility(0);
         paramTextView3.setVisibility(0);
         paramTextView1.startAnimation(localAnimation2);
@@ -51,7 +51,7 @@ public class RedTouchTempApiImpl
         paramTextView3.startAnimation(paramAtomicBoolean);
         return;
       }
-      paramAtomicBoolean = AnimationUtils.loadAnimation(localContext, 2130772115);
+      paramAtomicBoolean = AnimationUtils.loadAnimation(localContext, 2130772161);
       paramTextView1.setVisibility(0);
       paramTextView1.startAnimation(localAnimation1);
       paramTextView2.startAnimation(localAnimation2);
@@ -63,7 +63,7 @@ public class RedTouchTempApiImpl
   
   public URLDrawable getApngDrawable(Context paramContext, String paramString)
   {
-    Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130845505);
+    Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130846968);
     if (paramContext == null)
     {
       QLog.e("RedTouchTempApiImpl", 1, "apngUrl is empty");
@@ -91,7 +91,7 @@ public class RedTouchTempApiImpl
   
   public Bitmap getDefaultFaceBitmap()
   {
-    return ImageUtil.a(true);
+    return ImageUtil.b(true);
   }
   
   public Drawable getFaceDrawable(Context paramContext, String paramString)
@@ -113,7 +113,7 @@ public class RedTouchTempApiImpl
   
   public void onProcessAddRedPoint(View paramView)
   {
-    paramView = (ImageView)paramView.findViewById(2131380160);
+    paramView = (ImageView)paramView.findViewById(2131449075);
     if (paramView != null) {
       paramView.setVisibility(0);
     }
@@ -155,10 +155,10 @@ public class RedTouchTempApiImpl
       }
       AtomicBoolean localAtomicBoolean = new AtomicBoolean(true);
       Context localContext = paramImageView2.getContext();
-      Animation localAnimation1 = AnimationUtils.loadAnimation(localContext, 2130772114);
-      Animation localAnimation2 = AnimationUtils.loadAnimation(localContext, 2130772115);
-      Animation localAnimation3 = AnimationUtils.loadAnimation(localContext, 2130772116);
-      Animation localAnimation4 = AnimationUtils.loadAnimation(localContext, 2130772117);
+      Animation localAnimation1 = AnimationUtils.loadAnimation(localContext, 2130772160);
+      Animation localAnimation2 = AnimationUtils.loadAnimation(localContext, 2130772161);
+      Animation localAnimation3 = AnimationUtils.loadAnimation(localContext, 2130772162);
+      Animation localAnimation4 = AnimationUtils.loadAnimation(localContext, 2130772163);
       paramTextView4 = new RedTouchTempApiImpl.1(this, localAnimation1, paramImageView1, localContext, paramString, paramTextView2, paramBoolean, paramTextView3, localAnimation2, paramImageView2, paramTextView4, paramTextView1);
       localAnimation1.setAnimationListener(paramTextView4);
       localAnimation2.setAnimationListener(paramTextView4);
@@ -179,7 +179,7 @@ public class RedTouchTempApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.impl.RedTouchTempApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,13 @@ class TroopGiftAnimationController$5
   
   public Unit a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.b();
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0.invoke();
+    this.a.invoke();
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5
  * JD-Core Version:    0.7.0.1
  */

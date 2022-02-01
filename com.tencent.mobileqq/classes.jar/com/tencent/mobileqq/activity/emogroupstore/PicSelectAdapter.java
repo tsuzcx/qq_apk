@@ -45,88 +45,88 @@ import java.util.TreeMap;
 public class PicSelectAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  private EmoticonGroupStoreFragment jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment;
-  private ImgPreviewAdapter jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreImgPreviewAdapter;
-  private PicSelectAdapter.OnImgClickListener jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener = new PicSelectAdapter.3(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IEmoticonFromGroupDBManagerService jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService;
-  private IEmoticonFromGroupManager jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager;
-  private Map<String, List<EmoticonFromGroupEntity>> jdField_a_of_type_JavaUtilMap;
   public boolean a;
-  private int jdField_b_of_type_Int = -1;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private Map<String, String> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean;
-  private Map<Integer, Integer> c = new HashMap();
-  private Map<Integer, String> d = new HashMap();
-  private Map<Integer, List<EmoticonFromGroupEntity>> e = new TreeMap();
+  private QQAppInterface b;
+  private Context c;
+  private EmoticonGroupStoreFragment d;
+  private Map<String, List<EmoticonFromGroupEntity>> e;
+  private Map<String, String> f = new HashMap();
+  private int g;
+  private LayoutInflater h;
+  private Map<Integer, Integer> i = new HashMap();
+  private Map<Integer, String> j = new HashMap();
+  private Map<Integer, List<EmoticonFromGroupEntity>> k = new TreeMap();
+  private boolean l;
+  private int m = -1;
+  private View n;
+  private Button o;
+  private ImageView p;
+  private TextView q;
+  private ViewPager r;
+  private ImgPreviewAdapter s;
+  private Button t;
+  private IEmoticonFromGroupDBManagerService u;
+  private IEmoticonFromGroupManager v;
+  private PicSelectAdapter.OnImgClickListener w = new PicSelectAdapter.3(this);
   
   public PicSelectAdapter(QQAppInterface paramQQAppInterface, EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment, int paramInt, View paramView, ViewPager paramViewPager, Button paramButton)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment = paramEmoticonGroupStoreFragment;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.getBaseActivity();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363949));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368638));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380023));
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setPageMargin(2);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreImgPreviewAdapter = new ImgPreviewAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager);
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreImgPreviewAdapter);
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOnPageChangeListener(new PicSelectAdapter.1(this));
-    this.jdField_b_of_type_AndroidWidgetButton = paramButton;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService = ((IEmoticonFromGroupDBManagerService)paramQQAppInterface.getRuntimeService(IEmoticonFromGroupDBManagerService.class));
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager = ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager.a();
+    this.b = paramQQAppInterface;
+    this.d = paramEmoticonGroupStoreFragment;
+    this.c = this.d.getBaseActivity();
+    this.g = paramInt;
+    this.n = paramView;
+    this.o = ((Button)this.n.findViewById(2131429905));
+    this.p = ((ImageView)this.n.findViewById(2131435550));
+    this.q = ((TextView)this.n.findViewById(2131448928));
+    this.r = paramViewPager;
+    this.r.setPageMargin(2);
+    this.h = LayoutInflater.from(this.c);
+    this.s = new ImgPreviewAdapter(this.b, this.c, this.r);
+    this.r.setAdapter(this.s);
+    this.r.setOnPageChangeListener(new PicSelectAdapter.1(this));
+    this.t = paramButton;
+    this.u = ((IEmoticonFromGroupDBManagerService)paramQQAppInterface.getRuntimeService(IEmoticonFromGroupDBManagerService.class));
+    this.v = ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).d;
+    this.v.f();
   }
   
   private void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    int i = 0;
+    Iterator localIterator = this.e.entrySet().iterator();
+    int i1 = 0;
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       String str = (String)((Map.Entry)localObject).getKey();
-      this.d.put(Integer.valueOf(i), str);
-      this.c.put(Integer.valueOf(i), Integer.valueOf(0));
+      this.j.put(Integer.valueOf(i1), str);
+      this.i.put(Integer.valueOf(i1), Integer.valueOf(0));
       localObject = (List)((Map.Entry)localObject).getValue();
-      int i1 = ((List)localObject).size();
-      double d1 = i1;
+      int i6 = ((List)localObject).size();
+      double d1 = i6;
       Double.isNaN(d1);
-      int i2 = (int)Math.ceil(d1 / 3.0D);
-      i += 1;
-      int j = 0;
-      int n;
-      for (int k = 0; j < i2; k = n)
+      int i7 = (int)Math.ceil(d1 / 3.0D);
+      i1 += 1;
+      int i2 = 0;
+      int i5;
+      for (int i3 = 0; i2 < i7; i3 = i5)
       {
         ArrayList localArrayList = new ArrayList();
-        int m = 0;
+        int i4 = 0;
         for (;;)
         {
-          n = k + m;
-          if ((n >= i1) || (m >= 3)) {
+          i5 = i3 + i4;
+          if ((i5 >= i6) || (i4 >= 3)) {
             break;
           }
-          localArrayList.add(((List)localObject).get(n));
-          m += 1;
+          localArrayList.add(((List)localObject).get(i5));
+          i4 += 1;
         }
-        this.d.put(Integer.valueOf(i), str);
-        this.e.put(Integer.valueOf(i), localArrayList);
-        this.c.put(Integer.valueOf(i), Integer.valueOf(1));
-        j += 1;
-        i += 1;
+        this.j.put(Integer.valueOf(i1), str);
+        this.k.put(Integer.valueOf(i1), localArrayList);
+        this.i.put(Integer.valueOf(i1), Integer.valueOf(1));
+        i2 += 1;
+        i1 += 1;
       }
     }
   }
@@ -138,26 +138,26 @@ public class PicSelectAdapter
     default: 
       paramInt2 = -1;
       break;
-    case 2131368662: 
+    case 2131435575: 
       paramInt2 = 2;
       break;
-    case 2131368661: 
+    case 2131435574: 
       paramInt2 = 1;
       break;
-    case 2131368660: 
+    case 2131435573: 
       paramInt2 = 0;
     }
-    Object localObject = (EmoticonFromGroupEntity)((List)this.e.get(Integer.valueOf(paramInt1))).get(paramInt2);
-    if (this.jdField_b_of_type_Boolean)
+    Object localObject = (EmoticonFromGroupEntity)((List)this.k.get(Integer.valueOf(paramInt1))).get(paramInt2);
+    if (this.l)
     {
       if (-1 != ((EmoticonFromGroupEntity)localObject).status)
       {
         paramInt1 = ((EmoticonFromGroupEntity)localObject).status;
         if (((EmoticonFromGroupEntity)localObject).status != 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.remove(localObject);
+          this.d.a.remove(localObject);
           ((EmoticonFromGroupEntity)localObject).status = -1;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.iterator();
+          localObject = this.d.a.iterator();
           while (((Iterator)localObject).hasNext())
           {
             EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)((Iterator)localObject).next();
@@ -170,43 +170,43 @@ public class PicSelectAdapter
       }
       else
       {
-        paramInt1 = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.size();
-        if (this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getCountOfSpare() <= paramInt1)
+        paramInt1 = this.d.a.size();
+        if (this.u.getCountOfSpare() <= paramInt1)
         {
-          if (300 == FavEmoConstant.jdField_a_of_type_Int)
+          if (300 == FavEmoConstant.a)
           {
-            QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131689648, 0).b(2131299168);
+            QQToast.makeText(this.c, 2131886259, 0).show(2131299920);
           }
-          else if (144 == FavEmoConstant.jdField_a_of_type_Int)
+          else if (144 == FavEmoConstant.a)
           {
             localObject = new PicSelectAdapter.2(this);
-            localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, HardCodeUtil.a(2131708162), this.jdField_a_of_type_AndroidContentContext.getString(2131689647), HardCodeUtil.a(2131708163), HardCodeUtil.a(2131708165), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+            localObject = DialogUtil.a(this.c, 0, HardCodeUtil.a(2131905958), this.c.getString(2131886258), HardCodeUtil.a(2131898212), HardCodeUtil.a(2131905960), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
             if (localObject != null) {
               ((QQCustomDialog)localObject).show();
             }
           }
         }
-        else if (20 > this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.size())
+        else if (20 > this.d.a.size())
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.add(localObject);
-          ((EmoticonFromGroupEntity)localObject).status = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.size();
+          this.d.a.add(localObject);
+          ((EmoticonFromGroupEntity)localObject).status = this.d.a.size();
           notifyDataSetChanged();
         }
         else
         {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, "单次最多收藏20个表情哦~", 0).b(2131299168);
+          QQToast.makeText(this.c, "单次最多收藏20个表情哦~", 0).show(2131299920);
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.size() > 0)
+      if (this.d.a.size() > 0)
       {
-        this.jdField_b_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFFFF"));
-        this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844469));
-        this.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
+        this.t.setTextColor(Color.parseColor("#FFFFFFFF"));
+        this.t.setBackgroundDrawable(this.c.getResources().getDrawable(2130845842));
+        this.t.setEnabled(true);
         return;
       }
-      this.jdField_b_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBFBFBF"));
-      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844470));
-      this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
+      this.t.setTextColor(Color.parseColor("#FFBFBFBF"));
+      this.t.setBackgroundDrawable(this.c.getResources().getDrawable(2130845843));
+      this.t.setEnabled(false);
       return;
     }
     a((EmoticonFromGroupEntity)localObject, paramInt2, paramInt1);
@@ -214,20 +214,20 @@ public class PicSelectAdapter
   
   private void a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
   {
-    int i = paramEmoticonFromGroupEntity.fromType;
+    int i1 = paramEmoticonFromGroupEntity.fromType;
     String str = null;
     Object localObject;
-    if (1 == i)
+    if (1 == i1)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(4, paramEmoticonFromGroupEntity.troopUin, (byte)2, false, (byte)1, 0);
-      str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonFromGroupEntity.troopUin, true);
+      localObject = this.b.getFaceBitmap(4, paramEmoticonFromGroupEntity.troopUin, (byte)2, false, (byte)1, 0);
+      str = ContactUtils.a(this.b, paramEmoticonFromGroupEntity.troopUin, true);
       paramEmoticonFromGroupEntity = (EmoticonFromGroupEntity)localObject;
       localObject = str;
     }
     else if (3000 == paramEmoticonFromGroupEntity.fromType)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(101, paramEmoticonFromGroupEntity.troopUin, (byte)3, false, (byte)1, 0);
-      str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramEmoticonFromGroupEntity.troopUin);
+      localObject = this.b.getFaceBitmap(101, paramEmoticonFromGroupEntity.troopUin, (byte)3, false, (byte)1, 0);
+      str = ContactUtils.a(this.b, this.c, paramEmoticonFromGroupEntity.troopUin);
       paramEmoticonFromGroupEntity = (EmoticonFromGroupEntity)localObject;
       localObject = str;
     }
@@ -236,8 +236,8 @@ public class PicSelectAdapter
       localObject = null;
       paramEmoticonFromGroupEntity = str;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramEmoticonFromGroupEntity);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    this.p.setImageBitmap(paramEmoticonFromGroupEntity);
+    this.q.setText((CharSequence)localObject);
   }
   
   private void a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity, int paramInt1, int paramInt2)
@@ -248,37 +248,37 @@ public class PicSelectAdapter
     {
       if (paramEmoticonFromGroupEntity.status == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131708160));
-        this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBBBBBB"));
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844470));
-        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        this.o.setText(HardCodeUtil.a(2131905956));
+        this.o.setTextColor(Color.parseColor("#FFBBBBBB"));
+        this.o.setBackgroundDrawable(this.c.getResources().getDrawable(2130845843));
+        this.o.setEnabled(false);
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131708161));
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFFFF"));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844469));
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.o.setText(HardCodeUtil.a(2131905957));
+      this.o.setTextColor(Color.parseColor("#FFFFFFFF"));
+      this.o.setBackgroundDrawable(this.c.getResources().getDrawable(2130845842));
+      this.o.setEnabled(true);
     }
-    if (this.e.containsKey(Integer.valueOf(paramInt2)))
+    if (this.k.containsKey(Integer.valueOf(paramInt2)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.titleRoot != this.jdField_a_of_type_AndroidViewView.getParent())
+      if (this.d.titleRoot != this.n.getParent())
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.titleRoot.addView(this.jdField_a_of_type_AndroidViewView);
-        this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a(false);
+        this.d.titleRoot.addView(this.n);
+        this.d.a(false);
       }
-      int i = 0;
-      int k;
-      for (int j = 0; i < paramInt2; j = k)
+      int i1 = 0;
+      int i3;
+      for (int i2 = 0; i1 < paramInt2; i2 = i3)
       {
-        k = j;
-        if (this.e.containsKey(Integer.valueOf(i))) {
-          k = j + ((List)this.e.get(Integer.valueOf(i))).size();
+        i3 = i2;
+        if (this.k.containsKey(Integer.valueOf(i1))) {
+          i3 = i2 + ((List)this.k.get(Integer.valueOf(i1))).size();
         }
-        i += 1;
+        i1 += 1;
       }
-      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setCurrentItem(j + paramInt1, false);
+      this.r.setCurrentItem(i2 + paramInt1, false);
     }
     VasWebviewUtil.a("", "QLbq", "ClickPreview", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
@@ -287,71 +287,71 @@ public class PicSelectAdapter
   {
     if (paramEmoticonFromGroupEntity.status == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131708166));
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBBBBBB"));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844470));
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.o.setText(HardCodeUtil.a(2131905961));
+      this.o.setTextColor(Color.parseColor("#FFBBBBBB"));
+      this.o.setBackgroundDrawable(this.c.getResources().getDrawable(2130845843));
+      this.o.setEnabled(false);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131708164));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFFFF"));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844469));
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.o.setText(HardCodeUtil.a(2131905959));
+    this.o.setTextColor(Color.parseColor("#FFFFFFFF"));
+    this.o.setBackgroundDrawable(this.c.getResources().getDrawable(2130845842));
+    this.o.setEnabled(true);
   }
   
   public String a(int paramInt)
   {
-    String str = (String)this.d.get(Integer.valueOf(paramInt));
-    return (String)this.jdField_b_of_type_JavaUtilMap.get(str);
+    String str = (String)this.j.get(Integer.valueOf(paramInt));
+    return (String)this.f.get(str);
   }
   
   public void a(Map<String, List<EmoticonFromGroupEntity>> paramMap, List<EmoticonFromGroupEntity> paramList)
   {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.e.clear();
-    this.d.clear();
-    this.c.clear();
+    this.e = paramMap;
+    this.k.clear();
+    this.j.clear();
+    this.i.clear();
     a();
-    this.jdField_b_of_type_JavaUtilMap.clear();
+    this.f.clear();
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
     {
       Object localObject = (Map.Entry)paramMap.next();
       String str = (String)((Map.Entry)localObject).getKey();
       localObject = (List)((Map.Entry)localObject).getValue();
-      this.jdField_b_of_type_JavaUtilMap.put(str, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager.a(str, ((List)localObject).size(), "  "));
+      this.f.put(str, this.v.a(str, ((List)localObject).size(), "  "));
     }
     notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreImgPreviewAdapter.a(paramList);
-    this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreImgPreviewAdapter.notifyDataSetChanged();
+    this.s.a(paramList);
+    this.s.notifyDataSetChanged();
   }
   
   public boolean a(boolean paramBoolean)
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    boolean bool = this.l;
+    this.l = paramBoolean;
     return bool;
   }
   
   public int getItemCount()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
-    int i = 0;
-    int j = 0;
+    Object localObject = this.e;
+    int i1 = 0;
+    int i2 = 0;
     if (localObject != null)
     {
-      int k = ((Map)localObject).size();
-      localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      i = j;
+      int i3 = ((Map)localObject).size();
+      localObject = this.e.entrySet().iterator();
+      i1 = i2;
       while (((Iterator)localObject).hasNext())
       {
         double d1 = ((List)((Map.Entry)((Iterator)localObject).next()).getValue()).size();
         Double.isNaN(d1);
-        i += (int)Math.ceil(d1 / 3.0D);
+        i1 += (int)Math.ceil(d1 / 3.0D);
       }
-      i = k + i + 1;
+      i1 = i3 + i1 + 1;
     }
-    return i;
+    return i1;
   }
   
   public int getItemViewType(int paramInt)
@@ -359,7 +359,7 @@ public class PicSelectAdapter
     if (paramInt == getItemCount() - 1) {
       return 2;
     }
-    return ((Integer)this.c.get(Integer.valueOf(paramInt))).intValue();
+    return ((Integer)this.i.get(Integer.valueOf(paramInt))).intValue();
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -367,58 +367,58 @@ public class PicSelectAdapter
     if ((paramViewHolder instanceof PicSelectAdapter.PicItemViewHolder))
     {
       PicSelectAdapter.PicItemViewHolder localPicItemViewHolder = (PicSelectAdapter.PicItemViewHolder)paramViewHolder;
-      List localList = (List)this.e.get(Integer.valueOf(paramInt));
-      int j = localList.size();
-      int i = 0;
-      while (i < 3)
+      List localList = (List)this.k.get(Integer.valueOf(paramInt));
+      int i2 = localList.size();
+      int i1 = 0;
+      while (i1 < 3)
       {
-        RelativeLayout localRelativeLayout = (RelativeLayout)localPicItemViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].getParent();
-        if (i < j)
+        RelativeLayout localRelativeLayout = (RelativeLayout)localPicItemViewHolder.j[i1].getParent();
+        if (i1 < i2)
         {
           localRelativeLayout.setVisibility(0);
-          localPicItemViewHolder.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager.a((EmoticonFromGroupEntity)localList.get(i), 65537, this.jdField_a_of_type_Int, null));
-          this.jdField_b_of_type_Int = ((EmoticonFromGroupEntity)((List)this.e.get(Integer.valueOf(paramInt))).get(i)).status;
-          if (this.jdField_b_of_type_Int == 0)
+          localPicItemViewHolder.j[i1].setImageDrawable(this.v.a((EmoticonFromGroupEntity)localList.get(i1), 65537, this.g, null));
+          this.m = ((EmoticonFromGroupEntity)((List)this.k.get(Integer.valueOf(paramInt))).get(i1)).status;
+          if (this.m == 0)
           {
-            localPicItemViewHolder.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox[i].setVisibility(4);
-            localPicItemViewHolder.b[i].setVisibility(0);
+            localPicItemViewHolder.k[i1].setVisibility(4);
+            localPicItemViewHolder.l[i1].setVisibility(0);
             paramViewHolder.itemView.setClickable(false);
           }
-          else if (this.jdField_a_of_type_Boolean)
+          else if (this.a)
           {
-            localPicItemViewHolder.b[i].setVisibility(4);
-            if (this.jdField_b_of_type_Int > 0)
+            localPicItemViewHolder.l[i1].setVisibility(4);
+            if (this.m > 0)
             {
-              localPicItemViewHolder.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox[i].setVisibility(0);
-              localPicItemViewHolder.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox[i].setCheckedNumber(this.jdField_b_of_type_Int);
+              localPicItemViewHolder.k[i1].setVisibility(0);
+              localPicItemViewHolder.k[i1].setCheckedNumber(this.m);
             }
             else
             {
-              localPicItemViewHolder.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox[i].setChecked(false);
-              localPicItemViewHolder.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox[i].setVisibility(0);
+              localPicItemViewHolder.k[i1].setChecked(false);
+              localPicItemViewHolder.k[i1].setVisibility(0);
             }
           }
           else
           {
-            localPicItemViewHolder.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetNumberCheckBox[i].setVisibility(4);
-            localPicItemViewHolder.b[i].setVisibility(4);
+            localPicItemViewHolder.k[i1].setVisibility(4);
+            localPicItemViewHolder.l[i1].setVisibility(4);
           }
         }
         else
         {
           localRelativeLayout.setVisibility(4);
         }
-        i += 1;
+        i1 += 1;
       }
       paramViewHolder.itemView.setTag(Integer.valueOf(paramInt));
     }
     else if ((paramViewHolder instanceof PicSelectAdapter.DateItemViewHolder))
     {
-      ((PicSelectAdapter.DateItemViewHolder)paramViewHolder).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_b_of_type_JavaUtilMap.get(this.d.get(Integer.valueOf(paramInt))));
+      ((PicSelectAdapter.DateItemViewHolder)paramViewHolder).a.setText((CharSequence)this.f.get(this.j.get(Integer.valueOf(paramInt))));
     }
     else if ((paramViewHolder instanceof PicSelectAdapter.HintTxtViewholder))
     {
-      ((PicSelectAdapter.HintTxtViewholder)paramViewHolder).jdField_a_of_type_AndroidWidgetTextView.setText("仅保留最新的300个聊天表情，\n更多表情请在消息记录中查找哦～");
+      ((PicSelectAdapter.HintTxtViewholder)paramViewHolder).a.setText("仅保留最新的300个聊天表情，\n更多表情请在消息记录中查找哦～");
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
@@ -440,22 +440,22 @@ public class PicSelectAdapter
         if (paramInt != 2) {
           return null;
         }
-        return new PicSelectAdapter.HintTxtViewholder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561903, paramViewGroup, false));
+        return new PicSelectAdapter.HintTxtViewholder(this.h.inflate(2131628321, paramViewGroup, false));
       }
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561900, paramViewGroup, false);
+      paramViewGroup = this.h.inflate(2131628318, paramViewGroup, false);
       localObject = (RecyclerView.LayoutParams)paramViewGroup.getLayoutParams();
-      ((RecyclerView.LayoutParams)localObject).height = this.jdField_a_of_type_Int;
+      ((RecyclerView.LayoutParams)localObject).height = this.g;
       paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject);
       paramViewGroup = new PicSelectAdapter.PicItemViewHolder(paramViewGroup);
-      paramViewGroup.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener);
+      paramViewGroup.a(this.w);
       return paramViewGroup;
     }
-    return new PicSelectAdapter.DateItemViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561899, paramViewGroup, false));
+    return new PicSelectAdapter.DateItemViewHolder(this.h.inflate(2131628317, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ final class AdapterUtil$scroll$1
   
   public final void run()
   {
-    AdapterUtil.a(AdapterUtil.a, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, this.jdField_a_of_type_AndroidSupportV7WidgetLinearSmoothScroller, this.jdField_a_of_type_Int);
+    AdapterUtil.a(AdapterUtil.a, this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AdapterUtil.scroll.1
  * JD-Core Version:    0.7.0.1
  */

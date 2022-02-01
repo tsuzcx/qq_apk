@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="32.0dip">
+        <com.tencent.timi.game.liveroom.impl.view.head.AnchorTopHeadView android:id="@id/qfz" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" />
+        <ImageView android:id="@id/mxk" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="@dimen/b97" android:layout_height="@dimen/n8" android:src="@drawable/jf8" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="22.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip">
+        <FrameLayout android:id="@id/nhp" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ni">
+            <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/8b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:text="加粉丝群" android:drawableLeft="@drawable/jgc" android:drawablePadding="5.0dip" />
+        </FrameLayout>
+        <com.tencent.timi.game.liveroom.impl.view.head.AnchorTopOperationView android:id="@id/qg0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+</LinearLayout>

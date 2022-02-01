@@ -20,16 +20,11 @@ import java.net.URL;
 public class CustomWebChromeClient
   extends WebChromeClient
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  String jdField_a_of_type_JavaLangString = "";
-  public boolean a;
-  
-  public CustomWebChromeClient()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  QQCustomDialog a;
+  public boolean b = false;
+  int c = 0;
+  long d = 0L;
+  String e = "";
   
   private String a(Context paramContext, String paramString)
   {
@@ -37,7 +32,7 @@ public class CustomWebChromeClient
       return null;
     }
     if (paramString.startsWith("data:")) {
-      return paramContext.getString(2131693519);
+      return paramContext.getString(2131891073);
     }
     try
     {
@@ -50,9 +45,9 @@ public class CustomWebChromeClient
   
   public void a()
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.a;
     if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      this.a.cancel();
     }
   }
   
@@ -60,7 +55,7 @@ public class CustomWebChromeClient
   {
     super.onConsoleMessage(paramConsoleMessage);
     VipWebViewReportLog.a(paramConsoleMessage);
-    if (((this.jdField_a_of_type_Boolean) && (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR)) || (QLog.isColorLevel()))
+    if (((this.b) && (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR)) || (QLog.isColorLevel()))
     {
       Object localObject2 = "";
       try
@@ -104,24 +99,24 @@ public class CustomWebChromeClient
         localObject2 = ConsoleMessage.MessageLevel.ERROR;
         if (paramConsoleMessage == localObject2)
         {
-          if ((System.currentTimeMillis() - this.jdField_a_of_type_Long > 60000L) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString)))
+          if ((System.currentTimeMillis() - this.d > 60000L) || (!((String)localObject1).equals(this.e)))
           {
             paramConsoleMessage = new StringBuilder();
             paramConsoleMessage.append("CustomWebChromeClient onConsoleMessage:");
             paramConsoleMessage.append((String)localObject1);
             QLog.e("WEBVIEWCHECK", 1, paramConsoleMessage.toString());
-            this.jdField_a_of_type_JavaLangString = ((String)localObject1);
-            this.jdField_a_of_type_Long = System.currentTimeMillis();
+            this.e = ((String)localObject1);
+            this.d = System.currentTimeMillis();
           }
         }
-        else if ((System.currentTimeMillis() - this.jdField_a_of_type_Long > 180000L) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString)))
+        else if ((System.currentTimeMillis() - this.d > 180000L) || (!((String)localObject1).equals(this.e)))
         {
           paramConsoleMessage = new StringBuilder();
           paramConsoleMessage.append("CustomWebChromeClient onConsoleMessage:");
           paramConsoleMessage.append((String)localObject1);
           QLog.d("WEBVIEWCHECK", 2, paramConsoleMessage.toString());
-          this.jdField_a_of_type_JavaLangString = ((String)localObject1);
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.e = ((String)localObject1);
+          this.d = System.currentTimeMillis();
         }
       }
       catch (Exception paramConsoleMessage)
@@ -137,20 +132,20 @@ public class CustomWebChromeClient
     Context localContext = paramWebView.getContext();
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
     {
-      paramWebView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      paramWebView = this.a;
       if ((paramWebView != null) && (paramWebView.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        this.a.dismiss();
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(localContext, 0);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(a(localContext, paramString1));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString2);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131694583, new CustomWebChromeClient.1(this, paramJsResult));
-      if (this.jdField_a_of_type_Int > 2) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(localContext.getString(2131690697), localContext.getResources().getColor(2131165349), new CustomWebChromeClient.2(this, paramJsResult, localContext));
+      this.a = DialogUtil.a(localContext, 0);
+      this.a.setTitle(a(localContext, paramString1));
+      this.a.setMessage(paramString2);
+      this.a.setPositiveButton(2131892267, new CustomWebChromeClient.1(this, paramJsResult));
+      if (this.c > 2) {
+        this.a.setNegativeButton(localContext.getString(2131887616), localContext.getResources().getColor(2131165591), new CustomWebChromeClient.2(this, paramJsResult, localContext));
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new CustomWebChromeClient.3(this, paramJsResult, localContext));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-      this.jdField_a_of_type_Int += 1;
+      this.a.setOnCancelListener(new CustomWebChromeClient.3(this, paramJsResult, localContext));
+      this.a.show();
+      this.c += 1;
       return true;
     }
     paramJsResult.cancel();
@@ -162,21 +157,21 @@ public class CustomWebChromeClient
     paramString1 = paramWebView.getContext();
     if (((paramString1 instanceof Activity)) && (!((Activity)paramString1).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
     {
-      paramWebView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      paramWebView = this.a;
       if ((paramWebView != null) && (paramWebView.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        this.a.dismiss();
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramString1, 0);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131693518);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString2);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131690630, new CustomWebChromeClient.8(this, paramJsResult));
-      if (this.jdField_a_of_type_Int > 2) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(paramString1.getString(2131690697), paramString1.getResources().getColor(2131165349), new CustomWebChromeClient.9(this, paramJsResult, paramString1));
+      this.a = DialogUtil.a(paramString1, 0);
+      this.a.setTitle(2131891072);
+      this.a.setMessage(paramString2);
+      this.a.setPositiveButton(2131887541, new CustomWebChromeClient.8(this, paramJsResult));
+      if (this.c > 2) {
+        this.a.setNegativeButton(paramString1.getString(2131887616), paramString1.getResources().getColor(2131165591), new CustomWebChromeClient.9(this, paramJsResult, paramString1));
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690629, new CustomWebChromeClient.10(this, paramJsResult));
+        this.a.setNegativeButton(2131887540, new CustomWebChromeClient.10(this, paramJsResult));
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new CustomWebChromeClient.11(this, paramJsResult, paramString1));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.a.setOnCancelListener(new CustomWebChromeClient.11(this, paramJsResult, paramString1));
+      this.a.show();
       return true;
     }
     paramJsResult.cancel();
@@ -188,21 +183,21 @@ public class CustomWebChromeClient
     Context localContext = paramWebView.getContext();
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing()) && ((!(paramWebView instanceof CustomWebView)) || (!((CustomWebView)paramWebView).isPaused)))
     {
-      paramWebView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      paramWebView = this.a;
       if ((paramWebView != null) && (paramWebView.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        this.a.dismiss();
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(localContext, 0);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(a(localContext, paramString1));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString2);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131694583, new CustomWebChromeClient.4(this, paramJsResult));
-      if (this.jdField_a_of_type_Int > 2) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(localContext.getString(2131690697), localContext.getResources().getColor(2131165349), new CustomWebChromeClient.5(this, paramJsResult, localContext));
+      this.a = DialogUtil.a(localContext, 0);
+      this.a.setTitle(a(localContext, paramString1));
+      this.a.setMessage(paramString2);
+      this.a.setPositiveButton(2131892267, new CustomWebChromeClient.4(this, paramJsResult));
+      if (this.c > 2) {
+        this.a.setNegativeButton(localContext.getString(2131887616), localContext.getResources().getColor(2131165591), new CustomWebChromeClient.5(this, paramJsResult, localContext));
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690728, new CustomWebChromeClient.6(this, paramJsResult));
+        this.a.setNegativeButton(2131887648, new CustomWebChromeClient.6(this, paramJsResult));
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new CustomWebChromeClient.7(this, paramJsResult, localContext));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.a.setOnCancelListener(new CustomWebChromeClient.7(this, paramJsResult, localContext));
+      this.a.show();
       return true;
     }
     paramJsResult.cancel();
@@ -224,7 +219,7 @@ public class CustomWebChromeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.CustomWebChromeClient
  * JD-Core Version:    0.7.0.1
  */

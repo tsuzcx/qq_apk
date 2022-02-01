@@ -17,26 +17,26 @@ class StatusManager$3$2
   
   public void run()
   {
-    StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a, null);
-    FriendsManager localFriendsManager = (FriendsManager)StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
+    StatusManager.a(this.b.a, null);
+    FriendsManager localFriendsManager = (FriendsManager)StatusManager.b(this.b.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
     int j = 0;
     int i;
     if (localFriendsManager != null)
     {
-      Object localObject2 = localFriendsManager.a(StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).getAccount());
+      Object localObject2 = localFriendsManager.x(StatusManager.b(this.b.a).getAccount());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ExtensionInfo();
-        ((ExtensionInfo)localObject1).uin = StatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager$3.a).getAccount();
+        ((ExtensionInfo)localObject1).uin = StatusManager.b(this.b.a).getAccount();
       }
-      localObject2 = ExtensionRichStatus.a((ExtensionInfo)localObject1);
+      localObject2 = ExtensionRichStatus.c((ExtensionInfo)localObject1);
       if ((localObject2 != null) && ((!TextUtils.isEmpty(((RichStatus)localObject2).actionText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).dataText)) || (!TextUtils.isEmpty(((RichStatus)localObject2).toSpannableStringWithoutAction())))) {
         i = 0;
       } else {
         i = 1;
       }
-      if ((this.jdField_a_of_type_Boolean) && (i == 0))
+      if ((this.a) && (i == 0))
       {
         long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
         ExtensionRichStatus.a((ExtensionInfo)localObject1, new byte[0], l);
@@ -45,7 +45,7 @@ class StatusManager$3$2
     }
     ThreadManager.getUIHandler().post(new StatusManager.3.2.1(this));
     Object localObject1 = VasFontIPCModule.a();
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       i = j;
     } else {
       i = -1;
@@ -55,7 +55,7 @@ class StatusManager$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.3.2
  * JD-Core Version:    0.7.0.1
  */

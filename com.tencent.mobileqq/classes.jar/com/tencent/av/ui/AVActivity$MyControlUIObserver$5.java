@@ -9,11 +9,11 @@ class AVActivity$MyControlUIObserver$5
   
   public void run()
   {
-    long l = AudioHelper.b();
-    this.a.a.a.E(l);
-    QavPanel localQavPanel = this.a.a.a.a();
+    long l = AudioHelper.c();
+    this.a.a.K.M(l);
+    QavPanel localQavPanel = this.a.a.K.al();
     if (localQavPanel != null) {
-      localQavPanel.g();
+      localQavPanel.f();
     }
   }
 }

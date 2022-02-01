@@ -26,19 +26,19 @@ import java.util.List;
 public class LangTextItem
   extends DynamicTextItem
 {
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter = null;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_b_of_type_Int;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int;
-  private ArrayList<ArrayList<Integer>> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_d_of_type_Int;
-  private ArrayList<Integer> jdField_d_of_type_JavaUtilArrayList = new ArrayList();
+  private TextPaint a;
+  private TextPaint b;
+  private Resources c;
+  private ArrayList<String> d = new ArrayList();
+  private ArrayList<Integer> e = new ArrayList();
+  private ArrayList<ArrayList<Integer>> f = new ArrayList();
+  private ArrayList<Integer> g = new ArrayList();
+  private Bitmap h;
+  private int i;
+  private int j;
+  private int p;
+  private Rect q = new Rect();
+  private InputFilter r = null;
   
   public LangTextItem(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface1, Typeface paramTypeface2, Bitmap paramBitmap)
   {
@@ -51,84 +51,66 @@ public class LangTextItem
   
   private int a(float paramFloat)
   {
-    return (int)(paramFloat * this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density);
+    return (int)(paramFloat * this.c.getDisplayMetrics().density);
   }
   
   private int a(ArrayList<Integer> paramArrayList)
   {
-    int i = this.jdField_c_of_type_Int * 2;
+    int k = this.j * 2;
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       Integer localInteger = (Integer)paramArrayList.next();
-      if (localInteger.intValue() > i) {
-        i = localInteger.intValue();
+      if (localInteger.intValue() > k) {
+        k = localInteger.intValue();
       }
     }
-    return i;
+    return k;
   }
   
   private void a(Context paramContext, Typeface paramTypeface1, Typeface paramTypeface2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.c = paramContext.getResources();
+    this.h = paramBitmap;
     a(paramTypeface2, paramTypeface1);
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    this.q.set(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
   }
   
   private void a(Typeface paramTypeface1, Typeface paramTypeface2)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface2);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#ffffff"));
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(79.5F));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_c_of_type_Int = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(HardCodeUtil.a(2131706071)));
-    this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface1);
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#ffffff"));
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(a(14.0F));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    this.jdField_d_of_type_Int = ((int)(this.jdField_c_of_type_Int * 1.3F));
-  }
-  
-  public float a()
-  {
-    return this.jdField_b_of_type_Int + 10;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new LangTextItem.2(this, 20);
-    }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
+    this.a = new TextPaint();
+    this.a.setTypeface(paramTypeface2);
+    this.a.setAntiAlias(true);
+    this.a.setColor(Color.parseColor("#ffffff"));
+    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.a.setTextSize(a(79.5F));
+    this.a.setTextAlign(Paint.Align.CENTER);
+    this.j = ((int)this.a.measureText(HardCodeUtil.a(2131903945)));
+    this.b = new TextPaint();
+    this.b.setTypeface(paramTypeface1);
+    this.b.setAntiAlias(true);
+    this.b.setColor(Color.parseColor("#ffffff"));
+    this.b.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.b.setTextSize(a(14.0F));
+    this.a.setTextAlign(Paint.Align.LEFT);
+    this.p = ((int)(this.j * 1.3F));
   }
   
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_d_of_type_JavaUtilArrayList.clear();
+    this.d.clear();
+    this.g.clear();
     paramString = super.a(paramInt, new LangTextItem.1(this)).split("\n");
-    int i = paramString.length;
+    int k = paramString.length;
     paramInt = 0;
-    while (paramInt < i)
+    while (paramInt < k)
     {
       Object localObject = paramString[paramInt];
-      if ((((String)localObject).length() == 6) && (i == 1))
+      if ((((String)localObject).length() == 6) && (k == 1))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+        this.d.add(localObject);
+        this.g.add(Integer.valueOf((int)this.a.measureText((String)localObject)));
       }
       else
       {
@@ -136,107 +118,107 @@ public class LangTextItem
         if (((String)localObject).length() > 15)
         {
           str = ((String)localObject).substring(0, 5);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
+          this.d.add(str);
+          this.g.add(Integer.valueOf((int)this.a.measureText(str)));
           str = ((String)localObject).substring(5, 10);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
+          this.d.add(str);
+          this.g.add(Integer.valueOf((int)this.a.measureText(str)));
           str = ((String)localObject).substring(10, 15);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
+          this.d.add(str);
+          this.g.add(Integer.valueOf((int)this.a.measureText(str)));
           localObject = ((String)localObject).substring(15, ((String)localObject).length());
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+          this.d.add(localObject);
+          this.g.add(Integer.valueOf((int)this.a.measureText((String)localObject)));
         }
         else if (((String)localObject).length() > 10)
         {
           str = ((String)localObject).substring(0, 5);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
+          this.d.add(str);
+          this.g.add(Integer.valueOf((int)this.a.measureText(str)));
           str = ((String)localObject).substring(5, 10);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
+          this.d.add(str);
+          this.g.add(Integer.valueOf((int)this.a.measureText(str)));
           localObject = ((String)localObject).substring(10, ((String)localObject).length());
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+          this.d.add(localObject);
+          this.g.add(Integer.valueOf((int)this.a.measureText((String)localObject)));
         }
         else if (((String)localObject).length() > 5)
         {
           str = ((String)localObject).substring(0, 5);
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)));
+          this.d.add(str);
+          this.g.add(Integer.valueOf((int)this.a.measureText(str)));
           localObject = ((String)localObject).substring(5, ((String)localObject).length());
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+          this.d.add(localObject);
+          this.g.add(Integer.valueOf((int)this.a.measureText((String)localObject)));
         }
         else
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_d_of_type_JavaUtilArrayList.add(Integer.valueOf((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)));
+          this.d.add(localObject);
+          this.g.add(Integer.valueOf((int)this.a.measureText((String)localObject)));
         }
       }
       paramInt += 1;
     }
-    this.jdField_b_of_type_Int = a(this.jdField_d_of_type_JavaUtilArrayList);
+    this.i = a(this.g);
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (super.b(0)) {
-      paramCanvas.drawRoundRect(new RectF(5.0F, 5.0F, a() - 5.0F, b() - 5.0F), 6.0F, 6.0F, a());
+    if (super.f(0)) {
+      paramCanvas.drawRoundRect(new RectF(5.0F, 5.0F, c() - 5.0F, d() - 5.0F), 6.0F, 6.0F, s());
     }
     paramCanvas.save();
-    paramCanvas.translate(this.jdField_b_of_type_Int - a(77.0F), this.jdField_d_of_type_Int - a(78.0F));
+    paramCanvas.translate(this.i - a(77.0F), this.p - a(78.0F));
     Object localObject1 = new RectF();
     ((RectF)localObject1).set(0.0F, 0.0F, a(45.0F), a(45.0F));
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, (RectF)localObject1, null);
+    paramCanvas.drawBitmap(this.h, this.q, (RectF)localObject1, null);
     paramCanvas.restore();
-    int i = this.jdField_d_of_type_Int;
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int j = 0;
-    while (j < k)
+    int k = this.p;
+    int n = this.d.size();
+    int m = 0;
+    while (m < n)
     {
-      int m = (this.jdField_b_of_type_Int - ((Integer)this.jdField_d_of_type_JavaUtilArrayList.get(j)).intValue()) / 2;
-      localObject1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      int i1 = 0;
-      int n = 0;
-      while (i1 < ((String)localObject1).length())
+      int i1 = (this.i - ((Integer)this.g.get(m)).intValue()) / 2;
+      localObject1 = (String)this.d.get(m);
+      int i3 = 0;
+      int i2 = 0;
+      while (i3 < ((String)localObject1).length())
       {
-        int i2 = i1 + 1;
-        Object localObject3 = ((String)localObject1).substring(i1, i2);
+        int i4 = i3 + 1;
+        Object localObject3 = ((String)localObject1).substring(i3, i4);
         Object localObject2;
         if (SpellUtil.a(((String)localObject3).charAt(0)) == 3) {
           localObject2 = localObject3;
         } else {
-          localObject2 = ChnToSpell.a((String)localObject3, 1).a;
+          localObject2 = ChnToSpell.a((String)localObject3, 1).b;
         }
         Rect localRect = new Rect();
-        this.jdField_a_of_type_AndroidTextTextPaint.getTextBounds((String)localObject3, 0, 1, localRect);
-        int i4 = Math.abs(localRect.top - localRect.bottom) + 20;
-        int i3 = Math.abs(localRect.right - localRect.left) + 20;
-        float f1 = m;
-        paramCanvas.drawText((String)localObject3, f1, i - this.jdField_d_of_type_Int * 0.085F, this.jdField_a_of_type_AndroidTextTextPaint);
-        int i5 = this.jdField_d_of_type_Int;
-        float f2 = i - i5 + (i5 - i4) / 2;
-        i1 = m + i3;
-        localObject3 = new RectF(f1, f2, i1, i - i5 + (i5 + i4) / 2);
+        this.a.getTextBounds((String)localObject3, 0, 1, localRect);
+        int i6 = Math.abs(localRect.top - localRect.bottom) + 20;
+        int i5 = Math.abs(localRect.right - localRect.left) + 20;
+        float f1 = i1;
+        paramCanvas.drawText((String)localObject3, f1, k - this.p * 0.085F, this.a);
+        int i7 = this.p;
+        float f2 = k - i7 + (i7 - i6) / 2;
+        i3 = i1 + i5;
+        localObject3 = new RectF(f1, f2, i3, k - i7 + (i7 + i6) / 2);
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localRect = new Rect();
-          this.jdField_b_of_type_AndroidTextTextPaint.getTextBounds((String)localObject2, 0, ((String)localObject2).length(), localRect);
-          i4 = localRect.right - localRect.left;
-          if (n % 2 == 0) {
-            paramCanvas.drawText((String)localObject2, m + (i3 - i4) / 2, ((RectF)localObject3).top, this.jdField_b_of_type_AndroidTextTextPaint);
+          this.b.getTextBounds((String)localObject2, 0, ((String)localObject2).length(), localRect);
+          i6 = localRect.right - localRect.left;
+          if (i2 % 2 == 0) {
+            paramCanvas.drawText((String)localObject2, i1 + (i5 - i6) / 2, ((RectF)localObject3).top, this.b);
           } else {
-            paramCanvas.drawText((String)localObject2, m + (i3 - i4) / 2, ((RectF)localObject3).bottom + 30.0F, this.jdField_b_of_type_AndroidTextTextPaint);
+            paramCanvas.drawText((String)localObject2, i1 + (i5 - i6) / 2, ((RectF)localObject3).bottom + 30.0F, this.b);
           }
         }
-        n += 1;
-        m = i1;
-        i1 = i2;
+        i2 += 1;
+        i1 = i3;
+        i3 = i4;
       }
-      i += this.jdField_d_of_type_Int;
-      j += 1;
+      k += this.p;
+      m += 1;
     }
   }
   
@@ -245,21 +227,39 @@ public class LangTextItem
     return true;
   }
   
-  public float b()
+  public int b()
   {
-    int j = this.jdField_d_of_type_Int;
-    int i;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-      i = 1;
+    return 1;
+  }
+  
+  public float c()
+  {
+    return this.i + 10;
+  }
+  
+  public float d()
+  {
+    int m = this.p;
+    int k;
+    if (this.d.size() == 0) {
+      k = 1;
     } else {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      k = this.d.size();
     }
-    return j * i + 10;
+    return m * k + 10;
+  }
+  
+  public InputFilter f()
+  {
+    if (this.r == null) {
+      this.r = new LangTextItem.2(this, 20);
+    }
+    return this.r;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.LangTextItem
  * JD-Core Version:    0.7.0.1
  */

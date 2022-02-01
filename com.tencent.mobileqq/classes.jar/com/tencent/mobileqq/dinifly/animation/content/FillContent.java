@@ -6,7 +6,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
@@ -75,6 +75,10 @@ public class FillContent
     }
     if (paramT == LottieProperty.COLOR_FILTER)
     {
+      paramT = this.colorFilterAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
       if (paramLottieValueCallback == null)
       {
         this.colorFilterAnimation = null;
@@ -154,7 +158,7 @@ public class FillContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.FillContent
  * JD-Core Version:    0.7.0.1
  */

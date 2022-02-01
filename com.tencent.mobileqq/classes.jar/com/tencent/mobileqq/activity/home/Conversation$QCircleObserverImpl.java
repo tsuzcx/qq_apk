@@ -28,13 +28,13 @@ class Conversation$QCircleObserverImpl
     localStringBuilder.append(bool);
     QLog.d("Q.recent", 2, localStringBuilder.toString());
     if (localConversation != null) {
-      localConversation.r();
+      localConversation.w();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.QCircleObserverImpl
  * JD-Core Version:    0.7.0.1
  */

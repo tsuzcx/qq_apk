@@ -8,73 +8,68 @@ import org.json.JSONObject;
 
 class ApolloSSOConfig$CmdParameter
 {
-  public int a;
   public String a;
   public String b;
-  
-  private ApolloSSOConfig$CmdParameter()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public int c = 0;
   
   public void a(String paramString, JSONObject paramJSONObject, AppInterface paramAppInterface)
   {
     if (paramJSONObject != null) {
       try
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(this.a))
         {
-          if (this.jdField_a_of_type_Int == 0)
+          if (this.c == 0)
           {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, this.b);
+            paramJSONObject.put(this.a, this.b);
             return;
           }
-          if (this.jdField_a_of_type_Int == 1)
+          if (this.c == 1)
           {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Integer.parseInt(this.b));
+            paramJSONObject.put(this.a, Integer.parseInt(this.b));
             return;
           }
-          if (this.jdField_a_of_type_Int == 2)
+          if (this.c == 2)
           {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(this.b));
+            paramJSONObject.put(this.a, Long.parseLong(this.b));
             return;
           }
-          if (this.jdField_a_of_type_Int == 3)
+          if (this.c == 3)
           {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Float.parseFloat(this.b));
+            paramJSONObject.put(this.a, Float.parseFloat(this.b));
             return;
           }
-          if (this.jdField_a_of_type_Int == 4)
+          if (this.c == 4)
           {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(paramAppInterface.getCurrentAccountUin()));
+            paramJSONObject.put(this.a, Long.parseLong(paramAppInterface.getCurrentAccountUin()));
             return;
           }
-          if (this.jdField_a_of_type_Int == 5)
+          if (this.c == 5)
           {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, paramAppInterface.getCurrentAccountUin());
+            paramJSONObject.put(this.a, paramAppInterface.getCurrentAccountUin());
             return;
           }
-          if (this.jdField_a_of_type_Int == 8)
+          if (this.c == 8)
           {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+            paramJSONObject.put(this.a, System.currentTimeMillis());
             return;
           }
-          if (this.jdField_a_of_type_Int == 6)
+          if (this.c == 6)
           {
             if (!TextUtils.isEmpty(paramString))
             {
               paramString = Uri.parse(paramString).getQueryParameter(this.b);
               if (!TextUtils.isEmpty(paramString)) {
-                paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(paramString));
+                paramJSONObject.put(this.a, Long.parseLong(paramString));
               }
             }
           }
-          else if ((this.jdField_a_of_type_Int == 7) && (!TextUtils.isEmpty(paramString)))
+          else if ((this.c == 7) && (!TextUtils.isEmpty(paramString)))
           {
             paramString = Uri.parse(paramString).getQueryParameter(this.b);
             if (!TextUtils.isEmpty(paramString))
             {
-              paramJSONObject.put(this.jdField_a_of_type_JavaLangString, paramString);
+              paramJSONObject.put(this.a, paramString);
               return;
             }
           }
@@ -91,17 +86,17 @@ class ApolloSSOConfig$CmdParameter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mKey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" mValue:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(" mType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.CmdParameter
  * JD-Core Version:    0.7.0.1
  */

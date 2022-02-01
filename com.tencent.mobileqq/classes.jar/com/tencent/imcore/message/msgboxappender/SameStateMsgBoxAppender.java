@@ -16,10 +16,10 @@ public class SameStateMsgBoxAppender
 {
   public Object[] a(IMessageManager paramIMessageManager, MessageRecord paramMessageRecord, EntityManager paramEntityManager, Map<String, RecentUser> paramMap, RecentUserProxy paramRecentUserProxy, IConversationFacade paramIConversationFacade, String paramString, int paramInt, long paramLong)
   {
-    if (UinTypeUtil.a(paramMessageRecord.istroop) == 1009)
+    if (UinTypeUtil.e(paramMessageRecord.istroop) == 1009)
     {
       if ((paramIConversationFacade.isUinInRecentNotSubAccount(paramString)) || (paramMap.containsKey(UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop)))) {
-        paramRecentUserProxy.a(paramMessageRecord.frienduin);
+        paramRecentUserProxy.b(paramMessageRecord.frienduin);
       }
       ((C2CMessageManager)paramIMessageManager).a(paramMessageRecord, AppConstants.SAME_STATE_BOX_UIN, paramMessageRecord.frienduin);
       return new Object[] { Boolean.valueOf(true), AppConstants.SAME_STATE_BOX_UIN, Integer.valueOf(paramMessageRecord.istroop), Long.valueOf(paramMessageRecord.time) };
@@ -29,7 +29,7 @@ public class SameStateMsgBoxAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.msgboxappender.SameStateMsgBoxAppender
  * JD-Core Version:    0.7.0.1
  */

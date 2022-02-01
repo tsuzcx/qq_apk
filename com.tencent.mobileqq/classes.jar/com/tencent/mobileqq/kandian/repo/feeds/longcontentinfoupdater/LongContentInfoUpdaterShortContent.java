@@ -21,32 +21,32 @@ import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
 public final class LongContentInfoUpdaterShortContent
   extends LongContentInfoUpdater
 {
-  protected void a()
+  protected void e()
   {
-    Object localObject1 = a();
+    Object localObject1 = b();
     if (localObject1 != null) {
-      ((SocializeFeedsInfo)localObject1).jdField_a_of_type_Int = 3;
+      ((SocializeFeedsInfo)localObject1).b = 3;
     }
-    PGCFeedsInfo localPGCFeedsInfo = a();
+    PGCFeedsInfo localPGCFeedsInfo = d();
     if (localPGCFeedsInfo != null)
     {
-      localPGCFeedsInfo.jdField_a_of_type_Boolean = true;
-      localObject1 = a();
+      localPGCFeedsInfo.f = true;
+      localObject1 = c();
       PGCPicInfo localPGCPicInfo = null;
       if (localObject1 != null) {
-        localObject1 = ((LongContentInfo)localObject1).a;
+        localObject1 = ((LongContentInfo)localObject1).b;
       } else {
         localObject1 = null;
       }
       if (localObject1 != null)
       {
-        localObject1 = a();
+        localObject1 = c();
         if (localObject1 != null)
         {
-          localObject1 = ((LongContentInfo)localObject1).a;
+          localObject1 = ((LongContentInfo)localObject1).b;
           if (localObject1 != null)
           {
-            localObject1 = ((ArticleBasicInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
+            localObject1 = ((ArticleBasicInfo)localObject1).c;
             break label81;
           }
         }
@@ -55,25 +55,25 @@ public final class LongContentInfoUpdaterShortContent
         if (localObject1 != null)
         {
           Object localObject2 = a();
-          Object localObject3 = a();
+          Object localObject3 = c();
           localObject1 = localPGCPicInfo;
           if (localObject3 != null)
           {
-            localObject3 = ((LongContentInfo)localObject3).a;
+            localObject3 = ((LongContentInfo)localObject3).b;
             localObject1 = localPGCPicInfo;
             if (localObject3 != null) {
-              localObject1 = ((ArticleBasicInfo)localObject3).jdField_b_of_type_JavaLangString;
+              localObject1 = ((ArticleBasicInfo)localObject3).b;
             }
           }
           ((AbsBaseArticleInfo)localObject2).mTitle = ((String)localObject1);
-          localPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          localObject1 = a();
+          localPGCFeedsInfo.a = new ArrayList();
+          localObject1 = c();
           if (localObject1 != null)
           {
-            localObject1 = ((LongContentInfo)localObject1).a;
+            localObject1 = ((LongContentInfo)localObject1).b;
             if (localObject1 != null)
             {
-              localObject1 = ((ArticleBasicInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
+              localObject1 = ((ArticleBasicInfo)localObject1).c;
               if (localObject1 != null)
               {
                 localObject1 = ((Iterable)localObject1).iterator();
@@ -81,16 +81,16 @@ public final class LongContentInfoUpdaterShortContent
                 {
                   localObject2 = (articlesummary.PGCPicInfo)((Iterator)localObject1).next();
                   localPGCPicInfo = new PGCPicInfo();
-                  localPGCPicInfo.jdField_b_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_url.get().toStringUtf8();
-                  localPGCPicInfo.jdField_c_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_thumbnail_url.get().toStringUtf8();
-                  localPGCPicInfo.jdField_a_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_width.get();
-                  localPGCPicInfo.jdField_b_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_height.get();
-                  localPGCPicInfo.jdField_a_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_md5.get().toStringUtf8();
-                  localPGCPicInfo.jdField_c_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).is_animation.get();
-                  localPGCPicInfo.d = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_desc.get().toStringUtf8();
-                  localPGCPicInfo.jdField_a_of_type_Long = ((articlesummary.PGCPicInfo)localObject2).uint64_gallery_index.get();
-                  localPGCPicInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityPGCVideoInfo = new PGCVideoInfo((articlesummary.PGCVideoInfo)((articlesummary.PGCPicInfo)localObject2).msg_video_info.get());
-                  localObject2 = localPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList;
+                  localPGCPicInfo.d = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_url.get().toStringUtf8();
+                  localPGCPicInfo.e = ((articlesummary.PGCPicInfo)localObject2).bytes_thumbnail_url.get().toStringUtf8();
+                  localPGCPicInfo.a = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_width.get();
+                  localPGCPicInfo.b = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_height.get();
+                  localPGCPicInfo.c = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_md5.get().toStringUtf8();
+                  localPGCPicInfo.f = ((articlesummary.PGCPicInfo)localObject2).is_animation.get();
+                  localPGCPicInfo.g = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_desc.get().toStringUtf8();
+                  localPGCPicInfo.h = ((articlesummary.PGCPicInfo)localObject2).uint64_gallery_index.get();
+                  localPGCPicInfo.i = new PGCVideoInfo((articlesummary.PGCVideoInfo)((articlesummary.PGCPicInfo)localObject2).msg_video_info.get());
+                  localObject2 = localPGCFeedsInfo.a;
                   if (localObject2 != null) {
                     ((ArrayList)localObject2).add(localPGCPicInfo);
                   }
@@ -105,7 +105,7 @@ public final class LongContentInfoUpdaterShortContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.longcontentinfoupdater.LongContentInfoUpdaterShortContent
  * JD-Core Version:    0.7.0.1
  */

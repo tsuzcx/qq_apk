@@ -9,14 +9,14 @@ public final class StudyModeSwitchDialogConfigProcessor$Companion
 {
   public final boolean a()
   {
-    Object localObject = QConfigManager.a().a(619);
+    Object localObject = QConfigManager.b().b(619);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
     return ((StudyModeSwitchDialogConfigProcessor.Config)localObject).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialogConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

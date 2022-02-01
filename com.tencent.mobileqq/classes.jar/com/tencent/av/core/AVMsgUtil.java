@@ -15,7 +15,7 @@ public class AVMsgUtil
     return -1;
   }
   
-  public static boolean a(byte[] paramArrayOfByte)
+  public static boolean b(byte[] paramArrayOfByte)
   {
     paramArrayOfByte = CodedInputStreamMicro.newInstance(paramArrayOfByte);
     try

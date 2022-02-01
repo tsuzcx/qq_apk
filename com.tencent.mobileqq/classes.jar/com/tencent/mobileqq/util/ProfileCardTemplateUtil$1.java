@@ -64,9 +64,9 @@ final class ProfileCardTemplateUtil$1
         ((StringBuilder)localObject5).append(".tmp");
         localObject5 = new File(((StringBuilder)localObject5).toString());
         Object localObject6 = new DownloadTask((String)localObject3, (File)localObject5);
-        ((DownloadTask)localObject6).f = "profileCardDownload";
-        ((DownloadTask)localObject6).e = "VIP_profilecard";
-        ((DownloadTask)localObject6).a = 1;
+        ((DownloadTask)localObject6).L = "profileCardDownload";
+        ((DownloadTask)localObject6).K = "VIP_profilecard";
+        ((DownloadTask)localObject6).O = 1;
         int j = DownloaderFactory.a((DownloadTask)localObject6, this.a);
         i = 0;
         if (j != 0) {
@@ -96,7 +96,7 @@ final class ProfileCardTemplateUtil$1
               if ((localObject3 != null) && (localObject3.length > 0) && (i < localObject3.length))
               {
                 localObject4 = localObject3[i].getName();
-                if ((!((String)localObject4).startsWith("qvip_profile_template.json")) || (((String)localObject4).endsWith("8.7.0"))) {
+                if ((!((String)localObject4).startsWith("qvip_profile_template.json")) || (((String)localObject4).endsWith("8.8.17"))) {
                   break label698;
                 }
                 FileUtils.deleteFile((String)localObject4);
@@ -147,7 +147,7 @@ final class ProfileCardTemplateUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardTemplateUtil.1
  * JD-Core Version:    0.7.0.1
  */

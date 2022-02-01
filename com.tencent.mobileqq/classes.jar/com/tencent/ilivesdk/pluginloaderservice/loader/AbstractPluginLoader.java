@@ -17,12 +17,10 @@ public abstract class AbstractPluginLoader
     return arrayOfString;
   }
   
-  protected abstract String[] a();
-  
   @TargetApi(17)
   protected String[] a(IPlugin paramIPlugin)
   {
-    Object localObject = new DexClassLoader(paramIPlugin.e(), paramIPlugin.f(), paramIPlugin.g(), getClass().getClassLoader());
+    Object localObject = new DexClassLoader(paramIPlugin.g(), paramIPlugin.h(), paramIPlugin.i(), getClass().getClassLoader());
     paramIPlugin = null;
     try
     {
@@ -46,14 +44,16 @@ public abstract class AbstractPluginLoader
       break label82;
     }
     if (paramIPlugin != null) {
-      return a(a(), paramIPlugin);
+      return a(b(), paramIPlugin);
     }
-    return a();
+    return b();
   }
+  
+  protected abstract String[] b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.loader.AbstractPluginLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,18 @@ import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.UrlJumpInfo;
 public class RIJColumnDataSource
   implements IEntranceButtonDataSource
 {
-  public static int b = 1;
-  public static int c = 2;
-  public static String f = "bytes_entrance_cookie_column";
-  public static String g = "https://qqpublic.qpic.cn/qq_public/0/0-2283487770-A0052D97C9C360192F1BE92BCD8ADD16/0";
-  public static String h = "https://qqpublic.qpic.cn/qq_public/0/0-2261262125-4438F0FD2808B0A8EA5C1AA0FD97295A/0";
-  public int a;
-  public UrlJumpInfo a;
+  public static String h = "bytes_entrance_cookie_column";
+  public static String i = "https://qqpublic.qpic.cn/qq_public/0/0-2283487770-A0052D97C9C360192F1BE92BCD8ADD16/0";
+  public static String j = "https://qqpublic.qpic.cn/qq_public/0/0-2261262125-4438F0FD2808B0A8EA5C1AA0FD97295A/0";
+  public static int k = 1;
+  public static int l = 2;
   public String a;
   public String b;
   public String c;
-  public String d;
-  public String e;
+  public UrlJumpInfo d;
+  public int e;
+  public String f;
+  public String g;
   
   private String a(PBBytesField paramPBBytesField)
   {
@@ -38,26 +38,21 @@ public class RIJColumnDataSource
     if ((paramUrlJumpInfo != null) && (paramUrlJumpInfo.has()) && (paramUrlJumpInfo.get() != null))
     {
       UrlJumpInfo localUrlJumpInfo = new UrlJumpInfo();
-      int i;
+      int m;
       if (paramUrlJumpInfo.uint32_jump_type.has()) {
-        i = paramUrlJumpInfo.uint32_jump_type.get();
+        m = paramUrlJumpInfo.uint32_jump_type.get();
       } else {
-        i = 0;
+        m = 0;
       }
-      localUrlJumpInfo.jdField_a_of_type_Int = i;
-      localUrlJumpInfo.c = a(paramUrlJumpInfo.bytes_jump_schema);
-      localUrlJumpInfo.b = a(paramUrlJumpInfo.bytes_jump_bundle);
-      localUrlJumpInfo.jdField_a_of_type_JavaLangString = a(paramUrlJumpInfo.bytes_jump_url);
-      localUrlJumpInfo.d = a(paramUrlJumpInfo.bytes_clipboard_info);
-      localUrlJumpInfo.e = a(paramUrlJumpInfo.bytes_common_data);
+      localUrlJumpInfo.a = m;
+      localUrlJumpInfo.d = a(paramUrlJumpInfo.bytes_jump_schema);
+      localUrlJumpInfo.c = a(paramUrlJumpInfo.bytes_jump_bundle);
+      localUrlJumpInfo.b = a(paramUrlJumpInfo.bytes_jump_url);
+      localUrlJumpInfo.e = a(paramUrlJumpInfo.bytes_clipboard_info);
+      localUrlJumpInfo.f = a(paramUrlJumpInfo.bytes_common_data);
       return localUrlJumpInfo;
     }
     return null;
-  }
-  
-  public String a()
-  {
-    return "";
   }
   
   public void a(String paramString) {}
@@ -68,7 +63,7 @@ public class RIJColumnDataSource
       return;
     }
     if (paramEntranceDownloadInfo.bytes_column_name.has()) {
-      this.jdField_a_of_type_JavaLangString = paramEntranceDownloadInfo.bytes_column_name.get().toStringUtf8();
+      this.a = paramEntranceDownloadInfo.bytes_column_name.get().toStringUtf8();
     }
     if (paramEntranceDownloadInfo.bytes_sub_text.has()) {
       this.b = paramEntranceDownloadInfo.bytes_sub_text.get().toStringUtf8();
@@ -77,16 +72,16 @@ public class RIJColumnDataSource
       this.c = paramEntranceDownloadInfo.bytes_icon_url.get().toStringUtf8();
     }
     if (paramEntranceDownloadInfo.msg_url_jump_info.has()) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = a(paramEntranceDownloadInfo.msg_url_jump_info);
+      this.d = a(paramEntranceDownloadInfo.msg_url_jump_info);
     }
     if (paramEntranceDownloadInfo.uint32_column_id.has()) {
-      this.jdField_a_of_type_Int = paramEntranceDownloadInfo.uint32_column_id.get();
+      this.e = paramEntranceDownloadInfo.uint32_column_id.get();
     }
     if (paramEntranceDownloadInfo.bytes_entrance_cookie.has()) {
-      RIJSPUtils.a(f, paramEntranceDownloadInfo.bytes_entrance_cookie.get().toStringUtf8());
+      RIJSPUtils.a(h, paramEntranceDownloadInfo.bytes_entrance_cookie.get().toStringUtf8());
     }
     if (paramEntranceDownloadInfo.bytes_rowkey.has()) {
-      this.d = paramEntranceDownloadInfo.bytes_rowkey.get().toStringUtf8();
+      this.f = paramEntranceDownloadInfo.bytes_rowkey.get().toStringUtf8();
     }
     paramEntranceDownloadInfo = new StringBuilder();
     paramEntranceDownloadInfo.append("parseRsp data=");
@@ -101,29 +96,34 @@ public class RIJColumnDataSource
   
   public String b()
   {
-    return this.c;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public String c()
-  {
-    return null;
+    return "";
   }
   
   public boolean c()
   {
+    return true;
+  }
+  
+  public String d()
+  {
+    return this.c;
+  }
+  
+  public boolean e()
+  {
     return false;
+  }
+  
+  public String f()
+  {
+    return null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RIJColumnDataSource{title='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", subTitle='");
     localStringBuilder.append(this.b);
@@ -132,14 +132,14 @@ public class RIJColumnDataSource
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", jumpInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo);
-    localStringBuilder.append(", columnID=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", rowkey='");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", columnID=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", rowkey='");
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", reportInfo='");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -147,7 +147,7 @@ public class RIJColumnDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.diandian.RIJColumnDataSource
  * JD-Core Version:    0.7.0.1
  */

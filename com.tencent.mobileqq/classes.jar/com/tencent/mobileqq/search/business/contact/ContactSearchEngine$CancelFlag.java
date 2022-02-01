@@ -2,18 +2,18 @@ package com.tencent.mobileqq.search.business.contact;
 
 class ContactSearchEngine$CancelFlag
 {
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
   
   public ContactSearchEngine$CancelFlag(ContactSearchEngine paramContactSearchEngine, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void a(boolean paramBoolean)
   {
     try
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.a = paramBoolean;
       return;
     }
     finally
@@ -27,7 +27,7 @@ class ContactSearchEngine$CancelFlag
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.a;
       return bool;
     }
     finally
@@ -39,7 +39,7 @@ class ContactSearchEngine$CancelFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.ContactSearchEngine.CancelFlag
  * JD-Core Version:    0.7.0.1
  */

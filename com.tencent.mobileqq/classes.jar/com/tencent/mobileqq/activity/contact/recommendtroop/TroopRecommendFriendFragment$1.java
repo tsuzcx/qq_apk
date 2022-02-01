@@ -18,7 +18,7 @@ class TroopRecommendFriendFragment$1
     {
       paramRecyclerView = paramRecyclerView.getLayoutManager();
       if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopRecommendFriendFragment.a(this.a).getItemCount())) {
-        TroopRecommendFriendFragment.a(this.a);
+        TroopRecommendFriendFragment.b(this.a);
       }
     }
   }
@@ -30,7 +30,7 @@ class TroopRecommendFriendFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment.1
  * JD-Core Version:    0.7.0.1
  */

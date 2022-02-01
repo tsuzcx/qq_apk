@@ -54,22 +54,22 @@ public class QCircleHostDropFrameMonitorHelper
   public static void setLooperListener(QCircleHostDropFrameMonitorHelper.BlockLooperListener paramBlockLooperListener)
   {
     mBlockListener = paramBlockLooperListener;
-    MagnifierSDK.a().a(mILooperListener);
+    MagnifierSDK.b().a(mILooperListener);
   }
   
   public static void startMonitorScene(String paramString)
   {
-    DropFrameMonitor.a().a(paramString);
+    DropFrameMonitor.b().a(paramString);
   }
   
   public static void stopMonitorScene(String paramString, boolean paramBoolean)
   {
-    DropFrameMonitor.a().a(paramString, paramBoolean);
+    DropFrameMonitor.b().a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostDropFrameMonitorHelper
  * JD-Core Version:    0.7.0.1
  */

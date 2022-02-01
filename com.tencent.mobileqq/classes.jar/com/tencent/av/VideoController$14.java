@@ -11,9 +11,9 @@ class VideoController$14
   
   public void run()
   {
-    Bitmap localBitmap = this.this$0.a.a(3000, this.a, null, true, true);
-    String str = this.this$0.a.a(1004, this.b, this.a);
-    QAVNotification.a(this.this$0.a).a(this.c, str, localBitmap, this.a, 57, 3000, 3);
+    Bitmap localBitmap = this.this$0.e.a(3000, this.a, null, true, true);
+    String str = this.this$0.e.a(1004, this.b, this.a);
+    QAVNotification.a(this.this$0.e).a(this.c, str, localBitmap, this.a, 57, 3000, 3);
   }
 }
 

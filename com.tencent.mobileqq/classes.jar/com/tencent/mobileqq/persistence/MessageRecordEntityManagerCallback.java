@@ -23,14 +23,14 @@ public class MessageRecordEntityManagerCallback
       while (paramList.hasNext())
       {
         MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        ((QQMessageFacade)localAppRuntime.getManager(QQManagerFactory.MGR_MSG_FACADE)).b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord);
+        ((QQMessageFacade)localAppRuntime.getManager(QQManagerFactory.MGR_MSG_FACADE)).d(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.MessageRecordEntityManagerCallback
  * JD-Core Version:    0.7.0.1
  */

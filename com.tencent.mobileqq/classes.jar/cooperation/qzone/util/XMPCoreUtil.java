@@ -155,13 +155,15 @@ public class XMPCoreUtil
   
   public void loadXMPCoreJarModule(XMPCoreUtil.XMPCoreJarLoadListener paramXMPCoreJarLoadListener)
   {
-    if (paramXMPCoreJarLoadListener == null) {
+    if (paramXMPCoreJarLoadListener == null)
+    {
+      QZLog.i("XMPCoreUtil", "loadXMPCoreJarModule xmpCoreJarLoadListenerNull");
       return;
     }
-    boolean bool = this.isModuleLoadSuccess;
-    if (bool)
+    if (this.isModuleLoadSuccess)
     {
-      paramXMPCoreJarLoadListener.loadState(bool);
+      QZLog.i("XMPCoreUtil", "loadXMPCoreJarModule ModuleLoadSuccess");
+      paramXMPCoreJarLoadListener.loadState(this.isModuleLoadSuccess);
       return;
     }
     int i;
@@ -181,7 +183,7 @@ public class XMPCoreUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.XMPCoreUtil
  * JD-Core Version:    0.7.0.1
  */

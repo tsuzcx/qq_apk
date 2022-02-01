@@ -38,12 +38,12 @@ public class RIJEmotionDownloader
   
   private static boolean b(long paramLong)
   {
-    return System.currentTimeMillis() - paramLong > 86400000L;
+    return System.currentTimeMillis() - paramLong > 0L;
   }
   
   private void c()
   {
-    if (!RIJEmotionCacheManager.a())
+    if (!RIJEmotionCacheManager.d())
     {
       new RIJEmotionDownloader.EmotionFileLoader(this, null).a();
       return;
@@ -73,7 +73,7 @@ public class RIJEmotionDownloader
       }
       localObject = new RIJCommonEmotionCache(((RIJEmotionDownloader.ServerEmotionTab)localObject).id, ((RIJEmotionDownloader.ServerEmotionTab)localObject).iconUrl, i, localIRIJEmotionSize);
       ((RIJCommonEmotionCache)localObject).a(localArrayList);
-      ((RIJCommonEmotionCache)localObject).a();
+      ((RIJCommonEmotionCache)localObject).d();
       RIJEmotionCacheManager.a((IRIJEmotionCache)localObject);
     }
   }
@@ -86,7 +86,7 @@ public class RIJEmotionDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.download.RIJEmotionDownloader
  * JD-Core Version:    0.7.0.1
  */

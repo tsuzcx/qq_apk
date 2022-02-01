@@ -12,21 +12,21 @@ import org.json.JSONObject;
 class FastWebActivity$29$1
   implements Runnable
 {
-  final AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$29.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  final FastWebArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo = FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$29.a);
+  final FastWebArticleInfo a = FastWebActivity.d(this.e.a);
+  final AbsBaseArticleInfo b = this.e.a.g;
   
   FastWebActivity$29$1(FastWebActivity.29 param29, long paramLong, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null) {
+      if (this.b == null) {
         return;
       }
-      FastWebActivity localFastWebActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$29.a;
-      AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo.a()) {
+      FastWebActivity localFastWebActivity = this.e.a;
+      AbsBaseArticleInfo localAbsBaseArticleInfo = this.b;
+      if (this.a.a()) {
         localObject = "2";
       } else {
         localObject = "1";
@@ -34,23 +34,23 @@ class FastWebActivity$29$1
       Object localObject = RIJTransMergeKanDianReport.a(localFastWebActivity, localAbsBaseArticleInfo, 0, (String)localObject);
       try
       {
-        ((JSONObject)localObject).put("open_speed", this.jdField_a_of_type_Long);
+        ((JSONObject)localObject).put("open_speed", this.c);
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-      ReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, "0X8008997", ((JSONObject)localObject).toString());
-      FastWebActivity.k(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$29.a);
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$29.a, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo);
-      ReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_JavaUtilList);
-      FastWebRequestUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo);
+      ReportUtil.a(this.b, "0X8008997", ((JSONObject)localObject).toString());
+      FastWebActivity.N(this.e.a);
+      FastWebActivity.a(this.e.a, this.b, this.a);
+      ReportUtil.a(this.b, this.d);
+      FastWebRequestUtil.a(this.b.mArticleContentUrl, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.29.1
  * JD-Core Version:    0.7.0.1
  */

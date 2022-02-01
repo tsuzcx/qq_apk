@@ -12,13 +12,13 @@ class KandianOx210MsgInfo$3
     SharedPreferences.Editor localEditor = RIJSPUtils.a(this.a, true, false).edit();
     localEditor.putString("kandian_push_0x210_msg_sys", this.this$0.a());
     localEditor.putInt("kandian_push_0x210_msg_sys_count", this.this$0.a);
-    localEditor.putLong("kandian_push_0x210_c5_msg_time", this.this$0.d);
+    localEditor.putLong("kandian_push_0x210_c5_msg_time", this.this$0.n);
     RIJSPUtils.a(localEditor, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.KandianOx210MsgInfo.3
  * JD-Core Version:    0.7.0.1
  */

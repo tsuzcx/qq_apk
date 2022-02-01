@@ -10,19 +10,19 @@ import java.lang.ref.WeakReference;
 class VasADBannerResDownloadManager$VasBannerDownloadListener
   implements Downloader.DownloadListener
 {
-  private volatile int jdField_a_of_type_Int;
-  private VasADBannerConfigInfo jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private volatile int b;
-  private int c;
+  private VasADBannerConfigInfo b;
+  private volatile int c;
+  private volatile int d;
+  private int e;
+  private WeakReference<QQAppInterface> f;
   
   public VasADBannerResDownloadManager$VasBannerDownloadListener(VasADBannerResDownloadManager paramVasADBannerResDownloadManager, QQAppInterface paramQQAppInterface, VasADBannerConfigInfo paramVasADBannerConfigInfo, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo = paramVasADBannerConfigInfo;
-    this.c = paramInt;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
+    this.f = new WeakReference(paramQQAppInterface);
+    this.b = paramVasADBannerConfigInfo;
+    this.e = paramInt;
+    this.c = 0;
+    this.d = 0;
   }
   
   public void onDownloadCanceled(String paramString) {}
@@ -36,17 +36,17 @@ class VasADBannerResDownloadManager$VasBannerDownloadListener
       paramDownloadResult.append(paramString);
       QLog.i("VasADBannerResDownloadManager", 2, paramDownloadResult.toString());
     }
-    this.b += 1;
-    VasADBannerResDownloadManager.a(this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager, this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo, paramString, false);
+    this.d += 1;
+    VasADBannerResDownloadManager.a(this.a, this.b, paramString, false);
     paramString = new StringBuilder();
     paramString.append("onDownloadFailed mLoadSuccessTimes = ");
-    paramString.append(this.jdField_a_of_type_Int);
-    paramString.append(" mDownTotalSize = ");
     paramString.append(this.c);
+    paramString.append(" mDownTotalSize = ");
+    paramString.append(this.e);
     QLog.e("VasADBannerResDownloadManager", 1, paramString.toString());
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.b + this.jdField_a_of_type_Int == this.c) {
-      VasADBannerResDownloadManager.a(this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager, paramString);
+    paramString = (QQAppInterface)this.f.get();
+    if (this.d + this.c == this.e) {
+      VasADBannerResDownloadManager.a(this.a, paramString);
     }
   }
   
@@ -61,23 +61,23 @@ class VasADBannerResDownloadManager$VasBannerDownloadListener
       paramDownloadResult.append(paramString);
       QLog.i("VasADBannerResDownloadManager", 2, paramDownloadResult.toString());
     }
-    this.jdField_a_of_type_Int += 1;
-    VasADBannerResDownloadManager.a(this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager, this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo, paramString, true);
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    this.c += 1;
+    VasADBannerResDownloadManager.a(this.a, this.b, paramString, true);
+    paramString = (QQAppInterface)this.f.get();
     paramDownloadResult = new StringBuilder();
     paramDownloadResult.append("onDownloadSucceed mLoadSuccessTimes = ");
-    paramDownloadResult.append(this.jdField_a_of_type_Int);
-    paramDownloadResult.append(" mDownTotalSize = ");
     paramDownloadResult.append(this.c);
+    paramDownloadResult.append(" mDownTotalSize = ");
+    paramDownloadResult.append(this.e);
     QLog.e("VasADBannerResDownloadManager", 1, paramDownloadResult.toString());
-    if ((this.jdField_a_of_type_Int == this.c) && (!this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo.b())) {
-      VasADBannerResDownloadManager.b(this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerResDownloadManager, paramString);
+    if ((this.c == this.e) && (!this.b.d())) {
+      VasADBannerResDownloadManager.b(this.a, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADBannerResDownloadManager.VasBannerDownloadListener
  * JD-Core Version:    0.7.0.1
  */

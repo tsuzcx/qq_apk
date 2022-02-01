@@ -10,27 +10,27 @@ class WSVerticalItemCenterBottomController$1
   
   public void a()
   {
-    WSVerticalBeaconReport.a(1000003, WSVerticalItemCenterBottomController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemCenterBottomController), this.jdField_a_of_type_JavaLangString, this.b);
+    WSVerticalBeaconReport.a(1000003, WSVerticalItemCenterBottomController.a(this.c), this.a, this.b);
   }
   
   public void b()
   {
-    WSVerticalBeaconReport.a(1000007, WSVerticalItemCenterBottomController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemCenterBottomController), this.jdField_a_of_type_JavaLangString, this.b);
+    WSVerticalBeaconReport.a(1000007, WSVerticalItemCenterBottomController.a(this.c), this.a, this.b);
   }
   
   public void c()
   {
-    WSVerticalBeaconReport.a(1000004, WSVerticalItemCenterBottomController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemCenterBottomController), this.jdField_a_of_type_JavaLangString, this.b);
+    WSVerticalBeaconReport.a(1000004, WSVerticalItemCenterBottomController.a(this.c), this.a, this.b);
   }
   
   public void d()
   {
-    WSVerticalBeaconReport.a(1000002, WSVerticalItemCenterBottomController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemCenterBottomController), this.jdField_a_of_type_JavaLangString, this.b);
+    WSVerticalBeaconReport.a(1000002, WSVerticalItemCenterBottomController.a(this.c), this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemCenterBottomController.1
  * JD-Core Version:    0.7.0.1
  */

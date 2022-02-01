@@ -15,15 +15,15 @@ import java.util.HashSet;
 
 public class BitmapDecoder
 {
-  private volatile long jdField_a_of_type_Long;
-  private BitmapDecoder.IBitmapListener jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder$IBitmapListener;
-  private String jdField_a_of_type_JavaLangString;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  private HashSet<String> a;
+  private BitmapDecoder.IBitmapListener b;
+  private volatile long c;
+  private String d;
   
   public BitmapDecoder(String paramString, BitmapDecoder.IBitmapListener paramIBitmapListener)
   {
-    paramString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder$IBitmapListener = paramIBitmapListener;
+    paramString = this.d;
+    this.b = paramIBitmapListener;
   }
   
   public static File a()
@@ -68,7 +68,7 @@ public class BitmapDecoder
   {
     MQLruCache localMQLruCache = GlobalImageCache.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(paramString);
     return (Bitmap)localMQLruCache.get(localStringBuilder.toString());
   }
@@ -78,10 +78,10 @@ public class BitmapDecoder
     Bitmap localBitmap = a(paramString1);
     if (localBitmap == null)
     {
-      if (this.jdField_a_of_type_JavaUtilHashSet == null) {
-        this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      if (this.a == null) {
+        this.a = new HashSet();
       }
-      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString1))
+      if (!this.a.contains(paramString1))
       {
         if (QLog.isColorLevel())
         {
@@ -94,21 +94,21 @@ public class BitmapDecoder
           localStringBuilder.append(paramString3);
           QLog.d("Q.richstatus.img", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_JavaUtilHashSet.add(paramString1);
+        this.a.add(paramString1);
         new BitmapDecoder.Decoder(this, paramString1, paramString2, paramString3).execute((Void[])null);
       }
     }
     return localBitmap;
   }
   
-  public void a()
+  public void b()
   {
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.BitmapDecoder
  * JD-Core Version:    0.7.0.1
  */

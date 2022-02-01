@@ -29,7 +29,7 @@ public class QbossReportManager
     return a;
   }
   
-  private AppRuntime a()
+  private AppRuntime b()
   {
     return MobileQQ.sMobileQQ.waitAppRuntime(null);
   }
@@ -45,7 +45,7 @@ public class QbossReportManager
       ((StringBuilder)localObject).append(paramString);
       QLog.d("QbossReportManager", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = a();
+    Object localObject = b();
     if (localObject == null) {
       QLog.e("QbossReportManager", 1, "send report error with runtime null ");
     }
@@ -91,7 +91,7 @@ public class QbossReportManager
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    AppRuntime localAppRuntime = a();
+    AppRuntime localAppRuntime = b();
     if (localAppRuntime == null) {
       QLog.e("QbossReportManager", 1, "send report error with runtime null ");
     }
@@ -211,7 +211,7 @@ public class QbossReportManager
       localStringBuilder.append(paramBundle);
       QLog.i("QbossReportManager", 1, localStringBuilder.toString());
     }
-    paramBundle = a();
+    paramBundle = b();
     if (paramBundle != null) {
       paramBundle.unRegistObserver(this);
     }
@@ -219,7 +219,7 @@ public class QbossReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.impl.qboss.QbossReportManager
  * JD-Core Version:    0.7.0.1
  */

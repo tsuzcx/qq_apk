@@ -14,25 +14,25 @@ class ShareActionHelperImpl$1
   {
     if ((paramBaseResp != null) && (paramBaseResp.transaction != null))
     {
-      if (!paramBaseResp.transaction.equals(this.jdField_a_of_type_JavaLangString))
+      if (!paramBaseResp.transaction.equals(this.a))
       {
         QLog.e("ShareActionHelperImpl", 1, "onWXShareResp: mWXTransaction is wrong");
         return;
       }
-      WXShareHelper.a().b(this.jdField_a_of_type_ArrayOfComTencentMobileqqWxapiWXShareHelper$WXShareListener[0]);
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqWxapiWXShareHelper$WXShareListener[0] = null;
+      WXShareHelper.a().b(this.b[0]);
+      this.b[0] = null;
       int i = paramBaseResp.errCode;
       if (i != -2)
       {
         if (i != 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqSharehelperImplShareActionHelperImpl.dispatchHandleWXLinkRespDenied(this.b, this.jdField_a_of_type_Int);
+          this.e.dispatchHandleWXLinkRespDenied(this.c, this.d);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqSharehelperImplShareActionHelperImpl.dispatchHandleWXLinkRespOK(this.b, this.jdField_a_of_type_Int);
+        this.e.dispatchHandleWXLinkRespOK(this.c, this.d);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqSharehelperImplShareActionHelperImpl.dispatchHandleWXLinkRespCancel(this.b, this.jdField_a_of_type_Int);
+      this.e.dispatchHandleWXLinkRespCancel(this.c, this.d);
       return;
     }
     QLog.e("ShareActionHelperImpl", 1, "onWXShareResp: respData is null");
@@ -40,7 +40,7 @@ class ShareActionHelperImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.sharehelper.impl.ShareActionHelperImpl.1
  * JD-Core Version:    0.7.0.1
  */

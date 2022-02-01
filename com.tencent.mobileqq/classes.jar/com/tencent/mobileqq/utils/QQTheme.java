@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff.Mode;
@@ -14,54 +15,67 @@ import java.util.List;
 
 public class QQTheme
 {
-  public static final int a;
-  public static final ColorFilter a;
-  public static String a = "";
-  public static List<String> a;
-  public static final String[] a;
+  public static final String DEFAULT_THEME_ID = "1000";
+  public static final String DIY_THEME_ID = "999";
+  public static final String INTERNAL_THEME_DIR_810 = "theme_810";
+  public static final String KEY_SIMPLE_THEME_ID = "simple_theme_id";
+  public static final String KEY_THEME = "theme_root";
+  public static final ColorFilter NIGHTMODE_COLORFILTER = new PorterDuffColorFilter(NIGHTMODE_MASKCOLOR, PorterDuff.Mode.SRC_ATOP);
+  public static final int NIGHTMODE_MASKCOLOR;
+  public static final String PREFERENCE_NAME = "theme";
+  private static final String TAG = "QQTheme";
+  public static final String[] THEME_DEFAULT_IDS = { "999", "1000", "1103", "2971", "2921", "3064", "3063", "3066", "3065", "3067", "3491", "2920" };
+  public static final String THEME_ID = "themeId";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_BLUE = "3491";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_GRREEN = "3063";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_PURPLE = "3065";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_RED = "3067";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_T_RED = "3066";
+  public static final String THEME_ID_DAYMODE_SIMPLEUI_YELLOW = "3064";
+  public static final String THEME_ID_DAYMODE_SIMPLE_GRAY = "2921";
+  public static final String THEME_ID_DAYMODE_SIMPLE_WHITE = "2971";
+  public static final String THEME_ID_GOLDEN = "2101";
+  public static final String THEME_ID_NIGHTMODE = "1103";
+  public static final String THEME_ID_NIGHTMODE_SIMPLE = "2920";
+  public static final String THEME_ID_WHITEMODE = "2105";
+  public static final String THEME_KEY_CURRENT_THEME_ID = "currentThemeId_6.3.5";
+  public static final String THEME_VERSION = "version";
+  public static String lastThemeId = "";
+  public static List<String> themeIds = new ArrayList();
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "999", "1000", "1103", "2971", "2921", "3064", "3063", "3066", "3065", "3067" };
-    jdField_a_of_type_Int = Color.parseColor("#4d000000");
-    jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
-    jdField_a_of_type_JavaUtilList = new ArrayList();
+    NIGHTMODE_MASKCOLOR = Color.parseColor("#4d000000");
   }
   
-  public static SharedPreferences a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "noLogin";
-    }
-    paramString = BaseApplication.getContext();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("_theme");
-    return paramString.getSharedPreferences(localStringBuilder.toString(), 4);
-  }
-  
-  public static String a()
+  public static String getCurrentThemeId()
   {
     if (BaseApplication.getContext() == null) {
       return "1000";
     }
     Object localObject1 = BaseApplication.getContext().getSharedPreferences("theme", 4);
-    Object localObject2 = null;
-    Object localObject3 = ((SharedPreferences)localObject1).getString("theme_root", null);
-    if (TextUtils.isEmpty((CharSequence)localObject3)) {
+    if (localObject1 == null) {
       return "1000";
     }
-    localObject1 = localObject3;
-    if (((String)localObject3).endsWith(File.separator)) {
-      localObject1 = ((String)localObject3).substring(0, ((String)localObject3).length() - 1);
+    String str = getNewSimpleThemeId();
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    str = null;
+    Object localObject2 = ((SharedPreferences)localObject1).getString("theme_root", null);
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      return "1000";
+    }
+    localObject1 = localObject2;
+    if (((String)localObject2).endsWith(File.separator)) {
+      localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
     }
     if (((String)localObject1).contains("theme_810"))
     {
-      localObject3 = ((String)localObject1).split(File.separator);
-      localObject1 = localObject2;
-      if (localObject3.length >= 3) {
-        localObject1 = localObject3[(localObject3.length - 3)];
+      localObject2 = ((String)localObject1).split(File.separator);
+      localObject1 = str;
+      if (localObject2.length >= 3) {
+        localObject1 = localObject2[(localObject2.length - 3)];
       }
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         return localObject1;
@@ -81,9 +95,31 @@ public class QQTheme
     return "1000";
   }
   
-  public static String a(String paramString)
+  public static String getNewSimpleThemeId()
   {
-    String str = a(paramString).getString("currentThemeId_6.3.5", null);
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("theme", 4);
+    if (localSharedPreferences == null) {
+      return "";
+    }
+    return localSharedPreferences.getString("simple_theme_id", null);
+  }
+  
+  public static SharedPreferences getUinThemePreferences(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "noLogin";
+    }
+    paramString = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_theme");
+    return paramString.getSharedPreferences(localStringBuilder.toString(), 4);
+  }
+  
+  public static String getUserCurrentThemeId(String paramString)
+  {
+    String str = getUinThemePreferences(paramString).getString("currentThemeId_6.3.5", null);
     paramString = str;
     if (TextUtils.isEmpty(str)) {
       paramString = "1000";
@@ -91,31 +127,7 @@ public class QQTheme
     return paramString;
   }
   
-  public static void a(Drawable paramDrawable)
-  {
-    if (paramDrawable != null)
-    {
-      if (a())
-      {
-        paramDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-        return;
-      }
-      paramDrawable.clearColorFilter();
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static boolean a()
-  {
-    String str = a();
-    return ("1103".equals(str)) || ("2920".equals(str));
-  }
-  
-  public static boolean a(int paramInt)
+  public static boolean isColorDark(int paramInt)
   {
     double d1 = Color.red(paramInt);
     Double.isNaN(d1);
@@ -126,9 +138,9 @@ public class QQTheme
     return 1.0D - (d1 * 0.299D + d2 * 0.587D + d3 * 0.114D) / 255.0D >= 0.5D;
   }
   
-  public static boolean a(String paramString)
+  public static boolean isCustomTheme(String paramString)
   {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = THEME_DEFAULT_IDS;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -141,68 +153,107 @@ public class QQTheme
     return true;
   }
   
-  public static boolean a(String paramString, boolean paramBoolean)
+  public static boolean isCustomTheme(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {
-      paramString = a(paramString);
+      paramString = getUserCurrentThemeId(paramString);
     } else {
-      paramString = a();
+      paramString = getCurrentThemeId();
     }
-    return a(paramString);
+    return isCustomTheme(paramString);
   }
   
-  public static boolean b()
+  public static boolean isDefaultOrDIYTheme()
   {
-    String str = a();
+    String str = getCurrentThemeId();
     return ("1000".equals(str)) || ("999".equals(str));
   }
   
-  public static boolean b(String paramString)
+  public static boolean isDefaultTheme()
+  {
+    return "1000".equals(getCurrentThemeId());
+  }
+  
+  public static boolean isLastThemeIsNight()
+  {
+    return ("1103".equals(lastThemeId)) || ("2920".equals(lastThemeId));
+  }
+  
+  public static boolean isNowSimpleUI()
+  {
+    return isThemeSimpleUI(getCurrentThemeId());
+  }
+  
+  public static boolean isNowThemeIsNight()
+  {
+    String str = getCurrentThemeId();
+    return ("1103".equals(str)) || ("2920".equals(str));
+  }
+  
+  public static boolean isNowThemeIsNightForQzone()
+  {
+    return isNowThemeIsNight();
+  }
+  
+  public static boolean isNowThemeSimpleNight()
+  {
+    return "2920".equals(getCurrentThemeId());
+  }
+  
+  public static boolean isSimpleColrThemeStateBarUseWhite(String paramString)
   {
     return ("3064".equals(paramString)) || ("2971".equals(paramString)) || ("2921".equals(paramString));
   }
   
-  public static boolean c()
+  public static boolean isSimpleWhite()
   {
-    return ("1103".equals(jdField_a_of_type_JavaLangString)) || ("2920".equals(jdField_a_of_type_JavaLangString));
+    return "2971".equals(getCurrentThemeId());
   }
   
-  public static final boolean c(String paramString)
-  {
-    return ("2920".equals(paramString)) || (d(paramString));
-  }
-  
-  public static boolean d()
-  {
-    return a();
-  }
-  
-  public static boolean d(String paramString)
+  public static boolean isThemeSimpleDayUI(String paramString)
   {
     boolean bool2 = "2920".equals(paramString);
     boolean bool1 = false;
     if (bool2) {
       return false;
     }
-    if (("2971".equals(paramString)) || ("2921".equals(paramString)) || ("3064".equals(paramString)) || ("3063".equals(paramString)) || ("3066".equals(paramString)) || ("3065".equals(paramString)) || ("3067".equals(paramString)) || ("3491".equals(paramString)) || (jdField_a_of_type_JavaUtilList.contains(paramString))) {
+    if (("2971".equals(paramString)) || ("2921".equals(paramString)) || ("3064".equals(paramString)) || ("3063".equals(paramString)) || ("3066".equals(paramString)) || ("3065".equals(paramString)) || ("3067".equals(paramString)) || ("3491".equals(paramString)) || ("1001".equals(paramString)) || (themeIds.contains(paramString))) {
       bool1 = true;
     }
     return bool1;
   }
   
-  public static boolean e()
+  public static final boolean isThemeSimpleUI(String paramString)
   {
-    return "1000".equals(a());
+    return ("2920".equals(paramString)) || (isThemeSimpleDayUI(paramString));
   }
   
-  public static final boolean f()
+  public static void setNewSimpleThemeId(String paramString)
   {
-    return c(a());
+    BaseApplication.getContext().getSharedPreferences("theme", 4).edit().putString("simple_theme_id", paramString).apply();
+  }
+  
+  public static void setNightFilter(Drawable paramDrawable)
+  {
+    if (paramDrawable != null)
+    {
+      if (isNowThemeIsNight())
+      {
+        paramDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
+        return;
+      }
+      paramDrawable.clearColorFilter();
+    }
+  }
+  
+  public static void storeLastThemeId(String paramString)
+  {
+    lastThemeId = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQTheme
  * JD-Core Version:    0.7.0.1
  */

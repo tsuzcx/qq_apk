@@ -34,7 +34,7 @@ public class SubType0x117
     long l = ((submsgtype0x117.MsgBody)localObject).uint64_uin.get();
     if ((localList != null) && (localList.size() != 0))
     {
-      paramArrayOfByte = new StringBuilder(HardCodeUtil.a(2131707842));
+      paramArrayOfByte = new StringBuilder(HardCodeUtil.a(2131905656));
       paramArrayOfByte.append(l);
       localObject = localList.iterator();
       while (((Iterator)localObject).hasNext())
@@ -71,7 +71,7 @@ public class SubType0x117
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x117
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,10 @@ class VerifyPhoneNumActivity$8
   {
     try
     {
-      if ((VerifyPhoneNumActivity.a(this.this$0) != null) && (VerifyPhoneNumActivity.a(this.this$0).isShowing()))
+      if ((VerifyPhoneNumActivity.d(this.this$0) != null) && (VerifyPhoneNumActivity.d(this.this$0).isShowing()))
       {
-        VerifyPhoneNumActivity.a(this.this$0).dismiss();
-        VerifyPhoneNumActivity.a(this.this$0).cancel();
+        VerifyPhoneNumActivity.d(this.this$0).dismiss();
+        VerifyPhoneNumActivity.d(this.this$0).cancel();
       }
     }
     catch (Throwable localThrowable)
@@ -26,7 +26,7 @@ class VerifyPhoneNumActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyPhoneNumActivity.8
  * JD-Core Version:    0.7.0.1
  */

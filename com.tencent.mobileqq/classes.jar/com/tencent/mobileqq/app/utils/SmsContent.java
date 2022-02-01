@@ -13,10 +13,10 @@ import mqq.app.AppActivity;
 public class SmsContent
   extends ContentObserver
 {
-  private static long jdField_a_of_type_Long;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_id", "address", "body", "date" };
-  Context jdField_a_of_type_AndroidContentContext;
-  SMSBodyObserver jdField_a_of_type_ComTencentMobileqqAppUtilsSMSBodyObserver;
+  private static final String[] c = { "_id", "address", "body", "date" };
+  private static long d;
+  Context a;
+  SMSBodyObserver b;
   
   public SmsContent(Handler paramHandler)
   {
@@ -26,13 +26,13 @@ public class SmsContent
   public SmsContent(Handler paramHandler, long paramLong)
   {
     super(paramHandler);
-    jdField_a_of_type_Long = paramLong;
+    d = paramLong;
   }
   
   private void b(Context paramContext, SMSBodyObserver paramSMSBodyObserver)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSMSBodyObserver = paramSMSBodyObserver;
+    this.a = paramContext;
+    this.b = paramSMSBodyObserver;
     try
     {
       paramContext.getContentResolver().registerContentObserver(Uri.parse("content://sms/"), true, this);
@@ -46,16 +46,16 @@ public class SmsContent
   
   public void a()
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.a;
     if (localContext != null)
     {
       localContext.getContentResolver().unregisterContentObserver(this);
       if (QLog.isColorLevel()) {
         QLog.d("sms.content", 2, "unregister...");
       }
-      this.jdField_a_of_type_AndroidContentContext = null;
+      this.a = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSMSBodyObserver = null;
+    this.b = null;
   }
   
   public void a(Context paramContext, SMSBodyObserver paramSMSBodyObserver)
@@ -89,32 +89,32 @@ public class SmsContent
     // Byte code:
     //   0: aload_0
     //   1: iload_1
-    //   2: invokespecial 119	android/database/ContentObserver:onChange	(Z)V
+    //   2: invokespecial 120	android/database/ContentObserver:onChange	(Z)V
     //   5: aload_0
-    //   6: getfield 40	com/tencent/mobileqq/app/utils/SmsContent:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   6: getfield 42	com/tencent/mobileqq/app/utils/SmsContent:a	Landroid/content/Context;
     //   9: astore 6
     //   11: aload 6
     //   13: ifnonnull +18 -> 31
-    //   16: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   16: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   19: ifeq +11 -> 30
-    //   22: ldc 77
+    //   22: ldc 79
     //   24: iconst_2
-    //   25: ldc 121
-    //   27: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   25: ldc 122
+    //   27: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   30: return
     //   31: aconst_null
     //   32: astore 4
     //   34: aconst_null
     //   35: astore 5
     //   37: aload 6
-    //   39: invokevirtual 48	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   42: ldc 123
-    //   44: invokestatic 56	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   47: getstatic 23	com/tencent/mobileqq/app/utils/SmsContent:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   39: invokevirtual 50	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   42: ldc 124
+    //   44: invokestatic 58	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   47: getstatic 26	com/tencent/mobileqq/app/utils/SmsContent:c	[Ljava/lang/String;
     //   50: aconst_null
     //   51: aconst_null
-    //   52: ldc 125
-    //   54: invokevirtual 129	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   52: ldc 126
+    //   54: invokevirtual 130	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   57: astore 6
     //   59: aload 6
     //   61: ifnull +360 -> 421
@@ -123,14 +123,14 @@ public class SmsContent
     //   68: aload 6
     //   70: astore 4
     //   72: aload 6
-    //   74: invokeinterface 134 1 0
+    //   74: invokeinterface 135 1 0
     //   79: ifne +342 -> 421
     //   82: aload 6
     //   84: astore 5
     //   86: aload 6
     //   88: astore 4
     //   90: aload 6
-    //   92: invokeinterface 137 1 0
+    //   92: invokeinterface 138 1 0
     //   97: ifeq +324 -> 421
     //   100: aload 6
     //   102: astore 5
@@ -138,9 +138,9 @@ public class SmsContent
     //   106: astore 4
     //   108: aload 6
     //   110: aload 6
-    //   112: ldc 17
-    //   114: invokeinterface 140 2 0
-    //   119: invokeinterface 144 2 0
+    //   112: ldc 20
+    //   114: invokeinterface 141 2 0
+    //   119: invokeinterface 145 2 0
     //   124: astore 7
     //   126: aload 6
     //   128: astore 5
@@ -148,9 +148,9 @@ public class SmsContent
     //   132: astore 4
     //   134: aload 6
     //   136: aload 6
-    //   138: ldc 19
-    //   140: invokeinterface 140 2 0
-    //   145: invokeinterface 144 2 0
+    //   138: ldc 22
+    //   140: invokeinterface 141 2 0
+    //   145: invokeinterface 145 2 0
     //   150: astore 8
     //   152: aload 6
     //   154: astore 5
@@ -158,31 +158,31 @@ public class SmsContent
     //   158: astore 4
     //   160: aload 6
     //   162: aload 6
-    //   164: ldc 21
-    //   166: invokeinterface 140 2 0
-    //   171: invokeinterface 148 2 0
+    //   164: ldc 24
+    //   166: invokeinterface 141 2 0
+    //   171: invokeinterface 149 2 0
     //   176: lstore_2
     //   177: aload 6
     //   179: astore 5
     //   181: aload 6
     //   183: astore 4
-    //   185: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   185: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   188: ifeq +167 -> 355
     //   191: aload 6
     //   193: astore 5
     //   195: aload 6
     //   197: astore 4
-    //   199: new 150	java/lang/StringBuilder
+    //   199: new 151	java/lang/StringBuilder
     //   202: dup
-    //   203: invokespecial 152	java/lang/StringBuilder:<init>	()V
+    //   203: invokespecial 153	java/lang/StringBuilder:<init>	()V
     //   206: astore 9
     //   208: aload 6
     //   210: astore 5
     //   212: aload 6
     //   214: astore 4
     //   216: aload 9
-    //   218: ldc 154
-    //   220: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: ldc 155
+    //   220: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   223: pop
     //   224: aload 6
     //   226: astore 5
@@ -190,15 +190,15 @@ public class SmsContent
     //   230: astore 4
     //   232: aload 9
     //   234: aload 7
-    //   236: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: pop
     //   240: aload 6
     //   242: astore 5
     //   244: aload 6
     //   246: astore 4
     //   248: aload 9
-    //   250: ldc 160
-    //   252: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: ldc 161
+    //   252: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   255: pop
     //   256: aload 6
     //   258: astore 5
@@ -206,15 +206,15 @@ public class SmsContent
     //   262: astore 4
     //   264: aload 9
     //   266: aload 8
-    //   268: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   271: pop
     //   272: aload 6
     //   274: astore 5
     //   276: aload 6
     //   278: astore 4
     //   280: aload 9
-    //   282: ldc 162
-    //   284: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: ldc 163
+    //   284: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: pop
     //   288: aload 6
     //   290: astore 5
@@ -222,39 +222,39 @@ public class SmsContent
     //   294: astore 4
     //   296: aload 9
     //   298: lload_2
-    //   299: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   299: invokevirtual 166	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   302: pop
     //   303: aload 6
     //   305: astore 5
     //   307: aload 6
     //   309: astore 4
     //   311: aload 9
-    //   313: ldc 167
-    //   315: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   313: ldc 168
+    //   315: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   318: pop
     //   319: aload 6
     //   321: astore 5
     //   323: aload 6
     //   325: astore 4
     //   327: aload 9
-    //   329: getstatic 31	com/tencent/mobileqq/app/utils/SmsContent:jdField_a_of_type_Long	J
-    //   332: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   329: getstatic 34	com/tencent/mobileqq/app/utils/SmsContent:d	J
+    //   332: invokevirtual 166	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   335: pop
     //   336: aload 6
     //   338: astore 5
     //   340: aload 6
     //   342: astore 4
-    //   344: ldc 77
+    //   344: ldc 79
     //   346: iconst_2
     //   347: aload 9
-    //   349: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   352: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   349: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   352: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   355: aload 6
     //   357: astore 5
     //   359: aload 6
     //   361: astore 4
     //   363: lload_2
-    //   364: getstatic 31	com/tencent/mobileqq/app/utils/SmsContent:jdField_a_of_type_Long	J
+    //   364: getstatic 34	com/tencent/mobileqq/app/utils/SmsContent:d	J
     //   367: lcmp
     //   368: iflt +53 -> 421
     //   371: aload 6
@@ -262,17 +262,17 @@ public class SmsContent
     //   375: aload 6
     //   377: astore 4
     //   379: aload_0
-    //   380: getfield 42	com/tencent/mobileqq/app/utils/SmsContent:jdField_a_of_type_ComTencentMobileqqAppUtilsSMSBodyObserver	Lcom/tencent/mobileqq/app/utils/SMSBodyObserver;
+    //   380: getfield 44	com/tencent/mobileqq/app/utils/SmsContent:b	Lcom/tencent/mobileqq/app/utils/SMSBodyObserver;
     //   383: ifnull +38 -> 421
     //   386: aload 6
     //   388: astore 5
     //   390: aload 6
     //   392: astore 4
     //   394: aload_0
-    //   395: getfield 42	com/tencent/mobileqq/app/utils/SmsContent:jdField_a_of_type_ComTencentMobileqqAppUtilsSMSBodyObserver	Lcom/tencent/mobileqq/app/utils/SMSBodyObserver;
+    //   395: getfield 44	com/tencent/mobileqq/app/utils/SmsContent:b	Lcom/tencent/mobileqq/app/utils/SMSBodyObserver;
     //   398: aload 7
     //   400: aload 8
-    //   402: invokeinterface 177 3 0
+    //   402: invokeinterface 178 3 0
     //   407: aload 6
     //   409: astore 5
     //   411: aload 6
@@ -280,7 +280,7 @@ public class SmsContent
     //   415: lload_2
     //   416: lconst_1
     //   417: ladd
-    //   418: putstatic 31	com/tencent/mobileqq/app/utils/SmsContent:jdField_a_of_type_Long	J
+    //   418: putstatic 34	com/tencent/mobileqq/app/utils/SmsContent:d	J
     //   421: aload 6
     //   423: ifnull +53 -> 476
     //   426: aload 6
@@ -291,24 +291,24 @@ public class SmsContent
     //   438: astore 6
     //   440: aload 4
     //   442: astore 5
-    //   444: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   444: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   447: ifeq +17 -> 464
     //   450: aload 4
     //   452: astore 5
-    //   454: ldc 77
+    //   454: ldc 79
     //   456: iconst_2
-    //   457: ldc 178
+    //   457: ldc 179
     //   459: aload 6
-    //   461: invokestatic 181	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   461: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   464: aload 4
     //   466: ifnull +10 -> 476
     //   469: aload 4
-    //   471: invokeinterface 184 1 0
+    //   471: invokeinterface 185 1 0
     //   476: return
     //   477: aload 5
     //   479: ifnull +10 -> 489
     //   482: aload 5
-    //   484: invokeinterface 184 1 0
+    //   484: invokeinterface 185 1 0
     //   489: aload 4
     //   491: athrow
     // Local variable table:
@@ -374,7 +374,7 @@ public class SmsContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.SmsContent
  * JD-Core Version:    0.7.0.1
  */

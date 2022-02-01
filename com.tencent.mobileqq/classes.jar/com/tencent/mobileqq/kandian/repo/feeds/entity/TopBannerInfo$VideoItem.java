@@ -11,27 +11,25 @@ import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
 public class TopBannerInfo$VideoItem
   extends TopBannerInfo.BaseItem
 {
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h = "";
-  public String i = "";
+  public String k = "";
+  public int l;
+  public int m;
+  public int n;
+  public String o = "";
+  public int p;
+  public String q = "";
+  public String r = "";
+  public long s;
+  public int t;
+  public long u;
+  public int v;
   
   public TopBannerInfo$VideoItem()
   {
     super(2);
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
   }
   
-  public static TopBannerInfo.BaseItem b(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  public static TopBannerInfo.BaseItem c(oidb_cmd0xbc9.BannerItem paramBannerItem)
   {
     if (!paramBannerItem.msg_video_banner_item.has()) {
       return null;
@@ -39,46 +37,46 @@ public class TopBannerInfo$VideoItem
     oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = (oidb_cmd0xbc9.VideoBannerItem)paramBannerItem.msg_video_banner_item.get();
     VideoItem localVideoItem = new VideoItem();
     if (localVideoBannerItem.bytes_share_url.has()) {
-      localVideoItem.jdField_f_of_type_JavaLangString = localVideoBannerItem.bytes_share_url.get().toStringUtf8();
+      localVideoItem.k = localVideoBannerItem.bytes_share_url.get().toStringUtf8();
     }
     if (localVideoBannerItem.uint32_video_duration.has()) {
-      localVideoItem.jdField_b_of_type_Int = localVideoBannerItem.uint32_video_duration.get();
+      localVideoItem.l = localVideoBannerItem.uint32_video_duration.get();
     }
     if (localVideoBannerItem.uint32_video_width.has()) {
-      localVideoItem.jdField_c_of_type_Int = localVideoBannerItem.uint32_video_width.get();
+      localVideoItem.m = localVideoBannerItem.uint32_video_width.get();
     }
     if (localVideoBannerItem.uint32_video_height.has()) {
-      localVideoItem.d = localVideoBannerItem.uint32_video_height.get();
+      localVideoItem.n = localVideoBannerItem.uint32_video_height.get();
     }
     if (localVideoBannerItem.bytes_video_vid.has()) {
-      localVideoItem.jdField_g_of_type_JavaLangString = localVideoBannerItem.bytes_video_vid.get().toStringUtf8();
+      localVideoItem.o = localVideoBannerItem.bytes_video_vid.get().toStringUtf8();
     }
     if (localVideoBannerItem.bytes_video_cover.has()) {
-      localVideoItem.jdField_c_of_type_JavaLangString = localVideoBannerItem.bytes_video_cover.get().toStringUtf8();
+      localVideoItem.e = localVideoBannerItem.bytes_video_cover.get().toStringUtf8();
     }
     if (localVideoBannerItem.bytes_inner_uinque_id.has()) {
-      localVideoItem.jdField_e_of_type_JavaLangString = localVideoBannerItem.bytes_inner_uinque_id.get().toStringUtf8();
+      localVideoItem.g = localVideoBannerItem.bytes_inner_uinque_id.get().toStringUtf8();
     }
     if (localVideoBannerItem.uint32_busi_type.has()) {
-      localVideoItem.jdField_e_of_type_Int = localVideoBannerItem.uint32_busi_type.get();
+      localVideoItem.p = localVideoBannerItem.uint32_busi_type.get();
     }
     if (localVideoBannerItem.bytes_title.has()) {
-      localVideoItem.i = localVideoBannerItem.bytes_title.get().toStringUtf8();
+      localVideoItem.r = localVideoBannerItem.bytes_title.get().toStringUtf8();
     }
     if (localVideoBannerItem.bytes_account_name.has()) {
-      localVideoItem.h = localVideoBannerItem.bytes_account_name.get().toStringUtf8();
+      localVideoItem.q = localVideoBannerItem.bytes_account_name.get().toStringUtf8();
     }
     if (localVideoBannerItem.uint64_account_uin.has()) {
-      localVideoItem.jdField_b_of_type_Long = localVideoBannerItem.uint64_account_uin.get();
+      localVideoItem.s = localVideoBannerItem.uint64_account_uin.get();
     }
     if (localVideoBannerItem.uint32_is_ugc.has()) {
-      localVideoItem.jdField_f_of_type_Int = localVideoBannerItem.uint32_is_ugc.get();
+      localVideoItem.t = localVideoBannerItem.uint32_is_ugc.get();
     }
     if (localVideoBannerItem.uint64_feeds_id.has()) {
-      localVideoItem.jdField_c_of_type_Long = localVideoBannerItem.uint64_feeds_id.get();
+      localVideoItem.u = localVideoBannerItem.uint64_feeds_id.get();
     }
     if (localVideoBannerItem.uint32_feeds_type.has()) {
-      localVideoItem.jdField_g_of_type_Int = localVideoBannerItem.uint32_feeds_type.get();
+      localVideoItem.v = localVideoBannerItem.uint32_feeds_type.get();
     }
     a(localVideoItem, paramBannerItem);
     a(paramBannerItem, localVideoItem);
@@ -89,39 +87,39 @@ public class TopBannerInfo$VideoItem
   {
     oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
     oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = new oidb_cmd0xbc9.VideoBannerItem();
-    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_share_url.set(ByteStringMicro.copyFromUtf8(this.jdField_f_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.k)) {
+      localVideoBannerItem.bytes_share_url.set(ByteStringMicro.copyFromUtf8(this.k));
     }
-    localVideoBannerItem.uint32_video_duration.set(this.jdField_b_of_type_Int);
-    localVideoBannerItem.uint32_video_width.set(this.jdField_c_of_type_Int);
-    localVideoBannerItem.uint32_video_height.set(this.d);
-    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_video_vid.set(ByteStringMicro.copyFromUtf8(this.jdField_g_of_type_JavaLangString));
+    localVideoBannerItem.uint32_video_duration.set(this.l);
+    localVideoBannerItem.uint32_video_width.set(this.m);
+    localVideoBannerItem.uint32_video_height.set(this.n);
+    if (!TextUtils.isEmpty(this.o)) {
+      localVideoBannerItem.bytes_video_vid.set(ByteStringMicro.copyFromUtf8(this.o));
     }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_video_cover.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.e)) {
+      localVideoBannerItem.bytes_video_cover.set(ByteStringMicro.copyFromUtf8(this.e));
     }
-    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_inner_uinque_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.g)) {
+      localVideoBannerItem.bytes_inner_uinque_id.set(ByteStringMicro.copyFromUtf8(this.g));
     }
-    localVideoBannerItem.uint32_busi_type.set(this.jdField_e_of_type_Int);
-    if (!TextUtils.isEmpty(this.i)) {
-      localVideoBannerItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.i));
+    localVideoBannerItem.uint32_busi_type.set(this.p);
+    if (!TextUtils.isEmpty(this.r)) {
+      localVideoBannerItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.r));
     }
-    if (!TextUtils.isEmpty(this.h)) {
-      localVideoBannerItem.bytes_account_name.set(ByteStringMicro.copyFromUtf8(this.h));
+    if (!TextUtils.isEmpty(this.q)) {
+      localVideoBannerItem.bytes_account_name.set(ByteStringMicro.copyFromUtf8(this.q));
     }
-    localVideoBannerItem.uint64_account_uin.set(this.jdField_b_of_type_Long);
-    localVideoBannerItem.uint32_is_ugc.set(this.jdField_f_of_type_Int);
-    localVideoBannerItem.uint64_feeds_id.set(this.jdField_c_of_type_Long);
-    localVideoBannerItem.uint32_feeds_type.set(this.jdField_g_of_type_Int);
+    localVideoBannerItem.uint64_account_uin.set(this.s);
+    localVideoBannerItem.uint32_is_ugc.set(this.t);
+    localVideoBannerItem.uint64_feeds_id.set(this.u);
+    localVideoBannerItem.uint32_feeds_type.set(this.v);
     localBannerItem.msg_video_banner_item.set(localVideoBannerItem);
     return localBannerItem;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_f_of_type_Int == 1;
+    return this.t == 1;
   }
   
   public String toString()
@@ -129,29 +127,29 @@ public class TopBannerInfo$VideoItem
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(super.toString());
     localStringBuilder.append(" vid: ");
-    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(" puin : ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.s);
     localStringBuilder.append(" busitype ");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.p);
     localStringBuilder.append(" accountName : ");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(this.q);
     localStringBuilder.append("  shareUrl : ");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(" isUgc ");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.t);
     localStringBuilder.append(" feedsId ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.u);
     localStringBuilder.append(" feedsType ");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(this.v);
     localStringBuilder.append(" videoTitle: ");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.r);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.TopBannerInfo.VideoItem
  * JD-Core Version:    0.7.0.1
  */

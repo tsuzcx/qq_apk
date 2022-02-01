@@ -46,13 +46,13 @@ class ProfileNameView$TroopRankClick
       paramView.getContext().startActivity(localIntent);
       if (TroopRankConfig.a().a(localProfileCardInfo.troopUin, localProfileCardInfo.allInOne.uin))
       {
-        localObject = paramView.findViewById(2131376320);
+        localObject = paramView.findViewById(2131444531);
         if (localObject != null) {
           ((View)localObject).setVisibility(8);
         }
         TroopRankConfig.a().a(localProfileCardInfo.troopUin, localProfileCardInfo.allInOne.uin, false);
       }
-      TroopRankConfig.a("grp_data", "clk_medal");
+      TroopRankConfig.b("grp_data", "clk_medal");
       new ReportTask(localQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("title_clk").a(new String[] { localProfileCardInfo.troopUin }).a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -60,7 +60,7 @@ class ProfileNameView$TroopRankClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileNameView.TroopRankClick
  * JD-Core Version:    0.7.0.1
  */

@@ -26,24 +26,19 @@ public abstract class AEEditorBaseFragment
   extends QPublicBaseFragment
   implements LifecycleOwner, ViewModelStoreOwner, IAEEditorModule
 {
-  protected Dialog a;
-  protected Handler a;
-  private final LifecycleRegistry jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-  private ViewModelStore jdField_a_of_type_AndroidxLifecycleViewModelStore;
-  private AEEditorModuleManager jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager;
-  protected ProgressView a;
-  public String a;
-  
-  public AEEditorBaseFragment()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
+  private AEEditorModuleManager a;
+  public String b;
+  protected Handler c = new Handler(Looper.getMainLooper());
+  protected Dialog d;
+  protected ProgressView e;
+  private final LifecycleRegistry f = new LifecycleRegistry(this);
+  private ViewModelStore g;
   
   private void a(Lifecycle.Event paramEvent)
   {
     try
     {
-      this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry.handleLifecycleEvent(paramEvent);
+      this.f.handleLifecycleEvent(paramEvent);
       return;
     }
     catch (Throwable paramEvent)
@@ -54,25 +49,13 @@ public abstract class AEEditorBaseFragment
     QLog.e("AEEditorBaseFragment", 1, "mLifecycleRegistry 初始化失败");
   }
   
-  @NonNull
-  public AEEditorModuleManager a()
-  {
-    AEEditorModuleManager localAEEditorModuleManager = this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager;
-    if (localAEEditorModuleManager != null) {
-      return localAEEditorModuleManager;
-    }
-    throw new RuntimeException("moduleManager not set");
-  }
-  
   public abstract String a();
-  
-  public void a() {}
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public void a(AEEditorModuleManager paramAEEditorModuleManager)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager = paramAEEditorModuleManager;
+    this.a = paramAEEditorModuleManager;
   }
   
   public void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener)
@@ -81,25 +64,37 @@ public abstract class AEEditorBaseFragment
       return;
     }
     FragmentActivity localFragmentActivity = getActivity();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AEEditorBaseFragment.1(this, localFragmentActivity, paramOnDismissListener, paramBoolean, paramCharSequence), paramLong);
+    this.c.removeCallbacksAndMessages(null);
+    this.c.postDelayed(new AEEditorBaseFragment.1(this, localFragmentActivity, paramOnDismissListener, paramBoolean, paramCharSequence), paramLong);
   }
   
-  public boolean a()
+  @NonNull
+  public AEEditorModuleManager b()
+  {
+    AEEditorModuleManager localAEEditorModuleManager = this.a;
+    if (localAEEditorModuleManager != null) {
+      return localAEEditorModuleManager;
+    }
+    throw new RuntimeException("moduleManager not set");
+  }
+  
+  public boolean c()
   {
     return false;
   }
   
-  public void b()
+  public void d() {}
+  
+  public void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.post(new AEEditorBaseFragment.2(this));
+    this.c.removeCallbacksAndMessages(null);
+    this.c.post(new AEEditorBaseFragment.2(this));
   }
   
   @NotNull
   public Lifecycle getLifecycle()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry;
+    return this.f;
   }
   
   @NonNull
@@ -107,10 +102,10 @@ public abstract class AEEditorBaseFragment
   {
     if (BaseApplicationImpl.getApplication() != null)
     {
-      if (this.jdField_a_of_type_AndroidxLifecycleViewModelStore == null) {
-        this.jdField_a_of_type_AndroidxLifecycleViewModelStore = new ViewModelStore();
+      if (this.g == null) {
+        this.g = new ViewModelStore();
       }
-      return this.jdField_a_of_type_AndroidxLifecycleViewModelStore;
+      return this.g;
     }
     throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
   }
@@ -137,8 +132,8 @@ public abstract class AEEditorBaseFragment
   {
     super.onResume();
     a(Lifecycle.Event.ON_RESUME);
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager == null) && (getActivity() != null) && ((getActivity() instanceof AEEditorActivity))) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorAEEditorModuleManager = ((AEEditorActivity)getActivity()).a();
+    if ((this.a == null) && (getActivity() != null) && ((getActivity() instanceof AEEditorActivity))) {
+      this.a = ((AEEditorActivity)getActivity()).a();
     }
   }
   
@@ -156,7 +151,7 @@ public abstract class AEEditorBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.arch.AEEditorBaseFragment
  * JD-Core Version:    0.7.0.1
  */

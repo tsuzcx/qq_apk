@@ -22,17 +22,17 @@ class C2CLinkMessageSearchDialog$7
       paramAdapterView.append(paramInt);
       QLog.i("LinkMessageSearchDialog", 2, paramAdapterView.toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageResultAdapter.getCount() > 0)
+    if (this.a.n.getCount() > 0)
     {
       if (paramInt <= 0) {
         return;
       }
-      paramAdapterView = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CLinkMessageResultAdapter.a(paramInt - 1);
+      paramAdapterView = this.a.n.a(paramInt - 1);
       if (paramAdapterView != null)
       {
-        paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        paramView = new Intent(this.a.c, QQBrowserActivity.class);
         paramView.putExtra("url", paramAdapterView.url);
-        this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+        this.a.c.startActivity(paramView);
         return;
       }
       paramAdapterView = new StringBuilder();
@@ -44,7 +44,7 @@ class C2CLinkMessageSearchDialog$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkMessageSearchDialog.7
  * JD-Core Version:    0.7.0.1
  */

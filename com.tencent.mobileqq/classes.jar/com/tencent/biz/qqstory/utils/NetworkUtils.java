@@ -5,39 +5,17 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 
 public class NetworkUtils
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static volatile boolean jdField_a_of_type_Boolean = false;
+  private static String a = "";
   private static String b = "";
-  
-  public static String a(Context paramContext)
-  {
-    b(paramContext);
-    return jdField_a_of_type_JavaLangString;
-  }
+  private static volatile boolean c = false;
   
   public static boolean a(Context paramContext)
   {
     return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static String b(Context paramContext)
-  {
-    b(paramContext);
-    return b;
-  }
-  
-  private static void b(Context paramContext)
-  {
-    if ((!jdField_a_of_type_Boolean) && (paramContext != null))
-    {
-      paramContext = paramContext.getApplicationContext();
-      jdField_a_of_type_Boolean = true;
-      AppNetConnInfo.registerNetChangeReceiver(paramContext, new NetworkUtils.1(paramContext));
-      c(paramContext);
-    }
   }
   
   public static boolean b(Context paramContext)
@@ -47,13 +25,25 @@ public class NetworkUtils
   
   public static String c(Context paramContext)
   {
+    g(paramContext);
+    return a;
+  }
+  
+  public static String d(Context paramContext)
+  {
+    g(paramContext);
+    return b;
+  }
+  
+  public static String e(Context paramContext)
+  {
     if (paramContext != null) {
       try
       {
         paramContext = (WifiManager)paramContext.getSystemService("wifi");
         if (paramContext != null)
         {
-          paramContext = paramContext.getConnectionInfo();
+          paramContext = NetworkMonitor.getConnectionInfo(paramContext);
           if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.getSSID())))
           {
             paramContext = paramContext.getSSID().replace("\"", "");
@@ -69,11 +59,22 @@ public class NetworkUtils
     return "";
   }
   
-  private static void c(Context paramContext)
+  private static void g(Context paramContext)
+  {
+    if ((!c) && (paramContext != null))
+    {
+      paramContext = paramContext.getApplicationContext();
+      c = true;
+      AppNetConnInfo.registerNetChangeReceiver(paramContext, new NetworkUtils.1(paramContext));
+      h(paramContext);
+    }
+  }
+  
+  private static void h(Context paramContext)
   {
     if (paramContext != null)
     {
-      WifiInfo localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi"));
       if (localWifiInfo != null)
       {
         boolean bool = TextUtils.isEmpty(localWifiInfo.getBSSID());
@@ -83,8 +84,8 @@ public class NetworkUtils
         } else {
           paramContext = localWifiInfo.getBSSID();
         }
-        jdField_a_of_type_JavaLangString = paramContext;
-        if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+        a = paramContext;
+        if (TextUtils.isEmpty(a)) {
           paramContext = str;
         } else {
           paramContext = localWifiInfo.getSSID();

@@ -33,107 +33,80 @@ import org.json.JSONObject;
 
 public class CaptureVideoFilterManager
 {
-  public static int a;
-  public static Object a;
   public static final String a;
-  private static int jdField_b_of_type_Int;
   public static final String b;
-  private static boolean jdField_b_of_type_Boolean;
-  private static int c;
-  public static String c;
-  private static int d;
-  public static String d;
-  private static int jdField_e_of_type_Int = -1;
-  private static final String jdField_e_of_type_JavaLangString;
-  private static int jdField_f_of_type_Int = 0;
-  private static final String jdField_f_of_type_JavaLangString;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  public CaptureRedDotConfig a;
-  private CaptureVideoFilterManager.OnResourceDownloadListener jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureVideoFilterManager$OnResourceDownloadListener;
-  public FilterCategoryItem a;
-  HashMap<String, FilterDesc> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final CopyOnWriteArrayList<FilterCategory> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public boolean a;
-  private final CopyOnWriteArrayList<FilterCategoryItem> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  public static Object d;
+  public static String h;
+  public static String i;
+  public static int j = 0;
+  private static boolean n;
+  private static final String o;
+  private static final String p;
+  private static int q;
+  private static int t = 2;
+  private static int u = 1;
+  private static int v = -1;
+  private static int w = 0;
+  public CaptureRedDotConfig c;
+  public boolean e = false;
+  public FilterCategoryItem f;
+  HashMap<String, FilterDesc> g = new HashMap();
+  private AtomicInteger k = new AtomicInteger(0);
+  private CaptureVideoFilterManager.OnResourceDownloadListener l;
+  private Handler m;
+  private final CopyOnWriteArrayList<FilterCategory> r = new CopyOnWriteArrayList();
+  private final CopyOnWriteArrayList<FilterCategoryItem> s = new CopyOnWriteArrayList();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(PathUtils.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(PathUtils.d);
     localStringBuilder.append("pddata/prd/dov_capture_qsvf");
     localStringBuilder.append(File.separator);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("capture_res");
     localStringBuilder.append(File.separator);
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_b_of_type_Boolean = false;
+    b = localStringBuilder.toString();
+    n = false;
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(PathUtils.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(PathUtils.d);
     localStringBuilder.append("qav");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("beauty");
     localStringBuilder.append(File.separator);
-    jdField_e_of_type_JavaLangString = localStringBuilder.toString();
+    o = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(o);
     localStringBuilder.append("SKINCOLOR");
     localStringBuilder.append(File.separator);
-    jdField_f_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_JavaLangObject = new Object();
+    p = localStringBuilder.toString();
+    q = 0;
+    d = new Object();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("lowlight");
-    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+    h = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(h);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("LowLight.png");
-    jdField_d_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Int = 0;
-    jdField_c_of_type_Int = 2;
-    jdField_d_of_type_Int = 1;
+    i = localStringBuilder.toString();
   }
   
   private CaptureVideoFilterManager()
   {
-    this.jdField_a_of_type_Boolean = false;
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(DeviceInfoUtil.h());
+    ((StringBuilder)localObject).append(DeviceInfoUtil.t());
     ((StringBuilder)localObject).append(" ");
-    ((StringBuilder)localObject).append(DeviceInfoUtil.d());
+    ((StringBuilder)localObject).append(DeviceInfoUtil.f());
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DeviceInfo ");
     localStringBuilder.append((String)localObject);
     QLog.i("CaptureVideoFilterManager", 2, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  }
-  
-  public static int a(Context paramContext)
-  {
-    int j = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("capture_qq_video_filter_config_version", 0);
-    int i = j;
-    if (j > 0)
-    {
-      paramContext = new StringBuilder();
-      paramContext.append(jdField_a_of_type_JavaLangString);
-      paramContext.append("filter_config.xml");
-      i = j;
-      if (!new File(paramContext.toString()).exists())
-      {
-        AVLog.printColorLog("CaptureVideoFilterManager", "getQQShortVideoFilterConfigVersion config file don't exist!");
-        i = 0;
-      }
-    }
-    paramContext = new StringBuilder();
-    paramContext.append("getQQShortVideoFilterConfigVersion:");
-    paramContext.append(i);
-    AVLog.printColorLog("CaptureVideoFilterManager", paramContext.toString());
-    return i;
+    this.m = new Handler(ThreadManager.getSubThreadLooper());
   }
   
   public static final CaptureVideoFilterManager a()
@@ -146,12 +119,12 @@ public class CaptureVideoFilterManager
     try
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(a);
       ((StringBuilder)localObject).append("filter_config.xml");
       localObject = new File(((StringBuilder)localObject).toString());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getQQShortVideoFilterConfig:");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append("filter_config.xml");
       localStringBuilder.append("|");
       localStringBuilder.append(((File)localObject).exists());
@@ -201,9 +174,9 @@ public class CaptureVideoFilterManager
     else
     {
       paramString1 = localIterator;
-      if (new File(jdField_b_of_type_JavaLangString).exists())
+      if (new File(b).exists())
       {
-        FileUtils.deleteDirectory(jdField_b_of_type_JavaLangString);
+        FileUtils.deleteDirectory(b);
         paramString1 = localIterator;
       }
     }
@@ -232,7 +205,7 @@ public class CaptureVideoFilterManager
             localStringBuilder.append(paramString2.resMD5);
             AVLog.printColorLog("CaptureVideoFilterManager", localStringBuilder.toString());
             if ((localFilterDesc.resMD5 != null) && (!localFilterDesc.resMD5.equals(paramString2.resMD5))) {
-              FileUtils.deleteDirectory(paramString2.getResFold(jdField_b_of_type_JavaLangString));
+              FileUtils.deleteDirectory(paramString2.getResFold(b));
             }
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("compareContent iconMD5:");
@@ -243,13 +216,13 @@ public class CaptureVideoFilterManager
             localStringBuilder.append(paramString2.iconMD5);
             AVLog.printColorLog("CaptureVideoFilterManager", localStringBuilder.toString());
             if ((localFilterDesc.iconMD5 != null) && (!localFilterDesc.iconMD5.equals(paramString2.iconMD5))) {
-              FileUtils.deleteFile(paramString2.getIconFile(jdField_b_of_type_JavaLangString));
+              FileUtils.deleteFile(paramString2.getIconFile(b));
             }
           }
         }
         continue;
         AVLog.printColorLog("CaptureVideoFilterManager", "compareContent newList.size=0");
-        FileUtils.deleteDirectory(jdField_b_of_type_JavaLangString);
+        FileUtils.deleteDirectory(b);
       }
     }
     long l2 = System.currentTimeMillis();
@@ -278,9 +251,32 @@ public class CaptureVideoFilterManager
     AVLog.printColorLog("CaptureVideoFilterManager", "parseConfig|content is empty.");
   }
   
-  private void b()
+  public static int b(Context paramContext)
   {
-    File localFile = new File(jdField_d_of_type_JavaLangString);
+    int i2 = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("capture_qq_video_filter_config_version", 0);
+    int i1 = i2;
+    if (i2 > 0)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(a);
+      paramContext.append("filter_config.xml");
+      i1 = i2;
+      if (!new File(paramContext.toString()).exists())
+      {
+        AVLog.printColorLog("CaptureVideoFilterManager", "getQQShortVideoFilterConfigVersion config file don't exist!");
+        i1 = 0;
+      }
+    }
+    paramContext = new StringBuilder();
+    paramContext.append("getQQShortVideoFilterConfigVersion:");
+    paramContext.append(i1);
+    AVLog.printColorLog("CaptureVideoFilterManager", paramContext.toString());
+    return i1;
+  }
+  
+  private void e()
+  {
+    File localFile = new File(i);
     if (localFile.exists())
     {
       localFile.delete();
@@ -309,42 +305,10 @@ public class CaptureVideoFilterManager
     }
     if (!localFile.exists())
     {
-      jdField_a_of_type_Int = jdField_e_of_type_Int;
+      j = v;
       return;
     }
-    jdField_a_of_type_Int = jdField_c_of_type_Int;
-  }
-  
-  public FilterCategoryItem a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraStructEditorFilterCategoryItem;
-  }
-  
-  public FilterDesc a(String paramString)
-  {
-    return (FilterDesc)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    CaptureRedDotConfig localCaptureRedDotConfig = CaptureRedDotConfig.getRedDotConfigFromFile(jdField_a_of_type_JavaLangString, "_Filter");
-    if (localCaptureRedDotConfig != null)
-    {
-      if (QLog.isColorLevel())
-      {
-        ??? = new StringBuilder();
-        ((StringBuilder)???).append("CaptureVideoFilterManger init UpdateByServer= ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_Boolean);
-        QLog.d("QIMRedDotConfig_Filter", 2, ((StringBuilder)???).toString());
-      }
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig = localCaptureRedDotConfig;
-        }
-        return;
-      }
-    }
+    j = t;
   }
   
   public void a(Context paramContext, String paramString, int paramInt)
@@ -355,9 +319,9 @@ public class CaptureVideoFilterManager
       return;
     }
     a(paramContext, paramString, a(paramContext));
-    FileUtils.writeFile(jdField_a_of_type_JavaLangString, "filter_config.xml", paramString);
+    FileUtils.writeFile(a, "filter_config.xml", paramString);
     a(paramContext, paramInt);
-    a();
+    b();
     a(paramString);
     AVLog.printColorLog("CaptureVideoFilterManager", "updateQQShortVideoFilterConfig sendBroadcast");
   }
@@ -366,32 +330,32 @@ public class CaptureVideoFilterManager
   {
     if (paramBoolean)
     {
-      CaptureRedDotConfig localCaptureRedDotConfig = this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig;
+      CaptureRedDotConfig localCaptureRedDotConfig = this.c;
       if ((localCaptureRedDotConfig != null) && (localCaptureRedDotConfig.update))
       {
-        localCaptureRedDotConfig = this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig;
+        localCaptureRedDotConfig = this.c;
         localCaptureRedDotConfig.update = false;
-        CaptureRedDotConfig.saveRedDotConfig(localCaptureRedDotConfig, jdField_a_of_type_JavaLangString, "_Filter");
+        CaptureRedDotConfig.saveRedDotConfig(localCaptureRedDotConfig, a, "_Filter");
       }
     }
     else
     {
-      CaptureRedDotConfig.saveRedDotConfig(this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig, jdField_a_of_type_JavaLangString, "_Filter");
+      CaptureRedDotConfig.saveRedDotConfig(this.c, a, "_Filter");
     }
   }
   
   public boolean a(int paramInt1, int paramInt2, String paramString)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig == null)
+      if (this.c == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("QIMRedDotConfig_Filter", 2, "needShowRedDot|mCaptureRedDotConfig is null");
         }
         return false;
       }
-      boolean bool = this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.needShowRedDot(paramInt1, paramInt2, paramString);
+      boolean bool = this.c.needShowRedDot(paramInt1, paramInt2, paramString);
       if ((bool) && (QLog.isColorLevel()))
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -410,12 +374,12 @@ public class CaptureVideoFilterManager
         else if (paramInt1 == 4)
         {
           localStringBuilder.append(",defaultId=");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultUseId);
+          localStringBuilder.append(this.c.defaultUseId);
         }
         else if (paramInt1 == 5)
         {
           localStringBuilder.append(",defaultCategoryId=");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryId);
+          localStringBuilder.append(this.c.defaultCategoryId);
         }
         QLog.d("QIMRedDotConfig_Filter", 2, localStringBuilder.toString());
       }
@@ -428,13 +392,13 @@ public class CaptureVideoFilterManager
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    int i;
+    int i1;
     label783:
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig = new CaptureRedDotConfig(1);
+        this.c = new CaptureRedDotConfig(1);
         if (QLog.isColorLevel()) {
           QLog.d("QIMRedDotConfig_Filter", 2, "updateFromServer config is null");
         }
@@ -443,81 +407,81 @@ public class CaptureVideoFilterManager
       {
         Object localObject2 = new JSONObject(paramString);
         paramString = ((JSONObject)localObject2).getJSONArray("categorys");
-        i = ((JSONObject)localObject2).optInt("iconRedDotVersion");
+        i1 = ((JSONObject)localObject2).optInt("iconRedDotVersion");
         boolean bool = ((JSONObject)localObject2).optBoolean("needRedDot");
         if (QLog.isColorLevel())
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("updateFromServer oldVer=");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.iconVersion);
+          ((StringBuilder)localObject3).append(this.c.iconVersion);
           ((StringBuilder)localObject3).append(",ver=");
-          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append(i1);
           ((StringBuilder)localObject3).append(",showRed ");
           ((StringBuilder)localObject3).append(bool);
           QLog.d("QIMRedDotConfig_Filter", 2, ((StringBuilder)localObject3).toString());
         }
-        int j = ((JSONObject)localObject2).optInt("redDotShowTime", CaptureRedDotConfig.SHOW_TIME_DEFAULT);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.showTime = j;
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.iconVersion != i)
+        int i2 = ((JSONObject)localObject2).optInt("redDotShowTime", CaptureRedDotConfig.SHOW_TIME_DEFAULT);
+        this.c.showTime = i2;
+        if (this.c.iconVersion != i1)
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.iconVersion = i;
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.showRedDot = bool;
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.hasShow = false;
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.firstShowTime = 0L;
+          this.c.iconVersion = i1;
+          this.c.showRedDot = bool;
+          this.c.hasShow = false;
+          this.c.firstShowTime = 0L;
         }
-        i = ((JSONObject)localObject2).optInt("defaultCategoryVersion");
-        j = ((JSONObject)localObject2).optInt("defaultCategoryId", -1);
+        i1 = ((JSONObject)localObject2).optInt("defaultCategoryVersion");
+        i2 = ((JSONObject)localObject2).optInt("defaultCategoryId", -1);
         if (QLog.isColorLevel())
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("updateFromServer oldVer=");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryVer);
+          ((StringBuilder)localObject3).append(this.c.defaultCategoryVer);
           ((StringBuilder)localObject3).append(",ver=");
-          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append(i1);
           ((StringBuilder)localObject3).append(",defaultCategoryId ");
-          ((StringBuilder)localObject3).append(j);
+          ((StringBuilder)localObject3).append(i2);
           QLog.d("QIMRedDotConfig_Filter", 2, ((StringBuilder)localObject3).toString());
         }
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryVer != i)
+        if (this.c.defaultCategoryVer != i1)
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryVer = i;
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryId = j;
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.hasChoose = false;
+          this.c.defaultCategoryVer = i1;
+          this.c.defaultCategoryId = i2;
+          this.c.hasChoose = false;
         }
-        i = ((JSONObject)localObject2).optInt("defaultUseVersion");
+        i1 = ((JSONObject)localObject2).optInt("defaultUseVersion");
         Object localObject3 = ((JSONObject)localObject2).optString("defaultUseId");
         Object localObject4;
         if (QLog.isColorLevel())
         {
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("updateFromServer oldVer=");
-          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultUseVer);
+          ((StringBuilder)localObject4).append(this.c.defaultUseVer);
           ((StringBuilder)localObject4).append(",ver=");
-          ((StringBuilder)localObject4).append(i);
+          ((StringBuilder)localObject4).append(i1);
           ((StringBuilder)localObject4).append(",defaultUseId ");
           ((StringBuilder)localObject4).append((String)localObject3);
           QLog.d("QIMRedDotConfig_Filter", 2, ((StringBuilder)localObject4).toString());
         }
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultUseVer != i)
+        if (this.c.defaultUseVer != i1)
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultUseVer = i;
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.defaultUseId = ((String)localObject3);
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.hasUse = false;
+          this.c.defaultUseVer = i1;
+          this.c.defaultUseId = ((String)localObject3);
+          this.c.hasUse = false;
         }
-        i = ((JSONObject)localObject2).optInt("itemRedDotVersion");
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.redDotVersion != i)
+        i1 = ((JSONObject)localObject2).optInt("itemRedDotVersion");
+        if (this.c.redDotVersion != i1)
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.redDotVersion = i;
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.redDotItems.clear();
+          this.c.redDotVersion = i1;
+          this.c.redDotItems.clear();
           if (((JSONObject)localObject2).has("itemNeedRedDot"))
           {
             localObject2 = ((JSONObject)localObject2).getJSONArray("itemNeedRedDot");
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("updateFromServer redDotList: ");
-            i = 0;
-            if (i < ((JSONArray)localObject2).length())
+            i1 = 0;
+            if (i1 < ((JSONArray)localObject2).length())
             {
-              localObject4 = ((JSONArray)localObject2).optString(i);
+              localObject4 = ((JSONArray)localObject2).optString(i1);
               if (TextUtils.isEmpty((CharSequence)localObject4)) {
                 break label783;
               }
@@ -525,7 +489,7 @@ public class CaptureVideoFilterManager
               localRedDotItemConfig.filterId = ((String)localObject4);
               ((StringBuilder)localObject3).append((String)localObject4);
               ((StringBuilder)localObject3).append(",");
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig.redDotItems.put(localObject4, localRedDotItemConfig);
+              this.c.redDotItems.put(localObject4, localRedDotItemConfig);
               break label783;
             }
             if (QLog.isColorLevel()) {
@@ -534,13 +498,13 @@ public class CaptureVideoFilterManager
           }
         }
         localObject2 = new ArrayList(paramString.length());
-        i = 0;
-        while (i < paramString.length())
+        i1 = 0;
+        while (i1 < paramString.length())
         {
-          ((ArrayList)localObject2).add(new FilterCategory(paramString.getJSONObject(i), this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig));
-          i += 1;
+          ((ArrayList)localObject2).add(new FilterCategory(paramString.getJSONObject(i1), this.c));
+          i1 += 1;
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
         a(false);
         return true;
       }
@@ -553,10 +517,42 @@ public class CaptureVideoFilterManager
       }
     }
   }
+  
+  public FilterDesc b(String paramString)
+  {
+    return (FilterDesc)this.g.get(paramString);
+  }
+  
+  public void b()
+  {
+    CaptureRedDotConfig localCaptureRedDotConfig = CaptureRedDotConfig.getRedDotConfigFromFile(a, "_Filter");
+    if (localCaptureRedDotConfig != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("CaptureVideoFilterManger init UpdateByServer= ");
+        ((StringBuilder)???).append(this.e);
+        QLog.d("QIMRedDotConfig_Filter", 2, ((StringBuilder)???).toString());
+      }
+      synchronized (d)
+      {
+        if (!this.e) {
+          this.c = localCaptureRedDotConfig;
+        }
+        return;
+      }
+    }
+  }
+  
+  public FilterCategoryItem c()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.capture.data.CaptureVideoFilterManager
  * JD-Core Version:    0.7.0.1
  */

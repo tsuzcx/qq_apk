@@ -10,53 +10,53 @@ import com.tencent.mobileqq.search.model.ISearchResultModel;
 import java.util.List;
 
 public class GroupSearchModelFunction
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
   public final List<ISearchResultModel> a;
+  private final String b;
+  private int c;
   
   public GroupSearchModelFunction(List<ISearchResultModel> paramList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return SearchEntryConfigManager.a("fts_native_function_maxnum", 3);
+    this.a = paramList;
+    this.b = paramString;
+    this.c = paramInt;
   }
   
   public String a()
   {
-    return SearchEntryConfigManager.a();
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return SearchEntryConfigManager.b();
   }
   
   public void a(View paramView)
   {
-    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToFunctionSearchActivity(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
-    ((ISearchReportFetcher)QRoute.api(ISearchReportFetcher.class)).onReportClick898(null, 0, this.jdField_a_of_type_Int, "0X8009D4B", 0, 0, null, null);
+    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToFunctionSearchActivity(paramView.getContext(), this.b);
+    ((ISearchReportFetcher)QRoute.api(ISearchReportFetcher.class)).onReportClick898(null, 0, this.c, "0X8009D4B", 0, 0, null, null);
   }
   
-  public int b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public String b()
+  public String c()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
+  }
+  
+  public int d()
+  {
+    return SearchEntryConfigManager.a("fts_native_function_maxnum", 3);
+  }
+  
+  public int e()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.GroupSearchModelFunction
  * JD-Core Version:    0.7.0.1
  */

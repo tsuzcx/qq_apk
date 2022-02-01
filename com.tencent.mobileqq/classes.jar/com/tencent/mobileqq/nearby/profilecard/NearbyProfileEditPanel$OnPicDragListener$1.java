@@ -9,17 +9,17 @@ class NearbyProfileEditPanel$OnPicDragListener$1
   
   public void run()
   {
-    if (NearbyProfileEditPanel.a(this.a.a) != null)
+    if (NearbyProfileEditPanel.h(this.a.a) != null)
     {
-      NearbyProfileEditPanel.a(this.a.a).setVisibility(0);
-      NearbyProfileEditPanel.a(this.a.a);
+      NearbyProfileEditPanel.h(this.a.a).setVisibility(0);
+      this.a.a.m();
       NearbyProfileEditPanel.a(this.a.a, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.OnPicDragListener.1
  * JD-Core Version:    0.7.0.1
  */

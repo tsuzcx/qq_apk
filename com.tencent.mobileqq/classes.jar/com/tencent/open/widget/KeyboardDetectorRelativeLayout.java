@@ -14,35 +14,33 @@ import android.widget.RelativeLayout;
 public class KeyboardDetectorRelativeLayout
   extends RelativeLayout
 {
-  protected Rect a;
-  protected IKeyboardChanged a;
+  protected Rect a = null;
+  protected IKeyboardChanged b = null;
   
   public KeyboardDetectorRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_ComTencentOpenWidgetIKeyboardChanged = null;
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (this.a == null) {
+      this.a = new Rect();
     }
   }
   
   public void a(IKeyboardChanged paramIKeyboardChanged)
   {
-    this.jdField_a_of_type_ComTencentOpenWidgetIKeyboardChanged = paramIKeyboardChanged;
+    this.b = paramIKeyboardChanged;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt2);
     Object localObject = (Activity)super.getContext();
-    ((Activity)localObject).getWindow().getDecorView().getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int j = this.jdField_a_of_type_AndroidGraphicsRect.top;
+    ((Activity)localObject).getWindow().getDecorView().getWindowVisibleDisplayFrame(this.a);
+    int j = this.a.top;
     int k = ((Activity)localObject).getWindowManager().getDefaultDisplay().getHeight();
-    localObject = this.jdField_a_of_type_ComTencentOpenWidgetIKeyboardChanged;
+    localObject = this.b;
     if ((localObject != null) && (i != 0)) {
       if (k - j - i > 100) {
-        ((IKeyboardChanged)localObject).a(Math.abs(this.jdField_a_of_type_AndroidGraphicsRect.height()) - getPaddingBottom() - getPaddingTop());
+        ((IKeyboardChanged)localObject).a(Math.abs(this.a.height()) - getPaddingBottom() - getPaddingTop());
       } else {
         ((IKeyboardChanged)localObject).b();
       }
@@ -52,7 +50,7 @@ public class KeyboardDetectorRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.widget.KeyboardDetectorRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

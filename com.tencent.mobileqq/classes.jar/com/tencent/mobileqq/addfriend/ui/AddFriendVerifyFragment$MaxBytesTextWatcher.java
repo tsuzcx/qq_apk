@@ -6,136 +6,136 @@ import android.widget.EditText;
 public class AddFriendVerifyFragment$MaxBytesTextWatcher
   implements TextWatcher
 {
-  int jdField_a_of_type_Int;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  int b;
+  int a;
+  EditText b;
   int c;
+  int d;
   
   public AddFriendVerifyFragment$MaxBytesTextWatcher(int paramInt, EditText paramEditText)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.a = paramInt;
+    this.b = paramEditText;
   }
   
   /* Error */
   public void afterTextChanged(android.text.Editable paramEditable)
   {
     // Byte code:
-    //   0: ldc 27
+    //   0: ldc 28
     //   2: astore_1
     //   3: aload_0
-    //   4: getfield 20	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
-    //   7: invokevirtual 33	android/widget/EditText:getText	()Landroid/text/Editable;
-    //   10: invokevirtual 37	java/lang/Object:toString	()Ljava/lang/String;
+    //   4: getfield 21	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:b	Landroid/widget/EditText;
+    //   7: invokevirtual 34	android/widget/EditText:getText	()Landroid/text/Editable;
+    //   10: invokevirtual 38	java/lang/Object:toString	()Ljava/lang/String;
     //   13: astore 4
     //   15: aload 4
-    //   17: invokevirtual 43	java/lang/String:getBytes	()[B
+    //   17: invokevirtual 44	java/lang/String:getBytes	()[B
     //   20: arraylength
     //   21: aload_0
-    //   22: getfield 18	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:jdField_a_of_type_Int	I
+    //   22: getfield 19	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:a	I
     //   25: if_icmple +415 -> 440
     //   28: aload 4
     //   30: iconst_0
     //   31: aload_0
-    //   32: getfield 45	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:b	I
-    //   35: invokevirtual 49	java/lang/String:substring	(II)Ljava/lang/String;
+    //   32: getfield 46	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:c	I
+    //   35: invokevirtual 50	java/lang/String:substring	(II)Ljava/lang/String;
     //   38: astore 6
     //   40: aload 4
     //   42: aload_0
-    //   43: getfield 45	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:b	I
+    //   43: getfield 46	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:c	I
     //   46: aload_0
-    //   47: getfield 51	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:c	I
+    //   47: getfield 52	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:d	I
     //   50: iadd
     //   51: aload 4
-    //   53: invokevirtual 55	java/lang/String:length	()I
-    //   56: invokevirtual 49	java/lang/String:substring	(II)Ljava/lang/String;
+    //   53: invokevirtual 56	java/lang/String:length	()I
+    //   56: invokevirtual 50	java/lang/String:substring	(II)Ljava/lang/String;
     //   59: astore 7
     //   61: aload 4
     //   63: aload_0
-    //   64: getfield 45	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:b	I
+    //   64: getfield 46	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:c	I
     //   67: aload_0
-    //   68: getfield 45	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:b	I
+    //   68: getfield 46	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:c	I
     //   71: aload_0
-    //   72: getfield 51	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:c	I
+    //   72: getfield 52	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:d	I
     //   75: iadd
-    //   76: invokevirtual 49	java/lang/String:substring	(II)Ljava/lang/String;
+    //   76: invokevirtual 50	java/lang/String:substring	(II)Ljava/lang/String;
     //   79: astore_3
     //   80: aload_3
     //   81: astore_1
     //   82: aload 6
-    //   84: invokevirtual 43	java/lang/String:getBytes	()[B
+    //   84: invokevirtual 44	java/lang/String:getBytes	()[B
     //   87: arraylength
     //   88: aload 7
-    //   90: invokevirtual 43	java/lang/String:getBytes	()[B
+    //   90: invokevirtual 44	java/lang/String:getBytes	()[B
     //   93: arraylength
     //   94: iadd
     //   95: aload_0
-    //   96: getfield 18	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:jdField_a_of_type_Int	I
+    //   96: getfield 19	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:a	I
     //   99: if_icmpgt +341 -> 440
     //   102: aload_3
     //   103: astore_1
     //   104: aload 4
-    //   106: invokevirtual 43	java/lang/String:getBytes	()[B
+    //   106: invokevirtual 44	java/lang/String:getBytes	()[B
     //   109: arraylength
     //   110: aload_0
-    //   111: getfield 18	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:jdField_a_of_type_Int	I
+    //   111: getfield 19	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:a	I
     //   114: if_icmple +78 -> 192
     //   117: aload_3
     //   118: astore_1
     //   119: aload_3
-    //   120: invokevirtual 55	java/lang/String:length	()I
+    //   120: invokevirtual 56	java/lang/String:length	()I
     //   123: ifle +69 -> 192
     //   126: aload_3
     //   127: astore_1
     //   128: aload_3
     //   129: iconst_0
     //   130: aload_3
-    //   131: invokevirtual 55	java/lang/String:length	()I
+    //   131: invokevirtual 56	java/lang/String:length	()I
     //   134: iconst_1
     //   135: isub
-    //   136: invokevirtual 49	java/lang/String:substring	(II)Ljava/lang/String;
+    //   136: invokevirtual 50	java/lang/String:substring	(II)Ljava/lang/String;
     //   139: astore_3
     //   140: aload_3
     //   141: astore_1
-    //   142: new 57	java/lang/StringBuilder
+    //   142: new 58	java/lang/StringBuilder
     //   145: dup
-    //   146: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   146: invokespecial 59	java/lang/StringBuilder:<init>	()V
     //   149: astore 4
     //   151: aload_3
     //   152: astore_1
     //   153: aload 4
     //   155: aload 6
-    //   157: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: pop
     //   161: aload_3
     //   162: astore_1
     //   163: aload 4
     //   165: aload_3
-    //   166: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   166: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: pop
     //   170: aload_3
     //   171: astore_1
     //   172: aload 4
     //   174: aload 7
-    //   176: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   179: pop
     //   180: aload_3
     //   181: astore_1
     //   182: aload 4
-    //   184: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   187: astore 4
     //   189: goto -87 -> 102
     //   192: aload_3
     //   193: astore_1
     //   194: aload 4
     //   196: aload 4
-    //   198: invokevirtual 55	java/lang/String:length	()I
+    //   198: invokevirtual 56	java/lang/String:length	()I
     //   201: iconst_1
     //   202: isub
-    //   203: invokevirtual 67	java/lang/String:charAt	(I)C
-    //   206: invokestatic 71	java/lang/String:valueOf	(C)Ljava/lang/String;
-    //   209: ldc 73
-    //   211: invokevirtual 76	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   203: invokevirtual 68	java/lang/String:charAt	(I)C
+    //   206: invokestatic 72	java/lang/String:valueOf	(C)Ljava/lang/String;
+    //   209: ldc 74
+    //   211: invokevirtual 77	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   214: astore 8
     //   216: aload 4
     //   218: astore 5
@@ -150,7 +150,7 @@ public class AddFriendVerifyFragment$MaxBytesTextWatcher
     //   233: aload_3
     //   234: astore_1
     //   235: aload 4
-    //   237: invokevirtual 55	java/lang/String:length	()I
+    //   237: invokevirtual 56	java/lang/String:length	()I
     //   240: iconst_1
     //   241: if_icmple +66 -> 307
     //   244: aload 8
@@ -175,36 +175,36 @@ public class AddFriendVerifyFragment$MaxBytesTextWatcher
     //   270: aload 4
     //   272: astore 5
     //   274: iload_2
-    //   275: ldc 77
+    //   275: ldc 78
     //   277: if_icmplt +30 -> 307
     //   280: aload 4
     //   282: astore 5
     //   284: iload_2
-    //   285: ldc 78
+    //   285: ldc 79
     //   287: if_icmpgt +20 -> 307
     //   290: aload_3
     //   291: astore_1
     //   292: aload 4
     //   294: iconst_0
     //   295: aload 4
-    //   297: invokevirtual 55	java/lang/String:length	()I
+    //   297: invokevirtual 56	java/lang/String:length	()I
     //   300: iconst_1
     //   301: isub
-    //   302: invokevirtual 49	java/lang/String:substring	(II)Ljava/lang/String;
+    //   302: invokevirtual 50	java/lang/String:substring	(II)Ljava/lang/String;
     //   305: astore 5
     //   307: aload_3
     //   308: astore_1
     //   309: aload_0
-    //   310: getfield 20	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
+    //   310: getfield 21	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:b	Landroid/widget/EditText;
     //   313: aload 5
-    //   315: invokevirtual 82	android/widget/EditText:setText	(Ljava/lang/CharSequence;)V
+    //   315: invokevirtual 83	android/widget/EditText:setText	(Ljava/lang/CharSequence;)V
     //   318: aload_3
     //   319: astore_1
     //   320: aload_0
-    //   321: getfield 20	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:jdField_a_of_type_AndroidWidgetEditText	Landroid/widget/EditText;
+    //   321: getfield 21	com/tencent/mobileqq/addfriend/ui/AddFriendVerifyFragment$MaxBytesTextWatcher:b	Landroid/widget/EditText;
     //   324: aload 5
-    //   326: invokevirtual 55	java/lang/String:length	()I
-    //   329: invokevirtual 86	android/widget/EditText:setSelection	(I)V
+    //   326: invokevirtual 56	java/lang/String:length	()I
+    //   329: invokevirtual 87	android/widget/EditText:setSelection	(I)V
     //   332: return
     //   333: astore_3
     //   334: aload 6
@@ -213,50 +213,50 @@ public class AddFriendVerifyFragment$MaxBytesTextWatcher
     //   340: astore 4
     //   342: goto +24 -> 366
     //   345: astore_3
-    //   346: ldc 27
+    //   346: ldc 28
     //   348: astore 4
     //   350: aload 6
     //   352: astore 5
     //   354: goto +12 -> 366
     //   357: astore_3
-    //   358: ldc 27
+    //   358: ldc 28
     //   360: astore 5
     //   362: aload 5
     //   364: astore 4
-    //   366: invokestatic 92	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   366: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   369: ifeq +71 -> 440
-    //   372: new 57	java/lang/StringBuilder
+    //   372: new 58	java/lang/StringBuilder
     //   375: dup
-    //   376: invokespecial 58	java/lang/StringBuilder:<init>	()V
+    //   376: invokespecial 59	java/lang/StringBuilder:<init>	()V
     //   379: astore 6
     //   381: aload 6
-    //   383: ldc 94
-    //   385: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   383: ldc 95
+    //   385: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   388: pop
     //   389: aload 6
     //   391: aload 5
-    //   393: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   393: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   396: pop
     //   397: aload 6
-    //   399: ldc 96
-    //   401: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   399: ldc 97
+    //   401: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   404: pop
     //   405: aload 6
     //   407: aload 4
-    //   409: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   409: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   412: pop
     //   413: aload 6
-    //   415: ldc 98
-    //   417: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   415: ldc 99
+    //   417: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   420: pop
     //   421: aload 6
     //   423: aload_1
-    //   424: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   424: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   427: pop
-    //   428: ldc 100
+    //   428: ldc 101
     //   430: iconst_2
     //   431: aload 6
-    //   433: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   433: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   436: aload_3
     //   437: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   440: return
@@ -298,15 +298,15 @@ public class AddFriendVerifyFragment$MaxBytesTextWatcher
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.b = paramInt1;
-    this.c = paramInt3;
+    this.c = paramInt1;
+    this.d = paramInt3;
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.MaxBytesTextWatcher
  * JD-Core Version:    0.7.0.1
  */

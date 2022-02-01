@@ -17,6 +17,8 @@ import android.os.Message;
 import android.util.Pair;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.stepcount.g;
+import com.tencent.mobileqq.msf.core.v;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -94,7 +96,7 @@ public class b
     }
     Object localObject = new Intent("action_step_compare_report");
     HashMap localHashMap = new HashMap();
-    localHashMap.put("data1", String.valueOf(com.tencent.mobileqq.msf.core.u.f()));
+    localHashMap.put("data1", String.valueOf(v.f()));
     localHashMap.putAll(this.j.d(paramLong));
     ((Intent)localObject).putExtra("health_compare_report_params", localHashMap);
     localHashMap.put("src_id", String.valueOf(paramInt));
@@ -113,7 +115,7 @@ public class b
     paramLong = ((Long)this.j.b().first).longValue();
     if (paramBoolean)
     {
-      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.service.u.a(paramToServiceMsg);
+      FromServiceMsg localFromServiceMsg = u.a(paramToServiceMsg);
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.addAttribute("health_step_count_history", localHashMap);
       localFromServiceMsg.addAttribute("health_has_shutdown_flag", Boolean.valueOf(bool));
@@ -359,6 +361,7 @@ public class b
     if (QLog.isColorLevel()) {
       QLog.d("StepEventHandlerImpl", 2, "notifyReportSuccess");
     }
+    this.j.d();
     this.o = this.r;
     this.p = this.s;
     this.q = true;
@@ -382,7 +385,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.stepcount.a.b
  * JD-Core Version:    0.7.0.1
  */

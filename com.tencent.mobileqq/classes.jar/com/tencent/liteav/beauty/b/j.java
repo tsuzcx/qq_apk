@@ -1,9 +1,9 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.b.b;
-import com.tencent.liteav.basic.c.i;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.k;
 
 public class j
 {
@@ -13,7 +13,7 @@ public class j
   private boolean c;
   private w d;
   private boolean e;
-  private i f;
+  private k f;
   private e g;
   private p h;
   private boolean i;
@@ -61,7 +61,7 @@ public class j
     Object localObject = this.f;
     if (localObject != null)
     {
-      ((i)localObject).d();
+      ((k)localObject).d();
       this.f = null;
     }
     localObject = this.g;
@@ -88,7 +88,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.j
  * JD-Core Version:    0.7.0.1
  */

@@ -15,36 +15,6 @@ import java.util.Random;
 
 public class TagUtil
 {
-  public static int a(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof Spannable)) {
-      paramCharSequence = paramCharSequence.toString();
-    } else {
-      paramCharSequence = (String)paramCharSequence;
-    }
-    int j = 0;
-    int i = 0;
-    while (j < paramCharSequence.length())
-    {
-      int k = paramCharSequence.codePointAt(j);
-      if ((k >= 32) && (k <= 126))
-      {
-        i += 1;
-      }
-      else if (k >= 65535)
-      {
-        i += 1;
-        j += 1;
-      }
-      else
-      {
-        i += 2;
-      }
-      j += 1;
-    }
-    return i;
-  }
-  
   public static int a(Random paramRandom, int paramInt)
   {
     if (paramInt != -1)
@@ -72,13 +42,13 @@ public class TagUtil
   
   private static void a(Tag paramTag)
   {
-    boolean bool = a(paramTag.jdField_a_of_type_JavaLangCharSequence);
-    if (((paramTag.jdField_b_of_type_Boolean) && (paramTag.jdField_a_of_type_JavaLangCharSequence.length() <= 5)) || (!bool))
+    boolean bool = a(paramTag.c);
+    if (((paramTag.b) && (paramTag.c.length() <= 5)) || (!bool))
     {
-      paramTag.jdField_c_of_type_Int = 0;
+      paramTag.l = 0;
       return;
     }
-    paramTag.jdField_c_of_type_Int = 4;
+    paramTag.l = 4;
   }
   
   public static void a(List<Tag> paramList, ProfilePersonalityLabelInfo paramProfilePersonalityLabelInfo, float paramFloat)
@@ -131,20 +101,20 @@ public class TagUtil
         {
           String str = ((PersonalityLabelInfo)localObject3).text.trim();
           localTag = new Tag();
-          localTag.jdField_a_of_type_JavaLangCharSequence = str;
+          localTag.c = str;
           boolean bool3 = a(str);
           if (l2 == ((PersonalityLabelInfo)localObject3).id)
           {
-            localTag.jdField_b_of_type_Int = ((PersonalityLabelInfo)localObject3).bgColor;
-            localTag.jdField_e_of_type_Int = 2;
+            localTag.k = ((PersonalityLabelInfo)localObject3).bgColor;
+            localTag.s = 2;
           }
           else if (l1 == ((PersonalityLabelInfo)localObject3).id)
           {
-            localTag.d = true;
-            localTag.jdField_a_of_type_AndroidTextTextPaint.setFakeBoldText(true);
+            localTag.o = true;
+            localTag.m.setFakeBoldText(true);
           }
-          localTag.jdField_a_of_type_Int = ((PersonalityLabelInfo)localObject3).fgColor;
-          if (localTag.jdField_e_of_type_Int == 2) {
+          localTag.j = ((PersonalityLabelInfo)localObject3).fgColor;
+          if (localTag.s == 2) {
             bool2 = true;
           } else {
             bool2 = false;
@@ -155,20 +125,20 @@ public class TagUtil
           }
           else
           {
-            localTag.jdField_b_of_type_Boolean = true;
-            localTag.jdField_e_of_type_Boolean = true;
+            localTag.b = true;
+            localTag.t = true;
             i3 = n + 1;
           }
           n = i3;
           i1 = k;
-          if (!localTag.jdField_e_of_type_Boolean)
+          if (!localTag.t)
           {
             if ((i5 > 1) && (k < 2) && (k != i5 - 1) && (str.length() <= 6)) {
-              localTag.jdField_b_of_type_Boolean = ((Random)localObject2).nextBoolean();
+              localTag.b = ((Random)localObject2).nextBoolean();
             } else {
-              localTag.jdField_b_of_type_Boolean = true;
+              localTag.b = true;
             }
-            if (!localTag.jdField_b_of_type_Boolean)
+            if (!localTag.b)
             {
               i1 = k + 1;
               n = i3;
@@ -180,7 +150,7 @@ public class TagUtil
             }
           }
           a(localTag);
-          int i6 = a(str);
+          int i6 = b(str);
           if (bool2)
           {
             if (i6 > 6)
@@ -265,17 +235,17 @@ public class TagUtil
           if (m == 48) {
             j = bool2 + true;
           }
-          localTag.jdField_a_of_type_Float = (m * paramFloat);
-          localTag.jdField_a_of_type_AndroidTextTextPaint.setTextSize(localTag.jdField_a_of_type_Float);
+          localTag.i = (m * paramFloat);
+          localTag.m.setTextSize(localTag.i);
           if (QLog.isColorLevel())
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("getTags ");
-            ((StringBuilder)localObject3).append(localTag.jdField_a_of_type_JavaLangCharSequence);
+            ((StringBuilder)localObject3).append(localTag.c);
             ((StringBuilder)localObject3).append(" sizeLevel:");
             ((StringBuilder)localObject3).append(i3);
             ((StringBuilder)localObject3).append(" size:");
-            ((StringBuilder)localObject3).append(localTag.jdField_a_of_type_Float / paramFloat);
+            ((StringBuilder)localObject3).append(localTag.i / paramFloat);
             QLog.i("TagUtil", 2, ((StringBuilder)localObject3).toString());
           }
           paramList.add(localTag);
@@ -289,7 +259,7 @@ public class TagUtil
       if (n == 0)
       {
         localObject1 = (Tag)paramList.get(0);
-        ((Tag)localObject1).jdField_b_of_type_Boolean = true;
+        ((Tag)localObject1).b = true;
         a((Tag)localObject1);
       }
       int j = k;
@@ -306,13 +276,13 @@ public class TagUtil
               break;
             }
             localObject1 = (Tag)paramList.get(m);
-            if ((!((Tag)localObject1).jdField_e_of_type_Boolean) && (((Tag)localObject1).jdField_a_of_type_JavaLangCharSequence.length() <= 4))
+            if ((!((Tag)localObject1).t) && (((Tag)localObject1).c.length() <= 4))
             {
-              ((Tag)localObject1).jdField_b_of_type_Boolean = false;
-              if (!a(((Tag)localObject1).jdField_a_of_type_JavaLangCharSequence)) {
-                ((Tag)localObject1).jdField_c_of_type_Int = 0;
+              ((Tag)localObject1).b = false;
+              if (!a(((Tag)localObject1).c)) {
+                ((Tag)localObject1).l = 0;
               } else {
-                ((Tag)localObject1).jdField_c_of_type_Int = 4;
+                ((Tag)localObject1).l = 4;
               }
               j = k + 1;
               break;
@@ -330,14 +300,14 @@ public class TagUtil
         {
           localObject1 = (Tag)paramList.get(j);
           localObject2 = (String)((Pair)paramProfilePersonalityLabelInfo.get(j)).second;
-          if ((((Tag)localObject1).jdField_b_of_type_Boolean) && (a((String)localObject2)))
+          if ((((Tag)localObject1).b) && (a((String)localObject2)))
           {
             localTag = new Tag();
-            localTag.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject2);
-            localTag.jdField_c_of_type_Boolean = true;
-            localTag.jdField_b_of_type_Boolean = false;
-            localTag.jdField_a_of_type_Float = ((Tag)localObject1).jdField_a_of_type_Float;
-            localTag.jdField_a_of_type_AndroidTextTextPaint.setTextSize(((Tag)localObject1).jdField_a_of_type_Float);
+            localTag.c = ((CharSequence)localObject2);
+            localTag.n = true;
+            localTag.b = false;
+            localTag.i = ((Tag)localObject1).i;
+            localTag.m.setTextSize(((Tag)localObject1).i);
             paramList.add(localTag);
             m = k + 1;
             k = m;
@@ -387,10 +357,40 @@ public class TagUtil
   {
     return a(paramString);
   }
+  
+  public static int b(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof Spannable)) {
+      paramCharSequence = paramCharSequence.toString();
+    } else {
+      paramCharSequence = (String)paramCharSequence;
+    }
+    int j = 0;
+    int i = 0;
+    while (j < paramCharSequence.length())
+    {
+      int k = paramCharSequence.codePointAt(j);
+      if ((k >= 32) && (k <= 126))
+      {
+        i += 1;
+      }
+      else if (k >= 65535)
+      {
+        i += 1;
+        j += 1;
+      }
+      else
+      {
+        i += 2;
+      }
+      j += 1;
+    }
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagUtil
  * JD-Core Version:    0.7.0.1
  */

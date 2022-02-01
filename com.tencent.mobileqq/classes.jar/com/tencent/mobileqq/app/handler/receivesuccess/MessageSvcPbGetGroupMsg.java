@@ -29,14 +29,14 @@ public class MessageSvcPbGetGroupMsg
         if (QLog.isColorLevel()) {
           QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgResp_PB exception ! ", paramObject);
         }
-        paramMessageHandler.l(paramToServiceMsg, paramFromServiceMsg);
+        paramMessageHandler.m(paramToServiceMsg, paramFromServiceMsg);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MessageSvcPbGetGroupMsg
  * JD-Core Version:    0.7.0.1
  */

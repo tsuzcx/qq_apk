@@ -8,20 +8,20 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class CardItem$NormalCardInfo
 {
-  private qqstory_struct.NormalCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+  private qqstory_struct.NormalCardInfo a;
+  private CardItem.CardVideoInfo b;
   
   public CardItem$NormalCardInfo(qqstory_struct.NormalCardInfo paramNormalCardInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo = paramNormalCardInfo;
+    this.a = paramNormalCardInfo;
   }
   
   public CardItem$NormalCardInfo(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo = new qqstory_struct.NormalCardInfo();
+    this.a = new qqstory_struct.NormalCardInfo();
     try
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.mergeFrom(paramArrayOfByte);
+      this.a.mergeFrom(paramArrayOfByte);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -32,14 +32,14 @@ public class CardItem$NormalCardInfo
   
   public CardItem.CardVideoInfo a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    if (this.b == null)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.story_video_info.size() == 0) {
+      if (this.a.story_video_info.size() == 0) {
         return null;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NormalCardInfo.story_video_info.get(0));
+      this.b = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.a.story_video_info.get(0));
     }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+    return this.b;
   }
 }
 

@@ -7,14 +7,14 @@ import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
 public class ContactListAdapter$ViewTag
   extends FacePreloadHolder.ViewHolder
 {
-  public CheckBox a;
-  public Object a;
-  public TextView d;
   public TextView e;
+  public TextView f;
+  public CheckBox g;
+  public Object h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.ViewTag
  * JD-Core Version:    0.7.0.1
  */

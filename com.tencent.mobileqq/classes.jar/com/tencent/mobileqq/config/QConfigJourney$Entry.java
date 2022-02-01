@@ -3,24 +3,24 @@ package com.tencent.mobileqq.config;
 final class QConfigJourney$Entry
 {
   public int a;
-  public long a;
-  public String a;
   public String b;
-  private final String c;
+  public long c;
+  public String d;
+  private final String e;
   
   public QConfigJourney$Entry(int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
+    this.a = paramInt;
+    this.b = paramString1;
+    this.c = paramLong;
+    this.d = paramString2;
     paramString1 = new StringBuilder();
-    paramString1.append(this.jdField_a_of_type_Int);
+    paramString1.append(this.a);
     paramString1.append("-");
-    paramString1.append(this.jdField_a_of_type_JavaLangString);
+    paramString1.append(this.b);
     paramString1.append("-");
-    paramString1.append(this.jdField_a_of_type_Long);
-    this.c = paramString1.toString();
+    paramString1.append(this.c);
+    this.e = paramString1.toString();
   }
   
   public boolean equals(Object paramObject)
@@ -32,13 +32,13 @@ final class QConfigJourney$Entry
     }
     paramObject = (Entry)paramObject;
     bool1 = bool2;
-    if (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int)
+    if (this.a == paramObject.a)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))
+      if (this.b.equals(paramObject.b))
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+        if (this.c == paramObject.c) {
           bool1 = true;
         }
       }
@@ -48,21 +48,21 @@ final class QConfigJourney$Entry
   
   public int hashCode()
   {
-    return this.c.hashCode();
+    return this.e.hashCode();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Entry{type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", key='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", uin=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", path='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -70,7 +70,7 @@ final class QConfigJourney$Entry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.QConfigJourney.Entry
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ class QUSDragFloatingScreenView$1
       QLog.d("QUSDragFloatingScreenView", 2, "on empty click");
     }
     if (QUSDragFloatingScreenView.a(this.a) != null) {
-      QUSDragFloatingScreenView.a(this.a).d();
+      QUSDragFloatingScreenView.a(this.a).i();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView.1
  * JD-Core Version:    0.7.0.1
  */

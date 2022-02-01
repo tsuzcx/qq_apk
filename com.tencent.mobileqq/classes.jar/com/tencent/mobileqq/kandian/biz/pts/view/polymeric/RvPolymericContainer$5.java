@@ -11,12 +11,10 @@ class RvPolymericContainer$5
 {
   RvPolymericContainer$5(RvPolymericContainer paramRvPolymericContainer) {}
   
-  public void a() {}
-  
   public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    int i = RvPolymericContainer.a(this.a).a(RvPolymericContainer.a(this.a).b());
-    paramViewHolder = RvPolymericContainer.a(this.a).getEventCallback();
+    int i = RvPolymericContainer.f(this.a).a(RvPolymericContainer.d(this.a).i());
+    paramViewHolder = RvPolymericContainer.f(this.a).getEventCallback();
     if (paramViewHolder != null) {
       paramViewHolder.onPagerChange(i);
     }
@@ -24,10 +22,12 @@ class RvPolymericContainer$5
   }
   
   public void b(RecyclerView.ViewHolder paramViewHolder) {}
+  
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.RvPolymericContainer.5
  * JD-Core Version:    0.7.0.1
  */

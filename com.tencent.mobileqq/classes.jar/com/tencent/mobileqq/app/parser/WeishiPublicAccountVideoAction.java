@@ -21,8 +21,8 @@ public class WeishiPublicAccountVideoAction
     boolean bool = false;
     try
     {
-      if ("openPlayer".equals(this.jdField_a_of_type_JavaUtilHashMap.get("action"))) {
-        bool = ((IWSManager)QRoute.api(IWSManager.class)).enterWSVerticalPlayerPageForMiniApp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+      if ("openPlayer".equals(this.f.get("action"))) {
+        bool = ((IWSManager)QRoute.api(IWSManager.class)).enterWSVerticalPlayerPageForMiniApp(this.b, this.f);
       }
       return bool;
     }
@@ -32,14 +32,14 @@ public class WeishiPublicAccountVideoAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("WeishiPublicAccountVideoAction", 1, localStringBuilder.toString());
-      b_("WeishiPublicAccountVideoAction");
+      h_("WeishiPublicAccountVideoAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.WeishiPublicAccountVideoAction
  * JD-Core Version:    0.7.0.1
  */

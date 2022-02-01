@@ -17,14 +17,14 @@ class CommentViewItem$FollowingStatusSpan
   private TextPaint a(Paint paramPaint)
   {
     paramPaint = new TextPaint(paramPaint);
-    paramPaint.setTextSize(ViewUtils.d(10.0F));
+    paramPaint.setTextSize(ViewUtils.spToPx(10.0F));
     return paramPaint;
   }
   
   public void draw(@NotNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NotNull Paint paramPaint)
   {
     Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-    paramPaint.setTextSize(ViewUtils.b(10.0F));
+    paramPaint.setTextSize(ViewUtils.dpToPx(10.0F));
     paramPaint.setAntiAlias(true);
     RectF localRectF = new RectF();
     localRectF.left = ((int)paramFloat);
@@ -33,7 +33,7 @@ class CommentViewItem$FollowingStatusSpan
     localRectF.bottom = paramInt4;
     paramPaint.setColor(Color.parseColor("#0C000000"));
     paramPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawRoundRect(localRectF, ViewUtils.b(7.5F), ViewUtils.b(7.5F), paramPaint);
+    paramCanvas.drawRoundRect(localRectF, ViewUtils.dpToPx(7.5F), ViewUtils.dpToPx(7.5F), paramPaint);
     paramPaint.setColor(Color.parseColor("#4E525E"));
     paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt4 - localFontMetricsInt.descent, paramPaint);
   }
@@ -45,7 +45,7 @@ class CommentViewItem$FollowingStatusSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.CommentViewItem.FollowingStatusSpan
  * JD-Core Version:    0.7.0.1
  */

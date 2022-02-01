@@ -4,69 +4,69 @@ import android.view.View.OnClickListener;
 
 public class TitlebarStatus
 {
-  public int a;
-  public View.OnClickListener a;
-  public TitlebarBaseFragment a;
-  public String a;
   public boolean a;
-  public String b;
   public boolean b = true;
   public String c;
-  public boolean c = false;
   public String d;
   public String e;
+  public boolean f = false;
+  public String g;
+  public int h;
+  public String i;
+  public View.OnClickListener j;
+  public TitlebarBaseFragment k;
   
   public TitlebarStatus(TitlebarBaseFragment paramTitlebarBaseFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarBaseFragment = paramTitlebarBaseFragment;
+    this.k = paramTitlebarBaseFragment;
   }
   
   public TitlebarStatus a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.j = paramOnClickListener;
     return this;
   }
   
   public TitlebarStatus a(String paramString)
   {
-    this.d = paramString;
+    this.g = paramString;
     return this;
   }
   
   public TitlebarStatus a(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.f = paramBoolean;
     return this;
   }
   
   public void a()
   {
-    TitlebarBaseFragment localTitlebarBaseFragment = this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarBaseFragment;
+    TitlebarBaseFragment localTitlebarBaseFragment = this.k;
     if (localTitlebarBaseFragment != null) {
-      localTitlebarBaseFragment.t();
+      localTitlebarBaseFragment.E();
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
   }
   
   public TitlebarStatus b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
     return this;
   }
   
   public TitlebarStatus b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
     return this;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TitlebarStatus
  * JD-Core Version:    0.7.0.1
  */

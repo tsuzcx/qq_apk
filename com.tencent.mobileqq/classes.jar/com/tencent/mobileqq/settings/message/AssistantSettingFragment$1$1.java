@@ -12,20 +12,20 @@ class AssistantSettingFragment$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSettingsMessageAssistantSettingFragment$1.a.a.notifyDataSetChanged();
-    BaseApplication localBaseApplication = AssistantSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqSettingsMessageAssistantSettingFragment$1.a).getApp();
+    this.b.a.h.notifyDataSetChanged();
+    BaseApplication localBaseApplication = AssistantSettingFragment.c(this.b.a).getApp();
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2131700996;
+    if (this.a) {
+      i = 2131899018;
     } else {
-      i = 2131700992;
+      i = 2131899014;
     }
-    QQToast.a(localBaseApplication, HardCodeUtil.a(i), 0).a();
+    QQToast.makeText(localBaseApplication, HardCodeUtil.a(i), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

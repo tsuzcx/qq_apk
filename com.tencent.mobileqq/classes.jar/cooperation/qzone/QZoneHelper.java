@@ -281,7 +281,7 @@ public class QZoneHelper
     localStringBuilder.append("image");
     CACHEMAMAGER_IMAGE_FILE_CACHE_NAME = localStringBuilder.toString();
     sQZoneHCCode = 0;
-    STR_TIPS_FLOAT_ITEM_NOT_ALLOW_TO_SHOW = HardCodeUtil.a(2131711861);
+    STR_TIPS_FLOAT_ITEM_NOT_ALLOW_TO_SHOW = HardCodeUtil.a(2131909490);
     comboqzProtectEnable = false;
     gIsBestPerformanceDevice = false;
     gIsInitPerformanceDeviceState = false;
@@ -372,7 +372,7 @@ public class QZoneHelper
   
   public static boolean checkPackageInstalled(Context paramContext, String paramString)
   {
-    return PackageUtil.a(paramContext, paramString);
+    return PackageUtil.d(paramContext, paramString);
   }
   
   public static boolean checkQzoneEntranceProtectEnable()
@@ -500,7 +500,7 @@ public class QZoneHelper
     {
       if (ShortcutUtils.a(paramAppRuntime.getApp(), new String[] { paramString1 }))
       {
-        ToastUtil.a().a(2131689994);
+        ToastUtil.a().a(2131886636);
         return;
       }
       localObject = getShortcutIntent(paramAppRuntime, paramString1, paramLong);
@@ -508,7 +508,7 @@ public class QZoneHelper
       Thread.sleep(1000L);
       if (ShortcutUtils.a(paramAppRuntime.getApplication(), new String[] { paramString1 }))
       {
-        ToastUtil.a().a(2131691302);
+        ToastUtil.a().a(2131888253);
         return;
       }
       onCreateShortcutFailed(paramAppRuntime);
@@ -518,7 +518,7 @@ public class QZoneHelper
     ShortcutManager localShortcutManager = (ShortcutManager)((Context)localObject).getSystemService("shortcut");
     if (isShortcutCreated_O(paramString1, localShortcutManager))
     {
-      ToastUtil.a().a(2131689994);
+      ToastUtil.a().a(2131886636);
       return;
     }
     if (localShortcutManager.isRequestPinShortcutSupported())
@@ -595,64 +595,64 @@ public class QZoneHelper
   public static AppRuntime createQZoneAppInterface(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 994
-    //   3: invokestatic 999	cooperation/qzone/util/PerfTracer:traceStart	(Ljava/lang/String;)V
+    //   0: ldc_w 995
+    //   3: invokestatic 1000	cooperation/qzone/util/PerfTracer:traceStart	(Ljava/lang/String;)V
     //   6: aload_0
     //   7: ifnull +262 -> 269
     //   10: aload_1
     //   11: ifnonnull +5 -> 16
     //   14: aconst_null
     //   15: areturn
-    //   16: ldc_w 969
+    //   16: ldc_w 970
     //   19: iconst_1
-    //   20: ldc_w 1001
-    //   23: invokestatic 974	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   20: ldc_w 1002
+    //   23: invokestatic 975	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   26: ldc 60
-    //   28: invokestatic 950	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   28: invokestatic 951	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   31: astore_1
     //   32: aload_1
     //   33: astore_0
     //   34: goto +31 -> 65
-    //   37: ldc_w 952
+    //   37: ldc_w 953
     //   40: invokestatic 558	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   43: checkcast 952	com/tencent/qzonehub/api/IQzonePluginProxyActivity
+    //   43: checkcast 953	com/tencent/qzonehub/api/IQzonePluginProxyActivity
     //   46: aload_0
-    //   47: invokeinterface 1004 2 0
+    //   47: invokeinterface 1005 2 0
     //   52: astore_1
     //   53: aload_1
     //   54: ldc 60
-    //   56: invokevirtual 961	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   56: invokevirtual 962	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
     //   59: astore_0
     //   60: iconst_1
     //   61: aload_1
-    //   62: invokestatic 967	com/qq/jce/wup/BasicClassTypeUtil:setClassLoader	(ZLjava/lang/ClassLoader;)V
+    //   62: invokestatic 968	com/qq/jce/wup/BasicClassTypeUtil:setClassLoader	(ZLjava/lang/ClassLoader;)V
     //   65: aload_0
     //   66: ifnonnull +21 -> 87
-    //   69: ldc_w 969
+    //   69: ldc_w 970
     //   72: iconst_1
-    //   73: ldc_w 1006
-    //   76: invokestatic 974	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   79: ldc_w 994
-    //   82: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   73: ldc_w 1007
+    //   76: invokestatic 975	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   79: ldc_w 995
+    //   82: invokestatic 1010	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
     //   85: aconst_null
     //   86: areturn
     //   87: aload_0
-    //   88: invokevirtual 1012	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   88: invokevirtual 1013	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   91: astore_0
     //   92: aload_0
     //   93: ifnull +160 -> 253
     //   96: aload_0
     //   97: instanceof 620
     //   100: ifeq +153 -> 253
-    //   103: ldc_w 969
+    //   103: ldc_w 970
     //   106: iconst_1
-    //   107: ldc_w 1014
-    //   110: invokestatic 974	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   107: ldc_w 1015
+    //   110: invokestatic 975	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   113: aload_0
     //   114: checkcast 620	mqq/app/AppRuntime
     //   117: astore_0
-    //   118: ldc_w 994
-    //   121: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   118: ldc_w 995
+    //   121: invokestatic 1010	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
     //   124: aload_0
     //   125: areturn
     //   126: astore_0
@@ -673,51 +673,51 @@ public class QZoneHelper
     //   155: goto +87 -> 242
     //   158: ldc_w 428
     //   161: iconst_1
-    //   162: ldc_w 1015
+    //   162: ldc_w 1016
     //   165: aload_0
-    //   166: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   166: invokestatic 1019	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   169: goto +84 -> 253
     //   172: ldc_w 428
     //   175: iconst_1
-    //   176: ldc_w 1015
+    //   176: ldc_w 1016
     //   179: aload_0
-    //   180: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   180: invokestatic 1019	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   183: goto +70 -> 253
     //   186: ldc_w 428
     //   189: iconst_1
-    //   190: ldc_w 1015
+    //   190: ldc_w 1016
     //   193: aload_0
-    //   194: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   194: invokestatic 1019	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   197: goto +56 -> 253
     //   200: ldc_w 428
     //   203: iconst_1
-    //   204: ldc_w 1015
+    //   204: ldc_w 1016
     //   207: aload_0
-    //   208: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   208: invokestatic 1019	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   211: goto +42 -> 253
     //   214: ldc_w 428
     //   217: iconst_1
-    //   218: ldc_w 1015
+    //   218: ldc_w 1016
     //   221: aload_0
-    //   222: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   222: invokestatic 1019	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   225: goto +28 -> 253
     //   228: ldc_w 428
     //   231: iconst_1
-    //   232: ldc_w 1015
+    //   232: ldc_w 1016
     //   235: aload_0
-    //   236: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   236: invokestatic 1019	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   239: goto +14 -> 253
     //   242: ldc_w 428
     //   245: iconst_1
-    //   246: ldc_w 1015
+    //   246: ldc_w 1016
     //   249: aload_0
-    //   250: invokestatic 1018	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   253: ldc_w 994
-    //   256: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   250: invokestatic 1019	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   253: ldc_w 995
+    //   256: invokestatic 1010	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
     //   259: aconst_null
     //   260: areturn
-    //   261: ldc_w 994
-    //   264: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   261: ldc_w 995
+    //   264: invokestatic 1010	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
     //   267: aload_0
     //   268: athrow
     //   269: aconst_null
@@ -849,8 +849,8 @@ public class QZoneHelper
   public static AppRuntime createQZonePictureAppInterface(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 994
-    //   3: invokestatic 999	cooperation/qzone/util/PerfTracer:traceStart	(Ljava/lang/String;)V
+    //   0: ldc_w 995
+    //   3: invokestatic 1000	cooperation/qzone/util/PerfTracer:traceStart	(Ljava/lang/String;)V
     //   6: aload_0
     //   7: ifnull +201 -> 208
     //   10: aload_1
@@ -858,7 +858,7 @@ public class QZoneHelper
     //   14: aconst_null
     //   15: areturn
     //   16: ldc 69
-    //   18: invokestatic 950	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   18: invokestatic 951	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   21: astore_1
     //   22: aload_1
     //   23: astore_0
@@ -877,36 +877,36 @@ public class QZoneHelper
     //   48: goto +125 -> 173
     //   51: astore_0
     //   52: goto +128 -> 180
-    //   55: ldc_w 952
+    //   55: ldc_w 953
     //   58: invokestatic 558	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   61: checkcast 952	com/tencent/qzonehub/api/IQzonePluginProxyActivity
+    //   61: checkcast 953	com/tencent/qzonehub/api/IQzonePluginProxyActivity
     //   64: aload_0
-    //   65: invokeinterface 1004 2 0
+    //   65: invokeinterface 1005 2 0
     //   70: astore_1
     //   71: aload_1
     //   72: ldc 69
-    //   74: invokevirtual 961	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   74: invokevirtual 962	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
     //   77: astore_0
     //   78: iconst_1
     //   79: aload_1
-    //   80: invokestatic 967	com/qq/jce/wup/BasicClassTypeUtil:setClassLoader	(ZLjava/lang/ClassLoader;)V
+    //   80: invokestatic 968	com/qq/jce/wup/BasicClassTypeUtil:setClassLoader	(ZLjava/lang/ClassLoader;)V
     //   83: aload_0
     //   84: ifnonnull +21 -> 105
-    //   87: ldc_w 969
+    //   87: ldc_w 970
     //   90: iconst_1
-    //   91: ldc_w 1063
-    //   94: invokestatic 974	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   97: ldc_w 994
-    //   100: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   91: ldc_w 1064
+    //   94: invokestatic 975	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   97: ldc_w 995
+    //   100: invokestatic 1010	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
     //   103: aconst_null
     //   104: areturn
     //   105: aload_0
     //   106: iconst_0
-    //   107: anewarray 946	java/lang/Class
-    //   110: invokevirtual 978	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   107: anewarray 947	java/lang/Class
+    //   110: invokevirtual 979	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     //   113: iconst_0
     //   114: anewarray 4	java/lang/Object
-    //   117: invokevirtual 984	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   117: invokevirtual 985	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
     //   120: astore_0
     //   121: aload_0
     //   122: ifnull +62 -> 184
@@ -916,37 +916,37 @@ public class QZoneHelper
     //   132: aload_0
     //   133: checkcast 620	mqq/app/AppRuntime
     //   136: astore_0
-    //   137: ldc_w 994
-    //   140: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   137: ldc_w 995
+    //   140: invokestatic 1010	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
     //   143: aload_0
     //   144: areturn
     //   145: aload_0
     //   146: invokevirtual 678	java/lang/Exception:printStackTrace	()V
     //   149: goto +35 -> 184
     //   152: aload_0
-    //   153: invokevirtual 985	java/lang/NoSuchMethodException:printStackTrace	()V
+    //   153: invokevirtual 986	java/lang/NoSuchMethodException:printStackTrace	()V
     //   156: goto +28 -> 184
     //   159: aload_0
-    //   160: invokevirtual 986	java/lang/reflect/InvocationTargetException:printStackTrace	()V
+    //   160: invokevirtual 987	java/lang/reflect/InvocationTargetException:printStackTrace	()V
     //   163: goto +21 -> 184
     //   166: aload_0
-    //   167: invokevirtual 987	java/lang/InstantiationException:printStackTrace	()V
+    //   167: invokevirtual 988	java/lang/InstantiationException:printStackTrace	()V
     //   170: goto +14 -> 184
     //   173: aload_0
-    //   174: invokevirtual 988	java/lang/IllegalAccessException:printStackTrace	()V
+    //   174: invokevirtual 989	java/lang/IllegalAccessException:printStackTrace	()V
     //   177: goto +7 -> 184
     //   180: aload_0
-    //   181: invokevirtual 989	java/lang/IllegalArgumentException:printStackTrace	()V
-    //   184: ldc_w 994
-    //   187: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   181: invokevirtual 990	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   184: ldc_w 995
+    //   187: invokestatic 1010	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
     //   190: aconst_null
     //   191: areturn
     //   192: astore_0
     //   193: aload_0
-    //   194: invokevirtual 990	java/lang/ClassNotFoundException:printStackTrace	()V
+    //   194: invokevirtual 991	java/lang/ClassNotFoundException:printStackTrace	()V
     //   197: goto -13 -> 184
-    //   200: ldc_w 994
-    //   203: invokestatic 1009	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
+    //   200: ldc_w 995
+    //   203: invokestatic 1010	cooperation/qzone/util/PerfTracer:traceEnd	(Ljava/lang/String;)V
     //   206: aload_0
     //   207: athrow
     //   208: aconst_null
@@ -1293,7 +1293,7 @@ public class QZoneHelper
   {
     try
     {
-      boolean bool = ((QZoneManager)paramAppRuntime.getManager(((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQzoneManagerInQQManagerFactory())).b();
+      boolean bool = ((QZoneManager)paramAppRuntime.getManager(((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).getQzoneManagerInQQManagerFactory())).d();
       return bool;
     }
     catch (Throwable paramAppRuntime)
@@ -2067,7 +2067,7 @@ public class QZoneHelper
     ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
     localIntent.putExtra("startup_sceneid", 5);
     localIntent.putExtra("key_file_path", paramString);
-    localIntent.putExtra("key_title", HardCodeUtil.a(2131711860));
+    localIntent.putExtra("key_title", HardCodeUtil.a(2131909489));
     localIntent.putExtra("key_desc", "");
     localIntent.putExtra("key_need_save_draft", false);
     ((IQzonePluginProxyActivity)QRoute.api(IQzonePluginProxyActivity.class)).launchPluingActivityForResult(paramActivity, paramUserInfo.qzone_uin, localIntent, paramInt);
@@ -2942,7 +2942,7 @@ public class QZoneHelper
     ((StringBuilder)localObject1).append("_");
     ((StringBuilder)localObject1).append(paramString2);
     ((StringBuilder)localObject1).append("_record_time");
-    long l = LocalMultiProcConfig.getLong(MD5.a(((StringBuilder)localObject1).toString()), 0L);
+    long l = LocalMultiProcConfig.getLong(MD5.b(((StringBuilder)localObject1).toString()), 0L);
     if (QzoneConfig.getInstance().getConfig("PhotoUpload", "C2CAioAlbumCacheExpireTime", 60) * 60 * 1000L + l < System.currentTimeMillis())
     {
       paramString1 = new StringBuilder();
@@ -2958,19 +2958,19 @@ public class QZoneHelper
     ((StringBuilder)localObject1).append("_");
     ((StringBuilder)localObject1).append(paramString2);
     ((StringBuilder)localObject1).append("_album_id");
-    localObject1 = MD5.a(((StringBuilder)localObject1).toString());
+    localObject1 = MD5.b(((StringBuilder)localObject1).toString());
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(paramString1);
     ((StringBuilder)localObject2).append("_");
     ((StringBuilder)localObject2).append(paramString2);
     ((StringBuilder)localObject2).append("_album_title");
-    localObject2 = MD5.a(((StringBuilder)localObject2).toString());
+    localObject2 = MD5.b(((StringBuilder)localObject2).toString());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
     localStringBuilder.append("_");
     localStringBuilder.append(paramString2);
     localStringBuilder.append("_exist");
-    paramString1 = MD5.a(localStringBuilder.toString());
+    paramString1 = MD5.b(localStringBuilder.toString());
     paramString2 = LocalMultiProcConfig.getString((String)localObject1, "");
     localObject1 = LocalMultiProcConfig.getString((String)localObject2, "");
     boolean bool = LocalMultiProcConfig.getBool(paramString1, true);
@@ -2998,8 +2998,8 @@ public class QZoneHelper
   private static Intent getQzonePersonalAlbumActivityIntent(Context paramContext, Long paramLong, int paramInt)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_left_tab_title", paramContext.getString(2131717063));
-    localIntent.putExtra("key_rihgt_tab_title", paramContext.getString(2131717144));
+    localIntent.putExtra("key_left_tab_title", paramContext.getString(2131914536));
+    localIntent.putExtra("key_rihgt_tab_title", paramContext.getString(2131914617));
     localIntent.putExtra("key_album_owner_uin", paramLong);
     localIntent.putExtra("key_selected_tab", paramInt);
     putTimeRecord(localIntent);
@@ -3036,13 +3036,13 @@ public class QZoneHelper
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(paramString2);
     ((StringBuilder)localObject).append("_album_id");
-    localObject = MD5.a(((StringBuilder)localObject).toString());
+    localObject = MD5.b(((StringBuilder)localObject).toString());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
     localStringBuilder.append("_");
     localStringBuilder.append(paramString2);
     localStringBuilder.append("_album_title");
-    paramString1 = MD5.a(localStringBuilder.toString());
+    paramString1 = MD5.b(localStringBuilder.toString());
     paramString2 = LocalMultiProcConfig.getString((String)localObject, "");
     paramString1 = LocalMultiProcConfig.getString(paramString1, "");
     paramString2 = new BaseBusinessAlbumInfo(paramString2);
@@ -3165,7 +3165,7 @@ public class QZoneHelper
     int i = QzoneConfig.getInstance().getConfig("QzoneCover", "HtmlStandardCpuCore", 1);
     int j = QzoneConfig.getInstance().getConfig("QzoneCover", "HtmlStandardCpuFequency", 1100);
     int k = QzoneConfig.getInstance().getConfig("QzoneCover", "HtmlStandardRAMSize", 700);
-    long l2 = DeviceInfoUtil.b() * DeviceInfoUtil.b();
+    long l2 = DeviceInfoUtil.h() * DeviceInfoUtil.k();
     long l3 = i * j;
     boolean bool1;
     if ((l2 > 0L) && (l2 <= l3)) {
@@ -3193,9 +3193,9 @@ public class QZoneHelper
       localStringBuilder.append(",standardRAMSize=");
       localStringBuilder.append(k);
       localStringBuilder.append(",cpu count=");
-      localStringBuilder.append(DeviceInfoUtil.b());
+      localStringBuilder.append(DeviceInfoUtil.h());
       localStringBuilder.append(",cpu frequency=");
-      localStringBuilder.append(DeviceInfoUtil.b());
+      localStringBuilder.append(DeviceInfoUtil.k());
       localStringBuilder.append(",total memory=");
       localStringBuilder.append(l2);
       localStringBuilder.append(",use time=");
@@ -3653,19 +3653,19 @@ public class QZoneHelper
         } else {
           ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_FRIEND_FEEDS");
         }
-        ((Intent)localObject).putExtra("cpuNum", DeviceInfoUtil.b());
+        ((Intent)localObject).putExtra("cpuNum", DeviceInfoUtil.h());
         ((Intent)localObject).putExtra("key_can_set_layoutInfalter_factory", enableLayoutInflaterFactory());
       }
       catch (Exception paramString2)
       {
         paramString2.printStackTrace();
       }
-      if (DeviceOptSwitch.c)
+      if (DeviceOptSwitch.d)
       {
         if (QLog.isColorLevel()) {
           QLog.d("Perf", 2, "disable preload qzone process");
         }
-        DeviceOptSwitch.b = System.currentTimeMillis();
+        DeviceOptSwitch.m = System.currentTimeMillis();
         return;
       }
       ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).launchPluginService(paramBaseApplication, null, paramString1, (Intent)localObject);
@@ -3738,7 +3738,7 @@ public class QZoneHelper
           } else {
             ((Intent)localObject).setAction("com.qzone.intent.action.PRELOAD_FRIEND_FEEDS");
           }
-          ((Intent)localObject).putExtra("cpuNum", DeviceInfoUtil.b());
+          ((Intent)localObject).putExtra("cpuNum", DeviceInfoUtil.h());
           ((Intent)localObject).putExtra("key_can_set_layoutInfalter_factory", enableLayoutInflaterFactory());
           ((Intent)localObject).putExtra("key_is_keep_alive", paramBoolean);
         }
@@ -3746,12 +3746,12 @@ public class QZoneHelper
         {
           paramString.printStackTrace();
         }
-        if (DeviceOptSwitch.c)
+        if (DeviceOptSwitch.d)
         {
           if (QLog.isColorLevel()) {
             QLog.d("Perf", 2, "disable preload qzone process");
           }
-          DeviceOptSwitch.b = System.currentTimeMillis();
+          DeviceOptSwitch.m = System.currentTimeMillis();
           return;
         }
         ((IQZoneHelperProxy)QRoute.api(IQZoneHelperProxy.class)).launchPluginService(paramAppRuntime.getApp(), paramPreloadProcHitPluginSession, paramAppRuntime.getCurrentAccountUin(), (Intent)localObject);
@@ -3923,25 +3923,25 @@ public class QZoneHelper
       ((StringBuilder)localObject1).append("_");
       ((StringBuilder)localObject1).append(paramString2);
       ((StringBuilder)localObject1).append("_album_id");
-      localObject1 = MD5.a(((StringBuilder)localObject1).toString());
+      localObject1 = MD5.b(((StringBuilder)localObject1).toString());
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramString1);
       ((StringBuilder)localObject2).append("_");
       ((StringBuilder)localObject2).append(paramString2);
       ((StringBuilder)localObject2).append("_album_title");
-      localObject2 = MD5.a(((StringBuilder)localObject2).toString());
+      localObject2 = MD5.b(((StringBuilder)localObject2).toString());
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(paramString1);
       ((StringBuilder)localObject3).append("_");
       ((StringBuilder)localObject3).append(paramString2);
       ((StringBuilder)localObject3).append("_record_time");
-      localObject3 = MD5.a(((StringBuilder)localObject3).toString());
+      localObject3 = MD5.b(((StringBuilder)localObject3).toString());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString1);
       localStringBuilder.append("_");
       localStringBuilder.append(paramString2);
       localStringBuilder.append("_exist");
-      paramString1 = MD5.a(localStringBuilder.toString());
+      paramString1 = MD5.b(localStringBuilder.toString());
       LocalMultiProcConfig.putString((String)localObject1, paramString3);
       LocalMultiProcConfig.putString((String)localObject2, paramString4);
       LocalMultiProcConfig.putLong((String)localObject3, System.currentTimeMillis());
@@ -3969,13 +3969,13 @@ public class QZoneHelper
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(paramString2);
     ((StringBuilder)localObject).append("_album_id");
-    localObject = MD5.a(((StringBuilder)localObject).toString());
+    localObject = MD5.b(((StringBuilder)localObject).toString());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
     localStringBuilder.append("_");
     localStringBuilder.append(paramString2);
     localStringBuilder.append("_album_title");
-    paramString1 = MD5.a(localStringBuilder.toString());
+    paramString1 = MD5.b(localStringBuilder.toString());
     LocalMultiProcConfig.putString((String)localObject, paramString3);
     LocalMultiProcConfig.putString(paramString1, paramString4);
   }
@@ -3997,12 +3997,12 @@ public class QZoneHelper
   
   public static void showQzoneVipOriginalVideoDialog(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener)
   {
-    DialogUtil.a(paramActivity, 230).setMessage(2131717646).setPositiveButton(2131717174, new QZoneHelper.1()).setNegativeButton(2131719062, paramOnClickListener).show();
+    DialogUtil.a(paramActivity, 230).setMessage(2131915121).setPositiveButton(2131914647, new QZoneHelper.1()).setNegativeButton(2131916598, paramOnClickListener).show();
   }
   
   public static void showQzoneVipOriginalVideoDialogForUpload(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener)
   {
-    DialogUtil.a(paramActivity, 230).setMessage(2131717647).setPositiveButton(2131719062, paramOnClickListener).setNegativeButton(2131717174, new QZoneHelper.2()).show();
+    DialogUtil.a(paramActivity, 230).setMessage(2131915122).setPositiveButton(2131916598, paramOnClickListener).setNegativeButton(2131914647, new QZoneHelper.2()).show();
   }
   
   public static void startTranslucentBrowserActivityForResult(Context paramContext, String paramString1, int paramInt, Bundle paramBundle, String paramString2)
@@ -4108,7 +4108,7 @@ public class QZoneHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper
  * JD-Core Version:    0.7.0.1
  */

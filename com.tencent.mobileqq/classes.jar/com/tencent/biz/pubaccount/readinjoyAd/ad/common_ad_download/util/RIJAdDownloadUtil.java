@@ -37,7 +37,7 @@ public final class RIJAdDownloadUtil
       AdvertisementExtInfo localAdvertisementExtInfo = paramAdvertisementInfo.mAdvertisementExtInfo;
       int i;
       if (localAdvertisementExtInfo != null) {
-        i = localAdvertisementExtInfo.j;
+        i = localAdvertisementExtInfo.o;
       } else {
         i = 0;
       }
@@ -133,7 +133,7 @@ public final class RIJAdDownloadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

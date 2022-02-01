@@ -16,18 +16,18 @@ class TianshuBigInsertPage$3
   
   public void onClick(View paramView)
   {
-    TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage);
-    if ((TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage) != null) && (TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage).a() != null) && (((BaseActivity)TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage).a()).app != null) && (TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage) != null))
+    TianshuBigInsertPage.a(this.b);
+    if ((TianshuBigInsertPage.b(this.b) != null) && (TianshuBigInsertPage.b(this.b).P() != null) && (((BaseActivity)TianshuBigInsertPage.b(this.b).P()).app != null) && (TianshuBigInsertPage.c(this.b) != null))
     {
-      TianshuAdUtils.a(((BaseActivity)TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage).a()).app, TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage).a(), this.jdField_a_of_type_JavaLangString, 4005);
-      TianshuAdUtils.a(((BaseActivity)TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage).a()).app, 102, String.valueOf(TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage).iAdId.get()), TianshuBigInsertPage.a(this.jdField_a_of_type_CooperationVipAdTianshuBigInsertPage).traceinfo.get());
+      TianshuAdUtils.a(((BaseActivity)TianshuBigInsertPage.b(this.b).P()).app, TianshuBigInsertPage.b(this.b).P(), this.a, 4005);
+      TianshuAdUtils.a(((BaseActivity)TianshuBigInsertPage.b(this.b).P()).app, 102, String.valueOf(TianshuBigInsertPage.c(this.b).iAdId.get()), TianshuBigInsertPage.c(this.b).traceinfo.get());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBigInsertPage.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class QfileEditBottomBar$8
   
   public void a(List paramList)
   {
-    QfileEditBottomBar.a(this.a).a().forward(paramList);
+    QfileEditBottomBar.b(this.a).j().forward(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar.8
  * JD-Core Version:    0.7.0.1
  */

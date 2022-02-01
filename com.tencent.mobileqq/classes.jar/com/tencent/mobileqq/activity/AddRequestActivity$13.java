@@ -15,16 +15,16 @@ class AddRequestActivity$13
     if (paramBoolean)
     {
       paramString = this.a;
-      paramString.showToast(2130839588, paramString.getString(2131690752));
+      paramString.showToast(2130839806, paramString.getString(2131887672));
       return;
     }
     paramString = this.a;
-    paramString.showToast(2130839573, paramString.getString(2131690750));
+    paramString.showToast(2130839791, paramString.getString(2131887670));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.13
  * JD-Core Version:    0.7.0.1
  */

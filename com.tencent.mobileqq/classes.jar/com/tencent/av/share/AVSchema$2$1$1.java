@@ -11,12 +11,12 @@ class AVSchema$2$1$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ShareChatReport.i();
-    this.a.jdField_a_of_type_ComTencentAvShareAVSchema$2.a.b(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentAvShareAVSchema$2.a.a);
+    this.a.c.a.b(this.a.b, this.a.c.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.2.1.1
  * JD-Core Version:    0.7.0.1
  */

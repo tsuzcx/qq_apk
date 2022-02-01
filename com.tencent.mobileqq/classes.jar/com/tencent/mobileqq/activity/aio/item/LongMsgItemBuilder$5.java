@@ -26,7 +26,7 @@ class LongMsgItemBuilder$5
   
   public void onClick(View paramView)
   {
-    if (!this.a.a())
+    if (!this.a.c())
     {
       Object localObject = AIOUtils.a(paramView);
       if (!(localObject instanceof MessageForLongMsg))
@@ -38,18 +38,18 @@ class LongMsgItemBuilder$5
       else
       {
         localObject = (MessageForLongMsg)localObject;
-        if ((((MessageForLongMsg)localObject).mSourceMsgInfo != null) && ((this.a.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)))
+        if ((((MessageForLongMsg)localObject).mSourceMsgInfo != null) && ((this.a.e instanceof BaseActivity)))
         {
           if (QLog.isColorLevel()) {
             QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
           }
-          BaseChatPie localBaseChatPie = ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-          Scroller localScroller = localBaseChatPie.b().a().a();
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0) && ((localBaseChatPie instanceof FriendChatPie)))
+          BaseChatPie localBaseChatPie = ((BaseActivity)this.a.e).getChatFragment().k();
+          Scroller localScroller = localBaseChatPie.bv().e().d();
+          if ((this.a.f.a == 0) && ((localBaseChatPie instanceof FriendChatPie)))
           {
-            ((FriendScroller)localBaseChatPie.b().a().a()).a(22, ((MessageForLongMsg)localObject).mSourceMsgInfo.origUid, ((MessageForLongMsg)localObject).mSourceMsgInfo.mSourceMsgTime);
+            ((FriendScroller)localBaseChatPie.bv().e().d()).a(22, ((MessageForLongMsg)localObject).mSourceMsgInfo.origUid, ((MessageForLongMsg)localObject).mSourceMsgInfo.mSourceMsgTime);
           }
-          else if (localBaseChatPie.e())
+          else if (localBaseChatPie.ab())
           {
             localScroller.a(22, ((MessageForLongMsg)localObject).mSourceMsgInfo.mSourceMsgSeq, (int)(((MessageForLongMsg)localObject).shmsgseq - ((MessageForLongMsg)localObject).mSourceMsgInfo.mSourceMsgSeq));
             MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", ((MessageForLongMsg)localObject).frienduin, (ChatMessage)localObject);
@@ -62,7 +62,7 @@ class LongMsgItemBuilder$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

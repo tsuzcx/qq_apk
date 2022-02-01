@@ -58,152 +58,6 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 public class GdtAdUtil
 {
-  public static stSimpleMetaGdtAdInfo a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if (paramstSimpleMetaFeed == null) {
-      return null;
-    }
-    stSimpleMetaGdtAdInfo localstSimpleMetaGdtAdInfo = new stSimpleMetaGdtAdInfo();
-    localstSimpleMetaGdtAdInfo.floatingLayerCardStyle = new stFloatingLayerCardStyle();
-    localstSimpleMetaGdtAdInfo.bottomButton = new s_button();
-    localstSimpleMetaGdtAdInfo.bottomButton.stMapABTest = new HashMap();
-    localstSimpleMetaGdtAdInfo.user = new stSimpleMetaPerson();
-    localstSimpleMetaGdtAdInfo.pictureUrl = new stImgReplacement();
-    localstSimpleMetaGdtAdInfo.left_top_button = new stNewIconStyle();
-    Object localObject2 = a(paramstSimpleMetaFeed);
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localstSimpleMetaGdtAdInfo.isWeishiGdtTangramAdv = true;
-        localstSimpleMetaGdtAdInfo.gdtTangramAdJson = paramstSimpleMetaFeed.gdt_ad_info;
-        localstSimpleMetaGdtAdInfo.cellId = paramstSimpleMetaFeed.id;
-        localstSimpleMetaGdtAdInfo.floatingLayerCardStyle.cardType = 1001;
-        Object localObject1 = paramstSimpleMetaFeed.tags;
-        if (((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).product_type.get() == 12)
-        {
-          localstSimpleMetaGdtAdInfo.cookie = new HashMap();
-          localstSimpleMetaGdtAdInfo.cookie.put(Integer.valueOf(0), "app");
-          if (((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).app_info != null) {
-            localstSimpleMetaGdtAdInfo.appid = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).app_info.app_package_name.get();
-          }
-          localstSimpleMetaGdtAdInfo.bottomButton.text = HardCodeUtil.a(2131716100);
-        }
-        else
-        {
-          localstSimpleMetaGdtAdInfo.bottomButton.text = HardCodeUtil.a(2131716102);
-        }
-        localstSimpleMetaGdtAdInfo.bottomButton.button_background_img = "https://qzonestyle.gtimg.cn/aoi/sola/20180427113436_0gqVu4ZoCd.png";
-        localstSimpleMetaGdtAdInfo.bottomButton.stMapABTest.put(Integer.valueOf(0), Integer.valueOf(1));
-        localstSimpleMetaGdtAdInfo.playType = 2;
-        localstSimpleMetaGdtAdInfo.videoType = 1001;
-        Object localObject3 = paramstSimpleMetaFeed.video;
-        if (localObject3 != null) {
-          localstSimpleMetaGdtAdInfo.videoTime = ((stMetaUgcVideoSeg)localObject3).duration;
-        }
-        localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).exp_info;
-        if (localObject3 != null) {
-          ((qq_ad_get.QQAdGetRsp.AdInfo.ExpInfo)localObject3).qq_game_video_ad_style.get();
-        }
-        localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).display_info;
-        if (localObject3 != null)
-        {
-          localObject4 = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo)localObject3).advertiser_info;
-          if (localObject4 != null)
-          {
-            localstSimpleMetaGdtAdInfo.user.nick = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject4).corporate_image_name.get();
-            localstSimpleMetaGdtAdInfo.user.avatar = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject4).corporate_logo.get();
-          }
-          localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo)localObject3).video_info;
-          if (localObject3 != null)
-          {
-            localstSimpleMetaGdtAdInfo.video_url = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).video_url.get();
-            localstSimpleMetaGdtAdInfo.videoId = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).tencent_video_id.get();
-            localstSimpleMetaGdtAdInfo.videoClickType = 1;
-          }
-          localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).display_info.basic_info;
-          if (localObject3 != null)
-          {
-            localstSimpleMetaGdtAdInfo.summary = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).txt.get();
-            if (((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).img != null)
-            {
-              localstSimpleMetaGdtAdInfo.pictureUrl.img = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).img.get();
-              localstSimpleMetaGdtAdInfo.pictureUrl.width = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).pic_width.get();
-              localstSimpleMetaGdtAdInfo.pictureUrl.height = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).pic_height.get();
-            }
-          }
-          localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).display_info.button_info.get();
-          if ((localObject3 != null) && (((List)localObject3).size() > 0))
-          {
-            i = 0;
-            if (i < ((List)localObject3).size())
-            {
-              localObject4 = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)((List)localObject3).get(i);
-              if ((localObject4 == null) || (((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject4).pos == null) || (((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject4).pos.get() != 2)) {
-                break label905;
-              }
-              localstSimpleMetaGdtAdInfo.bottomButton.text = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject4).txt.get();
-              break label905;
-            }
-          }
-        }
-        localstSimpleMetaGdtAdInfo.customDroplist = new ArrayList();
-        localObject3 = new s_droplist_option();
-        ((s_droplist_option)localObject3).actiontype = 40;
-        ((s_droplist_option)localObject3).iconurl = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112610_8Virz5m93z.png";
-        ((s_droplist_option)localObject3).optext = HardCodeUtil.a(2131716105);
-        ((s_droplist_option)localObject3).reportattach = "option_actiontype=3&";
-        ((s_droplist_option)localObject3).reporttype = 2001;
-        Object localObject4 = new s_droplist_option();
-        ((s_droplist_option)localObject4).actiontype = 2;
-        ((s_droplist_option)localObject4).iconurl = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112616_AcTt0SrZ9t.png";
-        ((s_droplist_option)localObject4).jumpurl = " https://e.qq.com/mo/?from=wsgzh_mo&pid=7020009868695958&aid=763671&tid=iaedv5jxjoynq01";
-        ((s_droplist_option)localObject4).optext = HardCodeUtil.a(2131716103);
-        ((s_droplist_option)localObject4).reportattach = "option_actiontype=6&";
-        localstSimpleMetaGdtAdInfo.customDroplist.add(localObject3);
-        localstSimpleMetaGdtAdInfo.customDroplist.add(localObject4);
-        localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).dest_info;
-        if (localObject3 != null)
-        {
-          localstSimpleMetaGdtAdInfo.canvasData = ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).canvas_json.get();
-          localstSimpleMetaGdtAdInfo.dest_url = ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).landing_page.get();
-          localstSimpleMetaGdtAdInfo.dest_type = ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).dest_type.get();
-        }
-        localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).report_info;
-        if (localObject3 != null)
-        {
-          localstSimpleMetaGdtAdInfo.reportUrl = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject3).negative_feedback_url.get();
-          localstSimpleMetaGdtAdInfo.actionUrl = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject3).click_url.get();
-          localstSimpleMetaGdtAdInfo.impressionUrl = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject3).exposure_url.get();
-          localstSimpleMetaGdtAdInfo.isGdtAdImpressionReport = false;
-          localstSimpleMetaGdtAdInfo.isGdtAdOriginalImpressionReport = false;
-        }
-        localObject2 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).app_info;
-        if (localObject2 != null)
-        {
-          localstSimpleMetaGdtAdInfo.rankCurrentWithHalfStar = ((qq_ad_get.QQAdGetRsp.AdInfo.AppInfo)localObject2).app_score_num.get();
-          localstSimpleMetaGdtAdInfo.schemaPageUrl = ((qq_ad_get.QQAdGetRsp.AdInfo.AppInfo)localObject2).customized_invoke_url.get();
-          localstSimpleMetaGdtAdInfo.appid = ((qq_ad_get.QQAdGetRsp.AdInfo.AppInfo)localObject2).app_package_name.get();
-        }
-        if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
-        {
-          localObject1 = ((stMetaTag)((ArrayList)localObject1).get(0)).toString();
-          localstSimpleMetaGdtAdInfo.left_top_button.img_url = ((String)localObject1);
-        }
-        localstSimpleMetaGdtAdInfo.mapPassBack = paramstSimpleMetaFeed.map_pass_back;
-        return localstSimpleMetaGdtAdInfo;
-      }
-      catch (Exception paramstSimpleMetaFeed)
-      {
-        paramstSimpleMetaFeed.printStackTrace();
-        return localstSimpleMetaGdtAdInfo;
-      }
-      label905:
-      i += 1;
-    }
-  }
-  
   static String a(stSimpleMetaGdtAdInfo paramstSimpleMetaGdtAdInfo)
   {
     if ((paramstSimpleMetaGdtAdInfo != null) && (!TextUtils.isEmpty(paramstSimpleMetaGdtAdInfo.gdtTangramAdJson))) {
@@ -221,96 +75,6 @@ public class GdtAdUtil
       }
     }
     return "";
-  }
-  
-  protected static String a(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    stSimpleMetaGdtAdInfo localstSimpleMetaGdtAdInfo = a(paramstSimpleMetaFeed);
-    int j = 0;
-    if ((localstSimpleMetaGdtAdInfo != null) && (localstSimpleMetaGdtAdInfo.cookie != null)) {
-      paramstSimpleMetaFeed = (String)localstSimpleMetaGdtAdInfo.cookie.get(Integer.valueOf(0));
-    } else {
-      paramstSimpleMetaFeed = "";
-    }
-    int i = j;
-    if (!TextUtils.isEmpty(paramstSimpleMetaFeed))
-    {
-      i = j;
-      if ("app".equalsIgnoreCase(paramstSimpleMetaFeed)) {
-        i = 1;
-      }
-    }
-    if ((localstSimpleMetaGdtAdInfo != null) && (i != 0) && (PackageUtil.a(paramContext, localstSimpleMetaGdtAdInfo.appid))) {
-      return "打开";
-    }
-    if ((localstSimpleMetaGdtAdInfo != null) && (localstSimpleMetaGdtAdInfo.bottomButton != null) && (!TextUtils.isEmpty(localstSimpleMetaGdtAdInfo.bottomButton.text))) {
-      return localstSimpleMetaGdtAdInfo.bottomButton.text;
-    }
-    if (i != 0) {
-      return "立即下载";
-    }
-    return "了解详情";
-  }
-  
-  private static String a(Context paramContext, WSVerticalItemData paramWSVerticalItemData)
-  {
-    String str = "";
-    Object localObject = str;
-    if (paramWSVerticalItemData != null)
-    {
-      localObject = str;
-      if ((paramWSVerticalItemData.a() instanceof stSimpleMetaFeed))
-      {
-        paramWSVerticalItemData = paramWSVerticalItemData.a();
-        qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = a(paramWSVerticalItemData);
-        localObject = str;
-        if (localAdInfo != null)
-        {
-          qq_ad_get.QQAdGetRsp.AdInfo.AppInfo localAppInfo = localAdInfo.app_info;
-          localObject = str;
-          if (localAdInfo.product_type != null)
-          {
-            localObject = str;
-            if (localAppInfo != null)
-            {
-              localObject = str;
-              if (localAppInfo.app_package_name != null)
-              {
-                try
-                {
-                  paramWSVerticalItemData = new JSONObject(paramWSVerticalItemData.gdt_ad_info).optJSONArray("pos_ads_info").getJSONObject(0).optJSONArray("ads_info").getJSONObject(0).optJSONObject("report_info").optString("original_exposure_url");
-                  try
-                  {
-                    if (!TextUtils.isEmpty(paramWSVerticalItemData))
-                    {
-                      paramContext = GdtOriginalExposureReporter.a(paramWSVerticalItemData, localAdInfo.product_type.get(), paramContext, localAppInfo.app_package_name.get());
-                      return paramContext;
-                    }
-                    return paramWSVerticalItemData;
-                  }
-                  catch (Throwable localThrowable)
-                  {
-                    paramContext = paramWSVerticalItemData;
-                    paramWSVerticalItemData = localThrowable;
-                  }
-                  localStringBuilder = new StringBuilder();
-                }
-                catch (Throwable paramWSVerticalItemData)
-                {
-                  paramContext = localThrowable;
-                }
-                StringBuilder localStringBuilder;
-                localStringBuilder.append("getOriginalIExposureUrl error: ");
-                localStringBuilder.append(paramWSVerticalItemData);
-                WSLog.d("GdtAdUtil", localStringBuilder.toString());
-                localObject = paramContext;
-              }
-            }
-          }
-        }
-      }
-    }
-    return localObject;
   }
   
   public static String a(String paramString, stSimpleMetaGdtAdInfo paramstSimpleMetaGdtAdInfo)
@@ -356,29 +120,6 @@ public class GdtAdUtil
       }
     }
     return null;
-  }
-  
-  public static void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if (paramstSimpleMetaFeed != null) {
-      try
-      {
-        paramstSimpleMetaFeed = a(paramstSimpleMetaFeed);
-        if (paramstSimpleMetaFeed != null)
-        {
-          paramstSimpleMetaFeed = new GdtAd(paramstSimpleMetaFeed);
-          GdtPreLoader.a().a(paramstSimpleMetaFeed);
-          return;
-        }
-      }
-      catch (Throwable paramstSimpleMetaFeed)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("adPreLoad error: ");
-        localStringBuilder.append(paramstSimpleMetaFeed);
-        WSLog.d("GdtAdUtil", localStringBuilder.toString());
-      }
-    }
   }
   
   public static void a(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
@@ -429,14 +170,14 @@ public class GdtAdUtil
       paramstSimpleMetaFeed = new s_droplist_option();
       paramstSimpleMetaFeed.actiontype = 40;
       paramstSimpleMetaFeed.iconurl = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112610_8Virz5m93z.png";
-      paramstSimpleMetaFeed.optext = HardCodeUtil.a(2131716105);
+      paramstSimpleMetaFeed.optext = HardCodeUtil.a(2131913554);
       paramstSimpleMetaFeed.reportattach = "option_actiontype=3&";
       paramstSimpleMetaFeed.reporttype = 2001;
       s_droplist_option locals_droplist_option = new s_droplist_option();
       locals_droplist_option.actiontype = 2;
       locals_droplist_option.iconurl = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112616_AcTt0SrZ9t.png";
       locals_droplist_option.jumpurl = " https://e.qq.com/mo/?from=wsgzh_mo&pid=7020009868695958&aid=763671&tid=iaedv5jxjoynq01";
-      locals_droplist_option.optext = HardCodeUtil.a(2131716103);
+      locals_droplist_option.optext = HardCodeUtil.a(2131913552);
       locals_droplist_option.reportattach = "option_actiontype=6&";
       ((stSimpleMetaGdtAdInfo)localObject).customDroplist.add(paramstSimpleMetaFeed);
       ((stSimpleMetaGdtAdInfo)localObject).customDroplist.add(locals_droplist_option);
@@ -548,20 +289,20 @@ public class GdtAdUtil
     try
     {
       paramWSPlayerParam = new GdtHandler.Params();
-      paramWSPlayerParam.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
-      paramWSPlayerParam.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramstSimpleMetaFeed);
-      paramWSPlayerParam.jdField_a_of_type_Boolean = true;
-      paramWSPlayerParam.jdField_a_of_type_Int = 8;
-      paramWSPlayerParam.jdField_b_of_type_Int = 6;
-      paramWSPlayerParam.jdField_b_of_type_Boolean = paramBoolean;
-      paramWSPlayerParam.jdField_c_of_type_Int = 7;
-      paramWSPlayerParam.jdField_c_of_type_Boolean = false;
-      paramWSPlayerParam.d = false;
-      paramWSPlayerParam.e = false;
-      paramWSPlayerParam.f = true;
-      paramWSPlayerParam.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramGdtAppReceiver);
-      paramWSPlayerParam.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      paramWSPlayerParam.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_gzh_weishi");
+      paramWSPlayerParam.r = new WeakReference((Activity)paramContext);
+      paramWSPlayerParam.a = new GdtAd(paramstSimpleMetaFeed);
+      paramWSPlayerParam.b = true;
+      paramWSPlayerParam.c = 8;
+      paramWSPlayerParam.d = 6;
+      paramWSPlayerParam.e = paramBoolean;
+      paramWSPlayerParam.q = 7;
+      paramWSPlayerParam.f = false;
+      paramWSPlayerParam.g = false;
+      paramWSPlayerParam.i = false;
+      paramWSPlayerParam.l = true;
+      paramWSPlayerParam.s = new WeakReference(paramGdtAppReceiver);
+      paramWSPlayerParam.p = new Bundle();
+      paramWSPlayerParam.p.putString("big_brother_ref_source_key", "biz_src_gzh_weishi");
       GdtHandler.a(paramWSPlayerParam);
       return;
     }
@@ -573,10 +314,10 @@ public class GdtAdUtil
   
   public static void a(Context paramContext, WSVerticalItemData paramWSVerticalItemData)
   {
-    if ((paramWSVerticalItemData != null) && ((paramWSVerticalItemData.a() instanceof stSimpleMetaFeed)))
+    if ((paramWSVerticalItemData != null) && ((paramWSVerticalItemData.b() instanceof stSimpleMetaFeed)))
     {
-      paramContext = paramWSVerticalItemData.a();
-      paramWSVerticalItemData = paramWSVerticalItemData.a();
+      paramContext = paramWSVerticalItemData.b();
+      paramWSVerticalItemData = paramWSVerticalItemData.e();
       if ((paramContext != null) && (paramContext.gdt_ad_type == 1) && (paramContext.gdt_ad_info != null) && (paramWSVerticalItemData != null) && (!TextUtils.isEmpty(paramWSVerticalItemData.impressionUrl)) && (!paramWSVerticalItemData.isGdtAdImpressionReport))
       {
         GdtReporter.doCgiReport(paramWSVerticalItemData.impressionUrl);
@@ -616,6 +357,152 @@ public class GdtAdUtil
     }
   }
   
+  public static stSimpleMetaGdtAdInfo b(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if (paramstSimpleMetaFeed == null) {
+      return null;
+    }
+    stSimpleMetaGdtAdInfo localstSimpleMetaGdtAdInfo = new stSimpleMetaGdtAdInfo();
+    localstSimpleMetaGdtAdInfo.floatingLayerCardStyle = new stFloatingLayerCardStyle();
+    localstSimpleMetaGdtAdInfo.bottomButton = new s_button();
+    localstSimpleMetaGdtAdInfo.bottomButton.stMapABTest = new HashMap();
+    localstSimpleMetaGdtAdInfo.user = new stSimpleMetaPerson();
+    localstSimpleMetaGdtAdInfo.pictureUrl = new stImgReplacement();
+    localstSimpleMetaGdtAdInfo.left_top_button = new stNewIconStyle();
+    Object localObject2 = a(paramstSimpleMetaFeed);
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localstSimpleMetaGdtAdInfo.isWeishiGdtTangramAdv = true;
+        localstSimpleMetaGdtAdInfo.gdtTangramAdJson = paramstSimpleMetaFeed.gdt_ad_info;
+        localstSimpleMetaGdtAdInfo.cellId = paramstSimpleMetaFeed.id;
+        localstSimpleMetaGdtAdInfo.floatingLayerCardStyle.cardType = 1001;
+        Object localObject1 = paramstSimpleMetaFeed.tags;
+        if (((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).product_type.get() == 12)
+        {
+          localstSimpleMetaGdtAdInfo.cookie = new HashMap();
+          localstSimpleMetaGdtAdInfo.cookie.put(Integer.valueOf(0), "app");
+          if (((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).app_info != null) {
+            localstSimpleMetaGdtAdInfo.appid = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).app_info.app_package_name.get();
+          }
+          localstSimpleMetaGdtAdInfo.bottomButton.text = HardCodeUtil.a(2131913549);
+        }
+        else
+        {
+          localstSimpleMetaGdtAdInfo.bottomButton.text = HardCodeUtil.a(2131913551);
+        }
+        localstSimpleMetaGdtAdInfo.bottomButton.button_background_img = "https://qzonestyle.gtimg.cn/aoi/sola/20180427113436_0gqVu4ZoCd.png";
+        localstSimpleMetaGdtAdInfo.bottomButton.stMapABTest.put(Integer.valueOf(0), Integer.valueOf(1));
+        localstSimpleMetaGdtAdInfo.playType = 2;
+        localstSimpleMetaGdtAdInfo.videoType = 1001;
+        Object localObject3 = paramstSimpleMetaFeed.video;
+        if (localObject3 != null) {
+          localstSimpleMetaGdtAdInfo.videoTime = ((stMetaUgcVideoSeg)localObject3).duration;
+        }
+        localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).exp_info;
+        if (localObject3 != null) {
+          ((qq_ad_get.QQAdGetRsp.AdInfo.ExpInfo)localObject3).qq_game_video_ad_style.get();
+        }
+        localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).display_info;
+        if (localObject3 != null)
+        {
+          localObject4 = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo)localObject3).advertiser_info;
+          if (localObject4 != null)
+          {
+            localstSimpleMetaGdtAdInfo.user.nick = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject4).corporate_image_name.get();
+            localstSimpleMetaGdtAdInfo.user.avatar = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)localObject4).corporate_logo.get();
+          }
+          localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo)localObject3).video_info;
+          if (localObject3 != null)
+          {
+            localstSimpleMetaGdtAdInfo.video_url = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).video_url.get();
+            localstSimpleMetaGdtAdInfo.videoId = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo)localObject3).tencent_video_id.get();
+            localstSimpleMetaGdtAdInfo.videoClickType = 1;
+          }
+          localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).display_info.basic_info;
+          if (localObject3 != null)
+          {
+            localstSimpleMetaGdtAdInfo.summary = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).txt.get();
+            if (((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).img != null)
+            {
+              localstSimpleMetaGdtAdInfo.pictureUrl.img = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).img.get();
+              localstSimpleMetaGdtAdInfo.pictureUrl.width = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).pic_width.get();
+              localstSimpleMetaGdtAdInfo.pictureUrl.height = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject3).pic_height.get();
+            }
+          }
+          localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).display_info.button_info.get();
+          if ((localObject3 != null) && (((List)localObject3).size() > 0))
+          {
+            i = 0;
+            if (i < ((List)localObject3).size())
+            {
+              localObject4 = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)((List)localObject3).get(i);
+              if ((localObject4 == null) || (((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject4).pos == null) || (((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject4).pos.get() != 2)) {
+                break label902;
+              }
+              localstSimpleMetaGdtAdInfo.bottomButton.text = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject4).txt.get();
+              break label902;
+            }
+          }
+        }
+        localstSimpleMetaGdtAdInfo.customDroplist = new ArrayList();
+        localObject3 = new s_droplist_option();
+        ((s_droplist_option)localObject3).actiontype = 40;
+        ((s_droplist_option)localObject3).iconurl = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112610_8Virz5m93z.png";
+        ((s_droplist_option)localObject3).optext = HardCodeUtil.a(2131913554);
+        ((s_droplist_option)localObject3).reportattach = "option_actiontype=3&";
+        ((s_droplist_option)localObject3).reporttype = 2001;
+        Object localObject4 = new s_droplist_option();
+        ((s_droplist_option)localObject4).actiontype = 2;
+        ((s_droplist_option)localObject4).iconurl = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112616_AcTt0SrZ9t.png";
+        ((s_droplist_option)localObject4).jumpurl = " https://e.qq.com/mo/?from=wsgzh_mo&pid=7020009868695958&aid=763671&tid=iaedv5jxjoynq01";
+        ((s_droplist_option)localObject4).optext = HardCodeUtil.a(2131913552);
+        ((s_droplist_option)localObject4).reportattach = "option_actiontype=6&";
+        localstSimpleMetaGdtAdInfo.customDroplist.add(localObject3);
+        localstSimpleMetaGdtAdInfo.customDroplist.add(localObject4);
+        localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).dest_info;
+        if (localObject3 != null)
+        {
+          localstSimpleMetaGdtAdInfo.canvasData = ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).canvas_json.get();
+          localstSimpleMetaGdtAdInfo.dest_url = ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).landing_page.get();
+          localstSimpleMetaGdtAdInfo.dest_type = ((qq_ad_get.QQAdGetRsp.AdInfo.DestInfo)localObject3).dest_type.get();
+        }
+        localObject3 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).report_info;
+        if (localObject3 != null)
+        {
+          localstSimpleMetaGdtAdInfo.reportUrl = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject3).negative_feedback_url.get();
+          localstSimpleMetaGdtAdInfo.actionUrl = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject3).click_url.get();
+          localstSimpleMetaGdtAdInfo.impressionUrl = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject3).exposure_url.get();
+          localstSimpleMetaGdtAdInfo.isGdtAdImpressionReport = false;
+          localstSimpleMetaGdtAdInfo.isGdtAdOriginalImpressionReport = false;
+        }
+        localObject2 = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject2).app_info;
+        if (localObject2 != null)
+        {
+          localstSimpleMetaGdtAdInfo.rankCurrentWithHalfStar = ((qq_ad_get.QQAdGetRsp.AdInfo.AppInfo)localObject2).app_score_num.get();
+          localstSimpleMetaGdtAdInfo.schemaPageUrl = ((qq_ad_get.QQAdGetRsp.AdInfo.AppInfo)localObject2).customized_invoke_url.get();
+          localstSimpleMetaGdtAdInfo.appid = ((qq_ad_get.QQAdGetRsp.AdInfo.AppInfo)localObject2).app_package_name.get();
+        }
+        if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
+        {
+          localObject1 = ((stMetaTag)((ArrayList)localObject1).get(0)).toString();
+          localstSimpleMetaGdtAdInfo.left_top_button.img_url = ((String)localObject1);
+        }
+        localstSimpleMetaGdtAdInfo.mapPassBack = paramstSimpleMetaFeed.map_pass_back;
+        return localstSimpleMetaGdtAdInfo;
+      }
+      catch (Exception paramstSimpleMetaFeed)
+      {
+        paramstSimpleMetaFeed.printStackTrace();
+        return localstSimpleMetaGdtAdInfo;
+      }
+      label902:
+      i += 1;
+    }
+  }
+  
   public static void b(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
     if (paramContext != null)
@@ -623,7 +510,7 @@ public class GdtAdUtil
       if (paramstSimpleMetaFeed == null) {
         return;
       }
-      paramContext = a(paramContext, paramstSimpleMetaFeed);
+      paramContext = c(paramContext, paramstSimpleMetaFeed);
       if (!TextUtils.isEmpty(paramContext)) {
         paramstSimpleMetaFeed.new_icon.title = paramContext;
       }
@@ -632,7 +519,7 @@ public class GdtAdUtil
   
   public static void b(Context paramContext, WSVerticalItemData paramWSVerticalItemData)
   {
-    paramContext = a(paramContext, paramWSVerticalItemData);
+    paramContext = c(paramContext, paramWSVerticalItemData);
     if (!TextUtils.isEmpty(paramContext))
     {
       GdtReporter.doCgiReport(paramContext);
@@ -642,10 +529,123 @@ public class GdtAdUtil
       QZLog.i("GdtAdUtil", paramWSVerticalItemData.toString());
     }
   }
+  
+  protected static String c(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    stSimpleMetaGdtAdInfo localstSimpleMetaGdtAdInfo = b(paramstSimpleMetaFeed);
+    int j = 0;
+    if ((localstSimpleMetaGdtAdInfo != null) && (localstSimpleMetaGdtAdInfo.cookie != null)) {
+      paramstSimpleMetaFeed = (String)localstSimpleMetaGdtAdInfo.cookie.get(Integer.valueOf(0));
+    } else {
+      paramstSimpleMetaFeed = "";
+    }
+    int i = j;
+    if (!TextUtils.isEmpty(paramstSimpleMetaFeed))
+    {
+      i = j;
+      if ("app".equalsIgnoreCase(paramstSimpleMetaFeed)) {
+        i = 1;
+      }
+    }
+    if ((localstSimpleMetaGdtAdInfo != null) && (i != 0) && (PackageUtil.a(paramContext, localstSimpleMetaGdtAdInfo.appid))) {
+      return "打开";
+    }
+    if ((localstSimpleMetaGdtAdInfo != null) && (localstSimpleMetaGdtAdInfo.bottomButton != null) && (!TextUtils.isEmpty(localstSimpleMetaGdtAdInfo.bottomButton.text))) {
+      return localstSimpleMetaGdtAdInfo.bottomButton.text;
+    }
+    if (i != 0) {
+      return "立即下载";
+    }
+    return "了解详情";
+  }
+  
+  private static String c(Context paramContext, WSVerticalItemData paramWSVerticalItemData)
+  {
+    String str = "";
+    Object localObject = str;
+    if (paramWSVerticalItemData != null)
+    {
+      localObject = str;
+      if ((paramWSVerticalItemData.b() instanceof stSimpleMetaFeed))
+      {
+        paramWSVerticalItemData = paramWSVerticalItemData.b();
+        qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = a(paramWSVerticalItemData);
+        localObject = str;
+        if (localAdInfo != null)
+        {
+          qq_ad_get.QQAdGetRsp.AdInfo.AppInfo localAppInfo = localAdInfo.app_info;
+          localObject = str;
+          if (localAdInfo.product_type != null)
+          {
+            localObject = str;
+            if (localAppInfo != null)
+            {
+              localObject = str;
+              if (localAppInfo.app_package_name != null)
+              {
+                try
+                {
+                  paramWSVerticalItemData = new JSONObject(paramWSVerticalItemData.gdt_ad_info).optJSONArray("pos_ads_info").getJSONObject(0).optJSONArray("ads_info").getJSONObject(0).optJSONObject("report_info").optString("original_exposure_url");
+                  try
+                  {
+                    if (!TextUtils.isEmpty(paramWSVerticalItemData))
+                    {
+                      paramContext = GdtOriginalExposureReporter.a(paramWSVerticalItemData, localAdInfo.product_type.get(), paramContext, localAppInfo.app_package_name.get());
+                      return paramContext;
+                    }
+                    return paramWSVerticalItemData;
+                  }
+                  catch (Throwable localThrowable)
+                  {
+                    paramContext = paramWSVerticalItemData;
+                    paramWSVerticalItemData = localThrowable;
+                  }
+                  localStringBuilder = new StringBuilder();
+                }
+                catch (Throwable paramWSVerticalItemData)
+                {
+                  paramContext = localThrowable;
+                }
+                StringBuilder localStringBuilder;
+                localStringBuilder.append("getOriginalIExposureUrl error: ");
+                localStringBuilder.append(paramWSVerticalItemData);
+                WSLog.d("GdtAdUtil", localStringBuilder.toString());
+                localObject = paramContext;
+              }
+            }
+          }
+        }
+      }
+    }
+    return localObject;
+  }
+  
+  public static void c(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if (paramstSimpleMetaFeed != null) {
+      try
+      {
+        paramstSimpleMetaFeed = a(paramstSimpleMetaFeed);
+        if (paramstSimpleMetaFeed != null)
+        {
+          paramstSimpleMetaFeed = new GdtAd(paramstSimpleMetaFeed);
+          GdtPreLoader.a().a(paramstSimpleMetaFeed);
+          return;
+        }
+      }
+      catch (Throwable paramstSimpleMetaFeed)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("adPreLoad error: ");
+        localStringBuilder.append(paramstSimpleMetaFeed);
+        WSLog.d("GdtAdUtil", localStringBuilder.toString());
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdUtil
  * JD-Core Version:    0.7.0.1
  */

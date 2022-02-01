@@ -13,34 +13,24 @@ import mqq.app.AppRuntime;
 public class Config
 {
   public static byte a = 3;
-  private static ConfigManager jdField_a_of_type_ComTencentMobileqqConfigConfigManager;
-  public static PicAndAdConf a;
-  private static HttpCommunicator jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator;
-  private static ArrayList<ConfigListener> jdField_a_of_type_JavaUtilArrayList;
-  static BaseConf[] jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf;
   public static byte b = 1;
-  static PicAndAdConf b;
-  private boolean jdField_a_of_type_Boolean = true;
+  public static PicAndAdConf c;
+  static PicAndAdConf d;
+  static BaseConf[] e;
+  private static HttpCommunicator f;
+  private static ConfigManager g;
+  private static ArrayList<ConfigListener> h;
+  private boolean i = true;
   
   public Config(QQAppInterface paramQQAppInterface, String paramString)
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator = (HttpCommunicator)((IHttpEngineService)paramQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).getCommunicator();
-    jdField_a_of_type_ComTencentMobileqqConfigConfigManager = new ConfigManager(paramQQAppInterface.getApp(), paramString);
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_ComTencentMobileqqConfigStructPicAndAdConf = new PicAndAdConf((short)24, (byte)0);
-    b = new PicAndAdConf((short)12, (byte)1);
-    jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf = new BaseConf[] { jdField_a_of_type_ComTencentMobileqqConfigStructPicAndAdConf, b };
-    jdField_a_of_type_ComTencentMobileqqConfigConfigManager.a();
-  }
-  
-  public static ConfigManager a()
-  {
-    return jdField_a_of_type_ComTencentMobileqqConfigConfigManager;
-  }
-  
-  public static HttpCommunicator a()
-  {
-    return jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator;
+    f = (HttpCommunicator)((IHttpEngineService)paramQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).getCommunicator();
+    g = new ConfigManager(paramQQAppInterface.getApp(), paramString);
+    h = new ArrayList();
+    c = new PicAndAdConf((short)24, (byte)0);
+    d = new PicAndAdConf((short)12, (byte)1);
+    e = new BaseConf[] { c, d };
+    g.b();
   }
   
   public static String a()
@@ -69,59 +59,69 @@ public class Config
     return paramString1.toString();
   }
   
-  public static ArrayList<ConfigListener> a()
+  public static HttpCommunicator b()
   {
-    return jdField_a_of_type_JavaUtilArrayList;
+    return f;
   }
   
-  public static void a()
+  public static ConfigManager c()
   {
-    jdField_a_of_type_ComTencentMobileqqConfigConfigManager = null;
-    HttpCommunicator localHttpCommunicator = jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator;
+    return g;
+  }
+  
+  public static ArrayList<ConfigListener> d()
+  {
+    return h;
+  }
+  
+  public static void e()
+  {
+    g = null;
+    HttpCommunicator localHttpCommunicator = f;
     if (localHttpCommunicator != null) {
       localHttpCommunicator.close();
     }
-    jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator = null;
+    f = null;
   }
   
   public int a(int paramInt)
   {
-    return jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf[paramInt].a();
-  }
-  
-  public long a(int paramInt1, int paramInt2)
-  {
-    return ((PicAndAdConf)jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf[paramInt1]).a(paramInt2);
+    return e[paramInt].b();
   }
   
   public Bitmap a(int paramInt1, int paramInt2)
   {
-    return ((PicAndAdConf)jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf[paramInt1]).a(paramInt2);
+    return ((PicAndAdConf)e[paramInt1]).d(paramInt2);
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public short b(int paramInt1, int paramInt2)
   {
-    return ((PicAndAdConf)jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf[paramInt1]).c(paramInt2);
-  }
-  
-  public short a(int paramInt1, int paramInt2)
-  {
-    return ((PicAndAdConf)jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf[paramInt1]).a(paramInt2);
-  }
-  
-  public String b(int paramInt1, int paramInt2)
-  {
-    return ((PicAndAdConf)jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf[paramInt1]).a(paramInt2);
+    return ((PicAndAdConf)e[paramInt1]).a(paramInt2);
   }
   
   public String c(int paramInt1, int paramInt2)
   {
-    return ((PicAndAdConf)jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf[paramInt1]).b(paramInt2);
+    return ((PicAndAdConf)e[paramInt1]).e(paramInt2);
+  }
+  
+  public String d(int paramInt1, int paramInt2)
+  {
+    return ((PicAndAdConf)e[paramInt1]).b(paramInt2);
+  }
+  
+  public String e(int paramInt1, int paramInt2)
+  {
+    return ((PicAndAdConf)e[paramInt1]).c(paramInt2);
+  }
+  
+  public long f(int paramInt1, int paramInt2)
+  {
+    return ((PicAndAdConf)e[paramInt1]).f(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.Config
  * JD-Core Version:    0.7.0.1
  */

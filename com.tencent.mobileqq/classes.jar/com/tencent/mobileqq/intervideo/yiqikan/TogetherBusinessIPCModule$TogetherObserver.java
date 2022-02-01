@@ -15,13 +15,13 @@ import mqq.util.WeakReference;
 public class TogetherBusinessIPCModule$TogetherObserver
   implements BusinessObserver
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<QIPCModule> jdField_a_of_type_MqqUtilWeakReference;
+  private WeakReference<QIPCModule> a;
+  private int b;
   
   public TogetherBusinessIPCModule$TogetherObserver(QIPCModule paramQIPCModule, int paramInt)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQIPCModule);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramQIPCModule);
+    this.b = paramInt;
   }
   
   private void a(Bundle paramBundle, TogetherBusinessServlet.RspOpenStart paramRspOpenStart)
@@ -71,22 +71,22 @@ public class TogetherBusinessIPCModule$TogetherObserver
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("TogetherObserver", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)
+    if (this.a.get() == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TogetherObserver", 2, " mRef is empty");
       }
       return;
     }
-    Object localObject = (QIPCModule)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject = (QIPCModule)this.a.get();
     if ((12 == paramInt) && (paramBoolean))
     {
-      ((QIPCModule)localObject).callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
+      ((QIPCModule)localObject).callbackResult(this.b, EIPCResult.createResult(0, paramBundle));
       return;
     }
     if ((13 == paramInt) && (paramBoolean))
     {
-      ((QIPCModule)localObject).callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
+      ((QIPCModule)localObject).callbackResult(this.b, EIPCResult.createResult(0, paramBundle));
       localObject = (TogetherBusinessServlet.RspOpenStart)paramBundle.getSerializable("QQAIOMediaSvc.open_start");
       paramBundle = paramBundle.getBundle("bundle");
       if ((paramBundle != null) && (localObject != null))
@@ -107,7 +107,7 @@ public class TogetherBusinessIPCModule$TogetherObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessIPCModule.TogetherObserver
  * JD-Core Version:    0.7.0.1
  */

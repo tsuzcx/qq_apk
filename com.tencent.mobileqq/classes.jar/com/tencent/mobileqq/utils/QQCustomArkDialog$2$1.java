@@ -9,16 +9,16 @@ class QQCustomArkDialog$2$1
   
   public void run()
   {
-    QQCustomArkDialog localQQCustomArkDialog = (QQCustomArkDialog)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQCustomArkDialog localQQCustomArkDialog = (QQCustomArkDialog)this.a.get();
     if (localQQCustomArkDialog == null) {
       return;
     }
-    QQCustomArkDialog.a(localQQCustomArkDialog, this.jdField_a_of_type_Int);
+    QQCustomArkDialog.a(localQQCustomArkDialog, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.2.1
  * JD-Core Version:    0.7.0.1
  */

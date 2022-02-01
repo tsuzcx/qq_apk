@@ -19,33 +19,33 @@ class QQSpecialCareSettingActivity$2
     {
     default: 
     case 8195: 
-      if (QQSpecialCareSettingActivity.a(this.a) != null) {
-        QQSpecialCareSettingActivity.a(this.a).cancel();
+      if (QQSpecialCareSettingActivity.c(this.a) != null) {
+        QQSpecialCareSettingActivity.c(this.a).cancel();
       }
       localQQSpecialCareSettingActivity = this.a;
-      QQSpecialCareSettingActivity.a(localQQSpecialCareSettingActivity, QQToast.a(localQQSpecialCareSettingActivity, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+      QQSpecialCareSettingActivity.a(localQQSpecialCareSettingActivity, QQToast.makeText(localQQSpecialCareSettingActivity, paramMessage.arg1, paramMessage.arg2, 0).show(this.a.getTitleBarHeight()));
       return;
     case 8194: 
-      if ((QQSpecialCareSettingActivity.a(this.a) != null) && (QQSpecialCareSettingActivity.a(this.a).isShowing()))
+      if ((QQSpecialCareSettingActivity.b(this.a) != null) && (QQSpecialCareSettingActivity.b(this.a).isShowing()))
       {
-        QQSpecialCareSettingActivity.a(this.a).dismiss();
+        QQSpecialCareSettingActivity.b(this.a).dismiss();
         QQSpecialCareSettingActivity.a(this.a, null);
         return;
       }
       break;
     case 8193: 
-      if (QQSpecialCareSettingActivity.a(this.a) == null)
+      if (QQSpecialCareSettingActivity.b(this.a) == null)
       {
         localQQSpecialCareSettingActivity = this.a;
         QQSpecialCareSettingActivity.a(localQQSpecialCareSettingActivity, new QQProgressDialog(localQQSpecialCareSettingActivity, localQQSpecialCareSettingActivity.getTitleBarHeight()));
         if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-          QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
+          QQSpecialCareSettingActivity.b(this.a).a((String)paramMessage.obj);
         }
       }
-      if ((!this.a.isFinishing()) && (!QQSpecialCareSettingActivity.a(this.a).isShowing())) {
+      if ((!this.a.isFinishing()) && (!QQSpecialCareSettingActivity.b(this.a).isShowing())) {
         try
         {
-          QQSpecialCareSettingActivity.a(this.a).show();
+          QQSpecialCareSettingActivity.b(this.a).show();
           return;
         }
         catch (Exception paramMessage)
@@ -61,7 +61,7 @@ class QQSpecialCareSettingActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

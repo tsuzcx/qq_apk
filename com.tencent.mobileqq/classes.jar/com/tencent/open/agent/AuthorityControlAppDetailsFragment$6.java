@@ -12,12 +12,12 @@ class AuthorityControlAppDetailsFragment$6
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = new AuthorityControlAppDetailsFragment.6.1(this);
-    AuthorityControlAppDetailsFragment.a(this.a).a(paramDialogInterface, AuthorityControlAppDetailsFragment.a(this.a));
+    AuthorityControlAppDetailsFragment.k(this.a).a(paramDialogInterface, AuthorityControlAppDetailsFragment.j(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.6
  * JD-Core Version:    0.7.0.1
  */

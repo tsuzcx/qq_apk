@@ -2,9 +2,9 @@ package com.tencent.avbiz;
 
 public abstract interface IModule$FocusChangeListener
 {
-  public abstract void b();
+  public abstract void onFocusGain();
   
-  public abstract void c();
+  public abstract void onFocusLoss();
 }
 
 

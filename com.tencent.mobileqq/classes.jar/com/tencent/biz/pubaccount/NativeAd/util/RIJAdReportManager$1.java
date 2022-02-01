@@ -12,6 +12,7 @@ import com.tencent.biz.pubaccount.NativeAd.report.util.AdReportUtil;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskReportMgr;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdReportUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdActionUtilService;
@@ -27,30 +28,25 @@ final class RIJAdReportManager$1
   
   private void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-    if ((localObject != null) && (((AdvertisementInfo)localObject).isMultiyVideo)) {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.e() == null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.e(new JSONObject());
-        }
-        boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.e().has("statistics_data_report");
-        if (bool)
-        {
-          localObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.e().getString("statistics_data_report"));
-          ((JSONObject)localObject).put("show_style", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mRevisionVideoType);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.e().put("statistics_data_report", ((JSONObject)localObject).toString());
-          return;
-        }
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("show_style", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mRevisionVideoType);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.e().put("statistics_data_report", ((JSONObject)localObject).toString());
+    try
+    {
+      Object localObject = AdReportUtil.a(this.a);
+      if ((localObject != ReportAction.CLICK) && (localObject != ReportAction.CLOSE)) {
         return;
       }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
+      if (this.q.has("click_info_report")) {
+        localObject = new JSONObject(this.q.optString("click_info_report"));
+      } else {
+        localObject = new JSONObject();
       }
+      ((JSONObject)localObject).put("aindex", AdReportUtil.h(this.a));
+      ((JSONObject)localObject).put("login_skey", AdReportUtil.a());
+      this.q.put("click_info_report", ((JSONObject)localObject).toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ReadInJoyAdLog.b("RIJAdReportManager", localThrowable.getMessage());
     }
   }
   
@@ -58,35 +54,35 @@ final class RIJAdReportManager$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("newReport:action:");
-    localStringBuilder.append(AdReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData));
+    localStringBuilder.append(AdReportUtil.a(this.a));
     localStringBuilder.append(", exposeMode:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a());
+    localStringBuilder.append(this.a.t());
     localStringBuilder.append(", json:");
     localStringBuilder.append(paramString);
     RIJAdReportManager.a("RIJAdReportManager", localStringBuilder.toString());
-    AdReportManager.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData);
-    if ((AdReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData) == ReportAction.EXPOSE) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a().intValue() == 2) && (AdReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData) != ActionEntity.OutSuperMask) && (RIJAdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))) {
+    AdReportManager.a().a(this.a);
+    if ((AdReportUtil.a(this.a) == ReportAction.EXPOSE) && (this.a.t().intValue() == 2) && (AdReportUtil.b(this.a) != ActionEntity.OutSuperMask) && (RIJAdReportManager.a(this.h))) {
       a(paramString, true);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.b()) {
+    if (this.a.u()) {
       return;
     }
-    if (a())
+    if (e())
     {
-      c();
-      RIJAdReportManager.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData);
+      d();
+      RIJAdReportManager.b(this.a);
     }
     b(paramString);
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
-    String str = RIJAdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData);
-    if ((RIJAdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) && (!TextUtils.isEmpty(str)))
+    String str = RIJAdReportManager.d(this.a);
+    if ((RIJAdReportManager.a(this.h)) && (!TextUtils.isEmpty(str)))
     {
-      NativeAdUtils.b(str);
+      NativeAdUtils.c(str);
       if (!paramBoolean) {
-        RIJAdReportManager.a(paramString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData, this.jdField_b_of_type_Int);
+        RIJAdReportManager.a(paramString, this.t, this.h, this.a, this.e);
       }
     }
   }
@@ -95,17 +91,17 @@ final class RIJAdReportManager$1
   {
     try
     {
-      JSONObject localJSONObject1 = this.e;
+      JSONObject localJSONObject1 = this.q;
       if (localJSONObject1 != null)
       {
-        paramJSONObject = this.e.optString("exposure_info_report");
+        paramJSONObject = this.q.optString("exposure_info_report");
         if (TextUtils.isEmpty(paramJSONObject)) {
           paramJSONObject = new JSONObject();
         } else {
           paramJSONObject = new JSONObject(paramJSONObject);
         }
         paramJSONObject.put("stat_type", "2");
-        this.e.put("exposure_info_report", paramJSONObject.toString());
+        this.q.put("exposure_info_report", paramJSONObject.toString());
         return;
       }
       localJSONObject1 = new JSONObject();
@@ -125,58 +121,98 @@ final class RIJAdReportManager$1
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("oldReport:action:");
-    ((StringBuilder)localObject).append(AdReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData));
+    ((StringBuilder)localObject).append(AdReportUtil.a(this.a));
     ((StringBuilder)localObject).append(", exposeMode:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a());
+    ((StringBuilder)localObject).append(this.a.t());
     ((StringBuilder)localObject).append(", reportData:");
     ((StringBuilder)localObject).append(paramJSONObject.toString());
     ((StringBuilder)localObject).append(", json:");
     ((StringBuilder)localObject).append(paramString);
     RIJAdReportManager.a("NativeAdUtils", ((StringBuilder)localObject).toString());
-    if (AdReportManager.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData)) {
+    if (AdReportManager.c(this.a)) {
       return;
     }
-    localObject = AdReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData);
-    ActionEntity localActionEntity = AdReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData);
-    if ((localObject == ReportAction.EXPOSE) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a().intValue() == 2) && (localActionEntity != ActionEntity.OutSuperMask))
+    localObject = AdReportUtil.a(this.a);
+    ActionEntity localActionEntity = AdReportUtil.b(this.a);
+    if ((localObject == ReportAction.EXPOSE) && (this.a.t().intValue() == 2) && (localActionEntity != ActionEntity.OutSuperMask))
     {
-      if (RIJAdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) {
+      if (RIJAdReportManager.a(this.h)) {
         a(paramString, false);
       }
       return;
     }
-    if (this.jdField_a_of_type_Int == 25)
+    if (this.d == 25)
     {
       ReadInJoyAdReportUtil.a(paramJSONObject);
       return;
     }
-    RIJAdReportManager.a(paramString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData, this.jdField_b_of_type_Int);
-    if (a()) {
-      c();
+    RIJAdReportManager.a(paramString, this.t, this.h, this.a, this.e);
+    if (e()) {
+      d();
     }
     b(paramString);
   }
   
-  private boolean a()
+  private void b()
   {
-    return (this.jdField_d_of_type_Int != 21) && (!RIJAdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData)) && (!this.jdField_b_of_type_Boolean);
+    Object localObject = this.h;
+    if ((localObject != null) && (((AdvertisementInfo)localObject).isMultiyVideo)) {
+      try
+      {
+        if (this.a.r() == null) {
+          this.a.e(new JSONObject());
+        }
+        boolean bool = this.a.r().has("statistics_data_report");
+        if (bool)
+        {
+          localObject = new JSONObject(this.a.r().getString("statistics_data_report"));
+          ((JSONObject)localObject).put("show_style", this.h.mRevisionVideoType);
+          this.a.r().put("statistics_data_report", ((JSONObject)localObject).toString());
+          return;
+        }
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("show_style", this.h.mRevisionVideoType);
+        this.a.r().put("statistics_data_report", ((JSONObject)localObject).toString());
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
   
-  private void b()
+  private void b(String paramString)
+  {
+    Object localObject = this.h;
+    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementInfo)localObject).mAdViewId))) {
+      localObject = this.h.mAdViewId;
+    } else {
+      localObject = "";
+    }
+    if (RIJAdReportManager.a(this.h, this.e))
+    {
+      SuperMaskReportMgr.a.a(this.h, this.e, this.d);
+      return;
+    }
+    RIJAdReportManager.a(null, "0X8009E3E", "0X8009E3E", 0, 0, String.valueOf(this.e), String.valueOf(this.d), (String)localObject, paramString);
+  }
+  
+  private void c()
   {
     try
     {
       VideoReportObj localVideoReportObj = new VideoReportObj();
-      localVideoReportObj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData);
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a();
-      ((JSONObject)localObject).put("bt", localVideoReportObj.a());
-      ((JSONObject)localObject).put("et", localVideoReportObj.b());
-      ((JSONObject)localObject).put("bf", localVideoReportObj.c());
-      ((JSONObject)localObject).put("ef", localVideoReportObj.d());
-      ((JSONObject)localObject).put("pp", localVideoReportObj.e());
-      ((JSONObject)localObject).put("pa", localVideoReportObj.b());
-      ((JSONObject)localObject).put("hc", localVideoReportObj.f());
-      ((JSONObject)localObject).put("ps", localVideoReportObj.a());
+      localVideoReportObj.a(this.a);
+      localObject = this.a.l();
+      ((JSONObject)localObject).put("bt", localVideoReportObj.d());
+      ((JSONObject)localObject).put("et", localVideoReportObj.e());
+      ((JSONObject)localObject).put("bf", localVideoReportObj.f());
+      ((JSONObject)localObject).put("ef", localVideoReportObj.g());
+      ((JSONObject)localObject).put("pp", localVideoReportObj.h());
+      ((JSONObject)localObject).put("pa", localVideoReportObj.k());
+      ((JSONObject)localObject).put("hc", localVideoReportObj.i());
+      ((JSONObject)localObject).put("ps", localVideoReportObj.j());
       return;
     }
     catch (Throwable localThrowable)
@@ -188,87 +224,75 @@ final class RIJAdReportManager$1
     }
   }
   
-  private void b(String paramString)
+  private void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-    if ((localObject != null) && (!TextUtils.isEmpty(((AdvertisementInfo)localObject).mAdViewId))) {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdViewId;
-    } else {
-      localObject = "";
-    }
-    if (RIJAdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_b_of_type_Int))
-    {
-      SuperMaskReportMgr.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-      return;
-    }
-    RIJAdReportManager.a(null, "0X8009E3E", "0X8009E3E", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), (String)localObject, paramString);
+    RIJAdReportManager.a(this.d, this.h, this.i);
   }
   
-  private void c()
+  private boolean e()
   {
-    RIJAdReportManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
+    return (this.j != 21) && (!RIJAdReportManager.c(this.a)) && (!this.u);
   }
   
   public void run()
   {
-    if (AdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData)) {
+    if (AdReportManager.b(this.a)) {
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
+    Object localObject2 = this.b;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new JSONObject();
     }
     try
     {
-      ((JSONObject)localObject1).put("uin", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject1).put("type", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject1).put("uin", this.c);
+      ((JSONObject)localObject1).put("type", this.d);
       ((JSONObject)localObject1).put("ts", System.currentTimeMillis());
-      ((JSONObject)localObject1).put("origin", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject1).put("sub_origin", this.jdField_c_of_type_Int);
+      ((JSONObject)localObject1).put("origin", this.e);
+      ((JSONObject)localObject1).put("sub_origin", this.f);
       ((JSONObject)localObject1).put("oudid", "1");
-      ((JSONObject)localObject1).put("device_info", RIJAdReportManager.a(this.jdField_a_of_type_AndroidContentContext));
-      ((JSONObject)localObject1).put("ad_info", RIJAdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo, this.jdField_d_of_type_Int));
-      if (this.jdField_b_of_type_OrgJsonJSONObject != null)
+      ((JSONObject)localObject1).put("device_info", RIJAdReportManager.a(this.g));
+      ((JSONObject)localObject1).put("ad_info", RIJAdReportManager.a(this.h, this.i, this.j));
+      if (this.k != null)
       {
-        b();
-        ((JSONObject)localObject1).put("video_info", this.jdField_b_of_type_OrgJsonJSONObject);
-        RIJAdReportManager.a("video_info ad videoInfo = ", this.jdField_b_of_type_OrgJsonJSONObject.toString());
+        c();
+        ((JSONObject)localObject1).put("video_info", this.k);
+        RIJAdReportManager.a("video_info ad videoInfo = ", this.k.toString());
       }
-      if (this.jdField_c_of_type_OrgJsonJSONObject != null) {
-        ((JSONObject)localObject1).put("device_report_info", this.jdField_c_of_type_OrgJsonJSONObject);
+      if (this.l != null) {
+        ((JSONObject)localObject1).put("device_report_info", this.l);
       }
-      if (this.jdField_a_of_type_Int == 3) {
-        ((JSONObject)localObject1).put("neg_info", RIJAdReportManager.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long));
+      if (this.d == 3) {
+        ((JSONObject)localObject1).put("neg_info", RIJAdReportManager.a(this.m, this.n, this.o));
       }
-      if (((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).isUgcAd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) {
-        ((JSONObject)localObject1).put("ugc_card_info", RIJAdReportManager.a(this.jdField_d_of_type_OrgJsonJSONObject, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo));
+      if (((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).isUgcAd(this.h)) {
+        ((JSONObject)localObject1).put("ugc_card_info", RIJAdReportManager.a(this.p, this.e, this.h));
       }
       localObject2 = new JSONObject();
-      SuperMaskReportMgr.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.e, (JSONObject)localObject2, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a());
-      a();
-      if (this.f != null) {
-        ((JSONObject)localObject1).put("article_info", this.f);
+      SuperMaskReportMgr.a.a(this.h, this.q, (JSONObject)localObject2, Integer.valueOf(this.d), Integer.valueOf(this.e), this.a.t());
+      b();
+      if (this.r != null) {
+        ((JSONObject)localObject1).put("article_info", this.r);
       }
-      localObject2 = AdReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData);
-      ActionEntity localActionEntity = AdReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData);
-      if ((localObject2 == ReportAction.EXPOSE) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdReportData.a().intValue() == 2) && (RIJAdReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) && (localActionEntity != ActionEntity.OutSuperMask)) {
+      localObject2 = AdReportUtil.a(this.a);
+      ActionEntity localActionEntity = AdReportUtil.b(this.a);
+      if ((localObject2 == ReportAction.EXPOSE) && (this.a.t().intValue() == 2) && (RIJAdReportManager.a(this.h)) && (localActionEntity != ActionEntity.OutSuperMask)) {
         a((JSONObject)localObject1);
       }
-      if (this.e != null) {
-        ((JSONObject)localObject1).put("func_ext_info", this.e);
-      }
-      ((JSONObject)localObject1).put("scene_trace_id", AdSessionManager.a().a());
-      ((JSONObject)localObject1).put("scene_series_num", AdSessionManager.a().b());
-      ((JSONObject)localObject1).put("refresh_series_num", AdSessionManager.a().a());
+      a();
+      ((JSONObject)localObject1).put("func_ext_info", this.q);
+      ((JSONObject)localObject1).put("scene_trace_id", AdSessionManager.a().b());
+      ((JSONObject)localObject1).put("scene_series_num", AdSessionManager.a().e());
+      ((JSONObject)localObject1).put("refresh_series_num", AdSessionManager.a().c());
       localObject2 = ((JSONObject)localObject1).toString();
       RIJAdReportManager.a("report json = ", (String)localObject2);
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.s)
       {
-        if (AdReportManager.a().b())
+        if (AdReportManager.a().c())
         {
           a((String)localObject2);
           return;
@@ -276,7 +300,7 @@ final class RIJAdReportManager$1
         a((JSONObject)localObject1, (String)localObject2);
         return;
       }
-      if (AdReportManager.a().a())
+      if (AdReportManager.a().b())
       {
         a((String)localObject2);
         return;
@@ -292,7 +316,7 @@ final class RIJAdReportManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.RIJAdReportManager.1
  * JD-Core Version:    0.7.0.1
  */

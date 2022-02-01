@@ -58,7 +58,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.ListView;
@@ -69,26 +68,22 @@ import java.util.List;
 public class AdHandler
   extends AdBaseHandler
 {
-  private static ExposureSupplementManager.ExposureSupplementUtilManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdUtilsExposureSupplementManager$ExposureSupplementUtilManager = new ExposureSupplementManager.ExposureSupplementUtilManager();
-  private float jdField_a_of_type_Float = DeviceInfoUtil.e() * 500 / 160.0F;
-  private int jdField_a_of_type_Int;
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(1);
-  private DecelerateInterpolator jdField_a_of_type_AndroidViewAnimationDecelerateInterpolator = new DecelerateInterpolator(this.jdField_c_of_type_Float);
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = null;
-  private AdHandler.ItemViewBuilder jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHandlersAdHandler$ItemViewBuilder = new AdHandler.ItemViewBuilder(this);
-  protected ReadInJoyObserver a;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = DeviceInfoUtil.e() * 1000 / 160.0F;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float = 1.5F;
-  private int jdField_c_of_type_Int = -1;
-  
-  public AdHandler()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new AdHandler.3(this);
-  }
+  private static ExposureSupplementManager.ExposureSupplementUtilManager n = new ExposureSupplementManager.ExposureSupplementUtilManager();
+  protected ReadInJoyObserver a = new AdHandler.3(this);
+  private AdHandler.ItemViewBuilder b = new AdHandler.ItemViewBuilder(this);
+  private int c;
+  private int d = 0;
+  private int e = -1;
+  private boolean f = false;
+  private boolean g = false;
+  private float h = DeviceInfoUtil.J() * 500 / 160.0F;
+  private float i = DeviceInfoUtil.J() * 1000 / 160.0F;
+  private float j = 1.5F;
+  private AdvertisementInfo k = null;
+  private DecelerateInterpolator l = new DecelerateInterpolator(this.j);
+  private SparseArray<View> m = new SparseArray(1);
+  private ListView o;
+  private SurpriseVideoHandler p;
   
   private void a(View paramView)
   {
@@ -114,19 +109,19 @@ public class AdHandler
     {
       paramView = localView.getWindow().getDecorView().findViewById(16908307);
       if (paramView != null) {
-        this.jdField_b_of_type_Int = paramView.getMeasuredHeight();
+        this.d = paramView.getMeasuredHeight();
       }
     }
   }
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, long paramLong, View paramView)
   {
-    Activity localActivity = a();
-    int i = a();
-    IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = a();
+    Activity localActivity = c();
+    int i1 = a();
+    IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = b();
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramAbsBaseArticleInfo))
     {
-      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(i))
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(i1))
       {
         ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a(paramAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
         if (localIReadInJoyBaseAdapter != null) {
@@ -135,14 +130,14 @@ public class AdHandler
       }
       if (localIReadInJoyBaseAdapter != null)
       {
-        localIReadInJoyBaseAdapter.a(((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(localActivity, (AdvertisementInfo)paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter, i, false, null));
-        long l;
-        if (localIReadInJoyBaseAdapter.a() != null) {
-          l = SystemClock.elapsedRealtime();
+        localIReadInJoyBaseAdapter.a(((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(localActivity, (AdvertisementInfo)paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter, i1, false, null));
+        long l1;
+        if (localIReadInJoyBaseAdapter.g() != null) {
+          l1 = SystemClock.elapsedRealtime();
         } else {
-          l = -2147483648L;
+          l1 = -2147483648L;
         }
-        localIReadInJoyBaseAdapter.a(l);
+        localIReadInJoyBaseAdapter.a(l1);
       }
       Object localObject;
       if ((paramAbsBaseArticleInfo instanceof AdvertisementInfo))
@@ -152,11 +147,11 @@ public class AdHandler
           return;
         }
         if (localIReadInJoyBaseAdapter != null) {
-          localObject = localIReadInJoyBaseAdapter.a();
+          localObject = localIReadInJoyBaseAdapter.e();
         } else {
           localObject = null;
         }
-        if (((paramView instanceof IProteusItemView)) && (ReadinJoyActionUtil.a(paramAbsBaseArticleInfo, ((IProteusItemView)paramView).a().getVirtualView(), (Activity)localActivity, i, (IVideoPlayManager)localObject, localAdvertisementInfo))) {
+        if (((paramView instanceof IProteusItemView)) && (ReadinJoyActionUtil.a(paramAbsBaseArticleInfo, ((IProteusItemView)paramView).getContainer().getVirtualView(), (Activity)localActivity, i1, (IVideoPlayManager)localObject, localAdvertisementInfo))) {
           return;
         }
       }
@@ -165,23 +160,23 @@ public class AdHandler
         boolean bool = ReadinJoyActionUtil.a(paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter);
         paramView = (Activity)localActivity;
         localObject = (AdvertisementInfo)paramAbsBaseArticleInfo;
-        paramView = ReadinJoyActionUtil.a(paramView, (AdvertisementInfo)localObject, localIReadInJoyBaseAdapter, i, true, ReadInJoyAdSwitchUtil.b((AdvertisementInfo)localObject), new AdJumpParams(bool));
-        if ((a() instanceof IReadInJoyListViewGroup)) {
-          ReadinJoyActionUtil.a(a(), paramAbsBaseArticleInfo, a(), paramView);
+        paramView = ReadinJoyActionUtil.a(paramView, (AdvertisementInfo)localObject, localIReadInJoyBaseAdapter, i1, true, ReadInJoyAdSwitchUtil.e((AdvertisementInfo)localObject), new AdJumpParams(bool));
+        if ((d() instanceof IReadInJoyListViewGroup)) {
+          ReadinJoyActionUtil.a(c(), paramAbsBaseArticleInfo, a(), paramView);
         }
       }
       else if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(paramAbsBaseArticleInfo)) && (localIReadInJoyBaseAdapter != null) && (paramLong != -1L))
       {
-        int j = localIReadInJoyBaseAdapter.getItemViewType((int)paramLong);
-        if ((j != 39) && (j != 116) && (j != 66) && (j != 115))
+        int i2 = localIReadInJoyBaseAdapter.getItemViewType((int)paramLong);
+        if ((i2 != 39) && (i2 != 116) && (i2 != 66) && (i2 != 115))
         {
-          ReadinJoyActionUtil.c(localActivity, (AdvertisementInfo)paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter, i, false, null);
+          ReadinJoyActionUtil.d(localActivity, (AdvertisementInfo)paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter, i1, false, null);
         }
         else
         {
           paramView = (IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class);
           paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
-          paramView.doAppADJump(localActivity, paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter, i, true, ReadInJoyAdSwitchUtil.b(paramAbsBaseArticleInfo));
+          paramView.doAppADJump(localActivity, paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter, i1, true, ReadInJoyAdSwitchUtil.e(paramAbsBaseArticleInfo));
         }
       }
       else
@@ -189,31 +184,38 @@ public class AdHandler
         if (localIReadInJoyBaseAdapter == null) {
           return;
         }
-        ReadinJoyActionUtil.a((Activity)localActivity, paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter, i, null);
+        ReadinJoyActionUtil.a((Activity)localActivity, paramAbsBaseArticleInfo, localIReadInJoyBaseAdapter, i1, null);
       }
       QZLog.i("AdHandler", 4, "AdHandler processAdClickEvent");
     }
   }
   
-  private boolean b()
+  private void t()
   {
-    IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = a();
+    if (u()) {
+      this.o.postDelayed(new AdHandler.2(this), 1000);
+    }
+  }
+  
+  private boolean u()
+  {
+    IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = b();
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localIReadInJoyBaseAdapter != null)
     {
       bool1 = bool2;
-      if (a().b() != null)
+      if (b().h() != null)
       {
         bool1 = bool2;
-        if (a().b().size() > 0)
+        if (b().h().size() > 0)
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
-            if ((!ReadInJoyAdUtils.r((AbsBaseArticleInfo)a().b().get(0))) && (!ReadInJoyAdUtils.s((AbsBaseArticleInfo)a().b().get(0))))
+          if (this.o != null) {
+            if ((!ReadInJoyAdUtils.t((AbsBaseArticleInfo)b().h().get(0))) && (!ReadInJoyAdUtils.u((AbsBaseArticleInfo)b().h().get(0))))
             {
               bool1 = bool2;
-              if (!ReadInJoyAdUtils.t((AbsBaseArticleInfo)a().b().get(0))) {}
+              if (!ReadInJoyAdUtils.v((AbsBaseArticleInfo)b().h().get(0))) {}
             }
             else
             {
@@ -226,40 +228,33 @@ public class AdHandler
     return bool1;
   }
   
-  private void i()
+  private void v()
   {
-    if (b()) {
-      this.jdField_a_of_type_ComTencentWidgetListView.postDelayed(new AdHandler.2(this), 1000);
-    }
-  }
-  
-  private void j()
-  {
-    int i = a();
-    ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)((IReadInJoyListViewGroup)a()).a();
-    long l = System.currentTimeMillis();
-    if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(i)) && (localReadInJoyXListView != null) && (localReadInJoyXListView.getChildCount() > 0))
+    int i1 = a();
+    ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)((IReadInJoyListViewGroup)d()).getListView();
+    long l1 = System.currentTimeMillis();
+    if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(i1)) && (localReadInJoyXListView != null) && (localReadInJoyXListView.getChildCount() > 0))
     {
-      i = 0;
-      while (i < localReadInJoyXListView.getChildCount())
+      i1 = 0;
+      while (i1 < localReadInJoyXListView.getChildCount())
       {
-        View localView = localReadInJoyXListView.getChildAt(i);
-        if ((localView.getTag(2131380884) instanceof IReadInJoyModel))
+        View localView = localReadInJoyXListView.getChildAt(i1);
+        if ((localView.getTag(2131449867) instanceof IReadInJoyModel))
         {
-          localView = localView.findViewById(2131362119);
+          localView = localView.findViewById(2131427698);
           if ((localView instanceof ReadInJoyAdVideoGuide)) {
             ((ReadInJoyAdVideoGuide)localView).c();
           }
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    ((IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class)).printCost("AdHandler", "refreshADVideoFeedsDownloadState", System.currentTimeMillis() - l);
+    ((IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class)).printCost("AdHandler", "refreshADVideoFeedsDownloadState", System.currentTimeMillis() - l1);
   }
   
-  private void k()
+  private void w()
   {
-    IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = a();
+    IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = b();
     a();
     if (localIReadInJoyBaseAdapter != null)
     {
@@ -270,75 +265,24 @@ public class AdHandler
   
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = a(paramInt).intValue();
-    AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)a(paramInt);
+    int i1 = a(paramInt).intValue();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)b(paramInt);
     if (localAbsBaseArticleInfo != null) {
-      localAbsBaseArticleInfo.mResolvedFeedType = i;
+      localAbsBaseArticleInfo.mResolvedFeedType = i1;
     }
     paramViewGroup = null;
-    AdHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHandlersAdHandler$ItemViewBuilder);
-    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(i)) {
-      paramViewGroup = AdHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHandlersAdHandler$ItemViewBuilder, paramView, localAbsBaseArticleInfo, i, paramInt);
-    } else if (((ICellFactory)QRoute.api(ICellFactory.class)).cellRebuildCompleted(i)) {
-      paramViewGroup = AdHandler.ItemViewBuilder.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHandlersAdHandler$ItemViewBuilder, paramView, localAbsBaseArticleInfo, i, paramInt);
+    AdHandler.ItemViewBuilder.a(this.b);
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(i1)) {
+      paramViewGroup = AdHandler.ItemViewBuilder.a(this.b, paramView, localAbsBaseArticleInfo, i1, paramInt);
+    } else if (((ICellFactory)QRoute.api(ICellFactory.class)).cellRebuildCompleted(i1)) {
+      paramViewGroup = AdHandler.ItemViewBuilder.b(this.b, paramView, localAbsBaseArticleInfo, i1, paramInt);
     }
-    if ((a() != null) && (localAbsBaseArticleInfo != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(localAbsBaseArticleInfo)))
+    if ((b() != null) && (localAbsBaseArticleInfo != null) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(localAbsBaseArticleInfo)))
     {
       paramView = (AdvertisementInfo)localAbsBaseArticleInfo;
-      ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).reportAnd1Px(paramView, a());
+      ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).reportAnd1Px(paramView, b());
     }
     return paramViewGroup;
-  }
-  
-  public Boolean a()
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    Object localObject1 = a();
-    if (localObject1 != null)
-    {
-      Object localObject2 = (RecommendADVideoFeedsManager)((IReadInJoyBaseAdapter)localObject1).b();
-      if (localObject2 != null) {
-        ((RecommendADVideoFeedsManager)localObject2).jdField_a_of_type_Boolean = true;
-      }
-      localObject2 = ((IReadInJoyBaseAdapter)localObject1).a();
-      if ((localObject2 != null) && (((IVideoPlayManager)localObject2).a() != null))
-      {
-        VideoPlayParam localVideoPlayParam = ((IVideoPlayManager)localObject2).a();
-        if ((localVideoPlayParam != null) && (localVideoPlayParam.jdField_b_of_type_Boolean))
-        {
-          ((IVideoPlayManager)localObject2).a(ReportConstants.VideoEndType.EXIT_SCENE);
-          ((IVideoPlayManager)localObject2).a(11);
-        }
-      }
-      localObject1 = ((IReadInJoyBaseAdapter)localObject1).a();
-      if (localObject1 != null) {
-        ((IExposureSupplementManager)localObject1).f();
-      }
-      if (((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(this.jdField_a_of_type_Int))
-      {
-        AdReqFreshManager.a().a("RIJAdRefreshSceneDaily");
-        AdExposeFreshManager.a().a("RIJAdRefreshSceneDaily");
-      }
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        AdReqFreshManager.a().a("RIJAdRefreshSceneMainFeeds");
-        AdExposeFreshManager.a().a("RIJAdRefreshSceneMainFeeds");
-      }
-      if (56 == this.jdField_a_of_type_Int)
-      {
-        AdReqFreshManager.a().a("RIJAdRefreshSceneVideoTab");
-        AdExposeFreshManager.a().a("RIJAdRefreshSceneVideoTab");
-      }
-      if (this.jdField_a_of_type_Int == 0) {
-        AdSessionManager.a().a();
-      }
-    }
   }
   
   public void a(View paramView, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
@@ -356,22 +300,24 @@ public class AdHandler
   
   public void a(View paramView, ListView paramListView, long paramLong)
   {
-    this.jdField_a_of_type_Int = a();
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    this.c = a();
+    this.o = paramListView;
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).setListView(new SoftReference(paramListView));
     IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).getReadInJoyAdapter(this);
-    ExposureSupplementManager localExposureSupplementManager = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdUtilsExposureSupplementManager$ExposureSupplementUtilManager.a(this.jdField_a_of_type_Int);
+    ExposureSupplementManager localExposureSupplementManager = n.a(this.c);
     paramListView = localExposureSupplementManager;
     if (localExposureSupplementManager == null)
     {
-      paramListView = new ExposureSupplementManager(this.jdField_a_of_type_Int);
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdUtilsExposureSupplementManager$ExposureSupplementUtilManager.a(this.jdField_a_of_type_Int, paramListView);
+      paramListView = new ExposureSupplementManager(this.c);
+      n.a(this.c, paramListView);
     }
     localIReadInJoyBaseAdapter.a(paramListView);
-    ((IReadInJoyFixPosArticleManager)QRoute.api(IReadInJoyFixPosArticleManager.class)).register(this.jdField_a_of_type_Int, localIReadInJoyBaseAdapter);
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    AdHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHandlersAdHandler$ItemViewBuilder);
+    ((IReadInJoyFixPosArticleManager)QRoute.api(IReadInJoyFixPosArticleManager.class)).register(this.c, localIReadInJoyBaseAdapter);
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.a);
+    AdHandler.ItemViewBuilder.a(this.b);
     a(paramView);
+    this.p = new SurpriseVideoHandler();
+    this.p.a(this.o.getContext());
   }
   
   public void a(AbsListView paramAbsListView, int paramInt)
@@ -386,7 +332,7 @@ public class AdHandler
   
   public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = a((int)paramLong);
+    paramAdapterView = b((int)paramLong);
     if (((IArticleInfoHelper)QRoute.api(IArticleInfoHelper.class)).isBaseArticleInfo(paramAdapterView))
     {
       a((AbsBaseArticleInfo)paramAdapterView, paramLong, paramView);
@@ -397,49 +343,34 @@ public class AdHandler
   
   public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
-    if (paramInt == this.jdField_a_of_type_Int)
+    if (paramInt == this.c)
     {
-      if (a() == null) {
+      if (b() == null) {
         return;
       }
       ReadInJoySuperMaskAdUtil.a().a(paramInt);
     }
   }
   
-  public boolean a(int paramInt)
-  {
-    AdHandler.ItemViewBuilder.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHandlersAdHandler$ItemViewBuilder);
-    return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(paramInt);
-  }
-  
-  public void b()
-  {
-    j();
-    k();
-    if (a() != null) {
-      ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).doOnFeedsResume(a());
-    }
-  }
-  
   public void b(AbsListView paramAbsListView, int paramInt)
   {
     boolean bool = true;
-    if ((paramInt == 1) && (this.jdField_a_of_type_Boolean))
+    if ((paramInt == 1) && (this.f))
     {
-      AdvertisementInfo localAdvertisementInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+      AdvertisementInfo localAdvertisementInfo = this.k;
       if (localAdvertisementInfo != null)
       {
         localAdvertisementInfo.adStrategyType = 0;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = null;
+        this.k = null;
       }
     }
     if (paramInt != 2) {
       bool = false;
     }
-    this.jdField_b_of_type_Boolean = bool;
-    if (this.jdField_a_of_type_Boolean)
+    this.g = bool;
+    if (this.f)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
       paramAbsListView.setInterpolator(null);
     }
     paramAbsListView = (QQAppInterface)((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
@@ -452,71 +383,108 @@ public class AdHandler
     }
   }
   
-  public void c()
+  public void c(int paramInt)
   {
-    ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).kanDianPopupWindowDismiss(a());
-    ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).doOnFeedsPause(a(), a());
-    i();
+    Object localObject1 = b();
+    if (localObject1 != null)
+    {
+      Object localObject2 = (RecommendADVideoFeedsManager)((IReadInJoyBaseAdapter)localObject1).p();
+      if (localObject2 != null) {
+        ((RecommendADVideoFeedsManager)localObject2).a = true;
+      }
+      localObject2 = ((IReadInJoyBaseAdapter)localObject1).e();
+      if ((localObject2 != null) && (((IVideoPlayManager)localObject2).a() != null))
+      {
+        VideoPlayParam localVideoPlayParam = ((IVideoPlayManager)localObject2).a();
+        if ((localVideoPlayParam != null) && (localVideoPlayParam.M))
+        {
+          ((IVideoPlayManager)localObject2).a(ReportConstants.VideoEndType.EXIT_SCENE);
+          ((IVideoPlayManager)localObject2).a(11);
+        }
+      }
+      localObject1 = ((IReadInJoyBaseAdapter)localObject1).o();
+      if (localObject1 != null) {
+        ((IExposureSupplementManager)localObject1).g();
+      }
+      if (((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(this.c))
+      {
+        AdReqFreshManager.a().a("RIJAdRefreshSceneDaily");
+        AdExposeFreshManager.a().a("RIJAdRefreshSceneDaily");
+      }
+      if (this.c == 0)
+      {
+        AdReqFreshManager.a().a("RIJAdRefreshSceneMainFeeds");
+        AdExposeFreshManager.a().a("RIJAdRefreshSceneMainFeeds");
+      }
+      if (56 == this.c)
+      {
+        AdReqFreshManager.a().a("RIJAdRefreshSceneVideoTab");
+        AdExposeFreshManager.a().a("RIJAdRefreshSceneVideoTab");
+      }
+      if (this.c == 0) {
+        AdSessionManager.a().d();
+      }
+    }
   }
   
   protected void c(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.g)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.f) {
         return;
       }
-      float f = paramAbsListView.getFlingVelocityY();
-      if ((f >= this.jdField_a_of_type_Float) && (f <= this.jdField_b_of_type_Float))
+      float f1 = paramAbsListView.getFlingVelocityY();
+      if ((f1 >= this.h) && (f1 <= this.i))
       {
-        if ((this.jdField_c_of_type_Int < paramInt) && (paramInt < paramAbsListView.getCount() - 1))
+        if ((this.e < paramInt) && (paramInt < paramAbsListView.getCount() - 1))
         {
-          this.jdField_c_of_type_Int = paramInt;
+          this.e = paramInt;
           Object localObject1 = (ListAdapter)paramAbsListView.getAdapter();
-          int i = paramInt + 1;
-          Object localObject2 = ((ListAdapter)localObject1).getItem(i);
+          int i1 = paramInt + 1;
+          Object localObject2 = ((ListAdapter)localObject1).getItem(i1);
           if (((IArticleInfoHelper)QRoute.api(IArticleInfoHelper.class)).isBaseArticleInfo(localObject2))
           {
             if (!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo((AbsBaseArticleInfo)localObject2)) {
               return;
             }
             localObject2 = (AdvertisementInfo)localObject2;
-            if (!ReadInJoyAdSwitchUtil.c((AdvertisementInfo)localObject2)) {
+            if (!ReadInJoyAdSwitchUtil.f((AdvertisementInfo)localObject2)) {
               return;
             }
-            int j = ((ListAdapter)localObject1).getItemViewType(i);
-            View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
+            int i2 = ((ListAdapter)localObject1).getItemViewType(i1);
+            View localView = (View)this.m.get(i2);
             if (localView == null)
             {
-              localObject1 = ((ListAdapter)localObject1).getView(i, null, paramAbsListView);
-              this.jdField_a_of_type_AndroidUtilSparseArray.put(j, localObject1);
+              localObject1 = ((ListAdapter)localObject1).getView(i1, null, paramAbsListView);
+              this.m.put(i2, localObject1);
             }
             else
             {
-              localObject1 = ((ListAdapter)localObject1).getView(i, localView, paramAbsListView);
+              localObject1 = ((ListAdapter)localObject1).getView(i1, localView, paramAbsListView);
             }
             localView = paramAbsListView.getChildAt(paramAbsListView.getLastVisiblePosition() - paramAbsListView.getFirstVisiblePosition());
             if ((localView != null) && (localObject1 != null))
             {
-              j = paramAbsListView.getRemainFlingDisY();
-              if (j <= 0) {
+              i2 = paramAbsListView.getRemainFlingDisY();
+              if (i2 <= 0) {
                 return;
               }
-              int k = localView.getBottom() - paramAbsListView.getBottom() - paramAbsListView.getPaddingBottom() + this.jdField_b_of_type_Int;
+              int i3 = localView.getBottom() - paramAbsListView.getBottom() - paramAbsListView.getPaddingBottom() + this.d;
               ViewGroup.LayoutParams localLayoutParams = ((View)localObject1).getLayoutParams();
               if (localLayoutParams != null) {
-                i = localLayoutParams.width;
+                i1 = localLayoutParams.width;
               } else {
-                i = -1;
+                i1 = -1;
               }
-              ((View)localObject1).measure(ViewGroup.getChildMeasureSpec(paramAbsListView.getMeasuredWidthAndState(), paramAbsListView.getPaddingLeft() + paramAbsListView.getPaddingRight(), i), 0);
-              i = ((View)localObject1).getMeasuredHeight();
-              if ((j > k) && (j < k + i / 1))
+              ((View)localObject1).measure(ViewGroup.getChildMeasureSpec(paramAbsListView.getMeasuredWidthAndState(), paramAbsListView.getPaddingLeft() + paramAbsListView.getPaddingRight(), i1), 0);
+              i1 = ((View)localObject1).getMeasuredHeight();
+              if ((i2 > i3) && (i2 < i3 + i1 / 1))
               {
-                this.jdField_a_of_type_Boolean = true;
-                localObject1 = new AdHandler.4(this, localView, paramAbsListView, j, i);
-                this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)localObject2);
-                this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.adStrategyType = 1;
+                this.f = true;
+                localObject1 = new AdHandler.4(this, localView, paramAbsListView, i2, i1);
+                this.k = ((AdvertisementInfo)localObject2);
+                this.k.adStrategyType = 1;
                 if (Build.VERSION.SDK_INT >= 16) {
                   paramAbsListView.postOnAnimation((Runnable)localObject1);
                 } else {
@@ -530,35 +498,61 @@ public class AdHandler
             return;
           }
         }
-        this.jdField_c_of_type_Int = paramInt;
+        this.e = paramInt;
         return;
       }
-      this.jdField_c_of_type_Int = paramInt;
+      this.e = paramInt;
     }
   }
   
-  public int d()
+  public boolean d(int paramInt)
   {
-    return 1;
+    AdHandler.ItemViewBuilder.a(this.b);
+    return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdProteusView(paramInt);
   }
   
-  public void e()
+  public void j() {}
+  
+  public void k()
   {
-    ((IReadInJoyFixPosArticleManager)QRoute.api(IReadInJoyFixPosArticleManager.class)).unRegister(this.jdField_a_of_type_Int);
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
-    ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).destroyDataFromFeeds(a());
+    v();
+    w();
+    if (b() != null) {
+      ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).doOnFeedsResume(b());
+    }
+    this.p.b();
+  }
+  
+  public void l()
+  {
+    ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).kanDianPopupWindowDismiss(b());
+    ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).doOnFeedsPause(b(), c());
+    t();
+    this.p.a();
+  }
+  
+  public void n()
+  {
+    ((IReadInJoyFixPosArticleManager)QRoute.api(IReadInJoyFixPosArticleManager.class)).unRegister(this.c);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.a);
+    ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).destroyDataFromFeeds(b());
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).close();
     AdMiniGameGuideManager.a.c();
   }
   
-  public void g()
+  public Boolean p()
   {
-    IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = a();
+    return null;
+  }
+  
+  public void q()
+  {
+    IReadInJoyBaseAdapter localIReadInJoyBaseAdapter = b();
     if (localIReadInJoyBaseAdapter != null)
     {
-      Object localObject = (RecommendADVideoFeedsManager)localIReadInJoyBaseAdapter.b();
+      Object localObject = (RecommendADVideoFeedsManager)localIReadInJoyBaseAdapter.p();
       if (localObject != null) {
-        ((RecommendADVideoFeedsManager)localObject).jdField_a_of_type_Boolean = false;
+        ((RecommendADVideoFeedsManager)localObject).a = false;
       }
       localObject = (QQAppInterface)((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
       if (localObject != null)
@@ -570,30 +564,17 @@ public class AdHandler
           ((IBaseUiBridge)QRoute.api(IBaseUiBridge.class)).checkAndReportAdExposure(localIReadInJoyBaseAdapter);
         }
       }
-      try
-      {
-        if ((b()) && (!ReadInJoyAdUtils.r((AbsBaseArticleInfo)a().b().get(0))) && (!ReadInJoyAdUtils.s((AbsBaseArticleInfo)a().b().get(0))))
-        {
-          ReadInJoyLogicEngineEventDispatcher.a().a(null);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("onAdTopBitmap error ");
-          ((StringBuilder)localObject).append(localException.getMessage());
-          QLog.e("AdHandler", 2, ((StringBuilder)localObject).toString());
-        }
-      }
     }
+  }
+  
+  public int s()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.handlers.AdHandler
  * JD-Core Version:    0.7.0.1
  */

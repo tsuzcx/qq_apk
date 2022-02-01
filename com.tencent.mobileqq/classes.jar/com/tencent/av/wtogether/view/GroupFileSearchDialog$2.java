@@ -6,7 +6,7 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 class GroupFileSearchDialog$2
   implements AbsListView.OnScrollListener
 {
-  int jdField_a_of_type_Int = 0;
+  int a = 0;
   int b = 0;
   
   GroupFileSearchDialog$2(GroupFileSearchDialog paramGroupFileSearchDialog) {}
@@ -14,26 +14,26 @@ class GroupFileSearchDialog$2
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    this.a = (paramInt1 + paramInt2 - 1 - 1);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     try
     {
-      int i = this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_Int;
+      int i = this.c.x;
       if (i > 0) {
         return;
       }
-      if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_b_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Int == this.b - 2)) {
-        if (this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.f)
+      if ((paramInt == 0) && (this.c.D != null) && (this.a == this.b - 2)) {
+        if (this.c.z)
         {
-          this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.c(true);
+          this.c.c(true);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.c(false);
-          this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.a(this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_b_of_type_JavaLangString);
+          this.c.c(false);
+          this.c.a(this.c.l, this.c.C, this.c.w, this.c.y);
         }
       }
       return;
@@ -43,7 +43,7 @@ class GroupFileSearchDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.2
  * JD-Core Version:    0.7.0.1
  */

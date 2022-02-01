@@ -68,14 +68,14 @@ import mqq.os.MqqHandler;
 public class EmoticonFromGroupManager
   implements IEmoticonFromGroupManager
 {
-  private static Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new EmoticonFromGroupManager.1(this);
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private IEmoticonFromGroupDBManagerService<EmoticonFromGroupEntity> jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService;
-  private final List<Integer> jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(-2000), Integer.valueOf(-1035), Integer.valueOf(-2006) });
+  private static Executor f;
+  private final List<Integer> a = Arrays.asList(new Integer[] { Integer.valueOf(-2000), Integer.valueOf(-1035), Integer.valueOf(-2006) });
   private final List<Integer> b = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(3000) });
+  private BaseQQAppInterface c;
+  private Context d;
+  private IEmoticonFromGroupDBManagerService<EmoticonFromGroupEntity> e;
+  private Handler.Callback g = new EmoticonFromGroupManager.1(this);
+  private Handler h = new Handler(Looper.getMainLooper(), this.g);
   
   static
   {
@@ -86,23 +86,23 @@ public class EmoticonFromGroupManager
     localThreadPoolParams.priority = 5;
     localThreadPoolParams.queue = new LinkedBlockingQueue();
     localThreadPoolParams.keepAliveTime = 10;
-    jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+    f = ThreadManager.newFreeThreadPool(localThreadPoolParams);
   }
   
   public EmoticonFromGroupManager() {}
   
   public EmoticonFromGroupManager(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getApp();
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService = ((IEmoticonFromGroupDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IEmoticonFromGroupDBManagerService.class));
+    this.c = paramBaseQQAppInterface;
+    this.d = this.c.getApp();
+    this.e = ((IEmoticonFromGroupDBManagerService)this.c.getRuntimeService(IEmoticonFromGroupDBManagerService.class));
   }
   
-  private String b(String paramString)
+  private String e(String paramString)
   {
     if ((paramString != null) && (!"".equals(paramString)))
     {
-      String str = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin();
+      String str = this.c.getCurrentAccountUin();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(AppConstants.SDCARD_IMG_FAVORITE);
       localStringBuilder.append(DiySecureFileHelper.a(str));
@@ -115,7 +115,7 @@ public class EmoticonFromGroupManager
   
   public int a()
   {
-    return (this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - ScreenUtil.dip2px(11.0F) * 2 - ScreenUtil.dip2px(2.0F) * 2) / 3;
+    return (this.d.getResources().getDisplayMetrics().widthPixels - ScreenUtil.dip2px(11.0F) * 2 - ScreenUtil.dip2px(2.0F) * 2) / 3;
   }
   
   public int a(URLDrawable paramURLDrawable)
@@ -132,7 +132,7 @@ public class EmoticonFromGroupManager
         }
         if ((str != null) && (!"".equals(str)))
         {
-          localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin();
+          localObject = this.c.getCurrentAccountUin();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(AppConstants.SDCARD_IMG_FAVORITE);
           localStringBuilder.append(DiySecureFileHelper.a((String)localObject));
@@ -149,7 +149,7 @@ public class EmoticonFromGroupManager
               QLog.i("Emo.onUploadPic", 2, ((StringBuilder)localObject).toString());
             }
             paramURLDrawable.saveTo(str);
-            int i = EmotionForEmoGroupUtil.a(this.jdField_a_of_type_AndroidContentContext, str);
+            int i = EmotionForEmoGroupUtil.a(this.d, str);
             return i;
           }
           catch (IOException paramURLDrawable)
@@ -312,41 +312,9 @@ public class EmoticonFromGroupManager
     return localEmoticonFromGroupEntity;
   }
   
-  public MessageForPic a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
-  {
-    if (paramEmoticonFromGroupEntity == null) {
-      return null;
-    }
-    MessageRecord localMessageRecord = a(paramEmoticonFromGroupEntity.troopUin, paramEmoticonFromGroupEntity.fromType, paramEmoticonFromGroupEntity.msgseq);
-    if (localMessageRecord != null)
-    {
-      if ((localMessageRecord instanceof MessageForPic)) {
-        return (MessageForPic)localMessageRecord;
-      }
-      if (b(localMessageRecord))
-      {
-        Iterator localIterator = a(localMessageRecord).iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (MessageRecord)localIterator.next();
-          if ((localObject instanceof MessageForPic))
-          {
-            localObject = (MessageForPic)localObject;
-            if (((MessageForPic)localObject).md5.equals(paramEmoticonFromGroupEntity.md5))
-            {
-              a((MessageForPic)localObject, localMessageRecord);
-              return localObject;
-            }
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
   protected MessageRecord a(String paramString, int paramInt, long paramLong)
   {
-    return ((IEmosmService)QRoute.api(IEmosmService.class)).queryMsgItemByShmsgseq(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramString, paramInt, paramLong);
+    return ((IEmosmService)QRoute.api(IEmosmService.class)).queryMsgItemByShmsgseq(this.c, paramString, paramInt, paramLong);
   }
   
   public String a(long paramLong)
@@ -365,42 +333,42 @@ public class EmoticonFromGroupManager
       {
         if (localTime1.year == localTime2.year)
         {
-          double d = l;
-          Double.isNaN(d);
-          int i = (int)Math.ceil(d / 86400000.0D) - 1;
+          double d1 = l;
+          Double.isNaN(d1);
+          int i = (int)Math.ceil(d1 / 86400000.0D) - 1;
           if (i == 0) {
-            str = HardCodeUtil.a(2131704161);
+            str = HardCodeUtil.a(2131902083);
           }
           for (;;)
           {
             return str;
             if (1 == i) {
-              str = HardCodeUtil.a(2131704152);
+              str = HardCodeUtil.a(2131902074);
             } else if (7 > i) {
               switch (localTime1.weekDay)
               {
               default: 
                 return null;
               case 6: 
-                str = HardCodeUtil.a(2131704188);
+                str = HardCodeUtil.a(2131902110);
                 break;
               case 5: 
-                str = HardCodeUtil.a(2131704180);
+                str = HardCodeUtil.a(2131902102);
                 break;
               case 4: 
-                str = HardCodeUtil.a(2131704156);
+                str = HardCodeUtil.a(2131902078);
                 break;
               case 3: 
-                str = HardCodeUtil.a(2131704174);
+                str = HardCodeUtil.a(2131902096);
                 break;
               case 2: 
-                str = HardCodeUtil.a(2131704160);
+                str = HardCodeUtil.a(2131902082);
                 break;
               case 1: 
-                str = HardCodeUtil.a(2131704197);
+                str = HardCodeUtil.a(2131902119);
                 break;
               case 0: 
-                str = HardCodeUtil.a(2131704173);
+                str = HardCodeUtil.a(2131902095);
                 break;
               }
             } else {
@@ -445,18 +413,6 @@ public class EmoticonFromGroupManager
     return str;
   }
   
-  public String a(String paramString)
-  {
-    if ((paramString != null) && (!paramString.isEmpty()) && (AbsDownloader.hasFile(paramString)))
-    {
-      paramString = AbsDownloader.getFile(paramString);
-      if (paramString != null) {
-        return SecUtil.getFileMd5(paramString.getAbsolutePath());
-      }
-    }
-    return "";
-  }
-  
   public String a(String paramString1, int paramInt, String paramString2)
   {
     long l = a(paramString1, 2);
@@ -469,58 +425,6 @@ public class EmoticonFromGroupManager
     return paramString1.toString();
   }
   
-  public List<EmoticonFromGroupEntity> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getEmoDataForShow();
-  }
-  
-  protected List<MessageRecord> a(MessageRecord paramMessageRecord)
-  {
-    return ((IEmosmService)QRoute.api(IEmosmService.class)).getMsgElemListForMessageForMixedMsg(paramMessageRecord);
-  }
-  
-  public Map<String, List<EmoticonFromGroupEntity>> a(List<EmoticonFromGroupEntity> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      TreeMap localTreeMap = new TreeMap(new EmoticonFromGroupManager.2(this));
-      Iterator localIterator = paramList.iterator();
-      for (;;)
-      {
-        paramList = localTreeMap;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        paramList = (EmoticonFromGroupEntity)localIterator.next();
-        String str = b(paramList.timestamp, 2);
-        if (localTreeMap.containsKey(str))
-        {
-          ((List)localTreeMap.get(str)).add(paramList);
-        }
-        else
-        {
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(paramList);
-          localTreeMap.put(str, localArrayList);
-        }
-      }
-    }
-    paramList = null;
-    return paramList;
-  }
-  
-  public void a()
-  {
-    ThreadManager.post(new EmoticonFromGroupManager.4(this), 5, null, true);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("init mEmoManager.mCountOfSpare:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getCountOfSpare());
-      QLog.d("EmoticonFromGroup_Manager", 2, localStringBuilder.toString());
-    }
-  }
-  
   public void a(Context paramContext, MessageForPic paramMessageForPic, View paramView)
   {
     if (paramMessageForPic == null) {
@@ -531,7 +435,7 @@ public class EmoticonFromGroupManager
   
   public void a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.update2DB(paramEmoticonFromGroupEntity, 2);
+    this.e.update2DB(paramEmoticonFromGroupEntity, 2);
   }
   
   protected void a(MessageForPic paramMessageForPic, MessageRecord paramMessageRecord)
@@ -539,72 +443,19 @@ public class EmoticonFromGroupManager
     ((IEmosmService)QRoute.api(IEmosmService.class)).copyBaseInfoFromMixedToPic(paramMessageForPic, paramMessageRecord);
   }
   
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if (a(paramMessageRecord)) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.deleteCacheAndDB(paramMessageRecord);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface != null)
-    {
-      MqqHandler localMqqHandler = ((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityHander(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
-      if (localMqqHandler != null)
-      {
-        Object localObject2 = null;
-        Object localObject1 = b();
-        if (localObject1 == null)
-        {
-          QLog.e("EmoticonFromGroup_Manager", 1, "save to WY, datas is null.");
-          return;
-        }
-        Iterator localIterator = ((List)localObject1).iterator();
-        do
-        {
-          localObject1 = localObject2;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject1 = (EmoticonFromGroupEntity)localIterator.next();
-        } while (!paramString.equals(((EmoticonFromGroupEntity)localObject1).md5));
-        if (localObject1 != null)
-        {
-          if (((EmoticonFromGroupEntity)localObject1).msg != null)
-          {
-            if ((!((IEmosmService)QRoute.api(IEmosmService.class)).isFlashPicMsg(((EmoticonFromGroupEntity)localObject1).msg)) && (!((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(((EmoticonFromGroupEntity)localObject1).msg)))
-            {
-              ((IEmosmService)QRoute.api(IEmosmService.class)).saveAioMedia2Weiyun(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, ((EmoticonFromGroupEntity)localObject1).msg, new WeiyunCallbackImpl(localMqqHandler));
-              this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-              return;
-            }
-            ((IFMToastUtil)QRoute.api(IFMToastUtil.class)).toastError(2131692557);
-            return;
-          }
-          QLog.e("EmoticonFromGroup_Manager.msgnull", 1, "save2WY msg is null.");
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("EmoticonFromGroup_Manager", 2, "save2WY, tarEmo is null.");
-        }
-      }
-    }
-  }
-  
   public void a(List<MessageRecord> paramList)
   {
-    if (!a()) {
+    if (!e()) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getDBCacheSize() < 600) && (this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getAddedEmoCacheDataSize() < 300))
+    if ((this.e.getDBCacheSize() < 600) && (this.e.getAddedEmoCacheDataSize() < 300))
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         MessageRecord localMessageRecord = (MessageRecord)paramList.next();
         Integer localInteger = Integer.valueOf(localMessageRecord.msgtype);
-        if ((this.jdField_a_of_type_JavaUtilList.contains(localInteger)) && (!((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(localMessageRecord)) && (!((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(localMessageRecord)))
+        if ((this.a.contains(localInteger)) && (!((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(localMessageRecord)) && (!((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(localMessageRecord)))
         {
           if (QLog.isColorLevel())
           {
@@ -613,7 +464,7 @@ public class EmoticonFromGroupManager
             localStringBuilder.append(localInteger);
             QLog.i("EmoticonFromGroup_Manager", 2, localStringBuilder.toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.updateDBCache(localMessageRecord);
+          this.e.updateDBCache(localMessageRecord);
         }
       }
       return;
@@ -623,73 +474,9 @@ public class EmoticonFromGroupManager
     }
   }
   
-  public boolean a()
-  {
-    Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.vip_individuation.name());
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject != null) && (localObject.length >= 8) && ("0".equals(localObject[7]))) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public boolean a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
-  {
-    Activity localActivity = Foreground.getTopActivity();
-    if (localActivity == null)
-    {
-      QLog.e("EmoticonFromGroup_Manager", 1, "activity is null.");
-      return false;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getCountOfSpare() < 1)
-    {
-      if (300 == FavEmoConstant.a)
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131689648, 0).b(2131299168);
-      }
-      else if (144 == FavEmoConstant.a)
-      {
-        paramEmoticonFromGroupEntity = new EmoticonFromGroupManager.3(this, localActivity);
-        if (localActivity != null)
-        {
-          paramEmoticonFromGroupEntity = DialogUtil.a(localActivity, 0, HardCodeUtil.a(2131704177), localActivity.getString(2131689647), HardCodeUtil.a(2131704175), HardCodeUtil.a(2131704199), paramEmoticonFromGroupEntity, paramEmoticonFromGroupEntity);
-          if (paramEmoticonFromGroupEntity != null) {
-            paramEmoticonFromGroupEntity.show();
-          }
-        }
-      }
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.decreaseCountOfSpare();
-    c(paramEmoticonFromGroupEntity);
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, 2131691912, 0).b(2131299168);
-    return true;
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null)
-    {
-      bool1 = bool2;
-      if (this.b.contains(Integer.valueOf(paramMessageRecord.istroop)))
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramMessageRecord.msgtype))) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
   public boolean a(String paramString)
   {
-    Object localObject = (IFavroamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class);
+    Object localObject = (IFavroamingDBManagerService)this.c.getRuntimeService(IFavroamingDBManagerService.class);
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonFromGroup_Manager", 2, "call getEmoticonDataList from EmoticonFromGroupManager.filterFavoriteEmoticonAfterDownload");
     }
@@ -732,7 +519,7 @@ public class EmoticonFromGroupManager
   
   public boolean a(List<CustomEmotionData> paramList, String paramString)
   {
-    paramString = a(paramString);
+    paramString = d(paramString);
     if (!paramList.isEmpty())
     {
       paramList = paramList.iterator();
@@ -749,9 +536,187 @@ public class EmoticonFromGroupManager
     return false;
   }
   
-  public int b()
+  public String b(long paramLong, int paramInt)
   {
-    Object localObject = (IFavroamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IFavroamingDBManagerService.class);
+    return a(paramLong * 1000L, paramInt);
+  }
+  
+  public List<EmoticonFromGroupEntity> b()
+  {
+    return this.e.getEmoDataForShow();
+  }
+  
+  public Map<String, List<EmoticonFromGroupEntity>> b(List<EmoticonFromGroupEntity> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      TreeMap localTreeMap = new TreeMap(new EmoticonFromGroupManager.2(this));
+      Iterator localIterator = paramList.iterator();
+      for (;;)
+      {
+        paramList = localTreeMap;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramList = (EmoticonFromGroupEntity)localIterator.next();
+        String str = b(paramList.timestamp, 2);
+        if (localTreeMap.containsKey(str))
+        {
+          ((List)localTreeMap.get(str)).add(paramList);
+        }
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(paramList);
+          localTreeMap.put(str, localArrayList);
+        }
+      }
+    }
+    paramList = null;
+    return paramList;
+  }
+  
+  public void b(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
+  {
+    this.e.deleteDataFromCache(paramEmoticonFromGroupEntity);
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    if (d(paramMessageRecord)) {
+      this.e.deleteCacheAndDB(paramMessageRecord);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.c != null)
+    {
+      MqqHandler localMqqHandler = ((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityHander(this.c);
+      if (localMqqHandler != null)
+      {
+        Object localObject2 = null;
+        Object localObject1 = c();
+        if (localObject1 == null)
+        {
+          QLog.e("EmoticonFromGroup_Manager", 1, "save to WY, datas is null.");
+          return;
+        }
+        Iterator localIterator = ((List)localObject1).iterator();
+        do
+        {
+          localObject1 = localObject2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject1 = (EmoticonFromGroupEntity)localIterator.next();
+        } while (!paramString.equals(((EmoticonFromGroupEntity)localObject1).md5));
+        if (localObject1 != null)
+        {
+          if (((EmoticonFromGroupEntity)localObject1).msg != null)
+          {
+            if ((!((IEmosmService)QRoute.api(IEmosmService.class)).isFlashPicMsg(((EmoticonFromGroupEntity)localObject1).msg)) && (!((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(((EmoticonFromGroupEntity)localObject1).msg)))
+            {
+              ((IEmosmService)QRoute.api(IEmosmService.class)).saveAioMedia2Weiyun(this.c, ((EmoticonFromGroupEntity)localObject1).msg, new WeiyunCallbackImpl(localMqqHandler));
+              this.h.sendEmptyMessage(1);
+              return;
+            }
+            ((IFMToastUtil)QRoute.api(IFMToastUtil.class)).toastError(2131889580);
+            return;
+          }
+          QLog.e("EmoticonFromGroup_Manager.msgnull", 1, "save2WY msg is null.");
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("EmoticonFromGroup_Manager", 2, "save2WY, tarEmo is null.");
+        }
+      }
+    }
+  }
+  
+  public MessageForPic c(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
+  {
+    if (paramEmoticonFromGroupEntity == null) {
+      return null;
+    }
+    MessageRecord localMessageRecord = a(paramEmoticonFromGroupEntity.troopUin, paramEmoticonFromGroupEntity.fromType, paramEmoticonFromGroupEntity.msgseq);
+    if (localMessageRecord != null)
+    {
+      if ((localMessageRecord instanceof MessageForPic)) {
+        return (MessageForPic)localMessageRecord;
+      }
+      if (f(localMessageRecord))
+      {
+        Iterator localIterator = e(localMessageRecord).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (MessageRecord)localIterator.next();
+          if ((localObject instanceof MessageForPic))
+          {
+            localObject = (MessageForPic)localObject;
+            if (((MessageForPic)localObject).md5.equals(paramEmoticonFromGroupEntity.md5))
+            {
+              a((MessageForPic)localObject, localMessageRecord);
+              return localObject;
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  public List<EmoticonFromGroupEntity> c()
+  {
+    return this.e.getEmoDataShowing();
+  }
+  
+  public void c(MessageRecord paramMessageRecord)
+  {
+    b(paramMessageRecord);
+  }
+  
+  public void c(List<EmoticonFromGroupEntity> paramList)
+  {
+    this.e.update2DB(paramList, 2);
+  }
+  
+  public boolean c(String paramString)
+  {
+    Iterator localIterator = c().iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (EmoticonFromGroupEntity)localIterator.next();
+      if ((paramString.equals(((EmoticonFromGroupEntity)localObject).md5)) && (((EmoticonFromGroupEntity)localObject).status != 0))
+      {
+        paramString = (String)localObject;
+        break label61;
+      }
+    }
+    paramString = null;
+    label61:
+    Object localObject = Message.obtain();
+    ((Message)localObject).what = 2;
+    ((Message)localObject).obj = paramString;
+    this.h.sendMessage((Message)localObject);
+    int i = this.e.getCountOfSpare();
+    boolean bool = true;
+    if (i < 1) {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("isSuccess: ");
+      paramString.append(bool);
+      QLog.i("EmoticonFromGroup_Manager", 2, paramString.toString());
+    }
+    return bool;
+  }
+  
+  public int d()
+  {
+    Object localObject = (IFavroamingDBManagerService)this.c.getRuntimeService(IFavroamingDBManagerService.class);
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonFromGroup_Manager", 2, "Call getEmoticonDataList from getFavEmoCount.");
     }
@@ -788,70 +753,80 @@ public class EmoticonFromGroupManager
     return i;
   }
   
-  public String b(long paramLong, int paramInt)
+  public String d(String paramString)
   {
-    return a(paramLong * 1000L, paramInt);
-  }
-  
-  public List<EmoticonFromGroupEntity> b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getEmoDataShowing();
-  }
-  
-  public void b(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.deleteDataFromCache(paramEmoticonFromGroupEntity);
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    a(paramMessageRecord);
-  }
-  
-  public void b(List<EmoticonFromGroupEntity> paramList)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.update2DB(paramList, 2);
-  }
-  
-  protected boolean b(MessageRecord paramMessageRecord)
-  {
-    return ((IEmosmService)QRoute.api(IEmosmService.class)).isMessageForMixedMsg(paramMessageRecord);
-  }
-  
-  public boolean b(String paramString)
-  {
-    Iterator localIterator = b().iterator();
-    while (localIterator.hasNext())
+    if ((paramString != null) && (!paramString.isEmpty()) && (AbsDownloader.hasFile(paramString)))
     {
-      localObject = (EmoticonFromGroupEntity)localIterator.next();
-      if ((paramString.equals(((EmoticonFromGroupEntity)localObject).md5)) && (((EmoticonFromGroupEntity)localObject).status != 0))
-      {
-        paramString = (String)localObject;
-        break label61;
+      paramString = AbsDownloader.getFile(paramString);
+      if (paramString != null) {
+        return SecUtil.getFileMd5(paramString.getAbsolutePath());
       }
     }
-    paramString = null;
-    label61:
-    Object localObject = Message.obtain();
-    ((Message)localObject).what = 2;
-    ((Message)localObject).obj = paramString;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-    int i = this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getCountOfSpare();
-    boolean bool = true;
-    if (i < 1) {
-      bool = false;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("isSuccess: ");
-      paramString.append(bool);
-      QLog.i("EmoticonFromGroup_Manager", 2, paramString.toString());
-    }
-    return bool;
+    return "";
   }
   
-  public void c(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
+  public void d(List<EmoticonFromGroupEntity> paramList)
+  {
+    this.e.deleteDataFromCache(paramList);
+  }
+  
+  public boolean d(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
+  {
+    Activity localActivity = Foreground.getTopActivity();
+    if (localActivity == null)
+    {
+      QLog.e("EmoticonFromGroup_Manager", 1, "activity is null.");
+      return false;
+    }
+    if (this.e.getCountOfSpare() < 1)
+    {
+      if (300 == FavEmoConstant.a)
+      {
+        QQToast.makeText(this.d, 2131886259, 0).show(2131299920);
+      }
+      else if (144 == FavEmoConstant.a)
+      {
+        paramEmoticonFromGroupEntity = new EmoticonFromGroupManager.3(this, localActivity);
+        if (localActivity != null)
+        {
+          paramEmoticonFromGroupEntity = DialogUtil.a(localActivity, 0, HardCodeUtil.a(2131902099), localActivity.getString(2131886258), HardCodeUtil.a(2131902097), HardCodeUtil.a(2131902121), paramEmoticonFromGroupEntity, paramEmoticonFromGroupEntity);
+          if (paramEmoticonFromGroupEntity != null) {
+            paramEmoticonFromGroupEntity.show();
+          }
+        }
+      }
+      return false;
+    }
+    this.e.decreaseCountOfSpare();
+    e(paramEmoticonFromGroupEntity);
+    QQToast.makeText(this.d, 2, 2131888879, 0).show(2131299920);
+    return true;
+  }
+  
+  public boolean d(MessageRecord paramMessageRecord)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramMessageRecord != null)
+    {
+      bool1 = bool2;
+      if (this.b.contains(Integer.valueOf(paramMessageRecord.istroop)))
+      {
+        bool1 = bool2;
+        if (this.a.contains(Integer.valueOf(paramMessageRecord.msgtype))) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  protected List<MessageRecord> e(MessageRecord paramMessageRecord)
+  {
+    return ((IEmosmService)QRoute.api(IEmosmService.class)).getMsgElemListForMessageForMixedMsg(paramMessageRecord);
+  }
+  
+  public void e(EmoticonFromGroupEntity paramEmoticonFromGroupEntity)
   {
     if (paramEmoticonFromGroupEntity == null) {
       return;
@@ -867,34 +842,59 @@ public class EmoticonFromGroupManager
     }
     if (1 != ((URLDrawable)localObject).getStatus())
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getUploadDrawableList().add(localObject);
+      this.e.getUploadDrawableList().add(localObject);
       ((URLDrawable)localObject).setURLDrawableListener(new EmoticonFromGroupManager.6(this, (URLDrawable)localObject));
       ((URLDrawable)localObject).startDownload();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.getUploadDrawableList().remove(localObject);
-      jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new EmoticonFromGroupManager.7(this, (URLDrawable)localObject));
+      this.e.getUploadDrawableList().remove(localObject);
+      f.execute(new EmoticonFromGroupManager.7(this, (URLDrawable)localObject));
     }
     paramEmoticonFromGroupEntity.status = 0;
   }
   
-  public void c(List<EmoticonFromGroupEntity> paramList)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonFromGroupDBManagerService.deleteDataFromCache(paramList);
-  }
-  
-  public void d(List<EmoticonFromGroupEntity> paramList)
+  public void e(List<EmoticonFromGroupEntity> paramList)
   {
     if (!paramList.isEmpty()) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, 2131691912, 0).b(2131299168);
+      QQToast.makeText(this.d, 2, 2131888879, 0).show(2131299920);
     }
-    jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new EmoticonFromGroupManager.5(this, paramList));
+    f.execute(new EmoticonFromGroupManager.5(this, paramList));
+  }
+  
+  public boolean e()
+  {
+    Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.vip_individuation.name());
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length >= 8) && ("0".equals(localObject[7]))) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public void f()
+  {
+    ThreadManager.post(new EmoticonFromGroupManager.4(this), 5, null, true);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init mEmoManager.mCountOfSpare:");
+      localStringBuilder.append(this.e.getCountOfSpare());
+      QLog.d("EmoticonFromGroup_Manager", 2, localStringBuilder.toString());
+    }
+  }
+  
+  protected boolean f(MessageRecord paramMessageRecord)
+  {
+    return ((IEmosmService)QRoute.api(IEmosmService.class)).isMessageForMixedMsg(paramMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager
  * JD-Core Version:    0.7.0.1
  */

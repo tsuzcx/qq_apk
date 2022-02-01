@@ -35,12 +35,12 @@ class PreloadingFragment$3$2
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append((String)localObject1);
-    QQToast.a((Context)localObject2, 1, localStringBuilder.toString(), 1).a();
+    QQToast.makeText((Context)localObject2, 1, localStringBuilder.toString(), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.3.2
  * JD-Core Version:    0.7.0.1
  */

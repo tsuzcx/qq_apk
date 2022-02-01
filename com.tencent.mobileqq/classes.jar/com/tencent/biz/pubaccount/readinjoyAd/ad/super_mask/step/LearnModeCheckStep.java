@@ -8,15 +8,15 @@ import kotlin.Metadata;
 public final class LearnModeCheckStep
   extends SuperMaskStep
 {
-  public boolean a()
+  public boolean c()
   {
-    boolean bool = StudyModeManager.a();
+    boolean bool = StudyModeManager.h();
     return SuperMaskStepUtil.a.a(bool ^ true, (SuperMaskStep)this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.LearnModeCheckStep
  * JD-Core Version:    0.7.0.1
  */

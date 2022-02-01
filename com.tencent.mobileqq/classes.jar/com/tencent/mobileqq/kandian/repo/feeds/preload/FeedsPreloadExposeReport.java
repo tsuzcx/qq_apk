@@ -24,7 +24,7 @@ public class FeedsPreloadExposeReport
   public static void a(List<AbsBaseArticleInfo> paramList, String paramString)
   {
     QLog.d("FeedsPreloadExposeReport", 1, "reportFeedsExposeRewrite.");
-    Object localObject = (ReadInJoyLogicManager)((QQAppInterface)RIJQQAppInterfaceUtil.a()).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+    Object localObject = (ReadInJoyLogicManager)((QQAppInterface)RIJQQAppInterfaceUtil.e()).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
     if (localObject != null)
     {
       localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine();
@@ -36,11 +36,11 @@ public class FeedsPreloadExposeReport
   
   public static void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    String str = RIJQQAppInterfaceUtil.a();
+    String str = RIJQQAppInterfaceUtil.d();
     HashMap localHashMap = new HashMap();
     localHashMap.put("retCode", String.valueOf(paramInt));
     localHashMap.put("uin", str);
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if ((localAppRuntime != null) && (paramLong >= 0L) && (paramLong <= 30000L))
     {
       StatisticCollector.getInstance(localAppRuntime.getApplication()).collectPerformance(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
@@ -59,18 +59,18 @@ public class FeedsPreloadExposeReport
       {
         Object localObject1 = (AbsBaseArticleInfo)paramList.next();
         Object localObject2;
-        if ((RIJFeedsType.J((AbsBaseArticleInfo)localObject1)) && (((AbsBaseArticleInfo)localObject1).mNewPolymericInfo != null) && (((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.a != null))
+        if ((RIJFeedsType.P((AbsBaseArticleInfo)localObject1)) && (((AbsBaseArticleInfo)localObject1).mNewPolymericInfo != null) && (((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.p != null))
         {
-          localObject1 = ((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.a.iterator();
+          localObject1 = ((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.p.iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (NewPolymericInfo.PackArticleInfo)((Iterator)localObject1).next();
             ReportInfo localReportInfo = new ReportInfo();
-            localReportInfo.mUin = RIJQQAppInterfaceUtil.a();
+            localReportInfo.mUin = RIJQQAppInterfaceUtil.c();
             localReportInfo.mOperation = 56;
             localReportInfo.mSourceArticleId = ((NewPolymericInfo.PackArticleInfo)localObject2).a;
-            localReportInfo.mInnerId = ((NewPolymericInfo.PackArticleInfo)localObject2).g;
-            localReportInfo.mAlgorithmId = ((int)((NewPolymericInfo.PackArticleInfo)localObject2).b);
+            localReportInfo.mInnerId = ((NewPolymericInfo.PackArticleInfo)localObject2).l;
+            localReportInfo.mAlgorithmId = ((int)((NewPolymericInfo.PackArticleInfo)localObject2).i);
             localReportInfo.mGWCommonData = "";
             localArrayList.add(localReportInfo);
           }
@@ -78,7 +78,7 @@ public class FeedsPreloadExposeReport
         else
         {
           localObject2 = new ReportInfo();
-          ((ReportInfo)localObject2).mUin = RIJQQAppInterfaceUtil.a();
+          ((ReportInfo)localObject2).mUin = RIJQQAppInterfaceUtil.c();
           ((ReportInfo)localObject2).mOperation = 56;
           ((ReportInfo)localObject2).mSourceArticleId = ((AbsBaseArticleInfo)localObject1).mArticleID;
           ((ReportInfo)localObject2).mInnerId = ((AbsBaseArticleInfo)localObject1).innerUniqueID;
@@ -89,7 +89,7 @@ public class FeedsPreloadExposeReport
           {
             localObject1 = (AbsBaseArticleInfo)((AbsBaseArticleInfo)localObject1).mSubArticleList.get(0);
             localObject2 = new ReportInfo();
-            ((ReportInfo)localObject2).mUin = RIJQQAppInterfaceUtil.a();
+            ((ReportInfo)localObject2).mUin = RIJQQAppInterfaceUtil.c();
             ((ReportInfo)localObject2).mOperation = 56;
             ((ReportInfo)localObject2).mSourceArticleId = ((AbsBaseArticleInfo)localObject1).mArticleID;
             ((ReportInfo)localObject2).mInnerId = ((AbsBaseArticleInfo)localObject1).innerUniqueID;
@@ -105,7 +105,7 @@ public class FeedsPreloadExposeReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadExposeReport
  * JD-Core Version:    0.7.0.1
  */

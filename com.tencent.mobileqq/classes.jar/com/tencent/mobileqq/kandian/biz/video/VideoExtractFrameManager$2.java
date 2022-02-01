@@ -23,23 +23,23 @@ final class VideoExtractFrameManager$2
     }
     try
     {
-      int i = VideoExtractFrameManager.a().optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-      VideoExtractFrameManager.a().put("KEY_LOCAL_RESULT_SUCC_COUNT", i + 1);
-      RIJSPUtils.a("kandian_video_extract_frame_local_result", VideoExtractFrameManager.a().toString());
+      int i = VideoExtractFrameManager.d().optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
+      VideoExtractFrameManager.d().put("KEY_LOCAL_RESULT_SUCC_COUNT", i + 1);
+      RIJSPUtils.a("kandian_video_extract_frame_local_result", VideoExtractFrameManager.d().toString());
       label76:
-      VideoExtractFrameManager.a(System.currentTimeMillis() - VideoExtractFrameManager.a());
+      VideoExtractFrameManager.a(System.currentTimeMillis() - VideoExtractFrameManager.e());
       VideoExtractFrameManager.b(paramLong);
       VideoExtractFrameManager.a(BaseApplication.getContext(), this.a, paramInt, paramString, paramHashMap);
-      if (!VideoExtractFrameManager.a().compareAndSet(false, true))
+      if (!VideoExtractFrameManager.c().compareAndSet(false, true))
       {
         if (QLog.isColorLevel()) {
           QLog.d("VideoExtractFrame", 2, "任务已销毁，直接返回");
         }
         return;
       }
-      if (VideoExtractFrameManager.a() != null)
+      if (VideoExtractFrameManager.f() != null)
       {
-        VideoExtractFrameManager.a().b();
+        VideoExtractFrameManager.f().b();
         VideoExtractFrameManager.a(null);
       }
       return;
@@ -52,7 +52,7 @@ final class VideoExtractFrameManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoExtractFrameManager.2
  * JD-Core Version:    0.7.0.1
  */

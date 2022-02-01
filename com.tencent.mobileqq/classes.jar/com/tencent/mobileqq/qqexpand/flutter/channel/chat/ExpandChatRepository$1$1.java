@@ -18,18 +18,18 @@ class ExpandChatRepository$1$1
   {
     Object localObject3;
     Object localObject4;
-    if (!ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$1.a).contains(Integer.valueOf(this.jdField_a_of_type_Int)))
+    if (!ExpandChatRepository.a(this.d.a).contains(Integer.valueOf(this.a)))
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("onGetExtendFriendOnlineState not mine req:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(this.a);
         QLog.d("expand.chat.ExpandChatRepository", 1, ((StringBuilder)localObject1).toString());
       }
-      localObject1 = new HashSet(ExpandChatRepository.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$1.a));
+      localObject1 = new HashSet(ExpandChatRepository.b(this.d.a));
       localObject2 = new ArrayList();
-      localObject3 = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject3 = this.b.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (Long)((Iterator)localObject3).next();
@@ -37,19 +37,19 @@ class ExpandChatRepository$1$1
           ((List)localObject2).add(localObject4);
         }
       }
-      ExpandChatRepository.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$1.a).addAll((Collection)localObject2);
+      ExpandChatRepository.b(this.d.a).addAll((Collection)localObject2);
     }
     else
     {
-      ExpandChatRepository.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$1.a).clear();
-      ExpandChatRepository.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$1.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      ExpandChatRepository.b(this.d.a).clear();
+      ExpandChatRepository.b(this.d.a).addAll(this.b);
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("onGetExtendFriendOnlineState cached list size=");
-    ((StringBuilder)localObject1).append(ExpandChatRepository.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$1.a).size());
+    ((StringBuilder)localObject1).append(ExpandChatRepository.b(this.d.a).size());
     QLog.i("expand.chat.ExpandChatRepository", 1, ((StringBuilder)localObject1).toString());
     localObject1 = new ArrayList();
-    Object localObject2 = this.b.iterator();
+    Object localObject2 = this.c.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject4 = (Long)((Iterator)localObject2).next();
@@ -58,7 +58,7 @@ class ExpandChatRepository$1$1
       localStringBuilder.append(localObject4);
       localStringBuilder.append("");
       ((OnlineStateInfo)localObject3).uin = localStringBuilder.toString();
-      ((OnlineStateInfo)localObject3).online = this.jdField_a_of_type_JavaUtilList.contains(localObject4);
+      ((OnlineStateInfo)localObject3).online = this.b.contains(localObject4);
       ((List)localObject1).add(localObject3);
       if ((((OnlineStateInfo)localObject3).online) && (QLog.isColorLevel()))
       {
@@ -68,12 +68,12 @@ class ExpandChatRepository$1$1
         QLog.d("expand.chat.ExpandChatRepository", 1, ((StringBuilder)localObject4).toString());
       }
     }
-    ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$1.a, (List)localObject1, this.jdField_a_of_type_Int);
+    ExpandChatRepository.a(this.d.a, (List)localObject1, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatRepository.1.1
  * JD-Core Version:    0.7.0.1
  */

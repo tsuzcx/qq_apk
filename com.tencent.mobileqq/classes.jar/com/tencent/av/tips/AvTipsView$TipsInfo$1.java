@@ -3,16 +3,15 @@ package com.tencent.av.tips;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.tips.data.HypeLinkAvTipsItem;
 
 final class AvTipsView$TipsInfo$1
   extends ClickableSpan
 {
-  AvTipsView$TipsInfo$1(HypeLinkAvTipsItem paramHypeLinkAvTipsItem) {}
+  AvTipsView$TipsInfo$1(View.OnClickListener paramOnClickListener) {}
   
   public void onClick(View paramView)
   {
-    View.OnClickListener localOnClickListener = this.a.a();
+    View.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
       localOnClickListener.onClick(paramView);
     }

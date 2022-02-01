@@ -47,13 +47,13 @@ class BaseMsgBoxActivity$8
         return;
       }
       localObject = this.a;
-      BaseMsgBoxActivity.access$100((BaseMsgBoxActivity)localObject, ((BaseMsgBoxActivity)localObject).mTabBarView.a(j));
+      BaseMsgBoxActivity.access$100((BaseMsgBoxActivity)localObject, ((BaseMsgBoxActivity)localObject).mTabBarView.b(j));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.8
  * JD-Core Version:    0.7.0.1
  */

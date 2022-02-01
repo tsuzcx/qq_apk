@@ -62,13 +62,13 @@ public class SubAccountUgActivity
   
   private void updateLayoutForMultiWindow(boolean paramBoolean)
   {
-    View localView = findViewById(2131378053);
+    View localView = findViewById(2131446553);
     if (localView != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       if (paramBoolean)
       {
-        localView.setPadding(localView.getPaddingLeft(), ViewUtils.a(260.0F), localView.getPaddingRight(), localView.getPaddingBottom());
+        localView.setPadding(localView.getPaddingLeft(), ViewUtils.dip2px(260.0F), localView.getPaddingRight(), localView.getPaddingBottom());
         return;
       }
       localView.setPadding(localView.getPaddingLeft(), 0, localView.getPaddingRight(), localView.getPaddingBottom());
@@ -78,15 +78,15 @@ public class SubAccountUgActivity
   public void bindSwitchUnbind()
   {
     this.mHasBindAccount = false;
-    View localView = findViewById(2131378053);
-    TextView localTextView1 = (TextView)findViewById(2131378057);
-    TextView localTextView2 = (TextView)findViewById(2131378058);
-    ImageView localImageView = (ImageView)findViewById(2131378056);
-    ((Button)findViewById(2131378054)).setText(2131719340);
+    View localView = findViewById(2131446553);
+    TextView localTextView1 = (TextView)findViewById(2131446557);
+    TextView localTextView2 = (TextView)findViewById(2131446558);
+    ImageView localImageView = (ImageView)findViewById(2131446556);
+    ((Button)findViewById(2131446554)).setText(2131916892);
     localView.setVisibility(8);
-    localTextView1.setText(2131719348);
+    localTextView1.setText(2131916900);
     localTextView2.setVisibility(8);
-    localImageView.setImageResource(2130850854);
+    localImageView.setImageResource(2130852698);
   }
   
   @Override
@@ -105,7 +105,7 @@ public class SubAccountUgActivity
     this.mIsFromAssociatedActivity = getIntent().getBooleanExtra("from_associated_activity", false);
     SubAccountServiceImpl localSubAccountServiceImpl = (SubAccountServiceImpl)this.app.getRuntimeService(ISubAccountService.class, null);
     this.mHasBindAccount = localSubAccountServiceImpl.isSubAccountUin(this.subUin);
-    paramBundle = SubAccountControllUtil.a(this.app, this.subUin);
+    paramBundle = SubAccountControllUtil.d(this.app, this.subUin);
     boolean bool2;
     boolean bool1;
     if (paramBundle != null)
@@ -124,27 +124,27 @@ public class SubAccountUgActivity
       finish();
       return false;
     }
-    super.setContentView(2131562892);
-    setTitle(2131719304);
-    findViewById(2131376809).setOnClickListener(this);
-    ImageView localImageView2 = (ImageView)findViewById(2131378055);
-    ImageView localImageView1 = (ImageView)findViewById(2131378056);
-    ((ThemeImageView)findViewById(2131378052)).setMaskShape(ThemeImageWrapper.MODE_OTHER);
-    TextView localTextView1 = (TextView)findViewById(2131378057);
-    TextView localTextView2 = (TextView)findViewById(2131378058);
-    Button localButton = (Button)findViewById(2131378054);
-    View localView = findViewById(2131378053);
+    super.setContentView(2131629344);
+    setTitle(2131916856);
+    findViewById(2131445137).setOnClickListener(this);
+    ImageView localImageView2 = (ImageView)findViewById(2131446555);
+    ImageView localImageView1 = (ImageView)findViewById(2131446556);
+    ((ThemeImageView)findViewById(2131446552)).setMaskShape(ThemeImageWrapper.MODE_OTHER);
+    TextView localTextView1 = (TextView)findViewById(2131446557);
+    TextView localTextView2 = (TextView)findViewById(2131446558);
+    Button localButton = (Button)findViewById(2131446554);
+    View localView = findViewById(2131446553);
     Object localObject = getFaceBitmap(this.app.getAccount(), false);
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
-      paramBundle = BaseImageUtil.f();
+      paramBundle = BaseImageUtil.k();
     }
     localImageView2.setImageBitmap(paramBundle);
-    localTextView1.setTextColor(getResources().getColor(2131167056));
+    localTextView1.setTextColor(getResources().getColor(2131167993));
     localTextView2.setVisibility(8);
     if (this.mHasBindAccount)
     {
-      int k = 2131719343;
+      int k = 2131916895;
       if (bool2)
       {
         paramBundle = localSubAccountServiceImpl.getServerError(this.subUin);
@@ -174,19 +174,19 @@ public class SubAccountUgActivity
             }
             else
             {
-              i = 2131719342;
+              i = 2131916894;
               break label408;
             }
           }
           else
           {
-            i = 2131719344;
+            i = 2131916896;
             break label408;
           }
         }
         else
         {
-          i = 2131719346;
+          i = 2131916898;
           break label408;
         }
       }
@@ -194,9 +194,9 @@ public class SubAccountUgActivity
       label408:
       int j = i;
       if (i == 0) {
-        j = 2131719346;
+        j = 2131916898;
       }
-      localTextView1.setTextColor(getResources().getColor(2131167056));
+      localTextView1.setTextColor(getResources().getColor(2131167993));
       paramBundle = getFaceBitmap(this.subUin, false);
       if (paramBundle != null) {
         localImageView1.setImageBitmap(paramBundle);
@@ -212,19 +212,19 @@ public class SubAccountUgActivity
         paramBundle = this.subUin;
       }
       localTextView1.setText(getString(j, new Object[] { paramBundle }));
-      if (j == 2131719346) {
+      if (j == 2131916898) {
         localTextView2.setVisibility(0);
       } else {
         localTextView2.setVisibility(8);
       }
-      localButton.setText(2131719339);
+      localButton.setText(2131916891);
       localView.setVisibility(0);
-      ((Button)localView.findViewById(2131378047)).setOnClickListener(this);
-      ((Button)localView.findViewById(2131378046)).setOnClickListener(this);
+      ((Button)localView.findViewById(2131446547)).setOnClickListener(this);
+      ((Button)localView.findViewById(2131446546)).setOnClickListener(this);
     }
     else
     {
-      localImageView1.setImageResource(2130850854);
+      localImageView1.setImageResource(2130852698);
     }
     localButton.setOnClickListener(this);
     addObserver(this.mBindObserver);
@@ -281,7 +281,7 @@ public class SubAccountUgActivity
   {
     int i = paramView.getId();
     Object localObject1;
-    if (i == 2131378054)
+    if (i == 2131446554)
     {
       localObject1 = new Intent();
       if (this.mHasBindAccount)
@@ -290,25 +290,27 @@ public class SubAccountUgActivity
         ((Intent)localObject1).putExtra("subuin", this.subUin);
         ((Intent)localObject1).setClass(this, SubLoginActivity.class);
         ((Intent)localObject1).putExtra("fromWhere", this.fromWhere);
+        ((Intent)localObject1).putExtra("fromWhereExactly", 3);
         startActivity((Intent)localObject1);
       }
       else
       {
         ((Intent)localObject1).setClass(paramView.getContext(), SubAccountBindActivity.class);
         ((Intent)localObject1).putExtra("fromWhere", this.fromWhere);
+        ((Intent)localObject1).putExtra("fromWhereExactly", 3);
         startActivity((Intent)localObject1);
       }
     }
-    else if (i == 2131378047)
+    else if (i == 2131446547)
     {
-      localObject1 = (ActionSheet)ActionSheetHelper.a(getActivity(), null);
-      ((ActionSheet)localObject1).setMainTitle(2131719341);
-      ((ActionSheet)localObject1).addButton(getResources().getString(2131720088), 3);
-      ((ActionSheet)localObject1).addCancelButton(2131690728);
+      localObject1 = (ActionSheet)ActionSheetHelper.b(getActivity(), null);
+      ((ActionSheet)localObject1).setMainTitle(2131916893);
+      ((ActionSheet)localObject1).addButton(getResources().getString(2131917711), 3);
+      ((ActionSheet)localObject1).addCancelButton(2131887648);
       ((ActionSheet)localObject1).setOnButtonClickListener(new SubAccountUgActivity.5(this, (ActionSheet)localObject1));
       ((ActionSheet)localObject1).show();
     }
-    else if (i == 2131378046)
+    else if (i == 2131446546)
     {
       Object localObject2 = this.subUin;
       localObject1 = "https://ti.qq.com/safe/forgetpw?source_id=2756";
@@ -352,7 +354,7 @@ public class SubAccountUgActivity
       if (paramString.length() <= 4) {
         return;
       }
-      if ((isResume()) && (SubAccountControllUtil.a(this.app, paramString)))
+      if ((isResume()) && (SubAccountControllUtil.e(this.app, paramString)))
       {
         hideJuhua();
         paramString = paramISubAccountControlService.popWaittingHintPair(paramString);
@@ -380,8 +382,8 @@ public class SubAccountUgActivity
     if ((this.leftView != null) && (!this.mIsFromAssociatedActivity))
     {
       Object localObject = (IMessageFacade)this.app.getRuntimeService(IMessageFacade.class, "");
-      StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131714421));
-      localStringBuilder.append(getString(2131719442));
+      StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131901576));
+      localStringBuilder.append(getString(2131917002));
       if (localObject != null)
       {
         int i = ((IMessageFacade)localObject).getUnreadMsgsNum();
@@ -417,7 +419,7 @@ public class SubAccountUgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountUgActivity
  * JD-Core Version:    0.7.0.1
  */

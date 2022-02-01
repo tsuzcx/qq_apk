@@ -64,8 +64,8 @@ public final class Translation
     super.preStart(paramView);
     this.startX = paramView.getTranslationX();
     this.startY = paramView.getTranslationY();
-    this.txPX = ScreenUnit.a.a(this.tx);
-    this.tyPX = ScreenUnit.a.a(this.ty);
+    this.txPX = ScreenUnit.a.d(this.tx);
+    this.tyPX = ScreenUnit.a.d(this.ty);
   }
   
   public final void setTx(float paramFloat)
@@ -90,7 +90,7 @@ public final class Translation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.anim.Translation
  * JD-Core Version:    0.7.0.1
  */

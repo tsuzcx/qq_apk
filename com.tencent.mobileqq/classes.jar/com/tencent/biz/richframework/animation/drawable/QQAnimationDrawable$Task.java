@@ -19,26 +19,6 @@ class QQAnimationDrawable$Task<T>
     this.a = new ArrayBlockingQueue(30);
   }
   
-  public T a()
-  {
-    AbstractCollection localAbstractCollection;
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      localAbstractCollection = this.a;
-      if ((localAbstractCollection instanceof ArrayDeque)) {
-        return ((ArrayDeque)localAbstractCollection).poll();
-      }
-    }
-    else
-    {
-      localAbstractCollection = this.a;
-      if ((localAbstractCollection instanceof ArrayBlockingQueue)) {
-        return ((ArrayBlockingQueue)localAbstractCollection).poll();
-      }
-    }
-    return null;
-  }
-  
   public void a()
   {
     this.a.clear();
@@ -61,6 +41,26 @@ class QQAnimationDrawable$Task<T>
         ((ArrayBlockingQueue)localAbstractCollection).offer(paramT);
       }
     }
+  }
+  
+  public T b()
+  {
+    AbstractCollection localAbstractCollection;
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      localAbstractCollection = this.a;
+      if ((localAbstractCollection instanceof ArrayDeque)) {
+        return ((ArrayDeque)localAbstractCollection).poll();
+      }
+    }
+    else
+    {
+      localAbstractCollection = this.a;
+      if ((localAbstractCollection instanceof ArrayBlockingQueue)) {
+        return ((ArrayBlockingQueue)localAbstractCollection).poll();
+      }
+    }
+    return null;
   }
 }
 

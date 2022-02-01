@@ -11,36 +11,36 @@ class AVGameRoomListFragment$AVGameRoomListAdapter$1$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult;
-    if ((localObject != null) && (((AvGameRoomListObserver.BatchGetGroupGameRoomListResult)localObject).jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult.jdField_a_of_type_JavaUtilList != null))
+    Object localObject = this.a;
+    if ((localObject != null) && (((AvGameRoomListObserver.BatchGetGroupGameRoomListResult)localObject).a != null) && (this.a.b != null))
     {
-      if (!AVGameRoomListFragment.AVGameRoomListAdapter.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a).equals(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult.jdField_a_of_type_JavaLangString)) {
+      if (!AVGameRoomListFragment.AVGameRoomListAdapter.a(this.b.a).equals(this.a.a)) {
         return;
       }
-      if ((AVGameRoomListFragment.AVGameRoomListAdapter.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a) > 0) && (this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult.c == 0) && (this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult.b <= AVGameRoomListFragment.AVGameRoomListAdapter.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a))) {
+      if ((AVGameRoomListFragment.AVGameRoomListAdapter.b(this.b.a) > 0) && (this.a.e == 0) && (this.a.d <= AVGameRoomListFragment.AVGameRoomListAdapter.b(this.b.a))) {
         return;
       }
       localObject = new ArrayList();
-      if (AVGameRoomListFragment.AVGameRoomListAdapter.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a) > 0)
+      if (AVGameRoomListFragment.AVGameRoomListAdapter.b(this.b.a) > 0)
       {
-        ((List)localObject).addAll(AVGameRoomListFragment.AVGameRoomListAdapter.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a));
-        AVGameRoomListFragment.AVGameRoomListAdapter.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a, (List)localObject, this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult.jdField_a_of_type_JavaUtilList);
+        ((List)localObject).addAll(AVGameRoomListFragment.AVGameRoomListAdapter.c(this.b.a));
+        AVGameRoomListFragment.AVGameRoomListAdapter.a(this.b.a, (List)localObject, this.a.b);
       }
       else
       {
-        ((List)localObject).addAll(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult.jdField_a_of_type_JavaUtilList);
+        ((List)localObject).addAll(this.a.b);
       }
-      AVGameRoomListFragment.AVGameRoomListAdapter.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a, (List)localObject);
-      AVGameRoomListFragment.AVGameRoomListAdapter.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a, this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult.b);
-      localObject = this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a;
+      AVGameRoomListFragment.AVGameRoomListAdapter.a(this.b.a, (List)localObject);
+      AVGameRoomListFragment.AVGameRoomListAdapter.a(this.b.a, this.a.d);
+      localObject = this.b.a;
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver$BatchGetGroupGameRoomListResult.c > 0) {
+      if (this.a.e > 0) {
         bool = true;
       } else {
         bool = false;
       }
       AVGameRoomListFragment.AVGameRoomListAdapter.a((AVGameRoomListFragment.AVGameRoomListAdapter)localObject, bool);
-      this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter$1.a.notifyDataSetChanged();
+      this.b.a.notifyDataSetChanged();
     }
   }
 }

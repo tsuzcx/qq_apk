@@ -15,7 +15,7 @@ class AvGameLoadingActivity$4
     Message localMessage = Message.obtain();
     localMessage.what = 6;
     localMessage.obj = paramLottieDrawable;
-    this.a.a.sendMessage(localMessage);
+    this.a.b.sendMessage(localMessage);
   }
 }
 

@@ -11,7 +11,7 @@ class RedPacketKuaKuaFragment$6
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    RedPacketKuaKuaFragment.a(this.a).setRotation(0.0F);
+    RedPacketKuaKuaFragment.l(this.a).setRotation(0.0F);
   }
   
   public void onAnimationEnd(Animator paramAnimator) {}
@@ -22,7 +22,7 @@ class RedPacketKuaKuaFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKuaKuaFragment.6
  * JD-Core Version:    0.7.0.1
  */

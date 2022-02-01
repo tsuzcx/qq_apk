@@ -25,7 +25,7 @@ class IntimateContentItemMutualMarkView$1
     }
     else
     {
-      localObject1 = IntimateContentItemMutualMarkView.a(this.this$0, this.a);
+      localObject1 = IntimateContentItemMutualMarkView.b(this.this$0, this.a);
       CommonImageCacheHelper.a((String)localObject3, (Bitmap)localObject1);
     }
     String str = IntimateContentItemMutualMarkView.a(this.this$0, this.a, true);
@@ -37,7 +37,7 @@ class IntimateContentItemMutualMarkView$1
     }
     else
     {
-      localObject2 = IntimateContentItemMutualMarkView.b(this.this$0, this.a);
+      localObject2 = IntimateContentItemMutualMarkView.c(this.this$0, this.a);
       CommonImageCacheHelper.a(str, (Bitmap)localObject2);
     }
     ThreadManager.getUIHandler().post(new IntimateContentItemMutualMarkView.1.1(this, (Bitmap)localObject1, (Bitmap)localObject2));
@@ -45,7 +45,7 @@ class IntimateContentItemMutualMarkView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemMutualMarkView.1
  * JD-Core Version:    0.7.0.1
  */

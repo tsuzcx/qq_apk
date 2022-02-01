@@ -22,7 +22,7 @@ public class GatherContactsTipsHelper
       }
       c(paramQQAppInterface, paramString);
       Object localObject = MessageRecordFactory.a(-1026);
-      long l = MessageCache.a();
+      long l = MessageCache.c();
       ((MessageRecord)localObject).init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1026, 0, l);
       ((MessageRecord)localObject).isread = true;
       paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject, ((MessageRecord)localObject).selfuin);
@@ -62,7 +62,7 @@ public class GatherContactsTipsHelper
       }
       c(paramQQAppInterface, paramString);
       Object localObject = MessageRecordFactory.a(-1027);
-      long l = MessageCache.a();
+      long l = MessageCache.c();
       ((MessageRecord)localObject).init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1027, 0, l);
       ((MessageRecord)localObject).isread = true;
       paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject, ((MessageRecord)localObject).selfuin);
@@ -95,13 +95,13 @@ public class GatherContactsTipsHelper
   
   public static void c(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Iterator localIterator = paramQQAppInterface.getMessageFacade().a(paramString, 0).iterator();
+    Iterator localIterator = paramQQAppInterface.getMessageFacade().h(paramString, 0).iterator();
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
       if ((localMessageRecord.msgtype == -1026) || (localMessageRecord.msgtype == -1027))
       {
-        paramQQAppInterface.getMessageFacade().b(paramString, 0, localMessageRecord.uniseq);
+        paramQQAppInterface.getMessageFacade().h(paramString, 0, localMessageRecord.uniseq);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -119,7 +119,7 @@ public class GatherContactsTipsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.GatherContactsTipsHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -29,11 +29,11 @@ public class MaterialAutoCompleteTextView
   extends AppCompatAutoCompleteTextView
 {
   @NonNull
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private final ListPopupWindow a;
   @Nullable
-  private final AccessibilityManager jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager;
+  private final AccessibilityManager b;
   @NonNull
-  private final ListPopupWindow jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow;
+  private final Rect c = new Rect();
   
   public MaterialAutoCompleteTextView(@NonNull Context paramContext)
   {
@@ -42,31 +42,31 @@ public class MaterialAutoCompleteTextView
   
   public MaterialAutoCompleteTextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.autoCompleteTextViewStyle);
+    this(paramContext, paramAttributeSet, R.attr.c);
   }
   
   public MaterialAutoCompleteTextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, 0), paramAttributeSet, paramInt);
     paramContext = getContext();
-    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.O, paramInt, R.style.Widget_AppCompat_AutoCompleteTextView, new int[0]);
-    if ((paramAttributeSet.hasValue(R.styleable.cg)) && (paramAttributeSet.getInt(R.styleable.cg, 0) == 0)) {
+    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.dB, paramInt, R.style.i, new int[0]);
+    if ((paramAttributeSet.hasValue(R.styleable.dC)) && (paramAttributeSet.getInt(R.styleable.dC, 0) == 0)) {
       setKeyListener(null);
     }
-    this.jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager = ((AccessibilityManager)paramContext.getSystemService("accessibility"));
-    this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow = new ListPopupWindow(paramContext);
-    this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.setModal(true);
-    this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.setAnchorView(this);
-    this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.setInputMethodMode(2);
-    this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.setAdapter(getAdapter());
-    this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.setOnItemClickListener(new MaterialAutoCompleteTextView.1(this));
+    this.b = ((AccessibilityManager)paramContext.getSystemService("accessibility"));
+    this.a = new ListPopupWindow(paramContext);
+    this.a.setModal(true);
+    this.a.setAnchorView(this);
+    this.a.setInputMethodMode(2);
+    this.a.setAdapter(getAdapter());
+    this.a.setOnItemClickListener(new MaterialAutoCompleteTextView.1(this));
     paramAttributeSet.recycle();
   }
   
   private int a()
   {
     ListAdapter localListAdapter = getAdapter();
-    TextInputLayout localTextInputLayout = a();
+    TextInputLayout localTextInputLayout = b();
     int k = 0;
     if (localListAdapter != null)
     {
@@ -75,7 +75,7 @@ public class MaterialAutoCompleteTextView
       }
       int i1 = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 0);
       int i2 = View.MeasureSpec.makeMeasureSpec(getMeasuredHeight(), 0);
-      int i = Math.max(0, this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.getSelectedItemPosition());
+      int i = Math.max(0, this.a.getSelectedItemPosition());
       int i3 = Math.min(localListAdapter.getCount(), i + 15);
       int j = Math.max(0, i3 - 15);
       Object localObject = null;
@@ -98,27 +98,16 @@ public class MaterialAutoCompleteTextView
         j += 1;
         k = m;
       }
-      localObject = this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.getBackground();
+      localObject = this.a.getBackground();
       j = i;
       if (localObject != null)
       {
-        ((Drawable)localObject).getPadding(this.jdField_a_of_type_AndroidGraphicsRect);
-        j = i + (this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_AndroidGraphicsRect.right);
+        ((Drawable)localObject).getPadding(this.c);
+        j = i + (this.c.left + this.c.right);
       }
-      return j + localTextInputLayout.a().getMeasuredWidth();
+      return j + localTextInputLayout.getEndIconView().getMeasuredWidth();
     }
     return 0;
-  }
-  
-  @Nullable
-  private TextInputLayout a()
-  {
-    for (ViewParent localViewParent = getParent(); localViewParent != null; localViewParent = localViewParent.getParent()) {
-      if ((localViewParent instanceof TextInputLayout)) {
-        return (TextInputLayout)localViewParent;
-      }
-    }
-    return null;
   }
   
   private <T extends ListAdapter,  extends Filterable> void a(Object paramObject)
@@ -135,11 +124,22 @@ public class MaterialAutoCompleteTextView
   }
   
   @Nullable
+  private TextInputLayout b()
+  {
+    for (ViewParent localViewParent = getParent(); localViewParent != null; localViewParent = localViewParent.getParent()) {
+      if ((localViewParent instanceof TextInputLayout)) {
+        return (TextInputLayout)localViewParent;
+      }
+    }
+    return null;
+  }
+  
+  @Nullable
   public CharSequence getHint()
   {
-    TextInputLayout localTextInputLayout = a();
+    TextInputLayout localTextInputLayout = b();
     if ((localTextInputLayout != null) && (localTextInputLayout.a())) {
-      return localTextInputLayout.a();
+      return localTextInputLayout.getHint();
     }
     return super.getHint();
   }
@@ -147,7 +147,7 @@ public class MaterialAutoCompleteTextView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    TextInputLayout localTextInputLayout = a();
+    TextInputLayout localTextInputLayout = b();
     if ((localTextInputLayout != null) && (localTextInputLayout.a()) && (super.getHint() == null) && (ManufacturerUtils.a())) {
       setHint("");
     }
@@ -164,15 +164,15 @@ public class MaterialAutoCompleteTextView
   public <T extends ListAdapter,  extends Filterable> void setAdapter(@Nullable T paramT)
   {
     super.setAdapter(paramT);
-    this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.setAdapter(getAdapter());
+    this.a.setAdapter(getAdapter());
   }
   
   public void showDropDown()
   {
-    AccessibilityManager localAccessibilityManager = this.jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager;
+    AccessibilityManager localAccessibilityManager = this.b;
     if ((localAccessibilityManager != null) && (localAccessibilityManager.isTouchExplorationEnabled()))
     {
-      this.jdField_a_of_type_AndroidxAppcompatWidgetListPopupWindow.show();
+      this.a.show();
       return;
     }
     super.showDropDown();
@@ -180,7 +180,7 @@ public class MaterialAutoCompleteTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.MaterialAutoCompleteTextView
  * JD-Core Version:    0.7.0.1
  */

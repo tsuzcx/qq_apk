@@ -11,38 +11,38 @@ class MaterialContentAdapter$2
   
   public void a(@NonNull ApplyMaterialTask.Status paramStatus, int paramInt)
   {
-    ApplyMaterialTaskHelper.a("onPreExecute", this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, String.format("callback: %s-%s", new Object[] { paramStatus, Integer.valueOf(paramInt) }));
+    ApplyMaterialTaskHelper.a("onPreExecute", this.a, String.format("callback: %s-%s", new Object[] { paramStatus, Integer.valueOf(paramInt) }));
     if (paramStatus == ApplyMaterialTask.Status.SUCCEEDED)
     {
-      boolean bool = MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-      ApplyMaterialTaskHelper.a("isApplyMaterialLocal", this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, String.valueOf(bool));
+      boolean bool = MaterialContentAdapter.b(this.c).b(this.b, this.a);
+      ApplyMaterialTaskHelper.a("isApplyMaterialLocal", this.a, String.valueOf(bool));
       if (bool)
       {
-        bool = MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-        ApplyMaterialTaskHelper.a("isMaterialReady", this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, String.valueOf(bool));
-        if ((!bool) && (MetaMaterialKt.c(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial) != 100))
+        bool = MaterialContentAdapter.b(this.c).c(this.b, this.a);
+        ApplyMaterialTaskHelper.a("isMaterialReady", this.a, String.valueOf(bool));
+        if ((!bool) && (MetaMaterialKt.k(this.a) != 100))
         {
-          if (MetaMaterialKt.c(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial) < 0)
+          if (MetaMaterialKt.k(this.a) < 0)
           {
-            MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-            ApplyMaterialTaskHelper.a("onDownloadMaterial", this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, "start");
-            ApplyMaterialTaskHelper.a(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, new MaterialContentAdapter.2.1(this));
+            MaterialContentAdapter.b(this.c).d(this.b, this.a);
+            ApplyMaterialTaskHelper.a("onDownloadMaterial", this.a, "start");
+            ApplyMaterialTaskHelper.a(this.a, new MaterialContentAdapter.2.1(this));
             return;
           }
-          ApplyMaterialTaskHelper.a("executeApplyMaterialTask", this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, String.format("run into wrong branch: isMaterialReady=%s, downloadProgress=%s", new Object[] { Boolean.valueOf(MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial)), Integer.valueOf(MetaMaterialKt.c(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial)) }));
+          ApplyMaterialTaskHelper.a("executeApplyMaterialTask", this.a, String.format("run into wrong branch: isMaterialReady=%s, downloadProgress=%s", new Object[] { Boolean.valueOf(MaterialContentAdapter.b(this.c).c(this.b, this.a)), Integer.valueOf(MetaMaterialKt.k(this.a)) }));
           return;
         }
-        MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter, ApplyMaterialTask.Status.SUCCEEDED, this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+        MaterialContentAdapter.a(this.c, ApplyMaterialTask.Status.SUCCEEDED, this.b, this.a);
         return;
       }
-      ApplyMaterialTaskHelper.a("onApplyMaterialOnline", this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, "start");
-      MaterialContentAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+      ApplyMaterialTaskHelper.a("onApplyMaterialOnline", this.a, "start");
+      MaterialContentAdapter.b(this.c).a(this.b, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialContentAdapter.2
  * JD-Core Version:    0.7.0.1
  */

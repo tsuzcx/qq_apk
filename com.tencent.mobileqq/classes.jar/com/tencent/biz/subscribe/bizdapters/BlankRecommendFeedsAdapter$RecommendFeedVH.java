@@ -18,7 +18,7 @@ class BlankRecommendFeedsAdapter$RecommendFeedVH
     if ((this.itemView instanceof BlankRecommendItemView))
     {
       ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
-      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.a());
+      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.K());
       ((BlankRecommendItemView)this.itemView).setPos(paramInt);
     }
   }

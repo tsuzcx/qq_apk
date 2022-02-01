@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/iia" android:background="@drawable/bg_texture" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/nr1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" formItem:bgType="abp" formItem:leftText="@string/frt" formItem:showArrow="true" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nr0" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/ci1" />
-        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nqz" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/m7" />
-    </LinearLayout>
-</com.tencent.mobileqq.widget.BounceScrollView>
+<LinearLayout android:orientation="vertical" android:id="@id/p3l" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o5n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/itf" />
+    <TextView android:textSize="14.0dip" android:textColor="@android:color/white" android:ellipsize="end" android:gravity="center" android:id="@id/qlx" android:background="@drawable/itg" android:paddingLeft="18.0dip" android:paddingTop="8.0dip" android:paddingRight="18.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xzq" android:singleLine="true" />
+</LinearLayout>

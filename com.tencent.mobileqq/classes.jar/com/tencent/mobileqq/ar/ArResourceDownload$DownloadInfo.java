@@ -4,44 +4,44 @@ import com.tencent.mobileqq.transfile.HttpNetReq;
 
 public class ArResourceDownload$DownloadInfo
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
+  int a;
+  String b;
   String c;
+  String d;
+  int e;
+  long f;
+  long g;
+  boolean h = false;
+  boolean i = false;
+  HttpNetReq j;
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
     localStringBuffer.append("type=");
-    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(this.a);
     localStringBuffer.append(", url='");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.b);
     localStringBuffer.append('\'');
     localStringBuffer.append(", md5='");
-    localStringBuffer.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuffer.append('\'');
-    localStringBuffer.append(", fileName='");
     localStringBuffer.append(this.c);
     localStringBuffer.append('\'');
+    localStringBuffer.append(", fileName='");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append('\'');
     localStringBuffer.append(", fileSize=");
-    localStringBuffer.append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(this.f);
     localStringBuffer.append(", downloadSize=");
-    localStringBuffer.append(this.jdField_b_of_type_Long);
+    localStringBuffer.append(this.g);
     localStringBuffer.append(", req=");
-    localStringBuffer.append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(this.h);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArResourceDownload.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

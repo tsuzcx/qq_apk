@@ -16,20 +16,20 @@ class DeviceTextItemBuilder$4
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetSupport(this.a.a))
+    if (!NetworkUtil.isNetSupport(this.a.e))
     {
-      QQToast.a(this.a.a, HardCodeUtil.a(2131703389), 2000).a();
+      QQToast.makeText(this.a.e, HardCodeUtil.a(2131901349), 2000).show();
       return;
     }
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView = new Intent(this.a.e, QQBrowserActivity.class);
     paramView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
     paramView.putExtra("hide_more_button", true);
-    this.a.a.startActivity(paramView);
+    this.a.e.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

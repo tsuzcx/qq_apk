@@ -15,12 +15,12 @@ public class WriteTogetherItemBuilder$ChildDoubleClickListener
   public void a(View paramView)
   {
     super.a(paramView);
-    WriteTogetherItemBuilder.a(this.a, true);
+    WriteTogetherItemBuilder.a(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.ChildDoubleClickListener
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class SwiftBrowserLongClickHandler$4$2
   
   public void run()
   {
-    if ((this.a.this$0.a != null) && (this.a.this$0.a.isShowing())) {
-      this.a.this$0.a.dismiss();
+    if ((this.a.this$0.d != null) && (this.a.this$0.d.isShowing())) {
+      this.a.this$0.d.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4.2
  * JD-Core Version:    0.7.0.1
  */

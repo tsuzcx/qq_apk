@@ -20,10 +20,10 @@ public class WadlAction
   
   public boolean a()
   {
-    if (!(this.a instanceof Activity)) {
+    if (!(this.b instanceof Activity)) {
       return true;
     }
-    Object localObject1 = ((Activity)this.a).getIntent();
+    Object localObject1 = ((Activity)this.b).getIntent();
     if (localObject1 == null) {
       return true;
     }
@@ -38,7 +38,7 @@ public class WadlAction
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("gamecenter installApk, pkgName=");
-      ((StringBuilder)localObject3).append(this.e);
+      ((StringBuilder)localObject3).append(this.i);
       ((StringBuilder)localObject3).append(",localAPKPath=");
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append(",sourceId=");
@@ -47,20 +47,20 @@ public class WadlAction
     }
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject3 = FileProvider7Helper.openApkIntent(this.a, (String)localObject1);
+      localObject3 = FileProvider7Helper.openApkIntent(this.b, (String)localObject1);
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "biz_src_zf_games";
       }
       ((Intent)localObject3).putExtra("big_brother_source_key", (String)localObject1);
-      this.a.startActivity((Intent)localObject3);
+      this.b.startActivity((Intent)localObject3);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.WadlAction
  * JD-Core Version:    0.7.0.1
  */

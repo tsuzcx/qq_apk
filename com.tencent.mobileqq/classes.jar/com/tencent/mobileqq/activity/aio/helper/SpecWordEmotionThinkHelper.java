@@ -8,36 +8,12 @@ import com.tencent.qphone.base.util.QLog;
 public class SpecWordEmotionThinkHelper
   implements OnFinishListener, ILifeCycleHelper
 {
-  private int jdField_a_of_type_Int = 0;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private BaseChatPie a;
+  private int b = 0;
   
   public SpecWordEmotionThinkHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-  }
-  
-  public int a()
-  {
-    a();
-    return 0;
-  }
-  
-  public String a()
-  {
-    String str;
-    if (this.jdField_a_of_type_Int == 1) {
-      str = HardCodeUtil.a(2131714120);
-    } else {
-      str = null;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" getSpecKeyWord:  mSpecWordType=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      QLog.d("SpecWordEmotionThinkHelper", 2, localStringBuilder.toString());
-    }
-    return str;
+    this.a = paramBaseChatPie;
   }
   
   public void a()
@@ -47,12 +23,12 @@ public class SpecWordEmotionThinkHelper
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" setSpecWordType:  mSpecWordType=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.d("SpecWordEmotionThinkHelper", 2, localStringBuilder.toString());
     }
   }
@@ -75,9 +51,53 @@ public class SpecWordEmotionThinkHelper
     }
   }
   
-  public boolean a()
+  public boolean a(boolean paramBoolean)
   {
-    int i = this.jdField_a_of_type_Int;
+    return false;
+  }
+  
+  public void b()
+  {
+    this.b = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " clearSpecWordType");
+    }
+  }
+  
+  public int bM_()
+  {
+    a();
+    return 0;
+  }
+  
+  public String d()
+  {
+    String str;
+    if (this.b == 1) {
+      str = HardCodeUtil.a(2131911650);
+    } else {
+      str = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getSpecKeyWord:  mSpecWordType=");
+      localStringBuilder.append(this.b);
+      QLog.d("SpecWordEmotionThinkHelper", 2, localStringBuilder.toString());
+    }
+    return str;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    return false;
+  }
+  
+  public void e(int paramInt) {}
+  
+  public boolean e()
+  {
+    int i = this.b;
     boolean bool = true;
     if (i != 1) {
       bool = false;
@@ -86,31 +106,11 @@ public class SpecWordEmotionThinkHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" needSendMixMsg:  mSpecWordType=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.d("SpecWordEmotionThinkHelper", 2, localStringBuilder.toString());
     }
     return bool;
   }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " clearSpecWordType");
-    }
-  }
-  
-  public void d(int paramInt) {}
   
   public String getTag()
   {
@@ -132,7 +132,7 @@ public class SpecWordEmotionThinkHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.SpecWordEmotionThinkHelper
  * JD-Core Version:    0.7.0.1
  */

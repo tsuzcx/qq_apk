@@ -11,11 +11,11 @@ class BaseGuessActionStageView$1
   
   public void run()
   {
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.jdField_b_of_type_JavaLangRunnable);
-    if ((this.this$0.jdField_b_of_type_AndroidViewView != null) && (this.this$0.jdField_b_of_type_AndroidViewView.getVisibility() == 8)) {
-      this.this$0.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.p);
+    if ((this.this$0.k != null) && (this.this$0.k.getVisibility() == 8)) {
+      this.this$0.k.setVisibility(0);
     }
-    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.jdField_b_of_type_JavaLangRunnable, 1000L);
+    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.p, 1000L);
   }
 }
 

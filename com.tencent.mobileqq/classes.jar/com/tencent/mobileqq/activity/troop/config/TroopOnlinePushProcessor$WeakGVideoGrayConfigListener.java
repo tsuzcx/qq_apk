@@ -11,24 +11,24 @@ import java.lang.ref.WeakReference;
 class TroopOnlinePushProcessor$WeakGVideoGrayConfigListener
   implements GVideoGrayConfig.GVideoGrayConfigListener
 {
-  private final TroopUnreadMsgInfo jdField_a_of_type_ComTencentMobileqqTroopUnreadmsgTroopUnreadMsgInfo;
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private final long[] jdField_a_of_type_ArrayOfLong;
+  private final WeakReference<QQAppInterface> a;
+  private final TroopUnreadMsgInfo b;
+  private final long[] c;
   
   TroopOnlinePushProcessor$WeakGVideoGrayConfigListener(QQAppInterface paramQQAppInterface, TroopUnreadMsgInfo paramTroopUnreadMsgInfo, long[] paramArrayOfLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUnreadmsgTroopUnreadMsgInfo = paramTroopUnreadMsgInfo;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = paramTroopUnreadMsgInfo;
+    this.c = paramArrayOfLong;
   }
   
   public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
   {
-    paramRecord = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramRecord = (QQAppInterface)this.a.get();
     if (paramRecord != null)
     {
       if (paramInt1 == 0) {
-        paramRecord.getGAudioHandler().a(1, this.jdField_a_of_type_ComTencentMobileqqTroopUnreadmsgTroopUnreadMsgInfo.a, this.jdField_a_of_type_ComTencentMobileqqTroopUnreadmsgTroopUnreadMsgInfo.b, this.jdField_a_of_type_ArrayOfLong, 2, 0, 0, -1);
+        paramRecord.getGAudioHandler().a(1, this.b.b, this.b.d, this.c, 2, 0, 0, -1);
       }
     }
     else {
@@ -38,7 +38,7 @@ class TroopOnlinePushProcessor$WeakGVideoGrayConfigListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopOnlinePushProcessor.WeakGVideoGrayConfigListener
  * JD-Core Version:    0.7.0.1
  */

@@ -57,7 +57,7 @@ public class FileSlaveMasterMessageProcessor
         localMsg.msg_head.msg_time.set(paramMsgInfo.uRealMsgTime);
         localMsg.msg_head.from_uin.set(paramSlaveMasterMsg.lFromUin);
         localMsg.msg_head.msg_seq.set((int)paramSlaveMasterMsg.uSeq);
-        paramMessageHandler.a.getFileTransferHandler().a(paramMessageHandler, (List)localObject2, localMsg, localNotOnlineFile, String.valueOf(paramSlaveMasterMsg.lToUin), true, false, -100L, -1, (hummer_resv_21.ResvAttr)localObject1);
+        paramMessageHandler.n.getFileTransferHandler().a(paramMessageHandler, (List)localObject2, localMsg, localNotOnlineFile, String.valueOf(paramSlaveMasterMsg.lToUin), true, false, -100L, -1, (hummer_resv_21.ResvAttr)localObject1);
         return;
       }
       if (((SubMsgType0x4.MsgBody)localObject2).msg_wlan_recved_notify.has())
@@ -65,7 +65,7 @@ public class FileSlaveMasterMessageProcessor
         if (QLog.isColorLevel()) {
           QLog.i("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : MsgBody is WlanRecvedNotify");
         }
-        paramMessageHandler.a.getFileTransferHandler().a((SubMsgType0x4.WlanRecvNotify)((SubMsgType0x4.MsgBody)localObject2).msg_wlan_recved_notify.get());
+        paramMessageHandler.n.getFileTransferHandler().b((SubMsgType0x4.WlanRecvNotify)((SubMsgType0x4.MsgBody)localObject2).msg_wlan_recved_notify.get());
       }
       return;
     }
@@ -84,7 +84,7 @@ public class FileSlaveMasterMessageProcessor
     localSlaveMasterMsg.readFrom(localJceInputStream);
     if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
     {
-      a(((QQAppInterface)this.a).getMsgHandler(), paramMsgInfo, localSlaveMasterMsg);
+      a(((QQAppInterface)this.q).getMsgHandler(), paramMsgInfo, localSlaveMasterMsg);
       return true;
     }
     return false;
@@ -109,7 +109,7 @@ public class FileSlaveMasterMessageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.FileSlaveMasterMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

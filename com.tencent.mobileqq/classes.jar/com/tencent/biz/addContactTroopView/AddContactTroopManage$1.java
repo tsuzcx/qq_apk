@@ -11,7 +11,7 @@ class AddContactTroopManage$1
   {
     synchronized (this.this$0)
     {
-      this.this$0.a = this.a;
+      this.this$0.b = this.a;
       AddContactTroopManage.a(this.this$0, this.a);
       return;
     }

@@ -117,7 +117,7 @@ public class ApolloElemDecoder
     if (paramApolloMessage.peerUin == paramQQAppInterface.getLongAccountUin())
     {
       long l = paramMsg.msg_head.msg_seq.get();
-      paramMessageInfo.a.b(24, l);
+      paramMessageInfo.c.c(24, l);
     }
   }
   
@@ -128,685 +128,695 @@ public class ApolloElemDecoder
     //   0: invokestatic 206	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   3: invokevirtual 210	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   6: checkcast 178	com/tencent/mobileqq/app/QQAppInterface
-    //   9: astore 30
+    //   9: astore 33
     //   11: iconst_0
-    //   12: istore 9
-    //   14: iload 9
-    //   16: aload_1
-    //   17: invokeinterface 215 1 0
-    //   22: if_icmpge +57 -> 79
-    //   25: aload_1
-    //   26: iload 9
-    //   28: invokeinterface 218 2 0
-    //   33: checkcast 220	tencent/im/msg/im_msg_body$Elem
-    //   36: getfield 224	tencent/im/msg/im_msg_body$Elem:apollo_msg	Ltencent/im/msg/im_msg_body$ApolloActMsg;
-    //   39: invokevirtual 227	tencent/im/msg/im_msg_body$ApolloActMsg:has	()Z
-    //   42: ifeq +28 -> 70
-    //   45: aload_1
-    //   46: iload 9
-    //   48: invokeinterface 218 2 0
-    //   53: checkcast 220	tencent/im/msg/im_msg_body$Elem
-    //   56: getfield 224	tencent/im/msg/im_msg_body$Elem:apollo_msg	Ltencent/im/msg/im_msg_body$ApolloActMsg;
-    //   59: invokevirtual 228	tencent/im/msg/im_msg_body$ApolloActMsg:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   62: checkcast 226	tencent/im/msg/im_msg_body$ApolloActMsg
-    //   65: astore 27
-    //   67: goto +15 -> 82
-    //   70: iload 9
-    //   72: iconst_1
-    //   73: iadd
-    //   74: istore 9
-    //   76: goto -62 -> 14
-    //   79: aconst_null
-    //   80: astore 27
-    //   82: aload 27
-    //   84: ifnonnull +4 -> 88
-    //   87: return
-    //   88: invokestatic 233	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   91: ifeq +11 -> 102
-    //   94: aload 4
-    //   96: ldc 235
-    //   98: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: pop
-    //   102: new 172	com/tencent/mobileqq/apollo/model/ApolloMessage
-    //   105: dup
-    //   106: invokespecial 242	com/tencent/mobileqq/apollo/model/ApolloMessage:<init>	()V
-    //   109: astore 29
-    //   111: aload 29
-    //   113: aload 27
-    //   115: getfield 243	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_action_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   118: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   121: putfield 246	com/tencent/mobileqq/apollo/model/ApolloMessage:id	I
-    //   124: aload 29
-    //   126: aload 27
-    //   128: getfield 247	tencent/im/msg/im_msg_body$ApolloActMsg:bytes_action_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   131: invokevirtual 107	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   134: invokevirtual 113	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   137: putfield 251	com/tencent/mobileqq/apollo/model/ApolloMessage:name	[B
-    //   140: iload 5
-    //   142: ifne +30 -> 172
-    //   145: aload 27
-    //   147: getfield 254	tencent/im/msg/im_msg_body$ApolloActMsg:bytes_action_text	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   150: invokevirtual 102	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   153: ifeq +19 -> 172
-    //   156: aload 29
-    //   158: aload 27
-    //   160: getfield 254	tencent/im/msg/im_msg_body$ApolloActMsg:bytes_action_text	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   163: invokevirtual 107	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   166: invokevirtual 113	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   169: putfield 257	com/tencent/mobileqq/apollo/model/ApolloMessage:text	[B
-    //   172: fconst_0
-    //   173: fstore 7
-    //   175: fconst_0
-    //   176: fstore 8
-    //   178: new 85	com/tencent/mobileqq/apollo/model/Apollo3DMessage
-    //   181: dup
-    //   182: invokespecial 258	com/tencent/mobileqq/apollo/model/Apollo3DMessage:<init>	()V
-    //   185: astore 28
-    //   187: new 13	com/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve
-    //   190: dup
-    //   191: invokespecial 259	com/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve:<init>	()V
-    //   194: astore 31
-    //   196: iconst_m1
-    //   197: istore 10
-    //   199: lconst_0
-    //   200: lstore 20
-    //   202: aload 31
-    //   204: aload 27
-    //   206: getfield 262	tencent/im/msg/im_msg_body$ApolloActMsg:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   209: invokevirtual 107	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   212: invokevirtual 113	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   215: invokevirtual 266	com/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   218: pop
-    //   219: aload_0
-    //   220: iconst_m1
-    //   221: aload 31
-    //   223: invokespecial 268	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
-    //   226: istore 9
-    //   228: iload 10
-    //   230: istore 12
-    //   232: aload_0
-    //   233: fconst_0
-    //   234: aload 31
-    //   236: invokespecial 270	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(FLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)F
-    //   239: fstore 7
-    //   241: fload 7
-    //   243: fstore 8
-    //   245: iload 10
-    //   247: istore 12
-    //   249: aload_0
-    //   250: iconst_m1
-    //   251: aload 31
-    //   253: invokespecial 272	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:b	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
-    //   256: istore 10
-    //   258: fload 7
-    //   260: fstore 8
-    //   262: iload 10
-    //   264: istore 12
-    //   266: aload_0
-    //   267: iconst_0
-    //   268: aload 31
-    //   270: invokespecial 275	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:c	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
-    //   273: istore 11
-    //   275: aload_0
-    //   276: lconst_0
-    //   277: aload 31
-    //   279: invokespecial 277	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(JLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)J
-    //   282: lstore 18
-    //   284: aload_0
-    //   285: aconst_null
-    //   286: aload 31
-    //   288: invokespecial 279	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(Ljava/lang/String;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Ljava/lang/String;
-    //   291: astore_1
-    //   292: aload_0
-    //   293: aconst_null
-    //   294: aload 31
-    //   296: invokespecial 281	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:b	(Ljava/lang/String;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Ljava/lang/String;
-    //   299: astore 4
-    //   301: aload_0
-    //   302: lconst_0
-    //   303: aload 31
-    //   305: invokespecial 283	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:b	(JLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)J
-    //   308: lstore 16
-    //   310: aload_0
-    //   311: lconst_0
-    //   312: aload 31
-    //   314: aload 30
-    //   316: invokespecial 285	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(JLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;Lcom/tencent/mobileqq/app/QQAppInterface;)J
-    //   319: pop2
-    //   320: aload_0
-    //   321: iconst_0
-    //   322: aload 31
-    //   324: invokespecial 288	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:d	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
-    //   327: istore 12
-    //   329: aload_0
-    //   330: aconst_null
-    //   331: aload 31
-    //   333: invokespecial 290	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:c	(Ljava/lang/String;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Ljava/lang/String;
-    //   336: astore 24
-    //   338: aload_0
-    //   339: iconst_0
-    //   340: aload 31
-    //   342: invokespecial 293	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:e	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
-    //   345: istore 13
-    //   347: aload 28
-    //   349: astore 26
-    //   351: aload_0
-    //   352: aload 28
-    //   354: aload 31
-    //   356: invokespecial 295	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(Lcom/tencent/mobileqq/apollo/model/Apollo3DMessage;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Lcom/tencent/mobileqq/apollo/model/Apollo3DMessage;
-    //   359: astore 25
-    //   361: aload 25
-    //   363: astore 26
-    //   365: aload_0
-    //   366: iconst_0
-    //   367: aload 31
-    //   369: invokespecial 298	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:f	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
-    //   372: istore 14
-    //   374: aload_0
-    //   375: iconst_0
-    //   376: aload 31
-    //   378: invokespecial 301	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:g	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
-    //   381: istore 15
-    //   383: aload_0
-    //   384: lconst_0
-    //   385: aload 31
-    //   387: invokespecial 303	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:c	(JLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)J
-    //   390: lstore 22
-    //   392: lload 22
-    //   394: lstore 20
-    //   396: aload_0
-    //   397: aconst_null
-    //   398: aload 31
-    //   400: invokespecial 305	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(Ljava/util/List;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Ljava/util/List;
-    //   403: astore 26
-    //   405: lload 22
-    //   407: lstore 20
-    //   409: goto +184 -> 593
-    //   412: astore 26
-    //   414: goto +171 -> 585
-    //   417: astore 26
-    //   419: aload 25
-    //   421: astore 28
-    //   423: goto +155 -> 578
-    //   426: astore 25
-    //   428: goto +139 -> 567
-    //   431: astore 25
-    //   433: aload 24
-    //   435: astore 26
-    //   437: goto +119 -> 556
-    //   440: astore 25
-    //   442: aconst_null
-    //   443: astore 26
-    //   445: goto +111 -> 556
-    //   448: astore 24
-    //   450: aconst_null
-    //   451: astore 25
-    //   453: goto +92 -> 545
-    //   456: astore 24
-    //   458: aconst_null
-    //   459: astore 25
-    //   461: goto +18 -> 479
-    //   464: astore 24
-    //   466: goto +7 -> 473
-    //   469: astore 24
-    //   471: aconst_null
-    //   472: astore_1
-    //   473: aconst_null
-    //   474: astore 4
-    //   476: aconst_null
-    //   477: astore 25
-    //   479: lconst_0
-    //   480: lstore 16
-    //   482: goto +63 -> 545
-    //   485: astore 24
-    //   487: aconst_null
-    //   488: astore_1
-    //   489: aload_1
-    //   490: astore 4
-    //   492: aload 4
-    //   494: astore 25
-    //   496: lconst_0
-    //   497: lstore 18
-    //   499: lload 18
-    //   501: lstore 16
-    //   503: goto +42 -> 545
-    //   506: astore 24
-    //   508: iload 12
-    //   510: istore 10
-    //   512: goto +12 -> 524
-    //   515: astore 24
-    //   517: iconst_m1
-    //   518: istore 9
-    //   520: fload 7
-    //   522: fstore 8
-    //   524: aconst_null
-    //   525: astore 25
-    //   527: lconst_0
-    //   528: lstore 16
-    //   530: aconst_null
-    //   531: astore 4
-    //   533: aconst_null
-    //   534: astore_1
-    //   535: lconst_0
-    //   536: lstore 18
-    //   538: iconst_0
-    //   539: istore 11
-    //   541: fload 8
-    //   543: fstore 7
-    //   545: iconst_0
-    //   546: istore 12
-    //   548: aload 25
-    //   550: astore 26
-    //   552: aload 24
-    //   554: astore 25
-    //   556: iconst_0
-    //   557: istore 13
-    //   559: aload 26
-    //   561: astore 24
-    //   563: aload 28
-    //   565: astore 26
-    //   567: iconst_0
-    //   568: istore 14
-    //   570: aload 26
-    //   572: astore 28
-    //   574: aload 25
-    //   576: astore 26
-    //   578: iconst_0
-    //   579: istore 15
-    //   581: aload 28
-    //   583: astore 25
-    //   585: aload 26
-    //   587: invokevirtual 308	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
-    //   590: aconst_null
-    //   591: astore 26
-    //   593: new 310	org/json/JSONObject
-    //   596: dup
-    //   597: invokespecial 311	org/json/JSONObject:<init>	()V
-    //   600: astore 31
-    //   602: aload 27
-    //   604: getfield 314	tencent/im/msg/im_msg_body$ApolloActMsg:input_text	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   607: invokevirtual 102	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   610: ifeq +660 -> 1270
-    //   613: new 104	java/lang/String
-    //   616: dup
-    //   617: aload 27
-    //   619: getfield 314	tencent/im/msg/im_msg_body$ApolloActMsg:input_text	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   622: invokevirtual 107	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   625: invokevirtual 113	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   628: invokespecial 116	java/lang/String:<init>	([B)V
-    //   631: astore 28
-    //   633: aload 31
-    //   635: ldc_w 316
-    //   638: aload 28
-    //   640: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   643: pop
-    //   644: goto +3 -> 647
-    //   647: iload 9
-    //   649: ifle +627 -> 1276
-    //   652: aload 31
-    //   654: ldc_w 322
-    //   657: iload 9
-    //   659: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   662: pop
-    //   663: aload 31
-    //   665: ldc_w 327
-    //   668: fload 7
-    //   670: f2d
-    //   671: invokevirtual 330	org/json/JSONObject:put	(Ljava/lang/String;D)Lorg/json/JSONObject;
-    //   674: pop
-    //   675: goto +3 -> 678
-    //   678: iload 10
-    //   680: invokestatic 335	com/tencent/mobileqq/apollo/game/utils/ApolloGameUtil:a	(I)Z
-    //   683: istore 5
-    //   685: iload 5
-    //   687: ifeq +68 -> 755
-    //   690: aload 31
-    //   692: ldc_w 337
-    //   695: iload 11
-    //   697: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   700: pop
-    //   701: aload 31
-    //   703: ldc_w 339
-    //   706: iload 12
-    //   708: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   711: pop
-    //   712: aload 31
-    //   714: ldc_w 341
-    //   717: lload 18
-    //   719: invokevirtual 344	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   722: pop
-    //   723: aload 31
-    //   725: ldc_w 346
-    //   728: iload 10
-    //   730: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   733: pop
-    //   734: aload 31
-    //   736: ldc_w 348
-    //   739: aload_1
-    //   740: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   743: pop
-    //   744: aload 31
-    //   746: ldc_w 350
-    //   749: aload 4
-    //   751: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   754: pop
-    //   755: aload 24
-    //   757: invokestatic 356	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   760: ifne +14 -> 774
-    //   763: aload 31
-    //   765: ldc_w 358
-    //   768: aload 24
-    //   770: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   773: pop
-    //   774: aload 31
-    //   776: ldc_w 346
-    //   779: iload 10
-    //   781: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   784: pop
-    //   785: aload 31
-    //   787: ldc_w 360
-    //   790: iload 13
-    //   792: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   795: pop
-    //   796: aload 31
-    //   798: ldc_w 362
-    //   801: iload 14
-    //   803: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   806: pop
-    //   807: aload 31
-    //   809: ldc_w 364
-    //   812: iload 15
-    //   814: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   817: pop
-    //   818: aload 31
-    //   820: ldc_w 366
-    //   823: lload 20
-    //   825: invokevirtual 344	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   828: pop
-    //   829: aload 26
-    //   831: ifnull +448 -> 1279
-    //   834: aload 26
-    //   836: invokeinterface 368 1 0
-    //   841: ifne +438 -> 1279
-    //   844: new 370	org/json/JSONArray
-    //   847: dup
-    //   848: invokespecial 371	org/json/JSONArray:<init>	()V
-    //   851: astore 32
-    //   853: aload 26
-    //   855: invokeinterface 375 1 0
-    //   860: astore 33
-    //   862: aload 33
-    //   864: invokeinterface 380 1 0
-    //   869: ifeq +22 -> 891
-    //   872: aload 32
-    //   874: aload 33
-    //   876: invokeinterface 384 1 0
-    //   881: checkcast 386	java/lang/Long
-    //   884: invokevirtual 389	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   887: pop
-    //   888: goto -26 -> 862
-    //   891: aload 31
-    //   893: ldc_w 391
-    //   896: aload 32
-    //   898: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   901: pop
-    //   902: goto +3 -> 905
-    //   905: aload 25
-    //   907: invokevirtual 395	com/tencent/mobileqq/apollo/model/Apollo3DMessage:getMessageJSONObject	()Lorg/json/JSONObject;
-    //   910: astore 32
-    //   912: aload 32
-    //   914: ifnull +14 -> 928
-    //   917: aload 31
-    //   919: ldc_w 397
-    //   922: aload 32
-    //   924: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   927: pop
-    //   928: aload 29
-    //   930: aload 31
-    //   932: invokevirtual 401	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   935: putfield 404	com/tencent/mobileqq/apollo/model/ApolloMessage:extStr	Ljava/lang/String;
-    //   938: aload 29
-    //   940: aload 27
-    //   942: getfield 407	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   945: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   948: putfield 410	com/tencent/mobileqq/apollo/model/ApolloMessage:flag	I
-    //   951: aload 29
-    //   953: aload 27
-    //   955: getfield 413	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_peer_uin	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   958: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   961: invokestatic 418	com/tencent/mobileqq/util/Utils:a	(I)J
-    //   964: putfield 176	com/tencent/mobileqq/apollo/model/ApolloMessage:peerUin	J
-    //   967: aload 29
-    //   969: aload 27
-    //   971: getfield 421	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_sender_ts	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   974: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   977: invokestatic 418	com/tencent/mobileqq/util/Utils:a	(I)J
-    //   980: putfield 424	com/tencent/mobileqq/apollo/model/ApolloMessage:senderTs	J
-    //   983: aload 29
-    //   985: aload 27
-    //   987: getfield 427	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_peer_ts	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   990: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   993: invokestatic 418	com/tencent/mobileqq/util/Utils:a	(I)J
-    //   996: putfield 430	com/tencent/mobileqq/apollo/model/ApolloMessage:peerTs	J
-    //   999: aload 29
-    //   1001: aload 27
-    //   1003: getfield 431	tencent/im/msg/im_msg_body$ApolloActMsg:int32_sender_status	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   1006: invokevirtual 128	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   1009: putfield 434	com/tencent/mobileqq/apollo/model/ApolloMessage:senderStatus	I
-    //   1012: aload 29
-    //   1014: aload 27
-    //   1016: getfield 435	tencent/im/msg/im_msg_body$ApolloActMsg:int32_peer_status	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   1019: invokevirtual 128	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   1022: putfield 438	com/tencent/mobileqq/apollo/model/ApolloMessage:peerStatus	I
-    //   1025: sipush -2039
-    //   1028: invokestatic 443	com/tencent/mobileqq/service/message/MessageRecordFactory:a	(I)Lcom/tencent/mobileqq/data/MessageRecord;
-    //   1031: checkcast 445	com/tencent/mobileqq/apollo/model/MessageForApollo
-    //   1034: astore 27
-    //   1036: aload 27
-    //   1038: sipush -2039
-    //   1041: putfield 448	com/tencent/mobileqq/apollo/model/MessageForApollo:msgtype	I
-    //   1044: aload 27
-    //   1046: aload 29
-    //   1048: putfield 452	com/tencent/mobileqq/apollo/model/MessageForApollo:mApolloMessage	Lcom/tencent/mobileqq/apollo/model/ApolloMessage;
-    //   1051: aload 27
-    //   1053: aload 29
-    //   1055: invokestatic 457	com/tencent/mobileqq/app/utils/MessagePkgUtils:a	(Ljava/io/Serializable;)[B
-    //   1058: putfield 460	com/tencent/mobileqq/apollo/model/MessageForApollo:msgData	[B
-    //   1061: aload 27
-    //   1063: aload 28
-    //   1065: putfield 462	com/tencent/mobileqq/apollo/model/MessageForApollo:inputText	Ljava/lang/String;
-    //   1068: aload 27
-    //   1070: iload 9
-    //   1072: putfield 465	com/tencent/mobileqq/apollo/model/MessageForApollo:audioId	I
-    //   1075: aload 27
-    //   1077: fload 7
-    //   1079: putfield 468	com/tencent/mobileqq/apollo/model/MessageForApollo:audioStartTime	F
-    //   1082: aload 27
-    //   1084: iload 10
-    //   1086: putfield 471	com/tencent/mobileqq/apollo/model/MessageForApollo:msgType	I
-    //   1089: aload 27
-    //   1091: iload 11
-    //   1093: putfield 473	com/tencent/mobileqq/apollo/model/MessageForApollo:gameId	I
-    //   1096: aload 27
-    //   1098: iload 12
-    //   1100: putfield 476	com/tencent/mobileqq/apollo/model/MessageForApollo:mGameMode	I
-    //   1103: aload 27
-    //   1105: lload 18
-    //   1107: putfield 479	com/tencent/mobileqq/apollo/model/MessageForApollo:roomId	J
-    //   1110: aload 27
-    //   1112: lload 16
-    //   1114: putfield 482	com/tencent/mobileqq/apollo/model/MessageForApollo:signTs	J
-    //   1117: aload 27
-    //   1119: aload_1
-    //   1120: putfield 484	com/tencent/mobileqq/apollo/model/MessageForApollo:gameName	Ljava/lang/String;
-    //   1123: aload 27
-    //   1125: iload 13
-    //   1127: putfield 486	com/tencent/mobileqq/apollo/model/MessageForApollo:actionType	I
-    //   1130: aload 27
-    //   1132: aload 24
-    //   1134: putfield 488	com/tencent/mobileqq/apollo/model/MessageForApollo:extendJson	Ljava/lang/String;
-    //   1137: aload 27
-    //   1139: aload 4
-    //   1141: putfield 490	com/tencent/mobileqq/apollo/model/MessageForApollo:gameExtendJson	Ljava/lang/String;
-    //   1144: aload 27
-    //   1146: ldc 54
-    //   1148: invokestatic 60	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   1151: checkcast 54	com/tencent/mobileqq/apollo/utils/api/IApolloUtil
-    //   1154: aload 27
-    //   1156: getfield 488	com/tencent/mobileqq/apollo/model/MessageForApollo:extendJson	Ljava/lang/String;
-    //   1159: ldc_w 492
-    //   1162: invokeinterface 496 3 0
-    //   1167: putfield 498	com/tencent/mobileqq/apollo/model/MessageForApollo:gameStatus	I
-    //   1170: aload 27
-    //   1172: aload 25
-    //   1174: putfield 501	com/tencent/mobileqq/apollo/model/MessageForApollo:mApollo3DMessage	Lcom/tencent/mobileqq/apollo/model/Apollo3DMessage;
-    //   1177: aload 27
-    //   1179: iload 14
-    //   1181: putfield 503	com/tencent/mobileqq/apollo/model/MessageForApollo:stickerHeight	I
-    //   1184: aload 27
-    //   1186: iload 15
-    //   1188: putfield 505	com/tencent/mobileqq/apollo/model/MessageForApollo:stickerWidth	I
-    //   1191: aload 27
-    //   1193: lload 20
-    //   1195: putfield 507	com/tencent/mobileqq/apollo/model/MessageForApollo:welcomeId	J
-    //   1198: aload 27
-    //   1200: aload 26
-    //   1202: putfield 510	com/tencent/mobileqq/apollo/model/MessageForApollo:welcomeUinList	Ljava/util/List;
-    //   1205: aload_3
-    //   1206: aload 27
-    //   1208: invokeinterface 514 2 0
-    //   1213: pop
-    //   1214: invokestatic 520	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
-    //   1217: ldc_w 522
-    //   1220: ldc_w 524
-    //   1223: iconst_0
-    //   1224: invokevirtual 528	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
-    //   1227: istore 9
-    //   1229: iload 9
-    //   1231: ifeq +15 -> 1246
-    //   1234: aload_0
-    //   1235: aload 29
-    //   1237: aload_2
-    //   1238: aload 6
-    //   1240: aload 30
-    //   1242: invokespecial 530	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(Lcom/tencent/mobileqq/apollo/model/ApolloMessage;Lmsf/msgcomm/msg_comm$Msg;Lcom/tencent/mobileqq/troop/data/MessageInfo;Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   1245: return
-    //   1246: return
-    //   1247: astore_1
-    //   1248: goto +4 -> 1252
-    //   1251: astore_1
-    //   1252: invokestatic 233	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1255: ifeq +14 -> 1269
-    //   1258: ldc_w 532
-    //   1261: iconst_2
-    //   1262: ldc_w 534
-    //   1265: aload_1
-    //   1266: invokestatic 537	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1269: return
-    //   1270: aconst_null
-    //   1271: astore 28
-    //   1273: goto -626 -> 647
-    //   1276: goto -598 -> 678
-    //   1279: goto -374 -> 905
+    //   12: istore 17
+    //   14: iconst_0
+    //   15: istore 14
+    //   17: iconst_0
+    //   18: istore 9
+    //   20: iload 9
+    //   22: aload_1
+    //   23: invokeinterface 215 1 0
+    //   28: if_icmpge +57 -> 85
+    //   31: aload_1
+    //   32: iload 9
+    //   34: invokeinterface 218 2 0
+    //   39: checkcast 220	tencent/im/msg/im_msg_body$Elem
+    //   42: getfield 224	tencent/im/msg/im_msg_body$Elem:apollo_msg	Ltencent/im/msg/im_msg_body$ApolloActMsg;
+    //   45: invokevirtual 227	tencent/im/msg/im_msg_body$ApolloActMsg:has	()Z
+    //   48: ifeq +28 -> 76
+    //   51: aload_1
+    //   52: iload 9
+    //   54: invokeinterface 218 2 0
+    //   59: checkcast 220	tencent/im/msg/im_msg_body$Elem
+    //   62: getfield 224	tencent/im/msg/im_msg_body$Elem:apollo_msg	Ltencent/im/msg/im_msg_body$ApolloActMsg;
+    //   65: invokevirtual 228	tencent/im/msg/im_msg_body$ApolloActMsg:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   68: checkcast 226	tencent/im/msg/im_msg_body$ApolloActMsg
+    //   71: astore 29
+    //   73: goto +15 -> 88
+    //   76: iload 9
+    //   78: iconst_1
+    //   79: iadd
+    //   80: istore 9
+    //   82: goto -62 -> 20
+    //   85: aconst_null
+    //   86: astore 29
+    //   88: aload 29
+    //   90: ifnonnull +4 -> 94
+    //   93: return
+    //   94: invokestatic 233	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   97: ifeq +11 -> 108
+    //   100: aload 4
+    //   102: ldc 235
+    //   104: invokevirtual 241	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: pop
+    //   108: new 172	com/tencent/mobileqq/apollo/model/ApolloMessage
+    //   111: dup
+    //   112: invokespecial 242	com/tencent/mobileqq/apollo/model/ApolloMessage:<init>	()V
+    //   115: astore 32
+    //   117: aload 32
+    //   119: aload 29
+    //   121: getfield 243	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_action_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   124: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   127: putfield 246	com/tencent/mobileqq/apollo/model/ApolloMessage:id	I
+    //   130: aload 32
+    //   132: aload 29
+    //   134: getfield 247	tencent/im/msg/im_msg_body$ApolloActMsg:bytes_action_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   137: invokevirtual 107	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   140: invokevirtual 113	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   143: putfield 251	com/tencent/mobileqq/apollo/model/ApolloMessage:name	[B
+    //   146: iload 5
+    //   148: ifne +30 -> 178
+    //   151: aload 29
+    //   153: getfield 254	tencent/im/msg/im_msg_body$ApolloActMsg:bytes_action_text	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   156: invokevirtual 102	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   159: ifeq +19 -> 178
+    //   162: aload 32
+    //   164: aload 29
+    //   166: getfield 254	tencent/im/msg/im_msg_body$ApolloActMsg:bytes_action_text	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   169: invokevirtual 107	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   172: invokevirtual 113	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   175: putfield 257	com/tencent/mobileqq/apollo/model/ApolloMessage:text	[B
+    //   178: fconst_0
+    //   179: fstore 7
+    //   181: fconst_0
+    //   182: fstore 8
+    //   184: new 85	com/tencent/mobileqq/apollo/model/Apollo3DMessage
+    //   187: dup
+    //   188: invokespecial 258	com/tencent/mobileqq/apollo/model/Apollo3DMessage:<init>	()V
+    //   191: astore 31
+    //   193: new 13	com/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve
+    //   196: dup
+    //   197: invokespecial 259	com/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve:<init>	()V
+    //   200: astore 27
+    //   202: iconst_m1
+    //   203: istore 10
+    //   205: lconst_0
+    //   206: lstore 24
+    //   208: aload 27
+    //   210: aload 29
+    //   212: getfield 262	tencent/im/msg/im_msg_body$ApolloActMsg:bytes_pb_reserve	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   215: invokevirtual 107	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   218: invokevirtual 113	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   221: invokevirtual 266	com/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   224: pop
+    //   225: aload_0
+    //   226: iconst_m1
+    //   227: aload 27
+    //   229: invokespecial 268	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
+    //   232: istore 9
+    //   234: iload 10
+    //   236: istore 12
+    //   238: aload_0
+    //   239: fconst_0
+    //   240: aload 27
+    //   242: invokespecial 270	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(FLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)F
+    //   245: fstore 7
+    //   247: fload 7
+    //   249: fstore 8
+    //   251: iload 10
+    //   253: istore 12
+    //   255: aload_0
+    //   256: iconst_m1
+    //   257: aload 27
+    //   259: invokespecial 273	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:b	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
+    //   262: istore 10
+    //   264: fload 7
+    //   266: fstore 8
+    //   268: iload 10
+    //   270: istore 12
+    //   272: aload_0
+    //   273: iconst_0
+    //   274: aload 27
+    //   276: invokespecial 275	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:c	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
+    //   279: istore 11
+    //   281: aload_0
+    //   282: lconst_0
+    //   283: aload 27
+    //   285: invokespecial 277	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(JLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)J
+    //   288: lstore 20
+    //   290: aload_0
+    //   291: aconst_null
+    //   292: aload 27
+    //   294: invokespecial 279	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(Ljava/lang/String;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Ljava/lang/String;
+    //   297: astore_1
+    //   298: aload_0
+    //   299: aconst_null
+    //   300: aload 27
+    //   302: invokespecial 281	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:b	(Ljava/lang/String;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Ljava/lang/String;
+    //   305: astore 4
+    //   307: aload_0
+    //   308: lconst_0
+    //   309: aload 27
+    //   311: invokespecial 283	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:b	(JLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)J
+    //   314: lstore 18
+    //   316: aload_0
+    //   317: lconst_0
+    //   318: aload 27
+    //   320: aload 33
+    //   322: invokespecial 285	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(JLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;Lcom/tencent/mobileqq/app/QQAppInterface;)J
+    //   325: pop2
+    //   326: aload_0
+    //   327: iconst_0
+    //   328: aload 27
+    //   330: invokespecial 288	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:d	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
+    //   333: istore 12
+    //   335: aload_0
+    //   336: aconst_null
+    //   337: aload 27
+    //   339: invokespecial 290	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:c	(Ljava/lang/String;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Ljava/lang/String;
+    //   342: astore 26
+    //   344: aload_0
+    //   345: iconst_0
+    //   346: aload 27
+    //   348: invokespecial 293	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:e	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
+    //   351: istore 13
+    //   353: aload 31
+    //   355: astore 30
+    //   357: aload_0
+    //   358: aload 31
+    //   360: aload 27
+    //   362: invokespecial 295	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(Lcom/tencent/mobileqq/apollo/model/Apollo3DMessage;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Lcom/tencent/mobileqq/apollo/model/Apollo3DMessage;
+    //   365: astore 28
+    //   367: aload 28
+    //   369: astore 30
+    //   371: aload_0
+    //   372: iconst_0
+    //   373: aload 27
+    //   375: invokespecial 298	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:f	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
+    //   378: istore 16
+    //   380: lload 24
+    //   382: lstore 22
+    //   384: aload_0
+    //   385: iconst_0
+    //   386: aload 27
+    //   388: invokespecial 301	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:g	(ILcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)I
+    //   391: istore 15
+    //   393: iload 15
+    //   395: istore 14
+    //   397: lload 24
+    //   399: lstore 22
+    //   401: aload_0
+    //   402: lconst_0
+    //   403: aload 27
+    //   405: invokespecial 303	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:c	(JLcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)J
+    //   408: lstore 24
+    //   410: iload 15
+    //   412: istore 14
+    //   414: lload 24
+    //   416: lstore 22
+    //   418: aload_0
+    //   419: aconst_null
+    //   420: aload 27
+    //   422: invokespecial 305	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(Ljava/util/List;Lcom/tencent/pb/apollomsgextend/ApolloMsgExtend$AuthReserve;)Ljava/util/List;
+    //   425: astore 31
+    //   427: aload 4
+    //   429: astore 30
+    //   431: iload 12
+    //   433: istore 17
+    //   435: lload 24
+    //   437: lstore 22
+    //   439: aload_1
+    //   440: astore 27
+    //   442: iload 16
+    //   444: istore 14
+    //   446: aload 31
+    //   448: astore 4
+    //   450: iload 15
+    //   452: istore 12
+    //   454: aload 26
+    //   456: astore_1
+    //   457: iload 17
+    //   459: istore 15
+    //   461: iload 12
+    //   463: istore 16
+    //   465: aload 28
+    //   467: astore 26
+    //   469: aload 30
+    //   471: astore 28
+    //   473: goto +222 -> 695
+    //   476: astore 27
+    //   478: iload 12
+    //   480: istore 15
+    //   482: iload 16
+    //   484: istore 12
+    //   486: goto +171 -> 657
+    //   489: astore 27
+    //   491: aload 30
+    //   493: astore 28
+    //   495: iload 12
+    //   497: istore 14
+    //   499: goto +143 -> 642
+    //   502: astore 27
+    //   504: aload 26
+    //   506: astore 28
+    //   508: goto +119 -> 627
+    //   511: astore 27
+    //   513: aconst_null
+    //   514: astore 28
+    //   516: goto +111 -> 627
+    //   519: astore 26
+    //   521: aconst_null
+    //   522: astore 27
+    //   524: goto +92 -> 616
+    //   527: astore 26
+    //   529: aconst_null
+    //   530: astore 27
+    //   532: goto +18 -> 550
+    //   535: astore 26
+    //   537: goto +7 -> 544
+    //   540: astore 26
+    //   542: aconst_null
+    //   543: astore_1
+    //   544: aconst_null
+    //   545: astore 4
+    //   547: aconst_null
+    //   548: astore 27
+    //   550: lconst_0
+    //   551: lstore 18
+    //   553: goto +63 -> 616
+    //   556: astore 26
+    //   558: aconst_null
+    //   559: astore_1
+    //   560: aload_1
+    //   561: astore 4
+    //   563: aload 4
+    //   565: astore 27
+    //   567: lconst_0
+    //   568: lstore 20
+    //   570: lload 20
+    //   572: lstore 18
+    //   574: goto +42 -> 616
+    //   577: astore 26
+    //   579: iload 12
+    //   581: istore 10
+    //   583: goto +12 -> 595
+    //   586: astore 26
+    //   588: iconst_m1
+    //   589: istore 9
+    //   591: fload 7
+    //   593: fstore 8
+    //   595: aconst_null
+    //   596: astore 27
+    //   598: lconst_0
+    //   599: lstore 18
+    //   601: aconst_null
+    //   602: astore 4
+    //   604: aconst_null
+    //   605: astore_1
+    //   606: lconst_0
+    //   607: lstore 20
+    //   609: iconst_0
+    //   610: istore 11
+    //   612: fload 8
+    //   614: fstore 7
+    //   616: iconst_0
+    //   617: istore 12
+    //   619: aload 27
+    //   621: astore 28
+    //   623: aload 26
+    //   625: astore 27
+    //   627: iconst_0
+    //   628: istore 13
+    //   630: aload 28
+    //   632: astore 26
+    //   634: iload 12
+    //   636: istore 14
+    //   638: aload 31
+    //   640: astore 28
+    //   642: iconst_0
+    //   643: istore 12
+    //   645: iload 14
+    //   647: istore 15
+    //   649: lload 24
+    //   651: lstore 22
+    //   653: iload 17
+    //   655: istore 14
+    //   657: aload 27
+    //   659: invokevirtual 308	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
+    //   662: aload 26
+    //   664: astore 30
+    //   666: aload 28
+    //   668: astore 26
+    //   670: aconst_null
+    //   671: astore 31
+    //   673: aload 4
+    //   675: astore 28
+    //   677: aload_1
+    //   678: astore 27
+    //   680: aload 31
+    //   682: astore 4
+    //   684: iload 14
+    //   686: istore 16
+    //   688: iload 12
+    //   690: istore 14
+    //   692: aload 30
+    //   694: astore_1
+    //   695: new 310	org/json/JSONObject
+    //   698: dup
+    //   699: invokespecial 311	org/json/JSONObject:<init>	()V
+    //   702: astore 31
+    //   704: aload 29
+    //   706: getfield 314	tencent/im/msg/im_msg_body$ApolloActMsg:input_text	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   709: invokevirtual 102	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   712: ifeq +568 -> 1280
+    //   715: new 104	java/lang/String
+    //   718: dup
+    //   719: aload 29
+    //   721: getfield 314	tencent/im/msg/im_msg_body$ApolloActMsg:input_text	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   724: invokevirtual 107	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   727: invokevirtual 113	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   730: invokespecial 116	java/lang/String:<init>	([B)V
+    //   733: astore 30
+    //   735: aload 31
+    //   737: ldc_w 316
+    //   740: aload 30
+    //   742: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   745: pop
+    //   746: goto +3 -> 749
+    //   749: iload 9
+    //   751: ifle +535 -> 1286
+    //   754: aload 31
+    //   756: ldc_w 322
+    //   759: iload 9
+    //   761: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   764: pop
+    //   765: aload 31
+    //   767: ldc_w 327
+    //   770: fload 7
+    //   772: f2d
+    //   773: invokevirtual 330	org/json/JSONObject:put	(Ljava/lang/String;D)Lorg/json/JSONObject;
+    //   776: pop
+    //   777: goto +3 -> 780
+    //   780: aload_1
+    //   781: invokestatic 336	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   784: ifne +13 -> 797
+    //   787: aload 31
+    //   789: ldc_w 338
+    //   792: aload_1
+    //   793: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   796: pop
+    //   797: aload 31
+    //   799: ldc_w 340
+    //   802: iload 10
+    //   804: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   807: pop
+    //   808: aload 31
+    //   810: ldc_w 342
+    //   813: iload 13
+    //   815: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   818: pop
+    //   819: aload 31
+    //   821: ldc_w 344
+    //   824: iload 14
+    //   826: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   829: pop
+    //   830: aload 31
+    //   832: ldc_w 346
+    //   835: iload 16
+    //   837: invokevirtual 325	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   840: pop
+    //   841: aload 31
+    //   843: ldc_w 348
+    //   846: lload 22
+    //   848: invokevirtual 351	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   851: pop
+    //   852: aload 4
+    //   854: ifnull +71 -> 925
+    //   857: aload 4
+    //   859: invokeinterface 353 1 0
+    //   864: ifne +61 -> 925
+    //   867: new 355	org/json/JSONArray
+    //   870: dup
+    //   871: invokespecial 356	org/json/JSONArray:<init>	()V
+    //   874: astore 34
+    //   876: aload 4
+    //   878: invokeinterface 360 1 0
+    //   883: astore 35
+    //   885: aload 35
+    //   887: invokeinterface 365 1 0
+    //   892: ifeq +22 -> 914
+    //   895: aload 34
+    //   897: aload 35
+    //   899: invokeinterface 369 1 0
+    //   904: checkcast 371	java/lang/Long
+    //   907: invokevirtual 374	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   910: pop
+    //   911: goto -26 -> 885
+    //   914: aload 31
+    //   916: ldc_w 376
+    //   919: aload 34
+    //   921: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   924: pop
+    //   925: aload 26
+    //   927: invokevirtual 380	com/tencent/mobileqq/apollo/model/Apollo3DMessage:getMessageJSONObject	()Lorg/json/JSONObject;
+    //   930: astore 34
+    //   932: aload 34
+    //   934: ifnull +14 -> 948
+    //   937: aload 31
+    //   939: ldc_w 382
+    //   942: aload 34
+    //   944: invokevirtual 320	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   947: pop
+    //   948: aload 32
+    //   950: aload 31
+    //   952: invokevirtual 386	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   955: putfield 389	com/tencent/mobileqq/apollo/model/ApolloMessage:extStr	Ljava/lang/String;
+    //   958: aload 32
+    //   960: aload 29
+    //   962: getfield 392	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   965: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   968: putfield 395	com/tencent/mobileqq/apollo/model/ApolloMessage:flag	I
+    //   971: aload 32
+    //   973: aload 29
+    //   975: getfield 398	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_peer_uin	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   978: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   981: invokestatic 403	com/tencent/mobileqq/util/Utils:a	(I)J
+    //   984: putfield 176	com/tencent/mobileqq/apollo/model/ApolloMessage:peerUin	J
+    //   987: aload 32
+    //   989: aload 29
+    //   991: getfield 406	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_sender_ts	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   994: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   997: invokestatic 403	com/tencent/mobileqq/util/Utils:a	(I)J
+    //   1000: putfield 409	com/tencent/mobileqq/apollo/model/ApolloMessage:senderTs	J
+    //   1003: aload 32
+    //   1005: aload 29
+    //   1007: getfield 412	tencent/im/msg/im_msg_body$ApolloActMsg:uint32_peer_ts	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1010: invokevirtual 39	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1013: invokestatic 403	com/tencent/mobileqq/util/Utils:a	(I)J
+    //   1016: putfield 415	com/tencent/mobileqq/apollo/model/ApolloMessage:peerTs	J
+    //   1019: aload 32
+    //   1021: aload 29
+    //   1023: getfield 416	tencent/im/msg/im_msg_body$ApolloActMsg:int32_sender_status	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   1026: invokevirtual 128	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   1029: putfield 419	com/tencent/mobileqq/apollo/model/ApolloMessage:senderStatus	I
+    //   1032: aload 32
+    //   1034: aload 29
+    //   1036: getfield 420	tencent/im/msg/im_msg_body$ApolloActMsg:int32_peer_status	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   1039: invokevirtual 128	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   1042: putfield 423	com/tencent/mobileqq/apollo/model/ApolloMessage:peerStatus	I
+    //   1045: sipush -2039
+    //   1048: invokestatic 428	com/tencent/mobileqq/service/message/MessageRecordFactory:a	(I)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   1051: checkcast 430	com/tencent/mobileqq/apollo/model/MessageForApollo
+    //   1054: astore 29
+    //   1056: aload 29
+    //   1058: sipush -2039
+    //   1061: putfield 433	com/tencent/mobileqq/apollo/model/MessageForApollo:msgtype	I
+    //   1064: aload 29
+    //   1066: aload 32
+    //   1068: putfield 437	com/tencent/mobileqq/apollo/model/MessageForApollo:mApolloMessage	Lcom/tencent/mobileqq/apollo/model/ApolloMessage;
+    //   1071: aload 29
+    //   1073: aload 32
+    //   1075: invokestatic 442	com/tencent/mobileqq/app/utils/MessagePkgUtils:a	(Ljava/io/Serializable;)[B
+    //   1078: putfield 445	com/tencent/mobileqq/apollo/model/MessageForApollo:msgData	[B
+    //   1081: aload 29
+    //   1083: aload 30
+    //   1085: putfield 447	com/tencent/mobileqq/apollo/model/MessageForApollo:inputText	Ljava/lang/String;
+    //   1088: aload 29
+    //   1090: iload 9
+    //   1092: putfield 450	com/tencent/mobileqq/apollo/model/MessageForApollo:audioId	I
+    //   1095: aload 29
+    //   1097: fload 7
+    //   1099: putfield 453	com/tencent/mobileqq/apollo/model/MessageForApollo:audioStartTime	F
+    //   1102: aload 29
+    //   1104: iload 10
+    //   1106: putfield 456	com/tencent/mobileqq/apollo/model/MessageForApollo:msgType	I
+    //   1109: aload 29
+    //   1111: iload 11
+    //   1113: putfield 459	com/tencent/mobileqq/apollo/model/MessageForApollo:gameId	I
+    //   1116: aload 29
+    //   1118: iload 15
+    //   1120: putfield 462	com/tencent/mobileqq/apollo/model/MessageForApollo:mGameMode	I
+    //   1123: aload 29
+    //   1125: lload 20
+    //   1127: putfield 465	com/tencent/mobileqq/apollo/model/MessageForApollo:roomId	J
+    //   1130: aload 29
+    //   1132: lload 18
+    //   1134: putfield 468	com/tencent/mobileqq/apollo/model/MessageForApollo:signTs	J
+    //   1137: aload 29
+    //   1139: aload 27
+    //   1141: putfield 471	com/tencent/mobileqq/apollo/model/MessageForApollo:gameName	Ljava/lang/String;
+    //   1144: aload 29
+    //   1146: iload 13
+    //   1148: putfield 473	com/tencent/mobileqq/apollo/model/MessageForApollo:actionType	I
+    //   1151: aload 29
+    //   1153: aload_1
+    //   1154: putfield 475	com/tencent/mobileqq/apollo/model/MessageForApollo:extendJson	Ljava/lang/String;
+    //   1157: aload 29
+    //   1159: aload 28
+    //   1161: putfield 478	com/tencent/mobileqq/apollo/model/MessageForApollo:gameExtendJson	Ljava/lang/String;
+    //   1164: aload 29
+    //   1166: ldc 54
+    //   1168: invokestatic 60	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   1171: checkcast 54	com/tencent/mobileqq/apollo/utils/api/IApolloUtil
+    //   1174: aload 29
+    //   1176: getfield 475	com/tencent/mobileqq/apollo/model/MessageForApollo:extendJson	Ljava/lang/String;
+    //   1179: ldc_w 480
+    //   1182: invokeinterface 484 3 0
+    //   1187: putfield 486	com/tencent/mobileqq/apollo/model/MessageForApollo:gameStatus	I
+    //   1190: aload 29
+    //   1192: aload 26
+    //   1194: putfield 489	com/tencent/mobileqq/apollo/model/MessageForApollo:mApollo3DMessage	Lcom/tencent/mobileqq/apollo/model/Apollo3DMessage;
+    //   1197: aload 29
+    //   1199: iload 14
+    //   1201: putfield 491	com/tencent/mobileqq/apollo/model/MessageForApollo:stickerHeight	I
+    //   1204: aload 29
+    //   1206: iload 16
+    //   1208: putfield 493	com/tencent/mobileqq/apollo/model/MessageForApollo:stickerWidth	I
+    //   1211: aload 29
+    //   1213: lload 22
+    //   1215: putfield 495	com/tencent/mobileqq/apollo/model/MessageForApollo:welcomeId	J
+    //   1218: aload 29
+    //   1220: aload 4
+    //   1222: putfield 498	com/tencent/mobileqq/apollo/model/MessageForApollo:welcomeUinList	Ljava/util/List;
+    //   1225: aload_3
+    //   1226: aload 29
+    //   1228: invokeinterface 502 2 0
+    //   1233: pop
+    //   1234: invokestatic 507	com/tencent/mobileqq/apollo/config/CmShowWnsUtils:ac	()Z
+    //   1237: istore 5
+    //   1239: iload 5
+    //   1241: ifeq +15 -> 1256
+    //   1244: aload_0
+    //   1245: aload 32
+    //   1247: aload_2
+    //   1248: aload 6
+    //   1250: aload 33
+    //   1252: invokespecial 509	com/tencent/mobileqq/apollo/aio/message/ApolloElemDecoder:a	(Lcom/tencent/mobileqq/apollo/model/ApolloMessage;Lmsf/msgcomm/msg_comm$Msg;Lcom/tencent/mobileqq/troop/data/MessageInfo;Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   1255: return
+    //   1256: return
+    //   1257: astore_1
+    //   1258: goto +4 -> 1262
+    //   1261: astore_1
+    //   1262: invokestatic 233	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1265: ifeq +14 -> 1279
+    //   1268: ldc_w 511
+    //   1271: iconst_2
+    //   1272: ldc_w 513
+    //   1275: aload_1
+    //   1276: invokestatic 516	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1279: return
+    //   1280: aconst_null
+    //   1281: astore 30
+    //   1283: goto -534 -> 749
+    //   1286: goto -506 -> 780
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1282	0	this	ApolloElemDecoder
-    //   0	1282	1	paramList	List<im_msg_body.Elem>
-    //   0	1282	2	paramMsg	msg_comm.Msg
-    //   0	1282	3	paramList1	List<MessageRecord>
-    //   0	1282	4	paramStringBuilder	StringBuilder
-    //   0	1282	5	paramBoolean	boolean
-    //   0	1282	6	paramMessageInfo	MessageInfo
-    //   173	905	7	f1	float
-    //   176	366	8	f2	float
-    //   12	1218	9	i	int
-    //   197	888	10	j	int
-    //   273	819	11	k	int
-    //   230	869	12	m	int
-    //   345	781	13	n	int
-    //   372	808	14	i1	int
-    //   381	806	15	i2	int
-    //   308	805	16	l1	long
-    //   282	824	18	l2	long
-    //   200	994	20	l3	long
-    //   390	16	22	l4	long
-    //   336	98	24	str	String
-    //   448	1	24	localInvalidProtocolBufferMicroException1	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   456	1	24	localInvalidProtocolBufferMicroException2	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   464	1	24	localInvalidProtocolBufferMicroException3	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   469	1	24	localInvalidProtocolBufferMicroException4	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   485	1	24	localInvalidProtocolBufferMicroException5	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   506	1	24	localInvalidProtocolBufferMicroException6	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   515	38	24	localInvalidProtocolBufferMicroException7	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   561	572	24	localObject1	java.lang.Object
-    //   359	61	25	localApollo3DMessage	Apollo3DMessage
-    //   426	1	25	localInvalidProtocolBufferMicroException8	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   431	1	25	localInvalidProtocolBufferMicroException9	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   440	1	25	localInvalidProtocolBufferMicroException10	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   451	722	25	localObject2	java.lang.Object
-    //   349	55	26	localObject3	java.lang.Object
-    //   412	1	26	localInvalidProtocolBufferMicroException11	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   417	1	26	localInvalidProtocolBufferMicroException12	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   435	766	26	localObject4	java.lang.Object
-    //   65	1142	27	localObject5	java.lang.Object
-    //   185	1087	28	localObject6	java.lang.Object
-    //   109	1127	29	localApolloMessage	ApolloMessage
-    //   9	1232	30	localQQAppInterface	QQAppInterface
-    //   194	737	31	localObject7	java.lang.Object
-    //   851	72	32	localObject8	java.lang.Object
-    //   860	15	33	localIterator	java.util.Iterator
+    //   0	1289	0	this	ApolloElemDecoder
+    //   0	1289	1	paramList	List<im_msg_body.Elem>
+    //   0	1289	2	paramMsg	msg_comm.Msg
+    //   0	1289	3	paramList1	List<MessageRecord>
+    //   0	1289	4	paramStringBuilder	StringBuilder
+    //   0	1289	5	paramBoolean	boolean
+    //   0	1289	6	paramMessageInfo	MessageInfo
+    //   179	919	7	f1	float
+    //   182	431	8	f2	float
+    //   18	1073	9	i	int
+    //   203	902	10	j	int
+    //   279	833	11	k	int
+    //   236	453	12	m	int
+    //   351	796	13	n	int
+    //   15	1185	14	i1	int
+    //   391	728	15	i2	int
+    //   378	829	16	i3	int
+    //   12	642	17	i4	int
+    //   314	819	18	l1	long
+    //   288	838	20	l2	long
+    //   382	832	22	l3	long
+    //   206	444	24	l4	long
+    //   342	163	26	localObject1	java.lang.Object
+    //   519	1	26	localInvalidProtocolBufferMicroException1	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   527	1	26	localInvalidProtocolBufferMicroException2	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   535	1	26	localInvalidProtocolBufferMicroException3	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   540	1	26	localInvalidProtocolBufferMicroException4	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   556	1	26	localInvalidProtocolBufferMicroException5	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   577	1	26	localInvalidProtocolBufferMicroException6	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   586	38	26	localInvalidProtocolBufferMicroException7	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   632	561	26	localObject2	java.lang.Object
+    //   200	241	27	localObject3	java.lang.Object
+    //   476	1	27	localInvalidProtocolBufferMicroException8	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   489	1	27	localInvalidProtocolBufferMicroException9	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   502	1	27	localInvalidProtocolBufferMicroException10	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   511	1	27	localInvalidProtocolBufferMicroException11	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   522	618	27	localObject4	java.lang.Object
+    //   365	795	28	localObject5	java.lang.Object
+    //   71	1156	29	localObject6	java.lang.Object
+    //   355	927	30	localObject7	java.lang.Object
+    //   191	760	31	localObject8	java.lang.Object
+    //   115	1131	32	localApolloMessage	ApolloMessage
+    //   9	1242	33	localQQAppInterface	QQAppInterface
+    //   874	69	34	localObject9	java.lang.Object
+    //   883	15	35	localIterator	java.util.Iterator
     // Exception table:
     //   from	to	target	type
-    //   383	392	412	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   396	405	412	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   374	383	417	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   351	361	426	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   365	374	426	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   338	347	431	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   329	338	440	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   310	329	448	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   301	310	456	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   292	301	464	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   284	292	469	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   275	284	485	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   232	241	506	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   249	258	506	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   266	275	506	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   202	228	515	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   593	644	1247	java/lang/Throwable
-    //   652	675	1247	java/lang/Throwable
-    //   678	685	1247	java/lang/Throwable
-    //   690	755	1247	java/lang/Throwable
-    //   755	774	1247	java/lang/Throwable
-    //   774	818	1247	java/lang/Throwable
-    //   818	829	1247	java/lang/Throwable
-    //   834	862	1247	java/lang/Throwable
-    //   862	888	1247	java/lang/Throwable
-    //   891	902	1247	java/lang/Throwable
-    //   905	912	1247	java/lang/Throwable
-    //   917	928	1247	java/lang/Throwable
-    //   928	1229	1247	java/lang/Throwable
-    //   102	140	1251	java/lang/Throwable
-    //   145	172	1251	java/lang/Throwable
-    //   178	196	1251	java/lang/Throwable
-    //   202	228	1251	java/lang/Throwable
-    //   232	241	1251	java/lang/Throwable
-    //   249	258	1251	java/lang/Throwable
-    //   266	275	1251	java/lang/Throwable
-    //   275	284	1251	java/lang/Throwable
-    //   284	292	1251	java/lang/Throwable
-    //   292	301	1251	java/lang/Throwable
-    //   301	310	1251	java/lang/Throwable
-    //   310	329	1251	java/lang/Throwable
-    //   329	338	1251	java/lang/Throwable
-    //   338	347	1251	java/lang/Throwable
-    //   351	361	1251	java/lang/Throwable
-    //   365	374	1251	java/lang/Throwable
-    //   374	383	1251	java/lang/Throwable
-    //   383	392	1251	java/lang/Throwable
-    //   396	405	1251	java/lang/Throwable
-    //   585	590	1251	java/lang/Throwable
-    //   1234	1245	1251	java/lang/Throwable
+    //   384	393	476	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   401	410	476	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   418	427	476	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   357	367	489	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   371	380	489	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   344	353	502	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   335	344	511	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   316	335	519	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   307	316	527	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   298	307	535	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   290	298	540	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   281	290	556	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   238	247	577	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   255	264	577	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   272	281	577	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   208	234	586	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   695	746	1257	java/lang/Throwable
+    //   754	777	1257	java/lang/Throwable
+    //   780	797	1257	java/lang/Throwable
+    //   797	852	1257	java/lang/Throwable
+    //   857	885	1257	java/lang/Throwable
+    //   885	911	1257	java/lang/Throwable
+    //   914	925	1257	java/lang/Throwable
+    //   925	932	1257	java/lang/Throwable
+    //   937	948	1257	java/lang/Throwable
+    //   948	1239	1257	java/lang/Throwable
+    //   108	146	1261	java/lang/Throwable
+    //   151	178	1261	java/lang/Throwable
+    //   184	202	1261	java/lang/Throwable
+    //   208	234	1261	java/lang/Throwable
+    //   238	247	1261	java/lang/Throwable
+    //   255	264	1261	java/lang/Throwable
+    //   272	281	1261	java/lang/Throwable
+    //   281	290	1261	java/lang/Throwable
+    //   290	298	1261	java/lang/Throwable
+    //   298	307	1261	java/lang/Throwable
+    //   307	316	1261	java/lang/Throwable
+    //   316	335	1261	java/lang/Throwable
+    //   335	344	1261	java/lang/Throwable
+    //   344	353	1261	java/lang/Throwable
+    //   357	367	1261	java/lang/Throwable
+    //   371	380	1261	java/lang/Throwable
+    //   384	393	1261	java/lang/Throwable
+    //   401	410	1261	java/lang/Throwable
+    //   418	427	1261	java/lang/Throwable
+    //   657	662	1261	java/lang/Throwable
+    //   1244	1255	1261	java/lang/Throwable
   }
   
   private int b(int paramInt, ApolloMsgExtend.AuthReserve paramAuthReserve)
@@ -912,7 +922,7 @@ public class ApolloElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.message.ApolloElemDecoder
  * JD-Core Version:    0.7.0.1
  */

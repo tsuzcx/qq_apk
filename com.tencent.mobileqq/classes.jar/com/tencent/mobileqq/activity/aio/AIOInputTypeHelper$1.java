@@ -11,12 +11,12 @@ final class AIOInputTypeHelper$1
   
   public void run()
   {
-    AIOInputTypeHelper.a(this.a).edit().putBoolean("ptt_guide_have_show", false).commit();
+    AIOInputTypeHelper.c(this.a).edit().putBoolean("ptt_guide_have_show", false).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOInputTypeHelper.1
  * JD-Core Version:    0.7.0.1
  */

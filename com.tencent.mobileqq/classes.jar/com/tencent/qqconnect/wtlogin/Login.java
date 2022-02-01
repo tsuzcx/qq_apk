@@ -11,24 +11,22 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.LoginFailedHelper;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.config.business.OpenSdkIFrameProcessor;
+import com.tencent.mobileqq.login.ui.AddAccountBaseUI;
+import com.tencent.mobileqq.login.ui.AddAccountBaseUI.OnInteractionListener;
 import com.tencent.mobileqq.loginregister.LoginProgressClazz;
+import com.tencent.mobileqq.loginregister.LoginStaticField;
 import com.tencent.mobileqq.qqsec.api.ISafeBlockApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -38,9 +36,6 @@ import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.open.agent.util.SSOLog;
 import com.tencent.open.virtual.OpenSdkVirtualUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
 import cooperation.qqfav.util.HandlerPlus;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +47,8 @@ import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
 
 @RoutePage(desc="互联添加帐号页面", path="/base/openSdkLogin")
 public class Login
-  extends BaseActivity
+  extends QBaseActivity
+  implements AddAccountBaseUI.OnInteractionListener
 {
   protected static final int CHECK_SUCCESS = 6;
   public static final int CLEAR_PROGRESS_DIALOG = 2001;
@@ -69,24 +65,18 @@ public class Login
   public static String gAccount = "";
   public static boolean gLoginNow = false;
   public static String gPasswd = "";
-  private boolean actionSheetHasClick = false;
   protected OpenSDKAppInterface app;
   protected boolean autoFillInPasswd = true;
-  View.OnFocusChangeListener focusListener = new Login.4(this);
   private boolean isFromForgetSmsLogin;
-  protected TextView leftView;
-  protected Button login;
-  MqqHandler loginHandler = new Login.8(this);
+  MqqHandler loginHandler = new Login.6(this);
   protected List<WloginLoginInfo> loginInfoList;
-  private ActionSheet mActionSheet = null;
   private String mAppId;
-  public BroadcastReceiver mAutoLoginReceiver = new Login.9(this);
-  protected View mDelBtn;
-  protected View mDelPassBtn;
+  public BroadcastReceiver mAutoLoginReceiver = new Login.7(this);
+  protected AddAccountBaseUI mBaseUI = new AddAccountBaseUI(this, this);
   protected HandlerPlus mHandler = new HandlerPlus(this.mMainCallback);
   protected long mLoginBTS;
   private LoginFailedHelper mLoginFailedHelper = new LoginFailedHelper();
-  protected Handler.Callback mMainCallback = new Login.11(this);
+  protected Handler.Callback mMainCallback = new Login.9(this);
   protected QQProgressDialog mProgress;
   private BroadcastReceiver mPuzzleVerifyCodeReceiver;
   protected TextView mQrCodeBtn;
@@ -95,15 +85,7 @@ public class Login
   protected long mReqSize = 0L;
   protected int mReqSrc = 1;
   private boolean mShouldAutoLogin = false;
-  protected EditText name;
-  protected View.OnClickListener onClick = new Login.12(this);
-  TextWatcher onEnterPswd = new Login.7(this);
-  TextWatcher onTextChangeForUpdating = new Login.6(this);
-  View.OnTouchListener onTouchListener = new Login.5(this);
-  protected EditText pswd;
   protected SSOAccountObserver ssoLoginObserver = new Login.1(this);
-  protected TextView txtPhoneNumLogin;
-  protected TextView unLoginTv;
   protected WtloginManager wtloginManager;
   
   private Bundle buildBundle()
@@ -112,7 +94,7 @@ public class Login
     if (OpenSdkIFrameProcessor.a()) {
       localBundle.putInt("puzzle_verify_code", 130);
     }
-    localBundle.putByteArray("connect_data", AuthorityUtil.a(this.mAppId));
+    localBundle.putByteArray("connect_data", AuthorityUtil.b(this.mAppId));
     return localBundle;
   }
   
@@ -140,19 +122,40 @@ public class Login
     localIntent.putExtra("key_from_opensdk_qrcode", true);
     localIntent.putExtra("hide_more_button", true);
     startActivity(localIntent);
-    reportQrcodeLogin(0, "0X800BA18");
+    report(0, "0X800BA18");
   }
   
-  private void reportQrcodeLogin(int paramInt, String paramString)
+  private void handleQRLogin()
   {
-    AuthorityUtil.a(null, paramString, 0, paramInt, new String[] { "", this.mAppId, "", "" });
+    if (TextUtils.isEmpty(this.mQrCodeUrl)) {
+      return;
+    }
+    this.mQrCodeBtn = this.mBaseUI.a(getString(2131891432), new Login.2(this));
+    this.mQrCodeReceiver = new Login.3(this);
+    report(0, "0X800BA17");
+    registerReceiver(this.mQrCodeReceiver, new IntentFilter("mqq.intent.action.QRCODE_LOGIN_FINISH"));
+  }
+  
+  private void report(int paramInt, String paramString)
+  {
+    Object localObject2 = this.mAppId;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
+    }
+    String str = getIntent().getStringExtra("oauth_app_name");
+    localObject2 = str;
+    if (str == null) {
+      localObject2 = "";
+    }
+    AuthorityUtil.a(null, paramString, 0, paramInt, new String[] { localObject1, "", localObject2, "" });
   }
   
   private void ssoLogin(String paramString1, String paramString2)
   {
     SSOLog.a("Login", new Object[] { "ssoLogin | cmd: s_s_o_l | uin : *", AuthorityUtil.a(paramString1) });
     unregisterPuzzleVerifyCodeReceiver();
-    this.mPuzzleVerifyCodeReceiver = new Login.10(this);
+    this.mPuzzleVerifyCodeReceiver = new Login.8(this);
     registerReceiver(this.mPuzzleVerifyCodeReceiver, new IntentFilter("mqq.opensdk.intent.action.PUZZLEVERIFYCODE"));
     this.app.ssoLogin(paramString1, paramString2, 4096, this.ssoLoginObserver, buildBundle());
     showLoginTip();
@@ -185,27 +188,28 @@ public class Login
     return bool;
   }
   
-  protected void doLogin()
+  public void doLogin()
   {
-    if ("".equals(this.name.getText().toString().trim()))
+    Object localObject1 = this.mBaseUI.m();
+    Object localObject2 = this.mBaseUI.n();
+    if ("".equals(((String)localObject1).trim()))
     {
-      showDialog(String.format(getResources().getString(2131696495), new Object[] { getResources().getString(2131694550), Integer.valueOf(3103) }));
+      showDialog(String.format(getResources().getString(2131894269), new Object[] { getResources().getString(2131892234), Integer.valueOf(3103) }));
       localObject1 = new HashMap();
       ((HashMap)localObject1).put("error", "3103");
       StatisticCollector.getInstance(this).collectPerformance("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject1, "");
       return;
     }
-    if ("".equals(this.pswd.getText().toString().trim()))
+    if ("".equals(((String)localObject2).trim()))
     {
-      showDialog(String.format(getResources().getString(2131696495), new Object[] { getResources().getString(2131694702), Integer.valueOf(3104) }));
+      showDialog(String.format(getResources().getString(2131894269), new Object[] { getResources().getString(2131892394), Integer.valueOf(3104) }));
       localObject1 = new HashMap();
       ((HashMap)localObject1).put("error", "3104");
       StatisticCollector.getInstance(this).collectPerformance("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject1, "");
       return;
     }
-    Object localObject1 = this.name.getText().toString();
-    Object localObject2 = this.pswd.getText().toString();
     this.mReqSize = (((String)localObject1).length() + ((String)localObject2).length());
+    LoginStaticField.a(4);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("-->doLogin--account = *");
     localStringBuilder.append(AuthorityUtil.a((String)localObject1));
@@ -257,6 +261,86 @@ public class Login
     ssoLogin((String)localObject1, (String)localObject2);
   }
   
+  public boolean doOnCreate(Bundle paramBundle)
+  {
+    super.doOnCreate(paramBundle);
+    this.mLoginBTS = SystemClock.elapsedRealtime();
+    if (getIntent().getExtras() != null) {
+      this.mReqSrc = getIntent().getExtras().getInt("key_req_src", 1);
+    }
+    this.mAppId = getIntent().getStringExtra("appid");
+    this.mQrCodeUrl = getIntent().getStringExtra("param_qr_code_url");
+    paramBundle = new StringBuilder();
+    paramBundle.append("onCreate mReqSrc:");
+    paramBundle.append(this.mReqSrc);
+    paramBundle.append(", mAppId=");
+    paramBundle.append(this.mAppId);
+    SSOLog.a("Login", new Object[] { paramBundle.toString() });
+    this.mProgress = new QQProgressDialog(this, getTitleBarHeight());
+    this.mBaseUI.a(2131896582);
+    init();
+    this.app.setHandler(LoginProgressClazz.class, this.loginHandler);
+    if (this.mAutoLoginReceiver != null)
+    {
+      paramBundle = new IntentFilter();
+      paramBundle.addAction("com.tencent.mobileqq.InvitationWebViewPlugin");
+      registerReceiver(this.mAutoLoginReceiver, paramBundle);
+    }
+    handleQRLogin();
+    report(0, "0X800BA16");
+    return true;
+  }
+  
+  protected void doOnDestroy()
+  {
+    SSOLog.a("Login", new Object[] { "onDestroy" });
+    super.doOnDestroy();
+    hideLoginTip();
+    this.app.removeHandler(LoginProgressClazz.class);
+    BroadcastReceiver localBroadcastReceiver = this.mAutoLoginReceiver;
+    if (localBroadcastReceiver != null) {
+      unregisterReceiver(localBroadcastReceiver);
+    }
+    unregisterPuzzleVerifyCodeReceiver();
+    localBroadcastReceiver = this.mQrCodeReceiver;
+    if (localBroadcastReceiver != null)
+    {
+      unregisterReceiver(localBroadcastReceiver);
+      this.mQrCodeReceiver = null;
+    }
+  }
+  
+  protected void doOnResume()
+  {
+    super.doOnResume();
+    SSOLog.a("Login", new Object[] { "onResume" });
+    TextView localTextView = this.mQrCodeBtn;
+    if (localTextView != null) {
+      localTextView.setClickable(true);
+    }
+    if (gLoginNow)
+    {
+      gLoginNow = false;
+      this.mBaseUI.a(gAccount);
+      this.mBaseUI.b(gPasswd);
+    }
+    if (this.mShouldAutoLogin)
+    {
+      SSOLog.a("Login", new Object[] { "mShouldAutoLogin: true, then login" });
+      this.mShouldAutoLogin = false;
+      doLogin();
+    }
+  }
+  
+  public void doPhoneLogin()
+  {
+    ReportController.a(null, "dc00898", "", "", "0X800AFE5", "0X800AFE5", 0, 0, "", "", "", "");
+    LoginStaticField.a(4);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("entrance", "fromLogin");
+    RouteUtils.a(this, localIntent, "/base/safe/loginPhoneNumActivity", 10000);
+  }
+  
   protected void hideLoginTip()
   {
     SSOLog.a("Login", new Object[] { "hideLoginTip" });
@@ -282,6 +366,12 @@ public class Login
     this.app = ((OpenSDKAppInterface)getAppRuntime());
     this.wtloginManager = ((WtloginManager)this.app.getManager(1));
     this.loginInfoList = this.wtloginManager.getAllLoginInfo();
+    EditText localEditText = this.mBaseUI.k();
+    localEditText.setInputType(2);
+    localEditText.setHint(2131896987);
+    localEditText.setContentDescription(getString(2131897877));
+    localEditText.addTextChangedListener(new Login.4(this));
+    this.mBaseUI.l().addTextChangedListener(new Login.5(this));
   }
   
   protected void loginSucess(String paramString1, String paramString2, Bundle paramBundle)
@@ -382,6 +472,8 @@ public class Login
     }
   }
   
+  public void onBackClick() {}
+  
   @Override
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
@@ -389,146 +481,17 @@ public class Login
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void onFindPwdClick()
   {
-    this.mNeedStatusTrans = false;
-    this.mActNeedImmersive = false;
-    super.onCreate(paramBundle);
-    getWindow().addFlags(1024);
-    this.mLoginBTS = SystemClock.elapsedRealtime();
-    if (getIntent().getExtras() != null) {
-      this.mReqSrc = getIntent().getExtras().getInt("key_req_src", 1);
-    }
-    this.mAppId = getIntent().getStringExtra("appid");
-    this.mQrCodeUrl = getIntent().getStringExtra("param_qr_code_url");
-    paramBundle = new StringBuilder();
-    paramBundle.append("onCreate mReqSrc:");
-    paramBundle.append(this.mReqSrc);
-    paramBundle.append(", mAppId=");
-    paramBundle.append(this.mAppId);
-    SSOLog.a("Login", new Object[] { paramBundle.toString() });
-    setContentView(2131562852);
-    this.leftView = ((TextView)findViewById(2131364182));
-    if (getIntent().getBooleanExtra("is_first_login", false))
-    {
-      setTitle(2131694632);
-      this.leftView.setText(2131690706);
-    }
-    else
-    {
-      setTitle(2131694649);
-    }
-    this.leftView.setOnClickListener(this.onClick);
-    this.mDelBtn = findViewById(2131365510);
-    this.mDelPassBtn = findViewById(2131365482);
-    this.txtPhoneNumLogin = ((TextView)findViewById(2131380000));
-    this.unLoginTv = ((TextView)findViewById(2131380156));
-    this.unLoginTv.setOnClickListener(this.onClick);
-    this.mDelBtn.setOnClickListener(this.onClick);
-    this.mDelPassBtn.setOnClickListener(this.onClick);
-    this.txtPhoneNumLogin.setOnClickListener(this.onClick);
-    this.name = ((EditText)findViewById(2131361863));
-    this.pswd = ((EditText)findViewById(2131372343));
-    this.login = ((Button)findViewById(2131372129));
-    this.login.setOnClickListener(this.onClick);
-    this.mProgress = new QQProgressDialog(this, getTitleBarHeight());
-    this.name.requestFocus();
-    this.name.setOnFocusChangeListener(this.focusListener);
-    this.name.setOnTouchListener(this.onTouchListener);
-    this.pswd.setOnTouchListener(this.onTouchListener);
-    this.pswd.setOnFocusChangeListener(this.focusListener);
-    this.pswd.setOnEditorActionListener(new Login.2(this));
-    this.name.addTextChangedListener(this.onTextChangeForUpdating);
-    this.pswd.addTextChangedListener(this.onEnterPswd);
-    init();
-    this.app.setHandler(LoginProgressClazz.class, this.loginHandler);
-    if (this.mAutoLoginReceiver != null)
-    {
-      paramBundle = new IntentFilter();
-      paramBundle.addAction("com.tencent.mobileqq.InvitationWebViewPlugin");
-      registerReceiver(this.mAutoLoginReceiver, paramBundle);
-    }
-    if (!TextUtils.isEmpty(this.mQrCodeUrl))
-    {
-      this.mQrCodeBtn = ((TextView)findViewById(2131374695));
-      this.mQrCodeBtn.setOnClickListener(this.onClick);
-      this.mQrCodeBtn.setVisibility(0);
-      this.mQrCodeReceiver = new Login.3(this);
-      reportQrcodeLogin(0, "0X800BA17");
-      registerReceiver(this.mQrCodeReceiver, new IntentFilter("mqq.intent.action.QRCODE_LOGIN_FINISH"));
-    }
-    reportQrcodeLogin(0, "0X800BA16");
+    ReportController.a(null, "dc00898", "", "", "0X800B291", "0X800B291", 0, 0, "", "", "", "");
   }
   
-  protected void onDestroy()
-  {
-    SSOLog.a("Login", new Object[] { "onDestroy" });
-    super.onDestroy();
-    hideLoginTip();
-    this.name.removeTextChangedListener(this.onTextChangeForUpdating);
-    this.pswd.removeTextChangedListener(this.onEnterPswd);
-    this.app.removeHandler(LoginProgressClazz.class);
-    BroadcastReceiver localBroadcastReceiver = this.mAutoLoginReceiver;
-    if (localBroadcastReceiver != null) {
-      unregisterReceiver(localBroadcastReceiver);
-    }
-    unregisterPuzzleVerifyCodeReceiver();
-    localBroadcastReceiver = this.mQrCodeReceiver;
-    if (localBroadcastReceiver != null)
-    {
-      unregisterReceiver(localBroadcastReceiver);
-      this.mQrCodeReceiver = null;
-    }
-  }
-  
-  protected void onResume()
-  {
-    super.onResume();
-    SSOLog.a("Login", new Object[] { "onResume" });
-    Object localObject = this.mQrCodeBtn;
-    if (localObject != null) {
-      ((TextView)localObject).setClickable(true);
-    }
-    if (gLoginNow)
-    {
-      gLoginNow = false;
-      this.name.setText(gAccount);
-      this.pswd.setText(gPasswd);
-    }
-    if (this.mShouldAutoLogin)
-    {
-      SSOLog.a("Login", new Object[] { "mShouldAutoLogin: true, then login" });
-      this.mShouldAutoLogin = false;
-      localObject = this.login;
-      if (localObject != null) {
-        ((Button)localObject).performClick();
-      }
-    }
-  }
-  
-  protected void showActionSheet()
-  {
-    if (this.mActionSheet == null)
-    {
-      this.mActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-      this.mActionSheet.addButton(2131692483);
-      this.mActionSheet.addButton(2131719166);
-      this.mActionSheet.addCancelButton(2131690728);
-      this.mActionSheet.setOnDismissListener(new Login.16(this));
-      this.mActionSheet.setOnButtonClickListener(new Login.17(this));
-    }
-    if (!this.mActionSheet.isShowing())
-    {
-      InputMethodUtil.a(this);
-      this.actionSheetHasClick = false;
-      this.mActionSheet.show();
-    }
-  }
+  public void onPwdClear() {}
   
   void showDialog(String paramString)
   {
     if (!isFinishing()) {
-      DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131718407)).setPositiveButton(17039370, new Login.13(this)).show();
+      DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131915899)).setPositiveButton(17039370, new Login.10(this)).show();
     }
   }
   
@@ -554,7 +517,7 @@ public class Login
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(str2);
       localStringBuilder.append(str4);
-      paramBundle = DialogUtil.a(this, 230, str3, localISafeBlockApi.handleNotifyMsg(localStringBuilder.toString(), this, k), 2131690728, j, new Login.14(this, localISafeBlockApi, i, str2, paramBundle, str1), new Login.15(this, localISafeBlockApi, i, str2));
+      paramBundle = DialogUtil.a(this, 230, str3, localISafeBlockApi.handleNotifyMsg(localStringBuilder.toString(), this, k), 2131887648, j, new Login.11(this, localISafeBlockApi, i, str2, paramBundle, str1), new Login.12(this, localISafeBlockApi, i, str2));
       paramBundle.setCancelable(true);
       paramBundle.show();
       return;
@@ -565,7 +528,7 @@ public class Login
   protected void showLoginTip()
   {
     SSOLog.a("Login", new Object[] { "showLoginTip" });
-    this.mProgress.a(getResources().getString(2131694646));
+    this.mProgress.a(getResources().getString(2131892332));
     if (!this.mProgress.isShowing()) {
       this.mProgress.show();
     }
@@ -573,7 +536,7 @@ public class Login
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login
  * JD-Core Version:    0.7.0.1
  */

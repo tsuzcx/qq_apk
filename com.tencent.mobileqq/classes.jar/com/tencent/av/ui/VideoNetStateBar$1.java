@@ -17,7 +17,7 @@ class VideoNetStateBar$1
       localStringBuilder.append(paramLong2);
       QLog.d("VideoNetStateBar", 2, localStringBuilder.toString());
     }
-    this.a.i();
+    this.b.i();
   }
   
   protected void b(long paramLong1, long paramLong2)
@@ -29,7 +29,7 @@ class VideoNetStateBar$1
       localStringBuilder.append(paramLong2);
       QLog.d("VideoNetStateBar", 2, localStringBuilder.toString());
     }
-    this.a.i();
+    this.b.i();
   }
 }
 

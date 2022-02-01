@@ -26,7 +26,7 @@ public final class QQCircleConfig$GetMooncakeRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.QQCircleConfig.GetMooncakeRsp
  * JD-Core Version:    0.7.0.1
  */

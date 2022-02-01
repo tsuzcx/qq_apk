@@ -17,8 +17,8 @@ import java.util.Map;
 
 public class BitmapManager
 {
-  private static ReferenceQueue<Bitmap> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private static Map<String, BitmapManager.MonitorReference<Bitmap>> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
+  private static Map<String, BitmapManager.MonitorReference<Bitmap>> a = Collections.synchronizedMap(new HashMap());
+  private static ReferenceQueue<Bitmap> b = new ReferenceQueue();
   
   public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
@@ -45,7 +45,7 @@ public class BitmapManager
       } else {
         ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
       }
-      localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, paramInt, (BitmapFactory.Options)localObject);
+      localBitmapDecodeResult.a = BitmapFactory.decodeResource(paramResources, paramInt, (BitmapFactory.Options)localObject);
     }
     catch (OutOfMemoryError paramResources)
     {
@@ -57,19 +57,19 @@ public class BitmapManager
       label99:
       break label99;
     }
-    localBitmapDecodeResult.jdField_a_of_type_Int = 3;
+    localBitmapDecodeResult.b = 3;
     break label112;
     label107:
-    localBitmapDecodeResult.jdField_a_of_type_Int = 1;
+    localBitmapDecodeResult.b = 1;
     label112:
-    if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (localBitmapDecodeResult.a != null)
     {
-      localBitmapDecodeResult.jdField_a_of_type_Int = 0;
-      paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-      localObject = new BitmapManager.MonitorReference(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(paramResources, localObject);
+      localBitmapDecodeResult.b = 0;
+      paramResources = String.valueOf(localBitmapDecodeResult.a.hashCode());
+      localObject = new BitmapManager.MonitorReference(paramResources, localBitmapDecodeResult.a, b);
+      a.put(paramResources, localObject);
     }
-    return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
+    return localBitmapDecodeResult.a;
   }
   
   public static Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
@@ -84,8 +84,8 @@ public class BitmapManager
     if (paramResources != null)
     {
       localObject = String.valueOf(paramResources.hashCode());
-      BitmapManager.MonitorReference localMonitorReference = new BitmapManager.MonitorReference((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localMonitorReference);
+      BitmapManager.MonitorReference localMonitorReference = new BitmapManager.MonitorReference((String)localObject, paramResources, b);
+      a.put(localObject, localMonitorReference);
     }
     return paramResources;
   }
@@ -109,8 +109,8 @@ public class BitmapManager
       if (paramInputStream != null)
       {
         paramRect = String.valueOf(paramInputStream.hashCode());
-        localObject = new BitmapManager.MonitorReference(paramRect, paramInputStream, jdField_a_of_type_JavaLangRefReferenceQueue);
-        jdField_a_of_type_JavaUtilMap.put(paramRect, localObject);
+        localObject = new BitmapManager.MonitorReference(paramRect, paramInputStream, b);
+        a.put(paramRect, localObject);
       }
       return paramInputStream;
     }
@@ -138,8 +138,8 @@ public class BitmapManager
     if (paramString != null)
     {
       localObject = String.valueOf(paramString.hashCode());
-      BitmapManager.MonitorReference localMonitorReference = new BitmapManager.MonitorReference((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localMonitorReference);
+      BitmapManager.MonitorReference localMonitorReference = new BitmapManager.MonitorReference((String)localObject, paramString, b);
+      a.put(localObject, localMonitorReference);
     }
     return paramString;
   }
@@ -148,7 +148,7 @@ public class BitmapManager
   {
     BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
     a(paramString, paramOptions, localBitmapDecodeResult);
-    return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
+    return localBitmapDecodeResult.a;
   }
   
   public static Bitmap a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -164,7 +164,7 @@ public class BitmapManager
         localObject = Bitmap.Config.RGB_565;
       }
       localOptions.inPreferredConfig = ((Bitmap.Config)localObject);
-      localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap = SafeBitmapFactory.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2, localOptions);
+      localBitmapDecodeResult.a = SafeBitmapFactory.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2, localOptions);
     }
     catch (OutOfMemoryError paramArrayOfByte)
     {
@@ -176,37 +176,30 @@ public class BitmapManager
       label79:
       break label79;
     }
-    localBitmapDecodeResult.jdField_a_of_type_Int = 3;
+    localBitmapDecodeResult.b = 3;
     break label94;
     label88:
-    localBitmapDecodeResult.jdField_a_of_type_Int = 1;
+    localBitmapDecodeResult.b = 1;
     label94:
-    if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (localBitmapDecodeResult.a != null)
     {
-      localBitmapDecodeResult.jdField_a_of_type_Int = 0;
-      paramArrayOfByte = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-      localObject = new BitmapManager.MonitorReference(paramArrayOfByte, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(paramArrayOfByte, localObject);
+      localBitmapDecodeResult.b = 0;
+      paramArrayOfByte = String.valueOf(localBitmapDecodeResult.a.hashCode());
+      localObject = new BitmapManager.MonitorReference(paramArrayOfByte, localBitmapDecodeResult.a, b);
+      a.put(paramArrayOfByte, localObject);
     }
-    return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public static BitmapManager.BitmapDecodeResult a(String paramString, BitmapFactory.Options paramOptions)
-  {
-    BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
-    a(paramString, paramOptions, localBitmapDecodeResult);
-    return localBitmapDecodeResult;
+    return localBitmapDecodeResult.a;
   }
   
   private static void a()
   {
     for (;;)
     {
-      BitmapManager.MonitorReference localMonitorReference = (BitmapManager.MonitorReference)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+      BitmapManager.MonitorReference localMonitorReference = (BitmapManager.MonitorReference)b.poll();
       if (localMonitorReference == null) {
         break;
       }
-      jdField_a_of_type_JavaUtilMap.remove(BitmapManager.MonitorReference.a(localMonitorReference));
+      a.remove(BitmapManager.MonitorReference.a(localMonitorReference));
     }
   }
   
@@ -214,7 +207,7 @@ public class BitmapManager
   public static void a(String paramString, BitmapFactory.Options paramOptions, BitmapManager.BitmapDecodeResult paramBitmapDecodeResult)
   {
     // Byte code:
-    //   0: invokestatic 54	com/tencent/mobileqq/util/BitmapManager:a	()V
+    //   0: invokestatic 55	com/tencent/mobileqq/util/BitmapManager:a	()V
     //   3: aconst_null
     //   4: astore 6
     //   6: aconst_null
@@ -241,7 +234,7 @@ public class BitmapManager
     //   42: ifne +9 -> 51
     //   45: aload_2
     //   46: iconst_2
-    //   47: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   47: putfield 112	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:b	I
     //   50: return
     //   51: new 205	java/io/BufferedInputStream
     //   54: dup
@@ -298,7 +291,7 @@ public class BitmapManager
     //   158: astore 9
     //   160: aload_2
     //   161: iconst_3
-    //   162: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   162: putfield 112	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:b	I
     //   165: aload 4
     //   167: invokevirtual 234	java/io/InputStream:close	()V
     //   170: aload 5
@@ -321,8 +314,8 @@ public class BitmapManager
     //   204: aload 5
     //   206: arraylength
     //   207: aload_1
-    //   208: invokestatic 181	com/tencent/image/SafeBitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   211: putfield 109	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   208: invokestatic 182	com/tencent/image/SafeBitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   211: putfield 110	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:a	Landroid/graphics/Bitmap;
     //   214: aload 4
     //   216: invokevirtual 234	java/io/InputStream:close	()V
     //   219: aload 5
@@ -366,7 +359,7 @@ public class BitmapManager
     //   297: astore 4
     //   299: aload_2
     //   300: iconst_3
-    //   301: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   301: putfield 112	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:b	I
     //   304: aload 6
     //   306: ifnull +11 -> 317
     //   309: aload 6
@@ -388,7 +381,7 @@ public class BitmapManager
     //   345: astore 4
     //   347: aload_2
     //   348: iconst_1
-    //   349: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   349: putfield 112	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:b	I
     //   352: aload 6
     //   354: ifnull +11 -> 365
     //   357: aload 6
@@ -410,7 +403,7 @@ public class BitmapManager
     //   393: astore 4
     //   395: aload_2
     //   396: iconst_2
-    //   397: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   397: putfield 112	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:b	I
     //   400: aload 6
     //   402: ifnull +11 -> 413
     //   405: aload 6
@@ -422,23 +415,23 @@ public class BitmapManager
     //   421: aload 5
     //   423: invokevirtual 238	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   426: aload_2
-    //   427: getfield 109	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   427: getfield 110	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:a	Landroid/graphics/Bitmap;
     //   430: ifnull +35 -> 465
     //   433: aload_2
     //   434: iconst_0
-    //   435: putfield 111	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   438: new 121	com/tencent/mobileqq/util/BitmapManager$MonitorReference
+    //   435: putfield 112	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:b	I
+    //   438: new 122	com/tencent/mobileqq/util/BitmapManager$MonitorReference
     //   441: dup
     //   442: aload_0
     //   443: aload_2
-    //   444: getfield 109	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   447: getstatic 29	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   450: invokespecial 124	com/tencent/mobileqq/util/BitmapManager$MonitorReference:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   444: getfield 110	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:a	Landroid/graphics/Bitmap;
+    //   447: getstatic 30	com/tencent/mobileqq/util/BitmapManager:b	Ljava/lang/ref/ReferenceQueue;
+    //   450: invokespecial 125	com/tencent/mobileqq/util/BitmapManager$MonitorReference:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
     //   453: astore_1
-    //   454: getstatic 24	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   454: getstatic 25	com/tencent/mobileqq/util/BitmapManager:a	Ljava/util/Map;
     //   457: aload_0
     //   458: aload_1
-    //   459: invokeinterface 130 3 0
+    //   459: invokeinterface 131 3 0
     //   464: pop
     //   465: return
     //   466: astore_0
@@ -541,7 +534,7 @@ public class BitmapManager
     BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
     try
     {
-      localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramResources, paramInt, new BitmapFactory.Options());
+      localBitmapDecodeResult.a = BitmapFactory.decodeResource(paramResources, paramInt, new BitmapFactory.Options());
     }
     catch (OutOfMemoryError paramResources)
     {
@@ -553,24 +546,31 @@ public class BitmapManager
       label30:
       break label30;
     }
-    localBitmapDecodeResult.jdField_a_of_type_Int = 3;
+    localBitmapDecodeResult.b = 3;
     break label43;
     label38:
-    localBitmapDecodeResult.jdField_a_of_type_Int = 1;
+    localBitmapDecodeResult.b = 1;
     label43:
-    if (localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (localBitmapDecodeResult.a != null)
     {
-      localBitmapDecodeResult.jdField_a_of_type_Int = 0;
-      paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-      localMonitorReference = new BitmapManager.MonitorReference(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(paramResources, localMonitorReference);
+      localBitmapDecodeResult.b = 0;
+      paramResources = String.valueOf(localBitmapDecodeResult.a.hashCode());
+      localMonitorReference = new BitmapManager.MonitorReference(paramResources, localBitmapDecodeResult.a, b);
+      a.put(paramResources, localMonitorReference);
     }
-    return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
+    return localBitmapDecodeResult.a;
+  }
+  
+  public static BitmapManager.BitmapDecodeResult b(String paramString, BitmapFactory.Options paramOptions)
+  {
+    BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
+    a(paramString, paramOptions, localBitmapDecodeResult);
+    return localBitmapDecodeResult;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.BitmapManager
  * JD-Core Version:    0.7.0.1
  */

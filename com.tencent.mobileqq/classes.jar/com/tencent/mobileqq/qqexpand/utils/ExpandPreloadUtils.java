@@ -15,7 +15,7 @@ public class ExpandPreloadUtils
 {
   private static boolean a(QQAppInterface paramQQAppInterface)
   {
-    return MatchChatMsgUtil.a(paramQQAppInterface) > 0;
+    return MatchChatMsgUtil.b(paramQQAppInterface) > 0;
   }
   
   public static boolean a(ExpandModuleKey paramExpandModuleKey)
@@ -41,12 +41,12 @@ public class ExpandPreloadUtils
   
   private static boolean b(QQAppInterface paramQQAppInterface)
   {
-    return ((ExpandManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).p();
+    return ((ExpandManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).ad();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ExpandPreloadUtils
  * JD-Core Version:    0.7.0.1
  */

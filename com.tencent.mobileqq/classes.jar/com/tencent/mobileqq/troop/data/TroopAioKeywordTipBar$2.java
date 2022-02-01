@@ -14,12 +14,12 @@ class TroopAioKeywordTipBar$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (TroopAioKeywordTipBar.a(this.a) != null) {
-      TroopAioKeywordTipBar.a(this.a).a.clearAnimation();
+    if (TroopAioKeywordTipBar.c(this.a) != null) {
+      TroopAioKeywordTipBar.c(this.a).a.clearAnimation();
     }
-    TroopAioKeywordTipBar.a(this.a);
-    if ((TroopAioKeywordTipBar.a(this.a) != null) && (!TroopAioKeywordTipBar.a(this.a).isSend())) {
-      ((TroopAioKeywordTipManager)this.a.a.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER)).a(this.a.a.getCurrentAccountUin(), TroopAioKeywordTipBar.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(TroopAioKeywordTipBar.a(this.a).ruleId));
+    TroopAioKeywordTipBar.d(this.a);
+    if ((TroopAioKeywordTipBar.b(this.a) != null) && (!TroopAioKeywordTipBar.b(this.a).isSend())) {
+      ((TroopAioKeywordTipManager)this.a.D.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER)).a(this.a.D.getCurrentAccountUin(), TroopAioKeywordTipBar.b(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(TroopAioKeywordTipBar.e(this.a).ruleId));
     }
   }
   
@@ -29,7 +29,7 @@ class TroopAioKeywordTipBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,17 +10,17 @@ class TroopPhotoController$5$1
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a.b.m, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    TroopPhotoController.a(this.a.a);
+    TroopPhotoController.a(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.TroopPhotoController.5.1
  * JD-Core Version:    0.7.0.1
  */

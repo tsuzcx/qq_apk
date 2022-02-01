@@ -30,10 +30,10 @@ public class NestScrollHelperImpl
         Log.i("NestScrollHelper", "getScrollableView: fragment is null");
       }
       if ((localObject instanceof NearbyMomentFragment)) {
-        return ((NearbyMomentFragment)localObject).a();
+        return ((NearbyMomentFragment)localObject).d();
       }
       if ((localObject instanceof NearbyProfileFragment)) {
-        return ((NearbyProfileFragment)localObject).a();
+        return ((NearbyProfileFragment)localObject).b();
       }
     }
     return null;
@@ -118,7 +118,7 @@ public class NestScrollHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.api.impl.NestScrollHelperImpl
  * JD-Core Version:    0.7.0.1
  */

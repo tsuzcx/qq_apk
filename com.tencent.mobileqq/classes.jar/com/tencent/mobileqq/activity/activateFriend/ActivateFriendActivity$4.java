@@ -10,7 +10,7 @@ class ActivateFriendActivity$4
   
   public int a(QQReminderOrderModel paramQQReminderOrderModel1, QQReminderOrderModel paramQQReminderOrderModel2)
   {
-    long l = paramQQReminderOrderModel2.a - paramQQReminderOrderModel1.a;
+    long l = paramQQReminderOrderModel2.c - paramQQReminderOrderModel1.c;
     if (l > 0L) {
       return 1;
     }
@@ -22,7 +22,7 @@ class ActivateFriendActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.4
  * JD-Core Version:    0.7.0.1
  */

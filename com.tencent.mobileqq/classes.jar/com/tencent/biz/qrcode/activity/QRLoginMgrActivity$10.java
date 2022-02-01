@@ -10,12 +10,12 @@ class QRLoginMgrActivity$10
   
   public void a()
   {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevItem);
+    QRLoginMgrActivity.a(this.b, this.a);
   }
   
   public void b()
   {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevItem);
+    QRLoginMgrActivity.a(this.b, this.a);
   }
 }
 

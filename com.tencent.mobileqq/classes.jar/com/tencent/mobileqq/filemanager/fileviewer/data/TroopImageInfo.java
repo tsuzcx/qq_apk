@@ -11,9 +11,9 @@ public class TroopImageInfo
     super(paramIFileViewerAdapter);
   }
   
-  public boolean a(String paramString)
+  public boolean c(String paramString)
   {
-    FileManagerEntity localFileManagerEntity = this.a.a();
+    FileManagerEntity localFileManagerEntity = this.a.r();
     boolean bool2 = false;
     if (localFileManagerEntity == null) {
       return false;
@@ -31,7 +31,7 @@ public class TroopImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.TroopImageInfo
  * JD-Core Version:    0.7.0.1
  */

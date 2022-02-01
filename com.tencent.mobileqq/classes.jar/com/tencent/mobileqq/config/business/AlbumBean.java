@@ -22,7 +22,7 @@ public class AlbumBean
         Object localObject = paramArrayOfQConfItem[i];
         if (localObject != null)
         {
-          localObject = ((QConfItem)localObject).a;
+          localObject = ((QConfItem)localObject).b;
           try
           {
             a(new JSONObject((String)localObject), localAlbumBean);
@@ -70,7 +70,7 @@ public class AlbumBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AlbumBean
  * JD-Core Version:    0.7.0.1
  */

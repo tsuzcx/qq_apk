@@ -26,13 +26,13 @@ class TroopFileModel$16
   
   public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if (TroopFileModel.a(this.a) == null) {
+    if (TroopFileModel.e(this.a) == null) {
       return;
     }
     if (paramDownloadFileRspBody == null)
     {
       QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error DownloadFileRspBody is null!");
-      TroopFileModel.a(this.a).c();
+      TroopFileModel.e(this.a).cq_();
       return;
     }
     long l = paramBundle.getLong("troopUin");
@@ -44,16 +44,16 @@ class TroopFileModel$16
       paramDownloadFileRspBody.append(l);
       paramDownloadFileRspBody.append("]");
       QLog.i("TroopFileModel<FileAssistant>", 1, paramDownloadFileRspBody.toString());
-      TroopFileModel.a(this.a).c();
+      TroopFileModel.e(this.a).cq_();
       return;
     }
     Object localObject1 = paramBundle.getString("itemKey");
     if (localObject1 == null)
     {
-      TroopFileModel.a(this.a).c();
+      TroopFileModel.e(this.a).cq_();
       return;
     }
-    paramBundle = ((TroopFileTransferManager)localObject2).a(UUID.fromString((String)localObject1));
+    paramBundle = ((TroopFileTransferManager)localObject2).i(UUID.fromString((String)localObject1));
     if (paramBundle == null)
     {
       paramDownloadFileRspBody = new StringBuilder();
@@ -61,7 +61,7 @@ class TroopFileModel$16
       paramDownloadFileRspBody.append((String)localObject1);
       paramDownloadFileRspBody.append("]");
       QLog.i("TroopFileModel<FileAssistant>", 1, paramDownloadFileRspBody.toString());
-      TroopFileModel.a(this.a).c();
+      TroopFileModel.e(this.a).cq_();
       return;
     }
     paramInt = paramDownloadFileRspBody.int32_ret_code.get();
@@ -74,7 +74,7 @@ class TroopFileModel$16
       QLog.i("TroopFileModel<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = this.a;
-    if (TroopFileModel.a((TroopFileModel)localObject1, paramInt, TroopFileModel.a((TroopFileModel)localObject1))) {
+    if (TroopFileModel.a((TroopFileModel)localObject1, paramInt, TroopFileModel.e((TroopFileModel)localObject1))) {
       return;
     }
     paramBundle.cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
@@ -93,7 +93,7 @@ class TroopFileModel$16
     localObject1 = TroopFileVideoOnlinePlayManager.a((String)localObject1, (String)localObject2, str1, str2, "");
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      TroopFileModel.a(this.a).a((String)localObject1, paramBundle.cookieValue);
+      TroopFileModel.e(this.a).a((String)localObject1, paramBundle.cookieValue);
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -104,18 +104,18 @@ class TroopFileModel$16
         ((StringBuilder)localObject2).append("]");
         QLog.i("TroopFileModel<FileAssistant>", 2, ((StringBuilder)localObject2).toString());
       }
-      if (this.a.a.a() != null) {
-        paramDownloadFileRspBody = String.valueOf(this.a.a.a().TroopUin);
+      if (this.a.c.r() != null) {
+        paramDownloadFileRspBody = String.valueOf(this.a.c.r().TroopUin);
       }
-      if (this.a.a.a() != null) {
-        paramBundle = FileManagerUtil.b(this.a.a.a().nFileType);
+      if (this.a.c.r() != null) {
+        paramBundle = FileManagerUtil.b(this.a.c.r().nFileType);
       } else {
         paramBundle = "unknow";
       }
       ReportController.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
       return;
     }
-    TroopFileModel.a(this.a).c();
+    TroopFileModel.e(this.a).cq_();
     if (QLog.isColorLevel())
     {
       paramDownloadFileRspBody = new StringBuilder();
@@ -130,7 +130,7 @@ class TroopFileModel$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.16
  * JD-Core Version:    0.7.0.1
  */

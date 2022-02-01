@@ -21,14 +21,14 @@ public class MessageSvcPbGetDiscussMsg
         if (QLog.isColorLevel()) {
           QLog.w("Q.msg.MessageHandler", 2, "handleGetPullDiscussionMsgResp_PB exception ! ", paramObject);
         }
-        paramMessageHandler.m(paramToServiceMsg, paramFromServiceMsg);
+        paramMessageHandler.n(paramToServiceMsg, paramFromServiceMsg);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MessageSvcPbGetDiscussMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,7 @@ public class QidianManagerApiImpl
   
   public String getShowUin(String paramString)
   {
-    return QidianManager.b(this.app, paramString);
+    return QidianManager.d(this.app, paramString);
   }
   
   public boolean isCrmMaster(int paramInt)
@@ -100,7 +100,7 @@ public class QidianManagerApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.api.impl.QidianManagerApiImpl
  * JD-Core Version:    0.7.0.1
  */

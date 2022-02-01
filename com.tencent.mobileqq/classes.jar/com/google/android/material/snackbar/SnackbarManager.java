@@ -9,90 +9,90 @@ import java.lang.ref.WeakReference;
 
 class SnackbarManager
 {
-  private static SnackbarManager jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager;
+  private static SnackbarManager a;
   @NonNull
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new SnackbarManager.1(this));
-  @Nullable
-  private SnackbarManager.SnackbarRecord jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord;
+  private final Object b = new Object();
   @NonNull
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private final Handler c = new Handler(Looper.getMainLooper(), new SnackbarManager.1(this));
   @Nullable
-  private SnackbarManager.SnackbarRecord b;
+  private SnackbarManager.SnackbarRecord d;
+  @Nullable
+  private SnackbarManager.SnackbarRecord e;
   
   static SnackbarManager a()
   {
-    if (jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager == null) {
-      jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager = new SnackbarManager();
+    if (a == null) {
+      a = new SnackbarManager();
     }
-    return jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager;
-  }
-  
-  private void a()
-  {
-    Object localObject = this.b;
-    if (localObject != null)
-    {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord = ((SnackbarManager.SnackbarRecord)localObject);
-      this.b = null;
-      localObject = (SnackbarManager.Callback)this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null)
-      {
-        ((SnackbarManager.Callback)localObject).a();
-        return;
-      }
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord = null;
-    }
+    return a;
   }
   
   private boolean a(@NonNull SnackbarManager.SnackbarRecord paramSnackbarRecord, int paramInt)
   {
-    SnackbarManager.Callback localCallback = (SnackbarManager.Callback)paramSnackbarRecord.jdField_a_of_type_JavaLangRefWeakReference.get();
+    SnackbarManager.Callback localCallback = (SnackbarManager.Callback)paramSnackbarRecord.a.get();
     if (localCallback != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(paramSnackbarRecord);
+      this.c.removeCallbacksAndMessages(paramSnackbarRecord);
       localCallback.a(paramInt);
       return true;
     }
     return false;
   }
   
+  private void b()
+  {
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      this.d = ((SnackbarManager.SnackbarRecord)localObject);
+      this.e = null;
+      localObject = (SnackbarManager.Callback)this.d.a.get();
+      if (localObject != null)
+      {
+        ((SnackbarManager.Callback)localObject).a();
+        return;
+      }
+      this.d = null;
+    }
+  }
+  
   private void b(@NonNull SnackbarManager.SnackbarRecord paramSnackbarRecord)
   {
-    if (paramSnackbarRecord.jdField_a_of_type_Int == -2) {
+    if (paramSnackbarRecord.b == -2) {
       return;
     }
     int i = 2750;
-    if (paramSnackbarRecord.jdField_a_of_type_Int > 0) {
-      i = paramSnackbarRecord.jdField_a_of_type_Int;
-    } else if (paramSnackbarRecord.jdField_a_of_type_Int == -1) {
+    if (paramSnackbarRecord.b > 0) {
+      i = paramSnackbarRecord.b;
+    } else if (paramSnackbarRecord.b == -1) {
       i = 1500;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(paramSnackbarRecord);
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    this.c.removeCallbacksAndMessages(paramSnackbarRecord);
+    Handler localHandler = this.c;
     localHandler.sendMessageDelayed(Message.obtain(localHandler, 0, paramSnackbarRecord), i);
   }
   
-  private boolean b(SnackbarManager.Callback paramCallback)
+  private boolean f(SnackbarManager.Callback paramCallback)
   {
-    SnackbarManager.SnackbarRecord localSnackbarRecord = this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord;
+    SnackbarManager.SnackbarRecord localSnackbarRecord = this.d;
     return (localSnackbarRecord != null) && (localSnackbarRecord.a(paramCallback));
   }
   
-  private boolean c(SnackbarManager.Callback paramCallback)
+  private boolean g(SnackbarManager.Callback paramCallback)
   {
-    SnackbarManager.SnackbarRecord localSnackbarRecord = this.b;
+    SnackbarManager.SnackbarRecord localSnackbarRecord = this.e;
     return (localSnackbarRecord != null) && (localSnackbarRecord.a(paramCallback));
   }
   
   public void a(SnackbarManager.Callback paramCallback)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      if (b(paramCallback))
+      if (f(paramCallback))
       {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord = null;
-        if (this.b != null) {
-          a();
+        this.d = null;
+        if (this.e != null) {
+          b();
         }
       }
       return;
@@ -101,12 +101,12 @@ class SnackbarManager
   
   public void a(SnackbarManager.Callback paramCallback, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      if (b(paramCallback)) {
-        a(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord, paramInt);
-      } else if (c(paramCallback)) {
-        a(this.b, paramInt);
+      if (f(paramCallback)) {
+        a(this.d, paramInt);
+      } else if (g(paramCallback)) {
+        a(this.e, paramInt);
       }
       return;
     }
@@ -114,25 +114,62 @@ class SnackbarManager
   
   void a(@NonNull SnackbarManager.SnackbarRecord paramSnackbarRecord)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      if ((this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord == paramSnackbarRecord) || (this.b == paramSnackbarRecord)) {
+      if ((this.d == paramSnackbarRecord) || (this.e == paramSnackbarRecord)) {
         a(paramSnackbarRecord, 2);
       }
       return;
     }
   }
   
-  public boolean a(SnackbarManager.Callback paramCallback)
+  public void b(SnackbarManager.Callback paramCallback)
+  {
+    synchronized (this.b)
+    {
+      if (f(paramCallback)) {
+        b(this.d);
+      }
+      return;
+    }
+  }
+  
+  public void c(SnackbarManager.Callback paramCallback)
+  {
+    synchronized (this.b)
+    {
+      if ((f(paramCallback)) && (!this.d.c))
+      {
+        this.d.c = true;
+        this.c.removeCallbacksAndMessages(this.d);
+      }
+      return;
+    }
+  }
+  
+  public void d(SnackbarManager.Callback paramCallback)
+  {
+    synchronized (this.b)
+    {
+      if ((f(paramCallback)) && (this.d.c))
+      {
+        this.d.c = false;
+        b(this.d);
+      }
+      return;
+    }
+  }
+  
+  public boolean e(SnackbarManager.Callback paramCallback)
   {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.b)
       {
-        if (b(paramCallback)) {
+        if (f(paramCallback)) {
           break label40;
         }
-        if (c(paramCallback))
+        if (g(paramCallback))
         {
           break label40;
           return bool;
@@ -144,47 +181,10 @@ class SnackbarManager
       bool = true;
     }
   }
-  
-  public void b(SnackbarManager.Callback paramCallback)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (b(paramCallback)) {
-        b(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord);
-      }
-      return;
-    }
-  }
-  
-  public void c(SnackbarManager.Callback paramCallback)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((b(paramCallback)) && (!this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord);
-      }
-      return;
-    }
-  }
-  
-  public void d(SnackbarManager.Callback paramCallback)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((b(paramCallback)) && (this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord.jdField_a_of_type_Boolean = false;
-        b(this.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarSnackbarManager$SnackbarRecord);
-      }
-      return;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.SnackbarManager
  * JD-Core Version:    0.7.0.1
  */

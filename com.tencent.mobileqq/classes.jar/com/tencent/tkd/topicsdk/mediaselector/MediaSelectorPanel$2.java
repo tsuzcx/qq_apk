@@ -24,7 +24,7 @@ final class MediaSelectorPanel$2
   {
     Intrinsics.checkParameterIsNotNull(paramAdapterView, "<anonymous parameter 0>");
     Intrinsics.checkParameterIsNotNull(paramView, "<anonymous parameter 1>");
-    paramAdapterView = this.this$0.b();
+    paramAdapterView = this.this$0.getOnItemClickListener();
     if (paramAdapterView != null) {
       paramAdapterView = (Unit)paramAdapterView.invoke(Integer.valueOf(paramInt));
     }
@@ -32,7 +32,7 @@ final class MediaSelectorPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.2
  * JD-Core Version:    0.7.0.1
  */

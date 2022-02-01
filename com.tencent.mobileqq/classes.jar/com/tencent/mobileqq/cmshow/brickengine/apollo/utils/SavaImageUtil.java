@@ -25,18 +25,18 @@ import mqq.os.MqqHandler;
 
 public class SavaImageUtil
 {
-  private static int jdField_a_of_type_Int = 1024;
   protected static long a = 0L;
-  protected static File a;
-  private static final String jdField_a_of_type_JavaLangString;
-  private static int b = 1024;
+  protected static File b;
+  private static int c = 1024;
+  private static int d = 1024;
+  private static final String e;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("cmshow");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    e = localStringBuilder.toString();
   }
   
   public static Bitmap a(String paramString, int paramInt)
@@ -156,7 +156,7 @@ public class SavaImageUtil
       QLog.e("[cmshow]ImageUtil", 2, "imageselector view Null Error");
       return;
     }
-    if (jdField_a_of_type_Long == 0L)
+    if (a == 0L)
     {
       QLog.e("[cmshow]ImageUtil", 2, "imageselector g_imageselector == 0 Error");
       return;
@@ -171,8 +171,8 @@ public class SavaImageUtil
         Object localObject = null;
         if (paramInt1 == 14005)
         {
-          localObject = ApolloBitmapUtil.a(jdField_a_of_type_JavaIoFile.getAbsolutePath(), jdField_a_of_type_Int, b);
-          jdField_a_of_type_JavaIoFile = null;
+          localObject = ApolloBitmapUtil.a(b.getAbsolutePath(), c, d);
+          b = null;
         }
         else if (paramInt1 == 14006)
         {
@@ -197,18 +197,18 @@ public class SavaImageUtil
           ((StringBuilder)localObject).append(paramInt2);
           ((StringBuilder)localObject).append(" data: ");
           QLog.e("[cmshow]ImageUtil", 2, ((StringBuilder)localObject).toString());
-          ((ApolloSurfaceView)localView).getRender().getSavaWrapper().selectPhotoCallBack(jdField_a_of_type_Long, 1, paramInt1, i, paramIntent);
+          ((ApolloSurfaceView)localView).getRender().getSavaWrapper().selectPhotoCallBack(a, 1, paramInt1, i, paramIntent);
           return;
         }
-        ((ApolloSurfaceView)localView).getRender().getSavaWrapper().selectPhotoCallBack(jdField_a_of_type_Long, 2, 0, 0, null);
+        ((ApolloSurfaceView)localView).getRender().getSavaWrapper().selectPhotoCallBack(a, 2, 0, 0, null);
         return;
       }
       if (paramInt2 == 0)
       {
-        ((ApolloSurfaceView)localView).getRender().getSavaWrapper().selectPhotoCallBack(jdField_a_of_type_Long, 3, 0, 0, null);
+        ((ApolloSurfaceView)localView).getRender().getSavaWrapper().selectPhotoCallBack(a, 3, 0, 0, null);
         return;
       }
-      ((ApolloSurfaceView)localView).getRender().getSavaWrapper().selectPhotoCallBack(jdField_a_of_type_Long, 2, 0, 0, null);
+      ((ApolloSurfaceView)localView).getRender().getSavaWrapper().selectPhotoCallBack(a, 2, 0, 0, null);
       return;
     }
     if ((localView instanceof ApolloTextureView))
@@ -240,55 +240,55 @@ public class SavaImageUtil
     //   6: astore 4
     //   8: aload 5
     //   10: astore_2
-    //   11: new 73	android/graphics/BitmapFactory$Options
+    //   11: new 75	android/graphics/BitmapFactory$Options
     //   14: dup
-    //   15: invokespecial 74	android/graphics/BitmapFactory$Options:<init>	()V
+    //   15: invokespecial 76	android/graphics/BitmapFactory$Options:<init>	()V
     //   18: astore 6
     //   20: aload 5
     //   22: astore_2
     //   23: aload 6
     //   25: iconst_1
-    //   26: putfield 123	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   26: putfield 124	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   29: aload 5
     //   31: astore_2
     //   32: aload 6
     //   34: iconst_0
-    //   35: putfield 104	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   35: putfield 105	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   38: aload 5
     //   40: astore_2
     //   41: aload 6
-    //   43: getstatic 86	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   46: putfield 83	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   43: getstatic 88	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   46: putfield 85	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   49: aload 5
     //   51: astore_2
     //   52: aload_0
     //   53: iconst_0
     //   54: iload_1
     //   55: aload 6
-    //   57: invokestatic 127	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   57: invokestatic 128	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   60: astore 6
     //   62: aload 5
     //   64: astore_2
     //   65: aload 6
-    //   67: invokevirtual 223	android/graphics/Bitmap:getWidth	()I
+    //   67: invokevirtual 224	android/graphics/Bitmap:getWidth	()I
     //   70: aload 6
-    //   72: invokevirtual 226	android/graphics/Bitmap:getHeight	()I
-    //   75: getstatic 86	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   78: invokestatic 287	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   72: invokevirtual 227	android/graphics/Bitmap:getHeight	()I
+    //   75: getstatic 88	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   78: invokestatic 288	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   81: astore_0
-    //   82: new 289	android/graphics/Canvas
+    //   82: new 290	android/graphics/Canvas
     //   85: dup
     //   86: aload_0
-    //   87: invokespecial 292	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   87: invokespecial 293	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   90: astore_2
     //   91: aload_2
     //   92: aload 6
     //   94: fconst_0
     //   95: fconst_0
     //   96: aconst_null
-    //   97: invokevirtual 296	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+    //   97: invokevirtual 297	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
     //   100: aload_2
-    //   101: invokevirtual 299	android/graphics/Canvas:save	()I
+    //   101: invokevirtual 300	android/graphics/Canvas:save	()I
     //   104: pop
     //   105: aload_0
     //   106: areturn
@@ -304,20 +304,20 @@ public class SavaImageUtil
     //   121: aload_0
     //   122: astore_2
     //   123: aload_3
-    //   124: invokevirtual 302	java/lang/Exception:printStackTrace	()V
+    //   124: invokevirtual 303	java/lang/Exception:printStackTrace	()V
     //   127: aload_0
     //   128: areturn
     //   129: aload_0
     //   130: astore_2
-    //   131: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   131: invokestatic 53	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   134: ifeq +15 -> 149
     //   137: aload_0
     //   138: astore_2
-    //   139: ldc 59
+    //   139: ldc 62
     //   141: iconst_2
     //   142: aload_3
-    //   143: invokevirtual 113	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   146: invokestatic 63	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   143: invokevirtual 114	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   146: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   149: aload_0
     //   150: areturn
     //   151: astore_0
@@ -376,7 +376,7 @@ public class SavaImageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.SavaImageUtil
  * JD-Core Version:    0.7.0.1
  */

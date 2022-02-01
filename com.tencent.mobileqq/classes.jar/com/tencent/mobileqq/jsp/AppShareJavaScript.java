@@ -12,20 +12,20 @@ import java.util.List;
 public class AppShareJavaScript
   extends JsBridge.JsHandler
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  private QQApiPlugin jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin;
-  private boolean jdField_a_of_type_Boolean = false;
+  Context a;
+  private QQApiPlugin b;
+  private boolean c = false;
   
   public AppShareJavaScript(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin = new QQApiPlugin();
+    this.a = paramContext;
+    this.b = new QQApiPlugin();
     try
     {
       localObject = QQApiPlugin.class.getDeclaredField("a");
       ((Field)localObject).setAccessible(true);
-      ((Field)localObject).set(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin, paramContext);
-      this.jdField_a_of_type_Boolean = true;
+      ((Field)localObject).set(this.b, paramContext);
+      this.c = true;
       return;
     }
     catch (Exception paramContext)
@@ -39,7 +39,7 @@ public class AppShareJavaScript
   
   public void call(String paramString, List<String> paramList, JsBridge.JsBridgeListener paramJsBridgeListener)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
       QLog.d("QQApi", 2, "QQApi not ready");
       return;
@@ -54,27 +54,27 @@ public class AppShareJavaScript
         Object localObject = null;
         if ((bool) && (i == 1))
         {
-          paramList = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0)));
+          paramList = Boolean.valueOf(PackageUtil.a(this.a, (String)paramList.get(0)));
         }
         else if (("checkAppInstalled".equals(paramString)) && (i == 1))
         {
-          paramList = PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+          paramList = PackageUtil.b(this.a, (String)paramList.get(0));
         }
         else if (("checkAppInstalledBatch".equals(paramString)) && (i == 1))
         {
-          paramList = PackageUtil.b(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+          paramList = PackageUtil.c(this.a, (String)paramList.get(0));
         }
         else if (("isAppInstalledBatch".equals(paramString)) && (i == 1))
         {
-          paramList = PackageUtil.c(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+          paramList = PackageUtil.d(this.a, (String)paramList.get(0));
         }
         else if (("startAppWithPkgName".equals(paramString)) && (i == 1))
         {
-          paramList = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), null));
+          paramList = Boolean.valueOf(PackageUtil.a(this.a, (String)paramList.get(0), null));
         }
         else if (("startAppWithPkgNameAndOpenId".equals(paramString)) && (i == 2))
         {
-          paramList = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), (String)paramList.get(1)));
+          paramList = Boolean.valueOf(PackageUtil.a(this.a, (String)paramList.get(0), (String)paramList.get(1)));
         }
         else if (("getOpenidBatch".equals(paramString)) && (i == 1))
         {
@@ -82,12 +82,12 @@ public class AppShareJavaScript
         }
         else if (("launchAppWithTokens".equals(paramString)) && (i == 4))
         {
-          this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.a((String)paramList.get(0), (String)paramList.get(1), (String)paramList.get(2), (String)paramList.get(3), null, "");
+          this.b.a((String)paramList.get(0), (String)paramList.get(1), (String)paramList.get(2), (String)paramList.get(3), null, "");
           paramList = localObject;
         }
         else if (("getAppsVerionCodeBatch".equals(paramString)) && (i == 1))
         {
-          paramList = PackageUtil.d(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+          paramList = PackageUtil.e(this.a, (String)paramList.get(0));
         }
         else if (("setShareURL".equals(paramString)) && (i == 1))
         {
@@ -124,7 +124,7 @@ public class AppShareJavaScript
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.AppShareJavaScript
  * JD-Core Version:    0.7.0.1
  */

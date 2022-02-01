@@ -10,9 +10,9 @@ class DataLineHandler$19
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = this.this$0.a.getPreferences();
+    SharedPreferences localSharedPreferences = this.this$0.i.getPreferences();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.this$0.a.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(this.this$0.i.getCurrentAccountUin());
     ((StringBuilder)localObject).append("_DATA_LINE_OLD_MSG_UNREAD_COUNT");
     localObject = ((StringBuilder)localObject).toString();
     localSharedPreferences.edit().putInt((String)localObject, this.a).apply();
@@ -20,7 +20,7 @@ class DataLineHandler$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.19
  * JD-Core Version:    0.7.0.1
  */

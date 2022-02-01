@@ -17,78 +17,78 @@ import java.util.List;
 
 public class AEExpressionRecognizer
 {
-  private AEExpressionRecognizer.RecommendTextCallback jdField_a_of_type_ComTencentAelightCameraAeGifAEExpressionRecognizer$RecommendTextCallback;
-  private ConcatFilter jdField_a_of_type_ComTencentAelightCameraAeGifFilterConcatFilter = new ConcatFilter();
-  private FaceCropFilter jdField_a_of_type_ComTencentAelightCameraAeGifFilterFaceCropFilter = new FaceCropFilter();
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<Frame> a = new ArrayList();
+  private BaseFilter b = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private FaceCropFilter c = new FaceCropFilter();
+  private ConcatFilter d = new ConcatFilter();
+  private AEExpressionRecognizer.RecommendTextCallback e;
   
-  private Bitmap a()
+  private Bitmap f()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterConcatFilter.a(this.jdField_a_of_type_JavaUtilList);
-    return RendererUtils.saveTexture(this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterConcatFilter.a());
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.d.a(this.a);
+    return RendererUtils.saveTexture(this.d.a());
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterFaceCropFilter.apply();
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterConcatFilter.apply();
+    this.b.apply();
+    this.c.apply();
+    this.d.apply();
   }
   
   public void a(int paramInt1, List<PointF> paramList, int paramInt2, int paramInt3)
   {
-    paramList = this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterFaceCropFilter.a(paramInt1, paramList, paramInt2, paramInt3);
-    paramList = this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(paramList.getTextureId(), 64, 64);
-    this.jdField_a_of_type_JavaUtilList.add(paramList);
+    paramList = this.c.a(paramInt1, paramList, paramInt2, paramInt3);
+    paramList = this.b.RenderProcess(paramList.getTextureId(), 64, 64);
+    this.a.add(paramList);
   }
   
   public void a(AEExpressionRecognizer.RecommendTextCallback paramRecommendTextCallback)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifAEExpressionRecognizer$RecommendTextCallback = paramRecommendTextCallback;
+    this.e = paramRecommendTextCallback;
   }
   
-  public void b()
+  public int b()
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      AppInterface localAppInterface = QQStoryContext.a();
-      CameraPeakServiceHandler localCameraPeakServiceHandler = (CameraPeakServiceHandler)localAppInterface.getBusinessHandler(PeakAppInterface.d);
-      localAppInterface.addObserver(new AEExpressionRecognizer.1(this, localAppInterface));
-      localCameraPeakServiceHandler.a(a());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifAEExpressionRecognizer$RecommendTextCallback.a(new RecognizedEmotionBean());
+    return this.a.size();
   }
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).unlock();
+    if (!this.a.isEmpty())
+    {
+      AppInterface localAppInterface = QQStoryContext.k();
+      CameraPeakServiceHandler localCameraPeakServiceHandler = (CameraPeakServiceHandler)localAppInterface.getBusinessHandler(PeakAppInterface.e);
+      localAppInterface.addObserver(new AEExpressionRecognizer.1(this, localAppInterface));
+      localCameraPeakServiceHandler.a(f());
+      return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.e.a(new RecognizedEmotionBean());
   }
   
   public void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((Frame)localIterator.next()).unlock();
+    }
+    this.a.clear();
+  }
+  
+  public void e()
+  {
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((Frame)localIterator.next()).clear();
     }
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.clearGLSLSelf();
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterFaceCropFilter.clearGLSLSelf();
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifFilterConcatFilter.clearGLSLSelf();
+    this.b.clearGLSLSelf();
+    this.c.clearGLSLSelf();
+    this.d.clearGLSLSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEExpressionRecognizer
  * JD-Core Version:    0.7.0.1
  */

@@ -125,6 +125,19 @@ public class WSGridBeaconReport
     a(a("feeds", "", 1, paramString2).addParams(paramstSimpleMetaFeed).addExtParams((Map)localObject), "gzh_exposure");
   }
   
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    HashMap localHashMap1 = new HashMap();
+    localHashMap1.put("position", "feeds_loadmore_request");
+    localHashMap1.put("feed_id", "");
+    localHashMap1.put("owner_id", "");
+    HashMap localHashMap2 = new HashMap();
+    localHashMap2.put("failure_type", String.valueOf(paramInt));
+    localHashMap2.put("feedid_list", paramString1);
+    localHashMap2.put("traceid_list", paramString2);
+    a(a("feeds", "", 1, paramString3).addParams(localHashMap1).addExtParams(localHashMap2), "gzh_exposure");
+  }
+  
   public static void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     paramstSimpleMetaFeed = WSPublicAccReport.getInstance().getFeedsBaseParams("feeds_data", 0, paramstSimpleMetaFeed);
@@ -188,25 +201,25 @@ public class WSGridBeaconReport
     a(a("feeds", "", 1, paramString2).addParams((Map)localObject).addExtParams(paramstSimpleMetaFeed), paramString1);
   }
   
-  public static void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2, String paramString3)
+  public static void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
     HashMap localHashMap1 = new HashMap();
+    localHashMap1.put("position", "feeds_refresh_request");
     localHashMap1.put("feed_id", "");
     localHashMap1.put("owner_id", "");
     HashMap localHashMap2 = new HashMap();
     localHashMap2.put("failure_type", String.valueOf(paramInt));
-    localHashMap2.put("feedid_list", paramString1);
-    localHashMap2.put("traceid_list", paramString2);
     if ((paramBoolean1) || (paramBoolean2))
     {
+      String str;
       if (paramBoolean1) {
-        paramString1 = "1";
+        str = "1";
       } else {
-        paramString1 = "0";
+        str = "0";
       }
-      localHashMap2.put("is_auto_refresh", paramString1);
+      localHashMap2.put("is_auto_refresh", str);
     }
-    a(a("feeds_refresh_request", "", 1, paramString3).addParams(localHashMap1).addExtParams(localHashMap2), "gzh_exposure");
+    a(a("feeds", "", 1, paramString).addParams(localHashMap1).addExtParams(localHashMap2), "gzh_exposure");
   }
   
   private static String b(stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -238,7 +251,7 @@ public class WSGridBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridBeaconReport
  * JD-Core Version:    0.7.0.1
  */

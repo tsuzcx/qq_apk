@@ -7,24 +7,14 @@ import java.lang.ref.WeakReference;
 
 class OrderMediaMsgStatusCallback$CallbackWrapper
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<View> a;
   WeakReference<Callback> b;
   WeakReference<FileMsg> c;
   
   public OrderMediaMsgStatusCallback$CallbackWrapper(OrderMediaMsgStatusCallback paramOrderMediaMsgStatusCallback, View paramView, Callback paramCallback)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.a = new WeakReference(paramView);
     this.b = new WeakReference(paramCallback);
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public Callback a()
-  {
-    return (Callback)this.b.get();
   }
   
   public FileMsg a()
@@ -40,10 +30,20 @@ class OrderMediaMsgStatusCallback$CallbackWrapper
   {
     this.c = new WeakReference(paramFileMsg);
   }
+  
+  public View b()
+  {
+    return (View)this.a.get();
+  }
+  
+  public Callback c()
+  {
+    return (Callback)this.b.get();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgStatusCallback.CallbackWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ class RaffleFailDialog$4
   
   public void onClick(View paramView)
   {
-    RaffleFailDialog.access$100(this.jdField_a_of_type_ComTencentQqminiMinigameUiRaffleFailDialog, this.jdField_a_of_type_AndroidWidgetImageView);
-    if (RaffleFailDialog.access$000(this.jdField_a_of_type_ComTencentQqminiMinigameUiRaffleFailDialog) != null) {
-      RaffleFailDialog.access$000(this.jdField_a_of_type_ComTencentQqminiMinigameUiRaffleFailDialog).onWatchAd();
+    RaffleFailDialog.access$100(this.b, this.a);
+    if (RaffleFailDialog.access$000(this.b) != null) {
+      RaffleFailDialog.access$000(this.b).onWatchAd();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.RaffleFailDialog.4
  * JD-Core Version:    0.7.0.1
  */

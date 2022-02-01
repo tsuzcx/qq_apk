@@ -20,7 +20,7 @@ class WatchTogetherMediaPlayCtrl$TimeUpdateTimerTask
     {
       localObject = (WatchTogetherMediaPlayCtrl)((WeakReference)localObject).get();
       if (localObject != null) {
-        WatchTogetherMediaPlayCtrl.c((WatchTogetherMediaPlayCtrl)localObject);
+        WatchTogetherMediaPlayCtrl.m((WatchTogetherMediaPlayCtrl)localObject);
       }
     }
   }

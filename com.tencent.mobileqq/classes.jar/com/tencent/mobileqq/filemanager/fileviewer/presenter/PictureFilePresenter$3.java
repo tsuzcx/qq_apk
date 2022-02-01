@@ -14,26 +14,26 @@ class PictureFilePresenter$3
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     paramAdapterView = this.a;
-    PictureFilePresenter.a(paramAdapterView, PictureFilePresenter.a(paramAdapterView) ^ true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener.a(PictureFilePresenter.a(this.a));
+    PictureFilePresenter.a(paramAdapterView, PictureFilePresenter.b(paramAdapterView) ^ true);
+    if (this.a.f != null) {
+      this.a.f.a(PictureFilePresenter.b(this.a));
     }
-    if (PictureFilePresenter.a(this.a))
+    if (PictureFilePresenter.b(this.a))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(false);
+      this.a.a.a(false);
+      this.a.a.b(false);
     }
     else
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(true);
+      this.a.a.a(true);
       this.a.h();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.e(PictureFilePresenter.a(this.a));
+    this.a.a.e(PictureFilePresenter.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.PictureFilePresenter.3
  * JD-Core Version:    0.7.0.1
  */

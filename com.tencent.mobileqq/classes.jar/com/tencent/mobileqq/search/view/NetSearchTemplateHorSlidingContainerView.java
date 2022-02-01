@@ -11,27 +11,27 @@ public class NetSearchTemplateHorSlidingContainerView
   extends NetSearchTemplateBaseView
   implements HorizontalListView.OnScrollStateChangedListener
 {
-  public NetSearchTemplateHorSlidingContainerItem a;
   public HorizontalListView a;
+  public NetSearchTemplateHorSlidingContainerItem b;
   
   public NetSearchTemplateHorSlidingContainerView(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)((LinearLayout)a(paramInt)).findViewById(2131377081));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnTouchListener(new NetSearchTemplateHorSlidingContainerView.1(this));
+    this.a = ((HorizontalListView)((LinearLayout)b(paramInt)).findViewById(2131445450));
+    this.a.setOnScrollStateChangedListener(this);
+    this.a.setOnTouchListener(new NetSearchTemplateHorSlidingContainerView.1(this));
   }
   
   public void onScrollStateChanged(int paramInt)
   {
     if (paramInt == 4097) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem.b = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+      this.b.w = this.a.getCurrentX();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateHorSlidingContainerView
  * JD-Core Version:    0.7.0.1
  */

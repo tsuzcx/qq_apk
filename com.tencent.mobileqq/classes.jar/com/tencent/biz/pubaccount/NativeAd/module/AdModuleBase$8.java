@@ -10,14 +10,14 @@ class AdModuleBase$8
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.setProgress(this.a.f);
+    if (this.this$0.m != null) {
+      this.this$0.m.setProgress(this.a.t);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.8
  * JD-Core Version:    0.7.0.1
  */

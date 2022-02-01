@@ -18,38 +18,38 @@ class ShowExternalTroopListActivity$1
   
   protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
   {
-    this.a.b = false;
+    this.a.q = false;
     if ((paramBoolean) && (paramList != null) && (paramList.size() != 0) && (paramInt == 0))
     {
-      if (this.a.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+      if (this.a.c.isOverscrollHeadVisiable())
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+        this.a.i.a(0);
+        this.a.u.sendEmptyMessageDelayed(100, 800L);
         ShowExternalTroopListActivity.a(this.a);
       }
-      this.a.c.setVisibility(0);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterShowExternalTroopListAdapter != null)
+      this.a.g.setVisibility(0);
+      if (this.a.d != null)
       {
-        this.a.jdField_a_of_type_Int = paramList.size();
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterShowExternalTroopListAdapter.a(paramList);
+        this.a.p = paramList.size();
+        this.a.d.a(paramList);
       }
       this.a.a(paramList1, true);
       return;
     }
     paramList = this.a;
-    paramList.jdField_a_of_type_Int = 0;
-    if (paramList.jdField_a_of_type_ComTencentWidgetXListView.isOverscrollHeadVisiable())
+    paramList.p = 0;
+    if (paramList.c.isOverscrollHeadVisiable())
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 800L);
+      this.a.u.sendEmptyMessageDelayed(100, 800L);
       ShowExternalTroopListActivity.a(this.a);
     }
-    if (!this.a.jdField_a_of_type_Boolean)
+    if (!this.a.l)
     {
       paramList = new ArrayList();
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterShowExternalTroopListAdapter.a(paramList);
+      this.a.d.a(paramList);
       paramInt = this.a.getTitleBarHeight();
       paramList = this.a;
-      QQToast.a(paramList, 1, paramList.getString(2131696176), 0).b(paramInt);
+      QQToast.makeText(paramList, 1, paramList.getString(2131893942), 0).show(paramInt);
       return;
     }
     this.a.a();
@@ -57,7 +57,7 @@ class ShowExternalTroopListActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.1
  * JD-Core Version:    0.7.0.1
  */

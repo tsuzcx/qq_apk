@@ -15,13 +15,13 @@ class ProfileAccountLevelComponent$2
   public void onClick(View paramView)
   {
     this.val$noticeTextView.setVisibility(8);
-    VasH5PayUtil.a(paramView.getContext(), VasExtensionManager.b(this.val$noticeValue), VasExtensionManager.c(this.val$noticeValue), 3, false, true);
+    VasH5PayUtil.a(paramView.getContext(), VasExtensionManager.c(this.val$noticeValue), VasExtensionManager.d(this.val$noticeValue), 3, false, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountlevel.ProfileAccountLevelComponent.2
  * JD-Core Version:    0.7.0.1
  */

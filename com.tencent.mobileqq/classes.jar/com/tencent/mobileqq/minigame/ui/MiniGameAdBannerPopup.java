@@ -245,7 +245,7 @@ public class MiniGameAdBannerPopup
       try
       {
         TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-        localTianShuAdPosItemData.jdField_a_of_type_Int = 258;
+        localTianShuAdPosItemData.a = 258;
         localTianShuAdPosItemData.b = 1;
         GET_AD_CALLBACK = new MiniGameAdBannerPopup.GetAdCallback(paramContext, paramMiniAppConfig);
         TianShuManager.getInstance().requestAdv(Collections.singletonList(localTianShuAdPosItemData), GET_AD_CALLBACK);
@@ -389,18 +389,18 @@ public class MiniGameAdBannerPopup
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
     TianShuReportData localTianShuReportData = new TianShuReportData();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(CommonDataAdapter.a().a()));
+    localStringBuilder.append(String.valueOf(CommonDataAdapter.a().c()));
     localStringBuilder.append('_');
     localStringBuilder.append(i);
     localTianShuReportData.b = localStringBuilder.toString();
-    localTianShuReportData.d = paramInt;
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.g = String.valueOf(paramAdItem.iAdId.get());
-    localTianShuReportData.n = paramString;
-    localTianShuReportData.jdField_a_of_type_Long = i;
-    localTianShuReportData.jdField_a_of_type_Int = 1;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localTianShuReportData.i = "";
+    localTianShuReportData.p = paramInt;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.h = String.valueOf(paramAdItem.iAdId.get());
+    localTianShuReportData.u = paramString;
+    localTianShuReportData.o = i;
+    localTianShuReportData.c = 1;
+    localTianShuReportData.f = "tianshu.81";
+    localTianShuReportData.j = "";
     return localTianShuReportData;
   }
   
@@ -425,10 +425,10 @@ public class MiniGameAdBannerPopup
         if ((Build.VERSION.SDK_INT >= 17) && (((Activity)localObject).isDestroyed())) {
           return;
         }
-        View localView = LayoutInflater.from(paramContext).inflate(2131559400, null);
-        ImageView localImageView = (ImageView)localView.findViewById(2131371245);
-        TextView localTextView = (TextView)localView.findViewById(2131371248);
-        localObject = (LinearLayout)localView.findViewById(2131371246);
+        View localView = LayoutInflater.from(paramContext).inflate(2131625366, null);
+        ImageView localImageView = (ImageView)localView.findViewById(2131438589);
+        TextView localTextView = (TextView)localView.findViewById(2131438592);
+        localObject = (LinearLayout)localView.findViewById(2131438590);
         Dialog localDialog = new Dialog(paramContext);
         localDialog.setCancelable(false);
         if (localDialog.getWindow() != null)
@@ -458,7 +458,7 @@ public class MiniGameAdBannerPopup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGameAdBannerPopup
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ class DatalineRemoteManager$10
   
   public void run()
   {
-    while (!this.this$0.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    while (!this.this$0.d.isEmpty())
     {
-      Bundle localBundle = (Bundle)this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      Bundle localBundle = (Bundle)this.this$0.d.remove(0);
       if (localBundle == null) {
         return;
       }
@@ -28,7 +28,7 @@ class DatalineRemoteManager$10
           localStringBuilder2.append(str);
           QLog.d("DatalineRemoteManager", 2, localStringBuilder2.toString());
         }
-        this.this$0.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService.a("com.qqdataline.action.notify", localBundle);
+        this.this$0.b.b("com.qqdataline.action.notify", localBundle);
       }
       catch (Exception localException)
       {
@@ -46,7 +46,7 @@ class DatalineRemoteManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.10
  * JD-Core Version:    0.7.0.1
  */

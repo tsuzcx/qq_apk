@@ -106,7 +106,7 @@ public class QWalletConfigServiceImpl
       this.mConfig.seriesNo = 0L;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("replace install:");
-      ((StringBuilder)localObject).append(AppSetting.a());
+      ((StringBuilder)localObject).append(AppSetting.d());
       QLog.i("QWalletConfigServiceImpl", 2, ((StringBuilder)localObject).toString());
     }
     long l1;
@@ -121,10 +121,10 @@ public class QWalletConfigServiceImpl
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Android|");
-    ((StringBuilder)localObject).append(DeviceInfoUtil.e());
+    ((StringBuilder)localObject).append(DeviceInfoUtil.g());
     ((StringBuilder)localObject).append("|");
-    ((StringBuilder)localObject).append(DeviceInfoUtil.i());
-    localObject = ReqWalletConfig.createReq(paramLong, l2, l1, paramString, paramMap, ((StringBuilder)localObject).toString(), DeviceInfoUtil.c(), NetworkUtil.getSystemNetwork(MobileQQ.sMobileQQ));
+    ((StringBuilder)localObject).append(DeviceInfoUtil.u());
+    localObject = ReqWalletConfig.createReq(paramLong, l2, l1, paramString, paramMap, ((StringBuilder)localObject).toString(), DeviceInfoUtil.e(), NetworkUtil.getSystemNetwork(MobileQQ.sMobileQQ));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -202,7 +202,7 @@ public class QWalletConfigServiceImpl
   
   public JSONObject getObj(String paramString, String... paramVarArgs)
   {
-    return JSONParseUtils.a(getConfigObj(paramString), paramVarArgs);
+    return JSONParseUtils.b(getConfigObj(paramString), paramVarArgs);
   }
   
   public int getQWalletSettingConfigVersion(Context paramContext, String paramString)
@@ -314,11 +314,11 @@ public class QWalletConfigServiceImpl
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Android|");
-    ((StringBuilder)localObject).append(DeviceInfoUtil.e());
+    ((StringBuilder)localObject).append(DeviceInfoUtil.g());
     ((StringBuilder)localObject).append("|");
-    ((StringBuilder)localObject).append(DeviceInfoUtil.i());
+    ((StringBuilder)localObject).append(DeviceInfoUtil.u());
     localObject = ((StringBuilder)localObject).toString();
-    String str = DeviceInfoUtil.c();
+    String str = DeviceInfoUtil.e();
     int i = NetworkUtil.getSystemNetwork(MobileQQ.sMobileQQ);
     paramMap = ReqWalletConfig.createReq(0L, this.mApp.getLongAccountUin(), this.mConfig.seriesNo, null, paramMap, (String)localObject, str, i);
     QWalletCommonServlet.a(paramMap, 1, new QWalletConfigServiceImpl.3(this));
@@ -381,7 +381,7 @@ public class QWalletConfigServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.config.impl.QWalletConfigServiceImpl
  * JD-Core Version:    0.7.0.1
  */

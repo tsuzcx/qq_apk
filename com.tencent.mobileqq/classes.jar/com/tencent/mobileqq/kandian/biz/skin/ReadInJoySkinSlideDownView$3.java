@@ -8,10 +8,9 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.surfaceviewaction.BaseNode;
 import com.tencent.mobileqq.surfaceviewaction.ILayer;
 import com.tencent.mobileqq.surfaceviewaction.ISprite;
@@ -29,20 +28,20 @@ class ReadInJoySkinSlideDownView$3
   public void a(ILayer paramILayer, ISprite paramISprite, String paramString)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject = ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView);
+    Object localObject = ReadInJoySkinSlideDownView.a(this.g);
     int k = 0;
     int j = 0;
     localObject = ReadInJoyRefreshManager.b((Context)localObject, 0);
     int i;
     if (paramString.equals("close"))
     {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView);
+      this.a.onClick(this.g);
       paramILayer = new RIJTransMergeKanDianReport.ReportR5Builder();
       try
       {
         paramILayer.addKandianMode();
-        paramILayer.addString("skin_id", this.jdField_a_of_type_JavaLangString);
-        paramILayer.addInt("channel_id", this.jdField_a_of_type_Int);
+        paramILayer.addString("skin_id", this.b);
+        paramILayer.addInt("channel_id", this.c);
         i = j;
         if (localObject != null)
         {
@@ -57,37 +56,36 @@ class ReadInJoySkinSlideDownView$3
       {
         paramISprite.printStackTrace();
       }
-      paramISprite = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      paramString = this.jdField_a_of_type_JavaLangString;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(RIJAppSetting.a());
-      paramISprite.publicAccountReportClickEvent(localQQAppInterface, "", "0X800969E", "0X800969E", 0, 0, paramString, ((StringBuilder)localObject).toString(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView)), paramILayer.build(), false);
+      paramISprite = this.b;
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append(RIJAppSetting.b());
+      PublicAccountReportUtils.a(localQQAppInterface, "", "0X800969E", "0X800969E", 0, 0, paramISprite, paramString.toString(), String.valueOf(ReadInJoySkinSlideDownView.b(this.g)), paramILayer.build(), false);
       return;
     }
     if (paramString.equals("open_sound"))
     {
-      paramILayer = paramILayer.a(HardCodeUtil.a(2131713012));
+      paramILayer = paramILayer.a(HardCodeUtil.a(2131910576));
       if (paramILayer != null) {
         paramILayer.c(0.0F);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView.a == null)
+      if (this.g.c == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView.a = new MediaPlayer();
+        this.g.c = new MediaPlayer();
         try
         {
-          paramILayer = this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView.a;
+          paramILayer = this.g.c;
           paramISprite = new StringBuilder();
-          paramISprite.append(this.jdField_b_of_type_JavaLangString);
+          paramISprite.append(this.d);
           paramISprite.append("/audio.mp3");
           paramILayer.setDataSource(paramISprite.toString());
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView.a.prepare();
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView.a.start();
+          this.g.c.prepare();
+          this.g.c.start();
         }
         catch (Exception paramILayer)
         {
           if (!QLog.isColorLevel()) {
-            break label390;
+            break label374;
           }
         }
         QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(paramILayer));
@@ -96,8 +94,8 @@ class ReadInJoySkinSlideDownView$3
       {
         try
         {
-          if (!this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView.a.isPlaying()) {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView.a.start();
+          if (!this.g.c.isPlaying()) {
+            this.g.c.start();
           }
         }
         catch (Exception paramILayer)
@@ -107,13 +105,13 @@ class ReadInJoySkinSlideDownView$3
           }
         }
       }
-      label390:
+      label374:
       paramILayer = new RIJTransMergeKanDianReport.ReportR5Builder();
       try
       {
         paramILayer.addKandianMode();
-        paramILayer.addString("skin_id", this.jdField_a_of_type_JavaLangString);
-        paramILayer.addInt("channel_id", this.jdField_a_of_type_Int);
+        paramILayer.addString("skin_id", this.b);
+        paramILayer.addInt("channel_id", this.c);
         i = k;
         if (localObject != null)
         {
@@ -128,33 +126,32 @@ class ReadInJoySkinSlideDownView$3
       {
         paramISprite.printStackTrace();
       }
-      paramISprite = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      paramString = this.jdField_a_of_type_JavaLangString;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(RIJAppSetting.a());
-      paramISprite.publicAccountReportClickEvent(localQQAppInterface, "", "0X800969D", "0X800969D", 0, 0, paramString, ((StringBuilder)localObject).toString(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView)), paramILayer.build(), false);
+      paramISprite = this.b;
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append(RIJAppSetting.b());
+      PublicAccountReportUtils.a(localQQAppInterface, "", "0X800969D", "0X800969D", 0, 0, paramISprite, paramString.toString(), String.valueOf(ReadInJoySkinSlideDownView.b(this.g)), paramILayer.build(), false);
       return;
     }
-    paramILayer = JumpParser.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
+    paramILayer = JumpParser.a(localQQAppInterface, this.e, paramString);
     if (paramILayer != null)
     {
       paramILayer.a();
-      ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView).onClick(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView);
+      ReadInJoySkinSlideDownView.c(this.g).onClick(this.g);
     }
     else if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
     {
-      paramILayer = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramILayer = new Intent(this.e, QQBrowserActivity.class);
       paramILayer.putExtra("url", paramString);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramILayer);
-      this.jdField_b_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView);
+      this.e.startActivity(paramILayer);
+      this.f.onClick(this.g);
     }
-    ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinReadInJoySkinSlideDownView, this.jdField_a_of_type_Int, paramString, ((BaseNode)paramISprite).g_());
+    ReadInJoySkinSlideDownView.a(this.g, this.c, paramString, ((BaseNode)paramISprite).dq_());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinSlideDownView.3
  * JD-Core Version:    0.7.0.1
  */

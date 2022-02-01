@@ -27,9 +27,9 @@ class SignatureEditFragment$1
   public void onFinalState(Bundle paramBundle)
   {
     super.onFinalState(paramBundle);
-    this.a.getSwiftTitleUI().a.setVisibility(8);
-    if (this.a.getWebTitleBarInterface().a() != null) {
-      this.a.getWebTitleBarInterface().a().setVisibility(8);
+    this.a.getSwiftTitleUI().o.setVisibility(8);
+    if (this.a.getWebTitleBarInterface().l() != null) {
+      this.a.getWebTitleBarInterface().l().setVisibility(8);
     }
     paramBundle = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
     Object localObject = this.a;
@@ -38,11 +38,11 @@ class SignatureEditFragment$1
     localStringBuilder.append("_sign_edit_red_dot_key");
     SignatureEditFragment.a((SignatureEditFragment)localObject, paramBundle.getInt(localStringBuilder.toString(), 0));
     if (SignatureEditFragment.a(this.a) > 0) {
-      SignatureEditFragment.a(this.a).setVisibility(4);
+      SignatureEditFragment.b(this.a).setVisibility(4);
     }
-    this.a.getUIStyleHandler().a.a(false);
+    this.a.getUIStyleHandler().w.a(false);
     ((SwiftBrowserSetting)this.a.mComponentsProvider.a(-1)).a("web_view_long_click", false);
-    this.a.c();
+    this.a.d();
     paramBundle = paramBundle.edit();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(this.a.getAppRuntime().getCurrentAccountUin());
@@ -52,7 +52,7 @@ class SignatureEditFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ import com.tencent.qphone.base.util.QLog;
 public class TipsLinearLayout
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private TipsLinearLayout.TipsLayoutAnimListener jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = true;
+  private boolean a = false;
+  private boolean b = true;
+  private long c;
+  private float d = 0.0F;
+  private int e;
+  private int f = 0;
+  private TipsLinearLayout.TipsLayoutAnimListener g;
   
   public TipsLinearLayout(Context paramContext)
   {
@@ -44,7 +44,7 @@ public class TipsLinearLayout
     if (f1 > f3) {
       f2 = f3;
     }
-    int i = this.jdField_b_of_type_Int;
+    int i = this.f;
     float f4 = 0.0F;
     f1 = f4;
     if (i != 0) {
@@ -65,29 +65,29 @@ public class TipsLinearLayout
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = paramInt;
+    this.a = true;
+    this.b = true;
+    this.f = paramInt;
     invalidate();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener == null) {
+    if (this.g == null) {
       return;
     }
-    if (this.jdField_b_of_type_Int == 1)
+    if (this.f == 1)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TipsLinearLayout", 2, "ANIM_IN end.");
       }
-      this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener.a();
+      this.g.a();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TipsLinearLayout", 2, "ANIM_OUT end.");
     }
-    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener.b();
+    this.g.b();
   }
   
   public void a()
@@ -111,30 +111,30 @@ public class TipsLinearLayout
     if (QLog.isColorLevel()) {
       QLog.d("TipsLinearLayout", 2, "Draw....");
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    if ((this.a) && (this.b))
     {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_b_of_type_Boolean = false;
+      this.c = SystemClock.uptimeMillis();
+      this.b = false;
     }
-    long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (l >= 300L))
+    long l = SystemClock.uptimeMillis() - this.c;
+    if ((this.a) && (!this.b) && (l >= 300L))
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = true;
+      this.a = false;
+      this.b = true;
       c();
     }
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_Int = a(l);
-    } else if (this.jdField_b_of_type_Int == 2) {
-      this.jdField_a_of_type_Int = (0 - getMeasuredHeight());
+    if ((this.a) && (!this.b)) {
+      this.e = a(l);
+    } else if (this.f == 2) {
+      this.e = (0 - getMeasuredHeight());
     } else {
-      this.jdField_a_of_type_Int = 0;
+      this.e = 0;
     }
     int i = paramCanvas.save();
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_Int);
+    paramCanvas.translate(0.0F, this.e);
     super.draw(paramCanvas);
     paramCanvas.restoreToCount(i);
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.b) {
       invalidate();
     }
   }
@@ -146,12 +146,12 @@ public class TipsLinearLayout
   
   public void setmTipsLayoutAnimListener(TipsLinearLayout.TipsLayoutAnimListener paramTipsLayoutAnimListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout$TipsLayoutAnimListener = paramTipsLayoutAnimListener;
+    this.g = paramTipsLayoutAnimListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.TipsLinearLayout
  * JD-Core Version:    0.7.0.1
  */

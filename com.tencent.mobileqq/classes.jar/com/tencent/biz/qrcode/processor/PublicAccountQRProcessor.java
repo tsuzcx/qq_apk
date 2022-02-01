@@ -24,14 +24,9 @@ public class PublicAccountQRProcessor
     return "PublicAccountQRProcessor";
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    return (a(paramInt)) && (((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplName(IPublicAccountManager.class).equals(paramScannerParams.a));
+    return (a(paramInt)) && (((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplName(IPublicAccountManager.class).equals(paramScannerParams.b));
   }
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
@@ -45,8 +40,13 @@ public class PublicAccountQRProcessor
       }
     }
     paramScannerParams.putExtra("com.tencent.biz.pubaccount.scanResultData", paramString1);
-    this.a.a().sendBroadcast(paramScannerParams, "com.tencent.msg.permission.pushnotify");
-    this.a.b();
+    this.b.d().sendBroadcast(paramScannerParams, "com.tencent.msg.permission.pushnotify");
+    this.b.b();
+    return true;
+  }
+  
+  public boolean b()
+  {
     return true;
   }
 }

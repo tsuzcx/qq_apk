@@ -16,31 +16,31 @@ class PublicAccountUtilImpl$14
   {
     try
     {
-      String str2 = this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id");
-      int i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int == 0) {
+      String str2 = this.a.getQueryParameter("article_id");
+      int i = this.b;
+      if (this.b == 0) {
         i = 100;
       }
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+        boolean bool = TextUtils.isEmpty(this.c);
         String str1 = "null";
         if (bool) {
           localObject = "null";
         } else {
-          localObject = this.jdField_a_of_type_JavaLangString;
+          localObject = this.c;
         }
         localJSONObject.put("rowkey", localObject);
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(this.d)) {
           localObject = str1;
         } else {
-          localObject = this.jdField_b_of_type_JavaLangString;
+          localObject = this.d;
         }
         localJSONObject.put("isfan", localObject);
         Object localObject = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-        int j = this.jdField_b_of_type_Int;
-        str1 = this.c;
+        int j = this.e;
+        str1 = this.f;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
         localStringBuilder.append(i);
@@ -59,7 +59,7 @@ class PublicAccountUtilImpl$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.14
  * JD-Core Version:    0.7.0.1
  */

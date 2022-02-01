@@ -24,19 +24,13 @@ import org.json.JSONObject;
 public class QwalletModifyPassAction
   extends JumpAction
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private QWalletAuthObserver jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver;
-  private QwalletModifyPassAction.QWalletAuthMsgHandler jdField_a_of_type_ComTencentMobileqqAppParserQwalletModifyPassAction$QWalletAuthMsgHandler;
+  private QwalletModifyPassAction.QWalletAuthMsgHandler H;
+  private QWalletAuthObserver I;
+  private Dialog J;
   
   public QwalletModifyPassAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131692801, this.jdField_a_of_type_AndroidContentContext.getString(2131692783), 2131692785, 2131692784, new QwalletModifyPassAction.1(this), new QwalletModifyPassAction.2(this));
-    this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
   private void a(int paramInt)
@@ -48,47 +42,53 @@ public class QwalletModifyPassAction
     localStringBuilder.append("midas://open_modify_status?status=");
     localStringBuilder.append(paramInt);
     localIntent.setData(Uri.parse(localStringBuilder.toString()));
-    if (this.jdField_a_of_type_AndroidContentContext.getPackageManager().queryIntentActivities(localIntent, 0).size() > 0) {
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    if (this.b.getPackageManager().queryIntentActivities(localIntent, 0).size() > 0) {
+      this.b.startActivity(localIntent);
     }
-    ((QBaseActivity)this.jdField_a_of_type_AndroidContentContext).finish();
+    ((QBaseActivity)this.b).finish();
   }
   
-  private void b()
+  private void c()
   {
-    boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey("packageName");
+    this.J = DialogUtil.a(this.b, 2131889905, this.b.getString(2131889854), 2131889878, 2131889877, new QwalletModifyPassAction.1(this), new QwalletModifyPassAction.2(this));
+    this.J.show();
+  }
+  
+  private void d()
+  {
+    boolean bool = this.f.containsKey("packageName");
     String str5 = "";
     if (bool) {
-      localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("packageName");
+      localObject = (String)this.f.get("packageName");
     } else {
       localObject = "";
     }
     String str1;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("signareMode")) {
-      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("signareMode");
+    if (this.f.containsKey("signareMode")) {
+      str1 = (String)this.f.get("signareMode");
     } else {
       str1 = "";
     }
     String str2;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("appid")) {
-      str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid");
+    if (this.f.containsKey("appid")) {
+      str2 = (String)this.f.get("appid");
     } else {
       str2 = "";
     }
     String str3;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("timeStamp")) {
-      str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("timeStamp");
+    if (this.f.containsKey("timeStamp")) {
+      str3 = (String)this.f.get("timeStamp");
     } else {
       str3 = "";
     }
     String str4;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("resetWordMode")) {
-      str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("resetWordMode");
+    if (this.f.containsKey("resetWordMode")) {
+      str4 = (String)this.f.get("resetWordMode");
     } else {
       str4 = "";
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("offerid")) {
-      str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("offerid");
+    if (this.f.containsKey("offerid")) {
+      str5 = (String)this.f.get("offerid");
     }
     if (QLog.isColorLevel())
     {
@@ -108,13 +108,13 @@ public class QwalletModifyPassAction
       QLog.d("QwalletModifyPassAction", 2, localStringBuilder.toString());
     }
     Object localObject = new ReqCheckChangePwdAuth((String)localObject, str1, str2, str3, str4, str5);
-    ((QWalletAuthHandler)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QWALLET_AUTH_HANDLER)).a((ReqCheckChangePwdAuth)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppParserQwalletModifyPassAction$QWalletAuthMsgHandler = new QwalletModifyPassAction.QWalletAuthMsgHandler(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = new QWalletAuthObserver(this.jdField_a_of_type_ComTencentMobileqqAppParserQwalletModifyPassAction$QWalletAuthMsgHandler);
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver);
+    ((QWalletAuthHandler)this.a.getBusinessHandler(BusinessHandlerFactory.QWALLET_AUTH_HANDLER)).a((ReqCheckChangePwdAuth)localObject);
+    this.H = new QwalletModifyPassAction.QWalletAuthMsgHandler(this, null);
+    this.I = new QWalletAuthObserver(this.H);
+    this.a.addObserver(this.I);
   }
   
-  private void c()
+  private void e()
   {
     com.tencent.mobileqq.phonecontact.constant.PhoneContactFlags.a = true;
     JSONObject localJSONObject = new JSONObject();
@@ -122,9 +122,9 @@ public class QwalletModifyPassAction
     {
       try
       {
-        localJSONObject.put("userId", this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin());
+        localJSONObject.put("userId", this.a.getCurrentAccountUin());
         localJSONObject.put("viewTag", "pswManage");
-        if (!PayBridgeActivity.tenpay((Activity)this.jdField_a_of_type_AndroidContentContext, localJSONObject.toString(), 5, ""))
+        if (!PayBridgeActivity.tenpay((Activity)this.b, localJSONObject.toString(), 5, ""))
         {
           i = 1;
           a(i);
@@ -141,23 +141,23 @@ public class QwalletModifyPassAction
     }
   }
   
-  private boolean c()
+  private boolean f()
   {
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof QBaseActivity)) {
+    if (!(this.b instanceof QBaseActivity)) {
       return false;
     }
     String str;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("uin")) {
-      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    if (this.f.containsKey("uin")) {
+      str = (String)this.f.get("uin");
     } else {
       str = "";
     }
-    if (!str.equals(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin()))
+    if (!str.equals(this.a.getCurrentAccountUin()))
     {
-      a();
+      c();
       return false;
     }
-    b();
+    d();
     return false;
   }
   
@@ -165,7 +165,7 @@ public class QwalletModifyPassAction
   {
     try
     {
-      boolean bool = c();
+      boolean bool = f();
       return bool;
     }
     catch (Exception localException)
@@ -174,14 +174,14 @@ public class QwalletModifyPassAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QwalletModifyPassAction", 1, localStringBuilder.toString());
-      b_("QwalletModifyPassAction");
+      h_("QwalletModifyPassAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QwalletModifyPassAction
  * JD-Core Version:    0.7.0.1
  */

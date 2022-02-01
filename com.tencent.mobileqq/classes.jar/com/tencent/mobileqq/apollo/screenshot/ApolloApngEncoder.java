@@ -2,6 +2,10 @@ package com.tencent.mobileqq.apollo.screenshot;
 
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.meme.ERROR_APNG_ENCODE_FAIL;
+import com.tencent.mobileqq.apollo.meme.ERROR_APNG_ENV_INIT_FAIL;
+import com.tencent.mobileqq.apollo.meme.RECORD_COMPLETE;
+import com.tencent.mobileqq.cmshow.engine.action.ActionStatus;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -10,49 +14,44 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloApngEncoder;", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "()V", "mFrameCount", "", "mHandle", "", "addFrame", "", "pixels", "", "width", "height", "close", "convertToGif", "", "apngInputPath", "", "gifOutputPath", "encode", "outputFilePath", "frameTime", "getFrameCount", "init", "nativeEncoderAddFrame", "handle", "delayNum", "delayDenominator", "nativeEncoderAssemble", "outputPath", "nativeEncoderConvertGif", "gifEncoderType", "nativeEncoderInit", "nativeEncoderRelease", "nativeEncoderSavePNGs", "outputDir", "nativeEncoderSetOptimization", "skipFirst", "skipPalette", "skipColor", "zipLevel", "nativeEncoderSetTrueColorBoost", "set", "setOptimization", "setTrueColorBoost", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloApngEncoder;", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "()V", "mFrameCount", "", "mHandle", "", "addFrame", "", "pixels", "", "width", "height", "close", "convertToGif", "", "apngInputPath", "", "gifOutputPath", "encode", "Lcom/tencent/mobileqq/cmshow/engine/action/ActionStatus;", "outputFilePath", "frameTime", "getFrameCount", "init", "nativeEncoderAddFrame", "handle", "delayNum", "delayDenominator", "nativeEncoderAssemble", "outputPath", "nativeEncoderConvertGif", "gifEncoderType", "nativeEncoderInit", "nativeEncoderRelease", "nativeEncoderSavePNGs", "outputDir", "nativeEncoderSetOptimization", "skipFirst", "skipPalette", "skipColor", "zipLevel", "nativeEncoderSetTrueColorBoost", "set", "setOptimization", "setTrueColorBoost", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloApngEncoder
   implements IApolloScreenshotEncoder
 {
-  public static final ApolloApngEncoder.Companion a;
-  private static final File jdField_a_of_type_JavaIoFile = BaseApplicationImpl.getContext().getDir(d, 0);
+  public static final ApolloApngEncoder.Companion a = new ApolloApngEncoder.Companion(null);
   @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "[ApolloScrshot]-apng";
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static final String d = "[cmshow][MemePlayer][ApolloScrshot]-apng";
   @NotNull
-  private static final File jdField_b_of_type_JavaIoFile = new File(jdField_a_of_type_JavaIoFile, c);
+  private static final String e = "apng_encoder";
   @NotNull
-  private static final String jdField_b_of_type_JavaLangString = "apng_encoder";
+  private static final String f = "libapng_encoder.so";
   @NotNull
-  private static final String c = "libapng_encoder.so";
+  private static final String g = "apng";
   @NotNull
-  private static final String d = "apng";
+  private static final String h = "/sdcard/libapng_encoder.so";
+  private static final File i = BaseApplicationImpl.getContext().getDir(g, 0);
   @NotNull
-  private static final String e = "/sdcard/libapng_encoder.so";
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private static final File j = new File(i, f);
+  private static boolean k;
+  private long b;
+  private int c;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloApngEncoder$Companion = new ApolloApngEncoder.Companion(null);
-    jdField_a_of_type_JavaLangString = "[ApolloScrshot]-apng";
-    jdField_b_of_type_JavaLangString = "apng_encoder";
-    c = "libapng_encoder.so";
-    d = "apng";
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("/sdcard/");
-    localStringBuilder.append(c);
-    e = localStringBuilder.toString();
+    localStringBuilder.append(f);
+    h = localStringBuilder.toString();
   }
   
   public ApolloApngEncoder()
   {
-    jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloApngEncoder$Companion.a();
+    a.e();
   }
   
   private final void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.b;
     if (l == 0L) {
       return;
     }
@@ -61,7 +60,7 @@ public final class ApolloApngEncoder
   
   private final void b(boolean paramBoolean)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.b;
     if (l == 0L) {
       return;
     }
@@ -72,7 +71,7 @@ public final class ApolloApngEncoder
     }
     catch (Throwable localThrowable)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "setTrueColorBoost", localThrowable);
+      QLog.e(d, 1, "setTrueColorBoost", localThrowable);
     }
   }
   
@@ -92,18 +91,40 @@ public final class ApolloApngEncoder
   
   private final native void nativeEncoderSetTrueColorBoost(long paramLong, boolean paramBoolean);
   
-  public int a()
+  @NotNull
+  public ActionStatus a(@NotNull String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    Intrinsics.checkParameterIsNotNull(paramString, "outputFilePath");
+    if ((a.d()) && (this.b != 0L))
+    {
+      Object localObject = d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("assemble to ");
+      localStringBuilder.append(paramString);
+      QLog.d((String)localObject, 4, localStringBuilder.toString());
+      if (TextUtils.isEmpty((CharSequence)paramString)) {
+        return (ActionStatus)ERROR_APNG_ENCODE_FAIL.a;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append('_');
+      ((StringBuilder)localObject).append(System.nanoTime());
+      localObject = ((StringBuilder)localObject).toString();
+      if ((nativeEncoderAssemble(this.b, (String)localObject)) && (FileUtils.rename((String)localObject, paramString))) {
+        return (ActionStatus)RECORD_COMPLETE.a;
+      }
+      return (ActionStatus)ERROR_APNG_ENCODE_FAIL.a;
+    }
+    return (ActionStatus)ERROR_APNG_ENV_INIT_FAIL.a;
   }
   
   public void a()
   {
-    if (!jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloApngEncoder$Companion.b()) {
+    if (!a.d()) {
       return;
     }
     b();
-    this.jdField_a_of_type_Long = nativeEncoderInit();
+    this.b = nativeEncoderInit();
     a(false, false, false, 1);
     b(true);
   }
@@ -111,58 +132,26 @@ public final class ApolloApngEncoder
   public void a(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "pixels");
-    if (jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloApngEncoder$Companion.b())
+    if (a.d())
     {
-      if (this.jdField_a_of_type_Long == 0L) {
+      if (this.b == 0L) {
         return;
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "addFrame");
-      this.jdField_a_of_type_Int += 1;
-      nativeEncoderAddFrame(this.jdField_a_of_type_Long, paramArrayOfByte, paramInt1, paramInt2, 0, 0);
-    }
-  }
-  
-  public boolean a(@NotNull String paramString, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "outputFilePath");
-    boolean bool1 = jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloApngEncoder$Companion.b();
-    boolean bool2 = false;
-    if (!bool1) {
-      return false;
-    }
-    bool1 = bool2;
-    if (this.jdField_a_of_type_Long != 0L)
-    {
-      if (TextUtils.isEmpty((CharSequence)paramString)) {
-        return false;
-      }
-      Object localObject = jdField_a_of_type_JavaLangString;
+      this.c += 1;
+      String str = d;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("assemble to ");
-      localStringBuilder.append(paramString);
-      QLog.d((String)localObject, 4, localStringBuilder.toString());
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append('_');
-      ((StringBuilder)localObject).append(System.nanoTime());
-      localObject = ((StringBuilder)localObject).toString();
-      bool1 = bool2;
-      if (nativeEncoderAssemble(this.jdField_a_of_type_Long, (String)localObject))
-      {
-        bool1 = bool2;
-        if (FileUtils.rename((String)localObject, paramString)) {
-          bool1 = true;
-        }
-      }
+      localStringBuilder.append("addFrame, frameCount:");
+      localStringBuilder.append(this.c);
+      QLog.d(str, 4, localStringBuilder.toString());
+      nativeEncoderAddFrame(this.b, paramArrayOfByte, paramInt1, paramInt2, 0, 0);
     }
-    return bool1;
   }
   
   public final boolean a(@NotNull String paramString1, @NotNull String paramString2)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "apngInputPath");
     Intrinsics.checkParameterIsNotNull(paramString2, "gifOutputPath");
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("convertToGif ");
     localStringBuilder.append(paramString1);
@@ -183,7 +172,7 @@ public final class ApolloApngEncoder
       }
       catch (Throwable paramString1)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "convertToGif", paramString1);
+        QLog.e(d, 1, "convertToGif", paramString1);
       }
     }
     return false;
@@ -191,20 +180,25 @@ public final class ApolloApngEncoder
   
   public void b()
   {
-    if (!jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloApngEncoder$Companion.b()) {
+    if (!a.d()) {
       return;
     }
-    long l = this.jdField_a_of_type_Long;
+    long l = this.b;
     if (l != 0L)
     {
       nativeEncoderRelease(l);
-      this.jdField_a_of_type_Long = 0L;
+      this.b = 0L;
     }
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloApngEncoder
  * JD-Core Version:    0.7.0.1
  */

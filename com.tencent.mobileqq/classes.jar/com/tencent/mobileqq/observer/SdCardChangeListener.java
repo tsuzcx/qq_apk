@@ -9,9 +9,9 @@ import com.tencent.qphone.base.util.QLog;
 public class SdCardChangeListener
   extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private String jdField_a_of_type_JavaLangString;
+  private int a;
+  private Handler b;
+  private String c;
   
   /* Error */
   public int a(int paramInt)
@@ -22,8 +22,8 @@ public class SdCardChangeListener
     //   2: iconst_m1
     //   3: istore_2
     //   4: aload_0
-    //   5: getfield 13	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8: invokestatic 19	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   5: getfield 15	com/tencent/mobileqq/observer/SdCardChangeListener:c	Ljava/lang/String;
+    //   8: invokestatic 21	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   11: istore_3
     //   12: iload_3
     //   13: ifeq +7 -> 20
@@ -31,85 +31,85 @@ public class SdCardChangeListener
     //   17: monitorexit
     //   18: iconst_m1
     //   19: ireturn
-    //   20: new 21	java/lang/StringBuilder
+    //   20: new 23	java/lang/StringBuilder
     //   23: dup
-    //   24: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   24: invokespecial 27	java/lang/StringBuilder:<init>	()V
     //   27: astore 4
     //   29: aload 4
     //   31: aload_0
-    //   32: getfield 13	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   35: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: getfield 15	com/tencent/mobileqq/observer/SdCardChangeListener:c	Ljava/lang/String;
+    //   35: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: pop
     //   39: aload 4
-    //   41: ldc 31
-    //   43: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: ldc 33
+    //   43: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload 4
-    //   49: invokestatic 37	java/lang/System:currentTimeMillis	()J
-    //   52: invokevirtual 40	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   49: invokestatic 39	java/lang/System:currentTimeMillis	()J
+    //   52: invokevirtual 42	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   55: pop
     //   56: aload 4
-    //   58: ldc 42
-    //   60: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: ldc 44
+    //   60: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   63: pop
-    //   64: new 44	java/io/File
+    //   64: new 46	java/io/File
     //   67: dup
     //   68: aload 4
-    //   70: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   73: invokespecial 51	java/io/File:<init>	(Ljava/lang/String;)V
+    //   70: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   73: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
     //   76: astore 4
     //   78: aload 4
-    //   80: invokevirtual 55	java/io/File:createNewFile	()Z
+    //   80: invokevirtual 57	java/io/File:createNewFile	()Z
     //   83: pop
     //   84: aload 4
-    //   86: invokevirtual 58	java/io/File:delete	()Z
+    //   86: invokevirtual 60	java/io/File:delete	()Z
     //   89: pop
     //   90: iconst_0
     //   91: istore_2
     //   92: aload_0
     //   93: iload_2
-    //   94: putfield 60	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_Int	I
+    //   94: putfield 62	com/tencent/mobileqq/observer/SdCardChangeListener:a	I
     //   97: goto +26 -> 123
     //   100: astore 4
     //   102: goto +91 -> 193
     //   105: astore 4
     //   107: aload 4
-    //   109: invokevirtual 63	java/lang/Exception:printStackTrace	()V
+    //   109: invokevirtual 65	java/lang/Exception:printStackTrace	()V
     //   112: iload_1
     //   113: bipush 254
     //   115: if_icmpne -23 -> 92
     //   118: aload_0
     //   119: iload_1
-    //   120: putfield 60	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_Int	I
-    //   123: invokestatic 69	android/os/Message:obtain	()Landroid/os/Message;
+    //   120: putfield 62	com/tencent/mobileqq/observer/SdCardChangeListener:a	I
+    //   123: invokestatic 71	android/os/Message:obtain	()Landroid/os/Message;
     //   126: astore 4
     //   128: aload 4
     //   130: sipush 28929
-    //   133: putfield 72	android/os/Message:what	I
-    //   136: new 74	android/os/Bundle
+    //   133: putfield 74	android/os/Message:what	I
+    //   136: new 76	android/os/Bundle
     //   139: dup
-    //   140: invokespecial 75	android/os/Bundle:<init>	()V
+    //   140: invokespecial 77	android/os/Bundle:<init>	()V
     //   143: astore 5
     //   145: aload 5
-    //   147: ldc 77
+    //   147: ldc 79
     //   149: aload_0
-    //   150: getfield 60	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_Int	I
-    //   153: invokevirtual 81	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   150: getfield 62	com/tencent/mobileqq/observer/SdCardChangeListener:a	I
+    //   153: invokevirtual 83	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   156: aload 5
-    //   158: ldc 83
+    //   158: ldc 85
     //   160: aload_0
-    //   161: getfield 13	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   164: invokevirtual 87	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   161: getfield 15	com/tencent/mobileqq/observer/SdCardChangeListener:c	Ljava/lang/String;
+    //   164: invokevirtual 89	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   167: aload 4
     //   169: aload 5
-    //   171: invokevirtual 91	android/os/Message:setData	(Landroid/os/Bundle;)V
+    //   171: invokevirtual 93	android/os/Message:setData	(Landroid/os/Bundle;)V
     //   174: aload_0
-    //   175: getfield 93	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   175: getfield 95	com/tencent/mobileqq/observer/SdCardChangeListener:b	Landroid/os/Handler;
     //   178: aload 4
-    //   180: invokevirtual 99	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   180: invokevirtual 101	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   183: pop
     //   184: aload_0
-    //   185: getfield 60	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_Int	I
+    //   185: getfield 62	com/tencent/mobileqq/observer/SdCardChangeListener:a	I
     //   188: istore_1
     //   189: aload_0
     //   190: monitorexit
@@ -120,11 +120,11 @@ public class SdCardChangeListener
     //   196: if_icmpne +11 -> 207
     //   199: aload_0
     //   200: iload_1
-    //   201: putfield 60	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_Int	I
+    //   201: putfield 62	com/tencent/mobileqq/observer/SdCardChangeListener:a	I
     //   204: goto +8 -> 212
     //   207: aload_0
     //   208: iconst_m1
-    //   209: putfield 60	com/tencent/mobileqq/observer/SdCardChangeListener:jdField_a_of_type_Int	I
+    //   209: putfield 62	com/tencent/mobileqq/observer/SdCardChangeListener:a	I
     //   212: aload 4
     //   214: athrow
     //   215: astore 4
@@ -168,35 +168,35 @@ public class SdCardChangeListener
       if (QLog.isColorLevel()) {
         QLog.d("SdCardListener", 2, "SDCARD ACTION_MEDIA_UNMOUNTED");
       }
-      this.jdField_a_of_type_Int = -2;
+      this.a = -2;
     }
     else if (paramContext.equals("android.intent.action.MEDIA_MOUNTED"))
     {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
       if (QLog.isColorLevel()) {
         QLog.d("SdCardListener", 2, "SDCARD ACTION_MEDIA_MOUNTED");
       }
     }
     else if (paramContext.equals("android.intent.action.MEDIA_REMOVED"))
     {
-      this.jdField_a_of_type_Int = -2;
+      this.a = -2;
       if (QLog.isColorLevel()) {
         QLog.d("SdCardListener", 2, "SDCARD ACTION_MEDIA_REMOVED");
       }
     }
     else if (paramContext.equals("android.intent.action.MEDIA_EJECT"))
     {
-      this.jdField_a_of_type_Int = -2;
+      this.a = -2;
       if (QLog.isColorLevel()) {
         QLog.d("SdCardListener", 2, "SDCARD ACTION_MEDIA_EJECT");
       }
     }
-    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+    this.a = a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.observer.SdCardChangeListener
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ class NowLiveFragment$1
   {
     if (paramInt != 0)
     {
-      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707673), 1).a();
-      this.a.e();
+      QQToast.makeText(this.a.ag, 1, HardCodeUtil.a(2131905487), 1).show();
+      this.a.h();
     }
     if (QLog.isColorLevel())
     {
@@ -33,7 +33,7 @@ class NowLiveFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.1
  * JD-Core Version:    0.7.0.1
  */

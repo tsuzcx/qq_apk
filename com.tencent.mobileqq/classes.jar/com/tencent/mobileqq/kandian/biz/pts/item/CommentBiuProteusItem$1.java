@@ -11,7 +11,7 @@ class CommentBiuProteusItem$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.a.startAnimation(this.b);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class CommentBiuProteusItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.CommentBiuProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

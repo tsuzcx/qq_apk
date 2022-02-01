@@ -15,15 +15,15 @@ import java.util.List;
 public class GetShareGroupInfoRequest
   extends NetworkRequest<GetShareGroupInfoResponse>
 {
-  private final String a;
-  public List<String> a;
+  public List<String> e;
+  private final String f = StoryApi.a("StorySvc.get_share_group_info");
   
-  public GetShareGroupInfoRequest()
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.get_share_group_info");
+    return this.f;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
     try
@@ -38,15 +38,10 @@ public class GetShareGroupInfoRequest
     return null;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -57,7 +52,7 @@ public class GetShareGroupInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetShareGroupInfoRequest
  * JD-Core Version:    0.7.0.1
  */

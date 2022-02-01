@@ -17,8 +17,8 @@ import java.util.List;
 public class RangeSlider
   extends BaseSlider<RangeSlider, RangeSlider.OnChangeListener, RangeSlider.OnSliderTouchListener>
 {
-  private float a;
-  private int b;
+  private float b;
+  private int c;
   
   public RangeSlider(@NonNull Context paramContext)
   {
@@ -27,19 +27,19 @@ public class RangeSlider
   
   public RangeSlider(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.H);
+    this(paramContext, paramAttributeSet, R.attr.P);
   }
   
   public RangeSlider(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.am, paramInt, jdField_a_of_type_Int, new int[0]);
-    if (paramContext.hasValue(R.styleable.dQ))
+    paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.fN, paramInt, a, new int[0]);
+    if (paramContext.hasValue(R.styleable.fP))
     {
-      paramInt = paramContext.getResourceId(R.styleable.dQ, 0);
+      paramInt = paramContext.getResourceId(R.styleable.fP, 0);
       setValues(a(paramContext.getResources().obtainTypedArray(paramInt)));
     }
-    this.jdField_a_of_type_Float = paramContext.getDimension(R.styleable.dP, 0.0F);
+    this.b = paramContext.getDimension(R.styleable.fO, 0.0F);
     paramContext.recycle();
   }
   
@@ -55,47 +55,47 @@ public class RangeSlider
     return localArrayList;
   }
   
-  @NonNull
-  public List<Float> a()
+  public float getMinSeparation()
   {
-    return super.a();
+    return this.b;
   }
   
-  public float c()
+  @NonNull
+  public List<Float> getValues()
   {
-    return this.jdField_a_of_type_Float;
+    return super.getValues();
   }
   
   protected void onRestoreInstanceState(@Nullable Parcelable paramParcelable)
   {
     paramParcelable = (RangeSlider.RangeSliderState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.jdField_a_of_type_Float = RangeSlider.RangeSliderState.a(paramParcelable);
     this.b = RangeSlider.RangeSliderState.a(paramParcelable);
-    b(this.b);
+    this.c = RangeSlider.RangeSliderState.b(paramParcelable);
+    setSeparationUnit(this.c);
   }
   
   @NonNull
   public Parcelable onSaveInstanceState()
   {
     RangeSlider.RangeSliderState localRangeSliderState = new RangeSlider.RangeSliderState(super.onSaveInstanceState());
-    RangeSlider.RangeSliderState.a(localRangeSliderState, this.jdField_a_of_type_Float);
     RangeSlider.RangeSliderState.a(localRangeSliderState, this.b);
+    RangeSlider.RangeSliderState.a(localRangeSliderState, this.c);
     return localRangeSliderState;
   }
   
   public void setMinSeparation(@Dimension float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = 0;
-    b(this.b);
+    this.b = paramFloat;
+    this.c = 0;
+    setSeparationUnit(this.c);
   }
   
   public void setMinSeparationValue(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = 1;
-    b(this.b);
+    this.b = paramFloat;
+    this.c = 1;
+    setSeparationUnit(this.c);
   }
   
   public void setValues(@NonNull List<Float> paramList)
@@ -110,7 +110,7 @@ public class RangeSlider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.slider.RangeSlider
  * JD-Core Version:    0.7.0.1
  */

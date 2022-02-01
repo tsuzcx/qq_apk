@@ -18,15 +18,10 @@ import org.jetbrains.annotations.Nullable;
 public final class AEEditorCheckGroupView
   extends LinearLayout
 {
-  public static final AEEditorCheckGroupView.Companion a;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long;
-  private AEEditorCheckGroupView.OnCheckedChangeListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView$OnCheckedChangeListener;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView$Companion = new AEEditorCheckGroupView.Companion(null);
-  }
+  public static final AEEditorCheckGroupView.Companion a = new AEEditorCheckGroupView.Companion(null);
+  private int b = -1;
+  private AEEditorCheckGroupView.OnCheckedChangeListener c;
+  private long d;
   
   public AEEditorCheckGroupView(@Nullable Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -44,10 +39,10 @@ public final class AEEditorCheckGroupView
   
   private final void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (paramInt != this.jdField_a_of_type_Int)
+    if (paramInt != this.b)
     {
       Object localObject1 = getChildAt(paramInt);
-      Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView$OnCheckedChangeListener;
+      Object localObject2 = this.c;
       if (localObject2 != null)
       {
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "vCurrChecked");
@@ -98,7 +93,7 @@ public final class AEEditorCheckGroupView
             }
           }
           int i = getChildCount();
-          int j = this.jdField_a_of_type_Int;
+          int j = this.b;
           if ((j >= 0) && (i > j))
           {
             localObject1 = getChildAt(j);
@@ -148,15 +143,10 @@ public final class AEEditorCheckGroupView
               }
             }
           }
-          this.jdField_a_of_type_Int = paramInt;
+          this.b = paramInt;
         }
       }
     }
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   public final void a(int paramInt)
@@ -179,15 +169,20 @@ public final class AEEditorCheckGroupView
     }
   }
   
+  public final int getCheckIndex()
+  {
+    return this.b;
+  }
+  
   public final void setOnCheckedChangeListener(@NotNull AEEditorCheckGroupView.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
     Intrinsics.checkParameterIsNotNull(paramOnCheckedChangeListener, "listener");
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView$OnCheckedChangeListener = paramOnCheckedChangeListener;
+    this.c = paramOnCheckedChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.widgets.AEEditorCheckGroupView
  * JD-Core Version:    0.7.0.1
  */

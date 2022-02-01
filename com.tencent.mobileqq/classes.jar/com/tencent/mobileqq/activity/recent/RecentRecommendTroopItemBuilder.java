@@ -28,8 +28,8 @@ import java.util.List;
 public class RecentRecommendTroopItemBuilder
   extends RecentItemBaseBuilder
 {
-  private int jdField_a_of_type_Int = 2131562734;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private List<String> a;
+  private int b = 2131629171;
   
   public int a()
   {
@@ -41,23 +41,23 @@ public class RecentRecommendTroopItemBuilder
     if (paramView == null)
     {
       paramViewGroup = new RecentRecommendTroopItemBuilder.RecentRecommendTroopItemBuilderHolder();
-      paramView = a(paramContext, this.jdField_a_of_type_Int, paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376260));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376249));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376258));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131376248));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131369534));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131379955));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetFolderTextView = ((FolderTextView)paramView.findViewById(2131379611));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363961));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout = ((TroopActiveLayout)paramView.findViewById(2131363409));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramView.findViewById(2131363416));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetThemeImageView.setSupportMaskView(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramOnClickListener);
+      paramView = a(paramContext, this.b, paramViewGroup);
+      paramViewGroup.a = ((RelativeLayout)paramView.findViewById(2131444468));
+      paramViewGroup.b = ((LinearLayout)paramView.findViewById(2131444457));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131444466));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131444456));
+      paramViewGroup.e = ((ThemeImageView)paramView.findViewById(2131436633));
+      paramViewGroup.f = ((SingleLineTextView)paramView.findViewById(2131448843));
+      paramViewGroup.g = ((FolderTextView)paramView.findViewById(2131448375));
+      paramViewGroup.h = ((Button)paramView.findViewById(2131429917));
+      paramViewGroup.i = ((TroopActiveLayout)paramView.findViewById(2131429299));
+      paramViewGroup.j = ((TroopLabelLayout)paramView.findViewById(2131429306));
+      paramViewGroup.e.setSupportMaskView(true);
+      paramViewGroup.h.setOnClickListener(paramOnClickListener);
       paramViewGroup.b.setOnClickListener(paramOnClickListener);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(paramViewGroup);
+      paramViewGroup.d.setOnClickListener(paramOnClickListener);
+      paramViewGroup.h.setTag(paramViewGroup);
+      paramViewGroup.b.setTag(paramViewGroup);
       paramView.setTag(paramViewGroup);
     }
     else
@@ -67,9 +67,9 @@ public class RecentRecommendTroopItemBuilder
     paramOnLongClickListener = (RecentItemRecommendTroopData)paramObject;
     paramViewGroup.a(paramOnLongClickListener, paramRecentFaceDecoder);
     a(paramContext, paramView, paramInt, paramObject, paramViewGroup, paramOnClickListener);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(-1, Integer.valueOf(paramInt));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(-1, Integer.valueOf(paramInt));
     paramViewGroup.b.setTag(-1, Integer.valueOf(paramInt));
+    paramViewGroup.h.setTag(-1, Integer.valueOf(paramInt));
+    paramViewGroup.d.setTag(-1, Integer.valueOf(paramInt));
     paramRecentFaceDecoder = null;
     paramObject = paramRecentFaceDecoder;
     if (paramOnLongClickListener.mUser != null)
@@ -90,10 +90,10 @@ public class RecentRecommendTroopItemBuilder
       paramObject = paramObject.recomAlgol;
     }
     ReportController.b(null, "dc00899", "Grp_recom", "", "msg_tab", "exp_grp", 0, 0, paramRecentFaceDecoder, paramObject, "", "");
-    if (MayknowRecommendManager.e)
+    if (MayknowRecommendManager.l)
     {
       ReportController.b(null, "dc00899", "Grp_recom", "", "msg_tab", "exp", 0, 0, "", "", "", "");
-      MayknowRecommendManager.e = false;
+      MayknowRecommendManager.l = false;
     }
     return paramView;
   }
@@ -104,23 +104,23 @@ public class RecentRecommendTroopItemBuilder
     {
       int i = paramRecentBaseData.mMenuFlag;
       paramRecentBaseData = paramContext.getResources();
-      paramContext = this.jdField_a_of_type_JavaUtilList;
+      paramContext = this.a;
       if (paramContext == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.a = new ArrayList();
       } else {
         paramContext.clear();
       }
       if ((i & 0xF) == 1) {
-        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
+        this.a.add(paramRecentBaseData.getString(c[0]));
       }
-      return this.jdField_a_of_type_JavaUtilList;
+      return this.a;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentRecommendTroopItemBuilder
  * JD-Core Version:    0.7.0.1
  */

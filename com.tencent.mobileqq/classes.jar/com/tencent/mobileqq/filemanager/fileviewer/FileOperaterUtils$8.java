@@ -23,16 +23,16 @@ final class FileOperaterUtils$8
     try
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (localTroopFileStatusInfo.e != null) {
-        if (NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity()) == 0)
+      TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(localQQAppInterface, this.a);
+      if (localTroopFileStatusInfo.r != null) {
+        if (NetworkUtil.getSystemNetwork(this.b.getActivity()) == 0)
         {
-          TroopFileError.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity().getString(2131697616));
+          TroopFileError.a(this.b.getActivity(), this.b.getActivity().getString(2131895389));
         }
         else
         {
-          TroopFileError.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity().getString(2131692690), 0);
-          TroopFileTransferManager.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(localTroopFileStatusInfo.e, localTroopFileStatusInfo.g, localTroopFileStatusInfo.c, localTroopFileStatusInfo.h);
+          TroopFileError.a(this.b.getActivity(), this.b.getActivity().getString(2131889761), 0);
+          TroopFileTransferManager.a(localQQAppInterface, this.a.TroopUin).b(localTroopFileStatusInfo.r, localTroopFileStatusInfo.t, localTroopFileStatusInfo.i, localTroopFileStatusInfo.u);
         }
       }
     }
@@ -46,7 +46,7 @@ final class FileOperaterUtils$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.8
  * JD-Core Version:    0.7.0.1
  */

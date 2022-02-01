@@ -19,9 +19,9 @@ class QFileDebugSettingFragment$9
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileDatalineConfigBean.a(paramBoolean);
-    QFileDebugSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxActivityQFileDebugSettingFragment).setDatalineConfig();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxActivityQFileDebugSettingFragment.getBaseActivity().app;
+    this.a.a(paramBoolean);
+    QFileDebugSettingFragment.a(this.b).setDatalineConfig();
+    QQAppInterface localQQAppInterface = this.b.getBaseActivity().app;
     Object localObject = BaseApplicationImpl.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("file_config_");
@@ -34,13 +34,13 @@ class QFileDebugSettingFragment$9
       localStringBuilder.append((String)localObject);
       QLog.i("IphoneTitleBarFragment", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessQfileIQFileDatalineConfigBean.a(localQQAppInterface, paramBoolean);
+    this.a.a(localQQAppInterface, paramBoolean);
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment.9
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.comic;
 
 class VipComicJumpActivity$ComicInfo
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d = "";
-  String e;
+  String a;
+  String b;
+  String c;
+  int d;
+  int e;
+  String f = "";
+  int g;
+  String h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicJumpActivity.ComicInfo
  * JD-Core Version:    0.7.0.1
  */

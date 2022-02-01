@@ -18,8 +18,8 @@ class PublicAccountChatPie$35
   {
     try
     {
-      EntityManager localEntityManager = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.find(PublicAccountMenuEntity.class, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      EntityManager localEntityManager = this.this$0.d.getEntityManagerFactory().createEntityManager();
+      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.find(PublicAccountMenuEntity.class, this.this$0.ah.b);
       if (localPublicAccountMenuEntity != null) {
         localEntityManager.remove(localPublicAccountMenuEntity);
       }
@@ -28,15 +28,15 @@ class PublicAccountChatPie$35
     catch (Exception localException)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.d(this.this$0.b, 4, localException.getMessage());
+        QLog.d(this.this$0.c, 4, localException.getMessage());
       }
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.a.edit().putBoolean(this.b, true).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.35
  * JD-Core Version:    0.7.0.1
  */

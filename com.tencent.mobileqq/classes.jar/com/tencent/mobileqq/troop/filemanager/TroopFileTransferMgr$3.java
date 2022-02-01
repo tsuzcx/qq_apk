@@ -13,12 +13,12 @@ class TroopFileTransferMgr$3
   
   public void a(String paramString1, String paramString2)
   {
-    TroopFileTransferMgr.c(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferMgr).getFileManagerEngine().a().a(paramString2, new TroopFileTransferMgr.3.1(this));
+    TroopFileTransferMgr.f(this.b).getFileManagerEngine().f().a(paramString2, new TroopFileTransferMgr.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr.3
  * JD-Core Version:    0.7.0.1
  */

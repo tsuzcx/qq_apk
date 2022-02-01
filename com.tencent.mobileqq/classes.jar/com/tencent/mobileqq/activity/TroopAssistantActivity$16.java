@@ -10,12 +10,12 @@ class TroopAssistantActivity$16
   
   public void onDismiss()
   {
-    AccessibilityUtil.b(this.a.findViewById(2131378893), true);
+    AccessibilityUtil.b(this.a.findViewById(2131447595), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.16
  * JD-Core Version:    0.7.0.1
  */

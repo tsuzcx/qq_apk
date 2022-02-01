@@ -5,16 +5,16 @@ import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
 public class RecentVideoPlayingListSync
   extends BaseVidListPlayingListSync
 {
-  protected String b;
+  protected String d;
   
-  protected VidToVideoInfoPuller a()
+  protected VidToVideoInfoPuller b()
   {
-    return new VidToVideoInfoPuller(this.a, this.b, 3);
+    return new VidToVideoInfoPuller(this.c, this.d, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.RecentVideoPlayingListSync
  * JD-Core Version:    0.7.0.1
  */

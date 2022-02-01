@@ -12,38 +12,38 @@ class ApolloPanel$12
   
   public void run()
   {
-    if (ApolloPanel.a(this.this$0) == null) {
+    if (ApolloPanel.v(this.this$0) == null) {
       return;
     }
-    ApolloPanel.b(this.this$0).clear();
-    ApolloPanel.b(this.this$0).addAll(this.a);
+    ApolloPanel.r(this.this$0).clear();
+    ApolloPanel.r(this.this$0).addAll(this.a);
     int i = ApolloPanel.a;
-    ApolloPanel.a(this.this$0).notifyDataSetChanged();
-    if ((ApolloPanel.a != i) && (ApolloPanel.b(this.this$0))) {
+    ApolloPanel.v(this.this$0).notifyDataSetChanged();
+    if ((ApolloPanel.a != i) && (ApolloPanel.w(this.this$0))) {
       ApolloPanel.a = i;
     }
-    ApolloPanel.c(this.this$0).clear();
+    ApolloPanel.x(this.this$0).clear();
     i = 0;
     int k;
-    for (int j = 0; i < ApolloPanel.b(this.this$0).size(); j = k)
+    for (int j = 0; i < ApolloPanel.r(this.this$0).size(); j = k)
     {
       k = j;
-      if (ApolloPanel.c(this.this$0) != null)
+      if (ApolloPanel.x(this.this$0) != null)
       {
-        k = j + ((ApolloViewBinder)ApolloPanel.b(this.this$0).get(i)).a();
-        ApolloPanel.c(this.this$0).add(Integer.valueOf(k - 1));
+        k = j + ((ApolloViewBinder)ApolloPanel.r(this.this$0).get(i)).c();
+        ApolloPanel.x(this.this$0).add(Integer.valueOf(k - 1));
       }
       i += 1;
     }
-    ApolloPanel.a(this.this$0).setCurrentItem(ApolloPanel.a, false);
-    if (ApolloPanel.a(this.this$0) != null) {
-      ApolloPanel.a(this.this$0).postDelayed(new ApolloPanel.12.1(this), 500L);
+    ApolloPanel.y(this.this$0).setCurrentItem(ApolloPanel.a, false);
+    if (ApolloPanel.u(this.this$0) != null) {
+      ApolloPanel.u(this.this$0).postDelayed(new ApolloPanel.12.1(this), 500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.12
  * JD-Core Version:    0.7.0.1
  */

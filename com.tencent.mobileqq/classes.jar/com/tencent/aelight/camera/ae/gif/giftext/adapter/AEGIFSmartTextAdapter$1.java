@@ -18,27 +18,27 @@ class AEGIFSmartTextAdapter$1
   
   public void onClick(View paramView)
   {
-    if (AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter) != this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter$QIMGIFSmartTextViewHolder.getLayoutPosition()) {
-      AEBaseDataReporter.a().k(this.jdField_a_of_type_JavaLangString);
+    if (AEGIFSmartTextAdapter.a(this.c) != this.a.getLayoutPosition()) {
+      AEBaseDataReporter.a().m(this.b);
     }
-    if ((AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter) == -1) && (TextUtils.isEmpty(AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter).a())))
+    if ((AEGIFSmartTextAdapter.a(this.c) == -1) && (TextUtils.isEmpty(AEGIFSmartTextAdapter.b(this.c).g())))
     {
-      AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter).a(this.jdField_a_of_type_JavaLangString, ((AEGIFTextColorConfig.SmartTextColor)AEGIFTextColorConfig.a.get(0)).jdField_a_of_type_JavaLangString, ((AEGIFTextColorConfig.SmartTextColor)AEGIFTextColorConfig.a.get(0)).b);
-      AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter).a(true, false);
+      AEGIFSmartTextAdapter.b(this.c).a(this.b, ((AEGIFTextColorConfig.SmartTextColor)AEGIFTextColorConfig.b.get(0)).a, ((AEGIFTextColorConfig.SmartTextColor)AEGIFTextColorConfig.b.get(0)).b);
+      AEGIFSmartTextAdapter.b(this.c).a(true, false);
     }
     else
     {
-      AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter).a(this.jdField_a_of_type_JavaLangString);
+      AEGIFSmartTextAdapter.b(this.c).a(this.b);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter.a();
-    AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter, this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter$QIMGIFSmartTextViewHolder.getLayoutPosition());
-    ((AEGIFSmartTextData)AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter).get(AEGIFSmartTextAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter) - 1)).a(true);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFSmartTextAdapter$QIMGIFSmartTextViewHolder.a(true);
+    this.c.a();
+    AEGIFSmartTextAdapter.a(this.c, this.a.getLayoutPosition());
+    ((AEGIFSmartTextData)AEGIFSmartTextAdapter.c(this.c).get(AEGIFSmartTextAdapter.a(this.c) - 1)).a(true);
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFSmartTextAdapter.1
  * JD-Core Version:    0.7.0.1
  */

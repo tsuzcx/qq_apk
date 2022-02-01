@@ -10,12 +10,12 @@ import org.jetbrains.annotations.Nullable;
 final class VideoCapturePresenter$PreviewCaptureCallback
   implements CaptureTask.OnCaptureCallback
 {
-  private final int jdField_a_of_type_Int;
+  private final int b;
   
   public VideoCapturePresenter$PreviewCaptureCallback(int paramInt)
   {
     int i;
-    this.jdField_a_of_type_Int = i;
+    this.b = i;
   }
   
   public void a() {}
@@ -23,15 +23,15 @@ final class VideoCapturePresenter$PreviewCaptureCallback
   public void a(@Nullable Bitmap paramBitmap, @NotNull CaptureTask paramCaptureTask)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "captureTask");
-    paramBitmap = VideoCapturePresenter.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCapturePresenter);
+    paramBitmap = VideoCapturePresenter.a(this.a);
     if (paramBitmap != null) {
-      paramBitmap.a(this.jdField_a_of_type_Int, paramCaptureTask);
+      paramBitmap.a(this.b, paramCaptureTask);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCapturePresenter.PreviewCaptureCallback
  * JD-Core Version:    0.7.0.1
  */

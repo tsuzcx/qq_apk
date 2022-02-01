@@ -11,7 +11,7 @@ final class RIJImageOptMonitor$1
   public void run()
   {
     Object localObject = this.a;
-    if ((localObject != null) && (((ImageRequest)localObject).jdField_a_of_type_Long > 0L) && ((this.a.h == 0L) || ((!this.a.jdField_a_of_type_Boolean) && (this.a.e != 0))))
+    if ((localObject != null) && (((ImageRequest)localObject).h > 0L) && ((this.a.o == 0L) || ((!this.a.d) && (this.a.q != 0))))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("image load too slow: ");
@@ -24,7 +24,7 @@ final class RIJImageOptMonitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.RIJImageOptMonitor.1
  * JD-Core Version:    0.7.0.1
  */

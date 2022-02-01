@@ -37,11 +37,6 @@ public class EquipLockImpl
     return EquipmentLockImpl.a().a((AppInterface)paramAppRuntime, paramString, paramWtloginObserver);
   }
   
-  public int a(AppRuntime paramAppRuntime, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
-  {
-    return EquipmentLockImpl.a().a(paramAppRuntime, paramVerifyDevLockObserver);
-  }
-  
   public int a(AppRuntime paramAppRuntime, VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver, byte[] paramArrayOfByte)
   {
     return EquipmentLockImpl.a().a(paramAppRuntime, paramVerifyDevLockObserver, paramArrayOfByte);
@@ -89,7 +84,7 @@ public class EquipLockImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.EquipLockImpl
  * JD-Core Version:    0.7.0.1
  */

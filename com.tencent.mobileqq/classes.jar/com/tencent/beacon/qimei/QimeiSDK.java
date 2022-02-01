@@ -58,9 +58,9 @@ public class QimeiSDK
       if (localQimei.isEmpty()) {
         return true;
       }
-      if ((!f.c()) && (!f.a()))
+      if ((!e.c()) && (!e.a()))
       {
-        if (!f.b())
+        if (!e.b())
         {
           if (com.tencent.beacon.a.c.b.h()) {
             return true;

@@ -10,14 +10,14 @@ class ColorBandVideoEntranceButton$12
   
   public void run()
   {
-    ColorBandVideoEntranceButton.a(this.this$0).setClickable(false);
-    this.this$0.d.setTarget(ColorBandVideoEntranceButton.a(this.this$0));
-    this.this$0.d.start();
+    ColorBandVideoEntranceButton.g(this.this$0).setClickable(false);
+    this.this$0.k.setTarget(ColorBandVideoEntranceButton.g(this.this$0));
+    this.this$0.k.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reddot.ColorBandVideoEntranceButton.12
  * JD-Core Version:    0.7.0.1
  */

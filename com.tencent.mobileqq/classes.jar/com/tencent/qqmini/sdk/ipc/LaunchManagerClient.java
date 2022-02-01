@@ -390,10 +390,10 @@ public class LaunchManagerClient
     }
   }
   
-  public void preloadPackage(MiniAppInfo paramMiniAppInfo)
+  public void preloadPackage(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
   {
     ILaunchManager localILaunchManager = getService();
-    paramMiniAppInfo = new LaunchManagerClient.3(this, localILaunchManager, paramMiniAppInfo);
+    paramMiniAppInfo = new LaunchManagerClient.3(this, localILaunchManager, paramMiniAppInfo, paramResultReceiver);
     if (localILaunchManager != null)
     {
       paramMiniAppInfo.run();
@@ -526,7 +526,7 @@ public class LaunchManagerClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.LaunchManagerClient
  * JD-Core Version:    0.7.0.1
  */

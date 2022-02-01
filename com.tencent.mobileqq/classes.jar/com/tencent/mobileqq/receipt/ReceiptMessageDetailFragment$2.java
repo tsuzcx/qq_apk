@@ -12,17 +12,17 @@ class ReceiptMessageDetailFragment$2
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment.isAdded())
+    if (this.b.isAdded())
     {
-      ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment;
-      localReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment.getBaseActivity(), ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment));
+      ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.b;
+      localReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment.getBaseActivity(), ReceiptMessageDetailFragment.b(this.b), this.a, ReceiptMessageDetailFragment.c(this.b));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.2
  * JD-Core Version:    0.7.0.1
  */

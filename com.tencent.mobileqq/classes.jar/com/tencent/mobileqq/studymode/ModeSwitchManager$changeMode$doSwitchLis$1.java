@@ -16,12 +16,12 @@ final class ModeSwitchManager$changeMode$doSwitchLis$1
     if ((paramDialogInterface instanceof QQCustomDialog)) {
       ((QQCustomDialog)paramDialogInterface).setOnDismissListener(null);
     }
-    ModeSwitchManager.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeSwitchManager, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
+    ModeSwitchManager.a(this.a, this.b, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeSwitchManager.changeMode.doSwitchLis.1
  * JD-Core Version:    0.7.0.1
  */

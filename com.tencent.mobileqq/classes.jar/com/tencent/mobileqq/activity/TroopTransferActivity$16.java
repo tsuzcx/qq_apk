@@ -18,60 +18,60 @@ class TroopTransferActivity$16
     while (i < this.a.size())
     {
       Object localObject = (TroopMemberCardInfo)this.a.get(i);
-      TroopTransferActivity.TroopMemberItem localTroopMemberItem = this.this$0.a.a(((TroopMemberCardInfo)localObject).memberuin);
+      TroopTransferActivity.TroopMemberItem localTroopMemberItem = this.this$0.h.a(((TroopMemberCardInfo)localObject).memberuin);
       if (localTroopMemberItem != null)
       {
-        if (!Utils.a(((TroopMemberCardInfo)localObject).name, localTroopMemberItem.m))
+        if (!Utils.a(((TroopMemberCardInfo)localObject).name, localTroopMemberItem.o))
         {
-          localTroopMemberItem.m = ((TroopMemberCardInfo)localObject).name;
-          if (!TextUtils.isEmpty(localTroopMemberItem.m))
+          localTroopMemberItem.o = ((TroopMemberCardInfo)localObject).name;
+          if (!TextUtils.isEmpty(localTroopMemberItem.o))
           {
-            localTroopMemberItem.n = ChnToSpell.a(localTroopMemberItem.m, 2);
-            localTroopMemberItem.o = ChnToSpell.a(localTroopMemberItem.m, 1);
+            localTroopMemberItem.p = ChnToSpell.b(localTroopMemberItem.o, 2);
+            localTroopMemberItem.q = ChnToSpell.b(localTroopMemberItem.o, 1);
           }
           else
           {
-            localTroopMemberItem.n = "";
-            localTroopMemberItem.o = "";
+            localTroopMemberItem.p = "";
+            localTroopMemberItem.q = "";
           }
         }
-        if (!Utils.a(((TroopMemberCardInfo)localObject).nick, localTroopMemberItem.g))
+        if (!Utils.a(((TroopMemberCardInfo)localObject).nick, localTroopMemberItem.i))
         {
-          localTroopMemberItem.g = ((TroopMemberCardInfo)localObject).nick;
-          if (!TextUtils.isEmpty(localTroopMemberItem.g))
+          localTroopMemberItem.i = ((TroopMemberCardInfo)localObject).nick;
+          if (!TextUtils.isEmpty(localTroopMemberItem.i))
           {
-            localTroopMemberItem.h = ChnToSpell.a(localTroopMemberItem.g, 2);
-            localTroopMemberItem.i = ChnToSpell.a(localTroopMemberItem.g, 1);
+            localTroopMemberItem.j = ChnToSpell.b(localTroopMemberItem.i, 2);
+            localTroopMemberItem.k = ChnToSpell.b(localTroopMemberItem.i, 1);
           }
           else
           {
-            localTroopMemberItem.h = "";
-            localTroopMemberItem.i = "";
+            localTroopMemberItem.j = "";
+            localTroopMemberItem.k = "";
           }
         }
-        if (!TextUtils.isEmpty(localTroopMemberItem.j)) {
-          localObject = localTroopMemberItem.j;
-        } else if (!TextUtils.isEmpty(localTroopMemberItem.m)) {
-          localObject = localTroopMemberItem.m;
-        } else if (!TextUtils.isEmpty(localTroopMemberItem.g)) {
-          localObject = localTroopMemberItem.g;
-        } else if (!TextUtils.isEmpty(localTroopMemberItem.a)) {
-          localObject = localTroopMemberItem.a;
+        if (!TextUtils.isEmpty(localTroopMemberItem.l)) {
+          localObject = localTroopMemberItem.l;
+        } else if (!TextUtils.isEmpty(localTroopMemberItem.o)) {
+          localObject = localTroopMemberItem.o;
+        } else if (!TextUtils.isEmpty(localTroopMemberItem.i)) {
+          localObject = localTroopMemberItem.i;
+        } else if (!TextUtils.isEmpty(localTroopMemberItem.c)) {
+          localObject = localTroopMemberItem.c;
         } else {
           localObject = "";
         }
-        if (!Utils.a(localObject, localTroopMemberItem.b))
+        if (!Utils.a(localObject, localTroopMemberItem.d))
         {
-          localTroopMemberItem.b = ((String)localObject);
-          if (!TextUtils.isEmpty(localTroopMemberItem.b))
+          localTroopMemberItem.d = ((String)localObject);
+          if (!TextUtils.isEmpty(localTroopMemberItem.d))
           {
-            localTroopMemberItem.c = ChnToSpell.a(localTroopMemberItem.b, 2);
-            localTroopMemberItem.d = ChnToSpell.a(localTroopMemberItem.b, 1);
+            localTroopMemberItem.e = ChnToSpell.b(localTroopMemberItem.d, 2);
+            localTroopMemberItem.f = ChnToSpell.b(localTroopMemberItem.d, 1);
           }
           else
           {
-            localTroopMemberItem.c = "";
-            localTroopMemberItem.d = "";
+            localTroopMemberItem.e = "";
+            localTroopMemberItem.f = "";
           }
           bool = true;
         }
@@ -83,7 +83,7 @@ class TroopTransferActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.16
  * JD-Core Version:    0.7.0.1
  */

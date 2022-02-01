@@ -22,16 +22,16 @@ import java.util.Iterator;
 class SendPhotoActivity$MyHandler
   extends Handler
 {
-  private final WeakReference<SendPhotoActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<SendPhotoActivity> b;
   
   public SendPhotoActivity$MyHandler(SendPhotoActivity paramSendPhotoActivity1, SendPhotoActivity paramSendPhotoActivity2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSendPhotoActivity2);
+    this.b = new WeakReference(paramSendPhotoActivity2);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    SendPhotoActivity localSendPhotoActivity = (SendPhotoActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    SendPhotoActivity localSendPhotoActivity = (SendPhotoActivity)this.b.get();
     if (localSendPhotoActivity != null)
     {
       int i = paramMessage.what;
@@ -51,26 +51,26 @@ class SendPhotoActivity$MyHandler
             return;
           }
           if (QLog.isColorLevel()) {
-            QLog.e(SendPhotoActivity.jdField_a_of_type_JavaLangString, 2, "idleHandler time out");
+            QLog.e(SendPhotoActivity.a, 2, "idleHandler time out");
           }
-          if (localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask == null)
+          if (localSendPhotoActivity.c == null)
           {
-            Looper.myQueue().removeIdleHandler(localSendPhotoActivity.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
-            localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(localSendPhotoActivity, null, localSendPhotoActivity.jdField_a_of_type_AndroidOsHandler);
-            if (localSendPhotoActivity.jdField_a_of_type_Long != 0L) {
-              localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - localSendPhotoActivity.jdField_a_of_type_Long);
+            Looper.myQueue().removeIdleHandler(localSendPhotoActivity.g);
+            localSendPhotoActivity.c = new SendPhotoTask(localSendPhotoActivity, null, localSendPhotoActivity.h);
+            if (localSendPhotoActivity.d != 0L) {
+              localSendPhotoActivity.c.o = (SystemClock.uptimeMillis() - localSendPhotoActivity.d);
             }
-            ThreadManager.post(localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
+            ThreadManager.post(localSendPhotoActivity.c, 8, null, false);
           }
         }
         else
         {
-          if (localSendPhotoActivity.jdField_a_of_type_AndroidOsHandler.hasMessages(2))
+          if (localSendPhotoActivity.h.hasMessages(2))
           {
-            Logger.b(SendPhotoActivity.jdField_a_of_type_JavaLangString, "handleMessage", "remove delayed Message:MSG_CANCLE_PROGRESS");
-            localSendPhotoActivity.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+            Logger.b(SendPhotoActivity.a, "handleMessage", "remove delayed Message:MSG_CANCLE_PROGRESS");
+            localSendPhotoActivity.h.removeMessages(2);
           }
-          if ((localSendPhotoActivity.jdField_a_of_type_AndroidAppProgressDialog != null) && (localSendPhotoActivity.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+          if ((localSendPhotoActivity.j != null) && (localSendPhotoActivity.j.isShowing())) {
             bool1 = true;
           } else {
             bool1 = false;
@@ -110,20 +110,20 @@ class SendPhotoActivity$MyHandler
               while (paramMessage.hasNext())
               {
                 localObject4 = (CompressInfo)paramMessage.next();
-                String str = SendPhotoActivity.jdField_a_of_type_JavaLangString;
+                String str = SendPhotoActivity.a;
                 StringBuilder localStringBuilder = new StringBuilder();
                 localStringBuilder.append("info:");
                 localStringBuilder.append(localObject4);
                 Logger.a(str, "handleMessage print CompressInfo", localStringBuilder.toString());
-                ((ArrayList)localObject3).add(((CompressInfo)localObject4).e);
+                ((ArrayList)localObject3).add(((CompressInfo)localObject4).l);
               }
               i = ((ArrayList)localObject1).size();
               long l1 = System.nanoTime();
-              long l2 = (l1 - localSendPhotoActivity.b) / 1000000L;
-              paramMessage = SendPhotoActivity.jdField_a_of_type_JavaLangString;
+              long l2 = (l1 - localSendPhotoActivity.e) / 1000000L;
+              paramMessage = SendPhotoActivity.a;
               localObject4 = new StringBuilder();
               ((StringBuilder)localObject4).append("compress startTime = ");
-              ((StringBuilder)localObject4).append(localSendPhotoActivity.b);
+              ((StringBuilder)localObject4).append(localSendPhotoActivity.e);
               ((StringBuilder)localObject4).append("ns,finishTime = ");
               ((StringBuilder)localObject4).append(l1);
               ((StringBuilder)localObject4).append("ns,duration = ");
@@ -135,8 +135,8 @@ class SendPhotoActivity$MyHandler
               Logger.a(paramMessage, "CompressLog", ((StringBuilder)localObject4).toString());
               StatisticConstants.a(l2, i, bool1);
               paramMessage = localSendPhotoActivity.app;
-              this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity.a(paramMessage, l1);
-              paramMessage = SendPhotoActivity.jdField_a_of_type_JavaLangString;
+              this.a.a(paramMessage, l1);
+              paramMessage = SendPhotoActivity.a;
               localObject4 = new StringBuilder();
               ((StringBuilder)localObject4).append("CompressFinish Time = ");
               ((StringBuilder)localObject4).append(l1);
@@ -171,14 +171,14 @@ class SendPhotoActivity$MyHandler
       }
       else
       {
-        localSendPhotoActivity.a(2131694878);
+        localSendPhotoActivity.a(2131892581);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SendPhotoActivity.MyHandler
  * JD-Core Version:    0.7.0.1
  */

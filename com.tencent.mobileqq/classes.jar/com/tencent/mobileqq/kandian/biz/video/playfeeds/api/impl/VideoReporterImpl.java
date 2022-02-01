@@ -34,7 +34,7 @@ public final class VideoReporterImpl
   
   public int getKandianModel4Report()
   {
-    return VideoReporter.a();
+    return VideoReporter.c();
   }
   
   public int getReportVideoType(int paramInt, @Nullable String paramString)
@@ -54,7 +54,7 @@ public final class VideoReporterImpl
   public String getVideoSessionId(@NotNull Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramObject, "key");
-    HashMap localHashMap = VideoReporter.a;
+    HashMap localHashMap = VideoReporter.c;
     Intrinsics.checkExpressionValueIsNotNull(localHashMap, "VideoReporter.sVideoSessionMap");
     return (String)((Map)localHashMap).get(paramObject);
   }
@@ -95,12 +95,12 @@ public final class VideoReporterImpl
   @Nullable
   public String videoReportBaseR5(@Nullable JSONObject paramJSONObject)
   {
-    return VideoReporter.a(paramJSONObject);
+    return VideoReporter.b(paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.api.impl.VideoReporterImpl
  * JD-Core Version:    0.7.0.1
  */

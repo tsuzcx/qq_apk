@@ -16,41 +16,23 @@ import java.util.regex.Pattern;
 public class Changeset
 {
   public static int a = 36;
-  static HeaderParser jdField_a_of_type_ComTencentMobileqqEasysync2HeaderParser;
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[^\n]*(?:\n|[^\n]$)");
-  public static boolean a;
-  private static Pattern b;
-  public String a;
-  public int b;
-  public String b;
+  public static boolean b = true;
+  static HeaderParser g;
+  private static final Pattern h = Pattern.compile("[^\n]*(?:\n|[^\n]$)");
+  private static Pattern i;
   public int c;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  static int a(String paramString)
-  {
-    return Integer.parseInt(paramString, Utils.jdField_a_of_type_Int);
-  }
+  public int d;
+  public String e;
+  public String f;
   
   public static AText a(AText paramAText)
   {
-    return new AText(paramAText.jdField_a_of_type_JavaLangString, paramAText.jdField_b_of_type_JavaLangString);
+    return new AText(paramAText.a, paramAText.b);
   }
   
   public static AText a(String paramString, AText paramAText, AttribPool paramAttribPool)
   {
-    return new AText(a(paramString, paramAText.jdField_a_of_type_JavaLangString), a(paramString, paramAText.jdField_b_of_type_JavaLangString, paramAttribPool));
-  }
-  
-  public static AText a(String paramString1, String paramString2)
-  {
-    if (Utils.a(paramString2)) {
-      paramString2 = b(paramString1);
-    }
-    return new AText(paramString1, paramString2);
+    return new AText(a(paramString, paramAText.a), a(paramString, paramAText.b, paramAttribPool));
   }
   
   public static AText a(String paramString, List<Pair<String, String>> paramList, AttribPool paramAttribPool)
@@ -66,67 +48,15 @@ public class Changeset
     if (paramAttribPool == null) {
       return local5;
     }
-    int i = paramAttribPool.a(paramPair, true);
-    if (i < 0) {
+    int j = paramAttribPool.a(paramPair, true);
+    if (j < 0) {
       return local5;
     }
     paramPair = new StringBuilder();
     paramPair.append("\\*");
-    paramPair.append(a(i));
+    paramPair.append(a(j));
     paramPair.append("(?!\\w)");
     return new Changeset.6(Pattern.compile(paramPair.toString()));
-  }
-  
-  public static Changeset a(String paramString)
-  {
-    Object localObject1 = new Changeset();
-    Object localObject2;
-    int i;
-    if (jdField_a_of_type_Boolean)
-    {
-      localObject2 = jdField_a_of_type_ComTencentMobileqqEasysync2HeaderParser;
-      if (localObject2 == null) {
-        jdField_a_of_type_ComTencentMobileqqEasysync2HeaderParser = new HeaderParser();
-      } else {
-        ((HeaderParser)localObject2).a();
-      }
-      jdField_a_of_type_ComTencentMobileqqEasysync2HeaderParser.a(paramString);
-      ((Changeset)localObject1).c = jdField_a_of_type_ComTencentMobileqqEasysync2HeaderParser.c;
-      ((Changeset)localObject1).jdField_b_of_type_Int = jdField_a_of_type_ComTencentMobileqqEasysync2HeaderParser.jdField_b_of_type_Int;
-      i = jdField_a_of_type_ComTencentMobileqqEasysync2HeaderParser.jdField_a_of_type_Int;
-    }
-    else
-    {
-      if (jdField_b_of_type_JavaUtilRegexPattern == null) {
-        jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("Z:([0-9a-z]+)([><])([0-9a-z]+)|");
-      }
-      localObject2 = jdField_b_of_type_JavaUtilRegexPattern.matcher(paramString);
-      if ((!((Matcher)localObject2).find()) || (((Matcher)localObject2).group().length() == 0)) {
-        break label236;
-      }
-      ((Changeset)localObject1).jdField_b_of_type_Int = a(((Matcher)localObject2).group(1));
-      if (">".equals(((Matcher)localObject2).group(2))) {
-        i = 1;
-      } else {
-        i = -1;
-      }
-      j = a(((Matcher)localObject2).group(3));
-      ((Changeset)localObject1).c = (((Changeset)localObject1).jdField_b_of_type_Int + i * j);
-      i = ((Matcher)localObject2).group().length();
-    }
-    int k = paramString.indexOf("$");
-    int j = k;
-    if (k < 0) {
-      j = paramString.length();
-    }
-    ((Changeset)localObject1).jdField_a_of_type_JavaLangString = paramString.substring(i, j);
-    ((Changeset)localObject1).jdField_b_of_type_JavaLangString = paramString.substring(j + 1);
-    return localObject1;
-    label236:
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("Not a exports: ");
-    ((StringBuilder)localObject1).append(paramString);
-    throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
   }
   
   public static CloneResult a(String paramString, AttribPool paramAttribPool)
@@ -138,7 +68,7 @@ public class Changeset
   public static Operation a(char paramChar)
   {
     Operation localOperation = new Operation();
-    localOperation.jdField_a_of_type_Char = paramChar;
+    localOperation.a = paramChar;
     return localOperation;
   }
   
@@ -170,7 +100,7 @@ public class Changeset
   
   static String a(int paramInt)
   {
-    return Integer.toString(paramInt, Utils.jdField_a_of_type_Int);
+    return Integer.toString(paramInt, Utils.a);
   }
   
   public static String a(int paramInt1, int paramInt2, String paramString1, String paramString2)
@@ -204,63 +134,63 @@ public class Changeset
   
   public static String a(String paramString)
   {
-    Object localObject1 = a(paramString);
-    int m = ((Changeset)localObject1).jdField_b_of_type_Int;
+    Object localObject1 = e(paramString);
     int n = ((Changeset)localObject1).c;
-    Object localObject2 = ((Changeset)localObject1).jdField_a_of_type_JavaLangString;
-    localObject1 = ((Changeset)localObject1).jdField_b_of_type_JavaLangString;
+    int i1 = ((Changeset)localObject1).d;
+    Object localObject2 = ((Changeset)localObject1).e;
+    localObject1 = ((Changeset)localObject1).f;
     SmartOpAssembler localSmartOpAssembler = new SmartOpAssembler();
-    localObject2 = a((String)localObject2);
-    int i = 0;
+    localObject2 = d((String)localObject2);
     int j = 0;
     int k = 0;
+    int m = 0;
     while (((Iterator)localObject2).hasNext())
     {
       Operation localOperation = (Operation)((Iterator)localObject2).next();
-      int i1 = localOperation.jdField_a_of_type_Char;
+      int i2 = localOperation.a;
       boolean bool;
-      if (i1 != 43)
+      if (i2 != 43)
       {
-        if (i1 != 45)
+        if (i2 != 45)
         {
-          if (i1 == 61)
+          if (i2 == 61)
           {
-            j += localOperation.jdField_a_of_type_Int;
-            i += localOperation.jdField_a_of_type_Int;
+            k += localOperation.b;
+            j += localOperation.b;
           }
         }
         else
         {
-          j += localOperation.jdField_a_of_type_Int;
-          if (j <= m) {
+          k += localOperation.b;
+          if (k <= n) {
             bool = true;
           } else {
             bool = false;
           }
-          a(bool, new Object[] { Integer.valueOf(j), " > ", Integer.valueOf(m), " in ", paramString });
+          a(bool, new Object[] { Integer.valueOf(k), " > ", Integer.valueOf(n), " in ", paramString });
         }
       }
       else
       {
-        i += localOperation.jdField_a_of_type_Int;
-        k += localOperation.jdField_a_of_type_Int;
-        if (i <= n) {
+        j += localOperation.b;
+        m += localOperation.b;
+        if (j <= i1) {
           bool = true;
         } else {
           bool = false;
         }
-        a(bool, new Object[] { Integer.valueOf(i), " > ", Integer.valueOf(n), " in ", paramString });
+        a(bool, new Object[] { Integer.valueOf(j), " > ", Integer.valueOf(i1), " in ", paramString });
       }
       localSmartOpAssembler.a(localOperation);
     }
-    for (localObject1 = ((String)localObject1).substring(0, k); ((String)localObject1).length() < k; localObject1 = ((StringBuilder)localObject2).toString())
+    for (localObject1 = ((String)localObject1).substring(0, m); ((String)localObject1).length() < m; localObject1 = ((StringBuilder)localObject2).toString())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("?");
     }
     localSmartOpAssembler.a();
-    a(a(m, i + (m - j), localSmartOpAssembler.toString(), (String)localObject1).equals(paramString), new Object[] { "Invalid changeset (checkRep failed)" });
+    a(a(n, j + (n - k), localSmartOpAssembler.toString(), (String)localObject1).equals(paramString), new Object[] { "Invalid changeset (checkRep failed)" });
     return paramString;
   }
   
@@ -274,13 +204,13 @@ public class Changeset
     Operation localOperation = new Operation();
     for (;;)
     {
-      if ((paramString2.jdField_a_of_type_Char == 0) && (!localIterator1.hasNext()) && (paramString1.jdField_a_of_type_Char == 0) && (!localIterator2.hasNext()))
+      if ((paramString2.a == 0) && (!localIterator1.hasNext()) && (paramString1.a == 0) && (!localIterator2.hasNext()))
       {
         localSmartOpAssembler.a();
         return localSmartOpAssembler.toString();
       }
       Object localObject1 = paramString2;
-      if (paramString2.jdField_a_of_type_Char == 0)
+      if (paramString2.a == 0)
       {
         localObject1 = paramString2;
         if (localIterator1.hasNext()) {
@@ -288,7 +218,7 @@ public class Changeset
         }
       }
       Object localObject2 = paramString1;
-      if (paramString1.jdField_a_of_type_Char == 0)
+      if (paramString1.a == 0)
       {
         localObject2 = paramString1;
         if (localIterator2.hasNext()) {
@@ -298,10 +228,10 @@ public class Changeset
       paramOpZipProcessor.a((Operation)localObject1, (Operation)localObject2, localOperation);
       paramString1 = (String)localObject2;
       paramString2 = (String)localObject1;
-      if (localOperation.jdField_a_of_type_Char != 0)
+      if (localOperation.a != 0)
       {
         localSmartOpAssembler.a(localOperation);
-        localOperation.jdField_a_of_type_Char = '\000';
+        localOperation.a = '\000';
         paramString1 = (String)localObject2;
         paramString2 = (String)localObject1;
       }
@@ -310,13 +240,13 @@ public class Changeset
   
   public static String a(String paramString, AttribPool paramAttribPool1, AttribPool paramAttribPool2)
   {
-    int j = paramString.indexOf('$');
-    int i = j;
-    if (j < 0) {
-      i = paramString.length();
+    int k = paramString.indexOf('$');
+    int j = k;
+    if (k < 0) {
+      j = paramString.length();
     }
-    String str = paramString.substring(0, i);
-    paramString = paramString.substring(i);
+    String str = paramString.substring(0, j);
+    paramString = paramString.substring(j);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Utils.a(str, "\\*([0-9a-z]+)", new Changeset.7(paramAttribPool1, paramAttribPool2)));
     localStringBuilder.append(paramString);
@@ -325,36 +255,36 @@ public class Changeset
   
   public static String a(String paramString1, String paramString2)
   {
-    Object localObject = a(paramString1);
+    Object localObject = e(paramString1);
     boolean bool;
-    if (paramString2.length() == ((Changeset)localObject).jdField_b_of_type_Int) {
+    if (paramString2.length() == ((Changeset)localObject).c) {
       bool = true;
     } else {
       bool = false;
     }
-    a(bool, new Object[] { "mismatched apply: ", Integer.valueOf(paramString2.length()), " / ", Integer.valueOf(((Changeset)localObject).jdField_b_of_type_Int) });
-    paramString1 = a(((Changeset)localObject).jdField_a_of_type_JavaLangString);
-    localObject = new StringIterator(((Changeset)localObject).jdField_b_of_type_JavaLangString);
+    a(bool, new Object[] { "mismatched apply: ", Integer.valueOf(paramString2.length()), " / ", Integer.valueOf(((Changeset)localObject).c) });
+    paramString1 = d(((Changeset)localObject).e);
+    localObject = new StringIterator(((Changeset)localObject).f);
     paramString2 = new StringIterator(paramString2);
     StringBuilder localStringBuilder = new StringBuilder();
     while (paramString1.hasNext())
     {
       Operation localOperation = (Operation)paramString1.next();
-      int i = localOperation.jdField_a_of_type_Char;
-      if (i != 43)
+      int j = localOperation.a;
+      if (j != 43)
       {
-        if (i != 45)
+        if (j != 45)
         {
-          if (i == 61) {
-            localStringBuilder.append(paramString2.a(localOperation.jdField_a_of_type_Int));
+          if (j == 61) {
+            localStringBuilder.append(paramString2.a(localOperation.b));
           }
         }
         else {
-          paramString2.a(localOperation.jdField_a_of_type_Int);
+          paramString2.c(localOperation.b);
         }
       }
       else {
-        localStringBuilder.append(((StringIterator)localObject).a(localOperation.jdField_a_of_type_Int));
+        localStringBuilder.append(((StringIterator)localObject).a(localOperation.b));
       }
     }
     localStringBuilder.append(paramString2.a(paramString2.a()));
@@ -363,7 +293,7 @@ public class Changeset
   
   static String a(String paramString1, String paramString2, AttribPool paramAttribPool)
   {
-    return a(paramString2, 0, a(paramString1).jdField_a_of_type_JavaLangString, 0, new Changeset.3(paramAttribPool));
+    return a(paramString2, 0, e(paramString1).e, 0, new Changeset.3(paramAttribPool));
   }
   
   static String a(String paramString1, String paramString2, boolean paramBoolean, AttribPool paramAttribPool)
@@ -379,19 +309,14 @@ public class Changeset
     Utils.a(paramString2, "\\*([0-9a-z]+)", new Changeset.2(paramAttribPool, localArrayList, paramBoolean));
     Collections.sort(localArrayList, new StringPairComparator());
     paramString1 = new StringBuilder();
-    int i = 0;
-    while (i < localArrayList.size())
+    int j = 0;
+    while (j < localArrayList.size())
     {
       paramString1.append('*');
-      paramString1.append(a(paramAttribPool.a((Pair)localArrayList.get(i))));
-      i += 1;
+      paramString1.append(a(paramAttribPool.a((Pair)localArrayList.get(j))));
+      j += 1;
     }
     return paramString1.toString();
-  }
-  
-  public static Iterator<Operation> a(String paramString)
-  {
-    return a(paramString, 0);
   }
   
   public static Iterator<Operation> a(String paramString, int paramInt)
@@ -399,178 +324,128 @@ public class Changeset
     return new OperationIterator(paramString.substring(paramInt));
   }
   
-  public static List<SpliceBean> a(String paramString)
-  {
-    Object localObject1 = a(paramString);
-    paramString = new ArrayList();
-    Iterator localIterator = a(((Changeset)localObject1).jdField_a_of_type_JavaLangString);
-    localObject1 = new StringIterator(((Changeset)localObject1).jdField_b_of_type_JavaLangString);
-    int i = 0;
-    int j = 0;
-    while (localIterator.hasNext())
-    {
-      Operation localOperation = (Operation)localIterator.next();
-      if (localOperation.jdField_a_of_type_Char == '=')
-      {
-        j += localOperation.jdField_a_of_type_Int;
-        i = 0;
-      }
-      else
-      {
-        int k = i;
-        if (i == 0)
-        {
-          paramString.add(new SpliceBean(j, j, ""));
-          k = 1;
-        }
-        Object localObject2;
-        if (localOperation.jdField_a_of_type_Char == '-')
-        {
-          j += localOperation.jdField_a_of_type_Int;
-          localObject2 = (SpliceBean)paramString.get(paramString.size() - 1);
-          ((SpliceBean)localObject2).jdField_b_of_type_Int += localOperation.jdField_a_of_type_Int;
-          i = k;
-        }
-        else
-        {
-          i = k;
-          if (localOperation.jdField_a_of_type_Char == '+')
-          {
-            localObject2 = new StringBuilder();
-            SpliceBean localSpliceBean = (SpliceBean)paramString.get(paramString.size() - 1);
-            ((StringBuilder)localObject2).append(localSpliceBean.jdField_a_of_type_JavaLangString);
-            ((StringBuilder)localObject2).append(((StringIterator)localObject1).a(localOperation.jdField_a_of_type_Int));
-            localSpliceBean.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-            i = k;
-          }
-        }
-      }
-    }
-    return paramString;
-  }
-  
   public static void a(Operation paramOperation)
   {
-    paramOperation.jdField_a_of_type_Char = '\000';
-    paramOperation.jdField_a_of_type_Int = 0;
-    paramOperation.jdField_b_of_type_Int = 0;
-    paramOperation.jdField_a_of_type_JavaLangString = "";
+    paramOperation.a = '\000';
+    paramOperation.b = 0;
+    paramOperation.c = 0;
+    paramOperation.d = "";
   }
   
   public static void a(Operation paramOperation1, Operation paramOperation2)
   {
-    paramOperation2.jdField_a_of_type_Char = paramOperation1.jdField_a_of_type_Char;
-    paramOperation2.jdField_a_of_type_Int = paramOperation1.jdField_a_of_type_Int;
-    paramOperation2.jdField_b_of_type_Int = paramOperation1.jdField_b_of_type_Int;
-    paramOperation2.jdField_a_of_type_JavaLangString = paramOperation1.jdField_a_of_type_JavaLangString;
+    paramOperation2.a = paramOperation1.a;
+    paramOperation2.b = paramOperation1.b;
+    paramOperation2.c = paramOperation1.c;
+    paramOperation2.d = paramOperation1.d;
   }
   
   static void a(Operation paramOperation1, Operation paramOperation2, Operation paramOperation3, @NonNull AttribPool paramAttribPool)
   {
-    if (paramOperation1.jdField_a_of_type_Char == '-')
+    if (paramOperation1.a == '-')
     {
       a(paramOperation1, paramOperation3);
-      paramOperation1.jdField_a_of_type_Char = '\000';
+      paramOperation1.a = '\000';
       return;
     }
-    if (paramOperation1.jdField_a_of_type_Char == 0)
+    if (paramOperation1.a == 0)
     {
       a(paramOperation2, paramOperation3);
-      paramOperation2.jdField_a_of_type_Char = '\000';
+      paramOperation2.a = '\000';
       return;
     }
-    int i = paramOperation2.jdField_a_of_type_Char;
-    if (i != 0)
+    int j = paramOperation2.a;
+    if (j != 0)
     {
-      if (i != 43)
+      if (j != 43)
       {
-        if (i != 45)
+        if (j != 45)
         {
-          if (i != 61) {
+          if (j != 61) {
             return;
           }
-          i = paramOperation2.jdField_a_of_type_Int;
-          int j = paramOperation1.jdField_a_of_type_Int;
+          j = paramOperation2.b;
+          int k = paramOperation1.b;
           boolean bool2 = true;
           boolean bool1 = true;
           String str1;
           String str2;
-          if (i <= j)
+          if (j <= k)
           {
-            paramOperation3.jdField_a_of_type_Char = paramOperation1.jdField_a_of_type_Char;
-            paramOperation3.jdField_a_of_type_Int = paramOperation2.jdField_a_of_type_Int;
-            paramOperation3.jdField_b_of_type_Int = paramOperation2.jdField_b_of_type_Int;
-            str1 = paramOperation1.jdField_a_of_type_JavaLangString;
-            str2 = paramOperation2.jdField_a_of_type_JavaLangString;
-            if (paramOperation1.jdField_a_of_type_Char != '=') {
+            paramOperation3.a = paramOperation1.a;
+            paramOperation3.b = paramOperation2.b;
+            paramOperation3.c = paramOperation2.c;
+            str1 = paramOperation1.d;
+            str2 = paramOperation2.d;
+            if (paramOperation1.a != '=') {
               bool1 = false;
             }
-            paramOperation3.jdField_a_of_type_JavaLangString = a(str1, str2, bool1, paramAttribPool);
-            paramOperation2.jdField_a_of_type_Char = '\000';
-            paramOperation1.jdField_a_of_type_Int -= paramOperation2.jdField_a_of_type_Int;
-            paramOperation1.jdField_b_of_type_Int -= paramOperation2.jdField_b_of_type_Int;
-            if (paramOperation1.jdField_a_of_type_Int == 0) {
-              paramOperation1.jdField_a_of_type_Char = '\000';
+            paramOperation3.d = a(str1, str2, bool1, paramAttribPool);
+            paramOperation2.a = '\000';
+            paramOperation1.b -= paramOperation2.b;
+            paramOperation1.c -= paramOperation2.c;
+            if (paramOperation1.b == 0) {
+              paramOperation1.a = '\000';
             }
           }
           else
           {
-            paramOperation3.jdField_a_of_type_Char = paramOperation1.jdField_a_of_type_Char;
-            paramOperation3.jdField_a_of_type_Int = paramOperation1.jdField_a_of_type_Int;
-            paramOperation3.jdField_b_of_type_Int = paramOperation1.jdField_b_of_type_Int;
-            str1 = paramOperation1.jdField_a_of_type_JavaLangString;
-            str2 = paramOperation2.jdField_a_of_type_JavaLangString;
-            if (paramOperation1.jdField_a_of_type_Char == '=') {
+            paramOperation3.a = paramOperation1.a;
+            paramOperation3.b = paramOperation1.b;
+            paramOperation3.c = paramOperation1.c;
+            str1 = paramOperation1.d;
+            str2 = paramOperation2.d;
+            if (paramOperation1.a == '=') {
               bool1 = bool2;
             } else {
               bool1 = false;
             }
-            paramOperation3.jdField_a_of_type_JavaLangString = a(str1, str2, bool1, paramAttribPool);
-            paramOperation1.jdField_a_of_type_Char = '\000';
-            paramOperation2.jdField_a_of_type_Int -= paramOperation1.jdField_a_of_type_Int;
-            paramOperation2.jdField_b_of_type_Int -= paramOperation1.jdField_b_of_type_Int;
+            paramOperation3.d = a(str1, str2, bool1, paramAttribPool);
+            paramOperation1.a = '\000';
+            paramOperation2.b -= paramOperation1.b;
+            paramOperation2.c -= paramOperation1.c;
           }
         }
-        else if (paramOperation2.jdField_a_of_type_Int <= paramOperation1.jdField_a_of_type_Int)
+        else if (paramOperation2.b <= paramOperation1.b)
         {
-          if (paramOperation1.jdField_a_of_type_Char == '=')
+          if (paramOperation1.a == '=')
           {
-            paramOperation3.jdField_a_of_type_Char = '-';
-            paramOperation3.jdField_a_of_type_Int = paramOperation2.jdField_a_of_type_Int;
-            paramOperation3.jdField_b_of_type_Int = paramOperation2.jdField_b_of_type_Int;
-            paramOperation3.jdField_a_of_type_JavaLangString = "";
+            paramOperation3.a = '-';
+            paramOperation3.b = paramOperation2.b;
+            paramOperation3.c = paramOperation2.c;
+            paramOperation3.d = "";
           }
-          paramOperation1.jdField_a_of_type_Int -= paramOperation2.jdField_a_of_type_Int;
-          paramOperation1.jdField_b_of_type_Int -= paramOperation2.jdField_b_of_type_Int;
-          paramOperation2.jdField_a_of_type_Char = '\000';
-          if (paramOperation1.jdField_a_of_type_Int == 0) {
-            paramOperation1.jdField_a_of_type_Char = '\000';
+          paramOperation1.b -= paramOperation2.b;
+          paramOperation1.c -= paramOperation2.c;
+          paramOperation2.a = '\000';
+          if (paramOperation1.b == 0) {
+            paramOperation1.a = '\000';
           }
         }
         else
         {
-          if (paramOperation1.jdField_a_of_type_Char == '=')
+          if (paramOperation1.a == '=')
           {
-            paramOperation3.jdField_a_of_type_Char = '-';
-            paramOperation3.jdField_a_of_type_Int = paramOperation1.jdField_a_of_type_Int;
-            paramOperation3.jdField_b_of_type_Int = paramOperation1.jdField_b_of_type_Int;
-            paramOperation3.jdField_a_of_type_JavaLangString = "";
+            paramOperation3.a = '-';
+            paramOperation3.b = paramOperation1.b;
+            paramOperation3.c = paramOperation1.c;
+            paramOperation3.d = "";
           }
-          paramOperation2.jdField_a_of_type_Int -= paramOperation1.jdField_a_of_type_Int;
-          paramOperation2.jdField_b_of_type_Int -= paramOperation1.jdField_b_of_type_Int;
-          paramOperation1.jdField_a_of_type_Char = '\000';
+          paramOperation2.b -= paramOperation1.b;
+          paramOperation2.c -= paramOperation1.c;
+          paramOperation1.a = '\000';
         }
       }
       else
       {
         a(paramOperation2, paramOperation3);
-        paramOperation2.jdField_a_of_type_Char = '\000';
+        paramOperation2.a = '\000';
       }
     }
     else
     {
       a(paramOperation1, paramOperation3);
-      paramOperation1.jdField_a_of_type_Char = '\000';
+      paramOperation1.a = '\000';
     }
   }
   
@@ -579,76 +454,78 @@ public class Changeset
     if (!paramBoolean)
     {
       StringBuilder localStringBuilder = new StringBuilder("Changeset: ");
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      int k = paramVarArgs.length;
+      int j = 0;
+      while (j < k)
       {
-        localStringBuilder.append(paramVarArgs[i]);
-        i += 1;
+        localStringBuilder.append(paramVarArgs[j]);
+        j += 1;
       }
       throw new RuntimeException(localStringBuilder.toString());
     }
   }
   
-  public static boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    return ("".equals(paramString.jdField_a_of_type_JavaLangString)) && (paramString.jdField_b_of_type_Int == paramString.c);
-  }
-  
   public static int[] a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    paramString = a(paramString).iterator();
-    int i = 0;
-    int j = paramInt2;
+    paramString = f(paramString).iterator();
+    int j = 0;
+    int k = paramInt2;
     paramInt2 = paramInt1;
     while (paramString.hasNext())
     {
       SpliceBean localSpliceBean = (SpliceBean)paramString.next();
-      paramInt1 = localSpliceBean.jdField_a_of_type_Int + i;
-      int n = localSpliceBean.jdField_b_of_type_Int + i;
-      int m = localSpliceBean.jdField_a_of_type_JavaLangString.length();
-      int k = m - (n - paramInt1);
-      if ((paramInt1 <= paramInt2) && (n >= j))
+      paramInt1 = localSpliceBean.a + j;
+      int i1 = localSpliceBean.b + j;
+      int n = localSpliceBean.c.length();
+      int m = n - (i1 - paramInt1);
+      if ((paramInt1 <= paramInt2) && (i1 >= k))
       {
         if (paramBoolean) {
           paramInt2 = paramInt1;
         } else {
-          paramInt2 = paramInt1 + m;
+          paramInt2 = paramInt1 + n;
         }
         paramInt1 = paramInt2;
       }
       else
       {
-        if (n <= paramInt2) {
-          paramInt2 += k;
+        if (i1 <= paramInt2) {
+          paramInt2 += m;
         }
         do
         {
-          paramInt1 = j + k;
+          paramInt1 = k + m;
           break;
-          if (paramInt1 >= j)
+          if (paramInt1 >= k)
           {
-            paramInt1 = j;
+            paramInt1 = k;
             break;
           }
-        } while ((paramInt1 >= paramInt2) && (n <= j));
-        if (n < j)
+        } while ((paramInt1 >= paramInt2) && (i1 <= k));
+        if (i1 < k)
         {
-          j += k;
-          paramInt2 = paramInt1 + m;
-          paramInt1 = j;
+          k += m;
+          paramInt2 = paramInt1 + n;
+          paramInt1 = k;
         }
       }
-      i += k;
-      j = paramInt1;
+      j += m;
+      k = paramInt1;
     }
-    return new int[] { paramInt2, j };
+    return new int[] { paramInt2, k };
   }
   
-  public static int b(String paramString)
+  static int b(String paramString)
   {
-    return a(paramString).c;
+    return Integer.parseInt(paramString, Utils.a);
+  }
+  
+  public static AText b(String paramString1, String paramString2)
+  {
+    if (Utils.a(paramString2)) {
+      paramString2 = g(paramString1);
+    }
+    return new AText(paramString1, paramString2);
   }
   
   public static String b(int paramInt)
@@ -656,38 +533,31 @@ public class Changeset
     return a(paramInt, paramInt, "", "");
   }
   
-  public static String b(String paramString)
-  {
-    SmartOpAssembler localSmartOpAssembler = new SmartOpAssembler();
-    localSmartOpAssembler.a('+', paramString);
-    return localSmartOpAssembler.toString();
-  }
-  
   public static String b(String paramString1, String paramString2, AttribPool paramAttribPool)
   {
-    paramString1 = a(paramString1);
-    paramString2 = a(paramString2);
-    int i = paramString1.jdField_b_of_type_Int;
+    paramString1 = e(paramString1);
+    paramString2 = e(paramString2);
+    int j = paramString1.c;
     boolean bool;
-    if (paramString1.c == paramString2.jdField_b_of_type_Int) {
+    if (paramString1.d == paramString2.c) {
       bool = true;
     } else {
       bool = false;
     }
     a(bool, new Object[] { "mismatched composition" });
-    int j = paramString2.c;
-    StringIterator localStringIterator1 = new StringIterator(paramString1.jdField_b_of_type_JavaLangString);
-    StringIterator localStringIterator2 = new StringIterator(paramString2.jdField_b_of_type_JavaLangString);
+    int k = paramString2.d;
+    StringIterator localStringIterator1 = new StringIterator(paramString1.f);
+    StringIterator localStringIterator2 = new StringIterator(paramString2.f);
     StringBuilder localStringBuilder = new StringBuilder();
-    return a(i, j, a(paramString1.jdField_a_of_type_JavaLangString, 0, paramString2.jdField_a_of_type_JavaLangString, 0, new Changeset.4(localStringIterator1, paramAttribPool, localStringBuilder, localStringIterator2)), localStringBuilder.toString());
+    return a(j, k, a(paramString1.e, 0, paramString2.e, 0, new Changeset.4(localStringIterator1, paramAttribPool, localStringBuilder, localStringIterator2)), localStringBuilder.toString());
   }
   
   public static String b(String paramString1, String paramString2, boolean paramBoolean, AttribPool paramAttribPool)
   {
-    Changeset localChangeset2 = a(paramString1);
-    Changeset localChangeset1 = a(paramString2);
+    Changeset localChangeset2 = e(paramString1);
+    Changeset localChangeset1 = e(paramString2);
     boolean bool;
-    if (localChangeset2.jdField_b_of_type_Int == localChangeset1.jdField_b_of_type_Int) {
+    if (localChangeset2.c == localChangeset1.c) {
       bool = true;
     } else {
       bool = false;
@@ -698,187 +568,192 @@ public class Changeset
     ((StringBuilder)localObject).append(" ");
     ((StringBuilder)localObject).append(paramString2);
     a(bool, new Object[] { ((StringBuilder)localObject).toString() });
-    localObject = new StringIterator(localChangeset2.jdField_b_of_type_JavaLangString);
-    StringIterator localStringIterator = new StringIterator(localChangeset1.jdField_b_of_type_JavaLangString);
-    int i = localChangeset2.c;
+    localObject = new StringIterator(localChangeset2.f);
+    StringIterator localStringIterator = new StringIterator(localChangeset1.f);
+    int j = localChangeset2.d;
     paramString1 = new int[1];
     paramString2 = new int[1];
     AttributeTester localAttributeTester = a(new Pair("insertorder", "first"), paramAttribPool);
-    paramAttribPool = a(localChangeset2.jdField_a_of_type_JavaLangString, 0, localChangeset1.jdField_a_of_type_JavaLangString, 0, new Changeset.11((StringIterator)localObject, localStringIterator, localAttributeTester, paramBoolean, paramAttribPool, paramString1, paramString2));
-    paramString2[0] += i - paramString1[0];
-    return a(i, paramString2[0], paramAttribPool, localChangeset1.jdField_b_of_type_JavaLangString);
+    paramAttribPool = a(localChangeset2.e, 0, localChangeset1.e, 0, new Changeset.11((StringIterator)localObject, localStringIterator, localAttributeTester, paramBoolean, paramAttribPool, paramString1, paramString2));
+    paramString2[0] += j - paramString1[0];
+    return a(j, paramString2[0], paramAttribPool, localChangeset1.f);
   }
   
   private static void b(Operation paramOperation1, Operation paramOperation2, Operation paramOperation3)
   {
     a(paramOperation2, paramOperation3);
-    if (paramOperation1.jdField_a_of_type_Char == 0)
+    if (paramOperation1.a == 0)
     {
-      paramOperation2.jdField_a_of_type_Char = '\000';
+      paramOperation2.a = '\000';
       return;
     }
-    if (paramOperation2.jdField_a_of_type_Int <= paramOperation1.jdField_a_of_type_Int)
+    if (paramOperation2.b <= paramOperation1.b)
     {
-      paramOperation1.jdField_a_of_type_Int -= paramOperation2.jdField_a_of_type_Int;
-      paramOperation1.jdField_b_of_type_Int -= paramOperation2.jdField_b_of_type_Int;
-      paramOperation2.jdField_a_of_type_Char = '\000';
-      if (paramOperation1.jdField_a_of_type_Int == 0) {
-        paramOperation1.jdField_a_of_type_Char = '\000';
+      paramOperation1.b -= paramOperation2.b;
+      paramOperation1.c -= paramOperation2.c;
+      paramOperation2.a = '\000';
+      if (paramOperation1.b == 0) {
+        paramOperation1.a = '\000';
       }
     }
     else
     {
-      paramOperation3.jdField_b_of_type_Int = paramOperation1.jdField_b_of_type_Int;
-      paramOperation3.jdField_a_of_type_Int = paramOperation1.jdField_a_of_type_Int;
-      paramOperation2.jdField_b_of_type_Int -= paramOperation1.jdField_b_of_type_Int;
-      paramOperation2.jdField_a_of_type_Int -= paramOperation1.jdField_a_of_type_Int;
-      paramOperation1.jdField_a_of_type_Char = '\000';
+      paramOperation3.c = paramOperation1.c;
+      paramOperation3.b = paramOperation1.b;
+      paramOperation2.c -= paramOperation1.c;
+      paramOperation2.b -= paramOperation1.b;
+      paramOperation1.a = '\000';
     }
   }
   
   static void b(Operation paramOperation1, Operation paramOperation2, Operation paramOperation3, AttribPool paramAttribPool)
   {
-    if (paramOperation1.jdField_a_of_type_Char == '-')
+    if (paramOperation1.a == '-')
     {
       a(paramOperation1, paramOperation3);
-      paramOperation1.jdField_a_of_type_Char = '\000';
+      paramOperation1.a = '\000';
       return;
     }
-    if (paramOperation1.jdField_a_of_type_Char == 0)
+    if (paramOperation1.a == 0)
     {
       a(paramOperation2, paramOperation3);
-      paramOperation2.jdField_a_of_type_Char = '\000';
+      paramOperation2.a = '\000';
       return;
     }
-    int i = paramOperation2.jdField_a_of_type_Char;
-    if (i != 0)
+    int j = paramOperation2.a;
+    if (j != 0)
     {
-      if (i != 43)
+      if (j != 43)
       {
-        if (i != 45)
+        if (j != 45)
         {
-          if (i != 61) {
+          if (j != 61) {
             return;
           }
-          i = paramOperation2.jdField_a_of_type_Int;
-          int j = paramOperation1.jdField_a_of_type_Int;
+          j = paramOperation2.b;
+          int k = paramOperation1.b;
           boolean bool2 = true;
           boolean bool1 = true;
           String str1;
           String str2;
-          if (i <= j)
+          if (j <= k)
           {
-            paramOperation3.jdField_a_of_type_Char = paramOperation1.jdField_a_of_type_Char;
-            paramOperation3.jdField_a_of_type_Int = paramOperation2.jdField_a_of_type_Int;
-            paramOperation3.jdField_b_of_type_Int = paramOperation2.jdField_b_of_type_Int;
-            str1 = paramOperation1.jdField_a_of_type_JavaLangString;
-            str2 = paramOperation2.jdField_a_of_type_JavaLangString;
-            if (paramOperation1.jdField_a_of_type_Char != '=') {
+            paramOperation3.a = paramOperation1.a;
+            paramOperation3.b = paramOperation2.b;
+            paramOperation3.c = paramOperation2.c;
+            str1 = paramOperation1.d;
+            str2 = paramOperation2.d;
+            if (paramOperation1.a != '=') {
               bool1 = false;
             }
-            paramOperation3.jdField_a_of_type_JavaLangString = a(str1, str2, bool1, paramAttribPool);
-            paramOperation2.jdField_a_of_type_Char = '\000';
-            paramOperation1.jdField_a_of_type_Int -= paramOperation2.jdField_a_of_type_Int;
-            paramOperation1.jdField_b_of_type_Int -= paramOperation2.jdField_b_of_type_Int;
-            if (paramOperation1.jdField_a_of_type_Int == 0) {
-              paramOperation1.jdField_a_of_type_Char = '\000';
+            paramOperation3.d = a(str1, str2, bool1, paramAttribPool);
+            paramOperation2.a = '\000';
+            paramOperation1.b -= paramOperation2.b;
+            paramOperation1.c -= paramOperation2.c;
+            if (paramOperation1.b == 0) {
+              paramOperation1.a = '\000';
             }
           }
           else
           {
-            paramOperation3.jdField_a_of_type_Char = paramOperation1.jdField_a_of_type_Char;
-            paramOperation3.jdField_a_of_type_Int = paramOperation1.jdField_a_of_type_Int;
-            paramOperation3.jdField_b_of_type_Int = paramOperation1.jdField_b_of_type_Int;
-            str1 = paramOperation1.jdField_a_of_type_JavaLangString;
-            str2 = paramOperation2.jdField_a_of_type_JavaLangString;
-            if (paramOperation1.jdField_a_of_type_Char == '=') {
+            paramOperation3.a = paramOperation1.a;
+            paramOperation3.b = paramOperation1.b;
+            paramOperation3.c = paramOperation1.c;
+            str1 = paramOperation1.d;
+            str2 = paramOperation2.d;
+            if (paramOperation1.a == '=') {
               bool1 = bool2;
             } else {
               bool1 = false;
             }
-            paramOperation3.jdField_a_of_type_JavaLangString = a(str1, str2, bool1, paramAttribPool);
-            paramOperation1.jdField_a_of_type_Char = '\000';
-            paramOperation2.jdField_a_of_type_Int -= paramOperation1.jdField_a_of_type_Int;
-            paramOperation2.jdField_b_of_type_Int -= paramOperation1.jdField_b_of_type_Int;
+            paramOperation3.d = a(str1, str2, bool1, paramAttribPool);
+            paramOperation1.a = '\000';
+            paramOperation2.b -= paramOperation1.b;
+            paramOperation2.c -= paramOperation1.c;
           }
         }
-        else if (paramOperation2.jdField_a_of_type_Int <= paramOperation1.jdField_a_of_type_Int)
+        else if (paramOperation2.b <= paramOperation1.b)
         {
-          if (paramOperation1.jdField_a_of_type_Char == '=')
+          if (paramOperation1.a == '=')
           {
-            paramOperation3.jdField_a_of_type_Char = '-';
-            paramOperation3.jdField_a_of_type_Int = paramOperation2.jdField_a_of_type_Int;
-            paramOperation3.jdField_b_of_type_Int = paramOperation2.jdField_b_of_type_Int;
-            paramOperation3.jdField_a_of_type_JavaLangString = paramOperation2.jdField_a_of_type_JavaLangString;
+            paramOperation3.a = '-';
+            paramOperation3.b = paramOperation2.b;
+            paramOperation3.c = paramOperation2.c;
+            paramOperation3.d = paramOperation2.d;
           }
-          paramOperation1.jdField_a_of_type_Int -= paramOperation2.jdField_a_of_type_Int;
-          paramOperation1.jdField_b_of_type_Int -= paramOperation2.jdField_b_of_type_Int;
-          paramOperation2.jdField_a_of_type_Char = '\000';
-          if (paramOperation1.jdField_a_of_type_Int == 0) {
-            paramOperation1.jdField_a_of_type_Char = '\000';
+          paramOperation1.b -= paramOperation2.b;
+          paramOperation1.c -= paramOperation2.c;
+          paramOperation2.a = '\000';
+          if (paramOperation1.b == 0) {
+            paramOperation1.a = '\000';
           }
         }
         else
         {
-          if (paramOperation1.jdField_a_of_type_Char == '=')
+          if (paramOperation1.a == '=')
           {
-            paramOperation3.jdField_a_of_type_Char = '-';
-            paramOperation3.jdField_a_of_type_Int = paramOperation1.jdField_a_of_type_Int;
-            paramOperation3.jdField_b_of_type_Int = paramOperation1.jdField_b_of_type_Int;
-            paramOperation3.jdField_a_of_type_JavaLangString = paramOperation2.jdField_a_of_type_JavaLangString;
+            paramOperation3.a = '-';
+            paramOperation3.b = paramOperation1.b;
+            paramOperation3.c = paramOperation1.c;
+            paramOperation3.d = paramOperation2.d;
           }
-          paramOperation2.jdField_a_of_type_Int -= paramOperation1.jdField_a_of_type_Int;
-          paramOperation2.jdField_b_of_type_Int -= paramOperation1.jdField_b_of_type_Int;
-          paramOperation1.jdField_a_of_type_Char = '\000';
+          paramOperation2.b -= paramOperation1.b;
+          paramOperation2.c -= paramOperation1.c;
+          paramOperation1.a = '\000';
         }
       }
       else
       {
         a(paramOperation2, paramOperation3);
-        paramOperation2.jdField_a_of_type_Char = '\000';
+        paramOperation2.a = '\000';
       }
     }
     else
     {
       a(paramOperation1, paramOperation3);
-      paramOperation1.jdField_a_of_type_Char = '\000';
+      paramOperation1.a = '\000';
     }
   }
   
   private static void b(Operation paramOperation1, Operation paramOperation2, Operation paramOperation3, StringIterator paramStringIterator1, StringIterator paramStringIterator2, AttributeTester paramAttributeTester, boolean paramBoolean)
   {
-    int j = paramOperation2.jdField_a_of_type_Char;
-    int i = 2;
-    if (j != 43) {}
+    int k = paramOperation2.a;
+    int j = 2;
+    if (k != 43) {}
     String str1;
     String str2;
     boolean bool1;
     boolean bool2;
     do
     {
-      i = 1;
+      j = 1;
       break;
-      if (paramOperation1.jdField_a_of_type_Char != '+') {
+      if (paramOperation1.a != '+') {
         break;
       }
       str1 = paramStringIterator1.b(1);
       str2 = paramStringIterator2.b(1);
-      bool1 = paramAttributeTester.a(paramOperation1.jdField_a_of_type_JavaLangString);
-      bool2 = paramAttributeTester.a(paramOperation2.jdField_a_of_type_JavaLangString);
+      bool1 = paramAttributeTester.a(paramOperation1.d);
+      bool2 = paramAttributeTester.a(paramOperation2.d);
     } while (((bool1) && (!bool2)) || (((!bool2) || (bool1)) && ((!str1.equals("\n")) || (str2.equals("\n"))) && (((!str1.equals("\n")) && (str2.equals("\n"))) || (!paramBoolean))));
-    if (i == 1)
+    if (j == 1)
     {
-      paramStringIterator1.a(paramOperation1.jdField_a_of_type_Int);
-      paramOperation3.jdField_a_of_type_Char = '=';
-      paramOperation3.jdField_b_of_type_Int = paramOperation1.jdField_b_of_type_Int;
-      paramOperation3.jdField_a_of_type_Int = paramOperation1.jdField_a_of_type_Int;
-      paramOperation3.jdField_a_of_type_JavaLangString = "";
-      paramOperation1.jdField_a_of_type_Char = '\000';
+      paramStringIterator1.c(paramOperation1.b);
+      paramOperation3.a = '=';
+      paramOperation3.c = paramOperation1.c;
+      paramOperation3.b = paramOperation1.b;
+      paramOperation3.d = "";
+      paramOperation1.a = '\000';
       return;
     }
-    paramStringIterator2.a(paramOperation2.jdField_a_of_type_Int);
+    paramStringIterator2.c(paramOperation2.b);
     a(paramOperation2, paramOperation3);
-    paramOperation2.jdField_a_of_type_Char = '\000';
+    paramOperation2.a = '\000';
+  }
+  
+  public static int c(String paramString)
+  {
+    return e(paramString).d;
   }
   
   public static String c(String paramString1, String paramString2, AttribPool paramAttribPool)
@@ -892,12 +767,12 @@ public class Changeset
       Utils.a(paramString2, "\\*([0-9a-z]+)", new Changeset.12(localArrayList, paramAttribPool));
       Utils.a(paramString1, "\\*([0-9a-z]+)", new Changeset.13(paramAttribPool, localArrayList));
       paramString1 = new StringBuilder();
-      int i = 0;
-      while (i < localArrayList.size())
+      int j = 0;
+      while (j < localArrayList.size())
       {
         paramString1.append('*');
-        paramString1.append(a(paramAttribPool.a((Pair)localArrayList.get(i))));
-        i += 1;
+        paramString1.append(a(paramAttribPool.a((Pair)localArrayList.get(j))));
+        j += 1;
       }
       return paramString1.toString();
     }
@@ -906,51 +781,171 @@ public class Changeset
   
   private static void c(Operation paramOperation1, Operation paramOperation2)
   {
-    if (paramOperation2.jdField_a_of_type_Char == 0)
+    if (paramOperation2.a == 0)
     {
-      paramOperation1.jdField_a_of_type_Char = '\000';
+      paramOperation1.a = '\000';
       return;
     }
-    if (paramOperation1.jdField_a_of_type_Int <= paramOperation2.jdField_a_of_type_Int)
+    if (paramOperation1.b <= paramOperation2.b)
     {
-      paramOperation2.jdField_a_of_type_Int -= paramOperation1.jdField_a_of_type_Int;
-      paramOperation2.jdField_b_of_type_Int -= paramOperation1.jdField_b_of_type_Int;
-      paramOperation1.jdField_a_of_type_Char = '\000';
-      if (paramOperation2.jdField_a_of_type_Int <= 0) {
-        paramOperation2.jdField_a_of_type_Char = '\000';
+      paramOperation2.b -= paramOperation1.b;
+      paramOperation2.c -= paramOperation1.c;
+      paramOperation1.a = '\000';
+      if (paramOperation2.b <= 0) {
+        paramOperation2.a = '\000';
       }
     }
     else
     {
-      paramOperation1.jdField_a_of_type_Int -= paramOperation2.jdField_a_of_type_Int;
-      paramOperation1.jdField_b_of_type_Int -= paramOperation2.jdField_b_of_type_Int;
-      paramOperation2.jdField_a_of_type_Char = '\000';
+      paramOperation1.b -= paramOperation2.b;
+      paramOperation1.c -= paramOperation2.c;
+      paramOperation2.a = '\000';
     }
+  }
+  
+  public static Iterator<Operation> d(String paramString)
+  {
+    return a(paramString, 0);
   }
   
   private static void d(Operation paramOperation1, Operation paramOperation2, Operation paramOperation3, AttribPool paramAttribPool)
   {
-    paramOperation3.jdField_a_of_type_Char = '=';
-    paramOperation3.jdField_a_of_type_JavaLangString = c(paramOperation1.jdField_a_of_type_JavaLangString, paramOperation2.jdField_a_of_type_JavaLangString, paramAttribPool);
-    if (paramOperation1.jdField_a_of_type_Int <= paramOperation2.jdField_a_of_type_Int)
+    paramOperation3.a = '=';
+    paramOperation3.d = c(paramOperation1.d, paramOperation2.d, paramAttribPool);
+    if (paramOperation1.b <= paramOperation2.b)
     {
-      paramOperation3.jdField_a_of_type_Int = paramOperation1.jdField_a_of_type_Int;
-      paramOperation3.jdField_b_of_type_Int = paramOperation1.jdField_b_of_type_Int;
-      paramOperation2.jdField_a_of_type_Int -= paramOperation1.jdField_a_of_type_Int;
-      paramOperation2.jdField_b_of_type_Int -= paramOperation1.jdField_b_of_type_Int;
-      paramOperation1.jdField_a_of_type_Char = '\000';
-      if (paramOperation2.jdField_a_of_type_Int == 0) {
-        paramOperation2.jdField_a_of_type_Char = '\000';
+      paramOperation3.b = paramOperation1.b;
+      paramOperation3.c = paramOperation1.c;
+      paramOperation2.b -= paramOperation1.b;
+      paramOperation2.c -= paramOperation1.c;
+      paramOperation1.a = '\000';
+      if (paramOperation2.b == 0) {
+        paramOperation2.a = '\000';
       }
     }
     else
     {
-      paramOperation3.jdField_a_of_type_Int = paramOperation2.jdField_a_of_type_Int;
-      paramOperation3.jdField_b_of_type_Int = paramOperation2.jdField_b_of_type_Int;
-      paramOperation1.jdField_a_of_type_Int -= paramOperation2.jdField_a_of_type_Int;
-      paramOperation1.jdField_b_of_type_Int -= paramOperation2.jdField_b_of_type_Int;
-      paramOperation2.jdField_a_of_type_Char = '\000';
+      paramOperation3.b = paramOperation2.b;
+      paramOperation3.c = paramOperation2.c;
+      paramOperation1.b -= paramOperation2.b;
+      paramOperation1.c -= paramOperation2.c;
+      paramOperation2.a = '\000';
     }
+  }
+  
+  public static Changeset e(String paramString)
+  {
+    Object localObject1 = new Changeset();
+    Object localObject2;
+    int j;
+    if (b)
+    {
+      localObject2 = g;
+      if (localObject2 == null) {
+        g = new HeaderParser();
+      } else {
+        ((HeaderParser)localObject2).a();
+      }
+      g.a(paramString);
+      ((Changeset)localObject1).d = g.c;
+      ((Changeset)localObject1).c = g.b;
+      j = g.a;
+    }
+    else
+    {
+      if (i == null) {
+        i = Pattern.compile("Z:([0-9a-z]+)([><])([0-9a-z]+)|");
+      }
+      localObject2 = i.matcher(paramString);
+      if ((!((Matcher)localObject2).find()) || (((Matcher)localObject2).group().length() == 0)) {
+        break label238;
+      }
+      ((Changeset)localObject1).c = b(((Matcher)localObject2).group(1));
+      if (">".equals(((Matcher)localObject2).group(2))) {
+        j = 1;
+      } else {
+        j = -1;
+      }
+      k = b(((Matcher)localObject2).group(3));
+      ((Changeset)localObject1).d = (((Changeset)localObject1).c + j * k);
+      j = ((Matcher)localObject2).group().length();
+    }
+    int m = paramString.indexOf("$");
+    int k = m;
+    if (m < 0) {
+      k = paramString.length();
+    }
+    ((Changeset)localObject1).e = paramString.substring(j, k);
+    ((Changeset)localObject1).f = paramString.substring(k + 1);
+    return localObject1;
+    label238:
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Not a exports: ");
+    ((StringBuilder)localObject1).append(paramString);
+    throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
+  }
+  
+  public static List<SpliceBean> f(String paramString)
+  {
+    Object localObject1 = e(paramString);
+    paramString = new ArrayList();
+    Iterator localIterator = d(((Changeset)localObject1).e);
+    localObject1 = new StringIterator(((Changeset)localObject1).f);
+    int j = 0;
+    int k = 0;
+    while (localIterator.hasNext())
+    {
+      Operation localOperation = (Operation)localIterator.next();
+      if (localOperation.a == '=')
+      {
+        k += localOperation.b;
+        j = 0;
+      }
+      else
+      {
+        int m = j;
+        if (j == 0)
+        {
+          paramString.add(new SpliceBean(k, k, ""));
+          m = 1;
+        }
+        Object localObject2;
+        if (localOperation.a == '-')
+        {
+          k += localOperation.b;
+          localObject2 = (SpliceBean)paramString.get(paramString.size() - 1);
+          ((SpliceBean)localObject2).b += localOperation.b;
+          j = m;
+        }
+        else
+        {
+          j = m;
+          if (localOperation.a == '+')
+          {
+            localObject2 = new StringBuilder();
+            SpliceBean localSpliceBean = (SpliceBean)paramString.get(paramString.size() - 1);
+            ((StringBuilder)localObject2).append(localSpliceBean.c);
+            ((StringBuilder)localObject2).append(((StringIterator)localObject1).a(localOperation.b));
+            localSpliceBean.c = ((StringBuilder)localObject2).toString();
+            j = m;
+          }
+        }
+      }
+    }
+    return paramString;
+  }
+  
+  public static String g(String paramString)
+  {
+    SmartOpAssembler localSmartOpAssembler = new SmartOpAssembler();
+    localSmartOpAssembler.a('+', paramString);
+    return localSmartOpAssembler.toString();
+  }
+  
+  public static boolean h(String paramString)
+  {
+    paramString = e(paramString);
+    return ("".equals(paramString.e)) && (paramString.c == paramString.d);
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -962,12 +957,12 @@ public class Changeset
       return false;
     }
     paramObject = (Changeset)paramObject;
-    return (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int) && (this.c == paramObject.c) && (Utils.a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Utils.a(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString));
+    return (this.c == paramObject.c) && (this.d == paramObject.d) && (Utils.a(this.e, paramObject.e)) && (Utils.a(this.f, paramObject.f));
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.c), Integer.valueOf(this.d), this.e, this.f });
   }
   
   @NonNull
@@ -977,19 +972,19 @@ public class Changeset
     localStringBuilder.append("[Changeset@");
     localStringBuilder.append(hashCode());
     localStringBuilder.append("]: oldLen: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", newLen: ");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", newLen: ");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", ops: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", charBank: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset
  * JD-Core Version:    0.7.0.1
  */

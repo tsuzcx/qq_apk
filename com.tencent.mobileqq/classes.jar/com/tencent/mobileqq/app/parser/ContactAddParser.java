@@ -11,9 +11,9 @@ public class ContactAddParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new ContactAddAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "contact";
-    paramBaseQQAppInterface.c = "add";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "contact";
+    paramBaseQQAppInterface.e = "add";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class ContactAddParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ContactAddParser
  * JD-Core Version:    0.7.0.1
  */

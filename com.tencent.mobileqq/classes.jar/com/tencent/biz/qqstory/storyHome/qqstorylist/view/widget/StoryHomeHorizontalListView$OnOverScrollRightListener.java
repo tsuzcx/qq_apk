@@ -2,9 +2,9 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget;
 
 public abstract interface StoryHomeHorizontalListView$OnOverScrollRightListener
 {
-  public abstract void N_();
+  public abstract void by_();
   
-  public abstract void O_();
+  public abstract void e();
 }
 
 

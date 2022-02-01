@@ -44,12 +44,12 @@ public class BuddyListDevices
   public BuddyListDevices(QQAppInterface paramQQAppInterface, Context paramContext, Entity paramEntity)
   {
     super(paramQQAppInterface, paramContext, paramEntity);
-    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
   private void a(ImageView paramImageView)
   {
-    Object localObject = ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath("100701.100702");
+    Object localObject = ((IRedTouchManager)this.d.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath("100701.100702");
     if (localObject == null) {
       return;
     }
@@ -57,16 +57,16 @@ public class BuddyListDevices
       return;
     }
     localObject = (FrameLayout.LayoutParams)paramImageView.getLayoutParams();
-    ((FrameLayout.LayoutParams)localObject).width = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 9.0F));
-    ((FrameLayout.LayoutParams)localObject).height = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 9.0F));
-    ((FrameLayout.LayoutParams)localObject).topMargin = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 11.0F));
+    ((FrameLayout.LayoutParams)localObject).width = ((int)DisplayUtils.a(this.e, 9.0F));
+    ((FrameLayout.LayoutParams)localObject).height = ((int)DisplayUtils.a(this.e, 9.0F));
+    ((FrameLayout.LayoutParams)localObject).topMargin = ((int)DisplayUtils.a(this.e, 11.0F));
     paramImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     paramImageView.setVisibility(0);
-    paramImageView.setBackgroundResource(2130850766);
+    paramImageView.setBackgroundResource(2130852588);
     paramImageView = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).edit();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("enable_public_device_");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(this.d.getCurrentAccountUin());
     paramImageView.putBoolean(((StringBuilder)localObject).toString(), true).commit();
   }
   
@@ -74,149 +74,149 @@ public class BuddyListDevices
   public View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
     Object localObject1;
-    if ((paramView != null) && ((paramView.getTag() instanceof BuddyListFriends.BuddyChildTag)) && ((!(paramView.getTag() instanceof BuddyListFriends.BuddyChildTag)) || (!((BuddyListFriends.BuddyChildTag)paramView.getTag()).jdField_a_of_type_Boolean)))
+    if ((paramView != null) && ((paramView.getTag() instanceof BuddyListFriends.BuddyChildTag)) && ((!(paramView.getTag() instanceof BuddyListFriends.BuddyChildTag)) || (!((BuddyListFriends.BuddyChildTag)paramView.getTag()).m)))
     {
       localObject1 = (BuddyListFriends.BuddyChildTag)paramView.getTag();
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+      ((BuddyListFriends.BuddyChildTag)localObject1).a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+      ((BuddyListFriends.BuddyChildTag)localObject1).b.setCompoundDrawables(null, null);
       paramOnClickListener = paramView;
     }
     else
     {
-      paramOnClickListener = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558923, paramViewGroup, false);
+      paramOnClickListener = LayoutInflater.from(this.e).inflate(2131624553, paramViewGroup, false);
       localObject1 = ((FriendItemLayout)paramOnClickListener).a();
       paramOnClickListener.setTag(localObject1);
-      a(paramOnClickListener.findViewById(2131368343));
+      a(paramOnClickListener.findViewById(2131435219));
     }
-    paramView = (FrameLayout.LayoutParams)((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramView.leftMargin = AIOUtils.b(68.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramView);
-    paramView = (FrameLayout.LayoutParams)((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.getLayoutParams();
-    paramView.leftMargin = AIOUtils.b(68.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setLayoutParams(paramView);
+    paramView = (FrameLayout.LayoutParams)((BuddyListFriends.BuddyChildTag)localObject1).i.getLayoutParams();
+    paramView.leftMargin = AIOUtils.b(68.0F, this.e.getResources());
+    ((BuddyListFriends.BuddyChildTag)localObject1).i.setLayoutParams(paramView);
     paramView = (FrameLayout.LayoutParams)((BuddyListFriends.BuddyChildTag)localObject1).d.getLayoutParams();
-    paramView.leftMargin = AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramView.leftMargin = AIOUtils.b(68.0F, this.e.getResources());
     ((BuddyListFriends.BuddyChildTag)localObject1).d.setLayoutParams(paramView);
-    ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
-    ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setVisibility(0);
-    if (!AppConstants.SMARTDEVICE_SEARCH_UIN.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin))
+    paramView = (FrameLayout.LayoutParams)((BuddyListFriends.BuddyChildTag)localObject1).r.getLayoutParams();
+    paramView.leftMargin = AIOUtils.b(16.0F, this.e.getResources());
+    ((BuddyListFriends.BuddyChildTag)localObject1).r.setLayoutParams(paramView);
+    ((BuddyListFriends.BuddyChildTag)localObject1).c = this.m;
+    ((BuddyListFriends.BuddyChildTag)localObject1).p = this.m.uin;
+    ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(0);
+    if (!AppConstants.SMARTDEVICE_SEARCH_UIN.equals(this.m.uin))
     {
-      paramView = (FrameLayout.LayoutParams)((BuddyListFriends.BuddyChildTag)localObject1).c.getLayoutParams();
-      paramView.width = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 16.0F));
-      paramView.height = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 16.0F));
-      paramView.topMargin = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 8.5F));
-      ((BuddyListFriends.BuddyChildTag)localObject1).c.setLayoutParams(paramView);
+      paramView = (FrameLayout.LayoutParams)((BuddyListFriends.BuddyChildTag)localObject1).h.getLayoutParams();
+      paramView.width = ((int)DisplayUtils.a(this.e, 16.0F));
+      paramView.height = ((int)DisplayUtils.a(this.e, 16.0F));
+      paramView.topMargin = ((int)DisplayUtils.a(this.e, 8.5F));
+      ((BuddyListFriends.BuddyChildTag)localObject1).h.setLayoutParams(paramView);
     }
-    boolean bool = AppConstants.DATALINE_PC_UIN.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin);
-    paramInt1 = 2131719229;
+    boolean bool = AppConstants.DATALINE_PC_UIN.equals(this.m.uin);
+    paramInt1 = 2131916781;
     if (bool)
     {
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.status == 0) {
+      ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(0);
+      if (this.m.status == 0) {
         paramInt2 = 1;
       } else {
         paramInt2 = 0;
       }
-      paramView = this.jdField_a_of_type_AndroidContentContext;
+      paramView = this.e;
       if (paramInt2 == 0) {
-        paramInt1 = 2131719230;
+        paramInt1 = 2131916782;
       }
       paramViewGroup = paramView.getString(paramInt1);
-      paramView = ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView;
+      paramView = ((BuddyListFriends.BuddyChildTag)localObject1).d;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[");
       ((StringBuilder)localObject2).append(paramViewGroup);
       ((StringBuilder)localObject2).append("]");
       paramView.setText(((StringBuilder)localObject2).toString());
-      localObject2 = ((BuddyListFriends.BuddyChildTag)localObject1).d;
+      localObject2 = ((BuddyListFriends.BuddyChildTag)localObject1).r;
       if (paramInt2 != 0) {
-        paramView = a();
+        paramView = g();
       } else {
         paramView = null;
       }
       ((ImageView)localObject2).setImageDrawable(paramView);
-      localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131691374);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject2);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText("", 1);
-      ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131167063));
+      localObject2 = this.e.getString(2131888329);
+      ((BuddyListFriends.BuddyChildTag)localObject1).b.setText((CharSequence)localObject2);
+      ((BuddyListFriends.BuddyChildTag)localObject1).b.setExtendText("", 1);
+      ((BuddyListFriends.BuddyChildTag)localObject1).h.setVisibility(8);
+      ((BuddyListFriends.BuddyChildTag)localObject1).f.setVisibility(8);
+      ((BuddyListFriends.BuddyChildTag)localObject1).g.setVisibility(8);
+      ((BuddyListFriends.BuddyChildTag)localObject1).a.setTextColor(a(this.e, 2131168001));
       paramView = paramViewGroup;
       paramViewGroup = (ViewGroup)localObject2;
     }
-    else if (AppConstants.DATALINE_IPAD_UIN.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin))
+    else if (AppConstants.DATALINE_IPAD_UIN.equals(this.m.uin))
     {
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.status == 0) {
+      ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(0);
+      if (this.m.status == 0) {
         paramInt2 = 1;
       } else {
         paramInt2 = 0;
       }
-      paramView = this.jdField_a_of_type_AndroidContentContext;
+      paramView = this.e;
       if (paramInt2 == 0) {
-        paramInt1 = 2131719230;
+        paramInt1 = 2131916782;
       }
       paramViewGroup = paramView.getString(paramInt1);
-      paramView = ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView;
+      paramView = ((BuddyListFriends.BuddyChildTag)localObject1).d;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[");
       ((StringBuilder)localObject2).append(paramViewGroup);
       ((StringBuilder)localObject2).append("]");
       paramView.setText(((StringBuilder)localObject2).toString());
-      localObject2 = ((BuddyListFriends.BuddyChildTag)localObject1).d;
+      localObject2 = ((BuddyListFriends.BuddyChildTag)localObject1).r;
       if (paramInt2 != 0) {
-        paramView = a();
+        paramView = g();
       } else {
         paramView = null;
       }
       ((ImageView)localObject2).setImageDrawable(paramView);
-      localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131691375);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject2);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText("", 1);
-      ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-      ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131167063));
+      localObject2 = this.e.getString(2131888330);
+      ((BuddyListFriends.BuddyChildTag)localObject1).b.setText((CharSequence)localObject2);
+      ((BuddyListFriends.BuddyChildTag)localObject1).b.setExtendText("", 1);
+      ((BuddyListFriends.BuddyChildTag)localObject1).h.setVisibility(8);
+      ((BuddyListFriends.BuddyChildTag)localObject1).f.setVisibility(8);
+      ((BuddyListFriends.BuddyChildTag)localObject1).g.setVisibility(8);
+      ((BuddyListFriends.BuddyChildTag)localObject1).a.setTextColor(a(this.e, 2131168001));
       paramView = paramViewGroup;
       paramViewGroup = (ViewGroup)localObject2;
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin.equals(QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+      if (this.m.uin.equals(QFileAssistantUtils.b(this.d)))
       {
-        paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getString(2131698287);
-        ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramViewGroup);
-        ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText("", 1);
-        ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-        ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-        ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131167063));
+        paramViewGroup = this.e.getString(2131896188);
+        ((BuddyListFriends.BuddyChildTag)localObject1).b.setText(paramViewGroup);
+        ((BuddyListFriends.BuddyChildTag)localObject1).b.setExtendText("", 1);
+        ((BuddyListFriends.BuddyChildTag)localObject1).h.setVisibility(8);
+        ((BuddyListFriends.BuddyChildTag)localObject1).f.setVisibility(8);
+        ((BuddyListFriends.BuddyChildTag)localObject1).g.setVisibility(8);
+        ((BuddyListFriends.BuddyChildTag)localObject1).a.setTextColor(a(this.e, 2131168001));
       }
       for (;;)
       {
         paramView = null;
-        break label1547;
-        if (AppConstants.SMARTDEVICE_UIN.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin))
+        break label1548;
+        if (AppConstants.SMARTDEVICE_UIN.equals(this.m.uin))
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.status == 0) {
+          if (this.m.status == 0) {
             paramInt2 = 1;
           } else {
             paramInt2 = 0;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.status == 11)
+          if (this.m.status == 11)
           {
-            ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setVisibility(8);
-            ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setText("");
+            ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(8);
+            ((BuddyListFriends.BuddyChildTag)localObject1).d.setText("");
             paramView = null;
             paramInt2 = 0;
           }
-          else if (this.jdField_a_of_type_ComTencentMobileqqDataFriends.status == 12)
+          else if (this.m.status == 12)
           {
-            ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setVisibility(0);
-            paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131698317);
-            paramViewGroup = ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView;
+            ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(0);
+            paramView = this.e.getString(2131896218);
+            paramViewGroup = ((BuddyListFriends.BuddyChildTag)localObject1).d;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("[");
             ((StringBuilder)localObject2).append(paramView);
@@ -225,76 +225,76 @@ public class BuddyListDevices
           }
           else
           {
-            ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setVisibility(0);
-            paramView = this.jdField_a_of_type_AndroidContentContext;
+            ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(0);
+            paramView = this.e;
             if (paramInt2 == 0) {
-              paramInt1 = 2131719230;
+              paramInt1 = 2131916782;
             }
             paramView = paramView.getString(paramInt1);
-            paramViewGroup = ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView;
+            paramViewGroup = ((BuddyListFriends.BuddyChildTag)localObject1).d;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("[");
             ((StringBuilder)localObject2).append(paramView);
             ((StringBuilder)localObject2).append("]");
             paramViewGroup.setText(((StringBuilder)localObject2).toString());
           }
-          localObject2 = ((BuddyListFriends.BuddyChildTag)localObject1).d;
+          localObject2 = ((BuddyListFriends.BuddyChildTag)localObject1).r;
           if (paramInt2 != 0) {
-            paramViewGroup = a();
+            paramViewGroup = g();
           } else {
             paramViewGroup = null;
           }
           ((ImageView)localObject2).setImageDrawable(paramViewGroup);
-          paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getString(2131719163);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramViewGroup);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText("", 1);
-          ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131167063));
-          break label1547;
+          paramViewGroup = this.e.getString(2131916699);
+          ((BuddyListFriends.BuddyChildTag)localObject1).b.setText(paramViewGroup);
+          ((BuddyListFriends.BuddyChildTag)localObject1).b.setExtendText("", 1);
+          ((BuddyListFriends.BuddyChildTag)localObject1).h.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).f.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).g.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).a.setTextColor(a(this.e, 2131168001));
+          break label1548;
         }
-        if (AppConstants.DATALINE_PRINTER_UIN.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin))
+        if (AppConstants.DATALINE_PRINTER_UIN.equals(this.m.uin))
         {
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setText("");
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).d.setImageDrawable(null);
-          paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getString(2131691373);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramViewGroup);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText("", 1);
-          ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131167063));
+          ((BuddyListFriends.BuddyChildTag)localObject1).d.setText("");
+          ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).r.setImageDrawable(null);
+          paramViewGroup = this.e.getString(2131888328);
+          ((BuddyListFriends.BuddyChildTag)localObject1).b.setText(paramViewGroup);
+          ((BuddyListFriends.BuddyChildTag)localObject1).b.setExtendText("", 1);
+          ((BuddyListFriends.BuddyChildTag)localObject1).h.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).f.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).g.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).a.setTextColor(a(this.e, 2131168001));
         }
         else
         {
-          if (!AppConstants.SMARTDEVICE_SEARCH_UIN.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin)) {
+          if (!AppConstants.SMARTDEVICE_SEARCH_UIN.equals(this.m.uin)) {
             break;
           }
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setText("");
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentMobileqqActivityContactsFriendSimpleTextView.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).d.setImageDrawable(null);
-          paramViewGroup = this.jdField_a_of_type_AndroidContentContext.getString(2131691371);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramViewGroup);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText("", 1);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).c.setVisibility(8);
-          ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131167063));
-          a(((BuddyListFriends.BuddyChildTag)localObject1).c);
+          ((BuddyListFriends.BuddyChildTag)localObject1).d.setText("");
+          ((BuddyListFriends.BuddyChildTag)localObject1).d.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).r.setImageDrawable(null);
+          paramViewGroup = this.e.getString(2131888326);
+          ((BuddyListFriends.BuddyChildTag)localObject1).b.setText(paramViewGroup);
+          ((BuddyListFriends.BuddyChildTag)localObject1).b.setExtendText("", 1);
+          ((BuddyListFriends.BuddyChildTag)localObject1).f.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).g.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).h.setVisibility(8);
+          ((BuddyListFriends.BuddyChildTag)localObject1).a.setTextColor(a(this.e, 2131168001));
+          a(((BuddyListFriends.BuddyChildTag)localObject1).h);
         }
       }
       paramViewGroup = null;
       paramView = paramViewGroup;
     }
-    label1547:
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataFriends.getFriendNickWithAlias();
-    ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject2);
-    ((BuddyListFriends.BuddyChildTag)localObject1).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setVisibility(0);
-    if (AppSetting.d)
+    label1548:
+    Object localObject2 = this.m.getFriendNickWithAlias();
+    ((BuddyListFriends.BuddyChildTag)localObject1).a.setText((CharSequence)localObject2);
+    ((BuddyListFriends.BuddyChildTag)localObject1).b.setVisibility(0);
+    if (AppSetting.e)
     {
-      localObject1 = ((BuddyListFriends.BuddyChildTag)localObject1).jdField_a_of_type_JavaLangStringBuilder;
+      localObject1 = ((BuddyListFriends.BuddyChildTag)localObject1).l;
       if (localObject1 == null) {
         localObject1 = new StringBuilder(24);
       } else {
@@ -307,7 +307,7 @@ public class BuddyListDevices
         ((StringBuilder)localObject1).append(paramView);
         ((StringBuilder)localObject1).append(".");
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) || (this.jdField_a_of_type_ComTencentMobileqqDataFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)))
+      if ((this.m.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) || (this.m.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)))
       {
         ((StringBuilder)localObject1).append("QQ会员");
         ((StringBuilder)localObject1).append(".");
@@ -322,11 +322,11 @@ public class BuddyListDevices
       }
       paramOnClickListener.setContentDescription((CharSequence)localObject1);
     }
-    paramView = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    paramView = (SmartDeviceProxyMgr)this.d.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     if (paramView != null)
     {
-      paramViewGroup = paramView.b();
-      if ((!TextUtils.isEmpty(paramViewGroup)) && (this.jdField_a_of_type_ComTencentMobileqqDataFriends.name.equals(paramViewGroup)))
+      paramViewGroup = paramView.l();
+      if ((!TextUtils.isEmpty(paramViewGroup)) && (this.m.name.equals(paramViewGroup)))
       {
         if (paramOnClickListener.getAnimation() != null)
         {
@@ -336,7 +336,7 @@ public class BuddyListDevices
           paramView.startNow();
           return paramOnClickListener;
         }
-        paramOnClickListener.setBackgroundResource(2130839568);
+        paramOnClickListener.setBackgroundResource(2130839781);
         paramViewGroup = new ScaleAnimation(0.8F, 1.2F, 0.8F, 1.2F, 1, 0.5F, 1, 0.5F);
         paramViewGroup.setDuration(1000L);
         paramViewGroup.setRepeatCount(3);
@@ -348,7 +348,7 @@ public class BuddyListDevices
         paramOnClickListener.setAnimation(paramViewGroup);
         return paramOnClickListener;
       }
-      paramOnClickListener.setBackgroundResource(2130839393);
+      paramOnClickListener.setBackgroundResource(2130839577);
       paramOnClickListener.setAnimation(null);
     }
     return paramOnClickListener;
@@ -356,7 +356,7 @@ public class BuddyListDevices
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.BuddyListDevices
  * JD-Core Version:    0.7.0.1
  */

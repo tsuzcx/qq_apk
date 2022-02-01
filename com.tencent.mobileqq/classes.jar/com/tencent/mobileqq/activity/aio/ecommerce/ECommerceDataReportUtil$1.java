@@ -15,12 +15,12 @@ final class ECommerceDataReportUtil$1
   {
     try
     {
-      ECommerceDataReportConfigProcessor.Config localConfig = (ECommerceDataReportConfigProcessor.Config)QConfigManager.a().a(592);
+      ECommerceDataReportConfigProcessor.Config localConfig = (ECommerceDataReportConfigProcessor.Config)QConfigManager.b().b(592);
       if ((localConfig != null) && (localConfig.a != null) && (!localConfig.a.isEmpty()))
       {
         ECommerceDataReportUtil.a(localConfig.a);
-        ECommerceDataReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ECommerceDataReportUtil.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+        ECommerceDataReportUtil.a(this.a.getCurrentAccountUin());
+        ECommerceDataReportUtil.a((QQAppInterface)this.b.get(), this.c, this.d, this.e);
         return;
       }
     }
@@ -32,7 +32,7 @@ final class ECommerceDataReportUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

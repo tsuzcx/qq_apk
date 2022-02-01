@@ -19,64 +19,64 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
 public class GroupNetSearchModelArticle
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  private SearchResult jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ISearchResultModel> jdField_a_of_type_JavaUtilList;
+  private List<ISearchResultModel> a;
   private String b;
+  private SearchResult c;
+  private String d;
   
   public GroupNetSearchModelArticle(SearchResult paramSearchResult, List<ISearchResultModel> paramList, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult = paramSearchResult;
-    this.b = paramString2;
-  }
-  
-  public int a()
-  {
-    return 1;
+    this.a = paramList;
+    this.b = paramString1;
+    this.c = paramSearchResult;
+    this.d = paramString2;
   }
   
   public String a()
   {
-    return HardCodeUtil.a(2131705448);
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return HardCodeUtil.a(2131903336);
   }
   
   public void a(View paramView)
   {
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 110, 0, paramView);
-    GroupNetSearchModelArticleItem localGroupNetSearchModelArticleItem = (GroupNetSearchModelArticleItem)this.jdField_a_of_type_JavaUtilList.get(0);
-    if ((localGroupNetSearchModelArticleItem != null) && (!TextUtils.isEmpty(this.b)))
+    SearchUtils.a(this.b, 110, 0, paramView);
+    GroupNetSearchModelArticleItem localGroupNetSearchModelArticleItem = (GroupNetSearchModelArticleItem)this.a.get(0);
+    if ((localGroupNetSearchModelArticleItem != null) && (!TextUtils.isEmpty(this.d)))
     {
       Object localObject = new ActivityURIRequest(paramView.getContext(), "/pubaccount/browser");
-      ((ActivityURIRequest)localObject).extra().putString("url", this.b);
+      ((ActivityURIRequest)localObject).extra().putString("url", this.d);
       QRoute.startUri((URIRequest)localObject, null);
-      if (localGroupNetSearchModelArticleItem.a() != null)
+      if (localGroupNetSearchModelArticleItem.j() != null)
       {
-        localObject = localGroupNetSearchModelArticleItem.a().hotword.get();
-        int i = localGroupNetSearchModelArticleItem.a().hotword_type.get();
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, localGroupNetSearchModelArticleItem.b(), (String)localObject, String.valueOf(i), "2");
+        localObject = localGroupNetSearchModelArticleItem.j().hotword.get();
+        int i = localGroupNetSearchModelArticleItem.j().hotword_type.get();
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F28", "0X8006F28", 0, 0, localGroupNetSearchModelArticleItem.g(), (String)localObject, String.valueOf(i), "2");
       }
     }
     paramView.getContext();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "0", this.jdField_a_of_type_JavaLangString, "0");
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8006536", "0X8006536", 0, 0, "", "0", this.b, "0");
   }
   
-  public String b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public int d()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.GroupNetSearchModelArticle
  * JD-Core Version:    0.7.0.1
  */

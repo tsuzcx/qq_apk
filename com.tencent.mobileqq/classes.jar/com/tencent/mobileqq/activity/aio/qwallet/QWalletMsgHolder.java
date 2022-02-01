@@ -23,150 +23,150 @@ public class QWalletMsgHolder
   
   private void a(IQWalletMsgHolder paramIQWalletMsgHolder)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder = paramIQWalletMsgHolder;
+    this.a = paramIQWalletMsgHolder;
     if (paramIQWalletMsgHolder.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramIQWalletMsgHolder.a();
+      this.q = paramIQWalletMsgHolder.a();
     }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a();
-  }
-  
-  public ImageView a()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a();
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a();
-  }
-  
-  public RelativeLayout a()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a();
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a();
   }
   
   public MessageForQQWalletMsg a()
   {
-    return (MessageForQQWalletMsg)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  }
-  
-  public AnimationView a()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a();
+    return (MessageForQQWalletMsg)this.q;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a(paramLong);
+    this.a.a(paramLong);
   }
   
   public void a(ImageView paramImageView)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a(paramImageView);
+    this.a.a(paramImageView);
   }
   
   public void a(LinearLayout paramLinearLayout)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a(paramLinearLayout);
+    this.a.a(paramLinearLayout);
   }
   
   public void a(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a(paramRelativeLayout);
+    this.a.a(paramRelativeLayout);
   }
   
   public void a(TextView paramTextView)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a(paramTextView);
+    this.a.a(paramTextView);
   }
   
   public void a(AnimationView paramAnimationView)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a(paramAnimationView);
+    this.a.a(paramAnimationView);
   }
   
   public RelativeLayout b()
   {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b();
-  }
-  
-  public TextView b()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b();
-  }
-  
-  public AnimationView b()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b();
+    return this.a.b();
   }
   
   public void b(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b(paramRelativeLayout);
+    this.a.b(paramRelativeLayout);
   }
   
   public void b(TextView paramTextView)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b(paramTextView);
+    this.a.b(paramTextView);
   }
   
   public void b(AnimationView paramAnimationView)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b(paramAnimationView);
-  }
-  
-  public RelativeLayout c()
-  {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c();
+    this.a.b(paramAnimationView);
   }
   
   public TextView c()
   {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c();
+    return this.a.c();
   }
   
   public void c(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c(paramRelativeLayout);
+    this.a.c(paramRelativeLayout);
   }
   
   public void c(TextView paramTextView)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c(paramTextView);
+    this.a.c(paramTextView);
   }
   
   public RelativeLayout d()
   {
-    return this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.d();
+    return this.a.d();
   }
   
   public void d(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.d(paramRelativeLayout);
+    this.a.d(paramRelativeLayout);
+  }
+  
+  public RelativeLayout e()
+  {
+    return this.a.e();
   }
   
   public void e(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.e(paramRelativeLayout);
+    this.a.e(paramRelativeLayout);
+  }
+  
+  public LinearLayout f()
+  {
+    return this.a.f();
   }
   
   public void f(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.f(paramRelativeLayout);
+    this.a.f(paramRelativeLayout);
+  }
+  
+  public TextView g()
+  {
+    return this.a.g();
+  }
+  
+  public TextView h()
+  {
+    return this.a.h();
+  }
+  
+  public ImageView i()
+  {
+    return this.a.i();
+  }
+  
+  public RelativeLayout j()
+  {
+    return this.a.j();
+  }
+  
+  public AnimationView k()
+  {
+    return this.a.k();
+  }
+  
+  public AnimationView l()
+  {
+    return this.a.l();
+  }
+  
+  public long m()
+  {
+    return this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qwallet.QWalletMsgHolder
  * JD-Core Version:    0.7.0.1
  */

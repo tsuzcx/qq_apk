@@ -7,6 +7,7 @@ import android.view.animation.Interpolator;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
+import androidx.recyclerview.R.dimen;
 import java.util.List;
 
 public abstract class ItemTouchHelper$Callback
@@ -45,7 +46,7 @@ public abstract class ItemTouchHelper$Callback
   private int getMaxDragScroll(RecyclerView paramRecyclerView)
   {
     if (this.mCachedMaxScrollSpeed == -1) {
-      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297274);
+      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(R.dimen.item_touch_helper_max_drag_scroll_per_frame);
     }
     return this.mCachedMaxScrollSpeed;
   }

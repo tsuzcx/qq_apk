@@ -15,7 +15,7 @@ class WXTRTCCloud$18
     localStringBuilder.append(this.a);
     WXTRTCCloud.access$1400(localWXTRTCCloud, localStringBuilder.toString());
     if (WXTRTCCloud.access$1500(this.b) != null) {
-      WXTRTCCloud.access$1600(this.b).b(this.a);
+      WXTRTCCloud.access$1600(this.b).c(this.a);
     }
   }
 }

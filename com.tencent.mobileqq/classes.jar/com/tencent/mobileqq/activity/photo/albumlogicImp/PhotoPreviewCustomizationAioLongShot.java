@@ -29,22 +29,22 @@ public class PhotoPreviewCustomizationAioLongShot
   public void a()
   {
     super.a();
-    a().e.setVisibility(8);
-    a().jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new PhotoPreviewCustomizationAioLongShot.1(this));
+    s().p.setVisibility(8);
+    s().l.setOnClickListener(new PhotoPreviewCustomizationAioLongShot.1(this));
   }
   
   public void a(Intent paramIntent)
   {
     super.a(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.customSendBtnText = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.getString(2131689891);
+    this.f.customSendBtnText = this.c.getString(2131886532);
   }
   
   protected void a(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
   {
-    if (a().a() != -1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.jdField_a_of_type_JavaLangString = ((String)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.jdField_a_of_type_JavaUtilArrayList.get(a().a()));
+    if (s().m() != -1) {
+      this.d.m = ((String)this.d.y.get(s().m()));
     }
-    super.a(paramView, 18003, paramBundle, paramInt2, ((IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class)).startEditPic(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.jdField_a_of_type_JavaLangString, true, true, true, true, true, false, false, false, 2, 122, 0, false, null));
+    super.a(paramView, 18003, paramBundle, paramInt2, ((IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class)).startEditPic(this.c, this.d.m, true, true, true, true, true, false, false, false, 2, 122, 0, false, null));
     AIOLongShotHelper.a("0X8009DED");
   }
   
@@ -52,15 +52,15 @@ public class PhotoPreviewCustomizationAioLongShot
   {
     super.b();
     int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size() > 0)) {
+    if ((this.f.selectedPhotoList != null) && (this.f.selectedPhotoList.size() > 0)) {
       i = 1;
     } else {
       i = 0;
     }
-    if ((i != 0) && ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoPreviewData.g) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.isSingleMode)))
+    if ((i != 0) && ((this.d.l) || (this.f.isSingleMode)))
     {
-      a().jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      a().jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+      s().g.setVisibility(0);
+      s().g.setEnabled(true);
     }
   }
   
@@ -68,8 +68,8 @@ public class PhotoPreviewCustomizationAioLongShot
   {
     if (paramInt2 == -1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.setResult(-1, paramIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.finish();
+      this.c.setResult(-1, paramIntent);
+      this.c.finish();
     }
   }
   
@@ -77,8 +77,8 @@ public class PhotoPreviewCustomizationAioLongShot
   {
     if (paramInt2 == -1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.setResult(-1, paramIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.finish();
+      this.c.setResult(-1, paramIntent);
+      this.c.finish();
     }
   }
   
@@ -86,13 +86,13 @@ public class PhotoPreviewCustomizationAioLongShot
   {
     if (paramInt2 == -1)
     {
-      AIOLongShotHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity, paramIntent);
+      AIOLongShotHelper.a(this.c, paramIntent);
       return;
     }
     if ((paramIntent != null) && (paramIntent.getBooleanExtra("NOCANCEL4DATALIN", false)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.setResult(-1, paramIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.finish();
+      this.c.setResult(-1, paramIntent);
+      this.c.finish();
     }
   }
   
@@ -118,7 +118,7 @@ public class PhotoPreviewCustomizationAioLongShot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationAioLongShot
  * JD-Core Version:    0.7.0.1
  */

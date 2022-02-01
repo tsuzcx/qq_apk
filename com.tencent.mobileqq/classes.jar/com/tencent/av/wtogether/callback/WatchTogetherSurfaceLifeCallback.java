@@ -6,9 +6,9 @@ import android.opengl.GLSurfaceView.Renderer;
 public abstract interface WatchTogetherSurfaceLifeCallback
   extends GLSurfaceView.Renderer
 {
-  public abstract void a();
-  
   public abstract void a(GLSurfaceView paramGLSurfaceView);
+  
+  public abstract void c();
 }
 
 

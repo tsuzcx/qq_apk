@@ -33,7 +33,7 @@ class UiApiPlugin$10
       ((StringBuilder)localObject).append("getTribeSayHelloRedInfo callback result = ");
       ((StringBuilder)localObject).append(paramBundle);
       QLog.i("UiApiPlugin", 1, ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      this.b.callJs(this.a, new String[] { paramBundle });
       return;
     }
     catch (JSONException paramBundle)
@@ -44,7 +44,7 @@ class UiApiPlugin$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.10
  * JD-Core Version:    0.7.0.1
  */

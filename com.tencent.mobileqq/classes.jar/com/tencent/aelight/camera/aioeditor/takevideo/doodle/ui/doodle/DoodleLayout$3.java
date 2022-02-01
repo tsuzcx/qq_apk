@@ -12,13 +12,13 @@ class DoodleLayout$3
   
   public void a(@NonNull HorizontalStroke paramHorizontalStroke)
   {
-    this.a.a(paramHorizontalStroke.a, paramHorizontalStroke.b);
+    this.a.a(paramHorizontalStroke.c, paramHorizontalStroke.d);
     VideoEditReport.b("0X80075CD");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.3
  * JD-Core Version:    0.7.0.1
  */

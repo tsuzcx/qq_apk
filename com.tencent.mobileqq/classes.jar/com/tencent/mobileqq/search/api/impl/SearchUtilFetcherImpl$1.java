@@ -17,25 +17,25 @@ class SearchUtilFetcherImpl$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("saveSearchHistory, displayName:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("Q.uniteSearch.SearchUtils", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new SearchHistory();
-    ((SearchHistory)localObject).type = this.jdField_a_of_type_Int;
-    ((SearchHistory)localObject).uin = this.b;
-    ((SearchHistory)localObject).troopUin = this.c;
-    ((SearchHistory)localObject).displayName = this.jdField_a_of_type_JavaLangString;
-    SearchHistoryManager localSearchHistoryManager = (SearchHistoryManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.SEARCHHISTORY_MANAGER);
+    ((SearchHistory)localObject).type = this.b;
+    ((SearchHistory)localObject).uin = this.c;
+    ((SearchHistory)localObject).troopUin = this.d;
+    ((SearchHistory)localObject).displayName = this.a;
+    SearchHistoryManager localSearchHistoryManager = (SearchHistoryManager)this.e.getManager(QQManagerFactory.SEARCHHISTORY_MANAGER);
     if (localSearchHistoryManager == null) {
       return;
     }
-    localSearchHistoryManager.a((SearchHistory)localObject);
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.c = true;
+    localSearchHistoryManager.b((SearchHistory)localObject);
+    com.tencent.mobileqq.search.activity.UniteSearchActivity.n = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.api.impl.SearchUtilFetcherImpl.1
  * JD-Core Version:    0.7.0.1
  */

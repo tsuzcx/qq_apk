@@ -7,8 +7,8 @@ import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParser;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.kandian.base.image.api.impl.PublicAccountHttpDownloaderImpl;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.fastweb.data.MiniAppData;
 import com.tencent.mobileqq.kandian.biz.pts.factory.TemplateFactory;
@@ -24,7 +24,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
 import com.tencent.mobileqq.kandian.repo.follow.RecommendFollowInfo;
 import com.tencent.mobileqq.kandian.repo.pts.entity.FastWebPTSConstans;
 import com.tencent.mobileqq.kandian.repo.pts.entity.ProteusItemData;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.Iterator;
@@ -37,7 +36,7 @@ public class FastWebPTSDataConverter
 {
   public static float a()
   {
-    Object localObject = a();
+    Object localObject = c();
     float f1;
     if (localObject != null) {
       try
@@ -73,7 +72,7 @@ public class FastWebPTSDataConverter
   {
     Object localObject = paramSparseArray;
     if (paramSparseArray == null) {
-      localObject = a();
+      localObject = b();
     }
     float f = ((Float)((SparseArray)localObject).get(paramInt, Float.valueOf(-1.0F))).floatValue();
     paramSparseArray = new StringBuilder();
@@ -93,59 +92,21 @@ public class FastWebPTSDataConverter
     if (paramBaseData == null) {
       return -1000.0F;
     }
-    if (paramBaseData.jdField_b_of_type_Float <= 0.0F) {
+    if (paramBaseData.aV <= 0.0F) {
       if (paramBoolean) {
-        paramBaseData.jdField_b_of_type_Float = c(null);
+        paramBaseData.aV = c(null);
       } else {
-        paramBaseData.jdField_b_of_type_Float = a();
+        paramBaseData.aV = a();
       }
     }
-    return paramBaseData.jdField_b_of_type_Float;
-  }
-  
-  public static SparseArray<Float> a()
-  {
-    localSparseArray = new SparseArray();
-    try
-    {
-      JSONObject localJSONObject = a();
-      Object localObject1;
-      if (localJSONObject != null)
-      {
-        localObject1 = localJSONObject.keys();
-        while (((Iterator)localObject1).hasNext())
-        {
-          String str = (String)((Iterator)localObject1).next();
-          Object localObject2 = localJSONObject.getString(str);
-          try
-          {
-            localSparseArray.append(Integer.valueOf(str).intValue(), Float.valueOf((String)localObject2));
-          }
-          catch (Exception localException2)
-          {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("getModuleWeight error!! msg");
-            ((StringBuilder)localObject2).append(localException2);
-            QLog.d("FastWebPTSDataConverter", 1, ((StringBuilder)localObject2).toString());
-          }
-        }
-      }
-      return localSparseArray;
-    }
-    catch (Exception localException1)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getModuleWeight error! msg");
-      ((StringBuilder)localObject1).append(localException1);
-      QLog.d("FastWebPTSDataConverter", 1, ((StringBuilder)localObject1).toString());
-    }
+    return paramBaseData.aV;
   }
   
   public static TemplateBean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     try
     {
-      if (a(paramAbsBaseArticleInfo))
+      if (b(paramAbsBaseArticleInfo))
       {
         paramAbsBaseArticleInfo = a(paramAbsBaseArticleInfo.mRecommendFollowInfos);
         return ProteusParser.getTemplateBean(TemplateFactory.a("native_article", true), paramAbsBaseArticleInfo);
@@ -178,9 +139,9 @@ public class FastWebPTSDataConverter
     ((StringBuilder)localObject).append(bool);
     QLog.d("FastWebPTSDataConverter", 1, ((StringBuilder)localObject).toString());
     a(localJSONObject, paramFastWebArticleInfo, paramAbsBaseArticleInfo);
-    localObject = (ModuleInfo)paramFastWebArticleInfo.jdField_a_of_type_AndroidUtilSparseArray.get(999);
+    localObject = (ModuleInfo)paramFastWebArticleInfo.F.get(999);
     if (localObject != null) {
-      a(localJSONObject, ((ModuleInfo)localObject).a);
+      a(localJSONObject, ((ModuleInfo)localObject).b);
     }
     return a(localJSONObject, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
   }
@@ -198,9 +159,9 @@ public class FastWebPTSDataConverter
       localObject1 = localObject2;
       paramAbsBaseArticleInfo = a(localJSONObject, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
       localObject1 = paramAbsBaseArticleInfo;
-      paramAbsBaseArticleInfo.A = 1;
+      paramAbsBaseArticleInfo.bf = 1;
       localObject1 = paramAbsBaseArticleInfo;
-      paramAbsBaseArticleInfo.jdField_b_of_type_Float = a(paramSparseArray);
+      paramAbsBaseArticleInfo.aV = a(paramSparseArray);
       return paramAbsBaseArticleInfo;
     }
     catch (Exception paramAbsBaseArticleInfo)
@@ -211,6 +172,20 @@ public class FastWebPTSDataConverter
       QLog.d("FastWebPTSDataConverter", 1, paramFastWebArticleInfo.toString());
     }
     return localObject1;
+  }
+  
+  public static ProteusItemData a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, String paramString1, String paramString2)
+  {
+    if (paramFastWebArticleInfo == null) {
+      return null;
+    }
+    ProteusItemData localProteusItemData = new ProteusItemData(26);
+    localProteusItemData.aQ = paramAbsBaseArticleInfo;
+    localProteusItemData.aR = paramFastWebArticleInfo;
+    localProteusItemData.aZ = paramString1;
+    localProteusItemData.ba = paramString2;
+    localProteusItemData.bf = 1;
+    return localProteusItemData;
   }
   
   public static ProteusItemData a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3, SparseArray<Float> paramSparseArray)
@@ -234,11 +209,11 @@ public class FastWebPTSDataConverter
         localObject1 = localObject2;
         paramAbsBaseArticleInfo = a(localJSONObject, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
         localObject1 = paramAbsBaseArticleInfo;
-        paramAbsBaseArticleInfo.A = 1;
+        paramAbsBaseArticleInfo.bf = 1;
         localObject1 = paramAbsBaseArticleInfo;
-        paramAbsBaseArticleInfo.jdField_b_of_type_Float = a(paramSparseArray);
+        paramAbsBaseArticleInfo.aV = a(paramSparseArray);
         localObject1 = paramAbsBaseArticleInfo;
-        paramAbsBaseArticleInfo.z = 3;
+        paramAbsBaseArticleInfo.be = 3;
         localObject1 = paramAbsBaseArticleInfo;
         if (!TextUtils.isEmpty(paramString2))
         {
@@ -257,7 +232,7 @@ public class FastWebPTSDataConverter
           }
         }
         localObject1 = paramAbsBaseArticleInfo;
-        paramAbsBaseArticleInfo.g = false;
+        paramAbsBaseArticleInfo.bg = false;
         return paramAbsBaseArticleInfo;
       }
       catch (Exception paramAbsBaseArticleInfo)
@@ -279,17 +254,17 @@ public class FastWebPTSDataConverter
     Object localObject1 = localObject2;
     try
     {
-      boolean bool = FastWebImageItemUtils.a(localJSONObject, paramString2, paramString3, ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramString1, 4, null, true).toString());
+      boolean bool = FastWebImageItemUtils.a(localJSONObject, paramString2, paramString3, new PublicAccountHttpDownloaderImpl().makeURL(paramString1, 4, null, true).toString());
       localObject1 = localObject2;
       paramAbsBaseArticleInfo = a(localJSONObject, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
       localObject1 = paramAbsBaseArticleInfo;
-      paramAbsBaseArticleInfo.A = 1;
+      paramAbsBaseArticleInfo.bf = 1;
       localObject1 = paramAbsBaseArticleInfo;
-      paramAbsBaseArticleInfo.jdField_b_of_type_Float = a(paramSparseArray);
+      paramAbsBaseArticleInfo.aV = a(paramSparseArray);
       localObject1 = paramAbsBaseArticleInfo;
-      paramAbsBaseArticleInfo.z = 2;
+      paramAbsBaseArticleInfo.be = 2;
       localObject1 = paramAbsBaseArticleInfo;
-      paramAbsBaseArticleInfo.g = bool;
+      paramAbsBaseArticleInfo.bg = bool;
       return paramAbsBaseArticleInfo;
     }
     catch (Exception paramAbsBaseArticleInfo)
@@ -322,15 +297,15 @@ public class FastWebPTSDataConverter
         localObject1 = localObject2;
         localJSONObject.put("id_attribute_text", paramCharSequence);
         localObject1 = localObject2;
-        localJSONObject.put("attribute_text_size", Float.toString(FastWebPTSUtils.a()));
+        localJSONObject.put("attribute_text_size", Float.toString(FastWebPTSUtils.c()));
         localObject1 = localObject2;
         paramString = a(localJSONObject, null, null);
         localObject1 = paramString;
-        paramString.jdField_b_of_type_Float = a(paramSparseArray);
+        paramString.aV = a(paramSparseArray);
         localObject1 = paramString;
-        paramString.A = 1;
+        paramString.bf = 1;
         localObject1 = paramString;
-        paramString.z = 1;
+        paramString.be = 1;
         return paramString;
       }
       catch (Exception paramCharSequence)
@@ -362,15 +337,15 @@ public class FastWebPTSDataConverter
       localObject1 = localObject2;
       localJSONObject.put("jump_url", paramString2);
       localObject1 = localObject2;
-      localJSONObject.put("attribute_text_size", FastWebPTSUtils.a());
+      localJSONObject.put("attribute_text_size", FastWebPTSUtils.c());
       localObject1 = localObject2;
       paramString1 = a(localJSONObject, null, null);
       localObject1 = paramString1;
-      paramString1.jdField_b_of_type_Float = a(paramSparseArray);
+      paramString1.aV = a(paramSparseArray);
       localObject1 = paramString1;
-      paramString1.A = 1;
+      paramString1.bf = 1;
       localObject1 = paramString1;
-      paramString1.z = 1;
+      paramString1.be = 1;
       return paramString1;
     }
     catch (Exception paramString1)
@@ -392,7 +367,7 @@ public class FastWebPTSDataConverter
   
   private static String a(int paramInt)
   {
-    return FastWebPTSUtils.a(paramInt, HardCodeUtil.a(2131718311));
+    return FastWebPTSUtils.a(paramInt, HardCodeUtil.a(2131915803));
   }
   
   private static String a(long paramLong)
@@ -400,33 +375,11 @@ public class FastWebPTSDataConverter
     if (paramLong > 0L)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131716361));
+      localStringBuilder.append(HardCodeUtil.a(2131913802));
       localStringBuilder.append(ReadInJoyHelper.a(paramLong, 99990000L, "9999万+", ""));
       return localStringBuilder.toString();
     }
     return "";
-  }
-  
-  private static JSONObject a()
-  {
-    Object localObject = Aladdin.getConfig(242).getString("module_type_weight", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    try
-    {
-      localObject = new JSONObject((String)localObject);
-    }
-    catch (Exception localException)
-    {
-      label35:
-      StringBuilder localStringBuilder;
-      break label35;
-    }
-    localObject = null;
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getAladdinWeightConfig! msg");
-    localStringBuilder.append(localObject);
-    QLog.d("FastWebPTSDataConverter", 1, localStringBuilder.toString());
-    return localObject;
   }
   
   public static JSONObject a(RecommendFollowInfos paramRecommendFollowInfos)
@@ -435,7 +388,7 @@ public class FastWebPTSDataConverter
     try
     {
       localJSONObject.put("style_ID", "ReadInjoy_follow_pack_cell");
-      int i = paramRecommendFollowInfos.b;
+      int i = paramRecommendFollowInfos.j;
       if (i == 2) {
         localJSONObject.put("bgColor", "#00000000");
       } else {
@@ -463,7 +416,7 @@ public class FastWebPTSDataConverter
     {
       try
       {
-        int i = paramRecommendFollowInfos.b;
+        int i = paramRecommendFollowInfos.j;
         if (i == 2) {
           localJSONObject.put("style_ID", "RIJ_video_feeds_follow_cell");
         } else {
@@ -506,7 +459,7 @@ public class FastWebPTSDataConverter
     localObject1 = new JSONArray();
     localObject2 = new JSONObject();
     ((JSONObject)localObject2).put("type", "text");
-    ((JSONObject)localObject2).put("text", paramArticleTopicInfo.jdField_a_of_type_JavaLangString);
+    ((JSONObject)localObject2).put("text", paramArticleTopicInfo.a);
     ((JSONArray)localObject1).put(localObject2);
     localJSONObject.put("children", localObject1);
     return localJSONObject;
@@ -530,7 +483,7 @@ public class FastWebPTSDataConverter
   
   private static void a(RecommendFollowInfos paramRecommendFollowInfos, JSONArray paramJSONArray)
   {
-    List localList = paramRecommendFollowInfos.a;
+    List localList = paramRecommendFollowInfos.c;
     if (localList != null)
     {
       if (paramJSONArray == null) {
@@ -597,7 +550,7 @@ public class FastWebPTSDataConverter
       if (paramJSONObject == null) {
         return;
       }
-      paramFastWebArticleInfo = a(paramFastWebArticleInfo.jdField_a_of_type_Long);
+      paramFastWebArticleInfo = a(paramFastWebArticleInfo.c);
       if (!TextUtils.isEmpty(paramFastWebArticleInfo)) {
         try
         {
@@ -619,8 +572,8 @@ public class FastWebPTSDataConverter
   {
     try
     {
-      paramProteusItemData.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-      paramProteusItemData.a = paramFastWebArticleInfo;
+      paramProteusItemData.aQ = paramAbsBaseArticleInfo;
+      paramProteusItemData.aR = paramFastWebArticleInfo;
       paramProteusItemData.b(paramJSONObject);
       paramProteusItemData.a(TemplateFactory.a("native_article", true));
       return;
@@ -646,7 +599,7 @@ public class FastWebPTSDataConverter
       {
         localJSONObject.put("style_ID", "Readinjoy_article_compact_interaction_cell");
         localObject2 = localObject4;
-        boolean bool = paramFastWebArticleInfo.jdField_a_of_type_Boolean;
+        boolean bool = paramFastWebArticleInfo.h;
         if (bool)
         {
           localObject1 = "NativeArticleLikeEnable";
@@ -660,20 +613,20 @@ public class FastWebPTSDataConverter
           localJSONObject.put("dt_actionid", "cancel_like");
         }
         localObject2 = localObject4;
-        localJSONObject.put("interaction_like_count", a(paramFastWebArticleInfo.jdField_a_of_type_Int));
+        localJSONObject.put("interaction_like_count", a(paramFastWebArticleInfo.f));
         localObject2 = localObject4;
         localJSONObject.put("like_normalstate_image", localObject1);
         localObject2 = localObject4;
-        localJSONObject.put("dt_rowkey", paramFastWebArticleInfo.j);
+        localJSONObject.put("dt_rowkey", paramFastWebArticleInfo.q);
         localObject2 = localObject4;
-        if (!paramFastWebArticleInfo.jdField_e_of_type_Boolean) {
+        if (!paramFastWebArticleInfo.N) {
           break label510;
         }
         Object localObject1 = "CoinIcon";
         localObject2 = localObject4;
         localJSONObject.put("coin_img_status", localObject1);
         localObject2 = localObject4;
-        localJSONObject.put("coin_count", FastWebPTSUtils.a(paramFastWebArticleInfo.jdField_e_of_type_Int, HardCodeUtil.a(2131718309)));
+        localJSONObject.put("coin_count", FastWebPTSUtils.a(paramFastWebArticleInfo.M, HardCodeUtil.a(2131915801)));
         localObject2 = localObject4;
         if (!paramFastWebArticleInfo.b()) {
           break label518;
@@ -692,9 +645,9 @@ public class FastWebPTSDataConverter
           }
         }
         localObject2 = localObject4;
-        long l = paramFastWebArticleInfo.d;
+        long l = paramFastWebArticleInfo.g;
         localObject2 = localObject4;
-        localJSONObject.put("interaction_share_count", FastWebPTSUtils.a(l, HardCodeUtil.a(2131715705)));
+        localJSONObject.put("interaction_share_count", FastWebPTSUtils.a(l, HardCodeUtil.a(2131913169)));
         localObject2 = localObject4;
         Iterator localIterator = paramList.iterator();
         localObject1 = localObject3;
@@ -710,17 +663,17 @@ public class FastWebPTSDataConverter
           localObject2 = localObject4;
           localObject1 = (ProteusItemData)localObject1;
           localObject2 = localObject4;
-          if (((ProteusItemData)localObject1).A != 2) {
+          if (((ProteusItemData)localObject1).bf != 2) {
             continue;
           }
         }
         localObject2 = localObject1;
-        localObject3 = (ModuleInfo)paramFastWebArticleInfo.jdField_a_of_type_AndroidUtilSparseArray.get(2);
+        localObject3 = (ModuleInfo)paramFastWebArticleInfo.F.get(2);
         localObject2 = localObject1;
         if (localObject3 != null)
         {
           localObject2 = localObject1;
-          a(localJSONObject, ((ModuleInfo)localObject3).a);
+          a(localJSONObject, ((ModuleInfo)localObject3).b);
           localObject2 = localObject1;
         }
       }
@@ -734,8 +687,8 @@ public class FastWebPTSDataConverter
       if (localObject2 == null)
       {
         paramAbsBaseArticleInfo = a(localJSONObject, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
-        paramAbsBaseArticleInfo.jdField_b_of_type_Float = d(paramSparseArray);
-        paramAbsBaseArticleInfo.A = 2;
+        paramAbsBaseArticleInfo.aV = d(paramSparseArray);
+        paramAbsBaseArticleInfo.bf = 2;
         ItemDatasListUtils.a(paramList, paramAbsBaseArticleInfo);
         return;
       }
@@ -763,8 +716,8 @@ public class FastWebPTSDataConverter
         if ((localObject instanceof ProteusItemData))
         {
           localObject = (ProteusItemData)localObject;
-          if ((((ProteusItemData)localObject).c != null) && ("ReadInjoy_article_read_count_cell".equalsIgnoreCase(((ProteusItemData)localObject).c.optString("style_ID")))) {
-            a(paramFastWebArticleInfo, ((ProteusItemData)localObject).c);
+          if ((((ProteusItemData)localObject).bb != null) && ("ReadInjoy_article_read_count_cell".equalsIgnoreCase(((ProteusItemData)localObject).bb.optString("style_ID")))) {
+            a(paramFastWebArticleInfo, ((ProteusItemData)localObject).bb);
           }
         }
       }
@@ -782,13 +735,13 @@ public class FastWebPTSDataConverter
     {
       try
       {
-        paramJSONObject.put("dt_rowkey", paramFastWebArticleInfo.j);
+        paramJSONObject.put("dt_rowkey", paramFastWebArticleInfo.q);
         if (!paramFastWebArticleInfo.c()) {
           break label323;
         }
         str = "ReadInjoy_article_operate_cell";
         paramJSONObject.put("style_ID", str);
-        boolean bool = paramFastWebArticleInfo.jdField_a_of_type_Boolean;
+        boolean bool = paramFastWebArticleInfo.h;
         if (bool)
         {
           str = "NativeArticleLikeEnable";
@@ -805,21 +758,21 @@ public class FastWebPTSDataConverter
         }
         str = "NativeArticleCollectionEnable";
         paramJSONObject.put("collect_normalstate_image", str);
-        paramJSONObject.put("comment_count", FastWebPTSUtils.a(paramFastWebArticleInfo.jdField_b_of_type_Long, FastWebPTSConstans.jdField_a_of_type_JavaLangString));
-        if (!paramFastWebArticleInfo.jdField_e_of_type_Boolean) {
+        paramJSONObject.put("comment_count", FastWebPTSUtils.a(paramFastWebArticleInfo.d, FastWebPTSConstans.a));
+        if (!paramFastWebArticleInfo.N) {
           break label339;
         }
         str = "CoinIcon";
         paramJSONObject.put("coin_img_status", str);
-        paramJSONObject.put("like_count", a(paramFastWebArticleInfo.jdField_a_of_type_Int));
+        paramJSONObject.put("like_count", a(paramFastWebArticleInfo.f));
         long l;
         if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mShareCount > 0)) {
           l = paramAbsBaseArticleInfo.mShareCount;
         } else {
-          l = paramFastWebArticleInfo.d;
+          l = paramFastWebArticleInfo.g;
         }
-        paramJSONObject.put("share_count", FastWebPTSUtils.a(l, HardCodeUtil.a(2131715705)));
-        paramJSONObject.put("coin_count", FastWebPTSUtils.a(paramFastWebArticleInfo.jdField_e_of_type_Int, HardCodeUtil.a(2131718309)));
+        paramJSONObject.put("share_count", FastWebPTSUtils.a(l, HardCodeUtil.a(2131913169)));
+        paramJSONObject.put("coin_count", FastWebPTSUtils.a(paramFastWebArticleInfo.M, HardCodeUtil.a(2131915801)));
         paramFastWebArticleInfo = new StringBuilder();
         paramFastWebArticleInfo.append("buildNormalCommentBiuOperationData | dynamicData :");
         paramFastWebArticleInfo.append(paramJSONObject.toString());
@@ -893,9 +846,9 @@ public class FastWebPTSDataConverter
         i = 2;
         paramAbsBaseArticleInfo.showFollowButtonType = i;
         if (paramBoolean) {
-          paramAbsBaseArticleInfo = HardCodeUtil.a(2131716363);
+          paramAbsBaseArticleInfo = HardCodeUtil.a(2131913804);
         } else {
-          paramAbsBaseArticleInfo = HardCodeUtil.a(2131716364);
+          paramAbsBaseArticleInfo = HardCodeUtil.a(2131899712);
         }
         paramJSONObject.put("button_status", paramAbsBaseArticleInfo);
         return;
@@ -915,14 +868,47 @@ public class FastWebPTSDataConverter
     }
   }
   
-  public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mRecommendFollowInfos != null) && (!paramAbsBaseArticleInfo.mRecommendFollowInfos.a.isEmpty());
-  }
-  
   public static float b(SparseArray<Float> paramSparseArray)
   {
     return a(paramSparseArray, 3, 3.7F);
+  }
+  
+  public static SparseArray<Float> b()
+  {
+    localSparseArray = new SparseArray();
+    try
+    {
+      JSONObject localJSONObject = c();
+      Object localObject1;
+      if (localJSONObject != null)
+      {
+        localObject1 = localJSONObject.keys();
+        while (((Iterator)localObject1).hasNext())
+        {
+          String str = (String)((Iterator)localObject1).next();
+          Object localObject2 = localJSONObject.getString(str);
+          try
+          {
+            localSparseArray.append(Integer.valueOf(str).intValue(), Float.valueOf((String)localObject2));
+          }
+          catch (Exception localException2)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("getModuleWeight error!! msg");
+            ((StringBuilder)localObject2).append(localException2);
+            QLog.d("FastWebPTSDataConverter", 1, ((StringBuilder)localObject2).toString());
+          }
+        }
+      }
+      return localSparseArray;
+    }
+    catch (Exception localException1)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getModuleWeight error! msg");
+      ((StringBuilder)localObject1).append(localException1);
+      QLog.d("FastWebPTSDataConverter", 1, ((StringBuilder)localObject1).toString());
+    }
   }
   
   public static ProteusItemData b(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, SparseArray<Float> paramSparseArray)
@@ -938,9 +924,9 @@ public class FastWebPTSDataConverter
       localObject1 = localObject2;
       paramAbsBaseArticleInfo = a(localJSONObject, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
       localObject1 = paramAbsBaseArticleInfo;
-      paramAbsBaseArticleInfo.A = 1;
+      paramAbsBaseArticleInfo.bf = 1;
       localObject1 = paramAbsBaseArticleInfo;
-      paramAbsBaseArticleInfo.jdField_b_of_type_Float = (a(paramSparseArray) + 0.01F);
+      paramAbsBaseArticleInfo.aV = (a(paramSparseArray) + 0.01F);
       return paramAbsBaseArticleInfo;
     }
     catch (Exception paramAbsBaseArticleInfo)
@@ -959,9 +945,9 @@ public class FastWebPTSDataConverter
     {
       paramAbsBaseArticleInfo = new MiniAppData(26);
       paramAbsBaseArticleInfo.b = paramJSONObject.optString("movie_name");
-      paramAbsBaseArticleInfo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("mini_program_name");
+      paramAbsBaseArticleInfo.a = paramJSONObject.optString("mini_program_name");
       paramAbsBaseArticleInfo.c = paramJSONObject.optString("exRowkey");
-      paramAbsBaseArticleInfo.jdField_a_of_type_Int = paramJSONObject.optInt("total_time");
+      paramAbsBaseArticleInfo.e = paramJSONObject.optInt("total_time");
       return paramAbsBaseArticleInfo;
     }
     return new ProteusItemData(26);
@@ -1009,9 +995,9 @@ public class FastWebPTSDataConverter
       if (paramJSONObject == null) {
         return;
       }
-      if (paramFastWebArticleInfo.jdField_b_of_type_JavaUtilList != null)
+      if (paramFastWebArticleInfo.I != null)
       {
-        if (paramFastWebArticleInfo.jdField_b_of_type_JavaUtilList.size() <= 0) {
+        if (paramFastWebArticleInfo.I.size() <= 0) {
           return;
         }
         localJSONArray = new JSONArray();
@@ -1022,10 +1008,10 @@ public class FastWebPTSDataConverter
     {
       try
       {
-        if (i < paramFastWebArticleInfo.jdField_b_of_type_JavaUtilList.size())
+        if (i < paramFastWebArticleInfo.I.size())
         {
-          localJSONArray.put(a((ArticleTopicInfo)paramFastWebArticleInfo.jdField_b_of_type_JavaUtilList.get(i)));
-          if (i == paramFastWebArticleInfo.jdField_b_of_type_JavaUtilList.size() - 1) {
+          localJSONArray.put(a((ArticleTopicInfo)paramFastWebArticleInfo.I.get(i)));
+          if (i == paramFastWebArticleInfo.I.size() - 1) {
             break label146;
           }
           localJSONArray.put(a("  "));
@@ -1047,9 +1033,36 @@ public class FastWebPTSDataConverter
     }
   }
   
+  public static boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mRecommendFollowInfos != null) && (!paramAbsBaseArticleInfo.mRecommendFollowInfos.c.isEmpty());
+  }
+  
   public static float c(SparseArray<Float> paramSparseArray)
   {
     return a(paramSparseArray, 5, 7.0F);
+  }
+  
+  private static JSONObject c()
+  {
+    Object localObject = Aladdin.getConfig(242).getString("module_type_weight", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    try
+    {
+      localObject = new JSONObject((String)localObject);
+    }
+    catch (Exception localException)
+    {
+      label35:
+      StringBuilder localStringBuilder;
+      break label35;
+    }
+    localObject = null;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getAladdinWeightConfig! msg");
+    localStringBuilder.append(localObject);
+    QLog.d("FastWebPTSDataConverter", 1, localStringBuilder.toString());
+    return localObject;
   }
   
   public static float d(SparseArray<Float> paramSparseArray)
@@ -1059,7 +1072,7 @@ public class FastWebPTSDataConverter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebPTSDataConverter
  * JD-Core Version:    0.7.0.1
  */

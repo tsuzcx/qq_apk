@@ -1,294 +1,180 @@
 package com.tencent.mobileqq.qqgamepub.hippy.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
-import com.tencent.mobileqq.qqgamepub.data.GmpEnterInfoRsp;
-import com.tencent.mobileqq.qqgamepub.data.QQGameMsgInfo;
-import com.tencent.mobileqq.qqgamepub.utils.GamePAPreloadHelper;
-import com.tencent.mobileqq.qqgamepub.utils.GamePAPreloadHelper.OnPreloadFeedsListener;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
+import com.tencent.mobileqq.qqgamepub.api.IGamePubAccountMsgService;
+import com.tencent.mobileqq.qqgamepub.mvp.model.buisness.QQGameHippyModel;
+import com.tencent.mobileqq.qqgamepub.mvp.presenter.buisness.QQGameHippyPresenterV2;
+import com.tencent.mobileqq.qqgamepub.mvp.view.buisness.IQQGameHippyViewV2;
 import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
-import com.tencent.mobileqq.qqgamepub.utils.QQGameTimingLogger;
 import com.tencent.mobileqq.qqgamepub.utils.QQGameUIHelper;
 import com.tencent.mobileqq.qqgamepub.view.GamePubNav;
-import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
 public class GamePAHippyFragmentV2
-  extends GamePAHippyBaseFragment
-  implements View.OnClickListener
+  extends GamePAHippyBaseFragment<QQGameHippyPresenterV2>
+  implements IQQGameHippyViewV2<QQGameHippyPresenterV2>
 {
-  @SuppressLint({"HandlerLeak"})
-  private Handler jdField_a_of_type_AndroidOsHandler = new GamePAHippyFragmentV2.1(this);
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private GamePAPreloadHelper.OnPreloadFeedsListener jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsGamePAPreloadHelper$OnPreloadFeedsListener = new GamePAHippyFragmentV2.2(this);
-  private GamePubNav jdField_a_of_type_ComTencentMobileqqQqgamepubViewGamePubNav;
-  private View b;
+  public View b;
+  private ViewGroup c;
+  private GamePubNav d;
   
   private View a(LayoutInflater paramLayoutInflater)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559153, null, false);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.findViewById(2131368190));
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGamePubNav = ((GamePubNav)paramLayoutInflater.findViewById(2131376636));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGamePubNav.a();
-    QQGameUIHelper.a(this.jdField_a_of_type_AndroidViewView);
-    i();
+    paramLayoutInflater = paramLayoutInflater.inflate(2131624908, null, false);
+    this.c = ((ViewGroup)paramLayoutInflater.findViewById(2131435055));
+    this.d = ((GamePubNav)paramLayoutInflater.findViewById(2131444897));
+    this.b = this.d.getRightImg();
+    QQGameUIHelper.a(this.b);
+    h();
     return paramLayoutInflater;
   }
   
-  private void b(GmpEnterInfoRsp paramGmpEnterInfoRsp, boolean paramBoolean)
+  private void h()
   {
-    ThreadManagerV2.getUIHandlerV2().post(new GamePAHippyFragmentV2.6(this, paramGmpEnterInfoRsp, paramBoolean));
+    this.d.setMoreClick(new GamePAHippyFragmentV2.1(this));
+    this.d.setReturnClick(new GamePAHippyFragmentV2.2(this));
   }
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGamePubNav.setMoreClick(new GamePAHippyFragmentV2.3(this));
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGamePubNav.setReturnClick(new GamePAHippyFragmentV2.4(this));
+    ThreadManagerV2.getUIHandlerV2().post(new GamePAHippyFragmentV2.5(this));
   }
   
-  private void j()
+  public void a()
   {
-    String str = GamePubAccountHelper.a(this.jdField_a_of_type_JavaUtilList, this.h, this.jdField_a_of_type_Int).toString();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    Message localMessage = new Message();
-    localMessage.what = 2;
-    localMessage.arg1 = -1;
-    localMessage.arg2 = -1;
-    localMessage.obj = str;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    super.a();
+    i();
   }
   
-  protected int a()
+  public void a(long paramLong)
   {
-    return 10;
-  }
-  
-  String a()
-  {
-    return "3";
-  }
-  
-  void a(GmpEnterInfoRsp paramGmpEnterInfoRsp, boolean paramBoolean)
-  {
-    b(paramGmpEnterInfoRsp, paramBoolean);
-  }
-  
-  void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("hippyV2,call handleAdReverseFeedBack arkViewId:");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("QQGamePub_GamePAHippyFragmentV2", 1, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        QQGameMsgInfo localQQGameMsgInfo = (QQGameMsgInfo)((Iterator)localObject).next();
-        if (paramString.equals(String.valueOf(localQQGameMsgInfo.uniseq)))
-        {
-          this.jdField_a_of_type_JavaUtilList.remove(localQQGameMsgInfo);
-          j();
-        }
-      }
-    }
-  }
-  
-  protected int b()
-  {
-    return 12;
-  }
-  
-  public void b() {}
-  
-  public void c(long paramLong)
-  {
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("onHippyFirstScreen");
+    super.a(paramLong);
+    ((QQGameHippyPresenterV2)this.a).a(3);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("onHippyFirstScreen");
     QLog.d("QQGamePub_GamePAHippyFragmentV2", 1, "--->on HippyFirstScreen");
-    if ((paramLong > 0L) && (paramLong > this.jdField_b_of_type_Long)) {
-      this.f = (paramLong - this.jdField_b_of_type_Long);
-    }
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).c(paramLong);
   }
   
-  void c(ArrayList<QQGameMsgInfo> paramArrayList)
+  public void b()
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(0, paramArrayList);
-      j();
-    }
+    super.b();
+    i();
   }
   
-  public void d(long paramLong)
+  public void b(long paramLong)
   {
-    super.d(paramLong);
-    this.jdField_b_of_type_Int = 4;
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("onHippShow");
+    super.b(paramLong);
+    ((QQGameHippyPresenterV2)this.a).a(4);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("onHippShow");
     QLog.d("QQGamePub_GamePAHippyFragmentV2", 1, "--->on hippy show");
-    this.g = (paramLong - this.jdField_b_of_type_Long);
-    ThreadManagerV2.executeOnSubThread(new GamePAHippyFragmentV2.7(this));
-    ((IWebProcessManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IWebProcessManagerService.class, "")).startWebProcess(-1, null);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).d(paramLong);
+    ThreadManagerV2.executeOnSubThread(new GamePAHippyFragmentV2.4(this));
   }
   
-  protected JSONObject doBussinessInitData(JSONObject paramJSONObject)
+  public void e()
   {
-    if (paramJSONObject != null) {}
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("gameData", GamePubAccountHelper.a(this.jdField_a_of_type_JavaUtilList, this.h, this.jdField_a_of_type_Int));
-        localJSONObject.put("headerHeight", 373);
-        int k = 0;
-        localJSONObject.put("messageHeight", 0);
-        localJSONObject.put("msgNum", this.jdField_a_of_type_Int);
-        int j = k;
-        Object localObject;
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          localObject = GamePubAccountHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-          i = 0;
-          j = k;
-          if (i < this.jdField_a_of_type_JavaUtilList.size())
-          {
-            QQGameMsgInfo localQQGameMsgInfo = (QQGameMsgInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-            if ((localQQGameMsgInfo.paMsgid == null) || (!localQQGameMsgInfo.paMsgid.equals(localObject))) {
-              break label237;
-            }
-            j = i;
-          }
-        }
-        localJSONObject.put("index", j);
-        paramJSONObject.put("GpInitData", localJSONObject);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("feedEventJson=");
-          ((StringBuilder)localObject).append(localJSONObject.toString());
-          QLog.d("QQGamePub_GamePAHippyFragmentV2", 1, ((StringBuilder)localObject).toString());
-          return paramJSONObject;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("QQGamePub_GamePAHippyFragmentV2", 1, localJSONException.getMessage());
-      }
-      return paramJSONObject;
-      label237:
-      i += 1;
+      f();
+      ((IGamePubAccountMsgService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IGamePubAccountMsgService.class, "")).showFirstOperationMsg();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQGamePub_GamePAHippyFragmentV2", 2, localThrowable, new Object[0]);
     }
   }
   
-  public void g()
+  public void f()
   {
-    super.g();
-    ThreadManagerV2.getUIHandlerV2().post(new GamePAHippyFragmentV2.8(this));
+    boolean bool = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).isPubAccountReceiveMsg((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null));
+    if (!bool)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("showGameCenterNewEntryByNoticeMsg--->isFlowPa: ");
+      ((StringBuilder)localObject1).append(bool);
+      QLog.i("QQGamePub_GamePAHippyFragmentV2", 2, ((StringBuilder)localObject1).toString());
+      return;
+    }
+    Object localObject1 = GamePubAccountHelper.e();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("showGameCenterNewEntryByNoticeMsg: ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.i("QQGamePub_GamePAHippyFragmentV2", 2, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject2 = ((JSONObject)localObject1).optJSONObject("inner");
+    if (localObject2 != null)
+    {
+      this.d.d();
+      this.d.setNoticeId(((JSONObject)localObject1).optString("notice_id"));
+      this.d.setBubbleJumpUrl(((JSONObject)localObject2).optString("jump_url"));
+      this.d.setUrlType(((JSONObject)localObject2).optInt("jump_type"));
+      this.d.a((JSONObject)localObject1);
+      return;
+    }
+    this.d.c();
+    this.d.e();
+    QLog.w("QQGamePub_GamePAHippyFragmentV2", 1, "push config is empty");
   }
   
-  public void h()
+  public QQGameHippyPresenterV2 g()
   {
-    super.h();
-    ThreadManagerV2.getUIHandlerV2().post(new GamePAHippyFragmentV2.9(this));
+    return new QQGameHippyPresenterV2();
   }
-  
-  public void onClick(View paramView) {}
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("initView");
-    loadHippy(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("loadHippy");
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("initGameContentView");
-    GamePAPreloadHelper.a(this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsGamePAPreloadHelper$OnPreloadFeedsListener);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("setPreloadListener");
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("initViewEnd");
-    paramLayoutInflater = this.jdField_b_of_type_AndroidViewView;
+    paramLayoutInflater = a(paramLayoutInflater);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("initView");
+    loadHippy(this.c);
+    ((QQGameHippyPresenterV2)this.a).a(2);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("loadHippy");
+    e();
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("initGameContentView");
+    ((QQGameHippyPresenterV2)this.a).y();
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("initPreloadListener");
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("initViewEnd");
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
-  public void onDestroyView()
-  {
-    super.onDestroyView();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if (localHandler != null) {
-      localHandler.removeCallbacksAndMessages(null);
-    }
-    GamePAPreloadHelper.b();
-  }
-  
   protected void onLoadHippyError(int paramInt, String paramString)
   {
+    super.onLoadHippyError(paramInt, paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onLoadHippyError statusCode:");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(" msg:");
     localStringBuilder.append(paramString);
     QLog.d("QQGamePub_GamePAHippyFragmentV2", 1, localStringBuilder.toString());
-    this.jdField_b_of_type_Int = 6;
-    super.onLoadHippyError(paramInt, paramString);
-    this.d = (SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long);
-    this.g = -1L;
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("cilke GamePubAccount to onLoadError:");
-    localStringBuilder.append(this.d);
-    QLog.d("QQGamePub_GamePAHippyFragmentV2", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("onLoadHippyEnd");
-    ThreadManagerV2.executeOnSubThread(new GamePAHippyFragmentV2.5(this, paramInt, paramString));
+    ((QQGameHippyPresenterV2)this.a).a(6);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a(false);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).d(-1L);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("onLoadHippyEnd");
+    ThreadManagerV2.executeOnSubThread(new GamePAHippyFragmentV2.3(this, paramInt, paramString));
   }
   
   protected void onLoadHippySuccess()
   {
     super.onLoadHippySuccess();
-    this.jdField_b_of_type_Int = 5;
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameTimingLogger.a("onLoadHippyEnd");
-    this.d = (SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("click GamePubAccount to onLoadSucc:");
-    localStringBuilder.append(this.d);
-    QLog.d("QQGamePub_GamePAHippyFragmentV2", 1, localStringBuilder.toString());
-  }
-  
-  public void onPause()
-  {
-    super.onPause();
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-      {
-        ((IGameMsgManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).setUnshowedUnreadCnt(0);
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    ((QQGameHippyPresenterV2)this.a).a(5);
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a("onLoadHippyEnd");
+    ((QQGameHippyModel)((QQGameHippyPresenterV2)this.a).b()).a(true);
   }
   
   public void onResume()
@@ -296,18 +182,22 @@ public class GamePAHippyFragmentV2
     super.onResume();
     try
     {
-      c();
-      return;
+      if (!((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).isPubAccountReceiveMsg((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)))
+      {
+        i();
+        this.d.e();
+        return;
+      }
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("QQGamePub_GamePAHippyFragmentV2", 1, localThrowable.getMessage());
+      QLog.e("QQGamePub_GamePAHippyFragmentV2", 2, localThrowable, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePAHippyFragmentV2
  * JD-Core Version:    0.7.0.1
  */

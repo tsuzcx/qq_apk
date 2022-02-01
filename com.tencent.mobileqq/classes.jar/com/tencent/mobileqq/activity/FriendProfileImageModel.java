@@ -6,36 +6,24 @@ import com.tencent.mobileqq.app.QQAppInterface;
 
 public abstract class FriendProfileImageModel
 {
-  protected FriendProfileImageModel.InfoUpdateListener a;
-  protected FriendProfileImageModel.ProfileImageInfo a;
-  public QQAppInterface a;
-  protected int b = -1;
-  public String b;
+  public String h;
+  protected FriendProfileImageModel.InfoUpdateListener i;
+  protected int j = -1;
+  protected FriendProfileImageModel.ProfileImageInfo k;
+  public QQAppInterface l;
   
   public FriendProfileImageModel(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.l = paramQQAppInterface;
   }
   
   public abstract int a();
-  
-  public Drawable a()
-  {
-    return null;
-  }
-  
-  public FriendProfileImageModel.ProfileImageInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo;
-  }
-  
-  public abstract FriendProfileImageModel.ProfileImageInfo a(int paramInt);
   
   public abstract void a(int paramInt);
   
   public void a(FriendProfileImageModel.InfoUpdateListener paramInfoUpdateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener = paramInfoUpdateListener;
+    this.i = paramInfoUpdateListener;
   }
   
   public abstract void a(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo);
@@ -44,27 +32,39 @@ public abstract class FriendProfileImageModel
   
   public abstract void a(BaseActivity paramBaseActivity, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo);
   
-  public int b()
+  public Drawable b()
   {
-    return this.b;
+    return null;
   }
+  
+  public abstract FriendProfileImageModel.ProfileImageInfo b(int paramInt);
   
   public abstract void b(BaseActivity paramBaseActivity);
   
+  public FriendProfileImageModel.ProfileImageInfo c()
+  {
+    return this.k;
+  }
+  
   public void c(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
   {
-    if (paramProfileImageInfo == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo)
+    if (paramProfileImageInfo == this.k)
     {
-      FriendProfileImageModel.InfoUpdateListener localInfoUpdateListener = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$InfoUpdateListener;
+      FriendProfileImageModel.InfoUpdateListener localInfoUpdateListener = this.i;
       if (localInfoUpdateListener != null) {
         localInfoUpdateListener.a(paramProfileImageInfo);
       }
     }
   }
+  
+  public int d()
+  {
+    return this.j;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageModel
  * JD-Core Version:    0.7.0.1
  */

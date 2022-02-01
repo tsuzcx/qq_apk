@@ -12,14 +12,8 @@ import mqq.app.AppRuntime;
 
 public class PreloadStaticApi
 {
-  public static final Object a;
-  public static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = TextUtils.isEmpty(c());
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
+  public static boolean a = TextUtils.isEmpty(d());
+  public static final Object b = new Object();
   
   public static ResultReceiver a(ResultReceiver paramResultReceiver)
   {
@@ -44,29 +38,19 @@ public class PreloadStaticApi
     return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).getInstance();
   }
   
-  public static ResourceInfo a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).getResInfoByUrl(paramString, paramBoolean, paramInt);
-  }
-  
-  public static String a()
-  {
-    return a(0);
-  }
-  
   public static String a(int paramInt)
   {
     if (paramInt == 1) {
-      return b();
+      return c();
     }
-    String str = c();
+    String str = d();
     if (!TextUtils.isEmpty(str))
     {
-      jdField_a_of_type_Boolean = false;
+      a = false;
       return str;
     }
-    jdField_a_of_type_Boolean = true;
-    return b();
+    a = true;
+    return c();
   }
   
   public static String a(String paramString)
@@ -112,16 +96,6 @@ public class PreloadStaticApi
     return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).isFileValid(paramResourceInfo, paramDownloadParam);
   }
   
-  public static boolean a(String paramString)
-  {
-    return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).isDiskEnoughToUnzip(paramString);
-  }
-  
-  public static boolean a(String paramString, int paramInt)
-  {
-    return (paramInt == 4) || ((paramString != null) && (paramString.length() > 5) && (paramString.substring(paramString.length() - 4).equals(".zip")));
-  }
-  
   public static boolean a(String paramString1, String paramString2)
   {
     try
@@ -136,12 +110,14 @@ public class PreloadStaticApi
     }
   }
   
+  public static ResourceInfo b(String paramString, boolean paramBoolean, int paramInt)
+  {
+    return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).getResInfoByUrl(paramString, paramBoolean, paramInt);
+  }
+  
   public static String b()
   {
-    StringBuilder localStringBuilder = new StringBuilder(((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath());
-    localStringBuilder.append(".preloaduni");
-    localStringBuilder.append("/");
-    return localStringBuilder.toString();
+    return a(0);
   }
   
   public static String b(String paramString)
@@ -161,12 +137,25 @@ public class PreloadStaticApi
     return localStringBuilder.toString();
   }
   
-  public static boolean b(String paramString)
+  public static String c()
   {
-    return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).isFolderPathValid(paramString);
+    StringBuilder localStringBuilder = new StringBuilder(((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath());
+    localStringBuilder.append(".preloaduni");
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
   }
   
-  public static String c()
+  public static String c(String paramString)
+  {
+    return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).getUnzipFolderPath(paramString);
+  }
+  
+  public static boolean c(String paramString, int paramInt)
+  {
+    return (paramInt == 4) || ((paramString != null) && (paramString.length() > 5) && (paramString.substring(paramString.length() - 4).equals(".zip")));
+  }
+  
+  public static String d()
   {
     Object localObject = null;
     try
@@ -185,19 +174,24 @@ public class PreloadStaticApi
     return null;
   }
   
-  public static String c(String paramString)
-  {
-    return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).getUnzipFolderPath(paramString);
-  }
-  
   public static String d(String paramString)
   {
     return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).getConfigFromQQ(paramString);
   }
+  
+  public static boolean e(String paramString)
+  {
+    return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).isDiskEnoughToUnzip(paramString);
+  }
+  
+  public static boolean f(String paramString)
+  {
+    return ((IPreloadStaticApi)QRoute.api(IPreloadStaticApi.class)).isFolderPathValid(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.PreloadStaticApi
  * JD-Core Version:    0.7.0.1
  */

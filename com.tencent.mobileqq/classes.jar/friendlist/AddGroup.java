@@ -36,7 +36,7 @@ public final class AddGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.AddGroup
  * JD-Core Version:    0.7.0.1
  */

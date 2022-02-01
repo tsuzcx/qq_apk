@@ -24,17 +24,17 @@ class SubscribeShareHelper$3
     }
     if ((paramBoolean) && (paramLong == 0L))
     {
-      SimpleEventBus.getInstance().dispatchEvent(new SubscribeFeedsEvent(SubscribeShareHelper.a(this.a).a.id.get(), 3));
+      SimpleEventBus.getInstance().dispatchEvent(new SubscribeFeedsEvent(SubscribeShareHelper.a(this.a).b.id.get(), 3));
       this.a.a.finish();
-      QQToast.a(this.a.a, HardCodeUtil.a(2131714442), 0).a();
+      QQToast.makeText(this.a.a, HardCodeUtil.a(2131911952), 0).show();
       return;
     }
-    QQToast.a(this.a.a, 1, HardCodeUtil.a(2131714446), 0).a();
+    QQToast.makeText(this.a.a, 1, HardCodeUtil.a(2131911956), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

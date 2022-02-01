@@ -22,7 +22,7 @@ final class ViolaAccessHelper$7
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH_READINJOY_VIOLA_JS_SOURCE_PATH);
-    ((StringBuilder)localObject).append(MD5.a(this.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject).append(MD5.b(this.a));
     ((StringBuilder)localObject).append(".js");
     localObject = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject).toString());
     if (TextUtils.isEmpty((CharSequence)localObject))
@@ -31,7 +31,7 @@ final class ViolaAccessHelper$7
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("loadJSFromNet [url:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append("] get localPath error, download cancel");
         QLog.e("ViolaAccessHelper", 2, ((StringBuilder)localObject).toString());
       }
@@ -42,7 +42,7 @@ final class ViolaAccessHelper$7
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("loadJSFromNet [ url:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("] Download to ");
       localStringBuilder.append((String)localObject);
       QLog.d("ViolaAccessHelper", 2, localStringBuilder.toString());
@@ -50,7 +50,7 @@ final class ViolaAccessHelper$7
     if (new File((String)localObject).exists()) {
       FileUtils.deleteFile((String)localObject);
     }
-    boolean bool = HttpDownloadUtil.download(null, this.jdField_a_of_type_JavaLangString, new File((String)localObject));
+    boolean bool = HttpDownloadUtil.download(null, this.a, new File((String)localObject));
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -61,10 +61,11 @@ final class ViolaAccessHelper$7
     if (bool) {}
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView$LoadAsyBack != null) {
-        new Handler(Looper.getMainLooper()).postDelayed(new ViolaAccessHelper.7.1(this, (String)localObject), 0L);
+      localObject = FileUtils.readFileToString(new File((String)localObject));
+      if (this.b != null) {
+        new Handler(Looper.getMainLooper()).post(new ViolaAccessHelper.7.1(this, (String)localObject));
       }
-      if (TextUtils.isEmpty(FileUtils.readFileToString(new File((String)localObject))))
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ViolaAccessHelper", 2, "loadJSFromNet download isSucc but readFileToString is null");
@@ -74,7 +75,7 @@ final class ViolaAccessHelper$7
       {
         QLog.d("ViolaAccessHelper", 2, "loadJSFromNet download isSucc and readFileToString succ");
         return;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViewViolaBaseView$LoadAsyBack != null) {
+        if (this.b != null) {
           new Handler(Looper.getMainLooper()).postDelayed(new ViolaAccessHelper.7.2(this), 0L);
         }
       }
@@ -85,7 +86,7 @@ final class ViolaAccessHelper$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper.7
  * JD-Core Version:    0.7.0.1
  */

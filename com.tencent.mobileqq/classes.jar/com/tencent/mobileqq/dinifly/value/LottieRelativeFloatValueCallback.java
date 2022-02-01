@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.value;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
 
 public class LottieRelativeFloatValueCallback
@@ -28,7 +28,7 @@ public class LottieRelativeFloatValueCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.value.LottieRelativeFloatValueCallback
  * JD-Core Version:    0.7.0.1
  */

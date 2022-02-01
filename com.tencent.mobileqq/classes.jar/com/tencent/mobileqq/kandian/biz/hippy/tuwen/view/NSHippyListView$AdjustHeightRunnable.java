@@ -15,6 +15,7 @@ class NSHippyListView$AdjustHeightRunnable
   
   public void run()
   {
+    QLog.d("NSHippyListView", 1, "AdjustHeightRunnable#run");
     NSHippyListView.AdjustHeightObserver localAdjustHeightObserver = (NSHippyListView.AdjustHeightObserver)this.observerWeakRef.get();
     if (localAdjustHeightObserver != null)
     {
@@ -26,7 +27,7 @@ class NSHippyListView$AdjustHeightRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.NSHippyListView.AdjustHeightRunnable
  * JD-Core Version:    0.7.0.1
  */

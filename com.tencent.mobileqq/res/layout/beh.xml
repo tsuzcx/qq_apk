@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="@drawable/apb" android:layout_width="350.0dip" android:layout_height="44.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textStyle="bold" android:textColor="@color/bp" android:id="@id/h76" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/rig" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/h75" android:padding="15.0dip" android:clickable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/gvo" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textStyle="bold" android:textColor="@color/black" android:id="@id/h76" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/rig" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/h75" android:padding="15.0dip" android:clickable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/skin_header_bar_mini_close" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

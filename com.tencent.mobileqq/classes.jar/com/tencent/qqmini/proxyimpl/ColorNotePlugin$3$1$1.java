@@ -16,15 +16,15 @@ class ColorNotePlugin$3$1$1
     QLog.d("ColorNotePlugin", 1, localStringBuilder.toString());
     if (paramBoolean)
     {
-      this.a.a.a.ok();
+      this.a.a.b.ok();
       return;
     }
-    this.a.a.a.fail();
+    this.a.a.b.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ColorNotePlugin.3.1.1
  * JD-Core Version:    0.7.0.1
  */

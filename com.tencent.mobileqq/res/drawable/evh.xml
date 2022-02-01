@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="4.0dip" />
-    <solid android:color="#4d000000" />
-</shape>
+    <item android:drawable="@drawable/jlc" android:top="1.0dip" />
+</layer-list>

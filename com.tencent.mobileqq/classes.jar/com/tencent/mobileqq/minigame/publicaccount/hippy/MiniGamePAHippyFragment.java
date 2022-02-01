@@ -43,7 +43,7 @@ public final class MiniGamePAHippyFragment
   
   private final void initNavBar()
   {
-    View localView = getRootView().findViewById(2131371258);
+    View localView = getRootView().findViewById(2131438602);
     Intrinsics.checkExpressionValueIsNotNull(localView, "rootView.findViewById(R.…ni_game_pa_hippy_nav_bar)");
     this.navBar = ((NavBarCommon)localView);
     setNavBar();
@@ -55,7 +55,7 @@ public final class MiniGamePAHippyFragment
     if (localNavBarCommon == null) {
       Intrinsics.throwUninitializedPropertyAccessException("navBar");
     }
-    localNavBarCommon.setTitle(localNavBarCommon.getContext().getText(2131694179));
+    localNavBarCommon.setTitle(localNavBarCommon.getContext().getText(2131891810));
     if (isNightTheme())
     {
       localNavBarCommon.getRootView().setBackgroundColor(-16777216);
@@ -64,7 +64,7 @@ public final class MiniGamePAHippyFragment
       localNavBarCommon.setTitleColor(-1);
       localObject = localNavBarCommon.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      localNavBarCommon.setRightImage(((Context)localObject).getResources().getDrawable(2130850474));
+      localNavBarCommon.setRightImage(((Context)localObject).getResources().getDrawable(2130852270));
     }
     else
     {
@@ -74,7 +74,7 @@ public final class MiniGamePAHippyFragment
       localNavBarCommon.setTitleColor(-16777216);
       localObject = localNavBarCommon.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      localNavBarCommon.setRightImage(((Context)localObject).getResources().getDrawable(2130848560));
+      localNavBarCommon.setRightImage(((Context)localObject).getResources().getDrawable(2130850223));
     }
     localNavBarCommon.setOnItemSelectListener((OnItemSelectListener)new MiniGamePAHippyFragment.setNavBar..inlined.run.lambda.1(this));
     Object localObject = localNavBarCommon.getLayoutParams();
@@ -90,7 +90,7 @@ public final class MiniGamePAHippyFragment
   
   public int getLayoutResId()
   {
-    return 2131559403;
+    return 2131625369;
   }
   
   public void initViews()
@@ -133,7 +133,7 @@ public final class MiniGamePAHippyFragment
     } else {
       i = -1;
     }
-    if (!SimpleUIUtil.a())
+    if (!SimpleUIUtil.e())
     {
       getQBaseActivity().mSystemBarComp = ((SystemBarCompact)null);
       getQBaseActivity().setImmersiveStatus(i);
@@ -148,7 +148,7 @@ public final class MiniGamePAHippyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.hippy.MiniGamePAHippyFragment
  * JD-Core Version:    0.7.0.1
  */

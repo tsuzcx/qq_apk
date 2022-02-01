@@ -50,8 +50,8 @@ class GetBigEmoticonStep$1
             int k = ((JSONArray)localObject2).getJSONObject(i).getInt("epId");
             int m = ((JSONArray)localObject2).getJSONObject(i).getInt("type");
             localPackTypePair = new GetBigEmoticonStep.PackTypePair();
-            localPackTypePair.jdField_a_of_type_JavaLangString = Integer.toString(k);
-            localPackTypePair.jdField_a_of_type_Int = m;
+            localPackTypePair.a = Integer.toString(k);
+            localPackTypePair.b = m;
             ((List)localObject1).add(localPackTypePair);
             i += 1;
             continue;
@@ -59,14 +59,14 @@ class GetBigEmoticonStep$1
           if (((List)localObject1).size() == 0) {
             return;
           }
-          localObject2 = (IEmojiManagerService)this.this$0.mAutomator.a.getRuntimeService(IEmojiManagerService.class);
+          localObject2 = (IEmojiManagerService)this.this$0.mAutomator.k.getRuntimeService(IEmojiManagerService.class);
           i = j;
           if (i < ((List)localObject1).size())
           {
             localPackTypePair = (GetBigEmoticonStep.PackTypePair)((List)localObject1).get(i);
             EmoticonPackage localEmoticonPackage = new EmoticonPackage();
-            localEmoticonPackage.jobType = localPackTypePair.jdField_a_of_type_Int;
-            localEmoticonPackage.epId = localPackTypePair.jdField_a_of_type_JavaLangString;
+            localEmoticonPackage.jobType = localPackTypePair.b;
+            localEmoticonPackage.epId = localPackTypePair.a;
             ((IEmojiManagerService)localObject2).pullEmoticonPackage(localEmoticonPackage, true);
             i += 1;
             continue;
@@ -87,7 +87,7 @@ class GetBigEmoticonStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetBigEmoticonStep.1
  * JD-Core Version:    0.7.0.1
  */

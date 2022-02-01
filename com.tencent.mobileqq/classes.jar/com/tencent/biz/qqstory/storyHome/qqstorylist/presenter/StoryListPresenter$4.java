@@ -10,9 +10,9 @@ class StoryListPresenter$4
   
   public void run()
   {
-    String str = FileUtils.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "qqstory_upgrade_guide.mp4");
+    String str = FileUtils.a(this.this$0.a, "qqstory_upgrade_guide.mp4");
     if (str != null) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.post(new StoryListPresenter.4.1(this, str));
+      this.this$0.e.post(new StoryListPresenter.4.1(this, str));
     }
   }
 }

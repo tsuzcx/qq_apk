@@ -8,7 +8,7 @@ class Interactive3DRenderable$8
 {
   public void run()
   {
-    Interactive3DRenderable.a(this.this$0).native_onTouchCancel(this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_Long, Interactive3DRenderable.a(this.this$0).mCurrentActiveId);
+    Interactive3DRenderable.d(this.this$0).native_onTouchCancel(this.a, this.b, this.c, this.d, Interactive3DRenderable.d(this.this$0).mCurrentActiveId);
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_CANCEL native_onTouchCancel");
     }
@@ -16,7 +16,7 @@ class Interactive3DRenderable$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.8
  * JD-Core Version:    0.7.0.1
  */

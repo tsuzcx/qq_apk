@@ -10,6 +10,7 @@ import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerServiceProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerServiceProxy;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -30,6 +31,35 @@ public class EmoticonPanelTabSortHelper
     super(paramEmoticonPanelController);
   }
   
+  private List<EmotionPanelInfo> filterFavoriteBtnInMatchChat(List<EmotionPanelInfo> paramList)
+  {
+    Object localObject = this.mInteractionListener;
+    if (localObject != null)
+    {
+      if ((((IPanelInteractionListener)localObject).getCurType() != 1044) && (this.mInteractionListener.getCurType() != 1045)) {
+        return paramList;
+      }
+      localObject = Collections.synchronizedList(new ArrayList());
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        ((List)localObject).addAll(paramList);
+      }
+      paramList = new ArrayList();
+      Iterator localIterator = ((List)localObject).iterator();
+      while (localIterator.hasNext())
+      {
+        EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)localIterator.next();
+        if ((localEmotionPanelInfo.type == 4) || (localEmotionPanelInfo.type == 5)) {
+          paramList.add(localEmotionPanelInfo);
+        }
+      }
+      if (!paramList.isEmpty()) {
+        ((List)localObject).removeAll(paramList);
+      }
+      return localObject;
+    }
+    return paramList;
+  }
+  
   public void checkAndRemoveItem(List<EmotionPanelInfo> paramList)
   {
     if (paramList == null) {
@@ -44,14 +74,14 @@ public class EmoticonPanelTabSortHelper
     this.mFrontDisSelectedDataList.clear();
     int i;
     int j;
-    if ((paramEmoticonTabSortConfBean != null) && (!paramEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((paramEmoticonTabSortConfBean != null) && (!paramEmoticonTabSortConfBean.a.isEmpty()))
     {
       i = 0;
       j = 0;
     }
-    while (i < paramEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.size())
+    while (i < paramEmoticonTabSortConfBean.a.size())
     {
-      String str = (String)paramEmoticonTabSortConfBean.jdField_a_of_type_JavaUtilList.get(i);
+      String str = (String)paramEmoticonTabSortConfBean.a.get(i);
       int k;
       if ("face".equalsIgnoreCase(str))
       {
@@ -144,7 +174,7 @@ public class EmoticonPanelTabSortHelper
   {
     EmoticonTabSortConfBean localEmoticonTabSortConfBean = loadTabSortConObj();
     if (localEmoticonTabSortConfBean != null) {
-      return localEmoticonTabSortConfBean.jdField_a_of_type_JavaLangString;
+      return localEmoticonTabSortConfBean.c;
     }
     return "";
   }
@@ -212,41 +242,46 @@ public class EmoticonPanelTabSortHelper
   
   public List<EmotionPanelInfo> getSortEmotionPanelInfoList(List<EmotionPanelInfo> paramList)
   {
+    Object localObject = filterFavoriteBtnInMatchChat(paramList);
     if (!this.mPanelTabSortEnable) {
-      return paramList;
+      return localObject;
     }
-    List localList = Collections.synchronizedList(new ArrayList());
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      localList.addAll(paramList);
+    paramList = Collections.synchronizedList(new ArrayList());
+    if ((localObject != null) && (!((List)localObject).isEmpty())) {
+      paramList.addAll((Collection)localObject);
     }
-    paramList = new ArrayList();
-    Iterator localIterator = localList.iterator();
+    localObject = new ArrayList();
+    Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)localIterator.next();
       if ((localEmotionPanelInfo.type == 13) || (localEmotionPanelInfo.type == 14)) {
-        paramList.add(localEmotionPanelInfo);
+        ((List)localObject).add(localEmotionPanelInfo);
+      }
+      IPanelInteractionListener localIPanelInteractionListener = this.mInteractionListener;
+      if ((localIPanelInteractionListener != null) && (localIPanelInteractionListener.getCurType() == 10014) && ((localEmotionPanelInfo.type == 8) || (localEmotionPanelInfo.type == 11))) {
+        ((List)localObject).add(localEmotionPanelInfo);
       }
     }
-    if (!paramList.isEmpty()) {
-      localList.removeAll(paramList);
+    if (!((List)localObject).isEmpty()) {
+      paramList.removeAll((Collection)localObject);
     }
     if (!this.mFrontDisSelectedDataList.isEmpty()) {
-      localList.addAll(0, this.mFrontDisSelectedDataList);
+      paramList.addAll(0, this.mFrontDisSelectedDataList);
     }
     if (!this.mBehindDisSelectedDataList.isEmpty()) {
-      localList.addAll(this.mBehindDisSelectedDataList);
+      paramList.addAll(this.mBehindDisSelectedDataList);
     }
-    paramList = this.mInteractionListener;
-    if ((paramList != null) && ((paramList.getCurType() == 0) || (this.mInteractionListener.getCurType() == 1) || (this.mInteractionListener.getCurType() == 3000)))
+    localObject = this.mInteractionListener;
+    if ((localObject != null) && ((((IPanelInteractionListener)localObject).getCurType() == 0) || (this.mInteractionListener.getCurType() == 1) || (this.mInteractionListener.getCurType() == 3000)))
     {
-      checkAndRemoveItem(localList);
+      checkAndRemoveItem(paramList);
       checkAndRemoveItem(this.mFrontDisSelectedDataList);
       checkAndRemoveItem(this.mBehindDisSelectedDataList);
     }
-    this.mEmotionPanelInfos = localList;
+    this.mEmotionPanelInfos = paramList;
     updateLastSelectedSecondTabIndex();
-    return localList;
+    return paramList;
   }
   
   public String getTag()
@@ -427,7 +462,7 @@ public class EmoticonPanelTabSortHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelTabSortHelper
  * JD-Core Version:    0.7.0.1
  */

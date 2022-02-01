@@ -16,31 +16,31 @@ class ReadinjoySPEventReport$ScreenReceiver
     if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
     {
       QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-      ReadinjoySPEventReport.e(false);
+      ReadinjoySPEventReport.g(false);
       return;
     }
     if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
     {
       QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-      ReadinjoySPEventReport.e(true);
+      ReadinjoySPEventReport.g(true);
       return;
     }
     if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
     {
       ReadinjoySPEventReport.c(false);
-      ReadinjoySPEventReport.p();
+      ReadinjoySPEventReport.B();
       return;
     }
     if ("mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()))
     {
       ReadinjoySPEventReport.d(false);
-      ReadinjoySPEventReport.p();
+      ReadinjoySPEventReport.B();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ScreenReceiver
  * JD-Core Version:    0.7.0.1
  */

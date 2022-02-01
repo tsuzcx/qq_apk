@@ -157,7 +157,7 @@ public class DexPathListHook
                 {
                   localObject4 = new HookDexZipFile(paramClassLoader, (File)localObject5, (ZipFile)localObject4);
                   ((Field)localObject3).set(localObject2, localObject4);
-                  ((HookDexZipFile)localObject4).a();
+                  ((HookDexZipFile)localObject4).b();
                 }
               }
             }
@@ -192,19 +192,19 @@ public class DexPathListHook
     //   10: invokevirtual 107	java/io/File:exists	()Z
     //   13: ifeq +25 -> 38
     //   16: aload_2
-    //   17: invokevirtual 163	java/io/File:isFile	()Z
+    //   17: invokevirtual 164	java/io/File:isFile	()Z
     //   20: ifeq +18 -> 38
-    //   23: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   26: ifeq +11 -> 37
-    //   29: ldc 146
+    //   29: ldc 147
     //   31: iconst_2
-    //   32: ldc 165
-    //   34: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: ldc 166
+    //   34: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   37: return
-    //   38: new 167	java/util/ArrayList
+    //   38: new 168	java/util/ArrayList
     //   41: dup
     //   42: iconst_1
-    //   43: invokespecial 170	java/util/ArrayList:<init>	(I)V
+    //   43: invokespecial 171	java/util/ArrayList:<init>	(I)V
     //   46: astore 4
     //   48: new 63	java/io/File
     //   51: dup
@@ -215,34 +215,34 @@ public class DexPathListHook
     //   60: invokevirtual 107	java/io/File:exists	()Z
     //   63: ifeq +41 -> 104
     //   66: aload 5
-    //   68: invokevirtual 163	java/io/File:isFile	()Z
+    //   68: invokevirtual 164	java/io/File:isFile	()Z
     //   71: ifeq +33 -> 104
     //   74: aload 5
-    //   76: invokevirtual 174	java/io/File:length	()J
+    //   76: invokevirtual 175	java/io/File:length	()J
     //   79: lconst_0
     //   80: lcmp
     //   81: ifle +23 -> 104
     //   84: aload 4
     //   86: aload 5
-    //   88: invokevirtual 177	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   91: invokeinterface 183 2 0
+    //   88: invokevirtual 178	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   91: invokeinterface 184 2 0
     //   96: pop
     //   97: aload 4
     //   99: aload_0
-    //   100: invokestatic 186	com/tencent/qqperf/opt/clearmemory/DexPathListHook:a	(Ljava/util/List;Ljava/lang/String;)V
+    //   100: invokestatic 187	com/tencent/qqperf/opt/clearmemory/DexPathListHook:a	(Ljava/util/List;Ljava/lang/String;)V
     //   103: return
     //   104: aload 5
-    //   106: invokevirtual 189	java/io/File:getParentFile	()Ljava/io/File;
+    //   106: invokevirtual 190	java/io/File:getParentFile	()Ljava/io/File;
     //   109: invokevirtual 107	java/io/File:exists	()Z
     //   112: ifne +12 -> 124
     //   115: aload 5
-    //   117: invokevirtual 189	java/io/File:getParentFile	()Ljava/io/File;
-    //   120: invokevirtual 192	java/io/File:mkdirs	()Z
+    //   117: invokevirtual 190	java/io/File:getParentFile	()Ljava/io/File;
+    //   120: invokevirtual 193	java/io/File:mkdirs	()Z
     //   123: pop
     //   124: aload 4
     //   126: aload 5
-    //   128: invokevirtual 177	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   131: invokeinterface 183 2 0
+    //   128: invokevirtual 178	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   131: invokeinterface 184 2 0
     //   136: pop
     //   137: aconst_null
     //   138: astore_3
@@ -251,26 +251,26 @@ public class DexPathListHook
     //   141: aload_2
     //   142: astore_1
     //   143: aload 5
-    //   145: invokevirtual 195	java/io/File:createNewFile	()Z
+    //   145: invokevirtual 196	java/io/File:createNewFile	()Z
     //   148: pop
     //   149: aload_2
     //   150: astore_1
-    //   151: new 197	java/io/BufferedOutputStream
+    //   151: new 198	java/io/BufferedOutputStream
     //   154: dup
-    //   155: new 199	java/io/FileOutputStream
+    //   155: new 200	java/io/FileOutputStream
     //   158: dup
     //   159: aload 5
-    //   161: invokespecial 202	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   164: invokespecial 205	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   161: invokespecial 203	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   164: invokespecial 206	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   167: astore_2
     //   168: aload_2
-    //   169: ldc 207
-    //   171: invokevirtual 211	java/lang/String:getBytes	()[B
-    //   174: invokevirtual 215	java/io/BufferedOutputStream:write	([B)V
+    //   169: ldc 208
+    //   171: invokevirtual 212	java/lang/String:getBytes	()[B
+    //   174: invokevirtual 216	java/io/BufferedOutputStream:write	([B)V
     //   177: aload_2
-    //   178: invokevirtual 218	java/io/BufferedOutputStream:flush	()V
+    //   178: invokevirtual 219	java/io/BufferedOutputStream:flush	()V
     //   181: aload_2
-    //   182: invokevirtual 221	java/io/BufferedOutputStream:close	()V
+    //   182: invokevirtual 222	java/io/BufferedOutputStream:close	()V
     //   185: goto +49 -> 234
     //   188: astore_0
     //   189: aload_2
@@ -287,27 +287,27 @@ public class DexPathListHook
     //   206: astore_3
     //   207: aload_2
     //   208: astore_1
-    //   209: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   209: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   212: ifeq +14 -> 226
     //   215: aload_2
     //   216: astore_1
-    //   217: ldc 146
+    //   217: ldc 147
     //   219: iconst_2
-    //   220: ldc 223
+    //   220: ldc 224
     //   222: aload_3
-    //   223: invokestatic 226	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   223: invokestatic 227	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   226: aload_2
     //   227: ifnull +7 -> 234
     //   230: aload_2
-    //   231: invokevirtual 221	java/io/BufferedOutputStream:close	()V
+    //   231: invokevirtual 222	java/io/BufferedOutputStream:close	()V
     //   234: aload 4
     //   236: aload_0
-    //   237: invokestatic 186	com/tencent/qqperf/opt/clearmemory/DexPathListHook:a	(Ljava/util/List;Ljava/lang/String;)V
+    //   237: invokestatic 187	com/tencent/qqperf/opt/clearmemory/DexPathListHook:a	(Ljava/util/List;Ljava/lang/String;)V
     //   240: return
     //   241: aload_1
     //   242: ifnull +7 -> 249
     //   245: aload_1
-    //   246: invokevirtual 221	java/io/BufferedOutputStream:close	()V
+    //   246: invokevirtual 222	java/io/BufferedOutputStream:close	()V
     //   249: aload_0
     //   250: athrow
     //   251: astore_1
@@ -347,38 +347,38 @@ public class DexPathListHook
     //   1: astore 8
     //   3: aconst_null
     //   4: astore 7
-    //   6: new 199	java/io/FileOutputStream
+    //   6: new 200	java/io/FileOutputStream
     //   9: dup
     //   10: new 63	java/io/File
     //   13: dup
     //   14: aload_1
     //   15: invokespecial 100	java/io/File:<init>	(Ljava/lang/String;)V
-    //   18: invokespecial 202	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   18: invokespecial 203	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   21: astore_1
-    //   22: new 197	java/io/BufferedOutputStream
+    //   22: new 198	java/io/BufferedOutputStream
     //   25: dup
     //   26: aload_1
-    //   27: invokespecial 205	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   27: invokespecial 206	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   30: astore_3
     //   31: aload_1
     //   32: astore 4
     //   34: aload_3
     //   35: astore 6
-    //   37: new 230	java/util/zip/ZipOutputStream
+    //   37: new 231	java/util/zip/ZipOutputStream
     //   40: dup
     //   41: aload_3
-    //   42: invokespecial 231	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   42: invokespecial 232	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   45: astore 5
     //   47: aload_0
-    //   48: invokeinterface 235 1 0
+    //   48: invokeinterface 236 1 0
     //   53: astore 4
     //   55: aload 4
-    //   57: invokeinterface 240 1 0
+    //   57: invokeinterface 241 1 0
     //   62: ifeq +133 -> 195
     //   65: new 63	java/io/File
     //   68: dup
     //   69: aload 4
-    //   71: invokeinterface 244 1 0
+    //   71: invokeinterface 245 1 0
     //   76: checkcast 83	java/lang/String
     //   79: invokespecial 100	java/io/File:<init>	(Ljava/lang/String;)V
     //   82: astore_0
@@ -386,19 +386,19 @@ public class DexPathListHook
     //   84: invokevirtual 107	java/io/File:exists	()Z
     //   87: ifeq -32 -> 55
     //   90: aload 5
-    //   92: new 246	java/util/zip/ZipEntry
+    //   92: new 247	java/util/zip/ZipEntry
     //   95: dup
     //   96: aload_0
-    //   97: invokevirtual 247	java/io/File:getName	()Ljava/lang/String;
-    //   100: invokespecial 248	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   103: invokevirtual 252	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   97: invokevirtual 248	java/io/File:getName	()Ljava/lang/String;
+    //   100: invokespecial 249	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   103: invokevirtual 253	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
     //   106: aload 5
     //   108: bipush 9
-    //   110: invokevirtual 255	java/util/zip/ZipOutputStream:setLevel	(I)V
-    //   113: new 257	java/io/FileInputStream
+    //   110: invokevirtual 256	java/util/zip/ZipOutputStream:setLevel	(I)V
+    //   113: new 258	java/io/FileInputStream
     //   116: dup
     //   117: aload_0
-    //   118: invokespecial 258	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   118: invokespecial 259	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   121: astore_0
     //   122: sipush 20480
     //   125: newarray byte
@@ -407,7 +407,7 @@ public class DexPathListHook
     //   130: aload 6
     //   132: iconst_0
     //   133: sipush 20480
-    //   136: invokevirtual 262	java/io/FileInputStream:read	([BII)I
+    //   136: invokevirtual 263	java/io/FileInputStream:read	([BII)I
     //   139: istore_2
     //   140: iload_2
     //   141: iconst_m1
@@ -416,58 +416,58 @@ public class DexPathListHook
     //   147: aload 6
     //   149: iconst_0
     //   150: iload_2
-    //   151: invokevirtual 265	java/util/zip/ZipOutputStream:write	([BII)V
+    //   151: invokevirtual 266	java/util/zip/ZipOutputStream:write	([BII)V
     //   154: goto -25 -> 129
     //   157: aload_0
-    //   158: invokevirtual 266	java/io/FileInputStream:close	()V
+    //   158: invokevirtual 267	java/io/FileInputStream:close	()V
     //   161: aload 5
-    //   163: invokevirtual 267	java/util/zip/ZipOutputStream:flush	()V
+    //   163: invokevirtual 268	java/util/zip/ZipOutputStream:flush	()V
     //   166: aload 5
-    //   168: invokevirtual 270	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   168: invokevirtual 271	java/util/zip/ZipOutputStream:closeEntry	()V
     //   171: goto -116 -> 55
     //   174: aload_0
     //   175: ifnull +7 -> 182
     //   178: aload_0
-    //   179: invokevirtual 266	java/io/FileInputStream:close	()V
+    //   179: invokevirtual 267	java/io/FileInputStream:close	()V
     //   182: aload 5
-    //   184: invokevirtual 267	java/util/zip/ZipOutputStream:flush	()V
+    //   184: invokevirtual 268	java/util/zip/ZipOutputStream:flush	()V
     //   187: aload 5
-    //   189: invokevirtual 270	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   189: invokevirtual 271	java/util/zip/ZipOutputStream:closeEntry	()V
     //   192: aload 4
     //   194: athrow
     //   195: aload 5
-    //   197: invokevirtual 271	java/util/zip/ZipOutputStream:close	()V
+    //   197: invokevirtual 272	java/util/zip/ZipOutputStream:close	()V
     //   200: goto +20 -> 220
     //   203: astore_0
-    //   204: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   204: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   207: ifeq +13 -> 220
-    //   210: ldc 146
+    //   210: ldc 147
     //   212: iconst_2
-    //   213: ldc_w 273
+    //   213: ldc_w 274
     //   216: aload_0
-    //   217: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   217: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   220: aload_3
-    //   221: invokevirtual 221	java/io/BufferedOutputStream:close	()V
+    //   221: invokevirtual 222	java/io/BufferedOutputStream:close	()V
     //   224: goto +20 -> 244
     //   227: astore_0
-    //   228: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   228: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   231: ifeq +13 -> 244
-    //   234: ldc 146
+    //   234: ldc 147
     //   236: iconst_2
-    //   237: ldc_w 273
+    //   237: ldc_w 274
     //   240: aload_0
-    //   241: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   241: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   244: aload_1
-    //   245: invokevirtual 276	java/io/FileOutputStream:close	()V
+    //   245: invokevirtual 277	java/io/FileOutputStream:close	()V
     //   248: return
     //   249: astore_0
-    //   250: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   250: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   253: ifeq +209 -> 462
-    //   256: ldc 146
+    //   256: ldc 147
     //   258: iconst_2
-    //   259: ldc_w 273
+    //   259: ldc_w 274
     //   262: aload_0
-    //   263: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   263: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   266: return
     //   267: astore_0
     //   268: aload_1
@@ -528,7 +528,7 @@ public class DexPathListHook
     //   351: astore 4
     //   353: aload_1
     //   354: astore 6
-    //   356: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   356: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   359: ifeq +24 -> 383
     //   362: aload 7
     //   364: astore 8
@@ -536,44 +536,44 @@ public class DexPathListHook
     //   368: astore 4
     //   370: aload_1
     //   371: astore 6
-    //   373: ldc 146
+    //   373: ldc 147
     //   375: iconst_2
-    //   376: ldc_w 278
+    //   376: ldc_w 279
     //   379: aload_0
-    //   380: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   380: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   383: aload 7
     //   385: ifnull +28 -> 413
     //   388: aload 7
-    //   390: invokevirtual 271	java/util/zip/ZipOutputStream:close	()V
+    //   390: invokevirtual 272	java/util/zip/ZipOutputStream:close	()V
     //   393: goto +20 -> 413
     //   396: astore_0
-    //   397: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   397: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   400: ifeq +13 -> 413
-    //   403: ldc 146
+    //   403: ldc 147
     //   405: iconst_2
-    //   406: ldc_w 273
+    //   406: ldc_w 274
     //   409: aload_0
-    //   410: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   410: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   413: aload_1
     //   414: ifnull +27 -> 441
     //   417: aload_1
-    //   418: invokevirtual 221	java/io/BufferedOutputStream:close	()V
+    //   418: invokevirtual 222	java/io/BufferedOutputStream:close	()V
     //   421: goto +20 -> 441
     //   424: astore_0
-    //   425: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   425: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   428: ifeq +13 -> 441
-    //   431: ldc 146
+    //   431: ldc 147
     //   433: iconst_2
-    //   434: ldc_w 273
+    //   434: ldc_w 274
     //   437: aload_0
-    //   438: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   438: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   441: aload 5
     //   443: ifnull +19 -> 462
     //   446: aload 5
-    //   448: invokevirtual 276	java/io/FileOutputStream:close	()V
+    //   448: invokevirtual 277	java/io/FileOutputStream:close	()V
     //   451: return
     //   452: astore_0
-    //   453: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   453: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   456: ifeq +6 -> 462
     //   459: goto -203 -> 256
     //   462: return
@@ -585,42 +585,42 @@ public class DexPathListHook
     //   470: aload_1
     //   471: ifnull +27 -> 498
     //   474: aload_1
-    //   475: invokevirtual 271	java/util/zip/ZipOutputStream:close	()V
+    //   475: invokevirtual 272	java/util/zip/ZipOutputStream:close	()V
     //   478: goto +20 -> 498
     //   481: astore_1
-    //   482: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   482: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   485: ifeq +13 -> 498
-    //   488: ldc 146
+    //   488: ldc 147
     //   490: iconst_2
-    //   491: ldc_w 273
+    //   491: ldc_w 274
     //   494: aload_1
-    //   495: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   495: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   498: aload_3
     //   499: ifnull +27 -> 526
     //   502: aload_3
-    //   503: invokevirtual 221	java/io/BufferedOutputStream:close	()V
+    //   503: invokevirtual 222	java/io/BufferedOutputStream:close	()V
     //   506: goto +20 -> 526
     //   509: astore_1
-    //   510: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   510: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   513: ifeq +13 -> 526
-    //   516: ldc 146
+    //   516: ldc 147
     //   518: iconst_2
-    //   519: ldc_w 273
+    //   519: ldc_w 274
     //   522: aload_1
-    //   523: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   523: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   526: aload 4
     //   528: ifnull +28 -> 556
     //   531: aload 4
-    //   533: invokevirtual 276	java/io/FileOutputStream:close	()V
+    //   533: invokevirtual 277	java/io/FileOutputStream:close	()V
     //   536: goto +20 -> 556
     //   539: astore_1
-    //   540: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   540: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   543: ifeq +13 -> 556
-    //   546: ldc 146
+    //   546: ldc 147
     //   548: iconst_2
-    //   549: ldc_w 273
+    //   549: ldc_w 274
     //   552: aload_1
-    //   553: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   553: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   556: goto +5 -> 561
     //   559: aload_0
     //   560: athrow
@@ -683,7 +683,7 @@ public class DexPathListHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.clearmemory.DexPathListHook
  * JD-Core Version:    0.7.0.1
  */

@@ -14,32 +14,31 @@ import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
 public class CsTask
 {
   public int a;
-  public long a;
-  public AppInterface a;
-  public CsTask.Callback a;
-  public CsTask.OnCsError a;
   public int b;
-  public int c = 0;
+  public long c = 0L;
+  public CsTask.Callback d;
+  public CsTask.OnCsError e;
+  public int f = 0;
+  public AppInterface g;
   
   public CsTask(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.g = paramAppInterface;
   }
   
   private boolean a(oidb_0xada.ReqBody paramReqBody)
   {
-    paramReqBody.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    paramReqBody.tinyid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
-    String str = ((TicketManager)localObject).getA2(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    paramReqBody.uid.set(Long.parseLong(this.g.getCurrentAccountUin()));
+    paramReqBody.tinyid.set(Long.parseLong(this.g.getCurrentAccountUin()));
+    Object localObject = (TicketManager)this.g.getManager(2);
+    String str = ((TicketManager)localObject).getA2(this.g.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(this.g.getCurrentAccountUin());
     if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.7.0");
-      paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      paramReqBody.version.set("8.8.17");
+      paramReqBody.original_id.set(this.g.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
       return true;
@@ -49,19 +48,19 @@ public class CsTask
   
   public CsTask a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     return this;
   }
   
   public CsTask a(CsTask.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback = paramCallback;
+    this.d = paramCallback;
     return this;
   }
   
   public CsTask a(CsTask.OnCsError paramOnCsError)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError = paramOnCsError;
+    this.e = paramOnCsError;
     return this;
   }
   
@@ -70,10 +69,10 @@ public class CsTask
     oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
     if (a(localReqBody))
     {
-      localReqBody.cmd.set(this.jdField_a_of_type_Int);
+      localReqBody.cmd.set(this.a);
       localReqBody.subcmd.set(this.b);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new CsTask.1(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.g, new CsTask.1(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
     return this;
   }
@@ -86,7 +85,7 @@ public class CsTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.CsTask
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,11 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.FastWebArticleInfo;
 import com.tencent.mobileqq.kandian.repo.pts.entity.ProteusItemData;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -49,13 +48,13 @@ public class FastWebProteusReportUtils
           }
         }
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", str1, str1, 0, 0, "", "", "", paramTemplateBean.build(), false);
+      PublicAccountReportUtils.a(null, "", str1, str1, 0, 0, "", "", "", paramTemplateBean.build(), false);
     }
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, ProteusItemData paramProteusItemData)
   {
-    paramAbsBaseArticleInfo = paramProteusItemData.a;
+    paramAbsBaseArticleInfo = paramProteusItemData.bd;
     if (paramAbsBaseArticleInfo == null)
     {
       QLog.d("FastWebProteusReportUtils", 2, "data is null!");
@@ -76,11 +75,11 @@ public class FastWebProteusReportUtils
         Map.Entry localEntry = (Map.Entry)paramProteusItemData.next();
         paramAbsBaseArticleInfo.addStringNotThrow((String)localEntry.getKey(), localEntry.getValue().toString());
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800B303", "0X800B303", 0, 0, "", "", "", paramAbsBaseArticleInfo.build(), false);
+      PublicAccountReportUtils.a(null, "", "0X800B303", "0X800B303", 0, 0, "", "", "", paramAbsBaseArticleInfo.build(), false);
       if (paramFastWebArticleInfo.get("expose_T") != null)
       {
         paramFastWebArticleInfo = paramFastWebArticleInfo.get("expose_T").toString();
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramFastWebArticleInfo, paramFastWebArticleInfo, 0, 0, "", "", "", paramAbsBaseArticleInfo.build(), false);
+        PublicAccountReportUtils.a(null, "", paramFastWebArticleInfo, paramFastWebArticleInfo, 0, 0, "", "", "", paramAbsBaseArticleInfo.build(), false);
       }
       return;
     }
@@ -97,10 +96,10 @@ public class FastWebProteusReportUtils
     if (paramProteusItemData == null) {
       return false;
     }
-    if (paramProteusItemData.c == null) {
+    if (paramProteusItemData.bb == null) {
       return false;
     }
-    return TextUtils.equals(paramProteusItemData.c.optString("style_ID", ""), "readinjoy_native_tag");
+    return TextUtils.equals(paramProteusItemData.bb.optString("style_ID", ""), "readinjoy_native_tag");
   }
   
   public static void b(TemplateBean paramTemplateBean, ViewBase paramViewBase)
@@ -126,13 +125,13 @@ public class FastWebProteusReportUtils
         localObject = (Map.Entry)paramViewBase.next();
         paramTemplateBean.addStringNotThrow((String)((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue().toString());
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800B304", "0X800B304", 0, 0, "", "", "", paramTemplateBean.build(), false);
+      PublicAccountReportUtils.a(null, "", "0X800B304", "0X800B304", 0, 0, "", "", "", paramTemplateBean.build(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebProteusReportUtils
  * JD-Core Version:    0.7.0.1
  */

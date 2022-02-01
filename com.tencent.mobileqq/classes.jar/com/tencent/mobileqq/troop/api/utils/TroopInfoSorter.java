@@ -47,7 +47,14 @@ public class TroopInfoSorter
     return k << 8 | i | 0x0 | j;
   }
   
-  public static String a(TroopInfo paramTroopInfo)
+  public static void a(TroopInfo paramTroopInfo)
+  {
+    String str = b(paramTroopInfo);
+    paramTroopInfo.mCompareSpell = ChnToSpell.b(str, 1);
+    paramTroopInfo.mComparePartInt = a(str, paramTroopInfo.mCompareSpell);
+  }
+  
+  public static String b(TroopInfo paramTroopInfo)
   {
     if (TextUtils.isEmpty(paramTroopInfo.troopRemark))
     {
@@ -71,17 +78,10 @@ public class TroopInfoSorter
     localStringBuilder.append(paramTroopInfo.troopcode);
     return localStringBuilder.toString();
   }
-  
-  public static void a(TroopInfo paramTroopInfo)
-  {
-    String str = a(paramTroopInfo);
-    paramTroopInfo.mCompareSpell = ChnToSpell.a(str, 1);
-    paramTroopInfo.mComparePartInt = a(str, paramTroopInfo.mCompareSpell);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.utils.TroopInfoSorter
  * JD-Core Version:    0.7.0.1
  */

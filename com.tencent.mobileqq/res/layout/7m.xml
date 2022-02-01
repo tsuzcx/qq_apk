@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.flashshow.view.FSPageTurnContainer android:id="@id/ngp" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <include layout="@layout/7z" />
+    </LinearLayout>
+    <com.tencent.mobileqq.flashshow.widgets.comment.FSPanelLoadingView android:layout_gravity="center" android:id="@id/ngo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/8n" />
+    <com.tencent.mobileqq.flashshow.widgets.fault.FSFullScreenHintView android:id="@id/ngj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="center|top" android:id="@id/nha" android:layout="@layout/9a" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ViewStub android:layout_gravity="center|top" android:id="@id/ngy" android:layout="@layout/8k" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

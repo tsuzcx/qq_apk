@@ -13,7 +13,7 @@ class DavWTogetherObserver$2
     if (this.a.isFinishing()) {
       return;
     }
-    String str = this.a.getString(2131695991);
+    String str = this.a.getString(2131893753);
     WTogetherUtil.a(this.a, str);
   }
 }

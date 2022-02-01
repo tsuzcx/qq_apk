@@ -47,7 +47,7 @@ public class RecentTroopIconUtil
         {
           paramString = (TroopHonor)paramQQAppInterface.next();
           SingleLineTextView.IconDrawableInfo localIconDrawableInfo = new SingleLineTextView.IconDrawableInfo();
-          localIconDrawableInfo.icon_static_url = paramString.b;
+          localIconDrawableInfo.icon_static_url = paramString.c;
           paramArrayList.add(localIconDrawableInfo);
         }
       }
@@ -68,7 +68,7 @@ public class RecentTroopIconUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RecentTroopIconUtil
  * JD-Core Version:    0.7.0.1
  */

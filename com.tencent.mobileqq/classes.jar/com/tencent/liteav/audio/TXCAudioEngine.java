@@ -2,38 +2,47 @@ package com.tencent.liteav.audio;
 
 import android.content.Context;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.liteav.audio.impl.Play.TXCMultAudioTrackPlayer;
 import com.tencent.liteav.audio.impl.Record.TXCAudioSysRecord;
 import com.tencent.liteav.audio.impl.TXCAudioEngineJNI;
 import com.tencent.liteav.audio.impl.TXCAudioEngineJNI.a;
-import com.tencent.liteav.audio.impl.b;
+import com.tencent.liteav.audio.impl.earmonitor.HuaweiAudioKit;
+import com.tencent.liteav.audio.impl.earmonitor.TXSystemAudioKit;
+import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.StatusBucket;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 public class TXCAudioEngine
-  implements b
+  implements com.tencent.liteav.audio.impl.b, com.tencent.liteav.audio.impl.earmonitor.a
 {
   private static final int EVT_AUDIO_DEVICE_RESTART_WHEN_USING_STABLE_SAMPLERATE = 10056;
   private static final int EVT_AUDIO_DEVICE_ROLLBACK_TO_STABLE_SAMPLERATE = 10055;
+  private static final long SYSTEM_AUDIO_KIT_RESTART_INTERVAL = TimeUnit.SECONDS.toMillis(2L);
   private static final String TAG = "AudioEngine :TXCAudioEngine_java";
   private static volatile boolean has_init = false;
   private static boolean has_trae;
-  private static WeakReference<d> mAudioCoreDataListener;
+  private static WeakReference<f> mAudioCoreDataListener;
   protected static Context mContext;
-  protected static final HashMap<String, WeakReference<d>> mJitterDataListenerMap;
+  protected static final HashMap<String, WeakReference<f>> mJitterDataListenerMap;
   private static final Object mJitterDataListenerMapLock;
-  protected static final HashMap<String, WeakReference<c>> mJitterEventListenerMap;
+  protected static final HashMap<String, WeakReference<d>> mJitterEventListenerMap;
   private static final Object mJitterEventListenerMapLock;
   static TXCAudioEngine sInstance = new TXCAudioEngine();
-  private final ArrayList<WeakReference<com.tencent.liteav.basic.b.a>> mCallbackList = new ArrayList();
+  private TXSystemAudioKit mAudioKit;
+  private final ArrayList<WeakReference<com.tencent.liteav.basic.c.a>> mCallbackList = new ArrayList();
   protected boolean mDeviceIsRecording = false;
   protected boolean mIsCallComed = false;
   protected boolean mIsCustomRecord = false;
+  private final Object mStartStopRemoteAudioMutex = new Object();
   
   static
   {
@@ -137,7 +146,7 @@ public class TXCAudioEngine
       ((StringBuilder)localObject1).append("\n");
       localObject1 = ((StringBuilder)localObject1).toString();
     }
-    long l = a.a().b("timestamp_rollback_to_stable_samplerate", 0L);
+    long l = b.a().b("timestamp_rollback_to_stable_samplerate", 0L);
     boolean bool;
     if (System.currentTimeMillis() - l < paramLong) {
       bool = true;
@@ -156,7 +165,7 @@ public class TXCAudioEngine
         {
           paramContext = new StringBuilder();
           paramContext.append((String)localObject1);
-          paramContext.append("  component 1\n");
+          paramContext.append("  traemodes 1|2\n");
           paramContext = paramContext.toString();
           paramBoolean = new StringBuilder();
           paramBoolean.append(paramContext);
@@ -197,6 +206,14 @@ public class TXCAudioEngine
     paramBoolean.append(paramContext);
     paramBoolean.append("}");
     return paramBoolean.toString();
+  }
+  
+  private TXSystemAudioKit createManufacturerAudioKit(Context paramContext)
+  {
+    if (Build.MANUFACTURER.equalsIgnoreCase("huawei")) {
+      return new HuaweiAudioKit();
+    }
+    return null;
   }
   
   public static void enableAudioEarMonitoring(boolean paramBoolean)
@@ -254,12 +271,12 @@ public class TXCAudioEngine
   {
     if (paramInt == 10055)
     {
-      a.a().a("timestamp_rollback_to_stable_samplerate", System.currentTimeMillis());
+      b.a().a("timestamp_rollback_to_stable_samplerate", System.currentTimeMillis());
       return;
     }
     if (paramInt == 10056)
     {
-      a.a().a("timestamp_rollback_to_stable_samplerate", 0L);
+      b.a().a("timestamp_rollback_to_stable_samplerate", 0L);
       TXCLog.i("AudioEngine :TXCAudioEngine_java", "audio device restart when using stable samplerate");
     }
   }
@@ -277,19 +294,19 @@ public class TXCAudioEngine
       {
         if (mJitterEventListenerMap.get(paramString1) != null)
         {
-          localc = (c)((WeakReference)mJitterEventListenerMap.get(paramString1)).get();
-          if (localc != null)
+          locald = (d)((WeakReference)mJitterEventListenerMap.get(paramString1)).get();
+          if (locald != null)
           {
             ??? = new StringBuilder();
             ((StringBuilder)???).append("onAudioJitterBufferNotify  cur state ");
             ((StringBuilder)???).append(paramInt);
             TXCLog.i("AudioEngine :TXCAudioEngine_java", ((StringBuilder)???).toString());
-            localc.onAudioJitterBufferNotify(paramString1, paramInt, paramString2);
+            locald.onAudioJitterBufferNotify(paramString1, paramInt, paramString2);
           }
           return;
         }
       }
-      c localc = null;
+      d locald = null;
     }
   }
   
@@ -301,14 +318,14 @@ public class TXCAudioEngine
       {
         if (mJitterDataListenerMap.get(paramString) != null)
         {
-          locald = (d)((WeakReference)mJitterDataListenerMap.get(paramString)).get();
-          if (locald != null) {
-            locald.onAudioPlayPcmData(paramString, paramArrayOfByte, paramLong, paramInt1, paramInt2);
+          localf = (f)((WeakReference)mJitterDataListenerMap.get(paramString)).get();
+          if (localf != null) {
+            localf.onAudioPlayPcmData(paramString, paramArrayOfByte, paramLong, paramInt1, paramInt2);
           }
           return;
         }
       }
-      d locald = null;
+      f localf = null;
     }
   }
   
@@ -317,9 +334,9 @@ public class TXCAudioEngine
     Object localObject = mAudioCoreDataListener;
     if (localObject != null)
     {
-      localObject = (d)((WeakReference)localObject).get();
+      localObject = (f)((WeakReference)localObject).get();
       if (localObject != null) {
-        ((d)localObject).onAudioPlayPcmData(null, paramArrayOfByte, paramLong, paramInt1, paramInt2);
+        ((f)localObject).onAudioPlayPcmData(null, paramArrayOfByte, paramLong, paramInt1, paramInt2);
       }
     }
   }
@@ -342,11 +359,11 @@ public class TXCAudioEngine
     TXCAudioEngineJNI.nativeSetAudioRoute(paramInt);
   }
   
-  public static void setPlayoutDataListener(d paramd)
+  public static void setPlayoutDataListener(f paramf)
   {
-    mAudioCoreDataListener = new WeakReference(paramd);
+    mAudioCoreDataListener = new WeakReference(paramf);
     boolean bool;
-    if (paramd == null) {
+    if (paramf == null) {
       bool = false;
     } else {
       bool = true;
@@ -363,14 +380,43 @@ public class TXCAudioEngine
     TXCAudioEngineJNI.nativeSetSystemVolumeType(paramInt);
   }
   
+  private void startSystemAudioKit()
+  {
+    if (this.mAudioKit == null)
+    {
+      Context localContext = mContext;
+      if (localContext == null) {
+        return;
+      }
+      this.mAudioKit = createManufacturerAudioKit(localContext);
+      if (this.mAudioKit != null)
+      {
+        TXCAudioEngineJNI.nativeNotifySystemEarMonitoringInitializing();
+        this.mAudioKit.initialize(mContext, this);
+        return;
+      }
+      TXCAudioEngineJNI.nativeSetSystemEarMonitoring(null);
+    }
+  }
+  
   public void EnableMixMode(boolean paramBoolean)
   {
     TXCAudioEngineJNI.nativeEnableMixMode(paramBoolean);
   }
   
+  public boolean IsDataCallbackFormatInvalid(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return TXCAudioEngineJNI.nativeIsDataCallbackFormatInvalid(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public void SetAudioCacheParams(int paramInt1, int paramInt2)
+  {
+    TXCAudioEngineJNI.nativeSetAudioCacheParams(paramInt1, paramInt2);
+  }
+  
   public void UnInitAudioDevice() {}
   
-  public void addEventCallback(WeakReference<com.tencent.liteav.basic.b.a> paramWeakReference)
+  public void addEventCallback(WeakReference<com.tencent.liteav.basic.c.a> paramWeakReference)
   {
     if (paramWeakReference == null) {
       return;
@@ -400,6 +446,11 @@ public class TXCAudioEngine
     return true;
   }
   
+  public void enableDeviceAbnormalDetection(boolean paramBoolean)
+  {
+    TXCAudioEngineJNI.nativeEnableDeviceAbnormalDetection(paramBoolean);
+  }
+  
   public void enableEncodedDataCallback(boolean paramBoolean)
   {
     TXCAudioEngineJNI.nativeEnableEncodedDataCallback(paramBoolean);
@@ -408,6 +459,11 @@ public class TXCAudioEngine
   public void enableEncodedDataPackWithTRAEHeaderCallback(boolean paramBoolean)
   {
     TXCAudioEngineJNI.nativeEnableEncodedDataPackWithTRAEHeaderCallback(paramBoolean);
+  }
+  
+  public void enableInbandFEC(boolean paramBoolean)
+  {
+    TXCAudioEngineJNI.nativeEnableInbandFEC(paramBoolean);
   }
   
   public void enableSoftAEC(boolean paramBoolean, int paramInt)
@@ -460,6 +516,11 @@ public class TXCAudioEngine
   public int getAECType()
   {
     return 2;
+  }
+  
+  public Context getAppContext()
+  {
+    return mContext;
   }
   
   public TXCAudioEncoderConfig getAudioEncoderConfig()
@@ -557,6 +618,33 @@ public class TXCAudioEngine
     TXCAudioEngineJNI.nativeMuteRemoteAudioInSpeaker(paramString, paramBoolean);
   }
   
+  public void onAudioKitError(TXSystemAudioKit paramTXSystemAudioKit)
+  {
+    if (this.mAudioKit != paramTXSystemAudioKit) {
+      return;
+    }
+    TXCLog.i("AudioEngine :TXCAudioEngine_java", "onAudioKitError");
+    paramTXSystemAudioKit = this.mAudioKit;
+    if (paramTXSystemAudioKit != null)
+    {
+      paramTXSystemAudioKit.stopSystemEarMonitoring();
+      this.mAudioKit.uninitialize();
+      this.mAudioKit = null;
+    }
+    new Handler(Looper.getMainLooper()).postDelayed(new TXCAudioEngine.1(this), SYSTEM_AUDIO_KIT_RESTART_INTERVAL);
+  }
+  
+  public void onAudioKitInitFinished(TXSystemAudioKit paramTXSystemAudioKit, boolean paramBoolean)
+  {
+    if (this.mAudioKit != paramTXSystemAudioKit) {
+      return;
+    }
+    TXCLog.i("AudioEngine :TXCAudioEngine_java", "system audio kit init finished, ret: %b.", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (!paramBoolean) {
+      TXCAudioEngineJNI.nativeSetSystemEarMonitoring(null);
+    }
+  }
+  
   public void onCallStateChanged(int paramInt)
   {
     if (paramInt != 0)
@@ -569,6 +657,8 @@ public class TXCAudioEngine
         TXCLog.i("AudioEngine :TXCAudioEngine_java", "TelephonyManager.CALL_STATE_OFFHOOK!");
         TXCAudioEngineJNI.pauseAudioCapture(true);
         TXAudioEffectManagerImpl.getInstance().interruptAllMusics();
+        TXAudioEffectManagerImpl.getCacheInstance().interruptAllMusics();
+        TXAudioEffectManagerImpl.getAutoCacheHolder().interruptAllMusics();
         this.mIsCallComed = true;
         return;
       }
@@ -581,7 +671,23 @@ public class TXCAudioEngine
       this.mIsCallComed = false;
       TXCAudioEngineJNI.resumeAudioCapture();
       TXAudioEffectManagerImpl.getInstance().recoverAllMusics();
+      TXAudioEffectManagerImpl.getCacheInstance().recoverAllMusics();
+      TXAudioEffectManagerImpl.getAutoCacheHolder().recoverAllMusics();
     }
+  }
+  
+  public void onEarMonitoringInitialized(TXSystemAudioKit paramTXSystemAudioKit, boolean paramBoolean)
+  {
+    if (this.mAudioKit != paramTXSystemAudioKit) {
+      return;
+    }
+    TXCLog.i("AudioEngine :TXCAudioEngine_java", "onEarMonitoringInitialized result: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      TXCAudioEngineJNI.nativeSetSystemEarMonitoring(this.mAudioKit);
+      return;
+    }
+    TXCAudioEngineJNI.nativeSetSystemEarMonitoring(null);
   }
   
   public void onError(String paramString1, int paramInt, String paramString2, String paramString3)
@@ -595,7 +701,7 @@ public class TXCAudioEngine
       Iterator localIterator = this.mCallbackList.iterator();
       while (localIterator.hasNext())
       {
-        com.tencent.liteav.basic.b.a locala = (com.tencent.liteav.basic.b.a)((WeakReference)localIterator.next()).get();
+        com.tencent.liteav.basic.c.a locala = (com.tencent.liteav.basic.c.a)((WeakReference)localIterator.next()).get();
         if (locala != null) {
           localArrayList.add(locala);
         } else {
@@ -607,7 +713,7 @@ public class TXCAudioEngine
       }
       ??? = localArrayList.iterator();
       while (((Iterator)???).hasNext()) {
-        ((com.tencent.liteav.basic.b.a)((Iterator)???).next()).onError(paramString1, paramInt, paramString2, paramString3);
+        ((com.tencent.liteav.basic.c.a)((Iterator)???).next()).onError(paramString1, paramInt, paramString2, paramString3);
       }
       return;
     }
@@ -629,7 +735,7 @@ public class TXCAudioEngine
       Iterator localIterator = this.mCallbackList.iterator();
       while (localIterator.hasNext())
       {
-        com.tencent.liteav.basic.b.a locala = (com.tencent.liteav.basic.b.a)((WeakReference)localIterator.next()).get();
+        com.tencent.liteav.basic.c.a locala = (com.tencent.liteav.basic.c.a)((WeakReference)localIterator.next()).get();
         if (locala != null) {
           localArrayList.add(locala);
         } else {
@@ -641,7 +747,41 @@ public class TXCAudioEngine
       }
       ??? = localArrayList.iterator();
       while (((Iterator)???).hasNext()) {
-        ((com.tencent.liteav.basic.b.a)((Iterator)???).next()).onEvent(paramString1, paramInt, paramString2, paramString3);
+        ((com.tencent.liteav.basic.c.a)((Iterator)???).next()).onEvent(paramString1, paramInt, paramString2, paramString3);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramString1;
+    }
+  }
+  
+  public void onWarning(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    handleAudioEvent(paramString1, paramInt, paramString2, paramString3);
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.mCallbackList)
+    {
+      if (this.mCallbackList.size() <= 0) {
+        return;
+      }
+      Iterator localIterator = this.mCallbackList.iterator();
+      while (localIterator.hasNext())
+      {
+        com.tencent.liteav.basic.c.a locala = (com.tencent.liteav.basic.c.a)((WeakReference)localIterator.next()).get();
+        if (locala != null) {
+          localArrayList.add(locala);
+        } else {
+          localIterator.remove();
+        }
+      }
+      if (this.mCallbackList.size() <= 0) {
+        TXCAudioEngineJNI.nativeSetEventCallbackEnabled(false);
+      }
+      ??? = localArrayList.iterator();
+      while (((Iterator)???).hasNext()) {
+        ((com.tencent.liteav.basic.c.a)((Iterator)???).next()).onWarning(paramString1, paramInt, paramString2, paramString3);
       }
       return;
     }
@@ -682,13 +822,13 @@ public class TXCAudioEngine
     TXCAudioEngineJNI.sendCustomPCMData(paramArrayOfByte, paramInt1, paramInt2);
   }
   
-  public boolean setAudioCaptureDataListener(e parame)
+  public boolean setAudioCaptureDataListener(g paramg)
   {
     TXCLog.i("AudioEngine :TXCAudioEngine_java", "setRecordListener ");
-    if (parame == null) {
+    if (paramg == null) {
       TXCAudioEngineJNI.setAudioCaptureDataListener(null);
     } else {
-      TXCAudioEngineJNI.setAudioCaptureDataListener(new WeakReference(parame));
+      TXCAudioEngineJNI.setAudioCaptureDataListener(new WeakReference(paramg));
     }
     return true;
   }
@@ -738,9 +878,27 @@ public class TXCAudioEngine
     TXCAudioEngineJNI.nativeSetEncoderSampleRate(paramInt);
   }
   
+  public void setLocalProcessedDataCallbackFormat(int paramInt1, int paramInt2, int paramInt3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setLocalProcessedDataCallbackFormat: sampleRate-");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" channels-");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" length-");
+    localStringBuilder.append(paramInt3);
+    TXCLog.i("AudioEngine :TXCAudioEngine_java", localStringBuilder.toString());
+    TXCAudioEngineJNI.nativeSetLocalProcessedDataCallbackFormat(paramInt1, paramInt2, paramInt3);
+  }
+  
   public void setMaxSelectedPlayStreams(int paramInt)
   {
     TXCAudioEngineJNI.nativeSetMaxSelectedPlayStreams(paramInt);
+  }
+  
+  public void setMixedAllDataListener(e parame)
+  {
+    TXCAudioEngineJNI.setMixedAllDataListener(parame);
   }
   
   public boolean setMixingPlayoutVolume(float paramFloat)
@@ -771,14 +929,14 @@ public class TXCAudioEngine
     TXCAudioEngineJNI.nativeSetRemoteAudioCacheParams(paramString, paramBoolean, paramInt1, paramInt2, paramInt3);
   }
   
-  public void setRemoteAudioStreamEventListener(String paramString, c paramc)
+  public void setRemoteAudioStreamEventListener(String paramString, d paramd)
   {
     if (paramString == null) {
       return;
     }
     synchronized (mJitterEventListenerMapLock)
     {
-      mJitterEventListenerMap.put(paramString, new WeakReference(paramc));
+      mJitterEventListenerMap.put(paramString, new WeakReference(paramd));
       return;
     }
   }
@@ -816,16 +974,16 @@ public class TXCAudioEngine
     return true;
   }
   
-  public void setSetAudioEngineRemoteStreamDataListener(String paramString, d paramd)
+  public void setSetAudioEngineRemoteStreamDataListener(String paramString, f paramf)
   {
     if (paramString == null) {
       return;
     }
     synchronized (mJitterDataListenerMapLock)
     {
-      mJitterDataListenerMap.put(paramString, new WeakReference(paramd));
+      mJitterDataListenerMap.put(paramString, new WeakReference(paramf));
       boolean bool;
-      if (paramd == null) {
+      if (paramf == null) {
         bool = false;
       } else {
         bool = true;
@@ -843,6 +1001,11 @@ public class TXCAudioEngine
     TXCLog.i("AudioEngine :TXCAudioEngine_java", localStringBuilder.toString());
     TXCAudioEngineJNI.nativeSetSoftwareCaptureVolume(paramFloat);
     return true;
+  }
+  
+  public void setSystemAudioKitEnabled()
+  {
+    startSystemAudioKit();
   }
   
   public boolean setVoiceChangerType(TXAudioEffectManager.TXVoiceChangerType paramTXVoiceChangerType)
@@ -880,9 +1043,13 @@ public class TXCAudioEngine
   
   public void startRemoteAudio(String paramString, boolean paramBoolean)
   {
-    TXCAudioEngineJNI.nativeStartRemoteAudio(sInstance, paramBoolean, paramString);
-    TXCAudioEngineJNI.nativeSetRemoteAudioJitterCycle(paramString, com.tencent.liteav.basic.d.c.a().a("Audio", "LIVE_JitterCycle"));
-    TXCAudioEngineJNI.nativeSetRemoteAudioBlockThreshold(paramString, com.tencent.liteav.basic.d.c.a().a("Audio", "LoadingThreshold"));
+    synchronized (this.mStartStopRemoteAudioMutex)
+    {
+      TXCAudioEngineJNI.nativeStartRemoteAudio(sInstance, paramBoolean, paramString);
+      TXCAudioEngineJNI.nativeSetRemoteAudioJitterCycle(paramString, c.a().a("Audio", "LIVE_JitterCycle"));
+      TXCAudioEngineJNI.nativeSetRemoteAudioBlockThreshold(paramString, c.a().a("Audio", "LoadingThreshold"));
+      return;
+    }
   }
   
   public int stopLocalAudio()
@@ -900,12 +1067,16 @@ public class TXCAudioEngine
     if (paramString == null) {
       return;
     }
-    TXCAudioEngineJNI.nativeStopRemoteAudio(paramString);
+    synchronized (this.mStartStopRemoteAudioMutex)
+    {
+      TXCAudioEngineJNI.nativeStopRemoteAudio(paramString);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCAudioEngine
  * JD-Core Version:    0.7.0.1
  */

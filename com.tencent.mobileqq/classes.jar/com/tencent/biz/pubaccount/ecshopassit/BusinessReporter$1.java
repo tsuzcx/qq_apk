@@ -11,15 +11,15 @@ final class BusinessReporter$1
   public void run()
   {
     
-    if (BusinessReporter.a(this.jdField_a_of_type_JavaLangString))
+    if (BusinessReporter.a(this.a))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine;
+      Object localObject = this.b;
       if (localObject != null)
       {
         ((WebViewPluginEngine)localObject).a(new String[] { "JD_REPORT" });
-        localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a("JD_REPORT");
+        localObject = this.b.b("JD_REPORT");
         if (localObject != null) {
-          ((BusinessReportPlugin)localObject).b(this.jdField_a_of_type_JavaLangString);
+          ((BusinessReportPlugin)localObject).b(this.a);
         }
       }
     }
@@ -27,7 +27,7 @@ final class BusinessReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessReporter.1
  * JD-Core Version:    0.7.0.1
  */

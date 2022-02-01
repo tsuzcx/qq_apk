@@ -1,38 +1,23 @@
 package com.tencent.gdtad.basics.motivevideo;
 
-import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.gdtad.log.GdtLog;
 
 class GdtMotiveVideoDialog$3
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  GdtMotiveVideoDialog$3(GdtMotiveVideoDialog paramGdtMotiveVideoDialog, ViewGroup paramViewGroup, View paramView) {}
+  GdtMotiveVideoDialog$3(GdtMotiveVideoDialog paramGdtMotiveVideoDialog, ViewGroup paramViewGroup) {}
   
-  public void onGlobalLayout()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onGlobalLayout: l=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidViewViewGroup.getLeft());
-    localStringBuilder.append(",t=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidViewViewGroup.getTop());
-    localStringBuilder.append(",r=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidViewViewGroup.getRight());
-    localStringBuilder.append(",b=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
-    GdtLog.a("GdtMotiveVideoDialog", localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onGlobalLayout: ");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidViewView);
-    GdtLog.a("GdtMotiveVideoDialog", localStringBuilder.toString());
+    if ((paramInt & 0x4) == 0) {
+      this.a.setSystemUiVisibility(7942);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMotiveVideoDialog.3
  * JD-Core Version:    0.7.0.1
  */

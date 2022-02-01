@@ -31,75 +31,74 @@ import java.util.Set;
 public class QFlutterResourceLoaderNativeImp
   implements NativeAppInterface
 {
-  public static HashMap<String, Integer> a;
+  public static HashMap<String, Integer> a = new HashMap();
   public static HashMap<String, String> b;
   public static HashMap<String, Integer> c;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ArrayList<ColorStateList> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Handler b;
+  private Context d;
+  private ArrayList<ColorStateList> e = new ArrayList();
+  private Handler f;
+  private Handler g;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("skinConversationPageBg", Integer.valueOf(2130850361));
-    jdField_a_of_type_JavaUtilHashMap.put("skinSmallBtnBlueNormal", Integer.valueOf(2130850388));
-    jdField_a_of_type_JavaUtilHashMap.put("skinSmallBtnBluePressed", Integer.valueOf(2130850387));
-    jdField_a_of_type_JavaUtilHashMap.put("skinAIOBubbleNormal", Integer.valueOf(2130850159));
-    jdField_a_of_type_JavaUtilHashMap.put("skinPageTitleBarBg", Integer.valueOf(2130850433));
-    jdField_a_of_type_JavaUtilHashMap.put("skinPageTitleBarBackNormal", Integer.valueOf(2130850447));
-    jdField_a_of_type_JavaUtilHashMap.put("skinPageTitleBarBackPressed", Integer.valueOf(2130850451));
-    jdField_a_of_type_JavaUtilHashMap.put("skinPageBg", Integer.valueOf(2130850359));
-    jdField_a_of_type_JavaUtilHashMap.put("skinFromItemRightArrow", Integer.valueOf(2130850483));
-    jdField_a_of_type_JavaUtilHashMap.put("skinListItemBgNormal", Integer.valueOf(2130850703));
-    jdField_a_of_type_JavaUtilHashMap.put("skinListItemBgPressed", Integer.valueOf(2130850700));
-    jdField_a_of_type_JavaUtilHashMap.put("skinListItemTopBgNormal", Integer.valueOf(2130850723));
-    jdField_a_of_type_JavaUtilHashMap.put("skinListItemTopBgPressed", Integer.valueOf(2130850721));
-    jdField_a_of_type_JavaUtilHashMap.put("skinListItemMiddleBgNormal", Integer.valueOf(2130850717));
-    jdField_a_of_type_JavaUtilHashMap.put("skinListItemMiddleBgPressed", Integer.valueOf(2130850715));
-    jdField_a_of_type_JavaUtilHashMap.put("skinListItemBottomBgNormal", Integer.valueOf(2130850708));
-    jdField_a_of_type_JavaUtilHashMap.put("skinListItemBottomBgPressed", Integer.valueOf(2130850706));
-    jdField_a_of_type_JavaUtilHashMap.put("skinQuiSwitchBgOff", Integer.valueOf(2130850735));
-    jdField_a_of_type_JavaUtilHashMap.put("skinQuiSwitchBgOn", Integer.valueOf(2130850736));
-    jdField_a_of_type_JavaUtilHashMap.put("skinQuiSwitchThumbOff", Integer.valueOf(2130850733));
-    jdField_a_of_type_JavaUtilHashMap.put("skinQuiSwitchThumbOn", Integer.valueOf(2130850731));
-    jdField_a_of_type_JavaUtilHashMap.put("skinQuiSwitchThumbOnPressed", Integer.valueOf(2130850732));
-    jdField_a_of_type_JavaUtilHashMap.put("skinQuiSwitchThumbOffPressed", Integer.valueOf(2130850734));
-    jdField_a_of_type_JavaUtilHashMap.put("skinTipsNew", Integer.valueOf(2130850769));
-    jdField_a_of_type_JavaUtilHashMap.put("zanRankingDefaultCardCover", Integer.valueOf(2130845923));
-    jdField_a_of_type_JavaUtilHashMap.put("zanRankingNobodyBg", Integer.valueOf(2130846092));
-    jdField_a_of_type_JavaUtilHashMap.put("zanRankingGoldIcon", Integer.valueOf(2130845518));
-    jdField_a_of_type_JavaUtilHashMap.put("zanRankingSilverIcon", Integer.valueOf(2130845519));
-    jdField_a_of_type_JavaUtilHashMap.put("zanRankingCopperIcon", Integer.valueOf(2130845520));
-    jdField_a_of_type_JavaUtilHashMap.put("zanRankingChampionIcon", Integer.valueOf(2130845513));
-    jdField_a_of_type_JavaUtilHashMap.put("qzoneAlbumCategoryLockIcon", Integer.valueOf(2130848840));
+    a.put("skinConversationPageBg", Integer.valueOf(2130852152));
+    a.put("skinSmallBtnBlueNormal", Integer.valueOf(2130852179));
+    a.put("skinSmallBtnBluePressed", Integer.valueOf(2130852178));
+    a.put("skinAIOBubbleNormal", Integer.valueOf(2130851944));
+    a.put("skinPageTitleBarBg", Integer.valueOf(2130852228));
+    a.put("skinPageTitleBarBackNormal", Integer.valueOf(2130852243));
+    a.put("skinPageTitleBarBackPressed", Integer.valueOf(2130852247));
+    a.put("skinPageBg", Integer.valueOf(2130852150));
+    a.put("skinFromItemRightArrow", Integer.valueOf(2130852279));
+    a.put("skinListItemBgNormal", Integer.valueOf(2130852507));
+    a.put("skinListItemBgPressed", Integer.valueOf(2130852504));
+    a.put("skinListItemTopBgNormal", Integer.valueOf(2130852527));
+    a.put("skinListItemTopBgPressed", Integer.valueOf(2130852525));
+    a.put("skinListItemMiddleBgNormal", Integer.valueOf(2130852521));
+    a.put("skinListItemMiddleBgPressed", Integer.valueOf(2130852519));
+    a.put("skinListItemBottomBgNormal", Integer.valueOf(2130852512));
+    a.put("skinListItemBottomBgPressed", Integer.valueOf(2130852510));
+    a.put("skinQuiSwitchBgOff", Integer.valueOf(2130852539));
+    a.put("skinQuiSwitchBgOn", Integer.valueOf(2130852540));
+    a.put("skinQuiSwitchThumbOff", Integer.valueOf(2130852537));
+    a.put("skinQuiSwitchThumbOn", Integer.valueOf(2130852535));
+    a.put("skinQuiSwitchThumbOnPressed", Integer.valueOf(2130852536));
+    a.put("skinQuiSwitchThumbOffPressed", Integer.valueOf(2130852538));
+    a.put("skinTipsNew", Integer.valueOf(2130852591));
+    a.put("zanRankingDefaultCardCover", Integer.valueOf(2130847393));
+    a.put("zanRankingNobodyBg", Integer.valueOf(2130847562));
+    a.put("zanRankingGoldIcon", Integer.valueOf(2130846981));
+    a.put("zanRankingSilverIcon", Integer.valueOf(2130846982));
+    a.put("zanRankingCopperIcon", Integer.valueOf(2130846983));
+    a.put("zanRankingChampionIcon", Integer.valueOf(2130846976));
+    a.put("qzoneAlbumCategoryLockIcon", Integer.valueOf(2130850507));
     int i = 0;
     while (i < 248)
     {
-      HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
+      HashMap localHashMap = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(i);
       localStringBuilder.append("");
       localHashMap.put(localStringBuilder.toString(), Integer.valueOf(EmotcationConstants.FIRST_EMOJI_RES + i));
       i += 1;
     }
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    b = new HashMap();
     c = new HashMap();
-    c.put("skinConversationNickBlack", Integer.valueOf(2131167063));
-    c.put("skinConversationMsgGray", Integer.valueOf(2131167142));
-    c.put("skinBtnBlueTextColor", Integer.valueOf(2131167089));
-    c.put("skinBtnWhiteTextColor", Integer.valueOf(2131167097));
-    c.put("skinPageTitleBarBtnTextColor", Integer.valueOf(2131167050));
-    c.put("skinPageTitleBarTextColor", Integer.valueOf(2131167053));
-    c.put("skinFormItemBlack", Integer.valueOf(2131167056));
-    c.put("skinFormItemGray", Integer.valueOf(2131167139));
+    c.put("skinConversationNickBlack", Integer.valueOf(2131168001));
+    c.put("skinConversationMsgGray", Integer.valueOf(2131168122));
+    c.put("skinBtnBlueTextColor", Integer.valueOf(2131168041));
+    c.put("skinBtnWhiteTextColor", Integer.valueOf(2131168049));
+    c.put("skinPageTitleBarBtnTextColor", Integer.valueOf(2131167987));
+    c.put("skinPageTitleBarTextColor", Integer.valueOf(2131167990));
+    c.put("skinFormItemBlack", Integer.valueOf(2131167993));
+    c.put("skinFormItemGray", Integer.valueOf(2131168119));
   }
   
   public QFlutterResourceLoaderNativeImp(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getFileThreadLooper());
-    this.jdField_b_of_type_AndroidOsHandler = ThreadManagerV2.getUIHandlerV2();
+    this.d = paramContext;
+    this.f = new Handler(ThreadManagerV2.getFileThreadLooper());
+    this.g = ThreadManagerV2.getUIHandlerV2();
     a();
   }
   
@@ -108,11 +107,11 @@ public class QFlutterResourceLoaderNativeImp
     if (QLog.isColorLevel()) {
       QLog.i("QFlutterResourceLoaderNativeImp", 0, "preCacheColors");
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = ((Context)localObject).getResources();
-      ThreadManagerV2.executeOnSubThread(new QFlutterResourceLoaderNativeImp.1(this, this.jdField_a_of_type_JavaUtilArrayList, (Resources)localObject), true);
+      ThreadManagerV2.executeOnSubThread(new QFlutterResourceLoaderNativeImp.1(this, this.e, (Resources)localObject), true);
     }
   }
   
@@ -135,7 +134,7 @@ public class QFlutterResourceLoaderNativeImp
     String str = QFlutterInstaller.a("libqflutter-resource-loader.so");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("libPath isExist: ");
-    localStringBuilder.append(FileUtil.b(str));
+    localStringBuilder.append(FileUtil.d(str));
     localStringBuilder.append(", ");
     localStringBuilder.append(str);
     QLog.d("QFlutterResourceLoaderNativeImp", 3, localStringBuilder.toString());
@@ -148,15 +147,15 @@ public class QFlutterResourceLoaderNativeImp
     if (TextUtils.isEmpty(paramString)) {
       return localNativeImageInfo;
     }
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (a.containsKey(paramString))
     {
-      localNativeImageInfo.drawableId = ((Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-      localNativeImageInfo.scale = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
+      localNativeImageInfo.drawableId = ((Integer)a.get(paramString)).intValue();
+      localNativeImageInfo.scale = this.d.getResources().getDisplayMetrics().density;
       return localNativeImageInfo;
     }
-    if (jdField_b_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (b.containsKey(paramString))
     {
-      localNativeImageInfo.assetsPath = ((String)jdField_b_of_type_JavaUtilHashMap.get(paramString));
+      localNativeImageInfo.assetsPath = ((String)b.get(paramString));
       return localNativeImageInfo;
     }
     if ((!paramString.startsWith("https:")) && (!paramString.startsWith("http:")) && (!paramString.startsWith("HTTPS:"))) {
@@ -193,7 +192,7 @@ public class QFlutterResourceLoaderNativeImp
   
   public Handler getSubThreadHandler()
   {
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return this.f;
   }
   
   public String getThemeId()
@@ -203,7 +202,7 @@ public class QFlutterResourceLoaderNativeImp
   
   public Handler getUiThreadHandler()
   {
-    return this.jdField_b_of_type_AndroidOsHandler;
+    return this.g;
   }
   
   public boolean isNinePatchDrawable(Drawable paramDrawable)
@@ -213,7 +212,7 @@ public class QFlutterResourceLoaderNativeImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterResourceLoaderNativeImp
  * JD-Core Version:    0.7.0.1
  */

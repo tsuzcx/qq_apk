@@ -3,6 +3,7 @@ package com.tencent.mtt.hippy.bridge.bundleloader;
 import android.text.TextUtils;
 import com.tencent.mtt.hippy.bridge.HippyBridge;
 import com.tencent.mtt.hippy.bridge.NativeCallback;
+import com.tencent.mtt.hippy.utils.LogUtils;
 
 public class HippyFileBundleLoader
   implements HippyBundleLoader
@@ -10,8 +11,7 @@ public class HippyFileBundleLoader
   private static final String FILE_STR = "file://";
   private boolean mCanUseCodeCache;
   private String mCodeCacheTag;
-  String mFilePath;
-  boolean mIsDebugMode = false;
+  final String mFilePath;
   
   public HippyFileBundleLoader(String paramString)
   {
@@ -58,10 +58,10 @@ public class HippyFileBundleLoader
     return this.mFilePath;
   }
   
-  public boolean load(HippyBridge paramHippyBridge, NativeCallback paramNativeCallback)
+  public void load(HippyBridge paramHippyBridge, NativeCallback paramNativeCallback)
   {
     if (TextUtils.isEmpty(this.mFilePath)) {
-      return false;
+      return;
     }
     Object localObject;
     if (!this.mFilePath.startsWith("file:"))
@@ -75,7 +75,11 @@ public class HippyFileBundleLoader
     {
       localObject = this.mFilePath;
     }
-    return paramHippyBridge.runScriptFromUri((String)localObject, null, this.mCanUseCodeCache, this.mCodeCacheTag, paramNativeCallback);
+    boolean bool = paramHippyBridge.runScriptFromUri((String)localObject, null, this.mCanUseCodeCache, this.mCodeCacheTag, paramNativeCallback);
+    paramHippyBridge = new StringBuilder();
+    paramHippyBridge.append("load: ret");
+    paramHippyBridge.append(bool);
+    LogUtils.d("HippyFileBundleLoader", paramHippyBridge.toString());
   }
   
   public void setCodeCache(boolean paramBoolean, String paramString)
@@ -83,15 +87,10 @@ public class HippyFileBundleLoader
     this.mCanUseCodeCache = paramBoolean;
     this.mCodeCacheTag = paramString;
   }
-  
-  public void setIsDebugMode(boolean paramBoolean)
-  {
-    this.mIsDebugMode = paramBoolean;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.bundleloader.HippyFileBundleLoader
  * JD-Core Version:    0.7.0.1
  */

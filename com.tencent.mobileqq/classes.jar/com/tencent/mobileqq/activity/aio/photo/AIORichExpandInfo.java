@@ -13,13 +13,35 @@ import java.util.Set;
 
 public class AIORichExpandInfo
 {
-  private int jdField_a_of_type_Int = 0;
-  private ArrayMap<String, List<Object>> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
+  private ArrayMap<String, List<Object>> a = new ArrayMap();
   private ArrayMap<String, Boolean> b = new ArrayMap();
+  private int c = 0;
   
-  private int a(String paramString, int paramInt, List<Object> paramList)
+  private void a(int paramInt, String paramString, List<Object> paramList)
   {
-    a();
+    b();
+    if ((paramString != null) && (paramInt >= 0))
+    {
+      if (paramList == null) {
+        return;
+      }
+      paramString = (List)this.a.get(paramString);
+      if (paramString == null) {
+        return;
+      }
+      int i = paramString.size();
+      while ((i > 0) && (paramInt < paramList.size()))
+      {
+        paramList.remove(paramInt);
+        i -= 1;
+      }
+      this.c += paramString.size();
+    }
+  }
+  
+  private int b(String paramString, int paramInt, List<Object> paramList)
+  {
+    b();
     if ((paramString != null) && (paramInt > 0))
     {
       if (paramList == null) {
@@ -38,99 +60,38 @@ public class AIORichExpandInfo
     return -1;
   }
   
-  private void a(int paramInt, String paramString, List<Object> paramList)
-  {
-    a();
-    if ((paramString != null) && (paramInt >= 0))
-    {
-      if (paramList == null) {
-        return;
-      }
-      paramString = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
-      if (paramString == null) {
-        return;
-      }
-      int i = paramString.size();
-      while ((i > 0) && (paramInt < paramList.size()))
-      {
-        paramList.remove(paramInt);
-        i -= 1;
-      }
-      this.jdField_a_of_type_Int += paramString.size();
-    }
-  }
-  
   private void b(int paramInt, String paramString, List<Object> paramList)
   {
-    a();
+    b();
     if ((paramString != null) && (paramInt >= 0))
     {
       if (paramList == null) {
         return;
       }
-      paramString = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
+      paramString = (List)this.a.get(paramString);
       if (paramString == null) {
         return;
       }
       paramList.addAll(paramInt, paramString);
-      this.jdField_a_of_type_Int -= paramString.size();
+      this.c -= paramString.size();
     }
   }
   
   public int a()
   {
-    a();
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<Object> a(String paramString)
-  {
-    a();
-    return (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      return;
-    }
-    throw new RuntimeException("This method must be called on UI thread");
-  }
-  
-  public void a(List<Object> paramList, int paramInt)
-  {
-    a();
-    if (paramList != null)
-    {
-      if (paramInt <= 0) {
-        return;
-      }
-      int i = 0;
-      while (i < paramList.size())
-      {
-        Object localObject = paramList.get(i);
-        if ((localObject instanceof String))
-        {
-          ArrayMap localArrayMap = this.b;
-          String str = (String)localObject;
-          if ((localArrayMap.get(str) != null) && (!((Boolean)this.b.get(str)).booleanValue()) && (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject) != null)) {
-            paramList.addAll(i + paramInt, (Collection)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject));
-          }
-        }
-        i += 1;
-      }
-    }
+    b();
+    return this.c;
   }
   
   public void a(boolean paramBoolean, int paramInt, List<Object> paramList)
   {
-    a();
+    b();
     if (paramList != null)
     {
       if (paramInt <= 0) {
         return;
       }
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
+      this.a.clear();
       Object localObject2 = null;
       int i = 0;
       Object localObject3;
@@ -140,19 +101,19 @@ public class AIORichExpandInfo
         localObject3 = paramList.get(i);
         if ((localObject3 instanceof String))
         {
-          localObject2 = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject3);
+          localObject2 = (List)this.a.get(localObject3);
           localObject1 = localObject2;
           if (localObject2 == null)
           {
             localObject1 = new ArrayList();
-            this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put((String)localObject3, localObject1);
+            this.a.put((String)localObject3, localObject1);
           }
         }
         else
         {
           localObject1 = localObject2;
           if (localObject2 != null) {
-            if ((!(localObject3 instanceof AIORichMediaInfo)) && (localObject3 != AIOImageListModel.b) && (!(localObject3 instanceof EmotionPreviewData)))
+            if ((!(localObject3 instanceof AIORichMediaInfo)) && (localObject3 != AIOImageListModel.k) && (!(localObject3 instanceof EmotionPreviewData)))
             {
               localObject1 = localObject2;
               if (localObject3 != ChatHistoryEmotionAdapter.c) {}
@@ -167,7 +128,7 @@ public class AIORichExpandInfo
         i += 1;
         localObject2 = localObject1;
       }
-      this.jdField_a_of_type_Int = 0;
+      this.c = 0;
       if (paramBoolean)
       {
         localObject1 = this.b.entrySet().iterator();
@@ -177,7 +138,7 @@ public class AIORichExpandInfo
           localObject2 = (String)((Map.Entry)localObject3).getKey();
           localObject3 = (Boolean)((Map.Entry)localObject3).getValue();
           if ((localObject3 != null) && (!((Boolean)localObject3).booleanValue())) {
-            a(a((String)localObject2, paramInt, paramList), (String)localObject2, paramList);
+            a(b((String)localObject2, paramInt, paramList), (String)localObject2, paramList);
           }
         }
       }
@@ -187,7 +148,7 @@ public class AIORichExpandInfo
   
   public boolean a(String paramString)
   {
-    a();
+    b();
     paramString = (Boolean)this.b.get(paramString);
     if (paramString != null) {
       return paramString.booleanValue();
@@ -197,8 +158,8 @@ public class AIORichExpandInfo
   
   public boolean a(String paramString, int paramInt, List<Object> paramList)
   {
-    a();
-    Object localObject = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
+    b();
+    Object localObject = this.a.get(paramString);
     boolean bool2 = false;
     if (localObject == null) {
       return false;
@@ -214,7 +175,7 @@ public class AIORichExpandInfo
       bool2 = true;
     }
     ((ArrayMap)localObject).put(paramString, Boolean.valueOf(bool2));
-    paramInt = a(paramString, paramInt, paramList);
+    paramInt = b(paramString, paramInt, paramList);
     if (!bool1)
     {
       b(paramInt, paramString, paramList);
@@ -226,7 +187,7 @@ public class AIORichExpandInfo
   
   public boolean a(List<Object> paramList, int paramInt)
   {
-    a();
+    b();
     boolean bool1 = this.b.isEmpty();
     int i = 0;
     if (!bool1)
@@ -250,9 +211,9 @@ public class AIORichExpandInfo
             if (!((Boolean)this.b.get(str)).booleanValue())
             {
               bool2 = bool1;
-              if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject) != null)
+              if (this.a.get(localObject) != null)
               {
-                paramList.addAll(i + paramInt, (Collection)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject));
+                paramList.addAll(i + paramInt, (Collection)this.a.get(localObject));
                 bool2 = true;
               }
             }
@@ -267,10 +228,49 @@ public class AIORichExpandInfo
     }
     return false;
   }
+  
+  public List<Object> b(String paramString)
+  {
+    b();
+    return (List)this.a.get(paramString);
+  }
+  
+  public void b()
+  {
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      return;
+    }
+    throw new RuntimeException("This method must be called on UI thread");
+  }
+  
+  public void b(List<Object> paramList, int paramInt)
+  {
+    b();
+    if (paramList != null)
+    {
+      if (paramInt <= 0) {
+        return;
+      }
+      int i = 0;
+      while (i < paramList.size())
+      {
+        Object localObject = paramList.get(i);
+        if ((localObject instanceof String))
+        {
+          ArrayMap localArrayMap = this.b;
+          String str = (String)localObject;
+          if ((localArrayMap.get(str) != null) && (!((Boolean)this.b.get(str)).booleanValue()) && (this.a.get(localObject) != null)) {
+            paramList.addAll(i + paramInt, (Collection)this.a.get(localObject));
+          }
+        }
+        i += 1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIORichExpandInfo
  * JD-Core Version:    0.7.0.1
  */

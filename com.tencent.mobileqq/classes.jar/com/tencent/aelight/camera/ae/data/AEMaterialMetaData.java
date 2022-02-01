@@ -6,79 +6,64 @@ import java.io.File;
 
 public class AEMaterialMetaData
 {
-  public static final AEMaterialMetaData a;
-  public String A;
-  public String B;
-  public String C;
-  public String D;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public boolean c = false;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h = 0;
-  public String k;
-  public String l;
+  public static final AEMaterialMetaData l = ;
+  public boolean A;
+  public boolean B;
+  public int C;
+  public long D;
+  public long E;
+  public String F;
+  public String G;
+  public String H;
+  public String I;
+  public String J;
+  public String K;
+  public boolean L;
+  public int M;
+  public String N = "";
+  public String O;
+  public int P = 0;
+  public String Q;
+  public String R;
+  public String S;
+  public String T;
+  public String U;
+  public String V;
+  public String W;
+  public String X;
+  public int Y;
+  public boolean Z;
+  public String aa;
+  public String ab;
   public String m;
-  public String n;
+  public int n;
   public String o;
-  public String p;
+  public int p;
   public String q;
   public String r;
   public String s;
   public String t;
-  public String u;
-  public String v = "";
-  public String w;
-  public String x;
-  public String y;
-  public String z;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = a();
-  }
-  
-  public AEMaterialMetaData()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-  }
-  
-  private static AEMaterialMetaData a()
-  {
-    AEMaterialMetaData localAEMaterialMetaData = new AEMaterialMetaData();
-    localAEMaterialMetaData.k = "0";
-    localAEMaterialMetaData.jdField_b_of_type_Int = 0;
-    return localAEMaterialMetaData;
-  }
+  public boolean u;
+  public boolean v = false;
+  public boolean w = false;
+  public boolean x = false;
+  public int y = 0;
+  public int z = 0;
   
   public static boolean a(AEMaterialMetaData paramAEMaterialMetaData)
   {
     if (paramAEMaterialMetaData == null) {
       return false;
     }
-    paramAEMaterialMetaData = paramAEMaterialMetaData.k;
+    paramAEMaterialMetaData = paramAEMaterialMetaData.m;
     return (paramAEMaterialMetaData == null) || (paramAEMaterialMetaData.equals("0"));
   }
   
-  public static boolean b(@Nullable AEMaterialMetaData paramAEMaterialMetaData)
+  public static boolean c(@Nullable AEMaterialMetaData paramAEMaterialMetaData)
   {
     if (paramAEMaterialMetaData != null)
     {
-      int i = paramAEMaterialMetaData.h;
+      int i = paramAEMaterialMetaData.P;
       if ((i == 0) || (i == 4) || (i == 5) || (i == 6) || (i == 7)) {
         return true;
       }
@@ -86,9 +71,39 @@ public class AEMaterialMetaData
     return false;
   }
   
-  public int a()
+  private static AEMaterialMetaData h()
   {
-    int i = this.jdField_e_of_type_Int;
+    AEMaterialMetaData localAEMaterialMetaData = new AEMaterialMetaData();
+    localAEMaterialMetaData.m = "0";
+    localAEMaterialMetaData.n = 0;
+    localAEMaterialMetaData.t = "";
+    localAEMaterialMetaData.q = "";
+    return localAEMaterialMetaData;
+  }
+  
+  public boolean a()
+  {
+    return this.y == 12;
+  }
+  
+  public void b(AEMaterialMetaData paramAEMaterialMetaData)
+  {
+    if (!equals(l))
+    {
+      this.A = paramAEMaterialMetaData.A;
+      this.B = paramAEMaterialMetaData.B;
+      this.u = paramAEMaterialMetaData.u;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.z != 0;
+  }
+  
+  public int c()
+  {
+    int i = this.z;
     if (i != 1)
     {
       if (i != 2)
@@ -98,68 +113,31 @@ public class AEMaterialMetaData
           if (i != 4) {
             return -1;
           }
-          return 2064056678;
+          return 2063925643;
         }
-        return 2064056679;
+        return 2063925644;
       }
-      return 2064056677;
+      return 2063925642;
     }
-    return 2064056676;
+    return 2063925641;
   }
   
-  public String a()
+  public boolean d()
   {
-    File localFile = new File(AEPath.CAMERA.FILES.i);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(new File(localFile.getPath(), this.k).getPath());
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
-  public void a(AEMaterialMetaData paramAEMaterialMetaData)
-  {
-    if (!equals(jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData))
-    {
-      this.jdField_e_of_type_Boolean = paramAEMaterialMetaData.jdField_e_of_type_Boolean;
-      this.f = paramAEMaterialMetaData.f;
-      this.jdField_a_of_type_Boolean = paramAEMaterialMetaData.jdField_a_of_type_Boolean;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_d_of_type_Int == 12;
-  }
-  
-  public String b()
-  {
-    File localFile = new File(AEPath.CAMERA.FILES.i);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(localFile.getPath());
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_e_of_type_Int != 0;
-  }
-  
-  public String c()
-  {
-    return new File(AEMaterialManager.c(), this.k).getPath();
-  }
-  
-  public boolean c()
-  {
-    String str = this.k;
+    String str = this.m;
     return (str == null) || (str.equals("0"));
+  }
+  
+  public String e()
+  {
+    File localFile = new File(AEPath.CAMERA.FILES.i);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(new File(localFile.getPath(), this.m).getPath());
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -171,21 +149,38 @@ public class AEMaterialMetaData
       return false;
     }
     paramObject = (AEMaterialMetaData)paramObject;
-    if ((paramObject.k == null) && (this.k == null)) {
+    if ((paramObject.m == null) && (this.m == null)) {
       return true;
     }
-    if ((paramObject.k == null) && (this.k != null)) {
+    if ((paramObject.m == null) && (this.m != null)) {
       return false;
     }
-    if ((paramObject.k != null) && (this.k == null)) {
+    if ((paramObject.m != null) && (this.m == null)) {
       return false;
     }
-    return paramObject.k.equals(this.k);
+    return paramObject.m.equals(this.m);
+  }
+  
+  public String f()
+  {
+    File localFile = new File(AEPath.CAMERA.FILES.i);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getPath());
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public String g()
+  {
+    return new File(AEMaterialManager.q(), this.m).getPath();
   }
   
   public int hashCode()
   {
-    String str = this.k;
+    String str = this.m;
     int i;
     if (str == null) {
       i = 0;
@@ -197,7 +192,7 @@ public class AEMaterialMetaData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEMaterialMetaData
  * JD-Core Version:    0.7.0.1
  */

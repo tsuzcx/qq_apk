@@ -52,18 +52,12 @@ public class TroopInfoHandler
   extends TroopBaseHandler
   implements ITroopInfoHandler
 {
-  private static HashMap<Long, byte[]> a;
-  protected ConcurrentHashMap<String, Long> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  private static HashMap<Long, byte[]> b = new HashMap();
+  protected ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
   public TroopInfoHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     TroopInfoHandlerProcessorConfig.a();
   }
   
@@ -442,17 +436,9 @@ public class TroopInfoHandler
     }
   }
   
-  private boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return (paramString.equals("TroopMemberApiService.create_troop")) || (paramString.equals("TroopCreateLogic.create_new_troop")) || (paramString.equals("SubType0x44.source_apply_for_join_troop")) || (paramString.equals("SystemMessageProcessor.AgreeGroupInvation")) || (paramString.equals("getGroupInfoFromChatSettingForTroop"));
-  }
-  
   private boolean a(String paramString, TroopInfoHandlerConfig paramTroopInfoHandlerConfig)
   {
-    if ((paramTroopInfoHandlerConfig != null) && (paramTroopInfoHandlerConfig.a(paramString)))
+    if ((paramTroopInfoHandlerConfig != null) && (paramTroopInfoHandlerConfig.b(paramString)))
     {
       if (QLog.isColorLevel())
       {
@@ -692,9 +678,9 @@ public class TroopInfoHandler
     int j = -1;
     if (i == 1000)
     {
-      paramToServiceMsg = new TroopInfoHandler.HandleOidb0x88d10InitPkg(this, (byte[])paramObject, -1).a();
+      paramToServiceMsg = new TroopInfoHandler.HandleOidb0x88d10InitPkg(this, (byte[])paramObject, -1).c();
       i = paramToServiceMsg.a();
-      paramToServiceMsg = paramToServiceMsg.a();
+      paramToServiceMsg = paramToServiceMsg.b();
       j = i;
       if (paramToServiceMsg != null)
       {
@@ -962,7 +948,7 @@ public class TroopInfoHandler
         paramFromServiceMsg.skip(4L);
         paramObject = new byte[paramFromServiceMsg.readShort()];
         paramFromServiceMsg.read(paramObject);
-        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), paramObject);
+        b.put(Long.valueOf(l), paramObject);
         paramFromServiceMsg.close();
         paramToServiceMsg.close();
         notifyUI(TroopObserver.TYPE_GET_TROOP_AUTH, true, new Object[] { Long.valueOf(l), str, paramObject });
@@ -1003,12 +989,6 @@ public class TroopInfoHandler
     paramTroopInfo.setGroupCardPrefix(localArrayList);
   }
   
-  private void e(String paramString)
-  {
-    paramString = new TroopInfoHandler.1(this, paramString);
-    this.appRuntime.addDefaultObservers(paramString);
-  }
-  
   private void e(oidb_0x88d.GroupInfo paramGroupInfo, TroopInfo paramTroopInfo)
   {
     if (paramGroupInfo.st_group_info_ext.has())
@@ -1026,17 +1006,18 @@ public class TroopInfoHandler
     }
   }
   
-  protected String a()
+  private boolean e(String paramString)
   {
-    return "TroopInfoHandler";
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return (paramString.equals("TroopMemberApiService.create_troop")) || (paramString.equals("TroopCreateLogic.create_new_troop")) || (paramString.equals("SubType0x44.source_apply_for_join_troop")) || (paramString.equals("SystemMessageProcessor.AgreeGroupInvation")) || (paramString.equals("getGroupInfoFromChatSettingForTroop"));
   }
   
-  public void a()
+  private void f(String paramString)
   {
-    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
-    if (localHashMap != null) {
-      localHashMap.clear();
-    }
+    paramString = new TroopInfoHandler.1(this, paramString);
+    this.appRuntime.addDefaultObservers(paramString);
   }
   
   public void a(long paramLong, String paramString)
@@ -1069,7 +1050,7 @@ public class TroopInfoHandler
     localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
     localToServiceMsg.extraData.putLong("troopCode", paramLong);
     localToServiceMsg.extraData.putString("subCmd", paramString);
-    localToServiceMsg.extraData.putString("REQ_TAG", a());
+    localToServiceMsg.extraData.putString("REQ_TAG", dv_());
     this.appRuntime.sendToService(localToServiceMsg);
   }
   
@@ -1120,7 +1101,7 @@ public class TroopInfoHandler
       return;
     }
     Object localObject = Long.valueOf(SystemClock.uptimeMillis());
-    Long localLong = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+    Long localLong = (Long)this.a.get(paramString1);
     if ((localLong != null) && (Math.abs(((Long)localObject).longValue() - localLong.longValue()) < paramLong))
     {
       if (QLog.isColorLevel())
@@ -1132,7 +1113,7 @@ public class TroopInfoHandler
       }
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, localObject);
+    this.a.put(paramString1, localObject);
     a(paramString1, false, paramString2, true, false, true, false);
   }
   
@@ -1197,7 +1178,7 @@ public class TroopInfoHandler
     localArrayList.add(ByteStringMicro.EMPTY);
     ((oidb_0x88d.GroupCardPrefix)localObject2).rpt_bytes_prefix.set(localArrayList);
     ((oidb_0x88d.GroupInfo)localObject1).st_group_card_prefix.set((MessageMicro)localObject2);
-    if (a(paramString2))
+    if (e(paramString2))
     {
       TroopInfoExtHandler.a((oidb_0x88d.GroupInfo)localObject1);
       if (QLog.isColorLevel())
@@ -1251,11 +1232,19 @@ public class TroopInfoHandler
   
   public byte[] a(long paramLong)
   {
-    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = b;
     if ((localHashMap != null) && (localHashMap.containsKey(Long.valueOf(paramLong)))) {
-      return (byte[])jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      return (byte[])b.get(Long.valueOf(paramLong));
     }
     return null;
+  }
+  
+  public void b()
+  {
+    HashMap localHashMap = b;
+    if (localHashMap != null) {
+      localHashMap.clear();
+    }
   }
   
   public void b(String paramString)
@@ -1270,7 +1259,7 @@ public class TroopInfoHandler
     Object localObject2 = null;
     try
     {
-      localObject1 = (TroopInfoHandlerConfig)QConfigManager.a().a(712);
+      localObject1 = (TroopInfoHandlerConfig)QConfigManager.b().b(712);
     }
     catch (Exception localException)
     {
@@ -1358,7 +1347,7 @@ public class TroopInfoHandler
     ((oidb_0x88d.ReqGroupInfo)localObject1).uint64_group_code.set(Long.parseLong(paramString));
     ((oidb_0x88d.ReqGroupInfo)localObject1).stgroupinfo.set((MessageMicro)localObject2);
     localObject2 = new oidb_0x88d.ReqBody();
-    ((oidb_0x88d.ReqBody)localObject2).uint32_appid.set(AppSetting.a());
+    ((oidb_0x88d.ReqBody)localObject2).uint32_appid.set(AppSetting.d());
     ((oidb_0x88d.ReqBody)localObject2).stzreqgroupinfo.add((MessageMicro)localObject1);
     localObject1 = new oidb_sso.OIDBSSOPkg();
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(2189);
@@ -1372,12 +1361,17 @@ public class TroopInfoHandler
   
   public void d(String paramString)
   {
-    e(paramString);
+    f(paramString);
     oidb_0x88d.GroupInfo localGroupInfo = new oidb_0x88d.GroupInfo();
     oidb_0x88d.TagRecord localTagRecord = new oidb_0x88d.TagRecord();
     localTagRecord.uint32_bad_num.set(0);
     localGroupInfo.rpt_tag_record.add(localTagRecord);
     a(Long.valueOf(Long.parseLong(paramString)), localGroupInfo, "SUBCMD_GET_TROOP_TAG", this.appRuntime.getAppid(), 30000L, 1);
+  }
+  
+  protected String dv_()
+  {
+    return "TroopInfoHandler";
   }
   
   public Set<String> getCommandList()
@@ -1414,7 +1408,7 @@ public class TroopInfoHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -1455,7 +1449,7 @@ public class TroopInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopInfoHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -14,26 +14,26 @@ class GuessSongClickStageView$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.this$0.r != null)
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.f);
-      if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size())
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.y);
+      if (this.this$0.s < this.this$0.r.size())
       {
-        if ((this.this$0.jdField_a_of_type_AndroidViewView != null) && (this.this$0.jdField_a_of_type_AndroidViewView.getVisibility() == 8))
+        if ((this.this$0.g != null) && (this.this$0.g.getVisibility() == 8))
         {
-          this.this$0.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          this.this$0.b.setVisibility(0);
+          this.this$0.g.setVisibility(0);
+          this.this$0.e.setVisibility(0);
         }
         Object localObject = this.this$0;
-        ((GuessSongClickStageView)localObject).a((String)((Pair)((GuessSongClickStageView)localObject).jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int)).second);
-        if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+        ((GuessSongClickStageView)localObject).a((String)((Pair)((GuessSongClickStageView)localObject).r.get(this.this$0.s)).second);
+        if (this.this$0.s < this.this$0.r.size() - 1)
         {
           localObject = ThreadManager.getUIHandlerV2();
-          ArrayList localArrayList = this.this$0.jdField_a_of_type_JavaUtilArrayList;
+          ArrayList localArrayList = this.this$0.r;
           GuessSongClickStageView localGuessSongClickStageView = this.this$0;
-          int i = localGuessSongClickStageView.jdField_a_of_type_Int + 1;
-          localGuessSongClickStageView.jdField_a_of_type_Int = i;
-          ((Handler)localObject).postDelayed(this, (((Integer)((Pair)localArrayList.get(i)).first).intValue() - ((Integer)((Pair)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int - 1)).first).intValue()) * 1000);
+          int i = localGuessSongClickStageView.s + 1;
+          localGuessSongClickStageView.s = i;
+          ((Handler)localObject).postDelayed(this, (((Integer)((Pair)localArrayList.get(i)).first).intValue() - ((Integer)((Pair)this.this$0.r.get(this.this$0.s - 1)).first).intValue()) * 1000);
         }
       }
     }

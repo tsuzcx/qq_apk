@@ -5,17 +5,17 @@ import android.support.annotation.NonNull;
 public class NormalFacePackage$PackageInfo
   implements Comparable
 {
-  public int a;
   public String a;
   public String b;
-  public String c;
+  public int c;
+  public String d;
   
   public NormalFacePackage$PackageInfo(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
+    this.c = paramInt;
+    this.d = paramString3;
   }
   
   public int compareTo(@NonNull Object paramObject)
@@ -28,7 +28,7 @@ public class NormalFacePackage$PackageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.face.NormalFacePackage.PackageInfo
  * JD-Core Version:    0.7.0.1
  */

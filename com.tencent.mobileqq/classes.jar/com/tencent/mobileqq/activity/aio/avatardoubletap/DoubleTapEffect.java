@@ -36,7 +36,7 @@ public class DoubleTapEffect
       QLog.d("DoubleTapEffect", 2, "start() called");
     }
     a(this.a);
-    View localView = ((ViewGroup)this.a.getParent()).findViewById(2131364541);
+    View localView = ((ViewGroup)this.a.getParent()).findViewById(2131430599);
     if ((localView != null) && (localView.isShown())) {
       a(localView);
     }
@@ -45,7 +45,7 @@ public class DoubleTapEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.DoubleTapEffect
  * JD-Core Version:    0.7.0.1
  */

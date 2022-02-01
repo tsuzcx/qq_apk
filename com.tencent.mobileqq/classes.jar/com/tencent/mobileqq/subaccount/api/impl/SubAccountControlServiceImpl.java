@@ -440,7 +440,7 @@ public class SubAccountControlServiceImpl
             localObject = (KeyValuePair)this.associatedQQPairCache.get(i);
             if (localObject != null)
             {
-              boolean bool = TextUtils.equals(((KeyValuePair)localObject).jdField_a_of_type_JavaLangString, paramString);
+              boolean bool = TextUtils.equals(((KeyValuePair)localObject).a, paramString);
               if (bool) {
                 return localObject;
               }
@@ -480,7 +480,7 @@ public class SubAccountControlServiceImpl
           int i;
           if (localObject != null)
           {
-            i = ((Integer)((KeyValuePair)localObject).jdField_a_of_type_JavaLangObject).intValue();
+            i = ((Integer)((KeyValuePair)localObject).b).intValue();
             return i;
           }
           localObject = this.app.getApp().getSharedPreferences("qq_subaccount_associated_cache", 0);
@@ -519,7 +519,7 @@ public class SubAccountControlServiceImpl
           localObject = findAssociatedQQCacheItemByKey(paramString);
           if (localObject != null)
           {
-            paramString = (String)((KeyValuePair)localObject).jdField_a_of_type_JavaLangObject;
+            paramString = (String)((KeyValuePair)localObject).b;
             return paramString;
           }
           localObject = this.app.getApp().getSharedPreferences("qq_subaccount_associated_cache", 0);
@@ -581,7 +581,7 @@ public class SubAccountControlServiceImpl
       localObject = findAssociatedQQCacheItemByKey(paramString);
       if (localObject != null)
       {
-        paramArrayList.addAll((ArrayList)((KeyValuePair)localObject).jdField_a_of_type_JavaLangObject);
+        paramArrayList.addAll((ArrayList)((KeyValuePair)localObject).b);
         break label191;
       }
       localObject = this.app.getApp();
@@ -618,7 +618,7 @@ public class SubAccountControlServiceImpl
   
   public byte[] getThirdQQUnreadNumReqCookie(AppInterface paramAppInterface, String paramString)
   {
-    return SubAccountControllUtil.a(paramAppInterface, paramString);
+    return SubAccountControllUtil.f(paramAppInterface, paramString);
   }
   
   public long getsTroopDelayTime()
@@ -1003,19 +1003,19 @@ public class SubAccountControlServiceImpl
           }
           else
           {
-            if (((paramObject instanceof Integer)) && ((((KeyValuePair)localObject).jdField_a_of_type_JavaLangObject instanceof Integer))) {
-              if ((Integer)((KeyValuePair)localObject).jdField_a_of_type_JavaLangObject == (Integer)paramObject) {
+            if (((paramObject instanceof Integer)) && ((((KeyValuePair)localObject).b instanceof Integer))) {
+              if ((Integer)((KeyValuePair)localObject).b == (Integer)paramObject) {
                 break label360;
               }
             } else {
-              if ((!(paramObject instanceof String)) || (!(((KeyValuePair)localObject).jdField_a_of_type_JavaLangObject instanceof String)) || (TextUtils.equals((String)((KeyValuePair)localObject).jdField_a_of_type_JavaLangObject, (String)paramObject))) {
+              if ((!(paramObject instanceof String)) || (!(((KeyValuePair)localObject).b instanceof String)) || (TextUtils.equals((String)((KeyValuePair)localObject).b, (String)paramObject))) {
                 break label360;
               }
             }
             bool2 = bool1;
             if (bool1)
             {
-              ((KeyValuePair)localObject).jdField_a_of_type_JavaLangObject = paramObject;
+              ((KeyValuePair)localObject).b = paramObject;
               bool2 = bool1;
             }
           }
@@ -1140,7 +1140,7 @@ public class SubAccountControlServiceImpl
     //   10: invokespecial 95	java/lang/StringBuilder:<init>	()V
     //   13: astore 10
     //   15: aload 10
-    //   17: ldc_w 592
+    //   17: ldc_w 594
     //   20: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: ldc 216
@@ -1161,7 +1161,7 @@ public class SubAccountControlServiceImpl
     //   57: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: pop
     //   61: aload 8
-    //   63: ldc_w 594
+    //   63: ldc_w 596
     //   66: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: pop
     //   70: aload 8
@@ -1177,7 +1177,7 @@ public class SubAccountControlServiceImpl
     //   91: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: pop
     //   95: aload 10
-    //   97: ldc_w 596
+    //   97: ldc_w 598
     //   100: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: pop
     //   104: aload_2
@@ -1194,7 +1194,7 @@ public class SubAccountControlServiceImpl
     //   128: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   131: pop
     //   132: aload 10
-    //   134: ldc_w 598
+    //   134: ldc_w 600
     //   137: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   140: pop
     //   141: aload_1
@@ -1202,14 +1202,14 @@ public class SubAccountControlServiceImpl
     //   145: ldc 216
     //   147: astore 8
     //   149: goto +8 -> 157
-    //   152: ldc_w 600
+    //   152: ldc_w 602
     //   155: astore 8
     //   157: aload 10
     //   159: aload 8
     //   161: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: pop
     //   165: aload 10
-    //   167: ldc_w 602
+    //   167: ldc_w 604
     //   170: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   173: pop
     //   174: aload 4
@@ -1217,7 +1217,7 @@ public class SubAccountControlServiceImpl
     //   179: aload 9
     //   181: astore 8
     //   183: goto +8 -> 191
-    //   186: ldc_w 600
+    //   186: ldc_w 602
     //   189: astore 8
     //   191: aload 10
     //   193: aload 8
@@ -1300,7 +1300,7 @@ public class SubAccountControlServiceImpl
     //   371: invokespecial 95	java/lang/StringBuilder:<init>	()V
     //   374: astore 10
     //   376: aload 10
-    //   378: ldc_w 604
+    //   378: ldc_w 606
     //   381: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   384: pop
     //   385: aload 10
@@ -1316,16 +1316,16 @@ public class SubAccountControlServiceImpl
     //   407: invokestatic 116	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   410: goto +207 -> 617
     //   413: aload_2
-    //   414: ldc_w 605
-    //   417: invokevirtual 610	com/tencent/mobileqq/app/QBaseActivity:getString	(I)Ljava/lang/String;
+    //   414: ldc_w 607
+    //   417: invokevirtual 612	com/tencent/mobileqq/app/QBaseActivity:getString	(I)Ljava/lang/String;
     //   420: astore 10
-    //   422: ldc_w 612
-    //   425: invokestatic 404	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   428: checkcast 612	com/tencent/mobileqq/utils/api/IContactUtils
+    //   422: ldc_w 614
+    //   425: invokestatic 406	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   428: checkcast 614	com/tencent/mobileqq/utils/api/IContactUtils
     //   431: aload_1
     //   432: aload 8
     //   434: iconst_0
-    //   435: invokeinterface 616 4 0
+    //   435: invokeinterface 618 4 0
     //   440: astore 9
     //   442: aload 9
     //   444: ifnull +182 -> 626
@@ -1338,57 +1338,57 @@ public class SubAccountControlServiceImpl
     //   461: iload 6
     //   463: ifne +22 -> 485
     //   466: aload_2
-    //   467: ldc_w 617
+    //   467: ldc_w 619
     //   470: iconst_1
     //   471: anewarray 4	java/lang/Object
     //   474: dup
     //   475: iconst_0
     //   476: aload_1
     //   477: aastore
-    //   478: invokevirtual 620	com/tencent/mobileqq/app/QBaseActivity:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   478: invokevirtual 622	com/tencent/mobileqq/app/QBaseActivity:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
     //   481: astore_1
     //   482: goto +19 -> 501
     //   485: aload_2
-    //   486: ldc_w 621
+    //   486: ldc_w 623
     //   489: iconst_1
     //   490: anewarray 4	java/lang/Object
     //   493: dup
     //   494: iconst_0
     //   495: aload_1
     //   496: aastore
-    //   497: invokevirtual 620	com/tencent/mobileqq/app/QBaseActivity:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   497: invokevirtual 622	com/tencent/mobileqq/app/QBaseActivity:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
     //   500: astore_1
     //   501: aload_2
     //   502: sipush 230
-    //   505: invokestatic 626	com/tencent/mobileqq/utils/DialogUtil:a	(Landroid/content/Context;I)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   505: invokestatic 628	com/tencent/mobileqq/utils/DialogUtil:a	(Landroid/content/Context;I)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   508: aload 10
-    //   510: invokevirtual 630	com/tencent/mobileqq/utils/QQCustomDialog:setTitle	(Ljava/lang/String;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   510: invokevirtual 632	com/tencent/mobileqq/utils/QQCustomDialog:setTitle	(Ljava/lang/String;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   513: aload_1
-    //   514: invokevirtual 634	com/tencent/mobileqq/utils/QQCustomDialog:setMessage	(Ljava/lang/CharSequence;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   514: invokevirtual 636	com/tencent/mobileqq/utils/QQCustomDialog:setMessage	(Ljava/lang/CharSequence;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   517: astore_1
     //   518: aload_1
     //   519: aload_3
-    //   520: invokevirtual 638	com/tencent/mobileqq/utils/QQCustomDialog:setTag	(Ljava/lang/Object;)V
+    //   520: invokevirtual 640	com/tencent/mobileqq/utils/QQCustomDialog:setTag	(Ljava/lang/Object;)V
     //   523: aload_1
     //   524: aload_2
-    //   525: invokevirtual 641	com/tencent/mobileqq/utils/QQCustomDialog:setOwnerActivity	(Landroid/app/Activity;)V
+    //   525: invokevirtual 643	com/tencent/mobileqq/utils/QQCustomDialog:setOwnerActivity	(Landroid/app/Activity;)V
     //   528: aload_1
     //   529: aload_2
-    //   530: ldc_w 642
-    //   533: invokevirtual 610	com/tencent/mobileqq/app/QBaseActivity:getString	(I)Ljava/lang/String;
+    //   530: ldc_w 644
+    //   533: invokevirtual 612	com/tencent/mobileqq/app/QBaseActivity:getString	(I)Ljava/lang/String;
     //   536: aload 4
-    //   538: invokevirtual 646	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   538: invokevirtual 648	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   541: pop
     //   542: aload_1
-    //   543: new 648	com/tencent/mobileqq/subaccount/api/impl/SubAccountControlServiceImpl$1
+    //   543: new 650	com/tencent/mobileqq/subaccount/api/impl/SubAccountControlServiceImpl$1
     //   546: dup
     //   547: aload_0
     //   548: aload 8
     //   550: iload 6
-    //   552: invokespecial 651	com/tencent/mobileqq/subaccount/api/impl/SubAccountControlServiceImpl$1:<init>	(Lcom/tencent/mobileqq/subaccount/api/impl/SubAccountControlServiceImpl;Ljava/lang/String;I)V
-    //   555: invokevirtual 655	com/tencent/mobileqq/utils/QQCustomDialog:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
+    //   552: invokespecial 653	com/tencent/mobileqq/subaccount/api/impl/SubAccountControlServiceImpl$1:<init>	(Lcom/tencent/mobileqq/subaccount/api/impl/SubAccountControlServiceImpl;Ljava/lang/String;I)V
+    //   555: invokevirtual 657	com/tencent/mobileqq/utils/QQCustomDialog:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
     //   558: aload_1
-    //   559: invokevirtual 658	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
+    //   559: invokevirtual 660	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
     //   562: aload_0
     //   563: getfield 188	com/tencent/mobileqq/subaccount/api/impl/SubAccountControlServiceImpl:listDialog	Ljava/util/ArrayList;
     //   566: ifnonnull +14 -> 580
@@ -1493,9 +1493,9 @@ public class SubAccountControlServiceImpl
     try
     {
       paramString2 = findAssociatedQQCacheItemByKey(paramString1);
-      if ((paramString2 != null) && (paramString2.jdField_a_of_type_JavaLangObject != null) && ((paramString2.jdField_a_of_type_JavaLangObject instanceof ArrayList)))
+      if ((paramString2 != null) && (paramString2.b != null) && ((paramString2.b instanceof ArrayList)))
       {
-        paramString2 = (ArrayList)paramString2.jdField_a_of_type_JavaLangObject;
+        paramString2 = (ArrayList)paramString2.b;
         paramString2.clear();
         paramString2.addAll(paramArrayList);
       }
@@ -1504,7 +1504,7 @@ public class SubAccountControlServiceImpl
         localObject = new ArrayList();
         ((ArrayList)localObject).addAll(paramArrayList);
         if (paramString2 != null) {
-          paramString2.jdField_a_of_type_JavaLangObject = localObject;
+          paramString2.b = localObject;
         } else {
           this.associatedQQPairCache.add(new KeyValuePair(paramString1, localObject));
         }
@@ -1601,7 +1601,7 @@ public class SubAccountControlServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountControlServiceImpl
  * JD-Core Version:    0.7.0.1
  */

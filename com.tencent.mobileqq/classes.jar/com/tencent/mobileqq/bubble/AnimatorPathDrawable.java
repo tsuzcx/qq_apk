@@ -10,44 +10,41 @@ import android.graphics.drawable.Drawable;
 class AnimatorPathDrawable
   extends Drawable
 {
-  public int a;
   public Bitmap a;
-  private Paint a;
-  public boolean a;
-  public int b = -1;
+  public boolean b = false;
+  public int c = -1;
+  public int d = -1;
+  private Paint e = new Paint(6);
   
   public AnimatorPathDrawable(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = paramBitmap.getWidth();
-    this.b = paramBitmap.getHeight();
+    this.a = paramBitmap;
+    this.c = paramBitmap.getWidth();
+    this.d = paramBitmap.getHeight();
   }
   
   public void draw(Canvas paramCanvas)
   {
     Rect localRect = super.getBounds();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       paramCanvas.save();
       paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
     }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, super.getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Boolean) {
+    paramCanvas.drawBitmap(this.a, null, super.getBounds(), this.e);
+    if (this.b) {
       paramCanvas.restore();
     }
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.b;
+    return this.d;
   }
   
   public int getOpacity()
@@ -57,28 +54,28 @@ class AnimatorPathDrawable
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.e.getAlpha())
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.e.setAlpha(paramInt);
       super.invalidateSelf();
     }
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.e.setColorFilter(paramColorFilter);
     super.invalidateSelf();
   }
   
   public void setDither(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    this.e.setDither(paramBoolean);
     super.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.AnimatorPathDrawable
  * JD-Core Version:    0.7.0.1
  */

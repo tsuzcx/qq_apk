@@ -269,7 +269,7 @@ public class BaseInnerDns
     {
       str1 = str2;
       if (str2.equals(String.valueOf(1))) {
-        str1 = DeviceInfoUtil.b(localContext);
+        str1 = DeviceInfoUtil.c(localContext);
       }
     }
     return str1;
@@ -944,7 +944,7 @@ public class BaseInnerDns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.dns.BaseInnerDns
  * JD-Core Version:    0.7.0.1
  */

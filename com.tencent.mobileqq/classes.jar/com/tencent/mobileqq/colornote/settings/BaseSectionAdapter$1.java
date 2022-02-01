@@ -18,9 +18,9 @@ class BaseSectionAdapter$1
   
   public void onClick(View paramView)
   {
-    Object localObject = (ColorNote)BaseSectionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter).get(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+    Object localObject = (ColorNote)BaseSectionAdapter.a(this.b).get(this.a.getIndex());
     Bundle localBundle = new Bundle();
-    if ((BaseSectionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter) == 17104896) && ((((ColorNote)localObject).getServiceType() == 16908288) || (((ColorNote)localObject).getServiceType() == 16908290))) {
+    if ((BaseSectionAdapter.b(this.b) == 17104896) && ((((ColorNote)localObject).getServiceType() == 16908288) || (((ColorNote)localObject).getServiceType() == 16908290))) {
       localBundle.putBoolean("isFromFavourite", true);
     }
     ColorNoteControllerImpl.launch(paramView.getContext(), (ColorNote)localObject, localBundle);
@@ -28,16 +28,16 @@ class BaseSectionAdapter$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getAllViews#onClick: index: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a());
+      ((StringBuilder)localObject).append(this.a.getIndex());
       QLog.d("BaseSectionAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    ReportController.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", ColorNoteUtils.b(BaseSectionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter)), 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a() + 1), "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800AA7F", "0X800AA7F", ColorNoteUtils.d(BaseSectionAdapter.b(this.b)), 0, String.valueOf(this.a.getIndex() + 1), "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.BaseSectionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -297,6 +297,16 @@ class TPPlayer$InnerPlayerListener
     TPPlayer.access$300(this.this$0, 261, paramInt, 0, localTPSwitchCommonParams);
   }
   
+  public void onPcdnDownloadFailed(String paramString)
+  {
+    TPBaseLogger localTPBaseLogger = TPPlayer.access$700(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPcdnDownloadFailed: ");
+    localStringBuilder.append(paramString);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    TPPlayer.access$300(this.this$0, 282, 0, 0, paramString);
+  }
+  
   public Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
     if (paramInt != 1)
@@ -445,7 +455,7 @@ class TPPlayer$InnerPlayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer.InnerPlayerListener
  * JD-Core Version:    0.7.0.1
  */

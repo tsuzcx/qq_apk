@@ -6,6 +6,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecEmoticon;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecData;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -20,8 +21,13 @@ class AIOIceBreakView$2
   {
     QLog.i("IceBreak.HotPic", 2, "onClick.");
     Object localObject = (IStickerRecEmoticon)paramView.getTag();
-    if (AIOIceBreakView.a(this.a) != null) {
-      AIOIceBreakView.a(this.a).a(paramView);
+    if (AIOIceBreakView.c(this.a) != null)
+    {
+      AIOIceBreakView.c(this.a).a(paramView);
+      IceBreakingMng.b = true;
+      if ((localObject instanceof StickerRecData)) {
+        this.a.a(paramView, "clck", (StickerRecData)localObject);
+      }
     }
     if ((paramView instanceof CustomImgView))
     {
@@ -34,19 +40,24 @@ class AIOIceBreakView$2
         }
       }
     }
-    if (AIOIceBreakView.a(this.a) >= 3) {
+    else
+    {
+      AIOIceBreakView.d(this.a);
+      IceBreakingUtil.a(IceBreakingUtil.Event.EMOJI_CLK);
+    }
+    if (AIOIceBreakView.e(this.a) >= 3) {
       localObject = "2";
     } else {
       localObject = "1";
     }
-    int i = IceBreakingUtil.a(AIOIceBreakView.a(this.a), AIOIceBreakView.a(this.a).a);
-    ReportController.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800B577", "0X800B577", i, 0, (String)localObject, "", "", "");
+    int i = IceBreakingUtil.a(AIOIceBreakView.b(this.a), AIOIceBreakView.a(this.a).ah);
+    ReportController.b(AIOIceBreakView.b(this.a), "CliOper", "", "", "0X800B577", "0X800B577", i, 0, (String)localObject, "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView.2
  * JD-Core Version:    0.7.0.1
  */

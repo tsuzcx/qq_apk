@@ -9,20 +9,20 @@ import com.tencent.qphone.base.util.QLog;
 class VideoInviteActivity$DialogInterfaceOnClickListener
   implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  int a;
   
   public VideoInviteActivity$DialogInterfaceOnClickListener(VideoInviteActivity paramVideoInviteActivity, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    if (this.b.H == null) {
       return;
     }
-    long l = AudioHelper.b();
-    String str = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_JavaLangString;
+    long l = AudioHelper.c();
+    String str = this.b.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onClick, seq[");
     ((StringBuilder)localObject).append(l);
@@ -30,27 +30,27 @@ class VideoInviteActivity$DialogInterfaceOnClickListener
     localObject = ((StringBuilder)localObject).toString();
     paramInt = 1;
     QLog.w(str, 1, (String)localObject);
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 0)
     {
       if (i != 1) {
         return;
       }
       paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(l, true);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+      this.b.a(l, true);
+      this.b.finish();
       return;
     }
     paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().n();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity;
-    paramDialogInterface.d = true;
-    paramDialogInterface = paramDialogInterface.a();
-    if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.b) {
+    this.b.d().G();
+    paramDialogInterface = this.b;
+    paramDialogInterface.r = true;
+    paramDialogInterface = paramDialogInterface.d();
+    if (!this.b.g) {
       paramInt = 2;
     }
     paramDialogInterface.a(l, paramInt, false, true);
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e();
+    this.b.j();
   }
 }
 

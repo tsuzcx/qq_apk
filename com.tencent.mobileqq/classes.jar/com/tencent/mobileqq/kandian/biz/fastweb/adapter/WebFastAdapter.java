@@ -44,33 +44,33 @@ public class WebFastAdapter
   extends BaseAdapter
   implements IStateChangeListener, OnItemClickListener, DownloadListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new WebFastAdapter.2(this);
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private BaseItemViewHolder jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder;
-  private List<BaseData> jdField_a_of_type_JavaUtilList;
-  private ItemCreator[] jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-  private float jdField_b_of_type_Float = 14.0F;
-  private int jdField_b_of_type_Int = 16;
-  private int c = 18;
-  private int d = -1;
+  View.OnClickListener a = new WebFastAdapter.2(this);
+  private List<BaseData> b;
+  private Context c;
+  private IFaceDecoder d;
+  private BaseItemViewHolder e;
+  private ItemCreator[] f;
+  private float g;
+  private float h = 14.0F;
+  private int i;
+  private int j = 16;
+  private int k = 18;
+  private int l = -1;
   
   public WebFastAdapter(Context paramContext, List<BaseData> paramList, IFaceDecoder paramIFaceDecoder, VafContext paramVafContext)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
+    this.b = paramList;
+    this.c = paramContext;
+    this.d = paramIFaceDecoder;
     a(paramVafContext);
-    f();
+    g();
   }
   
   private int a(int paramInt, View paramView)
   {
     try
     {
-      paramView.measure(View.MeasureSpec.makeMeasureSpec(this.d, -2147483648), 0);
+      paramView.measure(View.MeasureSpec.makeMeasureSpec(this.l, -2147483648), 0);
       paramInt = paramView.getMeasuredHeight();
       return paramInt;
     }
@@ -107,23 +107,23 @@ public class WebFastAdapter
   private void a(VafContext paramVafContext)
   {
     paramVafContext = new WebProteusViewCreator(paramVafContext);
-    WebPtsLiteViewCreator localWebPtsLiteViewCreator = new WebPtsLiteViewCreator(this.jdField_a_of_type_AndroidContentContext);
+    WebPtsLiteViewCreator localWebPtsLiteViewCreator = new WebPtsLiteViewCreator(this.c);
     NewPtsViewCreator localNewPtsViewCreator = new NewPtsViewCreator();
     ItemCreator[] arrayOfItemCreator1 = (ItemCreator[])((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).getWebFastProteusAdCreators();
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator = new ItemCreator[arrayOfItemCreator1.length + 6];
-    ItemCreator[] arrayOfItemCreator2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-    int i = 0;
+    this.f = new ItemCreator[arrayOfItemCreator1.length + 6];
+    ItemCreator[] arrayOfItemCreator2 = this.f;
+    int m = 0;
     arrayOfItemCreator2[0] = localWebPtsLiteViewCreator;
     arrayOfItemCreator2[1] = new SimpleViewCreator();
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator[2] = new WebFastAttachedAdCreator();
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator[3] = new WebFastProteusViewCreator();
-    arrayOfItemCreator2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
+    this.f[2] = new WebFastAttachedAdCreator();
+    this.f[3] = new WebFastProteusViewCreator();
+    arrayOfItemCreator2 = this.f;
     arrayOfItemCreator2[4] = paramVafContext;
     arrayOfItemCreator2[5] = localNewPtsViewCreator;
-    while (i < arrayOfItemCreator1.length)
+    while (m < arrayOfItemCreator1.length)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator[(i + 6)] = arrayOfItemCreator1[i];
-      i += 1;
+      this.f[(m + 6)] = arrayOfItemCreator1[m];
+      m += 1;
     }
     paramVafContext.a(this);
     localWebPtsLiteViewCreator.f();
@@ -132,142 +132,142 @@ public class WebFastAdapter
   }
   
   /* Error */
-  private void f()
+  private void g()
   {
     // Byte code:
-    //   0: new 112	org/json/JSONObject
+    //   0: new 119	org/json/JSONObject
     //   3: dup
-    //   4: ldc 185
-    //   6: ldc 131
-    //   8: invokestatic 190	com/tencent/mobileqq/kandian/base/utils/RIJSPUtils:a	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   11: checkcast 192	java/lang/String
-    //   14: invokespecial 195	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   4: ldc 193
+    //   6: ldc 138
+    //   8: invokestatic 198	com/tencent/mobileqq/kandian/base/utils/RIJSPUtils:b	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   11: checkcast 200	java/lang/String
+    //   14: invokespecial 203	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   17: astore_2
     //   18: aload_2
-    //   19: invokevirtual 199	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   19: invokevirtual 207	org/json/JSONObject:keys	()Ljava/util/Iterator;
     //   22: astore_3
     //   23: aload_3
-    //   24: invokeinterface 205 1 0
+    //   24: invokeinterface 213 1 0
     //   29: istore_1
     //   30: iload_1
-    //   31: ifeq +166 -> 197
+    //   31: ifeq +168 -> 199
     //   34: aload_3
-    //   35: invokeinterface 209 1 0
-    //   40: checkcast 192	java/lang/String
+    //   35: invokeinterface 217 1 0
+    //   40: checkcast 200	java/lang/String
     //   43: astore 4
     //   45: aload_2
     //   46: aload 4
-    //   48: invokevirtual 126	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   48: invokevirtual 133	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   51: astore 5
-    //   53: ldc 211
+    //   53: ldc 219
     //   55: aload 4
-    //   57: invokevirtual 215	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   57: invokevirtual 223	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   60: ifeq +15 -> 75
     //   63: aload_0
     //   64: aload 5
-    //   66: invokestatic 221	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   69: putfield 223	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:jdField_a_of_type_Int	I
+    //   66: invokestatic 229	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   69: putfield 231	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:i	I
     //   72: goto -49 -> 23
-    //   75: ldc 225
+    //   75: ldc 233
     //   77: aload 4
-    //   79: invokevirtual 215	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   79: invokevirtual 223	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   82: ifeq +38 -> 120
     //   85: aload_0
     //   86: aload 5
-    //   88: invokestatic 231	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   91: invokevirtual 234	java/lang/Integer:intValue	()I
+    //   88: invokestatic 239	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   91: invokevirtual 242	java/lang/Integer:intValue	()I
     //   94: i2f
-    //   95: putfield 236	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:jdField_a_of_type_Float	F
+    //   95: putfield 244	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:g	F
     //   98: aload_0
     //   99: aload_0
-    //   100: getfield 236	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:jdField_a_of_type_Float	F
+    //   100: getfield 244	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:g	F
     //   103: f2d
-    //   104: invokestatic 241	java/lang/Double:valueOf	(D)Ljava/lang/Double;
-    //   107: invokevirtual 245	java/lang/Double:doubleValue	()D
-    //   110: invokestatic 251	com/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/utils/Utils:dp2px	(D)I
+    //   104: invokestatic 249	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   107: invokevirtual 253	java/lang/Double:doubleValue	()D
+    //   110: invokestatic 259	com/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/utils/Utils:dp2px	(D)I
     //   113: i2f
-    //   114: putfield 236	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:jdField_a_of_type_Float	F
+    //   114: putfield 244	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:g	F
     //   117: goto -94 -> 23
-    //   120: ldc 253
-    //   122: aload 4
-    //   124: invokevirtual 215	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   127: ifeq +19 -> 146
-    //   130: aload_0
-    //   131: aload 5
-    //   133: invokestatic 231	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   136: invokevirtual 234	java/lang/Integer:intValue	()I
-    //   139: i2f
-    //   140: putfield 31	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:jdField_b_of_type_Float	F
-    //   143: goto -120 -> 23
-    //   146: ldc 255
-    //   148: aload 4
-    //   150: invokevirtual 215	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   153: ifeq +18 -> 171
-    //   156: aload_0
-    //   157: aload 5
-    //   159: invokestatic 231	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   162: invokevirtual 234	java/lang/Integer:intValue	()I
-    //   165: putfield 33	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:jdField_b_of_type_Int	I
-    //   168: goto -145 -> 23
-    //   171: ldc_w 257
-    //   174: aload 4
-    //   176: invokevirtual 215	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   179: ifeq -156 -> 23
-    //   182: aload_0
-    //   183: aload 5
-    //   185: invokestatic 231	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   188: invokevirtual 234	java/lang/Integer:intValue	()I
-    //   191: putfield 35	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:c	I
-    //   194: goto -171 -> 23
-    //   197: return
-    //   198: astore_2
+    //   120: ldc_w 261
+    //   123: aload 4
+    //   125: invokevirtual 223	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   128: ifeq +19 -> 147
+    //   131: aload_0
+    //   132: aload 5
+    //   134: invokestatic 239	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   137: invokevirtual 242	java/lang/Integer:intValue	()I
+    //   140: i2f
+    //   141: putfield 39	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:h	F
+    //   144: goto -121 -> 23
+    //   147: ldc_w 263
+    //   150: aload 4
+    //   152: invokevirtual 223	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   155: ifeq +18 -> 173
+    //   158: aload_0
+    //   159: aload 5
+    //   161: invokestatic 239	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   164: invokevirtual 242	java/lang/Integer:intValue	()I
+    //   167: putfield 41	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:j	I
+    //   170: goto -147 -> 23
+    //   173: ldc_w 265
+    //   176: aload 4
+    //   178: invokevirtual 223	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   181: ifeq -158 -> 23
+    //   184: aload_0
+    //   185: aload 5
+    //   187: invokestatic 239	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   190: invokevirtual 242	java/lang/Integer:intValue	()I
+    //   193: putfield 43	com/tencent/mobileqq/kandian/biz/fastweb/adapter/WebFastAdapter:k	I
+    //   196: goto -173 -> 23
     //   199: return
-    //   200: astore 4
-    //   202: goto -179 -> 23
+    //   200: astore_2
+    //   201: return
+    //   202: astore 4
+    //   204: goto -181 -> 23
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	205	0	this	WebFastAdapter
+    //   0	207	0	this	WebFastAdapter
     //   29	2	1	bool	boolean
     //   17	29	2	localJSONObject	JSONObject
-    //   198	1	2	localException1	Exception
+    //   200	1	2	localException1	Exception
     //   22	13	3	localIterator	java.util.Iterator
-    //   43	132	4	str1	String
-    //   200	1	4	localException2	Exception
-    //   51	133	5	str2	String
+    //   43	134	4	str1	String
+    //   202	1	4	localException2	Exception
+    //   51	135	5	str2	String
     // Exception table:
     //   from	to	target	type
-    //   0	23	198	java/lang/Exception
-    //   23	30	198	java/lang/Exception
-    //   34	72	200	java/lang/Exception
-    //   75	117	200	java/lang/Exception
-    //   120	143	200	java/lang/Exception
-    //   146	168	200	java/lang/Exception
-    //   171	194	200	java/lang/Exception
+    //   0	23	200	java/lang/Exception
+    //   23	30	200	java/lang/Exception
+    //   34	72	202	java/lang/Exception
+    //   75	117	202	java/lang/Exception
+    //   120	144	202	java/lang/Exception
+    //   147	170	202	java/lang/Exception
+    //   173	196	202	java/lang/Exception
   }
   
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    BaseData localBaseData = (BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    BaseData localBaseData = (BaseData)this.b.get(paramInt);
     if (localBaseData == null)
     {
       AIOUtils.a("Q.readinjoy.fast_web", "", new NullPointerException());
-      return new TextView(this.jdField_a_of_type_AndroidContentContext);
+      return new TextView(this.c);
     }
-    FastWebPTSUtils.a(localBaseData);
+    FastWebPTSUtils.b(localBaseData);
     try
     {
-      localBaseData.x = paramInt;
+      localBaseData.aX = paramInt;
       if (paramView == null)
       {
-        Object localObject = a(localBaseData);
+        Object localObject = b(localBaseData);
         if (localObject != null)
         {
-          localObject = ((ItemCreator)localObject).a(this.jdField_a_of_type_AndroidContentContext, localBaseData, paramViewGroup);
+          localObject = ((ItemCreator)localObject).a(this.c, localBaseData, paramViewGroup);
           paramViewGroup = (ViewGroup)localObject;
           if (localObject != null)
           {
             ((BaseItemViewHolder)localObject).a(this);
-            paramView = ((BaseItemViewHolder)localObject).jdField_a_of_type_AndroidViewView;
+            paramView = ((BaseItemViewHolder)localObject).f;
             paramView.setTag(localObject);
             paramViewGroup = (ViewGroup)localObject;
           }
@@ -283,17 +283,17 @@ public class WebFastAdapter
       }
       if (paramViewGroup != null)
       {
-        paramViewGroup.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-        paramViewGroup.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
-        paramViewGroup.c = this.jdField_b_of_type_Int;
-        paramViewGroup.d = this.c;
-        paramViewGroup.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-        paramViewGroup.b(paramViewGroup.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBaseData, localBaseData, paramBoolean);
+        paramViewGroup.i = this.g;
+        paramViewGroup.j = this.h;
+        paramViewGroup.l = this.j;
+        paramViewGroup.m = this.k;
+        paramViewGroup.k = this.i;
+        paramViewGroup.b(paramViewGroup.g, localBaseData, paramBoolean);
       }
       paramViewGroup = paramView;
       if ((localBaseData instanceof AuthorData))
       {
-        ReadinjoyReportUtils.a(localBaseData.b, ReadinjoyReportUtils.d, false, "");
+        ReadinjoyReportUtils.a(localBaseData.aQ, ReadinjoyReportUtils.d, false, "");
         paramViewGroup = paramView;
       }
     }
@@ -303,36 +303,83 @@ public class WebFastAdapter
       paramViewGroup.append("getView error,msg:");
       paramViewGroup.append(paramView.toString());
       QLog.d("WebFastAdapter", 1, paramViewGroup.toString());
-      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup = new View(this.c);
       paramViewGroup.setVisibility(8);
     }
-    if ((this.d > 0) && (localBaseData.y <= 0))
+    if ((this.l > 0) && (localBaseData.aY <= 0))
     {
       paramInt = a(paramInt, paramViewGroup);
       if (paramInt > 0) {
-        localBaseData.y = paramInt;
+        localBaseData.aY = paramInt;
       }
     }
     return paramViewGroup;
   }
   
-  public ItemCreator a(BaseData paramBaseData)
+  public void a()
   {
-    int i = 0;
+    int m = 0;
     for (;;)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-      if (i >= localObject.length) {
+      ItemCreator[] arrayOfItemCreator = this.f;
+      if (m >= arrayOfItemCreator.length) {
         break;
       }
-      if (localObject[i].a(paramBaseData)) {
-        return this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator[i];
+      if ((arrayOfItemCreator[m] instanceof IStateChangeListener)) {
+        ((IStateChangeListener)arrayOfItemCreator[m]).a();
       }
-      i += 1;
+      m += 1;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
+  public void a(BaseItemViewHolder paramBaseItemViewHolder)
+  {
+    this.e = paramBaseItemViewHolder;
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(0, HardCodeUtil.a(2131913800));
+    BubbleContextMenu.a(paramBaseItemViewHolder.f, localQQCustomMenu, this.a, new WebFastAdapter.1(this, paramBaseItemViewHolder));
+  }
+  
+  public void a(BaseData paramBaseData) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    int m = 0;
+    for (;;)
+    {
+      ItemCreator[] arrayOfItemCreator = this.f;
+      if (m >= arrayOfItemCreator.length) {
+        break;
+      }
+      if ((arrayOfItemCreator[m] instanceof IStateChangeListener)) {
+        ((IStateChangeListener)arrayOfItemCreator[m]).a(paramAbsListView, paramInt);
+      }
+      m += 1;
+    }
+  }
+  
+  public ItemCreator b(BaseData paramBaseData)
+  {
+    int m = 0;
+    for (;;)
+    {
+      localObject = this.f;
+      if (m >= localObject.length) {
+        break;
+      }
+      if (localObject[m].a(paramBaseData)) {
+        return this.f[m];
+      }
+      m += 1;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("no suitable creator: ");
-    ((StringBuilder)localObject).append(paramBaseData.u);
+    ((StringBuilder)localObject).append(paramBaseData.aP);
     paramBaseData = new IllegalArgumentException(((StringBuilder)localObject).toString());
     for (;;)
     {
@@ -340,127 +387,80 @@ public class WebFastAdapter
     }
   }
   
-  public List<BaseData> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    for (;;)
-    {
-      ItemCreator[] arrayOfItemCreator = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-      if (i >= arrayOfItemCreator.length) {
-        break;
-      }
-      if ((arrayOfItemCreator[i] instanceof IStateChangeListener)) {
-        ((IStateChangeListener)arrayOfItemCreator[i]).a();
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void a(BaseItemViewHolder paramBaseItemViewHolder)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder = paramBaseItemViewHolder;
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(0, HardCodeUtil.a(2131716359));
-    BubbleContextMenu.a(paramBaseItemViewHolder.jdField_a_of_type_AndroidViewView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new WebFastAdapter.1(this, paramBaseItemViewHolder));
-  }
-  
-  public void a(BaseData paramBaseData) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    int i = 0;
-    for (;;)
-    {
-      ItemCreator[] arrayOfItemCreator = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-      if (i >= arrayOfItemCreator.length) {
-        break;
-      }
-      if ((arrayOfItemCreator[i] instanceof IStateChangeListener)) {
-        ((IStateChangeListener)arrayOfItemCreator[i]).a(paramAbsListView, paramInt);
-      }
-      i += 1;
-    }
-  }
-  
   public void b()
   {
-    int i = 0;
+    int m = 0;
     for (;;)
     {
-      ItemCreator[] arrayOfItemCreator = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-      if (i >= arrayOfItemCreator.length) {
+      ItemCreator[] arrayOfItemCreator = this.f;
+      if (m >= arrayOfItemCreator.length) {
         break;
       }
-      if ((arrayOfItemCreator[i] instanceof IStateChangeListener)) {
-        ((IStateChangeListener)arrayOfItemCreator[i]).b();
+      if ((arrayOfItemCreator[m] instanceof IStateChangeListener)) {
+        ((IStateChangeListener)arrayOfItemCreator[m]).b();
       }
-      i += 1;
+      m += 1;
     }
   }
   
   public void c()
   {
-    int i = 0;
+    int m = 0;
     for (;;)
     {
-      ItemCreator[] arrayOfItemCreator = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-      if (i >= arrayOfItemCreator.length) {
+      ItemCreator[] arrayOfItemCreator = this.f;
+      if (m >= arrayOfItemCreator.length) {
         break;
       }
-      if ((arrayOfItemCreator[i] instanceof IStateChangeListener)) {
-        ((IStateChangeListener)arrayOfItemCreator[i]).c();
+      if ((arrayOfItemCreator[m] instanceof IStateChangeListener)) {
+        ((IStateChangeListener)arrayOfItemCreator[m]).c();
       }
-      i += 1;
+      m += 1;
     }
   }
   
   public void d()
   {
-    int i = 0;
+    int m = 0;
     for (;;)
     {
-      ItemCreator[] arrayOfItemCreator = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-      if (i >= arrayOfItemCreator.length) {
+      ItemCreator[] arrayOfItemCreator = this.f;
+      if (m >= arrayOfItemCreator.length) {
         break;
       }
-      if ((arrayOfItemCreator[i] instanceof IStateChangeListener)) {
-        ((IStateChangeListener)arrayOfItemCreator[i]).d();
+      if ((arrayOfItemCreator[m] instanceof IStateChangeListener)) {
+        ((IStateChangeListener)arrayOfItemCreator[m]).d();
       }
-      i += 1;
+      m += 1;
     }
     DownloadManagerV2.a().b(this);
   }
   
   public void e()
   {
-    int i = 0;
+    int m = 0;
     for (;;)
     {
-      ItemCreator[] arrayOfItemCreator = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBizPtsItemCreator;
-      if (i >= arrayOfItemCreator.length) {
+      ItemCreator[] arrayOfItemCreator = this.f;
+      if (m >= arrayOfItemCreator.length) {
         break;
       }
-      if ((arrayOfItemCreator[i] instanceof IStateChangeListener)) {
-        ((IStateChangeListener)arrayOfItemCreator[i]).e();
+      if ((arrayOfItemCreator[m] instanceof IStateChangeListener)) {
+        ((IStateChangeListener)arrayOfItemCreator[m]).e();
       }
-      i += 1;
+      m += 1;
     }
     DownloadManagerV2.a().b(this);
   }
   
+  public List<BaseData> f()
+  {
+    return this.b;
+  }
+  
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -469,7 +469,7 @@ public class WebFastAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.get(paramInt);
     }
@@ -483,11 +483,11 @@ public class WebFastAdapter
   
   public int getItemViewType(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b;
     if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
     {
-      localObject = (BaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      return a((BaseData)localObject).a((BaseData)localObject);
+      localObject = (BaseData)this.b.get(paramInt);
+      return b((BaseData)localObject).b((BaseData)localObject);
     }
     return -1;
   }
@@ -499,7 +499,7 @@ public class WebFastAdapter
   
   public int getViewTypeCount()
   {
-    return BaseItemViewHolder.jdField_a_of_type_Int;
+    return BaseItemViewHolder.e;
   }
   
   public void installSucceed(String paramString1, String paramString2)
@@ -552,7 +552,7 @@ public class WebFastAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.adapter.WebFastAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -4,42 +4,36 @@ import java.util.HashMap;
 
 public class DownloadParams
 {
-  public int a;
-  public DownloadResult a;
   public String a;
-  public HashMap<String, String> a;
-  public int b;
-  public int c = 60000;
-  
-  public DownloadParams()
-  {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_b_of_type_Int = 5000;
-  }
+  public HashMap<String, String> b;
+  public int c = 3;
+  public int d = 5000;
+  public int e = 60000;
+  public DownloadResult f;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mUrl = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",mConnectionTimeout = ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(",mSocketTimeout = ");
-    localStringBuilder.append(this.c);
-    if (this.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult != null)
+    localStringBuilder.append(this.e);
+    if (this.f != null)
     {
       localStringBuilder.append(",mResult.mIsSucc = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.f.f);
       localStringBuilder.append(",mResult.mFileLength = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_a_of_type_Long);
+      localStringBuilder.append(this.f.b);
       localStringBuilder.append(",mResult.mErrCode = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_a_of_type_Int);
+      localStringBuilder.append(this.f.d);
       localStringBuilder.append(",mResult.mErrStr = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.f.e);
       localStringBuilder.append(",mResult.mTryCount = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_b_of_type_Int);
+      localStringBuilder.append(this.f.g);
       localStringBuilder.append(",mResult.mCostTime = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_b_of_type_Long);
+      localStringBuilder.append(this.f.c);
       localStringBuilder.append("ms");
     }
     else

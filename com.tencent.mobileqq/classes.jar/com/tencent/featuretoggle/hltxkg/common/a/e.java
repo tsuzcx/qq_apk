@@ -25,20 +25,20 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class e
 {
-  private static volatile byte jdField_a_of_type_Byte = 0;
-  private static volatile int jdField_a_of_type_Int = 0;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new f();
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static Map<String, j> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private static volatile boolean jdField_a_of_type_Boolean = true;
-  private static volatile int jdField_b_of_type_Int = -1;
-  private static String jdField_b_of_type_JavaLangString = "unknown";
-  private static volatile boolean jdField_b_of_type_Boolean = false;
+  private static volatile byte a = 0;
+  private static volatile boolean b = true;
   private static String c = "";
-  private static String d = "cmwap";
-  private static String e = "3gwap";
-  private static String f = "uniwap";
-  private static String g = "ctwap";
+  private static String d = "unknown";
+  private static volatile int e = 0;
+  private static volatile boolean f = false;
+  private static volatile int g = -1;
+  private static Map<String, j> h = new ConcurrentHashMap();
+  private static BroadcastReceiver i = new f();
+  private static String j = "";
+  private static String k = "cmwap";
+  private static String l = "3gwap";
+  private static String m = "uniwap";
+  private static String n = "ctwap";
   
   private static byte a(String paramString)
   {
@@ -49,8 +49,8 @@ public final class e
         return 1;
       }
       Iterator localIterator = paramString.getInterfaceAddresses().iterator();
-      int j = 0;
-      int i = 0;
+      int i2 = 0;
+      int i1 = 0;
       while (localIterator.hasNext())
       {
         paramString = ((InterfaceAddress)localIterator.next()).getAddress();
@@ -63,24 +63,24 @@ public final class e
           }
           if (i.b(paramString))
           {
-            j = 1;
+            i2 = 1;
           }
-          else if ((i == 0) && (i.c(paramString)))
+          else if ((i1 == 0) && (i.c(paramString)))
           {
             boolean bool = i.a(paramString);
             if (bool) {
-              i = 1;
+              i1 = 1;
             }
           }
         }
       }
-      if ((j != 0) && (i != 0)) {
+      if ((i2 != 0) && (i1 != 0)) {
         return 2;
       }
-      if (i != 0) {
+      if (i1 != 0) {
         return 3;
       }
-      if (j != 0) {
+      if (i2 != 0) {
         return 1;
       }
       return 0;
@@ -93,10 +93,10 @@ public final class e
   {
     try
     {
-      b();
+      m();
       d();
       IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-      a.a().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      a.a().registerReceiver(i, localIntentFilter);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -104,60 +104,28 @@ public final class e
   
   public static void a(String paramString, j paramj)
   {
-    synchronized (jdField_a_of_type_JavaUtilMap)
+    synchronized (h)
     {
-      jdField_a_of_type_JavaUtilMap.put(paramString, paramj);
+      h.put(paramString, paramj);
       return;
     }
   }
   
   public static String b()
   {
-    return jdField_b_of_type_JavaLangString;
-  }
-  
-  private static boolean b()
-  {
-    if (Build.VERSION.SDK_INT < 21)
-    {
-      jdField_a_of_type_Byte = 1;
-      return false;
-    }
-    Object localObject = (ConnectivityManager)a.a().getSystemService("connectivity");
-    NetworkInfo localNetworkInfo = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-    if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable()) && (localNetworkInfo.isConnected())) {}
-    try
-    {
-      localObject = (LinkProperties)ConnectivityManager.class.getDeclaredMethod("getActiveLinkProperties", new Class[0]).invoke(localObject, new Object[0]);
-      if (localObject == null)
-      {
-        jdField_a_of_type_Byte = 0;
-        return true;
-      }
-      jdField_a_of_type_Byte = a(((LinkProperties)localObject).getInterfaceName());
-      return true;
-    }
-    catch (Exception localException)
-    {
-      label97:
-      break label97;
-    }
-    jdField_a_of_type_Byte = 0;
-    return true;
-    jdField_a_of_type_Byte = 0;
-    return false;
+    return d;
   }
   
   public static String c()
   {
-    int i = jdField_a_of_type_Int;
-    if (i != 1)
+    int i1 = e;
+    if (i1 != 1)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i != 3)
+        if (i1 != 3)
         {
-          if (i != 4) {
+          if (i1 != 4) {
             return "";
           }
           return "4g";
@@ -175,428 +143,428 @@ public final class e
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
+    //   3: getstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
     //   6: istore_0
-    //   7: invokestatic 144	com/tencent/featuretoggle/hltxkg/common/a:a	()Landroid/content/Context;
-    //   10: ldc 168
-    //   12: invokevirtual 172	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   15: checkcast 174	android/net/ConnectivityManager
-    //   18: invokevirtual 178	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   7: invokestatic 151	com/tencent/featuretoggle/hltxkg/common/a:a	()Landroid/content/Context;
+    //   10: ldc 178
+    //   12: invokevirtual 182	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   15: checkcast 184	android/net/ConnectivityManager
+    //   18: invokevirtual 188	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   21: astore_3
     //   22: aload_3
-    //   23: ifnull +347 -> 370
+    //   23: ifnull +345 -> 368
     //   26: aload_3
-    //   27: invokevirtual 183	android/net/NetworkInfo:isAvailable	()Z
-    //   30: ifeq +340 -> 370
+    //   27: invokevirtual 193	android/net/NetworkInfo:isAvailable	()Z
+    //   30: ifeq +338 -> 368
     //   33: aload_3
-    //   34: invokevirtual 186	android/net/NetworkInfo:isConnected	()Z
-    //   37: ifeq +333 -> 370
+    //   34: invokevirtual 196	android/net/NetworkInfo:isConnected	()Z
+    //   37: ifeq +331 -> 368
     //   40: iconst_1
-    //   41: putstatic 219	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Boolean	Z
+    //   41: putstatic 198	com/tencent/featuretoggle/hltxkg/common/a/e:b	Z
     //   44: aload_3
-    //   45: invokevirtual 223	android/net/NetworkInfo:getType	()I
+    //   45: invokevirtual 202	android/net/NetworkInfo:getType	()I
     //   48: istore_1
     //   49: iload_1
     //   50: iconst_1
     //   51: if_icmpne +75 -> 126
     //   54: iconst_1
-    //   55: putstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
+    //   55: putstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
     //   58: iconst_0
-    //   59: putstatic 225	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Int	I
+    //   59: putstatic 204	com/tencent/featuretoggle/hltxkg/common/a/e:g	I
     //   62: iconst_0
-    //   63: putstatic 227	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Boolean	Z
-    //   66: invokestatic 144	com/tencent/featuretoggle/hltxkg/common/a:a	()Landroid/content/Context;
-    //   69: invokevirtual 230	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   72: ldc 217
-    //   74: invokevirtual 172	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   77: checkcast 232	android/net/wifi/WifiManager
-    //   80: invokevirtual 236	android/net/wifi/WifiManager:getConnectionInfo	()Landroid/net/wifi/WifiInfo;
+    //   63: putstatic 206	com/tencent/featuretoggle/hltxkg/common/a/e:f	Z
+    //   66: invokestatic 151	com/tencent/featuretoggle/hltxkg/common/a:a	()Landroid/content/Context;
+    //   69: invokevirtual 209	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   72: ldc 176
+    //   74: invokevirtual 182	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   77: checkcast 211	android/net/wifi/WifiManager
+    //   80: invokestatic 217	com/tencent/mobileqq/qmethodmonitor/monitor/NetworkMonitor:getConnectionInfo	(Landroid/net/wifi/WifiManager;)Landroid/net/wifi/WifiInfo;
     //   83: astore_3
-    //   84: new 238	java/lang/StringBuilder
+    //   84: new 219	java/lang/StringBuilder
     //   87: dup
-    //   88: ldc 240
-    //   90: invokespecial 241	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   88: ldc 221
+    //   90: invokespecial 222	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   93: astore 4
     //   95: aload 4
     //   97: aload_3
-    //   98: invokevirtual 246	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
-    //   101: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 227	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
+    //   101: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: pop
     //   105: aload 4
     //   107: aload_3
-    //   108: invokevirtual 253	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
-    //   111: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: invokevirtual 234	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
+    //   111: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: aload 4
-    //   117: invokevirtual 256	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: putstatic 159	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   123: goto +277 -> 400
+    //   117: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: putstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
+    //   123: goto +275 -> 398
     //   126: aload_3
-    //   127: invokevirtual 259	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   127: invokevirtual 240	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   130: astore 4
     //   132: aload 4
-    //   134: ifnull +215 -> 349
+    //   134: ifnull +213 -> 347
     //   137: aload 4
-    //   139: invokevirtual 262	java/lang/String:trim	()Ljava/lang/String;
-    //   142: invokevirtual 265	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   145: putstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   139: invokevirtual 243	java/lang/String:trim	()Ljava/lang/String;
+    //   142: invokevirtual 246	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   145: putstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
     //   148: iload_1
-    //   149: ifne +175 -> 324
-    //   152: new 238	java/lang/StringBuilder
+    //   149: ifne +173 -> 322
+    //   152: new 219	java/lang/StringBuilder
     //   155: dup
-    //   156: ldc_w 269
-    //   159: invokespecial 241	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   162: astore 4
-    //   164: aload 4
-    //   166: getstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   169: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: pop
-    //   173: aload 4
-    //   175: invokevirtual 256	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: putstatic 159	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   181: aload_3
-    //   182: invokevirtual 272	android/net/NetworkInfo:getSubtype	()I
-    //   185: istore_1
-    //   186: iload_1
-    //   187: putstatic 225	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Int	I
-    //   190: iload_1
-    //   191: iconst_1
-    //   192: if_icmpeq +30 -> 222
-    //   195: iload_1
-    //   196: iconst_2
-    //   197: if_icmpeq +25 -> 222
-    //   200: iload_1
-    //   201: iconst_4
-    //   202: if_icmpne +470 -> 672
-    //   205: goto +17 -> 222
-    //   208: iconst_3
-    //   209: putstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   212: goto +14 -> 226
-    //   215: iconst_4
-    //   216: putstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   219: goto +7 -> 226
-    //   222: iconst_2
-    //   223: putstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   226: getstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   229: ldc_w 274
-    //   232: invokevirtual 113	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   235: istore_2
-    //   236: iload_2
-    //   237: putstatic 227	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Boolean	Z
-    //   240: iload_2
-    //   241: ifeq +159 -> 400
-    //   244: getstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   247: getstatic 49	com/tencent/featuretoggle/hltxkg/common/a/e:e	Ljava/lang/String;
-    //   250: invokevirtual 113	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   253: ifeq +14 -> 267
-    //   256: ldc_w 276
-    //   259: astore_3
-    //   260: aload_3
-    //   261: putstatic 41	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
-    //   264: goto +136 -> 400
-    //   267: getstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   270: getstatic 45	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
-    //   273: invokevirtual 113	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   276: ifeq +10 -> 286
-    //   279: ldc_w 276
-    //   282: astore_3
-    //   283: goto -23 -> 260
-    //   286: getstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   289: getstatic 53	com/tencent/featuretoggle/hltxkg/common/a/e:f	Ljava/lang/String;
-    //   292: invokevirtual 113	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   295: ifeq +10 -> 305
-    //   298: ldc_w 276
-    //   301: astore_3
-    //   302: goto -42 -> 260
-    //   305: getstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   308: getstatic 57	com/tencent/featuretoggle/hltxkg/common/a/e:g	Ljava/lang/String;
-    //   311: invokevirtual 113	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   314: ifeq +373 -> 687
-    //   317: ldc_w 278
-    //   320: astore_3
-    //   321: goto -61 -> 260
-    //   324: ldc 20
-    //   326: putstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   329: iconst_0
-    //   330: putstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   333: iconst_m1
-    //   334: putstatic 225	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Int	I
-    //   337: ldc 20
-    //   339: putstatic 159	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   342: iconst_0
-    //   343: putstatic 227	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Boolean	Z
-    //   346: goto +54 -> 400
-    //   349: ldc 20
-    //   351: putstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   354: iconst_0
-    //   355: putstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   358: iconst_m1
-    //   359: putstatic 225	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Int	I
-    //   362: ldc 20
-    //   364: putstatic 159	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   367: goto -25 -> 342
-    //   370: ldc 20
-    //   372: putstatic 267	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   375: iconst_0
-    //   376: putstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   379: iconst_m1
-    //   380: putstatic 225	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Int	I
-    //   383: ldc 20
-    //   385: putstatic 159	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   388: iconst_0
-    //   389: putstatic 227	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_Boolean	Z
-    //   392: iconst_0
-    //   393: putstatic 219	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Boolean	Z
-    //   396: iconst_0
-    //   397: putstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Byte	B
-    //   400: iload_0
-    //   401: getstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   404: if_icmpeq +168 -> 572
-    //   407: getstatic 34	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   410: astore_3
-    //   411: aload_3
-    //   412: monitorenter
-    //   413: getstatic 34	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   416: invokeinterface 282 1 0
-    //   421: invokeinterface 285 1 0
-    //   426: astore 4
-    //   428: aload 4
-    //   430: invokeinterface 86 1 0
-    //   435: ifeq +34 -> 469
-    //   438: aload 4
-    //   440: invokeinterface 90 1 0
-    //   445: checkcast 287	com/tencent/featuretoggle/hltxkg/common/a/j
-    //   448: astore 5
-    //   450: aload 5
-    //   452: ifnull -24 -> 428
-    //   455: aload 5
-    //   457: getstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   460: getstatic 159	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   463: invokevirtual 290	com/tencent/featuretoggle/hltxkg/common/a/j:a	(ILjava/lang/String;)V
-    //   466: goto -38 -> 428
-    //   469: aload_3
-    //   470: monitorexit
-    //   471: goto +101 -> 572
-    //   474: astore 4
-    //   476: aload_3
-    //   477: monitorexit
-    //   478: aload 4
-    //   480: athrow
-    //   481: astore 4
-    //   483: goto +93 -> 576
-    //   486: astore_3
-    //   487: aload_3
-    //   488: invokevirtual 293	java/lang/Throwable:printStackTrace	()V
-    //   491: iload_0
-    //   492: getstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   495: if_icmpeq +77 -> 572
-    //   498: getstatic 34	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   501: astore_3
-    //   502: aload_3
-    //   503: monitorenter
-    //   504: getstatic 34	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   507: invokeinterface 282 1 0
-    //   512: invokeinterface 285 1 0
-    //   517: astore 4
-    //   519: aload 4
-    //   521: invokeinterface 86 1 0
-    //   526: ifeq +34 -> 560
-    //   529: aload 4
-    //   531: invokeinterface 90 1 0
-    //   536: checkcast 287	com/tencent/featuretoggle/hltxkg/common/a/j
-    //   539: astore 5
-    //   541: aload 5
-    //   543: ifnull -24 -> 519
-    //   546: aload 5
-    //   548: getstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   551: getstatic 159	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   554: invokevirtual 290	com/tencent/featuretoggle/hltxkg/common/a/j:a	(ILjava/lang/String;)V
-    //   557: goto -38 -> 519
-    //   560: aload_3
-    //   561: monitorexit
-    //   562: goto +10 -> 572
-    //   565: astore 4
-    //   567: aload_3
-    //   568: monitorexit
-    //   569: aload 4
-    //   571: athrow
-    //   572: ldc 2
-    //   574: monitorexit
-    //   575: return
-    //   576: iload_0
-    //   577: getstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   580: if_icmpeq +77 -> 657
-    //   583: getstatic 34	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   586: astore_3
-    //   587: aload_3
-    //   588: monitorenter
-    //   589: getstatic 34	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   592: invokeinterface 282 1 0
-    //   597: invokeinterface 285 1 0
-    //   602: astore 5
-    //   604: aload 5
-    //   606: invokeinterface 86 1 0
-    //   611: ifeq +34 -> 645
-    //   614: aload 5
-    //   616: invokeinterface 90 1 0
-    //   621: checkcast 287	com/tencent/featuretoggle/hltxkg/common/a/j
-    //   624: astore 6
-    //   626: aload 6
-    //   628: ifnull -24 -> 604
-    //   631: aload 6
-    //   633: getstatic 209	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_a_of_type_Int	I
-    //   636: getstatic 159	com/tencent/featuretoggle/hltxkg/common/a/e:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   639: invokevirtual 290	com/tencent/featuretoggle/hltxkg/common/a/j:a	(ILjava/lang/String;)V
-    //   642: goto -38 -> 604
-    //   645: aload_3
-    //   646: monitorexit
-    //   647: goto +10 -> 657
-    //   650: astore 4
-    //   652: aload_3
-    //   653: monitorexit
-    //   654: aload 4
-    //   656: athrow
-    //   657: aload 4
-    //   659: athrow
-    //   660: astore_3
-    //   661: ldc 2
-    //   663: monitorexit
-    //   664: goto +5 -> 669
-    //   667: aload_3
-    //   668: athrow
-    //   669: goto -2 -> 667
-    //   672: iload_1
-    //   673: bipush 13
-    //   675: if_icmpeq -460 -> 215
-    //   678: iload_1
-    //   679: bipush 19
-    //   681: if_icmpne -473 -> 208
-    //   684: goto -469 -> 215
-    //   687: ldc 12
-    //   689: astore_3
-    //   690: goto -430 -> 260
+    //   156: ldc 250
+    //   158: invokespecial 222	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   161: astore 4
+    //   163: aload 4
+    //   165: getstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   168: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: pop
+    //   172: aload 4
+    //   174: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: putstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
+    //   180: aload_3
+    //   181: invokevirtual 253	android/net/NetworkInfo:getSubtype	()I
+    //   184: istore_1
+    //   185: iload_1
+    //   186: putstatic 204	com/tencent/featuretoggle/hltxkg/common/a/e:g	I
+    //   189: iload_1
+    //   190: iconst_1
+    //   191: if_icmpeq +30 -> 221
+    //   194: iload_1
+    //   195: iconst_2
+    //   196: if_icmpeq +25 -> 221
+    //   199: iload_1
+    //   200: iconst_4
+    //   201: if_icmpne +469 -> 670
+    //   204: goto +17 -> 221
+    //   207: iconst_3
+    //   208: putstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   211: goto +14 -> 225
+    //   214: iconst_4
+    //   215: putstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   218: goto +7 -> 225
+    //   221: iconst_2
+    //   222: putstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   225: getstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   228: ldc 255
+    //   230: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   233: istore_2
+    //   234: iload_2
+    //   235: putstatic 206	com/tencent/featuretoggle/hltxkg/common/a/e:f	Z
+    //   238: iload_2
+    //   239: ifeq +159 -> 398
+    //   242: getstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   245: getstatic 56	com/tencent/featuretoggle/hltxkg/common/a/e:l	Ljava/lang/String;
+    //   248: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   251: ifeq +14 -> 265
+    //   254: ldc_w 257
+    //   257: astore_3
+    //   258: aload_3
+    //   259: putstatic 48	com/tencent/featuretoggle/hltxkg/common/a/e:j	Ljava/lang/String;
+    //   262: goto +136 -> 398
+    //   265: getstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   268: getstatic 52	com/tencent/featuretoggle/hltxkg/common/a/e:k	Ljava/lang/String;
+    //   271: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   274: ifeq +10 -> 284
+    //   277: ldc_w 257
+    //   280: astore_3
+    //   281: goto -23 -> 258
+    //   284: getstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   287: getstatic 60	com/tencent/featuretoggle/hltxkg/common/a/e:m	Ljava/lang/String;
+    //   290: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   293: ifeq +10 -> 303
+    //   296: ldc_w 257
+    //   299: astore_3
+    //   300: goto -42 -> 258
+    //   303: getstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   306: getstatic 64	com/tencent/featuretoggle/hltxkg/common/a/e:n	Ljava/lang/String;
+    //   309: invokevirtual 120	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   312: ifeq +373 -> 685
+    //   315: ldc_w 259
+    //   318: astore_3
+    //   319: goto -61 -> 258
+    //   322: ldc 17
+    //   324: putstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   327: iconst_0
+    //   328: putstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   331: iconst_m1
+    //   332: putstatic 204	com/tencent/featuretoggle/hltxkg/common/a/e:g	I
+    //   335: ldc 17
+    //   337: putstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
+    //   340: iconst_0
+    //   341: putstatic 206	com/tencent/featuretoggle/hltxkg/common/a/e:f	Z
+    //   344: goto +54 -> 398
+    //   347: ldc 17
+    //   349: putstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   352: iconst_0
+    //   353: putstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   356: iconst_m1
+    //   357: putstatic 204	com/tencent/featuretoggle/hltxkg/common/a/e:g	I
+    //   360: ldc 17
+    //   362: putstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
+    //   365: goto -25 -> 340
+    //   368: ldc 17
+    //   370: putstatic 248	com/tencent/featuretoggle/hltxkg/common/a/e:c	Ljava/lang/String;
+    //   373: iconst_0
+    //   374: putstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   377: iconst_m1
+    //   378: putstatic 204	com/tencent/featuretoggle/hltxkg/common/a/e:g	I
+    //   381: ldc 17
+    //   383: putstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
+    //   386: iconst_0
+    //   387: putstatic 206	com/tencent/featuretoggle/hltxkg/common/a/e:f	Z
+    //   390: iconst_0
+    //   391: putstatic 198	com/tencent/featuretoggle/hltxkg/common/a/e:b	Z
+    //   394: iconst_0
+    //   395: putstatic 261	com/tencent/featuretoggle/hltxkg/common/a/e:a	B
+    //   398: iload_0
+    //   399: getstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   402: if_icmpeq +168 -> 570
+    //   405: getstatic 41	com/tencent/featuretoggle/hltxkg/common/a/e:h	Ljava/util/Map;
+    //   408: astore_3
+    //   409: aload_3
+    //   410: monitorenter
+    //   411: getstatic 41	com/tencent/featuretoggle/hltxkg/common/a/e:h	Ljava/util/Map;
+    //   414: invokeinterface 265 1 0
+    //   419: invokeinterface 268 1 0
+    //   424: astore 4
+    //   426: aload 4
+    //   428: invokeinterface 93 1 0
+    //   433: ifeq +34 -> 467
+    //   436: aload 4
+    //   438: invokeinterface 97 1 0
+    //   443: checkcast 270	com/tencent/featuretoggle/hltxkg/common/a/j
+    //   446: astore 5
+    //   448: aload 5
+    //   450: ifnull -24 -> 426
+    //   453: aload 5
+    //   455: getstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   458: getstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
+    //   461: invokevirtual 273	com/tencent/featuretoggle/hltxkg/common/a/j:a	(ILjava/lang/String;)V
+    //   464: goto -38 -> 426
+    //   467: aload_3
+    //   468: monitorexit
+    //   469: goto +101 -> 570
+    //   472: astore 4
+    //   474: aload_3
+    //   475: monitorexit
+    //   476: aload 4
+    //   478: athrow
+    //   479: astore 4
+    //   481: goto +93 -> 574
+    //   484: astore_3
+    //   485: aload_3
+    //   486: invokevirtual 276	java/lang/Throwable:printStackTrace	()V
+    //   489: iload_0
+    //   490: getstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   493: if_icmpeq +77 -> 570
+    //   496: getstatic 41	com/tencent/featuretoggle/hltxkg/common/a/e:h	Ljava/util/Map;
+    //   499: astore_3
+    //   500: aload_3
+    //   501: monitorenter
+    //   502: getstatic 41	com/tencent/featuretoggle/hltxkg/common/a/e:h	Ljava/util/Map;
+    //   505: invokeinterface 265 1 0
+    //   510: invokeinterface 268 1 0
+    //   515: astore 4
+    //   517: aload 4
+    //   519: invokeinterface 93 1 0
+    //   524: ifeq +34 -> 558
+    //   527: aload 4
+    //   529: invokeinterface 97 1 0
+    //   534: checkcast 270	com/tencent/featuretoggle/hltxkg/common/a/j
+    //   537: astore 5
+    //   539: aload 5
+    //   541: ifnull -24 -> 517
+    //   544: aload 5
+    //   546: getstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   549: getstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
+    //   552: invokevirtual 273	com/tencent/featuretoggle/hltxkg/common/a/j:a	(ILjava/lang/String;)V
+    //   555: goto -38 -> 517
+    //   558: aload_3
+    //   559: monitorexit
+    //   560: goto +10 -> 570
+    //   563: astore 4
+    //   565: aload_3
+    //   566: monitorexit
+    //   567: aload 4
+    //   569: athrow
+    //   570: ldc 2
+    //   572: monitorexit
+    //   573: return
+    //   574: iload_0
+    //   575: getstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   578: if_icmpeq +77 -> 655
+    //   581: getstatic 41	com/tencent/featuretoggle/hltxkg/common/a/e:h	Ljava/util/Map;
+    //   584: astore_3
+    //   585: aload_3
+    //   586: monitorenter
+    //   587: getstatic 41	com/tencent/featuretoggle/hltxkg/common/a/e:h	Ljava/util/Map;
+    //   590: invokeinterface 265 1 0
+    //   595: invokeinterface 268 1 0
+    //   600: astore 5
+    //   602: aload 5
+    //   604: invokeinterface 93 1 0
+    //   609: ifeq +34 -> 643
+    //   612: aload 5
+    //   614: invokeinterface 97 1 0
+    //   619: checkcast 270	com/tencent/featuretoggle/hltxkg/common/a/j
+    //   622: astore 6
+    //   624: aload 6
+    //   626: ifnull -24 -> 602
+    //   629: aload 6
+    //   631: getstatic 168	com/tencent/featuretoggle/hltxkg/common/a/e:e	I
+    //   634: getstatic 166	com/tencent/featuretoggle/hltxkg/common/a/e:d	Ljava/lang/String;
+    //   637: invokevirtual 273	com/tencent/featuretoggle/hltxkg/common/a/j:a	(ILjava/lang/String;)V
+    //   640: goto -38 -> 602
+    //   643: aload_3
+    //   644: monitorexit
+    //   645: goto +10 -> 655
+    //   648: astore 4
+    //   650: aload_3
+    //   651: monitorexit
+    //   652: aload 4
+    //   654: athrow
+    //   655: aload 4
+    //   657: athrow
+    //   658: astore_3
+    //   659: ldc 2
+    //   661: monitorexit
+    //   662: goto +5 -> 667
+    //   665: aload_3
+    //   666: athrow
+    //   667: goto -2 -> 665
+    //   670: iload_1
+    //   671: bipush 13
+    //   673: if_icmpeq -459 -> 214
+    //   676: iload_1
+    //   677: bipush 19
+    //   679: if_icmpne -472 -> 207
+    //   682: goto -468 -> 214
+    //   685: ldc 14
+    //   687: astore_3
+    //   688: goto -430 -> 258
     // Local variable table:
     //   start	length	slot	name	signature
-    //   6	575	0	i	int
-    //   48	634	1	j	int
-    //   235	6	2	bool	boolean
-    //   486	2	3	localThrowable	Throwable
-    //   660	8	3	localObject2	Object
-    //   689	1	3	str	String
-    //   93	346	4	localObject3	Object
-    //   474	5	4	localObject4	Object
-    //   481	1	4	localObject5	Object
-    //   517	13	4	localIterator	Iterator
-    //   565	5	4	localObject6	Object
-    //   650	8	4	localObject7	Object
-    //   448	167	5	localObject8	Object
-    //   624	8	6	localj	j
+    //   6	573	0	i1	int
+    //   48	632	1	i2	int
+    //   233	6	2	bool	boolean
+    //   484	2	3	localThrowable	Throwable
+    //   658	8	3	localObject2	Object
+    //   687	1	3	str	String
+    //   93	344	4	localObject3	Object
+    //   472	5	4	localObject4	Object
+    //   479	1	4	localObject5	Object
+    //   515	13	4	localIterator	Iterator
+    //   563	5	4	localObject6	Object
+    //   648	8	4	localObject7	Object
+    //   446	167	5	localObject8	Object
+    //   622	8	6	localj	j
     // Exception table:
     //   from	to	target	type
-    //   413	428	474	finally
-    //   428	450	474	finally
-    //   455	466	474	finally
-    //   469	471	474	finally
-    //   7	22	481	finally
-    //   26	49	481	finally
-    //   54	123	481	finally
-    //   126	132	481	finally
-    //   137	148	481	finally
-    //   152	190	481	finally
-    //   208	212	481	finally
-    //   215	219	481	finally
-    //   222	226	481	finally
-    //   226	240	481	finally
-    //   244	256	481	finally
-    //   260	264	481	finally
-    //   267	279	481	finally
-    //   286	298	481	finally
-    //   305	317	481	finally
-    //   324	342	481	finally
-    //   342	346	481	finally
-    //   349	367	481	finally
-    //   370	400	481	finally
-    //   487	491	481	finally
-    //   7	22	486	java/lang/Throwable
-    //   26	49	486	java/lang/Throwable
-    //   54	123	486	java/lang/Throwable
-    //   126	132	486	java/lang/Throwable
-    //   137	148	486	java/lang/Throwable
-    //   152	190	486	java/lang/Throwable
-    //   208	212	486	java/lang/Throwable
-    //   215	219	486	java/lang/Throwable
-    //   222	226	486	java/lang/Throwable
-    //   226	240	486	java/lang/Throwable
-    //   244	256	486	java/lang/Throwable
-    //   260	264	486	java/lang/Throwable
-    //   267	279	486	java/lang/Throwable
-    //   286	298	486	java/lang/Throwable
-    //   305	317	486	java/lang/Throwable
-    //   324	342	486	java/lang/Throwable
-    //   342	346	486	java/lang/Throwable
-    //   349	367	486	java/lang/Throwable
-    //   370	400	486	java/lang/Throwable
-    //   504	519	565	finally
-    //   519	541	565	finally
-    //   546	557	565	finally
-    //   560	562	565	finally
-    //   589	604	650	finally
-    //   604	626	650	finally
-    //   631	642	650	finally
-    //   645	647	650	finally
-    //   3	7	660	finally
-    //   400	413	660	finally
-    //   476	481	660	finally
-    //   491	504	660	finally
-    //   567	572	660	finally
-    //   576	589	660	finally
-    //   652	657	660	finally
-    //   657	660	660	finally
+    //   411	426	472	finally
+    //   426	448	472	finally
+    //   453	464	472	finally
+    //   467	469	472	finally
+    //   7	22	479	finally
+    //   26	49	479	finally
+    //   54	123	479	finally
+    //   126	132	479	finally
+    //   137	148	479	finally
+    //   152	189	479	finally
+    //   207	211	479	finally
+    //   214	218	479	finally
+    //   221	225	479	finally
+    //   225	238	479	finally
+    //   242	254	479	finally
+    //   258	262	479	finally
+    //   265	277	479	finally
+    //   284	296	479	finally
+    //   303	315	479	finally
+    //   322	340	479	finally
+    //   340	344	479	finally
+    //   347	365	479	finally
+    //   368	398	479	finally
+    //   485	489	479	finally
+    //   7	22	484	java/lang/Throwable
+    //   26	49	484	java/lang/Throwable
+    //   54	123	484	java/lang/Throwable
+    //   126	132	484	java/lang/Throwable
+    //   137	148	484	java/lang/Throwable
+    //   152	189	484	java/lang/Throwable
+    //   207	211	484	java/lang/Throwable
+    //   214	218	484	java/lang/Throwable
+    //   221	225	484	java/lang/Throwable
+    //   225	238	484	java/lang/Throwable
+    //   242	254	484	java/lang/Throwable
+    //   258	262	484	java/lang/Throwable
+    //   265	277	484	java/lang/Throwable
+    //   284	296	484	java/lang/Throwable
+    //   303	315	484	java/lang/Throwable
+    //   322	340	484	java/lang/Throwable
+    //   340	344	484	java/lang/Throwable
+    //   347	365	484	java/lang/Throwable
+    //   368	398	484	java/lang/Throwable
+    //   502	517	563	finally
+    //   517	539	563	finally
+    //   544	555	563	finally
+    //   558	560	563	finally
+    //   587	602	648	finally
+    //   602	624	648	finally
+    //   629	640	648	finally
+    //   643	645	648	finally
+    //   3	7	658	finally
+    //   398	411	658	finally
+    //   474	479	658	finally
+    //   489	502	658	finally
+    //   565	570	658	finally
+    //   574	587	658	finally
+    //   650	655	658	finally
+    //   655	658	658	finally
   }
   
   public static int e()
   {
-    return jdField_a_of_type_Int;
+    return e;
   }
   
   public static byte f()
   {
-    return jdField_a_of_type_Byte;
+    return a;
   }
   
   public static boolean g()
   {
-    return jdField_a_of_type_Boolean;
+    return b;
   }
   
   public static boolean h()
   {
-    return jdField_b_of_type_Boolean;
+    return f;
   }
   
   public static Integer i()
   {
     d();
-    int m = jdField_a_of_type_Int;
+    int i4 = e;
     Integer localInteger = Integer.valueOf(3);
-    int k = 1;
-    int j = 0;
-    int i = k;
-    if (m != 2)
+    int i3 = 1;
+    int i2 = 0;
+    int i1 = i3;
+    if (i4 != 2)
     {
-      i = k;
-      if (jdField_a_of_type_Int != 3) {
-        if (jdField_a_of_type_Int == 4) {
-          i = k;
+      i1 = i3;
+      if (e != 3) {
+        if (e == 4) {
+          i1 = i3;
         } else {
-          i = 0;
+          i1 = 0;
         }
       }
     }
-    if (i != 0)
+    if (i1 != 0)
     {
       Object localObject2 = a.a();
-      Object localObject1 = jdField_a_of_type_JavaLangString;
+      Object localObject1 = c;
       localObject2 = (TelephonyManager)((Context)localObject2).getSystemService("phone");
       if ((localObject2 != null) && (((TelephonyManager)localObject2).getSimState() == 5))
       {
@@ -649,15 +617,15 @@ public final class e
       }
       localObject1 = Integer.valueOf(0);
       label297:
-      j = ((Integer)localObject1).intValue();
+      i2 = ((Integer)localObject1).intValue();
     }
-    return Integer.valueOf(j);
+    return Integer.valueOf(i2);
   }
   
   public static Proxy j()
   {
-    if ((jdField_b_of_type_Boolean) && (!TextUtils.isEmpty(c))) {
-      return new Proxy(Proxy.Type.HTTP, new InetSocketAddress(c, 80));
+    if ((f) && (!TextUtils.isEmpty(j))) {
+      return new Proxy(Proxy.Type.HTTP, new InetSocketAddress(j, 80));
     }
     return null;
   }
@@ -681,10 +649,42 @@ public final class e
     catch (Throwable localThrowable) {}
     return false;
   }
+  
+  private static boolean m()
+  {
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      a = 1;
+      return false;
+    }
+    Object localObject = (ConnectivityManager)a.a().getSystemService("connectivity");
+    NetworkInfo localNetworkInfo = ((ConnectivityManager)localObject).getActiveNetworkInfo();
+    if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable()) && (localNetworkInfo.isConnected())) {}
+    try
+    {
+      localObject = (LinkProperties)ConnectivityManager.class.getDeclaredMethod("getActiveLinkProperties", new Class[0]).invoke(localObject, new Object[0]);
+      if (localObject == null)
+      {
+        a = 0;
+        return true;
+      }
+      a = a(((LinkProperties)localObject).getInterfaceName());
+      return true;
+    }
+    catch (Exception localException)
+    {
+      label98:
+      break label98;
+    }
+    a = 0;
+    return true;
+    a = 0;
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.e
  * JD-Core Version:    0.7.0.1
  */

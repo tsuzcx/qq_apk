@@ -48,7 +48,7 @@ public class HotChatUtilImpl
   
   public boolean isSeatOccupied(int paramInt)
   {
-    return HotChatUtil.a(paramInt);
+    return HotChatUtil.b(paramInt);
   }
   
   public void openHotChatMemberProfileCard(Context paramContext, Object paramObject, String paramString1, String paramString2)
@@ -73,7 +73,7 @@ public class HotChatUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.HotChatUtilImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.tkd.comment.panel.base.listener.OnEmotionItemClickListener;
 import com.tencent.tkd.comment.panel.base.view.PageIndicator;
-import com.tencent.tkd.comment.util.CollectionUtil;
 import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
@@ -22,14 +21,14 @@ public abstract class BaseEmotionPanel
   implements IEmotionPanel
 {
   protected int a;
-  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private RecyclerView.RecycledViewPool jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool;
-  @Nullable
-  private OnEmotionItemClickListener jdField_a_of_type_ComTencentTkdCommentPanelBaseListenerOnEmotionItemClickListener;
-  private PageIndicator jdField_a_of_type_ComTencentTkdCommentPanelBaseViewPageIndicator;
-  private List<RecyclerView> jdField_a_of_type_JavaUtilList;
   protected int b;
   protected int c;
+  private ViewPager d;
+  private PageIndicator e;
+  private List<RecyclerView> f;
+  @Nullable
+  private OnEmotionItemClickListener g;
+  private RecyclerView.RecycledViewPool h;
   
   public BaseEmotionPanel(@NotNull Context paramContext)
   {
@@ -51,86 +50,81 @@ public abstract class BaseEmotionPanel
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new BaseEmotionPanel.1(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.addOnPageChangeListener(new BaseEmotionPanel.2(this));
-  }
-  
-  protected int a()
-  {
-    return R.layout.jdField_a_of_type_Int;
-  }
-  
-  public ViewPager a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  }
-  
-  @Nullable
-  public RecyclerView.RecycledViewPool a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool;
-  }
-  
-  @Nullable
-  public OnEmotionItemClickListener a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdCommentPanelBaseListenerOnEmotionItemClickListener;
-  }
-  
-  @NotNull
-  protected List<RecyclerView> a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    return this.jdField_a_of_type_JavaUtilList;
+    this.d.setAdapter(new BaseEmotionPanel.1(this));
+    this.d.addOnPageChangeListener(new BaseEmotionPanel.2(this));
   }
   
   protected void a(@NotNull Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(R.id.b));
-    if ((this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getLayoutParams() instanceof FrameLayout.LayoutParams))
+    LayoutInflater.from(paramContext).inflate(getLayoutId(), this, true);
+    this.d = ((ViewPager)findViewById(R.id.b));
+    if ((this.d.getLayoutParams() instanceof FrameLayout.LayoutParams))
     {
-      paramContext = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getLayoutParams();
-      paramContext.leftMargin = b();
-      paramContext.rightMargin = b();
-      paramContext.topMargin = c();
-      paramContext.bottomMargin = d();
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setLayoutParams(paramContext);
+      paramContext = (FrameLayout.LayoutParams)this.d.getLayoutParams();
+      paramContext.leftMargin = getViewPagerHorizontalMargin();
+      paramContext.rightMargin = getViewPagerHorizontalMargin();
+      paramContext.topMargin = getViewPagerTopMargin();
+      paramContext.bottomMargin = getViewPagerBottomMargin();
+      this.d.setLayoutParams(paramContext);
     }
-    this.jdField_a_of_type_ComTencentTkdCommentPanelBaseViewPageIndicator = ((PageIndicator)findViewById(R.id.jdField_a_of_type_Int));
+    this.e = ((PageIndicator)findViewById(R.id.a));
     a();
   }
   
-  protected boolean a()
+  @NotNull
+  protected List<RecyclerView> getEmotionRecyclerViewList()
   {
-    return CollectionUtil.isEmpty(a());
+    if (this.f == null) {
+      this.f = new ArrayList();
+    }
+    return this.f;
   }
   
-  protected int b()
+  public ViewPager getEmotionViewPager()
+  {
+    return this.d;
+  }
+  
+  protected int getLayoutId()
+  {
+    return R.layout.a;
+  }
+  
+  @Nullable
+  public OnEmotionItemClickListener getOnEmotionItemClickListener()
+  {
+    return this.g;
+  }
+  
+  @Nullable
+  public RecyclerView.RecycledViewPool getRecyclerViewPool()
+  {
+    return this.h;
+  }
+  
+  protected int getViewPagerBottomMargin()
+  {
+    return getResources().getDimensionPixelOffset(R.dimen.a);
+  }
+  
+  protected int getViewPagerHorizontalMargin()
   {
     return getResources().getDimensionPixelOffset(R.dimen.b);
   }
   
-  protected int c()
+  protected int getViewPagerTopMargin()
   {
     return 0;
   }
   
-  protected int d()
-  {
-    return getResources().getDimensionPixelOffset(R.dimen.jdField_a_of_type_Int);
-  }
-  
   public void setOnEmotionItemClickListener(@Nullable OnEmotionItemClickListener paramOnEmotionItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentTkdCommentPanelBaseListenerOnEmotionItemClickListener = paramOnEmotionItemClickListener;
+    this.g = paramOnEmotionItemClickListener;
   }
   
   public void setPageIndicator(int paramInt)
   {
-    PageIndicator localPageIndicator = this.jdField_a_of_type_ComTencentTkdCommentPanelBaseViewPageIndicator;
+    PageIndicator localPageIndicator = this.e;
     if (localPageIndicator != null) {
       localPageIndicator.setPageCount(paramInt);
     }
@@ -138,19 +132,19 @@ public abstract class BaseEmotionPanel
   
   public void setPanelShowCount(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
   }
   
   public void setRecyclerViewPool(@Nullable RecyclerView.RecycledViewPool paramRecycledViewPool)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$RecycledViewPool = paramRecycledViewPool;
+    this.h = paramRecycledViewPool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.base.BaseEmotionPanel
  * JD-Core Version:    0.7.0.1
  */

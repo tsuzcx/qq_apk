@@ -24,7 +24,7 @@ final class ExpandEntranceImpl$getQuietMode$1
     localObject = ((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
     if (localObject != null)
     {
-      ((ExpandHandlerImpl)localObject).b(this.a.getCurrentUin());
+      ((ExpandHandlerImpl)localObject).c(this.a.getCurrentUin());
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.network.impl.ExpandHandlerImpl");
@@ -32,7 +32,7 @@ final class ExpandEntranceImpl$getQuietMode$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.entrance.impl.ExpandEntranceImpl.getQuietMode.1
  * JD-Core Version:    0.7.0.1
  */

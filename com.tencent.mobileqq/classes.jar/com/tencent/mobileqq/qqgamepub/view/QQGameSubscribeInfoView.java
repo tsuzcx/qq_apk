@@ -38,16 +38,16 @@ public class QQGameSubscribeInfoView
   extends FrameLayout
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQGamePubSubscribe.AppSubscribeInfo jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private TextView a;
+  private ImageView b;
+  private ImageView c;
+  private ImageView d;
+  private TextView e;
+  private TextView f;
+  private QQGamePubSubscribe.AppSubscribeInfo g;
+  private boolean h = false;
+  private String i;
+  private long j;
   
   public QQGameSubscribeInfoView(Context paramContext)
   {
@@ -92,7 +92,7 @@ public class QQGameSubscribeInfoView
   {
     Object localObject = PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, 1.5F, 1.0F });
     PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, 1.5F, 1.0F });
-    localObject = ObjectAnimator.ofPropertyValuesHolder(this.jdField_b_of_type_AndroidWidgetImageView, new PropertyValuesHolder[] { localObject, localPropertyValuesHolder });
+    localObject = ObjectAnimator.ofPropertyValuesHolder(this.c, new PropertyValuesHolder[] { localObject, localPropertyValuesHolder });
     ((ObjectAnimator)localObject).setDuration(300L);
     ((ObjectAnimator)localObject).start();
   }
@@ -101,23 +101,23 @@ public class QQGameSubscribeInfoView
   {
     if (paramLong <= 0L)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.f.setVisibility(4);
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.f.setVisibility(0);
     if (paramLong >= 10000L)
     {
       paramLong /= 10000L;
-      localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-      str = getResources().getString(2131695264);
+      localTextView = this.f;
+      str = getResources().getString(2131892999);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramLong);
       localStringBuilder.append("");
       localTextView.setText(String.format(str, new Object[] { localStringBuilder.toString() }));
       return;
     }
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-    String str = getResources().getString(2131695263);
+    TextView localTextView = this.f;
+    String str = getResources().getString(2131892998);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong);
     localStringBuilder.append("");
@@ -126,50 +126,50 @@ public class QQGameSubscribeInfoView
   
   private void a(Context paramContext)
   {
-    View.inflate(paramContext, 2131559165, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379899));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379898));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369514));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369515));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379901));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379900));
-    findViewById(2131370322).setOnClickListener(this);
-    setId(2131374422);
+    View.inflate(paramContext, 2131624920, this);
+    this.a = ((TextView)findViewById(2131448773));
+    this.b = ((ImageView)findViewById(2131448772));
+    this.c = ((ImageView)findViewById(2131436601));
+    this.d = ((ImageView)findViewById(2131436602));
+    this.e = ((TextView)findViewById(2131448775));
+    this.f = ((TextView)findViewById(2131448774));
+    findViewById(2131437572).setOnClickListener(this);
+    setId(2131442589);
     setOnClickListener(this);
   }
   
   private void a(String paramString)
   {
-    int i = UIUtils.a(60.0F, getResources());
-    Bitmap localBitmap = BaseImageUtil.a(QQGameImageLoader.a().a(paramString), UIUtils.a(12.0F, this.jdField_a_of_type_AndroidWidgetImageView.getResources()), true, i, i);
+    int k = UIUtils.a(60.0F, getResources());
+    Bitmap localBitmap = BaseImageUtil.a(QQGameImageLoader.a().a(paramString), UIUtils.a(12.0F, this.b.getResources()), true, k, k);
     if (localBitmap != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      this.b.setImageBitmap(localBitmap);
       return;
     }
-    QQGameImageLoader.a().a(paramString, new QQGameSubscribeInfoView.1(this, i), i, i);
+    QQGameImageLoader.a().a(paramString, new QQGameSubscribeInfoView.1(this, k), k, k);
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(getContext().getResources().getDrawable(2130840209));
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695261));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#8f9194"));
+      this.d.setVisibility(8);
+      this.c.setBackgroundDrawable(getContext().getResources().getDrawable(2130840521));
+      this.e.setText(getResources().getString(2131892996));
+      this.e.setTextColor(Color.parseColor("#8f9194"));
       if (paramBoolean2) {
         a();
       }
     }
     else
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(getContext().getResources().getDrawable(2130840204));
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131695258));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166504));
+      this.d.setVisibility(0);
+      this.c.setBackgroundDrawable(getContext().getResources().getDrawable(2130840516));
+      this.e.setText(getResources().getString(2131892993));
+      this.e.setTextColor(getResources().getColor(2131167347));
     }
-    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.h = paramBoolean1;
   }
   
   private boolean a(int paramInt)
@@ -196,7 +196,7 @@ public class QQGameSubscribeInfoView
       return true;
     }
     setVisibility(0);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.i = paramString;
     if (paramAppSubscribeInfo != null)
     {
       localStringBuilder = new StringBuilder();
@@ -222,7 +222,7 @@ public class QQGameSubscribeInfoView
       return;
     }
     IQQGameSubscribeService localIQQGameSubscribeService = (IQQGameSubscribeService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameSubscribeService.class, "all");
-    Object localObject2 = getResources().getString(2131695226);
+    Object localObject2 = getResources().getString(2131892960);
     long l = 0L;
     boolean bool = false;
     IQQGameSubscribeService.GameBaseInfo localGameBaseInfo = localIQQGameSubscribeService.getGameInfoFromCacheMap(paramString);
@@ -233,24 +233,24 @@ public class QQGameSubscribeInfoView
       if (!TextUtils.isEmpty(localGameBaseInfo.b)) {
         localObject1 = localGameBaseInfo.b;
       }
-      bool = localGameBaseInfo.jdField_a_of_type_Boolean;
+      bool = localGameBaseInfo.c;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo = paramAppSubscribeInfo;
-    if (this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo = a(paramString, localIQQGameSubscribeService);
+    this.g = paramAppSubscribeInfo;
+    if (this.g == null) {
+      this.g = a(paramString, localIQQGameSubscribeService);
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo;
+    paramString = this.g;
     if (paramString != null)
     {
       bool = a(paramString.subscribe.get());
-      l = this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo.subscribe_count.get();
-      paramString = this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo.app_icon.get();
+      l = this.g.subscribeCount.get();
+      paramString = this.g.appIcon.get();
     }
     else
     {
       paramString = "";
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+    this.a.setText((CharSequence)localObject1);
     a(bool, paramBoolean);
     a(paramString);
     a(l);
@@ -260,7 +260,7 @@ public class QQGameSubscribeInfoView
       ((StringBuilder)localObject2).append("refreshUi...info:");
       ((StringBuilder)localObject2).append(paramAppSubscribeInfo);
       ((StringBuilder)localObject2).append(",mSubScribeInfo:");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo);
+      ((StringBuilder)localObject2).append(this.g);
       ((StringBuilder)localObject2).append(",appName:");
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(",appIcon:");
@@ -282,37 +282,37 @@ public class QQGameSubscribeInfoView
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onClick...mSubScribeInfo");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGamePubSubscribe$AppSubscribeInfo);
+      ((StringBuilder)localObject).append(this.g);
       ((StringBuilder)localObject).append(",isNetSupport:");
       ((StringBuilder)localObject).append(AppNetConnInfo.isNetSupport());
       ((StringBuilder)localObject).append(",mAppId:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.i);
       QLog.i("QQGamePub_QQGameSubscribeInfoView", 2, ((StringBuilder)localObject).toString());
     }
     boolean bool = AppNetConnInfo.isNetSupport();
-    int i = 1;
+    int k = 1;
     if (!bool)
     {
-      QQToast.a(getContext(), 1, getResources().getString(2131695216), 0).a();
+      QQToast.makeText(getContext(), 1, getResources().getString(2131892950), 0).show();
     }
-    else if (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isInValidGameAppId(this.jdField_a_of_type_JavaLangString))
+    else if (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isInValidGameAppId(this.i))
     {
-      QQToast.a(getContext(), 1, getResources().getString(2131695260), 0).a();
+      QQToast.makeText(getContext(), 1, getResources().getString(2131892995), 0).show();
     }
-    else if ((2131370322 == paramView.getId()) && (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) >= 1000L))
+    else if ((2131437572 == paramView.getId()) && (Math.abs(System.currentTimeMillis() - this.j) >= 1000L))
     {
       localObject = (IQQGameSubscribeService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameSubscribeService.class, "all");
-      if (this.jdField_a_of_type_Boolean) {
-        i = 2;
+      if (this.h) {
+        k = 2;
       }
-      this.jdField_a_of_type_Long = ((IQQGameSubscribeService)localObject).reqSetSubscribeStatus(this.jdField_a_of_type_JavaLangString, i, 2);
+      this.j = ((IQQGameSubscribeService)localObject).reqSetSubscribeStatus(this.i, k, 2);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.QQGameSubscribeInfoView
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,10 @@ public class ComponentJump
   extends RelativeLayout
   implements ComponentView
 {
-  public View a;
   CmpCtxt a;
-  public View[] a;
-  public TextView[] a;
+  public View b;
+  public TextView[] c;
+  public View[] d;
   
   public ComponentJump(Context paramContext)
   {
@@ -54,10 +54,10 @@ public class ComponentJump
       if (i >= 4) {
         break;
       }
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setOnClickListener(null);
+      this.c[i].setOnClickListener(null);
       i += 1;
     }
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
+    this.b.setOnClickListener(null);
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -98,19 +98,19 @@ public class ComponentJump
   
   private void a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo, List<articlesummary.PackJumpInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
+    this.b.setOnClickListener(null);
     paramInt = 0;
     int i;
     while (paramInt < 3)
     {
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setVisibility(8);
+      this.c[paramInt].setVisibility(8);
       i = paramInt - 1;
       if ((i >= 0) && (i <= 1)) {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(8);
+        this.d[i].setVisibility(8);
       }
       paramInt += 1;
     }
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setVisibility(8);
+    this.c[3].setVisibility(8);
     paramAbsBaseArticleInfo = paramList.iterator();
     paramInt = 0;
     Object localObject1;
@@ -122,15 +122,15 @@ public class ComponentJump
         i = paramInt;
         if (paramInt == 0)
         {
-          Object localObject2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
+          Object localObject2 = (RelativeLayout.LayoutParams)this.c[3].getLayoutParams();
           ((RelativeLayout.LayoutParams)localObject2).addRule(11, -1);
           ((RelativeLayout.LayoutParams)localObject2).addRule(9, 0);
-          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setVisibility(0);
-          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setText(((articlesummary.PackJumpInfo)localObject1).str_wording.get());
+          this.c[3].setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          this.c[3].setVisibility(0);
+          this.c[3].setText(((articlesummary.PackJumpInfo)localObject1).str_wording.get());
           localObject2 = ((articlesummary.PackJumpInfo)localObject1).str_url.get();
           localObject1 = ((articlesummary.PackJumpInfo)localObject1).str_wording.get();
-          this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(new ComponentJump.3(this, (String)localObject1, (String)localObject2));
+          this.c[3].setOnClickListener(new ComponentJump.3(this, (String)localObject1, (String)localObject2));
           i = 1;
         }
         paramAbsBaseArticleInfo.remove();
@@ -140,14 +140,14 @@ public class ComponentJump
     paramInt = 0;
     while (paramInt < Math.min(3, paramList.size()))
     {
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setVisibility(0);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setText(((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_wording.get());
+      this.c[paramInt].setVisibility(0);
+      this.c[paramInt].setText(((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_wording.get());
       paramAbsBaseArticleInfo = ((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_url.get();
       localObject1 = ((articlesummary.PackJumpInfo)paramList.get(paramInt)).str_wording.get();
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setOnClickListener(new ComponentJump.4(this, (String)localObject1, paramAbsBaseArticleInfo));
+      this.c[paramInt].setOnClickListener(new ComponentJump.4(this, (String)localObject1, paramAbsBaseArticleInfo));
       i = paramInt - 1;
       if ((i >= 0) && (i <= 1)) {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
+        this.d[i].setVisibility(0);
       }
       paramInt += 1;
     }
@@ -158,14 +158,14 @@ public class ComponentJump
     int i = 0;
     while (i < 3)
     {
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(8);
+      this.c[i].setVisibility(8);
       int j = i - 1;
       if ((j >= 0) && (j <= 1)) {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[j].setVisibility(8);
+        this.d[j].setVisibility(8);
       }
       i += 1;
     }
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setVisibility(8);
+    this.c[3].setVisibility(8);
     if (paramInt != 1)
     {
       if ((paramInt != 2) && (paramInt != 3)) {
@@ -174,38 +174,38 @@ public class ComponentJump
       paramAbsBaseArticleInfo = new ComponentJump.1(this, paramPackJumpInfo);
       if (paramPackJumpInfo.enum_style.get() == 2)
       {
-        localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
+        localLayoutParams = (RelativeLayout.LayoutParams)this.c[3].getLayoutParams();
         localLayoutParams.addRule(11, 0);
         localLayoutParams.addRule(9, -1);
-        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setLayoutParams(localLayoutParams);
-        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setVisibility(0);
-        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setText(paramPackJumpInfo.str_wording.get());
-        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(paramAbsBaseArticleInfo);
-        this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramAbsBaseArticleInfo);
+        this.c[3].setLayoutParams(localLayoutParams);
+        this.c[3].setVisibility(0);
+        this.c[3].setText(paramPackJumpInfo.str_wording.get());
+        this.c[3].setOnClickListener(paramAbsBaseArticleInfo);
+        this.b.setOnClickListener(paramAbsBaseArticleInfo);
         return;
       }
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0].setVisibility(0);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0].setText(paramPackJumpInfo.str_wording.get());
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0].setOnClickListener(paramAbsBaseArticleInfo);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramAbsBaseArticleInfo);
+      this.c[0].setVisibility(0);
+      this.c[0].setText(paramPackJumpInfo.str_wording.get());
+      this.c[0].setOnClickListener(paramAbsBaseArticleInfo);
+      this.b.setOnClickListener(paramAbsBaseArticleInfo);
       return;
     }
     paramPackJumpInfo = new ComponentJump.2(this, paramAbsBaseArticleInfo);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.c[3].getLayoutParams();
     localLayoutParams.addRule(11, 0);
     localLayoutParams.addRule(9, -1);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setVisibility(0);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setText(paramAbsBaseArticleInfo.mChannelInfoDisplayName);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(paramPackJumpInfo);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramPackJumpInfo);
+    this.c[3].setLayoutParams(localLayoutParams);
+    this.c[3].setVisibility(0);
+    this.c[3].setText(paramAbsBaseArticleInfo.mChannelInfoDisplayName);
+    this.c[3].setOnClickListener(paramPackJumpInfo);
+    this.b.setOnClickListener(paramPackJumpInfo);
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[4];
-    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[2];
+    this.a = new CmpCtxt();
+    this.c = new TextView[4];
+    this.d = new View[2];
     a(paramContext);
     a();
   }
@@ -214,35 +214,35 @@ public class ComponentJump
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560078, this, true);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369596));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369598));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369600));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3] = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369601));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369597);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_AndroidViewView.findViewById(2131369599);
+    this.b = LayoutInflater.from(paramContext).inflate(2131626125, this, true);
+    this.c[0] = ((TextView)this.b.findViewById(2131436704));
+    this.c[1] = ((TextView)this.b.findViewById(2131436706));
+    this.c[2] = ((TextView)this.b.findViewById(2131436708));
+    this.c[3] = ((TextView)this.b.findViewById(2131436709));
+    this.d[0] = this.b.findViewById(2131436705);
+    this.d[1] = this.b.findViewById(2131436707);
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramCellListener);
+    this.a.a(paramCellListener);
   }
   
   public void a(Object paramObject)
   {
     if ((paramObject instanceof IReadInJoyModel))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a((IReadInJoyModel)paramObject);
+      this.a.a((IReadInJoyModel)paramObject);
       b();
       int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.b()) {
+      if (this.a.a.c()) {
         i = 0;
       } else {
         i = 8;
       }
       setVisibility(i);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.b()) {
-        a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.b(), this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a());
+      if (this.a.a.c()) {
+        a(this.a.a.d(), this.a.a.k());
       }
     }
   }
@@ -251,7 +251,7 @@ public class ComponentJump
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentJump
  * JD-Core Version:    0.7.0.1
  */

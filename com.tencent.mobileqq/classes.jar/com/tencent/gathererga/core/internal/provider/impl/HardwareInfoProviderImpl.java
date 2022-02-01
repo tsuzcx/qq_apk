@@ -21,6 +21,7 @@ import com.tencent.gathererga.core.internal.provider.InfoID;
 import com.tencent.gathererga.core.internal.provider.ProviderResultImpl;
 import com.tencent.gathererga.core.internal.util.GLog;
 import com.tencent.gathererga.core.internal.util.PermissionUtil;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.File;
 import java.lang.reflect.Method;
 
@@ -29,7 +30,60 @@ public class HardwareInfoProviderImpl
 {
   private Context a = null;
   
-  private static TelephonyManager a(Context paramContext)
+  private ProviderResult a(int paramInt)
+  {
+    int j = Build.VERSION.SDK_INT;
+    int i = -102;
+    String str = null;
+    if (j >= 29)
+    {
+      paramInt = i;
+    }
+    else if (Build.VERSION.SDK_INT < 26)
+    {
+      paramInt = i;
+    }
+    else
+    {
+      TelephonyManager localTelephonyManager = b(this.a);
+      if (localTelephonyManager == null)
+      {
+        paramInt = -101;
+        GLog.d("getImei failed. get TELEPHONY_SERVICE null");
+      }
+      else
+      {
+        if (paramInt == -1) {
+          str = PhoneInfoMonitor.getImei(localTelephonyManager);
+        } else {
+          str = PhoneInfoMonitor.getImei(localTelephonyManager, paramInt);
+        }
+        GLog.b("getImei success");
+        paramInt = 0;
+      }
+    }
+    return new ProviderResultImpl(paramInt, str);
+  }
+  
+  private ProviderResult a(String paramString, int paramInt)
+  {
+    TelephonyManager localTelephonyManager = (TelephonyManager)this.a.getSystemService("phone");
+    Class localClass = localTelephonyManager.getClass();
+    try
+    {
+      paramString = localClass.getDeclaredMethod(paramString, new Class[] { Integer.TYPE });
+      paramString.setAccessible(true);
+      paramString = new ProviderResultImpl(0L, (String)paramString.invoke(localTelephonyManager, new Object[] { Integer.valueOf(paramInt) }));
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      GLog.b("getIdByReflect", paramString);
+    }
+    return new ProviderResultImpl(-100L, null);
+  }
+  
+  private static TelephonyManager b(Context paramContext)
   {
     if (paramContext != null) {
       if (!PermissionUtil.a(paramContext, "android.permission.READ_PHONE_STATE"))
@@ -63,59 +117,6 @@ public class HardwareInfoProviderImpl
     return null;
   }
   
-  private ProviderResult a(int paramInt)
-  {
-    int j = Build.VERSION.SDK_INT;
-    int i = -102;
-    String str = null;
-    if (j >= 29)
-    {
-      paramInt = i;
-    }
-    else if (Build.VERSION.SDK_INT < 26)
-    {
-      paramInt = i;
-    }
-    else
-    {
-      TelephonyManager localTelephonyManager = a(this.a);
-      if (localTelephonyManager == null)
-      {
-        paramInt = -101;
-        GLog.d("getImei failed. get TELEPHONY_SERVICE null");
-      }
-      else
-      {
-        if (paramInt == -1) {
-          str = localTelephonyManager.getImei();
-        } else {
-          str = localTelephonyManager.getImei(paramInt);
-        }
-        GLog.b("getImei success");
-        paramInt = 0;
-      }
-    }
-    return new ProviderResultImpl(paramInt, str);
-  }
-  
-  private ProviderResult a(String paramString, int paramInt)
-  {
-    TelephonyManager localTelephonyManager = (TelephonyManager)this.a.getSystemService("phone");
-    Class localClass = localTelephonyManager.getClass();
-    try
-    {
-      paramString = localClass.getDeclaredMethod(paramString, new Class[] { Integer.TYPE });
-      paramString.setAccessible(true);
-      paramString = new ProviderResultImpl(0L, (String)paramString.invoke(localTelephonyManager, new Object[] { Integer.valueOf(paramInt) }));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      GLog.b("getIdByReflect", paramString);
-    }
-    return new ProviderResultImpl(-100L, null);
-  }
-  
   private ProviderResult b(int paramInt)
   {
     TelephonyManager localTelephonyManager = (TelephonyManager)this.a.getSystemService("phone");
@@ -131,7 +132,7 @@ public class HardwareInfoProviderImpl
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (Build.VERSION.SDK_INT >= 23) {
-        return new ProviderResultImpl(0L, localTelephonyManager.getDeviceId(paramInt));
+        return new ProviderResultImpl(0L, PhoneInfoMonitor.getDeviceId(localTelephonyManager, paramInt));
       }
       return a("getDeviceId", 1);
     }
@@ -186,7 +187,7 @@ public class HardwareInfoProviderImpl
   @InfoID(id=110, permissions={"android.permission.READ_PHONE_STATE"})
   public ProviderResult getDeviceId(ProviderMethodPriority paramProviderMethodPriority)
   {
-    return new ProviderResultImpl(0L, ((TelephonyManager)this.a.getSystemService("phone")).getDeviceId());
+    return new ProviderResultImpl(0L, PhoneInfoMonitor.getDeviceId((TelephonyManager)this.a.getSystemService("phone")));
   }
   
   @InfoID(id=111, permissions={"android.permission.READ_PHONE_STATE"})
@@ -205,6 +206,60 @@ public class HardwareInfoProviderImpl
   public ProviderResult getDpi(ProviderMethodPriority paramProviderMethodPriority)
   {
     return new ProviderResultImpl(0L, Float.valueOf(this.a.getResources().getDisplayMetrics().density));
+  }
+  
+  @InfoID(id=124)
+  public ProviderResult getHarmonyOsVersion(ProviderMethodPriority paramProviderMethodPriority)
+  {
+    paramProviderMethodPriority = "";
+    Object localObject;
+    try
+    {
+      localObject = Class.forName("ohos.system.version.SystemVersion");
+      ProviderMethodPriority localProviderMethodPriority1 = paramProviderMethodPriority;
+      if (localObject == null) {
+        break label91;
+      }
+      localObject = (String)((Class)localObject).getMethod("getVersion", new Class[0]).invoke(null, new Object[0]);
+      try
+      {
+        paramProviderMethodPriority = new ProviderResultImpl(0L, localObject);
+        return paramProviderMethodPriority;
+      }
+      catch (Throwable localThrowable1)
+      {
+        paramProviderMethodPriority = (ProviderMethodPriority)localObject;
+      }
+      localObject = new StringBuilder();
+    }
+    catch (Throwable localThrowable2) {}
+    ((StringBuilder)localObject).append("getHarmonyOsVersion error: ");
+    ((StringBuilder)localObject).append(localThrowable2.getMessage());
+    GLog.d(((StringBuilder)localObject).toString());
+    ProviderMethodPriority localProviderMethodPriority2 = paramProviderMethodPriority;
+    label91:
+    return new ProviderResultImpl(-100L, localProviderMethodPriority2);
+  }
+  
+  @InfoID(id=125)
+  public ProviderResult getHarmonyPureMode(ProviderMethodPriority paramProviderMethodPriority)
+  {
+    int i = -1;
+    try
+    {
+      int j = Settings.Secure.getInt(this.a.getContentResolver(), "pure_mode_state", -1);
+      i = j;
+      paramProviderMethodPriority = new ProviderResultImpl(0L, Integer.valueOf(j));
+      return paramProviderMethodPriority;
+    }
+    catch (Throwable paramProviderMethodPriority)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getHarmonyPureMode error: ");
+      localStringBuilder.append(paramProviderMethodPriority.getMessage());
+      GLog.d(localStringBuilder.toString());
+    }
+    return new ProviderResultImpl(-100L, Integer.valueOf(i));
   }
   
   @InfoID(id=101, permissions={"android.permission.READ_PHONE_STATE"})
@@ -234,7 +289,7 @@ public class HardwareInfoProviderImpl
       GLog.d("getImsi TelephonyManager is null");
       return new ProviderResultImpl(-101L, null);
     }
-    return new ProviderResultImpl(0L, paramProviderMethodPriority.getSubscriberId());
+    return new ProviderResultImpl(0L, PhoneInfoMonitor.getSubscriberId(paramProviderMethodPriority));
   }
   
   @InfoID(id=105, permissions={"android.permission.READ_PHONE_STATE"})
@@ -247,6 +302,25 @@ public class HardwareInfoProviderImpl
   public ProviderResult getImsi1(ProviderMethodPriority paramProviderMethodPriority)
   {
     return a("getSubscriberId", 1);
+  }
+  
+  @InfoID(id=126)
+  public ProviderResult getIsHarmonyOs(ProviderMethodPriority paramProviderMethodPriority)
+  {
+    try
+    {
+      paramProviderMethodPriority = Class.forName("com.huawei.system.BuildEx");
+      paramProviderMethodPriority = new ProviderResultImpl(0L, Boolean.valueOf("harmony".equals(paramProviderMethodPriority.getMethod("getOsBrand", new Class[0]).invoke(paramProviderMethodPriority, new Object[0]))));
+      return paramProviderMethodPriority;
+    }
+    catch (Throwable paramProviderMethodPriority)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isHarmonyOs error: ");
+      localStringBuilder.append(paramProviderMethodPriority.getMessage());
+      GLog.d(localStringBuilder.toString());
+    }
+    return new ProviderResultImpl(-100L, Boolean.valueOf(false));
   }
   
   @InfoID(id=116)
@@ -318,7 +392,7 @@ public class HardwareInfoProviderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.provider.impl.HardwareInfoProviderImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,36 +10,36 @@ import org.xmlpull.v1.XmlPullParser;
 
 class HotChatSCMng$ParserHandler
 {
-  private HotChatNote jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote;
-  private HotChatSCMng.HotchatNotice jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice;
-  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
+  private HotChatSCMng.HotchatNotice b;
+  private HotChatNote c;
+  private XmlPullParser d;
   
   public HotChatSCMng$ParserHandler(HotChatSCMng paramHotChatSCMng, HotChatSCMng.HotchatNotice paramHotchatNotice, HotChatNote paramHotChatNote, XmlPullParser paramXmlPullParser)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice = paramHotchatNotice;
-    this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote = paramHotChatNote;
-    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlPullParser;
-  }
-  
-  public HotChatNote a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote;
+    this.b = paramHotchatNotice;
+    this.c = paramHotChatNote;
+    this.d = paramXmlPullParser;
   }
   
   public HotChatSCMng.HotchatNotice a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice;
+    return this.b;
   }
   
-  public ParserHandler a()
+  public HotChatNote b()
   {
-    Object localObject1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+    return this.c;
+  }
+  
+  public ParserHandler c()
+  {
+    Object localObject1 = this.d.getName();
     if ("activity".equals(localObject1))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice;
+      localObject1 = this.b;
       if (localObject1 == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice = new HotChatSCMng.HotchatNotice();
+        this.b = new HotChatSCMng.HotchatNotice();
         return this;
       }
       ((HotChatSCMng.HotchatNotice)localObject1).a();
@@ -47,15 +47,15 @@ class HotChatSCMng$ParserHandler
     }
     if ("note".equals(localObject1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote = new HotChatNote();
+      this.c = new HotChatNote();
       return this;
     }
     if ("activityid".equals(localObject1))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice;
+      localObject1 = this.b;
       if (localObject1 != null)
       {
-        ((HotChatSCMng.HotchatNotice)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+        ((HotChatSCMng.HotchatNotice)localObject1).a = this.d.nextText();
         return this;
       }
     }
@@ -64,11 +64,11 @@ class HotChatSCMng$ParserHandler
       Object localObject3;
       if ("stime".equals(localObject1))
       {
-        localObject1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote;
+        localObject1 = this.d.nextText();
+        localObject3 = this.c;
         if (localObject3 != null)
         {
-          ((HotChatNote)localObject3).jdField_a_of_type_Long = HotChatNote.a((String)localObject1);
+          ((HotChatNote)localObject3).e = HotChatNote.a((String)localObject1);
           return this;
         }
       }
@@ -76,15 +76,15 @@ class HotChatSCMng$ParserHandler
       {
         try
         {
-          localObject3 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+          localObject3 = this.d.nextText();
           localObject1 = localObject3;
           if (localObject3 != null) {
             localObject1 = ((String)localObject3).trim();
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote == null) {
+          if (this.c == null) {
             return this;
           }
-          this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote.jdField_a_of_type_JavaLangString = ((String)localObject1);
+          this.c.c = ((String)localObject1);
           return this;
         }
         catch (Exception localException1)
@@ -102,11 +102,11 @@ class HotChatSCMng$ParserHandler
         Object localObject2;
         if ("endtime".equals(localException1))
         {
-          localObject2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote;
+          localObject2 = this.d.nextText();
+          localObject3 = this.c;
           if (localObject3 != null)
           {
-            ((HotChatNote)localObject3).jdField_b_of_type_Long = HotChatNote.a((String)localObject2);
+            ((HotChatNote)localObject3).f = HotChatNote.a((String)localObject2);
             return this;
           }
         }
@@ -114,7 +114,7 @@ class HotChatSCMng$ParserHandler
         {
           try
           {
-            localObject3 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.nextText();
+            localObject3 = this.d.nextText();
             localObject2 = localObject3;
             if (localObject3 != null) {
               localObject2 = ((String)localObject3).trim();
@@ -131,9 +131,9 @@ class HotChatSCMng$ParserHandler
                 }
               }
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote != null)
+            if (this.c != null)
             {
-              this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote.jdField_b_of_type_JavaLangString = ((String)localObject3);
+              this.c.d = ((String)localObject3);
               return this;
             }
           }
@@ -150,40 +150,40 @@ class HotChatSCMng$ParserHandler
     return this;
   }
   
-  public ParserHandler b()
+  public ParserHandler d()
   {
     Object localObject;
-    if ("activity".equals(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName()))
+    if ("activity".equals(this.d.getName()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice;
-      if ((localObject != null) && (!TextUtils.isEmpty(((HotChatSCMng.HotchatNotice)localObject).jdField_a_of_type_JavaLangString)))
+      localObject = this.b;
+      if ((localObject != null) && (!TextUtils.isEmpty(((HotChatSCMng.HotchatNotice)localObject).a)))
       {
-        HotChatSCMng.HotchatNotice localHotchatNotice = (HotChatSCMng.HotchatNotice)this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng.mConfigs.get(this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice.jdField_a_of_type_JavaLangString);
+        HotChatSCMng.HotchatNotice localHotchatNotice = (HotChatSCMng.HotchatNotice)this.a.mConfigs.get(this.b.a);
         if (localHotchatNotice == null) {
           localObject = "null";
         } else {
           localObject = "not null";
         }
-        NearbyUtils.a("HotchatSCMng", "parse", new Object[] { localObject, this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice });
+        NearbyUtils.a("HotchatSCMng", "parse", new Object[] { localObject, this.b });
         if (localHotchatNotice == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng.mConfigs.put(this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice);
-          this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice = null;
+          this.a.mConfigs.put(this.b.a, this.b);
+          this.b = null;
           return this;
         }
-        localHotchatNotice.jdField_a_of_type_Int = -1;
-        localHotchatNotice.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice.a();
+        localHotchatNotice.b = -1;
+        localHotchatNotice.c.addAll(this.b.c);
+        this.b.a();
         return this;
       }
     }
-    else if (("note".equals(this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName())) && (this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote != null))
+    else if (("note".equals(this.d.getName())) && (this.c != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatSCMng$HotchatNotice;
+      localObject = this.b;
       if (localObject != null)
       {
-        ((HotChatSCMng.HotchatNotice)localObject).jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote);
-        this.jdField_a_of_type_ComTencentMobileqqHotchatHotChatNote = null;
+        ((HotChatSCMng.HotchatNotice)localObject).c.add(this.c);
+        this.c = null;
       }
     }
     return this;
@@ -191,7 +191,7 @@ class HotChatSCMng$ParserHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.HotChatSCMng.ParserHandler
  * JD-Core Version:    0.7.0.1
  */

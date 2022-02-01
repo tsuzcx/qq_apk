@@ -12,12 +12,12 @@ class VideoCoverFragment$6
   
   public void run()
   {
-    if (VideoCoverFragment.a(this.this$0) == null) {
+    if (VideoCoverFragment.j(this.this$0) == null) {
       return;
     }
-    if (VideoCoverFragment.b(this.this$0))
+    if (VideoCoverFragment.k(this.this$0))
     {
-      VideoCoverFragment.a(this.this$0).setStreamVolume(3, this.a, 0);
+      VideoCoverFragment.j(this.this$0).setStreamVolume(3, this.a, 0);
       if (QLog.isColorLevel()) {
         QLog.d("VideoCoverFragment", 2, "is broken by user click");
       }
@@ -30,7 +30,7 @@ class VideoCoverFragment$6
       }
       return;
     }
-    int i = VideoCoverFragment.a(this.this$0).getStreamVolume(3);
+    int i = VideoCoverFragment.j(this.this$0).getStreamVolume(3);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -41,8 +41,8 @@ class VideoCoverFragment$6
     }
     if (i < this.a)
     {
-      VideoCoverFragment.a(this.this$0).adjustStreamVolume(3, 1, 0);
-      VideoCoverFragment.a(this.this$0).postDelayed(this, this.b);
+      VideoCoverFragment.j(this.this$0).adjustStreamVolume(3, 1, 0);
+      VideoCoverFragment.l(this.this$0).postDelayed(this, this.b);
       return;
     }
     if (QLog.isColorLevel())
@@ -57,7 +57,7 @@ class VideoCoverFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.6
  * JD-Core Version:    0.7.0.1
  */

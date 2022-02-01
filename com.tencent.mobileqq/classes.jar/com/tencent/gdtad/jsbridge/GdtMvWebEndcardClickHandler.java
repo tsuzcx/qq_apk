@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class GdtMvWebEndcardClickHandler
   extends GdtMvWebJsCallHandler
 {
-  private final int a = 1;
+  private final int b = 1;
   
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
@@ -62,7 +62,7 @@ class GdtMvWebEndcardClickHandler
       {
         QLog.i("WebGdtMvWebEndcardClickHandler", 1, "callJs", paramString);
       }
-      AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "handleRewardVideoClick", paramGdtAdWebPlugin.a());
+      AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "handleRewardVideoClick", paramGdtAdWebPlugin.b());
       return true;
     }
     QLog.i("WebGdtMvWebEndcardClickHandler", 1, "webPlugin == null || activity == null");
@@ -71,7 +71,7 @@ class GdtMvWebEndcardClickHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebEndcardClickHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ class SubscribeShareHelper$6
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (SubscribeShareHelper.a(this.a) != null)
+    if (SubscribeShareHelper.j(this.a) != null)
     {
-      if (!SubscribeShareHelper.a(this.a).equals(paramBaseResp.transaction)) {
+      if (!SubscribeShareHelper.j(this.a).equals(paramBaseResp.transaction)) {
         return;
       }
       int i = paramBaseResp.errCode;
@@ -22,17 +22,17 @@ class SubscribeShareHelper$6
       {
         if (i != 0)
         {
-          QQToast.a(this.a.a, 1, HardCodeUtil.a(2131714445), 0).a();
+          QQToast.makeText(this.a.a, 1, HardCodeUtil.a(2131911955), 0).show();
           return;
         }
-        QQToast.a(this.a.a, 2, HardCodeUtil.a(2131714447), 0).a();
+        QQToast.makeText(this.a.a, 2, HardCodeUtil.a(2131911957), 0).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

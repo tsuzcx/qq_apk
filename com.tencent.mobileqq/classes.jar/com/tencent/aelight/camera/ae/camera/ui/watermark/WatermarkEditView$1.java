@@ -18,7 +18,7 @@ class WatermarkEditView$1
   {
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTime(paramDate);
-    WatermarkEditView.a(this.a).init(localCalendar.get(1), localCalendar.get(2), localCalendar.get(5), WatermarkEditView.a(this.a));
+    WatermarkEditView.a(this.a).init(localCalendar.get(1), localCalendar.get(2), localCalendar.get(5), WatermarkEditView.b(this.a));
     WatermarkEditView.a(this.a).setVisibility(0);
   }
   
@@ -29,7 +29,7 @@ class WatermarkEditView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditView.1
  * JD-Core Version:    0.7.0.1
  */

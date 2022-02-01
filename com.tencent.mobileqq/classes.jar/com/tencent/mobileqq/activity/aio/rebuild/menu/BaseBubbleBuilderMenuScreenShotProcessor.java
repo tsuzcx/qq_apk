@@ -37,10 +37,10 @@ public class BaseBubbleBuilderMenuScreenShotProcessor
     paramContext = (BaseActivity)paramContext;
     if ((paramContext != null) && (paramContext.getChatFragment() != null))
     {
-      paramContext = paramContext.getChatFragment().a();
-      ((AIOLongShotHelper)paramContext.a(15)).a(paramChatMessage);
-      paramContext.f(true);
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(paramContext.a, "select_more_msg", true);
+      paramContext = paramContext.getChatFragment().k();
+      ((AIOLongShotHelper)paramContext.q(15)).b(paramChatMessage);
+      paramContext.i(true);
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(paramContext.d, "select_more_msg", true);
       if (paramChatMessage.istroop == 1) {
         paramContext = "2";
       } else if (paramChatMessage.istroop == 0) {
@@ -64,7 +64,7 @@ public class BaseBubbleBuilderMenuScreenShotProcessor
   
   protected void a(QQCustomMenu paramQQCustomMenu, Context paramContext)
   {
-    paramQQCustomMenu.a(2131362480, paramContext.getString(2131689936), 2130838922);
+    paramQQCustomMenu.a(2131428089, paramContext.getString(2131886577), 2130839076);
   }
   
   public void a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt, ChatMessage paramChatMessage, Bundle paramBundle)
@@ -74,12 +74,12 @@ public class BaseBubbleBuilderMenuScreenShotProcessor
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131362480;
+    return paramInt == 2131428089;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuScreenShotProcessor
  * JD-Core Version:    0.7.0.1
  */

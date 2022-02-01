@@ -23,23 +23,23 @@ class OnlineStatusDataManager$1
       bool = false;
     }
     int i;
-    if ((paramCard != null) && (paramCard.lBirthday != OnlineStatusDataManager.a(this.a))) {
+    if ((paramCard != null) && (paramCard.lBirthday != OnlineStatusDataManager.b(this.a))) {
       i = 1;
     } else {
       i = 0;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusDataManagerImpl", 2, new Object[] { "onGetDetailInfo: invoked. [constellation] ", " isSuccess: ", Boolean.valueOf(paramBoolean), " uin: ", paramString, " mSelfCurrentBirthday: ", Long.valueOf(OnlineStatusDataManager.a(this.a)), " isSelfUin: ", Boolean.valueOf(bool) });
+      QLog.d("OnlineStatusDataManagerImpl", 2, new Object[] { "onGetDetailInfo: invoked. [constellation] ", " isSuccess: ", Boolean.valueOf(paramBoolean), " uin: ", paramString, " mSelfCurrentBirthday: ", Long.valueOf(OnlineStatusDataManager.b(this.a)), " isSelfUin: ", Boolean.valueOf(bool) });
     }
     paramString = (IOnlineStatusService)OnlineStatusDataManager.a(this.a).getRuntimeService(IOnlineStatusService.class, "");
     if ((i != 0) && (paramString.getExtOnlineStatus() == 1040L) && (bool))
     {
       paramString = OnlineStatusDataManager.a(this.a).getCurrentAccountUin();
-      String str1 = ConstellationUtilKt.a(OnlineStatusDataManager.a(this.a), paramString);
+      String str1 = ConstellationUtilKt.b(OnlineStatusDataManager.a(this.a), paramString);
       paramBoolean = TextUtils.isEmpty(str1);
       if (paramBoolean)
       {
-        String str2 = ConstellationUtilKt.b(OnlineStatusDataManager.a(this.a), paramString);
+        String str2 = ConstellationUtilKt.d(OnlineStatusDataManager.a(this.a), paramString);
         OnlineStatusExtInfoServlet.a(OnlineStatusDataManager.a(this.a), str2);
       }
       if (QLog.isColorLevel()) {
@@ -55,7 +55,7 @@ class OnlineStatusDataManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.OnlineStatusDataManager.1
  * JD-Core Version:    0.7.0.1
  */

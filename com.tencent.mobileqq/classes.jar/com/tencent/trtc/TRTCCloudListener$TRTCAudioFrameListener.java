@@ -6,6 +6,8 @@ public abstract interface TRTCCloudListener$TRTCAudioFrameListener
   
   public abstract void onLocalProcessedAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
   
+  public abstract void onMixedAllAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
+  
   public abstract void onMixedPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
   
   public abstract void onRemoteUserAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame, String paramString);

@@ -14,7 +14,7 @@ class GetUserGroupMemberListHandler$GetMemberListBusinessObserver
   protected void onOIDB0X899_0_Ret(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
     paramString = String.valueOf(paramLong1);
-    if ((this.a.a.equals(paramString)) && (paramList != null))
+    if ((this.a.b.equals(paramString)) && (paramList != null))
     {
       if (paramList.isEmpty()) {
         return;

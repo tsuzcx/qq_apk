@@ -17,17 +17,17 @@ class AdModuleBase$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.b == 2)
+    if (this.a.j.d == 2)
     {
-      paramView = new Intent((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.jdField_c_of_type_JavaLangString);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
+      paramView = new Intent((BaseActivity)this.a.e, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.j.e);
+      this.a.e.startActivity(paramView);
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.c, this.a.f, this.a.g, this.a.h, 3, 3, 0);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.b == 1)
+    if (this.a.j.d == 1)
     {
-      int i = this.a.jdField_c_of_type_Int;
+      int i = this.a.l;
       if (i != 0)
       {
         if (i != 1)
@@ -35,12 +35,12 @@ class AdModuleBase$1
           if (i != 2) {
             return;
           }
-          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).installApk(this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo);
-          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
+          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).installApk(this.a.j);
+          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.c, this.a.f, this.a.g, this.a.h, 3, 4, 0);
           return;
         }
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).launchApp(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.f);
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).launchApp(this.a.e, this.a.j.h);
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.c, this.a.f, this.a.g, this.a.h, 3, 1, 0);
         return;
       }
       AdModuleBase.a(this.a);
@@ -49,7 +49,7 @@ class AdModuleBase$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.1
  * JD-Core Version:    0.7.0.1
  */

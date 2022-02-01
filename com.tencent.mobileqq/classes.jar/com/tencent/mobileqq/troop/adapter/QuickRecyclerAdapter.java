@@ -18,54 +18,46 @@ import java.util.List;
 public class QuickRecyclerAdapter<T>
   extends RecyclerView.Adapter<ViewHolder>
 {
-  private int jdField_a_of_type_Int;
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  protected View a;
-  protected QuickRecyclerAdapter.OnItemClickListener a;
-  private QuickRecyclerAdapter.OnLoadMoreListener jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter$OnLoadMoreListener;
-  protected ItemViewDelegateManager a;
-  protected List<T> a;
-  protected boolean a;
-  protected int b;
-  protected Context b;
-  private SparseArray<View> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-  private View jdField_b_of_type_AndroidViewView;
-  protected int c = -1;
+  private SparseArray<View> a = new SparseArray();
+  private SparseArray<View> b = new SparseArray();
+  private View c;
+  private int d;
+  protected Context e;
+  protected List<T> f = new ArrayList();
+  protected ItemViewDelegateManager g;
+  protected QuickRecyclerAdapter.OnItemClickListener h;
+  protected View i;
+  protected int j;
+  protected int k = -1;
+  protected boolean l = false;
+  private QuickRecyclerAdapter.OnLoadMoreListener m;
   
   public QuickRecyclerAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqTroopAdapterBaseItemViewDelegateManager = new ItemViewDelegateManager();
+    this.e = paramContext;
+    this.g = new ItemViewDelegateManager();
   }
   
-  private QuickRecyclerAdapter<T> a(QuickRecyclerAdapter.OnLoadMoreListener paramOnLoadMoreListener)
+  private QuickRecyclerAdapter<T> b(QuickRecyclerAdapter.OnLoadMoreListener paramOnLoadMoreListener)
   {
     if (paramOnLoadMoreListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter$OnLoadMoreListener = paramOnLoadMoreListener;
+      this.m = paramOnLoadMoreListener;
     }
     return this;
   }
   
   public int a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.f;
     if (localList == null) {
       return 0;
     }
     return localList.size();
   }
   
-  public QuickRecyclerAdapter a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
   public QuickRecyclerAdapter a(ItemViewDelegate<T> paramItemViewDelegate)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopAdapterBaseItemViewDelegateManager.a(paramItemViewDelegate);
+    this.g.a(paramItemViewDelegate);
     return this;
   }
   
@@ -73,34 +65,34 @@ public class QuickRecyclerAdapter<T>
   {
     if (paramInt == 2147483646)
     {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        return ViewHolder.a(paramViewGroup.getContext(), this.jdField_a_of_type_AndroidViewView);
+      if (this.i != null) {
+        return ViewHolder.a(paramViewGroup.getContext(), this.i);
       }
-      return ViewHolder.a(paramViewGroup.getContext(), paramViewGroup, this.jdField_b_of_type_Int);
+      return ViewHolder.a(paramViewGroup.getContext(), paramViewGroup, this.j);
     }
-    if ((paramInt == 2147483645) && (a()))
+    if ((paramInt == 2147483645) && (d()))
     {
-      if (this.jdField_b_of_type_AndroidViewView != null) {
-        return ViewHolder.a(paramViewGroup.getContext(), this.jdField_b_of_type_AndroidViewView);
+      if (this.c != null) {
+        return ViewHolder.a(paramViewGroup.getContext(), this.c);
       }
-      return ViewHolder.a(paramViewGroup.getContext(), paramViewGroup, this.jdField_a_of_type_Int);
+      return ViewHolder.a(paramViewGroup.getContext(), paramViewGroup, this.d);
     }
     if (paramInt >= 1000000)
     {
-      localObject = this.jdField_a_of_type_AndroidUtilSparseArray;
+      localObject = this.a;
       if ((localObject != null) && (((SparseArray)localObject).get(paramInt) != null)) {
-        return ViewHolder.a(paramViewGroup.getContext(), (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+        return ViewHolder.a(paramViewGroup.getContext(), (View)this.a.get(paramInt));
       }
     }
     if (paramInt >= 2000000)
     {
-      localObject = this.jdField_b_of_type_AndroidUtilSparseArray;
+      localObject = this.b;
       if ((localObject != null) && (((SparseArray)localObject).get(paramInt) != null)) {
-        return ViewHolder.a(paramViewGroup.getContext(), (View)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt));
+        return ViewHolder.a(paramViewGroup.getContext(), (View)this.b.get(paramInt));
       }
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqTroopAdapterBaseItemViewDelegateManager.a(paramInt).a();
-    Object localObject = b(this.jdField_b_of_type_AndroidContentContext, paramViewGroup, i);
+    int n = this.g.a(paramInt).a();
+    Object localObject = b(this.e, paramViewGroup, n);
     a((ViewHolder)localObject, ((ViewHolder)localObject).a());
     a(paramViewGroup, (ViewHolder)localObject, paramInt);
     return localObject;
@@ -108,37 +100,26 @@ public class QuickRecyclerAdapter<T>
   
   protected T a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.f;
     Object localObject = null;
     if (localList == null) {
       return null;
     }
-    paramInt -= b();
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      localObject = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt -= f();
+    if (paramInt < this.f.size()) {
+      localObject = this.f.get(paramInt);
     }
     return localObject;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.i = paramView;
   }
   
   protected void a(ViewGroup paramViewGroup, ViewHolder paramViewHolder, int paramInt)
   {
-    if (!d(paramInt)) {
+    if (!g(paramInt)) {
       return;
     }
     paramViewHolder.a().setOnClickListener(new QuickRecyclerAdapter.2(this, paramViewHolder));
@@ -147,23 +128,23 @@ public class QuickRecyclerAdapter<T>
   
   public void a(QuickRecyclerAdapter.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter$OnItemClickListener = paramOnItemClickListener;
+    this.h = paramOnItemClickListener;
   }
   
   public void a(QuickRecyclerAdapter.OnLoadMoreListener paramOnLoadMoreListener)
   {
-    if (a()) {
+    if (d()) {
       return;
     }
-    a(paramOnLoadMoreListener);
-    this.jdField_a_of_type_Boolean = true;
+    b(paramOnLoadMoreListener);
+    this.l = true;
     notifyDataSetChanged();
   }
   
   public void a(ViewHolder paramViewHolder)
   {
     super.onViewAttachedToWindow(paramViewHolder);
-    if ((a(paramViewHolder.getLayoutPosition())) || (b(paramViewHolder.getLayoutPosition())) || (c(paramViewHolder.getLayoutPosition())) || (b()))
+    if ((b(paramViewHolder.getLayoutPosition())) || (c(paramViewHolder.getLayoutPosition())) || (d(paramViewHolder.getLayoutPosition())) || (e()))
     {
       paramViewHolder = paramViewHolder.itemView.getLayoutParams();
       if ((paramViewHolder != null) && ((paramViewHolder instanceof StaggeredGridLayoutManager.LayoutParams))) {
@@ -174,10 +155,10 @@ public class QuickRecyclerAdapter<T>
   
   public void a(ViewHolder paramViewHolder, int paramInt)
   {
-    if ((!a(paramInt)) && (!b(paramInt)) && (!b())) {
-      if (c(paramInt))
+    if ((!b(paramInt)) && (!c(paramInt)) && (!e())) {
+      if (d(paramInt))
       {
-        QuickRecyclerAdapter.OnLoadMoreListener localOnLoadMoreListener = this.jdField_a_of_type_ComTencentMobileqqTroopAdapterQuickRecyclerAdapter$OnLoadMoreListener;
+        QuickRecyclerAdapter.OnLoadMoreListener localOnLoadMoreListener = this.m;
         if (localOnLoadMoreListener != null) {
           localOnLoadMoreListener.a();
         }
@@ -194,42 +175,23 @@ public class QuickRecyclerAdapter<T>
   
   public void a(ViewHolder paramViewHolder, T paramT)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopAdapterBaseItemViewDelegateManager.a(paramViewHolder, paramT, paramViewHolder.getAdapterPosition());
+    this.g.a(paramViewHolder, paramT, paramViewHolder.getAdapterPosition());
   }
   
   public void a(List<T> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      if (b())
+      if (e())
       {
-        notifyItemRemoved(this.c);
+        notifyItemRemoved(this.k);
         notifyDataSetChanged();
       }
-      int i = b();
-      int j = a();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyItemRangeInserted(i + j, paramList.size());
+      int n = f();
+      int i1 = a();
+      this.f.addAll(paramList);
+      notifyItemRangeInserted(n + i1, paramList.size());
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && ((this.jdField_b_of_type_AndroidViewView != null) || (this.jdField_a_of_type_Int != 0));
-  }
-  
-  protected boolean a(int paramInt)
-  {
-    return paramInt < b();
-  }
-  
-  public int b()
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    if (localSparseArray != null) {
-      return localSparseArray.size();
-    }
-    return 0;
   }
   
   public ViewHolder b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
@@ -239,87 +201,123 @@ public class QuickRecyclerAdapter<T>
   
   public void b()
   {
-    if (a())
-    {
-      a(null);
-      this.jdField_a_of_type_Boolean = false;
-      notifyDataSetChanged();
-    }
-  }
-  
-  protected boolean b()
-  {
-    return ((this.jdField_a_of_type_AndroidViewView != null) || (this.jdField_b_of_type_Int != 0)) && (a() == 0);
+    this.f.clear();
+    notifyDataSetChanged();
   }
   
   protected boolean b(int paramInt)
   {
-    return (paramInt >= a() + b() + e()) && (paramInt < a() + b() + e() + c());
+    return paramInt < f();
   }
   
-  public int c()
+  public void c()
   {
-    SparseArray localSparseArray = this.jdField_b_of_type_AndroidUtilSparseArray;
+    if (d())
+    {
+      b(null);
+      this.l = false;
+      notifyDataSetChanged();
+    }
+  }
+  
+  protected boolean c(int paramInt)
+  {
+    return (paramInt >= a() + f() + i()) && (paramInt < a() + f() + i() + g());
+  }
+  
+  public boolean d()
+  {
+    return (this.l) && ((this.c != null) || (this.d != 0));
+  }
+  
+  protected boolean d(int paramInt)
+  {
+    return (d()) && (paramInt == a() + f() + i() + g());
+  }
+  
+  public QuickRecyclerAdapter e(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
+  }
+  
+  protected boolean e()
+  {
+    return ((this.i != null) || (this.j != 0)) && (a() == 0);
+  }
+  
+  public int f()
+  {
+    SparseArray localSparseArray = this.a;
     if (localSparseArray != null) {
       return localSparseArray.size();
     }
     return 0;
   }
   
-  protected boolean c()
+  public void f(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopAdapterBaseItemViewDelegateManager.a() > 0;
+    this.j = paramInt;
   }
   
-  protected boolean c(int paramInt)
+  public int g()
   {
-    return (a()) && (paramInt == a() + b() + e() + c());
+    SparseArray localSparseArray = this.b;
+    if (localSparseArray != null) {
+      return localSparseArray.size();
+    }
+    return 0;
   }
   
-  protected int d()
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  protected boolean d(int paramInt)
+  protected boolean g(int paramInt)
   {
     return true;
   }
   
-  protected int e()
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
   public int getItemCount()
   {
-    return b() + c() + a() + e() + d();
+    return f() + g() + a() + i() + h();
   }
   
   public int getItemViewType(int paramInt)
   {
-    if (a(paramInt)) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt);
+    if (b(paramInt)) {
+      return this.a.keyAt(paramInt);
     }
-    if (b())
+    if (e())
     {
-      int i = this.c;
-      if ((i == -1) || (paramInt == i))
+      int n = this.k;
+      if ((n == -1) || (paramInt == n))
       {
-        this.c = paramInt;
+        this.k = paramInt;
         return 2147483646;
       }
     }
-    if (b(paramInt)) {
-      return this.jdField_b_of_type_AndroidUtilSparseArray.keyAt(paramInt - b() - a() - e());
-    }
     if (c(paramInt)) {
+      return this.b.keyAt(paramInt - f() - a() - i());
+    }
+    if (d(paramInt)) {
       return 2147483645;
     }
-    if (c()) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopAdapterBaseItemViewDelegateManager.a(a(paramInt), paramInt);
+    if (j()) {
+      return this.g.a(a(paramInt), paramInt);
     }
     return super.getItemViewType(paramInt);
+  }
+  
+  protected int h()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  protected int i()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  protected boolean j()
+  {
+    return this.g.a() > 0;
   }
   
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
@@ -336,7 +334,7 @@ public class QuickRecyclerAdapter<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.adapter.QuickRecyclerAdapter
  * JD-Core Version:    0.7.0.1
  */

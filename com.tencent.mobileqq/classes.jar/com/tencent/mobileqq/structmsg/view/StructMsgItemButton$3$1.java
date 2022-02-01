@@ -17,8 +17,8 @@ class StructMsgItemButton$3$1
     String str = paramBundle.getString("retMsg");
     int j = paramBundle.getInt("payTime");
     paramBundle = paramBundle.getString("orderId");
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemButton$3.a.b(i);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.savePayInfo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemButton$3.a.at, i);
+    this.c.a.c(i);
+    this.a.savePayInfo(this.b, this.c.a.aN, i);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ret_code=");
     localStringBuilder.append(i);
@@ -28,12 +28,12 @@ class StructMsgItemButton$3$1
     localStringBuilder.append(j);
     localStringBuilder.append("|order_id=");
     localStringBuilder.append(paramBundle);
-    VACDReportUtil.a(localStringBuilder.toString(), "qqwallet", "publicpaymsg.pay.result", null, null, 0, null);
+    VACDReportUtil.b(localStringBuilder.toString(), "qqwallet", "publicpaymsg.pay.result", null, null, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemButton.3.1
  * JD-Core Version:    0.7.0.1
  */

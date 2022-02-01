@@ -72,7 +72,7 @@ public class WebUiStrategy1HeaderAdapter
         localTextView.setTextSize(1, 10.0F);
         localTextView.setText(TimeFormatterUtils.a(this.mActivity, 3, ((QQGameMsgInfo)localObject1).msgTime * 1000L));
         localTextView.setPadding(12, 0, 12, 0);
-        localTextView.setId(2131378695);
+        localTextView.setId(2131447353);
         localObject2 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
         localObject1 = localObject2;
         if (localObject2 == null) {
@@ -91,7 +91,7 @@ public class WebUiStrategy1HeaderAdapter
         ((RelativeLayout)localObject3).addView(localTextView, (ViewGroup.LayoutParams)localObject1);
       }
       localObject1 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131378695);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131447353);
       ((RelativeLayout)localObject3).addView(localView, (ViewGroup.LayoutParams)localObject1);
       paramViewGroup.addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
       if (paramInt == 0) {
@@ -111,7 +111,7 @@ public class WebUiStrategy1HeaderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.adapter.WebUiStrategy1HeaderAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -16,21 +16,21 @@ class AlbumListCustomizationDefault$QZoneGetAlbumListNumObserver
     if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
     {
       long l = ((get_albumlist_num_rsp)paramBundle).album_num;
-      ((PhotoOtherData)AlbumListCustomizationDefault.a(this.a)).jdField_a_of_type_Long = l;
-      paramBundle = this.a.a();
+      ((PhotoOtherData)AlbumListCustomizationDefault.a(this.a)).b = l;
+      paramBundle = this.a.d();
       if (paramBundle != null)
       {
-        paramBundle.a(((PhotoOtherData)AlbumListCustomizationDefault.b(this.a)).jdField_a_of_type_Long);
-        paramBundle.b();
+        paramBundle.a(((PhotoOtherData)AlbumListCustomizationDefault.b(this.a)).b);
+        paramBundle.c();
       }
     }
-    ((PhotoOtherData)AlbumListCustomizationDefault.c(this.a)).jdField_a_of_type_Boolean = true;
-    MobileQQ.sMobileQQ.peekAppRuntime().unRegistObserver(this.a.a.a);
+    ((PhotoOtherData)AlbumListCustomizationDefault.c(this.a)).c = true;
+    MobileQQ.sMobileQQ.peekAppRuntime().unRegistObserver(this.a.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AlbumListCustomizationDefault.QZoneGetAlbumListNumObserver
  * JD-Core Version:    0.7.0.1
  */

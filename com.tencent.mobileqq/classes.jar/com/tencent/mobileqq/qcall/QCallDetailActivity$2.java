@@ -17,9 +17,9 @@ class QCallDetailActivity$2
   
   protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.a(this.a))))
+    if ((paramBoolean) && (TextUtils.equals(paramString, QCallDetailActivity.b(this.a))))
     {
-      QCallDetailActivity.a(this.a);
+      QCallDetailActivity.c(this.a);
       this.a.runOnUiThread(new QCallDetailActivity.2.1(this));
     }
   }
@@ -36,7 +36,7 @@ class QCallDetailActivity$2
         }
         return;
       }
-      DiscussionInfo localDiscussionInfo = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
+      DiscussionInfo localDiscussionInfo = ((DiscussionManager)localObject).d(QCallDetailActivity.b(this.a));
       if (localDiscussionInfo == null)
       {
         QLog.i("QCallDetailActivity", 1, " ===onUpdateFriendInfo info is null ====");
@@ -49,11 +49,11 @@ class QCallDetailActivity$2
       }
       if (!localDiscussionInfo.hasRenamed())
       {
-        localObject = ((DiscussionManager)localObject).a(QCallDetailActivity.a(this.a));
+        localObject = ((DiscussionManager)localObject).b(QCallDetailActivity.b(this.a));
         if ((localObject != null) && (((Map)localObject).size() > 0) && (((Map)localObject).containsKey(paramString)))
         {
           paramString = this.a;
-          paramString.a(QCallDetailActivity.a(paramString));
+          paramString.a(QCallDetailActivity.b(paramString));
         }
       }
     }
@@ -61,13 +61,13 @@ class QCallDetailActivity$2
   
   protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
   {
-    QCallDetailActivity.a(this.a);
+    QCallDetailActivity.c(this.a);
     this.a.runOnUiThread(new QCallDetailActivity.2.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.2
  * JD-Core Version:    0.7.0.1
  */

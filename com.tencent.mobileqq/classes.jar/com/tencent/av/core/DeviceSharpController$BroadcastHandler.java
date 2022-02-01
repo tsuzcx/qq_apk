@@ -19,26 +19,26 @@ class DeviceSharpController$BroadcastHandler
     if (paramIntent.getAction().equalsIgnoreCase(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getSmartDeviceReceiveSharpMsg()))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(DeviceSharpController.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp msg");
+        QLog.d(DeviceSharpController.a, 2, "recv broadcast : smartdevice receive sharp msg");
       }
       paramContext = paramIntent.getBundleExtra("msgData");
       if (paramContext != null)
       {
         paramContext = paramContext.getByteArray("value");
         if (paramContext != null) {
-          this.a.jdField_a_of_type_ComTencentAvcoreNetchannelAbstractNetChannel.receiveSharpVideoCall(0L, paramContext, null);
+          this.a.c.receiveSharpVideoCall(0L, paramContext, null);
         }
       }
     }
     else if (paramIntent.getAction().equalsIgnoreCase(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getSmartDeviceReceiveSharpAckMsg()))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(DeviceSharpController.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp ack msg");
+        QLog.d(DeviceSharpController.a, 2, "recv broadcast : smartdevice receive sharp ack msg");
       }
       if (paramIntent.getBooleanExtra("timeout", false))
       {
         if (QLog.isColorLevel()) {
-          QLog.d(DeviceSharpController.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp timeout msg");
+          QLog.d(DeviceSharpController.a, 2, "recv broadcast : smartdevice receive sharp timeout msg");
         }
       }
       else
@@ -48,7 +48,7 @@ class DeviceSharpController$BroadcastHandler
         {
           paramContext = paramContext.getByteArray("value");
           if (paramContext != null) {
-            this.a.jdField_a_of_type_ComTencentAvcoreNetchannelAbstractNetChannel.receiveSharpVideoAck(0L, paramContext, null);
+            this.a.c.receiveSharpVideoAck(0L, paramContext, null);
           }
         }
       }
@@ -59,7 +59,7 @@ class DeviceSharpController$BroadcastHandler
       if (paramContext == null) {
         return;
       }
-      ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).deviceExitVideoProcess(this.a.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface, paramContext);
+      ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).deviceExitVideoProcess(this.a.b, paramContext);
     }
   }
 }

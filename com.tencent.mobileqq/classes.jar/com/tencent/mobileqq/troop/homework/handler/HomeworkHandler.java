@@ -131,36 +131,36 @@ public class HomeworkHandler
                 break label667;
               }
               paramObject = paramFromServiceMsg.content.get().toStringUtf8();
-              localHomeworkInfo.b = paramObject;
+              localHomeworkInfo.d = paramObject;
               if (!paramFromServiceMsg.title.has()) {
                 break label672;
               }
               paramObject = paramFromServiceMsg.title.get();
-              localHomeworkInfo.jdField_a_of_type_JavaLangString = paramObject;
+              localHomeworkInfo.c = paramObject;
               paramObject = localObject1;
               if (paramFromServiceMsg.course_name.has()) {
                 paramObject = paramFromServiceMsg.course_name.get();
               }
-              localHomeworkInfo.d = paramObject;
+              localHomeworkInfo.g = paramObject;
               if (!paramFromServiceMsg.course_id.has()) {
                 break label677;
               }
               j = paramFromServiceMsg.course_id.get();
-              localHomeworkInfo.jdField_a_of_type_Int = j;
+              localHomeworkInfo.h = j;
               if (!paramFromServiceMsg.need_feedback.has()) {
                 break label683;
               }
               bool = paramFromServiceMsg.need_feedback.get();
-              localHomeworkInfo.jdField_a_of_type_Boolean = bool;
+              localHomeworkInfo.f = bool;
               if (!paramFromServiceMsg.feedback_ts.has()) {
                 break label689;
               }
               l = paramFromServiceMsg.feedback_ts.get();
-              localHomeworkInfo.c = l;
+              localHomeworkInfo.i = l;
               if (paramFromServiceMsg.syncgids.has())
               {
-                localHomeworkInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
-                localHomeworkInfo.jdField_a_of_type_JavaUtilList.addAll(paramFromServiceMsg.syncgids.get());
+                localHomeworkInfo.j = new ArrayList();
+                localHomeworkInfo.j.addAll(paramFromServiceMsg.syncgids.get());
               }
             }
             bool = true;
@@ -186,7 +186,7 @@ public class HomeworkHandler
       }
       boolean bool = false;
       paramToServiceMsg = localObject3;
-      notifyUI(HomeworkObserver.c, bool, new Object[] { localHomeworkInfo });
+      notifyUI(HomeworkObserver.d, bool, new Object[] { localHomeworkInfo });
       if (QLog.isColorLevel())
       {
         paramFromServiceMsg = new StringBuilder();
@@ -199,7 +199,7 @@ public class HomeworkHandler
         QLog.d("HomeworkHandler", 2, paramFromServiceMsg.toString());
       }
       return;
-      notifyUI(HomeworkObserver.c, false, null);
+      notifyUI(HomeworkObserver.d, false, null);
       if (QLog.isColorLevel()) {
         QLog.d("HomeworkHandler", 2, "handleGetHomeworkInfo: req == null || resp == null");
       }
@@ -258,7 +258,7 @@ public class HomeworkHandler
       {
         localRspSubmitHomework.mergeFrom((byte[])paramObject);
         if (!localRspSubmitHomework.errinfo.has()) {
-          break label449;
+          break label451;
         }
         if (((hw_submit_homework.ErrorInfo)localRspSubmitHomework.errinfo.get()).error_code.has()) {
           i = ((hw_submit_homework.ErrorInfo)localRspSubmitHomework.errinfo.get()).error_code.get();
@@ -271,7 +271,7 @@ public class HomeworkHandler
         try
         {
           if (!((hw_submit_homework.ErrorInfo)localRspSubmitHomework.errinfo.get()).error_desc.has()) {
-            break label443;
+            break label445;
           }
           paramFromServiceMsg = localObject2;
           bool2 = bool4;
@@ -317,7 +317,7 @@ public class HomeworkHandler
       label332:
       i = m;
       paramToServiceMsg = paramObject;
-      notifyUI(HomeworkObserver.d, bool3, Integer.valueOf(i));
+      notifyUI(HomeworkObserver.e, bool3, Integer.valueOf(i));
       if (QLog.isColorLevel())
       {
         paramFromServiceMsg = new StringBuilder();
@@ -330,18 +330,18 @@ public class HomeworkHandler
         QLog.d("HomeworkHandler", 2, paramFromServiceMsg.toString());
       }
       return;
-      notifyUI(HomeworkObserver.d, false, null);
+      notifyUI(HomeworkObserver.e, false, null);
       if (QLog.isColorLevel()) {
         QLog.d("HomeworkHandler", 2, "handleSubmitHomework: req == null || resp == null");
       }
       return;
-      label443:
+      label445:
       paramToServiceMsg = "";
-      break label455;
-      label449:
+      break label457;
+      label451:
       i = -1;
       paramToServiceMsg = localObject3;
-      label455:
+      label457:
       if (i == 0) {
         bool1 = true;
       }
@@ -435,7 +435,7 @@ public class HomeworkHandler
         l1 = l2;
         paramToServiceMsg = paramFromServiceMsg;
       }
-      notifyUI(HomeworkObserver.b, bool, new Object[] { Long.valueOf(l1), Integer.valueOf(i) });
+      notifyUI(HomeworkObserver.c, bool, new Object[] { Long.valueOf(l1), Integer.valueOf(i) });
       if (QLog.isColorLevel())
       {
         paramFromServiceMsg = new StringBuilder();
@@ -451,7 +451,7 @@ public class HomeworkHandler
       }
       return;
     }
-    notifyUI(HomeworkObserver.b, false, null);
+    notifyUI(HomeworkObserver.c, false, null);
     if (QLog.isColorLevel()) {
       QLog.d("HomeworkHandler", 2, "handleAssignHomework: req == null || resp == null");
     }
@@ -469,25 +469,20 @@ public class HomeworkHandler
         paramFromServiceMsg = new byte[paramToServiceMsg.getInt() - 4];
         paramToServiceMsg.get(paramFromServiceMsg);
         localReqSend1V1Msg.mergeFrom(paramFromServiceMsg);
-        notifyUI(HomeworkObserver.e, true, new Object[] { localRspSend1V1Msg, localReqSend1V1Msg });
+        notifyUI(HomeworkObserver.f, true, new Object[] { localRspSend1V1Msg, localReqSend1V1Msg });
         return;
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
         QLog.e(".troop.troopManagerHomeworkHandler", 2, "handleTroopBulkSendMessageRespond", paramToServiceMsg);
-        notifyUI(HomeworkObserver.e, false, new Object[] { null, null });
+        notifyUI(HomeworkObserver.f, false, new Object[] { null, null });
         return;
       }
     }
     if (QLog.isColorLevel()) {
       QLog.d(".troop.troopManagerHomeworkHandler", 2, new Object[] { "handleTroopBulkSendMessageRespond failed, no response, error=", paramFromServiceMsg.getBusinessFailMsg() });
     }
-    notifyUI(HomeworkObserver.e, false, new Object[] { null, null });
-  }
-  
-  protected String a()
-  {
-    return "HomeworkHandler";
+    notifyUI(HomeworkObserver.f, false, new Object[] { null, null });
   }
   
   public void a(long paramLong)
@@ -551,20 +546,20 @@ public class HomeworkHandler
             QLog.d("HomeworkHandler", 2, new Object[] { "handleGetHomeworkTroopIdentity. troopUin=", paramToServiceMsg, ", memberUin=", paramFromServiceMsg, ", identity=", Integer.valueOf(i), ", course=", paramObject, ", name=", localObject });
           }
           ((IBizTroopMemberInfoService)this.appRuntime.getRuntimeService(IBizTroopMemberInfoService.class, "")).saveHomeworkTroopMemberIdentity(paramToServiceMsg, paramFromServiceMsg, null, i, paramObject, (String)localObject);
-          notifyUI(HomeworkObserver.jdField_a_of_type_Int, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(i), paramObject, localObject });
+          notifyUI(HomeworkObserver.b, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(i), paramObject, localObject });
         }
       }
       else
       {
         QLog.e("HomeworkHandler", 1, new Object[] { "handleGetHomeworkTroopIdentity failed! retCode = ", Integer.valueOf(i) });
-        notifyUI(HomeworkObserver.jdField_a_of_type_Int, false, new Object[] { "", "", Integer.valueOf(0), "", "" });
+        notifyUI(HomeworkObserver.b, false, new Object[] { "", "", Integer.valueOf(0), "", "" });
         return;
       }
     }
     catch (Exception paramToServiceMsg)
     {
       QLog.e("HomeworkHandler", 1, "handleGetHomeworkTroopIdentity exception. e=", paramToServiceMsg);
-      notifyUI(HomeworkObserver.jdField_a_of_type_Int, false, new Object[] { "", "", Integer.valueOf(0), "", "" });
+      notifyUI(HomeworkObserver.b, false, new Object[] { "", "", Integer.valueOf(0), "", "" });
     }
   }
   
@@ -593,6 +588,11 @@ public class HomeworkHandler
     ToServiceMsg localToServiceMsg = createToServiceMsg("HwSvc.send_msg");
     localToServiceMsg.putWupBuffer(paramReqSend1V1Msg.toByteArray());
     a(localToServiceMsg);
+  }
+  
+  protected String dv_()
+  {
+    return "HomeworkHandler";
   }
   
   public Set<String> getCommandList()
@@ -630,7 +630,7 @@ public class HomeworkHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -673,7 +673,7 @@ public class HomeworkHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.handler.HomeworkHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,24 +12,23 @@ import java.util.Iterator;
 
 public abstract class AbstractDbCacheManager
 {
-  protected long a;
   protected DbCacheData.DbCreator a;
-  protected DbCacheDatabase a;
-  protected String a;
-  protected ArrayList<DbCacheData.Structure> a;
-  protected boolean a;
-  protected boolean b = false;
+  protected long b;
+  protected String c;
+  protected boolean d;
+  protected boolean e = false;
+  protected ArrayList<DbCacheData.Structure> f = new ArrayList();
+  protected DbCacheDatabase g;
   
   protected AbstractDbCacheManager(Context paramContext, Class<? extends DbCacheData> paramClass, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheDatabase = DbCacheDatabase.a(paramContext.getApplicationContext(), paramLong);
-    this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheDatabase.a(hashCode());
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.g = DbCacheDatabase.a(paramContext.getApplicationContext(), paramLong);
+    this.g.a(hashCode());
+    this.b = paramLong;
+    this.c = paramString;
     a(paramClass);
-    c();
-    a(a());
+    e();
+    a(f());
   }
   
   static String a(long paramLong, String paramString)
@@ -45,16 +44,16 @@ public abstract class AbstractDbCacheManager
   {
     ContentValues localContentValues = new ContentValues();
     paramDbCacheData.a(localContentValues);
-    return paramSQLiteDatabase.update(this.jdField_a_of_type_JavaLangString, localContentValues, paramString, null);
+    return paramSQLiteDatabase.update(this.c, localContentValues, paramString, null);
   }
   
   final Cursor a(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2)
   {
     String str = paramString2;
     if (paramString2 == null) {
-      str = this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator.a();
+      str = this.a.b();
     }
-    return paramSQLiteDatabase.query(this.jdField_a_of_type_JavaLangString, null, paramString1, null, null, null, str);
+    return paramSQLiteDatabase.query(this.c, null, paramString1, null, null, null, str);
   }
   
   protected Cursor a(String paramString1, String paramString2)
@@ -62,7 +61,7 @@ public abstract class AbstractDbCacheManager
     if (a()) {
       return null;
     }
-    SQLiteDatabase localSQLiteDatabase = a();
+    SQLiteDatabase localSQLiteDatabase = f();
     if (localSQLiteDatabase == null) {
       return null;
     }
@@ -83,14 +82,6 @@ public abstract class AbstractDbCacheManager
     return null;
   }
   
-  protected SQLiteDatabase a()
-  {
-    if (a()) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheDatabase.getWritableDatabase();
-  }
-  
   protected DbCacheData a(Cursor paramCursor, int paramInt)
   {
     if (paramCursor != null)
@@ -109,7 +100,7 @@ public abstract class AbstractDbCacheManager
           if (!bool) {
             return null;
           }
-          return this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator.a(paramCursor);
+          return this.a.b(paramCursor);
         }
         catch (Exception paramCursor)
         {
@@ -120,36 +111,29 @@ public abstract class AbstractDbCacheManager
     return null;
   }
   
-  final String a()
-  {
-    return a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected abstract void a();
-  
   /* Error */
   protected void a(int paramInt, DbCacheData... paramVarArgs)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 118	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	()Z
+    //   1: invokevirtual 122	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	()Z
     //   4: ifeq +4 -> 8
     //   7: return
     //   8: aload_2
     //   9: ifnonnull +4 -> 13
     //   12: return
     //   13: aload_0
-    //   14: invokevirtual 58	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	()Landroid/database/sqlite/SQLiteDatabase;
+    //   14: invokevirtual 62	com/tencent/open/component/cache/database/AbstractDbCacheManager:f	()Landroid/database/sqlite/SQLiteDatabase;
     //   17: astore 4
     //   19: aload 4
     //   21: ifnonnull +4 -> 25
     //   24: return
     //   25: aload 4
-    //   27: invokevirtual 149	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   27: invokevirtual 148	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
     //   30: aload_0
     //   31: aload 4
     //   33: iload_1
-    //   34: invokevirtual 152	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	(Landroid/database/sqlite/SQLiteDatabase;I)V
+    //   34: invokevirtual 151	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	(Landroid/database/sqlite/SQLiteDatabase;I)V
     //   37: aload_2
     //   38: arraylength
     //   39: istore_3
@@ -163,43 +147,43 @@ public abstract class AbstractDbCacheManager
     //   50: aload_2
     //   51: iload_1
     //   52: aaload
-    //   53: invokevirtual 155	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	(Landroid/database/sqlite/SQLiteDatabase;Lcom/tencent/open/component/cache/database/DbCacheData;)V
+    //   53: invokevirtual 154	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	(Landroid/database/sqlite/SQLiteDatabase;Lcom/tencent/open/component/cache/database/DbCacheData;)V
     //   56: iload_1
     //   57: iconst_1
     //   58: iadd
     //   59: istore_1
     //   60: goto -18 -> 42
     //   63: aload 4
-    //   65: invokevirtual 158	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   65: invokevirtual 157	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
     //   68: aload 4
-    //   70: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   70: invokevirtual 160	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   73: goto +38 -> 111
     //   76: astore_2
     //   77: goto +39 -> 116
     //   80: astore_2
     //   81: aload_2
-    //   82: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   82: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   85: aload 4
-    //   87: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   87: invokevirtual 160	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   90: goto +21 -> 111
     //   93: astore_2
     //   94: aload_2
-    //   95: invokevirtual 124	android/database/SQLException:printStackTrace	()V
+    //   95: invokevirtual 128	android/database/SQLException:printStackTrace	()V
     //   98: aload 4
-    //   100: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   100: invokevirtual 160	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   103: goto +8 -> 111
     //   106: astore_2
     //   107: aload_2
-    //   108: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   108: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   111: aload_0
-    //   112: invokevirtual 163	com/tencent/open/component/cache/database/AbstractDbCacheManager:b	()V
+    //   112: invokevirtual 162	com/tencent/open/component/cache/database/AbstractDbCacheManager:d	()V
     //   115: return
     //   116: aload 4
-    //   118: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   118: invokevirtual 160	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   121: goto +10 -> 131
     //   124: astore 4
     //   126: aload 4
-    //   128: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   128: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   131: goto +5 -> 136
     //   134: aload_2
     //   135: athrow
@@ -233,11 +217,11 @@ public abstract class AbstractDbCacheManager
   
   protected void a(SQLiteDatabase paramSQLiteDatabase)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       try
       {
-        paramSQLiteDatabase.execSQL(b());
-        this.jdField_a_of_type_Boolean = true;
+        paramSQLiteDatabase.execSQL(g());
+        this.d = true;
         return;
       }
       catch (Exception paramSQLiteDatabase)
@@ -267,12 +251,12 @@ public abstract class AbstractDbCacheManager
   {
     ContentValues localContentValues = new ContentValues();
     paramDbCacheData.a(localContentValues);
-    paramSQLiteDatabase.replaceOrThrow(this.jdField_a_of_type_JavaLangString, null, localContentValues);
+    paramSQLiteDatabase.replaceOrThrow(this.c, null, localContentValues);
   }
   
   final void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    paramSQLiteDatabase.delete(this.jdField_a_of_type_JavaLangString, paramString, null);
+    paramSQLiteDatabase.delete(this.c, paramString, null);
   }
   
   /* Error */
@@ -280,14 +264,14 @@ public abstract class AbstractDbCacheManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 118	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	()Z
+    //   1: invokevirtual 122	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	()Z
     //   4: ifeq +4 -> 8
     //   7: return
     //   8: aload_1
     //   9: ifnonnull +4 -> 13
     //   12: return
     //   13: aload_0
-    //   14: invokevirtual 58	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	()Landroid/database/sqlite/SQLiteDatabase;
+    //   14: invokevirtual 62	com/tencent/open/component/cache/database/AbstractDbCacheManager:f	()Landroid/database/sqlite/SQLiteDatabase;
     //   17: astore 8
     //   19: aload 8
     //   21: ifnonnull +4 -> 25
@@ -303,7 +287,7 @@ public abstract class AbstractDbCacheManager
     //   37: iload 7
     //   39: istore 5
     //   41: aload 8
-    //   43: invokevirtual 149	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   43: invokevirtual 148	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
     //   46: iload 6
     //   48: istore 4
     //   50: iload 7
@@ -312,7 +296,7 @@ public abstract class AbstractDbCacheManager
     //   55: aload 8
     //   57: aload_1
     //   58: aload_2
-    //   59: invokevirtual 185	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	(Landroid/database/sqlite/SQLiteDatabase;Lcom/tencent/open/component/cache/database/DbCacheData;Ljava/lang/String;)I
+    //   59: invokevirtual 184	com/tencent/open/component/cache/database/AbstractDbCacheManager:a	(Landroid/database/sqlite/SQLiteDatabase;Lcom/tencent/open/component/cache/database/DbCacheData;Ljava/lang/String;)I
     //   62: ifle +5 -> 67
     //   65: iconst_1
     //   66: istore_3
@@ -321,15 +305,15 @@ public abstract class AbstractDbCacheManager
     //   70: iload_3
     //   71: istore 5
     //   73: aload 8
-    //   75: invokevirtual 158	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   75: invokevirtual 157	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
     //   78: iload_3
     //   79: istore 6
     //   81: aload 8
-    //   83: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   83: invokevirtual 160	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   86: goto +55 -> 141
     //   89: astore_1
     //   90: aload_1
-    //   91: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   91: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   94: iload 6
     //   96: istore_3
     //   97: goto +44 -> 141
@@ -337,34 +321,34 @@ public abstract class AbstractDbCacheManager
     //   101: goto +49 -> 150
     //   104: astore_1
     //   105: aload_1
-    //   106: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   106: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   109: iload 4
     //   111: istore 6
     //   113: aload 8
-    //   115: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   115: invokevirtual 160	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   118: iload 4
     //   120: istore_3
     //   121: goto +20 -> 141
     //   124: astore_1
     //   125: aload_1
-    //   126: invokevirtual 124	android/database/SQLException:printStackTrace	()V
+    //   126: invokevirtual 128	android/database/SQLException:printStackTrace	()V
     //   129: iload 5
     //   131: istore 6
     //   133: aload 8
-    //   135: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   135: invokevirtual 160	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   138: iload 5
     //   140: istore_3
     //   141: iload_3
     //   142: ifeq +7 -> 149
     //   145: aload_0
-    //   146: invokevirtual 163	com/tencent/open/component/cache/database/AbstractDbCacheManager:b	()V
+    //   146: invokevirtual 162	com/tencent/open/component/cache/database/AbstractDbCacheManager:d	()V
     //   149: return
     //   150: aload 8
-    //   152: invokevirtual 161	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   152: invokevirtual 160	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   155: goto +8 -> 163
     //   158: astore_2
     //   159: aload_2
-    //   160: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   160: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   163: aload_1
     //   164: athrow
     // Local variable table:
@@ -405,7 +389,7 @@ public abstract class AbstractDbCacheManager
       paramClass = (DbCacheData.DbCreator)paramClass.getField("DB_CREATOR").get(null);
       if (paramClass != null)
       {
-        this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = paramClass;
+        this.a = paramClass;
         paramClass = paramClass.a();
         if (paramClass != null)
         {
@@ -415,12 +399,12 @@ public abstract class AbstractDbCacheManager
           {
             Object localObject = paramClass[i];
             if (localObject != null) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+              this.f.add(localObject);
             }
             i += 1;
           }
         }
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
+        if (this.f.size() != 0) {
           return;
         }
         paramClass = new StringBuilder();
@@ -471,7 +455,7 @@ public abstract class AbstractDbCacheManager
     if (a()) {
       return;
     }
-    SQLiteDatabase localSQLiteDatabase = a();
+    SQLiteDatabase localSQLiteDatabase = f();
     if (localSQLiteDatabase == null) {
       return;
     }
@@ -487,65 +471,42 @@ public abstract class AbstractDbCacheManager
     {
       paramString.printStackTrace();
     }
-    b();
+    d();
   }
   
   public final boolean a()
   {
-    return this.b;
+    return this.e;
   }
   
-  protected String b()
+  final String b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("CREATE TABLE IF NOT EXISTS ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject).append(" (");
-    localStringBuilder.append(((StringBuilder)localObject).toString());
-    localStringBuilder.append("_id INTEGER PRIMARY KEY");
-    localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      DbCacheData.Structure localStructure = (DbCacheData.Structure)((Iterator)localObject).next();
-      localStringBuilder.append(',');
-      localStringBuilder.append(localStructure.a());
-      localStringBuilder.append(' ');
-      localStringBuilder.append(localStructure.b());
-    }
-    localStringBuilder.append(')');
-    return localStringBuilder.toString();
-  }
-  
-  protected void b()
-  {
-    a();
+    return a(this.b, this.c);
   }
   
   protected void b(SQLiteDatabase paramSQLiteDatabase)
   {
-    paramSQLiteDatabase.execSQL(c());
-    this.jdField_a_of_type_Boolean = false;
+    paramSQLiteDatabase.execSQL(h());
+    this.d = false;
   }
   
-  protected String c()
+  protected abstract void c();
+  
+  protected void d()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("DROP TABLE IF EXISTS ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    c();
   }
   
-  protected void c()
+  protected void e()
   {
-    int i = this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator.a();
+    int i = this.a.c();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.c);
     ((StringBuilder)localObject).append("_cache_db_version");
-    int j = LocalConfig.a(((StringBuilder)localObject).toString(), -1, this.jdField_a_of_type_Long);
+    int j = LocalConfig.b(((StringBuilder)localObject).toString(), -1, this.b);
     if ((j == -1) || (j != i))
     {
-      localObject = a();
+      localObject = f();
       if (localObject != null) {
         try
         {
@@ -562,14 +523,52 @@ public abstract class AbstractDbCacheManager
       }
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("_cache_db_version");
-    LocalConfig.a(localStringBuilder.toString(), i, this.jdField_a_of_type_Long);
+    LocalConfig.a(localStringBuilder.toString(), i, this.b);
+  }
+  
+  protected SQLiteDatabase f()
+  {
+    if (a()) {
+      return null;
+    }
+    return this.g.getWritableDatabase();
+  }
+  
+  protected String g()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CREATE TABLE IF NOT EXISTS ");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(" (");
+    localStringBuilder.append(((StringBuilder)localObject).toString());
+    localStringBuilder.append("_id INTEGER PRIMARY KEY");
+    localObject = this.f.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      DbCacheData.Structure localStructure = (DbCacheData.Structure)((Iterator)localObject).next();
+      localStringBuilder.append(',');
+      localStringBuilder.append(localStructure.a());
+      localStringBuilder.append(' ');
+      localStringBuilder.append(localStructure.b());
+    }
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
+  }
+  
+  protected String h()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DROP TABLE IF EXISTS ");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.component.cache.database.AbstractDbCacheManager
  * JD-Core Version:    0.7.0.1
  */

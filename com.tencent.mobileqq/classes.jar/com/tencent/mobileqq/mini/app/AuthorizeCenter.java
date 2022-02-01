@@ -55,6 +55,7 @@ public class AuthorizeCenter
   public static final String SCOPE_BOOKSHELF_INSERT = "scope.insertBookShelf";
   public static final String SCOPE_CAMERA = "scope.camera";
   public static final String SCOPE_CM_SHOW_INFO = "scope.cmshowInfo";
+  public static final String SCOPE_EXPAND_USER_INFO = "scope.expandUserInfo";
   public static final String SCOPE_GET_PHONE_NUMBER = "scope.getPhoneNumber";
   public static final String SCOPE_INVOICE = "scope.invoice";
   public static final String SCOPE_INVOICE_TITLE = "scope.invoiceTitle";
@@ -414,6 +415,7 @@ public class AuthorizeCenter
       scopeMap.put("insertBookshelf", "scope.insertBookShelf");
       scopeMap.put("getCMShowInfo", "scope.cmshowInfo");
       scopeMap.put("addRecentColorSign", "scope.recentColorSign");
+      scopeMap.put("getExpandUserInfo", "scope.expandUserInfo");
       scopeList.add("scope.userLocation");
       scopeList.add("scope.userInfo");
       scopeList.add("scope.address");
@@ -430,24 +432,26 @@ public class AuthorizeCenter
       scopeList.add("scope.insertBookShelf");
       scopeList.add("scope.cmshowInfo");
       scopeList.add("scope.recentColorSign");
-      scopeTitleMap.put("scope.userLocation", HardCodeUtil.a(2131701033));
-      scopeTitleMap.put("scope.userInfo", HardCodeUtil.a(2131701032));
-      scopeTitleMap.put("scope.address", HardCodeUtil.a(2131701039));
-      scopeTitleMap.put("scope.invoiceTitle", HardCodeUtil.a(2131701044));
+      scopeList.add("scope.expandUserInfo");
+      scopeTitleMap.put("scope.userLocation", HardCodeUtil.a(2131899054));
+      scopeTitleMap.put("scope.userInfo", HardCodeUtil.a(2131899053));
+      scopeTitleMap.put("scope.address", HardCodeUtil.a(2131899060));
+      scopeTitleMap.put("scope.invoiceTitle", HardCodeUtil.a(2131899065));
       scopeTitleMap.put("scope.invoice", "获取你的发票信息");
-      scopeTitleMap.put("scope.qqrun", HardCodeUtil.a(2131694155));
-      scopeTitleMap.put("scope.record", HardCodeUtil.a(2131701045));
-      scopeTitleMap.put("scope.writePhotosAlbum", HardCodeUtil.a(2131701047));
-      scopeTitleMap.put("scope.camera", HardCodeUtil.a(2131701053));
-      scopeTitleMap.put("scope.personalize", HardCodeUtil.a(2131701041));
-      scopeTitleMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131701057));
-      scopeTitleMap.put("setting.addFriend", HardCodeUtil.a(2131701055));
-      scopeTitleMap.put("scope.getPhoneNumber", HardCodeUtil.a(2131694154));
-      scopeTitleMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694138));
-      scopeTitleMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694140));
-      scopeTitleMap.put("scope.recentColorSign", HardCodeUtil.a(2131694149));
+      scopeTitleMap.put("scope.qqrun", HardCodeUtil.a(2131891785));
+      scopeTitleMap.put("scope.record", HardCodeUtil.a(2131899066));
+      scopeTitleMap.put("scope.writePhotosAlbum", HardCodeUtil.a(2131899068));
+      scopeTitleMap.put("scope.camera", HardCodeUtil.a(2131899074));
+      scopeTitleMap.put("scope.personalize", HardCodeUtil.a(2131899062));
+      scopeTitleMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131899078));
+      scopeTitleMap.put("setting.addFriend", HardCodeUtil.a(2131899076));
+      scopeTitleMap.put("scope.getPhoneNumber", HardCodeUtil.a(2131891784));
+      scopeTitleMap.put("scope.insertBookShelf", HardCodeUtil.a(2131891766));
+      scopeTitleMap.put("scope.cmshowInfo", HardCodeUtil.a(2131891768));
+      scopeTitleMap.put("scope.recentColorSign", HardCodeUtil.a(2131891779));
+      scopeTitleMap.put("scope.expandUserInfo", HardCodeUtil.a(2131891776));
       scopeDescMap.put("scope.userLocation", "");
-      scopeDescMap.put("scope.userInfo", HardCodeUtil.a(2131694147));
+      scopeDescMap.put("scope.userInfo", HardCodeUtil.a(2131891775));
       scopeDescMap.put("scope.address", "");
       scopeDescMap.put("scope.invoiceTitle", "");
       scopeDescMap.put("scope.invoice", "");
@@ -456,12 +460,13 @@ public class AuthorizeCenter
       scopeDescMap.put("scope.writePhotosAlbum", "");
       scopeDescMap.put("scope.camera", "");
       scopeDescMap.put("scope.personalize", "");
-      scopeDescMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131701040));
+      scopeDescMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131899061));
       scopeDescMap.put("setting.addFriend", "");
       scopeDescMap.put("scope.getPhoneNumber", "");
-      scopeDescMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694139));
-      scopeDescMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694146));
-      scopeDescMap.put("scope.recentColorSign", HardCodeUtil.a(2131694150));
+      scopeDescMap.put("scope.insertBookShelf", HardCodeUtil.a(2131891767));
+      scopeDescMap.put("scope.cmshowInfo", HardCodeUtil.a(2131891774));
+      scopeDescMap.put("scope.recentColorSign", HardCodeUtil.a(2131891780));
+      scopeDescMap.put("scope.expandUserInfo", HardCodeUtil.a(2131891777));
       scopeReportMap.put("scope.userLocation", "userLocation");
       scopeReportMap.put("scope.userInfo", "userinfo");
       scopeReportMap.put("scope.address", "chooseAddress");
@@ -479,22 +484,24 @@ public class AuthorizeCenter
       scopeReportMap.put("scope.insertBookShelf", "insertBookShelf");
       scopeReportMap.put("scope.cmshowInfo", "cmshowInfo");
       scopeReportMap.put("scope.recentColorSign", "addRecentColorSign");
-      settingScopeTitleMap.put("scope.userLocation", HardCodeUtil.a(2131701034));
-      settingScopeTitleMap.put("scope.userInfo", HardCodeUtil.a(2131701035));
-      settingScopeTitleMap.put("scope.address", HardCodeUtil.a(2131701030));
-      settingScopeTitleMap.put("scope.invoiceTitle", HardCodeUtil.a(2131701051));
+      scopeReportMap.put("scope.expandUserInfo", "getExpandUserInfo");
+      settingScopeTitleMap.put("scope.userLocation", HardCodeUtil.a(2131899055));
+      settingScopeTitleMap.put("scope.userInfo", HardCodeUtil.a(2131899056));
+      settingScopeTitleMap.put("scope.address", HardCodeUtil.a(2131899051));
+      settingScopeTitleMap.put("scope.invoiceTitle", HardCodeUtil.a(2131899072));
       settingScopeTitleMap.put("scope.invoice", "发票信息");
-      settingScopeTitleMap.put("scope.qqrun", HardCodeUtil.a(2131701031));
-      settingScopeTitleMap.put("scope.record", HardCodeUtil.a(2131701052));
-      settingScopeTitleMap.put("scope.writePhotosAlbum", HardCodeUtil.a(2131701058));
-      settingScopeTitleMap.put("scope.camera", HardCodeUtil.a(2131701043));
-      settingScopeTitleMap.put("scope.personalize", HardCodeUtil.a(2131701036));
-      settingScopeTitleMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131694148));
-      settingScopeTitleMap.put("setting.addFriend", HardCodeUtil.a(2131701056));
-      settingScopeTitleMap.put("scope.cmshowInfo", HardCodeUtil.a(2131694146));
-      settingScopeTitleMap.put("scope.insertBookShelf", HardCodeUtil.a(2131694160));
-      settingScopeTitleMap.put("scope.recentColorSign", HardCodeUtil.a(2131694161));
-      negativeButtonDesMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131701046));
+      settingScopeTitleMap.put("scope.qqrun", HardCodeUtil.a(2131899052));
+      settingScopeTitleMap.put("scope.record", HardCodeUtil.a(2131899073));
+      settingScopeTitleMap.put("scope.writePhotosAlbum", HardCodeUtil.a(2131899079));
+      settingScopeTitleMap.put("scope.camera", HardCodeUtil.a(2131899064));
+      settingScopeTitleMap.put("scope.personalize", HardCodeUtil.a(2131899057));
+      settingScopeTitleMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131891778));
+      settingScopeTitleMap.put("setting.addFriend", HardCodeUtil.a(2131899077));
+      settingScopeTitleMap.put("scope.cmshowInfo", HardCodeUtil.a(2131891774));
+      settingScopeTitleMap.put("scope.insertBookShelf", HardCodeUtil.a(2131891790));
+      settingScopeTitleMap.put("scope.recentColorSign", HardCodeUtil.a(2131891791));
+      settingScopeTitleMap.put("scope.expandUserInfo", HardCodeUtil.a(2131891776));
+      negativeButtonDesMap.put("setting.appMsgSubscribed", HardCodeUtil.a(2131899067));
       scopeAuthTypeMap.put("scope.getPhoneNumber", Integer.valueOf(1));
       mergeExtConfigInfo();
     }
@@ -764,7 +771,7 @@ public class AuthorizeCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AuthorizeCenter
  * JD-Core Version:    0.7.0.1
  */

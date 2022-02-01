@@ -95,9 +95,26 @@
                         }
                     },
                     {
+                        "view_type": "UIView",
+                        "view_id": "id_leftCard_topHalf_shadow",
+                        "default_visible": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                          "type":"relative",
+                          "value":"24"
+                        },
+                        "width": {
+                          "type":"match_parent"
+                        },
+                        "attributes":{
+                          "setGradientWithStartAlpha:endAlpha:color:direction:": ["0", "0.6", "#000000", "1"]
+                        }
+                      },
+                    {
                         "view_type":"container",
                         "view_id":"id_videoInfo",
-                        "layout_type":"layout_relative",
+                        "layout_type":"layout_linear",
+                        "direction": "horizontal",
                         "align_parent_bottom":"YES",
                         "margin_left":"12",
                         "margin_bottom":"8",
@@ -133,6 +150,7 @@
                                 "view_id":"id_playCount",
                                 "right_of_view":"id_playIcon",
                                 "margin_left":"3",
+                                "margin_right":"12",
                                 "height":{
                                     "type":"wrap_content"
                                 },
@@ -150,7 +168,6 @@
                                 "view_id":"id_commentIcon",
                                 "visible_depend_on_brother":"id_commentCount",
                                 "right_of_view":"id_playCount",
-                                "margin_left":"12",
                                 "height":{
                                     "type":"relative",
                                     "value":"12"

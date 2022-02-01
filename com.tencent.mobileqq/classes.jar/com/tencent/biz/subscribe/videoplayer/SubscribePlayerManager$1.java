@@ -13,11 +13,11 @@ class SubscribePlayerManager$1
   
   public void onClick(View paramView)
   {
-    SubscribePlayerManager.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager).removeCallbacks(SubscribePlayerManager.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager));
-    SubscribePlayerManager.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager, true);
-    SubscribePlayerManager localSubscribePlayerManager = this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager;
-    AutoVideoItemBuilder.AutoVideoMsgViewHolder localAutoVideoMsgViewHolder = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder;
-    SubscribePlayerManager.a(localSubscribePlayerManager, localAutoVideoMsgViewHolder, localAutoVideoMsgViewHolder.b);
+    SubscribePlayerManager.b(this.b).removeCallbacks(SubscribePlayerManager.a(this.b));
+    SubscribePlayerManager.a(this.b, true);
+    SubscribePlayerManager localSubscribePlayerManager = this.b;
+    AutoVideoItemBuilder.AutoVideoMsgViewHolder localAutoVideoMsgViewHolder = this.a;
+    SubscribePlayerManager.a(localSubscribePlayerManager, localAutoVideoMsgViewHolder, localAutoVideoMsgViewHolder.l);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

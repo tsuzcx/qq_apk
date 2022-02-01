@@ -25,26 +25,18 @@ import org.json.JSONObject;
 
 public class QZoneTitleTabManager
 {
-  private static volatile int jdField_a_of_type_Int = 0;
-  private static final CopyOnWriteArrayList<QZoneTitleTabManager.TabInfo> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static final CopyOnWriteArrayList<QZoneTitleTabManager.TabInfo> a = new CopyOnWriteArrayList();
+  private static volatile int b = 0;
   
   public static ArrayList<QZoneTitleTabManager.TabInfo> a()
   {
     ArrayList localArrayList = new ArrayList(2);
-    localArrayList.addAll(jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
+    localArrayList.addAll(a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getTabInfos:");
     localStringBuilder.append(localArrayList);
     QLog.i("QZoneTitleTabManager", 1, localStringBuilder.toString());
     return localArrayList;
-  }
-  
-  public static ArrayList<QZoneTitleTabManager.TabInfo> a(Intent paramIntent)
-  {
-    if (paramIntent != null) {
-      return paramIntent.getParcelableArrayListExtra("key_tab_intent");
-    }
-    return null;
   }
   
   private static ArrayList<QZoneTitleTabManager.TabInfo> a(ArrayList<QZoneTitleTabManager.TabInfo> paramArrayList)
@@ -62,15 +54,15 @@ public class QZoneTitleTabManager
           return paramArrayList;
         }
         paramArrayList = (ArrayList<QZoneTitleTabManager.TabInfo>)localObject1;
-        if (localTabInfo.jdField_a_of_type_Int != 50) {
+        if (localTabInfo.a != 50) {
           return paramArrayList;
         }
-        localObject2 = localTabInfo.jdField_a_of_type_JavaLangString;
+        localObject2 = localTabInfo.b;
         paramArrayList = (ArrayList<QZoneTitleTabManager.TabInfo>)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          paramArrayList = HardCodeUtil.a(2131719439);
+          paramArrayList = HardCodeUtil.a(2131916999);
         }
-        ((ArrayList)localObject1).add(new QZoneTitleTabManager.TabInfo(localTabInfo.jdField_a_of_type_Int, paramArrayList));
+        ((ArrayList)localObject1).add(new QZoneTitleTabManager.TabInfo(localTabInfo.a, paramArrayList));
         return localObject1;
       }
       if (paramArrayList.size() >= 2)
@@ -78,16 +70,16 @@ public class QZoneTitleTabManager
         localObject1 = new ArrayList(2);
         localObject2 = (QZoneTitleTabManager.TabInfo)paramArrayList.get(0);
         paramArrayList = (QZoneTitleTabManager.TabInfo)paramArrayList.get(1);
-        if (((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_Int == 50)
+        if (((QZoneTitleTabManager.TabInfo)localObject2).a == 50)
         {
-          if (TextUtils.isEmpty(((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString)) {
-            ((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131712331);
+          if (TextUtils.isEmpty(((QZoneTitleTabManager.TabInfo)localObject2).b)) {
+            ((QZoneTitleTabManager.TabInfo)localObject2).b = HardCodeUtil.a(2131909928);
           }
         }
         else
         {
-          ((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_Int = 50;
-          ((QZoneTitleTabManager.TabInfo)localObject2).jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131712332);
+          ((QZoneTitleTabManager.TabInfo)localObject2).a = 50;
+          ((QZoneTitleTabManager.TabInfo)localObject2).b = HardCodeUtil.a(2131909929);
         }
         ((ArrayList)localObject1).add(localObject2);
         if (a(paramArrayList))
@@ -146,18 +138,18 @@ public class QZoneTitleTabManager
         if (localentrance_cfg != null)
         {
           QZoneTitleTabManager.TabInfo localTabInfo = new QZoneTitleTabManager.TabInfo(localentrance_cfg.iEntranceId, localentrance_cfg.sEntranceName);
-          localTabInfo.jdField_b_of_type_JavaLangString = localentrance_cfg.sEntranceAction;
+          localTabInfo.f = localentrance_cfg.sEntranceAction;
           boolean bool;
           if (localentrance_cfg.isAnchor != 0) {
             bool = true;
           } else {
             bool = false;
           }
-          localTabInfo.jdField_a_of_type_Boolean = bool;
+          localTabInfo.c = bool;
           if (localentrance_cfg.stReportInfo != null)
           {
-            localTabInfo.jdField_b_of_type_Int = localentrance_cfg.stReportInfo.report_first_page;
-            localTabInfo.c = localentrance_cfg.stReportInfo.report_second_page;
+            localTabInfo.d = localentrance_cfg.stReportInfo.report_first_page;
+            localTabInfo.e = localentrance_cfg.stReportInfo.report_second_page;
           }
           parammobile_count_rsp_new.add(localTabInfo);
         }
@@ -165,10 +157,10 @@ public class QZoneTitleTabManager
       parammobile_count_rsp_new = a(parammobile_count_rsp_new);
       if ((parammobile_count_rsp_new != null) && (parammobile_count_rsp_new.size() > 0))
       {
-        jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(parammobile_count_rsp_new);
-        a(paramQQAppInterface, jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-        jdField_a_of_type_Int = 3;
+        a.clear();
+        a.addAll(parammobile_count_rsp_new);
+        a(paramQQAppInterface, a);
+        b = 3;
       }
     }
     else
@@ -189,8 +181,8 @@ public class QZoneTitleTabManager
     if (QLog.isColorLevel()) {
       QLog.i("QZoneTitleTabManager", 2, "clearConfig");
     }
-    jdField_a_of_type_Int = 2;
-    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    b = 2;
+    a.clear();
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("qzone_tab_info_");
@@ -235,7 +227,7 @@ public class QZoneTitleTabManager
   
   public static void a(String paramString)
   {
-    if (jdField_a_of_type_Int > 1) {
+    if (b > 1) {
       return;
     }
     Object localObject1 = BaseApplicationImpl.getApplication();
@@ -269,10 +261,10 @@ public class QZoneTitleTabManager
             i += 1;
           }
           a((ArrayList)localObject1);
-          if (jdField_a_of_type_Int <= 1)
+          if (b <= 1)
           {
-            jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-            jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((Collection)localObject1);
+            a.clear();
+            a.addAll((Collection)localObject1);
           }
         }
       }
@@ -293,25 +285,33 @@ public class QZoneTitleTabManager
     if (paramTabInfo == null) {
       return false;
     }
-    if ((HttpUtil.isValidUrl(paramTabInfo.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramTabInfo.jdField_a_of_type_JavaLangString))) {
+    if ((HttpUtil.isValidUrl(paramTabInfo.f)) && (!TextUtils.isEmpty(paramTabInfo.b))) {
       return true;
     }
-    if (paramTabInfo.jdField_a_of_type_Int == 51) {
-      return !TextUtils.isEmpty(paramTabInfo.jdField_a_of_type_JavaLangString);
+    if (paramTabInfo.a == 51) {
+      return !TextUtils.isEmpty(paramTabInfo.b);
     }
-    if (paramTabInfo.jdField_a_of_type_Int == 15)
+    if (paramTabInfo.a == 15)
     {
-      if (!HttpUtil.isValidUrl(paramTabInfo.jdField_b_of_type_JavaLangString)) {
-        paramTabInfo.jdField_b_of_type_JavaLangString = "https://h5.qzone.qq.com/secret/list/{uin}/secret?_proxy=1&_wv=3&source=tab";
+      if (!HttpUtil.isValidUrl(paramTabInfo.f)) {
+        paramTabInfo.f = "https://h5.qzone.qq.com/secret/list/{uin}/secret?_proxy=1&_wv=3&source=tab";
       }
       return true;
     }
-    return paramTabInfo.jdField_a_of_type_Int == 51;
+    return paramTabInfo.a == 51;
+  }
+  
+  public static ArrayList<QZoneTitleTabManager.TabInfo> b(Intent paramIntent)
+  {
+    if (paramIntent != null) {
+      return paramIntent.getParcelableArrayListExtra("key_tab_intent");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneTitleTabManager
  * JD-Core Version:    0.7.0.1
  */

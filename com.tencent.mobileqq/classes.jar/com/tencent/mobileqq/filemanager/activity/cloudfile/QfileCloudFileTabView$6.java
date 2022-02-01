@@ -8,24 +8,24 @@ import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 class QfileCloudFileTabView$6
   implements QfilePinnedHeaderExpandableListView.OnSelectListener
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private boolean b;
+  private int c;
+  private int d;
   
   QfileCloudFileTabView$6(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.b = 2147483647;
-    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
+    this.b = false;
+    this.c = -2147483648;
+    this.d = 2147483647;
+    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)this.a.j.getChild(paramInt1, paramInt2);
     if (localWeiYunFileInfo == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = (FMDataCache.a(localWeiYunFileInfo) ^ true);
-    if (QfileCloudFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView, localWeiYunFileInfo, this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.o();
+    this.b = (FMDataCache.a(localWeiYunFileInfo) ^ true);
+    if (QfileCloudFileTabView.a(this.a, localWeiYunFileInfo, this.b)) {
+      this.a.o();
     }
   }
   
@@ -37,39 +37,39 @@ class QfileCloudFileTabView$6
     int i = Math.min(paramInt2, paramInt4);
     int j = Math.max(paramInt2, paramInt4);
     if (paramInt4 < paramInt2) {
-      this.b = Math.min(paramInt4, this.b);
+      this.d = Math.min(paramInt4, this.d);
     } else {
-      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
+      this.c = Math.max(paramInt4, this.c);
     }
     paramInt2 = i;
     QfileCloudFileTabView localQfileCloudFileTabView;
     while (paramInt2 <= j)
     {
-      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
-      QfileCloudFileTabView.a(localQfileCloudFileTabView, (WeiYunFileInfo)localQfileCloudFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
+      localQfileCloudFileTabView = this.a;
+      QfileCloudFileTabView.a(localQfileCloudFileTabView, (WeiYunFileInfo)localQfileCloudFileTabView.j.getChild(paramInt1, paramInt2), this.b);
       paramInt2 += 1;
     }
-    paramInt2 = this.b;
+    paramInt2 = this.d;
     for (;;)
     {
       paramInt3 = j;
       if (paramInt2 >= i) {
         break;
       }
-      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
-      QfileCloudFileTabView.a(localQfileCloudFileTabView, (WeiYunFileInfo)localQfileCloudFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean ^ true);
+      localQfileCloudFileTabView = this.a;
+      QfileCloudFileTabView.a(localQfileCloudFileTabView, (WeiYunFileInfo)localQfileCloudFileTabView.j.getChild(paramInt1, paramInt2), this.b ^ true);
       paramInt2 += 1;
     }
     for (;;)
     {
       paramInt3 += 1;
-      if (paramInt3 > this.jdField_a_of_type_Int) {
+      if (paramInt3 > this.c) {
         break;
       }
-      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
-      QfileCloudFileTabView.a(localQfileCloudFileTabView, (WeiYunFileInfo)localQfileCloudFileTabView.a.getChild(paramInt1, paramInt3), this.jdField_a_of_type_Boolean ^ true);
+      localQfileCloudFileTabView = this.a;
+      QfileCloudFileTabView.a(localQfileCloudFileTabView, (WeiYunFileInfo)localQfileCloudFileTabView.j.getChild(paramInt1, paramInt3), this.b ^ true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.o();
+    this.a.o();
   }
   
   public void a(boolean paramBoolean) {}
@@ -78,7 +78,7 @@ class QfileCloudFileTabView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.6
  * JD-Core Version:    0.7.0.1
  */

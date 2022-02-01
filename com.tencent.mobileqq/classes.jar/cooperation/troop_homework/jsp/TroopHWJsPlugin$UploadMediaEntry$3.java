@@ -9,12 +9,12 @@ class TroopHWJsPlugin$UploadMediaEntry$3
   
   public void run()
   {
-    this.a.a.b();
+    this.a.b.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.3
  * JD-Core Version:    0.7.0.1
  */

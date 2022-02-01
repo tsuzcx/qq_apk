@@ -9,24 +9,24 @@ import java.util.Map;
 
 public class EffectFilterTools$DataReport
 {
-  static long jdField_a_of_type_Long = 0L;
-  static String jdField_a_of_type_JavaLangString = "EffectFilterTools";
-  static boolean jdField_a_of_type_Boolean = false;
+  static String a = "EffectFilterTools";
+  static long b = 0L;
+  static boolean c = false;
   
   public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramVideoAppInterface.a(1))
+    if (paramVideoAppInterface.d(1))
     {
-      paramVideoAppInterface = (FilterItem)((EffectFilterTools)paramVideoAppInterface.a(1)).a();
+      paramVideoAppInterface = (FilterItem)((EffectFilterTools)paramVideoAppInterface.c(1)).c();
       a(paramVideoAppInterface);
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("DataReport onUserdFilter:");
       localStringBuilder.append(paramVideoAppInterface);
       localStringBuilder.append("|");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(c);
       AVLog.printColorLog(str, localStringBuilder.toString());
-      if (jdField_a_of_type_Boolean) {
+      if (c) {
         paramVideoAppInterface = "0X80076B2";
       } else {
         paramVideoAppInterface = "0X80076B1";
@@ -38,43 +38,43 @@ public class EffectFilterTools$DataReport
   static void a(FilterItem paramFilterItem)
   {
     long l1 = System.currentTimeMillis();
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DataReport onUserdFilter:");
     localStringBuilder.append(paramFilterItem);
     localStringBuilder.append("|");
-    localStringBuilder.append(jdField_a_of_type_Long);
+    localStringBuilder.append(b);
     AVLog.printColorLog((String)localObject, localStringBuilder.toString());
     if ((paramFilterItem != null) && (!paramFilterItem.isEmptyFilter()))
     {
-      long l2 = jdField_a_of_type_Long;
+      long l2 = b;
       if (l2 != 0L)
       {
         l2 = l1 - l2;
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("DataReport onUserdFilter:");
         localStringBuilder.append(l2);
         AVLog.printColorLog((String)localObject, localStringBuilder.toString());
         if (l2 > 5000L)
         {
-          jdField_a_of_type_Boolean = true;
+          c = true;
           a(paramFilterItem, l2 / 1000L);
         }
       }
-      paramFilterItem = jdField_a_of_type_JavaLangString;
+      paramFilterItem = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("DataReport onUserdFilter 33:");
-      ((StringBuilder)localObject).append(jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(b);
       AVLog.printColorLog(paramFilterItem, ((StringBuilder)localObject).toString());
     }
-    jdField_a_of_type_Long = l1;
+    b = l1;
   }
   
   public static void a(FilterItem paramFilterItem, long paramLong)
   {
     paramFilterItem = paramFilterItem.getId();
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DataReport onStateReport:");
     localStringBuilder.append(paramFilterItem);
@@ -92,7 +92,7 @@ public class EffectFilterTools$DataReport
     }
     catch (Exception paramFilterItem)
     {
-      AVLog.printErrorLog(jdField_a_of_type_JavaLangString, paramFilterItem.getMessage());
+      AVLog.printErrorLog(a, paramFilterItem.getMessage());
     }
   }
   
@@ -103,7 +103,7 @@ public class EffectFilterTools$DataReport
   
   public static void a(boolean paramBoolean)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DataReport onSupport:");
     localStringBuilder.append(paramBoolean);

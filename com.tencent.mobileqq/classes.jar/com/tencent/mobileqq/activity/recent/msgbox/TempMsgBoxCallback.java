@@ -7,7 +7,6 @@ import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.managers.TempMsgManager;
 import com.tencent.mobileqq.qcall.QCallFacade;
 import com.tencent.mobileqq.qcall.QCallFacade.CallUnreadCountInfo;
@@ -21,11 +20,6 @@ public class TempMsgBoxCallback
     return QCallFacade.a((QQAppInterface)paramAppInterface, paramString, paramInt1, paramInt2, null).a();
   }
   
-  public String a(AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2, Message paramMessage)
-  {
-    return QCallFacade.a((QQAppInterface)paramAppInterface, paramString, paramInt1, paramInt2, null).a();
-  }
-  
   public void a(Context paramContext, BaseQQAppInterface paramBaseQQAppInterface, Message paramMessage, int paramInt, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
   {
     MsgUtils.a(paramContext, paramBaseQQAppInterface, paramMessage, paramInt, paramMsgSummary, paramBoolean1, paramBoolean2);
@@ -33,28 +27,22 @@ public class TempMsgBoxCallback
   
   public boolean a(AppInterface paramAppInterface, String paramString, int paramInt)
   {
-    TempMsgManager localTempMsgManager = (TempMsgManager)paramAppInterface.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER);
+    paramAppInterface = (TempMsgManager)paramAppInterface.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER);
     short s;
     if (paramInt != 1000)
     {
       if (paramInt != 1024)
       {
-        if (paramInt != 10007)
+        if (paramInt != 1005)
         {
-          if (paramInt != 1005)
-          {
-            if (paramInt != 1006) {
-              return false;
-            }
-            s = -23310;
+          if (paramInt != 1006) {
+            return false;
           }
-          else
-          {
-            s = -23309;
-          }
+          s = -23310;
         }
-        else {
-          return ((IGameMsgManagerService)paramAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).isGameMsgShowInMsgBox(paramString);
+        else
+        {
+          s = -23309;
         }
       }
       else {
@@ -64,12 +52,17 @@ public class TempMsgBoxCallback
     else {
       s = -23308;
     }
-    return localTempMsgManager.b(s);
+    return paramAppInterface.b(s);
+  }
+  
+  public String b(AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2, Message paramMessage)
+  {
+    return QCallFacade.a((QQAppInterface)paramAppInterface, paramString, paramInt1, paramInt2, null).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxCallback
  * JD-Core Version:    0.7.0.1
  */

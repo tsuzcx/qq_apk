@@ -13,7 +13,7 @@ class StoryHomePushYellowBarHandler$2
   public void onClick(View paramView)
   {
     this.a.b();
-    this.a.a.i();
+    this.a.c.j();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

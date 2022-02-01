@@ -123,7 +123,7 @@ public class NearbyEntityManagerFactory
       localStringBuilder.append("nearby_");
       localStringBuilder.append(paramString);
       localStringBuilder.append(".db");
-      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), 1);
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, localStringBuilder.toString(), 1);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("nearby_");
@@ -169,7 +169,7 @@ public class NearbyEntityManagerFactory
       }
       else
       {
-        this.mInnerDbHelper.a();
+        this.mInnerDbHelper.dropAllTable();
         localVerifyEntity = new NearbyEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
         localEntityManager.persistOrReplace(localVerifyEntity);
@@ -181,7 +181,7 @@ public class NearbyEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

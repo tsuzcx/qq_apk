@@ -12,10 +12,10 @@ class LoginView$5$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.this$0.c.setVisibility(0);
-    this.a.this$0.c.clearAnimation();
-    this.a.this$0.c.setAnimation(null);
-    this.a.this$0.a.invalidate();
+    this.a.this$0.m.setVisibility(0);
+    this.a.this$0.m.clearAnimation();
+    this.a.this$0.m.setAnimation(null);
+    this.a.this$0.r.invalidate();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -24,7 +24,7 @@ class LoginView$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.5.1
  * JD-Core Version:    0.7.0.1
  */

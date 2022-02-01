@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.util.Pair;
+import android.util.SparseArray;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 import com.tencent.mobileqq.filemanager.util.IFileWifiCheckCallback;
@@ -21,7 +21,7 @@ public abstract interface IFileDepend
   
   public abstract void forwardToTargetFriend(Activity paramActivity, Intent paramIntent, boolean paramBoolean, String paramString, int paramInt);
   
-  public abstract Pair<Object, Object> getDetectCode(Bitmap paramBitmap);
+  public abstract SparseArray<Object> getDetectCode(Bitmap paramBitmap);
   
   public abstract boolean isVideoFileError(long paramLong);
   
@@ -35,7 +35,7 @@ public abstract interface IFileDepend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.api.IFileDepend
  * JD-Core Version:    0.7.0.1
  */

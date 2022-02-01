@@ -15,14 +15,14 @@ class StructingMsgItemBuilder$10
   
   public void onClick(View paramView)
   {
-    Map localMap = ((PublicAccountChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
-    ((PublicAccountChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).a(localMap);
+    Map localMap = ((PublicAccountChatPie)this.a).a(this.b);
+    ((PublicAccountChatPie)this.a).a(localMap);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.10
  * JD-Core Version:    0.7.0.1
  */

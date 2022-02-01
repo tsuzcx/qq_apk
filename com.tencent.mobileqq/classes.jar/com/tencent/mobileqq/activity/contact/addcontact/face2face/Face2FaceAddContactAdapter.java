@@ -33,126 +33,109 @@ import java.util.Set;
 public class Face2FaceAddContactAdapter
   extends RecyclerView.Adapter
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = new Face2FaceAddContactAdapter.1(this);
-  private List<Face2FaceFriendInfo> jdField_a_of_type_JavaUtilList;
-  private Set<String> jdField_a_of_type_JavaUtilSet;
-  private boolean jdField_a_of_type_Boolean;
+  private List<Face2FaceFriendInfo> a;
+  private BaseActivity b;
+  private QQAppInterface c;
+  private IFaceDecoder d;
+  private RecyclerView e;
+  private boolean f;
+  private Set<String> g;
+  private DecodeTaskCompletionListener h = new Face2FaceAddContactAdapter.1(this);
   
   Face2FaceAddContactAdapter(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener);
-    this.jdField_a_of_type_Boolean = SimpleUIUtil.a();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private String a(String paramString)
-  {
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localFriendsManager == null) {
-      return paramString;
-    }
-    String str = paramString;
-    if (localFriendsManager.b(paramString)) {
-      str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-    }
-    return str;
-  }
-  
-  private void a(String paramString)
-  {
-    paramString = new AllInOne(paramString, 113);
-    paramString.profileEntryType = 126;
-    ProfileUtils.openProfileCard(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString);
+    this.b = paramBaseActivity;
+    this.c = paramQQAppInterface;
+    this.e = paramRecyclerView;
+    this.d = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
+    this.d.setDecodeTaskCompletionListener(this.h);
+    this.f = SimpleUIUtil.e();
+    this.g = new HashSet();
+    this.a = new ArrayList();
   }
   
   private void a(boolean paramBoolean, RecyclerView.ViewHolder paramViewHolder, Face2FaceFriendInfo paramFace2FaceFriendInfo)
   {
     if (paramBoolean)
     {
-      paramFace2FaceFriendInfo = (Face2FaceAddContactAdapter.LoadingViewHolder)paramViewHolder;
-      paramViewHolder = paramFace2FaceFriendInfo.jdField_a_of_type_AndroidWidgetImageView;
-      int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = 2130840080;
-      } else {
-        i = 2130840081;
-      }
-      paramViewHolder.setImageResource(i);
-      paramFace2FaceFriendInfo.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-      paramFace2FaceFriendInfo.jdField_a_of_type_JavaLangString = "";
-      paramFace2FaceFriendInfo.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      if (this.jdField_a_of_type_Boolean) {
-        paramViewHolder = "face2face/jianjie_loading.json";
-      } else {
-        paramViewHolder = "face2face/normal_loading.json";
-      }
-      paramFace2FaceFriendInfo.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation(paramViewHolder);
-      paramFace2FaceFriendInfo.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(true);
-      paramFace2FaceFriendInfo.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+      paramViewHolder = (Face2FaceAddContactAdapter.LoadingViewHolder)paramViewHolder;
+      paramViewHolder.b.setImageResource(2130840306);
+      paramViewHolder.c.setText(null);
+      paramViewHolder.a = "";
+      paramViewHolder.d.setVisibility(0);
+      paramViewHolder.d.setAnimation("face2face/normal_loading.json");
+      paramViewHolder.d.loop(true);
+      paramViewHolder.d.playAnimation();
       return;
     }
     Face2FaceAddContactAdapter.AvatarViewHolder localAvatarViewHolder = (Face2FaceAddContactAdapter.AvatarViewHolder)paramViewHolder;
     if (paramFace2FaceFriendInfo != null)
     {
-      if (TextUtils.isEmpty(paramFace2FaceFriendInfo.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramFace2FaceFriendInfo.a)) {
         return;
       }
-      localAvatarViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramFace2FaceFriendInfo.jdField_a_of_type_JavaLangString));
-      localAvatarViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(UITools.a);
-      localAvatarViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(localAvatarViewHolder);
+      localAvatarViewHolder.b.setImageBitmap(a(paramFace2FaceFriendInfo.a));
+      localAvatarViewHolder.b.setOnTouchListener(UITools.a);
+      localAvatarViewHolder.b.setOnClickListener(localAvatarViewHolder);
       if (TextUtils.isEmpty(paramFace2FaceFriendInfo.b)) {
-        paramViewHolder = a(paramFace2FaceFriendInfo.jdField_a_of_type_JavaLangString);
+        paramViewHolder = b(paramFace2FaceFriendInfo.a);
       } else {
         paramViewHolder = paramFace2FaceFriendInfo.b;
       }
-      localAvatarViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(a(paramViewHolder));
-      localAvatarViewHolder.jdField_a_of_type_JavaLangString = paramFace2FaceFriendInfo.jdField_a_of_type_JavaLangString;
+      localAvatarViewHolder.c.setText(b(paramViewHolder));
+      localAvatarViewHolder.a = paramFace2FaceFriendInfo.a;
       if (paramFace2FaceFriendInfo.a())
       {
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(paramFace2FaceFriendInfo.jdField_a_of_type_JavaLangString))
+        if (!this.g.contains(paramFace2FaceFriendInfo.a))
         {
-          localAvatarViewHolder.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-          localAvatarViewHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-          if (this.jdField_a_of_type_Boolean) {
-            paramViewHolder = "face2face/jianjie_avatar.json";
-          } else {
-            paramViewHolder = "face2face/normal_avatar.json";
-          }
-          localAvatarViewHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation(paramViewHolder);
-          localAvatarViewHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-          localAvatarViewHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(localAvatarViewHolder);
+          localAvatarViewHolder.b.setAlpha(0.5F);
+          localAvatarViewHolder.d.setVisibility(0);
+          localAvatarViewHolder.d.setAnimation("face2face/normal_avatar.json");
+          localAvatarViewHolder.d.playAnimation();
+          localAvatarViewHolder.d.addAnimatorListener(localAvatarViewHolder);
         }
       }
-      else if ((localAvatarViewHolder.jdField_a_of_type_AndroidWidgetImageView.getAlpha() < 1.0D) || (localAvatarViewHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getVisibility() != 4))
+      else if ((localAvatarViewHolder.b.getAlpha() < 1.0D) || (localAvatarViewHolder.d.getVisibility() != 4))
       {
-        localAvatarViewHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(4);
-        localAvatarViewHolder.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        localAvatarViewHolder.d.setVisibility(4);
+        localAvatarViewHolder.b.setAlpha(1.0F);
       }
-      ViewCompat.setImportantForAccessibility(localAvatarViewHolder.jdField_a_of_type_AndroidWidgetTextView, 1);
-      ViewCompat.setImportantForAccessibility(localAvatarViewHolder.jdField_a_of_type_AndroidWidgetImageView, 1);
+      ViewCompat.setImportantForAccessibility(localAvatarViewHolder.c, 1);
+      ViewCompat.setImportantForAccessibility(localAvatarViewHolder.b, 1);
       ViewCompat.setImportantForAccessibility(localAvatarViewHolder.itemView, 1);
     }
   }
   
+  private String b(String paramString)
+  {
+    FriendsManager localFriendsManager = (FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localFriendsManager == null) {
+      return paramString;
+    }
+    String str = paramString;
+    if (localFriendsManager.n(paramString)) {
+      str = ContactUtils.a(this.c, paramString);
+    }
+    return str;
+  }
+  
+  private void c(String paramString)
+  {
+    paramString = new AllInOne(paramString, 113);
+    paramString.profileEntryType = 126;
+    ProfileUtils.openProfileCard(this.b, paramString);
+  }
+  
   protected Bitmap a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    Object localObject = this.d;
     if (localObject != null)
     {
       Bitmap localBitmap = ((IFaceDecoder)localObject).getBitmapFromCache(4, paramString);
       localObject = localBitmap;
       if (localBitmap == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 1, false, (byte)1);
+        this.d.requestDecodeFace(paramString, 1, false, (byte)1);
         localObject = localBitmap;
       }
     }
@@ -162,23 +145,18 @@ public class Face2FaceAddContactAdapter
     }
     paramString = (String)localObject;
     if (localObject == null) {
-      paramString = ImageUtil.f();
+      paramString = ImageUtil.k();
     }
     return paramString;
   }
   
-  protected List<Face2FaceFriendInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilSet;
+    Object localObject = this.g;
     if (localObject != null) {
       ((Set)localObject).clear();
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    localObject = this.a;
     if (localObject != null) {
       ((List)localObject).clear();
     }
@@ -186,22 +164,27 @@ public class Face2FaceAddContactAdapter
   
   void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = null;
+    this.c = null;
+    this.b = null;
+    this.e = null;
     a();
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    IFaceDecoder localIFaceDecoder = this.d;
     if (localIFaceDecoder != null)
     {
       localIFaceDecoder.setDecodeTaskCompletionListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = null;
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+      this.h = null;
+      this.d.destory();
     }
+  }
+  
+  protected List<Face2FaceFriendInfo> c()
+  {
+    return this.a;
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    return this.a.size() + 1;
   }
   
   public long getItemId(int paramInt)
@@ -211,7 +194,7 @@ public class Face2FaceAddContactAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
+    if (paramInt >= this.a.size()) {
       return 1;
     }
     return 0;
@@ -222,14 +205,14 @@ public class Face2FaceAddContactAdapter
     if ((paramViewHolder instanceof Face2FaceAddContactAdapter.LoadingViewHolder)) {
       a(true, paramViewHolder, null);
     } else {
-      a(false, paramViewHolder, (Face2FaceFriendInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      a(false, paramViewHolder, (Face2FaceFriendInfo)this.a.get(paramInt));
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561106, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.b).inflate(2131627456, paramViewGroup, false);
     if (paramInt == 1) {
       return new Face2FaceAddContactAdapter.LoadingViewHolder(this, paramViewGroup);
     }
@@ -238,7 +221,7 @@ public class Face2FaceAddContactAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactAdapter
  * JD-Core Version:    0.7.0.1
  */

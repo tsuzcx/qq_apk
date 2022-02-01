@@ -60,10 +60,10 @@ final class NativeCommentServlet$2
         }
         try
         {
-          if (this.jdField_a_of_type_Int == 1) {
-            this.jdField_a_of_type_ComTencentBizPubaccountApiImplNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_JavaLangString, paramBundle);
+          if (this.a == 1) {
+            this.b.a(this.c, this.d, paramBundle);
           } else {
-            this.jdField_a_of_type_ComTencentBizPubaccountApiImplNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.b, paramBundle);
+            this.b.a(this.c, this.e, paramBundle);
           }
           paramBundle = "";
           j = 1;
@@ -102,13 +102,13 @@ final class NativeCommentServlet$2
     j = m;
     label343:
     if (j == 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_JavaLangString, k, paramBundle);
+      this.b.a(this.c, this.d, k, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.NativeCommentServlet.2
  * JD-Core Version:    0.7.0.1
  */

@@ -44,7 +44,46 @@ public class TogetherOperationHandler
     this.a = paramQQAppInterface;
   }
   
-  private aio_media.RspLatestPlayingState a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramToServiceMsg.extraData.getInt("KEY_SERVICE_TYPE", -1) == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherOperationHandler", 2, "RspLatestPlayingState serviceType is listener");
+      }
+      return true;
+    }
+    paramFromServiceMsg = c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.enum_media_type.has()))
+    {
+      int i = paramFromServiceMsg.enum_media_type.get();
+      paramObject = ((TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(i);
+      if (paramObject == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("RspLatestPlayingState receive type= ");
+          paramToServiceMsg.append(i);
+          QLog.d("TogetherOperationHandler", 2, paramToServiceMsg.toString());
+        }
+        return true;
+      }
+      paramObject.a(paramToServiceMsg, paramFromServiceMsg);
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherOperationHandler", 2, "RspLatestPlayingState is null or type is empty");
+    }
+    return true;
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (("QQAIOMediaSvc.create_room".equals(paramFromServiceMsg.getServiceCmd())) && (paramToServiceMsg.extraData.getInt("KEY_SERVICE_TYPE", -1) == 1)) {}
+  }
+  
+  private aio_media.RspLatestPlayingState c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (paramFromServiceMsg.isSuccess())
     {
@@ -71,12 +110,7 @@ public class TogetherOperationHandler
     return null;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (("QQAIOMediaSvc.create_room".equals(paramFromServiceMsg.getServiceCmd())) && (paramToServiceMsg.extraData.getInt("KEY_SERVICE_TYPE", -1) == 1)) {}
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     boolean bool2 = paramFromServiceMsg.isSuccess();
     if (QLog.isColorLevel()) {
@@ -133,7 +167,7 @@ public class TogetherOperationHandler
     }
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (("QQAIOMediaSvc.heartbeat".equals(paramFromServiceMsg.getServiceCmd())) && (paramToServiceMsg.extraData.getInt("KEY_SERVICE_TYPE", -1) == 1)) {}
   }
@@ -348,39 +382,9 @@ public class TogetherOperationHandler
       if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
         return;
       }
-      Object localObject1;
-      Object localObject2;
       if ("QQAIOMediaSvc.get_latest_playing_state".equals(paramFromServiceMsg.getServiceCmd()))
       {
-        if (paramToServiceMsg.extraData.getInt("KEY_SERVICE_TYPE", -1) == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TogetherOperationHandler", 2, "RspLatestPlayingState serviceType is listener");
-          }
-          return;
-        }
-        localObject1 = a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        if ((localObject1 != null) && (((aio_media.RspLatestPlayingState)localObject1).enum_media_type.has()))
-        {
-          int i = ((aio_media.RspLatestPlayingState)localObject1).enum_media_type.get();
-          localObject2 = ((TogetherControlManager)this.a.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(i);
-          if (localObject2 == null)
-          {
-            if (QLog.isColorLevel())
-            {
-              paramToServiceMsg = new StringBuilder();
-              paramToServiceMsg.append("RspLatestPlayingState receive type= ");
-              paramToServiceMsg.append(i);
-              QLog.d("TogetherOperationHandler", 2, paramToServiceMsg.toString());
-            }
-            return;
-          }
-          ((TogetherParser)localObject2).a(paramToServiceMsg, (aio_media.RspLatestPlayingState)localObject1);
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.d("TogetherOperationHandler", 2, "RspLatestPlayingState is null or type is empty");
-        }
+        if (!a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {}
       }
       else if ("QQAIOMediaSvc.get_dynamic_info".equals(paramFromServiceMsg.getServiceCmd()))
       {
@@ -389,121 +393,122 @@ public class TogetherOperationHandler
         }
         if (paramFromServiceMsg.isSuccess())
         {
-          localObject1 = new aio_media.RspGetDynamicInfo();
+          Object localObject1 = new aio_media.RspGetDynamicInfo();
           try
           {
             ((aio_media.RspGetDynamicInfo)localObject1).mergeFrom((byte[])paramObject);
-            TogetherControlManager.a(this.a).b();
+            TogetherControlManager.a(this.a).d();
             boolean bool = ((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_music_info.has();
-            Object localObject3;
+            TogetherEntryData localTogetherEntryData;
+            Object localObject2;
             Long localLong;
             ArrayList localArrayList;
             StringBuilder localStringBuilder;
             if (bool)
             {
-              localObject2 = new TogetherEntryData();
-              ((TogetherEntryData)localObject2).b = 1001;
-              ((TogetherEntryData)localObject2).jdField_a_of_type_Boolean = true;
-              ((TogetherEntryData)localObject2).f = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_music_info.get()).uint32_user_num.get();
-              localObject3 = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_music_info.get()).rpt_uint64_uins.get();
-              ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject3).size());
-              localObject3 = ((List)localObject3).iterator();
-              while (((Iterator)localObject3).hasNext())
+              localTogetherEntryData = new TogetherEntryData();
+              localTogetherEntryData.g = 1001;
+              localTogetherEntryData.n = true;
+              localTogetherEntryData.o = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_music_info.get()).uint32_user_num.get();
+              localObject2 = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_music_info.get()).rpt_uint64_uins.get();
+              localTogetherEntryData.p = new ArrayList(((List)localObject2).size());
+              localObject2 = ((List)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext())
               {
-                localLong = (Long)((Iterator)localObject3).next();
-                localArrayList = ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList;
+                localLong = (Long)((Iterator)localObject2).next();
+                localArrayList = localTogetherEntryData.p;
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append(localLong);
                 localStringBuilder.append("");
                 localArrayList.add(localStringBuilder.toString());
               }
-              TogetherControlManager.a(this.a).a((TogetherEntryData)localObject2);
+              TogetherControlManager.a(this.a).a(localTogetherEntryData);
             }
             if (((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_video_info.has())
             {
-              localObject2 = new TogetherEntryData();
-              ((TogetherEntryData)localObject2).b = 1002;
-              ((TogetherEntryData)localObject2).jdField_a_of_type_Boolean = true;
-              ((TogetherEntryData)localObject2).f = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_video_info.get()).uint32_user_num.get();
-              localObject3 = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_video_info.get()).rpt_uint64_uins.get();
-              ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject3).size());
-              localObject3 = ((List)localObject3).iterator();
-              while (((Iterator)localObject3).hasNext())
+              localTogetherEntryData = new TogetherEntryData();
+              localTogetherEntryData.g = 1002;
+              localTogetherEntryData.n = true;
+              localTogetherEntryData.o = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_video_info.get()).uint32_user_num.get();
+              localObject2 = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_video_info.get()).rpt_uint64_uins.get();
+              localTogetherEntryData.p = new ArrayList(((List)localObject2).size());
+              localObject2 = ((List)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext())
               {
-                localLong = (Long)((Iterator)localObject3).next();
-                localArrayList = ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList;
+                localLong = (Long)((Iterator)localObject2).next();
+                localArrayList = localTogetherEntryData.p;
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append(localLong);
                 localStringBuilder.append("");
                 localArrayList.add(localStringBuilder.toString());
               }
-              TogetherControlManager.a(this.a).a((TogetherEntryData)localObject2);
+              TogetherControlManager.a(this.a).a(localTogetherEntryData);
             }
             if (((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_ksing_info.has())
             {
-              localObject2 = new TogetherEntryData();
-              ((TogetherEntryData)localObject2).b = 1003;
-              ((TogetherEntryData)localObject2).jdField_a_of_type_Boolean = true;
-              ((TogetherEntryData)localObject2).f = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_ksing_info.get()).uint32_user_num.get();
-              localObject3 = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_ksing_info.get()).rpt_uint64_uins.get();
-              ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject3).size());
-              localObject3 = ((List)localObject3).iterator();
-              while (((Iterator)localObject3).hasNext())
+              localTogetherEntryData = new TogetherEntryData();
+              localTogetherEntryData.g = 1003;
+              localTogetherEntryData.n = true;
+              localTogetherEntryData.o = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_ksing_info.get()).uint32_user_num.get();
+              localObject2 = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_ksing_info.get()).rpt_uint64_uins.get();
+              localTogetherEntryData.p = new ArrayList(((List)localObject2).size());
+              localObject2 = ((List)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext())
               {
-                localLong = (Long)((Iterator)localObject3).next();
-                localArrayList = ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList;
+                localLong = (Long)((Iterator)localObject2).next();
+                localArrayList = localTogetherEntryData.p;
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append(localLong);
                 localStringBuilder.append("");
                 localArrayList.add(localStringBuilder.toString());
               }
-              TogetherControlManager.a(this.a).a((TogetherEntryData)localObject2);
+              TogetherControlManager.a(this.a).a(localTogetherEntryData);
             }
             if (((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_play_info.has())
             {
-              localObject2 = new TogetherEntryData();
-              ((TogetherEntryData)localObject2).b = 1004;
-              ((TogetherEntryData)localObject2).jdField_a_of_type_Boolean = true;
-              ((TogetherEntryData)localObject2).f = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_play_info.get()).uint32_user_num.get();
-              localObject3 = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_play_info.get()).rpt_uint64_uins.get();
-              ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject3).size());
-              localObject3 = ((List)localObject3).iterator();
-              while (((Iterator)localObject3).hasNext())
+              localTogetherEntryData = new TogetherEntryData();
+              localTogetherEntryData.g = 1004;
+              localTogetherEntryData.n = true;
+              localTogetherEntryData.o = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_play_info.get()).uint32_user_num.get();
+              localObject2 = ((aio_media.DynamicInfo)((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).msg_play_info.get()).rpt_uint64_uins.get();
+              localTogetherEntryData.p = new ArrayList(((List)localObject2).size());
+              localObject2 = ((List)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext())
               {
-                localLong = (Long)((Iterator)localObject3).next();
-                localArrayList = ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList;
+                localLong = (Long)((Iterator)localObject2).next();
+                localArrayList = localTogetherEntryData.p;
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append(localLong);
                 localStringBuilder.append("");
                 localArrayList.add(localStringBuilder.toString());
               }
-              TogetherControlManager.a(this.a).a((TogetherEntryData)localObject2);
+              TogetherControlManager.a(this.a).a(localTogetherEntryData);
             }
             if (((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).rpt_dynamic_info.has())
             {
               localObject1 = ((aio_media.RspGetDynamicInfo)((aio_media.RspGetDynamicInfo)localObject1).get()).rpt_dynamic_info.get().iterator();
               while (((Iterator)localObject1).hasNext())
               {
-                localObject3 = (aio_media.DynamicInfo)((Iterator)localObject1).next();
-                if ((localObject3 != null) && (((aio_media.DynamicInfo)localObject3).int32_media_type.get() == 16))
+                localObject2 = (aio_media.DynamicInfo)((Iterator)localObject1).next();
+                if ((localObject2 != null) && (((aio_media.DynamicInfo)localObject2).int32_media_type.get() == 16))
                 {
-                  localObject2 = new TogetherEntryData();
-                  ((TogetherEntryData)localObject2).b = 1005;
-                  ((TogetherEntryData)localObject2).jdField_a_of_type_Boolean = true;
-                  ((TogetherEntryData)localObject2).f = ((aio_media.DynamicInfo)localObject3).uint32_user_num.get();
-                  localObject3 = ((aio_media.DynamicInfo)localObject3).rpt_uint64_uins.get();
-                  ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList = new ArrayList(((List)localObject3).size());
-                  localObject3 = ((List)localObject3).iterator();
-                  while (((Iterator)localObject3).hasNext())
+                  localTogetherEntryData = new TogetherEntryData();
+                  localTogetherEntryData.g = 1005;
+                  localTogetherEntryData.n = true;
+                  localTogetherEntryData.o = ((aio_media.DynamicInfo)localObject2).uint32_user_num.get();
+                  localObject2 = ((aio_media.DynamicInfo)localObject2).rpt_uint64_uins.get();
+                  localTogetherEntryData.p = new ArrayList(((List)localObject2).size());
+                  localObject2 = ((List)localObject2).iterator();
+                  while (((Iterator)localObject2).hasNext())
                   {
-                    localLong = (Long)((Iterator)localObject3).next();
-                    localArrayList = ((TogetherEntryData)localObject2).jdField_a_of_type_JavaUtilArrayList;
+                    localLong = (Long)((Iterator)localObject2).next();
+                    localArrayList = localTogetherEntryData.p;
                     localStringBuilder = new StringBuilder();
                     localStringBuilder.append(localLong);
                     localStringBuilder.append("");
                     localArrayList.add(localStringBuilder.toString());
                   }
-                  TogetherControlManager.a(this.a).a((TogetherEntryData)localObject2);
+                  TogetherControlManager.a(this.a).a(localTogetherEntryData);
                 }
               }
             }
@@ -513,7 +518,7 @@ public class TogetherOperationHandler
           {
             localInvalidProtocolBufferMicroException.printStackTrace();
             if (!QLog.isColorLevel()) {
-              break label1372;
+              break label1221;
             }
           }
           QLog.d("TogetherOperationHandler", 2, "InvalidProtocolBufferMicroException");
@@ -521,17 +526,17 @@ public class TogetherOperationHandler
       }
       else if ("QQAIOMediaSvc.VideoWrite".equals(paramFromServiceMsg.getServiceCmd()))
       {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
       }
-      label1372:
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      label1221:
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      e(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherOperationHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.aelight.camera.aeeditor.module.text;
 
-import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
 import org.libpag.PAGFile;
 import org.libpag.PAGFont;
 import org.libpag.PAGText;
@@ -13,22 +13,22 @@ class AEEditorTextEditDialog$5
   
   public void run()
   {
-    if (this.jdField_a_of_type_OrgLibpagPAGFile != AEEditorTextEditDialog.a(this.this$0).getFile()) {
-      AEEditorTextEditDialog.a(this.this$0).setFile(this.jdField_a_of_type_OrgLibpagPAGFile);
+    if (this.a != AEEditorTextEditDialog.a(this.this$0).getComposition()) {
+      AEEditorTextEditDialog.a(this.this$0).setComposition(this.a);
     }
-    PAGFont localPAGFont = AEEditorTextEditDialog.a(this.this$0, this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+    PAGFont localPAGFont = AEEditorTextEditDialog.a(this.this$0, this.b);
     if (localPAGFont != null)
     {
-      this.jdField_a_of_type_OrgLibpagPAGText.fontStyle = localPAGFont.fontStyle;
-      this.jdField_a_of_type_OrgLibpagPAGText.fontFamily = localPAGFont.fontFamily;
+      this.c.fontStyle = localPAGFont.fontStyle;
+      this.c.fontFamily = localPAGFont.fontFamily;
     }
-    AEEditorTextEditDialog.a(this.this$0).setTextData(0, this.jdField_a_of_type_OrgLibpagPAGText);
-    AEEditorTextEditDialog.a(AEEditorTextEditDialog.a(this.this$0).getColorList(), AEEditorTextEditDialog.a(this.this$0));
+    this.a.replaceText(0, this.c);
+    AEEditorTextEditDialog.a(AEEditorTextEditDialog.d(this.this$0).getColorList(), AEEditorTextEditDialog.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextEditDialog.5
  * JD-Core Version:    0.7.0.1
  */

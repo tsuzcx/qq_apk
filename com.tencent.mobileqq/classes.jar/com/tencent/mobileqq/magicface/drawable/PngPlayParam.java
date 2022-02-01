@@ -5,38 +5,38 @@ import java.io.File;
 public class PngPlayParam
 {
   public int a;
-  public boolean a;
-  public String[] a;
   public int b;
-  public String[] b;
   public int c;
   public int d;
+  public String[] e;
+  public String[] f;
+  public boolean g;
   
   public PngPlayParam()
   {
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 1;
+    this.a = 0;
+    this.b = 1;
     this.c = 100;
     this.d = 0;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
+    this.e = null;
+    this.f = null;
   }
   
   public boolean a()
   {
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = this.e;
     int i;
     if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
       i = 0;
       for (;;)
       {
-        arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        arrayOfString = this.e;
         if (i >= arrayOfString.length) {
           break;
         }
@@ -46,13 +46,13 @@ public class PngPlayParam
         i += 1;
       }
     }
-    arrayOfString = this.jdField_b_of_type_ArrayOfJavaLangString;
+    arrayOfString = this.f;
     if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
       i = 0;
       for (;;)
       {
-        arrayOfString = this.jdField_b_of_type_ArrayOfJavaLangString;
+        arrayOfString = this.f;
         if (i >= arrayOfString.length) {
           break;
         }
@@ -67,7 +67,7 @@ public class PngPlayParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngPlayParam
  * JD-Core Version:    0.7.0.1
  */

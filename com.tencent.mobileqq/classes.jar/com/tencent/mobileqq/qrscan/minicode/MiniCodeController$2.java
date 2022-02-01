@@ -12,13 +12,13 @@ class MiniCodeController$2
     if (l2 - l1 > 86400000L)
     {
       MiniScanReport.b(MiniCodeController.a(this.this$0), -1);
-      MiniScanReport.a("report_tag_detect_supporttype", l2);
+      MiniScanReport.b("report_tag_detect_supporttype", l2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniCodeController.2
  * JD-Core Version:    0.7.0.1
  */

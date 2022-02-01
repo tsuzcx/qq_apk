@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 @Deprecated
 public abstract interface OnCompositionLoadedListener
@@ -9,7 +9,7 @@ public abstract interface OnCompositionLoadedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.OnCompositionLoadedListener
  * JD-Core Version:    0.7.0.1
  */

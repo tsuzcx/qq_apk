@@ -5,20 +5,12 @@ import java.util.ArrayList;
 
 public class MsgBackupReportData
 {
-  public double a;
   public int a;
-  public long a;
-  public ArrayList<MsgBackupReportData.FileError> a;
-  public boolean a;
   public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public long c;
+  public boolean c;
   public int d;
-  public long d;
   public long e;
-  public long f;
+  public double f;
   public long g;
   public long h;
   public long i;
@@ -31,25 +23,23 @@ public class MsgBackupReportData
   public long p;
   public long q;
   public long r;
-  
-  public MsgBackupReportData()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public long s;
+  public long t;
+  public boolean u;
+  public int v;
+  public long w;
+  public long x;
+  public long y;
+  public ArrayList<MsgBackupReportData.FileError> z = new ArrayList();
   
   public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Double = 0.0D;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
+    this.a = 0;
+    this.b = 0;
+    this.c = false;
+    this.d = 0;
     this.e = 0L;
-    this.f = 0L;
+    this.f = 0.0D;
     this.g = 0L;
     this.h = 0L;
     this.i = 0L;
@@ -59,12 +49,17 @@ public class MsgBackupReportData
     this.m = 0L;
     this.n = 0L;
     this.o = 0L;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_d_of_type_Int = 0;
     this.p = 0L;
     this.q = 0L;
     this.r = 0L;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.s = 0L;
+    this.t = 0L;
+    this.u = false;
+    this.v = 0;
+    this.w = 0L;
+    this.x = 0L;
+    this.y = 0L;
+    this.z.clear();
   }
   
   @NonNull
@@ -72,62 +67,62 @@ public class MsgBackupReportData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[bizType = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n platForm = ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n requestStatus = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n errorCode = ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("\n totalCost = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n averageSpeed = ");
-    localStringBuilder.append(this.jdField_a_of_type_Double);
-    localStringBuilder.append("\n totalSessionCount = ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append("\n finishedSessionCount = ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append("\n resSessionContains = ");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append("\n resTotalSize = ");
     localStringBuilder.append(this.e);
-    localStringBuilder.append("\n dbTotalSize = ");
+    localStringBuilder.append("\n averageSpeed = ");
     localStringBuilder.append(this.f);
-    localStringBuilder.append("\n resRequestCount = ");
+    localStringBuilder.append("\n totalSessionCount = ");
     localStringBuilder.append(this.g);
-    localStringBuilder.append("\n resRequestFailedCount = ");
+    localStringBuilder.append("\n finishedSessionCount = ");
     localStringBuilder.append(this.h);
-    localStringBuilder.append("\n resRequestCancelCount = ");
+    localStringBuilder.append("\n resSessionContains = ");
     localStringBuilder.append(this.i);
-    localStringBuilder.append("\n resTrivialCount = ");
+    localStringBuilder.append("\n resTotalSize = ");
     localStringBuilder.append(this.j);
-    localStringBuilder.append("\n resTrivialFailedCount = ");
+    localStringBuilder.append("\n dbTotalSize = ");
     localStringBuilder.append(this.k);
-    localStringBuilder.append("\n resTrivialCancelCount = ");
+    localStringBuilder.append("\n resRequestCount = ");
     localStringBuilder.append(this.l);
-    localStringBuilder.append("\n dbRequestCount = ");
+    localStringBuilder.append("\n resRequestFailedCount = ");
     localStringBuilder.append(this.m);
-    localStringBuilder.append("\n dbRequestFailedCount = ");
+    localStringBuilder.append("\n resRequestCancelCount = ");
     localStringBuilder.append(this.n);
-    localStringBuilder.append("\n dbRequestCancelCount = ");
+    localStringBuilder.append("\n resTrivialCount = ");
     localStringBuilder.append(this.o);
-    localStringBuilder.append("\n connectType = ");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append("\n connectElipse = ");
+    localStringBuilder.append("\n resTrivialFailedCount = ");
     localStringBuilder.append(this.p);
-    localStringBuilder.append("\n sessionReadyAllTimes = ");
+    localStringBuilder.append("\n resTrivialCancelCount = ");
     localStringBuilder.append(this.q);
-    localStringBuilder.append("\n fileFailedCount = ");
+    localStringBuilder.append("\n dbRequestCount = ");
     localStringBuilder.append(this.r);
+    localStringBuilder.append("\n dbRequestFailedCount = ");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append("\n dbRequestCancelCount = ");
+    localStringBuilder.append(this.t);
+    localStringBuilder.append("\n connectType = ");
+    localStringBuilder.append(this.v);
+    localStringBuilder.append("\n connectElipse = ");
+    localStringBuilder.append(this.w);
+    localStringBuilder.append("\n sessionReadyAllTimes = ");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append("\n fileFailedCount = ");
+    localStringBuilder.append(this.y);
     localStringBuilder.append("\n fileErrorList = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.z);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.util.MsgBackupReportData
  * JD-Core Version:    0.7.0.1
  */

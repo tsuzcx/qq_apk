@@ -10,17 +10,17 @@ class SpriteDrawerInfoBridge$3
   
   public void run()
   {
-    SpriteActionScript localSpriteActionScript = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript;
+    SpriteActionScript localSpriteActionScript = this.a;
     if (localSpriteActionScript != null)
     {
-      localSpriteActionScript.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(), false);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.b(), false);
+      localSpriteActionScript.a(this.b.g(), false);
+      this.a.a(this.b.h(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoBridge.3
  * JD-Core Version:    0.7.0.1
  */

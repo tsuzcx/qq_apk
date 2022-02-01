@@ -36,26 +36,26 @@ class AutoStatusManager$6
       if (QLog.isColorLevel()) {
         QLog.d("AutoStatusManager", 2, "[status][autoMgr] receiveModOnlineStatusPermission");
       }
-      AutoStatusManager.b(this.a);
+      AutoStatusManager.c(this.a);
       int i = this.a.a();
-      if ((AutoStatusManager.a(this.a)) && (i > 40001) && (!Constant.a.contains(Integer.valueOf(i))))
+      if ((AutoStatusManager.f(this.a)) && (i > 40001) && (!Constant.S.contains(Integer.valueOf(i))))
       {
         if (QLog.isColorLevel())
         {
           paramBundle = new StringBuilder();
           paramBundle.append("[status][autoMgr] receiveModOnlineStatusPermission cur status: ");
-          paramBundle.append(AutoStatusManager.a(this.a));
+          paramBundle.append(AutoStatusManager.g(this.a));
           paramBundle.append(" is disabled, updateAutoStatus()");
           QLog.e("AutoStatusManager", 2, paramBundle.toString());
         }
-        AutoStatusManager.c(this.a);
+        AutoStatusManager.d(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.AutoStatusManager.6
  * JD-Core Version:    0.7.0.1
  */

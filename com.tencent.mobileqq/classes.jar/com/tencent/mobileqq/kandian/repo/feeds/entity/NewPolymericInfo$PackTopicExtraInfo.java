@@ -6,10 +6,10 @@ public class NewPolymericInfo$PackTopicExtraInfo
   implements Cloneable
 {
   public int a;
-  public String a;
-  public int b;
   public String b;
-  public int c;
+  public String c;
+  public int d;
+  public int e;
   
   protected Object clone()
   {
@@ -30,7 +30,7 @@ public class NewPolymericInfo$PackTopicExtraInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.NewPolymericInfo.PackTopicExtraInfo
  * JD-Core Version:    0.7.0.1
  */

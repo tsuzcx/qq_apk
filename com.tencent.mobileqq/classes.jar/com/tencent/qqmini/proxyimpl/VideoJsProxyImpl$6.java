@@ -29,13 +29,13 @@ class VideoJsProxyImpl$6
       QLog.w("VideoJsPlugin", 1, localStringBuilder.toString());
       i += 1;
     }
-    if (this.jdField_a_of_type_JavaLangString.contains("-vf"))
+    if (this.b.contains("-vf"))
     {
-      VideoJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, false);
+      VideoJsProxyImpl.a(this.g, this.c, false);
       return;
     }
-    paramString = ((IMiniAppFileManager)VideoJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl).getManager(IMiniAppFileManager.class)).getWxFilePath(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
-    VideoJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    paramString = ((IMiniAppFileManager)VideoJsProxyImpl.c(this.g).getManager(IMiniAppFileManager.class)).getWxFilePath(this.c.path);
+    VideoJsProxyImpl.a(this.g, paramString, this.c.fileSize, this.c);
   }
   
   public void onFinish(boolean paramBoolean)
@@ -46,7 +46,7 @@ class VideoJsProxyImpl$6
       localStringBuilder.append("compress finish ");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(" ");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.a);
       QLog.d("VideoJsPlugin", 2, localStringBuilder.toString());
     }
   }
@@ -58,7 +58,7 @@ class VideoJsProxyImpl$6
       if (paramString.length() > 150) {
         return;
       }
-      paramString = new Scanner(paramString).findWithinHorizon(VideoJsProxyImpl.a(), 0);
+      paramString = new Scanner(paramString).findWithinHorizon(VideoJsProxyImpl.b(), 0);
       if (paramString != null)
       {
         paramString = paramString.split(":");
@@ -69,13 +69,13 @@ class VideoJsProxyImpl$6
     {
       int i = Integer.parseInt(paramString[0]);
       int j = Integer.parseInt(paramString[1]);
-      double d = Double.parseDouble(paramString[2]);
-      i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (d * 1000.0D)) * 100.0F / (float)this.jdField_b_of_type_Long);
+      double d1 = Double.parseDouble(paramString[2]);
+      i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (d1 * 1000.0D)) * 100.0F / (float)this.f);
       if (i < 100)
       {
-        paramString = this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl;
+        paramString = this.g;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131716051));
+        localStringBuilder.append(HardCodeUtil.a(2131913502));
         localStringBuilder.append(i);
         localStringBuilder.append("%");
         VideoJsProxyImpl.a(paramString, localStringBuilder.toString());
@@ -100,23 +100,23 @@ class VideoJsProxyImpl$6
       localStringBuilder.append("compress success ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       QLog.d("VideoJsPlugin", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_JavaLangString.contains("-vf"))
+    if (this.b.contains("-vf"))
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-      paramString.mediaWidth /= this.jdField_a_of_type_Int;
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-      paramString.mediaHeight /= this.jdField_a_of_type_Int;
+      paramString = this.c;
+      paramString.mediaWidth /= this.d;
+      paramString = this.c;
+      paramString.mediaHeight /= this.d;
     }
-    paramString = ((IMiniAppFileManager)VideoJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl).getManager(IMiniAppFileManager.class)).getWxFilePath(this.jdField_b_of_type_JavaLangString);
-    VideoJsProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplVideoJsProxyImpl, paramString, new File(this.jdField_b_of_type_JavaLangString).length(), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    paramString = ((IMiniAppFileManager)VideoJsProxyImpl.c(this.g).getManager(IMiniAppFileManager.class)).getWxFilePath(this.e);
+    VideoJsProxyImpl.a(this.g, paramString, new File(this.e).length(), this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.6
  * JD-Core Version:    0.7.0.1
  */

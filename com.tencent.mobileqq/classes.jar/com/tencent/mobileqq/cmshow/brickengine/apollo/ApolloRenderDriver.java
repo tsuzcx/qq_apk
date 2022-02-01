@@ -6,15 +6,12 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
-import com.tencent.mobileqq.apollo.task.ApolloActionManager;
-import com.tencent.mobileqq.apollo.task.OnDressDoneListener;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.cmshow.engine.script.ScriptUtil;
+import com.tencent.mobileqq.cmshow.engine.script.ScriptUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -25,33 +22,84 @@ import java.util.regex.Pattern;
 public class ApolloRenderDriver
   implements Handler.Callback, IRenderCommInterface, ISetActionInterface
 {
-  public int a;
-  public ApolloEngine a;
-  ITriggerRenderCallback jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloITriggerRenderCallback;
-  WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  public AtomicBoolean a;
-  ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-  public int b;
-  private AtomicBoolean b;
+  ITriggerRenderCallback a;
+  public ApolloEngine b;
+  ReentrantLock c;
+  WeakReferenceHandler d;
+  public int e = 20;
+  public AtomicBoolean f = new AtomicBoolean(false);
+  public int g;
+  private AtomicBoolean h = new AtomicBoolean(false);
   
   public ApolloRenderDriver(ITriggerRenderCallback paramITriggerRenderCallback, ApolloEngine paramApolloEngine)
   {
-    this.jdField_a_of_type_Int = 20;
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloRenderDriver", 2, "[ApolloRenderDriver] constructor.");
     }
     if (paramApolloEngine != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloITriggerRenderCallback = paramITriggerRenderCallback;
-      this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine = paramApolloEngine;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = ApolloActionManager.a().a();
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.a = paramITriggerRenderCallback;
+      this.b = paramApolloEngine;
+      this.d = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+      this.c = ApolloRender.getLock();
+      this.h.set(true);
       return;
     }
     throw new NullPointerException();
+  }
+  
+  private int a(int paramInt1, int paramInt2, String paramString, int paramInt3, QQAppInterface paramQQAppInterface)
+  {
+    ApolloManagerServiceImpl localApolloManagerServiceImpl = (ApolloManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+    int i;
+    if (paramString.equals(paramQQAppInterface.getCurrentAccountUin()))
+    {
+      if ((localApolloManagerServiceImpl != null) && (localApolloManagerServiceImpl.getAVIPStatus(paramString)))
+      {
+        if ((1 == paramInt1) && ((ApolloUtilImpl.isBubbleRscExist(0, 28)) || (ApolloUtilImpl.isBubbleRscExist(paramInt2, 28)))) {
+          return 28;
+        }
+        i = paramInt3;
+        if (2 == paramInt1) {
+          if (!ApolloUtilImpl.isBubbleRscExist(0, 27))
+          {
+            i = paramInt3;
+            if (!ApolloUtilImpl.isBubbleRscExist(paramInt2, 27)) {}
+          }
+          else
+          {
+            return 27;
+          }
+        }
+      }
+      else
+      {
+        return 25;
+      }
+    }
+    else if ((localApolloManagerServiceImpl != null) && (localApolloManagerServiceImpl.getAVIPStatus(paramString)))
+    {
+      if ((1 == paramInt1) && ((ApolloUtilImpl.isBubbleRscExist(0, 30)) || (ApolloUtilImpl.isBubbleRscExist(paramInt2, 30)))) {
+        return 30;
+      }
+      i = paramInt3;
+      if (2 == paramInt1) {
+        if (!ApolloUtilImpl.isBubbleRscExist(0, 29))
+        {
+          i = paramInt3;
+          if (!ApolloUtilImpl.isBubbleRscExist(paramInt2, 29)) {}
+        }
+        else
+        {
+          return 29;
+        }
+      }
+    }
+    else
+    {
+      i = 26;
+    }
+    return i;
   }
   
   public int a(int paramInt1, int paramInt2, String[] paramArrayOfString1, String[] paramArrayOfString2)
@@ -87,7 +135,7 @@ public class ApolloRenderDriver
     if (TextUtils.isEmpty(paramString)) {
       return 1;
     }
-    a(new ApolloRenderDriver.RenderThreadRunnable(this, paramString, this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock, this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine));
+    a(new ApolloRenderDriver.RenderThreadRunnable(this, paramString, this.c, this.b));
     return 0;
   }
   
@@ -143,22 +191,22 @@ public class ApolloRenderDriver
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[startLoop]. mIsLoopStart:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      localStringBuilder.append(this.f.get());
       QLog.d("[cmshow]ApolloRenderDriver", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) && (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+    if ((this.d != null) && (this.h.get()))
     {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(15);
-      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      this.d.removeMessages(15);
+      if (!this.f.get())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[startLoop]. ticker Loop: gameId=");
-        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(this.g);
         localStringBuilder.append(" view=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloITriggerRenderCallback);
+        localStringBuilder.append(this.a);
         QLog.d("[cmshow]ApolloRenderDriver", 2, localStringBuilder.toString());
         a(new ApolloRenderDriver.2(this));
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.f.set(true);
       }
     }
   }
@@ -174,16 +222,16 @@ public class ApolloRenderDriver
       localStringBuilder.append(paramString2);
       QLog.d("[cmshow]ApolloRenderDriver", 2, localStringBuilder.toString());
     }
-    a(new ApolloRenderDriver.RenderThreadRunnable(this, ScriptUtil.a(paramInt, paramString1, paramString2), this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock, this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine));
+    a(new ApolloRenderDriver.RenderThreadRunnable(this, ScriptUtils.a(paramInt, paramString1, paramString2), this.c, this.b));
   }
   
   public void a(long paramLong)
   {
-    WeakReferenceHandler localWeakReferenceHandler = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
+    WeakReferenceHandler localWeakReferenceHandler = this.d;
     if (localWeakReferenceHandler != null)
     {
       localWeakReferenceHandler.removeMessages(15);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(15, paramLong);
+      this.d.sendEmptyMessageDelayed(15, paramLong);
     }
   }
   
@@ -191,7 +239,7 @@ public class ApolloRenderDriver
   {
     if (paramIApolloRunnableTask != null)
     {
-      ITriggerRenderCallback localITriggerRenderCallback = this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloITriggerRenderCallback;
+      ITriggerRenderCallback localITriggerRenderCallback = this.a;
       if (localITriggerRenderCallback == null) {
         return;
       }
@@ -208,7 +256,7 @@ public class ApolloRenderDriver
   
   public void a(String paramString)
   {
-    a(new ApolloRenderDriver.RenderThreadRunnable(this, String.format("if(%s){%s.removeFromParent();%s.dispose();}", new Object[] { paramString, paramString, paramString }), this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock, this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine));
+    a(new ApolloRenderDriver.RenderThreadRunnable(this, String.format("if(%s){%s.removeFromParent();%s.dispose();}", new Object[] { paramString, paramString, paramString }), this.c, this.b));
   }
   
   public int b(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
@@ -227,82 +275,27 @@ public class ApolloRenderDriver
     if (localObject != null) {
       paramString2 = ((Matcher)localObject).replaceAll("");
     }
-    int i = paramString2.length();
+    int j = paramString2.length();
     localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface)) {
       localObject = (QQAppInterface)localObject;
     } else {
       localObject = null;
     }
+    int i = 32;
     if ((1 == paramInt1) && (localObject != null))
     {
-      ApolloManagerServiceImpl localApolloManagerServiceImpl = (ApolloManagerServiceImpl)((QQAppInterface)localObject).getRuntimeService(IApolloManagerService.class, "all");
-      if (paramString3.equals(((QQAppInterface)localObject).getCurrentAccountUin()))
-      {
-        paramString2 = HardCodeUtil.a(2131700736);
-        if ((localApolloManagerServiceImpl != null) && (localApolloManagerServiceImpl.getAVIPStatus(paramString3)))
-        {
-          if ((1 == paramInt2) && ((ApolloUtilImpl.isBubbleRscExist(0, 28)) || (ApolloUtilImpl.isBubbleRscExist(paramInt3, 28))))
-          {
-            paramInt1 = 28;
-            break label589;
-          }
-          paramString3 = paramString2;
-          if (2 == paramInt2) {
-            if (!ApolloUtilImpl.isBubbleRscExist(0, 27))
-            {
-              paramString3 = paramString2;
-              if (!ApolloUtilImpl.isBubbleRscExist(paramInt3, 27)) {}
-            }
-            else
-            {
-              paramInt1 = 27;
-              break label589;
-            }
-          }
-        }
-        else
-        {
-          paramInt1 = 25;
-          break label589;
-        }
+      if (paramString3.equals(((QQAppInterface)localObject).getCurrentAccountUin())) {
+        paramString2 = HardCodeUtil.a(2131898762);
       }
-      else
-      {
-        if ((localApolloManagerServiceImpl == null) || (!localApolloManagerServiceImpl.getAVIPStatus(paramString3))) {
-          break label418;
-        }
-        if ((1 == paramInt2) && ((ApolloUtilImpl.isBubbleRscExist(0, 30)) || (ApolloUtilImpl.isBubbleRscExist(paramInt3, 30))))
-        {
-          paramInt1 = 30;
-          break label589;
-        }
-        paramString3 = paramString2;
-        if (2 == paramInt2) {
-          if (!ApolloUtilImpl.isBubbleRscExist(0, 29))
-          {
-            paramString3 = paramString2;
-            if (!ApolloUtilImpl.isBubbleRscExist(paramInt3, 29)) {}
-          }
-          else
-          {
-            paramInt1 = 29;
-            break label589;
-          }
-        }
-      }
-      paramInt1 = 0;
-      paramString2 = paramString3;
-      break label589;
-      label418:
-      paramInt1 = 26;
+      paramInt1 = a(paramInt2, paramInt3, paramString3, 0, (QQAppInterface)localObject);
     }
     else if ((paramInt1 != 0) && (8 != paramInt1))
     {
       if (2 == paramInt1)
       {
         paramString3 = paramString2;
-        if (i > 8)
+        if (j > 8)
         {
           paramString3 = new StringBuilder();
           paramString3.append(paramString2.substring(0, 7));
@@ -312,29 +305,28 @@ public class ApolloRenderDriver
         paramInt1 = 16;
         paramString2 = paramString3;
       }
+      else if (3 == paramInt1)
+      {
+        paramInt1 = i;
+      }
+      else if (4 == paramInt1)
+      {
+        paramInt1 = ApolloUtilImpl.handleAITextType(157.0F, paramString2);
+      }
+      else if (5 == paramInt1)
+      {
+        paramInt1 = 40;
+      }
+      else if (6 == paramInt1)
+      {
+        paramInt1 = 33;
+      }
+      else if (7 == paramInt1)
+      {
+        paramInt1 = i;
+      }
       else
       {
-        if (3 == paramInt1) {}
-        do
-        {
-          paramInt1 = 32;
-          break;
-          if (4 == paramInt1)
-          {
-            paramInt1 = ApolloUtilImpl.handleAITextType(157.0F, paramString2);
-            break;
-          }
-          if (5 == paramInt1)
-          {
-            paramInt1 = 40;
-            break;
-          }
-          if (6 == paramInt1)
-          {
-            paramInt1 = 33;
-            break;
-          }
-        } while (7 == paramInt1);
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow]ApolloRenderDriver", 2, "Other bubble type, NOT Handle.");
         }
@@ -345,7 +337,6 @@ public class ApolloRenderDriver
     {
       paramInt1 = ApolloUtilImpl.handleBubbleType(208.0F, paramString2, 1);
     }
-    label589:
     if ((!ApolloUtilImpl.isBubbleRscExist(paramInt3, paramInt1)) && (!ApolloUtilImpl.isBubbleRscExist(0, paramInt1))) {
       return 2;
     }
@@ -360,7 +351,7 @@ public class ApolloRenderDriver
       }
       return 1;
     }
-    a(new ApolloRenderDriver.RenderThreadRunnable(this, paramString1, this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock, this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine));
+    a(new ApolloRenderDriver.RenderThreadRunnable(this, paramString1, this.c, this.b));
     return 0;
   }
   
@@ -369,11 +360,11 @@ public class ApolloRenderDriver
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloRenderDriver", 2, "[stopLoop].");
     }
-    if ((this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
+    if ((this.d != null) && (this.f.get()))
     {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(15);
+      this.d.removeMessages(15);
       a(new ApolloRenderDriver.3(this));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.f.set(false);
     }
   }
   
@@ -382,7 +373,7 @@ public class ApolloRenderDriver
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[onEnterGame], luaFilePath:");
+      localStringBuilder.append("[onEnterGame], scriptFilePath:");
       localStringBuilder.append(paramString);
       QLog.d("[cmshow]ApolloRenderDriver", 2, localStringBuilder.toString());
     }
@@ -395,12 +386,12 @@ public class ApolloRenderDriver
       QLog.d("[cmshow]ApolloRenderDriver", 2, "[onDestroy]");
     }
     b();
-    Object localObject = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
+    Object localObject = this.d;
     if (localObject != null)
     {
       ((WeakReferenceHandler)localObject).removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = null;
-      localObject = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+      this.d = null;
+      localObject = this.h;
       if (localObject != null) {
         ((AtomicBoolean)localObject).set(false);
       }
@@ -409,7 +400,7 @@ public class ApolloRenderDriver
   
   public void d()
   {
-    a(new ApolloRenderDriver.RenderThreadRunnable(this, "dispose();", this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock, this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine));
+    a(new ApolloRenderDriver.RenderThreadRunnable(this, "dispose();", this.c, this.b));
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -422,7 +413,7 @@ public class ApolloRenderDriver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRenderDriver
  * JD-Core Version:    0.7.0.1
  */

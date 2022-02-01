@@ -8,43 +8,14 @@ import java.util.Map;
 
 public class EnterPriseQQCache
 {
-  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
+  private Map<String, Long> a = new HashMap();
   private Map<String, Integer> b = new HashMap();
   private Map<String, List<StructMsg.ButtonInfo>> c = new HashMap();
-  
-  public int a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
-    {
-      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
-      {
-        int i = ((Integer)this.b.get(paramString)).intValue();
-        return i;
-      }
-      return -1;
-    }
-  }
-  
-  public long a(String paramString)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
-      {
-        if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)))
-        {
-          l = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
-          return l;
-        }
-      }
-      long l = -1L;
-    }
-  }
+  private byte[] d = new byte[1];
   
   public List<StructMsg.ButtonInfo> a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_ArrayOfByte)
+    synchronized (this.d)
     {
       if (this.c.containsKey(paramString))
       {
@@ -58,9 +29,9 @@ public class EnterPriseQQCache
   public void a(String paramString, long paramLong)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      synchronized (this.d)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        this.a.put(paramString, Long.valueOf(paramLong));
         return;
       }
     }
@@ -69,22 +40,51 @@ public class EnterPriseQQCache
   public void a(String paramString, List<StructMsg.ButtonInfo> paramList, int paramInt, long paramLong)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      synchronized (this.d)
       {
         if (this.c.containsKey(paramString)) {
           this.c.remove(paramString);
         }
         this.c.put(paramString, paramList);
         this.b.put(paramString, Integer.valueOf(paramInt));
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        this.a.put(paramString, Long.valueOf(paramLong));
         return;
       }
+    }
+  }
+  
+  public int b(String paramString)
+  {
+    synchronized (this.d)
+    {
+      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
+      {
+        int i = ((Integer)this.b.get(paramString)).intValue();
+        return i;
+      }
+      return -1;
+    }
+  }
+  
+  public long c(String paramString)
+  {
+    for (;;)
+    {
+      synchronized (this.d)
+      {
+        if ((!TextUtils.isEmpty(paramString)) && (this.a.containsKey(paramString)))
+        {
+          l = ((Long)this.a.get(paramString)).longValue();
+          return l;
+        }
+      }
+      long l = -1L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterPriseQQCache
  * JD-Core Version:    0.7.0.1
  */

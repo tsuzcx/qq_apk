@@ -7,7 +7,7 @@ class GAudioMembersCtrlActivity$7$1
   
   public void run()
   {
-    this.a.a.c();
+    this.a.b.c();
   }
 }
 

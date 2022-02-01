@@ -15,22 +15,22 @@ class TroopSignItemBuilder$TroopSignVideoItemBuilder$1
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.l();
-      TroopSignItemBuilder.TroopSignVideoItemBuilder.a().removeCallbacksAndMessages(null);
+      this.a.v.m();
+      TroopSignItemBuilder.TroopSignVideoItemBuilder.i().removeCallbacksAndMessages(null);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getParent() != null)
+    if (this.b.getParent() != null)
     {
-      TroopSignItemBuilder.TroopSignVideoItemBuilder.b().postDelayed(new TroopSignItemBuilder.TroopSignVideoItemBuilder.1.1(this), 200L);
+      TroopSignItemBuilder.TroopSignVideoItemBuilder.j().postDelayed(new TroopSignItemBuilder.TroopSignVideoItemBuilder.1.1(this), 200L);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.e.setVisibility(0);
+    this.a.v.a();
+    this.a.w.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,45 +5,45 @@ import android.content.IntentFilter;
 
 public class VolumeChangeObserver
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VolumeChangeObserver.VolumeBroadcastReceiver jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver$VolumeBroadcastReceiver;
-  private VolumeChangeObserver.VolumeChangeListener jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver$VolumeChangeListener;
+  private VolumeChangeObserver.VolumeChangeListener a;
+  private VolumeChangeObserver.VolumeBroadcastReceiver b;
+  private Context c;
   
   public VolumeChangeObserver(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver$VolumeBroadcastReceiver = new VolumeChangeObserver.VolumeBroadcastReceiver(this, null);
+    this.b = new VolumeChangeObserver.VolumeBroadcastReceiver(this, null);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver$VolumeBroadcastReceiver, localIntentFilter);
+    this.c.registerReceiver(this.b, localIntentFilter);
   }
   
   public void a(VolumeChangeObserver.VolumeChangeListener paramVolumeChangeListener)
   {
-    this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver$VolumeChangeListener = paramVolumeChangeListener;
+    this.a = paramVolumeChangeListener;
   }
   
   public void b()
   {
-    VolumeChangeObserver.VolumeBroadcastReceiver localVolumeBroadcastReceiver = this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver$VolumeBroadcastReceiver;
+    VolumeChangeObserver.VolumeBroadcastReceiver localVolumeBroadcastReceiver = this.b;
     if (localVolumeBroadcastReceiver != null)
     {
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      Context localContext = this.c;
       if (localContext != null)
       {
         localContext.unregisterReceiver(localVolumeBroadcastReceiver);
-        this.jdField_a_of_type_ComTencentGdtadVolumeVolumeChangeObserver$VolumeChangeListener = null;
+        this.a = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.volume.VolumeChangeObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.qbar;
 
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.RectF;
 import android.text.TextUtils;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qrscan.QBarResult;
-import com.tencent.mobileqq.qrscan.api.IQRScanTempApi;
+import com.tencent.mobileqq.qrscan.api.IQRScanAbilityApi;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
@@ -15,11 +16,14 @@ import mqq.app.MobileQQ;
 
 public class QbarNative
 {
-  static boolean jdField_a_of_type_Boolean = false;
-  static boolean jdField_b_of_type_Boolean = false;
-  private int jdField_a_of_type_Int = -1;
-  private int jdField_b_of_type_Int;
-  private int c;
+  public static final int MAX_BYTES = 1024;
+  public static final int MAX_CODE_NUM = 3;
+  private static final String TAG = "QbarNative";
+  static boolean hasCppSharedSoLoad = false;
+  static boolean hasSoLoad = false;
+  private int mHeight;
+  private int mWidth;
+  private int qbarId = -1;
   
   static
   {
@@ -27,54 +31,54 @@ public class QbarNative
     if (localBaseApplication != null) {
       try
       {
-        jdField_b_of_type_Boolean = SoLoadUtilNew.loadSoByName(localBaseApplication, "c++_shared");
+        hasCppSharedSoLoad = SoLoadUtilNew.loadSoByName(localBaseApplication, "c++_shared");
       }
       catch (Throwable localThrowable1)
       {
-        jdField_b_of_type_Boolean = false;
+        hasCppSharedSoLoad = false;
         QLog.w("QbarNative", 1, "loadSoByName, load libc++_shared.so failed:", localThrowable1);
       }
     }
-    if (!jdField_b_of_type_Boolean)
+    if (!hasCppSharedSoLoad)
     {
       QLog.e("QbarNative", 1, "Init load c++_shared fail, try system load.");
       try
       {
         System.loadLibrary("c++_shared");
-        jdField_b_of_type_Boolean = true;
+        hasCppSharedSoLoad = true;
       }
       catch (Throwable localThrowable2)
       {
-        jdField_b_of_type_Boolean = false;
+        hasCppSharedSoLoad = false;
         QLog.e("QbarNative", 1, "Init system load c++_shared fail:", localThrowable2);
       }
     }
     if (localBaseApplication != null) {
       try
       {
-        jdField_a_of_type_Boolean = SoLoadUtilNew.loadSoByName(localBaseApplication, "QBarMod");
+        hasSoLoad = SoLoadUtilNew.loadSoByName(localBaseApplication, "QBarMod");
       }
       catch (Throwable localThrowable3)
       {
-        jdField_a_of_type_Boolean = false;
+        hasSoLoad = false;
         QLog.e("QbarNative", 1, "loadSoByName, load libQBarMod.so failed:", localThrowable3);
       }
     }
-    if (!jdField_a_of_type_Boolean)
+    if (!hasSoLoad)
     {
       QLog.e("QbarNative", 1, "Init load QBarMod fail, try system load.");
       try
       {
         System.loadLibrary("QBarMod");
-        jdField_a_of_type_Boolean = true;
+        hasSoLoad = true;
       }
       catch (Throwable localThrowable4)
       {
         QLog.e("QbarNative", 1, "Init system load QBarMod fail:", localThrowable4);
-        jdField_a_of_type_Boolean = false;
+        hasSoLoad = false;
       }
       if (localBaseApplication != null) {
-        ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).reportQBarSoLoadFail(jdField_a_of_type_Boolean);
+        ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).reportQBarSoLoadFail(hasSoLoad);
       }
     }
   }
@@ -85,7 +89,21 @@ public class QbarNative
   
   protected static native String GetVersion();
   
-  public static String a()
+  public static int encode(byte[] paramArrayOfByte, int[] paramArrayOfInt, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
+  {
+    return Encode(paramArrayOfByte, paramArrayOfInt, paramString1, paramInt1, paramInt2, paramString2, paramInt3);
+  }
+  
+  public static Bitmap encode(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, int paramInt5)
+  {
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    if (EncodeBitmap(paramString1, localBitmap, paramInt1, paramInt2, paramInt3, paramInt4, paramString2, paramInt5) > 0) {
+      return localBitmap;
+    }
+    return null;
+  }
+  
+  public static String getVersion()
   {
     return GetVersion();
   }
@@ -108,182 +126,37 @@ public class QbarNative
   
   protected native int GetCodeDetectInfo(QbarNative.QBarCodeDetectInfo[] paramArrayOfQBarCodeDetectInfo, QbarNative.QBarPoint[] paramArrayOfQBarPoint, int paramInt);
   
-  protected native int GetOneResult(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int[] paramArrayOfInt, int paramInt);
-  
-  protected native int GetResults(QbarNative.QBarResultJNI[] paramArrayOfQBarResultJNI, int paramInt);
-  
-  protected native int GetZoomInfo(QbarNative.QBarZoomInfo paramQBarZoomInfo, int paramInt);
-  
-  protected native int Init(int paramInt1, int paramInt2, String paramString1, String paramString2, QbarNative.QbarAiModelParam paramQbarAiModelParam);
-  
-  protected native int Release(int paramInt);
-  
-  protected native int ScanImage(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
-  
-  protected native int SetReaders(int[] paramArrayOfInt, int paramInt1, int paramInt2);
-  
-  public int a()
+  public int GetOneResult(StringBuilder paramStringBuilder1, StringBuilder paramStringBuilder2)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("QbarNative : release qbarId:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append(" hasSoLoad:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
-      QLog.i("QbarNative", 2, localStringBuilder.toString());
-    }
-    this.jdField_b_of_type_Int = 0;
-    this.c = 0;
-    try
-    {
-      if (this.jdField_a_of_type_Int < 0) {
-        return 0;
-      }
-      int i = Release(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
-      return i;
-    }
-    finally {}
-  }
-  
-  public int a(int paramInt1, int paramInt2, String paramString1, String paramString2, QbarNative.QbarAiModelParam paramQbarAiModelParam)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("QbarNative : init qbarId:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append(" hasSoLoad:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
-      QLog.i("QbarNative", 2, localStringBuilder.toString());
-    }
-    if (!jdField_a_of_type_Boolean) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Int < 0) {
-      try
-      {
-        if (paramQbarAiModelParam != null) {}
-        label153:
-        try
-        {
-          this.jdField_a_of_type_Int = Init(paramInt1, paramInt2, paramString1, paramString2, paramQbarAiModelParam);
-          break label153;
-          paramQbarAiModelParam = new QbarNative.QbarAiModelParam();
-          paramQbarAiModelParam.detect_model_bin_path_ = "";
-          paramQbarAiModelParam.detect_model_param_path_ = "";
-          paramQbarAiModelParam.superresolution_model_bin_path_ = "";
-          paramQbarAiModelParam.superresolution_model_param_path_ = "";
-          this.jdField_a_of_type_Int = Init(paramInt1, paramInt2, paramString1, paramString2, paramQbarAiModelParam);
-        }
-        finally {}
-        this.jdField_b_of_type_Int = 0;
-      }
-      catch (Throwable paramString1)
-      {
-        this.jdField_a_of_type_Int = -1;
-        paramString2 = new StringBuilder();
-        paramString2.append("QbarNative init hasSoLoad:");
-        paramString2.append(jdField_a_of_type_Boolean);
-        paramString2.append(" error:");
-        paramString2.append(paramString1.getMessage());
-        QLog.e("QbarNative", 1, paramString2.toString());
-      }
-    }
-    this.c = 0;
-    if (this.jdField_a_of_type_Int < 0) {
-      return -1;
-    }
-    return 0;
-  }
-  
-  public int a(StringBuilder paramStringBuilder1, StringBuilder paramStringBuilder2)
-  {
-    ArrayList localArrayList = a(1);
+    ArrayList localArrayList = GetResults(1);
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
-      paramStringBuilder1.append(((QBarResult)localArrayList.get(0)).jdField_a_of_type_JavaLangString);
-      paramStringBuilder2.append(((QBarResult)localArrayList.get(0)).b);
+      paramStringBuilder1.append(((QBarResult)localArrayList.get(0)).b);
+      paramStringBuilder2.append(((QBarResult)localArrayList.get(0)).c);
       return 1;
     }
     return 0;
   }
   
-  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("QbarNative : scanImage qbarId:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append(" hasSoLoad:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
-      QLog.i("QbarNative", 2, localStringBuilder.toString());
-    }
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    try
-    {
-      int j = this.jdField_a_of_type_Int;
-      int i = -1;
-      if (j < 0) {
-        return -1;
-      }
-      if (ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.jdField_a_of_type_Int) < 0) {
-        return -1;
-      }
-      paramArrayOfByte = a(1);
-      paramInt1 = i;
-      if (paramArrayOfByte != null)
-      {
-        paramInt1 = i;
-        if (paramArrayOfByte.size() > 0) {
-          paramInt1 = 0;
-        }
-      }
-      return paramInt1;
-    }
-    finally {}
-  }
+  protected native int GetOneResult(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int[] paramArrayOfInt, int paramInt);
   
-  public int a(int[] paramArrayOfInt, int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("QbarNative : setReaders qbarId:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      localStringBuilder.append(" hasSoLoad:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
-      QLog.i("QbarNative", 2, localStringBuilder.toString());
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Int < 0) {
-        return -1;
-      }
-      paramInt = SetReaders(paramArrayOfInt, paramInt, this.jdField_a_of_type_Int);
-      return paramInt;
-    }
-    finally {}
-  }
+  protected native int GetResults(QbarNative.QBarResultJNI[] paramArrayOfQBarResultJNI, int paramInt);
   
-  public ArrayList<QBarResult> a(int paramInt)
+  public ArrayList<QBarResult> GetResults(int paramInt)
   {
     Object localObject1;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("QbarNative : GetResults qbarId:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.qbarId);
       ((StringBuilder)localObject1).append(" hasSoLoad:");
-      ((StringBuilder)localObject1).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(hasSoLoad);
       QLog.i("QbarNative", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramInt > 0)
     {
-      if (this.jdField_a_of_type_Int < 0) {
+      if (this.qbarId < 0) {
         return null;
       }
       QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[paramInt];
@@ -300,10 +173,10 @@ public class QbarNative
       }
       try
       {
-        if (this.jdField_a_of_type_Int < 0) {
+        if (this.qbarId < 0) {
           return null;
         }
-        GetResults(arrayOfQBarResultJNI, this.jdField_a_of_type_Int);
+        GetResults(arrayOfQBarResultJNI, this.qbarId);
         localObject1 = new ArrayList();
         i = j;
         for (;;)
@@ -316,39 +189,39 @@ public class QbarNative
               if ((((QbarNative.QBarResultJNI)localObject3).typeName != null) && (!((QbarNative.QBarResultJNI)localObject3).typeName.isEmpty()))
               {
                 QBarResult localQBarResult = new QBarResult();
-                localQBarResult.jdField_a_of_type_JavaLangString = ((QbarNative.QBarResultJNI)localObject3).typeName;
+                localQBarResult.b = ((QbarNative.QBarResultJNI)localObject3).typeName;
                 if (((QbarNative.QBarResultJNI)localObject3).charset.equals("ANY"))
                 {
-                  localQBarResult.b = new String(((QbarNative.QBarResultJNI)localObject3).data, "UTF-8");
-                  if (TextUtils.isEmpty(localQBarResult.b)) {
-                    localQBarResult.b = new String(((QbarNative.QBarResultJNI)localObject3).data, "ASCII");
+                  localQBarResult.c = new String(((QbarNative.QBarResultJNI)localObject3).data, "UTF-8");
+                  if (TextUtils.isEmpty(localQBarResult.c)) {
+                    localQBarResult.c = new String(((QbarNative.QBarResultJNI)localObject3).data, "ASCII");
                   }
                 }
                 else
                 {
-                  localQBarResult.b = new String(((QbarNative.QBarResultJNI)localObject3).data, ((QbarNative.QBarResultJNI)localObject3).charset);
+                  localQBarResult.c = new String(((QbarNative.QBarResultJNI)localObject3).data, ((QbarNative.QBarResultJNI)localObject3).charset);
                 }
-                localQBarResult.jdField_a_of_type_Float = 1.0F;
-                if ((this.jdField_b_of_type_Int > 0) && (this.c > 0))
+                localQBarResult.a = 1.0F;
+                if ((this.mWidth > 0) && (this.mHeight > 0))
                 {
                   float f1;
                   float f2;
                   if (((QbarNative.QBarResultJNI)localObject3).points.point_cnt > 2)
                   {
-                    f1 = Math.min(((QbarNative.QBarResultJNI)localObject3).points.x0 / this.jdField_b_of_type_Int, ((QbarNative.QBarResultJNI)localObject3).points.x2 / this.jdField_b_of_type_Int);
-                    f2 = Math.max(((QbarNative.QBarResultJNI)localObject3).points.x0 / this.jdField_b_of_type_Int, ((QbarNative.QBarResultJNI)localObject3).points.x2 / this.jdField_b_of_type_Int);
-                    localQBarResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f1, Math.min(((QbarNative.QBarResultJNI)localObject3).points.y0 / this.c, ((QbarNative.QBarResultJNI)localObject3).points.y2 / this.c), f2, Math.max(((QbarNative.QBarResultJNI)localObject3).points.y0 / this.c, ((QbarNative.QBarResultJNI)localObject3).points.y2 / this.c));
+                    f1 = Math.min(((QbarNative.QBarResultJNI)localObject3).points.x0 / this.mWidth, ((QbarNative.QBarResultJNI)localObject3).points.x2 / this.mWidth);
+                    f2 = Math.max(((QbarNative.QBarResultJNI)localObject3).points.x0 / this.mWidth, ((QbarNative.QBarResultJNI)localObject3).points.x2 / this.mWidth);
+                    localQBarResult.d = new RectF(f1, Math.min(((QbarNative.QBarResultJNI)localObject3).points.y0 / this.mHeight, ((QbarNative.QBarResultJNI)localObject3).points.y2 / this.mHeight), f2, Math.max(((QbarNative.QBarResultJNI)localObject3).points.y0 / this.mHeight, ((QbarNative.QBarResultJNI)localObject3).points.y2 / this.mHeight));
                   }
                   else
                   {
-                    f1 = Math.min(((QbarNative.QBarResultJNI)localObject3).points.x0 / this.jdField_b_of_type_Int, ((QbarNative.QBarResultJNI)localObject3).points.x1 / this.jdField_b_of_type_Int);
-                    f2 = Math.max(((QbarNative.QBarResultJNI)localObject3).points.x0 / this.jdField_b_of_type_Int, ((QbarNative.QBarResultJNI)localObject3).points.x1 / this.jdField_b_of_type_Int);
-                    localQBarResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f1 - 0.01F, Math.min(((QbarNative.QBarResultJNI)localObject3).points.y0 / this.c, ((QbarNative.QBarResultJNI)localObject3).points.y1 / this.c) - 0.01F, f2 + 0.01F, Math.max(((QbarNative.QBarResultJNI)localObject3).points.y0 / this.c, ((QbarNative.QBarResultJNI)localObject3).points.y1 / this.c) + 0.01F);
+                    f1 = Math.min(((QbarNative.QBarResultJNI)localObject3).points.x0 / this.mWidth, ((QbarNative.QBarResultJNI)localObject3).points.x1 / this.mWidth);
+                    f2 = Math.max(((QbarNative.QBarResultJNI)localObject3).points.x0 / this.mWidth, ((QbarNative.QBarResultJNI)localObject3).points.x1 / this.mWidth);
+                    localQBarResult.d = new RectF(f1 - 0.01F, Math.min(((QbarNative.QBarResultJNI)localObject3).points.y0 / this.mHeight, ((QbarNative.QBarResultJNI)localObject3).points.y1 / this.mHeight) - 0.01F, f2 + 0.01F, Math.max(((QbarNative.QBarResultJNI)localObject3).points.y0 / this.mHeight, ((QbarNative.QBarResultJNI)localObject3).points.y1 / this.mHeight) + 0.01F);
                   }
                 }
                 else
                 {
-                  localQBarResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+                  localQBarResult.d = new RectF();
                 }
                 ((ArrayList)localObject1).add(localQBarResult);
               }
@@ -369,10 +242,163 @@ public class QbarNative
     }
     return null;
   }
+  
+  protected native int GetZoomInfo(QbarNative.QBarZoomInfo paramQBarZoomInfo, int paramInt);
+  
+  protected native int Init(int paramInt1, int paramInt2, String paramString1, String paramString2, QbarNative.QbarAiModelParam paramQbarAiModelParam);
+  
+  protected native int Release(int paramInt);
+  
+  protected native int ScanImage(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  
+  protected native int SetReaders(int[] paramArrayOfInt, int paramInt1, int paramInt2);
+  
+  public int init(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QbarNative", 2, "QbarNative : init ");
+    }
+    return init(paramInt1, paramInt2, paramString1, paramString2, null);
+  }
+  
+  public int init(int paramInt1, int paramInt2, String paramString1, String paramString2, QbarNative.QbarAiModelParam paramQbarAiModelParam)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QbarNative : init qbarId:");
+      localStringBuilder.append(this.qbarId);
+      localStringBuilder.append(" hasSoLoad:");
+      localStringBuilder.append(hasSoLoad);
+      QLog.i("QbarNative", 2, localStringBuilder.toString());
+    }
+    if (!hasSoLoad) {
+      return -1;
+    }
+    if (this.qbarId < 0) {
+      try
+      {
+        if (paramQbarAiModelParam != null) {}
+        label158:
+        try
+        {
+          this.qbarId = Init(paramInt1, paramInt2, paramString1, paramString2, paramQbarAiModelParam);
+          break label158;
+          paramQbarAiModelParam = new QbarNative.QbarAiModelParam();
+          paramQbarAiModelParam.detect_model_bin_path_ = "";
+          paramQbarAiModelParam.detect_model_param_path_ = "";
+          paramQbarAiModelParam.superresolution_model_bin_path_ = "";
+          paramQbarAiModelParam.superresolution_model_param_path_ = "";
+          this.qbarId = Init(paramInt1, paramInt2, paramString1, paramString2, paramQbarAiModelParam);
+        }
+        finally {}
+        this.mWidth = 0;
+      }
+      catch (Throwable paramString1)
+      {
+        this.qbarId = -1;
+        paramString2 = new StringBuilder();
+        paramString2.append("QbarNative init hasSoLoad:");
+        paramString2.append(hasSoLoad);
+        paramString2.append(" error:");
+        paramString2.append(paramString1.getMessage());
+        QLog.e("QbarNative", 1, paramString2.toString());
+      }
+    }
+    this.mHeight = 0;
+    if (this.qbarId < 0) {
+      return -1;
+    }
+    return 0;
+  }
+  
+  public int release()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QbarNative : release qbarId:");
+      localStringBuilder.append(this.qbarId);
+      localStringBuilder.append(" hasSoLoad:");
+      localStringBuilder.append(hasSoLoad);
+      QLog.i("QbarNative", 2, localStringBuilder.toString());
+    }
+    this.mWidth = 0;
+    this.mHeight = 0;
+    try
+    {
+      if (this.qbarId < 0) {
+        return 0;
+      }
+      int i = Release(this.qbarId);
+      this.qbarId = -1;
+      return i;
+    }
+    finally {}
+  }
+  
+  public int scanImage(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QbarNative : scanImage qbarId:");
+      localStringBuilder.append(this.qbarId);
+      localStringBuilder.append(" hasSoLoad:");
+      localStringBuilder.append(hasSoLoad);
+      QLog.i("QbarNative", 2, localStringBuilder.toString());
+    }
+    this.mWidth = paramInt1;
+    this.mHeight = paramInt2;
+    try
+    {
+      int j = this.qbarId;
+      int i = -1;
+      if (j < 0) {
+        return -1;
+      }
+      if (ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.qbarId) < 0) {
+        return -1;
+      }
+      paramArrayOfByte = GetResults(1);
+      paramInt1 = i;
+      if (paramArrayOfByte != null)
+      {
+        paramInt1 = i;
+        if (paramArrayOfByte.size() > 0) {
+          paramInt1 = 0;
+        }
+      }
+      return paramInt1;
+    }
+    finally {}
+  }
+  
+  public int setReaders(int[] paramArrayOfInt, int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QbarNative : setReaders qbarId:");
+      localStringBuilder.append(this.qbarId);
+      localStringBuilder.append(" hasSoLoad:");
+      localStringBuilder.append(hasSoLoad);
+      QLog.i("QbarNative", 2, localStringBuilder.toString());
+    }
+    try
+    {
+      if (this.qbarId < 0) {
+        return -1;
+      }
+      paramInt = SetReaders(paramArrayOfInt, paramInt, this.qbarId);
+      return paramInt;
+    }
+    finally {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qbar.QbarNative
  * JD-Core Version:    0.7.0.1
  */

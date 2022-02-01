@@ -24,22 +24,45 @@ public class StickerRecLocalData
   implements IStickerRecLocalData
 {
   public Emoticon a;
-  private String a;
+  private String b;
   
   public StickerRecLocalData(Emoticon paramEmoticon)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramEmoticon;
+    this.a = paramEmoticon;
   }
   
-  public int a()
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.exposeNum;
+    if (paramURL == null) {
+      return null;
+    }
+    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+    if (paramURL.getStatus() != 1) {
+      paramURL.setTag(this.a);
+    }
+    return paramURL;
   }
   
-  public URLDrawable.URLDrawableOptions a()
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  {
+    ((IEmoticonManagerService)paramBaseQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).syncIncreaseEmoticonExposeNum(this);
+  }
+  
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
+  {
+    super.a(paramBaseQQAppInterface, paramContext, paramBaseSessionInfo);
+    ((IEmosmService)QRoute.api(IEmosmService.class)).sendEmosmMsg(paramBaseQQAppInterface, paramContext, paramBaseSessionInfo, this.a);
+    paramContext = this.a;
+    if ((paramContext != null) && (paramContext.isNewSoundEmoticon())) {
+      EmoticonOperateReport.reportNewSoundEvent(paramBaseQQAppInterface, "0X800A932", paramBaseSessionInfo.a, this.a.epId);
+    }
+    ((IEmoticonManagerService)paramBaseQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).asyncIncreaseEmotionClickNum(this.a);
+  }
+  
+  public URLDrawable.URLDrawableOptions c()
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG)
+    if (this.a.isAPNG)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StickerRecLocalData", 2, "getURLDrawableOptions: APNG so loaded use apng image");
@@ -51,66 +74,69 @@ public class StickerRecLocalData
     return localURLDrawableOptions;
   }
   
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
-    }
-    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-    if (paramURL.getStatus() != 1) {
-      paramURL.setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-    }
-    return paramURL;
-  }
-  
-  public String a()
+  public String e()
   {
     Object localObject = MobileQQ.sMobileQQ;
     String str1 = null;
     localObject = ((MobileQQ)localObject).waitAppRuntime(null);
     if ((localObject instanceof BaseQQAppInterface))
     {
-      boolean bool1 = ((IEmojiManagerService)((BaseQQAppInterface)localObject).getRuntimeService(IEmojiManagerService.class)).supportExtensionDisplay(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG;
+      boolean bool1 = ((IEmojiManagerService)((BaseQQAppInterface)localObject).getRuntimeService(IEmojiManagerService.class)).supportExtensionDisplay(this.a);
+      boolean bool2 = this.a.isAPNG;
       str1 = "200";
       if (bool2)
       {
-        str2 = EmotionPanelConstans.emoticonEncryptExtensionApngUrl.replace("[eIdSub]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId.substring(0, 2)).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+        str2 = EmotionPanelConstans.emoticonEncryptExtensionApngUrl.replace("[eIdSub]", this.a.eId.substring(0, 2)).replace("[eId]", this.a.eId);
         if (bool1) {
-          localObject = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionWidth);
+          localObject = String.valueOf(this.a.extensionWidth);
         } else {
           localObject = "200";
         }
         localObject = str2.replace("[width]", (CharSequence)localObject);
         if (bool1) {
-          str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionHeight);
+          str1 = String.valueOf(this.a.extensionHeight);
         }
         return ((String)localObject).replace("[height]", str1);
       }
-      String str2 = EmotionPanelConstans.emoticonEncryptExtensionUrl.replace("[eIdSub]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId.substring(0, 2)).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+      String str2 = EmotionPanelConstans.emoticonEncryptExtensionUrl.replace("[eIdSub]", this.a.eId.substring(0, 2)).replace("[eId]", this.a.eId);
       if (bool1) {
-        localObject = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionWidth);
+        localObject = String.valueOf(this.a.extensionWidth);
       } else {
         localObject = "200";
       }
       localObject = str2.replace("[width]", (CharSequence)localObject);
       if (bool1) {
-        str1 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionHeight);
+        str1 = String.valueOf(this.a.extensionHeight);
       }
       str1 = ((String)localObject).replace("[height]", str1);
     }
     return str1;
   }
   
-  public URL a()
+  public int h()
+  {
+    return this.a.exposeNum;
+  }
+  
+  public int i()
+  {
+    return this.a.clickNum;
+  }
+  
+  public int j()
+  {
+    return 2;
+  }
+  
+  public URL k()
   {
     URL localURL;
     try
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+      ((StringBuilder)localObject).append(this.a.epId);
       ((StringBuilder)localObject).append("_");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+      ((StringBuilder)localObject).append(this.a.eId);
       localObject = new URL("emotion_pic", "fromAIO", ((StringBuilder)localObject).toString());
     }
     catch (MalformedURLException localMalformedURLException)
@@ -129,72 +155,46 @@ public class StickerRecLocalData
     return localURL;
   }
   
-  public void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  public String l()
   {
-    ((IEmoticonManagerService)paramBaseQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).syncIncreaseEmoticonExposeNum(this);
-  }
-  
-  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
-  {
-    super.a(paramBaseQQAppInterface, paramContext, paramBaseSessionInfo);
-    ((IEmosmService)QRoute.api(IEmosmService.class)).sendEmosmMsg(paramBaseQQAppInterface, paramContext, paramBaseSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon;
-    if ((paramContext != null) && (paramContext.isNewSoundEmoticon())) {
-      EmoticonOperateReport.reportNewSoundEvent(paramBaseQQAppInterface, "0X800A932", paramBaseSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-    }
-    ((IEmoticonManagerService)paramBaseQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).asyncIncreaseEmotionClickNum(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.clickNum;
-  }
-  
-  public int c()
-  {
-    return 2;
-  }
-  
-  public String c()
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.b;
     if (localObject != null) {
       return localObject;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG) {
-      localObject = EmotionPanelConstans.emoticonAPNGPath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+    if (this.a.isAPNG) {
+      localObject = EmotionPanelConstans.emoticonAPNGPath.replace("[epId]", this.a.epId).replace("[eId]", this.a.eId);
     } else {
-      localObject = EmotionPanelConstans.emoticonEncryptPath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+      localObject = EmotionPanelConstans.emoticonEncryptPath.replace("[epId]", this.a.epId).replace("[eId]", this.a.eId);
     }
     localObject = MD5.getFileMd5((String)localObject);
     if (localObject != null)
     {
-      this.jdField_a_of_type_JavaLangString = MD5.toMD5((byte[])localObject);
-      localObject = this.jdField_a_of_type_JavaLangString;
+      this.b = MD5.toMD5((byte[])localObject);
+      localObject = this.b;
       if (localObject != null) {
-        this.jdField_a_of_type_JavaLangString = ((String)localObject).toLowerCase();
+        this.b = ((String)localObject).toLowerCase();
       }
-      return this.jdField_a_of_type_JavaLangString;
+      return this.b;
     }
     return null;
   }
   
-  public String d()
+  public String m()
   {
-    if (d()) {
+    if (n()) {
       return "d-";
     }
     return "b-";
   }
   
-  public boolean d()
+  public boolean n()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString() != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString().isEmpty());
+    return (this.a.parseSoundPrintString() != null) && (!this.a.parseSoundPrintString().isEmpty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecLocalData
  * JD-Core Version:    0.7.0.1
  */

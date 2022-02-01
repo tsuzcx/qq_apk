@@ -7,12 +7,12 @@ final class XViewPager$1
 {
   public int a(XViewPager.ItemInfo paramItemInfo1, XViewPager.ItemInfo paramItemInfo2)
   {
-    return paramItemInfo1.a - paramItemInfo2.a;
+    return paramItemInfo1.b - paramItemInfo2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.1
  * JD-Core Version:    0.7.0.1
  */

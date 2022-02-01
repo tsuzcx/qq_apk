@@ -20,14 +20,14 @@ import com.tencent.qphone.base.util.QLog;
 
 public class TroopPicEffectsController
 {
-  protected Handler a;
   protected ViewGroup a;
-  protected IPicView a;
+  protected IPicView b;
+  protected Handler c;
   
   public TroopPicEffectsController(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a = paramViewGroup;
+    this.c = new Handler(Looper.getMainLooper());
   }
   
   public static void a(String paramString1, String paramString2)
@@ -37,14 +37,14 @@ public class TroopPicEffectsController
   
   public void a()
   {
-    IPicView localIPicView = this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView;
-    if ((localIPicView != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
+    IPicView localIPicView = this.b;
+    if ((localIPicView != null) && (this.a != null))
     {
       localIPicView.b();
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a());
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = null;
+      this.a.removeView(this.b.getView());
+      this.b = null;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.c.removeCallbacksAndMessages(null);
   }
   
   public void a(int paramInt1, Bitmap paramBitmap, int paramInt2, TroopPicEffectsController.OnAnimationEndListener paramOnAnimationEndListener)
@@ -52,32 +52,32 @@ public class TroopPicEffectsController
     if (QLog.isColorLevel()) {
       QLog.d("TroopPicEffectsController", 2, "showPicEffect");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView == null)
+    if (this.b == null)
     {
-      ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+      ViewGroup localViewGroup = this.a;
       if (localViewGroup != null)
       {
         switch (paramInt1)
         {
         default: 
-          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new NormalPicView(localViewGroup.getContext());
+          this.b = new NormalPicView(localViewGroup.getContext());
           break;
         case 40003: 
         case 40004: 
         case 40005: 
-          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new VideoPicView(localViewGroup.getContext(), paramInt1);
+          this.b = new VideoPicView(localViewGroup.getContext(), paramInt1);
           break;
         case 40002: 
-          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new ShakePicView(localViewGroup.getContext());
+          this.b = new ShakePicView(localViewGroup.getContext());
           break;
         case 40001: 
-          this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new PhantomPicView(localViewGroup.getContext());
+          this.b = new PhantomPicView(localViewGroup.getContext());
         }
-        this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a(), -1, paramInt2);
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.setBitmap(paramBitmap);
-        this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a();
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopPicEffectsController.2(this, paramOnAnimationEndListener), 6000L);
+        this.a.removeAllViews();
+        this.a.addView(this.b.getView(), -1, paramInt2);
+        this.b.setBitmap(paramBitmap);
+        this.b.a();
+        this.c.postDelayed(new TroopPicEffectsController.2(this, paramOnAnimationEndListener), 6000L);
       }
     }
   }
@@ -93,12 +93,12 @@ public class TroopPicEffectsController
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,17 @@ import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoSession;
 public class VideoReportFlowInfo
 {
   private boolean isLoopEnd;
+  private long loopStartPositionMs;
   private int playerObject;
   private int reportManager;
   private long startPosition;
   private VideoSession videoSession;
   private volatile int videoState;
+  
+  public long getLoopStartPositionMs()
+  {
+    return this.loopStartPositionMs;
+  }
   
   public int getPlayerObject()
   {
@@ -46,6 +52,11 @@ public class VideoReportFlowInfo
     this.isLoopEnd = paramBoolean;
   }
   
+  public void setLoopStartPositionMs(long paramLong)
+  {
+    this.loopStartPositionMs = paramLong;
+  }
+  
   public void setPlayerObject(int paramInt)
   {
     this.playerObject = paramInt;
@@ -77,7 +88,7 @@ public class VideoReportFlowInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoReportFlowInfo
  * JD-Core Version:    0.7.0.1
  */

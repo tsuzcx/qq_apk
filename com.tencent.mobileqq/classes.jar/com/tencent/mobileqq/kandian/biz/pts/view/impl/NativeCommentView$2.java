@@ -18,13 +18,13 @@ class NativeCommentView$2
   
   public void onClick(View paramView)
   {
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeCommentView.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeCommentView.a.a.a(), 4, false, 7, false);
-    RIJFrameworkReportManager.b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeCommentView.a.a.c());
+    RIJJumpUtils.a(this.c.getContext(), this.c.f.a.k(), 4, false, 7, false);
+    RIJFrameworkReportManager.b(this.b, this.c.f.a.m());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeCommentView.2
  * JD-Core Version:    0.7.0.1
  */

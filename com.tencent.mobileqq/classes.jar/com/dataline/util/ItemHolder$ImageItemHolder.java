@@ -10,16 +10,16 @@ import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
 public class ItemHolder$ImageItemHolder
 {
-  public LinearLayout a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
   public AsyncImageView a;
-  public URLImageView a;
-  public MessageProgressTextView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  public MessageProgressTextView b;
+  public ProgressBar c;
+  public RelativeLayout d;
+  public LinearLayout e;
+  public TextView f;
+  public TextView g;
+  public LinearLayout h;
+  public URLImageView i;
+  public TextView j;
   
   public ItemHolder$ImageItemHolder(ItemHolder paramItemHolder) {}
 }

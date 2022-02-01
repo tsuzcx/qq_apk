@@ -11,16 +11,16 @@ class PersonalityLabelGalleryActivity$RecyclerViewAdapter$1
 {
   PersonalityLabelGalleryActivity$RecyclerViewAdapter$1(PersonalityLabelGalleryActivity.RecyclerViewAdapter paramRecyclerViewAdapter, PLUploadManager.UploadItem paramUploadItem) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1)
       {
-        paramView = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter.a).get(Long.valueOf(PersonalityLabelGalleryActivity.RecyclerViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter)));
+        paramView = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.j(this.b.a).get(Long.valueOf(PersonalityLabelGalleryActivity.RecyclerViewAdapter.a(this.b)));
         if (paramView == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter.a.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+          this.b.a.r.superDismiss();
           return;
         }
         int j = -1;
@@ -32,7 +32,7 @@ class PersonalityLabelGalleryActivity$RecyclerViewAdapter$1
           if (paramInt >= paramView.personalityLabelPhotos.size()) {
             break;
           }
-          if (((PersonalityLabelPhoto)paramView.personalityLabelPhotos.get(paramInt)).uniseq == this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadItem.a.uniseq)
+          if (((PersonalityLabelPhoto)paramView.personalityLabelPhotos.get(paramInt)).uniseq == this.a.c.uniseq)
           {
             paramView.personalityLabelPhotos.remove(paramInt);
             i = paramInt;
@@ -42,23 +42,23 @@ class PersonalityLabelGalleryActivity$RecyclerViewAdapter$1
         }
         if (i < 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter.a.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+          this.b.a.r.superDismiss();
           return;
         }
         paramView.photoCount -= 1;
-        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter.a, PersonalityLabelGalleryActivity.RecyclerViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter), paramView);
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.b(PersonalityLabelGalleryActivity.RecyclerViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter), this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadItem.a);
+        PersonalityLabelGalleryActivity.a(this.b.a, PersonalityLabelGalleryActivity.RecyclerViewAdapter.a(this.b), paramView);
+        this.b.a.q.b(PersonalityLabelGalleryActivity.RecyclerViewAdapter.a(this.b), this.a.c);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a(PersonalityLabelGalleryActivity.RecyclerViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter), this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadItem.a);
+      this.b.a.q.a(PersonalityLabelGalleryActivity.RecyclerViewAdapter.a(this.b), this.a.c);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$RecyclerViewAdapter.a.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.b.a.r.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.RecyclerViewAdapter.1
  * JD-Core Version:    0.7.0.1
  */

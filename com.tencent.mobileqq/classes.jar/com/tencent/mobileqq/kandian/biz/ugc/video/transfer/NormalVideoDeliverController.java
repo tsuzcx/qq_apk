@@ -28,83 +28,83 @@ public class NormalVideoDeliverController
   extends KandianVideoUploadController
   implements VideoCompressTask.VideoCompressTaskListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Bundle a;
-  private VideoCompressTask jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask;
-  private FileUploadController.FileUploadListener jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener = new NormalVideoDeliverController.1(this);
-  private FileUploadController jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController;
-  ShortVideoResourceManager.INet_ShortVideoResource jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource = new NormalVideoDeliverController.4(this);
-  ShortVideoResourceStatus.ISVConfig jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceStatus$ISVConfig = new NormalVideoDeliverController.3(this);
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private long jdField_b_of_type_Long = 0L;
-  private QQAppInterface jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FileUploadController.FileUploadListener jdField_b_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener = new NormalVideoDeliverController.2(this);
-  private FileUploadController jdField_b_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController;
-  private WeakReference<KandianVideoUploadController.DeliverVideoTaskListener> jdField_b_of_type_JavaLangRefWeakReference;
-  private long c = 0L;
-  private long jdField_d_of_type_Long = 0L;
-  private String jdField_d_of_type_JavaLangString;
-  private long jdField_e_of_type_Long = 0L;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean;
-  private long jdField_f_of_type_Long = 0L;
-  private String jdField_f_of_type_JavaLangString = null;
-  private boolean jdField_f_of_type_Boolean;
-  private long jdField_g_of_type_Long = 0L;
-  private String jdField_g_of_type_JavaLangString = null;
-  private boolean jdField_g_of_type_Boolean = false;
-  private long jdField_h_of_type_Long = 0L;
-  private String jdField_h_of_type_JavaLangString = null;
-  private boolean jdField_h_of_type_Boolean = false;
-  private long jdField_i_of_type_Long = 0L;
-  private String jdField_i_of_type_JavaLangString = null;
+  private VideoCompressTask A;
+  private long B = 0L;
+  private long C = 0L;
+  private long D = 0L;
+  private long E = 0L;
+  private long F = 0L;
+  private long G = 0L;
+  private long H = 0L;
+  private long I = 0L;
+  private String J = null;
+  private String K = null;
+  private String L = null;
+  private String M = null;
+  private boolean N = false;
+  private boolean O = false;
+  private Context P;
+  private FileUploadController.FileUploadListener Q = new NormalVideoDeliverController.1(this);
+  private FileUploadController.FileUploadListener R = new NormalVideoDeliverController.2(this);
+  public Bundle o;
+  ShortVideoResourceStatus.ISVConfig p = new NormalVideoDeliverController.3(this);
+  ShortVideoResourceManager.INet_ShortVideoResource q = new NormalVideoDeliverController.4(this);
+  private WeakReference<Context> r;
+  private boolean s;
+  private boolean t;
+  private String u;
+  private String v;
+  private WeakReference<KandianVideoUploadController.DeliverVideoTaskListener> w;
+  private QQAppInterface x;
+  private FileUploadController y;
+  private FileUploadController z;
   
   public NormalVideoDeliverController(Context paramContext, KandianVideoUploadController.DeliverVideoTaskListener paramDeliverVideoTaskListener, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramDeliverVideoTaskListener);
-    this.jdField_a_of_type_AndroidOsBundle = paramIntent.getExtras();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(this.jdField_a_of_type_AndroidOsBundle);
-    KanDianVideoUploadUtils.a(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController = new ImageUploadController(paramContext, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener);
-    this.jdField_b_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController = new VideoUploadController(paramContext, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener, this.jdField_d_of_type_JavaLangString);
+    this.r = new WeakReference(paramContext);
+    this.w = new WeakReference(paramDeliverVideoTaskListener);
+    this.o = paramIntent.getExtras();
+    this.P = paramContext;
+    a(this.o);
+    KanDianVideoUploadUtils.a(this.o);
+    this.y = new ImageUploadController(paramContext, this.x, this.Q);
+    this.z = new VideoUploadController(paramContext, this.x, this.R, this.u);
   }
   
   private void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    WeakReference localWeakReference = this.jdField_b_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.w;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((KandianVideoUploadController.DeliverVideoTaskListener)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramInt, VideoMetaInfo.a().a(paramString1).b(paramString2).d(paramString4).c(paramString3).e(paramString5).a(this.c).b(this.jdField_d_of_type_Long).a());
+      ((KandianVideoUploadController.DeliverVideoTaskListener)this.w.get()).a(this.g, paramInt, VideoMetaInfo.a().a(paramString1).b(paramString2).d(paramString4).c(paramString3).e(paramString5).a(this.C).b(this.D).a());
     }
   }
   
   private void a(Bundle paramBundle)
   {
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ReadInJoyUtils.a());
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("mTaskID");
-    this.jdField_e_of_type_Boolean = paramBundle.getBoolean("supportShortVideo", false);
-    this.jdField_f_of_type_Boolean = paramBundle.getBoolean("shortVideoSoReady", false);
-    if (!this.jdField_f_of_type_Boolean) {
+    this.x = ((QQAppInterface)ReadInJoyUtils.b());
+    this.g = paramBundle.getString("mTaskID");
+    this.s = paramBundle.getBoolean("supportShortVideo", false);
+    this.t = paramBundle.getBoolean("shortVideoSoReady", false);
+    if (!this.t) {
       d();
     }
-    this.jdField_d_of_type_JavaLangString = paramBundle.getString("arg_video_path");
-    this.jdField_e_of_type_JavaLangString = paramBundle.getString("arg_video_cover");
-    paramBundle.putString("mTaskID", this.jdField_a_of_type_JavaLangString);
+    this.u = paramBundle.getString("arg_video_path");
+    this.v = paramBundle.getString("arg_video_cover");
+    paramBundle.putString("mTaskID", this.g);
   }
   
   private void a(VideoMetaInfo paramVideoMetaInfo)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("compressPath", this.jdField_h_of_type_JavaLangString);
-    a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidOsBundle, paramVideoMetaInfo, (KandianVideoUploadController.DeliverVideoTaskListener)this.jdField_b_of_type_JavaLangRefWeakReference.get());
+    this.o.putString("compressPath", this.L);
+    a(false, this.P, this.o, paramVideoMetaInfo, (KandianVideoUploadController.DeliverVideoTaskListener)this.w.get());
   }
   
   private void b(float paramFloat)
   {
-    this.jdField_a_of_type_Float = ((paramFloat / 100.0F + 1.0F) * 50.0F);
-    WeakReference localWeakReference = this.jdField_b_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null) && (!this.jdField_g_of_type_Boolean)) {
-      ((KandianVideoUploadController.DeliverVideoTaskListener)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
+    this.h = ((paramFloat / 100.0F + 1.0F) * 50.0F);
+    WeakReference localWeakReference = this.w;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (!this.N)) {
+      ((KandianVideoUploadController.DeliverVideoTaskListener)this.w.get()).a(this.g, this.h);
     }
   }
   
@@ -112,7 +112,7 @@ public class NormalVideoDeliverController
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("transitState: from ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(" to ");
     localStringBuilder.append(paramInt);
     QLog.d("VideoDeliverController", 1, localStringBuilder.toString());
@@ -127,30 +127,30 @@ public class NormalVideoDeliverController
       else
       {
         c(100.0F);
-        if (!this.jdField_g_of_type_Boolean) {
-          this.jdField_b_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController.a(this.jdField_h_of_type_JavaLangString, true);
+        if (!this.N) {
+          this.z.a(this.L, true);
         }
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController.a(this.jdField_e_of_type_JavaLangString, true);
+      this.y.a(this.v, true);
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask = new VideoCompressTask((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_e_of_type_Boolean, this.jdField_f_of_type_Boolean, this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoVideoCompressTask.execute(new String[] { this.jdField_d_of_type_JavaLangString });
-    this.jdField_f_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    this.A = new VideoCompressTask((Context)this.r.get(), this.s, this.t, this);
+    this.A.execute(new String[] { this.u });
+    this.F = NetConnInfoCenter.getServerTimeMillis();
   }
   
   private void c(float paramFloat)
   {
-    this.jdField_a_of_type_Float = (paramFloat * 50.0F / 100.0F);
-    WeakReference localWeakReference = this.jdField_b_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null) && (!this.jdField_g_of_type_Boolean)) {
-      ((KandianVideoUploadController.DeliverVideoTaskListener)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
+    this.h = (paramFloat * 50.0F / 100.0F);
+    WeakReference localWeakReference = this.w;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (!this.N)) {
+      ((KandianVideoUploadController.DeliverVideoTaskListener)this.w.get()).a(this.g, this.h);
     }
   }
   
@@ -161,14 +161,14 @@ public class NormalVideoDeliverController
   
   private void d()
   {
-    this.jdField_e_of_type_Boolean = VideoEnvironment.supportShortVideoRecordAndPlay();
-    this.jdField_f_of_type_Boolean = VideoEnvironment.checkAndLoadAVCodec();
-    if (!this.jdField_e_of_type_Boolean)
+    this.s = VideoEnvironment.supportShortVideoRecordAndPlay();
+    this.t = VideoEnvironment.checkAndLoadAVCodec();
+    if (!this.s)
     {
-      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131707623), null);
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131905438), null);
       return;
     }
-    if (this.jdField_f_of_type_Boolean)
+    if (this.t)
     {
       VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", "短视频插件ready", null);
       return;
@@ -176,11 +176,11 @@ public class NormalVideoDeliverController
     VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", "短视频插件not ready", null);
     if (NetworkUtil.isNetworkAvailable(null))
     {
-      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131707618), null);
-      ShortVideoResourceManager.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceStatus$ISVConfig);
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131905433), null);
+      ShortVideoResourceManager.b(this.x, this.p);
       return;
     }
-    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131707616), null);
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", HardCodeUtil.a(2131905431), null);
   }
   
   private void d(int paramInt)
@@ -188,9 +188,9 @@ public class NormalVideoDeliverController
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = this.jdField_i_of_type_Long;
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    long l2 = this.I;
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance((Context)this.r.get());
+    String str = this.x.getCurrentAccountUin();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
@@ -202,12 +202,12 @@ public class NormalVideoDeliverController
   
   public void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = false;
+    this.m = System.currentTimeMillis();
+    this.N = false;
+    this.O = false;
     c();
     b(1);
-    this.jdField_i_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    this.I = NetConnInfoCenter.getServerTimeMillis();
   }
   
   public void a(float paramFloat)
@@ -247,25 +247,25 @@ public class NormalVideoDeliverController
     }
     else
     {
-      this.jdField_h_of_type_JavaLangString = paramString1;
-      this.jdField_i_of_type_JavaLangString = paramString2;
+      this.L = paramString1;
+      this.M = paramString2;
       b(2);
     }
-    this.jdField_e_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    this.jdField_b_of_type_Long = paramLong1;
-    this.c = paramLong2;
-    this.jdField_d_of_type_Long = paramLong3;
+    this.E = NetConnInfoCenter.getServerTimeMillis();
+    this.B = paramLong1;
+    this.C = paramLong2;
+    this.D = paramLong3;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController.b();
-    this.jdField_b_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController.b();
+    this.y.b();
+    this.z.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.NormalVideoDeliverController
  * JD-Core Version:    0.7.0.1
  */

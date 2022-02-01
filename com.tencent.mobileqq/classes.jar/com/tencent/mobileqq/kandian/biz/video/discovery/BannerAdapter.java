@@ -19,11 +19,11 @@ public class BannerAdapter
   extends BannerView.BannerViewAdapter<DiscoveryBannerInfo, LinearLayout>
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = "BannerAdapter";
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BannerAdapter.OnBannerClickListener jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBannerAdapter$OnBannerClickListener;
-  private int b;
+  private static final String b = "BannerAdapter";
+  private Context c;
+  private int d;
+  private int e;
+  private BannerAdapter.OnBannerClickListener f;
   
   private void a(LinearLayout paramLinearLayout, int paramInt, DiscoveryBannerInfo paramDiscoveryBannerInfo)
   {
@@ -32,30 +32,30 @@ public class BannerAdapter
       if (paramLinearLayout == null) {
         return;
       }
-      paramLinearLayout = (KandianUrlImageView)paramLinearLayout.findViewById(2131365727);
+      paramLinearLayout = (KandianUrlImageView)paramLinearLayout.findViewById(2131431969);
       Object localObject1 = paramLinearLayout.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).width = this.jdField_a_of_type_Int;
-      ((ViewGroup.LayoutParams)localObject1).height = this.b;
+      ((ViewGroup.LayoutParams)localObject1).width = this.d;
+      ((ViewGroup.LayoutParams)localObject1).height = this.e;
       paramLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       paramLinearLayout.setTag(paramDiscoveryBannerInfo);
       paramLinearLayout.setOnClickListener(this);
       try
       {
         localObject1 = new ColorDrawable(Color.parseColor("#E8E8E7"));
-        if (!TextUtils.isEmpty(paramDiscoveryBannerInfo.jdField_a_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramDiscoveryBannerInfo.b))
         {
           localObject2 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_Int;
-          ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.b;
+          ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.d;
+          ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.e;
           ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
           ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-          paramLinearLayout.setImageDrawable(URLDrawable.getDrawable(paramDiscoveryBannerInfo.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2));
+          paramLinearLayout.setImageDrawable(URLDrawable.getDrawable(paramDiscoveryBannerInfo.b, (URLDrawable.URLDrawableOptions)localObject2));
           return;
         }
         paramLinearLayout.setImageDrawable((Drawable)localObject1);
         if (QLog.isColorLevel())
         {
-          paramLinearLayout = jdField_a_of_type_JavaLangString;
+          paramLinearLayout = b;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("banner cover url is null, banner info: ");
           ((StringBuilder)localObject1).append(paramDiscoveryBannerInfo.toString());
@@ -68,7 +68,7 @@ public class BannerAdapter
         Object localObject2;
         if (QLog.isColorLevel())
         {
-          localObject1 = jdField_a_of_type_JavaLangString;
+          localObject1 = b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("轮播图的url格式有问题, ");
           ((StringBuilder)localObject2).append(paramDiscoveryBannerInfo.toString());
@@ -82,20 +82,20 @@ public class BannerAdapter
   
   public LinearLayout a(int paramInt, DiscoveryBannerInfo paramDiscoveryBannerInfo)
   {
-    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560319, null);
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.c).inflate(2131626365, null);
     a(localLinearLayout, paramInt, paramDiscoveryBannerInfo);
     return localLinearLayout;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131365727) {
+    if (paramView.getId() != 2131431969) {
       return;
     }
     Object localObject = paramView.getTag();
     if ((localObject != null) && ((localObject instanceof DiscoveryBannerInfo)))
     {
-      BannerAdapter.OnBannerClickListener localOnBannerClickListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBannerAdapter$OnBannerClickListener;
+      BannerAdapter.OnBannerClickListener localOnBannerClickListener = this.f;
       if (localOnBannerClickListener != null) {
         localOnBannerClickListener.a(paramView, (DiscoveryBannerInfo)localObject);
       }
@@ -104,7 +104,7 @@ public class BannerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.discovery.BannerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class AIOShareActionSheet$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f();
+    this.a.i();
     AIOShareActionSheet.a(this.a).a(false, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet.3
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ class ClassificationSearchActivity$9
     {
       if ((paramList != null) && (!paramList.isEmpty()))
       {
-        this.a.c.clear();
-        this.a.c.addAll(paramList);
+        this.a.v.clear();
+        this.a.v.addAll(paramList);
       }
       ClassificationSearchActivity.b(this.a, true);
     }
@@ -24,7 +24,7 @@ class ClassificationSearchActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.9
  * JD-Core Version:    0.7.0.1
  */

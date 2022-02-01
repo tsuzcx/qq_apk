@@ -12,8 +12,8 @@ class MultiMembersVideoUI$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (this.a.m != null) {
+      this.a.m.a();
     }
     return paramMotionEvent.getAction() == 2;
   }

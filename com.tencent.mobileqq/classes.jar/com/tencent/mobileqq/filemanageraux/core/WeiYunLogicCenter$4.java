@@ -27,10 +27,10 @@ class WeiYunLogicCenter$4
       paramCrossBidProxyCopyFileToOtherBidMsgRsp.append("]");
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, paramCrossBidProxyCopyFileToOtherBidMsgRsp.toString());
     }
-    paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.c;
     paramCrossBidProxyCopyFileToOtherBidMsgRsp.status = 0;
     paramCrossBidProxyCopyFileToOtherBidMsgRsp.isReaded = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, paramInt, null, paramString);
+    this.a.a(this.b.a, paramInt, null, paramString);
   }
   
   public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
@@ -41,9 +41,9 @@ class WeiYunLogicCenter$4
       if (QLog.isColorLevel()) {
         QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop onSucceed,But uuid is null!!!");
       }
-      paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager;
+      paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.a;
       if (paramCrossBidProxyCopyFileToOtherBidMsgRsp != null) {
-        paramCrossBidProxyCopyFileToOtherBidMsgRsp.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, -1, null, HardCodeUtil.a(2131716400));
+        paramCrossBidProxyCopyFileToOtherBidMsgRsp.a(this.b.a, -1, null, HardCodeUtil.a(2131913840));
       }
       return;
     }
@@ -55,15 +55,15 @@ class WeiYunLogicCenter$4
       ((StringBuilder)localObject).append("]");
       QLog.d("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((TroopFileTransferManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a, 0, paramCrossBidProxyCopyFileToOtherBidMsgRsp, null);
+      ((TroopFileTransferManager)localObject).a(this.b.a, 0, paramCrossBidProxyCopyFileToOtherBidMsgRsp, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.4
  * JD-Core Version:    0.7.0.1
  */

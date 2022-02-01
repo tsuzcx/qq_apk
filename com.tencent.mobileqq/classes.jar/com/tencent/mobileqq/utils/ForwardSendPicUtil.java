@@ -26,7 +26,7 @@ public class ForwardSendPicUtil
       i = 4;
     }
     ImageUtil.a(i, paramContext, paramString, str, true, localImageInfo, paramInt);
-    return localImageInfo.b;
+    return localImageInfo.f;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, boolean paramBoolean, Context paramContext)
@@ -88,8 +88,8 @@ public class ForwardSendPicUtil
       paramContext.c(paramQQAppInterface.getCurrentAccountUin());
       paramContext.e(paramInt1);
       paramString2 = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(2, i);
-      paramString2.a(paramContext.a());
-      paramString2.c = paramInt2;
+      paramString2.a(paramContext.k());
+      paramString2.m = paramInt2;
       ((IPicBus)QRoute.api(IPicBus.class)).launch(paramString2);
       ThreadManager.post(new ForwardSendPicUtil.1(paramString1, paramInt1, paramQQAppInterface), 5, null, false);
     }
@@ -101,7 +101,7 @@ public class ForwardSendPicUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ForwardSendPicUtil
  * JD-Core Version:    0.7.0.1
  */

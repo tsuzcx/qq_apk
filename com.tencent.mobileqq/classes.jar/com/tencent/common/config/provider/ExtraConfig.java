@@ -16,16 +16,16 @@ import java.util.Set;
 public class ExtraConfig
 {
   public static String a = "EXTRA_DATAV1";
-  private static Map<String, String> a;
   static String b = "wns_share_data";
   private static String c = "com.tencent.common.config.provider.ExtraConfig";
+  private static Map<String, String> d;
   
   public static int a()
   {
     int j = 0;
     try
     {
-      Map localMap = QZConfigProviderUtil.a();
+      Map localMap = QZConfigProviderUtil.b();
       if (localMap == null) {
         return 0;
       }
@@ -144,19 +144,19 @@ public class ExtraConfig
   
   public static void a(String paramString1, String paramString2)
   {
-    a = QZConfigProviderUtil.a();
-    Map localMap = a;
+    d = QZConfigProviderUtil.b();
+    Map localMap = d;
     if (localMap != null)
     {
       localMap.put(paramString1, paramString2);
     }
     else
     {
-      a = new HashMap();
-      a.put(paramString1, paramString2);
+      d = new HashMap();
+      d.put(paramString1, paramString2);
     }
-    a(a);
-    QZConfigProviderUtil.a(a);
+    a(d);
+    QZConfigProviderUtil.a(d);
   }
   
   private static void a(Map<String, String> paramMap)
@@ -168,7 +168,7 @@ public class ExtraConfig
       }
       if (BaseApplication.getContext() != null)
       {
-        long l = QZConfigProviderUtil.a();
+        long l = QZConfigProviderUtil.d();
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("last_check_time:");
         ((StringBuilder)localObject).append(l);
@@ -326,7 +326,7 @@ public class ExtraConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.config.provider.ExtraConfig
  * JD-Core Version:    0.7.0.1
  */

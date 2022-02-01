@@ -23,27 +23,27 @@ class RIJVideoHandleClick$9
   public void onClick(View paramView)
   {
     VideoFeedsViewHolder localVideoFeedsViewHolder = (VideoFeedsViewHolder)paramView.getTag();
-    AbsBaseArticleInfo localAbsBaseArticleInfo = RIJVideoHandleClick.a(this.a).a(localVideoFeedsViewHolder.jdField_a_of_type_Int);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = RIJVideoHandleClick.b(this.a).c(localVideoFeedsViewHolder.P);
     if (localAbsBaseArticleInfo == null) {
       return;
     }
-    if (!VideoFeedsHelper.a(localAbsBaseArticleInfo, RIJVideoHandleClick.a(this.a).a().a()))
+    if (!VideoFeedsHelper.a(localAbsBaseArticleInfo, RIJVideoHandleClick.b(this.a).a().A()))
     {
       if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(localAbsBaseArticleInfo))
       {
-        ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).setAdapterMonitorClickAdParams(RIJVideoHandleClick.a(this.a).a().a(), localAbsBaseArticleInfo, RIJVideoHandleClick.a(this.a).a().a(), 56);
-        ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)RIJVideoHandleClick.a(this.a).a().a(), localAbsBaseArticleInfo, RIJVideoHandleClick.a(this.a).a().a(), 56, false, null);
+        ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).setAdapterMonitorClickAdParams(RIJVideoHandleClick.b(this.a).a().A(), localAbsBaseArticleInfo, RIJVideoHandleClick.b(this.a).a().v(), 56);
+        ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)RIJVideoHandleClick.b(this.a).a().A(), localAbsBaseArticleInfo, RIJVideoHandleClick.b(this.a).a().v(), 56, false, null);
         return;
       }
-      RIJVideoHandleClick.a(this.a).a().a().a(localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, localAbsBaseArticleInfo, false, true);
+      RIJVideoHandleClick.b(this.a).a().v().a(localVideoFeedsViewHolder.t, localAbsBaseArticleInfo, false, true);
     }
     ThreadManager.executeOnSubThread(new RIJVideoHandleClick.9.1(this, localAbsBaseArticleInfo));
-    VideoHandler.a(paramView);
+    VideoHandler.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.9
  * JD-Core Version:    0.7.0.1
  */

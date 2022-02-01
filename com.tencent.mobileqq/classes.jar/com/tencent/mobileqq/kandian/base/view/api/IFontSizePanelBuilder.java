@@ -15,13 +15,10 @@ public abstract interface IFontSizePanelBuilder
   
   @NotNull
   public abstract IFontSizePanelBuilder a(@Nullable Object paramObject);
-  
-  @NotNull
-  public abstract IFontSizePanelBuilder a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.api.IFontSizePanelBuilder
  * JD-Core Version:    0.7.0.1
  */

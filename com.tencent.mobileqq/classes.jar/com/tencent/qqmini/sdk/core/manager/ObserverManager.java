@@ -6,7 +6,7 @@ import java.util.Observable;
 public class ObserverManager
   extends Observable
 {
-  private final String TAG = "MsgObserverManager";
+  private static final String TAG = "MsgObserverManager";
   
   public void notifyChange(Object paramObject)
   {
@@ -28,7 +28,7 @@ public class ObserverManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ObserverManager
  * JD-Core Version:    0.7.0.1
  */

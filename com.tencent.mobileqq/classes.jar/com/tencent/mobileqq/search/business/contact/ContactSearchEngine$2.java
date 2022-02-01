@@ -8,10 +8,10 @@ final class ContactSearchEngine$2
 {
   public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
   {
-    int j = Long.signum(paramIContactSearchModel2.b() - paramIContactSearchModel1.b());
+    int j = Long.signum(paramIContactSearchModel2.u() - paramIContactSearchModel1.u());
     int i = j;
     if (j == 0) {
-      i = Long.signum(paramIContactSearchModel2.a() - paramIContactSearchModel1.a());
+      i = Long.signum(paramIContactSearchModel2.dk_() - paramIContactSearchModel1.dk_());
     }
     j = i;
     if (i == 0) {
@@ -22,7 +22,7 @@ final class ContactSearchEngine$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.ContactSearchEngine.2
  * JD-Core Version:    0.7.0.1
  */

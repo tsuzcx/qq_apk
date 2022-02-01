@@ -53,7 +53,7 @@ public final class TopicInfo
   
   public TopicInfo(@NotNull TopicPublishInfo paramTopicPublishInfo)
   {
-    this(0L, paramTopicPublishInfo.a(), paramTopicPublishInfo.b(), paramTopicPublishInfo.c(), paramTopicPublishInfo.a(), 0L, 0, 96, null);
+    this(0L, paramTopicPublishInfo.a(), paramTopicPublishInfo.b(), paramTopicPublishInfo.c(), paramTopicPublishInfo.d(), 0L, 0, 96, null);
   }
   
   public TopicInfo(@NotNull String paramString)
@@ -207,7 +207,7 @@ public final class TopicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.TopicInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -14,191 +14,191 @@ import java.util.ArrayList;
 
 public class SaQianView
 {
-  private static final float jdField_c_of_type_Float = Resources.getSystem().getDisplayMetrics().density;
-  private float jdField_a_of_type_Float;
-  public int a;
-  private long jdField_a_of_type_Long;
+  private static final float q = Resources.getSystem().getDisplayMetrics().density;
   public Context a;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  public View a;
-  private ArrayList<SaQian> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130845441, 2130845442, 2130845443, 2130845444, 2130845445 };
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[5];
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private int jdField_c_of_type_Int;
-  private int d;
-  private int e;
+  public int b;
+  public View c;
+  private Bitmap[] d = new Bitmap[5];
+  private int[] e = { 2130846897, 2130846898, 2130846899, 2130846900, 2130846901 };
+  private int f;
+  private ArrayList<SaQian> g = new ArrayList();
+  private boolean h;
+  private long i;
+  private Matrix j;
+  private float k;
+  private float l;
+  private Paint m;
+  private int n;
+  private int o;
+  private int p;
   
   public SaQianView(Context paramContext, int paramInt1, int paramInt2, View paramView)
   {
-    int i = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Int = 255;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    int i1 = 0;
+    this.h = false;
+    this.j = new Matrix();
+    this.b = 255;
+    this.a = paramContext;
     try
     {
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      while (i1 < this.e.length)
       {
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = BitmapFactory.decodeResource(paramContext.getResources(), this.jdField_a_of_type_ArrayOfInt[i]);
-        i += 1;
+        this.d[i1] = BitmapFactory.decodeResource(paramContext.getResources(), this.e[i1]);
+        i1 += 1;
       }
       return;
     }
     catch (OutOfMemoryError paramContext)
     {
       paramContext.printStackTrace();
-      this.jdField_a_of_type_Float = paramInt1;
-      this.jdField_b_of_type_Float = paramInt2;
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.k = paramInt1;
+      this.l = paramInt2;
+      this.m = new Paint(1);
+      this.c = paramView;
     }
   }
   
-  public static int a(int paramInt)
+  public static int b(int paramInt)
   {
-    return Math.round(paramInt * jdField_c_of_type_Float);
+    return Math.round(paramInt * q);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.invalidate();
+    this.c.invalidate();
   }
   
   public void a(int paramInt)
   {
-    int i = 0;
-    while (i < paramInt)
+    int i1 = 0;
+    while (i1 < paramInt)
     {
-      int j = (int)(Math.random() * 5.0D);
-      SaQian localSaQian = SaQian.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j], this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, j, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localSaQian.jdField_a_of_type_Long = System.currentTimeMillis();
-      localSaQian.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localSaQian);
-      i += 1;
+      int i2 = (int)(Math.random() * 5.0D);
+      SaQian localSaQian = SaQian.a(this.d[i2], this.k, this.l, i2, this.a.getResources());
+      localSaQian.m = System.currentTimeMillis();
+      localSaQian.j = this.b;
+      this.g.add(localSaQian);
+      i1 += 1;
     }
-    this.jdField_b_of_type_Int += paramInt;
+    this.f += paramInt;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Float = paramInt1;
-    this.jdField_b_of_type_Float = paramInt2;
+    this.k = paramInt1;
+    this.l = paramInt2;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_c_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.e = (paramInt2 * 3 / 8);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_Int = 0;
+    this.n = paramInt1;
+    this.o = paramInt2;
+    this.p = (paramInt2 * 3 / 8);
+    this.g.clear();
+    this.f = 0;
   }
   
   public void a(Canvas paramCanvas)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 400L)
+    long l1 = System.currentTimeMillis();
+    if (l1 - this.i > 400L)
     {
-      this.jdField_a_of_type_Long = l;
-      if (this.jdField_b_of_type_Int <= 3) {
+      this.i = l1;
+      if (this.f <= 3) {
         a(1);
       }
     }
-    int i = 0;
+    int i1 = 0;
     SaQian localSaQian;
     float f1;
     float f2;
-    while (i < this.jdField_b_of_type_Int)
+    while (i1 < this.f)
     {
-      localSaQian = (SaQian)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localSaQian.e = ((float)(System.currentTimeMillis() - localSaQian.jdField_a_of_type_Long) / 1000.0F);
-      f1 = localSaQian.jdField_c_of_type_Float;
-      f2 = localSaQian.e;
-      float f3 = localSaQian.d;
-      float f4 = localSaQian.e;
-      float f5 = a(400);
-      float f6 = localSaQian.e;
-      float f7 = localSaQian.e;
-      localSaQian.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_Float + f1 * f2);
-      localSaQian.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float - (f3 * f4 - f5 * 0.5F * f6 * f7));
-      if (localSaQian.jdField_c_of_type_Int > 200) {
-        localSaQian.jdField_c_of_type_Int -= 1;
+      localSaQian = (SaQian)this.g.get(i1);
+      localSaQian.l = ((float)(System.currentTimeMillis() - localSaQian.m) / 1000.0F);
+      f1 = localSaQian.h;
+      f2 = localSaQian.l;
+      float f3 = localSaQian.i;
+      float f4 = localSaQian.l;
+      float f5 = b(400);
+      float f6 = localSaQian.l;
+      float f7 = localSaQian.l;
+      localSaQian.c[0] = (this.k + f1 * f2);
+      localSaQian.c[1] = (this.l - (f3 * f4 - f5 * 0.5F * f6 * f7));
+      if (localSaQian.j > 200) {
+        localSaQian.j -= 1;
       } else {
-        localSaQian.jdField_c_of_type_Int -= (int)(Math.random() * 5.0D + 5.0D);
+        localSaQian.j -= (int)(Math.random() * 5.0D + 5.0D);
       }
-      if ((localSaQian.jdField_c_of_type_Int < 0) || ((this.e > 0) && (localSaQian.jdField_a_of_type_ArrayOfFloat[1] > this.e)))
+      if ((localSaQian.j < 0) || ((this.p > 0) && (localSaQian.c[1] > this.p)))
       {
-        localSaQian.jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_Float;
-        localSaQian.jdField_a_of_type_ArrayOfFloat[1] = this.jdField_b_of_type_Float;
-        localSaQian.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-        localSaQian.jdField_a_of_type_Long = System.currentTimeMillis();
-        localSaQian.jdField_a_of_type_Double = (Math.random() * 3.141592653589793D / 6.0D + 2.879793265790644D);
-        localSaQian.jdField_b_of_type_Float = (a(40) + (float)Math.random() * a(50));
-        double d1 = localSaQian.jdField_b_of_type_Float;
-        double d2 = Math.cos(localSaQian.jdField_a_of_type_Double);
+        localSaQian.c[0] = this.k;
+        localSaQian.c[1] = this.l;
+        localSaQian.j = this.b;
+        localSaQian.m = System.currentTimeMillis();
+        localSaQian.f = (Math.random() * 3.141592653589793D / 6.0D + 2.879793265790644D);
+        localSaQian.g = (b(40) + (float)Math.random() * b(50));
+        double d1 = localSaQian.g;
+        double d2 = Math.cos(localSaQian.f);
         Double.isNaN(d1);
-        localSaQian.jdField_c_of_type_Float = ((float)(d1 * d2));
-        d1 = localSaQian.jdField_b_of_type_Float;
-        d2 = Math.sin(localSaQian.jdField_a_of_type_Double);
+        localSaQian.h = ((float)(d1 * d2));
+        d1 = localSaQian.g;
+        d2 = Math.sin(localSaQian.f);
         Double.isNaN(d1);
-        localSaQian.d = ((float)(d1 * d2));
-        localSaQian.jdField_a_of_type_Float = ((float)Math.random() * a(18) - a(18));
-        int j = (int)(Math.random() * 5.0D);
-        Bitmap localBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j];
-        localSaQian.jdField_a_of_type_AndroidGraphicsBitmap = SaQian.a(j, localSaQian.jdField_a_of_type_Int, localSaQian.jdField_b_of_type_Int, localBitmap);
-        if (j == 0) {
-          localSaQian.jdField_a_of_type_Int = AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localSaQian.i = ((float)(d1 * d2));
+        localSaQian.d = ((float)Math.random() * b(18) - b(18));
+        int i2 = (int)(Math.random() * 5.0D);
+        Bitmap localBitmap = this.d[i2];
+        localSaQian.e = SaQian.a(i2, localSaQian.a, localSaQian.b, localBitmap);
+        if (i2 == 0) {
+          localSaQian.a = AIOUtils.b(20.0F, this.a.getResources());
         } else {
-          localSaQian.jdField_a_of_type_Int = AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          localSaQian.a = AIOUtils.b(14.0F, this.a.getResources());
         }
-        localSaQian.jdField_b_of_type_Int = ((int)(localSaQian.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / localSaQian.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * localSaQian.jdField_a_of_type_Int));
+        localSaQian.b = ((int)(localSaQian.e.getHeight() / localSaQian.e.getWidth() * localSaQian.a));
       }
-      i += 1;
+      i1 += 1;
     }
-    i = 0;
-    while (i < this.jdField_b_of_type_Int)
+    i1 = 0;
+    while (i1 < this.f)
     {
-      localSaQian = (SaQian)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localSaQian.jdField_a_of_type_ArrayOfFloat[0] < this.jdField_c_of_type_Int) && (localSaQian.jdField_a_of_type_ArrayOfFloat[0] > 0.0F) && (localSaQian.jdField_a_of_type_ArrayOfFloat[1] < this.d) && (localSaQian.jdField_a_of_type_ArrayOfFloat[1] > 0.0F))
+      localSaQian = (SaQian)this.g.get(i1);
+      if ((localSaQian.c[0] < this.n) && (localSaQian.c[0] > 0.0F) && (localSaQian.c[1] < this.o) && (localSaQian.c[1] > 0.0F))
       {
-        f1 = localSaQian.jdField_a_of_type_Int * 1.0F / localSaQian.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-        f2 = localSaQian.jdField_b_of_type_Int * 1.0F / localSaQian.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localSaQian.jdField_a_of_type_Int / 2 / f1, -localSaQian.jdField_b_of_type_Int / 2 / f2);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localSaQian.jdField_a_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localSaQian.jdField_a_of_type_ArrayOfFloat[0] / f1, localSaQian.jdField_a_of_type_ArrayOfFloat[1] / f2);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f2);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localSaQian.jdField_c_of_type_Int);
-        paramCanvas.drawBitmap(localSaQian.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
+        f1 = localSaQian.a * 1.0F / localSaQian.e.getWidth();
+        f2 = localSaQian.b * 1.0F / localSaQian.e.getHeight();
+        this.j.setTranslate(-localSaQian.a / 2 / f1, -localSaQian.b / 2 / f2);
+        this.j.postRotate(localSaQian.d);
+        this.j.postTranslate(localSaQian.c[0] / f1, localSaQian.c[1] / f2);
+        this.j.postScale(f1, f2);
+        this.m.setAlpha(localSaQian.j);
+        paramCanvas.drawBitmap(localSaQian.e, this.j, this.m);
       }
-      i += 1;
+      i1 += 1;
     }
     a();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.h = true;
     a();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.i = System.currentTimeMillis();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
+    this.g.clear();
+    this.h = false;
+    this.f = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.SaQianView
  * JD-Core Version:    0.7.0.1
  */

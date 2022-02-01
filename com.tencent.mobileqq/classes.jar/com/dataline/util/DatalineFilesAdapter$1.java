@@ -28,7 +28,7 @@ class DatalineFilesAdapter$1
     if (((DatalineFilesAdapter.ItemHolder)localObject1).a != null)
     {
       int i = DataLineMsgRecord.getDevTypeBySeId(((DatalineFilesAdapter.ItemHolder)localObject1).a.a);
-      Object localObject2 = DatalineFilesAdapter.a(this.a).getMessageFacade().a(i).a(((DatalineFilesAdapter.ItemHolder)localObject1).a.a);
+      Object localObject2 = DatalineFilesAdapter.a(this.a).getMessageFacade().d(i).a(((DatalineFilesAdapter.ItemHolder)localObject1).a.a);
       if (localObject2 != null)
       {
         localObject1 = FileManagerUtil.a((DataLineMsgRecord)localObject2);
@@ -40,7 +40,7 @@ class DatalineFilesAdapter$1
         localForwardFileInfo.c(((DataLineMsgRecord)localObject2).sessionid);
         localForwardFileInfo.d(((DataLineMsgRecord)localObject2).filesize);
         localForwardFileInfo.a(((DataLineMsgRecord)localObject2).path);
-        localObject2 = new Intent(DatalineFilesAdapter.a(this.a).getApplicationContext(), FileBrowserActivity.class);
+        localObject2 = new Intent(DatalineFilesAdapter.b(this.a).getApplicationContext(), FileBrowserActivity.class);
         if ((((FileManagerEntity)localObject1).nFileType == 0) || (((FileManagerEntity)localObject1).nFileType == 1))
         {
           ArrayList localArrayList = new ArrayList();
@@ -48,7 +48,7 @@ class DatalineFilesAdapter$1
           ((Intent)localObject2).putStringArrayListExtra("Aio_SessionId_ImageList", localArrayList);
         }
         ((Intent)localObject2).putExtra("fileinfo", localForwardFileInfo);
-        DatalineFilesAdapter.a(this.a).startActivityForResult((Intent)localObject2, 102);
+        DatalineFilesAdapter.c(this.a).startActivityForResult((Intent)localObject2, 102);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

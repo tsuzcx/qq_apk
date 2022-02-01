@@ -18,22 +18,22 @@ import tencent.im.oidb.oidb_0xb60.ReqBody;
 public class VerifyUrlJobSegment
   extends JobSegment<MiniAppInfo, MiniAppInfo>
 {
-  static LruCache<String, Long> jdField_a_of_type_AndroidUtilLruCache = new LruCache(16);
-  String jdField_a_of_type_JavaLangString;
+  static LruCache<String, Long> a = new LruCache(16);
+  String b;
   
   public VerifyUrlJobSegment(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   protected void a(JobContext paramJobContext, MiniAppInfo paramMiniAppInfo)
   {
     paramJobContext = new StringBuilder();
-    paramJobContext.append(paramMiniAppInfo.h);
+    paramJobContext.append(paramMiniAppInfo.p);
     paramJobContext.append('_');
-    paramJobContext.append(this.jdField_a_of_type_JavaLangString);
+    paramJobContext.append(this.b);
     paramJobContext = paramJobContext.toString();
-    Object localObject = (Long)jdField_a_of_type_AndroidUtilLruCache.get(paramJobContext);
+    Object localObject = (Long)a.get(paramJobContext);
     if ((localObject != null) && (((Long)localObject).longValue() > NetConnInfoCenter.getServerTimeMillis()))
     {
       if (QLog.isColorLevel()) {
@@ -53,21 +53,21 @@ public class VerifyUrlJobSegment
     }
     try
     {
-      int i = Integer.parseInt(paramMiniAppInfo.jdField_a_of_type_JavaLangString);
+      int i = Integer.parseInt(paramMiniAppInfo.a);
       oidb_0xb60.ReqBody localReqBody = new oidb_0xb60.ReqBody();
       localReqBody.check_url_req.setHasFlag(true);
-      localReqBody.check_url_req.url.set(this.jdField_a_of_type_JavaLangString);
+      localReqBody.check_url_req.url.set(this.b);
       localReqBody.check_url_req.appid.set(i);
-      localReqBody.check_url_req.app_type.set(paramMiniAppInfo.jdField_a_of_type_Int);
+      localReqBody.check_url_req.app_type.set(paramMiniAppInfo.b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("send type=");
-        localStringBuilder.append(paramMiniAppInfo.jdField_a_of_type_Int);
+        localStringBuilder.append(paramMiniAppInfo.b);
         localStringBuilder.append(", appid=");
-        localStringBuilder.append(paramMiniAppInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramMiniAppInfo.a);
         localStringBuilder.append(", url=");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, localStringBuilder.toString());
       }
       ProtoUtils.a((AppRuntime)localObject, new VerifyUrlJobSegment.1(this, paramMiniAppInfo, paramJobContext), localReqBody.toByteArray(), "OidbSvc.0xb60_2", 2912, 2, null, 0L);
@@ -86,7 +86,7 @@ public class VerifyUrlJobSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment
  * JD-Core Version:    0.7.0.1
  */

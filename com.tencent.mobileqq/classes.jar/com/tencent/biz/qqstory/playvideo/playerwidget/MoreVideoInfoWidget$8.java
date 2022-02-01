@@ -26,7 +26,7 @@ class MoreVideoInfoWidget$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
       paramDialogInterface.c(false);
     }
@@ -35,29 +35,29 @@ class MoreVideoInfoWidget$8
       if (paramInt != 1) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.a("");
-      if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
+      this.d.a("");
+      if (StoryVideoItem.isFakeVid(this.b.mVid))
       {
-        ((StoryVideoUploadManager)SuperManager.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-        paramDialogInterface = new DeleteStoryVideoEvent(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
-        paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-        if (paramDialogInterface.a == 0L) {
-          paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+        ((StoryVideoUploadManager)SuperManager.a(3)).d(this.b.mVid);
+        paramDialogInterface = new DeleteStoryVideoEvent(new ErrorMessage(), this.b.mVid, false);
+        paramDialogInterface.b = this.b.mOwnerUid;
+        paramDialogInterface.e = this.b.mVideoIndex;
+        if (paramDialogInterface.e == 0L) {
+          paramDialogInterface.e = this.b.mCreateTime;
         }
         StoryDispatcher.a().dispatch(paramDialogInterface);
       }
-      else if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
+      else if (this.b.mStoryType == 2)
       {
-        ((TroopStoryManager)PlayModeUtils.a().getManager(QQManagerFactory.TROOP_STORY_MANAGER)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new MoreVideoInfoWidget.8.1(this));
+        ((TroopStoryManager)PlayModeUtils.b().getManager(QQManagerFactory.TROOP_STORY_MANAGER)).a(this.b.mVid, 0, false, new MoreVideoInfoWidget.8.1(this));
       }
       else
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        new DeleteStoryVideoHandler().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+        this.c.a(this.d.p.c, 0, this.b);
+        this.c.a(this.d.p.c, 1, this.b);
+        new DeleteStoryVideoHandler().a(this.b.mVid);
       }
-      StoryReportor.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      StoryReportor.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.b.mVid });
     }
   }
 }

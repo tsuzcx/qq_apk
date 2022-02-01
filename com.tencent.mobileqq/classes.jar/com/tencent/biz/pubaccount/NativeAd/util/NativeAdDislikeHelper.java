@@ -17,14 +17,14 @@ import java.util.ArrayList;
 
 public class NativeAdDislikeHelper
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
+  private ActionSheet a;
+  private Activity b;
+  private AppInterface c;
   
   public NativeAdDislikeHelper(Activity paramActivity, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.b = paramActivity;
+    this.c = paramAppInterface;
   }
   
   public void a(AdvertisementInfo paramAdvertisementInfo, ArrayList<DislikeInfo> paramArrayList)
@@ -34,25 +34,25 @@ public class NativeAdDislikeHelper
       if (paramArrayList.size() == 0) {
         return;
       }
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null));
+      this.a = ((ActionSheet)ActionSheetHelper.b(this.b, null));
       Object localObject = new NativeAdDislikeHelper.1(this);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.registerWatchDisMissActionListener((ActionSheet.WatchDismissActions)localObject);
-      localObject = new ReadInJoyDisLikeDialogViewForAd(this.jdField_a_of_type_AndroidAppActivity);
+      this.a.registerWatchDisMissActionListener((ActionSheet.WatchDismissActions)localObject);
+      localObject = new ReadInJoyDisLikeDialogViewForAd(this.b);
       ((ReadInJoyDisLikeDialogView)localObject).setOnUninterestConfirmListener(new NativeAdDislikeHelper.2(this, paramAdvertisementInfo));
       ((ReadInJoyDisLikeDialogView)localObject).setOnComplainListener(new NativeAdDislikeHelper.3(this, paramAdvertisementInfo));
       ((ReadInJoyDisLikeDialogView)localObject).setUninterestData(paramArrayList);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView((View)localObject, null);
+      this.a.setActionContentView((View)localObject, null);
       try
       {
-        if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
+        if (!this.a.isShowing())
         {
-          if ((VersionUtils.g()) && (!ShortVideoUtils.isInFullScreenBlackList()) && ((this.jdField_a_of_type_AndroidAppActivity instanceof Activity)))
+          if ((VersionUtils.g()) && (!ShortVideoUtils.isInFullScreenBlackList()) && ((this.b instanceof Activity)))
           {
-            this.jdField_a_of_type_ComTencentWidgetActionSheet.getWindow().setFlags(8, 8);
-            this.jdField_a_of_type_ComTencentWidgetActionSheet.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
-            this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnShowListener(new NativeAdDislikeHelper.4(this));
+            this.a.getWindow().setFlags(8, 8);
+            this.a.getWindow().getDecorView().setSystemUiVisibility(this.b.getWindow().getDecorView().getSystemUiVisibility());
+            this.a.setOnShowListener(new NativeAdDislikeHelper.4(this));
           }
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+          this.a.show();
           return;
         }
       }
@@ -65,7 +65,7 @@ public class NativeAdDislikeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdDislikeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -20,10 +20,10 @@ class AudioNewController$2
     localStringBuilder.append("onRecordFinish, Duration:");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(", CacheSize:");
-    localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a());
+    localStringBuilder.append(this.a.e.d());
     AssistantUtils.a("AudioNewController", localStringBuilder.toString());
     if (paramLong > 0L) {
-      this.a.b.set(paramLong);
+      this.a.h.set(paramLong);
     }
   }
   
@@ -35,11 +35,11 @@ class AudioNewController$2
   public void a(byte[] paramArrayOfByte, long paramLong)
   {
     if (paramLong > 0L) {
-      this.a.b.set(paramLong);
+      this.a.h.set(paramLong);
     }
     int i = this.a.a(paramArrayOfByte);
     paramArrayOfByte = this.a;
-    paramArrayOfByte.a(paramArrayOfByte.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam, i);
+    paramArrayOfByte.a(paramArrayOfByte.f, i);
   }
   
   public int b()
@@ -54,12 +54,12 @@ class AudioNewController$2
     ((StringBuilder)localObject).append(paramLong);
     AssistantUtils.a("AudioNewController", ((StringBuilder)localObject).toString());
     localObject = this.a;
-    ((AudioNewController)localObject).b(((AudioNewController)localObject).jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam, b());
+    ((AudioNewController)localObject).b(((AudioNewController)localObject).f, b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.AudioNewController.2
  * JD-Core Version:    0.7.0.1
  */

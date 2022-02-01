@@ -11,7 +11,7 @@ class QQSettingMeNightModeProcessor$1
   
   public void a(Bundle paramBundle)
   {
-    this.a.g();
+    this.a.i();
   }
   
   public void b(Bundle paramBundle)
@@ -19,12 +19,12 @@ class QQSettingMeNightModeProcessor$1
     int i = paramBundle.getInt("start_status");
     if (i == 1)
     {
-      this.a.g();
+      this.a.i();
       return;
     }
     if (i == 2)
     {
-      this.a.g();
+      this.a.i();
       return;
     }
     if (i == 3)
@@ -36,7 +36,7 @@ class QQSettingMeNightModeProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeNightModeProcessor.1
  * JD-Core Version:    0.7.0.1
  */

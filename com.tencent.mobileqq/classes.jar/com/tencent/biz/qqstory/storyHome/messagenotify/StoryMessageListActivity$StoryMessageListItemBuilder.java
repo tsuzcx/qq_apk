@@ -9,10 +9,10 @@ import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 class StoryMessageListActivity$StoryMessageListItemBuilder
   extends StorySwipeTextViewMenuBuilder
 {
-  private static final int[] a = { 2131691479 };
-  private static final int[] b = { 2131165596 };
-  private static final int[] c = { 2131370801 };
-  private static int[] d = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299058) };
+  private static final int[] a = { 2131888438 };
+  private static final int[] b = { 2131165945 };
+  private static final int[] c = { 2131438111 };
+  private static int[] d = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299786) };
   
   public StoryMessageListActivity$StoryMessageListItemBuilder()
   {

@@ -12,37 +12,37 @@ public class ApolloBarrageCache
   {
     if ((paramBitmap != null) && (paramBarrage != null))
     {
-      if (TextUtils.isEmpty(paramBarrage.jdField_a_of_type_JavaLangCharSequence)) {
+      if (TextUtils.isEmpty(paramBarrage.a)) {
         return;
       }
-      Object localObject2 = paramBarrage.jdField_a_of_type_JavaLangString;
+      Object localObject2 = paramBarrage.c;
       Object localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "";
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(paramBarrage.jdField_a_of_type_JavaLangCharSequence);
+      ((StringBuilder)localObject2).append(paramBarrage.a);
       paramBarrage = ((StringBuilder)localObject2).toString();
       this.a.put(paramBarrage, new WeakReference(paramBitmap));
     }
   }
   
-  public Bitmap b(Barrage paramBarrage)
+  public Bitmap c(Barrage paramBarrage)
   {
     if (paramBarrage != null)
     {
-      if (TextUtils.isEmpty(paramBarrage.jdField_a_of_type_JavaLangCharSequence)) {
+      if (TextUtils.isEmpty(paramBarrage.a)) {
         return null;
       }
-      Object localObject2 = paramBarrage.jdField_a_of_type_JavaLangString;
+      Object localObject2 = paramBarrage.c;
       Object localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "";
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(paramBarrage.jdField_a_of_type_JavaLangCharSequence);
+      ((StringBuilder)localObject2).append(paramBarrage.a);
       paramBarrage = ((StringBuilder)localObject2).toString();
       paramBarrage = (WeakReference)this.a.get(paramBarrage);
       if (paramBarrage != null) {
@@ -54,7 +54,7 @@ public class ApolloBarrageCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.ApolloBarrageCache
  * JD-Core Version:    0.7.0.1
  */

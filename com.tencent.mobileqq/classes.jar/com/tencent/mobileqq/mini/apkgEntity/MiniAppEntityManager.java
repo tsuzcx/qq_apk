@@ -1,7 +1,11 @@
 package com.tencent.mobileqq.mini.apkgEntity;
 
 import android.text.TextUtils;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -12,6 +16,8 @@ import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
 import java.io.UTFDataFormatException;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.manager.Manager;
@@ -22,10 +28,16 @@ public class MiniAppEntityManager
   private static final long APPINFO_DELETE_TIME = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_appinfoentity_interval_time", 172800000L);
   private static final long OTHER_DELETE_TIME = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_otherentity_interval_time", 345600000L);
   private static final String TAG = "MiniAppEntityManager";
-  private EntityManager mEntityManager = this.miniAppEntityManagerFactory.createEntityManager();
-  private MiniAppEntityManagerFactory miniAppEntityManagerFactory = getEntityManagerFactory(paramString);
+  private static final HashMap<String, MiniAppEntityManager> sManagerHolder = new HashMap();
+  private final EntityManager mEntityManager;
+  private final MiniAppEntityManagerFactory miniAppEntityManagerFactory;
   
-  public MiniAppEntityManager(String paramString) {}
+  private MiniAppEntityManager(String paramString)
+  {
+    this.miniAppEntityManagerFactory = new MiniAppEntityManagerFactory(paramString);
+    this.mEntityManager = this.miniAppEntityManagerFactory.createEntityManager();
+    verifyAuthenticationAsync();
+  }
   
   private void deleteDbFile()
   {
@@ -91,27 +103,49 @@ public class MiniAppEntityManager
     }
   }
   
-  private MiniAppEntityManagerFactory getEntityManagerFactory(String paramString)
+  @Nullable
+  public static MiniAppEntityManager get()
   {
-    if (paramString != null)
-    {
-      MiniAppEntityManagerFactory localMiniAppEntityManagerFactory = this.miniAppEntityManagerFactory;
-      if (localMiniAppEntityManagerFactory != null) {
-        return localMiniAppEntityManagerFactory;
-      }
-      try
-      {
-        if (this.miniAppEntityManagerFactory == null)
-        {
-          paramString = new MiniAppEntityManagerFactory(paramString);
-          ThreadManagerV2.excute(new MiniAppEntityManager.1(this, paramString), 32, null, true);
-          this.miniAppEntityManagerFactory = paramString;
-        }
-        return this.miniAppEntityManagerFactory;
-      }
-      finally {}
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (MiniAppEntityManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
     }
-    throw new IllegalStateException("Can not create a entity factory, the account is null.");
+    return get(localAppRuntime.getAccount());
+  }
+  
+  @Nullable
+  public static MiniAppEntityManager get(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      MiniAppEntityManager localMiniAppEntityManager2 = (MiniAppEntityManager)sManagerHolder.get(paramString);
+      MiniAppEntityManager localMiniAppEntityManager1 = localMiniAppEntityManager2;
+      if (localMiniAppEntityManager2 == null)
+      {
+        localMiniAppEntityManager1 = new MiniAppEntityManager(paramString);
+        sManagerHolder.put(paramString, localMiniAppEntityManager1);
+      }
+      return localMiniAppEntityManager1;
+    }
+    finally {}
+  }
+  
+  private static void removeCachedManager(@NonNull MiniAppEntityManager paramMiniAppEntityManager)
+  {
+    try
+    {
+      sManagerHolder.values().remove(paramMiniAppEntityManager);
+      return;
+    }
+    finally {}
+  }
+  
+  private void verifyAuthenticationAsync()
+  {
+    ThreadManagerV2.excute(new MiniAppEntityManager.1(this), 32, null, true);
   }
   
   public void checkDB()
@@ -244,9 +278,10 @@ public class MiniAppEntityManager
       ((EntityManager)localObject).close();
     }
     localObject = this.miniAppEntityManagerFactory;
-    if (localObject != null) {
-      ((MiniAppEntityManagerFactory)localObject).close();
+    if ((localObject != null) && (((MiniAppEntityManagerFactory)localObject).isOpen())) {
+      this.miniAppEntityManagerFactory.close();
     }
+    removeCachedManager(this);
   }
   
   public List<? extends Entity> queryEntity(Class<? extends Entity> paramClass, boolean paramBoolean, String paramString1, String[] paramArrayOfString, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -283,7 +318,7 @@ public class MiniAppEntityManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager
  * JD-Core Version:    0.7.0.1
  */

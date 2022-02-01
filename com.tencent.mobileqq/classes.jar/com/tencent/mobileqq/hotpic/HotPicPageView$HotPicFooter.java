@@ -11,25 +11,24 @@ import mqq.os.MqqHandler;
 class HotPicPageView$HotPicFooter
   implements HotPicFooterInterface
 {
-  int jdField_a_of_type_Int = 1;
-  HotPicPageView.HotPicAdapter jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$HotPicAdapter;
-  public boolean a;
+  int a = 1;
+  HotPicPageView.HotPicAdapter b;
+  public boolean c = false;
   
   public HotPicPageView$HotPicFooter(HotPicPageView paramHotPicPageView, HotPicPageView.HotPicAdapter paramHotPicAdapter)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$HotPicAdapter = paramHotPicAdapter;
+    this.b = paramHotPicAdapter;
   }
   
   public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    HotPicPageView localHotPicPageView = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView;
-    return new HotPicPageView.MyViewHolder(localHotPicPageView, LayoutInflater.from(localHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2131561596, paramViewGroup, false), null);
+    HotPicPageView localHotPicPageView = this.d;
+    return new HotPicPageView.MyViewHolder(localHotPicPageView, LayoutInflater.from(localHotPicPageView.b).inflate(2131627959, paramViewGroup, false), null);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -47,22 +46,22 @@ class HotPicPageView$HotPicFooter
       paramViewHolder.itemView.setLayoutParams(localLayoutParams2);
     }
     localLayoutParams2.setFullSpan(true);
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_Int;
-    if ((!this.jdField_a_of_type_Boolean) && (paramInt != -20) && (this.jdField_a_of_type_Int == 1))
+    paramInt = this.d.l;
+    if ((!this.c) && (paramInt != -20) && (this.a == 1))
     {
-      HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramInt);
-      this.jdField_a_of_type_Boolean = true;
+      HotPicManager.a(this.d.c).e(paramInt);
+      this.c = true;
     }
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
-      paramViewHolder.itemView.findViewById(2131368305).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131368306).setVisibility(4);
+      paramViewHolder.itemView.findViewById(2131435178).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131435179).setVisibility(4);
       return;
     }
-    if (HotPicPageView.b())
+    if (HotPicPageView.p())
     {
-      paramViewHolder.itemView.findViewById(2131368306).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131368305).setVisibility(8);
+      paramViewHolder.itemView.findViewById(2131435179).setVisibility(0);
+      paramViewHolder.itemView.findViewById(2131435178).setVisibility(8);
       return;
     }
     ThreadManager.getUIHandler().post(new HotPicPageView.HotPicFooter.1(this, paramViewHolder));
@@ -70,12 +69,12 @@ class HotPicPageView$HotPicFooter
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.HotPicFooter
  * JD-Core Version:    0.7.0.1
  */

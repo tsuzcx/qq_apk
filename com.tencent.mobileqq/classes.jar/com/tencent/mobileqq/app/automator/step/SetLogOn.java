@@ -11,17 +11,17 @@ public class SetLogOn
 {
   protected int doStep()
   {
-    String str = this.mAutomator.a.getServerConfigValue(ServerConfigManager.ConfigType.common, "QQIniUrl");
+    String str = this.mAutomator.k.getServerConfigValue(ServerConfigManager.ConfigType.common, "QQIniUrl");
     if ((str != null) && (str.length() > 0)) {
-      ReportLog.b = str.trim();
+      ReportLog.d = str.trim();
     }
-    ReportLog.a(this.mAutomator.a.getApp(), true);
+    ReportLog.a(this.mAutomator.k.getApp(), true);
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.SetLogOn
  * JD-Core Version:    0.7.0.1
  */

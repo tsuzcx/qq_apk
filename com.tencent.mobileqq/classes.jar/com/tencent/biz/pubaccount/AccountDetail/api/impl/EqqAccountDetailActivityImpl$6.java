@@ -23,9 +23,9 @@ class EqqAccountDetailActivityImpl$6
       this.this$0.publicAccountHandler.onUnfollowPublicAccount(this.this$0.eqqDetail);
       this.this$0.deleteAccount(this.this$0.eqqDetail);
       this.this$0.mHandler.sendEmptyMessage(2);
-      this.this$0.app.getMessageFacade().a(this.this$0.uin, 1008);
-      this.this$0.app.getMessageFacade().a(this.this$0.uin, 1024);
-      this.this$0.app.getMessageFacade().a(this.this$0.uin, 0);
+      this.this$0.app.getMessageFacade().c(this.this$0.uin, 1008);
+      this.this$0.app.getMessageFacade().c(this.this$0.uin, 1024);
+      this.this$0.app.getMessageFacade().c(this.this$0.uin, 0);
       ReportController.b(this.this$0.app, "P_CliOper", "Pb_account_lifeservice", this.this$0.uin, "0X8004E43", "0X8004E43", 0, 0, this.this$0.uin, "", "", "");
       return;
     }
@@ -34,7 +34,7 @@ class EqqAccountDetailActivityImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.EqqAccountDetailActivityImpl.6
  * JD-Core Version:    0.7.0.1
  */

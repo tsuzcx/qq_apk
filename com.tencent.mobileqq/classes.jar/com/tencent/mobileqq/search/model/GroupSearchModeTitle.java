@@ -10,16 +10,19 @@ import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.SearchUtil;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.base.api.SearchInfoInterface;
 import com.tencent.mobileqq.search.business.group.model.SearchResultGroupModelImpl;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBaseItem;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,157 +30,154 @@ import org.json.JSONObject;
 public class GroupSearchModeTitle
   extends SearchResultGroupModelImpl
 {
-  private ISearchResultGroupModel a;
   public String a;
-  public boolean a;
-  private String b;
   public boolean b;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
+  public boolean c;
+  private String d = HardCodeUtil.a(2131903353);
+  private boolean e;
+  private String i;
+  private ISearchResultGroupModel j;
+  private boolean k;
+  private boolean l;
   
   public GroupSearchModeTitle(ISearchResultGroupModel paramISearchResultGroupModel)
   {
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131705465);
     boolean bool = true;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel = paramISearchResultGroupModel;
-    this.jdField_a_of_type_JavaLangString = paramISearchResultGroupModel.a();
-    if (paramISearchResultGroupModel.a() != null)
+    this.b = true;
+    this.c = false;
+    this.j = paramISearchResultGroupModel;
+    this.a = paramISearchResultGroupModel.a();
+    if (paramISearchResultGroupModel.b() != null)
     {
-      if (paramISearchResultGroupModel.a().size() <= paramISearchResultGroupModel.a()) {
+      if (paramISearchResultGroupModel.b().size() <= paramISearchResultGroupModel.d()) {
         bool = false;
       }
-      this.jdField_c_of_type_Boolean = bool;
+      this.e = bool;
     }
   }
   
   public GroupSearchModeTitle(ISearchResultGroupModel paramISearchResultGroupModel, String paramString, boolean paramBoolean)
   {
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131705465);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel = paramISearchResultGroupModel;
+    this.b = true;
+    this.c = false;
+    this.j = paramISearchResultGroupModel;
     if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaLangString = paramISearchResultGroupModel.a();
+      this.a = paramISearchResultGroupModel.a();
     } else {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.a = paramString;
     }
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public GroupSearchModeTitle(ISearchResultGroupModel paramISearchResultGroupModel, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131705465);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel = paramISearchResultGroupModel;
-    this.jdField_a_of_type_JavaLangString = paramISearchResultGroupModel.a();
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    this.d = paramBoolean2;
+    this.b = true;
+    this.c = false;
+    this.j = paramISearchResultGroupModel;
+    this.a = paramISearchResultGroupModel.a();
+    this.e = paramBoolean1;
+    this.k = paramBoolean2;
   }
   
   public GroupSearchModeTitle(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131705465);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.b = true;
+    this.c = false;
+    this.a = paramString1;
+    this.d = paramString2;
+    this.i = paramString3;
     if (TextUtils.isEmpty(paramString2)) {
-      this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131705470);
+      this.d = HardCodeUtil.a(2131903358);
     }
-    this.jdField_c_of_type_Boolean = (TextUtils.isEmpty(paramString3) ^ true);
+    this.e = (TextUtils.isEmpty(paramString3) ^ true);
   }
   
   private void a(SearchInfoInterface paramSearchInfoInterface)
   {
     if (paramSearchInfoInterface != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel;
+      Object localObject = this.j;
       if (localObject != null)
       {
         if (!(localObject instanceof GroupBaseNetSearchModel)) {
           return;
         }
         localObject = (GroupBaseNetSearchModel)localObject;
-        if (SearchUtils.a(((GroupBaseNetSearchModel)localObject).jdField_a_of_type_Long))
+        if (SearchUtils.a(((GroupBaseNetSearchModel)localObject).a))
         {
-          int i;
-          if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && ((this.jdField_c_of_type_JavaLangString.startsWith("http://")) || (this.jdField_c_of_type_JavaLangString.startsWith("https://")))) {
-            i = 0;
+          int m;
+          if ((!TextUtils.isEmpty(this.i)) && ((this.i.startsWith("http://")) || (this.i.startsWith("https://")))) {
+            m = 0;
           } else {
-            i = 1;
+            m = 1;
           }
-          String str1 = paramSearchInfoInterface.a();
+          String str1 = paramSearchInfoInterface.h();
           paramSearchInfoInterface = new StringBuilder();
           paramSearchInfoInterface.append("");
-          paramSearchInfoInterface.append(a());
+          paramSearchInfoInterface.append(h());
           String str2 = paramSearchInfoInterface.toString();
-          if (i != 0) {
+          if (m != 0) {
             paramSearchInfoInterface = "1";
           } else {
             paramSearchInfoInterface = "0";
           }
           SearchUtils.a("all_result", "more_object", new String[] { str1, str2, paramSearchInfoInterface });
         }
-        if ((!TextUtils.isEmpty(((GroupBaseNetSearchModel)localObject).d())) && (((GroupBaseNetSearchModel)localObject).d().contains("opencirclesearch")))
+        if ((!TextUtils.isEmpty(((GroupBaseNetSearchModel)localObject).g())) && (((GroupBaseNetSearchModel)localObject).g().contains("opencirclesearch")))
         {
           paramSearchInfoInterface = new HashMap();
-          paramSearchInfoInterface.put("ext6", b());
-          if ((((GroupBaseNetSearchModel)localObject).jdField_a_of_type_JavaUtilList != null) && (((GroupBaseNetSearchModel)localObject).jdField_a_of_type_JavaUtilList.size() > 0) && ((((GroupBaseNetSearchModel)localObject).jdField_a_of_type_JavaUtilList.get(0) instanceof NetSearchTemplateHorizontalOneItem)))
+          paramSearchInfoInterface.put("ext6", c());
+          if ((((GroupBaseNetSearchModel)localObject).c != null) && (((GroupBaseNetSearchModel)localObject).c.size() > 0) && ((((GroupBaseNetSearchModel)localObject).c.get(0) instanceof NetSearchTemplateHorizontalOneItem)))
           {
-            localObject = (NetSearchTemplateHorizontalOneItem)((GroupBaseNetSearchModel)localObject).jdField_a_of_type_JavaUtilList.get(0);
-            if (((NetSearchTemplateHorizontalOneItem)localObject).d == 6) {
+            localObject = (NetSearchTemplateHorizontalOneItem)((GroupBaseNetSearchModel)localObject).c.get(0);
+            if (((NetSearchTemplateHorizontalOneItem)localObject).B == 6) {
               paramSearchInfoInterface.put("ext8", "1");
-            } else if (((NetSearchTemplateHorizontalOneItem)localObject).d == 5) {
+            } else if (((NetSearchTemplateHorizontalOneItem)localObject).B == 5) {
               paramSearchInfoInterface.put("ext8", "2");
             }
           }
-          ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504("", 73, 2, 2, paramSearchInfoInterface, null, null);
-          UniteSearchReportController.a(null, 0, UniteSearchActivity.d, "0X800BA25", 0, 0, null, null);
+          ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setActionType(73).setSubActionType(2).setThrActionType(2).setExtras(paramSearchInfoInterface));
+          UniteSearchReportController.a(null, 0, UniteSearchActivity.f, "0X800BA25", 0, 0, null, null);
         }
       }
     }
   }
   
-  public int a()
+  private void l()
   {
-    return 3;
-  }
-  
-  public long a()
-  {
-    ISearchResultGroupModel localISearchResultGroupModel = this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel;
-    if (localISearchResultGroupModel != null)
+    if (this.l) {
+      return;
+    }
+    this.l = true;
+    if (!this.e) {
+      return;
+    }
+    Object localObject1 = this.j.b();
+    if (localObject1 == null) {
+      return;
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      int i = SearchUtil.a(localISearchResultGroupModel);
-      if (i > 0) {
-        return i;
+      Object localObject2 = (ISearchResultModel)((Iterator)localObject1).next();
+      if ((localObject2 instanceof NetSearchTemplateMiniAppItem))
+      {
+        UniteSearchReportController.a(null, 0, ((NetSearchTemplateMiniAppItem)localObject2).p, "0X8009D46", 0, 0, null, null);
+        return;
+      }
+      if ((localObject2 instanceof NetSearchTemplateBaseItem))
+      {
+        localObject2 = (NetSearchTemplateBaseItem)localObject2;
+        if (((NetSearchTemplateBaseItem)localObject2).i == 1003L) {
+          UniteSearchReportController.a(null, 0, ((NetSearchTemplateBaseItem)localObject2).p, "0X8009D52", 0, 0, null, null);
+        }
       }
     }
-    localISearchResultGroupModel = this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel;
-    if ((localISearchResultGroupModel != null) && ((localISearchResultGroupModel instanceof GroupBaseNetSearchModel))) {
-      return ((GroupBaseNetSearchModel)localISearchResultGroupModel).jdField_a_of_type_Long;
-    }
-    return -1L;
-  }
-  
-  public ISearchResultGroupModel a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return null;
+    return this.a;
   }
   
   public void a(View paramView)
@@ -187,33 +187,33 @@ public class GroupSearchModeTitle
     {
       localObject1 = (SearchInfoInterface)localContext;
       Object localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      int i = ((SearchInfoInterface)localObject1).a();
+      int m = ((SearchInfoInterface)localObject1).i();
       Object localObject4;
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 2)
+        if (m != 2)
         {
-          if (i != 3) {
-            break label473;
+          if (m != 3) {
+            break label483;
           }
-          localObject2 = ((SearchInfoInterface)localObject1).a();
+          localObject2 = ((SearchInfoInterface)localObject1).h();
           Object localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("");
-          ((StringBuilder)localObject3).append(((SearchInfoInterface)localObject1).a());
+          ((StringBuilder)localObject3).append(((SearchInfoInterface)localObject1).j());
           localObject3 = ((StringBuilder)localObject3).toString();
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("");
           ((StringBuilder)localObject4).append(a(1));
-          SearchUtils.a("sub_result", "more_result", new String[] { localObject2, localObject3, ((StringBuilder)localObject4).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject1).a()) });
-          break label473;
+          SearchUtils.a("sub_result", "more_result", new String[] { localObject2, localObject3, ((StringBuilder)localObject4).toString(), SearchUtils.a("dynamic_tab_search.1", ((SearchInfoInterface)localObject1).j()) });
+          break label483;
         }
       }
       else
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel instanceof GroupBaseNetSearchModel)) {
+        if ((this.j instanceof GroupBaseNetSearchModel)) {
           a((SearchInfoInterface)localObject1);
         }
-        if (!SearchUtil.jdField_a_of_type_Boolean)
+        if (!SearchUtil.a)
         {
           localObject2 = new JSONObject();
           try
@@ -232,45 +232,97 @@ public class GroupSearchModeTitle
           QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
           localObject4 = new ReportModelDC02528().module("all_result").action("clk_more");
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(a());
+          localStringBuilder.append(h());
           localStringBuilder.append("");
-          localObject2 = ((ReportModelDC02528)localObject4).obj1(localStringBuilder.toString()).ver1(((SearchInfoInterface)localObject1).a()).ver2(UniteSearchReportController.a(UniteSearchActivity.d)).ver7(((JSONObject)localObject2).toString());
+          localObject2 = ((ReportModelDC02528)localObject4).obj1(localStringBuilder.toString()).ver1(((SearchInfoInterface)localObject1).h()).ver2(UniteSearchReportController.a(UniteSearchActivity.f)).ver7(((JSONObject)localObject2).toString());
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append(localQQAppInterface.getCurrentAccountUin());
-          ((StringBuilder)localObject4).append(SearchUtils.d);
+          ((StringBuilder)localObject4).append(SearchUtils.j);
           UniteSearchReportController.a(localQQAppInterface, ((ReportModelDC02528)localObject2).session_id(((StringBuilder)localObject4).toString()));
         }
       }
-      SearchUtils.a("all_result", "clk_tab_more", new String[] { b(), SearchUtils.a(((SearchInfoInterface)localObject1).a()), "", SearchUtils.a("dynamic_unite_search.1", ((SearchInfoInterface)localObject1).a()) });
+      SearchUtils.a("all_result", "clk_tab_more", new String[] { c(), SearchUtils.a(((SearchInfoInterface)localObject1).j()), "", SearchUtils.a("dynamic_unite_search.1", ((SearchInfoInterface)localObject1).j()) });
     }
-    label473:
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel;
+    label483:
+    Object localObject1 = this.j;
     if (localObject1 != null)
     {
       ((ISearchResultGroupModel)localObject1).a(paramView);
       return;
     }
-    if (this.jdField_c_of_type_Boolean) {
-      localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse(this.jdField_c_of_type_JavaLangString)));
+    if (this.e) {
+      localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse(this.i)));
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
-  public boolean a()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_c_of_type_Boolean;
+    return null;
   }
   
-  public int b()
+  public String c()
   {
-    ISearchResultGroupModel localISearchResultGroupModel = this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel;
+    ISearchResultGroupModel localISearchResultGroupModel = this.j;
+    if (localISearchResultGroupModel != null) {
+      return localISearchResultGroupModel.c();
+    }
+    return null;
+  }
+  
+  public int d()
+  {
+    return 3;
+  }
+  
+  public void dl_()
+  {
+    super.dl_();
+    l();
+  }
+  
+  public boolean f()
+  {
+    return this.e;
+  }
+  
+  public String g()
+  {
+    String str2 = this.d;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public long h()
+  {
+    ISearchResultGroupModel localISearchResultGroupModel = this.j;
+    if (localISearchResultGroupModel != null)
+    {
+      int m = SearchUtil.a(localISearchResultGroupModel);
+      if (m > 0) {
+        return m;
+      }
+    }
+    localISearchResultGroupModel = this.j;
+    if ((localISearchResultGroupModel != null) && ((localISearchResultGroupModel instanceof GroupBaseNetSearchModel))) {
+      return ((GroupBaseNetSearchModel)localISearchResultGroupModel).a;
+    }
+    return -1L;
+  }
+  
+  public int i()
+  {
+    ISearchResultGroupModel localISearchResultGroupModel = this.j;
     if ((localISearchResultGroupModel instanceof GroupBaseNetSearchModel))
     {
-      if (SearchUtils.a(((GroupBaseNetSearchModel)localISearchResultGroupModel).jdField_a_of_type_Long)) {
+      if (SearchUtils.a(((GroupBaseNetSearchModel)localISearchResultGroupModel).a)) {
         return 2;
       }
       return 3;
@@ -278,33 +330,19 @@ public class GroupSearchModeTitle
     return 1;
   }
   
-  public String b()
+  public boolean j()
   {
-    ISearchResultGroupModel localISearchResultGroupModel = this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel;
-    if (localISearchResultGroupModel != null) {
-      return localISearchResultGroupModel.b();
-    }
-    return null;
+    return this.k;
   }
   
-  public boolean b()
+  public ISearchResultGroupModel k()
   {
-    return this.d;
-  }
-  
-  public String c()
-  {
-    String str2 = this.jdField_b_of_type_JavaLangString;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupSearchModeTitle
  * JD-Core Version:    0.7.0.1
  */

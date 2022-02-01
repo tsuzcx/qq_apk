@@ -20,21 +20,21 @@ class ReadinjoyTabFrame$20
     if (QLog.isColorLevel()) {
       QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change confirm");
     }
-    paramDialogInterface = ReadInJoyLogicEngine.a().a();
+    paramDialogInterface = ReadInJoyLogicEngine.a().j();
     if (paramDialogInterface != null) {
-      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData);
+      paramDialogInterface.b(this.a);
     }
-    paramDialogInterface = ReadInJoyLogicEngine.a().a();
+    paramDialogInterface = ReadInJoyLogicEngine.a().ab();
     if (paramDialogInterface != null) {
-      paramDialogInterface.a().b(41695);
+      paramDialogInterface.i().e(41695);
     }
-    ReadInJoyLogicEngine.a().a(41695, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData.city);
-    ReadInJoyLogicEngineEventDispatcher.a().g(41695);
+    ReadInJoyLogicEngine.a().a(41695, this.a.city);
+    ReadInJoyLogicEngineEventDispatcher.a().f(41695);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.20
  * JD-Core Version:    0.7.0.1
  */

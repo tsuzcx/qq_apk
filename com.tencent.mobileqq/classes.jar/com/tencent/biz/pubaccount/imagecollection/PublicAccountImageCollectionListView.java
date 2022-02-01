@@ -28,22 +28,22 @@ public class PublicAccountImageCollectionListView
   extends ListView
   implements AbsListView.OnScrollListener
 {
-  private float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = null;
-  private ArrayList<PublicAccountImageCollectionListView.ListViewEventListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private ArrayList<IPublicAccountImageCollectionUtils.PhotoItemInfo> jdField_b_of_type_JavaUtilArrayList = null;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> jdField_c_of_type_JavaUtilArrayList = null;
-  private boolean jdField_c_of_type_Boolean = false;
-  private boolean d = false;
+  int a;
+  boolean b = false;
+  private ArrayList<PublicAccountImageCollectionListView.ListViewEventListener> c = new ArrayList();
+  private Context d;
+  private int e;
+  private AbsListView.OnScrollListener f = null;
+  private float g;
+  private float h;
+  private boolean i = false;
+  private boolean j = false;
+  private boolean k = false;
+  private VelocityTracker l;
+  private int m = 0;
+  private ArrayList<IPublicAccountImageCollectionUtils.PhotoItemInfo> n = null;
+  private ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> o = null;
+  private long p = 0L;
   
   public PublicAccountImageCollectionListView(Context paramContext)
   {
@@ -62,22 +62,6 @@ public class PublicAccountImageCollectionListView
     a(paramContext);
   }
   
-  private int a()
-  {
-    int i = getFirstVisiblePosition();
-    while (i <= getLastVisiblePosition())
-    {
-      int j = getChildAt(i - getFirstVisiblePosition()).getTop();
-      int k = getChildAt(i - getFirstVisiblePosition()).getBottom();
-      int m = this.jdField_b_of_type_Int;
-      if ((j < m / 2) && (k > m / 2)) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
   private void a(int paramInt)
   {
     Object localObject = getChildAt(paramInt - getFirstVisiblePosition());
@@ -88,34 +72,34 @@ public class PublicAccountImageCollectionListView
       }
       return;
     }
-    if (paramInt != a()) {
-      this.d = true;
+    if (paramInt != getCenterChildPosition()) {
+      this.k = true;
     }
-    int j = ((View)localObject).getTop();
-    int i = ((View)localObject).getBottom();
-    paramInt = i;
+    int i2 = ((View)localObject).getTop();
+    int i1 = ((View)localObject).getBottom();
+    paramInt = i1;
     if ((((View)localObject).getTag() instanceof PublicAccountImageCollectionAdapter.ImageItemHolder))
     {
       localObject = (PublicAccountImageCollectionAdapter.ImageItemHolder)((View)localObject).getTag();
-      paramInt = i;
-      if (((PublicAccountImageCollectionAdapter.ImageItemHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.getBottom() != ((PublicAccountImageCollectionAdapter.ImageItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetZImageView.getBottom()) {
-        paramInt = ((PublicAccountImageCollectionAdapter.ImageItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetZImageView.getBottom() + j;
+      paramInt = i1;
+      if (((PublicAccountImageCollectionAdapter.ImageItemHolder)localObject).b.getBottom() != ((PublicAccountImageCollectionAdapter.ImageItemHolder)localObject).c.getBottom()) {
+        paramInt = ((PublicAccountImageCollectionAdapter.ImageItemHolder)localObject).c.getBottom() + i2;
       }
     }
-    i = (j + paramInt) / 2 - this.jdField_b_of_type_Int / 2;
-    if (i == 0) {
+    i1 = (i2 + paramInt) / 2 - this.e / 2;
+    if (i1 == 0) {
       return;
     }
-    paramInt = Math.abs(i);
-    j = Math.abs(this.jdField_c_of_type_Int);
-    if (j == 0) {
+    paramInt = Math.abs(i1);
+    i2 = Math.abs(this.m);
+    if (i2 == 0) {
       paramInt = 400;
     } else {
-      paramInt /= j;
+      paramInt /= i2;
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.i = true;
     ((IImageManager)QRoute.api(IImageManager.class)).pauseDownload();
-    post(new PublicAccountImageCollectionListView.1(this, i, paramInt));
+    post(new PublicAccountImageCollectionListView.1(this, i1, paramInt));
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -129,59 +113,65 @@ public class PublicAccountImageCollectionListView
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("PublicAccountImageCollectionListView", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+    if (this.n == null) {
       return;
     }
-    long l = System.currentTimeMillis();
-    if (!NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidContentContext)) {
+    long l1 = System.currentTimeMillis();
+    if (!NetworkUtil.isWifiConnected(this.d)) {
       return;
     }
-    Object localObject = new ArrayList(this.jdField_b_of_type_JavaUtilArrayList);
-    ThreadManager.post(new PublicAccountImageCollectionListView.2(this, this.jdField_a_of_type_Long, (List)localObject, paramInt1, paramInt2, l), 5, null, true);
+    Object localObject = new ArrayList(this.n);
+    ThreadManager.post(new PublicAccountImageCollectionListView.2(this, this.p, (List)localObject, paramInt1, paramInt2, l1), 5, null, true);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     if (!((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).canPreload()) {
       return;
     }
     ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).cancelNotDownloadTask();
-    ArrayList localArrayList = this.jdField_c_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.o;
     if (localArrayList != null)
     {
-      int j = localArrayList.size();
-      int i = 0;
-      while (i < j)
+      int i2 = localArrayList.size();
+      int i1 = 0;
+      while (i1 < i2)
       {
-        ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).addTask(((IPublicAccountImageCollectionUtils.RecommendItemInfo)this.jdField_c_of_type_JavaUtilArrayList.get(i)).d);
-        i += 1;
+        ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).addTask(((IPublicAccountImageCollectionUtils.RecommendItemInfo)this.o.get(i1)).d);
+        i1 += 1;
       }
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
-  public ViewGroup a()
+  private int getCenterChildPosition()
   {
-    return (ViewGroup)getChildAt(a() - getFirstVisiblePosition());
-  }
-  
-  public Boolean a(View paramView)
-  {
-    return Boolean.valueOf(a().equals(paramView));
+    int i1 = getFirstVisiblePosition();
+    while (i1 <= getLastVisiblePosition())
+    {
+      int i2 = getChildAt(i1 - getFirstVisiblePosition()).getTop();
+      int i3 = getChildAt(i1 - getFirstVisiblePosition()).getBottom();
+      int i4 = this.e;
+      if ((i2 < i4 / 2) && (i3 > i4 / 2)) {
+        return i1;
+      }
+      i1 += 1;
+    }
+    return -1;
   }
   
   public void a()
   {
-    a(this.jdField_a_of_type_Int);
+    a(this.a);
   }
   
   void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    this.d = paramContext;
+    this.l = VelocityTracker.obtain();
     super.setOnScrollListener(this);
   }
   
@@ -191,17 +181,17 @@ public class PublicAccountImageCollectionListView
     {
       VideoFeedsAlphaMaskView localVideoFeedsAlphaMaskView;
       if ((paramView.getTag() instanceof PublicAccountImageCollectionAdapter.ImageItemHolder)) {
-        localVideoFeedsAlphaMaskView = ((PublicAccountImageCollectionAdapter.ImageItemHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView;
+        localVideoFeedsAlphaMaskView = ((PublicAccountImageCollectionAdapter.ImageItemHolder)paramView.getTag()).e;
       } else if ((paramView.getTag() instanceof PublicAccountImageCollectionAdapter.CoverHolder)) {
-        localVideoFeedsAlphaMaskView = ((PublicAccountImageCollectionAdapter.CoverHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView;
+        localVideoFeedsAlphaMaskView = ((PublicAccountImageCollectionAdapter.CoverHolder)paramView.getTag()).j;
       } else if ((paramView.getTag() instanceof PublicAccountImageCollectionRecommendViewWrapper.RecommendHolder)) {
-        localVideoFeedsAlphaMaskView = ((PublicAccountImageCollectionRecommendViewWrapper.RecommendHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView;
+        localVideoFeedsAlphaMaskView = ((PublicAccountImageCollectionRecommendViewWrapper.RecommendHolder)paramView.getTag()).b;
       } else {
         localVideoFeedsAlphaMaskView = null;
       }
-      int i = Math.abs((paramView.getBottom() + paramView.getTop()) / 2 - this.jdField_b_of_type_Int / 2);
-      int j = (paramView.getBottom() - paramView.getTop()) / 2;
-      float f2 = Math.round(i / j * 100.0F) / 100.0F;
+      int i1 = Math.abs((paramView.getBottom() + paramView.getTop()) / 2 - this.e / 2);
+      int i2 = (paramView.getBottom() - paramView.getTop()) / 2;
+      float f2 = Math.round(i1 / i2 * 100.0F) / 100.0F;
       float f1 = f2;
       if (f2 > 1.0F) {
         f1 = 1.0F;
@@ -214,16 +204,21 @@ public class PublicAccountImageCollectionListView
   
   public void a(PublicAccountImageCollectionListView.ListViewEventListener paramListViewEventListener)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramListViewEventListener);
+    this.c.add(paramListViewEventListener);
+  }
+  
+  public Boolean b(View paramView)
+  {
+    return Boolean.valueOf(getCenterView().equals(paramView));
   }
   
   void b()
   {
-    int i = getFirstVisiblePosition();
-    while (i <= getLastVisiblePosition())
+    int i1 = getFirstVisiblePosition();
+    while (i1 <= getLastVisiblePosition())
     {
-      ViewGroup localViewGroup = (ViewGroup)getChildAt(i - getFirstVisiblePosition());
-      if ((localViewGroup.getTop() < this.jdField_b_of_type_Int / 2) && (localViewGroup.getBottom() > this.jdField_b_of_type_Int / 2))
+      ViewGroup localViewGroup = (ViewGroup)getChildAt(i1 - getFirstVisiblePosition());
+      if ((localViewGroup.getTop() < this.e / 2) && (localViewGroup.getBottom() > this.e / 2))
       {
         if ((localViewGroup.getTag() instanceof PublicAccountImageCollectionRecommendViewWrapper.RecommendHolder))
         {
@@ -257,39 +252,44 @@ public class PublicAccountImageCollectionListView
           localViewGroup.getChildAt(1).setEnabled(false);
         }
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((ArrayList)localObject).clear();
-      this.jdField_a_of_type_JavaUtilArrayList = null;
+      this.c = null;
     }
-    localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    localObject = this.l;
     if (localObject != null)
     {
       ((VelocityTracker)localObject).recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.l = null;
     }
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.d = null;
     ((IImageManager)QRoute.api(IImageManager.class)).clean();
+  }
+  
+  public ViewGroup getCenterView()
+  {
+    return (ViewGroup)getChildAt(getCenterChildPosition() - getFirstVisiblePosition());
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.i) {
       return true;
     }
     if (paramMotionEvent.getAction() == 0)
     {
-      this.d = false;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.jdField_a_of_type_Int = a();
+      this.k = false;
+      this.j = false;
+      this.g = paramMotionEvent.getY();
+      this.a = getCenterChildPosition();
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -310,26 +310,26 @@ public class PublicAccountImageCollectionListView
     {
       if (paramInt == 2)
       {
-        if (this.jdField_b_of_type_Boolean) {
+        if (this.i) {
           return;
         }
-        if (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float > 0.0F) {
-          a(this.jdField_a_of_type_Int - 1);
+        if (this.h - this.g > 0.0F) {
+          a(this.a - 1);
         } else {
-          a(this.jdField_a_of_type_Int + 1);
+          a(this.a + 1);
         }
       }
     }
     else
     {
-      if (!this.jdField_b_of_type_Boolean) {
-        a(this.jdField_a_of_type_Int);
+      if (!this.i) {
+        a(this.a);
       }
-      this.jdField_b_of_type_Boolean = false;
-      localObject1 = a();
-      if (this.d)
+      this.i = false;
+      localObject1 = getCenterView();
+      if (this.k)
       {
-        Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+        Object localObject2 = this.c;
         if ((localObject2 != null) && (localObject1 != null))
         {
           localObject2 = ((ArrayList)localObject2).iterator();
@@ -339,16 +339,16 @@ public class PublicAccountImageCollectionListView
         }
       }
       ((IImageManager)QRoute.api(IImageManager.class)).resume();
-      int i = getLastVisiblePosition();
-      int j = getFirstVisiblePosition();
-      int k = ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).getPreloadImageCount();
-      a(getFirstVisiblePosition(), i - j + 1 + k);
+      int i1 = getLastVisiblePosition();
+      int i2 = getFirstVisiblePosition();
+      int i3 = ((IPublicAccountImageCollectionPreloadManager)QRoute.api(IPublicAccountImageCollectionPreloadManager.class)).getPreloadImageCount();
+      a(getFirstVisiblePosition(), i1 - i2 + 1 + i3);
       if ((getChildAt(paramAbsListView.getLastVisiblePosition() - getFirstVisiblePosition()).getTag() instanceof PublicAccountImageCollectionRecommendViewWrapper.RecommendHolder)) {
         d();
       }
       b();
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+    Object localObject1 = this.f;
     if (localObject1 != null) {
       ((AbsListView.OnScrollListener)localObject1).onScrollStateChanged(paramAbsListView, paramInt);
     }
@@ -356,43 +356,43 @@ public class PublicAccountImageCollectionListView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.i) {
       return true;
     }
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.l == null) {
+      this.l = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.l.addMovement(paramMotionEvent);
     if (paramMotionEvent.getAction() == 1)
     {
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
+      this.h = paramMotionEvent.getY();
+      this.l.clear();
     }
     else if (paramMotionEvent.getAction() == 2)
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1);
-      this.jdField_c_of_type_Int = ((int)this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity());
-      if (this.jdField_c_of_type_Boolean) {
+      this.l.computeCurrentVelocity(1);
+      this.m = ((int)this.l.getYVelocity());
+      if (this.j) {
         return true;
       }
-      View localView = getChildAt(this.jdField_a_of_type_Int - getFirstVisiblePosition());
+      View localView = getChildAt(this.a - getFirstVisiblePosition());
       if (localView != null)
       {
         double d1 = localView.getHeight();
         Double.isNaN(d1);
-        int i = (int)(d1 * 0.8D);
-        if (Math.abs(paramMotionEvent.getY() - this.jdField_a_of_type_Float) >= i)
+        int i1 = (int)(d1 * 0.8D);
+        if (Math.abs(paramMotionEvent.getY() - this.g) >= i1)
         {
-          if (paramMotionEvent.getY() - this.jdField_a_of_type_Float > 0.0F)
+          if (paramMotionEvent.getY() - this.g > 0.0F)
           {
-            this.jdField_c_of_type_Boolean = true;
-            a(this.jdField_a_of_type_Int - 1);
+            this.j = true;
+            a(this.a - 1);
             return true;
           }
-          if (paramMotionEvent.getY() - this.jdField_a_of_type_Float < 0.0F)
+          if (paramMotionEvent.getY() - this.g < 0.0F)
           {
-            this.jdField_c_of_type_Boolean = true;
-            a(this.jdField_a_of_type_Int + 1);
+            this.j = true;
+            a(this.a + 1);
             return true;
           }
         }
@@ -403,23 +403,23 @@ public class PublicAccountImageCollectionListView
   
   public void setPhotoCollectionInfo(ArrayList<IPublicAccountImageCollectionUtils.PhotoItemInfo> paramArrayList)
   {
-    this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
+    this.n = paramArrayList;
     a(1, 1);
   }
   
   public void setRecommendInfo(ArrayList<IPublicAccountImageCollectionUtils.RecommendItemInfo> paramArrayList)
   {
-    this.jdField_c_of_type_JavaUtilArrayList = paramArrayList;
+    this.o = paramArrayList;
   }
   
   public void setScreenHeight(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionListView
  * JD-Core Version:    0.7.0.1
  */

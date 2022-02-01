@@ -1,8 +1,6 @@
 package com.tencent.tav.decoder;
 
 import android.view.Surface;
-import com.tencent.tav.decoder.factory.AVDecoderFactory;
-import com.tencent.tav.decoder.factory.IDecoderFactory;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.ExtractorUtils;
 import java.util.ArrayList;
@@ -55,7 +53,7 @@ class VideoDecoderTrack$DecoderCreateThread
       {
         Object localObject1 = this.outputSurface;
         Object localObject2 = VideoDecoderTrack.access$1300(this.this$0, this.videoAsset, (Surface)localObject1);
-        localIVideoDecoder = AVDecoderFactory.getInstance().createVideoDecoder((IVideoDecoder.Params)localObject2);
+        localIVideoDecoder = VideoDecoderTrack.access$1500(this.this$0, (IVideoDecoder.Params)localObject2, VideoDecoderTrack.access$1400(this.this$0, this.segmentIndex));
         try
         {
           if (((IVideoDecoder.Params)localObject2).sourceType == 3) {
@@ -139,7 +137,7 @@ class VideoDecoderTrack$DecoderCreateThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoderTrack.DecoderCreateThread
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,17 @@ class RIJGetArticleListHandler$4
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return;
     }
-    this.this$0.a.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
-    List localList = RIJGetArticleListHandler.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int, localList);
+    this.this$0.a.i().b(this.b, this.c);
+    List localList = RIJGetArticleListHandler.a(this.this$0, this.c);
+    ReadInJoyLogicEngineEventDispatcher.a().c(this.b, localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJGetArticleListHandler.4
  * JD-Core Version:    0.7.0.1
  */

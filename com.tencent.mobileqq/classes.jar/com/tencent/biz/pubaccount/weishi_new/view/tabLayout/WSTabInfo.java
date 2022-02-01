@@ -2,49 +2,39 @@ package com.tencent.biz.pubaccount.weishi_new.view.tabLayout;
 
 public class WSTabInfo
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
   private String b;
   private String c;
   private String d;
+  private boolean e;
+  private int f;
   
   public WSTabInfo(String paramString)
   {
     this.b = paramString;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public WSTabInfo a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
     return this;
   }
   
   public WSTabInfo a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
   public WSTabInfo a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
     return this;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public WSTabInfo b(String paramString)
@@ -67,10 +57,20 @@ public class WSTabInfo
   {
     return this.d;
   }
+  
+  public boolean e()
+  {
+    return this.e;
+  }
+  
+  public int f()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabInfo
  * JD-Core Version:    0.7.0.1
  */

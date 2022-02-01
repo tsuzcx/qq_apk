@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="a9e" parent="@android:style/Theme.Dialog">
+    <style name="ack" parent="@android:style/Theme.Dialog">
         <item name="android:backgroundDimAmount">0.0</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>

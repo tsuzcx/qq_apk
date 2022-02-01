@@ -16,15 +16,15 @@ public class SheetItemClickProcessor$SaveImageAction
   
   public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    paramString1 = SheetItemClickProcessor.a(this.a).mShareHelper.a(SheetItemClickProcessor.a(this.b), SheetItemClickProcessor.b(this.b), paramInt);
+    paramString1 = SheetItemClickProcessor.a(this.a).mShareHelper.a(SheetItemClickProcessor.b(this.c), SheetItemClickProcessor.c(this.c), paramInt);
     if ((paramString1 instanceof ImageActionItem)) {
-      BridgeModule.saveImageToLocal(((ImageActionItem)paramString1).b);
+      BridgeModule.saveImageToLocal(((ImageActionItem)paramString1).d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.SheetItemClickProcessor.SaveImageAction
  * JD-Core Version:    0.7.0.1
  */

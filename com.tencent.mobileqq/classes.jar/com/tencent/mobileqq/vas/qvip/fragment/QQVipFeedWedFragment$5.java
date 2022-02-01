@@ -11,12 +11,12 @@ class QQVipFeedWedFragment$5
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    QQVipFeedWedFragment.a(this.a).postDelayed(new QQVipFeedWedFragment.5.1(this), 100L);
+    QQVipFeedWedFragment.e(this.a).postDelayed(new QQVipFeedWedFragment.5.1(this), 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment.5
  * JD-Core Version:    0.7.0.1
  */

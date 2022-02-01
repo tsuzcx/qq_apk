@@ -10,27 +10,27 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DeviceConfigManager
 {
-  private static volatile DeviceConfigManager jdField_a_of_type_ComTencentSharpJniDeviceConfigManager;
-  private static final String jdField_a_of_type_JavaLangString = "DeviceConfigManager";
-  private ConcurrentHashMap<String, DeviceConfigManager.DeviceConfig> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private String b = "DEVICE_NONE";
-  private String c = "DEVICE_NONE";
+  private static final String a = "DeviceConfigManager";
+  private static volatile DeviceConfigManager b;
+  private ConcurrentHashMap<String, DeviceConfigManager.DeviceConfig> c = new ConcurrentHashMap();
   private String d = "DEVICE_NONE";
-  private String e = "unknown";
+  private String e = "DEVICE_NONE";
+  private String f = "DEVICE_NONE";
+  private String g = "unknown";
+  private volatile boolean h = false;
   
   public static DeviceConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentSharpJniDeviceConfigManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentSharpJniDeviceConfigManager == null) {
-          jdField_a_of_type_ComTencentSharpJniDeviceConfigManager = new DeviceConfigManager();
+        if (b == null) {
+          b = new DeviceConfigManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentSharpJniDeviceConfigManager;
+    return b;
   }
   
   private void a(String paramString, int paramInt)
@@ -40,7 +40,7 @@ public class DeviceConfigManager
     {
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("addConfig, invalid deviceName[");
         localStringBuilder.append(paramString);
@@ -49,11 +49,11 @@ public class DeviceConfigManager
       }
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+    if (this.c.containsKey(paramString))
     {
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("addConfig, already exist deviceName[");
         localStringBuilder.append(paramString);
@@ -63,10 +63,10 @@ public class DeviceConfigManager
       return;
     }
     Object localObject = new DeviceConfigManager.DeviceConfig(null);
-    ((DeviceConfigManager.DeviceConfig)localObject).jdField_a_of_type_JavaLangString = paramString;
-    ((DeviceConfigManager.DeviceConfig)localObject).jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
-    this.jdField_a_of_type_Boolean = true;
+    ((DeviceConfigManager.DeviceConfig)localObject).a = paramString;
+    ((DeviceConfigManager.DeviceConfig)localObject).c = paramInt;
+    this.c.put(paramString, localObject);
+    this.h = true;
   }
   
   public static boolean a(String paramString)
@@ -74,37 +74,37 @@ public class DeviceConfigManager
     return ("DEVICE_SPEAKERPHONE".equals(paramString)) || ("DEVICE_EARPHONE".equals(paramString)) || ("DEVICE_WIRED_HEADSET".equals(paramString)) || ("DEVICE_BLUETOOTH_HEADSET".equals(paramString));
   }
   
-  private void c()
+  private void l()
   {
     if (QLog.isColorLevel())
     {
-      Object localObject1 = jdField_a_of_type_JavaLangString;
+      Object localObject1 = a;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("logDevices, mConnectedDevice[");
-      ((StringBuilder)localObject2).append(c());
+      ((StringBuilder)localObject2).append(h());
       ((StringBuilder)localObject2).append("] mConnectingDevice[");
-      ((StringBuilder)localObject2).append(b());
+      ((StringBuilder)localObject2).append(g());
       ((StringBuilder)localObject2).append("] mPrevConnectedDevice[");
-      ((StringBuilder)localObject2).append(d());
+      ((StringBuilder)localObject2).append(i());
       ((StringBuilder)localObject2).append("] AHPDevice[");
-      ((StringBuilder)localObject2).append(a(null));
+      ((StringBuilder)localObject2).append(e(null));
       ((StringBuilder)localObject2).append("] deviceNumber[");
-      ((StringBuilder)localObject2).append(a());
+      ((StringBuilder)localObject2).append(f());
       ((StringBuilder)localObject2).append("] availableNumber[");
-      ((StringBuilder)localObject2).append(a().size());
+      ((StringBuilder)localObject2).append(j().size());
       ((StringBuilder)localObject2).append("]");
       QLog.w((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-      localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      localObject1 = this.c.entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        String str = jdField_a_of_type_JavaLangString;
+        String str = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("logDevices, devName[");
         localStringBuilder.append((String)((Map.Entry)localObject2).getKey());
         localStringBuilder.append("] visible[");
         boolean bool;
-        if ((((Map.Entry)localObject2).getValue() != null) && (((DeviceConfigManager.DeviceConfig)((Map.Entry)localObject2).getValue()).jdField_a_of_type_Boolean)) {
+        if ((((Map.Entry)localObject2).getValue() != null) && (((DeviceConfigManager.DeviceConfig)((Map.Entry)localObject2).getValue()).b)) {
           bool = true;
         } else {
           bool = false;
@@ -113,7 +113,7 @@ public class DeviceConfigManager
         localStringBuilder.append("] priority[");
         int i;
         if (((Map.Entry)localObject2).getValue() != null) {
-          i = ((DeviceConfigManager.DeviceConfig)((Map.Entry)localObject2).getValue()).jdField_a_of_type_Int;
+          i = ((DeviceConfigManager.DeviceConfig)((Map.Entry)localObject2).getValue()).c;
         } else {
           i = -1;
         }
@@ -124,19 +124,9 @@ public class DeviceConfigManager
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-  }
-  
-  public String a()
-  {
-    return this.e;
-  }
-  
   public String a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+    Object localObject = this.c.entrySet().iterator();
     int i = 0;
     while (((Iterator)localObject).hasNext())
     {
@@ -151,80 +141,21 @@ public class DeviceConfigManager
     localObject = null;
     label63:
     if (localObject != null) {
-      return ((DeviceConfigManager.DeviceConfig)localObject).jdField_a_of_type_JavaLangString;
+      return ((DeviceConfigManager.DeviceConfig)localObject).a;
     }
     return "DEVICE_NONE";
   }
   
-  public String a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    label16:
-    DeviceConfigManager.DeviceConfig localDeviceConfig;
-    for (Object localObject = null; localIterator.hasNext(); localObject = localDeviceConfig)
-    {
-      localDeviceConfig = (DeviceConfigManager.DeviceConfig)((Map.Entry)localIterator.next()).getValue();
-      if ((localDeviceConfig == null) || (!localDeviceConfig.jdField_a_of_type_Boolean) || (localDeviceConfig.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) || ((localObject != null) && (localDeviceConfig.jdField_a_of_type_Int < localObject.jdField_a_of_type_Int))) {
-        break label16;
-      }
-    }
-    if (localObject != null) {
-      return localObject.jdField_a_of_type_JavaLangString;
-    }
-    return "DEVICE_SPEAKERPHONE";
-  }
-  
-  public ArrayList<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)((Map.Entry)localIterator.next()).getValue();
-      if ((localDeviceConfig != null) && (localDeviceConfig.jdField_a_of_type_Boolean)) {
-        localArrayList.add(localDeviceConfig.jdField_a_of_type_JavaLangString);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(jdField_a_of_type_JavaLangString, 2, "clearConfig");
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.b = "DEVICE_NONE";
-    this.c = "DEVICE_NONE";
-    this.d = "DEVICE_NONE";
-    this.e = "unknown";
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "unknown";
-    }
-    this.e = str;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   public boolean a(String paramString, boolean paramBoolean)
   {
-    Object localObject = (DeviceConfigManager.DeviceConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if ((localObject != null) && (((DeviceConfigManager.DeviceConfig)localObject).jdField_a_of_type_Boolean != paramBoolean))
+    Object localObject = (DeviceConfigManager.DeviceConfig)this.c.get(paramString);
+    if ((localObject != null) && (((DeviceConfigManager.DeviceConfig)localObject).b != paramBoolean))
     {
-      ((DeviceConfigManager.DeviceConfig)localObject).jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Boolean = true;
+      ((DeviceConfigManager.DeviceConfig)localObject).b = paramBoolean;
+      this.h = true;
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setVisible, deviceName[");
         localStringBuilder.append(paramString);
@@ -238,32 +169,17 @@ public class DeviceConfigManager
     return false;
   }
   
-  public String b()
-  {
-    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.d);
-    if ((localDeviceConfig != null) && (localDeviceConfig.jdField_a_of_type_Boolean)) {
-      return this.d;
-    }
-    return "DEVICE_NONE";
-  }
-  
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b(String paramString)
-  {
-    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if ((localDeviceConfig != null) && (localDeviceConfig.jdField_a_of_type_Boolean)) {
-      this.d = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.w(a, 2, "clearConfig");
     }
-  }
-  
-  public boolean b()
-  {
-    String str = b();
-    return (str == null) || (str.equals("DEVICE_NONE")) || (str.equals(""));
+    this.c.clear();
+    this.d = "DEVICE_NONE";
+    this.e = "DEVICE_NONE";
+    this.f = "DEVICE_NONE";
+    this.g = "unknown";
+    this.h = false;
   }
   
   public boolean b(String paramString)
@@ -271,7 +187,7 @@ public class DeviceConfigManager
     String str;
     if (QLog.isColorLevel())
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("init, configs[");
       localStringBuilder.append(paramString);
@@ -303,52 +219,136 @@ public class DeviceConfigManager
         a(paramString[i], i);
         i += 1;
       }
-      c();
+      l();
       return true;
     }
     return false;
   }
   
-  public String c()
-  {
-    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.c);
-    if ((localDeviceConfig != null) && (localDeviceConfig.jdField_a_of_type_Boolean)) {
-      return this.c;
-    }
-    return "DEVICE_NONE";
-  }
-  
   public void c(String paramString)
   {
-    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if ((localDeviceConfig != null) && (localDeviceConfig.jdField_a_of_type_Boolean))
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "unknown";
+    }
+    this.g = str;
+  }
+  
+  public boolean c()
+  {
+    return this.h;
+  }
+  
+  public void d()
+  {
+    this.h = false;
+  }
+  
+  public boolean d(String paramString)
+  {
+    paramString = (DeviceConfigManager.DeviceConfig)this.c.get(paramString);
+    return (paramString != null) && (paramString.b);
+  }
+  
+  public String e()
+  {
+    return this.g;
+  }
+  
+  public String e(String paramString)
+  {
+    Iterator localIterator = this.c.entrySet().iterator();
+    label16:
+    DeviceConfigManager.DeviceConfig localDeviceConfig;
+    for (Object localObject = null; localIterator.hasNext(); localObject = localDeviceConfig)
     {
-      if (!this.c.equalsIgnoreCase(paramString)) {
-        this.b = this.c;
+      localDeviceConfig = (DeviceConfigManager.DeviceConfig)((Map.Entry)localIterator.next()).getValue();
+      if ((localDeviceConfig == null) || (!localDeviceConfig.b) || (localDeviceConfig.a.equalsIgnoreCase(paramString)) || ((localObject != null) && (localDeviceConfig.c < localObject.c))) {
+        break label16;
       }
-      this.c = paramString;
-      this.d = "DEVICE_NONE";
+    }
+    if (localObject != null) {
+      return localObject.a;
+    }
+    return "DEVICE_SPEAKERPHONE";
+  }
+  
+  public int f()
+  {
+    return this.c.size();
+  }
+  
+  public void f(String paramString)
+  {
+    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.c.get(paramString);
+    if ((localDeviceConfig != null) && (localDeviceConfig.b)) {
+      this.f = paramString;
     }
   }
   
-  public boolean c(String paramString)
+  public String g()
   {
-    paramString = (DeviceConfigManager.DeviceConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    return (paramString != null) && (paramString.jdField_a_of_type_Boolean);
-  }
-  
-  public String d()
-  {
-    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.b);
-    if ((localDeviceConfig != null) && (localDeviceConfig.jdField_a_of_type_Boolean)) {
-      return this.b;
+    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.c.get(this.f);
+    if ((localDeviceConfig != null) && (localDeviceConfig.b)) {
+      return this.f;
     }
     return "DEVICE_NONE";
+  }
+  
+  public void g(String paramString)
+  {
+    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.c.get(paramString);
+    if ((localDeviceConfig != null) && (localDeviceConfig.b))
+    {
+      if (!this.e.equalsIgnoreCase(paramString)) {
+        this.d = this.e;
+      }
+      this.e = paramString;
+      this.f = "DEVICE_NONE";
+    }
+  }
+  
+  public String h()
+  {
+    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.c.get(this.e);
+    if ((localDeviceConfig != null) && (localDeviceConfig.b)) {
+      return this.e;
+    }
+    return "DEVICE_NONE";
+  }
+  
+  public String i()
+  {
+    DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)this.c.get(this.d);
+    if ((localDeviceConfig != null) && (localDeviceConfig.b)) {
+      return this.d;
+    }
+    return "DEVICE_NONE";
+  }
+  
+  public ArrayList<String> j()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.c.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      DeviceConfigManager.DeviceConfig localDeviceConfig = (DeviceConfigManager.DeviceConfig)((Map.Entry)localIterator.next()).getValue();
+      if ((localDeviceConfig != null) && (localDeviceConfig.b)) {
+        localArrayList.add(localDeviceConfig.a);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public boolean k()
+  {
+    String str = g();
+    return (str == null) || (str.equals("DEVICE_NONE")) || (str.equals(""));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.DeviceConfigManager
  * JD-Core Version:    0.7.0.1
  */

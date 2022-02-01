@@ -9,47 +9,31 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AIODrawerDpc
 {
-  private static AIODrawerDpc jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc;
-  public static DPCObserver a;
-  private static final String jdField_a_of_type_JavaLangString = DPCNames.aio_config.name();
-  public boolean a;
-  private String b;
-  public boolean b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqDpcDPCObserver = new AIODrawerDpc.1();
-  }
+  public static DPCObserver c = new AIODrawerDpc.1();
+  private static final String d = DPCNames.aio_config.name();
+  private static AIODrawerDpc e;
+  public boolean a = true;
+  public boolean b = true;
+  private String f;
   
   private AIODrawerDpc()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    ((IDPCApi)QRoute.api(IDPCApi.class)).addObserver(jdField_a_of_type_ComTencentMobileqqDpcDPCObserver);
+    ((IDPCApi)QRoute.api(IDPCApi.class)).addObserver(c);
   }
   
   public static AIODrawerDpc a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc == null) {
+    if (e == null) {
       b(false);
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getInstance: ");
-      localStringBuilder.append(jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc);
+      localStringBuilder.append(e);
       QLog.d("AIODrawerDpc", 2, localStringBuilder.toString());
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc;
-  }
-  
-  public static boolean a()
-  {
-    AIODrawerDpc localAIODrawerDpc = a();
-    if (localAIODrawerDpc != null) {
-      return localAIODrawerDpc.jdField_a_of_type_Boolean;
-    }
-    return true;
+    return e;
   }
   
   private static void b(boolean paramBoolean)
@@ -57,40 +41,40 @@ public class AIODrawerDpc
     try
     {
       long l1 = System.currentTimeMillis();
-      if (jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc == null)
+      if (e == null)
       {
-        jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc = new AIODrawerDpc();
+        e = new AIODrawerDpc();
         paramBoolean = true;
       }
       if (paramBoolean) {
         try
         {
-          Object localObject1 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(jdField_a_of_type_JavaLangString);
-          jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_b_of_type_JavaLangString = ((String)localObject1);
+          Object localObject1 = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(d);
+          e.f = ((String)localObject1);
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             localObject1 = ((String)localObject1).split("\\|");
             if (localObject1.length >= 19)
             {
               if (Integer.valueOf(localObject1[18]).intValue() == 1) {
-                jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_a_of_type_Boolean = true;
+                e.a = true;
               } else {
-                jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_a_of_type_Boolean = false;
+                e.a = false;
               }
             }
             else {
-              jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_a_of_type_Boolean = true;
+              e.a = true;
             }
             if (localObject1.length >= 20)
             {
               if (Integer.valueOf(localObject1[19]).intValue() == 1) {
-                jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_b_of_type_Boolean = true;
+                e.b = true;
               } else {
-                jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_b_of_type_Boolean = false;
+                e.b = false;
               }
             }
             else {
-              jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_b_of_type_Boolean = true;
+              e.b = true;
             }
           }
         }
@@ -100,8 +84,8 @@ public class AIODrawerDpc
           localStringBuilder2.append("load exp:");
           localStringBuilder2.append(localException.getMessage());
           QLog.d("AIODrawerDpc", 1, localStringBuilder2.toString());
-          jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_a_of_type_Boolean = true;
-          jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc.jdField_b_of_type_Boolean = true;
+          e.a = true;
+          e.b = true;
         }
       }
       if (QLog.isColorLevel())
@@ -109,7 +93,7 @@ public class AIODrawerDpc
         long l2 = System.currentTimeMillis();
         StringBuilder localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("loadDpc: ");
-        localStringBuilder1.append(jdField_a_of_type_ComTencentMobileqqActivityAioDrawerAIODrawerDpc);
+        localStringBuilder1.append(e);
         localStringBuilder1.append(", costMills: ");
         localStringBuilder1.append(l2 - l1);
         QLog.d("AIODrawerDpc", 2, localStringBuilder1.toString());
@@ -123,7 +107,16 @@ public class AIODrawerDpc
   {
     AIODrawerDpc localAIODrawerDpc = a();
     if (localAIODrawerDpc != null) {
-      return localAIODrawerDpc.jdField_b_of_type_Boolean;
+      return localAIODrawerDpc.a;
+    }
+    return true;
+  }
+  
+  public static boolean c()
+  {
+    AIODrawerDpc localAIODrawerDpc = a();
+    if (localAIODrawerDpc != null) {
+      return localAIODrawerDpc.b;
     }
     return true;
   }
@@ -132,19 +125,19 @@ public class AIODrawerDpc
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AIODrawerDpc{dpcValue='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isSupport=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", needPreInflate=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.AIODrawerDpc
  * JD-Core Version:    0.7.0.1
  */

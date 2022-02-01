@@ -7,28 +7,28 @@ import com.tencent.qphone.base.util.QLog;
 public class OfflineFileControlReq
   extends QFileControlReq
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  private long a;
+  private int b;
+  private String c;
   
   public OfflineFileControlReq(FileManagerEntity paramFileManagerEntity)
   {
-    this.jdField_a_of_type_Long = paramFileManagerEntity.nSessionId;
-    this.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
-    this.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
+    this.a = paramFileManagerEntity.nSessionId;
+    this.b = paramFileManagerEntity.peerType;
+    this.c = paramFileManagerEntity.peerUin;
   }
   
   public String a()
   {
-    if ((this.jdField_a_of_type_Long != 0L) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.a != 0L) && (!TextUtils.isEmpty(this.c)))
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("");
       return a((String)localObject, str, localStringBuilder.toString());
     }
@@ -38,7 +38,7 @@ public class OfflineFileControlReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.OfflineFileControlReq
  * JD-Core Version:    0.7.0.1
  */

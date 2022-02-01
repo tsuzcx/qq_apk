@@ -34,7 +34,7 @@ class GameRoomInviteActivity$UserGridAdapter
   public Object getItem(int paramInt)
   {
     if (this.a.mUsers != null) {
-      return (GameRoomInviteActivity.GameRoomUser)this.a.mUsers.get(paramInt);
+      return this.a.mUsers.get(paramInt);
     }
     return null;
   }
@@ -48,12 +48,12 @@ class GameRoomInviteActivity$UserGridAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.a).inflate(2131559486, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.a).inflate(2131625506, paramViewGroup, false);
       paramViewGroup = new GameRoomInviteActivity.ViewHolder(this.a, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367501));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367502));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131367500));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368114);
+      paramViewGroup.a = ((ImageView)paramView.findViewById(2131434019));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131434020));
+      paramViewGroup.c = ((ImageButton)paramView.findViewById(2131434018));
+      paramViewGroup.d = paramView.findViewById(2131434968);
       paramView.setTag(paramViewGroup);
     }
     else
@@ -62,36 +62,36 @@ class GameRoomInviteActivity$UserGridAdapter
     }
     WerewolvesHandler localWerewolvesHandler = (WerewolvesHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER);
     GameRoomInviteActivity.GameRoomUser localGameRoomUser = (GameRoomInviteActivity.GameRoomUser)this.a.mUsers.get(paramInt);
-    String str = localGameRoomUser.jdField_a_of_type_JavaLangString;
+    String str = localGameRoomUser.a;
     FaceDrawable localFaceDrawable;
-    if ((!((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(((GameRoomInviteActivity.GameRoomUser)this.a.mUsers.get(paramInt)).jdField_a_of_type_JavaLangString)) && (!this.a.app.getCurrentAccountUin().equals(str))) {
+    if ((!((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(((GameRoomInviteActivity.GameRoomUser)this.a.mUsers.get(paramInt)).a)) && (!this.a.app.getCurrentAccountUin().equals(str))) {
       localFaceDrawable = FaceDrawable.getStrangerFaceDrawable(this.a.app, 200, str, 3);
     } else {
       localFaceDrawable = FaceDrawable.getFaceDrawable(this.a.app, 1, str);
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localFaceDrawable);
-    localWerewolvesHandler.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView, str, "%s");
-    if (localGameRoomUser.jdField_a_of_type_Boolean) {
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramViewGroup.a.setImageDrawable(localFaceDrawable);
+    localWerewolvesHandler.a(paramViewGroup.b, str, "%s");
+    if (localGameRoomUser.b) {
+      paramViewGroup.d.setVisibility(0);
     } else {
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      paramViewGroup.d.setVisibility(4);
     }
-    if ((this.a.mIsOwner) && (!localGameRoomUser.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin())))
+    if ((this.a.mIsOwner) && (!localGameRoomUser.a.equals(this.a.app.getCurrentAccountUin())))
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new GameRoomInviteActivity.UserGridAdapter.1(this, paramInt, localWerewolvesHandler));
+      paramViewGroup.c.setVisibility(0);
+      paramViewGroup.c.setOnClickListener(new GameRoomInviteActivity.UserGridAdapter.1(this, paramInt, localWerewolvesHandler));
     }
     else
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      paramViewGroup.c.setVisibility(8);
     }
-    paramViewGroup.jdField_a_of_type_Int = 1;
+    paramViewGroup.e = 1;
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.UserGridAdapter
  * JD-Core Version:    0.7.0.1
  */

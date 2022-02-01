@@ -15,7 +15,7 @@ public class AvGameLobbyConfProcessor
 {
   private final List<AvGameLobbyConfProcessor.OnGetConfigListener> a = new LinkedList();
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
     if (QLog.isColorLevel())
     {
@@ -99,7 +99,7 @@ public class AvGameLobbyConfProcessor
       localStringBuilder.append(paramAvGameLobbyConfBean);
       QLog.d("AvGameLobbyConfProcessor", 2, localStringBuilder.toString());
     }
-    a(0);
+    b(0);
   }
   
   public Class clazz()
@@ -136,7 +136,7 @@ public class AvGameLobbyConfProcessor
       localStringBuilder.append(paramInt);
       QLog.e("AvGameLobbyConfProcessor", 2, localStringBuilder.toString());
     }
-    a(paramInt);
+    b(paramInt);
   }
   
   public int type()
@@ -146,7 +146,7 @@ public class AvGameLobbyConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AvGameLobbyConfProcessor
  * JD-Core Version:    0.7.0.1
  */

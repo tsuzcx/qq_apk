@@ -13,24 +13,19 @@ public abstract class QavListItemBase
   implements View.OnClickListener
 {
   protected int a;
-  Context jdField_a_of_type_AndroidContentContext;
-  QavListItemBase.IClickCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback;
-  final String jdField_a_of_type_JavaLangString;
+  protected Context b;
+  QavListItemBase.IClickCallback c;
+  final String d;
   
   public QavListItemBase(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     paramContext = new StringBuilder();
     paramContext.append(getClass().getSimpleName());
     paramContext.append("_");
-    paramContext.append(AudioHelper.b());
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    paramContext.append(AudioHelper.c());
+    this.d = paramContext.toString();
   }
   
   public void a(int paramInt) {}
@@ -39,8 +34,8 @@ public abstract class QavListItemBase
   
   public void a(int paramInt, QavListItemBase.IClickCallback paramIClickCallback)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback = paramIClickCallback;
+    this.a = paramInt;
+    this.c = paramIClickCallback;
   }
   
   public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, QavListItemBase.ItemInfo paramItemInfo, QavListItemBase.IClickCallback paramIClickCallback);
@@ -49,25 +44,32 @@ public abstract class QavListItemBase
   
   public abstract void b(int paramInt1, int paramInt2);
   
+  public int getPosition()
+  {
+    return this.a;
+  }
+  
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback != null)
+    if (this.c != null)
     {
-      long l = AudioHelper.b();
-      String str = this.jdField_a_of_type_JavaLangString;
+      long l = AudioHelper.c();
+      String str = this.d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onClick, seq[");
       localStringBuilder.append(l);
       localStringBuilder.append("], mPosition[");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback.a(l, this.jdField_a_of_type_Int, this);
+      this.c.a(l, this.a, this);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public abstract void setHighlight(boolean paramBoolean);
+  
+  public void setHighlight(boolean paramBoolean1, boolean paramBoolean2) {}
 }
 
 

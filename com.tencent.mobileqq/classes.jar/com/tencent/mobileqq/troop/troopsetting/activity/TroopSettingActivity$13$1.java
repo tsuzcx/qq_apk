@@ -11,16 +11,16 @@ class TroopSettingActivity$13$1
   
   public boolean queueIdle()
   {
-    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    View localView = this.a.a.h[40];
     int i = localView.getTop();
-    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
+    int j = (this.a.a.U.getHeight() - localView.getHeight()) / 2;
+    this.a.a.U.smoothScrollBy(i - j, 1000);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.13.1
  * JD-Core Version:    0.7.0.1
  */

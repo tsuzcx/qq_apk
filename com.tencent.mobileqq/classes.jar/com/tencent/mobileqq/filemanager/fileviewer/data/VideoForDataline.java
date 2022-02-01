@@ -22,13 +22,13 @@ import java.util.List;
 public class VideoForDataline
   implements BaseVideoBiz
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private DataLineMsgRecord jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord;
+  private QQAppInterface a;
+  private DataLineMsgRecord b;
   
   public VideoForDataline(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
+    this.a = paramQQAppInterface;
+    this.b = paramDataLineMsgRecord;
   }
   
   private String a(String paramString, int paramInt)
@@ -41,16 +41,16 @@ public class VideoForDataline
       ((StringBuilder)localObject).append("]");
       QLog.i("VideoForDataline<QFile>XOXO", 1, ((StringBuilder)localObject).toString());
       paramString = new FileIPv6StrateyController.DomainInfo(paramString, paramInt);
-      paramString = FileIPv6StrateyController.a().getIPlistForV6Domain(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 1);
+      paramString = FileIPv6StrateyController.b().getIPlistForV6Domain(this.a, paramString, 1);
       int i;
       if ((paramString != null) && (!paramString.a()))
       {
-        i = paramString.a.size();
+        i = paramString.b.size();
         paramInt = 0;
       }
       while (paramInt < i)
       {
-        localObject = (FileIPv6StrateyController.IPInfo)paramString.a.get(paramInt);
+        localObject = (FileIPv6StrateyController.IPInfo)paramString.b.get(paramInt);
         if ((localObject != null) && (!TextUtils.isEmpty(((FileIPv6StrateyController.IPInfo)localObject).a)))
         {
           paramString = ((FileIPv6StrateyController.IPInfo)localObject).a;
@@ -68,30 +68,25 @@ public class VideoForDataline
     return "";
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.filesize;
-  }
-  
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    localStringBuilder.append(this.b.sessionid);
     localStringBuilder.append("");
     return localStringBuilder.toString();
   }
   
   public void a(long paramLong)
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).OnSessionProgress(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid, paramLong, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.filesize, 0);
+    ((DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).OnSessionProgress(this.b.sessionid, paramLong, this.b.filesize, 0);
   }
   
   public void a(FileVideoDownloadManager.FileVideoManagerCallback paramFileVideoManagerCallback)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.serverPath))
+    if (TextUtils.isEmpty(this.b.serverPath))
     {
       a(true);
-      paramFileVideoManagerCallback.a(-6101, BaseApplication.getContext().getResources().getString(2131692751));
+      paramFileVideoManagerCallback.a(-6101, BaseApplication.getContext().getResources().getString(2131889822));
       paramFileVideoManagerCallback = new StringBuilder();
       paramFileVideoManagerCallback.append("[");
       paramFileVideoManagerCallback.append(a());
@@ -99,38 +94,43 @@ public class VideoForDataline
       QLog.e("VideoForDataline<QFile>XOXO", 2, paramFileVideoManagerCallback.toString());
       return;
     }
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, new VideoForDataline.1(this, paramFileVideoManagerCallback));
+    ((DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(this.b, new VideoForDataline.1(this, paramFileVideoManagerCallback));
   }
   
   public void a(String paramString)
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord;
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    DataLineMsgRecord localDataLineMsgRecord = this.b;
     localDataLineMsgRecord.path = paramString;
     localDataLineHandler.OnSessionComplete(localDataLineMsgRecord.sessionid, 2, 0);
   }
   
   public void a(boolean paramBoolean)
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).OnSessionComplete(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid, 0, 0);
+    ((DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).OnSessionComplete(this.b.sessionid, 0, 0);
   }
   
-  public String b()
+  public long b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(FMSettings.a().getDefaultTmpPath());
-    localStringBuilder.append(MD5.a(a()));
-    return localStringBuilder.toString();
+    return this.b.filesize;
   }
   
   public String c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.filename;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FMSettings.a().getDefaultTmpPath());
+    localStringBuilder.append(MD5.b(a()));
+    return localStringBuilder.toString();
+  }
+  
+  public String d()
+  {
+    return this.b.filename;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForDataline
  * JD-Core Version:    0.7.0.1
  */

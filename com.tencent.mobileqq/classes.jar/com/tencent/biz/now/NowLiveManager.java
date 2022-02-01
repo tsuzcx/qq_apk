@@ -32,173 +32,53 @@ public class NowLiveManager
   implements Manager
 {
   public static final int a;
-  public static boolean c;
-  public char a;
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected HttpWebCgiAsyncTask.Callback a;
-  public String a;
-  HashMap<String, NowLiveManager.NowLiveInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public boolean a;
-  public int b;
-  private String b;
-  public boolean b;
-  public int c;
+  public static boolean j = false;
+  QQAppInterface b;
+  SharedPreferences c = null;
+  public boolean d;
+  public int e = -1;
+  public int f = -100;
+  public String g = "";
+  public boolean h = true;
+  public char i = '0';
+  protected HttpWebCgiAsyncTask.Callback k = new NowLiveManager.1(this);
+  Map<String, Long> l = new HashMap();
+  HashMap<String, NowLiveManager.NowLiveInfo> m = new HashMap();
+  private String n = null;
   
   static
   {
-    int i;
+    int i1;
     if (QQStoryNetReqUtils.a()) {
-      i = 3050;
+      i1 = 3050;
     } else {
-      i = 6282;
+      i1 = 6282;
     }
-    jdField_a_of_type_Int = i;
-    jdField_c_of_type_Boolean = false;
+    a = i1;
   }
   
   public NowLiveManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -100;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Char = '0';
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new NowLiveManager.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
     MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("now_msg_sp");
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_AndroidContentSharedPreferences = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0);
-    a();
+    this.c = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0);
+    c();
   }
   
-  private void c() {}
-  
-  public NowLiveManager.NowLiveInfo a(String paramString, long paramLong)
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(paramString);
-    ((StringBuilder)localObject2).append(paramLong);
-    localObject2 = (NowLiveManager.NowLiveInfo)((HashMap)localObject1).get(((StringBuilder)localObject2).toString());
-    localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = new NowLiveManager.NowLiveInfo(this);
-      ((NowLiveManager.NowLiveInfo)localObject1).jdField_a_of_type_JavaLangString = paramString;
-      ((NowLiveManager.NowLiveInfo)localObject1).jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_JavaUtilHashMap.put(((NowLiveManager.NowLiveInfo)localObject1).a(), localObject1);
-    }
-    return localObject1;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_b_of_type_JavaLangString == null)
-    {
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_tab_sp", 0);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("now_show_key");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString(localStringBuilder.toString(), "00100");
-    }
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    boolean bool = false;
-    this.jdField_b_of_type_Boolean = ((BaseApplication)localObject).getSharedPreferences("now_tab_sp", 0).getBoolean("now_is_first_run_key", true);
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_tab_sp", 0).getInt("now_index_key", 3);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_tab_sp", 0).getString("now_name_key", "");
-    if (this.jdField_b_of_type_Int != -1) {
-      return;
-    }
-    String str = a();
-    if (str != null) {
-      this.jdField_a_of_type_Char = str.charAt(2);
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("initNowTabShowValue : ");
-      ((StringBuilder)localObject).append(str);
-      QLog.i("Q.qqstory.fourTab", 4, ((StringBuilder)localObject).toString());
-    }
-    if ((str != null) && (str.length() <= 5))
-    {
-      localObject = str;
-      if (str.length() < 5)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append("00100".substring(str.length()));
-        localObject = ((StringBuilder)localObject).toString();
-      }
-      localObject = ((String)localObject).toCharArray();
-      char c1 = localObject[2];
-      int i;
-      if (localObject[0] == '1')
-      {
-        if ((localObject[3] != '0') && (c1 != '0') && (c1 != '1')) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-        this.jdField_b_of_type_Int = i;
-      }
-      else
-      {
-        if ((localObject[1] != '0') && (c1 != '0') && (c1 != '1')) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-        this.jdField_b_of_type_Int = i;
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("uin:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((StringBuilder)localObject).append(",isNowTabShow mIsNowTabShow=");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
-        ((StringBuilder)localObject).append(" plan=");
-        ((StringBuilder)localObject).append(c1);
-        QLog.i("Q.qqstory.fourTab", 2, ((StringBuilder)localObject).toString());
-      }
-      if (this.jdField_b_of_type_Int != 0) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        b();
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isCallTabShow) {
-          c();
-        }
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.fourTab", 2, "isNowTabShow fullVal is null");
-    }
-  }
+  private void f() {}
   
   public void a(MessageForStructing paramMessageForStructing)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramMessageForStructing.frienduin))
+    if (this.l.containsKey(paramMessageForStructing.frienduin))
     {
-      long l = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramMessageForStructing.frienduin)).longValue();
-      if (paramMessageForStructing.time > l)
+      long l1 = ((Long)this.l.get(paramMessageForStructing.frienduin)).longValue();
+      if (paramMessageForStructing.time > l1)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramMessageForStructing.frienduin, Long.valueOf(paramMessageForStructing.time));
-        localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        this.l.put(paramMessageForStructing.frienduin, Long.valueOf(paramMessageForStructing.time));
+        localEditor = this.c.edit();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("time");
         localStringBuilder.append(paramMessageForStructing.frienduin);
@@ -207,14 +87,14 @@ public class NowLiveManager
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramMessageForStructing.frienduin, Long.valueOf(paramMessageForStructing.time));
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      this.l.put(paramMessageForStructing.frienduin, Long.valueOf(paramMessageForStructing.time));
+      localEditor = this.c.edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("time");
       localStringBuilder.append(paramMessageForStructing.frienduin);
       localEditor.putLong(localStringBuilder.toString(), paramMessageForStructing.time).commit();
     }
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    SharedPreferences.Editor localEditor = this.c.edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uid");
     localStringBuilder.append(paramMessageForStructing.frienduin);
@@ -223,17 +103,17 @@ public class NowLiveManager
   
   public void a(String paramString1, String paramString2, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.b == null) {
       return;
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("room_id", paramString2);
     localBundle.putLong("time", paramLong);
     localBundle.putString("friendUin", paramString1);
-    paramString1 = a(paramString1, paramLong);
-    if ((paramString1.jdField_a_of_type_Int != 1) && (paramString1.jdField_a_of_type_Int != 2))
+    paramString1 = b(paramString1, paramLong);
+    if ((paramString1.d != 1) && (paramString1.d != 2))
     {
-      if (paramString1.jdField_a_of_type_JavaUtilList.size() != 0)
+      if (paramString1.e.size() != 0)
       {
         setChanged();
         notifyObservers(new Object[] { Integer.valueOf(1001), Boolean.valueOf(true), paramString1, localBundle });
@@ -246,9 +126,9 @@ public class NowLiveManager
       paramString1.putString("room_id", paramString2);
       paramString2 = new HashMap();
       paramString2.put("BUNDLE", paramString1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+      this.b.getApplication();
       paramString2.put("CONTEXT", MobileQQ.getContext());
-      new HttpWebCgiAsyncTask("https://now.qq.com/cgi-bin/now/web/room/get_live_room_url", "GET", this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback, 1001, localBundle, true).execute(new HashMap[] { paramString2 });
+      new HttpWebCgiAsyncTask("https://now.qq.com/cgi-bin/now/web/room/get_live_room_url", "GET", this.k, 1001, localBundle, true).execute(new HashMap[] { paramString2 });
       return;
     }
     setChanged();
@@ -257,7 +137,7 @@ public class NowLiveManager
   
   public void a(String paramString1, String paramString2, String paramString3, long paramLong, boolean paramBoolean)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (this.b != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("room_id", paramString2);
@@ -265,17 +145,17 @@ public class NowLiveManager
       localBundle.putString("vid", paramString3);
       localBundle.putString("friendUin", paramString1);
       localBundle.putBoolean("needReqUrl", paramBoolean);
-      paramString1 = a(paramString1, paramLong);
-      if ((paramString1.jdField_a_of_type_Int != 1) && (paramString1.jdField_a_of_type_Int != 2))
+      paramString1 = b(paramString1, paramLong);
+      if ((paramString1.d != 1) && (paramString1.d != 2))
       {
         paramString1 = new Bundle();
         paramString1.putString("room_id", paramString2);
         paramString1.putString("vid", paramString3);
         paramString2 = new HashMap();
         paramString2.put("BUNDLE", paramString1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+        this.b.getApplication();
         paramString2.put("CONTEXT", MobileQQ.getContext());
-        new HttpWebCgiAsyncTask("https://now.qq.com/cgi-bin/now/web/room/check_live_stat", "GET", this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback, 1003, localBundle, true).execute(new HashMap[] { paramString2 });
+        new HttpWebCgiAsyncTask("https://now.qq.com/cgi-bin/now/web/room/check_live_stat", "GET", this.k, 1003, localBundle, true).execute(new HashMap[] { paramString2 });
         return;
       }
       setChanged();
@@ -302,7 +182,7 @@ public class NowLiveManager
   
   public void a(Integer[] paramArrayOfInteger, boolean paramBoolean)
   {
-    Object localObject2 = a();
+    Object localObject2 = d();
     Object localObject1;
     if (QLog.isColorLevel())
     {
@@ -312,7 +192,7 @@ public class NowLiveManager
       ((StringBuilder)localObject1).append(" vals:");
       ((StringBuilder)localObject1).append(Arrays.toString(paramArrayOfInteger));
       ((StringBuilder)localObject1).append("     mNowTabShowState=");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject1).append(this.e);
       QLog.i("Q.qqstory.fourTab", 2, ((StringBuilder)localObject1).toString());
     }
     if ((localObject2 != null) && (((String)localObject2).length() <= 5) && (paramArrayOfInteger != null) && (paramArrayOfInteger.length == 5))
@@ -326,19 +206,19 @@ public class NowLiveManager
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       localObject1 = new StringBuilder((String)localObject1);
-      int i = 0;
-      while (i < paramArrayOfInteger.length)
+      int i1 = 0;
+      while (i1 < paramArrayOfInteger.length)
       {
-        localObject2 = paramArrayOfInteger[i];
+        localObject2 = paramArrayOfInteger[i1];
         if (localObject2 != null)
         {
           if ((((Integer)localObject2).intValue() >= 0) && (((Integer)localObject2).intValue() <= 9)) {
-            ((StringBuilder)localObject1).setCharAt(i, (char)(((Integer)localObject2).intValue() + 48));
+            ((StringBuilder)localObject1).setCharAt(i1, (char)(((Integer)localObject2).intValue() + 48));
           }
         }
         else
         {
-          i += 1;
+          i1 += 1;
           continue;
         }
         if (QLog.isColorLevel())
@@ -354,23 +234,23 @@ public class NowLiveManager
       if ('1' == ((StringBuilder)localObject1).charAt(0))
       {
         if ((((StringBuilder)localObject1).charAt(3) != '0') && (c1 != '0') && (c1 != '1')) {
-          i = 1;
+          i1 = 1;
         } else {
-          i = 0;
+          i1 = 0;
         }
-        this.jdField_b_of_type_Int = i;
-        if (this.jdField_b_of_type_Int == 0) {
+        this.e = i1;
+        if (this.e == 0) {
           bool = false;
         } else {
           bool = true;
         }
-        this.jdField_a_of_type_Boolean = bool;
-        b();
+        this.d = bool;
+        e();
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("userChange mNowTabShowState=");
-          ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject2).append(this.e);
           ((StringBuilder)localObject2).append(" result:");
           ((StringBuilder)localObject2).append(localObject1);
           ((StringBuilder)localObject2).append("  plan=");
@@ -381,25 +261,25 @@ public class NowLiveManager
       else
       {
         if ((((StringBuilder)localObject1).charAt(1) != '0') && (c1 != '0') && (c1 != '1')) {
-          i = 1;
+          i1 = 1;
         } else {
-          i = 0;
+          i1 = 0;
         }
-        this.jdField_b_of_type_Int = i;
-        if (this.jdField_b_of_type_Int == 0) {
+        this.e = i1;
+        if (this.e == 0) {
           bool = false;
         } else {
           bool = true;
         }
-        this.jdField_a_of_type_Boolean = bool;
-        if (this.jdField_a_of_type_Boolean) {
-          b();
+        this.d = bool;
+        if (this.d) {
+          e();
         }
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("userNoChange mNowTabShowState=");
-          ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject2).append(this.e);
           ((StringBuilder)localObject2).append(" result:");
           ((StringBuilder)localObject2).append(localObject1);
           ((StringBuilder)localObject2).append("  plan=");
@@ -411,29 +291,29 @@ public class NowLiveManager
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("uin:");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ((StringBuilder)localObject2).append(this.b.getCurrentAccountUin());
         ((StringBuilder)localObject2).append(",writeNowTabStateVal vals=");
         ((StringBuilder)localObject2).append(Arrays.toString(paramArrayOfInteger));
         ((StringBuilder)localObject2).append(",mIsNowTabShow=");
-        ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject2).append(this.e);
         ((StringBuilder)localObject2).append(",isNowTabShow=");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject2).append(this.d);
         QLog.i("Q.qqstory.fourTab", 2, ((StringBuilder)localObject2).toString());
       }
       localObject1 = ((StringBuilder)localObject1).toString();
-      this.jdField_b_of_type_JavaLangString = ((String)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_tab_sp", 0).edit();
+      this.n = ((String)localObject1);
+      localObject2 = this.b.getApp().getSharedPreferences("now_tab_sp", 0).edit();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("now_show_key");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.b.getCurrentAccountUin());
       ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), (String)localObject1).apply();
-      boolean bool = this.jdField_a_of_type_Boolean;
-      localObject1 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", "0111100");
+      boolean bool = this.d;
+      localObject1 = SettingCloneUtil.readValue(this.b.getApplication(), this.b.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", "0111100");
       if ((paramBoolean) && (paramArrayOfInteger[0] != null) && (1 == paramArrayOfInteger[0].intValue()) && (((String)localObject1).charAt(0) == '0'))
       {
         paramArrayOfInteger = new Integer[7];
         paramArrayOfInteger[0] = Integer.valueOf(1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.writeCallTabStateVal(paramArrayOfInteger, false);
+        this.b.writeCallTabStateVal(paramArrayOfInteger, false);
       }
       return;
     }
@@ -450,23 +330,23 @@ public class NowLiveManager
   
   public boolean a()
   {
-    boolean bool3 = QQStoryManager.i();
+    boolean bool3 = QQStoryManager.o();
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (bool3)
     {
-      int j = a().charAt(2);
-      int i;
-      if ((jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean)) {
-        i = 1;
+      int i2 = d().charAt(2);
+      int i1;
+      if ((j) && (this.d)) {
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
       bool1 = bool2;
-      if (j != 48)
+      if (i2 != 48)
       {
         bool1 = bool2;
-        if (i == 0) {
+        if (i1 == 0) {
           bool1 = true;
         }
       }
@@ -476,39 +356,46 @@ public class NowLiveManager
   
   public boolean a(String paramString, long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return paramLong >= ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
+    if (this.l.containsKey(paramString)) {
+      return paramLong >= ((Long)this.l.get(paramString)).longValue();
     }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    SharedPreferences localSharedPreferences = this.c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("time");
     localStringBuilder.append(paramString);
-    long l = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
-    return paramLong >= l;
+    long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    this.l.put(paramString, Long.valueOf(l1));
+    return paramLong >= l1;
   }
   
-  public void b()
+  public NowLiveManager.NowLiveInfo b(String paramString, long paramLong)
   {
-    ILebaHelperService localILebaHelperService = (ILebaHelperService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ILebaHelperService.class, "");
-    if (localILebaHelperService != null)
+    Object localObject1 = this.m;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(paramLong);
+    localObject2 = (NowLiveManager.NowLiveInfo)((HashMap)localObject1).get(((StringBuilder)localObject2).toString());
+    localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localILebaHelperService.setFlagUpdateOnPause();
-      return;
+      localObject1 = new NowLiveManager.NowLiveInfo(this);
+      ((NowLiveManager.NowLiveInfo)localObject1).a = paramString;
+      ((NowLiveManager.NowLiveInfo)localObject1).b = paramLong;
+      this.m.put(((NowLiveManager.NowLiveInfo)localObject1).a(), localObject1);
     }
-    QLog.d("NowLiveManager", 1, "setFlagUpdateOnPause lebaHelperService == null");
+    return localObject1;
   }
   
   public boolean b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = this.b;
     boolean bool1 = false;
     if (localObject == null) {
       return false;
     }
     if (a())
     {
-      localObject = ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).requestSettingInfoList();
+      localObject = ((IRedTouchManager)this.b.getRuntimeService(IRedTouchManager.class, "")).requestSettingInfoList();
       boolean bool2 = true;
       localObject = ((List)localObject).iterator();
       BusinessInfoCheckUpdate.AppSetting localAppSetting;
@@ -519,21 +406,126 @@ public class NowLiveManager
           break;
         }
         localAppSetting = (BusinessInfoCheckUpdate.AppSetting)((Iterator)localObject).next();
-      } while (localAppSetting.appid.get() != jdField_a_of_type_Int);
+      } while (localAppSetting.appid.get() != a);
       bool1 = localAppSetting.setting.get();
     }
     return bool1;
   }
   
+  public void c()
+  {
+    Object localObject = this.b.getApp();
+    boolean bool = false;
+    this.h = ((BaseApplication)localObject).getSharedPreferences("now_tab_sp", 0).getBoolean("now_is_first_run_key", true);
+    this.f = this.b.getApp().getSharedPreferences("now_tab_sp", 0).getInt("now_index_key", 3);
+    this.g = this.b.getApp().getSharedPreferences("now_tab_sp", 0).getString("now_name_key", "");
+    if (this.e != -1) {
+      return;
+    }
+    String str = d();
+    if (str != null) {
+      this.i = str.charAt(2);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initNowTabShowValue : ");
+      ((StringBuilder)localObject).append(str);
+      QLog.i("Q.qqstory.fourTab", 4, ((StringBuilder)localObject).toString());
+    }
+    if ((str != null) && (str.length() <= 5))
+    {
+      localObject = str;
+      if (str.length() < 5)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("00100".substring(str.length()));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      localObject = ((String)localObject).toCharArray();
+      char c1 = localObject[2];
+      int i1;
+      if (localObject[0] == '1')
+      {
+        if ((localObject[3] != '0') && (c1 != '0') && (c1 != '1')) {
+          i1 = 1;
+        } else {
+          i1 = 0;
+        }
+        this.e = i1;
+      }
+      else
+      {
+        if ((localObject[1] != '0') && (c1 != '0') && (c1 != '1')) {
+          i1 = 1;
+        } else {
+          i1 = 0;
+        }
+        this.e = i1;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("uin:");
+        ((StringBuilder)localObject).append(this.b.getCurrentAccountUin());
+        ((StringBuilder)localObject).append(",isNowTabShow mIsNowTabShow=");
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append(" plan=");
+        ((StringBuilder)localObject).append(c1);
+        QLog.i("Q.qqstory.fourTab", 2, ((StringBuilder)localObject).toString());
+      }
+      if (this.e != 0) {
+        bool = true;
+      }
+      this.d = bool;
+      if (this.d)
+      {
+        e();
+        if (this.b.isCallTabShow) {
+          f();
+        }
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.fourTab", 2, "isNowTabShow fullVal is null");
+    }
+  }
+  
+  public String d()
+  {
+    if (this.n == null)
+    {
+      SharedPreferences localSharedPreferences = this.b.getApp().getSharedPreferences("now_tab_sp", 0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("now_show_key");
+      localStringBuilder.append(this.b.getCurrentAccountUin());
+      this.n = localSharedPreferences.getString(localStringBuilder.toString(), "00100");
+    }
+    return this.n;
+  }
+  
+  public void e()
+  {
+    ILebaHelperService localILebaHelperService = (ILebaHelperService)this.b.getRuntimeService(ILebaHelperService.class, "");
+    if (localILebaHelperService != null)
+    {
+      localILebaHelperService.setFlagUpdateOnPause();
+      return;
+    }
+    QLog.d("NowLiveManager", 1, "setFlagUpdateOnPause lebaHelperService == null");
+  }
+  
   public void onDestroy()
   {
     deleteObservers();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.now.NowLiveManager
  * JD-Core Version:    0.7.0.1
  */

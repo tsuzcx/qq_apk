@@ -51,18 +51,18 @@ public class DefaultTraceNetwork
     localReportHead.platform.set(109);
     paramTraceConfig = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      paramTraceConfig = "8.7.0";
+      paramTraceConfig = "8.8.17";
     }
     localReportHead.ver.set(paramTraceConfig);
-    paramTraceConfig = DeviceInfoUtil.e();
+    paramTraceConfig = DeviceInfoUtil.g();
     if (!TextUtils.isEmpty(paramTraceConfig)) {
       localReportHead.os_ver.set(paramTraceConfig);
     }
-    paramTraceConfig = DeviceInfoUtil.i();
+    paramTraceConfig = DeviceInfoUtil.u();
     if (!TextUtils.isEmpty(paramTraceConfig)) {
       localReportHead.model.set(paramTraceConfig);
     }
-    paramTraceConfig = DeviceInfoUtil.a();
+    paramTraceConfig = DeviceInfoUtil.b();
     if (!TextUtils.isEmpty(paramTraceConfig)) {
       localReportHead.udid.set(paramTraceConfig);
     }
@@ -72,14 +72,14 @@ public class DefaultTraceNetwork
   private ReportTrace.SpanEntry a(SpanData paramSpanData)
   {
     ReportTrace.SpanEntry localSpanEntry = new ReportTrace.SpanEntry();
-    localSpanEntry.span_id.set(paramSpanData.jdField_a_of_type_Int);
-    localSpanEntry.time_stamp.set(paramSpanData.jdField_a_of_type_Long);
-    if (paramSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData != null) {
-      localSpanEntry.result.set(a(paramSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData));
+    localSpanEntry.span_id.set(paramSpanData.a);
+    localSpanEntry.time_stamp.set(paramSpanData.b);
+    if (paramSpanData.e != null) {
+      localSpanEntry.result.set(a(paramSpanData.e));
     }
-    if ((paramSpanData.jdField_a_of_type_JavaUtilMap != null) && (paramSpanData.jdField_a_of_type_JavaUtilMap.size() > 0))
+    if ((paramSpanData.h != null) && (paramSpanData.h.size() > 0))
     {
-      paramSpanData = paramSpanData.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      paramSpanData = paramSpanData.h.entrySet().iterator();
       while (paramSpanData.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)paramSpanData.next();
@@ -97,7 +97,7 @@ public class DefaultTraceNetwork
     ReportTrace.TraceEntry localTraceEntry = new ReportTrace.TraceEntry();
     localTraceEntry.feature_id.set(paramTraceData.featureId);
     localTraceEntry.trace_id.set(paramTraceData.traceId);
-    localTraceEntry.from_uid.set(paramTraceConfig.a());
+    localTraceEntry.from_uid.set(paramTraceConfig.f());
     if (!TextUtils.isEmpty(paramTraceData.tUid)) {
       localTraceEntry.to_uid.set(paramTraceData.tUid);
     }
@@ -124,7 +124,7 @@ public class DefaultTraceNetwork
   private ReportTrace.reportStat a(ResultData paramResultData)
   {
     ReportTrace.reportStat localreportStat = new ReportTrace.reportStat();
-    localreportStat.ret.set(paramResultData.jdField_a_of_type_Int);
+    localreportStat.ret.set(paramResultData.a);
     localreportStat.cost.set(paramResultData.b);
     localreportStat.net_type.set(paramResultData.e);
     localreportStat.cpu.set(paramResultData.d);
@@ -143,21 +143,21 @@ public class DefaultTraceNetwork
       while (paramBlockingQueue.hasNext())
       {
         SpanData localSpanData = (SpanData)paramBlockingQueue.next();
-        if ((localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
+        if ((localSpanData.g != null) && (localSpanData.g.size() > 0))
         {
-          Iterator localIterator = localSpanData.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+          Iterator localIterator = localSpanData.g.iterator();
           while (localIterator.hasNext())
           {
             AnnotationData localAnnotationData = (AnnotationData)localIterator.next();
             ReportTrace.SpanAnnoEntry localSpanAnnoEntry = new ReportTrace.SpanAnnoEntry();
-            localSpanAnnoEntry.span_id.set(localSpanData.jdField_a_of_type_Int);
-            if (!TextUtils.isEmpty(localAnnotationData.jdField_a_of_type_JavaLangString)) {
-              localSpanAnnoEntry.anno_msg.set(localAnnotationData.jdField_a_of_type_JavaLangString);
+            localSpanAnnoEntry.span_id.set(localSpanData.a);
+            if (!TextUtils.isEmpty(localAnnotationData.c)) {
+              localSpanAnnoEntry.anno_msg.set(localAnnotationData.c);
             }
-            if (localSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData != null) {
-              localSpanAnnoEntry.errCode.set(localSpanData.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceDataResultData.jdField_a_of_type_Int);
+            if (localSpanData.e != null) {
+              localSpanAnnoEntry.errCode.set(localSpanData.e.a);
             }
-            localSpanAnnoEntry.time_stamp.set(localAnnotationData.jdField_a_of_type_Long);
+            localSpanAnnoEntry.time_stamp.set(localAnnotationData.a);
             localArrayList.add(localSpanAnnoEntry);
           }
         }
@@ -213,8 +213,8 @@ public class DefaultTraceNetwork
   public void a(List<TraceData> paramList)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-    TraceConfig localTraceConfig = TraceReportInstance.a().a();
-    if ((localAppRuntime != null) && (paramList != null) && (localTraceConfig != null) && (!TextUtils.isEmpty(localTraceConfig.a())))
+    TraceConfig localTraceConfig = TraceReportInstance.a().b();
+    if ((localAppRuntime != null) && (paramList != null) && (localTraceConfig != null) && (!TextUtils.isEmpty(localTraceConfig.f())))
     {
       ArrayList localArrayList1 = new ArrayList();
       paramList = paramList.iterator();
@@ -222,7 +222,7 @@ public class DefaultTraceNetwork
       {
         TraceData localTraceData = (TraceData)paramList.next();
         ReportTrace.TraceEntry localTraceEntry = a(localTraceData, localTraceConfig);
-        if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.7.0")))
+        if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.8.17")))
         {
           ArrayList localArrayList2 = new ArrayList();
           localArrayList2.add(localTraceEntry);
@@ -240,8 +240,8 @@ public class DefaultTraceNetwork
   public void b(List<TraceData> paramList)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-    TraceConfig localTraceConfig = TraceReportInstance.a().a();
-    if ((localAppRuntime != null) && (paramList != null) && (localTraceConfig != null) && (!TextUtils.isEmpty(localTraceConfig.a())))
+    TraceConfig localTraceConfig = TraceReportInstance.a().b();
+    if ((localAppRuntime != null) && (paramList != null) && (localTraceConfig != null) && (!TextUtils.isEmpty(localTraceConfig.f())))
     {
       int i = 0;
       ArrayList localArrayList = new ArrayList();
@@ -250,18 +250,18 @@ public class DefaultTraceNetwork
       {
         TraceData localTraceData = (TraceData)paramList.next();
         ReportTrace.TraceAnnoEntry localTraceAnnoEntry = new ReportTrace.TraceAnnoEntry();
-        localTraceAnnoEntry.uid.set(localTraceConfig.a());
+        localTraceAnnoEntry.uid.set(localTraceConfig.f());
         localTraceAnnoEntry.trace_id.set(localTraceData.traceId);
         localTraceAnnoEntry.feature_id.set(localTraceData.featureId);
         localTraceAnnoEntry.server_timestamp.set(localTraceData.serverTime);
-        if ((localTraceData.result != null) && (localTraceData.result.jdField_a_of_type_Int != 0))
+        if ((localTraceData.result != null) && (localTraceData.result.a != 0))
         {
-          localTraceAnnoEntry.ret.set(localTraceData.result.jdField_a_of_type_Int);
+          localTraceAnnoEntry.ret.set(localTraceData.result.a);
           Object localObject = a(localTraceData.mSpanQueue);
           if (localObject != null) {
             localTraceAnnoEntry.span_anno_list.addAll((Collection)localObject);
           }
-          if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.7.0")))
+          if ((!TextUtils.isEmpty(localTraceData.version)) && (!localTraceData.version.equals("8.8.17")))
           {
             localObject = new ArrayList();
             ((List)localObject).add(localTraceAnnoEntry);
@@ -345,7 +345,7 @@ public class DefaultTraceNetwork
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.component.DefaultTraceNetwork
  * JD-Core Version:    0.7.0.1
  */

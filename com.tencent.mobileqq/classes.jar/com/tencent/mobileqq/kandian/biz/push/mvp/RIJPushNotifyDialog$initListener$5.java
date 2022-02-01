@@ -15,28 +15,28 @@ final class RIJPushNotifyDialog$initListener$5
   public final void onClick(View paramView)
   {
     paramView = this.a;
-    RIJPushNotifyDialog.a(paramView, RIJPushNotifyDialog.a(paramView) ^ true);
-    if (RIJPushNotifyDialog.a(this.a))
+    RIJPushNotifyDialog.a(paramView, RIJPushNotifyDialog.c(paramView) ^ true);
+    if (RIJPushNotifyDialog.c(this.a))
     {
-      if (RIJPushNotifyDialog.a(this.a).a())
+      if (RIJPushNotifyDialog.b(this.a).b())
       {
-        RIJPushNotifyDialog.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849721, 0, 0, 0);
+        RIJPushNotifyDialog.d(this.a).setCompoundDrawablesWithIntrinsicBounds(2130851430, 0, 0, 0);
         return;
       }
-      RIJPushNotifyDialog.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849722, 0, 0, 0);
+      RIJPushNotifyDialog.d(this.a).setCompoundDrawablesWithIntrinsicBounds(2130851431, 0, 0, 0);
       return;
     }
-    if (RIJPushNotifyDialog.a(this.a).a())
+    if (RIJPushNotifyDialog.b(this.a).b())
     {
-      RIJPushNotifyDialog.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849727, 0, 0, 0);
+      RIJPushNotifyDialog.d(this.a).setCompoundDrawablesWithIntrinsicBounds(2130851436, 0, 0, 0);
       return;
     }
-    RIJPushNotifyDialog.a(this.a).setCompoundDrawablesWithIntrinsicBounds(2130849728, 0, 0, 0);
+    RIJPushNotifyDialog.d(this.a).setCompoundDrawablesWithIntrinsicBounds(2130851437, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.mvp.RIJPushNotifyDialog.initListener.5
  * JD-Core Version:    0.7.0.1
  */

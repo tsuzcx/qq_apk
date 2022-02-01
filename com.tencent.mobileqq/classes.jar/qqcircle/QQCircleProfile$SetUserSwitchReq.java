@@ -20,7 +20,7 @@ public final class QQCircleProfile$SetUserSwitchReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.QQCircleProfile.SetUserSwitchReq
  * JD-Core Version:    0.7.0.1
  */

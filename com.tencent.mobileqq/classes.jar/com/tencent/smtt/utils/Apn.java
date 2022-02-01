@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 
 public class Apn
 {
@@ -92,7 +93,7 @@ public class Apn
     Object localObject = null;
     try
     {
-      WifiInfo localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi"));
       paramContext = localObject;
       if (localWifiInfo != null) {
         paramContext = localWifiInfo.getBSSID();
@@ -117,7 +118,7 @@ public class Apn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.utils.Apn
  * JD-Core Version:    0.7.0.1
  */

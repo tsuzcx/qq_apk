@@ -15,12 +15,12 @@ class ChatHistoryEmotionBaseFragment$2
 {
   ChatHistoryEmotionBaseFragment$2(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     paramView = new ArrayList();
-    if ((ChatHistoryEmotionBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment) != null) && (!ChatHistoryEmotionBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment).isEmpty()))
+    if ((ChatHistoryEmotionBaseFragment.a(this.b) != null) && (!ChatHistoryEmotionBaseFragment.a(this.b).isEmpty()))
     {
-      Iterator localIterator = ChatHistoryEmotionBaseFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment).iterator();
+      Iterator localIterator = ChatHistoryEmotionBaseFragment.a(this.b).iterator();
       while (localIterator.hasNext()) {
         paramView.add((ChatMessage)((EmotionPreviewData)localIterator.next()).a);
       }
@@ -28,14 +28,14 @@ class ChatHistoryEmotionBaseFragment$2
     if (paramView.size() > 0) {
       ThreadManager.post(new ChatHistoryEmotionBaseFragment.2.1(this, paramView), 8, null, true);
     }
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,24 +14,24 @@ class WSDramaEpisodeDataFetcher$1
   
   protected WSDramaEpisodeDataFetcher.ResponseModel a(WSRequest<stGetDramaFeedsRsp> paramWSRequest, stGetDramaFeedsRsp paramstGetDramaFeedsRsp, RspHeaderBean paramRspHeaderBean)
   {
-    return WSDramaEpisodeDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaEpisodeDataFetcher, paramWSRequest, paramstGetDramaFeedsRsp, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams);
+    return WSDramaEpisodeDataFetcher.a(this.c, paramWSRequest, paramstGetDramaFeedsRsp, this.a);
   }
   
   protected void a(WSDramaEpisodeDataFetcher.ResponseModel paramResponseModel)
   {
-    WSDramaEpisodeDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaEpisodeDataFetcher, paramResponseModel, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener);
+    WSDramaEpisodeDataFetcher.a(this.c, paramResponseModel, this.b);
   }
   
   protected void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
   
   protected void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
-    WSDramaEpisodeDataFetcher.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaEpisodeDataFetcher, paramWSServiceErrorInfo, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams);
+    WSDramaEpisodeDataFetcher.a(this.c, paramWSServiceErrorInfo, this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaEpisodeDataFetcher.1
  * JD-Core Version:    0.7.0.1
  */

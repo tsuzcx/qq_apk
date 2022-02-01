@@ -70,88 +70,196 @@ public class CommentPresenter
   extends AbsUIGroup<CertifiedAccountMeta.StComment>
   implements View.OnClickListener, Animation.AnimationListener, CompoundButton.OnCheckedChangeListener, IEventReceiver
 {
-  private static final String jdField_a_of_type_JavaLangString = "CommentPresenter";
-  private long jdField_a_of_type_Long;
-  private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
-  private CertifiedAccountMeta.StReply jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private View.OnLayoutChangeListener jdField_a_of_type_AndroidViewView$OnLayoutChangeListener = new CommentPresenter.5(this);
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private AbsListView.OnScrollListener jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener = new CommentPresenter.4(this);
-  ListView jdField_a_of_type_AndroidWidgetListView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private ActionSheetDialog jdField_a_of_type_ComTencentBizSubscribeCommentActionSheetDialog;
-  protected CommentBusiness a;
-  private final CommentPresenter.CommentEventReceiver jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$CommentEventReceiver;
-  private CommentPresenter.CommentWindowListener jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$CommentWindowListener;
-  private CommentPresenter.GetFeedResponseListener jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$GetFeedResponseListener;
-  private CommentPresenter.OnFeedCommentElementClickListener jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener;
-  private NewCommentAdapter jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter;
-  private OnCommentInputShowListener jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentInputShowListener;
-  private SubscribeCommentInputPopupWindow jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow;
-  private ArrayList<CertifiedAccountMeta.StComment> jdField_a_of_type_JavaUtilArrayList;
-  private Map<Long, CertifiedAccountMeta.StUser> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  View jdField_b_of_type_AndroidViewView;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private Map<Long, CertifiedAccountMeta.StComment> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean;
-  private View jdField_c_of_type_AndroidViewView;
-  private String jdField_c_of_type_JavaLangString;
-  private Map<Long, CertifiedAccountMeta.StReply> jdField_c_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private View jdField_d_of_type_AndroidViewView;
-  private String jdField_d_of_type_JavaLangString;
-  private Map<Integer, CertifiedAccountMeta.StFeed> jdField_d_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int;
-  private View jdField_e_of_type_AndroidViewView;
-  private boolean jdField_e_of_type_Boolean = false;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean = false;
-  private int jdField_g_of_type_Int = -1;
-  private boolean jdField_g_of_type_Boolean = false;
-  private boolean h;
-  private boolean i;
-  private boolean j;
+  private static final String j = "CommentPresenter";
+  private ActionSheetDialog A;
+  private boolean B;
+  private boolean C;
+  private COMM.StCommonExt D;
+  private String E;
+  private String F;
+  private long G;
+  private boolean H;
+  private boolean I = false;
+  private boolean J = false;
+  private Animation K;
+  private Animation L;
+  private boolean M = false;
+  private boolean N = false;
+  private Map<Integer, CertifiedAccountMeta.StFeed> O = new HashMap();
+  private ArrayList<CertifiedAccountMeta.StComment> P;
+  private int Q;
+  private boolean R;
+  private CommentPresenter.CommentWindowListener S;
+  private OnCommentInputShowListener T;
+  private CommentPresenter.GetFeedResponseListener U;
+  private View V;
+  private int W;
+  private String X;
+  private ExtraTypeInfo Y;
+  private boolean Z;
+  private boolean aa;
+  private AbsListView.OnScrollListener ab = new CommentPresenter.4(this);
+  private View.OnLayoutChangeListener ac = new CommentPresenter.5(this);
+  private int ad;
+  private int ae = -1;
+  ListView g;
+  View h;
+  protected CommentBusiness i;
+  private final CommentPresenter.CommentEventReceiver k;
+  private final Activity l;
+  private ViewStub m;
+  private CommentPresenter.OnFeedCommentElementClickListener n;
+  private View o;
+  private TextView p;
+  private TextView q;
+  private View r;
+  private SubscribeCommentInputPopupWindow s;
+  private CertifiedAccountMeta.StComment t;
+  private CertifiedAccountMeta.StReply u;
+  private long v;
+  private Map<Long, CertifiedAccountMeta.StUser> w = new HashMap();
+  private Map<Long, CertifiedAccountMeta.StComment> x = new HashMap();
+  private Map<Long, CertifiedAccountMeta.StReply> y = new HashMap();
+  private NewCommentAdapter z;
   
   public CommentPresenter(Activity paramActivity, boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed, CommentPresenter.GetFeedResponseListener paramGetFeedResponseListener, ExtraTypeInfo paramExtraTypeInfo)
   {
     super(paramActivity, paramBoolean);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$CommentEventReceiver = new CommentPresenter.CommentEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$CommentEventReceiver);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$GetFeedResponseListener = paramGetFeedResponseListener;
-    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
-    k();
-    b(paramStFeed);
-    l();
+    this.l = paramActivity;
+    this.k = new CommentPresenter.CommentEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.k);
+    this.U = paramGetFeedResponseListener;
+    this.Y = paramExtraTypeInfo;
+    u();
+    c(paramStFeed);
+    w();
+  }
+  
+  private String A()
+  {
+    if (z() == null)
+    {
+      QLog.e(j, 2, "getCellId null");
+      return "";
+    }
+    return z().id.get();
+  }
+  
+  private CertifiedAccountMeta.StUser B()
+  {
+    if (SubscribeGlobalInfo.a() != null) {
+      return SubscribeGlobalInfo.a();
+    }
+    CertifiedAccountMeta.StUser localStUser = new CertifiedAccountMeta.StUser();
+    localStUser.id.set(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    PBStringField localPBStringField = localStUser.nick;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Constants.PropertiesKey.nickName.toString());
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localPBStringField.set(localBaseApplicationImpl.getProperty(localStringBuilder.toString()));
+    localStUser.type.set(0);
+    return localStUser;
+  }
+  
+  private void C()
+  {
+    v().a(z(), false);
+  }
+  
+  private void D()
+  {
+    try
+    {
+      if (this.i == null)
+      {
+        QLog.e(j, 1, "innerInitData return empty because CommentBusiness is null ");
+        return;
+      }
+      this.P = v().c(A());
+      this.D = v().a(A());
+      ArrayList localArrayList = this.P;
+      if (localArrayList == null) {
+        return;
+      }
+      if (this.z != null)
+      {
+        this.z.a();
+        this.z.a(this.P);
+        if (this.Z) {
+          this.z.a(0);
+        }
+        this.z.notifyDataSetChanged();
+      }
+      if ((this.g != null) && (this.ae != i()) && (this.Z))
+      {
+        this.ae = i();
+        QLog.d(j, 1, "mNeedShowCommentList2");
+        this.g.setSelection(0);
+      }
+      if ((this.P != null) && (this.P.size() > 0)) {
+        this.Q = v().b(A());
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  private void E()
+  {
+    try
+    {
+      TextUtils.isEmpty(A());
+      D();
+      SimpleEventBus.getInstance().dispatchEvent(new CommentListShowStateEvent(true));
+      ArrayList localArrayList = this.P;
+      boolean bool = false;
+      if ((localArrayList != null) && (this.P.size() > 0))
+      {
+        if (this.q != null)
+        {
+          this.q.setText(Formatter.a(this.Q));
+          this.q.setVisibility(0);
+        }
+      }
+      else if (this.q != null)
+      {
+        this.q.setText("");
+        this.q.setVisibility(8);
+      }
+      if ((this.h != null) && (this.h.getVisibility() != 0))
+      {
+        this.h.setVisibility(0);
+        this.L = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+        this.L.setDuration(200L);
+        this.L.setAnimationListener(this);
+        this.L.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.V.startAnimation(this.L);
+      }
+      if (this.z.getCount() == 0) {
+        bool = true;
+      }
+      b(bool);
+      return;
+    }
+    finally {}
+  }
+  
+  private void F()
+  {
+    if ((this.h != null) && (!this.M))
+    {
+      this.K = AnimationUtils.loadAnimation(this.a, 2130772062);
+      this.K.setAnimationListener(this);
+      this.V.startAnimation(this.K);
+      SimpleEventBus.getInstance().dispatchEvent(new CommentListShowStateEvent(false));
+    }
+    this.N = false;
   }
   
   private CertifiedAccountMeta.StComment a(CertifiedAccountMeta.StComment paramStComment)
   {
     return new CertifiedAccountMeta.StComment();
-  }
-  
-  private CertifiedAccountMeta.StFeed a()
-  {
-    int k = a();
-    return (CertifiedAccountMeta.StFeed)this.jdField_d_of_type_JavaUtilMap.get(Integer.valueOf(k));
-  }
-  
-  private CertifiedAccountMeta.StReply a(CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
-  {
-    if (paramStComment == null) {
-      return null;
-    }
-    return new CertifiedAccountMeta.StReply();
   }
   
   private CertifiedAccountMeta.StReply a(CertifiedAccountMeta.StComment paramStComment, String paramString)
@@ -170,53 +278,26 @@ public class CommentPresenter
     return null;
   }
   
-  private CertifiedAccountMeta.StUser a()
-  {
-    if (SubscribeGlobalInfo.a() != null) {
-      return SubscribeGlobalInfo.a();
-    }
-    CertifiedAccountMeta.StUser localStUser = new CertifiedAccountMeta.StUser();
-    localStUser.id.set(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    PBStringField localPBStringField = localStUser.nick;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Constants.PropertiesKey.nickName.toString());
-    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    localPBStringField.set(localBaseApplicationImpl.getProperty(localStringBuilder.toString()));
-    localStUser.type.set(0);
-    return localStUser;
-  }
-  
-  private CommentBusiness a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness == null)
-    {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness = new CommentBusiness();
-      this.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.hashCode();
-    }
-    return this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness;
-  }
-  
   private void a(int paramInt, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetListView.getChildAt(paramInt);
+    Object localObject = this.g.getChildAt(paramInt);
     if ((localObject instanceof CommentView))
     {
       localObject = (CommentView)localObject;
       paramString = ((CommentView)localObject).a(paramString);
-      localObject = ((CommentView)localObject).a();
+      localObject = ((CommentView)localObject).getReplyContainer();
       if ((paramString != null) && (localObject != null))
       {
-        int k = ((LinearLayout)localObject).getTop();
-        int m = paramString.getTop();
-        paramString = jdField_a_of_type_JavaLangString;
+        int i1 = ((LinearLayout)localObject).getTop();
+        int i2 = paramString.getTop();
+        paramString = j;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("scrollToReplyView getTop containerTop:");
-        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append(i1);
         ((StringBuilder)localObject).append("replyViewTop:");
-        ((StringBuilder)localObject).append(m);
+        ((StringBuilder)localObject).append(i2);
         QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
-        this.jdField_a_of_type_AndroidWidgetListView.setSelectionFromTop(paramInt, -(k + m));
+        this.g.setSelectionFromTop(paramInt, -(i1 + i2));
       }
     }
   }
@@ -225,23 +306,23 @@ public class CommentPresenter
   {
     if (paramLong == 0L)
     {
-      QQToast.a(a(), 2, paramString1, 0).a();
+      QQToast.makeText(e(), 2, paramString1, 0).show();
       return;
     }
-    if (!NetworkUtils.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtils.isNetworkAvailable(this.a))
     {
-      QQToast.a(a(), 1, a().getResources().getString(2131694433), 0).a();
+      QQToast.makeText(e(), 1, e().getResources().getString(2131892113), 0).show();
       return;
     }
-    QQToast.a(a(), 1, paramString2, 0).a();
+    QQToast.makeText(e(), 1, paramString2, 0).show();
   }
   
   private void a(CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (BaseApplicationImpl.getContext() != null))
+    if ((this.a != null) && (BaseApplicationImpl.getContext() != null))
     {
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow == null) {
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow = new SubscribeCommentInputPopupWindow((Activity)this.jdField_a_of_type_AndroidContentContext);
+      if (this.s == null) {
+        this.s = new SubscribeCommentInputPopupWindow((Activity)this.a);
       }
       Object localObject2;
       Object localObject1;
@@ -249,7 +330,7 @@ public class CommentPresenter
       {
         if (paramStReply.postUser != null)
         {
-          localObject2 = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131692245), new Object[] { paramStReply.postUser.nick.get() });
+          localObject2 = String.format(this.a.getString(2131889232), new Object[] { paramStReply.postUser.nick.get() });
           localObject1 = localObject2;
           if (((String)localObject2).length() > 10)
           {
@@ -259,12 +340,12 @@ public class CommentPresenter
             ((StringBuilder)localObject2).append("...");
             localObject1 = ((StringBuilder)localObject2).toString();
           }
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.b((String)localObject1);
+          this.s.b((String)localObject1);
         }
       }
       else if ((paramStComment != null) && (paramStComment.postUser != null))
       {
-        localObject2 = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131692245), new Object[] { paramStComment.postUser.nick.get() });
+        localObject2 = String.format(this.a.getString(2131889232), new Object[] { paramStComment.postUser.nick.get() });
         localObject1 = localObject2;
         if (((String)localObject2).length() > 10)
         {
@@ -274,18 +355,18 @@ public class CommentPresenter
           ((StringBuilder)localObject2).append("...");
           localObject1 = ((StringBuilder)localObject2).toString();
         }
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.b((String)localObject1);
+        this.s.b((String)localObject1);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.b(this.jdField_a_of_type_AndroidContentContext.getString(2131692240));
+        this.s.b(this.a.getString(2131889227));
       }
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a(new CommentPresenter.6(this, paramStComment, paramStReply));
+      this.s.a(new CommentPresenter.6(this, paramStComment, paramStReply));
       c(paramStComment, paramStReply);
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a(paramBoolean2);
+      this.s.a(paramBoolean2);
       return;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "plugin environment exception ! ");
+    QLog.e(j, 1, "plugin environment exception ! ");
   }
   
   private void a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
@@ -327,10 +408,10 @@ public class CommentPresenter
         paramStComment = str;
       }
       paramStReply = new EvilReportUtil.EvilReportParams();
-      paramStReply.jdField_a_of_type_JavaLangString = "android";
-      paramStReply.jdField_b_of_type_JavaLangString = AppSetting.f();
-      paramStReply.jdField_c_of_type_JavaLangString = "1";
-      paramStReply.jdField_d_of_type_JavaLangString = paramStComment;
+      paramStReply.a = "android";
+      paramStReply.b = AppSetting.h();
+      paramStReply.c = "1";
+      paramStReply.d = paramStComment;
       paramStReply.e = "KQQ";
       paramStReply.f = "2400002";
       paramStReply.g = "qzone_authentication_comment";
@@ -338,35 +419,35 @@ public class CommentPresenter
       paramStReply.i = "0";
       paramStReply.k = localStringBuilder.toString();
       paramStReply.l = paramStFeed;
-      EvilReportUtil.a(this.jdField_a_of_type_AndroidContentContext, paramStReply);
+      EvilReportUtil.a(this.a, paramStReply);
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = j;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("loadFeedDisplay() isRefresh => ");
     ((StringBuilder)localObject2).append(paramBoolean);
     localObject2 = ((StringBuilder)localObject2).toString();
-    int k = 1;
+    int i1 = 1;
     QLog.d((String)localObject1, 1, (String)localObject2);
     if (paramBoolean) {
-      o();
+      C();
     }
-    if (this.jdField_b_of_type_AndroidViewView.getVisibility() == 0) {
-      k = 0;
+    if (this.h.getVisibility() == 0) {
+      i1 = 0;
     }
-    c(0);
-    if (k != 0) {
-      h();
+    d(0);
+    if (i1 != 0) {
+      q();
     }
-    localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow;
+    localObject1 = this.s;
     if (localObject1 != null)
     {
-      localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject2 = this.p;
       if (localObject2 != null) {
-        ((TextView)localObject2).setText(((SubscribeCommentInputPopupWindow)localObject1).a());
+        ((TextView)localObject2).setText(((SubscribeCommentInputPopupWindow)localObject1).d());
       }
     }
   }
@@ -380,12 +461,12 @@ public class CommentPresenter
     } else {
       localObject1 = (String)paramArrayOfObject[2];
     }
-    int k = ((Integer)paramArrayOfObject[0]).intValue();
-    if (k != 9)
+    int i1 = ((Integer)paramArrayOfObject[0]).intValue();
+    if (i1 != 9)
     {
       Object localObject3;
       Object localObject4;
-      switch (k)
+      switch (i1)
       {
       default: 
         return;
@@ -393,17 +474,17 @@ public class CommentPresenter
         if (a(5, paramArrayOfObject)) {
           return;
         }
-        a(((Long)localObject2).longValue(), HardCodeUtil.a(2131702381), HardCodeUtil.a(2131702388));
+        a(((Long)localObject2).longValue(), HardCodeUtil.a(2131900385), HardCodeUtil.a(2131900392));
         if ((!(paramArrayOfObject[3] instanceof CertifiedAccountWrite.StDoReplyRsp)) || (!(paramArrayOfObject[4] instanceof CertifiedAccountMeta.StComment))) {
           break;
         }
         localObject1 = ((CertifiedAccountWrite.StDoReplyRsp)paramArrayOfObject[3]).reply.id.get();
         paramArrayOfObject = ((CertifiedAccountMeta.StComment)paramArrayOfObject[4]).id.get();
-        if ((((Long)localObject2).longValue() != 0L) || (this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter == null) || (TextUtils.isEmpty(paramArrayOfObject)) || (TextUtils.isEmpty((CharSequence)localObject1))) {
+        if ((((Long)localObject2).longValue() != 0L) || (this.z == null) || (TextUtils.isEmpty(paramArrayOfObject)) || (TextUtils.isEmpty((CharSequence)localObject1))) {
           break;
         }
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.a(paramArrayOfObject, (String)localObject1);
-        m();
+        this.z.a(paramArrayOfObject, (String)localObject1);
+        x();
         return;
       case 5: 
         if (a(4, paramArrayOfObject)) {
@@ -412,25 +493,25 @@ public class CommentPresenter
         if ((((Long)localObject2).longValue() == 0L) && ((paramArrayOfObject[3] instanceof CertifiedAccountWrite.StDoCommentRsp)))
         {
           paramArrayOfObject = ((CertifiedAccountWrite.StDoCommentRsp)paramArrayOfObject[3]).comment.id.get();
-          localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter;
+          localObject1 = this.z;
           if ((localObject1 != null) && (((NewCommentAdapter)localObject1).a(paramArrayOfObject))) {
-            m();
+            x();
           }
-          b(-1);
+          c(-1);
         }
-        a(((Long)localObject2).longValue(), HardCodeUtil.a(2131702376), HardCodeUtil.a(2131702385));
+        a(((Long)localObject2).longValue(), HardCodeUtil.a(2131900380), HardCodeUtil.a(2131900389));
         return;
       case 4: 
         if (a(6, paramArrayOfObject)) {
           return;
         }
-        localObject3 = this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow;
+        localObject3 = this.s;
         if (localObject3 != null) {
-          ((SubscribeCommentInputPopupWindow)localObject3).b(this.jdField_a_of_type_AndroidWidgetTextView);
+          ((SubscribeCommentInputPopupWindow)localObject3).b(this.p);
         }
         if (((Long)localObject2).longValue() != 0L)
         {
-          localObject3 = jdField_a_of_type_JavaLangString;
+          localObject3 = j;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("reply fail ret=");
           ((StringBuilder)localObject4).append(localObject2);
@@ -445,32 +526,32 @@ public class CommentPresenter
           paramArrayOfObject = (String)paramArrayOfObject[5];
           if (((Long)localObject2).longValue() != 0L)
           {
-            localObject4 = this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter;
+            localObject4 = this.z;
             if ((localObject4 != null) && (((NewCommentAdapter)localObject4).a(((CertifiedAccountMeta.StComment)localObject3).id.get(), paramArrayOfObject))) {
-              m();
+              x();
             }
           }
           if (((Long)localObject2).longValue() == 0L)
           {
-            localObject4 = this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter;
+            localObject4 = this.z;
             if ((localObject4 != null) && (((NewCommentAdapter)localObject4).a(((CertifiedAccountMeta.StComment)localObject3).id.get(), paramArrayOfObject, (CertifiedAccountMeta.StReply)localObject1))) {
-              m();
+              x();
             }
           }
         }
-        a(((Long)localObject2).longValue(), HardCodeUtil.a(2131702375), HardCodeUtil.a(2131702386));
+        a(((Long)localObject2).longValue(), HardCodeUtil.a(2131900379), HardCodeUtil.a(2131900390));
         return;
       case 3: 
-        localObject3 = this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow;
+        localObject3 = this.s;
         if (localObject3 != null) {
-          ((SubscribeCommentInputPopupWindow)localObject3).b(this.jdField_a_of_type_AndroidWidgetTextView);
+          ((SubscribeCommentInputPopupWindow)localObject3).b(this.p);
         }
         if (a(5, paramArrayOfObject)) {
           return;
         }
         if (((Long)localObject2).longValue() != 0L)
         {
-          localObject3 = jdField_a_of_type_JavaLangString;
+          localObject3 = j;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("comment fail ret=");
           ((StringBuilder)localObject4).append(localObject2);
@@ -483,55 +564,55 @@ public class CommentPresenter
           localObject3 = ((CertifiedAccountWrite.StDoCommentRsp)paramArrayOfObject[3]).comment;
           if (((Long)localObject2).longValue() != 0L)
           {
-            localObject4 = this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter;
+            localObject4 = this.z;
             if ((localObject4 != null) && (((NewCommentAdapter)localObject4).a(String.valueOf(paramArrayOfObject[4])))) {
-              m();
+              x();
             }
           }
           if (((Long)localObject2).longValue() == 0L)
           {
-            localObject4 = this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter;
+            localObject4 = this.z;
             if ((localObject4 != null) && (((NewCommentAdapter)localObject4).a(String.valueOf(paramArrayOfObject[4]), (CertifiedAccountMeta.StComment)localObject3))) {
-              m();
+              x();
             }
-            b(1);
+            c(1);
           }
         }
-        a(((Long)localObject2).longValue(), HardCodeUtil.a(2131702382), (String)localObject1);
-        a().a().postDelayed(new CommentPresenter.14(this), 1000L);
+        a(((Long)localObject2).longValue(), HardCodeUtil.a(2131900386), (String)localObject1);
+        v().a().postDelayed(new CommentPresenter.14(this), 1000L);
         return;
       case 2: 
-        this.jdField_c_of_type_Boolean = false;
+        this.H = false;
         if (paramArrayOfObject[3] != null)
         {
           localObject3 = (CertifiedAccountRead.StGetFeedDetailRsp)paramArrayOfObject[3];
           if (a(4, paramArrayOfObject)) {
             return;
           }
-          b((CertifiedAccountMeta.StFeed)((CertifiedAccountRead.StGetFeedDetailRsp)localObject3).feed.get());
-          localObject4 = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$GetFeedResponseListener;
+          c((CertifiedAccountMeta.StFeed)((CertifiedAccountRead.StGetFeedDetailRsp)localObject3).feed.get());
+          localObject4 = this.U;
           if (localObject4 != null) {
             ((CommentPresenter.GetFeedResponseListener)localObject4).a((CertifiedAccountRead.StGetFeedDetailRsp)localObject3, VSNetworkHelper.isProtocolCache((String)localObject1), ((Long)localObject2).longValue(), (String)localObject1);
           }
           if ((paramArrayOfObject.length >= 6) && (paramArrayOfObject[5] != null))
           {
             localObject1 = (COMM.StCommonExt)paramArrayOfObject[5];
-            paramArrayOfObject = a().a(b());
+            paramArrayOfObject = v().c(A());
             if (((COMM.StCommonExt)localObject1).mapInfo.size() > 0)
             {
               localObject1 = ((COMM.Entry)((COMM.StCommonExt)localObject1).mapInfo.get(0)).value.get();
               if ((paramArrayOfObject != null) && (paramArrayOfObject.size() > 0) && (((CertifiedAccountMeta.StComment)paramArrayOfObject.get(0)).id.get().equals(localObject1)))
               {
-                localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+                localObject1 = this.Y;
                 if ((localObject1 != null) && (!TextUtils.isEmpty(((ExtraTypeInfo)localObject1).getReplyId())))
                 {
-                  localObject1 = a((CertifiedAccountMeta.StComment)paramArrayOfObject.get(0), this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.getReplyId());
+                  localObject1 = a((CertifiedAccountMeta.StComment)paramArrayOfObject.get(0), this.Y.getReplyId());
                   if (localObject1 != null)
                   {
-                    h();
+                    q();
                     SimpleEventBus.getInstance().dispatchEvent(new CommentReplyEvent((CertifiedAccountMeta.StComment)paramArrayOfObject.get(0), (CertifiedAccountMeta.StReply)localObject1));
-                    this.i = true;
-                    this.j = true;
+                    this.Z = true;
+                    this.aa = true;
                   }
                   else
                   {
@@ -540,7 +621,7 @@ public class CommentPresenter
                 }
                 else
                 {
-                  h();
+                  q();
                   SimpleEventBus.getInstance().dispatchEvent(new CommentReplyEvent((CertifiedAccountMeta.StComment)paramArrayOfObject.get(0), null));
                 }
               }
@@ -550,28 +631,28 @@ public class CommentPresenter
               }
             }
           }
-          if (this.jdField_g_of_type_Boolean) {
+          if (this.N) {
             a(new CommentPresenter.13(this));
           }
         }
         else
         {
-          QLog.w(jdField_a_of_type_JavaLangString, 1, "get feed detail response failed");
-          paramArrayOfObject = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$GetFeedResponseListener;
+          QLog.w(j, 1, "get feed detail response failed");
+          paramArrayOfObject = this.U;
           if (paramArrayOfObject != null) {
             paramArrayOfObject.a(null, VSNetworkHelper.isProtocolCache((String)localObject1), ((Long)localObject2).longValue(), (String)localObject1);
           }
-          if (!this.h) {
-            QQToast.a(a(), (CharSequence)localObject1, 0).a();
+          if (!this.R) {
+            QQToast.makeText(e(), (CharSequence)localObject1, 0).show();
           }
         }
-        if (!this.h) {
+        if (!this.R) {
           break;
         }
-        this.h = false;
+        this.R = false;
         return;
       case 1: 
-        l();
+        w();
         return;
       }
     }
@@ -582,7 +663,7 @@ public class CommentPresenter
       }
       if ((paramArrayOfObject[3] instanceof CertifiedAccountRead.StGetCommentListRsp))
       {
-        if (this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter != null)
+        if (this.z != null)
         {
           localObject2 = ((CertifiedAccountRead.StGetCommentListRsp)paramArrayOfObject[3]).vecComment.get();
           localObject1 = localObject2;
@@ -593,20 +674,20 @@ public class CommentPresenter
             {
               localObject1 = localObject2;
               if ((paramArrayOfObject[5] instanceof String)) {
-                localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness.a((List)localObject2, (String)paramArrayOfObject[5]);
+                localObject1 = this.i.a((List)localObject2, (String)paramArrayOfObject[5]);
               }
             }
           }
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.a((Collection)localObject1);
+          this.z.a((Collection)localObject1);
         }
-        m();
+        x();
       }
     }
   }
   
   private boolean a(int paramInt, Object[] paramArrayOfObject)
   {
-    return this.jdField_e_of_type_Int != ((Integer)paramArrayOfObject[paramInt]).intValue();
+    return this.W != ((Integer)paramArrayOfObject[paramInt]).intValue();
   }
   
   private boolean a(CertifiedAccountMeta.StUser paramStUser)
@@ -617,51 +698,23 @@ public class CommentPresenter
     return (paramStUser != null) && (paramStUser.id.get().equals(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
   }
   
-  private String b()
-  {
-    if (a() == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "getCellId null");
-      return "";
-    }
-    return a().id.get();
-  }
-  
-  private void b(int paramInt)
-  {
-    if (this.jdField_d_of_type_Int == 0) {
-      this.jdField_d_of_type_Int = a().a(b());
-    }
-    this.jdField_d_of_type_Int += paramInt;
-    a(new CommentPresenter.2(this));
-    StoryDispatcher.a().dispatch(new CommentEvent(5, new Object[] { b(), Integer.valueOf(this.jdField_d_of_type_Int) }));
-  }
-  
   private void b(CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
   {
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "popupComment");
+    QLog.e(j, 1, "popupComment");
     a(paramStComment, paramStReply, true, false);
-  }
-  
-  private void b(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    if (paramStFeed != null) {
-      this.jdField_d_of_type_JavaLangString = paramStFeed.poster.id.get();
-    }
-    this.jdField_d_of_type_JavaUtilMap.put(Integer.valueOf(a()), paramStFeed);
   }
   
   private void b(boolean paramBoolean)
   {
-    Object localObject = this.jdField_c_of_type_AndroidViewView;
+    Object localObject = this.o;
     if (localObject != null)
     {
-      localObject = (TextView)((View)localObject).findViewById(2131371529);
+      localObject = (TextView)((View)localObject).findViewById(2131438908);
       if (localObject != null)
       {
         if (paramBoolean)
         {
-          ((TextView)localObject).setText(2131693640);
+          ((TextView)localObject).setText(2131891215);
           return;
         }
         ((TextView)localObject).setText("");
@@ -671,210 +724,147 @@ public class CommentPresenter
   
   private void c(int paramInt)
   {
-    if (this.jdField_b_of_type_AndroidViewView == null)
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "setCommentContainerVisible() mCommentContainer == null.");
-      return;
+    if (this.Q == 0) {
+      this.Q = v().b(A());
     }
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.a(a().poster.id.get());
-    }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(paramInt);
+    this.Q += paramInt;
+    a(new CommentPresenter.2(this));
+    StoryDispatcher.a().dispatch(new CommentEvent(5, new Object[] { A(), Integer.valueOf(this.Q) }));
   }
   
   private void c(CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
   {
-    SubscribeCommentInputPopupWindow localSubscribeCommentInputPopupWindow = this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow;
+    SubscribeCommentInputPopupWindow localSubscribeCommentInputPopupWindow = this.s;
     if (localSubscribeCommentInputPopupWindow == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "mCommentInputPopupWindow == null");
+      QLog.e(j, 1, "mCommentInputPopupWindow == null");
       return;
     }
     localSubscribeCommentInputPopupWindow.setOnShowListener(new CommentPresenter.7(this, paramStComment, paramStReply));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow.a(new CommentPresenter.8(this, paramStComment, paramStReply));
+    this.s.a(new CommentPresenter.8(this, paramStComment, paramStReply));
   }
   
-  private void k()
+  private void c(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.i = false;
-    this.j = true;
+    if (paramStFeed != null) {
+      this.X = paramStFeed.poster.id.get();
+    }
+    this.O.put(Integer.valueOf(i()), paramStFeed);
   }
   
-  private void l()
+  private CertifiedAccountMeta.StReply d(CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
   {
-    if (b() != null)
+    if (paramStComment == null) {
+      return null;
+    }
+    return new CertifiedAccountMeta.StReply();
+  }
+  
+  private void d(int paramInt)
+  {
+    if (this.h == null)
     {
-      this.h = true;
-      ExtraTypeInfo localExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      QLog.d(j, 1, "setCommentContainerVisible() mCommentContainer == null.");
+      return;
+    }
+    if (paramInt == 0) {
+      this.z.b(z().poster.id.get());
+    }
+    this.h.setVisibility(paramInt);
+  }
+  
+  private void u()
+  {
+    this.Z = false;
+    this.aa = true;
+  }
+  
+  private CommentBusiness v()
+  {
+    if (this.i == null)
+    {
+      this.i = new CommentBusiness();
+      this.W = this.i.hashCode();
+    }
+    return this.i;
+  }
+  
+  private void w()
+  {
+    if (A() != null)
+    {
+      this.R = true;
+      ExtraTypeInfo localExtraTypeInfo = this.Y;
       if ((localExtraTypeInfo != null) && (!TextUtils.isEmpty(localExtraTypeInfo.getCommentId())))
       {
-        a().a(a(), false, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.getCommentId());
+        v().a(z(), false, this.Y.getCommentId());
         return;
       }
-      a().a(a(), false, "");
+      v().a(z(), false, "");
     }
   }
   
-  private void m()
+  private void x()
   {
     a(new CommentPresenter.1(this));
   }
   
-  private void n()
+  private void y()
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)a(2131366563));
-    this.jdField_b_of_type_AndroidViewView = a(2131364941);
-    this.jdField_e_of_type_AndroidViewView = a(2131366564);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131364968));
-    this.jdField_c_of_type_AndroidViewView = a(2131364952);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378535));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView = a(2131363924);
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnScrollListener(this.jdField_a_of_type_AndroidWidgetAbsListView$OnScrollListener);
-    this.jdField_a_of_type_AndroidWidgetListView.addOnLayoutChangeListener(this.jdField_a_of_type_AndroidViewView$OnLayoutChangeListener);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener = new CommentPresenter.OnFeedCommentElementClickListener(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter = new NewCommentAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.a(this.jdField_d_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter);
-    this.jdField_a_of_type_AndroidWidgetListView.setEmptyView(this.jdField_c_of_type_AndroidViewView);
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    this.g = ((ListView)b(2131432885));
+    this.h = b(2131431066);
+    this.V = b(2131432886);
+    this.q = ((TextView)b(2131431095));
+    this.o = b(2131431078);
+    this.p = ((TextView)b(2131447156));
+    this.p.setOnClickListener(this);
+    this.r = b(2131429880);
+    this.r.setOnClickListener(this);
+    this.g.setOnScrollListener(this.ab);
+    this.g.addOnLayoutChangeListener(this.ac);
+    this.n = new CommentPresenter.OnFeedCommentElementClickListener(this);
+    this.z = new NewCommentAdapter(this.a, this.n);
+    this.z.b(this.X);
+    this.g.setAdapter(this.z);
+    this.g.setEmptyView(this.o);
+    View localView = this.h;
     if (localView != null) {
       localView.setOnClickListener(new CommentPresenter.3(this));
     }
   }
   
-  private void o()
+  private CertifiedAccountMeta.StFeed z()
   {
-    a().a(a(), false);
-  }
-  
-  private void p()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness == null)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "innerInitData return empty because CommentBusiness is null ");
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList = a().a(b());
-      this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = a().a(b());
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      if (localArrayList == null) {
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter != null)
-      {
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.a();
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-        if (this.i) {
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.a(0);
-        }
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.notifyDataSetChanged();
-      }
-      if ((this.jdField_a_of_type_AndroidWidgetListView != null) && (this.jdField_g_of_type_Int != a()) && (this.i))
-      {
-        this.jdField_g_of_type_Int = a();
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "mNeedShowCommentList2");
-        this.jdField_a_of_type_AndroidWidgetListView.setSelection(0);
-      }
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        this.jdField_d_of_type_Int = a().a(b());
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  private void q()
-  {
-    try
-    {
-      TextUtils.isEmpty(b());
-      p();
-      SimpleEventBus.getInstance().dispatchEvent(new CommentListShowStateEvent(true));
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      boolean bool = false;
-      if ((localArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-        {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(Formatter.a(this.jdField_d_of_type_Int));
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        }
-      }
-      else if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-      if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getVisibility() != 0))
-      {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-        this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(200L);
-        this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-        this.jdField_b_of_type_AndroidViewAnimationAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        this.jdField_e_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-      }
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter.getCount() == 0) {
-        bool = true;
-      }
-      b(bool);
-      return;
-    }
-    finally {}
-  }
-  
-  private void r()
-  {
-    if ((this.jdField_b_of_type_AndroidViewView != null) && (!this.jdField_f_of_type_Boolean))
-    {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772045);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-      this.jdField_e_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-      SimpleEventBus.getInstance().dispatchEvent(new CommentListShowStateEvent(false));
-    }
-    this.jdField_g_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  protected View a()
-  {
-    return null;
+    int i1 = i();
+    return (CertifiedAccountMeta.StFeed)this.O.get(Integer.valueOf(i1));
   }
   
   public void a(CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewViewStub;
+    Object localObject = this.m;
     if (localObject != null)
     {
       a((ViewStub)localObject);
-      this.jdField_a_of_type_AndroidViewViewStub = null;
+      this.m = null;
     }
-    if (b() == null)
+    if (A() == null)
     {
-      int k = this.jdField_f_of_type_Int;
-      if (k <= 3)
+      int i1 = this.ad;
+      if (i1 <= 3)
       {
-        this.jdField_f_of_type_Int = (k + 1);
-        a().a().postDelayed(new CommentPresenter.10(this, paramStComment, paramStReply), this.jdField_f_of_type_Int * 500);
+        this.ad = (i1 + 1);
+        v().a().postDelayed(new CommentPresenter.10(this, paramStComment, paramStReply), this.ad * 500);
         return;
       }
     }
-    localObject = b();
-    if ((!StringUtil.a((String)localObject)) && (a() != null) && (a().vecComment.size() == 0) && (a().commentCount.get() != 0))
+    localObject = A();
+    if ((!StringUtil.isEmpty((String)localObject)) && (z() != null) && (z().vecComment.size() == 0) && (z().commentCount.get() != 0))
     {
-      this.jdField_a_of_type_JavaUtilArrayList = a().a((String)localObject);
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_c_of_type_Boolean)) {
-        p();
+      this.P = v().c((String)localObject);
+      if ((this.P != null) && (!this.H)) {
+        D();
       } else {
-        a().a(a(), false);
+        v().a(z(), false);
       }
     }
     a(paramStComment, paramStReply, true, false);
@@ -882,28 +872,18 @@ public class CommentPresenter
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    b(paramStFeed);
-    l();
+    c(paramStFeed);
+    w();
   }
   
   public void a(CommentPresenter.CommentWindowListener paramCommentWindowListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$CommentWindowListener = paramCommentWindowListener;
+    this.S = paramCommentWindowListener;
   }
   
   public void a(OnCommentInputShowListener paramOnCommentInputShowListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentInputShowListener = paramOnCommentInputShowListener;
-  }
-  
-  public boolean a(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    return (paramStFeed != null) && (!TextUtils.isEmpty(paramStFeed.id.get()));
-  }
-  
-  protected int b()
-  {
-    return 2131558774;
+    this.T = paramOnCommentInputShowListener;
   }
   
   protected void b() {}
@@ -915,18 +895,12 @@ public class CommentPresenter
   
   public void b(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.m = paramViewStub;
   }
   
-  public boolean b()
+  public boolean b(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    if ((localView != null) && (localView.getVisibility() == 0))
-    {
-      r();
-      return true;
-    }
-    return false;
+    return (paramStFeed != null) && (!TextUtils.isEmpty(paramStFeed.id.get()));
   }
   
   public void c(View paramView)
@@ -934,93 +908,23 @@ public class CommentPresenter
     a(null, null, true, true);
   }
   
-  public boolean c()
-  {
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    return (localView != null) && (localView.getVisibility() == 0);
-  }
-  
   protected void d() {}
-  
-  public boolean d()
-  {
-    SubscribeCommentInputPopupWindow localSubscribeCommentInputPopupWindow = this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow;
-    return (localSubscribeCommentInputPopupWindow != null) && (localSubscribeCommentInputPopupWindow.isShowing());
-  }
-  
-  protected void e()
-  {
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$CommentEventReceiver);
-    a().a();
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBusiness = null;
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null) {
-      localArrayList.clear();
-    }
-    this.jdField_d_of_type_JavaUtilMap.clear();
-  }
   
   protected void g()
   {
-    n();
+    StoryDispatcher.a().unRegisterSubscriber(this.k);
+    v().b();
+    this.i = null;
+    ArrayList localArrayList = this.P;
+    if (localArrayList != null) {
+      localArrayList.clear();
+    }
+    this.O.clear();
   }
   
-  public void h()
+  public int i()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewViewStub;
-    if (localObject != null)
-    {
-      a((ViewStub)localObject);
-      this.jdField_a_of_type_AndroidViewViewStub = null;
-    }
-    if (b() == null)
-    {
-      int k = this.jdField_f_of_type_Int;
-      if (k <= 3)
-      {
-        this.jdField_f_of_type_Int = (k + 1);
-        a().a().postDelayed(new CommentPresenter.9(this), this.jdField_f_of_type_Int * 500);
-        return;
-      }
-    }
-    localObject = a();
-    String str = b();
-    if (str != null)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList = a().a(str);
-      if (this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_g_of_type_Boolean = true;
-        a().a((CertifiedAccountMeta.StFeed)localObject, false);
-        return;
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList == null)
-      {
-        this.jdField_g_of_type_Boolean = true;
-        a().a((CertifiedAccountMeta.StFeed)localObject, false);
-        return;
-      }
-      q();
-    }
-  }
-  
-  public void i()
-  {
-    Object localObject = this.jdField_b_of_type_AndroidViewView;
-    int k;
-    if ((localObject != null) && (((View)localObject).getVisibility() != 0)) {
-      k = 1;
-    } else {
-      k = 0;
-    }
-    if (k != 0)
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeCommentNewCommentAdapter;
-      if (localObject != null) {
-        ((NewCommentAdapter)localObject).a(a().poster.id.get());
-      }
-      h();
-    }
+    return 0;
   }
   
   public boolean isValidate()
@@ -1028,41 +932,59 @@ public class CommentPresenter
     return true;
   }
   
-  public void j()
+  protected void j()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    int k;
-    if ((localView != null) && (localView.getVisibility() == 0)) {
-      k = 1;
-    } else {
-      k = 0;
+    y();
+  }
+  
+  protected int k()
+  {
+    return 2131624394;
+  }
+  
+  protected View l()
+  {
+    return null;
+  }
+  
+  public boolean n()
+  {
+    View localView = this.h;
+    if ((localView != null) && (localView.getVisibility() == 0))
+    {
+      F();
+      return true;
     }
-    if (k != 0) {
-      r();
-    }
+    return false;
+  }
+  
+  public boolean o()
+  {
+    View localView = this.h;
+    return (localView != null) && (localView.getVisibility() == 0);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationAnimation)
+    if (paramAnimation == this.K)
     {
-      paramAnimation = this.jdField_b_of_type_AndroidViewView;
+      paramAnimation = this.h;
       if (paramAnimation != null) {
         paramAnimation.setVisibility(8);
       }
-      paramAnimation = this.jdField_a_of_type_AndroidAppActivity;
+      paramAnimation = this.l;
       if ((paramAnimation != null) && ((paramAnimation instanceof BaseActivity)) && (((BaseActivity)paramAnimation).mSystemBarComp != null)) {
-        ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).mSystemBarComp.setStatusBarMask(null);
+        ((BaseActivity)this.l).mSystemBarComp.setStatusBarMask(null);
       }
-      this.jdField_f_of_type_Boolean = false;
-      paramAnimation = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$CommentWindowListener;
+      this.M = false;
+      paramAnimation = this.S;
       if (paramAnimation != null) {
-        paramAnimation.i();
+        paramAnimation.p();
       }
     }
     else
     {
-      paramAnimation = this.jdField_b_of_type_AndroidViewAnimationAnimation;
+      paramAnimation = this.L;
     }
   }
   
@@ -1070,25 +992,25 @@ public class CommentPresenter
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationAnimation)
+    if (paramAnimation == this.K)
     {
-      this.jdField_f_of_type_Boolean = true;
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "mHideCommentListAnimation onAnimationStarttrue");
+      this.M = true;
+      QLog.d(j, 2, "mHideCommentListAnimation onAnimationStarttrue");
       return;
     }
-    if (paramAnimation == this.jdField_b_of_type_AndroidViewAnimationAnimation)
+    if (paramAnimation == this.L)
     {
-      paramAnimation = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$CommentWindowListener;
+      paramAnimation = this.S;
       if (paramAnimation != null) {
-        paramAnimation.h();
+        paramAnimation.o();
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "mShowCommentListAnimation onAnimationStarttrue");
-      paramAnimation = this.jdField_a_of_type_AndroidAppActivity;
+      QLog.d(j, 2, "mShowCommentListAnimation onAnimationStarttrue");
+      paramAnimation = this.l;
       if (((paramAnimation instanceof BaseActivity)) && (((BaseActivity)paramAnimation).mSystemBarComp != null))
       {
-        paramAnimation = a();
+        paramAnimation = f();
         if (paramAnimation != null) {
-          ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).mSystemBarComp.setStatusBarMask(new PorterDuffColorFilter(paramAnimation.getColor(2131167249), PorterDuff.Mode.SRC_ATOP));
+          ((BaseActivity)this.l).mSystemBarComp.setStatusBarMask(new PorterDuffColorFilter(paramAnimation.getColor(2131168244), PorterDuff.Mode.SRC_ATOP));
         }
       }
     }
@@ -1102,10 +1024,10 @@ public class CommentPresenter
   
   public void onClick(View paramView)
   {
-    int k = paramView.getId();
-    if (k != 2131363924)
+    int i1 = paramView.getId();
+    if (i1 != 2131429880)
     {
-      if (k == 2131378535) {
+      if (i1 == 2131447156) {
         b(paramView);
       }
     }
@@ -1113,6 +1035,84 @@ public class CommentPresenter
       c(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean p()
+  {
+    SubscribeCommentInputPopupWindow localSubscribeCommentInputPopupWindow = this.s;
+    return (localSubscribeCommentInputPopupWindow != null) && (localSubscribeCommentInputPopupWindow.isShowing());
+  }
+  
+  public void q()
+  {
+    Object localObject = this.m;
+    if (localObject != null)
+    {
+      a((ViewStub)localObject);
+      this.m = null;
+    }
+    if (A() == null)
+    {
+      int i1 = this.ad;
+      if (i1 <= 3)
+      {
+        this.ad = (i1 + 1);
+        v().a().postDelayed(new CommentPresenter.9(this), this.ad * 500);
+        return;
+      }
+    }
+    localObject = z();
+    String str = A();
+    if (str != null)
+    {
+      this.P = v().c(str);
+      if (this.H)
+      {
+        this.N = true;
+        v().a((CertifiedAccountMeta.StFeed)localObject, false);
+        return;
+      }
+      if (this.P == null)
+      {
+        this.N = true;
+        v().a((CertifiedAccountMeta.StFeed)localObject, false);
+        return;
+      }
+      E();
+    }
+  }
+  
+  public void r()
+  {
+    Object localObject = this.h;
+    int i1;
+    if ((localObject != null) && (((View)localObject).getVisibility() != 0)) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0)
+    {
+      localObject = this.z;
+      if (localObject != null) {
+        ((NewCommentAdapter)localObject).b(z().poster.id.get());
+      }
+      q();
+    }
+  }
+  
+  public void s()
+  {
+    View localView = this.h;
+    int i1;
+    if ((localView != null) && (localView.getVisibility() == 0)) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0) {
+      F();
+    }
   }
 }
 

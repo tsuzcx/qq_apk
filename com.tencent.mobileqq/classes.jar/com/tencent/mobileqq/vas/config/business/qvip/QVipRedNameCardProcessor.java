@@ -12,9 +12,9 @@ public class QVipRedNameCardProcessor
 {
   public static QVipRedNameCardConfig a = new QVipRedNameCardConfig();
   
-  public static QVipRedNameCardConfig c()
+  public static QVipRedNameCardConfig e()
   {
-    QVipRedNameCardConfig localQVipRedNameCardConfig2 = (QVipRedNameCardConfig)QConfigManager.a().a(423);
+    QVipRedNameCardConfig localQVipRedNameCardConfig2 = (QVipRedNameCardConfig)QConfigManager.b().b(423);
     QVipRedNameCardConfig localQVipRedNameCardConfig1 = localQVipRedNameCardConfig2;
     if (localQVipRedNameCardConfig2 == null) {
       localQVipRedNameCardConfig1 = new QVipRedNameCardConfig();
@@ -33,7 +33,7 @@ public class QVipRedNameCardProcessor
   {
     QVipRedNameCardConfig localQVipRedNameCardConfig = new QVipRedNameCardConfig();
     boolean bool = false;
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     try
     {
       if (new JSONObject(paramArrayOfQConfItem).optInt("show_red_name_card", 0) == 1) {
@@ -70,7 +70,7 @@ public class QVipRedNameCardProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipRedNameCardProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.a.a;
 
-import com.tencent.mobileqq.msf.core.c.j.a;
+import com.tencent.mobileqq.msf.core.d.j.a;
 import com.tencent.qphone.base.a;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -75,7 +75,7 @@ public class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

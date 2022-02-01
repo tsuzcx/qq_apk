@@ -1,5 +1,6 @@
 package com.tencent.aelight.camera.ae.play;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.aelight.camera.aeeditor.AEEditorProcessManager;
 import com.tencent.aelight.camera.aeeditor.data.AEEditorVideoInfo;
 import com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment;
@@ -26,17 +28,21 @@ import com.tencent.aelight.camera.aeeditor.module.params.ParamFactory;
 import com.tencent.aelight.camera.aioeditor.takevideo.doodle.util.DisplayUtil;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.qcircle.tavcut.exporter.VideoExporter;
+import com.tencent.qcircle.tavcut.player.MoviePlayer;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.tavcut.timeline.CoverSelectView;
+import com.tencent.qcircle.tavcut.timeline.CoverSelectView.UIConfigWrapper;
+import com.tencent.qcircle.tavcut.view.TAVCutVideoView;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.ModelExtKt;
+import com.tencent.qcircle.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.qcircle.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.exporter.VideoExporter;
-import com.tencent.tavcut.player.MoviePlayer;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.tavcut.timeline.CoverSelectView;
-import com.tencent.tavcut.timeline.CoverSelectView.UIConfigWrapper;
-import com.tencent.tavcut.view.TAVCutVideoView;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.ModelExtKt;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
 
 public class AECoverSelectFragment
@@ -55,7 +61,7 @@ public class AECoverSelectFragment
   
   private void addCoverSelectView()
   {
-    Object localObject = new CoverSelectView.UIConfigWrapper(getBaseActivity(), 2064056533, 2064056426, 2064056425, 2064056474, 2064056475, 2064056476, 2064056477, 2064056525, 11);
+    Object localObject = new CoverSelectView.UIConfigWrapper(getBaseActivity(), 2063925492, 2063925395, 2063925394, 2063925442, 2063925443, 2063925444, 2063925445, 2063925484, 11);
     ((CoverSelectView.UIConfigWrapper)localObject).setPrevibarHeight(DisplayUtil.b(getBaseActivity(), 59.0F)).setPreviewBarWidth(DisplayUtil.b(getBaseActivity(), 34.0F)).setCoverDefaultProgress(this.defaultCoverProgress);
     this.coverSelectView = new CoverSelectView(getBaseActivity(), (CoverSelectView.UIConfigWrapper)localObject);
     int i = DisplayUtil.b(getBaseActivity(), 4.0F);
@@ -124,8 +130,8 @@ public class AECoverSelectFragment
     //   1: iconst_1
     //   2: invokevirtual 256	com/tencent/aelight/camera/ae/play/AECoverSelectFragment:showLoading	(Z)V
     //   5: aload_0
-    //   6: getfield 76	com/tencent/aelight/camera/ae/play/AECoverSelectFragment:coverSelectView	Lcom/tencent/tavcut/timeline/CoverSelectView;
-    //   9: invokevirtual 259	com/tencent/tavcut/timeline/CoverSelectView:getCurrCoverProgress	()F
+    //   6: getfield 76	com/tencent/aelight/camera/ae/play/AECoverSelectFragment:coverSelectView	Lcom/tencent/qcircle/tavcut/timeline/CoverSelectView;
+    //   9: invokevirtual 259	com/tencent/qcircle/tavcut/timeline/CoverSelectView:getCurrCoverProgress	()F
     //   12: fstore 4
     //   14: fload 4
     //   16: fstore_3
@@ -145,8 +151,8 @@ public class AECoverSelectFragment
     //   40: d2f
     //   41: fstore_3
     //   42: aload_0
-    //   43: getfield 76	com/tencent/aelight/camera/ae/play/AECoverSelectFragment:coverSelectView	Lcom/tencent/tavcut/timeline/CoverSelectView;
-    //   46: invokevirtual 272	com/tencent/tavcut/timeline/CoverSelectView:getCurrCoverBitmap	()Landroid/graphics/Bitmap;
+    //   43: getfield 76	com/tencent/aelight/camera/ae/play/AECoverSelectFragment:coverSelectView	Lcom/tencent/qcircle/tavcut/timeline/CoverSelectView;
+    //   46: invokevirtual 272	com/tencent/qcircle/tavcut/timeline/CoverSelectView:getCurrCoverBitmap	()Landroid/graphics/Bitmap;
     //   49: astore 5
     //   51: aload 5
     //   53: ifnonnull +17 -> 70
@@ -356,13 +362,23 @@ public class AECoverSelectFragment
     //   358	374	382	java/lang/Exception
   }
   
+  private void setSystemBarComp()
+  {
+    if (((getActivity() instanceof QBaseActivity)) && (((QBaseActivity)getActivity()).getSystemBarComp() != null))
+    {
+      ((QBaseActivity)getActivity()).getSystemBarComp().init();
+      ((QBaseActivity)getActivity()).getSystemBarComp().setStatusBarColor(-1);
+      ((QBaseActivity)getActivity()).getSystemBarComp().setStatusBarDrawable(null);
+    }
+  }
+  
   void bindViews(View paramView)
   {
-    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2064122671));
-    this.llBottomContainer = ((LinearLayout)paramView.findViewById(2064122350));
-    this.flCoverSelectContainer = ((FrameLayout)paramView.findViewById(2064122206));
-    this.tvCancel = ((TextView)paramView.findViewById(2064122750));
-    this.tvConfirm = ((TextView)paramView.findViewById(2064122753));
+    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2063991469));
+    this.llBottomContainer = ((LinearLayout)paramView.findViewById(2063991223));
+    this.flCoverSelectContainer = ((FrameLayout)paramView.findViewById(2063991087));
+    this.tvCancel = ((TextView)paramView.findViewById(2063991524));
+    this.tvConfirm = ((TextView)paramView.findViewById(2063991527));
     this.tvCancel.setOnClickListener(this);
     this.tvConfirm.setOnClickListener(this);
   }
@@ -371,7 +387,7 @@ public class AECoverSelectFragment
   {
     addCoverSelectView();
     this.coverVideoSession = new TAVCutVideoSession();
-    AEEditorVideoEditFragment.a(getActivity(), this.coverVideoSession, ParamFactory.b(), this.tavCutVideoSession.getMediaModel(), null, null);
+    AEEditorVideoEditFragment.a(getActivity(), this.coverVideoSession, ParamFactory.c(), this.tavCutVideoSession.getMediaModel(), null, null);
     this.coverVideoSession.restoreStickersWithLyric(new ArrayList(this.tavCutVideoSession.getMediaModel().getMediaEffectModel().getStickerModelList()));
     this.coverVideoSession.setStickerTouchEnable(false);
     if (ModelExtKt.isLightTemplate(this.coverVideoSession.getMediaModel())) {
@@ -400,15 +416,27 @@ public class AECoverSelectFragment
   
   protected int getLayoutId()
   {
-    return 2064318556;
+    return 2064056428;
+  }
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity) {}
+  
+  public boolean needImmersive()
+  {
+    return true;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return true;
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2064122750)
+    if (i != 2063991524)
     {
-      if (i != 2064122753) {
+      if (i != 2063991527) {
         return;
       }
       saveDataAndQuit();
@@ -421,35 +449,37 @@ public class AECoverSelectFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    setSystemBarComp();
+    ImmersiveUtils.setStatusTextColor(QQTheme.isNowThemeIsNight() ^ true, getActivity().getWindow());
     this.defaultCoverProgress = getDefaultCoverProgress();
     paramBundle = new StringBuilder();
     paramBundle.append("[coverGen][onCreate] missionId = ");
     paramBundle.append(this.missionId);
     AEQLog.a("AECoverSelectFragment", paramBundle.toString());
-    paramBundle = AEEditorProcessManager.a().a(this.missionId);
-    if ((paramBundle != null) && (!paramBundle.e.equals("AEEDITOR_GENERATE_STATUS_READY")))
+    paramBundle = AEEditorProcessManager.a().c(this.missionId);
+    if ((paramBundle != null) && (!paramBundle.g.equals("AEEDITOR_GENERATE_STATUS_READY")))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[coverGen][onCreate][tryToKillExport] videoInfo = ");
       localStringBuilder.append(paramBundle.toString());
       AEQLog.a("AECoverSelectFragment", localStringBuilder.toString());
-      if (paramBundle.a.a() != null) {
-        paramBundle.a.a().cancel();
+      if (paramBundle.i.a() != null) {
+        paramBundle.i.a().cancel();
       }
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2064318556, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2064056428, paramViewGroup, false);
   }
   
   public void onFinish()
   {
     this.coverVideoSession.release();
     this.coverSelectView.release();
-    AEEditorVideoInfo localAEEditorVideoInfo = AEEditorProcessManager.a().a(this.missionId);
-    if ((localAEEditorVideoInfo != null) && (localAEEditorVideoInfo.e.equals("AEEDITOR_GENERATE_STATUS_CANEL"))) {
+    AEEditorVideoInfo localAEEditorVideoInfo = AEEditorProcessManager.a().c(this.missionId);
+    if ((localAEEditorVideoInfo != null) && (localAEEditorVideoInfo.g.equals("AEEDITOR_GENERATE_STATUS_CANEL"))) {
       AEEditorProcessManager.a().a(this.missionId);
     }
     super.onFinish();
@@ -469,7 +499,7 @@ public class AECoverSelectFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AECoverSelectFragment
  * JD-Core Version:    0.7.0.1
  */

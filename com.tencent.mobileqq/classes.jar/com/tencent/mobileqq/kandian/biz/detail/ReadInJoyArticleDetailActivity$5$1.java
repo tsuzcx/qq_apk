@@ -10,7 +10,7 @@ class ReadInJoyArticleDetailActivity$5$1
   
   public void onBindedToClient()
   {
-    ReadInJoyArticleDetailActivity.a(this.a.a);
+    ReadInJoyArticleDetailActivity.b(this.a.a);
   }
   
   public void onDisconnectWithService() {}
@@ -21,7 +21,7 @@ class ReadInJoyArticleDetailActivity$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.detail.ReadInJoyArticleDetailActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

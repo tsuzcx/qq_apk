@@ -20,7 +20,7 @@ class HotPicTab$1
         }
         HotPicTab.a(this.a, 1.0F);
         paramMessage = this.a;
-        HotPicTab.a(paramMessage, HotPicTab.a(paramMessage));
+        HotPicTab.a(paramMessage, HotPicTab.c(paramMessage));
         this.a.invalidate();
         return;
       }
@@ -31,10 +31,10 @@ class HotPicTab$1
       if (HotPicTab.a(this.a) < 1.0F)
       {
         this.a.invalidate();
-        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+        sendMessageDelayed(HotPicTab.b(this.a).obtainMessage(1), 10L);
         return;
       }
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
+      sendMessageDelayed(HotPicTab.b(this.a).obtainMessage(2), 10L);
       return;
     }
     HotPicTab.a(this.a, 0.0F);
@@ -43,12 +43,12 @@ class HotPicTab$1
     Double.isNaN(d);
     HotPicTab.a(paramMessage, (float)(d + 0.1D));
     this.a.invalidate();
-    sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+    sendMessageDelayed(HotPicTab.b(this.a).obtainMessage(1), 10L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicTab.1
  * JD-Core Version:    0.7.0.1
  */

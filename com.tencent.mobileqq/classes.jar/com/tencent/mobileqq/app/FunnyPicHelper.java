@@ -167,9 +167,9 @@ public class FunnyPicHelper
         paramAtomicInteger1.decrementAndGet();
         return;
       }
-      Object localObject = new FunnyPicHelper.CalcPath(paramIVipComicMqqManagerService, paramCustomEmotionData).a();
+      Object localObject = new FunnyPicHelper.CalcPath(paramIVipComicMqqManagerService, paramCustomEmotionData).c();
       paramIVipComicMqqManagerService = ((FunnyPicHelper.CalcPath)localObject).a();
-      boolean bool = ((FunnyPicHelper.CalcPath)localObject).a();
+      boolean bool = ((FunnyPicHelper.CalcPath)localObject).b();
       File localFile = new File(paramIVipComicMqqManagerService);
       if (localFile.exists())
       {
@@ -212,9 +212,9 @@ public class FunnyPicHelper
       else
       {
         DownloadTask localDownloadTask = new DownloadTask(paramCustomEmotionData.url, localFile);
-        localDownloadTask.p = false;
-        localDownloadTask.f = "emotion_pic";
-        localDownloadTask.b = 1;
+        localDownloadTask.N = false;
+        localDownloadTask.L = "emotion_pic";
+        localDownloadTask.e = 1;
         if (paramCustomEmotionData.url.contains("qto_"))
         {
           localObject = FunnyPicHelperConstant.a(paramCustomEmotionData.url);
@@ -295,7 +295,7 @@ public class FunnyPicHelper
   private static void b(DownloadTask paramDownloadTask, String paramString, File paramFile, CustomEmotionData paramCustomEmotionData, boolean paramBoolean1, boolean paramBoolean2, IFavroamingDBManagerService paramIFavroamingDBManagerService, IPicDownloadListener paramIPicDownloadListener, List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2, Context paramContext, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2)
   {
     FunnyPicHelperConstant.a.remove(paramString);
-    if ((3 == paramDownloadTask.a()) && (paramFile.exists()))
+    if ((3 == paramDownloadTask.e()) && (paramFile.exists()))
     {
       paramCustomEmotionData.emoPath = paramFile.getAbsolutePath();
       if ("needDownload".equals(paramCustomEmotionData.RomaingType)) {
@@ -346,7 +346,7 @@ public class FunnyPicHelper
       paramString.append("");
       paramString = paramString.toString();
       paramFile = new StringBuilder();
-      paramFile.append(paramDownloadTask.a);
+      paramFile.append(paramDownloadTask.c);
       paramFile.append("");
       VasReportUtils.a("emotionType", "emotionActionFav", "3", "", "", paramString, paramFile.toString(), "", "", "");
     }
@@ -358,7 +358,7 @@ public class FunnyPicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FunnyPicHelper
  * JD-Core Version:    0.7.0.1
  */

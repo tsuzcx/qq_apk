@@ -34,7 +34,7 @@ import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
-import com.tencent.widget.immersive.SystemBarCompact;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ConcurrentHashMap;
@@ -43,34 +43,34 @@ import mqq.os.MqqHandler;
 public class AIOMusicSkin
   extends SkinDrawable
 {
-  private static AIOMusicSkin jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private ChatFragment jdField_a_of_type_ComTencentMobileqqActivityChatFragment;
-  private QuickUpdateListener jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQuickUpdateListener = new AIOMusicSkin.3(this);
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new AIOMusicSkin.5(this);
-  private ConcurrentHashMap<Integer, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = false;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f = false;
+  private static AIOMusicSkin a;
+  private String b = "";
+  private int g = 0;
+  private int h;
+  private ChatFragment i;
+  private boolean j = false;
+  private int k = 0;
+  private boolean l = false;
+  private boolean m = false;
+  private BubblePopupWindow n;
+  private ConcurrentHashMap<Integer, String> o = new ConcurrentHashMap();
+  private long p = 0L;
+  private boolean q = false;
+  private QuickUpdateListener r = new AIOMusicSkin.3(this);
+  private Runnable s = new AIOMusicSkin.5(this);
   
   public static AIOMusicSkin a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin == null) {
-          jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin = new AIOMusicSkin();
+        if (a == null) {
+          a = new AIOMusicSkin();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin;
+    return a;
   }
   
   private void a(int paramInt, boolean paramBoolean, ApngQueuePlayer paramApngQueuePlayer)
@@ -83,15 +83,15 @@ public class AIOMusicSkin
         return;
       }
       if (paramBoolean) {
-        paramApngQueuePlayer.a(a("pause.png"), 1);
+        paramApngQueuePlayer.a(c("pause.png"), 1);
       }
-      paramApngQueuePlayer.a(a("pausing.png"), 0);
+      paramApngQueuePlayer.a(c("pausing.png"), 0);
       return;
     }
     if (paramBoolean) {
-      paramApngQueuePlayer.a(a("play.png"), 1);
+      paramApngQueuePlayer.a(c("play.png"), 1);
     }
-    paramApngQueuePlayer.a(a("playing.png"), 0);
+    paramApngQueuePlayer.a(c("playing.png"), 0);
   }
   
   private void a(View paramView)
@@ -101,14 +101,14 @@ public class AIOMusicSkin
   
   private void a(View paramView1, View paramView2)
   {
-    View localView = paramView1.findViewById(2131368875);
+    View localView = paramView1.findViewById(2131435809);
     if (paramView2 != null) {
-      a(localView, a(paramView2.getContext(), 2130850177));
+      a(localView, a(paramView2.getContext(), 2130851968));
     }
-    b(paramView1, 2131372306, 2130850227);
-    a(paramView1, 2131368874, 2131167158);
-    a(paramView1, 2131378784, 2131167053);
-    a(paramView1, 2131369240, 2131167053);
+    b(paramView1, 2131439817, 2130852018);
+    a(paramView1, 2131435808, 2131168141);
+    a(paramView1, 2131447463, 2131167990);
+    a(paramView1, 2131436218, 2131167990);
   }
   
   private void a(View paramView, boolean paramBoolean)
@@ -117,13 +117,13 @@ public class AIOMusicSkin
       return;
     }
     paramView = paramView.getRootView();
-    b(paramView, 2131376636, 2130850433);
-    b(paramView, 2131369563, 2130850447, 2130850451);
-    b(paramView, 2131369202, 2130850447, 2130850451);
+    b(paramView, 2131444897, 2130852228);
+    b(paramView, 2131436666, 2130852243, 2130852247);
+    b(paramView, 2131436180, 2130852243, 2130852247);
     d(paramView);
-    Object localObject = paramView.findViewById(2131368874);
+    Object localObject = paramView.findViewById(2131435808);
     if (localObject != null) {
-      a((View)localObject, a(((View)localObject).getContext(), 2130850178));
+      a((View)localObject, a(((View)localObject).getContext(), 2130851969));
     }
     c(paramView);
     a(paramView, (View)localObject);
@@ -131,22 +131,22 @@ public class AIOMusicSkin
     if (paramBoolean) {
       b(paramView.getContext());
     }
-    if ((n_()) && (localObject != null))
+    if ((du_()) && (localObject != null))
     {
-      localObject = b(((View)localObject).getContext(), 2130850371);
-      paramView = paramView.findViewById(2131362288);
+      localObject = b(((View)localObject).getContext(), 2130852162);
+      paramView = paramView.findViewById(2131427887);
       if (paramView != null) {
         paramView.setBackgroundDrawable((Drawable)localObject);
       }
     }
     else
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment;
+      paramView = this.i;
       if (paramView != null)
       {
-        paramView = paramView.a();
+        paramView = paramView.k();
         if (paramView != null) {
-          paramView.x();
+          paramView.R();
         }
       }
     }
@@ -155,56 +155,70 @@ public class AIOMusicSkin
   private void a(ListenTogetherSession paramListenTogetherSession)
   {
     b(true);
-    if ((paramListenTogetherSession.jdField_b_of_type_Int != this.jdField_c_of_type_Int) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((paramListenTogetherSession.f != this.k) || (TextUtils.isEmpty(this.c)))
     {
-      a(null);
-      this.jdField_c_of_type_Int = paramListenTogetherSession.jdField_b_of_type_Int;
+      b(null);
+      this.k = paramListenTogetherSession.f;
       ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A5BB", 1, 0, "", "", "", "");
     }
-    a();
+    d();
   }
   
   private void b(View paramView)
   {
-    View localView = paramView.findViewById(2131363684);
-    int j = 8;
-    int i;
+    View localView = paramView.findViewById(2131429599);
+    int i2 = 8;
+    int i1;
     if (localView != null)
     {
-      if (n_()) {
-        i = 8;
+      if (du_()) {
+        i1 = 8;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      localView.setVisibility(i);
+      localView.setVisibility(i1);
     }
-    localView = paramView.findViewById(2131380356);
-    paramView = paramView.findViewById(2131368875);
+    localView = paramView.findViewById(2131449300);
+    paramView = paramView.findViewById(2131435809);
     if ((localView != null) && (paramView != null) && (paramView.getVisibility() == 0))
     {
-      if (n_()) {
-        i = j;
+      if (du_()) {
+        i1 = i2;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      localView.setVisibility(i);
+      localView.setVisibility(i1);
     }
   }
   
   private void b(ListenTogetherSession paramListenTogetherSession)
   {
-    if ((paramListenTogetherSession != null) && (paramListenTogetherSession.jdField_b_of_type_Int == 0)) {
+    if ((paramListenTogetherSession != null) && (paramListenTogetherSession.f == 0)) {
       ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A5BB", 2, 0, "", "", "", "");
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      a(null);
+      b(null);
       b(false);
       ThreadManagerV2.getUIHandlerV2().post(new AIOMusicSkin.2(this));
     }
   }
   
-  private static boolean b(int paramInt)
+  private void c(View paramView)
+  {
+    TextView localTextView = (TextView)paramView.findViewById(2131433920);
+    if ((localTextView != null) && (!SimpleUIUtil.e()))
+    {
+      int i1 = localTextView.getPaddingTop();
+      int i2 = localTextView.getPaddingLeft();
+      int i3 = localTextView.getPaddingRight();
+      int i4 = localTextView.getPaddingBottom();
+      a(paramView, 2131433920, 2130852117, 2130852118, 2130852114);
+      localTextView.setPadding(i2, i1, i3, i4);
+    }
+  }
+  
+  private static boolean c(int paramInt)
   {
     Object localObject = BaseApplicationImpl.getContext();
     boolean bool = false;
@@ -223,126 +237,91 @@ public class AIOMusicSkin
       QLog.e("AIOMusicSkin", 1, ((StringBuilder)localObject).toString());
       return false;
     }
-    int i = ThemeUtil.getFileNumInFile(new File((String)localObject));
+    int i1 = ThemeUtil.getFileNumInFile(new File((String)localObject));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("isThemeExists: fileNum = ");
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(i1);
     ((StringBuilder)localObject).append(", id=");
     ((StringBuilder)localObject).append(paramInt);
     QLog.e("AIOMusicSkin", 1, ((StringBuilder)localObject).toString());
-    if (i > 1) {
+    if (i1 > 1) {
       bool = true;
     }
     return bool;
   }
   
-  private void c(View paramView)
-  {
-    TextView localTextView = (TextView)paramView.findViewById(2131367417);
-    if ((localTextView != null) && (!SimpleUIUtil.a()))
-    {
-      int i = localTextView.getPaddingTop();
-      int j = localTextView.getPaddingLeft();
-      int k = localTextView.getPaddingRight();
-      int m = localTextView.getPaddingBottom();
-      a(paramView, 2131367417, 2130850326, 2130850327, 2130850323);
-      localTextView.setPadding(j, i, k, m);
-    }
-  }
-  
-  private void d()
-  {
-    SkinDrawable.IVasSkinChangeCallback localIVasSkinChangeCallback;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      localIVasSkinChangeCallback = null;
-    } else {
-      localIVasSkinChangeCallback = (SkinDrawable.IVasSkinChangeCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    if (localIVasSkinChangeCallback != null) {
-      localIVasSkinChangeCallback.k();
-    }
-  }
-  
   private void d(View paramView)
   {
-    View localView = paramView.findViewById(2131376636);
+    View localView = paramView.findViewById(2131444897);
     if (localView != null)
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        a(localView, 2131369211, 2130850184, 2130850185);
+      if (this.g == 1) {
+        a(localView, 2131436189, 2130851975, 2130851976);
       } else {
-        a(localView, 2131369211, 2130850168, 2130850171);
+        a(localView, 2131436189, 2130851959, 2130851962);
       }
-      a(localView, 2131369216, 2130850464, 2130850465);
+      a(localView, 2131436194, 2130852260, 2130852261);
     }
-    if (n_())
+    if (du_())
     {
-      a(paramView, 2131374080, 2130850287, 2130850288);
-      a(paramView, 2131374070, 2130850244, 2130850245);
-      a(paramView, 2131374083, 2130850293, 2130850294);
-      a(paramView, 2131374062, 2130850225, 2130850226);
-      a(paramView, 2131374052, 2130850215, 2130850216);
-      a(paramView, 2131374075, 2130850264, 2130850265);
-      a(paramView, 2131374059, 2130838081, 2130838082);
-      a(paramView, 2131374063, 2130838109, 2130838111);
-      a(paramView, 2131374073, 2130838122, 2130838123);
-      a(paramView, 2131374046, 2130850195, 2130850196);
+      a(paramView, 2131442175, 2130852078, 2130852079);
+      a(paramView, 2131442165, 2130852035, 2130852036);
+      a(paramView, 2131442178, 2130852084, 2130852085);
+      a(paramView, 2131442157, 2130852016, 2130852017);
+      a(paramView, 2131442147, 2130852006, 2130852007);
+      a(paramView, 2131442170, 2130852055, 2130852056);
+      a(paramView, 2131442154, 2130838124, 2130838125);
+      a(paramView, 2131442158, 2130838152, 2130838154);
+      a(paramView, 2131442168, 2130838165, 2130838166);
+      a(paramView, 2131442141, 2130851986, 2130851987);
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment;
-    if ((paramView != null) && (paramView.a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.a().a.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.a());
+    paramView = this.i;
+    if ((paramView != null) && (paramView.k() != null)) {
+      this.i.k().W.a(this.i.k());
     }
   }
   
-  public void a()
+  private void g()
   {
-    if (a(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment, this.jdField_a_of_type_Int)) {
-      return;
+    SkinDrawable.IVasSkinChangeCallback localIVasSkinChangeCallback;
+    if (this.f == null) {
+      localIVasSkinChangeCallback = null;
+    } else {
+      localIVasSkinChangeCallback = (SkinDrawable.IVasSkinChangeCallback)this.f.get();
     }
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(this.jdField_c_of_type_Int)) != null) && (n_()))
-    {
-      if (Looper.getMainLooper() == Looper.myLooper())
-      {
-        this.jdField_c_of_type_Boolean = true;
-        a((String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(this.jdField_c_of_type_Int)));
-        a(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
-        a(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
-        return;
-      }
-      ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
-      return;
+    if (localIVasSkinChangeCallback != null) {
+      localIVasSkinChangeCallback.m();
     }
-    ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment;
+    Object localObject = this.i;
     boolean bool = true;
-    if ((localObject != null) && (((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
+    if ((localObject != null) && (((ChatFragment)localObject).h != null))
     {
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131371652);
+      ImageView localImageView = (ImageView)this.i.h.findViewById(2131439073);
       if (localImageView == null)
       {
         QLog.e("AIOMusicSkin", 1, "updateAnim: null view");
         return;
       }
-      if ((n_()) && (this.jdField_c_of_type_Boolean) && (!a(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment, this.jdField_a_of_type_Int)))
+      if ((du_()) && (this.j) && (!a(this.i, this.g)))
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("updateAnim: last=");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(this.h);
           ((StringBuilder)localObject).append(" cur=");
           ((StringBuilder)localObject).append(paramInt);
           QLog.d("AIOMusicSkin", 2, ((StringBuilder)localObject).toString());
         }
-        if (this.jdField_b_of_type_Int == paramInt) {
+        if (this.h == paramInt) {
           bool = false;
         }
-        this.jdField_b_of_type_Int = paramInt;
+        this.h = paramInt;
         localImageView.setVisibility(0);
         ApngQueuePlayer localApngQueuePlayer = (ApngQueuePlayer)localImageView.getTag();
         localObject = localApngQueuePlayer;
@@ -362,30 +341,30 @@ public class AIOMusicSkin
   
   public void a(Context paramContext)
   {
-    if (this.e)
+    if (this.m)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment;
-      if ((localObject != null) && (((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
+      Object localObject = this.i;
+      if ((localObject != null) && (((ChatFragment)localObject).h != null))
       {
-        this.e = false;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.findViewById(2131371632);
+        this.m = false;
+        localObject = this.i.h.findViewById(2131439051);
         if (localObject == null) {
           return;
         }
-        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+        this.n = new BubblePopupWindow(-2, -2);
         TextView localTextView = new TextView(paramContext);
         localTextView.setPadding(20, 0, 20, 0);
-        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setContentView(localTextView);
-        localTextView.setText(paramContext.getResources().getString(2131693653));
-        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setAnimationStyle(2131756209);
-        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setSoftInputMode(1);
-        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setInputMethodMode(2);
+        this.n.setContentView(localTextView);
+        localTextView.setText(paramContext.getResources().getString(2131891228));
+        this.n.setAnimationStyle(2131953359);
+        this.n.setSoftInputMode(1);
+        this.n.setInputMethodMode(2);
         paramContext = new int[2];
         ((View)localObject).getLocationOnScreen(paramContext);
-        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setKeepAbove(true);
-        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.showAtLocation((View)localObject, paramContext[0] + ((View)localObject).getWidth() / 2, paramContext[1] + ((View)localObject).getHeight());
-        this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.getContentView().setOnClickListener(new AIOMusicSkin.1(this));
-        ListenTogetherUtils.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "is_first_show_atmosphere", false, false);
+        this.n.setKeepAbove(true);
+        this.n.showAtLocation((View)localObject, paramContext[0] + ((View)localObject).getWidth() / 2, paramContext[1] + ((View)localObject).getHeight());
+        this.n.getContentView().setOnClickListener(new AIOMusicSkin.1(this));
+        ListenTogetherUtils.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "is_first_show_atmosphere", false, false);
         ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A5B9", 1, 0, "", "", "", "");
       }
     }
@@ -397,39 +376,39 @@ public class AIOMusicSkin
     {
       paramContext = new StringBuilder();
       paramContext.append("setMusicBarSkin uin:");
-      paramContext.append(this.jdField_b_of_type_JavaLangString);
+      paramContext.append(this.b);
       paramContext.append("  type:");
-      paramContext.append(this.jdField_a_of_type_Int);
+      paramContext.append(this.g);
       paramContext.append(" mIsUserSkin:");
-      paramContext.append(this.jdField_a_of_type_Boolean);
+      paramContext.append(this.d);
       QLog.i("AIOMusicSkin", 2, paramContext.toString());
     }
     paramContext = new StringBuilder();
     paramContext.append("setMusicBarSkin mIsUserSkin:");
-    paramContext.append(this.jdField_a_of_type_Boolean);
+    paramContext.append(this.d);
     paramContext.append(" mIsShowSkin:");
-    paramContext.append(this.jdField_c_of_type_Boolean);
+    paramContext.append(this.j);
     QLog.i("AIOMusicSkin", 1, paramContext.toString());
     if (paramView == null) {
       return;
     }
     paramContext = paramView.getRootView();
-    b(paramContext, 2131370162, 2130850632, 2130850633);
-    a(paramContext, 2131374756, 2130844799, 2130844800);
-    a(paramContext, 2131371632, 2130844793, 2130844794);
-    a(paramContext, 2131371650, 2131167038);
-    a(paramContext, 2131371653, 2131167036);
-    a(paramContext, 2131371649, 2131167038);
-    paramView = (CircleProgress)paramContext.findViewById(2131371647);
+    b(paramContext, 2131437326, 2130852430, 2130852431);
+    a(paramContext, 2131442946, 2130846233, 2130846234);
+    a(paramContext, 2131439051, 2130846227, 2130846228);
+    a(paramContext, 2131439071, 2131167974);
+    a(paramContext, 2131439074, 2131167972);
+    a(paramContext, 2131439070, 2131167974);
+    paramView = (CircleProgress)paramContext.findViewById(2131439067);
     if (paramView != null)
     {
-      ColorStateList localColorStateList = a(paramContext.getContext(), 2131167037);
-      paramView.setBgAndProgressColor(100, a(paramContext.getContext(), 2131167039).getDefaultColor(), 100, localColorStateList.getDefaultColor());
+      ColorStateList localColorStateList = c(paramContext.getContext(), 2131167973);
+      paramView.setBgAndProgressColor(100, c(paramContext.getContext(), 2131167975).getDefaultColor(), 100, localColorStateList.getDefaultColor());
     }
-    paramContext = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    paramContext = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).e(this.g, this.b);
     if (paramContext != null)
     {
-      a(paramContext.h);
+      a(paramContext.p);
       return;
     }
     a(3);
@@ -437,39 +416,39 @@ public class AIOMusicSkin
   
   public void a(ChatFragment paramChatFragment, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment = paramChatFragment;
+    this.i = paramChatFragment;
     if (paramInt == 1)
     {
-      paramChatFragment = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment;
-      if ((paramChatFragment != null) && ((paramChatFragment.a() instanceof BaseTroopChatPie)) && (((BaseTroopChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.a()).v())) {
+      paramChatFragment = this.i;
+      if ((paramChatFragment != null) && ((paramChatFragment.k() instanceof BaseTroopChatPie)) && (((BaseTroopChatPie)this.i.k()).bG())) {
         return;
       }
     }
     a(paramString, paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment != null) && (this.jdField_a_of_type_Boolean)) {
-      b(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.getBaseActivity());
+    if ((this.i != null) && (this.d)) {
+      b(this.i.getBaseActivity());
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.p = System.currentTimeMillis();
   }
   
   public void a(String paramString, int paramInt)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString;
+    this.g = paramInt;
     if (paramInt == 1) {
       c(a(paramString));
     } else {
       c(true);
     }
-    paramString = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a(paramInt, paramString);
-    if ((paramString != null) && (paramString.jdField_b_of_type_Int > 0) && (paramString.h != 3) && (paramString.i == 2) && (!a(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment, this.jdField_a_of_type_Int))) {
+    paramString = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).e(paramInt, paramString);
+    if ((paramString != null) && (paramString.f > 0) && (paramString.p != 3) && (paramString.q == 2) && (!a(this.i, this.g))) {
       a(paramString);
     } else {
       b(paramString);
     }
     if (paramString != null)
     {
-      if (b()) {
+      if (c()) {
         paramInt = 1;
       } else {
         paramInt = 2;
@@ -490,7 +469,7 @@ public class AIOMusicSkin
     ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getSharedPreferences(paramString, 0).edit().putBoolean("music_skin_enabled", paramBoolean).commit();
     paramString = new StringBuilder();
     paramString.append("setEnabled old: ");
-    paramString.append(this.jdField_b_of_type_Boolean);
+    paramString.append(this.e);
     paramString.append(" new: ");
     paramString.append(paramBoolean);
     QLog.d("AIOMusicSkin", 1, paramString.toString());
@@ -498,17 +477,12 @@ public class AIOMusicSkin
     if (!paramBoolean) {
       ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A5BC", 0, 0, "", "", "", "");
     }
-    a();
+    d();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.d = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.d;
+    this.l = paramBoolean;
   }
   
   public boolean a(ChatFragment paramChatFragment, int paramInt)
@@ -517,49 +491,43 @@ public class AIOMusicSkin
     if (paramChatFragment == null) {
       return true;
     }
-    if ((paramInt == 1) && ((paramChatFragment.a() instanceof BaseTroopChatPie)))
+    if ((paramInt == 1) && ((paramChatFragment.k() instanceof BaseTroopChatPie)))
     {
-      if (!((BaseTroopChatPie)paramChatFragment.a()).v())
+      if (!((BaseTroopChatPie)paramChatFragment.k()).bG())
       {
-        if (SimpleUIUtil.a()) {
+        if (SimpleUIUtil.e()) {
           return true;
         }
         bool = false;
       }
       return bool;
     }
-    return SimpleUIUtil.a();
+    return SimpleUIUtil.e();
   }
   
   public boolean a(String paramString)
   {
-    if (this.d) {
+    if (this.l) {
       return true;
     }
     return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getSharedPreferences(paramString, 0).getBoolean("music_skin_enabled", true);
   }
   
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
   public void b(Context paramContext)
   {
-    ChatFragment localChatFragment = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment;
-    if ((localChatFragment != null) && (localChatFragment.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null))
+    ChatFragment localChatFragment = this.i;
+    if (localChatFragment != null)
     {
-      if (a(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment, this.jdField_a_of_type_Int)) {
+      if (a(localChatFragment, this.g)) {
         return;
       }
-      if (!n_())
+      if (!du_())
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.a();
+        this.i.e();
         return;
       }
-      this.f = true;
-      paramContext = a(paramContext, 2131167114);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarColor(paramContext.getDefaultColor());
+      this.q = true;
+      this.i.q().setBackgroundColor(paramContext.getResources().getColor(2131168092));
     }
   }
   
@@ -569,31 +537,31 @@ public class AIOMusicSkin
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setAIOSkin uin:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append("  type:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.g);
       ((StringBuilder)localObject).append(" mIsUserSkin:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(" mIsShowSkin:");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.j);
       ((StringBuilder)localObject).append(" enable:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.e);
       QLog.i("AIOMusicSkin", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("setAIOSkin mIsUserSkin:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append(" mIsShowSkin:");
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.j);
     QLog.i("AIOMusicSkin", 1, ((StringBuilder)localObject).toString());
-    if ((this.jdField_c_of_type_Boolean) && (n_()) && (!a(this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment, this.jdField_a_of_type_Int)))
+    if ((this.j) && (du_()) && (!a(this.i, this.g)))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment;
-      if ((localObject != null) && (!paramContext.equals(((ChatFragment)localObject).jdField_a_of_type_AndroidContentContext))) {
+      localObject = this.i;
+      if ((localObject != null) && (!paramContext.equals(((ChatFragment)localObject).e))) {
         return;
       }
       a(paramView);
-      if ((this.jdField_c_of_type_Boolean) && (n_()) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      if ((this.j) && (du_()) && (!TextUtils.isEmpty(this.c))) {
         a(paramContext);
       }
     }
@@ -601,58 +569,89 @@ public class AIOMusicSkin
   
   public void b(boolean paramBoolean)
   {
-    if (paramBoolean != this.jdField_a_of_type_Boolean)
+    if (paramBoolean != this.d)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      d();
+      this.d = paramBoolean;
+      g();
     }
   }
   
   public boolean b()
   {
-    return this.jdField_c_of_type_Int > 0;
-  }
-  
-  public void c()
-  {
-    this.f = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment = null;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("leave uin:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject).append("  type:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      QLog.i("AIOMusicSkin", 2, ((StringBuilder)localObject).toString());
-    }
-    QLog.i("AIOMusicSkin", 1, "leave");
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if (localObject != null)
-    {
-      ((BubblePopupWindow)localObject).dismiss();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    }
-    ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A5BF", 0, 0, String.valueOf((System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L), "", "", "");
+    return this.l;
   }
   
   public void c(boolean paramBoolean)
   {
-    if (paramBoolean != this.jdField_b_of_type_Boolean)
+    if (paramBoolean != this.e)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      d();
+      this.e = paramBoolean;
+      g();
     }
+  }
+  
+  public boolean c()
+  {
+    return this.k > 0;
+  }
+  
+  public void d()
+  {
+    if (a(this.i, this.g)) {
+      return;
+    }
+    if ((this.o.get(Integer.valueOf(this.k)) != null) && (du_()))
+    {
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        this.j = true;
+        b((String)this.o.get(Integer.valueOf(this.k)));
+        a(this.i.h);
+        a(this.i.e, this.i.h);
+        return;
+      }
+      ThreadManager.getSubThreadHandler().post(this.s);
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(this.s);
   }
   
   public void d(boolean paramBoolean)
   {
     ThreadManagerV2.getUIHandlerV2().post(new AIOMusicSkin.4(this, paramBoolean));
   }
+  
+  public void e()
+  {
+    this.o.clear();
+  }
+  
+  public void f()
+  {
+    this.q = false;
+    this.i = null;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("leave uin:");
+      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append("  type:");
+      ((StringBuilder)localObject).append(this.g);
+      QLog.i("AIOMusicSkin", 2, ((StringBuilder)localObject).toString());
+    }
+    QLog.i("AIOMusicSkin", 1, "leave");
+    Object localObject = this.n;
+    if (localObject != null)
+    {
+      ((BubblePopupWindow)localObject).dismiss();
+      this.n = null;
+    }
+    ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A5BF", 0, 0, String.valueOf((System.currentTimeMillis() - this.p) / 1000L), "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin
  * JD-Core Version:    0.7.0.1
  */

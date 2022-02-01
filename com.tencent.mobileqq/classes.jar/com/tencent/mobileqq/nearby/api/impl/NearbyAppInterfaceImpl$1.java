@@ -21,8 +21,8 @@ class NearbyAppInterfaceImpl$1
         this.this$0.logout(true);
       }
       Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", HardCodeUtil.a(2131707138));
-      localIntent.putExtra("msg", HardCodeUtil.a(2131707139));
+      localIntent.putExtra("title", HardCodeUtil.a(2131904973));
+      localIntent.putExtra("msg", HardCodeUtil.a(2131904974));
       localIntent.putExtra("reason", Constants.LogoutReason.kicked);
       localIntent.addFlags(268435456);
       BaseApplicationImpl.sApplication.startActivity(localIntent);
@@ -31,7 +31,7 @@ class NearbyAppInterfaceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.NearbyAppInterfaceImpl.1
  * JD-Core Version:    0.7.0.1
  */

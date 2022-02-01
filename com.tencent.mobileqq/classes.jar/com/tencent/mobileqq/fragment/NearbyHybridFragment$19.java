@@ -14,38 +14,38 @@ class NearbyHybridFragment$19
 {
   NearbyHybridFragment$19(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getMyTabCardCache() == null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getMyTabCard();
+        if (this.a.k.getMyTabCardCache() == null) {
+          this.a.k.getMyTabCard();
         }
-        if ((NetworkUtil.isNetSupport(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
+        if ((NetworkUtil.isNetSupport(BaseApplication.getContext())) && (!this.a.ag.isFinishing()))
         {
-          MineFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
+          MineFragment.a(this.a.k);
+          this.a.ag.finish();
         }
         else
         {
-          QQToast.a(BaseApplication.getContext(), 1, this.a.getString(2131694422), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
+          QQToast.makeText(BaseApplication.getContext(), 1, this.a.getString(2131892102), 0).show(this.a.ag.getTitleBarHeight());
         }
       }
     }
     else {
-      this.a.o();
+      this.a.x();
     }
-    if (this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (this.a.ad != null) {
+      this.a.ad.dismiss();
     }
-    this.a.n();
+    this.a.w();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.19
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,20 @@ import android.widget.LinearLayout.LayoutParams;
 public class IcsLinearLayout
   extends LinearLayout
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16843049, 16843561, 16843562 };
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int b;
+  private static final int[] a = { 16843049, 16843561, 16843562 };
+  private Drawable b;
   private int c;
   private int d;
+  private int e;
+  private int f;
   
   public IcsLinearLayout(Context paramContext, int paramInt)
   {
     super(paramContext);
-    paramContext = paramContext.obtainStyledAttributes(null, jdField_a_of_type_ArrayOfInt, paramInt, 0);
+    paramContext = paramContext.obtainStyledAttributes(null, a, paramInt, 0);
     setDividerDrawable(paramContext.getDrawable(0));
-    this.d = paramContext.getDimensionPixelSize(2, 0);
-    this.c = paramContext.getInteger(1, 0);
+    this.f = paramContext.getDimensionPixelSize(2, 0);
+    this.e = paramContext.getInteger(1, 0);
     paramContext.recycle();
   }
   
@@ -47,7 +47,7 @@ public class IcsLinearLayout
     {
       localView = getChildAt(j - 1);
       if (localView == null) {
-        i = getHeight() - getPaddingBottom() - this.b;
+        i = getHeight() - getPaddingBottom() - this.d;
       } else {
         i = localView.getBottom();
       }
@@ -57,8 +57,8 @@ public class IcsLinearLayout
   
   private void a(Canvas paramCanvas, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(getPaddingLeft() + this.d, paramInt, getWidth() - getPaddingRight() - this.d, this.b + paramInt);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    this.b.setBounds(getPaddingLeft() + this.f, paramInt, getWidth() - getPaddingRight() - this.f, this.d + paramInt);
+    this.b.draw(paramCanvas);
   }
   
   private boolean a(int paramInt)
@@ -68,7 +68,7 @@ public class IcsLinearLayout
       if (paramInt == getChildCount()) {
         return false;
       }
-      if ((this.c & 0x2) != 0)
+      if ((this.e & 0x2) != 0)
       {
         paramInt -= 1;
         while (paramInt >= 0)
@@ -102,7 +102,7 @@ public class IcsLinearLayout
     {
       localView = getChildAt(j - 1);
       if (localView == null) {
-        i = getWidth() - getPaddingRight() - this.jdField_a_of_type_Int;
+        i = getWidth() - getPaddingRight() - this.c;
       } else {
         i = localView.getRight();
       }
@@ -112,8 +112,8 @@ public class IcsLinearLayout
   
   private void b(Canvas paramCanvas, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramInt, getPaddingTop() + this.d, this.jdField_a_of_type_Int + paramInt, getHeight() - getPaddingBottom() - this.d);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    this.b.setBounds(paramInt, getPaddingTop() + this.f, this.c + paramInt, getHeight() - getPaddingBottom() - this.f);
+    this.b.draw(paramCanvas);
   }
   
   protected void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -123,17 +123,17 @@ public class IcsLinearLayout
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     if (a(i)) {
       if (j == 1) {
-        localLayoutParams.topMargin = this.b;
+        localLayoutParams.topMargin = this.d;
       } else {
-        localLayoutParams.leftMargin = this.jdField_a_of_type_Int;
+        localLayoutParams.leftMargin = this.c;
       }
     }
     int k = getChildCount();
     if ((i == k - 1) && (a(k))) {
       if (j == 1) {
-        localLayoutParams.bottomMargin = this.b;
+        localLayoutParams.bottomMargin = this.d;
       } else {
-        localLayoutParams.rightMargin = this.jdField_a_of_type_Int;
+        localLayoutParams.rightMargin = this.c;
       }
     }
     super.measureChildWithMargins(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -141,7 +141,7 @@ public class IcsLinearLayout
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+    if (this.b != null) {
       if (getOrientation() == 1) {
         a(paramCanvas);
       } else {
@@ -153,20 +153,20 @@ public class IcsLinearLayout
   
   public void setDividerDrawable(Drawable paramDrawable)
   {
-    if (paramDrawable == this.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
+    if (paramDrawable == this.b) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.b = paramDrawable;
     boolean bool = false;
     if (paramDrawable != null)
     {
-      this.jdField_a_of_type_Int = (paramDrawable.getIntrinsicWidth() - 2);
-      this.b = paramDrawable.getIntrinsicHeight();
+      this.c = (paramDrawable.getIntrinsicWidth() - 2);
+      this.d = paramDrawable.getIntrinsicHeight();
     }
     else
     {
-      this.jdField_a_of_type_Int = 0;
-      this.b = 0;
+      this.c = 0;
+      this.d = 0;
     }
     if (paramDrawable == null) {
       bool = true;
@@ -177,7 +177,7 @@ public class IcsLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.IcsLinearLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class ViolaFragment$1
   
   public ColorNote getColorNote()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaViewViolaFragment.mPresenter.a(this.jdField_a_of_type_AndroidOsBundle, ViolaFragment.access$000(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaViewViolaFragment));
+    return this.b.mPresenter.a(this.a, ViolaFragment.access$000(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment.1
  * JD-Core Version:    0.7.0.1
  */

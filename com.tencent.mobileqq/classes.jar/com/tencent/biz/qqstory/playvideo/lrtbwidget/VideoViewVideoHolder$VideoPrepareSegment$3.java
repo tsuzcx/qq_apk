@@ -13,17 +13,17 @@ class VideoViewVideoHolder$VideoPrepareSegment$3
   
   public void a(IVideoView paramIVideoView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.isCanceled()) {
+    if (this.b.isCanceled()) {
       return;
     }
-    SLog.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramIVideoView)));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, "VP", SystemClock.uptimeMillis());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    SLog.a(this.b.b.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramIVideoView)));
+    VideoViewVideoHolder.a(this.b.b, "VP", SystemClock.uptimeMillis());
+    this.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment.3
  * JD-Core Version:    0.7.0.1
  */

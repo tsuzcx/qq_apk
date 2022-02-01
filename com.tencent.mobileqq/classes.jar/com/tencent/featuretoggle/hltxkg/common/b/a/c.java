@@ -14,34 +14,33 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class c
   extends a
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private int jdField_a_of_type_Int;
-  private com.tencent.featuretoggle.hltxkg.common.a.a jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAA;
-  private b jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAB;
-  private f jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF;
-  private g jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAG;
-  private com.tencent.featuretoggle.hltxkg.common.b.a jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBA = com.tencent.featuretoggle.hltxkg.common.b.a.a();
-  private boolean b;
-  private String c;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean = false;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean = false;
-  private boolean f;
+  private static boolean o = false;
+  private String A;
+  private String B;
+  private boolean p = true;
+  private boolean q = false;
+  private boolean r = false;
+  private int s;
+  private g t;
+  private f u;
+  private b v;
+  private com.tencent.featuretoggle.hltxkg.common.b.a w = com.tencent.featuretoggle.hltxkg.common.b.a.a();
+  private boolean x;
+  private String y;
+  private com.tencent.featuretoggle.hltxkg.common.a.a z;
   
   public c(String paramString1, boolean paramBoolean1, Map<String, String> paramMap, byte[] paramArrayOfByte, int paramInt1, String paramString2, boolean paramBoolean2, int paramInt2, boolean paramBoolean3, d paramd, String paramString3)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    this.jdField_d_of_type_JavaUtilMap = paramMap;
-    this.jdField_e_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_f_of_type_Int = paramInt1;
+    this.b = paramString1;
+    this.c = paramBoolean1;
+    this.d = paramMap;
+    this.e = paramArrayOfByte;
+    this.f = paramInt1;
     this.h = paramString2;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_f_of_type_Boolean = paramBoolean3;
-    this.jdField_d_of_type_JavaLangString = paramString3;
+    this.q = false;
+    this.s = 0;
+    this.x = paramBoolean3;
+    this.A = paramString3;
   }
   
   public static c a(String paramString1, boolean paramBoolean1, Map<String, String> paramMap, byte[] paramArrayOfByte, int paramInt, String paramString2, boolean paramBoolean2, d paramd)
@@ -51,8 +50,8 @@ public final class c
   
   public final f a()
   {
-    if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = true;
+    if (!o) {
+      o = true;
     }
     try
     {
@@ -60,49 +59,49 @@ public final class c
         System.setProperty("http.keepAlive", "false");
       }
       label32:
-      this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF = new f(0, "", 0);
+      this.u = new f(0, "", 0);
       try
       {
-        Object localObject2 = new URL(this.jdField_b_of_type_JavaLangString);
+        Object localObject2 = new URL(this.b);
         localObject1 = ((URL)localObject2).getHost();
-        this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAB = new b((URL)localObject2, this.jdField_b_of_type_JavaLangString);
+        this.v = new b((URL)localObject2, this.b);
         boolean bool = ((URL)localObject2).getProtocol().toLowerCase().startsWith("https");
-        localObject2 = this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAB.a(this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBA, this.jdField_f_of_type_Boolean, bool);
+        localObject2 = this.v.a(this.w, this.x, bool);
         int n = ((List)localObject2).size();
         long l1 = SystemClock.elapsedRealtime();
         int i;
         if (n > 1) {
-          i = this.jdField_f_of_type_Int / 2;
+          i = this.f / 2;
         } else {
-          i = this.jdField_f_of_type_Int;
+          i = this.f;
         }
         int j = 0;
         while (j < n)
         {
           this.n.incrementAndGet();
-          this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAA = ((com.tencent.featuretoggle.hltxkg.common.a.a)((List)localObject2).get(j));
-          if (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAA.f()) {
-            this.jdField_e_of_type_Boolean = true;
+          this.z = ((com.tencent.featuretoggle.hltxkg.common.a.a)((List)localObject2).get(j));
+          if (this.z.f()) {
+            this.r = true;
           }
-          this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAB.a(this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAA);
-          this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAG = new g((String)localObject1, this.jdField_e_of_type_JavaLangString, this.jdField_c_of_type_Boolean, this.jdField_d_of_type_JavaUtilMap, this.jdField_e_of_type_ArrayOfByte, i, this.h);
-          if ((j != 0) || (this.jdField_d_of_type_Boolean)) {
-            this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAG.jdField_b_of_type_Boolean = true;
+          this.B = this.v.a(this.z);
+          this.t = new g((String)localObject1, this.B, this.c, this.d, this.e, i, this.h);
+          if ((j != 0) || (this.q)) {
+            this.t.r = true;
           }
           if ((e.h()) && (j != 0)) {
-            this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAG.jdField_a_of_type_Boolean = true;
+            this.t.p = true;
           }
-          this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAG.jdField_a_of_type_Int = this.n.get();
-          Object localObject3 = this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAG;
-          bool = this.jdField_b_of_type_Boolean;
-          this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF = ((g)localObject3).a();
-          if ((this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.jdField_a_of_type_Int != 0) && (e.g()))
+          this.t.q = this.n.get();
+          Object localObject3 = this.t;
+          bool = this.p;
+          this.u = ((g)localObject3).a();
+          if ((this.r) && (this.u.a != 0) && (e.g()))
           {
-            localObject3 = this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBA;
-            com.tencent.featuretoggle.hltxkg.common.b.a.a((String)localObject1, this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAA, this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.c);
+            localObject3 = this.w;
+            com.tencent.featuretoggle.hltxkg.common.b.a.a((String)localObject1, this.z, this.u.a, this.u.c);
           }
-          int m = (int)(this.jdField_f_of_type_Int - (SystemClock.elapsedRealtime() - l1));
-          if (((this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.jdField_a_of_type_Int != 0) || (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.c < 200) || (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.c >= 400)) && (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.jdField_a_of_type_Int != -20) && (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.jdField_a_of_type_Int != -300) && (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.jdField_a_of_type_Int != -306) && (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.jdField_a_of_type_Int != -292) && (j != n - 1) && (m > 200)) {
+          int m = (int)(this.f - (SystemClock.elapsedRealtime() - l1));
+          if (((this.u.a != 0) || (this.u.c < 200) || (this.u.c >= 400)) && (this.u.a != -20) && (this.u.a != -300) && (this.u.a != -306) && (this.u.a != -292) && (j != n - 1) && (m > 200)) {
             i = 0;
           } else {
             i = 1;
@@ -111,10 +110,10 @@ public final class c
           if (i == 0)
           {
             k = i;
-            if (this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF.jdField_a_of_type_Int == -4)
+            if (this.u.a == -4)
             {
               k = i.a("direct_nonet_retry_gap", 0, 10000, 3000);
-              long l2 = this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAG.jdField_a_of_type_Long;
+              long l2 = this.t.o;
               long l3 = k;
               if (l2 >= l3)
               {
@@ -134,7 +133,7 @@ public final class c
           j += 1;
           i = m;
         }
-        return this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF;
+        return this.u;
       }
       catch (MalformedURLException localMalformedURLException)
       {
@@ -142,8 +141,8 @@ public final class c
         label605:
         break label605;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF;
-      ((f)localObject1).jdField_a_of_type_Int = -300;
+      localObject1 = this.u;
+      ((f)localObject1).a = -300;
       return localObject1;
     }
     catch (Exception localException)
@@ -156,7 +155,7 @@ public final class c
   
   public final void a(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.y = paramString;
   }
   
   public final void a(boolean paramBoolean)
@@ -167,7 +166,7 @@ public final class c
   public final boolean b()
   {
     this.m = true;
-    g localg = this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAG;
+    g localg = this.t;
     if (localg != null) {
       localg.b();
     }
@@ -176,7 +175,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.b.a.c
  * JD-Core Version:    0.7.0.1
  */

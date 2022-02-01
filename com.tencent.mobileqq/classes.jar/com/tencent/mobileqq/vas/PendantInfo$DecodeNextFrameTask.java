@@ -9,13 +9,13 @@ import mqq.os.MqqHandler;
 public class PendantInfo$DecodeNextFrameTask
   extends AsyncTask<Long, Void, Void>
 {
-  long jdField_a_of_type_Long;
-  Object jdField_a_of_type_JavaLangObject;
+  Object a;
+  long b;
   
   public PendantInfo$DecodeNextFrameTask(PendantInfo paramPendantInfo, Object paramObject, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramObject;
+    this.b = paramLong;
   }
   
   protected Void a(Long... paramVarArgs)
@@ -25,18 +25,18 @@ public class PendantInfo$DecodeNextFrameTask
       long l1 = paramVarArgs[0].longValue();
       long l2 = paramVarArgs[1].longValue();
       long l3 = paramVarArgs[2].longValue();
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.a((int)l3, this.jdField_a_of_type_JavaLangObject, (int)l2);
+      paramVarArgs = this.c.a((int)l3, this.a, (int)l2);
       if ((paramVarArgs != null) && (!isCancelled()))
       {
         l2 = SystemClock.uptimeMillis();
-        Message localMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(17);
-        if (PendantInfo.a(localMessage, this.jdField_a_of_type_Long))
+        Message localMessage = this.c.w.obtainMessage(17);
+        if (PendantInfo.a(localMessage, this.b))
         {
           localMessage.obj = paramVarArgs;
           if (l2 < l1) {
-            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, l1 - l2);
+            this.c.w.sendMessageDelayed(localMessage, l1 - l2);
           } else {
-            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+            this.c.w.sendMessage(localMessage);
           }
         }
       }
@@ -46,19 +46,19 @@ public class PendantInfo$DecodeNextFrameTask
       if (QLog.isDevelopLevel()) {
         QLog.e("PendantInfo", 4, "", paramVarArgs);
       }
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.b = true;
+      this.c.x = true;
     }
     return null;
   }
   
   protected void a(Void paramVoid)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = null;
+    this.c.y = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.PendantInfo.DecodeNextFrameTask
  * JD-Core Version:    0.7.0.1
  */

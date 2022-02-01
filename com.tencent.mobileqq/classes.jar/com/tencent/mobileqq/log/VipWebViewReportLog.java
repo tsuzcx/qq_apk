@@ -27,68 +27,42 @@ import org.json.JSONObject;
 
 public class VipWebViewReportLog
 {
-  public static int a = 0;
-  private static Context jdField_a_of_type_AndroidContentContext;
   public static final String a = "VipWebViewReportLog";
-  static Thread jdField_a_of_type_JavaLangThread = null;
-  static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private static AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  static boolean jdField_a_of_type_Boolean = false;
-  private static int jdField_b_of_type_Int;
-  public static final String b;
-  static boolean jdField_b_of_type_Boolean = false;
-  private static int c;
-  public static final String c;
-  private static int d;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
+  static Set<String> b = new HashSet();
+  static boolean c = false;
+  static boolean d = false;
+  public static int e;
+  public static final String f;
+  public static final String g;
+  public static String h = null;
+  public static String i = "null";
+  public static String j = "null";
+  public static String k = "null";
+  static AtomicInteger l = new AtomicInteger(0);
+  static Thread m = null;
+  private static Context n = null;
+  private static AppRuntime o = null;
+  private static int p = 1;
+  private static int q = 2;
+  private static int r;
   
   static
   {
-    jdField_a_of_type_AndroidContentContext = null;
-    jdField_a_of_type_MqqAppAppRuntime = null;
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 2;
-    jdField_a_of_type_Int = 0;
+    e = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("WebViewCheck");
     localStringBuilder.append(File.separator);
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    f = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("WebViewCheck");
     localStringBuilder.append(File.separator);
-    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_d_of_type_JavaLangString = null;
-    e = "null";
-    f = "null";
-    g = "null";
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
-  
-  public static void a()
-  {
-    Object localObject = jdField_a_of_type_JavaLangThread;
-    if ((localObject == null) || (!((Thread)localObject).isAlive()))
-    {
-      jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(new VipWebViewReportLog.LoadConfigRbl(), "WebviewLoadConfig", 8);
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("ready to load config at:");
-        ((StringBuilder)localObject).append(System.currentTimeMillis());
-        QLog.d("WebCoreDump", 1, ((StringBuilder)localObject).toString());
-      }
-      jdField_a_of_type_JavaLangThread.start();
-    }
+    g = localStringBuilder.toString();
   }
   
   public static void a(Context paramContext, AppRuntime paramAppRuntime)
   {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(0, 1))
+    if (l.compareAndSet(0, 1))
     {
       if (QLog.isColorLevel())
       {
@@ -99,10 +73,10 @@ public class VipWebViewReportLog
         localStringBuilder.append(paramAppRuntime);
         QLog.d("WebCoreDump", 2, localStringBuilder.toString());
       }
-      jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-      jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-      jdField_d_of_type_Int = jdField_b_of_type_Int;
-      a();
+      n = paramContext.getApplicationContext();
+      o = paramAppRuntime;
+      r = p;
+      c();
     }
   }
   
@@ -111,99 +85,31 @@ public class VipWebViewReportLog
     if (paramTelephonyManager == null) {
       return;
     }
-    e = "null";
-    f = "null";
-    g = "null";
+    i = "null";
+    j = "null";
+    k = "null";
     NetworkInfo localNetworkInfo = AppNetConnInfo.getRecentNetworkInfo();
     if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable()))
     {
-      int i = localNetworkInfo.getType();
-      if (i != 9)
+      int i1 = localNetworkInfo.getType();
+      if (i1 != 9)
       {
-        switch (i)
+        switch (i1)
         {
         default: 
-          f = "unknown";
-          g = "unknown";
+          j = "unknown";
+          k = "unknown";
           return;
         case 1: 
         case 6: 
-          f = "WIFI";
+          j = "WIFI";
           return;
         }
-        e = paramTelephonyManager.getNetworkOperatorName();
-        switch (paramTelephonyManager.getNetworkType())
-        {
-        default: 
-          f = "2G";
-          g = "unknown";
-          return;
-        case 15: 
-          f = "3G";
-          g = "HSPAP";
-          return;
-        case 14: 
-          f = "3G";
-          g = "EHRPD";
-          return;
-        case 13: 
-          f = "4G";
-          g = "LTE";
-          return;
-        case 12: 
-          f = "3G";
-          g = "EVDO_B";
-          return;
-        case 11: 
-          f = "2G";
-          g = "IDEN";
-          return;
-        case 10: 
-          f = "3G";
-          g = "HSPA";
-          return;
-        case 9: 
-          f = "3G";
-          g = "HSUPA";
-          return;
-        case 8: 
-          f = "3G";
-          g = "SDPA";
-          return;
-        case 7: 
-          f = "2G";
-          g = "1xRTT";
-          return;
-        case 6: 
-          f = "3G";
-          g = "EVDO_A";
-          return;
-        case 5: 
-          f = "3G";
-          g = "EVDO_0";
-          return;
-        case 4: 
-          f = "2G";
-          g = "CDMA";
-          return;
-        case 3: 
-          f = "3G";
-          g = "UMTS";
-          return;
-        case 2: 
-          f = "2G";
-          g = "EDGE";
-          return;
-        case 1: 
-          f = "2G";
-          g = "GPRS";
-          return;
-        }
-        f = "2G";
-        g = "unknown";
+        i = paramTelephonyManager.getNetworkOperatorName();
+        b(paramTelephonyManager);
         return;
       }
-      f = "cable";
+      j = "cable";
     }
   }
   
@@ -211,12 +117,12 @@ public class VipWebViewReportLog
   {
     try
     {
-      if (jdField_a_of_type_MqqAppAppRuntime == null) {
+      if (o == null) {
         return;
       }
       if (!QLog.isColorLevel())
       {
-        if ((jdField_d_of_type_Int == jdField_c_of_type_Int) && (!jdField_a_of_type_Boolean)) {
+        if ((r == q) && (!c)) {
           return;
         }
         if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
@@ -233,14 +139,14 @@ public class VipWebViewReportLog
       localObject1 = ((StringBuilder)localObject2).toString();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append("&client_ver=8.7.0");
+      ((StringBuilder)localObject2).append("&client_ver=8.8.17");
       localObject1 = ((StringBuilder)localObject2).toString();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("&os_ver=");
       ((StringBuilder)localObject2).append(Build.VERSION.SDK);
       localObject1 = ((StringBuilder)localObject2).toString();
-      localObject2 = jdField_a_of_type_MqqAppAppRuntime.getAccount();
+      localObject2 = o.getAccount();
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append((String)localObject1);
       localStringBuilder2.append("&uin=");
@@ -286,12 +192,12 @@ public class VipWebViewReportLog
       ((StringBuilder)localObject2).append("&err_timestamp=");
       ((StringBuilder)localObject2).append(System.currentTimeMillis());
       localObject1 = ((StringBuilder)localObject2).toString();
-      if (jdField_d_of_type_JavaLangString != null)
+      if (h != null)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append("&err_page_url=");
-        ((StringBuilder)localObject2).append(URLEncoder.encode(jdField_d_of_type_JavaLangString));
+        ((StringBuilder)localObject2).append(URLEncoder.encode(h));
         localObject1 = ((StringBuilder)localObject2).toString();
       }
       else
@@ -337,7 +243,7 @@ public class VipWebViewReportLog
       }
       try
       {
-        a((TelephonyManager)jdField_a_of_type_AndroidContentContext.getSystemService("phone"));
+        a((TelephonyManager)n.getSystemService("phone"));
       }
       catch (Exception localException)
       {
@@ -346,19 +252,19 @@ public class VipWebViewReportLog
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append(paramConsoleMessage);
       localStringBuilder1.append("&networkOperator=");
-      localStringBuilder1.append(e);
+      localStringBuilder1.append(i);
       paramConsoleMessage = localStringBuilder1.toString();
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append(paramConsoleMessage);
       localStringBuilder1.append("&mNetworkType=");
-      localStringBuilder1.append(f);
+      localStringBuilder1.append(j);
       paramConsoleMessage = localStringBuilder1.toString();
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append(paramConsoleMessage);
       localStringBuilder1.append("&mobileType=");
-      localStringBuilder1.append(g);
+      localStringBuilder1.append(k);
       paramConsoleMessage = localStringBuilder1.toString();
-      QLog.d(jdField_a_of_type_JavaLangString, 1, paramConsoleMessage);
+      QLog.d(a, 1, paramConsoleMessage);
       return;
     }
     catch (Exception paramConsoleMessage)
@@ -370,10 +276,10 @@ public class VipWebViewReportLog
   public static void a(JSONObject paramJSONObject, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
   {
     StringBuilder localStringBuilder1 = new StringBuilder(4096);
-    if ("null".equals(f)) {
+    if ("null".equals(j)) {
       try
       {
-        a((TelephonyManager)jdField_a_of_type_AndroidContentContext.getSystemService("phone"));
+        a((TelephonyManager)n.getSystemService("phone"));
       }
       catch (Exception localException)
       {
@@ -381,7 +287,7 @@ public class VipWebViewReportLog
       }
     }
     localStringBuilder1.append("==> SUMMARY INFO <==\nNET_TYPE:");
-    localStringBuilder1.append(f);
+    localStringBuilder1.append(j);
     localStringBuilder1.append("\n");
     localStringBuilder1.append("ERROR_CODE:");
     localStringBuilder1.append(paramInt);
@@ -533,14 +439,14 @@ public class VipWebViewReportLog
   
   public static boolean a()
   {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0;
+    return l.get() != 0;
   }
   
   public static boolean a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = jdField_a_of_type_JavaUtilSet.iterator();
+      localObject = b.iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
@@ -563,23 +469,113 @@ public class VipWebViewReportLog
     return false;
   }
   
-  public static void b()
+  private static void b(TelephonyManager paramTelephonyManager)
   {
-    if (jdField_d_of_type_Int == jdField_b_of_type_Int) {}
+    switch (paramTelephonyManager.getNetworkType())
+    {
+    default: 
+      j = "2G";
+      k = "unknown";
+      return;
+    case 15: 
+      j = "3G";
+      k = "HSPAP";
+      return;
+    case 14: 
+      j = "3G";
+      k = "EHRPD";
+      return;
+    case 13: 
+      j = "4G";
+      k = "LTE";
+      return;
+    case 12: 
+      j = "3G";
+      k = "EVDO_B";
+      return;
+    case 11: 
+      j = "2G";
+      k = "IDEN";
+      return;
+    case 10: 
+      j = "3G";
+      k = "HSPA";
+      return;
+    case 9: 
+      j = "3G";
+      k = "HSUPA";
+      return;
+    case 8: 
+      j = "3G";
+      k = "SDPA";
+      return;
+    case 7: 
+      j = "2G";
+      k = "1xRTT";
+      return;
+    case 6: 
+      j = "3G";
+      k = "EVDO_A";
+      return;
+    case 5: 
+      j = "3G";
+      k = "EVDO_0";
+      return;
+    case 4: 
+      j = "2G";
+      k = "CDMA";
+      return;
+    case 3: 
+      j = "3G";
+      k = "UMTS";
+      return;
+    case 2: 
+      j = "2G";
+      k = "EDGE";
+      return;
+    case 1: 
+      j = "2G";
+      k = "GPRS";
+      return;
+    }
+    j = "2G";
+    k = "unknown";
   }
   
   public static boolean b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("-->uin in white list:");
-    localStringBuilder.append(jdField_b_of_type_Boolean);
+    localStringBuilder.append(d);
     QLog.d("WebCoreDump", 1, localStringBuilder.toString());
-    return jdField_b_of_type_Boolean;
+    return d;
+  }
+  
+  public static void c()
+  {
+    Object localObject = m;
+    if ((localObject == null) || (!((Thread)localObject).isAlive()))
+    {
+      m = ThreadManager.newFreeThread(new VipWebViewReportLog.LoadConfigRbl(), "WebviewLoadConfig", 8);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ready to load config at:");
+        ((StringBuilder)localObject).append(System.currentTimeMillis());
+        QLog.d("WebCoreDump", 1, ((StringBuilder)localObject).toString());
+      }
+      m.start();
+    }
+  }
+  
+  public static void d()
+  {
+    if (r == p) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.log.VipWebViewReportLog
  * JD-Core Version:    0.7.0.1
  */

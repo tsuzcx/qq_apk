@@ -35,30 +35,30 @@ public class NoClockInView
   extends ClockView
   implements View.OnClickListener, QQAvatarFHDDecoder.OnQQAvatarFHDListener, Observer
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ClockInCallback jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInCallback;
-  private ClockInData jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-  private Rotate3dAnimation jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation = null;
-  private RoundRectUrlImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView;
-  private QQAvatarFHDDecoder jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder;
-  boolean jdField_a_of_type_Boolean = false;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private RoundRectUrlImageView jdField_b_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private RoundRectUrlImageView jdField_c_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
+  boolean a = false;
+  private Context b;
+  private QQAppInterface c;
+  private ClockInData d;
+  private FrameLayout e;
+  private RelativeLayout f;
+  private RoundRectUrlImageView g;
+  private RoundRectUrlImageView h;
+  private RoundRectUrlImageView i;
+  private TextView j;
+  private TextView k;
+  private TextView l;
+  private LinearLayout m;
+  private TextView n;
+  private View o;
+  private TextView p;
+  private Button q;
+  private LinearLayout r;
+  private ImageView s;
+  private TextView t;
+  private TextView u;
+  private ClockInCallback v;
+  private QQAvatarFHDDecoder w;
+  private Rotate3dAnimation x = null;
   
   public NoClockInView(Context paramContext, QQAppInterface paramQQAppInterface, FrameLayout paramFrameLayout, ClockInData paramClockInData, ClockInCallback paramClockInCallback, ClockAnimController paramClockAnimController)
   {
@@ -66,78 +66,67 @@ public class NoClockInView
     if (paramClockAnimController != null) {
       paramClockAnimController.addObserver(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData = paramClockInData;
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInCallback = paramClockInCallback;
+    this.c = paramQQAppInterface;
+    this.b = paramContext;
+    this.e = paramFrameLayout;
+    this.d = paramClockInData;
+    this.v = paramClockInCallback;
     c();
   }
   
-  private String a(int paramInt)
+  private String c(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return "";
     case 7: 
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131719812);
+      return this.b.getString(2131917417);
     case 6: 
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131719811);
+      return this.b.getString(2131917416);
     case 5: 
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131719810);
+      return this.b.getString(2131917415);
     case 4: 
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131719809);
+      return this.b.getString(2131917414);
     case 3: 
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131719808);
+      return this.b.getString(2131917413);
     case 2: 
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131719807);
+      return this.b.getString(2131917412);
     }
-    return this.jdField_a_of_type_AndroidContentContext.getString(2131719813);
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData != null) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView != null) && (this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView != null) && (this.jdField_c_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_c_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.d != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.e != null) && (this.jdField_b_of_type_AndroidWidgetLinearLayout != null) && (this.f != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.g != null) && (this.jdField_a_of_type_AndroidWidgetButton != null);
-  }
-  
-  private boolean b()
-  {
-    ClockInData localClockInData = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-    return (localClockInData != null) && (!TextUtils.isEmpty(localClockInData.b));
+    return this.b.getString(2131917418);
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.c != null)
     {
-      Object localObject = this.jdField_a_of_type_AndroidContentContext;
-      if ((localObject != null) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
+      Object localObject = this.b;
+      if ((localObject != null) && (this.e != null) && (this.f == null))
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from((Context)localObject).inflate(2131561299, null));
-        localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+        this.f = ((RelativeLayout)LayoutInflater.from((Context)localObject).inflate(2131627655, null));
+        localObject = this.f;
         if (localObject == null) {
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView = ((RoundRectUrlImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363496));
-        this.jdField_c_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView = ((RoundRectUrlImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363503));
-        this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView = ((RoundRectUrlImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363510));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365403));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365412));
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365419));
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364699));
-        this.d = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364700));
-        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364702);
-        this.e = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364701));
-        this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366866));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368055));
-        this.f = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366865));
-        this.g = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366864));
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364693));
-        this.jdField_a_of_type_AndroidWidgetButton.setTag(Integer.valueOf(2131364693));
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-        d();
+        this.e.addView((View)localObject);
+        this.g = ((RoundRectUrlImageView)this.f.findViewById(2131429397));
+        this.i = ((RoundRectUrlImageView)this.f.findViewById(2131429405));
+        this.h = ((RoundRectUrlImageView)this.f.findViewById(2131429412));
+        this.j = ((TextView)this.f.findViewById(2131431604));
+        this.k = ((TextView)this.f.findViewById(2131431613));
+        this.l = ((TextView)this.f.findViewById(2131431623));
+        this.m = ((LinearLayout)this.f.findViewById(2131430801));
+        this.n = ((TextView)this.f.findViewById(2131430802));
+        this.o = this.f.findViewById(2131430804);
+        this.p = ((TextView)this.f.findViewById(2131430803));
+        this.r = ((LinearLayout)this.f.findViewById(2131433195));
+        this.s = ((ImageView)this.f.findViewById(2131434905));
+        this.t = ((TextView)this.f.findViewById(2131433194));
+        this.u = ((TextView)this.f.findViewById(2131433193));
+        this.q = ((Button)this.f.findViewById(2131430795));
+        this.q.setTag(Integer.valueOf(2131430795));
+        this.q.setOnClickListener(this);
+        e();
         return;
       }
     }
@@ -146,157 +135,168 @@ public class NoClockInView
     }
   }
   
-  private void d()
+  private boolean d()
+  {
+    return (this.c != null) && (this.b != null) && (this.f != null) && (this.d != null) && (this.e != null) && (this.g != null) && (this.h != null) && (this.i != null) && (this.j != null) && (this.k != null) && (this.l != null) && (this.m != null) && (this.n != null) && (this.o != null) && (this.p != null) && (this.r != null) && (this.t != null) && (this.s != null) && (this.u != null) && (this.q != null);
+  }
+  
+  private void e()
   {
     if (QLog.isColorLevel()) {
       QLog.d("NoClockInView", 2, "updateUI");
     }
-    if (a())
+    if (d())
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("checkData true");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.toString());
+        localStringBuilder.append(this.d.toString());
         QLog.d("NoClockInView", 2, localStringBuilder.toString());
       }
-      e();
       f();
       g();
+      h();
     }
-  }
-  
-  private void e()
-  {
-    if (b())
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder = new QQAvatarFHDDecoder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setAllRadius(ViewUtils.b(16.0F));
-      this.jdField_a_of_type_ComTencentMobileqqUtilQQAvatarFHDDecoder.a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.b, false, this);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setVisibility(0);
-      this.jdField_c_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setAllRadius(ViewUtils.b(16.0F));
-      this.jdField_c_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setVisibility(0);
-      this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setAllRadius(ViewUtils.b(16.0F));
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.e))
-      {
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.e, (URLDrawable.URLDrawableOptions)localObject);
-        this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setImageDrawable((Drawable)localObject);
-        this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setVisibility(0);
-        return;
-      }
-      this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setAllRadius(ViewUtils.b(16.0F));
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.e))
-    {
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.e, (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setImageDrawable((Drawable)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setVisibility(0);
-    }
-    else
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setVisibility(8);
-    }
-    this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setVisibility(8);
-    this.jdField_c_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setVisibility(8);
   }
   
   private void f()
   {
-    if (b())
+    if (i())
     {
-      Object localObject = ImageUtil.e();
-      localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.b, 4, (Drawable)localObject, (Drawable)localObject);
-      Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-      if ((localDrawable != null) && ((localDrawable instanceof FaceDrawable)) && (localDrawable != localObject)) {
-        ((FaceDrawable)localDrawable).cancel();
+      if (this.w == null) {
+        this.w = new QQAvatarFHDDecoder(this.c);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.c)) {
-        this.f.setText(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.c);
+      this.g.setAllRadius(ViewUtils.dpToPx(16.0F));
+      this.w.a(this.d.d, false, this);
+      this.g.setVisibility(0);
+      this.i.setAllRadius(ViewUtils.dpToPx(16.0F));
+      this.i.setVisibility(0);
+      this.h.setAllRadius(ViewUtils.dpToPx(16.0F));
+      localObject = URLDrawable.URLDrawableOptions.obtain();
+      if (!TextUtils.isEmpty(this.d.g))
+      {
+        localObject = URLDrawable.getDrawable(this.d.g, (URLDrawable.URLDrawableOptions)localObject);
+        this.h.setImageDrawable((Drawable)localObject);
+        this.h.setVisibility(0);
+        return;
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.d)) {
-        this.g.setText(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.d);
-      }
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.h.setVisibility(8);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.g.setAllRadius(ViewUtils.dpToPx(16.0F));
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    if (!TextUtils.isEmpty(this.d.g))
+    {
+      localObject = URLDrawable.getDrawable(this.d.g, (URLDrawable.URLDrawableOptions)localObject);
+      this.g.setImageDrawable((Drawable)localObject);
+      this.g.setVisibility(0);
+    }
+    else
+    {
+      this.g.setVisibility(8);
+    }
+    this.h.setVisibility(8);
+    this.i.setVisibility(8);
   }
   
   private void g()
   {
-    Calendar localCalendar = Calendar.getInstance();
-    int i = localCalendar.get(2) + 1;
-    int j = localCalendar.get(5);
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    StringBuilder localStringBuilder;
-    if (j < 10)
+    if (i())
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("0");
-    }
-    else
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-    }
-    localStringBuilder.append(j);
-    localTextView.setText(localStringBuilder.toString());
-    localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (i < 10)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("0");
-    }
-    else
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-    }
-    localStringBuilder.append(i);
-    localTextView.setText(localStringBuilder.toString());
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(a(localCalendar.get(7)));
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.h)) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.h);
-    }
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.f)) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.g)))
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      Object localObject = ImageUtil.j();
+      localObject = FaceDrawable.getFaceDrawable(this.c, 1, this.d.d, 4, (Drawable)localObject, (Drawable)localObject);
+      Drawable localDrawable = this.s.getDrawable();
+      if ((localDrawable != null) && ((localDrawable instanceof FaceDrawable)) && (localDrawable != localObject)) {
+        ((FaceDrawable)localDrawable).cancel();
+      }
+      this.s.setImageDrawable((Drawable)localObject);
+      if (!TextUtils.isEmpty(this.d.e)) {
+        this.t.setText(this.d.e);
+      }
+      if (!TextUtils.isEmpty(this.d.f)) {
+        this.u.setText(this.d.f);
+      }
+      this.r.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.f)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.g))) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    } else {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.f))
-    {
-      this.d.setVisibility(0);
-      this.d.setText(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.f);
-    }
-    else
-    {
-      this.d.setVisibility(8);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.g))
-    {
-      this.e.setVisibility(0);
-      this.e.setText(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.g);
-      return;
-    }
-    this.e.setVisibility(8);
+    this.r.setVisibility(8);
   }
   
   private void h()
   {
-    ClockInCallback localClockInCallback = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInCallback;
+    Calendar localCalendar = Calendar.getInstance();
+    int i1 = localCalendar.get(2) + 1;
+    int i2 = localCalendar.get(5);
+    TextView localTextView = this.j;
+    StringBuilder localStringBuilder;
+    if (i2 < 10)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0");
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+    }
+    localStringBuilder.append(i2);
+    localTextView.setText(localStringBuilder.toString());
+    localTextView = this.k;
+    if (i1 < 10)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0");
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+    }
+    localStringBuilder.append(i1);
+    localTextView.setText(localStringBuilder.toString());
+    this.l.setText(c(localCalendar.get(7)));
+    if (!TextUtils.isEmpty(this.d.j)) {
+      this.q.setText(this.d.j);
+    }
+    if ((TextUtils.isEmpty(this.d.h)) && (TextUtils.isEmpty(this.d.i)))
+    {
+      this.m.setVisibility(8);
+      return;
+    }
+    this.m.setVisibility(0);
+    if ((!TextUtils.isEmpty(this.d.h)) && (!TextUtils.isEmpty(this.d.i))) {
+      this.o.setVisibility(0);
+    } else {
+      this.o.setVisibility(8);
+    }
+    if (!TextUtils.isEmpty(this.d.h))
+    {
+      this.n.setVisibility(0);
+      this.n.setText(this.d.h);
+    }
+    else
+    {
+      this.n.setVisibility(8);
+    }
+    if (!TextUtils.isEmpty(this.d.i))
+    {
+      this.p.setVisibility(0);
+      this.p.setText(this.d.i);
+      return;
+    }
+    this.p.setVisibility(8);
+  }
+  
+  private boolean i()
+  {
+    ClockInData localClockInData = this.d;
+    return (localClockInData != null) && (!TextUtils.isEmpty(localClockInData.d));
+  }
+  
+  private void j()
+  {
+    ClockInCallback localClockInCallback = this.v;
     if (localClockInCallback != null) {
       localClockInCallback.a();
     }
@@ -304,27 +304,27 @@ public class NoClockInView
   
   public void a()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.f;
     if (localRelativeLayout != null)
     {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
+      if (this.b == null) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation == null)
+      if (this.x == null)
       {
         float f1 = localRelativeLayout.getWidth() / 2.0F;
-        float f2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight() / 2.0F;
-        this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation = new Rotate3dAnimation(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density, 0.0F, -90.0F, f1, f2, 0.0F, true);
+        float f2 = this.f.getHeight() / 2.0F;
+        this.x = new Rotate3dAnimation(this.b.getResources().getDisplayMetrics().density, 0.0F, -90.0F, f1, f2, 0.0F, true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation.setDuration(200L);
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation.setFillAfter(true);
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation.setAnimationListener(new NoClockInView.2(this));
+      this.x.setDuration(200L);
+      this.x.setInterpolator(new LinearInterpolator());
+      this.x.setFillAfter(true);
+      this.x.setAnimationListener(new NoClockInView.2(this));
       if (QLog.isColorLevel()) {
         QLog.d("NoClockInView", 2, "startRotateAnim");
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation);
+      this.a = true;
+      this.f.startAnimation(this.x);
     }
   }
   
@@ -346,24 +346,24 @@ public class NoClockInView
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation;
+    Object localObject = this.x;
     if (localObject != null)
     {
       ((Rotate3dAnimation)localObject).setAnimationListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinRotate3dAnimation = null;
+      this.x.cancel();
+      this.x = null;
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    localObject = this.f;
     if (localObject != null)
     {
       ((RelativeLayout)localObject).clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+      this.f = null;
     }
   }
   
   public void b(int paramInt)
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.f;
     if (localRelativeLayout != null) {
       localRelativeLayout.setVisibility(paramInt);
     }
@@ -371,8 +371,8 @@ public class NoClockInView
   
   public void onClick(View paramView)
   {
-    if ((paramView != null) && (((Integer)paramView.getTag()).intValue() == 2131364693)) {
-      h();
+    if ((paramView != null) && (((Integer)paramView.getTag()).intValue() == 2131430795)) {
+      j();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -382,14 +382,14 @@ public class NoClockInView
     if (!(paramObject instanceof Integer)) {
       return;
     }
-    if ((((Integer)paramObject).intValue() == 1) && (!this.jdField_a_of_type_Boolean)) {
+    if ((((Integer)paramObject).intValue() == 1) && (!this.a)) {
       a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.NoClockInView
  * JD-Core Version:    0.7.0.1
  */

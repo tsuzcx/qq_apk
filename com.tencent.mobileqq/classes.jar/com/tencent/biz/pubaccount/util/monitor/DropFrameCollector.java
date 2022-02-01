@@ -13,37 +13,37 @@ import java.util.concurrent.TimeUnit;
 class DropFrameCollector
   implements Choreographer.FrameCallback
 {
-  private static float jdField_a_of_type_Float;
-  private static float[] jdField_a_of_type_ArrayOfFloat;
-  private static float jdField_b_of_type_Float;
-  private static float jdField_c_of_type_Float;
-  private static float jdField_d_of_type_Float;
-  private static float jdField_e_of_type_Float;
+  private static float a;
+  private static float b;
+  private static float c;
+  private static float d;
+  private static float e;
   private static float f;
-  private static float g;
+  private static float[] g;
   private static float h;
   private static float i;
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long = 0L;
-  private Choreographer jdField_a_of_type_AndroidViewChoreographer;
-  private DropFrameCollector.DropFrameCallback jdField_a_of_type_ComTencentBizPubaccountUtilMonitorDropFrameCollector$DropFrameCallback;
-  private DropFrameData jdField_a_of_type_ComTencentBizPubaccountUtilMonitorDropFrameData;
-  private StackSampler jdField_a_of_type_ComTencentBizPubaccountUtilMonitorStackSampler;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long = 0L;
-  private long jdField_c_of_type_Long = 0L;
-  private long jdField_d_of_type_Long = 0L;
-  private long jdField_e_of_type_Long = 0L;
-  private float j = 0.0F;
-  private float k = 0.0F;
-  private float l = 0.0F;
+  private static float j;
+  private long k = 0L;
+  private long l = 0L;
+  private long m = 0L;
+  private float n = 0.0F;
+  private float o = 0.0F;
+  private float p = 0.0F;
+  private long q = 0L;
+  private long r = 0L;
+  private boolean s;
+  private int t = 1;
+  private DropFrameData u;
+  private Choreographer v;
+  private DropFrameCollector.DropFrameCallback w;
+  private StackSampler x;
   
   @RequiresApi(api=16)
   public DropFrameCollector(DropFrameCollector.DropFrameCallback paramDropFrameCallback, WindowManager paramWindowManager)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorDropFrameCollector$DropFrameCallback = paramDropFrameCallback;
-    this.jdField_a_of_type_AndroidViewChoreographer = Choreographer.getInstance();
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorStackSampler = new StackSampler();
+    this.w = paramDropFrameCallback;
+    this.v = Choreographer.getInstance();
+    this.x = new StackSampler();
     a(paramWindowManager);
   }
   
@@ -76,66 +76,66 @@ class DropFrameCollector
   
   private void a(long paramLong, DropFrameData paramDropFrameData)
   {
-    if ((paramDropFrameData != null) && (!TextUtils.isEmpty(paramDropFrameData.jdField_a_of_type_JavaLangString)))
+    if ((paramDropFrameData != null) && (!TextUtils.isEmpty(paramDropFrameData.a)))
     {
-      if (paramDropFrameData.jdField_b_of_type_Long == 0L)
+      if (paramDropFrameData.c == 0L)
       {
-        paramDropFrameData.jdField_b_of_type_Long = paramLong;
+        paramDropFrameData.c = paramLong;
       }
       else
       {
-        float f1 = (float)(paramLong - this.jdField_b_of_type_Long);
-        float f2 = h;
-        int m = (int)((f1 - f2) / f2);
-        int n = a(m);
-        paramDropFrameData.jdField_a_of_type_Long += 1L;
-        long[] arrayOfLong = paramDropFrameData.jdField_a_of_type_ArrayOfLong;
-        arrayOfLong[n] += 1L;
-        paramDropFrameData.jdField_c_of_type_Long = paramLong;
-        if (m >= 2)
+        float f1 = (float)(paramLong - this.l);
+        float f2 = i;
+        int i1 = (int)((f1 - f2) / f2);
+        int i2 = a(i1);
+        paramDropFrameData.b += 1L;
+        long[] arrayOfLong = paramDropFrameData.e;
+        arrayOfLong[i2] += 1L;
+        paramDropFrameData.d = paramLong;
+        if (i1 >= 2)
         {
           if (QLog.isColorLevel())
           {
             paramDropFrameData = new StringBuilder();
             paramDropFrameData.append("catch drop frame: dropCount=");
-            paramDropFrameData.append(m);
+            paramDropFrameData.append(i1);
             QLog.d("FPSMonitor", 2, paramDropFrameData.toString());
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorStackSampler.a(this.jdField_b_of_type_Long, paramLong);
+          this.x.a(this.l, paramLong);
         }
       }
-      this.jdField_b_of_type_Long = paramLong;
+      this.l = paramLong;
     }
   }
   
   private final void a(WindowManager paramWindowManager)
   {
-    if (h <= 0.0F)
+    if (i <= 0.0F)
     {
-      g = paramWindowManager.getDefaultDisplay().getRefreshRate();
-      float f1 = g;
+      h = paramWindowManager.getDefaultDisplay().getRefreshRate();
+      float f1 = h;
       if (f1 > 0.0F)
       {
-        i = 1000.0F / f1;
-        h = 1.0E+009F / f1;
+        j = 1000.0F / f1;
+        i = 1.0E+009F / f1;
       }
-      f1 = i;
+      f1 = j;
       if (f1 > 0.0F)
       {
-        jdField_a_of_type_Float = f1;
-        jdField_b_of_type_Float = 1.5F * f1;
-        jdField_c_of_type_Float = 3.0F * f1;
-        jdField_d_of_type_Float = 6.0F * f1;
-        jdField_e_of_type_Float = 11.5F * f1;
+        a = f1;
+        b = 1.5F * f1;
+        c = 3.0F * f1;
+        d = 6.0F * f1;
+        e = 11.5F * f1;
         f = f1 * 15.0F;
       }
-      jdField_a_of_type_ArrayOfFloat = new float[] { jdField_a_of_type_Float, jdField_b_of_type_Float, jdField_c_of_type_Float, jdField_d_of_type_Float, jdField_e_of_type_Float, f };
+      g = new float[] { a, b, c, d, e, f };
     }
     if (QLog.isColorLevel())
     {
       paramWindowManager = new StringBuilder();
       paramWindowManager.append("init: sVsyncIntervalMs=");
-      paramWindowManager.append(i);
+      paramWindowManager.append(j);
       QLog.d("FPSMonitor", 2, paramWindowManager.toString());
     }
   }
@@ -143,43 +143,43 @@ class DropFrameCollector
   @RequiresApi(api=16)
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this);
+    this.s = true;
+    this.v.postFrameCallback(this);
   }
   
   @RequiresApi(api=16)
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this);
+    this.s = false;
+    this.v.removeFrameCallback(this);
   }
   
   public void doFrame(long paramLong)
   {
-    a(paramLong, this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorDropFrameData);
-    if (this.jdField_a_of_type_Long <= 0L)
+    a(paramLong, this.u);
+    if (this.k <= 0L)
     {
-      this.jdField_a_of_type_Long = paramLong;
+      this.k = paramLong;
     }
     else
     {
-      long l1 = TimeUnit.NANOSECONDS.toMillis(paramLong - this.jdField_a_of_type_Long);
-      this.jdField_c_of_type_Long += 1L;
+      long l1 = TimeUnit.NANOSECONDS.toMillis(paramLong - this.k);
+      this.m += 1L;
       if (l1 > 500L)
       {
-        float f1 = (float)(this.jdField_c_of_type_Long * 1000L) / (float)l1;
-        this.jdField_c_of_type_Long = 0L;
-        this.j = a(f1, 100);
-        this.jdField_a_of_type_Long = paramLong;
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorDropFrameCollector$DropFrameCallback.a(this.j, this.k, this.l);
+        float f1 = (float)(this.m * 1000L) / (float)l1;
+        this.m = 0L;
+        this.n = a(f1, 100);
+        this.k = paramLong;
+        this.w.a(this.n, this.o, this.p);
       }
     }
-    this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this);
+    this.v.postFrameCallback(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.DropFrameCollector
  * JD-Core Version:    0.7.0.1
  */

@@ -18,9 +18,9 @@ public class AVGameText
   extends View
 {
   public static Typeface a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private AVGameText.Attribute jdField_a_of_type_ComTencentAvgameUiAVGameText$Attribute = new AVGameText.Attribute();
-  private String jdField_a_of_type_JavaLangString = "";
+  private Paint b;
+  private String c = "";
+  private AVGameText.Attribute d = new AVGameText.Attribute();
   
   public AVGameText(Context paramContext)
   {
@@ -39,14 +39,21 @@ public class AVGameText
     return (int)(paramFloat * getContext().getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  public static Typeface a()
+  private void a()
+  {
+    this.b = new Paint(1);
+    this.b.setTextSize(a(30.0F));
+    this.b.setTypeface(getTypeface());
+  }
+  
+  public static Typeface getTypeface()
   {
     try
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append(AvGameResDownloadUtil.d());
       localStringBuilder1.append("GameFont.ttf");
-      jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(localStringBuilder1.toString());
+      a = Typeface.createFromFile(localStringBuilder1.toString());
       if (QLog.isColorLevel())
       {
         localStringBuilder1 = new StringBuilder();
@@ -63,42 +70,35 @@ public class AVGameText
       localStringBuilder2.append(localRuntimeException.getMessage());
       QLog.e("AVGameText", 2, localStringBuilder2.toString());
     }
-    return jdField_a_of_type_AndroidGraphicsTypeface;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(a(30.0F));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(a());
+    return a;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    AVGameText.Attribute localAttribute = this.jdField_a_of_type_ComTencentAvgameUiAVGameText$Attribute;
+    AVGameText.Attribute localAttribute = this.d;
     if (localAttribute != null)
     {
       if (!localAttribute.a()) {
         return;
       }
-      float f1 = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
+      float f1 = -this.b.getFontMetrics().ascent;
       f1 = getHeight() - (getHeight() - f1) / 2.0F;
-      float f2 = (getWidth() - this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F;
+      float f2 = (getWidth() - this.b.measureText(this.c)) / 2.0F;
       paramCanvas.save();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(this.jdField_a_of_type_ComTencentAvgameUiAVGameText$Attribute.b));
-      this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(a(3.0F), 0.0F, a(1.0F), Color.parseColor("#33000000"));
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(a(4.0F));
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, a(0.4F) + f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(this.jdField_a_of_type_ComTencentAvgameUiAVGameText$Attribute.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(null);
-      this.jdField_a_of_type_AndroidGraphicsPaint.clearShadowLayer();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.b.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.b.setColor(Color.parseColor(this.d.b));
+      this.b.setFakeBoldText(true);
+      this.b.setShadowLayer(a(3.0F), 0.0F, a(1.0F), Color.parseColor("#33000000"));
+      this.b.setStrokeWidth(a(4.0F));
+      paramCanvas.drawText(this.c, f2, a(0.4F) + f1, this.b);
+      this.b.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.b.setColor(Color.parseColor(this.d.a));
+      this.b.setFakeBoldText(false);
+      this.b.setMaskFilter(null);
+      this.b.clearShadowLayer();
+      this.b.setStrokeWidth(0.0F);
+      paramCanvas.drawText(this.c, f2, f1, this.b);
       paramCanvas.restore();
     }
   }
@@ -106,19 +106,19 @@ public class AVGameText
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    setMeasuredDimension((int)(this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString) + 0.5F) + a(8.0F), getMeasuredHeight());
+    setMeasuredDimension((int)(this.b.measureText(this.c) + 0.5F) + a(8.0F), getMeasuredHeight());
   }
   
   public void setAttribute(String paramString1, String paramString2)
   {
-    AVGameText.Attribute localAttribute = this.jdField_a_of_type_ComTencentAvgameUiAVGameText$Attribute;
-    localAttribute.jdField_a_of_type_JavaLangString = paramString1;
+    AVGameText.Attribute localAttribute = this.d;
+    localAttribute.a = paramString1;
     localAttribute.b = paramString2;
   }
   
   public void setText(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
     requestLayout();
   }
 }

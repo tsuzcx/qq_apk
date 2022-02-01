@@ -8,12 +8,12 @@ final class ShareQQArkHelper$6
 {
   public void run()
   {
-    QQToast.a(MobileQQ.sMobileQQ, 1, 2131719009, 0).a();
+    QQToast.makeText(MobileQQ.sMobileQQ, 1, 2131916544, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareQQArkHelper.6
  * JD-Core Version:    0.7.0.1
  */

@@ -100,7 +100,7 @@ class RecommendTroopServiceImpl$1
     paramSosoLbsInfo.uint32_accuracy.set(i);
     paramSosoLbsInfo.uint32_time.set((int)d2);
     paramSosoLbsInfo.uint32_cityid.set(paramInt);
-    paramSosoLbsInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    paramSosoLbsInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     paramSosoLbsInfo.uint32_client.set(2);
     this.a.getNotificationRecommendTroopFromServer(2L, paramSosoLbsInfo, 22);
     return;
@@ -109,7 +109,7 @@ class RecommendTroopServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.RecommendTroopServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,13 @@ class QQStoryCmdHandler$4$1
   protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
     SLog.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$4.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    this.b.a.d().a(880002, this.a.getMessage(), null);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler.4.1
  * JD-Core Version:    0.7.0.1
  */

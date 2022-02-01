@@ -6,10 +6,6 @@ import android.view.View;
 
 public abstract interface IOverlayView
 {
-  public abstract int a();
-  
-  public abstract View a();
-  
   public abstract void a();
   
   public abstract void a(RectF paramRectF);
@@ -25,6 +21,10 @@ public abstract interface IOverlayView
   public abstract void b(String paramString);
   
   public abstract void b(String paramString, RectF paramRectF, int paramInt);
+  
+  public abstract View getAnswerCardWrapperView();
+  
+  public abstract int getAnswerCoverColor();
 }
 
 

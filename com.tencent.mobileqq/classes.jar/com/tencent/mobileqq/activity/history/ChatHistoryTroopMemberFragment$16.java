@@ -16,13 +16,13 @@ class ChatHistoryTroopMemberFragment$16
   
   public void onClick(View paramView)
   {
-    AssertUtils.checkNotNull(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter);
-    AssertUtils.checkNotNull(this.a.jdField_a_of_type_JavaUtilList);
+    AssertUtils.checkNotNull(this.a.K);
+    AssertUtils.checkNotNull(this.a.J);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.J.size())
     {
-      localArrayList.add(((ChatHistoryTroopMemberFragment.ATroopMember)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      localArrayList.add(((ChatHistoryTroopMemberFragment.ATroopMember)this.a.J.get(i)).a);
       i += 1;
     }
     Intent localIntent = new Intent();
@@ -34,7 +34,7 @@ class ChatHistoryTroopMemberFragment$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.16
  * JD-Core Version:    0.7.0.1
  */

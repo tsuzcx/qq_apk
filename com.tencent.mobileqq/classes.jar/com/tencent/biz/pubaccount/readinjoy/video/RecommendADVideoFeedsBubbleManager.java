@@ -18,15 +18,15 @@ public class RecommendADVideoFeedsBubbleManager
 {
   private void a(IProteusItemView paramIProteusItemView, VideoPlayParam paramVideoPlayParam, IVideoPlayManager paramIVideoPlayManager)
   {
-    paramIProteusItemView = paramIProteusItemView.a().getVirtualView().findViewBaseByName("id_article_bubble_view");
+    paramIProteusItemView = paramIProteusItemView.getContainer().getVirtualView().findViewBaseByName("id_article_bubble_view");
     if ((paramIProteusItemView != null) && (paramIProteusItemView.getNativeView() != null) && ((paramIProteusItemView instanceof ReadInJoyAdBubbleView))) {
       try
       {
         paramIProteusItemView = (ReadInJoyAdBubbleView)paramIProteusItemView;
-        if ((paramIVideoPlayManager != null) && (paramIVideoPlayManager.a() != null) && ((paramIVideoPlayManager.a().d() instanceof ReadInJoyAdBubbleNativeView)))
+        if ((paramIVideoPlayManager != null) && (paramIVideoPlayManager.d() != null) && ((paramIVideoPlayManager.d().f() instanceof ReadInJoyAdBubbleNativeView)))
         {
-          paramIVideoPlayManager = (ReadInJoyAdBubbleNativeView)paramIVideoPlayManager.a().d();
-          paramIVideoPlayManager.a((AdvertisementInfo)paramVideoPlayParam.a);
+          paramIVideoPlayManager = (ReadInJoyAdBubbleNativeView)paramIVideoPlayManager.d().f();
+          paramIVideoPlayManager.a((AdvertisementInfo)paramVideoPlayParam.D);
           paramIVideoPlayManager.setVisibility(0);
           paramIProteusItemView.a();
           return;
@@ -50,8 +50,8 @@ public class RecommendADVideoFeedsBubbleManager
       while (i < paramReadInJoyXListView.getChildCount())
       {
         View localView = paramReadInJoyXListView.getChildAt(i);
-        Object localObject = localView.getTag(2131380884);
-        if (((localObject instanceof IReadInJoyModel)) && (((IReadInJoyModel)localObject).a() == paramVideoPlayParam.a) && ((localView instanceof IProteusItemView)))
+        Object localObject = localView.getTag(2131449867);
+        if (((localObject instanceof IReadInJoyModel)) && (((IReadInJoyModel)localObject).k() == paramVideoPlayParam.D) && ((localView instanceof IProteusItemView)))
         {
           a((IProteusItemView)localView, paramVideoPlayParam, paramIVideoPlayManager);
           return;
@@ -63,7 +63,7 @@ public class RecommendADVideoFeedsBubbleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.RecommendADVideoFeedsBubbleManager
  * JD-Core Version:    0.7.0.1
  */

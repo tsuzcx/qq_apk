@@ -21,9 +21,9 @@ public class InputUIUtils
 {
   public static void a(AIOContext paramAIOContext, BaseSessionInfo paramBaseSessionInfo, boolean paramBoolean)
   {
-    EditTextUI localEditTextUI = paramAIOContext.a().a().a();
+    EditTextUI localEditTextUI = paramAIOContext.p().d().f();
     QQAppInterface localQQAppInterface = paramAIOContext.a();
-    if ((paramBaseSessionInfo.jdField_a_of_type_Int != 1) && (paramBaseSessionInfo.jdField_a_of_type_Int != 3000)) {
+    if ((paramBaseSessionInfo.a != 1) && (paramBaseSessionInfo.a != 3000) && (paramBaseSessionInfo.a != 10014)) {
       return;
     }
     Object localObject1 = ((ReplyHelper)paramAIOContext.a(119)).a();
@@ -32,7 +32,7 @@ public class InputUIUtils
       if (!TextUtils.isEmpty(((MessageForReplyText.SourceMsgInfo)localObject1).mAnonymousNickName)) {
         return;
       }
-      Object localObject2 = ((HotChatManager)paramAIOContext.a().getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      Object localObject2 = ((HotChatManager)paramAIOContext.a().getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(paramBaseSessionInfo.b);
       int i = 0;
       boolean bool1;
       if (localObject2 != null) {
@@ -40,21 +40,21 @@ public class InputUIUtils
       } else {
         bool1 = false;
       }
-      int j = paramBaseSessionInfo.jdField_a_of_type_Int;
-      localObject2 = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+      int j = paramBaseSessionInfo.a;
+      localObject2 = paramBaseSessionInfo.b;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(((MessageForReplyText.SourceMsgInfo)localObject1).mSourceMsgSenderUin);
       ((StringBuilder)localObject3).append("");
       localObject2 = ContactUtils.a(localQQAppInterface, j, (String)localObject2, ((StringBuilder)localObject3).toString());
-      paramAIOContext = paramAIOContext.a();
-      localObject3 = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+      paramAIOContext = paramAIOContext.b();
+      localObject3 = paramBaseSessionInfo.b;
       Object localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append(((MessageForReplyText.SourceMsgInfo)localObject1).mSourceMsgSenderUin);
       ((StringBuilder)localObject4).append("");
       localObject1 = ((StringBuilder)localObject4).toString();
-      localObject4 = localEditTextUI.a();
+      localObject4 = localEditTextUI.b();
       boolean bool2;
-      if (paramBaseSessionInfo.jdField_a_of_type_Int == 1) {
+      if (paramBaseSessionInfo.a == 1) {
         bool2 = true;
       } else {
         bool2 = false;
@@ -67,20 +67,20 @@ public class InputUIUtils
         }
         if (paramBoolean)
         {
-          localEditTextUI.b().insert(0, paramAIOContext);
+          localEditTextUI.c().insert(0, paramAIOContext);
           return;
         }
-        if (localEditTextUI.f() >= 0) {
-          i = localEditTextUI.f();
+        if (localEditTextUI.j() >= 0) {
+          i = localEditTextUI.j();
         }
-        localEditTextUI.b().insert(i, paramAIOContext);
+        localEditTextUI.c().insert(i, paramAIOContext);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.InputUIUtils
  * JD-Core Version:    0.7.0.1
  */

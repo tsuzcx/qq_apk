@@ -8,25 +8,6 @@ import java.util.ArrayList;
 
 public class StringAddition
 {
-  public static int a(String paramString)
-  {
-    int j = 0;
-    if (paramString == null) {
-      return 0;
-    }
-    int i = 0;
-    while (j < paramString.length())
-    {
-      if (a(paramString.charAt(j))) {
-        i += 2;
-      } else {
-        i += 1;
-      }
-      j += 1;
-    }
-    return i;
-  }
-  
   public static String a(String paramString)
   {
     if (paramString == null) {
@@ -60,7 +41,7 @@ public class StringAddition
         paramString = localCharBuffer.subSequence(paramInt, j).toString();
         paramInt = j;
       }
-      j = a(paramString);
+      j = c(paramString);
       if (i >= j)
       {
         i -= j;
@@ -173,7 +154,7 @@ public class StringAddition
         paramString = localCharBuffer.subSequence(paramInt, j).toString();
         paramInt = j;
       }
-      j = a(paramString);
+      j = c(paramString);
       if (i >= j)
       {
         i -= j;
@@ -212,7 +193,7 @@ public class StringAddition
         paramString = localCharBuffer.subSequence(paramInt, j).toString();
         paramInt = j;
       }
-      j = a(paramString);
+      j = c(paramString);
       if (i >= j)
       {
         i -= j;
@@ -234,11 +215,6 @@ public class StringAddition
   protected static boolean a(char paramChar)
   {
     return (paramChar >= 'ÿ') || (paramChar < 0);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (paramString == null) || (paramString.trim().length() == 0);
   }
   
   public static String[] a(String paramString1, String paramString2)
@@ -274,10 +250,34 @@ public class StringAddition
     }
     return paramString.replace("%7D", "%257D").replace("%3A;", "%253A").replace("%2C';", "%252C").replace("}", "%7D").replace(":", "%3A").replace(",", "%2C");
   }
+  
+  public static int c(String paramString)
+  {
+    int j = 0;
+    if (paramString == null) {
+      return 0;
+    }
+    int i = 0;
+    while (j < paramString.length())
+    {
+      if (a(paramString.charAt(j))) {
+        i += 2;
+      } else {
+        i += 1;
+      }
+      j += 1;
+    }
+    return i;
+  }
+  
+  public static boolean d(String paramString)
+  {
+    return (paramString == null) || (paramString.trim().length() == 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.StringAddition
  * JD-Core Version:    0.7.0.1
  */

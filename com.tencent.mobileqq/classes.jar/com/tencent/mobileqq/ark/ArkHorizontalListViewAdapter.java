@@ -35,134 +35,115 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
   extends BaseAdapter
   implements ArkAppContainer.ArkAppModuleCallback
 {
-  public int a;
   public Context a;
-  public OnLongClickAndTouchListener a;
-  public SessionInfo a;
-  private ArkHorizontalListView jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView;
-  private LinkedList<T> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  public int b;
+  public SessionInfo b;
+  public int c;
+  public int d;
+  public OnLongClickAndTouchListener e;
+  private ArkHorizontalListView f;
+  private LinkedList<T> g = new LinkedList();
   
   public ArkHorizontalListViewAdapter(Context paramContext, SessionInfo paramSessionInfo, ArkHorizontalListView paramArkHorizontalListView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView = paramArkHorizontalListView;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener = paramOnLongClickAndTouchListener;
+    this.a = paramContext;
+    this.b = paramSessionInfo;
+    this.f = paramArkHorizontalListView;
+    this.e = paramOnLongClickAndTouchListener;
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 1)
+    if (this.g.size() > 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.setOverScrollMode(0);
+      this.f.setOverScrollMode(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.setOverScrollMode(2);
+    this.f.setOverScrollMode(2);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilLinkedList.size();
+    return this.g.size();
   }
   
   public T a(int paramInt)
   {
     if ((paramInt > 0) && (paramInt < getCount() - 1)) {
-      return (ArkAdapterItemInterface)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt - 1);
+      return (ArkAdapterItemInterface)this.g.get(paramInt - 1);
     }
     return null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt <= 0) {
-      return;
-    }
-    int j = this.jdField_a_of_type_JavaUtilLinkedList.size();
-    int i = 0;
-    while ((i < paramInt) && (i < j))
-    {
-      ArkAdapterItemInterface localArkAdapterItemInterface = (ArkAdapterItemInterface)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
-      if (localArkAdapterItemInterface != null) {
-        localArkAdapterItemInterface.destroyContainerByRemove();
-      }
-      i += 1;
-    }
-    notifyDataSetChanged();
-    a();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     View localView;
-    if (this.jdField_a_of_type_Int != paramInt1)
+    if (this.c != paramInt1)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getChild(0);
+      localView = this.f.getChild(0);
       if ((localView != null) && (!(localView instanceof LinearLayout)))
       {
         localView.setLayoutParams(new ViewGroup.LayoutParams(paramInt1, -1));
         localView.requestLayout();
       }
-      this.jdField_a_of_type_Int = paramInt1;
+      this.c = paramInt1;
     }
-    if (this.b != paramInt2)
+    if (this.d != paramInt2)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getChild(getCount() - 1);
+      localView = this.f.getChild(getCount() - 1);
       if ((localView != null) && (!(localView instanceof LinearLayout)))
       {
         localView.setLayoutParams(new ViewGroup.LayoutParams(paramInt2, -1));
         localView.requestLayout();
       }
-      this.b = paramInt2;
+      this.d = paramInt2;
     }
   }
   
   public void a(int paramInt, T paramT)
   {
-    this.jdField_a_of_type_JavaUtilLinkedList.add(paramInt, paramT);
+    this.g.add(paramInt, paramT);
     notifyDataSetChanged();
-    a();
+    b();
   }
   
   public void a(ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == this.jdField_a_of_type_JavaUtilLinkedList.size()))
+    if ((paramInt == 1) || (paramInt == this.g.size()))
     {
-      Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      int i = BaseChatItemLayout.o;
+      Resources localResources = this.a.getResources();
+      int i = BaseChatItemLayout.getTextPaddingAlignHead();
       int j = MessageForArkApp.dp2px(40.0F);
-      int k = localResources.getDimensionPixelSize(2131296383);
-      int m = localResources.getDimensionPixelSize(2131296375);
+      int k = localResources.getDimensionPixelSize(2131296615);
+      int m = localResources.getDimensionPixelSize(2131296605);
       int n = MessageForArkApp.dp2px(paramArkAioContainerWrapper.getWidth());
       i = ArkAppCenterUtil.d - (i * 2 + j + k) - n - m;
-      if ((this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.a()) && (paramInt == 1))
+      if ((this.f.getIsSend()) && (paramInt == 1))
       {
-        if (this.jdField_a_of_type_Int != i)
+        if (this.c != i)
         {
-          this.jdField_a_of_type_Int = i;
-          paramArkAioContainerWrapper = this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getChild(0);
+          this.c = i;
+          paramArkAioContainerWrapper = this.f.getChild(0);
           if ((paramArkAioContainerWrapper != null) && (!(paramArkAioContainerWrapper instanceof LinearLayout)))
           {
-            paramArkAioContainerWrapper.setLayoutParams(new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, -1));
+            paramArkAioContainerWrapper.setLayoutParams(new ViewGroup.LayoutParams(this.c, -1));
             paramArkAioContainerWrapper.requestLayout();
           }
         }
       }
-      else if ((!this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.a()) && (paramInt == this.jdField_a_of_type_JavaUtilLinkedList.size()) && (this.b != i))
+      else if ((!this.f.getIsSend()) && (paramInt == this.g.size()) && (this.d != i))
       {
-        this.b = i;
-        paramArkAioContainerWrapper = this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getChild(paramInt + 1);
+        this.d = i;
+        paramArkAioContainerWrapper = this.f.getChild(paramInt + 1);
         if ((paramArkAioContainerWrapper != null) && (!(paramArkAioContainerWrapper instanceof LinearLayout)))
         {
-          paramArkAioContainerWrapper.setLayoutParams(new ViewGroup.LayoutParams(this.b, -1));
+          paramArkAioContainerWrapper.setLayoutParams(new ViewGroup.LayoutParams(this.d, -1));
           paramArkAioContainerWrapper.requestLayout();
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getVisibility() != 0)
+    if (this.f.getVisibility() != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.setVisibility(0);
+      this.f.setVisibility(0);
       if (QLog.isColorLevel()) {
         QLog.d("ArkHorizontalListViewAdapter", 2, "refreshHeaderFooter set ark list visible as load success");
       }
@@ -171,9 +152,9 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
   
   public void a(T paramT)
   {
-    this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramT);
+    this.g.addLast(paramT);
     notifyDataSetChanged();
-    a();
+    b();
   }
   
   public void a(ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, T paramT)
@@ -182,15 +163,15 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
     String str = localObject2[0];
     Object localObject1 = localObject2[1];
     localObject2 = localObject2[2];
-    paramT.clickTail(paramItemViewHolder, null, this.jdField_a_of_type_AndroidContentContext);
+    paramT.clickTail(paramItemViewHolder, null, this.a);
     if (localObject1 != null)
     {
       ArkAppCacheMgr.getAppIcon(str, new ArkHorizontalListViewAdapter.1(this, paramItemViewHolder));
       paramT = ArkAppCacheMgr.getApplicationDesc(str);
       if (paramT != null)
       {
-        paramItemViewHolder.b.setVisibility(0);
-        paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramT);
+        paramItemViewHolder.h.setVisibility(0);
+        paramItemViewHolder.j.setText(paramT);
       }
     }
     else
@@ -218,9 +199,9 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
     ((StringBuilder)localObject).append(paramString2);
     QLog.d("ArkOpenView", 1, ((StringBuilder)localObject).toString());
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilLinkedList.size())
+    while (i < this.g.size())
     {
-      localObject = ((ArkAdapterItemInterface)this.jdField_a_of_type_JavaUtilLinkedList.get(i)).extendArkCardByOpen(paramArkAppContainer, paramString1, paramString2);
+      localObject = ((ArkAdapterItemInterface)this.g.get(i)).extendArkCardByOpen(paramArkAppContainer, paramString1, paramString2);
       if (localObject != null)
       {
         a(i + 1, (ArkAdapterItemInterface)localObject);
@@ -233,25 +214,25 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
   
   public T b(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilLinkedList.size())) {
-      return (ArkAdapterItemInterface)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.g.size())) {
+      return (ArkAdapterItemInterface)this.g.get(paramInt);
     }
     return null;
   }
   
   public void b(int paramInt, T paramT)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilLinkedList.size()))
+    if ((paramInt >= 0) && (paramInt < this.g.size()))
     {
       if (paramT == null) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilLinkedList.set(paramInt, paramT);
+      this.g.set(paramInt, paramT);
       paramInt += 1;
-      int i = this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getFirstVisiblePosition();
-      if ((paramInt >= i) && (paramInt <= this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getLastVisiblePosition()))
+      int i = this.f.getFirstVisiblePosition();
+      if ((paramInt >= i) && (paramInt <= this.f.getLastVisiblePosition()))
       {
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getChildAt(paramInt - i);
+        Object localObject = this.f.getChildAt(paramInt - i);
         if (localObject != null)
         {
           localObject = (ArkHorizontalListViewAdapter.ItemViewHolder)((View)localObject).getTag();
@@ -263,9 +244,28 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
     }
   }
   
+  public void c(int paramInt)
+  {
+    if (paramInt <= 0) {
+      return;
+    }
+    int j = this.g.size();
+    int i = 0;
+    while ((i < paramInt) && (i < j))
+    {
+      ArkAdapterItemInterface localArkAdapterItemInterface = (ArkAdapterItemInterface)this.g.removeLast();
+      if (localArkAdapterItemInterface != null) {
+        localArkAdapterItemInterface.destroyContainerByRemove();
+      }
+      i += 1;
+    }
+    notifyDataSetChanged();
+    b();
+  }
+  
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilLinkedList.size() + 2;
+    return this.g.size() + 2;
   }
   
   public long getItemId(int paramInt)
@@ -290,20 +290,20 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
       if (paramView == null)
       {
         localObject = new ArkHorizontalListViewAdapter.ItemViewHolder();
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558641, paramViewGroup, false);
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131362958));
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout = ((ArkAppRootLayout)paramView.findViewById(2131362960));
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362973));
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131370350));
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362947));
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362963);
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131362959));
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).b = ((LinearLayout)paramView.findViewById(2131362956));
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362955));
-        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362957));
-        ViewParent localViewParent = this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.getParent();
+        paramView = LayoutInflater.from(this.a).inflate(2131624256, paramViewGroup, false);
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).a = ((LinearLayout)paramView.findViewById(2131428757));
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).b = ((ArkAppRootLayout)paramView.findViewById(2131428759));
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).d = ((RelativeLayout)paramView.findViewById(2131428772));
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).c = ((ArkAppLoadLayout)paramView.findViewById(2131437612));
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).e = ((ArkAppView)paramView.findViewById(2131428746));
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).f = paramView.findViewById(2131428762);
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).g = ((Button)paramView.findViewById(2131428758));
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).h = ((LinearLayout)paramView.findViewById(2131428755));
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).i = ((ImageView)paramView.findViewById(2131428754));
+        ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).j = ((TextView)paramView.findViewById(2131428756));
+        ViewParent localViewParent = this.f.getParent();
         if ((localViewParent instanceof BaseChatItemLayout)) {
-          ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = ((BaseChatItemLayout)localViewParent);
+          ((ArkHorizontalListViewAdapter.ItemViewHolder)localObject).k = ((BaseChatItemLayout)localViewParent);
         }
         paramView.setTag(localObject);
       }
@@ -323,9 +323,9 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
       }
       int i;
       if (paramInt == 0) {
-        i = this.jdField_a_of_type_Int;
+        i = this.c;
       } else {
-        i = this.b;
+        i = this.d;
       }
       ((View)localObject).setLayoutParams(new ViewGroup.LayoutParams(i, -1));
       ((View)localObject).setVisibility(0);
@@ -342,7 +342,7 @@ public class ArkHorizontalListViewAdapter<T extends ArkAdapterItemInterface>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

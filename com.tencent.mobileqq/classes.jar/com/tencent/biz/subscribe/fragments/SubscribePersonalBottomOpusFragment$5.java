@@ -21,18 +21,18 @@ class SubscribePersonalBottomOpusFragment$5
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("postUin", this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.id.get());
-    if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.youZhan.size() > 0)
+    localIntent.putExtra("postUin", this.a.e.poster.id.get());
+    if (this.a.e.poster.youZhan.size() > 0)
     {
-      int i = ((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.youZhan.get(0)).type.get();
+      int i = ((CertifiedAccountMeta.StYouZanShop)this.a.e.poster.youZhan.get(0)).type.get();
       boolean bool = true;
       if (i <= 1) {
         bool = false;
       }
       localIntent.putExtra("has_shop", bool);
     }
-    QZoneHelper.forwardToQQPublicAccountPublishPage(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment.getBaseActivity(), localIntent, 0);
-    VSReporter.b(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeBaseBottomPersonalFragment$BottomData.a.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
+    QZoneHelper.forwardToQQPublicAccountPublishPage(this.b.getBaseActivity(), localIntent, 0);
+    VSReporter.b(this.a.e.poster.id.get(), "auth_person", "blank_post", 0, 0, new String[0]);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

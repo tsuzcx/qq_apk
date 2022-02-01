@@ -69,12 +69,12 @@ class ElementExposureReporter$ElementExposureCallBack
   private void updateEleExpose(View paramView, String paramString, PathData paramPathData)
   {
     Object localObject = paramPathData.getPage();
-    EleExposeInfo localEleExposeInfo = ExposurePolicyHelper.getEleExposeInfo(localObject, paramView, paramString);
+    EleExposeInfo localEleExposeInfo = ExposurePolicyHelper.getEleExposeInfo(localObject, paramView, paramString, false);
     paramPathData = localEleExposeInfo;
     if (localEleExposeInfo == null)
     {
       paramPathData = new EleExposeInfo();
-      ExposurePolicyHelper.putEleExposeInfo(localObject, paramView, paramString, paramPathData);
+      ExposurePolicyHelper.putEleExposeInfo(localObject, paramView, paramString, paramPathData, false);
     }
     if (paramPathData.reportOverTime()) {
       paramPathData.resetReport();
@@ -146,7 +146,7 @@ class ElementExposureReporter$ElementExposureCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ElementExposureReporter.ElementExposureCallBack
  * JD-Core Version:    0.7.0.1
  */

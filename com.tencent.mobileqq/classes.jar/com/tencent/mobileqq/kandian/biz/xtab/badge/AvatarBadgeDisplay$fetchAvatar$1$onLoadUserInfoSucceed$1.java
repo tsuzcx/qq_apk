@@ -11,12 +11,12 @@ final class AvatarBadgeDisplay$fetchAvatar$1$onLoadUserInfoSucceed$1
   
   public final void run()
   {
-    AvatarBadgeDisplay.a(this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBizXtabBadgeAvatarBadgeDisplay, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityReadInJoyUserInfo, this.this$0.jdField_a_of_type_KotlinJvmFunctionsFunction2);
+    AvatarBadgeDisplay.a(this.this$0.a, this.a, this.b, this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.badge.AvatarBadgeDisplay.fetchAvatar.1.onLoadUserInfoSucceed.1
  * JD-Core Version:    0.7.0.1
  */

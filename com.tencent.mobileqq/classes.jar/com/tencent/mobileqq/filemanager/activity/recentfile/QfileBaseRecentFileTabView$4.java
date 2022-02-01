@@ -19,7 +19,7 @@ class QfileBaseRecentFileTabView$4
     if (paramView == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+        QLog.e(QfileBaseRecentFileTabView.a, 2, "qfilebaserecenttabview del error, tag is null");
       }
     }
     else
@@ -27,24 +27,24 @@ class QfileBaseRecentFileTabView$4
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.getTag();
       if (localFileManagerEntity != null)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(null);
+        if (this.a.l != null) {
+          this.a.l.a(null);
         }
-        this.a.jdField_a_of_type_Long = localFileManagerEntity.nSessionId;
-        if (((IQQFileEngine)QfileBaseRecentFileTabView.e(this.a).getRuntimeService(IQQFileEngine.class)).delete(this.a.jdField_a_of_type_Long)) {
-          this.a.a(localFileManagerEntity);
+        this.a.i = localFileManagerEntity.nSessionId;
+        if (((IQQFileEngine)QfileBaseRecentFileTabView.f(this.a).getRuntimeService(IQQFileEngine.class)).delete(this.a.i)) {
+          this.a.b(localFileManagerEntity);
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(Integer.valueOf(-1));
+      this.a.l.a(Integer.valueOf(-1));
       paramView.setVisibility(4);
-      this.a.g();
+      this.a.f();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.4
  * JD-Core Version:    0.7.0.1
  */

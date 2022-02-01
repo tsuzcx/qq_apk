@@ -13,12 +13,12 @@ class UserStateMachineController$6
   
   public void a(UserState paramUserState)
   {
-    UserStateMachineController.a(this.a);
+    UserStateMachineController.g(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.UserStateMachineController.6
  * JD-Core Version:    0.7.0.1
  */

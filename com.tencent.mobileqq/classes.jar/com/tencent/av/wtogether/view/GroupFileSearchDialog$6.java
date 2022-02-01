@@ -13,20 +13,20 @@ class GroupFileSearchDialog$6
   protected void a(Object paramObject)
   {
     paramObject = (TroopFileStatusInfo)paramObject;
-    if (this.a.a != null)
+    if (this.a.k != null)
     {
-      TroopFileSearchItemData localTroopFileSearchItemData = this.a.a.a(paramObject.e);
-      if ((localTroopFileSearchItemData != null) && (paramObject.b != null))
+      TroopFileSearchItemData localTroopFileSearchItemData = this.a.k.a(paramObject.r);
+      if ((localTroopFileSearchItemData != null) && (paramObject.l != null))
       {
-        localTroopFileSearchItemData.a.j = paramObject.b;
-        this.a.a.notifyDataSetChanged();
+        localTroopFileSearchItemData.i.w = paramObject.l;
+        this.a.k.notifyDataSetChanged();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.6
  * JD-Core Version:    0.7.0.1
  */

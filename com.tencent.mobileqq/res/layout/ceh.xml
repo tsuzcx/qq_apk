@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@id/a4f" android:background="#9f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.mobileqq.widget.SlideBottomPanel android:id="@id/m8z" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:orientation="vertical" android:id="@id/b_7" android:background="@drawable/f4r" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:orientation="vertical" android:id="@id/b_7" android:background="@drawable/gtb" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <com.tencent.widget.XListView android:layout_gravity="bottom" android:id="@id/eap" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="58.0dip" android:divider="@null" />
             <RelativeLayout android:layout_width="fill_parent" android:layout_height="58.0dip">
                 <ImageView android:id="@id/jv2" android:background="@drawable/hzk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />

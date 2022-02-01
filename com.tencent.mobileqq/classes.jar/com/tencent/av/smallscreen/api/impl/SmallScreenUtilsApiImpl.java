@@ -37,7 +37,7 @@ public class SmallScreenUtilsApiImpl
   
   static SmallScreenConfigParser getSmallScreenConfigParser()
   {
-    IConfigParser localIConfigParser = ConfigManager.a(BaseApplicationImpl.getContext());
+    IConfigParser localIConfigParser = ConfigManager.c(BaseApplicationImpl.getContext());
     if (!localIConfigParser.isEmpty())
     {
       SmallScreenConfigParser localSmallScreenConfigParser = new SmallScreenConfigParser();
@@ -57,9 +57,9 @@ public class SmallScreenUtilsApiImpl
   
   public static void reportActionOn(Context paramContext, SessionInfo paramSessionInfo)
   {
-    int i = paramSessionInfo.d;
-    int j = paramSessionInfo.E;
-    int k = paramSessionInfo.jdField_f_of_type_Int;
+    int i = paramSessionInfo.g;
+    int j = paramSessionInfo.aQ;
+    int k = paramSessionInfo.i;
     if (QLog.isColorLevel())
     {
       paramSessionInfo = TAG;
@@ -141,7 +141,7 @@ public class SmallScreenUtilsApiImpl
   
   public void actionOff(long paramLong, int paramInt, Context paramContext)
   {
-    Object localObject = VideoController.a();
+    Object localObject = VideoController.f();
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramInt == 2)
@@ -150,7 +150,7 @@ public class SmallScreenUtilsApiImpl
       if (Build.VERSION.SDK_INT >= 21)
       {
         bool1 = bool2;
-        if (((VideoController)localObject).a().c()) {
+        if (((VideoController)localObject).aE().e()) {
           bool1 = true;
         }
       }
@@ -214,7 +214,7 @@ public class SmallScreenUtilsApiImpl
     localStringBuilder.append(localException2);
     QLog.d((String)localObject2, 2, localStringBuilder.toString());
     label105:
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       String str = TAG;
       localObject2 = new StringBuilder();
@@ -240,29 +240,29 @@ public class SmallScreenUtilsApiImpl
   
   public int getFinishAnimId(int paramInt)
   {
-    int i = 2130772212;
+    int i = 2130772278;
     switch (paramInt)
     {
     default: 
-      return 2130772212;
+      return 2130772278;
     case 10: 
-      return 2130772211;
+      return 2130772277;
     case 8: 
-      return 2130772213;
+      return 2130772279;
     case 7: 
-      return 2130772215;
+      return 2130772281;
     case 6: 
-      return 2130772214;
+      return 2130772280;
     case 5: 
-      return 2130772206;
+      return 2130772272;
     case 4: 
-      return 2130772207;
+      return 2130772273;
     case 3: 
-      return 2130772208;
+      return 2130772274;
     case 2: 
-      return 2130772210;
+      return 2130772276;
     case 1: 
-      i = 2130772209;
+      i = 2130772275;
     }
     return i;
   }
@@ -291,7 +291,7 @@ public class SmallScreenUtilsApiImpl
   
   public boolean isSupportSmallScreen()
   {
-    boolean bool1 = ConfigSystemImpl.a();
+    boolean bool1 = ConfigSystemImpl.b();
     boolean bool2 = false;
     Object localObject;
     if (!bool1)
@@ -329,7 +329,7 @@ public class SmallScreenUtilsApiImpl
   
   public boolean isSupportSmallScreenAudio()
   {
-    boolean bool1 = ConfigSystemImpl.a();
+    boolean bool1 = ConfigSystemImpl.b();
     boolean bool2 = false;
     Object localObject;
     if (!bool1)
@@ -367,7 +367,7 @@ public class SmallScreenUtilsApiImpl
   
   public boolean isSupportSmallScreenVideo()
   {
-    boolean bool1 = ConfigSystemImpl.a();
+    boolean bool1 = ConfigSystemImpl.b();
     boolean bool2 = false;
     Object localObject;
     if (!bool1)
@@ -410,7 +410,7 @@ public class SmallScreenUtilsApiImpl
     if (bool1)
     {
       Object localObject1 = (VideoAppInterface)paramBaseVideoAppInterface;
-      SmallScreenService.g = false;
+      SmallScreenService.p = false;
       bool1 = bool2;
       if (localObject1 != null)
       {
@@ -421,15 +421,15 @@ public class SmallScreenUtilsApiImpl
           if (((VideoAppInterface)localObject1).getApp() != null)
           {
             bool1 = bool2;
-            if (((VideoAppInterface)localObject1).a() != null)
+            if (((VideoAppInterface)localObject1).b() != null)
             {
               bool1 = bool2;
-              if (((VideoAppInterface)localObject1).a().a() != null)
+              if (((VideoAppInterface)localObject1).b().k() != null)
               {
-                Object localObject2 = ((VideoAppInterface)localObject1).a().a();
-                paramBaseVideoAppInterface = ((SessionInfo)localObject2).c;
-                if ((((SessionInfo)localObject2).d == 3) || (((SessionInfo)localObject2).d == 4)) {
-                  paramBaseVideoAppInterface = String.valueOf(((SessionInfo)localObject2).jdField_f_of_type_Long);
+                Object localObject2 = ((VideoAppInterface)localObject1).b().k();
+                paramBaseVideoAppInterface = ((SessionInfo)localObject2).s;
+                if ((((SessionInfo)localObject2).g == 3) || (((SessionInfo)localObject2).g == 4)) {
+                  paramBaseVideoAppInterface = String.valueOf(((SessionInfo)localObject2).aN);
                 }
                 localObject2 = new Intent("tencent.video.v2q.SmallScreenState");
                 ((Intent)localObject2).setPackage(((VideoAppInterface)localObject1).getApplication().getPackageName());
@@ -464,7 +464,7 @@ public class SmallScreenUtilsApiImpl
   {
     if (paramView != null)
     {
-      Object localObject1 = paramView.getTag(2131373322);
+      Object localObject1 = paramView.getTag(2131440991);
       int i = 0;
       boolean bool;
       if (localObject1 == null) {
@@ -474,7 +474,7 @@ public class SmallScreenUtilsApiImpl
       }
       if ((paramBoolean2) && (bool))
       {
-        localObject1 = paramView.getTag(2131373323);
+        localObject1 = paramView.getTag(2131440992);
         if (localObject1 == null) {
           bool = false;
         } else {
@@ -516,14 +516,14 @@ public class SmallScreenUtilsApiImpl
         }
         paramView.setVisibility(i);
       }
-      paramView.setTag(2131373323, Boolean.valueOf(paramBoolean1));
-      paramView.setTag(2131373322, Boolean.valueOf(paramBoolean2));
+      paramView.setTag(2131440992, Boolean.valueOf(paramBoolean1));
+      paramView.setTag(2131440991, Boolean.valueOf(paramBoolean2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.api.impl.SmallScreenUtilsApiImpl
  * JD-Core Version:    0.7.0.1
  */

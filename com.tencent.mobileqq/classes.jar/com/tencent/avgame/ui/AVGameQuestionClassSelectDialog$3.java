@@ -11,7 +11,7 @@ class AVGameQuestionClassSelectDialog$3
   
   public void onClick(View paramView)
   {
-    if (!AVGameQuestionClassSelectDialog.a(this.a)) {
+    if (!AVGameQuestionClassSelectDialog.c(this.a)) {
       this.a.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/g3p" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/bq5" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:gravity="center|top" android:id="@id/g3q" android:clickable="false" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="5.0dip" android:maxLines="2" />
-</LinearLayout>
+<FrameLayout android:id="@id/root" android:background="@null" android:layout_width="156.0dip" android:layout_height="46.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.guild.widget.RadiusFrameLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:corner_radius="3.0dip">
+        <TextView android:textSize="@dimen/mw" android:textColor="#ff795600" android:gravity="center" android:layout_gravity="center" android:id="@id/ns_" android:background="@drawable/ibu" android:layout_width="116.0dip" android:layout_height="39.0dip" android:text="内测荣誉勋章" />
+    </com.tencent.mobileqq.guild.widget.RadiusFrameLayout>
+</FrameLayout>

@@ -20,16 +20,16 @@ class PhotoPreviewCustomizationArk$1
   
   public void onClick(View paramView)
   {
-    this.a.a().a.setClickable(false);
-    if (this.a.a.selectedPhotoList.size() > 0)
+    this.a.s().l.setClickable(false);
+    if (this.a.f.selectedPhotoList.size() > 0)
     {
       if (QLog.isColorLevel())
       {
-        StringBuilder localStringBuilder = new StringBuilder(this.a.a.selectedPhotoList.size() * 128);
+        StringBuilder localStringBuilder = new StringBuilder(this.a.f.selectedPhotoList.size() * 128);
         int i = 0;
-        while (i < this.a.a.selectedPhotoList.size())
+        while (i < this.a.f.selectedPhotoList.size())
         {
-          localStringBuilder.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.a.a.selectedPhotoList.get(i) }));
+          localStringBuilder.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.a.f.selectedPhotoList.get(i) }));
           i += 1;
         }
         QLog.d("PhotoPreviewCustomizationArk", 2, localStringBuilder.toString());
@@ -40,13 +40,13 @@ class PhotoPreviewCustomizationArk$1
     {
       ChooseImageIPCModule.a().a("callbackArk", null, null);
     }
-    PhotoPreviewCustomizationArk.a(this.a).finish();
+    PhotoPreviewCustomizationArk.d(this.a).finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationArk.1
  * JD-Core Version:    0.7.0.1
  */

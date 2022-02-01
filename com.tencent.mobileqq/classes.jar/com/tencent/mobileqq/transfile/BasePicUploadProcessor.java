@@ -85,7 +85,7 @@ public class BasePicUploadProcessor
     if ((paramLong1 <= 86400000L) && (paramDouble >= 0.0D) && (paramDouble <= 1.0D))
     {
       int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-      int j = DeviceInfoUtil.f();
+      int j = DeviceInfoUtil.O();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(i);
       localStringBuilder.append("");
@@ -137,7 +137,7 @@ public class BasePicUploadProcessor
   {
     try
     {
-      if ((!ZhuoXusManager.a().f()) && (!ZhuoXusManager.a().h()) && (!ZhuoXusManager.a().g()))
+      if ((!ZhuoXusManager.a().i()) && (!ZhuoXusManager.a().k()) && (!ZhuoXusManager.a().j()))
       {
         if (!QLog.isColorLevel()) {
           return;
@@ -177,7 +177,7 @@ public class BasePicUploadProcessor
   protected void changeRequest(RichProto.RichProtoReq.PicUpReq paramPicUpReq)
   {
     Object localObject = this.mQuickSendObject;
-    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).jdField_a_of_type_Boolean))
+    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).d))
     {
       if (QLog.isColorLevel())
       {
@@ -192,8 +192,8 @@ public class BasePicUploadProcessor
         ((StringBuilder)localObject).append(this.mQuickSendObject);
         QLog.d("BasePicUploadProcessor", 2, ((StringBuilder)localObject).toString());
       }
-      paramPicUpReq.fileSize = this.mQuickSendObject.jdField_a_of_type_Long;
-      paramPicUpReq.md5 = HexUtil.hexStr2Bytes(this.mQuickSendObject.jdField_a_of_type_JavaLangString);
+      paramPicUpReq.fileSize = this.mQuickSendObject.b;
+      paramPicUpReq.md5 = HexUtil.hexStr2Bytes(this.mQuickSendObject.a);
       if (this.mUiRequest.mBusiType == 1042) {
         paramPicUpReq.typeHotPic = 1;
       }
@@ -203,10 +203,10 @@ public class BasePicUploadProcessor
   protected void changeRichText()
   {
     Object localObject = this.mQuickSendObject;
-    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).jdField_a_of_type_Boolean))
+    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).d))
     {
-      this.mFileSize = this.mQuickSendObject.jdField_a_of_type_Long;
-      this.mMd5Str = this.mQuickSendObject.jdField_a_of_type_JavaLangString;
+      this.mFileSize = this.mQuickSendObject.b;
+      this.mMd5Str = this.mQuickSendObject.a;
       this.mLocalMd5 = HexUtil.hexStr2Bytes(this.mMd5Str);
       if (getClass().equals(GroupPicUploadProcessor.class))
       {
@@ -228,9 +228,9 @@ public class BasePicUploadProcessor
       return false;
     }
     AioQuickSendPicOperator.QuickSendObject localQuickSendObject = this.mQuickSendObject;
-    if ((localQuickSendObject != null) && (!localQuickSendObject.jdField_a_of_type_Boolean))
+    if ((localQuickSendObject != null) && (!localQuickSendObject.d))
     {
-      this.mQuickSendObject.jdField_a_of_type_Boolean = true;
+      this.mQuickSendObject.d = true;
       if (QLog.isColorLevel()) {
         QLog.d("BasePicUploadProcessor", 2, "QuickSendFail");
       }
@@ -332,11 +332,11 @@ public class BasePicUploadProcessor
   {
     int[] arrayOfInt = new int[5];
     arrayOfInt[0] = ((int)this.mFileSize);
-    arrayOfInt[1] = PicBusUtil.a(this.mUiRequest.mLocalPath);
+    arrayOfInt[1] = PicBusUtil.c(this.mUiRequest.mLocalPath);
     arrayOfInt[2] = this.mWidth;
     arrayOfInt[3] = this.mHeight;
     arrayOfInt[4] = 0;
-    int i = BaseImageUtil.a(this.mUiRequest.mLocalPath);
+    int i = BaseImageUtil.d(this.mUiRequest.mLocalPath);
     if ((i == 90) || (270 == i))
     {
       arrayOfInt[2] = this.mHeight;
@@ -463,7 +463,7 @@ public class BasePicUploadProcessor
   {
     super.onError();
     AioQuickSendPicOperator.QuickSendObject localQuickSendObject = this.mQuickSendObject;
-    if ((localQuickSendObject != null) && (localQuickSendObject.jdField_a_of_type_Boolean)) {
+    if ((localQuickSendObject != null) && (localQuickSendObject.d)) {
       handleQuickSendFailed();
     }
     this.handler.removeMessages(-255);
@@ -486,8 +486,8 @@ public class BasePicUploadProcessor
     Object localObject = this.mQuickSendObject;
     if (localObject != null)
     {
-      localObject = ((AioQuickSendPicOperator.QuickSendObject)localObject).jdField_a_of_type_JavaLangString;
-      if (!this.mQuickSendObject.jdField_a_of_type_Boolean)
+      localObject = ((AioQuickSendPicOperator.QuickSendObject)localObject).a;
+      if (!this.mQuickSendObject.d)
       {
         if (localObject != null)
         {
@@ -506,7 +506,7 @@ public class BasePicUploadProcessor
             }
             else
             {
-              localObject = this.mQuickSendObject.jdField_a_of_type_JavaLangString;
+              localObject = this.mQuickSendObject.a;
               localObject = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL((String)localObject, 65537);
               if (localObject != null) {
                 localObject = ((URL)localObject).toString();
@@ -563,7 +563,7 @@ public class BasePicUploadProcessor
   protected void reportQuickSend(boolean paramBoolean)
   {
     Object localObject = this.mQuickSendObject;
-    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).jdField_a_of_type_Boolean))
+    if ((localObject != null) && (!((AioQuickSendPicOperator.QuickSendObject)localObject).d))
     {
       HashMap localHashMap = new HashMap();
       if (paramBoolean) {
@@ -622,7 +622,7 @@ public class BasePicUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BasePicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

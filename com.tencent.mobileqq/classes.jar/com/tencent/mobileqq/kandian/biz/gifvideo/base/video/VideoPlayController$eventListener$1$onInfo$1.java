@@ -24,14 +24,14 @@ final class VideoPlayController$eventListener$1$onInfo$1
       if (i != 113) {
         return;
       }
-      localVideoView = this.this$0.a.a();
+      localVideoView = this.this$0.a.u();
       if (localVideoView != null) {
         localVideoView.hideLoading();
       }
     }
     else
     {
-      localVideoView = this.this$0.a.a();
+      localVideoView = this.this$0.a.u();
       if (localVideoView != null) {
         localVideoView.showLoading();
       }
@@ -40,7 +40,7 @@ final class VideoPlayController$eventListener$1$onInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController.eventListener.1.onInfo.1
  * JD-Core Version:    0.7.0.1
  */

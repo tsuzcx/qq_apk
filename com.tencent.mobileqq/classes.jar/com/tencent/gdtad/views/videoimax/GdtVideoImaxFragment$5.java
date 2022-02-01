@@ -10,7 +10,7 @@ class GdtVideoImaxFragment$5
   
   public void a(View paramView)
   {
-    if (paramView.getId() != 2131363334) {
+    if (paramView.getId() != 2131429208) {
       return;
     }
     this.a.a();
@@ -18,7 +18,7 @@ class GdtVideoImaxFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.5
  * JD-Core Version:    0.7.0.1
  */

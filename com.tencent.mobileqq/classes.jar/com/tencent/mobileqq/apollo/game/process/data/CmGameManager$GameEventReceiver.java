@@ -18,9 +18,7 @@ class CmGameManager$GameEventReceiver
       return;
     }
     paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
-    }
+    QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
     if (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) {
       return;
     }
@@ -28,9 +26,7 @@ class CmGameManager$GameEventReceiver
       return;
     }
     paramContext = paramIntent.getStringExtra("data");
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
-    }
+    QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
     if (TextUtils.isEmpty(paramContext)) {
       return;
     }
@@ -39,7 +35,7 @@ class CmGameManager$GameEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.data.CmGameManager.GameEventReceiver
  * JD-Core Version:    0.7.0.1
  */

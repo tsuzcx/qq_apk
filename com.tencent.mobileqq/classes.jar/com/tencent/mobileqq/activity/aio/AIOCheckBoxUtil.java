@@ -23,19 +23,19 @@ public class AIOCheckBoxUtil
       }
       if (paramMotionEvent.getAction() == 1)
       {
-        paramView = paramView.findViewById(2131364547);
+        paramView = paramView.findViewById(2131430605);
         int i;
         if ((paramView != null) && ((paramView instanceof CheckBox)) && (paramView.getVisibility() == 0)) {
           i = 1;
         } else {
           i = 0;
         }
-        paramMotionEvent = AIOLongShotHelper.a();
+        paramMotionEvent = AIOLongShotHelper.f();
         int j = i;
         if (paramMotionEvent != null)
         {
           j = i;
-          if (paramMotionEvent.a()) {
+          if (paramMotionEvent.c()) {
             if ((paramView != null) && ((paramView instanceof CheckBox))) {
               j = 1;
             } else {
@@ -54,7 +54,7 @@ public class AIOCheckBoxUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOCheckBoxUtil
  * JD-Core Version:    0.7.0.1
  */

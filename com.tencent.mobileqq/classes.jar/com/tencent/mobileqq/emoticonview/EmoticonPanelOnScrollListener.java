@@ -38,7 +38,7 @@ public class EmoticonPanelOnScrollListener
     this.onScrollListener = paramOnScrollListener;
     this.emotionPanelListView = paramEmotionPanelListView;
     this.pullAndFastScrollListener = paramPullAndFastScrollListener;
-    this.spacing = ViewUtils.a(5.0F);
+    this.spacing = ViewUtils.dip2px(5.0F);
     this.mScrollVelometer.setCheckTime(30);
   }
   
@@ -264,7 +264,7 @@ public class EmoticonPanelOnScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

@@ -9,25 +9,10 @@ import com.tencent.qphone.base.util.QLog;
 public class HotVideoDPC
 {
   public static HotVideoDPC a;
-  public int a;
-  public boolean a;
-  public int b = 1;
-  public int c = 256;
-  
-  public HotVideoDPC()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public static int a()
-  {
-    HotVideoDPC localHotVideoDPC = a();
-    if (localHotVideoDPC != null) {
-      return localHotVideoDPC.c;
-    }
-    return 256;
-  }
+  public int b = 0;
+  public int c = 1;
+  public int d = 256;
+  public boolean e = false;
   
   public static int a(String paramString, int paramInt)
   {
@@ -54,17 +39,11 @@ public class HotVideoDPC
   
   public static HotVideoDPC a()
   {
-    HotVideoDPC localHotVideoDPC = jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC;
-    if ((localHotVideoDPC == null) || (localHotVideoDPC.jdField_a_of_type_Boolean)) {
-      jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC = b();
+    HotVideoDPC localHotVideoDPC = a;
+    if ((localHotVideoDPC == null) || (localHotVideoDPC.e)) {
+      a = b();
     }
-    return jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC;
-  }
-  
-  public static boolean a()
-  {
-    HotVideoDPC localHotVideoDPC = a();
-    return (localHotVideoDPC != null) && (localHotVideoDPC.b == 1);
+    return a;
   }
   
   public static HotVideoDPC b()
@@ -175,9 +154,9 @@ public class HotVideoDPC
     int j = 0;
     int k = i1;
     HotVideoDPC localHotVideoDPC = new HotVideoDPC();
-    localHotVideoDPC.jdField_a_of_type_Int = j;
-    localHotVideoDPC.b = i;
-    localHotVideoDPC.c = k;
+    localHotVideoDPC.b = j;
+    localHotVideoDPC.c = i;
+    localHotVideoDPC.d = k;
     bool1 = bool2;
     if (str != null) {
       if (str.isEmpty()) {
@@ -186,25 +165,40 @@ public class HotVideoDPC
         bool1 = false;
       }
     }
-    localHotVideoDPC.jdField_a_of_type_Boolean = bool1;
+    localHotVideoDPC.e = bool1;
     return localHotVideoDPC;
+  }
+  
+  public static boolean c()
+  {
+    HotVideoDPC localHotVideoDPC = a();
+    return (localHotVideoDPC != null) && (localHotVideoDPC.c == 1);
+  }
+  
+  public static int d()
+  {
+    HotVideoDPC localHotVideoDPC = a();
+    if (localHotVideoDPC != null) {
+      return localHotVideoDPC.d;
+    }
+    return 256;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("hotVideoSwitch: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" hotVideoBlurSwitch: ");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(" hotVideoBlurMemory: ");
+    localStringBuilder.append(" hotVideoBlurSwitch: ");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(" hotVideoBlurMemory: ");
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoDPC
  * JD-Core Version:    0.7.0.1
  */

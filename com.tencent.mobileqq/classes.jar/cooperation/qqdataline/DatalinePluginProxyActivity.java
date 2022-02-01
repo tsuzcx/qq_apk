@@ -37,16 +37,16 @@ public class DatalinePluginProxyActivity
   {
     paramIntent.putExtra("userQqResources", 2);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qqdataline.apk";
-    localPluginParams.e = PluginInfo.d;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString1;
-    localPluginParams.f = paramString2;
-    localPluginParams.jdField_a_of_type_JavaLangClass = a(paramIntent, paramString2);
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.c = paramInt;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramQQProgressDialog;
-    localPluginParams.d = 10000;
-    localPluginParams.g = null;
+    localPluginParams.d = "qqdataline.apk";
+    localPluginParams.g = PluginInfo.d;
+    localPluginParams.c = paramString1;
+    localPluginParams.h = paramString2;
+    localPluginParams.i = a(paramIntent, paramString2);
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = paramInt;
+    localPluginParams.l = paramQQProgressDialog;
+    localPluginParams.r = 10000;
+    localPluginParams.q = null;
     IPluginManager.a(paramActivity, localPluginParams);
   }
   
@@ -116,7 +116,7 @@ public class DatalinePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqdataline.DatalinePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

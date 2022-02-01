@@ -140,7 +140,7 @@ public class FavEmoRoamingHandler
       }
       if (k != 0)
       {
-        StickerRecManagerImpl.get(this.a).updateKeywordForFavEmotion();
+        StickerRecManagerImpl.get(this.b).updateKeywordForFavEmotion();
         return;
       }
     }
@@ -281,14 +281,14 @@ public class FavEmoRoamingHandler
     Object localObject = new faceroam_sso.ReqUserInfo();
     faceroam_sso.PlatInfo localPlatInfo = new faceroam_sso.PlatInfo();
     localPlatInfo.implat.set(109L);
-    localPlatInfo.mqqver.set("8.7.0");
+    localPlatInfo.mqqver.set("8.8.17");
     localPlatInfo.osver.set(Build.VERSION.RELEASE);
     faceroam_sso.ReqBody localReqBody = new faceroam_sso.ReqBody();
     localReqBody.uint32_sub_cmd.set(1);
-    localReqBody.uint64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+    localReqBody.uint64_uin.set(Long.parseLong(this.b.getCurrentAccountUin()));
     localReqBody.reqcmd_0x01.set((MessageMicro)localObject);
     localReqBody.comm.set(localPlatInfo);
-    localObject = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "Faceroam.OpReq");
+    localObject = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "Faceroam.OpReq");
     ((ToServiceMsg)localObject).extraData.putInt("cmd_fav_subcmd", 1);
     ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
     super.sendPbReq((ToServiceMsg)localObject);
@@ -303,11 +303,11 @@ public class FavEmoRoamingHandler
       }
       return;
     }
-    if ((this.a != null) && (this.a.getApp() != null))
+    if ((this.b != null) && (this.b.getApp() != null))
     {
       if (!NetworkUtil.isNetworkAvailable())
       {
-        notifyUI(3, false, this.a.getApp().getString(2131699748));
+        notifyUI(3, false, this.b.getApp().getString(2131897781));
         return;
       }
       try
@@ -315,7 +315,7 @@ public class FavEmoRoamingHandler
         Object localObject1 = new FavEmotionOcr.ReqBody();
         ((FavEmotionOcr.ReqBody)localObject1).uint32_src_term.set(3);
         ((FavEmotionOcr.ReqBody)localObject1).uint32_cmd_type.set(3);
-        ((FavEmotionOcr.ReqBody)localObject1).string_version.set("8.7.0");
+        ((FavEmotionOcr.ReqBody)localObject1).string_version.set("8.8.17");
         localObject2 = new FavEmotionOcr.ModifyReq();
         Object localObject3 = new FavEmotionOcr.PicInfo();
         ((FavEmotionOcr.PicInfo)localObject3).string_pic_md5.set(paramCustomEmotionData.md5);
@@ -346,7 +346,7 @@ public class FavEmoRoamingHandler
       }
     }
     QLog.e("FavEmoRoamingHandler", 1, "favEmoModifyOcr ocr fail, app is null");
-    notifyUI(3, false, MobileQQ.getContext().getString(2131699728));
+    notifyUI(3, false, MobileQQ.getContext().getString(2131897761));
   }
   
   public void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg, Object paramObject)
@@ -371,13 +371,13 @@ public class FavEmoRoamingHandler
     {
       int j;
       Object localObject;
-      notifyUI(3, false, this.a.getApplication().getString(2131699728));
+      notifyUI(3, false, this.b.getApplication().getString(2131897761));
       paramToServiceMsg = new StringBuilder();
       paramToServiceMsg.append("func handleOcrModify ends, errInfo:");
       paramToServiceMsg.append(paramFromServiceMsg.getMessage());
       QLog.e("FavEmoRoamingHandler", 1, paramToServiceMsg.toString());
       return;
-      notifyUI(3, false, this.a.getApplication().getString(2131699728));
+      notifyUI(3, false, this.b.getApplication().getString(2131897761));
       QLog.e("FavEmoRoamingHandler", 1, "handleOcrModify error");
       return;
     }
@@ -434,7 +434,7 @@ public class FavEmoRoamingHandler
             }
             if (((FavEmotionOcr.ModifyRsp)paramFromServiceMsg.get(i)).int32_result.get() == 0)
             {
-              paramObject = ((IFavroamingDBManagerService)this.a.getRuntimeService(IFavroamingDBManagerService.class, "")).getEmoticonDataList();
+              paramObject = ((IFavroamingDBManagerService)this.b.getRuntimeService(IFavroamingDBManagerService.class, "")).getEmoticonDataList();
               if (paramObject == null) {
                 break label762;
               }
@@ -450,7 +450,7 @@ public class FavEmoRoamingHandler
               notifyUI(3, true, localObject);
               break label762;
             }
-            notifyUI(3, false, this.a.getApplication().getString(2131699729));
+            notifyUI(3, false, this.b.getApplication().getString(2131897762));
             if (!QLog.isColorLevel()) {
               break label762;
             }
@@ -463,7 +463,7 @@ public class FavEmoRoamingHandler
         }
         else
         {
-          notifyUI(3, false, this.a.getApplication().getString(2131699728));
+          notifyUI(3, false, this.b.getApplication().getString(2131897761));
           if (QLog.isColorLevel())
           {
             paramToServiceMsg = new StringBuilder();
@@ -471,7 +471,7 @@ public class FavEmoRoamingHandler
             paramToServiceMsg.append(paramFromServiceMsg.int32_result.get());
             QLog.e("FavEmoRoamingHandler", 1, paramToServiceMsg.toString());
             return;
-            notifyUI(3, false, this.a.getApplication().getString(2131699728));
+            notifyUI(3, false, this.b.getApplication().getString(2131897761));
             QLog.e("FavEmoRoamingHandler", 1, "handleOcrModify oom");
             return;
           }
@@ -553,7 +553,7 @@ public class FavEmoRoamingHandler
       if (paramFromServiceMsg.list_ocr_info.has())
       {
         paramFromServiceMsg = paramFromServiceMsg.list_ocr_info.get();
-        paramObject = (IFavroamingDBManagerService)this.a.getRuntimeService(IFavroamingDBManagerService.class, "");
+        paramObject = (IFavroamingDBManagerService)this.b.getRuntimeService(IFavroamingDBManagerService.class, "");
         a(paramInt, paramFromServiceMsg, paramObject, paramObject.getEmoticonDataList());
       }
     }
@@ -667,7 +667,7 @@ public class FavEmoRoamingHandler
       }
       else
       {
-        ((IFavroamingDBManagerService)this.a.getRuntimeService(IFavroamingDBManagerService.class, "")).deleteDB(localArrayList);
+        ((IFavroamingDBManagerService)this.b.getRuntimeService(IFavroamingDBManagerService.class, "")).deleteDB(localArrayList);
         super.notifyUI(0, true, Boolean.valueOf(paramBoolean));
         EmoticonOperateReport.reportEmoticonOperateMonitorDeleteStatus("0", 1);
         b(localArrayList);
@@ -687,7 +687,7 @@ public class FavEmoRoamingHandler
       {
         localObject = new EmotionMove.PlatInfo();
         ((EmotionMove.PlatInfo)localObject).implat.set(109);
-        ((EmotionMove.PlatInfo)localObject).mqqver.set("8.7.0");
+        ((EmotionMove.PlatInfo)localObject).mqqver.set("8.8.17");
         ((EmotionMove.PlatInfo)localObject).osver.set(Build.VERSION.RELEASE);
         EmotionMove.ReqBody localReqBody = new EmotionMove.ReqBody();
         localReqBody.msg_comm_info.set((MessageMicro)localObject);
@@ -741,7 +741,7 @@ public class FavEmoRoamingHandler
       ((FavEmotionOcr.ReqBody)localObject2).uint32_src_term.set(3);
       ((FavEmotionOcr.ReqBody)localObject2).list_pic_info.set((List)localObject1);
       ((FavEmotionOcr.ReqBody)localObject2).uint32_cmd_type.set(paramInt);
-      ((FavEmotionOcr.ReqBody)localObject2).string_version.set("8.7.0");
+      ((FavEmotionOcr.ReqBody)localObject2).string_version.set("8.8.17");
       localObject1 = makeOIDBPkg("OidbSvc.0xdc4", 3524, 1, ((FavEmotionOcr.ReqBody)localObject2).toByteArray());
       if (paramInt == 1) {
         ((ToServiceMsg)localObject1).extraData.putInt("cmd_fav_subcmd", 3);
@@ -789,14 +789,14 @@ public class FavEmoRoamingHandler
       ((faceroam_sso.ReqDeleteItem)localObject).filename.set(paramList);
       faceroam_sso.PlatInfo localPlatInfo = new faceroam_sso.PlatInfo();
       localPlatInfo.implat.set(109L);
-      localPlatInfo.mqqver.set("8.7.0");
+      localPlatInfo.mqqver.set("8.8.17");
       localPlatInfo.osver.set(Build.VERSION.RELEASE);
       paramList = new faceroam_sso.ReqBody();
       paramList.uint32_sub_cmd.set(2);
-      paramList.uint64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+      paramList.uint64_uin.set(Long.parseLong(this.b.getCurrentAccountUin()));
       paramList.reqcmd_0x02.set((MessageMicro)localObject);
       paramList.comm.set(localPlatInfo);
-      localObject = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "Faceroam.OpReq");
+      localObject = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "Faceroam.OpReq");
       ((ToServiceMsg)localObject).extraData.putInt("cmd_fav_subcmd", 2);
       ((ToServiceMsg)localObject).extraData.putBoolean("needSync", paramBoolean);
       ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
@@ -818,7 +818,7 @@ public class FavEmoRoamingHandler
         }
       }
       if (localArrayList.size() > 0) {
-        ((IVipComicMqqManagerService)this.a.getRuntimeService(IVipComicMqqManagerService.class, "")).delComicEmoticonList(localArrayList);
+        ((IVipComicMqqManagerService)this.b.getRuntimeService(IVipComicMqqManagerService.class, "")).delComicEmoticonList(localArrayList);
       }
     }
   }
@@ -874,7 +874,7 @@ public class FavEmoRoamingHandler
     QLog.e("FavEmoRoamingHandler", 1, paramToServiceMsg.toString());
     if (i == 1)
     {
-      paramToServiceMsg = (IFavroamingManagerService)this.a.getRuntimeService(IFavroamingManagerService.class, "");
+      paramToServiceMsg = (IFavroamingManagerService)this.b.getRuntimeService(IFavroamingManagerService.class, "");
       if (paramToServiceMsg != null) {
         paramToServiceMsg.resetSyncState();
       } else {
@@ -895,7 +895,7 @@ public class FavEmoRoamingHandler
       }
       if (i == 5)
       {
-        notifyUI(3, false, this.a.getApplication().getString(2131699728));
+        notifyUI(3, false, this.b.getApplication().getString(2131897761));
         paramToServiceMsg = new StringBuilder();
         paramToServiceMsg.append("modify ocr fail, errInfo:");
         paramToServiceMsg.append(paramFromServiceMsg.getBusinessFailMsg());
@@ -914,7 +914,7 @@ public class FavEmoRoamingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FavEmoRoamingHandler
  * JD-Core Version:    0.7.0.1
  */

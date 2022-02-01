@@ -20,11 +20,11 @@ class QQLSActivity$22
     try
     {
       localObject2 = ((ActivityManager)localObject1).getRunningTasks(1);
-      localObject1 = AppSetting.c;
+      localObject1 = AppSetting.u;
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
         localObject2 = ((ActivityManager.RunningTaskInfo)((List)localObject2).get(0)).topActivity.getClassName();
-        boolean bool = QQLSActivity.e(this.this$0);
+        boolean bool = QQLSActivity.t(this.this$0);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -37,16 +37,16 @@ class QQLSActivity$22
           if (QLog.isColorLevel()) {
             QLog.d("QQLSActivity", 2, "qqlsActivity onpause by locking activity need to front");
           }
-          if (QQLSActivity.a(this.this$0).hasMessages(10)) {
-            QQLSActivity.a(this.this$0).removeMessages(10);
+          if (QQLSActivity.f(this.this$0).hasMessages(10)) {
+            QQLSActivity.f(this.this$0).removeMessages(10);
           }
-          localObject2 = QQLSActivity.a(this.this$0).obtainMessage(10);
+          localObject2 = QQLSActivity.f(this.this$0).obtainMessage(10);
           if (((String)localObject1).equalsIgnoreCase("Xiaomi-2013022"))
           {
-            QQLSActivity.a(this.this$0).sendMessageDelayed((Message)localObject2, 600L);
+            QQLSActivity.f(this.this$0).sendMessageDelayed((Message)localObject2, 600L);
             return;
           }
-          QQLSActivity.a(this.this$0).sendMessage((Message)localObject2);
+          QQLSActivity.f(this.this$0).sendMessage((Message)localObject2);
           return;
         }
       }
@@ -66,7 +66,7 @@ class QQLSActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.22
  * JD-Core Version:    0.7.0.1
  */

@@ -16,26 +16,26 @@ class AEGIFStickerAdapter$1
   {
     paramView = new StringBuilder();
     paramView.append("[ItemView.onClick] position=");
-    paramView.append(this.jdField_a_of_type_Int);
+    paramView.append(this.a);
     paramView.append(", mClickedPos=");
-    paramView.append(AEGIFStickerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter));
+    paramView.append(AEGIFStickerAdapter.a(this.c));
     paramView.append(", mActivatedPos=");
-    paramView.append(AEGIFStickerAdapter.b(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter));
+    paramView.append(AEGIFStickerAdapter.b(this.c));
     AEQLog.a("AEGIFStickerAdapter", paramView.toString());
-    AEGIFStickerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter, this.jdField_a_of_type_Int);
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper.jdField_a_of_type_Int;
+    AEGIFStickerAdapter.a(this.c, this.a);
+    int i = this.b.f;
     AEGIFStickerAdapter.OnMaterialClickCallback localOnMaterialClickCallback1 = null;
     paramView = null;
-    if ((i != 2) && (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper.b != 1))
+    if ((i != 2) && (this.b.g != 1))
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper.jdField_a_of_type_Int == 0)
+      if (this.b.f == 0)
       {
         AEQLog.a("AEGIFStickerAdapter", "[ItemView.onClick] data.state == STATE_NOT_DOWNLOAD");
-        if (AEGIFStickerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter) != null)
+        if (AEGIFStickerAdapter.c(this.c) != null)
         {
-          localOnMaterialClickCallback1 = AEGIFStickerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter);
-          if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper.b != 1) {
-            paramView = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper;
+          localOnMaterialClickCallback1 = AEGIFStickerAdapter.c(this.c);
+          if (this.b.g != 1) {
+            paramView = this.b;
           }
           localOnMaterialClickCallback1.a(paramView);
         }
@@ -48,29 +48,29 @@ class AEGIFStickerAdapter$1
     else
     {
       AEQLog.a("AEGIFStickerAdapter", "[ItemView.onClick] data.state == STATE_DOWNLOADED");
-      AEGIFStickerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Int != AEGIFStickerAdapter.b(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter))
+      AEGIFStickerAdapter.b(this.c, this.a);
+      if (this.a != AEGIFStickerAdapter.b(this.c))
       {
         AEQLog.a("AEGIFStickerAdapter", "[ItemView.onClick] position != mActivatedPos");
-        i = AEGIFStickerAdapter.b(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter);
-        AEGIFStickerAdapter.b(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter.notifyItemChanged(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter.notifyItemChanged(i);
-        if (AEGIFStickerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter) != null)
+        i = AEGIFStickerAdapter.b(this.c);
+        AEGIFStickerAdapter.c(this.c, this.a);
+        this.c.notifyItemChanged(this.a);
+        this.c.notifyItemChanged(i);
+        if (AEGIFStickerAdapter.c(this.c) != null)
         {
-          AEGIFStickerAdapter.OnMaterialClickCallback localOnMaterialClickCallback2 = AEGIFStickerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter);
-          if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper.b == 1) {
+          AEGIFStickerAdapter.OnMaterialClickCallback localOnMaterialClickCallback2 = AEGIFStickerAdapter.c(this.c);
+          if (this.b.g == 1) {
             paramView = localOnMaterialClickCallback1;
           } else {
-            paramView = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper;
+            paramView = this.b;
           }
           localOnMaterialClickCallback2.a(paramView);
         }
-        AEBaseReportParam.a().r(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper.jdField_a_of_type_JavaLangString);
-        AEBaseDataReporter.a().al();
+        AEBaseReportParam.a().C(this.b.a);
+        AEBaseDataReporter.a().aq();
         paramView = new StringBuilder();
         paramView.append("[ItemView.onClick] gifMaterialClick, id=");
-        paramView.append(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialWrapper.jdField_a_of_type_JavaLangString);
+        paramView.append(this.b.a);
         AEQLog.b("AEGIFStickerAdapter", paramView.toString());
         return;
       }
@@ -80,7 +80,7 @@ class AEGIFStickerAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFStickerAdapter.1
  * JD-Core Version:    0.7.0.1
  */

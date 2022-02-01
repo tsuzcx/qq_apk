@@ -15,7 +15,7 @@ class GameResultFragment$4$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.a != null)
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(BaseApplicationImpl.getApplication().getFilesDir());
@@ -31,7 +31,7 @@ class GameResultFragment$4$1
       }
       try
       {
-        if (FileUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (String)localObject1))
+        if (FileUtil.a(this.a, (String)localObject1))
         {
           ThreadManager.getUIHandler().post(new GameResultFragment.4.1.1(this, (String)localObject1));
           return;

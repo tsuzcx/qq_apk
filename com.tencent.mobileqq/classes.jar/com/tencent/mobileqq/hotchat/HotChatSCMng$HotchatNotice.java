@@ -5,20 +5,20 @@ import java.util.Iterator;
 
 public class HotChatSCMng$HotchatNotice
 {
-  int jdField_a_of_type_Int = -1;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<HotChatNote> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  String a;
+  int b = -1;
+  ArrayList<HotChatNote> c = new ArrayList();
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.b = -1;
+    this.a = null;
+    this.c.clear();
   }
   
   public String toString()
   {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
+    int j = this.c.size() * 100;
     int i;
     if (j > 2000)
     {
@@ -33,14 +33,14 @@ public class HotChatSCMng$HotchatNotice
     }
     StringBuilder localStringBuilder = new StringBuilder(i);
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    localStringBuilder.append(this.c.size());
     localStringBuilder.append(",");
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.c.size() > 0)
     {
       localStringBuilder.append("{");
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         localStringBuilder.append((HotChatNote)localIterator.next());
@@ -54,7 +54,7 @@ public class HotChatSCMng$HotchatNotice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.HotChatSCMng.HotchatNotice
  * JD-Core Version:    0.7.0.1
  */

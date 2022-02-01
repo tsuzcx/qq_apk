@@ -29,7 +29,7 @@ public class DeviceMessageSender
   
   public void b()
   {
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
+    Object localObject3 = this.a.p().d().f();
     int i = ((EditTextUI)localObject3).a().length();
     boolean bool = true;
     Object localObject1;
@@ -41,7 +41,7 @@ public class DeviceMessageSender
       {
         localObject1 = localObject2;
         if (((String)localObject2).length() > 3478) {
-          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), 2131718759, 1);
+          ChatActivityUtils.a(this.a.b(), 2131916265, 1);
         }
       }
     }
@@ -50,11 +50,11 @@ public class DeviceMessageSender
       localObject1 = null;
     }
     ((EditTextUI)localObject3).a("");
-    localObject3 = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    Object localObject2 = ((SmartDeviceProxyMgr)localObject3).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a));
+    localObject3 = (SmartDeviceProxyMgr)this.b.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    Object localObject2 = ((SmartDeviceProxyMgr)localObject3).g(Long.parseLong(this.c.b));
     if (localObject2 != null)
     {
-      localObject3 = ((SmartDeviceProxyMgr)localObject3).a(((DeviceInfo)localObject2).productId);
+      localObject3 = ((SmartDeviceProxyMgr)localObject3).b(((DeviceInfo)localObject2).productId);
       if ((localObject3 != null) && (((ProductInfo)localObject3).isSupportMainMsgType(1)))
       {
         i = 1;
@@ -77,26 +77,26 @@ public class DeviceMessageSender
     }
     if (i == 0)
     {
-      localObject1 = (DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
-      SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, "Usr_AIO_SendMsg", 7, 0, j);
+      localObject1 = (DeviceMsgHandle)this.b.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+      SmartDeviceReport.a(this.b, l, "Usr_AIO_SendMsg", 7, 0, j);
       return;
     }
-    localObject2 = (DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+    localObject2 = (DeviceMsgHandle)this.b.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      BaseSessionInfo localBaseSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-      if ((!DeviceMsgChatPie.H) || (!((DeviceMsgAIOContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).k())) {
+      localObject3 = this.b;
+      BaseSessionInfo localBaseSessionInfo = this.c;
+      if ((!DeviceMsgChatPie.br) || (!((DeviceMsgAIOContext)this.a).P())) {
         bool = false;
       }
       ((DeviceMsgHandle)localObject2).a((QQAppInterface)localObject3, localBaseSessionInfo, (String)localObject1, bool);
     }
-    SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, "Usr_AIO_SendMsg", 6, 0, j);
+    SmartDeviceReport.a(this.b, l, "Usr_AIO_SendMsg", 6, 0, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.DeviceMessageSender
  * JD-Core Version:    0.7.0.1
  */

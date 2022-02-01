@@ -9,12 +9,6 @@ import java.util.List;
 public abstract interface IQCircleChatUtilApi
   extends QRouteApi
 {
-  public abstract String QCIRCLE_CHAT_HIDE_MENU_KEY();
-  
-  public abstract String QCIRLCE_CHAT_GIFT_INFO_BYTES_KEY();
-  
-  public abstract String QCIRLCE_CHAT_SHOW_FUEL_TIPS_KEY();
-  
   public abstract void clearQCircleChatUnread(List<String> paramList, boolean paramBoolean);
   
   public abstract String getMaxUnReadCountText(int paramInt);
@@ -22,10 +16,16 @@ public abstract interface IQCircleChatUtilApi
   public abstract Pair<Integer, List<String>> getQCircleChatRedPointInfo();
   
   public abstract boolean isQCircleChatType(int paramInt);
+  
+  public abstract String qcircleChatHideMenuKey();
+  
+  public abstract String qcirlceChatGiftInfoBytesKey();
+  
+  public abstract String qcirlceChatShowFuelTipsKey();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.tempapi.api.IQCircleChatUtilApi
  * JD-Core Version:    0.7.0.1
  */

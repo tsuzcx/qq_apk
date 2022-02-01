@@ -23,6 +23,7 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
 import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
 import com.tencent.mobileqq.profilecard.utils.QQDarenUtils;
@@ -37,12 +38,14 @@ import com.tencent.mobileqq.vas.profilecard.util.LevelUtil;
 import com.tencent.mobileqq.vas.qqvaluecard.view.QQValuePagView;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.vas.util.PrettyAccountUtil;
+import com.tencent.mobileqq.vip.IGameCardManager.GameCardInfo;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.ProfileURLDrawableListener;
 import com.tencent.mobileqq.widget.VerticalCenterImageSpan;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ThemeImageView;
 import com.tencent.widget.ThemeImageWrapper;
+import mqq.app.AppRuntime;
 
 public class ProfileQQLevelView
   extends LinearLayout
@@ -176,12 +179,12 @@ public class ProfileQQLevelView
       String str2 = str1.substring(i, j);
       if ("N".equals(str2))
       {
-        paramString = localResources.getDrawable(2130846023);
+        paramString = localResources.getDrawable(2130847493);
         paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
       }
       else if ("B".equals(str2))
       {
-        paramString = localResources.getDrawable(2130846061);
+        paramString = localResources.getDrawable(2130847531);
         paramString.setBounds(0, 0, (int)(this.mDensity * 10.0D), paramString.getIntrinsicHeight());
       }
       else
@@ -189,7 +192,7 @@ public class ProfileQQLevelView
         int k;
         if ("P".equalsIgnoreCase(str2))
         {
-          paramString = getResources().getDrawable(2130846033);
+          paramString = getResources().getDrawable(2130847503);
           k = paramString.getIntrinsicHeight();
           paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), k);
         }
@@ -200,7 +203,7 @@ public class ProfileQQLevelView
           if (!"G".equalsIgnoreCase(str2)) {
             break;
           }
-          paramString = getResources().getDrawable(2130846032);
+          paramString = getResources().getDrawable(2130847502);
           k = paramString.getIntrinsicHeight();
           paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), k);
         }
@@ -219,16 +222,16 @@ public class ProfileQQLevelView
   
   private void initViews()
   {
-    this.mInflater.inflate(2131561371, this);
-    this.mPrettyOwner = ((ImageView)findViewById(2131374631));
-    this.mVipInfo = ((TextView)findViewById(2131368853));
-    this.mVipIcon = ((ImageView)findViewById(2131380936));
-    this.mVipExtIcon = ((ImageView)findViewById(2131380943));
-    this.mKingInfo = ((URLImageView)findViewById(2131368831));
-    this.mLevelInfo = ((AnimationTextView)findViewById(2131368792));
-    this.mDarenIcon = ((ThemeImageView)findViewById(2131370454));
+    this.mInflater.inflate(2131627727, this);
+    this.mPrettyOwner = ((ImageView)findViewById(2131442801));
+    this.mVipInfo = ((TextView)findViewById(2131435787));
+    this.mVipIcon = ((ImageView)findViewById(2131449926));
+    this.mVipExtIcon = ((ImageView)findViewById(2131449933));
+    this.mKingInfo = ((URLImageView)findViewById(2131435762));
+    this.mLevelInfo = ((AnimationTextView)findViewById(2131435713));
+    this.mDarenIcon = ((ThemeImageView)findViewById(2131437724));
     this.mDarenIcon.setMaskShape(ThemeImageWrapper.MODE_SQURE);
-    this.mPagLayout = ((QQValuePagView)findViewById(2131372274));
+    this.mPagLayout = ((QQValuePagView)findViewById(2131439784));
     setVisibility(8);
   }
   
@@ -270,7 +273,7 @@ public class ProfileQQLevelView
       if (QLog.isColorLevel()) {
         QLog.d("ProfileQQLevelView", 2, String.format("onLayout totalWidth=%s darenWidth=%s levelLeft=%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) }));
       }
-      this.mIconLength = Math.min((paramInt2 - paramInt1 - paramInt3) / (int)getResources().getDimension(2131297240) - 1, 10);
+      this.mIconLength = Math.min((paramInt2 - paramInt1 - paramInt3) / (int)getResources().getDimension(2131297671) - 1, 10);
       updateQQLevelContent();
     }
   }
@@ -283,60 +286,59 @@ public class ProfileQQLevelView
     } else {
       localCard = paramProfileCardInfo.card;
     }
-    boolean bool5;
-    boolean bool6;
     boolean bool4;
-    boolean bool2;
+    boolean bool6;
     boolean bool1;
+    boolean bool2;
     boolean bool3;
     long l;
+    boolean bool5;
     if (localCard != null)
     {
-      bool5 = localCard.isVipOpen(EVIPSPEC.E_SP_QQVIP);
-      bool6 = localCard.isVipOpen(EVIPSPEC.E_SP_SUPERVIP);
-      bool4 = localCard.isVipOpen(EVIPSPEC.E_SP_BIGCLUB);
+      bool4 = localCard.isVipOpen(EVIPSPEC.E_SP_QQVIP);
+      bool7 = localCard.isVipOpen(EVIPSPEC.E_SP_SUPERVIP);
+      bool6 = localCard.isVipOpen(EVIPSPEC.E_SP_BIGCLUB);
       if ((localCard.lUserFlag & 1L) == 1L) {
-        bool2 = true;
-      } else {
-        bool2 = false;
-      }
-      if ((localCard.lUserFlag & 0x400) == 1024L) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      if (ProfilePAUtils.isPaTypeShowAccount(paramProfileCardInfo.allInOne)) {}
-      while ((bool6) || (bool5) || (localCard.iQQLevel >= 0))
-      {
-        bool3 = true;
-        break;
+      if ((localCard.lUserFlag & 0x400) == 1024L) {
+        bool2 = true;
+      } else {
+        bool2 = false;
       }
-      bool3 = false;
+      if (((!ProfilePAUtils.isPaTypeShowAccount(paramProfileCardInfo.allInOne)) || (ProfilePAUtils.isFromGuild(paramProfileCardInfo.allInOne.pa))) && (!bool7) && (!bool4) && (localCard.iQQLevel < 0)) {
+        bool3 = false;
+      } else {
+        bool3 = true;
+      }
       if (paramBoolean) {
         bool3 = false;
       }
-      bool7 = getDarenIconIsLight(localCard);
+      boolean bool8 = getDarenIconIsLight(localCard);
       l = localCard.uCurMulType;
-      localObject2 = localCard.uin;
+      localObject1 = localCard.uin;
       paramBoolean = bool4;
-      bool4 = bool7;
-      bool7 = bool1;
-      bool1 = bool3;
+      bool5 = bool2;
+      bool4 = bool3;
       bool3 = bool7;
+      bool2 = bool6;
+      bool6 = bool8;
     }
     else
     {
-      localObject2 = "";
-      l = 0L;
+      localObject1 = "";
       bool1 = false;
-      bool3 = false;
-      bool5 = false;
-      bool6 = false;
-      paramBoolean = false;
-      bool4 = true;
       bool2 = false;
+      bool3 = false;
+      l = 0L;
+      bool4 = false;
+      bool5 = false;
+      paramBoolean = false;
+      bool6 = true;
     }
-    if (!bool1)
+    if (!bool4)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.profilecard.FrdProfileCard", 2, "update not show account info");
@@ -361,19 +363,19 @@ public class ProfileQQLevelView
     else {
       this.mPrettyOwner.setVisibility(8);
     }
-    Object localObject1 = checkVip(this.mSB, bool3, bool6, bool5, localCard);
+    Object localObject2 = checkVip(this.mSB, bool5, bool3, paramBoolean, localCard);
     ProfileCardUtils.setNightModeFilterForImageView((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.mVipIcon);
     ProfileCardUtils.setNightModeFilterForImageView((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.mVipExtIcon);
     ProfileCardUtils.setNightModeFilterForImageView((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.mKingInfo);
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("update level view :");
-    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append((String)localObject2);
     ((StringBuilder)localObject3).append(" , ");
     ((StringBuilder)localObject3).append(l);
     QLog.e("ProfileQQLevelView", 1, ((StringBuilder)localObject3).toString());
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      bool7 = decorateVipToken(this.mVipInfo, (String)localObject1);
+      bool7 = decorateVipToken(this.mVipInfo, (String)localObject2);
       if ((PrettyAccountUtil.a()) && (bool7)) {
         this.mVipInfo.setVisibility(8);
       } else {
@@ -384,27 +386,44 @@ public class ProfileQQLevelView
     {
       this.mVipInfo.setVisibility(8);
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    int[] arrayOfInt = VipUtils.VipIconUtils.a(localQQAppInterface, localCard.uin);
-    boolean bool7 = VipUtils.VipIconUtils.a(arrayOfInt[0]);
+    localObject3 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject4 = VipUtils.VipIconUtils.a((AppRuntime)localObject3, localCard.uin);
+    boolean bool7 = VipUtils.VipIconUtils.a(localObject4[0]);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("update data bQQVipOpen = ");
+    ((StringBuilder)localObject2).append(paramBoolean);
+    ((StringBuilder)localObject2).append(" bSuperVipOpen = ");
+    ((StringBuilder)localObject2).append(bool3);
+    ((StringBuilder)localObject2).append(" bBigClubVipOpen");
+    ((StringBuilder)localObject2).append(bool2);
+    ((StringBuilder)localObject2).append(" bEnterprise = ");
+    ((StringBuilder)localObject2).append(bool1);
+    ((StringBuilder)localObject2).append(" bPrettyNumber = ");
+    ((StringBuilder)localObject2).append(bool5);
+    ((StringBuilder)localObject2).append(" curMulType = ");
+    ((StringBuilder)localObject2).append(l);
+    ((StringBuilder)localObject2).append(" isDiy = ");
+    ((StringBuilder)localObject2).append(bool7);
+    ((StringBuilder)localObject2).append(" nameplateVipType = ");
+    ((StringBuilder)localObject2).append(localObject4[0]);
+    QLog.e("ProfileQQLevelView", 1, ((StringBuilder)localObject2).toString());
     int i;
-    if ((bool7) && ((localCard.uin.equals(localQQAppInterface.getCurrentAccountUin())) || (!VipUtils.VipIconUtils.b(arrayOfInt[1]))))
+    if ((bool7) && ((localCard.uin.equals(((QQAppInterface)localObject3).getCurrentAccountUin())) || (!VipUtils.VipIconUtils.b(localObject4[1]))))
     {
-      localObject3 = VipUtils.VipIconUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, VipUtils.VipIconUtils.NamePlateVipTpye.a(arrayOfInt[0]), VipUtils.VipIconUtils.b(arrayOfInt[1]));
-      j = VipUtils.VipIconUtils.a(VipUtils.VipIconUtils.NamePlateVipTpye.a(arrayOfInt[0]));
-      localObject1 = localObject3;
-      i = j;
-      if (VipUtils.a(arrayOfInt[0]))
+      localObject2 = VipUtils.VipIconUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, VipUtils.VipIconUtils.NamePlateVipTpye.a(localObject4[0]), VipUtils.VipIconUtils.b(localObject4[1]));
+      i = VipUtils.VipIconUtils.a(VipUtils.VipIconUtils.NamePlateVipTpye.a(localObject4[0]));
+      if (VipUtils.a(localObject4[0]))
       {
-        VipUtils.VipIconUtils.a(this.mContext, this.mVipExtIcon, localCard.nameplateExtId, 2);
+        localObject4 = this.mContext;
+        ImageView localImageView = this.mVipExtIcon;
+        j = localCard.nameplateExtId;
+        VipUtils.VipIconUtils.a((Context)localObject4, localImageView, j, 2);
         this.mVipExtIcon.setOnClickListener(new VipUtils.OnVipClubPendantClickListener());
-        localObject1 = localObject3;
-        i = j;
       }
     }
     else
     {
-      localObject1 = null;
+      localObject2 = null;
       i = 0;
     }
     if (!bool7)
@@ -414,115 +433,110 @@ public class ProfileQQLevelView
         if ((l != 3L) && (l != 4L))
         {
           if (l != 6L) {
-            break label1318;
+            break label1481;
           }
-          if (paramBoolean)
+          if (bool2)
           {
-            j = VipUtils.a(localQQAppInterface, (String)localObject2, false);
+            j = VipUtils.a((AppRuntime)localObject3, (String)localObject1, false);
             if (j >> 8 == 3)
             {
               if ((j & 0xF) == 1)
               {
-                i = VipUtils.a(localQQAppInterface, (String)localObject2, EVIPSPEC.E_SP_BIGCLUB);
+                i = VipUtils.a((AppRuntime)localObject3, (String)localObject1, EVIPSPEC.E_SP_BIGCLUB);
                 localObject1 = VipUtils.VipIconUtils.a((i & 0xF) << 8 | i >> 8, localCard.iBigClubVipLevel, localCard.lBigClubTemplateId);
-                i = 2130847300;
+                i = 2130848951;
               }
               else
               {
-                i = VipUtils.a(localQQAppInterface, (String)localObject2, EVIPSPEC.E_SP_BIGCLUB);
+                i = VipUtils.a((AppRuntime)localObject3, (String)localObject1, EVIPSPEC.E_SP_BIGCLUB);
                 localObject1 = VipUtils.VipIconUtils.a((i & 0xF) << 8 | i >> 8, localCard.iBigClubVipLevel, localCard.lBigClubTemplateId);
-                i = 2130847298;
+                i = 2130848949;
               }
               VipUtils.VipIconUtils.a(this.mContext, this.mVipExtIcon, localCard.nameplateExtId, 2);
-              localObject2 = localObject1;
-              localObject1 = null;
               j = 1;
+              break label1488;
             }
-            else
-            {
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("occur error: curMulType=");
-              ((StringBuilder)localObject2).append(l);
-              ((StringBuilder)localObject2).append(" but bBigClubVipOpen userStatus=");
-              ((StringBuilder)localObject2).append(j);
-              localObject3 = ((StringBuilder)localObject2).toString();
-              j = 0;
-              localObject2 = localObject1;
-              localObject1 = localObject3;
-            }
-            localObject3 = localObject2;
-            localObject2 = localObject1;
-            localObject1 = localObject3;
-            break label1324;
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("occur error: curMulType=");
+            ((StringBuilder)localObject1).append(l);
+            ((StringBuilder)localObject1).append(" but bBigClubVipOpen userStatus=");
+            ((StringBuilder)localObject1).append(j);
+            localObject1 = ((StringBuilder)localObject1).toString();
           }
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("occur error: curMulType=");
-          ((StringBuilder)localObject2).append(l);
-          ((StringBuilder)localObject2).append(" but bBigClubVipOpen is false");
-          localObject2 = ((StringBuilder)localObject2).toString();
-          break label1315;
-        }
-        if (bool6)
-        {
-          i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_SUPERVIP);
-          localObject1 = VipUtils.VipIconUtils.a((i & 0xF) << 8 | i >> 8, localCard.iSuperVipLevel, localCard.lSuperVipTemplateId);
-          if ((QLog.isDebugVersion()) || (QLog.isColorLevel()))
+          else
           {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("svip member icon show :");
-            ((StringBuilder)localObject2).append((String)localObject1);
-            QLog.d("ProfileQQLevelView", 1, ((StringBuilder)localObject2).toString());
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("occur error: curMulType=");
+            ((StringBuilder)localObject1).append(l);
+            ((StringBuilder)localObject1).append(" but bBigClubVipOpen is false");
+            localObject1 = ((StringBuilder)localObject1).toString();
           }
-          i = 2130847298;
         }
         else
         {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("occur error: curMulType=");
-          ((StringBuilder)localObject2).append(l);
-          ((StringBuilder)localObject2).append(" but bSuperVipOpen is false");
-          localObject2 = ((StringBuilder)localObject2).toString();
-          break label1315;
+          if (bool3)
+          {
+            i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_SUPERVIP);
+            localObject1 = VipUtils.VipIconUtils.a((i & 0xF) << 8 | i >> 8, localCard.iSuperVipLevel, localCard.lSuperVipTemplateId);
+            if ((QLog.isDebugVersion()) || (QLog.isColorLevel()))
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("svip member icon show :");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("ProfileQQLevelView", 1, ((StringBuilder)localObject2).toString());
+            }
+            j = 1;
+            localObject3 = null;
+            i = 2130848949;
+            break label1491;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("occur error: curMulType=");
+          ((StringBuilder)localObject1).append(l);
+          ((StringBuilder)localObject1).append(" but bSuperVipOpen is false");
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
       }
       else
       {
-        if (!bool5) {
-          break label1273;
-        }
-        i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_QQVIP);
-        localObject1 = VipUtils.VipIconUtils.a((i & 0xF) << 8 | i >> 8, localCard.iQQVipLevel, 0L);
-        if ((QLog.isDebugVersion()) || (QLog.isColorLevel()))
+        if (paramBoolean)
         {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("vip member icon show :");
-          ((StringBuilder)localObject2).append((String)localObject1);
-          QLog.d("ProfileQQLevelView", 1, ((StringBuilder)localObject2).toString());
+          i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_QQVIP);
+          localObject1 = VipUtils.VipIconUtils.a((i & 0xF) << 8 | i >> 8, localCard.iQQVipLevel, 0L);
+          if ((QLog.isDebugVersion()) || (QLog.isColorLevel()))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("vip member icon show :");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.d("ProfileQQLevelView", 1, ((StringBuilder)localObject2).toString());
+          }
+          j = 1;
+          localObject3 = null;
+          i = 2130848950;
+          break label1491;
         }
-        i = 2130847299;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("occur error: curMulType=");
+        ((StringBuilder)localObject1).append(l);
+        ((StringBuilder)localObject1).append(" but bQQVipOpen is false");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      localObject2 = null;
-      j = 1;
-      break label1324;
-      label1273:
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("occur error: curMulType=");
-      ((StringBuilder)localObject2).append(l);
-      ((StringBuilder)localObject2).append(" but bQQVipOpen is false");
-      localObject2 = ((StringBuilder)localObject2).toString();
-      label1315:
-      break label1321;
+      j = 0;
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      break label1491;
     }
-    label1318:
-    Object localObject2 = null;
-    label1321:
+    label1481:
     int j = 0;
-    label1324:
+    Object localObject1 = localObject2;
+    label1488:
+    localObject3 = null;
+    label1491:
     if ((!bool7) && (j == 0))
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
       {
-        QLog.e("ProfileQQLevelView", 1, (String)localObject2);
+        QLog.e("ProfileQQLevelView", 1, (String)localObject3);
       }
       else
       {
@@ -531,24 +545,24 @@ public class ProfileQQLevelView
         ((StringBuilder)localObject2).append(l);
         QLog.e("ProfileQQLevelView", 1, ((StringBuilder)localObject2).toString());
       }
-      if (bool6)
+      if (bool3)
       {
         i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_SUPERVIP);
         localObject1 = VipUtils.VipIconUtils.a((i & 0xF) << 8 | i >> 8, localCard.iSuperVipLevel, localCard.lSuperVipTemplateId);
-        i = 2130847298;
+        i = 2130848949;
       }
-      else if (bool5)
+      else if (paramBoolean)
       {
         i = VipUtils.a(BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, EVIPSPEC.E_SP_QQVIP);
         localObject1 = VipUtils.VipIconUtils.a((i & 0xF) << 8 | i >> 8, localCard.iQQVipLevel, 0L);
-        i = 2130847299;
+        i = 2130848950;
       }
     }
     if ((localObject1 != null) && (i != 0))
     {
       VipUtils.a(getResources(), this.mVipIcon, (String)localObject1, getResources().getDrawable(i));
       this.mVipIcon.setVisibility(0);
-      this.mVipIcon.setContentDescription(HardCodeUtil.a(2131716291));
+      this.mVipIcon.setContentDescription(HardCodeUtil.a(2131913733));
       this.mVipIcon.setFocusableInTouchMode(true);
       localObject1 = VipUtils.VipIconUtils.VipIconTouchListener.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), localCard.uin, "VIA_PROFILECARD");
       ((VipUtils.VipIconUtils.VipIconTouchListener)localObject1).a();
@@ -562,7 +576,9 @@ public class ProfileQQLevelView
       this.mVipIcon.setVisibility(8);
       this.mVipIcon.setOnTouchListener(null);
     }
-    VipGrayConfigHelper.a().a(this.mKingInfo, bool6, localCard.namePlateOfKingLoginTime, localCard.namePlateOfKingGameId, localCard.namePlateOfKingDan, localCard.namePlateOfKingDanDisplatSwitch, localCard.uin);
+    localObject1 = new IGameCardManager.GameCardInfo(localCard.uin, localCard.namePlateOfKingGameId, localCard.namePlateOfKingDan, localCard.namePlateOfKingDanDisplatSwitch, localCard.gameCardId);
+    ((IGameCardManager.GameCardInfo)localObject1).a = "ziliaoka";
+    VipGrayConfigHelper.a().a(this.mKingInfo, bool3, localCard.namePlateOfKingLoginTime, (IGameCardManager.GameCardInfo)localObject1);
     if (localCard.iQQLevel >= 0)
     {
       this.mQQLevelType = localCard.mQQLevelType;
@@ -578,14 +594,14 @@ public class ProfileQQLevelView
     {
       this.mLevelInfo.setVisibility(8);
     }
-    if (!bool4) {
-      this.mDarenIcon.setBackgroundResource(2130851162);
+    if (!bool6) {
+      this.mDarenIcon.setBackgroundResource(2130853416);
     } else {
-      this.mDarenIcon.setBackgroundResource(2130851163);
+      this.mDarenIcon.setBackgroundResource(2130853417);
     }
     setContentDescription(this.mSB.toString());
     if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, String.format("showQQLevelInfo bQQVipOpen=%s, bSuperVipOpen=%s, bEnterprise=%s, bPrettyNumber=%s, bShowAccountInfo=%s", new Object[] { Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1) }));
+      QLog.d("Q.profilecard.FrdProfileCard", 2, String.format("showQQLevelInfo bQQVipOpen=%s, bSuperVipOpen=%s, bEnterprise=%s, bPrettyNumber=%s, bShowAccountInfo=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool3), Boolean.valueOf(bool1), Boolean.valueOf(bool5), Boolean.valueOf(bool4) }));
     }
     this.mPagLayout.setVisibility(8);
     updateQQValueCard(paramProfileCardInfo);
@@ -610,7 +626,7 @@ public class ProfileQQLevelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountinfo.view.ProfileQQLevelView
  * JD-Core Version:    0.7.0.1
  */

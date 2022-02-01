@@ -9,14 +9,8 @@ import org.json.JSONObject;
 
 public final class StudyModePushConfigProcessor$StudyModePushConfigBean
 {
-  public String a;
-  public ArrayList<Integer> a;
-  
-  public StudyModePushConfigProcessor$StudyModePushConfigBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public String a = "";
+  public ArrayList<Integer> b = new ArrayList();
   
   public static StudyModePushConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -26,7 +20,7 @@ public final class StudyModePushConfigProcessor$StudyModePushConfigBean
       int i = 0;
       while (i < paramArrayOfQConfItem.length)
       {
-        String str = paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString;
+        String str = paramArrayOfQConfItem[i].b;
         try
         {
           str = new JSONObject(str).optString("black_ids");
@@ -41,8 +35,8 @@ public final class StudyModePushConfigProcessor$StudyModePushConfigBean
               ((ArrayList)localObject).add(Integer.valueOf(Integer.parseInt(arrayOfString[j].trim())));
               j += 1;
             }
-            localStudyModePushConfigBean.jdField_a_of_type_JavaLangString = str;
-            localStudyModePushConfigBean.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject);
+            localStudyModePushConfigBean.a = str;
+            localStudyModePushConfigBean.b.addAll((Collection)localObject);
           }
           if (QLog.isColorLevel())
           {
@@ -64,7 +58,7 @@ public final class StudyModePushConfigProcessor$StudyModePushConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModePushConfigProcessor.StudyModePushConfigBean
  * JD-Core Version:    0.7.0.1
  */

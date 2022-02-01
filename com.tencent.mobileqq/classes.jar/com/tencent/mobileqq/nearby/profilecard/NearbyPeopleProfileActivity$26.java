@@ -8,18 +8,18 @@ class NearbyPeopleProfileActivity$26
 {
   NearbyPeopleProfileActivity$26(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void b()
+  public void d()
   {
     ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.a;
     if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a()))
     {
-      if (!localProfilePerformanceReport.a(1)) {
+      if (!localProfilePerformanceReport.c(1)) {
         localProfilePerformanceReport.b(1);
       }
-      if ((!localProfilePerformanceReport.a(8)) && (localProfilePerformanceReport.a(5))) {
+      if ((!localProfilePerformanceReport.c(8)) && (localProfilePerformanceReport.c(5))) {
         localProfilePerformanceReport.b(8);
       }
-      if ((!localProfilePerformanceReport.a(9)) && (localProfilePerformanceReport.a(6))) {
+      if ((!localProfilePerformanceReport.c(9)) && (localProfilePerformanceReport.c(6))) {
         localProfilePerformanceReport.b(9);
       }
     }
@@ -27,7 +27,7 @@ class NearbyPeopleProfileActivity$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.26
  * JD-Core Version:    0.7.0.1
  */

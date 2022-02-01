@@ -7,8 +7,8 @@ import com.tencent.mobileqq.qwallet.hb.aio.elem.RedPacketInfo;
 public class VoiceResElem
   extends BaseRedPkgElem
 {
-  public Bitmap a;
-  public String b;
+  public Bitmap b;
+  public String c;
   
   public VoiceResElem(String paramString)
   {
@@ -19,19 +19,19 @@ public class VoiceResElem
   {
     if (paramRedPacketInfo != null)
     {
-      this.a = paramRedPacketInfo.icon;
-      this.b = paramRedPacketInfo.resPath;
+      this.b = paramRedPacketInfo.icon;
+      this.c = paramRedPacketInfo.resPath;
     }
   }
   
   public boolean a()
   {
-    return (this.a != null) && (!TextUtils.isEmpty(this.b));
+    return (this.b != null) && (!TextUtils.isEmpty(this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.VoiceResElem
  * JD-Core Version:    0.7.0.1
  */

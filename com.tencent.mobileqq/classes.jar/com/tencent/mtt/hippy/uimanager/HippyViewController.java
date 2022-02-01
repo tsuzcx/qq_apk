@@ -29,8 +29,8 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
   implements View.OnFocusChangeListener
 {
   private static final String TAG = "HippyViewController";
-  private static f.a sMatrixDecompositionContext = new f.a();
-  private static double[] sTransformDecompositionArray = new double[16];
+  private static final f.a sMatrixDecompositionContext = new f.a();
+  private static final double[] sTransformDecompositionArray = new double[16];
   private boolean bUserChageFocus = false;
   
   private void applyTransform(T paramT, HippyArray paramHippyArray)
@@ -211,7 +211,7 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
     paramT.setContentDescription(str);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onAttachedToWindow")
+  @HippyControllerProps(defaultType="boolean", name="onAttachedToWindow")
   public void setAttachedToWindowHandle(T paramT, boolean paramBoolean)
   {
     if (paramBoolean)
@@ -326,7 +326,7 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
   @HippyControllerProps(name="customProp")
   public void setCustomProp(T paramT, String paramString, Object paramObject) {}
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onDetachedFromWindow")
+  @HippyControllerProps(defaultType="boolean", name="onDetachedFromWindow")
   public void setDetachedFromWindowHandle(T paramT, boolean paramBoolean)
   {
     if (paramBoolean)
@@ -528,7 +528,7 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchCancel")
+  @HippyControllerProps(defaultType="boolean", name="onTouchCancel")
   public void setTouchCancelHandle(T paramT, boolean paramBoolean)
   {
     if (!handleGestureBySelf()) {
@@ -536,7 +536,7 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchDown")
+  @HippyControllerProps(defaultType="boolean", name="onTouchDown")
   public void setTouchDownHandle(T paramT, boolean paramBoolean)
   {
     if (!handleGestureBySelf()) {
@@ -544,7 +544,7 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchEnd")
+  @HippyControllerProps(defaultType="boolean", name="onTouchEnd")
   public void setTouchEndHandle(T paramT, boolean paramBoolean)
   {
     if (!handleGestureBySelf()) {
@@ -552,7 +552,7 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchMove")
+  @HippyControllerProps(defaultType="boolean", name="onTouchMove")
   public void setTouchMoveHandle(T paramT, boolean paramBoolean)
   {
     if (!handleGestureBySelf()) {
@@ -602,7 +602,7 @@ public abstract class HippyViewController<T extends View,  extends HippyViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.HippyViewController
  * JD-Core Version:    0.7.0.1
  */

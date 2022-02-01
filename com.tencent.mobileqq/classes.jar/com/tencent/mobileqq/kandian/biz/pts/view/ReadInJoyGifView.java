@@ -12,15 +12,15 @@ import com.tencent.qphone.base.util.QLog;
 public class ReadInJoyGifView
   extends ViewBase
 {
-  private int jdField_a_of_type_Int;
-  private NativeGifView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView;
-  private String jdField_a_of_type_JavaLangString;
+  private NativeGifView a;
   private int b;
+  private int c;
+  private String d;
   
   public ReadInJoyGifView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView = new NativeGifView(paramVafContext.getContext());
+    this.a = new NativeGifView(paramVafContext.getContext());
   }
   
   private boolean a()
@@ -30,48 +30,48 @@ public class ReadInJoyGifView
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.getComMeasuredHeight();
+    return this.a.getComMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.getComMeasuredWidth();
+    return this.a.getComMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView;
+    return this.a;
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.measureComponent(paramInt1, paramInt2);
+    this.a.measureComponent(paramInt1, paramInt2);
   }
   
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.b > 0)
     {
-      int i = this.b;
+      int i = this.c;
       if (i > 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.setGifHeight(i);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.setGifWidth(this.jdField_a_of_type_Int);
+        this.a.setGifHeight(i);
+        this.a.setGifWidth(this.b);
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.setGifUrl(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.d)) {
+      this.a.setGifUrl(this.d);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.setIsBigImg(a());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.setBackgroundColor(this.mBackground);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.displayGif(this.mParams.mLayoutWidth, this.mParams.mLayoutHeight);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.invalidate();
+    this.a.setIsBigImg(a());
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.displayGif(this.mParams.mLayoutWidth, this.mParams.mLayoutHeight);
+    this.a.invalidate();
   }
   
   protected boolean setAttribute(int paramInt, Object paramObject)
@@ -87,13 +87,13 @@ public class ReadInJoyGifView
         localParams = this.mParams;
         paramInt = ((Integer)paramObject).intValue();
         localParams.mLayoutWidth = paramInt;
-        this.jdField_a_of_type_Int = paramInt;
+        this.b = paramInt;
       }
       catch (Exception paramObject)
       {
         QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.requestLayout();
+      this.a.requestLayout();
       return true;
     }
     try
@@ -101,13 +101,13 @@ public class ReadInJoyGifView
       localParams = this.mParams;
       paramInt = ((Integer)paramObject).intValue();
       localParams.mLayoutHeight = paramInt;
-      this.b = paramInt;
+      this.c = paramInt;
     }
     catch (Exception paramObject)
     {
       QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.requestLayout();
+    this.a.requestLayout();
     return true;
   }
   
@@ -124,23 +124,23 @@ public class ReadInJoyGifView
           }
           if (!TextUtils.isEmpty(paramString))
           {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.setNeedGifUrl("yes".equals(paramString.toLowerCase()));
+            this.a.setNeedGifUrl("yes".equals(paramString.toLowerCase()));
             return true;
           }
           return false;
         }
-        this.jdField_a_of_type_JavaLangString = paramString;
+        this.d = paramString;
         return true;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.setCoverUrl(paramString);
+      this.a.setCoverUrl(paramString);
       return true;
     }
     try
     {
       paramString = Utils.toInteger(paramString);
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView != null) && (paramString != null))
+      if ((this.a != null) && (paramString != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeGifView.setScaleType(paramString.intValue());
+        this.a.setScaleType(paramString.intValue());
         return true;
       }
     }
@@ -153,7 +153,7 @@ public class ReadInJoyGifView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyGifView
  * JD-Core Version:    0.7.0.1
  */

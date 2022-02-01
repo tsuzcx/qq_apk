@@ -27,126 +27,133 @@ public final class SelectKDCommunityView
   extends LinearLayout
   implements KDCommunityContract.IView
 {
-  public static final SelectKDCommunityView.Companion a;
-  @NotNull
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private final GridView jdField_a_of_type_AndroidWidgetGridView;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final KDCommunityAdapter jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityAdapter;
-  @NotNull
-  private final KDCommunityContract.IPresenter jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IPresenter;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
+  public static final SelectKDCommunityView.Companion a = new SelectKDCommunityView.Companion(null);
+  private final LinearLayout b;
+  private final TextView c;
+  private final GridView d;
+  private final RelativeLayout e;
+  private final RelativeLayout f;
+  private final TextView g;
+  private final KDCommunityAdapter h;
   @Nullable
-  private Function1<? super CommunityInfo, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private final RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkKdcommunitySelectKDCommunityView$Companion = new SelectKDCommunityView.Companion(null);
-  }
+  private Function1<? super CommunityInfo, Unit> i;
+  @NotNull
+  private final Activity j;
+  @NotNull
+  private final String k;
+  @NotNull
+  private final KDCommunityContract.IPresenter l;
   
   public SelectKDCommunityView(@NotNull Activity paramActivity, @NotNull String paramString, @NotNull KDCommunityContract.IPresenter paramIPresenter)
   {
     super((Context)paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IPresenter = paramIPresenter;
-    LayoutInflater.from((Context)this.jdField_a_of_type_AndroidAppActivity).inflate(R.layout.L, (ViewGroup)this, true);
-    paramActivity = findViewById(R.id.r);
+    this.j = paramActivity;
+    this.k = paramString;
+    this.l = paramIPresenter;
+    LayoutInflater.from((Context)this.j).inflate(R.layout.H, (ViewGroup)this, true);
+    paramActivity = findViewById(R.id.j);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.contentLayout)");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity);
-    paramActivity = findViewById(R.id.aM);
+    this.b = ((LinearLayout)paramActivity);
+    paramActivity = findViewById(R.id.ao);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.titleView)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity);
-    paramActivity = findViewById(R.id.p);
+    this.c = ((TextView)paramActivity);
+    paramActivity = findViewById(R.id.h);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.communityGridView)");
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)paramActivity);
-    paramActivity = findViewById(R.id.ai);
+    this.d = ((GridView)paramActivity);
+    paramActivity = findViewById(R.id.M);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.loadingLayout)");
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity);
-    paramActivity = findViewById(R.id.C);
+    this.e = ((RelativeLayout)paramActivity);
+    paramActivity = findViewById(R.id.r);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.failedLayout)");
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity);
-    paramActivity = findViewById(R.id.ay);
+    this.f = ((RelativeLayout)paramActivity);
+    paramActivity = findViewById(R.id.ab);
     Intrinsics.checkExpressionValueIsNotNull(paramActivity, "findViewById(R.id.retryView)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityAdapter = new KDCommunityAdapter((Context)this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityAdapter);
-    this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener((AdapterView.OnItemClickListener)new SelectKDCommunityView.1(this));
-  }
-  
-  @NotNull
-  public final KDCommunityContract.IPresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IPresenter;
-  }
-  
-  @Nullable
-  public final Function1<CommunityInfo, Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    this.g = ((TextView)paramActivity);
+    this.h = new KDCommunityAdapter((Context)this.j, this.k);
+    this.d.setAdapter((ListAdapter)this.h);
+    this.d.setOnItemClickListener((AdapterView.OnItemClickListener)new SelectKDCommunityView.1(this));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.e.setVisibility(0);
   }
   
   public void a(@NotNull List<CommunityInfo> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "communityList");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetGridView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityAdapter.a(paramList);
+    this.b.setVisibility(0);
+    this.d.setVisibility(0);
+    this.h.a(paramList);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.e.setVisibility(8);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.b.setVisibility(0);
+    this.c.setVisibility(0);
   }
   
   public void d()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)new SelectKDCommunityView.showError.1(this));
+    this.f.setVisibility(0);
+    this.g.setOnClickListener((View.OnClickListener)new SelectKDCommunityView.showError.1(this));
   }
   
   public void e()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.f.setVisibility(8);
+  }
+  
+  @NotNull
+  public final Activity getContext()
+  {
+    return this.j;
+  }
+  
+  @Nullable
+  public final Function1<CommunityInfo, Unit> getOnSelectCallback()
+  {
+    return this.i;
+  }
+  
+  @NotNull
+  public final KDCommunityContract.IPresenter getPresenter()
+  {
+    return this.l;
+  }
+  
+  @NotNull
+  public final String getSelectedCommunityId()
+  {
+    return this.k;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IPresenter.a(this);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IPresenter.b();
+    this.l.a(this);
+    this.l.b();
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IPresenter.a();
+    this.l.a();
   }
   
   public final void setOnSelectCallback(@Nullable Function1<? super CommunityInfo, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.i = paramFunction1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.kdcommunity.SelectKDCommunityView
  * JD-Core Version:    0.7.0.1
  */

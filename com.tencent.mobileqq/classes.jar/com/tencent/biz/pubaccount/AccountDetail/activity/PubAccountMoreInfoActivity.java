@@ -25,49 +25,49 @@ import mqq.observer.BusinessObserver;
 public class PubAccountMoreInfoActivity
   extends IphoneTitleBarActivity
 {
-  float jdField_a_of_type_Float;
-  private View jdField_a_of_type_AndroidViewView;
-  ScrollView jdField_a_of_type_AndroidWidgetScrollView;
-  PublicAccountDetailImpl jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl;
-  AccountDetailGroupListContainer jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer;
-  mobileqq_mp.GetPublicAccountDetailInfoResponse jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse;
-  String jdField_a_of_type_JavaLangString;
-  protected NewIntent a;
-  protected BusinessObserver a;
+  PublicAccountDetailImpl a;
+  String b;
+  AccountDetailGroupListContainer c;
+  ScrollView d;
+  float e;
+  protected NewIntent f;
+  protected BusinessObserver g;
+  mobileqq_mp.GetPublicAccountDetailInfoResponse h;
+  private View i;
   
   private void c()
   {
-    super.setContentView(2131558434);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376828));
-    setTitle(getResources().getString(2131695213));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374033);
+    super.setContentView(2131623970);
+    this.d = ((ScrollView)super.findViewById(2131445159));
+    setTitle(getResources().getString(2131892947));
+    this.i = super.findViewById(2131442127);
     View localView;
-    if (QQTheme.a())
+    if (QQTheme.isNowThemeIsNight())
     {
-      localView = this.jdField_a_of_type_AndroidViewView;
+      localView = this.i;
       if (localView != null) {
         localView.setVisibility(0);
       }
     }
     else
     {
-      localView = this.jdField_a_of_type_AndroidViewView;
+      localView = this.i;
       if (localView != null) {
         localView.setVisibility(8);
       }
     }
-    this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl != null)
+    this.e = super.getResources().getDisplayMetrics().density;
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer = new AccountDetailGroupListContainer(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl, true);
-      this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.a());
+      this.c = new AccountDetailGroupListContainer(this.app, this, this.b, this.a, true);
+      this.d.addView(this.c.c());
     }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer = new AccountDetailGroupListContainer(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl, true);
-    this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.a());
+    this.c = new AccountDetailGroupListContainer(this.app, this, this.b, this.a, true);
+    this.d.addView(this.c.c());
   }
   
   protected void a()
@@ -78,13 +78,13 @@ public class PubAccountMoreInfoActivity
     Object localObject = getIntent();
     this.app = ((QQAppInterface)super.getAppRuntime());
     if (localObject != null) {
-      this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("uin");
+      this.b = ((Intent)localObject).getStringExtra("uin");
     }
     localObject = (IPublicAccountDataManager)this.app.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl = ((PublicAccountDetailImpl)((IPublicAccountDataManager)localObject).findAccountDetailInfo(this.jdField_a_of_type_JavaLangString));
+      this.a = ((PublicAccountDetailImpl)((IPublicAccountDataManager)localObject).findAccountDetailInfo(this.b));
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl == null) {
+    if (this.a == null) {
       b();
     }
   }
@@ -99,28 +99,28 @@ public class PubAccountMoreInfoActivity
     if (QLog.isColorLevel()) {
       QLog.d("PubAccountMoreInfoActivity", 2, "sendPublicAccountDetailInfoRequest");
     }
-    Object localObject = this.jdField_a_of_type_MqqAppNewIntent;
+    Object localObject = this.f;
     if (localObject != null) {
       ((NewIntent)localObject).setObserver(null);
     }
-    this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServletImpl.class);
-    this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "get_detail_info");
+    this.f = new NewIntent(super.getApplicationContext(), PublicAccountServletImpl.class);
+    this.f.putExtra("cmd", "get_detail_info");
     localObject = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).versionInfo.set("8.7.0,3,5295");
+    ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).versionInfo.set("8.8.17,3,5770");
     ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).version.set(1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl != null) {
-      ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).seqno.set(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.seqno);
+    if (this.a != null) {
+      ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).seqno.set(this.a.seqno);
     } else {
       ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).seqno.set(0);
     }
     try
     {
-      ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).uin.set((int)Long.parseLong(this.jdField_a_of_type_JavaLangString));
+      ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).uin.set((int)Long.parseLong(this.b));
       label129:
-      this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).toByteArray());
-      this.jdField_a_of_type_MqqObserverBusinessObserver = new PubAccountMoreInfoActivity.1(this);
-      this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-      this.app.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
+      this.f.putExtra("data", ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).toByteArray());
+      this.g = new PubAccountMoreInfoActivity.1(this);
+      this.f.setObserver(this.g);
+      this.app.startServlet(this.f);
       return;
     }
     catch (Exception localException)
@@ -140,7 +140,7 @@ public class PubAccountMoreInfoActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    AccountDetailGroupListContainer localAccountDetailGroupListContainer = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer;
+    AccountDetailGroupListContainer localAccountDetailGroupListContainer = this.c;
     if (localAccountDetailGroupListContainer != null) {
       localAccountDetailGroupListContainer.b();
     }
@@ -163,7 +163,7 @@ public class PubAccountMoreInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.activity.PubAccountMoreInfoActivity
  * JD-Core Version:    0.7.0.1
  */

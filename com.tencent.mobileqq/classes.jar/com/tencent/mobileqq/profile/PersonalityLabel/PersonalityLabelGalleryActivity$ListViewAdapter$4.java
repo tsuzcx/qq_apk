@@ -14,15 +14,15 @@ class PersonalityLabelGalleryActivity$ListViewAdapter$4
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
-    paramDialogInterface = (PersonalityLabelGalleryActivity.LabelItemViewHolder)this.jdField_a_of_type_AndroidViewView.getTag(2131365474);
+    paramDialogInterface = (PersonalityLabelGalleryActivity.LabelItemViewHolder)this.a.getTag(2131431689);
     if (paramDialogInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+      this.c.a.a(paramDialogInterface.m, this.b.id);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.ListViewAdapter.4
  * JD-Core Version:    0.7.0.1
  */

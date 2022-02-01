@@ -371,8 +371,8 @@ public class ItemTouchHelper
     if (this.mRecyclerView != null)
     {
       paramRecyclerView = paramRecyclerView.getResources();
-      this.mSwipeEscapeVelocity = paramRecyclerView.getDimension(2131297276);
-      this.mMaxSwipeVelocity = paramRecyclerView.getDimension(2131297275);
+      this.mSwipeEscapeVelocity = paramRecyclerView.getDimension(2131297707);
+      this.mMaxSwipeVelocity = paramRecyclerView.getDimension(2131297706);
       setupCallbacks();
     }
   }
@@ -854,7 +854,7 @@ public class ItemTouchHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchHelper
  * JD-Core Version:    0.7.0.1
  */

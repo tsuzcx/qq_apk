@@ -21,21 +21,21 @@ class VideoSprite$CompletionListener
     if (paramMediaPlayer == null) {
       return;
     }
-    if (paramMediaPlayer.j)
+    if (paramMediaPlayer.al)
     {
-      paramMediaPlayer.b.b(new VideoSprite.CompletionListener.1(this, paramMediaPlayer));
+      paramMediaPlayer.P.b(new VideoSprite.CompletionListener.1(this, paramMediaPlayer));
       return;
     }
-    paramMediaPlayer.g = false;
-    paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    if (paramMediaPlayer.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      paramMediaPlayer.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    paramMediaPlayer.ah = false;
+    paramMediaPlayer.ak.removeCallbacksAndMessages(null);
+    if (paramMediaPlayer.ad != null) {
+      paramMediaPlayer.ad.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener
  * JD-Core Version:    0.7.0.1
  */

@@ -29,9 +29,9 @@ public class TroopMemberLevelJSAPI
         paramString1 = paramVarArgs[0];
         paramJsBridgeListener = paramString1;
         if ("RETURN".equals(paramString1)) {
-          paramJsBridgeListener = this.mRuntime.a().getIntent().getStringExtra("leftViewText");
+          paramJsBridgeListener = this.mRuntime.d().getIntent().getStringExtra("leftViewText");
         }
-        paramString2.a.a(paramJsBridgeListener, paramVarArgs[1], paramVarArgs[2]);
+        paramString2.g.a(paramJsBridgeListener, paramVarArgs[1], paramVarArgs[2]);
       }
       return true;
     }
@@ -40,7 +40,7 @@ public class TroopMemberLevelJSAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.TroopMemberLevelJSAPI
  * JD-Core Version:    0.7.0.1
  */

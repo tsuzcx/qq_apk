@@ -16,7 +16,7 @@ class MessengerService$IncomingHandler$10
   
   public void run()
   {
-    ILebaHelperService localILebaHelperService = (ILebaHelperService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ILebaHelperService.class, "");
+    ILebaHelperService localILebaHelperService = (ILebaHelperService)this.a.getRuntimeService(ILebaHelperService.class, "");
     int j = 1;
     Object localObject2;
     if (localILebaHelperService != null)
@@ -29,7 +29,7 @@ class MessengerService$IncomingHandler$10
       }
       else
       {
-        localILebaHelperService.reloadLebaItems(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localILebaHelperService.reloadLebaItems(this.a);
         localObject1 = localILebaHelperService.getLebaMgrList();
       }
     }
@@ -44,9 +44,9 @@ class MessengerService$IncomingHandler$10
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (LebaViewItem)((Iterator)localObject1).next();
-        if ((localObject2 != null) && (((LebaViewItem)localObject2).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo != null) && (((LebaViewItem)localObject2).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == this.jdField_a_of_type_Int))
+        if ((localObject2 != null) && (((LebaViewItem)localObject2).b != null) && (((LebaViewItem)localObject2).b.uiResId == this.b))
         {
-          i = ((LebaViewItem)localObject2).jdField_a_of_type_Byte;
+          i = ((LebaViewItem)localObject2).f;
           break label155;
         }
       }
@@ -65,13 +65,13 @@ class MessengerService$IncomingHandler$10
       i = 0;
     }
     ((Bundle)localObject1).putInt("type", i);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.c.putBundle("response", (Bundle)localObject1);
+    this.d.a(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.10
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class TracePointsDataInterceptor
   public Class a(Interceptor.Chain<Class> paramChain)
   {
     Class localClass = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).getTracePointDataClass();
-    if (localClass.getSimpleName().equals(a(paramChain))) {
+    if (localClass.getSimpleName().equals(b(paramChain))) {
       return localClass;
     }
     return (Class)paramChain.proceed();
@@ -18,7 +18,7 @@ public class TracePointsDataInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.TracePointsDataInterceptor
  * JD-Core Version:    0.7.0.1
  */

@@ -21,19 +21,19 @@ public class AudioHelperUtil
     }
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     return QLog.isColorLevel();
   }
   
-  public static boolean b()
+  public static boolean c()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.AudioHelperUtil
  * JD-Core Version:    0.7.0.1
  */

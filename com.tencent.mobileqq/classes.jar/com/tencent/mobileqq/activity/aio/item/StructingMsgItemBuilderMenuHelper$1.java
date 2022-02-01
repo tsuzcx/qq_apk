@@ -27,17 +27,17 @@ class StructingMsgItemBuilderMenuHelper$1
     if (QLog.isColorLevel()) {
       QLog.d("forward", 2, "structingMsgItem public forward");
     }
-    MessageForStructing localMessageForStructing = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+    MessageForStructing localMessageForStructing = this.a;
     if ((localMessageForStructing.structingMsg instanceof AbsShareMsg))
     {
       AbsShareMsg localAbsShareMsg = (AbsShareMsg)localMessageForStructing.structingMsg;
       boolean bool = localAbsShareMsg instanceof StructMsgForGeneralShare;
       if ((bool) && (((StructMsgForGeneralShare)localAbsShareMsg).mIsPAVideoStructMsg))
       {
-        StructingMsgItemBuilderMenuHelper.a(this.this$0, localAbsShareMsg, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidAppActivity);
+        StructingMsgItemBuilderMenuHelper.a(this.this$0, localAbsShareMsg, this.b, this.c);
         return;
       }
-      String str3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
+      String str3 = this.b.e;
       String str2 = localAbsShareMsg.mSourceIcon;
       Object localObject8 = localAbsShareMsg.mMsgUrl;
       Object localObject9 = localAbsShareMsg.mMsgAction;
@@ -66,13 +66,13 @@ class StructingMsgItemBuilderMenuHelper$1
         if ((localObject5 instanceof AbsStructMsgItem))
         {
           localObject4 = (AbsStructMsgItem)localObject5;
-          localObject2 = ((AbsStructMsgItem)localObject4).a;
-          localObject5 = ((AbsStructMsgItem)localObject4).c;
-          localObject10 = ((AbsStructMsgItem)localObject4).b;
-          str1 = ((AbsStructMsgItem)localObject4).d;
-          localObject7 = ((AbsStructMsgItem)localObject4).e;
-          localObject8 = ((AbsStructMsgItem)localObject4).f;
-          localObject9 = ((AbsStructMsgItem)localObject4).g;
+          localObject2 = ((AbsStructMsgItem)localObject4).ax;
+          localObject5 = ((AbsStructMsgItem)localObject4).e;
+          localObject10 = ((AbsStructMsgItem)localObject4).d;
+          str1 = ((AbsStructMsgItem)localObject4).f;
+          localObject7 = ((AbsStructMsgItem)localObject4).g;
+          localObject8 = ((AbsStructMsgItem)localObject4).h;
+          localObject9 = ((AbsStructMsgItem)localObject4).i;
           localObject2 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (AbsStructMsgItem)localObject4, StructMsgItemTitle.class);
           localObject3 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (AbsStructMsgItem)localObject4, StructMsgItemSummary.class);
           localObject4 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (AbsStructMsgItem)localObject4, StructMsgItemCover.class);
@@ -106,13 +106,13 @@ class StructingMsgItemBuilderMenuHelper$1
           if ((localObject10 instanceof AbsStructMsgItem))
           {
             localObject11 = (AbsStructMsgItem)localObject10;
-            localObject5 = ((AbsStructMsgItem)localObject11).a;
-            localObject9 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject9, ((AbsStructMsgItem)localObject11).c);
-            localObject8 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject8, ((AbsStructMsgItem)localObject11).b);
-            str1 = StructingMsgItemBuilderMenuHelper.a(this.this$0, str1, ((AbsStructMsgItem)localObject11).d);
-            localObject4 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject4, ((AbsStructMsgItem)localObject11).e);
-            localObject5 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject3, ((AbsStructMsgItem)localObject11).f);
-            localObject6 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject2, ((AbsStructMsgItem)localObject11).g);
+            localObject5 = ((AbsStructMsgItem)localObject11).ax;
+            localObject9 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject9, ((AbsStructMsgItem)localObject11).e);
+            localObject8 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject8, ((AbsStructMsgItem)localObject11).d);
+            str1 = StructingMsgItemBuilderMenuHelper.a(this.this$0, str1, ((AbsStructMsgItem)localObject11).f);
+            localObject4 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject4, ((AbsStructMsgItem)localObject11).g);
+            localObject5 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject3, ((AbsStructMsgItem)localObject11).h);
+            localObject6 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (String)localObject2, ((AbsStructMsgItem)localObject11).i);
             localObject7 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (AbsStructMsgItem)localObject11, StructMsgItemTitle.class);
             localObject10 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (AbsStructMsgItem)localObject11, StructMsgItemSummary.class);
             localObject3 = StructingMsgItemBuilderMenuHelper.a(this.this$0, (AbsStructMsgItem)localObject11, StructMsgItemCover.class);
@@ -156,14 +156,14 @@ class StructingMsgItemBuilderMenuHelper$1
       }
       Object localObject10 = localMessageForStructing.senderuin;
       Object localObject11 = Long.toString(localAbsShareMsg.msgId);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
+      ReportController.b(this.d, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
       if ((str2 != null) && (!"".equals(str2))) {
         localObject10 = str2;
       } else {
         localObject10 = "https://url.cn/JS8oE7";
       }
-      StructingMsgItemBuilderMenuHelper.a(this.this$0).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, (String)localObject3, (String)localObject4, str3, (String)localObject1, (String)localObject10, (String)localObject5, str1, (String)localObject7, (String)localObject8, (String)localObject9, l, (String)localObject6);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      StructingMsgItemBuilderMenuHelper.a(this.this$0).a(this.e, this.b.b, (String)localObject2, (String)localObject3, (String)localObject4, str3, (String)localObject1, (String)localObject10, (String)localObject5, str1, (String)localObject7, (String)localObject8, (String)localObject9, l, (String)localObject6);
+      localObject1 = this.d;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("");
       ((StringBuilder)localObject2).append(l);
@@ -177,7 +177,7 @@ class StructingMsgItemBuilderMenuHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilderMenuHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class NowAppJs$1
   
   public void a(boolean paramBoolean)
   {
-    NowAppJs.access$000(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs).openUrl(this.jdField_a_of_type_JavaUtilMap);
+    NowAppJs.access$000(this.b).openUrl(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowAppJs.1
  * JD-Core Version:    0.7.0.1
  */

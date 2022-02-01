@@ -30,7 +30,7 @@ class PtvTemplateManager$14$1
     if (this.a.a.doodleUsable) {
       try
       {
-        ZipUtils.unZipFile(new File(PtvTemplateManager.b, this.a.a.doodleName), PtvTemplateManager.c);
+        ZipUtils.unZipFile(new File(PtvTemplateManager.f, this.a.a.doodleName), PtvTemplateManager.d);
       }
       catch (IOException localIOException)
       {
@@ -41,7 +41,7 @@ class PtvTemplateManager$14$1
     }
     if (paramNetResp.mResult == 0)
     {
-      Object localObject = this.a.this$0.a();
+      Object localObject = this.a.this$0.j();
       if (localObject != null)
       {
         localObject = (IPreDownloadController)((QQAppInterface)localObject).getRuntimeService(IPreDownloadController.class);
@@ -56,7 +56,7 @@ class PtvTemplateManager$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.14.1
  * JD-Core Version:    0.7.0.1
  */

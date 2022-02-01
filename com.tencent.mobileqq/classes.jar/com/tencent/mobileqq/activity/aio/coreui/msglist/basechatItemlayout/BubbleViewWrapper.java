@@ -11,14 +11,14 @@ public class BubbleViewWrapper
     super(paramBaseChatItemLayout, paramContext);
   }
   
-  protected IBubbleViewProcessor a()
+  protected IBubbleViewProcessor d()
   {
-    return new BubbleViewProcessor(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_AndroidContentContext);
+    return new BubbleViewProcessor(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BubbleViewWrapper
  * JD-Core Version:    0.7.0.1
  */

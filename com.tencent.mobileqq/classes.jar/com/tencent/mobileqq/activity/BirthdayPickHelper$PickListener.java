@@ -33,24 +33,24 @@ class BirthdayPickHelper$PickListener
       BirthdayPickHelper.a(this.a, paramInt2);
     }
     BirthdayPickHelper.a(this.a);
-    if ((BirthdayPickHelper.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-      BirthdayPickHelper.a(this.a).a(2);
+    if ((BirthdayPickHelper.b(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+      BirthdayPickHelper.b(this.a).a(2);
     }
     if (this.a.a != null)
     {
       BirthdayPickHelper localBirthdayPickHelper = this.a;
-      paramInt1 = BirthdayPickHelper.d(localBirthdayPickHelper, BirthdayPickHelper.a(localBirthdayPickHelper));
+      paramInt1 = BirthdayPickHelper.d(localBirthdayPickHelper, BirthdayPickHelper.c(localBirthdayPickHelper));
       localBirthdayPickHelper = this.a;
-      paramInt2 = BirthdayPickHelper.e(localBirthdayPickHelper, BirthdayPickHelper.b(localBirthdayPickHelper));
+      paramInt2 = BirthdayPickHelper.e(localBirthdayPickHelper, BirthdayPickHelper.d(localBirthdayPickHelper));
       localBirthdayPickHelper = this.a;
-      int i = BirthdayPickHelper.f(localBirthdayPickHelper, BirthdayPickHelper.c(localBirthdayPickHelper));
+      int i = BirthdayPickHelper.f(localBirthdayPickHelper, BirthdayPickHelper.e(localBirthdayPickHelper));
       this.a.a.a(paramInt1, paramInt2, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BirthdayPickHelper.PickListener
  * JD-Core Version:    0.7.0.1
  */

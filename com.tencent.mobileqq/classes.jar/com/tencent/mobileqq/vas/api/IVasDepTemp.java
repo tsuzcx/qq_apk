@@ -47,7 +47,11 @@ public abstract interface IVasDepTemp
   
   public abstract boolean isCanOpenGxhHippyPage();
   
+  public abstract boolean isCanOpenHippyPage(String paramString);
+  
   public abstract boolean isCanOpenQQVipHippyPage();
+  
+  public abstract boolean isContainsModule(String paramString);
   
   public abstract boolean isEnable();
   
@@ -57,9 +61,9 @@ public abstract interface IVasDepTemp
   
   public abstract boolean isQQBrowserActivity(Activity paramActivity);
   
-  public abstract void openGxhHippyPage();
+  public abstract void openGxhHippyPage(String paramString);
   
-  public abstract void openQQVipHippyPage();
+  public abstract void openQQVipHippyPage(String paramString);
   
   public abstract void registerSeqKey(IJce paramIJce, String paramString);
   
@@ -103,7 +107,7 @@ public abstract interface IVasDepTemp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.IVasDepTemp
  * JD-Core Version:    0.7.0.1
  */

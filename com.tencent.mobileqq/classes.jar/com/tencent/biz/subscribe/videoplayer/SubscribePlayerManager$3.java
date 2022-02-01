@@ -12,15 +12,15 @@ class SubscribePlayerManager$3
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    Integer localInteger = (Integer)SubscribePlayerManager.b(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager).get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder.b));
+    Integer localInteger = (Integer)SubscribePlayerManager.e(this.b).get(Integer.valueOf(this.a.l));
     if ((localInteger != null) && (localInteger.intValue() > paramInt2) && (paramInt1 != localInteger.intValue()) && (Math.abs(paramInt1 - localInteger.intValue()) > 100))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder.a.setText((CharSequence)SubscribePlayerManager.c(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager).get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder.b)));
+      this.a.d.setText((CharSequence)SubscribePlayerManager.f(this.b).get(Integer.valueOf(this.a.l)));
       return;
     }
-    SubscribePlayerManager.b(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager).put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder.b), Integer.valueOf(paramInt2));
-    SubscribePlayerManager.c(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerSubscribePlayerManager).put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder.b), paramString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoVideoItemBuilder$AutoVideoMsgViewHolder.a.setText(paramString);
+    SubscribePlayerManager.e(this.b).put(Integer.valueOf(this.a.l), Integer.valueOf(paramInt2));
+    SubscribePlayerManager.f(this.b).put(Integer.valueOf(this.a.l), paramString);
+    this.a.d.setText(paramString);
   }
 }
 

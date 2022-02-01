@@ -33,6 +33,11 @@ public final class ScalingFrameLayout
     setWillNotDraw(false);
   }
   
+  public final float getScale()
+  {
+    return this.a;
+  }
+  
   protected void onDraw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
@@ -49,7 +54,7 @@ public final class ScalingFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ScalingFrameLayout
  * JD-Core Version:    0.7.0.1
  */

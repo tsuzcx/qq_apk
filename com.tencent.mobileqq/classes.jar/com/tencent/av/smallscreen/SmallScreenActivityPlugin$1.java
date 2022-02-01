@@ -9,7 +9,7 @@ class SmallScreenActivityPlugin$1
   
   public void run()
   {
-    SmallScreenUtils.a(this.a, 2, this.this$0.a.getApp());
+    SmallScreenUtils.a(this.a, 2, this.this$0.c.getApp());
   }
 }
 

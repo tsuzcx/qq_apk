@@ -36,41 +36,35 @@ import mqq.os.MqqHandler;
 public class SwiftBrowserStatisticInjectorImpl
   implements ISwiftBrowserStatisticInjector
 {
-  private int a;
   public String a;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  
-  public SwiftBrowserStatisticInjectorImpl()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public boolean b = false;
+  public boolean c = false;
+  private boolean d;
+  private boolean e;
+  private String f;
+  private String g;
+  private int h;
+  private int i;
+  private int j;
+  private String k;
   
   private void a(String paramString)
   {
-    if (!PushReportController.jdField_a_of_type_Boolean)
+    if (!PushReportController.a)
     {
       PushReportController.PushReportItem localPushReportItem = new PushReportController.PushReportItem();
       localPushReportItem.e = "0X8009242";
-      localPushReportItem.jdField_d_of_type_JavaLangString = "离开点击Push";
+      localPushReportItem.d = "离开点击Push";
       PushReportController.a(paramString, localPushReportItem);
       PushReportController.a(null, localPushReportItem);
-      PushReportController.jdField_a_of_type_Boolean = true;
+      PushReportController.a = true;
     }
   }
   
   private void b(String paramString)
   {
-    if (!PushReportController.jdField_a_of_type_Boolean) {
-      PushNoticeManager.a(null, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, paramString, "0X8009242", "离开点击Push");
+    if (!PushReportController.a) {
+      PushNoticeManager.a(null, this.f, this.g, paramString, "0X8009242", "离开点击Push");
     }
   }
   
@@ -152,14 +146,14 @@ public class SwiftBrowserStatisticInjectorImpl
         paramAppRuntime = paramAppRuntime.missions.get();
         if (paramAppRuntime != null)
         {
-          int i = 0;
-          while (i < paramAppRuntime.size())
+          int m = 0;
+          while (m < paramAppRuntime.size())
           {
-            localStringBuilder.append((String)paramAppRuntime.get(i));
-            if (i != paramAppRuntime.size() - 1) {
+            localStringBuilder.append((String)paramAppRuntime.get(m));
+            if (m != paramAppRuntime.size() - 1) {
               localStringBuilder.append("_");
             }
-            i += 1;
+            m += 1;
           }
         }
       }
@@ -171,39 +165,39 @@ public class SwiftBrowserStatisticInjectorImpl
   {
     boolean bool2 = true;
     GameCenterActivity.reportStep(paramString, 1, false, false);
-    this.jdField_c_of_type_Boolean = paramIntent.getBooleanExtra("fromAio", false);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("op_type");
+    this.d = paramIntent.getBooleanExtra("fromAio", false);
+    this.a = paramIntent.getStringExtra("op_type");
     boolean bool1;
     if (paramIntent.getIntExtra("uintype", -1) == 1030) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.c = bool1;
     if (paramIntent.getIntExtra("uintype", -1) == 1035) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    this.jdField_d_of_type_Boolean = bool1;
-    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("push_notice_service_id");
-    this.jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("push_notice_content_id");
-    this.jdField_a_of_type_Int = paramIntent.getIntExtra("KEY_MAIN_BUSINESS_ID", -1);
-    this.jdField_b_of_type_Int = paramIntent.getIntExtra("KEY_SUB_BUSINESS_ID", 0);
-    this.jdField_c_of_type_Int = paramIntent.getIntExtra("KEY_PUSH_ID", 0);
-    this.jdField_d_of_type_JavaLangString = paramIntent.getStringExtra("KEY_PUSH_TRIGGER_INFO");
-    PushUtil.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString);
-    if ((this.jdField_b_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) {
-      PushReportController.jdField_a_of_type_Boolean = false;
+    this.e = bool1;
+    this.f = paramIntent.getStringExtra("push_notice_service_id");
+    this.g = paramIntent.getStringExtra("push_notice_content_id");
+    this.h = paramIntent.getIntExtra("KEY_MAIN_BUSINESS_ID", -1);
+    this.i = paramIntent.getIntExtra("KEY_SUB_BUSINESS_ID", 0);
+    this.j = paramIntent.getIntExtra("KEY_PUSH_ID", 0);
+    this.k = paramIntent.getStringExtra("KEY_PUSH_TRIGGER_INFO");
+    PushUtil.a(this.h, this.i, this.j, this.k);
+    if ((this.c) || (this.e)) {
+      PushReportController.a = false;
     }
   }
   
   public void a(TouchWebView paramTouchWebView, int paramInt, String paramString1, String paramString2)
   {
-    if (TenDocLogReportHelper.a(paramString2))
+    if (TenDocLogReportHelper.c(paramString2))
     {
-      paramTouchWebView = TenDocLogReportHelper.c(paramString2);
-      String str = TenDocLogReportHelper.d(paramString2);
+      paramTouchWebView = TenDocLogReportHelper.d(paramString2);
+      String str = TenDocLogReportHelper.e(paramString2);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("err=");
       localStringBuilder.append(paramInt);
@@ -221,9 +215,9 @@ public class SwiftBrowserStatisticInjectorImpl
   
   public void a(TouchWebView paramTouchWebView, String paramString, boolean paramBoolean, int paramInt, long paramLong)
   {
-    if ((paramBoolean) && (this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+    if ((paramBoolean) && (this.d) && (!this.b))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       if (paramString != null) {
         paramTouchWebView = paramString;
       } else {
@@ -235,11 +229,11 @@ public class SwiftBrowserStatisticInjectorImpl
       localStringBuilder.append(paramInt);
       ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "msg_webview_url", "msg_webview_pvqq", 0, 1, 0, paramTouchWebView, "", "", localStringBuilder.toString());
     }
-    if (TenDocLogReportHelper.a(paramString))
+    if (TenDocLogReportHelper.c(paramString))
     {
-      paramLong = TenDocLogReportHelper.a(String.valueOf(paramLong));
-      paramTouchWebView = TenDocLogReportHelper.d(paramString);
-      paramString = TenDocLogReportHelper.c(paramString);
+      paramLong = TenDocLogReportHelper.g(String.valueOf(paramLong));
+      paramTouchWebView = TenDocLogReportHelper.e(paramString);
+      paramString = TenDocLogReportHelper.d(paramString);
       if (paramLong != 0L)
       {
         TenDocLogReportHelper.a(null, paramString, "0X8009E9F", "success", paramTouchWebView, "");
@@ -260,7 +254,7 @@ public class SwiftBrowserStatisticInjectorImpl
       return;
     }
     paramWebViewProvider = (SwiftBrowserStatistics)paramWebViewProvider.getComponentProvider().a(-2);
-    GameCenterActivity.reportStep(paramString1, paramWebViewProvider.a.jdField_a_of_type_Int, true, paramWebViewProvider.a.jdField_a_of_type_Boolean);
+    GameCenterActivity.reportStep(paramString1, paramWebViewProvider.aW.b, true, paramWebViewProvider.aW.c);
     paramWebViewProvider.a(paramString1, paramLong, paramAppRuntime, paramString2, "WebStatusReportV2");
   }
   
@@ -271,19 +265,19 @@ public class SwiftBrowserStatisticInjectorImpl
   
   public void a(String paramString, long paramLong)
   {
-    if (TenDocLogReportHelper.a(paramString))
+    if (TenDocLogReportHelper.c(paramString))
     {
       TenDocLogReportHelper.a("SwiftBrowserStatistics", "onPageStarted_url", paramString);
-      TenDocLogReportHelper.a(String.valueOf(paramLong));
+      TenDocLogReportHelper.f(String.valueOf(paramLong));
     }
   }
   
   public void a(String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    if ((TenDocLogReportHelper.a(paramString3)) && (TextUtils.equals(paramString1, "webview_init")))
+    if ((TenDocLogReportHelper.c(paramString3)) && (TextUtils.equals(paramString1, "webview_init")))
     {
-      String str1 = TenDocLogReportHelper.c(paramString3);
-      String str2 = TenDocLogReportHelper.d(paramString3);
+      String str1 = TenDocLogReportHelper.d(paramString3);
+      String str2 = TenDocLogReportHelper.e(paramString3);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("err=");
       localStringBuilder.append(paramString2);
@@ -294,7 +288,7 @@ public class SwiftBrowserStatisticInjectorImpl
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if ((this.jdField_b_of_type_Boolean) && (!paramBoolean)) {
+    if ((this.c) && (!paramBoolean)) {
       a(paramString);
     }
   }
@@ -307,10 +301,10 @@ public class SwiftBrowserStatisticInjectorImpl
     ((StringBuilder)localObject2).append("self_info");
     ((StringBuilder)localObject2).append(localAppRuntime.getLongAccountUin());
     Object localObject3 = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4);
-    if ((localObject3 != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((localObject3 != null) && (!TextUtils.isEmpty(this.a)))
     {
       long l = System.currentTimeMillis();
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("");
       ((StringBuilder)localObject2).append(((SharedPreferences)localObject3).getInt("charm_level", 0));
@@ -324,14 +318,14 @@ public class SwiftBrowserStatisticInjectorImpl
       localStringBuilder.append(l - paramLong);
       ReportController.b(null, "dc00899", "grp_lbs", "", (String)localObject1, "visit_time", 0, 1, 0, (String)localObject2, (String)localObject3, localStringBuilder.toString(), "");
     }
-    if (((this.jdField_b_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (!paramBoolean) && (!PushReportController.jdField_a_of_type_Boolean)) {
+    if (((this.c) || (this.e)) && (!paramBoolean) && (!PushReportController.a)) {
       ThreadManager.getFileThreadHandler().postDelayed(new SwiftBrowserStatisticInjectorImpl.1(this, localAppRuntime, paramString), 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatisticInjectorImpl
  * JD-Core Version:    0.7.0.1
  */

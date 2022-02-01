@@ -9,31 +9,31 @@ public class TopicSpan
   extends ForegroundColorSpan
   implements DeleteAsAWholeSpan, ISpan
 {
-  private TopicSpan.DeletedCallback jdField_a_of_type_ComTencentMobileqqKandianBizUgcTopicSpan$DeletedCallback;
-  private final TopicInfo jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerTopicInfo;
+  private final TopicInfo a;
+  private TopicSpan.DeletedCallback b;
   
   public TopicSpan(TopicInfo paramTopicInfo)
   {
     super(-15504151);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerTopicInfo = paramTopicInfo;
+    this.a = paramTopicInfo;
   }
   
-  public TopicInfo a()
+  public TopicInfo b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerTopicInfo;
+    return this.a;
   }
   
-  public void a()
+  public void cO_()
   {
-    TopicSpan.DeletedCallback localDeletedCallback = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcTopicSpan$DeletedCallback;
+    TopicSpan.DeletedCallback localDeletedCallback = this.b;
     if (localDeletedCallback != null) {
-      localDeletedCallback.a(a());
+      localDeletedCallback.a(b());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.TopicSpan
  * JD-Core Version:    0.7.0.1
  */

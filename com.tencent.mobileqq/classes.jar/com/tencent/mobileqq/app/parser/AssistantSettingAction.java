@@ -2,10 +2,8 @@ package com.tencent.mobileqq.app.parser;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
 import com.tencent.mobileqq.settings.message.AssistantSettingFragment;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
@@ -31,7 +29,7 @@ public class AssistantSettingAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("AssistantSettingAction", 1, localStringBuilder.toString());
-      b_("AssistantSettingAction");
+      h_("AssistantSettingAction");
     }
     return false;
   }
@@ -39,21 +37,13 @@ public class AssistantSettingAction
   public boolean b()
   {
     Intent localIntent = new Intent();
-    if (SettingsConfigHelper.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface))
-    {
-      PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, AssistantSettingFragment.class);
-    }
-    else
-    {
-      localIntent.setClass(this.jdField_a_of_type_AndroidContentContext, AssistantSettingActivity.class);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    }
+    PublicFragmentActivity.a(this.b, localIntent, AssistantSettingFragment.class);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AssistantSettingAction
  * JD-Core Version:    0.7.0.1
  */

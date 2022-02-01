@@ -20,7 +20,7 @@ public class VIPAioSendService
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((!VIPAioSendHandler.a.equals(paramToServiceMsg.getServiceCmd())) && (!VIPAioSendHandler.b.equals(paramToServiceMsg.getServiceCmd()))) {
+    if ((!VIPAioSendHandler.b.equals(paramToServiceMsg.getServiceCmd())) && (!VIPAioSendHandler.c.equals(paramToServiceMsg.getServiceCmd()))) {
       return null;
     }
     if (paramFromServiceMsg == null) {
@@ -46,12 +46,12 @@ public class VIPAioSendService
   public boolean encodeReqMsg(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     paramUniPacket.setServantName("VIP.AIOSendTipsServer.AIOSendTipsObj");
-    if (VIPAioSendHandler.a.equals(paramToServiceMsg.getServiceCmd()))
+    if (VIPAioSendHandler.b.equals(paramToServiceMsg.getServiceCmd()))
     {
       paramUniPacket.setFuncName("CheckPopGrayStips");
       paramUniPacket.put("request", (AIOSendReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
     }
-    else if (VIPAioSendHandler.b.equals(paramToServiceMsg.getServiceCmd()))
+    else if (VIPAioSendHandler.c.equals(paramToServiceMsg.getServiceCmd()))
     {
       paramUniPacket.setFuncName("getUserKeyWordStips");
       paramUniPacket.put("request", (AIOKeyWordReq)paramToServiceMsg.extraData.getSerializable("VIPAioSendRequest"));
@@ -61,7 +61,7 @@ public class VIPAioSendService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.VIPAioSendService
  * JD-Core Version:    0.7.0.1
  */

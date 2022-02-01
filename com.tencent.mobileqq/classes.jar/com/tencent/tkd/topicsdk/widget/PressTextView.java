@@ -26,11 +26,16 @@ public class PressTextView
     super(paramContext, paramAttributeSet);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.f);
-      this.a = paramContext.getBoolean(R.styleable.j, false);
-      this.b = paramContext.getBoolean(R.styleable.k, false);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.o);
+      this.a = paramContext.getBoolean(R.styleable.p, false);
+      this.b = paramContext.getBoolean(R.styleable.q, false);
       paramContext.recycle();
     }
+  }
+  
+  public final boolean getEnablePressEffect()
+  {
+    return this.c;
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
@@ -68,7 +73,7 @@ public class PressTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.PressTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -23,9 +23,9 @@ class AccountPanelBinder$9
   public void a(OnlineStatusMood paramOnlineStatusMood)
   {
     if (!paramOnlineStatusMood.b) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanelParams.d = false;
+      this.a.m = false;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel.isShowing())
+    if (!this.b.isShowing())
     {
       QLog.d("AccountPanelViewModel", 2, "refreshPanelWhenMoodChange dialog not showing");
       return;
@@ -35,15 +35,15 @@ class AccountPanelBinder$9
       paramOnlineStatusMood = MobileQQ.sMobileQQ.peekAppRuntime();
       AppRuntime.Status localStatus = ((IOnlineStatusService)paramOnlineStatusMood.getRuntimeService(IOnlineStatusService.class, "")).getOnlineStatus();
       long l = OnLineStatusHelper.a().a(paramOnlineStatusMood);
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewmodelAccountPanelViewModel.g().setValue(new OnlineStatusData(localStatus, l));
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel.b(localStatus, l);
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelViewContainer.d();
+      this.c.g().setValue(new OnlineStatusData(localStatus, l));
+      this.b.b(localStatus, l);
+      this.d.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountPanelBinder.9
  * JD-Core Version:    0.7.0.1
  */

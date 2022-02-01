@@ -66,11 +66,19 @@ public class ImageFilterView
           setSaturation(paramAttributeSet.getFloat(k, 0.0F));
         } else if (k == R.styleable.ImageFilterView_contrast) {
           setContrast(paramAttributeSet.getFloat(k, 0.0F));
-        } else if (k == R.styleable.ImageFilterView_round) {
-          setRound(paramAttributeSet.getDimension(k, 0.0F));
-        } else if (k == R.styleable.ImageFilterView_roundPercent) {
-          setRoundPercent(paramAttributeSet.getFloat(k, 0.0F));
-        } else if (k == R.styleable.ImageFilterView_overlay) {
+        } else if (k == R.styleable.ImageFilterView_round)
+        {
+          if (Build.VERSION.SDK_INT >= 21) {
+            setRound(paramAttributeSet.getDimension(k, 0.0F));
+          }
+        }
+        else if (k == R.styleable.ImageFilterView_roundPercent)
+        {
+          if (Build.VERSION.SDK_INT >= 21) {
+            setRoundPercent(paramAttributeSet.getFloat(k, 0.0F));
+          }
+        }
+        else if (k == R.styleable.ImageFilterView_overlay) {
           setOverlay(paramAttributeSet.getBoolean(k, this.mOverlay));
         }
         i += 1;
@@ -287,7 +295,7 @@ public class ImageFilterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.utils.widget.ImageFilterView
  * JD-Core Version:    0.7.0.1
  */

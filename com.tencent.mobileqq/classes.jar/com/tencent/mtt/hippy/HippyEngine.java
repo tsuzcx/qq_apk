@@ -14,7 +14,7 @@ public abstract class HippyEngine
   volatile HippyEngine.EngineState mCurrentState = HippyEngine.EngineState.UNINIT;
   final CopyOnWriteArrayList<HippyEngine.EngineListener> mEventListeners = new CopyOnWriteArrayList();
   protected int mGroupId;
-  private int mID = sIdCounter.getAndIncrement();
+  private final int mID = sIdCounter.getAndIncrement();
   HippyEngine.ModuleListener mModuleListener;
   
   static
@@ -112,7 +112,7 @@ public abstract class HippyEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngine
  * JD-Core Version:    0.7.0.1
  */

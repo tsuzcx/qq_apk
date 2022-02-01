@@ -11,10 +11,10 @@ class TroopMemberListActivity$AnimationEndClearListener$1
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_AndroidViewView == null) {
+    if (this.a.a == null) {
       return;
     }
-    int i = this.a.jdField_a_of_type_Int;
+    int i = this.a.b;
     RelativeLayout.LayoutParams localLayoutParams;
     if (i != 0)
     {
@@ -29,42 +29,42 @@ class TroopMemberListActivity$AnimationEndClearListener$1
               if (i != 5) {
                 return;
               }
-              this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+              this.a.a.setVisibility(4);
             }
             else
             {
-              this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+              this.a.a.setVisibility(0);
             }
           }
           else {
-            ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130850005);
+            ((ImageView)this.a.a).setImageResource(2130851766);
           }
         }
         else {
-          ((ImageView)this.a.jdField_a_of_type_AndroidViewView).setImageResource(2130850006);
+          ((ImageView)this.a.a).setImageResource(2130851767);
         }
       }
       else
       {
-        localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
-        localLayoutParams.leftMargin -= (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mDensity * 34.0F);
-        this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-        this.a.jdField_a_of_type_AndroidViewView.setTag("left");
+        localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+        localLayoutParams.leftMargin -= (int)(this.a.c.mDensity * 34.0F);
+        this.a.a.setLayoutParams(localLayoutParams);
+        this.a.a.setTag("left");
       }
     }
     else
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.leftMargin += (int)(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mDensity * 34.0F);
-      this.a.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      this.a.jdField_a_of_type_AndroidViewView.setTag("right");
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+      localLayoutParams.leftMargin += (int)(this.a.c.mDensity * 34.0F);
+      this.a.a.setLayoutParams(localLayoutParams);
+      this.a.a.setTag("right");
     }
-    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.a.clearAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.AnimationEndClearListener.1
  * JD-Core Version:    0.7.0.1
  */

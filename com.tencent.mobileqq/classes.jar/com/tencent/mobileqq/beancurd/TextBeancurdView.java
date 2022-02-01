@@ -21,13 +21,13 @@ import mqq.app.MobileQQ;
 public class TextBeancurdView
   extends BeancurdView
 {
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CornerImageView jdField_a_of_type_ComTencentMobileqqGamecenterUiCornerImageView;
-  private final String jdField_a_of_type_JavaLangString = "#F1F2F8";
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private CornerImageView j;
+  private TextView k;
+  private TextView l;
+  private ImageView m;
+  private ImageView n;
+  private final String o = "#F1F2F8";
+  private ColorDrawable p;
   
   public TextBeancurdView(Context paramContext, View paramView)
   {
@@ -35,19 +35,36 @@ public class TextBeancurdView
     a();
   }
   
-  private void a(String paramString)
+  private void b(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterUiCornerImageView.setVisibility(8);
+      this.j.setVisibility(8);
       return;
     }
-    if (!a(paramString)) {
-      b(paramString);
+    if (!d(paramString)) {
+      c(paramString);
     }
   }
   
-  private boolean a(String paramString)
+  private void c(String paramString)
+  {
+    try
+    {
+      int i = Color.parseColor(paramString);
+      paramString = new GradientDrawable();
+      paramString.setColor(i);
+      paramString.setCornerRadius(this.c);
+      this.a.setBackgroundDrawable(paramString);
+      return;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      QLog.d("TextBeancurdView", 1, "updateBackgroundIfNeed err: ", paramString);
+    }
+  }
+  
+  private boolean d(String paramString)
   {
     if (!URLUtil.isHttpsUrl(paramString))
     {
@@ -61,81 +78,64 @@ public class TextBeancurdView
       return false;
     }
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    ColorDrawable localColorDrawable = this.p;
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
     paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterUiCornerImageView.setImageDrawable(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterUiCornerImageView.setRadius(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterUiCornerImageView.setVisibility(0);
+    this.j.setImageDrawable(paramString);
+    this.j.setRadius(this.c);
+    this.j.setVisibility(0);
     return true;
   }
   
-  private void b(String paramString)
-  {
-    try
-    {
-      int i = Color.parseColor(paramString);
-      paramString = new GradientDrawable();
-      paramString.setColor(i);
-      paramString.setCornerRadius(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramString);
-      return;
-    }
-    catch (IllegalArgumentException paramString)
-    {
-      QLog.d("TextBeancurdView", 1, "updateBackgroundIfNeed err: ", paramString);
-    }
-  }
-  
-  private void c(String paramString)
+  private void e(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
     paramString = a(paramString);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    this.n.setImageDrawable(paramString);
   }
   
   protected View a(Context paramContext)
   {
-    return View.inflate(paramContext, 2131560987, null);
+    return View.inflate(paramContext, 2131627328, null);
   }
   
   public View a(MessageForBeancurd paramMessageForBeancurd)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForBeancurd = paramMessageForBeancurd;
-    a(paramMessageForBeancurd);
-    return this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout;
+    this.g = paramMessageForBeancurd;
+    b(paramMessageForBeancurd);
+    return this.h;
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterUiCornerImageView = ((CornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369331));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379545));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379544));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369372));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369305));
+    this.j = ((CornerImageView)this.a.findViewById(2131436334));
+    this.k = ((TextView)this.a.findViewById(2131448297));
+    this.l = ((TextView)this.a.findViewById(2131448296));
+    this.m = ((ImageView)this.a.findViewById(2131436403));
+    this.n = ((ImageView)this.a.findViewById(2131436299));
   }
   
-  protected void a(Context paramContext)
+  protected void b(Context paramContext)
   {
-    super.a(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#F1F2F8"));
+    super.b(paramContext);
+    this.p = new ColorDrawable(Color.parseColor("#F1F2F8"));
   }
   
-  protected void a(MessageForBeancurd paramMessageForBeancurd)
+  protected void b(MessageForBeancurd paramMessageForBeancurd)
   {
-    a((BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), this.jdField_a_of_type_AndroidWidgetImageView, (String)paramMessageForBeancurd.getUinList().get(0));
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramMessageForBeancurd.getDescription());
-    a(this.jdField_b_of_type_AndroidWidgetTextView, paramMessageForBeancurd.getContentList());
-    c(paramMessageForBeancurd.getIcon());
-    a(paramMessageForBeancurd.getBackground());
+    a((BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), this.m, (String)paramMessageForBeancurd.getUinList().get(0));
+    a(this.k, paramMessageForBeancurd.getDescription());
+    a(this.l, paramMessageForBeancurd.getContentList());
+    e(paramMessageForBeancurd.getIcon());
+    b(paramMessageForBeancurd.getBackground());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.beancurd.TextBeancurdView
  * JD-Core Version:    0.7.0.1
  */

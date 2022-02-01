@@ -5,8 +5,7 @@ import kotlin.Metadata;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "", "()V", "autoPlay", "", "getAutoPlay", "()I", "setAutoPlay", "(I)V", "endPos", "getEndPos", "setEndPos", "isClickReplay", "", "()Z", "setClickReplay", "(Z)V", "isFirstPlay", "setFirstPlay", "isPlayOnFirstFrame", "setPlayOnFirstFrame", "isPlayOnLastFrame", "setPlayOnLastFrame", "replayCount", "getReplayCount", "setReplayCount", "startPos", "getStartPos", "setStartPos", "videoDuration", "getVideoDuration", "setVideoDuration", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public final class VideoAdReportData
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  private int a;
   private int b;
   private int c = 1;
   private int d;
@@ -14,25 +13,21 @@ public final class VideoAdReportData
   private int f = 1;
   private int g;
   private int h;
+  private boolean i;
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.i = paramBoolean;
   }
   
   public final int b()
@@ -104,10 +99,15 @@ public final class VideoAdReportData
   {
     this.h = paramInt;
   }
+  
+  public final boolean i()
+  {
+    return this.i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.VideoAdReportData
  * JD-Core Version:    0.7.0.1
  */

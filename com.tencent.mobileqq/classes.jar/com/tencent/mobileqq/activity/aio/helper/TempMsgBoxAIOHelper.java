@@ -14,29 +14,29 @@ public class TempMsgBoxAIOHelper
   implements ILifeCycleHelper
 {
   public static String a = "TempMsgBoxAIOHelper";
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Activity b;
+  private QQAppInterface c;
   
   public TempMsgBoxAIOHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    this.c = paramBaseChatPie.d;
+    this.b = paramBaseChatPie.f;
   }
   
   public int a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+    Object localObject = this.b.getIntent();
     int i = paramInt;
     if (localObject != null)
     {
       i = paramInt;
       if (((Intent)localObject).getBooleanExtra("enter_from_temp_msg_box", false))
       {
-        localObject = ((ITempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).getMsgBoxRecentUsers();
-        IConversationFacade localIConversationFacade = (IConversationFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IConversationFacade.class, "");
+        localObject = ((ITempMsgBoxManager)this.c.getRuntimeService(ITempMsgBoxManager.class, "")).getMsgBoxRecentUsers();
+        IConversationFacade localIConversationFacade = (IConversationFacade)this.c.getRuntimeService(IConversationFacade.class, "");
         i = paramInt;
         if (localIConversationFacade != null) {
-          i = RecentItemTempMsgBoxData.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject, localIConversationFacade);
+          i = RecentItemTempMsgBoxData.a(this.c, (List)localObject, localIConversationFacade);
         }
       }
     }
@@ -46,7 +46,7 @@ public class TempMsgBoxAIOHelper
   @NonNull
   public String getTag()
   {
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public int[] interestedIn()
@@ -58,7 +58,7 @@ public class TempMsgBoxAIOHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TempMsgBoxAIOHelper
  * JD-Core Version:    0.7.0.1
  */

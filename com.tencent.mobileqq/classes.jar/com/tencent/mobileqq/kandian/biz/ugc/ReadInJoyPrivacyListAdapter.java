@@ -16,18 +16,18 @@ public class ReadInJoyPrivacyListAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<Long> jdField_a_of_type_JavaUtilList;
+  private Context a;
+  private List<Long> b;
   
   public ReadInJoyPrivacyListAdapter(Context paramContext, List<Long> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramContext;
+    this.b = paramList;
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -46,7 +46,7 @@ public class ReadInJoyPrivacyListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     View localView = null;
     if (localList != null)
     {
@@ -55,11 +55,11 @@ public class ReadInJoyPrivacyListAdapter
       }
       if (paramView == null)
       {
-        localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560258, paramViewGroup, false);
+        localView = LayoutInflater.from(this.a).inflate(2131626305, paramViewGroup, false);
         paramViewGroup = new ReadInJoyPrivacyListAdapter.PrivacyItemViewHolder();
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131376818));
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView = ((ReadInJoyHeadImageView)localView.findViewById(2131369373));
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)localView.findViewById(2131379784));
+        paramViewGroup.a = ((LinearLayout)localView.findViewById(2131445148));
+        paramViewGroup.b = ((ReadInJoyHeadImageView)localView.findViewById(2131436404));
+        paramViewGroup.c = ((ReadInJoyNickNameTextView)localView.findViewById(2131448606));
         localView.setTag(paramViewGroup);
       }
       else
@@ -74,11 +74,11 @@ public class ReadInJoyPrivacyListAdapter
       }
       if (paramViewGroup != null)
       {
-        long l = ((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue();
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setHeadImgByUin(l);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView.setNickNameByUin(l);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131376109, Integer.valueOf(paramInt));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+        long l = ((Long)this.b.get(paramInt)).longValue();
+        paramViewGroup.b.setHeadImgByUin(l);
+        paramViewGroup.c.setNickNameByUin(l);
+        paramViewGroup.a.setTag(2131444312, Integer.valueOf(paramInt));
+        paramViewGroup.a.setOnClickListener(this);
       }
       return localView;
     }
@@ -87,22 +87,22 @@ public class ReadInJoyPrivacyListAdapter
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131376818) {
+    if (paramView.getId() != 2131445148) {
       return;
     }
-    if (paramView.getTag(2131376109) != null)
+    if (paramView.getTag(2131444312) != null)
     {
-      int i = ((Integer)paramView.getTag(2131376109)).intValue();
-      paramView = this.jdField_a_of_type_JavaUtilList;
+      int i = ((Integer)paramView.getTag(2131444312)).intValue();
+      paramView = this.b;
       if ((paramView != null) && (paramView.size() > i)) {
-        ReadInJoyCommentUtils.a(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), this.jdField_a_of_type_AndroidContentContext);
+        ReadInJoyCommentUtils.a(String.valueOf(this.b.get(i)), this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyPrivacyListAdapter
  * JD-Core Version:    0.7.0.1
  */

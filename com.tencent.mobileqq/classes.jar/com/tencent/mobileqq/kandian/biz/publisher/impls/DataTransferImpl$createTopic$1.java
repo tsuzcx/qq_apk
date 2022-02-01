@@ -10,8 +10,6 @@ import org.jetbrains.annotations.NotNull;
 public final class DataTransferImpl$createTopic$1
   implements IColumnModel.IColumnCallback
 {
-  DataTransferImpl$createTopic$1(Function4 paramFunction4) {}
-  
   public void a(int paramInt1, @NotNull String paramString, int paramInt2, long paramLong)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
@@ -31,7 +29,7 @@ public final class DataTransferImpl$createTopic$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.DataTransferImpl.createTopic.1
  * JD-Core Version:    0.7.0.1
  */

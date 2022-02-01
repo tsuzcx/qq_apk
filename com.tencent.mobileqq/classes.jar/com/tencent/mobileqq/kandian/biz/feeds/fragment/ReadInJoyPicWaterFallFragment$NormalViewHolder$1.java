@@ -22,21 +22,21 @@ class ReadInJoyPicWaterFallFragment$NormalViewHolder$1
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
+    paramView = this.b.g.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
     if (!TextUtils.isEmpty(paramView))
     {
-      ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_AndroidContentContext, paramView);
-      paramView = GalleryReportedUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment.b(), 16, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      ReadInJoyUtils.a(this.b.d, paramView);
+      paramView = GalleryReportedUtils.a(this.b.r.v(), this.b.r.d(), 16, this.b.a(), this.b.g);
       try
       {
         paramView.put("card_type", 8);
-        GalleryReportedUtils.ReportData localReportData = new GalleryReportedUtils.ReportData(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-        localReportData.e = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID);
-        localReportData.f = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mStrategyId);
-        localReportData.g = paramView.toString();
-        localReportData.a = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.publishUin);
-        localReportData.b = "0X8008E2F";
+        GalleryReportedUtils.ReportData localReportData = new GalleryReportedUtils.ReportData(this.b.g);
+        localReportData.f = String.valueOf(this.b.g.mArticleID);
+        localReportData.g = String.valueOf(this.b.g.mStrategyId);
+        localReportData.h = paramView.toString();
+        localReportData.b = String.valueOf(this.b.g.publishUin);
         localReportData.c = "0X8008E2F";
+        localReportData.d = "0X8008E2F";
         GalleryReportedUtils.a(localReportData);
       }
       catch (JSONException paramView)
@@ -44,14 +44,14 @@ class ReadInJoyPicWaterFallFragment$NormalViewHolder$1
         paramView.printStackTrace();
       }
     }
-    ReadInJoyPicWaterFallFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment.b(), 1008);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ReadInJoyPicWaterFallFragment.d);
-    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyPicWaterFallFragment$NormalViewHolder.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
+    ReadInJoyPicWaterFallFragment.a(this.b.g, this.b.r.d(), 1008);
+    this.b.f.setTextColor(ReadInJoyPicWaterFallFragment.v);
+    ReadInJoyLogicEngine.a().a(this.b.g.mArticleID, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyPicWaterFallFragment.NormalViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -173,7 +173,7 @@ public class TroopAioAppServiceImpl
     }
     if (!GroupUtil.a(getAppsFromCache(paramLong)))
     {
-      GroupAppsServlet.a(this.mApp, paramLong);
+      GroupAppsServlet.b(this.mApp, paramLong);
       return;
     }
     GroupUtil.a(new TroopAioAppServiceImpl.2(this, paramLong));
@@ -284,7 +284,7 @@ public class TroopAioAppServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.impl.TroopAioAppServiceImpl
  * JD-Core Version:    0.7.0.1
  */

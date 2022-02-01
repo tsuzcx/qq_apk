@@ -11,10 +11,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AsyncExitTask
 {
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
   private static boolean b;
-  private int jdField_a_of_type_Int = -1;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private final Object c = new Object();
+  private int d = -1;
   
   static
   {
@@ -29,12 +29,12 @@ public class AsyncExitTask
   
   public static void a()
   {
-    if ((!b) && (!jdField_a_of_type_Boolean)) {
+    if ((!b) && (!a)) {
       ThreadManager.excute(new AsyncExitTask.1(), 16, null, true);
     }
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     if (!b)
     {
@@ -53,7 +53,7 @@ public class AsyncExitTask
         localStringBuilder.append("], cost[");
         localStringBuilder.append(SystemClock.elapsedRealtime() - l);
         localStringBuilder.append("], initDpcMng[");
-        localStringBuilder.append(jdField_a_of_type_Boolean);
+        localStringBuilder.append(a);
         localStringBuilder.append("]");
         QLog.i("AsyncExitTask", 2, localStringBuilder.toString());
       }
@@ -63,27 +63,27 @@ public class AsyncExitTask
   
   public int a(QQGAudioCtrl arg1)
   {
-    this.jdField_a_of_type_Int = -1000001;
+    this.d = -1000001;
     ThreadManager.excute(new AsyncExitTask.2(this, ???), 16, null, false);
     try
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.c)
       {
-        this.jdField_a_of_type_JavaLangObject.wait(2000);
+        this.c.wait(2000);
       }
     }
     catch (InterruptedException localInterruptedException)
     {
       localInterruptedException.printStackTrace();
       int i;
-      if (this.jdField_a_of_type_Int == -1000001) {
+      if (this.d == -1000001) {
         i = 261;
       } else {
         i = -1;
       }
       ??? = new StringBuilder();
       ???.append("asyncExitRoom.quitRoom end. continue. quitResult = ");
-      ???.append(this.jdField_a_of_type_Int);
+      ???.append(this.d);
       QLog.d("AsyncExitTask", 1, ???.toString());
       return i;
     }

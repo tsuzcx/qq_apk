@@ -15,7 +15,7 @@ public class QFileAssistantUtilsImpl
 {
   public boolean checkNotifyDeviceOnline(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return QQFileAssistantUtils.c(paramBaseQQAppInterface);
+    return QQFileAssistantUtils.h(paramBaseQQAppInterface);
   }
   
   public int decodeMessageDeviceType(msg_comm.Msg paramMsg)
@@ -25,17 +25,17 @@ public class QFileAssistantUtilsImpl
   
   public int getCurrentDeviceType()
   {
-    return QQFileAssistantUtils.a();
+    return QQFileAssistantUtils.b();
   }
   
   public int getCurrentTargetDeviceType()
   {
-    return QQFileAssistantUtils.b();
+    return QQFileAssistantUtils.c();
   }
   
   public int getMachineHeadResId(int paramInt)
   {
-    return QQFileAssistantUtils.b(paramInt);
+    return QQFileAssistantUtils.c(paramInt);
   }
   
   public String getMachineNickName(Context paramContext, int paramInt)
@@ -45,22 +45,22 @@ public class QFileAssistantUtilsImpl
   
   public int getMachineType(int paramInt)
   {
-    return QQFileAssistantUtils.a(paramInt);
+    return QQFileAssistantUtils.b(paramInt);
   }
   
   public String getNewVersionDatalineUin(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return QQFileAssistantUtils.a(paramBaseQQAppInterface);
+    return QQFileAssistantUtils.f(paramBaseQQAppInterface);
   }
   
   public long getOfflineDelay(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return QQFileAssistantUtils.b(paramBaseQQAppInterface);
+    return QQFileAssistantUtils.d(paramBaseQQAppInterface);
   }
   
   public long getOnlyOfflineLimitSize(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return QQFileAssistantUtils.a(paramBaseQQAppInterface);
+    return QQFileAssistantUtils.c(paramBaseQQAppInterface);
   }
   
   public boolean isAutoDownloadOffline(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
@@ -85,7 +85,7 @@ public class QFileAssistantUtilsImpl
   
   public boolean isNeedShowPadOpts(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return QQFileAssistantUtils.b(paramBaseQQAppInterface);
+    return QQFileAssistantUtils.e(paramBaseQQAppInterface);
   }
   
   public boolean isNewVersionDataline()
@@ -105,7 +105,7 @@ public class QFileAssistantUtilsImpl
   
   public void notifyUpdateRecentFileAssistant(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    QQFileAssistantUtils.c(paramBaseQQAppInterface);
+    QQFileAssistantUtils.i(paramBaseQQAppInterface);
   }
   
   public void openNewDatalineAio(Context paramContext)
@@ -125,7 +125,7 @@ public class QFileAssistantUtilsImpl
   
   public void resetFileAssistantOnlineMark(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    QQFileAssistantUtils.b(paramBaseQQAppInterface);
+    QQFileAssistantUtils.g(paramBaseQQAppInterface);
   }
   
   public void saveMessageDeviceType(MessageRecord paramMessageRecord, int paramInt)
@@ -150,7 +150,7 @@ public class QFileAssistantUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QFileAssistantUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,12 @@ class DoodlePanel$5
   
   public boolean a(String paramString)
   {
-    return DoodlePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodlePanel, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleItem);
+    return DoodlePanel.a(this.b, paramString, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodlePanel.5
  * JD-Core Version:    0.7.0.1
  */

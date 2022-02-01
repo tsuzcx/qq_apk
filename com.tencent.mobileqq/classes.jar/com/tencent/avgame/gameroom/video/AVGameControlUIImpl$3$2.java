@@ -10,13 +10,13 @@ class AVGameControlUIImpl$3$2
   
   public void run()
   {
-    if (this.a.a.a()) {
+    if (this.a.a.d()) {
       return;
     }
-    long l = QQAudioHelper.b();
-    this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.b("onAfterCloseCamera", l);
+    long l = QQAudioHelper.d();
+    this.a.a.h.b("onAfterCloseCamera", l);
     AVGameControlUIImpl.b(this.a.a);
-    this.a.a.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.c(false);
+    this.a.a.i.c(false);
   }
 }
 

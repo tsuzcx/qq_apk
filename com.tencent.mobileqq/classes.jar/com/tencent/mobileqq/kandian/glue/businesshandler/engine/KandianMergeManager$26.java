@@ -12,14 +12,14 @@ class KandianMergeManager$26
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.this$0), 1).edit();
-    localEditor.putString("kandian_push_msg_xml", this.jdField_a_of_type_JavaLangString).putLong("kandian_push_msg_time", this.jdField_a_of_type_Long);
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.c(this.this$0), 1).edit();
+    localEditor.putString("kandian_push_msg_xml", this.a).putLong("kandian_push_msg_time", this.b);
     RIJSPUtils.a(localEditor, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.26
  * JD-Core Version:    0.7.0.1
  */

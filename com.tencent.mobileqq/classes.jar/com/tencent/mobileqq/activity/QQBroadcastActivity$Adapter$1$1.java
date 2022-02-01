@@ -17,22 +17,22 @@ class QQBroadcastActivity$Adapter$1$1
       if (paramInt != 1) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.getCount() > 0)
+      if (this.a.b.b.d.getCount() > 0)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.app.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.a(), 0);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.changeCursor(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.getCursor());
+        this.a.b.b.app.getMessageFacade().c(this.a.b.b.b(), 0);
+        this.a.b.b.d.changeCursor(this.a.b.getCursor());
       }
     }
     else
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.app.getMessageFacade().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.a(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQBroadcastActivity$Adapter.a.b();
+      this.a.b.b.app.getMessageFacade().h(this.a.b.b.b(), 0, this.a.a);
+      this.a.b.b.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity.Adapter.1.1
  * JD-Core Version:    0.7.0.1
  */

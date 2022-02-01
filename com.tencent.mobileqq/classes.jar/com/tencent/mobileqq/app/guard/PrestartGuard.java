@@ -10,13 +10,13 @@ public class PrestartGuard
   {
     super.a();
     if (QLog.isColorLevel()) {
-      QLog.d("GuardManager.PrestartGuard", 2, new Object[] { "PrestartGuard ontick: clearTime: ", Long.valueOf(this.d), " guardTime: ", Long.valueOf(this.c) });
+      QLog.d("GuardManager.PrestartGuard", 2, new Object[] { "PrestartGuard ontick: clearTime: ", Long.valueOf(this.g), " guardTime: ", Long.valueOf(this.f) });
     }
-    if (this.d >= GuardConfig.a().a / 12000L)
+    if (this.g >= GuardConfig.a().g / 12000L)
     {
       CoreService.stopTempService();
-      this.a.c();
-      this.d = 0L;
+      this.e.cancelTimer();
+      this.g = 0L;
     }
   }
   
@@ -33,13 +33,13 @@ public class PrestartGuard
     if (QLog.isColorLevel()) {
       QLog.d("GuardManager.PrestartGuard", 2, new Object[] { "PrestartGuard: onEnter proc", paramString });
     }
-    this.a.b();
+    this.e.startTimer();
     CoreService.startTempService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.guard.PrestartGuard
  * JD-Core Version:    0.7.0.1
  */

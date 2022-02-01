@@ -16,28 +16,28 @@ class VideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver
   {
     if (QLog.isColorLevel())
     {
-      String str = VideoFeedsFirstVideoRecommendationManager.a();
+      String str = VideoFeedsFirstVideoRecommendationManager.e();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("UUIDToUrlCallback Callback vid=");
-      localStringBuilder.append(paramVideoUrlInfo.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramVideoUrlInfo.b);
       localStringBuilder.append(", url=");
-      localStringBuilder.append(paramVideoUrlInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramVideoUrlInfo.a);
       localStringBuilder.append(", isH265=");
-      localStringBuilder.append(paramVideoUrlInfo.jdField_a_of_type_Boolean);
-      localStringBuilder.append(", isHWCodec=");
-      localStringBuilder.append(paramVideoUrlInfo.jdField_b_of_type_Boolean);
-      localStringBuilder.append(", fileBitRate=");
       localStringBuilder.append(paramVideoUrlInfo.c);
+      localStringBuilder.append(", isHWCodec=");
+      localStringBuilder.append(paramVideoUrlInfo.d);
+      localStringBuilder.append(", fileBitRate=");
+      localStringBuilder.append(paramVideoUrlInfo.e);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if ((!TextUtils.isEmpty(paramVideoUrlInfo.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr.a(paramVideoUrlInfo.jdField_a_of_type_JavaLangString, paramVideoUrlInfo.jdField_b_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr.a(paramVideoUrlInfo.jdField_a_of_type_JavaLangString, paramVideoUrlInfo.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver$1.a.d);
+    if ((!TextUtils.isEmpty(paramVideoUrlInfo.a)) && (!this.a.a(paramVideoUrlInfo.a, paramVideoUrlInfo.b))) {
+      this.a.a(paramVideoUrlInfo.a, paramVideoUrlInfo.b, 0, this.b.b.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,68 @@
 package com.tencent.turingfd.sdk.xq;
 
-public final class Avocado
-  extends case
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Avocado
+  extends else
 {
-  public String Zc = "";
-  public String _c = "";
-  public String ad = "";
-  public String bd = "";
-  public int cd = 0;
-  public String dd = "";
-  public int ed = 0;
-  public String za = "";
+  public static Map<Integer, String> a;
+  public static List<String> b;
+  public int c = 0;
+  public Map<Integer, String> d = null;
+  public List<String> e = null;
   
-  public void a(byte parambyte)
+  static
   {
-    String str = this.Zc;
-    if (str != null) {
-      parambyte.b(str, 0);
+    Object localObject = new HashMap();
+    a = (Map)localObject;
+    ((Map)localObject).put(Integer.valueOf(0), "");
+    localObject = new ArrayList();
+    b = (List)localObject;
+    ((List)localObject).add("");
+  }
+  
+  public void a(case paramcase)
+  {
+    paramcase.a(this.c, 0);
+    Object localObject = this.d;
+    if (localObject != null) {
+      paramcase.a((Map)localObject, 1);
     }
-    str = this._c;
-    if (str != null) {
-      parambyte.b(str, 1);
-    }
-    str = this.ad;
-    if (str != null) {
-      parambyte.b(str, 2);
-    }
-    str = this.bd;
-    if (str != null) {
-      parambyte.b(str, 3);
-    }
-    int i = this.cd;
-    if (i != 0) {
-      parambyte.b(i, 4);
-    }
-    str = this.dd;
-    if (str != null) {
-      parambyte.b(str, 5);
-    }
-    str = this.za;
-    if (str != null) {
-      parambyte.b(str, 6);
-    }
-    i = this.ed;
-    if (i != 0) {
-      parambyte.b(i, 7);
+    localObject = this.e;
+    if (localObject != null) {
+      paramcase.a((Collection)localObject, 2);
     }
   }
   
   public void a(try paramtry)
   {
-    this.Zc = paramtry.a(0, false);
-    this._c = paramtry.a(1, false);
-    this.ad = paramtry.a(2, false);
-    this.bd = paramtry.a(3, false);
-    this.cd = paramtry.a(this.cd, 4, false);
-    this.dd = paramtry.a(5, false);
-    this.za = paramtry.a(6, false);
-    this.ed = paramtry.a(this.ed, 7, false);
+    this.c = paramtry.a(this.c, 0, true);
+    this.d = ((Map)paramtry.a(a, 1, false));
+    this.e = ((List)paramtry.a(b, 2, false));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof Avocado)) {
+      return false;
+    }
+    paramObject = (Avocado)paramObject;
+    return (goto.a(this.c, paramObject.c)) && (this.d.equals(paramObject.d)) && (this.e.equals(paramObject.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Avocado
  * JD-Core Version:    0.7.0.1
  */

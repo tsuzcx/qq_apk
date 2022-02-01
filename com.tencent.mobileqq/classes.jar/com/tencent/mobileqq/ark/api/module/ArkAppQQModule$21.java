@@ -11,10 +11,10 @@ class ArkAppQQModule$21
   
   public void run()
   {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.a;
     if (localActivity != null)
     {
-      QQToast.a(localActivity, this.jdField_a_of_type_JavaLangString, 0).a();
+      QQToast.makeText(localActivity, this.b, 0).show();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -24,7 +24,7 @@ class ArkAppQQModule$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.21
  * JD-Core Version:    0.7.0.1
  */

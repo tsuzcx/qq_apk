@@ -39,33 +39,32 @@ import mqq.manager.Manager;
 public class ExtendFriendLimitChatManager
   implements IExpandLimitChatManager, Manager
 {
-  static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final Object jdField_b_of_type_JavaLangObject = new Object();
-  protected SharedPreferences a;
-  private final LruCache<String, ExpandFriendData> jdField_a_of_type_AndroidUtilLruCache = new LruCache(50);
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private MatchInfo jdField_a_of_type_ComTencentMobileqqQqexpandBeanMatchMatchInfo;
-  public LimitChatProtoStateMachine.LimitChatMachineListener a;
-  LimitChatProtoStateMachine jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine;
-  LimitChatUiStateMachine jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine;
-  private final ExpandObserver jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver = new ExtendFriendLimitChatManager.2(this);
-  public String a;
-  private WeakReference<ExtendFriendLimitChatManager.LimitChatMatchListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
-  private String d;
+  static Object a = new Object();
+  private static final Object h = new Object();
+  public String b;
+  protected SharedPreferences c;
+  LimitChatProtoStateMachine d;
+  LimitChatUiStateMachine e;
+  public LimitChatProtoStateMachine.LimitChatMachineListener f = new ExtendFriendLimitChatManager.1(this);
+  private final QQAppInterface i;
+  private boolean j = false;
+  private WeakReference<ExtendFriendLimitChatManager.LimitChatMatchListener> k;
+  private MatchInfo l;
+  private boolean m = true;
+  private boolean n = false;
+  private String o;
+  private String p;
+  private String q;
+  private final LruCache<String, ExpandFriendData> r = new LruCache(50);
+  private final EntityManager s;
+  private final ExpandObserver t = new ExtendFriendLimitChatManager.2(this);
   
   public ExtendFriendLimitChatManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine$LimitChatMachineListener = new ExtendFriendLimitChatManager.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
+    this.i = paramQQAppInterface;
+    this.i.addObserver(this.t);
+    this.s = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.c = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
@@ -75,43 +74,28 @@ public class ExtendFriendLimitChatManager
       QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSexTypeFromSp with null app");
       return 0;
     }
-    Object localObject = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramQQAppInterface.getCurrentAccountUin());
-    int i;
+    Object localObject = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).h(paramQQAppInterface.getCurrentAccountUin());
+    int i1;
     if (localObject == null)
     {
       QLog.i("ExtendFriendLimitChatManager", 2, "获取自己的资料卡性别，缓存中未获取到，使用默认值随机");
-      i = 0;
+      i1 = 0;
     }
     else
     {
-      int j = ((Card)localObject).shGender;
-      i = 1;
-      if (j == 0) {
-        i = 2;
+      int i2 = ((Card)localObject).shGender;
+      i1 = 1;
+      if (i2 == 0) {
+        i1 = 2;
       } else if (((Card)localObject).shGender != 1) {
-        i = 0;
+        i1 = 0;
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("获取自己的资料卡性别，defaultSex:");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       QLog.i("ExtendFriendLimitChatManager", 2, ((StringBuilder)localObject).toString());
     }
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("sp_match_sex_type", i);
-  }
-  
-  public static Boolean a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    if (paramBaseQQAppInterface == null)
-    {
-      QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSwitchFlagFromSp with null app");
-      return Boolean.valueOf(false);
-    }
-    paramBaseQQAppInterface = Boolean.valueOf(paramBaseQQAppInterface.getApp().getSharedPreferences(paramBaseQQAppInterface.getCurrentAccountUin(), 0).getBoolean("sp_voice_match_switch_flag", false));
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getVoiceMatch ");
-    localStringBuilder.append(paramBaseQQAppInterface);
-    QLog.d("ExtendFriendLimitChatManager", 2, localStringBuilder.toString());
-    return paramBaseQQAppInterface;
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("sp_match_sex_type", i1);
   }
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
@@ -158,6 +142,21 @@ public class ExtendFriendLimitChatManager
     }
   }
   
+  public static Boolean b(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    if (paramBaseQQAppInterface == null)
+    {
+      QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSwitchFlagFromSp with null app");
+      return Boolean.valueOf(false);
+    }
+    paramBaseQQAppInterface = Boolean.valueOf(paramBaseQQAppInterface.getApp().getSharedPreferences(paramBaseQQAppInterface.getCurrentAccountUin(), 0).getBoolean("sp_voice_match_switch_flag", false));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getVoiceMatch ");
+    localStringBuilder.append(paramBaseQQAppInterface);
+    QLog.d("ExtendFriendLimitChatManager", 2, localStringBuilder.toString());
+    return paramBaseQQAppInterface;
+  }
+  
   public static void b(QQAppInterface paramQQAppInterface, Boolean paramBoolean)
   {
     if (paramQQAppInterface == null)
@@ -175,15 +174,15 @@ public class ExtendFriendLimitChatManager
     }
   }
   
-  private void e()
+  private void i()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = this.i;
     if (localObject1 == null) {
       return;
     }
     try
     {
-      localObject1 = ((QQAppInterface)localObject1).getProxyManager().a();
+      localObject1 = ((QQAppInterface)localObject1).getProxyManager().g();
       Object localObject3 = ((RecentUserProxy)localObject1).a(false);
       Object localObject2 = new ArrayList();
       if ((localObject3 != null) && (((List)localObject3).size() > 0))
@@ -208,9 +207,9 @@ public class ExtendFriendLimitChatManager
           ((RecentUserProxy)localObject1).a((RecentUser)((Iterator)localObject2).next());
         }
       }
-      if (this.jdField_a_of_type_AndroidContentSharedPreferences != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("init_matchchat_folder", false).commit();
+        this.c.edit().putBoolean("init_matchchat_folder", false).commit();
         return;
       }
     }
@@ -220,11 +219,6 @@ public class ExtendFriendLimitChatManager
     }
   }
   
-  public int a()
-  {
-    return a().a();
-  }
-  
   public ExpandFriendData a(String paramString)
   {
     boolean bool = TextUtils.isEmpty(paramString);
@@ -232,13 +226,13 @@ public class ExtendFriendLimitChatManager
     if (bool) {
       return null;
     }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    EntityManager localEntityManager = this.s;
     Object localObject1 = localObject2;
     if (localEntityManager != null)
     {
       localObject1 = localObject2;
       if (localEntityManager.isOpen()) {
-        localObject1 = (ExpandFriendData)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(ExpandFriendData.class, paramString);
+        localObject1 = (ExpandFriendData)this.s.find(ExpandFriendData.class, paramString);
       }
     }
     return localObject1;
@@ -251,7 +245,7 @@ public class ExtendFriendLimitChatManager
       QLog.w("ExtendFriendLimitChatManager", 1, "getExpandFriendDataCache but uin is empty");
       return null;
     }
-    ExpandFriendData localExpandFriendData2 = (ExpandFriendData)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+    ExpandFriendData localExpandFriendData2 = (ExpandFriendData)this.r.get(paramString);
     ExpandFriendData localExpandFriendData1 = localExpandFriendData2;
     if (localExpandFriendData2 == null)
     {
@@ -262,51 +256,12 @@ public class ExtendFriendLimitChatManager
         localExpandFriendData1 = localExpandFriendData2;
         if (localExpandFriendData2 != null)
         {
-          this.jdField_a_of_type_AndroidUtilLruCache.put(paramString, localExpandFriendData2);
+          this.r.put(paramString, localExpandFriendData2);
           localExpandFriendData1 = localExpandFriendData2;
         }
       }
     }
     return localExpandFriendData1;
-  }
-  
-  public LimitChatProtoStateMachine a()
-  {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine;
-    if (??? != null) {
-      return ???;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine != null)
-      {
-        localLimitChatProtoStateMachine = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine;
-        return localLimitChatProtoStateMachine;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine = new LimitChatProtoStateMachine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine$LimitChatMachineListener);
-      LimitChatProtoStateMachine localLimitChatProtoStateMachine = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine;
-      return localLimitChatProtoStateMachine;
-    }
-  }
-  
-  public LimitChatUiStateMachine a()
-  {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine;
-    if (??? != null) {
-      return ???;
-    }
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine != null)
-      {
-        localLimitChatUiStateMachine = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine;
-        return localLimitChatUiStateMachine;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine = new LimitChatUiStateMachine(this);
-      LimitChatUiStateMachine localLimitChatUiStateMachine = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatUiStateMachine;
-      return localLimitChatUiStateMachine;
-    }
   }
   
   public Object a(String paramString, int paramInt)
@@ -320,29 +275,29 @@ public class ExtendFriendLimitChatManager
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidUtilLruCache.evictAll();
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    this.r.evictAll();
+    EntityManager localEntityManager = this.s;
     if ((localEntityManager != null) && (localEntityManager.isOpen())) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(ExpandFriendData.class);
+      this.s.drop(ExpandFriendData.class);
     }
   }
   
   public void a(int paramInt)
   {
-    a().b(101, paramInt);
+    d().b(101, paramInt);
   }
   
   public void a(ExpandFriendData paramExpandFriendData)
   {
     if ((paramExpandFriendData != null) && (!TextUtils.isEmpty(paramExpandFriendData.matchUin)))
     {
-      this.jdField_a_of_type_AndroidUtilLruCache.put(paramExpandFriendData.matchUin, paramExpandFriendData);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+      this.r.put(paramExpandFriendData.matchUin, paramExpandFriendData);
+      Object localObject = this.s;
       if ((localObject != null) && (((EntityManager)localObject).isOpen())) {
         if (paramExpandFriendData.getStatus() == 1000) {
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramExpandFriendData);
+          this.s.persistOrReplace(paramExpandFriendData);
         } else if (paramExpandFriendData.getStatus() == 1001) {
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramExpandFriendData);
+          this.s.update(paramExpandFriendData);
         }
       }
       if (QLog.isColorLevel())
@@ -359,22 +314,22 @@ public class ExtendFriendLimitChatManager
   
   public void a(TagInfo paramTagInfo)
   {
-    int i;
+    int i1;
     if (paramTagInfo != null) {
-      i = paramTagInfo.a;
+      i1 = paramTagInfo.a;
     } else {
-      i = 1;
+      i1 = 1;
     }
-    a().b(102, i);
+    d().b(102, i1);
   }
   
   public void a(ExtendFriendLimitChatManager.LimitChatMatchListener paramLimitChatMatchListener)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.k;
     if (localWeakReference != null) {
       localWeakReference.clear();
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramLimitChatMatchListener);
+    this.k = new WeakReference(paramLimitChatMatchListener);
   }
   
   public void a(String paramString, int paramInt, Object paramObject)
@@ -401,12 +356,12 @@ public class ExtendFriendLimitChatManager
   
   public void a(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(String.valueOf(paramString1), String.valueOf(paramString2), paramArrayOfByte);
+    this.i.getMsgCache().b(String.valueOf(paramString1), String.valueOf(paramString2), paramArrayOfByte);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
   }
   
   public void a(boolean paramBoolean, MatchFeedInfo paramMatchFeedInfo)
@@ -419,22 +374,10 @@ public class ExtendFriendLimitChatManager
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.d = paramString3;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return false;
-    }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getBoolean("init_matchchat_folder", true);
-    }
-    return false;
+    this.n = paramBoolean;
+    this.o = paramString1;
+    this.p = paramString2;
+    this.q = paramString3;
   }
   
   public boolean a(Context paramContext)
@@ -445,18 +388,18 @@ public class ExtendFriendLimitChatManager
     if (QLog.isColorLevel()) {
       QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog");
     }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    if ((!this.m) && (this.n))
     {
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramContext.getString(2131699196);
+      if (TextUtils.isEmpty(this.o)) {
+        this.o = paramContext.getString(2131897212);
       }
-      if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        this.jdField_c_of_type_JavaLangString = paramContext.getString(2131699194);
+      if (TextUtils.isEmpty(this.p)) {
+        this.p = paramContext.getString(2131897210);
       }
-      if (TextUtils.isEmpty(this.d)) {
-        this.d = "https://ti.qq.com/realname/index.html";
+      if (TextUtils.isEmpty(this.q)) {
+        this.q = "https://ti.qq.com/realname/index.html";
       }
-      paramContext = DialogUtil.a(paramContext, 230, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, paramContext.getString(2131699195), paramContext.getString(2131699197), new ExtendFriendLimitChatManager.3(this, paramContext), new ExtendFriendLimitChatManager.4(this));
+      paramContext = DialogUtil.a(paramContext, 230, this.o, this.p, paramContext.getString(2131897211), paramContext.getString(2131897213), new ExtendFriendLimitChatManager.3(this, paramContext), new ExtendFriendLimitChatManager.4(this));
       paramContext.setCancelable(false);
       paramContext.show();
       return true;
@@ -476,20 +419,40 @@ public class ExtendFriendLimitChatManager
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanMatchMatchInfo = null;
+    this.l = null;
   }
   
-  public boolean b(BaseQQAppInterface paramBaseQQAppInterface)
+  public LimitChatProtoStateMachine c()
+  {
+    ??? = this.d;
+    if (??? != null) {
+      return ???;
+    }
+    synchronized (a)
+    {
+      if (this.d != null)
+      {
+        localLimitChatProtoStateMachine = this.d;
+        return localLimitChatProtoStateMachine;
+      }
+      this.d = new LimitChatProtoStateMachine(this.i);
+      this.d.a(this.f);
+      LimitChatProtoStateMachine localLimitChatProtoStateMachine = this.d;
+      return localLimitChatProtoStateMachine;
+    }
+  }
+  
+  public boolean c(BaseQQAppInterface paramBaseQQAppInterface)
   {
     boolean bool;
     if (paramBaseQQAppInterface != null)
     {
-      bool = a(paramBaseQQAppInterface).booleanValue();
+      bool = b(paramBaseQQAppInterface).booleanValue();
       if (bool)
       {
         paramBaseQQAppInterface = (IExpandManager)paramBaseQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
         if (paramBaseQQAppInterface != null) {
-          bool = paramBaseQQAppInterface.j();
+          bool = paramBaseQQAppInterface.P();
         }
       }
       else
@@ -508,43 +471,79 @@ public class ExtendFriendLimitChatManager
     return bool;
   }
   
-  public void c()
+  public LimitChatUiStateMachine d()
   {
-    a().a(103);
+    ??? = this.e;
+    if (??? != null) {
+      return ???;
+    }
+    synchronized (h)
+    {
+      if (this.e != null)
+      {
+        localLimitChatUiStateMachine = this.e;
+        return localLimitChatUiStateMachine;
+      }
+      this.e = new LimitChatUiStateMachine(this);
+      LimitChatUiStateMachine localLimitChatUiStateMachine = this.e;
+      return localLimitChatUiStateMachine;
+    }
   }
   
-  public void d()
+  public void e()
+  {
+    d().b(103);
+  }
+  
+  public int f()
+  {
+    return d().a();
+  }
+  
+  public void g()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[initManager], threadId:");
     localStringBuilder.append(Thread.currentThread().getId());
     QLog.i("ExtendFriendLimitChatManager", 1, localStringBuilder.toString());
-    if (a()) {
-      e();
+    if (h()) {
+      i();
     }
+  }
+  
+  public boolean h()
+  {
+    if (this.i == null) {
+      return false;
+    }
+    SharedPreferences localSharedPreferences = this.c;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getBoolean("init_matchchat_folder", true);
+    }
+    return false;
   }
   
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine;
+    Object localObject = this.d;
     if (localObject != null)
     {
       ((LimitChatProtoStateMachine)localObject).b();
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine = null;
+      this.d = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandObserver);
-    localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.i.removeObserver(this.t);
+    localObject = this.k;
     if (localObject != null)
     {
       ((WeakReference)localObject).clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.k = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandBeanMatchMatchInfo = null;
+    this.l = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExtendFriendLimitChatManager
  * JD-Core Version:    0.7.0.1
  */

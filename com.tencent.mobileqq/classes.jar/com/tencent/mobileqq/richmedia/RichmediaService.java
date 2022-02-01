@@ -21,16 +21,16 @@ public class RichmediaService
   extends AppService
   implements Handler.Callback, RichmediaIPCConstants
 {
-  static volatile RichmediaService jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService;
-  static volatile WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  Messenger jdField_a_of_type_AndroidOsMessenger;
-  volatile ICallBack jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
-  RichmediaService.IncomingHandler jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService$IncomingHandler;
-  Messenger b;
+  static volatile RichmediaService a;
+  static volatile WeakReferenceHandler b;
+  Messenger c;
+  Messenger d;
+  RichmediaService.IncomingHandler e;
+  volatile ICallBack f;
   
   public static RichmediaService a()
   {
-    return jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService;
+    return a;
   }
   
   static void a(int paramInt, Bundle paramBundle)
@@ -41,7 +41,7 @@ public class RichmediaService
     ((StringBuilder)localObject).append(",data = ");
     ((StringBuilder)localObject).append(paramBundle);
     LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
-    localObject = jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
+    localObject = b;
     if (localObject != null)
     {
       ((Handler)localObject).post(new RichmediaService.1(paramInt, paramBundle));
@@ -59,10 +59,10 @@ public class RichmediaService
   public static boolean a(Intent paramIntent)
   {
     LOG.a("RichmediaService", "addPresendMgrHandlerToIntent start .");
-    Object localObject = jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService;
+    Object localObject = a;
     if (localObject != null)
     {
-      localObject = ((RichmediaService)localObject).jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
+      localObject = ((RichmediaService)localObject).f;
       if (localObject != null)
       {
         try
@@ -112,8 +112,8 @@ public class RichmediaService
         {
           paramIntent = new Bundle();
           paramIntent.putInt("key_presend_cancel_type", 1022);
-          if (jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
-            jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
+          if (b != null) {
+            b.removeCallbacksAndMessages(null);
           }
           d(paramIntent);
         }
@@ -140,14 +140,14 @@ public class RichmediaService
     ((StringBuilder)localObject).append("startCompress start . compressInfo.localUUID = ");
     ((StringBuilder)localObject).append(paramCompressInfo.a);
     ((StringBuilder)localObject).append(",compressInfo.srcPath = ");
-    ((StringBuilder)localObject).append(paramCompressInfo.c);
+    ((StringBuilder)localObject).append(paramCompressInfo.h);
     LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
-    localObject = jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService;
+    localObject = a;
     boolean bool = true;
     StringBuilder localStringBuilder1;
     if (localObject != null)
     {
-      localObject = ((RichmediaService)localObject).jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
+      localObject = ((RichmediaService)localObject).f;
       if (localObject != null)
       {
         try
@@ -156,14 +156,14 @@ public class RichmediaService
           localStringBuilder2.append("startCompress cb.compress start . compressInfo.localUUID = ");
           localStringBuilder2.append(paramCompressInfo.a);
           localStringBuilder2.append(",compressInfo.srcPath = ");
-          localStringBuilder2.append(paramCompressInfo.c);
+          localStringBuilder2.append(paramCompressInfo.h);
           LOG.a("RichmediaService", localStringBuilder2.toString());
           ((ICallBack)localObject).a(paramCompressInfo);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("startCompress cb.compress finish. compressInfo.localUUID = ");
           ((StringBuilder)localObject).append(paramCompressInfo.a);
           ((StringBuilder)localObject).append(",compressInfo.dstPath = ");
-          ((StringBuilder)localObject).append(paramCompressInfo.e);
+          ((StringBuilder)localObject).append(paramCompressInfo.l);
           LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
           bool = false;
         }
@@ -200,14 +200,14 @@ public class RichmediaService
       localStringBuilder1.append("startCompress compressInMainProcess start . compressInfo.localUUID = ");
       localStringBuilder1.append(paramCompressInfo.a);
       localStringBuilder1.append(",compressInfo.srcPath = ");
-      localStringBuilder1.append(paramCompressInfo.c);
+      localStringBuilder1.append(paramCompressInfo.h);
       LOG.a("RichmediaService", localStringBuilder1.toString());
       ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(paramCompressInfo);
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("startCompress compressInMainProcess finish. compressInfo.localUUID = ");
       localStringBuilder1.append(paramCompressInfo.a);
       localStringBuilder1.append(",compressInfo.dstPath = ");
-      localStringBuilder1.append(paramCompressInfo.e);
+      localStringBuilder1.append(paramCompressInfo.l);
       LOG.a("RichmediaService", localStringBuilder1.toString());
     }
     return bool;
@@ -241,7 +241,7 @@ public class RichmediaService
     ((StringBuilder)localObject).append(",data = ");
     ((StringBuilder)localObject).append(paramBundle);
     LOG.a("RichmediaService", ((StringBuilder)localObject).toString());
-    if (this.b == null)
+    if (this.d == null)
     {
       LOG.b("RichmediaService", "sendToClient failed. mClient is null");
       return false;
@@ -253,7 +253,7 @@ public class RichmediaService
     ((Message)localObject).setData(paramBundle);
     try
     {
-      this.b.send((Message)localObject);
+      this.d.send((Message)localObject);
       return true;
     }
     catch (Exception paramBundle)
@@ -281,16 +281,16 @@ public class RichmediaService
     if (QLog.isColorLevel()) {
       QLog.i("PreUploadVideo", 2, "[onBind]");
     }
-    return this.jdField_a_of_type_AndroidOsMessenger.getBinder();
+    return this.c.getBinder();
   }
   
   public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService$IncomingHandler = new RichmediaService.IncomingHandler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService$IncomingHandler);
-    jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService = this;
-    jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+    this.e = new RichmediaService.IncomingHandler(ThreadManager.getSubThreadLooper(), this);
+    this.c = new Messenger(this.e);
+    a = this;
+    b = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
     if (QLog.isColorLevel()) {
       QLog.i("PreUploadVideo", 2, "[onCreate]");
     }
@@ -299,9 +299,9 @@ public class RichmediaService
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService$IncomingHandler = null;
-    jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService = null;
-    jdField_a_of_type_ComTencentUtilWeakReferenceHandler = null;
+    this.e = null;
+    a = null;
+    b = null;
     if (QLog.isColorLevel()) {
       QLog.i("PreUploadVideo", 2, "[onDestroy]");
     }
@@ -309,7 +309,7 @@ public class RichmediaService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaService
  * JD-Core Version:    0.7.0.1
  */

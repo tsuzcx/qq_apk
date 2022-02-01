@@ -10,17 +10,17 @@ final class TroopBarPublishUtils$2
 {
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.b, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$IGrantCameraCallback.a(TroopBarUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AppConstants.SDCARD_IMG_SAVE, 1001));
+    this.a.a(TroopBarUtils.a(this.b, AppConstants.SDCARD_IMG_SAVE, 1001));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.2
  * JD-Core Version:    0.7.0.1
  */

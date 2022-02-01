@@ -47,7 +47,7 @@ public class SearchEntryHippyEngine
     setDebugMode(isHippyDebug());
     setPropsMap(getStartPageInitPropMap(paramViolaFragment.getContentView()));
     setViewCreator(new SearchHippyViewCreator());
-    initHippyInContainer((ViewGroup)paramViolaFragment.getContentView().findViewById(2131380915), new JSONObject(), false, paramHippyQQEngineListener);
+    initHippyInContainer((ViewGroup)paramViolaFragment.getContentView().findViewById(2131449905), new JSONObject(), false, paramHippyQQEngineListener);
   }
   
   @NotNull
@@ -62,7 +62,7 @@ public class SearchEntryHippyEngine
     ((HippyMap)localObject).pushString("history", RequestHistoryDataMethod.getHistoryListStr());
     ((HippyMap)localObject).pushString("guid", ((ITKDHippyBridge)QRoute.api(ITKDHippyBridge.class)).getCurAccountInfo().qqNum);
     ((HippyMap)localObject).pushString("type", "homePage");
-    ((HippyMap)localObject).pushString("hint", ResourceUtil.getString(2131718624));
+    ((HippyMap)localObject).pushString("hint", ResourceUtil.getString(2131916125));
     ((HippyMap)localObject).pushString("data", SearchHippyEventEmitter.mapToJsonStr(SearchHotwordHandler.getHotwordDataMap(this.hotwordHandler, null)));
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushInt("skinMode", 0);
@@ -115,7 +115,7 @@ public class SearchEntryHippyEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchEntryHippyEngine
  * JD-Core Version:    0.7.0.1
  */

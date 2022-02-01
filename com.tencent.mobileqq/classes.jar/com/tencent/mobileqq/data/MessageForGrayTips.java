@@ -2,6 +2,7 @@ package com.tencent.mobileqq.data;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable.Callback;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.mutualmark.MutualMarkUtils;
 import com.tencent.mobileqq.mutualmark.UrlBottomImageSpan;
+import com.tencent.mobileqq.util.MessageRecordUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -33,15 +35,23 @@ public class MessageForGrayTips
   public static void decodeImageSpan(Context paramContext, SpannableStringBuilder paramSpannableStringBuilder, GrayTipsMessageConstants.HighlightItem paramHighlightItem, boolean paramBoolean, Drawable.Callback paramCallback, MessageRecord paramMessageRecord)
   {
     String str = paramHighlightItem.icon;
-    if ((!str.startsWith("http://")) && (!str.startsWith("https://")))
+    Bitmap localBitmap = paramHighlightItem.mBitmap;
+    if (localBitmap != null)
     {
-      if (MutualMarkUtils.a(str))
+      paramSpannableStringBuilder.setSpan(new MessageForQQWalletTips.CenterImageSpan(paramContext, localBitmap), paramHighlightItem.start, paramHighlightItem.end, 33);
+      if (QLog.isColorLevel()) {
+        QLog.d("MessageForGrayTips", 2, new Object[] { "MessageForGrayTips.getHightlightMsgText, bitmap size: ", Integer.valueOf(localBitmap.getHeight() * localBitmap.getWidth()) });
+      }
+    }
+    else if ((!str.startsWith("http://")) && (!str.startsWith("https://")))
+    {
+      if (MutualMarkUtils.c(str))
       {
-        paramMessageRecord = MutualMarkUtils.a(str);
+        paramMessageRecord = MutualMarkUtils.d(str);
         if (!TextUtils.isEmpty(paramMessageRecord))
         {
           if (paramBoolean) {
-            paramContext = new UrlBottomImageSpan(paramContext, 0, paramMessageRecord, ViewUtils.b(16.0F), paramCallback);
+            paramContext = new UrlBottomImageSpan(paramContext, 0, paramMessageRecord, ViewUtils.dpToPx(16.0F), paramCallback);
           } else {
             paramContext = new UrlBottomImageSpan(paramContext, 0, paramMessageRecord, paramCallback);
           }
@@ -243,7 +253,7 @@ public class MessageForGrayTips
           continue;
           localObject5 = paramBundle.getString("troop_mem_uin");
           if (!paramBundle.getBoolean("need_update_nick")) {
-            break label1312;
+            break label1338;
           }
           paramInt1 = 1;
           paramBundle = new StringBuilder();
@@ -359,7 +369,7 @@ public class MessageForGrayTips
         paramBundle.printStackTrace();
       }
       return;
-      label1312:
+      label1338:
       paramInt1 = 0;
     }
   }
@@ -394,51 +404,62 @@ public class MessageForGrayTips
         boolean bool;
         label43:
         Object localObject1;
-        int i;
         Object localObject11;
         Object localObject4;
         int i4;
         ArrayList localArrayList;
         int i1;
         int k;
-        int j;
-        label981:
-        label2151:
+        label998:
+        label1388:
         continue;
-        label1325:
-        label1355:
+        label1358:
         localObject5 = localNumberFormatException4;
-        label2821:
+        label2185:
+        label2858:
         continue;
-        label2828:
+        label2865:
+        m = i;
+        int i = j;
+        int j = m;
         continue;
-        label2831:
+        label2880:
+        m = i;
+        i = j;
         localObject5 = localNumberFormatException4;
+        j = m;
         continue;
-        label2838:
+        label2899:
         localObject7 = null;
         localObject6 = localObject5;
-        break label2884;
-        label2848:
+        break label2958;
+        label2909:
         m = -1;
+        n = i;
+        i = j;
         localObject5 = "";
         localObject6 = null;
         localObject7 = null;
         localObject8 = null;
+        j = n;
         continue;
-        label2867:
+        label2941:
         continue;
-        label2870:
+        label2944:
         localObject5 = null;
         continue;
-        label2876:
+        label2950:
         localObject7 = localNumberFormatException4;
         localObject6 = localObject5;
-        label2884:
+        label2958:
         localObject8 = null;
-        label2887:
-        m = -1;
+        label2961:
+        n = -1;
+        m = i;
+        i = j;
         localObject5 = "";
+        j = m;
+        m = n;
       }
     }
     if (QLog.isColorLevel()) {
@@ -473,7 +494,7 @@ public class MessageForGrayTips
     for (;;)
     {
       if (i1 >= i4) {
-        break label2151;
+        break label2185;
       }
       if (bool) {
         k = 0;
@@ -493,33 +514,33 @@ public class MessageForGrayTips
           i = ((String)localObject1).indexOf(',');
           localObject4 = ((String)localObject1).substring(0, i);
           localObject1 = ((String)localObject1).substring(i + 1, ((String)localObject1).length());
-          i = Integer.parseInt((String)localObject4);
-          j = ((String)localObject1).indexOf(',');
-          if (j != -1)
+          j = Integer.parseInt((String)localObject4);
+          i = ((String)localObject1).indexOf(',');
+          if (i != -1)
           {
-            localObject4 = ((String)localObject1).substring(0, j);
-            localObject1 = ((String)localObject1).substring(j + 1, ((String)localObject1).length());
-            j = Integer.parseInt((String)localObject4);
+            localObject4 = ((String)localObject1).substring(0, i);
+            localObject1 = ((String)localObject1).substring(i + 1, ((String)localObject1).length());
+            i = Integer.parseInt((String)localObject4);
           }
           else
           {
-            j = Integer.parseInt((String)localObject1);
+            i = Integer.parseInt((String)localObject1);
           }
         }
         catch (NumberFormatException localNumberFormatException1)
         {
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("revoke msg getHightlightMsgText==> decodeMagicString error.msg:");
-          ((StringBuilder)localObject4).append(this.msg);
-          QLog.d("MessageForGrayTips", 2, ((StringBuilder)localObject4).toString(), localNumberFormatException1);
-          break label2151;
+          ((StringBuilder)localObject4).append(MessageRecordUtil.a(this.msg));
+          QLog.d("MessageForGrayTips", 1, ((StringBuilder)localObject4).toString(), localNumberFormatException1);
+          break label2185;
         }
       }
       else
       {
-        j = 0;
         i = 0;
         i2 = -1;
+        j = 0;
       }
       if (QLog.isColorLevel())
       {
@@ -532,7 +553,7 @@ public class MessageForGrayTips
         if (i2 != 26)
         {
           if (i2 == 28) {
-            break label2867;
+            break label2941;
           }
           switch (i2)
           {
@@ -568,7 +589,7 @@ public class MessageForGrayTips
         k = Integer.parseInt((String)localObject4);
         m = ((String)localObject2).indexOf(',');
         if (m == -1) {
-          break label2821;
+          break label2858;
         }
         localObject4 = ((String)localObject2).substring(0, m);
         localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
@@ -582,6 +603,7 @@ public class MessageForGrayTips
           Object localObject6;
           Object localObject8;
           Object localObject7;
+          int n;
           Object localObject5;
           continue;
           NumberFormatException localNumberFormatException7 = localNumberFormatException4;
@@ -595,20 +617,23 @@ public class MessageForGrayTips
       }
       m = ((String)localObject2).indexOf(',');
       if (m == -1) {
-        break label2831;
+        break label2880;
       }
       localObject4 = ((String)localObject2).substring(0, m);
       localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
-      break label2828;
+      break label2865;
       m = ((String)localObject2).indexOf(',');
       if (m != -1)
       {
         localObject4 = ((String)localObject2).substring(0, m);
         localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
-        break label2838;
+        break label2899;
         localObject6 = ((String)localObject2).substring(((String)localObject2).indexOf("{"), ((String)localObject2).indexOf("}") + 1);
+        m = i;
+        i = j;
         localObject4 = "";
-        break label1325;
+        j = m;
+        break label1358;
         m = ((String)localObject2).indexOf(',');
         if (m != -1)
         {
@@ -623,13 +648,13 @@ public class MessageForGrayTips
       catch (NumberFormatException localNumberFormatException5)
       {
         long l;
-        break label981;
+        break label998;
       }
       if (!QLog.isColorLevel()) {
-        break label2848;
+        break label2909;
       }
       QLog.e("MessageForGrayTips", 2, "parse group id ==>NumberFormatException");
-      break label2848;
+      break label2909;
       m = ((String)localObject2).indexOf(',');
       if (m != -1)
       {
@@ -637,47 +662,50 @@ public class MessageForGrayTips
         localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
         localObject6 = null;
         localObject7 = null;
-        break label2887;
+        break label2961;
         m = ((String)localObject2).indexOf(',');
         if (m == -1) {
-          break label2870;
+          break label2944;
         }
         localObject4 = ((String)localObject2).substring(0, m);
         localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
         m = ((String)localObject2).indexOf(',');
         if (m == -1) {
-          break label2876;
+          break label2950;
         }
         localObject7 = ((String)localObject2).substring(0, m);
         localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
         localObject8 = null;
         localObject6 = localObject4;
-        break label2887;
+        break label2961;
         k = ((String)localObject2).indexOf(',');
         localObject4 = ((String)localObject2).substring(0, k);
         localObject2 = ((String)localObject2).substring(k + 1, ((String)localObject2).length());
         k = Integer.parseInt((String)localObject4);
         m = ((String)localObject2).indexOf(',');
         if (m == -1) {
-          break label2902;
+          break label2993;
         }
         localObject4 = ((String)localObject2).substring(0, m);
         localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
-        break label2828;
+        break label2865;
         m = ((String)localObject2).indexOf(',');
         if (m != -1)
         {
           localObject4 = ((String)localObject2).substring(0, m);
           localObject2 = ((String)localObject2).substring(m + 1, ((String)localObject2).length());
-          break label2838;
+          break label2899;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("getHightlightMsgText==> decodeMagicString error.msg:");
-          ((StringBuilder)localObject2).append(this.msg);
-          QLog.d("MessageForGrayTips", 2, ((StringBuilder)localObject2).toString(), (Throwable)localObject4);
-          break label2151;
+          ((StringBuilder)localObject2).append(MessageRecordUtil.a(this.msg));
+          QLog.d("MessageForGrayTips", 1, ((StringBuilder)localObject2).toString(), (Throwable)localObject4);
+          break label2185;
         }
       }
+      m = j;
       localObject4 = "";
+      j = i;
+      i = m;
       localObject6 = null;
       localObject7 = null;
       localObject8 = null;
@@ -690,16 +718,15 @@ public class MessageForGrayTips
       }
       catch (NumberFormatException localNumberFormatException4)
       {
-        int n;
         Object localObject10;
         Object localObject3;
-        break label1355;
+        break label1388;
       }
       if (!QLog.isColorLevel()) {
-        break label2151;
+        break label2185;
       }
       QLog.e("MessageForGrayTips", 2, "getHightlightMsgText ==>NumberFormatException");
-      break label2151;
+      break label2185;
       n = ((String)localObject2).indexOf(',');
       if ((n != -1) && ("icon".equals(((String)localObject2).substring(0, n))))
       {
@@ -729,11 +756,11 @@ public class MessageForGrayTips
           n = Integer.parseInt((String)localObject2);
         }
         if (n == 0) {
-          break label2916;
+          break label3007;
         }
         n = ((String)localObject2).indexOf(',');
         if (n == -1) {
-          break label2909;
+          break label3000;
         }
         localObject9 = ((String)localObject2).substring(0, n);
         localObject2 = ((String)localObject2).substring(n + 1, ((String)localObject2).length());
@@ -741,7 +768,7 @@ public class MessageForGrayTips
       catch (NumberFormatException localNumberFormatException3)
       {
         if (!QLog.isColorLevel()) {
-          break label2151;
+          break label2185;
         }
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("parse gray tips image resource or alt failed. msg:");
@@ -809,7 +836,7 @@ public class MessageForGrayTips
         {
           n = ((String)localObject2).indexOf(',');
           if (n == -1) {
-            break label2922;
+            break label3013;
           }
           localObject4 = ((String)localObject2).substring(0, n);
           String str = ((String)localObject2).substring(n + 1, ((String)localObject2).length());
@@ -828,7 +855,7 @@ public class MessageForGrayTips
       catch (IllegalArgumentException localIllegalArgumentException)
       {
         if (!QLog.isColorLevel()) {
-          break label2151;
+          break label2185;
         }
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("parse gray tips text color failed. msg:");
@@ -836,12 +863,12 @@ public class MessageForGrayTips
         ((StringBuilder)localObject4).append("exception:");
         ((StringBuilder)localObject4).append(localIllegalArgumentException.getStackTrace());
         QLog.e("MessageForGrayTips", 2, ((StringBuilder)localObject4).toString());
-        break label2151;
+        break label2185;
       }
       catch (NumberFormatException localNumberFormatException2)
       {
         if (!QLog.isColorLevel()) {
-          break label2151;
+          break label2185;
         }
       }
     }
@@ -887,7 +914,7 @@ public class MessageForGrayTips
         localObject11 = new StringBuilder();
         ((StringBuilder)localObject11).append("");
         ((StringBuilder)localObject11).append(((GrayTipsMessageConstants.HighlightItem)localObject9).uin);
-        localObject3 = ((TroopManager)localObject7).b((String)localObject3, ((StringBuilder)localObject11).toString());
+        localObject3 = ((TroopManager)localObject7).f((String)localObject3, ((StringBuilder)localObject11).toString());
         if (localObject3 != null)
         {
           localObject11 = new StringBuilder();
@@ -977,7 +1004,7 @@ public class MessageForGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips
  * JD-Core Version:    0.7.0.1
  */

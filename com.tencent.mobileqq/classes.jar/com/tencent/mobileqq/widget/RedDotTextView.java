@@ -14,13 +14,13 @@ import android.widget.TextView;
 public class RedDotTextView
   extends TextView
 {
-  private static String jdField_a_of_type_JavaLangString = "RedDotTextView";
-  private float jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
+  private static String a = "RedDotTextView";
+  private boolean b;
+  private Drawable c;
+  private Rect d = new Rect();
+  private float e = getResources().getDisplayMetrics().density;
+  private int f;
+  private boolean g = true;
   
   public RedDotTextView(Context paramContext)
   {
@@ -30,65 +30,65 @@ public class RedDotTextView
   public RedDotTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    double d = this.jdField_a_of_type_Float * 9.0F;
-    Double.isNaN(d);
-    this.jdField_a_of_type_Int = ((int)(d + 0.5D));
+    double d1 = this.e * 9.0F;
+    Double.isNaN(d1);
+    this.f = ((int)(d1 + 0.5D));
   }
   
   public void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850766);
+      if (this.c == null) {
+        this.c = getResources().getDrawable(2130852588);
       }
       Object localObject = getText().toString();
       TextPaint localTextPaint = getPaint();
-      localTextPaint.getTextBounds((String)localObject, 0, ((String)localObject).length(), this.jdField_a_of_type_AndroidGraphicsRect);
-      float f3 = this.jdField_a_of_type_AndroidGraphicsRect.height();
+      localTextPaint.getTextBounds((String)localObject, 0, ((String)localObject).length(), this.d);
+      float f3 = this.d.height();
       float f1 = Layout.getDesiredWidth((CharSequence)localObject, localTextPaint);
       int i = getWidth();
       int j = getHeight();
       float f4 = i / 2;
       float f5 = f1 / 2.0F;
-      boolean bool = this.b;
+      boolean bool = this.g;
       float f2 = 0.0F;
       if (bool) {
-        f1 = this.jdField_a_of_type_Float * 2.0F;
+        f1 = this.e * 2.0F;
       } else {
         f1 = 0.0F;
       }
       i = (int)(f4 + f5 - f1);
       f4 = j / 2;
       f3 /= 2.0F;
-      f5 = this.jdField_a_of_type_Int;
+      f5 = this.f;
       f1 = f2;
-      if (this.b) {
-        f1 = this.jdField_a_of_type_Float * 2.0F;
+      if (this.g) {
+        f1 = this.e * 2.0F;
       }
       j = (int)(f4 - f3 - f5 + f1);
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      int k = this.jdField_a_of_type_Int;
+      localObject = this.c;
+      int k = this.f;
       ((Drawable)localObject).setBounds(i, j, i + k, k + j);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.c.draw(paramCanvas);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
     invalidate();
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.b = paramBoolean2;
+    this.g = paramBoolean2;
     a(paramBoolean1);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -107,7 +107,7 @@ public class RedDotTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RedDotTextView
  * JD-Core Version:    0.7.0.1
  */

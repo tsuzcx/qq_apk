@@ -10,23 +10,17 @@ public abstract class AIORichMediaData
   implements Parcelable
 {
   public static final Parcelable.Creator<AIORichMediaData> CREATOR = new AIORichMediaData.1();
-  public int f;
-  public long f;
-  public int g;
-  public long g;
-  public long h;
-  public long i;
-  public boolean k = false;
-  public boolean l;
-  public boolean m;
+  public long L;
+  public int M = 0;
+  public long N;
+  public long O;
+  public long P;
+  public int Q = 0;
+  public boolean R = false;
+  public boolean S;
+  public boolean T;
   
-  public AIORichMediaData()
-  {
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = 0;
-  }
-  
-  static AIORichMediaData a(String paramString)
+  static AIORichMediaData b(String paramString)
   {
     if (AIOImageData.class.getSimpleName().equals(paramString)) {
       return new AIOImageData();
@@ -49,40 +43,40 @@ public abstract class AIORichMediaData
     throw new ClassNotFoundException();
   }
   
-  public abstract File a(int paramInt);
-  
-  public abstract String a(int paramInt);
-  
   public void a(Parcel paramParcel)
   {
-    this.jdField_f_of_type_Long = paramParcel.readLong();
-    this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.jdField_g_of_type_Long = paramParcel.readLong();
-    this.h = paramParcel.readLong();
-    this.i = paramParcel.readLong();
-    this.jdField_g_of_type_Int = paramParcel.readInt();
-    int j = paramParcel.readInt();
+    this.L = paramParcel.readLong();
+    this.M = paramParcel.readInt();
+    this.N = paramParcel.readLong();
+    this.O = paramParcel.readLong();
+    this.P = paramParcel.readLong();
+    this.Q = paramParcel.readInt();
+    int i = paramParcel.readInt();
     boolean bool2 = false;
-    if (j == 1) {
+    if (i == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.k = bool1;
+    this.R = bool1;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.l = bool1;
+    this.S = bool1;
     boolean bool1 = bool2;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     }
-    this.m = bool1;
+    this.T = bool1;
   }
   
   public abstract boolean a(int paramInt);
+  
+  public abstract String b(int paramInt);
+  
+  public abstract File c(int paramInt);
   
   public int describeContents()
   {
@@ -96,7 +90,7 @@ public abstract class AIORichMediaData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIORichMediaData
  * JD-Core Version:    0.7.0.1
  */

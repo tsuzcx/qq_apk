@@ -12,19 +12,19 @@ class InformationFaceAdapter$InformationItemLayout$1$2
   
   public void run()
   {
-    if (((QIMCommonLoadingView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.a.get()).getVisibility() == 8)
+    if (((QIMCommonLoadingView)this.b.b.get()).getVisibility() == 8)
     {
-      ((ProgressBar)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.c.get()).setVisibility(8);
-      ((QIMCommonLoadingView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.a.get()).setProgress(0L);
-      ((QIMCommonLoadingView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.a.get()).setVisibility(0);
-      ((ImageView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.b.get()).setVisibility(8);
+      ((ProgressBar)this.b.g.get()).setVisibility(8);
+      ((QIMCommonLoadingView)this.b.b.get()).setProgress(0L);
+      ((QIMCommonLoadingView)this.b.b.get()).setVisibility(0);
+      ((ImageView)this.b.c.get()).setVisibility(8);
     }
-    ((QIMCommonLoadingView)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterInformationFaceAdapter$InformationItemLayout$1.a.get()).setProgress(this.jdField_a_of_type_Int);
+    ((QIMCommonLoadingView)this.b.b.get()).setProgress(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.InformationItemLayout.1.2
  * JD-Core Version:    0.7.0.1
  */

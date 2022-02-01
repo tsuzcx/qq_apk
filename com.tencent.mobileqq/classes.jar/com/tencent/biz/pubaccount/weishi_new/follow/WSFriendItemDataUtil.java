@@ -51,12 +51,12 @@ public class WSFriendItemDataUtil
   
   private static void a(WSFriendItemData paramWSFriendItemData)
   {
-    paramWSFriendItemData.a(WeiShiCacheManager.a().a().contains(paramWSFriendItemData.a()));
+    paramWSFriendItemData.a(WeiShiCacheManager.a().d().contains(paramWSFriendItemData.a()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.WSFriendItemDataUtil
  * JD-Core Version:    0.7.0.1
  */

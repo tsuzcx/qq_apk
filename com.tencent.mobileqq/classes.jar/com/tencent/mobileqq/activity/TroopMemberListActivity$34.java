@@ -19,7 +19,7 @@ class TroopMemberListActivity$34
       int i = ((Integer)localObject).intValue();
       if (i >= 0)
       {
-        localObject = paramView.findViewById(2131379771);
+        localObject = paramView.findViewById(2131448581);
         boolean bool2 = false;
         boolean bool1 = bool2;
         if (((View)localObject).getTag() != null)
@@ -58,7 +58,7 @@ class TroopMemberListActivity$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.34
  * JD-Core Version:    0.7.0.1
  */

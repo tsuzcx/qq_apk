@@ -28,52 +28,46 @@ import mqq.manager.Manager;
 public class VipGiftManager
   implements Manager
 {
-  public long a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private VipGiftDownloadInfo jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo = new VipGiftDownloadInfo();
-  private final String jdField_a_of_type_JavaLangString = "VipGiftManager";
-  private String b;
+  public long a = 10000L;
+  private final String b = "VipGiftManager";
+  private VipGiftDownloadInfo c = new VipGiftDownloadInfo();
+  private QQAppInterface d;
+  private String e;
   
   public VipGiftManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Long = 10000L;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_JavaLangString = a();
-    a();
+    this.d = paramQQAppInterface;
+    this.e = a();
+    d();
   }
   
-  private String b()
+  private String f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo != null)
+    if (this.c != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c.a);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.c.b);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_b_of_type_Long);
+      localStringBuilder.append(this.c.d);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_c_of_type_Long);
+      localStringBuilder.append(this.c.e);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long);
+      localStringBuilder.append(this.c.f);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_a_of_type_Long);
+      localStringBuilder.append(this.c.c);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(this.c.g);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_JavaLangString);
+      localStringBuilder.append(this.c.h);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.e);
+      localStringBuilder.append(this.c.i);
       localStringBuilder.append("|");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.f);
+      localStringBuilder.append(this.c.j);
       return localStringBuilder.toString();
     }
     return null;
-  }
-  
-  public VipGiftDownloadInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo;
   }
   
   public final String a()
@@ -89,135 +83,12 @@ public class VipGiftManager
     return localStringBuilder.toString();
   }
   
-  public void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("Gif_Download_info_key_");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localObject1 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), null);
-    if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo != null))
-    {
-      localObject1 = ((String)localObject1).split("\\|");
-      if ((localObject1 != null) && (localObject1.length == 10))
-      {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo;
-        if (localObject2 != null)
-        {
-          ((VipGiftDownloadInfo)localObject2).jdField_a_of_type_JavaLangString = localObject1[0];
-          ((VipGiftDownloadInfo)localObject2).jdField_b_of_type_JavaLangString = localObject1[1];
-          ((VipGiftDownloadInfo)localObject2).jdField_b_of_type_Long = Long.parseLong(localObject1[2]);
-          this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_c_of_type_Long = Long.parseLong(localObject1[3]);
-          this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long = Long.parseLong(localObject1[4]);
-          this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_a_of_type_Long = Long.parseLong(localObject1[5]);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo;
-          ((VipGiftDownloadInfo)localObject2).jdField_c_of_type_JavaLangString = localObject1[6];
-          ((VipGiftDownloadInfo)localObject2).jdField_d_of_type_JavaLangString = localObject1[7];
-          ((VipGiftDownloadInfo)localObject2).e = Long.parseLong(localObject1[8]);
-          this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.f = Long.parseLong(localObject1[9]);
-        }
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.e = NetConnInfoCenter.getServerTimeMillis();
-    a(1L, paramLong);
-    try
-    {
-      Object localObject = Uri.parse(this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_JavaLangString);
-      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
-        localObject = ((Uri)localObject).getQueryParameter("_bid");
-      } else {
-        localObject = null;
-      }
-      if ((localObject != null) && (((String)localObject).length() != 0))
-      {
-        int i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
-        long l = System.currentTimeMillis();
-        boolean bool1 = a((String)localObject);
-        StringBuilder localStringBuilder;
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("OfflineSecurity.verify bid:");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append(",cost:");
-          localStringBuilder.append(System.currentTimeMillis() - l);
-          localStringBuilder.append(",bigFlag:");
-          localStringBuilder.append(bool1);
-          QLog.d("VipGiftManager", 2, localStringBuilder.toString());
-        }
-        l = System.currentTimeMillis();
-        boolean bool2 = a("280");
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("OfflineSecurity.verify smalbid:280,cost:");
-          localStringBuilder.append(System.currentTimeMillis() - l);
-          localStringBuilder.append(",smallFlag:");
-          localStringBuilder.append(bool2);
-          QLog.d("VipGiftManager", 2, localStringBuilder.toString());
-        }
-        if (i == 0)
-        {
-          if (bool1)
-          {
-            if (a(2L, paramLong)) {
-              a((String)localObject, paramLong);
-            }
-          }
-          else if ((bool2) && (a(2L, paramLong)))
-          {
-            a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
-            a("280", paramLong);
-          }
-          return;
-        }
-        if (a(i, bool2, bool1))
-        {
-          if (bool2)
-          {
-            if (a(2L, paramLong))
-            {
-              a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
-              a("280", paramLong);
-            }
-            HtmlOffline.b("280", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new VipGiftManager.1(this));
-            return;
-          }
-          a("280", null, paramLong);
-          return;
-        }
-        if (bool1)
-        {
-          if (a(2L, paramLong)) {
-            a((String)localObject, paramLong);
-          }
-          HtmlOffline.b((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new VipGiftManager.2(this));
-          return;
-        }
-        a((String)localObject, "280", paramLong);
-        return;
-      }
-      a(5L, paramLong);
-      return;
-    }
-    catch (Exception localException)
-    {
-      label435:
-      break label435;
-    }
-    a(5L, paramLong);
-  }
-  
   public void a(VipGiftDownloadInfo paramVipGiftDownloadInfo, BaseActivity paramBaseActivity)
   {
-    a(3L, paramVipGiftDownloadInfo.jdField_a_of_type_Long);
+    a(3L, paramVipGiftDownloadInfo.c);
     try
     {
-      Object localObject1 = Uri.parse(paramVipGiftDownloadInfo.jdField_c_of_type_JavaLangString);
+      Object localObject1 = Uri.parse(paramVipGiftDownloadInfo.g);
       Object localObject2;
       if ((localObject1 != null) && (((Uri)localObject1).isHierarchical()))
       {
@@ -228,14 +99,14 @@ public class VipGiftManager
           if (QLog.isColorLevel()) {
             QLog.d("VipGiftManager", 2, "TextUtils.isEmpty(bid) false");
           }
-          a(5L, paramVipGiftDownloadInfo.jdField_a_of_type_Long);
+          a(5L, paramVipGiftDownloadInfo.c);
         }
       }
       else
       {
         localObject1 = null;
       }
-      if (a((String)localObject1))
+      if (b((String)localObject1))
       {
         if (QLog.isColorLevel())
         {
@@ -243,20 +114,20 @@ public class VipGiftManager
           ((StringBuilder)localObject2).append("showGifAnnimate.veryfyBid(");
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append(") true,url:");
-          ((StringBuilder)localObject2).append(paramVipGiftDownloadInfo.jdField_c_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(paramVipGiftDownloadInfo.g);
           QLog.d("VipGiftManager", 2, ((StringBuilder)localObject2).toString());
         }
         if (((String)localObject1).equalsIgnoreCase("280")) {
           a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
         }
-        a("0X8004B41", "2", "1", paramVipGiftDownloadInfo.jdField_c_of_type_JavaLangString);
+        a("0X8004B41", "2", "1", paramVipGiftDownloadInfo.g);
         localObject1 = new Intent(BaseApplication.getContext(), QQTranslucentBrowserActivity.class);
-        ((Intent)localObject1).putExtra("url", paramVipGiftDownloadInfo.jdField_c_of_type_JavaLangString);
-        ((Intent)localObject1).putExtra("Gif_msg_uniseq_key", paramVipGiftDownloadInfo.jdField_a_of_type_Long);
+        ((Intent)localObject1).putExtra("url", paramVipGiftDownloadInfo.g);
+        ((Intent)localObject1).putExtra("Gif_msg_uniseq_key", paramVipGiftDownloadInfo.c);
         paramBaseActivity.startActivity((Intent)localObject1);
         return;
       }
-      if (a("280"))
+      if (b("280"))
       {
         if (QLog.isColorLevel())
         {
@@ -264,76 +135,60 @@ public class VipGiftManager
           ((StringBuilder)localObject2).append("showGifAnnimate.veryfyBid(");
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append(") false,url:");
-          ((StringBuilder)localObject2).append(paramVipGiftDownloadInfo.jdField_c_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(paramVipGiftDownloadInfo.g);
           QLog.d("VipGiftManager", 2, ((StringBuilder)localObject2).toString());
         }
         a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
-        a("0X8004B41", "2", "1", paramVipGiftDownloadInfo.jdField_c_of_type_JavaLangString);
+        a("0X8004B41", "2", "1", paramVipGiftDownloadInfo.g);
         localObject1 = new Intent(BaseApplication.getContext(), QQTranslucentBrowserActivity.class);
-        ((Intent)localObject1).putExtra("url", paramVipGiftDownloadInfo.jdField_c_of_type_JavaLangString);
-        ((Intent)localObject1).putExtra("Gif_msg_uniseq_key", paramVipGiftDownloadInfo.jdField_a_of_type_Long);
+        ((Intent)localObject1).putExtra("url", paramVipGiftDownloadInfo.g);
+        ((Intent)localObject1).putExtra("Gif_msg_uniseq_key", paramVipGiftDownloadInfo.c);
         paramBaseActivity.startActivity((Intent)localObject1);
         return;
       }
-      a(5L, paramVipGiftDownloadInfo.jdField_a_of_type_Long);
+      a(5L, paramVipGiftDownloadInfo.c);
       return;
     }
     catch (Exception paramBaseActivity)
     {
-      label365:
-      break label365;
+      label358:
+      break label358;
     }
     if (QLog.isColorLevel()) {
       QLog.d("VipGiftManager", 2, "exception bid");
     }
-    a(5L, paramVipGiftDownloadInfo.jdField_a_of_type_Long);
+    a(5L, paramVipGiftDownloadInfo.c);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_c_of_type_JavaLangString = paramString;
-    b();
+    this.c.g = paramString;
+    c();
   }
   
   public void a(String paramString, long paramLong)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), VipGifServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.d.getApplication(), VipGifServlet.class);
     localNewIntent.setAction("gif_ui_show");
     localNewIntent.putExtra("gif_ui_show_bid", Integer.parseInt(paramString));
     localNewIntent.putExtra("gif_ui_show_seq", paramLong);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    this.d.startServlet(localNewIntent);
   }
   
   public void a(String paramString1, String paramString2, long paramLong)
   {
     long l = System.currentTimeMillis();
-    HtmlOffline.b(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new VipGiftManager.3(this, l, paramString1, paramLong, paramString2));
+    HtmlOffline.b(paramString1, this.d, true, new VipGiftManager.3(this, l, paramString1, paramLong, paramString2));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     String str = paramString4;
     if (paramString4 == null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_c_of_type_JavaLangString;
+      str = this.c.g;
     }
-    paramString4 = this.jdField_b_of_type_JavaLangString;
-    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Vip_Gift", paramString1, paramString1, 0, 0, new String[] { paramString2, paramString3, str, paramString4 });
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo = new VipGiftDownloadInfo();
-    }
-    VipGiftDownloadInfo localVipGiftDownloadInfo = this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo;
-    if ((localVipGiftDownloadInfo != null) && (localVipGiftDownloadInfo.jdField_d_of_type_Long == 1L))
-    {
-      long l = NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.e;
-      if ((l > this.jdField_a_of_type_Long) || (l <= 0L)) {
-        return true;
-      }
-    }
-    return false;
+    paramString4 = this.e;
+    VipUtils.a(this.d, "Vip_Gift", paramString1, paramString1, 0, 0, new String[] { paramString2, paramString3, str, paramString4 });
   }
   
   public boolean a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -349,11 +204,11 @@ public class VipGiftManager
   
   public boolean a(long paramLong)
   {
-    VipGiftDownloadInfo localVipGiftDownloadInfo = this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo;
+    VipGiftDownloadInfo localVipGiftDownloadInfo = this.c;
     if (localVipGiftDownloadInfo != null)
     {
-      localVipGiftDownloadInfo.f = paramLong;
-      return b();
+      localVipGiftDownloadInfo.j = paramLong;
+      return c();
     }
     return false;
   }
@@ -362,17 +217,17 @@ public class VipGiftManager
   {
     try
     {
-      if (paramLong2 == this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_a_of_type_Long)
+      if (paramLong2 == this.c.c)
       {
         if (paramLong1 == 2L)
         {
-          paramLong2 = this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long;
+          paramLong2 = this.c.f;
           if (paramLong2 == 6L) {
             return false;
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long = paramLong1;
-        boolean bool = b();
+        this.c.f = paramLong1;
+        boolean bool = c();
         return bool;
       }
       return false;
@@ -389,8 +244,8 @@ public class VipGiftManager
       return false;
     }
     a("0X8004B41", "1", "0", paramMessageForStructing.structingMsg.mResid);
-    if (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo = new VipGiftDownloadInfo();
+    if (this.c == null) {
+      this.c = new VipGiftDownloadInfo();
     }
     label409:
     try
@@ -424,103 +279,247 @@ public class VipGiftManager
       break label123;
     }
     l = 0L;
-    if (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.f > l)
+    if (this.c.j > l)
     {
       a("0X8004B41", "2", "3", paramMessageForStructing.structingMsg.mResid);
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo != null) && (paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
+    if ((this.c != null) && (paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
     {
-      if (((this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long != 0L) || (paramMessageForStructing.time >= this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_b_of_type_Long)) && (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long != 4L) && (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long != 999L) && (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long != 5L) && (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long != 6L) && (!a()))
+      if (((this.c.f != 0L) || (paramMessageForStructing.time >= this.c.d)) && (this.c.f != 4L) && (this.c.f != 999L) && (this.c.f != 5L) && (this.c.f != 6L) && (!b()))
       {
         a("0X8004B41", "2", "2", paramMessageForStructing.structingMsg.mResid);
         return false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_a_of_type_JavaLangString = paramMessageForStructing.selfuin;
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_b_of_type_JavaLangString = paramMessageForStructing.senderuin;
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_b_of_type_Long = paramMessageForStructing.time;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo;
-      ((VipGiftDownloadInfo)localObject).jdField_c_of_type_Long = 0L;
-      ((VipGiftDownloadInfo)localObject).jdField_d_of_type_Long = 0L;
-      ((VipGiftDownloadInfo)localObject).jdField_a_of_type_Long = paramMessageForStructing.uniseq;
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_JavaLangString = paramMessageForStructing.structingMsg.mResid;
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_c_of_type_JavaLangString = paramMessageForStructing.structingMsg.mResid;
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.e = 0L;
+      this.c.a = paramMessageForStructing.selfuin;
+      this.c.b = paramMessageForStructing.senderuin;
+      this.c.d = paramMessageForStructing.time;
+      localObject = this.c;
+      ((VipGiftDownloadInfo)localObject).e = 0L;
+      ((VipGiftDownloadInfo)localObject).f = 0L;
+      ((VipGiftDownloadInfo)localObject).c = paramMessageForStructing.uniseq;
+      this.c.h = paramMessageForStructing.structingMsg.mResid;
+      this.c.g = paramMessageForStructing.structingMsg.mResid;
+      this.c.i = 0L;
     }
     try
     {
       l = Long.parseLong(localUri.getQueryParameter("_to").trim());
       if (l > 0L) {
-        this.jdField_a_of_type_Long = l;
+        this.a = l;
       }
     }
     catch (Exception paramMessageForStructing)
     {
       break label409;
     }
-    return b();
+    return c();
     return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if (HtmlOffline.a(paramString) == null) {
-      return false;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(OfflineEnvHelper.a(paramString));
-    ((StringBuilder)localObject).append(paramString);
-    localObject = ((StringBuilder)localObject).toString();
-    boolean bool = OfflineSecurity.a((String)localObject, paramString);
-    if (!bool) {
-      HtmlOffline.a((String)localObject, paramString);
-    }
-    return bool;
   }
   
   public boolean b()
   {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Gif_Download_info_key_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localEditor.putString(localStringBuilder.toString(), b());
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("writeToSp:");
-      localStringBuilder.append(b());
-      QLog.d("VipGiftManager", 2, localStringBuilder.toString());
+    if (this.c == null) {
+      this.c = new VipGiftDownloadInfo();
     }
-    return localEditor.commit();
-  }
-  
-  public boolean b(long paramLong)
-  {
-    VipGiftDownloadInfo localVipGiftDownloadInfo = this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo;
-    if (localVipGiftDownloadInfo == null) {
-      return false;
-    }
-    if (localVipGiftDownloadInfo.jdField_d_of_type_Long != 999L)
+    VipGiftDownloadInfo localVipGiftDownloadInfo = this.c;
+    if ((localVipGiftDownloadInfo != null) && (localVipGiftDownloadInfo.f == 1L))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long == 5L) {
-        return false;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_d_of_type_Long < 2L) && (paramLong >= this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.jdField_b_of_type_Long)) {
+      long l = NetConnInfoCenter.getServerTimeMillis() - this.c.i;
+      if ((l > this.a) || (l <= 0L)) {
         return true;
       }
     }
     return false;
   }
   
+  public boolean b(long paramLong)
+  {
+    VipGiftDownloadInfo localVipGiftDownloadInfo = this.c;
+    if (localVipGiftDownloadInfo == null) {
+      return false;
+    }
+    if (localVipGiftDownloadInfo.f != 999L)
+    {
+      if (this.c.f == 5L) {
+        return false;
+      }
+      if ((this.c.f < 2L) && (paramLong >= this.c.d)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (HtmlOffline.d(paramString) == null) {
+      return false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(OfflineEnvHelper.b(paramString));
+    ((StringBuilder)localObject).append(paramString);
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool = OfflineSecurity.a((String)localObject, paramString);
+    if (!bool) {
+      HtmlOffline.d((String)localObject, paramString);
+    }
+    return bool;
+  }
+  
+  public void c(long paramLong)
+  {
+    this.c.i = NetConnInfoCenter.getServerTimeMillis();
+    a(1L, paramLong);
+    try
+    {
+      Object localObject = Uri.parse(this.c.h);
+      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
+        localObject = ((Uri)localObject).getQueryParameter("_bid");
+      } else {
+        localObject = null;
+      }
+      if ((localObject != null) && (((String)localObject).length() != 0))
+      {
+        int i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
+        long l = System.currentTimeMillis();
+        boolean bool1 = b((String)localObject);
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("OfflineSecurity.verify bid:");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(",cost:");
+          localStringBuilder.append(System.currentTimeMillis() - l);
+          localStringBuilder.append(",bigFlag:");
+          localStringBuilder.append(bool1);
+          QLog.d("VipGiftManager", 2, localStringBuilder.toString());
+        }
+        l = System.currentTimeMillis();
+        boolean bool2 = b("280");
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("OfflineSecurity.verify smalbid:280,cost:");
+          localStringBuilder.append(System.currentTimeMillis() - l);
+          localStringBuilder.append(",smallFlag:");
+          localStringBuilder.append(bool2);
+          QLog.d("VipGiftManager", 2, localStringBuilder.toString());
+        }
+        if (i == 0)
+        {
+          if (bool1)
+          {
+            if (a(2L, paramLong)) {
+              a((String)localObject, paramLong);
+            }
+          }
+          else if ((bool2) && (a(2L, paramLong)))
+          {
+            a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+            a("280", paramLong);
+          }
+          return;
+        }
+        if (a(i, bool2, bool1))
+        {
+          if (bool2)
+          {
+            if (a(2L, paramLong))
+            {
+              a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+              a("280", paramLong);
+            }
+            HtmlOffline.b("280", this.d, true, new VipGiftManager.1(this));
+            return;
+          }
+          a("280", null, paramLong);
+          return;
+        }
+        if (bool1)
+        {
+          if (a(2L, paramLong)) {
+            a((String)localObject, paramLong);
+          }
+          HtmlOffline.b((String)localObject, this.d, true, new VipGiftManager.2(this));
+          return;
+        }
+        a((String)localObject, "280", paramLong);
+        return;
+      }
+      a(5L, paramLong);
+      return;
+    }
+    catch (Exception localException)
+    {
+      label440:
+      break label440;
+    }
+    a(5L, paramLong);
+  }
+  
+  public boolean c()
+  {
+    SharedPreferences.Editor localEditor = this.d.getPreferences().edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Gif_Download_info_key_");
+    localStringBuilder.append(this.d.getCurrentAccountUin());
+    localEditor.putString(localStringBuilder.toString(), f());
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("writeToSp:");
+      localStringBuilder.append(f());
+      QLog.d("VipGiftManager", 2, localStringBuilder.toString());
+    }
+    return localEditor.commit();
+  }
+  
+  public void d()
+  {
+    Object localObject1 = this.d.getPreferences();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("Gif_Download_info_key_");
+    ((StringBuilder)localObject2).append(this.d.getCurrentAccountUin());
+    localObject1 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), null);
+    if ((localObject1 != null) && (this.c != null))
+    {
+      localObject1 = ((String)localObject1).split("\\|");
+      if ((localObject1 != null) && (localObject1.length == 10))
+      {
+        localObject2 = this.c;
+        if (localObject2 != null)
+        {
+          ((VipGiftDownloadInfo)localObject2).a = localObject1[0];
+          ((VipGiftDownloadInfo)localObject2).b = localObject1[1];
+          ((VipGiftDownloadInfo)localObject2).d = Long.parseLong(localObject1[2]);
+          this.c.e = Long.parseLong(localObject1[3]);
+          this.c.f = Long.parseLong(localObject1[4]);
+          this.c.c = Long.parseLong(localObject1[5]);
+          localObject2 = this.c;
+          ((VipGiftDownloadInfo)localObject2).g = localObject1[6];
+          ((VipGiftDownloadInfo)localObject2).h = localObject1[7];
+          ((VipGiftDownloadInfo)localObject2).i = Long.parseLong(localObject1[8]);
+          this.c.j = Long.parseLong(localObject1[9]);
+        }
+      }
+    }
+  }
+  
+  public VipGiftDownloadInfo e()
+  {
+    return this.c;
+  }
+  
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipgift.VipGiftManager
  * JD-Core Version:    0.7.0.1
  */

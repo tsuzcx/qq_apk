@@ -13,11 +13,11 @@ public class QcircleTroopRedDotHelper
   implements ILifeCycleHelper, OnTroopChatMsgChangedCallback
 {
   public static String a = "QcircleTroopRedDotHelper";
-  TroopChatPie a;
+  TroopChatPie b;
   
   public QcircleTroopRedDotHelper(HelperProvider paramHelperProvider, TroopChatPie paramTroopChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
+    this.b = paramTroopChatPie;
     paramHelperProvider.a(this);
   }
   
@@ -25,8 +25,8 @@ public class QcircleTroopRedDotHelper
   {
     if (paramInt == 1)
     {
-      AIOTroopQcircleRedDotManager.b();
-      if (AIOTroopQcircleRedDotManager.a() == AIOTroopQcircleRedDotManager.c) {
+      AIOTroopQcircleRedDotManager.g();
+      if (AIOTroopQcircleRedDotManager.h() == AIOTroopQcircleRedDotManager.c) {
         ThreadManager.excute(new QcircleTroopRedDotHelper.3(this, paramTroopChatPie, paramList), 160, null, true);
       }
     }
@@ -34,7 +34,7 @@ public class QcircleTroopRedDotHelper
   
   public String getTag()
   {
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public int[] interestedIn()
@@ -49,30 +49,30 @@ public class QcircleTroopRedDotHelper
       if (paramInt != 15) {
         return;
       }
-      AIOTroopQcircleRedDotManager.a();
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-      if ((localObject != null) && (((TroopChatPie)localObject).a != null))
+      AIOTroopQcircleRedDotManager.f();
+      Object localObject = this.b;
+      if ((localObject != null) && (((TroopChatPie)localObject).V != null))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a.a() == null) {
+        if (this.b.V.a() == null) {
           return;
         }
-        if ((!AIOTroopQcircleRedDotManager.a()) && (!AIOTroopQcircleRedDotManager.b())) {
+        if ((!AIOTroopQcircleRedDotManager.b()) && (!AIOTroopQcircleRedDotManager.c())) {
           return;
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a.a();
+        localObject = this.b.V.a();
         ThreadManager.getUIHandler().post(new QcircleTroopRedDotHelper.2(this, (List)localObject));
       }
     }
     else
     {
-      AIOTroopQcircleRedDotManager.a();
+      AIOTroopQcircleRedDotManager.f();
       ThreadManagerV2.excute(new QcircleTroopRedDotHelper.1(this), 160, null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QcircleTroopRedDotHelper
  * JD-Core Version:    0.7.0.1
  */

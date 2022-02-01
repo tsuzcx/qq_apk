@@ -11,15 +11,15 @@ class MiniAppProxyImpl$12
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, null);
+      this.a.onReceiveResult(true, null);
       return;
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, null);
+    this.a.onReceiveResult(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.12
  * JD-Core Version:    0.7.0.1
  */

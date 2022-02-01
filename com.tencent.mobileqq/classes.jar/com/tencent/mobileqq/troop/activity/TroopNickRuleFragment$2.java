@@ -30,26 +30,26 @@ class TroopNickRuleFragment$2
       localStringBuilder.append(", errInfo = ");
       localStringBuilder.append(paramString);
       QLog.i("TroopNickRuleFragment", 2, localStringBuilder.toString());
-      paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      paramString = this.a.o;
       int i;
       if (paramLong2 == 1298L) {
-        i = 2131720012;
+        i = 2131917617;
       } else {
-        i = 2131720011;
+        i = 2131917616;
       }
-      QQToast.a(paramString, i, 0).a();
+      QQToast.makeText(paramString, i, 0).show();
       if (paramLong2 == 1298L) {
         paramString = "3";
       } else {
         paramString = "1";
       }
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_set", "", "nickname rule", "nickname rule_sub_failure", 0, 0, String.valueOf(TroopNickRuleFragment.a(this.a)), paramString, "", "");
+      ReportController.b(this.a.n, "dc00899", "Grp_set", "", "nickname rule", "nickname rule_sub_failure", 0, 0, String.valueOf(TroopNickRuleFragment.a(this.a)), paramString, "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.2
  * JD-Core Version:    0.7.0.1
  */

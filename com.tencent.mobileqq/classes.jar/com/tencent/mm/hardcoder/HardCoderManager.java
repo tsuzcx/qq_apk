@@ -30,18 +30,43 @@ import mqq.os.MqqHandler;
 public class HardCoderManager
   implements Handler.Callback
 {
-  private static Bundle jdField_a_of_type_AndroidOsBundle;
-  private static HardCoderManager jdField_a_of_type_ComTencentMmHardcoderHardCoderManager;
-  private static final String jdField_a_of_type_JavaLangString;
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
-  public static final boolean a;
-  private static Bundle jdField_b_of_type_AndroidOsBundle;
-  private int jdField_a_of_type_Int = 0;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = MobileQQ.getContext().getSharedPreferences("sp_hardcoder", 4);
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HashMap<Integer, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ConcurrentHashMap<Integer, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_b_of_type_Boolean = false;
+  private static final int FLAG_AB_TEST = 1;
+  private static final int FLAG_DISABLE = 2;
+  private static final int FLAG_ENABLE = 0;
+  private static final String KEY_CFG_FLAG = "key_cfg_flag";
+  private static final String KEY_CRASH_COUNT;
+  private static final String KEY_LAST_DOWNLOAD_TIME = "key_last_down_time";
+  private static final String KEY_STATE = "key_state";
+  private static final int MAX_CRASH_COUNT = 2;
+  private static final long MIN_DOWNLOAD_INTERVAL = 86400000L;
+  private static final int MSG_START = 0;
+  private static final int MSG_STOP = 1;
+  private static final String SO_URL_FOR_32 = "https://qd.myapp.com/myapp/qqteam/qq_tools/libhc4.jpg";
+  private static final String SO_URL_FOR_64 = "https://down.qq.com/qqAVCodecLib/qqHardCoderLib/testVersion/20200624/libhc4.jpg";
+  private static final String SP_HC = "sp_hardcoder";
+  static final int STATE_B_TEST = 8;
+  static final int STATE_CRASH_PROTECT = 9;
+  static final int STATE_DOWNLOAD_FAIL = 5;
+  static final int STATE_DOWNLOAD_SUC = 6;
+  static final int STATE_EXCEPTION = 7;
+  static final int STATE_FILE_CFG_DISABLE = 2;
+  static final int STATE_NO_SO = 4;
+  static final int STATE_OK = 10;
+  static final int STATE_SVC_CFG_DISABLE = 3;
+  static final int STATE_UNINIT = 0;
+  static final int STATE_UNSUPRT = 1;
+  private static final String TAG = "HardCoder.QQManager";
+  public static final boolean sDebug;
+  private static HardCoderManager sInstance;
+  private static Random sRand = new Random();
+  private static Bundle sStartBundle;
+  private static Bundle sStopBundle;
+  private ConcurrentHashMap<Integer, Integer> codeMap = new ConcurrentHashMap();
+  private boolean hasRunningBg = false;
+  private Handler mHandler;
+  private SharedPreferences mPref = MobileQQ.getContext().getSharedPreferences("sp_hardcoder", 4);
+  private HashMap<Integer, Boolean> sceneFlagMap = new HashMap();
+  private int state = 0;
   
   static
   {
@@ -51,210 +76,171 @@ public class HardCoderManager
     } else {
       bool = false;
     }
-    jdField_a_of_type_Boolean = bool;
+    sDebug = bool;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppSetting.g());
+    localStringBuilder.append(AppSetting.i());
     localStringBuilder.append("key_crash_cnt");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_AndroidOsBundle = new Bundle(8);
-    jdField_b_of_type_AndroidOsBundle = new Bundle(2);
+    KEY_CRASH_COUNT = localStringBuilder.toString();
+    sStartBundle = new Bundle(8);
+    sStopBundle = new Bundle(2);
   }
   
-  public static HardCoderManager a()
+  public static HardCoderManager getInstance()
   {
-    if (jdField_a_of_type_ComTencentMmHardcoderHardCoderManager == null) {
+    if (sInstance == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMmHardcoderHardCoderManager == null)
+        if (sInstance == null)
         {
-          jdField_a_of_type_ComTencentMmHardcoderHardCoderManager = new HardCoderManager();
+          sInstance = new HardCoderManager();
           if (MobileQQ.sProcessId == 1) {
             new HardCoderManager.1().start();
           } else {
-            jdField_a_of_type_ComTencentMmHardcoderHardCoderManager.d();
+            sInstance.init();
           }
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMmHardcoderHardCoderManager;
+    return sInstance;
   }
   
-  private void d()
+  static String getSoUrl()
   {
-    if ((jdField_a_of_type_Boolean) && (new File("/sdcard/disable_hc").exists()))
+    return "https://qd.myapp.com/myapp/qqteam/qq_tools/libhc4.jpg";
+  }
+  
+  private void init()
+  {
+    if ((sDebug) && (new File("/sdcard/disable_hc").exists()))
     {
       QLog.d("HardCoder.QQManager", 1, "disable by file cfg");
-      this.jdField_a_of_type_Int = 2;
+      this.state = 2;
       return;
     }
-    int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_cfg_flag", 0);
+    int i = this.mPref.getInt("key_cfg_flag", 0);
     if (i == 2)
     {
       QLog.d("HardCoder.QQManager", 1, "disable by server cfg");
-      this.jdField_a_of_type_Int = 3;
+      this.state = 3;
       return;
     }
     Object localObject = Build.MANUFACTURER;
     if ((localObject != null) && (((String)localObject).toUpperCase().contains("VIVO")))
     {
       QLog.d("HardCoder.QQManager", 1, "disable vivo");
-      this.jdField_a_of_type_Int = 3;
+      this.state = 3;
       return;
     }
     if (MobileQQ.sProcessId == 1)
     {
-      int j = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(jdField_a_of_type_JavaLangString, 0);
+      int j = this.mPref.getInt(KEY_CRASH_COUNT, 0);
       if (j > 2)
       {
-        this.jdField_a_of_type_Int = 9;
+        this.state = 9;
       }
       else
       {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(jdField_a_of_type_JavaLangString, j + 1).commit();
-        this.jdField_a_of_type_Int = HCPerfManager.a().a();
-        if ((this.jdField_a_of_type_Int == 10) && (i == 1) && (Math.random() < 0.5D))
+        this.mPref.edit().putInt(KEY_CRASH_COUNT, j + 1).commit();
+        this.state = HCPerfManager.getInstance().init();
+        if ((this.state == 10) && (i == 1) && (Math.random() < 0.5D))
         {
-          this.jdField_a_of_type_Int = 8;
-          HCPerfManager.a().a();
+          this.state = 8;
+          HCPerfManager.getInstance().uninit();
         }
       }
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject).putInt("key_state", this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Int == 10)
+      localObject = this.mPref.edit();
+      ((SharedPreferences.Editor)localObject).putInt("key_state", this.state);
+      if (this.state == 10)
       {
-        ((SharedPreferences.Editor)localObject).putInt(jdField_a_of_type_JavaLangString, j + 1);
+        ((SharedPreferences.Editor)localObject).putInt(KEY_CRASH_COUNT, j + 1);
         ThreadManager.getSubThreadHandler().postDelayed(new HardCoderManager.2(this), 10000L);
       }
       else
       {
-        ((SharedPreferences.Editor)localObject).putInt(jdField_a_of_type_JavaLangString, j);
+        ((SharedPreferences.Editor)localObject).putInt(KEY_CRASH_COUNT, j);
       }
       ((SharedPreferences.Editor)localObject).commit();
     }
     else
     {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("key_state", 1);
-      if (this.jdField_a_of_type_Int == 10) {
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+      this.state = this.mPref.getInt("key_state", 1);
+      if (this.state == 10) {
+        this.mHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
       }
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("hc init ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.state);
     QLog.d("HardCoder.QQManager", 1, ((StringBuilder)localObject).toString());
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, String paramString)
-  {
-    return a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong, paramInt7, paramString, true);
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Int != 10) {
-      return 0;
-    }
-    if (MobileQQ.sProcessId == 1) {
-      return HCPerfManager.a().a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong, paramInt7, paramString);
-    }
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-    HCPerfManager.PerformanceTask localPerformanceTask = (HCPerfManager.PerformanceTask)HCPerfManager.a.obtain(HCPerfManager.PerformanceTask.class);
-    localPerformanceTask.jdField_a_of_type_Int = paramInt1;
-    localPerformanceTask.c = paramInt2;
-    localPerformanceTask.d = paramInt3;
-    localPerformanceTask.e = paramInt4;
-    localPerformanceTask.b = paramInt5;
-    localPerformanceTask.f = paramInt6;
-    localPerformanceTask.jdField_a_of_type_Long = paramLong;
-    localPerformanceTask.jdField_a_of_type_JavaLangString = paramString;
-    localMessage.obj = localPerformanceTask;
-    localMessage.sendToTarget();
-    if (paramBoolean)
-    {
-      paramInt1 = jdField_a_of_type_JavaUtilRandom.nextInt();
-      localMessage.arg1 = paramInt1;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), Integer.valueOf(0));
-    }
-    else
-    {
-      localMessage.arg1 = 0;
-    }
-    return localMessage.arg1;
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Int == 10)
-    {
-      this.jdField_a_of_type_Int = 1;
-      QLog.d("HardCoder.QQManager", 1, "onDisconnect");
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_state", this.jdField_a_of_type_Int).commit();
-      HCPerfManager.a().a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    a(paramInt, false);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    if (MobileQQ.sProcessId == 1)
-    {
-      HCPerfManager.a().a(paramInt);
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      Message localMessage;
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
-      {
-        localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-        localMessage.arg1 = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt))).intValue();
-        localMessage.sendToTarget();
-        return;
-      }
-      if (paramBoolean)
-      {
-        localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-        localMessage.arg1 = paramInt;
-        localMessage.sendToTarget();
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    return (i == 10) || (i == 8);
-  }
-  
-  public void b()
+  public void clearCrashRecord()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("crash count = ");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(jdField_a_of_type_JavaLangString, 0));
+    localStringBuilder.append(this.mPref.getInt(KEY_CRASH_COUNT, 0));
     QLog.d("HardCoder.QQManager", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(jdField_a_of_type_JavaLangString, 0).commit();
+    this.mPref.edit().putInt(KEY_CRASH_COUNT, 0).commit();
   }
   
-  public void c()
+  public int getState()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    return this.state;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0)
+    {
+      Object localObject = (HCPerfManager.PerformanceTask)paramMessage.obj;
+      sStartBundle.putInt("key_delay", ((HCPerfManager.PerformanceTask)localObject).delay);
+      sStartBundle.putInt("key_cpu", ((HCPerfManager.PerformanceTask)localObject).cpuLevel);
+      sStartBundle.putInt("key_io", ((HCPerfManager.PerformanceTask)localObject).ioLevel);
+      sStartBundle.putInt("key_bind", ((HCPerfManager.PerformanceTask)localObject).bindTid);
+      sStartBundle.putInt("key_timeout", ((HCPerfManager.PerformanceTask)localObject).timeout);
+      sStartBundle.putInt("key_scene", ((HCPerfManager.PerformanceTask)localObject).scene);
+      sStartBundle.putLong("key_action", ((HCPerfManager.PerformanceTask)localObject).action);
+      sStartBundle.putString("key_tag", ((HCPerfManager.PerformanceTask)localObject).tag);
+      localObject = QIPCClientHelper.getInstance().getClient().callServer("HardCoderModule", "start", sStartBundle);
+      if ((paramMessage.arg1 != 0) && (localObject != null) && (((EIPCResult)localObject).code != 0)) {
+        this.codeMap.put(Integer.valueOf(paramMessage.arg1), Integer.valueOf(((EIPCResult)localObject).code));
+      }
+    }
+    else if (paramMessage.what == 1)
+    {
+      sStopBundle.putInt("key_code", paramMessage.arg1);
+      QIPCClientHelper.getInstance().getClient().callServer("HardCoderModule", "stop", sStopBundle);
+    }
+    return false;
+  }
+  
+  public boolean isEnable()
+  {
+    return this.state == 10;
+  }
+  
+  public boolean isSceneEnable(int paramInt)
+  {
+    if (!this.sceneFlagMap.containsKey(Integer.valueOf(paramInt))) {
+      this.sceneFlagMap.put(Integer.valueOf(paramInt), Boolean.valueOf(this.mPref.getBoolean(String.valueOf(paramInt), true)));
+    }
+    return ((Boolean)this.sceneFlagMap.get(Integer.valueOf(paramInt))).booleanValue();
+  }
+  
+  public boolean isSupported()
+  {
+    int i = this.state;
+    return (i == 10) || (i == 8);
+  }
+  
+  public void onRunningBackground()
+  {
+    if (this.hasRunningBg) {
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != 1)
+    this.hasRunningBg = true;
+    if (this.state != 1)
     {
       Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.batteryCfg.name());
       if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -272,7 +258,7 @@ public class HardCoderManager
             localObject = localObject.split("\\|")[0];
             try
             {
-              this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_cfg_flag", Integer.valueOf((String)localObject).intValue()).commit();
+              this.mPref.edit().putInt("key_cfg_flag", Integer.valueOf((String)localObject).intValue()).commit();
             }
             catch (Exception localException)
             {
@@ -286,46 +272,109 @@ public class HardCoderManager
         }
       }
     }
-    if (this.jdField_a_of_type_Int == 4)
+    if (this.state == 4)
     {
-      long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_last_down_time", 0L);
+      long l = this.mPref.getLong("key_last_down_time", 0L);
       if ((Math.abs(System.currentTimeMillis() - l) > 86400000L) && (NetworkUtil.isWifiConnected(MobileQQ.getContext())))
       {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_last_down_time", System.currentTimeMillis()).apply();
+        this.mPref.edit().putLong("key_last_down_time", System.currentTimeMillis()).apply();
         ThreadManager.executeOnNetWorkThread(new HardCoderManager.3(this));
       }
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  void onSocketDisconnect()
   {
-    if (paramMessage.what == 0)
+    if (this.state == 10)
     {
-      Object localObject = (HCPerfManager.PerformanceTask)paramMessage.obj;
-      jdField_a_of_type_AndroidOsBundle.putInt("key_delay", ((HCPerfManager.PerformanceTask)localObject).jdField_a_of_type_Int);
-      jdField_a_of_type_AndroidOsBundle.putInt("key_cpu", ((HCPerfManager.PerformanceTask)localObject).c);
-      jdField_a_of_type_AndroidOsBundle.putInt("key_io", ((HCPerfManager.PerformanceTask)localObject).d);
-      jdField_a_of_type_AndroidOsBundle.putInt("key_bind", ((HCPerfManager.PerformanceTask)localObject).e);
-      jdField_a_of_type_AndroidOsBundle.putInt("key_timeout", ((HCPerfManager.PerformanceTask)localObject).b);
-      jdField_a_of_type_AndroidOsBundle.putInt("key_scene", ((HCPerfManager.PerformanceTask)localObject).f);
-      jdField_a_of_type_AndroidOsBundle.putLong("key_action", ((HCPerfManager.PerformanceTask)localObject).jdField_a_of_type_Long);
-      jdField_a_of_type_AndroidOsBundle.putString("key_tag", ((HCPerfManager.PerformanceTask)localObject).jdField_a_of_type_JavaLangString);
-      localObject = QIPCClientHelper.getInstance().getClient().callServer("HardCoderModule", "start", jdField_a_of_type_AndroidOsBundle);
-      if ((paramMessage.arg1 != 0) && (localObject != null) && (((EIPCResult)localObject).code != 0)) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramMessage.arg1), Integer.valueOf(((EIPCResult)localObject).code));
+      this.state = 1;
+      QLog.d("HardCoder.QQManager", 1, "onDisconnect");
+      this.mPref.edit().putInt("key_state", this.state).commit();
+      HCPerfManager.getInstance().uninit();
+    }
+  }
+  
+  public void setSceneEnable(int paramInt, boolean paramBoolean)
+  {
+    this.sceneFlagMap.put(Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
+    this.mPref.edit().putBoolean(String.valueOf(paramInt), paramBoolean).commit();
+  }
+  
+  public int start(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, String paramString)
+  {
+    return start(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong, paramInt7, paramString, true);
+  }
+  
+  public int start(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, String paramString, boolean paramBoolean)
+  {
+    if (this.state != 10) {
+      return 0;
+    }
+    if (MobileQQ.sProcessId == 1) {
+      return HCPerfManager.getInstance().start(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong, paramInt7, paramString);
+    }
+    Message localMessage = this.mHandler.obtainMessage(0);
+    HCPerfManager.PerformanceTask localPerformanceTask = (HCPerfManager.PerformanceTask)HCPerfManager.sStartTaskPool.obtain(HCPerfManager.PerformanceTask.class);
+    localPerformanceTask.delay = paramInt1;
+    localPerformanceTask.cpuLevel = paramInt2;
+    localPerformanceTask.ioLevel = paramInt3;
+    localPerformanceTask.bindTid = paramInt4;
+    localPerformanceTask.timeout = paramInt5;
+    localPerformanceTask.scene = paramInt6;
+    localPerformanceTask.action = paramLong;
+    localPerformanceTask.tag = paramString;
+    localMessage.obj = localPerformanceTask;
+    localMessage.sendToTarget();
+    if (paramBoolean)
+    {
+      paramInt1 = sRand.nextInt();
+      localMessage.arg1 = paramInt1;
+      this.codeMap.put(Integer.valueOf(paramInt1), Integer.valueOf(0));
+    }
+    else
+    {
+      localMessage.arg1 = 0;
+    }
+    return localMessage.arg1;
+  }
+  
+  public void stop(int paramInt)
+  {
+    stop(paramInt, false);
+  }
+  
+  public void stop(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    if (MobileQQ.sProcessId == 1)
+    {
+      HCPerfManager.getInstance().stop(paramInt);
+      return;
+    }
+    if (this.mHandler != null)
+    {
+      Message localMessage;
+      if (this.codeMap.containsKey(Integer.valueOf(paramInt)))
+      {
+        localMessage = this.mHandler.obtainMessage(1);
+        localMessage.arg1 = ((Integer)this.codeMap.remove(Integer.valueOf(paramInt))).intValue();
+        localMessage.sendToTarget();
+        return;
+      }
+      if (paramBoolean)
+      {
+        localMessage = this.mHandler.obtainMessage(1);
+        localMessage.arg1 = paramInt;
+        localMessage.sendToTarget();
       }
     }
-    else if (paramMessage.what == 1)
-    {
-      jdField_b_of_type_AndroidOsBundle.putInt("key_code", paramMessage.arg1);
-      QIPCClientHelper.getInstance().getClient().callServer("HardCoderModule", "stop", jdField_b_of_type_AndroidOsBundle);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderManager
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,8 @@ import java.util.zip.ZipFile;
 
 public class ZipUtil
 {
+  private static final String TAG = "ZipUtil";
+  
   public static long getUncompressedFileSize(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -35,463 +37,487 @@ public class ZipUtil
   public static int unZipFolder(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 19	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifeq +46 -> 50
-    //   7: new 59	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   14: astore_1
-    //   15: aload_1
-    //   16: ldc 62
-    //   18: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: pop
-    //   22: aload_1
-    //   23: aload_0
-    //   24: invokevirtual 72	java/lang/String:toString	()Ljava/lang/String;
-    //   27: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: pop
-    //   31: aload_1
-    //   32: ldc 74
-    //   34: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: pop
-    //   38: ldc 76
-    //   40: aload_1
-    //   41: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokestatic 83	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   47: bipush 9
-    //   49: ireturn
-    //   50: new 85	java/io/File
-    //   53: dup
-    //   54: aload_1
-    //   55: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
-    //   58: astore 7
-    //   60: aload 7
-    //   62: invokevirtual 89	java/io/File:exists	()Z
-    //   65: ifne +9 -> 74
-    //   68: aload 7
-    //   70: invokevirtual 92	java/io/File:mkdirs	()Z
-    //   73: pop
-    //   74: new 85	java/io/File
-    //   77: dup
-    //   78: aload_0
-    //   79: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
-    //   82: astore_0
-    //   83: new 94	com/tencent/qqmini/sdk/core/utils/QZipFile
-    //   86: dup
-    //   87: aload_0
-    //   88: invokespecial 97	com/tencent/qqmini/sdk/core/utils/QZipFile:<init>	(Ljava/io/File;)V
-    //   91: astore 11
-    //   93: sipush 8192
-    //   96: newarray byte
-    //   98: astore 12
-    //   100: new 59	java/lang/StringBuilder
-    //   103: dup
-    //   104: sipush 512
-    //   107: invokespecial 100	java/lang/StringBuilder:<init>	(I)V
-    //   110: astore 13
-    //   112: aload 11
-    //   114: invokevirtual 101	com/tencent/qqmini/sdk/core/utils/QZipFile:entries	()Ljava/util/Enumeration;
-    //   117: astore 14
-    //   119: aload 14
-    //   121: invokeinterface 36 1 0
-    //   126: istore 4
-    //   128: iconst_0
-    //   129: istore_2
-    //   130: iload 4
-    //   132: ifeq +526 -> 658
-    //   135: aload 14
-    //   137: invokeinterface 40 1 0
-    //   142: checkcast 42	java/util/zip/ZipEntry
-    //   145: astore 15
-    //   147: aload 15
-    //   149: invokevirtual 104	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   152: astore_0
-    //   153: aload_0
-    //   154: ldc 106
-    //   156: invokevirtual 109	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   159: ifeq +6 -> 165
-    //   162: goto -43 -> 119
-    //   165: aload 13
-    //   167: iconst_0
-    //   168: aload 13
-    //   170: invokevirtual 113	java/lang/StringBuilder:length	()I
-    //   173: invokevirtual 117	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-    //   176: pop
-    //   177: aload 13
-    //   179: aload_1
-    //   180: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: pop
-    //   184: aload 13
-    //   186: getstatic 121	java/io/File:separator	Ljava/lang/String;
-    //   189: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: pop
-    //   193: aload 13
-    //   195: aload_0
-    //   196: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: pop
-    //   200: aload 15
-    //   202: invokevirtual 45	java/util/zip/ZipEntry:isDirectory	()Z
-    //   205: ifeq +31 -> 236
-    //   208: new 85	java/io/File
-    //   211: dup
-    //   212: aload 13
-    //   214: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   217: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
-    //   220: astore_0
-    //   221: aload_0
-    //   222: invokevirtual 89	java/io/File:exists	()Z
-    //   225: ifne -106 -> 119
-    //   228: aload_0
-    //   229: invokevirtual 92	java/io/File:mkdirs	()Z
+    //   0: new 63	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   7: astore 7
+    //   9: aload 7
+    //   11: ldc 66
+    //   13: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: pop
+    //   17: aload 7
+    //   19: aload_0
+    //   20: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: aload 7
+    //   26: ldc 72
+    //   28: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: pop
+    //   32: aload 7
+    //   34: aload_1
+    //   35: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: ldc 8
+    //   41: aload 7
+    //   43: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   46: invokestatic 82	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: aload_1
+    //   50: invokestatic 23	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   53: ifeq +46 -> 99
+    //   56: new 63	java/lang/StringBuilder
+    //   59: dup
+    //   60: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   63: astore_1
+    //   64: aload_1
+    //   65: ldc 84
+    //   67: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: pop
+    //   71: aload_1
+    //   72: aload_0
+    //   73: invokevirtual 87	java/lang/String:toString	()Ljava/lang/String;
+    //   76: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: pop
+    //   80: aload_1
+    //   81: ldc 89
+    //   83: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: ldc 91
+    //   89: aload_1
+    //   90: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokestatic 82	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: bipush 9
+    //   98: ireturn
+    //   99: new 93	java/io/File
+    //   102: dup
+    //   103: aload_1
+    //   104: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
+    //   107: astore 7
+    //   109: aload 7
+    //   111: invokevirtual 97	java/io/File:exists	()Z
+    //   114: ifne +9 -> 123
+    //   117: aload 7
+    //   119: invokevirtual 100	java/io/File:mkdirs	()Z
+    //   122: pop
+    //   123: new 93	java/io/File
+    //   126: dup
+    //   127: aload_0
+    //   128: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
+    //   131: astore_0
+    //   132: new 102	com/tencent/qqmini/sdk/core/utils/QZipFile
+    //   135: dup
+    //   136: aload_0
+    //   137: invokespecial 105	com/tencent/qqmini/sdk/core/utils/QZipFile:<init>	(Ljava/io/File;)V
+    //   140: astore 11
+    //   142: sipush 8192
+    //   145: newarray byte
+    //   147: astore 12
+    //   149: new 63	java/lang/StringBuilder
+    //   152: dup
+    //   153: sipush 512
+    //   156: invokespecial 108	java/lang/StringBuilder:<init>	(I)V
+    //   159: astore 13
+    //   161: aload 11
+    //   163: invokevirtual 109	com/tencent/qqmini/sdk/core/utils/QZipFile:entries	()Ljava/util/Enumeration;
+    //   166: astore 14
+    //   168: aload 14
+    //   170: invokeinterface 40 1 0
+    //   175: istore 4
+    //   177: iconst_0
+    //   178: istore_2
+    //   179: iload 4
+    //   181: ifeq +526 -> 707
+    //   184: aload 14
+    //   186: invokeinterface 44 1 0
+    //   191: checkcast 46	java/util/zip/ZipEntry
+    //   194: astore 15
+    //   196: aload 15
+    //   198: invokevirtual 112	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   201: astore_0
+    //   202: aload_0
+    //   203: ldc 114
+    //   205: invokevirtual 117	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   208: ifeq +6 -> 214
+    //   211: goto -43 -> 168
+    //   214: aload 13
+    //   216: iconst_0
+    //   217: aload 13
+    //   219: invokevirtual 121	java/lang/StringBuilder:length	()I
+    //   222: invokevirtual 125	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   225: pop
+    //   226: aload 13
+    //   228: aload_1
+    //   229: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   232: pop
-    //   233: goto -114 -> 119
-    //   236: aconst_null
-    //   237: astore 7
-    //   239: aconst_null
-    //   240: astore 10
-    //   242: aload 11
-    //   244: aload 15
-    //   246: invokevirtual 125	com/tencent/qqmini/sdk/core/utils/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   249: astore 8
-    //   251: new 127	java/util/zip/CheckedInputStream
-    //   254: dup
-    //   255: aload 8
-    //   257: new 129	java/util/zip/CRC32
+    //   233: aload 13
+    //   235: getstatic 128	java/io/File:separator	Ljava/lang/String;
+    //   238: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: pop
+    //   242: aload 13
+    //   244: aload_0
+    //   245: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: pop
+    //   249: aload 15
+    //   251: invokevirtual 49	java/util/zip/ZipEntry:isDirectory	()Z
+    //   254: ifeq +31 -> 285
+    //   257: new 93	java/io/File
     //   260: dup
-    //   261: invokespecial 130	java/util/zip/CRC32:<init>	()V
-    //   264: invokespecial 133	java/util/zip/CheckedInputStream:<init>	(Ljava/io/InputStream;Ljava/util/zip/Checksum;)V
-    //   267: astore 9
-    //   269: aload 10
-    //   271: astore_0
-    //   272: new 85	java/io/File
-    //   275: dup
-    //   276: new 68	java/lang/String
-    //   279: dup
-    //   280: aload 13
-    //   282: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   285: ldc 135
-    //   287: invokevirtual 139	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   290: ldc 141
-    //   292: invokespecial 144	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   295: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
-    //   298: astore 7
-    //   300: aload 10
-    //   302: astore_0
-    //   303: aload 7
-    //   305: invokevirtual 89	java/io/File:exists	()Z
-    //   308: ifne +33 -> 341
-    //   311: aload 10
-    //   313: astore_0
-    //   314: aload 7
-    //   316: invokevirtual 148	java/io/File:getParentFile	()Ljava/io/File;
-    //   319: astore 16
-    //   321: aload 10
-    //   323: astore_0
-    //   324: aload 16
-    //   326: invokevirtual 89	java/io/File:exists	()Z
-    //   329: ifne +12 -> 341
-    //   332: aload 10
-    //   334: astore_0
-    //   335: aload 16
-    //   337: invokevirtual 92	java/io/File:mkdirs	()Z
-    //   340: pop
-    //   341: aload 10
-    //   343: astore_0
-    //   344: new 150	java/io/BufferedOutputStream
-    //   347: dup
-    //   348: new 152	java/io/FileOutputStream
-    //   351: dup
+    //   261: aload 13
+    //   263: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   266: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
+    //   269: astore_0
+    //   270: aload_0
+    //   271: invokevirtual 97	java/io/File:exists	()Z
+    //   274: ifne -106 -> 168
+    //   277: aload_0
+    //   278: invokevirtual 100	java/io/File:mkdirs	()Z
+    //   281: pop
+    //   282: goto -114 -> 168
+    //   285: aconst_null
+    //   286: astore 7
+    //   288: aconst_null
+    //   289: astore 10
+    //   291: aload 11
+    //   293: aload 15
+    //   295: invokevirtual 132	com/tencent/qqmini/sdk/core/utils/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   298: astore 8
+    //   300: new 134	java/util/zip/CheckedInputStream
+    //   303: dup
+    //   304: aload 8
+    //   306: new 136	java/util/zip/CRC32
+    //   309: dup
+    //   310: invokespecial 137	java/util/zip/CRC32:<init>	()V
+    //   313: invokespecial 140	java/util/zip/CheckedInputStream:<init>	(Ljava/io/InputStream;Ljava/util/zip/Checksum;)V
+    //   316: astore 9
+    //   318: aload 10
+    //   320: astore_0
+    //   321: new 93	java/io/File
+    //   324: dup
+    //   325: new 86	java/lang/String
+    //   328: dup
+    //   329: aload 13
+    //   331: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   334: ldc 142
+    //   336: invokevirtual 146	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   339: ldc 148
+    //   341: invokespecial 151	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   344: invokespecial 94	java/io/File:<init>	(Ljava/lang/String;)V
+    //   347: astore 7
+    //   349: aload 10
+    //   351: astore_0
     //   352: aload 7
-    //   354: invokespecial 153	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   357: invokespecial 156	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   360: invokestatic 162	com/tencent/qqmini/sdk/core/utils/RecycleableBufferedOutputStream:obtain	(Ljava/io/OutputStream;)Lcom/tencent/qqmini/sdk/core/utils/RecycleableBufferedOutputStream;
-    //   363: astore 7
-    //   365: aload 7
-    //   367: astore_0
-    //   368: aload 15
-    //   370: invokevirtual 49	java/util/zip/ZipEntry:getSize	()J
-    //   373: lstore 5
-    //   375: lload 5
-    //   377: lconst_0
-    //   378: lcmp
-    //   379: ifle +40 -> 419
-    //   382: aload 7
-    //   384: astore_0
-    //   385: aload 9
-    //   387: aload 12
-    //   389: iconst_0
-    //   390: sipush 8192
-    //   393: invokevirtual 166	java/util/zip/CheckedInputStream:read	([BII)I
-    //   396: istore_2
-    //   397: aload 7
-    //   399: astore_0
-    //   400: aload 7
-    //   402: aload 12
-    //   404: iconst_0
-    //   405: iload_2
-    //   406: invokevirtual 172	java/io/OutputStream:write	([BII)V
-    //   409: lload 5
-    //   411: iload_2
-    //   412: i2l
-    //   413: lsub
-    //   414: lstore 5
-    //   416: goto -41 -> 375
-    //   419: aload 7
-    //   421: astore_0
-    //   422: aload 15
-    //   424: invokevirtual 175	java/util/zip/ZipEntry:getCrc	()J
-    //   427: aload 9
-    //   429: invokevirtual 179	java/util/zip/CheckedInputStream:getChecksum	()Ljava/util/zip/Checksum;
-    //   432: invokeinterface 184 1 0
-    //   437: lcmp
-    //   438: ifeq +91 -> 529
-    //   441: iconst_4
-    //   442: istore_3
-    //   443: aload 7
-    //   445: astore_0
-    //   446: new 59	java/lang/StringBuilder
-    //   449: dup
-    //   450: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   453: astore_1
-    //   454: aload 7
-    //   456: astore_0
-    //   457: aload_1
-    //   458: ldc 186
-    //   460: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   463: pop
-    //   464: aload 7
-    //   466: astore_0
-    //   467: aload_1
-    //   468: aload 15
-    //   470: invokevirtual 175	java/util/zip/ZipEntry:getCrc	()J
-    //   473: invokevirtual 189	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   476: pop
-    //   477: aload 7
-    //   479: astore_0
-    //   480: ldc 76
-    //   482: aload_1
-    //   483: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   486: invokestatic 192	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   489: aload 9
-    //   491: invokevirtual 195	java/util/zip/CheckedInputStream:close	()V
-    //   494: aload 8
-    //   496: ifnull +11 -> 507
-    //   499: aload 8
-    //   501: invokevirtual 198	java/io/InputStream:close	()V
-    //   504: goto +3 -> 507
-    //   507: iload_3
-    //   508: istore_2
-    //   509: aload 7
-    //   511: ifnull +147 -> 658
-    //   514: aload 7
-    //   516: invokevirtual 201	java/io/OutputStream:flush	()V
-    //   519: aload 7
-    //   521: invokevirtual 202	java/io/OutputStream:close	()V
-    //   524: iload_3
-    //   525: istore_2
-    //   526: goto +132 -> 658
-    //   529: aload 9
-    //   531: invokevirtual 195	java/util/zip/CheckedInputStream:close	()V
-    //   534: aload 8
-    //   536: ifnull +11 -> 547
-    //   539: aload 8
-    //   541: invokevirtual 198	java/io/InputStream:close	()V
-    //   544: goto +3 -> 547
-    //   547: aload 7
-    //   549: ifnull -430 -> 119
-    //   552: aload 7
-    //   554: invokevirtual 201	java/io/OutputStream:flush	()V
-    //   557: aload 7
-    //   559: invokevirtual 202	java/io/OutputStream:close	()V
-    //   562: goto -443 -> 119
-    //   565: astore_1
-    //   566: aload_0
-    //   567: astore 7
-    //   569: aload 9
-    //   571: astore_0
-    //   572: goto +16 -> 588
-    //   575: astore_1
-    //   576: aconst_null
-    //   577: astore_0
-    //   578: goto +10 -> 588
-    //   581: astore_1
-    //   582: aconst_null
-    //   583: astore 8
-    //   585: aload 8
-    //   587: astore_0
-    //   588: aload_0
-    //   589: ifnull +10 -> 599
-    //   592: aload_0
-    //   593: invokevirtual 195	java/util/zip/CheckedInputStream:close	()V
-    //   596: goto +3 -> 599
-    //   599: aload 8
-    //   601: ifnull +11 -> 612
-    //   604: aload 8
-    //   606: invokevirtual 198	java/io/InputStream:close	()V
-    //   609: goto +3 -> 612
-    //   612: aload 7
-    //   614: ifnull +13 -> 627
-    //   617: aload 7
-    //   619: invokevirtual 201	java/io/OutputStream:flush	()V
-    //   622: aload 7
-    //   624: invokevirtual 202	java/io/OutputStream:close	()V
-    //   627: aload_1
-    //   628: athrow
-    //   629: astore_0
-    //   630: aload_0
-    //   631: invokevirtual 205	java/lang/Exception:printStackTrace	()V
-    //   634: bipush 7
-    //   636: istore_2
-    //   637: goto +21 -> 658
-    //   640: astore_0
+    //   354: invokevirtual 97	java/io/File:exists	()Z
+    //   357: ifne +33 -> 390
+    //   360: aload 10
+    //   362: astore_0
+    //   363: aload 7
+    //   365: invokevirtual 155	java/io/File:getParentFile	()Ljava/io/File;
+    //   368: astore 16
+    //   370: aload 10
+    //   372: astore_0
+    //   373: aload 16
+    //   375: invokevirtual 97	java/io/File:exists	()Z
+    //   378: ifne +12 -> 390
+    //   381: aload 10
+    //   383: astore_0
+    //   384: aload 16
+    //   386: invokevirtual 100	java/io/File:mkdirs	()Z
+    //   389: pop
+    //   390: aload 10
+    //   392: astore_0
+    //   393: new 157	java/io/BufferedOutputStream
+    //   396: dup
+    //   397: new 159	java/io/FileOutputStream
+    //   400: dup
+    //   401: aload 7
+    //   403: invokespecial 160	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   406: invokespecial 163	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   409: invokestatic 169	com/tencent/qqmini/sdk/core/utils/RecycleableBufferedOutputStream:obtain	(Ljava/io/OutputStream;)Lcom/tencent/qqmini/sdk/core/utils/RecycleableBufferedOutputStream;
+    //   412: astore 7
+    //   414: aload 7
+    //   416: astore_0
+    //   417: aload 15
+    //   419: invokevirtual 53	java/util/zip/ZipEntry:getSize	()J
+    //   422: lstore 5
+    //   424: lload 5
+    //   426: lconst_0
+    //   427: lcmp
+    //   428: ifle +40 -> 468
+    //   431: aload 7
+    //   433: astore_0
+    //   434: aload 9
+    //   436: aload 12
+    //   438: iconst_0
+    //   439: sipush 8192
+    //   442: invokevirtual 173	java/util/zip/CheckedInputStream:read	([BII)I
+    //   445: istore_2
+    //   446: aload 7
+    //   448: astore_0
+    //   449: aload 7
+    //   451: aload 12
+    //   453: iconst_0
+    //   454: iload_2
+    //   455: invokevirtual 179	java/io/OutputStream:write	([BII)V
+    //   458: lload 5
+    //   460: iload_2
+    //   461: i2l
+    //   462: lsub
+    //   463: lstore 5
+    //   465: goto -41 -> 424
+    //   468: aload 7
+    //   470: astore_0
+    //   471: aload 15
+    //   473: invokevirtual 182	java/util/zip/ZipEntry:getCrc	()J
+    //   476: aload 9
+    //   478: invokevirtual 186	java/util/zip/CheckedInputStream:getChecksum	()Ljava/util/zip/Checksum;
+    //   481: invokeinterface 191 1 0
+    //   486: lcmp
+    //   487: ifeq +91 -> 578
+    //   490: iconst_4
+    //   491: istore_3
+    //   492: aload 7
+    //   494: astore_0
+    //   495: new 63	java/lang/StringBuilder
+    //   498: dup
+    //   499: invokespecial 64	java/lang/StringBuilder:<init>	()V
+    //   502: astore_1
+    //   503: aload 7
+    //   505: astore_0
+    //   506: aload_1
+    //   507: ldc 193
+    //   509: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   512: pop
+    //   513: aload 7
+    //   515: astore_0
+    //   516: aload_1
+    //   517: aload 15
+    //   519: invokevirtual 182	java/util/zip/ZipEntry:getCrc	()J
+    //   522: invokevirtual 196	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   525: pop
+    //   526: aload 7
+    //   528: astore_0
+    //   529: ldc 91
+    //   531: aload_1
+    //   532: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   535: invokestatic 199	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   538: aload 9
+    //   540: invokevirtual 202	java/util/zip/CheckedInputStream:close	()V
+    //   543: aload 8
+    //   545: ifnull +11 -> 556
+    //   548: aload 8
+    //   550: invokevirtual 205	java/io/InputStream:close	()V
+    //   553: goto +3 -> 556
+    //   556: iload_3
+    //   557: istore_2
+    //   558: aload 7
+    //   560: ifnull +147 -> 707
+    //   563: aload 7
+    //   565: invokevirtual 208	java/io/OutputStream:flush	()V
+    //   568: aload 7
+    //   570: invokevirtual 209	java/io/OutputStream:close	()V
+    //   573: iload_3
+    //   574: istore_2
+    //   575: goto +132 -> 707
+    //   578: aload 9
+    //   580: invokevirtual 202	java/util/zip/CheckedInputStream:close	()V
+    //   583: aload 8
+    //   585: ifnull +11 -> 596
+    //   588: aload 8
+    //   590: invokevirtual 205	java/io/InputStream:close	()V
+    //   593: goto +3 -> 596
+    //   596: aload 7
+    //   598: ifnull -430 -> 168
+    //   601: aload 7
+    //   603: invokevirtual 208	java/io/OutputStream:flush	()V
+    //   606: aload 7
+    //   608: invokevirtual 209	java/io/OutputStream:close	()V
+    //   611: goto -443 -> 168
+    //   614: astore_1
+    //   615: aload_0
+    //   616: astore 7
+    //   618: aload 9
+    //   620: astore_0
+    //   621: goto +16 -> 637
+    //   624: astore_1
+    //   625: aconst_null
+    //   626: astore_0
+    //   627: goto +10 -> 637
+    //   630: astore_1
+    //   631: aconst_null
+    //   632: astore 8
+    //   634: aload 8
+    //   636: astore_0
+    //   637: aload_0
+    //   638: ifnull +10 -> 648
     //   641: aload_0
-    //   642: invokevirtual 206	java/io/IOException:printStackTrace	()V
-    //   645: bipush 6
-    //   647: istore_2
-    //   648: goto +10 -> 658
-    //   651: astore_0
-    //   652: aload_0
-    //   653: invokevirtual 207	java/io/FileNotFoundException:printStackTrace	()V
-    //   656: iconst_5
-    //   657: istore_2
-    //   658: aload 11
-    //   660: invokevirtual 208	com/tencent/qqmini/sdk/core/utils/QZipFile:close	()V
-    //   663: iload_2
-    //   664: ireturn
-    //   665: astore_0
-    //   666: aload_0
-    //   667: invokevirtual 206	java/io/IOException:printStackTrace	()V
-    //   670: bipush 8
-    //   672: ireturn
-    //   673: ldc 76
-    //   675: ldc 210
-    //   677: invokestatic 192	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   680: iconst_3
-    //   681: ireturn
-    //   682: ldc 76
-    //   684: ldc 212
-    //   686: invokestatic 192	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   689: iconst_2
-    //   690: ireturn
-    //   691: ldc 76
-    //   693: ldc 214
-    //   695: invokestatic 192	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   698: iconst_1
-    //   699: ireturn
+    //   642: invokevirtual 202	java/util/zip/CheckedInputStream:close	()V
+    //   645: goto +3 -> 648
+    //   648: aload 8
+    //   650: ifnull +11 -> 661
+    //   653: aload 8
+    //   655: invokevirtual 205	java/io/InputStream:close	()V
+    //   658: goto +3 -> 661
+    //   661: aload 7
+    //   663: ifnull +13 -> 676
+    //   666: aload 7
+    //   668: invokevirtual 208	java/io/OutputStream:flush	()V
+    //   671: aload 7
+    //   673: invokevirtual 209	java/io/OutputStream:close	()V
+    //   676: aload_1
+    //   677: athrow
+    //   678: astore_0
+    //   679: aload_0
+    //   680: invokevirtual 212	java/lang/Exception:printStackTrace	()V
+    //   683: bipush 7
+    //   685: istore_2
+    //   686: goto +21 -> 707
+    //   689: astore_0
+    //   690: aload_0
+    //   691: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   694: bipush 6
+    //   696: istore_2
+    //   697: goto +10 -> 707
     //   700: astore_0
-    //   701: goto -10 -> 691
-    //   704: astore_0
-    //   705: goto -23 -> 682
-    //   708: astore_0
-    //   709: goto -36 -> 673
-    //   712: astore_0
-    //   713: goto -219 -> 494
-    //   716: astore_0
-    //   717: goto -210 -> 507
-    //   720: astore_0
-    //   721: iload_3
-    //   722: istore_2
-    //   723: goto -65 -> 658
-    //   726: astore_0
-    //   727: goto -193 -> 534
-    //   730: astore_0
-    //   731: goto -184 -> 547
-    //   734: astore_0
-    //   735: goto -616 -> 119
-    //   738: astore_0
-    //   739: goto -140 -> 599
-    //   742: astore_0
-    //   743: goto -131 -> 612
-    //   746: astore_0
-    //   747: goto -120 -> 627
+    //   701: aload_0
+    //   702: invokevirtual 214	java/io/FileNotFoundException:printStackTrace	()V
+    //   705: iconst_5
+    //   706: istore_2
+    //   707: aload 11
+    //   709: invokevirtual 215	com/tencent/qqmini/sdk/core/utils/QZipFile:close	()V
+    //   712: iload_2
+    //   713: ireturn
+    //   714: astore_0
+    //   715: aload_0
+    //   716: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   719: bipush 8
+    //   721: ireturn
+    //   722: ldc 91
+    //   724: ldc 217
+    //   726: invokestatic 199	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   729: iconst_3
+    //   730: ireturn
+    //   731: ldc 91
+    //   733: ldc 219
+    //   735: invokestatic 199	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   738: iconst_2
+    //   739: ireturn
+    //   740: ldc 91
+    //   742: ldc 221
+    //   744: invokestatic 199	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   747: iconst_1
+    //   748: ireturn
+    //   749: astore_0
+    //   750: goto -10 -> 740
+    //   753: astore_0
+    //   754: goto -23 -> 731
+    //   757: astore_0
+    //   758: goto -36 -> 722
+    //   761: astore_0
+    //   762: goto -219 -> 543
+    //   765: astore_0
+    //   766: goto -210 -> 556
+    //   769: astore_0
+    //   770: iload_3
+    //   771: istore_2
+    //   772: goto -65 -> 707
+    //   775: astore_0
+    //   776: goto -193 -> 583
+    //   779: astore_0
+    //   780: goto -184 -> 596
+    //   783: astore_0
+    //   784: goto -616 -> 168
+    //   787: astore_0
+    //   788: goto -140 -> 648
+    //   791: astore_0
+    //   792: goto -131 -> 661
+    //   795: astore_0
+    //   796: goto -120 -> 676
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	750	0	paramString1	String
-    //   0	750	1	paramString2	String
-    //   129	594	2	i	int
-    //   442	280	3	j	int
-    //   126	5	4	bool	boolean
-    //   373	42	5	l	long
-    //   58	565	7	localObject1	Object
-    //   249	356	8	localInputStream	java.io.InputStream
-    //   267	303	9	localCheckedInputStream	java.util.zip.CheckedInputStream
-    //   240	102	10	localObject2	Object
-    //   91	568	11	localQZipFile	QZipFile
-    //   98	305	12	arrayOfByte	byte[]
-    //   110	171	13	localStringBuilder	java.lang.StringBuilder
-    //   117	19	14	localEnumeration	Enumeration
-    //   145	324	15	localZipEntry	ZipEntry
-    //   319	17	16	localFile	java.io.File
+    //   0	799	0	paramString1	String
+    //   0	799	1	paramString2	String
+    //   178	594	2	i	int
+    //   491	280	3	j	int
+    //   175	5	4	bool	boolean
+    //   422	42	5	l	long
+    //   7	665	7	localObject1	Object
+    //   298	356	8	localInputStream	java.io.InputStream
+    //   316	303	9	localCheckedInputStream	java.util.zip.CheckedInputStream
+    //   289	102	10	localObject2	Object
+    //   140	568	11	localQZipFile	QZipFile
+    //   147	305	12	arrayOfByte	byte[]
+    //   159	171	13	localStringBuilder	java.lang.StringBuilder
+    //   166	19	14	localEnumeration	Enumeration
+    //   194	324	15	localZipEntry	ZipEntry
+    //   368	17	16	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   272	300	565	finally
-    //   303	311	565	finally
-    //   314	321	565	finally
-    //   324	332	565	finally
-    //   335	341	565	finally
-    //   344	365	565	finally
-    //   368	375	565	finally
-    //   385	397	565	finally
-    //   400	409	565	finally
-    //   422	441	565	finally
-    //   446	454	565	finally
-    //   457	464	565	finally
-    //   467	477	565	finally
-    //   480	489	565	finally
-    //   251	269	575	finally
-    //   242	251	581	finally
-    //   93	119	629	java/lang/Exception
-    //   119	128	629	java/lang/Exception
-    //   135	162	629	java/lang/Exception
-    //   165	233	629	java/lang/Exception
-    //   489	494	629	java/lang/Exception
-    //   499	504	629	java/lang/Exception
-    //   514	524	629	java/lang/Exception
-    //   529	534	629	java/lang/Exception
-    //   539	544	629	java/lang/Exception
-    //   552	562	629	java/lang/Exception
-    //   592	596	629	java/lang/Exception
-    //   604	609	629	java/lang/Exception
-    //   617	627	629	java/lang/Exception
-    //   627	629	629	java/lang/Exception
-    //   93	119	640	java/io/IOException
-    //   119	128	640	java/io/IOException
-    //   135	162	640	java/io/IOException
-    //   165	233	640	java/io/IOException
-    //   627	629	640	java/io/IOException
-    //   93	119	651	java/io/FileNotFoundException
-    //   119	128	651	java/io/FileNotFoundException
-    //   135	162	651	java/io/FileNotFoundException
-    //   165	233	651	java/io/FileNotFoundException
-    //   489	494	651	java/io/FileNotFoundException
-    //   499	504	651	java/io/FileNotFoundException
-    //   514	524	651	java/io/FileNotFoundException
-    //   529	534	651	java/io/FileNotFoundException
-    //   539	544	651	java/io/FileNotFoundException
-    //   552	562	651	java/io/FileNotFoundException
-    //   592	596	651	java/io/FileNotFoundException
-    //   604	609	651	java/io/FileNotFoundException
-    //   617	627	651	java/io/FileNotFoundException
-    //   627	629	651	java/io/FileNotFoundException
-    //   658	663	665	java/io/IOException
-    //   83	93	700	java/util/zip/ZipException
-    //   83	93	704	java/io/IOException
-    //   83	93	708	java/lang/Exception
-    //   489	494	712	java/io/IOException
-    //   499	504	716	java/io/IOException
-    //   514	524	720	java/io/IOException
-    //   529	534	726	java/io/IOException
-    //   539	544	730	java/io/IOException
-    //   552	562	734	java/io/IOException
-    //   592	596	738	java/io/IOException
-    //   604	609	742	java/io/IOException
-    //   617	627	746	java/io/IOException
+    //   321	349	614	finally
+    //   352	360	614	finally
+    //   363	370	614	finally
+    //   373	381	614	finally
+    //   384	390	614	finally
+    //   393	414	614	finally
+    //   417	424	614	finally
+    //   434	446	614	finally
+    //   449	458	614	finally
+    //   471	490	614	finally
+    //   495	503	614	finally
+    //   506	513	614	finally
+    //   516	526	614	finally
+    //   529	538	614	finally
+    //   300	318	624	finally
+    //   291	300	630	finally
+    //   142	168	678	java/lang/Exception
+    //   168	177	678	java/lang/Exception
+    //   184	211	678	java/lang/Exception
+    //   214	282	678	java/lang/Exception
+    //   538	543	678	java/lang/Exception
+    //   548	553	678	java/lang/Exception
+    //   563	573	678	java/lang/Exception
+    //   578	583	678	java/lang/Exception
+    //   588	593	678	java/lang/Exception
+    //   601	611	678	java/lang/Exception
+    //   641	645	678	java/lang/Exception
+    //   653	658	678	java/lang/Exception
+    //   666	676	678	java/lang/Exception
+    //   676	678	678	java/lang/Exception
+    //   142	168	689	java/io/IOException
+    //   168	177	689	java/io/IOException
+    //   184	211	689	java/io/IOException
+    //   214	282	689	java/io/IOException
+    //   676	678	689	java/io/IOException
+    //   142	168	700	java/io/FileNotFoundException
+    //   168	177	700	java/io/FileNotFoundException
+    //   184	211	700	java/io/FileNotFoundException
+    //   214	282	700	java/io/FileNotFoundException
+    //   538	543	700	java/io/FileNotFoundException
+    //   548	553	700	java/io/FileNotFoundException
+    //   563	573	700	java/io/FileNotFoundException
+    //   578	583	700	java/io/FileNotFoundException
+    //   588	593	700	java/io/FileNotFoundException
+    //   601	611	700	java/io/FileNotFoundException
+    //   641	645	700	java/io/FileNotFoundException
+    //   653	658	700	java/io/FileNotFoundException
+    //   666	676	700	java/io/FileNotFoundException
+    //   676	678	700	java/io/FileNotFoundException
+    //   707	712	714	java/io/IOException
+    //   132	142	749	java/util/zip/ZipException
+    //   132	142	753	java/io/IOException
+    //   132	142	757	java/lang/Exception
+    //   538	543	761	java/io/IOException
+    //   548	553	765	java/io/IOException
+    //   563	573	769	java/io/IOException
+    //   578	583	775	java/io/IOException
+    //   588	593	779	java/io/IOException
+    //   601	611	783	java/io/IOException
+    //   641	645	787	java/io/IOException
+    //   653	658	791	java/io/IOException
+    //   666	676	795	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.ZipUtil
  * JD-Core Version:    0.7.0.1
  */

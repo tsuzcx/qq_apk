@@ -7,12 +7,12 @@ class AIOPhotoListAdapter$2
   
   public void run()
   {
-    this.this$0.a.a(this.a.jdField_f_of_type_Long, this.a.jdField_f_of_type_Int, 0);
+    this.this$0.b.a(this.a.L, this.a.M, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

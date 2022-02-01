@@ -15,14 +15,14 @@ class MovieTicketTipsBar$1
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(MovieTicketTipsBar.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("url", MovieTicketTipsBar.a(this.a));
+    localIntent.putExtra("url", MovieTicketTipsBar.b(this.a));
     MovieTicketTipsBar.a(this.a).startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.MovieTicketTipsBar.1
  * JD-Core Version:    0.7.0.1
  */

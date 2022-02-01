@@ -12,13 +12,13 @@ class WSVerticalForQQSchemePresenter$1
   
   public void run()
   {
-    WSVerticalRequestParams localWSVerticalRequestParams = new WSVerticalRequestParams(14, this.jdField_a_of_type_Boolean, this.b).a(WSVerticalDataUtil.a(this.b, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageContract$View.a()));
+    WSVerticalRequestParams localWSVerticalRequestParams = new WSVerticalRequestParams(14, this.a, this.b).a(WSVerticalDataUtil.a(this.b, this.c.g()));
     WSVerticalDataManager.a().a(localWSVerticalRequestParams, this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForQQSchemePresenter.1
  * JD-Core Version:    0.7.0.1
  */

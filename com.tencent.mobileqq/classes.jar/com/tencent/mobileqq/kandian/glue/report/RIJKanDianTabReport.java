@@ -11,10 +11,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.common.fragment.ReadInJoyBaseFragment;
 import com.tencent.mobileqq.kandian.biz.feeds.entity.RedPntInfoForReport;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
@@ -26,8 +25,7 @@ import com.tencent.mobileqq.kandian.biz.skin.ReadInJoyRefreshManager;
 import com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinManager;
 import com.tencent.mobileqq.kandian.biz.skin.RefreshData;
 import com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPagerController;
-import com.tencent.mobileqq.kandian.biz.xtab.badge.RIJXTabBadgeShowLevel;
-import com.tencent.mobileqq.kandian.biz.xtab.badge.RIJXTabBadgeStore;
+import com.tencent.mobileqq.kandian.biz.xtab.api.impl.RIJXTabFrameUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.UserOptInfo;
@@ -35,10 +33,11 @@ import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadManager;
 import com.tencent.mobileqq.kandian.repo.reddot.KandianMsgBoxRedPntInfo;
-import com.tencent.mobileqq.kandian.repo.xtab.api.IRIJXTabConfigHandler;
+import com.tencent.mobileqq.kandian.repo.xtab.api.impl.RIJXTabConfigHandler;
+import com.tencent.mobileqq.kandian.repo.xtab.badge.RIJXTabBadgeShowLevel;
+import com.tencent.mobileqq.kandian.repo.xtab.badge.RIJXTabBadgeStore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -50,35 +49,8 @@ import org.json.JSONObject;
 
 public class RIJKanDianTabReport
 {
-  public static int a;
   public static long a;
-  
-  private static int a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
-  {
-    if (paramRedTypeInfo == null) {
-      return 1;
-    }
-    if (paramRedTypeInfo.red_type.get() == 5) {
-      return 3;
-    }
-    return 2;
-  }
-  
-  public static int a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        int i = new JSONObject(paramString).optInt("jumpType", 0);
-        return i;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("RIJKanDianTabReport", 1, "getReportLoadModeFromLockScreenMsg: ", paramString);
-      }
-    }
-    return -1;
-  }
+  public static int b;
   
   public static String a(String paramString)
   {
@@ -112,10 +84,10 @@ public class RIJKanDianTabReport
     if (paramInt == 1) {
       return new Pair(localInteger, Long.valueOf(0L));
     }
-    if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Long == 0L) {
-      return new Pair(Integer.valueOf(1), Long.valueOf(NetConnInfoCenter.getServerTime() - RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_b_of_type_Long));
+    if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.f == 0L) {
+      return new Pair(Integer.valueOf(1), Long.valueOf(NetConnInfoCenter.getServerTime() - RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.g));
     }
-    return new Pair(localInteger, Long.valueOf(NetConnInfoCenter.getServerTime() - RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Long));
+    return new Pair(localInteger, Long.valueOf(NetConnInfoCenter.getServerTime() - RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.f));
   }
   
   public static void a()
@@ -128,7 +100,7 @@ public class RIJKanDianTabReport
   public static void a(int paramInt1, long paramLong, boolean paramBoolean, int paramInt2, int paramInt3)
   {
     int i;
-    if (((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()) {
+    if (RIJXTabConfigHandler.INSTANCE.isXTabMode()) {
       i = 7;
     } else {
       i = 2;
@@ -144,7 +116,7 @@ public class RIJKanDianTabReport
     else {
       paramInt1 = 5;
     }
-    ReadinjoyReportUtils.a(paramInt1, paramBoolean, paramLong, RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Int, paramInt2, true, paramInt3);
+    ReadinjoyReportUtils.a(paramInt1, paramBoolean, paramLong, RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a, paramInt2, true, paramInt3);
   }
   
   public static void a(long paramLong)
@@ -194,28 +166,28 @@ public class RIJKanDianTabReport
     if (paramIntent != null)
     {
       paramIntent.d(false);
-      paramIntent.h();
+      paramIntent.u();
       QLog.d("RIJKanDianTabReport", 1, "[doReportForEnterTab] KandianMergeManager#setReaded");
     }
     ReadinjoyReportUtils.a(paramQQAppInterface, false);
-    ReadinjoySPEventReport.a().a.a(true);
+    ReadinjoySPEventReport.a().f.a(true);
     paramIntent = RIJKanDianFolderStatus.getFolderStatus(0);
     if ((!TextUtils.equals("1", paramIntent)) && (!TextUtils.equals("0", paramIntent)))
     {
       if (paramInt == 13) {
-        paramInt = UserActionCollector.f;
+        paramInt = UserActionCollector.i;
       } else {
-        paramInt = UserActionCollector.e;
+        paramInt = UserActionCollector.h;
       }
     }
     else {
-      paramInt = UserActionCollector.d;
+      paramInt = UserActionCollector.g;
     }
     UserActionCollector.a().a(paramInt, 1);
     long l = NetConnInfoCenter.getServerTimeMillis();
-    paramInt = RIJAppSetting.a();
+    paramInt = RIJAppSetting.b();
     int i = RIJKanDianFolderStatus.reportFolderStatus;
-    ReadInJoyGlobalReporter.a().a(paramQQAppInterface, l, paramInt, i);
+    ReadInJoyGlobalReporter.e().a(paramQQAppInterface, l, paramInt, i);
     ThreadManager.executeOnSubThread(new RIJKanDianTabReport.3(paramQQAppInterface, l, paramInt, i));
   }
   
@@ -226,13 +198,13 @@ public class RIJKanDianTabReport
     }
     ReadinjoyReportUtils.a(false);
     Object localObject = (ReadInJoySkinManager)paramQQAppInterface.getManager(QQManagerFactory.READ_INJOY_SKIN_MANAGER);
-    if ((((ReadInJoySkinManager)localObject).a() == 1) && (!TextUtils.isEmpty(((ReadInJoySkinManager)localObject).a()))) {
-      localObject = ((ReadInJoySkinManager)localObject).a();
+    if ((((ReadInJoySkinManager)localObject).c() == 1) && (!TextUtils.isEmpty(((ReadInJoySkinManager)localObject).b()))) {
+      localObject = ((ReadInJoySkinManager)localObject).b();
     } else {
       localObject = "0";
     }
     RefreshData localRefreshData = ReadInJoyRefreshManager.b(BaseApplicationImpl.getContext(), 0);
-    int i = a(((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a());
+    int i = c(((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).v());
     RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = new RIJTransMergeKanDianReport.ReportR5Builder();
     for (;;)
     {
@@ -240,23 +212,23 @@ public class RIJKanDianTabReport
       {
         localObject = localReportR5Builder.addKandianMode().addKandianModeNew().addSkinId((String)localObject);
         if (i == 1) {
-          break label245;
+          break label234;
         }
         bool = true;
         localObject = ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).addReddot(bool);
-        if (jdField_a_of_type_Int != 0) {
-          break label250;
+        if (b != 0) {
+          break label239;
         }
         bool = true;
         ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).addButtonState(bool);
         if (paramReadInJoyBaseFragment != null)
         {
-          i = paramReadInJoyBaseFragment.b();
+          i = paramReadInJoyBaseFragment.d();
           localReportR5Builder.addChannelId(i);
           if (i == 0)
           {
             if ((localRefreshData == null) || (!localRefreshData.isAD)) {
-              break label255;
+              break label244;
             }
             i = 1;
             localReportR5Builder.addInt("ad_page", i);
@@ -267,15 +239,15 @@ public class RIJKanDianTabReport
       {
         QLog.e("RIJKanDianTabReport", 1, paramReadInJoyBaseFragment, new Object[0]);
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(paramQQAppInterface, "CliOper", "", "", "0X80081C5", "0X80081C5", 0, 1, "1", null, null, localReportR5Builder.build(), false);
+      PublicAccountReportUtils.a(paramQQAppInterface, "CliOper", "", "", "0X80081C5", "0X80081C5", 0, 1, "1", null, null, localReportR5Builder.build(), false);
       return;
-      label245:
+      label234:
       boolean bool = false;
       continue;
-      label250:
+      label239:
       bool = false;
       continue;
-      label255:
+      label244:
       i = 0;
     }
   }
@@ -306,8 +278,8 @@ public class RIJKanDianTabReport
       a(paramQQAppInterface, paramInt, paramIntent);
       return;
     }
-    UserActionCollector.a().c();
-    ReadInJoyGlobalReporter.a().a();
+    UserActionCollector.a().d();
+    ReadInJoyGlobalReporter.e().a();
     ThreadManager.executeOnSubThread(new RIJKanDianTabReport.4(paramQQAppInterface));
   }
   
@@ -318,7 +290,7 @@ public class RIJKanDianTabReport
     }
     RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = new RIJTransMergeKanDianReport.ReportR5Builder();
     localReportR5Builder.addChannelId(paramTabChannelCoverInfo.mChannelCoverId).addKandianModeNew().addFolderStatus();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate((QQAppInterface)ReadInJoyUtils.a(), "dc01160", "", "", "0X800B7A1", "0X800B7A1", 1, 1, "", "", "", localReportR5Builder.build(), false);
+    PublicAccountReportUtils.a((QQAppInterface)ReadInJoyUtils.b(), "dc01160", "", "", "0X800B7A1", "0X800B7A1", 1, 1, "", "", "", localReportR5Builder.build(), false);
   }
   
   public static void a(boolean paramBoolean)
@@ -333,23 +305,23 @@ public class RIJKanDianTabReport
             return;
           }
           Object localObject1 = (KandianMergeManager)RIJQQAppInterfaceUtil.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-          JSONObject localJSONObject = RIJTransMergeKanDianReport.a();
-          if ((!((KandianMergeManager)localObject1).a()) && (!((KandianMergeManager)localObject1).i()))
+          JSONObject localJSONObject = RIJTransMergeKanDianReport.d();
+          if ((!((KandianMergeManager)localObject1).c()) && (!((KandianMergeManager)localObject1).P()))
           {
             i = 1;
           }
           else
           {
-            if (((KandianMergeManager)localObject1).e() <= 0) {
-              break label347;
+            if (((KandianMergeManager)localObject1).R() <= 0) {
+              break label336;
             }
             i = 3;
           }
           if (i != 3) {
-            break label352;
+            break label341;
           }
           Object localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(((KandianMergeManager)localObject1).e());
+          ((StringBuilder)localObject2).append(((KandianMergeManager)localObject1).R());
           ((StringBuilder)localObject2).append("");
           localObject1 = ((StringBuilder)localObject2).toString();
           int j = i;
@@ -358,7 +330,7 @@ public class RIJKanDianTabReport
           {
             j = i;
             localObject2 = localObject1;
-            if (RIJXTabBadgeStore.a(TabChannelCoverInfo.TYPE_CHANNEL_XTAB_FRIEND_CONFIG) != null)
+            if (RIJXTabBadgeStore.b(TabChannelCoverInfo.TYPE_CHANNEL_XTAB_FRIEND_CONFIG) != null)
             {
               j = i;
               localObject2 = localObject1;
@@ -370,20 +342,20 @@ public class RIJKanDianTabReport
             }
           }
           localJSONObject.put("tab_status", j);
-          localJSONObject.put("kandian_mode_new", VideoReporter.a());
+          localJSONObject.put("kandian_mode_new", VideoReporter.c());
           if (j == 3) {
             localJSONObject.put("reddot_num", localObject2);
           }
           a(true, localJSONObject);
-          i = jdField_a_of_type_Int;
+          i = b;
           j = 0;
           if (i != 0) {
-            break label358;
+            break label347;
           }
           i = 0;
           localJSONObject.put("button_state", i);
           localJSONObject.put("os", 1);
-          localJSONObject.put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+          localJSONObject.put("version", VideoReporter.a);
           i = j;
           if (RIJXTabFrameUtils.INSTANCE.isNowInKanDianTab()) {
             i = 1;
@@ -393,7 +365,7 @@ public class RIJKanDianTabReport
           if (ReadInJoyChannelViewPagerController.a != null) {
             localJSONObject.put("channel_id", ReadInJoyChannelViewPagerController.a.mChannelCoverId);
           }
-          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", null, "0X80081C3", "0X80081C3", 0, 1, null, a(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c), RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_b_of_type_JavaLangString, localJSONObject.toString(), false);
+          PublicAccountReportUtils.a(null, "CliOper", "", null, "0X80081C3", "0X80081C3", 0, 1, null, a(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.d), RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c, localJSONObject.toString(), false);
         }
         else
         {
@@ -405,20 +377,20 @@ public class RIJKanDianTabReport
         localJSONException.printStackTrace();
         return;
       }
-      label347:
+      label336:
       int i = 2;
       continue;
-      label352:
+      label341:
       String str = "0";
       continue;
-      label358:
+      label347:
       i = 1;
     }
   }
   
   public static void a(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     if (localObject1 == null) {
       return;
     }
@@ -426,7 +398,7 @@ public class RIJKanDianTabReport
     localObject1 = null;
     if (localObject2 != null)
     {
-      Object localObject3 = ((QQMessageFacade)localObject2).b(AppConstants.KANDIAN_MERGE_UIN, 7220);
+      Object localObject3 = ((QQMessageFacade)localObject2).r(AppConstants.KANDIAN_MERGE_UIN, 7220);
       if (localObject3 == null) {
         return;
       }
@@ -452,8 +424,8 @@ public class RIJKanDianTabReport
           paramJSONObject.put("feeds_source", localObject2);
           if ((localObject1 != null) && (((MessageForStructing)localObject1).structingMsg != null))
           {
-            paramJSONObject.put("load_mode", a(((MessageForStructing)localObject1).structingMsg.mExtraData));
-            paramJSONObject.put("push_type", b(((MessageForStructing)localObject1).structingMsg.mExtraData));
+            paramJSONObject.put("load_mode", b(((MessageForStructing)localObject1).structingMsg.mExtraData));
+            paramJSONObject.put("push_type", c(((MessageForStructing)localObject1).structingMsg.mExtraData));
             return;
           }
         }
@@ -470,12 +442,12 @@ public class RIJKanDianTabReport
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        int i = new JSONObject(paramString).optInt("contentType", 0);
+        int i = new JSONObject(paramString).optInt("jumpType", 0);
         return i;
       }
       catch (JSONException paramString)
       {
-        QLog.e("RIJKanDianTabReport", 1, "getReportPushTypeFromeLockScreenMsg: ", paramString);
+        QLog.e("RIJKanDianTabReport", 1, "getReportLoadModeFromLockScreenMsg: ", paramString);
       }
     }
     return -1;
@@ -486,10 +458,10 @@ public class RIJKanDianTabReport
     if (paramRedTypeInfo != null) {
       try
       {
-        paramRedTypeInfo = RIJTransMergeKanDianReport.a();
-        paramRedTypeInfo.put("kandian_mode", RIJAppSetting.a());
-        paramRedTypeInfo.put("tab_source", RIJTransMergeKanDianReport.a());
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", null, "0X80081C6", "0X80081C6", 0, 1, null, null, null, paramRedTypeInfo.toString(), false);
+        paramRedTypeInfo = RIJTransMergeKanDianReport.d();
+        paramRedTypeInfo.put("kandian_mode", RIJAppSetting.b());
+        paramRedTypeInfo.put("tab_source", RIJTransMergeKanDianReport.b());
+        PublicAccountReportUtils.a(null, "CliOper", "", null, "0X80081C6", "0X80081C6", 0, 1, null, null, null, paramRedTypeInfo.toString(), false);
         return;
       }
       catch (Exception paramRedTypeInfo)
@@ -506,37 +478,37 @@ public class RIJKanDianTabReport
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("folder_status", RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Int);
-        localJSONObject.put("algorithm_id", RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("strategy_id", RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_b_of_type_JavaLangString);
+        localJSONObject.put("folder_status", RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a);
+        localJSONObject.put("algorithm_id", RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.b);
+        localJSONObject.put("strategy_id", RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c);
         localJSONObject.put("time", System.currentTimeMillis());
-        if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Int == 6)
+        if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a == 6)
         {
           localJSONObject.put("id", paramString1);
           localJSONObject.put("social_uin", paramString2);
         }
-        boolean bool = RIJTransMergeKanDianReport.a();
+        boolean bool = RIJTransMergeKanDianReport.f();
         int j = 0;
         if (bool)
         {
           i = 1;
           localJSONObject.put("message_status", i);
           i = j;
-          if (ReadInJoyHelper.x(BaseApplicationImpl.getApplication().getRuntime()) == 1) {
+          if (ReadInJoyHelper.ah(BaseApplicationImpl.getApplication().getRuntime()) == 1) {
             i = 1;
           }
           localJSONObject.put("reddot_style", i);
           localJSONObject.put("tab_status", paramInt);
-          localJSONObject.put("kandian_mode_new", VideoReporter.a());
+          localJSONObject.put("kandian_mode_new", VideoReporter.c());
           if (paramInt == 3) {
             localJSONObject.put("reddot_num", paramString3);
           }
-          ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", paramString4, "0X80091DC", "0X80091DC", 0, 0, "0", a(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c), RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_b_of_type_JavaLangString, localJSONObject.toString(), false);
-          if (ReadInJoyHelper.m()) {
-            RIJFrameworkReportManager.a(20, a(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c), RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_b_of_type_JavaLangString, RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_JavaLangString, paramString4, RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Int);
+          PublicAccountReportUtils.a(null, "CliOper", "", paramString4, "0X80091DC", "0X80091DC", 0, 0, "0", a(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.d), RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c, localJSONObject.toString(), false);
+          if (ReadInJoyHelper.w()) {
+            RIJFrameworkReportManager.a(20, a(RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.d), RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.c, RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.b, paramString4, RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a);
           }
-          ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b();
-          if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Int == 6)
+          ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).l();
+          if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a == 6)
           {
             QLog.d("RIJKanDianTabReport", 1, "feedsPreload, social num red point, do not preload.");
             return;
@@ -555,13 +527,40 @@ public class RIJKanDianTabReport
     }
   }
   
-  private static boolean b()
+  private static int c(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.jdField_a_of_type_Int == 1) {
+    if (paramRedTypeInfo == null) {
+      return 1;
+    }
+    if (paramRedTypeInfo.red_type.get() == 5) {
+      return 3;
+    }
+    return 2;
+  }
+  
+  public static int c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        int i = new JSONObject(paramString).optInt("contentType", 0);
+        return i;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("RIJKanDianTabReport", 1, "getReportPushTypeFromeLockScreenMsg: ", paramString);
+      }
+    }
+    return -1;
+  }
+  
+  private static boolean c()
+  {
+    if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a == 1) {
       return true;
     }
     RIJKanDianFolderStatus.updateReportSessionId(String.valueOf(System.currentTimeMillis()));
-    jdField_a_of_type_Long = System.currentTimeMillis() / 1000L;
+    a = System.currentTimeMillis() / 1000L;
     return false;
   }
   
@@ -569,7 +568,7 @@ public class RIJKanDianTabReport
   {
     if (paramMessageRecord.extInt == 5)
     {
-      paramQQAppInterface = ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a();
+      paramQQAppInterface = ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).Q();
       if (paramQQAppInterface != null) {
         return String.valueOf(paramQQAppInterface.mMsgType);
       }
@@ -581,7 +580,7 @@ public class RIJKanDianTabReport
   {
     if (paramMessageRecord.extInt == 5)
     {
-      paramQQAppInterface = ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a();
+      paramQQAppInterface = ((KandianMergeManager)paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).Q();
       if (paramQQAppInterface != null) {
         return String.valueOf(paramQQAppInterface.mUin);
       }
@@ -636,7 +635,7 @@ public class RIJKanDianTabReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJKanDianTabReport
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class NavigationModule$1
   
   public void run()
   {
-    ((ViolaFragment)this.jdField_a_of_type_AndroidxFragmentAppFragment).setTitle(this.jdField_a_of_type_JavaLangString);
+    ((ViolaFragment)this.a).setTitle(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.NavigationModule.1
  * JD-Core Version:    0.7.0.1
  */

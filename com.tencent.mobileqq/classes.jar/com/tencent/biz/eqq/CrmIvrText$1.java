@@ -11,15 +11,15 @@ final class CrmIvrText$1
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Context localContext = this.jdField_a_of_type_AndroidViewView.getContext();
-    String str = this.jdField_a_of_type_JavaLangString;
-    CrmUtils.a(localQQAppInterface, localContext, str, CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str));
+    QQAppInterface localQQAppInterface = this.a;
+    Context localContext = this.b.getContext();
+    String str = this.c;
+    CrmUtils.a(localQQAppInterface, localContext, str, CrmUtils.c(this.a, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.eqq.CrmIvrText.1
  * JD-Core Version:    0.7.0.1
  */

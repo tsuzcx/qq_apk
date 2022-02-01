@@ -8,11 +8,11 @@ import com.tencent.qphone.base.util.QLog;
 public class FriendProfileCardBgDrawable$DecodeNextFrameTask
   extends AsyncTask<Long, Void, Void>
 {
-  private Object jdField_a_of_type_JavaLangObject;
+  private Object b;
   
   public FriendProfileCardBgDrawable$DecodeNextFrameTask(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramObject;
   }
   
   protected Void a(Long... paramVarArgs)
@@ -23,12 +23,12 @@ public class FriendProfileCardBgDrawable$DecodeNextFrameTask
       {
         l1 = paramVarArgs[0].longValue();
         long l2 = paramVarArgs[1].longValue();
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.a(this.jdField_a_of_type_JavaLangObject, (int)l2);
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.d)
+        paramVarArgs = this.a.a(this.b, (int)l2);
+        if (!this.a.m)
         {
-          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
-          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
-          if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
+          paramVarArgs = this.a.f;
+          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.a;
+          if (FriendProfileCardBgDrawable.a(this.a) != null) {
             break label204;
           }
           l1 = 1000L;
@@ -37,31 +37,31 @@ public class FriendProfileCardBgDrawable$DecodeNextFrameTask
         }
         if ((paramVarArgs != null) && (!isCancelled()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = paramVarArgs;
+          this.a.c = paramVarArgs;
           l2 = SystemClock.uptimeMillis();
           if (l2 < l1)
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
+            this.a.f.postDelayed(this.a, l1 - l2);
             return null;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
+          this.a.f.post(this.a);
           return null;
         }
       }
       catch (Throwable paramVarArgs)
       {
         QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
-        paramVarArgs.b = null;
-        paramVarArgs.jdField_a_of_type_Boolean = true;
+        paramVarArgs = this.a;
+        paramVarArgs.c = null;
+        paramVarArgs.g = true;
         return null;
       }
       catch (OutOfMemoryError paramVarArgs)
       {
         QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
-        paramVarArgs.b = null;
-        paramVarArgs.jdField_a_of_type_Boolean = true;
+        paramVarArgs = this.a;
+        paramVarArgs.c = null;
+        paramVarArgs.g = true;
       }
       return null;
       label204:
@@ -71,12 +71,12 @@ public class FriendProfileCardBgDrawable$DecodeNextFrameTask
   
   protected void a(Void paramVoid)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable$DecodeNextFrameTask = null;
+    this.a.h = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable.DecodeNextFrameTask
  * JD-Core Version:    0.7.0.1
  */

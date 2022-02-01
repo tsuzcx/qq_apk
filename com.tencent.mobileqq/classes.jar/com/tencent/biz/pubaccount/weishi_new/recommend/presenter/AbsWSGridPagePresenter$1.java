@@ -13,14 +13,14 @@ class AbsWSGridPagePresenter$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[AbsWSGridPagePresenter.java][onReadCacheCompleted] mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendPresenterAbsWSGridPagePresenter.c);
+    localStringBuilder.append(this.c.c);
     WSLog.d("AbsWSGridPagePresenterLog", localStringBuilder.toString());
-    AbsWSGridPagePresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendPresenterAbsWSGridPagePresenter, paramJceStruct, this.jdField_a_of_type_Boolean, this.b);
+    this.c.a(paramJceStruct, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.presenter.AbsWSGridPagePresenter.1
  * JD-Core Version:    0.7.0.1
  */

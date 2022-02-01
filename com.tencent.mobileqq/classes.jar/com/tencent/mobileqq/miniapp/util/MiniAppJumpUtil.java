@@ -44,11 +44,11 @@ public class MiniAppJumpUtil
         }
         paramString = new JSONObject(new String(paramString, "UTF-8"));
         MiniAppJumpUtil.JumpParam localJumpParam = new MiniAppJumpUtil.JumpParam();
-        localJumpParam.jdField_a_of_type_Int = paramString.getInt("type");
-        localJumpParam.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-        localJumpParam.jdField_b_of_type_JavaLangString = paramString.optString("pageName");
-        localJumpParam.jdField_b_of_type_Int = paramString.optInt("from");
-        localJumpParam.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("param");
+        localJumpParam.a = paramString.getInt("type");
+        localJumpParam.b = paramString.getString("appid");
+        localJumpParam.c = paramString.optString("pageName");
+        localJumpParam.e = paramString.optInt("from");
+        localJumpParam.d = paramString.optJSONObject("param");
         return localJumpParam;
       }
       catch (Exception paramString)
@@ -67,12 +67,12 @@ public class MiniAppJumpUtil
     if (paramJumpParam == null) {
       return false;
     }
-    if (paramJumpParam.jdField_a_of_type_Int == 4) {
+    if (paramJumpParam.a == 4) {
       return false;
     }
-    if (paramJumpParam.jdField_a_of_type_Int == 3)
+    if (paramJumpParam.a == 3)
     {
-      MiniAppManager.a(paramActivity, paramJumpParam.jdField_a_of_type_JavaLangString, paramJumpParam.jdField_a_of_type_Int, null);
+      MiniAppManager.a(paramActivity, paramJumpParam.b, paramJumpParam.a, null);
       return true;
     }
     return false;
@@ -103,14 +103,14 @@ public class MiniAppJumpUtil
     }
     paramString = a(paramString);
     boolean bool = a(paramBaseActivity, paramString, localBundle);
-    if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.jdField_a_of_type_Int == 4) && (paramString.jdField_a_of_type_JavaLangString.equals("101474665")))
+    if ((paramString != null) && (bool) && ((paramMessageRecord instanceof MessageForGrayTips)) && (paramString.a == 4) && (paramString.b.equals("101474665")))
     {
-      if (paramString.jdField_b_of_type_Int == 1)
+      if (paramString.e == 1)
       {
         ReportController.b(localQQAppInterface, "dc00899", "Grp_idol", "", "idol_follow", "follow_suc_clk", 0, 0, paramMessageRecord.frienduin, "", "", "");
         return bool;
       }
-      if (paramString.jdField_b_of_type_Int == 2) {
+      if (paramString.e == 2) {
         TroopReportor.a("Grp_idol", "Grp_AIO", "clk_renwu", 0, 0, new String[] { paramMessageRecord.frienduin });
       }
     }
@@ -119,7 +119,7 @@ public class MiniAppJumpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.util.MiniAppJumpUtil
  * JD-Core Version:    0.7.0.1
  */

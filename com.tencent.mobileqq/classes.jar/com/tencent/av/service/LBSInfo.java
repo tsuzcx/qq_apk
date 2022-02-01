@@ -9,19 +9,19 @@ public class LBSInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LBSInfo> CREATOR = new LBSInfo.1();
-  static String jdField_a_of_type_JavaLangString = "LBSInfo";
-  double jdField_a_of_type_Double = 0.0D;
-  String[] jdField_a_of_type_ArrayOfJavaLangString = null;
-  double jdField_b_of_type_Double = 0.0D;
-  String jdField_b_of_type_JavaLangString = "";
-  double jdField_c_of_type_Double = 0.0D;
-  String jdField_c_of_type_JavaLangString = "";
+  static String a = "LBSInfo";
+  String b = "";
+  String c = "";
   String d = "";
   String e = "";
   String f = "";
   String g = "";
   String h = "";
   String i = "";
+  double j = 0.0D;
+  double k = 0.0D;
+  double l = 0.0D;
+  String[] m = null;
   
   public LBSInfo() {}
   
@@ -32,18 +32,18 @@ public class LBSInfo
   
   public LBSInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, double paramDouble1, double paramDouble2, double paramDouble3, String[] paramArrayOfString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString6;
-    this.jdField_c_of_type_JavaLangString = paramString5;
+    this.b = paramString6;
+    this.c = paramString5;
     this.d = paramString8;
     this.e = paramString7;
     this.f = paramString2;
     this.g = paramString4;
     this.h = paramString1;
     this.i = paramString3;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.jdField_c_of_type_Double = paramDouble3;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.j = paramDouble1;
+    this.k = paramDouble2;
+    this.l = paramDouble3;
+    this.m = paramArrayOfString;
   }
   
   public void a(Parcel paramParcel)
@@ -54,27 +54,27 @@ public class LBSInfo
       this.f = paramParcel.readString();
       this.i = paramParcel.readString();
       this.g = paramParcel.readString();
-      this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      this.c = paramParcel.readString();
+      this.b = paramParcel.readString();
       this.e = paramParcel.readString();
       this.d = paramParcel.readString();
-      this.jdField_a_of_type_Double = paramParcel.readDouble();
-      this.jdField_b_of_type_Double = paramParcel.readDouble();
-      this.jdField_c_of_type_Double = paramParcel.readDouble();
-      this.jdField_a_of_type_ArrayOfJavaLangString = paramParcel.createStringArray();
+      this.j = paramParcel.readDouble();
+      this.k = paramParcel.readDouble();
+      this.l = paramParcel.readDouble();
+      this.m = paramParcel.createStringArray();
       return;
     }
     catch (RuntimeException paramParcel)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "readFromParcel RuntimeException", paramParcel);
+        QLog.d(a, 2, "readFromParcel RuntimeException", paramParcel);
       }
     }
   }
   
   public String[] a()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    return this.m;
   }
   
   public int describeContents()
@@ -93,7 +93,7 @@ public class LBSInfo
         return false;
       }
       paramObject = (LBSInfo)paramObject;
-      return (this.h.equals(paramObject.h)) && (this.f.equals(paramObject.f)) && (this.i.equals(paramObject.i)) && (this.g.equals(paramObject.g)) && (this.jdField_c_of_type_JavaLangString.equals(paramObject.jdField_c_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) && (this.e.equals(paramObject.e)) && (this.d.equals(paramObject.d)) && (this.jdField_a_of_type_Double == paramObject.jdField_a_of_type_Double) && (this.jdField_b_of_type_Double == paramObject.jdField_b_of_type_Double) && (this.jdField_c_of_type_Double == paramObject.jdField_c_of_type_Double);
+      return (this.h.equals(paramObject.h)) && (this.f.equals(paramObject.f)) && (this.i.equals(paramObject.i)) && (this.g.equals(paramObject.g)) && (this.c.equals(paramObject.c)) && (this.b.equals(paramObject.b)) && (this.e.equals(paramObject.e)) && (this.d.equals(paramObject.d)) && (this.j == paramObject.j) && (this.k == paramObject.k) && (this.l == paramObject.l);
     }
     return false;
   }
@@ -106,20 +106,20 @@ public class LBSInfo
       paramParcel.writeString(this.f);
       paramParcel.writeString(this.i);
       paramParcel.writeString(this.g);
-      paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+      paramParcel.writeString(this.c);
+      paramParcel.writeString(this.b);
       paramParcel.writeString(this.e);
       paramParcel.writeString(this.d);
-      paramParcel.writeDouble(this.jdField_a_of_type_Double);
-      paramParcel.writeDouble(this.jdField_b_of_type_Double);
-      paramParcel.writeDouble(this.jdField_c_of_type_Double);
-      paramParcel.writeArray(this.jdField_a_of_type_ArrayOfJavaLangString);
+      paramParcel.writeDouble(this.j);
+      paramParcel.writeDouble(this.k);
+      paramParcel.writeDouble(this.l);
+      paramParcel.writeArray(this.m);
       return;
     }
     catch (RuntimeException paramParcel)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "writeToParcel RuntimeException", paramParcel);
+        QLog.d(a, 2, "writeToParcel RuntimeException", paramParcel);
       }
     }
   }

@@ -11,12 +11,12 @@ class BlessSelectMemberActivity$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    BlessSelectMemberActivity.a(this.a, null);
+    BlessSelectMemberActivity.b(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.3
  * JD-Core Version:    0.7.0.1
  */

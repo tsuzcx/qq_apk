@@ -13,7 +13,7 @@ public class TencentDocGrayTipsPref
     return MyPref.a(paramContext, localStringBuilder.toString(), 0);
   }
   
-  public static long a(Context paramContext, String paramString)
+  public static long b(Context paramContext, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TencentDocGrayTips_LastShowTime_");
@@ -21,25 +21,25 @@ public class TencentDocGrayTipsPref
     return MyPref.a(paramContext, localStringBuilder.toString(), 0L);
   }
   
-  public static void b(Context paramContext, String paramString, int paramInt)
+  public static void c(Context paramContext, String paramString, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TencentDocGrayTips_ShowTimes_");
     localStringBuilder.append(paramString);
-    MyPref.a(paramContext, localStringBuilder.toString(), paramInt);
+    MyPref.b(paramContext, localStringBuilder.toString(), paramInt);
   }
   
-  public static void b(Context paramContext, String paramString, long paramLong)
+  public static void c(Context paramContext, String paramString, long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TencentDocGrayTips_LastShowTime_");
     localStringBuilder.append(paramString);
-    MyPref.a(paramContext, localStringBuilder.toString(), paramLong);
+    MyPref.b(paramContext, localStringBuilder.toString(), paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doc.TencentDocGrayTipsPref
  * JD-Core Version:    0.7.0.1
  */

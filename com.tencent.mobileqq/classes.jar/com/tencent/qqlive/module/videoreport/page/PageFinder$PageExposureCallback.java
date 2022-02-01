@@ -54,26 +54,29 @@ class PageFinder$PageExposureCallback
       return;
     }
     paramView = PageFinder.findRelatedPage(paramView);
-    if (paramView == null) {
-      return;
-    }
-    paramDetectionData = this.tailPageInfo;
-    if (paramDetectionData == null)
+    if (paramView != null)
     {
-      this.tailPageInfo = paramView;
-    }
-    else if (!this.mShouldTerminate)
-    {
-      paramDetectionData.setParentPage(paramView);
-      this.tailPageInfo = paramView;
-    }
-    if (this.targetPageInfo == null)
-    {
-      this.targetPageInfo = paramView;
-      this.pageAndParentViewSet = UIUtils.getParentViews(paramView.getPageView());
-    }
-    if (PageFinder.access$100(paramView)) {
-      this.mShouldTerminate = true;
+      if (PageFinder.isIgnorePageInOutEvent(paramView)) {
+        return;
+      }
+      paramDetectionData = this.tailPageInfo;
+      if (paramDetectionData == null)
+      {
+        this.tailPageInfo = paramView;
+      }
+      else if (!this.mShouldTerminate)
+      {
+        paramDetectionData.setParentPage(paramView);
+        this.tailPageInfo = paramView;
+      }
+      if (this.targetPageInfo == null)
+      {
+        this.targetPageInfo = paramView;
+        this.pageAndParentViewSet = UIUtils.getParentViews(paramView.getPageView());
+      }
+      if (PageFinder.access$100(paramView)) {
+        this.mShouldTerminate = true;
+      }
     }
   }
   
@@ -81,7 +84,7 @@ class PageFinder$PageExposureCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageFinder.PageExposureCallback
  * JD-Core Version:    0.7.0.1
  */

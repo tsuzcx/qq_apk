@@ -18,11 +18,11 @@ public final class SelectPopupController$InnerTextWatcher
   implements TextWatcher
 {
   @NotNull
-  private final Context jdField_a_of_type_AndroidContentContext;
+  private final Context b;
   
   public SelectPopupController$InnerTextWatcher(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = localObject;
+    this.b = localObject;
   }
   
   private final boolean a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
@@ -40,7 +40,7 @@ public final class SelectPopupController$InnerTextWatcher
         return false;
       }
       paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2 + paramInt1).toString();
-      bool = SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).matcher((CharSequence)paramCharSequence).find();
+      bool = SelectPopupController.e(this.a).matcher((CharSequence)paramCharSequence).find();
     }
     return bool;
   }
@@ -48,25 +48,25 @@ public final class SelectPopupController$InnerTextWatcher
   @NotNull
   public final Context a()
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    return this.b;
   }
   
   public void afterTextChanged(@Nullable Editable paramEditable)
   {
-    if ((paramEditable != null) && (SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController) != -1) && (SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).getSelectionEnd() > SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController)))
+    if ((paramEditable != null) && (SelectPopupController.a(this.a) != -1) && (SelectPopupController.b(this.a).getSelectionEnd() > SelectPopupController.a(this.a)))
     {
       paramEditable = (CharSequence)paramEditable;
-      int j = SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController);
+      int j = SelectPopupController.a(this.a);
       int i = 1;
-      paramEditable = paramEditable.subSequence(j + 1, SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).getSelectionEnd()).toString();
-      SelectPopupView localSelectPopupView = SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController);
+      paramEditable = paramEditable.subSequence(j + 1, SelectPopupController.b(this.a).getSelectionEnd()).toString();
+      SelectPopupView localSelectPopupView = SelectPopupController.c(this.a);
       localSelectPopupView.b(paramEditable);
-      localSelectPopupView.a(SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).a(this.jdField_a_of_type_AndroidContentContext, -1));
+      localSelectPopupView.a(SelectPopupController.d(this.a).a(this.b, -1));
       if (((CharSequence)paramEditable).length() <= 0) {
         i = 0;
       }
       if (i != 0) {
-        SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).a(paramEditable, (Function1)new SelectPopupController.InnerTextWatcher.afterTextChanged.2(this));
+        SelectPopupController.d(this.a).a(paramEditable, (Function1)new SelectPopupController.InnerTextWatcher.afterTextChanged.2(this));
       }
     }
   }
@@ -86,7 +86,7 @@ public final class SelectPopupController$InnerTextWatcher
     } else {
       i = 0;
     }
-    if ((i != 0) && (paramCharSequence != null) && (paramCharSequence.charAt(paramInt1) == SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).a())) {
+    if ((i != 0) && (paramCharSequence != null) && (paramCharSequence.charAt(paramInt1) == SelectPopupController.d(this.a).a())) {
       paramInt2 = 1;
     } else {
       paramInt2 = 0;
@@ -97,12 +97,12 @@ public final class SelectPopupController$InnerTextWatcher
     } else {
       j = 0;
     }
-    if ((paramInt2 != 0) && (SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).isShowing())) {
+    if ((paramInt2 != 0) && (SelectPopupController.c(this.a).isShowing())) {
       i = 1;
     } else {
       i = 0;
     }
-    if ((j != 0) && (SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).isShowing())) {
+    if ((j != 0) && (SelectPopupController.c(this.a).isShowing())) {
       j = 1;
     } else {
       j = 0;
@@ -111,54 +111,54 @@ public final class SelectPopupController$InnerTextWatcher
     {
       if (paramInt2 != 0)
       {
-        SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController, paramInt1);
-        SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController, false, false, 3, null);
+        SelectPopupController.a(this.a, paramInt1);
+        SelectPopupController.a(this.a, false, false, 3, null);
         return;
       }
-      if ((SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).isShowing()) && (a(paramCharSequence, paramInt1, paramInt3))) {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController.a(5);
+      if ((SelectPopupController.c(this.a).isShowing()) && (a(paramCharSequence, paramInt1, paramInt3))) {
+        this.a.a(5);
       }
     }
     else
     {
-      if (((CharSequence)SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).a()).length() > 0) {
+      if (((CharSequence)SelectPopupController.c(this.a).a()).length() > 0) {
         paramInt2 = 1;
       } else {
         paramInt2 = 0;
       }
       if (paramInt2 != 0)
       {
-        paramCharSequence = SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).a(SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).a());
-        Function3 localFunction3 = this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController.a();
+        paramCharSequence = SelectPopupController.d(this.a).a(SelectPopupController.c(this.a).a());
+        Function3 localFunction3 = this.a.a();
         if (localFunction3 != null) {
-          paramCharSequence = (Unit)localFunction3.invoke(Integer.valueOf(SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController)), Boolean.valueOf(true), paramCharSequence);
+          paramCharSequence = (Unit)localFunction3.invoke(Integer.valueOf(SelectPopupController.a(this.a)), Boolean.valueOf(true), paramCharSequence);
         }
-        SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).b("");
+        SelectPopupController.c(this.a).b("");
         if (i != 0)
         {
-          SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController, paramInt1 + 1);
-          SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).setSelection(SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController) + 1);
-          SelectPopupController.b(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController, false, false, 3, null);
-          SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController, false, false, 3, null);
+          SelectPopupController.a(this.a, paramInt1 + 1);
+          SelectPopupController.b(this.a).setSelection(SelectPopupController.a(this.a) + 1);
+          SelectPopupController.b(this.a, false, false, 3, null);
+          SelectPopupController.a(this.a, false, false, 3, null);
         }
       }
       else
       {
         if (j != 0)
         {
-          this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController.a(4);
+          this.a.a(4);
           return;
         }
-        SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController, paramInt1);
-        SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController).setSelection(SelectPopupController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController) + 1);
-        SelectPopupController.b(this.jdField_a_of_type_ComTencentTkdTopicsdkPublisharticleSelectPopupSelectPopupController, false, false, 3, null);
+        SelectPopupController.a(this.a, paramInt1);
+        SelectPopupController.b(this.a).setSelection(SelectPopupController.a(this.a) + 1);
+        SelectPopupController.b(this.a, false, false, 3, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectPopupController.InnerTextWatcher
  * JD-Core Version:    0.7.0.1
  */

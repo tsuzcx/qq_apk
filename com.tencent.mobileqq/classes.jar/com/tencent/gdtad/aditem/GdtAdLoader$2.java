@@ -9,14 +9,14 @@ class GdtAdLoader$2
   
   public void run()
   {
-    if ((GdtAdLoader.a(this.this$0) != null) && (GdtAdLoader.a(this.this$0).get() != null)) {
-      ((GdtAdLoader.Listener)GdtAdLoader.a(this.this$0).get()).onResponse(this.this$0);
+    if ((GdtAdLoader.c(this.this$0) != null) && (GdtAdLoader.c(this.this$0).get() != null)) {
+      ((GdtAdLoader.Listener)GdtAdLoader.c(this.this$0).get()).onResponse(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtAdLoader.2
  * JD-Core Version:    0.7.0.1
  */

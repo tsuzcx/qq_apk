@@ -9,21 +9,21 @@ import mqq.observer.WtloginObserver;
 
 public class PhoneNumLoginImpl
 {
-  private static PhoneNumLoginImpl jdField_a_of_type_ComTencentMobileqqPhoneloginPhoneNumLoginImpl = null;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private boolean jdField_a_of_type_Boolean = false;
+  private static byte[] a = new byte[0];
+  private static PhoneNumLoginImpl b = null;
+  private boolean c = false;
   
   public static PhoneNumLoginImpl a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqPhoneloginPhoneNumLoginImpl == null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    if (b == null) {
+      synchronized (a)
       {
-        if (jdField_a_of_type_ComTencentMobileqqPhoneloginPhoneNumLoginImpl == null) {
-          jdField_a_of_type_ComTencentMobileqqPhoneloginPhoneNumLoginImpl = new PhoneNumLoginImpl();
+        if (b == null) {
+          b = new PhoneNumLoginImpl();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqPhoneloginPhoneNumLoginImpl;
+    return b;
   }
   
   public int a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, WtloginObserver paramWtloginObserver)
@@ -69,7 +69,7 @@ public class PhoneNumLoginImpl
       if (paramAppRuntime == null) {
         return -1;
       }
-      return paramAppRuntime.checkSMSVerifyLoginAccount(paramString1, paramString2, AppSetting.a(), paramArrayOfByte, paramWtloginObserver);
+      return paramAppRuntime.checkSMSVerifyLoginAccount(paramString1, paramString2, AppSetting.d(), paramArrayOfByte, paramWtloginObserver);
     }
     return -1;
   }
@@ -83,7 +83,7 @@ public class PhoneNumLoginImpl
     if (paramAppRuntime == null) {
       return -1;
     }
-    return paramAppRuntime.regGetSMSVerifyLoginAccount(paramArrayOfByte1, paramArrayOfByte2, paramString, "8.7.0", paramWtloginObserver);
+    return paramAppRuntime.regGetSMSVerifyLoginAccount(paramArrayOfByte1, paramArrayOfByte2, paramString, "8.8.17", paramWtloginObserver);
   }
   
   public void a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
@@ -105,12 +105,7 @@ public class PhoneNumLoginImpl
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.c = paramBoolean;
   }
   
   public boolean a(AppRuntime paramAppRuntime, String paramString)
@@ -146,7 +141,7 @@ public class PhoneNumLoginImpl
       if (paramAppRuntime == null) {
         return -1;
       }
-      return paramAppRuntime.getSubAccountStViaSMSVerifyLogin(paramString1, paramString2, paramString3, AppSetting.a(), paramWtloginObserver);
+      return paramAppRuntime.getSubAccountStViaSMSVerifyLogin(paramString1, paramString2, paramString3, AppSetting.d(), paramWtloginObserver);
     }
     return -1;
   }
@@ -162,14 +157,19 @@ public class PhoneNumLoginImpl
       if (paramAppRuntime == null) {
         return -1;
       }
-      return paramAppRuntime.getStViaSMSVerifyLogin(paramString1, paramString2, AppSetting.a(), paramWtloginObserver);
+      return paramAppRuntime.getStViaSMSVerifyLogin(paramString1, paramString2, AppSetting.d(), paramWtloginObserver);
     }
     return -1;
+  }
+  
+  public boolean b()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl
  * JD-Core Version:    0.7.0.1
  */

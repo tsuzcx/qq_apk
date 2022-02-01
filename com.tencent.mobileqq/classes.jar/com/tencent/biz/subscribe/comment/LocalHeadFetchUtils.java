@@ -45,11 +45,11 @@ public class LocalHeadFetchUtils
     do
     {
       BitmapManager.a(paramString, localOptions, localBitmapDecodeResult);
-      if (localBitmapDecodeResult.a == 1) {
+      if (localBitmapDecodeResult.b == 1) {
         NearbyAppInterfaceUtils.a();
       }
       i += 1;
-    } while ((i < 2) && (localBitmapDecodeResult.a == 1));
+    } while ((i < 2) && (localBitmapDecodeResult.b == 1));
     return localBitmapDecodeResult;
   }
   

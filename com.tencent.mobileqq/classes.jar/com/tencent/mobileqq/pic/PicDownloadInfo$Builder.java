@@ -3,59 +3,59 @@ package com.tencent.mobileqq.pic;
 public class PicDownloadInfo$Builder
   extends PicDownloadInfo
 {
-  public PicDownloadInfo a()
-  {
-    return this;
-  }
-  
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.g = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_c_of_type_Long = paramLong;
+    this.u = paramLong;
   }
   
   public void b(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.v = paramInt;
   }
   
   public void c(String paramString)
   {
-    this.g = paramString;
+    this.n = paramString;
   }
   
   public void d(String paramString)
   {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    this.m = paramString;
+  }
+  
+  public PicDownloadInfo h()
+  {
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicDownloadInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

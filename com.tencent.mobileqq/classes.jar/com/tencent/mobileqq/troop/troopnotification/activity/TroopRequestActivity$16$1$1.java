@@ -9,14 +9,14 @@ class TroopRequestActivity$16$1$1
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$16$1.a.a.isFinishing()) {
-      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$16$1.a.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    if (!this.b.b.a.isFinishing()) {
+      TroopRequestActivity.a(this.b.b.a, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.16.1.1
  * JD-Core Version:    0.7.0.1
  */

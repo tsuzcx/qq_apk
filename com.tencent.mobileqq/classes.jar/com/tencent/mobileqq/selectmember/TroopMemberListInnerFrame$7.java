@@ -13,7 +13,7 @@ class TroopMemberListInnerFrame$7
   
   protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
+    if ((!TextUtils.isEmpty(this.a.c)) && (!this.a.c.equals(paramString))) {
       return;
     }
     ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
@@ -21,7 +21,7 @@ class TroopMemberListInnerFrame$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopMemberListInnerFrame.7
  * JD-Core Version:    0.7.0.1
  */

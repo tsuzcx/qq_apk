@@ -55,7 +55,7 @@ public class FloatWindowPermission
   
   public void requestFWPermission(Activity paramActivity, FloatWindowPermissionInterface.OnRequestResult paramOnRequestResult)
   {
-    DialogUtil.createDialog(paramActivity, paramActivity.getString(2131692516), paramActivity.getString(2131692517), paramActivity.getString(2131693242), paramActivity.getString(2131693243), new FloatWindowPermission.1(this, paramOnRequestResult), new FloatWindowPermission.2(this, paramActivity)).show(((FragmentActivity)paramActivity).getSupportFragmentManager(), "");
+    DialogUtil.createDialog(paramActivity, paramActivity.getString(2131889539), paramActivity.getString(2131889540), paramActivity.getString(2131890790), paramActivity.getString(2131890791), new FloatWindowPermission.1(this, paramOnRequestResult), new FloatWindowPermission.2(this, paramActivity)).show(((FragmentActivity)paramActivity).getSupportFragmentManager(), "");
     reportPermissionDialogAction("view", "曝光", -1);
   }
   
@@ -88,7 +88,7 @@ public class FloatWindowPermission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.floatwindowpermission.FloatWindowPermission
  * JD-Core Version:    0.7.0.1
  */

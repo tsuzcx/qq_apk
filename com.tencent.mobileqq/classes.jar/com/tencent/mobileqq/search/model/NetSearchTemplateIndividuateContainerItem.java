@@ -6,6 +6,7 @@ import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.mobilereport.MobileReportManager;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,39 +17,51 @@ public class NetSearchTemplateIndividuateContainerItem
   extends NetSearchTemplateBaseItem
 {
   public List<NetSearchTemplateHorizontalBaseItem> a;
-  private boolean b;
+  private boolean b = false;
   
   public NetSearchTemplateIndividuateContainerItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_Boolean = false;
   }
   
-  public void a(int paramInt)
+  public void b(int paramInt)
   {
     if (paramInt > 0)
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.b) {
         return;
       }
-      this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Long == 1106L)
+      this.b = true;
+      if (this.i == 1106L)
       {
         MobileReportManager.getInstance().reportAction("", "", "platform898", "7", "1", 111, 1, System.currentTimeMillis());
-        UniteSearchReportController.a(null, 0, this.jdField_c_of_type_Int, "0X800BAC6", 0, 0, null, null);
+        UniteSearchReportController.a(null, 0, this.p, "0X800BAC6", 0, 0, null, null);
       }
     }
   }
   
-  public void a(String paramString)
+  public void e(int paramInt)
+  {
+    super.e(paramInt);
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((NetSearchTemplateBaseItem)((Iterator)localObject).next()).e(paramInt);
+      }
+    }
+  }
+  
+  public void o_(String paramString)
   {
     try
     {
       paramString = new JSONObject(paramString).getJSONArray("items");
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (this.a == null) {
+        this.a = new ArrayList();
       } else {
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.a.clear();
       }
       if (paramString == null) {
         return;
@@ -59,11 +72,11 @@ public class NetSearchTemplateIndividuateContainerItem
         while (i < paramString.length())
         {
           localObject = paramString.getJSONObject(i);
-          localObject = new NetSearchTemplateIndividuateOneItem(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_c_of_type_Int, (JSONObject)localObject, this.u, (UnifySearchCommon.ResultItem)a());
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          localObject = new NetSearchTemplateIndividuateOneItem(this.m, this.i, this.k, this.p, (JSONObject)localObject, this.af, (UnifySearchCommon.ResultItem)j());
+          this.a.add(localObject);
           i += 1;
         }
-        localObject = jdField_c_of_type_JavaLangString;
+        localObject = g;
       }
       catch (JSONException paramString)
       {
@@ -83,7 +96,7 @@ public class NetSearchTemplateIndividuateContainerItem
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
-        localObject = jdField_c_of_type_JavaLangString;
+        localObject = g;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("vas_search_parsejson, e = ");
         localStringBuilder.append(paramString);
@@ -94,7 +107,7 @@ public class NetSearchTemplateIndividuateContainerItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.NetSearchTemplateIndividuateContainerItem
  * JD-Core Version:    0.7.0.1
  */

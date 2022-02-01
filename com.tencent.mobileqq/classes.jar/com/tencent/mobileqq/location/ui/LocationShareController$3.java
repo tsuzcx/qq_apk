@@ -24,7 +24,7 @@ class LocationShareController$3
       this.a.c();
       return;
     }
-    LocationShareController.a(this.a);
+    LocationShareController.c(this.a);
   }
   
   public void a(LatLng paramLatLng) {}
@@ -51,18 +51,18 @@ class LocationShareController$3
   {
     if (paramBoolean)
     {
-      LocationShareController.a(this.a).b.setValue(Boolean.valueOf(true));
+      LocationShareController.b(this.a).b.setValue(Boolean.valueOf(true));
       return;
     }
     if (paramPoint != null)
     {
       Rect localRect = new Rect();
-      LocationShareController.a(this.a).getGlobalVisibleRect(localRect);
+      LocationShareController.d(this.a).getGlobalVisibleRect(localRect);
       if (localRect.contains(paramPoint.x, paramPoint.y)) {
         return;
       }
     }
-    LocationShareController.a(this.a).b.setValue(Boolean.valueOf(false));
+    LocationShareController.b(this.a).b.setValue(Boolean.valueOf(false));
   }
   
   public void a(boolean paramBoolean, MapWidget.RouteDetail paramRouteDetail)
@@ -72,7 +72,7 @@ class LocationShareController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationShareController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ class VasAvatarLoader$2
   
   public void run()
   {
-    VasAvatar localVasAvatar = (VasAvatar)this.this$0.a.get();
-    if ((localVasAvatar != null) && (localVasAvatar.a == this.this$0))
+    VasAvatar localVasAvatar = (VasAvatar)this.this$0.h.get();
+    if ((localVasAvatar != null) && (localVasAvatar.b == this.this$0))
     {
       localVasAvatar.setImageDrawable(this.a);
       localVasAvatar.a();
@@ -20,7 +20,7 @@ class VasAvatarLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatarLoader.2
  * JD-Core Version:    0.7.0.1
  */

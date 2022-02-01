@@ -3,7 +3,6 @@ package com.tencent.mtt.hippy.bridge;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mtt.hippy.HippyEngineContext;
-import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorEvent;
 import com.tencent.mtt.hippy.adapter.thirdparty.HippyThirdPartyAdapter;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyBundleLoader;
 import com.tencent.mtt.hippy.common.Callback;
@@ -22,7 +21,7 @@ class b$1
     if (b.a(this.b) != null) {
       b.a(this.b).onRuntimeInit(paramLong);
     }
-    this.b.a.getStartTimeMonitor().startEvent(HippyEngineMonitorEvent.ENGINE_LOAD_EVENT_LOAD_COMMONJS);
+    this.b.a.getStartTimeMonitor().startEvent("loadCommonJS");
     if (this.b.b != null)
     {
       this.b.b.load(this.b.c, new b.1.1(this, this.b.e));
@@ -35,7 +34,7 @@ class b$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.b.1
  * JD-Core Version:    0.7.0.1
  */

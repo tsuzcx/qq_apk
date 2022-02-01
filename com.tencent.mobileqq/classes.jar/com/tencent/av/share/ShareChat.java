@@ -49,22 +49,17 @@ import org.json.JSONObject;
 
 public class ShareChat
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  ShareChat.MyTroopObserver jdField_a_of_type_ComTencentAvShareShareChat$MyTroopObserver = null;
-  ShareChat.SharePanel jdField_a_of_type_ComTencentAvShareShareChat$SharePanel;
-  protected QBaseActivity a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected TroopInfoData a;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  protected String b;
-  protected String c;
-  
-  public ShareChat()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData = new TroopInfoData();
-  }
+  String a;
+  protected QBaseActivity b;
+  QQAppInterface c;
+  long d;
+  int e;
+  protected String f;
+  protected String g;
+  ShareChat.SharePanel h;
+  protected TroopInfoData i = new TroopInfoData();
+  boolean j = false;
+  ShareChat.MyTroopObserver k = null;
   
   private String a(int paramInt)
   {
@@ -73,35 +68,22 @@ public class ShareChat
       if (paramInt != 1) {
         return null;
       }
-      return this.c;
+      return this.g;
     }
-    return this.b;
+    return this.f;
   }
   
   static String a(Context paramContext)
   {
-    return paramContext.getString(2131693111);
+    return paramContext.getString(2131890650);
   }
   
   static String a(ShareChat.SharePanel.IHandle paramIHandle)
   {
     if (paramIHandle != null) {
-      return paramIHandle.a();
+      return paramIHandle.d();
     }
     return null;
-  }
-  
-  static String a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    String str = ContactUtils.b(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin());
-    paramString = ContactUtils.a(paramQQAppInterface, paramString, true);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append(String.format(paramQQAppInterface.getApp().getString(2131693114), new Object[] { paramString }));
-    return localStringBuilder.toString();
   }
   
   static String a(String paramString)
@@ -133,23 +115,23 @@ public class ShareChat
     if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {
       return;
     }
-    int i = paramIntent.getIntExtra("param_entrance", 0);
+    int m = paramIntent.getIntExtra("param_entrance", 0);
     String str = paramIntent.getStringExtra("group_uin");
-    if (i == 35)
+    if (m == 35)
     {
       ShareChatReport.g();
       a((QQAppInterface)paramBaseQQAppInterface, paramQBaseActivity, paramView, str);
       return;
     }
     long l = paramIntent.getLongExtra("room_id", 0L);
-    i = paramIntent.getIntExtra("room_create_time", 0);
+    m = paramIntent.getIntExtra("room_create_time", 0);
     ShareChatReport.b();
-    new ShareChat().a((QQAppInterface)paramBaseQQAppInterface, paramQBaseActivity, str, l, i);
+    new ShareChat().a((QQAppInterface)paramBaseQQAppInterface, paramQBaseActivity, str, l, m);
   }
   
   static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("forward, url[");
     ((StringBuilder)localObject).append(paramString2);
@@ -196,7 +178,7 @@ public class ShareChat
     for (;;)
     {
       boolean bool2;
-      int i;
+      int m;
       try
       {
         localObject2 = new JSONObject(paramString1).getJSONObject("news");
@@ -209,11 +191,11 @@ public class ShareChat
           bool1 = ((JSONObject)localObject2).isNull("gav_ark_group_name_key");
           str2 = "";
           if (bool1) {
-            break label714;
+            break label712;
           }
           str1 = ((JSONObject)localObject2).getString("gav_ark_group_name_key");
           if (((JSONObject)localObject2).isNull("gav_ark_group_card_key")) {
-            break label721;
+            break label719;
           }
           paramString1 = ((JSONObject)localObject2).getString("gav_ark_group_card_key");
           if (!((JSONObject)localObject2).isNull("gav_ark_group_uin_key")) {
@@ -227,13 +209,13 @@ public class ShareChat
           }
           paramString1 = (String)localObject1;
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label727;
+            break label725;
           }
           paramString1 = paramBaseQQAppInterface.getCurrentAccountUin();
-          break label727;
+          break label725;
           l2 = ((JSONObject)localObject2).getLong("gav_ark_room_id_key");
-          j = ((JSONObject)localObject2).getInt("gav_ark_room_create_time_key");
-          l3 = StringUtil.a("ShareChat", paramString2);
+          n = ((JSONObject)localObject2).getInt("gav_ark_room_create_time_key");
+          l3 = StringUtil.stringToLong("ShareChat", paramString2);
           if (paramInt != 0)
           {
             if (paramInt != 1)
@@ -264,10 +246,10 @@ public class ShareChat
         String str2;
         Object localObject1;
         long l2;
-        int j;
+        int n;
         long l3;
         long l1;
-        label655:
+        label653:
         paramString1 = "]";
         paramString2 = new StringBuilder();
         paramString2.append("json error[");
@@ -288,27 +270,27 @@ public class ShareChat
         }
         catch (JSONException paramBaseQQAppInterface)
         {
-          break label655;
+          break label653;
         }
         try
         {
           ((PBUInt64Field)localObject1).set(paramBaseQQAppInterface.getLongAccountUin());
           paramString2.room_id.set(l2);
-          paramString2.room_create_time.set(j);
+          paramString2.room_create_time.set(n);
           paramString2.send_type.set(l1);
           paramString2.recv_uin.set(l3);
           paramString2.group_name.set(ByteStringMicro.copyFromUtf8(str1));
           paramString2.share_name.set(ByteStringMicro.copyFromUtf8(paramString1));
-          paramString2.role.set(i);
+          paramString2.role.set(m);
           localObject2 = paramString2.group_code;
           localObject1 = "ShareChat";
           try
           {
-            ((PBUInt64Field)localObject2).set(StringUtil.a((String)localObject1, str2));
-            MessageHandler.a(AudioHelper.b(), paramBaseQQAppInterface, "QQRTCSvc.push_share_ark", paramString2, local4);
+            ((PBUInt64Field)localObject2).set(StringUtil.stringToLong((String)localObject1, str2));
+            MessageHandler.a(AudioHelper.c(), paramBaseQQAppInterface, "QQRTCSvc.push_share_ark", paramString2, local4);
             paramString2 = Locale.ENGLISH;
             long l4 = paramBaseQQAppInterface.getLongAccountUin();
-            QLog.d((String)localObject1, 1, String.format(paramString2, "shareGAVArkMsg success : uin[%d], roomId[%d], room_create_time[%d], send_type[%d], recv_uin[%d], group_name[%s], share_name[%s], role[%d], groupUin[%s]", new Object[] { Long.valueOf(l4), Long.valueOf(l2), Integer.valueOf(j), Long.valueOf(l1), Long.valueOf(l3), str1, paramString1, Integer.valueOf(i), str2 }));
+            QLog.d((String)localObject1, 1, String.format(paramString2, "shareGAVArkMsg success : uin[%d], roomId[%d], room_create_time[%d], send_type[%d], recv_uin[%d], group_name[%s], share_name[%s], role[%d], groupUin[%s]", new Object[] { Long.valueOf(l4), Long.valueOf(l2), Integer.valueOf(n), Long.valueOf(l1), Long.valueOf(l3), str1, paramString1, Integer.valueOf(m), str2 }));
             bool1 = true;
           }
           catch (JSONException paramBaseQQAppInterface) {}
@@ -332,36 +314,36 @@ public class ShareChat
         }
         catch (JSONException paramBaseQQAppInterface)
         {
-          break label655;
+          break label653;
         }
       }
       paramString1 = "]";
       continue;
       boolean bool1 = false;
       return bool1;
-      label714:
+      label712:
       String str1 = "";
       continue;
-      label721:
+      label719:
       paramString1 = "";
       continue;
-      label727:
+      label725:
       if (bool1) {
-        i = 1;
+        m = 1;
       } else if (bool2) {
-        i = 2;
+        m = 2;
       } else {
-        i = 3;
+        m = 3;
       }
     }
   }
   
   public static boolean a(JumpAction paramJumpAction)
   {
-    if ("avshare/group".equals(paramJumpAction.c)) {
+    if ("avshare/group".equals(paramJumpAction.e)) {
       return b(paramJumpAction);
     }
-    if ("avshare/forward".equals(paramJumpAction.c)) {
+    if ("avshare/forward".equals(paramJumpAction.e)) {
       return d(paramJumpAction);
     }
     return false;
@@ -370,17 +352,30 @@ public class ShareChat
   static String b(ShareChat.SharePanel.IHandle paramIHandle)
   {
     if (paramIHandle != null) {
-      return paramIHandle.b();
+      return paramIHandle.e();
     }
     return null;
   }
   
+  static String b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    String str = ContactUtils.b(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin());
+    paramString = ContactUtils.a(paramQQAppInterface, paramString, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(String.format(paramQQAppInterface.getApp().getString(2131890653), new Object[] { paramString }));
+    return localStringBuilder.toString();
+  }
+  
   public static boolean b(JumpAction paramJumpAction)
   {
-    if (!"avshare/group".equals(paramJumpAction.c)) {
+    if (!"avshare/group".equals(paramJumpAction.e)) {
       return false;
     }
-    String str = (String)paramJumpAction.jdField_a_of_type_JavaUtilHashMap.get("guid");
+    String str = (String)paramJumpAction.f.get("guid");
     if (TextUtils.isEmpty(str)) {
       return false;
     }
@@ -389,16 +384,16 @@ public class ShareChat
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.addFlags(268435456);
     localIntent.putExtra("guid", str);
-    PublicFragmentActivity.Launcher.a(paramJumpAction.jdField_a_of_type_AndroidContentContext, localIntent, PublicTransFragmentActivity.class, AVSchema.class);
+    PublicFragmentActivity.Launcher.a(paramJumpAction.b, localIntent, PublicTransFragmentActivity.class, AVSchema.class);
     ShareChatReport.c();
     return true;
   }
   
   static boolean c(JumpAction paramJumpAction)
   {
-    if (!paramJumpAction.d())
+    if (!paramJumpAction.h())
     {
-      paramJumpAction = (String)paramJumpAction.jdField_a_of_type_JavaUtilHashMap.get("from_url_InternalCheck");
+      paramJumpAction = (String)paramJumpAction.f.get("from_url_InternalCheck");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handle_forward, KEY_CurrentUrl[");
       localStringBuilder.append(paramJumpAction);
@@ -418,32 +413,32 @@ public class ShareChat
   
   public static boolean d(JumpAction paramJumpAction)
   {
-    if (!"avshare/forward".equals(paramJumpAction.c)) {
+    if (!"avshare/forward".equals(paramJumpAction.e)) {
       return false;
     }
     if (!c(paramJumpAction)) {
       return false;
     }
-    Object localObject1 = (String)paramJumpAction.jdField_a_of_type_JavaUtilHashMap.get("url");
-    Object localObject2 = (String)paramJumpAction.jdField_a_of_type_JavaUtilHashMap.get("exp");
-    String str = (String)paramJumpAction.jdField_a_of_type_JavaUtilHashMap.get("guin");
-    Object localObject3 = (String)paramJumpAction.jdField_a_of_type_JavaUtilHashMap.get("fromchannel");
+    Object localObject1 = (String)paramJumpAction.f.get("url");
+    Object localObject2 = (String)paramJumpAction.f.get("exp");
+    String str = (String)paramJumpAction.f.get("guin");
+    Object localObject3 = (String)paramJumpAction.f.get("fromchannel");
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return false;
     }
-    int i = (int)StringUtil.a("ShareChat", (String)localObject3);
-    if (i == 0) {
+    int m = (int)StringUtil.stringToLong("ShareChat", (String)localObject3);
+    if (m == 0) {
       return false;
     }
-    ShareChatReport.a(i, str);
+    ShareChatReport.a(m, str);
     AudioHelper.b("handle_forward");
-    long l1 = StringUtil.a("ShareChat", (String)localObject2);
-    long l2 = AudioHelper.a();
+    long l1 = StringUtil.stringToLong("ShareChat", (String)localObject2);
+    long l2 = AudioHelper.b();
     if (l1 < l2)
     {
-      paramJumpAction = QQToast.a(paramJumpAction.jdField_a_of_type_AndroidContentContext, 2131693115, 1);
-      paramJumpAction.a();
-      paramJumpAction.a();
+      paramJumpAction = QQToast.makeText(paramJumpAction.b, 2131890654, 1);
+      paramJumpAction.setAutoTextSize();
+      paramJumpAction.show();
       paramJumpAction = new StringBuilder();
       paramJumpAction.append("handle_forward, expTime[");
       paramJumpAction.append(l1);
@@ -453,7 +448,7 @@ public class ShareChat
       QLog.w("ShareChat", 1, paramJumpAction.toString());
       return true;
     }
-    if (((TroopManager)paramJumpAction.a().getManager(QQManagerFactory.TROOP_MANAGER)).b(str) == null)
+    if (((TroopManager)paramJumpAction.p().getManager(QQManagerFactory.TROOP_MANAGER)).f(str) == null)
     {
       if (QLog.isColorLevel())
       {
@@ -463,18 +458,18 @@ public class ShareChat
         ((StringBuilder)localObject1).append("]");
         QLog.w("ShareChat", 1, ((StringBuilder)localObject1).toString());
       }
-      paramJumpAction = QQToast.a(paramJumpAction.jdField_a_of_type_AndroidContentContext, 2131693115, 1);
-      paramJumpAction.a();
-      paramJumpAction.a();
+      paramJumpAction = QQToast.makeText(paramJumpAction.b, 2131890654, 1);
+      paramJumpAction.setAutoTextSize();
+      paramJumpAction.show();
       return true;
     }
-    localObject2 = (QQAppInterface)paramJumpAction.a();
+    localObject2 = (QQAppInterface)paramJumpAction.p();
     localObject3 = (TroopGagMgr)((QQAppInterface)localObject2).getManager(QQManagerFactory.TROOP_GAG_MANAGER);
-    boolean bool1 = ((TroopGagMgr)localObject3).a(str);
-    boolean bool2 = ((TroopGagMgr)localObject3).b(str);
+    boolean bool1 = ((TroopGagMgr)localObject3).c(str);
+    boolean bool2 = ((TroopGagMgr)localObject3).d(str);
     if ((!bool1) && (!bool2))
     {
-      if (AudioHelper.b())
+      if (AudioHelper.e())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("handle_forward, troopUin[");
@@ -486,16 +481,16 @@ public class ShareChat
         ((StringBuilder)localObject1).append("]");
         QLog.w("ShareChat", 1, ((StringBuilder)localObject1).toString());
       }
-      paramJumpAction = QQToast.a(paramJumpAction.jdField_a_of_type_AndroidContentContext, 2131693116, 1);
-      paramJumpAction.a();
-      paramJumpAction.a();
+      paramJumpAction = QQToast.makeText(paramJumpAction.b, 2131890655, 1);
+      paramJumpAction.setAutoTextSize();
+      paramJumpAction.show();
       return true;
     }
-    paramJumpAction.f = false;
-    if ((paramJumpAction.jdField_a_of_type_AndroidContentContext instanceof JumpActivity)) {
-      ((JumpActivity)paramJumpAction.jdField_a_of_type_AndroidContentContext).initFinishBroadcastReceiver();
+    paramJumpAction.v = false;
+    if ((paramJumpAction.b instanceof JumpActivity)) {
+      ((JumpActivity)paramJumpAction.b).initFinishBroadcastReceiver();
     }
-    a((QQAppInterface)localObject2, paramJumpAction.jdField_a_of_type_AndroidContentContext, str, (String)localObject1, i);
+    a((QQAppInterface)localObject2, paramJumpAction.b, str, (String)localObject1, m);
     return true;
   }
   
@@ -503,12 +498,12 @@ public class ShareChat
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reRequest, mIsRequesting[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("], seq[");
     localStringBuilder.append(paramLong1);
     localStringBuilder.append("]");
     QLog.w("ShareChat", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.j) {
       return;
     }
     a();
@@ -517,132 +512,132 @@ public class ShareChat
   
   void a(QQAppInterface paramQQAppInterface, QBaseActivity paramQBaseActivity, String paramString, long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramQBaseActivity;
+    this.c = paramQQAppInterface;
+    this.d = paramLong;
+    this.e = paramInt;
     if (!a()) {
       return;
     }
     a(paramQQAppInterface, paramString);
     paramQQAppInterface = QAVGroupConfig.a().a(paramString);
-    long l = AudioHelper.b();
-    int i = 1;
+    long l = AudioHelper.c();
+    int m = 1;
     if (paramQQAppInterface == null)
     {
       b(l, paramLong, paramInt);
     }
     else
     {
-      this.b = paramQQAppInterface.jdField_a_of_type_JavaLangString;
-      this.c = paramQQAppInterface.b;
+      this.f = paramQQAppInterface.b;
+      this.g = paramQQAppInterface.c;
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("ShareChat, 从缓存中找到url, groupUin[");
       paramQQAppInterface.append(paramString);
       paramQQAppInterface.append("], mShareUrlWithNoSig[");
-      paramQQAppInterface.append(this.b);
+      paramQQAppInterface.append(this.f);
       paramQQAppInterface.append("], mShareUrl[");
-      paramQQAppInterface.append(this.c);
+      paramQQAppInterface.append(this.g);
       paramQQAppInterface.append("], seq[");
       paramQQAppInterface.append(l);
       paramQQAppInterface.append("], mSharePanel[");
-      paramQQAppInterface.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel);
+      paramQQAppInterface.append(this.h);
       paramQQAppInterface.append("]");
       QLog.w("ShareChat", 1, paramQQAppInterface.toString());
     }
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime() instanceof QQAppInterface;
-    int j = 0;
+    boolean bool = this.b.getAppRuntime() instanceof QQAppInterface;
+    int n = 0;
     if (bool) {
-      bool = ((TroopManager)((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getManager(QQManagerFactory.TROOP_MANAGER)).m(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
+      bool = ((TroopManager)((QQAppInterface)this.b.getAppRuntime()).getManager(QQManagerFactory.TROOP_MANAGER)).Z(this.i.troopUin);
     } else {
       bool = false;
     }
-    paramInt = j;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.isOwnerOrAdim())
+    paramInt = n;
+    if (this.i.isOwnerOrAdim())
     {
-      paramInt = j;
+      paramInt = n;
       if (!bool)
       {
-        if ((TroopInfo.hasPayPrivilege(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.mTroopPrivilegeFlag, 512))) {
+        if ((TroopInfo.hasPayPrivilege(this.i.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.i.mTroopPrivilegeFlag, 512))) {
           paramInt = 1;
         } else {
           paramInt = 0;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.cGroupOption != 1) {
-          i = 0;
+        if (this.i.cGroupOption != 1) {
+          m = 0;
         }
-        if ((paramInt | i) != 0) {
-          paramInt = j;
+        if ((paramInt | m) != 0) {
+          paramInt = n;
         } else {
           paramInt = -1;
         }
       }
     }
-    this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel = new ShareChat.SharePanel(l, paramInt);
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    this.h = new ShareChat.SharePanel(l, paramInt);
+    paramQQAppInterface = this.b;
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface.getIntent().putExtra("big_brother_source_key", "biz_src_jc_yinshipin");
-      this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_JavaLangString, 99, new ShareChat.1(this, l));
+      this.h.a(this.b, this.a, 99, new ShareChat.1(this, l));
     }
   }
   
   void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     ((ITroopInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER)).a(paramString, false);
-    if (this.jdField_a_of_type_ComTencentAvShareShareChat$MyTroopObserver == null)
+    if (this.k == null)
     {
-      this.jdField_a_of_type_ComTencentAvShareShareChat$MyTroopObserver = new ShareChat.MyTroopObserver(this, null);
-      ShareChat.MyTroopObserver localMyTroopObserver = this.jdField_a_of_type_ComTencentAvShareShareChat$MyTroopObserver;
-      localMyTroopObserver.jdField_a_of_type_JavaLangString = paramString;
+      this.k = new ShareChat.MyTroopObserver(this, null);
+      ShareChat.MyTroopObserver localMyTroopObserver = this.k;
+      localMyTroopObserver.a = paramString;
       paramQQAppInterface.addObserver(localMyTroopObserver);
     }
   }
   
   boolean a()
   {
-    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_JavaLangString);
+    Object localObject = ((TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.a);
     if (localObject == null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("initData fail, mGroupUin[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append("]");
       QLog.w("ShareChat", 1, ((StringBuilder)localObject).toString());
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.updateForTroopInfo((TroopInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.i.updateForTroopInfo((TroopInfo)localObject, this.c.getCurrentAccountUin());
     return true;
   }
   
   void b(long paramLong1, long paramLong2, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    long l = StringUtil.a("ShareChat", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopCard;
+    this.j = true;
+    long l = StringUtil.stringToLong("ShareChat", this.i.troopUin);
+    Object localObject2 = this.i.troopCard;
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject1 = this.c;
       localObject1 = ContactUtils.a((AppRuntime)localObject1, ((QQAppInterface)localObject1).getCurrentAccountUin(), true);
     }
     localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localObject2 = this.c.getCurrentAccountUin();
     }
-    int i = 3;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.bOwner) {
-      i = 1;
-    } else if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.bAdmin) {
-      i = 2;
+    int m = 3;
+    if (this.i.bOwner) {
+      m = 1;
+    } else if (this.i.bAdmin) {
+      m = 2;
     }
     localObject1 = new ShareChat.2(this);
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("requestGetUrlFromServer, shareName[");
     ((StringBuilder)localObject3).append((String)localObject2);
     ((StringBuilder)localObject3).append("], role[");
-    ((StringBuilder)localObject3).append(i);
+    ((StringBuilder)localObject3).append(m);
     ((StringBuilder)localObject3).append("], troopUin[");
     ((StringBuilder)localObject3).append(l);
     ((StringBuilder)localObject3).append("], roomID[");
@@ -654,19 +649,19 @@ public class ShareChat
     ((StringBuilder)localObject3).append("]");
     QLog.w("ShareChat", 1, ((StringBuilder)localObject3).toString());
     localObject3 = new ReqGroupVideo.ReqCreateShareUrl();
-    ((ReqGroupVideo.ReqCreateShareUrl)localObject3).uint64_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    ((ReqGroupVideo.ReqCreateShareUrl)localObject3).uint64_uin.set(this.c.getLongAccountUin());
     ((ReqGroupVideo.ReqCreateShareUrl)localObject3).uint64_group_code.set(l);
     ((ReqGroupVideo.ReqCreateShareUrl)localObject3).uint64_room_id.set(paramLong2);
     ((ReqGroupVideo.ReqCreateShareUrl)localObject3).uint32_room_create_time.set(paramInt);
-    ((ReqGroupVideo.ReqCreateShareUrl)localObject3).group_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopName));
+    ((ReqGroupVideo.ReqCreateShareUrl)localObject3).group_name.set(ByteStringMicro.copyFromUtf8(this.i.troopName));
     ((ReqGroupVideo.ReqCreateShareUrl)localObject3).share_name.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    ((ReqGroupVideo.ReqCreateShareUrl)localObject3).role.set(i);
-    MessageHandler.a(paramLong1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQRTCSvc.group_video_create_share_url", (MessageMicro)localObject3, (MessageHandler.MsgListener)localObject1);
+    ((ReqGroupVideo.ReqCreateShareUrl)localObject3).role.set(m);
+    MessageHandler.a(paramLong1, this.c, "QQRTCSvc.group_video_create_share_url", (MessageMicro)localObject3, (MessageHandler.MsgListener)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat
  * JD-Core Version:    0.7.0.1
  */

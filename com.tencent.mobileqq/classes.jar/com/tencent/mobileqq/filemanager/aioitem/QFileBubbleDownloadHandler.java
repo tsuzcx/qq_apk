@@ -15,15 +15,14 @@ import com.tencent.mobileqq.widget.CircleFileStateView;
 public abstract class QFileBubbleDownloadHandler
 {
   protected Context a;
-  protected View.OnClickListener a;
-  protected QQAppInterface a;
-  protected QFileBubbleDownloadHandler.OnDownloadIconClickListener a;
+  protected QQAppInterface b;
+  protected QFileBubbleDownloadHandler.OnDownloadIconClickListener c;
+  protected View.OnClickListener d = new QFileBubbleDownloadHandler.1(this);
   
   public QFileBubbleDownloadHandler(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new QFileBubbleDownloadHandler.1(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramContext;
+    this.b = paramQQAppInterface;
   }
   
   private void a(BaseBubbleBuilder.ViewHolder paramViewHolder, boolean paramBoolean)
@@ -34,7 +33,7 @@ public abstract class QFileBubbleDownloadHandler
       if (paramViewHolder != null)
       {
         paramViewHolder.setVisibility(0);
-        paramViewHolder.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramViewHolder.setOnClickListener(this.d);
       }
     }
     else if (paramViewHolder != null)
@@ -60,25 +59,26 @@ public abstract class QFileBubbleDownloadHandler
       localObject = a(paramViewHolder);
       if (localObject == null)
       {
-        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-        localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
+        localObject = this.a.getResources();
+        localCircleFileStateView = new CircleFileStateView(this.a);
         localCircleFileStateView.setState(2);
-        localCircleFileStateView.setId(2131364525);
+        localCircleFileStateView.setId(2131430582);
         localCircleFileStateView.setProgressRingWidth(0.0F);
         localCircleFileStateView.setCenterBgColor(-1);
+        localCircleFileStateView.setContentDescription(this.a.getString(2131889338));
         a(paramViewHolder, localCircleFileStateView);
-        i = AIOUtils.b(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        i = AIOUtils.b(24.0F, this.a.getResources());
         localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-        localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296381);
-        localLayoutParams.addRule(8, 2131364521);
+        localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296613);
+        localLayoutParams.addRule(8, 2131430578);
         if (paramChatMessage.isSend())
         {
-          localLayoutParams.addRule(0, 2131364521);
+          localLayoutParams.addRule(0, 2131430578);
           localLayoutParams.addRule(1, 0);
         }
         else
         {
-          localLayoutParams.addRule(1, 2131364521);
+          localLayoutParams.addRule(1, 2131430578);
           localLayoutParams.addRule(0, 0);
         }
         if ((paramView instanceof ViewGroup)) {
@@ -91,16 +91,16 @@ public abstract class QFileBubbleDownloadHandler
         paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
         if (paramView == null)
         {
-          i = AIOUtils.b(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          i = AIOUtils.b(24.0F, this.a.getResources());
           paramView = new RelativeLayout.LayoutParams(i, i);
           if (paramChatMessage.isSend())
           {
-            paramView.addRule(0, 2131364521);
+            paramView.addRule(0, 2131430578);
             paramView.addRule(1, 0);
           }
           else
           {
-            paramView.addRule(1, 2131364521);
+            paramView.addRule(1, 2131430578);
             paramView.addRule(0, 0);
           }
           ((CircleFileStateView)localObject).setLayoutParams(paramView);
@@ -109,12 +109,12 @@ public abstract class QFileBubbleDownloadHandler
         {
           if (paramChatMessage.isSend())
           {
-            paramView.addRule(0, 2131364521);
+            paramView.addRule(0, 2131430578);
             paramView.addRule(1, 0);
           }
           else
           {
-            paramView.addRule(1, 2131364521);
+            paramView.addRule(1, 2131430578);
             paramView.addRule(0, 0);
           }
           ((CircleFileStateView)localObject).setLayoutParams(paramView);
@@ -128,25 +128,25 @@ public abstract class QFileBubbleDownloadHandler
       localObject = a(paramViewHolder);
       if (localObject == null)
       {
-        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
-        localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
+        localObject = this.a.getResources();
+        localCircleFileStateView = new CircleFileStateView(this.a);
         localCircleFileStateView.setState(1);
-        localCircleFileStateView.setId(2131364525);
+        localCircleFileStateView.setId(2131430582);
         localCircleFileStateView.setCenterBgColor(-1);
         a(paramViewHolder, localCircleFileStateView);
         localCircleFileStateView.setProgressRingWidth(0.0F);
-        i = AIOUtils.b(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        i = AIOUtils.b(24.0F, this.a.getResources());
         localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-        localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296381);
-        localLayoutParams.addRule(8, 2131364521);
+        localLayoutParams.bottomMargin = ((Resources)localObject).getDimensionPixelSize(2131296613);
+        localLayoutParams.addRule(8, 2131430578);
         if (paramChatMessage.isSend())
         {
-          localLayoutParams.addRule(0, 2131364521);
+          localLayoutParams.addRule(0, 2131430578);
           localLayoutParams.addRule(1, 0);
         }
         else
         {
-          localLayoutParams.addRule(1, 2131364521);
+          localLayoutParams.addRule(1, 2131430578);
           localLayoutParams.addRule(0, 0);
         }
         if ((paramView instanceof ViewGroup)) {
@@ -159,16 +159,16 @@ public abstract class QFileBubbleDownloadHandler
         paramView = (RelativeLayout.LayoutParams)((CircleFileStateView)localObject).getLayoutParams();
         if (paramView == null)
         {
-          i = AIOUtils.b(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          i = AIOUtils.b(24.0F, this.a.getResources());
           paramView = new RelativeLayout.LayoutParams(i, i);
           if (paramChatMessage.isSend())
           {
-            paramView.addRule(0, 2131364521);
+            paramView.addRule(0, 2131430578);
             paramView.addRule(1, 0);
           }
           else
           {
-            paramView.addRule(1, 2131364521);
+            paramView.addRule(1, 2131430578);
             paramView.addRule(0, 0);
           }
           ((CircleFileStateView)localObject).setLayoutParams(paramView);
@@ -177,12 +177,12 @@ public abstract class QFileBubbleDownloadHandler
         {
           if (paramChatMessage.isSend())
           {
-            paramView.addRule(0, 2131364521);
+            paramView.addRule(0, 2131430578);
             paramView.addRule(1, 0);
           }
           else
           {
-            paramView.addRule(1, 2131364521);
+            paramView.addRule(1, 2131430578);
             paramView.addRule(0, 0);
           }
           ((CircleFileStateView)localObject).setLayoutParams(paramView);
@@ -196,7 +196,7 @@ public abstract class QFileBubbleDownloadHandler
   
   public void a(QFileBubbleDownloadHandler.OnDownloadIconClickListener paramOnDownloadIconClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemQFileBubbleDownloadHandler$OnDownloadIconClickListener = paramOnDownloadIconClickListener;
+    this.c = paramOnDownloadIconClickListener;
   }
   
   protected boolean a(ChatMessage paramChatMessage)
@@ -211,7 +211,7 @@ public abstract class QFileBubbleDownloadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.QFileBubbleDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

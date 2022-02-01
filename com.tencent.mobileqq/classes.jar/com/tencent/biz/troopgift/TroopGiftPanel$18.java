@@ -19,16 +19,16 @@ class TroopGiftPanel$18
   
   public void a(int paramInt)
   {
-    paramInt = this.jdField_a_of_type_Int;
-    String str1 = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
+    paramInt = this.a;
+    String str1 = this.c.getTroopUin();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e);
+    ((StringBuilder)localObject).append(this.b.i);
     localObject = ((StringBuilder)localObject).toString();
-    String str2 = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c;
+    String str2 = this.c.H;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.c.l.get(), ((AppInterface)this.c.l.get()).getCurrentAccountUin(), this.c.getTroopUin()));
     ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", paramInt, 0, str1, (String)localObject, str2, localStringBuilder.toString());
   }
   
@@ -45,19 +45,19 @@ class TroopGiftPanel$18
     }
     Object localObject = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      localObject = HardCodeUtil.a(2131715186);
+      localObject = HardCodeUtil.a(2131912671);
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, (CharSequence)localObject, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299168)).show();
-    paramInt = this.jdField_a_of_type_Int;
-    paramString = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
+    QQToast.makeText(this.c.m, (CharSequence)localObject, 0).show(this.c.getResources().getDimensionPixelSize(2131299920)).show();
+    paramInt = this.a;
+    paramString = this.c.getTroopUin();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e);
+    ((StringBuilder)localObject).append(this.b.i);
     localObject = ((StringBuilder)localObject).toString();
-    String str = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c;
+    String str = this.c.H;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.c.l.get(), ((AppInterface)this.c.l.get()).getCurrentAccountUin(), this.c.getTroopUin()));
     ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", paramInt, 0, paramString, (String)localObject, str, localStringBuilder.toString());
   }
   
@@ -66,14 +66,14 @@ class TroopGiftPanel$18
     super.b(paramInt, paramString);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = HardCodeUtil.a(2131715198);
+      str = HardCodeUtil.a(2131912681);
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299168)).show();
+    QQToast.makeText(this.c.m, str, 0).show(this.c.getResources().getDimensionPixelSize(2131299920)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.18
  * JD-Core Version:    0.7.0.1
  */

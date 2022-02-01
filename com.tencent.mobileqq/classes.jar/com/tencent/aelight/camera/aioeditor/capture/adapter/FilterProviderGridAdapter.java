@@ -32,80 +32,80 @@ import java.util.List;
 public class FilterProviderGridAdapter
   extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<QIMFilterCategoryItem> a = new ArrayList();
   int b;
   int c;
   int d;
+  int e;
+  private Context f;
   
   public FilterProviderGridAdapter(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramInt;
+    this.f = paramContext;
+    this.d = paramInt;
   }
   
   private View a()
   {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.f);
+    Object localObject1 = new RelativeLayout(this.f);
     Object localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-    int i = ViewUtils.b(5.0F);
+    int i = ViewUtils.dpToPx(5.0F);
     ((RelativeLayout.LayoutParams)localObject2).setMargins(i, i, i, i);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    localObject2 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((URLImageView)localObject2).setId(2131368343);
-    ((URLImageView)localObject2).setImageResource(2130844578);
+    localObject2 = new URLImageView(this.f);
+    ((URLImageView)localObject2).setId(2131435219);
+    ((URLImageView)localObject2).setImageResource(2130845951);
     ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
-    localObject2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    ((RelativeLayout)localObject2).setId(2131369017);
-    ((RelativeLayout)localObject2).setBackgroundResource(2130844574);
+    localObject2 = new RelativeLayout(this.f);
+    ((RelativeLayout)localObject2).setId(2131435977);
+    ((RelativeLayout)localObject2).setBackgroundResource(2130845947);
     ((RelativeLayout)localObject2).setVisibility(8);
     Object localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject3).topMargin = ViewUtils.b(16.0F);
+    ((RelativeLayout.LayoutParams)localObject3).topMargin = ViewUtils.dpToPx(16.0F);
     ((RelativeLayout.LayoutParams)localObject3).addRule(14, -1);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-    localObject3 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject3).setCompoundDrawables(null, null, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844575), null);
-    ((TextView)localObject3).setCompoundDrawablePadding(ViewUtils.b(4.0F));
-    ((TextView)localObject3).setText(HardCodeUtil.a(2131704707));
+    localObject3 = new TextView(this.f);
+    ((TextView)localObject3).setCompoundDrawables(null, null, this.f.getResources().getDrawable(2130845948), null);
+    ((TextView)localObject3).setCompoundDrawablePadding(ViewUtils.dpToPx(4.0F));
+    ((TextView)localObject3).setText(HardCodeUtil.a(2131902610));
     ((TextView)localObject3).setTextSize(2, 12.0F);
-    ((TextView)localObject3).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167394));
+    ((TextView)localObject3).setTextColor(this.f.getResources().getColor(2131168464));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(13, -1);
     ((RelativeLayout)localObject2).addView((View)localObject3, localLayoutParams);
-    localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject2).setId(2131366842);
+    localObject2 = new TextView(this.f);
+    ((TextView)localObject2).setId(2131433168);
     ((TextView)localObject2).setTextSize(2, 12.0F);
-    ((TextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167394));
+    ((TextView)localObject2).setTextColor(this.f.getResources().getColor(2131168464));
     ((TextView)localObject2).setMaxLines(1);
     ((TextView)localObject2).setLines(1);
     ((TextView)localObject2).setShadowLayer(3.0F, 0.0F, 0.0F, Color.parseColor("#7F000000"));
-    ((TextView)localObject2).setBackgroundResource(2130844577);
+    ((TextView)localObject2).setBackgroundResource(2130845950);
     ((TextView)localObject2).setGravity(17);
-    localObject3 = new RelativeLayout.LayoutParams(-1, ViewUtils.b(31.0F));
+    localObject3 = new RelativeLayout.LayoutParams(-1, ViewUtils.dpToPx(31.0F));
     ((RelativeLayout.LayoutParams)localObject3).addRule(14, -1);
     ((RelativeLayout.LayoutParams)localObject3).addRule(12, -1);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-    localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject2).setId(2131368744);
+    localObject2 = new ImageView(this.f);
+    ((ImageView)localObject2).setId(2131435657);
     ((ImageView)localObject2).setVisibility(8);
-    ((ImageView)localObject2).setImageResource(2130844576);
+    ((ImageView)localObject2).setImageResource(2130845949);
     ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
-    localObject2 = new QIMCommonLoadingView(this.jdField_a_of_type_AndroidContentContext);
-    ((QIMCommonLoadingView)localObject2).setId(2131366846);
+    localObject2 = new QIMCommonLoadingView(this.f);
+    ((QIMCommonLoadingView)localObject2).setId(2131433172);
     ((QIMCommonLoadingView)localObject2).setVisibility(8);
     ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
-    localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject1).setId(2131365257);
-    ((ImageView)localObject1).setImageResource(2130846131);
+    localObject1 = new ImageView(this.f);
+    ((ImageView)localObject1).setId(2131431428);
+    ((ImageView)localObject1).setImageResource(2130847601);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(11, -1);
     ((RelativeLayout.LayoutParams)localObject2).addRule(10, -1);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject1).setId(2131381214);
-    ((ImageView)localObject1).setImageResource(2130846136);
+    localObject1 = new ImageView(this.f);
+    ((ImageView)localObject1).setId(2131450262);
+    ((ImageView)localObject1).setImageResource(2130847606);
     ((ImageView)localObject1).setVisibility(8);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(11, -1);
@@ -116,21 +116,21 @@ public class FilterProviderGridAdapter
   
   public void a(List<QIMFilterCategoryItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (!VideoFilterTools.a().c()) {
-      VideoFilterTools.a(this.jdField_a_of_type_JavaUtilList);
+    this.a.clear();
+    this.a.addAll(paramList);
+    if (!VideoFilterTools.a().k()) {
+      VideoFilterTools.b(this.a);
     }
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -140,31 +140,31 @@ public class FilterProviderGridAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((this.jdField_a_of_type_Int <= 0) && (paramViewGroup != null))
+    if ((this.b <= 0) && (paramViewGroup != null))
     {
-      this.jdField_a_of_type_Int = paramViewGroup.getMeasuredWidth();
-      this.b = ((int)((this.jdField_a_of_type_Int - FilterProviderPagerAdapter.b * 3 - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 4 + 0.5F));
-      this.d = (this.b * 12 / 160);
+      this.b = paramViewGroup.getMeasuredWidth();
+      this.c = ((int)((this.b - FilterProviderPagerAdapter.b * 3 - paramViewGroup.getPaddingLeft() - paramViewGroup.getPaddingRight()) / 4 + 0.5F));
+      this.e = (this.c * 12 / 160);
     }
     paramViewGroup = paramView;
     if (paramView == null) {
       paramViewGroup = a();
     }
-    TextView localTextView = (TextView)paramViewGroup.findViewById(2131366842);
-    ImageView localImageView3 = (ImageView)paramViewGroup.findViewById(2131368744);
-    ImageView localImageView1 = (ImageView)paramViewGroup.findViewById(2131368343);
-    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131365257);
-    QIMCommonLoadingView localQIMCommonLoadingView = (QIMCommonLoadingView)paramViewGroup.findViewById(2131366846);
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramView = VideoFilterTools.a().c(this.c);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131433168);
+    ImageView localImageView3 = (ImageView)paramViewGroup.findViewById(2131435657);
+    ImageView localImageView1 = (ImageView)paramViewGroup.findViewById(2131435219);
+    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131431428);
+    QIMCommonLoadingView localQIMCommonLoadingView = (QIMCommonLoadingView)paramViewGroup.findViewById(2131433172);
+    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a.get(paramInt);
+    paramView = VideoFilterTools.a().c(this.d);
     if (paramView != null) {
-      bool1 = TextUtils.equals(paramView.jdField_a_of_type_JavaLangString, localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
+      bool1 = TextUtils.equals(paramView.a, localQIMFilterCategoryItem.a);
     } else {
       bool1 = false;
     }
     boolean bool2 = bool1;
     if (!bool1) {
-      if (((paramView == null) || (paramView.b())) && (localQIMFilterCategoryItem.b())) {
+      if (((paramView == null) || (paramView.c())) && (localQIMFilterCategoryItem.c())) {
         bool2 = true;
       } else {
         bool2 = false;
@@ -178,39 +178,39 @@ public class FilterProviderGridAdapter
       paramView = new AbsListView.LayoutParams(-1, -1);
       paramViewGroup.setLayoutParams(paramView);
     }
-    paramView.height = this.b;
-    if (localQIMFilterCategoryItem.b())
+    paramView.height = this.c;
+    if (localQIMFilterCategoryItem.c())
     {
       localImageView3.setVisibility(8);
       if (bool2)
       {
         localImageView3.setVisibility(0);
-        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844579));
+        localImageView1.setImageDrawable(this.f.getResources().getDrawable(2130845952));
       }
       else
       {
-        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844579));
+        localImageView1.setImageDrawable(this.f.getResources().getDrawable(2130845952));
       }
       localImageView2.setVisibility(8);
-      localTextView.setText(HardCodeUtil.a(2131704708));
+      localTextView.setText(HardCodeUtil.a(2131902611));
       return paramViewGroup;
     }
-    paramView = ((CaptureComboManager)QIMManager.a(5)).a(localQIMFilterCategoryItem);
+    paramView = ((CaptureComboManager)QIMManager.a(5)).b(localQIMFilterCategoryItem);
     if (bool2)
     {
       localImageView3.setVisibility(0);
-      localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167004));
+      localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, this.f.getResources().getColor(2131167939));
     }
     else
     {
       localImageView3.setVisibility(8);
-      localTextView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167004));
+      localTextView.setShadowLayer(3.0F, 0.0F, 0.0F, this.f.getResources().getColor(2131167939));
     }
     localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844573);
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844573);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.f.getResources().getDrawable(2130845946);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.f.getResources().getDrawable(2130845946);
     localQIMCommonLoadingView.setMax(10000);
-    if (paramView.jdField_a_of_type_Int == 1) {
+    if (paramView.b == 1) {
       localQIMCommonLoadingView.setVisibility(0);
     } else {
       localQIMCommonLoadingView.setVisibility(8);
@@ -221,24 +221,24 @@ public class FilterProviderGridAdapter
     }
     localImageView1.setImageDrawable((Drawable)localObject);
     localTextView.setText(localQIMFilterCategoryItem.b);
-    if (localQIMFilterCategoryItem.f())
+    if (localQIMFilterCategoryItem.g())
     {
       localImageView2.setVisibility(8);
-      paramView = (ImageView)paramViewGroup.findViewById(2131381214);
-      paramView.setImageResource(2130846136);
+      paramView = (ImageView)paramViewGroup.findViewById(2131450262);
+      paramView.setImageResource(2130847606);
       paramView.setVisibility(0);
       return paramViewGroup;
     }
     VideoFilterTools.a();
-    boolean bool1 = VideoFilterTools.a(3, localQIMFilterCategoryItem.jdField_a_of_type_Int, localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    paramInt = paramView.d();
+    boolean bool1 = VideoFilterTools.a(3, localQIMFilterCategoryItem.e, localQIMFilterCategoryItem.a);
+    paramInt = paramView.j();
     localQIMCommonLoadingView.setVisibility(0);
-    localQIMCommonLoadingView.setBgCorner(this.d);
+    localQIMCommonLoadingView.setBgCorner(this.e);
     localQIMCommonLoadingView.a(QIMCommonLoadingProgress.a(paramView));
     localImageView2.setVisibility(0);
     if (bool1)
     {
-      localImageView2.setImageResource(2130846132);
+      localImageView2.setImageResource(2130847602);
       return paramViewGroup;
     }
     if (paramInt != 1) {
@@ -250,7 +250,7 @@ public class FilterProviderGridAdapter
       }
       else
       {
-        localImageView2.setImageResource(2130846131);
+        localImageView2.setImageResource(2130847601);
         return paramViewGroup;
       }
     }
@@ -260,7 +260,7 @@ public class FilterProviderGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.adapter.FilterProviderGridAdapter
  * JD-Core Version:    0.7.0.1
  */

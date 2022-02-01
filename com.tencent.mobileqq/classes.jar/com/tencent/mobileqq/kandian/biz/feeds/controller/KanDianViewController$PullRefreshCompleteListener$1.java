@@ -10,7 +10,7 @@ class KanDianViewController$PullRefreshCompleteListener$1
   
   public void run()
   {
-    String str = RefreshRes.f();
+    String str = RefreshRes.i();
     if ((str != null) && (new File(str).exists()))
     {
       KanDianViewController.a(this.a.a, str);
@@ -21,7 +21,7 @@ class KanDianViewController$PullRefreshCompleteListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.KanDianViewController.PullRefreshCompleteListener.1
  * JD-Core Version:    0.7.0.1
  */

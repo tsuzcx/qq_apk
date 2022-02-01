@@ -141,7 +141,7 @@ public class CanvasView
       {
         localObject3 = ((JSONArray)localObject4).optString(0);
         localObject2 = localObject3;
-        if (!StringUtil.a((String)localObject3)) {
+        if (!StringUtil.isEmpty((String)localObject3)) {
           if (((String)localObject3).startsWith("wxfile")) {
             localObject2 = b.a().c((String)localObject3);
           } else {
@@ -155,7 +155,7 @@ public class CanvasView
           ((StringBuilder)localObject3).append((String)localObject2);
           QLog.i("drawCanvas", 2, ((StringBuilder)localObject3).toString());
         }
-        if (!StringUtil.a((String)localObject2))
+        if (!StringUtil.isEmpty((String)localObject2))
         {
           localObject2 = c.q((String)localObject2);
           if (localObject2 != null)
@@ -1092,7 +1092,7 @@ public class CanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.CanvasView
  * JD-Core Version:    0.7.0.1
  */

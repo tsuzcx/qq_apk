@@ -11,14 +11,14 @@ import org.json.JSONObject;
 
 public class ArkVipReportItem
 {
-  public int a;
-  public long a;
   public String a;
-  public HashMap<String, String> a;
-  public boolean a;
-  public long b;
-  public long c;
+  public int b;
+  public boolean c;
   public long d;
+  public long e;
+  public long f;
+  public long g;
+  public HashMap<String, String> h;
   
   public JSONObject a()
   {
@@ -27,20 +27,20 @@ public class ArkVipReportItem
     {
       try
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(this.a))
         {
-          Object localObject = this.jdField_a_of_type_JavaLangString;
+          Object localObject = this.a;
           localJSONObject.put("evt", localObject);
-          localJSONObject.put("index", this.jdField_a_of_type_Int);
-          localJSONObject.put("result", this.jdField_a_of_type_Boolean);
-          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
-          localJSONObject.put("endTime", this.b);
-          localJSONObject.put("costTime", this.c);
-          localJSONObject.put("net", this.d);
+          localJSONObject.put("index", this.b);
+          localJSONObject.put("result", this.c);
+          localJSONObject.put("startTime", this.d);
+          localJSONObject.put("endTime", this.e);
+          localJSONObject.put("costTime", this.f);
+          localJSONObject.put("net", this.g);
           localObject = new JSONObject();
-          if (this.jdField_a_of_type_JavaUtilHashMap != null)
+          if (this.h != null)
           {
-            Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+            Iterator localIterator = this.h.entrySet().iterator();
             if (localIterator.hasNext())
             {
               Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -63,7 +63,7 @@ public class ArkVipReportItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.vipreport.ArkVipReportItem
  * JD-Core Version:    0.7.0.1
  */

@@ -321,7 +321,38 @@ public class NewFrdMiniCardHandler
     return 11;
   }
   
-  public String a(TofuItem paramTofuItem)
+  public boolean a(int paramInt)
+  {
+    boolean bool3 = d();
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (paramInt != 1)
+      {
+        if (paramInt == 2) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean a(BeancurdMsg paramBeancurdMsg)
+  {
+    return true;
+  }
+  
+  public byte[] b(TofuItem paramTofuItem)
+  {
+    oidb_0xe9b.ReqBody localReqBody = new oidb_0xe9b.ReqBody();
+    localReqBody.uint64_fuin.set(paramTofuItem.frdUin);
+    return localReqBody.toByteArray();
+  }
+  
+  public String c(TofuItem paramTofuItem)
   {
     if ((paramTofuItem.bytesFromServer != null) && (paramTofuItem.bytesFromServer.length > 0))
     {
@@ -351,50 +382,19 @@ public class NewFrdMiniCardHandler
     return null;
   }
   
-  public boolean a()
+  public boolean c()
   {
     return true;
   }
   
-  public boolean a(int paramInt)
-  {
-    boolean bool3 = b();
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (!bool3)
-    {
-      bool1 = bool2;
-      if (paramInt != 1)
-      {
-        if (paramInt == 2) {
-          return true;
-        }
-        bool1 = false;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(BeancurdMsg paramBeancurdMsg)
-  {
-    return true;
-  }
-  
-  public byte[] a(TofuItem paramTofuItem)
-  {
-    oidb_0xe9b.ReqBody localReqBody = new oidb_0xe9b.ReqBody();
-    localReqBody.uint64_fuin.set(paramTofuItem.frdUin);
-    return localReqBody.toByteArray();
-  }
-  
-  public boolean b()
+  public boolean d()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.handlers.NewFrdMiniCardHandler
  * JD-Core Version:    0.7.0.1
  */

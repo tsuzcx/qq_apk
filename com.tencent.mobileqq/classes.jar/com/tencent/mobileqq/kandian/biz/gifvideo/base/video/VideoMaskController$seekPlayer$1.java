@@ -9,7 +9,7 @@ final class VideoMaskController$seekPlayer$1
 {
   public final void run()
   {
-    IPlayer localIPlayer = this.this$0.a();
+    IPlayer localIPlayer = this.this$0.f();
     if (localIPlayer != null) {
       localIPlayer.a(this.a * 1000, 3);
     }
@@ -17,7 +17,7 @@ final class VideoMaskController$seekPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoMaskController.seekPlayer.1
  * JD-Core Version:    0.7.0.1
  */

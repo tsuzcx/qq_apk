@@ -17,7 +17,7 @@ class GameRoomFragment$13
       localIAVGameRootContainer = null;
     }
     if ((localIAVGameRootContainer != null) && (!localIAVGameRootContainer.checkDestroyed())) {
-      QQToast.a(this.this$0.getQBaseActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).a();
+      QQToast.makeText(this.this$0.getQBaseActivity(), this.a, this.b, 1).show();
     }
   }
 }

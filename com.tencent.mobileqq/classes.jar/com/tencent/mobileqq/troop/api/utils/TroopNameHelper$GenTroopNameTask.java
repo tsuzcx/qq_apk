@@ -26,14 +26,14 @@ import mqq.app.AppRuntime;
 public class TroopNameHelper$GenTroopNameTask
   extends TroopNameHelper.Task
 {
-  TroopNameHelper.GenTroopNameCallback jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$GenTroopNameCallback;
-  String jdField_a_of_type_JavaLangString;
+  String a;
+  TroopNameHelper.GenTroopNameCallback b;
   
   public TroopNameHelper$GenTroopNameTask(TroopNameHelper paramTroopNameHelper, String paramString, TroopNameHelper.GenTroopNameCallback paramGenTroopNameCallback)
   {
     super(paramTroopNameHelper);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$GenTroopNameCallback = paramGenTroopNameCallback;
+    this.a = paramString;
+    this.b = paramGenTroopNameCallback;
   }
   
   private void a(List<TroopMemberInfo> paramList, List<TroopNameHelper.GenTroopNameTask.MemberInfo> paramList1)
@@ -44,47 +44,47 @@ public class TroopNameHelper$GenTroopNameTask
     while (localIterator.hasNext())
     {
       Object localObject2 = (TroopMemberInfo)localIterator.next();
-      if ((Utils.d(((TroopMemberInfo)localObject2).memberuin)) && (!TroopCommonConfig.b(this.this$0.jdField_a_of_type_MqqAppAppRuntime, ((TroopMemberInfo)localObject2).memberuin)) && (!((TroopMemberInfo)localObject2).memberuin.equals("50000000")))
+      if ((Utils.e(((TroopMemberInfo)localObject2).memberuin)) && (!TroopCommonConfig.b(this.this$0.a, ((TroopMemberInfo)localObject2).memberuin)) && (!((TroopMemberInfo)localObject2).memberuin.equals("50000000")))
       {
         TroopNameHelper.GenTroopNameTask.MemberInfo localMemberInfo = new TroopNameHelper.GenTroopNameTask.MemberInfo(this);
-        localMemberInfo.jdField_a_of_type_JavaLangString = ((TroopMemberInfo)localObject2).memberuin;
-        localMemberInfo.jdField_b_of_type_JavaLangString = ((TroopMemberInfo)localObject2).friendnick;
+        localMemberInfo.a = ((TroopMemberInfo)localObject2).memberuin;
+        localMemberInfo.b = ((TroopMemberInfo)localObject2).friendnick;
         localMemberInfo.c = ((TroopMemberInfo)localObject2).troopnick;
-        localMemberInfo.jdField_a_of_type_Boolean = TroopInfoUtil.a(this.this$0.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString, localMemberInfo.jdField_a_of_type_JavaLangString);
-        localMemberInfo.jdField_b_of_type_Boolean = this.this$0.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin().equals(localMemberInfo.jdField_a_of_type_JavaLangString);
-        localObject2 = ((IFriendDataService)this.this$0.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(localMemberInfo.jdField_a_of_type_JavaLangString, true, true);
+        localMemberInfo.e = TroopInfoUtil.a(this.this$0.a, this.a, localMemberInfo.a);
+        localMemberInfo.f = this.this$0.a.getCurrentAccountUin().equals(localMemberInfo.a);
+        localObject2 = ((IFriendDataService)this.this$0.a.getRuntimeService(IFriendDataService.class, "")).getFriend(localMemberInfo.a, true, true);
         if ((localObject2 != null) && (((Friends)localObject2).isFriend()))
         {
           localMemberInfo.d = ((Friends)localObject2).remark;
-          localMemberInfo.jdField_b_of_type_JavaLangString = ((Friends)localObject2).name;
+          localMemberInfo.b = ((Friends)localObject2).name;
         }
-        if ((localObject2 != null) && (localMemberInfo.jdField_b_of_type_Boolean)) {
-          localMemberInfo.jdField_b_of_type_JavaLangString = ((Friends)localObject2).name;
+        if ((localObject2 != null) && (localMemberInfo.f)) {
+          localMemberInfo.b = ((Friends)localObject2).name;
         }
         if (!TextUtils.isEmpty(localMemberInfo.c))
         {
-          localMemberInfo.e = localMemberInfo.c;
-          localMemberInfo.f = ChnToSpell.a(localMemberInfo.c, 2);
+          localMemberInfo.g = localMemberInfo.c;
+          localMemberInfo.h = ChnToSpell.b(localMemberInfo.c, 2);
         }
         else if (!TextUtils.isEmpty(localMemberInfo.d))
         {
-          localMemberInfo.e = localMemberInfo.d;
-          localMemberInfo.f = ChnToSpell.a(localMemberInfo.d, 2);
+          localMemberInfo.g = localMemberInfo.d;
+          localMemberInfo.h = ChnToSpell.b(localMemberInfo.d, 2);
         }
-        else if (!TextUtils.isEmpty(localMemberInfo.jdField_b_of_type_JavaLangString))
+        else if (!TextUtils.isEmpty(localMemberInfo.b))
         {
-          localMemberInfo.e = localMemberInfo.jdField_b_of_type_JavaLangString;
-          localMemberInfo.f = ChnToSpell.a(localMemberInfo.jdField_b_of_type_JavaLangString, 2);
+          localMemberInfo.g = localMemberInfo.b;
+          localMemberInfo.h = ChnToSpell.b(localMemberInfo.b, 2);
         }
-        if ((!localMemberInfo.jdField_b_of_type_Boolean) && (!localMemberInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(localMemberInfo.e))) {
+        if ((!localMemberInfo.f) && (!localMemberInfo.e) && (!TextUtils.isEmpty(localMemberInfo.g))) {
           paramList1.add(localMemberInfo);
         }
         localObject2 = localObject1;
-        if (localMemberInfo.jdField_a_of_type_Boolean) {
+        if (localMemberInfo.e) {
           localObject2 = localMemberInfo;
         }
         localObject1 = localObject2;
-        if (localMemberInfo.jdField_b_of_type_Boolean)
+        if (localMemberInfo.f)
         {
           paramList = localMemberInfo;
           localObject1 = localObject2;
@@ -94,7 +94,7 @@ public class TroopNameHelper$GenTroopNameTask
     Collections.sort(paramList1);
     if ((localObject1 != null) && (paramList != null))
     {
-      if (localObject1.jdField_a_of_type_JavaLangString.equals(paramList.jdField_a_of_type_JavaLangString))
+      if (localObject1.a.equals(paramList.a))
       {
         paramList1.add(paramList1.size(), localObject1);
         return;
@@ -106,22 +106,22 @@ public class TroopNameHelper$GenTroopNameTask
   
   public void a()
   {
-    Object localObject2 = (ITroopMemberInfoService)this.this$0.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopMemberInfoService.class, "");
-    Object localObject1 = (ITroopInfoService)this.this$0.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "");
-    Object localObject3 = ((ITroopMemberInfoService)localObject2).getAllTroopMembers(this.jdField_a_of_type_JavaLangString);
-    localObject3 = ((ITroopMemberInfoService)localObject2).enhanceTroopMemberList(this.jdField_a_of_type_JavaLangString, (List)localObject3);
+    Object localObject2 = (ITroopMemberInfoService)this.this$0.a.getRuntimeService(ITroopMemberInfoService.class, "");
+    Object localObject1 = (ITroopInfoService)this.this$0.a.getRuntimeService(ITroopInfoService.class, "");
+    Object localObject3 = ((ITroopMemberInfoService)localObject2).getAllTroopMembers(this.a);
+    localObject3 = ((ITroopMemberInfoService)localObject2).enhanceTroopMemberList(this.a, (List)localObject3);
     Object localObject4 = new ArrayList();
-    localObject2 = ((ITroopInfoService)localObject1).getTroopInfo(this.jdField_a_of_type_JavaLangString);
+    localObject2 = ((ITroopInfoService)localObject1).getTroopInfo(this.a);
     if (localObject2 == null) {
       return;
     }
     if (TextUtils.isEmpty(((TroopInfo)localObject2).troopowneruin))
     {
-      localObject1 = (TroopMemberListHandler)((AppInterface)this.this$0.jdField_a_of_type_MqqAppAppRuntime).getBusinessHandler(TroopMemberListHandler.class.getName());
+      localObject1 = (TroopMemberListHandler)((AppInterface)this.this$0.a).getBusinessHandler(TroopMemberListHandler.class.getName());
       if (localObject1 != null) {
-        ((TroopMemberListHandler)localObject1).a(Long.parseLong(this.jdField_a_of_type_JavaLangString), 0L, 1, 0, 0);
+        ((TroopMemberListHandler)localObject1).a(Long.parseLong(this.a), 0L, 1, 0, 0);
       }
-      this.this$0.b.put(this.jdField_a_of_type_JavaLangString, this);
+      this.this$0.e.put(this.a, this);
       return;
     }
     if ((localObject3 != null) && (((List)localObject3).size() != 0) && ((((TroopInfo)localObject2).wMemberNum <= 1) || (((List)localObject3).size() > 1)))
@@ -132,45 +132,45 @@ public class TroopNameHelper$GenTroopNameTask
       while (((Iterator)localObject4).hasNext())
       {
         TroopNameHelper.GenTroopNameTask.MemberInfo localMemberInfo = (TroopNameHelper.GenTroopNameTask.MemberInfo)((Iterator)localObject4).next();
-        if (!TextUtils.isEmpty(localMemberInfo.e)) {
-          ((ArrayList)localObject3).add(localMemberInfo.e);
+        if (!TextUtils.isEmpty(localMemberInfo.g)) {
+          ((ArrayList)localObject3).add(localMemberInfo.g);
         }
       }
       localObject3 = this.this$0.a((ArrayList)localObject3);
       ((TroopInfo)localObject2).newTroopName = ((String)localObject3);
       ((TroopInfo)localObject2).newTroopNameTimeStamp = System.currentTimeMillis();
       ((ITroopInfoService)localObject1).saveTroopInfo((TroopInfo)localObject2);
-      localObject1 = this.jdField_a_of_type_JavaLangString;
-      ((TroopInfoHandler)((AppInterface)this.this$0.jdField_a_of_type_MqqAppAppRuntime).getBusinessHandler(TroopInfoHandler.class.getName())).notifyUI(TroopObserver.TYPE_GEN_NEW_TROOP_NAME, true, new Object[] { localObject1, localObject3 });
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopApiUtilsTroopNameHelper$GenTroopNameCallback;
+      localObject1 = this.a;
+      ((TroopInfoHandler)((AppInterface)this.this$0.a).getBusinessHandler(TroopInfoHandler.class.getName())).notifyUI(TroopObserver.TYPE_GEN_NEW_TROOP_NAME, true, new Object[] { localObject1, localObject3 });
+      localObject1 = this.b;
       if (localObject1 != null) {
-        ((TroopNameHelper.GenTroopNameCallback)localObject1).a(this.jdField_a_of_type_JavaLangString, (String)localObject3);
+        ((TroopNameHelper.GenTroopNameCallback)localObject1).a(this.a, (String)localObject3);
       }
       return;
     }
-    localObject1 = (Long)this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.jdField_a_of_type_JavaLangString);
+    localObject1 = (Long)this.this$0.d.get(this.a);
     if ((localObject1 == null) || (System.currentTimeMillis() - ((Long)localObject1).longValue() > 86400000L))
     {
-      localObject1 = (ITroopMemberListHandler)((AppInterface)this.this$0.jdField_a_of_type_MqqAppAppRuntime).getBusinessHandler(TroopMemberListHandler.class.getName());
+      localObject1 = (ITroopMemberListHandler)((AppInterface)this.this$0.a).getBusinessHandler(TroopMemberListHandler.class.getName());
       if (localObject1 != null) {
-        ((ITroopMemberListHandler)localObject1).a(this.jdField_a_of_type_JavaLangString);
+        ((ITroopMemberListHandler)localObject1).a(this.a);
       }
-      this.this$0.b.put(this.jdField_a_of_type_JavaLangString, this);
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(System.currentTimeMillis()));
+      this.this$0.e.put(this.a, this);
+      this.this$0.d.put(this.a, Long.valueOf(System.currentTimeMillis()));
     }
   }
   
   public boolean equals(Object paramObject)
   {
     if ((paramObject instanceof GenTroopNameTask)) {
-      return ((GenTroopNameTask)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+      return ((GenTroopNameTask)paramObject).a.equals(this.a);
     }
     return super.equals(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.utils.TroopNameHelper.GenTroopNameTask
  * JD-Core Version:    0.7.0.1
  */

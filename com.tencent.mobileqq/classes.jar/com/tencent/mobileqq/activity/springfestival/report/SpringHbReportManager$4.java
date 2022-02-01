@@ -21,11 +21,11 @@ class SpringHbReportManager$4
           ((StringBuilder)localObject).append("[report] ");
           ((StringBuilder)localObject).append(this.a);
           ((StringBuilder)localObject).append(",over:");
-          ((StringBuilder)localObject).append(SpringHbReportManager.a(this.this$0));
+          ((StringBuilder)localObject).append(SpringHbReportManager.b(this.this$0));
           ((StringBuilder)localObject).append(",level:");
-          ((StringBuilder)localObject).append(SpringHbReportManager.a(this.this$0));
+          ((StringBuilder)localObject).append(SpringHbReportManager.c(this.this$0));
           ((StringBuilder)localObject).append(",levelTime:");
-          ((StringBuilder)localObject).append(SpringHbReportManager.a(this.this$0));
+          ((StringBuilder)localObject).append(SpringHbReportManager.d(this.this$0));
           QLog.i("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
         }
         SpringHbMonitorReporter.a(this.a);
@@ -37,7 +37,7 @@ class SpringHbReportManager$4
         }
         else
         {
-          SpringHbReportManager.a(this.this$0, this.a);
+          SpringHbReportManager.b(this.this$0, this.a);
           localObject = this.this$0;
           if (!this.a.isRealTime) {
             break label179;
@@ -60,7 +60,7 @@ class SpringHbReportManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReportManager.4
  * JD-Core Version:    0.7.0.1
  */

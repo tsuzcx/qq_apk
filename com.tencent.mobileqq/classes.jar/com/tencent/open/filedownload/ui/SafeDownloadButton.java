@@ -28,12 +28,12 @@ import mqq.os.MqqHandler;
 public class SafeDownloadButton
   extends ApkFileDownloadButton
 {
-  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713419);
-  private static final String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713422);
-  private long jdField_a_of_type_Long = 0L;
-  private boolean jdField_a_of_type_Boolean = false;
-  private TaskInfo jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo;
-  private boolean jdField_b_of_type_Boolean = false;
+  private static final String d = HardCodeUtil.a(2131910970);
+  private static final String e = HardCodeUtil.a(2131910973);
+  private TaskInfo f;
+  private boolean g = false;
+  private boolean h = false;
+  private long i = 0L;
   
   public SafeDownloadButton(Context paramContext)
   {
@@ -50,17 +50,17 @@ public class SafeDownloadButton
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private String c()
+  private String getTaskTmastUrl()
   {
     try
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("tmast://download?downl_url=");
-      ((StringBuilder)localObject).append(URLEncoder.encode(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e, "UTF-8"));
+      ((StringBuilder)localObject).append(URLEncoder.encode(this.f.e, "UTF-8"));
       ((StringBuilder)localObject).append("&down_ticket=");
-      ((StringBuilder)localObject).append(URLEncoder.encode(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e, "UTF-8"));
+      ((StringBuilder)localObject).append(URLEncoder.encode(this.f.e, "UTF-8"));
       ((StringBuilder)localObject).append("&oplist=1;2&via=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.d);
+      ((StringBuilder)localObject).append(this.f.d);
       localObject = ((StringBuilder)localObject).toString();
       return localObject;
     }
@@ -73,18 +73,18 @@ public class SafeDownloadButton
   
   private void k()
   {
-    Object localObject = this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo;
+    Object localObject = this.f;
     if (localObject != null)
     {
       if (TextUtils.isEmpty(((TaskInfo)localObject).e)) {
         return;
       }
-      AppCenterReporter.b(ClickDataBuilder.a().a("200").k(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_a_of_type_JavaLangString).j(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_JavaLangString).l(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.c).m(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.d).a(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.h).b(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.f).g(this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo.e));
+      AppCenterReporter.b(ClickDataBuilder.a().a("200").l(this.f.a).k(this.f.b).m(this.f.c).n(this.f.d).b(this.f.i).c(this.f.f).h(this.f.e));
       QQAppInterface localQQAppInterface = ((BaseActivity)getContext()).app;
-      if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h == null) {
+      if (this.c.i == null) {
         localObject = "";
       } else {
-        localObject = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h;
+        localObject = this.c.i;
       }
       ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "1", "", (String)localObject, "");
       l();
@@ -93,7 +93,7 @@ public class SafeDownloadButton
   
   private void l()
   {
-    String str = c();
+    String str = getTaskTmastUrl();
     Object localObject = new Intent("android.intent.action.VIEW");
     ((Intent)localObject).setData(Uri.parse(str));
     ((Intent)localObject).addFlags(268435456);
@@ -117,7 +117,7 @@ public class SafeDownloadButton
   
   private void m()
   {
-    String str = c();
+    String str = getTaskTmastUrl();
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("url", str);
     DownloadApi.a((Bundle)localObject);
@@ -128,22 +128,17 @@ public class SafeDownloadButton
     LogUtility.b("SafeDownloadButton_", ((StringBuilder)localObject).toString());
   }
   
-  protected String a()
-  {
-    return HardCodeUtil.a(2131713424);
-  }
-  
   protected String a(int paramInt)
   {
     if (paramInt == 1) {
-      return jdField_a_of_type_JavaLangString;
+      return d;
     }
-    return jdField_b_of_type_JavaLangString;
+    return e;
   }
   
   protected void a(DownloadInfo paramDownloadInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.g = true;
     m();
     super.a(paramDownloadInfo);
   }
@@ -153,13 +148,13 @@ public class SafeDownloadButton
     if (TextUtils.equals(paramString, "com.tencent.android.qqdownloader"))
     {
       paramString = new StringBuilder();
-      paramString.append(HardCodeUtil.a(2131713421));
-      paramString.append(this.jdField_a_of_type_Boolean);
+      paramString.append(HardCodeUtil.a(2131910972));
+      paramString.append(this.g);
       LogUtility.b("SafeDownloadButton_", paramString.toString());
-      if (this.jdField_a_of_type_Boolean)
+      if (this.g)
       {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.h = true;
+        this.i = System.currentTimeMillis();
         ThreadManager.getUIHandler().post(new SafeDownloadButton.1(this));
       }
     }
@@ -170,10 +165,10 @@ public class SafeDownloadButton
     if ((paramBoolean) && (("900".equals(paramString)) || ("400".equals(paramString))))
     {
       QQAppInterface localQQAppInterface = ((BaseActivity)getContext()).app;
-      if (this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h == null) {
+      if (this.c.i == null) {
         paramString = "";
       } else {
-        paramString = this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.h;
+        paramString = this.c.i;
       }
       ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC4", "0X8009AC4", 0, 0, "2", "", paramString, "");
     }
@@ -182,16 +177,16 @@ public class SafeDownloadButton
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return HardCodeUtil.a(2131713423);
+      return HardCodeUtil.a(2131910974);
     }
-    return HardCodeUtil.a(2131713420);
+    return HardCodeUtil.a(2131910971);
   }
   
   protected void b(boolean paramBoolean)
   {
     if (CommonUtils.a())
     {
-      this.jdField_a_of_type_ComTencentOpenFiledownloadTaskInfo.jdField_b_of_type_Int = 1;
+      this.c.k = 1;
       g();
       k();
       return;
@@ -201,9 +196,14 @@ public class SafeDownloadButton
   
   protected void e()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.g = true;
     m();
     super.e();
+  }
+  
+  protected String getProgressHintText()
+  {
+    return HardCodeUtil.a(2131910975);
   }
   
   public void j()
@@ -211,29 +211,29 @@ public class SafeDownloadButton
     long l = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onResume ");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(",currentTimestamp=");
     localStringBuilder.append(l);
     localStringBuilder.append(",mYYBInstallSuccessTimestamp= ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.i);
     LogUtility.b("SafeDownloadButton_", localStringBuilder.toString());
-    if (this.jdField_b_of_type_Boolean)
+    if (this.h)
     {
-      if (l - this.jdField_a_of_type_Long < 5000L) {
+      if (l - this.i < 5000L) {
         l();
       }
-      this.jdField_b_of_type_Boolean = false;
+      this.h = false;
     }
   }
   
   public void setOriApkInfo(TaskInfo paramTaskInfo)
   {
-    this.jdField_b_of_type_ComTencentOpenFiledownloadTaskInfo = TaskInfo.a(paramTaskInfo);
+    this.f = TaskInfo.a(paramTaskInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.SafeDownloadButton
  * JD-Core Version:    0.7.0.1
  */

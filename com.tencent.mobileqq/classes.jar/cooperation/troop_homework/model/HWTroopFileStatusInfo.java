@@ -34,56 +34,56 @@ public class HWTroopFileStatusInfo
       return null;
     }
     HWTroopFileStatusInfo localHWTroopFileStatusInfo = new HWTroopFileStatusInfo();
-    localHWTroopFileStatusInfo.Id = paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID;
-    localHWTroopFileStatusInfo.SeqId = paramTroopFileStatusInfo.jdField_a_of_type_Int;
-    localHWTroopFileStatusInfo.uniseq = paramTroopFileStatusInfo.jdField_a_of_type_Long;
-    localHWTroopFileStatusInfo.TroopUin = paramTroopFileStatusInfo.jdField_b_of_type_Long;
-    localHWTroopFileStatusInfo.Status = paramTroopFileStatusInfo.jdField_b_of_type_Int;
-    localHWTroopFileStatusInfo.IsNewStatus = paramTroopFileStatusInfo.jdField_a_of_type_Boolean;
-    localHWTroopFileStatusInfo.ErrorCode = paramTroopFileStatusInfo.jdField_c_of_type_Int;
-    localHWTroopFileStatusInfo.UploadTime = paramTroopFileStatusInfo.jdField_d_of_type_Int;
-    localHWTroopFileStatusInfo.ProgressTotal = paramTroopFileStatusInfo.jdField_c_of_type_Long;
-    localHWTroopFileStatusInfo.ProgressValue = paramTroopFileStatusInfo.jdField_d_of_type_Long;
-    localHWTroopFileStatusInfo.LocalFile = paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.ThumbnailFile_Small = paramTroopFileStatusInfo.jdField_b_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.ThumbnailFile_Large = paramTroopFileStatusInfo.jdField_c_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.FilePath = paramTroopFileStatusInfo.jdField_e_of_type_JavaLangString;
-    localHWTroopFileStatusInfo.sha1 = paramTroopFileStatusInfo.f;
-    localHWTroopFileStatusInfo.FileName = paramTroopFileStatusInfo.g;
-    localHWTroopFileStatusInfo.BusId = paramTroopFileStatusInfo.jdField_h_of_type_Int;
-    localHWTroopFileStatusInfo.entrySessionID = paramTroopFileStatusInfo.jdField_e_of_type_Long;
-    localHWTroopFileStatusInfo.NickName = paramTroopFileStatusInfo.jdField_h_of_type_JavaLangString;
+    localHWTroopFileStatusInfo.Id = paramTroopFileStatusInfo.a;
+    localHWTroopFileStatusInfo.SeqId = paramTroopFileStatusInfo.b;
+    localHWTroopFileStatusInfo.uniseq = paramTroopFileStatusInfo.c;
+    localHWTroopFileStatusInfo.TroopUin = paramTroopFileStatusInfo.d;
+    localHWTroopFileStatusInfo.Status = paramTroopFileStatusInfo.e;
+    localHWTroopFileStatusInfo.IsNewStatus = paramTroopFileStatusInfo.f;
+    localHWTroopFileStatusInfo.ErrorCode = paramTroopFileStatusInfo.g;
+    localHWTroopFileStatusInfo.UploadTime = paramTroopFileStatusInfo.h;
+    localHWTroopFileStatusInfo.ProgressTotal = paramTroopFileStatusInfo.i;
+    localHWTroopFileStatusInfo.ProgressValue = paramTroopFileStatusInfo.j;
+    localHWTroopFileStatusInfo.LocalFile = paramTroopFileStatusInfo.k;
+    localHWTroopFileStatusInfo.ThumbnailFile_Small = paramTroopFileStatusInfo.l;
+    localHWTroopFileStatusInfo.ThumbnailFile_Large = paramTroopFileStatusInfo.m;
+    localHWTroopFileStatusInfo.FilePath = paramTroopFileStatusInfo.r;
+    localHWTroopFileStatusInfo.sha1 = paramTroopFileStatusInfo.s;
+    localHWTroopFileStatusInfo.FileName = paramTroopFileStatusInfo.t;
+    localHWTroopFileStatusInfo.BusId = paramTroopFileStatusInfo.u;
+    localHWTroopFileStatusInfo.entrySessionID = paramTroopFileStatusInfo.v;
+    localHWTroopFileStatusInfo.NickName = paramTroopFileStatusInfo.w;
     return localHWTroopFileStatusInfo;
   }
   
   public TroopFileStatusInfo toTroopFileStatusInfo()
   {
     TroopFileStatusInfo localTroopFileStatusInfo = new TroopFileStatusInfo();
-    localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localTroopFileStatusInfo.jdField_a_of_type_Int = this.SeqId;
-    localTroopFileStatusInfo.jdField_a_of_type_Long = this.uniseq;
-    localTroopFileStatusInfo.jdField_b_of_type_Long = this.TroopUin;
-    localTroopFileStatusInfo.jdField_b_of_type_Int = this.Status;
-    localTroopFileStatusInfo.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localTroopFileStatusInfo.jdField_c_of_type_Int = this.ErrorCode;
-    localTroopFileStatusInfo.jdField_d_of_type_Int = this.UploadTime;
-    localTroopFileStatusInfo.jdField_c_of_type_Long = this.ProgressTotal;
-    localTroopFileStatusInfo.jdField_d_of_type_Long = this.ProgressValue;
-    localTroopFileStatusInfo.jdField_a_of_type_JavaLangString = this.LocalFile;
-    localTroopFileStatusInfo.jdField_b_of_type_JavaLangString = this.ThumbnailFile_Small;
-    localTroopFileStatusInfo.jdField_c_of_type_JavaLangString = this.ThumbnailFile_Large;
-    localTroopFileStatusInfo.jdField_e_of_type_JavaLangString = this.FilePath;
-    localTroopFileStatusInfo.f = this.sha1;
-    localTroopFileStatusInfo.g = this.FileName;
-    localTroopFileStatusInfo.jdField_h_of_type_Int = this.BusId;
-    localTroopFileStatusInfo.jdField_e_of_type_Long = this.entrySessionID;
-    localTroopFileStatusInfo.jdField_h_of_type_JavaLangString = this.NickName;
+    localTroopFileStatusInfo.a = this.Id;
+    localTroopFileStatusInfo.b = this.SeqId;
+    localTroopFileStatusInfo.c = this.uniseq;
+    localTroopFileStatusInfo.d = this.TroopUin;
+    localTroopFileStatusInfo.e = this.Status;
+    localTroopFileStatusInfo.f = this.IsNewStatus;
+    localTroopFileStatusInfo.g = this.ErrorCode;
+    localTroopFileStatusInfo.h = this.UploadTime;
+    localTroopFileStatusInfo.i = this.ProgressTotal;
+    localTroopFileStatusInfo.j = this.ProgressValue;
+    localTroopFileStatusInfo.k = this.LocalFile;
+    localTroopFileStatusInfo.l = this.ThumbnailFile_Small;
+    localTroopFileStatusInfo.m = this.ThumbnailFile_Large;
+    localTroopFileStatusInfo.r = this.FilePath;
+    localTroopFileStatusInfo.s = this.sha1;
+    localTroopFileStatusInfo.t = this.FileName;
+    localTroopFileStatusInfo.u = this.BusId;
+    localTroopFileStatusInfo.v = this.entrySessionID;
+    localTroopFileStatusInfo.w = this.NickName;
     return localTroopFileStatusInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.model.HWTroopFileStatusInfo
  * JD-Core Version:    0.7.0.1
  */

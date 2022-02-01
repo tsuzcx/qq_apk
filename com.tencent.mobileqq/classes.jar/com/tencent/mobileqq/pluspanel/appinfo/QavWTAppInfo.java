@@ -31,7 +31,7 @@ public class QavWTAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839144;
+    return 2130839300;
   }
   
   public int getAppID()
@@ -60,58 +60,58 @@ public class QavWTAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698557);
+    return BaseApplicationImpl.getContext().getString(2131896504);
   }
   
   protected void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (paramBaseChatPie.a.getAVNotifyCenter().a(paramBaseChatPie.a(), 4, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+    if (paramBaseChatPie.d.getAVNotifyCenter().a(paramBaseChatPie.aX(), 4, paramSessionInfo.a, paramSessionInfo.b)) {
       return;
     }
     if (!AppNetConnInfo.isNetSupport())
     {
       paramPlusPanelViewModel = BaseApplicationImpl.getContext();
-      i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299168);
-      QQToast.a(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131695997), 0).b(i);
+      i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299920);
+      QQToast.makeText(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131893759), 0).show(i);
       return;
     }
     if (!WTogetherUtil.a())
     {
       paramPlusPanelViewModel = BaseApplicationImpl.getContext();
-      i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299168);
-      QQToast.a(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131696015), 0).b(i);
+      i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299920);
+      QQToast.makeText(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131893777), 0).show(i);
       return;
     }
-    if ((!paramBaseChatPie.a.isVideoChatting()) && (!paramBaseChatPie.a.getAVNotifyCenter().b()))
+    if ((!paramBaseChatPie.d.isVideoChatting()) && (!paramBaseChatPie.d.getAVNotifyCenter().d()))
     {
-      if (paramSessionInfo.jdField_a_of_type_Int == 0)
+      if (paramSessionInfo.a == 0)
       {
-        paramBaseChatPie.Q();
+        paramBaseChatPie.aw();
         paramPlusPanelViewModel.b(paramBaseChatPie);
         ChooseFileAssistant.a().a(paramSessionInfo);
-        WTEntranceHelper.a(paramBaseChatPie.a(), 1, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString);
-        paramBaseChatPie.a().setCanLock(false);
-        ReportController.b(paramBaseChatPie.a, "dc00898", "", "", "0X800B61B", "0X800B61B", 0, 0, "", "", "", "");
+        WTEntranceHelper.a(paramBaseChatPie.aX(), 1, paramSessionInfo.a, paramSessionInfo.b);
+        paramBaseChatPie.aX().setCanLock(false);
+        ReportController.b(paramBaseChatPie.d, "dc00898", "", "", "0X800B61B", "0X800B61B", 0, 0, "", "", "", "");
         return;
       }
       if (QLog.isColorLevel())
       {
         paramPlusPanelViewModel = new StringBuilder();
         paramPlusPanelViewModel.append("clickToolQavWatchTogether, not support chat, [");
-        paramPlusPanelViewModel.append(paramSessionInfo.jdField_a_of_type_Int);
+        paramPlusPanelViewModel.append(paramSessionInfo.a);
         paramPlusPanelViewModel.append("]");
         QLog.i("QavWTAppInfo", 2, paramPlusPanelViewModel.toString());
       }
       return;
     }
     paramPlusPanelViewModel = BaseApplicationImpl.getContext();
-    int i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299168);
-    QQToast.a(paramPlusPanelViewModel, 2131695996, 1).b(i);
+    int i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299920);
+    QQToast.makeText(paramPlusPanelViewModel, 2131893758, 1).show(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.QavWTAppInfo
  * JD-Core Version:    0.7.0.1
  */

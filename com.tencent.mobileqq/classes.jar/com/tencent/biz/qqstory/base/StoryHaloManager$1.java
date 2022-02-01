@@ -26,7 +26,7 @@ class StoryHaloManager$1
       localObject = new ArrayList();
       ((ArrayList)localObject).add(paramString);
       this.a.a(3, (List)localObject);
-      this.a.a();
+      this.a.c();
       return;
     }
     catch (NumberFormatException paramString)
@@ -43,7 +43,7 @@ class StoryHaloManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.StoryHaloManager.1
  * JD-Core Version:    0.7.0.1
  */

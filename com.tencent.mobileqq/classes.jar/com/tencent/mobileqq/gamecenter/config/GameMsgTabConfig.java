@@ -10,19 +10,14 @@ import org.json.JSONObject;
 public class GameMsgTabConfig
 {
   public static final String a;
-  private Map<String, Map<String, String>> a;
+  private Map<String, Map<String, String>> b = new HashMap();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GameCenterMsg.");
     localStringBuilder.append(GameMsgTabConfig.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public GameMsgTabConfig()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    a = localStringBuilder.toString();
   }
   
   public static GameMsgTabConfig a(String paramString)
@@ -30,7 +25,7 @@ public class GameMsgTabConfig
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[parse] config: ");
       ((StringBuilder)localObject2).append(paramString);
@@ -66,10 +61,10 @@ public class GameMsgTabConfig
     }
     catch (Exception paramString)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
+      QLog.e(a, 1, paramString, new Object[0]);
       if (QLog.isColorLevel())
       {
-        paramString = jdField_a_of_type_JavaLangString;
+        paramString = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("[parse] result tabConfig: ");
         ((StringBuilder)localObject2).append(localObject1);
@@ -82,7 +77,7 @@ public class GameMsgTabConfig
   {
     if (paramJSONObject == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[parseBoxSwitchConfig] jsonObject is null.");
+      QLog.e(a, 1, "[parseBoxSwitchConfig] jsonObject is null.");
       return null;
     }
     try
@@ -92,7 +87,7 @@ public class GameMsgTabConfig
       {
         paramJSONObject = ((JSONObject)localObject1).optString("style", "0");
         localObject1 = ((JSONObject)localObject1).optString("grayPolicyId", "0");
-        Object localObject2 = jdField_a_of_type_JavaLangString;
+        Object localObject2 = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("parseBoxSwitchConfig save red style:");
         localStringBuilder.append(paramJSONObject);
@@ -108,7 +103,7 @@ public class GameMsgTabConfig
     }
     catch (Exception paramJSONObject)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[parseBoxSwitchConfig] err:", paramJSONObject);
+      QLog.e(a, 1, "[parseBoxSwitchConfig] err:", paramJSONObject);
     }
     return null;
   }
@@ -117,7 +112,7 @@ public class GameMsgTabConfig
   {
     if (paramJSONObject == null)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[parseRedDotConfig] jsonObject is null.");
+      QLog.e(a, 1, "[parseRedDotConfig] jsonObject is null.");
       return null;
     }
     try
@@ -127,7 +122,7 @@ public class GameMsgTabConfig
       {
         paramJSONObject = ((JSONObject)localObject1).optString("style", "0");
         localObject1 = ((JSONObject)localObject1).optString("grayPolicyId", "0");
-        Object localObject2 = jdField_a_of_type_JavaLangString;
+        Object localObject2 = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("parseRedDotConfig save red style:");
         localStringBuilder.append(paramJSONObject);
@@ -141,16 +136,16 @@ public class GameMsgTabConfig
     }
     catch (Exception paramJSONObject)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[parseRedDotConfig] err:", paramJSONObject);
+      QLog.e(a, 1, "[parseRedDotConfig] err:", paramJSONObject);
     }
     return null;
   }
   
   public Map<String, String> a()
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.b;
     if ((localMap != null) && (localMap.size() > 0)) {
-      return (Map)this.jdField_a_of_type_JavaUtilMap.get("qgame_msgassistant_aio_redpoint");
+      return (Map)this.b.get("qgame_msgassistant_aio_redpoint");
     }
     return null;
   }
@@ -159,18 +154,18 @@ public class GameMsgTabConfig
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramMap != null))
     {
-      if (this.jdField_a_of_type_JavaUtilMap == null) {
-        this.jdField_a_of_type_JavaUtilMap = new HashMap();
+      if (this.b == null) {
+        this.b = new HashMap();
       }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramMap);
+      this.b.put(paramString, paramMap);
     }
   }
   
   public Map<String, String> b()
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.b;
     if ((localMap != null) && (localMap.size() > 0)) {
-      return (Map)this.jdField_a_of_type_JavaUtilMap.get("qgame_msgassistant_box");
+      return (Map)this.b.get("qgame_msgassistant_box");
     }
     return null;
   }
@@ -179,14 +174,14 @@ public class GameMsgTabConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GameMsgTabConfig{tabConfigs=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.toString());
+    localStringBuilder.append(this.b.toString());
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.config.GameMsgTabConfig
  * JD-Core Version:    0.7.0.1
  */

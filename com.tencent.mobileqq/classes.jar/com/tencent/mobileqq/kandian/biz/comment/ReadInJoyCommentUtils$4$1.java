@@ -10,14 +10,14 @@ class ReadInJoyCommentUtils$4$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentUtils$4.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentUtils$4.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
+    if (this.c.d != null) {
+      this.c.d.a(this.a, this.b, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils.4.1
  * JD-Core Version:    0.7.0.1
  */

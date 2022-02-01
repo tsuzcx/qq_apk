@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.R.layout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Iterator;
@@ -18,25 +19,25 @@ import java.util.Iterator;
 class MonthAdapter
   extends BaseAdapter
 {
-  static final int jdField_a_of_type_Int = UtcDates.b().getMaximum(4);
-  final CalendarConstraints jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints;
-  CalendarStyle jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarStyle;
-  final DateSelector<?> jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector;
-  final Month jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth;
-  private Collection<Long> jdField_a_of_type_JavaUtilCollection;
+  static final int a = UtcDates.c().getMaximum(4);
+  final Month b;
+  final DateSelector<?> c;
+  CalendarStyle d;
+  final CalendarConstraints e;
+  private Collection<Long> f;
   
   MonthAdapter(Month paramMonth, DateSelector<?> paramDateSelector, CalendarConstraints paramCalendarConstraints)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth = paramMonth;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector = paramDateSelector;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints = paramCalendarConstraints;
-    this.jdField_a_of_type_JavaUtilCollection = paramDateSelector.a();
+    this.b = paramMonth;
+    this.c = paramDateSelector;
+    this.e = paramCalendarConstraints;
+    this.f = paramDateSelector.c();
   }
   
   private void a(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarStyle == null) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarStyle = new CalendarStyle(paramContext);
+    if (this.d == null) {
+      this.d = new CalendarStyle(paramContext);
     }
   }
   
@@ -46,37 +47,37 @@ class MonthAdapter
       return;
     }
     CalendarItemStyle localCalendarItemStyle;
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints.a().a(paramLong))
+    if (this.e.a().a(paramLong))
     {
       paramTextView.setEnabled(true);
       if (a(paramLong)) {
-        localCalendarItemStyle = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarStyle.b;
-      } else if (UtcDates.a().getTimeInMillis() == paramLong) {
-        localCalendarItemStyle = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarStyle.c;
+        localCalendarItemStyle = this.d.b;
+      } else if (UtcDates.b().getTimeInMillis() == paramLong) {
+        localCalendarItemStyle = this.d.c;
       } else {
-        localCalendarItemStyle = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarStyle.a;
+        localCalendarItemStyle = this.d.a;
       }
     }
     else
     {
       paramTextView.setEnabled(false);
-      localCalendarItemStyle = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarStyle.g;
+      localCalendarItemStyle = this.d.g;
     }
     localCalendarItemStyle.a(paramTextView);
   }
   
   private void a(MaterialCalendarGridView paramMaterialCalendarGridView, long paramLong)
   {
-    if (Month.a(paramLong).equals(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth))
+    if (Month.a(paramLong).equals(this.b))
     {
-      int i = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.a(paramLong);
-      a((TextView)paramMaterialCalendarGridView.getChildAt(paramMaterialCalendarGridView.a().b(i) - paramMaterialCalendarGridView.getFirstVisiblePosition()), paramLong);
+      int i = this.b.b(paramLong);
+      a((TextView)paramMaterialCalendarGridView.getChildAt(paramMaterialCalendarGridView.a().c(i) - paramMaterialCalendarGridView.getFirstVisiblePosition()), paramLong);
     }
   }
   
   private boolean a(long paramLong)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector.a().iterator();
+    Iterator localIterator = this.c.c().iterator();
     while (localIterator.hasNext())
     {
       long l = ((Long)localIterator.next()).longValue();
@@ -89,12 +90,7 @@ class MonthAdapter
   
   int a()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.a();
-  }
-  
-  int a(int paramInt)
-  {
-    return paramInt - this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.a() + 1;
+    return this.b.b();
   }
   
   @NonNull
@@ -106,13 +102,13 @@ class MonthAdapter
       localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(R.layout.t, paramViewGroup, false);
     }
     int i = paramInt - a();
-    if ((i >= 0) && (i < this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.d))
+    if ((i >= 0) && (i < this.b.d))
     {
       i += 1;
-      localTextView.setTag(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth);
+      localTextView.setTag(this.b);
       localTextView.setText(String.format(localTextView.getResources().getConfiguration().locale, "%d", new Object[] { Integer.valueOf(i) }));
-      long l = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.a(i);
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.b == Month.a().b) {
+      long l = this.b.a(i);
+      if (this.b.b == Month.a().b) {
         localTextView.setContentDescription(DateStrings.c(l));
       } else {
         localTextView.setContentDescription(DateStrings.d(l));
@@ -125,73 +121,78 @@ class MonthAdapter
       localTextView.setVisibility(8);
       localTextView.setEnabled(false);
     }
-    paramView = a(paramInt);
-    if (paramView == null) {
-      return localTextView;
+    Long localLong = a(paramInt);
+    if (localLong != null) {
+      a(localTextView, localLong.longValue());
     }
-    a(localTextView, paramView.longValue());
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localTextView;
   }
   
   @Nullable
   public Long a(int paramInt)
   {
-    if ((paramInt >= this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.a()) && (paramInt <= b())) {
-      return Long.valueOf(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.a(a(paramInt)));
+    if ((paramInt >= this.b.b()) && (paramInt <= b())) {
+      return Long.valueOf(this.b.a(b(paramInt)));
     }
     return null;
   }
   
   public void a(MaterialCalendarGridView paramMaterialCalendarGridView)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilCollection.iterator();
+    Object localObject = this.f.iterator();
     while (((Iterator)localObject).hasNext()) {
       a(paramMaterialCalendarGridView, ((Long)((Iterator)localObject).next()).longValue());
     }
-    localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector;
+    localObject = this.c;
     if (localObject != null)
     {
-      localObject = ((DateSelector)localObject).a().iterator();
+      localObject = ((DateSelector)localObject).c().iterator();
       while (((Iterator)localObject).hasNext()) {
         a(paramMaterialCalendarGridView, ((Long)((Iterator)localObject).next()).longValue());
       }
-      this.jdField_a_of_type_JavaUtilCollection = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector.a();
+      this.f = this.c.c();
     }
-  }
-  
-  boolean a(int paramInt)
-  {
-    return (paramInt >= a()) && (paramInt <= b());
   }
   
   int b()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.a() + this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.d - 1;
+    return this.b.b() + this.b.d - 1;
   }
   
   int b(int paramInt)
   {
+    return paramInt - this.b.b() + 1;
+  }
+  
+  int c(int paramInt)
+  {
     return a() + (paramInt - 1);
   }
   
-  boolean b(int paramInt)
+  boolean d(int paramInt)
   {
-    return paramInt % this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.c == 0;
+    return (paramInt >= a()) && (paramInt <= b());
   }
   
-  boolean c(int paramInt)
+  boolean e(int paramInt)
   {
-    return (paramInt + 1) % this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.c == 0;
+    return paramInt % this.b.c == 0;
+  }
+  
+  boolean f(int paramInt)
+  {
+    return (paramInt + 1) % this.b.c == 0;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.d + a();
+    return this.b.d + a();
   }
   
   public long getItemId(int paramInt)
   {
-    return paramInt / this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.c;
+    return paramInt / this.b.c;
   }
   
   public boolean hasStableIds()
@@ -201,7 +202,7 @@ class MonthAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.MonthAdapter
  * JD-Core Version:    0.7.0.1
  */

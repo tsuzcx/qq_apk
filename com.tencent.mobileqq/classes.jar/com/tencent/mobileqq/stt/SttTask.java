@@ -22,36 +22,36 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.TransPttShardRsp
 
 public class SttTask
 {
-  private static long jdField_a_of_type_Long;
-  private int jdField_a_of_type_Int;
-  private MessageForPtt jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-  private IntactSttPushReceiver jdField_a_of_type_ComTencentMobileqqSttShardIntactSttPushReceiver;
-  private ShardSttPushReceiver jdField_a_of_type_ComTencentMobileqqSttShardShardSttPushReceiver;
-  private volatile Long jdField_a_of_type_JavaLangLong;
-  private WeakReference<Handler> jdField_a_of_type_MqqUtilWeakReference;
-  private int jdField_b_of_type_Int;
-  private volatile Long jdField_b_of_type_JavaLangLong;
-  private WeakReference<AppRuntime> jdField_b_of_type_MqqUtilWeakReference;
+  private static long j;
+  private MessageForPtt a;
+  private int b;
+  private WeakReference<Handler> c;
+  private WeakReference<AppRuntime> d;
+  private int e;
+  private IntactSttPushReceiver f;
+  private ShardSttPushReceiver g;
+  private volatile Long h;
+  private volatile Long i;
   
   public SttTask()
   {
     Long localLong = Long.valueOf(0L);
-    this.jdField_a_of_type_JavaLangLong = localLong;
-    this.jdField_b_of_type_JavaLangLong = localLong;
+    this.h = localLong;
+    this.i = localLong;
   }
   
   public static long a()
   {
-    if (jdField_a_of_type_Long == 0L)
+    if (j == 0L)
     {
-      long l2 = ((PttWithTextSwitchBean)QConfigManager.a().a(488)).a();
+      long l2 = ((PttWithTextSwitchBean)QConfigManager.b().b(488)).b();
       long l1 = l2;
       if (l2 == 0L) {
         l1 = 45000L;
       }
-      jdField_a_of_type_Long = l1;
+      j = l1;
     }
-    return jdField_a_of_type_Long;
+    return j;
   }
   
   public static SttTask a(MessageForPtt paramMessageForPtt, AppRuntime paramAppRuntime, int paramInt)
@@ -59,34 +59,29 @@ public class SttTask
     if ((paramMessageForPtt != null) && (paramAppRuntime != null))
     {
       SttTask localSttTask = new SttTask();
-      localSttTask.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = paramMessageForPtt;
-      localSttTask.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramAppRuntime);
-      localSttTask.jdField_b_of_type_Int = paramInt;
+      localSttTask.a = paramMessageForPtt;
+      localSttTask.d = new WeakReference(paramAppRuntime);
+      localSttTask.e = paramInt;
       return localSttTask;
     }
     return null;
   }
   
-  private void a(int paramInt)
-  {
-    a(paramInt, -1L);
-  }
-  
   private void a(int paramInt, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = this.c;
     if ((localObject != null) && (!((WeakReference)localObject).isEnqueued()))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("sendMsgHandlerDelayed,  msgKey = ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(" | sessionID = ");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(d());
       ((StringBuilder)localObject).append(" | delayMillis = ");
       ((StringBuilder)localObject).append(paramLong);
       QLog.e("Q.stt_SttTask", 1, ((StringBuilder)localObject).toString());
-      localObject = (Handler)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      long l = a().longValue();
+      localObject = (Handler)this.c.get();
+      long l = d().longValue();
       Message localMessage = ((Handler)localObject).obtainMessage(paramInt, (int)(l >> 32) & 0xFFFFFFFF, (int)(l & 0xFFFFFFFF), this);
       if (paramLong > 0L)
       {
@@ -100,31 +95,28 @@ public class SttTask
     ((StringBuilder)localObject).append("sendMsgHandlerDelayed, handlerWeakReference is Null msgKey = ");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append(" | sessionID = ");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(d());
     QLog.e("Q.stt_SttTask", 1, ((StringBuilder)localObject).toString());
-  }
-  
-  private long b()
-  {
-    int i = (int)(a().uniseq >> 32);
-    int j = new Random().nextInt();
-    long l = i & 0xFFFFFFFF;
-    return j & 0xFFFFFFFF | l << 32;
   }
   
   private void b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    a(paramInt, -1L);
+  }
+  
+  private void c(int paramInt)
+  {
+    Object localObject = this.c;
     if ((localObject != null) && (!((WeakReference)localObject).isEnqueued()))
     {
-      localObject = (Handler)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      localObject = (Handler)this.c.get();
       if (((Handler)localObject).hasMessages(paramInt, this))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("checkAndRemoveMsgHandler, hasMessages is true msgKey = ");
         localStringBuilder.append(paramInt);
         localStringBuilder.append(" | sessionID = ");
-        localStringBuilder.append(a());
+        localStringBuilder.append(d());
         QLog.e("Q.stt_SttTask", 1, localStringBuilder.toString());
         ((Handler)localObject).removeMessages(paramInt, this);
         boolean bool = ((Handler)localObject).hasMessages(paramInt, this);
@@ -134,7 +126,7 @@ public class SttTask
         ((StringBuilder)localObject).append(" | msgKey = ");
         ((StringBuilder)localObject).append(paramInt);
         ((StringBuilder)localObject).append(" | sessionID = ");
-        ((StringBuilder)localObject).append(a());
+        ((StringBuilder)localObject).append(d());
         QLog.e("Q.stt_SttTask", 1, ((StringBuilder)localObject).toString());
         return;
       }
@@ -142,7 +134,7 @@ public class SttTask
       ((StringBuilder)localObject).append("checkAndRemoveMsgHandler, hasMessages is false msgKey = ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(" | sessionID = ");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(d());
       QLog.e("Q.stt_SttTask", 1, ((StringBuilder)localObject).toString());
       return;
     }
@@ -150,41 +142,17 @@ public class SttTask
     ((StringBuilder)localObject).append("checkAndRemoveMsgHandler, handlerWeakReference is Null msgKey = ");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append(" | sessionID = ");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(d());
     QLog.e("Q.stt_SttTask", 1, ((StringBuilder)localObject).toString());
   }
   
-  private Long c()
+  private void d(int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("realRetryStt session = ");
-      ((StringBuilder)localObject).append(a());
-      ((StringBuilder)localObject).append(", retryNum = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      QLog.e("Q.stt_SttTask", 2, ((StringBuilder)localObject).toString());
-    }
-    this.jdField_b_of_type_JavaLangLong = Long.valueOf(0L);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSttShardShardSttPushReceiver;
-    if (localObject != null) {
-      ((ShardSttPushReceiver)localObject).a();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqSttShardIntactSttPushReceiver;
-    if (localObject != null) {
-      ((IntactSttPushReceiver)localObject).a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a(false);
-    return b();
-  }
-  
-  private void c(int paramInt)
-  {
-    if (this.jdField_b_of_type_JavaLangLong.longValue() == 0L) {
+    if (this.i.longValue() == 0L) {
       return;
     }
-    long l = System.currentTimeMillis() - this.jdField_b_of_type_JavaLangLong.longValue();
-    this.jdField_b_of_type_JavaLangLong = Long.valueOf(0L);
+    long l = System.currentTimeMillis() - this.i.longValue();
+    this.i = Long.valueOf(0L);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -210,19 +178,36 @@ public class SttTask
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttSttFristShowTimeCost", true, 0L, 0L, (HashMap)localObject, null);
   }
   
-  public int a()
+  private long f()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a();
+    int k = (int)(b().uniseq >> 32);
+    int m = new Random().nextInt();
+    long l = k & 0xFFFFFFFF;
+    return m & 0xFFFFFFFF | l << 32;
   }
   
-  public MessageForPtt a()
+  private Long g()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-  }
-  
-  public Long a()
-  {
-    return this.jdField_a_of_type_JavaLangLong;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("realRetryStt session = ");
+      ((StringBuilder)localObject).append(d());
+      ((StringBuilder)localObject).append(", retryNum = ");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.e("Q.stt_SttTask", 2, ((StringBuilder)localObject).toString());
+    }
+    this.i = Long.valueOf(0L);
+    Object localObject = this.g;
+    if (localObject != null) {
+      ((ShardSttPushReceiver)localObject).a();
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      ((IntactSttPushReceiver)localObject).a();
+    }
+    this.a.getSttResult().a(false);
+    return e();
   }
   
   public Long a(int paramInt)
@@ -231,21 +216,21 @@ public class SttTask
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkTimeOutRetryStt session = ");
-      localStringBuilder.append(a());
+      localStringBuilder.append(d());
       localStringBuilder.append(", timeoutType = ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", retryNum = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.e("Q.stt_SttTask", 2, localStringBuilder.toString());
     }
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    if (i > 3)
+    int k = this.b + 1;
+    this.b = k;
+    if (k > 3)
     {
-      a().getSttResult().a(3, paramInt);
+      b().getSttResult().a(3, paramInt);
       return null;
     }
-    return c();
+    return g();
   }
   
   public void a(Handler paramHandler)
@@ -257,7 +242,7 @@ public class SttTask
       }
       return;
     }
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramHandler);
+    this.c = new WeakReference(paramHandler);
   }
   
   public boolean a(SttResultPush.MsgBody paramMsgBody)
@@ -268,69 +253,69 @@ public class SttTask
       {
         paramMsgBody = new StringBuilder();
         paramMsgBody.append("doReceivePushData resp is null. session = ");
-        paramMsgBody.append(a());
+        paramMsgBody.append(d());
         QLog.e("Q.stt_SttTask", 2, paramMsgBody.toString());
       }
       return false;
     }
-    if ((a() != 2) && (a() != 1)) {
+    if ((c() != 2) && (c() != 1)) {
       return true;
     }
-    int j;
-    int i;
+    int m;
+    int k;
     if (paramMsgBody.msg_ptt_shard_resp.has())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqSttShardShardSttPushReceiver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqSttShardShardSttPushReceiver = new ShardSttPushReceiver(a().getSttResult());
+      if (this.g == null) {
+        this.g = new ShardSttPushReceiver(b().getSttResult());
       }
-      j = this.jdField_a_of_type_ComTencentMobileqqSttShardShardSttPushReceiver.a(paramMsgBody);
-      i = 1;
+      m = this.g.a(paramMsgBody);
+      k = 1;
     }
     else
     {
       if (!paramMsgBody.msg_ptt_resp.has()) {
         break label339;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqSttShardIntactSttPushReceiver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqSttShardIntactSttPushReceiver = new IntactSttPushReceiver(a().getSttResult());
+      if (this.f == null) {
+        this.f = new IntactSttPushReceiver(b().getSttResult());
       }
-      j = this.jdField_a_of_type_ComTencentMobileqqSttShardIntactSttPushReceiver.a(paramMsgBody);
-      i = 2;
-    }
-    if ((j != 0) && (j != -10001) && (j != -10002))
-    {
-      a(1002);
-      return false;
-    }
-    b(1);
-    b(3);
-    int k;
-    if (j == -10002) {
-      k = 4;
-    } else {
+      m = this.f.a(paramMsgBody);
       k = 2;
     }
-    if (a() == 3)
+    if ((m != 0) && (m != -10001) && (m != -10002))
+    {
+      b(1002);
+      return false;
+    }
+    c(1);
+    c(3);
+    int n;
+    if (m == -10002) {
+      n = 4;
+    } else {
+      n = 2;
+    }
+    if (c() == 3)
     {
       if (QLog.isColorLevel())
       {
         paramMsgBody = new StringBuilder();
         paramMsgBody.append("doReceivePushData stt receive success session = ");
-        paramMsgBody.append(a());
+        paramMsgBody.append(d());
         QLog.d("Q.stt_SttTask", 2, paramMsgBody.toString());
       }
-      a(k);
-      c(i);
+      b(n);
+      d(k);
       return true;
     }
-    if ((a() == 2) && ((j == -10001) || (j == -10002)))
+    if ((c() == 2) && ((m == -10001) || (m == -10002)))
     {
-      a(k);
-      if (i == 1) {
-        c(1);
+      b(n);
+      if (k == 1) {
+        d(1);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a()) {
+    if (this.a.getSttResult().f()) {
       a(3, a());
     }
     return true;
@@ -339,7 +324,7 @@ public class SttTask
     {
       paramMsgBody = new StringBuilder();
       paramMsgBody.append("doReceivePushData msg_ptt_resp and msg_ptt_shard_resp all are null. session = ");
-      paramMsgBody.append(a());
+      paramMsgBody.append(d());
       QLog.e("Q.stt_SttTask", 2, paramMsgBody.toString());
     }
     return false;
@@ -347,71 +332,86 @@ public class SttTask
   
   public boolean a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().b();
+    this.a.getSttResult().b();
     Long localLong = Long.valueOf(paramBundle.getLong("k_time_out", 60000L));
-    int i = paramBundle.getInt("k_result_code", 0);
+    int k = paramBundle.getInt("k_result_code", 0);
     String str = paramBundle.getString("k_ptt_trans_txt", null);
     paramBundle.getInt("k_retry", 0);
     if (QLog.isColorLevel())
     {
       paramBundle = new StringBuilder();
       paramBundle.append("onReceive, session = ");
-      paramBundle.append(a());
+      paramBundle.append(d());
       paramBundle.append(", timeout = ");
       paramBundle.append(localLong);
       paramBundle.append(", retryNum = ");
-      paramBundle.append(this.jdField_a_of_type_Int);
+      paramBundle.append(this.b);
       QLog.d("Q.stt_SttTask", 2, paramBundle.toString());
     }
     if (paramBoolean)
     {
       if (str != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a(false);
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a(str, true);
-        a(2);
-        c(3);
+        this.a.getSttResult().a(false);
+        this.a.getSttResult().a(str, true);
+        b(2);
+        d(3);
         return paramBoolean;
       }
       a(1, localLong.longValue());
       return paramBoolean;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a(2, i);
-    a(1001);
+    this.a.getSttResult().a(2, k);
+    b(1001);
     return paramBoolean;
   }
   
-  public Long b()
+  public MessageForPtt b()
+  {
+    return this.a;
+  }
+  
+  public int c()
+  {
+    return this.a.getSttResult().e();
+  }
+  
+  public Long d()
+  {
+    return this.h;
+  }
+  
+  public Long e()
   {
     for (;;)
     {
       try
       {
-        if ((this.jdField_b_of_type_MqqUtilWeakReference != null) && (!this.jdField_b_of_type_MqqUtilWeakReference.isEnqueued()))
+        if ((this.d != null) && (!this.d.isEnqueued()))
         {
-          Object localObject1 = (AppRuntime)this.jdField_b_of_type_MqqUtilWeakReference.get();
+          Object localObject1 = (AppRuntime)this.d.get();
           if (localObject1 == null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a(2, 2005);
-            a(1001);
+            this.a.getSttResult().a(2, 2005);
+            b(1001);
             return null;
           }
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getSttResult().a();
-          long l = b();
-          this.jdField_a_of_type_JavaLangLong = Long.valueOf(l);
-          SttServlet.a((AppRuntime)localObject1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt, Long.valueOf(l), this.jdField_b_of_type_Int, 1);
+          this.a.getSttResult().a();
+          long l = f();
+          this.h = Long.valueOf(l);
+          SttServlet.a((AppRuntime)localObject1, this.a, Long.valueOf(l), this.e, 1);
           if (QLog.isColorLevel())
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("sendSttRequest, session = ");
-            ((StringBuilder)localObject1).append(a());
+            ((StringBuilder)localObject1).append(d());
             ((StringBuilder)localObject1).append(", version = ");
             ((StringBuilder)localObject1).append(1);
             ((StringBuilder)localObject1).append(", retryNum = ");
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+            ((StringBuilder)localObject1).append(this.b);
             QLog.d("Q.stt_SttTask", 2, ((StringBuilder)localObject1).toString());
           }
-          this.jdField_b_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+          this.i = Long.valueOf(System.currentTimeMillis());
           return Long.valueOf(l);
         }
       }
@@ -422,7 +422,7 @@ public class SttTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.stt.SttTask
  * JD-Core Version:    0.7.0.1
  */

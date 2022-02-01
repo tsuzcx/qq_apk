@@ -17,25 +17,25 @@ class MovingView$1
   {
     if (paramMessage.what == 1)
     {
-      if (this.a.jdField_a_of_type_Boolean)
+      if (this.a.p)
       {
-        if (this.a.jdField_b_of_type_Boolean) {
+        if (this.a.q) {
           return;
         }
-        if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+        if (this.a.m.computeScrollOffset())
         {
-          int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-          int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-          int k = this.a.c;
-          int m = this.a.d;
+          int i = this.a.m.getCurrX();
+          int j = this.a.m.getCurrY();
+          int k = this.a.h;
+          int m = this.a.i;
           paramMessage = this.a;
-          paramMessage.c = i;
-          paramMessage.d = j;
-          paramMessage.jdField_a_of_type_Int += i - k;
+          paramMessage.h = i;
+          paramMessage.i = j;
+          paramMessage.f += i - k;
           paramMessage = this.a;
-          paramMessage.jdField_b_of_type_Int += j - m;
+          paramMessage.g += j - m;
           this.a.invalidate();
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 40L);
+          this.a.r.sendEmptyMessageDelayed(1, 40L);
           return;
         }
         this.a.a();
@@ -50,7 +50,7 @@ class MovingView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.MovingView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class FriendExtensionServiceImpl
   
   public List<ExtensionInfo> getAllExtensionInfo()
   {
-    return this.mExtensionCache.a();
+    return this.mExtensionCache.c();
   }
   
   public ExtensionInfo getExtensionInfo(String paramString)
@@ -46,7 +46,7 @@ public class FriendExtensionServiceImpl
       if (paramBoolean)
       {
         localObject = localExtensionInfo;
-        if (!this.mExtensionCache.a())
+        if (!this.mExtensionCache.b())
         {
           localExtensionInfo = this.mExtensionCache.b(paramString);
           localObject = localExtensionInfo;
@@ -92,7 +92,7 @@ public class FriendExtensionServiceImpl
       return false;
     }
     this.mExtensionCache.a(paramExtensionInfo);
-    return this.mExtensionCache.a(paramExtensionInfo);
+    return this.mExtensionCache.b(paramExtensionInfo);
   }
   
   public boolean saveExtensionInfoList(List<ExtensionInfo> paramList)
@@ -113,7 +113,7 @@ public class FriendExtensionServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.api.impl.FriendExtensionServiceImpl
  * JD-Core Version:    0.7.0.1
  */

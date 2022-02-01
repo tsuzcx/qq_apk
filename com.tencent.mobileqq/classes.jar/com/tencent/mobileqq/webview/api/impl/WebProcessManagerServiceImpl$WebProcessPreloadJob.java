@@ -9,26 +9,26 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class WebProcessManagerServiceImpl$WebProcessPreloadJob
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  WeakReference<WebProcessStartListener> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<WebProcessManagerServiceImpl> b;
+  int a;
+  WeakReference<WebProcessStartListener> b;
+  WeakReference<WebProcessManagerServiceImpl> c;
   
   WebProcessManagerServiceImpl$WebProcessPreloadJob(int paramInt, WebProcessStartListener paramWebProcessStartListener, WebProcessManagerServiceImpl paramWebProcessManagerServiceImpl)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebProcessStartListener);
-    this.b = new WeakReference(paramWebProcessManagerServiceImpl);
+    this.a = paramInt;
+    this.b = new WeakReference(paramWebProcessStartListener);
+    this.c = new WeakReference(paramWebProcessManagerServiceImpl);
   }
   
   public void run()
   {
-    WebProcessStartListener localWebProcessStartListener = (WebProcessStartListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WebProcessStartListener localWebProcessStartListener = (WebProcessStartListener)this.b.get();
     if (!((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).isWebProcessExist())
     {
-      if ((WebProcessManagerServiceImpl)this.b.get() != null)
+      if ((WebProcessManagerServiceImpl)this.c.get() != null)
       {
         ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).setPreloadWebProcess(true);
-        ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).preloadWebProcess(this.jdField_a_of_type_Int);
+        ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).preloadWebProcess(this.a);
       }
       if (localWebProcessStartListener != null) {
         localWebProcessStartListener.onResult(true);
@@ -43,7 +43,7 @@ class WebProcessManagerServiceImpl$WebProcessPreloadJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.api.impl.WebProcessManagerServiceImpl.WebProcessPreloadJob
  * JD-Core Version:    0.7.0.1
  */

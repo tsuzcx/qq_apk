@@ -9,12 +9,12 @@ class KandianRoomSwitchService$1$1
   
   public void run()
   {
-    this.a.a.onResult(-1, 0, null);
+    this.a.c.onResult(-1, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.services.rommswitch.KandianRoomSwitchService.1.1
  * JD-Core Version:    0.7.0.1
  */

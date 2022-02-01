@@ -18,11 +18,11 @@ public class CasualTips
   extends RelativeLayout
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final int b = 2000;
+  int a = 0;
+  Context b;
+  private ArrayList<String> c = new ArrayList();
+  private Handler d = new Handler(Looper.getMainLooper());
+  private final int e = 2000;
   
   public CasualTips(Context paramContext)
   {
@@ -44,7 +44,7 @@ public class CasualTips
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   private void a(ArrayList<String> paramArrayList)
@@ -55,36 +55,36 @@ public class CasualTips
   
   private void d()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.c != null)
     {
       removeAllViews();
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Int %= this.jdField_a_of_type_JavaUtilArrayList.size();
-      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+      this.a += 1;
+      this.a %= this.c.size();
+      Object localObject1 = (String)this.c.get(this.a);
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("setNextTip empty");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(this.a);
         QLog.e("CasualTips", 2, ((StringBuilder)localObject1).toString());
         return;
       }
       localObject1 = ((String)localObject1).split("\\n");
       if (localObject1.length > 0)
       {
-        if (this.jdField_a_of_type_AndroidContentContext == null)
+        if (this.b == null)
         {
           QLog.e("CasualTips", 2, "setNextTip mContext is null");
           return;
         }
-        int k = ViewUtils.a(20.0F);
+        int k = ViewUtils.dip2px(20.0F);
         int m = localObject1.length;
         int i = 0;
         int j = 0;
         while (i < m)
         {
           Object localObject2 = localObject1[i];
-          TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+          TextView localTextView = new TextView(this.b);
           localTextView.setText((CharSequence)localObject2);
           localTextView.setTextSize(14.0F);
           localTextView.setSingleLine(true);
@@ -105,20 +105,20 @@ public class CasualTips
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.d.removeCallbacksAndMessages(null);
+    this.b = null;
   }
   
   public void b()
   {
     QLog.d("CasualTips", 2, "stopAnimation");
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.d.removeCallbacksAndMessages(null);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 2000L);
+    this.d.removeCallbacksAndMessages(null);
+    this.d.postDelayed(this, 2000L);
   }
   
   protected void onAttachedToWindow()
@@ -129,13 +129,13 @@ public class CasualTips
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.d.removeCallbacksAndMessages(null);
   }
   
   public void run()
   {
     d();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 2000L);
+    this.d.postDelayed(this, 2000L);
   }
   
   public void setTipsString(ArrayList<String> paramArrayList)

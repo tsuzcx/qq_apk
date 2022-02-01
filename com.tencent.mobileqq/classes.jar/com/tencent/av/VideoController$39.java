@@ -8,7 +8,7 @@ class VideoController$39
   public void run()
   {
     VideoController localVideoController = this.this$0;
-    localVideoController.a("onGAudioUserEnterOrLeave", localVideoController.k ^ true, this.a);
+    localVideoController.a("onGAudioUserEnterOrLeave", localVideoController.V ^ true, this.a);
   }
 }
 

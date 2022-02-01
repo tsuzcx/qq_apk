@@ -35,49 +35,37 @@ import java.util.ArrayList;
 public class ExtendEditText
   extends EditText
 {
-  public static final ExtendEditText.LengthConvertor a;
-  private static final ExtendEditText.LengthConvertor c;
-  protected int a;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList = null;
-  protected LinearGradient a;
-  protected GradientDrawable.Orientation a;
-  private Transformation jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-  private ExtendEditText.LimitListener jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LimitListener;
-  protected TextColorAnimation a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  protected float[] a;
-  protected int[] a;
-  int jdField_b_of_type_Int = -1;
-  private ExtendEditText.LengthConvertor jdField_b_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = null;
-  protected int c;
-  private int d = 4;
-  private int e;
-  
-  static
-  {
-    jdField_c_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new ExtendEditText.1();
-    jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new ExtendEditText.2();
-  }
+  public static final ExtendEditText.LengthConvertor i = new ExtendEditText.2();
+  private static final ExtendEditText.LengthConvertor q = new ExtendEditText.1();
+  protected int a = 0;
+  int b = -1;
+  protected LinearGradient c;
+  protected int[] d;
+  protected float[] e;
+  protected GradientDrawable.Orientation f;
+  protected int g = 0;
+  protected TextColorAnimation h = null;
+  private boolean j = false;
+  private ExtendEditText.LimitListener k;
+  private ExtendEditText.LengthConvertor l = null;
+  private int m = 4;
+  private Transformation n = new Transformation();
+  private String o;
+  private int p;
+  private ColorStateList r = null;
   
   public ExtendEditText(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
     d();
   }
   
   public ExtendEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.EditText);
     setClearFocusOnBack(paramContext.getBoolean(0, false));
-    this.jdField_b_of_type_Int = paramContext.getInteger(1, -1);
+    this.b = paramContext.getInteger(1, -1);
     paramContext.recycle();
     d();
   }
@@ -85,93 +73,228 @@ public class ExtendEditText
   public ExtendEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
     d();
   }
   
-  private void a(ExtendEditText.SuperFontInfo paramSuperFontInfo)
+  private void d()
   {
-    int j = 0;
+    int i1 = this.b;
+    if (i1 >= 0) {
+      setFilters(new InputFilter[] { new ExtendEditText.LengthFilter(this, i1) });
+    }
+  }
+  
+  private void e()
+  {
+    if (this.d != null)
+    {
+      if (this.e == null) {
+        return;
+      }
+      int i1 = getMaxTextWidth();
+      if ((this.c != null) && (i1 == this.g)) {
+        return;
+      }
+      this.g = i1;
+      Rect localRect = new Rect(0, 0, this.g, getMeasuredHeight());
+      switch (ExtendEditText.3.a[this.f.ordinal()])
+      {
+      default: 
+        f1 = localRect.left;
+        f2 = localRect.top;
+        f3 = localRect.right * 1.0F;
+        i1 = localRect.bottom;
+      case 7: 
+      case 6: 
+      case 5: 
+      case 4: 
+      case 3: 
+      case 2: 
+        for (;;)
+        {
+          f4 = i1 * 1.0F;
+          break label376;
+          f2 = localRect.left;
+          f1 = localRect.top;
+          i1 = localRect.right;
+          break label291;
+          f1 = localRect.left;
+          f2 = localRect.bottom;
+          f3 = localRect.right * 1.0F;
+          i1 = localRect.top;
+          continue;
+          f1 = localRect.left;
+          f2 = localRect.bottom;
+          i1 = localRect.top;
+          break;
+          f1 = localRect.right;
+          f2 = localRect.bottom;
+          f3 = localRect.left * 1.0F;
+          i1 = localRect.top;
+          continue;
+          f2 = localRect.right;
+          f1 = localRect.top;
+          i1 = localRect.left;
+          label291:
+          float f5 = i1 * 1.0F;
+          f3 = f2;
+          f2 = f1;
+          f4 = f2;
+          f1 = f3;
+          f3 = f5;
+          break label376;
+          f1 = localRect.right;
+          f2 = localRect.top;
+          f3 = localRect.left * 1.0F;
+          i1 = localRect.bottom;
+        }
+      }
+      float f1 = localRect.left;
+      float f2 = localRect.top;
+      i1 = localRect.bottom;
+      float f4 = i1 * 1.0F;
+      float f3 = f1;
+      label376:
+      this.c = new LinearGradient(f1, f2, f3, f4, this.d, this.e, Shader.TileMode.CLAMP);
+    }
+  }
+  
+  private void f()
+  {
+    InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
+    if (localInputMethodManager != null) {
+      localInputMethodManager.hideSoftInputFromWindow(getWindowToken(), 0);
+    }
+  }
+  
+  private int getMaxTextHeight()
+  {
+    Layout localLayout = getLayout();
+    if (localLayout == null) {
+      return 0;
+    }
+    int i1 = localLayout.getLineCount();
+    if (i1 == 0) {
+      return 0;
+    }
+    return localLayout.getLineBottom(i1 - 1);
+  }
+  
+  private int getMaxTextWidth()
+  {
+    Layout localLayout = getLayout();
+    if (TextUtils.isEmpty(getText()))
+    {
+      CharSequence localCharSequence = getHint();
+      if (!TextUtils.isEmpty(localCharSequence))
+      {
+        if (!localCharSequence.equals(this.o))
+        {
+          this.o = localCharSequence.toString();
+          this.p = ((int)getPaint().measureText(localCharSequence.toString()));
+        }
+        return this.p;
+      }
+    }
+    int i1 = 0;
+    if (localLayout == null) {
+      return 0;
+    }
+    int i5 = localLayout.getLineCount();
+    int i3;
+    for (int i2 = 0; i1 < i5; i2 = i3)
+    {
+      int i4 = (int)localLayout.getLineRight(i1);
+      i3 = i2;
+      if (i2 < i4) {
+        i3 = i4;
+      }
+      i1 += 1;
+    }
+    return i2;
+  }
+  
+  private void setEditEffect(ExtendEditText.SuperFontInfo paramSuperFontInfo)
+  {
+    int i2 = 0;
     if (paramSuperFontInfo == null)
     {
-      paramSuperFontInfo = this.jdField_a_of_type_AndroidContentResColorStateList;
+      paramSuperFontInfo = this.r;
       if (paramSuperFontInfo != null)
       {
         setTextColor(paramSuperFontInfo);
-        setHintTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+        setHintTextColor(this.r);
       }
       setShadowLayer(0.0F, 0.0F, 0.0F, 0);
       setTextColorAnimation(null, 0);
       setGradientColor(null, null, null);
       return;
     }
-    if (this.jdField_a_of_type_AndroidContentResColorStateList == null) {
-      this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
+    if (this.r == null) {
+      this.r = getTextColors();
     }
-    int i;
-    if ((paramSuperFontInfo.jdField_a_of_type_Long & 1L) != 0L)
+    int i1;
+    if ((paramSuperFontInfo.h & 1L) != 0L)
     {
-      i = ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.jdField_e_of_type_JavaLangString);
-      setTextColor(i);
-      setHintTextColor(i);
+      i1 = ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.i);
+      setTextColor(i1);
+      setHintTextColor(i1);
     }
     else
     {
-      setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-      setHintTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+      setTextColor(this.r);
+      setHintTextColor(this.r);
     }
-    if ((paramSuperFontInfo.jdField_a_of_type_Long & 0x2) != 0L) {
-      setShadowLayer(AIOUtils.b(paramSuperFontInfo.jdField_e_of_type_Int, getResources()), AIOUtils.b(paramSuperFontInfo.jdField_c_of_type_Int, getResources()), AIOUtils.b(paramSuperFontInfo.d, getResources()), ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.jdField_f_of_type_JavaLangString));
+    if ((paramSuperFontInfo.h & 0x2) != 0L) {
+      setShadowLayer(AIOUtils.b(paramSuperFontInfo.l, getResources()), AIOUtils.b(paramSuperFontInfo.j, getResources()), AIOUtils.b(paramSuperFontInfo.k, getResources()), ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.m));
     } else {
       setShadowLayer(0.0F, 0.0F, 0.0F, 0);
     }
     Object localObject;
-    int k;
-    if (((paramSuperFontInfo.jdField_a_of_type_Long & 0x8) != 0L) && (paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList != null) && (paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size() >= 2))
+    int i3;
+    if (((paramSuperFontInfo.h & 0x8) != 0L) && (paramSuperFontInfo.q != null) && (paramSuperFontInfo.q.size() >= 2))
     {
-      localObject = new ArrayList(paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size());
-      k = paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size();
-      i = 0;
-      while (i < k)
+      localObject = new ArrayList(paramSuperFontInfo.q.size());
+      i3 = paramSuperFontInfo.q.size();
+      i1 = 0;
+      while (i1 < i3)
       {
-        ((ArrayList)localObject).add(Integer.valueOf(ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.get(i))));
-        i += 1;
+        ((ArrayList)localObject).add(Integer.valueOf(ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.q.get(i1))));
+        i1 += 1;
       }
-      setTextColorAnimation((ArrayList)localObject, paramSuperFontInfo.g * (k - 1));
+      setTextColorAnimation((ArrayList)localObject, paramSuperFontInfo.r * (i3 - 1));
     }
     else
     {
       setTextColorAnimation(null, 0);
     }
-    if (((paramSuperFontInfo.jdField_a_of_type_Long & 0x4) != 0L) && (paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.size() >= 2) && (paramSuperFontInfo.b != null) && (paramSuperFontInfo.b.size() >= 2))
+    if (((paramSuperFontInfo.h & 0x4) != 0L) && (paramSuperFontInfo.n != null) && (paramSuperFontInfo.n.size() >= 2) && (paramSuperFontInfo.o != null) && (paramSuperFontInfo.o.size() >= 2))
     {
-      k = paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.size();
-      localObject = new int[k];
-      i = 0;
-      while (i < k)
+      i3 = paramSuperFontInfo.n.size();
+      localObject = new int[i3];
+      i1 = 0;
+      while (i1 < i3)
       {
-        localObject[i] = ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.get(i));
-        i += 1;
+        localObject[i1] = ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.n.get(i1));
+        i1 += 1;
       }
-      k = paramSuperFontInfo.b.size();
-      float[] arrayOfFloat = new float[k];
-      i = j;
-      while (i < k)
+      i3 = paramSuperFontInfo.o.size();
+      float[] arrayOfFloat = new float[i3];
+      i1 = i2;
+      while (i1 < i3)
       {
-        arrayOfFloat[i] = ((Double)paramSuperFontInfo.b.get(i)).floatValue();
-        i += 1;
+        arrayOfFloat[i1] = ((Double)paramSuperFontInfo.o.get(i1)).floatValue();
+        i1 += 1;
       }
       GradientDrawable.Orientation localOrientation = GradientDrawable.Orientation.LEFT_RIGHT;
-      i = paramSuperFontInfo.jdField_f_of_type_Int;
-      if (i != 0)
+      i1 = paramSuperFontInfo.p;
+      if (i1 != 0)
       {
-        if (i != 1)
+        if (i1 != 1)
         {
-          if (i != 2)
+          if (i1 != 2)
           {
-            if (i != 3) {
+            if (i1 != 3) {
               paramSuperFontInfo = GradientDrawable.Orientation.LEFT_RIGHT;
             } else {
               paramSuperFontInfo = GradientDrawable.Orientation.BL_TR;
@@ -194,177 +317,6 @@ public class ExtendEditText
     setGradientColor(null, null, null);
   }
   
-  private int b()
-  {
-    Layout localLayout = getLayout();
-    if (TextUtils.isEmpty(getText()))
-    {
-      CharSequence localCharSequence = getHint();
-      if (!TextUtils.isEmpty(localCharSequence))
-      {
-        if (!localCharSequence.equals(this.jdField_a_of_type_JavaLangString))
-        {
-          this.jdField_a_of_type_JavaLangString = localCharSequence.toString();
-          this.jdField_e_of_type_Int = ((int)getPaint().measureText(localCharSequence.toString()));
-        }
-        return this.jdField_e_of_type_Int;
-      }
-    }
-    int i = 0;
-    if (localLayout == null) {
-      return 0;
-    }
-    int n = localLayout.getLineCount();
-    int k;
-    for (int j = 0; i < n; j = k)
-    {
-      int m = (int)localLayout.getLineRight(i);
-      k = j;
-      if (j < m) {
-        k = m;
-      }
-      i += 1;
-    }
-    return j;
-  }
-  
-  private void d()
-  {
-    int i = this.jdField_b_of_type_Int;
-    if (i >= 0) {
-      setFilters(new InputFilter[] { new ExtendEditText.LengthFilter(this, i) });
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_ArrayOfInt != null)
-    {
-      if (this.jdField_a_of_type_ArrayOfFloat == null) {
-        return;
-      }
-      int i = b();
-      if ((this.jdField_a_of_type_AndroidGraphicsLinearGradient != null) && (i == this.jdField_c_of_type_Int)) {
-        return;
-      }
-      this.jdField_c_of_type_Int = i;
-      Rect localRect = new Rect(0, 0, this.jdField_c_of_type_Int, getMeasuredHeight());
-      switch (ExtendEditText.3.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
-      {
-      default: 
-        f1 = localRect.left;
-        f2 = localRect.top;
-        f3 = localRect.right * 1.0F;
-        i = localRect.bottom;
-      case 7: 
-      case 6: 
-      case 5: 
-      case 4: 
-      case 3: 
-      case 2: 
-        for (;;)
-        {
-          f4 = i * 1.0F;
-          break label376;
-          f2 = localRect.left;
-          f1 = localRect.top;
-          i = localRect.right;
-          break label291;
-          f1 = localRect.left;
-          f2 = localRect.bottom;
-          f3 = localRect.right * 1.0F;
-          i = localRect.top;
-          continue;
-          f1 = localRect.left;
-          f2 = localRect.bottom;
-          i = localRect.top;
-          break;
-          f1 = localRect.right;
-          f2 = localRect.bottom;
-          f3 = localRect.left * 1.0F;
-          i = localRect.top;
-          continue;
-          f2 = localRect.right;
-          f1 = localRect.top;
-          i = localRect.left;
-          label291:
-          float f5 = i * 1.0F;
-          f3 = f2;
-          f2 = f1;
-          f4 = f2;
-          f1 = f3;
-          f3 = f5;
-          break label376;
-          f1 = localRect.right;
-          f2 = localRect.top;
-          f3 = localRect.left * 1.0F;
-          i = localRect.bottom;
-        }
-      }
-      float f1 = localRect.left;
-      float f2 = localRect.top;
-      i = localRect.bottom;
-      float f4 = i * 1.0F;
-      float f3 = f1;
-      label376:
-      this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(f1, f2, f3, f4, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP);
-    }
-  }
-  
-  private void f()
-  {
-    InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
-    if (localInputMethodManager != null) {
-      localInputMethodManager.hideSoftInputFromWindow(getWindowToken(), 0);
-    }
-  }
-  
-  @TargetApi(14)
-  int a()
-  {
-    try
-    {
-      if (getLayout() == null) {
-        return 0;
-      }
-      int i = Build.VERSION.SDK_INT;
-      if (i > 13)
-      {
-        try
-        {
-          i = getOffsetForPosition(getX(), getY());
-          i = getLayout().getLineForOffset(i);
-        }
-        catch (Exception localException1)
-        {
-          if (!QLog.isColorLevel()) {
-            break label114;
-          }
-        }
-        QLog.w("ExtendEditText", 2, "", localException1);
-        return 0;
-      }
-      else if (i > 10)
-      {
-        i = a(getY());
-      }
-      else
-      {
-        i = a(getTop());
-      }
-      return i;
-    }
-    catch (Exception localException2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ExtendEditText", 2, "", localException2);
-      }
-      return 0;
-    }
-    label114:
-    return 0;
-  }
-  
   int a(float paramFloat)
   {
     if (getLayout() == null) {
@@ -372,8 +324,8 @@ public class ExtendEditText
     }
     paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingTop());
     paramFloat = Math.min(getHeight() - getTotalPaddingBottom() - 1, paramFloat);
-    float f = getScrollY();
-    return getLayout().getLineForVertical((int)(paramFloat + f));
+    float f1 = getScrollY();
+    return getLayout().getLineForVertical((int)(paramFloat + f1));
   }
   
   protected void a()
@@ -382,16 +334,16 @@ public class ExtendEditText
     if (localLayout == null) {
       return;
     }
-    int i = a();
-    int j = localLayout.getLineTop(i);
-    int k = localLayout.getLineBottom(i);
-    int n = getScrollY();
-    int m = getScrollX();
-    i = k;
-    if (Math.abs(n - j) <= Math.abs(k - n)) {
-      i = j;
+    int i1 = getTargetLine();
+    int i2 = localLayout.getLineTop(i1);
+    int i3 = localLayout.getLineBottom(i1);
+    int i5 = getScrollY();
+    int i4 = getScrollX();
+    i1 = i3;
+    if (Math.abs(i5 - i2) <= Math.abs(i3 - i5)) {
+      i1 = i2;
     }
-    scrollTo(m, i);
+    scrollTo(i4, i1);
   }
   
   protected void b()
@@ -400,8 +352,8 @@ public class ExtendEditText
     if (localLayout == null) {
       return;
     }
-    int i = localLayout.getLineBottom(a());
-    scrollTo(getScrollX(), i);
+    int i1 = localLayout.getLineBottom(getTargetLine());
+    scrollTo(getScrollX(), i1);
   }
   
   public boolean bringPointIntoView(int paramInt)
@@ -415,42 +367,88 @@ public class ExtendEditText
     if (localLayout == null) {
       return;
     }
-    int i = a() - 1;
-    if (i < 0) {
+    int i1 = getTargetLine() - 1;
+    if (i1 < 0) {
       return;
     }
-    i = localLayout.getLineTop(i);
-    scrollTo(getScrollX(), i);
+    i1 = localLayout.getLineTop(i1);
+    scrollTo(getScrollX(), i1);
+  }
+  
+  @TargetApi(14)
+  int getTargetLine()
+  {
+    try
+    {
+      if (getLayout() == null) {
+        return 0;
+      }
+      int i1 = Build.VERSION.SDK_INT;
+      if (i1 > 13)
+      {
+        try
+        {
+          i1 = getOffsetForPosition(getX(), getY());
+          i1 = getLayout().getLineForOffset(i1);
+        }
+        catch (Exception localException1)
+        {
+          if (!QLog.isColorLevel()) {
+            break label114;
+          }
+        }
+        QLog.w("ExtendEditText", 2, "", localException1);
+        return 0;
+      }
+      else if (i1 > 10)
+      {
+        i1 = a(getY());
+      }
+      else
+      {
+        i1 = a(getTop());
+      }
+      return i1;
+    }
+    catch (Exception localException2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("ExtendEditText", 2, "", localException2);
+      }
+      return 0;
+    }
+    label114:
+    return 0;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     TextPaint localTextPaint = getPaint();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation;
+    Object localObject = this.h;
     if (localObject != null)
     {
-      boolean bool = ((TextColorAnimation)localObject).getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.a();
-      setTextColor(i);
-      setHintTextColor(i);
+      boolean bool = ((TextColorAnimation)localObject).getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.n);
+      int i1 = this.h.a();
+      setTextColor(i1);
+      setHintTextColor(i1);
       if (bool) {
         postInvalidateOnAnimation();
       }
     }
     e();
-    localObject = this.jdField_a_of_type_AndroidGraphicsLinearGradient;
+    localObject = this.c;
     if (localObject != null) {
       localTextPaint.setShader((Shader)localObject);
     }
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsLinearGradient != null) {
+    if (this.c != null) {
       localTextPaint.setShader(null);
     }
   }
   
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 4) && (paramKeyEvent.getAction() == 1))
+    if ((this.j) && (paramInt == 4) && (paramKeyEvent.getAction() == 1))
     {
       f();
       clearFocus();
@@ -469,12 +467,12 @@ public class ExtendEditText
   {
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     paramInt1 = getLineCount();
-    paramInt2 = this.jdField_a_of_type_Int;
+    paramInt2 = this.a;
     if (paramInt2 != paramInt1)
     {
       if (paramInt2 < paramInt1)
       {
-        if (paramInt1 > this.d) {
+        if (paramInt1 > this.m) {
           b();
         }
       }
@@ -493,20 +491,20 @@ public class ExtendEditText
   
   public void setBeforeChangeLineCount(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void setClearFocusOnBack(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void setGradientColor(int[] paramArrayOfInt, float[] paramArrayOfFloat, GradientDrawable.Orientation paramOrientation)
   {
-    this.jdField_a_of_type_AndroidGraphicsLinearGradient = null;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation = paramOrientation;
+    this.c = null;
+    this.d = paramArrayOfInt;
+    this.e = paramArrayOfFloat;
+    this.f = paramOrientation;
     if (Build.VERSION.SDK_INT >= 11)
     {
       try
@@ -523,47 +521,47 @@ public class ExtendEditText
   
   public void setLimitListener(ExtendEditText.LimitListener paramLimitListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LimitListener = paramLimitListener;
+    this.k = paramLimitListener;
   }
   
   public void setMaxLengthConvertor(ExtendEditText.LengthConvertor paramLengthConvertor)
   {
-    this.jdField_b_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = paramLengthConvertor;
+    this.l = paramLengthConvertor;
   }
   
   public void setTextColorAnimation(ArrayList<Integer> paramArrayList, int paramInt)
   {
-    TextColorAnimation localTextColorAnimation = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation;
+    TextColorAnimation localTextColorAnimation = this.h;
     if (localTextColorAnimation != null) {
       localTextColorAnimation.cancel();
     }
     if ((paramArrayList != null) && (paramArrayList.size() >= 2) && (paramInt != 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = new TextColorAnimation(paramArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setFillAfter(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setRepeatCount(-1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setRepeatMode(2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setDuration(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setStartTime(0L);
+      this.h = new TextColorAnimation(paramArrayList);
+      this.h.setFillAfter(true);
+      this.h.setRepeatCount(-1);
+      this.h.setRepeatMode(2);
+      this.h.setInterpolator(new LinearInterpolator());
+      this.h.setDuration(paramInt);
+      this.h.setStartTime(0L);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
+    this.h = null;
   }
   
   public void setTextEffect(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      a(null);
+      setEditEffect(null);
       return;
     }
-    a(ExtendEditText.SuperFontInfo.a(paramString));
+    setEditEffect(ExtendEditText.SuperFontInfo.c(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.view.ExtendEditText
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class ETImageSpan
     paramPaint = getDrawable();
     paramCharSequence = paramPaint;
     if ((paramPaint instanceof AnimatedImageDrawable)) {
-      paramCharSequence = ((AnimatedImageDrawable)paramPaint).a();
+      paramCharSequence = ((AnimatedImageDrawable)paramPaint).c();
     }
     if (paramCharSequence == null) {
       return;

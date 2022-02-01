@@ -2,7 +2,7 @@ package com.tencent.mobileqq.qqgamepub.hippy.view;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHippyApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyRootView;
@@ -36,7 +36,7 @@ public class GpArkViewController
   protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     paramContext = new HippyArkView(paramContext);
-    paramContext.a(((IQQGameHelper)QRoute.api(IQQGameHelper.class)).getMsgInfoByHippyMap(paramHippyMap));
+    paramContext.a(((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).getMsgInfoByHippyMap(paramHippyMap));
     return paramContext;
   }
   
@@ -89,7 +89,7 @@ public class GpArkViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.view.GpArkViewController
  * JD-Core Version:    0.7.0.1
  */

@@ -20,33 +20,26 @@ import java.util.HashMap;
 
 public class VideoBaseItem
 {
-  public static int a;
-  public static SparseArray<WeakReference<VideoBaseItem>> a;
-  long jdField_a_of_type_Long = -1L;
-  Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private View jdField_a_of_type_AndroidViewView;
-  private VideoBaseItem.OnInnerStateChangeListener jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem$OnInnerStateChangeListener;
-  public TVK_IMediaPlayer a;
-  TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  private boolean b;
-  int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_Int = -1;
-  }
+  public static SparseArray<WeakReference<VideoBaseItem>> a = new SparseArray();
+  public static int b = -1;
+  public int c;
+  Context d;
+  public TVK_IMediaPlayer e;
+  TVK_IProxyFactory f;
+  int g = 0;
+  String h;
+  boolean i = false;
+  long j = -1L;
+  private View k;
+  private Handler l = new Handler();
+  private VideoBaseItem.OnInnerStateChangeListener m;
+  private boolean n = false;
+  private boolean o = false;
   
   private VideoBaseItem(Context paramContext, int paramInt)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramContext;
+    this.c = paramInt;
   }
   
   public static View a(Context paramContext)
@@ -65,132 +58,105 @@ public class VideoBaseItem
   public static VideoBaseItem a(Context paramContext, int paramInt)
   {
     paramContext = new VideoBaseItem(paramContext, paramInt);
-    jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, new WeakReference(paramContext));
+    a.put(paramInt, new WeakReference(paramContext));
     return paramContext;
   }
   
-  private void b()
+  private void i()
   {
-    ((IVideoViewBase)this.jdField_a_of_type_AndroidViewView).addViewCallBack(new VideoBaseItem.1(this));
+    ((IVideoViewBase)this.k).addViewCallBack(new VideoBaseItem.1(this));
   }
   
-  private void c()
+  private void j()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.e;
     if (localTVK_IMediaPlayer != null)
     {
       localTVK_IMediaPlayer.stop();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = null;
-      this.jdField_a_of_type_AndroidViewView = null;
-      this.jdField_c_of_type_Boolean = false;
+      this.e.release();
+      this.e = null;
+      this.f = null;
+      this.k = null;
+      this.o = false;
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public long a()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer != null) {
-      return localTVK_IMediaPlayer.getCurrentPostion();
-    }
-    return -1L;
-  }
-  
-  public VideoBaseItem.VideoStatusRecord a()
-  {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if ((localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.isPlaying()))
-    {
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-      this.jdField_c_of_type_Int = 3;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-      QLog.d("VideoBaseItem", 2, " you have paused Mediaplayer");
-    }
-    return new VideoBaseItem.VideoStatusRecord(this, this.jdField_c_of_type_Int, this.jdField_a_of_type_Long);
   }
   
   public void a()
   {
-    c();
-    this.jdField_c_of_type_Int = 5;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem$OnInnerStateChangeListener = null;
+    j();
+    this.g = 5;
+    this.m = null;
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Int == 4)
+    if (this.g == 4)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.h;
       a(str, str, 0L, paramLong, paramBoolean);
     }
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    b();
-    this.jdField_c_of_type_Int = 1;
+    this.k = paramView;
+    i();
+    this.g = 1;
   }
   
   public void a(VideoBaseItem.OnInnerStateChangeListener paramOnInnerStateChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem$OnInnerStateChangeListener = paramOnInnerStateChangeListener;
+    this.m = paramOnInnerStateChangeListener;
   }
   
   public void a(VideoBaseItem.VideoStatusRecord paramVideoStatusRecord)
   {
-    if (this.jdField_c_of_type_Int != 3)
+    if (this.g != 3)
     {
       QLog.d("VideoBaseItem", 2, "you should check thi status.Have you stopped Mediaplayer");
       return;
     }
-    paramVideoStatusRecord = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    paramVideoStatusRecord = this.e;
     if ((paramVideoStatusRecord != null) && (!paramVideoStatusRecord.isPlaying()))
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo((int)this.jdField_a_of_type_Long);
+      this.e.start();
+      if (this.i) {
+        this.e.seekTo((int)this.j);
       }
-      this.jdField_c_of_type_Int = 2;
+      this.g = 2;
       QLog.d("VideoBaseItem", 2, "you restart mediaplayer");
     }
   }
   
   public void a(String paramString1, String paramString2, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Int < 1)
+    if (this.g < 1)
     {
       QLog.d("VideoBaseItem", 2, "you should check video staus! this function only call be calld after VideoStatusRecord.ITEM_BIND_VIEW");
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.k == null)
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidContentContext, "video view is empty,please check,you shold bind TencentSdkView", 0).show();
+      Toast.makeText(this.d, "video view is empty,please check,you shold bind TencentSdkView", 0).show();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory == null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (this.f == null) {
+      this.f = TVK_SDKMgr.getProxyFactory();
     }
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) && (this.jdField_a_of_type_AndroidViewView != null))
+    if ((this.e == null) && (this.k != null))
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(BaseApplicationImpl.getApplication(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new VideoBaseItem.2(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new VideoBaseItem.3(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new VideoBaseItem.4(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new VideoBaseItem.5(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new VideoBaseItem.6(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnNetVideoInfoListener(new VideoBaseItem.7(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparingListener(new VideoBaseItem.8(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new VideoBaseItem.9(this));
+      this.e = this.f.createMediaPlayer(BaseApplicationImpl.getApplication(), (IVideoViewBase)this.k);
+      this.e.setOnCompletionListener(new VideoBaseItem.2(this));
+      this.e.setOnErrorListener(new VideoBaseItem.3(this));
+      this.e.setOnVideoPreparedListener(new VideoBaseItem.4(this));
+      this.e.setOnSeekCompleteListener(new VideoBaseItem.5(this));
+      this.e.setOnInfoListener(new VideoBaseItem.6(this));
+      this.e.setOnNetVideoInfoListener(new VideoBaseItem.7(this));
+      this.e.setOnVideoPreparingListener(new VideoBaseItem.8(this));
+      this.e.setOnDownloadCallback(new VideoBaseItem.9(this));
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.e.setOutputMute(paramBoolean);
+    this.h = paramString2;
     String str = HotVideoUtils.a(paramString2);
     HashMap localHashMap = new HashMap();
     localHashMap.put("shouq_bus_type", "shouq_hotpic_online_video");
@@ -198,68 +164,95 @@ public class VideoBaseItem
     File localFile = new File(str);
     if (HotVideoUtils.a(paramString2, paramLong2))
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.n = true;
       localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
       localTVK_PlayerVideoInfo.setPlayType(4);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(BaseApplicationImpl.getContext(), localFile.getAbsolutePath(), paramLong1, 0L, localTVK_PlayerVideoInfo);
+      this.e.openMediaPlayerByUrl(BaseApplicationImpl.getContext(), localFile.getAbsolutePath(), paramLong1, 0L, localTVK_PlayerVideoInfo);
       QLog.d("VideoBaseItem", 2, "huanxxiao test file have been cached");
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.n = false;
     localTVK_PlayerVideoInfo.setConfigMap("file_dir", str);
     localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", "20161009");
     localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
     localTVK_PlayerVideoInfo.setVid(MD5Utils.toMD5(paramString1));
     localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
     localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(BaseApplicationImpl.getContext(), paramString1, paramLong1, 0L, localTVK_PlayerVideoInfo);
+    this.e.openMediaPlayerByUrl(BaseApplicationImpl.getContext(), paramString1, paramLong1, 0L, localTVK_PlayerVideoInfo);
     QLog.d("VideoBaseItem", 2, "huanxxiao test open with url ok");
   }
   
   public void a(boolean paramBoolean)
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.e;
     if (localTVK_IMediaPlayer != null) {
       localTVK_IMediaPlayer.setOutputMute(paramBoolean);
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.e;
     if (localTVK_IMediaPlayer != null) {
       return localTVK_IMediaPlayer.getOutputMute();
     }
     return true;
   }
   
-  public int b()
+  public int c()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-    if (localTVK_IMediaPlayer == null) {
-      return -1;
-    }
-    return localTVK_IMediaPlayer.getBufferPercent();
+    return this.g;
   }
   
-  public long b()
+  public long d()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.e;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getCurrentPostion();
+    }
+    return -1L;
+  }
+  
+  public long e()
+  {
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.e;
     if (localTVK_IMediaPlayer == null) {
       return -1L;
     }
     return localTVK_IMediaPlayer.getDuration();
   }
   
-  public boolean b()
+  public int f()
   {
-    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.e;
+    if (localTVK_IMediaPlayer == null) {
+      return -1;
+    }
+    return localTVK_IMediaPlayer.getBufferPercent();
+  }
+  
+  public VideoBaseItem.VideoStatusRecord g()
+  {
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.e;
+    if ((localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.isPlaying()))
+    {
+      this.j = this.e.getCurrentPostion();
+      this.g = 3;
+      this.e.pause();
+      QLog.d("VideoBaseItem", 2, " you have paused Mediaplayer");
+    }
+    return new VideoBaseItem.VideoStatusRecord(this, this.g, this.j);
+  }
+  
+  public boolean h()
+  {
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.e;
     return (localTVK_IMediaPlayer != null) && (localTVK_IMediaPlayer.isPlaying());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem
  * JD-Core Version:    0.7.0.1
  */

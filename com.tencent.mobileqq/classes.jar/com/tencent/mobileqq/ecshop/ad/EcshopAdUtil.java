@@ -46,7 +46,7 @@ public final class EcshopAdUtil
       ((StringBuilder)localObject3).append((String)localObject2);
       QLog.i("EcshopAdUtil", 2, ((StringBuilder)localObject3).toString());
     }
-    if (StringUtil.a((String)localObject2)) {
+    if (StringUtil.isEmpty((String)localObject2)) {
       return localObject1;
     }
     localObject1 = new Gson().fromJson((String)localObject2, new EcshopAdUtil.getRiskAids.1().getType());
@@ -82,7 +82,7 @@ public final class EcshopAdUtil
         if (((IEcshopMessageApi)localObject1).isMessageForArkApp((MessageRecord)localObject2))
         {
           localObject2 = ((IEcshopMessageApi)localObject1).getArkMsgMetaList((MessageRecord)localObject2);
-          if (StringUtil.a((String)localObject2)) {
+          if (StringUtil.isEmpty((String)localObject2)) {
             break label336;
           }
         }
@@ -213,7 +213,7 @@ public final class EcshopAdUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.ad.EcshopAdUtil
  * JD-Core Version:    0.7.0.1
  */

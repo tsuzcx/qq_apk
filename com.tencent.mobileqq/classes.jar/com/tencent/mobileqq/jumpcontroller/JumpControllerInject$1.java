@@ -13,21 +13,21 @@ class JumpControllerInject$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqHaoliyouJumpForwardSecurityCheck;
-    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+    Object localObject = this.a;
+    Intent localIntent = this.b;
     if (!((JumpForwardSecurityCheck)localObject).a(localIntent, localIntent.getAction()))
     {
       localObject = Message.obtain();
       ((Message)localObject).what = 2;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      ((Message)localObject).obj = this.jdField_a_of_type_AndroidContentIntent;
-      this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.uiHandler.sendMessage((Message)localObject);
+      ((Message)localObject).arg1 = this.c;
+      ((Message)localObject).obj = this.b;
+      this.d.uiHandler.sendMessage((Message)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jumpcontroller.JumpControllerInject.1
  * JD-Core Version:    0.7.0.1
  */

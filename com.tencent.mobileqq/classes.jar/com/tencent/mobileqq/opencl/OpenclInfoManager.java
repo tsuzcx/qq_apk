@@ -3,16 +3,16 @@ package com.tencent.mobileqq.opencl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PrintStream;
+import mqq.app.MobileQQ;
 
 public class OpenclInfoManager
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static String jdField_a_of_type_JavaLangString = "OpenclInfoManager";
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static String b;
+  private static String a = "OpenclInfoManager";
+  private static boolean b = false;
+  private static String c;
+  private static Object d = new Object();
   
   static
   {
@@ -24,7 +24,7 @@ public class OpenclInfoManager
     try
     {
       System.loadLibrary("oclInfo");
-      jdField_a_of_type_Boolean = true;
+      b = true;
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -40,12 +40,12 @@ public class OpenclInfoManager
       if (paramString.startsWith("err")) {
         return;
       }
-      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4).edit();
+      Object localObject = MobileQQ.sMobileQQ.getSharedPreferences("qmcf_gpu_config", 4).edit();
       ((SharedPreferences.Editor)localObject).putString("param_ocl_gpuinfo", paramString);
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("saveOclGpuInfo:");
         localStringBuilder.append(paramString);
@@ -54,9 +54,9 @@ public class OpenclInfoManager
     }
   }
   
-  private String b()
+  private String c()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4).getString("param_ocl_gpuinfo", "");
+    return MobileQQ.sMobileQQ.getSharedPreferences("qmcf_gpu_config", 4).getString("param_ocl_gpuinfo", "");
   }
   
   private native String nativeGetOclVersion();
@@ -66,55 +66,55 @@ public class OpenclInfoManager
   private native int nativeGetSupportedType();
   
   /* Error */
-  public String a()
+  public String b()
   {
     // Byte code:
-    //   0: getstatic 19	com/tencent/mobileqq/opencl/OpenclInfoManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   0: getstatic 21	com/tencent/mobileqq/opencl/OpenclInfoManager:d	Ljava/lang/Object;
     //   3: astore_2
     //   4: aload_2
     //   5: monitorenter
-    //   6: getstatic 126	com/tencent/mobileqq/opencl/OpenclInfoManager:b	Ljava/lang/String;
-    //   9: invokestatic 50	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: getstatic 128	com/tencent/mobileqq/opencl/OpenclInfoManager:c	Ljava/lang/String;
+    //   9: invokestatic 52	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   12: ifne +11 -> 23
-    //   15: getstatic 126	com/tencent/mobileqq/opencl/OpenclInfoManager:b	Ljava/lang/String;
+    //   15: getstatic 128	com/tencent/mobileqq/opencl/OpenclInfoManager:c	Ljava/lang/String;
     //   18: astore_3
     //   19: aload_2
     //   20: monitorexit
     //   21: aload_3
     //   22: areturn
     //   23: aload_0
-    //   24: invokespecial 128	com/tencent/mobileqq/opencl/OpenclInfoManager:b	()Ljava/lang/String;
-    //   27: putstatic 126	com/tencent/mobileqq/opencl/OpenclInfoManager:b	Ljava/lang/String;
-    //   30: getstatic 126	com/tencent/mobileqq/opencl/OpenclInfoManager:b	Ljava/lang/String;
-    //   33: invokestatic 50	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   24: invokespecial 130	com/tencent/mobileqq/opencl/OpenclInfoManager:c	()Ljava/lang/String;
+    //   27: putstatic 128	com/tencent/mobileqq/opencl/OpenclInfoManager:c	Ljava/lang/String;
+    //   30: getstatic 128	com/tencent/mobileqq/opencl/OpenclInfoManager:c	Ljava/lang/String;
+    //   33: invokestatic 52	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   36: istore_1
     //   37: iload_1
     //   38: ifeq +55 -> 93
     //   41: aload_0
-    //   42: invokevirtual 131	com/tencent/mobileqq/opencl/OpenclInfoManager:nativeGetGPUInfo	()Ljava/lang/String;
-    //   45: putstatic 126	com/tencent/mobileqq/opencl/OpenclInfoManager:b	Ljava/lang/String;
+    //   42: invokevirtual 133	com/tencent/mobileqq/opencl/OpenclInfoManager:nativeGetGPUInfo	()Ljava/lang/String;
+    //   45: putstatic 128	com/tencent/mobileqq/opencl/OpenclInfoManager:c	Ljava/lang/String;
     //   48: aload_0
-    //   49: getstatic 126	com/tencent/mobileqq/opencl/OpenclInfoManager:b	Ljava/lang/String;
-    //   52: invokespecial 133	com/tencent/mobileqq/opencl/OpenclInfoManager:a	(Ljava/lang/String;)V
+    //   49: getstatic 128	com/tencent/mobileqq/opencl/OpenclInfoManager:c	Ljava/lang/String;
+    //   52: invokespecial 135	com/tencent/mobileqq/opencl/OpenclInfoManager:a	(Ljava/lang/String;)V
     //   55: goto +38 -> 93
-    //   58: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   58: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   61: ifeq +32 -> 93
-    //   64: getstatic 95	com/tencent/mobileqq/opencl/OpenclInfoManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   64: getstatic 97	com/tencent/mobileqq/opencl/OpenclInfoManager:a	Ljava/lang/String;
     //   67: iconst_2
-    //   68: ldc 135
-    //   70: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   68: ldc 137
+    //   70: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   73: goto +20 -> 93
     //   76: astore_3
-    //   77: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   77: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   80: ifeq +13 -> 93
-    //   83: getstatic 95	com/tencent/mobileqq/opencl/OpenclInfoManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   83: getstatic 97	com/tencent/mobileqq/opencl/OpenclInfoManager:a	Ljava/lang/String;
     //   86: iconst_2
-    //   87: ldc 140
+    //   87: ldc 141
     //   89: aload_3
-    //   90: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   90: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   93: aload_2
     //   94: monitorexit
-    //   95: getstatic 126	com/tencent/mobileqq/opencl/OpenclInfoManager:b	Ljava/lang/String;
+    //   95: getstatic 128	com/tencent/mobileqq/opencl/OpenclInfoManager:c	Ljava/lang/String;
     //   98: areturn
     //   99: astore_3
     //   100: aload_2
@@ -151,7 +151,7 @@ public class OpenclInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.opencl.OpenclInfoManager
  * JD-Core Version:    0.7.0.1
  */

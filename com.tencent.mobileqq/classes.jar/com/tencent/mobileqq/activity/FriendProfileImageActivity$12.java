@@ -12,16 +12,16 @@ class FriendProfileImageActivity$12
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.execute(new Void[0]);
+    this.a.j.execute(new Void[0]);
     paramAnimation = this.a;
-    paramAnimation.f = false;
-    if (paramAnimation.d)
+    paramAnimation.D = false;
+    if (paramAnimation.w)
     {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.a.u.setVisibility(8);
       return;
     }
-    if (!this.a.jdField_c_of_type_Boolean) {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (!this.a.v) {
+      this.a.u.setVisibility(0);
     }
   }
   
@@ -31,7 +31,7 @@ class FriendProfileImageActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.12
  * JD-Core Version:    0.7.0.1
  */

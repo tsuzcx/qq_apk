@@ -66,7 +66,7 @@ public class VasProfileTagLabelComponent
       Object localObject1 = (View)this.mViewContainer;
       if (localObject1 == null)
       {
-        localObject1 = this.mActivity.getLayoutInflater().inflate(2131561373, null);
+        localObject1 = this.mActivity.getLayoutInflater().inflate(2131627729, null);
         this.mViewContainer = localObject1;
         bool1 = true;
       }
@@ -75,8 +75,8 @@ public class VasProfileTagLabelComponent
         bool1 = false;
       }
       Object localObject2 = this.mActivity.getResources();
-      Object localObject3 = (AdaptiveLayout)((View)localObject1).findViewById(2131378292);
-      int j = ((Resources)localObject2).getDimensionPixelSize(2131298630);
+      Object localObject3 = (AdaptiveLayout)((View)localObject1).findViewById(2131446811);
+      int j = ((Resources)localObject2).getDimensionPixelSize(2131299347);
       int i;
       if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
         i = 8;
@@ -88,22 +88,22 @@ public class VasProfileTagLabelComponent
       {
         ((AdaptiveLayout)localObject3).setGap(j, j);
         this.mTagLabels = new TextView[i];
-        k = ((Resources)localObject2).getDimensionPixelSize(2131298628);
-        int m = ((Resources)localObject2).getDimensionPixelSize(2131298631);
-        int n = ((Resources)localObject2).getDimensionPixelSize(2131298634);
+        k = ((Resources)localObject2).getDimensionPixelSize(2131299345);
+        int m = ((Resources)localObject2).getDimensionPixelSize(2131299348);
+        int n = ((Resources)localObject2).getDimensionPixelSize(2131299351);
         j = 0;
         while (j < i)
         {
           localObject1 = new TextView(this.mActivity);
           this.mTagLabels[j] = localObject1;
-          ((TextView)localObject1).setBackgroundResource(2130847274);
+          ((TextView)localObject1).setBackgroundResource(2130848925);
           ((TextView)localObject1).setPadding(m, m, m, m);
           ((TextView)localObject1).setTextSize(0, k);
           ((TextView)localObject1).setTextColor(-16777216);
           ((TextView)localObject1).setGravity(17);
           if (7 == j)
           {
-            k = ((Resources)localObject2).getDimensionPixelSize(2131298635);
+            k = ((Resources)localObject2).getDimensionPixelSize(2131299352);
             ((TextView)localObject1).setTextSize(0, k);
             ((TextView)localObject1).setText("+");
             ((TextView)localObject1).setPadding(n, 0, n, 0);
@@ -188,7 +188,7 @@ public class VasProfileTagLabelComponent
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 1004)
     {
-      paramIntent = ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.mApp.getCurrentAccountUin());
+      paramIntent = ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.mApp.getCurrentAccountUin());
       if (paramIntent != null)
       {
         ((ProfileCardInfo)this.mData).card = paramIntent;
@@ -230,7 +230,7 @@ public class VasProfileTagLabelComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.taglabel.VasProfileTagLabelComponent
  * JD-Core Version:    0.7.0.1
  */

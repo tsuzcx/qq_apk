@@ -11,7 +11,7 @@ class FavEmosmViewPage$5
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.a.a);
+    DialogUtil.a(this.a.s);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -22,7 +22,7 @@ class FavEmosmViewPage$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavEmosmViewPage.5
  * JD-Core Version:    0.7.0.1
  */

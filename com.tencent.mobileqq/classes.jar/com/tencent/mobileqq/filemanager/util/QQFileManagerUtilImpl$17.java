@@ -24,14 +24,14 @@ final class QQFileManagerUtilImpl$17
     {
       Object localObject1 = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
-      BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int, (BitmapFactory.Options)localObject1);
+      BitmapFactory.decodeResource(this.a.getResources(), this.b, (BitmapFactory.Options)localObject1);
       ((BitmapFactory.Options)localObject1).inSampleSize = 1;
       ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
-      Object localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int, (BitmapFactory.Options)localObject1);
+      Object localObject2 = BitmapFactory.decodeResource(this.a.getResources(), this.b, (BitmapFactory.Options)localObject1);
       if (localObject2 == null) {
         return;
       }
-      int i = DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext);
+      int i = DisplayUtils.a(this.a);
       localObject1 = localObject2;
       if (((Bitmap)localObject2).getWidth() != i) {
         if (!MobileIssueSettings.c) {
@@ -44,13 +44,13 @@ final class QQFileManagerUtilImpl$17
       {
         localObject2 = new Intent("android.intent.action.MAIN");
         ((Intent)localObject2).addCategory("android.intent.category.LAUNCHER");
-        ((Intent)localObject2).putExtra(this.jdField_a_of_type_JavaLangString, true);
-        ((Intent)localObject2).setClassName(this.jdField_a_of_type_AndroidContentContext, ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getJumpActivityName());
+        ((Intent)localObject2).putExtra(this.c, true);
+        ((Intent)localObject2).setClassName(this.a, ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getJumpActivityName());
         ((Intent)localObject2).setFlags(337641472);
-        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).createShortcut(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (Intent)localObject2, this.b, (Bitmap)localObject1);
+        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).createShortcut(this.d, (Intent)localObject2, this.e, (Bitmap)localObject1);
         return;
       }
-      QQFileManagerUtilImpl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      QQFileManagerUtilImpl.a(this.a, this.c, this.e, this.b);
       return;
     }
     catch (Exception localException) {}
@@ -58,7 +58,7 @@ final class QQFileManagerUtilImpl$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.17
  * JD-Core Version:    0.7.0.1
  */

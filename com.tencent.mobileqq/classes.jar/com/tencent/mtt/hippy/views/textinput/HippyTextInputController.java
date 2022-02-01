@@ -110,20 +110,17 @@ public class HippyTextInputController
             if (i == 4)
             {
               for (ViewParent localViewParent = paramHippyTextInput.getParent(); (localViewParent != null) && (!(localViewParent instanceof HippyRootView)); localViewParent = localViewParent.getParent()) {}
+              boolean bool = localViewParent instanceof HippyRootView;
               i = j;
-              if (localViewParent != null)
+              if (bool)
               {
-                i = j;
-                if ((localViewParent instanceof HippyRootView))
-                {
-                  ViewGroup localViewGroup = (ViewGroup)localViewParent;
-                  i = localViewGroup.getDescendantFocusability();
-                  localViewGroup.setDescendantFocusability(393216);
-                }
+                ViewGroup localViewGroup = (ViewGroup)localViewParent;
+                i = localViewGroup.getDescendantFocusability();
+                localViewGroup.setDescendantFocusability(393216);
               }
               paramHippyTextInput.hideInputMethod();
               paramHippyTextInput.clearFocus();
-              if ((localViewParent != null) && ((localViewParent instanceof HippyRootView))) {
+              if (bool) {
                 ((ViewGroup)localViewParent).setDescendantFocusability(i);
               }
             }
@@ -156,16 +153,7 @@ public class HippyTextInputController
   
   public void dispatchFunction(HippyTextInput paramHippyTextInput, String paramString, HippyArray paramHippyArray, Promise paramPromise)
   {
-    int i;
-    if ((paramString.hashCode() == 1967798203) && (paramString.equals("getValue"))) {
-      i = 0;
-    } else {
-      i = -1;
-    }
-    if (i != 0) {
-      return;
-    }
-    if (paramPromise != null) {
+    if (("getValue".equals(paramString)) && (paramPromise != null)) {
       paramPromise.resolve(paramHippyTextInput.jsGetValue());
     }
   }
@@ -282,7 +270,7 @@ public class HippyTextInputController
     paramHippyTextInput.setTextColor(paramInt);
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="defaultValue")
+  @HippyControllerProps(defaultType="string", name="defaultValue")
   public void setDefaultValue(HippyTextInput paramHippyTextInput, String paramString)
   {
     if (!TextUtils.equals(paramHippyTextInput.getText().toString(), paramString))
@@ -387,7 +375,7 @@ public class HippyTextInputController
     }
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="keyboardType")
+  @HippyControllerProps(defaultType="string", name="keyboardType")
   public void setKeyboardType(HippyTextInput paramHippyTextInput, String paramString)
   {
     int i;
@@ -427,7 +415,7 @@ public class HippyTextInputController
     paramHippyTextInput.setOnChangeListener(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onContentSizeChange")
+  @HippyControllerProps(defaultType="boolean", name="onContentSizeChange")
   public void setOnContentSizeChange(HippyTextInput paramHippyTextInput, boolean paramBoolean)
   {
     paramHippyTextInput.setOnContentSizeChange(paramBoolean);
@@ -599,7 +587,7 @@ public class HippyTextInputController
     paramHippyTextInput.getBackground().setColorFilter(paramInteger.intValue(), PorterDuff.Mode.SRC_IN);
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="validator")
+  @HippyControllerProps(defaultType="string", name="validator")
   public void setValidator(HippyTextInput paramHippyTextInput, String paramString)
   {
     paramHippyTextInput.setValidator(paramString);
@@ -615,7 +603,7 @@ public class HippyTextInputController
     }
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="value")
+  @HippyControllerProps(defaultType="string", name="value")
   public void value(HippyTextInput paramHippyTextInput, String paramString)
   {
     int i = paramHippyTextInput.getSelectionStart();
@@ -653,7 +641,7 @@ public class HippyTextInputController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInputController
  * JD-Core Version:    0.7.0.1
  */

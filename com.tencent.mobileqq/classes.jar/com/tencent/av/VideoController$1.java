@@ -11,21 +11,21 @@ class VideoController$1
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "networkBrokenRunnable");
+      QLog.d(VideoController.a, 2, "networkBrokenRunnable");
     }
     VideoController localVideoController;
-    if ((this.this$0.a().f > 0) && (this.this$0.a().f <= 4))
+    if ((this.this$0.k().i > 0) && (this.this$0.k().i <= 4))
     {
       localVideoController = this.this$0;
-      localVideoController.a(localVideoController.a().c, 215);
+      localVideoController.a(localVideoController.k().s, 215);
       this.this$0.b(215);
       localVideoController = this.this$0;
-      localVideoController.b(localVideoController.a().c, 9);
+      localVideoController.b(localVideoController.k().s, 9);
     }
     else
     {
       localVideoController = this.this$0;
-      localVideoController.onGAudioSDKError(localVideoController.b, this.this$0.jdField_a_of_type_Long, 15, 0);
+      localVideoController.onGAudioSDKError(localVideoController.l, this.this$0.k, 15, 0);
     }
     VideoController.a(this.this$0, false);
   }

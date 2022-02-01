@@ -1,22 +1,29 @@
 package com.tencent.mobileqq.dinifly;
 
-import com.tencent.mobileqq.dinifly.value.LottieFrameInfo;
-import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
-import com.tencent.mobileqq.dinifly.value.SimpleLottieValueCallback;
-
 class DiniFlyAnimationView$3
-  extends LottieValueCallback<T>
+  implements LottieListener<Throwable>
 {
-  DiniFlyAnimationView$3(DiniFlyAnimationView paramDiniFlyAnimationView, SimpleLottieValueCallback paramSimpleLottieValueCallback) {}
+  DiniFlyAnimationView$3(DiniFlyAnimationView paramDiniFlyAnimationView) {}
   
-  public T getValue(LottieFrameInfo<T> paramLottieFrameInfo)
+  public void onResult(Throwable paramThrowable)
   {
-    return this.val$callback.getValue(paramLottieFrameInfo);
+    Object localObject;
+    if (DiniFlyAnimationView.access$000(this.this$0) != 0)
+    {
+      localObject = this.this$0;
+      ((DiniFlyAnimationView)localObject).setImageResource(DiniFlyAnimationView.access$000((DiniFlyAnimationView)localObject));
+    }
+    if (DiniFlyAnimationView.access$100(this.this$0) == null) {
+      localObject = DiniFlyAnimationView.access$200();
+    } else {
+      localObject = DiniFlyAnimationView.access$100(this.this$0);
+    }
+    ((LottieListener)localObject).onResult(paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.DiniFlyAnimationView.3
  * JD-Core Version:    0.7.0.1
  */

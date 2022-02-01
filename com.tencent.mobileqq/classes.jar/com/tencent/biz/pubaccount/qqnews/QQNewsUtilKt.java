@@ -32,7 +32,7 @@ public final class QQNewsUtilKt
 {
   public static final int a()
   {
-    AppRuntime localAppRuntime = a();
+    AppRuntime localAppRuntime = c();
     Object localObject = localAppRuntime;
     if (!(localAppRuntime instanceof QQAppInterface)) {
       localObject = null;
@@ -50,45 +50,6 @@ public final class QQNewsUtilKt
       }
     }
     return 0;
-  }
-  
-  @NotNull
-  public static final String a()
-  {
-    return "腾讯新闻";
-  }
-  
-  @Nullable
-  public static final AppRuntime a()
-  {
-    AppRuntime localAppRuntime = (AppRuntime)null;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      localAppRuntime = localBaseApplicationImpl.getRuntime();
-    }
-    return localAppRuntime;
-  }
-  
-  public static final boolean a()
-  {
-    Object localObject2 = a();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof QQAppInterface)) {
-      localObject1 = null;
-    }
-    localObject1 = (QQAppInterface)localObject1;
-    if (localObject1 != null)
-    {
-      localObject2 = ((QQAppInterface)localObject1).getMessageFacade();
-      if (localObject2 != null)
-      {
-        ((QQMessageFacade)localObject2).a("2909288299", 1008, true, true);
-        RecentUtil.b((QQAppInterface)localObject1, "2909288299", 1008);
-        ServiceAccountFolderManager.a().a((AppInterface)localObject1, "2909288299");
-        return true;
-      }
-    }
-    return false;
   }
   
   private static final boolean a(Context paramContext, OpenHippyInfo paramOpenHippyInfo)
@@ -171,10 +132,49 @@ public final class QQNewsUtilKt
   {
     return TextUtils.equals((CharSequence)"2909288299", (CharSequence)paramString);
   }
+  
+  public static final boolean b()
+  {
+    Object localObject2 = c();
+    Object localObject1 = localObject2;
+    if (!(localObject2 instanceof QQAppInterface)) {
+      localObject1 = null;
+    }
+    localObject1 = (QQAppInterface)localObject1;
+    if (localObject1 != null)
+    {
+      localObject2 = ((QQAppInterface)localObject1).getMessageFacade();
+      if (localObject2 != null)
+      {
+        ((QQMessageFacade)localObject2).a("2909288299", 1008, true, true);
+        RecentUtil.b((QQAppInterface)localObject1, "2909288299", 1008);
+        ServiceAccountFolderManager.a().c((AppInterface)localObject1, "2909288299");
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  @Nullable
+  public static final AppRuntime c()
+  {
+    AppRuntime localAppRuntime = (AppRuntime)null;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      localAppRuntime = localBaseApplicationImpl.getRuntime();
+    }
+    return localAppRuntime;
+  }
+  
+  @NotNull
+  public static final String d()
+  {
+    return "腾讯新闻";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.qqnews.QQNewsUtilKt
  * JD-Core Version:    0.7.0.1
  */

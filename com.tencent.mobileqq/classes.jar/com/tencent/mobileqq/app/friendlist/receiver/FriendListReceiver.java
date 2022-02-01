@@ -34,23 +34,23 @@ public class FriendListReceiver
     {
       LastLoginPageInfo localLastLoginPageInfo = paramGetLastLoginInfoResp.stPageInfo;
       ArrayList localArrayList = paramGetLastLoginInfoResp.vecLastLoginInfo;
-      FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      FriendsManager localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
       a(localArrayList);
       if (localLastLoginPageInfo.dwCurrentReqIndex == localLastLoginPageInfo.dwTotalReqTimes)
       {
-        ContactConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramGetLastLoginInfoResp.iRefreshIntervalMin);
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(47, true, paramFromServiceMsg);
+        ContactConfig.a(this.a.getApp().getApplicationContext(), this.a.getAccount(), paramGetLastLoginInfoResp.iRefreshIntervalMin);
+        this.b.notifyUI(47, true, paramFromServiceMsg);
         return;
       }
       if (localLastLoginPageInfo.dwCurrentReqIndex < localLastLoginPageInfo.dwTotalReqTimes)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(47, true, Boolean.valueOf(false));
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getLastLoginInfo(localLastLoginPageInfo.dwTotalReqTimes, localLastLoginPageInfo.dwCurrentReqIndex, localLastLoginPageInfo.dwCurrentReqUin);
+        this.b.notifyUI(47, true, Boolean.valueOf(false));
+        this.b.getLastLoginInfo(localLastLoginPageInfo.dwTotalReqTimes, localLastLoginPageInfo.dwCurrentReqIndex, localLastLoginPageInfo.dwCurrentReqUin);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(47, false, paramFromServiceMsg);
+      this.b.notifyUI(47, false, paramFromServiceMsg);
     }
   }
   
@@ -89,10 +89,10 @@ public class FriendListReceiver
         paramObject.append(QQAppInterface.sNextGetOnlineFriendDelay);
         QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramObject.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.saveShowPcIconIfNeccessary(paramFromServiceMsg.cShowPcIcon);
+      this.b.saveShowPcIconIfNeccessary(paramFromServiceMsg.cShowPcIcon);
       if (paramFromServiceMsg.vecFriendInfo.size() > 0)
       {
-        ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramFromServiceMsg.vecFriendInfo);
+        ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramFromServiceMsg.vecFriendInfo);
         a(13, true, null);
         return;
       }
@@ -115,8 +115,8 @@ public class FriendListReceiver
       ((StringBuilder)localObject1).append(i);
       QLog.d("FriendListHandler.BaseHandlerReceiver", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject2 = ((FriendsManager)localObject1).c();
+    Object localObject1 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject2 = ((FriendsManager)localObject1).j();
     if ((paramList != null) && (localObject2 != null))
     {
       ArrayList localArrayList = new ArrayList(((List)localObject2).size());
@@ -152,7 +152,7 @@ public class FriendListReceiver
       while (paramList.hasNext())
       {
         localObject2 = (LastLoginInfo)paramList.next();
-        Friends localFriends = ((FriendsManager)localObject1).e(String.valueOf(((LastLoginInfo)localObject2).dwFriendUin));
+        Friends localFriends = ((FriendsManager)localObject1).m(String.valueOf(((LastLoginInfo)localObject2).dwFriendUin));
         if (localFriends != null)
         {
           if (localFriends.showLoginClient != ((LastLoginInfo)localObject2).dwClient)
@@ -207,7 +207,7 @@ public class FriendListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.FriendListReceiver
  * JD-Core Version:    0.7.0.1
  */

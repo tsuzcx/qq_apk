@@ -19,15 +19,15 @@ class AssociatedAccountActivity$6
       return;
     }
     Object localObject2 = "";
-    StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131701006));
-    localStringBuilder.append(this.this$0.getString(2131719442));
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade;
+    StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131901576));
+    localStringBuilder.append(this.this$0.getString(2131917002));
+    Object localObject3 = this.a;
     Object localObject1 = localObject2;
     if (localObject3 != null)
     {
       int i = ((IMessageFacade)localObject3).getUnreadMsgsNum();
       int j = i;
-      if (this.jdField_a_of_type_ComTencentMobileqqMsgApiIConversationFacade != null)
+      if (this.b != null)
       {
         j = i;
         if (this.this$0.mSubAccountList != null)
@@ -38,7 +38,7 @@ class AssociatedAccountActivity$6
           while (((Iterator)localObject3).hasNext())
           {
             SubAccountInfo localSubAccountInfo = (SubAccountInfo)((Iterator)localObject3).next();
-            i -= this.jdField_a_of_type_ComTencentMobileqqMsgApiIConversationFacade.getUnreadCount(localSubAccountInfo.subuin, 7000);
+            i -= this.b.getUnreadCount(localSubAccountInfo.subuin, 7000);
           }
           ((ArrayList)localObject1).clear();
           j = i;
@@ -72,7 +72,7 @@ class AssociatedAccountActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.6
  * JD-Core Version:    0.7.0.1
  */

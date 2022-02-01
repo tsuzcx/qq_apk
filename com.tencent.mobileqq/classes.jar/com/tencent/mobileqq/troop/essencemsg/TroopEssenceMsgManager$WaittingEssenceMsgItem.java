@@ -6,13 +6,13 @@ import androidx.annotation.Nullable;
 
 public class TroopEssenceMsgManager$WaittingEssenceMsgItem
 {
-  public long a;
   public String a;
+  public long b;
   
   TroopEssenceMsgManager$WaittingEssenceMsgItem(TroopEssenceMsgManager paramTroopEssenceMsgManager, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString;
+    this.b = paramLong;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -26,13 +26,13 @@ public class TroopEssenceMsgManager$WaittingEssenceMsgItem
     {
       paramObject = (WaittingEssenceMsgItem)paramObject;
       bool1 = bool2;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.a))
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString))
+        if (this.a.equals(paramObject.a))
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+          if (this.b == paramObject.b) {
             bool1 = true;
           }
         }
@@ -43,14 +43,14 @@ public class TroopEssenceMsgManager$WaittingEssenceMsgItem
   
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     int i;
     if (str == null) {
       i = 0;
     } else {
       i = str.hashCode();
     }
-    return i + (int)this.jdField_a_of_type_Long;
+    return i + (int)this.b;
   }
   
   @NonNull
@@ -58,15 +58,15 @@ public class TroopEssenceMsgManager$WaittingEssenceMsgItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("troopUin = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", uniSeq = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.WaittingEssenceMsgItem
  * JD-Core Version:    0.7.0.1
  */

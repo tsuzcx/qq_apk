@@ -2,7 +2,6 @@ package com.tencent.mobileqq.kandian.biz.fastweb.api.impl;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity;
 import com.tencent.mobileqq.kandian.biz.fastweb.api.IFastWebActivityUtils;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -16,17 +15,12 @@ public final class FastWebActivityUtilsImpl
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
-    if ((paramContext instanceof FastWebActivity))
-    {
-      ((FastWebActivity)paramContext).a(paramIntent);
-      return;
-    }
-    paramContext.startActivity(paramIntent);
+    this.$$delegate_0.openNewPage(paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.api.impl.FastWebActivityUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -44,8 +44,6 @@ public class DiscussMsgUpdateCallback
     }
   }
   
-  public void a(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
-  
   public boolean a(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     return false;
@@ -53,12 +51,14 @@ public class DiscussMsgUpdateCallback
   
   public void b(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
   
-  public boolean b(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  
+  public boolean d(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     return false;
   }
   
-  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  public void e(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     if (((paramChatMessage instanceof MessageForText)) && (paramChatMessage.istroop == 3000) && (paramChatMessage.extraflag == 0)) {
       a(paramAIOContext.a(), (MessageForText)paramChatMessage);
@@ -67,7 +67,7 @@ public class DiscussMsgUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.DiscussMsgUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -30,6 +30,7 @@ import com.tencent.av.opengl.ui.GLRootView;
 import com.tencent.av.opengl.ui.GLViewGroup;
 import com.tencent.av.ui.funchat.magicface.MagicfaceViewProxy;
 import com.tencent.av.utils.AudioHelper;
+import com.tencent.av.utils.GLTextureCopy;
 import com.tencent.av.utils.UITools;
 import com.tencent.av.wtogether.gles.WatchTogetherVideoBgRender;
 import com.tencent.av.wtogether.gles.WatchTogetherVideoRenderHelper;
@@ -46,67 +47,58 @@ import mqq.os.MqqHandler;
 
 public class VideoLayerUIBase
   extends GLViewGroup
+  implements GLVideoView.Avatar2DListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  protected Context a;
-  protected Display a;
-  protected View a;
-  protected ImageView a;
-  protected VideoController a;
-  public VideoAppInterface a;
-  protected BitmapTexture a;
-  protected GLVideoView a;
-  private QavVideoRecordUICtrl jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl = null;
-  protected ScreenLayout a;
-  protected VideoLayerUIBase.MyDataObserver a;
-  MagicfaceViewProxy jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewProxy = null;
-  protected WatchTogetherVideoBgRender a;
-  protected WatchTogetherVideoRenderHelper a;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  protected Runnable a;
-  final String jdField_a_of_type_JavaLangString;
-  private float[] jdField_a_of_type_ArrayOfFloat = null;
-  public GLVideoView[] a;
-  long jdField_b_of_type_Long = 0L;
-  protected GLRootView b;
-  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  protected Runnable b;
-  private boolean c = false;
-  private Rect d;
-  protected boolean d;
-  protected boolean e = false;
-  private boolean f = false;
-  private boolean g = false;
-  private int k = 0;
-  protected int q = 0;
-  protected int r = 0;
-  protected int s = 0;
-  public int t = -1;
-  protected int u = 0;
-  protected int v = 0;
-  protected int w = 2;
-  protected int x = 0;
+  private boolean I = false;
+  private RenderBuffer J;
+  private GLTextureCopy K;
+  private TextureRender L;
+  private boolean M = false;
+  private float[] N = null;
+  private long O = 0L;
+  private int P = 0;
+  private Rect Q = new Rect();
+  private boolean R = false;
+  final String U;
+  protected boolean V = false;
+  protected boolean W = false;
+  protected Context X = null;
+  public VideoAppInterface Y = null;
+  protected VideoController Z = null;
+  protected View aa = null;
+  protected int ab = 0;
+  protected int ac = 0;
+  protected GLRootView ad = null;
+  public GLVideoView[] ae = null;
+  protected GLVideoView af;
+  protected int ag = 0;
+  public int ah = -1;
+  protected ImageView ai = null;
+  protected ScreenLayout aj;
+  protected VideoLayerUIBase.MyDataObserver ak;
+  protected QavVideoRecordUICtrl al = null;
+  protected WatchTogetherVideoRenderHelper am;
+  protected WatchTogetherVideoBgRender an;
+  protected BitmapTexture ao;
+  protected Runnable ap = new VideoLayerUIBase.1(this);
+  protected Runnable aq = new VideoLayerUIBase.2(this);
+  protected int ar = 0;
+  protected int as = 0;
+  protected int at = 2;
+  protected int au = 0;
+  protected Display av;
+  long aw = 0L;
+  MagicfaceViewProxy ax = null;
   
   public VideoLayerUIBase(VideoAppInterface paramVideoAppInterface, Context paramContext, View paramView)
   {
     super(paramContext);
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView = null;
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_d_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_JavaLangRunnable = new VideoLayerUIBase.1(this);
-    this.jdField_b_of_type_JavaLangRunnable = new VideoLayerUIBase.2(this);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(getClass().getSimpleName());
     ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(AudioHelper.b());
-    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-    localObject = this.jdField_a_of_type_JavaLangString;
+    ((StringBuilder)localObject).append(AudioHelper.c());
+    this.U = ((StringBuilder)localObject).toString();
+    localObject = this.U;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onCreate:");
     localStringBuilder.append(this);
@@ -115,28 +107,14 @@ public class VideoLayerUIBase
     localStringBuilder.append(", rootView:");
     localStringBuilder.append(paramView);
     QLog.d((String)localObject, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363122));
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase$MyDataObserver = new VideoLayerUIBase.MyDataObserver(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase$MyDataObserver);
-  }
-  
-  public static boolean a(SessionInfo paramSessionInfo)
-  {
-    int i = paramSessionInfo.d;
-    boolean bool = true;
-    if (i != 1)
-    {
-      if (paramSessionInfo.d == 2) {
-        return true;
-      }
-      bool = false;
-    }
-    return bool;
+    this.Y = paramVideoAppInterface;
+    this.Z = this.Y.b();
+    this.X = paramContext;
+    this.aa = paramView;
+    this.av = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    this.ai = ((ImageView)this.aa.findViewById(2131428975));
+    this.ak = new VideoLayerUIBase.MyDataObserver(this);
+    this.Y.a(this.ak);
   }
   
   private void b(Observable paramObservable, Object paramObject)
@@ -149,26 +127,26 @@ public class VideoLayerUIBase
       a(paramObservable, paramObject);
       return;
     case 6102: 
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3))
+      if (this.Y.d(3))
       {
-        x();
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewProxy.a((ViewGroup)this.jdField_a_of_type_AndroidViewView);
+        ae();
+        this.ax.a((ViewGroup)this.aa);
         return;
       }
       break;
     case 6101: 
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3))
+      if (this.Y.d(3))
       {
-        x();
+        ae();
         paramObservable = (String)arrayOfObject[1];
         paramObject = (Boolean)arrayOfObject[2];
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewProxy.a((ViewGroup)this.jdField_a_of_type_AndroidViewView, paramObservable, paramObject.booleanValue());
+        this.ax.a((ViewGroup)this.aa, paramObservable, paramObject.booleanValue());
         return;
       }
       break;
     case 6100: 
       paramObservable = (ControlUIObserver.RequestPlayMagicFace)ControlUIObserver.a(arrayOfObject);
-      paramObject = (FaceItem)((EffectFaceManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)).a(paramObservable.c);
+      paramObject = (FaceItem)((EffectFaceManager)this.Y.c(3)).b(paramObservable.b);
       int i = j;
       if (paramObject != null)
       {
@@ -177,10 +155,10 @@ public class VideoLayerUIBase
           i = 1;
         }
       }
-      if ((i()) || (i == 0))
+      if ((V()) || (i == 0))
       {
-        x();
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewProxy.a(paramObservable.a(), (ViewGroup)this.jdField_a_of_type_AndroidViewView, paramObservable);
+        ae();
+        this.ax.a(paramObservable.a(), (ViewGroup)this.aa, paramObservable);
       }
       break;
     }
@@ -188,58 +166,247 @@ public class VideoLayerUIBase
   
   public static boolean b(SessionInfo paramSessionInfo)
   {
-    return (paramSessionInfo.d == 3) || (paramSessionInfo.d == 4);
+    int i = paramSessionInfo.g;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (paramSessionInfo.g == 2) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
-  public void B_()
+  public static boolean c(SessionInfo paramSessionInfo)
   {
-    GLRootView localGLRootView = this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView;
-    if (localGLRootView != null) {
-      localGLRootView.onResume();
-    }
-    a(this.v, false);
+    return (paramSessionInfo.g == 3) || (paramSessionInfo.g == 4);
   }
   
-  protected int a(int paramInt)
+  protected void A()
   {
-    if (this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView == null) {
-      return -1;
+    this.ad = ((GLRootView)this.aa.findViewById(2131428976));
+    this.ad.setContentPane(this);
+  }
+  
+  protected void C()
+  {
+    this.ae = new GLVideoView[MultiVideoCtrlLayerUIBase.e];
+    int j = AIOUtils.b(VideoConstants.u + VideoConstants.v, this.X.getResources());
+    int i = j;
+    if (ImmersiveUtils.isSupporImmersive() == 1) {
+      i = j + ImmersiveUtils.getStatusBarHeight(this.X);
     }
-    int i = paramInt;
+    j = i;
+    if (VideoConstants.y) {
+      j = i + 25;
+    }
+    i = 0;
     for (;;)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
+      GLVideoView[] arrayOfGLVideoView = this.ae;
+      if (i >= arrayOfGLVideoView.length) {
+        break;
+      }
+      arrayOfGLVideoView[i] = new GLVideoView(this.X, this.Y, String.format("%s_%s", new Object[] { this.U, Integer.valueOf(i) }), this.Z.ay());
+      this.ae[i].a(this.X);
+      this.ae[i].a(1);
+      this.ae[i].i(-1);
+      this.ae[i].b(2130843160, 2130843159);
+      this.ae[i].e(this.aj.e());
+      this.ae[i].a(this);
+      if (i == 0)
+      {
+        this.ae[i].c(i * 2);
+      }
+      else
+      {
+        arrayOfGLVideoView = this.ae;
+        arrayOfGLVideoView[i].c((arrayOfGLVideoView.length - i) * 2);
+      }
+      this.ae[i].j(j);
+      a(this.ae[i]);
+      i += 1;
+    }
+  }
+  
+  public void E()
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.U;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroy, mDestroyed[");
+      localStringBuilder.append(this.R);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject, 1, localStringBuilder.toString());
+    }
+    this.R = true;
+    this.Y.b(this.ak);
+    this.Y.a().removeCallbacks(this.aq);
+    this.ad.setOnTouchListener(null);
+    this.ad.setContentPane(null);
+    super.v();
+    int i = 0;
+    for (;;)
+    {
+      localObject = this.ae;
       if (i >= localObject.length) {
         break;
       }
-      localObject = localObject[i];
-      j = i;
-      if (TextUtils.isEmpty(((GLVideoView)localObject).c())) {
-        break label66;
+      localObject[i].a(1);
+      this.ae[i].n(true);
+      this.ae[i].l(false);
+      this.ae[i].h(false);
+      this.ae[i].m(true);
+      this.ae[i].a(null);
+      i += 1;
+    }
+    this.Y = null;
+    this.Z = null;
+    this.ai = null;
+    this.X = null;
+    this.aa = null;
+    this.ad = null;
+    this.ae = null;
+  }
+  
+  public void G()
+  {
+    GLRootView localGLRootView = this.ad;
+    if (localGLRootView != null) {
+      localGLRootView.onResume();
+    }
+    a(this.as, false);
+  }
+  
+  protected void O() {}
+  
+  public void S()
+  {
+    GLRootView localGLRootView = this.ad;
+    if (localGLRootView != null) {
+      localGLRootView.setVisibility(0);
+    }
+  }
+  
+  public void T()
+  {
+    GLRootView localGLRootView = this.ad;
+    if (localGLRootView != null) {
+      localGLRootView.setVisibility(8);
+    }
+  }
+  
+  String U()
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[");
+    ((StringBuilder)localObject1).append(this.U);
+    ((StringBuilder)localObject1).append("]VideoView[5]:\r\n");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    int i = 0;
+    for (;;)
+    {
+      Object localObject2 = this.ae;
+      if (i >= localObject2.length) {
+        break;
       }
-      if (((GLVideoView)localObject).a() == 1)
+      localObject2 = localObject2[i];
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("---------index[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("], size[");
+      localStringBuilder.append(((GLVideoView)localObject2).g());
+      localStringBuilder.append(", ");
+      localStringBuilder.append(((GLVideoView)localObject2).h());
+      localStringBuilder.append("], ");
+      localStringBuilder.append(((GLVideoView)localObject2).T());
+      localStringBuilder.append("\r\n");
+      localObject1 = localStringBuilder.toString();
+      i += 1;
+    }
+    return localObject1;
+  }
+  
+  public boolean V()
+  {
+    if (X()) {
+      return false;
+    }
+    return this.aj.e();
+  }
+  
+  public void W()
+  {
+    GLRootView localGLRootView = this.ad;
+    if (localGLRootView != null) {
+      localGLRootView.onPause();
+    }
+  }
+  
+  public boolean X()
+  {
+    return this.R;
+  }
+  
+  protected boolean Y()
+  {
+    String str = this.Y.getCurrentAccountUin();
+    Object localObject = this.ae[0];
+    boolean bool;
+    if ((((GLVideoView)localObject).b() == 0) && (str.equals(((GLVideoView)localObject).R()))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    if (QLog.isColorLevel())
+    {
+      str = this.U;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isLocalFront: ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d(str, 2, ((StringBuilder)localObject).toString());
+    }
+    b(String.format("isLocalFront, self isLocalFront[%s]", new Object[] { Boolean.valueOf(bool) }));
+    return bool;
+  }
+  
+  protected boolean Z()
+  {
+    Object localObject1 = this.Y.getCurrentAccountUin();
+    boolean bool2 = false;
+    int i = 0;
+    boolean bool1;
+    for (;;)
+    {
+      Object localObject2 = this.ae;
+      bool1 = bool2;
+      if (i >= localObject2.length) {
+        break;
+      }
+      localObject2 = localObject2[i];
+      if ((((GLVideoView)localObject2).b() == 0) && (!((String)localObject1).equals(((GLVideoView)localObject2).R())))
       {
-        j = i;
-        break label66;
+        bool1 = true;
+        break;
       }
       i += 1;
     }
-    int j = -1;
-    label66:
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getUnusedView, start[");
-    ((StringBuilder)localObject).append(paramInt);
-    ((StringBuilder)localObject).append("], result_index[");
-    ((StringBuilder)localObject).append(j);
-    ((StringBuilder)localObject).append("]");
-    b(((StringBuilder)localObject).toString());
-    return j;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("isRemoteHasVideo, peer isRemoteHasVideo[");
+    ((StringBuilder)localObject1).append(bool1);
+    ((StringBuilder)localObject1).append("]");
+    b(((StringBuilder)localObject1).toString());
+    return bool1;
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int j = this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources().getDimensionPixelSize(2131299270);
-    int i = this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources().getDimensionPixelSize(2131299271);
+    int j = this.X.getApplicationContext().getResources().getDimensionPixelSize(2131300026);
+    int i = this.X.getApplicationContext().getResources().getDimensionPixelSize(2131300027);
     paramInt2 = paramInt4 - paramInt2;
     paramInt4 = 0;
     if (paramInt2 > j) {
@@ -261,7 +428,7 @@ public class VideoLayerUIBase
         paramInt3 = 2;
       }
     }
-    paramInt4 = i();
+    paramInt4 = ad();
     if (paramInt4 == 3) {
       if (paramInt1 != 1) {}
     }
@@ -366,12 +533,12 @@ public class VideoLayerUIBase
       int i = 0;
       for (;;)
       {
-        paramString1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
+        paramString1 = this.ae;
         if (i >= paramString1.length) {
           break;
         }
         paramString1 = paramString1[i];
-        if ((paramString2.equals(paramString1.c())) && (paramInt == paramString1.g()) && (paramString1.a() == 0)) {
+        if ((paramString2.equals(paramString1.R())) && (paramInt == paramString1.S()) && (paramString1.b() == 0)) {
           return i;
         }
         i += 1;
@@ -380,124 +547,70 @@ public class VideoLayerUIBase
     return -1;
   }
   
-  public long a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0L;
-    }
-    int i = 0;
-    for (;;)
-    {
-      Object localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-      if ((localObject == null) || (i >= localObject.length)) {
-        break;
-      }
-      localObject = localObject[i];
-      if ((((GLVideoView)localObject).a() == 0) && (paramString.equals(((GLVideoView)localObject).c()))) {
-        return ((GLVideoView)localObject).a();
-      }
-      i += 1;
-    }
-    return 0L;
-  }
-  
-  public GLRootView a()
-  {
-    return this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView;
-  }
-  
-  String a()
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject1).append("]VideoView[5]:\r\n");
-    localObject1 = ((StringBuilder)localObject1).toString();
-    int i = 0;
-    for (;;)
-    {
-      Object localObject2 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-      if (i >= localObject2.length) {
-        break;
-      }
-      localObject2 = localObject2[i];
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append((String)localObject1);
-      localStringBuilder.append("---------index[");
-      localStringBuilder.append(i);
-      localStringBuilder.append("], size[");
-      localStringBuilder.append(((GLVideoView)localObject2).b());
-      localStringBuilder.append(", ");
-      localStringBuilder.append(((GLVideoView)localObject2).c());
-      localStringBuilder.append("], ");
-      localStringBuilder.append(((GLVideoView)localObject2).d());
-      localStringBuilder.append("\r\n");
-      localObject1 = localStringBuilder.toString();
-      i += 1;
-    }
-    return localObject1;
-  }
-  
   public void a(int paramInt, boolean paramBoolean) {}
   
   public void a(long paramLong, GLVideoView paramGLVideoView)
   {
-    if ((paramGLVideoView != null) && (!paramGLVideoView.c())) {
-      paramGLVideoView.a(paramLong, this.jdField_a_of_type_ComTencentAvUiScreenLayout.c());
+    if ((paramGLVideoView != null) && (!paramGLVideoView.s())) {
+      paramGLVideoView.a(paramLong, this.aj.e());
     }
   }
   
   @RequiresApi(api=17)
   public void a(GLCanvas paramGLCanvas)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl;
+    Object localObject2 = this.al;
     Object localObject1 = null;
     int i;
-    if ((localObject2 != null) && (((QavVideoRecordUICtrl)localObject2).a()))
+    if ((localObject2 != null) && (((QavVideoRecordUICtrl)localObject2).c()))
     {
-      if (!this.c)
+      if (!this.I)
       {
-        this.c = true;
-        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramGLCanvas.a(), paramGLCanvas.b(), 33984);
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-        this.f = this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.b();
-        if (this.f)
+        this.I = true;
+        this.J = new RenderBuffer(paramGLCanvas.b(), paramGLCanvas.c(), 33984);
+        this.L = new TextureRender();
+        this.M = this.al.d();
+        this.K = new GLTextureCopy();
+        if (this.M)
         {
-          localObject2 = this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.a(paramGLCanvas.a(), paramGLCanvas.b(), true);
-          this.jdField_a_of_type_ArrayOfFloat = new float[16];
-          Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-          this.jdField_a_of_type_ArrayOfFloat[5] = (localObject2[1] * 1.0F / (paramGLCanvas.b() * localObject2[0] / paramGLCanvas.a()));
-          localObject2 = this.jdField_a_of_type_ArrayOfFloat;
+          localObject2 = this.al.a(paramGLCanvas.b(), paramGLCanvas.c(), true);
+          this.N = new float[16];
+          Matrix.setIdentityM(this.N, 0);
+          this.N[5] = (localObject2[1] * 1.0F / (paramGLCanvas.c() * localObject2[0] / paramGLCanvas.b()));
+          localObject2 = this.N;
           localObject2[13] = (1.0F - localObject2[5]);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.a(paramGLCanvas.a(), paramGLCanvas.b(), false);
+          this.al.a(paramGLCanvas.b(), paramGLCanvas.c(), false);
         }
       }
       a(paramGLCanvas, true);
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(0, 0, paramGLCanvas.a(), paramGLCanvas.b());
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), null, null);
-      localObject2 = this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl;
-      i = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+      GLES20.glBindFramebuffer(36161, 0);
+      GLES20.glViewport(0, 0, paramGLCanvas.b(), paramGLCanvas.c());
+      this.L.drawTexture(3553, this.J.getTexId(), null, null);
+      this.J.bind();
+      i = this.K.a(this.J.getWidth(), this.J.getHeight());
+      this.J.unbind();
+      localObject2 = this.al;
       paramGLCanvas = localObject1;
-      if (this.f) {
-        paramGLCanvas = this.jdField_a_of_type_ArrayOfFloat;
+      if (this.M) {
+        paramGLCanvas = this.N;
       }
       ((QavVideoRecordUICtrl)localObject2).a(3553, i, paramGLCanvas, null, SystemClock.elapsedRealtimeNanos());
       return;
     }
-    if (this.c)
+    if (this.I)
     {
-      this.c = false;
-      i = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-      this.jdField_a_of_type_ArrayOfFloat = null;
+      this.I = false;
+      i = this.J.getTexId();
+      this.J.destroy();
+      this.J = null;
+      this.L.release();
+      this.L = null;
+      this.N = null;
       GLES20.glDeleteTextures(1, new int[] { i }, 0);
+      this.K.a();
     }
     GLES20.glBindFramebuffer(36160, 0);
     a(paramGLCanvas, false);
@@ -506,13 +619,13 @@ public class VideoLayerUIBase
   
   protected void a(GLCanvas paramGLCanvas, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null))
+    if ((paramBoolean) && (this.J != null))
     {
-      if (!d())
+      if (!y())
       {
-        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+        this.J.bind();
         super.a(paramGLCanvas);
-        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+        this.J.unbind();
         return;
       }
       super.b(true);
@@ -525,112 +638,86 @@ public class VideoLayerUIBase
   
   public void a(QavVideoRecordUICtrl paramQavVideoRecordUICtrl)
   {
-    this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl = paramQavVideoRecordUICtrl;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    int i = a("showNick", paramString, paramInt);
-    if (i >= 0)
-    {
-      paramString = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i];
-      ScreenLayout localScreenLayout = this.jdField_a_of_type_ComTencentAvUiScreenLayout;
-      if ((localScreenLayout != null) && (localScreenLayout.a() == 3)) {
-        paramInt = 1;
-      } else {
-        paramInt = 0;
-      }
-      if ((i == 0) && (paramInt == 0))
-      {
-        if ((this.q != 0) && (this.r != 0))
-        {
-          paramString.j(false);
-          return;
-        }
-        paramString.j(true);
-        return;
-      }
-      paramString.j(true);
-    }
+    this.al = paramQavVideoRecordUICtrl;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    int i = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].d();
-    int j = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].d();
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].c(j);
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].c(i);
+    int i = this.ae[paramInt1].j();
+    int j = this.ae[paramInt2].j();
+    this.ae[paramInt1].c(j);
+    this.ae[paramInt2].c(i);
     String str2;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4)
+    if (this.Z.k().g == 4)
     {
       if (paramInt1 == 0)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(ImageView.ScaleType.CENTER_CROP);
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(ImageView.ScaleType.CENTER_INSIDE);
+        this.ae[paramInt1].a(ImageView.ScaleType.CENTER_CROP);
+        this.ae[paramInt2].a(ImageView.ScaleType.CENTER_INSIDE);
       }
       else if (paramInt2 == 0)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(ImageView.ScaleType.CENTER_INSIDE);
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(ImageView.ScaleType.CENTER_CROP);
+        this.ae[paramInt1].a(ImageView.ScaleType.CENTER_INSIDE);
+        this.ae[paramInt2].a(ImageView.ScaleType.CENTER_CROP);
       }
-      localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      str1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].c();
-      str2 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].c();
+      localObject = this.Y.getCurrentAccountUin();
+      str1 = this.ae[paramInt1].R();
+      str2 = this.ae[paramInt2].R();
       if (((String)localObject).equals(str1)) {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(ImageView.ScaleType.CENTER_CROP);
+        this.ae[paramInt1].a(ImageView.ScaleType.CENTER_CROP);
       } else if (((String)localObject).equals(str2)) {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(ImageView.ScaleType.CENTER_CROP);
+        this.ae[paramInt2].a(ImageView.ScaleType.CENTER_CROP);
       }
-      i = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].e();
-      f1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].d();
-      j = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].f();
-      bool1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].h();
-      boolean bool2 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].g();
-      int m = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].e();
-      f2 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].d();
-      int n = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].f();
-      boolean bool3 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].h();
-      boolean bool4 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].g();
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].h(bool4);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].k(m);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(f2);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].j(n);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].j(bool3);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].h(bool2);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].k(i);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(f1);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].j(j);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].j(bool1);
+      i = this.ae[paramInt1].K();
+      f1 = this.ae[paramInt1].J();
+      j = this.ae[paramInt1].L();
+      bool1 = this.ae[paramInt1].N();
+      boolean bool2 = this.ae[paramInt1].M();
+      int k = this.ae[paramInt2].K();
+      f2 = this.ae[paramInt2].J();
+      int m = this.ae[paramInt2].L();
+      boolean bool3 = this.ae[paramInt2].N();
+      boolean bool4 = this.ae[paramInt2].M();
+      this.ae[paramInt1].i(bool4);
+      this.ae[paramInt1].m(k);
+      this.ae[paramInt1].a(f2);
+      this.ae[paramInt1].l(m);
+      this.ae[paramInt1].k(bool3);
+      this.ae[paramInt2].i(bool2);
+      this.ae[paramInt2].m(i);
+      this.ae[paramInt2].a(f1);
+      this.ae[paramInt2].l(j);
+      this.ae[paramInt2].k(bool1);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
+    Object localObject = this.ae;
     String str1 = localObject[paramInt1];
     localObject[paramInt1] = localObject[paramInt2];
     localObject[paramInt2] = str1;
-    boolean bool1 = localObject[paramInt1].f();
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].g(bool1);
-    bool1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].f();
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].g(bool1);
+    boolean bool1 = localObject[paramInt1].D();
+    this.ae[paramInt1].h(bool1);
+    bool1 = this.ae[paramInt2].D();
+    this.ae[paramInt2].h(bool1);
     float f1 = UITools.a(BaseApplicationImpl.getContext(), 12.0F);
     float f2 = UITools.a(BaseApplicationImpl.getContext(), 18.0F);
     if (paramInt1 == 0) {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(f2);
+      this.ae[paramInt1].a(f2);
     } else {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(f1);
+      this.ae[paramInt1].a(f1);
     }
     if (paramInt2 == 0) {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(f2);
+      this.ae[paramInt2].a(f2);
     } else {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(f1);
+      this.ae[paramInt2].a(f1);
     }
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(0, 0, 0, 0);
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].b(0, 0, super.b(), super.c());
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].d(-15197410);
-    h();
-    localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].c();
-    str1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].c();
+    this.ae[0].a(0, 0, 0, 0);
+    this.ae[0].c(0, 0, super.g(), super.h());
+    this.ae[0].e(-15197410);
+    u();
+    localObject = this.ae[paramInt1].R();
+    str1 = this.ae[paramInt2].R();
     if (QLog.isColorLevel())
     {
-      str2 = this.jdField_a_of_type_JavaLangString;
+      str2 = this.U;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("swapGLVideoView, end, [");
       localStringBuilder.append(paramInt1);
@@ -645,7 +732,7 @@ public class VideoLayerUIBase
       localStringBuilder.append("]");
       QLog.w(str2, 1, localStringBuilder.toString(), new Throwable("who call SwapGLVideoView"));
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new VideoLayerUIBase.3(this, (String)localObject, str1));
+    this.Y.a().post(new VideoLayerUIBase.3(this, (String)localObject, str1));
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -655,13 +742,13 @@ public class VideoLayerUIBase
       int i = 0;
       for (;;)
       {
-        Object localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
+        Object localObject = this.ae;
         if (i >= localObject.length) {
           break;
         }
         localObject = localObject[i];
-        if ((paramString.equals((String)((GLVideoView)localObject).a(0))) && (((GLVideoView)localObject).a() == 0)) {
-          ((GLVideoView)localObject).g(paramBoolean);
+        if ((paramString.equals((String)((GLVideoView)localObject).d(0))) && (((GLVideoView)localObject).b() == 0)) {
+          ((GLVideoView)localObject).h(paramBoolean);
         }
         i += 1;
       }
@@ -674,7 +761,7 @@ public class VideoLayerUIBase
   {
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.U;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onLayout|left: ");
       localStringBuilder.append(paramInt1);
@@ -689,41 +776,135 @@ public class VideoLayerUIBase
     c(false);
   }
   
-  protected boolean a(int paramInt1, int paramInt2)
+  public boolean aa()
   {
+    int i = 0;
+    Object localObject;
+    boolean bool2;
+    for (boolean bool1 = true;; bool1 = bool2)
+    {
+      localObject = this.ae;
+      bool2 = bool1;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject = localObject[i];
+      bool2 = bool1;
+      if (((GLVideoView)localObject).b() == 0)
+      {
+        bool1 = ((GLVideoView)localObject).v();
+        bool2 = bool1;
+        if (!bool1)
+        {
+          str = this.U;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doGlassRemoteVideo failed !!!! i=");
+          localStringBuilder.append(i);
+          localStringBuilder.append(", getVisibility=");
+          localStringBuilder.append(((GLVideoView)localObject).b());
+          QLog.d(str, 1, localStringBuilder.toString());
+          bool2 = bool1;
+          break;
+        }
+      }
+      String str = this.U;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doGlassRemoteVideo i=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", getVisibility=");
+      localStringBuilder.append(((GLVideoView)localObject).b());
+      QLog.d(str, 1, localStringBuilder.toString());
+      i += 1;
+    }
+    if (bool2)
+    {
+      localObject = this.ai;
+      if (localObject != null)
+      {
+        ((ImageView)localObject).setVisibility(0);
+        return false;
+      }
+    }
+    else
+    {
+      QLog.d(this.U, 1, "doGlassRemoteVideo failed and cancel Glass");
+      ab();
+    }
     return false;
   }
   
-  void b(SessionInfo paramSessionInfo)
+  public boolean ab()
   {
-    if (paramSessionInfo.k == 3000)
+    int i = 0;
+    for (;;)
     {
-      if (k())
-      {
-        ReportController.b(null, "CliOper", "", "", "0X80041B3", "0X80041B3", 0, 0, "", "", "", "");
-        return;
+      localObject = this.ae;
+      if (i >= localObject.length) {
+        break;
       }
-      ReportController.b(null, "CliOper", "", "", "0X80041B2", "0X80041B2", 0, 0, "", "", "", "");
-      return;
+      localObject = localObject[i];
+      if (((GLVideoView)localObject).b() == 0) {
+        ((GLVideoView)localObject).x();
+      }
+      String str = this.U;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doCancelGlassRemoteVideo i=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", getVisibility=");
+      localStringBuilder.append(((GLVideoView)localObject).b());
+      QLog.d(str, 1, localStringBuilder.toString());
+      i += 1;
     }
-    if (paramSessionInfo.k == 1)
+    Object localObject = this.ai;
+    if (localObject != null) {
+      ((ImageView)localObject).setVisibility(8);
+    }
+    return false;
+  }
+  
+  public int ac()
+  {
+    return this.at;
+  }
+  
+  public int ad()
+  {
+    Rect localRect = super.f();
+    int i = localRect.centerX();
+    int j = localRect.centerY();
+    int k = this.ae[1].f().centerX();
+    int m = this.ae[1].f().centerY();
+    if ((k < i) && (m < j)) {
+      return 1;
+    }
+    if ((k < i) && (m > j)) {
+      return 4;
+    }
+    if ((k > i) && (m < j)) {
+      return 2;
+    }
+    if ((k > i) && (m > j)) {
+      return 3;
+    }
+    return 0;
+  }
+  
+  void ae()
+  {
+    if (this.ax == null) {
+      this.ax = new MagicfaceViewProxy(this.Y, this.X);
+    }
+  }
+  
+  public void ay_()
+  {
+    Object localObject = this.al;
+    if ((localObject != null) && (((QavVideoRecordUICtrl)localObject).c()) && (!y()))
     {
-      if (k())
-      {
-        if (paramSessionInfo.j == 10)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X8005939", "0X8005939", 0, 0, "", "", "", "");
-          return;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X80046E0", "0X80046E0", 0, 0, "", "", "", "");
-        return;
+      localObject = this.J;
+      if (localObject != null) {
+        ((RenderBuffer)localObject).bind();
       }
-      if (paramSessionInfo.j == 10)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X8005938", "0X8005938", 0, 0, "", "", "", "");
-        return;
-      }
-      ReportController.b(null, "CliOper", "", "", "0X80046DF", "0X80046DF", 0, 0, "", "", "", "");
     }
   }
   
@@ -739,9 +920,9 @@ public class VideoLayerUIBase
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
-      localStringBuilder.append(a());
+      localStringBuilder.append(U());
       localObject = localStringBuilder.toString();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, (String)localObject);
+      QLog.d(this.U, 2, (String)localObject);
     }
     if (QLog.isColorLevel())
     {
@@ -752,14 +933,54 @@ public class VideoLayerUIBase
       localObject = ((StringBuilder)localObject).toString();
       paramString = new StringBuilder();
       paramString.append((String)localObject);
-      localObject = this.jdField_a_of_type_ComTencentAvVideoController;
-      paramString.append(((VideoController)localObject).a(((VideoController)localObject).a().c));
+      localObject = this.Z;
+      paramString.append(((VideoController)localObject).a(((VideoController)localObject).k().bi));
       paramString = paramString.toString();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, paramString);
+      QLog.d(this.U, 2, paramString);
     }
   }
   
-  public boolean b(String paramString, int paramInt)
+  public long c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0L;
+    }
+    int i = 0;
+    for (;;)
+    {
+      Object localObject = this.ae;
+      if ((localObject == null) || (i >= localObject.length)) {
+        break;
+      }
+      localObject = localObject[i];
+      if ((((GLVideoView)localObject).b() == 0) && (paramString.equals(((GLVideoView)localObject).R()))) {
+        return ((GLVideoView)localObject).w();
+      }
+      i += 1;
+    }
+    return 0L;
+  }
+  
+  public void c(long paramLong, boolean paramBoolean)
+  {
+    String str = this.Y.getCurrentAccountUin();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCameraOpened_");
+    localStringBuilder.append(paramBoolean);
+    int i = a(localStringBuilder.toString(), str, 1);
+    if (i >= 0) {
+      this.ae[i].a(paramLong, paramBoolean);
+    }
+  }
+  
+  public void c(boolean paramBoolean) {}
+  
+  protected boolean c(int paramInt1, int paramInt2)
+  {
+    return false;
+  }
+  
+  public boolean c(String paramString, int paramInt)
   {
     int i = a("isBigView", paramString, paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -774,86 +995,86 @@ public class VideoLayerUIBase
     return i == 0;
   }
   
-  protected void c(int paramInt1, int paramInt2)
+  protected void d(int paramInt1, int paramInt2)
   {
-    int i = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].d();
-    int j = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].d();
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].c(j);
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].c(i);
+    int i = this.ae[paramInt1].j();
+    int j = this.ae[paramInt2].j();
+    this.ae[paramInt1].c(j);
+    this.ae[paramInt2].c(i);
     String str2;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4)
+    if (this.Z.k().g == 4)
     {
       if (paramInt1 == 0)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(ImageView.ScaleType.CENTER_CROP);
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(ImageView.ScaleType.CENTER_INSIDE);
+        this.ae[paramInt1].a(ImageView.ScaleType.CENTER_CROP);
+        this.ae[paramInt2].a(ImageView.ScaleType.CENTER_INSIDE);
       }
       else if (paramInt2 == 0)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(ImageView.ScaleType.CENTER_INSIDE);
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(ImageView.ScaleType.CENTER_CROP);
+        this.ae[paramInt1].a(ImageView.ScaleType.CENTER_INSIDE);
+        this.ae[paramInt2].a(ImageView.ScaleType.CENTER_CROP);
       }
-      localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      str1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].c();
-      str2 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].c();
+      localObject = this.Y.getCurrentAccountUin();
+      str1 = this.ae[paramInt1].R();
+      str2 = this.ae[paramInt2].R();
       if (((String)localObject).equals(str1)) {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(ImageView.ScaleType.CENTER_CROP);
+        this.ae[paramInt1].a(ImageView.ScaleType.CENTER_CROP);
       } else if (((String)localObject).equals(str2)) {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(ImageView.ScaleType.CENTER_CROP);
+        this.ae[paramInt2].a(ImageView.ScaleType.CENTER_CROP);
       }
-      i = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].e();
-      f1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].d();
-      j = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].f();
-      bool1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].h();
-      boolean bool2 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].g();
-      int m = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].e();
-      f2 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].d();
-      int n = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].f();
-      boolean bool3 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].h();
-      boolean bool4 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].g();
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].h(bool4);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].k(m);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(f2);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].j(n);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].j(bool3);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].h(bool2);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].k(i);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(f1);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].j(j);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].j(bool1);
+      i = this.ae[paramInt1].K();
+      f1 = this.ae[paramInt1].J();
+      j = this.ae[paramInt1].L();
+      bool1 = this.ae[paramInt1].N();
+      boolean bool2 = this.ae[paramInt1].M();
+      int k = this.ae[paramInt2].K();
+      f2 = this.ae[paramInt2].J();
+      int m = this.ae[paramInt2].L();
+      boolean bool3 = this.ae[paramInt2].N();
+      boolean bool4 = this.ae[paramInt2].M();
+      this.ae[paramInt1].i(bool4);
+      this.ae[paramInt1].m(k);
+      this.ae[paramInt1].a(f2);
+      this.ae[paramInt1].l(m);
+      this.ae[paramInt1].k(bool3);
+      this.ae[paramInt2].i(bool2);
+      this.ae[paramInt2].m(i);
+      this.ae[paramInt2].a(f1);
+      this.ae[paramInt2].l(j);
+      this.ae[paramInt2].k(bool1);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
+    Object localObject = this.ae;
     String str1 = localObject[paramInt1];
     localObject[paramInt1] = localObject[paramInt2];
     localObject[paramInt2] = str1;
-    boolean bool1 = localObject[paramInt1].f();
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].g(bool1);
-    bool1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].f();
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].g(bool1);
+    boolean bool1 = localObject[paramInt1].D();
+    this.ae[paramInt1].h(bool1);
+    bool1 = this.ae[paramInt2].D();
+    this.ae[paramInt2].h(bool1);
     float f1 = UITools.a(BaseApplicationImpl.getContext(), 12.0F);
     float f2 = UITools.a(BaseApplicationImpl.getContext(), 18.0F);
     if (paramInt1 == 0) {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(f2);
+      this.ae[paramInt1].a(f2);
     } else {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].a(f1);
+      this.ae[paramInt1].a(f1);
     }
     if (paramInt2 == 0) {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(f2);
+      this.ae[paramInt2].a(f2);
     } else {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].a(f1);
+      this.ae[paramInt2].a(f1);
     }
     c(false);
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 2) {
-      this.jdField_a_of_type_ComTencentAvVideoController.a().i = k();
+    if (this.Z.k().g == 2) {
+      this.Z.k().G = Y();
     }
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4) {
-      b(this.jdField_a_of_type_ComTencentAvVideoController.a());
+    if (this.Z.k().g == 4) {
+      d(this.Z.k());
     }
-    localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt1].c();
-    str1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt2].c();
+    localObject = this.ae[paramInt1].R();
+    str1 = this.ae[paramInt2].R();
     if (QLog.isColorLevel())
     {
-      str2 = this.jdField_a_of_type_JavaLangString;
+      str2 = this.U;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("switchVideo, end, [");
       localStringBuilder.append(paramInt1);
@@ -866,45 +1087,92 @@ public class VideoLayerUIBase
       localStringBuilder.append("]");
       QLog.w(str2, 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8005), localObject, str1 });
+    this.Y.a(new Object[] { Integer.valueOf(8005), localObject, str1 });
   }
   
-  public void c(long paramLong, boolean paramBoolean)
+  void d(SessionInfo paramSessionInfo)
   {
-    String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onCameraOpened_");
-    localStringBuilder.append(paramBoolean);
-    int i = a(localStringBuilder.toString(), str, 1);
-    if (i >= 0) {
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].a(paramLong, paramBoolean);
+    if (paramSessionInfo.p == 3000)
+    {
+      if (Y())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X80041B3", "0X80041B3", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80041B2", "0X80041B2", 0, 0, "", "", "", "");
+      return;
+    }
+    if (paramSessionInfo.p == 1)
+    {
+      if (Y())
+      {
+        if (paramSessionInfo.o == 10)
+        {
+          ReportController.b(null, "CliOper", "", "", "0X8005939", "0X8005939", 0, 0, "", "", "", "");
+          return;
+        }
+        ReportController.b(null, "CliOper", "", "", "0X80046E0", "0X80046E0", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramSessionInfo.o == 10)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8005938", "0X8005938", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80046DF", "0X80046DF", 0, 0, "", "", "", "");
     }
   }
   
-  public void c(boolean paramBoolean) {}
+  protected void d(GLCanvas paramGLCanvas) {}
   
-  public void d(int paramInt1, int paramInt2)
+  public void d(String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    int i = a("showNick", paramString, paramInt);
+    if (i >= 0)
+    {
+      paramString = this.ae[i];
+      ScreenLayout localScreenLayout = this.aj;
+      if ((localScreenLayout != null) && (localScreenLayout.b() == 3)) {
+        paramInt = 1;
+      } else {
+        paramInt = 0;
+      }
+      if ((i == 0) && (paramInt == 0))
+      {
+        if ((this.ab != 0) && (this.ac != 0))
+        {
+          paramString.k(false);
+          return;
+        }
+        paramString.k(true);
+        return;
+      }
+      paramString.k(true);
+    }
+  }
+  
+  public void e(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.X;
     if (localObject == null) {
       return;
     }
-    int i1 = ((Context)localObject).getResources().getDimensionPixelSize(2131299269);
-    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299266);
-    localObject = super.b();
-    int m = ((Rect)localObject).width() - i1;
-    int i = ((Rect)localObject).height() - i2;
-    int n = paramInt1 + this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b().left;
-    int j = paramInt2 + this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b().top;
-    if (n < 0)
+    int n = ((Context)localObject).getResources().getDimensionPixelSize(2131300025);
+    int i1 = this.X.getResources().getDimensionPixelSize(2131300022);
+    localObject = super.f();
+    int k = ((Rect)localObject).width() - n;
+    int i = ((Rect)localObject).height() - i1;
+    int m = paramInt1 + this.ae[1].f().left;
+    int j = paramInt2 + this.ae[1].f().top;
+    if (m < 0)
     {
       paramInt1 = 0;
     }
     else
     {
-      paramInt1 = n;
-      if (n > m) {
-        paramInt1 = m;
+      paramInt1 = m;
+      if (m > k) {
+        paramInt1 = k;
       }
     }
     if (j < 0)
@@ -918,32 +1186,23 @@ public class VideoLayerUIBase
         paramInt2 = i;
       }
     }
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b(paramInt1, paramInt2, i1 + paramInt1, i2 + paramInt2);
+    this.ae[1].c(paramInt1, paramInt2, n + paramInt1, i1 + paramInt2);
   }
-  
-  protected void d(GLCanvas paramGLCanvas) {}
-  
-  protected boolean d()
-  {
-    return false;
-  }
-  
-  protected void f() {}
   
   void f(GLCanvas paramGLCanvas)
   {
-    long l1 = this.jdField_b_of_type_Long;
+    long l1 = this.aw;
     if (l1 == 0L) {
       return;
     }
-    this.jdField_b_of_type_Long = 0L;
+    this.aw = 0L;
     if ((paramGLCanvas instanceof GLES20Canvas))
     {
-      Bitmap localBitmap = Bitmap.createBitmap(paramGLCanvas.a(), paramGLCanvas.b(), Bitmap.Config.ARGB_8888);
-      long l2 = AudioHelper.c();
-      paramGLCanvas.a(localBitmap, paramGLCanvas.a(), paramGLCanvas.b());
-      long l3 = AudioHelper.c();
-      paramGLCanvas = this.jdField_a_of_type_JavaLangString;
+      Bitmap localBitmap = Bitmap.createBitmap(paramGLCanvas.b(), paramGLCanvas.c(), Bitmap.Config.ARGB_8888);
+      long l2 = AudioHelper.d();
+      paramGLCanvas.a(localBitmap, paramGLCanvas.b(), paramGLCanvas.c());
+      long l3 = AudioHelper.d();
+      paramGLCanvas = this.U;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("tryScreenShot, screenShotFlag[");
       localStringBuilder.append(l1);
@@ -951,265 +1210,85 @@ public class VideoLayerUIBase
       localStringBuilder.append(l3 - l2);
       localStringBuilder.append("]");
       QLog.w(paramGLCanvas, 1, localStringBuilder.toString());
-      ThreadManager.getSubThreadHandler().post(new VideoLayerUIBase.MyRunnable(this.jdField_a_of_type_JavaLangString, localBitmap, l1, this));
+      ThreadManager.getSubThreadHandler().post(new VideoLayerUIBase.MyRunnable(this.U, localBitmap, l1, this));
       return;
     }
-    paramGLCanvas = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    paramGLCanvas = this.Y;
     if (paramGLCanvas != null) {
       paramGLCanvas.a(new Object[] { Integer.valueOf(20001), Long.valueOf(l1), Boolean.valueOf(false), null });
     }
   }
   
-  protected void g() {}
-  
-  public void g(int paramInt)
+  public GLRootView i()
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.a().L = paramInt;
+    return this.ad;
   }
   
-  public int h()
+  public void i(int paramInt)
   {
-    return this.w;
+    this.Z.k().bM = paramInt;
   }
   
-  protected void h(int paramInt) {}
-  
-  public void h(long paramLong)
+  public void i(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.aw = paramLong;
   }
   
-  public int i()
+  protected void j(int paramInt) {}
+  
+  protected void q() {}
+  
+  protected int r(int paramInt)
   {
-    Rect localRect = super.b();
-    int i = localRect.centerX();
-    int j = localRect.centerY();
-    int m = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b().centerX();
-    int n = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b().centerY();
-    if ((m < i) && (n < j)) {
-      return 1;
+    if (this.ae == null) {
+      return -1;
     }
-    if ((m < i) && (n > j)) {
-      return 4;
-    }
-    if ((m > i) && (n < j)) {
-      return 2;
-    }
-    if ((m > i) && (n > j)) {
-      return 3;
-    }
-    return 0;
-  }
-  
-  public boolean i()
-  {
-    if (j()) {
-      return false;
-    }
-    return this.jdField_a_of_type_ComTencentAvUiScreenLayout.c();
-  }
-  
-  public boolean j()
-  {
-    return this.g;
-  }
-  
-  protected boolean k()
-  {
-    String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0];
-    boolean bool;
-    if ((((GLVideoView)localObject).a() == 0) && (str.equals(((GLVideoView)localObject).c()))) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    if (QLog.isColorLevel())
-    {
-      str = this.jdField_a_of_type_JavaLangString;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("isLocalFront: ");
-      ((StringBuilder)localObject).append(bool);
-      QLog.d(str, 2, ((StringBuilder)localObject).toString());
-    }
-    b(String.format("isLocalFront, self isLocalFront[%s]", new Object[] { Boolean.valueOf(bool) }));
-    return bool;
-  }
-  
-  protected void l()
-  {
-    this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView = ((GLRootView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363123));
-    this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView.setContentPane(this);
-  }
-  
-  protected boolean l()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    boolean bool2 = false;
-    int i = 0;
-    boolean bool1;
+    int i = paramInt;
     for (;;)
     {
-      Object localObject2 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-      bool1 = bool2;
-      if (i >= localObject2.length) {
-        break;
-      }
-      localObject2 = localObject2[i];
-      if ((((GLVideoView)localObject2).a() == 0) && (!((String)localObject1).equals(((GLVideoView)localObject2).c())))
-      {
-        bool1 = true;
-        break;
-      }
-      i += 1;
-    }
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("isRemoteHasVideo, peer isRemoteHasVideo[");
-    ((StringBuilder)localObject1).append(bool1);
-    ((StringBuilder)localObject1).append("]");
-    b(((StringBuilder)localObject1).toString());
-    return bool1;
-  }
-  
-  public boolean m()
-  {
-    int i = 0;
-    Object localObject;
-    boolean bool2;
-    for (boolean bool1 = true;; bool1 = bool2)
-    {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-      bool2 = bool1;
+      localObject = this.ae;
       if (i >= localObject.length) {
         break;
       }
       localObject = localObject[i];
-      bool2 = bool1;
-      if (((GLVideoView)localObject).a() == 0)
-      {
-        bool1 = ((GLVideoView)localObject).d();
-        bool2 = bool1;
-        if (!bool1)
-        {
-          str = this.jdField_a_of_type_JavaLangString;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("doGlassRemoteVideo failed !!!! i=");
-          localStringBuilder.append(i);
-          localStringBuilder.append(", getVisibility=");
-          localStringBuilder.append(((GLVideoView)localObject).a());
-          QLog.d(str, 1, localStringBuilder.toString());
-          bool2 = bool1;
-          break;
-        }
+      j = i;
+      if (TextUtils.isEmpty(((GLVideoView)localObject).R())) {
+        break label66;
       }
-      String str = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doGlassRemoteVideo i=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(", getVisibility=");
-      localStringBuilder.append(((GLVideoView)localObject).a());
-      QLog.d(str, 1, localStringBuilder.toString());
+      if (((GLVideoView)localObject).b() == 1)
+      {
+        j = i;
+        break label66;
+      }
       i += 1;
     }
-    if (bool2)
-    {
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (localObject != null)
-      {
-        ((ImageView)localObject).setVisibility(0);
-        return false;
-      }
-    }
-    else
-    {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "doGlassRemoteVideo failed and cancel Glass");
-      n();
-    }
-    return false;
+    int j = -1;
+    label66:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getUnusedView, start[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], result_index[");
+    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append("]");
+    b(((StringBuilder)localObject).toString());
+    return j;
   }
   
-  protected void n()
-  {
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView = new GLVideoView[MultiVideoCtrlLayerUIBase.b];
-    int j = AIOUtils.b(115.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int i = j;
-    if (ImmersiveUtils.isSupporImmersive() != 1) {
-      i = j - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
-    }
-    j = i;
-    if (VideoConstants.c) {
-      j = i + 25;
-    }
-    i = 0;
-    for (;;)
-    {
-      GLVideoView[] arrayOfGLVideoView = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-      if (i >= arrayOfGLVideoView.length) {
-        break;
-      }
-      arrayOfGLVideoView[i] = new GLVideoView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, String.format("%s_%s", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }), this.jdField_a_of_type_ComTencentAvVideoController.g());
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].a(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].a(1);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].h(-1);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].b(2130842225, 2130842224);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].d(this.jdField_a_of_type_ComTencentAvUiScreenLayout.c());
-      if (i == 0)
-      {
-        this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].c(i * 2);
-      }
-      else
-      {
-        arrayOfGLVideoView = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-        arrayOfGLVideoView[i].c((arrayOfGLVideoView.length - i) * 2);
-      }
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].i(j);
-      a(this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i]);
-      i += 1;
-    }
-  }
+  protected void r() {}
   
-  public boolean n()
+  public void s(int paramInt)
   {
-    int i = 0;
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-      if (i >= localObject.length) {
-        break;
-      }
-      localObject = localObject[i];
-      if (((GLVideoView)localObject).a() == 0) {
-        ((GLVideoView)localObject).h();
-      }
-      String str = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doCancelGlassRemoteVideo i=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(", getVisibility=");
-      localStringBuilder.append(((GLVideoView)localObject).a());
-      QLog.d(str, 1, localStringBuilder.toString());
-      i += 1;
-    }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localObject != null) {
-      ((ImageView)localObject).setVisibility(8);
-    }
-    return false;
-  }
-  
-  public void o(int paramInt)
-  {
-    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299269);
-    int i3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299266);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299267);
-    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299268);
-    if (this.r == 0) {
+    int i1 = this.X.getResources().getDimensionPixelSize(2131300025);
+    int i2 = this.X.getResources().getDimensionPixelSize(2131300022);
+    int i = this.X.getResources().getDimensionPixelSize(2131300023);
+    int j = this.X.getResources().getDimensionPixelSize(2131300024);
+    if (this.ac == 0) {
       j = i;
     }
-    Object localObject = super.b();
-    int n = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b().left;
-    int i1 = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b().top;
-    int m = 0;
+    Object localObject = super.f();
+    int m = this.ae[1].f().left;
+    int n = this.ae[1].f().top;
+    int k = 0;
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -1219,128 +1298,37 @@ public class VideoLayerUIBase
           if (paramInt != 4)
           {
             i = 0;
-            j = m;
+            j = k;
           }
           else
           {
-            j = ((Rect)localObject).height() - j - i3;
+            j = ((Rect)localObject).height() - j - i2;
           }
         }
         else
         {
-          m = ((Rect)localObject).width();
-          j = ((Rect)localObject).height() - j - i3;
-          i = m - i - i2;
+          k = ((Rect)localObject).width();
+          j = ((Rect)localObject).height() - j - i2;
+          i = k - i - i1;
         }
       }
       else
       {
-        m = ((Rect)localObject).width();
-        j += this.q;
-        i = m - i - i2;
+        k = ((Rect)localObject).width();
+        j += this.ab;
+        i = k - i - i1;
       }
     }
     else {
-      j += this.q;
+      j += this.ab;
     }
-    localObject = new VideoLayerUIBase.MoveSmallViewAnimation(this, paramInt, n, i1, i, j, null);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post((Runnable)localObject);
+    localObject = new VideoLayerUIBase.MoveSmallViewAnimation(this, paramInt, m, n, i, j, null);
+    this.Y.a().post((Runnable)localObject);
   }
   
-  public void p()
+  protected boolean y()
   {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onDestroy, mDestroyed[");
-      localStringBuilder.append(this.g);
-      localStringBuilder.append("]");
-      QLog.w((String)localObject, 1, localStringBuilder.toString());
-    }
-    this.g = true;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUIBase$MyDataObserver);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView.setOnTouchListener(null);
-    this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView.setContentPane(null);
-    super.i();
-    int i = 0;
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-      if (i >= localObject.length) {
-        break;
-      }
-      localObject[i].a(1);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].m(true);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].k(false);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].g(false);
-      this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].l(true);
-      i += 1;
-    }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView = null;
-    this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView = null;
-  }
-  
-  public void p(int paramInt)
-  {
-    if (this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView == null) {
-      return;
-    }
-    int i = AIOUtils.b(paramInt, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramInt = i;
-    if (ImmersiveUtils.isSupporImmersive() != 1) {
-      paramInt = i - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
-    }
-    i = 0;
-    for (;;)
-    {
-      GLVideoView[] arrayOfGLVideoView = this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView;
-      if (i >= arrayOfGLVideoView.length) {
-        break;
-      }
-      arrayOfGLVideoView[i].i(paramInt);
-      i += 1;
-    }
-  }
-  
-  protected void r() {}
-  
-  public void u()
-  {
-    GLRootView localGLRootView = this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView;
-    if (localGLRootView != null) {
-      localGLRootView.setVisibility(0);
-    }
-  }
-  
-  public void v()
-  {
-    GLRootView localGLRootView = this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView;
-    if (localGLRootView != null) {
-      localGLRootView.setVisibility(8);
-    }
-  }
-  
-  public void w()
-  {
-    GLRootView localGLRootView = this.jdField_b_of_type_ComTencentAvOpenglUiGLRootView;
-    if (localGLRootView != null) {
-      localGLRootView.onPause();
-    }
-  }
-  
-  void x()
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewProxy == null) {
-      this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewProxy = new MagicfaceViewProxy(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext);
-    }
+    return false;
   }
 }
 

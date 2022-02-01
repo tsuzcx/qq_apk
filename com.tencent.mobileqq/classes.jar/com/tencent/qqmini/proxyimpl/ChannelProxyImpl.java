@@ -66,6 +66,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.IQWalletApi;
 import com.tencent.mobileqq.tianshu.data.TianShuAdPosItemData;
@@ -131,23 +132,30 @@ import org.json.JSONObject;
 public class ChannelProxyImpl
   implements ChannelProxy
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  public static ArrayList<TouchInfo> a;
-  public static volatile boolean a;
-  private static final boolean b;
-  MultiFormatReader jdField_a_of_type_ComTencentMobileqqMiniZxingMultiFormatReader;
-  private volatile FFmpeg jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg;
+  public static ArrayList<TouchInfo> a = new ArrayList();
+  public static volatile boolean b;
+  private static final String d;
+  private static final boolean e;
+  private static final boolean g;
+  MultiFormatReader c;
+  private volatile FFmpeg f;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    boolean bool = false;
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniProgramVideoContentType", "application/octet-stream; charset=utf-8");
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "useSuperPlayer", 0) == 1) {
-      bool = true;
+    boolean bool2 = false;
+    b = false;
+    d = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniProgramVideoContentType", "application/octet-stream; charset=utf-8");
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mediaUseSuperPlayer", 0) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    b = bool;
+    e = bool1;
+    boolean bool1 = bool2;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "useSuperPlayer", 0) == 1) {
+      bool1 = true;
+    }
+    g = bool1;
   }
   
   private static MiniAppCmdInterface a(AsyncResult paramAsyncResult)
@@ -265,18 +273,18 @@ public class ChannelProxyImpl
     int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
     TianShuReportData localTianShuReportData = new TianShuReportData();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(CommonDataAdapter.a().a()));
+    localStringBuilder.append(String.valueOf(CommonDataAdapter.a().c()));
     localStringBuilder.append('_');
     localStringBuilder.append(i);
     localTianShuReportData.b = localStringBuilder.toString();
-    localTianShuReportData.d = paramInt;
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.g = String.valueOf(paramAdItem.iAdId.get());
-    localTianShuReportData.n = paramString;
-    localTianShuReportData.jdField_a_of_type_Long = i;
-    localTianShuReportData.jdField_a_of_type_Int = 1;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.81";
-    localTianShuReportData.i = "";
+    localTianShuReportData.p = paramInt;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.h = String.valueOf(paramAdItem.iAdId.get());
+    localTianShuReportData.u = paramString;
+    localTianShuReportData.o = i;
+    localTianShuReportData.c = 1;
+    localTianShuReportData.f = "tianshu.81";
+    localTianShuReportData.j = "";
     return localTianShuReportData;
   }
   
@@ -301,6 +309,28 @@ public class ChannelProxyImpl
       }
     }
     return localUserSettingInfo;
+  }
+  
+  private IMediaPlayer a()
+  {
+    if (!PlayerConfig.hasInit())
+    {
+      Context localContext = AppLoaderFactory.g().getContext();
+      if (localContext != null)
+      {
+        PlayerConfig.init(localContext);
+        PlayerConfig.g().setLogger(new EmbeddedVideoLogger());
+      }
+      else
+      {
+        throw new RuntimeException("BaseApplicationImpl ctx is null");
+      }
+    }
+    if (!VideoManager.hasInit()) {
+      VideoManager.init(AppLoaderFactory.g().getContext());
+    }
+    a(AppLoaderFactory.g().getContext());
+    return new MediaPlayerImpl();
   }
   
   private String a(int paramInt)
@@ -352,7 +382,7 @@ public class ChannelProxyImpl
             str1 = ((StringBuilder)localObject).toString();
           }
           if (TextUtils.isEmpty(paramPublishMoodInfo.mFootnote)) {
-            paramPublishMoodInfo = paramActivity.getResources().getString(2131694156);
+            paramPublishMoodInfo = paramActivity.getResources().getString(2131891786);
           } else {
             paramPublishMoodInfo = paramPublishMoodInfo.mFootnote;
           }
@@ -363,7 +393,7 @@ public class ChannelProxyImpl
             ((JSONObject)localObject).put("title", paramMiniAppInfo.name);
             ((JSONObject)localObject).put("summary", paramPublishMoodInfo);
             ((JSONObject)localObject).put("jump_url", str1);
-            ((JSONObject)localObject).put("button_txt", paramActivity.getResources().getString(2131694167));
+            ((JSONObject)localObject).put("button_txt", paramActivity.getResources().getString(2131891797));
             ((JSONObject)localObject).put("recom_bottom_id", 2);
             ((JSONObject)localObject).put("action_type", 2);
             paramPublishMoodInfo = ((JSONObject)localObject).toString();
@@ -397,7 +427,7 @@ public class ChannelProxyImpl
   
   public static void a(Context paramContext)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!b)
     {
       Object localObject = new OskPlayerConfig();
       ((OskPlayerConfig)localObject).setEnableHLSCache(true);
@@ -409,7 +439,7 @@ public class ChannelProxyImpl
       if (paramContext != null) {
         try
         {
-          paramContext.addAll(Arrays.asList(jdField_a_of_type_JavaLangString.split("|")));
+          paramContext.addAll(Arrays.asList(d.split("|")));
           PlayerConfig.g().setContentTypeList(paramContext);
         }
         catch (Exception paramContext)
@@ -422,18 +452,8 @@ public class ChannelProxyImpl
       } else {
         QLog.e("ChannelProxyImpl", 1, "getContentTypeList null");
       }
-      jdField_a_of_type_Boolean = true;
+      b = true;
     }
-  }
-  
-  public void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult)
-  {
-    INTERFACE.StReportExecuteReq localStReportExecuteReq = new INTERFACE.StReportExecuteReq();
-    localStReportExecuteReq.appid.set(paramString1);
-    localStReportExecuteReq.execTime.set(paramInt);
-    localStReportExecuteReq.instrTraceId.set(paramString2);
-    localStReportExecuteReq.ruleName.set(paramString3);
-    MiniAppSSOCmdHelper.sendSSOCmdRequest("LightAppSvc.mini_app_growguard.ReportExecute", paramString1, localStReportExecuteReq, INTERFACE.StReportExecuteRsp.class, new ChannelProxyImpl.3(this, paramAsyncResult));
   }
   
   public void addGroupApp(IMiniAppContext paramIMiniAppContext, AsyncResult paramAsyncResult)
@@ -476,7 +496,7 @@ public class ChannelProxyImpl
         TroopApplicationListUtil.addMiniAppToTroopApplicationList(String.valueOf(paramIMiniAppContext.getMiniAppInfo().launchParam.entryModel.uin), (String)localObject, null, paramAsyncResult);
         return;
       }
-      QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "query_user_troop_info", new Bundle(), new ChannelProxyImpl.15(this, paramIMiniAppContext, (String)localObject, paramAsyncResult));
+      QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "query_user_troop_info", new Bundle(), new ChannelProxyImpl.16(this, paramIMiniAppContext, (String)localObject, paramAsyncResult));
       return;
       i = 0;
     }
@@ -533,84 +553,84 @@ public class ChannelProxyImpl
   public String decodeQR(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     // Byte code:
-    //   0: invokestatic 719	java/lang/System:nanoTime	()J
+    //   0: invokestatic 726	java/lang/System:nanoTime	()J
     //   3: lstore 8
     //   5: aload_0
-    //   6: getfield 721	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:jdField_a_of_type_ComTencentMobileqqMiniZxingMultiFormatReader	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
+    //   6: getfield 728	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:c	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
     //   9: ifnonnull +179 -> 188
     //   12: aload_0
-    //   13: new 723	com/tencent/mobileqq/mini/zxing/MultiFormatReader
+    //   13: new 730	com/tencent/mobileqq/mini/zxing/MultiFormatReader
     //   16: dup
-    //   17: invokespecial 724	com/tencent/mobileqq/mini/zxing/MultiFormatReader:<init>	()V
-    //   20: putfield 721	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:jdField_a_of_type_ComTencentMobileqqMiniZxingMultiFormatReader	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
-    //   23: new 726	java/util/HashMap
+    //   17: invokespecial 731	com/tencent/mobileqq/mini/zxing/MultiFormatReader:<init>	()V
+    //   20: putfield 728	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:c	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
+    //   23: new 733	java/util/HashMap
     //   26: dup
-    //   27: invokespecial 727	java/util/HashMap:<init>	()V
+    //   27: invokespecial 734	java/util/HashMap:<init>	()V
     //   30: astore 12
     //   32: aload 12
-    //   34: getstatic 733	com/tencent/mobileqq/mini/zxing/DecodeHintType:TRY_HARDER	Lcom/tencent/mobileqq/mini/zxing/DecodeHintType;
+    //   34: getstatic 740	com/tencent/mobileqq/mini/zxing/DecodeHintType:TRY_HARDER	Lcom/tencent/mobileqq/mini/zxing/DecodeHintType;
     //   37: iconst_1
-    //   38: invokestatic 738	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   41: invokeinterface 743 3 0
+    //   38: invokestatic 745	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   41: invokeinterface 750 3 0
     //   46: pop
-    //   47: new 18	java/util/ArrayList
+    //   47: new 23	java/util/ArrayList
     //   50: dup
-    //   51: invokespecial 21	java/util/ArrayList:<init>	()V
+    //   51: invokespecial 26	java/util/ArrayList:<init>	()V
     //   54: astore 13
     //   56: aload 13
-    //   58: getstatic 749	com/tencent/mobileqq/mini/zxing/BarcodeFormat:CODABAR	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   61: invokeinterface 342 2 0
+    //   58: getstatic 756	com/tencent/mobileqq/mini/zxing/BarcodeFormat:CODABAR	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   61: invokeinterface 353 2 0
     //   66: pop
     //   67: aload 13
-    //   69: getstatic 752	com/tencent/mobileqq/mini/zxing/BarcodeFormat:CODE_39	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   72: invokeinterface 342 2 0
+    //   69: getstatic 759	com/tencent/mobileqq/mini/zxing/BarcodeFormat:CODE_39	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   72: invokeinterface 353 2 0
     //   77: pop
     //   78: aload 13
-    //   80: getstatic 755	com/tencent/mobileqq/mini/zxing/BarcodeFormat:CODE_93	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   83: invokeinterface 342 2 0
+    //   80: getstatic 762	com/tencent/mobileqq/mini/zxing/BarcodeFormat:CODE_93	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   83: invokeinterface 353 2 0
     //   88: pop
     //   89: aload 13
-    //   91: getstatic 758	com/tencent/mobileqq/mini/zxing/BarcodeFormat:CODE_128	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   94: invokeinterface 342 2 0
+    //   91: getstatic 765	com/tencent/mobileqq/mini/zxing/BarcodeFormat:CODE_128	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   94: invokeinterface 353 2 0
     //   99: pop
     //   100: aload 13
-    //   102: getstatic 761	com/tencent/mobileqq/mini/zxing/BarcodeFormat:EAN_8	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   105: invokeinterface 342 2 0
+    //   102: getstatic 768	com/tencent/mobileqq/mini/zxing/BarcodeFormat:EAN_8	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   105: invokeinterface 353 2 0
     //   110: pop
     //   111: aload 13
-    //   113: getstatic 764	com/tencent/mobileqq/mini/zxing/BarcodeFormat:EAN_13	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   116: invokeinterface 342 2 0
+    //   113: getstatic 771	com/tencent/mobileqq/mini/zxing/BarcodeFormat:EAN_13	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   116: invokeinterface 353 2 0
     //   121: pop
     //   122: aload 13
-    //   124: getstatic 767	com/tencent/mobileqq/mini/zxing/BarcodeFormat:ITF	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   127: invokeinterface 342 2 0
+    //   124: getstatic 774	com/tencent/mobileqq/mini/zxing/BarcodeFormat:ITF	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   127: invokeinterface 353 2 0
     //   132: pop
     //   133: aload 13
-    //   135: getstatic 770	com/tencent/mobileqq/mini/zxing/BarcodeFormat:UPC_A	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   138: invokeinterface 342 2 0
+    //   135: getstatic 777	com/tencent/mobileqq/mini/zxing/BarcodeFormat:UPC_A	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   138: invokeinterface 353 2 0
     //   143: pop
     //   144: aload 13
-    //   146: getstatic 773	com/tencent/mobileqq/mini/zxing/BarcodeFormat:UPC_E	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   149: invokeinterface 342 2 0
+    //   146: getstatic 780	com/tencent/mobileqq/mini/zxing/BarcodeFormat:UPC_E	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   149: invokeinterface 353 2 0
     //   154: pop
     //   155: aload 13
-    //   157: getstatic 776	com/tencent/mobileqq/mini/zxing/BarcodeFormat:UPC_EAN_EXTENSION	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   160: invokeinterface 342 2 0
+    //   157: getstatic 783	com/tencent/mobileqq/mini/zxing/BarcodeFormat:UPC_EAN_EXTENSION	Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   160: invokeinterface 353 2 0
     //   165: pop
     //   166: aload 12
-    //   168: getstatic 779	com/tencent/mobileqq/mini/zxing/DecodeHintType:POSSIBLE_FORMATS	Lcom/tencent/mobileqq/mini/zxing/DecodeHintType;
+    //   168: getstatic 786	com/tencent/mobileqq/mini/zxing/DecodeHintType:POSSIBLE_FORMATS	Lcom/tencent/mobileqq/mini/zxing/DecodeHintType;
     //   171: aload 13
-    //   173: invokeinterface 743 3 0
+    //   173: invokeinterface 750 3 0
     //   178: pop
     //   179: aload_0
-    //   180: getfield 721	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:jdField_a_of_type_ComTencentMobileqqMiniZxingMultiFormatReader	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
+    //   180: getfield 728	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:c	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
     //   183: aload 12
-    //   185: invokevirtual 783	com/tencent/mobileqq/mini/zxing/MultiFormatReader:setHints	(Ljava/util/Map;)V
-    //   188: new 785	com/tencent/mobileqq/mini/zxing/BinaryBitmap
+    //   185: invokevirtual 790	com/tencent/mobileqq/mini/zxing/MultiFormatReader:setHints	(Ljava/util/Map;)V
+    //   188: new 792	com/tencent/mobileqq/mini/zxing/BinaryBitmap
     //   191: dup
-    //   192: new 787	com/tencent/mobileqq/mini/zxing/common/HybridBinarizer
+    //   192: new 794	com/tencent/mobileqq/mini/zxing/common/HybridBinarizer
     //   195: dup
-    //   196: new 789	com/tencent/mobileqq/mini/zxing/PlanarYUVLuminanceSource
+    //   196: new 796	com/tencent/mobileqq/mini/zxing/PlanarYUVLuminanceSource
     //   199: dup
     //   200: aload_1
     //   201: iload_2
@@ -620,112 +640,112 @@ public class ChannelProxyImpl
     //   207: iload_2
     //   208: iload_3
     //   209: iconst_0
-    //   210: invokespecial 792	com/tencent/mobileqq/mini/zxing/PlanarYUVLuminanceSource:<init>	([BIIIIIIZ)V
-    //   213: invokespecial 795	com/tencent/mobileqq/mini/zxing/common/HybridBinarizer:<init>	(Lcom/tencent/mobileqq/mini/zxing/LuminanceSource;)V
-    //   216: invokespecial 798	com/tencent/mobileqq/mini/zxing/BinaryBitmap:<init>	(Lcom/tencent/mobileqq/mini/zxing/Binarizer;)V
+    //   210: invokespecial 799	com/tencent/mobileqq/mini/zxing/PlanarYUVLuminanceSource:<init>	([BIIIIIIZ)V
+    //   213: invokespecial 802	com/tencent/mobileqq/mini/zxing/common/HybridBinarizer:<init>	(Lcom/tencent/mobileqq/mini/zxing/LuminanceSource;)V
+    //   216: invokespecial 805	com/tencent/mobileqq/mini/zxing/BinaryBitmap:<init>	(Lcom/tencent/mobileqq/mini/zxing/Binarizer;)V
     //   219: astore_1
-    //   220: new 162	java/lang/StringBuilder
+    //   220: new 171	java/lang/StringBuilder
     //   223: dup
-    //   224: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   224: invokespecial 172	java/lang/StringBuilder:<init>	()V
     //   227: astore 12
     //   229: aload 12
-    //   231: ldc_w 800
-    //   234: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: ldc_w 807
+    //   234: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   237: pop
     //   238: aload 12
     //   240: aload_1
-    //   241: invokevirtual 803	com/tencent/mobileqq/mini/zxing/BinaryBitmap:getWidth	()I
-    //   244: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   241: invokevirtual 810	com/tencent/mobileqq/mini/zxing/BinaryBitmap:getWidth	()I
+    //   244: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   247: pop
     //   248: aload 12
-    //   250: ldc_w 805
-    //   253: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: ldc_w 812
+    //   253: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   256: pop
     //   257: aload 12
     //   259: aload_1
-    //   260: invokevirtual 808	com/tencent/mobileqq/mini/zxing/BinaryBitmap:getHeight	()I
-    //   263: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   260: invokevirtual 815	com/tencent/mobileqq/mini/zxing/BinaryBitmap:getHeight	()I
+    //   263: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   266: pop
-    //   267: ldc 174
+    //   267: ldc 183
     //   269: iconst_1
     //   270: aload 12
-    //   272: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: invokestatic 454	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   272: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   275: invokestatic 508	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   278: aload_0
-    //   279: getfield 721	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:jdField_a_of_type_ComTencentMobileqqMiniZxingMultiFormatReader	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
+    //   279: getfield 728	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:c	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
     //   282: aload_1
-    //   283: invokevirtual 812	com/tencent/mobileqq/mini/zxing/MultiFormatReader:decodeWithState	(Lcom/tencent/mobileqq/mini/zxing/BinaryBitmap;)Lcom/tencent/mobileqq/mini/zxing/Result;
+    //   283: invokevirtual 819	com/tencent/mobileqq/mini/zxing/MultiFormatReader:decodeWithState	(Lcom/tencent/mobileqq/mini/zxing/BinaryBitmap;)Lcom/tencent/mobileqq/mini/zxing/Result;
     //   286: astore_1
     //   287: aload_0
-    //   288: getfield 721	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:jdField_a_of_type_ComTencentMobileqqMiniZxingMultiFormatReader	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
-    //   291: invokevirtual 815	com/tencent/mobileqq/mini/zxing/MultiFormatReader:reset	()V
+    //   288: getfield 728	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:c	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
+    //   291: invokevirtual 822	com/tencent/mobileqq/mini/zxing/MultiFormatReader:reset	()V
     //   294: goto +27 -> 321
     //   297: astore_1
     //   298: goto +128 -> 426
     //   301: astore_1
-    //   302: ldc 174
+    //   302: ldc 183
     //   304: iconst_1
-    //   305: ldc_w 817
+    //   305: ldc_w 824
     //   308: aload_1
-    //   309: invokestatic 819	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   309: invokestatic 826	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   312: aload_0
-    //   313: getfield 721	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:jdField_a_of_type_ComTencentMobileqqMiniZxingMultiFormatReader	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
-    //   316: invokevirtual 815	com/tencent/mobileqq/mini/zxing/MultiFormatReader:reset	()V
+    //   313: getfield 728	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:c	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
+    //   316: invokevirtual 822	com/tencent/mobileqq/mini/zxing/MultiFormatReader:reset	()V
     //   319: aconst_null
     //   320: astore_1
     //   321: aload_1
     //   322: ifnull +102 -> 424
-    //   325: invokestatic 719	java/lang/System:nanoTime	()J
+    //   325: invokestatic 726	java/lang/System:nanoTime	()J
     //   328: lstore 10
     //   330: aload_1
-    //   331: invokevirtual 824	com/tencent/mobileqq/mini/zxing/Result:getText	()Ljava/lang/String;
+    //   331: invokevirtual 831	com/tencent/mobileqq/mini/zxing/Result:getText	()Ljava/lang/String;
     //   334: astore 12
-    //   336: new 162	java/lang/StringBuilder
+    //   336: new 171	java/lang/StringBuilder
     //   339: dup
-    //   340: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   340: invokespecial 172	java/lang/StringBuilder:<init>	()V
     //   343: astore 13
     //   345: aload 13
-    //   347: ldc_w 826
-    //   350: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: ldc_w 833
+    //   350: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   353: pop
     //   354: aload 13
-    //   356: getstatic 829	java/util/concurrent/TimeUnit:NANOSECONDS	Ljava/util/concurrent/TimeUnit;
+    //   356: getstatic 836	java/util/concurrent/TimeUnit:NANOSECONDS	Ljava/util/concurrent/TimeUnit;
     //   359: lload 10
     //   361: lload 8
     //   363: lsub
-    //   364: invokevirtual 832	java/util/concurrent/TimeUnit:toMillis	(J)J
-    //   367: invokevirtual 835	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   364: invokevirtual 839	java/util/concurrent/TimeUnit:toMillis	(J)J
+    //   367: invokevirtual 842	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   370: pop
     //   371: aload 13
-    //   373: ldc_w 837
-    //   376: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   373: ldc_w 844
+    //   376: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   379: pop
     //   380: aload 13
     //   382: aload 12
-    //   384: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   384: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   387: pop
     //   388: aload 13
-    //   390: ldc_w 839
-    //   393: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   390: ldc_w 846
+    //   393: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   396: pop
     //   397: aload 13
     //   399: aload_1
-    //   400: invokevirtual 843	com/tencent/mobileqq/mini/zxing/Result:getBarcodeFormat	()Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
-    //   403: invokevirtual 845	com/tencent/mobileqq/mini/zxing/BarcodeFormat:name	()Ljava/lang/String;
-    //   406: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   400: invokevirtual 850	com/tencent/mobileqq/mini/zxing/Result:getBarcodeFormat	()Lcom/tencent/mobileqq/mini/zxing/BarcodeFormat;
+    //   403: invokevirtual 852	com/tencent/mobileqq/mini/zxing/BarcodeFormat:name	()Ljava/lang/String;
+    //   406: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   409: pop
-    //   410: ldc 174
+    //   410: ldc 183
     //   412: aload 13
-    //   414: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   417: invokestatic 848	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   414: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   417: invokestatic 855	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
     //   420: pop
     //   421: aload 12
     //   423: areturn
     //   424: aconst_null
     //   425: areturn
     //   426: aload_0
-    //   427: getfield 721	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:jdField_a_of_type_ComTencentMobileqqMiniZxingMultiFormatReader	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
-    //   430: invokevirtual 815	com/tencent/mobileqq/mini/zxing/MultiFormatReader:reset	()V
+    //   427: getfield 728	com/tencent/qqmini/proxyimpl/ChannelProxyImpl:c	Lcom/tencent/mobileqq/mini/zxing/MultiFormatReader;
+    //   430: invokevirtual 822	com/tencent/mobileqq/mini/zxing/MultiFormatReader:reset	()V
     //   433: aload_1
     //   434: athrow
     // Local variable table:
@@ -767,10 +787,10 @@ public class ChannelProxyImpl
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg == null) {
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg = FFmpeg.getInstance(BaseApplicationImpl.getApplication());
+      if (this.f == null) {
+        this.f = FFmpeg.getInstance(BaseApplicationImpl.getApplication());
       }
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.execute(paramArrayOfString, new ChannelProxyImpl.14(this, paramICommandListenr));
+      this.f.execute(paramArrayOfString, new ChannelProxyImpl.15(this, paramICommandListenr));
       return;
     }
     catch (FFmpegCommandAlreadyRunningException paramArrayOfString)
@@ -823,11 +843,11 @@ public class ChannelProxyImpl
             if (localFileInfo != null)
             {
               JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("path", localFileInfo.c());
-              localJSONObject.put("size", localFileInfo.a());
-              localJSONObject.put("name", localFileInfo.d());
-              localJSONObject.put("type", a(localFileInfo.a()));
-              localJSONObject.put("time", localFileInfo.b());
+              localJSONObject.put("path", localFileInfo.d());
+              localJSONObject.put("size", localFileInfo.f());
+              localJSONObject.put("name", localFileInfo.e());
+              localJSONObject.put("type", a(localFileInfo.l()));
+              localJSONObject.put("time", localFileInfo.g());
               localJSONArray.put(localJSONObject);
             }
           }
@@ -855,7 +875,7 @@ public class ChannelProxyImpl
   
   public IFlutterProxy getFlutterProxy()
   {
-    return new ChannelProxyImpl.12(this);
+    return new ChannelProxyImpl.13(this);
   }
   
   public void getFormId(String paramString, AsyncResult paramAsyncResult)
@@ -890,7 +910,7 @@ public class ChannelProxyImpl
     if (new File((String)localObject).exists())
     {
       paramString = VasApngUtil.getApngDrawable((String)localObject, paramString, null, new int[] { 32 }, "-MINI-APP-", null);
-      AppBrandTask.runTaskOnUiThreadDelay(new ChannelProxyImpl.16(this, paramString), 500L);
+      AppBrandTask.runTaskOnUiThreadDelay(new ChannelProxyImpl.17(this, paramString), 500L);
       return paramString;
     }
     MiniappDownloadUtil.getInstance().download(paramString, (String)localObject, false, null, Downloader.DownloadMode.OkHttpMode, null);
@@ -946,29 +966,23 @@ public class ChannelProxyImpl
   
   public IMediaPlayer getMediaPlayer()
   {
-    if (!PlayerConfig.hasInit())
+    if (e)
     {
-      Context localContext = AppLoaderFactory.g().getContext();
-      if (localContext != null)
+      if (!QQVideoPlaySDKManager.isSDKReady())
       {
-        PlayerConfig.init(localContext);
-        PlayerConfig.g().setLogger(new EmbeddedVideoLogger());
+        QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getApplication(), new ChannelProxyImpl.11(this));
+        QLog.d("ChannelProxyImpl", 1, "superplayer not ready !");
+        return a();
       }
-      else
-      {
-        throw new RuntimeException("BaseApplicationImpl ctx is null");
-      }
+      QLog.d("ChannelProxyImpl", 1, "superplayer ready !");
+      return new MediaPlayerSuperImpl();
     }
-    if (!VideoManager.hasInit()) {
-      VideoManager.init(AppLoaderFactory.g().getContext());
-    }
-    a(AppLoaderFactory.g().getContext());
-    return new MediaPlayerImpl();
+    return a();
   }
   
   public IMediaPlayerUtil getMediaPlayerUtil()
   {
-    return new ChannelProxyImpl.11(this);
+    return new ChannelProxyImpl.12(this);
   }
   
   public void getMidasConsumeResult(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString3, String paramString4, AsyncResult paramAsyncResult)
@@ -1088,7 +1102,7 @@ public class ChannelProxyImpl
   
   public AbsVideoPlayer getVideoPlayer()
   {
-    if (b) {
+    if (g) {
       return new AbsVideoPlayerSuperImpl();
     }
     return new AbsVideoPlayerImpl();
@@ -1173,6 +1187,15 @@ public class ChannelProxyImpl
     MiniAppCmdUtil.getInstance().modifyFriendInteractiveStorage(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap, paramBoolean, paramStInteractiveTemplate, a(paramAsyncResult));
   }
   
+  public void onInitFinish()
+  {
+    if ((e) && (!QQVideoPlaySDKManager.isSDKReady()))
+    {
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getApplication(), new ChannelProxyImpl.18(this));
+      QLog.d("ChannelProxyImpl", 1, "superplayer not ready !");
+    }
+  }
+  
   public boolean openGroup(Context paramContext, String paramString, AsyncResult paramAsyncResult)
   {
     if ((paramContext instanceof Activity))
@@ -1252,6 +1275,16 @@ public class ChannelProxyImpl
     }
   }
   
+  public void reportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult)
+  {
+    INTERFACE.StReportExecuteReq localStReportExecuteReq = new INTERFACE.StReportExecuteReq();
+    localStReportExecuteReq.appid.set(paramString1);
+    localStReportExecuteReq.execTime.set(paramInt);
+    localStReportExecuteReq.instrTraceId.set(paramString2);
+    localStReportExecuteReq.ruleName.set(paramString3);
+    MiniAppSSOCmdHelper.sendSSOCmdRequest("LightAppSvc.mini_app_growguard.ReportExecute", paramString1, localStReportExecuteReq, INTERFACE.StReportExecuteRsp.class, new ChannelProxyImpl.3(this, paramAsyncResult));
+  }
+  
   public void reportShare(COMM.StCommonExt paramStCommonExt, long paramLong, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, AsyncResult paramAsyncResult)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
@@ -1304,7 +1337,7 @@ public class ChannelProxyImpl
       QLog.e("ChannelProxyImpl", 1, "setCookie: forbidToken non-null");
       return false;
     }
-    localObject = SwiftBrowserCookieMonster.c(paramString).replace(" ", "");
+    localObject = SwiftBrowserCookieMonster.d(paramString).replace(" ", "");
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if ((Build.VERSION.SDK_INT < 21) && (paramContext != null)) {
@@ -1403,7 +1436,7 @@ public class ChannelProxyImpl
   
   public void syncForceGroundAndRefreshBadge(Activity paramActivity, String paramString1, String paramString2)
   {
-    ThreadManagerV2.excute(new ChannelProxyImpl.13(this, paramActivity, paramString1, paramString2), 16, null, true);
+    ThreadManagerV2.excute(new ChannelProxyImpl.14(this, paramActivity, paramString1, paramString2), 16, null, true);
   }
   
   public boolean tianshuReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
@@ -1415,9 +1448,9 @@ public class ChannelProxyImpl
   public boolean tianshuRequestAdv(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, AsyncResult paramAsyncResult)
   {
     paramContext = new TianShuAdPosItemData();
-    paramContext.jdField_a_of_type_Int = paramInt2;
+    paramContext.a = paramInt2;
     paramContext.b = paramInt3;
-    paramContext.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramContext.c = new HashMap();
     JSONObject localJSONObject = new JSONObject();
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put(paramString);
@@ -1427,7 +1460,7 @@ public class ChannelProxyImpl
     {
       localJSONObject.put("Appid", localJSONArray);
       localJSONObject.put("Refer", paramString);
-      paramContext.jdField_a_of_type_JavaUtilHashMap.put("FilterInfo", localJSONObject.toString());
+      paramContext.c.put("FilterInfo", localJSONObject.toString());
     }
     catch (JSONException paramString)
     {
@@ -1471,7 +1504,7 @@ public class ChannelProxyImpl
   
   public void updateTouchInfoList(ArrayList<TouchInfo> paramArrayList)
   {
-    jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    a = paramArrayList;
   }
   
   public void updateUserSetting(String paramString, INTERFACE.StUserSettingInfo paramStUserSettingInfo, AsyncResult paramAsyncResult)
@@ -1522,7 +1555,7 @@ public class ChannelProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl
  * JD-Core Version:    0.7.0.1
  */

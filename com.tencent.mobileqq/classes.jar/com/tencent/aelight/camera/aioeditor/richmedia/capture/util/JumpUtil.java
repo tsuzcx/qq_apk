@@ -36,6 +36,7 @@ import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 import com.tencent.mobileqq.editor.params.EditTakeVideoSource;
 import com.tencent.mobileqq.editor.params.EditVideoParams;
 import com.tencent.mobileqq.editor.params.EditVideoParams.EditSource;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmediabrowser.ParamsManager;
 import com.tencent.qphone.base.util.QLog;
@@ -101,10 +102,10 @@ public class JumpUtil
   {
     paramLocalMediaInfo = new EditVideoParams(paramInt2, paramInt1, paramEditSource, paramBundle);
     if (paramCaptureVideoParams != null) {
-      paramLocalMediaInfo.b = paramCaptureVideoParams.jdField_a_of_type_Int;
+      paramLocalMediaInfo.b = paramCaptureVideoParams.c;
     }
-    paramLocalMediaInfo.f = paramActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-    paramLocalMediaInfo.a.putBoolean("enable_hw_encode", true);
+    paramLocalMediaInfo.h = paramActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
+    paramLocalMediaInfo.d.putBoolean("enable_hw_encode", true);
     if (QLog.isColorLevel())
     {
       paramCaptureVideoParams = new StringBuilder();
@@ -114,7 +115,7 @@ public class JumpUtil
     }
     long l = paramActivity.getIntent().getLongExtra("troop_uin", 0L);
     if (l != 0L) {
-      paramLocalMediaInfo.a.putLong("troop_uin", l);
+      paramLocalMediaInfo.d.putLong("troop_uin", l);
     }
     return paramLocalMediaInfo;
   }
@@ -167,7 +168,7 @@ public class JumpUtil
       localIntent.addFlags(268435456);
       QLog.e("QzoneSlideShowPreparingFragment", 2, "jumpToSlideShowEditVideoActivityForQzone start!");
       PublicFragmentActivityForPeak.b(paramActivity.getApplicationContext(), localIntent, QzoneSlideShowPreparingFragment.class);
-      paramActivity.overridePendingTransition(2130772011, 2130772015);
+      paramActivity.overridePendingTransition(2130772014, 2130772018);
     }
   }
   
@@ -178,46 +179,41 @@ public class JumpUtil
       if (paramCaptureEntranceParams == null) {
         return;
       }
-      Object localObject2 = paramCaptureEntranceParams.a();
-      if (localObject2 == null)
+      CapturePicParams localCapturePicParams = paramCaptureEntranceParams.c();
+      if (localCapturePicParams == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("JumpUtil", 2, "jumpToEditPicActivity picParams is null");
         }
         return;
       }
-      boolean bool = ((CapturePicParams)localObject2).a();
+      boolean bool = localCapturePicParams.f();
       int i = paramCaptureEntranceParams.c;
-      int j = ((CapturePicParams)localObject2).c();
+      int j = localCapturePicParams.e();
       int k = paramCaptureEntranceParams.b();
-      ((CapturePicParams)localObject2).a();
-      ((CapturePicParams)localObject2).b();
-      Object localObject1 = EditPicActivity.startEditPic(paramActivity, paramAEPhotoCaptureResult.filePath, true, ((CapturePicParams)localObject2).jdField_a_of_type_Boolean, true, bool, true, false, false, false, i, k, j, false, null);
-      ((Intent)localObject1).putExtra("qcamera_photo_filepath", paramAEPhotoCaptureResult.filePath);
-      ((Intent)localObject1).putExtra("qcamera_rotate", paramAEPhotoCaptureResult.orientation);
-      ((Intent)localObject1).putExtra("camera_type", 103);
-      ((Intent)localObject1).putExtra("state", paramBundle);
-      paramBundle = ((CapturePicParams)localObject2).a();
-      paramCaptureEntranceParams = (CaptureEntranceParams)localObject1;
+      localCapturePicParams.c();
+      localCapturePicParams.g();
+      Object localObject = EditPicActivity.startEditPic(paramActivity, paramAEPhotoCaptureResult.filePath, true, localCapturePicParams.a, true, bool, true, false, false, false, i, k, j, false, null);
+      ((Intent)localObject).putExtra("qcamera_photo_filepath", paramAEPhotoCaptureResult.filePath);
+      ((Intent)localObject).putExtra("qcamera_rotate", paramAEPhotoCaptureResult.orientation);
+      ((Intent)localObject).putExtra("camera_type", 103);
+      ((Intent)localObject).putExtra("state", paramBundle);
+      paramBundle = localCapturePicParams.a();
+      paramCaptureEntranceParams = (CaptureEntranceParams)localObject;
       if (paramBundle != null)
       {
-        ((Intent)localObject1).putExtra("uin", paramBundle.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject1).putExtra("uintype", paramBundle.jdField_a_of_type_Int);
-        ((Intent)localObject1).putExtra("troop_uin", paramBundle.c);
-        ((Intent)localObject1).putExtra("uinname", paramBundle.b);
-        paramCaptureEntranceParams = AIOUtils.a((Intent)localObject1, null);
+        ((Intent)localObject).putExtra("uin", paramBundle.a);
+        ((Intent)localObject).putExtra("uintype", paramBundle.c);
+        ((Intent)localObject).putExtra("troop_uin", paramBundle.d);
+        ((Intent)localObject).putExtra("uinname", paramBundle.b);
+        paramCaptureEntranceParams = AIOUtils.a((Intent)localObject, null);
       }
       paramCaptureEntranceParams.putExtra("edit_video_way", paramInt);
-      paramCaptureEntranceParams.putExtra("qq_sub_business_id", ((CapturePicParams)localObject2).d());
-      localObject1 = SplashActivity.class.getName();
-      localObject2 = ((CapturePicParams)localObject2).a();
-      paramBundle = (Bundle)localObject1;
-      if (localObject2 != null)
-      {
-        paramBundle = (Bundle)localObject1;
-        if (((String)localObject2).equals(ChatActivity.class.getName())) {
-          paramBundle = (Bundle)localObject2;
-        }
+      paramCaptureEntranceParams.putExtra("qq_sub_business_id", localCapturePicParams.h());
+      paramBundle = SplashActivity.class.getName();
+      localObject = localCapturePicParams.b();
+      if ((ChatActivity.class.getName().equals(localObject)) || (((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getQQGuildLiveRoomActivityClassName().equals(localObject))) {
+        paramBundle = (Bundle)localObject;
       }
       NewFlowCameraReporter.a("finish");
       NewFlowCameraReporter.a(paramCaptureEntranceParams);
@@ -239,7 +235,7 @@ public class JumpUtil
       if (paramCaptureEntranceParams == null) {
         return;
       }
-      CaptureVideoParams localCaptureVideoParams = paramCaptureEntranceParams.a();
+      CaptureVideoParams localCaptureVideoParams = paramCaptureEntranceParams.d();
       if (localCaptureVideoParams == null)
       {
         if (QLog.isColorLevel()) {
@@ -253,7 +249,7 @@ public class JumpUtil
       } else {
         i = 1099;
       }
-      if ((localCaptureVideoParams.jdField_a_of_type_Boolean) && (((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isTransitionSwtichOpen())) {
+      if ((localCaptureVideoParams.a) && (((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isTransitionSwtichOpen())) {
         j = i | 0x10;
       } else {
         j = i | 0x20;
@@ -267,13 +263,13 @@ public class JumpUtil
         j = i | 0x100;
       }
       i = j;
-      if (paramCaptureEntranceParams.jdField_a_of_type_Int != 10013)
+      if (paramCaptureEntranceParams.a != 10013)
       {
         i = j;
-        if (paramCaptureEntranceParams.jdField_a_of_type_Int != 10012)
+        if (paramCaptureEntranceParams.a != 10012)
         {
           i = j;
-          if (paramCaptureEntranceParams.jdField_a_of_type_Int != 10007) {
+          if (paramCaptureEntranceParams.a != 10007) {
             i = j | 0x1000;
           }
         }
@@ -288,7 +284,7 @@ public class JumpUtil
       } else {
         localBundle = paramBundle2;
       }
-      if (paramCaptureEntranceParams.jdField_a_of_type_Int == 10012)
+      if (paramCaptureEntranceParams.a == 10012)
       {
         if ((paramLocalMediaInfo.mDuration > 20000L) || (paramLocalMediaInfo.mTotalDuration > 20000L))
         {
@@ -306,7 +302,7 @@ public class JumpUtil
           i = k & 0xFFFFFFFE;
         }
       }
-      else if (paramCaptureEntranceParams.jdField_a_of_type_Int == 10013)
+      else if (paramCaptureEntranceParams.a == 10013)
       {
         if (paramLocalMediaInfo.mDuration <= 20000L)
         {
@@ -320,10 +316,10 @@ public class JumpUtil
           i = j;
         }
       }
-      else if (paramCaptureEntranceParams.jdField_a_of_type_Int != 10000)
+      else if (paramCaptureEntranceParams.a != 10000)
       {
         i = j;
-        if (paramCaptureEntranceParams.jdField_a_of_type_Int != 10007) {}
+        if (paramCaptureEntranceParams.a != 10007) {}
       }
       else
       {
@@ -335,27 +331,27 @@ public class JumpUtil
       Object localObject = (SessionWrap)paramActivity.getIntent().getParcelableExtra("ARG_SESSION_INFO");
       if (localObject != null)
       {
-        localBundle.putString("uin", ((SessionWrap)localObject).jdField_a_of_type_JavaLangString);
-        localBundle.putInt("uintype", ((SessionWrap)localObject).jdField_a_of_type_Int);
-        localBundle.putString("troop_uin", ((SessionWrap)localObject).c);
+        localBundle.putString("uin", ((SessionWrap)localObject).a);
+        localBundle.putInt("uintype", ((SessionWrap)localObject).c);
+        localBundle.putString("troop_uin", ((SessionWrap)localObject).d);
         localBundle.putString("uinname", ((SessionWrap)localObject).b);
       }
       localObject = (SessionInfo)paramActivity.getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
       if (localObject != null) {
         localBundle.putParcelable("edit_send_session_info", (Parcelable)localObject);
       }
-      localBundle.putInt("qq_sub_business_id", localCaptureVideoParams.a());
+      localBundle.putInt("qq_sub_business_id", localCaptureVideoParams.c());
       localBundle.putInt("entrance_type", paramCaptureEntranceParams.b);
       paramBaseVideoCaptureResult = new EditTakeVideoSource(paramBaseVideoCaptureResult.videoMp4FilePath, paramBaseVideoCaptureResult.audioDataFilePath, paramLocalMediaInfo);
       j = paramCaptureEntranceParams.c;
-      int k = localCaptureVideoParams.b();
-      VideoEditReport.b(k);
+      int k = localCaptureVideoParams.d();
+      VideoEditReport.c(k);
       paramLocalMediaInfo = a(paramActivity, paramLocalMediaInfo, localCaptureVideoParams, i, localBundle, paramBaseVideoCaptureResult, j);
       if ((paramBundle2 != null) && (paramBundle2.getBoolean("from_qzone_slideshow")))
       {
         paramBaseVideoCaptureResult = new Intent(paramActivity, QzoneEditVideoActivity.class);
-        paramBaseVideoCaptureResult.putExtra("qqstory_slide_show_scene", SlideShowPhotoListManager.a().b());
-        paramBaseVideoCaptureResult.putExtra("qqstory_slide_show_entrance", SlideShowPhotoListManager.a().a());
+        paramBaseVideoCaptureResult.putExtra("qqstory_slide_show_scene", SlideShowPhotoListManager.a().e());
+        paramBaseVideoCaptureResult.putExtra("qqstory_slide_show_entrance", SlideShowPhotoListManager.a().d());
       }
       else
       {
@@ -364,9 +360,9 @@ public class JumpUtil
       StoryIntentUtils.a(paramBaseVideoCaptureResult, paramActivity.getIntent().getExtras(), paramActivity);
       paramBaseVideoCaptureResult.putExtra("short_video_entrance_type", k);
       paramBaseVideoCaptureResult.putExtra(EditVideoParams.class.getName(), paramLocalMediaInfo);
-      if (paramCaptureEntranceParams.jdField_a_of_type_Int == 10012) {
+      if (paramCaptureEntranceParams.a == 10012) {
         paramBaseVideoCaptureResult.putExtra("op_department", "grp_tribe");
-      } else if (paramCaptureEntranceParams.jdField_a_of_type_Int == 10013) {
+      } else if (paramCaptureEntranceParams.a == 10013) {
         paramBaseVideoCaptureResult.putExtra("op_department", "grp_readinjoy");
       } else {
         paramBaseVideoCaptureResult.putExtra("op_department", "grp_qq");
@@ -382,7 +378,7 @@ public class JumpUtil
         ((QzoneEditVideoActivity)paramActivity).a(paramBaseVideoCaptureResult);
         return;
       }
-      paramActivity.startActivityForResult(paramBaseVideoCaptureResult, paramCaptureEntranceParams.jdField_a_of_type_Int);
+      paramActivity.startActivityForResult(paramBaseVideoCaptureResult, paramCaptureEntranceParams.a);
       paramActivity.overridePendingTransition(0, 0);
     }
   }
@@ -390,7 +386,7 @@ public class JumpUtil
   public static void a(Activity paramActivity, String paramString)
   {
     Intent localIntent = new Intent();
-    int i = ParamsManager.a().a();
+    int i = ParamsManager.a().i();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("mqqapi://videostory/takevideo?from=aioChats&widgetinfo=");
     ((StringBuilder)localObject).append(paramString);
@@ -431,7 +427,7 @@ public class JumpUtil
       paramICameraEntrance.putExtra("extra_from_share", true);
       paramICameraEntrance.setFlags(335544320);
       paramActivity.startActivity(paramICameraEntrance);
-      paramActivity.overridePendingTransition(2130771995, 2130771997);
+      paramActivity.overridePendingTransition(2130771998, 2130772000);
       return;
     }
     paramICameraEntrance.putExtra("main_tab_id", 1);
@@ -454,7 +450,7 @@ public class JumpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.capture.util.JumpUtil
  * JD-Core Version:    0.7.0.1
  */

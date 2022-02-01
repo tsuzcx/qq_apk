@@ -22,8 +22,8 @@ class ContactSearchFacade$1
   {
     int k = 0;
     int j = 0;
-    if ((paramArrayList != null) && (ContactSearchFacade.a(this.a) != 80000005) && (paramArrayList.size() == 1)) {
-      ContactSearchFacade.a(this.a, ((SearchResult)paramArrayList.get(0)).jdField_b_of_type_Int);
+    if ((paramArrayList != null) && (ContactSearchFacade.c(this.a) != 80000005) && (paramArrayList.size() == 1)) {
+      ContactSearchFacade.a(this.a, ((SearchResult)paramArrayList.get(0)).b);
     }
     if ((paramArrayList != null) && (paramArrayList.size() >= 1))
     {
@@ -37,26 +37,26 @@ class ContactSearchFacade$1
         paramArrayList = (SearchResult)((Iterator)localObject).next();
       } while (paramArrayList.a != 80000003);
       int i = j;
-      while (i < paramArrayList.jdField_b_of_type_JavaUtilList.size())
+      while (i < paramArrayList.e.size())
       {
-        localObject = ((AccountSearchPb.record)paramArrayList.jdField_b_of_type_JavaUtilList.get(i)).number;
+        localObject = ((AccountSearchPb.record)paramArrayList.e.get(i)).number;
         i += 1;
         ((PBUInt32Field)localObject).set(i);
       }
       i = 1;
       if (i != 0)
       {
-        if (ContactSearchFacade.a(this.a) != 80000005)
+        if (ContactSearchFacade.c(this.a) != 80000005)
         {
           paramArrayList = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-          localObject = ContactSearchFacade.a(this.a);
+          localObject = ContactSearchFacade.d(this.a);
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(ContactSearchFacade.b(this.a));
+          localStringBuilder.append(ContactSearchFacade.e(this.a));
           localStringBuilder.append("");
-          paramArrayList.publicAccountReportClickEventForMigrate((AppInterface)localObject, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, localStringBuilder.toString(), "", this.a.b, "", false);
+          paramArrayList.publicAccountReportClickEventForMigrate((AppInterface)localObject, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, localStringBuilder.toString(), "", this.a.c, "", false);
           return;
         }
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(ContactSearchFacade.a(this.a), "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D94", "0X8005D94", 0, 0, "", "", this.a.b, "", false);
+        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(ContactSearchFacade.d(this.a), "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D94", "0X8005D94", 0, 0, "", "", this.a.c, "", false);
       }
     }
   }
@@ -96,8 +96,8 @@ class ContactSearchFacade$1
         this.a.b();
         if (!paramBoolean2)
         {
-          if (ContactSearchFacade.a(this.a) != null) {
-            ContactSearchFacade.a(this.a).a(ContactSearchFacade.a(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString, paramInt3, paramList);
+          if (ContactSearchFacade.b(this.a) != null) {
+            ContactSearchFacade.b(this.a).a(ContactSearchFacade.c(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString, paramInt3, paramList);
           }
           return;
         }
@@ -112,8 +112,8 @@ class ContactSearchFacade$1
             if (QLog.isColorLevel()) {
               QLog.e(ContactSearchFacade.a, 2, "", paramObject);
             }
-            if (ContactSearchFacade.a(this.a) != null) {
-              ContactSearchFacade.a(this.a).a(ContactSearchFacade.a(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString, paramInt3, paramList);
+            if (ContactSearchFacade.b(this.a) != null) {
+              ContactSearchFacade.b(this.a).a(ContactSearchFacade.c(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString, paramInt3, paramList);
             }
             return;
           }
@@ -134,11 +134,11 @@ class ContactSearchFacade$1
         paramInt1 = j;
       }
     }
-    if (ContactSearchFacade.a(this.a) != null)
+    if (ContactSearchFacade.b(this.a) != null)
     {
-      localObject = ContactSearchFacade.a(this.a);
+      localObject = ContactSearchFacade.b(this.a);
       if (paramInt1 == 0) {
-        i = ContactSearchFacade.a(this.a);
+        i = ContactSearchFacade.c(this.a);
       }
       ((ContactSearchFacade.ISearchListener)localObject).a(i, paramBoolean1, paramObject, paramInt2, paramString, paramInt3, paramList);
     }
@@ -146,7 +146,7 @@ class ContactSearchFacade$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.1
  * JD-Core Version:    0.7.0.1
  */

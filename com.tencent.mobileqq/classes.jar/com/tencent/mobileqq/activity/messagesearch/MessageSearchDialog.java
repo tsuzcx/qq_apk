@@ -20,84 +20,84 @@ import java.util.List;
 public class MessageSearchDialog
   extends BaseMessageSearchDialog
 {
-  protected static final String a = "MessageSearchDialog";
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new MessageSearchDialog.4(this);
-  protected TextView a;
-  MessageResultAdapter jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter;
-  SearchHistoryAdapter jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter;
-  boolean b = true;
+  protected static final String m = "MessageSearchDialog";
+  MessageResultAdapter n;
+  SearchHistoryAdapter o;
+  protected TextView p;
+  boolean q = true;
+  private View.OnClickListener r = new MessageSearchDialog.4(this);
   
   public MessageSearchDialog(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     super(paramContext, paramQQAppInterface, paramSessionInfo);
-    k();
-    g();
-    h();
+    m();
     i();
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366333));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(15) });
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new MessageSearchDialog.1(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    BaseMessageSearchDialog.EnterForSearch localEnterForSearch = new BaseMessageSearchDialog.EnterForSearch(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(localEnterForSearch);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(localEnterForSearch);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.a("");
-  }
-  
-  private void h()
-  {
-    ((ImageButton)findViewById(2131368340)).setOnClickListener(new MessageSearchDialog.2(this));
+    j();
+    k();
   }
   
   private void i()
   {
-    Button localButton = (Button)findViewById(2131363868);
-    localButton.setVisibility(0);
-    localButton.setOnClickListener(new MessageSearchDialog.3(this));
+    this.d = ((EditText)findViewById(2131432634));
+    this.d.setFilters(new InputFilter[] { new InputFilter.LengthFilter(15) });
+    this.d.addTextChangedListener(new MessageSearchDialog.1(this));
+    this.d.setImeOptions(3);
+    BaseMessageSearchDialog.EnterForSearch localEnterForSearch = new BaseMessageSearchDialog.EnterForSearch(this);
+    this.d.setOnEditorActionListener(localEnterForSearch);
+    this.d.setOnKeyListener(localEnterForSearch);
+    this.d.setSelection(0);
+    this.d.requestFocus();
+    this.o.a("");
   }
   
   private void j()
   {
-    String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    ((ImageButton)findViewById(2131435215)).setOnClickListener(new MessageSearchDialog.2(this));
+  }
+  
+  private void k()
+  {
+    Button localButton = (Button)findViewById(2131429816);
+    localButton.setVisibility(0);
+    localButton.setOnClickListener(new MessageSearchDialog.3(this));
+  }
+  
+  private void l()
+  {
+    String str1 = this.d.getText().toString().trim();
     if (QLog.isColorLevel())
     {
-      String str2 = jdField_a_of_type_JavaLangString;
+      String str2 = m;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("loadMessageMore, currentKeyword = ");
       localStringBuilder.append(str1);
       QLog.i(str2, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.a(System.currentTimeMillis(), str1, 2);
+    this.n.a(System.currentTimeMillis(), str1, 2);
   }
   
-  private void k()
+  private void m()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377082));
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter = new MessageResultAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter = new SearchHistoryAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new MessageSearchDialog.5(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new MessageSearchDialog.6(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new MessageSearchDialog.7(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemLongClickListener(new MessageSearchDialog.8(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371921));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718604);
+    this.b = ((XListView)findViewById(2131445451));
+    this.n = new MessageResultAdapter(this.c, this.a, this.g, this.f);
+    this.o = new SearchHistoryAdapter(this.c, this.a, this.f);
+    this.b.setAdapter(this.o);
+    this.b.setOnScrollListener(new MessageSearchDialog.5(this));
+    this.b.setOnTouchListener(new MessageSearchDialog.6(this));
+    this.b.setOnItemClickListener(new MessageSearchDialog.7(this));
+    this.b.setOnItemLongClickListener(new MessageSearchDialog.8(this));
+    this.p = ((TextView)findViewById(2131439366));
+    this.p.setCompoundDrawables(null, null, null, null);
+    this.p.setText(2131916105);
   }
   
   protected void a()
   {
-    String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    String str1 = this.d.getText().toString().trim();
     Object localObject;
     if (QLog.isColorLevel())
     {
-      str2 = jdField_a_of_type_JavaLangString;
+      str2 = m;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("searchMessage, currentKeyword = ");
       ((StringBuilder)localObject).append(str1);
@@ -106,12 +106,12 @@ public class MessageSearchDialog
     if (str1.length() == 0) {
       return;
     }
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.a();
-    if ((this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter) && (str1.equalsIgnoreCase(str2)))
+    String str2 = this.n.b();
+    if ((this.b.getAdapter() == this.n) && (str1.equalsIgnoreCase(str2)))
     {
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = m;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("searchMessage, skip, currentKeyword = ");
         localStringBuilder.append(str1);
@@ -121,15 +121,15 @@ public class MessageSearchDialog
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.a(System.currentTimeMillis(), str1, 1);
-    a(2131690804);
+    this.n.a(System.currentTimeMillis(), str1, 1);
+    a(2131887734);
   }
   
   public void dismiss()
   {
-    ((InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(0);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
+    ((InputMethodManager)this.c.getSystemService("input_method")).hideSoftInputFromWindow(this.d.getWindowToken(), 0);
+    this.a.removeMessages(0);
+    this.a.removeMessages(1);
     try
     {
       super.dismiss();
@@ -138,16 +138,16 @@ public class MessageSearchDialog
     catch (Exception localException) {}
   }
   
-  void e()
+  void g()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.p.setVisibility(8);
+    this.b.setVisibility(0);
   }
   
-  void f()
+  void h()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+    this.p.setVisibility(0);
+    this.b.setVisibility(8);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -155,7 +155,7 @@ public class MessageSearchDialog
     int i = paramMessage.what;
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = m;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleMessage, msg.what = ");
       localStringBuilder.append(paramMessage.what);
@@ -170,48 +170,48 @@ public class MessageSearchDialog
           if (i != 3) {
             return true;
           }
-          if (this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() != this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {
-            this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter);
+          if (this.b.getAdapter() != this.o) {
+            this.b.setAdapter(this.o);
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.notifyDataSetChanged();
-          e();
+          this.o.notifyDataSetChanged();
+          g();
           return true;
         }
         b();
-        if (this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() != this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter) {
-          this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter);
+        if (this.b.getAdapter() != this.n) {
+          this.b.setAdapter(this.n);
         }
         if ((paramMessage.obj instanceof List))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.a((List)paramMessage.obj, paramMessage.arg1);
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.notifyDataSetChanged();
+          this.n.a((List)paramMessage.obj, paramMessage.arg1);
+          this.n.notifyDataSetChanged();
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getCount() == 0)
+        if (this.n.getCount() == 0)
         {
-          f();
+          h();
           return true;
         }
-        e();
+        g();
         return true;
       }
-      d();
+      e();
       return true;
     }
-    c();
+    d();
     return true;
   }
   
   public void show()
   {
     super.show();
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(0);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(0);
+    this.a.removeMessages(0);
+    this.a.removeMessages(1);
+    this.a.sendEmptyMessage(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog
  * JD-Core Version:    0.7.0.1
  */

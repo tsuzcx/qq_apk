@@ -10,12 +10,12 @@ class FriendsUtilsImpl$1
   
   protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRelationApiIFriendsUtils$FriendListObserverInterface.a(paramString, paramBoolean);
+    this.a.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relation.api.impl.FriendsUtilsImpl.1
  * JD-Core Version:    0.7.0.1
  */

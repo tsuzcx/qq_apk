@@ -20,41 +20,41 @@ public abstract class HorizontalRVBlock
     super(paramBundle);
   }
   
-  public int a()
-  {
-    return 3;
-  }
-  
   public abstract HorizontalRVBlock.CommonRvVH a(ViewGroup paramViewGroup, int paramInt);
   
   public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
   public abstract void a(HorizontalRvInnerView paramHorizontalRvInnerView);
   
-  public void a(ArrayList paramArrayList)
+  public void b(ArrayList paramArrayList)
   {
-    b().clear();
-    b().addAll(paramArrayList);
+    N().clear();
+    N().addAll(paramArrayList);
     HorizontalRvInnerView localHorizontalRvInnerView = this.a;
     if (localHorizontalRvInnerView != null) {
       localHorizontalRvInnerView.setData(paramArrayList);
     }
   }
   
-  public abstract int b();
+  public int c()
+  {
+    return 3;
+  }
   
-  protected boolean c()
+  public abstract int d();
+  
+  protected boolean e()
   {
     return false;
   }
   
   public int getItemCount()
   {
-    boolean bool = c();
+    boolean bool = e();
     int i = 1;
     if (bool)
     {
-      if (b().size() > 0) {
+      if (N().size() > 0) {
         return 1;
       }
       i = 0;
@@ -65,7 +65,7 @@ public abstract class HorizontalRVBlock
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     if ((paramViewHolder.itemView instanceof HorizontalRvInnerView)) {
-      this.a.setData(b());
+      this.a.setData(N());
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }

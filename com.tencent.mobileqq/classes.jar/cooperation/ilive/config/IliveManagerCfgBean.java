@@ -1,26 +1,23 @@
 package cooperation.ilive.config;
 
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mobileqq.litelivesdk.utils.ConfigUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.tools.DeviceInfoUtils;
 import java.util.ArrayList;
-import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class IliveManagerCfgBean
 {
-  private long jdField_a_of_type_Long;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private long jdField_b_of_type_Long;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = true;
-  private boolean c = true;
-  private boolean d = false;
-  private boolean e = false;
+  private boolean a = false;
+  private ArrayList<String> b = new ArrayList();
+  private ArrayList<Integer> c = new ArrayList();
+  private long d;
+  private boolean e = true;
+  private long f;
+  private boolean g = true;
+  private boolean h = false;
+  private boolean i = false;
   
   public static IliveManagerCfgBean a(String paramString)
   {
@@ -33,15 +30,15 @@ public class IliveManagerCfgBean
       try
       {
         paramString = new JSONObject(paramString);
-        int i = Integer.parseInt(paramString.getString("isLite"));
-        int j = 0;
-        if (i != 1) {
+        int j = Integer.parseInt(paramString.getString("isLite"));
+        int k = 0;
+        if (j != 1) {
           break label381;
         }
         bool = true;
-        localIliveManagerCfgBean.jdField_a_of_type_Boolean = bool;
+        localIliveManagerCfgBean.a = bool;
         if (paramString.has("heartTimeLong")) {
-          localIliveManagerCfgBean.jdField_a_of_type_Long = Long.parseLong(paramString.optString("heartTimeLong"));
+          localIliveManagerCfgBean.d = Long.parseLong(paramString.optString("heartTimeLong"));
         }
         if (paramString.has("heartSwitch"))
         {
@@ -49,7 +46,7 @@ public class IliveManagerCfgBean
             break label386;
           }
           bool = true;
-          localIliveManagerCfgBean.jdField_b_of_type_Boolean = bool;
+          localIliveManagerCfgBean.e = bool;
         }
         if (paramString.has("floatWindowSwitch"))
         {
@@ -57,42 +54,42 @@ public class IliveManagerCfgBean
             break label391;
           }
           bool = true;
-          localIliveManagerCfgBean.c = bool;
+          localIliveManagerCfgBean.g = bool;
         }
         if (paramString.has("floatWindowShowInterval")) {
-          localIliveManagerCfgBean.jdField_b_of_type_Long = Long.parseLong(paramString.optString("floatWindowShowInterval"));
+          localIliveManagerCfgBean.f = Long.parseLong(paramString.optString("floatWindowShowInterval"));
         }
         if (paramString.has("isEnableSingleWebview")) {
-          localIliveManagerCfgBean.d = a(paramString.optJSONArray("isEnableSingleWebview"));
+          localIliveManagerCfgBean.h = a(paramString.optJSONArray("isEnableSingleWebview"));
         }
         if (paramString.has("isEnablePreload")) {
-          localIliveManagerCfgBean.e = a(paramString.optJSONArray("isEnablePreload"));
+          localIliveManagerCfgBean.i = a(paramString.optJSONArray("isEnablePreload"));
         }
         localObject = paramString.optJSONArray("blackList");
         if (localObject != null)
         {
           ArrayList localArrayList = new ArrayList();
-          i = 0;
-          if (i < ((JSONArray)localObject).length())
+          j = 0;
+          if (j < ((JSONArray)localObject).length())
           {
-            localArrayList.add((String)((JSONArray)localObject).get(i));
-            i += 1;
+            localArrayList.add((String)((JSONArray)localObject).get(j));
+            j += 1;
             continue;
           }
-          localIliveManagerCfgBean.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+          localIliveManagerCfgBean.b = localArrayList;
         }
         paramString = paramString.optJSONArray("blackVersionList");
         if (paramString != null)
         {
           localObject = new ArrayList();
-          i = j;
-          if (i < paramString.length())
+          j = k;
+          if (j < paramString.length())
           {
-            ((ArrayList)localObject).add((Integer)paramString.get(i));
-            i += 1;
+            ((ArrayList)localObject).add((Integer)paramString.get(j));
+            j += 1;
             continue;
           }
-          localIliveManagerCfgBean.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+          localIliveManagerCfgBean.c = ((ArrayList)localObject);
           return localIliveManagerCfgBean;
         }
       }
@@ -120,17 +117,17 @@ public class IliveManagerCfgBean
     if (paramJSONArray == null) {
       return false;
     }
-    int j = DeviceInfoUtils.a();
-    int i = 0;
+    int k = DeviceInfoUtils.getPerfLevel();
+    int j = 0;
     try
     {
-      while (i < paramJSONArray.length())
+      while (j < paramJSONArray.length())
       {
-        int k = paramJSONArray.getInt(i);
-        if (j == k) {
+        int m = paramJSONArray.getInt(j);
+        if (k == m) {
           return true;
         }
-        i += 1;
+        j += 1;
       }
       return false;
     }
@@ -140,66 +137,39 @@ public class IliveManagerCfgBean
     }
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
   public boolean a()
   {
-    return this.d;
+    return this.h;
   }
   
   public long b()
   {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public boolean b()
-  {
-    if (DeviceInfoUtils.b()) {
-      return false;
-    }
-    return this.e;
+    return this.d;
   }
   
   public boolean c()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.e;
   }
   
   public boolean d()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      localObject = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Integer localInteger = (Integer)((Iterator)localObject).next();
-        if ((localInteger != null) && (localInteger.intValue() == Build.VERSION.SDK_INT)) {
-          return false;
-        }
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("isManagerConfigEnable IliveManagerCfnBean has not data , currentVersion = ");
-      ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
-      QLog.e("IliveManagerCfgBean", 1, ((StringBuilder)localObject).toString());
-    }
-    return ConfigUtil.a(this.jdField_a_of_type_JavaUtilArrayList) ^ true;
+    return true;
   }
   
-  public boolean e()
+  public long e()
   {
-    return this.c;
+    return this.f;
+  }
+  
+  public boolean f()
+  {
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.config.IliveManagerCfgBean
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class TroopAdminList$4
   
   public void run()
   {
-    int j = this.this$0.a.size();
+    int j = this.this$0.f.size();
     int i = 0;
     while (i < j)
     {
-      String str = (String)((Map)this.this$0.a.get(i)).get("uin");
-      ((Map)this.this$0.a.get(i)).put("nick", ContactUtils.d(this.this$0.app, str));
+      String str = (String)((Map)this.this$0.f.get(i)).get("uin");
+      ((Map)this.this$0.f.get(i)).put("nick", ContactUtils.d(this.this$0.app, str));
       i += 1;
     }
     this.this$0.runOnUiThread(new TroopAdminList.4.1(this));
@@ -24,7 +24,7 @@ class TroopAdminList$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.4
  * JD-Core Version:    0.7.0.1
  */

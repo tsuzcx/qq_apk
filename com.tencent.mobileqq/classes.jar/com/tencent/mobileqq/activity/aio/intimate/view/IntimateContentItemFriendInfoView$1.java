@@ -12,14 +12,14 @@ class IntimateContentItemFriendInfoView$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a() != null)) {
-      ((IntimateInfoManager)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo);
+    if ((this.this$0.d != null) && (this.this$0.h.n() != null)) {
+      ((IntimateInfoManager)this.this$0.h.n().getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).a(this.this$0.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemFriendInfoView.1
  * JD-Core Version:    0.7.0.1
  */

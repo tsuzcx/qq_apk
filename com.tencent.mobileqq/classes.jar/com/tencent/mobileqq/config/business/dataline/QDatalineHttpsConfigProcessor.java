@@ -31,7 +31,7 @@ public class QDatalineHttpsConfigProcessor
   {
     QLog.i("QDatalineHttpsConfigProcessor", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QDatalineHttpsConfigBean)QStorage.a(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString, QDatalineHttpsConfigBean.class);
+      return (QDatalineHttpsConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QDatalineHttpsConfigBean.class);
     }
     return null;
   }
@@ -39,7 +39,7 @@ public class QDatalineHttpsConfigProcessor
   public void a(QDatalineHttpsConfigBean paramQDatalineHttpsConfigBean)
   {
     QLog.i("QDatalineHttpsConfigProcessor", 1, "onUpdate");
-    Object localObject = QQFileManagerUtil.a();
+    Object localObject = QQFileManagerUtil.f();
     if (localObject != null)
     {
       Context localContext = ((BaseQQAppInterface)localObject).getApplicationContext();
@@ -47,12 +47,12 @@ public class QDatalineHttpsConfigProcessor
       localStringBuilder.append("dataline_config_");
       localStringBuilder.append(((BaseQQAppInterface)localObject).getCurrentUin());
       localObject = localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean("use_new_httpclient", paramQDatalineHttpsConfigBean.jdField_a_of_type_Boolean);
+      ((SharedPreferences.Editor)localObject).putBoolean("use_new_httpclient", paramQDatalineHttpsConfigBean.a);
       ((SharedPreferences.Editor)localObject).putBoolean("use_https_connect", paramQDatalineHttpsConfigBean.b);
       ((SharedPreferences.Editor)localObject).apply();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("save download config.");
-      ((StringBuilder)localObject).append(paramQDatalineHttpsConfigBean.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramQDatalineHttpsConfigBean.c);
       QLog.i("QDatalineHttpsConfigProcessor", 1, ((StringBuilder)localObject).toString());
     }
   }
@@ -93,7 +93,7 @@ public class QDatalineHttpsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.dataline.QDatalineHttpsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

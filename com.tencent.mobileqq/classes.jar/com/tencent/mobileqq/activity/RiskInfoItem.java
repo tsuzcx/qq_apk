@@ -8,25 +8,25 @@ public class RiskInfoItem
   implements Parcelable
 {
   public static final Parcelable.Creator<RiskInfoItem> CREATOR = new RiskInfoItem.1();
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  String a;
+  String b;
   String c;
   String d;
-  String e;
+  int e;
+  int f;
+  String g;
   
   public RiskInfoItem() {}
   
   private RiskInfoItem(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.e = paramParcel.readString();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readInt();
+    this.g = paramParcel.readString();
   }
   
   public int describeContents()
@@ -36,18 +36,18 @@ public class RiskInfoItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.e);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeInt(this.f);
+    paramParcel.writeString(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskInfoItem
  * JD-Core Version:    0.7.0.1
  */

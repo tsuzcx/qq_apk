@@ -17,9 +17,9 @@ import com.tribe.async.async.JobContext;
 public class MergePicSegment
   extends MeasureJobSegment<GenerateContext, GenerateContext>
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public final String a;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private Bitmap c;
   
   public MergePicSegment(String paramString)
   {
@@ -29,7 +29,7 @@ public class MergePicSegment
   public MergePicSegment(String paramString, boolean paramBoolean, Bitmap paramBitmap)
   {
     this(paramBoolean, paramString);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.c = paramBitmap;
   }
   
   public MergePicSegment(boolean paramBoolean)
@@ -39,14 +39,14 @@ public class MergePicSegment
   
   public MergePicSegment(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramBoolean;
+    this.a = paramString;
   }
   
   private Bitmap a(Bitmap paramBitmap)
   {
-    int i = UIUtils.a(BaseApplication.getContext());
-    int j = UIUtils.d(BaseApplication.getContext()) * 720 / i;
+    int i = UIUtils.b(BaseApplication.getContext());
+    int j = UIUtils.e(BaseApplication.getContext()) * 720 / i;
     i = j;
     if (j % 2 != 0) {
       i = j + 1;
@@ -86,29 +86,29 @@ public class MergePicSegment
   
   protected void a(JobContext paramJobContext, GenerateContext paramGenerateContext)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     paramJobContext = (JobContext)localObject;
     if (localObject == null) {
-      paramJobContext = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.jdField_b_of_type_JavaLangString, ".jpg");
+      paramJobContext = PublishFileManager.a(paramGenerateContext.b, paramGenerateContext.p, ".jpg");
     }
-    int j = ImageUtil.c(paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_JavaLangString);
-    boolean bool = this.jdField_a_of_type_Boolean;
+    int j = ImageUtil.h(paramGenerateContext.l.a);
+    boolean bool = this.b;
     int i = 0;
-    if ((bool) && (paramGenerateContext.jdField_a_of_type_Boolean))
+    if ((bool) && (paramGenerateContext.f))
     {
       SLog.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
       try
       {
-        Bitmap localBitmap1 = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_AndroidGraphicsBitmap;
-        Bitmap localBitmap3 = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_AndroidGraphicsBitmap;
+        Bitmap localBitmap1 = paramGenerateContext.l.c;
+        Bitmap localBitmap3 = paramGenerateContext.l.d;
         localObject = localBitmap1;
-        if (paramGenerateContext.jdField_a_of_type_Int != 2)
+        if (paramGenerateContext.b != 2)
         {
           localObject = localBitmap1;
-          if (paramGenerateContext.jdField_a_of_type_Int != 5)
+          if (paramGenerateContext.b != 5)
           {
             localObject = localBitmap1;
-            if (paramGenerateContext.jdField_a_of_type_Int != 6)
+            if (paramGenerateContext.b != 6)
             {
               float f1 = localBitmap1.getHeight() * 1.0F / localBitmap1.getWidth();
               float f2 = localBitmap3.getHeight() * 1.0F / localBitmap3.getWidth();
@@ -128,7 +128,7 @@ public class MergePicSegment
             }
           }
         }
-        localObject = a(BitmapUtils.c((Bitmap)localObject, localBitmap3), this.jdField_a_of_type_AndroidGraphicsBitmap);
+        localObject = a(BitmapUtils.c((Bitmap)localObject, localBitmap3), this.c);
         if (localObject != null) {
           bool = BitmapUtils.a((Bitmap)localObject, paramJobContext);
         }
@@ -149,11 +149,11 @@ public class MergePicSegment
         paramJobContext = null;
         bool = false;
         break label493;
-        if (paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_Int <= 0) {
+        if (paramGenerateContext.l.f <= 0) {
           break;
         }
         SLog.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
-        localObject = a(paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap);
+        localObject = a(paramGenerateContext.l.c, this.c);
         if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
         {
           bool = BitmapUtils.a((Bitmap)localObject, paramJobContext);
@@ -165,21 +165,21 @@ public class MergePicSegment
           SLog.e("Q.qqstory.publish.edit.MergePicSegment", "mergeBitmap is recycled");
         }
       }
-      if (paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_Boolean)
+      if (paramGenerateContext.l.e)
       {
-        bool = BitmapUtils.a(paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
+        bool = BitmapUtils.a(paramGenerateContext.l.c, paramJobContext);
       }
       else if ((j != 0) && (j % 90 == 0))
       {
         SLog.b("Q.qqstory.publish.edit.MergePicSegment", "save rotate bitmap");
-        bool = BitmapUtils.a(paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
+        bool = BitmapUtils.a(paramGenerateContext.l.c, paramJobContext);
       }
       else
       {
         SLog.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
-        paramJobContext = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_JavaLangString;
+        paramJobContext = paramGenerateContext.l.a;
         VideoEditReport.b("0X80075C9");
-        paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.c = true;
+        paramGenerateContext.l.h = true;
         bool = false;
         i = 1;
       }
@@ -188,17 +188,17 @@ public class MergePicSegment
     if ((i == 0) && (!bool))
     {
       SLog.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
-      super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131706591)));
+      super.notifyError(new ErrorMessage(-1, HardCodeUtil.a(2131904442)));
       return;
     }
-    paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_JavaLangString = paramJobContext;
-    paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean = bool;
+    paramGenerateContext.l.b = paramJobContext;
+    paramGenerateContext.l.g = bool;
     super.notifyResult(paramGenerateContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.MergePicSegment
  * JD-Core Version:    0.7.0.1
  */

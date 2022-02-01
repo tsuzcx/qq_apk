@@ -31,16 +31,16 @@ class QueryAccount$1
         }
       }
       localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131711171));
+      ((Intent)localObject2).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
       ((Intent)localObject2).putExtra("url", (String)localObject1);
-      LoginUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, (Intent)localObject2, "/base/browser");
-      ReportController.b(this.this$0.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
+      LoginUtils.a(this.this$0.h, (Intent)localObject2, "/base/browser");
+      ReportController.b(this.this$0.g, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.register.QueryAccount.1
  * JD-Core Version:    0.7.0.1
  */

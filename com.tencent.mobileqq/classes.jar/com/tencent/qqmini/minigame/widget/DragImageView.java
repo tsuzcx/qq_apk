@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.PorterDuff.Mode;
 import android.os.Build.VERSION;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -59,12 +60,12 @@ public class DragImageView
     this.mDraggableMode = paramInt;
   }
   
-  public DragImageView(Context paramContext, @android.support.annotation.Nullable @androidx.annotation.Nullable AttributeSet paramAttributeSet)
+  public DragImageView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, -1);
   }
   
-  public DragImageView(Context paramContext, @android.support.annotation.Nullable @androidx.annotation.Nullable AttributeSet paramAttributeSet, int paramInt)
+  public DragImageView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     getScreenConfig();
@@ -398,7 +399,7 @@ public class DragImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.widget.DragImageView
  * JD-Core Version:    0.7.0.1
  */

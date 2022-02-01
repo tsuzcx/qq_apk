@@ -9,14 +9,14 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver$1$1
   
   public void run()
   {
-    if (this.a.a.a.a != null) {
-      this.a.a.a.a.d();
+    if (this.a.c.a.k != null) {
+      this.a.c.a.k.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.InnerTeamWorkFileImportObserver.1.1
  * JD-Core Version:    0.7.0.1
  */

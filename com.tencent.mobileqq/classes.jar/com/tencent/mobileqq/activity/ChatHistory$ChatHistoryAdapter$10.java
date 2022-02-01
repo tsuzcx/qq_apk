@@ -14,7 +14,7 @@ class ChatHistory$ChatHistoryAdapter$10
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     Object localObject3 = "ORDER BY shmsgseq";
     Object localObject1 = localObject3;
     if (i != 1)
@@ -25,14 +25,14 @@ class ChatHistory$ChatHistoryAdapter$10
       }
     }
     i = this.b;
-    if (i < this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.l)
+    if (i < this.d.f.S)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.d = true;
+      this.d.f.R = true;
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.d = false;
-      i = this.b - this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.l;
+      this.d.f.R = false;
+      i = this.b - this.d.f.S;
     }
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("( msgtype ");
@@ -44,20 +44,20 @@ class ChatHistory$ChatHistoryAdapter$10
     ((StringBuilder)localObject3).append(",");
     ((StringBuilder)localObject3).append(String.valueOf(8));
     localObject1 = ((StringBuilder)localObject3).toString();
-    localObject3 = MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    String str = MessageRecord.getOldTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    localObject3 = MessageRecord.getTableName(this.c, this.a);
+    String str = MessageRecord.getOldTableName(this.c, this.a);
     try
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.d)
+      if (!this.d.f.R)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a((String)localObject3, str, (String)localObject1);
+        localObject1 = this.d.f.a((String)localObject3, str, (String)localObject1);
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager == null) {
+        if (this.d.f.Q == null) {
           break label307;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a((String)localObject3, (String)localObject1);
+        localObject1 = this.d.f.Q.a((String)localObject3, (String)localObject1);
       }
     }
     catch (Exception localException)
@@ -77,14 +77,14 @@ class ChatHistory$ChatHistoryAdapter$10
       break label266;
       localObject3 = null;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(8);
+    localObject1 = this.d.f.U.obtainMessage(8);
     ((Message)localObject1).obj = localObject3;
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject1);
+    this.d.f.U.sendMessage((Message)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.10
  * JD-Core Version:    0.7.0.1
  */

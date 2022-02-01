@@ -10,12 +10,12 @@ class ListenTogetherPlayFragment$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicgeneAlbumDecodeHandler.run(null, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a.run(null, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.2
  * JD-Core Version:    0.7.0.1
  */

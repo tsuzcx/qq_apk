@@ -4,37 +4,37 @@ import android.os.SystemClock;
 
 public class ReadInJoyWebRenderEngine$RenderHtmlData
 {
-  final long a;
   public final String a;
-  long b;
   public final String b;
+  final long c;
+  long d;
   
   ReadInJoyWebRenderEngine$RenderHtmlData(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = SystemClock.elapsedRealtime();
   }
   
   ReadInJoyWebRenderEngine$RenderHtmlData(String paramString1, String paramString2, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_b_of_type_Long = paramLong;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = SystemClock.elapsedRealtime();
+    this.d = paramLong;
   }
   
   boolean a()
   {
-    if (this.jdField_b_of_type_Long > 0L) {
-      return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > this.jdField_b_of_type_Long;
+    if (this.d > 0L) {
+      return SystemClock.elapsedRealtime() - this.c > this.d;
     }
-    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
+    return SystemClock.elapsedRealtime() - this.c > 300000L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyWebRenderEngine.RenderHtmlData
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class TXAudioEffectManager$AudioMusicParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXAudioEffectManager.AudioMusicParam
  * JD-Core Version:    0.7.0.1
  */

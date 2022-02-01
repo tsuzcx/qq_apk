@@ -14,41 +14,41 @@ class QRScanEntryView$13
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean)
+    if (this.this$0.b)
     {
-      if (this.this$0.jdField_a_of_type_AndroidWidgetImageView == null)
+      if (this.this$0.c == null)
       {
         Object localObject1 = this.this$0;
-        ((QRScanEntryView)localObject1).jdField_a_of_type_AndroidWidgetImageView = new ImageView(((QRScanEntryView)localObject1).getContext());
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839401);
+        ((QRScanEntryView)localObject1).c = new ImageView(((QRScanEntryView)localObject1).getContext());
+        this.this$0.c.setImageResource(2130839585);
         int i = AIOUtils.b(25.0F, this.this$0.getResources());
         Object localObject2 = new Rect(0, 0, i, i);
-        int j = QRScanEntryView.a(this.this$0).centerX();
+        int j = QRScanEntryView.h(this.this$0).centerX();
         int k = (int)(i * 0.5F);
-        ((Rect)localObject2).offset(j - k, QRScanEntryView.a(this.this$0).centerY() - k);
+        ((Rect)localObject2).offset(j - k, QRScanEntryView.h(this.this$0).centerY() - k);
         localObject1 = new FrameLayout.LayoutParams(i, i);
         ((FrameLayout.LayoutParams)localObject1).leftMargin = ((Rect)localObject2).left;
         ((FrameLayout.LayoutParams)localObject1).topMargin = ((Rect)localObject2).top;
         localObject2 = this.this$0;
-        ((QRScanEntryView)localObject2).addView(((QRScanEntryView)localObject2).jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
+        ((QRScanEntryView)localObject2).addView(((QRScanEntryView)localObject2).c, (ViewGroup.LayoutParams)localObject1);
       }
       else
       {
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.this$0.c.setVisibility(0);
       }
-      ((Animatable)this.this$0.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+      ((Animatable)this.this$0.c.getDrawable()).start();
       return;
     }
-    if (this.this$0.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.this$0.c != null)
     {
-      ((Animatable)this.this$0.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      ((Animatable)this.this$0.c.getDrawable()).stop();
+      this.this$0.c.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.13
  * JD-Core Version:    0.7.0.1
  */

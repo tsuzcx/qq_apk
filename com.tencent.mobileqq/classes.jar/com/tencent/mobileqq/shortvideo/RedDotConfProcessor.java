@@ -27,12 +27,12 @@ public class RedDotConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      RedDotConfBean localRedDotConfBean = RedDotConfBean.a(paramArrayOfQConfItem[0].a);
+      RedDotConfBean localRedDotConfBean = RedDotConfBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("ShortVideoAndHotPicRedDotConfProcessor", 2, localStringBuilder.toString());
       }
       return localRedDotConfBean;
@@ -112,7 +112,7 @@ public class RedDotConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.RedDotConfProcessor
  * JD-Core Version:    0.7.0.1
  */

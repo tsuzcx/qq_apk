@@ -11,17 +11,17 @@ class ConversationTitleBtnCtrl$1$1
   public void run()
   {
     QCircleHostConfig.setNeedShowMessageEntranceAnim(false);
-    if (ConversationTitleBtnCtrl.a(this.a.a) != null) {
-      ConversationTitleBtnCtrl.a(this.a.a).setVisibility(0);
-    }
     if (ConversationTitleBtnCtrl.b(this.a.a) != null) {
-      ConversationTitleBtnCtrl.b(this.a.a).setVisibility(8);
+      ConversationTitleBtnCtrl.b(this.a.a).setVisibility(0);
+    }
+    if (ConversationTitleBtnCtrl.c(this.a.a) != null) {
+      ConversationTitleBtnCtrl.c(this.a.a).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationTitleBtnCtrl.1.1
  * JD-Core Version:    0.7.0.1
  */

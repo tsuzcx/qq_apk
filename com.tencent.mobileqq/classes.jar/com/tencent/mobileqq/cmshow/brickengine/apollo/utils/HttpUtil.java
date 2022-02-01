@@ -56,12 +56,12 @@ public class HttpUtil
     if (localApolloRender == null) {
       return;
     }
-    ThreadManager.post(new HttpUtil.8(paramString1, paramString2, paramArrayOfString, paramArrayOfByte, new HttpUtil.5(localView, paramLong, paramString1, paramString2, localApolloRender), new HttpUtil.6(localView, localApolloRender, paramLong), new HttpUtil.7(localView, localApolloRender, paramLong)), 5, null, true);
+    ThreadManager.post(new HttpUtil.8(paramString1, paramArrayOfString, new HttpUtil.5(localView, paramLong, paramString1, paramString2, localApolloRender), paramString2, paramArrayOfByte, new HttpUtil.6(localView, localApolloRender, paramLong), new HttpUtil.7(localView, localApolloRender, paramLong)), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

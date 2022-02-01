@@ -10,12 +10,12 @@ class JsFlutterApp$2
   
   public void a(Object paramObject)
   {
-    JsFlutterApp.a(this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterApp, this.jdField_a_of_type_JavaUtilMap);
+    JsFlutterApp.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.JsFlutterApp.2
  * JD-Core Version:    0.7.0.1
  */

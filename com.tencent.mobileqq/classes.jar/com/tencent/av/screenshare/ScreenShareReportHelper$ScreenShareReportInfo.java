@@ -4,27 +4,21 @@ import android.os.SystemClock;
 
 class ScreenShareReportHelper$ScreenShareReportInfo
 {
-  public int a;
-  public long a;
-  
-  private ScreenShareReportHelper$ScreenShareReportInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
+  public int a = 0;
+  public long b = 0L;
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Long != 0L) && (Math.abs(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long) < 5000L);
+    return (this.b != 0L) && (Math.abs(SystemClock.elapsedRealtime() - this.b) < 5000L);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{lastFromType: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", lastStartTime: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

@@ -18,8 +18,8 @@ public class AvatarUtil
     if (ThemeUtil.isNowThemeIsSimple(null, false, null))
     {
       b = paramByte;
-      if (!a(paramByte)) {
-        b = 1;
+      if (!b(paramByte)) {
+        b = 3;
       }
     }
     return b;
@@ -162,12 +162,12 @@ public class AvatarUtil
     return localStringBuilder1.toString();
   }
   
-  private static boolean a(byte paramByte)
+  private static boolean b(byte paramByte)
   {
     return (paramByte == 4) || (paramByte == 5) || (paramByte == 8) || (paramByte == 7) || (paramByte == 6);
   }
   
-  public static boolean a(String paramString)
+  public static boolean b(String paramString)
   {
     if ((paramString != null) && (paramString.length() != 0)) {
       return paramString.contains("_1001");
@@ -176,7 +176,7 @@ public class AvatarUtil
     return false;
   }
   
-  public static String b(String paramString)
+  public static String c(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -194,7 +194,7 @@ public class AvatarUtil
     return null;
   }
   
-  public static String c(String paramString)
+  public static String d(String paramString)
   {
     if ((paramString != null) && (paramString.length() != 0))
     {
@@ -210,7 +210,7 @@ public class AvatarUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.utils.AvatarUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -13,22 +13,22 @@ final class ToggleImpl$2
   public void run()
   {
     FeatureTriggerEvent localFeatureTriggerEvent = new FeatureTriggerEvent();
-    localFeatureTriggerEvent.featureVersionId = String.valueOf(this.jdField_a_of_type_ComTencentFeaturetoggleModelsFeatureTriggered.a());
-    localFeatureTriggerEvent.featureName = this.jdField_a_of_type_ComTencentFeaturetoggleModelsFeatureTriggered.a();
-    localFeatureTriggerEvent.featureValue = this.jdField_a_of_type_ComTencentFeaturetoggleModelsFeatureTriggered.b();
-    localFeatureTriggerEvent.abTestId = this.jdField_a_of_type_ComTencentFeaturetoggleModelsFeatureTriggered.c();
-    DatasetEntity localDatasetEntity = this.jdField_a_of_type_ComTencentFeaturetoggleModelsDatasetEntity;
+    localFeatureTriggerEvent.featureVersionId = String.valueOf(this.a.a());
+    localFeatureTriggerEvent.featureName = this.a.b();
+    localFeatureTriggerEvent.featureValue = this.a.c();
+    localFeatureTriggerEvent.abTestId = this.a.e();
+    DatasetEntity localDatasetEntity = this.b;
     if (localDatasetEntity != null)
     {
       localFeatureTriggerEvent.datasetID = String.valueOf(localDatasetEntity.getDatasetId());
-      localFeatureTriggerEvent.versionID = String.valueOf(this.jdField_a_of_type_ComTencentFeaturetoggleModelsDatasetEntity.getVersionId());
+      localFeatureTriggerEvent.versionID = String.valueOf(this.b.getVersionId());
     }
     DBManager.a().a(localFeatureTriggerEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.ToggleImpl.2
  * JD-Core Version:    0.7.0.1
  */

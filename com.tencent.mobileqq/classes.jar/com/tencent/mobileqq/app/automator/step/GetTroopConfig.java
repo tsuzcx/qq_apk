@@ -11,15 +11,15 @@ public class GetTroopConfig
 {
   protected int doStep()
   {
-    if (this.mAutomator.a != null) {
-      ((ITroopConfigHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.TROOP_CONFIG_HANDLER)).a();
+    if (this.mAutomator.k != null) {
+      ((ITroopConfigHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.TROOP_CONFIG_HANDLER)).b();
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetTroopConfig
  * JD-Core Version:    0.7.0.1
  */

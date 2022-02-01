@@ -15,11 +15,6 @@ public class ViolaPicSerPreloadHandler
   public static String a = "ViolaPicSerPreloadHandler";
   public static String b = "viola_service_instance";
   
-  public static boolean a()
-  {
-    return ((Boolean)RIJSPUtils.a(b, Boolean.valueOf(false))).booleanValue();
-  }
-  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
     super.onReceiveConfig(paramInt1, paramInt2, paramString);
@@ -85,7 +80,7 @@ public class ViolaPicSerPreloadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.ViolaPicSerPreloadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -87,7 +87,7 @@ public class JumpActivity
   
   private boolean dealActionAndScheme(Intent paramIntent)
   {
-    return (JumpActivityHelper.a(this, paramIntent)) && (JumpActivityHelper.b(this, paramIntent)) && (JumpActivityHelper.c(this, paramIntent));
+    return (JumpActivityHelper.h(this, paramIntent)) && (JumpActivityHelper.i(this, paramIntent)) && (JumpActivityHelper.j(this, paramIntent));
   }
   
   private void dismissDialog()
@@ -105,7 +105,7 @@ public class JumpActivity
   
   public static void doShare(JumpActivity paramJumpActivity, boolean paramBoolean)
   {
-    JumpActivityHelper.b(paramJumpActivity, paramBoolean);
+    JumpActivityHelper.c(paramJumpActivity, paramBoolean);
   }
   
   public static void doThirdPartyCheckLoginAndGesture(JumpActivity paramJumpActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2)
@@ -115,7 +115,7 @@ public class JumpActivity
   
   public static void doView(JumpActivity paramJumpActivity, boolean paramBoolean)
   {
-    Intent localIntent = JumpActivityHelper.a(paramJumpActivity, paramBoolean);
+    Intent localIntent = JumpActivityHelper.b(paramJumpActivity, paramBoolean);
     if (localIntent == null) {
       return;
     }
@@ -197,7 +197,7 @@ public class JumpActivity
     ((StringBuilder)localObject).append("createPlugin pluginKey: ");
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("JumpAction", 1, ((StringBuilder)localObject).toString());
-    localObject = (Class)JumpActivityInjectUtil.a.get(String.valueOf(paramInt));
+    localObject = (Class)JumpActivityInjectUtil.b.get(String.valueOf(paramInt));
     try
     {
       localObject = (IJumpBusinessInterface)((Class)localObject).newInstance();
@@ -217,7 +217,7 @@ public class JumpActivity
   
   protected boolean dealIntentData(Intent paramIntent)
   {
-    return (dealActionAndScheme(paramIntent)) && (JumpActivityHelper.d(this, paramIntent));
+    return (dealActionAndScheme(paramIntent)) && (JumpActivityHelper.k(this, paramIntent));
   }
   
   @Override
@@ -362,7 +362,7 @@ public class JumpActivity
     localObject = this.mJumpReportCtr;
     if (localObject != null)
     {
-      ((JumpReportCtr)localObject).a(null);
+      ((JumpReportCtr)localObject).b(null);
       this.mJumpReportCtr = null;
     }
   }
@@ -377,12 +377,12 @@ public class JumpActivity
   
   public int doQfavShare(Bundle paramBundle)
   {
-    return JumpActivityHelper.a(this, paramBundle);
+    return JumpActivityHelper.b(this, paramBundle);
   }
   
   public void doShare(Bundle paramBundle)
   {
-    JumpActivityHelper.b(this, paramBundle);
+    JumpActivityHelper.c(this, paramBundle);
   }
   
   public void doSumsungCallUp()
@@ -415,11 +415,11 @@ public class JumpActivity
           dismissDialog();
           if (i == 0)
           {
-            if (!JumpActivityHelper.a(this)) {
+            if (!JumpActivityHelper.b(this)) {
               doShare(localIntent.getExtras());
             }
           }
-          else if (!JumpActivityHelper.a(this))
+          else if (!JumpActivityHelper.b(this))
           {
             Bundle localBundle = localIntent.getExtras();
             paramMessage = localBundle;
@@ -503,8 +503,8 @@ public class JumpActivity
   {
     try
     {
-      setContentView(2131561126);
-      this.rootView = ((RelativeLayout)findViewById(2131369603));
+      setContentView(2131627476);
+      this.rootView = ((RelativeLayout)findViewById(2131436711));
       return;
     }
     catch (Throwable localThrowable)
@@ -515,7 +515,7 @@ public class JumpActivity
   
   public boolean showPreview()
   {
-    if (JumpActivityHelper.b(this)) {
+    if (JumpActivityHelper.d(this)) {
       return true;
     }
     return super.showPreview();
@@ -527,14 +527,14 @@ public class JumpActivity
     paramBundle = this.mJumpReportCtr;
     if (paramBundle != null)
     {
-      paramBundle.a(paramIntent);
+      paramBundle.b(paramIntent);
       this.mJumpReportCtr = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JumpActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,44 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.basic.module.Monitor;
+import android.view.SurfaceView;
+import android.view.TextureView;
+import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
+import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
+import com.tencent.liteav.d;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 class TRTCCloudImpl$19
   implements Runnable
 {
-  TRTCCloudImpl$19(TRTCCloudImpl paramTRTCCloudImpl, String paramString) {}
+  TRTCCloudImpl$19(TRTCCloudImpl paramTRTCCloudImpl) {}
   
   public void run()
   {
-    Object localObject1 = this.this$0.mRoomInfo.getUser(this.val$userId);
-    if (localObject1 == null)
+    this.this$0.apiOnlineLog("stopLocalPreview");
+    if (TRTCCloudImpl.access$1600(this.this$0) == TRTCCloudImpl.VideoSourceType.CAMERA)
     {
-      localObject1 = this.this$0;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("stopRemoteSubStreamView user is not exist ");
-      ((StringBuilder)localObject2).append(this.val$userId);
-      ((TRTCCloudImpl)localObject1).apiLog(((StringBuilder)localObject2).toString());
-      return;
+      TRTCCloudImpl.access$1602(this.this$0, TRTCCloudImpl.VideoSourceType.NONE);
+      this.this$0.mCaptureAndEnc.d(true);
     }
-    this.this$0.apiLog(String.format("stopRemoteSubStreamView userID:%s tinyID:%d streamType:%d", new Object[] { this.val$userId, Long.valueOf(((TRTCRoomInfo.UserInfo)localObject1).tinyID), Integer.valueOf(((TRTCRoomInfo.UserInfo)localObject1).streamType) }));
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(String.format("stopRemoteSubStreamView userID:%s", new Object[] { this.val$userId }));
-    ((StringBuilder)localObject2).append(" self:");
-    ((StringBuilder)localObject2).append(this.this$0.hashCode());
-    Monitor.a(1, ((StringBuilder)localObject2).toString(), "", 0);
-    TRTCCloudImpl.access$2900(this.this$0, (TRTCRoomInfo.UserInfo)localObject1);
-    localObject2 = ((TRTCRoomInfo.UserInfo)localObject1).subRender.view;
-    this.this$0.runOnMainThread(new TRTCCloudImpl.19.1(this, (TXCloudVideoView)localObject2));
-    ((TRTCRoomInfo.UserInfo)localObject1).subRender.view = null;
+    if (this.this$0.mRoomInfo.localView != null)
+    {
+      SurfaceView localSurfaceView = this.this$0.mRoomInfo.localView.getSurfaceView();
+      TextureView localTextureView = this.this$0.mRoomInfo.localView.getHWVideoView();
+      this.this$0.runOnMainThread(new TRTCCloudImpl.19.1(this, localSurfaceView, localTextureView));
+    }
+    this.this$0.mRoomInfo.localView = null;
+    TRTCCloudImpl.access$2102(this.this$0, false);
+    TRTCCloudImpl.access$2200(this.this$0).disable();
+    if (!TRTCCloudImpl.access$2500(this.this$0)) {
+      this.this$0.enableVideoStream(false);
+    }
+    TXCKeyPointReportProxy.a(40046, 0, 2);
+    TXCEventRecorderProxy.a("18446744073709551615", 4006, 3L, -1L, "", 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.19
  * JD-Core Version:    0.7.0.1
  */

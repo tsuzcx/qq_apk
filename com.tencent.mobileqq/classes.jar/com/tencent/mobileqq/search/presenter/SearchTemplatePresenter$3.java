@@ -13,6 +13,8 @@ import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateNewEntran
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.SearchConfigUtils;
+import com.tencent.mobileqq.search.util.SearchReportUtil;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -23,18 +25,19 @@ class SearchTemplatePresenter$3
   
   public void onClick(View paramView)
   {
-    UniteSearchReportController.a(null, 0, this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.c, "0X8009D5D", 0, 0, null, null);
-    Object localObject1 = new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.g).ver2(UniteSearchReportController.a(UniteSearchActivity.d)).ver5("1").ver6("1");
+    UniteSearchReportController.a(null, 0, this.a.p, "0X8009D5D", 0, 0, null, null);
+    Object localObject1 = new ReportModelDC02528().module("all_result").action("clk_web_search").obj1("2073745984").ver1(this.a.m).ver2(UniteSearchReportController.a(UniteSearchActivity.f)).ver5("1").ver6("1");
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("{experiment_id:");
     ((StringBuilder)localObject2).append(UniteSearchReportController.b);
     ((StringBuilder)localObject2).append("}");
     UniteSearchReportController.a(null, ((ReportModelDC02528)localObject1).ver7(((StringBuilder)localObject2).toString()));
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.l))
+    if (TextUtils.isEmpty(this.a.f))
     {
-      localObject1 = SearchConfigUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.c);
-      localObject1 = SearchConfigUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.b(), 0, (String)localObject1);
-      localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      SearchUtils.a("后台没有配置链接，终端拼接跳转");
+      localObject1 = SearchConfigUtils.c(this.a.p);
+      localObject1 = SearchConfigUtils.a(this.a.g(), 0, (String)localObject1);
+      localObject2 = new Intent(this.b, QQBrowserActivity.class);
       ((Intent)localObject2).putExtra("url", (String)localObject1);
       if (QLog.isColorLevel())
       {
@@ -43,19 +46,21 @@ class SearchTemplatePresenter$3
         localStringBuilder.append((String)localObject1);
         QLog.d("Q.uniteSearch.SearchTemplatePresenter", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+      this.b.startActivity((Intent)localObject2);
     }
     else
     {
-      localObject1 = SearchConfigUtils.a(SearchConfigUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.l, this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.b(), 0, UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.c)), this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.c);
-      ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToNativeSearchResultPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateNewEntranceItem.b(), (String)localObject1);
+      SearchUtils.a("后台配置了链接，使用后台链接跳转");
+      localObject1 = SearchConfigUtils.a(SearchConfigUtils.a(this.a.f, this.a.g(), 0, UniteSearchReportController.a(this.a.p)), this.a.p);
+      ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToNativeSearchResultPage(this.b, this.a.g(), (String)localObject1);
+      SearchReportUtil.a(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchTemplatePresenter.3
  * JD-Core Version:    0.7.0.1
  */

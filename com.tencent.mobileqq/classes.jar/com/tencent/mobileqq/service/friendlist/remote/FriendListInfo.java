@@ -11,12 +11,12 @@ public class FriendListInfo
 {
   public static final Parcelable.Creator<FriendListInfo> CREATOR = new FriendListInfo.1();
   public int a;
-  public List<FriendSingleInfo> a;
+  public List<FriendSingleInfo> b;
   
   public FriendListInfo()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = 0;
+    this.b = new ArrayList();
   }
   
   public FriendListInfo(Parcel paramParcel)
@@ -26,15 +26,15 @@ public class FriendListInfo
   
   public void a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readInt();
     int j = paramParcel.readInt();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.b = new ArrayList();
     int i = 0;
     while (i < j)
     {
       FriendSingleInfo localFriendSingleInfo = new FriendSingleInfo();
       localFriendSingleInfo.a(paramParcel);
-      this.jdField_a_of_type_JavaUtilList.add(localFriendSingleInfo);
+      this.b.add(localFriendSingleInfo);
       i += 1;
     }
   }
@@ -46,22 +46,22 @@ public class FriendListInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.b == null) {
+      this.b = new ArrayList();
     }
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_a_of_type_JavaUtilList.size());
+    paramParcel.writeInt(this.a);
+    paramParcel.writeInt(this.b.size());
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.b.size())
     {
-      ((FriendSingleInfo)this.jdField_a_of_type_JavaUtilList.get(i)).writeToParcel(paramParcel, paramInt);
+      ((FriendSingleInfo)this.b.get(i)).writeToParcel(paramParcel, paramInt);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.friendlist.remote.FriendListInfo
  * JD-Core Version:    0.7.0.1
  */

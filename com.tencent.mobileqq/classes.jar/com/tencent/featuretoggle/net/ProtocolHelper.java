@@ -22,28 +22,28 @@ public class ProtocolHelper
   public static JceStruct a()
   {
     ClientContext localClientContext = new ClientContext();
-    localClientContext.setUserId(ToggleSetting.i());
-    localClientContext.setDeviceId(DeviceUtils.a());
+    localClientContext.setUserId(ToggleSetting.t());
+    localClientContext.setDeviceId(ToggleSetting.c());
     localClientContext.setHostname("");
-    localClientContext.setRemoteAddress(AppUtils.c(ToggleSetting.a()));
+    localClientContext.setRemoteAddress(AppUtils.d(ToggleSetting.j()));
     localClientContext.setSessionId("");
-    localClientContext.setProperties(ToggleSetting.a());
-    localClientContext.setQimei(ToggleSetting.a());
+    localClientContext.setProperties(ToggleSetting.h());
+    localClientContext.setQimei(ToggleSetting.c());
     ExtendInfo localExtendInfo = new ExtendInfo();
-    localExtendInfo.setBundleId(AppUtils.b(ToggleSetting.a()));
-    localExtendInfo.setChannel(ToggleSetting.e());
-    localExtendInfo.setOs(ToggleSetting.j());
-    localExtendInfo.setQua(ToggleSetting.l());
-    localExtendInfo.setOsVersion(DeviceUtils.e());
-    localExtendInfo.setSdkVersion(ToggleSetting.g());
+    localExtendInfo.setBundleId(AppUtils.c(ToggleSetting.j()));
+    localExtendInfo.setChannel(ToggleSetting.n());
+    localExtendInfo.setOs(ToggleSetting.u());
+    localExtendInfo.setQua(ToggleSetting.z());
+    localExtendInfo.setOsVersion(DeviceUtils.b());
+    localExtendInfo.setSdkVersion(ToggleSetting.r());
     localExtendInfo.setProperties(new HashMap());
     QueryFeatureReq localQueryFeatureReq = new QueryFeatureReq();
-    localQueryFeatureReq.setProductId(ToggleSetting.b());
-    localQueryFeatureReq.setModuleId(ToggleSetting.d());
-    localQueryFeatureReq.setModuleVersion(ToggleSetting.f());
+    localQueryFeatureReq.setProductId(ToggleSetting.k());
+    localQueryFeatureReq.setModuleId(ToggleSetting.m());
+    localQueryFeatureReq.setModuleVersion(ToggleSetting.o());
     localQueryFeatureReq.setClientCtx(localClientContext);
     localQueryFeatureReq.setExtendInfo(localExtendInfo);
-    long l = SpManager.a().a();
+    long l = SpManager.a().f();
     localQueryFeatureReq.setTimestamp(l);
     localQueryFeatureReq.setLocalIdList(a(l));
     return localQueryFeatureReq;
@@ -82,88 +82,21 @@ public class ProtocolHelper
     if (paramLong <= 0L) {
       return localArrayList;
     }
-    Set localSet = a();
+    Set localSet = b();
     if (!a(localArrayList, localSet)) {
-      a(localArrayList, localSet);
+      b(localArrayList, localSet);
     }
     return localArrayList;
   }
   
-  private static Set<Integer> a()
-  {
-    Set localSet1;
-    if (ToggleSetting.a()) {
-      localSet1 = CacheManager.a().a();
-    } else {
-      localSet1 = null;
-    }
-    Set localSet2;
-    if (localSet1 != null)
-    {
-      localSet2 = localSet1;
-      if (!localSet1.isEmpty()) {}
-    }
-    else
-    {
-      CacheManager.a().a();
-      localSet2 = CacheManager.a().a();
-    }
-    return localSet2;
-  }
-  
-  private static void a(ArrayList<Integer> paramArrayList, Set<Integer> paramSet)
-  {
-    try
-    {
-      String[] arrayOfString = SpManager.a().a();
-      if (arrayOfString != null)
-      {
-        if (arrayOfString.length == 0) {
-          return;
-        }
-        SparseArray localSparseArray = CacheManager.a().a();
-        if (localSparseArray != null) {
-          localSparseArray.clear();
-        }
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject = arrayOfString[i];
-          localObject = SpManager.a().a((String)localObject, "");
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            localObject = new JSONObject((String)localObject);
-            int k = ((JSONObject)localObject).optInt("id");
-            localObject = ((JSONObject)localObject).optString("name");
-            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (k > 0) && (localSparseArray != null)) {
-              localSparseArray.put(k, localObject);
-            }
-            if ((paramSet != null) && (!paramSet.contains(Integer.valueOf(k)))) {
-              paramArrayList.add(Integer.valueOf(k));
-            }
-          }
-          i += 1;
-        }
-      }
-      return;
-    }
-    catch (Throwable paramArrayList)
-    {
-      if (!LogUtils.a(paramArrayList)) {
-        paramArrayList.printStackTrace();
-      }
-    }
-  }
-  
   private static boolean a(ArrayList<Integer> paramArrayList, Set<Integer> paramSet)
   {
-    boolean bool = ToggleSetting.a();
+    boolean bool = ToggleSetting.f();
     int i = 0;
     if (!bool) {
       return false;
     }
-    SparseArray localSparseArray = CacheManager.a().a();
+    SparseArray localSparseArray = CacheManager.a().f();
     if (localSparseArray != null)
     {
       if (paramSet == null) {
@@ -204,10 +137,77 @@ public class ProtocolHelper
     }
     return null;
   }
+  
+  private static Set<Integer> b()
+  {
+    Set localSet1;
+    if (ToggleSetting.f()) {
+      localSet1 = CacheManager.a().e();
+    } else {
+      localSet1 = null;
+    }
+    Set localSet2;
+    if (localSet1 != null)
+    {
+      localSet2 = localSet1;
+      if (!localSet1.isEmpty()) {}
+    }
+    else
+    {
+      CacheManager.a().b();
+      localSet2 = CacheManager.a().e();
+    }
+    return localSet2;
+  }
+  
+  private static void b(ArrayList<Integer> paramArrayList, Set<Integer> paramSet)
+  {
+    try
+    {
+      String[] arrayOfString = SpManager.a().i();
+      if (arrayOfString != null)
+      {
+        if (arrayOfString.length == 0) {
+          return;
+        }
+        SparseArray localSparseArray = CacheManager.a().f();
+        if (localSparseArray != null) {
+          localSparseArray.clear();
+        }
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject = arrayOfString[i];
+          localObject = SpManager.a().a((String)localObject, "");
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = new JSONObject((String)localObject);
+            int k = ((JSONObject)localObject).optInt("id");
+            localObject = ((JSONObject)localObject).optString("name");
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (k > 0) && (localSparseArray != null)) {
+              localSparseArray.put(k, localObject);
+            }
+            if ((paramSet != null) && (!paramSet.contains(Integer.valueOf(k)))) {
+              paramArrayList.add(Integer.valueOf(k));
+            }
+          }
+          i += 1;
+        }
+      }
+      return;
+    }
+    catch (Throwable paramArrayList)
+    {
+      if (!LogUtils.a(paramArrayList)) {
+        paramArrayList.printStackTrace();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.net.ProtocolHelper
  * JD-Core Version:    0.7.0.1
  */

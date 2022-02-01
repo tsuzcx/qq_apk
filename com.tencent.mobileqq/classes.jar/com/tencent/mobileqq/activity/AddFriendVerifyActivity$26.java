@@ -12,14 +12,14 @@ class AddFriendVerifyActivity$26
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
-    ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    VasH5PayUtil.a(this.c, "mvip.n.a.gnew_apply", this.a, 3, false, false, "", "", true, true);
+    ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.b, 0, "", "", "", "");
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.26
  * JD-Core Version:    0.7.0.1
  */

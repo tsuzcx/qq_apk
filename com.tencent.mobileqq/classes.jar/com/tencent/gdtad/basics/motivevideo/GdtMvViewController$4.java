@@ -13,8 +13,8 @@ class GdtMvViewController$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.i("GdtMvViewController", 1, " DialogInterface onClick onCancel");
-    GdtMvViewController.a(this.a).a();
-    if (GdtADFlyingStreamingReportHelper.a().a() == 1) {
+    GdtMvViewController.c(this.a).a();
+    if (GdtADFlyingStreamingReportHelper.a().b() == 1) {
       GdtADFlyingStreamingReportHelper.a().a(1020040L);
     }
     GdtADFlyingStreamingReportHelper.a().a(40092L);
@@ -22,7 +22,7 @@ class GdtMvViewController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMvViewController.4
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class QiDianExternalInfoInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if (QidianExternalInfo.class.getSimpleName().equals(a(paramChain))) {
+    if (QidianExternalInfo.class.getSimpleName().equals(b(paramChain))) {
       return QidianExternalInfo.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class QiDianExternalInfoInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.QiDianExternalInfoInterceptor
  * JD-Core Version:    0.7.0.1
  */

@@ -49,8 +49,8 @@ public class ApolloGifDownloaderImpl
       localStringBuilder.append(paramDownloadParams);
       localStringBuilder.append("/preview.gif");
       paramDownloadParams = new DownloadTask(localStringBuilder.toString(), paramOutputStream);
-      paramDownloadParams.b = 1;
-      paramDownloadParams.p = false;
+      paramDownloadParams.e = 1;
+      paramDownloadParams.N = false;
       if (DownloaderFactory.a(paramDownloadParams, null) == 0)
       {
         if (paramURLDrawableHandler != null) {
@@ -67,7 +67,7 @@ public class ApolloGifDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.res.api.impl.ApolloGifDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

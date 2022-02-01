@@ -16,11 +16,11 @@ class SegmentList$5
   
   protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    this.a.a.f();
+    this.a.h.f();
     if (SegmentList.a(this.a)) {
       return null;
     }
-    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
+    SegmentList.b(this.a).sendMessage(SegmentList.b(this.a).obtainMessage(2));
     return null;
   }
 }

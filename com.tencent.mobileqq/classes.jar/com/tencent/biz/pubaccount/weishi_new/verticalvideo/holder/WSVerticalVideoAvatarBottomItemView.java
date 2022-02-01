@@ -6,7 +6,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewStub;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
-import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 
 public class WSVerticalVideoAvatarBottomItemView
@@ -19,17 +19,23 @@ public class WSVerticalVideoAvatarBottomItemView
     super(paramContext, paramWSVerticalVideoHolder);
   }
   
-  private void f()
+  private void q()
   {
-    if ((a() != null) && (a().poster != null) && (!WSFeedUtils.a(a().poster.followStatus))) {
-      ((WSVerticalItemBottomAvatarController)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup).a(a().poster);
+    stSimpleMetaFeed localstSimpleMetaFeed = l();
+    if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.poster != null))
+    {
+      ((WSVerticalItemBottomAvatarController)this.a).a(localstSimpleMetaFeed.poster);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[WSVerticalVideoAvatarBottomItemView.java][updateFollowBtnUI] title:");
+      localStringBuilder.append(localstSimpleMetaFeed.feed_desc);
+      WSLog.e("WSVerticalVideoAvatarBottomItemViewLog", localStringBuilder.toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    AbsWsUIGroup localAbsWsUIGroup = this.a;
     if (localAbsWsUIGroup != null)
     {
       int i;
@@ -42,29 +48,24 @@ public class WSVerticalVideoAvatarBottomItemView
     }
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public void b(int paramInt)
   {
     super.b(paramInt);
-    Object localObject = a();
+    Object localObject = l();
     if (localObject != null)
     {
       localObject = ((stSimpleMetaFeed)localObject).poster;
       if (localObject == null) {
         return;
       }
-      ((WSVerticalItemBottomAvatarController)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup).b((stSimpleMetaPerson)localObject);
+      ((WSVerticalItemBottomAvatarController)this.a).b((stSimpleMetaPerson)localObject);
     }
   }
   
   public void b(boolean paramBoolean)
   {
     super.b(paramBoolean);
-    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    AbsWsUIGroup localAbsWsUIGroup = this.a;
     if (localAbsWsUIGroup != null)
     {
       int i;
@@ -79,25 +80,30 @@ public class WSVerticalVideoAvatarBottomItemView
   
   public void d(int paramInt)
   {
-    if ((paramInt == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup instanceof WSVerticalItemBottomAvatarController)))
+    if ((paramInt == 1) && ((this.a instanceof WSVerticalItemBottomAvatarController)))
     {
-      f();
+      q();
       return;
     }
     super.d(paramInt);
   }
   
-  public void e()
+  public boolean e()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380777);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup = new WSVerticalItemBottomAvatarController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a(localViewStub);
-    a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup);
+    return false;
+  }
+  
+  public void f()
+  {
+    ViewStub localViewStub = (ViewStub)this.h.findViewById(2131449747);
+    this.a = new WSVerticalItemBottomAvatarController(this.g, this.f);
+    this.a.a(localViewStub);
+    a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalVideoAvatarBottomItemView
  * JD-Core Version:    0.7.0.1
  */

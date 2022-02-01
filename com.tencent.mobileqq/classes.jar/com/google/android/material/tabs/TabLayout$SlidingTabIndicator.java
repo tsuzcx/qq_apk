@@ -21,23 +21,15 @@ import com.google.android.material.internal.ViewUtils;
 class TabLayout$SlidingTabIndicator
   extends LinearLayout
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = -1;
-  ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private int b = -1;
+  ValueAnimator a;
+  int b = -1;
+  float c;
+  private int e = -1;
   
   TabLayout$SlidingTabIndicator(TabLayout paramTabLayout, Context paramContext)
   {
     super(paramContext);
     setWillNotDraw(false);
-  }
-  
-  private void a()
-  {
-    View localView = getChildAt(this.jdField_a_of_type_Int);
-    TabIndicatorInterpolator localTabIndicatorInterpolator = TabLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout);
-    TabLayout localTabLayout = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout;
-    localTabIndicatorInterpolator.a(localTabLayout, localView, localTabLayout.a);
   }
   
   private void a(View paramView1, View paramView2, float paramFloat)
@@ -50,31 +42,31 @@ class TabLayout$SlidingTabIndicator
     }
     if (i != 0)
     {
-      TabIndicatorInterpolator localTabIndicatorInterpolator = TabLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout);
-      TabLayout localTabLayout = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout;
-      localTabIndicatorInterpolator.a(localTabLayout, paramView1, paramView2, paramFloat, localTabLayout.a);
+      TabIndicatorInterpolator localTabIndicatorInterpolator = TabLayout.a(this.d);
+      TabLayout localTabLayout = this.d;
+      localTabIndicatorInterpolator.a(localTabLayout, paramView1, paramView2, paramFloat, localTabLayout.j);
     }
     else
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.setBounds(-1, this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.getBounds().top, -1, this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.getBounds().bottom);
+      this.d.j.setBounds(-1, this.d.j.getBounds().top, -1, this.d.j.getBounds().bottom);
     }
     ViewCompat.postInvalidateOnAnimation(this);
   }
   
   private void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    Object localObject1 = getChildAt(this.jdField_a_of_type_Int);
+    Object localObject1 = getChildAt(this.b);
     Object localObject2 = getChildAt(paramInt1);
     if (localObject2 == null)
     {
-      a();
+      b();
       return;
     }
     localObject1 = new TabLayout.SlidingTabIndicator.1(this, (View)localObject1, (View)localObject2);
     if (paramBoolean)
     {
       localObject2 = new ValueAnimator();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ((ValueAnimator)localObject2);
+      this.a = ((ValueAnimator)localObject2);
       ((ValueAnimator)localObject2).setInterpolator(AnimationUtils.b);
       ((ValueAnimator)localObject2).setDuration(paramInt2);
       ((ValueAnimator)localObject2).setFloatValues(new float[] { 0.0F, 1.0F });
@@ -83,33 +75,41 @@ class TabLayout$SlidingTabIndicator
       ((ValueAnimator)localObject2).start();
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject1);
+    this.a.removeAllUpdateListeners();
+    this.a.addUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject1);
+  }
+  
+  private void b()
+  {
+    View localView = getChildAt(this.b);
+    TabIndicatorInterpolator localTabIndicatorInterpolator = TabLayout.a(this.d);
+    TabLayout localTabLayout = this.d;
+    localTabIndicatorInterpolator.a(localTabLayout, localView, localTabLayout.j);
   }
   
   void a(int paramInt)
   {
-    Rect localRect = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.getBounds();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.setBounds(localRect.left, 0, localRect.right, paramInt);
+    Rect localRect = this.d.j.getBounds();
+    this.d.j.setBounds(localRect.left, 0, localRect.right, paramInt);
     requestLayout();
   }
   
   void a(int paramInt, float paramFloat)
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.a;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.a.cancel();
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat;
-    a(getChildAt(this.jdField_a_of_type_Int), getChildAt(this.jdField_a_of_type_Int + 1), this.jdField_a_of_type_Float);
+    this.b = paramInt;
+    this.c = paramFloat;
+    a(getChildAt(this.b), getChildAt(this.b + 1), this.c);
   }
   
   void a(int paramInt1, int paramInt2)
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.a;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.a.cancel();
     }
     a(true, paramInt1, paramInt2);
   }
@@ -130,12 +130,12 @@ class TabLayout$SlidingTabIndicator
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    int j = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.getBounds().height();
+    int j = this.d.j.getBounds().height();
     int i = j;
     if (j < 0) {
-      i = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.getIntrinsicHeight();
+      i = this.d.j.getIntrinsicHeight();
     }
-    int m = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.j;
+    int m = this.d.r;
     int k = 0;
     if (m != 0)
     {
@@ -166,19 +166,19 @@ class TabLayout$SlidingTabIndicator
       j = getHeight() - i;
       i = getHeight();
     }
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.getBounds().width() > 0)
+    if (this.d.j.getBounds().width() > 0)
     {
-      Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.getBounds();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a.setBounds(((Rect)localObject).left, j, ((Rect)localObject).right, i);
-      Drawable localDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a;
+      Object localObject = this.d.j.getBounds();
+      this.d.j.setBounds(((Rect)localObject).left, j, ((Rect)localObject).right, i);
+      Drawable localDrawable = this.d.j;
       localObject = localDrawable;
-      if (TabLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout) != 0)
+      if (TabLayout.b(this.d) != 0)
       {
         localObject = DrawableCompat.wrap(localDrawable);
         if (Build.VERSION.SDK_INT == 21) {
-          ((Drawable)localObject).setColorFilter(TabLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout), PorterDuff.Mode.SRC_IN);
+          ((Drawable)localObject).setColorFilter(TabLayout.b(this.d), PorterDuff.Mode.SRC_IN);
         } else {
-          DrawableCompat.setTint((Drawable)localObject, TabLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout));
+          DrawableCompat.setTint((Drawable)localObject, TabLayout.b(this.d));
         }
       }
       ((Drawable)localObject).draw(paramCanvas);
@@ -189,13 +189,13 @@ class TabLayout$SlidingTabIndicator
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.a;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning()))
     {
-      a(false, this.jdField_a_of_type_Int, -1);
+      a(false, this.b, -1);
       return;
     }
-    a();
+    b();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -204,7 +204,7 @@ class TabLayout$SlidingTabIndicator
     if (View.MeasureSpec.getMode(paramInt1) != 1073741824) {
       return;
     }
-    if ((this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.h == 1) || (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.k == 2))
+    if ((this.d.p == 1) || (this.d.s == 2))
     {
       int n = getChildCount();
       int m = 0;
@@ -243,8 +243,8 @@ class TabLayout$SlidingTabIndicator
           k += 1;
         }
       }
-      Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout;
-      ((TabLayout)localObject).h = 0;
+      Object localObject = this.d;
+      ((TabLayout)localObject).p = 0;
       ((TabLayout)localObject).a(false);
       m = 1;
       if (m != 0) {
@@ -256,16 +256,16 @@ class TabLayout$SlidingTabIndicator
   public void onRtlPropertiesChanged(int paramInt)
   {
     super.onRtlPropertiesChanged(paramInt);
-    if ((Build.VERSION.SDK_INT < 23) && (this.b != paramInt))
+    if ((Build.VERSION.SDK_INT < 23) && (this.e != paramInt))
     {
       requestLayout();
-      this.b = paramInt;
+      this.e = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayout.SlidingTabIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class ComponentContentRecommend$2$1
   
   public void onClick(View paramView)
   {
-    ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommend$2.a, "0X80094DA", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommend$2.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo);
+    ComponentContentRecommend.a(this.b.a, "0X80094DA", this.a);
+    this.b.a.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommend.2.1
  * JD-Core Version:    0.7.0.1
  */

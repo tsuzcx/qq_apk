@@ -11,17 +11,17 @@ final class ViolaBizUtils$1
   
   public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString2);
+    this.a.invokeErrorCallJS(this.b, paramString2);
   }
   
   public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    ViolaBizUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule, paramReadInJoyUserInfo, this.jdField_a_of_type_JavaLangString);
+    ViolaBizUtils.a(this.a, paramReadInJoyUserInfo, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.utils.ViolaBizUtils.1
  * JD-Core Version:    0.7.0.1
  */

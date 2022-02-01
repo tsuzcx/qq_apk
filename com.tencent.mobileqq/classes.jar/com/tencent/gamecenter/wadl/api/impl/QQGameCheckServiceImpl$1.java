@@ -11,7 +11,7 @@ import org.json.JSONException;
 class QQGameCheckServiceImpl$1
   implements Runnable
 {
-  QQGameCheckServiceImpl$1(QQGameCheckServiceImpl paramQQGameCheckServiceImpl) {}
+  QQGameCheckServiceImpl$1(QQGameCheckServiceImpl paramQQGameCheckServiceImpl, int paramInt) {}
   
   public void run()
   {
@@ -26,17 +26,17 @@ class QQGameCheckServiceImpl$1
       return;
     }
     GameCenterUtil.a();
-    if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (GameCenterUtil.a))
+    if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (GameCenterUtil.b))
     {
       localObject4 = ((String)localObject4).split("\\|");
-      QQGameCheckServiceImpl.access$000(this.this$0, (String[])localObject4);
+      QQGameCheckServiceImpl.access$000(this.this$0, this.a, (String[])localObject4);
     }
-    if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (GameCenterUtil.b))
+    if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (GameCenterUtil.c))
     {
       localObject3 = ((String)localObject3).split("\\|");
-      QQGameCheckServiceImpl.access$100(this.this$0, (String[])localObject3);
+      QQGameCheckServiceImpl.access$100(this.this$0, this.a, (String[])localObject3);
     }
-    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (GameCenterUtil.c)) {
+    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (GameCenterUtil.d)) {
       try
       {
         localObject2 = new JSONArray((String)localObject2);
@@ -63,7 +63,7 @@ class QQGameCheckServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.QQGameCheckServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

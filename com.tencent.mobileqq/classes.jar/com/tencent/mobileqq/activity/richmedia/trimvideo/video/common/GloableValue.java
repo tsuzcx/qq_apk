@@ -11,15 +11,9 @@ import mqq.app.MobileQQ;
 
 public class GloableValue
 {
-  public static long a;
-  public static Context a;
-  public static String a;
-  
-  static
-  {
-    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
-    jdField_a_of_type_Long = -1L;
-  }
+  public static Context a = ;
+  public static String b;
+  public static long c = -1L;
   
   public static void a()
   {
@@ -36,11 +30,11 @@ public class GloableValue
   
   public static boolean a(long paramLong)
   {
-    long l = jdField_a_of_type_Long;
+    long l = c;
     if ((l > 0L) && (l == paramLong)) {
       return true;
     }
-    Object localObject = StorageManager.a().a();
+    Object localObject = StorageManager.a().b();
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return false;
     }
@@ -50,13 +44,13 @@ public class GloableValue
     localStringBuilder.append("cover");
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramLong);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    localObject = new File(jdField_a_of_type_JavaLangString);
+    b = localStringBuilder.toString();
+    localObject = new File(b);
     if ((!((File)localObject).mkdirs()) && (!((File)localObject).isDirectory()))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("make cover dir: ");
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(b);
       ((StringBuilder)localObject).append(" failed.");
       QLog.e("GloableValue", 2, ((StringBuilder)localObject).toString());
       return false;
@@ -79,7 +73,7 @@ public class GloableValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.common.GloableValue
  * JD-Core Version:    0.7.0.1
  */

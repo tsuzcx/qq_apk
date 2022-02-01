@@ -16,15 +16,15 @@ class ArkFullScreenAppActivity$8$1$1
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidContentIntent != null)
+      if (this.a != null)
       {
-        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, this.jdField_a_of_type_AndroidContentIntent, 100);
+        ForwardBaseOption.a(this.b.a.b, this.a, 100);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("ArkFullScreenAppActivity", 2, "showActionSheet share: intent == null");
       }
-      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, HardCodeUtil.a(2131700907), HardCodeUtil.a(2131700903), new ArkFullScreenAppActivity.8.1.1.1(this), null).show();
+      DialogUtil.a(this.b.a.b, 230, HardCodeUtil.a(2131898931), HardCodeUtil.a(2131898927), new ArkFullScreenAppActivity.8.1.1.1(this), null).show();
       return;
     }
     catch (Exception localException)
@@ -41,7 +41,7 @@ class ArkFullScreenAppActivity$8$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1
  * JD-Core Version:    0.7.0.1
  */

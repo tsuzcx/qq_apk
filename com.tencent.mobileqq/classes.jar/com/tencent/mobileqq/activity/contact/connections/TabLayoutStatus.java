@@ -2,36 +2,30 @@ package com.tencent.mobileqq.activity.contact.connections;
 
 public class TabLayoutStatus
 {
-  public int a;
-  public boolean a;
+  public int a = 23;
   public int b = 0;
-  
-  public TabLayoutStatus()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public boolean c = false;
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-    this.jdField_a_of_type_Boolean = false;
+    this.c = true;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Int = 23;
+    this.a = 23;
+    this.b = 0;
+    this.c = false;
+  }
+  
+  public void d()
+  {
+    this.a = 23;
     this.b = 0;
   }
   
@@ -39,11 +33,11 @@ public class TabLayoutStatus
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TabLayoutStatus{tabId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", tabPosition=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", display='");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -51,7 +45,7 @@ public class TabLayoutStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.TabLayoutStatus
  * JD-Core Version:    0.7.0.1
  */

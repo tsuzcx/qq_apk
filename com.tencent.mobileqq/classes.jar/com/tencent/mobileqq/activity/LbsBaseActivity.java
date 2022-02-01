@@ -74,7 +74,7 @@ public class LbsBaseActivity
   private void showEnableLbsDialog(Runnable paramRunnable)
   {
     paramRunnable = new LbsBaseActivity.4(this, paramRunnable);
-    this.entDialog = CustomDialogFactory.a(this, 2131691962, getContentTipsForEnableLbs(), 2131691810, 2131691807, new LbsBaseActivity.5(this), new LbsBaseActivity.6(this));
+    this.entDialog = CustomDialogFactory.a(this, 2131888929, getContentTipsForEnableLbs(), 2131888773, 2131888770, new LbsBaseActivity.5(this), new LbsBaseActivity.6(this));
     this.entDialog.setOnDismissListener(paramRunnable);
     this.entDialog.show();
   }
@@ -83,7 +83,7 @@ public class LbsBaseActivity
   {
     if (this.gpsDialog == null)
     {
-      this.gpsDialog = CustomDialogFactory.a(this, 17039380, 2131692994, 2131718171, 2131691807, new LbsBaseActivity.1(this), new LbsBaseActivity.2(this));
+      this.gpsDialog = CustomDialogFactory.a(this, 17039380, 2131890108, 2131915650, 2131888770, new LbsBaseActivity.1(this), new LbsBaseActivity.2(this));
       this.gpsDialog.setOnDismissListener(new LbsBaseActivity.3(this, paramRunnable));
     }
     notifyShowLbsEnableDlg();
@@ -174,7 +174,7 @@ public class LbsBaseActivity
   
   protected int getContentTipsForEnableLbs()
   {
-    return 2131691960;
+    return 2131888927;
   }
   
   protected int getTitleBarBottom()
@@ -213,20 +213,20 @@ public class LbsBaseActivity
   protected void showToast(int paramInt1, int paramInt2)
   {
     if (isResume()) {
-      QQToast.a(this, paramInt1, getResources().getString(paramInt2), 0).b(getTitleBarHeight());
+      QQToast.makeText(this, paramInt1, getResources().getString(paramInt2), 0).show(getTitleBarHeight());
     }
   }
   
   protected void showToast(int paramInt, String paramString)
   {
     if (isResume()) {
-      QQToast.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+      QQToast.makeText(this, paramInt, paramString, 0).show(getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity
  * JD-Core Version:    0.7.0.1
  */

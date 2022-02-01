@@ -12,8 +12,8 @@ class ScreenRecordHelper$1
     if (ScreenRecordHelper.a(this.this$0) != null)
     {
       ScreenRecordHelper localScreenRecordHelper = this.this$0;
-      ScreenRecordHelper.a(localScreenRecordHelper, ScreenRecordHelper.a(localScreenRecordHelper) + 1000L);
-      ScreenRecordHelper.a(this.this$0).a(ScreenRecordHelper.a(this.this$0));
+      ScreenRecordHelper.a(localScreenRecordHelper, ScreenRecordHelper.b(localScreenRecordHelper) + 1000L);
+      ScreenRecordHelper.a(this.this$0).a(ScreenRecordHelper.b(this.this$0));
     }
   }
 }

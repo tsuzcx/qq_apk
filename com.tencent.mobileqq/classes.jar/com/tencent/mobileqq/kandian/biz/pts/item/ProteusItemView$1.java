@@ -12,12 +12,12 @@ class ProteusItemView$1
   
   public void a(View paramView, Map<String, Object> paramMap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsOnLastReadRefreshListener.m();
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.ProteusItemView.1
  * JD-Core Version:    0.7.0.1
  */

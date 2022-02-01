@@ -23,11 +23,11 @@ final class TroopSignItemBuilder$TroopSignVideoItemBuilder$5
     }
     if ((paramInt == 0) && (paramString == null))
     {
-      paramString = TroopSignItemBuilder.TroopSignVideoItemBuilder.a.entrySet().iterator();
+      paramString = TroopSignItemBuilder.TroopSignVideoItemBuilder.D.entrySet().iterator();
       while (paramString.hasNext()) {
         ((TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback)((Map.Entry)paramString.next()).getValue()).a(paramInt);
       }
-      TroopSignItemBuilder.TroopSignVideoItemBuilder.a.clear();
+      TroopSignItemBuilder.TroopSignVideoItemBuilder.D.clear();
     }
   }
   
@@ -35,7 +35,7 @@ final class TroopSignItemBuilder$TroopSignVideoItemBuilder$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,6 @@ public class SimpleActivityLifeCycle
   
   public void a(Bundle paramBundle1, Bundle paramBundle2) {}
   
-  public void c() {}
-  
   public void d() {}
   
   public void e() {}
@@ -19,10 +17,12 @@ public class SimpleActivityLifeCycle
   public void f() {}
   
   public void g() {}
+  
+  public void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.SimpleActivityLifeCycle
  * JD-Core Version:    0.7.0.1
  */

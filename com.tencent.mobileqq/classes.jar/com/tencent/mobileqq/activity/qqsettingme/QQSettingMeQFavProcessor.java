@@ -14,28 +14,28 @@ import mqq.app.AppRuntime;
 public class QQSettingMeQFavProcessor
   extends QQSettingMeBaseMenuProcessor
 {
-  public String a()
-  {
-    return "d_favorite";
-  }
-  
   public void a(View paramView)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.isInMultiWindow();
-    QfavHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), null, -1, bool ^ true);
-    QfavReport.b(this.jdField_a_of_type_MqqAppAppRuntime, 1, 0);
-    QfavUtil.a(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
-    com.tencent.mobileqq.activity.recent.DrawerFrame.a = QQSettingMe.a;
-    paramView = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
+    boolean bool = this.d.isInMultiWindow();
+    QfavHelper.a(this.d, this.c.getAccount(), null, -1, bool ^ true);
+    QfavReport.b(this.c, 1, 0);
+    QfavUtil.a(this.c.getCurrentAccountUin());
+    com.tencent.mobileqq.activity.recent.DrawerFrame.b = QQSettingMe.a;
+    paramView = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
     BusinessInfoCheckUpdate.AppInfo localAppInfo = paramView.getAppInfoByPath(String.valueOf(103000));
     if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0)) {
       paramView.reportLevelOneRedInfo(103000, 31);
     }
   }
+  
+  public String b()
+  {
+    return "d_favorite";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeQFavProcessor
  * JD-Core Version:    0.7.0.1
  */

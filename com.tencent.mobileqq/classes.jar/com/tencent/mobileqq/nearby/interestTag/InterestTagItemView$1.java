@@ -12,14 +12,14 @@ class InterestTagItemView$1
   {
     if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
     {
-      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
+      InterestTagItemView.c(this.a).a(InterestTagItemView.b(this.a));
       this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.InterestTagItemView.1
  * JD-Core Version:    0.7.0.1
  */

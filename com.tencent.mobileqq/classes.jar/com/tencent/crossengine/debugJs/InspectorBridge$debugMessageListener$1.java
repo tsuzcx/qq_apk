@@ -10,12 +10,12 @@ public final class InspectorBridge$debugMessageListener$1
   implements InspectorAgent.DebuggerMessageListener
 {
   @Nullable
-  private InspectorAgent.DebuggerMessageListener jdField_a_of_type_ComTencentCrossengineDebugJsInspectorAgent$DebuggerMessageListener = (InspectorAgent.DebuggerMessageListener)new InspectorBridge.debugMessageListener.1.real.1(this);
+  private InspectorAgent.DebuggerMessageListener b = (InspectorAgent.DebuggerMessageListener)new InspectorBridge.debugMessageListener.1.real.1(this);
   
   public void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "message");
-    InspectorAgent.DebuggerMessageListener localDebuggerMessageListener = this.jdField_a_of_type_ComTencentCrossengineDebugJsInspectorAgent$DebuggerMessageListener;
+    InspectorAgent.DebuggerMessageListener localDebuggerMessageListener = this.b;
     if (localDebuggerMessageListener != null) {
       localDebuggerMessageListener.a(paramString);
     }
@@ -23,7 +23,7 @@ public final class InspectorBridge$debugMessageListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.debugJs.InspectorBridge.debugMessageListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,6 +16,7 @@ import com.tencent.mobileqq.comment.IDanmakuClearListener;
 import com.tencent.mobileqq.comment.danmaku.CommentDanmakuManager;
 import com.tencent.mobileqq.comment.danmaku.IDanmakuControlListener;
 import com.tencent.mobileqq.comment.danmaku.IPlayerTime;
+import com.tencent.mobileqq.danmaku.QQDanmakuManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
@@ -54,80 +55,46 @@ public class AIOBrowserPresenter
   extends MainBrowserPresenter
   implements Handler.Callback, MsgRevokeListener, DanmuDataIPCClient.DanmuCacheObserver, IDanmakuControlListener, IPlayerTime
 {
-  private int jdField_a_of_type_Int = 30000;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private IDanmakuClearListener jdField_a_of_type_ComTencentMobileqqCommentIDanmakuClearListener;
-  private CommentDanmakuManager jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager;
-  public AIOBrowserModel a;
   public AIOBrowserScene a;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  public AIOBrowserModel b;
+  private Handler c;
+  private int d = 30000;
+  private volatile boolean e = false;
+  private String f;
+  private AtomicBoolean g = new AtomicBoolean(false);
+  private IDanmakuClearListener h;
+  private CommentDanmakuManager i;
   
-  private int a()
+  private void a(IDanmakuClearListener paramIDanmakuClearListener)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.getSelectedItem();
-    int j = -1;
-    if (localObject == null) {
-      return -1;
-    }
-    localObject = ((RichMediaBrowserInfo)localObject).baseData;
-    int i = j;
-    if (localObject != null)
-    {
-      if ((localObject instanceof AIOFilePictureData)) {
-        return 2;
-      }
-      if ((localObject instanceof AIOPictureData))
-      {
-        if (!((AIOPictureData)localObject).i) {
-          return 1;
-        }
-      }
-      else
-      {
-        if ((localObject instanceof AIOVideoData))
-        {
-          localObject = (AIOVideoData)localObject;
-          if (((AIOVideoData)localObject).d == 0) {
-            return 4;
-          }
-          i = j;
-          if (((AIOVideoData)localObject).d != 1) {
-            return i;
-          }
-          return 3;
-        }
-        i = j;
-        if (!(localObject instanceof AIOFileVideoData)) {
-          return i;
-        }
-      }
-      i = 5;
-    }
-    return i;
+    this.h = paramIDanmakuClearListener;
   }
   
-  private int a(String paramString)
+  public static void a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.getSelectedItem();
-    int j = -1;
+    ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  private int b(String paramString)
+  {
+    Object localObject = this.b.getSelectedItem();
+    int k = -1;
     if (localObject == null) {
       return -1;
     }
     localObject = ((RichMediaBrowserInfo)localObject).baseData;
-    int i = j;
+    int j = k;
     if (localObject != null) {
       if ((localObject instanceof AIOVideoData))
       {
         localObject = (AIOVideoData)localObject;
-        if (((AIOVideoData)localObject).d == 0)
+        if (((AIOVideoData)localObject).m == 0)
         {
           if ((!"0X800A99B".equals(paramString)) && (!"0X800A9B5".equals(paramString)))
           {
-            i = j;
+            j = k;
             if (!"0X8009AA6".equals(paramString)) {
-              return i;
+              return j;
             }
           }
           else
@@ -137,15 +104,15 @@ public class AIOBrowserPresenter
         }
         else
         {
-          i = j;
-          if (((AIOVideoData)localObject).d != 1) {
-            return i;
+          j = k;
+          if (((AIOVideoData)localObject).m != 1) {
+            return j;
           }
           if ((!"0X800A99B".equals(paramString)) && (!"0X800A9B5".equals(paramString)))
           {
-            i = j;
+            j = k;
             if (!"0X8009AA6".equals(paramString)) {
-              return i;
+              return j;
             }
           }
         }
@@ -153,75 +120,33 @@ public class AIOBrowserPresenter
       }
       else
       {
-        i = j;
+        j = k;
         if ((localObject instanceof AIOFileVideoData)) {
           if (!"0X800A99B".equals(paramString))
           {
-            i = j;
+            j = k;
             if (!"0X800A9B5".equals(paramString)) {}
           }
           else
           {
-            i = 3;
+            j = 3;
           }
         }
       }
     }
-    return i;
+    return j;
   }
   
-  private void a(int paramInt)
+  private int c(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
-    if (localObject != null)
+    int j = ParamsManager.a().o();
+    if (j != 1)
     {
-      localObject = ((Handler)localObject).obtainMessage(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, paramInt);
-    }
-  }
-  
-  private void a(IDanmakuClearListener paramIDanmakuClearListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqCommentIDanmakuClearListener = paramIDanmakuClearListener;
-  }
-  
-  public static void a(String paramString)
-  {
-    ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  private int b()
-  {
-    int j = ParamsManager.a().a();
-    int i = 1;
-    if (j != 0)
-    {
-      if (j != 1)
+      if (j != 2)
       {
-        if ((j != 1008) && (j != 2016) && (j != 1010) && (j != 1011)) {
-          switch (j)
-          {
-          default: 
-            return 4;
-          }
-        }
-        return 3;
-      }
-      i = 2;
-    }
-    return i;
-  }
-  
-  private int b(String paramString)
-  {
-    int i = ParamsManager.a().c();
-    if (i != 1)
-    {
-      if (i != 2)
-      {
-        if (i != 3)
+        if (j != 3)
         {
-          if (i != 5) {}
+          if (j != 5) {}
           do
           {
             return -1;
@@ -232,14 +157,24 @@ public class AIOBrowserPresenter
           return 5;
           return 6;
         }
-        return c(paramString);
+        return d(paramString);
       }
-      return d(paramString);
+      return e(paramString);
     }
     return 1;
   }
   
-  private int c(String paramString)
+  private void c(int paramInt)
+  {
+    Object localObject = this.c;
+    if (localObject != null)
+    {
+      localObject = ((Handler)localObject).obtainMessage(1);
+      this.c.sendMessageDelayed((Message)localObject, paramInt);
+    }
+  }
+  
+  private int d(String paramString)
   {
     if ((!"0X8009EFC".equals(paramString)) && (!"0X800A418".equals(paramString)) && (!"0X800A419".equals(paramString)) && (!"0X800A41A".equals(paramString)) && (!"0X800A41B".equals(paramString)) && (!"0X800A41C".equals(paramString)) && (!"0X800A41D".equals(paramString)) && (!"0X800A41E".equals(paramString)))
     {
@@ -249,7 +184,7 @@ public class AIOBrowserPresenter
     return 4;
   }
   
-  private int d(String paramString)
+  private int e(String paramString)
   {
     if ((!"0X8009EFC".equals(paramString)) && (!"0X800A418".equals(paramString)) && (!"0X800A419".equals(paramString)) && (!"0X800A41A".equals(paramString)) && (!"0X800A41B".equals(paramString)) && (!"0X800A41C".equals(paramString)) && (!"0X800A41D".equals(paramString)) && (!"0X800A41E".equals(paramString)))
     {
@@ -264,38 +199,38 @@ public class AIOBrowserPresenter
     return 5;
   }
   
-  private void o()
+  private void q()
   {
-    DanmuDataIPCClient.a();
+    DanmuDataIPCClient.b();
     DanmuDataIPCClient.a().a(this);
     a(DanmuDataIPCClient.a());
-    CommentDanmakuManager localCommentDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager;
+    CommentDanmakuManager localCommentDanmakuManager = this.i;
     if (localCommentDanmakuManager != null)
     {
       localCommentDanmakuManager.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.mContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.a);
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.a();
+      this.i.a(this.a.mContext, this.a.a);
+      this.i.b();
     }
   }
   
-  private void p()
+  private void r()
   {
     if (b(getCurrentPosition()))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel;
+      Object localObject = this.b;
       if ((localObject != null) && (((AIOBrowserModel)localObject).getItem(getCurrentPosition()) != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.getItem(getCurrentPosition());
+        localObject = this.b.getItem(getCurrentPosition());
         if (!(((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)) {
           return;
         }
         try
         {
-          if (this.jdField_a_of_type_AndroidOsHandler != null) {
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+          if (this.c != null) {
+            this.c.removeMessages(1);
           }
-          DanmuDataIPCClient.a().a(((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).d, Long.valueOf(ParamsManager.a().a()).longValue(), ((RichMediaBrowserInfo)localObject).baseData.getType());
-          a(this.jdField_a_of_type_Int);
+          DanmuDataIPCClient.a().a(((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).e, Long.valueOf(ParamsManager.a().e()).longValue(), ((RichMediaBrowserInfo)localObject).baseData.getType());
+          c(this.d);
           return;
         }
         catch (Exception localException)
@@ -312,75 +247,108 @@ public class AIOBrowserPresenter
     BrowserLogHelper.getInstance().getGalleryLog().i("AIOGalleryPresenter", 2, "getDanmakuList return");
   }
   
-  public int a(long paramLong)
+  private int s()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a();
-    if (localList != null)
+    Object localObject = this.b.getSelectedItem();
+    int k = -1;
+    if (localObject == null) {
+      return -1;
+    }
+    localObject = ((RichMediaBrowserInfo)localObject).baseData;
+    int j = k;
+    if (localObject != null)
     {
-      int j = localList.size();
-      int i = 0;
-      while (i < j)
-      {
-        RichMediaBrowserInfo localRichMediaBrowserInfo = (RichMediaBrowserInfo)localList.get(i);
-        if (((localRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) && (((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).a == paramLong)) {
-          return i;
-        }
-        i += 1;
+      if ((localObject instanceof AIOFilePictureData)) {
+        return 2;
       }
+      if ((localObject instanceof AIOPictureData))
+      {
+        if (!((AIOPictureData)localObject).A) {
+          return 1;
+        }
+      }
+      else
+      {
+        if ((localObject instanceof AIOVideoData))
+        {
+          localObject = (AIOVideoData)localObject;
+          if (((AIOVideoData)localObject).m == 0) {
+            return 4;
+          }
+          j = k;
+          if (((AIOVideoData)localObject).m != 1) {
+            return j;
+          }
+          return 3;
+        }
+        j = k;
+        if (!(localObject instanceof AIOFileVideoData)) {
+          return j;
+        }
+      }
+      j = 5;
     }
-    return -1;
+    return j;
   }
   
-  public long a()
+  private int t()
   {
-    IDecoratorPresenter localIDecoratorPresenter = getCurrentDecoratorPresenter();
-    if ((localIDecoratorPresenter instanceof AIOBrowserBasePresenter)) {
-      return ((AIOBrowserBasePresenter)localIDecoratorPresenter).a();
+    int k = ParamsManager.a().i();
+    int j = 1;
+    if (k != 0)
+    {
+      if (k != 1)
+      {
+        if ((k != 1008) && (k != 2016) && (k != 1010) && (k != 1011)) {
+          switch (k)
+          {
+          default: 
+            return 4;
+          }
+        }
+        return 3;
+      }
+      j = 2;
     }
-    return 0L;
-  }
-  
-  public CommentDanmakuManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager;
+    return j;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.e = true;
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene != null)
+    if (this.a != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.getSelectedItem();
+      Object localObject = this.b.getSelectedItem();
       if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
       {
         boolean bool;
-        if ((ParamsManager.a().d()) && (ParamsManager.a().a() == paramLong)) {
+        if ((ParamsManager.a().g()) && (ParamsManager.a().h() == paramLong)) {
           bool = true;
         } else {
           bool = false;
         }
         if ((!bool) && ((getParamsBuilder().a() instanceof IAIOBrowserProvider))) {
-          ((IAIOBrowserProvider)getParamsBuilder().a()).e(paramLong);
+          ((IAIOBrowserProvider)getParamsBuilder().a()).f(paramLong);
         }
         if (!bool)
         {
           IDecoratorPresenter localIDecoratorPresenter = getDecoratorPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
           if ((localIDecoratorPresenter instanceof AIOBrowserBasePresenter))
           {
-            int i = a(paramLong);
-            if (i >= 0) {
-              ((AIOBrowserBasePresenter)localIDecoratorPresenter).a(i);
+            int j = c(paramLong);
+            if (j >= 0) {
+              ((AIOBrowserBasePresenter)localIDecoratorPresenter).b(j);
             }
           }
         }
-        if (((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.mContext instanceof Activity)) && ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)))
+        if (((this.a.mContext instanceof Activity)) && ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData)))
         {
           localObject = (AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData;
-          ((Activity)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.mContext).runOnUiThread(new AIOBrowserPresenter.2(this, paramLong, (AIOBrowserBaseData)localObject, bool));
+          ((Activity)this.a.mContext).runOnUiThread(new AIOBrowserPresenter.2(this, paramLong, (AIOBrowserBaseData)localObject, bool));
         }
       }
       else
@@ -394,16 +362,16 @@ public class AIOBrowserPresenter
   {
     if ((paramInt2 == 2) || (paramInt2 == 24) || (paramInt2 == 4) || (paramInt2 == 18) || (paramInt2 == 20) || (paramInt2 == 1) || (paramInt2 == 256) || (paramInt2 == 269484035))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel;
+      Object localObject = this.b;
       if (localObject != null)
       {
-        int i;
+        int j;
         if ((paramInt2 != 18) && (paramInt2 != 20)) {
-          i = ((AIOBrowserModel)localObject).a(paramLong1, paramInt1);
+          j = ((AIOBrowserModel)localObject).a(paramLong1, paramInt1);
         } else {
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(paramLong1);
+          j = this.b.a(paramLong1);
         }
-        localObject = getDecoratorPresenter(i);
+        localObject = getDecoratorPresenter(j);
         if ((localObject instanceof AIOBrowserBasePresenter)) {
           ((AIOBrowserBasePresenter)localObject).a(paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean);
         }
@@ -415,16 +383,16 @@ public class AIOBrowserPresenter
   {
     if ((paramInt2 == 2) || (paramInt2 == 24) || (paramInt2 == 4) || (paramInt2 == 18) || (paramInt2 == 20) || (paramInt2 == 256) || (paramInt2 == 1) || (paramInt2 == 0) || (paramInt2 == 269484034))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel;
+      Object localObject = this.b;
       if (localObject != null)
       {
-        int i;
+        int j;
         if ((paramInt2 != 18) && (paramInt2 != 20) && (paramInt2 != 269484034)) {
-          i = ((AIOBrowserModel)localObject).a(paramLong, paramInt1);
+          j = ((AIOBrowserModel)localObject).a(paramLong, paramInt1);
         } else {
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(paramLong);
+          j = this.b.a(paramLong);
         }
-        localObject = getDecoratorPresenter(i);
+        localObject = getDecoratorPresenter(j);
         if ((localObject instanceof AIOBrowserBasePresenter)) {
           ((AIOBrowserBasePresenter)localObject).a(paramLong, paramInt1, paramInt2, paramInt3, paramString, paramBoolean);
         }
@@ -434,7 +402,7 @@ public class AIOBrowserPresenter
   
   public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageRecord paramMessageRecord, int paramInt3, Bundle paramBundle)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = getDecoratorPresenter(((AIOBrowserModel)localObject).a(paramLong, paramInt1));
@@ -446,31 +414,31 @@ public class AIOBrowserPresenter
   
   public void a(long paramLong1, long paramLong2, String paramString)
   {
-    ((IShortVideoDepend)QRoute.api(IShortVideoDepend.class)).reportVideoPlayEvent(b(), paramString, 2, a("0X8009AA6"), paramLong1, paramLong2);
+    ((IShortVideoDepend)QRoute.api(IShortVideoDepend.class)).reportVideoPlayEvent(t(), paramString, 2, b("0X8009AA6"), paramLong1, paramLong2);
   }
   
   public void a(long paramLong, String paramString, int paramInt, List<DanmuItemBean> paramList)
   {
     if (paramInt > 0) {
-      this.jdField_a_of_type_Int = (paramInt * 1000);
+      this.d = (paramInt * 1000);
     }
-    if ((!this.jdField_a_of_type_Boolean) && ((paramList == null) || (paramList.isEmpty())))
+    if ((!this.e) && ((paramList == null) || (paramList.isEmpty())))
     {
       paramString = getCurrentDecoratorPresenter();
-      if (((paramString instanceof AIOBrowserBasePresenter)) && (this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager != null))
+      if (((paramString instanceof AIOBrowserBasePresenter)) && (this.i != null))
       {
         BrowserLogHelper.getInstance().getGalleryLog().i("AIOGalleryPresenter", 2, "onDanmuListChange onDanmakuDrawFinish");
-        ((AIOBrowserBasePresenter)paramString).c();
-        this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.a(null);
+        ((AIOBrowserBasePresenter)paramString).f();
+        this.i.a(null);
       }
     }
-    if ((paramList != null) && (paramList.size() > 0) && (a(paramLong)))
+    if ((paramList != null) && (paramList.size() > 0) && (b(paramLong)))
     {
       Object localObject = getCurrentDecoratorPresenter();
-      if (((localObject instanceof AIOBrowserBasePresenter)) && (this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel != null))
+      if (((localObject instanceof AIOBrowserBasePresenter)) && (this.i != null) && (this.b != null))
       {
-        c();
-        RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.getSelectedItem();
+        e();
+        RichMediaBrowserInfo localRichMediaBrowserInfo = this.b.getSelectedItem();
         if ((localRichMediaBrowserInfo != null) && (localRichMediaBrowserInfo.baseData != null))
         {
           paramString = new ArrayList();
@@ -480,15 +448,15 @@ public class AIOBrowserPresenter
             break;
           case 101: 
           case 103: 
-            paramString = a();
+            paramString = d();
             localObject = (AIOBrowserBasePresenter)localObject;
-            paramString = BrowserDanmakuUtils.a(paramLong, paramList, paramString, ((AIOBrowserBasePresenter)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, ((AIOBrowserBasePresenter)localObject).a());
+            paramString = BrowserDanmakuUtils.a(paramLong, paramList, paramString, ((AIOBrowserBasePresenter)localObject).d, ((AIOBrowserBasePresenter)localObject).d());
             break;
           case 100: 
           case 102: 
-            paramString = BrowserDanmakuUtils.a(paramLong, paramList, a(), ((AIOBrowserBasePresenter)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+            paramString = BrowserDanmakuUtils.a(paramLong, paramList, d(), ((AIOBrowserBasePresenter)localObject).d);
           }
-          this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.a(paramString);
+          this.i.b(paramString);
         }
       }
     }
@@ -496,47 +464,47 @@ public class AIOBrowserPresenter
   
   public void a(long paramLong, String paramString, DanmuItemBean paramDanmuItemBean)
   {
-    if ((NetworkUtil.isNetworkAvailable()) && (paramDanmuItemBean != null) && (a(paramLong)) && (this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager != null))
+    if ((NetworkUtil.isNetworkAvailable()) && (paramDanmuItemBean != null) && (b(paramLong)) && (this.i != null))
     {
-      c();
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.a(paramDanmuItemBean);
+      e();
+      this.i.a(paramDanmuItemBean);
     }
   }
   
   public void a(AIOBrowserModel paramAIOBrowserModel)
   {
     super.setBrowserModel(paramAIOBrowserModel);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel = paramAIOBrowserModel;
+    this.b = paramAIOBrowserModel;
   }
   
   public void a(AIOBrowserScene paramAIOBrowserScene)
   {
     super.setBrowserScene(paramAIOBrowserScene);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene = paramAIOBrowserScene;
+    this.a = paramAIOBrowserScene;
   }
   
   public void a(boolean paramBoolean)
   {
-    CommentDanmakuManager localCommentDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager;
-    if ((localCommentDanmakuManager != null) && (localCommentDanmakuManager.a()) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene != null))
+    CommentDanmakuManager localCommentDanmakuManager = this.i;
+    if ((localCommentDanmakuManager != null) && (localCommentDanmakuManager.e()) && (this.a != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.d();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.a(paramBoolean);
+      this.i.f();
+      this.a.a(paramBoolean);
     }
   }
   
   public void a(AIOBrowserBaseData[] paramArrayOfAIOBrowserBaseData, int paramInt)
   {
-    int i;
+    int j;
     if (paramArrayOfAIOBrowserBaseData != null) {
-      i = paramArrayOfAIOBrowserBaseData.length;
+      j = paramArrayOfAIOBrowserBaseData.length;
     } else {
-      i = 0;
+      j = 0;
     }
     paramArrayOfAIOBrowserBaseData = BrowserLogHelper.getInstance().getGalleryLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("notifyImageListChanged list size ");
-    localStringBuilder.append(i);
+    localStringBuilder.append(j);
     localStringBuilder.append(", selected ");
     localStringBuilder.append(paramInt);
     paramArrayOfAIOBrowserBaseData.i("AIOGalleryPresenter", 2, localStringBuilder.toString());
@@ -547,7 +515,7 @@ public class AIOBrowserPresenter
   
   public boolean a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel;
+    Object localObject = this.b;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localObject != null)
@@ -573,9 +541,28 @@ public class AIOBrowserPresenter
     return bool1;
   }
   
-  public boolean a(long paramLong)
+  public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel;
+    if (this.e)
+    {
+      IDecoratorPresenter localIDecoratorPresenter = getCurrentDecoratorPresenter();
+      if (((localIDecoratorPresenter instanceof AIOBrowserBasePresenter)) && (this.i != null))
+      {
+        BrowserLogHelper.getInstance().getGalleryLog().i("AIOGalleryPresenter", 2, "onDanmakuDrawFinish");
+        ((AIOBrowserBasePresenter)localIDecoratorPresenter).f();
+        this.i.a(null);
+      }
+    }
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return (BrowserDanmakuUtils.a(this.b.getSelectedItem())) && (a(paramInt));
+  }
+  
+  public boolean b(long paramLong)
+  {
+    Object localObject = this.b;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localObject != null)
@@ -588,7 +575,7 @@ public class AIOBrowserPresenter
         if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOBrowserBaseData))
         {
           bool1 = bool2;
-          if (paramLong == ((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).d) {
+          if (paramLong == ((AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData).e) {
             bool1 = true;
           }
         }
@@ -597,33 +584,15 @@ public class AIOBrowserPresenter
     return bool1;
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      IDecoratorPresenter localIDecoratorPresenter = getCurrentDecoratorPresenter();
-      if (((localIDecoratorPresenter instanceof AIOBrowserBasePresenter)) && (this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager != null))
-      {
-        BrowserLogHelper.getInstance().getGalleryLog().i("AIOGalleryPresenter", 2, "onDanmakuDrawFinish");
-        ((AIOBrowserBasePresenter)localIDecoratorPresenter).c();
-        this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.a(null);
-      }
-    }
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return (BrowserDanmakuUtils.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.getSelectedItem())) && (a(paramInt));
-  }
-  
   public void buildComplete()
   {
     if (BrowserDanmakuUtils.a())
     {
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager = new CommentDanmakuManager();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-      this.jdField_a_of_type_JavaLangString = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      o();
+      QQDanmakuManager.a();
+      this.i = new CommentDanmakuManager();
+      this.c = new Handler(Looper.getMainLooper(), this);
+      this.f = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      q();
     }
     super.buildComplete();
   }
@@ -640,20 +609,20 @@ public class AIOBrowserPresenter
         {
           RichMediaBrowserInfo localRichMediaBrowserInfo = new RichMediaBrowserInfo();
           localRichMediaBrowserInfo.baseData = localAIOBrowserBaseData;
-          if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(localRichMediaBrowserInfo))
+          if (this.b.b(localRichMediaBrowserInfo))
           {
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.b(localRichMediaBrowserInfo);
+            this.b.c(localRichMediaBrowserInfo);
             if (paramIntent.getBoolean("muate_play")) {
-              this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.c(localRichMediaBrowserInfo);
+              this.b.d(localRichMediaBrowserInfo);
             }
             long l = paramIntent.getLong("click_video_bubble_time");
             if (l > 0L) {
-              this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(localRichMediaBrowserInfo, l);
+              this.b.a(localRichMediaBrowserInfo, l);
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(localRichMediaBrowserInfo);
-          if (ParamsManager.a().f()) {
-            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOBrowserModel.a(true);
+          this.b.a(localRichMediaBrowserInfo);
+          if (ParamsManager.a().n()) {
+            this.b.a(true);
           }
         }
       }
@@ -663,73 +632,80 @@ public class AIOBrowserPresenter
   
   public void buildPresenter() {}
   
-  public void c()
+  public int c(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      ThreadManagerV2.excute(new AIOBrowserPresenter.1(this), 128, null, true);
+    List localList = this.b.c();
+    if (localList != null)
+    {
+      int k = localList.size();
+      int j = 0;
+      while (j < k)
+      {
+        RichMediaBrowserInfo localRichMediaBrowserInfo = (RichMediaBrowserInfo)localList.get(j);
+        if (((localRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) && (((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).a == paramLong)) {
+          return j;
+        }
+        j += 1;
+      }
     }
+    return -1;
   }
   
-  public void d()
+  public long c()
   {
-    CommentDanmakuManager localCommentDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager;
-    if ((localCommentDanmakuManager != null) && (!localCommentDanmakuManager.a()) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.e();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene.a(true);
+    IDecoratorPresenter localIDecoratorPresenter = getCurrentDecoratorPresenter();
+    if ((localIDecoratorPresenter instanceof AIOBrowserBasePresenter)) {
+      return ((AIOBrowserBasePresenter)localIDecoratorPresenter).d();
     }
+    return 0L;
+  }
+  
+  public CommentDanmakuManager d()
+  {
+    return this.i;
   }
   
   public void e()
   {
-    int i = a();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
-    localObject = ((StringBuilder)localObject).toString();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(b("0X8009EFD"));
-    ReportController.b(null, "dc00898", "", "", "0X8009EFD", "0X8009EFD", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    if (this.g.compareAndSet(false, true)) {
+      ThreadManagerV2.excute(new AIOBrowserPresenter.1(this), 128, null, true);
+    }
   }
   
   public void f()
   {
-    int i = a();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
-    localObject = ((StringBuilder)localObject).toString();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(b("0X8009EFC"));
-    ReportController.b(null, "dc00898", "", "", "0X8009EFC", "0X8009EFC", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    CommentDanmakuManager localCommentDanmakuManager = this.i;
+    if ((localCommentDanmakuManager != null) && (!localCommentDanmakuManager.e()) && (this.a != null))
+    {
+      this.i.g();
+      this.a.a(true);
+    }
   }
   
   public void g()
   {
-    int i = a();
+    int j = s();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append(t());
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(b("0X800A418"));
-    ReportController.b(null, "dc00898", "", "", "0X800A418", "0X800A418", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    localStringBuilder.append(c("0X8009EFD"));
+    ReportController.b(null, "dc00898", "", "", "0X8009EFD", "0X8009EFD", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
   
   public void h()
   {
-    int i = a();
+    int j = s();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append(t());
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(b("0X800A419"));
-    ReportController.b(null, "dc00898", "", "", "0X800A419", "0X800A419", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    localStringBuilder.append(c("0X8009EFC"));
+    ReportController.b(null, "dc00898", "", "", "0X8009EFC", "0X8009EFC", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -737,88 +713,105 @@ public class AIOBrowserPresenter
     if (paramMessage.what != 1) {
       return true;
     }
-    p();
+    r();
     return true;
   }
   
   public void i()
   {
-    int i = a();
+    int j = s();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append(t());
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(b("0X800A41A"));
-    ReportController.b(null, "dc00898", "", "", "0X800A41A", "0X800A41A", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    localStringBuilder.append(c("0X800A418"));
+    ReportController.b(null, "dc00898", "", "", "0X800A418", "0X800A418", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
   
   public void j()
   {
-    int i = a();
+    int j = s();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append(t());
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(b("0X800A41B"));
-    ReportController.b(null, "dc00898", "", "", "0X800A41B", "0X800A41B", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    localStringBuilder.append(c("0X800A419"));
+    ReportController.b(null, "dc00898", "", "", "0X800A419", "0X800A419", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
   
   public void k()
   {
-    int i = a();
+    int j = s();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append(t());
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(b("0X800A41C"));
-    ReportController.b(null, "dc00898", "", "", "0X800A41C", "0X800A41C", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    localStringBuilder.append(c("0X800A41A"));
+    ReportController.b(null, "dc00898", "", "", "0X800A41A", "0X800A41A", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
   
   public void l()
   {
-    int i = a();
+    int j = s();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append(t());
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(b("0X800A41D"));
-    ReportController.b(null, "dc00898", "", "", "0X800A41D", "0X800A41D", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    localStringBuilder.append(c("0X800A41B"));
+    ReportController.b(null, "dc00898", "", "", "0X800A41B", "0X800A41B", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
   
   public void m()
   {
-    int i = a();
+    int j = s();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(b());
+    ((StringBuilder)localObject).append(t());
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(b("0X8009EFC"));
-    ReportController.b(null, "dc00898", "", "", "0X800A7C0", "0X800A7C0", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
+    localStringBuilder.append(c("0X800A41C"));
+    ReportController.b(null, "dc00898", "", "", "0X800A41C", "0X800A41C", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
   
   public void n()
   {
-    int i = a();
+    int j = s();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(t());
+    localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(b("0X800A882"));
-    ReportController.b(null, "dc00898", "", "", "0X800A882", "0X800A882", i, 0, localStringBuilder.toString(), "", "", "");
+    localStringBuilder.append(c("0X800A41D"));
+    ReportController.b(null, "dc00898", "", "", "0X800A41D", "0X800A41D", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
+  }
+  
+  public void o()
+  {
+    int j = s();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(t());
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(c("0X8009EFC"));
+    ReportController.b(null, "dc00898", "", "", "0X800A7C0", "0X800A7C0", j, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AIOBrowserScene localAIOBrowserScene = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene;
+    AIOBrowserScene localAIOBrowserScene = this.a;
     if (localAIOBrowserScene != null) {
       localAIOBrowserScene.a(paramInt1, paramInt2, paramIntent);
     }
@@ -826,23 +819,23 @@ public class AIOBrowserPresenter
   
   public void onDestroy()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject1 = this.c;
     if (localObject1 != null) {
       ((Handler)localObject1).removeCallbacksAndMessages(null);
     }
     ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).removeMsgRevokerListener(this);
     DanmuDataIPCClient.a().b(this);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager;
+    localObject1 = this.i;
     if (localObject1 != null)
     {
-      ((CommentDanmakuManager)localObject1).b();
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager = null;
+      ((CommentDanmakuManager)localObject1).c();
+      this.i = null;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqCommentIDanmakuClearListener;
+    localObject1 = this.h;
     if (localObject1 != null)
     {
-      ((IDanmakuClearListener)localObject1).b();
-      this.jdField_a_of_type_ComTencentMobileqqCommentIDanmakuClearListener = null;
+      ((IDanmakuClearListener)localObject1).c();
+      this.h = null;
     }
     localObject1 = this.decoratorPresenterMap.values().iterator();
     while (((Iterator)localObject1).hasNext())
@@ -852,13 +845,13 @@ public class AIOBrowserPresenter
       {
         localObject2 = (AIOBrowserBasePresenter)localObject2;
         ((AIOBrowserBasePresenter)localObject2).onDestroy();
-        if (((AIOBrowserBasePresenter)localObject2).jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserBaseView != null) {
-          ((AIOBrowserBasePresenter)localObject2).jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserBaseView.b();
+        if (((AIOBrowserBasePresenter)localObject2).b != null) {
+          ((AIOBrowserBasePresenter)localObject2).b.c();
         }
       }
     }
     this.decoratorPresenterMap.clear();
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene;
+    localObject1 = this.a;
     if (localObject1 != null) {
       ((AIOBrowserScene)localObject1).onDestroy();
     }
@@ -868,23 +861,23 @@ public class AIOBrowserPresenter
   public void onDoubleTap()
   {
     super.onDoubleTap();
-    g();
+    i();
   }
   
   public void onItemSelect(int paramInt)
   {
     super.onItemSelect(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene != null) && (b(paramInt)))
+    if ((this.a != null) && (b(paramInt)))
     {
       IDecoratorPresenter localIDecoratorPresenter = getCurrentDecoratorPresenter();
-      if (((localIDecoratorPresenter instanceof AIOBrowserBasePresenter)) && (this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager != null))
+      if (((localIDecoratorPresenter instanceof AIOBrowserBasePresenter)) && (this.i != null))
       {
-        ((AIOBrowserBasePresenter)localIDecoratorPresenter).b();
-        this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuCommentDanmakuManager.a(this);
-        this.jdField_a_of_type_Boolean = false;
+        ((AIOBrowserBasePresenter)localIDecoratorPresenter).e();
+        this.i.a(this);
+        this.e = false;
       }
     }
-    a(0);
+    c(0);
   }
   
   public void onPause()
@@ -903,7 +896,7 @@ public class AIOBrowserPresenter
   {
     super.onResume();
     if (b(getCurrentPosition())) {
-      d();
+      f();
     }
     IDecoratorPresenter localIDecoratorPresenter = getDecoratorPresenter(getCurrentType());
     if ((localIDecoratorPresenter instanceof AIOBrowserBasePresenter)) {
@@ -914,16 +907,16 @@ public class AIOBrowserPresenter
   public void onScale()
   {
     super.onScale();
-    AIOBrowserScene localAIOBrowserScene = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserScene;
+    AIOBrowserScene localAIOBrowserScene = this.a;
     if (localAIOBrowserScene != null) {
       localAIOBrowserScene.a(false);
     }
-    if (a() != null)
+    if (d() != null)
     {
-      a().d();
-      a().c();
+      d().f();
+      d().d();
     }
-    h();
+    j();
   }
   
   public void onScaleBegin()
@@ -948,10 +941,19 @@ public class AIOBrowserPresenter
       ((AIOBrowserBasePresenter)localIDecoratorPresenter).onStop();
     }
   }
+  
+  public void p()
+  {
+    int j = s();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(c("0X800A882"));
+    ReportController.b(null, "dc00898", "", "", "0X800A882", "0X800A882", j, 0, localStringBuilder.toString(), "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.presenter.AIOBrowserPresenter
  * JD-Core Version:    0.7.0.1
  */

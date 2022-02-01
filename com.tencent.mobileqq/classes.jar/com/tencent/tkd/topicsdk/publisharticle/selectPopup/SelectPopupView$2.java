@@ -18,7 +18,7 @@ public final class SelectPopupView$2
     } else {
       i = 0;
     }
-    SelectPopupView.a(this.a).setText((CharSequence)String.valueOf(this.a.a() - i));
+    SelectPopupView.a(this.a).setText((CharSequence)String.valueOf(this.a.b() - i));
   }
   
   public void beforeTextChanged(@Nullable CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -27,7 +27,7 @@ public final class SelectPopupView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectPopupView.2
  * JD-Core Version:    0.7.0.1
  */

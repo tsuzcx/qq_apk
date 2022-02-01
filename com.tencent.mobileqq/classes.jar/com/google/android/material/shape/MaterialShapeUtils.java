@@ -26,12 +26,6 @@ public class MaterialShapeUtils
     return new RoundedCornerTreatment();
   }
   
-  @NonNull
-  static EdgeTreatment a()
-  {
-    return new EdgeTreatment();
-  }
-  
   public static void a(@NonNull View paramView)
   {
     Drawable localDrawable = paramView.getBackground();
@@ -50,14 +44,20 @@ public class MaterialShapeUtils
   
   public static void a(@NonNull View paramView, @NonNull MaterialShapeDrawable paramMaterialShapeDrawable)
   {
-    if (paramMaterialShapeDrawable.f()) {
-      paramMaterialShapeDrawable.q(ViewUtils.a(paramView));
+    if (paramMaterialShapeDrawable.R()) {
+      paramMaterialShapeDrawable.q(ViewUtils.d(paramView));
     }
+  }
+  
+  @NonNull
+  static EdgeTreatment b()
+  {
+    return new EdgeTreatment();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.MaterialShapeUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -37,39 +37,39 @@ import mqq.app.MobileQQ;
 public class MineWSPanel
   implements IEventReceiver
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private GetMineWSPersonalRequest jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestGetMineWSPersonalRequest;
-  private MineWSAdapter jdField_a_of_type_ComTencentBizVideostoryAdapterMineWSAdapter;
-  private MineWSPanel.ProcessClickListener jdField_a_of_type_ComTencentBizVideostoryWidgetViewMineWSPanel$ProcessClickListener;
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private ProfileWeishiComponent jdField_a_of_type_ComTencentMobileqqProfilecardBussinessWeishiProfileWeishiComponent;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
+  private QBaseActivity a;
+  private ProfileWeishiComponent b;
+  private LinearLayout c;
+  private View d;
+  private TextView e;
+  private TextView f;
+  private RecyclerView g;
+  private MineWSAdapter h;
+  private ImageView i;
+  private View j;
+  private boolean k;
+  private String l;
+  private String m;
+  private GetMineWSPersonalRequest n;
+  private MineWSPanel.ProcessClickListener o;
   
   public MineWSPanel(ProfileWeishiComponent paramProfileWeishiComponent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessWeishiProfileWeishiComponent = paramProfileWeishiComponent;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramProfileWeishiComponent.getActivity();
-    this.jdField_a_of_type_ComTencentBizVideostoryAdapterMineWSAdapter = new MineWSAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+    this.b = paramProfileWeishiComponent;
+    this.a = paramProfileWeishiComponent.getActivity();
+    this.h = new MineWSAdapter(this.a);
   }
   
   private void a(boolean paramBoolean)
   {
-    boolean bool = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).isProfileCardActivity(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    if ((this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessWeishiProfileWeishiComponent != null) && (bool))
+    boolean bool = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).isProfileCardActivity(this.a);
+    if ((this.b != null) && (bool))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setWeiShiPanelState isShow:");
       localStringBuilder.append(paramBoolean);
       QLog.i("MineWSPanel", 2, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessWeishiProfileWeishiComponent.initOrRefreshWeiShiPanel(paramBoolean);
+      this.b.initOrRefreshWeiShiPanel(paramBoolean);
     }
   }
   
@@ -85,53 +85,53 @@ public class MineWSPanel
   
   private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity == null) {
+    if (this.a == null) {
       return;
     }
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 1;
+    int i1;
+    if (this.k) {
+      i1 = 1;
     } else {
-      i = 2;
+      i1 = 2;
     }
-    VSReporter.a("weishi_share_prof", "entry_clk", i, 0, new String[0]);
-    boolean bool = WeishiGuideUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportWeiShiProfileClick(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, bool, paramBoolean);
+    VSReporter.a("weishi_share_prof", "entry_clk", i1, 0, new String[0]);
+    boolean bool = WeishiGuideUtils.a(this.a);
+    ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportWeiShiProfileClick(this.k, this.l, bool, paramBoolean);
     if (!bool)
     {
       VSReporter.a("weishi_share_prof", "dl_clk", 0, 0, new String[0]);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, HardCodeUtil.a(2131706801), 0).a();
-      ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).downloadWeishiWithDialog(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_Boolean);
+      QQToast.makeText(this.a, HardCodeUtil.a(2131904650), 0).show();
+      ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).downloadWeishiWithDialog(this.a, this.k);
     }
-    else if ((this.jdField_a_of_type_Boolean) && (paramBoolean))
+    else if ((this.k) && (paramBoolean))
     {
-      e();
+      g();
       VSReporter.a("weishi_share_prof", "clk_ws", 1, 0, new String[0]);
     }
     else
     {
-      d();
+      f();
       VSReporter.a("weishi_share_prof", "clk_ws", 2, 0, new String[0]);
     }
-    MineWSPanel.ProcessClickListener localProcessClickListener = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewMineWSPanel$ProcessClickListener;
+    MineWSPanel.ProcessClickListener localProcessClickListener = this.o;
     if (localProcessClickListener != null) {
       localProcessClickListener.processClickEvent();
     }
   }
   
-  private void d()
+  private void f()
   {
-    boolean bool = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
+    boolean bool = TextUtils.isEmpty(this.m);
     Object localObject = "weishi://profile?person_id=";
     if (!bool)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("weishi://profile?person_id=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.m);
       localObject = ((StringBuilder)localObject).toString();
     }
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.k)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
@@ -145,38 +145,17 @@ public class MineWSPanel
       localStringBuilder.append("&logsour=2020020029");
       localObject = localStringBuilder.toString();
     }
-    ((IWSManager)QRoute.api(IWSManager.class)).openWeishi(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, "biz_src_jc_gxl", (String)localObject);
+    ((IWSManager)QRoute.api(IWSManager.class)).openWeishi(this.a, "biz_src_jc_gxl", (String)localObject);
   }
   
-  private void e()
+  private void g()
   {
-    ((IWSManager)QRoute.api(IWSManager.class)).openWeishi(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, "biz_src_jc_gxl", "weishi://camera?logsour=2020020030");
+    ((IWSManager)QRoute.api(IWSManager.class)).openWeishi(this.a, "biz_src_jc_gxl", "weishi://camera?logsour=2020020030");
   }
   
   public ImageView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public void a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("requestWeiShiFeedListDataFromServer mUin=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    QLog.i("MineWSPanel", 2, localStringBuilder.toString());
-    if (!NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getApplication().getApplicationContext())) {
-      return;
-    }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("");
-    this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestGetMineWSPersonalRequest = new GetMineWSPersonalRequest(localStringBuilder.toString(), 1);
-    VSNetworkHelper.getInstance().sendRequest(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestGetMineWSPersonalRequest, new MineWSPanel.PersonalResponseListener(this));
+    return this.i;
   }
   
   public void a(WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp, boolean paramBoolean)
@@ -186,114 +165,135 @@ public class MineWSPanel
       QLog.i("MineWSPanel", 2, "rsp is null");
       return;
     }
-    int j = paramstGetPersonalPageRsp.feed_num.get();
-    this.jdField_b_of_type_JavaLangString = paramstGetPersonalPageRsp.personid.get();
+    int i2 = paramstGetPersonalPageRsp.feed_num.get();
+    this.m = paramstGetPersonalPageRsp.personid.get();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[MineWSPanel.java][setData] feedNum:");
-    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(i2);
     ((StringBuilder)localObject).append(", isFromDb:");
     ((StringBuilder)localObject).append(paramBoolean);
     QLog.i("MineWSPanel", 2, ((StringBuilder)localObject).toString());
-    if (j > 0)
+    if (i2 > 0)
     {
       if (!paramBoolean)
       {
-        int i;
-        if (this.jdField_a_of_type_Boolean) {
-          i = 1;
+        int i1;
+        if (this.k) {
+          i1 = 1;
         } else {
-          i = 2;
+          i1 = 2;
         }
-        VSReporter.a("weishi_share_prof", "entry_exp", i, 0, new String[0]);
+        VSReporter.a("weishi_share_prof", "entry_exp", i1, 0, new String[0]);
       }
       a(true);
-      localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject = this.f;
       if (localObject != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(j);
-        localStringBuilder.append(HardCodeUtil.a(2131706802));
+        localStringBuilder.append(i2);
+        localStringBuilder.append(HardCodeUtil.a(2131904651));
         ((TextView)localObject).setText(localStringBuilder.toString());
       }
     }
     else
     {
       a(false);
-      localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject = this.f;
       if (localObject != null) {
         ((TextView)localObject).setText("");
       }
     }
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+    if (this.g != null)
     {
       paramstGetPersonalPageRsp = paramstGetPersonalPageRsp.feeds.get();
       if ((paramstGetPersonalPageRsp != null) && (paramstGetPersonalPageRsp.size() != 0))
       {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+        this.g.setVisibility(0);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("setData(),mIsCurrentUser=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.k);
         QLog.i("MineWSPanel", 2, ((StringBuilder)localObject).toString());
-        this.jdField_a_of_type_ComTencentBizVideostoryAdapterMineWSAdapter.a(paramstGetPersonalPageRsp, this.jdField_a_of_type_Boolean);
+        this.h.a(paramstGetPersonalPageRsp, this.k);
         return;
       }
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+      this.g.setVisibility(8);
     }
   }
   
   public void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371042));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368343);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371043));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371044));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131381228));
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+    this.j = paramView;
+    this.c = ((LinearLayout)paramView.findViewById(2131438382));
+    this.d = paramView.findViewById(2131435219);
+    this.e = ((TextView)paramView.findViewById(2131438383));
+    this.f = ((TextView)paramView.findViewById(2131438384));
+    this.g = ((RecyclerView)paramView.findViewById(2131450276));
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.a);
     localLinearLayoutManager.setOrientation(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
+    this.g.setLayoutManager(localLinearLayoutManager);
     localLinearLayoutManager.setRecycleChildrenOnDetach(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizVideostoryAdapterMineWSAdapter);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371478));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new MineWSPanel.1(this));
-    this.jdField_a_of_type_ComTencentBizVideostoryAdapterMineWSAdapter.a(new MineWSPanel.2(this));
-    ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportProfileCardExposure(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    this.g.setHasFixedSize(true);
+    this.g.setAdapter(this.h);
+    this.i = ((ImageView)paramView.findViewById(2131438853));
+    this.c.setOnClickListener(new MineWSPanel.1(this));
+    this.h.a(new MineWSPanel.2(this));
+    ((IWSMinePanel)QRoute.api(IWSMinePanel.class)).reportProfileCardExposure(this.k, this.l);
     paramView = new StringBuilder();
     paramView.append("[MineWSPanel.java][initUI] mIsCurrentUser:");
-    paramView.append(this.jdField_a_of_type_Boolean);
+    paramView.append(this.k);
     paramView.append(", mUin:");
-    paramView.append(this.jdField_a_of_type_JavaLangString);
+    paramView.append(this.l);
     QLog.i("MineWSPanel", 2, paramView.toString());
   }
   
   public void a(MineWSPanel.ProcessClickListener paramProcessClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewMineWSPanel$ProcessClickListener = paramProcessClickListener;
+    this.o = paramProcessClickListener;
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.k = paramBoolean;
+    this.l = paramString;
   }
   
-  public void b()
+  public TextView b()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    return this.e;
+  }
+  
+  public void c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestWeiShiFeedListDataFromServer mUin=");
+    localStringBuilder.append(this.l);
+    QLog.i("MineWSPanel", 2, localStringBuilder.toString());
+    if (!NetworkUtil.a(this.a.getAppRuntime().getApplication().getApplicationContext())) {
+      return;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("");
+    this.n = new GetMineWSPersonalRequest(localStringBuilder.toString(), 1);
+    VSNetworkHelper.getInstance().sendRequest(this.a, this.n, new MineWSPanel.PersonalResponseListener(this));
+  }
+  
+  public void d()
+  {
+    if (this.d == null)
     {
       QLog.i("MineWSPanel", 2, "mMineWeiShiIcon is null");
       return;
     }
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130850621);
+      this.d.setBackgroundResource(2130852419);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130845967);
+    this.d.setBackgroundResource(2130847437);
   }
   
-  public void c()
+  public void e()
   {
     ThreadManager.excute(new MineWSPanel.4(this), 32, null, true);
   }
@@ -305,7 +305,7 @@ public class MineWSPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.MineWSPanel
  * JD-Core Version:    0.7.0.1
  */

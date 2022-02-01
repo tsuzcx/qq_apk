@@ -18,23 +18,23 @@ class RemoteArConfigManager$1
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager = IArConfigManager.Stub.a(paramIBinder);
+    this.a.f = IArConfigManager.Stub.a(paramIBinder);
     if (QLog.isColorLevel())
     {
       paramComponentName = new StringBuilder();
       paramComponentName.append("onServiceConnected configManager=");
-      paramComponentName.append(this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager);
+      paramComponentName.append(this.a.f);
       QLog.d("ArConfig_RemoteArConfigManager", 2, paramComponentName.toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null)
+    if (this.a.f != null)
     {
       try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a(this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArRemoteCallback);
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a(this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArFaceCallback);
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a(RemoteArConfigManager.a(this.a));
-        if (RemoteArConfigManager.a(this.a) != -1) {
-          this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b(RemoteArConfigManager.a(this.a));
+        this.a.f.a(this.a.k);
+        this.a.f.a(this.a.l);
+        this.a.f.a(RemoteArConfigManager.a(this.a));
+        if (RemoteArConfigManager.b(this.a) != -1) {
+          this.a.f.b(RemoteArConfigManager.b(this.a));
         }
       }
       catch (RemoteException paramComponentName)
@@ -47,54 +47,54 @@ class RemoteArConfigManager$1
           QLog.d("ArConfig_RemoteArConfigManager", 2, paramIBinder.toString());
         }
       }
-      if (RemoteArConfigManager.a(this.a) != null) {
-        RemoteArConfigManager.a(this.a).sendEmptyMessage(0);
+      if (RemoteArConfigManager.c(this.a) != null) {
+        RemoteArConfigManager.c(this.a).sendEmptyMessage(0);
       }
-      if (this.a.c)
+      if (this.a.i)
       {
         paramComponentName = this.a;
-        paramComponentName.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = paramComponentName.a();
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) && (RemoteArConfigManager.a(this.a) != null))
+        paramComponentName.a = paramComponentName.b();
+        if ((this.a.a != null) && (RemoteArConfigManager.c(this.a) != null))
         {
           paramComponentName = Message.obtain();
           paramComponentName.what = 1;
-          paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
-          RemoteArConfigManager.a(this.a).sendMessage(paramComponentName);
+          paramComponentName.obj = this.a.a;
+          RemoteArConfigManager.c(this.a).sendMessage(paramComponentName);
         }
       }
       paramComponentName = this.a;
-      paramComponentName.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = paramComponentName.a();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = new ArEffectConfig();
+      paramComponentName.b = paramComponentName.c();
+      if (this.a.b == null) {
+        this.a.b = new ArEffectConfig();
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) && (RemoteArConfigManager.a(this.a) != null))
+      if ((this.a.b != null) && (RemoteArConfigManager.c(this.a) != null))
       {
         paramComponentName = Message.obtain();
         paramComponentName.what = 2;
-        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
-        RemoteArConfigManager.a(this.a).sendMessage(paramComponentName);
+        paramComponentName.obj = this.a.b;
+        RemoteArConfigManager.c(this.a).sendMessage(paramComponentName);
       }
       paramComponentName = this.a;
-      paramComponentName.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = paramComponentName.a();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) && (RemoteArConfigManager.a(this.a) != null))
+      paramComponentName.c = paramComponentName.d();
+      if ((this.a.c != null) && (RemoteArConfigManager.c(this.a) != null))
       {
         paramComponentName = Message.obtain();
         paramComponentName.what = 9;
-        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-        RemoteArConfigManager.a(this.a).sendMessage(paramComponentName);
+        paramComponentName.obj = this.a.c;
+        RemoteArConfigManager.c(this.a).sendMessage(paramComponentName);
       }
     }
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null)
+    if (this.a.f != null)
     {
       try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b(this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArRemoteCallback);
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b(this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArFaceCallback);
-        this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b(RemoteArConfigManager.a(this.a));
+        this.a.f.b(this.a.k);
+        this.a.f.b(this.a.l);
+        this.a.f.b(RemoteArConfigManager.a(this.a));
       }
       catch (RemoteException paramComponentName)
       {
@@ -106,13 +106,13 @@ class RemoteArConfigManager$1
           QLog.d("ArConfig_RemoteArConfigManager", 2, localStringBuilder.toString());
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager = null;
+      this.a.f = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.RemoteArConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class EditActivity$2
   
   public void afterTextChanged(Editable paramEditable)
   {
-    EditActivity.a = true;
+    EditActivity.d = true;
     ReportController.b(this.a.app, "CliOper", "", "", "signiture", "set_clk_mdf", 0, 0, "", "", "", "");
-    if ((EditActivity.a(this.a).getSelectionStart() == 7) && (EditActivity.a(this.a).getText().toString().trim().length() == 7)) {
-      EditActivity.a(this.a).setSelection(paramEditable.length());
+    if ((EditActivity.c(this.a).getSelectionStart() == 7) && (EditActivity.c(this.a).getText().toString().trim().length() == 7)) {
+      EditActivity.c(this.a).setSelection(paramEditable.length());
     }
-    EditActivity.a(this.a);
+    EditActivity.d(this.a);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
@@ -48,7 +48,7 @@ class EditActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.EditActivity.2
  * JD-Core Version:    0.7.0.1
  */

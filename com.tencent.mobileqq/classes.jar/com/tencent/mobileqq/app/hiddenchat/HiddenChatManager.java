@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.hiddenchat.data.HiddenChatEntity;
-import com.tencent.mobileqq.settings.util.PrivacySettingUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
@@ -25,16 +24,16 @@ import mqq.manager.Manager;
 public class HiddenChatManager
   implements Manager
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ConcurrentHashMap<String, HiddenChatEntity> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  QQAppInterface a;
+  SharedPreferences b;
+  AtomicBoolean c = new AtomicBoolean(false);
+  ConcurrentHashMap<String, HiddenChatEntity> d;
   
   public HiddenChatManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = HiddenChatUtil.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin());
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.a = paramQQAppInterface;
+    this.b = HiddenChatUtil.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin());
+    this.d = new ConcurrentHashMap();
   }
   
   public static HiddenChatManager a(QQAppInterface paramQQAppInterface)
@@ -44,24 +43,90 @@ public class HiddenChatManager
   
   HiddenChatEntity a(String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    synchronized (this.d)
     {
-      HiddenChatEntity localHiddenChatEntity2 = (HiddenChatEntity)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      HiddenChatEntity localHiddenChatEntity2 = (HiddenChatEntity)this.d.get(paramString);
       HiddenChatEntity localHiddenChatEntity1 = localHiddenChatEntity2;
       if (localHiddenChatEntity2 == null)
       {
         localHiddenChatEntity1 = new HiddenChatEntity();
-        localHiddenChatEntity1.jdField_a_of_type_JavaLangString = paramString;
-        localHiddenChatEntity1.jdField_a_of_type_Int = paramInt;
+        localHiddenChatEntity1.a = paramString;
+        localHiddenChatEntity1.b = paramInt;
       }
       return localHiddenChatEntity1;
     }
   }
   
-  public ArrayList<HiddenChatEntity> a()
+  public void a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    Iterator localIterator = this.d.values().iterator();
+    while (localIterator.hasNext())
+    {
+      HiddenChatEntity localHiddenChatEntity = (HiddenChatEntity)localIterator.next();
+      localStringBuilder.append(localHiddenChatEntity.a);
+      localStringBuilder.append("|");
+      localStringBuilder.append(localHiddenChatEntity.b);
+      localStringBuilder.append(";");
+    }
+    this.b.edit().putString("KeyHiddenChatList", localStringBuilder.toString()).commit();
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    Object localObject = this.a.getApp().getSharedPreferences(this.a.getCurrentAccountUin(), 0);
+    if (!((SharedPreferences)localObject).getBoolean("FirstSetHidden", false))
+    {
+      ((SharedPreferences)localObject).edit().putBoolean("FirstSetHidden", true).commit();
+      localObject = paramActivity.getString(2131894122);
+      DialogUtil.a(paramActivity, 230, paramActivity.getString(2131894124), (CharSequence)localObject, paramActivity.getString(2131916601), paramActivity.getString(2131894123), new HiddenChatManager.1(this, paramActivity), new DialogUtil.DialogOnClickAdapter()).show();
+      ReportController.b(this.a, "dc00898", "", "", "0X800A349", "0X800A349", 0, 0, "0", "0", "", "");
+    }
+  }
+  
+  void a(HiddenChatEntity paramHiddenChatEntity)
+  {
+    if (paramHiddenChatEntity != null)
+    {
+      if (TextUtils.isEmpty(paramHiddenChatEntity.a)) {
+        return;
+      }
+      synchronized (this.d)
+      {
+        this.d.put(paramHiddenChatEntity.a, paramHiddenChatEntity);
+        a();
+        return;
+      }
+    }
+  }
+  
+  void a(String paramString)
+  {
+    synchronized (this.d)
+    {
+      this.d.remove(paramString);
+      a();
+      return;
+    }
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.d.contains(paramString))) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(a(paramString, paramInt));
+      return;
+    }
+    a(paramString);
+  }
+  
+  public ArrayList<HiddenChatEntity> b()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("KeyHiddenChatList", "");
+    Object localObject = this.b.getString("KeyHiddenChatList", "");
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = ((String)localObject).split(";");
@@ -76,8 +141,8 @@ public class HiddenChatManager
             try
             {
               HiddenChatEntity localHiddenChatEntity = new HiddenChatEntity();
-              localHiddenChatEntity.jdField_a_of_type_JavaLangString = arrayOfString[0];
-              localHiddenChatEntity.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[1]);
+              localHiddenChatEntity.a = arrayOfString[0];
+              localHiddenChatEntity.b = Integer.parseInt(arrayOfString[1]);
               localArrayList.add(localHiddenChatEntity);
             }
             catch (Throwable localThrowable)
@@ -92,84 +157,23 @@ public class HiddenChatManager
     return localArrayList;
   }
   
-  public void a()
+  public void c()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
+    if (!this.c.get())
     {
-      HiddenChatEntity localHiddenChatEntity = (HiddenChatEntity)localIterator.next();
-      localStringBuilder.append(localHiddenChatEntity.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("|");
-      localStringBuilder.append(localHiddenChatEntity.jdField_a_of_type_Int);
-      localStringBuilder.append(";");
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("KeyHiddenChatList", localStringBuilder.toString()).commit();
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (!((SharedPreferences)localObject).getBoolean("FirstSetHidden", false))
-    {
-      ((SharedPreferences)localObject).edit().putBoolean("FirstSetHidden", true).commit();
-      if (PrivacySettingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        localObject = paramActivity.getString(2131696350);
-      } else {
-        localObject = paramActivity.getString(2131696349);
-      }
-      DialogUtil.a(paramActivity, 230, paramActivity.getString(2131696352), (CharSequence)localObject, paramActivity.getString(2131719065), paramActivity.getString(2131696351), new HiddenChatManager.1(this, paramActivity), new DialogUtil.DialogOnClickAdapter()).show();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A349", "0X800A349", 0, 0, "0", "0", "", "");
+      d();
+      this.c.set(true);
     }
   }
   
-  void a(HiddenChatEntity paramHiddenChatEntity)
-  {
-    if (paramHiddenChatEntity != null)
-    {
-      if (TextUtils.isEmpty(paramHiddenChatEntity.jdField_a_of_type_JavaLangString)) {
-        return;
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramHiddenChatEntity.jdField_a_of_type_JavaLangString, paramHiddenChatEntity);
-        a();
-        return;
-      }
-    }
-  }
-  
-  void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      a();
-      return;
-    }
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramString))) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      a(a(paramString, paramInt));
-      return;
-    }
-    a(paramString);
-  }
-  
-  boolean a()
+  boolean d()
   {
     boolean bool = true;
     for (;;)
     {
       try
       {
-        Object localObject1 = a();
+        Object localObject1 = b();
         if (QLog.isColorLevel())
         {
           if (localObject1 != null)
@@ -181,14 +185,14 @@ public class HiddenChatManager
         else
         {
           if (localObject1 != null) {
-            synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+            synchronized (this.d)
             {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+              this.d.clear();
               localObject1 = ((List)localObject1).iterator();
               if (((Iterator)localObject1).hasNext())
               {
                 HiddenChatEntity localHiddenChatEntity = (HiddenChatEntity)((Iterator)localObject1).next();
-                this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localHiddenChatEntity.jdField_a_of_type_JavaLangString, localHiddenChatEntity);
+                this.d.put(localHiddenChatEntity.a, localHiddenChatEntity);
                 continue;
               }
               return true;
@@ -213,23 +217,14 @@ public class HiddenChatManager
     }
   }
   
-  public void b()
-  {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      a();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
-  }
-  
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.d.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatManager
  * JD-Core Version:    0.7.0.1
  */

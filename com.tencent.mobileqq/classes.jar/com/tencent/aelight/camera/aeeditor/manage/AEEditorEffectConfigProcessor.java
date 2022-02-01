@@ -24,7 +24,7 @@ public class AEEditorEffectConfigProcessor
       int i = paramArrayOfQConfItem.length - 1;
       if (paramArrayOfQConfItem[i] != null)
       {
-        paramArrayOfQConfItem = AEEditorEffectGroupListBean.parse(paramArrayOfQConfItem[i].a);
+        paramArrayOfQConfItem = AEEditorEffectGroupListBean.parse(paramArrayOfQConfItem[i].b);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("effect group list version: ");
         localStringBuilder.append(paramArrayOfQConfItem.version);
@@ -41,7 +41,7 @@ public class AEEditorEffectConfigProcessor
   
   public void a()
   {
-    QConfigManager.a().a(new int[] { 643 });
+    QConfigManager.b().a(new int[] { 643 });
     AEQLog.a("AEEditorFilterConfigProcessor", "getConfigData.");
   }
   
@@ -93,9 +93,9 @@ public class AEEditorEffectConfigProcessor
   {
     try
     {
-      if (AEEditorEffectUtils.a(AEEditorEffectConfigManager.a()) == null)
+      if (AEEditorEffectUtils.a(AEEditorEffectConfigManager.b()) == null)
       {
-        QConfigManager.a().a(643, 0);
+        QConfigManager.b().a(643, 0);
         return 0;
       }
     }
@@ -113,7 +113,7 @@ public class AEEditorEffectConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorEffectConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

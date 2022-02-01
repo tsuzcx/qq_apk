@@ -16,30 +16,30 @@ class VasEngineImpl$1
   public void run()
   {
     Object localObject = VasUpdateWrapper.getDbManager();
-    if ((localObject != null) && ((localObject instanceof VasDbManagerImpl)) && (this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQueryItemVersionCallback != null))
+    if ((localObject != null) && ((localObject instanceof VasDbManagerImpl)) && (this.a != null))
     {
-      localObject = ((VasDbManagerImpl)localObject).selectItem(0, CommonUtil.sComposeItemId(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString));
+      localObject = ((VasDbManagerImpl)localObject).a(0, CommonUtil.sComposeItemId(this.b, this.c));
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("queryItemVersion bid = ");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(" , scid = ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.c);
         QLog.i("VasUpdate_VasUpdateEngineV2", 2, localStringBuilder.toString());
       }
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQueryItemVersionCallback.onQueryItemVer(false, this.jdField_a_of_type_JavaLangString, "");
+        this.a.onQueryItemVer(false, this.c, "");
         return;
       }
       localObject = ItemLocalVerPrt.parseJsonToItemLocalVerPrt((String)localObject);
       if (localObject == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQueryItemVersionCallback.onQueryItemVer(false, this.jdField_a_of_type_JavaLangString, "");
+        this.a.onQueryItemVer(false, this.c, "");
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQueryItemVersionCallback.onQueryItemVer(true, this.jdField_a_of_type_JavaLangString, ((ItemLocalVerPrt)localObject).mMd5);
+      this.a.onQueryItemVer(true, this.c, ((ItemLocalVerPrt)localObject).mMd5);
       return;
     }
     QLog.e("VasUpdate_VasUpdateEngineV2", 1, "setWeakHandler cmdManager == null or != VasCmdImpl or callback == null");
@@ -47,7 +47,7 @@ class VasEngineImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.api.impl.VasEngineImpl.1
  * JD-Core Version:    0.7.0.1
  */

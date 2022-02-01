@@ -21,7 +21,7 @@ public class QQGameTeamConfBean
       Object localObject;
       while (i < k)
       {
-        localObject = new JSONObject(paramArrayOfQConfItem[i].a);
+        localObject = new JSONObject(paramArrayOfQConfItem[i].b);
         if (((JSONObject)localObject).has("teamAppKeys"))
         {
           localQQGameTeamConfBean.a.clear();
@@ -58,7 +58,7 @@ public class QQGameTeamConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQGameTeamConfBean
  * JD-Core Version:    0.7.0.1
  */

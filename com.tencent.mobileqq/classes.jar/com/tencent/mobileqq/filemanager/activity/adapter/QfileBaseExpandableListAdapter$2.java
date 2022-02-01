@@ -13,18 +13,18 @@ class QfileBaseExpandableListAdapter$2
   
   public void a()
   {
-    String str = (String)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroup(this.jdField_a_of_type_Int);
-    if (QfileBaseExpandableListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter).isGroupExpanded(this.jdField_a_of_type_Int))
+    String str = (String)this.b.getGroup(this.a);
+    if (QfileBaseExpandableListAdapter.a(this.b).isGroupExpanded(this.a))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
-      localStringBuilder.append(HardCodeUtil.a(2131698204));
+      localStringBuilder.append(HardCodeUtil.a(2131896105));
       QQTextToSpeechHelper.a(localStringBuilder.toString());
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
-    localStringBuilder.append(HardCodeUtil.a(2131698203));
+    localStringBuilder.append(HardCodeUtil.a(2131896104));
     QQTextToSpeechHelper.a(localStringBuilder.toString());
   }
   
@@ -35,7 +35,7 @@ class QfileBaseExpandableListAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

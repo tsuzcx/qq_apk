@@ -10,17 +10,17 @@ class TabLayout$SlidingTabIndicator$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$SlidingTabIndicator.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.b.b = this.a;
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$SlidingTabIndicator.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.b.b = this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayout.SlidingTabIndicator.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ final class GdtUIUtils$1
   public Shader resize(int paramInt1, int paramInt2)
   {
     float f1 = paramInt1;
-    float f2 = this.jdField_a_of_type_Float;
+    float f2 = this.a;
     float f3 = paramInt2;
-    return new LinearGradient(f1 * f2, f3 * this.b, f1 * this.c, f3 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
+    return new LinearGradient(f1 * f2, f3 * this.b, f1 * this.c, f3 * this.d, this.e, null, Shader.TileMode.CLAMP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.GdtUIUtils.1
  * JD-Core Version:    0.7.0.1
  */

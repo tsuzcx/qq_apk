@@ -95,15 +95,15 @@ public class GameCloseManager
   private static void doShowDropGuideDialog(Activity paramActivity, MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
     Object localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "qqMiniappDropGuideImageUrl", "https://sola.gtimg.cn/aoi/sola/20210226113308_nLvM2BA8VH.png");
-    paramActivity = new Dialog(paramActivity, 2131756160);
+    paramActivity = new Dialog(paramActivity, 2131953303);
     paramActivity.setCancelable(false);
-    paramActivity.setContentView(2131559402);
-    ((ImageView)paramActivity.findViewById(2131371255)).setImageDrawable(MiniAppUtils.getDrawable((String)localObject, null));
-    localObject = (TextView)paramActivity.findViewById(2131371256);
+    paramActivity.setContentView(2131625368);
+    ((ImageView)paramActivity.findViewById(2131438599)).setImageDrawable(MiniAppUtils.getDrawable((String)localObject, null));
+    localObject = (TextView)paramActivity.findViewById(2131438600);
     SpannableString localSpannableString = new SpannableString("玩过的小游戏可以在首页\"下拉\"找到哦");
     localSpannableString.setSpan(new ForegroundColorSpan(-16725505), 12, 14, 33);
     ((TextView)localObject).setText(localSpannableString);
-    ((Button)paramActivity.findViewById(2131371254)).setOnClickListener(new GameCloseManager.4(paramMiniAppConfig, paramString1, paramString2, paramActivity, paramOnClickListener));
+    ((Button)paramActivity.findViewById(2131438598)).setOnClickListener(new GameCloseManager.4(paramMiniAppConfig, paramString1, paramString2, paramActivity, paramOnClickListener));
     paramActivity.show();
     MiniProgramLpReportDC04239.reportByDropGuideDialog(paramMiniAppConfig, "xiala_popup", "popup", "click", paramString1, paramString2);
   }
@@ -115,21 +115,21 @@ public class GameCloseManager
     Object localObject3 = QzoneConfig.getInstance().getConfig("qqminiapp", "qqMiniappRetainBackgroundUrl", "https://sola.gtimg.cn/aoi/sola/20201026161621_WQxgnG17wP.png");
     Object localObject1 = QzoneConfig.getInstance().getConfig("qqminiapp", "qqMiniappRetainLeftBtnBackgroundUrl", "https://sola.gtimg.cn/aoi/sola/20201026161621_qKiWYA1Hc2.png");
     paramString2 = QzoneConfig.getInstance().getConfig("qqminiapp", "qqMiniappRetainRightBtnBackgroundUrl", "https://sola.gtimg.cn/aoi/sola/20201026161621_z77QU6MeWL.png");
-    QQCustomDialogForMiniGame localQQCustomDialogForMiniGame = new QQCustomDialogForMiniGame(paramActivity, 2131756160);
-    localQQCustomDialogForMiniGame.setContentView(2131558978);
+    QQCustomDialogForMiniGame localQQCustomDialogForMiniGame = new QQCustomDialogForMiniGame(paramActivity, 2131953303);
+    localQQCustomDialogForMiniGame.setContentView(2131624611);
     localQQCustomDialogForMiniGame.setBodyLayoutNoMargin();
-    localQQCustomDialogForMiniGame.setBackground(2130841332);
-    View localView = LayoutInflater.from(paramActivity).inflate(2131559404, null, false);
-    Object localObject4 = (LinearLayout)localView.findViewById(2131371375);
-    ((ImageView)localView.findViewById(2131371374)).setImageDrawable(MiniAppUtils.getDrawable((String)localObject2, null));
+    localQQCustomDialogForMiniGame.setBackground(2130842123);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131625370, null, false);
+    Object localObject4 = (LinearLayout)localView.findViewById(2131438719);
+    ((ImageView)localView.findViewById(2131438718)).setImageDrawable(MiniAppUtils.getDrawable((String)localObject2, null));
     GameCloseManager.ChangeAllOnClickListener.access$002(paramChangeAllOnClickListener, paramActivity);
     paramChangeAllOnClickListener.dialog = localQQCustomDialogForMiniGame;
     paramChangeAllOnClickListener.closeListener = paramOnClickListener;
     ((LinearLayout)localObject4).setOnClickListener(paramChangeAllOnClickListener);
     localView.setBackground(MiniAppUtils.getDrawable((String)localObject3, null));
-    localObject2 = new LinearLayout.LayoutParams(ViewUtils.b(296.0F), ViewUtils.b(255.0F));
+    localObject2 = new LinearLayout.LayoutParams(ViewUtils.dpToPx(296.0F), ViewUtils.dpToPx(255.0F));
     ((LinearLayout.LayoutParams)localObject2).gravity = 17;
-    localObject3 = (LinearLayout)localView.findViewById(2131376250);
+    localObject3 = (LinearLayout)localView.findViewById(2131444458);
     miniAppViewItemArrayList.clear();
     int i = 0;
     paramChangeAllOnClickListener = (GameCloseManager.ChangeAllOnClickListener)localObject1;
@@ -151,7 +151,7 @@ public class GameCloseManager
       i += 1;
     }
     localQQCustomDialogForMiniGame.setCancelable(true);
-    localQQCustomDialogForMiniGame.setTitle(null).setMessage(null).addView(localView, (LinearLayout.LayoutParams)localObject2).setNegativeButton(2131694180, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity, paramMiniAppConfig)).setPositiveButton(2131694181, new GameCloseManager.2(paramMiniAppInfo, paramString1, paramOnClickListener, paramActivity, paramMiniAppConfig));
+    localQQCustomDialogForMiniGame.setTitle(null).setMessage(null).addView(localView, (LinearLayout.LayoutParams)localObject2).setNegativeButton(2131891811, new GameCloseManager.3(paramMiniAppInfo, paramOnClickListener, paramActivity, paramMiniAppConfig)).setPositiveButton(2131891812, new GameCloseManager.2(paramMiniAppInfo, paramString1, paramOnClickListener, paramActivity, paramMiniAppConfig));
     localQQCustomDialogForMiniGame.getBtnight().setTypeface(Typeface.DEFAULT, 1);
     localQQCustomDialogForMiniGame.getBtnight().setTextColor(-1);
     localQQCustomDialogForMiniGame.getBtnight().setBackground(MiniAppUtils.getDrawable(paramString2, null));
@@ -159,10 +159,10 @@ public class GameCloseManager
     localQQCustomDialogForMiniGame.getBtnLeft().setTextColor(-1);
     localQQCustomDialogForMiniGame.getBtnLeft().setBackground(MiniAppUtils.getDrawable(paramChangeAllOnClickListener, null));
     paramActivity = (LinearLayout.LayoutParams)localQQCustomDialogForMiniGame.getBtnight().getLayoutParams();
-    paramActivity.height = ViewUtils.b(52.0F);
+    paramActivity.height = ViewUtils.dpToPx(52.0F);
     localQQCustomDialogForMiniGame.getBtnight().setLayoutParams(paramActivity);
     paramActivity = (LinearLayout.LayoutParams)localQQCustomDialogForMiniGame.getBtnLeft().getLayoutParams();
-    paramActivity.height = ViewUtils.b(52.0F);
+    paramActivity.height = ViewUtils.dpToPx(52.0F);
     localQQCustomDialogForMiniGame.getBtnLeft().setLayoutParams(paramActivity);
     localQQCustomDialogForMiniGame.show();
     MiniProgramLpReportDC04239.reportAsync(paramMiniAppConfig, "minigame_popup", "popup", "expo", "");
@@ -632,7 +632,7 @@ public class GameCloseManager
       }
       if (shouldShowAlertViewForBattleGame(paramMiniAppConfig))
       {
-        paramGameActivity = DialogUtil.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131719632)).setMessage(paramGameActivity.getString(2131694127)).setNegativeButton(paramGameActivity.getString(2131690728), new GameCloseManager.6()).setPositiveButton(paramGameActivity.getString(2131694126), new GameCloseManager.5(paramOnClickListener));
+        paramGameActivity = DialogUtil.a(paramGameActivity, 230).setTitle(paramGameActivity.getString(2131917233)).setMessage(paramGameActivity.getString(2131891755)).setNegativeButton(paramGameActivity.getString(2131887648), new GameCloseManager.6()).setPositiveButton(paramGameActivity.getString(2131891754), new GameCloseManager.5(paramOnClickListener));
         paramGameActivity.setCancelable(false);
         paramGameActivity.show();
         return true;
@@ -671,7 +671,7 @@ public class GameCloseManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameCloseManager
  * JD-Core Version:    0.7.0.1
  */

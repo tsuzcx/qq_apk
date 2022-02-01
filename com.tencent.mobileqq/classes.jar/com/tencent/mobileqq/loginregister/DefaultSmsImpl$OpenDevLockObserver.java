@@ -73,10 +73,10 @@ class DefaultSmsImpl$OpenDevLockObserver
     }
     if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
-      QQToast.a(paramWUserSigInfo, 1, paramErrMsg.getMessage(), 0).a();
+      QQToast.makeText(paramWUserSigInfo, 1, paramErrMsg.getMessage(), 0).show();
       return;
     }
-    QQToast.a(paramWUserSigInfo, 1, paramWUserSigInfo.getString(2131716609), 0).a();
+    QQToast.makeText(paramWUserSigInfo, 1, paramWUserSigInfo.getString(2131914072), 0).show();
   }
   
   public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
@@ -115,15 +115,15 @@ class DefaultSmsImpl$OpenDevLockObserver
     }
     if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
-      QQToast.a(paramWUserSigInfo, 1, paramErrMsg.getMessage(), 0).a();
+      QQToast.makeText(paramWUserSigInfo, 1, paramErrMsg.getMessage(), 0).show();
       return;
     }
-    QQToast.a(paramWUserSigInfo, 1, paramWUserSigInfo.getString(2131716609), 0).a();
+    QQToast.makeText(paramWUserSigInfo, 1, paramWUserSigInfo.getString(2131914072), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.DefaultSmsImpl.OpenDevLockObserver
  * JD-Core Version:    0.7.0.1
  */

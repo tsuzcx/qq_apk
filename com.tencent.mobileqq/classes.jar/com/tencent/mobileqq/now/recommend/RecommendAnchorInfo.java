@@ -11,70 +11,64 @@ import java.util.List;
 
 public class RecommendAnchorInfo
 {
-  public int a;
-  public long a;
-  public MedalItem a;
+  public String A;
+  public boolean B;
+  private long C = -1L;
+  private String D = null;
+  private List<String> E = null;
   public String a;
-  public List<NowQQLiveHomepageProto.RichTitleElement> a;
-  public boolean a;
   public int b;
-  private long jdField_b_of_type_Long = -1L;
-  public String b;
-  private List<String> jdField_b_of_type_JavaUtilList = null;
-  public boolean b;
   public int c;
-  public String c;
-  public boolean c;
-  public int d = 0;
   public String d;
-  public int e = -16711936;
   public String e;
-  public int f = -16711936;
   public String f;
-  public int g;
   public String g;
   public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l = "NOW达人";
-  public String m;
-  public String n;
+  public int i;
+  public boolean j = true;
+  public int k = 0;
+  public String l;
+  public List<NowQQLiveHomepageProto.RichTitleElement> m;
+  public MedalItem n;
   public String o;
-  private String p = null;
-  
-  public RecommendAnchorInfo()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public String p;
+  public String q;
+  public long r;
+  public int s = -16711936;
+  public int t = -16711936;
+  public String u;
+  public String v = "NOW达人";
+  public int w;
+  public String x;
+  public String y;
+  public boolean z = false;
   
   public String a()
   {
-    if (this.p == null)
+    if (this.D == null)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.m;
       String str = "";
       if ((localObject != null) && (((List)localObject).size() != 0))
       {
         int i1 = 0;
-        int i2 = this.jdField_a_of_type_JavaUtilList.size();
+        int i2 = this.m.size();
         while (i1 < i2)
         {
-          localObject = (NowQQLiveHomepageProto.RichTitleElement)this.jdField_a_of_type_JavaUtilList.get(i1);
+          localObject = (NowQQLiveHomepageProto.RichTitleElement)this.m.get(i1);
           if (((NowQQLiveHomepageProto.RichTitleElement)localObject).uint32_type.get() != 2) {
             str = ((NowQQLiveHomepageProto.RichTitleElement)localObject).string_text.get();
           }
           i1 += 1;
         }
-        this.p = str;
+        this.D = str;
       }
       else
       {
-        this.p = "";
+        this.D = "";
       }
     }
-    return this.p;
+    return this.D;
   }
   
   public void a(List<NowQQLiveHomepageProto.MedalInfo> paramList)
@@ -82,38 +76,38 @@ public class RecommendAnchorInfo
     paramList = (NowQQLiveHomepageProto.MedalInfo)paramList.get(0);
     if (paramList.medal_type.get() != 3)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem == null) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem = new MedalItem();
+      if (this.n == null) {
+        this.n = new MedalItem();
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.jdField_a_of_type_Int = paramList.medal_id.get();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.b = paramList.medal_version.get();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.c = paramList.medal_type.get();
+      this.n.a = paramList.medal_id.get();
+      this.n.b = paramList.medal_version.get();
+      this.n.f = paramList.medal_type.get();
       if (paramList.medal_name.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.jdField_a_of_type_JavaLangString = paramList.medal_name.get().toStringUtf8();
+        this.n.c = paramList.medal_name.get().toStringUtf8();
       }
       if (paramList.medal_bg.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.e = paramList.medal_bg.get();
+        this.n.l = paramList.medal_bg.get();
       }
       if (paramList.medal_frame.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.f = paramList.medal_frame.get();
+        this.n.m = paramList.medal_frame.get();
       }
       if (paramList.medal_level.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalItem.g = paramList.medal_level.get();
+        this.n.n = paramList.medal_level.get();
       }
     }
   }
   
   public String b()
   {
-    if ((a() != null) && (this.p.length() > 0)) {
-      return this.p;
+    if ((a() != null) && (this.D.length() > 0)) {
+      return this.D;
     }
-    return this.i;
+    return this.p;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.RecommendAnchorInfo
  * JD-Core Version:    0.7.0.1
  */

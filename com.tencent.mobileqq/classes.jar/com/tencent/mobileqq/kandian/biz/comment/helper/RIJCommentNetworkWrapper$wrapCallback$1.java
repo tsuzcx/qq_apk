@@ -15,12 +15,12 @@ public final class RIJCommentNetworkWrapper$wrapCallback$1
   
   public void a(@Nullable CreateCommentResult paramCreateCommentResult)
   {
-    if ((paramCreateCommentResult != null) && (paramCreateCommentResult.a == -4097) && (ReadInJoyCommentEntrance.a()))
+    if ((paramCreateCommentResult != null) && (paramCreateCommentResult.c == -4097) && (ReadInJoyCommentEntrance.c()))
     {
-      ReadInJoyCommentEntrance.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentUtils$CustomDialogClickListener);
+      ReadInJoyCommentEntrance.a(this.a);
       return;
     }
-    IRIJCommentNetworkHelper.RIJCreateCommentObserver localRIJCreateCommentObserver = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUtilApiIRIJCommentNetworkHelper$RIJCreateCommentObserver;
+    IRIJCommentNetworkHelper.RIJCreateCommentObserver localRIJCreateCommentObserver = this.b;
     if (localRIJCreateCommentObserver != null) {
       localRIJCreateCommentObserver.a(paramCreateCommentResult);
     }
@@ -28,7 +28,7 @@ public final class RIJCommentNetworkWrapper$wrapCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkWrapper.wrapCallback.1
  * JD-Core Version:    0.7.0.1
  */

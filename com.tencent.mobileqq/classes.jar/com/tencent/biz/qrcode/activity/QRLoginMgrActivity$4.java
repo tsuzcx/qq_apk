@@ -13,17 +13,17 @@ class QRLoginMgrActivity$4
     {
       if (!this.this$0.isFinishing())
       {
-        if ((QRLoginMgrActivity.a(this.this$0) != null) && (QRLoginMgrActivity.a(this.this$0).isShowing()))
+        if ((QRLoginMgrActivity.b(this.this$0) != null) && (QRLoginMgrActivity.b(this.this$0).isShowing()))
         {
-          QRLoginMgrActivity.a(this.this$0).dismiss();
-          QRLoginMgrActivity.a(this.this$0).cancel();
+          QRLoginMgrActivity.b(this.this$0).dismiss();
+          QRLoginMgrActivity.b(this.this$0).cancel();
           QRLoginMgrActivity.a(this.this$0, null);
         }
         QRLoginMgrActivity.a(this.this$0, new QQProgressDialog(QRLoginMgrActivity.a(this.this$0), this.this$0.getTitleBarHeight()));
-        QRLoginMgrActivity.a(this.this$0).c(2131718170);
+        QRLoginMgrActivity.b(this.this$0).c(2131915649);
         int i = this.a;
         if ((i != 0) && (i == 1)) {
-          QRLoginMgrActivity.a(this.this$0).c(2131694668);
+          QRLoginMgrActivity.b(this.this$0).c(2131892360);
         }
       }
     }
@@ -31,8 +31,8 @@ class QRLoginMgrActivity$4
     {
       localThrowable.printStackTrace();
     }
-    if ((QRLoginMgrActivity.a(this.this$0) != null) && (!QRLoginMgrActivity.a(this.this$0).isShowing())) {
-      QRLoginMgrActivity.a(this.this$0).show();
+    if ((QRLoginMgrActivity.b(this.this$0) != null) && (!QRLoginMgrActivity.b(this.this$0).isShowing())) {
+      QRLoginMgrActivity.b(this.this$0).show();
     }
   }
 }

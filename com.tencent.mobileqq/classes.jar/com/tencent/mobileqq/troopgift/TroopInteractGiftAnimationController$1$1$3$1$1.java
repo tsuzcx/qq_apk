@@ -9,15 +9,15 @@ class TroopInteractGiftAnimationController$1$1$3$1$1
   
   public void a()
   {
-    this.a.a.a.a.this$0.a();
-    if (this.a.a.a.a.a != null) {
-      this.a.a.a.a.a.a();
+    this.a.a.g.b.this$0.a();
+    if (this.a.a.g.b.d != null) {
+      this.a.a.g.b.d.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1.3.1.1
  * JD-Core Version:    0.7.0.1
  */

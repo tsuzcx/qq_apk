@@ -11,11 +11,6 @@ public class QQPimSharedPrefrenceUtil
     return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
   }
   
-  public static String a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
-  }
-  
   public static void a(Context paramContext, String paramString, long paramLong)
   {
     paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
@@ -28,10 +23,15 @@ public class QQPimSharedPrefrenceUtil
     }
     paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
   }
+  
+  public static String b(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimSharedPrefrenceUtil
  * JD-Core Version:    0.7.0.1
  */

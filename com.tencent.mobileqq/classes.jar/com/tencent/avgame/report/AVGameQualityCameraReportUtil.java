@@ -7,28 +7,28 @@ import mqq.app.MobileQQ;
 
 public class AVGameQualityCameraReportUtil
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = 0L;
   public static String a = "actAVGameOpenCamera";
   public static String b = "param_Type";
+  private static int c;
+  private static long d;
   
   public static void a(int paramInt)
   {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    jdField_a_of_type_Int = paramInt;
+    d = System.currentTimeMillis();
+    c = paramInt;
   }
   
   public static void a(boolean paramBoolean)
   {
-    if (jdField_a_of_type_Long > 0L)
+    if (d > 0L)
     {
-      if (jdField_a_of_type_Int <= 0) {
+      if (c <= 0) {
         return;
       }
-      long l = System.currentTimeMillis() - jdField_a_of_type_Long;
+      long l = System.currentTimeMillis() - d;
       Object localObject = new HashMap();
-      ((HashMap)localObject).put(b, String.valueOf(jdField_a_of_type_Int));
-      StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance("", jdField_a_of_type_JavaLangString, paramBoolean, l, 1L, (HashMap)localObject, "", true);
+      ((HashMap)localObject).put(b, String.valueOf(c));
+      StatisticCollector.getInstance(MobileQQ.sMobileQQ).collectPerformance("", a, paramBoolean, l, 1L, (HashMap)localObject, "", true);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -37,11 +37,11 @@ public class AVGameQualityCameraReportUtil
         ((StringBuilder)localObject).append(" success:");
         ((StringBuilder)localObject).append(paramBoolean);
         ((StringBuilder)localObject).append(" type:");
-        ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(c);
         QLog.i("actAVGameOpenCamera", 1, ((StringBuilder)localObject).toString());
       }
-      jdField_a_of_type_Int = 0;
-      jdField_a_of_type_Long = 0L;
+      c = 0;
+      d = 0L;
     }
   }
 }

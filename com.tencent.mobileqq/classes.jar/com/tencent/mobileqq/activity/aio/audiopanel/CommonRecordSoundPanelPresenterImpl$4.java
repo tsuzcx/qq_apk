@@ -11,18 +11,18 @@ class CommonRecordSoundPanelPresenterImpl$4
   
   public void run()
   {
-    ICommonRecordSoundPanelView localICommonRecordSoundPanelView = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelICommonRecordSoundPanelView;
+    ICommonRecordSoundPanelView localICommonRecordSoundPanelView = this.a;
     if (localICommonRecordSoundPanelView != null)
     {
-      QQToast.a(localICommonRecordSoundPanelView.a().getApp(), 2131689978, 1).b(((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getTitleBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelICommonRecordSoundPanelView.a()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelICommonRecordSoundPanelView.b(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelICommonRecordSoundPanelView.a();
+      QQToast.makeText(localICommonRecordSoundPanelView.getApp().getApp(), 2131886620, 1).show(((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getTitleBarHeight(this.a.getViewContext()));
+      this.a.b(this.b);
+      this.a.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanelPresenterImpl.4
  * JD-Core Version:    0.7.0.1
  */

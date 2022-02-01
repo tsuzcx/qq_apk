@@ -14,22 +14,22 @@ class CmShowAvatarImpl$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleSetAvatar isDynamic: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" isSuccess:");
       localStringBuilder.append(paramBoolean);
       QLog.i("[cmshow]CmShowAvatarImpl", 1, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
-      CmShowAvatarImpl.a(this.jdField_a_of_type_ComTencentMobileqqApolloIpcBusinessCmShowAvatarImpl, this.jdField_a_of_type_ComTencentMobileqqApolloIpcBusinessICmShowAvatar$IAvatarInterface, paramInt, this.b, this.jdField_a_of_type_JavaLangString);
+      CmShowAvatarImpl.a(this.e, this.b, paramInt, this.c, this.d);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloIpcBusinessICmShowAvatar$IAvatarInterface.a(false, "");
+    this.b.a(false, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ipc.business.CmShowAvatarImpl.1
  * JD-Core Version:    0.7.0.1
  */

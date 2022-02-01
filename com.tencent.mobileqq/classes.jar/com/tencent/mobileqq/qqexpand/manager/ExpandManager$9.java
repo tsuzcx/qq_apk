@@ -1,42 +1,66 @@
 package com.tencent.mobileqq.qqexpand.manager;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qqexpand.bean.match.ExtendFriendLocationInfo;
-import com.tencent.mobileqq.qqexpand.network.impl.ExpandHandlerImpl;
-import com.tencent.mobileqq.qqexpand.utils.ExtendFriendGetLocationListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qqexpand.bean.chat.LimitChatRes;
+import com.tencent.mobileqq.qqexpand.config.ExpandConfig;
+import com.tencent.mobileqq.qqexpand.downloader.ExtendFriendResourceDownloader;
+import com.tencent.mobileqq.qqexpand.manager.config.ExpandConfigManager;
+import com.tencent.mobileqq.qqexpand.utils.ExpandLimitChatResourceUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class ExpandManager$9
-  implements ExtendFriendGetLocationListener
+  implements Runnable
 {
   ExpandManager$9(ExpandManager paramExpandManager) {}
   
-  public void a(boolean paramBoolean, ExtendFriendLocationInfo paramExtendFriendLocationInfo)
+  public void run()
   {
-    if (ExpandManager.a(this.a) == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource");
+    }
+    if (!ExpandManager.f(this.this$0).c()) {
+      QLog.d("ExtendFriendManagerLimitchat", 2, "checkToDownloadResource !inited");
+    }
+    if (!ExpandLimitChatResourceUtil.a())
     {
-      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo null");
-      return;
+      QLog.e("ExtendFriendManagerLimitchat", 2, "isBgPicFileExist  no！");
+      if (ExpandManager.f(this.this$0).a() == null)
+      {
+        QLog.d("ExtendFriendManagerLimitchat", 2, "mConfig  IS NOT READY");
+        return;
+      }
+      long l1 = System.currentTimeMillis();
+      long l2 = ExpandManager.g(this.this$0);
+      if ((!NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext())) && (l1 - l2 < 1200000L) && (ExpandManager.h(this.this$0) > 2))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" limitChatResList IS NOT READY currentTime");
+        ((StringBuilder)localObject).append(l1);
+        ((StringBuilder)localObject).append(" lastDownloadTime ");
+        ((StringBuilder)localObject).append(ExpandManager.g(this.this$0));
+        ((StringBuilder)localObject).append(" downloadTimes");
+        ((StringBuilder)localObject).append(ExpandManager.h(this.this$0));
+        QLog.e("ExtendFriendManagerLimitchat", 2, ((StringBuilder)localObject).toString());
+        return;
+      }
+      Object localObject = ExpandLimitChatResourceUtil.b();
+      if ((ExpandManager.i(this.this$0) != null) && (ExpandManager.f(this.this$0).a().limitChatResList != null))
+      {
+        localObject = (LimitChatRes)ExpandManager.f(this.this$0).a().limitChatResList.get(localObject);
+        ExpandManager.i(this.this$0).a((LimitChatRes)localObject);
+        ExpandManager.a(this.this$0, l1);
+        ExpandManager.j(this.this$0);
+        return;
+      }
+      QLog.d("ExtendFriendManagerLimitchat", 2, " limitChatResList IS NOT READY");
     }
-    if (!paramBoolean) {
-      QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT suc");
-    }
-    if (this.a.k())
-    {
-      ((ExpandHandlerImpl)ExpandManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).a(paramExtendFriendLocationInfo);
-      paramExtendFriendLocationInfo = new StringBuilder();
-      paramExtendFriendLocationInfo.append("enterExtendFriend onGetLocationInfo NOT suc:");
-      paramExtendFriendLocationInfo.append(paramBoolean);
-      QLog.i("ExtendFriendManager", 2, paramExtendFriendLocationInfo.toString());
-      return;
-    }
-    QLog.e("ExtendFriendManager", 2, "enterExtendFriend onGetLocationInfo NOT In extendfriend");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExpandManager.9
  * JD-Core Version:    0.7.0.1
  */

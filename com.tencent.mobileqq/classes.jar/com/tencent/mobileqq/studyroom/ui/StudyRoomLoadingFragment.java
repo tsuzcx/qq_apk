@@ -25,8 +25,8 @@ import java.util.concurrent.Future;
 public class StudyRoomLoadingFragment
   extends QPublicBaseFragment
 {
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture = null;
+  private QQProgressDialog a;
+  private Future<?> b = null;
   
   public static void a(String paramString, Map<String, String> paramMap)
   {
@@ -44,18 +44,18 @@ public class StudyRoomLoadingFragment
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getQBaseActivity(), 40);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707828));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new StudyRoomLoadingFragment.1(this));
+      this.a = new QQProgressDialog(getQBaseActivity(), 40);
+      this.a.a(HardCodeUtil.a(2131905642));
+      this.a.setOnCancelListener(new StudyRoomLoadingFragment.1(this));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.a.show();
   }
   
   private void c()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.a;
     if (localQQProgressDialog != null) {
       localQQProgressDialog.dismiss();
     }
@@ -101,10 +101,10 @@ public class StudyRoomLoadingFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    Future localFuture = this.jdField_a_of_type_JavaUtilConcurrentFuture;
+    Future localFuture = this.b;
     if ((localFuture != null) && (!localFuture.isDone()))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+      this.b.cancel(true);
       QLog.i("studyroom.StudyRoomLoadingFragment", 4, "cancel load plugin");
     }
   }
@@ -135,12 +135,12 @@ public class StudyRoomLoadingFragment
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = PluginUtils.a(getQBaseActivity().getApplicationContext(), paramView, false, new StudyRoomLoadingFragment.WeakCallback(this));
+    this.b = PluginUtils.a(getQBaseActivity().getApplicationContext(), paramView, false, new StudyRoomLoadingFragment.WeakCallback(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,7 @@ import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 public class QQWifiBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.y;
-  }
+  public static final int a = BannerTypeCollections.z;
   
   public QQWifiBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -29,8 +24,8 @@ public class QQWifiBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131561849, null);
-    ImageView localImageView = (ImageView)paramBanner.findViewById(2131374636);
+    paramBanner = View.inflate(this.f, 2131628228, null);
+    ImageView localImageView = (ImageView)paramBanner.findViewById(2131442806);
     paramBanner.setOnClickListener(new QQWifiBannerProcessor.1(this));
     localImageView.setOnClickListener(new QQWifiBannerProcessor.2(this));
     return paramBanner;
@@ -38,18 +33,18 @@ public class QQWifiBannerProcessor
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner.a.findViewById(2131374635).setVisibility(0);
-    ((TextView)paramBanner.a.findViewById(2131374637)).setText(HardCodeUtil.a(2131701136));
+    paramBanner.c.findViewById(2131442805).setVisibility(0);
+    ((TextView)paramBanner.c.findViewById(2131442807)).setText(HardCodeUtil.a(2131899153));
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.QQWifiBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -12,36 +12,6 @@ public class AVGameNodeReportUtil
 {
   public static AVGameNodeReportUtil.ReportData a = new AVGameNodeReportUtil.ReportData();
   
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return -99;
-    case 10: 
-      return -18;
-    case 9: 
-      return -17;
-    case 8: 
-      return -19;
-    case 7: 
-      return -15;
-    case 6: 
-      return -13;
-    case 5: 
-      return -16;
-    case 4: 
-      return -12;
-    case 3: 
-      return -11;
-    case -1: 
-    case 1: 
-      return 1;
-    }
-    return -10;
-  }
-  
   public static void a()
   {
     a.reset();
@@ -146,6 +116,36 @@ public class AVGameNodeReportUtil
       return;
     }
     a.n1Cost = 0L;
+  }
+  
+  public static int c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return -99;
+    case 10: 
+      return -18;
+    case 9: 
+      return -17;
+    case 8: 
+      return -19;
+    case 7: 
+      return -15;
+    case 6: 
+      return -13;
+    case 5: 
+      return -16;
+    case 4: 
+      return -12;
+    case 3: 
+      return -11;
+    case -1: 
+    case 1: 
+      return 1;
+    }
+    return -10;
   }
   
   public static void c()

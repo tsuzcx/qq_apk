@@ -15,7 +15,7 @@ class LebaQzoneAndPluginPart$3
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart.a(this.jdField_a_of_type_AndroidViewView, false, this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+      this.e.a(this.a, false, this.b, this.c, this.d);
       return;
     }
     catch (Exception localException)
@@ -26,7 +26,7 @@ class LebaQzoneAndPluginPart$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.3
  * JD-Core Version:    0.7.0.1
  */

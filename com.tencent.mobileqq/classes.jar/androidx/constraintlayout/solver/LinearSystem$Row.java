@@ -16,13 +16,13 @@ abstract interface LinearSystem$Row
   
   public abstract void updateFromFinalVariable(LinearSystem paramLinearSystem, SolverVariable paramSolverVariable, boolean paramBoolean);
   
-  public abstract void updateFromRow(ArrayRow paramArrayRow, boolean paramBoolean);
+  public abstract void updateFromRow(LinearSystem paramLinearSystem, ArrayRow paramArrayRow, boolean paramBoolean);
   
   public abstract void updateFromSystem(LinearSystem paramLinearSystem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.LinearSystem.Row
  * JD-Core Version:    0.7.0.1
  */

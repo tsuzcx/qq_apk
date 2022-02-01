@@ -9,75 +9,74 @@ import com.tencent.qphone.base.util.QLog;
 public class StepSensorCounter
   extends StepMovementDetector
 {
-  private boolean a;
-  private long c = 0L;
-  private int d = 0;
-  private int e = 0;
-  private int f = 0;
+  private boolean i = false;
+  private int j = 0;
+  private int k = 0;
+  private int l = 0;
+  private long m = 0L;
   
   @RequiresApi(api=19)
   StepSensorCounter()
   {
     super(19);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "StepSensorCounter";
+    this.a = "StepSensorCounter";
   }
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    int i = (int)paramSensorEvent.values[0];
-    if (!this.jdField_a_of_type_Boolean)
+    int n = (int)paramSensorEvent.values[0];
+    if (!this.i)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.d = i;
+      this.i = true;
+      this.j = n;
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] initRecord hasStepCount:", Integer.valueOf(this.d) });
+        QLog.d(this.a, 2, new Object[] { "[status][step] initRecord hasStepCount:", Integer.valueOf(this.j) });
       }
     }
     else
     {
-      i -= this.d;
-      int j = i - this.e;
-      int k = this.f;
-      if (k == 0)
+      n -= this.j;
+      int i1 = n - this.k;
+      int i2 = this.l;
+      if (i2 == 0)
       {
-        this.c = System.currentTimeMillis();
-        this.f = 1;
+        this.m = System.currentTimeMillis();
+        this.l = 1;
       }
       else
       {
-        this.f = (k + j);
+        this.l = (i2 + i1);
       }
-      a(j);
+      a(i1);
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] thisStepCount:", Integer.valueOf(i), " thisStep:", Integer.valueOf(j), " sampleStepCount:", Integer.valueOf(this.f) });
+        QLog.d(this.a, 2, new Object[] { "[status][step] thisStepCount:", Integer.valueOf(n), " thisStep:", Integer.valueOf(i1), " sampleStepCount:", Integer.valueOf(this.l) });
       }
-      this.e = i;
-      if (this.f >= Constant.B)
+      this.k = n;
+      if (this.l >= Constant.C)
       {
-        long l = System.currentTimeMillis() - this.c;
-        if (l > 0L)
+        long l1 = System.currentTimeMillis() - this.m;
+        if (l1 > 0L)
         {
-          i = this.f;
-          if (i > 0) {
-            a(l / i);
+          n = this.l;
+          if (n > 0) {
+            a(l1 / n);
           }
         }
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] duration:", Long.valueOf(l), " sampleStepStartTime:", Long.valueOf(this.c) });
+          QLog.d(this.a, 2, new Object[] { "[status][step] duration:", Long.valueOf(l1), " sampleStepStartTime:", Long.valueOf(this.m) });
         }
-        this.f = 0;
-        this.c = 0L;
+        this.l = 0;
+        this.m = 0L;
       }
-      this.jdField_a_of_type_Double = System.currentTimeMillis();
+      this.c = System.currentTimeMillis();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.StepSensorCounter
  * JD-Core Version:    0.7.0.1
  */

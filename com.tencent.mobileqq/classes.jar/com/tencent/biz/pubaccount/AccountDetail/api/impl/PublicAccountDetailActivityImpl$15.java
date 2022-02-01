@@ -20,7 +20,7 @@ class PublicAccountDetailActivityImpl$15
 {
   PublicAccountDetailActivityImpl$15(PublicAccountDetailActivityImpl paramPublicAccountDetailActivityImpl) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (this.a.unFollowActionSheetHasClick) {
       return;
@@ -31,10 +31,10 @@ class PublicAccountDetailActivityImpl$15
     {
       paramView.mIsChangedFromOutSide = false;
       paramView.unfollow();
-      if (((EcShopAssistantManager)this.a.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).a(this.a.uin)) {
+      if (((EcShopAssistantManager)this.a.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).d(this.a.uin)) {
         ((EcshopReportHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a(134243868, this.a.uin, null, null, null, 2L, false);
       }
-      com.tencent.mobileqq.activity.aio.AIOUtils.o = false;
+      com.tencent.mobileqq.activity.aio.AIOUtils.q = false;
       if ("2290230341".equals(this.a.uin)) {
         ReportController.b(this.a.app, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
       } else if (TextUtils.equals(String.valueOf(2062433139L), this.a.uin)) {
@@ -54,7 +54,7 @@ class PublicAccountDetailActivityImpl$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.15
  * JD-Core Version:    0.7.0.1
  */

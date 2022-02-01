@@ -24,7 +24,7 @@ class ChooseInterestTagActivity$5
       ChooseInterestTagActivity.access$1502(this.a, false);
       return;
     case 4099: 
-      ChooseInterestTagActivity.access$1600(this.a, HardCodeUtil.a(2131702020));
+      ChooseInterestTagActivity.access$1600(this.a, HardCodeUtil.a(2131900032));
       ChooseInterestTagActivity.access$1700(this.a).setText("");
       ChooseInterestTagActivity.access$1700(this.a).setOnClickListener(null);
       return;
@@ -58,7 +58,7 @@ class ChooseInterestTagActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.5
  * JD-Core Version:    0.7.0.1
  */

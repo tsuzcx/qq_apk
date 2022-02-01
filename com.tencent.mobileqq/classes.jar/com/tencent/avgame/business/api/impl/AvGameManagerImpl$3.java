@@ -14,10 +14,10 @@ class AvGameManagerImpl$3
   {
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl.createAvGameRoom(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle);
+      this.f.createAvGameRoom(this.a, this.b, this.c, this.d, this.e);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl.onPermisionDenied(this.jdField_a_of_type_AndroidAppActivity);
+    this.f.onPermisionDenied(this.a);
   }
 }
 

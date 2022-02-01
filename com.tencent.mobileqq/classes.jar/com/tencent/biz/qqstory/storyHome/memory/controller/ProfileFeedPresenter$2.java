@@ -16,8 +16,8 @@ class ProfileFeedPresenter$2
       return;
     }
     ProfileFeedPresenter.a(this.this$0, this.a);
-    ProfileFeedPresenter.a(this.this$0).remove(ProfileFeedPresenter.a());
-    ProfileFeedPresenter.a(this.this$0);
+    ProfileFeedPresenter.b(this.this$0).remove(ProfileFeedPresenter.c());
+    ProfileFeedPresenter.c(this.this$0);
   }
 }
 

@@ -162,15 +162,10 @@ public class VTextView
         setIncludeFontPadding(false);
         setLineSpacing(this.mlineSpacing, 1.0F);
         setText(paramLayout.getText());
-        if ((getComponent() != null) && (getComponent().getDomObject() != null) && ((getComponent().getDomObject() instanceof DomObjectText)))
+        if ((getComponent() != null) && (getComponent().getDomObject() != null) && ((getComponent().getDomObject() instanceof DomObjectText)) && (((DomObjectText)getComponent().getDomObject()).isRichClickable))
         {
-          paramLayout = (DomObjectText)getComponent().getDomObject();
-          if (paramLayout.isRichClickable)
-          {
-            setFocusable(false);
-            setMovementMethod(LinkMovementMethod.getInstance());
-          }
-          paramLayout.imgSpanSetTv(this);
+          setFocusable(false);
+          setMovementMethod(LinkMovementMethod.getInstance());
         }
         paramLayout = getComponent().getDomObject().getPadding();
         if (paramLayout != null) {
@@ -192,7 +187,7 @@ public class VTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.VTextView
  * JD-Core Version:    0.7.0.1
  */

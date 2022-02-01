@@ -12,20 +12,20 @@ class SimpleFilePresenter$2
   
   public void run()
   {
-    String str = this.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.d();
+    String str = this.this$0.c.m();
     if ((!TextUtils.isEmpty(str)) && (!SimpleFilePresenter.a(this.this$0)))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(true);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.c(str);
-      SimpleFilePresenter.a(this.this$0).postDelayed(SimpleFilePresenter.a(this.this$0), 1000L);
+      this.this$0.b.d(true);
+      this.this$0.b.c(str);
+      SimpleFilePresenter.c(this.this$0).postDelayed(SimpleFilePresenter.b(this.this$0), 1000L);
       return;
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(false);
+    this.this$0.b.d(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.SimpleFilePresenter.2
  * JD-Core Version:    0.7.0.1
  */

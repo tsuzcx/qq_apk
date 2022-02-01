@@ -17,7 +17,7 @@ class SnapshotService$4
     if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
     {
       if (QLog.isColorLevel()) {
-        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
+        QLog.i(SnapshotService.b(), 2, "receive broadcast: destroy snapshot service");
       }
       SnapshotService.a(false);
       this.a.finish();
@@ -26,7 +26,7 @@ class SnapshotService$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.SnapshotService.4
  * JD-Core Version:    0.7.0.1
  */

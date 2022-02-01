@@ -12,15 +12,15 @@ class KandianPopupWindow$1
   public void onDismiss()
   {
     KandianPopupWindow localKandianPopupWindow = this.a;
-    localKandianPopupWindow.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnUninterestConfirmListener = null;
-    localKandianPopupWindow.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnComplainListener = null;
-    localKandianPopupWindow.c();
+    localKandianPopupWindow.g = null;
+    localKandianPopupWindow.h = null;
+    localKandianPopupWindow.e();
     ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).setIsShowPopup(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.KandianPopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

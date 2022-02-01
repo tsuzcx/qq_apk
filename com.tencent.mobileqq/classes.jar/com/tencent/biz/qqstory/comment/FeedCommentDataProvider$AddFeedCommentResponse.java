@@ -8,44 +8,44 @@ import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
 public class FeedCommentDataProvider$AddFeedCommentResponse
   extends LegoResponseBase
 {
-  LegoResponseCallBack jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack;
-  qqstory_service.RspAddFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment;
+  qqstory_service.RspAddFeedComment a;
+  LegoResponseCallBack b;
   
   public FeedCommentDataProvider$AddFeedCommentResponse(LegoResponseCallBack paramLegoResponseCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack = paramLegoResponseCallBack;
+    this.b = paramLegoResponseCallBack;
   }
   
   public FeedCommentDataProvider$AddFeedCommentResponse(qqstory_service.RspAddFeedComment paramRspAddFeedComment, LegoResponseCallBack paramLegoResponseCallBack)
   {
     super(paramRspAddFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment = paramRspAddFeedComment;
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack = paramLegoResponseCallBack;
+    this.a = paramRspAddFeedComment;
+    this.b = paramLegoResponseCallBack;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment);
+    this.b.a(this.a);
   }
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack.a(paramInt, paramBundle);
+    this.b.a(paramInt, paramBundle);
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack.a(paramInt, paramString);
+    this.b.a(paramInt, paramString);
   }
   
   public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack.a(paramBoolean, paramBundle);
+    this.b.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider.AddFeedCommentResponse
  * JD-Core Version:    0.7.0.1
  */

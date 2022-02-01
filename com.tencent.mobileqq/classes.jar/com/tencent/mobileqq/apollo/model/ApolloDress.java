@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.model;
 
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader;
+import com.tencent.mobileqq.apollo.res.api.IApolloResHelper;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class ApolloDress
   implements Cloneable
 {
-  public static final String[] DRESS_UNIT_DESCRIPTION_ARRAY = { HardCodeUtil.a(2131700555), HardCodeUtil.a(2131700552), HardCodeUtil.a(2131700548), HardCodeUtil.a(2131700554), HardCodeUtil.a(2131700553), HardCodeUtil.a(2131700549), HardCodeUtil.a(2131700551) };
+  public static final String[] DRESS_UNIT_DESCRIPTION_ARRAY = { HardCodeUtil.a(2131898586), HardCodeUtil.a(2131898583), HardCodeUtil.a(2131898579), HardCodeUtil.a(2131898585), HardCodeUtil.a(2131898584), HardCodeUtil.a(2131898580), HardCodeUtil.a(2131898582) };
   public static final Map<String, Integer> DRESS_UNIT_MAP = new ApolloDress.1();
   public int belongCombId;
   public int combIsCollected;
@@ -39,11 +39,10 @@ public class ApolloDress
         JSONObject localJSONObject = new JSONObject(paramString);
         Object localObject1 = localJSONObject.getJSONObject("role");
         localApolloDress.roleId = ((JSONObject)localObject1).getInt("id");
-        int i = ((JSONObject)localObject1).optInt("aiFlag", 0);
-        bool = true;
-        if (i != 1) {
-          break label442;
+        if (((JSONObject)localObject1).optInt("aiFlag", 0) != 1) {
+          break label434;
         }
+        bool = true;
         localApolloDress.isAIRole = bool;
         localApolloDress.roleTimeStamp = ((JSONObject)localObject1).optLong("ts");
         localApolloDress.feeType = ((JSONObject)localObject1).optInt("feeType");
@@ -59,7 +58,7 @@ public class ApolloDress
           QLog.d("ApolloDress", 2, ((StringBuilder)localObject1).toString());
         }
         paramString = localJSONObject.getJSONArray("dresslist");
-        i = 0;
+        int i = 0;
         if (i < paramString.length())
         {
           Object localObject2 = paramString.getJSONObject(i);
@@ -100,13 +99,11 @@ public class ApolloDress
       }
       catch (Exception paramString)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ApolloDress", 2, "parseApolloDress failed", paramString);
-        }
+        QLog.e("ApolloDress", 1, "parseApolloDress failed", paramString);
         paramString = null;
       }
       return paramString;
-      label442:
+      label434:
       boolean bool = false;
     }
   }
@@ -173,9 +170,7 @@ public class ApolloDress
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("[cmshow]ApolloPet", 2, "parseApolloPetDress failed", paramString);
-      }
+      QLog.e("[cmshow]ApolloPet", 1, "parseApolloPetDress failed", paramString);
     }
     return null;
   }
@@ -234,7 +229,7 @@ public class ApolloDress
       }
       return localObject1;
     }
-    return ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(this.roleId);
+    return ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(this.roleId);
   }
   
   public String toString()
@@ -278,7 +273,7 @@ public class ApolloDress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.model.ApolloDress
  * JD-Core Version:    0.7.0.1
  */

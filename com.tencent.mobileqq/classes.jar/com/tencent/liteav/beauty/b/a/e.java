@@ -65,12 +65,10 @@ public class e
     if ((Build.BRAND.equals("samsung")) && (Build.MODEL.equals("GT-I9500")) && (Build.VERSION.RELEASE.equals("4.3")))
     {
       Log.d(this.A, "SAMSUNG_S4 GT-I9500 + Android 4.3; use diffrent shader!");
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(15);
     }
     else
     {
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(5);
     }
     if ((this.a != 0) && (b())) {
@@ -85,20 +83,20 @@ public class e
   public boolean b()
   {
     super.b();
-    q();
+    r();
     return true;
   }
   
-  public void q()
+  public void r()
   {
-    this.r = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
-    this.s = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
-    this.t = GLES20.glGetUniformLocation(p(), "smoothDegree");
+    this.r = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
+    this.s = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
+    this.t = GLES20.glGetUniformLocation(q(), "smoothDegree");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.e
  * JD-Core Version:    0.7.0.1
  */

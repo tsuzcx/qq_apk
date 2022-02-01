@@ -18,18 +18,8 @@ import org.json.JSONObject;
 public final class TweetTopicEntranceShouldShowAction
   implements JsMethodAction
 {
-  public static final TweetTopicEntranceShouldShowAction.Companion a;
-  private String a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueWebpluginJsMethodActionTweetTopicEntranceShouldShowAction$Companion = new TweetTopicEntranceShouldShowAction.Companion(null);
-  }
-  
-  public TweetTopicEntranceShouldShowAction()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public static final TweetTopicEntranceShouldShowAction.Companion a = new TweetTopicEntranceShouldShowAction.Companion(null);
+  private String b = "";
   
   private final void a(int paramInt, String paramString, JSONObject paramJSONObject)
   {
@@ -43,13 +33,13 @@ public final class TweetTopicEntranceShouldShowAction
       i = 0;
     }
     paramString = new JsMethodModel(i, paramString, localJSONObject);
-    ReadInJoyJsMethodActionController.a.a(this.jdField_a_of_type_JavaLangString, paramString.a());
+    ReadInJoyJsMethodActionController.a.a(this.b, paramString.a());
   }
   
   private final void a(TroopMemberApiClient paramTroopMemberApiClient)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", paramTroopMemberApiClient.a((ITroopMemberApiClientApi.Callback)new TweetTopicEntranceShouldShowAction.shouldShowPublisherEntrance.callbackSeq.1(this)));
+    localBundle.putInt("seq", paramTroopMemberApiClient.e((ITroopMemberApiClientApi.Callback)new TweetTopicEntranceShouldShowAction.shouldShowPublisherEntrance.callbackSeq.1(this)));
     paramTroopMemberApiClient.a(160, localBundle);
   }
   
@@ -76,8 +66,8 @@ public final class TweetTopicEntranceShouldShowAction
       {
         paramActivity = new JSONObject(paramVarArgs[0]).optString("callback");
         Intrinsics.checkExpressionValueIsNotNull(paramActivity, "jobj.optString(\"callback\")");
-        this.jdField_a_of_type_JavaLangString = paramActivity;
-        if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString))
+        this.b = paramActivity;
+        if (!TextUtils.isEmpty((CharSequence)this.b))
         {
           a(paramTroopMemberApiClient);
           return true;
@@ -93,7 +83,7 @@ public final class TweetTopicEntranceShouldShowAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.webplugin.jsMethodAction.TweetTopicEntranceShouldShowAction
  * JD-Core Version:    0.7.0.1
  */

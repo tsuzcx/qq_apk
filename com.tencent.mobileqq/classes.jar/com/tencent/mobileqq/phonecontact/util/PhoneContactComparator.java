@@ -11,16 +11,16 @@ import java.util.Set;
 public class PhoneContactComparator
   implements Comparator<PhoneContact>
 {
-  private IAddFriendServiceApi jdField_a_of_type_ComTencentMobileqqAddfriendApiIAddFriendServiceApi;
-  private final Set<String> jdField_a_of_type_JavaUtilSet;
-  private final int[] jdField_a_of_type_ArrayOfInt;
+  private final int[] a;
+  private final Set<String> b;
+  private IAddFriendServiceApi c;
   
   public PhoneContactComparator(int[] paramArrayOfInt, Set<String> paramSet, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
+    this.a = paramArrayOfInt;
+    this.b = paramSet;
     if (paramAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAddfriendApiIAddFriendServiceApi = ((IAddFriendServiceApi)paramAppInterface.getRuntimeService(IAddFriendServiceApi.class, ""));
+      this.c = ((IAddFriendServiceApi)paramAppInterface.getRuntimeService(IAddFriendServiceApi.class, ""));
     }
   }
   
@@ -69,13 +69,13 @@ public class PhoneContactComparator
   
   private int c(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    IAddFriendServiceApi localIAddFriendServiceApi = this.jdField_a_of_type_ComTencentMobileqqAddfriendApiIAddFriendServiceApi;
+    IAddFriendServiceApi localIAddFriendServiceApi = this.c;
     int i = 0;
     if (localIAddFriendServiceApi == null) {
       return 0;
     }
     boolean bool1 = localIAddFriendServiceApi.hasSendAddFriendReq(paramPhoneContact1.unifiedCode, true);
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAddfriendApiIAddFriendServiceApi.hasSendAddFriendReq(paramPhoneContact2.unifiedCode, true);
+    boolean bool2 = this.c.hasSendAddFriendReq(paramPhoneContact2.unifiedCode, true);
     if (bool1) {
       return 1;
     }
@@ -154,7 +154,7 @@ public class PhoneContactComparator
       i = 0;
       for (;;)
       {
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        int[] arrayOfInt = this.a;
         if (j >= arrayOfInt.length) {
           break;
         }
@@ -202,7 +202,7 @@ public class PhoneContactComparator
   
   public long a(String paramString)
   {
-    Set localSet = this.jdField_a_of_type_JavaUtilSet;
+    Set localSet = this.b;
     if (localSet == null) {
       return 0L;
     }
@@ -214,7 +214,7 @@ public class PhoneContactComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.util.PhoneContactComparator
  * JD-Core Version:    0.7.0.1
  */

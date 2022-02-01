@@ -1,0 +1,12 @@
+package com.tencent.mobileqq.troop.temporaryban;
+
+class TemporaryBanJoinTroopAbilityHelper$Holder
+{
+  private static final TemporaryBanJoinTroopAbilityHelper a = new TemporaryBanJoinTroopAbilityHelper();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.mobileqq.troop.temporaryban.TemporaryBanJoinTroopAbilityHelper.Holder
+ * JD-Core Version:    0.7.0.1
+ */

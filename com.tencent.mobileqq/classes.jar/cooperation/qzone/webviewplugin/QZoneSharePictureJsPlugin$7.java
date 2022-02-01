@@ -46,12 +46,12 @@ class QZoneSharePictureJsPlugin$7
     if (!TextUtils.isEmpty(localCharSequence)) {
       localBundle.putString("summary", localCharSequence);
     }
-    QZoneShareManager.publishToQzone(this.val$runtime.a(), this.val$runtime.a(), localBundle, null, i);
+    QZoneShareManager.publishToQzone(this.val$runtime.b(), this.val$runtime.d(), localBundle, null, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

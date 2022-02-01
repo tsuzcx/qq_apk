@@ -3,134 +3,134 @@ package com.tencent.mobileqq.pic;
 public class PicUploadInfo$Builder
   extends PicUploadInfo
 {
-  public PicUploadInfo a()
-  {
-    return this;
-  }
-  
   public void a(int paramInt)
   {
-    this.e = paramInt;
+    this.p = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_c_of_type_Long = paramLong;
+    this.E = paramLong;
   }
   
   public void a(PicUploadExtra paramPicUploadExtra)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra = paramPicUploadExtra;
+    this.ac = paramPicUploadExtra;
   }
   
   public void a(PicUploadInfo.RetryInfo paramRetryInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo$RetryInfo = paramRetryInfo;
+    this.ad = paramRetryInfo;
   }
   
   public void a(String paramString)
   {
-    this.jdField_g_of_type_JavaLangString = paramString;
+    this.n = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.i = paramBoolean;
+    this.V = paramBoolean;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.q = paramInt;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_g_of_type_Long = paramLong;
+    this.T = paramLong;
   }
   
   public void b(String paramString)
   {
-    this.jdField_h_of_type_JavaLangString = paramString;
+    this.o = paramString;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_g_of_type_Int = paramInt;
+    this.s = paramInt;
   }
   
   public void c(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void d(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void d(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public void e(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void e(String paramString)
   {
-    this.d = paramString;
+    this.f = paramString;
   }
   
   public void f(int paramInt)
   {
-    this.jdField_h_of_type_Int = paramInt;
+    this.t = paramInt;
   }
   
   public void f(String paramString)
   {
-    this.jdField_f_of_type_JavaLangString = paramString;
+    this.m = paramString;
   }
   
   public void g(int paramInt)
   {
-    this.j = paramInt;
+    this.C = paramInt;
   }
   
   public void h(int paramInt)
   {
-    this.k = paramInt;
+    this.D = paramInt;
   }
   
   public void i(int paramInt)
   {
-    this.l = paramInt;
+    this.F = paramInt;
   }
   
   public void j(int paramInt)
   {
-    this.m = paramInt;
+    this.G = paramInt;
+  }
+  
+  public PicUploadInfo k()
+  {
+    return this;
   }
   
   public void k(int paramInt)
   {
-    this.n = paramInt;
+    this.I = paramInt;
   }
   
   public void l(int paramInt)
   {
-    this.o = paramInt;
+    this.K = paramInt;
   }
   
   public void m(int paramInt)
   {
-    this.q = paramInt;
+    this.U = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicUploadInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

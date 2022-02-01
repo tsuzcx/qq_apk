@@ -20,20 +20,20 @@ public final class PageImpl
   }
   
   @Nullable
-  public Activity a()
-  {
-    return (Activity)this.a.getActivity();
-  }
-  
-  @Nullable
   public Bundle a()
   {
     return this.a.getArguments();
   }
+  
+  @Nullable
+  public Activity b()
+  {
+    return (Activity)this.a.getActivity();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.PageImpl
  * JD-Core Version:    0.7.0.1
  */

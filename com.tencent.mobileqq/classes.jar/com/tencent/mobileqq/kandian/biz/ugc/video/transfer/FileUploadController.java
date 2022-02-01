@@ -5,15 +5,15 @@ import com.tencent.mobileqq.app.QQAppInterface;
 
 public abstract class FileUploadController
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  FileUploadController.FileUploadListener jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener;
+  Context a;
+  QQAppInterface b;
+  FileUploadController.FileUploadListener c;
   
   public FileUploadController(Context paramContext, QQAppInterface paramQQAppInterface, FileUploadController.FileUploadListener paramFileUploadListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcVideoTransferFileUploadController$FileUploadListener = paramFileUploadListener;
+    this.a = paramContext;
+    this.b = paramQQAppInterface;
+    this.c = paramFileUploadListener;
   }
   
   public void a() {}
@@ -24,7 +24,7 @@ public abstract class FileUploadController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.FileUploadController
  * JD-Core Version:    0.7.0.1
  */

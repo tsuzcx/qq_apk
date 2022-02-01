@@ -35,28 +35,16 @@ import mqq.app.MobileQQ;
 public abstract class AudioTransClientInfoHandler
   extends BusinessHandler
 {
-  private static int jdField_a_of_type_Int;
-  static long jdField_a_of_type_Long;
-  private AudioTrans jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans = AudioTrans.a();
-  private AudioTransClientInfoHandlerExtend.InfoInterfaceData jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData = AudioTransClientInfoHandlerExtend.InfoInterfaceData.a();
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private boolean jdField_a_of_type_Boolean = false;
+  static long a;
+  private static int f;
+  private Random b = new Random();
+  private AudioTrans c = AudioTrans.a();
+  private AudioTransClientInfoHandlerExtend.InfoInterfaceData d = AudioTransClientInfoHandlerExtend.InfoInterfaceData.a();
+  private boolean e = false;
   
   public AudioTransClientInfoHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-  }
-  
-  abstract int a();
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_Long);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
   }
   
   abstract void a(long paramLong1, long paramLong2);
@@ -77,24 +65,24 @@ public abstract class AudioTransClientInfoHandler
     localInfoHead.enum_body_type.set(1);
     Object localObject1 = new AudioTransClientTransInfo.InfoReqBody();
     localObject2 = new AudioTransClientTransInfo.InfoC2SCreateSessionReq();
-    String str = b();
+    String str = d();
     ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).enum_business_type.set(1);
     ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).rpt_member_list.set(Arrays.asList(new String[] { localInfoHead.str_uin.get(), str }));
     ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).enum_business_direction.set(4);
     ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).enum_term.set(4);
-    ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).uint32_client_ver.set(b());
-    ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).enum_net_type.set(a());
-    ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).bool_translate.set(c());
+    ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).uint32_client_ver.set(h());
+    ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).enum_net_type.set(f());
+    ((AudioTransClientTransInfo.InfoC2SCreateSessionReq)localObject2).bool_translate.set(g());
     ((AudioTransClientTransInfo.InfoReqBody)localObject1).msg_create_session_req.set((MessageMicro)localObject2);
-    localObject2 = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+    localObject2 = this.c;
     localToServiceMsg.putWupBuffer(AudioTrans.a(localInfoHead.toByteArray(), ((AudioTransClientTransInfo.InfoReqBody)localObject1).toByteArray()));
     boolean bool = NetworkUtil.isNetworkAvailable(this.appRuntime.getApplication().getApplicationContext());
     if (bool) {
       sendPbReq(localToServiceMsg);
     }
     long l1 = System.currentTimeMillis();
-    long l2 = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = l1;
+    long l2 = a;
+    a = l1;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("sendCmdToService, cmd[");
     ((StringBuilder)localObject1).append(paramString2);
@@ -114,16 +102,28 @@ public abstract class AudioTransClientInfoHandler
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
-  abstract int b();
+  public void b()
+  {
+    this.e = false;
+  }
   
-  abstract String b();
+  public String c()
+  {
+    return String.valueOf(this.d.b);
+  }
   
-  abstract boolean b();
+  abstract String d();
   
-  abstract boolean c();
+  abstract boolean e();
+  
+  abstract int f();
+  
+  abstract boolean g();
+  
+  abstract int h();
   
   protected Class<? extends BusinessObserver> observerClass()
   {
@@ -134,7 +134,7 @@ public abstract class AudioTransClientInfoHandler
   {
     if (paramFromServiceMsg.isSuccess())
     {
-      paramToServiceMsg = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+      paramToServiceMsg = this.c;
       paramFromServiceMsg = AudioTrans.a(paramFromServiceMsg.getWupBuffer());
       paramToServiceMsg = paramFromServiceMsg.a;
       paramFromServiceMsg = paramFromServiceMsg.b;
@@ -149,28 +149,28 @@ public abstract class AudioTransClientInfoHandler
           if (paramToServiceMsg.uint32_error_no.get() == 0)
           {
             paramFromServiceMsg = (AudioTransClientTransInfo.InfoC2SCreateSessionRsp)paramFromServiceMsg.msg_create_session_rsp.get();
-            this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_Int = paramFromServiceMsg.enum_channel_type.get();
-            this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.b = paramFromServiceMsg.enum_translator_type.get();
+            this.d.a = paramFromServiceMsg.enum_channel_type.get();
+            this.d.c = paramFromServiceMsg.enum_translator_type.get();
             try
             {
-              this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_Long = Long.valueOf(paramToServiceMsg.str_session_id.get()).longValue();
+              this.d.b = Long.valueOf(paramToServiceMsg.str_session_id.get()).longValue();
             }
             catch (Exception paramToServiceMsg)
             {
               QLog.w("AudioTransClientInfoHandler", 1, "onReceive, Exception", paramToServiceMsg);
             }
             paramToServiceMsg = paramFromServiceMsg.rpt_msg_interface_list.get();
-            this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_JavaUtilList = new ArrayList();
-            boolean bool = b();
+            this.d.d = new ArrayList();
+            boolean bool = e();
             paramFromServiceMsg = new StringBuilder();
             paramFromServiceMsg.append("onReceive, cmd[TransInfoCreate.CreateSession], seq[");
             paramFromServiceMsg.append(i);
             paramFromServiceMsg.append("], mInfoInterfaceData[");
-            paramFromServiceMsg.append(this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData);
+            paramFromServiceMsg.append(this.d);
             paramFromServiceMsg.append("], isSender[");
             paramFromServiceMsg.append(bool);
             paramFromServiceMsg.append("], isSuccessCreateSession[");
-            paramFromServiceMsg.append(this.jdField_a_of_type_Boolean);
+            paramFromServiceMsg.append(this.e);
             paramFromServiceMsg.append("]");
             QLog.w("AudioTransClientInfoHandler", 1, paramFromServiceMsg.toString());
             paramToServiceMsg = paramToServiceMsg.iterator();
@@ -182,28 +182,28 @@ public abstract class AudioTransClientInfoHandler
               paramObject.uint32_port = paramFromServiceMsg.uint32_port.get();
               paramObject.enum_proto_type = paramFromServiceMsg.enum_proto_type.get();
               paramObject.fixed32_inner_IP = paramFromServiceMsg.fixed32_inner_IP.get();
-              this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_JavaUtilList.add(paramObject);
+              this.d.d.add(paramObject);
               paramObject = new StringBuilder();
               paramObject.append("IP = ");
-              AudioTrans localAudioTrans = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+              AudioTrans localAudioTrans = this.c;
               paramObject.append(AudioTrans.a(paramFromServiceMsg.fixed32_IP.get()));
               paramObject.append("|");
               paramObject.append(paramFromServiceMsg.uint32_port.get());
               paramObject.append("|");
               paramObject.append(paramFromServiceMsg.enum_proto_type.get());
               paramObject.append("|");
-              localAudioTrans = this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTrans;
+              localAudioTrans = this.c;
               paramObject.append(AudioTrans.a(paramFromServiceMsg.fixed32_inner_IP.get()));
               QLog.d("AudioTransClientInfoHandler", 2, paramObject.toString());
             }
             paramToServiceMsg = (AudioTransClientInterfaceHandler)this.appRuntime.getBusinessHandler(BusinessHandlerFactory.a);
             long l = i;
-            paramToServiceMsg.a(l, true, this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_Long);
-            this.jdField_a_of_type_Boolean = true;
+            paramToServiceMsg.a(l, true, this.d.d, this.d.b);
+            this.e = true;
             if (!bool) {
               return;
             }
-            a(l, this.jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData.jdField_a_of_type_Long);
+            a(l, this.d.b);
             return;
           }
           paramToServiceMsg = (AudioTransClientTransInfo.InfoC2SFailedRsp)paramFromServiceMsg.msg_failed_rsp.get();

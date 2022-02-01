@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.kandian.ad.api;
 
 import android.app.Activity;
+import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonAdBar;
@@ -38,6 +39,8 @@ public abstract interface IRIJFastWebAdService
   
   public abstract boolean instanceofProteusBannerVideoItemData(Object paramObject);
   
+  public abstract boolean isAutomaticGlide();
+  
   public abstract boolean isBottomAd(Object paramObject);
   
   public abstract boolean isGameComponentAndGetGiftType(AdData paramAdData);
@@ -46,6 +49,8 @@ public abstract interface IRIJFastWebAdService
   
   public abstract boolean isInnerSoftAd(AdData paramAdData);
   
+  public abstract boolean isTelephoneType(AdvertisementInfo paramAdvertisementInfo);
+  
   public abstract void jumpAd(Activity paramActivity, AdData paramAdData);
   
   public abstract String processTextLength(String paramString, int paramInt);
@@ -53,6 +58,8 @@ public abstract interface IRIJFastWebAdService
   public abstract void removeBottomAd(List<BaseData> paramList);
   
   public abstract void removeInnerAd(List<BaseData> paramList);
+  
+  public abstract void requestTelephoneInfoAndCall(Context paramContext, AdvertisementInfo paramAdvertisementInfo);
   
   public abstract void resetRecommendAdData(BaseData paramBaseData, int paramInt);
   
@@ -64,7 +71,7 @@ public abstract interface IRIJFastWebAdService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.IRIJFastWebAdService
  * JD-Core Version:    0.7.0.1
  */

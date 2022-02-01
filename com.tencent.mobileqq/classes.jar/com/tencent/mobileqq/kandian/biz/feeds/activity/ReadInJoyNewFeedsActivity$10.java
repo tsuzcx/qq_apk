@@ -7,12 +7,12 @@ class ReadInJoyNewFeedsActivity$10
   
   public void run()
   {
-    ReadInJoyNewFeedsActivity.a(this.this$0);
+    ReadInJoyNewFeedsActivity.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.10
  * JD-Core Version:    0.7.0.1
  */

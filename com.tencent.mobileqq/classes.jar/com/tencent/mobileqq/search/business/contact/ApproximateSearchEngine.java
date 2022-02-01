@@ -42,30 +42,30 @@ import mqq.app.MobileQQ;
 public class ApproximateSearchEngine
   implements ISearchEngine<IContactSearchModel>
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final Comparator<IContactSearchModel> jdField_a_of_type_JavaUtilComparator = new ApproximateSearchEngine.1();
-  private static Queue<ApproximateSearchEngine.SearchResultCache> jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
-  private int jdField_a_of_type_Int = 0;
+  private static final Comparator<IContactSearchModel> b = new ApproximateSearchEngine.1();
+  private static Queue<ApproximateSearchEngine.SearchResultCache> k = new ConcurrentLinkedQueue();
+  private static Object l = new Object();
   protected AppInterface a;
-  private ISearchListener<IContactSearchModel> jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
-  private String jdField_a_of_type_JavaLangString;
-  private List<IContactSearchModel> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<String> jdField_a_of_type_JavaUtilSet;
-  private ApproximateSearchEngine.TypedReportInfo[] jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo = { new ApproximateSearchEngine.TypedReportInfo(1, "friend"), new ApproximateSearchEngine.TypedReportInfo(768, "phone_contact"), new ApproximateSearchEngine.TypedReportInfo(8, "discussion"), new ApproximateSearchEngine.TypedReportInfo(16, "troop") };
-  private int jdField_b_of_type_Int;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private String jdField_b_of_type_JavaLangString;
-  private List<WeakReference<ApproximateSearchEngine.CancelFlag>> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private String c;
+  private List<IContactSearchModel> c = new ArrayList();
+  private int d = 0;
+  private String e;
+  private String f;
+  private int g;
+  private String h;
+  private Set<String> i;
+  private ApproximateSearchEngine.TypedReportInfo[] j = { new ApproximateSearchEngine.TypedReportInfo(1, "friend"), new ApproximateSearchEngine.TypedReportInfo(768, "phone_contact"), new ApproximateSearchEngine.TypedReportInfo(8, "discussion"), new ApproximateSearchEngine.TypedReportInfo(16, "troop") };
+  private List<WeakReference<ApproximateSearchEngine.CancelFlag>> m = new ArrayList();
+  private Object n = new Object();
+  private ISearchListener<IContactSearchModel> o;
   
   public ApproximateSearchEngine(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-    this.c = paramString;
-    this.jdField_b_of_type_JavaLangString = "people";
+    this.a = paramAppInterface;
+    this.d = paramInt2;
+    this.g = paramInt1;
+    this.i = paramSet;
+    this.h = paramString;
+    this.f = "people";
   }
   
   public ApproximateSearchEngine(AppInterface paramAppInterface, int paramInt1, int paramInt2, Set<String> paramSet)
@@ -73,36 +73,11 @@ public class ApproximateSearchEngine
     this(paramAppInterface, paramInt1, paramInt2, null, paramSet);
   }
   
-  public static int a(int paramInt)
-  {
-    if (paramInt != 1)
-    {
-      if (paramInt != 8)
-      {
-        if (paramInt != 16)
-        {
-          if (paramInt != 768) {
-            return -1;
-          }
-          return 1;
-        }
-        return 3;
-      }
-      return 2;
-    }
-    return 0;
-  }
-  
-  private ArrayList<Entity> a()
-  {
-    return ((ITroopInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
-  }
-  
   private ArrayList<Friends> a(String paramString)
   {
     try
     {
-      paramString = (ArrayList)((IFriendDataService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IFriendDataService.class, "")).getFriendList(Integer.parseInt(paramString));
+      paramString = (ArrayList)((IFriendDataService)this.a.getRuntimeService(IFriendDataService.class, "")).getFriendList(Integer.parseInt(paramString));
       return paramString;
     }
     catch (NumberFormatException paramString)
@@ -112,26 +87,21 @@ public class ApproximateSearchEngine
     return new ArrayList();
   }
   
-  private List<Groups> a()
-  {
-    return ((IFriendDataService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IFriendDataService.class, "")).getGroupList();
-  }
-  
   private List<IContactSearchModel> a(ApproximateSearchEngine.CancelFlag paramCancelFlag)
   {
-    int i = 0;
+    int i1 = 0;
     for (;;)
     {
-      localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo;
-      if (i >= localObject1.length) {
+      localObject1 = this.j;
+      if (i1 >= localObject1.length) {
         break;
       }
-      if (!"global_troop_member".equals(Integer.valueOf(localObject1[i].jdField_a_of_type_Int))) {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo[i].jdField_b_of_type_Long = -1L;
+      if (!"global_troop_member".equals(Integer.valueOf(localObject1[i1].a))) {
+        this.j[i1].d = -1L;
       }
-      i += 1;
+      i1 += 1;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.e;
     ??? = a((String)localObject1, false);
     ArrayList localArrayList1 = new ArrayList();
     if (??? != null)
@@ -149,12 +119,12 @@ public class ApproximateSearchEngine
     ArrayList localArrayList2 = new ArrayList();
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+      if (this.c.size() == 0) {
         return null;
       }
-      localArrayList2.addAll(this.jdField_a_of_type_JavaUtilList);
-      i = 0;
-      while (i < localArrayList2.size())
+      localArrayList2.addAll(this.c);
+      i1 = 0;
+      while (i1 < localArrayList2.size())
       {
         if (paramCancelFlag.a())
         {
@@ -167,13 +137,13 @@ public class ApproximateSearchEngine
           }
           return null;
         }
-        synchronized ((IContactSearchModel)localArrayList2.get(i))
+        synchronized ((IContactSearchModel)localArrayList2.get(i1))
         {
-          SearchMatchResult localSearchMatchResult = ((IContactSearchModel)???).a((String)localObject1);
+          SearchMatchResult localSearchMatchResult = ((IContactSearchModel)???).b((String)localObject1);
           if ((localSearchMatchResult != null) && (localSearchMatchResult.a)) {
             localArrayList1.add(???);
           }
-          i += 1;
+          i1 += 1;
         }
       }
       a((String)localObject1, localArrayList1, false);
@@ -188,24 +158,24 @@ public class ApproximateSearchEngine
   
   private List<IContactSearchModel> a(String paramString, boolean paramBoolean)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (l)
     {
       if ((!TextUtils.isEmpty(paramString)) && (!paramString.trim().contains(" ")))
       {
-        Iterator localIterator = jdField_a_of_type_JavaUtilQueue.iterator();
+        Iterator localIterator = k.iterator();
         Object localObject1 = null;
-        int i = -2147483648;
+        int i1 = -2147483648;
         Object localObject2;
         while (localIterator.hasNext())
         {
           localObject2 = (ApproximateSearchEngine.SearchResultCache)localIterator.next();
-          if ((paramString.contains(((ApproximateSearchEngine.SearchResultCache)localObject2).jdField_a_of_type_JavaLangString)) && (((ApproximateSearchEngine.SearchResultCache)localObject2).jdField_a_of_type_JavaLangString.length() > i))
+          if ((paramString.contains(((ApproximateSearchEngine.SearchResultCache)localObject2).a)) && (((ApproximateSearchEngine.SearchResultCache)localObject2).a.length() > i1))
           {
-            i = ((ApproximateSearchEngine.SearchResultCache)localObject2).jdField_a_of_type_JavaLangString.length();
+            i1 = ((ApproximateSearchEngine.SearchResultCache)localObject2).a.length();
             localObject1 = localObject2;
           }
         }
-        if ((localObject1 != null) && (((ApproximateSearchEngine.SearchResultCache)localObject1).jdField_a_of_type_JavaUtilList != null))
+        if ((localObject1 != null) && (((ApproximateSearchEngine.SearchResultCache)localObject1).b != null))
         {
           if (QLog.isColorLevel())
           {
@@ -213,12 +183,12 @@ public class ApproximateSearchEngine
             ((StringBuilder)localObject2).append("getBestCache hit cache, cur keyword = ");
             ((StringBuilder)localObject2).append(paramString);
             ((StringBuilder)localObject2).append(" , cache keyword = ");
-            ((StringBuilder)localObject2).append(((ApproximateSearchEngine.SearchResultCache)localObject1).jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(((ApproximateSearchEngine.SearchResultCache)localObject1).a);
             ((StringBuilder)localObject2).append(" , cache size = ");
-            ((StringBuilder)localObject2).append(((ApproximateSearchEngine.SearchResultCache)localObject1).jdField_a_of_type_JavaUtilList.size());
+            ((StringBuilder)localObject2).append(((ApproximateSearchEngine.SearchResultCache)localObject1).b.size());
             QLog.d("ApproximateSearchEngine", 2, ((StringBuilder)localObject2).toString());
           }
-          paramString = ((ApproximateSearchEngine.SearchResultCache)localObject1).jdField_a_of_type_JavaUtilList;
+          paramString = ((ApproximateSearchEngine.SearchResultCache)localObject1).b;
           return paramString;
         }
         if (QLog.isColorLevel())
@@ -240,11 +210,11 @@ public class ApproximateSearchEngine
   
   private void a(String paramString, List<IContactSearchModel> paramList, boolean paramBoolean)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (l)
     {
       if ((!TextUtils.isEmpty(paramString)) && (!paramString.trim().contains(" ")) && (paramList != null))
       {
-        Queue localQueue = jdField_a_of_type_JavaUtilQueue;
+        Queue localQueue = k;
         while (localQueue.size() > 2) {
           localQueue.poll();
         }
@@ -259,7 +229,7 @@ public class ApproximateSearchEngine
             while (localIterator.hasNext())
             {
               ApproximateSearchEngine.SearchResultCache localSearchResultCache = (ApproximateSearchEngine.SearchResultCache)localIterator.next();
-              if (localSearchResultCache.jdField_a_of_type_JavaUtilList.isEmpty()) {
+              if (localSearchResultCache.b.isEmpty()) {
                 localQueue.remove(localSearchResultCache);
               }
             }
@@ -279,37 +249,57 @@ public class ApproximateSearchEngine
     }
   }
   
+  public static int b(int paramInt)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 8)
+      {
+        if (paramInt != 16)
+        {
+          if (paramInt != 768) {
+            return -1;
+          }
+          return 1;
+        }
+        return 3;
+      }
+      return 2;
+    }
+    return 0;
+  }
+  
   private static int b(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
   {
-    int i;
-    if ((paramIContactSearchModel2.c() != null) && (paramIContactSearchModel1.c() != null)) {
-      i = paramIContactSearchModel1.c().toString().compareTo(paramIContactSearchModel2.c().toString());
+    int i1;
+    if ((paramIContactSearchModel2.m() != null) && (paramIContactSearchModel1.m() != null)) {
+      i1 = paramIContactSearchModel1.m().toString().compareTo(paramIContactSearchModel2.m().toString());
     } else {
-      i = 0;
+      i1 = 0;
     }
-    int j = i;
-    if (i == 0)
+    int i2 = i1;
+    if (i1 == 0)
     {
-      j = i;
-      if (paramIContactSearchModel2.d() != null)
+      i2 = i1;
+      if (paramIContactSearchModel2.n() != null)
       {
-        j = i;
-        if (paramIContactSearchModel1.d() != null) {
-          j = paramIContactSearchModel1.d().toString().compareTo(paramIContactSearchModel2.d().toString());
+        i2 = i1;
+        if (paramIContactSearchModel1.n() != null) {
+          i2 = paramIContactSearchModel1.n().toString().compareTo(paramIContactSearchModel2.n().toString());
         }
       }
     }
-    return j;
+    return i2;
   }
   
   private List<IContactSearchModel> b(SearchRequest paramSearchRequest)
   {
     ApproximateSearchEngine.CancelFlag localCancelFlag = new ApproximateSearchEngine.CancelFlag(this, false);
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.n)
     {
-      this.jdField_b_of_type_JavaUtilList.add(new WeakReference(localCancelFlag));
-      this.jdField_a_of_type_JavaLangString = paramSearchRequest.jdField_a_of_type_JavaLangString;
-      paramSearchRequest = this.jdField_a_of_type_JavaLangString;
+      this.m.add(new WeakReference(localCancelFlag));
+      this.e = paramSearchRequest.a;
+      paramSearchRequest = this.e;
       if (localCancelFlag.a())
       {
         if (QLog.isColorLevel())
@@ -350,18 +340,28 @@ public class ApproximateSearchEngine
     }
   }
   
+  private List<Groups> f()
+  {
+    return ((IFriendDataService)this.a.getRuntimeService(IFriendDataService.class, "")).getGroupList();
+  }
+  
+  private ArrayList<Entity> g()
+  {
+    return ((ITroopInfoService)this.a.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
+  }
+  
   protected List<IContactSearchModel> a(int paramInt)
   {
-    int i = 0;
+    int i1 = 0;
     for (;;)
     {
-      localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo;
-      if (i >= localObject1.length) {
+      localObject1 = this.j;
+      if (i1 >= localObject1.length) {
         break;
       }
-      localObject1[i].jdField_b_of_type_Int = 0;
-      localObject1[i].jdField_a_of_type_Long = 0L;
-      i += 1;
+      localObject1[i1].c = 0;
+      localObject1[i1].b = 0L;
+      i1 += 1;
     }
     Object localObject2 = new ArrayList();
     long l1;
@@ -372,8 +372,8 @@ public class ApproximateSearchEngine
     {
       l1 = System.currentTimeMillis();
       localObject3 = new ArrayList();
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-      localObject1 = a();
+      this.a.getCurrentAccountUin();
+      localObject1 = f();
       if (localObject1 != null)
       {
         localObject4 = ((List)localObject1).iterator();
@@ -387,30 +387,30 @@ public class ApproximateSearchEngine
             while (localIterator.hasNext())
             {
               Friends localFriends = (Friends)localIterator.next();
-              AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-              i = this.jdField_b_of_type_Int;
+              AppInterface localAppInterface = this.a;
+              i1 = this.g;
               if (localFriends.gathtertype == 1) {
-                localObject1 = MobileQQ.sMobileQQ.getApplicationContext().getResources().getString(2131720101);
+                localObject1 = MobileQQ.sMobileQQ.getApplicationContext().getResources().getString(2131917726);
               } else {
                 localObject1 = localGroups.group_name;
               }
-              ((List)localObject3).add(new ContactSearchModelFriend(localAppInterface, i, localFriends, (String)localObject1, 0L));
+              ((List)localObject3).add(new ContactSearchModelFriend(localAppInterface, i1, localFriends, (String)localObject1, 0L));
             }
           }
         }
       }
       ((List)localObject2).addAll((Collection)localObject3);
       l2 = System.currentTimeMillis();
-      i = a(1);
-      localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo;
-      localObject1[i].jdField_a_of_type_Long = (l2 - l1);
-      localObject1[i].jdField_b_of_type_Int = ((List)localObject3).size();
+      i1 = b(1);
+      localObject1 = this.j;
+      localObject1[i1].b = (l2 - l1);
+      localObject1[i1].c = ((List)localObject3).size();
     }
     if ((paramInt & 0x100) != 0)
     {
       l1 = System.currentTimeMillis();
       localObject1 = new ArrayList();
-      localObject3 = (IPhoneContactService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPhoneContactService.class, "");
+      localObject3 = (IPhoneContactService)this.a.getRuntimeService(IPhoneContactService.class, "");
       if (localObject3 != null)
       {
         localObject3 = ((IPhoneContactService)localObject3).getContactListForDisplay();
@@ -423,23 +423,23 @@ public class ApproximateSearchEngine
             while (((Iterator)localObject3).hasNext())
             {
               localObject4 = (PhoneContact)((Iterator)localObject3).next();
-              ((List)localObject1).add(new ContactSearchModelPhoneContact(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_b_of_type_Int, (PhoneContact)localObject4));
+              ((List)localObject1).add(new ContactSearchModelPhoneContact(this.a, this.g, (PhoneContact)localObject4));
             }
           }
         }
       }
       ((List)localObject2).addAll((Collection)localObject1);
       l2 = System.currentTimeMillis();
-      i = a(768);
-      localObject3 = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo;
-      localObject3[i].jdField_a_of_type_Long = (l2 - l1);
-      localObject3[i].jdField_b_of_type_Int = ((List)localObject1).size();
+      i1 = b(768);
+      localObject3 = this.j;
+      localObject3[i1].b = (l2 - l1);
+      localObject3[i1].c = ((List)localObject1).size();
     }
     if ((paramInt & 0x200) != 0)
     {
       l1 = System.currentTimeMillis();
       localObject1 = new ArrayList();
-      localObject3 = (IPhoneContactService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPhoneContactService.class, "");
+      localObject3 = (IPhoneContactService)this.a.getRuntimeService(IPhoneContactService.class, "");
       if (localObject3 != null)
       {
         localObject3 = ((IPhoneContactService)localObject3).getContactListForDisplay();
@@ -452,61 +452,61 @@ public class ApproximateSearchEngine
             while (((Iterator)localObject3).hasNext())
             {
               localObject4 = (PhoneContact)((Iterator)localObject3).next();
-              ((List)localObject1).add(new ContactSearchModelPhoneContact(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_b_of_type_Int, (PhoneContact)localObject4));
+              ((List)localObject1).add(new ContactSearchModelPhoneContact(this.a, this.g, (PhoneContact)localObject4));
             }
           }
         }
       }
       ((List)localObject2).addAll((Collection)localObject1);
       l2 = System.currentTimeMillis();
-      i = a(768);
-      localObject3 = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo;
-      localObject3[i].jdField_a_of_type_Long = (l2 - l1);
-      localObject3[i].jdField_b_of_type_Int = ((List)localObject1).size();
+      i1 = b(768);
+      localObject3 = this.j;
+      localObject3[i1].b = (l2 - l1);
+      localObject3[i1].c = ((List)localObject1).size();
     }
     if ((paramInt & 0x8) != 0)
     {
       l1 = System.currentTimeMillis();
       localObject1 = new ArrayList();
-      localObject3 = (ArrayList)((IDiscussionService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IDiscussionService.class, "")).getDiscussList();
+      localObject3 = (ArrayList)((IDiscussionService)this.a.getRuntimeService(IDiscussionService.class, "")).getDiscussList();
       if (localObject3 != null)
       {
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
           localObject4 = (DiscussionInfo)((Iterator)localObject3).next();
-          ((List)localObject1).add(new ContactSearchModelDiscussion(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_b_of_type_Int, (DiscussionInfo)localObject4, null, 0));
+          ((List)localObject1).add(new ContactSearchModelDiscussion(this.a, this.g, (DiscussionInfo)localObject4, null, 0));
         }
       }
       ((List)localObject2).addAll((Collection)localObject1);
       l2 = System.currentTimeMillis();
-      i = a(8);
-      localObject3 = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo;
-      localObject3[i].jdField_a_of_type_Long = (l2 - l1);
-      localObject3[i].jdField_b_of_type_Int = ((List)localObject1).size();
+      i1 = b(8);
+      localObject3 = this.j;
+      localObject3[i1].b = (l2 - l1);
+      localObject3[i1].c = ((List)localObject1).size();
     }
     if ((paramInt & 0x10) != 0)
     {
       l1 = System.currentTimeMillis();
       localObject1 = new ArrayList();
-      localObject3 = a();
+      localObject3 = g();
       if (localObject3 != null)
       {
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
           localObject4 = (TroopInfo)((Iterator)localObject3).next();
-          ((List)localObject1).add(new ContactSearchModelTroop(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_b_of_type_Int, (TroopInfo)localObject4, 0L));
+          ((List)localObject1).add(new ContactSearchModelTroop(this.a, this.g, (TroopInfo)localObject4, 0L));
         }
       }
       ((List)localObject2).addAll((Collection)localObject1);
       l2 = System.currentTimeMillis();
-      paramInt = a(16);
-      localObject3 = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchBusinessContactApproximateSearchEngine$TypedReportInfo;
-      localObject3[paramInt].jdField_a_of_type_Long = (l2 - l1);
-      localObject3[paramInt].jdField_b_of_type_Int = ((List)localObject1).size();
+      paramInt = b(16);
+      localObject3 = this.j;
+      localObject3[paramInt].b = (l2 - l1);
+      localObject3[paramInt].c = ((List)localObject1).size();
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilSet;
+    Object localObject1 = this.i;
     if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
     {
       localObject3 = new ArrayList();
@@ -518,7 +518,7 @@ public class ApproximateSearchEngine
           break;
         }
         localObject1 = (IContactSearchModel)((Iterator)localObject2).next();
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(((IContactSearchModel)localObject1).a())) {
+        if (!this.i.contains(((IContactSearchModel)localObject1).c())) {
           ((List)localObject3).add(localObject1);
         }
       }
@@ -534,18 +534,18 @@ public class ApproximateSearchEngine
   
   public void a()
   {
-    List localList = a(this.jdField_a_of_type_Int);
+    List localList = a(this.d);
     if (localList != null) {}
     try
     {
       if (localList.size() > 0)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(localList);
+        this.c.clear();
+        this.c.addAll(localList);
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.c.clear();
       }
       return;
     }
@@ -554,7 +554,7 @@ public class ApproximateSearchEngine
   
   public void a(SearchRequest paramSearchRequest, ISearchListener<IContactSearchModel> paramISearchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = paramISearchListener;
+    this.o = paramISearchListener;
     ThreadManager.postImmediately(new ApproximateSearchEngine.2(this, paramSearchRequest), null, true);
   }
   
@@ -564,9 +564,9 @@ public class ApproximateSearchEngine
     if (??? == null)
     {
       localCancelFlag = new ApproximateSearchEngine.CancelFlag(this, false);
-      synchronized (this.jdField_b_of_type_JavaLangObject)
+      synchronized (this.n)
       {
-        this.jdField_b_of_type_JavaUtilList.add(new WeakReference(localCancelFlag));
+        this.m.add(new WeakReference(localCancelFlag));
       }
     }
     ??? = new HashMap();
@@ -575,7 +575,7 @@ public class ApproximateSearchEngine
     while (paramList1.hasNext())
     {
       localIContactSearchModel1 = (IContactSearchModel)paramList1.next();
-      IContactSearchModel localIContactSearchModel2 = (IContactSearchModel)???.get(localIContactSearchModel1.a());
+      IContactSearchModel localIContactSearchModel2 = (IContactSearchModel)???.get(localIContactSearchModel1.i());
       if (localCancelFlag.a())
       {
         if (QLog.isColorLevel())
@@ -587,8 +587,8 @@ public class ApproximateSearchEngine
         }
         return true;
       }
-      if ((localIContactSearchModel2 == null) || (localIContactSearchModel2.b() < localIContactSearchModel1.b())) {
-        ???.put(localIContactSearchModel1.a(), localIContactSearchModel1);
+      if ((localIContactSearchModel2 == null) || (localIContactSearchModel2.u() < localIContactSearchModel1.u())) {
+        ???.put(localIContactSearchModel1.i(), localIContactSearchModel1);
       }
     }
     paramList1 = new ArrayList();
@@ -612,17 +612,17 @@ public class ApproximateSearchEngine
         paramList1.add(localIContactSearchModel1);
       }
     }
-    Collections.sort(paramList1, jdField_a_of_type_JavaUtilComparator);
+    Collections.sort(paramList1, b);
     paramList2.addAll(paramList1);
     return false;
   }
   
   public void b()
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.n)
     {
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.m.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -633,8 +633,8 @@ public class ApproximateSearchEngine
           localArrayList.add(localWeakReference);
         }
       }
-      this.jdField_b_of_type_JavaUtilList = localArrayList;
-      this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = null;
+      this.m = localArrayList;
+      this.o = null;
       return;
     }
     for (;;)
@@ -649,12 +649,12 @@ public class ApproximateSearchEngine
   
   public void e()
   {
-    jdField_a_of_type_JavaUtilQueue.clear();
+    k.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.ApproximateSearchEngine
  * JD-Core Version:    0.7.0.1
  */

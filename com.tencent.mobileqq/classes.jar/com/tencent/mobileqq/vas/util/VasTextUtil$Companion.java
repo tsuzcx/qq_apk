@@ -10,22 +10,6 @@ import org.jetbrains.annotations.Nullable;
 public final class VasTextUtil$Companion
 {
   @JvmStatic
-  public final int a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "epId");
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return -1;
-  }
-  
-  @JvmStatic
   @NotNull
   public final String a(@Nullable String paramString, int paramInt)
   {
@@ -51,12 +35,28 @@ public final class VasTextUtil$Companion
   @JvmStatic
   public final boolean a(@Nullable String paramString)
   {
-    return (paramString == null) || (VasTextUtil.a.a(paramString) != -1);
+    return (paramString == null) || (VasTextUtil.a.b(paramString) != -1);
+  }
+  
+  @JvmStatic
+  public final int b(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "epId");
+    try
+    {
+      int i = Integer.parseInt(paramString);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.util.VasTextUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

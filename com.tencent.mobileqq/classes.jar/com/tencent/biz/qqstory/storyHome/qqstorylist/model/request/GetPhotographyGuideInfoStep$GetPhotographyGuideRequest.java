@@ -11,9 +11,14 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 public class GetPhotographyGuideInfoStep$GetPhotographyGuideRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.get_photography_guide");
+  public static final String e = StoryApi.a("StorySvc.get_photography_guide");
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     Object localObject = new qqstory_service.RspGetPhotographyGuide();
     try
@@ -31,12 +36,7 @@ public class GetPhotographyGuideInfoStep$GetPhotographyGuideRequest
     return null;
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
   }

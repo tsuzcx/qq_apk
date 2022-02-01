@@ -11,21 +11,21 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/pts/IProteusItemView;", "", "addContainer", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "clearChilds", "getContainer", "getModel", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/api/IReadInJoyModel;", "getProteusItemView", "Landroid/view/View;", "getTemplateBean", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/bean/TemplateBean;", "setInternalTag", "tag", "key", "", "setModel", "model", "onLastReadRefreshListener", "Lcom/tencent/mobileqq/kandian/biz/pts/OnLastReadRefreshListener;", "setTemplateBean", "newTemplateBean", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IProteusItemView
 {
-  @NotNull
-  public abstract View a();
-  
-  @Nullable
-  public abstract TemplateBean a();
-  
-  @Nullable
-  public abstract Container a();
-  
-  @Nullable
-  public abstract IReadInJoyModel a();
-  
   public abstract void a(@Nullable Container paramContainer);
   
-  public abstract void c();
+  public abstract void d();
+  
+  @Nullable
+  public abstract Container getContainer();
+  
+  @Nullable
+  public abstract IReadInJoyModel getModel();
+  
+  @NotNull
+  public abstract View getProteusItemView();
+  
+  @Nullable
+  public abstract TemplateBean getTemplateBean();
   
   public abstract void setInternalTag(int paramInt, @NotNull Object paramObject);
   
@@ -37,7 +37,7 @@ public abstract interface IProteusItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.IProteusItemView
  * JD-Core Version:    0.7.0.1
  */

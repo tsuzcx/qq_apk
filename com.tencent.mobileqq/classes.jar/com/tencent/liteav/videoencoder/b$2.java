@@ -10,7 +10,7 @@ class b$2
   
   public void run()
   {
-    if ((b.b(this.f) == null) || (b.b(this.f).n() != this.a) || (b.b(this.f).o() != this.b))
+    if ((b.b(this.f) == null) || (b.b(this.f).o() != this.a) || (b.b(this.f).p() != this.b))
     {
       if (b.b(this.f) != null)
       {
@@ -33,14 +33,14 @@ class b$2
     }
     b.b(this.f).a(this.d);
     GLES20.glViewport(0, 0, this.a, this.b);
-    int i = b.b(this.f).q();
+    int i = b.b(this.f).r();
     GLES20.glFlush();
     this.f.a(i, this.a, this.b, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.b.2
  * JD-Core Version:    0.7.0.1
  */

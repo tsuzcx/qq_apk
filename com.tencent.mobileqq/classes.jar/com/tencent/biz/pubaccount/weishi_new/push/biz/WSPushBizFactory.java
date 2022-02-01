@@ -26,7 +26,13 @@ public class WSPushBizFactory
       if (i == 5) {
         return new WSFollowBiz(paramWSRedDotPushMsg);
       }
-      if ((i == 6) || (i == 7)) {
+      if ((i != 6) && (i != 7))
+      {
+        if (i == 8) {
+          return new WSOpenHomeThenVerticalBiz(paramWSRedDotPushMsg);
+        }
+      }
+      else {
         return new WSDramaPreviewBiz(paramWSRedDotPushMsg);
       }
     }
@@ -50,7 +56,7 @@ public class WSPushBizFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.biz.WSPushBizFactory
  * JD-Core Version:    0.7.0.1
  */

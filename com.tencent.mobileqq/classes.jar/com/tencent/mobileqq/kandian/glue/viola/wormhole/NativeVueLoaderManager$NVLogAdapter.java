@@ -28,12 +28,12 @@ class NativeVueLoaderManager$NVLogAdapter
   
   public void onNativeVueError(String paramString)
   {
-    ViolaUtils.reportNVError(paramString, NativeVueLoaderManager.a().a());
+    ViolaUtils.reportNVError(paramString, NativeVueLoaderManager.a().b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.wormhole.NativeVueLoaderManager.NVLogAdapter
  * JD-Core Version:    0.7.0.1
  */

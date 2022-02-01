@@ -16,14 +16,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class HeaderClickHandlerBoodo
   implements IOnHeaderClickHandler
 {
-  public int a()
-  {
-    return 16908292;
-  }
-  
   public String a()
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131690693);
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131887608);
   }
   
   public void a(View paramView, int paramInt)
@@ -34,10 +29,15 @@ public class HeaderClickHandlerBoodo
     ((IQQComicUtil)QRoute.api(IQQComicUtil.class)).initPluginBeforeEnter(localQQAppInterface, (Activity)paramView, localIntent);
     ReportController.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).getHistoryType(paramInt), 0, "", "", "", "");
   }
+  
+  public int b()
+  {
+    return 16908292;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornotebiz.settings.HeaderClickHandlerBoodo
  * JD-Core Version:    0.7.0.1
  */

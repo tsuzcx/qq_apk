@@ -10,15 +10,15 @@ final class TroopNotifyHelper$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNotifyHelper$OnTroopSafeDialogClickConfirm;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
-      paramDialogInterface.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+      paramDialogInterface.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNotifyHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public class StudyModeConfigProcessor
 {
   public static StudyModeConfigProcessor.StudyModeConfigBean a()
   {
-    return (StudyModeConfigProcessor.StudyModeConfigBean)QConfigManager.a().a(610);
+    return (StudyModeConfigProcessor.StudyModeConfigBean)QConfigManager.b().b(610);
   }
   
   @NonNull
@@ -69,7 +69,7 @@ public class StudyModeConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

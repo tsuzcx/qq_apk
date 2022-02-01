@@ -35,7 +35,7 @@ public class VasProfileTemplateCheckUtils
     ((StringBuilder)localObject1).append("checkCurrentUseTemplate curStyleId=");
     ((StringBuilder)localObject1).append(l4);
     QLog.d("ProfileTemplateCheckUtils", 2, ((StringBuilder)localObject1).toString());
-    boolean bool = SimpleUIUtil.a();
+    boolean bool = SimpleUIUtil.e();
     long l2 = 0L;
     Object localObject3 = null;
     Object localObject2 = null;
@@ -303,7 +303,7 @@ public class VasProfileTemplateCheckUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.misc.VasProfileTemplateCheckUtils
  * JD-Core Version:    0.7.0.1
  */

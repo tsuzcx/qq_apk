@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.msf.core.quicksend;
 
+import com.tencent.mobileqq.a.a.d;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +24,7 @@ class b$a
     }
     try
     {
-      if ((b.b(this.a).quicksender != null) && (b.b(this.a).quicksender.b(this.b))) {
+      if ((b.b(this.a).quicksender != null) && (b.b(this.a).quicksender.d(this.b))) {
         b.b(this.a).quicksender.f.b(this.b);
       }
     }
@@ -37,13 +38,13 @@ class b$a
       this.a.a(com.tencent.mobileqq.msf.core.a.a.G());
     }
     if ((com.tencent.mobileqq.msf.core.a.a.aH()) && (this.b.getServiceCmd().equals("MessageSvc.PbSendMsg"))) {
-      com.tencent.mobileqq.a.a.d.a(this.b);
+      d.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.quicksend.b.a
  * JD-Core Version:    0.7.0.1
  */

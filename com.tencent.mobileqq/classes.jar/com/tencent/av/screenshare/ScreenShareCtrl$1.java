@@ -18,27 +18,27 @@ class ScreenShareCtrl$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.d("AVShare", 2, "startOrStopScreenShare, onClick");
-    this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl.a(2);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiAVActivity;
+    this.c.a(2);
+    paramDialogInterface = this.a;
     if (paramDialogInterface == null) {
       paramDialogInterface = null;
     } else {
-      paramDialogInterface = paramDialogInterface.a();
+      paramDialogInterface = paramDialogInterface.v();
     }
     if (paramDialogInterface != null) {
-      paramDialogInterface.a(1);
+      paramDialogInterface.b(1);
     }
-    ScreenShareCtrl.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl).a.a(new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
-    paramDialogInterface = ScreenShareCtrl.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl).a();
-    TraeHelper.a().b(this.jdField_a_of_type_Long);
-    paramDialogInterface.f = false;
-    paramDialogInterface.z = 1;
-    paramDialogInterface.s = true;
-    String str = paramDialogInterface.c;
-    ScreenShareCtrl.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl).n();
-    ScreenShareCtrl.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl).a(str, 237);
-    ScreenShareCtrl.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl).b(237);
-    ScreenShareCtrl.a(this.jdField_a_of_type_ComTencentAvScreenshareScreenShareCtrl).b(str, paramDialogInterface.z);
+    ScreenShareCtrl.a(this.c).e.a(new Object[] { Integer.valueOf(106), Long.valueOf(this.b) });
+    paramDialogInterface = ScreenShareCtrl.a(this.c).k();
+    TraeHelper.a().b(this.b);
+    paramDialogInterface.C = false;
+    paramDialogInterface.ay = 1;
+    paramDialogInterface.R = true;
+    String str = paramDialogInterface.s;
+    ScreenShareCtrl.a(this.c).G();
+    ScreenShareCtrl.a(this.c).a(str, 237);
+    ScreenShareCtrl.a(this.c).b(237);
+    ScreenShareCtrl.a(this.c).b(str, paramDialogInterface.ay);
     paramDialogInterface.a("onClick_HangeUP", false);
     paramDialogInterface.c("onClick_HangeUP", 0);
   }

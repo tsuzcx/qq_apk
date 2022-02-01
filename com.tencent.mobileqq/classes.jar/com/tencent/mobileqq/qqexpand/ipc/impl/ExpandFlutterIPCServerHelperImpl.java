@@ -22,7 +22,7 @@ public final class ExpandFlutterIPCServerHelperImpl
   @NotNull
   public String getProcessName()
   {
-    String str = ExpandFlutterIPCServer.a();
+    String str = ExpandFlutterIPCServer.b();
     Intrinsics.checkExpressionValueIsNotNull(str, "ExpandFlutterIPCServer.getProcessName()");
     return str;
   }
@@ -35,7 +35,7 @@ public final class ExpandFlutterIPCServerHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.ipc.impl.ExpandFlutterIPCServerHelperImpl
  * JD-Core Version:    0.7.0.1
  */

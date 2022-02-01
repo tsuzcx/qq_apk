@@ -16,43 +16,19 @@ public class GestureProxy
     super(paramView);
   }
   
-  public Settings a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings;
-  }
-  
   public OnGestureListener a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
-  }
-  
-  public State a()
-  {
-    return this.c;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.d);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateState);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.b);
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.b(this.c))
-    {
-      g();
-      return;
-    }
-    f();
+    return this.a;
   }
   
   public void a(GestureProxy.OnStateChangeListener paramOnStateChangeListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramOnStateChangeListener);
+    this.c.add(paramOnStateChangeListener);
   }
   
   public void a(OnGestureListener paramOnGestureListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener = paramOnGestureListener;
+    this.a = paramOnGestureListener;
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -60,25 +36,49 @@ public class GestureProxy
     return super.a(paramView, paramMotionEvent);
   }
   
-  public void b()
+  public Settings b()
   {
-    e();
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.c))
-    {
-      g();
-      return;
-    }
-    f();
+    return this.i;
   }
   
   public boolean b(View paramView, MotionEvent paramMotionEvent)
   {
     return super.b(paramView, paramMotionEvent);
   }
+  
+  public State c()
+  {
+    return this.j;
+  }
+  
+  public void d()
+  {
+    this.l.c(this.j);
+    this.l.c(this.k);
+    this.l.c(this.f);
+    this.l.c(this.g);
+    if (this.l.b(this.j))
+    {
+      n();
+      return;
+    }
+    m();
+  }
+  
+  public void e()
+  {
+    l();
+    if (this.l.a(this.j))
+    {
+      n();
+      return;
+    }
+    m();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.GestureProxy
  * JD-Core Version:    0.7.0.1
  */

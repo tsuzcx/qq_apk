@@ -12,15 +12,15 @@ class ChatHistory$1$1
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.a.a.w != null) {
+      this.a.a.w.dismiss();
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a.m.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.1.1
  * JD-Core Version:    0.7.0.1
  */

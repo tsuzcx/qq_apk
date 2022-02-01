@@ -14,11 +14,11 @@ class EcShopAssistantManager$2
   
   public void run()
   {
-    synchronized (this.this$0.b)
+    synchronized (this.this$0.f)
     {
-      Object[] arrayOfObject = this.this$0.jdField_a_of_type_JavaUtilSet.toArray();
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        SharedPreferencesHandler.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "ec_shop_assist_new_unread_list", arrayOfObject).commit();
+      Object[] arrayOfObject = this.this$0.g.toArray();
+      if (this.this$0.c != null) {
+        SharedPreferencesHandler.a(this.this$0.c.getApp().getSharedPreferences(this.this$0.c.getAccount(), 0).edit(), "ec_shop_assist_new_unread_list", arrayOfObject).commit();
       }
       return;
     }
@@ -26,7 +26,7 @@ class EcShopAssistantManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager.2
  * JD-Core Version:    0.7.0.1
  */

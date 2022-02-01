@@ -210,7 +210,9 @@ public class VideoTexture
       }
       ((SurfaceTexture)???).updateTexImage();
       ??? = getTextureMatrix(this.surfaceTexture, this.preferRotation);
-      ((Matrix)???).postScale(this.scaleX, this.scaleY);
+      if (VideoDecoder.FIX_DECODE_CROP_SIZE) {
+        ((Matrix)???).postScale(this.scaleX, this.scaleY);
+      }
       if ((??? != null) && ("HUAWEI_ARE-AL00".equals(Utils.getPhoneName())) && (this.preferRotation == 1))
       {
         float[] arrayOfFloat = new float[9];
@@ -317,7 +319,7 @@ public class VideoTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoTexture
  * JD-Core Version:    0.7.0.1
  */

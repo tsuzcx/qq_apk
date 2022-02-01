@@ -9,30 +9,30 @@ import com.tencent.qphone.base.util.QLog;
 
 public class BaseStrategy
 {
-  public static BaseStrategy.TrafficStat a;
-  public static boolean a = true;
-  public static long c;
-  protected long a;
+  public static boolean d = true;
+  public static long e;
+  public static BaseStrategy.TrafficStat j;
   protected AppInterface a;
   protected long b;
-  protected long d = 524288000L;
-  protected long e = 31457280L;
-  protected long f = 31457280L;
+  protected long c;
+  protected long f = 524288000L;
   protected long g = 31457280L;
-  
-  public static final void b()
-  {
-    c();
-    jdField_a_of_type_ComTencentMobileqqPicBaseStrategy$TrafficStat.b();
-  }
+  protected long h = 31457280L;
+  protected long i = 31457280L;
   
   public static final void c()
   {
-    if (jdField_a_of_type_ComTencentMobileqqPicBaseStrategy$TrafficStat == null) {
+    d();
+    j.b();
+  }
+  
+  public static final void d()
+  {
+    if (j == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqPicBaseStrategy$TrafficStat == null) {
-          jdField_a_of_type_ComTencentMobileqqPicBaseStrategy$TrafficStat = new BaseStrategy.TrafficStat();
+        if (j == null) {
+          j = new BaseStrategy.TrafficStat();
         }
         return;
       }
@@ -42,8 +42,8 @@ public class BaseStrategy
   
   public int a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    d();
-    paramBoolean = a();
+    e();
+    paramBoolean = b();
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -57,43 +57,7 @@ public class BaseStrategy
     {
       if (paramInt2 == 1)
       {
-        paramLong = this.jdField_a_of_type_Long;
-        l = this.e;
-        if (paramLong >= l)
-        {
-          PicReporter.a(paramInt2, l);
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("result:true,netWokrType:");
-          localStringBuilder.append(paramInt2);
-          localStringBuilder.append(",picTrafficFlowXG:");
-          localStringBuilder.append(this.jdField_a_of_type_Long);
-          localStringBuilder.append(",PreDownMax4GFlow:");
-          localStringBuilder.append(this.e);
-          Logger.a("PIC_TAG_PRELOAD", "isOverLimit", localStringBuilder.toString());
-          return -8;
-        }
-      }
-      else if (paramInt2 == 2)
-      {
-        paramLong = this.jdField_a_of_type_Long;
-        l = this.f;
-        if (paramLong >= l)
-        {
-          PicReporter.a(paramInt2, l);
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("result:true,netWokrType:");
-          localStringBuilder.append(paramInt2);
-          localStringBuilder.append(",picTrafficFlowXG:");
-          localStringBuilder.append(this.jdField_a_of_type_Long);
-          localStringBuilder.append(",PreDownMax3GFlow:");
-          localStringBuilder.append(this.f);
-          Logger.a("PIC_TAG_PRELOAD", "isOverLimit", localStringBuilder.toString());
-          return -8;
-        }
-      }
-      else if (paramInt2 == 3)
-      {
-        paramLong = this.jdField_a_of_type_Long;
+        paramLong = this.b;
         l = this.g;
         if (paramLong >= l)
         {
@@ -102,9 +66,45 @@ public class BaseStrategy
           localStringBuilder.append("result:true,netWokrType:");
           localStringBuilder.append(paramInt2);
           localStringBuilder.append(",picTrafficFlowXG:");
-          localStringBuilder.append(this.jdField_a_of_type_Long);
-          localStringBuilder.append(",PreDownMax2GFlow:");
+          localStringBuilder.append(this.b);
+          localStringBuilder.append(",PreDownMax4GFlow:");
           localStringBuilder.append(this.g);
+          Logger.a("PIC_TAG_PRELOAD", "isOverLimit", localStringBuilder.toString());
+          return -8;
+        }
+      }
+      else if (paramInt2 == 2)
+      {
+        paramLong = this.b;
+        l = this.h;
+        if (paramLong >= l)
+        {
+          PicReporter.a(paramInt2, l);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("result:true,netWokrType:");
+          localStringBuilder.append(paramInt2);
+          localStringBuilder.append(",picTrafficFlowXG:");
+          localStringBuilder.append(this.b);
+          localStringBuilder.append(",PreDownMax3GFlow:");
+          localStringBuilder.append(this.h);
+          Logger.a("PIC_TAG_PRELOAD", "isOverLimit", localStringBuilder.toString());
+          return -8;
+        }
+      }
+      else if (paramInt2 == 3)
+      {
+        paramLong = this.b;
+        l = this.i;
+        if (paramLong >= l)
+        {
+          PicReporter.a(paramInt2, l);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("result:true,netWokrType:");
+          localStringBuilder.append(paramInt2);
+          localStringBuilder.append(",picTrafficFlowXG:");
+          localStringBuilder.append(this.b);
+          localStringBuilder.append(",PreDownMax2GFlow:");
+          localStringBuilder.append(this.i);
           Logger.a("PIC_TAG_PRELOAD", "isOverLimit", localStringBuilder.toString());
           return -8;
         }
@@ -112,8 +112,8 @@ public class BaseStrategy
     }
     else
     {
-      paramLong = this.b;
-      l = this.d;
+      paramLong = this.c;
+      l = this.f;
       if (paramLong >= l)
       {
         PicReporter.a(paramInt2, l);
@@ -121,7 +121,7 @@ public class BaseStrategy
         localStringBuilder.append("result:true,netWokrType:");
         localStringBuilder.append(paramInt2);
         localStringBuilder.append(",picTrafficFlowWIFI:");
-        localStringBuilder.append(this.b);
+        localStringBuilder.append(this.c);
         Logger.a("PIC_TAG_PRELOAD", "isOverLimit", localStringBuilder.toString());
         return -8;
       }
@@ -129,68 +129,63 @@ public class BaseStrategy
     return 0;
   }
   
-  public IPicPreDownload.ConfigInfo a()
-  {
-    return null;
-  }
-  
   public void a()
   {
-    jdField_a_of_type_Boolean = PicPreDownloadUtils.a("PicPreDownSwitchNew", Boolean.valueOf(true)).booleanValue();
-    c = PicPreDownloadUtils.a("PicAuDownTimePoint", 0L);
-    this.d = PicPreDownloadUtils.a("MaxWifiFlow", 524288000L);
-    this.e = PicPreDownloadUtils.a("Max4GFlow", 31457280L);
-    this.f = PicPreDownloadUtils.a("Max3GFlow", 31457280L);
-    this.g = PicPreDownloadUtils.a("Max2GFlow", 31457280L);
+    d = PicPreDownloadUtils.a("PicPreDownSwitchNew", Boolean.valueOf(true)).booleanValue();
+    e = PicPreDownloadUtils.b("PicAuDownTimePoint", 0L);
+    this.f = PicPreDownloadUtils.b("MaxWifiFlow", 524288000L);
+    this.g = PicPreDownloadUtils.b("Max4GFlow", 31457280L);
+    this.h = PicPreDownloadUtils.b("Max3GFlow", 31457280L);
+    this.i = PicPreDownloadUtils.b("Max2GFlow", 31457280L);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initConfig(): PreDownUseLocalFlowSet=");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(d);
       localStringBuilder.append(" PicAuDownTimePoint=");
-      localStringBuilder.append(c);
+      localStringBuilder.append(e);
       localStringBuilder.append(" PreDownMaxWifiFlow=");
-      localStringBuilder.append(this.d);
-      localStringBuilder.append(" PreDownMax4GFlow=");
-      localStringBuilder.append(this.e);
-      localStringBuilder.append(" PreDownMax3GFlow=");
       localStringBuilder.append(this.f);
-      localStringBuilder.append(" PreDownMax2GFlow=");
+      localStringBuilder.append(" PreDownMax4GFlow=");
       localStringBuilder.append(this.g);
+      localStringBuilder.append(" PreDownMax3GFlow=");
+      localStringBuilder.append(this.h);
+      localStringBuilder.append(" PreDownMax2GFlow=");
+      localStringBuilder.append(this.i);
       QLog.d("PIC_TAG_PRELOAD.BaseStrategy", 2, localStringBuilder.toString());
     }
   }
   
   public void a(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = paramAppInterface;
     a();
   }
   
   public void a(IPicPreDownload.ConfigInfo paramConfigInfo) {}
   
-  public boolean a()
+  public boolean b()
   {
     return ((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCAccountNames.picpredownload_whitelist.name());
   }
   
-  public void d()
+  public void e()
   {
-    c();
-    long[] arrayOfLong = jdField_a_of_type_ComTencentMobileqqPicBaseStrategy$TrafficStat.a();
-    this.jdField_a_of_type_Long = (arrayOfLong[0] + arrayOfLong[1]);
-    this.b = (arrayOfLong[2] + arrayOfLong[3]);
+    d();
+    long[] arrayOfLong = j.c();
+    this.b = (arrayOfLong[0] + arrayOfLong[1]);
+    this.c = (arrayOfLong[2] + arrayOfLong[3]);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("picTrafficFlowXG:");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(",C2CPicDownFlowXG:");
       localStringBuilder.append(arrayOfLong[0]);
       localStringBuilder.append(",Group/DiscussPicDownFlowXG:");
       localStringBuilder.append(arrayOfLong[1]);
       localStringBuilder.append(",picTrafficFlowWIFI:");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(",C2CPicDownFlowWIFI:");
       localStringBuilder.append(arrayOfLong[2]);
       localStringBuilder.append(",Group/DiscussPicDownFlowWIFI:");
@@ -198,10 +193,15 @@ public class BaseStrategy
       Logger.a("PIC_TAG_PRELOAD", "", "updateTrafficData ", localStringBuilder.toString());
     }
   }
+  
+  public IPicPreDownload.ConfigInfo f()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.BaseStrategy
  * JD-Core Version:    0.7.0.1
  */

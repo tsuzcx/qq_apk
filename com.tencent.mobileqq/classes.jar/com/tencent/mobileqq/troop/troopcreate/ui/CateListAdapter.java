@@ -13,42 +13,36 @@ import java.util.ArrayList;
 public class CateListAdapter
   extends BaseAdapter
 {
-  public static final String a;
-  public static final String b = HardCodeUtil.a(2131701679);
-  protected Context a;
-  protected LayoutInflater a;
-  protected AppInterface a;
-  protected NewTroopCateView a;
-  protected ArrayList<TroopCateListProvider.TroopCateInfo> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131701678);
-  }
+  public static final String a = HardCodeUtil.a(2131899700);
+  public static final String b = HardCodeUtil.a(2131899701);
+  protected ArrayList<TroopCateListProvider.TroopCateInfo> c = new ArrayList();
+  protected Context d;
+  protected NewTroopCateView e;
+  protected LayoutInflater f;
+  protected AppInterface g;
   
   public CateListAdapter(NewTroopCateView paramNewTroopCateView, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramNewTroopCateView.a;
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopCateView = paramNewTroopCateView;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.d = paramNewTroopCateView.a;
+    this.e = paramNewTroopCateView;
+    this.f = LayoutInflater.from(this.d);
+    this.g = paramAppInterface;
   }
   
   public void a(ArrayList<TroopCateListProvider.TroopCateInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.c = paramArrayList;
     super.notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.c.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.c.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -61,7 +55,7 @@ public class CateListAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560633, null);
+      localView = this.f.inflate(2131626678, null);
       paramView = new CateListAdapter.ViewHolder(this, localView);
       localView.setTag(paramView);
     }
@@ -71,14 +65,14 @@ public class CateListAdapter
       localView = paramView;
       paramView = localViewHolder;
     }
-    paramView.a((TroopCateListProvider.TroopCateInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    paramView.a((TroopCateListProvider.TroopCateInfo)this.c.get(paramInt));
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.CateListAdapter
  * JD-Core Version:    0.7.0.1
  */

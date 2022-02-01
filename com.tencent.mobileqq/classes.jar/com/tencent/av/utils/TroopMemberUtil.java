@@ -23,10 +23,10 @@ public class TroopMemberUtil
       paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       if (paramQQAppInterface != null)
       {
-        if (paramQQAppInterface.b(paramString2, paramString1) == null) {
+        if (paramQQAppInterface.g(paramString2, paramString1) == null) {
           return 3;
         }
-        paramQQAppInterface = paramQQAppInterface.b(paramString2);
+        paramQQAppInterface = paramQQAppInterface.f(paramString2);
         if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopOwner(paramString1))) {
           return 0;
         }

@@ -10,12 +10,12 @@ class QZoneAppListActivity$1$1
   
   public void run()
   {
-    QZoneAppListActivity.a(this.a.a).setText(HardCodeUtil.a(2131711550));
+    QZoneAppListActivity.b(this.a.a).setText(HardCodeUtil.a(2131909197));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.applist.QZoneAppListActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

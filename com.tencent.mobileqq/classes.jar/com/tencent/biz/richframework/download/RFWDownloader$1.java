@@ -1,7 +1,7 @@
 package com.tencent.biz.richframework.download;
 
 import android.os.SystemClock;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -15,7 +15,7 @@ class RFWDownloader$1
   public void onFailure(Call paramCall, IOException paramIOException)
   {
     paramIOException.printStackTrace();
-    RFLog.e("RFWDownloader", RFLog.USR, new Object[] { paramIOException, paramIOException.getMessage() });
+    QLog.e("RFWDownloader", 1, paramIOException, new Object[] { paramIOException.getMessage() });
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
@@ -23,7 +23,6 @@ class RFWDownloader$1
     long l1 = SystemClock.uptimeMillis();
     RFWDownloader.access$000(this.this$0, this.val$downloadInfo, paramResponse);
     long l2 = SystemClock.uptimeMillis();
-    int i = RFLog.USR;
     paramCall = new StringBuilder();
     paramCall.append("download [timeCost=");
     paramCall.append(SystemClock.uptimeMillis() - this.val$beginEnqueue);
@@ -32,7 +31,7 @@ class RFWDownloader$1
     paramCall.append("] [url=");
     paramCall.append(this.val$downloadInfo.getUrl());
     paramCall.append("]");
-    RFLog.e("RFWDownloader", i, paramCall.toString());
+    QLog.e("RFWDownloader", 1, paramCall.toString());
   }
 }
 

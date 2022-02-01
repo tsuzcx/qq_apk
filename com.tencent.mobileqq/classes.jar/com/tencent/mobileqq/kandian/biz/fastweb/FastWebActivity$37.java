@@ -13,14 +13,14 @@ class FastWebActivity$37
   
   public void run()
   {
-    FastWebActivity.o(this.this$0);
-    FastWebActivity.p(this.this$0);
-    AbsBaseArticleInfo localAbsBaseArticleInfo1 = this.this$0.a;
+    FastWebActivity.aa(this.this$0);
+    FastWebActivity.ab(this.this$0);
+    AbsBaseArticleInfo localAbsBaseArticleInfo1 = this.this$0.g;
     FastWebActivity localFastWebActivity = this.this$0;
-    AbsBaseArticleInfo localAbsBaseArticleInfo2 = localFastWebActivity.a;
-    int i = (int)this.this$0.a.mChannelID;
+    AbsBaseArticleInfo localAbsBaseArticleInfo2 = localFastWebActivity.g;
+    int i = (int)this.this$0.g.mChannelID;
     String str;
-    if (FastWebActivity.a(this.this$0).a()) {
+    if (FastWebActivity.d(this.this$0).a()) {
       str = "2";
     } else {
       str = "1";
@@ -30,7 +30,7 @@ class FastWebActivity$37
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.37
  * JD-Core Version:    0.7.0.1
  */

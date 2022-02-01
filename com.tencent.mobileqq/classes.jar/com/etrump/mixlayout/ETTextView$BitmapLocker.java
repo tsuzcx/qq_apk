@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
 
 class ETTextView$BitmapLocker
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Bitmap b;
   
   private ETTextView$BitmapLocker(ETTextView paramETTextView) {}
   
@@ -15,21 +15,21 @@ class ETTextView$BitmapLocker
   {
     try
     {
-      int j = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mFont.getSize() * 4;
+      int j = this.a.mFont.getSize() * 4;
       int i = paramInt2;
       if (paramInt2 < j) {
         i = j;
       }
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && ((this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() < i) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() < paramInt1) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() > j + i)))
+      if ((this.b != null) && ((this.b.getHeight() < i) || (this.b.getWidth() < paramInt1) || (this.b.getHeight() > j + i)))
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        this.b.recycle();
+        this.b = null;
       }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, i, Bitmap.Config.ARGB_8888);
+      if (this.b == null) {
+        this.b = Bitmap.createBitmap(paramInt1, i, Bitmap.Config.ARGB_8888);
       }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.setDensity(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getResources().getDisplayMetrics().densityDpi);
+      if (this.b != null) {
+        this.b.setDensity(this.a.getResources().getDisplayMetrics().densityDpi);
       }
       return;
     }
@@ -38,7 +38,7 @@ class ETTextView$BitmapLocker
   
   Bitmap a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.b;
   }
 }
 

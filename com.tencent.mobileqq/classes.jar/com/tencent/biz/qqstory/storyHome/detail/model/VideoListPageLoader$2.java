@@ -32,48 +32,48 @@ class VideoListPageLoader$2
   public void a(@NonNull BatchGetFriendStoryFeedInfoRequest paramBatchGetFriendStoryFeedInfoRequest, @Nullable BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp arg2, @NonNull ErrorMessage paramErrorMessage)
   {
     SLog.a("Q.qqstory.home.data:VideoListPageLoader", "get video list with home pb return:%s", paramErrorMessage.toString());
-    if (VideoListPageLoader.a(this.a))
+    if (VideoListPageLoader.c(this.a))
     {
       SLog.c("Q.qqstory.home.data:VideoListPageLoader", "don't nothing after terminate");
       return;
     }
     paramBatchGetFriendStoryFeedInfoRequest = new VideoListPageLoader.GetVideoListEvent(paramErrorMessage, VideoListPageLoader.a(this.a));
-    paramBatchGetFriendStoryFeedInfoRequest.d = this.a.jdField_a_of_type_Boolean;
-    if ((??? != null) && (!paramErrorMessage.isFail()) && (???.jdField_a_of_type_JavaUtilList.size() != 0))
+    paramBatchGetFriendStoryFeedInfoRequest.d = this.a.a;
+    if ((??? != null) && (!paramErrorMessage.isFail()) && (???.a.size() != 0))
     {
-      ??? = (StoryHomeFeed)???.jdField_a_of_type_JavaUtilList.get(0);
+      ??? = (StoryHomeFeed)???.a.get(0);
       if (!(??? instanceof VideoListHomeFeed))
       {
-        paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(940001, HardCodeUtil.a(2131716059));
+        paramBatchGetFriendStoryFeedInfoRequest.g = new ErrorMessage(940001, HardCodeUtil.a(2131913510));
         VideoListPageLoader.a(this.a, paramBatchGetFriendStoryFeedInfoRequest);
         paramBatchGetFriendStoryFeedInfoRequest = new StringBuilder();
-        paramBatchGetFriendStoryFeedInfoRequest.append(???.a().toString());
+        paramBatchGetFriendStoryFeedInfoRequest.append(???.g().toString());
         paramBatchGetFriendStoryFeedInfoRequest.append(" is not a video feed");
         AssertUtils.fail(paramBatchGetFriendStoryFeedInfoRequest.toString(), new Object[0]);
         return;
       }
       ??? = (VideoListHomeFeed)???;
-      VideoListPageLoader.a(this.a, ???.a().mVideoNextCookie);
-      VideoListPageLoader.a(this.a, ???.a().mVideoPullType);
-      VideoListPageLoader.b(this.a, ???.a().mVideoSeq);
-      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean = ???.a().mIsVideoEnd;
-      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList = ???.a();
+      VideoListPageLoader.a(this.a, ???.i().mVideoNextCookie);
+      VideoListPageLoader.a(this.a, ???.i().mVideoPullType);
+      VideoListPageLoader.b(this.a, ???.i().mVideoSeq);
+      paramBatchGetFriendStoryFeedInfoRequest.a = ???.i().mIsVideoEnd;
+      paramBatchGetFriendStoryFeedInfoRequest.h = ???.a();
       paramBatchGetFriendStoryFeedInfoRequest.c = true;
-      if ((!paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean) && (TextUtils.isEmpty(VideoListPageLoader.b(this.a)))) {
-        paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean = true;
+      if ((!paramBatchGetFriendStoryFeedInfoRequest.a) && (TextUtils.isEmpty(VideoListPageLoader.d(this.a)))) {
+        paramBatchGetFriendStoryFeedInfoRequest.a = true;
       }
-      paramBatchGetFriendStoryFeedInfoRequest.b = ???.a().getOwner().getUnionId();
-      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList = ((FeedManager)SuperManager.a(11)).a(VideoListPageLoader.a(this.a), paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList, paramBatchGetFriendStoryFeedInfoRequest.c);
-      paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = new FeedVideoInfo(VideoListPageLoader.a(this.a), VideoListPageLoader.b(this.a), VideoListPageLoader.a(this.a), VideoListPageLoader.b(this.a), paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_Boolean);
-      ??? = new ArrayList(paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.size());
-      paramErrorMessage = paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.iterator();
+      paramBatchGetFriendStoryFeedInfoRequest.f = ???.i().getOwner().getUnionId();
+      paramBatchGetFriendStoryFeedInfoRequest.h = ((FeedManager)SuperManager.a(11)).a(VideoListPageLoader.a(this.a), paramBatchGetFriendStoryFeedInfoRequest.h, paramBatchGetFriendStoryFeedInfoRequest.c);
+      paramBatchGetFriendStoryFeedInfoRequest.i = new FeedVideoInfo(VideoListPageLoader.a(this.a), VideoListPageLoader.e(this.a), VideoListPageLoader.b(this.a), VideoListPageLoader.d(this.a), paramBatchGetFriendStoryFeedInfoRequest.a);
+      ??? = new ArrayList(paramBatchGetFriendStoryFeedInfoRequest.h.size());
+      paramErrorMessage = paramBatchGetFriendStoryFeedInfoRequest.h.iterator();
       while (paramErrorMessage.hasNext()) {
         ???.add(((StoryVideoItem)paramErrorMessage.next()).mVid);
       }
       GetVidPollInfoHandler.a(???);
       synchronized (this.a)
       {
-        this.a.b = true;
+        this.a.e = true;
         VideoListPageLoader.a(this.a, paramBatchGetFriendStoryFeedInfoRequest);
         return;
       }

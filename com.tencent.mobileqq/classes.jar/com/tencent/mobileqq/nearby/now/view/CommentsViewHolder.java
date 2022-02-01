@@ -14,34 +14,34 @@ import java.util.List;
 public class CommentsViewHolder
 {
   public ImageView a;
-  public TextView a;
-  public ImageView b;
   public TextView b;
-  public ImageView c;
   public TextView c;
-  public ImageView d;
+  public TextView d;
+  public ImageView e;
+  public ImageView f;
+  public ImageView g;
   
   public void a(long paramLong)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(((ICommentsUtil)QRoute.api(ICommentsUtil.class)).simpleFormatTime(paramLong * 1000L));
+    this.d.setText(((ICommentsUtil)QRoute.api(ICommentsUtil.class)).simpleFormatTime(paramLong * 1000L));
   }
   
   public void a(MedalInfo paramMedalInfo, int paramInt, Paint paramPaint, boolean paramBoolean)
   {
-    paramInt = (int)(paramInt - (int)paramPaint.measureText(this.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) - ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(this.jdField_c_of_type_AndroidWidgetTextView.getContext(), 30.0F));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    if ((paramMedalInfo != null) && (paramMedalInfo.a != null) && (paramMedalInfo.a.size() >= 0))
+    paramInt = (int)(paramInt - (int)paramPaint.measureText(this.d.getText().toString()) - ((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(this.d.getContext(), 30.0F));
+    this.e.setVisibility(8);
+    this.f.setVisibility(8);
+    if ((paramMedalInfo != null) && (paramMedalInfo.d != null) && (paramMedalInfo.d.size() >= 0))
     {
-      this.a.setMaxWidth(paramInt);
+      this.b.setMaxWidth(paramInt);
       return;
     }
-    this.a.setMaxWidth(paramInt);
+    this.b.setMaxWidth(paramInt);
   }
   
   public void a(String paramString)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.c.setText(paramString);
   }
   
   public void a(String paramString1, String paramString2)
@@ -66,7 +66,7 @@ public class CommentsViewHolder
       localSpannableStringBuilder.append(paramString2);
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-16777216), i, ((String)localObject).length() + i, 17);
       localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), i + ((String)localObject).length(), localSpannableStringBuilder.length(), 17);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+      this.c.setText(localSpannableStringBuilder);
       return;
     }
     a(paramString2);
@@ -74,7 +74,7 @@ public class CommentsViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.CommentsViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class TroopSignItemBuilder$TroopSignVideoItemBuilder$4
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!this.this$0.a.S)) {
-      this.a.a.m();
+    if ((this.this$0.E != null) && (!this.this$0.E.ck)) {
+      this.a.v.n();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ final class WTogetherUtil$2
   {
     try
     {
-      String str = NewReportPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, null, null, this.b, this.c, this.d, this.jdField_a_of_type_Int, NewReportPlugin.a(this.jdField_a_of_type_Int), "avreport", "", "", "", "", "", "", "", null);
+      String str = NewReportPlugin.a(this.a, this.b, null, null, this.c, this.d, this.e, this.f, NewReportPlugin.a(this.f), "avreport", "", "", "", "", "", "", "", null);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -21,12 +21,12 @@ final class WTogetherUtil$2
         localStringBuilder.append(str);
         QLog.d("WTogether", 1, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new WTogetherUtil.2.1(this, str));
+      this.a.runOnUiThread(new WTogetherUtil.2.1(this, str));
       return;
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new WTogetherUtil.2.2(this, localException));
+      this.a.runOnUiThread(new WTogetherUtil.2.2(this, localException));
     }
   }
 }

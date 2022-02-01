@@ -16,7 +16,7 @@ class DownloadManager$4
   
   public void run()
   {
-    Context localContext = CommonDataAdapter.a().a();
+    Context localContext = CommonDataAdapter.a().b();
     boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
     Object localObject = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
     if (localObject != null) {
@@ -43,7 +43,7 @@ class DownloadManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.4
  * JD-Core Version:    0.7.0.1
  */

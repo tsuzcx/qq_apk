@@ -15,7 +15,7 @@ public final class EcshopFromUtils
   public static final boolean a(@Nullable BaseSessionInfo paramBaseSessionInfo)
   {
     if (paramBaseSessionInfo != null) {
-      paramBaseSessionInfo = paramBaseSessionInfo.a;
+      paramBaseSessionInfo = paramBaseSessionInfo.b;
     } else {
       paramBaseSessionInfo = null;
     }
@@ -32,7 +32,7 @@ public final class EcshopFromUtils
   public static final boolean b(@Nullable BaseSessionInfo paramBaseSessionInfo)
   {
     if (paramBaseSessionInfo != null) {
-      paramBaseSessionInfo = paramBaseSessionInfo.a;
+      paramBaseSessionInfo = paramBaseSessionInfo.b;
     } else {
       paramBaseSessionInfo = null;
     }
@@ -41,7 +41,7 @@ public final class EcshopFromUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.utils.EcshopFromUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ public class ErrorCode
     if (i != 0)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131718106));
+      localStringBuilder.append(HardCodeUtil.a(2131915583));
       localStringBuilder.append(" (");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
@@ -40,7 +40,7 @@ public class ErrorCode
     if (paramInt1 == 4000)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131715987));
+      localStringBuilder.append(HardCodeUtil.a(2131913439));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -50,7 +50,7 @@ public class ErrorCode
     if (paramInt3 != 0)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131715918));
+      localStringBuilder.append(HardCodeUtil.a(2131913373));
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("-");
       localStringBuilder.append(paramInt2);
@@ -58,7 +58,7 @@ public class ErrorCode
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131715944));
+    localStringBuilder.append(HardCodeUtil.a(2131913399));
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("-");
     localStringBuilder.append(paramInt2);
@@ -68,7 +68,7 @@ public class ErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.ErrorCode
  * JD-Core Version:    0.7.0.1
  */

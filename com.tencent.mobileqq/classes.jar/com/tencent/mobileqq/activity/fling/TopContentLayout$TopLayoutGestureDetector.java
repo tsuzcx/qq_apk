@@ -10,27 +10,28 @@ import android.widget.Scroller;
 class TopContentLayout$TopLayoutGestureDetector
   extends GestureDetector.SimpleOnGestureListener
 {
-  private float jdField_a_of_type_Float;
+  private static final int MIN_DISTANCE = 50;
+  private float mMinDistanceX;
   
   public TopContentLayout$TopLayoutGestureDetector(TopContentLayout paramTopContentLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
+    this.mMinDistanceX = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    if (TopContentLayout.access$000(this.this$0))
     {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
-      int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+      TopContentLayout.access$002(this.this$0, false);
+      int i = this.this$0.getWidth();
+      int j = Math.abs((int)this.this$0.getMovingViewTransX());
       if (paramFloat1 > 0.0F) {
         i -= j;
       } else {
         i = -j;
       }
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
+      TopContentLayout.access$200(this.this$0).startScroll((int)this.this$0.getMovingViewTransX(), 0, i, 0, 350);
+      this.this$0.invalidate();
     }
     return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
@@ -39,7 +40,7 @@ class TopContentLayout$TopLayoutGestureDetector
   {
     float f2;
     float f1;
-    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    if (!TopContentLayout.access$000(this.this$0))
     {
       f2 = Math.abs(paramFloat2 / paramFloat1);
       float f3 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
@@ -50,11 +51,11 @@ class TopContentLayout$TopLayoutGestureDetector
         if (f2 < 0.5F)
         {
           f1 = paramFloat1;
-          if (f3 > this.jdField_a_of_type_Float)
+          if (f3 > this.mMinDistanceX)
           {
-            TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
-            if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
-              TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
+            TopContentLayout.access$002(this.this$0, true);
+            if (TopContentLayout.access$100(this.this$0) != null) {
+              TopContentLayout.access$100(this.this$0).startDrag();
             }
             return true;
           }
@@ -63,8 +64,8 @@ class TopContentLayout$TopLayoutGestureDetector
     }
     else
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
-      int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
+      int i = this.this$0.getMovingViewWidth();
+      int j = Math.abs((int)this.this$0.getMovingViewTransX());
       if ((paramFloat1 < 0.0F) && (j < i))
       {
         f2 = Math.abs(paramFloat1);
@@ -90,11 +91,11 @@ class TopContentLayout$TopLayoutGestureDetector
       f1 = paramFloat1;
       if (Math.abs(paramFloat1) > 0.0F)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
+        this.this$0.movingViewTransBy((int)paramFloat1, 0.0F);
         f1 = paramFloat1;
-        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null)
+        if (TopContentLayout.access$100(this.this$0) != null)
         {
-          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
+          TopContentLayout.access$100(this.this$0).outing((int)this.this$0.getMovingViewTransX(), 0, this.this$0);
           f1 = paramFloat1;
         }
       }
@@ -104,7 +105,7 @@ class TopContentLayout$TopLayoutGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopContentLayout.TopLayoutGestureDetector
  * JD-Core Version:    0.7.0.1
  */

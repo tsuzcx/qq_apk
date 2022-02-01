@@ -82,28 +82,6 @@ public class VipSetFunCallHandler
     return paramInt;
   }
   
-  @Nullable
-  private Bundle a(int paramInt, Object paramObject)
-  {
-    if ((paramObject instanceof Bundle)) {
-      paramObject = (Bundle)paramObject;
-    } else {
-      paramObject = null;
-    }
-    if (paramObject == null)
-    {
-      if ((2 != paramInt) && (3 != paramInt) && (5 != paramInt)) {
-        return new Bundle();
-      }
-      paramObject = new StringBuilder();
-      paramObject.append("sendReqToSVR Error fcBundle==null funcType=");
-      paramObject.append(paramInt);
-      QLog.e("VipSetFunCallHandler", 1, paramObject.toString());
-      return null;
-    }
-    return paramObject;
-  }
-  
   private void a(int paramInt, VipFunCallAndRing.TSsoRsp paramTSsoRsp, String paramString, IVipFunCallManager paramIVipFunCallManager)
   {
     if (paramInt == 0)
@@ -149,7 +127,7 @@ public class VipSetFunCallHandler
             VipFunCallManager.a(this.a, ((VipFunCallAndRing.TGroupInfo)localObject2).i32_group_id.get(), null, localTSourceInfo, true);
           }
         }
-        if (VipFunCallUtil.a()) {
+        if (VipFunCallUtil.b()) {
           paramIVipFunCallManager.downloadFCSuit(((VipFunCallAndRing.TUserInfo)localObject1).i32_common_id.get(), ((VipFunCallAndRing.TUserInfo)localObject1).i32_ring_id.get(), false, 0, null);
         }
       }
@@ -162,7 +140,7 @@ public class VipSetFunCallHandler
     if ((paramInt >= 0) && (!TextUtils.isEmpty(paramString)))
     {
       FriendsManager localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      ExtensionInfo localExtensionInfo2 = localFriendsManager.a(paramString);
+      ExtensionInfo localExtensionInfo2 = localFriendsManager.x(paramString);
       ExtensionInfo localExtensionInfo1 = localExtensionInfo2;
       if (localExtensionInfo2 == null)
       {
@@ -216,7 +194,7 @@ public class VipSetFunCallHandler
     localStringBuilder.append(", funcType=");
     localStringBuilder.append(paramInt1);
     QLog.e("VipSetFunCallHandler", 1, localStringBuilder.toString());
-    ReportCenter.a().a("FunCallSvr.call", 100, paramFromServiceMsg.getBusinessFailCode(), this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131716256), true);
+    ReportCenter.a().a("FunCallSvr.call", 100, paramFromServiceMsg.getBusinessFailCode(), this.a.getCurrentAccountUin(), 1000277, HardCodeUtil.a(2131913698), true);
     paramBundle.putInt("result", paramInt2);
     notifyUI(paramInt1, false, paramBundle);
   }
@@ -314,15 +292,15 @@ public class VipSetFunCallHandler
             a(localTSsoReq, m, localBundle, k, paramToServiceMsg, localIVipFunCallManager);
           }
         }
-        paramToServiceMsg = new VipSetFunCallHandler.HandleMyDefaultFC(this, localTSsoReq, m, localBundle, k, paramToServiceMsg, localIVipFunCallManager, -1, null).a();
+        paramToServiceMsg = new VipSetFunCallHandler.HandleMyDefaultFC(this, localTSsoReq, m, localBundle, k, paramToServiceMsg, localIVipFunCallManager, -1, null).c();
         i = paramToServiceMsg.a();
-        paramToServiceMsg = paramToServiceMsg.a();
+        paramToServiceMsg = paramToServiceMsg.b();
       }
       else
       {
-        paramToServiceMsg = new VipSetFunCallHandler.HandleFriiendFC(this, localTSsoReq, localBundle, k, paramToServiceMsg, localIVipFunCallManager, -1, null).a();
+        paramToServiceMsg = new VipSetFunCallHandler.HandleFriiendFC(this, localTSsoReq, localBundle, k, paramToServiceMsg, localIVipFunCallManager, -1, null).c();
         i = paramToServiceMsg.a();
-        paramToServiceMsg = paramToServiceMsg.a();
+        paramToServiceMsg = paramToServiceMsg.b();
       }
     }
     else
@@ -345,6 +323,28 @@ public class VipSetFunCallHandler
     return false;
   }
   
+  @Nullable
+  private Bundle b(int paramInt, Object paramObject)
+  {
+    if ((paramObject instanceof Bundle)) {
+      paramObject = (Bundle)paramObject;
+    } else {
+      paramObject = null;
+    }
+    if (paramObject == null)
+    {
+      if ((2 != paramInt) && (3 != paramInt) && (5 != paramInt)) {
+        return new Bundle();
+      }
+      paramObject = new StringBuilder();
+      paramObject.append("sendReqToSVR Error fcBundle==null funcType=");
+      paramObject.append(paramInt);
+      QLog.e("VipSetFunCallHandler", 1, paramObject.toString());
+      return null;
+    }
+    return paramObject;
+  }
+  
   public void a(int paramInt, Object paramObject)
   {
     a(paramInt, paramObject, false);
@@ -356,8 +356,8 @@ public class VipSetFunCallHandler
     VipFunCallAndRing.TSsoReq localTSsoReq = new VipFunCallAndRing.TSsoReq();
     localTSsoReq.i32_implat.set(109);
     localTSsoReq.i32_cmd.set(paramInt);
-    localTSsoReq.str_qq_ver.set("8.7.0");
-    Object localObject = a(paramInt, paramObject);
+    localTSsoReq.str_qq_ver.set("8.8.17");
+    Object localObject = b(paramInt, paramObject);
     if (localObject == null) {
       return;
     }
@@ -456,7 +456,7 @@ public class VipSetFunCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipSetFunCallHandler
  * JD-Core Version:    0.7.0.1
  */

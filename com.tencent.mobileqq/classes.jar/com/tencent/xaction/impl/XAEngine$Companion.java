@@ -22,46 +22,10 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/impl/XAEngine$Companion;", "", "()V", "TAG", "", "availClassSize", "", "getAvailClassSize", "()J", "setAvailClassSize", "(J)V", "cache", "Lcom/tencent/xaction/api/IMemoryLruCache;", "threadPoolExecutor", "Ljava/util/concurrent/ExecutorService;", "getThreadPoolExecutor", "()Ljava/util/concurrent/ExecutorService;", "uiHandler", "Landroid/os/Handler;", "getUiHandler", "()Landroid/os/Handler;", "setUiHandler", "(Landroid/os/Handler;)V", "viewManager", "Lcom/tencent/xaction/manager/ViewManager;", "getViewManager", "()Lcom/tencent/xaction/manager/ViewManager;", "setViewManager", "(Lcom/tencent/xaction/manager/ViewManager;)V", "getCache", "pauseAll", "", "registerAnim", "", "name", "clazz", "Ljava/lang/Class;", "Lcom/tencent/xaction/api/base/BaseAnim;", "registerDrawable", "clazzName", "registerTrigger", "Lcom/tencent/xaction/trigger/BaseTrigger;", "resumeAll", "subscribeNotify", "tag", "status", "view", "Landroid/view/View;", "engine", "Lcom/tencent/xaction/openapi/api/IXAEngine;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class XAEngine$Companion
 {
-  public final long a()
-  {
-    return XAEngine.access$getAvailClassSize$cp();
-  }
-  
-  @NotNull
-  public final Handler a()
-  {
-    return XAEngine.access$getUiHandler$cp();
-  }
-  
-  @NotNull
-  public final IMemoryLruCache a()
-  {
-    if (XAEngine.access$getCache$cp() == null) {
-      XAEngine.access$setCache$cp((IMemoryLruCache)new MemoryLruCacheImpl(((Companion)this).a()));
-    }
-    IMemoryLruCache localIMemoryLruCache = XAEngine.access$getCache$cp();
-    if (localIMemoryLruCache != null) {
-      return localIMemoryLruCache;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.api.IMemoryLruCache");
-  }
-  
-  @NotNull
-  public final ViewManager a()
-  {
-    return XAEngine.access$getViewManager$cp();
-  }
-  
   @NotNull
   public final ExecutorService a()
   {
     return XAEngine.access$getThreadPoolExecutor$cp();
-  }
-  
-  @JvmStatic
-  public final void a()
-  {
-    XATimeline.a.a(true);
   }
   
   public final void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull View paramView, @NotNull IXAEngine paramIXAEngine)
@@ -100,11 +64,9 @@ public final class XAEngine$Companion
     return true;
   }
   
-  @JvmStatic
-  public final void b()
+  public final long b()
   {
-    XATimeline.a.a(false);
-    XATimeline.a.a();
+    return XAEngine.access$getAvailClassSize$cp();
   }
   
   @JvmStatic
@@ -118,10 +80,48 @@ public final class XAEngine$Companion
     ((Map)GsonAdapter.a.b()).put(paramString, paramClass);
     return true;
   }
+  
+  @NotNull
+  public final Handler c()
+  {
+    return XAEngine.access$getUiHandler$cp();
+  }
+  
+  @NotNull
+  public final ViewManager d()
+  {
+    return XAEngine.access$getViewManager$cp();
+  }
+  
+  @NotNull
+  public final IMemoryLruCache e()
+  {
+    if (XAEngine.access$getCache$cp() == null) {
+      XAEngine.access$setCache$cp((IMemoryLruCache)new MemoryLruCacheImpl(((Companion)this).b()));
+    }
+    IMemoryLruCache localIMemoryLruCache = XAEngine.access$getCache$cp();
+    if (localIMemoryLruCache != null) {
+      return localIMemoryLruCache;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.api.IMemoryLruCache");
+  }
+  
+  @JvmStatic
+  public final void f()
+  {
+    XATimeline.a.a(true);
+  }
+  
+  @JvmStatic
+  public final void g()
+  {
+    XATimeline.a.a(false);
+    XATimeline.a.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.impl.XAEngine.Companion
  * JD-Core Version:    0.7.0.1
  */

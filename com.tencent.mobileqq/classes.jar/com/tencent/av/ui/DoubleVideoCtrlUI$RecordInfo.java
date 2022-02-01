@@ -6,20 +6,20 @@ import com.tencent.qphone.base.util.QLog;
 
 class DoubleVideoCtrlUI$RecordInfo
 {
-  private int jdField_a_of_type_Int = 0;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  private AVActivity jdField_a_of_type_ComTencentAvUiAVActivity = null;
-  Runnable jdField_a_of_type_JavaLangRunnable = new DoubleVideoCtrlUI.RecordInfo.1(this);
+  Runnable a = new DoubleVideoCtrlUI.RecordInfo.1(this);
   private int b = 0;
-  private int c = 2130842271;
+  private int c = 0;
+  private int d = 2130843215;
+  private VideoAppInterface e = null;
+  private AVActivity f = null;
   
   void a()
   {
-    this.c = 2130842271;
-    this.jdField_a_of_type_Int = 0;
+    this.d = 2130843215;
     this.b = 0;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_ComTencentAvUiAVActivity = null;
+    this.c = 0;
+    this.e = null;
+    this.f = null;
   }
   
   void a(long paramLong)
@@ -34,8 +34,8 @@ class DoubleVideoCtrlUI$RecordInfo
   
   void a(long paramLong, VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    int i = this.jdField_a_of_type_Int;
+    this.e = paramVideoAppInterface;
+    int i = this.b;
     if (i == 0)
     {
       a(paramLong, paramAVActivity);
@@ -53,10 +53,10 @@ class DoubleVideoCtrlUI$RecordInfo
     localStringBuilder.append(paramLong);
     localStringBuilder.append("]");
     QLog.w("RecordInfo", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Int = 1;
-    this.c = 2130842274;
-    this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    this.b = 1;
+    this.d = 2130843218;
+    this.f = paramAVActivity;
+    this.e.a().postDelayed(this.a, 1000L);
   }
 }
 

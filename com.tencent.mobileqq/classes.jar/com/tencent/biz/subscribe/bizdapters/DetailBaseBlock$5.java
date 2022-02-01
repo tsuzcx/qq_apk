@@ -14,20 +14,20 @@ class DetailBaseBlock$5
   
   public void a(int paramInt)
   {
-    String str = DetailBaseBlock.jdField_a_of_type_JavaLangString;
+    String str = DetailBaseBlock.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("count:");
     localStringBuilder.append(paramInt);
     QLog.d(str, 2, localStringBuilder.toString());
-    if ((DetailBaseBlock.n(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock) != null) && (paramInt == 1)) {
-      if (TimeAndCountHelper.a().a(DetailBaseBlock.o(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock), "subscribe_sp_key_show_praise_guide") == 0)
+    if ((DetailBaseBlock.q(this.b) != null) && (paramInt == 1)) {
+      if (TimeAndCountHelper.a().a(DetailBaseBlock.r(this.b), "subscribe_sp_key_show_praise_guide") == 0)
       {
-        if ((this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
-          this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.f();
+        if ((this.b.b != null) && (!this.b.b.c())) {
+          this.b.m();
         }
       }
-      else if ((TimeAndCountHelper.a().a(DetailBaseBlock.p(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock), "subscribe_sp_key_show_follow_guide") == 0) && (!SubscribeUtils.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
-        this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.e();
+      else if ((TimeAndCountHelper.a().a(DetailBaseBlock.s(this.b), "subscribe_sp_key_show_follow_guide") == 0) && (!SubscribeUtils.a(this.a))) {
+        this.b.l();
       }
     }
   }

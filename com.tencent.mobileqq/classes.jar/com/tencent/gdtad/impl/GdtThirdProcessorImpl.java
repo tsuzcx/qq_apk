@@ -30,11 +30,11 @@ public class GdtThirdProcessorImpl
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     paramContext = paramContext.getResources();
-    localURLDrawableOptions.mLoadingDrawable = paramContext.getDrawable(2130845650);
-    localURLDrawableOptions.mFailedDrawable = paramContext.getDrawable(2130845650);
+    localURLDrawableOptions.mLoadingDrawable = paramContext.getDrawable(2130847114);
+    localURLDrawableOptions.mFailedDrawable = paramContext.getDrawable(2130847114);
     paramContext = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     paramContext.setTag(URLDrawableDecodeHandler.b(paramInt1, paramInt1, paramInt2));
-    paramContext.setDecodeHandler(URLDrawableDecodeHandler.c);
+    paramContext.setDecodeHandler(URLDrawableDecodeHandler.d);
     return paramContext;
   }
   
@@ -63,25 +63,25 @@ public class GdtThirdProcessorImpl
     if ((paramGdtMotiveVideoPageData != null) && (!TextUtils.isEmpty(paramGdtMotiveVideoPageData.bannerLogo))) {
       return a(paramContext, paramGdtMotiveVideoPageData.bannerLogo, paramInt1, paramInt2);
     }
-    return paramContext.getResources().getDrawable(2130845650);
+    return paramContext.getResources().getDrawable(2130847114);
   }
   
   public Drawable a(Context paramContext, String paramString)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-    int i = ViewUtils.b(65.0F);
+    int i = ViewUtils.dpToPx(65.0F);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841201);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841201);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841992);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841992);
     try
     {
       localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
       try
       {
-        ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.b(9.0F)));
-        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.i);
+        ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.dpToPx(9.0F)));
+        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.j);
         return localObject;
       }
       catch (Exception paramContext) {}
@@ -142,23 +142,23 @@ public class GdtThirdProcessorImpl
   
   public boolean a()
   {
-    return CPUReport.b();
+    return CPUReport.c();
   }
   
   public Drawable b(Context paramContext, String paramString)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = paramContext.getResources().getDrawable(2130851078);
-    localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130851078);
+    localURLDrawableOptions.mLoadingDrawable = paramContext.getResources().getDrawable(2130853309);
+    localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130853309);
     paramContext = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramContext.setDecodeHandler(URLDrawableDecodeHandler.m);
+    paramContext.setDecodeHandler(URLDrawableDecodeHandler.n);
     paramContext.setTag(new int[] { 50 });
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.impl.GdtThirdProcessorImpl
  * JD-Core Version:    0.7.0.1
  */

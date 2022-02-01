@@ -10,7 +10,7 @@ class BaseVideoView$1
   
   public void onSDKInited(boolean paramBoolean)
   {
-    this.a.a().post(new BaseVideoView.1.1(this));
+    this.a.getMainHandler().post(new BaseVideoView.1.1(this));
   }
 }
 

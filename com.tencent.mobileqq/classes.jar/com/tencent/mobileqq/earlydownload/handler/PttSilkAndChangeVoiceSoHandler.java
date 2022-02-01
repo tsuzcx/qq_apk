@@ -21,19 +21,9 @@ public class PttSilkAndChangeVoiceSoHandler
     super("qq.android.ptt.so.658", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10007;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return PttSilkAndChangeVoiceSoData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPttSilkAndChangeVoiceSo";
   }
   
   public void a(String paramString)
@@ -90,19 +80,29 @@ public class PttSilkAndChangeVoiceSoHandler
     }
   }
   
-  public boolean a()
+  public String b()
   {
-    return true;
+    return "actEarlyPttSilkAndChangeVoiceSo";
   }
   
-  public String b()
+  public int c()
+  {
+    return 10007;
+  }
+  
+  public String d()
   {
     return null;
   }
   
-  public boolean h()
+  public boolean e()
   {
-    Object localObject = (PttSilkAndChangeVoiceSoData)a();
+    return true;
+  }
+  
+  public boolean v()
+  {
+    Object localObject = (PttSilkAndChangeVoiceSoData)h();
     boolean bool = false;
     if (localObject == null) {
       return false;
@@ -114,12 +114,12 @@ public class PttSilkAndChangeVoiceSoHandler
       localStringBuilder.append("isUserNeedDownload cpuArch = ");
       localStringBuilder.append(i);
       localStringBuilder.append(" isUserNeedDownload try match version=");
-      localStringBuilder.append("8.7.0");
+      localStringBuilder.append("8.8.17");
       localStringBuilder.append(" data.version=");
       localStringBuilder.append(((PttSilkAndChangeVoiceSoData)localObject).version);
       QLog.d("PttSilkAndChangeVoiceSoHandler", 2, localStringBuilder.toString());
     }
-    localObject = this.a.getPreferences();
+    localObject = this.c.getPreferences();
     if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
     {
       PttInfoCollector.reportMyCpuArch();
@@ -142,7 +142,7 @@ public class PttSilkAndChangeVoiceSoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PttSilkAndChangeVoiceSoHandler
  * JD-Core Version:    0.7.0.1
  */

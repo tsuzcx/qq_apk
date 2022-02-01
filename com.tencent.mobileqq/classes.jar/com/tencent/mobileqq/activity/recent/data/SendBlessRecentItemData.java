@@ -25,14 +25,14 @@ public class SendBlessRecentItemData
   {
     super.a(paramQQAppInterface, paramContext);
     BlessManager localBlessManager = (BlessManager)paramQQAppInterface.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER);
-    Object localObject = localBlessManager.a();
-    if (!localBlessManager.h())
+    Object localObject = localBlessManager.s();
+    if (!localBlessManager.x())
     {
-      this.mTitleName = paramContext.getResources().getString(2131690683);
+      this.mTitleName = paramContext.getResources().getString(2131887598);
       if (localObject != null) {
         this.mTitleName = ((BlessTask)localObject).starWord;
       }
-      this.mLastMsg = localBlessManager.b();
+      this.mLastMsg = localBlessManager.r();
       this.mMsgExtroInfo = "";
       if (QLog.isColorLevel()) {
         QLog.d("SendBlessRecentItemData", 2, "not isVideoNeedToPlay");
@@ -56,9 +56,9 @@ public class SendBlessRecentItemData
         ((StringBuilder)localObject).append(bool);
         QLog.d("SendBlessRecentItemData", 2, ((StringBuilder)localObject).toString());
       }
-      if ((bool) && (!TextUtils.isEmpty(localBlessManager.b())))
+      if ((bool) && (!TextUtils.isEmpty(localBlessManager.r())))
       {
-        this.mLastMsg = localBlessManager.b();
+        this.mLastMsg = localBlessManager.r();
         this.mMsgExtroInfo = "";
       }
       else if (!TextUtils.isEmpty(this.mMsgExtroInfo))
@@ -68,15 +68,15 @@ public class SendBlessRecentItemData
         ((StringBuilder)localObject).append(this.mMsgExtroInfo);
         ((StringBuilder)localObject).append("] ");
         this.mMsgExtroInfo = ((StringBuilder)localObject).toString();
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
     }
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
-    if (localBlessManager.a() >= 0)
+    if (localBlessManager.h() >= 0)
     {
       int i;
-      if (localBlessManager.a() == 0) {
+      if (localBlessManager.h() == 0) {
         i = 2;
       } else {
         i = 1;
@@ -92,8 +92,8 @@ public class SendBlessRecentItemData
     if (this.mDisplayTime > 0L) {
       this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
     }
-    localBlessManager.f();
-    if (AppSetting.d)
+    localBlessManager.y();
+    if (AppSetting.e)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
@@ -116,7 +116,7 @@ public class SendBlessRecentItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.SendBlessRecentItemData
  * JD-Core Version:    0.7.0.1
  */

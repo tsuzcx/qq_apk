@@ -22,12 +22,12 @@ public final class AchillesImpl
   @Nullable
   public String queryPreDownloadInfoAladdin(@Nullable String paramString)
   {
-    return Achilles.a(paramString);
+    return Achilles.d(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.api.impl.AchillesImpl
  * JD-Core Version:    0.7.0.1
  */

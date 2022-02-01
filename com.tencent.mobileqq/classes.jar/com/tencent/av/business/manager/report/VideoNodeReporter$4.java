@@ -7,7 +7,7 @@ class VideoNodeReporter$4
   
   public void run()
   {
-    VideoNodeReporter.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    VideoNodeReporter.a(this.this$0, this.a, this.b, this.c);
   }
 }
 

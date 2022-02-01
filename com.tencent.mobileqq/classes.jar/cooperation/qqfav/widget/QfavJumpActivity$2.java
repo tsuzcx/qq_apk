@@ -14,7 +14,7 @@ class QfavJumpActivity$2
   {
     try
     {
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
+      QfavJumpActivity.a(this.d, this.a, this.b, this.c);
       return;
     }
     catch (Exception paramDialogInterface)
@@ -22,14 +22,14 @@ class QfavJumpActivity$2
       if (QLog.isColorLevel()) {
         QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
       }
-      paramDialogInterface = this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity;
+      paramDialogInterface = this.d;
       QfavJumpActivity.a(paramDialogInterface, paramDialogInterface.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.widget.QfavJumpActivity.2
  * JD-Core Version:    0.7.0.1
  */

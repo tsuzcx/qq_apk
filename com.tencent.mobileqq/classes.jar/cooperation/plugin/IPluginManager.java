@@ -38,15 +38,10 @@ public abstract class IPluginManager
   extends RemotePluginManager.Stub
   implements Manager
 {
-  public static long a;
-  private static volatile PluginManagerClient jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient;
-  private static PluginManagerHelper.OnPluginManagerLoadedListener jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener;
-  private static ConcurrentLinkedQueue<IPluginManager.WaitingCommand> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  
-  static
-  {
-    jdField_a_of_type_Long = 0L;
-  }
+  public static long a = 0L;
+  private static PluginManagerHelper.OnPluginManagerLoadedListener b;
+  private static volatile PluginManagerClient c;
+  private static ConcurrentLinkedQueue<IPluginManager.WaitingCommand> d = new ConcurrentLinkedQueue();
   
   public static IPluginManager a(QQAppInterface paramQQAppInterface)
   {
@@ -65,33 +60,33 @@ public abstract class IPluginManager
       QLog.e("plugin_tag", 1, "openActivityForResult, pp is null");
       return;
     }
-    if (paramPluginParams.jdField_b_of_type_Int == 1)
+    if (paramPluginParams.b == 1)
     {
-      paramPluginParams.jdField_c_of_type_JavaLangString = paramPluginParams.jdField_b_of_type_JavaLangString;
-      paramPluginParams.jdField_b_of_type_JavaLangString = PluginIdUtil.convertQShadowId2QPluginId(paramPluginParams.jdField_b_of_type_JavaLangString);
+      paramPluginParams.e = paramPluginParams.d;
+      paramPluginParams.d = PluginIdUtil.convertQShadowId2QPluginId(paramPluginParams.d);
     }
-    if (paramPluginParams.jdField_g_of_type_JavaLangString != null)
+    if (paramPluginParams.q != null)
     {
-      localObject = Toast.makeText(BaseApplicationImpl.getContext(), paramPluginParams.jdField_g_of_type_JavaLangString, 0);
+      localObject = Toast.makeText(BaseApplicationImpl.getContext(), paramPluginParams.q, 0);
       ((Toast)localObject).setGravity(17, 0, 0);
       ((Toast)localObject).show();
     }
-    paramPluginParams.jdField_g_of_type_Int = 0;
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("launchTimeStart", System.currentTimeMillis());
+    paramPluginParams.v = 0;
+    paramPluginParams.j.putExtra("launchTimeStart", System.currentTimeMillis());
     paramOnOpenPluginListener = new IPluginManager.1(paramOnOpenPluginListener);
-    if (((paramContext instanceof Activity)) && (paramPluginParams.jdField_a_of_type_AndroidAppDialog != null) && (!((Activity)paramContext).isFinishing())) {
-      new SplashDialogWrapper(paramContext, paramPluginParams.jdField_a_of_type_AndroidAppDialog, paramPluginParams.jdField_e_of_type_JavaLangString, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_b_of_type_Boolean, paramPluginParams.jdField_d_of_type_Int).show();
+    if (((paramContext instanceof Activity)) && (paramPluginParams.l != null) && (!((Activity)paramContext).isFinishing())) {
+      new SplashDialogWrapper(paramContext, paramPluginParams.l, paramPluginParams.g, paramPluginParams.d, paramPluginParams.p, paramPluginParams.r).show();
     }
-    if (paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession != null)
+    if (paramPluginParams.m != null)
     {
-      if (TextUtils.equals(paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession.jdField_a_of_type_JavaLangString, paramPluginParams.jdField_b_of_type_JavaLangString))
+      if (TextUtils.equals(paramPluginParams.m.a, paramPluginParams.d))
       {
-        paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession.b();
-        paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession.d();
+        paramPluginParams.m.b();
+        paramPluginParams.m.e();
       }
     }
     else {
-      PreloadProcHitMgr.a(paramPluginParams.jdField_b_of_type_JavaLangString);
+      PreloadProcHitMgr.a(paramPluginParams.d);
     }
     Object localObject = BaseApplicationImpl.sApplication.getRuntime();
     if (!(localObject instanceof QQAppInterface))
@@ -107,20 +102,20 @@ public abstract class IPluginManager
     if (paramString1 != null)
     {
       paramString1 = paramString1.toLowerCase();
-      if ((!paramString1.contains(HardCodeUtil.a(2131705909))) && (!paramString1.contains("space")))
+      if ((!paramString1.contains(HardCodeUtil.a(2131903790))) && (!paramString1.contains("space")))
       {
         paramString1 = BaseApplicationImpl.getContext();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString2);
-        localStringBuilder.append(HardCodeUtil.a(2131705912));
+        localStringBuilder.append(HardCodeUtil.a(2131903793));
         Toast.makeText(paramString1, localStringBuilder.toString(), 0).show();
         return;
       }
       paramString1 = BaseApplicationImpl.getContext();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131705911));
+      localStringBuilder.append(HardCodeUtil.a(2131903792));
       localStringBuilder.append(paramString2);
-      localStringBuilder.append(HardCodeUtil.a(2131705910));
+      localStringBuilder.append(HardCodeUtil.a(2131903791));
       Toast.makeText(paramString1, localStringBuilder.toString(), 0).show();
     }
   }
@@ -150,16 +145,16 @@ public abstract class IPluginManager
       QLog.e("plugin_tag", 1, "launchPluginBroadcast, pp is null");
       return;
     }
-    if (paramPluginParams.jdField_b_of_type_Int == 1)
+    if (paramPluginParams.b == 1)
     {
-      paramPluginParams.jdField_c_of_type_JavaLangString = paramPluginParams.jdField_b_of_type_JavaLangString;
-      paramPluginParams.jdField_b_of_type_JavaLangString = PluginIdUtil.convertQShadowId2QPluginId(paramPluginParams.jdField_b_of_type_JavaLangString);
+      paramPluginParams.e = paramPluginParams.d;
+      paramPluginParams.d = PluginIdUtil.convertQShadowId2QPluginId(paramPluginParams.d);
     }
-    paramPluginParams.jdField_g_of_type_Int = 2;
+    paramPluginParams.v = 2;
     IPluginManager.5 local5 = new IPluginManager.5();
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("launchTimeStart", System.currentTimeMillis());
-    if (paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession != null) {
-      paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession.a();
+    paramPluginParams.j.putExtra("launchTimeStart", System.currentTimeMillis());
+    if (paramPluginParams.m != null) {
+      paramPluginParams.m.a();
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface))
@@ -182,16 +177,16 @@ public abstract class IPluginManager
       QLog.e("plugin_tag", 1, "launchPluginService, pp is null");
       return;
     }
-    if (paramPluginParams.jdField_b_of_type_Int == 1)
+    if (paramPluginParams.b == 1)
     {
-      paramPluginParams.jdField_c_of_type_JavaLangString = paramPluginParams.jdField_b_of_type_JavaLangString;
-      paramPluginParams.jdField_b_of_type_JavaLangString = PluginIdUtil.convertQShadowId2QPluginId(paramPluginParams.jdField_b_of_type_JavaLangString);
+      paramPluginParams.e = paramPluginParams.d;
+      paramPluginParams.d = PluginIdUtil.convertQShadowId2QPluginId(paramPluginParams.d);
     }
-    paramPluginParams.jdField_g_of_type_Int = 1;
+    paramPluginParams.v = 1;
     IPluginManager.6 local6 = new IPluginManager.6();
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("launchTimeStart", System.currentTimeMillis());
-    if (paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession != null) {
-      paramPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession.a();
+    paramPluginParams.j.putExtra("launchTimeStart", System.currentTimeMillis());
+    if (paramPluginParams.m != null) {
+      paramPluginParams.m.a();
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface))
@@ -204,26 +199,26 @@ public abstract class IPluginManager
   
   private static void c(Context paramContext, IPluginManager.PluginParams paramPluginParams, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener)
   {
-    if ((jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener != null) && (System.currentTimeMillis() - jdField_a_of_type_Long < 500L))
+    if ((b != null) && (System.currentTimeMillis() - a < 500L))
     {
       if (QLog.isColorLevel()) {
         QLog.i("plugin_tag", 2, "handleOtherProcessWait");
       }
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new IPluginManager.WaitingCommand(paramContext, paramPluginParams, paramOnPluginReadyListener));
+      a = System.currentTimeMillis();
+      d.add(new IPluginManager.WaitingCommand(paramContext, paramPluginParams, paramOnPluginReadyListener));
       return;
     }
-    jdField_a_of_type_Long = 0L;
-    if ((jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient != null) && (jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.useful()))
+    a = 0L;
+    if ((c != null) && (c.useful()))
     {
       d(paramContext, paramPluginParams, paramOnPluginReadyListener);
       return;
     }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(new IPluginManager.WaitingCommand(paramContext, paramPluginParams, paramOnPluginReadyListener));
-    if (jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener == null) {
-      jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener = new IPluginManager.3();
+    d.add(new IPluginManager.WaitingCommand(paramContext, paramPluginParams, paramOnPluginReadyListener));
+    if (b == null) {
+      b = new IPluginManager.3();
     }
-    PluginManagerHelper.getPluginInterface(paramContext, jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerHelper$OnPluginManagerLoadedListener);
+    PluginManagerHelper.getPluginInterface(paramContext, b);
   }
   
   static void d(Context paramContext, IPluginManager.PluginParams paramPluginParams)
@@ -231,56 +226,56 @@ public abstract class IPluginManager
     if (paramContext == null) {
       return;
     }
-    a(paramPluginParams.jdField_a_of_type_JavaUtilList);
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.setClass(paramContext, paramPluginParams.jdField_a_of_type_JavaLangClass);
-    if (TextUtils.isEmpty(paramPluginParams.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin")))
+    a(paramPluginParams.u);
+    paramPluginParams.j.setClass(paramContext, paramPluginParams.i);
+    if (TextUtils.isEmpty(paramPluginParams.j.getStringExtra("uin")))
     {
-      paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("uin", paramPluginParams.jdField_a_of_type_JavaLangString);
-      paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", paramPluginParams.jdField_a_of_type_JavaLangString);
+      paramPluginParams.j.putExtra("uin", paramPluginParams.c);
+      paramPluginParams.j.putExtra("qzone_uin", paramPluginParams.c);
     }
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", paramPluginParams.jdField_a_of_type_JavaLangString);
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
+    paramPluginParams.j.putExtra("pluginsdk_selfuin", paramPluginParams.c);
+    paramPluginParams.j.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "doOpenActivityForResult do start activity");
     }
     paramPluginParams.a();
     boolean bool = paramContext instanceof Activity;
     if (bool) {
-      PluginProxyActivity.openActivityForResult((Activity)paramContext, paramPluginParams.jdField_e_of_type_JavaLangString, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_d_of_type_JavaLangString, paramPluginParams.jdField_f_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_AndroidContentIntent, paramPluginParams.jdField_c_of_type_Int);
+      PluginProxyActivity.openActivityForResult((Activity)paramContext, paramPluginParams.g, paramPluginParams.d, paramPluginParams.f, paramPluginParams.h, paramPluginParams.j, paramPluginParams.k);
     } else {
-      PluginProxyActivity.openActivity(paramContext, paramPluginParams.jdField_e_of_type_JavaLangString, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_d_of_type_JavaLangString, paramPluginParams.jdField_f_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_AndroidContentIntent);
+      PluginProxyActivity.openActivity(paramContext, paramPluginParams.g, paramPluginParams.d, paramPluginParams.f, paramPluginParams.h, paramPluginParams.j);
     }
     if (bool)
     {
-      if (paramPluginParams.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("extra_is_from_p2v_edit", false))
+      if (paramPluginParams.j.getBooleanExtra("extra_is_from_p2v_edit", false))
       {
-        ((Activity)paramContext).overridePendingTransition(2130772011, 2130772015);
+        ((Activity)paramContext).overridePendingTransition(2130772014, 2130772018);
         return;
       }
-      if ((paramPluginParams.jdField_a_of_type_AndroidAppDialog != null) && ((paramPluginParams.jdField_a_of_type_AndroidAppDialog instanceof QzoneProgressDialog)))
+      if ((paramPluginParams.l != null) && ((paramPluginParams.l instanceof QzoneProgressDialog)))
       {
-        ((Activity)paramContext).overridePendingTransition(2130772147, 2130772147);
+        ((Activity)paramContext).overridePendingTransition(2130772196, 2130772196);
         return;
       }
-      if ((paramPluginParams.jdField_e_of_type_Int > 0) && (paramPluginParams.jdField_f_of_type_Int > 0)) {
-        ((Activity)paramContext).overridePendingTransition(paramPluginParams.jdField_e_of_type_Int, paramPluginParams.jdField_f_of_type_Int);
+      if ((paramPluginParams.s > 0) && (paramPluginParams.t > 0)) {
+        ((Activity)paramContext).overridePendingTransition(paramPluginParams.s, paramPluginParams.t);
       }
     }
   }
   
   private static void d(Context paramContext, IPluginManager.PluginParams paramPluginParams, IPluginManager.OnPluginReadyListener paramOnPluginReadyListener)
   {
-    if (jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient == null)
+    if (c == null)
     {
       paramOnPluginReadyListener.a(false, paramContext, paramPluginParams);
       return;
     }
-    Object localObject = jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin(paramPluginParams.jdField_b_of_type_JavaLangString);
+    Object localObject = c.queryPlugin(paramPluginParams.d);
     if ((localObject != null) && (((PluginBaseInfo)localObject).mState == 4))
     {
       if (paramOnPluginReadyListener != null)
       {
-        paramPluginParams.jdField_d_of_type_JavaLangString = ((PluginBaseInfo)localObject).mInstalledPath;
+        paramPluginParams.f = ((PluginBaseInfo)localObject).mInstalledPath;
         paramPluginParams.a((PluginBaseInfo)localObject);
         paramOnPluginReadyListener.a(true, paramContext, paramPluginParams);
       }
@@ -290,11 +285,11 @@ public abstract class IPluginManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("doHandleOtherProcess: ");
-      ((StringBuilder)localObject).append(jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.useful());
+      ((StringBuilder)localObject).append(c.useful());
       QLog.i("plugin_tag", 4, ((StringBuilder)localObject).toString());
       QLog.i("plugin_tag", 4, "doHandleOtherProcess isPluginInstalled false");
     }
-    jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(paramPluginParams.jdField_b_of_type_JavaLangString, new IPluginManager.4(paramOnPluginReadyListener, paramPluginParams, paramContext));
+    c.installPlugin(paramPluginParams.d, new IPluginManager.4(paramOnPluginReadyListener, paramPluginParams, paramContext));
   }
   
   static void e(Context paramContext, IPluginManager.PluginParams paramPluginParams)
@@ -304,17 +299,17 @@ public abstract class IPluginManager
   
   static void f(Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    a(paramPluginParams.jdField_a_of_type_JavaUtilList);
+    a(paramPluginParams.u);
     PluginReporter.a(paramPluginParams, true);
     paramPluginParams.a();
-    if ((TextUtils.isEmpty(paramPluginParams.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(paramPluginParams.jdField_a_of_type_JavaLangString)))
+    if ((TextUtils.isEmpty(paramPluginParams.j.getStringExtra("uin"))) && (!TextUtils.isEmpty(paramPluginParams.c)))
     {
-      paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("uin", paramPluginParams.jdField_a_of_type_JavaLangString);
-      paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", paramPluginParams.jdField_a_of_type_JavaLangString);
+      paramPluginParams.j.putExtra("uin", paramPluginParams.c);
+      paramPluginParams.j.putExtra("qzone_uin", paramPluginParams.c);
     }
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", paramPluginParams.jdField_a_of_type_JavaLangString);
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
-    PluginProxyBroadcastReceiver.sendBroadcastReceiver(paramContext, paramPluginParams.jdField_e_of_type_JavaLangString, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_d_of_type_JavaLangString, paramPluginParams.jdField_f_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_AndroidContentIntent);
+    paramPluginParams.j.putExtra("pluginsdk_selfuin", paramPluginParams.c);
+    paramPluginParams.j.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
+    PluginProxyBroadcastReceiver.sendBroadcastReceiver(paramContext, paramPluginParams.g, paramPluginParams.d, paramPluginParams.f, paramPluginParams.h, paramPluginParams.j);
   }
   
   static void g(Context paramContext, IPluginManager.PluginParams paramPluginParams)
@@ -324,25 +319,23 @@ public abstract class IPluginManager
   
   static void h(Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    a(paramPluginParams.jdField_a_of_type_JavaUtilList);
+    a(paramPluginParams.u);
     PluginReporter.a(paramPluginParams, true);
     paramPluginParams.a();
-    if ((TextUtils.isEmpty(paramPluginParams.jdField_a_of_type_AndroidContentIntent.getStringExtra("uin"))) && (!TextUtils.isEmpty(paramPluginParams.jdField_a_of_type_JavaLangString)))
+    if ((TextUtils.isEmpty(paramPluginParams.j.getStringExtra("uin"))) && (!TextUtils.isEmpty(paramPluginParams.c)))
     {
-      paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("uin", paramPluginParams.jdField_a_of_type_JavaLangString);
-      paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("qzone_uin", paramPluginParams.jdField_a_of_type_JavaLangString);
+      paramPluginParams.j.putExtra("uin", paramPluginParams.c);
+      paramPluginParams.j.putExtra("qzone_uin", paramPluginParams.c);
     }
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("pluginsdk_selfuin", paramPluginParams.jdField_a_of_type_JavaLangString);
-    paramPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
-    if (paramPluginParams.jdField_a_of_type_AndroidContentServiceConnection != null)
+    paramPluginParams.j.putExtra("pluginsdk_selfuin", paramPluginParams.c);
+    paramPluginParams.j.putExtra("clsUploader", PluginStatisticsCollector.class.getName());
+    if (paramPluginParams.o != null)
     {
-      PluginProxyService.bindService(paramContext, paramPluginParams.jdField_e_of_type_JavaLangString, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_d_of_type_JavaLangString, paramPluginParams.jdField_f_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_AndroidContentIntent, paramPluginParams.jdField_a_of_type_AndroidContentServiceConnection);
+      PluginProxyService.bindService(paramContext, paramPluginParams.g, paramPluginParams.d, paramPluginParams.f, paramPluginParams.h, paramPluginParams.j, paramPluginParams.o);
       return;
     }
     ThreadManager.post(new IPluginManager.9(paramContext, paramPluginParams), 5, null, false);
   }
-  
-  public abstract PluginInfo a(String paramString);
   
   public abstract void a();
   
@@ -362,7 +355,9 @@ public abstract class IPluginManager
   
   public abstract void cancelInstall(String paramString);
   
-  public abstract void d(String paramString);
+  public abstract PluginInfo d(String paramString);
+  
+  public abstract void e(String paramString);
   
   public abstract void installPlugin(String paramString, OnPluginInstallListener paramOnPluginInstallListener);
   
@@ -372,7 +367,7 @@ public abstract class IPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager
  * JD-Core Version:    0.7.0.1
  */

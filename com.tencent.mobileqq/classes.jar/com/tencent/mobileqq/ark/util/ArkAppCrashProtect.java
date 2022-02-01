@@ -10,18 +10,6 @@ public class ArkAppCrashProtect
 {
   private static boolean a = false;
   
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(Environment.a());
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".crash_file");
-    return localStringBuilder.toString();
-  }
-  
   public static void a()
   {
     try
@@ -67,7 +55,7 @@ public class ArkAppCrashProtect
       boolean bool1 = false;
       if ((!bool2) && (!TextUtils.isEmpty(paramString)))
       {
-        String str = a(paramString);
+        String str = d(paramString);
         if (QLog.isColorLevel()) {
           QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling setCrashProtectedMark appname=", paramString, ",filePath=", str });
         }
@@ -94,7 +82,7 @@ public class ArkAppCrashProtect
     {
       if ((!a) && (!TextUtils.isEmpty(paramString)))
       {
-        String str = a(paramString);
+        String str = d(paramString);
         if (QLog.isColorLevel()) {
           QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling clearCrashProtectedMark appname=", paramString, ",filePath=", str });
         }
@@ -114,7 +102,7 @@ public class ArkAppCrashProtect
       boolean bool1 = false;
       if ((!bool2) && (!TextUtils.isEmpty(paramString)))
       {
-        String str = a(paramString);
+        String str = d(paramString);
         if (QLog.isColorLevel()) {
           QLog.e("ArkApp.CrashProtect", 2, new Object[] { "profiling isAppCrash appname=", paramString, ",filePath=", str });
         }
@@ -129,10 +117,22 @@ public class ArkAppCrashProtect
     }
     finally {}
   }
+  
+  private static String d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(Environment.a());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".crash_file");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.util.ArkAppCrashProtect
  * JD-Core Version:    0.7.0.1
  */

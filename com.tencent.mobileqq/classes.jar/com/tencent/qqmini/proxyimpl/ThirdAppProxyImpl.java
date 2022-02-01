@@ -22,17 +22,17 @@ import org.json.JSONObject;
 public class ThirdAppProxyImpl
   extends ThirdAppProxy
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private WadlProxyServiceCallBackInterface jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlProxyServiceCallBackInterface = new ThirdAppProxyImpl.1(this);
-  private HashMap<String, ThirdAppProxy.AppDownloadListener> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean = false;
+  private HashMap<String, ThirdAppProxy.AppDownloadListener> a;
   private HashMap<String, AsyncResult> b = new HashMap();
   private HashMap<String, AsyncResult> c = new HashMap();
   private HashMap<String, List<AsyncResult>> d = new HashMap();
   private HashMap<String, JSONObject> e = new HashMap();
   private HashMap<String, WadlParams> f = new HashMap();
-  private HashMap<String, Integer> g = new HashMap();
+  private Context g;
+  private boolean h = false;
+  private int i = 0;
+  private HashMap<String, Integer> j = new HashMap();
+  private WadlProxyServiceCallBackInterface k = new ThirdAppProxyImpl.1(this);
   
   private WadlParams a(JSONObject paramJSONObject)
   {
@@ -42,16 +42,16 @@ public class ThirdAppProxyImpl
     try
     {
       WadlParams localWadlParams = new WadlParams();
-      localWadlParams.l = "SmallGame";
-      localWadlParams.c = "10036618";
-      localWadlParams.d = 6;
-      localWadlParams.jdField_e_of_type_JavaLangString = paramJSONObject.optString("android_download_url");
-      localWadlParams.a = paramJSONObject.optString("appid");
-      localWadlParams.jdField_e_of_type_Int = paramJSONObject.optInt("version_code");
-      localWadlParams.f = paramJSONObject.optString("pkg_name");
-      localWadlParams.j = paramJSONObject.optString("app_name");
-      localWadlParams.k = paramJSONObject.optString("app_icon");
-      localWadlParams.m = "interrupt";
+      localWadlParams.w = "SmallGame";
+      localWadlParams.i = "10036618";
+      localWadlParams.h = 6;
+      localWadlParams.k = paramJSONObject.optString("android_download_url");
+      localWadlParams.e = paramJSONObject.optString("appid");
+      localWadlParams.l = paramJSONObject.optInt("version_code");
+      localWadlParams.m = paramJSONObject.optString("pkg_name");
+      localWadlParams.u = paramJSONObject.optString("app_name");
+      localWadlParams.v = paramJSONObject.optString("app_icon");
+      localWadlParams.x = "interrupt";
       return localWadlParams;
     }
     catch (Throwable paramJSONObject)
@@ -63,21 +63,21 @@ public class ThirdAppProxyImpl
   
   public void a(String paramString, ThirdAppProxy.AppDownloadListener paramAppDownloadListener)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.a == null) {
+      this.a = new HashMap();
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramAppDownloadListener);
+    this.a.put(paramString, paramAppDownloadListener);
   }
   
   public void init()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    WadlProxyServiceUtil.a().a(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlProxyServiceCallBackInterface);
+    this.h = true;
+    this.i = 0;
+    this.a = new HashMap();
+    WadlProxyServiceUtil.a().a(this.k);
   }
   
   public boolean installApp(String paramString, AsyncResult paramAsyncResult)
@@ -97,8 +97,8 @@ public class ThirdAppProxyImpl
         paramAsyncResult.onReceiveResult(false, null);
         return false;
       }
-      localWadlParams1.b(2);
-      localWadlParams1.b = 5;
+      localWadlParams1.c(2);
+      localWadlParams1.c = 5;
       WadlProxyServiceUtil.a().c(localWadlParams1);
       paramAsyncResult.onReceiveResult(true, null);
       return true;
@@ -150,11 +150,11 @@ public class ThirdAppProxyImpl
           return;
         }
         if (paramBoolean) {
-          paramString.b(7);
+          paramString.c(7);
         } else {
-          paramString.b(6);
+          paramString.c(6);
         }
-        paramString.b = 2;
+        paramString.c = 2;
         WadlProxyServiceUtil.a().b(paramString);
         return;
       }
@@ -182,30 +182,30 @@ public class ThirdAppProxyImpl
     if (localWadlParams == null) {
       return false;
     }
-    localWadlParams.b(2);
-    localWadlParams.b = 3;
+    localWadlParams.c(2);
+    localWadlParams.c = 3;
     WadlProxyServiceUtil.a().a(0, paramString);
     return true;
   }
   
   public void unInit()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.a;
     if (localHashMap != null)
     {
       localHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      this.a = null;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    WadlProxyServiceUtil.a().b(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlProxyServiceCallBackInterface);
+    this.h = false;
+    this.i = 0;
+    this.g = null;
+    WadlProxyServiceUtil.a().b(this.k);
     WadlProxyServiceUtil.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ThirdAppProxyImpl
  * JD-Core Version:    0.7.0.1
  */

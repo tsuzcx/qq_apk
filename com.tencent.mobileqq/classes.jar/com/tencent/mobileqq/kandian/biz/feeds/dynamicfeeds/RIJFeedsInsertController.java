@@ -68,7 +68,7 @@ public final class RIJFeedsInsertController
     paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject1;
     if (localObject2 != null)
     {
-      localObject2 = ((NewPolymericInfo)localObject2).a;
+      localObject2 = ((NewPolymericInfo)localObject2).p;
       paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject1;
       if (localObject2 != null)
       {
@@ -79,7 +79,7 @@ public final class RIJFeedsInsertController
           if (!((Iterator)localObject2).hasNext()) {
             break;
           }
-          paramAbsBaseArticleInfo = (ArrayList)paramConcurrentHashMap.get(((NewPolymericInfo.PackArticleInfo)((Iterator)localObject2).next()).g);
+          paramAbsBaseArticleInfo = (ArrayList)paramConcurrentHashMap.get(((NewPolymericInfo.PackArticleInfo)((Iterator)localObject2).next()).l);
           if (paramAbsBaseArticleInfo != null) {
             localObject1 = paramAbsBaseArticleInfo;
           }
@@ -98,14 +98,14 @@ public final class RIJFeedsInsertController
       if (bool2) {
         bool1 = true;
       } else {
-        bool1 = a(paramAbsBaseArticleInfo.articleInsertInfo.a, paramList);
+        bool1 = a(paramAbsBaseArticleInfo.articleInsertInfo.c, paramList);
       }
-      if (paramAbsBaseArticleInfo.articleInsertInfo.c)
+      if (paramAbsBaseArticleInfo.articleInsertInfo.d)
       {
         QLog.d("RIJFeedsInsertController", 1, "filterAd, hadBeenFiltered!");
         bool1 = true;
       }
-      paramAbsBaseArticleInfo.articleInsertInfo.c = bool1;
+      paramAbsBaseArticleInfo.articleInsertInfo.d = bool1;
     }
     else
     {
@@ -167,7 +167,7 @@ public final class RIJFeedsInsertController
     Intrinsics.checkParameterIsNotNull(paramReadInJoyBaseAdapter, "adapter");
     Intrinsics.checkParameterIsNotNull(paramList, "articleInfoList");
     long l = System.currentTimeMillis();
-    int i = paramReadInJoyBaseAdapter.a();
+    int i = paramReadInJoyBaseAdapter.c();
     if (!RIJFeedsInsertUtil.a.a(i))
     {
       paramReadInJoyBaseAdapter = new StringBuilder();
@@ -177,7 +177,7 @@ public final class RIJFeedsInsertController
       QLog.i("RIJFeedsInsertController", 1, paramReadInJoyBaseAdapter.toString());
       return paramList;
     }
-    paramReadInJoyBaseAdapter = ReadInJoyUtils.a();
+    paramReadInJoyBaseAdapter = ReadInJoyUtils.b();
     if (paramReadInJoyBaseAdapter != null)
     {
       paramReadInJoyBaseAdapter = (ReadInJoyLogicManager)((QQAppInterface)paramReadInJoyBaseAdapter).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -186,7 +186,7 @@ public final class RIJFeedsInsertController
         paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.getReadInJoyLogicEngine();
         if (paramReadInJoyBaseAdapter != null)
         {
-          paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.a();
+          paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.q();
           if (paramReadInJoyBaseAdapter != null)
           {
             paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.a(i);
@@ -293,7 +293,7 @@ public final class RIJFeedsInsertController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsInsertController
  * JD-Core Version:    0.7.0.1
  */

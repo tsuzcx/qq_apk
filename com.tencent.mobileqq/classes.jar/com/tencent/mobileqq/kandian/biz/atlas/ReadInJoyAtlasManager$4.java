@@ -23,15 +23,15 @@ class ReadInJoyAtlasManager$4
     if ((paramInt != -1) && (paramArrayOfByte != null)) {
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl.a(true, 0);
+          this.b.a(true, 0);
           return;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl;
+        paramBundle = this.b;
         if (paramBundle != null) {
           paramBundle.a(true, paramInt);
         }
@@ -46,7 +46,7 @@ class ReadInJoyAtlasManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.Exc
 
 class ExtfGroupDownloadWorker$DownloadCompleteInfo
 {
-  int jdField_a_of_type_Int = 201;
-  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
+  ExcitingTransferDownloadCompletedInfo a;
+  int b = 201;
   
   ExtfGroupDownloadWorker$DownloadCompleteInfo(ExtfGroupDownloadWorker paramExtfGroupDownloadWorker) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.ExtfGroupDownloadWorker.DownloadCompleteInfo
  * JD-Core Version:    0.7.0.1
  */

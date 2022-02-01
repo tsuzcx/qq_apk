@@ -28,7 +28,7 @@ public class StatSvcSvcReqMSFLoginNotify
           ((StringBuilder)localObject).append(paramFromServiceMsg.iPlatform);
           QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject).toString());
         }
-        Object localObject = (RegisterProxySvcPackHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
+        Object localObject = (RegisterProxySvcPackHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER);
         byte b;
         if ((paramFromServiceMsg.iPlatform == 110L) && (paramFromServiceMsg.cTablet == 1))
         {
@@ -37,7 +37,7 @@ public class StatSvcSvcReqMSFLoginNotify
             if (QLog.isDevelopLevel()) {
               QLog.d("Q.msg.MessageHandler", 4, "ipad online now");
             }
-            paramMessageHandler.k();
+            paramMessageHandler.p();
             b = 1;
           }
           else
@@ -47,7 +47,7 @@ public class StatSvcSvcReqMSFLoginNotify
               if (QLog.isDevelopLevel()) {
                 QLog.d("Q.msg.MessageHandler", 4, "ipad offline now");
               }
-              paramMessageHandler.b(1);
+              paramMessageHandler.g(1);
             }
             b = 0;
           }
@@ -103,7 +103,7 @@ public class StatSvcSvcReqMSFLoginNotify
             }
           }
         }
-        paramMessageHandler.notifyUI(6016, true, new Object[] { Byte.valueOf((byte)((LoginDevicesManager)paramMessageHandler.a.getManager(QQManagerFactory.LOGIN_DEVICES_MANAGER)).a(paramFromServiceMsg.vecInstanceList)) });
+        paramMessageHandler.notifyUI(6016, true, new Object[] { Byte.valueOf((byte)((LoginDevicesManager)paramMessageHandler.n.getManager(QQManagerFactory.LOGIN_DEVICES_MANAGER)).a(paramFromServiceMsg.vecInstanceList)) });
         return;
       }
       if (QLog.isColorLevel()) {
@@ -114,7 +114,7 @@ public class StatSvcSvcReqMSFLoginNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.StatSvcSvcReqMSFLoginNotify
  * JD-Core Version:    0.7.0.1
  */

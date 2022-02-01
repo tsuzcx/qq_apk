@@ -18,17 +18,17 @@ class PlayOperationViewModelImpl$20$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.a.a.app.getApp()))
+    if (!NetworkUtil.isNetworkAvailable(this.a.c.app.getApp()))
     {
-      QQToast.a(this.a.a.mBinding.getContext(), 1, HardCodeUtil.a(2131708249), 0).a();
+      QQToast.makeText(this.a.c.mBinding.getContext(), 1, HardCodeUtil.a(2131906043), 0).show();
       return;
     }
-    ((INearbyMomentManager)this.a.a.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(this.a.a.mVideoData.a, this.a.a.mVideoData.f, this.a.a.mVideoData.k, new PlayOperationViewModelImpl.20.1.1(this));
+    ((INearbyMomentManager)this.a.c.app.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER)).a(this.a.c.mVideoData.c, this.a.c.mVideoData.y, this.a.c.mVideoData.G, new PlayOperationViewModelImpl.20.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.20.1
  * JD-Core Version:    0.7.0.1
  */

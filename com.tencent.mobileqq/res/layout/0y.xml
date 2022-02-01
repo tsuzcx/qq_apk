@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/main" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/qfr" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/cl7" />
+    <TextView android:textSize="@dimen/bsc" android:id="@id/qku" android:padding="@dimen/bsm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zon" android:layout_centerInParent="true" />
+    <ProgressBar android:id="@id/g1o" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_centerInParent="true" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/i4l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/qfr" />
+    <com.tencent.image_picker.imagepicker.view.SnackBarView android:id="@id/n8k" android:background="@color/b7k" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignBottom="@id/i4l" android:layout_alignParentBottom="true" />
+</RelativeLayout>

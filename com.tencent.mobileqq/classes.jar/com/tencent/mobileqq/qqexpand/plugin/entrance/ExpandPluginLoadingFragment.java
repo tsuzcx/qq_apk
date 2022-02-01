@@ -48,89 +48,53 @@ import org.jetbrains.annotations.Nullable;
 public final class ExpandPluginLoadingFragment
   extends QPublicBaseFragment
 {
-  public static final ExpandPluginLoadingFragment.Companion a;
-  private final double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private ExpandPluginLauncher.PluginServiceState jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState = ExpandPluginLauncher.PluginServiceState.NOT_STARTED;
-  private LoadingStatus jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceLoadingStatus = LoadingStatus.LOADING;
-  private LoadingLifecycle jdField_a_of_type_ComTencentMobileqqQqexpandUtilsLoadingLifecycle;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private boolean jdField_c_of_type_Boolean;
-  private final int jdField_d_of_type_Int = b();
-  private long jdField_d_of_type_Long;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private boolean jdField_d_of_type_Boolean;
-  private final int e;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLoadingFragment$Companion = new ExpandPluginLoadingFragment.Companion(null);
-  }
+  public static final ExpandPluginLoadingFragment.Companion a = new ExpandPluginLoadingFragment.Companion(null);
+  private final double A;
+  private final BroadcastReceiver B;
+  private HashMap C;
+  private View b;
+  private URLImageView c;
+  private ImageView d;
+  private ProgressBar e;
+  private TextView f;
+  private TextView g;
+  private View h;
+  private TextView i;
+  private TextView j;
+  private long k;
+  private long l;
+  private int m;
+  private long n;
+  private boolean o;
+  private boolean p;
+  private long q;
+  private boolean r;
+  private boolean s;
+  private LoadingStatus t = LoadingStatus.LOADING;
+  private ExpandPluginLauncher.PluginServiceState u = ExpandPluginLauncher.PluginServiceState.NOT_STARTED;
+  private LoadingLifecycle v;
+  private int w;
+  private int x;
+  private final int y = k();
+  private final int z;
   
   public ExpandPluginLoadingFragment()
   {
-    double d1 = this.jdField_d_of_type_Int;
+    double d1 = this.y;
     Double.isNaN(d1);
-    this.e = ((int)(d1 * 0.4D));
-    this.jdField_a_of_type_Double = a();
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = ((BroadcastReceiver)new ExpandPluginLoadingFragment.mReceiver.1(this));
-  }
-  
-  private final double a()
-  {
-    if (DeviceInfoUtils.a()) {
-      return 2.0D;
-    }
-    if (DeviceInfoUtils.b()) {
-      return 4.0D;
-    }
-    return 3.0D;
-  }
-  
-  private final int a()
-  {
-    QRoutePluginInfo localQRoutePluginInfo = QRoute.plugin("expand").queryPluginInfo();
-    if (localQRoutePluginInfo != null) {
-      return localQRoutePluginInfo.getState();
-    }
-    return -5;
+    this.z = ((int)(d1 * 0.4D));
+    this.A = l();
+    this.B = ((BroadcastReceiver)new ExpandPluginLoadingFragment.mReceiver.1(this));
   }
   
   private final void a(long paramLong)
   {
-    if (this.jdField_b_of_type_Long != 0L)
+    if (this.l != 0L)
     {
       QLog.e("ExpandPluginLoadingFragment", 2, "endTime has value!!!");
       return;
     }
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  private final int b()
-  {
-    if (DeviceInfoUtils.a()) {
-      return 15;
-    }
-    if (DeviceInfoUtils.b()) {
-      return 5;
-    }
-    return 10;
+    this.l = paramLong;
   }
   
   private final void e(int paramInt)
@@ -140,56 +104,65 @@ public final class ExpandPluginLoadingFragment
   
   private final void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandUtilsLoadingLifecycle = new LoadingLifecycle((OnApplicationBackgroundListener)new ExpandPluginLoadingFragment.registerLifecycleAndReceiver.1(this));
-    GuardManager.a.a((IGuardInterface)this.jdField_a_of_type_ComTencentMobileqqQqexpandUtilsLoadingLifecycle);
+    this.v = new LoadingLifecycle((OnApplicationBackgroundListener)new ExpandPluginLoadingFragment.registerLifecycleAndReceiver.1(this));
+    GuardManager.sInstance.registerCallBack((IGuardInterface)this.v);
     QLog.d("ExpandPluginLoadingFragment", 2, "add background callbacks");
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.mobileqq.qshadow.ACTION_PLUGIN_CRASH");
-    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    BaseApplicationImpl.getContext().registerReceiver(this.B, localIntentFilter);
   }
   
   private final void g()
   {
-    LoadingLifecycle localLoadingLifecycle = this.jdField_a_of_type_ComTencentMobileqqQqexpandUtilsLoadingLifecycle;
+    LoadingLifecycle localLoadingLifecycle = this.v;
     if (localLoadingLifecycle != null)
     {
-      localLoadingLifecycle.c();
-      GuardManager.a.b((IGuardInterface)localLoadingLifecycle);
+      localLoadingLifecycle.a();
+      GuardManager.sInstance.unregisterCallback((IGuardInterface)localLoadingLifecycle);
       QLog.d("ExpandPluginLoadingFragment", 2, "remove background callbacks");
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandUtilsLoadingLifecycle = ((LoadingLifecycle)null);
-    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.v = ((LoadingLifecycle)null);
+    BaseApplicationImpl.getContext().unregisterReceiver(this.B);
   }
   
-  private final void h()
+  private final int h()
+  {
+    QRoutePluginInfo localQRoutePluginInfo = QRoute.plugin("expand").queryPluginInfo();
+    if (localQRoutePluginInfo != null) {
+      return localQRoutePluginInfo.getState();
+    }
+    return -5;
+  }
+  
+  private final void i()
   {
     Object localObject1 = BaseApplicationImpl.context;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.context");
-    localObject1 = ((BaseApplication)localObject1).getResources().getDrawable(2130839653);
+    localObject1 = ((BaseApplication)localObject1).getResources().getDrawable(2130840125);
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject2).mUseApngImage = true;
     ((URLDrawable.URLDrawableOptions)localObject2).mExtraInfo = new Bundle();
     ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
     localObject1 = URLDrawable.getDrawable("https://down.qq.com/innovate/qqexpend/match/boxing.png", (URLDrawable.URLDrawableOptions)localObject2);
-    localObject2 = this.jdField_a_of_type_ComTencentImageURLImageView;
+    localObject2 = this.c;
     if (localObject2 != null) {
       ((URLImageView)localObject2).setImageDrawable((Drawable)localObject1);
     }
   }
   
-  private final void i()
+  private final void j()
   {
-    long l2 = this.jdField_b_of_type_Long;
+    long l2 = this.l;
     long l1 = l2;
     if (l2 == 0L) {
       l1 = System.currentTimeMillis();
     }
-    this.jdField_b_of_type_Long = l1;
-    Pair localPair1 = TuplesKt.to("duration", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
-    Pair localPair2 = TuplesKt.to("ext_int1", String.valueOf(this.jdField_a_of_type_Int));
-    Pair localPair3 = TuplesKt.to("download_duration", String.valueOf(this.jdField_c_of_type_Long));
-    boolean bool = this.jdField_a_of_type_Boolean;
+    this.l = l1;
+    Pair localPair1 = TuplesKt.to("duration", String.valueOf(this.l - this.k));
+    Pair localPair2 = TuplesKt.to("ext_int1", String.valueOf(this.m));
+    Pair localPair3 = TuplesKt.to("download_duration", String.valueOf(this.n));
+    boolean bool = this.o;
     Object localObject2 = "2";
     if (bool) {
       localObject1 = "2";
@@ -197,12 +170,12 @@ public final class ExpandPluginLoadingFragment
       localObject1 = "1";
     }
     Pair localPair4 = TuplesKt.to("launch_type", localObject1);
-    if (this.jdField_d_of_type_Boolean) {
+    if (this.s) {
       localObject1 = localObject2;
     } else {
       localObject1 = "1";
     }
-    Object localObject1 = MapsKt.hashMapOf(new Pair[] { localPair1, localPair2, localPair3, localPair4, TuplesKt.to("process_status", localObject1), TuplesKt.to("service_loading_state", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState.getValue())), TuplesKt.to("start_plugin_state", String.valueOf(this.jdField_b_of_type_Int)), TuplesKt.to("dismiss_plugin_state", String.valueOf(a())), TuplesKt.to("error_code", String.valueOf(this.jdField_c_of_type_Int)) });
+    Object localObject1 = MapsKt.hashMapOf(new Pair[] { localPair1, localPair2, localPair3, localPair4, TuplesKt.to("process_status", localObject1), TuplesKt.to("service_loading_state", String.valueOf(this.u.getValue())), TuplesKt.to("start_plugin_state", String.valueOf(this.w)), TuplesKt.to("dismiss_plugin_state", String.valueOf(h())), TuplesKt.to("error_code", String.valueOf(this.x)) });
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("dismiss duration ");
     ((StringBuilder)localObject2).append(localObject1);
@@ -210,7 +183,29 @@ public final class ExpandPluginLoadingFragment
     ExpandReportUtils.a("loading#launch_loading#view", true, -1L, -1L, (Map)localObject1, true, true);
   }
   
-  private final void j()
+  private final int k()
+  {
+    if (DeviceInfoUtils.isHighPerfDevice()) {
+      return 15;
+    }
+    if (DeviceInfoUtils.isLowPerfDevice()) {
+      return 5;
+    }
+    return 10;
+  }
+  
+  private final double l()
+  {
+    if (DeviceInfoUtils.isHighPerfDevice()) {
+      return 2.0D;
+    }
+    if (DeviceInfoUtils.isLowPerfDevice()) {
+      return 4.0D;
+    }
+    return 3.0D;
+  }
+  
+  private final void m()
   {
     if (getQBaseActivity().mSystemBarComp == null)
     {
@@ -230,7 +225,7 @@ public final class ExpandPluginLoadingFragment
   public final void a()
   {
     QLog.i("ExpandPluginLoadingFragment", 2, "rootView visibility set VISIBLE");
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.b;
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
@@ -239,23 +234,23 @@ public final class ExpandPluginLoadingFragment
   
   public final void a(double paramDouble1, double paramDouble2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceLoadingStatus == LoadingStatus.LOADING)
+    if (this.t == LoadingStatus.LOADING)
     {
       if (getActivity() == null) {
         return;
       }
-      int i = (int)Math.ceil(paramDouble1 + paramDouble2);
+      int i1 = (int)Math.ceil(paramDouble1 + paramDouble2);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("downloadTime ");
       localStringBuilder.append(paramDouble1);
       localStringBuilder.append(" loadTime ");
       localStringBuilder.append(paramDouble2);
       localStringBuilder.append(" isDownloading ");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.p);
       localStringBuilder.append(" remainTime ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       QLog.d("ExpandPluginLoadingFragment", 2, localStringBuilder.toString());
-      ThreadManager.getUIHandler().post((Runnable)new ExpandPluginLoadingFragment.updateLoadCountDown.1(this, i));
+      ThreadManager.getUIHandler().post((Runnable)new ExpandPluginLoadingFragment.updateLoadCountDown.1(this, i1));
       ThreadManager.getUIHandler().postDelayed((Runnable)new ExpandPluginLoadingFragment.updateLoadCountDown.2(this, paramDouble1, paramDouble2), 2000L);
     }
   }
@@ -273,7 +268,7 @@ public final class ExpandPluginLoadingFragment
   public final void a(@NotNull View.OnClickListener paramOnClickListener)
   {
     Intrinsics.checkParameterIsNotNull(paramOnClickListener, "listener");
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.i;
     if (localTextView != null) {
       localTextView.setOnClickListener(paramOnClickListener);
     }
@@ -288,18 +283,18 @@ public final class ExpandPluginLoadingFragment
   public final void a(boolean paramBoolean, @NotNull ExpandPluginLauncher.PluginServiceState paramPluginServiceState)
   {
     Intrinsics.checkParameterIsNotNull(paramPluginServiceState, "serviceLoadingState");
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceExpandPluginLauncher$PluginServiceState = paramPluginServiceState;
+    this.o = paramBoolean;
+    this.u = paramPluginServiceState;
     a(System.currentTimeMillis());
   }
   
   public final void b()
   {
-    this.jdField_c_of_type_Boolean = true;
-    if (!this.jdField_b_of_type_Boolean)
+    this.r = true;
+    if (!this.p)
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_d_of_type_Long = System.currentTimeMillis();
+      this.p = true;
+      this.q = System.currentTimeMillis();
       c(3);
     }
   }
@@ -311,11 +306,11 @@ public final class ExpandPluginLoadingFragment
   
   public final void c()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.p)
     {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_c_of_type_Long = (System.currentTimeMillis() - this.jdField_d_of_type_Long);
-      this.jdField_d_of_type_Long = 0L;
+      this.p = false;
+      this.n = (System.currentTimeMillis() - this.q);
+      this.q = 0L;
       c(1);
     }
   }
@@ -326,14 +321,14 @@ public final class ExpandPluginLoadingFragment
     localStringBuilder.append("updateDismissFrom ");
     localStringBuilder.append(paramInt);
     QLog.d("ExpandPluginLoadingFragment", 2, localStringBuilder.toString());
-    if (this.jdField_a_of_type_Int != 4) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (this.m != 4) {
+      this.m = paramInt;
     }
   }
   
   public final void d()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.k = System.currentTimeMillis();
     ExpandReportUtils.a("click#launch_download_error_page#retry_btn", true, -1L, -1L, null, true, true);
   }
   
@@ -345,7 +340,7 @@ public final class ExpandPluginLoadingFragment
   
   public void e()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.C;
     if (localHashMap != null) {
       localHashMap.clear();
     }
@@ -355,100 +350,100 @@ public final class ExpandPluginLoadingFragment
   public View onCreateView(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561090, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131627440, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "inflater.inflate(R.layou…dialog, container, false)");
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater;
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.b = paramLayoutInflater;
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramLayoutInflater.findViewById(2131370371));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.c = ((URLImageView)paramLayoutInflater.findViewById(2131437633));
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131370376));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.d = ((ImageView)paramLayoutInflater.findViewById(2131437642));
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLayoutInflater.findViewById(2131370387));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.e = ((ProgressBar)paramLayoutInflater.findViewById(2131437654));
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131370397));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.f = ((TextView)paramLayoutInflater.findViewById(2131437665));
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131378043));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.g = ((TextView)paramLayoutInflater.findViewById(2131446543));
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
-    this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131378817);
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.h = paramLayoutInflater.findViewById(2131447500);
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131370388));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.i = ((TextView)paramLayoutInflater.findViewById(2131437655));
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131365270));
-    paramLayoutInflater = this.jdField_d_of_type_AndroidWidgetTextView;
+    this.j = ((TextView)paramLayoutInflater.findViewById(2131431443));
+    paramLayoutInflater = this.j;
     if (paramLayoutInflater != null) {
       paramLayoutInflater.setVisibility(8);
     }
-    paramLayoutInflater = this.jdField_b_of_type_AndroidViewView;
+    paramLayoutInflater = this.h;
     if (paramLayoutInflater != null) {
       paramLayoutInflater.setOnClickListener((View.OnClickListener)new ExpandPluginLoadingFragment.onCreateView.1(this));
     }
-    j();
-    h();
+    m();
+    i();
     paramLayoutInflater = getArguments();
-    int i;
+    int i1;
     if (paramLayoutInflater != null) {
-      i = paramLayoutInflater.getInt("plugin_process_id", 0);
+      i1 = paramLayoutInflater.getInt("plugin_process_id", 0);
     } else {
-      i = 0;
+      i1 = 0;
     }
-    this.jdField_a_of_type_Boolean = ProcessUtils.a(i);
+    this.o = ProcessUtils.a(i1);
     paramLayoutInflater = new StringBuilder();
     paramLayoutInflater.append("isHotStart ");
-    paramLayoutInflater.append(this.jdField_a_of_type_Boolean);
+    paramLayoutInflater.append(this.o);
     paramLayoutInflater.append(' ');
     QLog.i("ExpandPluginLoadingFragment", 2, paramLayoutInflater.toString());
-    if (this.jdField_a_of_type_Boolean)
+    if (this.o)
     {
-      paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+      paramLayoutInflater = this.b;
       if (paramLayoutInflater == null) {
         Intrinsics.throwUninitializedPropertyAccessException("mRootView");
       }
       paramLayoutInflater.setVisibility(8);
     }
-    this.jdField_b_of_type_Int = a();
-    this.jdField_d_of_type_Boolean = ProcessUtils.a("com.tencent.mobileqq:plugins");
+    this.w = h();
+    this.s = ProcessUtils.a("com.tencent.mobileqq:plugins");
     c(0);
     a(this, LoadingStatus.LOADING, 0, 0, 6, null);
     paramLayoutInflater = new StringBuilder();
     paramLayoutInflater.append("plugin state ");
-    paramLayoutInflater.append(this.jdField_b_of_type_Int);
+    paramLayoutInflater.append(this.w);
     QLog.i("ExpandPluginLoadingFragment", 1, paramLayoutInflater.toString());
-    if (this.jdField_b_of_type_Int == 3) {
-      a(0.0D, this.jdField_a_of_type_Double);
+    if (this.w == 3) {
+      a(0.0D, this.A);
     }
     f();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.k = System.currentTimeMillis();
     ExpandPluginLauncher.a.a().a(this);
     ExpandReportUtils.a("expose#launch_loading#view", true, -1L, -1L, null, true, true);
     paramLayoutInflater = new StringBuilder();
     paramLayoutInflater.append("expose loadingFragment ");
     paramLayoutInflater.append(System.identityHashCode(this));
     QLog.i("ExpandPluginLoadingFragment", 1, paramLayoutInflater.toString());
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.b;
     if (paramLayoutInflater == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mRootView");
     }
@@ -463,8 +458,8 @@ public final class ExpandPluginLoadingFragment
     QLog.i("ExpandPluginLoadingFragment", 4, localStringBuilder.toString());
     g();
     ExpandPluginLauncher.a.a().b();
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceLoadingStatus == LoadingStatus.LOADING) || (this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceLoadingStatus == LoadingStatus.LOADING_SUCCESS)) {
-      i();
+    if ((this.t == LoadingStatus.LOADING) || (this.t == LoadingStatus.LOADING_SUCCESS)) {
+      j();
     }
     super.onDestroy();
   }
@@ -489,7 +484,7 @@ public final class ExpandPluginLoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.entrance.ExpandPluginLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

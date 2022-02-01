@@ -19,7 +19,7 @@ public enum RenderMode
   
   public final boolean isOffscreen()
   {
-    int i = RenderMode.WhenMappings.a[ordinal()];
+    int i = RenderMode.WhenMappings.$EnumSwitchMapping$0[ordinal()];
     if (i != 1)
     {
       if (i == 2) {
@@ -32,7 +32,7 @@ public enum RenderMode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.render.RenderMode
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,18 @@ import java.util.List;
 
 public class AndroidCodecUtil
 {
-  public static int a = 0;
   public static boolean a = false;
   public static int b;
   public static int c;
   public static int d;
   public static int e;
   public static int f;
+  public static int g;
   
   @RequiresApi(api=16)
   public static void a()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       return;
     }
     String[] arrayOfString = new String[2];
@@ -36,7 +36,7 @@ public class AndroidCodecUtil
       b(str);
       i += 1;
     }
-    jdField_a_of_type_Boolean = true;
+    a = true;
   }
   
   @RequiresApi(api=16)
@@ -86,11 +86,11 @@ public class AndroidCodecUtil
           if (j != 1)
           {
             if (j == 8) {
-              c = localObject.profileLevels[i].level;
+              d = localObject.profileLevels[i].level;
             }
           }
           else {
-            jdField_a_of_type_Int = localObject.profileLevels[i].level;
+            b = localObject.profileLevels[i].level;
           }
           i += 1;
         }
@@ -110,7 +110,7 @@ public class AndroidCodecUtil
           AVCoreLog.d("NativeCodec", paramString.toString());
           if (localObject.profileLevels[i].profile == 1)
           {
-            e = localObject.profileLevels[i].level;
+            f = localObject.profileLevels[i].level;
             return;
           }
           i += 1;
@@ -150,11 +150,11 @@ public class AndroidCodecUtil
           if (j != 1)
           {
             if (j == 8) {
-              d = localObject.profileLevels[i].level;
+              e = localObject.profileLevels[i].level;
             }
           }
           else {
-            b = localObject.profileLevels[i].level;
+            c = localObject.profileLevels[i].level;
           }
           i += 1;
         }
@@ -174,7 +174,7 @@ public class AndroidCodecUtil
           AVCoreLog.d("NativeCodec", paramString.toString());
           if (localObject.profileLevels[i].profile == 1)
           {
-            f = localObject.profileLevels[i].level;
+            g = localObject.profileLevels[i].level;
             return;
           }
           i += 1;

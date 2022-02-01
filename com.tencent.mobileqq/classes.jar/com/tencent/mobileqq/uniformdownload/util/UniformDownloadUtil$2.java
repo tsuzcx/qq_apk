@@ -7,8 +7,8 @@ final class UniformDownloadUtil$2
   
   public void run()
   {
-    String str = UniformDownloadUtil.a(this.jdField_a_of_type_JavaLangString);
-    UniformDownloadUtil.GetApkNameCallback localGetApkNameCallback = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilUniformDownloadUtil$GetApkNameCallback;
+    String str = UniformDownloadUtil.c(this.a);
+    UniformDownloadUtil.GetApkNameCallback localGetApkNameCallback = this.b;
     if (localGetApkNameCallback != null) {
       localGetApkNameCallback.a(str);
     }
@@ -16,7 +16,7 @@ final class UniformDownloadUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.util.UniformDownloadUtil.2
  * JD-Core Version:    0.7.0.1
  */

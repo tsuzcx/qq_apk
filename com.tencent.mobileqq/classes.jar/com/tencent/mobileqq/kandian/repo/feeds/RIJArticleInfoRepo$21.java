@@ -7,13 +7,13 @@ class RIJArticleInfoRepo$21
   
   public void run()
   {
-    RIJArticleInfoRepo.a(this.this$0, this.jdField_a_of_type_Int);
-    this.this$0.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    RIJArticleInfoRepo.a(this.this$0, this.a);
+    this.this$0.a(this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJArticleInfoRepo.21
  * JD-Core Version:    0.7.0.1
  */

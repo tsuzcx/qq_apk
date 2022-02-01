@@ -10,7 +10,7 @@ import com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils;
 import com.tencent.mobileqq.kandian.biz.comment.biuAndCommentMix.api.IRIJBiuAndCommentMixDataManager;
 import com.tencent.mobileqq.kandian.biz.comment.biuAndCommentMix.api.IRIJBiuAndCommentMixDataManager.BiuAndCommentListener;
 import com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicManager;
 import com.tencent.mobileqq.kandian.repo.comment.entity.RIJBiuAndCommentRequestData;
@@ -22,7 +22,6 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -34,11 +33,12 @@ import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.CardJumpInfo;
 import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.KeyInfo;
 import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.RspBody;
 
+@Deprecated
 public class RIJBiuAndCommentMixDataManager
   implements RIJBiuAndCommentMixPBModule.BiuAndCommentPBObserver, IRIJBiuAndCommentMixDataManager
 {
-  private RIJBiuAndCommentMixPBModule jdField_a_of_type_ComTencentMobileqqKandianBizBiuRIJBiuAndCommentMixPBModule;
-  private IRIJBiuAndCommentMixDataManager.BiuAndCommentListener jdField_a_of_type_ComTencentMobileqqKandianBizCommentBiuAndCommentMixApiIRIJBiuAndCommentMixDataManager$BiuAndCommentListener;
+  private RIJBiuAndCommentMixPBModule b;
+  private IRIJBiuAndCommentMixDataManager.BiuAndCommentListener c;
   
   public RIJBiuAndCommentMixDataManager()
   {
@@ -48,8 +48,8 @@ public class RIJBiuAndCommentMixDataManager
       localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizBiuRIJBiuAndCommentMixPBModule = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().a();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizBiuRIJBiuAndCommentMixPBModule;
+        this.b = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().m();
+        localObject = this.b;
         if (localObject != null) {
           ((RIJBiuAndCommentMixPBModule)localObject).a(this);
         }
@@ -119,9 +119,9 @@ public class RIJBiuAndCommentMixDataManager
   
   private void a(RIJBiuAndCommentRespData paramRIJBiuAndCommentRespData)
   {
-    if ((paramRIJBiuAndCommentRespData != null) && (paramRIJBiuAndCommentRespData.a() != null))
+    if ((paramRIJBiuAndCommentRespData != null) && (paramRIJBiuAndCommentRespData.f() != null))
     {
-      AbsBaseArticleInfo localAbsBaseArticleInfo = paramRIJBiuAndCommentRespData.a();
+      AbsBaseArticleInfo localAbsBaseArticleInfo = paramRIJBiuAndCommentRespData.f();
       try
       {
         paramRIJBiuAndCommentRespData = new JSONObject();
@@ -136,7 +136,7 @@ public class RIJBiuAndCommentMixDataManager
         QLog.d("RIJBiuAndCommentMixDataManager", 2, paramRIJBiuAndCommentRespData.getMessage());
         paramRIJBiuAndCommentRespData = "";
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, ReadInJoyCommentUtils.a(localAbsBaseArticleInfo), "0X800AC6A", "0X800AC6A", 0, 0, String.valueOf(localAbsBaseArticleInfo.mArticleID), "", localAbsBaseArticleInfo.innerUniqueID, paramRIJBiuAndCommentRespData, false);
+      PublicAccountReportUtils.a(null, ReadInJoyCommentUtils.a(localAbsBaseArticleInfo), "0X800AC6A", "0X800AC6A", 0, 0, String.valueOf(localAbsBaseArticleInfo.mArticleID), "", localAbsBaseArticleInfo.innerUniqueID, paramRIJBiuAndCommentRespData, false);
       return;
     }
     QLog.d("RIJBiuAndCommentMixDataManager", 2, "reportMixCommentBiuResult | respData or mArticleInfo is null");
@@ -167,19 +167,19 @@ public class RIJBiuAndCommentMixDataManager
   
   public void a()
   {
-    RIJBiuAndCommentMixPBModule localRIJBiuAndCommentMixPBModule = this.jdField_a_of_type_ComTencentMobileqqKandianBizBiuRIJBiuAndCommentMixPBModule;
+    RIJBiuAndCommentMixPBModule localRIJBiuAndCommentMixPBModule = this.b;
     if (localRIJBiuAndCommentMixPBModule != null)
     {
       localRIJBiuAndCommentMixPBModule.unInitialize();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizBiuRIJBiuAndCommentMixPBModule = null;
+      this.b = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBiuAndCommentMixApiIRIJBiuAndCommentMixDataManager$BiuAndCommentListener = null;
+    this.c = null;
     QLog.d("RIJBiuAndCommentMixDataManager", 1, "onDestroy clear info");
   }
   
   public void a(IRIJBiuAndCommentMixDataManager.BiuAndCommentListener paramBiuAndCommentListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBiuAndCommentMixApiIRIJBiuAndCommentMixDataManager$BiuAndCommentListener = paramBiuAndCommentListener;
+    this.c = paramBiuAndCommentListener;
     QLog.d("RIJBiuAndCommentMixDataManager", 1, "setBiuAndCommentListener");
   }
   
@@ -187,10 +187,10 @@ public class RIJBiuAndCommentMixDataManager
   {
     if ((paramAbsBaseArticleInfo != null) && (paramRIJBiuAndCommentRequestData != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizBiuRIJBiuAndCommentMixPBModule != null)
+      if (this.b != null)
       {
         QLog.d("RIJBiuAndCommentMixDataManager", 1, "requestCreateBiuAndCommentMixComment goTo pbRequest");
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizBiuRIJBiuAndCommentMixPBModule.a(paramAbsBaseArticleInfo, paramRIJBiuAndCommentRequestData);
+        this.b.a(paramAbsBaseArticleInfo, paramRIJBiuAndCommentRequestData);
       }
       return;
     }
@@ -210,7 +210,7 @@ public class RIJBiuAndCommentMixDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.RIJBiuAndCommentMixDataManager
  * JD-Core Version:    0.7.0.1
  */

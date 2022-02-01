@@ -23,16 +23,16 @@ import java.util.List;
 
 public class MoloHandler
 {
-  DataLineHandler jdField_a_of_type_ComTencentMobileqqAppDataLineHandler;
-  private PCPushProxy.OnDownloadListener jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener = new MoloHandler.1(this);
+  DataLineHandler a;
+  private PCPushProxy.OnDownloadListener b = new MoloHandler.1(this);
   
   public MoloHandler(DataLineHandler paramDataLineHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler = paramDataLineHandler;
-    PCPushProxy.a().a(this.jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener);
+    this.a = paramDataLineHandler;
+    PCPushProxy.a().a(this.b);
   }
   
-  private long a(String paramString)
+  private long g(String paramString)
   {
     long l = 0L;
     float f;
@@ -78,25 +78,9 @@ public class MoloHandler
     return (f * 1024.0F);
   }
   
-  public int a(String paramString)
-  {
-    DataLineReportUtil.j(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a);
-    int i = PCPushProxy.a().a(paramString);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("PCPushProxy open(");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append("):");
-      localStringBuilder.append(i);
-      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
-    }
-    return i;
-  }
-  
   public DataLineMsgRecord a(byte[] paramArrayOfByte)
   {
-    PCPushProxy.a().a(this.jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener);
+    PCPushProxy.a().a(this.b);
     try
     {
       paramArrayOfByte = PCPushProxy.a().a(paramArrayOfByte);
@@ -106,36 +90,36 @@ public class MoloHandler
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("dealWith new pkgEntry:");
-          ((StringBuilder)localObject).append(paramArrayOfByte.e);
+          ((StringBuilder)localObject).append(paramArrayOfByte.f);
           QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject).toString());
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler;
+        localObject = this.a;
         boolean bool2 = false;
         long l = ((DataLineHandler)localObject).a(0).longValue();
         localObject = new DataLineMsgRecord();
-        ((DataLineMsgRecord)localObject).msg = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getApp().getString(2131693713);
+        ((DataLineMsgRecord)localObject).msg = this.a.h().getApp().getString(2131891288);
         ((DataLineMsgRecord)localObject).msgtype = -2335;
         ((DataLineMsgRecord)localObject).sessionid = l;
         ((DataLineMsgRecord)localObject).isread = false;
         ((DataLineMsgRecord)localObject).path = null;
         ((DataLineMsgRecord)localObject).thumbPath = null;
-        ((DataLineMsgRecord)localObject).filename = paramArrayOfByte.e;
-        ((DataLineMsgRecord)localObject).filesize = a(paramArrayOfByte.h);
+        ((DataLineMsgRecord)localObject).filename = paramArrayOfByte.f;
+        ((DataLineMsgRecord)localObject).filesize = g(paramArrayOfByte.i);
         ((DataLineMsgRecord)localObject).issuc = false;
-        ((DataLineMsgRecord)localObject).vipBubbleID = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b();
-        ((DataLineMsgRecord)localObject).time = MessageCache.a();
+        ((DataLineMsgRecord)localObject).vipBubbleID = this.a.m();
+        ((DataLineMsgRecord)localObject).time = MessageCache.c();
         ((DataLineMsgRecord)localObject).strMoloKey = paramArrayOfByte.a;
-        ((DataLineMsgRecord)localObject).strMoloSource = paramArrayOfByte.i;
-        ((DataLineMsgRecord)localObject).strMoloIconUrl = paramArrayOfByte.g;
-        ((DataLineMsgRecord)localObject).strMoloSrcIconUrl = paramArrayOfByte.j;
-        if (paramArrayOfByte.b == 1) {
+        ((DataLineMsgRecord)localObject).strMoloSource = paramArrayOfByte.k;
+        ((DataLineMsgRecord)localObject).strMoloIconUrl = paramArrayOfByte.h;
+        ((DataLineMsgRecord)localObject).strMoloSrcIconUrl = paramArrayOfByte.l;
+        if (paramArrayOfByte.j == 1) {
           bool1 = true;
         } else {
           bool1 = false;
         }
         ((DataLineMsgRecord)localObject).bIsApkFile = bool1;
         boolean bool1 = bool2;
-        if (FileManagerUtil.a(((DataLineMsgRecord)localObject).filename) == 0) {
+        if (FileManagerUtil.c(((DataLineMsgRecord)localObject).filename) == 0) {
           bool1 = true;
         }
         ((DataLineMsgRecord)localObject).bIsMoloImage = bool1;
@@ -160,7 +144,7 @@ public class MoloHandler
   
   public void a()
   {
-    PCPushProxy.a().b(this.jdField_a_of_type_ComTencentOpenPcpushPCPushProxy$OnDownloadListener);
+    PCPushProxy.a().b(this.b);
   }
   
   public void a(int paramInt)
@@ -168,13 +152,50 @@ public class MoloHandler
     PCPushProxy.a().a(paramInt);
   }
   
-  public boolean a()
+  public boolean a(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler;
-    if ((localObject1 != null) && (((DataLineHandler)localObject1).a() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager() != null))
+    boolean bool = PCPushProxy.a().a(paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a(true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PCPushProxy start(");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("):");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    if (bool)
+    {
+      paramString = this.a.i.getDataLineMsgProxy(0).a(paramString);
+      if (paramString == null) {
+        return bool;
+      }
+      paramString = paramString.iterator();
+      while (paramString.hasNext())
+      {
+        localObject = (DataLineMsgRecord)paramString.next();
+        ((DataLineMsgRecord)localObject).issuc = true;
+        ((DataLineMsgRecord)localObject).fileMsgStatus = 0L;
+        this.a.i.getMessageFacade().d(0).f(((DataLineMsgRecord)localObject).msgId);
+        this.a.a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(((DataLineMsgRecord)localObject).filesize) });
+      }
+    }
+    return bool;
+  }
+  
+  public void b(int paramInt)
+  {
+    PCPushProxy.a().b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((DataLineHandler)localObject1).h() != null) && (this.a.h().getProxyManager() != null))
+    {
+      Object localObject2 = this.a.h().getProxyManager().a(0).a();
+      localObject1 = this.a.h().getProxyManager().a(0).a(true);
       localObject2 = ((DataLineMsgSetList)localObject2).iterator();
       Object localObject3;
       while (((Iterator)localObject2).hasNext())
@@ -209,50 +230,27 @@ public class MoloHandler
     return false;
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
-    boolean bool = PCPushProxy.a().a(paramString);
-    Object localObject;
+    DataLineReportUtil.h(this.a.i);
+    PCPushProxy.a().c(paramString);
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("PCPushProxy start(");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("):");
-      ((StringBuilder)localObject).append(bool);
-      QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PCPushProxy install : ");
+      localStringBuilder.append(paramString);
+      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
     }
-    if (bool)
-    {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.getDataLineMsgProxy(0).a(paramString);
-      if (paramString == null) {
-        return bool;
-      }
-      paramString = paramString.iterator();
-      while (paramString.hasNext())
-      {
-        localObject = (DataLineMsgRecord)paramString.next();
-        ((DataLineMsgRecord)localObject).issuc = true;
-        ((DataLineMsgRecord)localObject).fileMsgStatus = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.getMessageFacade().a(0).d(((DataLineMsgRecord)localObject).msgId);
-        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(((DataLineMsgRecord)localObject).filesize) });
-      }
-    }
-    return bool;
+    return true;
   }
   
-  public void b(int paramInt)
+  public boolean c()
   {
-    PCPushProxy.a().b(paramInt);
-  }
-  
-  public boolean b()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler;
-    if ((localObject1 != null) && (((DataLineHandler)localObject1).a() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager() != null))
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((DataLineHandler)localObject1).h() != null) && (this.a.h().getProxyManager() != null))
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a().getProxyManager().a(0).a(true);
+      Object localObject2 = this.a.h().getProxyManager().a(0).a();
+      localObject1 = this.a.h().getProxyManager().a(0).a(true);
       localObject2 = ((DataLineMsgSetList)localObject2).iterator();
       Object localObject3;
       while (((Iterator)localObject2).hasNext())
@@ -287,23 +285,9 @@ public class MoloHandler
     return false;
   }
   
-  public boolean b(String paramString)
-  {
-    DataLineReportUtil.h(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a);
-    PCPushProxy.a().b(paramString);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("PCPushProxy install : ");
-      localStringBuilder.append(paramString);
-      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
-    }
-    return true;
-  }
-  
   public boolean c(String paramString)
   {
-    PCPushProxy.a().a(paramString);
+    PCPushProxy.a().b(paramString);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -317,7 +301,7 @@ public class MoloHandler
   
   public boolean d(String paramString)
   {
-    PCPushProxy.a().c(paramString);
+    PCPushProxy.a().d(paramString);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -329,9 +313,25 @@ public class MoloHandler
     return true;
   }
   
-  public boolean e(String paramString)
+  public int e(String paramString)
   {
-    boolean bool = PCPushProxy.a().b(paramString);
+    DataLineReportUtil.j(this.a.i);
+    int i = PCPushProxy.a().f(paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PCPushProxy open(");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("):");
+      localStringBuilder.append(i);
+      QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
+    }
+    return i;
+  }
+  
+  public boolean f(String paramString)
+  {
+    boolean bool = PCPushProxy.a().e(paramString);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();

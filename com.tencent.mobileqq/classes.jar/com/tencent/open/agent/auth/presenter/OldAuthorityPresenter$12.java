@@ -8,13 +8,13 @@ class OldAuthorityPresenter$12
   public void run()
   {
     OldAuthorityPresenter localOldAuthorityPresenter = this.this$0;
-    localOldAuthorityPresenter.b(OldAuthorityPresenter.a(localOldAuthorityPresenter));
+    localOldAuthorityPresenter.b(OldAuthorityPresenter.b(localOldAuthorityPresenter));
     OldAuthorityPresenter.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.OldAuthorityPresenter.12
  * JD-Core Version:    0.7.0.1
  */

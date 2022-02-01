@@ -72,24 +72,24 @@ public class VerticalGallery
   
   public VerticalGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035470);
+    this(paramContext, paramAttributeSet, 2131036373);
   }
   
   public VerticalGallery(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.mGestureDetector.setIsLongpressEnabled(true);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bM, paramInt, 0);
-    paramInt = paramAttributeSet.getInt(R.styleable.ch, -1);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.fh, paramInt, 0);
+    paramInt = paramAttributeSet.getInt(R.styleable.fi, -1);
     if (paramInt >= 0) {
       setGravity(paramInt);
     }
-    paramInt = paramAttributeSet.getInt(R.styleable.ci, -1);
+    paramInt = paramAttributeSet.getInt(R.styleable.fj, -1);
     if (paramInt > 0) {
       setAnimationDuration(paramInt);
     }
-    setSpacing(paramAttributeSet.getDimensionPixelOffset(R.styleable.cj, 0));
-    setUnselectedAlpha(paramAttributeSet.getFloat(R.styleable.ck, 0.5F));
+    setSpacing(paramAttributeSet.getDimensionPixelOffset(R.styleable.fk, 0));
+    setUnselectedAlpha(paramAttributeSet.getFloat(R.styleable.fl, 0.5F));
     paramAttributeSet.recycle();
     setChildrenDrawingOrderEnabled(true);
     setStaticTransformationsEnabled(true);
@@ -2076,7 +2076,7 @@ public class VerticalGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.VerticalGallery
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ final class RIJTabFrameBase$showTips$1
   
   public final void run()
   {
-    this.this$0.i();
-    if ((RIJUgcUtils.m()) && (RIJTabFrameBase.a.a()))
+    this.this$0.m();
+    if ((RIJUgcUtils.l()) && (RIJTabFrameBase.d.a()))
     {
-      RIJUGCTipsUtils.a((Activity)this.this$0.a());
-      RIJUGCAddAccountFragment.b();
+      RIJUGCTipsUtils.a((Activity)this.this$0.P());
+      RIJUGCAddAccountFragment.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase.showTips.1
  * JD-Core Version:    0.7.0.1
  */

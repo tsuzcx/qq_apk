@@ -27,7 +27,7 @@ class WriteTogetherItemBuilder$1
     else
     {
       localObject = (MessageForText)localObject;
-      if (!this.a.a())
+      if (!this.a.c())
       {
         if ((paramView instanceof ETTextView)) {
           ((ETTextView)paramView).startAnimation(true, false);
@@ -44,7 +44,7 @@ class WriteTogetherItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

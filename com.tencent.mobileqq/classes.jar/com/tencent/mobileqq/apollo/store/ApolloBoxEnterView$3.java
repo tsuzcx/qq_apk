@@ -2,8 +2,6 @@ package com.tencent.mobileqq.apollo.store;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import com.tencent.mobileqq.apollo.model.ApolloPandora;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
@@ -25,7 +23,7 @@ class ApolloBoxEnterView$3
   public void run()
   {
     Object localObject2;
-    label636:
+    label623:
     do
     {
       try
@@ -52,7 +50,7 @@ class ApolloBoxEnterView$3
           QLog.d("[cmshow]ApolloBoxEnterView", 2, ((StringBuilder)localObject2).toString());
         }
         if (0L != ((WebSSOAgent.UniSsoServerRsp)localObject1).ret.get()) {
-          break label636;
+          break label623;
         }
         localObject2 = new JSONObject(((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get()).optJSONObject("data");
         if (!QLog.isColorLevel()) {
@@ -73,7 +71,7 @@ class ApolloBoxEnterView$3
         Object localObject3;
         ApolloDaoManagerServiceImpl localApolloDaoManagerServiceImpl;
         if (!QLog.isColorLevel()) {
-          break label636;
+          break label623;
         }
         QLog.e("[cmshow]ApolloBoxEnterView", 2, "handleQueryPandora failed ", localException);
       }
@@ -81,7 +79,6 @@ class ApolloBoxEnterView$3
       if (localObject3 == null) {
         return;
       }
-      localObject1 = (ApolloManagerServiceImpl)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
       localApolloDaoManagerServiceImpl = (ApolloDaoManagerServiceImpl)localQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(str);
@@ -115,10 +112,10 @@ class ApolloBoxEnterView$3
         ((ApolloPandora)localObject1).canSteal = 0;
       }
       localApolloDaoManagerServiceImpl.saveOrUpdateApolloPandora((ApolloPandora)localObject1);
-      if ((ApolloBoxEnterView.a(this.this$0) != null) && (ApolloBoxEnterView.a(this.this$0).equals(String.valueOf(str))))
+      if ((ApolloBoxEnterView.c(this.this$0) != null) && (ApolloBoxEnterView.c(this.this$0).equals(String.valueOf(str))))
       {
         ApolloBoxEnterView.a(this.this$0, (ApolloPandora)localObject1);
-        ApolloBoxEnterView.a(this.this$0).sendEmptyMessage(255);
+        ApolloBoxEnterView.d(this.this$0).sendEmptyMessage(255);
       }
       if (QLog.isColorLevel())
       {
@@ -130,7 +127,7 @@ class ApolloBoxEnterView$3
         ((StringBuilder)localObject2).append(",boxType:");
         ((StringBuilder)localObject2).append(((ApolloPandora)localObject1).boxType);
         ((StringBuilder)localObject2).append(", checkPoint: ");
-        ((StringBuilder)localObject2).append(TimeFormatterUtils.a(localQQAppInterface.getApp(), ((ApolloPandora)localObject1).checkPoint * 1000L));
+        ((StringBuilder)localObject2).append(TimeFormatterUtils.b(localQQAppInterface.getApp(), ((ApolloPandora)localObject1).checkPoint * 1000L));
         QLog.d("[cmshow]ApolloBoxEnterView", 2, ((StringBuilder)localObject2).toString());
         return;
       }
@@ -140,7 +137,7 @@ class ApolloBoxEnterView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloBoxEnterView.3
  * JD-Core Version:    0.7.0.1
  */

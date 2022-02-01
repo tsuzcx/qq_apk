@@ -51,7 +51,7 @@ public class WadlProxyServiceWrap
     localStringBuilder.append("dispatchAction wadlParams=");
     localStringBuilder.append(paramWadlParams);
     QLog.i("WadlProxyServiceWrap", 1, localStringBuilder.toString());
-    int i = paramWadlParams.jdField_b_of_type_Int;
+    int i = paramWadlParams.c;
     if (i != 2)
     {
       if (i != 3) {
@@ -71,20 +71,20 @@ public class WadlProxyServiceWrap
         }
         else
         {
-          b(paramWadlParams.d, paramWadlParams.jdField_a_of_type_JavaLangString);
+          b(paramWadlParams.h, paramWadlParams.e);
           return;
         }
       }
-      a(paramWadlParams.d, paramWadlParams.jdField_a_of_type_JavaLangString);
+      a(paramWadlParams.h, paramWadlParams.e);
       return;
     }
     label101:
-    if ((!paramWadlParams.jdField_a_of_type_Boolean) && (paramWadlParams.jdField_b_of_type_Boolean))
+    if ((!paramWadlParams.b) && (paramWadlParams.g))
     {
-      if (!TextUtils.isEmpty(paramWadlParams.q))
+      if (!TextUtils.isEmpty(paramWadlParams.G))
       {
-        GameCenterUtil.a(paramWadlParams.jdField_a_of_type_JavaLangString, "DELAY_LIST");
-        GameCenterUtil.a(paramWadlParams.jdField_a_of_type_JavaLangString, paramWadlParams.q, "DELAY_APPID_DETAIL_");
+        GameCenterUtil.a(paramWadlParams.e, "DELAY_LIST");
+        GameCenterUtil.a(paramWadlParams.e, paramWadlParams.G, "DELAY_APPID_DETAIL_");
         GameCenterBroadcastReceiver.a();
       }
       return;
@@ -172,35 +172,35 @@ public class WadlProxyServiceWrap
     if (paramWadlParams == null) {
       return;
     }
-    if (!paramWadlParams.jdField_a_of_type_Boolean)
+    if (!paramWadlParams.b)
     {
-      if (TextUtils.isEmpty(paramWadlParams.c)) {
-        paramWadlParams.c = "10000144";
+      if (TextUtils.isEmpty(paramWadlParams.i)) {
+        paramWadlParams.i = "10000144";
       }
-      if (TextUtils.isEmpty(paramWadlParams.p)) {
-        paramWadlParams.p = "biz_src_zf_games";
+      if (TextUtils.isEmpty(paramWadlParams.A)) {
+        paramWadlParams.A = "biz_src_zf_games";
       }
-      if (TextUtils.isEmpty(paramWadlParams.j)) {
-        paramWadlParams.j = paramWadlParams.f;
+      if (TextUtils.isEmpty(paramWadlParams.u)) {
+        paramWadlParams.u = paramWadlParams.m;
       }
-      GameCenterUtil.b(paramWadlParams.jdField_a_of_type_JavaLangString, "DELAY_LIST");
-      GameCenterUtil.c(paramWadlParams.jdField_a_of_type_JavaLangString, "DELAY_APPID_DETAIL_");
-      if ((paramWadlParams.d == 1) || (paramWadlParams.d == 2))
+      GameCenterUtil.b(paramWadlParams.e, "DELAY_LIST");
+      GameCenterUtil.c(paramWadlParams.e, "DELAY_APPID_DETAIL_");
+      if ((paramWadlParams.h == 1) || (paramWadlParams.h == 2))
       {
-        paramWadlParams.b(8);
-        if (paramWadlParams.d == 1) {
-          paramWadlParams.b(4);
+        paramWadlParams.c(8);
+        if (paramWadlParams.h == 1) {
+          paramWadlParams.c(4);
         }
       }
     }
     else
     {
-      paramWadlParams.a(1);
+      paramWadlParams.b(1);
     }
-    if (TextUtils.isEmpty(paramWadlParams.e))
+    if (TextUtils.isEmpty(paramWadlParams.k))
     {
       localObject = new WadlReportBuilder();
-      ((WadlReportBuilder)localObject).a("dc00087").h("558").c("202982").b(paramWadlParams.jdField_a_of_type_JavaLangString).a(1, "55801").a(11, "4").a(12, "430");
+      ((WadlReportBuilder)localObject).a("dc00087").h("558").c("202982").b(paramWadlParams.e).a(1, "55801").a(11, "4").a(12, "430");
       ((WadlReportBuilder)localObject).a();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("invalid url:");
@@ -280,8 +280,8 @@ public class WadlProxyServiceWrap
     if (paramWadlParams == null) {
       return;
     }
-    if (TextUtils.isEmpty(paramWadlParams.p)) {
-      paramWadlParams.p = "biz_src_zf_games";
+    if (TextUtils.isEmpty(paramWadlParams.A)) {
+      paramWadlParams.A = "biz_src_zf_games";
     }
     localObject = (IQQGameDownloadService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQQGameDownloadService.class, "multi");
     if (localObject != null) {
@@ -307,7 +307,7 @@ public class WadlProxyServiceWrap
     localStringBuilder.append("dispatchResAction wadlParams=");
     localStringBuilder.append(paramWadlParams);
     QLog.i("WadlProxyServiceWrap", 1, localStringBuilder.toString());
-    int i = paramWadlParams.jdField_b_of_type_Int;
+    int i = paramWadlParams.c;
     if (i != 2)
     {
       if (i != 3)
@@ -343,7 +343,7 @@ public class WadlProxyServiceWrap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.util.WadlProxyServiceWrap
  * JD-Core Version:    0.7.0.1
  */

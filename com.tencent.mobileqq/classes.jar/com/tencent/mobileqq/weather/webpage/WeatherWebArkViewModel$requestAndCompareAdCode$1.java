@@ -42,21 +42,21 @@ public final class WeatherWebArkViewModel$requestAndCompareAdCode$1
     } else {
       paramSosoLbsInfo = "";
     }
-    if ((TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty((CharSequence)paramSosoLbsInfo))) {
-      this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel.a().postValue(new WebPageData(3, null, null, null, 0, 0, 62, null));
+    if ((TextUtils.isEmpty((CharSequence)this.b)) && (TextUtils.isEmpty((CharSequence)paramSosoLbsInfo))) {
+      this.a.a().postValue(new WebPageData(3, null, null, null, 0, 0, 62, null));
     }
     Object localObject = (CharSequence)paramSosoLbsInfo;
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (WeatherHelper.a((Context)this.jdField_a_of_type_MqqAppAppActivity)))
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (WeatherHelper.a((Context)this.c)))
     {
-      if ((this.jdField_a_of_type_MqqAppAppActivity != null) && (!TextUtils.equals((CharSequence)localObject, (CharSequence)this.jdField_a_of_type_JavaLangString)))
+      if ((this.c != null) && (!TextUtils.equals((CharSequence)localObject, (CharSequence)this.b)))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("user location changed, report to weather server, new adcode:");
         ((StringBuilder)localObject).append(paramSosoLbsInfo);
         ((StringBuilder)localObject).append(", old adcode:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         QLog.d("WeatherWebArkViewModel", 1, ((StringBuilder)localObject).toString());
-        WeatherServlet.a(this.jdField_a_of_type_MqqAppAppActivity, paramSosoLbsInfo, true);
+        WeatherServlet.a(this.c, paramSosoLbsInfo, true);
       }
       localObject = new JSONObject();
       ((JSONObject)localObject).put("type", 2);
@@ -78,13 +78,13 @@ public final class WeatherWebArkViewModel$requestAndCompareAdCode$1
     localStringBuilder.append(", curAdCode: ");
     localStringBuilder.append(paramSosoLbsInfo);
     localStringBuilder.append(", originAdCode: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     QLog.i("WeatherWebArkViewModel", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebArkViewModel.requestAndCompareAdCode.1
  * JD-Core Version:    0.7.0.1
  */

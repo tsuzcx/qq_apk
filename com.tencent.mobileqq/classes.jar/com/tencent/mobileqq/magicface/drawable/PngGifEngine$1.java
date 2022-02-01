@@ -17,12 +17,12 @@ class PngGifEngine$1
     if (QLog.isColorLevel()) {
       QLog.d("PngGifEngine", 2, "func run begins.");
     }
-    Object localObject1 = this.this$0.a();
+    Object localObject1 = this.this$0.c();
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
     long l2 = SystemClock.uptimeMillis();
-    Object localObject2 = PngGifEngine.a((String)localObject1);
+    Object localObject2 = PngGifEngine.b((String)localObject1);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -34,15 +34,15 @@ class PngGifEngine$1
     if (localObject2 != null) {}
     try
     {
-      if ((!((Bitmap)localObject2).isRecycled()) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null))
+      if ((!((Bitmap)localObject2).isRecycled()) && (this.this$0.d != null))
       {
         long l1 = SystemClock.uptimeMillis();
-        l2 += this.this$0.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.b;
-        localObject2 = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localObject2);
+        l2 += this.this$0.a.b;
+        localObject2 = this.this$0.d.obtainMessage(1, localObject2);
         if (l1 > l2) {
-          this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+          this.this$0.d.sendMessage((Message)localObject2);
         } else {
-          this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject2, l2 - l1);
+          this.this$0.d.sendMessageDelayed((Message)localObject2, l2 - l1);
         }
       }
       return;
@@ -52,7 +52,7 @@ class PngGifEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngGifEngine.1
  * JD-Core Version:    0.7.0.1
  */

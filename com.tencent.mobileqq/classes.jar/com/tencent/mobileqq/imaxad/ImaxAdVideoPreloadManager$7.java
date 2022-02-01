@@ -7,12 +7,12 @@ class ImaxAdVideoPreloadManager$7
   
   public void run()
   {
-    ImaxAdVideoPreloadManager.b(this.a);
+    ImaxAdVideoPreloadManager.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager.7
  * JD-Core Version:    0.7.0.1
  */

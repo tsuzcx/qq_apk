@@ -12,12 +12,12 @@ class RecentItemPublicAccountChatMsgData$1
   
   public void run()
   {
-    PubAccountTips.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.mUser.uin, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg, null);
+    PubAccountTips.a(this.a, this.this$0.mUser.uin, this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,16 +20,16 @@ final class VasResourceCheckUtil$2
       default: 
         break;
       case 260: 
-        QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715800), 0).a();
+        QQToast.makeText(localQQAppInterface.getApplication(), HardCodeUtil.a(2131913257), 0).show();
         break;
       case 259: 
-        QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715798), 0).a();
+        QQToast.makeText(localQQAppInterface.getApplication(), HardCodeUtil.a(2131913255), 0).show();
         break;
       case 258: 
-        QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715797), 0).a();
+        QQToast.makeText(localQQAppInterface.getApplication(), HardCodeUtil.a(2131913254), 0).show();
         break;
       case 257: 
-        QQToast.a(localQQAppInterface.getApplication(), HardCodeUtil.a(2131715799), 0).a();
+        QQToast.makeText(localQQAppInterface.getApplication(), HardCodeUtil.a(2131913256), 0).show();
       }
     }
     return true;
@@ -37,7 +37,7 @@ final class VasResourceCheckUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VasResourceCheckUtil.2
  * JD-Core Version:    0.7.0.1
  */

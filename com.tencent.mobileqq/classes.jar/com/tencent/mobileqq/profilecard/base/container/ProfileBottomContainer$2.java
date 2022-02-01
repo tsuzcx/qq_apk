@@ -19,7 +19,7 @@ class ProfileBottomContainer$2
   {
     if (paramBoolean)
     {
-      QQToast.a(ProfileBottomContainer.access$800(this.this$0), 1, HardCodeUtil.a(2131704993), 0).a();
+      QQToast.makeText(ProfileBottomContainer.access$800(this.this$0), 1, HardCodeUtil.a(2131902884), 0).show();
       return;
     }
     paramContext = new Intent(ProfileBottomContainer.access$900(this.this$0), GuideBindPhoneActivity.class);
@@ -31,7 +31,7 @@ class ProfileBottomContainer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileBottomContainer.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class TroopHWFileDownloadManager$5
   
   public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString);
+    paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.c(this.a).get(paramString);
     if (paramTMAssistantDownloadClient != null) {
       paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
     }
@@ -28,7 +28,7 @@ class TroopHWFileDownloadManager$5
     int i;
     if (paramInt1 == 4)
     {
-      localObject1 = (String)TroopHWFileDownloadManager.b(this.a).get(paramString1);
+      localObject1 = (String)TroopHWFileDownloadManager.d(this.a).get(paramString1);
       try
       {
         paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
@@ -80,19 +80,19 @@ class TroopHWFileDownloadManager$5
       paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject1;
       if (i == 0)
       {
-        paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
+        paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.c(this.a).get(paramString1);
         if (paramTMAssistantDownloadClient != null) {
           paramTMAssistantDownloadClient.a(paramString1, 6, 0, "", "");
         }
-        TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-        TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.c(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.d(this.a).remove(paramString1);
       }
     }
     else
     {
       paramTMAssistantDownloadClient = "";
     }
-    Object localObject1 = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
+    Object localObject1 = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.c(this.a).get(paramString1);
     if (localObject1 != null)
     {
       i = j;
@@ -102,18 +102,18 @@ class TroopHWFileDownloadManager$5
         i = 0;
         break;
       case 6: 
-        TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-        TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.c(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.d(this.a).remove(paramString1);
         i = 5;
         break;
       case 5: 
-        TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-        TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.c(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.d(this.a).remove(paramString1);
         i = 6;
         break;
       case 4: 
-        TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-        TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.c(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.d(this.a).remove(paramString1);
         i = 3;
         break;
       case 2: 
@@ -130,7 +130,7 @@ class TroopHWFileDownloadManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWFileDownloadManager.5
  * JD-Core Version:    0.7.0.1
  */

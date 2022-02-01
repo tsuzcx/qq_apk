@@ -12,7 +12,7 @@ public class WSSubTabsHelper
 {
   public static WSSubTabData a(String paramString)
   {
-    Object localObject1 = a(paramString);
+    Object localObject1 = b(paramString);
     if (localObject1 == null) {
       return null;
     }
@@ -62,7 +62,7 @@ public class WSSubTabsHelper
     return localObject;
   }
   
-  private static JSONObject a(String paramString)
+  private static JSONObject b(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -84,7 +84,7 @@ public class WSSubTabsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSSubTabsHelper
  * JD-Core Version:    0.7.0.1
  */

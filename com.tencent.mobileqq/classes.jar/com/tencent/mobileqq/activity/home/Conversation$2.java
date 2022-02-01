@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.activity.recent.RecentParcelUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class Conversation$2
   implements Runnable
 {
-  Conversation$2(Conversation paramConversation, QQAppInterface paramQQAppInterface, List paramList) {}
+  Conversation$2(Conversation paramConversation, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    RecentParcelUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
+    boolean bool = NetworkUtil.isNetSupportHw(BaseApplication.getContext());
+    this.this$0.b(new Conversation.2.1(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.2
  * JD-Core Version:    0.7.0.1
  */

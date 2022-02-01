@@ -7,40 +7,41 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.AVUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import mqq.util.LogUtil;
 
 public class BaseGaInvite$GetGaFaceRunnable
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<BaseGaInvite.GetGaFaceRunnable.OnGetSink> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  final String a;
+  int b;
+  long c;
+  String d;
+  int e;
+  VideoAppInterface f;
+  WeakReference<BaseGaInvite.GetGaFaceRunnable.OnGetSink> g;
+  boolean h = false;
   
   public BaseGaInvite$GetGaFaceRunnable(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2, long paramLong1, long paramLong2, BaseGaInvite.GetGaFaceRunnable.OnGetSink paramOnGetSink)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_JavaLangString = Long.toString(paramLong2);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnGetSink);
+    this.a = paramString;
+    this.b = paramInt1;
+    this.c = paramLong1;
+    this.d = Long.toString(paramLong2);
+    this.f = paramVideoAppInterface;
+    this.e = paramInt2;
+    this.g = new WeakReference(paramOnGetSink);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this);
+    this.f.a().removeCallbacks(this);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("refreshUI[");
       localStringBuilder.append(paramString);
@@ -54,18 +55,18 @@ public class BaseGaInvite$GetGaFaceRunnable
   void b(String paramString)
   {
     boolean bool2 = false;
-    this.jdField_a_of_type_Boolean = false;
-    int i = this.jdField_a_of_type_Int;
-    String str = String.valueOf(this.jdField_a_of_type_Long);
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, str, null, true, false);
-    int j = AVUtil.c(this.jdField_b_of_type_Int);
-    str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, str, null);
-    if ((localBitmap != null) && (!TextUtils.equals(str, this.jdField_b_of_type_JavaLangString)))
+    this.h = false;
+    int i = this.b;
+    String str1 = String.valueOf(this.c);
+    Bitmap localBitmap = this.f.a(i, str1, null, true, false);
+    int j = AVUtil.d(this.e);
+    String str2 = this.f.a(i, str1, null);
+    if ((localBitmap != null) && (!TextUtils.equals(str2, this.d)))
     {
-      localObject = (BaseGaInvite.GetGaFaceRunnable.OnGetSink)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (BaseGaInvite.GetGaFaceRunnable.OnGetSink)this.g.get();
       if (localObject != null)
       {
-        bool1 = ((BaseGaInvite.GetGaFaceRunnable.OnGetSink)localObject).a(localBitmap, str);
+        bool1 = ((BaseGaInvite.GetGaFaceRunnable.OnGetSink)localObject).a(localBitmap, str2);
         break label111;
       }
     }
@@ -73,32 +74,32 @@ public class BaseGaInvite$GetGaFaceRunnable
     label111:
     if (!bool1)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1500L);
+      this.h = true;
+      this.f.a().postDelayed(this, 1500L);
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setGaFace[");
     localStringBuilder.append(paramString);
     localStringBuilder.append("], mRelationType[");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("], uinType_Group[");
     localStringBuilder.append(i);
     localStringBuilder.append("], mGroupId[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(LogUtil.getSafePrintUin(str1));
     localStringBuilder.append("], uinType_Invite[");
     localStringBuilder.append(j);
     localStringBuilder.append("], mInviterUin[");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("], memberName[");
-    localStringBuilder.append(str);
+    localStringBuilder.append(str2);
     localStringBuilder.append("], faceBitmap[");
     if (localBitmap != null) {
       bool2 = true;
     }
     localStringBuilder.append(bool2);
     localStringBuilder.append("], mWaitDelayPost[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("], result[");
     localStringBuilder.append(bool1);
     localStringBuilder.append("]");

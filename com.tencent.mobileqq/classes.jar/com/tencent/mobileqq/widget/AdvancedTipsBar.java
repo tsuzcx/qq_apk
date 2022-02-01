@@ -26,65 +26,65 @@ public class AdvancedTipsBar
   
   public void a() {}
   
-  protected void b()
-  {
-    super.b();
-    if (this.b != null)
-    {
-      this.b.setId(2131378778);
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      localLayoutParams.rightMargin = ViewUtils.a(16.0F);
-      this.b.setLayoutParams(localLayoutParams);
-    }
-  }
-  
   public void b(boolean paramBoolean)
   {
     super.b(paramBoolean);
-    c();
+    e();
   }
   
-  protected void c()
+  protected void d()
   {
-    super.c();
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (this.jdField_a_of_type_AndroidWidgetButton != null)
+    super.d();
+    if (this.c != null)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131378777);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetButton.getLayoutParams();
+      this.c.setId(2131447455);
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+      localLayoutParams.rightMargin = ViewUtils.dip2px(16.0F);
+      this.c.setLayoutParams(localLayoutParams);
+    }
+  }
+  
+  protected void e()
+  {
+    super.e();
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (this.d != null)
+    {
+      this.d.setId(2131447454);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
       localLayoutParams.leftMargin = 0;
-      localLayoutParams.rightMargin = ViewUtils.a(44.0F);
+      localLayoutParams.rightMargin = ViewUtils.dip2px(44.0F);
       int i;
-      if (!QQTheme.a()) {
+      if (!QQTheme.isNowThemeIsNight()) {
         i = Color.parseColor("#4D94FF");
       } else {
         i = Color.parseColor("#0071FF");
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(i);
-      this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams(localLayoutParams);
+      this.d.setTextColor(i);
+      this.d.setLayoutParams(localLayoutParams);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.a != null)
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      localLayoutParams.addRule(0, 2131378777);
-      this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+      localLayoutParams.addRule(0, 2131447454);
+      this.a.setLayoutParams(localLayoutParams);
     }
   }
   
-  public void d()
+  public void f()
   {
     int i;
-    if (!QQTheme.a()) {
+    if (!QQTheme.isNowThemeIsNight()) {
       i = Color.parseColor("#03081A");
     } else {
       i = Color.parseColor("#FFFFFF");
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+    this.a.setTextColor(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AdvancedTipsBar
  * JD-Core Version:    0.7.0.1
  */

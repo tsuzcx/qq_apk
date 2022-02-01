@@ -14,11 +14,11 @@ class ExpandConfigManager$2
 {
   ExpandConfigManager$2(ExpandConfigManager paramExpandConfigManager) {}
   
-  public void a(ExpandReqInfo paramExpandReqInfo, @NonNull ExpandResponse paramExpandResponse)
+  public void onProtocol(ExpandReqInfo paramExpandReqInfo, @NonNull ExpandResponse paramExpandResponse)
   {
     try
     {
-      if ((paramExpandResponse.a() == 0) && (paramExpandResponse.a() != null))
+      if ((paramExpandResponse.b() == 0) && (paramExpandResponse.a() != null))
       {
         paramExpandReqInfo = new ExtendFriendUserCategory.GetUserStatusRsp();
         paramExpandReqInfo.mergeFrom(paramExpandResponse.a());
@@ -27,7 +27,7 @@ class ExpandConfigManager$2
       }
       paramExpandReqInfo = new StringBuilder();
       paramExpandReqInfo.append("getForbiddenInfo. ");
-      paramExpandReqInfo.append(paramExpandResponse.b());
+      paramExpandReqInfo.append(paramExpandResponse.d());
       QLog.w("expand.config.ExpandConfigManager", 1, paramExpandReqInfo.toString());
       return;
     }
@@ -48,7 +48,7 @@ class ExpandConfigManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.config.ExpandConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

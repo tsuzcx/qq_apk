@@ -12,16 +12,16 @@ import mqq.app.MobileQQ;
 
 public class AdSessionManager
 {
-  private static volatile AdSessionManager jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager;
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
-  private int jdField_a_of_type_Int = 0;
-  private int b = 0;
+  private static volatile AdSessionManager a;
+  private static final SimpleDateFormat b = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+  private int c = 0;
+  private int d = 0;
   
   private AdSessionManager()
   {
     try
     {
-      this.b = Integer.parseInt(SharePreferenceUtils.a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), a("refreshSeriesNum")));
+      this.d = Integer.parseInt(SharePreferenceUtils.a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), a("refreshSeriesNum")));
       return;
     }
     catch (Throwable localThrowable) {}
@@ -29,22 +29,22 @@ public class AdSessionManager
   
   public static AdSessionManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager == null) {
-          jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager = new AdSessionManager();
+        if (a == null) {
+          a = new AdSessionManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizPubaccountNativeAdReportAdSessionManager;
+    return a;
   }
   
   private static String a(String paramString)
   {
     String str1 = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount();
-    String str2 = jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date());
+    String str2 = b.format(new Date());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str1);
     localStringBuilder.append(str2);
@@ -52,12 +52,7 @@ public class AdSessionManager
     return localStringBuilder.toString();
   }
   
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public String a()
+  public String b()
   {
     String str2 = ((IReadInJoySessionManager)QRoute.api(IReadInJoySessionManager.class)).getSceneTraceID();
     String str1 = str2;
@@ -67,25 +62,30 @@ public class AdSessionManager
     return str1;
   }
   
-  public void a()
+  public int c()
   {
-    this.b += 1;
+    return this.d;
+  }
+  
+  public void d()
+  {
+    this.d += 1;
     MobileQQ localMobileQQ = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication();
     String str = a("refreshSeriesNum");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     SharePreferenceUtils.a(localMobileQQ, str, localStringBuilder.toString());
   }
   
-  public int b()
+  public int e()
   {
     return ((IReadInJoySessionManager)QRoute.api(IReadInJoySessionManager.class)).getSceneSeriesNum();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.AdSessionManager
  * JD-Core Version:    0.7.0.1
  */

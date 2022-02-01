@@ -41,7 +41,7 @@ public class QQSettingUtil$UserBitFlagCheckUpdate
     localReqItem.eServiceID = 106;
     UserBitFlagReq localUserBitFlagReq = new UserBitFlagReq();
     localUserBitFlagReq.cEmotionMall = 0;
-    localUserBitFlagReq.cMyWallet = ((byte)QQSettingUtil.a(this.a));
+    localUserBitFlagReq.cMyWallet = ((byte)QQSettingUtil.d(this.a));
     localUserBitFlagReq.cPtt2Text = 0;
     localUserBitFlagReq.cAccout2Dis = 0;
     localReqItem.vecParam = localUserBitFlagReq.toByteArray();
@@ -92,7 +92,7 @@ public class QQSettingUtil$UserBitFlagCheckUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQSettingUtil.UserBitFlagCheckUpdate
  * JD-Core Version:    0.7.0.1
  */

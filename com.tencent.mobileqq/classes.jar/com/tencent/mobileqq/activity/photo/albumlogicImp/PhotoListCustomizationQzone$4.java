@@ -17,25 +17,25 @@ class PhotoListCustomizationQzone$4
   
   public void run()
   {
-    if ((PhotoListCustomizationQzone.c(this.this$0) != null) && (PhotoListCustomizationQzone.c(this.this$0).a != null) && (!PhotoListCustomizationQzone.d(this.this$0).isFinishing()))
+    if ((PhotoListCustomizationQzone.g(this.this$0) != null) && (PhotoListCustomizationQzone.h(this.this$0).u != null) && (!PhotoListCustomizationQzone.i(this.this$0).isFinishing()))
     {
       Message localMessage = Message.obtain();
       localMessage.what = 4;
-      String str = QQAlbumUtils.b(this.a);
+      String str = QQAlbumUtils.c(this.a);
       Object localObject = new Bundle();
       ((Bundle)localObject).putString("SRC_SAVE_PATH", this.a);
       ((Bundle)localObject).putString("DES_SAVE_PATH", str);
       localMessage.setData((Bundle)localObject);
       localObject = new LocalMediaInfo();
       QQAlbumUtils.a((LocalMediaInfo)localObject, str);
-      PhotoListBaseData.a.put(str, localObject);
-      PhotoListCustomizationQzone.d(this.this$0).a.sendMessage(localMessage);
+      PhotoListBaseData.x.put(str, localObject);
+      PhotoListCustomizationQzone.j(this.this$0).u.sendMessage(localMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationQzone.4
  * JD-Core Version:    0.7.0.1
  */

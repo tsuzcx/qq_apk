@@ -20,15 +20,15 @@ import com.tencent.util.VersionUtils;
 public class ConfessNewsBgView
   extends View
 {
-  int jdField_a_of_type_Int = -6807359;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F };
-  ConfessShareHelper.BgElement[] jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement = null;
-  int b = 0;
-  private int c = 0;
+  ConfessShareHelper.BgElement[] a = null;
+  Paint b = new Paint(1);
+  int c = -6807359;
+  int d = 0;
+  RectF e = new RectF();
+  private float[] f = { 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F };
+  private Path g;
+  private int h = 0;
+  private boolean i;
   
   public ConfessNewsBgView(Context paramContext)
   {
@@ -50,54 +50,54 @@ public class ConfessNewsBgView
   
   private void a()
   {
-    int i = this.c;
-    int j = 0;
+    int j = this.h;
+    int k = 0;
     Object localObject1;
-    if (i == 2)
+    if (j == 2)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement = ConfessShareHelper.a(i, this.b);
+      this.a = ConfessShareHelper.a(j, this.d);
       localObject1 = getResources();
-      int k = ((Resources)localObject1).getDisplayMetrics().widthPixels;
-      int m = ((Resources)localObject1).getDisplayMetrics().heightPixels;
+      int m = ((Resources)localObject1).getDisplayMetrics().widthPixels;
+      int n = ((Resources)localObject1).getDisplayMetrics().heightPixels;
       Object localObject2;
-      if ((k != 0) && (Math.abs(k - 1080) > 200))
+      if ((m != 0) && (Math.abs(m - 1080) > 200))
       {
-        localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement;
-        int n = localObject1.length;
-        i = 0;
-        while (i < n)
+        localObject1 = this.a;
+        int i1 = localObject1.length;
+        j = 0;
+        while (j < i1)
         {
-          localObject2 = localObject1[i];
+          localObject2 = localObject1[j];
           float f1 = localObject2.b;
-          float f2 = k / 1080;
-          if (k - (int)(f1 * f2) > 100) {
+          float f2 = m / 1080;
+          if (m - (int)(f1 * f2) > 100) {
             localObject2.b = ((int)(localObject2.b * f2));
           }
-          i += 1;
+          j += 1;
         }
       }
-      if (m != 0)
+      if (n != 0)
       {
-        double d1 = m;
+        double d1 = n;
         Double.isNaN(d1);
         d1 *= 0.8D;
         double d2 = 1800;
         Double.isNaN(d2);
         if (Math.abs(d1 - d2) > 200.0D)
         {
-          localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement;
-          k = localObject1.length;
-          i = j;
-          while (i < k)
+          localObject1 = this.a;
+          m = localObject1.length;
+          j = k;
+          while (j < m)
           {
-            localObject2 = localObject1[i];
+            localObject2 = localObject1[j];
             d2 = localObject2.c;
             double d3 = 1800;
             Double.isNaN(d3);
             d3 = d1 / d3;
             Double.isNaN(d2);
             localObject2.c = ((int)(d2 * d3));
-            i += 1;
+            j += 1;
           }
         }
       }
@@ -105,31 +105,31 @@ public class ConfessNewsBgView
     else
     {
       localObject1 = ConfessShareHelper.a[0];
-      i = this.b;
-      if ((i >= 0) && (i < ConfessShareHelper.a.length))
+      j = this.d;
+      if ((j >= 0) && (j < ConfessShareHelper.a.length))
       {
         localObject1 = ConfessShareHelper.a;
-        i = this.b;
-        localObject1 = localObject1[i];
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement = ConfessShareHelper.a(0, i);
+        j = this.d;
+        localObject1 = localObject1[j];
+        this.a = ConfessShareHelper.a(0, j);
       }
       else
       {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement = ConfessShareHelper.a(0, 0);
+        this.a = ConfessShareHelper.a(0, 0);
       }
     }
     try
     {
-      this.jdField_a_of_type_Int = Color.parseColor((String)localObject1);
+      this.c = Color.parseColor((String)localObject1);
     }
     catch (Exception localException)
     {
       label359:
       break label359;
     }
-    this.jdField_a_of_type_Int = -6807359;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    this.c = -6807359;
+    this.b.setStyle(Paint.Style.FILL);
+    this.b.setColor(this.c);
     if (!VersionUtils.h()) {
       setLayerType(1, null);
     }
@@ -138,64 +138,69 @@ public class ConfessNewsBgView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.i)
     {
       if (isPressed()) {
-        this.jdField_a_of_type_Int = Color.argb(100, Color.red(this.jdField_a_of_type_Int), Color.green(this.jdField_a_of_type_Int), Color.blue(this.jdField_a_of_type_Int));
+        this.c = Color.argb(100, Color.red(this.c), Color.green(this.c), Color.blue(this.c));
       } else {
-        this.jdField_a_of_type_Int = Color.argb(255, Color.red(this.jdField_a_of_type_Int), Color.green(this.jdField_a_of_type_Int), Color.blue(this.jdField_a_of_type_Int));
+        this.c = Color.argb(255, Color.red(this.c), Color.green(this.c), Color.blue(this.c));
       }
       postInvalidate();
     }
   }
   
+  public int getBgType()
+  {
+    return this.d;
+  }
+  
   public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = getMeasuredWidth();
-    j = getMeasuredHeight();
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    int j = getMeasuredWidth();
+    k = getMeasuredHeight();
+    this.e.set(0.0F, 0.0F, j, k);
+    if (this.g == null) {
+      this.g = new Path();
     }
-    int k = paramCanvas.save();
+    int m = paramCanvas.save();
     try
     {
-      Object localObject1 = this.jdField_a_of_type_AndroidGraphicsPath;
+      Object localObject1 = this.g;
       ((Path)localObject1).reset();
-      ((Path)localObject1).addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+      ((Path)localObject1).addRoundRect(this.e, this.f, Path.Direction.CW);
       paramCanvas.clipPath((Path)localObject1);
       label90:
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement;
+      paramCanvas.drawRect(this.e, this.b);
+      localObject1 = this.a;
       if ((localObject1 != null) && (localObject1.length > 0))
       {
-        int m = localObject1.length;
-        i = 0;
-        while (i < m)
+        int n = localObject1.length;
+        j = 0;
+        while (j < n)
         {
-          Object localObject2 = localObject1[i];
+          Object localObject2 = localObject1[j];
           try
           {
-            localDrawable = getResources().getDrawable(localObject2.jdField_a_of_type_Int);
-            if (localObject2.jdField_a_of_type_Int == 2130844996) {
+            localDrawable = getResources().getDrawable(localObject2.a);
+            if (localObject2.a == 2130846432) {
               break label343;
             }
-            int n = localDrawable.getIntrinsicWidth();
-            j = localDrawable.getIntrinsicHeight();
+            int i1 = localDrawable.getIntrinsicWidth();
+            k = localDrawable.getIntrinsicHeight();
             float f2 = localObject2.b;
-            float f1 = n;
-            n = (int)(f2 * 1.8F - localObject2.jdField_a_of_type_Float * f1 * 1.0F / 2.0F);
+            float f1 = i1;
+            i1 = (int)(f2 * 1.8F - localObject2.e * f1 * 1.0F / 2.0F);
             f2 = localObject2.c;
-            float f3 = j;
-            localDrawable.setBounds(n, (int)(f2 * 1.6F - localObject2.jdField_a_of_type_Float * f3 * 1.0F / 2.0F), (int)(localObject2.b * 1.8F + f1 * localObject2.jdField_a_of_type_Float * 1.0F / 2.0F), (int)(localObject2.c * 1.6F + f3 * localObject2.jdField_a_of_type_Float * 1.0F / 2.0F));
-            if (!localObject2.jdField_a_of_type_Boolean) {
+            float f3 = k;
+            localDrawable.setBounds(i1, (int)(f2 * 1.6F - localObject2.e * f3 * 1.0F / 2.0F), (int)(localObject2.b * 1.8F + f1 * localObject2.e * 1.0F / 2.0F), (int)(localObject2.c * 1.6F + f3 * localObject2.e * 1.0F / 2.0F));
+            if (!localObject2.d) {
               break label337;
             }
-            if (this.c != 2) {
+            if (this.h != 2) {
               break label369;
             }
-            j = 128;
+            k = 128;
           }
           catch (Exception localException)
           {
@@ -203,20 +208,20 @@ public class ConfessNewsBgView
             {
               Drawable localDrawable;
               continue;
-              j = 77;
+              k = 77;
             }
           }
-          localDrawable.setAlpha(j);
-          localDrawable.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.MULTIPLY);
+          localDrawable.setAlpha(k);
+          localDrawable.setColorFilter(this.c, PorterDuff.Mode.MULTIPLY);
           label337:
           localDrawable.draw(paramCanvas);
           label343:
-          i += 1;
+          j += 1;
         }
       }
       else
       {
-        paramCanvas.restoreToCount(k);
+        paramCanvas.restoreToCount(m);
         return;
       }
     }
@@ -228,16 +233,16 @@ public class ConfessNewsBgView
   
   public void setBgColor(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (this.c != paramInt) {
+      this.c = paramInt;
     }
   }
   
   public void setBgType(int paramInt)
   {
-    if (this.b != paramInt)
+    if (this.d != paramInt)
     {
-      this.b = paramInt;
+      this.d = paramInt;
       a();
       postInvalidate();
     }
@@ -245,14 +250,14 @@ public class ConfessNewsBgView
   
   public void setPressMask(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public void setSize(int paramInt)
   {
-    if (this.c != paramInt)
+    if (this.h != paramInt)
     {
-      this.c = paramInt;
+      this.h = paramInt;
       a();
       postInvalidate();
     }
@@ -260,7 +265,7 @@ public class ConfessNewsBgView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessNewsBgView
  * JD-Core Version:    0.7.0.1
  */

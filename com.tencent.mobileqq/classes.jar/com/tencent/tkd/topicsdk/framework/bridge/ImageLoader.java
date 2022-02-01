@@ -17,12 +17,12 @@ public final class ImageLoader
   public final com.tencent.tkd.topicsdk.framework.ImageLoader a(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return new com.tencent.tkd.topicsdk.framework.ImageLoader(paramContext, TopicSDK.a.a().a().a());
+    return new com.tencent.tkd.topicsdk.framework.ImageLoader(paramContext, TopicSDK.a.a().b().n());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.bridge.ImageLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.aelight.camera.ae.view;
 
 public abstract interface AECMShowFaceScanView$ScanViewListener
 {
-  public abstract void y();
+  public abstract void T();
   
-  public abstract void z();
+  public abstract void U();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AECMShowFaceScanView.ScanViewListener
  * JD-Core Version:    0.7.0.1
  */

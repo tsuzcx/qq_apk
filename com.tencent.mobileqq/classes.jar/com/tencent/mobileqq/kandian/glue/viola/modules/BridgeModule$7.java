@@ -1,39 +1,24 @@
 package com.tencent.mobileqq.kandian.glue.viola.modules;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface.OnCancelListener;
 
 class BridgeModule$7
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnCancelListener
 {
-  BridgeModule$7(BridgeModule paramBridgeModule, String paramString) {}
+  BridgeModule$7(BridgeModule paramBridgeModule, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("type", -1);
-      paramDialogInterface.put("action", "close");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-        return;
-      }
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      QLog.e("BridgeModule", 2, QLog.getStackTraceString(paramDialogInterface));
+    int i = this.a;
+    if ((i == 4) || (i == 11)) {
+      this.h.reportVideoShareClick(this.b, this.c, this.d, -1, -1, true, this.a, this.e, this.f, this.g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule.7
  * JD-Core Version:    0.7.0.1
  */

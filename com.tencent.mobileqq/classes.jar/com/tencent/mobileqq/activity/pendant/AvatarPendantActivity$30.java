@@ -10,12 +10,12 @@ class AvatarPendantActivity$30
   
   public void run()
   {
-    ((IApolloGetAvatarDataVasHandler)QRoute.api(IApolloGetAvatarDataVasHandler.class)).getApolloAvatarData(this.this$0.app, AvatarPendantActivity.b(this.this$0));
+    ((IApolloGetAvatarDataVasHandler)QRoute.api(IApolloGetAvatarDataVasHandler.class)).getApolloAvatarData(this.this$0.app, AvatarPendantActivity.m(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.30
  * JD-Core Version:    0.7.0.1
  */

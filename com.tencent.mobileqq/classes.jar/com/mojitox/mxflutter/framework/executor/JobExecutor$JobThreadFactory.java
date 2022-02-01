@@ -14,14 +14,14 @@ public class JobExecutor$JobThreadFactory
     ((StringBuilder)localObject).append(JobExecutor.a().getAndIncrement());
     localObject = ((StringBuilder)localObject).toString();
     if ((paramRunnable instanceof JsTask)) {
-      localObject = ((JsTask)paramRunnable).a();
+      localObject = ((JsTask)paramRunnable).b();
     }
     return new Thread(paramRunnable, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.executor.JobExecutor.JobThreadFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/mlm" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/b9r" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:id="@id/qh1" android:background="@drawable/gy9" android:layout_width="17.0dip" android:layout_height="@dimen/br5" android:layout_marginRight="32.0dip" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="vertical" android:background="@drawable/gw7" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_below="@id/qh1" android:layout_alignParentRight="true">
+            <TextView android:textSize="@dimen/mv" android:textColor="@color/al3" android:gravity="center" android:id="@id/mxl" android:layout_width="fill_parent" android:layout_height="36.0dip" android:text="收起房间" />
+            <View android:background="@color/bs" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+            <TextView android:textSize="@dimen/mv" android:textColor="@color/al3" android:gravity="center" android:id="@id/n9_" android:layout_width="fill_parent" android:layout_height="36.0dip" android:text="结束直播" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

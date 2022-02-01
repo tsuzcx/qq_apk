@@ -15,13 +15,13 @@ class QQStoryManager$1
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b(this.jdField_a_of_type_Boolean);
+    this.b.k(this.a);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -88,8 +88,8 @@ public class PlayOperationViewModelImpl
   public static final String text_end;
   public static final String text_end_1;
   public static final String text_end_2;
-  public static final String text_first = HardCodeUtil.a(2131708247);
-  public static final String text_first_1 = HardCodeUtil.a(2131708235);
+  public static final String text_first = HardCodeUtil.a(2131906041);
+  public static final String text_first_1 = HardCodeUtil.a(2131906030);
   private int DIALOG_DELETE_FEED = 6;
   private int DIALOG_DELETE_FEED_CONFIRM = 7;
   private int DIALOG_WITH_TITLE = 1;
@@ -150,9 +150,9 @@ public class PlayOperationViewModelImpl
   
   static
   {
-    text_end = HardCodeUtil.a(2131708227);
-    text_end_1 = HardCodeUtil.a(2131708236);
-    text_end_2 = HardCodeUtil.a(2131708246);
+    text_end = HardCodeUtil.a(2131906022);
+    text_end_1 = HardCodeUtil.a(2131906031);
+    text_end_2 = HardCodeUtil.a(2131906040);
     DIALOG_NO_TITLE = 2;
   }
   
@@ -187,7 +187,7 @@ public class PlayOperationViewModelImpl
     NowSummaryCard.NearbyUserFollowReq localNearbyUserFollowReq = new NowSummaryCard.NearbyUserFollowReq();
     localNearbyUserFollowReq.from.set(0);
     localNearbyUserFollowReq.id_type.set(0);
-    localNearbyUserFollowReq.target_id.set(this.mVideoData.jdField_b_of_type_Long);
+    localNearbyUserFollowReq.target_id.set(this.mVideoData.j);
     localNearbyUserFollowReq.operation.set(i);
     ProtoUtils.a(this.app, new PlayOperationViewModelImpl.33(this), localNearbyUserFollowReq.toByteArray(), "NowSummaryCard.NearbyUserFollow");
   }
@@ -197,11 +197,11 @@ public class PlayOperationViewModelImpl
     INowShortVideoProtoManager localINowShortVideoProtoManager = ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.app);
     if (this.isFollow)
     {
-      localINowShortVideoProtoManager.follow(this.mVideoData.jdField_h_of_type_Long, this.currentAnchorNowId, this.currentAnchorNowUserType, 11, false, new PlayOperationViewModelImpl.31(this));
+      localINowShortVideoProtoManager.follow(this.mVideoData.C, this.currentAnchorNowId, this.currentAnchorNowUserType, 11, false, new PlayOperationViewModelImpl.31(this));
       return;
     }
     this.isClickFollow = true;
-    localINowShortVideoProtoManager.follow(this.mVideoData.jdField_h_of_type_Long, this.currentAnchorNowId, this.currentAnchorNowUserType, 11, true, new PlayOperationViewModelImpl.32(this));
+    localINowShortVideoProtoManager.follow(this.mVideoData.C, this.currentAnchorNowId, this.currentAnchorNowUserType, 11, true, new PlayOperationViewModelImpl.32(this));
   }
   
   private Pair<String, String> getShareTitleAndSummary(Map<String, Object> paramMap)
@@ -214,18 +214,18 @@ public class PlayOperationViewModelImpl
       if (i == 1)
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131708223));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131906018));
         ((StringBuilder)localObject1).append("「");
         ((StringBuilder)localObject1).append(paramMap.get("anchor_nick_name"));
         ((StringBuilder)localObject1).append("」");
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131708233));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131906028));
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708222));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906017));
         ((StringBuilder)localObject2).append("「");
         ((StringBuilder)localObject2).append(paramMap.get("anchor_nick_name"));
         ((StringBuilder)localObject2).append("」");
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708248));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906042));
         localObject2 = ((StringBuilder)localObject2).toString();
         paramMap = (Map<String, Object>)localObject1;
         localObject1 = localObject2;
@@ -275,17 +275,17 @@ public class PlayOperationViewModelImpl
             ((StringBuilder)localObject1).append("「");
             ((StringBuilder)localObject1).append(paramMap.get("recorder_nick_name"));
             ((StringBuilder)localObject1).append("」");
-            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131708229));
+            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131906024));
             ((StringBuilder)localObject1).append(paramMap.get("record_title"));
-            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131708224));
+            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131906019));
             localObject1 = ((StringBuilder)localObject1).toString();
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("「");
             ((StringBuilder)localObject2).append(paramMap.get("recorder_nick_name"));
             ((StringBuilder)localObject2).append("」");
-            ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708244));
+            ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906038));
             ((StringBuilder)localObject2).append(paramMap.get("record_title"));
-            ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708226));
+            ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906021));
             localObject2 = ((StringBuilder)localObject2).toString();
             paramMap = (Map<String, Object>)localObject1;
             localObject1 = localObject2;
@@ -295,7 +295,7 @@ public class PlayOperationViewModelImpl
           ((StringBuilder)localObject1).append("「");
           ((StringBuilder)localObject1).append(paramMap.get("recorder_nick_name"));
           ((StringBuilder)localObject1).append("」");
-          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131708241));
+          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131906035));
           paramMap = ((StringBuilder)localObject1).toString();
         }
         localObject1 = "";
@@ -312,35 +312,35 @@ public class PlayOperationViewModelImpl
   
   private void initBottomSelector()
   {
-    this.mBinding.findViewById(2131364939).setOnTouchListener(new PlayOperationViewModelImpl.23(this));
-    this.mBinding.findViewById(2131370025).setOnTouchListener(new PlayOperationViewModelImpl.24(this));
-    this.mBinding.findViewById(2131377374).setOnTouchListener(new PlayOperationViewModelImpl.25(this));
-    this.mBinding.findViewById(2131371479).setOnTouchListener(new PlayOperationViewModelImpl.26(this));
+    this.mBinding.findViewById(2131431063).setOnTouchListener(new PlayOperationViewModelImpl.23(this));
+    this.mBinding.findViewById(2131437181).setOnTouchListener(new PlayOperationViewModelImpl.24(this));
+    this.mBinding.findViewById(2131445769).setOnTouchListener(new PlayOperationViewModelImpl.25(this));
+    this.mBinding.findViewById(2131438854).setOnTouchListener(new PlayOperationViewModelImpl.26(this));
   }
   
   private void initLikeAnimation()
   {
     this.mLikeAnimationSet = new AnimatorSet();
     this.mLikeAnimationSet.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.mLikeAnimationSet.playTogether(new Animator[] { createLikeAnimation(this.mBinding.findViewById(2131377924)) });
+    this.mLikeAnimationSet.playTogether(new Animator[] { createLikeAnimation(this.mBinding.findViewById(2131446410)) });
   }
   
   private void initListener()
   {
-    this.mHeadBinding.findViewById(2131368087).setOnClickListener(new PlayOperationViewModelImpl.4(this));
-    this.mHeadBinding.findViewById(2131371862).setOnClickListener(new PlayOperationViewModelImpl.5(this));
-    this.mHeadBinding.findViewById(2131367078).setOnClickListener(new PlayOperationViewModelImpl.6(this));
-    this.mHeadBinding.findViewById(2131364719).setOnClickListener(new PlayOperationViewModelImpl.7(this));
-    this.mBinding.findViewById(2131364939).setOnClickListener(new PlayOperationViewModelImpl.8(this));
-    this.mBinding.findViewById(2131370025).setOnClickListener(new PlayOperationViewModelImpl.9(this));
-    this.mBinding.findViewById(2131377374).setOnClickListener(new PlayOperationViewModelImpl.10(this));
-    this.mBinding.findViewById(2131371479).setOnClickListener(new PlayOperationViewModelImpl.11(this));
-    this.mBinding.findViewById(2131377927).setOnClickListener(new PlayOperationViewModelImpl.12(this));
+    this.mHeadBinding.findViewById(2131434940).setOnClickListener(new PlayOperationViewModelImpl.4(this));
+    this.mHeadBinding.findViewById(2131439303).setOnClickListener(new PlayOperationViewModelImpl.5(this));
+    this.mHeadBinding.findViewById(2131433531).setOnClickListener(new PlayOperationViewModelImpl.6(this));
+    this.mHeadBinding.findViewById(2131430825).setOnClickListener(new PlayOperationViewModelImpl.7(this));
+    this.mBinding.findViewById(2131431063).setOnClickListener(new PlayOperationViewModelImpl.8(this));
+    this.mBinding.findViewById(2131437181).setOnClickListener(new PlayOperationViewModelImpl.9(this));
+    this.mBinding.findViewById(2131445769).setOnClickListener(new PlayOperationViewModelImpl.10(this));
+    this.mBinding.findViewById(2131438854).setOnClickListener(new PlayOperationViewModelImpl.11(this));
+    this.mBinding.findViewById(2131446413).setOnClickListener(new PlayOperationViewModelImpl.12(this));
   }
   
   private void notifyUIFollow(boolean paramBoolean)
   {
-    ((NowSmallVideoHandler)this.app.getBusinessHandler(BusinessHandlerFactory.NOW_SMALL_VIDEO_HANDLER)).notifyUI(1000, true, new Object[] { Boolean.valueOf(paramBoolean), String.valueOf(this.mVideoData.jdField_a_of_type_Long) });
+    ((NowSmallVideoHandler)this.app.getBusinessHandler(BusinessHandlerFactory.NOW_SMALL_VIDEO_HANDLER)).notifyUI(1000, true, new Object[] { Boolean.valueOf(paramBoolean), String.valueOf(this.mVideoData.i) });
   }
   
   private void saveDeleteSuccessInfo(String paramString)
@@ -369,24 +369,24 @@ public class PlayOperationViewModelImpl
   
   private void showFollowSuccessAnim()
   {
-    if (this.mHeadBinding.findViewById(2131367083) == null) {
+    if (this.mHeadBinding.findViewById(2131433537) == null) {
       return;
     }
-    this.mHeadBinding.findViewById(2131367076).clearAnimation();
-    this.mHeadBinding.findViewById(2131367073).clearAnimation();
+    this.mHeadBinding.findViewById(2131433529).clearAnimation();
+    this.mHeadBinding.findViewById(2131433526).clearAnimation();
     int i = (int)UITools.a(this.mHeadBinding.getContext(), 20.0F);
-    Object localObject1 = this.mHeadBinding.findViewById(2131367057);
+    Object localObject1 = this.mHeadBinding.findViewById(2131433506);
     float f = -i;
     localObject1 = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { 0.0F, f });
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131367077), "translationY", new float[] { 0.0F, f });
-    Object localObject2 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131367083), "translationY", new float[] { i, 0.0F });
-    this.mHeadBinding.findViewById(2131367083).setVisibility(0);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131433530), "translationY", new float[] { 0.0F, f });
+    Object localObject2 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131433537), "translationY", new float[] { i, 0.0F });
+    this.mHeadBinding.findViewById(2131433537).setVisibility(0);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { localObject2, localObject1, localObjectAnimator });
     localAnimatorSet.setDuration(500L);
     localAnimatorSet.start();
-    localObject1 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131367078), "scaleX", new float[] { 1.0F, 0.75F, 0.5F, 0.2F, 0.0F });
-    localObjectAnimator = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131367078), "scaleY", new float[] { 1.0F, 0.75F, 0.5F, 0.25F, 0.0F });
+    localObject1 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131433531), "scaleX", new float[] { 1.0F, 0.75F, 0.5F, 0.2F, 0.0F });
+    localObjectAnimator = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131433531), "scaleY", new float[] { 1.0F, 0.75F, 0.5F, 0.25F, 0.0F });
     localObject2 = new AnimatorSet();
     ((AnimatorSet)localObject2).playTogether(new Animator[] { localObject1, localObjectAnimator });
     ((AnimatorSet)localObject2).addListener(new PlayOperationViewModelImpl.30(this));
@@ -397,18 +397,18 @@ public class PlayOperationViewModelImpl
   
   private void showFollowTipsAnim()
   {
-    if (this.mHeadBinding.findViewById(2131367057) == null) {
+    if (this.mHeadBinding.findViewById(2131433506) == null) {
       return;
     }
     this.isShowFollowAnim = true;
     this.isPlayingAnim = false;
-    this.mHeadBinding.findViewById(2131367078).setPivotX(UITools.a(this.mHeadBinding.getContext(), 55.0F) / 2.0F);
-    this.mHeadBinding.findViewById(2131367078).setPivotY(UITools.a(this.mHeadBinding.getContext(), 20.0F) / 2.0F);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131367078), "scaleY", new float[] { 0.52F, 1.0F, 0.72F, 1.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131367078), "scaleX", new float[] { 0.52F, 1.0F, 0.72F, 1.0F });
+    this.mHeadBinding.findViewById(2131433531).setPivotX(UITools.a(this.mHeadBinding.getContext(), 55.0F) / 2.0F);
+    this.mHeadBinding.findViewById(2131433531).setPivotY(UITools.a(this.mHeadBinding.getContext(), 20.0F) / 2.0F);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131433531), "scaleY", new float[] { 0.52F, 1.0F, 0.72F, 1.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131433531), "scaleX", new float[] { 0.52F, 1.0F, 0.72F, 1.0F });
     localObjectAnimator1.setDuration(800L);
     localObjectAnimator2.setDuration(800L);
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131367073), "translationX", new float[] { 0.0F, UITools.a(this.mHeadBinding.getContext(), 55.0F) });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.mHeadBinding.findViewById(2131433526), "translationX", new float[] { 0.0F, UITools.a(this.mHeadBinding.getContext(), 55.0F) });
     localObjectAnimator3.setStartDelay(1500L);
     localObjectAnimator3.setDuration(800L);
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -421,25 +421,25 @@ public class PlayOperationViewModelImpl
   
   private void showWhiteHeadBlock()
   {
-    ((TextView)this.mHeadBinding.findViewById(2131371862)).setTextColor(Color.parseColor("#000000"));
-    ((TextView)this.mHeadBinding.findViewById(2131366395)).setTextColor(Color.parseColor("#bbbbbb"));
-    ((TextView)this.mHeadBinding.findViewById(2131367057)).setTextColor(COLOR_WHITE);
-    ((TextView)this.mHeadBinding.findViewById(2131367077)).setTextColor(COLOR_WHITE);
-    setViewBgColor(this.mHeadBinding.findViewById(2131367083), COLOR_WHITE);
+    ((TextView)this.mHeadBinding.findViewById(2131439303)).setTextColor(Color.parseColor("#000000"));
+    ((TextView)this.mHeadBinding.findViewById(2131432707)).setTextColor(Color.parseColor("#bbbbbb"));
+    ((TextView)this.mHeadBinding.findViewById(2131433506)).setTextColor(COLOR_WHITE);
+    ((TextView)this.mHeadBinding.findViewById(2131433530)).setTextColor(COLOR_WHITE);
+    setViewBgColor(this.mHeadBinding.findViewById(2131433537), COLOR_WHITE);
     this.mFollowBackColor = COLOR_BLUE;
     if (!this.isPlayingAnim)
     {
-      this.mHeadBinding.findViewById(2131367075).setBackgroundColor(COLOR_BLUE);
-      this.mHeadBinding.findViewById(2131367076).setBackgroundDrawable(null);
+      this.mHeadBinding.findViewById(2131433528).setBackgroundColor(COLOR_BLUE);
+      this.mHeadBinding.findViewById(2131433529).setBackgroundDrawable(null);
     }
     else
     {
-      setViewBgColor(this.mHeadBinding.findViewById(2131367076), COLOR_BLUE);
+      setViewBgColor(this.mHeadBinding.findViewById(2131433529), COLOR_BLUE);
     }
-    this.mHeadBinding.findViewById(2131368065).setBackgroundColor(-1);
-    this.mHeadBinding.findViewById(2131364721).setVisibility(8);
-    this.mHeadBinding.findViewById(2131364720).setVisibility(0);
-    View localView = this.mHeadBinding.findViewById(2131368065).findViewById(2131363667);
+    this.mHeadBinding.findViewById(2131434915).setBackgroundColor(-1);
+    this.mHeadBinding.findViewById(2131430827).setVisibility(8);
+    this.mHeadBinding.findViewById(2131430826).setVisibility(0);
+    View localView = this.mHeadBinding.findViewById(2131434915).findViewById(2131429580);
     if (localView.getVisibility() == 8) {
       localView.setVisibility(0);
     }
@@ -590,8 +590,8 @@ public class PlayOperationViewModelImpl
       QLog.i("PlayOperationViewModel", 2, localStringBuilder.toString());
     }
     this.mRoomid = 0;
-    queryVideoState(this.mVideoData.jdField_h_of_type_Long);
-    setOpenRoomHeadUrl(this.mVideoData.jdField_f_of_type_JavaLangString);
+    queryVideoState(this.mVideoData.C);
+    setOpenRoomHeadUrl(this.mVideoData.m);
   }
   
   public boolean isDialogShow()
@@ -608,7 +608,7 @@ public class PlayOperationViewModelImpl
   {
     paramView = this.mCloseListener;
     if (paramView != null) {
-      paramView.a(this.mVideoData.k);
+      paramView.a(this.mVideoData.G);
     }
   }
   
@@ -616,10 +616,10 @@ public class PlayOperationViewModelImpl
   {
     if (!NearbyUtils.a(paramView.getContext()))
     {
-      QQToast.a(paramView.getContext(), 0, paramView.getContext().getResources().getString(2131694422), 0).a();
+      QQToast.makeText(paramView.getContext(), 0, paramView.getContext().getResources().getString(2131892102), 0).show();
       return;
     }
-    if (this.mVideoData.jdField_c_of_type_Long > 0L)
+    if (this.mVideoData.k > 0L)
     {
       followNowUser();
       return;
@@ -629,9 +629,9 @@ public class PlayOperationViewModelImpl
   
   public void onClickHeader(View paramView)
   {
-    Object localObject1 = ((INearbyCardManager)this.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).a();
+    Object localObject1 = ((INearbyCardManager)this.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).f();
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.mVideoData.jdField_h_of_type_Long);
+    ((StringBuilder)localObject2).append(this.mVideoData.C);
     ((StringBuilder)localObject2).append("");
     ((ConcurrentHashMap)localObject1).put(((StringBuilder)localObject2).toString(), Integer.valueOf(1));
     localObject1 = new StringBuilder();
@@ -656,9 +656,9 @@ public class PlayOperationViewModelImpl
     ((StringBuilder)localObject2).append("&card_type=nearby");
     ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
     ((StringBuilder)localObject2).append("&now_id=");
-    ((StringBuilder)localObject2).append(this.mVideoData.jdField_c_of_type_Long);
+    ((StringBuilder)localObject2).append(this.mVideoData.k);
     ((StringBuilder)localObject2).append("&now_user_type=");
-    ((StringBuilder)localObject2).append(this.mVideoData.jdField_d_of_type_Int);
+    ((StringBuilder)localObject2).append(this.mVideoData.l);
     localObject1 = ((StringBuilder)localObject2).toString();
     paramView.getContext().startActivity(new Intent(paramView.getContext(), JumpActivity.class).setData(Uri.parse((String)localObject1)));
     ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_post_click").genderInd1().reportByVideo(this.app);
@@ -681,11 +681,11 @@ public class PlayOperationViewModelImpl
       }
       localObject = new Intent(paramView.getContext(), QQBrowserActivity.class);
       ((Intent)localObject).putExtra("uin", this.app.getCurrentAccountUin());
-      ((Intent)localObject).putExtra("url", this.mTopicVideoLabelInfo.jdField_c_of_type_JavaLangString);
+      ((Intent)localObject).putExtra("url", this.mTopicVideoLabelInfo.c);
       paramView.getContext().startActivity((Intent)localObject);
       return;
     }
-    Object localObject = String.format("nowmqqapi://now/openroom?first=2&roomid=%s&roomtype=0&fromid=qq_smallvideo", new Object[] { Integer.valueOf(this.mLiveVideoLabelInfo.jdField_a_of_type_Int) });
+    Object localObject = String.format("nowmqqapi://now/openroom?first=2&roomid=%s&roomtype=0&fromid=qq_smallvideo", new Object[] { Integer.valueOf(this.mLiveVideoLabelInfo.a) });
     JumpParser.a(this.app, paramView.getContext(), (String)localObject).a();
     ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_live_click").genderInd1().reportByVideo(this.app);
   }
@@ -694,7 +694,7 @@ public class PlayOperationViewModelImpl
   {
     if (!NetworkUtil.a(this.mBinding.getContext()))
     {
-      QQToast.a(this.mBinding.getContext(), 1, HardCodeUtil.a(2131708232), 1).a();
+      QQToast.makeText(this.mBinding.getContext(), 1, HardCodeUtil.a(2131906027), 1).show();
       return;
     }
     this.isRequstingLike = true;
@@ -703,7 +703,7 @@ public class PlayOperationViewModelImpl
     if (!this.isLiked)
     {
       localVideoData = this.mVideoData;
-      View localView = this.mBinding.findViewById(2131372194);
+      View localView = this.mBinding.findViewById(2131439681);
       int j = localView.getWidth() / 2;
       int k = localView.getHeight() / 2;
       int i;
@@ -717,8 +717,8 @@ public class PlayOperationViewModelImpl
         j = UITools.a(this.mBinding.getContext()) / 2;
         i = UITools.b(this.mBinding.getContext()) / 2;
       }
-      if ((localVideoData != null) && (localVideoData.jdField_b_of_type_Int != VideoData.jdField_a_of_type_Int)) {
-        ((LikeAniView)this.mBinding.findViewById(2131370024)).a(j, i);
+      if ((localVideoData != null) && (localVideoData.b != VideoData.a)) {
+        ((LikeAniView)this.mBinding.findViewById(2131437180)).a(j, i);
       }
       paramView.feedsLike(this.feedsId, new PlayOperationViewModelImpl.14(this, localVideoData), null);
       ReportController.b(this.app, "dc00899", "grp_lbs", "", "new_thing", "clk_like", 0, 0, "", "", "", "2");
@@ -736,11 +736,11 @@ public class PlayOperationViewModelImpl
     paramView = (BaseActivity)this.mBinding.getContext();
     ActionSheet localActionSheet = ActionSheet.create(paramView);
     if (!this.isMine) {
-      localActionSheet.addButton(2131717470, 1);
+      localActionSheet.addButton(2131914943, 1);
     } else {
-      localActionSheet.addButton(HardCodeUtil.a(2131708221), 1);
+      localActionSheet.addButton(HardCodeUtil.a(2131906016), 1);
     }
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new PlayOperationViewModelImpl.20(this, paramView, localActionSheet));
     localActionSheet.setOnDismissListener(new PlayOperationViewModelImpl.21(this));
     localActionSheet.show();
@@ -762,44 +762,44 @@ public class PlayOperationViewModelImpl
   public void onClickShare(View paramView)
   {
     Object localObject = new HashMap();
-    if (this.mVideoData.k == 4)
+    if (this.mVideoData.G == 4)
     {
-      if (this.mVideoData.jdField_a_of_type_JavaUtilArrayList.get(0) != null) {
-        paramView = ((ImageData)this.mVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString;
+      if (this.mVideoData.M.get(0) != null) {
+        paramView = ((ImageData)this.mVideoData.M.get(0)).a;
       } else {
         paramView = "";
       }
     }
     else {
-      paramView = this.mVideoData.jdField_c_of_type_JavaLangString;
+      paramView = this.mVideoData.e;
     }
-    ((Map)localObject).put("record_title", this.mVideoData.j);
+    ((Map)localObject).put("record_title", this.mVideoData.A);
     ((Map)localObject).put("id", this.feedsId);
-    ((Map)localObject).put("anchor_nick_name", this.mVideoData.jdField_g_of_type_JavaLangString);
-    ((Map)localObject).put("feed_type", Integer.valueOf(this.mVideoData.k));
-    ((Map)localObject).put("recorder_nick_name", this.mVideoData.jdField_h_of_type_JavaLangString);
-    ((Map)localObject).put("roomName", this.mVideoData.j);
+    ((Map)localObject).put("anchor_nick_name", this.mVideoData.s);
+    ((Map)localObject).put("feed_type", Integer.valueOf(this.mVideoData.G));
+    ((Map)localObject).put("recorder_nick_name", this.mVideoData.t);
+    ((Map)localObject).put("roomName", this.mVideoData.A);
     ((Map)localObject).put("bNewQZone", Boolean.valueOf(false));
     ((Map)localObject).put("source", Integer.valueOf(6));
     ((Map)localObject).put("play_operatro_view_model", this);
-    ((Map)localObject).put("anchor_uin", Long.valueOf(this.mVideoData.jdField_a_of_type_Long));
-    ((Map)localObject).put("record_uin", Long.valueOf(this.mVideoData.jdField_d_of_type_Long));
+    ((Map)localObject).put("anchor_uin", Long.valueOf(this.mVideoData.i));
+    ((Map)localObject).put("record_uin", Long.valueOf(this.mVideoData.u));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("https://now.qq.com/h5/view_record.html?_wv=1&_bid=2424&from=6&feeds_id=");
     ((StringBuilder)localObject).append(this.feedsId);
     String str1 = ((StringBuilder)localObject).toString();
-    String str2 = HardCodeUtil.a(2131708242);
-    localObject = HardCodeUtil.a(2131708240);
-    if (!TextUtils.isEmpty(this.mVideoData.jdField_g_of_type_JavaLangString))
+    String str2 = HardCodeUtil.a(2131906036);
+    localObject = HardCodeUtil.a(2131906034);
+    if (!TextUtils.isEmpty(this.mVideoData.s))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("“「");
-      ((StringBuilder)localObject).append(this.mVideoData.jdField_g_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.mVideoData.s);
       ((StringBuilder)localObject).append("」”");
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131708237));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131906032));
       localObject = ((StringBuilder)localObject).toString();
     }
-    ((IShortVideoShareUtil)QRoute.api(IShortVideoShareUtil.class)).showShareActionSheet(this.app, (BaseActivity)this.mBinding.getContext(), String.valueOf(this.mVideoData.jdField_a_of_type_Long), "", str1, str2, (String)localObject, paramView, paramView, this.mForShare, new PlayOperationViewModelImpl.18(this));
+    ((IShortVideoShareUtil)QRoute.api(IShortVideoShareUtil.class)).showShareActionSheet(this.app, (BaseActivity)this.mBinding.getContext(), String.valueOf(this.mVideoData.i), "", str1, str2, (String)localObject, paramView, paramView, this.mForShare, new PlayOperationViewModelImpl.18(this));
     this.isDialogShow = true;
   }
   
@@ -811,8 +811,8 @@ public class PlayOperationViewModelImpl
     paramObject = (ilive_short_video_label.GetShortVideoVideoLabelRsp)paramObject;
     this.mRoomid = paramObject.video_status.root_room_id.get();
     this.mLabelType = paramObject.type.get();
-    TextView localTextView = (TextView)this.mBinding.findViewById(2131380657);
-    RoundRelativeLayout localRoundRelativeLayout = (RoundRelativeLayout)this.mBinding.findViewById(2131377927);
+    TextView localTextView = (TextView)this.mBinding.findViewById(2131449616);
+    RoundRelativeLayout localRoundRelativeLayout = (RoundRelativeLayout)this.mBinding.findViewById(2131446413);
     localRoundRelativeLayout.a(10);
     localRoundRelativeLayout.requestLayout();
     int i = this.mLabelType;
@@ -827,28 +827,28 @@ public class PlayOperationViewModelImpl
         }
         else
         {
-          this.mRecordVideoLabelInfo.jdField_a_of_type_JavaLangString = paramObject.video_info.url.get();
+          this.mRecordVideoLabelInfo.a = paramObject.video_info.url.get();
           this.mRecordVideoLabelInfo.b = paramObject.video_info.cover_url.get();
-          localTextView.setText(HardCodeUtil.a(2131708228));
-          localRoundRelativeLayout.setBackgroundResource(2130845675);
+          localTextView.setText(HardCodeUtil.a(2131906023));
+          localRoundRelativeLayout.setBackgroundResource(2130847144);
           localRoundRelativeLayout.setVisibility(0);
         }
       }
       else
       {
-        this.mTopicVideoLabelInfo.jdField_a_of_type_JavaLangString = paramObject.feed_info.feed_id.get().toStringUtf8();
+        this.mTopicVideoLabelInfo.a = paramObject.feed_info.feed_id.get().toStringUtf8();
         this.mTopicVideoLabelInfo.b = paramObject.feed_info.topic.get();
-        this.mTopicVideoLabelInfo.jdField_c_of_type_JavaLangString = paramObject.feed_info.url.get();
+        this.mTopicVideoLabelInfo.c = paramObject.feed_info.url.get();
         localTextView.setText(this.mTopicVideoLabelInfo.b);
-        localRoundRelativeLayout.setBackgroundResource(2130845674);
+        localRoundRelativeLayout.setBackgroundResource(2130847143);
         localRoundRelativeLayout.setVisibility(0);
       }
     }
     else
     {
-      this.mLiveVideoLabelInfo.jdField_a_of_type_Int = paramObject.video_status.root_room_id.get();
-      localTextView.setText(HardCodeUtil.a(2131708225));
-      localRoundRelativeLayout.setBackgroundResource(2130845672);
+      this.mLiveVideoLabelInfo.a = paramObject.video_status.root_room_id.get();
+      localTextView.setText(HardCodeUtil.a(2131906020));
+      localRoundRelativeLayout.setBackgroundResource(2130847141);
       localRoundRelativeLayout.setVisibility(0);
     }
     if (this.mLabelType == 0) {
@@ -872,8 +872,8 @@ public class PlayOperationViewModelImpl
       if (this.isLocal) {
         return;
       }
-      this.mBinding.findViewById(2131363759).setVisibility(0);
-      this.mBinding.findViewById(2131363759).setAlpha(1.0F);
+      this.mBinding.findViewById(2131429683).setVisibility(0);
+      this.mBinding.findViewById(2131429683).setAlpha(1.0F);
     }
   }
   
@@ -882,12 +882,12 @@ public class PlayOperationViewModelImpl
     Object localObject = this.mHeadBinding;
     if (localObject != null)
     {
-      localObject = (ImageView)((View)localObject).findViewById(2131362297);
+      localObject = (ImageView)((View)localObject).findViewById(2131427896);
       ((ImageView)localObject).setVisibility(0);
       if (paramInt2 == 1) {
-        ((ImageView)localObject).setBackgroundDrawable(((ImageView)localObject).getResources().getDrawable(2130845669));
+        ((ImageView)localObject).setBackgroundDrawable(((ImageView)localObject).getResources().getDrawable(2130847138));
       } else {
-        ((ImageView)localObject).setBackgroundDrawable(((ImageView)localObject).getResources().getDrawable(2130845667));
+        ((ImageView)localObject).setBackgroundDrawable(((ImageView)localObject).getResources().getDrawable(2130847136));
       }
       if ((paramInt2 != 255) && (paramInt2 != 0))
       {
@@ -917,10 +917,10 @@ public class PlayOperationViewModelImpl
   {
     if (paramLong <= 0L)
     {
-      ((TextView)this.mBinding.findViewById(2131377914)).setText(HardCodeUtil.a(2131708245));
+      ((TextView)this.mBinding.findViewById(2131446400)).setText(HardCodeUtil.a(2131906039));
       return;
     }
-    ((TextView)this.mBinding.findViewById(2131377914)).setText(CommentsUtil.c(paramLong));
+    ((TextView)this.mBinding.findViewById(2131446400)).setText(CommentsUtil.c(paramLong));
   }
   
   public void setCurrentAnchorUin(long paramLong)
@@ -943,14 +943,14 @@ public class PlayOperationViewModelImpl
   public void setExtraInfo(String paramString)
   {
     this.extraInfo = paramString;
-    ((TextView)this.mHeadBinding.findViewById(2131366395)).setText(paramString);
+    ((TextView)this.mHeadBinding.findViewById(2131432707)).setText(paramString);
   }
   
   public void setFeedType(int paramInt)
   {
     View localView = this.mHeadBinding;
     if ((localView != null) && (!this.isLocal)) {
-      localView.findViewById(2131378833).setVisibility(0);
+      localView.findViewById(2131447530).setVisibility(0);
     }
   }
   
@@ -976,20 +976,20 @@ public class PlayOperationViewModelImpl
     {
       if ((!this.isFollow) && (!this.isMine))
       {
-        ((View)localObject).findViewById(2131367078).setVisibility(0);
+        ((View)localObject).findViewById(2131433531).setVisibility(0);
         return;
       }
-      this.mHeadBinding.findViewById(2131367078).setVisibility(8);
+      this.mHeadBinding.findViewById(2131433531).setVisibility(8);
     }
   }
   
   public void setHeadBinding(View paramView)
   {
     this.mHeadBinding = paramView;
-    ((RoundRelativeLayout)this.mHeadBinding.findViewById(2131367075)).a(16);
-    this.mHeadBinding.findViewById(2131367075).requestLayout();
-    ((RoundRelativeLayout)this.mHeadBinding.findViewById(2131367074)).a(16);
-    this.mHeadBinding.findViewById(2131367074).requestLayout();
+    ((RoundRelativeLayout)this.mHeadBinding.findViewById(2131433528)).a(16);
+    this.mHeadBinding.findViewById(2131433528).requestLayout();
+    ((RoundRelativeLayout)this.mHeadBinding.findViewById(2131433527)).a(16);
+    this.mHeadBinding.findViewById(2131433527).requestLayout();
     initListener();
   }
   
@@ -1004,7 +1004,7 @@ public class PlayOperationViewModelImpl
   {
     this.headUrl = paramString;
     if (this.mHeadBinding != null) {
-      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage((ImageView)this.mHeadBinding.findViewById(2131368087), paramString, this.mHeadBinding.getResources().getDrawable(2130845589), this.mHeadBinding.getResources().getDrawable(2130845589), null, true);
+      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage((ImageView)this.mHeadBinding.findViewById(2131434940), paramString, this.mHeadBinding.getResources().getDrawable(2130847053), this.mHeadBinding.getResources().getDrawable(2130847053), null, true);
     }
   }
   
@@ -1021,7 +1021,7 @@ public class PlayOperationViewModelImpl
   public void setLiked(boolean paramBoolean)
   {
     this.isLiked = paramBoolean;
-    this.mBinding.findViewById(2131377923).setSelected(this.isLiked);
+    this.mBinding.findViewById(2131446409).setSelected(this.isLiked);
   }
   
   public void setLikes(int paramInt)
@@ -1032,31 +1032,31 @@ public class PlayOperationViewModelImpl
       if (this.operatorMode == 1)
       {
         if (this.isLiked) {
-          ((ImageView)this.mBinding.findViewById(2131377924)).setImageResource(2130845635);
+          ((ImageView)this.mBinding.findViewById(2131446410)).setImageResource(2130847099);
         } else {
-          ((ImageView)this.mBinding.findViewById(2131377924)).setImageResource(2130845653);
+          ((ImageView)this.mBinding.findViewById(2131446410)).setImageResource(2130847117);
         }
       }
       else if (this.isLiked) {
-        ((ImageView)this.mBinding.findViewById(2131377924)).setImageResource(2130845635);
+        ((ImageView)this.mBinding.findViewById(2131446410)).setImageResource(2130847099);
       } else {
-        ((ImageView)this.mBinding.findViewById(2131377924)).setImageResource(2130845634);
+        ((ImageView)this.mBinding.findViewById(2131446410)).setImageResource(2130847098);
       }
-      ((TextView)this.mBinding.findViewById(2131377923)).setText(CommentsUtil.c(paramInt));
+      ((TextView)this.mBinding.findViewById(2131446409)).setText(CommentsUtil.c(paramInt));
       return;
     }
     if (this.operatorMode == 1) {
-      ((ImageView)this.mBinding.findViewById(2131377924)).setImageResource(2130845653);
+      ((ImageView)this.mBinding.findViewById(2131446410)).setImageResource(2130847117);
     } else {
-      ((ImageView)this.mBinding.findViewById(2131377924)).setImageResource(2130845634);
+      ((ImageView)this.mBinding.findViewById(2131446410)).setImageResource(2130847098);
     }
-    ((TextView)this.mBinding.findViewById(2131377923)).setText(HardCodeUtil.a(2131708238));
+    ((TextView)this.mBinding.findViewById(2131446409)).setText(HardCodeUtil.a(2131906033));
   }
   
   public void setLocal(boolean paramBoolean)
   {
     this.isLocal = paramBoolean;
-    View localView = this.mHeadBinding.findViewById(2131378833);
+    View localView = this.mHeadBinding.findViewById(2131447530);
     int i;
     if ((!this.isRecord) && (!this.isLocal)) {
       i = 0;
@@ -1069,7 +1069,7 @@ public class PlayOperationViewModelImpl
   public void setNickName(String paramString)
   {
     this.nickName = paramString;
-    ((TextView)this.mHeadBinding.findViewById(2131371862)).setText(paramString);
+    ((TextView)this.mHeadBinding.findViewById(2131439303)).setText(paramString);
   }
   
   public void setOnCloseListener(Object paramObject)
@@ -1087,35 +1087,35 @@ public class PlayOperationViewModelImpl
   public void setOperatorMode(int paramInt)
   {
     this.operatorMode = paramInt;
-    Object localObject = this.mBinding.findViewById(2131363759);
+    Object localObject = this.mBinding.findViewById(2131429683);
     if (this.operatorMode == 0) {
-      paramInt = 2130845711;
+      paramInt = 2130847180;
     } else {
-      paramInt = 2130845712;
+      paramInt = 2130847181;
     }
     ((View)localObject).setBackgroundResource(paramInt);
-    localObject = (ImageView)this.mBinding.findViewById(2131377915);
+    localObject = (ImageView)this.mBinding.findViewById(2131446401);
     if (this.operatorMode == 0) {
-      paramInt = 2130845632;
+      paramInt = 2130847096;
     } else {
-      paramInt = 2130845633;
+      paramInt = 2130847097;
     }
     ((ImageView)localObject).setImageResource(paramInt);
-    localObject = (ImageView)this.mBinding.findViewById(2131377929);
+    localObject = (ImageView)this.mBinding.findViewById(2131446415);
     if (this.operatorMode == 0) {
-      paramInt = 2130845638;
+      paramInt = 2130847102;
     } else {
-      paramInt = 2130845639;
+      paramInt = 2130847103;
     }
     ((ImageView)localObject).setImageResource(paramInt);
-    localObject = (ImageView)this.mBinding.findViewById(2131377926);
+    localObject = (ImageView)this.mBinding.findViewById(2131446412);
     if (this.operatorMode == 0) {
-      paramInt = 2130845636;
+      paramInt = 2130847100;
     } else {
-      paramInt = 2130845637;
+      paramInt = 2130847101;
     }
     ((ImageView)localObject).setImageResource(paramInt);
-    localObject = (TextView)this.mBinding.findViewById(2131377914);
+    localObject = (TextView)this.mBinding.findViewById(2131446400);
     paramInt = this.operatorMode;
     int i = -1;
     if (paramInt == 0) {
@@ -1124,21 +1124,21 @@ public class PlayOperationViewModelImpl
       paramInt = -16777216;
     }
     ((TextView)localObject).setTextColor(paramInt);
-    localObject = (TextView)this.mBinding.findViewById(2131377923);
+    localObject = (TextView)this.mBinding.findViewById(2131446409);
     if (this.operatorMode == 0) {
       paramInt = -1;
     } else {
       paramInt = -16777216;
     }
     ((TextView)localObject).setTextColor(paramInt);
-    localObject = (TextView)this.mBinding.findViewById(2131377928);
+    localObject = (TextView)this.mBinding.findViewById(2131446414);
     if (this.operatorMode == 0) {
       paramInt = -1;
     } else {
       paramInt = -16777216;
     }
     ((TextView)localObject).setTextColor(paramInt);
-    localObject = (TextView)this.mBinding.findViewById(2131377925);
+    localObject = (TextView)this.mBinding.findViewById(2131446411);
     if (this.operatorMode == 0) {
       paramInt = i;
     } else {
@@ -1151,7 +1151,7 @@ public class PlayOperationViewModelImpl
   public void setRecord(boolean paramBoolean)
   {
     this.isRecord = paramBoolean;
-    View localView = this.mHeadBinding.findViewById(2131378833);
+    View localView = this.mHeadBinding.findViewById(2131447530);
     int i;
     if ((!this.isRecord) && (!this.isLocal)) {
       i = 0;
@@ -1179,7 +1179,7 @@ public class PlayOperationViewModelImpl
       if (!this.isUseProgressiveMask) {
         return;
       }
-      localView = localView.findViewById(2131368065).findViewById(2131363667);
+      localView = localView.findViewById(2131434915).findViewById(2131429580);
       Object localObject;
       if ((paramInt > 10) && (paramInt < 70))
       {
@@ -1189,26 +1189,26 @@ public class PlayOperationViewModelImpl
         int i = ((Integer)((ArgbEvaluator)localObject).evaluate(f, Integer.valueOf(-1), Integer.valueOf(-4473925))).intValue();
         int j = ((Integer)((ArgbEvaluator)localObject).evaluate(f, Integer.valueOf(-637534209), Integer.valueOf(COLOR_BLUE))).intValue();
         ((Integer)((ArgbEvaluator)localObject).evaluate(f, Integer.valueOf(COLOR_BLUE), Integer.valueOf(-1))).intValue();
-        ((TextView)this.mHeadBinding.findViewById(2131371862)).setTextColor(paramInt);
-        ((TextView)this.mHeadBinding.findViewById(2131366395)).setTextColor(i);
-        ((TextView)this.mHeadBinding.findViewById(2131367057)).setTextColor(COLOR_WHITE);
-        ((TextView)this.mHeadBinding.findViewById(2131367077)).setTextColor(COLOR_WHITE);
-        setViewBgColor(this.mHeadBinding.findViewById(2131367083), COLOR_WHITE);
+        ((TextView)this.mHeadBinding.findViewById(2131439303)).setTextColor(paramInt);
+        ((TextView)this.mHeadBinding.findViewById(2131432707)).setTextColor(i);
+        ((TextView)this.mHeadBinding.findViewById(2131433506)).setTextColor(COLOR_WHITE);
+        ((TextView)this.mHeadBinding.findViewById(2131433530)).setTextColor(COLOR_WHITE);
+        setViewBgColor(this.mHeadBinding.findViewById(2131433537), COLOR_WHITE);
         this.mFollowBackColor = j;
         if (!this.isPlayingAnim)
         {
-          this.mHeadBinding.findViewById(2131367075).setBackgroundColor(COLOR_BLUE);
-          this.mHeadBinding.findViewById(2131367076).setBackgroundDrawable(null);
+          this.mHeadBinding.findViewById(2131433528).setBackgroundColor(COLOR_BLUE);
+          this.mHeadBinding.findViewById(2131433529).setBackgroundDrawable(null);
         }
         else
         {
-          setViewBgColor(this.mHeadBinding.findViewById(2131367076), COLOR_BLUE);
+          setViewBgColor(this.mHeadBinding.findViewById(2131433529), COLOR_BLUE);
         }
-        this.mHeadBinding.findViewById(2131368065).setBackgroundColor(Color.parseColor("#ffffff"));
-        this.mHeadBinding.findViewById(2131368065).getBackground().setAlpha((int)(255.0F * f));
-        this.mHeadBinding.findViewById(2131364721).setAlpha(1.0F - f);
-        this.mHeadBinding.findViewById(2131364720).setAlpha(f);
-        this.mBinding.findViewById(2131377927).setVisibility(8);
+        this.mHeadBinding.findViewById(2131434915).setBackgroundColor(Color.parseColor("#ffffff"));
+        this.mHeadBinding.findViewById(2131434915).getBackground().setAlpha((int)(255.0F * f));
+        this.mHeadBinding.findViewById(2131430827).setAlpha(1.0F - f);
+        this.mHeadBinding.findViewById(2131430826).setAlpha(f);
+        this.mBinding.findViewById(2131446413).setVisibility(8);
         if (localView.getVisibility() == 0) {
           localView.setVisibility(8);
         }
@@ -1217,28 +1217,28 @@ public class PlayOperationViewModelImpl
       {
         if (paramInt <= 10)
         {
-          ((TextView)this.mHeadBinding.findViewById(2131371862)).setTextColor(Color.parseColor("#ffffff"));
-          ((TextView)this.mHeadBinding.findViewById(2131366395)).setTextColor(Color.parseColor("#b3ffffff"));
-          ((TextView)this.mHeadBinding.findViewById(2131367057)).setTextColor(COLOR_WHITE);
-          ((TextView)this.mHeadBinding.findViewById(2131367077)).setTextColor(COLOR_WHITE);
-          setViewBgColor(this.mHeadBinding.findViewById(2131367083), COLOR_WHITE);
+          ((TextView)this.mHeadBinding.findViewById(2131439303)).setTextColor(Color.parseColor("#ffffff"));
+          ((TextView)this.mHeadBinding.findViewById(2131432707)).setTextColor(Color.parseColor("#b3ffffff"));
+          ((TextView)this.mHeadBinding.findViewById(2131433506)).setTextColor(COLOR_WHITE);
+          ((TextView)this.mHeadBinding.findViewById(2131433530)).setTextColor(COLOR_WHITE);
+          setViewBgColor(this.mHeadBinding.findViewById(2131433537), COLOR_WHITE);
           this.mFollowBackColor = -637534209;
           if (!this.isPlayingAnim)
           {
-            this.mHeadBinding.findViewById(2131367075).setBackgroundColor(COLOR_BLUE);
-            this.mHeadBinding.findViewById(2131367076).setBackgroundDrawable(null);
+            this.mHeadBinding.findViewById(2131433528).setBackgroundColor(COLOR_BLUE);
+            this.mHeadBinding.findViewById(2131433529).setBackgroundDrawable(null);
           }
           else
           {
-            setViewBgColor(this.mHeadBinding.findViewById(2131367076), COLOR_BLUE);
+            setViewBgColor(this.mHeadBinding.findViewById(2131433529), COLOR_BLUE);
           }
-          this.mHeadBinding.findViewById(2131368065).setBackgroundResource(2130845713);
-          this.mHeadBinding.findViewById(2131364721).setAlpha(1.0F);
-          this.mHeadBinding.findViewById(2131364720).setAlpha(0.0F);
+          this.mHeadBinding.findViewById(2131434915).setBackgroundResource(2130847182);
+          this.mHeadBinding.findViewById(2131430827).setAlpha(1.0F);
+          this.mHeadBinding.findViewById(2131430826).setAlpha(0.0F);
           if (localView.getVisibility() == 0) {
             localView.setVisibility(8);
           }
-          localView = this.mBinding.findViewById(2131377927);
+          localView = this.mBinding.findViewById(2131446413);
           if (this.isHasVideoLabel) {
             paramInt = 0;
           } else {
@@ -1249,29 +1249,29 @@ public class PlayOperationViewModelImpl
         }
         if (paramInt >= 70)
         {
-          ((TextView)this.mHeadBinding.findViewById(2131371862)).setTextColor(Color.parseColor("#000000"));
-          ((TextView)this.mHeadBinding.findViewById(2131366395)).setTextColor(Color.parseColor("#bbbbbb"));
-          ((TextView)this.mHeadBinding.findViewById(2131367057)).setTextColor(COLOR_WHITE);
-          ((TextView)this.mHeadBinding.findViewById(2131367077)).setTextColor(COLOR_WHITE);
-          setViewBgColor(this.mHeadBinding.findViewById(2131367083), COLOR_WHITE);
+          ((TextView)this.mHeadBinding.findViewById(2131439303)).setTextColor(Color.parseColor("#000000"));
+          ((TextView)this.mHeadBinding.findViewById(2131432707)).setTextColor(Color.parseColor("#bbbbbb"));
+          ((TextView)this.mHeadBinding.findViewById(2131433506)).setTextColor(COLOR_WHITE);
+          ((TextView)this.mHeadBinding.findViewById(2131433530)).setTextColor(COLOR_WHITE);
+          setViewBgColor(this.mHeadBinding.findViewById(2131433537), COLOR_WHITE);
           this.mFollowBackColor = COLOR_BLUE;
           if (!this.isPlayingAnim)
           {
-            this.mHeadBinding.findViewById(2131367075).setBackgroundColor(COLOR_BLUE);
-            this.mHeadBinding.findViewById(2131367076).setBackgroundDrawable(null);
+            this.mHeadBinding.findViewById(2131433528).setBackgroundColor(COLOR_BLUE);
+            this.mHeadBinding.findViewById(2131433529).setBackgroundDrawable(null);
           }
           else
           {
-            localObject = this.mHeadBinding.findViewById(2131367076).getBackground();
+            localObject = this.mHeadBinding.findViewById(2131433529).getBackground();
             if (localObject != null)
             {
               ((Drawable)localObject).setColorFilter(new LightingColorFilter(-16777216, COLOR_BLUE));
               ((Drawable)localObject).invalidateSelf();
             }
           }
-          this.mHeadBinding.findViewById(2131368065).setBackgroundColor(-1);
-          this.mHeadBinding.findViewById(2131364721).setAlpha(0.0F);
-          this.mHeadBinding.findViewById(2131364720).setAlpha(1.0F);
+          this.mHeadBinding.findViewById(2131434915).setBackgroundColor(-1);
+          this.mHeadBinding.findViewById(2131430827).setAlpha(0.0F);
+          this.mHeadBinding.findViewById(2131430826).setAlpha(1.0F);
           if (localView.getVisibility() == 8) {
             localView.setVisibility(0);
           }
@@ -1295,7 +1295,7 @@ public class PlayOperationViewModelImpl
     this.watchCount = paramInt;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(CommentsUtil.d(this.watchCount));
-    localStringBuilder.append(HardCodeUtil.a(2131708243));
+    localStringBuilder.append(HardCodeUtil.a(2131906037));
     setExtraInfo(localStringBuilder.toString());
   }
   
@@ -1313,16 +1313,16 @@ public class PlayOperationViewModelImpl
   {
     Object localObject = this.mVideoData;
     int i = 8;
-    if ((localObject != null) && (((VideoData)localObject).jdField_b_of_type_Int != 1))
+    if ((localObject != null) && (((VideoData)localObject).b != 1))
     {
-      localObject = this.mBinding.findViewById(2131372194);
+      localObject = this.mBinding.findViewById(2131439681);
       if (paramBoolean) {
         i = 0;
       }
       ((View)localObject).setVisibility(i);
       return;
     }
-    this.mBinding.findViewById(2131372194).setVisibility(8);
+    this.mBinding.findViewById(2131439681).setVisibility(8);
   }
   
   public void updateShowInfo(VideoData paramVideoData)
@@ -1334,67 +1334,67 @@ public class PlayOperationViewModelImpl
       localStringBuilder.append(this.mVideoData);
       QLog.i("PlayOperationViewModel", 2, localStringBuilder.toString());
     }
-    this.feedsId = paramVideoData.jdField_a_of_type_JavaLangString;
+    this.feedsId = paramVideoData.c;
     this.mVideoData = paramVideoData;
-    if (paramVideoData.jdField_b_of_type_Int == 1)
+    if (paramVideoData.b == 1)
     {
       showIfCan(false);
       return;
     }
-    this.jumpUrl = paramVideoData.jdField_e_of_type_JavaLangString;
-    this.currentAnchorNowId = paramVideoData.jdField_c_of_type_Long;
-    this.currentAnchorNowUserType = paramVideoData.jdField_d_of_type_Int;
-    if (paramVideoData.jdField_h_of_type_Long == paramVideoData.jdField_d_of_type_Long)
+    this.jumpUrl = paramVideoData.g;
+    this.currentAnchorNowId = paramVideoData.k;
+    this.currentAnchorNowUserType = paramVideoData.l;
+    if (paramVideoData.C == paramVideoData.u)
     {
-      setHeadUrl(paramVideoData.i);
-      setNickName(paramVideoData.jdField_h_of_type_JavaLangString);
-      this.headerInfoUid = paramVideoData.jdField_d_of_type_Long;
-      this.extraInfoUid = paramVideoData.jdField_a_of_type_Long;
+      setHeadUrl(paramVideoData.x);
+      setNickName(paramVideoData.t);
+      this.headerInfoUid = paramVideoData.u;
+      this.extraInfoUid = paramVideoData.i;
     }
     else
     {
-      setHeadUrl(paramVideoData.jdField_f_of_type_JavaLangString);
-      setNickName(paramVideoData.jdField_g_of_type_JavaLangString);
-      this.headerInfoUid = paramVideoData.jdField_a_of_type_Long;
-      this.extraInfoUid = paramVideoData.jdField_d_of_type_Long;
+      setHeadUrl(paramVideoData.m);
+      setNickName(paramVideoData.s);
+      this.headerInfoUid = paramVideoData.i;
+      this.extraInfoUid = paramVideoData.u;
     }
-    setWatchCount(paramVideoData.jdField_e_of_type_Int);
-    setAgeAndGender(paramVideoData.jdField_f_of_type_Int, paramVideoData.jdField_g_of_type_Int);
+    setWatchCount(paramVideoData.p);
+    setAgeAndGender(paramVideoData.q, paramVideoData.r);
     boolean bool;
-    if (paramVideoData.jdField_b_of_type_Int != 1)
+    if (paramVideoData.b != 1)
     {
-      if (paramVideoData.n == 1) {
+      if (paramVideoData.O == 1) {
         bool = true;
       } else {
         bool = false;
       }
       setIsMine(bool);
-      setLiked(paramVideoData.jdField_b_of_type_Boolean);
-      setLikes(paramVideoData.jdField_c_of_type_Int);
+      setLiked(paramVideoData.o);
+      setLikes(paramVideoData.h);
     }
-    if (this.mVideoData.jdField_b_of_type_Int == 3) {
+    if (this.mVideoData.b == 3) {
       bool = true;
     } else {
       bool = false;
     }
     setAggregation(bool);
-    if (paramVideoData.jdField_b_of_type_Int == 1) {
+    if (paramVideoData.b == 1) {
       bool = true;
     } else {
       bool = false;
     }
     setRecord(bool);
-    if (paramVideoData.jdField_b_of_type_Int == 4) {
+    if (paramVideoData.b == 4) {
       bool = true;
     } else {
       bool = false;
     }
     setLocal(bool);
-    setFollow(paramVideoData.jdField_a_of_type_Boolean);
-    setCanJump(TextUtils.isEmpty(paramVideoData.jdField_e_of_type_JavaLangString) ^ true);
-    setFeedType(paramVideoData.k);
+    setFollow(paramVideoData.n);
+    setCanJump(TextUtils.isEmpty(paramVideoData.g) ^ true);
+    setFeedType(paramVideoData.G);
     reshowOperaView();
-    if (this.mVideoData.k == 4) {
+    if (this.mVideoData.G == 4) {
       bool = this.isFirstTime;
     }
     this.isFirstTime = false;
@@ -1402,7 +1402,7 @@ public class PlayOperationViewModelImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl
  * JD-Core Version:    0.7.0.1
  */

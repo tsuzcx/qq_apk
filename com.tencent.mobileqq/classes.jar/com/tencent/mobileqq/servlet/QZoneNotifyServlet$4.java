@@ -20,7 +20,7 @@ final class QZoneNotifyServlet$4
     try
     {
       QZoneNotifyServlet.a(System.currentTimeMillis());
-      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(QZoneNotifyServlet.a());
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(QZoneNotifyServlet.d());
       return;
     }
     catch (Exception localException)
@@ -34,7 +34,7 @@ final class QZoneNotifyServlet$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.4
  * JD-Core Version:    0.7.0.1
  */

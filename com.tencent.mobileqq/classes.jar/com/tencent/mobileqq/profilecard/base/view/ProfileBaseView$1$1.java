@@ -25,9 +25,9 @@ class ProfileBaseView$1$1
       this.this$1.this$0.mPendantId = this.val$info.pendantId;
       localObject = (AvatarPendantManager)this.this$1.this$0.mApp.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
       if (AvatarPendantUtil.a(this.this$1.this$0.mPendantId)) {
-        ((AvatarPendantManager)localObject).a(this.this$1.this$0.mPendantId).a(ProfileBaseView.access$000(this.this$1.this$0), 2, PendantInfo.c, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
+        ((AvatarPendantManager)localObject).a(this.this$1.this$0.mPendantId).a(ProfileBaseView.access$000(this.this$1.this$0), 2, PendantInfo.d, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
       } else {
-        ((AvatarPendantManager)localObject).a(this.this$1.this$0.mPendantId).a(ProfileBaseView.access$000(this.this$1.this$0), 1, PendantInfo.c, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
+        ((AvatarPendantManager)localObject).a(this.this$1.this$0.mPendantId).a(ProfileBaseView.access$000(this.this$1.this$0), 1, PendantInfo.d, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
       }
       if (this.this$1.val$isInit) {
         ReportController.b(this.this$1.this$0.mApp, "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
@@ -42,7 +42,7 @@ class ProfileBaseView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.ProfileBaseView.1.1
  * JD-Core Version:    0.7.0.1
  */

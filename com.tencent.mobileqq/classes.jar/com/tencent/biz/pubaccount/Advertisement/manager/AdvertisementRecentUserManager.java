@@ -34,17 +34,17 @@ import tencent.im.oidb.cmd0x886.oidb_cmd0x886.ReqBody;
 
 public class AdvertisementRecentUserManager
 {
-  private static AdvertisementRecentUserManager jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementRecentUserManager;
-  private IReadInJoyMSFService jdField_a_of_type_ComTencentMobileqqKandianBaseMsfApiIReadInJoyMSFService = (IReadInJoyMSFService)QRoute.api(IReadInJoyMSFService.class);
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<AdvertisementItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static AdvertisementRecentUserManager a;
+  private ArrayList<AdvertisementItem> b = new ArrayList();
+  private IReadInJoyMSFService c = (IReadInJoyMSFService)QRoute.api(IReadInJoyMSFService.class);
+  private final Object d = new Object();
   
   public static AdvertisementRecentUserManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementRecentUserManager == null) {
-      jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementRecentUserManager = new AdvertisementRecentUserManager();
+    if (a == null) {
+      a = new AdvertisementRecentUserManager();
     }
-    return jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementRecentUserManager;
+    return a;
   }
   
   private void a(ToServiceMsg paramToServiceMsg)
@@ -54,69 +54,7 @@ public class AdvertisementRecentUserManager
       paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
       long l = System.currentTimeMillis();
       paramToServiceMsg.extraData.putLong("time_stamp", l);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseMsfApiIReadInJoyMSFService.handleRequest(paramToServiceMsg);
-    }
-  }
-  
-  public AdvertisementItem a(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("getAdvertisementItem uin:");
-      ((StringBuilder)???).append(paramString);
-      QLog.d("AdvertisementRecentUserManager", 2, ((StringBuilder)???).toString());
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          AdvertisementItem localAdvertisementItem = (AdvertisementItem)localIterator.next();
-          if (paramString.equals(localAdvertisementItem.jdField_a_of_type_JavaLangString)) {
-            return localAdvertisementItem;
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  public String a(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("getTrueUin uin:");
-      ((StringBuilder)???).append(paramString);
-      QLog.d("AdvertisementRecentUserManager", 2, ((StringBuilder)???).toString());
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        AdvertisementItem localAdvertisementItem = (AdvertisementItem)localIterator.next();
-        if (localAdvertisementItem.jdField_a_of_type_JavaLangString.equals(paramString))
-        {
-          paramString = localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString;
-          return paramString;
-        }
-      }
-      return null;
-    }
-    for (;;)
-    {
-      throw paramString;
-    }
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((AdvertisementItem)localIterator.next()).jdField_a_of_type_Boolean = false;
+      this.c.handleRequest(paramToServiceMsg);
     }
   }
   
@@ -126,12 +64,12 @@ public class AdvertisementRecentUserManager
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("putAdvertisementItem uin:");
-      ((StringBuilder)???).append(paramAdvertisementItem.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(paramAdvertisementItem.a);
       QLog.d("AdvertisementRecentUserManager", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramAdvertisementItem);
+      this.b.add(paramAdvertisementItem);
       return;
     }
   }
@@ -143,7 +81,7 @@ public class AdvertisementRecentUserManager
       if (paramAppInterface == null) {
         return;
       }
-      oidb_cmd0x886.PhoneInfo localPhoneInfo = PublicAccountAdUtil.a();
+      oidb_cmd0x886.PhoneInfo localPhoneInfo = PublicAccountAdUtil.b();
       long l1;
       try
       {
@@ -158,7 +96,7 @@ public class AdvertisementRecentUserManager
       long l2 = NetConnInfoCenter.getServerTimeMillis();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(l1);
-      ((StringBuilder)localObject).append(paramAdvertisementItem.c);
+      ((StringBuilder)localObject).append(paramAdvertisementItem.d);
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(l2);
       localObject = MD5Utils.toMD5(((StringBuilder)localObject).toString());
@@ -175,7 +113,7 @@ public class AdvertisementRecentUserManager
         paramAppInterface = new StringBuilder("AdReport(");
         paramAppInterface.append(paramInt);
         paramAppInterface.append(") msgID=");
-        paramAppInterface.append(paramAdvertisementItem.c);
+        paramAppInterface.append(paramAdvertisementItem.d);
         QLog.d("AdvertisementRecentUserManager", 2, paramAppInterface.toString());
       }
     }
@@ -184,16 +122,16 @@ public class AdvertisementRecentUserManager
   public void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
   {
     if ((paramRecentUser != null) && (paramRecentUser.uin != null)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.d)
       {
-        AdvertisementItem localAdvertisementItem = a(paramRecentUser.uin);
-        if ((localAdvertisementItem != null) && (NetConnInfoCenter.getServerTimeMillis() - localAdvertisementItem.jdField_a_of_type_Long > 86400000L))
+        AdvertisementItem localAdvertisementItem = b(paramRecentUser.uin);
+        if ((localAdvertisementItem != null) && (NetConnInfoCenter.getServerTimeMillis() - localAdvertisementItem.e > 86400000L))
         {
           Object localObject1 = (ProxyManager)paramQQAppInterface.getManager(QQManagerFactory.PROXY_MANAGER);
           if (localObject1 == null) {
             localObject1 = null;
           } else {
-            localObject1 = ((ProxyManager)localObject1).a();
+            localObject1 = ((ProxyManager)localObject1).g();
           }
           if (localObject1 != null)
           {
@@ -209,10 +147,10 @@ public class AdvertisementRecentUserManager
             localStringBuilder.append(paramRecentUser.uin);
             localStringBuilder.append("-");
             localStringBuilder.append(paramRecentUser.getType());
-            ((RecentDataListManager)localObject3).a(localStringBuilder.toString());
+            ((RecentDataListManager)localObject3).b(localStringBuilder.toString());
             ((RecentUserProxy)localObject1).a(paramRecentUser);
-            RecentUtil.b(paramQQAppInterface, localAdvertisementItem.jdField_a_of_type_JavaLangString, 1008);
-            paramQQAppInterface.getMessageFacade().a(localAdvertisementItem.jdField_a_of_type_JavaLangString, 1008);
+            RecentUtil.b(paramQQAppInterface, localAdvertisementItem.a, 1008);
+            paramQQAppInterface.getMessageFacade().a(localAdvertisementItem.a, 1008);
           }
           ThreadManager.executeOnFileThread(new AdvertisementRecentUserManager.1(this, localAdvertisementItem));
         }
@@ -234,18 +172,80 @@ public class AdvertisementRecentUserManager
       QLog.d("AdvertisementRecentUserManager", 2, ((StringBuilder)???).toString());
     }
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         AdvertisementItem localAdvertisementItem = (AdvertisementItem)localIterator.next();
-        if (paramString.equals(localAdvertisementItem.jdField_a_of_type_JavaLangString)) {
+        if (paramString.equals(localAdvertisementItem.a)) {
           localArrayList.add(localAdvertisementItem);
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.removeAll(localArrayList);
+      this.b.removeAll(localArrayList);
       return;
+    }
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  public AdvertisementItem b(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("getAdvertisementItem uin:");
+      ((StringBuilder)???).append(paramString);
+      QLog.d("AdvertisementRecentUserManager", 2, ((StringBuilder)???).toString());
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.d)
+      {
+        Iterator localIterator = this.b.iterator();
+        while (localIterator.hasNext())
+        {
+          AdvertisementItem localAdvertisementItem = (AdvertisementItem)localIterator.next();
+          if (paramString.equals(localAdvertisementItem.a)) {
+            return localAdvertisementItem;
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((AdvertisementItem)localIterator.next()).f = false;
+    }
+  }
+  
+  public String c(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("getTrueUin uin:");
+      ((StringBuilder)???).append(paramString);
+      QLog.d("AdvertisementRecentUserManager", 2, ((StringBuilder)???).toString());
+    }
+    synchronized (this.d)
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
+      {
+        AdvertisementItem localAdvertisementItem = (AdvertisementItem)localIterator.next();
+        if (localAdvertisementItem.a.equals(paramString))
+        {
+          paramString = localAdvertisementItem.g.a;
+          return paramString;
+        }
+      }
+      return null;
     }
     for (;;)
     {
@@ -255,7 +255,7 @@ public class AdvertisementRecentUserManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager
  * JD-Core Version:    0.7.0.1
  */

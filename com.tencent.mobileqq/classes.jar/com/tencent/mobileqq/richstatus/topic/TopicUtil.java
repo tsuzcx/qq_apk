@@ -127,41 +127,6 @@ public class TopicUtil
     return localStringBuilder.toString();
   }
   
-  public static List<Pair<Integer, String>> a(Editable paramEditable)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = null;
-    int i = 0;
-    while (i < paramEditable.length())
-    {
-      Object localObject3 = (ITopic[])paramEditable.getSpans(i, i, ITopic.class);
-      Object localObject2 = localObject1;
-      if (localObject3 != null)
-      {
-        localObject2 = localObject1;
-        if (localObject3.length > 0)
-        {
-          localObject3 = localObject3[0];
-          localObject2 = localObject1;
-          if (localObject3 != localObject1)
-          {
-            localObject1 = ((ITopic)localObject3).getData();
-            if ((localObject1 instanceof Pair)) {
-              localArrayList.add((Pair)localObject1);
-            }
-            localObject2 = localObject3;
-          }
-        }
-      }
-      i += 1;
-      localObject1 = localObject2;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("TopicUtil", 2, String.format("getTopics %s", new Object[] { a(localArrayList) }));
-    }
-    return localArrayList;
-  }
-  
   public static void a(Context paramContext, String paramString, int paramInt)
   {
     if (System.currentTimeMillis() - a < 500L) {
@@ -242,7 +207,42 @@ public class TopicUtil
     return paramString.trim().length() >= 3;
   }
   
-  public static List<Pair<Integer, Integer>> b(Editable paramEditable)
+  public static List<Pair<Integer, String>> b(Editable paramEditable)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = null;
+    int i = 0;
+    while (i < paramEditable.length())
+    {
+      Object localObject3 = (ITopic[])paramEditable.getSpans(i, i, ITopic.class);
+      Object localObject2 = localObject1;
+      if (localObject3 != null)
+      {
+        localObject2 = localObject1;
+        if (localObject3.length > 0)
+        {
+          localObject3 = localObject3[0];
+          localObject2 = localObject1;
+          if (localObject3 != localObject1)
+          {
+            localObject1 = ((ITopic)localObject3).getData();
+            if ((localObject1 instanceof Pair)) {
+              localArrayList.add((Pair)localObject1);
+            }
+            localObject2 = localObject3;
+          }
+        }
+      }
+      i += 1;
+      localObject1 = localObject2;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("TopicUtil", 2, String.format("getTopics %s", new Object[] { a(localArrayList) }));
+    }
+    return localArrayList;
+  }
+  
+  public static List<Pair<Integer, Integer>> c(Editable paramEditable)
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject3 = null;
@@ -298,7 +298,7 @@ public class TopicUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.topic.TopicUtil
  * JD-Core Version:    0.7.0.1
  */

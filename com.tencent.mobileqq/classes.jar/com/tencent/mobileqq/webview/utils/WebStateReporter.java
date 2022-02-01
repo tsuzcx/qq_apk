@@ -17,32 +17,40 @@ import org.json.JSONObject;
 
 public class WebStateReporter
 {
-  public static HashMap<String, Integer> a;
-  public static int c;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
+  public static HashMap<String, Integer> a = new HashMap();
+  public static int i = 6;
+  public int b = 0;
   public long c;
+  public int d;
+  public boolean e = false;
+  public long f;
+  public String g;
+  public long h;
   
-  static
+  private String b(int paramInt)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_c_of_type_Int = 6;
-  }
-  
-  public WebStateReporter()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return "Unknown";
+          }
+          return "4G";
+        }
+        return "3G";
+      }
+      return "2G";
+    }
+    return "wifi";
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    this.d = paramInt;
+    this.h = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -54,12 +62,12 @@ public class WebStateReporter
   
   public void a(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.f = paramLong;
   }
   
   void a(Context paramContext)
   {
-    Object localObject = ClubContentJsonTask.e.jdField_a_of_type_JavaLangString;
+    Object localObject = ClubContentJsonTask.e.a;
     paramContext = new File(paramContext.getFilesDir(), (String)localObject);
     if (!paramContext.exists()) {
       return;
@@ -71,18 +79,18 @@ public class WebStateReporter
     try
     {
       paramContext = new JSONObject(paramContext);
-      int i = paramContext.getInt("sample_rate");
-      jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(i));
+      int j = paramContext.getInt("sample_rate");
+      a.put("sample_rate", Integer.valueOf(j));
       localObject = paramContext.getJSONArray("rules");
-      int j = ((JSONArray)localObject).length();
-      i = 0;
-      while (i < j)
+      int k = ((JSONArray)localObject).length();
+      j = 0;
+      while (j < k)
       {
-        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-        jdField_a_of_type_JavaUtilHashMap.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
-        i += 1;
+        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
+        a.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
+        j += 1;
       }
-      jdField_c_of_type_Int = paramContext.getInt("tail_number");
+      i = paramContext.getInt("tail_number");
       return;
     }
     catch (JSONException paramContext)
@@ -104,51 +112,30 @@ public class WebStateReporter
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.e)
       {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-        this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-        this.jdField_a_of_type_Boolean = false;
+        this.d = this.b;
+        this.h = this.c;
+        this.e = false;
       }
     }
     try
     {
-      i = NetworkUtil.getSystemNetwork(paramContext);
+      j = NetworkUtil.getSystemNetwork(paramContext);
     }
     catch (Exception localException)
     {
-      int i;
+      int j;
       label56:
-      String str;
       break label56;
     }
-    i = 0;
-    if (i != 1) {
-      if (i != 2) {
-        if (i != 3) {
-          if (i != 4) {
-            str = "Unknown";
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      str = "4G";
-      continue;
-      str = "3G";
-      continue;
-      str = "2G";
-      continue;
-      str = "wifi";
-    }
-    ThreadManager.post(new WebStateReporter.1(this, paramBoolean, paramString, paramContext, paramLong, str), 5, null, false);
+    j = 0;
+    ThreadManager.post(new WebStateReporter.1(this, paramBoolean, paramString, paramContext, paramLong, b(j)), 5, null, false);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.g = paramString;
   }
   
   public void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
@@ -170,7 +157,7 @@ public class WebStateReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.utils.WebStateReporter
  * JD-Core Version:    0.7.0.1
  */

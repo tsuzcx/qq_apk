@@ -22,47 +22,47 @@ class PictureFilePresenter$4
   public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     PictureFilePresenter.a(this.a, paramInt);
-    paramAdapterView = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer;
+    paramAdapterView = this.a.a;
     boolean bool;
-    if (PictureFilePresenter.a(this.a) == PictureFilePresenter.b(this.a)) {
+    if (PictureFilePresenter.c(this.a) == PictureFilePresenter.d(this.a)) {
       bool = true;
     } else {
       bool = false;
     }
     paramAdapterView.d(bool);
     this.a.a(paramInt);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener.a(paramInt);
+    if (this.a.f != null) {
+      this.a.f.a(paramInt);
     }
-    paramAdapterView = (FileBrowserModelBase.ImageFileInfo)PictureFilePresenter.a(this.a).get(paramInt);
+    paramAdapterView = (FileBrowserModelBase.ImageFileInfo)PictureFilePresenter.e(this.a).get(paramInt);
     if (paramAdapterView == null)
     {
-      FMToastUtil.b(BaseApplicationImpl.getContext().getString(2131692353));
+      FMToastUtil.b(BaseApplicationImpl.getContext().getString(2131889341));
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a().a(paramAdapterView);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(paramInt, paramAdapterView);
-    paramAdapterView = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer;
+    this.a.c.Q().a(paramAdapterView);
+    this.a.c.a(paramInt, paramAdapterView);
+    paramAdapterView = this.a.a;
     paramView = this.a;
-    paramAdapterView.c(PictureFilePresenter.a(paramView, PictureFilePresenter.a(paramView)));
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.c();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.c();
+    paramAdapterView.c(PictureFilePresenter.a(paramView, PictureFilePresenter.f(paramView)));
+    this.a.a.e();
+    if (this.a.e != null) {
+      this.a.e.h();
     }
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.b)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener.a(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(false);
+      this.a.f.a(true);
+      this.a.a.a(false);
       PictureFilePresenter.a(this.a, true);
     }
-    this.a.jdField_a_of_type_Boolean = true;
+    this.a.b = true;
   }
   
   public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.PictureFilePresenter.4
  * JD-Core Version:    0.7.0.1
  */

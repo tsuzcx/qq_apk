@@ -34,62 +34,50 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class VoteHelper
 {
-  public static final Object a;
-  public static long b;
-  public static final Object b;
-  public static String d;
-  public static String e;
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  VisitorsActivity jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public Map<Long, Pair<CardProfile, AtomicInteger>> a;
-  public boolean a;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  ArrayList<Long> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  public Map<Long, Pair<CardProfile, Pair<AtomicInteger, AtomicInteger>>> b;
-  String c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_b_of_type_JavaLangObject = new Object();
-    d = "sp_key_vote_max_friend";
-    e = "sp_key_vote_max_stranger";
-    jdField_b_of_type_Long = -1L;
-  }
+  public static final Object m = new Object();
+  public static final Object n = new Object();
+  public static String q = "sp_key_vote_max_friend";
+  public static String r = "sp_key_vote_max_stranger";
+  public static long s = -1L;
+  VisitorsActivity a;
+  Handler b;
+  QQAppInterface c;
+  int d;
+  int e;
+  public boolean f = false;
+  long g;
+  String h;
+  String i;
+  String j;
+  ArrayList<Long> k = new ArrayList();
+  ArrayList<Long> l = new ArrayList();
+  public Map<Long, Pair<CardProfile, AtomicInteger>> o = new HashMap();
+  public Map<Long, Pair<CardProfile, Pair<AtomicInteger, AtomicInteger>>> p = new HashMap();
   
   public VoteHelper(VisitorsActivity paramVisitorsActivity, Handler paramHandler, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity = paramVisitorsActivity;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    jdField_b_of_type_Long = -1L;
+    this.a = paramVisitorsActivity;
+    this.b = paramHandler;
+    this.c = paramQQAppInterface;
+    s = -1L;
   }
   
   private void a(ArrayList<Long> paramArrayList)
   {
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    int i = 0;
-    while (i < paramArrayList.size())
+    this.l.clear();
+    this.k.clear();
+    Object localObject = (FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    int i1 = 0;
+    while (i1 < paramArrayList.size())
     {
-      if ((Long)paramArrayList.get(i) != null) {
-        if (((FriendsManager)localObject).b(Long.toString(((Long)paramArrayList.get(i)).longValue()))) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList.get(i));
+      if ((Long)paramArrayList.get(i1) != null) {
+        if (((FriendsManager)localObject).n(Long.toString(((Long)paramArrayList.get(i1)).longValue()))) {
+          this.k.add(paramArrayList.get(i1));
         } else {
-          this.jdField_b_of_type_JavaUtilArrayList.add(paramArrayList.get(i));
+          this.l.add(paramArrayList.get(i1));
         }
       }
-      i += 1;
+      i1 += 1;
     }
     if (QLog.isColorLevel())
     {
@@ -97,23 +85,23 @@ public class VoteHelper
       ((StringBuilder)localObject).append("fillTodayVoteArray ");
       ((StringBuilder)localObject).append(paramArrayList.size());
       ((StringBuilder)localObject).append(" friend:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      ((StringBuilder)localObject).append(this.k.size());
       ((StringBuilder)localObject).append(" stranger:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaUtilArrayList.size());
+      ((StringBuilder)localObject).append(this.l.size());
       QLog.i("VisitorsActivity.VoteHelper", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_b_of_type_Long < 0L) {
-      jdField_b_of_type_Long = paramQQAppInterface.getPreferences().getLong("keyShowDoubleZanPopTime", 0L);
+    if (s < 0L) {
+      s = paramQQAppInterface.getPreferences().getLong("keyShowDoubleZanPopTime", 0L);
     }
-    if (DateUtils.isToday(jdField_b_of_type_Long)) {
+    if (DateUtils.isToday(s)) {
       return false;
     }
-    jdField_b_of_type_Long = System.currentTimeMillis();
-    paramQQAppInterface.getPreferences().edit().putLong("keyShowDoubleZanPopTime", jdField_b_of_type_Long).commit();
+    s = System.currentTimeMillis();
+    paramQQAppInterface.getPreferences().edit().putLong("keyShowDoubleZanPopTime", s).commit();
     return true;
   }
   
@@ -122,33 +110,18 @@ public class VoteHelper
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:806)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public int a(String paramString, int paramInt)
-  {
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt(paramString, paramInt);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getSp key:");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" value:");
-      localStringBuilder.append(paramInt);
-      QLog.i("VisitorsActivity.VoteHelper", 2, localStringBuilder.toString());
-    }
-    return paramInt;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Int = a(d, 0);
-    this.jdField_b_of_type_Int = a(d, 0);
+    this.d = b(q, 0);
+    this.e = b(q, 0);
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.c(localArrayList);
-    synchronized (jdField_b_of_type_JavaLangObject)
+    this.a.ah.c(localArrayList);
+    synchronized (n)
     {
       a(localArrayList);
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131699169);
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131699171);
-      this.c = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131699170);
+      this.h = this.a.getResources().getString(2131897185);
+      this.i = this.a.getResources().getString(2131897187);
+      this.j = this.a.getResources().getString(2131897186);
       return;
     }
   }
@@ -160,117 +133,34 @@ public class VoteHelper
   
   public void a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramLong, paramInt);
-  }
-  
-  public void a(CardProfile paramCardProfile)
-  {
-    Object localObject1;
-    int j;
-    label478:
-    label483:
-    label490:
-    label496:
-    label501:
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      localObject1 = (Pair)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramCardProfile.lEctID));
-      int i;
-      if (localObject1 == null)
-      {
-        i = 0;
-      }
-      else
-      {
-        i = ((AtomicInteger)((Pair)localObject1).second).get();
-        break label478;
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.size();
-        Object localObject2 = null;
-        if (j >= k) {
-          break label490;
-        }
-        if (((CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.get(j)).lEctID != paramCardProfile.lEctID) {
-          break label483;
-        }
-        localObject1 = (CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.get(j);
-        if (localObject1 == null) {
-          break label496;
-        }
-        long l1 = paramCardProfile.bTodayVotedCnt;
-        long l2 = i;
-        ((CardProfile)localObject1).bTodayVotedCnt = (l1 + l2);
-        ((CardProfile)localObject1).bAvailableCnt = (paramCardProfile.bAvailableCnt - l2);
-        break label496;
-        localObject1 = localObject2;
-        if (j < this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.size())
-        {
-          localObject1 = (CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.get(j);
-          if ((localObject1 == null) || (((CardProfile)localObject1).lEctID != paramCardProfile.lEctID)) {
-            break label501;
-          }
-          localObject1 = (CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.remove(j);
-          ((CardProfile)localObject1).updateTime(paramCardProfile.lTime);
-          l1 = paramCardProfile.bTodayVotedCnt;
-          l2 = i;
-          ((CardProfile)localObject1).bTodayVotedCnt = (l1 + l2);
-          ((CardProfile)localObject1).bAvailableCnt = (paramCardProfile.bAvailableCnt - l2);
-          ((CardProfile)localObject1).bVoteCnt = ((short)(int)((CardProfile)localObject1).bTodayVotedCnt);
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = paramCardProfile.clone();
-          ((CardProfile)localObject2).type = 3;
-          l1 = paramCardProfile.bTodayVotedCnt;
-          l2 = i;
-          ((CardProfile)localObject2).bTodayVotedCnt = (l1 + l2);
-          ((CardProfile)localObject2).bAvailableCnt = (paramCardProfile.bAvailableCnt - l2);
-          ((CardProfile)localObject2).bVoteCnt = ((short)(int)((CardProfile)localObject2).bTodayVotedCnt);
-        }
-        if ((((CardProfile)localObject2).bTodayVotedCnt > 0L) && (((CardProfile)localObject2).bVoteCnt > 0)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.add(0, localObject2);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(paramCardProfile.lEctID);
-        this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f();
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("updateCardProfileToList. uin:");
-          ((StringBuilder)localObject1).append(paramCardProfile.lEctID);
-          ((StringBuilder)localObject1).append(" todayCount:");
-          ((StringBuilder)localObject1).append(paramCardProfile.bTodayVotedCnt);
-          QLog.i("VisitorsActivity.VoteHelper", 2, ((StringBuilder)localObject1).toString());
-        }
-        return;
-      }
-    }
+    this.a.ah.a(this.c.getCurrentAccountUin(), paramLong, paramInt);
   }
   
   public void a(CardProfile paramCardProfile, ImageView paramImageView, boolean paramBoolean)
   {
-    short s;
-    int i;
+    short s1;
+    int i1;
     Object localObject1;
     label800:
     label932:
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (m)
     {
       paramCardProfile.bAvailableCnt -= 1L;
       paramCardProfile.bTodayVotedCnt += 1L;
       if (paramCardProfile.type == 3)
       {
         paramCardProfile.bVoteCnt = ((short)(int)paramCardProfile.bTodayVotedCnt);
-        paramCardProfile.dwLikeCustomId = PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramCardProfile.dwLikeCustomId = PraiseManager.a(this.c);
         if (paramBoolean)
         {
-          s = 0;
-          paramCardProfile.bIsLastVoteCharged = s;
+          s1 = 0;
+          paramCardProfile.bIsLastVoteCharged = s1;
           paramCardProfile.updateTime(System.currentTimeMillis() / 1000L);
-          i = 0;
-          if ((!paramBoolean) && (i == 0)) {
+          i1 = 0;
+          if ((!paramBoolean) && (i1 == 0)) {
             paramCardProfile.payVoteCount = ((short)(paramCardProfile.payVoteCount + 1));
           }
-          boolean bool = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(Long.toString(paramCardProfile.lEctID));
+          boolean bool = ((FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(Long.toString(paramCardProfile.lEctID));
           if (QLog.isColorLevel())
           {
             localObject1 = new StringBuilder();
@@ -282,16 +172,16 @@ public class VoteHelper
           }
           if ((!bool) && (((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).isNeedNewLimitCheck(paramCardProfile.uSource)))
           {
-            if (!this.jdField_b_of_type_JavaUtilMap.containsKey(Long.valueOf(paramCardProfile.lEctID)))
+            if (!this.p.containsKey(Long.valueOf(paramCardProfile.lEctID)))
             {
               localObject1 = new AtomicInteger(0);
               localObject2 = new AtomicInteger(0);
               Pair localPair = new Pair(localObject1, localObject2);
-              this.jdField_b_of_type_JavaUtilMap.put(Long.valueOf(paramCardProfile.lEctID), new Pair(paramCardProfile, localPair));
+              this.p.put(Long.valueOf(paramCardProfile.lEctID), new Pair(paramCardProfile, localPair));
             }
             else
             {
-              localObject2 = (Pair)((Pair)this.jdField_b_of_type_JavaUtilMap.get(Long.valueOf(paramCardProfile.lEctID))).second;
+              localObject2 = (Pair)((Pair)this.p.get(Long.valueOf(paramCardProfile.lEctID))).second;
               localObject1 = (AtomicInteger)((Pair)localObject2).first;
               localObject2 = (AtomicInteger)((Pair)localObject2).second;
             }
@@ -303,21 +193,21 @@ public class VoteHelper
             ((AtomicInteger)localObject2).incrementAndGet();
             break label900;
           }
-          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramCardProfile.lEctID)))
+          if (!this.o.containsKey(Long.valueOf(paramCardProfile.lEctID)))
           {
             localObject1 = new AtomicInteger(0);
-            this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramCardProfile.lEctID), new Pair(paramCardProfile, localObject1));
+            this.o.put(Long.valueOf(paramCardProfile.lEctID), new Pair(paramCardProfile, localObject1));
           }
           else
           {
-            localObject1 = (AtomicInteger)((Pair)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramCardProfile.lEctID))).second;
+            localObject1 = (AtomicInteger)((Pair)this.o.get(Long.valueOf(paramCardProfile.lEctID))).second;
           }
           ((AtomicInteger)localObject1).incrementAndGet();
           break label900;
-          if (i >= this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.size()) {
+          if (i1 >= this.a.l.size()) {
             break label920;
           }
-          Object localObject2 = (CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.get(i);
+          Object localObject2 = (CardProfile)this.a.l.get(i1);
           if ((localObject2 == null) || (((CardProfile)localObject2).lEctID != paramCardProfile.lEctID)) {
             break label911;
           }
@@ -337,8 +227,8 @@ public class VoteHelper
             ((CardProfile)localObject1).type = 3;
             ((CardProfile)localObject1).bVoteCnt = ((short)(int)((CardProfile)localObject1).bTodayVotedCnt);
             ((CardProfile)localObject1).bAvailableCnt = paramCardProfile.bAvailableCnt;
-            this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.add(0, localObject1);
-            this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f();
+            this.a.l.add(0, localObject1);
+            this.a.f();
             localObject2 = localObject1;
             if (QLog.isColorLevel())
             {
@@ -351,19 +241,19 @@ public class VoteHelper
           }
           ((CardProfile)localObject2).updateTime(System.currentTimeMillis() / 1000L);
           break label800;
-          if (i < this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.size())
+          if (i1 < this.a.d.size())
           {
-            if (((CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.get(i)).lEctID != paramCardProfile.lEctID) {
+            if (((CardProfile)this.a.d.get(i1)).lEctID != paramCardProfile.lEctID) {
               break label932;
             }
-            localObject1 = (CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.get(i);
+            localObject1 = (CardProfile)this.a.d.get(i1);
             ((CardProfile)localObject1).bTodayVotedCnt += 1L;
             ((CardProfile)localObject1).bAvailableCnt -= 1L;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(paramCardProfile.lEctID);
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(paramImageView, paramBoolean);
-          if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(6)) {
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
+          this.a.a(paramCardProfile.lEctID);
+          this.a.a(paramImageView, paramBoolean);
+          if (!this.b.hasMessages(6)) {
+            this.b.sendEmptyMessageDelayed(6, 2000L);
           }
           ThreadManager.post(new VoteHelper.1(this, paramCardProfile.lEctID, paramCardProfile.type, paramBoolean, paramCardProfile.uSource), 2, null, true);
           return;
@@ -374,11 +264,11 @@ public class VoteHelper
   
   public void a(String paramString)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long > 2000L)
+    long l1 = System.currentTimeMillis();
+    if (l1 - this.g > 2000L)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(0, paramString);
-      this.jdField_a_of_type_Long = l;
+      this.a.a(0, paramString);
+      this.g = l1;
     }
   }
   
@@ -393,7 +283,7 @@ public class VoteHelper
       localStringBuilder.append(paramInt);
       QLog.i("VisitorsActivity.VoteHelper", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt(paramString, paramInt).commit();
+    this.c.getPreferences().edit().putInt(paramString, paramInt).commit();
   }
   
   public void a(String paramString, int paramInt, boolean paramBoolean)
@@ -403,33 +293,33 @@ public class VoteHelper
   
   public void a(ArrayList<Long> paramArrayList, int paramInt1, int paramInt2, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.d = paramInt1;
+    this.e = paramInt2;
     if (paramLong == 0L) {
-      synchronized (jdField_b_of_type_JavaLangObject)
+      synchronized (n)
       {
         a(paramArrayList);
       }
     }
-    a(d, this.jdField_a_of_type_Int);
-    a(e, this.jdField_b_of_type_Int);
+    a(q, this.d);
+    a(r, this.e);
   }
   
   public boolean a(CardProfile paramCardProfile, ImageView paramImageView)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity))
+    if (!NetworkUtil.isNetSupport(this.a))
     {
-      a(HardCodeUtil.a(2131716344));
+      a(HardCodeUtil.a(2131913786));
       return false;
     }
-    int i = a(paramCardProfile);
-    if (i == 0) {
+    int i1 = a(paramCardProfile);
+    if (i1 == 0) {
       return false;
     }
-    if (i == 2) {
+    if (i1 == 2) {
       return true;
     }
-    boolean bool = RecentUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(paramCardProfile.lEctID));
+    boolean bool = RecentUtil.a(this.c, Long.toString(paramCardProfile.lEctID));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -441,11 +331,26 @@ public class VoteHelper
     }
     if ((!bool) && (((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).isNeedNewLimitCheck(paramCardProfile.uSource)))
     {
-      ((INearbyLikeLimitManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(paramCardProfile.lEctID), new VoteHelper.2(this, paramCardProfile, paramImageView), "511");
+      ((INearbyLikeLimitManager)this.c.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER)).a(this.a, this.c, Long.toString(paramCardProfile.lEctID), new VoteHelper.2(this, paramCardProfile, paramImageView), "511");
       return false;
     }
     a(paramCardProfile, paramImageView, true);
     return false;
+  }
+  
+  public int b(String paramString, int paramInt)
+  {
+    paramInt = this.c.getPreferences().getInt(paramString, paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSp key:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" value:");
+      localStringBuilder.append(paramInt);
+      QLog.i("VisitorsActivity.VoteHelper", 2, localStringBuilder.toString());
+    }
+    return paramInt;
   }
   
   public void b()
@@ -453,52 +358,135 @@ public class VoteHelper
     if (QLog.isColorLevel()) {
       QLog.i("VisitorsActivity.VoteHelper", 2, "reqestVote");
     }
-    long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject3 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    long l1 = this.c.getLongAccountUin();
+    FriendsManager localFriendsManager = (FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject3 = this.o.entrySet().iterator();
     Pair localPair;
     while (((Iterator)localObject3).hasNext())
     {
       ??? = (Map.Entry)((Iterator)localObject3).next();
       long l2 = ((Long)((Map.Entry)???).getKey()).longValue();
       localPair = (Pair)((Map.Entry)???).getValue();
-      boolean bool = localFriendsManager.b(Long.toString(l2));
-      synchronized (jdField_a_of_type_JavaLangObject)
+      boolean bool = localFriendsManager.n(Long.toString(l2));
+      synchronized (m)
       {
         if (((AtomicInteger)localPair.second).get() > 0)
         {
           if (bool) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(l1, l2, null, 66, ((AtomicInteger)localPair.second).get(), 1);
+            this.a.ah.a(l1, l2, null, 66, ((AtomicInteger)localPair.second).get(), 1);
           } else {
-            this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqNearbyBusinessINearbyCardHandler.a(l1, l2, null, 66, ((AtomicInteger)localPair.second).get(), 1);
+            this.a.ak.a(l1, l2, null, 66, ((AtomicInteger)localPair.second).get(), 1);
           }
           ((AtomicInteger)localPair.second).set(0);
         }
       }
     }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.p.entrySet().iterator();
     localObject3 = new ArrayList();
     while (localIterator.hasNext())
     {
       ??? = (Map.Entry)localIterator.next();
       l1 = ((Long)((Map.Entry)???).getKey()).longValue();
       localPair = (Pair)((Map.Entry)???).getValue();
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (m)
       {
         if ((((AtomicInteger)((Pair)localPair.second).first).get() > 0) || (((AtomicInteger)((Pair)localPair.second).second).get() > 0))
         {
           INearbyLikeLimitManager.LikeItem localLikeItem = new INearbyLikeLimitManager.LikeItem();
-          localLikeItem.jdField_a_of_type_Int = ((AtomicInteger)((Pair)localPair.second).first).get();
-          localLikeItem.jdField_b_of_type_Int = ((AtomicInteger)((Pair)localPair.second).second).get();
-          localLikeItem.jdField_a_of_type_Long = l1;
-          localLikeItem.d = ((int)((CardProfile)localPair.first).uSource);
+          localLikeItem.b = ((AtomicInteger)((Pair)localPair.second).first).get();
+          localLikeItem.c = ((AtomicInteger)((Pair)localPair.second).second).get();
+          localLikeItem.a = l1;
+          localLikeItem.e = ((int)((CardProfile)localPair.first).uSource);
           ((ArrayList)localObject3).add(localLikeItem);
           ((AtomicInteger)((Pair)localPair.second).first).set(0);
           ((AtomicInteger)((Pair)localPair.second).second).set(0);
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_ComTencentMobileqqNearbyBusinessINearbyCardHandler.a((ArrayList)localObject3, 511);
+    this.a.ak.a((ArrayList)localObject3, 511);
+  }
+  
+  public void b(CardProfile paramCardProfile)
+  {
+    Object localObject1;
+    int i2;
+    label478:
+    label483:
+    label490:
+    label496:
+    label501:
+    synchronized (m)
+    {
+      localObject1 = (Pair)this.o.get(Long.valueOf(paramCardProfile.lEctID));
+      int i1;
+      if (localObject1 == null)
+      {
+        i1 = 0;
+      }
+      else
+      {
+        i1 = ((AtomicInteger)((Pair)localObject1).second).get();
+        break label478;
+        int i3 = this.a.d.size();
+        Object localObject2 = null;
+        if (i2 >= i3) {
+          break label490;
+        }
+        if (((CardProfile)this.a.d.get(i2)).lEctID != paramCardProfile.lEctID) {
+          break label483;
+        }
+        localObject1 = (CardProfile)this.a.d.get(i2);
+        if (localObject1 == null) {
+          break label496;
+        }
+        long l1 = paramCardProfile.bTodayVotedCnt;
+        long l2 = i1;
+        ((CardProfile)localObject1).bTodayVotedCnt = (l1 + l2);
+        ((CardProfile)localObject1).bAvailableCnt = (paramCardProfile.bAvailableCnt - l2);
+        break label496;
+        localObject1 = localObject2;
+        if (i2 < this.a.l.size())
+        {
+          localObject1 = (CardProfile)this.a.l.get(i2);
+          if ((localObject1 == null) || (((CardProfile)localObject1).lEctID != paramCardProfile.lEctID)) {
+            break label501;
+          }
+          localObject1 = (CardProfile)this.a.l.remove(i2);
+          ((CardProfile)localObject1).updateTime(paramCardProfile.lTime);
+          l1 = paramCardProfile.bTodayVotedCnt;
+          l2 = i1;
+          ((CardProfile)localObject1).bTodayVotedCnt = (l1 + l2);
+          ((CardProfile)localObject1).bAvailableCnt = (paramCardProfile.bAvailableCnt - l2);
+          ((CardProfile)localObject1).bVoteCnt = ((short)(int)((CardProfile)localObject1).bTodayVotedCnt);
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = paramCardProfile.clone();
+          ((CardProfile)localObject2).type = 3;
+          l1 = paramCardProfile.bTodayVotedCnt;
+          l2 = i1;
+          ((CardProfile)localObject2).bTodayVotedCnt = (l1 + l2);
+          ((CardProfile)localObject2).bAvailableCnt = (paramCardProfile.bAvailableCnt - l2);
+          ((CardProfile)localObject2).bVoteCnt = ((short)(int)((CardProfile)localObject2).bTodayVotedCnt);
+        }
+        if ((((CardProfile)localObject2).bTodayVotedCnt > 0L) && (((CardProfile)localObject2).bVoteCnt > 0)) {
+          this.a.l.add(0, localObject2);
+        }
+        this.a.a(paramCardProfile.lEctID);
+        this.a.f();
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("updateCardProfileToList. uin:");
+          ((StringBuilder)localObject1).append(paramCardProfile.lEctID);
+          ((StringBuilder)localObject1).append(" todayCount:");
+          ((StringBuilder)localObject1).append(paramCardProfile.bTodayVotedCnt);
+          QLog.i("VisitorsActivity.VoteHelper", 2, ((StringBuilder)localObject1).toString());
+        }
+        return;
+      }
+    }
   }
   
   public void b(String paramString, int paramInt, boolean paramBoolean)
@@ -514,17 +502,17 @@ public class VoteHelper
       ((StringBuilder)localObject1).append(paramInt);
       QLog.i("VisitorsActivity.VoteHelper", 2, ((StringBuilder)localObject1).toString());
     }
-    paramString = jdField_a_of_type_JavaLangObject;
-    int j = 0;
-    int i = 0;
+    paramString = m;
+    int i2 = 0;
+    int i1 = 0;
     for (;;)
     {
       try
       {
-        if (i >= this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.size()) {
+        if (i1 >= this.a.l.size()) {
           break label350;
         }
-        localObject1 = (CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.get(i);
+        localObject1 = (CardProfile)this.a.l.get(i1);
         if ((localObject1 != null) && (((CardProfile)localObject1).lEctID == l1))
         {
           long l2 = ((CardProfile)localObject1).bTodayVotedCnt;
@@ -535,22 +523,22 @@ public class VoteHelper
           if ((((CardProfile)localObject1).bTodayVotedCnt > 0L) && (((CardProfile)localObject1).bVoteCnt > 0)) {
             break label350;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.remove(i);
-          i = 1;
-          if (j < this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.size())
+          this.a.l.remove(i1);
+          i1 = 1;
+          if (i2 < this.a.d.size())
           {
-            if (((CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.get(j)).lEctID != l1) {
+            if (((CardProfile)this.a.d.get(i2)).lEctID != l1) {
               break label356;
             }
-            localObject1 = (CardProfile)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_a_of_type_JavaUtilArrayList.get(j);
+            localObject1 = (CardProfile)this.a.d.get(i2);
             l2 = ((CardProfile)localObject1).bTodayVotedCnt;
             l3 = paramInt;
             ((CardProfile)localObject1).bTodayVotedCnt = (l2 - l3);
             ((CardProfile)localObject1).bAvailableCnt += l3;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(l1);
-          if (i != 0) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f();
+          this.a.a(l1);
+          if (i1 != 0) {
+            this.a.f();
           }
           return;
         }
@@ -560,20 +548,20 @@ public class VoteHelper
         continue;
         throw localObject2;
         continue;
-        i += 1;
+        i1 += 1;
       }
       continue;
       label350:
-      i = 0;
+      i1 = 0;
       continue;
       label356:
-      j += 1;
+      i2 += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.vote.VoteHelper
  * JD-Core Version:    0.7.0.1
  */

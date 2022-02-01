@@ -12,33 +12,33 @@ import org.json.JSONObject;
 public class MQPSigCheckService
   implements INetTransportProvider.INetTransportEventListener
 {
-  private MQPSecServiceManager jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager = null;
-  private MQPSigCheckService.ISigCheckResultListener jdField_a_of_type_ComTencentMqpsdkSecsrvMQPSigCheckService$ISigCheckResultListener = null;
+  private MQPSecServiceManager a = null;
+  private MQPSigCheckService.ISigCheckResultListener b = null;
   
   public MQPSigCheckService(MQPSecServiceManager paramMQPSecServiceManager)
   {
-    INetTransportProvider localINetTransportProvider = paramMQPSecServiceManager.a;
+    INetTransportProvider localINetTransportProvider = paramMQPSecServiceManager.b;
     if (localINetTransportProvider != null) {
       localINetTransportProvider.setNetTransportEventListener("sig_check", this);
     }
-    this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager = paramMQPSecServiceManager;
+    this.a = paramMQPSecServiceManager;
   }
   
   public void a(MQPSigCheckService.ISigCheckResultListener paramISigCheckResultListener)
   {
-    this.jdField_a_of_type_ComTencentMqpsdkSecsrvMQPSigCheckService$ISigCheckResultListener = paramISigCheckResultListener;
+    this.b = paramISigCheckResultListener;
   }
   
   public void a(Object paramObject1, Object paramObject2)
   {
-    if (this.jdField_a_of_type_ComTencentMqpsdkSecsrvMQPSigCheckService$ISigCheckResultListener == null) {
+    if (this.b == null) {
       return;
     }
-    paramObject1 = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager;
+    paramObject1 = this.a;
     if (paramObject1 == null) {
       return;
     }
-    paramObject1 = paramObject1.a;
+    paramObject1 = paramObject1.b;
     if (paramObject1 == null) {
       return;
     }
@@ -106,7 +106,7 @@ public class MQPSigCheckService
       paramObject1.put("sig_check_result", i);
       paramObject1.put("dialog_config", localObject);
       paramObject1.put("cache_time", j);
-      this.jdField_a_of_type_ComTencentMqpsdkSecsrvMQPSigCheckService$ISigCheckResultListener.a(paramObject1.toString());
+      this.b.a(paramObject1.toString());
       return;
     }
     catch (Exception paramObject1)
@@ -119,7 +119,7 @@ public class MQPSigCheckService
   public void a(String paramString)
   {
     // Byte code:
-    //   0: ldc 82
+    //   0: ldc 83
     //   2: astore 18
     //   4: iconst_0
     //   5: istore 5
@@ -131,36 +131,36 @@ public class MQPSigCheckService
     //   13: lstore 10
     //   15: lload 10
     //   17: lstore 8
-    //   19: new 102	org/json/JSONObject
+    //   19: new 103	org/json/JSONObject
     //   22: dup
     //   23: aload_1
-    //   24: invokespecial 136	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   24: invokespecial 137	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   27: astore 19
     //   29: lload 10
     //   31: lstore 6
     //   33: lload 10
     //   35: lstore 8
     //   37: aload 19
-    //   39: ldc 138
-    //   41: invokevirtual 141	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   39: ldc 139
+    //   41: invokevirtual 142	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   44: ifeq +16 -> 60
     //   47: lload 10
     //   49: lstore 8
     //   51: aload 19
-    //   53: ldc 138
-    //   55: invokevirtual 145	org/json/JSONObject:getLong	(Ljava/lang/String;)J
+    //   53: ldc 139
+    //   55: invokevirtual 146	org/json/JSONObject:getLong	(Ljava/lang/String;)J
     //   58: lstore 6
     //   60: lload 6
     //   62: lstore 8
     //   64: aload 19
-    //   66: ldc 147
-    //   68: invokevirtual 141	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   66: ldc 148
+    //   68: invokevirtual 142	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   71: ifeq +18 -> 89
     //   74: lload 6
     //   76: lstore 8
     //   78: aload 19
-    //   80: ldc 147
-    //   82: invokevirtual 151	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   80: ldc 148
+    //   82: invokevirtual 152	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   85: istore_3
     //   86: goto +5 -> 91
     //   89: iconst_0
@@ -168,51 +168,51 @@ public class MQPSigCheckService
     //   91: iload 5
     //   93: istore 4
     //   95: aload 19
-    //   97: ldc 153
-    //   99: invokevirtual 141	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   97: ldc 154
+    //   99: invokevirtual 142	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   102: ifeq +15 -> 117
     //   105: iload 5
     //   107: istore 4
     //   109: aload 19
-    //   111: ldc 153
-    //   113: invokevirtual 151	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   111: ldc 154
+    //   113: invokevirtual 152	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   116: istore_2
     //   117: iload_2
     //   118: istore 4
     //   120: aload 19
-    //   122: ldc 155
-    //   124: invokevirtual 141	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   122: ldc 156
+    //   124: invokevirtual 142	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   127: ifeq +18 -> 145
     //   130: iload_2
     //   131: istore 4
     //   133: aload 19
-    //   135: ldc 155
-    //   137: invokevirtual 159	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: ldc 156
+    //   137: invokevirtual 160	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   140: astore 14
     //   142: goto +7 -> 149
-    //   145: ldc 82
+    //   145: ldc 83
     //   147: astore 14
     //   149: aload 19
-    //   151: ldc 161
-    //   153: invokevirtual 141	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   151: ldc 162
+    //   153: invokevirtual 142	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   156: ifeq +15 -> 171
     //   159: aload 19
-    //   161: ldc 161
-    //   163: invokevirtual 159	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   161: ldc 162
+    //   163: invokevirtual 160	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   166: astore 13
     //   168: goto +7 -> 175
-    //   171: ldc 82
+    //   171: ldc 83
     //   173: astore 13
     //   175: aload 19
-    //   177: ldc 163
-    //   179: invokevirtual 141	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   177: ldc 164
+    //   179: invokevirtual 142	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   182: ifeq +14 -> 196
     //   185: aload 19
-    //   187: ldc 163
-    //   189: invokevirtual 159	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   187: ldc 164
+    //   189: invokevirtual 160	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   192: astore_1
     //   193: goto +6 -> 199
-    //   196: ldc 82
+    //   196: ldc 83
     //   198: astore_1
     //   199: aload_1
     //   200: astore 17
@@ -229,12 +229,12 @@ public class MQPSigCheckService
     //   221: iload_3
     //   222: istore 4
     //   224: aload 19
-    //   226: ldc 165
-    //   228: invokevirtual 141	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   226: ldc 166
+    //   228: invokevirtual 142	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   231: ifeq +129 -> 360
     //   234: aload 19
-    //   236: ldc 165
-    //   238: invokevirtual 159	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   236: ldc 166
+    //   238: invokevirtual 160	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   241: astore 15
     //   243: aload_1
     //   244: astore 17
@@ -252,17 +252,17 @@ public class MQPSigCheckService
     //   267: astore 12
     //   269: goto +61 -> 330
     //   272: astore 12
-    //   274: ldc 82
+    //   274: ldc 83
     //   276: astore_1
     //   277: goto +53 -> 330
     //   280: astore 12
-    //   282: ldc 82
+    //   282: ldc 83
     //   284: astore_1
     //   285: aload_1
     //   286: astore 13
     //   288: goto +42 -> 330
     //   291: astore 12
-    //   293: ldc 82
+    //   293: ldc 83
     //   295: astore_1
     //   296: aload_1
     //   297: astore 13
@@ -272,7 +272,7 @@ public class MQPSigCheckService
     //   305: istore_2
     //   306: goto +24 -> 330
     //   309: astore 12
-    //   311: ldc 82
+    //   311: ldc 83
     //   313: astore_1
     //   314: aload_1
     //   315: astore 13
@@ -285,7 +285,7 @@ public class MQPSigCheckService
     //   327: iload 4
     //   329: istore_2
     //   330: aload 12
-    //   332: invokevirtual 58	java/lang/Exception:printStackTrace	()V
+    //   332: invokevirtual 59	java/lang/Exception:printStackTrace	()V
     //   335: iload_3
     //   336: istore 4
     //   338: lload 6
@@ -300,56 +300,56 @@ public class MQPSigCheckService
     //   355: astore 16
     //   357: aload_1
     //   358: astore 17
-    //   360: new 167	com/tencent/ims/signature$SignatureReport
+    //   360: new 168	com/tencent/ims/signature$SignatureReport
     //   363: dup
-    //   364: invokespecial 168	com/tencent/ims/signature$SignatureReport:<init>	()V
+    //   364: invokespecial 169	com/tencent/ims/signature$SignatureReport:<init>	()V
     //   367: astore_1
     //   368: aload_1
-    //   369: getfield 172	com/tencent/ims/signature$SignatureReport:u64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   369: getfield 173	com/tencent/ims/signature$SignatureReport:u64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   372: lload 8
-    //   374: invokevirtual 178	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   374: invokevirtual 179	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   377: aload_1
-    //   378: getfield 181	com/tencent/ims/signature$SignatureReport:u32_client_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   378: getfield 182	com/tencent/ims/signature$SignatureReport:u32_client_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   381: iload 4
-    //   383: invokevirtual 184	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   383: invokevirtual 185	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   386: aload_1
-    //   387: getfield 187	com/tencent/ims/signature$SignatureReport:u32_is_repack	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   387: getfield 188	com/tencent/ims/signature$SignatureReport:u32_is_repack	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   390: iload 5
-    //   392: invokevirtual 184	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   392: invokevirtual 185	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   395: aload_1
-    //   396: getfield 190	com/tencent/ims/signature$SignatureReport:str_packname	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   396: getfield 191	com/tencent/ims/signature$SignatureReport:str_packname	Lcom/tencent/mobileqq/pb/PBStringField;
     //   399: aload 12
-    //   401: invokevirtual 192	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   401: invokevirtual 193	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   404: aload_1
-    //   405: getfield 195	com/tencent/ims/signature$SignatureReport:str_version	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   405: getfield 196	com/tencent/ims/signature$SignatureReport:str_version	Lcom/tencent/mobileqq/pb/PBStringField;
     //   408: aload 16
-    //   410: invokevirtual 192	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   410: invokevirtual 193	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   413: aload_1
-    //   414: getfield 198	com/tencent/ims/signature$SignatureReport:str_md5	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   414: getfield 199	com/tencent/ims/signature$SignatureReport:str_md5	Lcom/tencent/mobileqq/pb/PBStringField;
     //   417: aload 17
-    //   419: invokevirtual 192	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   419: invokevirtual 193	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   422: aload_1
-    //   423: getfield 201	com/tencent/ims/signature$SignatureReport:str_signature	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   423: getfield 202	com/tencent/ims/signature$SignatureReport:str_signature	Lcom/tencent/mobileqq/pb/PBStringField;
     //   426: aload 15
-    //   428: invokevirtual 192	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
+    //   428: invokevirtual 193	com/tencent/mobileqq/pb/PBStringField:set	(Ljava/lang/String;)V
     //   431: aload_0
-    //   432: getfield 16	com/tencent/mqpsdk/secsrv/MQPSigCheckService:jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager	Lcom/tencent/mqpsdk/MQPSecServiceManager;
+    //   432: getfield 17	com/tencent/mqpsdk/secsrv/MQPSigCheckService:a	Lcom/tencent/mqpsdk/MQPSecServiceManager;
     //   435: astore 12
     //   437: aload 12
     //   439: ifnonnull +4 -> 443
     //   442: return
     //   443: aload 12
-    //   445: getfield 23	com/tencent/mqpsdk/MQPSecServiceManager:a	Lcom/tencent/mqpsdk/INetTransportProvider;
+    //   445: getfield 24	com/tencent/mqpsdk/MQPSecServiceManager:b	Lcom/tencent/mqpsdk/INetTransportProvider;
     //   448: astore 13
     //   450: aload 13
     //   452: ifnonnull +4 -> 456
     //   455: return
     //   456: aload_1
-    //   457: invokevirtual 205	com/tencent/ims/signature$SignatureReport:toByteArray	()[B
+    //   457: invokevirtual 206	com/tencent/ims/signature$SignatureReport:toByteArray	()[B
     //   460: astore 12
     //   462: aload 13
-    //   464: ldc 25
-    //   466: invokeinterface 40 2 0
+    //   464: ldc 26
+    //   466: invokeinterface 41 2 0
     //   471: astore 14
     //   473: aload 12
     //   475: astore_1
@@ -357,11 +357,11 @@ public class MQPSigCheckService
     //   478: ifnull +13 -> 491
     //   481: aload 14
     //   483: aload 12
-    //   485: invokeinterface 208 2 0
+    //   485: invokeinterface 209 2 0
     //   490: astore_1
     //   491: aload 13
     //   493: aload_1
-    //   494: invokeinterface 212 2 0
+    //   494: invokeinterface 213 2 0
     //   499: pop
     //   500: return
     // Local variable table:
@@ -407,7 +407,7 @@ public class MQPSigCheckService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqpsdk.secsrv.MQPSigCheckService
  * JD-Core Version:    0.7.0.1
  */

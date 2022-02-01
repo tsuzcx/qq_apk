@@ -16,7 +16,7 @@ class EcshopWebviewPool$1
       Object localObject = new Bundle();
       ((Bundle)localObject).putInt("_accelerator_mode_", 3);
       SwiftWebAccelerator.a().a((Bundle)localObject);
-      localObject = EcshopWebview.a(MobileQQ.getContext());
+      localObject = EcshopWebview.b(MobileQQ.getContext());
       EcshopWebviewPool.a(this.this$0).put(this.a, localObject);
       if (QLog.isColorLevel())
       {
@@ -30,7 +30,7 @@ class EcshopWebviewPool$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.EcshopWebviewPool.1
  * JD-Core Version:    0.7.0.1
  */

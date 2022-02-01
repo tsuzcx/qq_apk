@@ -8,24 +8,24 @@ import com.tencent.mobileqq.util.DisplayUtil;
 class DraggableGridView$ScrollThread
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private DraggableGridView jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView;
-  boolean jdField_a_of_type_Boolean = true;
+  boolean a = true;
+  private DraggableGridView b;
+  private int c;
   
   public DraggableGridView$ScrollThread(DraggableGridView paramDraggableGridView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView = paramDraggableGridView;
+    this.b = paramDraggableGridView;
   }
   
   public void a(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Int) {
-      DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, 0);
+    if (paramInt != this.c) {
+      DraggableGridView.c(this.b, 0);
     }
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Boolean)
+    this.c = paramInt;
+    if (this.a)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
       ThreadManager.post(this, 8, null, true);
     }
   }
@@ -34,18 +34,18 @@ class DraggableGridView$ScrollThread
   {
     for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.a)
       {
         int i = 0;
-        int j = this.jdField_a_of_type_Int;
+        int j = this.c;
         if (j == 1) {
-          i = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
+          i = DisplayUtil.a(this.b.getContext(), 10.0F);
         } else if (j == 2) {
-          i = -DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
+          i = -DisplayUtil.a(this.b.getContext(), 10.0F);
         }
         Message localMessage = new Message();
         localMessage.arg1 = i;
-        DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).sendMessage(localMessage);
+        DraggableGridView.p(this.b).sendMessage(localMessage);
       }
       try
       {
@@ -58,7 +58,7 @@ class DraggableGridView$ScrollThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.ScrollThread
  * JD-Core Version:    0.7.0.1
  */

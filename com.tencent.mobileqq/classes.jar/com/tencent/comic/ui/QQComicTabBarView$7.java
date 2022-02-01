@@ -29,16 +29,16 @@ class QQComicTabBarView$7
     Object localObject2;
     if (((IQQComicRedTouchService)localObject1).isLebaItemOpen(1113))
     {
-      localArrayList.addAll(this.this$0.a.keySet());
+      localArrayList.addAll(this.this$0.e.keySet());
       bool = true;
     }
     else
     {
-      localObject2 = this.this$0.a.keySet().iterator();
+      localObject2 = this.this$0.e.keySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         String str = (String)((Iterator)localObject2).next();
-        localArrayList.add(this.this$0.b.get(str));
+        localArrayList.add(this.this$0.f.get(str));
       }
       bool = false;
     }
@@ -66,7 +66,7 @@ class QQComicTabBarView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTabBarView.7
  * JD-Core Version:    0.7.0.1
  */

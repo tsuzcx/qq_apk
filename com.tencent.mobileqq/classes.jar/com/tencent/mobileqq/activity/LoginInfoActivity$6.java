@@ -17,7 +17,7 @@ class LoginInfoActivity$6
   
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    QQToast.a(this.a, paramString2, 0).a();
+    QQToast.makeText(this.a, paramString2, 0).show();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cmd : ");
     localStringBuilder.append(paramString1);
@@ -30,7 +30,7 @@ class LoginInfoActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.6
  * JD-Core Version:    0.7.0.1
  */

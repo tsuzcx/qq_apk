@@ -29,31 +29,31 @@ class PATextItemBuilder$1
   
   public void onClick(View paramView)
   {
-    ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).reportPubAioItemClick(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
-    Object localObject1 = (PATextItemBuilder.Holder)AIOUtils.a(paramView);
-    if (!((IPublicAccountMessageUtil)QRoute.api(IPublicAccountMessageUtil.class)).jumpNative(((PATextItemBuilder.Holder)localObject1).jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext))
+    ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).reportPubAioItemClick(this.a.d.b, null);
+    Object localObject1 = (PATextItemBuilder.Holder)AIOUtils.b(paramView);
+    if (!((IPublicAccountMessageUtil)QRoute.api(IPublicAccountMessageUtil.class)).jumpNative(((PATextItemBuilder.Holder)localObject1).g, this.a.c))
     {
       Object localObject2;
-      if ((((PATextItemBuilder.Holder)localObject1).b != null) && (((PATextItemBuilder.Holder)localObject1).b.equals("open_local")))
+      if ((((PATextItemBuilder.Holder)localObject1).h != null) && (((PATextItemBuilder.Holder)localObject1).h.equals("open_local")))
       {
         localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("schemaurl", ((PATextItemBuilder.Holder)localObject1).c);
-        ((Bundle)localObject2).putString("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        OpenAppClient.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Bundle)localObject2);
+        ((Bundle)localObject2).putString("schemaurl", ((PATextItemBuilder.Holder)localObject1).i);
+        ((Bundle)localObject2).putString("uin", this.a.a.getCurrentAccountUin());
+        OpenAppClient.b((Activity)this.a.c, (Bundle)localObject2);
       }
       else
       {
         localObject2 = new Intent();
-        ((Intent)localObject2).putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((Intent)localObject2).putExtra("url", ((PATextItemBuilder.Holder)localObject1).c);
-        ((Intent)localObject2).putExtra("assignBackText", this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690706));
-        ((Intent)localObject2).putExtra("puin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject2).putExtra("source_name", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+        ((Intent)localObject2).putExtra("uin", this.a.a.getCurrentAccountUin());
+        ((Intent)localObject2).putExtra("url", ((PATextItemBuilder.Holder)localObject1).i);
+        ((Intent)localObject2).putExtra("assignBackText", this.a.c.getResources().getString(2131887625));
+        ((Intent)localObject2).putExtra("puin", this.a.d.b);
+        ((Intent)localObject2).putExtra("source_name", this.a.d.e);
         Object localObject3;
-        if ((((PATextItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForPubAccount))
+        if ((((PATextItemBuilder.Holder)localObject1).q instanceof MessageForPubAccount))
         {
           long l2 = -1L;
-          localObject3 = (MessageForPubAccount)((PATextItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+          localObject3 = (MessageForPubAccount)((PATextItemBuilder.Holder)localObject1).q;
           long l1 = l2;
           if (((MessageForPubAccount)localObject3).mPAMessage != null)
           {
@@ -67,27 +67,27 @@ class PATextItemBuilder$1
           }
         }
         ((Intent)localObject2).putExtra("fromAio", true);
-        ((Intent)localObject2).putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
-        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded((Intent)localObject2, ((PATextItemBuilder.Holder)localObject1).c);
+        ((Intent)localObject2).putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(this.a.d.b));
+        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded((Intent)localObject2, ((PATextItemBuilder.Holder)localObject1).i);
         if (((Intent)localObject2).getComponent() != null)
         {
-          this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+          this.a.c.startActivity((Intent)localObject2);
         }
         else
         {
-          localObject3 = new ActivityURIRequest(this.a.jdField_a_of_type_AndroidContentContext, "/pubaccount/browser");
+          localObject3 = new ActivityURIRequest(this.a.c, "/pubaccount/browser");
           ((ActivityURIRequest)localObject3).extra().putAll(((Intent)localObject2).getExtras());
           QRoute.startUri((URIRequest)localObject3, null);
         }
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, ((PATextItemBuilder.Holder)localObject1).c, "", "", "");
+        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, ((PATextItemBuilder.Holder)localObject1).i, "", "", "");
       }
     }
-    localObject1 = ((PATextItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    localObject1 = ((PATextItemBuilder.Holder)localObject1).q;
     if ((localObject1 instanceof MessageForPubAccount))
     {
       localObject1 = (MessageForPubAccount)localObject1;
       if ((((MessageForPubAccount)localObject1).mPAMessage != null) && (((MessageForPubAccount)localObject1).mPAMessage.mMsgId > 0L)) {
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", ((MessageForPubAccount)localObject1).frienduin, "mp_msg_sys_14", "msg_click", 0, 1, 0, Long.toString(((MessageForPubAccount)localObject1).mPAMessage.mMsgId), "", "", "");
+        ReportController.b(this.a.a, "P_CliOper", "Pb_account_lifeservice", ((MessageForPubAccount)localObject1).frienduin, "mp_msg_sys_14", "msg_click", 0, 1, 0, Long.toString(((MessageForPubAccount)localObject1).mPAMessage.mMsgId), "", "", "");
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -95,7 +95,7 @@ class PATextItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PATextItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

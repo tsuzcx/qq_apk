@@ -28,19 +28,6 @@ public class CommonUtils
     return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
   
-  public static Friends a(AppInterface paramAppInterface, String paramString)
-  {
-    if (!Friends.isValidUin(paramString)) {
-      return null;
-    }
-    return ((IFriendDataService)paramAppInterface.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString, true, true);
-  }
-  
-  public static TroopInfo a(AppInterface paramAppInterface, String paramString)
-  {
-    return ((ITroopInfoService)paramAppInterface.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramString);
-  }
-  
   public static String a(Context paramContext, DiscussionInfo paramDiscussionInfo)
   {
     if (paramDiscussionInfo != null) {
@@ -56,7 +43,7 @@ public class CommonUtils
     }
     else
     {
-      localObject = paramContext.getResources().getString(2131691760);
+      localObject = paramContext.getResources().getString(2131888722);
     }
     return localObject;
   }
@@ -68,7 +55,7 @@ public class CommonUtils
   
   public static String a(DiscussionMemberInfo paramDiscussionMemberInfo, AppInterface paramAppInterface)
   {
-    paramAppInterface = SearchUtils.a(paramAppInterface, paramDiscussionMemberInfo.memberUin);
+    paramAppInterface = SearchUtils.d(paramAppInterface, paramDiscussionMemberInfo.memberUin);
     if ((paramAppInterface != null) && (paramAppInterface.isFriend())) {
       localObject = paramAppInterface.getFriendNick();
     } else {
@@ -108,19 +95,32 @@ public class CommonUtils
     return ((IQidianManagerApi)paramAppInterface.getRuntimeService(IQidianManagerApi.class, "")).isQidianMaster(paramString);
   }
   
-  public static TroopInfo b(AppInterface paramAppInterface, String paramString)
+  public static Friends b(AppInterface paramAppInterface, String paramString)
   {
-    return ((ITroopInfoService)paramAppInterface.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
+    if (!Friends.isValidUin(paramString)) {
+      return null;
+    }
+    return ((IFriendDataService)paramAppInterface.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString, true, true);
   }
   
-  public static boolean b(AppInterface paramAppInterface, String paramString)
+  public static boolean c(AppInterface paramAppInterface, String paramString)
   {
     return ((ITroopRobotService)paramAppInterface.getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(paramString);
+  }
+  
+  public static TroopInfo d(AppInterface paramAppInterface, String paramString)
+  {
+    return ((ITroopInfoService)paramAppInterface.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(paramString);
+  }
+  
+  public static TroopInfo e(AppInterface paramAppInterface, String paramString)
+  {
+    return ((ITroopInfoService)paramAppInterface.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.util.CommonUtils
  * JD-Core Version:    0.7.0.1
  */

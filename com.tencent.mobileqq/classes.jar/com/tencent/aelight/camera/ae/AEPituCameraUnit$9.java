@@ -27,19 +27,19 @@ class AEPituCameraUnit$9
     try
     {
       AEQLog.b(this.this$0.a, "[AEPituCameraUnit] unit init BEGIN");
-      AEPituCameraUnit.b(this.this$0);
+      AEPituCameraUnit.d(this.this$0);
       AEQLog.b(this.this$0.a, "[AEPituCameraUnit] initAEKitReport-end");
       return;
     }
     finally
     {
-      AEPituCameraUnit.a(this.this$0).countDown();
+      AEPituCameraUnit.e(this.this$0).countDown();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.9
  * JD-Core Version:    0.7.0.1
  */

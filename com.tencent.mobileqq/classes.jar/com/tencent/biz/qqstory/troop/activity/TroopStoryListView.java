@@ -23,9 +23,9 @@ public class TroopStoryListView
   extends SegmentList
   implements View.OnTouchListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private IMyStoryListView jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Activity a;
+  private IMyStoryListView b;
+  private boolean c = false;
   
   public TroopStoryListView(Context paramContext)
   {
@@ -45,10 +45,10 @@ public class TroopStoryListView
   protected void a()
   {
     super.setActTAG("list_qqstory_troop");
-    FeedSegment localFeedSegment = new FeedSegment(getContext(), this.jdField_a_of_type_AndroidAppActivity, 11, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView, false);
+    FeedSegment localFeedSegment = new FeedSegment(getContext(), this.a, 11, this.b, false);
     a(localFeedSegment);
-    a(new PlaceholderSegment(getContext(), "FeedSegment", "暂时没有小视频\n你可以在这里查看群内的小视频", 2130846853, 2130846853));
-    localFeedSegment.a_(true);
+    a(new PlaceholderSegment(getContext(), "FeedSegment", "暂时没有小视频\n你可以在这里查看群内的小视频", 2130848405, 2130848405));
+    localFeedSegment.c(true);
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
@@ -57,16 +57,16 @@ public class TroopStoryListView
   
   public void a(Activity paramActivity, IMyStoryListView paramIMyStoryListView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView = paramIMyStoryListView;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramIMyStoryListView;
+    this.a = paramActivity;
     super.setOnTouchListener(this);
   }
   
   public void b(boolean paramBoolean, int paramInt)
   {
     super.b(paramBoolean, paramInt);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
+    if (this.c) {
+      this.c = false;
     }
     if ((getEmptyView() instanceof AbsEmptyView)) {
       ((AbsEmptyView)getEmptyView()).a(4);
@@ -75,13 +75,13 @@ public class TroopStoryListView
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a();
+    paramView = this.b.h();
     if (paramView.getVisibility() == 0)
     {
-      ((InputMethodManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
       paramView.clearFocus();
       paramView.setVisibility(8);
-      paramView = paramView.a.a;
+      paramView = paramView.p.g;
       int i = StoryReportor.a(paramView.getOwner());
       if (paramView.getOwner().isMe()) {
         paramView = "1";
@@ -97,7 +97,7 @@ public class TroopStoryListView
   {
     super.onViewCompleteVisableAndReleased(paramInt, paramView, paramListView);
     if (paramInt == 0) {
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
     }
     return true;
   }

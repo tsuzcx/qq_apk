@@ -12,8 +12,8 @@ final class VideoRecoveryReporter$3
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("close_reason", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "av_recovery_close2", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    localHashMap.put("close_reason", String.valueOf(this.a));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "av_recovery_close2", true, this.b, 0L, localHashMap, "");
   }
 }
 

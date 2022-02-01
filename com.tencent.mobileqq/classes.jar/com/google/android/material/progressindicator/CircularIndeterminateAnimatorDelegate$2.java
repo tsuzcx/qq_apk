@@ -13,12 +13,12 @@ class CircularIndeterminateAnimatorDelegate$2
   {
     super.onAnimationEnd(paramAnimator);
     this.a.b();
-    this.a.jdField_a_of_type_AndroidxVectordrawableGraphicsDrawableAnimatable2Compat$AnimationCallback.onAnimationEnd(this.a.jdField_a_of_type_ComGoogleAndroidMaterialProgressindicatorIndeterminateDrawable);
+    this.a.a.onAnimationEnd(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.CircularIndeterminateAnimatorDelegate.2
  * JD-Core Version:    0.7.0.1
  */

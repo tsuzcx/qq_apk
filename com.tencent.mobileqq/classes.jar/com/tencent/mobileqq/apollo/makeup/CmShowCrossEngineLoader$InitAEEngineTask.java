@@ -26,13 +26,13 @@ public final class CmShowCrossEngineLoader$InitAEEngineTask
     long l = System.currentTimeMillis();
     if (!((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).init())
     {
-      QLog.e(CmShowCrossEngineLoader.a.a(), 1, "[CrossEngine][initStepInitAEKitEngine] AEKitForQQ init error");
+      QLog.e(CmShowCrossEngineLoader.h.a(), 1, "[CrossEngine][initStepInitAEKitEngine] AEKitForQQ init error");
       a(-5034, "");
       return;
     }
     if (!FeatureManager.loadBasicFeatures())
     {
-      QLog.e(CmShowCrossEngineLoader.a.a(), 1, "[CrossEngine][initStepInitAEKitEngine] loadBasicFeatures error");
+      QLog.e(CmShowCrossEngineLoader.h.a(), 1, "[CrossEngine][initStepInitAEKitEngine] loadBasicFeatures error");
       a(-5034, "");
       ApolloQualityReportUtil.a("aekit_init", String.valueOf(System.currentTimeMillis() - l), "init AEKit fail");
       return;
@@ -45,19 +45,19 @@ public final class CmShowCrossEngineLoader$InitAEEngineTask
     }
     if (i == 0)
     {
-      QLog.e(CmShowCrossEngineLoader.a.a(), 1, "[CrossEngine][initStepInitAEKitEngine] load FACE_3D_LIB error");
+      QLog.e(CmShowCrossEngineLoader.h.a(), 1, "[CrossEngine][initStepInitAEKitEngine] load FACE_3D_LIB error");
       a(-5034, "");
       ApolloQualityReportUtil.a("aekit_init", String.valueOf(System.currentTimeMillis() - l), "init 3DFeature fail");
       return;
     }
-    QLog.i(CmShowCrossEngineLoader.a.a(), 1, "[CrossEngine][initStepInitAEKitEngine] success");
-    e();
+    QLog.i(CmShowCrossEngineLoader.h.a(), 1, "[CrossEngine][initStepInitAEKitEngine] success");
+    j();
     ApolloQualityReportUtil.a("aekit_init", String.valueOf(System.currentTimeMillis() - l), "success");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowCrossEngineLoader.InitAEEngineTask
  * JD-Core Version:    0.7.0.1
  */

@@ -6,12 +6,10 @@ import com.tencent.biz.ProtoUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import tencent.im.oidb.cmd0xefb.oidb_cmd0xefb.ReqBody;
 
@@ -27,14 +25,9 @@ public class RIJUserLevelTimeUtils
     return i;
   }
   
-  public static long a()
-  {
-    return a("rij_ugc_privilege_max_time_day", 60) * 60 * 1000;
-  }
-  
   public static void a(int paramInt)
   {
-    long l1 = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+    long l1 = RIJQQAppInterfaceUtil.c();
     long l2 = NetConnInfoCenter.getServerTimeMillis();
     QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
     paramInt /= 60000;
@@ -54,11 +47,16 @@ public class RIJUserLevelTimeUtils
     return bool;
   }
   
+  public static long b()
+  {
+    return a("rij_ugc_privilege_max_time_day", 60) * 60 * 1000;
+  }
+  
   public static void b(int paramInt)
   {
     long l1 = NetConnInfoCenter.getServerTimeMillis();
     Object localObject = Long.valueOf(0L);
-    long l2 = ((Long)RIJSPUtils.a("last_record_date", localObject)).longValue();
+    long l2 = ((Long)RIJSPUtils.b("last_record_date", localObject)).longValue();
     if (l1 - l2 >= 86400000L)
     {
       a(paramInt);
@@ -67,8 +65,8 @@ public class RIJUserLevelTimeUtils
     }
     else
     {
-      long l3 = ((Long)RIJSPUtils.a("has_record_time", localObject)).longValue();
-      if (l3 <= a())
+      long l3 = ((Long)RIJSPUtils.b("has_record_time", localObject)).longValue();
+      if (l3 <= b())
       {
         a(paramInt);
         RIJSPUtils.a("has_record_time", Long.valueOf(l3 + paramInt));
@@ -86,7 +84,7 @@ public class RIJUserLevelTimeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.RIJUserLevelTimeUtils
  * JD-Core Version:    0.7.0.1
  */

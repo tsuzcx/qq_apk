@@ -93,10 +93,10 @@ public class ReadInjoyAdExpandLiveCell
       paramAbsBaseArticleInfo.put("bottom_title", localObject2);
       localJSONObject1.put("id_bottom_title", paramAbsBaseArticleInfo);
       paramAbsBaseArticleInfo = new JSONObject();
-      paramAbsBaseArticleInfo.put("caption_text", ((AdvertisementInfo)localObject1).mAdvertisementExtInfo.i);
+      paramAbsBaseArticleInfo.put("caption_text", ((AdvertisementInfo)localObject1).mAdvertisementExtInfo.G);
       localJSONObject1.put("id_ad_left_bottom_wenzi_back", paramAbsBaseArticleInfo);
       paramAbsBaseArticleInfo = new JSONObject();
-      paramAbsBaseArticleInfo.put("caption_text", ((AdvertisementInfo)localObject1).mAdvertisementExtInfo.i);
+      paramAbsBaseArticleInfo.put("caption_text", ((AdvertisementInfo)localObject1).mAdvertisementExtInfo.G);
       localJSONObject1.put("id_ad_left_bottom_wenzi_back_small", paramAbsBaseArticleInfo);
       paramAbsBaseArticleInfo = new JSONObject();
       paramAbsBaseArticleInfo.put("fu_title", ((AdvertisementInfo)localObject1).mAdDesc);
@@ -105,11 +105,14 @@ public class ReadInjoyAdExpandLiveCell
       paramAbsBaseArticleInfo.put("fu_title", ((AdvertisementInfo)localObject1).mAdDesc);
       localJSONObject1.put("id_ad_fu_title_small_text", paramAbsBaseArticleInfo);
       paramAbsBaseArticleInfo = new JSONObject();
-      paramAbsBaseArticleInfo.put("small_img_url", ((AdvertisementInfo)localObject1).mAdvertisementExtInfo.j);
+      paramAbsBaseArticleInfo.put("small_img_url", ((AdvertisementInfo)localObject1).mAdvertisementExtInfo.H);
       localJSONObject1.put("id_ad_zhibo_small", paramAbsBaseArticleInfo);
       paramAbsBaseArticleInfo = new JSONObject();
       paramAbsBaseArticleInfo.put("large_video_icon", "pa_video_play.png");
       localJSONObject1.put("id_large_video_icon", paramAbsBaseArticleInfo);
+      paramAbsBaseArticleInfo = new JSONObject();
+      paramAbsBaseArticleInfo.put("ad_fu_social_txt", ((AdvertisementInfo)localObject1).mAdvertisementExtInfo.J);
+      localJSONObject1.put("id_ad_fu_social_txt", paramAbsBaseArticleInfo);
     }
     localJSONObject1.put("style_ID", "ReadInjoy_ad_live_expand_card_cell");
     return localJSONObject1;
@@ -117,7 +120,7 @@ public class ReadInjoyAdExpandLiveCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data.ReadInjoyAdExpandLiveCell
  * JD-Core Version:    0.7.0.1
  */

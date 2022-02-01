@@ -10,62 +10,62 @@ import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 public class WSFollowTabMuteGuideController
   extends AbsWsUIGroup
 {
-  private WSFollowFeedHolder jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+  private DiniFlyAnimationView g;
+  private WSFollowFeedHolder h;
   
   public WSFollowTabMuteGuideController(Context paramContext, WSFollowFeedHolder paramWSFollowFeedHolder)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder = paramWSFollowFeedHolder;
+    this.h = paramWSFollowFeedHolder;
   }
   
-  private void g()
+  private void m()
   {
-    f();
-    WSPlayerManager localWSPlayerManager = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a();
-    if ((localWSPlayerManager != null) && (localWSPlayerManager.i())) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a(localWSPlayerManager);
+    l();
+    WSPlayerManager localWSPlayerManager = this.h.d();
+    if ((localWSPlayerManager != null) && (localWSPlayerManager.o())) {
+      this.h.a(localWSPlayerManager);
     }
   }
   
-  private void h()
+  private void n()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new WSFollowTabMuteGuideController.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+    this.g.addAnimatorListener(new WSFollowTabMuteGuideController.2(this));
+    this.g.playAnimation();
   }
   
   protected void a() {}
   
-  protected int b()
-  {
-    return 2131560410;
-  }
-  
   protected void b() {}
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131369068));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsfollow/muteguide/muteguide.json");
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetsFolder("wsfollow/muteguide/images");
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new WSFollowTabMuteGuideController.1(this));
+    return 2131626455;
   }
   
-  public void f()
+  protected void j()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.a())
+    this.g = ((DiniFlyAnimationView)c(2131436031));
+    this.g.setAnimation("wsfollow/muteguide/muteguide.json");
+    this.g.setImageAssetsFolder("wsfollow/muteguide/images");
+    this.g.setOnClickListener(new WSFollowTabMuteGuideController.1(this));
+  }
+  
+  public void l()
+  {
+    if (this.h.f())
     {
-      h();
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder.d();
+      n();
+      this.h.e();
       WSLog.e("WSFollowTabMuteGuideController", "[WSFollowTabMuteGuideController.java][playAnimationForMuteGuide] doPlay!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.WSFollowTabMuteGuideController
  * JD-Core Version:    0.7.0.1
  */

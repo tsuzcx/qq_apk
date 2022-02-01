@@ -33,14 +33,14 @@ final class BottomSelectorLayout$onAttachedToWindow$1
     Intrinsics.checkParameterIsNotNull(paramPanelType2, "newPanel");
     if ((paramPanelType1 == PanelType.PHOTO) && (paramPanelType2 == PanelType.VIDEO))
     {
-      paramPanelType1 = BottomSelectorLayout.a(this.this$0).a(PanelType.PHOTO);
+      paramPanelType1 = BottomSelectorLayout.a(this.this$0).b(PanelType.PHOTO);
       if (paramPanelType1 != null)
       {
-        if (((MediaSelectorPanel)paramPanelType1).c().size() > 0)
+        if (((MediaSelectorPanel)paramPanelType1).getSelectedMedias().size() > 0)
         {
           paramPanelType1 = this.this$0.getContext();
           Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context");
-          paramPanelType1 = paramPanelType1.getResources().getString(R.string.H);
+          paramPanelType1 = paramPanelType1.getResources().getString(R.string.A);
           Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context.resources.getStr…_video_replace_photo_tip)");
           TopicSDKHelperKt.a(paramPanelType1, false, null, 6, null);
         }
@@ -51,14 +51,14 @@ final class BottomSelectorLayout$onAttachedToWindow$1
     }
     else if ((paramPanelType1 == PanelType.VIDEO) && (paramPanelType2 == PanelType.PHOTO))
     {
-      paramPanelType1 = BottomSelectorLayout.a(this.this$0).a(PanelType.VIDEO);
+      paramPanelType1 = BottomSelectorLayout.a(this.this$0).b(PanelType.VIDEO);
       if (paramPanelType1 != null)
       {
-        if (((MediaSelectorPanel)paramPanelType1).c().size() > 0)
+        if (((MediaSelectorPanel)paramPanelType1).getSelectedMedias().size() > 0)
         {
           paramPanelType1 = this.this$0.getContext();
           Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context");
-          paramPanelType1 = paramPanelType1.getResources().getString(R.string.C);
+          paramPanelType1 = paramPanelType1.getResources().getString(R.string.w);
           Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "context.resources.getStr…_photo_replace_video_tip)");
           TopicSDKHelperKt.a(paramPanelType1, false, null, 6, null);
         }
@@ -69,9 +69,9 @@ final class BottomSelectorLayout$onAttachedToWindow$1
     }
     paramPanelType1 = this.this$0;
     BottomSelectorLayout.a(paramPanelType1, paramPanelType1.getTranslationY(), BottomSelectorLayout.a(this.this$0, paramPanelType2), false, 4, null);
-    paramPanelType1 = (TextView)this.this$0.a(R.id.av);
+    paramPanelType1 = (TextView)this.this$0.a(R.id.Y);
     Intrinsics.checkExpressionValueIsNotNull(paramPanelType1, "recentMediaItem");
-    paramPanelType1.setText((CharSequence)BottomSelectorLayout.a(this.this$0).a());
+    paramPanelType1.setText((CharSequence)BottomSelectorLayout.a(this.this$0).g());
     paramPanelType1 = InputMethodUtils.a;
     paramPanelType2 = this.this$0.getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramPanelType2, "context");
@@ -82,7 +82,7 @@ final class BottomSelectorLayout$onAttachedToWindow$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.onAttachedToWindow.1
  * JD-Core Version:    0.7.0.1
  */

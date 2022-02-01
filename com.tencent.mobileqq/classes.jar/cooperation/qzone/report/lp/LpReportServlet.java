@@ -32,7 +32,7 @@ public class LpReportServlet
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin()));
     localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "5295");
+    localStatistic.setValue(WnsKeys.Build, "5770");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -134,7 +134,7 @@ public class LpReportServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportServlet
  * JD-Core Version:    0.7.0.1
  */

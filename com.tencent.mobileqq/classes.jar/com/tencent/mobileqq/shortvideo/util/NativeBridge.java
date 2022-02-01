@@ -50,7 +50,7 @@ public class NativeBridge
     {
       try
       {
-        int i = NativeSoLoader.a("TKGLRenderer");
+        int i = NativeSoLoader.b("TKGLRenderer");
         AssetManager localAssetManager = BaseApplicationImpl.getApplication().getAssets();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString);
@@ -132,7 +132,7 @@ public class NativeBridge
     //   10: invokespecial 45	java/lang/StringBuilder:<init>	()V
     //   13: astore 6
     //   15: aload 6
-    //   17: ldc 127
+    //   17: ldc 128
     //   19: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: pop
     //   23: aload 6
@@ -144,7 +144,7 @@ public class NativeBridge
     //   33: aload 6
     //   35: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   38: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   41: invokestatic 131	java/lang/System:currentTimeMillis	()J
+    //   41: invokestatic 132	java/lang/System:currentTimeMillis	()J
     //   44: lstore_3
     //   45: aconst_null
     //   46: astore 13
@@ -160,20 +160,20 @@ public class NativeBridge
     //   61: astore 12
     //   63: aload_1
     //   64: getstatic 54	java/io/File:separator	Ljava/lang/String;
-    //   67: invokevirtual 136	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   67: invokevirtual 137	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   70: istore 5
     //   72: iload 5
     //   74: ifne +362 -> 436
     //   77: invokestatic 38	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   80: invokevirtual 140	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   83: invokevirtual 143	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   80: invokevirtual 141	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   83: invokevirtual 144	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
     //   86: astore 6
     //   88: new 44	java/lang/StringBuilder
     //   91: dup
     //   92: invokespecial 45	java/lang/StringBuilder:<init>	()V
     //   95: astore 8
     //   97: aload 8
-    //   99: ldc 145
+    //   99: ldc 146
     //   101: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: pop
     //   105: aload 8
@@ -187,7 +187,7 @@ public class NativeBridge
     //   121: aload 6
     //   123: aload 8
     //   125: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokevirtual 151	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   128: invokevirtual 152	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   131: astore 6
     //   133: aload 6
     //   135: astore 7
@@ -202,7 +202,7 @@ public class NativeBridge
     //   156: aload 6
     //   158: astore 7
     //   160: aload 8
-    //   162: ldc 153
+    //   162: ldc 154
     //   164: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: pop
     //   168: aload 6
@@ -282,7 +282,7 @@ public class NativeBridge
     //   320: aload 6
     //   322: astore 8
     //   324: aload 11
-    //   326: ldc 155
+    //   326: ldc 156
     //   328: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   331: pop
     //   332: aload 6
@@ -312,10 +312,10 @@ public class NativeBridge
     //   381: astore 10
     //   383: aload 6
     //   385: astore 8
-    //   387: new 157	java/io/FileInputStream
+    //   387: new 158	java/io/FileInputStream
     //   390: dup
     //   391: aload 9
-    //   393: invokespecial 159	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   393: invokespecial 160	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   396: astore 9
     //   398: aload 9
     //   400: astore 6
@@ -328,16 +328,16 @@ public class NativeBridge
     //   415: aload 6
     //   417: astore 8
     //   419: aload 9
-    //   421: invokevirtual 160	java/io/FileNotFoundException:printStackTrace	()V
+    //   421: invokevirtual 161	java/io/FileNotFoundException:printStackTrace	()V
     //   424: goto +170 -> 594
     //   427: astore_1
     //   428: goto +344 -> 772
     //   431: astore 7
     //   433: goto +352 -> 785
-    //   436: new 157	java/io/FileInputStream
+    //   436: new 158	java/io/FileInputStream
     //   439: dup
     //   440: aload_1
-    //   441: invokespecial 159	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   441: invokespecial 160	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   444: astore 9
     //   446: aload 9
     //   448: astore 6
@@ -366,7 +366,7 @@ public class NativeBridge
     //   497: aload 9
     //   499: astore 8
     //   501: aload 6
-    //   503: ldc 155
+    //   503: ldc 156
     //   505: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   508: pop
     //   509: aload 9
@@ -409,7 +409,7 @@ public class NativeBridge
     //   585: aload 6
     //   587: astore 8
     //   589: aload 11
-    //   591: invokevirtual 160	java/io/FileNotFoundException:printStackTrace	()V
+    //   591: invokevirtual 161	java/io/FileNotFoundException:printStackTrace	()V
     //   594: aload 6
     //   596: astore 7
     //   598: aload 13
@@ -417,7 +417,7 @@ public class NativeBridge
     //   602: aload 6
     //   604: astore 8
     //   606: aload 6
-    //   608: invokestatic 166	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   608: invokestatic 167	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   611: astore 9
     //   613: goto +26 -> 639
     //   616: astore 9
@@ -428,7 +428,7 @@ public class NativeBridge
     //   626: aload 6
     //   628: astore 8
     //   630: aload 9
-    //   632: invokevirtual 167	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   632: invokevirtual 168	java/lang/OutOfMemoryError:printStackTrace	()V
     //   635: aload 12
     //   637: astore 9
     //   639: aload 9
@@ -445,9 +445,9 @@ public class NativeBridge
     //   662: astore 10
     //   664: aload 6
     //   666: astore 8
-    //   668: new 169	android/graphics/Matrix
+    //   668: new 170	android/graphics/Matrix
     //   671: dup
-    //   672: invokespecial 170	android/graphics/Matrix:<init>	()V
+    //   672: invokespecial 171	android/graphics/Matrix:<init>	()V
     //   675: astore 11
     //   677: aload 6
     //   679: astore 7
@@ -457,8 +457,8 @@ public class NativeBridge
     //   687: astore 8
     //   689: aload 11
     //   691: fconst_1
-    //   692: ldc 171
-    //   694: invokevirtual 175	android/graphics/Matrix:preScale	(FF)Z
+    //   692: ldc 172
+    //   694: invokevirtual 176	android/graphics/Matrix:preScale	(FF)Z
     //   697: pop
     //   698: aload 6
     //   700: astore 7
@@ -470,12 +470,12 @@ public class NativeBridge
     //   712: iconst_0
     //   713: iconst_0
     //   714: aload 9
-    //   716: invokevirtual 181	android/graphics/Bitmap:getWidth	()I
+    //   716: invokevirtual 182	android/graphics/Bitmap:getWidth	()I
     //   719: aload 9
-    //   721: invokevirtual 184	android/graphics/Bitmap:getHeight	()I
+    //   721: invokevirtual 185	android/graphics/Bitmap:getHeight	()I
     //   724: aload 11
     //   726: iconst_1
-    //   727: invokestatic 188	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   727: invokestatic 189	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   730: astore 9
     //   732: aload 9
     //   734: astore 7
@@ -484,13 +484,13 @@ public class NativeBridge
     //   740: aload 6
     //   742: ifnull +108 -> 850
     //   745: aload 6
-    //   747: invokevirtual 193	java/io/InputStream:close	()V
+    //   747: invokevirtual 194	java/io/InputStream:close	()V
     //   750: aload 7
     //   752: astore 8
     //   754: goto +96 -> 850
     //   757: astore 6
     //   759: aload 6
-    //   761: invokevirtual 194	java/io/IOException:printStackTrace	()V
+    //   761: invokevirtual 195	java/io/IOException:printStackTrace	()V
     //   764: aload 7
     //   766: astore 8
     //   768: goto +82 -> 850
@@ -520,15 +520,15 @@ public class NativeBridge
     //   817: aload 8
     //   819: astore 6
     //   821: aload 9
-    //   823: invokevirtual 195	java/lang/Exception:printStackTrace	()V
+    //   823: invokevirtual 196	java/lang/Exception:printStackTrace	()V
     //   826: aload 8
     //   828: ifnull +18 -> 846
     //   831: aload 8
-    //   833: invokevirtual 193	java/io/InputStream:close	()V
+    //   833: invokevirtual 194	java/io/InputStream:close	()V
     //   836: goto +10 -> 846
     //   839: astore 6
     //   841: aload 6
-    //   843: invokevirtual 194	java/io/IOException:printStackTrace	()V
+    //   843: invokevirtual 195	java/io/IOException:printStackTrace	()V
     //   846: aload 7
     //   848: astore 8
     //   850: invokestatic 79	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -538,7 +538,7 @@ public class NativeBridge
     //   860: invokespecial 45	java/lang/StringBuilder:<init>	()V
     //   863: astore 6
     //   865: aload 6
-    //   867: ldc 127
+    //   867: ldc 128
     //   869: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   872: pop
     //   873: aload 6
@@ -546,22 +546,22 @@ public class NativeBridge
     //   876: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   879: pop
     //   880: aload 6
-    //   882: ldc 197
+    //   882: ldc 198
     //   884: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   887: pop
     //   888: aload 6
     //   890: aload 8
-    //   892: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   892: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   895: pop
     //   896: aload 6
-    //   898: ldc 202
+    //   898: ldc 203
     //   900: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   903: pop
     //   904: aload 6
-    //   906: invokestatic 131	java/lang/System:currentTimeMillis	()J
+    //   906: invokestatic 132	java/lang/System:currentTimeMillis	()J
     //   909: lload_3
     //   910: lsub
-    //   911: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   911: invokevirtual 206	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   914: pop
     //   915: ldc 8
     //   917: iconst_2
@@ -575,11 +575,11 @@ public class NativeBridge
     //   933: aload 6
     //   935: ifnull +18 -> 953
     //   938: aload 6
-    //   940: invokevirtual 193	java/io/InputStream:close	()V
+    //   940: invokevirtual 194	java/io/InputStream:close	()V
     //   943: goto +10 -> 953
     //   946: astore 6
     //   948: aload 6
-    //   950: invokevirtual 194	java/io/IOException:printStackTrace	()V
+    //   950: invokevirtual 195	java/io/IOException:printStackTrace	()V
     //   953: goto +5 -> 958
     //   956: aload_1
     //   957: athrow
@@ -703,7 +703,7 @@ public class NativeBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.NativeBridge
  * JD-Core Version:    0.7.0.1
  */

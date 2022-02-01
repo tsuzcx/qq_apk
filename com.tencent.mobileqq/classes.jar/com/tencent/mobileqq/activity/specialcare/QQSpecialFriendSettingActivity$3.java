@@ -17,29 +17,29 @@ class QQSpecialFriendSettingActivity$3
     {
     default: 
     case 8195: 
-      QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, paramMessage.arg1, paramMessage.arg2, 0).show(this.a.getTitleBarHeight());
       return;
     case 8194: 
-      if ((QQSpecialFriendSettingActivity.a(this.a) != null) && (QQSpecialFriendSettingActivity.a(this.a).isShowing()))
+      if ((QQSpecialFriendSettingActivity.g(this.a) != null) && (QQSpecialFriendSettingActivity.g(this.a).isShowing()))
       {
-        QQSpecialFriendSettingActivity.a(this.a).dismiss();
+        QQSpecialFriendSettingActivity.g(this.a).dismiss();
         QQSpecialFriendSettingActivity.a(this.a, null);
         return;
       }
       break;
     case 8193: 
-      if (QQSpecialFriendSettingActivity.a(this.a) == null)
+      if (QQSpecialFriendSettingActivity.g(this.a) == null)
       {
         QQSpecialFriendSettingActivity localQQSpecialFriendSettingActivity = this.a;
         QQSpecialFriendSettingActivity.a(localQQSpecialFriendSettingActivity, new QQProgressDialog(localQQSpecialFriendSettingActivity, localQQSpecialFriendSettingActivity.getTitleBarHeight()));
         if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-          QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
+          QQSpecialFriendSettingActivity.g(this.a).a((String)paramMessage.obj);
         }
       }
-      if ((!this.a.isFinishing()) && (!QQSpecialFriendSettingActivity.a(this.a).isShowing())) {
+      if ((!this.a.isFinishing()) && (!QQSpecialFriendSettingActivity.g(this.a).isShowing())) {
         try
         {
-          QQSpecialFriendSettingActivity.a(this.a).show();
+          QQSpecialFriendSettingActivity.g(this.a).show();
           return;
         }
         catch (Exception paramMessage)
@@ -55,7 +55,7 @@ class QQSpecialFriendSettingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

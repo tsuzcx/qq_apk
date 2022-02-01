@@ -8,6 +8,8 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
+import android.net.Uri;
+import android.net.Uri.Builder;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -168,6 +170,19 @@ public class QQFileTempUtilsImpl
   private static final String TAG = "QQFileTempUtilsImpl";
   DataLineObserver mDataLineObserver = null;
   
+  private String fixDocUrl(String paramString)
+  {
+    Uri localUri = Uri.parse(paramString);
+    String str = localUri.getPath();
+    int i = str.indexOf("&");
+    if (i > -1)
+    {
+      paramString = str.substring(0, i);
+      paramString = new Uri.Builder().scheme(localUri.getScheme()).authority(localUri.getAuthority()).path(paramString).query(localUri.getQuery()).fragment(localUri.getFragment()).toString();
+    }
+    return paramString;
+  }
+  
   private FileManagerEntity getweiyunFileEntity(QQAppInterface paramQQAppInterface, WeiYunFileInfo paramWeiYunFileInfo)
   {
     FileManagerEntity localFileManagerEntity = paramQQAppInterface.getFileManagerRSCenter().a(paramWeiYunFileInfo.a);
@@ -192,7 +207,7 @@ public class QQFileTempUtilsImpl
     localCommonFileBrowserParams.a(localBundle);
     new FileBrowserCreator(paramContext, localCommonFileBrowserParams).a(7);
     paramQQAppInterface = new RecentMediaFileBrowseProcessor(paramQQAppInterface, paramString, paramFileManagerEntity).a();
-    if ((paramView != null) && ((paramView.getId() == 2131366781) || (paramView.getId() == 2131368461))) {
+    if ((paramView != null) && ((paramView.getId() == 2131433103) || (paramView.getId() == 2131435357))) {
       paramQQAppInterface.a(AnimationUtils.a(paramView));
     }
     ((IMediaBrowserService)QRoute.api(IMediaBrowserService.class)).browserFile(paramContext, paramQQAppInterface);
@@ -224,8 +239,8 @@ public class QQFileTempUtilsImpl
   
   public void changeKingCardWording(QQCustomDialog paramQQCustomDialog, Context paramContext, CharSequence paramCharSequence)
   {
-    if ((KingCardProcessor.c().b.a) && (!TMSManager.a().b())) {
-      paramQQCustomDialog.setMessageWithoutAutoLink(KingCardProcessor.c().b.a(paramContext, paramCharSequence));
+    if ((KingCardProcessor.e().b.a) && (!TMSManager.a().d())) {
+      paramQQCustomDialog.setMessageWithoutAutoLink(KingCardProcessor.e().b.a(paramContext, paramCharSequence));
     }
   }
   
@@ -247,8 +262,8 @@ public class QQFileTempUtilsImpl
   public boolean checkNotifyDeviceOnline(BaseQQAppInterface paramBaseQQAppInterface)
   {
     paramBaseQQAppInterface = (DataLineHandler)paramBaseQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    boolean bool1 = paramBaseQQAppInterface.a();
-    boolean bool2 = paramBaseQQAppInterface.b();
+    boolean bool1 = paramBaseQQAppInterface.i();
+    boolean bool2 = paramBaseQQAppInterface.j();
     return (bool1) && (bool2);
   }
   
@@ -266,7 +281,7 @@ public class QQFileTempUtilsImpl
   {
     if (((paramFileManagerEntity.status == 0) || (paramFileManagerEntity.status == 3)) && (((paramActivity instanceof ChatActivity)) || ((paramActivity instanceof SplashActivity))) && (!paramFileManagerEntity.bSend))
     {
-      ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().a(paramFileManagerEntity.nSessionId);
+      ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().b(paramFileManagerEntity.nSessionId);
       return true;
     }
     return false;
@@ -296,7 +311,7 @@ public class QQFileTempUtilsImpl
   
   public void clearAllData(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    ((QQAppInterface)paramBaseQQAppInterface).getFileManagerProxy().c();
+    ((QQAppInterface)paramBaseQQAppInterface).getFileManagerProxy().f();
   }
   
   public IFileAssistantExt createFileAssistantExt()
@@ -311,7 +326,7 @@ public class QQFileTempUtilsImpl
   
   public ForwardFileInfo createForwardFileInfo(FileManagerEntity paramFileManagerEntity)
   {
-    return ForwardFileOption.a(paramFileManagerEntity);
+    return ForwardFileOption.b(paramFileManagerEntity);
   }
   
   public void createShortcut(BaseQQAppInterface paramBaseQQAppInterface, Intent paramIntent, String paramString, Bitmap paramBitmap)
@@ -321,7 +336,7 @@ public class QQFileTempUtilsImpl
   
   public void createThumbWithOrig(FileManagerEntity paramFileManagerEntity)
   {
-    FilePicURLDrawlableHelper.a(paramFileManagerEntity);
+    FilePicURLDrawlableHelper.c(paramFileManagerEntity);
   }
   
   public Bitmap decodeFileWithBufferedStream(String paramString, BitmapFactory.Options paramOptions)
@@ -331,7 +346,7 @@ public class QQFileTempUtilsImpl
   
   public boolean deleteFile(String paramString)
   {
-    return FileUtil.c(paramString);
+    return FileUtil.e(paramString);
   }
   
   public void deleteObserver(FMObserver paramFMObserver)
@@ -367,19 +382,19 @@ public class QQFileTempUtilsImpl
     DataLineHandler localDataLineHandler = getDatalineHandler();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(paramFileManagerEntity.uniseq));
-    if (!localDataLineHandler.a(localArrayList)) {
-      FMToastUtil.a(2131692553);
+    if (!localDataLineHandler.b(localArrayList)) {
+      FMToastUtil.a(2131889576);
     }
   }
   
   public String downloadDiscVideoThumb(BaseQQAppInterface paramBaseQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().b(paramFileManagerEntity);
+    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().c(paramFileManagerEntity);
   }
   
   public String downloadOfflineVideoThumb(BaseQQAppInterface paramBaseQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().a(paramFileManagerEntity);
+    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().b(paramFileManagerEntity);
   }
   
   public int dp2px(float paramFloat, Resources paramResources)
@@ -426,17 +441,17 @@ public class QQFileTempUtilsImpl
   
   public void forwardFile(Activity paramActivity, FileManagerEntity paramFileManagerEntity)
   {
-    QFileUtils.b((QQAppInterface)getApp(), paramActivity, paramFileManagerEntity);
+    QFileUtils.c((QQAppInterface)getApp(), paramActivity, paramFileManagerEntity);
   }
   
   public boolean forwardFileManagerEntity(FileManagerEntity paramFileManagerEntity)
   {
-    return getDatalineHandler().a().a(paramFileManagerEntity);
+    return getDatalineHandler().n().a(paramFileManagerEntity);
   }
   
   public BaseQQAppInterface getApp()
   {
-    return QQFileManagerUtil.a();
+    return QQFileManagerUtil.f();
   }
   
   public Intent getChatActivityIntent(Context paramContext)
@@ -458,7 +473,7 @@ public class QQFileTempUtilsImpl
   
   public int getDefaultTarget(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((DataLineHandler)((QQAppInterface)paramBaseQQAppInterface).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).d();
+    return ((DataLineHandler)((QQAppInterface)paramBaseQQAppInterface).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).r();
   }
   
   public URLDrawable getDrawable(URL paramURL)
@@ -488,7 +503,7 @@ public class QQFileTempUtilsImpl
   
   public String getFileDirectoryOf(String paramString)
   {
-    return FileUtil.b(paramString);
+    return FileUtil.c(paramString);
   }
   
   public FileManagerEntity getFileEntityByUniseq(BaseQQAppInterface paramBaseQQAppInterface, long paramLong, String paramString, int paramInt)
@@ -498,7 +513,7 @@ public class QQFileTempUtilsImpl
   
   public int[] getFileMediaInfo(String paramString)
   {
-    int i = FileManagerUtil.a(paramString);
+    int i = FileManagerUtil.c(paramString);
     if (i == 0)
     {
       if (FileUtils.fileExistsAndNotEmpty(paramString))
@@ -524,7 +539,7 @@ public class QQFileTempUtilsImpl
   
   public long getFileSize(String paramString)
   {
-    return FileUtil.a(paramString);
+    return FileUtil.f(paramString);
   }
   
   public ArrayList<FileInfo> getFiles(String paramString, boolean paramBoolean, int paramInt)
@@ -534,7 +549,7 @@ public class QQFileTempUtilsImpl
   
   public int getForwardId()
   {
-    return ForwardOrderManager.a().a();
+    return ForwardOrderManager.a().b();
   }
   
   public int getForwardUtilsForwardTypeFILE()
@@ -549,12 +564,12 @@ public class QQFileTempUtilsImpl
     if (paramFileManagerEntity.peerType == 3000) {
       paramBaseQQAppInterface = paramFileManagerEntity.selfUin;
     }
-    return localFriendsManager.e(paramBaseQQAppInterface);
+    return localFriendsManager.m(paramBaseQQAppInterface);
   }
   
   public int getFromStatisticAssist(Context paramContext, String paramString1, String paramString2)
   {
-    return StatisticAssist.a(paramContext, paramString1, paramString2);
+    return StatisticAssist.b(paramContext, paramString1, paramString2);
   }
   
   public String getHistoryGroupByTime(long paramLong)
@@ -579,7 +594,7 @@ public class QQFileTempUtilsImpl
   
   public boolean getIsOnline(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((DataLineHandler)((QQAppInterface)paramBaseQQAppInterface).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).b(1);
+    return ((DataLineHandler)((QQAppInterface)paramBaseQQAppInterface).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).g(1);
   }
   
   public boolean getIsQRing()
@@ -604,7 +619,7 @@ public class QQFileTempUtilsImpl
   
   public List<MessageRecord> getMsgList(BaseQQAppInterface paramBaseQQAppInterface, String paramString, int paramInt)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getMessageFacade().a(paramString, paramInt);
+    return ((QQAppInterface)paramBaseQQAppInterface).getMessageFacade().h(paramString, paramInt);
   }
   
   public String getMultiMsgConstantEXTRAKEYOUTESTUIN()
@@ -629,7 +644,7 @@ public class QQFileTempUtilsImpl
   
   public String getNickByDiscussionManager(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    paramBaseQQAppInterface = ((DiscussionManager)((QQAppInterface)paramBaseQQAppInterface).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(String.valueOf(paramString));
+    paramBaseQQAppInterface = ((DiscussionManager)((QQAppInterface)paramBaseQQAppInterface).getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(String.valueOf(paramString));
     if ((paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.discussionName != null))
     {
       if ((paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.discussionName != null) && (paramBaseQQAppInterface.discussionName.length() > 14)) {
@@ -647,7 +662,7 @@ public class QQFileTempUtilsImpl
   
   public MessageRecord getPrimaryStructMsg(BaseQQAppInterface paramBaseQQAppInterface, MessageRecord paramMessageRecord)
   {
-    return MultiMsgUtil.a((QQAppInterface)paramBaseQQAppInterface, paramMessageRecord);
+    return MultiMsgUtil.b((QQAppInterface)paramBaseQQAppInterface, paramMessageRecord);
   }
   
   public long getProgress(BaseQQAppInterface paramBaseQQAppInterface, String paramString, long paramLong1, long paramLong2, int paramInt)
@@ -737,12 +752,12 @@ public class QQFileTempUtilsImpl
   
   public String getTDDocFileThumbUrl(String paramString)
   {
-    return TeamWorkUtils.a(paramString);
+    return TeamWorkUtils.b(paramString);
   }
   
   public TroopInfo getTroopInfo(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
   {
-    return ((TroopManager)((QQAppInterface)paramBaseQQAppInterface).getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(paramLong));
+    return ((TroopManager)((QQAppInterface)paramBaseQQAppInterface).getManager(QQManagerFactory.TROOP_MANAGER)).f(String.valueOf(paramLong));
   }
   
   public String getVipType()
@@ -756,10 +771,10 @@ public class QQFileTempUtilsImpl
     {
       Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
       String str1;
-      if (TextUtils.isEmpty(TencentDocConvertConfigProcessor.a().h())) {
+      if (TextUtils.isEmpty(TencentDocConvertConfigProcessor.a().q())) {
         str1 = "https://docs.qq.com/desktop/m/index.html?_from=1";
       } else {
-        str1 = TencentDocConvertConfigProcessor.a().h();
+        str1 = TencentDocConvertConfigProcessor.a().q();
       }
       String str2 = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getTencentDocSourceAdtagStrUrl(str1, "s_qq_myfile");
       localIntent.putExtra("tdsourcetag", "s_qq_myfile");
@@ -784,7 +799,7 @@ public class QQFileTempUtilsImpl
   
   public boolean handleVipForTroopFile(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener)
   {
-    QVipTroopFileConfig localQVipTroopFileConfig = QVipTroopFileProcessor.c();
+    QVipTroopFileConfig localQVipTroopFileConfig = QVipTroopFileProcessor.e();
     if (localQVipTroopFileConfig.a())
     {
       String str = VipUtils.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
@@ -832,17 +847,17 @@ public class QQFileTempUtilsImpl
   
   public boolean isFileExists(String paramString)
   {
-    return FileUtil.b(paramString);
+    return FileUtil.d(paramString);
   }
   
   public boolean isKingCard()
   {
-    return TMSManager.a().b();
+    return TMSManager.a().d();
   }
   
   public boolean isNeedCompressCut(FileManagerEntity paramFileManagerEntity)
   {
-    return FilePicURLDrawlableHelper.a(paramFileManagerEntity);
+    return FilePicURLDrawlableHelper.i(paramFileManagerEntity);
   }
   
   public boolean isRunIWeiyunSaveTipsHelper(BaseQQAppInterface paramBaseQQAppInterface)
@@ -897,8 +912,8 @@ public class QQFileTempUtilsImpl
   public void notifyUpdateRecentFileAssistant(BaseQQAppInterface paramBaseQQAppInterface)
   {
     RecentUserProxy localRecentUserProxy = ((QQAppInterface)paramBaseQQAppInterface).getRecentUserProxy();
-    RecentUser localRecentUser = localRecentUserProxy.a(QFileAssistantUtils.a(paramBaseQQAppInterface), 0);
-    localRecentUser.lastmsgtime = MessageCache.a();
+    RecentUser localRecentUser = localRecentUserProxy.b(QFileAssistantUtils.b(paramBaseQQAppInterface), 0);
+    localRecentUser.lastmsgtime = MessageCache.c();
     localRecentUserProxy.b(localRecentUser);
     paramBaseQQAppInterface = paramBaseQQAppInterface.getHandler(Conversation.class);
     if (paramBaseQQAppInterface != null) {
@@ -921,7 +936,7 @@ public class QQFileTempUtilsImpl
     }
     paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong);
     QQAppInterface localQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
-    paramBaseQQAppInterface = localQQAppInterface.getMessageFacade().a(paramInt).a(paramLong);
+    paramBaseQQAppInterface = localQQAppInterface.getMessageFacade().d(paramInt).a(paramLong);
     if (paramBaseQQAppInterface == null) {
       return;
     }
@@ -939,7 +954,7 @@ public class QQFileTempUtilsImpl
       }
     }
     if (localDataLineHandler.a(paramBaseQQAppInterface)) {
-      localDataLineHandler.a(paramBaseQQAppInterface);
+      localDataLineHandler.b(paramBaseQQAppInterface);
     }
   }
   
@@ -992,7 +1007,7 @@ public class QQFileTempUtilsImpl
       }
     }
     paramLinkedHashMap = new LocalMediaFileBrowseProcessor(localQQAppInterface, paramFileManagerEntity, paramFileInfo).a();
-    if ((paramView != null) && ((paramView.getId() == 2131366781) || (paramView.getId() == 2131368461))) {
+    if ((paramView != null) && ((paramView.getId() == 2131433103) || (paramView.getId() == 2131435357))) {
       paramLinkedHashMap.a(AnimationUtils.a(paramView));
     }
     ((IMediaBrowserService)QRoute.api(IMediaBrowserService.class)).browserFile(paramActivity, paramLinkedHashMap);
@@ -1022,15 +1037,16 @@ public class QQFileTempUtilsImpl
   
   public void openRencentFileBrowserOnItemClick(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, FileManagerEntity paramFileManagerEntity, boolean paramBoolean1, String paramString, View paramView, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (paramFileManagerEntity.nFileType == 13)
+    if ((paramFileManagerEntity.nFileType == 13) && (!TextUtils.isEmpty(paramFileManagerEntity.Uuid)))
     {
+      paramString = fixDocUrl(paramFileManagerEntity.Uuid);
       if (paramBoolean2)
       {
-        ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).clickWebTDDocAndUpdateTitle(paramFileManagerEntity.Uuid, paramContext, 3, paramFileManagerEntity, (QQAppInterface)paramBaseQQAppInterface);
+        ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).clickWebTDDocAndUpdateTitle(paramString, paramContext, 3, paramFileManagerEntity, (QQAppInterface)paramBaseQQAppInterface);
         return;
       }
       if (paramBoolean3) {
-        ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).clickWebTDDocAndUpdateTitle(paramFileManagerEntity.Uuid, paramContext, 20, paramFileManagerEntity, (QQAppInterface)paramBaseQQAppInterface);
+        ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).clickWebTDDocAndUpdateTitle(paramString, paramContext, 20, paramFileManagerEntity, (QQAppInterface)paramBaseQQAppInterface);
       }
       return;
     }
@@ -1038,12 +1054,12 @@ public class QQFileTempUtilsImpl
     {
       if ((paramFileManagerEntity.isSend()) && (paramFileManagerEntity.status != 1) && (paramFileManagerEntity.status != -1))
       {
-        FMToastUtil.a(HardCodeUtil.a(2131692368));
+        FMToastUtil.a(HardCodeUtil.a(2131889356));
         return;
       }
       if (!NetworkUtil.isNetSupport(paramBaseQQAppInterface.getApplicationContext()))
       {
-        FMToastUtil.a(2131692554);
+        FMToastUtil.a(2131889577);
         return;
       }
       if ((paramFileManagerEntity.peerType != 0) && (paramFileManagerEntity.peerType != 3000))
@@ -1081,7 +1097,7 @@ public class QQFileTempUtilsImpl
       return;
     }
     paramBaseQQAppInterface = new RecentMediaFileBrowseProcessor(paramBaseQQAppInterface, paramString, paramFileManagerEntity).a();
-    if ((paramView != null) && ((paramView.getId() == 2131366781) || (paramView.getId() == 2131368461))) {
+    if ((paramView != null) && ((paramView.getId() == 2131433103) || (paramView.getId() == 2131435357))) {
       paramBaseQQAppInterface.a(AnimationUtils.a(paramView));
     }
     ((IMediaBrowserService)QRoute.api(IMediaBrowserService.class)).browserFile(paramContext, paramBaseQQAppInterface);
@@ -1102,7 +1118,7 @@ public class QQFileTempUtilsImpl
   public void openWeiYunFileBrowser(Context paramContext, ArrayList<WeiYunFileInfo> paramArrayList, WeiYunFileInfo paramWeiYunFileInfo)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)getApp();
-    int i = FileManagerUtil.a(paramWeiYunFileInfo.c);
+    int i = FileManagerUtil.c(paramWeiYunFileInfo.c);
     if ((i != 0) && (i != 2))
     {
       paramArrayList = new FileModelAdapter(localQQAppInterface, getweiyunFileEntity(localQQAppInterface, paramWeiYunFileInfo));
@@ -1125,7 +1141,7 @@ public class QQFileTempUtilsImpl
     localDataLineMsgRecord.filename = paramString4;
     if (paramString5 != null)
     {
-      localDataLineMsgRecord.thumbPath = FileUtil.a(FileUtil.a(paramBaseQQAppInterface.getApplication()), QQFileManagerUtil.e(paramString5));
+      localDataLineMsgRecord.thumbPath = FileUtil.a(FileUtil.a(paramBaseQQAppInterface.getApplication()), QQFileManagerUtil.n(paramString5));
       FileUtils.copyFile(paramString5, localDataLineMsgRecord.thumbPath);
     }
     localDataLineMsgRecord.filesize = paramLong;
@@ -1149,13 +1165,13 @@ public class QQFileTempUtilsImpl
     localDataLineMsgRecord.isread = true;
     localDataLineMsgRecord.issuc = false;
     ((SVIPHandler)paramBaseQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
-    localDataLineMsgRecord.time = MessageCache.a();
+    localDataLineMsgRecord.time = MessageCache.c();
     localDataLineMsgRecord.progress = 0.2F;
     localDataLineMsgRecord.fileMsgStatus = 0L;
-    localDataLineMsgRecord.msgtype = DataLineHandler.a(0);
+    localDataLineMsgRecord.msgtype = DataLineHandler.b(0);
     localDataLineMsgRecord.bIsTransfering = true;
-    ((QQAppInterface)paramBaseQQAppInterface).getMessageFacade().a(DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid)).a(localDataLineMsgRecord, true);
-    paramString1.a(7, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf((byte)DataLineHandler.b(localDataLineMsgRecord.msgtype)), Boolean.valueOf(false), Boolean.valueOf(false), Long.valueOf(localDataLineMsgRecord.filesize) });
+    ((QQAppInterface)paramBaseQQAppInterface).getMessageFacade().d(DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid)).a(localDataLineMsgRecord, true);
+    paramString1.a(7, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf((byte)DataLineHandler.c(localDataLineMsgRecord.msgtype)), Boolean.valueOf(false), Boolean.valueOf(false), Long.valueOf(localDataLineMsgRecord.filesize) });
     return localDataLineMsgRecord.sessionid;
   }
   
@@ -1181,7 +1197,7 @@ public class QQFileTempUtilsImpl
   
   public List<FileManagerEntity> queryFileManagerEntityByNameAndSize(BaseQQAppInterface paramBaseQQAppInterface, String paramString, long paramLong)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerDataCenter().a(paramString, paramLong);
+    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerDataCenter().c(paramString, paramLong);
   }
   
   public FileManagerEntity queryFileManagerEntityBySessionId(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
@@ -1224,7 +1240,7 @@ public class QQFileTempUtilsImpl
   
   public void resumeByFileManagerEngine(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
   {
-    ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().a(paramLong);
+    ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().b(paramLong);
   }
   
   public FileManagerEntity saveOfflineFile2WeiYun(BaseQQAppInterface paramBaseQQAppInterface, FileManagerEntity paramFileManagerEntity, String paramString)
@@ -1234,7 +1250,7 @@ public class QQFileTempUtilsImpl
   
   public void sendFavFiles(ArrayList<FavFileInfo> paramArrayList, String paramString, int paramInt, Bundle paramBundle)
   {
-    ((QQAppInterface)getApp()).getFileManagerEngine().a().sendFavFiles(paramArrayList, paramString, paramInt, paramBundle);
+    ((QQAppInterface)getApp()).getFileManagerEngine().h().sendFavFiles(paramArrayList, paramString, paramInt, paramBundle);
   }
   
   public void sendFileToDataline(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, FileManagerEntity paramFileManagerEntity)
@@ -1249,7 +1265,7 @@ public class QQFileTempUtilsImpl
   
   public void sendFilesToDevice(String paramString, ArrayList<FileInfo> paramArrayList)
   {
-    ((DeviceMsgHandle)getApp().getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(paramString, paramArrayList);
+    ((DeviceMsgHandle)getApp().getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).b().b(paramString, paramArrayList);
   }
   
   public void sendFilesWithService(ArrayList<FileInfo> paramArrayList, String paramString, byte[] paramArrayOfByte, long paramLong)
@@ -1260,6 +1276,11 @@ public class QQFileTempUtilsImpl
   public FileManagerEntity sendLocalFile(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean)
   {
     return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().a(paramString1, paramString2, paramString3, paramInt, paramBoolean);
+  }
+  
+  public void sendLocalFileToGuild(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, String paramString2, Set<FileInfo> paramSet)
+  {
+    ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().a(paramString1, paramString2, paramSet);
   }
   
   public void sendLocalFileToTroop(Set<FileInfo> paramSet)
@@ -1310,12 +1331,12 @@ public class QQFileTempUtilsImpl
   
   public long sendTencentDocEntity(FileManagerEntity paramFileManagerEntity)
   {
-    return getDatalineHandler().a(paramFileManagerEntity);
+    return getDatalineHandler().c(paramFileManagerEntity);
   }
   
   public void sendWeiYunFile(FileManagerEntity paramFileManagerEntity)
   {
-    getDatalineHandler().a(paramFileManagerEntity);
+    getDatalineHandler().d(paramFileManagerEntity);
   }
   
   public void sendWeiYunFile(WeiYunFileInfo paramWeiYunFileInfo)
@@ -1325,7 +1346,7 @@ public class QQFileTempUtilsImpl
   
   public void setDefaultTarget(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
   {
-    ((DataLineHandler)((QQAppInterface)paramBaseQQAppInterface).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).e(paramInt);
+    ((DataLineHandler)((QQAppInterface)paramBaseQQAppInterface).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).m(paramInt);
   }
   
   public String setEntityUuidByEntityManager(BaseQQAppInterface paramBaseQQAppInterface, MessageForFile paramMessageForFile)
@@ -1449,7 +1470,7 @@ public class QQFileTempUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QQFileTempUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

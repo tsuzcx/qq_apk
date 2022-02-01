@@ -17,8 +17,8 @@ final class NewFriendNotifyPokeMsgHelper$3
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    int i = ViewUtils.b(this.jdField_a_of_type_Int);
-    int j = ViewUtils.b(this.b);
+    int i = ViewUtils.dpToPx(this.a);
+    int j = ViewUtils.dpToPx(this.b);
     if (paramLottieComposition == null)
     {
       QLog.w("NewFriendNotifyPokeMsgHelper", 1, "onCompositionLoaded, fail");
@@ -37,7 +37,7 @@ final class NewFriendNotifyPokeMsgHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.poke.NewFriendNotifyPokeMsgHelper.3
  * JD-Core Version:    0.7.0.1
  */

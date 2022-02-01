@@ -18,13 +18,13 @@ public class TroopBaseProxyActivity
   {
     try
     {
-      paramActivity = new ReportDialog(paramActivity, 2131756189);
+      paramActivity = new ReportDialog(paramActivity, 2131953338);
       try
       {
         paramActivity.setCancelable(true);
-        paramActivity.setContentView(2131559561);
+        paramActivity.setContentView(2131625585);
         paramActivity.show();
-        ((TextView)paramActivity.findViewById(2131372646)).setText(HardCodeUtil.a(2131715033));
+        ((TextView)paramActivity.findViewById(2131440191)).setText(HardCodeUtil.a(2131912523));
         return paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1) {}
@@ -63,7 +63,7 @@ public class TroopBaseProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopBaseProxyActivity
  * JD-Core Version:    0.7.0.1
  */

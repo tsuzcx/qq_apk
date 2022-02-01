@@ -105,7 +105,7 @@ public class QQWriteTogetherServiceImpl
   
   public void stop()
   {
-    this.mWriteTogetherWebSocketSender.c();
+    this.mWriteTogetherWebSocketSender.d();
   }
   
   public void updateRev(int paramInt)
@@ -115,7 +115,7 @@ public class QQWriteTogetherServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.api.impl.QQWriteTogetherServiceImpl
  * JD-Core Version:    0.7.0.1
  */

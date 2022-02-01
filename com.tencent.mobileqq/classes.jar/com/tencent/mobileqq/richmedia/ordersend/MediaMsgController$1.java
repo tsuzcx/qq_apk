@@ -14,10 +14,10 @@ class MediaMsgController$1
   {
     if (paramInt == 5006)
     {
-      BaseMessageObserver localBaseMessageObserver = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageObserver;
+      BaseMessageObserver localBaseMessageObserver = this.a;
       if (localBaseMessageObserver == null)
       {
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        paramObject = this.b;
         long l;
         if (paramObject != null) {
           l = paramObject.uniseq;
@@ -33,7 +33,7 @@ class MediaMsgController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.MediaMsgController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -41,8 +41,8 @@ import mqq.os.MqqHandler;
 public class JumpLoginResult
   extends BaseLoginResult
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private boolean jdField_a_of_type_Boolean = true;
+  private Intent a;
+  private boolean b = true;
   
   private QQAppInterface a(AppRuntime paramAppRuntime)
   {
@@ -54,18 +54,57 @@ public class JumpLoginResult
   
   private void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    if (this.a != null)
     {
       QLog.d("JumpLoginResult", 1, "intent has bean inited");
       return;
     }
-    this.jdField_a_of_type_AndroidContentIntent = paramActivity.getIntent();
+    this.a = paramActivity.getIntent();
   }
   
-  private boolean a(Activity paramActivity)
+  private boolean a(AppRuntime paramAppRuntime, Activity paramActivity)
   {
-    Bundle localBundle = this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("key_params");
-    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+    String str2 = this.a.getStringExtra("scheme_content");
+    String str1 = this.a.getStringExtra("pkg_name");
+    if ((str2 != null) && ((str2.startsWith("mqqopensdkapi://bizAgent/")) || (str2.startsWith("http://qm.qq.com/cgi-bin/")) || (str2.startsWith("mqq://shop/")) || (str2.startsWith("mqqapi://wallet/open")) || (str2.startsWith("mqqmdpass://wallet/modify_pass")) || (str2.startsWith("mqqapi://qqdataline/openqqdataline")) || (str2.startsWith("mqqapi://dating/")) || (str2.startsWith("mqqapi://qlink/openqlink")) || (str2.startsWith("mqqapi://qqc2b/callc2bphone"))))
+    {
+      paramAppRuntime = a(paramAppRuntime);
+      if (paramAppRuntime == null)
+      {
+        QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
+        return false;
+      }
+      paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, str2);
+      if (paramAppRuntime != null)
+      {
+        paramAppRuntime.d(str1);
+        paramAppRuntime.a();
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString, boolean paramBoolean)
+  {
+    this.b = false;
+    if (AuthParamUtil.a(this.a))
+    {
+      Intent localIntent = new Intent("action_login_sucess");
+      localIntent.putExtra("login_success_uin", paramString);
+      localIntent.putExtra("forbid_quick_login_after", paramBoolean);
+      paramActivity.sendBroadcast(localIntent);
+      ThreadManager.getUIHandler().postDelayed(new JumpLoginResult.1(this, paramString, paramActivity), 1000L);
+      ReportController.a(paramAppRuntime, "dc00898", "", "", "0x800BA1D", "0x800BA1D", 0, 0, "", "", "", "");
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean b(Activity paramActivity)
+  {
+    Bundle localBundle = this.a.getBundleExtra("key_params");
+    Intent localIntent = this.a;
     boolean bool1 = false;
     if (localIntent.getBooleanExtra("fromThirdAppByOpenSDK", false))
     {
@@ -88,11 +127,30 @@ public class JumpLoginResult
     return bool1;
   }
   
-  private boolean a(AppRuntime paramAppRuntime, Activity paramActivity)
+  private boolean b(AppRuntime paramAppRuntime, Activity paramActivity)
   {
-    String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("scheme_content");
-    String str1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name");
-    if ((str2 != null) && ((str2.startsWith("mqqopensdkapi://bizAgent/")) || (str2.startsWith("http://qm.qq.com/cgi-bin/")) || (str2.startsWith("mqq://shop/")) || (str2.startsWith("mqqapi://wallet/open")) || (str2.startsWith("mqqmdpass://wallet/modify_pass")) || (str2.startsWith("mqqapi://qqdataline/openqqdataline")) || (str2.startsWith("mqqapi://dating/")) || (str2.startsWith("mqqapi://qlink/openqlink")) || (str2.startsWith("mqqapi://qqc2b/callc2bphone"))))
+    Object localObject = this.a.getBundleExtra("key_params");
+    if (this.a.getBooleanExtra("fromGuildOpen", false))
+    {
+      paramAppRuntime = a(paramAppRuntime);
+      if (paramAppRuntime == null)
+      {
+        QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
+        return true;
+      }
+      str = ((Bundle)localObject).getString("extra_raw_url");
+      localObject = ((Bundle)localObject).getString("pkg_name");
+      paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, str);
+      paramAppRuntime.d((String)localObject);
+      paramAppRuntime.a();
+      return true;
+    }
+    String str = this.a.getStringExtra("scheme_content_original");
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = this.a.getStringExtra("scheme_content");
+    }
+    if ((localObject != null) && (((String)localObject).length() > 0) && (((String)localObject).startsWith("mqqguild://guild")))
     {
       paramAppRuntime = a(paramAppRuntime);
       if (paramAppRuntime == null)
@@ -100,65 +158,75 @@ public class JumpLoginResult
         QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
         return false;
       }
-      paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, str2);
-      if (paramAppRuntime != null)
-      {
-        paramAppRuntime.c(str1);
-        paramAppRuntime.a();
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (AuthParamUtil.a(this.jdField_a_of_type_AndroidContentIntent))
-    {
-      Intent localIntent = new Intent("action_login_sucess");
-      localIntent.putExtra("login_success_uin", paramString);
-      localIntent.putExtra("forbid_quick_login_after", paramBoolean);
-      paramActivity.sendBroadcast(localIntent);
-      ThreadManager.getUIHandler().postDelayed(new JumpLoginResult.1(this, paramString, paramActivity), 1000L);
-      ReportController.a(paramAppRuntime, "dc00898", "", "", "0x800BA1D", "0x800BA1D", 0, 0, "", "", "", "");
+      paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, (String)localObject);
+      paramAppRuntime.d(this.a.getStringExtra("pkg_name"));
+      paramAppRuntime.a();
       return true;
     }
     return false;
   }
   
-  private void b(Activity paramActivity)
+  private boolean b(AppRuntime paramAppRuntime, Activity paramActivity, String paramString)
   {
-    Intent localIntent = new Intent(paramActivity, SplashActivity.class);
-    Object localObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_action");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((BindGroupActivity.class.getSimpleName().equals(localObject)) || (((ITroopSettingApi)QRoute.api(ITroopSettingApi.class)).getSimpleNameForTroopSettingActivity().equals(localObject)) || ("key_sdk_add_friend".equals(localObject)) || (ForwardIMByThirdPartyHelper.class.getSimpleName().equals(localObject)) || (ForwardMiniAppThirdPartyHelper.class.getSimpleName().equals(localObject)))) {
-      localIntent.putExtras(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-    }
-    localIntent.addFlags(67108864);
-    localIntent.putExtra("k_from_login", true);
-    localObject = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-    if (localObject != null)
+    boolean bool = this.a.getBooleanExtra("key_gesture_from_authority", false);
+    this.b = true;
+    if (bool)
     {
-      if (((Bundle)localObject).containsKey("tab_index")) {
-        localIntent.putExtra("tab_index", this.jdField_a_of_type_AndroidContentIntent.getExtras().getInt("tab_index"));
-      }
-      if (((Bundle)localObject).containsKey("main_tab_id")) {
-        localIntent.putExtra("main_tab_id", ((Bundle)localObject).getInt("main_tab_id"));
-      }
-      if (((Bundle)localObject).containsKey("jump_action_from_h5")) {
-        localIntent.putExtra("jump_action_from_h5", this.jdField_a_of_type_AndroidContentIntent.getExtras().getString("jump_action_from_h5"));
-      }
-      if (((Bundle)localObject).containsKey("package_from_h5")) {
-        localIntent.putExtra("package_from_h5", this.jdField_a_of_type_AndroidContentIntent.getExtras().getString("package_from_h5"));
-      }
+      paramAppRuntime = new Intent();
+      paramAppRuntime.putExtra("uin", paramString);
+      paramActivity.setResult(-1, paramAppRuntime);
+      return true;
     }
-    paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130772119, 0);
+    if ((!JumpActivity.sIsStartFromWpa) && (!JumpActivity.sIsStartFromThirdParty))
+    {
+      paramString = this.a.getStringExtra("scheme_content");
+      if (this.a.getBooleanExtra("isActionSend", false))
+      {
+        paramActivity.setResult(-1);
+        return true;
+      }
+      String str = this.a.getStringExtra("pkg_name");
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        paramAppRuntime = a(paramAppRuntime);
+        if (paramAppRuntime == null)
+        {
+          QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
+          return false;
+        }
+        if (paramString.startsWith("mqqguild://guild")) {
+          return false;
+        }
+        paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, paramString);
+        if ((TextUtils.isEmpty(str)) && (!"web".equals(paramAppRuntime.b("src_type"))) && (!paramAppRuntime.m()) && (!paramAppRuntime.n()))
+        {
+          if (("h5".equalsIgnoreCase(paramAppRuntime.b("jump_from"))) && (paramAppRuntime.o()))
+          {
+            this.a.putExtra("package_from_h5", "pakage_from_h5");
+            this.a.putExtra("jump_action_from_h5", paramString);
+            e(paramActivity);
+            return true;
+          }
+        }
+        else
+        {
+          paramAppRuntime.d(str);
+          if ((paramAppRuntime.m()) || (((IMiniAppService)QRoute.api(IMiniAppService.class)).asyncShareMiniProgram(paramAppRuntime))) {
+            this.b = false;
+          }
+          paramAppRuntime.a();
+          return true;
+        }
+      }
+      return false;
+    }
+    paramActivity.setResult(-1);
+    return true;
   }
   
-  private boolean b(Activity paramActivity)
+  private boolean c(Activity paramActivity)
   {
-    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+    Intent localIntent = this.a;
     if ("webview".equals(localIntent.getStringExtra("action_name")))
     {
       localIntent = new Intent(localIntent);
@@ -169,10 +237,10 @@ public class JumpLoginResult
     return false;
   }
   
-  private boolean b(AppRuntime paramAppRuntime, Activity paramActivity)
+  private boolean c(AppRuntime paramAppRuntime, Activity paramActivity)
   {
-    String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("scheme_content");
-    String str1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name");
+    String str2 = this.a.getStringExtra("scheme_content");
+    String str1 = this.a.getStringExtra("pkg_name");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -191,77 +259,22 @@ public class JumpLoginResult
         return true;
       }
       paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, str2);
-      paramAppRuntime.c(str1);
+      paramAppRuntime.d(str1);
       paramAppRuntime.a();
       return true;
     }
     return false;
   }
   
-  private boolean b(AppRuntime paramAppRuntime, Activity paramActivity, String paramString)
+  private boolean d(Activity paramActivity)
   {
-    boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_gesture_from_authority", false);
-    this.jdField_a_of_type_Boolean = true;
-    if (bool)
-    {
-      paramAppRuntime = new Intent();
-      paramAppRuntime.putExtra("uin", paramString);
-      paramActivity.setResult(-1, paramAppRuntime);
-      return true;
-    }
-    if ((!JumpActivity.sIsStartFromWpa) && (!JumpActivity.sIsStartFromThirdParty))
-    {
-      paramString = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("scheme_content");
-      if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isActionSend", false))
-      {
-        paramActivity.setResult(-1);
-        return true;
-      }
-      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name");
-      if ((paramString != null) && (paramString.length() > 0))
-      {
-        paramAppRuntime = a(paramAppRuntime);
-        if (paramAppRuntime == null)
-        {
-          QLog.e("JumpLoginResult", 1, "handleScheduleJumpAction, app is null");
-          return false;
-        }
-        paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, paramString);
-        if ((TextUtils.isEmpty(str)) && (!"web".equals(paramAppRuntime.b("src_type"))) && (!paramAppRuntime.g()) && (!paramAppRuntime.h()))
-        {
-          if (("h5".equalsIgnoreCase(paramAppRuntime.b("jump_from"))) && (paramAppRuntime.i()))
-          {
-            this.jdField_a_of_type_AndroidContentIntent.putExtra("package_from_h5", "pakage_from_h5");
-            this.jdField_a_of_type_AndroidContentIntent.putExtra("jump_action_from_h5", paramString);
-            b(paramActivity);
-            return true;
-          }
-        }
-        else
-        {
-          paramAppRuntime.c(str);
-          if ((paramAppRuntime.g()) || (((IMiniAppService)QRoute.api(IMiniAppService.class)).asyncShareMiniProgram(paramAppRuntime))) {
-            this.jdField_a_of_type_Boolean = false;
-          }
-          paramAppRuntime.a();
-          return true;
-        }
-      }
-      return false;
-    }
-    paramActivity.setResult(-1);
-    return true;
-  }
-  
-  private boolean c(Activity paramActivity)
-  {
-    boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_req_by_contact_sync", false);
+    boolean bool = this.a.getBooleanExtra("key_req_by_contact_sync", false);
     if (bool)
     {
       Intent localIntent = new Intent(paramActivity, ContactSyncJumpActivity.class);
       localIntent.putExtra("key_req_from_switch_account", true);
       localIntent.putExtra("key_change", true);
-      localIntent.putExtra("key_orginal_intent", this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("key_orginal_intent"));
+      localIntent.putExtra("key_orginal_intent", this.a.getParcelableExtra("key_orginal_intent"));
       paramActivity.startActivity(localIntent);
       paramActivity.moveTaskToBack(true);
       paramActivity.finish();
@@ -269,10 +282,10 @@ public class JumpLoginResult
     return bool;
   }
   
-  private boolean c(AppRuntime paramAppRuntime, Activity paramActivity)
+  private boolean d(AppRuntime paramAppRuntime, Activity paramActivity)
   {
-    String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("scheme_content");
-    String str1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("pkg_name");
+    String str2 = this.a.getStringExtra("scheme_content");
+    String str1 = this.a.getStringExtra("pkg_name");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -291,20 +304,49 @@ public class JumpLoginResult
         return true;
       }
       paramAppRuntime = JumpParser.a(paramAppRuntime, paramActivity, str2);
-      paramAppRuntime.c(str1);
+      paramAppRuntime.d(str1);
       paramAppRuntime.a();
       return true;
     }
     return false;
   }
   
-  private boolean d(AppRuntime paramAppRuntime, Activity paramActivity)
+  private void e(Activity paramActivity)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentIntent;
+    Intent localIntent = new Intent(paramActivity, SplashActivity.class);
+    Object localObject = this.a.getStringExtra("key_action");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && ((BindGroupActivity.class.getSimpleName().equals(localObject)) || (((ITroopSettingApi)QRoute.api(ITroopSettingApi.class)).getSimpleNameForTroopSettingActivity().equals(localObject)) || ("key_sdk_add_friend".equals(localObject)) || (ForwardIMByThirdPartyHelper.class.getSimpleName().equals(localObject)) || (ForwardMiniAppThirdPartyHelper.class.getSimpleName().equals(localObject)))) {
+      localIntent.putExtras(this.a.getExtras());
+    }
+    localIntent.addFlags(67108864);
+    localIntent.putExtra("k_from_login", true);
+    localObject = this.a.getExtras();
+    if (localObject != null)
+    {
+      if (((Bundle)localObject).containsKey("tab_index")) {
+        localIntent.putExtra("tab_index", this.a.getExtras().getInt("tab_index"));
+      }
+      if (((Bundle)localObject).containsKey("main_tab_id")) {
+        localIntent.putExtra("main_tab_id", ((Bundle)localObject).getInt("main_tab_id"));
+      }
+      if (((Bundle)localObject).containsKey("jump_action_from_h5")) {
+        localIntent.putExtra("jump_action_from_h5", this.a.getExtras().getString("jump_action_from_h5"));
+      }
+      if (((Bundle)localObject).containsKey("package_from_h5")) {
+        localIntent.putExtra("package_from_h5", this.a.getExtras().getString("package_from_h5"));
+      }
+    }
+    paramActivity.startActivity(localIntent);
+    paramActivity.overridePendingTransition(2130772165, 0);
+  }
+  
+  private boolean e(AppRuntime paramAppRuntime, Activity paramActivity)
+  {
+    Object localObject1 = this.a;
     boolean bool2 = false;
     boolean bool3 = ((Intent)localObject1).getBooleanExtra("is_from_king_moment", false);
-    localObject1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("king_moment_cover_url");
-    long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("arg_wang_zhe_app_id", 0L);
+    localObject1 = this.a.getStringExtra("king_moment_cover_url");
+    long l = this.a.getLongExtra("arg_wang_zhe_app_id", 0L);
     Object localObject2;
     if (QLog.isColorLevel())
     {
@@ -342,11 +384,11 @@ public class JumpLoginResult
     return bool1;
   }
   
-  private boolean e(AppRuntime paramAppRuntime, Activity paramActivity)
+  private boolean f(AppRuntime paramAppRuntime, Activity paramActivity)
   {
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("UploadPhoto.key_from_album_shortcut", false))
+    if (this.a.getBooleanExtra("UploadPhoto.key_from_album_shortcut", false))
     {
-      Bundle localBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
+      Bundle localBundle = this.a.getExtras();
       QZoneHelper.goQZoneAlbumPhotoList(paramActivity, localBundle.getString("UploadPhoto.key_album_id"), localBundle.getLong("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(paramAppRuntime.getLongAccountUin()));
       paramActivity.finish();
       return true;
@@ -369,7 +411,7 @@ public class JumpLoginResult
   public void a(QBaseActivity paramQBaseActivity, String paramString)
   {
     a(paramQBaseActivity);
-    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+    Intent localIntent = this.a;
     if (localIntent == null)
     {
       QLog.e("JumpLoginResult", 1, "handleIMBlockLogin intent is null");
@@ -388,7 +430,7 @@ public class JumpLoginResult
     }
     QLog.d("JumpLoginResult", 1, "handleSdkLoginAuthority");
     a(paramQBaseActivity.getAppRuntime(), paramQBaseActivity, paramString, true);
-    SharedPrefs.b(paramString);
+    SharedPrefs.c(paramString);
   }
   
   public boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString)
@@ -401,32 +443,32 @@ public class JumpLoginResult
         if (localIntent == null)
         {
           QLog.e("JumpLoginResult", 1, "onLoginSuccess, but intent is null");
-          return this.jdField_a_of_type_Boolean;
+          return this.b;
         }
-        this.jdField_a_of_type_AndroidContentIntent = localIntent;
-        boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("IS_ADD_ACCOUNT", false);
+        this.a = localIntent;
+        boolean bool = this.a.getBooleanExtra("IS_ADD_ACCOUNT", false);
         OpenProxy.a().a(paramString);
         if ((localIntent.getFlags() & 0x100000) == 0) {
-          break label554;
+          break label564;
         }
         i = 1;
-        if ((!a(paramAppRuntime, paramActivity)) && ((i != 0) || (!a(paramAppRuntime, paramActivity, paramString, false))) && ((i != 0) || (!b(paramAppRuntime, paramActivity, paramString))) && (!c(paramActivity)) && (!b(paramActivity)) && (!b(paramAppRuntime, paramActivity)) && (!a(paramActivity))) {
-          if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("shortcut_jump_key") != null)
+        if ((!a(paramAppRuntime, paramActivity)) && (!b(paramAppRuntime, paramActivity)) && ((i != 0) || (!a(paramAppRuntime, paramActivity, paramString, false))) && ((i != 0) || (!b(paramAppRuntime, paramActivity, paramString))) && (!d(paramActivity)) && (!c(paramActivity)) && (!c(paramAppRuntime, paramActivity)) && (!b(paramActivity))) {
+          if (this.a.getParcelableExtra("shortcut_jump_key") != null)
           {
-            paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("shortcut_jump_key");
+            paramAppRuntime = (Intent)this.a.getParcelableExtra("shortcut_jump_key");
             paramAppRuntime.setClass(paramActivity, ShortcutRouterActivity.class);
             paramActivity.startActivity(paramAppRuntime);
           }
-          else if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("jump_shortcut_dataline", false))
+          else if (this.a.getBooleanExtra("jump_shortcut_dataline", false))
           {
             paramAppRuntime = new Intent();
-            paramAppRuntime.putExtras(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+            paramAppRuntime.putExtras(this.a.getExtras());
             paramAppRuntime.setClass(paramActivity, qfileJumpActivity.class);
             paramActivity.startActivity(paramAppRuntime);
           }
           else
           {
-            paramString = this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("QLINK_SHORTCUT_JUMP_KEY");
+            paramString = this.a.getParcelableExtra("QLINK_SHORTCUT_JUMP_KEY");
             if (paramString != null)
             {
               paramAppRuntime = new Intent(paramActivity, JumpActivity.class);
@@ -434,31 +476,31 @@ public class JumpLoginResult
               paramAppRuntime.putExtra("IS_LOGIN_SUC_CALL", true);
               paramActivity.startActivity(paramAppRuntime);
             }
-            else if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("QFILE_SHORTCUT_JUMP_KEY") != null)
+            else if (this.a.getParcelableExtra("QFILE_SHORTCUT_JUMP_KEY") != null)
             {
               paramAppRuntime = new Intent(paramActivity, JumpActivity.class);
               paramAppRuntime.putExtra("_goto_qfile_when_login_suc_", true);
               paramAppRuntime.putExtra("IS_LOGIN_SUC_CALL", true);
               paramActivity.startActivity(paramAppRuntime);
             }
-            else if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("qlink_share_intent_data") != null)
+            else if (this.a.getParcelableExtra("qlink_share_intent_data") != null)
             {
-              paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("qlink_share_intent_data");
+              paramAppRuntime = (Intent)this.a.getParcelableExtra("qlink_share_intent_data");
               paramAppRuntime.putExtra("qlink_share_login_suc_flag", true);
               paramActivity.startActivity(paramAppRuntime);
             }
-            else if (this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("MINI_SHORTCUT_JUMP_KEY") != null)
+            else if (this.a.getParcelableExtra("MINI_SHORTCUT_JUMP_KEY") != null)
             {
-              paramAppRuntime = (Intent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("MINI_SHORTCUT_JUMP_KEY");
+              paramAppRuntime = (Intent)this.a.getParcelableExtra("MINI_SHORTCUT_JUMP_KEY");
               paramString = new Intent(paramActivity, QQMiniManager.getAppBrandUIClass());
               paramString.putExtras(paramAppRuntime);
               paramActivity.startActivity(paramString);
             }
-            else if ((!c(paramAppRuntime, paramActivity)) && (!d(paramAppRuntime, paramActivity)) && (!e(paramAppRuntime, paramActivity)))
+            else if ((!d(paramAppRuntime, paramActivity)) && (!e(paramAppRuntime, paramActivity)) && (!f(paramAppRuntime, paramActivity)))
             {
               paramActivity.setResult(-1);
               if (!bool) {
-                b(paramActivity);
+                e(paramActivity);
               }
             }
           }
@@ -471,15 +513,15 @@ public class JumpLoginResult
         paramActivity.append(paramAppRuntime.getMessage());
         QLog.e("JumpLoginResult", 1, paramActivity.toString());
       }
-      return this.jdField_a_of_type_Boolean;
-      label554:
+      return this.b;
+      label564:
       int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.JumpLoginResult
  * JD-Core Version:    0.7.0.1
  */

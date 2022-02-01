@@ -13,52 +13,49 @@ public class BiuNicknameSpan
   extends ForegroundColorSpan
   implements DeleteAsAWholeSpan, ISpan
 {
-  private int a;
-  public long a;
   public String a;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString;
+  public long b;
+  private String c;
+  private int d = -1;
+  private int e = 0;
   
   public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence)
   {
     super(-15504151);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString;
+    this.b = paramLong;
     if (paramCharSequence != null) {
       paramString = paramCharSequence.toString();
     } else {
       paramString = "";
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence, int paramInt)
   {
     super(paramInt);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString;
+    this.b = paramLong;
     if (paramCharSequence != null) {
       paramString = paramCharSequence.toString();
     } else {
       paramString = "";
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public BiuNicknameSpan(String paramString, long paramLong, CharSequence paramCharSequence, Context paramContext, Paint paramPaint, int paramInt)
   {
     super(-15504151);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString;
+    this.b = paramLong;
     if (paramCharSequence != null) {
       paramString = paramCharSequence.toString();
     } else {
       paramString = "";
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public static String a(CharSequence paramCharSequence)
@@ -96,16 +93,16 @@ public class BiuNicknameSpan
   }
   
   @NotNull
-  public String a()
+  public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.c;
   }
   
-  public void a() {}
+  public void cO_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.BiuNicknameSpan
  * JD-Core Version:    0.7.0.1
  */

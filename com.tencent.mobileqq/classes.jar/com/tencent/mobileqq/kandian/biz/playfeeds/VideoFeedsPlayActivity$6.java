@@ -9,23 +9,23 @@ class VideoFeedsPlayActivity$6
   
   public void flingLToR()
   {
-    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
+    if ((VideoFeedsPlayActivity.h(this.a) != null) && (VideoFeedsPlayActivity.h(this.a).g())) {
       return;
     }
     VideoFeedsPlayActivity.a(this.a, true);
-    this.a.e();
+    this.a.d();
   }
   
   public void flingRToL()
   {
-    if (VideoFeedsPlayActivity.a(this.a) != null) {
-      VideoFeedsPlayActivity.a(this.a).b();
+    if (VideoFeedsPlayActivity.h(this.a) != null) {
+      VideoFeedsPlayActivity.h(this.a).h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class TroopAioKeywordTipBar$1
   {
     if (TroopAioKeywordTipBar.a(this.a))
     {
-      if (TroopAioKeywordTipBar.a(this.a) == null) {
+      if (TroopAioKeywordTipBar.b(this.a) == null) {
         return;
       }
       if (paramList == null)
@@ -35,7 +35,7 @@ class TroopAioKeywordTipBar$1
         if (!paramList.hasNext()) {
           break;
         }
-      } while (((MessageRecord)paramList.next()).uniseq != TroopAioKeywordTipBar.a(this.a).uniseq);
+      } while (((MessageRecord)paramList.next()).uniseq != TroopAioKeywordTipBar.b(this.a).uniseq);
       int i = 1;
       if (i != 0) {
         ThreadManager.getUIHandler().post(new TroopAioKeywordTipBar.1.1(this));
@@ -45,7 +45,7 @@ class TroopAioKeywordTipBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.1
  * JD-Core Version:    0.7.0.1
  */

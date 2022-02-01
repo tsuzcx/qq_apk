@@ -13,14 +13,14 @@ final class NowQQLiveRecommendAnchorHandler$2
   
   public void onClick(View paramView)
   {
-    NowQQLiveRecommendAnchorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqNowRecommendNoDataViewHolder);
+    NowQQLiveRecommendAnchorHandler.a(this.a, this.b);
     SimpleEventBus.getInstance().dispatchEvent(new NoRecommendDataEvent());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.NowQQLiveRecommendAnchorHandler.2
  * JD-Core Version:    0.7.0.1
  */

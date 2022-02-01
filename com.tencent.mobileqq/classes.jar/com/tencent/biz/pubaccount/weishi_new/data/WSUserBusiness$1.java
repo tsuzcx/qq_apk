@@ -13,15 +13,15 @@ class WSUserBusiness$1
   public void a(WeishiTask paramWeishiTask)
   {
     StringBuilder localStringBuilder;
-    if (!(paramWeishiTask.a instanceof stBlockRecommPersonRsp))
+    if (!(paramWeishiTask.m instanceof stBlockRecommPersonRsp))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[actionBlockRecommendPerson] data error: ");
-      localStringBuilder.append(paramWeishiTask.a);
+      localStringBuilder.append(paramWeishiTask.m);
       WSLog.b("WSUserBusiness", localStringBuilder.toString());
       return;
     }
-    paramWeishiTask = (stBlockRecommPersonRsp)paramWeishiTask.a;
+    paramWeishiTask = (stBlockRecommPersonRsp)paramWeishiTask.m;
     if (paramWeishiTask != null)
     {
       localStringBuilder = new StringBuilder();
@@ -33,7 +33,7 @@ class WSUserBusiness$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness.1
  * JD-Core Version:    0.7.0.1
  */

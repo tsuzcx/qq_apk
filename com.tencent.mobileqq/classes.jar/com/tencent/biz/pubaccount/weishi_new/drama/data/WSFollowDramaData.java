@@ -4,27 +4,27 @@ import java.util.List;
 
 public class WSFollowDramaData
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<WSFollowDramaItemData> jdField_a_of_type_JavaUtilList;
+  private String a;
+  private List<WSFollowDramaItemData> b;
   
   public List<WSFollowDramaItemData> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(List<WSFollowDramaItemData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.data.WSFollowDramaData
  * JD-Core Version:    0.7.0.1
  */

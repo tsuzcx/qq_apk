@@ -2,18 +2,18 @@ package com.tencent.mobileqq.qwallet;
 
 public class IQWalletPayApi$PCPayData
 {
-  public int a;
   public long a;
-  public String a;
   public int b;
-  public long b;
-  public String b;
-  public int c = 0;
-  public long c;
+  public int c;
+  public String d;
+  public String e;
+  public long f;
+  public long g;
+  public int h = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.IQWalletPayApi.PCPayData
  * JD-Core Version:    0.7.0.1
  */

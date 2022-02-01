@@ -31,7 +31,7 @@ class GameActivityCenterCtrl$2
     if (paramBoolean)
     {
       GameActivityCenterCtrl.a(this.a, paramGameActivityCenterEntry);
-      AVGameHandler.a().b().post(new GameActivityCenterCtrl.RefreshEntryTask());
+      AVGameHandler.a().c().post(new GameActivityCenterCtrl.RefreshEntryTask());
     }
   }
   
@@ -54,10 +54,10 @@ class GameActivityCenterCtrl$2
       QLog.i("GameACCtrl", 2, localStringBuilder.toString());
     }
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString3))) {
-      AVGameHandler.a().b().post(new GameActivityCenterCtrl.ShowAwardResult(paramString3));
+      AVGameHandler.a().c().post(new GameActivityCenterCtrl.ShowAwardResult(paramString3));
     }
     if (paramBoolean) {
-      GameActivityCenterCtrl.a(this.a, true);
+      GameActivityCenterCtrl.b(this.a, true);
     }
   }
 }

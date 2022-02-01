@@ -8,23 +8,19 @@ import java.util.UUID;
 
 class PresendPicMgr$PresendReq
 {
-  public int a;
-  public CompressInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public String a = a();
+  public boolean b = false;
+  public boolean c = false;
+  public CompressInfo d;
+  public int e = -1;
+  public int f;
   
   public PresendPicMgr$PresendReq(PresendPicMgr paramPresendPicMgr, CompressInfo paramCompressInfo, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = a();
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = paramCompressInfo;
-    this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.d = paramCompressInfo;
+    this.d.a = this.a;
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
   
   public String a()
@@ -35,48 +31,6 @@ class PresendPicMgr$PresendReq
     return localStringBuilder.toString();
   }
   
-  public void a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("call start,current PresendReq is ");
-    localStringBuilder.append(this);
-    Logger.a("PresendPicMgr", "PresendReq.compressAndUploadPic", localStringBuilder.toString());
-    long l = System.nanoTime();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("PresendStatus: srcPah:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c);
-      localStringBuilder.append(",destPath:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString);
-      localStringBuilder.append(",uuid:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ,canceled:true, peakCompress:false, peakUpload:false");
-      Logger.a("PresendPicMgr", "compressAndUploadPic ", localStringBuilder.toString());
-      return;
-    }
-    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("PresendStatus: srcPah:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c);
-    localStringBuilder.append(",destPath:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append(",uuid:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",canceled:false,peakCompress:true,peakUpload:false");
-    Logger.a("PresendPicMgr", "compressAndUploadPic ", localStringBuilder.toString());
-    l = (System.nanoTime() - l) / 1000000L;
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Process peak,[#]compress, cost= ");
-    localStringBuilder.append(l);
-    Logger.a("PresendPicMgr", "PresendReq.compressAndUploadPic", localStringBuilder.toString());
-    b();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("call end,current PresendReq is ");
-    localStringBuilder.append(this);
-    Logger.a("PresendPicMgr", "PresendReq.compressAndUploadPic", localStringBuilder.toString());
-  }
-  
   public void a(int paramInt)
   {
     try
@@ -85,14 +39,14 @@ class PresendPicMgr$PresendReq
       localStringBuilder.append("current PresendReq is ");
       localStringBuilder.append(this);
       Logger.a("PresendPicMgr", "PresendReq.cancel", localStringBuilder.toString());
-      this.jdField_a_of_type_Boolean = true;
-      boolean bool = this.jdField_b_of_type_Boolean;
+      this.b = true;
+      boolean bool = this.c;
       if (bool)
       {
         try
         {
           Logger.a("PresendPicMgr", "PresendReq.cancel", "call cancelUpload");
-          PresendPicMgr.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr).a(this.jdField_a_of_type_JavaLangString, paramInt);
+          PresendPicMgr.a(this.g).a(this.a, paramInt);
         }
         catch (RemoteException localRemoteException)
         {
@@ -114,41 +68,83 @@ class PresendPicMgr$PresendReq
   
   public void b()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("call start,current PresendReq is ");
+    localStringBuilder.append(this);
+    Logger.a("PresendPicMgr", "PresendReq.compressAndUploadPic", localStringBuilder.toString());
+    long l = System.nanoTime();
+    if (this.b)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PresendStatus: srcPah:");
+      localStringBuilder.append(this.d.h);
+      localStringBuilder.append(",destPath:");
+      localStringBuilder.append(this.d.l);
+      localStringBuilder.append(",uuid:");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(" ,canceled:true, peakCompress:false, peakUpload:false");
+      Logger.a("PresendPicMgr", "compressAndUploadPic ", localStringBuilder.toString());
+      return;
+    }
+    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(this.d);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PresendStatus: srcPah:");
+    localStringBuilder.append(this.d.h);
+    localStringBuilder.append(",destPath:");
+    localStringBuilder.append(this.d.l);
+    localStringBuilder.append(",uuid:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",canceled:false,peakCompress:true,peakUpload:false");
+    Logger.a("PresendPicMgr", "compressAndUploadPic ", localStringBuilder.toString());
+    l = (System.nanoTime() - l) / 1000000L;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Process peak,[#]compress, cost= ");
+    localStringBuilder.append(l);
+    Logger.a("PresendPicMgr", "PresendReq.compressAndUploadPic", localStringBuilder.toString());
+    c();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("call end,current PresendReq is ");
+    localStringBuilder.append(this);
+    Logger.a("PresendPicMgr", "PresendReq.compressAndUploadPic", localStringBuilder.toString());
+  }
+  
+  public void c()
+  {
     try
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("current PresendReq is ");
       localStringBuilder.append(this);
       Logger.a("PresendPicMgr", "PresendReq.uploadPic", localStringBuilder.toString());
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("PresendStatus: srcPah:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c);
+        localStringBuilder.append(this.d.h);
         localStringBuilder.append(",destPath:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString);
+        localStringBuilder.append(this.d.l);
         localStringBuilder.append(",uuid:");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.a);
         localStringBuilder.append(" ,canceled:true, peakCompress:true, peakUpload:false");
         Logger.a("PresendPicMgr", "uploadPic ", localStringBuilder.toString());
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString == null)
+      if (this.d.l == null)
       {
         Logger.b("PresendPicMgr", "PresendReq.uploadPic", "mCompressInfo.destPath == null! ");
         return;
       }
       try
       {
-        PresendPicMgr.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr).a(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        this.jdField_b_of_type_Boolean = true;
+        PresendPicMgr.a(this.g).a(this.d.l, this.a, this.d.t, this.e, this.f);
+        this.c = true;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("PresendStatus: srcPah:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.c);
+        localStringBuilder.append(this.d.h);
         localStringBuilder.append(",destPath:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo.jdField_e_of_type_JavaLangString);
+        localStringBuilder.append(this.d.l);
         localStringBuilder.append(",uuid:");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.a);
         localStringBuilder.append(" ,canceled:false, peakCompress:true, peakUpload:true");
         Logger.a("PresendPicMgr", "uploadPic ", localStringBuilder.toString());
       }
@@ -170,22 +166,22 @@ class PresendPicMgr$PresendReq
     localStringBuilder.append("\nPresendReq");
     localStringBuilder.append("\n|-");
     localStringBuilder.append("localUUID:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("mIsCancel:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("mIsUpload:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("mCompressInfo:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo);
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PresendPicMgr.PresendReq
  * JD-Core Version:    0.7.0.1
  */

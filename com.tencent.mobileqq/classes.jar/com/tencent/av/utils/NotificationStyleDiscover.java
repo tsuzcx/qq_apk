@@ -15,25 +15,25 @@ import com.tencent.qphone.base.util.QLog;
 
 public class NotificationStyleDiscover
 {
-  float jdField_a_of_type_Float = 14.0F;
-  Context jdField_a_of_type_AndroidContentContext;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
+  Integer a = null;
+  float b = 14.0F;
+  Integer c = null;
+  float d = 16.0F;
+  DisplayMetrics e = new DisplayMetrics();
+  Context f;
   
   public NotificationStyleDiscover(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
+    this.f = paramContext;
+    ((WindowManager)this.f.getSystemService("window")).getDefaultDisplay().getMetrics(this.e);
+    if ((this.a != null) && (this.c != null)) {
       return;
     }
     try
     {
-      Object localObject = new Notification.Builder(this.jdField_a_of_type_AndroidContentContext).setContentTitle("SearchForTitle").setContentText("SearchForText").build();
-      paramContext = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localObject = (ViewGroup)((Notification)localObject).contentView.apply(this.jdField_a_of_type_AndroidContentContext, paramContext);
+      Object localObject = new Notification.Builder(this.f).setContentTitle("SearchForTitle").setContentText("SearchForText").build();
+      paramContext = new LinearLayout(this.f);
+      localObject = (ViewGroup)((Notification)localObject).contentView.apply(this.f, paramContext);
       a((ViewGroup)localObject);
       b((ViewGroup)localObject);
       paramContext.removeAllViews();
@@ -58,9 +58,9 @@ public class NotificationStyleDiscover
         TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
         if ("SearchForTitle".equals(localTextView.getText().toString()))
         {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          this.c = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.d = localTextView.getTextSize();
+          this.d /= this.e.scaledDensity;
           return true;
         }
       }
@@ -84,9 +84,9 @@ public class NotificationStyleDiscover
         TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
         if ("SearchForText".equals(localTextView.getText().toString()))
         {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          this.a = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.b = localTextView.getTextSize();
+          this.b /= this.e.scaledDensity;
           return true;
         }
       }

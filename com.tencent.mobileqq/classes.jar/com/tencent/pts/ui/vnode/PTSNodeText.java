@@ -1,21 +1,20 @@
 package com.tencent.pts.ui.vnode;
 
 import com.tencent.pts.core.PTSAppInstance;
-import com.tencent.pts.ui.view.PTSTextView;
 
 public class PTSNodeText
-  extends PTSNodeTextBase<PTSTextView>
+  extends PTSNodeTextBase
 {
   private static final String TAG = "PTSNodeText";
   
   public PTSNodeText(PTSAppInstance paramPTSAppInstance)
   {
-    super(paramPTSAppInstance);
+    super(paramPTSAppInstance, "text", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeText
  * JD-Core Version:    0.7.0.1
  */

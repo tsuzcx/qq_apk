@@ -11,51 +11,51 @@ import java.util.WeakHashMap;
 
 public class TaskQueue
 {
-  private LinkedHashMap<Task, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
-  private WeakHashMap<ImageView, Task> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-  }
+  private WeakHashMap<ImageView, Task> a = new WeakHashMap();
+  private LinkedHashMap<Task, WeakReference<ImageView>> b = new LinkedHashMap(10, 0.75F, true);
   
   public Task a(ImageView paramImageView)
   {
-    paramImageView = (Task)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
+    paramImageView = (Task)this.a.remove(paramImageView);
     if (paramImageView != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
+      this.b.remove(paramImageView);
     }
     return paramImageView;
   }
   
-  public ListIterator<Map.Entry<Task, WeakReference<ImageView>>> a()
-  {
-    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.a.clear();
+    this.b.clear();
   }
   
   public void a(ImageView paramImageView, Task paramTask)
   {
-    Task localTask = (Task)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramTask);
+    Task localTask = (Task)this.a.put(paramImageView, paramTask);
     if (localTask != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localTask);
+      this.b.remove(localTask);
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramTask, new WeakReference(paramImageView));
+    this.b.put(paramTask, new WeakReference(paramImageView));
   }
   
   public void a(Task paramTask)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramTask);
+    this.b.remove(paramTask);
   }
   
   public Task b(ImageView paramImageView)
   {
-    return (Task)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
+    return (Task)this.a.get(paramImageView);
+  }
+  
+  public ListIterator<Map.Entry<Task, WeakReference<ImageView>>> b()
+  {
+    return new ArrayList(this.b.entrySet()).listIterator(this.b.size());
+  }
+  
+  public int c()
+  {
+    return this.b.size();
   }
 }
 

@@ -4,90 +4,78 @@ import com.tencent.av.gaudio.AVPhoneUserInfo;
 
 public class VideoMemberInfo
 {
-  public int a;
-  public long a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c = false;
+  public int a = 0;
+  public long b = 0L;
+  public String c = null;
   public boolean d = false;
   public boolean e = false;
   public boolean f = false;
-  public boolean g = false;
+  public AVPhoneUserInfo g = null;
   public boolean h = false;
-  
-  public VideoMemberInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = null;
-    this.jdField_b_of_type_Long = 4L;
-    this.jdField_b_of_type_Int = 0;
-  }
+  public boolean i = false;
+  public long j = 4L;
+  public boolean k = false;
+  public boolean l = false;
+  public int m = 0;
+  public boolean n = false;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    return this.a;
   }
   
   public boolean b()
   {
-    return this.jdField_b_of_type_Int == 2;
+    return this.d;
   }
   
-  public boolean c()
+  public int c()
   {
-    return this.f;
+    return this.m;
   }
   
   public boolean d()
   {
-    return (this.jdField_b_of_type_Boolean) && (!this.d);
+    return this.m == 2;
   }
   
   public boolean e()
   {
-    return this.d;
+    return this.k;
+  }
+  
+  public boolean f()
+  {
+    return (this.e) && (!this.h);
+  }
+  
+  public long g()
+  {
+    return this.b;
+  }
+  
+  public boolean h()
+  {
+    return this.h;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uin:=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(',');
     localStringBuilder.append("videoSrc:=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(',');
     localStringBuilder.append("isVideoIn:=");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(',');
     localStringBuilder.append("isAttened:=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(',');
     localStringBuilder.append("isSpeaking:=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(',');
     return localStringBuilder.toString();
   }

@@ -7,11 +7,11 @@ public abstract interface TroopLinkCallBack
 {
   public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
   
-  public abstract void r();
+  public abstract void v();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.TroopLinkCallBack
  * JD-Core Version:    0.7.0.1
  */

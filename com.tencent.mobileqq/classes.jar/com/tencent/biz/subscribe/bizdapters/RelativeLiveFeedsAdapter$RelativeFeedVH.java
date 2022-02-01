@@ -20,7 +20,7 @@ public class RelativeLiveFeedsAdapter$RelativeFeedVH
       {
         paramRelativeLiveFeedsAdapter = paramRelativeLiveFeedsAdapter.getChildAt(0);
         if ((paramRelativeLiveFeedsAdapter instanceof TextView)) {
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLiveFeedsAdapter);
+          this.a = ((TextView)paramRelativeLiveFeedsAdapter);
         }
       }
     }
@@ -28,7 +28,7 @@ public class RelativeLiveFeedsAdapter$RelativeFeedVH
   
   public void a(String paramString)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.a;
     if (localTextView != null) {
       localTextView.setText(paramString);
     }

@@ -12,13 +12,13 @@ class TogetherControlHelper$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherControlManager.a("video_tab", "clk_joinframe_cancel", 0, TogetherControlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTogetherControlHelper).b());
+    this.a.a("video_tab", "clk_joinframe_cancel", 0, TogetherControlHelper.a(this.b).ae());
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper.5
  * JD-Core Version:    0.7.0.1
  */

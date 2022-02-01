@@ -14,23 +14,23 @@ class ModifyPwdTopBarHelper$2
   public void a(boolean paramBoolean, ModifyPwdTopBarObserver.ModifyPwdTopBarInfo paramModifyPwdTopBarInfo)
   {
     long l1 = paramModifyPwdTopBarInfo.a();
-    boolean bool = paramModifyPwdTopBarInfo.a();
-    String str1 = paramModifyPwdTopBarInfo.a();
-    String str2 = paramModifyPwdTopBarInfo.b();
-    int i = paramModifyPwdTopBarInfo.a();
-    long l2 = this.jdField_a_of_type_Long;
+    boolean bool = paramModifyPwdTopBarInfo.b();
+    String str1 = paramModifyPwdTopBarInfo.c();
+    String str2 = paramModifyPwdTopBarInfo.d();
+    int i = paramModifyPwdTopBarInfo.e();
+    long l2 = this.a;
     if (l1 != l2)
     {
       QLog.e("ModifyPwdTopBarObserver", 1, "onUpdateBarDisplayInfo fail: observer not match");
       return;
     }
-    paramModifyPwdTopBarInfo = (ModifyPwdTopBarObserver)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(l2));
+    paramModifyPwdTopBarInfo = (ModifyPwdTopBarObserver)this.b.remove(Long.valueOf(l2));
     if (paramModifyPwdTopBarInfo == null)
     {
       QLog.e("ModifyPwdTopBarObserver", 1, "onUpdateBarDisplayInfo fail: observer not exist");
       return;
     }
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.removeObserver(paramModifyPwdTopBarInfo);
+    this.c.removeObserver(paramModifyPwdTopBarInfo);
     paramModifyPwdTopBarInfo = new StringBuilder();
     paramModifyPwdTopBarInfo.append("onUpdateBarDisplayInfo isSuccess: ");
     paramModifyPwdTopBarInfo.append(paramBoolean);
@@ -47,22 +47,22 @@ class ModifyPwdTopBarHelper$2
     {
       if (bool)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSecurityModifyPwdTopBarHelper.a(this.jdField_a_of_type_JavaLangString, "key_show_status", true);
-        this.jdField_a_of_type_ComTencentMobileqqSecurityModifyPwdTopBarHelper.a(this.jdField_a_of_type_JavaLangString, "time_fetch_next_time", i * 1000L);
-        this.jdField_a_of_type_ComTencentMobileqqSecurityModifyPwdTopBarHelper.a(this.jdField_a_of_type_JavaLangString, "bar_url", str2);
-        this.jdField_a_of_type_ComTencentMobileqqSecurityModifyPwdTopBarHelper.a(this.jdField_a_of_type_JavaLangString, "bar_content_string", str1);
-        this.jdField_a_of_type_ComTencentMobileqqSecurityModifyPwdTopBarHelper.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, true);
+        this.e.a(this.d, "key_show_status", true);
+        this.e.a(this.d, "time_fetch_next_time", i * 1000L);
+        this.e.a(this.d, "bar_url", str2);
+        this.e.a(this.d, "bar_content_string", str1);
+        this.e.a(this.c, true);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqSecurityModifyPwdTopBarHelper.a(this.jdField_a_of_type_JavaLangString, "key_verify_for_dlg_or_clk", false);
-      this.jdField_a_of_type_ComTencentMobileqqSecurityModifyPwdTopBarHelper.a(this.jdField_a_of_type_JavaLangString, "key_show_status", false);
-      this.jdField_a_of_type_ComTencentMobileqqSecurityModifyPwdTopBarHelper.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, false);
+      this.e.a(this.d, "key_verify_for_dlg_or_clk", false);
+      this.e.a(this.d, "key_show_status", false);
+      this.e.a(this.c, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.security.ModifyPwdTopBarHelper.2
  * JD-Core Version:    0.7.0.1
  */

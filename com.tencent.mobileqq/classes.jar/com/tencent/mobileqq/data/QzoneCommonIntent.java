@@ -39,7 +39,7 @@ public class QzoneCommonIntent
       localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(paramQZoneCommonRequest.getLongAccountUin()));
     }
     localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "5295");
+    localStatistic.setValue(WnsKeys.Build, "5770");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -78,7 +78,7 @@ public class QzoneCommonIntent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QzoneCommonIntent
  * JD-Core Version:    0.7.0.1
  */

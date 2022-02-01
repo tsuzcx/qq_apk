@@ -33,79 +33,79 @@ import mqq.app.MobileQQ;
 class SilkStreamPlayer$SilkStreamPlayerThread
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private SilkStreamPlayer.OnSilkStreamPlay jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay;
-  private SilkCodecWrapper jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private HttpsURLConnection jdField_a_of_type_JavaxNetSslHttpsURLConnection;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int d;
+  private SilkCodecWrapper a;
+  private byte[] b;
+  private byte[] c;
+  private volatile boolean d;
+  private AudioTrack e;
+  private int f;
+  private int g;
+  private SilkStreamPlayer.OnSilkStreamPlay h;
+  private InputStream i;
+  private HttpsURLConnection j;
+  private int k;
+  private int l;
+  private boolean m = false;
+  private boolean n = false;
   
   public SilkStreamPlayer$SilkStreamPlayerThread(SilkStreamPlayer paramSilkStreamPlayer, Application paramApplication, SilkStreamPlayer.OnSilkStreamPlay paramOnSilkStreamPlay, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper = new SilkCodecWrapper(paramApplication, false);
-    this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay = paramOnSilkStreamPlay;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.d = paramInt2;
+    this.a = new SilkCodecWrapper(paramApplication, false);
+    this.h = paramOnSilkStreamPlay;
+    this.k = paramInt1;
+    this.l = paramInt2;
   }
   
   private void a(int paramInt)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.m)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Int = QQAudioUtils.a(paramInt);
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ArrayOfByte = new byte[i];
-      this.jdField_b_of_type_ArrayOfByte = new byte[i];
+      this.g = paramInt;
+      this.f = QQAudioUtils.a(paramInt);
+      int i1 = this.f;
+      this.b = new byte[i1];
+      this.c = new byte[i1];
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper == null) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper = new SilkCodecWrapper(MobileQQ.sMobileQQ, false);
+        if (this.a == null) {
+          this.a = new SilkCodecWrapper(MobileQQ.sMobileQQ, false);
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a(paramInt, 0, 1);
+        this.a.a(paramInt, 0, 1);
       }
       catch (IOException localIOException)
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.d = false;
         QLog.d("SilkStreamPlayer", 1, "SILK解码器初始化失败", localIOException);
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.m = true;
     }
   }
   
   private void b(int paramInt)
   {
-    if (!this.jdField_c_of_type_Boolean)
+    if (!this.n)
     {
-      int i = AudioTrack.getMinBufferSize(paramInt, 4, 2);
-      AudioTrack localAudioTrack = this.jdField_a_of_type_AndroidMediaAudioTrack;
+      int i1 = AudioTrack.getMinBufferSize(paramInt, 4, 2);
+      AudioTrack localAudioTrack = this.e;
       if (localAudioTrack != null)
       {
         localAudioTrack.pause();
-        this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
-        this.jdField_a_of_type_AndroidMediaAudioTrack.stop();
+        this.e.flush();
+        this.e.stop();
       }
-      if (this.jdField_c_of_type_Int == 1)
+      if (this.k == 1)
       {
-        int j = this.d;
-        if (j != 0)
+        int i2 = this.l;
+        if (i2 != 0)
         {
-          this.jdField_a_of_type_AndroidMediaAudioTrack = new ReportAudioTrack(3, paramInt, 1, 2, i, 1, j);
+          this.e = new ReportAudioTrack(3, paramInt, 1, 2, i1, 1, i2);
           break label99;
         }
       }
-      this.jdField_a_of_type_AndroidMediaAudioTrack = new ReportAudioTrack(3, paramInt, 1, 2, i, 1);
+      this.e = new ReportAudioTrack(3, paramInt, 1, 2, i1, 1);
       label99:
-      this.jdField_a_of_type_AndroidMediaAudioTrack.play();
-      this.jdField_c_of_type_Boolean = true;
+      this.e.play();
+      this.n = true;
     }
   }
   
@@ -114,39 +114,39 @@ class SilkStreamPlayer$SilkStreamPlayerThread
     paramArrayOfByte = new byte[2];
     try
     {
-      while ((this.jdField_a_of_type_Boolean) && (paramInputStream.available() > 0)) {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper == null)
+      while ((this.d) && (paramInputStream.available() > 0)) {
+        if (this.a == null)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.d = false;
         }
         else if (paramInputStream.read(paramArrayOfByte, 0, 2) <= 0)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.d = false;
           if (QLog.isColorLevel()) {
             QLog.d("SilkStreamPlayer", 1, "SILK帧播size解析错误");
           }
         }
         else
         {
-          int i = QQAudioUtils.a(paramArrayOfByte);
-          if ((i >= 0) && (i <= this.jdField_a_of_type_ArrayOfByte.length))
+          int i1 = QQAudioUtils.b(paramArrayOfByte);
+          if ((i1 >= 0) && (i1 <= this.b.length))
           {
-            paramInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, i);
-            i = this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, i, this.jdField_b_of_type_ArrayOfByte.length);
-            if (i < 0)
+            paramInputStream.read(this.b, 0, i1);
+            i1 = this.a.a(this.b, this.c, i1, this.c.length);
+            if (i1 < 0)
             {
-              this.jdField_a_of_type_Boolean = false;
+              this.d = false;
               if (QLog.isColorLevel()) {
                 QLog.d("SilkStreamPlayer", 1, "SILK解码器解码错误");
               }
             }
-            else if (this.jdField_a_of_type_Boolean)
+            else if (this.d)
             {
-              i = this.jdField_a_of_type_AndroidMediaAudioTrack.write(this.jdField_b_of_type_ArrayOfByte, 0, i);
-              this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
-              if (i < 0)
+              i1 = this.e.write(this.c, 0, i1);
+              this.e.flush();
+              if (i1 < 0)
               {
-                this.jdField_a_of_type_Boolean = false;
+                this.d = false;
                 if (QLog.isColorLevel()) {
                   QLog.e("SilkStreamPlayer", 1, "AudioTrack播放缓冲区写入错误");
                 }
@@ -155,7 +155,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread
           }
           else
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.d = false;
             if (QLog.isColorLevel()) {
               QLog.d("SilkStreamPlayer", 1, "SILK帧size不在正确范围内");
             }
@@ -183,22 +183,22 @@ class SilkStreamPlayer$SilkStreamPlayerThread
   
   public void run()
   {
-    label1063:
+    label1064:
     for (;;)
     {
-      int j;
+      int i2;
       try
       {
-        this.jdField_a_of_type_JavaIoInputStream = TtsFileCache.a().b(MD5Coding.encodeHexStr(SilkStreamPlayer.a(this.this$0)));
-        if (this.jdField_a_of_type_JavaIoInputStream == null) {
-          break label1063;
+        this.i = TtsFileCache.a().b(MD5Coding.encodeHexStr(SilkStreamPlayer.a(this.this$0)));
+        if (this.i == null) {
+          break label1064;
         }
-        j = 1;
+        i2 = 1;
       }
       catch (Exception localException1)
       {
         InputStream localInputStream;
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay;
+        localObject3 = this.h;
         if (localObject3 == null) {
           continue;
         }
@@ -208,41 +208,41 @@ class SilkStreamPlayer$SilkStreamPlayerThread
       }
       catch (IOException localIOException)
       {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay;
+        localObject3 = this.h;
         if (localObject3 == null) {
           continue;
         }
         ((SilkStreamPlayer.OnSilkStreamPlay)localObject3).a(SilkStreamPlayer.a(this.this$0));
         QLog.d("SilkStreamPlayer", 2, localIOException, new Object[0]);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay.b();
+      if (this.h != null) {
+        this.h.c();
       }
-      this.jdField_a_of_type_JavaxNetSslHttpsURLConnection = ((HttpsURLConnection)new URL("https://textts.qq.com/cgi-bin/tts").openConnection());
-      this.jdField_a_of_type_JavaIoInputStream = SilkStreamPlayer.a(this.this$0, this.jdField_a_of_type_JavaxNetSslHttpsURLConnection, this.jdField_c_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay.a(SilkStreamPlayer.a(this.this$0));
+      this.j = ((HttpsURLConnection)new URL("https://textts.qq.com/cgi-bin/tts").openConnection());
+      this.i = SilkStreamPlayer.a(this.this$0, this.j, this.k);
+      if (this.h != null) {
+        this.h.a(SilkStreamPlayer.a(this.this$0));
       }
-      localInputStream = this.jdField_a_of_type_JavaIoInputStream;
+      localInputStream = this.i;
       if (localInputStream == null)
       {
-        j = i - 1;
-        i = j;
-        if (j > 0) {
+        i2 = i1 - 1;
+        i1 = i2;
+        if (i2 > 0) {
           continue;
         }
       }
       Object localObject3;
       label214:
-      if ((this.jdField_a_of_type_JavaxNetSslHttpsURLConnection != null) && (this.jdField_a_of_type_JavaIoInputStream != null))
+      if ((this.j != null) && (this.i != null))
       {
-        j = 0;
-        SilkCodecWrapper localSilkCodecWrapper = this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper;
+        i2 = 0;
+        SilkCodecWrapper localSilkCodecWrapper = this.a;
         if (localSilkCodecWrapper != null) {
           try
           {
             localSilkCodecWrapper.close();
-            this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a();
+            this.a.a();
           }
           catch (Exception localException2)
           {
@@ -251,51 +251,51 @@ class SilkStreamPlayer$SilkStreamPlayerThread
             }
           }
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.d = true;
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-        ChunkedInputStream localChunkedInputStream = new ChunkedInputStream(this.jdField_a_of_type_JavaIoInputStream);
+        ChunkedInputStream localChunkedInputStream = new ChunkedInputStream(this.i);
         ChunkedOutputStream localChunkedOutputStream = new ChunkedOutputStream(localByteArrayOutputStream);
-        i = 1;
-        while (this.jdField_a_of_type_Boolean)
+        i1 = 1;
+        while (this.d)
         {
           Object localObject1;
           Object localObject4;
           if (!NetworkUtil.isNetworkAvailable(MobileQQ.sMobileQQ))
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.d = false;
             ThreadManagerV2.getUIHandlerV2().post(new SilkStreamPlayer.SilkStreamPlayerThread.2(this));
           }
-          else if (this.jdField_a_of_type_Boolean)
+          else if (this.d)
           {
             localObject3 = new byte[0];
             localObject1 = localObject3;
             try
             {
-              if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay != null)
+              if (this.h != null)
               {
                 localObject1 = localObject3;
-                this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay.b();
+                this.h.c();
               }
               localObject1 = localObject3;
               localObject5 = localChunkedInputStream.a();
-              if ((j == 0) && (localObject5 != null))
+              if ((i2 == 0) && (localObject5 != null))
               {
                 localObject1 = localObject5;
                 localChunkedOutputStream.b((byte[])localObject5, 0, localObject5.length);
               }
               localObject1 = localObject5;
               localObject3 = localObject5;
-              if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay != null)
+              if (this.h != null)
               {
                 localObject1 = localObject5;
-                this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay.a(SilkStreamPlayer.a(this.this$0));
+                this.h.a(SilkStreamPlayer.a(this.this$0));
                 localObject3 = localObject5;
               }
             }
             catch (Exception localException5)
             {
               QLog.e("SilkStreamPlayer", 1, "SilkStreamPlayerThread#run byteArray contact error", localException5);
-              localObject5 = this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay;
+              localObject5 = this.h;
               localObject4 = localObject1;
               if (localObject5 != null)
               {
@@ -313,62 +313,62 @@ class SilkStreamPlayer$SilkStreamPlayerThread
           }
           catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
           {
-            int k;
+            int i3;
             AudioTrack localAudioTrack;
             Object localObject2;
-            break label553;
+            break label554;
           }
           Object localObject5 = new StringBuilder();
           ((StringBuilder)localObject5).append("TtsResBody序列化失败");
           ((StringBuilder)localObject5).append(Arrays.toString((byte[])localObject4));
           QLog.e("SilkStreamPlayer", 1, ((StringBuilder)localObject5).toString());
-          k = ((TtsResBody.RspBody)localObject1).pcm_sample_rate.get();
-          if (k == 0)
+          i3 = ((TtsResBody.RspBody)localObject1).pcm_sample_rate.get();
+          if (i3 == 0)
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.d = false;
           }
           else
           {
-            a(k);
-            b(k);
-            if (this.jdField_a_of_type_Boolean)
+            a(i3);
+            b(i3);
+            if (this.d)
             {
               localObject5 = ((TtsResBody.RspBody)localObject1).voice_data.get();
               if (((List)localObject5).size() <= 0)
               {
-                this.jdField_a_of_type_Boolean = false;
+                this.d = false;
                 if (QLog.isColorLevel()) {
                   QLog.e("SilkStreamPlayer", 1, "当前SILK帧无数据");
                 }
               }
               else
               {
-                k = 0;
-                while ((k < ((List)localObject5).size()) && (this.jdField_a_of_type_Boolean))
+                i3 = 0;
+                while ((i3 < ((List)localObject5).size()) && (this.d))
                 {
-                  localObject4 = ((TtsResBody.voice_item)((List)localObject5).get(k)).voice.get().toByteArray();
-                  int m = i;
+                  localObject4 = ((TtsResBody.voice_item)((List)localObject5).get(i3)).voice.get().toByteArray();
+                  int i4 = i1;
                   localObject1 = localObject4;
-                  if (i != 0)
+                  if (i1 != 0)
                   {
-                    m = i;
+                    i4 = i1;
                     localObject1 = localObject4;
                     if (SilkStreamPlayer.a(this.this$0, (byte[])localObject4))
                     {
                       localObject1 = SilkStreamPlayer.a(this.this$0, (byte[])localObject4, 10, localObject4.length - 10);
-                      m = 0;
+                      i4 = 0;
                     }
                   }
                   a(new ByteArrayInputStream((byte[])localObject1), (byte[])localObject1);
-                  k += 1;
-                  i = m;
+                  i3 += 1;
+                  i1 = i4;
                 }
                 continue;
-                this.jdField_a_of_type_Boolean = false;
+                this.d = false;
                 try
                 {
                   localChunkedOutputStream.close();
-                  i = 1;
+                  i1 = 1;
                 }
                 catch (Exception localException3)
                 {
@@ -378,28 +378,28 @@ class SilkStreamPlayer$SilkStreamPlayerThread
             }
           }
         }
-        i = 0;
-        if ((j == 0) && (i != 0)) {
+        i1 = 0;
+        if ((i2 == 0) && (i1 != 0)) {
           TtsFileCache.a().a(SilkStreamPlayer.a(this.this$0), localByteArrayOutputStream);
         }
-        this.jdField_a_of_type_Boolean = false;
-        localAudioTrack = this.jdField_a_of_type_AndroidMediaAudioTrack;
+        this.d = false;
+        localAudioTrack = this.e;
         if ((localAudioTrack != null) && (localAudioTrack.getState() != 0))
         {
           try
           {
-            this.jdField_a_of_type_AndroidMediaAudioTrack.pause();
-            this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
-            this.jdField_a_of_type_AndroidMediaAudioTrack.stop();
-            this.jdField_a_of_type_AndroidMediaAudioTrack.release();
-            if (this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper != null) {
-              this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper.a();
+            this.e.pause();
+            this.e.flush();
+            this.e.stop();
+            this.e.release();
+            if (this.a != null) {
+              this.a.a();
             }
             localChunkedInputStream.close();
-            if (this.jdField_a_of_type_JavaIoInputStream.available() > 0) {
-              this.jdField_a_of_type_JavaIoInputStream.close();
+            if (this.i.available() > 0) {
+              this.i.close();
             }
-            this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.disconnect();
+            this.j.disconnect();
           }
           catch (Exception localException4)
           {
@@ -407,15 +407,15 @@ class SilkStreamPlayer$SilkStreamPlayerThread
               QLog.d("SilkStreamPlayer", 1, localException4, new Object[0]);
             }
           }
-          this.jdField_a_of_type_AndroidMediaAudioTrack = null;
+          this.e = null;
         }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilsSilkCodecWrapper;
+        localObject2 = this.a;
         if (localObject2 != null) {
-          ((SilkCodecWrapper)localObject2).b();
+          ((SilkCodecWrapper)localObject2).c();
         }
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$OnSilkStreamPlay;
+        this.m = false;
+        this.n = false;
+        localObject2 = this.h;
         if (localObject2 != null) {
           ((SilkStreamPlayer.OnSilkStreamPlay)localObject2).b(SilkStreamPlayer.a(this.this$0));
         }
@@ -429,14 +429,14 @@ class SilkStreamPlayer$SilkStreamPlayerThread
         }
         return;
       }
-      label553:
-      int i = 3;
+      label554:
+      int i1 = 3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.SilkStreamPlayer.SilkStreamPlayerThread
  * JD-Core Version:    0.7.0.1
  */

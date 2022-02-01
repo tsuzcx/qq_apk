@@ -7,9 +7,9 @@ import java.lang.ref.WeakReference;
 public class ADVideoAppDownloadManager$LoadTask
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private ADVideoAppDownloadData jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-  private WeakReference<ADVideoAppDownloadManager> jdField_a_of_type_JavaLangRefWeakReference;
+  private ADVideoAppDownloadData a;
+  private int b;
+  private WeakReference<ADVideoAppDownloadManager> c;
   
   public void run()
   {
@@ -18,15 +18,15 @@ public class ADVideoAppDownloadManager$LoadTask
       if (QLog.isColorLevel()) {
         QLog.d("ADVideoAppDownloadManager", 2, " mLoadAppJob running... ");
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData != null)
+      if (this.a != null)
       {
-        localADVideoAppDownloadManager = (ADVideoAppDownloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localADVideoAppDownloadManager = (ADVideoAppDownloadManager)this.c.get();
         if (localADVideoAppDownloadManager == null) {
           return;
         }
         long l = System.currentTimeMillis();
-        this.jdField_a_of_type_Int += 1;
-        ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        this.b += 1;
+        ADVideoAppDownloadData localADVideoAppDownloadData = this.a;
         if (localADVideoAppDownloadData.a())
         {
           if (QLog.isColorLevel())
@@ -36,7 +36,7 @@ public class ADVideoAppDownloadManager$LoadTask
             localStringBuilder.append(localADVideoAppDownloadData.c);
             QLog.d("ADVideoAppDownloadManager", 2, localStringBuilder.toString());
           }
-          if ((ADVideoAppDownloadManager.a(localADVideoAppDownloadManager) != null) && (!TextUtils.isEmpty(ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d)) && (ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d.equals(localADVideoAppDownloadData.d))) {
+          if ((ADVideoAppDownloadManager.b(localADVideoAppDownloadManager) != null) && (!TextUtils.isEmpty(ADVideoAppDownloadManager.b(localADVideoAppDownloadManager).d)) && (ADVideoAppDownloadManager.b(localADVideoAppDownloadManager).d.equals(localADVideoAppDownloadData.d))) {
             localADVideoAppDownloadManager.a(localADVideoAppDownloadData);
           }
           ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, true, System.currentTimeMillis() - l);
@@ -47,7 +47,7 @@ public class ADVideoAppDownloadManager$LoadTask
           ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, false, System.currentTimeMillis() - l);
         }
       }
-      ADVideoAppDownloadManager localADVideoAppDownloadManager = (ADVideoAppDownloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      ADVideoAppDownloadManager localADVideoAppDownloadManager = (ADVideoAppDownloadManager)this.c.get();
       if (localADVideoAppDownloadManager == null) {
         break label221;
       }
@@ -67,7 +67,7 @@ public class ADVideoAppDownloadManager$LoadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager.LoadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -11,30 +11,30 @@ class TabLayout$2
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
-    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
+    this.a.onAnimationCancel(paramAnimator);
+    TabLayout.a(this.b, false);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
-    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a();
+    this.a.onAnimationEnd(paramAnimator);
+    TabLayout.a(this.b, false);
+    this.b.a();
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationRepeat(paramAnimator);
+    this.a.onAnimationRepeat(paramAnimator);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
+    this.a.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout.2
  * JD-Core Version:    0.7.0.1
  */

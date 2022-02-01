@@ -25,21 +25,21 @@ public final class ArkAppContainer$AppPathCallback
       }
       return;
     }
-    String str = localArkAppContainer.a(paramString);
+    String str = localArkAppContainer.b(paramString);
     if (paramAppPathInfo != null) {
       paramString = paramAppPathInfo.path;
     } else {
       paramString = null;
     }
-    localArkAppContainer.a.getAppFromLocal = false;
-    localArkAppContainer.a.endOfGetApp = System.currentTimeMillis();
+    localArkAppContainer.f.getAppFromLocal = false;
+    localArkAppContainer.f.endOfGetApp = System.currentTimeMillis();
     ArkAppContainer.a(paramAppPathInfo);
     localArkAppContainer.a(paramString, paramInt, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppContainer.AppPathCallback
  * JD-Core Version:    0.7.0.1
  */

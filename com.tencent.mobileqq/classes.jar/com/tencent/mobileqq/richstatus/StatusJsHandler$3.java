@@ -18,7 +18,7 @@ class StatusJsHandler$3
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseActivity localBaseActivity = (BaseActivity)this.a.a.get();
     Object localObject;
     if (localBaseActivity != null)
     {
@@ -33,7 +33,7 @@ class StatusJsHandler$3
         QLog.d("Q.richstatus.", 2, ((StringBuilder)localObject).toString());
       }
       if (!paramBoolean) {
-        this.a.a(2131695217);
+        this.a.a(2131892951);
       }
     }
     try
@@ -45,21 +45,21 @@ class StatusJsHandler$3
         paramBundle.mergeFrom((byte[])localObject);
         if ((paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0))
         {
-          if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail != null))
+          if ((this.a.d == null) || (this.a.d != null))
           {
             localObject = (IPublicAccountDetail)QRoute.api(IPublicAccountDetail.class);
             ((IPublicAccountDetail)localObject).init(paramBundle);
             this.a.a(localBaseActivity, (IPublicAccountDetail)localObject);
-            StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail.getUin());
+            StatusJsHandler.a(this.a, localBaseActivity, this.a.d.getUin());
           }
         }
         else {
-          this.a.a(2131695217);
+          this.a.a(2131892951);
         }
       }
       else
       {
-        this.a.a(2131695217);
+        this.a.a(2131892951);
       }
     }
     catch (Exception paramBundle)
@@ -68,12 +68,12 @@ class StatusJsHandler$3
       break label258;
     }
     paramBundle = this.a;
-    paramBundle.a(paramBundle.c, "false");
+    paramBundle.a(paramBundle.h, "false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusJsHandler.3
  * JD-Core Version:    0.7.0.1
  */

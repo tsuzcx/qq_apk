@@ -13,16 +13,16 @@ class UpgradeActivity$17
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog.d();
+    this.a.d();
     SPSettings.c(true);
-    SPSettings.c(this.jdField_a_of_type_Int);
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeActivity, UpgradeController.a().a(), false, true, true);
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeActivity.finish();
+    SPSettings.c(this.b);
+    UpgradeDetailActivity.a(this.c, UpgradeController.a().d(), false, true, true);
+    this.c.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.activity.UpgradeActivity.17
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class VasAdvWSVerticalItemView$exposureResultCallback$1
 {
   public void a(@Nullable Boolean paramBoolean)
   {
-    paramBoolean = VasAdvWSVerticalItemView.a(this.a);
+    paramBoolean = VasAdvWSVerticalItemView.c(this.a);
     if (paramBoolean != null) {
       paramBoolean.isGdtAdImpressionReport = true;
     }
@@ -18,7 +18,7 @@ public final class VasAdvWSVerticalItemView$exposureResultCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.vas.VasAdvWSVerticalItemView.exposureResultCallback.1
  * JD-Core Version:    0.7.0.1
  */

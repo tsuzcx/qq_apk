@@ -25,13 +25,13 @@ class CommonTroopListActivity$1
       localIntent.putExtra("uinname", localCommonTroopInfo.troopName);
       this.a.startActivity(localIntent);
     }
-    ReportController.b(null, "dc00898", "", "", "0X8009F54", "0X8009F54", CommonTroopListActivity.a(this.a), 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X8009F54", "0X8009F54", CommonTroopListActivity.b(this.a), 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.CommonTroopListActivity.1
  * JD-Core Version:    0.7.0.1
  */

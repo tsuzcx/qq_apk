@@ -10,12 +10,11 @@ import org.json.JSONObject;
 public class InterestTag
 {
   public final int a;
-  public final ArrayList<InterestTagInfo> a;
+  public final ArrayList<InterestTagInfo> b = new ArrayList(2);
   
   public InterestTag(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public JSONObject a()
@@ -23,11 +22,11 @@ public class InterestTag
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("tagType", this.jdField_a_of_type_Int);
+      localJSONObject.put("tagType", this.a);
       JSONArray localJSONArray = new JSONArray();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.b.size() > 0)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.b.iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (InterestTagInfo)localIterator.next();
@@ -61,17 +60,17 @@ public class InterestTag
       return false;
     }
     paramObject = (InterestTag)paramObject;
-    if (paramObject.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+    if (paramObject.a != this.a) {
       return false;
     }
-    if (paramObject.jdField_a_of_type_JavaUtilArrayList.size() != this.jdField_a_of_type_JavaUtilArrayList.size()) {
+    if (paramObject.b.size() != this.b.size()) {
       return false;
     }
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = this.b.size();
     int i = 0;
     while (i < j)
     {
-      if (!Utils.a(this.jdField_a_of_type_JavaUtilArrayList.get(i), paramObject.jdField_a_of_type_JavaUtilArrayList.get(i))) {
+      if (!Utils.a(this.b.get(i), paramObject.b.get(i))) {
         return false;
       }
       i += 1;
@@ -84,14 +83,14 @@ public class InterestTag
     StringBuilder localStringBuilder = new StringBuilder(80);
     localStringBuilder.append("[");
     localStringBuilder.append("tagType = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
     localStringBuilder.append("size = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    localStringBuilder.append(this.b.size());
     localStringBuilder.append(",");
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.b.size() > 0)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         InterestTagInfo localInterestTagInfo = (InterestTagInfo)localIterator.next();
@@ -108,7 +107,7 @@ public class InterestTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.InterestTag
  * JD-Core Version:    0.7.0.1
  */

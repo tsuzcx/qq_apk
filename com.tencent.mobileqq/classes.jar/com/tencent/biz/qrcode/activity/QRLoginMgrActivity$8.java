@@ -12,8 +12,8 @@ class QRLoginMgrActivity$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, false, this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevItem.a);
-    ReportController.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.jdField_a_of_type_ComTencentBizQrcodeLogindevLoginDevItem.c, 0, "", "", "", "");
+    QRLoginMgrActivity.a(this.b, false, this.a.a);
+    ReportController.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.a.d, 0, "", "", "", "");
   }
 }
 

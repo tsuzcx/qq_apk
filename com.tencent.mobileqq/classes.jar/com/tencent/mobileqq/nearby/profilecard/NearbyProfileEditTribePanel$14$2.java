@@ -16,11 +16,11 @@ class NearbyProfileEditTribePanel$14$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel$14.a.a.quitEditWithoutSaving();
-    paramInt = ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel$14.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel$14.a.a.app;
-    String str = NearbyUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel$14.a.a.from);
+    this.a.dismiss();
+    this.b.a.A.quitEditWithoutSaving();
+    paramInt = ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.b.a.A.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
+    paramDialogInterface = this.b.a.A.app;
+    String str = NearbyUtils.b(this.b.a.A.from);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt);
     localStringBuilder.append("");
@@ -29,7 +29,7 @@ class NearbyProfileEditTribePanel$14$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.14.2
  * JD-Core Version:    0.7.0.1
  */

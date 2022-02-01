@@ -25,11 +25,11 @@ import org.json.JSONObject;
 
 public class DynamicCommentProteusHelper
 {
-  private static int jdField_a_of_type_Int = 9;
-  private static String jdField_a_of_type_JavaLangString = "0";
-  private static int b = 2147483647;
-  private BaseTemplateFactory jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryBaseTemplateFactory;
-  private final Map<String, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static int a = 9;
+  private static int c = 2147483647;
+  private static String e = "0";
+  private final Map<String, Integer> b = new ConcurrentHashMap();
+  private BaseTemplateFactory d;
   
   public static void a(VafContext paramVafContext, Container paramContainer, TemplateBean paramTemplateBean, ReadinjoyCommentListBaseAdapter paramReadinjoyCommentListBaseAdapter, int paramInt1, int paramInt2, boolean paramBoolean)
   {
@@ -66,66 +66,39 @@ public class DynamicCommentProteusHelper
   
   private void a(String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+    if (!this.b.containsKey(paramString))
     {
-      int i = jdField_a_of_type_Int;
-      if (i < b - 1)
+      int i = a;
+      if (i < c - 1)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(i));
-        jdField_a_of_type_Int += 1;
+        this.b.put(paramString, Integer.valueOf(i));
+        a += 1;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("addViewType : ");
         localStringBuilder.append(paramString);
         localStringBuilder.append(" TYPE_DYNAMIC_END: ");
-        localStringBuilder.append(jdField_a_of_type_Int);
+        localStringBuilder.append(a);
         localStringBuilder.append("  TYPE_DYNAMIC_MAX_END : ");
-        localStringBuilder.append(b);
+        localStringBuilder.append(c);
         QLog.d("DynamicCommentProteusHelper", 2, localStringBuilder.toString());
       }
     }
   }
   
-  public static boolean a(CommentViewItem paramCommentViewItem)
+  public static boolean b(CommentViewItem paramCommentViewItem)
   {
-    return (paramCommentViewItem != null) && (paramCommentViewItem.a != null) && (paramCommentViewItem.a.isDynamicComment());
+    return (paramCommentViewItem != null) && (paramCommentViewItem.c != null) && (paramCommentViewItem.c.isDynamicComment());
   }
   
   public int a()
   {
-    int i = b;
+    int i = c;
     if (i == 2147483647)
     {
-      AIOUtils.a("DynamicCommentProteusHelper", "", new IllegalArgumentException(HardCodeUtil.a(2131703735)));
-      return jdField_a_of_type_Int - 8;
+      AIOUtils.a("DynamicCommentProteusHelper", "", new IllegalArgumentException(HardCodeUtil.a(2131901681)));
+      return a - 8;
     }
     return i - 8;
-  }
-  
-  public int a(CommentViewItem paramCommentViewItem)
-  {
-    if (paramCommentViewItem != null)
-    {
-      if (paramCommentViewItem.a == null) {
-        return 8;
-      }
-      paramCommentViewItem = paramCommentViewItem.a.styleData;
-      if (TextUtils.isEmpty(paramCommentViewItem)) {
-        return 8;
-      }
-      try
-      {
-        paramCommentViewItem = new JSONObject(paramCommentViewItem).optString("style_ID");
-        a(paramCommentViewItem);
-        int i = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramCommentViewItem)).intValue();
-        return i;
-      }
-      catch (JSONException paramCommentViewItem)
-      {
-        paramCommentViewItem.printStackTrace();
-        return -1;
-      }
-    }
-    return 8;
   }
   
   public TemplateBean a(CommentViewItem paramCommentViewItem)
@@ -133,13 +106,13 @@ public class DynamicCommentProteusHelper
     TemplateBean localTemplateBean = null;
     if (paramCommentViewItem != null)
     {
-      if (paramCommentViewItem.a == null) {
+      if (paramCommentViewItem.c == null) {
         return null;
       }
       try
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryBaseTemplateFactory != null) {
-          localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryBaseTemplateFactory.getTemplateBean(new JSONObject(paramCommentViewItem.a.styleData));
+        if (this.d != null) {
+          localTemplateBean = this.d.getTemplateBean(new JSONObject(paramCommentViewItem.c.styleData));
         }
         return localTemplateBean;
       }
@@ -159,61 +132,88 @@ public class DynamicCommentProteusHelper
     Object localObject = Aladdin.getConfig(228);
     if (localObject != null)
     {
-      jdField_a_of_type_JavaLangString = ((AladdinConfig)localObject).getString("comment_feeds", "0");
+      e = ((AladdinConfig)localObject).getString("comment_feeds", "0");
       localObject = ((AladdinConfig)localObject).getString("comment_feeds_cdn_url", "");
-      RIJProteusOfflineBidSp.a("comment_proteus_offline_bid", jdField_a_of_type_JavaLangString);
+      RIJProteusOfflineBidSp.a("comment_proteus_offline_bid", e);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[init], offline comment pts bid = ");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(e);
       localStringBuilder.append(", cdnUrl = ");
       localStringBuilder.append((String)localObject);
       QLog.i("DynamicCommentProteusHelper", 1, localStringBuilder.toString());
-      RIJProteusCDNSp.a(jdField_a_of_type_JavaLangString, (String)localObject);
+      RIJProteusCDNSp.a(e, (String)localObject);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryBaseTemplateFactory = paramVafContext.getTemplateFactory();
+    this.d = paramVafContext.getTemplateFactory();
     int j = paramVafContext.getTemplateFactory().size();
-    int i = jdField_a_of_type_Int;
+    int i = a;
     int k = j + 9;
-    if ((i < k) && (j > 0) && (i < b))
+    if ((i < k) && (j > 0) && (i < c))
     {
       paramVafContext = paramVafContext.getTemplateFactory().getNameTemplateMap().keySet();
-      i = jdField_a_of_type_Int;
+      i = a;
       paramVafContext = paramVafContext.iterator();
       while (paramVafContext.hasNext())
       {
         localObject = (String)paramVafContext.next();
-        if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+        if (!this.b.containsKey(localObject))
         {
-          this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(i));
+          this.b.put(localObject, Integer.valueOf(i));
           i += 1;
         }
       }
-      jdField_a_of_type_Int = k;
-      if (b == 2147483647) {
-        b = jdField_a_of_type_Int + 30;
+      a = k;
+      if (c == 2147483647) {
+        c = a + 30;
       }
-      i = jdField_a_of_type_Int;
-      k = b;
+      i = a;
+      k = c;
       if (i > k) {
-        jdField_a_of_type_Int = k;
+        a = k;
       }
       paramVafContext = new StringBuilder();
       paramVafContext.append("init: commentTemplateCount : ");
       paramVafContext.append(j);
       paramVafContext.append(" TYPE_DYNAMIC_END : ");
-      paramVafContext.append(jdField_a_of_type_Int);
+      paramVafContext.append(a);
       paramVafContext.append(" max : ");
-      paramVafContext.append(b);
+      paramVafContext.append(c);
       QLog.d("DynamicCommentProteusHelper", 1, paramVafContext.toString());
     }
-    if (b == 2147483647) {
-      b = 109;
+    if (c == 2147483647) {
+      c = 109;
     }
+  }
+  
+  public int c(CommentViewItem paramCommentViewItem)
+  {
+    if (paramCommentViewItem != null)
+    {
+      if (paramCommentViewItem.c == null) {
+        return 8;
+      }
+      paramCommentViewItem = paramCommentViewItem.c.styleData;
+      if (TextUtils.isEmpty(paramCommentViewItem)) {
+        return 8;
+      }
+      try
+      {
+        paramCommentViewItem = new JSONObject(paramCommentViewItem).optString("style_ID");
+        a(paramCommentViewItem);
+        int i = ((Integer)this.b.get(paramCommentViewItem)).intValue();
+        return i;
+      }
+      catch (JSONException paramCommentViewItem)
+      {
+        paramCommentViewItem.printStackTrace();
+        return -1;
+      }
+    }
+    return 8;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.DynamicCommentProteusHelper
  * JD-Core Version:    0.7.0.1
  */

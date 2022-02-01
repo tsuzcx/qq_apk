@@ -10,28 +10,28 @@ import mqq.app.MobileQQ;
 public class SyncService
   extends Service
 {
-  private static SyncAdapter jdField_a_of_type_ComTencentMobileqqPhonecontactAdapterSyncAdapter = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final Object a = new Object();
+  private static SyncAdapter b = null;
   
   public IBinder onBind(Intent paramIntent)
   {
-    return jdField_a_of_type_ComTencentMobileqqPhonecontactAdapterSyncAdapter.getSyncAdapterBinder();
+    return b.getSyncAdapterBinder();
   }
   
   public void onCreate()
   {
     super.onCreate();
     ??? = MobileQQ.sMobileQQ;
-    if ((AccountDPCHelper.a(this, false)) && (AccountDPCHelper.b(this, false)))
+    if ((AccountDPCHelper.a(this, false)) && (AccountDPCHelper.c(this, false)))
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("k_start_mode", 1);
       ((MobileQQ)???).onActivityCreate(this, localIntent);
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (a)
     {
-      if (jdField_a_of_type_ComTencentMobileqqPhonecontactAdapterSyncAdapter == null) {
-        jdField_a_of_type_ComTencentMobileqqPhonecontactAdapterSyncAdapter = new SyncAdapter(getApplicationContext(), true);
+      if (b == null) {
+        b = new SyncAdapter(getApplicationContext(), true);
       }
       return;
     }
@@ -39,7 +39,7 @@ public class SyncService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.contactsync.syncadapter.SyncService
  * JD-Core Version:    0.7.0.1
  */

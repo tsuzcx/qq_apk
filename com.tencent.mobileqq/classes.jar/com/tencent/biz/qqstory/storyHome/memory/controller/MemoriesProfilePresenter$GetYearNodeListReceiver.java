@@ -19,9 +19,9 @@ public class MemoriesProfilePresenter$GetYearNodeListReceiver
   
   public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull ProfileFeedPresenter.GetYearNodeListEvent paramGetYearNodeListEvent)
   {
-    if (paramGetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetYearNodeListEvent.g.isSuccess())
     {
-      paramGetYearNodeListEvent = paramGetYearNodeListEvent.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetYearNodeListEvent = paramGetYearNodeListEvent.b.iterator();
       int i = 0;
       while (paramGetYearNodeListEvent.hasNext()) {
         i += ((MomeriesYearNode)paramGetYearNodeListEvent.next()).videoCount;
@@ -30,9 +30,9 @@ public class MemoriesProfilePresenter$GetYearNodeListReceiver
       {
         SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
         MemoriesProfilePresenter.a(paramMemoriesProfilePresenter, i);
-        if (paramMemoriesProfilePresenter.a != null)
+        if (paramMemoriesProfilePresenter.b != null)
         {
-          paramMemoriesProfilePresenter.a.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
+          paramMemoriesProfilePresenter.b.videoCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
           ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramMemoriesProfilePresenter), 5, null, false);
         }
       }

@@ -27,8 +27,8 @@ class PublicAccountImageCollectionMainActivityImpl$4
     if (PublicAccountImageCollectionMainActivityImpl.access$600(this.this$0) != null)
     {
       i = j;
-      if (PublicAccountImageCollectionMainActivityImpl.access$600(this.this$0).a != null) {
-        i = PublicAccountImageCollectionMainActivityImpl.access$600(this.this$0).a.size();
+      if (PublicAccountImageCollectionMainActivityImpl.access$600(this.this$0).i != null) {
+        i = PublicAccountImageCollectionMainActivityImpl.access$600(this.this$0).i.size();
       }
     }
     IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
@@ -48,7 +48,7 @@ class PublicAccountImageCollectionMainActivityImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.4
  * JD-Core Version:    0.7.0.1
  */

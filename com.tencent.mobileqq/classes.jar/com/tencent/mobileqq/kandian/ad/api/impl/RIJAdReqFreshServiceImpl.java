@@ -24,17 +24,17 @@ public class RIJAdReqFreshServiceImpl
   
   public int getExposeRate()
   {
-    return AdReqFreshManager.a().a();
+    return AdReqFreshManager.a().b();
   }
   
   public Set<Long> getRequestAdIds()
   {
-    return AdReqFreshManager.a().a();
+    return AdReqFreshManager.a().c();
   }
   
   public String getRequestAdIdsStr()
   {
-    return AdReqFreshManager.a().a();
+    return AdReqFreshManager.a().d();
   }
   
   public void removeAdFromAllScene(Long paramLong)
@@ -44,7 +44,7 @@ public class RIJAdReqFreshServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdReqFreshServiceImpl
  * JD-Core Version:    0.7.0.1
  */

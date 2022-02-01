@@ -18,24 +18,24 @@ import org.json.JSONObject;
 public final class c
   implements com.tencent.featuretoggle.hltxkg.common.c.c, Runnable
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static c jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCBBC = new c();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private com.tencent.featuretoggle.hltxkg.common.c.b jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCB;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new d(this);
-  private Map<String, b> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new e(this);
-  private Map<String, c.a> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean = false;
-  private Runnable jdField_c_of_type_JavaLangRunnable = new f(this);
-  private boolean jdField_c_of_type_Boolean = false;
+  private static int a = -1;
+  private static c b = new c();
+  private com.tencent.featuretoggle.hltxkg.common.c.b c;
+  private boolean d = false;
+  private boolean e = false;
+  private boolean f = false;
+  private Handler g;
+  private Map<String, b> h = new ConcurrentHashMap();
+  private Runnable i = new d(this);
+  private Runnable j = new e(this);
+  private Runnable k = new f(this);
+  private Map<String, c.a> l = new HashMap();
   
-  private c.a a(String paramString)
+  private c.a b(String paramString)
   {
     try
     {
-      boolean bool = this.jdField_b_of_type_JavaUtilMap.isEmpty();
+      boolean bool = this.l.isEmpty();
       Object localObject3;
       if (bool) {
         try
@@ -54,14 +54,14 @@ public final class c
                 if (localJSONObject != null)
                 {
                   c.a locala = new c.a(this, (byte)0);
-                  locala.jdField_a_of_type_Int = localJSONObject.optInt("lastCode");
-                  locala.jdField_a_of_type_Long = localJSONObject.optLong("lastReqTime");
-                  this.jdField_b_of_type_JavaUtilMap.put(str, locala);
+                  locala.b = localJSONObject.optInt("lastCode");
+                  locala.a = localJSONObject.optLong("lastReqTime");
+                  this.l.put(str, locala);
                 }
               }
             }
           }
-          localObject3 = (c.a)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+          localObject3 = (c.a)this.l.get(paramString);
         }
         catch (Exception localException)
         {
@@ -72,7 +72,7 @@ public final class c
       if (localObject3 == null)
       {
         localObject2 = new c.a(this, (byte)0);
-        this.jdField_b_of_type_JavaUtilMap.put(paramString, localObject2);
+        this.l.put(paramString, localObject2);
       }
       return localObject2;
     }
@@ -85,17 +85,17 @@ public final class c
   
   public static c c()
   {
-    return jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCBBC;
+    return b;
   }
   
-  private void c()
+  private void g()
   {
     try
     {
-      if (!this.jdField_b_of_type_JavaUtilMap.isEmpty())
+      if (!this.l.isEmpty())
       {
         JSONObject localJSONObject1 = new JSONObject();
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.entrySet().iterator();
+        Iterator localIterator = this.l.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -103,8 +103,8 @@ public final class c
           JSONObject localJSONObject2 = new JSONObject();
           try
           {
-            localJSONObject2.put("lastCode", locala.jdField_a_of_type_Int);
-            localJSONObject2.put("lastReqTime", locala.jdField_a_of_type_Long);
+            localJSONObject2.put("lastCode", locala.b);
+            localJSONObject2.put("lastReqTime", locala.a);
             localJSONObject1.put((String)localEntry.getKey(), localJSONObject2);
           }
           catch (JSONException localJSONException)
@@ -125,35 +125,35 @@ public final class c
   
   public final void a()
   {
-    ((b)this.jdField_a_of_type_JavaUtilMap.get("accessscheduler")).a();
+    ((b)this.h.get("accessscheduler")).a();
   }
   
   public final void a(int paramInt)
   {
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_b_of_type_JavaLangRunnable);
+      this.g.removeCallbacks(this.j);
+      this.g.post(this.j);
       return;
     }
-    if ((paramInt == 2) && (!this.jdField_c_of_type_Boolean))
+    if ((paramInt == 2) && (!this.f))
     {
-      this.jdField_c_of_type_Boolean = true;
+      this.f = true;
       paramInt = i.a("detect_platform_update_random_interval", 0, 1440, 10);
       paramInt = new Random().nextInt(paramInt);
-      o.a().a(this.jdField_a_of_type_JavaLangRunnable, paramInt * 60 * 1000 + 1000);
+      o.a().a(this.i, paramInt * 60 * 1000 + 1000);
     }
   }
   
   public final void a(com.tencent.featuretoggle.hltxkg.common.c.b paramb)
   {
-    this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCB = paramb;
+    this.c = paramb;
     paramb = new com.tencent.featuretoggle.hltxkg.common.c.b.b.d.a();
-    this.jdField_a_of_type_JavaUtilMap.put(paramb.c(), paramb);
+    this.h.put(paramb.c(), paramb);
     paramb = new com.tencent.featuretoggle.hltxkg.common.c.b.b.b.b();
-    this.jdField_a_of_type_JavaUtilMap.put(paramb.c(), paramb);
+    this.h.put(paramb.c(), paramb);
     paramb = new com.tencent.featuretoggle.hltxkg.common.c.b.b.c.a();
-    this.jdField_a_of_type_JavaUtilMap.put(paramb.c(), paramb);
+    this.h.put(paramb.c(), paramb);
   }
   
   public final void a(String paramString) {}
@@ -162,34 +162,34 @@ public final class c
   
   public final void b()
   {
-    ((b)this.jdField_a_of_type_JavaUtilMap.get("settings")).b();
+    ((b)this.h.get("settings")).b();
   }
   
   public final void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler = com.tencent.featuretoggle.hltxkg.common.a.i();
-    this.jdField_a_of_type_AndroidOsHandler.post(this);
-    this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCB.c();
+    this.g = com.tencent.featuretoggle.hltxkg.common.a.i();
+    this.g.post(this);
+    this.c.c();
   }
   
   public final com.tencent.featuretoggle.hltxkg.common.c.b e()
   {
-    return this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonCB;
+    return this.c;
   }
   
   public final void run()
   {
     if (i.a("http_platform_start_update_on", 0, 1, 1) == 1)
     {
-      jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_b_of_type_JavaLangRunnable);
+      a = 1;
+      this.g.removeCallbacks(this.j);
+      this.g.post(this.j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.c.b.b.c
  * JD-Core Version:    0.7.0.1
  */

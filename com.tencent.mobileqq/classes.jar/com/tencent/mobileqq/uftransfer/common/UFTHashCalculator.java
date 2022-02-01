@@ -20,11 +20,6 @@ public class UFTHashCalculator
     finally {}
   }
   
-  protected int a()
-  {
-    return 4;
-  }
-  
   public long a(String paramString, long paramLong1, long paramLong2, UFTHashCalculator.IHashCalcPrg paramIHashCalcPrg)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramIHashCalcPrg != null))
@@ -35,7 +30,7 @@ public class UFTHashCalculator
       paramString = new UFTHashCalculator.CalcTask(this, paramString, paramLong1, paramIHashCalcPrg);
       paramString.a(paramLong2);
       a(paramString);
-      return paramString.a();
+      return paramString.e();
     }
     return 0L;
   }
@@ -44,10 +39,15 @@ public class UFTHashCalculator
   {
     b(paramLong);
   }
+  
+  protected int b()
+  {
+    return 4;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.UFTHashCalculator
  * JD-Core Version:    0.7.0.1
  */

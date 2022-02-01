@@ -35,9 +35,9 @@ public class BirthDayNoticeItemBuilder
   extends AbstractChatItemBuilder
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131701368);
-  private long jdField_a_of_type_Long = 0L;
-  private ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(Color.parseColor("#883353"));
+  private static final String e = HardCodeUtil.a(2131899378);
+  private ForegroundColorSpan f = new ForegroundColorSpan(Color.parseColor("#883353"));
+  private long g = 0L;
   
   public BirthDayNoticeItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -49,24 +49,24 @@ public class BirthDayNoticeItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558799, null);
-      paramHolder.jdField_b_of_type_AndroidViewView = paramView;
-      paramHolder.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131362335);
-      paramHolder.d = paramView.findViewById(2131362334);
-      paramHolder.a = ((URLImageView)paramView.findViewById(2131362337));
-      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362338));
-      paramHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362336));
+      paramView = LayoutInflater.from(this.c).inflate(2131624419, null);
+      paramHolder.d = paramView;
+      paramHolder.e = paramView.findViewById(2131427935);
+      paramHolder.f = paramView.findViewById(2131427934);
+      paramHolder.g = ((URLImageView)paramView.findViewById(2131427937));
+      paramHolder.h = ((TextView)paramView.findViewById(2131427938));
+      paramHolder.i = ((TextView)paramView.findViewById(2131427936));
       localView = paramView;
-      if (e)
+      if (v)
       {
-        paramHolder.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+        paramHolder.r = new StringBuilder();
         localView = paramView;
       }
     }
-    if (e)
+    if (v)
     {
       localView.setContentDescription(null);
-      paramHolder.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramHolder.jdField_b_of_type_JavaLangStringBuilder.length(), "");
+      paramHolder.r.replace(0, paramHolder.r.length(), "");
     }
     return localView;
   }
@@ -76,7 +76,7 @@ public class BirthDayNoticeItemBuilder
     long l1;
     if ((paramMessageRecord != null) && (!AIOSingleReporter.a().a(paramMessageRecord, "aio_msg|birthday_notice")))
     {
-      AIOSingleReporter.a().a(paramMessageRecord, "aio_msg|birthday_notice");
+      AIOSingleReporter.a().b(paramMessageRecord, "aio_msg|birthday_notice");
       l1 = 0L;
     }
     try
@@ -115,8 +115,8 @@ public class BirthDayNoticeItemBuilder
     paramView = a(paramView, paramViewHolder);
     try
     {
-      paramViewHolder.a.setBackgroundURL(paramMessageRecord.icon);
-      paramViewHolder.d.setBackgroundColor(Color.parseColor(paramMessageRecord.background));
+      paramViewHolder.g.setBackgroundURL(paramMessageRecord.icon);
+      paramViewHolder.f.setBackgroundColor(Color.parseColor(paramMessageRecord.background));
     }
     catch (Exception paramLinearLayout)
     {
@@ -130,27 +130,27 @@ public class BirthDayNoticeItemBuilder
       localStringBuilder.append(paramLinearLayout);
       paramOnLongClickAndTouchListener.a(19, 2, localStringBuilder.toString(), false);
     }
-    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.birthday);
-    int i = paramMessageRecord.blessing.indexOf(jdField_a_of_type_JavaLangString);
+    paramViewHolder.h.setText(paramMessageRecord.birthday);
+    int i = paramMessageRecord.blessing.indexOf(e);
     if (i >= 0)
     {
       paramLinearLayout = new SpannableString(paramMessageRecord.blessing);
-      paramLinearLayout.setSpan(this.jdField_a_of_type_AndroidTextStyleForegroundColorSpan, i, jdField_a_of_type_JavaLangString.length() + i, 33);
-      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramLinearLayout);
+      paramLinearLayout.setSpan(this.f, i, e.length() + i, 33);
+      paramViewHolder.i.setText(paramLinearLayout);
     }
     else
     {
-      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramMessageRecord.blessing);
+      paramViewHolder.i.setText(paramMessageRecord.blessing);
     }
-    paramViewHolder.jdField_c_of_type_AndroidViewView.setTag(paramMessageRecord);
-    paramViewHolder.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
+    paramViewHolder.e.setTag(paramMessageRecord);
+    paramViewHolder.e.setOnClickListener(this);
     a(paramMessageRecord);
-    if (e)
+    if (v)
     {
-      paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append("生日");
-      paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.birthday);
-      paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.append(paramMessageRecord.blessing);
-      paramViewHolder.jdField_b_of_type_AndroidViewView.setContentDescription(paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.toString());
+      paramViewHolder.r.append("生日");
+      paramViewHolder.r.append(paramMessageRecord.birthday);
+      paramViewHolder.r.append(paramMessageRecord.blessing);
+      paramViewHolder.d.setContentDescription(paramViewHolder.r.toString());
     }
     return paramView;
   }
@@ -162,28 +162,28 @@ public class BirthDayNoticeItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
   
-  public boolean a()
-  {
-    long l = System.currentTimeMillis();
-    boolean bool;
-    if (l - this.jdField_a_of_type_Long > 500L) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    this.jdField_a_of_type_Long = l;
-    return bool;
-  }
-  
   public QQCustomMenuItem[] a(View paramView)
   {
     return null;
   }
   
+  public boolean c()
+  {
+    long l = System.currentTimeMillis();
+    boolean bool;
+    if (l - this.g > 500L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.g = l;
+    return bool;
+  }
+  
   public void onClick(View paramView)
   {
     Object localObject1;
-    if (a())
+    if (c())
     {
       localObject1 = paramView.getTag();
       if ((localObject1 instanceof MessageForBirthdayNotice))
@@ -202,9 +202,9 @@ public class BirthDayNoticeItemBuilder
         }
         else
         {
-          localObject2 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          localObject2 = new Intent(this.c, QQBrowserActivity.class);
           ((Intent)localObject2).putExtra("url", ((MessageForBirthdayNotice)localObject1).doufu_link);
-          this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
+          this.c.startActivity((Intent)localObject2);
         }
       }
     }
@@ -237,7 +237,7 @@ public class BirthDayNoticeItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BirthDayNoticeItemBuilder
  * JD-Core Version:    0.7.0.1
  */

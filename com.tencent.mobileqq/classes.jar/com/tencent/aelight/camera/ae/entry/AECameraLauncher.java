@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.ae.flashshow.AEFlashShowCameraLauncher;
 import com.tencent.aelight.camera.ae.perf.AELaunchRecorder;
 import com.tencent.aelight.camera.ae.util.PicChooseJumpUtil;
 import com.tencent.aelight.camera.aebase.AECameraPlugin.TakePhotoParam;
@@ -34,55 +35,6 @@ public class AECameraLauncher
 {
   private static long a;
   
-  private static Bundle a(@Nullable Bundle paramBundle)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("AECAMERA_MODE", 200);
-    if (!localBundle.containsKey("VIDEO_STORY_FROM_TYPE")) {
-      localBundle.putInt("VIDEO_STORY_FROM_TYPE", AECameraEntry.x.a());
-    }
-    localBundle.putInt("VIDEO_STORY_JUMP_TO_TYPE", 1);
-    Object localObject = localBundle.getString("qq_camera_from_qcircle_scheme");
-    paramBundle = (Bundle)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramBundle = localBundle.getString("key_polymerization_scheme");
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[setDataForCircleAECamera] scheme:");
-    ((StringBuilder)localObject).append(paramBundle);
-    AEQLog.d("AECameraLauncher", ((StringBuilder)localObject).toString());
-    localObject = localBundle;
-    if (!TextUtils.isEmpty(paramBundle))
-    {
-      paramBundle = Uri.parse(paramBundle);
-      localObject = localBundle;
-      if (paramBundle != null)
-      {
-        localBundle.putString("tab", paramBundle.getQueryParameter("tab"));
-        localObject = JumpUtil.a(localBundle, paramBundle.getQueryParameter("widgetinfo"));
-        ((Bundle)localObject).putString("VIDEO_STORY_ACTIVITY_ID", paramBundle.getQueryParameter("activity_id"));
-        a((Bundle)localObject, "editor_filter_id", paramBundle);
-        a((Bundle)localObject, "editor_text_sticker_id", paramBundle);
-        a((Bundle)localObject, "editor_image_template_id", paramBundle);
-        a((Bundle)localObject, "editor_video_template_id", paramBundle);
-        a((Bundle)localObject, "editor_text_id", paramBundle);
-        a((Bundle)localObject, "editor_frame_id", paramBundle);
-      }
-    }
-    ((Bundle)localObject).putInt("entrance_type", 120);
-    ((Bundle)localObject).putInt("edit_video_type", 10026);
-    ((Bundle)localObject).putInt("capture_intent_mode", 8);
-    if (!((Bundle)localObject).getBoolean("BUNDLE_KEY_CIRCLE_CAN_PICK_VIDEO", true))
-    {
-      AEQLog.b("AECameraLauncher", "[AdditionalPick] setDataForCircleAECamera---canNotPickVideo set only photo flag for camera");
-      ((Bundle)localObject).putInt("ability_flag", 2);
-    }
-    return localObject;
-  }
-  
   public static void a(Activity paramActivity, int paramInt1, int paramInt2, AECameraPlugin.TakePhotoParam paramTakePhotoParam)
   {
     if (b()) {
@@ -95,14 +47,14 @@ public class AECameraLauncher
     localBundle.putInt("edit_video_type", 10023);
     if (paramTakePhotoParam != null)
     {
-      localBundle.putBoolean("key_camera_prefer_id", paramTakePhotoParam.jdField_a_of_type_Boolean);
-      localBundle.putBoolean("key_has_countdown", paramTakePhotoParam.b);
-      localBundle.putBoolean("key_disable_face_detect", paramTakePhotoParam.d);
-      localBundle.putBoolean("key_need_check_sensitive", paramTakePhotoParam.c);
-      localBundle.putString("key_guide_image", paramTakePhotoParam.jdField_a_of_type_JavaLangString);
+      localBundle.putBoolean("key_camera_prefer_id", paramTakePhotoParam.d);
+      localBundle.putBoolean("key_has_countdown", paramTakePhotoParam.f);
+      localBundle.putBoolean("key_disable_face_detect", paramTakePhotoParam.h);
+      localBundle.putBoolean("key_need_check_sensitive", paramTakePhotoParam.g);
+      localBundle.putString("key_guide_image", paramTakePhotoParam.e);
     }
     QIMCameraCaptureActivity.a(paramActivity, localBundle, paramInt1);
-    paramActivity.overridePendingTransition(2130772281, 2130772067);
+    paramActivity.overridePendingTransition(2130772373, 2130772092);
   }
   
   public static void a(Activity paramActivity, int paramInt, Bundle paramBundle)
@@ -110,7 +62,7 @@ public class AECameraLauncher
     if (b()) {
       return;
     }
-    AELaunchRecorder.a().a("AECameraLauncher---launchAECameraUnit-begin");
+    AELaunchRecorder.d().a("AECameraLauncher---launchAECameraUnit-begin");
     StoryPublishLauncher localStoryPublishLauncher = StoryPublishLauncher.a();
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
@@ -119,32 +71,32 @@ public class AECameraLauncher
     localBundle.putInt("entrance_type", paramInt);
     localBundle.putInt("edit_video_type", 10023);
     localBundle.putInt("capture_intent_mode", 8);
-    if (b(localBundle))
+    if (d(localBundle))
     {
       AEQLog.b("AECameraLauncher", "isOpenFrontFirst: true");
       CameraHelper.a(1);
     }
-    if (c(localBundle))
+    if (e(localBundle))
     {
       AEQLog.b("AECameraLauncher", "isOpenBackFirst: true");
       CameraHelper.a(2);
     }
-    CameraHelper.a();
+    CameraHelper.d();
     localStoryPublishLauncher.a(paramActivity, localBundle, 20000);
-    paramActivity.overridePendingTransition(2130772281, 2130772067);
+    paramActivity.overridePendingTransition(2130772373, 2130772092);
     StoryReportor.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    AELaunchRecorder.a().a("AECameraLauncher---launchAECameraUnit-end");
-    AELaunchRecorder.a().a(false);
-    AELaunchRecorder.a().e();
+    AELaunchRecorder.d().a("AECameraLauncher---launchAECameraUnit-end");
+    AELaunchRecorder.d().a(false);
+    AELaunchRecorder.d().f();
   }
   
   public static void a(Activity paramActivity, @Nullable Bundle paramBundle, int paramInt)
   {
     AEQLog.a("AECameraLauncher", "[AE Profiler] launchAECircleAlbumAndCamera");
-    paramBundle = a(paramBundle);
+    paramBundle = c(paramBundle);
     StoryPublishLauncher.a().a(paramBundle);
     QIMCameraCaptureActivity.a(paramActivity, paramBundle, paramInt);
-    paramActivity.overridePendingTransition(2130772281, 2130772067);
+    paramActivity.overridePendingTransition(2130772373, 2130772092);
   }
   
   public static void a(Context paramContext, Bundle paramBundle)
@@ -159,27 +111,18 @@ public class AECameraLauncher
     }
     localBundle.putInt("edit_video_type", 10023);
     localBundle.putInt("capture_intent_mode", 8);
-    if (b(localBundle))
+    if (d(localBundle))
     {
       AEQLog.b("AECameraLauncher", "isOpenFrontFirst: true");
       CameraHelper.a(1);
     }
-    if (c(localBundle))
+    if (e(localBundle))
     {
       AEQLog.b("AECameraLauncher", "isOpenBackFirst: true");
       CameraHelper.a(2);
     }
     localStoryPublishLauncher.a(paramContext, localBundle);
     StoryReportor.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-  }
-  
-  private static void a(Bundle paramBundle)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putBoolean("flag_clear_top", true);
   }
   
   private static void a(@NonNull Bundle paramBundle, String paramString, @NonNull Uri paramUri)
@@ -235,11 +178,11 @@ public class AECameraLauncher
         if (i != 2)
         {
           bool1 = true;
-          break label122;
+          break label116;
         }
       }
       bool1 = false;
-      label122:
+      label116:
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[isResReady] aeBaseRes + lightBaseRes soIsExist:");
       ((StringBuilder)localObject).append(bool1);
@@ -247,7 +190,7 @@ public class AECameraLauncher
       bool2 = bool1;
       if (paramBoolean)
       {
-        if ((bool1) && (ShortVideoGuideUtil.b(AECaptureContext.a()))) {
+        if ((bool1) && (ShortVideoGuideUtil.a(AECaptureContext.a()))) {
           paramBoolean = true;
         } else {
           paramBoolean = false;
@@ -272,12 +215,21 @@ public class AECameraLauncher
   public static void b(Context paramContext, @Nullable Bundle paramBundle)
   {
     AEQLog.a("AECameraLauncher", "[AE Profiler] launchAECameraFromCircle");
-    paramBundle = a(paramBundle);
+    paramBundle = c(paramBundle);
     StoryPublishLauncher localStoryPublishLauncher = StoryPublishLauncher.a();
-    a(paramBundle);
+    b(paramBundle);
     paramContext = (Activity)paramContext;
     localStoryPublishLauncher.a(paramContext, paramBundle, 20000);
-    paramContext.overridePendingTransition(2130772281, 2130772067);
+    paramContext.overridePendingTransition(2130772373, 2130772092);
+  }
+  
+  private static void b(Bundle paramBundle)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    localBundle.putBoolean("flag_clear_top", true);
   }
   
   private static boolean b()
@@ -299,9 +251,78 @@ public class AECameraLauncher
     return false;
   }
   
-  private static boolean b(Bundle paramBundle)
+  private static Bundle c(@Nullable Bundle paramBundle)
   {
-    boolean bool1 = CameraHelper.a();
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    localBundle.putInt("AECAMERA_MODE", 200);
+    if (!localBundle.containsKey("VIDEO_STORY_FROM_TYPE")) {
+      localBundle.putInt("VIDEO_STORY_FROM_TYPE", AECameraEntry.x.a());
+    }
+    localBundle.putInt("VIDEO_STORY_JUMP_TO_TYPE", 1);
+    Object localObject = localBundle.getString("qq_camera_from_qcircle_scheme");
+    paramBundle = (Bundle)localObject;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramBundle = localBundle.getString("key_polymerization_scheme");
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[setDataForCircleAECamera] scheme:");
+    ((StringBuilder)localObject).append(paramBundle);
+    AEQLog.d("AECameraLauncher", ((StringBuilder)localObject).toString());
+    localObject = localBundle;
+    if (!TextUtils.isEmpty(paramBundle))
+    {
+      paramBundle = Uri.parse(paramBundle);
+      localObject = localBundle;
+      if (paramBundle != null)
+      {
+        localBundle.putString("tab", paramBundle.getQueryParameter("tab"));
+        localObject = JumpUtil.a(localBundle, paramBundle.getQueryParameter("widgetinfo"));
+        ((Bundle)localObject).putString("VIDEO_STORY_ACTIVITY_ID", paramBundle.getQueryParameter("activity_id"));
+        a((Bundle)localObject, "editor_filter_id", paramBundle);
+        a((Bundle)localObject, "editor_text_sticker_id", paramBundle);
+        a((Bundle)localObject, "editor_image_template_id", paramBundle);
+        a((Bundle)localObject, "editor_video_template_id", paramBundle);
+        a((Bundle)localObject, "editor_text_id", paramBundle);
+        a((Bundle)localObject, "editor_frame_id", paramBundle);
+      }
+    }
+    ((Bundle)localObject).putInt("entrance_type", 120);
+    ((Bundle)localObject).putInt("edit_video_type", 10026);
+    ((Bundle)localObject).putInt("capture_intent_mode", 8);
+    if (!((Bundle)localObject).getBoolean("BUNDLE_KEY_CIRCLE_CAN_PICK_VIDEO", true))
+    {
+      AEQLog.b("AECameraLauncher", "[AdditionalPick] setDataForCircleAECamera---canNotPickVideo set only photo flag for camera");
+      ((Bundle)localObject).putInt("ability_flag", 2);
+    }
+    return localObject;
+  }
+  
+  public static void c(Context paramContext, @Nullable Bundle paramBundle)
+  {
+    if (!a((Activity)paramContext))
+    {
+      if ((a()) && (Build.VERSION.SDK_INT >= 21))
+      {
+        b(paramContext, paramBundle);
+        return;
+      }
+      PicChooseJumpUtil.a(paramContext, new Intent().putExtras(paramBundle));
+    }
+  }
+  
+  public static void d(Context paramContext, @Nullable Bundle paramBundle)
+  {
+    if ((paramContext instanceof Activity)) {
+      AEFlashShowCameraLauncher.a().a((Activity)paramContext, paramBundle, 0);
+    }
+  }
+  
+  private static boolean d(Bundle paramBundle)
+  {
+    boolean bool1 = CameraHelper.c();
     boolean bool2 = false;
     if (((bool1) || (paramBundle.getInt("VIDEO_STORY_JUMP_TO_TYPE", 0) == 0)) && ((paramBundle.getInt("AECAMERA_MODE") != 202) || (!CameraUtils.d())))
     {
@@ -319,27 +340,14 @@ public class AECameraLauncher
     return bool1;
   }
   
-  public static void c(Context paramContext, @Nullable Bundle paramBundle)
-  {
-    if (!a((Activity)paramContext))
-    {
-      if ((a()) && (Build.VERSION.SDK_INT >= 21))
-      {
-        b(paramContext, paramBundle);
-        return;
-      }
-      PicChooseJumpUtil.a(paramContext, new Intent().putExtras(paramBundle));
-    }
-  }
-  
-  private static boolean c(Bundle paramBundle)
+  private static boolean e(Bundle paramBundle)
   {
     return paramBundle.getInt("AECAMERA_MODE") == 208;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.entry.AECameraLauncher
  * JD-Core Version:    0.7.0.1
  */

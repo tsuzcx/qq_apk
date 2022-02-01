@@ -10,8 +10,8 @@ class BaseAdapter$1
   
   public int getSpanSize(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseAdapter.getItemViewType(paramInt) != 7) {
-      return this.jdField_a_of_type_AndroidxRecyclerviewWidgetGridLayoutManager.getSpanCount();
+    if (this.b.getItemViewType(paramInt) != 7) {
+      return this.a.getSpanCount();
     }
     return 1;
   }

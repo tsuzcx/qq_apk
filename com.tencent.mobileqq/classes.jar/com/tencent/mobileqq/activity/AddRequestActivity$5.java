@@ -29,30 +29,30 @@ class AddRequestActivity$5
 {
   AddRequestActivity$5(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
       if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
         long l1 = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getCurrStructMsgKey();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getStructMsgFromMap(Long.valueOf(l1));
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
+        this.b.q = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getStructMsgFromMap(Long.valueOf(l1));
+        if (this.b.q != null)
         {
-          paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
-          l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
-          long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
-          int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
-          int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
-          int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
-          int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
+          paramInt = this.b.q.msg_type.get();
+          l1 = this.b.q.msg_seq.get();
+          long l2 = this.b.q.req_uin.get();
+          int i = this.b.q.msg.sub_type.get();
+          int j = this.b.q.msg.src_id.get();
+          int k = this.b.q.msg.sub_src_id.get();
+          int m = this.b.q.msg.group_msg_type.get();
+          paramView = this.b.q.msg.actions.get();
           if ((paramView != null) && (1 < paramView.size()))
           {
             ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
-            AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
-            this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getMsgHandler().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
-            AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131718766, 1000L, false);
+            AddRequestActivity.a(this.b, true);
+            this.b.app.getMsgHandler().B().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
+            AddRequestActivity.a(this.b, 2131916272, 1000L, false);
           }
           else
           {
@@ -74,17 +74,17 @@ class AddRequestActivity$5
       }
       else
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694424, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+        QQToast.makeText(this.b, 2131892104, 0).show(this.b.getTitleBarHeight());
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "0X800AA45", "0X800AA45", 0, 0, "", "", "", "");
+      ReportController.b(this.b.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
+      ReportController.b(this.b.app, "CliOper", "", "", "0X800AA45", "0X800AA45", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.5
  * JD-Core Version:    0.7.0.1
  */

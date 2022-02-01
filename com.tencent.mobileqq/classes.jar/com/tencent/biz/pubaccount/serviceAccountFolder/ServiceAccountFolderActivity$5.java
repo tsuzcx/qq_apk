@@ -13,10 +13,10 @@ class ServiceAccountFolderActivity$5
   
   public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (ServiceAccountFolderActivity.a(this.a) != null)
+    if (ServiceAccountFolderActivity.b(this.a) != null)
     {
       float f = paramMotionEvent.getY();
-      if ((f > ServiceAccountFolderActivity.a(this.a).getTop()) && (f < ServiceAccountFolderActivity.a(this.a).getBottom())) {
+      if ((f > ServiceAccountFolderActivity.b(this.a).getTop()) && (f < ServiceAccountFolderActivity.b(this.a).getBottom())) {
         return false;
       }
     }
@@ -25,7 +25,7 @@ class ServiceAccountFolderActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity.5
  * JD-Core Version:    0.7.0.1
  */

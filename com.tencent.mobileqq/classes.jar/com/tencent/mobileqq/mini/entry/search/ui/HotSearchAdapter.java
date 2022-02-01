@@ -62,12 +62,12 @@ public class HotSearchAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131559392, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext().getApplicationContext()).inflate(2131625358, paramViewGroup, false);
       paramViewGroup = new HotSearchAdapter.HotSearchViewHolder();
-      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131371220));
-      paramViewGroup.ranking = ((ImageView)paramView.findViewById(2131371222));
-      paramViewGroup.name = ((TextView)paramView.findViewById(2131371224));
-      paramViewGroup.category = ((TextView)paramView.findViewById(2131371225));
+      paramViewGroup.icon = ((ImageView)paramView.findViewById(2131438562));
+      paramViewGroup.ranking = ((ImageView)paramView.findViewById(2131438564));
+      paramViewGroup.name = ((TextView)paramView.findViewById(2131438566));
+      paramViewGroup.category = ((TextView)paramView.findViewById(2131438567));
       paramView.setTag(paramViewGroup);
     }
     else
@@ -116,7 +116,7 @@ public class HotSearchAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.HotSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

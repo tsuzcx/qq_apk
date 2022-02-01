@@ -18,7 +18,7 @@ class QQMusicService$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.a.a);
+    localStringBuilder.append(this.a.d);
     return QQPlayerService.a(5, localStringBuilder.toString());
   }
   
@@ -28,7 +28,7 @@ class QQMusicService$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onPlaySongChanged:");
-      localStringBuilder.append(paramSongInfo.c);
+      localStringBuilder.append(paramSongInfo.e);
       QLog.i("QQMusicService", 2, localStringBuilder.toString());
     }
   }
@@ -42,7 +42,7 @@ class QQMusicService$1
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("QQMusicService", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = QQPlayerService.b();
+    Object localObject = QQPlayerService.g();
     localObject = QQMusicService.a(this.a, (SongInfo)localObject);
     if (localObject != null)
     {

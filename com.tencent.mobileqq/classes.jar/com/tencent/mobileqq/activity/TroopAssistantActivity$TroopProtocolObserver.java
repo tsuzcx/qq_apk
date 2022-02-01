@@ -40,10 +40,10 @@ class TroopAssistantActivity$TroopProtocolObserver
           if (localRspBody.opt_uint32_ret_code.get() == 0)
           {
             localTroopAssistantManager.b(paramBundle.app, localRspBody.opt_uint64_timestamp.get());
-            if ((paramArrayOfByte.size() > 0) && (paramBundle.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingSingleAdapter != null))
+            if ((paramArrayOfByte.size() > 0) && (paramBundle.l != null))
             {
-              paramBundle.jdField_a_of_type_JavaUtilList = paramArrayOfByte;
-              paramBundle.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingSingleAdapter.a(paramArrayOfByte);
+              paramBundle.i = paramArrayOfByte;
+              paramBundle.l.a(paramArrayOfByte);
               return;
             }
             TroopAssistantActivity.a(paramBundle);
@@ -65,7 +65,7 @@ class TroopAssistantActivity$TroopProtocolObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.TroopProtocolObserver
  * JD-Core Version:    0.7.0.1
  */

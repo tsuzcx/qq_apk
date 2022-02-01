@@ -3,7 +3,6 @@ package androidx.constraintlayout.motion.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import androidx.constraintlayout.motion.utils.CurveFit;
 import androidx.constraintlayout.widget.ConstraintAttribute;
 import androidx.constraintlayout.widget.R.styleable;
 import java.util.HashMap;
@@ -32,9 +31,7 @@ public class KeyTimeCycle
   private float mTranslationY = (0.0F / 0.0F);
   private float mTranslationZ = (0.0F / 0.0F);
   private float mWaveOffset = 0.0F;
-  private CurveFit mWaveOffsetSpline;
   private float mWavePeriod = (0.0F / 0.0F);
-  private CurveFit mWavePeriodSpline;
   private int mWaveShape = 0;
   
   public KeyTimeCycle()
@@ -259,11 +256,6 @@ public class KeyTimeCycle
     }
   }
   
-  int getCurveFit()
-  {
-    return this.mCurveFit;
-  }
-  
   public void load(Context paramContext, AttributeSet paramAttributeSet)
   {
     KeyTimeCycle.Loader.read(this, paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.KeyTimeCycle));
@@ -451,7 +443,7 @@ public class KeyTimeCycle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.KeyTimeCycle
  * JD-Core Version:    0.7.0.1
  */

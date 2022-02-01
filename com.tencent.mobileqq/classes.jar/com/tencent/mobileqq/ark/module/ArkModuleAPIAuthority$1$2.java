@@ -14,16 +14,16 @@ class ArkModuleAPIAuthority$1$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArkModuleArkModuleAPIAuthority$1.jdField_a_of_type_ComTencentMobileqqArkModuleAuthDialogEventHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkModuleArkModuleAPIAuthority$1.jdField_a_of_type_ComTencentMobileqqArkModuleAuthDialogEventHandler.b();
+    if (this.c.d != null) {
+      this.c.d.b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {}
+    if (this.a.isShowing()) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      ArkModuleAPIAuthority.a(this.jdField_a_of_type_ComTencentMobileqqArkModuleArkModuleAPIAuthority$1.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkModuleArkModuleAPIAuthority$1.d, this.jdField_a_of_type_ComTencentMobileqqArkModuleArkModuleAPIAuthority$1.e, 2);
-      paramDialogInterface = this.jdField_a_of_type_AndroidAppActivity;
-      paramDialogInterface = DialogUtil.a(paramDialogInterface, paramDialogInterface.getString(2131690134), 2131719065, 2131719065, new DialogUtil.DialogOnClickAdapter(), null);
+      this.a.dismiss();
+      ArkModuleAPIAuthority.a(this.c.a, this.c.e, this.c.f, 2);
+      paramDialogInterface = this.b;
+      paramDialogInterface = DialogUtil.a(paramDialogInterface, paramDialogInterface.getString(2131887033), 2131916601, 2131916601, new DialogUtil.DialogOnClickAdapter(), null);
     }
     catch (Exception paramDialogInterface)
     {
@@ -42,7 +42,7 @@ class ArkModuleAPIAuthority$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkModuleAPIAuthority.1.2
  * JD-Core Version:    0.7.0.1
  */

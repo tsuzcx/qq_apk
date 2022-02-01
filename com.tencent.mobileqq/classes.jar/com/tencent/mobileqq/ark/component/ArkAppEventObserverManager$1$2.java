@@ -10,16 +10,16 @@ class ArkAppEventObserverManager$1$2
   
   public void run()
   {
-    if (ArkAppEventObserverManager.a(this.a.a) != null) {
-      ArkAppEventObserverManager.a(this.a.a).a(false, 0.0D, 0.0D);
+    if (ArkAppEventObserverManager.e(this.a.a) != null) {
+      ArkAppEventObserverManager.e(this.a.a).a(false, 0.0D, 0.0D);
     }
-    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(ArkAppEventObserverManager.a(this.a.a));
+    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(ArkAppEventObserverManager.f(this.a.a));
     ArkAppEventObserverManager.a(this.a.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.component.ArkAppEventObserverManager.1.2
  * JD-Core Version:    0.7.0.1
  */

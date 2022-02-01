@@ -19,14 +19,14 @@ class QRCardActivity$7
     {
       Integer localInteger = (Integer)localObject;
       if (localInteger.intValue() == 0) {
-        localObject = (String)((TextView)paramView.findViewById(2131365169)).getText();
+        localObject = (String)((TextView)paramView.findViewById(2131431322)).getText();
       } else {
         localObject = null;
       }
       if (localInteger.intValue() == 1)
       {
         localObject = this.a;
-        ((QRCardActivity)localObject).a((String)((QRCardActivity)localObject).a.d.get(this.a.h));
+        ((QRCardActivity)localObject).a((String)((QRCardActivity)localObject).i.d.get(this.a.r));
       }
       else
       {
@@ -38,7 +38,7 @@ class QRCardActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRCardActivity.7
  * JD-Core Version:    0.7.0.1
  */

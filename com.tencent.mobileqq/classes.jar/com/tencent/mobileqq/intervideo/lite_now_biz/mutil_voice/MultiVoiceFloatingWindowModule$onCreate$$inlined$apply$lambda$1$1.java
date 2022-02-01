@@ -16,19 +16,19 @@ final class MultiVoiceFloatingWindowModule$onCreate$$inlined$apply$lambda$1$1
   
   public final void onClick(View paramView)
   {
-    if (!this.a.jdField_a_of_type_ComTencentIliveUicomponentFloatwindowcomponent_interfaceFloatWindowComponent.isDragEnd()) {
+    if (!this.a.a.isDragEnd()) {
       return;
     }
-    MultiVoiceFloatingWindowModule.a(this.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule, false);
-    this.a.jdField_a_of_type_ComTencentIliveUicomponentFloatwindowcomponent_interfaceFloatWindowComponent.dismiss(3);
+    MultiVoiceFloatingWindowModule.a(this.a.b, false);
+    this.a.a.dismiss(3);
     Runnable localRunnable = (Runnable)new MultiVoiceFloatingWindowModule.onCreate..inlined.apply.lambda.1.1.1(this);
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule.getAudienceRoomPager();
+    Object localObject = this.a.b.getAudienceRoomPager();
     if (localObject != null)
     {
       localObject = ((IAudienceRoomPager)localObject).getRoomPageAction();
       if (localObject != null)
       {
-        localObject = Boolean.valueOf(((RoomPageActionInterface)localObject).onFloatWindowClick(localRunnable, MultiVoiceFloatingWindowModule.a(this.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule)));
+        localObject = Boolean.valueOf(((RoomPageActionInterface)localObject).onFloatWindowClick(localRunnable, MultiVoiceFloatingWindowModule.h(this.a.b)));
         break label114;
       }
     }
@@ -36,10 +36,10 @@ final class MultiVoiceFloatingWindowModule$onCreate$$inlined$apply$lambda$1$1
     label114:
     if ((localObject == null) || (!((Boolean)localObject).booleanValue()))
     {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule;
+      localObject = this.a.b;
       Intrinsics.checkExpressionValueIsNotNull(paramView, "it");
       boolean bool;
-      if (paramView.getId() == 2131380358) {
+      if (paramView.getId() == 2131449302) {
         bool = true;
       } else {
         bool = false;
@@ -49,9 +49,9 @@ final class MultiVoiceFloatingWindowModule$onCreate$$inlined$apply$lambda$1$1
     }
     Intrinsics.checkExpressionValueIsNotNull(paramView, "it");
     int i = paramView.getId();
-    if (i != 2131376809)
+    if (i != 2131445137)
     {
-      if (i != 2131380358) {
+      if (i != 2131449302) {
         return;
       }
       MultiVoiceFloatingWindowModule.a(true);
@@ -62,7 +62,7 @@ final class MultiVoiceFloatingWindowModule$onCreate$$inlined$apply$lambda$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceFloatingWindowModule.onCreate..inlined.apply.lambda.1.1
  * JD-Core Version:    0.7.0.1
  */

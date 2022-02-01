@@ -19,15 +19,15 @@ import java.util.List;
 @TargetApi(12)
 public class ComboResource
 {
-  public static float a;
-  private static LruCache<String, ComboResource.ImageObject> a;
   public static final String a;
-  public static boolean a;
-  public static final String[] a;
-  public static final String b;
   public static final String[] b;
   public static final String[] c;
-  public static final String[] d;
+  public static boolean d;
+  public static float e;
+  public static final String[] f;
+  public static final String g;
+  public static final String[] h;
+  private static LruCache<String, ComboResource.ImageObject> i = new LruCache(15);
   
   static
   {
@@ -35,64 +35,63 @@ public class ComboResource
     ((StringBuilder)localObject1).append(IDoutuUtils.DOUTU_ANIMA_RES_PATH);
     ((StringBuilder)localObject1).append("combo");
     ((StringBuilder)localObject1).append(File.separator);
-    jdField_a_of_type_JavaLangString = RmVFSUtils.getVFSPath(((StringBuilder)localObject1).toString());
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "ribbon0.png", "ribbon1.png", "ribbon2.png", "ribbon3.png", "ribbon4.png", "ribbon5.png", "ribbon6.png", "ribbon7.png", "ribbon8.png", "ribbon9.png" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "0.png", "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png" };
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Float = 2.0F;
-    c = new String[] { "1bitX.png", "2bitX.png", "3bitX.png" };
-    jdField_b_of_type_JavaLangString = IDoutuUtils.DOUTU_ANIMA_RES_PATH;
+    a = RmVFSUtils.getVFSPath(((StringBuilder)localObject1).toString());
+    b = new String[] { "ribbon0.png", "ribbon1.png", "ribbon2.png", "ribbon3.png", "ribbon4.png", "ribbon5.png", "ribbon6.png", "ribbon7.png", "ribbon8.png", "ribbon9.png" };
+    c = new String[] { "0.png", "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png" };
+    d = false;
+    e = 2.0F;
+    f = new String[] { "1bitX.png", "2bitX.png", "3bitX.png" };
+    g = IDoutuUtils.DOUTU_ANIMA_RES_PATH;
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(g);
     ((StringBuilder)localObject1).append("bonus_8");
     ((StringBuilder)localObject1).append(File.separator);
     ((StringBuilder)localObject1).append("doutuX8_");
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(g);
     ((StringBuilder)localObject2).append("bonus_18");
     ((StringBuilder)localObject2).append(File.separator);
     ((StringBuilder)localObject2).append("doutuX18_");
     localObject2 = ((StringBuilder)localObject2).toString();
     Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(g);
     ((StringBuilder)localObject3).append("bonus_88");
     ((StringBuilder)localObject3).append(File.separator);
     ((StringBuilder)localObject3).append("doutuX88_");
     localObject3 = ((StringBuilder)localObject3).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(g);
     localStringBuilder.append("bonus_888");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("doutuX888_");
-    d = new String[] { localObject1, localObject2, localObject3, localStringBuilder.toString() };
-    jdField_a_of_type_AndroidUtilLruCache = new LruCache(15);
+    h = new String[] { localObject1, localObject2, localObject3, localStringBuilder.toString() };
   }
   
   public static ComboResource.ImageObject a(int paramInt, Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+    localStringBuilder.append(a);
+    localStringBuilder.append(b[paramInt]);
     return a(localStringBuilder.toString(), 2, paramContext);
   }
   
   public static ComboResource.ImageObject a(Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("dui.png");
     return a(localStringBuilder.toString(), 2, paramContext);
   }
   
   public static ComboResource.ImageObject a(String paramString, int paramInt, Context paramContext)
   {
-    Object localObject1 = (ComboResource.ImageObject)jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+    Object localObject1 = (ComboResource.ImageObject)i.get(paramString);
     if (localObject1 != null) {
       return localObject1;
     }
     boolean bool = new File(paramString).exists();
-    int i = 0;
+    int j = 0;
     if (!bool)
     {
       if (QLog.isColorLevel())
@@ -102,9 +101,9 @@ public class ComboResource
         ((StringBuilder)localObject1).append(paramString);
         QLog.d("ComboUIManager", 2, ((StringBuilder)localObject1).toString());
       }
-      if (!jdField_a_of_type_Boolean)
+      if (!d)
       {
-        jdField_a_of_type_Boolean = true;
+        d = true;
         ThreadManager.post(new ComboResource.1(paramContext), 5, null, false);
       }
       return null;
@@ -113,12 +112,12 @@ public class ComboResource
     ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject2);
     localObject1 = paramContext.getResources();
-    int j = ((BitmapFactory.Options)localObject2).outHeight;
-    int k = ((BitmapFactory.Options)localObject2).outWidth;
+    int k = ((BitmapFactory.Options)localObject2).outHeight;
+    int m = ((BitmapFactory.Options)localObject2).outWidth;
     try
     {
       localObject2 = Drawable.createFromPath(paramString);
-      if ((k != 0) && (j != 0) && (localObject2 != null))
+      if ((m != 0) && (k != 0) && (localObject2 != null))
       {
         if (paramInt != 1)
         {
@@ -126,9 +125,9 @@ public class ComboResource
           {
             if (paramInt != 3)
             {
-              j = 0;
-              paramInt = i;
-              i = j;
+              k = 0;
+              paramInt = j;
+              j = k;
               break label259;
             }
             paramInt = Utils.a(24.0F, (Resources)localObject1);
@@ -137,24 +136,24 @@ public class ComboResource
           {
             paramInt = Utils.a(32.0F, (Resources)localObject1);
           }
-          i = (int)(paramInt / j * k);
+          j = (int)(paramInt / k * m);
         }
         else
         {
-          i = Utils.a(k / jdField_a_of_type_Float, (Resources)localObject1);
-          paramInt = Utils.a(j / jdField_a_of_type_Float, (Resources)localObject1);
+          j = Utils.a(m / e, (Resources)localObject1);
+          paramInt = Utils.a(k / e, (Resources)localObject1);
         }
         label259:
         paramContext = new ComboResource.ImageObject();
-        paramContext.jdField_a_of_type_Int = i;
+        paramContext.a = j;
         paramContext.b = paramInt;
-        paramContext.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject2);
-        jdField_a_of_type_AndroidUtilLruCache.put(paramString, paramContext);
+        paramContext.c = ((Drawable)localObject2);
+        i.put(paramString, paramContext);
         return paramContext;
       }
-      if (!jdField_a_of_type_Boolean)
+      if (!d)
       {
-        jdField_a_of_type_Boolean = true;
+        d = true;
         ThreadManager.post(new ComboResource.2(paramContext), 5, null, false);
       }
       return null;
@@ -176,19 +175,19 @@ public class ComboResource
   
   public static void a()
   {
-    jdField_a_of_type_AndroidUtilLruCache.evictAll();
+    i.evictAll();
   }
   
   public static File[] a(int paramInt)
   {
-    int i = 0;
+    int j = 0;
     String str = null;
-    while (i < ComboEggView.a.length)
+    while (j < ComboEggView.a.length)
     {
-      if (paramInt == ComboEggView.a[i]) {
-        str = d[i];
+      if (paramInt == ComboEggView.a[j]) {
+        str = h[j];
       }
-      i += 1;
+      j += 1;
     }
     if (str == null) {
       return null;
@@ -216,15 +215,15 @@ public class ComboResource
   public static ComboResource.ImageObject b(int paramInt, Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(jdField_b_of_type_ArrayOfJavaLangString[paramInt]);
+    localStringBuilder.append(a);
+    localStringBuilder.append(c[paramInt]);
     return a(localStringBuilder.toString(), 1, paramContext);
   }
   
   public static ComboResource.ImageObject b(Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("ribbonX.png");
     return a(localStringBuilder.toString(), 3, paramContext);
   }
@@ -232,14 +231,14 @@ public class ComboResource
   public static ComboResource.ImageObject c(int paramInt, Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(c[(paramInt - 1)]);
+    localStringBuilder.append(a);
+    localStringBuilder.append(f[(paramInt - 1)]);
     return a(localStringBuilder.toString(), 1, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboResource
  * JD-Core Version:    0.7.0.1
  */

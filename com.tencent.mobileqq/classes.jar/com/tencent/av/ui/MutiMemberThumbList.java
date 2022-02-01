@@ -19,19 +19,19 @@ import mqq.os.MqqHandler;
 public class MutiMemberThumbList
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private VideoController jdField_a_of_type_ComTencentAvVideoController = null;
-  private String jdField_a_of_type_JavaLangString = "";
-  private final ArrayList<VideoController.GAudioFriends> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373515, 2131373516, 2131373517, 2131373518, 2131373519, 2131373520, 2131373521 };
-  private int jdField_b_of_type_Int = -1;
-  private long jdField_b_of_type_Long = -1L;
-  private final String jdField_b_of_type_JavaLangString = "%d+";
-  private boolean jdField_b_of_type_Boolean = false;
+  private final int[] a = { 2131441188, 2131441189, 2131441190, 2131441191, 2131441192, 2131441193, 2131441194 };
+  private final ArrayList<VideoController.GAudioFriends> b = new ArrayList();
+  private String c = "";
+  private final String d = "%d+";
+  private long e = 0L;
+  private int f = 0;
+  private int g = -1;
+  private VideoController h = null;
+  private volatile boolean i = false;
+  private GradientDrawable j;
+  private View k;
+  private boolean l = false;
+  private long m = -1L;
   
   public MutiMemberThumbList(Context paramContext)
   {
@@ -47,7 +47,7 @@ public class MutiMemberThumbList
   {
     super(paramContext, paramAttributeSet, paramInt);
     b();
-    this.jdField_a_of_type_JavaLangString = getContext().getString(2131695622);
+    this.c = getContext().getString(2131893381);
   }
   
   private void a(int paramInt, ArrayList<VideoController.GAudioFriends> paramArrayList)
@@ -61,25 +61,25 @@ public class MutiMemberThumbList
   
   private void b()
   {
-    addView(LayoutInflater.from(getContext()).inflate(2131559728, null));
-    this.jdField_a_of_type_Boolean = false;
+    addView(LayoutInflater.from(getContext()).inflate(2131625768, null));
+    this.i = false;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.i = true;
   }
   
   public void onDetachedFromWindow()
   {
     QLog.d("MutiMemberThumbList", 1, "onDetachedFromWindow ");
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_Boolean = true;
+    this.i = true;
   }
   
   public void setBitMapFetcher(VideoController paramVideoController)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
+    this.h = paramVideoController;
   }
   
   public void setDisPlayList(ArrayList<VideoController.GAudioFriends> paramArrayList)
@@ -88,55 +88,55 @@ public class MutiMemberThumbList
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setDisPlayList cost");
-      ((StringBuilder)localObject).append(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - this.m);
       QLog.d("MutiMemberThumbList", 1, ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.b.clear();
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
         localObject = (VideoController.GAudioFriends)paramArrayList.next();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        this.b.add(localObject);
       }
-      a(this.jdField_a_of_type_JavaUtilArrayList.size(), (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
+      a(this.b.size(), (ArrayList)this.b.clone());
       return;
     }
     setVisibility(4);
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.m = System.currentTimeMillis();
     paramArrayList = new StringBuilder();
     paramArrayList.append("setDisPlayList ");
-    paramArrayList.append(this.jdField_b_of_type_Long);
+    paramArrayList.append(this.m);
     QLog.d("MutiMemberThumbList", 1, paramArrayList.toString());
   }
   
   public void setHeadImgMask(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
   }
   
   public void setMoreInfoDrawableColor(String paramString)
   {
-    int i = AIOUtils.b(32.0F, getResources());
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setShape(1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor(paramString));
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setSize(i, i);
+    int n = AIOUtils.b(32.0F, getResources());
+    this.j = new GradientDrawable();
+    this.j.setShape(1);
+    this.j.setColor(Color.parseColor(paramString));
+    this.j.setSize(n, n);
   }
   
   public void setRelatedView(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.k = paramView;
+    this.k.setVisibility(4);
   }
   
   public void setRelationShipInfo(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramLong;
+    this.f = paramInt;
   }
   
   public void setTextColor(String paramString)
   {
-    this.jdField_b_of_type_Int = Color.parseColor(paramString);
+    this.g = Color.parseColor(paramString);
   }
 }
 

@@ -22,12 +22,12 @@ class X5InterfaceFallback$4
   
   public void success(@Nullable Object paramObject)
   {
-    X5InterfaceFallback.a(this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsX5X5InterfaceFallback).a(this.jdField_a_of_type_JavaLangString, paramObject, null);
+    this.a.a.a(this.b, paramObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.x5.X5InterfaceFallback.4
  * JD-Core Version:    0.7.0.1
  */

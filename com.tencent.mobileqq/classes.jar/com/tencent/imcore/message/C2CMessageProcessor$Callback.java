@@ -66,13 +66,13 @@ public abstract interface C2CMessageProcessor$Callback
   
   public abstract boolean a(MessageRecord paramMessageRecord, C2CMessageProcessor paramC2CMessageProcessor);
   
-  public abstract byte[] a(C2CMessageProcessor paramC2CMessageProcessor);
-  
   public abstract void b(ArrayList<MessageRecord> paramArrayList, C2CMessageProcessor paramC2CMessageProcessor);
+  
+  public abstract byte[] b(C2CMessageProcessor paramC2CMessageProcessor);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageProcessor.Callback
  * JD-Core Version:    0.7.0.1
  */

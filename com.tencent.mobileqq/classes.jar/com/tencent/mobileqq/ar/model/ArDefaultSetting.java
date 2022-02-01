@@ -8,19 +8,19 @@ public class ArDefaultSetting
   implements Parcelable
 {
   public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new ArDefaultSetting.1();
-  public int a;
   public String a;
   public int b;
   public int c;
+  public int d;
   
   public ArDefaultSetting() {}
   
   public ArDefaultSetting(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readInt();
     this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -32,29 +32,29 @@ public class ArDefaultSetting
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ArDefaultSetting{key='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", modelLevel=");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(", traceLevel=");
+    localStringBuilder.append(", modelLevel=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", traceLevel=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.a);
     paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArDefaultSetting
  * JD-Core Version:    0.7.0.1
  */

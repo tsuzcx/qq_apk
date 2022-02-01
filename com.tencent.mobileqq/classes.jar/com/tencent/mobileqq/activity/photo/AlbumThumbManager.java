@@ -155,18 +155,18 @@ public class AlbumThumbManager
     try
     {
       BlobCache.LookupRequest localLookupRequest = new BlobCache.LookupRequest();
-      localLookupRequest.jdField_a_of_type_Long = paramLong;
-      localLookupRequest.jdField_a_of_type_ArrayOfByte = paramBytesBuffer.data;
+      localLookupRequest.a = paramLong;
+      localLookupRequest.b = paramBytesBuffer.data;
       synchronized (this.mBlobLock)
       {
         if (!this.mBlobCache.a(localLookupRequest)) {
           return false;
         }
-        if (isSameKey(paramArrayOfByte, localLookupRequest.jdField_a_of_type_ArrayOfByte))
+        if (isSameKey(paramArrayOfByte, localLookupRequest.b))
         {
-          paramBytesBuffer.data = localLookupRequest.jdField_a_of_type_ArrayOfByte;
+          paramBytesBuffer.data = localLookupRequest.b;
           paramBytesBuffer.offset = paramArrayOfByte.length;
-          paramBytesBuffer.length = (localLookupRequest.jdField_a_of_type_Int - paramBytesBuffer.offset);
+          paramBytesBuffer.length = (localLookupRequest.c - paramBytesBuffer.offset);
           return true;
         }
       }
@@ -193,18 +193,18 @@ public class AlbumThumbManager
     try
     {
       BlobCache.LookupRequest localLookupRequest = new BlobCache.LookupRequest();
-      localLookupRequest.jdField_a_of_type_Long = paramLong;
-      localLookupRequest.jdField_a_of_type_ArrayOfByte = paramTempBuffer.data;
+      localLookupRequest.a = paramLong;
+      localLookupRequest.b = paramTempBuffer.data;
       synchronized (this.mBlobLock)
       {
         if (!this.mBlobCache.a(localLookupRequest)) {
           return false;
         }
-        if (isSameKey(paramArrayOfByte, localLookupRequest.jdField_a_of_type_ArrayOfByte, localLookupRequest.jdField_a_of_type_Int - 16, 16))
+        if (isSameKey(paramArrayOfByte, localLookupRequest.b, localLookupRequest.c - 16, 16))
         {
-          paramTempBuffer.data = localLookupRequest.jdField_a_of_type_ArrayOfByte;
+          paramTempBuffer.data = localLookupRequest.b;
           paramTempBuffer.offset = 0;
-          paramTempBuffer.length = (localLookupRequest.jdField_a_of_type_Int - 16);
+          paramTempBuffer.length = (localLookupRequest.c - 16);
           return true;
         }
       }
@@ -271,7 +271,7 @@ public class AlbumThumbManager
     paramDownloadParams = new StringBuilder();
     paramDownloadParams.append(paramURL.toString());
     paramDownloadParams.append((String)localObject);
-    return SecurityUtil.a(paramDownloadParams.toString());
+    return SecurityUtil.b(paramDownloadParams.toString());
   }
   
   private static boolean isSameKey(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -383,21 +383,21 @@ public class AlbumThumbManager
     //   0: aload_0
     //   1: aload_1
     //   2: aload_3
-    //   3: invokespecial 380	com/tencent/mobileqq/activity/photo/AlbumThumbManager:getKey	(Ljava/net/URL;Lcom/tencent/image/DownloadParams;)[B
+    //   3: invokespecial 382	com/tencent/mobileqq/activity/photo/AlbumThumbManager:getKey	(Ljava/net/URL;Lcom/tencent/image/DownloadParams;)[B
     //   6: astore 10
     //   8: getstatic 87	com/tencent/mobileqq/activity/photo/AlbumThumbManager:sCacheBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
-    //   11: invokevirtual 384	com/tencent/component/network/utils/BytesBufferPool:get	()Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;
+    //   11: invokevirtual 386	com/tencent/component/network/utils/BytesBufferPool:get	()Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;
     //   14: astore 9
     //   16: invokestatic 213	android/os/SystemClock:uptimeMillis	()J
     //   19: lstore 4
     //   21: aload 10
-    //   23: invokestatic 387	common/qzone/component/util/SecurityUtil:a	([B)J
+    //   23: invokestatic 389	common/qzone/component/util/SecurityUtil:a	([B)J
     //   26: lstore 6
     //   28: aload_0
     //   29: aload 10
     //   31: lload 6
     //   33: aload 9
-    //   35: invokespecial 389	com/tencent/mobileqq/activity/photo/AlbumThumbManager:getCacheData	([BJLcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)Z
+    //   35: invokespecial 391	com/tencent/mobileqq/activity/photo/AlbumThumbManager:getCacheData	([BJLcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)Z
     //   38: istore 8
     //   40: iload 8
     //   42: ifne +43 -> 85
@@ -407,7 +407,7 @@ public class AlbumThumbManager
     //   48: aload 10
     //   50: lload 4
     //   52: lload 6
-    //   54: invokespecial 391	com/tencent/mobileqq/activity/photo/AlbumThumbManager:createBitMapFromUrl	(Ljava/net/URL;Lcom/tencent/mobileqq/transfile/bitmapcreator/BitmapDecoder;[BJJ)Landroid/graphics/Bitmap;
+    //   54: invokespecial 393	com/tencent/mobileqq/activity/photo/AlbumThumbManager:createBitMapFromUrl	(Ljava/net/URL;Lcom/tencent/mobileqq/transfile/bitmapcreator/BitmapDecoder;[BJJ)Landroid/graphics/Bitmap;
     //   57: astore_2
     //   58: aload_2
     //   59: ifnull +15 -> 74
@@ -415,19 +415,19 @@ public class AlbumThumbManager
     //   63: astore_1
     //   64: getstatic 87	com/tencent/mobileqq/activity/photo/AlbumThumbManager:sCacheBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
     //   67: aload 9
-    //   69: invokevirtual 395	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
+    //   69: invokevirtual 397	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
     //   72: aload_1
     //   73: areturn
     //   74: getstatic 87	com/tencent/mobileqq/activity/photo/AlbumThumbManager:sCacheBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
     //   77: aload 9
-    //   79: invokevirtual 395	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
+    //   79: invokevirtual 397	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
     //   82: goto +194 -> 276
     //   85: aload_0
     //   86: aload_1
     //   87: aload_3
     //   88: aload 9
     //   90: lload 4
-    //   92: invokespecial 397	com/tencent/mobileqq/activity/photo/AlbumThumbManager:createBitMapFromCache	(Ljava/net/URL;Lcom/tencent/image/DownloadParams;Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;J)Landroid/graphics/Bitmap;
+    //   92: invokespecial 399	com/tencent/mobileqq/activity/photo/AlbumThumbManager:createBitMapFromCache	(Ljava/net/URL;Lcom/tencent/image/DownloadParams;Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;J)Landroid/graphics/Bitmap;
     //   95: astore_2
     //   96: aload_2
     //   97: astore_1
@@ -441,7 +441,7 @@ public class AlbumThumbManager
     //   113: astore_2
     //   114: ldc 30
     //   116: iconst_2
-    //   117: ldc_w 399
+    //   117: ldc_w 401
     //   120: aload_2
     //   121: invokestatic 272	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   124: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -456,7 +456,7 @@ public class AlbumThumbManager
     //   146: invokespecial 69	java/lang/StringBuilder:<init>	()V
     //   149: astore_2
     //   150: aload_2
-    //   151: ldc_w 401
+    //   151: ldc_w 403
     //   154: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   157: pop
     //   158: aload_2
@@ -481,7 +481,7 @@ public class AlbumThumbManager
     //   192: goto -118 -> 74
     //   195: ldc 30
     //   197: iconst_2
-    //   198: ldc_w 399
+    //   198: ldc_w 401
     //   201: aload_2
     //   202: invokestatic 272	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   205: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -496,7 +496,7 @@ public class AlbumThumbManager
     //   227: invokespecial 69	java/lang/StringBuilder:<init>	()V
     //   230: astore_2
     //   231: aload_2
-    //   232: ldc_w 403
+    //   232: ldc_w 405
     //   235: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   238: pop
     //   239: aload_2
@@ -523,7 +523,7 @@ public class AlbumThumbManager
     //   277: areturn
     //   278: getstatic 87	com/tencent/mobileqq/activity/photo/AlbumThumbManager:sCacheBufferPool	Lcom/tencent/component/network/utils/BytesBufferPool;
     //   281: aload 9
-    //   283: invokevirtual 395	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
+    //   283: invokevirtual 397	com/tencent/component/network/utils/BytesBufferPool:recycle	(Lcom/tencent/component/network/utils/BytesBufferPool$BytesBuffer;)V
     //   286: goto +5 -> 291
     //   289: aload_1
     //   290: athrow
@@ -558,7 +558,7 @@ public class AlbumThumbManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.AlbumThumbManager
  * JD-Core Version:    0.7.0.1
  */

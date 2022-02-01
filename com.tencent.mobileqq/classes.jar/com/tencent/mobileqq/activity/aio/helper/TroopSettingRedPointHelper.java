@@ -19,64 +19,64 @@ import java.util.List;
 public class TroopSettingRedPointHelper
   implements ILifeCycleHelper
 {
-  private View jdField_a_of_type_AndroidViewView = null;
-  private TroopChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private CleanRedPointUIComponent jdField_a_of_type_ComTencentMobileqqTroopRedpointCleanRedPointUIComponent;
-  private DrawRedPointUIComponent jdField_a_of_type_ComTencentMobileqqTroopRedpointDrawRedPointUIComponent;
-  private CenterProcessor jdField_a_of_type_ComTencentMobileqqTroopRedpointTroopsettingredpointCenterProcessor;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private View jdField_b_of_type_AndroidViewView = null;
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<Integer> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private QQAppInterface a;
+  private TroopChatPie b;
+  private String c = "";
+  private String d = "";
+  private View e = null;
+  private View f = null;
+  private List<Integer> g = new ArrayList();
+  private List<Integer> h = new ArrayList();
+  private DrawRedPointUIComponent i;
+  private CleanRedPointUIComponent j;
+  private CenterProcessor k;
   
   public TroopSettingRedPointHelper(TroopChatPie paramTroopChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.b = paramTroopChatPie;
+    this.a = paramTroopChatPie.d;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-      if ((localObject != null) && (((TroopChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList != null))
+      Object localObject = this.b;
+      if ((localObject != null) && (((TroopChatPie)localObject).ah != null) && (!TextUtils.isEmpty(this.b.ah.b)) && (this.g != null) && (this.h != null))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c == null) {
+        if (this.b.aZ == null) {
           return;
         }
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        localObject = ((ITroopInfoService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(this.jdField_a_of_type_JavaLangString);
+        this.c = this.b.ah.b;
+        localObject = ((ITroopInfoService)this.a.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(this.c);
         if (localObject != null)
         {
           if (((TroopInfo)localObject).isExited()) {
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqTroopRedpointTroopsettingredpointCenterProcessor = new CenterProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-          this.jdField_b_of_type_JavaLangString = "troop";
-          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c.findViewById(2131376321);
-          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.c.findViewById(2131369216);
+          this.k = new CenterProcessor(this.a, this.c);
+          this.d = "troop";
+          this.e = this.b.aZ.findViewById(2131444532);
+          this.f = this.b.aZ.findViewById(2131436194);
           b();
           c();
           localObject = new RedPointUIData();
-          ((RedPointUIData)localObject).jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          ((RedPointUIData)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          ((RedPointUIData)localObject).jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-          ((RedPointUIData)localObject).jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-          ((RedPointUIData)localObject).jdField_b_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
-          ((RedPointUIData)localObject).jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
-          ((RedPointUIData)localObject).jdField_b_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
-          ((RedPointUIData)localObject).jdField_a_of_type_ComTencentMobileqqTroopRedpointOnHandleClickEvent = new TroopSettingRedPointHelper.1(this);
-          this.jdField_a_of_type_ComTencentMobileqqTroopRedpointTroopsettingredpointCenterProcessor.b();
-          this.jdField_a_of_type_ComTencentMobileqqTroopRedpointDrawRedPointUIComponent = new DrawRedPointUIComponent((RedPointUIData)localObject);
-          this.jdField_a_of_type_ComTencentMobileqqTroopRedpointCleanRedPointUIComponent = new CleanRedPointUIComponent((RedPointUIData)localObject);
+          ((RedPointUIData)localObject).g = this.a;
+          ((RedPointUIData)localObject).a = this.c;
+          ((RedPointUIData)localObject).b = this.d;
+          ((RedPointUIData)localObject).e = this.g;
+          ((RedPointUIData)localObject).f = this.h;
+          ((RedPointUIData)localObject).c = this.e;
+          ((RedPointUIData)localObject).d = this.f;
+          ((RedPointUIData)localObject).h = new TroopSettingRedPointHelper.1(this);
+          this.k.b();
+          this.i = new DrawRedPointUIComponent((RedPointUIData)localObject);
+          this.j = new CleanRedPointUIComponent((RedPointUIData)localObject);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("onCreate : mUin = ");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(this.c);
             QLog.d("TroopSettingRedHelper", 2, ((StringBuilder)localObject).toString());
           }
         }
@@ -86,47 +86,47 @@ public class TroopSettingRedPointHelper
   
   private void b()
   {
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(3));
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(5));
+    this.g.add(Integer.valueOf(1));
+    this.g.add(Integer.valueOf(2));
+    this.g.add(Integer.valueOf(3));
+    this.g.add(Integer.valueOf(5));
   }
   
   private void c()
   {
-    this.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(1));
+    this.h.add(Integer.valueOf(1));
   }
   
   private void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopRedpointTroopsettingredpointCenterProcessor;
+    Object localObject = this.k;
     if (localObject != null)
     {
       ((CenterProcessor)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqTroopRedpointTroopsettingredpointCenterProcessor = null;
+      this.k = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopRedpointDrawRedPointUIComponent;
+    localObject = this.i;
     if (localObject != null)
     {
       ((DrawRedPointUIComponent)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqTroopRedpointDrawRedPointUIComponent = null;
+      this.i = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopRedpointCleanRedPointUIComponent;
+    localObject = this.j;
     if (localObject != null)
     {
       ((CleanRedPointUIComponent)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqTroopRedpointCleanRedPointUIComponent = null;
+      this.j = null;
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    localObject = this.g;
     if (localObject != null) {
       ((List)localObject).clear();
     }
-    localObject = this.jdField_b_of_type_JavaUtilList;
+    localObject = this.h;
     if (localObject != null) {
       ((List)localObject).clear();
     }
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_b_of_type_AndroidViewView = null;
+    this.e = null;
+    this.f = null;
   }
   
   public String getTag()
@@ -154,7 +154,7 @@ public class TroopSettingRedPointHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopSettingRedPointHelper
  * JD-Core Version:    0.7.0.1
  */

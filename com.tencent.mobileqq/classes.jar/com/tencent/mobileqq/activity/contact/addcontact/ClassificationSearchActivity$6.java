@@ -19,23 +19,23 @@ class ClassificationSearchActivity$6
   public void onClick(View paramView)
   {
     Object localObject;
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText())) && (this.a.f != ClassificationSearchActivity.c))
+    if ((!TextUtils.isEmpty(this.a.K.getText())) && (this.a.q != ClassificationSearchActivity.m))
     {
-      localObject = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(((String)localObject).trim())))
+      localObject = this.a.K.getText().toString();
+      if ((this.a.q == ClassificationSearchActivity.k) && (!TextUtils.isEmpty(((String)localObject).trim())))
       {
         this.a.a((String)localObject);
         ClassificationSearchActivity.a(this.a, (String)localObject);
         ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", (String)localObject, "", true);
       }
-      else if (this.a.f == ClassificationSearchActivity.d)
+      else if (this.a.q == ClassificationSearchActivity.n)
       {
         ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800742D", "0X800742D", 0, 0, (String)localObject, "", "", "");
         ClassificationSearchActivity.a(this.a, (String)localObject);
       }
       else
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a((String)localObject, false);
+        this.a.M.a((String)localObject, false);
       }
     }
     else
@@ -46,7 +46,7 @@ class ClassificationSearchActivity$6
       }
       this.a.setResult(0);
       this.a.finish();
-      if ((this.a.f == ClassificationSearchActivity.d) || (this.a.f == ClassificationSearchActivity.e)) {
+      if ((this.a.q == ClassificationSearchActivity.n) || (this.a.q == ClassificationSearchActivity.o)) {
         this.a.sendBroadcast(new Intent("com.tencent.mobileqq.search.cancel"));
       }
     }
@@ -55,7 +55,7 @@ class ClassificationSearchActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -23,26 +23,26 @@ final class FeedCommentLego$2
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$PostCommentCallback, false, this.b);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.isReply()) {
+      FeedCommentLego.a(this.e, this.b, this.f, this.a, false, this.g);
+      if (this.b.isReply()) {
         paramInt = 2;
       } else {
         paramInt = 1;
       }
-      int i = StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+      int i = StoryReportor.a(this.e);
+      if (this.e.getOwner().isMe()) {
         paramBundle = "1";
       } else {
         paramBundle = "2";
       }
-      StoryReportor.a("home_page", "comment_auto", i, paramInt, new String[] { paramBundle, StoryReportor.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      StoryReportor.a("home_page", "comment_auto", i, paramInt, new String[] { paramBundle, StoryReportor.b(this.f), "", this.e.feedId });
       return;
     }
-    paramBundle = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+    paramBundle = this.b;
     paramBundle.status = 2;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelCommentManager.c(paramBundle);
+    this.c.c(paramBundle);
     if (QLog.isColorLevel())
     {
       paramBundle = new StringBuilder();
@@ -50,14 +50,14 @@ final class FeedCommentLego$2
       paramBundle.append(paramInt);
       QLog.e("FeedCommentLego", 2, paramBundle.toString());
     }
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131704505), 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131902417), 0).show();
   }
   
   public void a(int paramInt, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+    Object localObject = this.b;
     ((CommentEntry)localObject).status = 2;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelCommentManager.c((CommentEntry)localObject);
+    this.c.c((CommentEntry)localObject);
     if (paramInt == 10407) {
       StoryReportor.a("play_video", "exp_limit", 0, 0, new String[] { "", "", "", "" });
     }
@@ -72,42 +72,42 @@ final class FeedCommentLego$2
     }
     localObject = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      localObject = HardCodeUtil.a(2131704540);
+      localObject = HardCodeUtil.a(2131902450);
     }
-    QQToast.a(BaseApplication.getContext(), 1, (CharSequence)localObject, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, (CharSequence)localObject, 0).show();
   }
   
   public void a(MessageMicro paramMessageMicro)
   {
     paramMessageMicro = (qqstory_service.RspAddFeedComment)paramMessageMicro;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$PostCommentCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, paramMessageMicro)) {
+    if (this.a.a(this.b, paramMessageMicro)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryModelCommentManager.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId = paramMessageMicro.comment_id.get();
-    paramMessageMicro = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+    this.c.d(this.b);
+    this.b.commentId = paramMessageMicro.comment_id.get();
+    paramMessageMicro = this.b;
     paramMessageMicro.status = 0;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelCommentManager.b(paramMessageMicro);
+    this.c.b(paramMessageMicro);
   }
   
   public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    StoryFailCommentCacher.a().a();
-    if ((this.jdField_a_of_type_Boolean) && (!paramBoolean))
+    StoryFailCommentCacher.a().b();
+    if ((this.d) && (!paramBoolean))
     {
-      StoryQQTextCacher.a().a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      StoryQQTextCacher.a().a(this.b);
       return;
     }
-    FeedCommentLego.a(this.jdField_a_of_type_Int, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+    FeedCommentLego.a(this.f, 1, this.b.feedId, this.b.commentId);
     boolean bool;
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status == 0)) {
+    if ((paramBoolean) && (this.b.status == 0)) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler$PostCommentCallback.a(bool, paramBundle, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    this.a.a(bool, paramBundle, this.b);
     int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.isReply()) {
+    if (this.b.isReply()) {
       i = 2;
     } else {
       i = 1;
@@ -120,22 +120,22 @@ final class FeedCommentLego$2
     String str2 = StoryReportor.a("home_page-comment_suc-d1");
     String str3 = StoryQQTextCacher.a().a;
     int j;
-    if (this.b) {
+    if (this.g) {
       j = 12;
     } else {
-      j = StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      j = StoryReportor.a(this.e);
     }
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "0";
     }
-    StoryReportor.a("home_page", paramBundle, j, i, new String[] { str1, StoryReportor.a(this.jdField_a_of_type_Int), str3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-    StoryQQTextCacher.a().a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    StoryReportor.a("home_page", paramBundle, j, i, new String[] { str1, StoryReportor.b(this.f), str3, this.e.feedId });
+    StoryQQTextCacher.a().a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentLego.2
  * JD-Core Version:    0.7.0.1
  */

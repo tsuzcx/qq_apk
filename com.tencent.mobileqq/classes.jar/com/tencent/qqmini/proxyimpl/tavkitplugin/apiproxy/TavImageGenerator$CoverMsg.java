@@ -4,18 +4,18 @@ import com.tencent.tav.coremedia.CMTime;
 
 class TavImageGenerator$CoverMsg
 {
-  private final TavImageGenerator.ImageGeneratorListener jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavImageGenerator$ImageGeneratorListener;
-  private final CMTime jdField_a_of_type_ComTencentTavCoremediaCMTime;
+  private final CMTime b;
+  private final TavImageGenerator.ImageGeneratorListener c;
   
   public TavImageGenerator$CoverMsg(TavImageGenerator paramTavImageGenerator, CMTime paramCMTime, TavImageGenerator.ImageGeneratorListener paramImageGeneratorListener)
   {
-    this.jdField_a_of_type_ComTencentTavCoremediaCMTime = paramCMTime;
-    this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavImageGenerator$ImageGeneratorListener = paramImageGeneratorListener;
+    this.b = paramCMTime;
+    this.c = paramImageGeneratorListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavImageGenerator.CoverMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -19,16 +19,16 @@ class AccountDetailGroupListContainer$16$1
   
   public void a(Object paramObject)
   {
-    AccountDetailGroupListContainer.b(this.a.a, this.a.a.jdField_a_of_type_Int);
-    if (this.a.a.jdField_a_of_type_AndroidContentSharedPreferences != null)
+    AccountDetailGroupListContainer.b(this.a.b, this.a.b.j);
+    if (this.a.b.v != null)
     {
-      paramObject = this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      paramObject = this.a.b.v.edit();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setting_status_");
-      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.uin);
+      localStringBuilder.append(this.a.b.f.uin);
       localStringBuilder.append("_");
-      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramObject.putInt(localStringBuilder.toString(), this.a.a.jdField_a_of_type_Int).apply();
+      localStringBuilder.append(this.a.b.b.getCurrentAccountUin());
+      paramObject.putInt(localStringBuilder.toString(), this.a.b.j).apply();
     }
   }
   
@@ -49,7 +49,7 @@ class AccountDetailGroupListContainer$16$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.16.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:id="@id/kbk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/black" android:id="@id/kbk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <com.tencent.image.URLImageView android:id="@id/dwp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:scaleType="fitStart" android:adjustViewBounds="true" android:maxWidth="180.0dip" android:maxHeight="180.0dip" />
 </LinearLayout>

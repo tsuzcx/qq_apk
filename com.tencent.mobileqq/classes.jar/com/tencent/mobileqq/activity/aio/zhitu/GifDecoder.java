@@ -4,11 +4,11 @@ import android.graphics.Bitmap;
 
 public class GifDecoder
 {
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[0];
+  private int a = 0;
   private int b = 0;
+  private Bitmap[] c = new Bitmap[0];
+  private int[] d = new int[0];
+  private boolean e = false;
   
   private native boolean nativeBitmapIteratorHasNext(long paramLong);
   
@@ -34,7 +34,7 @@ public class GifDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.GifDecoder
  * JD-Core Version:    0.7.0.1
  */

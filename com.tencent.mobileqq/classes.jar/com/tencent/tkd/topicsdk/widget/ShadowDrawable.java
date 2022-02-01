@@ -20,133 +20,128 @@ import org.jetbrains.annotations.Nullable;
 public final class ShadowDrawable
   extends Drawable
 {
-  public static final ShadowDrawable.Companion a;
-  private final int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private final int[] jdField_a_of_type_ArrayOfInt;
-  private final int jdField_b_of_type_Int;
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private final int c;
+  public static final ShadowDrawable.Companion a = new ShadowDrawable.Companion(null);
+  private final Paint b;
+  private final Paint c;
   private final int d;
   private final int e;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkWidgetShadowDrawable$Companion = new ShadowDrawable.Companion(null);
-  }
+  private final int f;
+  private final int g;
+  private final int[] h;
+  private RectF i;
+  private final int j;
   
   private ShadowDrawable(int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.e = paramInt1;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = paramInt4;
-    this.c = paramInt5;
-    this.d = paramInt6;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(paramInt4, paramInt5, paramInt6, paramInt3);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.j = paramInt1;
+    this.h = paramArrayOfInt;
+    this.e = paramInt2;
+    this.d = paramInt4;
+    this.f = paramInt5;
+    this.g = paramInt6;
+    this.b = new Paint();
+    this.b.setColor(0);
+    this.b.setAntiAlias(true);
+    this.b.setShadowLayer(paramInt4, paramInt5, paramInt6, paramInt3);
+    this.b.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
+    this.c = new Paint();
+    this.c.setAntiAlias(true);
   }
   
   public void draw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    Object localObject = this.h;
     if (localObject != null) {
       if (localObject.length == 1)
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(localObject[0]);
+        this.c.setColor(localObject[0]);
       }
       else
       {
-        localObject = this.jdField_b_of_type_AndroidGraphicsPaint;
-        RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        localObject = this.c;
+        RectF localRectF = this.i;
         if (localRectF == null) {
           Intrinsics.throwNpe();
         }
         f1 = localRectF.left;
-        localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        localRectF = this.i;
         if (localRectF == null) {
           Intrinsics.throwNpe();
         }
         f3 = localRectF.height();
         f2 = 2;
         f3 /= f2;
-        localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        localRectF = this.i;
         if (localRectF == null) {
           Intrinsics.throwNpe();
         }
         f4 = localRectF.right;
-        localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        localRectF = this.i;
         if (localRectF == null) {
           Intrinsics.throwNpe();
         }
-        ((Paint)localObject).setShader((Shader)new LinearGradient(f1, f3, f4, localRectF.height() / f2, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP));
+        ((Paint)localObject).setShader((Shader)new LinearGradient(f1, f3, f4, localRectF.height() / f2, this.h, null, Shader.TileMode.CLAMP));
       }
     }
-    if (this.e == 1)
+    if (this.j == 1)
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+      localObject = this.i;
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
-      int i = this.jdField_b_of_type_Int;
-      paramCanvas.drawRoundRect((RectF)localObject, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+      int k = this.e;
+      paramCanvas.drawRoundRect((RectF)localObject, k, k, this.b);
+      localObject = this.i;
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
-      i = this.jdField_b_of_type_Int;
-      paramCanvas.drawRoundRect((RectF)localObject, i, i, this.jdField_b_of_type_AndroidGraphicsPaint);
+      k = this.e;
+      paramCanvas.drawRoundRect((RectF)localObject, k, k, this.c);
       return;
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     float f2 = ((RectF)localObject).centerX();
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     float f3 = ((RectF)localObject).centerY();
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     float f1 = ((RectF)localObject).width();
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     float f4 = Math.min(f1, ((RectF)localObject).height());
     f1 = 2;
-    paramCanvas.drawCircle(f2, f3, f4 / f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    paramCanvas.drawCircle(f2, f3, f4 / f1, this.b);
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     f2 = ((RectF)localObject).centerX();
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     f3 = ((RectF)localObject).centerY();
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     f4 = ((RectF)localObject).width();
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.i;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
-    paramCanvas.drawCircle(f2, f3, Math.min(f4, ((RectF)localObject).height()) / f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(f2, f3, Math.min(f4, ((RectF)localObject).height()) / f1, this.c);
   }
   
   public int getOpacity()
@@ -156,27 +151,27 @@ public final class ShadowDrawable
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.b.setAlpha(paramInt);
   }
   
   public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    int i = this.jdField_a_of_type_Int;
-    int j = this.c;
-    float f = paramInt1 + i - j;
-    paramInt1 = this.d;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f, paramInt2 + i - paramInt1, paramInt3 - i - j, paramInt4 - i - paramInt1);
+    int k = this.d;
+    int m = this.f;
+    float f1 = paramInt1 + k - m;
+    paramInt1 = this.g;
+    this.i = new RectF(f1, paramInt2 + k - paramInt1, paramInt3 - k - m, paramInt4 - k - paramInt1);
   }
   
   public void setColorFilter(@Nullable ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.b.setColorFilter(paramColorFilter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.ShadowDrawable
  * JD-Core Version:    0.7.0.1
  */

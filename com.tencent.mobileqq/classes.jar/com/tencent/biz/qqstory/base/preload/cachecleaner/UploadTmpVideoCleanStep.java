@@ -39,7 +39,7 @@ public class UploadTmpVideoCleanStep
           }
           SLog.e("Q.qqstory.cleaner:UploadTmpVideoCleanStep", "sleep error ,InterruptedException");
           localFile = paramCleanContext[j];
-          if (a(localFile)) {
+          if (c(localFile)) {
             a(localFile);
           }
           j += 1;
@@ -49,7 +49,7 @@ public class UploadTmpVideoCleanStep
     }
   }
   
-  protected boolean a(File paramFile)
+  protected boolean c(File paramFile)
   {
     if (!paramFile.isDirectory()) {
       return false;
@@ -72,7 +72,7 @@ public class UploadTmpVideoCleanStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.UploadTmpVideoCleanStep
  * JD-Core Version:    0.7.0.1
  */

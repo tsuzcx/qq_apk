@@ -23,18 +23,18 @@ import mqq.os.MqqHandler;
 public class CropImageView
   extends TransformImageView
 {
-  private long jdField_a_of_type_Long = 500L;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private CropBoundsChangeListener jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropCallbackCropBoundsChangeListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private final Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
-  private Runnable jdField_b_of_type_JavaLangRunnable = null;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = 0;
-  private float jdField_d_of_type_Float = 10.0F;
-  private int jdField_d_of_type_Int = 0;
-  private float e;
-  private float f;
+  private final RectF k = new RectF();
+  private final Matrix l = new Matrix();
+  private float m;
+  private float n = 10.0F;
+  private CropBoundsChangeListener o;
+  private Runnable p;
+  private Runnable q = null;
+  private float r;
+  private float s;
+  private int t = 0;
+  private int u = 0;
+  private long v = 500L;
   
   public CropImageView(Context paramContext)
   {
@@ -51,13 +51,6 @@ public class CropImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void a(Object paramObject)
-  {
-    if (paramObject != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
   private void a(String paramString, boolean paramBoolean, @Nullable CropCallback paramCropCallback)
   {
     if (paramCropCallback == null) {
@@ -66,16 +59,40 @@ public class CropImageView
     ThreadManager.getUIHandler().post(new CropImageView.2(this, paramBoolean, paramCropCallback, paramString));
   }
   
-  private float[] a()
+  private void b(float paramFloat1, float paramFloat2)
   {
-    this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_b_of_type_AndroidGraphicsMatrix.setRotate(-e());
-    Object localObject2 = Arrays.copyOf(this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat.length);
-    Object localObject1 = RectUtils.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints((float[])localObject2);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints((float[])localObject1);
-    localObject2 = RectUtils.a((float[])localObject2);
-    localObject1 = RectUtils.a((float[])localObject1);
+    this.s = Math.min(Math.min(this.k.width() / paramFloat1, this.k.width() / paramFloat2), Math.min(this.k.height() / paramFloat2, this.k.height() / paramFloat1));
+    paramFloat1 = this.n;
+    if (paramFloat1 != -1.0F) {
+      this.r = (this.s * paramFloat1);
+    }
+  }
+  
+  private void c(float paramFloat1, float paramFloat2)
+  {
+    float f3 = this.k.width();
+    float f2 = this.k.height();
+    float f1 = Math.max(this.k.width() / paramFloat1, this.k.height() / paramFloat2);
+    paramFloat1 = (f3 - paramFloat1 * f1) / 2.0F;
+    f3 = this.k.left;
+    paramFloat2 = (f2 - paramFloat2 * f1) / 2.0F;
+    f2 = this.k.top;
+    this.c.reset();
+    this.c.postScale(f1, f1);
+    this.c.postTranslate(paramFloat1 + f3, paramFloat2 + f2);
+    setImageMatrix(this.c);
+  }
+  
+  private float[] e()
+  {
+    this.l.reset();
+    this.l.setRotate(-getCurrentAngle());
+    Object localObject2 = Arrays.copyOf(this.a, this.a.length);
+    Object localObject1 = RectUtils.a(this.k);
+    this.l.mapPoints((float[])localObject2);
+    this.l.mapPoints((float[])localObject1);
+    localObject2 = RectUtils.b((float[])localObject2);
+    localObject1 = RectUtils.b((float[])localObject1);
     float f1 = ((RectF)localObject2).left - ((RectF)localObject1).left;
     float f4 = ((RectF)localObject2).top - ((RectF)localObject1).top;
     float f3 = ((RectF)localObject2).right - ((RectF)localObject1).right;
@@ -103,37 +120,13 @@ public class CropImageView
       f1 = 0.0F;
     }
     localObject1[3] = f1;
-    this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_b_of_type_AndroidGraphicsMatrix.setRotate(e());
-    this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints((float[])localObject1);
+    this.l.reset();
+    this.l.setRotate(getCurrentAngle());
+    this.l.mapPoints((float[])localObject1);
     return localObject1;
   }
   
-  private void b(float paramFloat1, float paramFloat2)
-  {
-    this.f = Math.min(Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.width() / paramFloat1, this.jdField_a_of_type_AndroidGraphicsRectF.width() / paramFloat2), Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.height() / paramFloat2, this.jdField_a_of_type_AndroidGraphicsRectF.height() / paramFloat1));
-    paramFloat1 = this.jdField_d_of_type_Float;
-    if (paramFloat1 != -1.0F) {
-      this.e = (this.f * paramFloat1);
-    }
-  }
-  
-  private void c(float paramFloat1, float paramFloat2)
-  {
-    float f3 = this.jdField_a_of_type_AndroidGraphicsRectF.width();
-    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.height();
-    float f1 = Math.max(this.jdField_a_of_type_AndroidGraphicsRectF.width() / paramFloat1, this.jdField_a_of_type_AndroidGraphicsRectF.height() / paramFloat2);
-    paramFloat1 = (f3 - paramFloat1 * f1) / 2.0F;
-    f3 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-    paramFloat2 = (f2 - paramFloat2 * f1) / 2.0F;
-    f2 = this.jdField_a_of_type_AndroidGraphicsRectF.top;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f1);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(paramFloat1 + f3, paramFloat2 + f2);
-    setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  private void d()
+  private void f()
   {
     Drawable localDrawable = getDrawable();
     if (localDrawable == null) {
@@ -142,21 +135,23 @@ public class CropImageView
     b(localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
   }
   
-  public float a()
+  private void setBitmapDecoded(Object paramObject)
   {
-    return this.e;
+    if (paramObject != null) {
+      this.i = true;
+    }
   }
   
   public void a()
   {
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+    removeCallbacks(this.p);
+    removeCallbacks(this.q);
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (paramFloat1 >= b()) {
-      c(paramFloat1 / d(), paramFloat2, paramFloat3);
+    if (paramFloat1 >= getMinScale()) {
+      c(paramFloat1 / getCurrentScale(), paramFloat2, paramFloat3);
     }
   }
   
@@ -182,24 +177,24 @@ public class CropImageView
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("CropImageView", 2, ((StringBuilder)localObject).toString());
     }
-    float f1 = paramFloat1;
-    if (paramFloat1 > a()) {
-      f1 = a();
+    float f = paramFloat1;
+    if (paramFloat1 > getMaxScale()) {
+      f = getMaxScale();
     }
-    paramFloat1 = d();
-    Object localObject = new CropImageView.ZoomImageToPosition(this, paramLong, paramFloat1, f1 - paramFloat1, paramFloat2, paramFloat3, paramBoolean);
-    this.jdField_b_of_type_JavaLangRunnable = ((Runnable)localObject);
+    paramFloat1 = getCurrentScale();
+    Object localObject = new CropImageView.ZoomImageToPosition(this, paramLong, paramFloat1, f - paramFloat1, paramFloat2, paramFloat3, paramBoolean);
+    this.q = ((Runnable)localObject);
     post((Runnable)localObject);
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean)
   {
-    if ((paramFloat1 > 1.0F) && ((paramBoolean) || (d() * paramFloat1 <= a())))
+    if ((paramFloat1 > 1.0F) && ((paramBoolean) || (getCurrentScale() * paramFloat1 <= getMaxScale())))
     {
       super.c(paramFloat1, paramFloat2, paramFloat3);
       return;
     }
-    if ((paramFloat1 < 1.0F) && ((paramBoolean) || (d() * paramFloat1 >= b()))) {
+    if ((paramFloat1 < 1.0F) && ((paramBoolean) || (getCurrentScale() * paramFloat1 >= getMinScale()))) {
       super.c(paramFloat1, paramFloat2, paramFloat3);
     }
   }
@@ -210,17 +205,17 @@ public class CropImageView
     float f2 = Math.abs(paramTypedArray.getFloat(1, 0.0F));
     if ((f1 != 0.0F) && (f2 != 0.0F))
     {
-      this.jdField_c_of_type_Float = (f1 / f2);
+      this.m = (f1 / f2);
       return;
     }
-    this.jdField_c_of_type_Float = 0.0F;
+    this.m = 0.0F;
   }
   
   public void a(@NonNull Bitmap.CompressFormat paramCompressFormat, int paramInt1, int paramInt2, int paramInt3, @Nullable CropCallback paramCropCallback)
   {
     a();
     setImageToWrapCropBounds(false);
-    Bitmap localBitmap = a();
+    Bitmap localBitmap = getViewBitmap();
     if (localBitmap == null)
     {
       if (paramCropCallback != null) {
@@ -228,28 +223,18 @@ public class CropImageView
       }
       return;
     }
-    ThreadManager.executeOnFileThread(new CropImageView.1(this, localBitmap, new ImageState(this.jdField_a_of_type_AndroidGraphicsRectF, RectUtils.a(this.jdField_a_of_type_ArrayOfFloat), d(), e()), paramCompressFormat, paramInt1, paramCropCallback));
-  }
-  
-  protected boolean a()
-  {
-    return a(this.jdField_a_of_type_ArrayOfFloat);
+    ThreadManager.executeOnFileThread(new CropImageView.1(this, localBitmap, new ImageState(this.k, RectUtils.b(this.a), getCurrentScale(), getCurrentAngle()), paramCompressFormat, paramInt1, paramCropCallback));
   }
   
   protected boolean a(float[] paramArrayOfFloat)
   {
-    this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_b_of_type_AndroidGraphicsMatrix.setRotate(-e());
+    this.l.reset();
+    this.l.setRotate(-getCurrentAngle());
     paramArrayOfFloat = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints(paramArrayOfFloat);
-    float[] arrayOfFloat = RectUtils.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints(arrayOfFloat);
-    return RectUtils.a(paramArrayOfFloat).contains(RectUtils.a(arrayOfFloat));
-  }
-  
-  public float b()
-  {
-    return this.f;
+    this.l.mapPoints(paramArrayOfFloat);
+    float[] arrayOfFloat = RectUtils.a(this.k);
+    this.l.mapPoints(arrayOfFloat);
+    return RectUtils.b(paramArrayOfFloat).contains(RectUtils.b(arrayOfFloat));
   }
   
   protected void b()
@@ -261,39 +246,39 @@ public class CropImageView
     }
     float f1 = ((Drawable)localObject).getIntrinsicWidth();
     float f2 = ((Drawable)localObject).getIntrinsicHeight();
-    if (this.jdField_c_of_type_Float == 0.0F) {
-      this.jdField_c_of_type_Float = (f1 / f2);
+    if (this.m == 0.0F) {
+      this.m = (f1 / f2);
     }
-    int i = (int)(this.jdField_a_of_type_Int / this.jdField_c_of_type_Float);
+    int i = (int)(this.f / this.m);
     int j;
-    if (i > this.jdField_b_of_type_Int)
+    if (i > this.g)
     {
-      i = (int)(this.jdField_b_of_type_Int * this.jdField_c_of_type_Float);
-      j = (this.jdField_a_of_type_Int - i) / 2;
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(j, 0.0F, i + j, this.jdField_b_of_type_Int);
+      i = (int)(this.g * this.m);
+      j = (this.f - i) / 2;
+      this.k.set(j, 0.0F, i + j, this.g);
     }
     else
     {
-      j = (this.jdField_b_of_type_Int - i) / 2;
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, j, this.jdField_a_of_type_Int, i + j);
+      j = (this.g - i) / 2;
+      this.k.set(0.0F, j, this.f, i + j);
     }
     b(f1, f2);
     c(f1, f2);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropCallbackCropBoundsChangeListener;
+    localObject = this.o;
     if (localObject != null) {
-      ((CropBoundsChangeListener)localObject).a(this.jdField_c_of_type_Float);
+      ((CropBoundsChangeListener)localObject).a(this.m);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropTransformImageView$TransformImageListener != null)
+    if (this.h != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropTransformImageView$TransformImageListener.b(d());
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropTransformImageView$TransformImageListener.a(e());
+      this.h.b(getCurrentScale());
+      this.h.a(getCurrentAngle());
     }
   }
   
   public void b(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (paramFloat1 <= a()) {
-      c(paramFloat1 / d(), paramFloat2, paramFloat3);
+    if (paramFloat1 <= getMaxScale()) {
+      c(paramFloat1 / getCurrentScale(), paramFloat2, paramFloat3);
     }
   }
   
@@ -302,39 +287,65 @@ public class CropImageView
     a(paramFloat1, paramFloat2, paramFloat3, false);
   }
   
+  protected boolean c()
+  {
+    return a(this.a);
+  }
+  
+  @Nullable
+  public CropBoundsChangeListener getCropBoundsChangeListener()
+  {
+    return this.o;
+  }
+  
+  public float getMaxScale()
+  {
+    return this.r;
+  }
+  
+  public float getMinScale()
+  {
+    return this.s;
+  }
+  
+  public float getTargetAspectRatio()
+  {
+    return this.m;
+  }
+  
   public void setCropBoundsChangeListener(@Nullable CropBoundsChangeListener paramCropBoundsChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropCallbackCropBoundsChangeListener = paramCropBoundsChangeListener;
+    this.o = paramCropBoundsChangeListener;
   }
   
   public void setCropRect(RectF paramRectF)
   {
-    this.jdField_c_of_type_Float = (paramRectF.width() / paramRectF.height());
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRectF.left - getPaddingLeft(), paramRectF.top - getPaddingTop(), paramRectF.right - getPaddingRight(), paramRectF.bottom - getPaddingBottom());
-    d();
+    this.m = (paramRectF.width() / paramRectF.height());
+    this.k.set(paramRectF.left - getPaddingLeft(), paramRectF.top - getPaddingTop(), paramRectF.right - getPaddingRight(), paramRectF.bottom - getPaddingBottom());
+    f();
     setImageToWrapCropBounds();
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    a(paramBitmap);
+    setBitmapDecoded(paramBitmap);
     super.setImageBitmap(paramBitmap);
   }
   
   @Deprecated
   public void setImageDrawable(@Nullable Drawable paramDrawable)
   {
-    a(paramDrawable);
+    setBitmapDecoded(paramDrawable);
     super.setImageDrawable(paramDrawable);
   }
   
   public void setImageToLowerMaxScale()
   {
-    if (d() > a())
+    if (getCurrentScale() > getMaxScale())
     {
       float[] arrayOfFloat = new float[9];
-      this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(arrayOfFloat);
-      a(a(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, 200L, true);
+      this.c.getValues(arrayOfFloat);
+      a(getMaxScale(), this.d, this.e, 200L, true);
     }
   }
   
@@ -345,46 +356,46 @@ public class CropImageView
   
   public void setImageToWrapCropBounds(boolean paramBoolean)
   {
-    if ((this.jdField_b_of_type_Boolean) && (!a()))
+    if ((this.j) && (!c()))
     {
-      float f4 = this.jdField_b_of_type_ArrayOfFloat[0];
-      float f5 = this.jdField_b_of_type_ArrayOfFloat[1];
-      float f6 = d();
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.centerX() - f4;
-      float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.centerY() - f5;
-      this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_b_of_type_AndroidGraphicsMatrix.setTranslate(f1, f2);
-      Object localObject = Arrays.copyOf(this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat.length);
-      this.jdField_b_of_type_AndroidGraphicsMatrix.mapPoints((float[])localObject);
+      float f4 = this.b[0];
+      float f5 = this.b[1];
+      float f6 = getCurrentScale();
+      float f1 = this.k.centerX() - f4;
+      float f2 = this.k.centerY() - f5;
+      this.l.reset();
+      this.l.setTranslate(f1, f2);
+      Object localObject = Arrays.copyOf(this.a, this.a.length);
+      this.l.mapPoints((float[])localObject);
       boolean bool = a((float[])localObject);
       float f3;
       if (bool)
       {
-        localObject = a();
+        localObject = e();
         f1 = -(localObject[0] + localObject[2]);
         f2 = -(localObject[1] + localObject[3]);
         f3 = 0.0F;
       }
       else
       {
-        localObject = new RectF(this.jdField_a_of_type_AndroidGraphicsRectF);
-        this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
-        this.jdField_b_of_type_AndroidGraphicsMatrix.setRotate(e());
-        this.jdField_b_of_type_AndroidGraphicsMatrix.mapRect((RectF)localObject);
-        float[] arrayOfFloat = RectUtils.a(this.jdField_a_of_type_ArrayOfFloat);
+        localObject = new RectF(this.k);
+        this.l.reset();
+        this.l.setRotate(getCurrentAngle());
+        this.l.mapRect((RectF)localObject);
+        float[] arrayOfFloat = RectUtils.a(this.a);
         f3 = Math.max(((RectF)localObject).width() / arrayOfFloat[0], ((RectF)localObject).height() / arrayOfFloat[1]);
         f3 = f3 * f6 - f6;
       }
       if (paramBoolean)
       {
-        localObject = new CropImageView.WrapCropBoundsRunnable(this, this.jdField_a_of_type_Long, f4, f5, f1, f2, f6, f3, bool);
-        this.jdField_a_of_type_JavaLangRunnable = ((Runnable)localObject);
+        localObject = new CropImageView.WrapCropBoundsRunnable(this, this.v, f4, f5, f1, f2, f6, f3, bool);
+        this.p = ((Runnable)localObject);
         post((Runnable)localObject);
         return;
       }
       a(f1, f2);
       if (!bool) {
-        b(f6 + f3, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY());
+        b(f6 + f3, this.k.centerX(), this.k.centerY());
       }
     }
   }
@@ -393,7 +404,7 @@ public class CropImageView
   {
     if (paramLong > 0L)
     {
-      this.jdField_a_of_type_Long = paramLong;
+      this.v = paramLong;
       return;
     }
     throw new IllegalArgumentException("Animation duration cannot be negative value.");
@@ -401,23 +412,23 @@ public class CropImageView
   
   public void setMaxResultImageSizeX(@IntRange(from=10L) int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.t = paramInt;
   }
   
   public void setMaxResultImageSizeY(@IntRange(from=10L) int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.u = paramInt;
   }
   
   public void setMaxScale(float paramFloat)
   {
-    this.e = paramFloat;
-    this.jdField_d_of_type_Float = -1.0F;
+    this.r = paramFloat;
+    this.n = -1.0F;
   }
   
   public void setMaxScaleMultiplier(float paramFloat)
   {
-    this.jdField_d_of_type_Float = paramFloat;
+    this.n = paramFloat;
   }
   
   public void setTargetAspectRatio(float paramFloat)
@@ -425,23 +436,23 @@ public class CropImageView
     Object localObject = getDrawable();
     if (localObject == null)
     {
-      this.jdField_c_of_type_Float = paramFloat;
+      this.m = paramFloat;
       return;
     }
     if (paramFloat == 0.0F) {
-      this.jdField_c_of_type_Float = (((Drawable)localObject).getIntrinsicWidth() / ((Drawable)localObject).getIntrinsicHeight());
+      this.m = (((Drawable)localObject).getIntrinsicWidth() / ((Drawable)localObject).getIntrinsicHeight());
     } else {
-      this.jdField_c_of_type_Float = paramFloat;
+      this.m = paramFloat;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropCallbackCropBoundsChangeListener;
+    localObject = this.o;
     if (localObject != null) {
-      ((CropBoundsChangeListener)localObject).a(this.jdField_c_of_type_Float);
+      ((CropBoundsChangeListener)localObject).a(this.m);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.imagecrop.CropImageView
  * JD-Core Version:    0.7.0.1
  */

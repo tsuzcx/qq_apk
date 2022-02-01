@@ -15,22 +15,22 @@ class TroopNotificationAIOHelper$1
     if (TroopNotificationAIOHelper.a(this.this$0) == null) {
       return;
     }
-    if (TroopNotificationAIOHelper.a(this.this$0).a == null) {
+    if (TroopNotificationAIOHelper.a(this.this$0).d == null) {
       return;
     }
-    TroopNotificationFlagMsg localTroopNotificationFlagMsg = TroopNotificationHelper.a(TroopNotificationAIOHelper.a(this.this$0).a, TroopNotificationAIOHelper.a(this.this$0).b());
-    if ((localTroopNotificationFlagMsg != null) && (localTroopNotificationFlagMsg.a == 0))
+    TroopNotificationFlagMsg localTroopNotificationFlagMsg = TroopNotificationHelper.d(TroopNotificationAIOHelper.a(this.this$0).d, TroopNotificationAIOHelper.a(this.this$0).ae());
+    if ((localTroopNotificationFlagMsg != null) && (localTroopNotificationFlagMsg.b == 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopNotificationAIOHelper", 2, "handleTroopNotificationOnResume, readTroopNotification.");
       }
-      TroopNotificationHelper.d(TroopNotificationAIOHelper.a(this.this$0).a, TroopNotificationAIOHelper.a(this.this$0).b());
+      TroopNotificationHelper.e(TroopNotificationAIOHelper.a(this.this$0).d, TroopNotificationAIOHelper.a(this.this$0).ae());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1
  * JD-Core Version:    0.7.0.1
  */

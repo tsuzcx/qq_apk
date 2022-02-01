@@ -17,13 +17,13 @@ class TroopTransferActivity$8
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-      paramDialogInterface = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getSystemService("input_method");
+      this.c.f.offsetTopAndBottom(-this.a);
+      this.c.a.setVisibility(0);
+      this.c.f.startAnimation(this.b);
+      paramDialogInterface = (InputMethodManager)this.c.getSystemService("input_method");
       if (paramDialogInterface != null)
       {
-        paramDialogInterface.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getWindow().peekDecorView().getWindowToken(), 0);
+        paramDialogInterface.hideSoftInputFromWindow(this.c.getWindow().peekDecorView().getWindowToken(), 0);
         return;
       }
     }
@@ -35,7 +35,7 @@ class TroopTransferActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.8
  * JD-Core Version:    0.7.0.1
  */

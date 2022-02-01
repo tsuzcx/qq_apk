@@ -12,40 +12,40 @@ class MultiIncomingCallsActivity$12
   
   protected void a(long paramLong, int paramInt)
   {
-    long l = QQAudioHelper.b();
-    String str = this.a.jdField_b_of_type_JavaLangString;
+    long l = QQAudioHelper.d();
+    String str = this.b.l;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onDestroyInviteUI, groupId[");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("], reason[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], mIsDoubleVideoMeeting[");
-    localStringBuilder.append(this.a.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b.x);
     localStringBuilder.append("], mPeerUin[");
-    localStringBuilder.append(this.a.c);
+    localStringBuilder.append(this.b.u);
     localStringBuilder.append("], mGroupId[");
-    localStringBuilder.append(this.a.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b.b);
     localStringBuilder.append("], seq[");
     localStringBuilder.append(l);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.b.x)
     {
-      if (TextUtils.equals(this.a.c, String.valueOf(paramLong)))
+      if (TextUtils.equals(this.b.u, String.valueOf(paramLong)))
       {
-        this.a.b("onDestroyInviteUI_DoubleVideoMeeting");
-        this.a.a(l, paramInt);
+        this.b.b("onDestroyInviteUI_DoubleVideoMeeting");
+        this.b.a(l, paramInt);
       }
     }
-    else if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
-      this.a.b("onDestroyInviteUI");
+    else if ((this.b.b == paramLong) || (0L == paramLong)) {
+      this.b.b("onDestroyInviteUI");
     }
   }
   
   protected void a(long paramLong, String paramString)
   {
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
-      this.a.finish();
+    if ((this.b.b == paramLong) && (this.b.D.equals(paramString))) {
+      this.b.finish();
     }
   }
   
@@ -54,7 +54,7 @@ class MultiIncomingCallsActivity$12
     if (QLog.isColorLevel())
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b.l);
       ((StringBuilder)localObject).append(".troopgroup_vedio.invite");
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -65,28 +65,28 @@ class MultiIncomingCallsActivity$12
       localStringBuilder.append(",invitedId:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", mInviterUin:");
-      localStringBuilder.append(this.a.jdField_b_of_type_Long);
+      localStringBuilder.append(this.b.c);
       localStringBuilder.append(", mGroupId:");
-      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.b);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.finish();
+    if ((paramLong2 == this.b.c) && (paramLong1 == this.b.b)) {
+      this.b.finish();
     }
   }
   
   protected void d(long paramLong)
   {
-    this.a.b("notifyCloseAllGroupVideoInviteMsgBox");
-    this.a.finish();
+    this.b.b("notifyCloseAllGroupVideoInviteMsgBox");
+    this.b.finish();
   }
   
   protected void e(long paramLong)
   {
-    if (this.a.jdField_a_of_type_Long == paramLong)
+    if (this.b.b == paramLong)
     {
-      this.a.b("notifyCloseGroupVideoInviteMsgBox");
-      this.a.finish();
+      this.b.b("notifyCloseGroupVideoInviteMsgBox");
+      this.b.finish();
     }
   }
 }

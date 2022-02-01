@@ -17,12 +17,12 @@ class ConversationHongBaoV2$8
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.a.setVisibility(0);
+    this.a.A.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.8
  * JD-Core Version:    0.7.0.1
  */

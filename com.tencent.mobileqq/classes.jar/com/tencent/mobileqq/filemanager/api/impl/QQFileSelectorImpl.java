@@ -34,7 +34,7 @@ public class QQFileSelectorImpl
     localIntent.putExtra("tab_tab_type", 3);
     localIntent.putExtra("from", "FileAssistant");
     paramActivity.startActivityForResult(localIntent, 101);
-    paramActivity.overridePendingTransition(2130772006, 2130772007);
+    paramActivity.overridePendingTransition(2130772009, 2130772010);
   }
   
   public void enterLocalFileBrowserByDevice(Activity paramActivity, String paramString, int paramInt)
@@ -67,7 +67,7 @@ public class QQFileSelectorImpl
     localIntent.putExtra("needRemember", true);
     localIntent.putExtra("qfile_entrance_type_key", 10);
     paramActivity.startActivityForResult(localIntent, 110);
-    paramActivity.overridePendingTransition(2130771993, 2130771994);
+    paramActivity.overridePendingTransition(2130771996, 2130771997);
   }
   
   public void enterQlinkLocalFileBrowser(Activity paramActivity, String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -83,7 +83,7 @@ public class QQFileSelectorImpl
     localIntent.putExtra("qlinkselect", true);
     localIntent.putExtra("qfile_entrance_type_key", 20);
     paramActivity.startActivityForResult(localIntent, 106);
-    paramActivity.overridePendingTransition(2130771993, 2130771994);
+    paramActivity.overridePendingTransition(2130771996, 2130771997);
   }
   
   public void enterQlinkRecentFileBrowser(Activity paramActivity, boolean paramBoolean)
@@ -92,7 +92,7 @@ public class QQFileSelectorImpl
     localIntent.putExtra("tab_tab_type", 6);
     localIntent.putExtra("from_qlink", paramBoolean);
     paramActivity.startActivityForResult(localIntent, 108);
-    paramActivity.overridePendingTransition(2130772006, 2130772007);
+    paramActivity.overridePendingTransition(2130772009, 2130772010);
   }
   
   public void fileChooseLaunchForResult(Activity paramActivity, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
@@ -105,7 +105,7 @@ public class QQFileSelectorImpl
     QfileFavFileRecordProvider localQfileFavFileRecordProvider = this.mFavProvider;
     if (localQfileFavFileRecordProvider != null)
     {
-      localQfileFavFileRecordProvider.c();
+      localQfileFavFileRecordProvider.d();
       this.mFavProvider = null;
     }
   }
@@ -115,7 +115,7 @@ public class QQFileSelectorImpl
     if (this.mFavProvider == null)
     {
       this.mFavProvider = new QfileFavFileRecordProvider(paramAppRuntime);
-      this.mFavProvider.b();
+      this.mFavProvider.c();
     }
     return this.mFavProvider;
   }
@@ -247,7 +247,7 @@ public class QQFileSelectorImpl
     localIntent.putExtra("category", 6);
     localIntent.putExtra("selectMode", true);
     String str = AppConstants.DATALINE_PC_UIN;
-    if (QFileAssistantUtils.a()) {
+    if (QFileAssistantUtils.b()) {
       str = AppConstants.FILE_ASSISTANT_UIN;
     }
     localIntent.putExtra("targetUin", str);
@@ -322,6 +322,16 @@ public class QQFileSelectorImpl
     paramActivity.startActivity(localIntent);
   }
   
+  public void openMyFileBySchema(Activity paramActivity)
+  {
+    Intent localIntent = new Intent(paramActivity, FileAssistantActivity.class);
+    localIntent.putExtra("from", "FileAssistant");
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(536870912);
+    paramActivity.startActivity(localIntent);
+  }
+  
   public void startFM(Context paramContext)
   {
     Intent localIntent = new Intent(paramContext, FileAssistantActivity.class);
@@ -333,7 +343,7 @@ public class QQFileSelectorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QQFileSelectorImpl
  * JD-Core Version:    0.7.0.1
  */

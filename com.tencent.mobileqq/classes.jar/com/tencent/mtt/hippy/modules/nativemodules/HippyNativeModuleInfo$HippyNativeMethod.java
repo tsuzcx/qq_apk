@@ -10,8 +10,8 @@ import java.lang.reflect.Type;
 
 public class HippyNativeModuleInfo$HippyNativeMethod
 {
-  private Method mMethod;
-  private Type[] mParamTypes;
+  private final Method mMethod;
+  private final Type[] mParamTypes;
   
   public HippyNativeModuleInfo$HippyNativeMethod(HippyNativeModuleInfo paramHippyNativeModuleInfo, Method paramMethod)
   {
@@ -67,7 +67,7 @@ public class HippyNativeModuleInfo$HippyNativeMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleInfo.HippyNativeMethod
  * JD-Core Version:    0.7.0.1
  */

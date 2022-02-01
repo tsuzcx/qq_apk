@@ -56,7 +56,7 @@ public class VasLiveIPCModule
     try
     {
       Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = ContactUtils.e((AppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
+      localObject = ContactUtils.f((AppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
       return localObject;
     }
     catch (Throwable localThrowable)
@@ -92,7 +92,7 @@ public class VasLiveIPCModule
     paramBundle = paramBundle.getString("groupUin");
     TroopManager localTroopManager = (TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_MANAGER);
     boolean bool;
-    if ((localTroopManager != null) && (localTroopManager.b(paramBundle) != null)) {
+    if ((localTroopManager != null) && (localTroopManager.f(paramBundle) != null)) {
       bool = true;
     } else {
       bool = false;
@@ -190,7 +190,7 @@ public class VasLiveIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.VasLiveIPCModule
  * JD-Core Version:    0.7.0.1
  */

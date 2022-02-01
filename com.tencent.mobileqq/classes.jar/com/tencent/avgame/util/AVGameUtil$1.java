@@ -13,18 +13,18 @@ final class AVGameUtil$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (this.a.isFinishing()) {
       return;
     }
-    if ((Build.VERSION.SDK_INT >= 17) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) {
+    if ((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) {
       return;
     }
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131690280);
+    String str = this.a.getString(2131887191);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showDialogTip content:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     QLog.d("AVGameUtils", 2, localStringBuilder.toString());
-    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_JavaLangString, str, str, new AVGameUtil.1.1(this), null).show();
+    DialogUtil.a(this.a, 230, null, this.b, str, str, new AVGameUtil.1.1(this), null).show();
   }
 }
 

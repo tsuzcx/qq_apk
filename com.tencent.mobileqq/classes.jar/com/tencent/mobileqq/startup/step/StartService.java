@@ -36,10 +36,10 @@ public class StartService
       {
         Automator localAutomator1 = localQQAppInterface.mAutomator;
         Automator localAutomator2 = localQQAppInterface.mAutomator;
-        if (this.mId == 21) {
-          localObject = "{[11,12,14],17,20,21,22108,}";
+        if (this.mId == 22) {
+          localObject = "{[11,12,14],17,118,20,21,22108}";
         } else {
-          localObject = StepFactory.a;
+          localObject = StepFactory.d;
         }
         localAutomator1.a(StepFactory.a(localAutomator2, (String)localObject));
         localQQAppInterface.start(false);
@@ -52,7 +52,7 @@ public class StartService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.StartService
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class FloatingActionButton$ShadowDelegateImpl
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.b.set(paramInt1, paramInt2, paramInt3, paramInt4);
     FloatingActionButton localFloatingActionButton = this.a;
     localFloatingActionButton.setPadding(paramInt1 + FloatingActionButton.a(localFloatingActionButton), paramInt2 + FloatingActionButton.a(this.a), paramInt3 + FloatingActionButton.a(this.a), paramInt4 + FloatingActionButton.a(this.a));
   }
@@ -26,12 +26,12 @@ class FloatingActionButton$ShadowDelegateImpl
   
   public boolean a()
   {
-    return this.a.jdField_a_of_type_Boolean;
+    return this.a.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.FloatingActionButton.ShadowDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

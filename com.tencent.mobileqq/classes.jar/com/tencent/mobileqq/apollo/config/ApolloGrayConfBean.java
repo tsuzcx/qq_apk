@@ -27,13 +27,13 @@ public class ApolloGrayConfBean
         while (i < paramArrayOfQConfItem.length)
         {
           if (QLog.isColorLevel()) {
-            QLog.d("[cmshow]ApolloConfig_GrayProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfQConfItem[i].jdField_a_of_type_Int) });
+            QLog.d("[cmshow]ApolloConfig_GrayProcessor", 2, new Object[] { "parse conf taskId:", Integer.valueOf(paramArrayOfQConfItem[i].a) });
           }
-          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].b);
           if (localJSONObject.has("grayUrlConfig")) {
-            localApolloGrayConfBean.a.put("apolloGrayUrlWhite", paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+            localApolloGrayConfBean.a.put("apolloGrayUrlWhite", paramArrayOfQConfItem[i].b);
           } else if (localJSONObject.has("traceConfig")) {
-            localApolloGrayConfBean.a.put("apolloTraceConfig", paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+            localApolloGrayConfBean.a.put("apolloTraceConfig", paramArrayOfQConfItem[i].b);
           }
           i += 1;
         }
@@ -73,7 +73,7 @@ public class ApolloGrayConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.config.ApolloGrayConfBean
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ class AlbumGalleryAdapterHolder$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.setVisibility(8);
-    this.a.d.setVisibility(8);
-    this.a.g.setVisibility(8);
+    this.a.m.setVisibility(8);
+    this.a.n.setVisibility(8);
+    this.a.o.setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -24,7 +24,7 @@ class AlbumGalleryAdapterHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.AlbumGalleryAdapterHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,21 +16,21 @@ class VideoPreDownloadMgr$PreDownloadNotAlreadyVideoTask
   {
     if (this.a)
     {
-      if (VideoPreDownloadMgr.a(this.this$0) != null) {
-        VideoPreDownloadMgr.a(this.this$0).add(VideoPreDownloadMgr.a(this.this$0));
+      if (VideoPreDownloadMgr.d(this.this$0) != null) {
+        VideoPreDownloadMgr.d(this.this$0).add(VideoPreDownloadMgr.b(this.this$0));
       }
-      if (VideoPreDownloadMgr.a() != null) {
-        VideoPreDownloadMgr.a().add(VideoPreDownloadMgr.a(this.this$0));
+      if (VideoPreDownloadMgr.f() != null) {
+        VideoPreDownloadMgr.f().add(VideoPreDownloadMgr.b(this.this$0));
       }
     }
     VideoPreDownloadMgr.a(this.this$0, null);
     VideoPreDownloadMgr.a(this.this$0, null);
-    VideoPreDownloadMgr.b(this.this$0);
+    VideoPreDownloadMgr.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask
  * JD-Core Version:    0.7.0.1
  */

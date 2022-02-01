@@ -20,13 +20,13 @@ class SDKEmotionSettingManager$18
       localStringBuilder.append(", addEmotionsResults=");
       localStringBuilder.append(paramList);
       localStringBuilder.append(", isTimeOut=");
-      localStringBuilder.append(SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+      localStringBuilder.append(SDKEmotionSettingManager.m(this.b));
       QLog.d("SDKEmotionSettingManager", 2, localStringBuilder.toString());
     }
-    if (!SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager))
+    if (!SDKEmotionSettingManager.m(this.b))
     {
-      SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, paramList);
-      SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, this.jdField_a_of_type_Int, paramFloat);
+      SDKEmotionSettingManager.b(this.b, paramList);
+      SDKEmotionSettingManager.a(this.b, this.a, paramFloat);
     }
   }
   
@@ -38,19 +38,19 @@ class SDKEmotionSettingManager$18
       localStringBuilder.append("onUploadFinish , addEmotionsResults=");
       localStringBuilder.append(paramList);
       localStringBuilder.append(", isTimeOut=");
-      localStringBuilder.append(SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+      localStringBuilder.append(SDKEmotionSettingManager.m(this.b));
       QLog.d("SDKEmotionSettingManager", 2, localStringBuilder.toString());
     }
-    if (!SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager))
+    if (!SDKEmotionSettingManager.m(this.b))
     {
-      SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).removeMessages(11);
-      SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, this.jdField_a_of_type_Int, paramList);
+      SDKEmotionSettingManager.e(this.b).removeMessages(11);
+      SDKEmotionSettingManager.a(this.b, this.a, paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.18
  * JD-Core Version:    0.7.0.1
  */

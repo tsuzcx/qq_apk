@@ -20,11 +20,11 @@ class LoverDisbandRequestManager$1
   public JceStruct getReq()
   {
     sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
-    Object localObject = this.jdField_a_of_type_AndroidContentIntent;
+    Object localObject = this.a;
     if (localObject != null)
     {
       long l1 = ((Intent)localObject).getLongExtra("currentUin", -1L);
-      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
+      long l2 = this.a.getLongExtra("friendUin", -1L);
       localObject = new sweet_req_comm();
       ((sweet_req_comm)localObject).opuin = l1;
       ((sweet_req_comm)localObject).uin = l1;
@@ -44,7 +44,7 @@ class LoverDisbandRequestManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.LoverDisbandRequestManager.1
  * JD-Core Version:    0.7.0.1
  */

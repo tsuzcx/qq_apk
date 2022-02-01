@@ -15,15 +15,15 @@ class JourneyTextItem$3
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextJourneyTextItem.b() == 0)
+    if (this.a.g() == 0)
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramSpanned.subSequence(0, paramInt3).toString());
       ((StringBuilder)localObject).append(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
       ((StringBuilder)localObject).append(paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString());
       localObject = ((StringBuilder)localObject).toString();
-      String str = TroopFileUtils.b((String)localObject);
-      String[] arrayOfString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextJourneyTextItem.a(str).split("\n");
+      String str = TroopFileUtils.c((String)localObject);
+      String[] arrayOfString = this.a.a(str).split("\n");
       int m = arrayOfString.length;
       int j = 0;
       int i = 0;
@@ -50,16 +50,16 @@ class JourneyTextItem$3
         }
         return "";
       }
-      this.jdField_a_of_type_Int = (((String)localObject).length() - str.length() + 20);
+      this.b = (((String)localObject).length() - str.length() + 20);
       return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
     }
-    this.jdField_a_of_type_Int = 20;
+    this.b = 20;
     return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.JourneyTextItem.3
  * JD-Core Version:    0.7.0.1
  */

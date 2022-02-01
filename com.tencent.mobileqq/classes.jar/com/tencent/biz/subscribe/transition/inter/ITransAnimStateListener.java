@@ -2,13 +2,13 @@ package com.tencent.biz.subscribe.transition.inter;
 
 public abstract interface ITransAnimStateListener
 {
-  public abstract void k();
+  public abstract void r();
   
-  public abstract void l();
+  public abstract void s();
   
-  public abstract void m();
+  public abstract void t();
   
-  public abstract void n();
+  public abstract void u();
 }
 
 

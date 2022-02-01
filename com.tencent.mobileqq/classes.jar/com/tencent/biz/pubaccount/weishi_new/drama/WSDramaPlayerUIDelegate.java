@@ -19,19 +19,11 @@ public class WSDramaPlayerUIDelegate
     this.a = new WeakReference(a(paramAbsWSDramaVideoHolder));
   }
   
-  private AbsWSDramaVideoItemView a(AbsWSDramaVideoHolder paramAbsWSDramaVideoHolder)
-  {
-    if ((paramAbsWSDramaVideoHolder != null) && ((paramAbsWSDramaVideoHolder.a instanceof AbsWSDramaVideoItemView))) {
-      return (AbsWSDramaVideoItemView)paramAbsWSDramaVideoHolder.a;
-    }
-    return null;
-  }
-  
   private WSDramaItemVideoAreaController a(AbsWSDramaVideoHolder paramAbsWSDramaVideoHolder)
   {
-    paramAbsWSDramaVideoHolder = a(paramAbsWSDramaVideoHolder);
+    paramAbsWSDramaVideoHolder = b(paramAbsWSDramaVideoHolder);
     if (paramAbsWSDramaVideoHolder != null) {
-      return paramAbsWSDramaVideoHolder.a();
+      return paramAbsWSDramaVideoHolder.e();
     }
     return null;
   }
@@ -43,9 +35,17 @@ public class WSDramaPlayerUIDelegate
     {
       localObject = ((AbsWSDramaVideoHolder)localObject).a();
       if (localObject != null) {
-        ((WSDramaPageContract.View)localObject).c();
+        ((WSDramaPageContract.View)localObject).r();
       }
     }
+  }
+  
+  private AbsWSDramaVideoItemView b(AbsWSDramaVideoHolder paramAbsWSDramaVideoHolder)
+  {
+    if ((paramAbsWSDramaVideoHolder != null) && ((paramAbsWSDramaVideoHolder.b instanceof AbsWSDramaVideoItemView))) {
+      return (AbsWSDramaVideoItemView)paramAbsWSDramaVideoHolder.b;
+    }
+    return null;
   }
   
   private void b()
@@ -55,7 +55,7 @@ public class WSDramaPlayerUIDelegate
     {
       localObject = ((AbsWSDramaVideoHolder)localObject).a();
       if (localObject != null) {
-        ((WSDramaPageContract.View)localObject).f();
+        ((WSDramaPageContract.View)localObject).u();
       }
     }
   }
@@ -66,7 +66,7 @@ public class WSDramaPlayerUIDelegate
     if (paramWSPlayerParam != null)
     {
       paramWSPlayerParam.a(8, 400);
-      paramWSPlayerParam.f();
+      paramWSPlayerParam.n();
     }
   }
   
@@ -92,11 +92,6 @@ public class WSDramaPlayerUIDelegate
     }
   }
   
-  public boolean a(WSPlayerParam paramWSPlayerParam)
-  {
-    return false;
-  }
-  
   public void b(WSPlayerParam paramWSPlayerParam) {}
   
   public void c(WSPlayerParam paramWSPlayerParam) {}
@@ -107,7 +102,7 @@ public class WSDramaPlayerUIDelegate
     if (paramWSPlayerParam != null)
     {
       paramWSPlayerParam.a(8, 400);
-      paramWSPlayerParam.f();
+      paramWSPlayerParam.n();
     }
   }
   
@@ -117,7 +112,7 @@ public class WSDramaPlayerUIDelegate
   {
     paramWSPlayerParam = (WSDramaItemVideoAreaController)this.a.get();
     if (paramWSPlayerParam != null) {
-      paramWSPlayerParam.f();
+      paramWSPlayerParam.n();
     }
   }
   
@@ -146,10 +141,15 @@ public class WSDramaPlayerUIDelegate
       paramWSPlayerParam.a(0, 100);
     }
   }
+  
+  public boolean k(WSPlayerParam paramWSPlayerParam)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.WSDramaPlayerUIDelegate
  * JD-Core Version:    0.7.0.1
  */

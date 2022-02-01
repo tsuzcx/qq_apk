@@ -10,12 +10,12 @@ class PTSEngineLoader$1
   public void run()
   {
     QLog.i("PTSEngineLoader", 1, "[preloadEngine]");
-    this.this$0.b();
+    this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSEngineLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 public class RecommendInfoItem
 {
   public int a;
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
+  public CertifiedAccountMeta.StUser b;
+  public CertifiedAccountMeta.StFeed c;
   
   public RecommendInfoItem(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_Int = 2;
+    this.c = paramStFeed;
+    this.a = 2;
   }
   
   public RecommendInfoItem(CertifiedAccountMeta.StUser paramStUser)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
-    this.jdField_a_of_type_Int = 1;
+    this.b = paramStUser;
+    this.a = 1;
   }
 }
 

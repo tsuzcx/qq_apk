@@ -36,7 +36,7 @@ public final class VasAdvPreloadApiImpl
   public String getAdAsJson(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "businessId");
-    return VasPreloadService.a.a(paramString);
+    return VasPreloadService.a.c(paramString);
   }
   
   public void loadAd(@NotNull String paramString)
@@ -44,7 +44,7 @@ public final class VasAdvPreloadApiImpl
     Intrinsics.checkParameterIsNotNull(paramString, "businessId");
     paramString = (VasPreloadService)getPreloadServiceMap().get(paramString);
     if (paramString != null) {
-      paramString.a();
+      paramString.b();
     }
   }
   
@@ -58,7 +58,7 @@ public final class VasAdvPreloadApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.preload.api.impl.VasAdvPreloadApiImpl
  * JD-Core Version:    0.7.0.1
  */

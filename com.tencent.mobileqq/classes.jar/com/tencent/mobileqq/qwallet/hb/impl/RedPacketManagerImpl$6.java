@@ -22,10 +22,10 @@ class RedPacketManagerImpl$6
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(QWalletValues.f);
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append("_");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.c);
       Object localObject3 = ((StringBuilder)localObject1).toString();
       localObject1 = localJceInputStream;
       if (new File((String)localObject3).exists())
@@ -59,7 +59,7 @@ class RedPacketManagerImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.RedPacketManagerImpl.6
  * JD-Core Version:    0.7.0.1
  */

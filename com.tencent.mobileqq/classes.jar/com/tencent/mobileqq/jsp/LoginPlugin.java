@@ -22,8 +22,8 @@ public class LoginPlugin
   
   private int a(byte paramByte)
   {
-    Object localObject = this.mRuntime.a(this.mRuntime.a());
-    Activity localActivity = this.mRuntime.a();
+    Object localObject = this.mRuntime.a(this.mRuntime.d());
+    Activity localActivity = this.mRuntime.d();
     if ((localObject instanceof WebViewPluginContainer)) {
       localObject = (WebViewPluginContainer)localObject;
     } else if ((localActivity instanceof WebViewPluginContainer)) {
@@ -40,7 +40,7 @@ public class LoginPlugin
   
   private Activity a()
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    for (Activity localActivity = this.mRuntime.d(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
     return localActivity;
   }
   
@@ -113,7 +113,7 @@ public class LoginPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.LoginPlugin
  * JD-Core Version:    0.7.0.1
  */

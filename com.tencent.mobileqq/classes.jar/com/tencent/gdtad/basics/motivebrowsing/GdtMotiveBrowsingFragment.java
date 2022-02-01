@@ -44,39 +44,34 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingFragment;", "Lcom/tencent/mobileqq/webview/swift/WebViewFragment;", "()V", "countDownTime", "", "hasCountDownComplete", "", "isError", "isSuccess", "lifeCycleFragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleAndViewModelStoreOwner;", "mIsReportLoadingFinishEvent", "mModel", "Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoModel;", "mQQCustomDialog", "Lcom/tencent/mobileqq/utils/QQCustomDialog;", "titleContainer", "Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingTitle;", "viewModel", "Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingViewModel;", "doOnBackEvent", "", "doOnCreate", "savedInstanceState", "Landroid/os/Bundle;", "getWebViewKernelCallBack", "Lcom/tencent/mobileqq/webview/swift/utils/WebViewKernelCallBack;", "handleMotiveBrowsingData", "browsingData", "Lcom/tencent/gdtad/basics/motivebrowsing/MotiveBrowsingData;", "initData", "initTitle", "initViewModel", "onDestroy", "onDialogCancelClick", "onDialogConfirmClick", "sendRewardedCallback", "watchTimeNotCompleteMention", "Companion", "qqad-impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingFragment;", "Lcom/tencent/mobileqq/webview/swift/WebViewFragment;", "()V", "countDownTime", "", "hasCountDownComplete", "", "isError", "isSuccess", "lifeCycleFragment", "Lcom/tencent/mobileqq/mvvm/LifeCycleAndViewModelStoreOwner;", "mIsReportLoadingFinishEvent", "mModel", "Lcom/tencent/gdtad/basics/motivevideo/data/GdtMotiveVideoModel;", "mQQCustomDialog", "Lcom/tencent/mobileqq/utils/QQCustomDialog;", "titleContainer", "Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingTitle;", "viewModel", "Lcom/tencent/gdtad/basics/motivebrowsing/GdtMotiveBrowsingViewModel;", "doOnBackEvent", "", "doOnCreate", "savedInstanceState", "Landroid/os/Bundle;", "getWebViewKernelCallBack", "Lcom/tencent/mobileqq/webview/swift/utils/WebViewKernelCallBack;", "handleMotiveBrowsingData", "browsingData", "Lcom/tencent/gdtad/basics/motivebrowsing/MotiveBrowsingData;", "initData", "initTitle", "initViewModel", "onDestroy", "onDialogCancelClick", "onDialogConfirmClick", "onResume", "sendRewardedCallback", "watchTimeNotCompleteMention", "Companion", "qqad-impl_release"}, k=1, mv={1, 1, 16})
 public final class GdtMotiveBrowsingFragment
   extends WebViewFragment
 {
-  public static final GdtMotiveBrowsingFragment.Companion a;
-  private int jdField_a_of_type_Int;
-  private GdtMotiveBrowsingTitle jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingTitle;
-  private GdtMotiveBrowsingViewModel jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingViewModel;
-  private GdtMotiveVideoModel jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel;
-  private LifeCycleAndViewModelStoreOwner jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private boolean jdField_a_of_type_Boolean;
+  public static final GdtMotiveBrowsingFragment.Companion a = new GdtMotiveBrowsingFragment.Companion(null);
   private boolean b;
-  private boolean c;
-  private boolean d;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingFragment$Companion = new GdtMotiveBrowsingFragment.Companion(null);
-  }
+  private GdtMotiveBrowsingViewModel c;
+  private LifeCycleAndViewModelStoreOwner d;
+  private QQCustomDialog e;
+  private GdtMotiveVideoModel f;
+  private GdtMotiveBrowsingTitle g;
+  private int h;
+  private boolean i;
+  private boolean j;
+  private boolean k;
   
   private final void a()
   {
     Object localObject = ((ILifeCycleFragmentInjectApi)QRoute.api(ILifeCycleFragmentInjectApi.class)).checkAndAddLifeCycleFragment((Activity)getActivity());
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QRoute.api(ILifeCycleFra…feCycleFragment(activity)");
-    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner = ((LifeCycleAndViewModelStoreOwner)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner;
+    this.d = ((LifeCycleAndViewModelStoreOwner)localObject);
+    localObject = this.d;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
     }
     localObject = ViewModelProviderHelper.a((ViewModelStoreOwner)localObject).get(GdtMotiveBrowsingViewModel.class);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "ViewModelProviderHelper.…ingViewModel::class.java)");
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingViewModel = ((GdtMotiveBrowsingViewModel)localObject);
+    this.c = ((GdtMotiveBrowsingViewModel)localObject);
   }
   
   private final void a(MotiveBrowsingData paramMotiveBrowsingData)
@@ -88,27 +83,27 @@ public final class GdtMotiveBrowsingFragment
       ((StringBuilder)localObject).append(paramMotiveBrowsingData);
       QLog.d("GdtMotiveBrowsingFragment", 2, ((StringBuilder)localObject).toString());
     }
-    int i = paramMotiveBrowsingData.a();
-    Object localObject = paramMotiveBrowsingData.a();
-    int j = paramMotiveBrowsingData.b();
-    if (i != 0)
+    int m = paramMotiveBrowsingData.a();
+    Object localObject = paramMotiveBrowsingData.b();
+    int n = paramMotiveBrowsingData.c();
+    if (m != 0)
     {
       boolean bool = true;
-      if (i != 1) {
+      if (m != 1) {
         return;
       }
-      if (j > 0) {
+      if (n > 0) {
         bool = false;
       }
-      this.jdField_a_of_type_Boolean = bool;
-      if (((GdtMotiveBrowsingFragment)this).jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingTitle == null) {
+      this.b = bool;
+      if (((GdtMotiveBrowsingFragment)this).g == null) {
         c();
       }
-      paramMotiveBrowsingData = this.jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingTitle;
+      paramMotiveBrowsingData = this.g;
       if (paramMotiveBrowsingData == null) {
         Intrinsics.throwUninitializedPropertyAccessException("titleContainer");
       }
-      paramMotiveBrowsingData.a(j);
+      paramMotiveBrowsingData.a(n);
       return;
     }
     this.webView.evaluateJavascript((String)localObject, (ValueCallback)GdtMotiveBrowsingFragment.handleMotiveBrowsingData.1.a);
@@ -124,25 +119,25 @@ public final class GdtMotiveBrowsingFragment
     }
     try
     {
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel = new GdtMotiveVideoModel((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
-      GdtADFlyingStreamingReportHelper.a().a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel);
-      int j = GdtUtil.a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel);
-      int i = j;
-      if (j <= 0) {
-        i = 15;
+      this.f = new GdtMotiveVideoModel((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
+      GdtADFlyingStreamingReportHelper.a().a(this.f);
+      int n = GdtUtil.a(this.f);
+      int m = n;
+      if (n <= 0) {
+        m = 15;
       }
-      this.jdField_a_of_type_Int = i;
-      localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingViewModel;
+      this.h = m;
+      localObject = this.c;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewModel");
       }
-      ((GdtMotiveBrowsingViewModel)localObject).a(this.jdField_a_of_type_Int);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner;
+      ((GdtMotiveBrowsingViewModel)localObject).a(this.h);
+      localObject = this.d;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("lifeCycleFragment");
       }
       localObject = (LifecycleOwner)localObject;
-      GdtMotiveBrowsingViewModel localGdtMotiveBrowsingViewModel = this.jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingViewModel;
+      GdtMotiveBrowsingViewModel localGdtMotiveBrowsingViewModel = this.c;
       if (localGdtMotiveBrowsingViewModel == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewModel");
       }
@@ -159,25 +154,25 @@ public final class GdtMotiveBrowsingFragment
   {
     Object localObject = getQBaseActivity();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "qBaseActivity");
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingTitle = new GdtMotiveBrowsingTitle((Context)localObject);
-    localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingTitle;
+    this.g = new GdtMotiveBrowsingTitle((Context)localObject);
+    localObject = this.g;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("titleContainer");
     }
     ((GdtMotiveBrowsingTitle)localObject).setOnCloseClickListener((Function0)new GdtMotiveBrowsingFragment.initTitle.1((GdtMotiveBrowsingFragment)this));
-    localObject = (ViewGroup)getUIStyleHandler().d.findViewById(2131381085);
-    GdtMotiveBrowsingTitle localGdtMotiveBrowsingTitle = this.jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingTitle;
+    localObject = (ViewGroup)getUIStyleHandler().x.findViewById(2131450099);
+    GdtMotiveBrowsingTitle localGdtMotiveBrowsingTitle = this.g;
     if (localGdtMotiveBrowsingTitle == null) {
       Intrinsics.throwUninitializedPropertyAccessException("titleContainer");
     }
     ((ViewGroup)localObject).addView((View)localGdtMotiveBrowsingTitle);
-    int j = ViewUtils.a(63.0F);
-    int i = j;
+    int n = ViewUtils.dip2px(63.0F);
+    int m = n;
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      i = j + ImmersiveUtils.getStatusBarHeight((Context)getQBaseActivity());
+      m = n + ImmersiveUtils.getStatusBarHeight((Context)getQBaseActivity());
     }
-    this.webView.setPadding(0, i, 0, 0);
-    localObject = getSwiftTitleUI().a;
+    this.webView.setPadding(0, m, 0, 0);
+    localObject = getSwiftTitleUI().o;
     Intrinsics.checkExpressionValueIsNotNull(localObject, "swiftTitleUI.titleContainer");
     ((ViewGroup)localObject).setVisibility(8);
     localObject = getQBaseActivity();
@@ -190,12 +185,12 @@ public final class GdtMotiveBrowsingFragment
   
   private final void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    Object localObject = this.e;
     if (localObject != null) {
       ((QQCustomDialog)localObject).dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a((Context)getQBaseActivity(), 0, null, (CharSequence)getResources().getString(2131692847, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }), getResources().getString(2131692844), getResources().getString(2131692845), (DialogInterface.OnClickListener)new GdtMotiveBrowsingFragment.watchTimeNotCompleteMention.1(this), (DialogInterface.OnClickListener)new GdtMotiveBrowsingFragment.watchTimeNotCompleteMention.2(this));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    this.e = DialogUtil.a((Context)getQBaseActivity(), 0, null, (CharSequence)getResources().getString(2131889956, new Object[] { Integer.valueOf(this.h) }), getResources().getString(2131889953), getResources().getString(2131889954), (DialogInterface.OnClickListener)new GdtMotiveBrowsingFragment.watchTimeNotCompleteMention.1(this), (DialogInterface.OnClickListener)new GdtMotiveBrowsingFragment.watchTimeNotCompleteMention.2(this));
+    localObject = this.e;
     if (localObject != null)
     {
       ((QQCustomDialog)localObject).show();
@@ -207,13 +202,13 @@ public final class GdtMotiveBrowsingFragment
           ((View)localObject).setSystemUiVisibility(7942);
         }
       }
-      localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivebrowsingGdtMotiveBrowsingViewModel;
+      localObject = this.c;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewModel");
       }
-      ((GdtMotiveBrowsingViewModel)localObject).a();
+      ((GdtMotiveBrowsingViewModel)localObject).c();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    localObject = this.e;
     if (localObject != null) {
       ((QQCustomDialog)localObject).setOnDismissListener((DialogInterface.OnDismissListener)new GdtMotiveBrowsingFragment.watchTimeNotCompleteMention.4(this));
     }
@@ -224,11 +219,11 @@ public final class GdtMotiveBrowsingFragment
     if (QLog.isColorLevel()) {
       QLog.d("GdtMotiveBrowsingFragment", 2, "DialogInterface onClick confirm");
     }
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.e;
     if (localQQCustomDialog != null) {
       localQQCustomDialog.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = ((QQCustomDialog)null);
+    this.e = ((QQCustomDialog)null);
   }
   
   private final void f()
@@ -245,7 +240,7 @@ public final class GdtMotiveBrowsingFragment
     if (QLog.isColorLevel()) {
       QLog.d("GdtMotiveBrowsingFragment", 2, "sendRewardedCallback");
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel;
+    Object localObject1 = this.f;
     if (localObject1 != null)
     {
       localObject1 = ((GdtMotiveVideoModel)localObject1).a();
@@ -258,9 +253,9 @@ public final class GdtMotiveBrowsingFragment
           if ((((Collection)localObject2).isEmpty() ^ true))
           {
             localObject2 = new Intent((String)((List)localObject2).get(0));
-            ((Intent)localObject2).putExtra("duration_time", this.jdField_a_of_type_Int * 1000L);
-            ((Intent)localObject2).putExtra("elapsed_time", this.jdField_a_of_type_Int * 1000L);
-            ((Intent)localObject2).putExtra("profitable_flag", this.jdField_a_of_type_Boolean);
+            ((Intent)localObject2).putExtra("duration_time", this.h * 1000L);
+            ((Intent)localObject2).putExtra("elapsed_time", this.h * 1000L);
+            ((Intent)localObject2).putExtra("profitable_flag", this.b);
             ((Intent)localObject2).putExtra("KEY_MOTIVE_BROWSING", (String)localObject1);
             getQBaseActivity().sendBroadcast((Intent)localObject2);
           }
@@ -273,7 +268,7 @@ public final class GdtMotiveBrowsingFragment
   public void doOnBackEvent()
   {
     GdtADFlyingStreamingReportHelper.a().a(1020026L);
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
       d();
       return;
@@ -302,17 +297,31 @@ public final class GdtMotiveBrowsingFragment
   public void onDestroy()
   {
     super.onDestroy();
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-    if (localQQCustomDialog != null) {
-      localQQCustomDialog.dismiss();
+    Object localObject = this.e;
+    if (localObject != null) {
+      ((QQCustomDialog)localObject).dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = ((QQCustomDialog)null);
-    GdtADFlyingStreamingReportHelper.a().a();
+    this.e = ((QQCustomDialog)null);
+    GdtADFlyingStreamingReportHelper.a().c();
+    localObject = this.c;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("viewModel");
+    }
+    ((GdtMotiveBrowsingViewModel)localObject).b().d();
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (localQBaseActivity != null) {
+      localQBaseActivity.setRequestedOrientation(1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingFragment
  * JD-Core Version:    0.7.0.1
  */

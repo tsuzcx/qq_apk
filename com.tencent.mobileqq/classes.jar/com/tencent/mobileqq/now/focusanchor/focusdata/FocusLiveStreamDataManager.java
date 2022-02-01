@@ -7,45 +7,35 @@ import java.util.List;
 public class FocusLiveStreamDataManager
   implements FocusLiveStreamListener
 {
-  private static volatile FocusLiveStreamDataManager jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager;
-  private FocusLiveStreamListener jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener;
-  private List<NowQQLiveAnchorInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static volatile FocusLiveStreamDataManager c;
+  private List<NowQQLiveAnchorInfo> a = new ArrayList();
+  private FocusLiveStreamListener b;
   
   public static FocusLiveStreamDataManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager == null) {
-          jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager = new FocusLiveStreamDataManager();
+        if (c == null) {
+          c = new FocusLiveStreamDataManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager;
-  }
-  
-  public List<NowQQLiveAnchorInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    new FocusLiveStreamDataImpl().a(this);
+    return c;
   }
   
   public void a(int paramInt, String paramString) {}
   
   public void a(FocusLiveStreamListener paramFocusLiveStreamListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener = paramFocusLiveStreamListener;
+    this.b = paramFocusLiveStreamListener;
   }
   
   public void a(List<NowQQLiveAnchorInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    FocusLiveStreamListener localFocusLiveStreamListener = this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener;
+    this.a = paramList;
+    FocusLiveStreamListener localFocusLiveStreamListener = this.b;
     if (localFocusLiveStreamListener != null) {
       localFocusLiveStreamListener.a(paramList);
     }
@@ -53,14 +43,24 @@ public class FocusLiveStreamDataManager
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocousinterfaceFocusLiveStreamListener = null;
-    jdField_a_of_type_ComTencentMobileqqNowFocusanchorFocusdataFocusLiveStreamDataManager = null;
+    new FocusLiveStreamDataImpl().a(this);
+  }
+  
+  public List<NowQQLiveAnchorInfo> c()
+  {
+    return this.a;
+  }
+  
+  public void d()
+  {
+    this.a.clear();
+    this.b = null;
+    c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.focusdata.FocusLiveStreamDataManager
  * JD-Core Version:    0.7.0.1
  */

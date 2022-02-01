@@ -6,8 +6,10 @@ import com.tencent.liteav.TXLiteAVExternalDecoderFactoryInterface;
 import com.tencent.liteav.basic.a;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.license.LicenceCheck;
+import com.tencent.liteav.basic.license.f;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.p;
 import java.io.File;
 import java.io.FileInputStream;
@@ -214,6 +216,10 @@ public class TXLiveBase
   
   public static void setExternalDecoderFactory(TXLiteAVExternalDecoderFactoryInterface paramTXLiteAVExternalDecoderFactoryInterface)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setExternalDecoderFactory decoderFactory = ");
+    localStringBuilder.append(paramTXLiteAVExternalDecoderFactoryInterface);
+    TXCLog.i("TXLiveBase", localStringBuilder.toString());
     a.a(paramTXLiteAVExternalDecoderFactoryInterface);
   }
   
@@ -223,7 +229,7 @@ public class TXLiveBase
     localStringBuilder.append("setLibraryPath ");
     localStringBuilder.append(paramString);
     Log.i("TXLiveBase", localStringBuilder.toString());
-    com.tencent.liteav.basic.util.f.b(paramString);
+    h.b(paramString);
   }
   
   public static void setListener(ITXLiveBaseListener paramITXLiveBaseListener)
@@ -249,7 +255,7 @@ public class TXLiveBase
   
   public String getLicenceInfo(Context paramContext)
   {
-    com.tencent.liteav.basic.license.f localf = new com.tencent.liteav.basic.license.f();
+    f localf = new f();
     LicenceCheck.a().a(localf, paramContext);
     return localf.a;
   }
@@ -261,7 +267,7 @@ public class TXLiveBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.TXLiveBase
  * JD-Core Version:    0.7.0.1
  */

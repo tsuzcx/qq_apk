@@ -13,51 +13,30 @@ import java.util.ArrayList;
 
 public class QIMProviderViewBuilder
 {
-  public static final int[] a;
-  public static final int[] b;
-  public static final int[] c;
-  public static final int[] d;
-  public static final int[] e;
-  public static final int[] f;
-  private int jdField_a_of_type_Int = 0;
-  private ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 106, 2130849985, 2130849985, 2131373981 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 101, 2130849986, 2130849986, 2131373982 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 103, 2130849988, 2130849988, 2131373984 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 104, 2130849987, 2130849987, 2131373983 };
-    jdField_e_of_type_ArrayOfInt = new int[] { 108, 2064056675, 2064056675, 2131373986 };
-    jdField_f_of_type_ArrayOfInt = new int[] { 104 };
-  }
+  public static final int[] a = { 106, 2130851746, 2130851746, 2131442047 };
+  public static final int[] b = { 101, 2130851747, 2130851747, 2131442048 };
+  public static final int[] c = { 103, 2130851749, 2130851749, 2131442050 };
+  public static final int[] d = { 104, 2130851748, 2130851748, 2131442049 };
+  public static final int[] e = { 108, 2063925640, 2063925640, 2131442052 };
+  public static final int[] l = { 104 };
+  public boolean f = true;
+  public boolean g = true;
+  public boolean h = true;
+  public boolean i = true;
+  public boolean j = true;
+  public boolean k = true;
+  private int m = 0;
+  private ArrayList<int[]> n = new ArrayList();
   
   public QIMProviderViewBuilder(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.m = paramInt;
   }
   
   public int a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[1];
+    if ((paramInt >= 0) && (paramInt <= this.n.size())) {
+      return ((int[])this.n.get(paramInt))[1];
     }
     return 0;
   }
@@ -82,17 +61,17 @@ public class QIMProviderViewBuilder
                 QLog.d("ProviderViewBuilder", 2, paramContext.toString());
               }
             }
-            else if (this.jdField_f_of_type_Boolean)
+            else if (this.k)
             {
               paramContext = new MusicProviderView(paramContext);
-              paramContext.setId(2131364293);
+              paramContext.setId(2131430313);
               break label177;
             }
           }
           else
           {
             paramContext = new StaticStickerProviderView(paramContext);
-            paramContext.setId(2131364294);
+            paramContext.setId(2131430314);
             break label177;
           }
         }
@@ -102,32 +81,32 @@ public class QIMProviderViewBuilder
           break label177;
         }
       }
-      else if (this.jdField_e_of_type_Boolean)
+      else if (this.j)
       {
         paramContext = new ComboProviderView(paramContext);
-        paramContext.setId(2131364287);
+        paramContext.setId(2131430307);
         break label177;
       }
     }
-    else if (this.jdField_c_of_type_Boolean)
+    else if (this.h)
     {
       paramContext = new QIMFilterProviderView(paramContext);
-      paramContext.setId(2131364288);
+      paramContext.setId(2131430308);
       break label177;
     }
     paramContext = null;
     label177:
     if (paramContext != null)
     {
-      paramContext.setCaptureScene(this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Int == 0)
+      paramContext.setCaptureScene(this.m);
+      if (this.m == 0)
       {
         paramContext.setTabBarPosition(2);
         paramContext.d(206);
         return paramContext;
       }
       paramContext.setTabBarPosition(1);
-      if (paramContext.e())
+      if (paramContext.getNeedTabBar())
       {
         paramContext.d(213);
         return paramContext;
@@ -139,92 +118,89 @@ public class QIMProviderViewBuilder
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    int i = this.jdField_a_of_type_Int;
-    if (i != 0)
+    this.n.clear();
+    int i1 = this.m;
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i == 3) {
+          if (i1 == 3) {
             break label100;
           }
-          if (i != 4) {
+          if (i1 != 4) {
             return;
           }
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.f)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_ArrayOfInt);
-          this.jdField_a_of_type_JavaUtilArrayList.add(jdField_b_of_type_ArrayOfInt);
-          this.jdField_a_of_type_JavaUtilArrayList.add(jdField_c_of_type_ArrayOfInt);
+          this.n.add(a);
+          this.n.add(b);
+          this.n.add(c);
         }
-        this.jdField_a_of_type_JavaUtilArrayList.add(jdField_d_of_type_ArrayOfInt);
-        this.jdField_a_of_type_JavaUtilArrayList.add(jdField_e_of_type_ArrayOfInt);
+        this.n.add(d);
+        this.n.add(e);
         return;
       }
       label100:
-      if (this.jdField_a_of_type_Boolean)
+      if (this.f)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_ArrayOfInt);
-        this.jdField_a_of_type_JavaUtilArrayList.add(jdField_b_of_type_ArrayOfInt);
-        this.jdField_a_of_type_JavaUtilArrayList.add(jdField_c_of_type_ArrayOfInt);
+        this.n.add(a);
+        this.n.add(b);
+        this.n.add(c);
       }
     }
-    else if (this.jdField_a_of_type_Boolean)
+    else if (this.f)
     {
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(jdField_b_of_type_ArrayOfInt);
+      if (this.h) {
+        this.n.add(b);
       }
-      if (this.jdField_f_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(jdField_d_of_type_ArrayOfInt);
+      if (this.k) {
+        this.n.add(d);
       }
-      if (this.jdField_e_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_ArrayOfInt);
+      if (this.j) {
+        this.n.add(a);
       }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
-    {
-      paramInt = ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
-      if (paramInt == 101)
-      {
-        VideoFilterTools.a().a(1, 0, "");
-        return;
-      }
-      if (paramInt == 106) {
-        VideoFilterTools.a().a(6, 0, "");
-      }
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("updateRedDotHasShow failed out bounds");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append(" size:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
-      QLog.e("ProviderViewBuilder", 2, localStringBuilder.toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
   
-  public boolean a(int paramInt)
+  public int b()
+  {
+    return this.n.size();
+  }
+  
+  public int b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= this.n.size())) {
+      return ((int[])this.n.get(paramInt))[2];
+    }
+    return 0;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.h = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.i = paramBoolean;
+  }
+  
+  public boolean c(int paramInt)
   {
     if (paramInt >= 0)
     {
-      if (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (paramInt > this.n.size()) {
         return false;
       }
-      paramInt = ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
+      paramInt = ((int[])this.n.get(paramInt))[0];
       if (paramInt == 101) {
         return VideoFilterTools.a(1, 0, "");
       }
@@ -235,65 +211,73 @@ public class QIMProviderViewBuilder
     return false;
   }
   
-  public int b(int paramInt)
+  public void d(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[2];
-    }
-    return 0;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b(int paramInt)
-  {
-    int[] arrayOfInt = jdField_f_of_type_ArrayOfInt;
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    if ((paramInt >= 0) && (paramInt < this.n.size()))
     {
-      if (arrayOfInt[i] == paramInt) {
-        return true;
+      paramInt = ((int[])this.n.get(paramInt))[0];
+      if (paramInt == 101)
+      {
+        VideoFilterTools.a().b(1, 0, "");
+        return;
       }
-      i += 1;
+      if (paramInt == 106) {
+        VideoFilterTools.a().b(6, 0, "");
+      }
+      return;
     }
-    return false;
-  }
-  
-  public int c(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateRedDotHasShow failed out bounds");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" size:");
+      localStringBuilder.append(this.n.size());
+      QLog.e("ProviderViewBuilder", 2, localStringBuilder.toString());
     }
-    return -1;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
   public void d(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
+  }
+  
+  public int e(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt <= this.n.size())) {
+      return ((int[])this.n.get(paramInt))[0];
+    }
+    return -1;
   }
   
   public void e(boolean paramBoolean)
   {
-    this.jdField_f_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
   }
   
   public void f(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
+  }
+  
+  public boolean f(int paramInt)
+  {
+    int[] arrayOfInt = l;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (arrayOfInt[i1] == paramInt) {
+        return true;
+      }
+      i1 += 1;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.util.QIMProviderViewBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -52,7 +52,7 @@ public class ArConfigInfo
     try
     {
       int i = paramParcel.readInt();
-      ArCloudConfigInfo.f = i;
+      ArCloudConfigInfo.h = i;
       if (i >= 10) {
         this.version = paramParcel.readInt();
       }
@@ -315,7 +315,7 @@ public class ArConfigInfo
     //   280: aload 5
     //   282: astore_2
     //   283: aload 10
-    //   285: getfield 251	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_a_of_type_Boolean	Z
+    //   285: getfield 251	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:p	Z
     //   288: ifne -42 -> 246
     //   291: aload_0
     //   292: astore_1
@@ -695,56 +695,56 @@ public class ArConfigInfo
         }
         try
         {
-          ((ArCloudConfigInfo)localObject2).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+          ((ArCloudConfigInfo)localObject2).a = Integer.parseInt(((XmlPullParser)localObject1).nextText());
         }
         catch (NumberFormatException localNumberFormatException1)
         {
           label417:
           break label417;
         }
-        ((ArCloudConfigInfo)localObject2).jdField_a_of_type_Int = k;
+        ((ArCloudConfigInfo)localObject2).a = k;
         break label2459;
         bool = ((String)localObject3).equalsIgnoreCase("LotterySet");
         if (bool) {}
         try
         {
-          ((ArCloudConfigInfo)localObject2).e = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+          ((ArCloudConfigInfo)localObject2).g = Integer.parseInt(((XmlPullParser)localObject1).nextText());
         }
         catch (NumberFormatException localNumberFormatException2)
         {
           label459:
           break label459;
         }
-        ((ArCloudConfigInfo)localObject2).e = k;
+        ((ArCloudConfigInfo)localObject2).g = k;
         break label2459;
         if (((String)localObject3).equalsIgnoreCase("PicId"))
         {
-          ((ArCloudConfigInfo)localObject2).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+          ((ArCloudConfigInfo)localObject2).f = ((XmlPullParser)localObject1).nextText();
           break label2459;
         }
         if (((String)localObject3).equalsIgnoreCase("SDKVersion"))
         {
-          ((ArCloudConfigInfo)localObject2).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+          ((ArCloudConfigInfo)localObject2).b = ((XmlPullParser)localObject1).nextText();
           break label2459;
         }
         bool = ((String)localObject3).equalsIgnoreCase("TrackMode");
         if (bool) {}
         try
         {
-          ((ArCloudConfigInfo)localObject2).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+          ((ArCloudConfigInfo)localObject2).d = Integer.parseInt(((XmlPullParser)localObject1).nextText());
         }
         catch (NumberFormatException localNumberFormatException3)
         {
           label553:
           break label553;
         }
-        ((ArCloudConfigInfo)localObject2).jdField_c_of_type_Int = k;
+        ((ArCloudConfigInfo)localObject2).d = k;
         break label2459;
         bool = ((String)localObject3).equalsIgnoreCase("Type");
         if (bool) {}
         try
         {
-          ((ArCloudConfigInfo)localObject2).jdField_d_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+          ((ArCloudConfigInfo)localObject2).e = Integer.parseInt(((XmlPullParser)localObject1).nextText());
         }
         catch (NumberFormatException localNumberFormatException4)
         {
@@ -752,7 +752,7 @@ public class ArConfigInfo
           String str;
           break label595;
         }
-        ((ArCloudConfigInfo)localObject2).jdField_d_of_type_Int = k;
+        ((ArCloudConfigInfo)localObject2).e = k;
         break label2459;
         bool = ((String)localObject3).equalsIgnoreCase("Feature");
         j = i;
@@ -770,7 +770,7 @@ public class ArConfigInfo
               str = ((XmlPullParser)localObject1).getName();
               if (str.equalsIgnoreCase("FeatureMD5"))
               {
-                ((ArFeatureInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+                ((ArFeatureInfo)localObject3).a = ((XmlPullParser)localObject1).nextText();
                 break;
               }
               bool = str.equalsIgnoreCase("FeatureSize");
@@ -778,19 +778,19 @@ public class ArConfigInfo
             }
             try
             {
-              ((ArFeatureInfo)localObject3).jdField_a_of_type_Long = Long.parseLong(((XmlPullParser)localObject1).nextText());
+              ((ArFeatureInfo)localObject3).b = Long.parseLong(((XmlPullParser)localObject1).nextText());
             }
             catch (NumberFormatException localNumberFormatException5)
             {
               label718:
               break label718;
             }
-            ((ArFeatureInfo)localObject3).jdField_a_of_type_Long = 0L;
+            ((ArFeatureInfo)localObject3).b = 0L;
             break;
             if (!str.equalsIgnoreCase("FeatureUrl")) {
               break;
             }
-            ((ArFeatureInfo)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            ((ArFeatureInfo)localObject3).c = ((XmlPullParser)localObject1).nextText();
             break;
             j = i;
             if (k == 3)
@@ -798,7 +798,7 @@ public class ArConfigInfo
               j = i;
               if (((XmlPullParser)localObject1).getName().equalsIgnoreCase("Feature"))
               {
-                ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = ((ArFeatureInfo)localObject3);
+                ((ArCloudConfigInfo)localObject2).j = ((ArFeatureInfo)localObject3);
                 break label2469;
               }
             }
@@ -845,22 +845,22 @@ public class ArConfigInfo
               }
               bool = true;
               label937:
-              ((ArWebInfo)localObject3).jdField_a_of_type_Boolean = bool;
+              ((ArWebInfo)localObject3).a = bool;
             }
             catch (NumberFormatException localNumberFormatException7)
             {
               label947:
               break label947;
             }
-            ((ArWebInfo)localObject3).jdField_a_of_type_Boolean = false;
+            ((ArWebInfo)localObject3).a = false;
             continue;
             if (str.equalsIgnoreCase("WebJumpUrl"))
             {
-              ((ArWebInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              ((ArWebInfo)localObject3).c = ((XmlPullParser)localObject1).nextText();
               continue;
               if ((j == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("Web")))
               {
-                ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArWebInfo = ((ArWebInfo)localObject3);
+                ((ArCloudConfigInfo)localObject2).m = ((ArWebInfo)localObject3);
                 break label2486;
               }
             }
@@ -883,14 +883,14 @@ public class ArConfigInfo
         }
         try
         {
-          ((ArModelResource)localObject3).jdField_a_of_type_Long = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+          ((ArModelResource)localObject3).a = Integer.parseInt(((XmlPullParser)localObject1).nextText());
         }
         catch (NumberFormatException localNumberFormatException8)
         {
           label1105:
           break label1105;
         }
-        ((ArModelResource)localObject3).jdField_a_of_type_Long = 0L;
+        ((ArModelResource)localObject3).a = 0L;
         break label1291;
         bool = str.equalsIgnoreCase("ModelRepeatTimes");
         if (!bool) {
@@ -904,7 +904,7 @@ public class ArConfigInfo
     label2022:
     try
     {
-      ((ArModelResource)localObject3).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+      ((ArModelResource)localObject3).f = Integer.parseInt(((XmlPullParser)localObject1).nextText());
     }
     catch (NumberFormatException localNumberFormatException9)
     {
@@ -912,27 +912,27 @@ public class ArConfigInfo
       label1660:
       break label1147;
     }
-    ((ArModelResource)localObject3).jdField_a_of_type_Int = 0;
+    ((ArModelResource)localObject3).f = 0;
     break label1291;
     if (str.equalsIgnoreCase("ModelResourceMD5"))
     {
-      ((ArModelResource)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      ((ArModelResource)localObject3).b = ((XmlPullParser)localObject1).nextText();
     }
     else if (str.equalsIgnoreCase("ModelResourceUrl"))
     {
-      ((ArModelResource)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      ((ArModelResource)localObject3).c = ((XmlPullParser)localObject1).nextText();
     }
     else if (str.equalsIgnoreCase("ModelResourceBgMusic"))
     {
-      ((ArModelResource)localObject3).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      ((ArModelResource)localObject3).d = ((XmlPullParser)localObject1).nextText();
     }
     else if (str.equalsIgnoreCase("ModelConfigFile"))
     {
-      ((ArModelResource)localObject3).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      ((ArModelResource)localObject3).e = ((XmlPullParser)localObject1).nextText();
       break label1291;
       if ((j == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("ModelResource")))
       {
-        ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArModelResource = ((ArModelResource)localObject3);
+        ((ArCloudConfigInfo)localObject2).k = ((ArModelResource)localObject3);
         break label2486;
       }
     }
@@ -959,42 +959,42 @@ public class ArConfigInfo
     label2269:
     try
     {
-      ((ArAwardInfo)localObject3).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+      ((ArAwardInfo)localObject3).a = Integer.parseInt(((XmlPullParser)localObject1).nextText());
     }
     catch (NumberFormatException localNumberFormatException10)
     {
       label1890:
       break label1382;
     }
-    ((ArAwardInfo)localObject3).jdField_a_of_type_Int = 0;
+    ((ArAwardInfo)localObject3).a = 0;
     break label1569;
     if (str.equalsIgnoreCase("NotPlayModel"))
     {
       if (Integer.parseInt(((XmlPullParser)localObject1).nextText()) == 1) {
-        ((ArAwardInfo)localObject3).jdField_b_of_type_Int = 0;
+        ((ArAwardInfo)localObject3).f = 0;
       } else {
-        ((ArAwardInfo)localObject3).jdField_b_of_type_Int = 1;
+        ((ArAwardInfo)localObject3).f = 1;
       }
     }
     else if (str.equalsIgnoreCase("BusinessBanner"))
     {
-      ((ArAwardInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      ((ArAwardInfo)localObject3).b = ((XmlPullParser)localObject1).nextText();
     }
     else if (str.equalsIgnoreCase("BusinessLogo"))
     {
-      ((ArAwardInfo)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      ((ArAwardInfo)localObject3).c = ((XmlPullParser)localObject1).nextText();
     }
     else if (str.equalsIgnoreCase("BusinessName"))
     {
-      ((ArAwardInfo)localObject3).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      ((ArAwardInfo)localObject3).d = ((XmlPullParser)localObject1).nextText();
     }
     else if (str.equalsIgnoreCase("BusinessWishing"))
     {
-      ((ArAwardInfo)localObject3).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      ((ArAwardInfo)localObject3).e = ((XmlPullParser)localObject1).nextText();
       break label1569;
       if ((j == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("Award")))
       {
-        ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArAwardInfo = ((ArAwardInfo)localObject3);
+        ((ArCloudConfigInfo)localObject2).l = ((ArAwardInfo)localObject3);
         break label2486;
       }
     }
@@ -1016,82 +1016,82 @@ public class ArConfigInfo
           }
           try
           {
-            ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+            ((ArVideoResourceInfo)localObject3).a = Integer.parseInt(((XmlPullParser)localObject1).nextText());
           }
           catch (NumberFormatException localNumberFormatException11)
           {
             break label1660;
           }
-          ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Int = 0;
+          ((ArVideoResourceInfo)localObject3).a = 0;
           break label2491;
           bool = str.equalsIgnoreCase("VideoTrackMode");
           if (bool) {}
           try
           {
-            ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+            ((ArVideoResourceInfo)localObject3).g = Integer.parseInt(((XmlPullParser)localObject1).nextText());
           }
           catch (NumberFormatException localNumberFormatException12)
           {
             break label1702;
           }
-          ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = 0;
+          ((ArVideoResourceInfo)localObject3).g = 0;
           break label2491;
           if (str.equalsIgnoreCase("VideoKeyingConfig"))
           {
-            ((ArVideoResourceInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            ((ArVideoResourceInfo)localObject3).c = ((XmlPullParser)localObject1).nextText();
             break label2491;
           }
           if (str.equalsIgnoreCase("VideoLayout"))
           {
-            ((ArVideoResourceInfo)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            ((ArVideoResourceInfo)localObject3).d = ((XmlPullParser)localObject1).nextText();
             break label2491;
           }
           if (str.equalsIgnoreCase("VideoMD5"))
           {
-            ((ArVideoResourceInfo)localObject3).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            ((ArVideoResourceInfo)localObject3).e = ((XmlPullParser)localObject1).nextText();
             break label2491;
           }
           if (str.equalsIgnoreCase("VideoUrl"))
           {
-            ((ArVideoResourceInfo)localObject3).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            ((ArVideoResourceInfo)localObject3).i = ((XmlPullParser)localObject1).nextText();
             break label2491;
           }
           bool = str.equalsIgnoreCase("VideoRepeatTimes");
           if (bool) {}
           try
           {
-            ((ArVideoResourceInfo)localObject3).jdField_b_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+            ((ArVideoResourceInfo)localObject3).f = Integer.parseInt(((XmlPullParser)localObject1).nextText());
           }
           catch (NumberFormatException localNumberFormatException13)
           {
             break label1848;
           }
-          ((ArVideoResourceInfo)localObject3).jdField_b_of_type_Int = 0;
+          ((ArVideoResourceInfo)localObject3).f = 0;
           break label2491;
           bool = str.equalsIgnoreCase("VideoType");
           if (bool) {}
           try
           {
-            ((ArVideoResourceInfo)localObject3).jdField_d_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+            ((ArVideoResourceInfo)localObject3).h = Integer.parseInt(((XmlPullParser)localObject1).nextText());
           }
           catch (NumberFormatException localNumberFormatException14)
           {
             break label1890;
           }
-          ((ArVideoResourceInfo)localObject3).jdField_d_of_type_Int = 0;
+          ((ArVideoResourceInfo)localObject3).h = 0;
           break label2491;
           bool = str.equalsIgnoreCase("VideoSize");
           if (bool) {}
           try
           {
-            ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Long = Long.parseLong(((XmlPullParser)localObject1).nextText());
+            ((ArVideoResourceInfo)localObject3).b = Long.parseLong(((XmlPullParser)localObject1).nextText());
           }
           catch (NumberFormatException localNumberFormatException15)
           {
             label1932:
             break label1932;
           }
-          ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Long = 0L;
+          ((ArVideoResourceInfo)localObject3).b = 0L;
           break label2491;
           bool = str.equalsIgnoreCase("VideoTrackMode");
           if (!bool) {
@@ -1099,19 +1099,19 @@ public class ArConfigInfo
           }
           try
           {
-            ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+            ((ArVideoResourceInfo)localObject3).g = Integer.parseInt(((XmlPullParser)localObject1).nextText());
           }
           catch (NumberFormatException localNumberFormatException16)
           {
             label1974:
             break label1974;
           }
-          ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = 0;
+          ((ArVideoResourceInfo)localObject3).g = 0;
           break label2022;
           k = 0;
           if ((j == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("VideoResource")))
           {
-            ((ArCloudConfigInfo)localObject2).jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+            ((ArCloudConfigInfo)localObject2).i.add(localObject3);
             j = k;
             break label2494;
           }
@@ -1249,7 +1249,7 @@ public class ArConfigInfo
     //   10: invokespecial 118	java/lang/StringBuilder:<init>	()V
     //   13: astore 4
     //   15: aload 4
-    //   17: ldc_w 534
+    //   17: ldc_w 546
     //   20: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload 4
@@ -1300,7 +1300,7 @@ public class ArConfigInfo
     //   112: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: pop
     //   116: aload 4
-    //   118: ldc_w 536
+    //   118: ldc_w 548
     //   121: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: pop
     //   125: new 159	java/io/File
@@ -1318,18 +1318,18 @@ public class ArConfigInfo
     //   151: aload_0
     //   152: aload 6
     //   154: iconst_0
-    //   155: invokevirtual 540	com/tencent/mobileqq/ar/aidl/ArConfigInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   155: invokevirtual 552	com/tencent/mobileqq/ar/aidl/ArConfigInfo:writeToParcel	(Landroid/os/Parcel;I)V
     //   158: aload 6
-    //   160: invokevirtual 543	android/os/Parcel:marshall	()[B
+    //   160: invokevirtual 555	android/os/Parcel:marshall	()[B
     //   163: astore 9
     //   165: aload 7
-    //   167: invokevirtual 546	java/io/File:getParentFile	()Ljava/io/File;
+    //   167: invokevirtual 558	java/io/File:getParentFile	()Ljava/io/File;
     //   170: astore_0
     //   171: aload_0
     //   172: invokevirtual 184	java/io/File:exists	()Z
     //   175: ifne +8 -> 183
     //   178: aload_0
-    //   179: invokevirtual 549	java/io/File:mkdir	()Z
+    //   179: invokevirtual 561	java/io/File:mkdir	()Z
     //   182: pop
     //   183: aload 8
     //   185: invokevirtual 184	java/io/File:exists	()Z
@@ -1343,37 +1343,37 @@ public class ArConfigInfo
     //   200: astore 4
     //   202: aconst_null
     //   203: astore 5
-    //   205: new 551	java/io/FileOutputStream
+    //   205: new 563	java/io/FileOutputStream
     //   208: dup
     //   209: aload 8
-    //   211: invokespecial 552	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   211: invokespecial 564	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   214: astore_0
     //   215: aload_0
     //   216: astore_1
-    //   217: new 554	java/io/BufferedOutputStream
+    //   217: new 566	java/io/BufferedOutputStream
     //   220: dup
     //   221: aload_0
-    //   222: invokespecial 557	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   222: invokespecial 569	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   225: astore 4
     //   227: aload 4
     //   229: aload 9
-    //   231: invokevirtual 560	java/io/BufferedOutputStream:write	([B)V
+    //   231: invokevirtual 572	java/io/BufferedOutputStream:write	([B)V
     //   234: aload 4
-    //   236: invokevirtual 563	java/io/BufferedOutputStream:flush	()V
+    //   236: invokevirtual 575	java/io/BufferedOutputStream:flush	()V
     //   239: aload 8
     //   241: aload 7
-    //   243: invokestatic 569	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   243: invokestatic 581	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   246: istore_3
     //   247: aload 6
     //   249: invokevirtual 259	android/os/Parcel:recycle	()V
     //   252: aload 4
-    //   254: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   254: invokevirtual 582	java/io/BufferedOutputStream:close	()V
     //   257: goto +8 -> 265
     //   260: astore_1
     //   261: aload_1
     //   262: invokevirtual 265	java/io/IOException:printStackTrace	()V
     //   265: aload_0
-    //   266: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   266: invokevirtual 583	java/io/FileOutputStream:close	()V
     //   269: iload_3
     //   270: ireturn
     //   271: astore_0
@@ -1409,7 +1409,7 @@ public class ArConfigInfo
     //   323: aload 5
     //   325: ifnull +16 -> 341
     //   328: aload 5
-    //   330: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   330: invokevirtual 582	java/io/BufferedOutputStream:close	()V
     //   333: goto +8 -> 341
     //   336: astore_1
     //   337: aload_1
@@ -1417,7 +1417,7 @@ public class ArConfigInfo
     //   341: aload_0
     //   342: ifnull +14 -> 356
     //   345: aload_0
-    //   346: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   346: invokevirtual 583	java/io/FileOutputStream:close	()V
     //   349: iconst_0
     //   350: ireturn
     //   351: astore_0
@@ -1437,7 +1437,7 @@ public class ArConfigInfo
     //   371: aload 4
     //   373: ifnull +16 -> 389
     //   376: aload 4
-    //   378: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   378: invokevirtual 582	java/io/BufferedOutputStream:close	()V
     //   381: goto +8 -> 389
     //   384: astore_1
     //   385: aload_1
@@ -1445,7 +1445,7 @@ public class ArConfigInfo
     //   389: aload_0
     //   390: ifnull +15 -> 405
     //   393: aload_0
-    //   394: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   394: invokevirtual 583	java/io/FileOutputStream:close	()V
     //   397: goto +8 -> 405
     //   400: astore_0
     //   401: aload_0
@@ -1502,9 +1502,9 @@ public class ArConfigInfo
       while (localIterator.hasNext())
       {
         ArCloudConfigInfo localArCloudConfigInfo = (ArCloudConfigInfo)localIterator.next();
-        if ((localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) && (!TextUtils.isEmpty(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString)))
+        if ((localArCloudConfigInfo.k != null) && (!TextUtils.isEmpty(localArCloudConfigInfo.k.b)))
         {
-          boolean bool = paramString.equals(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+          boolean bool = paramString.equals(localArCloudConfigInfo.k.b);
           if (bool) {
             return localArCloudConfigInfo;
           }
@@ -1564,7 +1564,7 @@ public class ArConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArConfigInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -11,56 +11,44 @@ import org.json.JSONObject;
 public class QFileExcitingGroupUploadConfigBean
   implements IQFileExcitingGroupUploadConfigBean, IQStorageSafable<String>
 {
-  static boolean jdField_a_of_type_Boolean = false;
-  static boolean b = true;
-  private long jdField_a_of_type_Long = 20971520L;
-  private ExcitingTransferUploadChnConfigInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
-  public String a;
-  private boolean c = false;
-  
-  public QFileExcitingGroupUploadConfigBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Long = 20971520L;
-    this.c = false;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
-  }
+  static boolean b = false;
+  static boolean c = true;
+  public String a = "";
+  private long d = 20971520L;
+  private boolean e = false;
+  private ExcitingTransferUploadChnConfigInfo f = new ExcitingTransferUploadChnConfigInfo();
   
   private void a(JSONObject paramJSONObject)
   {
     try
     {
-      this.c = paramJSONObject.getBoolean("enableaqq");
+      this.e = paramJSONObject.getBoolean("enableaqq");
       paramJSONObject = paramJSONObject.getJSONObject("config");
       if (paramJSONObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMuliFileSizeLimit = paramJSONObject.getLong("mulifilesizelimit");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uMaxChannelNum = paramJSONObject.getInt("maxchannelnum");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.uPieceSize = paramJSONObject.getInt("piecesize");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostTotalUseCount = paramJSONObject.getInt("maxeachhosttotalusecount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostErrorCount = paramJSONObject.getInt("maxeachhosterrorcount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nMaxEachHostParallelUseCount = paramJSONObject.getInt("maxeachhostparallelusecount");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nConnectTimeout = paramJSONObject.getLong("connecttimeout");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nDataTimeout = paramJSONObject.getLong("datatimeout");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
-        this.jdField_a_of_type_Long = paramJSONObject.getLong("limitedsize");
+        this.f.uMuliFileSizeLimit = paramJSONObject.getLong("mulifilesizelimit");
+        this.f.uMaxChannelNum = paramJSONObject.getInt("maxchannelnum");
+        this.f.uPieceSize = paramJSONObject.getInt("piecesize");
+        this.f.nMaxEachHostTotalUseCount = paramJSONObject.getInt("maxeachhosttotalusecount");
+        this.f.nMaxEachHostErrorCount = paramJSONObject.getInt("maxeachhosterrorcount");
+        this.f.nMaxEachHostParallelUseCount = paramJSONObject.getInt("maxeachhostparallelusecount");
+        this.f.nConnectTimeout = paramJSONObject.getLong("connecttimeout");
+        this.f.nDataTimeout = paramJSONObject.getLong("datatimeout");
+        this.f.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
+        this.d = paramJSONObject.getLong("limitedsize");
       }
       else
       {
-        this.jdField_a_of_type_Long = 20971520L;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
+        this.d = 20971520L;
+        this.f = new ExcitingTransferUploadChnConfigInfo();
       }
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("parse Exciting-Group-Upload config: enable:");
-      paramJSONObject.append(this.c);
+      paramJSONObject.append(this.e);
       paramJSONObject.append(" LimitedSize:");
-      paramJSONObject.append(this.jdField_a_of_type_Long);
+      paramJSONObject.append(this.d);
       paramJSONObject.append(" ");
-      paramJSONObject.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
+      paramJSONObject.append(this.f.toString());
       QLog.i("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, paramJSONObject.toString());
       return;
     }
@@ -70,23 +58,25 @@ public class QFileExcitingGroupUploadConfigBean
     }
   }
   
-  public long a()
+  private void d()
   {
-    return this.jdField_a_of_type_Long;
+    this.d = 20971520L;
+    this.e = false;
+    this.f = new ExcitingTransferUploadChnConfigInfo();
   }
   
-  public ExcitingTransferUploadChnConfigInfo a()
+  public long a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo;
+    return this.d;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.a = paramString.toLowerCase();
+    if (TextUtils.isEmpty(this.a))
     {
       QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
-      a();
+      d();
       return;
     }
     for (;;)
@@ -94,11 +84,11 @@ public class QFileExcitingGroupUploadConfigBean
       int i;
       try
       {
-        paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
+        paramString = new JSONObject(this.a);
         if (paramString.length() == 0)
         {
           QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
-          a();
+          d();
           return;
         }
         JSONArray localJSONArray = paramString.names();
@@ -121,7 +111,7 @@ public class QFileExcitingGroupUploadConfigBean
         if (j == 0)
         {
           QLog.w("QFileExcitingGroupUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-Group-Upload config, use default value");
-          a();
+          d();
           return;
         }
       }
@@ -135,14 +125,19 @@ public class QFileExcitingGroupUploadConfigBean
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.c;
+    return this.e;
+  }
+  
+  public ExcitingTransferUploadChnConfigInfo c()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileExcitingGroupUploadConfigBean
  * JD-Core Version:    0.7.0.1
  */

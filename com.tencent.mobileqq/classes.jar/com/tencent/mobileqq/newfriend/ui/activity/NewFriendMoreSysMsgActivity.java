@@ -45,26 +45,26 @@ public class NewFriendMoreSysMsgActivity
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("first_visible_index", 0);
-    setContentView(2131561244);
-    paramBundle = (LinearLayout)findViewById(2131376809);
+    setContentView(2131627600);
+    paramBundle = (LinearLayout)findViewById(2131445137);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    paramBundle = (SwipListView)findViewById(2131378197);
-    View localView = findViewById(2131371896);
-    TextView localTextView = (TextView)findViewById(2131369249);
+    paramBundle = (SwipListView)findViewById(2131446714);
+    View localView = findViewById(2131439340);
+    TextView localTextView = (TextView)findViewById(2131436227);
     localTextView.setVisibility(0);
-    localTextView.setText(2131694444);
-    setTitle(getString(2131694444));
-    localTextView = (TextView)findViewById(2131369202);
+    localTextView.setText(2131892124);
+    setTitle(getString(2131892124));
+    localTextView = (TextView)findViewById(2131436180);
     localTextView.setVisibility(0);
     localTextView.setText("");
     localTextView.setOnClickListener(new NewFriendMoreSysMsgActivity.1(this));
-    localTextView = (TextView)findViewById(2131369233);
+    localTextView = (TextView)findViewById(2131436211);
     localTextView.setVisibility(0);
-    localTextView.setText(2131699378);
+    localTextView.setText(2131897409);
     this.a = new NewFriendMoreSysMsgAdapter(this, (AppInterface)getAppRuntime(), paramBundle, localView, localTextView, this.mFlingHandler, i);
     return true;
   }
@@ -92,7 +92,7 @@ public class NewFriendMoreSysMsgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.activity.NewFriendMoreSysMsgActivity
  * JD-Core Version:    0.7.0.1
  */

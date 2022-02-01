@@ -12,19 +12,19 @@ final class DownloadApi$5
   public void run()
   {
     LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
-    DownloadManager.a().a();
+    DownloadManager.b().a();
     for (;;)
     {
       int i;
       try
       {
         ArrayList localArrayList = new ArrayList();
-        int j = this.jdField_a_of_type_JavaUtilList.size();
+        int j = this.a.size();
         i = 0;
         if (i < j)
         {
-          localObject = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (!DownloadManager.a().a((DownloadInfo)localObject)) {
+          localObject = (DownloadInfo)this.a.get(i);
+          if (!DownloadManager.b().g((DownloadInfo)localObject)) {
             break label169;
           }
           String str = DownloadApi.a;
@@ -35,16 +35,16 @@ final class DownloadApi$5
           localArrayList.add(localObject);
           break label169;
         }
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localArrayList);
+          this.b.a(localArrayList);
           return;
         }
       }
       catch (Exception localException)
       {
         LogUtility.c(DownloadApi.a, "Exception>>>", localException);
-        Object localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener;
+        Object localObject = this.b;
         if (localObject != null) {
           ((DownloadQueryListener)localObject).a(-1, localException.getMessage());
         }
@@ -57,7 +57,7 @@ final class DownloadApi$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.5
  * JD-Core Version:    0.7.0.1
  */

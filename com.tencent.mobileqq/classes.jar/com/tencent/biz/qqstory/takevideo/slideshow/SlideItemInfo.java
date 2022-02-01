@@ -13,104 +13,96 @@ public class SlideItemInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<SlideItemInfo> CREATOR = new SlideItemInfo.1();
-  public int a;
-  public long a;
-  public StoryAlbum a;
   public LocalMediaInfo a;
-  public String a;
-  public URL a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
+  public StoryAlbum b;
+  public int c = -1;
   public String d;
   public int e;
-  public String e;
-  public int f;
+  public String f;
+  public URL g;
+  public long h;
+  public long i = 0L;
+  public long j = 0L;
+  public String k;
+  public String l;
+  public boolean m;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public String r = "LinearBlur";
+  public boolean s;
+  public boolean t;
   
   protected SlideItemInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_e_of_type_JavaLangString = "LinearBlur";
     boolean bool2 = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    this.s = false;
+    this.t = false;
+    this.a = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.h = paramParcel.readLong();
+    this.i = paramParcel.readLong();
+    this.j = paramParcel.readLong();
+    this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.f = paramParcel.readInt();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    this.m = bool1;
+    this.n = paramParcel.readInt();
+    this.o = paramParcel.readInt();
+    this.p = paramParcel.readInt();
+    this.q = paramParcel.readInt();
+    this.r = paramParcel.readString();
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.s = bool1;
     boolean bool1 = bool2;
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     }
-    this.jdField_c_of_type_Boolean = bool1;
+    this.t = bool1;
   }
   
   public SlideItemInfo(LocalMediaInfo paramLocalMediaInfo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_e_of_type_JavaLangString = "LinearBlur";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    this.s = false;
+    this.t = false;
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-      this.jdField_b_of_type_JavaLangString = paramLocalMediaInfo.path;
-      this.jdField_b_of_type_Int = QAlbumUtil.getMediaType(paramLocalMediaInfo);
+      this.a = paramLocalMediaInfo;
+      this.f = paramLocalMediaInfo.path;
+      this.e = QAlbumUtil.getMediaType(paramLocalMediaInfo);
       if (!TextUtils.isEmpty(paramLocalMediaInfo.mTransId)) {
-        this.jdField_e_of_type_JavaLangString = paramLocalMediaInfo.mTransId;
+        this.r = paramLocalMediaInfo.mTransId;
       }
       if (!TextUtils.isEmpty(paramLocalMediaInfo.mTextStr)) {
-        this.jdField_a_of_type_JavaLangString = paramLocalMediaInfo.mTextStr;
+        this.d = paramLocalMediaInfo.mTextStr;
       }
-      this.jdField_a_of_type_Int = paramLocalMediaInfo.mTextId;
-      int i = this.jdField_b_of_type_Int;
-      if (i != 0)
+      this.c = paramLocalMediaInfo.mTextId;
+      int i1 = this.e;
+      if (i1 != 0)
       {
-        if (i != 1) {
+        if (i1 != 1) {
           return;
         }
         if (paramLocalMediaInfo.isSystemMeidaStore == true) {
-          this.jdField_a_of_type_JavaNetURL = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo, "VIDEO");
+          this.g = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo, "VIDEO");
         } else {
-          this.jdField_a_of_type_JavaNetURL = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo, "APP_VIDEO");
+          this.g = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo, "APP_VIDEO");
         }
-        this.jdField_a_of_type_Long = paramLocalMediaInfo.mDuration;
-        if (this.jdField_c_of_type_Long == 0L) {
-          this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+        this.h = paramLocalMediaInfo.mDuration;
+        if (this.j == 0L) {
+          this.j = this.h;
         }
       }
       else
@@ -118,9 +110,9 @@ public class SlideItemInfo
         StringBuilder localStringBuilder = new StringBuilder("albumthumb");
         localStringBuilder.append("://");
         localStringBuilder.append(paramLocalMediaInfo.path);
-        this.jdField_a_of_type_JavaNetURL = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo);
-        this.jdField_a_of_type_Long = 2000L;
-        this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+        this.g = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo);
+        this.h = 2000L;
+        this.j = this.h;
         return;
       }
     }
@@ -132,17 +124,17 @@ public class SlideItemInfo
   
   public long a()
   {
-    if (this.jdField_b_of_type_Long <= 0L) {
-      this.jdField_b_of_type_Long = 0L;
+    if (this.i <= 0L) {
+      this.i = 0L;
     }
-    long l1 = this.jdField_c_of_type_Long;
-    if ((l1 <= 0L) || (l1 >= this.jdField_a_of_type_Long)) {
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+    long l1 = this.j;
+    if ((l1 <= 0L) || (l1 >= this.h)) {
+      this.j = this.h;
     }
-    l1 = this.jdField_c_of_type_Long;
-    long l2 = this.jdField_b_of_type_Long;
+    l1 = this.j;
+    long l2 = this.i;
     if (l1 <= l2) {
-      return this.jdField_a_of_type_Long;
+      return this.h;
     }
     return l1 - l2;
   }
@@ -157,31 +149,31 @@ public class SlideItemInfo
     if ((paramObject instanceof SlideItemInfo))
     {
       paramObject = (SlideItemInfo)paramObject;
-      return TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString);
+      return TextUtils.equals(this.f, paramObject.f);
     }
     return false;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, paramInt);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.f);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
-    paramParcel.writeByte((byte)this.jdField_c_of_type_Boolean);
+    paramParcel.writeParcelable(this.a, paramInt);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
+    paramParcel.writeLong(this.h);
+    paramParcel.writeLong(this.i);
+    paramParcel.writeLong(this.j);
+    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
+    paramParcel.writeByte((byte)this.m);
+    paramParcel.writeInt(this.n);
+    paramParcel.writeInt(this.o);
+    paramParcel.writeInt(this.p);
+    paramParcel.writeInt(this.q);
+    paramParcel.writeString(this.r);
+    paramParcel.writeByte((byte)this.s);
+    paramParcel.writeByte((byte)this.t);
   }
 }
 

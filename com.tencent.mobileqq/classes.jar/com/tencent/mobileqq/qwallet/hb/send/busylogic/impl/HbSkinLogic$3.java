@@ -24,16 +24,16 @@ class HbSkinLogic$3
   {
     paramAdapterView = HbSkinLogic.a(this.a).getList();
     Object localObject2 = (HbSkinInfo)paramAdapterView.get(paramInt);
-    if (0L != ((HbSkinInfo)localObject2).a.skin_permission_state)
+    if (0L != ((HbSkinInfo)localObject2).f.skin_permission_state)
     {
-      HbSkinInfo.c = ((HbSkinInfo)paramAdapterView.get(paramInt)).a.skin_id;
+      HbSkinInfo.d = ((HbSkinInfo)paramAdapterView.get(paramInt)).f.skin_id;
       HbSkinLogic.a(this.a).notifyDataSetChanged();
       return;
     }
-    String str1 = ((HbSkinInfo)localObject2).a.pop_dialog.dialog_title;
-    String str2 = ((HbSkinInfo)localObject2).a.pop_dialog.dialog_tips;
-    Object localObject1 = ((HbSkinInfo)localObject2).a.pop_dialog.left_tips;
-    paramView = ((HbSkinInfo)localObject2).a.pop_dialog.right_tips;
+    String str1 = ((HbSkinInfo)localObject2).f.pop_dialog.dialog_title;
+    String str2 = ((HbSkinInfo)localObject2).f.pop_dialog.dialog_tips;
+    Object localObject1 = ((HbSkinInfo)localObject2).f.pop_dialog.left_tips;
+    paramView = ((HbSkinInfo)localObject2).f.pop_dialog.right_tips;
     paramAdapterView = (AdapterView<?>)localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       paramAdapterView = null;
@@ -46,7 +46,7 @@ class HbSkinLogic$3
     {
       localObject1 = paramAdapterView;
       if (paramView == null) {
-        localObject1 = HardCodeUtil.a(R.string.aR);
+        localObject1 = HardCodeUtil.a(R.string.at);
       }
     }
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -59,7 +59,7 @@ class HbSkinLogic$3
     } else {
       localObject2 = new HbSkinLogic.3.2(this, (HbSkinInfo)localObject2);
     }
-    paramAdapterView = DialogUtil.a(HbSkinLogic.a(this.a), 230, str1, str2, (String)localObject1, paramView, (DialogInterface.OnClickListener)localObject2, paramAdapterView);
+    paramAdapterView = DialogUtil.a(HbSkinLogic.e(this.a), 230, str1, str2, (String)localObject1, paramView, (DialogInterface.OnClickListener)localObject2, paramAdapterView);
     paramAdapterView.setCancelable(false);
     paramAdapterView.setCanceledOnTouchOutside(false);
     paramAdapterView.show();
@@ -67,7 +67,7 @@ class HbSkinLogic$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinLogic.3
  * JD-Core Version:    0.7.0.1
  */

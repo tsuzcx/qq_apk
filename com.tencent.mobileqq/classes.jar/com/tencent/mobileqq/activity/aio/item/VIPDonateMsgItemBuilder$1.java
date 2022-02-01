@@ -19,9 +19,9 @@ class VIPDonateMsgItemBuilder$1
   
   public void onClick(View paramView)
   {
-    if (!this.a.a())
+    if (!this.a.c())
     {
-      Object localObject1 = (MessageForVIPDonate)((VIPDonateMsgItemBuilder.VIPDonateMsgHolder)AIOUtils.a(paramView)).a;
+      Object localObject1 = (MessageForVIPDonate)((VIPDonateMsgItemBuilder.VIPDonateMsgHolder)AIOUtils.b(paramView)).q;
       Object localObject2 = ((MessageForVIPDonate)localObject1).donateMsg;
       if ((localObject2 != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject2).jumpUrl)))
       {
@@ -40,7 +40,7 @@ class VIPDonateMsgItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.VIPDonateMsgItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

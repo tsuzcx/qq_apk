@@ -20,17 +20,17 @@ public class FMConfigImpl
   
   public long getFlowDialogSize()
   {
-    return FMConfig.a();
+    return FMConfig.c();
   }
   
   public long getFlowDialogTime()
   {
-    return FMConfig.b();
+    return FMConfig.d();
   }
   
   public long getMaxCreateThumbFileSize()
   {
-    return FMConfig.c();
+    return FMConfig.f();
   }
   
   public String getPreviewConfig(Context paramContext, String paramString1, String paramString2)
@@ -95,7 +95,7 @@ public class FMConfigImpl
   
   public boolean preDownloadThumb()
   {
-    return FMConfig.c();
+    return FMConfig.e();
   }
   
   public void setEnableHttpsDownload4C2C(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
@@ -140,12 +140,12 @@ public class FMConfigImpl
   
   public int timAIOGaryTipsCount()
   {
-    return FMConfig.a();
+    return FMConfig.g();
   }
   
   public String timGuideUrl()
   {
-    return FMConfig.a();
+    return FMConfig.h();
   }
   
   public void updatePreviewList(BaseQQAppInterface paramBaseQQAppInterface, String paramString, long paramLong)
@@ -155,7 +155,7 @@ public class FMConfigImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FMConfigImpl
  * JD-Core Version:    0.7.0.1
  */

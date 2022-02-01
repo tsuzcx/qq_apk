@@ -1,42 +1,44 @@
 package com.tencent.turingfd.sdk.xq;
 
 public class Serpens
-  extends case
+  extends else
 {
-  public int Ab = 0;
-  public String rb = "";
-  public int ub = 0;
-  public int vb = 0;
-  public String yb = "";
-  public String zb = "";
+  public static Bergamot a = new Bergamot();
+  public static Berry b = new Berry();
+  public Bergamot c = null;
+  public Berry d = null;
+  public int e = 0;
+  public String f = "";
+  public String g = "";
   
-  public void a(byte parambyte)
+  public void a(case paramcase)
   {
-    parambyte.b(this.ub, 0);
-    parambyte.b(this.vb, 1);
-    String str = this.yb;
-    if (str != null) {
-      parambyte.b(str, 2);
+    Object localObject = this.c;
+    if (localObject != null) {
+      paramcase.a((else)localObject, 0);
     }
-    str = this.zb;
-    if (str != null) {
-      parambyte.b(str, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramcase.a((else)localObject, 1);
     }
-    parambyte.b(this.Ab, 4);
-    str = this.rb;
-    if (str != null) {
-      parambyte.b(str, 5);
+    paramcase.a(this.e, 2);
+    localObject = this.f;
+    if (localObject != null) {
+      paramcase.a((String)localObject, 3);
+    }
+    localObject = this.g;
+    if (localObject != null) {
+      paramcase.a((String)localObject, 4);
     }
   }
   
   public void a(try paramtry)
   {
-    this.ub = paramtry.a(this.ub, 0, true);
-    this.vb = paramtry.a(this.vb, 1, false);
-    this.yb = paramtry.a(2, false);
-    this.zb = paramtry.a(3, false);
-    this.Ab = paramtry.a(this.Ab, 4, false);
-    this.rb = paramtry.a(5, false);
+    this.c = ((Bergamot)paramtry.a(a, 0, false));
+    this.d = ((Berry)paramtry.a(b, 1, false));
+    this.e = paramtry.a(this.e, 2, false);
+    this.f = paramtry.b(3, false);
+    this.g = paramtry.b(4, false);
   }
   
   public boolean equals(Object paramObject)
@@ -51,12 +53,15 @@ public class Serpens
       return false;
     }
     paramObject = (Serpens)paramObject;
-    return (char.equals(this.ub, paramObject.ub)) && (char.equals(this.vb, paramObject.vb)) && (char.equals(this.yb, paramObject.yb)) && (char.equals(this.zb, paramObject.zb)) && (char.equals(this.Ab, paramObject.Ab)) && (char.equals(this.rb, paramObject.rb));
+    Bergamot localBergamot1 = this.c;
+    Bergamot localBergamot2 = paramObject.c;
+    int i = goto.a;
+    return (localBergamot1.equals(localBergamot2)) && (this.d.equals(paramObject.d)) && (goto.a(this.e, paramObject.e)) && (this.f.equals(paramObject.f)) && (this.g.equals(paramObject.g));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Serpens
  * JD-Core Version:    0.7.0.1
  */

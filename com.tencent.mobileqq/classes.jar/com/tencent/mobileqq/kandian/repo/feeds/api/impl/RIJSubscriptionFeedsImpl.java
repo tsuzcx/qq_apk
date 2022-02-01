@@ -52,7 +52,7 @@ public final class RIJSubscriptionFeedsImpl
 {
   public boolean clearUnreadMsg(@Nullable String paramString)
   {
-    Object localObject = RIJQQAppInterfaceUtil.a();
+    Object localObject = RIJQQAppInterfaceUtil.e();
     if (localObject != null)
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
@@ -64,7 +64,7 @@ public final class RIJSubscriptionFeedsImpl
       }
       if (localObject != null)
       {
-        TroopBarAssistantManager.a().a(localQQAppInterface, ((Message)localObject).frienduin);
+        TroopBarAssistantManager.a().c(localQQAppInterface, ((Message)localObject).frienduin);
         paramString = localQQAppInterface.getConversationFacade();
         if (paramString != null) {
           paramString.a(((Message)localObject).frienduin, ((Message)localObject).istroop, true);
@@ -79,7 +79,7 @@ public final class RIJSubscriptionFeedsImpl
   @Nullable
   public SubscriptionFeed convertMsgToSubscriptionFeed(@Nullable Context paramContext, @Nullable MessageRecord paramMessageRecord, @Nullable String paramString, long paramLong1, long paramLong2)
   {
-    Object localObject1 = RIJQQAppInterfaceUtil.a();
+    Object localObject1 = RIJQQAppInterfaceUtil.e();
     if (localObject1 != null)
     {
       Object localObject2 = (QQAppInterface)localObject1;
@@ -106,15 +106,15 @@ public final class RIJSubscriptionFeedsImpl
       if (paramLong1 <= paramLong2) {
         paramLong1 = paramLong2;
       }
-      paramMessageRecord.jdField_a_of_type_Long = paramLong1;
-      paramMessageRecord.jdField_a_of_type_JavaLangString = ((MessageRecord)localObject1).frienduin;
+      paramMessageRecord.d = paramLong1;
+      paramMessageRecord.c = ((MessageRecord)localObject1).frienduin;
       paramMessageRecord.b = i;
       try
       {
         if ((localObject1 instanceof MessageForPubAccount))
         {
           ((MessageForPubAccount)localObject1).parse();
-          paramMessageRecord.jdField_a_of_type_Int = 1;
+          paramMessageRecord.a = 1;
           paramContext = ((MessageForPubAccount)localObject1).mPAMessage;
           if (paramContext != null)
           {
@@ -123,19 +123,19 @@ public final class RIJSubscriptionFeedsImpl
             {
               paramString = (PAMessage.Item)paramContext.next();
               localObject2 = new SubscriptionFeedItem();
-              ((SubscriptionFeedItem)localObject2).jdField_a_of_type_Int = 1;
-              ((SubscriptionFeedItem)localObject2).jdField_a_of_type_JavaLangString = paramString.cover;
-              ((SubscriptionFeedItem)localObject2).d = paramString.url;
-              ((SubscriptionFeedItem)localObject2).e = paramString.actionData;
-              ((SubscriptionFeedItem)localObject2).b = paramString.title;
-              paramMessageRecord.jdField_a_of_type_JavaUtilList.add(localObject2);
+              ((SubscriptionFeedItem)localObject2).a = 1;
+              ((SubscriptionFeedItem)localObject2).b = paramString.cover;
+              ((SubscriptionFeedItem)localObject2).e = paramString.url;
+              ((SubscriptionFeedItem)localObject2).f = paramString.actionData;
+              ((SubscriptionFeedItem)localObject2).c = paramString.title;
+              paramMessageRecord.e.add(localObject2);
             }
           }
         }
         else if ((localObject1 instanceof MessageForStructing))
         {
           ((MessageForStructing)localObject1).parse();
-          paramMessageRecord.jdField_a_of_type_Int = 1;
+          paramMessageRecord.a = 1;
           paramString = ((MessageForStructing)localObject1).structingMsg;
           if ((paramString != null) && ((paramString instanceof AbsShareMsg)))
           {
@@ -153,12 +153,12 @@ public final class RIJSubscriptionFeedsImpl
                 }
                 AbsStructMsgElement localAbsStructMsgElement1 = (AbsStructMsgElement)((Iterator)localObject2).next();
                 SubscriptionFeedItem localSubscriptionFeedItem = new SubscriptionFeedItem();
-                localSubscriptionFeedItem.jdField_a_of_type_Int = 1;
-                localSubscriptionFeedItem.c = localAbsStructMsgElement1.g;
-                localSubscriptionFeedItem.g = paramString.mTagName;
+                localSubscriptionFeedItem.a = 1;
+                localSubscriptionFeedItem.d = localAbsStructMsgElement1.i;
+                localSubscriptionFeedItem.i = paramString.mTagName;
                 if ((localAbsStructMsgElement1 instanceof AbsStructMsgItem))
                 {
-                  paramContext = ((AbsStructMsgItem)localAbsStructMsgElement1).a.iterator();
+                  paramContext = ((AbsStructMsgItem)localAbsStructMsgElement1).ax.iterator();
                   for (;;)
                   {
                     if (!paramContext.hasNext()) {
@@ -167,54 +167,54 @@ public final class RIJSubscriptionFeedsImpl
                     Object localObject3 = (AbsStructMsgElement)paramContext.next();
                     if ((localObject3 instanceof StructMsgItemCover))
                     {
-                      localSubscriptionFeedItem.jdField_a_of_type_JavaLangString = ((StructMsgItemCover)localObject3).ac;
+                      localSubscriptionFeedItem.b = ((StructMsgItemCover)localObject3).av;
                     }
                     else if ((localObject3 instanceof StructMsgItemTitle))
                     {
-                      localSubscriptionFeedItem.b = ((StructMsgItemTitle)localObject3).b();
+                      localSubscriptionFeedItem.c = ((StructMsgItemTitle)localObject3).e();
                     }
                     else if ((localObject3 instanceof StructMsgItemVideo))
                     {
-                      localSubscriptionFeedItem.jdField_a_of_type_JavaLangString = ((StructMsgItemVideo)localObject3).ac;
+                      localSubscriptionFeedItem.b = ((StructMsgItemVideo)localObject3).au;
                     }
                     else if ((localObject3 instanceof StructMsgItemPAAudio))
                     {
-                      localSubscriptionFeedItem.jdField_a_of_type_JavaLangString = ((StructMsgItemPAAudio)localObject3).ac;
+                      localSubscriptionFeedItem.b = ((StructMsgItemPAAudio)localObject3).au;
                     }
                     else if ((localObject3 instanceof StructMsgItemPAVideo))
                     {
-                      localSubscriptionFeedItem.jdField_a_of_type_JavaLangString = ((StructMsgItemPAVideo)localObject3).ac;
+                      localSubscriptionFeedItem.b = ((StructMsgItemPAVideo)localObject3).au;
                     }
                     else if ((localObject3 instanceof StructMsgGroupElement))
                     {
-                      localObject3 = ((StructMsgGroupElement)localObject3).jdField_a_of_type_JavaUtilList.iterator();
+                      localObject3 = ((StructMsgGroupElement)localObject3).au.iterator();
                       if (((Iterator)localObject3).hasNext())
                       {
                         AbsStructMsgElement localAbsStructMsgElement2 = (AbsStructMsgElement)((Iterator)localObject3).next();
                         if (!(localAbsStructMsgElement2 instanceof StructMsgItemTitle)) {
                           break;
                         }
-                        localSubscriptionFeedItem.b = ((StructMsgItemTitle)localAbsStructMsgElement2).b();
+                        localSubscriptionFeedItem.c = ((StructMsgItemTitle)localAbsStructMsgElement2).e();
                       }
                     }
                   }
                   label631:
-                  if (TextUtils.isEmpty((CharSequence)localAbsStructMsgElement1.b)) {
+                  if (TextUtils.isEmpty((CharSequence)localAbsStructMsgElement1.d)) {
                     paramContext = paramString.mMsgUrl;
                   } else {
-                    paramContext = localAbsStructMsgElement1.b;
+                    paramContext = localAbsStructMsgElement1.d;
                   }
-                  localSubscriptionFeedItem.d = paramContext;
+                  localSubscriptionFeedItem.e = paramContext;
                 }
                 else
                 {
-                  localSubscriptionFeedItem.jdField_a_of_type_Int = 0;
+                  localSubscriptionFeedItem.a = 0;
                 }
                 if (localAbsStructMsgElement1 == null) {
                   break;
                 }
-                if ((((AbsStructMsgItem)localAbsStructMsgElement1).a.size() != 1) || (!((AbsStructMsgElement)((AbsStructMsgItem)localAbsStructMsgElement1).a.get(0) instanceof StructMsgItemHr))) {
-                  paramMessageRecord.jdField_a_of_type_JavaUtilList.add(localSubscriptionFeedItem);
+                if ((((AbsStructMsgItem)localAbsStructMsgElement1).ax.size() != 1) || (!((AbsStructMsgElement)((AbsStructMsgItem)localAbsStructMsgElement1).ax.get(0) instanceof StructMsgItemHr))) {
+                  paramMessageRecord.e.add(localSubscriptionFeedItem);
                 }
               }
               throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.structmsg.AbsStructMsgItem");
@@ -224,55 +224,55 @@ public final class RIJSubscriptionFeedsImpl
         else if ((localObject1 instanceof MessageForPic))
         {
           ((MessageForPic)localObject1).parse();
-          paramMessageRecord.jdField_a_of_type_Int = 3;
+          paramMessageRecord.a = 3;
           paramString = new SubscriptionFeedItem();
-          paramString.jdField_a_of_type_Int = 2;
-          paramString.c = ((QQAppInterface)localObject2).getMessageFacade().b(paramContext, (MessageRecord)localObject1, false);
-          paramString.f = ((MessageForPic)localObject1).path;
-          paramString.jdField_a_of_type_JavaNetURL = URLDrawableHelper.getURL((PicUiInterface)localObject1, 65537, null);
-          paramMessageRecord.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramString.a = 2;
+          paramString.d = ((QQAppInterface)localObject2).getMessageFacade().c(paramContext, (MessageRecord)localObject1, false);
+          paramString.g = ((MessageForPic)localObject1).path;
+          paramString.h = URLDrawableHelper.getURL((PicUiInterface)localObject1, 65537, null);
+          paramMessageRecord.e.add(paramString);
         }
         else
         {
           if ((localObject1 instanceof MessageForText))
           {
-            paramMessageRecord.jdField_a_of_type_Int = 0;
+            paramMessageRecord.a = 0;
             ((MessageForText)localObject1).parse();
           }
           else if ((localObject1 instanceof MessageForVideo))
           {
-            paramMessageRecord.jdField_a_of_type_Int = 2;
+            paramMessageRecord.a = 2;
             ((MessageForVideo)localObject1).parse();
           }
           else if ((localObject1 instanceof MessageForShortVideo))
           {
-            paramMessageRecord.jdField_a_of_type_Int = 2;
+            paramMessageRecord.a = 2;
             ((MessageForShortVideo)localObject1).parse();
           }
           else if ((localObject1 instanceof MessageForPtt))
           {
-            paramMessageRecord.jdField_a_of_type_Int = 4;
+            paramMessageRecord.a = 4;
           }
           paramString = new SubscriptionFeedItem();
-          paramString.jdField_a_of_type_Int = 0;
-          paramString.c = ((QQAppInterface)localObject2).getMessageFacade().b(paramContext, (MessageRecord)localObject1, false);
-          paramMessageRecord.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramString.a = 0;
+          paramString.d = ((QQAppInterface)localObject2).getMessageFacade().c(paramContext, (MessageRecord)localObject1, false);
+          paramMessageRecord.e.add(paramString);
         }
       }
       catch (Exception paramContext)
       {
-        paramMessageRecord.jdField_a_of_type_Int = 0;
+        paramMessageRecord.a = 0;
         paramString = new SubscriptionFeedItem();
-        paramString.jdField_a_of_type_Int = 0;
-        paramString.c = ((MessageRecord)localObject1).msg;
-        paramMessageRecord.jdField_a_of_type_JavaUtilList.clear();
-        paramMessageRecord.jdField_a_of_type_JavaUtilList.add(paramString);
+        paramString.a = 0;
+        paramString.d = ((MessageRecord)localObject1).msg;
+        paramMessageRecord.e.clear();
+        paramMessageRecord.e.add(paramString);
         if (QLog.isColorLevel()) {
           QLog.w("SubscriptionFeed", 2, "convertMsgToSubscriptionFeed exception: ", (Throwable)paramContext);
         }
       }
       label1034:
-      paramMessageRecord.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject1);
+      paramMessageRecord.f = new WeakReference(localObject1);
       return paramMessageRecord;
     }
     paramContext = new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -284,7 +284,7 @@ public final class RIJSubscriptionFeedsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.api.impl.RIJSubscriptionFeedsImpl
  * JD-Core Version:    0.7.0.1
  */

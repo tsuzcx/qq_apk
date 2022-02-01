@@ -16,22 +16,22 @@ public final class RIJPushNotifyDialog$1
   public void a(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2)
   {
     this.a.b(true);
-    RIJPushNotifyDialog.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(RIJPushNotifyDialog.a(this.a)), Integer.valueOf(0));
+    RIJPushNotifyDialog.b(this.a).g().invoke(Boolean.valueOf(false), Boolean.valueOf(RIJPushNotifyDialog.c(this.a)), Integer.valueOf(0));
   }
   
   public void a_(boolean paramBoolean, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    if ((Intrinsics.areEqual(paramString, RIJPushNotifyDialog.a(this.a).b())) || (Intrinsics.areEqual(paramString, "MATCH_ALL_UIN")))
+    if ((Intrinsics.areEqual(paramString, RIJPushNotifyDialog.b(this.a).d())) || (Intrinsics.areEqual(paramString, "MATCH_ALL_UIN")))
     {
       this.a.b(paramBoolean);
-      RIJPushNotifyDialog.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(RIJPushNotifyDialog.a(this.a)), Integer.valueOf(0));
+      RIJPushNotifyDialog.b(this.a).g().invoke(Boolean.valueOf(false), Boolean.valueOf(RIJPushNotifyDialog.c(this.a)), Integer.valueOf(0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.mvp.RIJPushNotifyDialog.1
  * JD-Core Version:    0.7.0.1
  */

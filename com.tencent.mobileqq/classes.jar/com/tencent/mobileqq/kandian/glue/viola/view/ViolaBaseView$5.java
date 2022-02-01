@@ -14,28 +14,27 @@ class ViolaBaseView$5
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.e(ViolaBaseView.b(), 2, "ThreadManager 执行");
+        QLog.e("ViolaBaseView", 2, "ThreadManager 执行");
       }
       long l = System.currentTimeMillis();
-      ViolaAccessHelper.a(this.a, ViolaBaseView.a(this.this$0), ViolaBaseView.a(this.this$0), new ViolaBaseView.5.1(this, l));
+      ViolaAccessHelper.a(this.a, ViolaBaseView.g(this.this$0), ViolaBaseView.a(this.this$0), new ViolaBaseView.5.1(this, l));
       return;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel())
       {
-        String str = ViolaBaseView.b();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("SDKInitialize Exception:");
         localStringBuilder.append(localException.getMessage());
-        QLog.e(str, 2, localStringBuilder.toString());
+        QLog.e("ViolaBaseView", 2, localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.5
  * JD-Core Version:    0.7.0.1
  */

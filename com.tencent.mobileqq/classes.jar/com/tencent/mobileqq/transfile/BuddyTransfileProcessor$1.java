@@ -16,13 +16,13 @@ class BuddyTransfileProcessor$1
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onUpdateUploadStreamFinished Key:");
-      localStringBuilder.append(paramUploadStreamStruct.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramUploadStreamStruct.a);
       localStringBuilder.append(" seq:");
-      localStringBuilder.append(paramUploadStreamStruct.jdField_a_of_type_Short);
-      localStringBuilder.append(" Layer:");
-      localStringBuilder.append(paramUploadStreamStruct.jdField_a_of_type_Int);
-      localStringBuilder.append(" RespCode:");
       localStringBuilder.append(paramUploadStreamStruct.b);
+      localStringBuilder.append(" Layer:");
+      localStringBuilder.append(paramUploadStreamStruct.c);
+      localStringBuilder.append(" RespCode:");
+      localStringBuilder.append(paramUploadStreamStruct.e);
       QLog.e("streamptt.send", 2, localStringBuilder.toString());
     }
     if ((this.this$0.file != null) && (QLog.isColorLevel()))
@@ -36,9 +36,9 @@ class BuddyTransfileProcessor$1
       localStringBuilder.append(this.this$0.isStreamPttSuccess);
       QLog.e("streamptt.send", 2, localStringBuilder.toString());
     }
-    if ((paramUploadStreamStruct != null) && (paramUploadStreamStruct.jdField_a_of_type_JavaLangString != null))
+    if ((paramUploadStreamStruct != null) && (paramUploadStreamStruct.a != null))
     {
-      if (!paramUploadStreamStruct.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.this$0.file.filePath)) {
+      if (!paramUploadStreamStruct.a.equalsIgnoreCase(this.this$0.file.filePath)) {
         return;
       }
       if (!paramBoolean)
@@ -52,7 +52,7 @@ class BuddyTransfileProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BuddyTransfileProcessor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,11 @@ class ScanOcrActivity$5
   
   public void onClick(View paramView)
   {
-    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
+    if ((ScanOcrActivity.e(this.a) == 1) && ((ScanOcrActivity.f(this.a) == 0) || (ScanOcrActivity.f(this.a) == 4)))
     {
-      ScanOcrActivity.a(this.a).a();
+      ScanOcrActivity.g(this.a).a();
       ScanOcrActivity.a(this.a, false);
-      ScanOcrActivity.b(this.a);
+      ScanOcrActivity.h(this.a);
     }
     else
     {
@@ -27,7 +27,7 @@ class ScanOcrActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.5
  * JD-Core Version:    0.7.0.1
  */

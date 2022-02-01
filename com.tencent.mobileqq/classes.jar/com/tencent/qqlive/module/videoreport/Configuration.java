@@ -25,12 +25,15 @@ public class Configuration
   private boolean mDefaultDataCollectEnable;
   private boolean mDefaultReportEnable;
   private ClickPolicy mElementClickPolicy;
+  private boolean mElementDetectEnable;
   private EndExposurePolicy mElementEndExposePolicy;
   private ExposurePolicy mElementExposePolicy;
   private double mElementExposureMinRate;
   private long mElementExposureMinTime;
   @Deprecated
   private ReportPolicy mElementReportPolicy;
+  private EndExposurePolicy mElementScrollEndExposePolicy;
+  private ExposurePolicy mElementScrollExposePolicy;
   private boolean mEnablePageLink;
   private boolean mEnableToast;
   private IFormatter mFormatter;
@@ -90,24 +93,27 @@ public class Configuration
     this.mElementReportPolicy = Configuration.Builder.access$800(paramBuilder);
     this.mElementClickPolicy = Configuration.Builder.access$900(paramBuilder);
     this.mElementExposePolicy = Configuration.Builder.access$1000(paramBuilder);
-    this.mElementEndExposePolicy = Configuration.Builder.access$1100(paramBuilder);
-    this.mLogger = Configuration.Builder.access$1200(paramBuilder);
+    this.mElementScrollExposePolicy = Configuration.Builder.access$1100(paramBuilder);
+    this.mElementScrollEndExposePolicy = Configuration.Builder.access$1200(paramBuilder);
+    this.mElementEndExposePolicy = Configuration.Builder.access$1300(paramBuilder);
+    this.mLogger = Configuration.Builder.access$1400(paramBuilder);
     Object localObject;
-    if (Configuration.Builder.access$1300(paramBuilder) != null) {
-      localObject = Configuration.Builder.access$1300(paramBuilder);
+    if (Configuration.Builder.access$1500(paramBuilder) != null) {
+      localObject = Configuration.Builder.access$1500(paramBuilder);
     } else {
       localObject = new DTParamsNewsFlattenFormatter();
     }
     this.mFormatter = ((IFormatter)localObject);
-    this.mIndependentPageOut = Configuration.Builder.access$1400(paramBuilder);
-    this.mAppTimeReportHeartBeatInterval = Configuration.Builder.access$1500(paramBuilder);
-    this.mAppTimeReportTimePinInterval = Configuration.Builder.access$1600(paramBuilder);
-    this.mAudioReportHeartBeatInterval = Configuration.Builder.access$1700(paramBuilder);
-    this.mAudioTimePinInterval = Configuration.Builder.access$1800(paramBuilder);
-    this.mVideoHeartBeatInterval = Configuration.Builder.access$1900(paramBuilder);
-    this.mEnablePageLink = Configuration.Builder.access$2000(paramBuilder);
-    this.mVideoPageSwitch = Configuration.Builder.access$2100(paramBuilder);
-    this.mEnableToast = Configuration.Builder.access$2200(paramBuilder);
+    this.mIndependentPageOut = Configuration.Builder.access$1600(paramBuilder);
+    this.mAppTimeReportHeartBeatInterval = Configuration.Builder.access$1700(paramBuilder);
+    this.mAppTimeReportTimePinInterval = Configuration.Builder.access$1800(paramBuilder);
+    this.mAudioReportHeartBeatInterval = Configuration.Builder.access$1900(paramBuilder);
+    this.mAudioTimePinInterval = Configuration.Builder.access$2000(paramBuilder);
+    this.mVideoHeartBeatInterval = Configuration.Builder.access$2100(paramBuilder);
+    this.mEnablePageLink = Configuration.Builder.access$2200(paramBuilder);
+    this.mVideoPageSwitch = Configuration.Builder.access$2300(paramBuilder);
+    this.mEnableToast = Configuration.Builder.access$2400(paramBuilder);
+    this.mElementDetectEnable = Configuration.Builder.access$2500(paramBuilder);
     this.mCurrentBuilder = paramBuilder;
   }
   
@@ -177,6 +183,16 @@ public class Configuration
     return this.mElementReportPolicy;
   }
   
+  public EndExposurePolicy getElementScrollEndExposePolicy()
+  {
+    return this.mElementScrollEndExposePolicy;
+  }
+  
+  public ExposurePolicy getElementScrollExposePolicy()
+  {
+    return this.mElementScrollExposePolicy;
+  }
+  
   @NonNull
   public IFormatter getFormatter()
   {
@@ -185,7 +201,7 @@ public class Configuration
   
   public int getLazyInitType()
   {
-    return Configuration.Builder.access$2300(this.mConfigBuilder);
+    return Configuration.Builder.access$2600(this.mConfigBuilder);
   }
   
   public ILogger getLogger()
@@ -226,6 +242,11 @@ public class Configuration
   public boolean isDefaultDataCollectEnable()
   {
     return this.mDefaultDataCollectEnable;
+  }
+  
+  public boolean isElementDetectEnable()
+  {
+    return this.mElementDetectEnable;
   }
   
   public boolean isEnablePageLink()
@@ -281,6 +302,8 @@ public class Configuration
       localObject = "null";
     }
     localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", mElementDetectEnable=");
+    localStringBuilder.append(this.mElementDetectEnable);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
@@ -292,7 +315,7 @@ public class Configuration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.Configuration
  * JD-Core Version:    0.7.0.1
  */

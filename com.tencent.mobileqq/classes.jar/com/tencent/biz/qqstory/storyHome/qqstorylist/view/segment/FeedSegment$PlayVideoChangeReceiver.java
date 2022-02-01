@@ -17,12 +17,12 @@ public class FeedSegment$PlayVideoChangeReceiver
   
   public void a(@NonNull FeedSegment paramFeedSegment, @NonNull PlayVideoChangeEvent paramPlayVideoChangeEvent)
   {
-    SLog.a(this.TAG, "play video groupId=%s, %s", paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId, paramPlayVideoChangeEvent.b);
-    if ((FeedSegment.a(paramFeedSegment).equals(paramPlayVideoChangeEvent.jdField_a_of_type_JavaLangString)) && ((paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof FeedIdBasePlayPageLoader.FeedBaseGroupId)))
+    SLog.a(this.TAG, "play video groupId=%s, %s", paramPlayVideoChangeEvent.b, paramPlayVideoChangeEvent.c);
+    if ((FeedSegment.r(paramFeedSegment).equals(paramPlayVideoChangeEvent.a)) && ((paramPlayVideoChangeEvent.b instanceof FeedIdBasePlayPageLoader.FeedBaseGroupId)))
     {
-      FeedIdListSeqInfo localFeedIdListSeqInfo = ((FeedIdBasePlayPageLoader.FeedBaseGroupId)paramPlayVideoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a;
+      FeedIdListSeqInfo localFeedIdListSeqInfo = ((FeedIdBasePlayPageLoader.FeedBaseGroupId)paramPlayVideoChangeEvent.b).a;
       if (localFeedIdListSeqInfo != null) {
-        paramFeedSegment.a(localFeedIdListSeqInfo.jdField_a_of_type_JavaLangString, paramPlayVideoChangeEvent.b, true);
+        paramFeedSegment.a(localFeedIdListSeqInfo.a, paramPlayVideoChangeEvent.c, true);
       }
     }
   }

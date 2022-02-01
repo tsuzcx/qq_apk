@@ -11,8 +11,8 @@ public class CommonTextView
   extends TextView
   implements MosaicEffect.IMosaicEffect
 {
-  private CommonTextView.onVisibilityChangedListener jdField_a_of_type_ComTencentMobileqqWidgetCommonTextView$onVisibilityChangedListener;
-  private MosaicEffect jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+  private MosaicEffect a;
+  private CommonTextView.onVisibilityChangedListener b;
   
   public CommonTextView(Context paramContext)
   {
@@ -31,7 +31,7 @@ public class CommonTextView
   
   public void draw(Canvas paramCanvas)
   {
-    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    MosaicEffect localMosaicEffect = this.a;
     if (localMosaicEffect != null)
     {
       localMosaicEffect.a(paramCanvas);
@@ -42,7 +42,7 @@ public class CommonTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    MosaicEffect localMosaicEffect = this.a;
     if (localMosaicEffect != null)
     {
       localMosaicEffect.b(paramCanvas);
@@ -54,7 +54,7 @@ public class CommonTextView
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    CommonTextView.onVisibilityChangedListener localonVisibilityChangedListener = this.jdField_a_of_type_ComTencentMobileqqWidgetCommonTextView$onVisibilityChangedListener;
+    CommonTextView.onVisibilityChangedListener localonVisibilityChangedListener = this.b;
     if (localonVisibilityChangedListener != null) {
       localonVisibilityChangedListener.a(paramView, paramInt);
     }
@@ -62,11 +62,11 @@ public class CommonTextView
   
   public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
-    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    MosaicEffect localMosaicEffect = this.a;
     if (localMosaicEffect != null) {
       localMosaicEffect.a(null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect = paramMosaicEffect;
+    this.a = paramMosaicEffect;
     if (paramMosaicEffect != null) {
       paramMosaicEffect.a(this);
     }
@@ -75,7 +75,7 @@ public class CommonTextView
   
   public void setOnVisibilityChangedListener(CommonTextView.onVisibilityChangedListener paramonVisibilityChangedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCommonTextView$onVisibilityChangedListener = paramonVisibilityChangedListener;
+    this.b = paramonVisibilityChangedListener;
   }
   
   public void superDrawMosaic(Canvas paramCanvas)
@@ -90,7 +90,7 @@ public class CommonTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CommonTextView
  * JD-Core Version:    0.7.0.1
  */

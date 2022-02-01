@@ -11,22 +11,18 @@ public final class RecommendedListResp
 {
   public static final Parcelable.Creator<RecommendedListResp> CREATOR = new RecommendedListResp.1();
   public int a;
-  public long a;
-  public List<PhoneInfo> a;
   public int b;
+  public long c;
+  public List<PhoneInfo> d = new ArrayList();
   
-  public RecommendedListResp()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public RecommendedListResp() {}
   
   protected RecommendedListResp(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readInt();
     this.b = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaUtilList = paramParcel.createTypedArrayList(PhoneInfo.CREATOR);
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.createTypedArrayList(PhoneInfo.CREATOR);
   }
   
   public int describeContents()
@@ -36,15 +32,15 @@ public final class RecommendedListResp
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.a);
     paramParcel.writeInt(this.b);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeTypedList(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.data.RecommendedListResp
  * JD-Core Version:    0.7.0.1
  */

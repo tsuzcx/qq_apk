@@ -14,6 +14,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import androidx.annotation.ColorInt;
 import androidx.annotation.FloatRange;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.style;
 import androidx.appcompat.R.styleable;
 import androidx.core.graphics.drawable.DrawableCompat;
 
@@ -44,7 +46,7 @@ public class DrawerArrowDrawable
     this.mPaint.setStrokeJoin(Paint.Join.MITER);
     this.mPaint.setStrokeCap(Paint.Cap.BUTT);
     this.mPaint.setAntiAlias(true);
-    paramContext = paramContext.getTheme().obtainStyledAttributes(null, R.styleable.DrawerArrowToggle, 2131034525, 2131755194);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(null, R.styleable.DrawerArrowToggle, R.attr.drawerArrowStyle, R.style.Base_Widget_AppCompat_DrawerArrowToggle);
     setColor(paramContext.getColor(R.styleable.DrawerArrowToggle_color, 0));
     setBarThickness(paramContext.getDimension(R.styleable.DrawerArrowToggle_thickness, 0.0F));
     setSpinEnabled(paramContext.getBoolean(R.styleable.DrawerArrowToggle_spinBars, true));

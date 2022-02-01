@@ -21,12 +21,12 @@ import java.util.List;
 public class VideoFilterManager$GetFilterListResponse
   extends BaseResponse
 {
-  @NonNull
-  public final String a;
-  @NonNull
-  public final List<FilterItem> a;
   public final boolean a;
-  public final int b;
+  @NonNull
+  public final List<FilterItem> b;
+  @NonNull
+  public final String e;
+  public final int f;
   
   public VideoFilterManager$GetFilterListResponse(byte[] paramArrayOfByte)
   {
@@ -34,28 +34,28 @@ public class VideoFilterManager$GetFilterListResponse
     try
     {
       ((qqstory_service.RspGetFilterList)localObject1).mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).result.error_code.get();
-      this.jdField_b_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).result.error_desc.get().toStringUtf8();
+      this.c = ((qqstory_service.RspGetFilterList)localObject1).result.error_code.get();
+      this.d = ((qqstory_service.RspGetFilterList)localObject1).result.error_desc.get().toStringUtf8();
       boolean bool;
       if (((qqstory_service.RspGetFilterList)localObject1).is_end.get() != 0) {
         bool = true;
       } else {
         bool = false;
       }
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = ((qqstory_service.RspGetFilterList)localObject1).next_cookie.get().toStringUtf8();
-      this.jdField_b_of_type_Int = ((qqstory_service.RspGetFilterList)localObject1).frequency.get();
+      this.a = bool;
+      this.e = ((qqstory_service.RspGetFilterList)localObject1).next_cookie.get().toStringUtf8();
+      this.f = ((qqstory_service.RspGetFilterList)localObject1).frequency.get();
       paramArrayOfByte = new ArrayList();
       localObject1 = ((qqstory_service.RspGetFilterList)localObject1).filter_list.get().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (qqstory_struct.FilterListPack)((Iterator)localObject1).next();
         FilterItem.Builder localBuilder = new FilterItem.Builder();
-        localBuilder.jdField_a_of_type_Long = ((qqstory_struct.FilterListPack)localObject2).filter_id.get();
-        localBuilder.jdField_a_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_name.get().toStringUtf8();
-        localBuilder.jdField_a_of_type_Int = ((qqstory_struct.FilterListPack)localObject2).filter_type.get();
-        localBuilder.jdField_b_of_type_JavaLangString = ((qqstory_struct.FilterListPack)localObject2).filter_config_file.get().toStringUtf8();
-        localBuilder.c = ((qqstory_struct.FilterListPack)localObject2).filter_config_md5.get().toStringUtf8();
+        localBuilder.a = ((qqstory_struct.FilterListPack)localObject2).filter_id.get();
+        localBuilder.b = ((qqstory_struct.FilterListPack)localObject2).filter_name.get().toStringUtf8();
+        localBuilder.c = ((qqstory_struct.FilterListPack)localObject2).filter_type.get();
+        localBuilder.d = ((qqstory_struct.FilterListPack)localObject2).filter_config_file.get().toStringUtf8();
+        localBuilder.e = ((qqstory_struct.FilterListPack)localObject2).filter_config_md5.get().toStringUtf8();
         try
         {
           localObject2 = localBuilder.a();
@@ -67,7 +67,7 @@ public class VideoFilterManager$GetFilterListResponse
           SLog.c("VideoFilterManager", "GET Filter error : ", localFilterItemIllegalException);
         }
       }
-      this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramArrayOfByte);
+      this.b = Collections.unmodifiableList(paramArrayOfByte);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -76,18 +76,18 @@ public class VideoFilterManager$GetFilterListResponse
       ((StringBuilder)localObject1).append("GetEmojiPackInfoListRequest error : ");
       ((StringBuilder)localObject1).append(paramArrayOfByte);
       SLog.e("VideoFilterManager", ((StringBuilder)localObject1).toString());
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131716013);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
-      this.jdField_a_of_type_JavaLangString = "";
-      this.jdField_b_of_type_Int = 0;
+      this.c = -1;
+      this.d = HardCodeUtil.a(2131913464);
+      this.a = false;
+      this.b = Collections.EMPTY_LIST;
+      this.e = "";
+      this.f = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.filter.VideoFilterManager.GetFilterListResponse
  * JD-Core Version:    0.7.0.1
  */

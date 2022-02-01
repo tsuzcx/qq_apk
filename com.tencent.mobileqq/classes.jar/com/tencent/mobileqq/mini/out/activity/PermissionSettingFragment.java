@@ -100,7 +100,7 @@ public class PermissionSettingFragment
         if (!TextUtils.isEmpty(paramString))
         {
           this.miniAppNameDesc.setVisibility(0);
-          this.miniAppNameDesc.setText(String.format(HardCodeUtil.a(2131694137), new Object[] { paramString }));
+          this.miniAppNameDesc.setText(String.format(HardCodeUtil.a(2131891765), new Object[] { paramString }));
         }
         this.adapter.setScopeList((List)localObject1);
       }
@@ -109,7 +109,7 @@ public class PermissionSettingFragment
         localObject1 = this.mPermissionNoneTextView;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(paramString);
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131707939));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131905751));
         ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
         this.mPermissionNoneTextView.setVisibility(0);
       }
@@ -186,9 +186,9 @@ public class PermissionSettingFragment
       if ((!paramBoolean) && (!hasCancel))
       {
         hasCancel = true;
-        QQCustomDialog localQQCustomDialog = new QQCustomDialog(getBaseActivity(), 2131756189);
-        localQQCustomDialog.setContentView(2131558978);
-        localQQCustomDialog.setTitle(HardCodeUtil.a(2131707937)).setMessage(HardCodeUtil.a(2131707932)).setPositiveButton(HardCodeUtil.a(2131707936), Color.parseColor("#5B6B92"), new PermissionSettingFragment.5(this, str, paramBoolean, local3)).setNegativeButton(HardCodeUtil.a(2131707934), Color.parseColor("#000000"), new PermissionSettingFragment.4(this, paramCompoundButton));
+        QQCustomDialog localQQCustomDialog = new QQCustomDialog(getBaseActivity(), 2131953338);
+        localQQCustomDialog.setContentView(2131624611);
+        localQQCustomDialog.setTitle(HardCodeUtil.a(2131905749)).setMessage(HardCodeUtil.a(2131905745)).setPositiveButton(HardCodeUtil.a(2131905748), Color.parseColor("#5B6B92"), new PermissionSettingFragment.5(this, str, paramBoolean, local3)).setNegativeButton(HardCodeUtil.a(2131898212), Color.parseColor("#000000"), new PermissionSettingFragment.4(this, paramCompoundButton));
         localQQCustomDialog.show();
         return;
       }
@@ -199,14 +199,14 @@ public class PermissionSettingFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369202) {
+    if (paramView.getId() == 2131436180) {
       getBaseActivity().finish();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131559387, null);
+    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131625353, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
@@ -227,14 +227,14 @@ public class PermissionSettingFragment
     paramBundle = getBaseActivity().getIntent().getStringExtra("key_name");
     if ((!TextUtils.isEmpty(this.appId)) && (this.miniAppInterface != null))
     {
-      this.leftBtnView = ((TextView)paramView.findViewById(2131369202));
-      this.titleView = ((TextView)paramView.findViewById(2131369249));
-      this.leftBtnView.setText(HardCodeUtil.a(2131707931));
-      this.titleView.setText(HardCodeUtil.a(2131707941));
+      this.leftBtnView = ((TextView)paramView.findViewById(2131436180));
+      this.titleView = ((TextView)paramView.findViewById(2131436227));
+      this.leftBtnView.setText(HardCodeUtil.a(2131901576));
+      this.titleView.setText(HardCodeUtil.a(2131905753));
       this.leftBtnView.setOnClickListener(this);
-      this.mPermissionListView = ((ListView)paramView.findViewById(2131372451));
-      this.mPermissionNoneTextView = ((TextView)paramView.findViewById(2131372453));
-      this.miniAppNameDesc = ((TextView)paramView.findViewById(2131371392));
+      this.mPermissionListView = ((ListView)paramView.findViewById(2131439973));
+      this.mPermissionNoneTextView = ((TextView)paramView.findViewById(2131439975));
+      this.miniAppNameDesc = ((TextView)paramView.findViewById(2131438736));
       this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
       if (this.authorizeCenter == null)
       {
@@ -244,7 +244,7 @@ public class PermissionSettingFragment
       if (this.mProgress == null) {
         this.mProgress = new QQProgressDialog(getBaseActivity());
       }
-      this.mProgress.a(super.getResources().getString(2131694640));
+      this.mProgress.a(super.getResources().getString(2131892324));
       this.mProgress.show();
       MiniAppCmdUtil.getInstance().getAuthList(null, this.appId, new PermissionSettingFragment.1(this, paramBundle));
       return;
@@ -254,7 +254,7 @@ public class PermissionSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

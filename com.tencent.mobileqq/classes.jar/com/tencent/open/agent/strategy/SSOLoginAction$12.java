@@ -23,13 +23,13 @@ class SSOLoginAction$12
     if (!"QQConnectLogin.pre_auth".equals(paramContext)) {
       return;
     }
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction);
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, false);
+    SSOLoginAction.a(this.c);
+    SSOLoginAction.a(this.c, this.a, this.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.SSOLoginAction.12
  * JD-Core Version:    0.7.0.1
  */

@@ -28,41 +28,48 @@ import java.util.HashMap;
 public class AENewPhotoListFragment
   extends AEAbstractPhotoListFragment
 {
-  public Handler a;
+  public Handler C = new AENewPhotoListFragment.NewPhotoListActivityHandler(this);
   
-  public AENewPhotoListFragment()
+  protected void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new AENewPhotoListFragment.NewPhotoListActivityHandler(this);
+    super.a(paramView);
+    this.r.addOnScrollListener(new AENewPhotoListFragment.1(this));
   }
   
-  public int a(String paramString)
+  public void b(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (a(paramString) != null)) {
-      return AlbumUtil.getMediaType(a(paramString));
+    try
+    {
+      FileProvider7Helper.savePhotoToSysAlbum(getActivity(), paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("PhotoListActivity", 2, "scanMediaFile :", paramString);
+    }
+  }
+  
+  public int c(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (d(paramString) != null)) {
+      return AlbumUtil.getMediaType(d(paramString));
     }
     return -1;
   }
   
-  protected Dialog a()
-  {
-    Dialog localDialog = new Dialog(getActivity(), 2131756189);
-    localDialog.setContentView(2131559561);
-    return localDialog;
-  }
-  
-  public AEAbstractAlbumListFragment a()
-  {
-    return new AEAlbumListFragment();
-  }
-  
-  protected AEPhotoListLogic a()
+  protected AEPhotoListLogic c()
   {
     return new AEPhotoListLogicAECircle(this);
   }
   
-  public LocalMediaInfo a(String paramString)
+  public AEAbstractAlbumListFragment d()
   {
-    PhotoCommonBaseData localPhotoCommonBaseData = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a;
+    return new AEAlbumListFragment();
+  }
+  
+  public LocalMediaInfo d(String paramString)
+  {
+    PhotoCommonBaseData localPhotoCommonBaseData = this.a.c;
     Object localObject1;
     if (localPhotoCommonBaseData.selectedMediaInfoHashMap != null) {
       localObject1 = (LocalMediaInfo)localPhotoCommonBaseData.selectedMediaInfoHashMap.get(paramString);
@@ -98,33 +105,21 @@ public class AENewPhotoListFragment
     return localObject2;
   }
   
-  public Class a()
+  public Class e()
   {
     return NewPhotoPreviewActivity.class;
   }
   
-  protected void a(View paramView)
+  protected Dialog k()
   {
-    super.a(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new AENewPhotoListFragment.1(this));
+    Dialog localDialog = new Dialog(getActivity(), 2131953338);
+    localDialog.setContentView(2131625585);
+    return localDialog;
   }
   
-  public void b(String paramString)
+  public void m()
   {
-    try
-    {
-      FileProvider7Helper.savePhotoToSysAlbum(getActivity(), paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("PhotoListActivity", 2, "scanMediaFile :", paramString);
-    }
-  }
-  
-  public void i()
-  {
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.r) && ("$RecentAlbumId".equals(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a.albumId))) || ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.s) && ("$VideoAlbumId".equals(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a.albumId)))) {
+    if (((this.b.O) && ("$RecentAlbumId".equals(this.a.c.albumId))) || ((this.b.P) && ("$VideoAlbumId".equals(this.a.c.albumId)))) {
       a(false, true);
     }
   }
@@ -132,10 +127,10 @@ public class AENewPhotoListFragment
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    if (paramView.getId() != 2131370603) {
+    if (paramView.getId() != 2131437877) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a(paramView, new Bundle(), 2, null);
+    this.a.a(paramView, new Bundle(), 2, null);
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
@@ -154,7 +149,7 @@ public class AENewPhotoListFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.fragment.AENewPhotoListFragment
  * JD-Core Version:    0.7.0.1
  */

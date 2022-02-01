@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bsz" android:background="@color/bp" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/bsz" android:background="@color/black" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ViewStub android:id="@id/gqk" android:layout="@layout/auv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <RelativeLayout android:id="@id/gql" android:background="@color/a2n" android:layout_width="fill_parent" android:layout_height="50.0dip">

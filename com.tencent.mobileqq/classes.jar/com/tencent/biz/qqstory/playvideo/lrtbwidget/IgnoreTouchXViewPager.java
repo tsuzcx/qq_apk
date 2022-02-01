@@ -8,7 +8,7 @@ import android.view.View;
 public class IgnoreTouchXViewPager
   extends XViewPager
 {
-  private boolean a = false;
+  private boolean c = false;
   
   public IgnoreTouchXViewPager(Context paramContext)
   {
@@ -22,9 +22,9 @@ public class IgnoreTouchXViewPager
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    this.a = true;
+    this.c = true;
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    this.a = false;
+    this.c = false;
     return bool;
   }
   
@@ -35,7 +35,7 @@ public class IgnoreTouchXViewPager
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.a) {
+    if (!this.c) {
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -43,7 +43,7 @@ public class IgnoreTouchXViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.a) {
+    if (!this.c) {
       return false;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -51,7 +51,7 @@ public class IgnoreTouchXViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.IgnoreTouchXViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -40,13 +40,13 @@ public class MiniAppExposureManager$TianShuExposureData
       ((StringBuilder)localObject3).append("_");
       ((StringBuilder)localObject3).append(l);
       ((TianShuReportData)localObject2).b = ((StringBuilder)localObject3).toString();
-      ((TianShuReportData)localObject2).jdField_a_of_type_Int = 1;
-      ((TianShuReportData)localObject2).jdField_e_of_type_JavaLangString = this.appId;
-      ((TianShuReportData)localObject2).f = this.pageId;
-      ((TianShuReportData)localObject2).g = this.itemId;
-      ((TianShuReportData)localObject2).d = this.actionId;
-      ((TianShuReportData)localObject2).jdField_e_of_type_Int = 1;
-      ((TianShuReportData)localObject2).jdField_a_of_type_Long = l;
+      ((TianShuReportData)localObject2).c = 1;
+      ((TianShuReportData)localObject2).f = this.appId;
+      ((TianShuReportData)localObject2).g = this.pageId;
+      ((TianShuReportData)localObject2).h = this.itemId;
+      ((TianShuReportData)localObject2).p = this.actionId;
+      ((TianShuReportData)localObject2).q = 1;
+      ((TianShuReportData)localObject2).o = l;
       TianShuManager.getInstance().report((TianShuReportData)localObject2);
       if (QLog.isColorLevel())
       {
@@ -68,7 +68,7 @@ public class MiniAppExposureManager$TianShuExposureData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppExposureManager.TianShuExposureData
  * JD-Core Version:    0.7.0.1
  */

@@ -21,15 +21,10 @@ public class BusinessCRMRoutingType
     return 1024;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)paramAppInterface;
-    Object localObject = localQQAppInterface.getMsgCache().d(paramMessageRecord.frienduin);
+    Object localObject = localQQAppInterface.getMsgCache().i(paramMessageRecord.frienduin);
     paramAppInterface = new msg_svc.BusinessWPATmp();
     paramAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
     if (localObject != null)
@@ -47,7 +42,7 @@ public class BusinessCRMRoutingType
     }
     else
     {
-      paramMessageRecord = localQQAppInterface.getMsgCache().e(paramMessageRecord.frienduin);
+      paramMessageRecord = localQQAppInterface.getMsgCache().j(paramMessageRecord.frienduin);
       if (paramMessageRecord != null)
       {
         if (QLog.isColorLevel())
@@ -66,14 +61,19 @@ public class BusinessCRMRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 8010;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.BusinessCRMRoutingType
  * JD-Core Version:    0.7.0.1
  */

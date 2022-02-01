@@ -8,13 +8,13 @@ import java.util.regex.Pattern;
 class TroopNickRuleFragment$7
   implements InputFilter
 {
-  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
+  Pattern a = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
   
   TroopNickRuleFragment$7(TroopNickRuleFragment paramTroopNickRuleFragment) {}
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
+    if (this.a.matcher(paramCharSequence).find()) {
       return "";
     }
     return null;
@@ -22,7 +22,7 @@ class TroopNickRuleFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.7
  * JD-Core Version:    0.7.0.1
  */

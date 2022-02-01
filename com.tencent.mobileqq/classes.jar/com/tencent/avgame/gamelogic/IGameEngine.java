@@ -20,47 +20,53 @@ import mqq.app.MobileQQ;
 public abstract class IGameEngine
   implements AudioProcessCallback.OnRecog, GameResultListener, GameRoomStatusListener, GameStatusListener, IDataCtrl<EngineData>
 {
-  static IGameEngine jdField_a_of_type_ComTencentAvgameGamelogicIGameEngine;
-  static String jdField_a_of_type_JavaLangString = "IGameEngine";
+  static String b = "IGameEngine";
+  static IGameEngine c;
   
-  public static IGameEngine a()
+  public static IGameEngine I()
   {
-    jdField_a_of_type_ComTencentAvgameGamelogicIGameEngine = GameEngine.a();
-    return jdField_a_of_type_ComTencentAvgameGamelogicIGameEngine;
+    c = GameEngine.a();
+    return c;
   }
   
-  public static AppRuntime a()
+  public static boolean J()
   {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
-  public static boolean a(EngineData paramEngineData)
-  {
-    if (a() == null) {
-      return false;
-    }
-    return a().getAccount().equals(paramEngineData.a().a.uin);
-  }
-  
-  public static boolean k()
-  {
-    if (a().a() != null) {
+    if (I().s() != null) {
       return false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "IGameEngine or EngineData = null");
+      QLog.d(b, 2, "IGameEngine or EngineData = null");
     }
     return true;
   }
   
-  public abstract int a();
-  
-  public abstract EngineData a();
-  
-  public AVGameClientQIPCModule a()
+  public static AppRuntime K()
   {
-    if ((a() instanceof IAVGameAppInterface)) {
-      return ((IAVGameAppInterface)a()).a();
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public static boolean k(EngineData paramEngineData)
+  {
+    if (K() == null) {
+      return false;
+    }
+    return K().getAccount().equals(paramEngineData.h().b.uin);
+  }
+  
+  public abstract boolean A();
+  
+  public abstract boolean B();
+  
+  public abstract boolean C();
+  
+  public abstract boolean D();
+  
+  public abstract void G();
+  
+  public AVGameClientQIPCModule L()
+  {
+    if ((K() instanceof IAVGameAppInterface)) {
+      return ((IAVGameAppInterface)K()).a();
     }
     return null;
   }
@@ -91,8 +97,6 @@ public abstract class IGameEngine
   
   public abstract void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2);
   
-  public abstract boolean a();
-  
   public abstract boolean a(int paramInt, String paramString);
   
   public abstract boolean a(GameItem paramGameItem);
@@ -111,29 +115,25 @@ public abstract class IGameEngine
   
   public abstract boolean b(GameItem paramGameItem);
   
-  public abstract void c();
-  
   public abstract void c(int paramInt);
   
-  public abstract boolean e();
+  public abstract boolean d();
   
-  public abstract void f();
+  public abstract int e();
   
-  public abstract boolean f();
+  public abstract void g();
   
-  public abstract boolean g();
+  public abstract EngineData s();
   
-  public abstract boolean h();
+  public abstract boolean v();
   
-  public abstract boolean i();
+  public abstract void w();
   
-  public abstract void l();
+  public abstract void x();
   
-  public abstract void m();
+  public abstract void y();
   
-  public abstract void n();
-  
-  public abstract void p();
+  public abstract void z();
 }
 
 

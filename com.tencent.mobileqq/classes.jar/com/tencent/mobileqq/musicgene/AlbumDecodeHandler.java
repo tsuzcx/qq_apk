@@ -11,28 +11,28 @@ import java.util.List;
 public class AlbumDecodeHandler
   implements DownloadParams.DecodeHandler
 {
-  private static final HashMap<String, ArrayList<Integer>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<AlbumDecodeHandler.OnDecodeCompleteCallback> jdField_a_of_type_JavaLangRefWeakReference;
+  private static final HashMap<String, ArrayList<Integer>> d = new HashMap();
+  WeakReference<AlbumDecodeHandler.OnDecodeCompleteCallback> a;
+  Object b;
+  String c;
   
   public AlbumDecodeHandler(String paramString, AlbumDecodeHandler.OnDecodeCompleteCallback paramOnDecodeCompleteCallback, Object paramObject)
   {
     if (paramOnDecodeCompleteCallback != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnDecodeCompleteCallback);
+      this.a = new WeakReference(paramOnDecodeCompleteCallback);
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.c = paramString;
+    this.b = paramObject;
   }
   
   public static List<Integer> a(String paramString)
   {
-    return (List)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    return (List)d.get(paramString);
   }
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramDownloadParams = this.jdField_a_of_type_JavaLangRefWeakReference;
+    paramDownloadParams = this.a;
     if (paramDownloadParams == null) {
       paramDownloadParams = null;
     } else {
@@ -46,18 +46,18 @@ public class AlbumDecodeHandler
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(Integer.valueOf(arrayOfInt[0]));
         localArrayList.add(Integer.valueOf(arrayOfInt[1]));
-        if (!jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
-          jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, localArrayList);
+        if (!d.containsKey(this.c)) {
+          d.put(this.c, localArrayList);
         }
       }
-      paramDownloadParams.a(this.jdField_a_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1], this.jdField_a_of_type_JavaLangObject);
+      paramDownloadParams.a(this.c, arrayOfInt[0], arrayOfInt[1], this.b);
     }
     return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.AlbumDecodeHandler
  * JD-Core Version:    0.7.0.1
  */

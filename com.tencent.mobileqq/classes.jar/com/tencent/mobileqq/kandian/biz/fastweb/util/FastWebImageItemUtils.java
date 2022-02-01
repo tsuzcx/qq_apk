@@ -56,10 +56,10 @@ public class FastWebImageItemUtils
             try
             {
               localObject = (ProteusItemData)localObject;
-              if (((ProteusItemData)localObject).z != 2) {
+              if (((ProteusItemData)localObject).be != 2) {
                 continue;
               }
-              paramArrayList.add(a(((ProteusItemData)localObject).c.getString("articleImageUrl")));
+              paramArrayList.add(a(((ProteusItemData)localObject).bb.getString("articleImageUrl")));
             }
             catch (Exception localException)
             {
@@ -72,7 +72,7 @@ public class FastWebImageItemUtils
           }
         }
         int i = paramArrayList.indexOf(a(paramJSONObject));
-        paramJSONObject = (HashMap)new RIJDtParamBuilder().e(paramAbsBaseArticleInfo.innerUniqueID).a(Long.valueOf(paramAbsBaseArticleInfo.mChannelID)).a("ref_channel", Long.valueOf(paramAbsBaseArticleInfo.mChannelID)).b(Integer.valueOf(paramAbsBaseArticleInfo.dtReportContentType)).a();
+        paramJSONObject = (HashMap)new RIJDtParamBuilder().e(paramAbsBaseArticleInfo.innerUniqueID).a(Long.valueOf(paramAbsBaseArticleInfo.mChannelID)).a("ref_channel", Long.valueOf(paramAbsBaseArticleInfo.mChannelID)).b(Integer.valueOf(paramAbsBaseArticleInfo.dtReportContentType)).c();
         try
         {
           TroopNoticeJsHandler.a(paramFastWebActivity, i, paramArrayList, null, null, false, true, "4", 1000, null, null, null, null, "", true, "999", paramJSONObject);
@@ -107,25 +107,25 @@ public class FastWebImageItemUtils
     // Byte code:
     //   0: iconst_1
     //   1: istore 8
-    //   3: invokestatic 195	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   6: invokestatic 200	com/tencent/mobileqq/kandian/biz/fastweb/util/FastWebPTSUtils:a	(Landroid/content/Context;)I
+    //   3: invokestatic 196	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   6: invokestatic 201	com/tencent/mobileqq/kandian/biz/fastweb/util/FastWebPTSUtils:a	(Landroid/content/Context;)I
     //   9: istore 4
     //   11: aload_1
-    //   12: invokestatic 204	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   12: invokestatic 205	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   15: istore 5
     //   17: aload_2
-    //   18: invokestatic 204	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   18: invokestatic 205	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   21: istore 6
     //   23: iload 5
-    //   25: invokestatic 206	com/tencent/mobileqq/kandian/biz/fastweb/util/FastWebImageItemUtils:a	(I)Z
+    //   25: invokestatic 207	com/tencent/mobileqq/kandian/biz/fastweb/util/FastWebImageItemUtils:a	(I)Z
     //   28: ifeq +14 -> 42
     //   31: iload 5
     //   33: i2d
-    //   34: invokestatic 212	com/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/utils/Utils:dp2px	(D)I
+    //   34: invokestatic 213	com/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/utils/Utils:dp2px	(D)I
     //   37: istore 4
     //   39: goto +20 -> 59
-    //   42: ldc2_w 213
-    //   45: invokestatic 212	com/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/utils/Utils:dp2px	(D)I
+    //   42: ldc2_w 214
+    //   45: invokestatic 213	com/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/utils/Utils:dp2px	(D)I
     //   48: istore 7
     //   50: iload 4
     //   52: iload 7
@@ -144,49 +144,49 @@ public class FastWebImageItemUtils
     //   74: iload 4
     //   76: ifle +47 -> 123
     //   79: aload_0
-    //   80: ldc 216
-    //   82: ldc 218
-    //   84: invokevirtual 222	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   80: ldc 217
+    //   82: ldc 219
+    //   84: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   87: pop
     //   88: aload_0
-    //   89: ldc 224
+    //   89: ldc 225
     //   91: iload 6
-    //   93: invokevirtual 227	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   93: invokevirtual 228	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   96: pop
     //   97: aload_0
-    //   98: ldc 229
+    //   98: ldc 230
     //   100: iload 4
-    //   102: invokevirtual 227	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   102: invokevirtual 228	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   105: pop
     //   106: aload_0
     //   107: ldc 35
     //   109: aload_3
-    //   110: invokevirtual 222	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   110: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   113: pop
     //   114: aload_0
-    //   115: ldc 231
-    //   117: ldc 233
-    //   119: invokevirtual 222	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   115: ldc 232
+    //   117: ldc 234
+    //   119: invokevirtual 223	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   122: pop
     //   123: new 80	java/lang/StringBuilder
     //   126: dup
     //   127: invokespecial 81	java/lang/StringBuilder:<init>	()V
     //   130: astore_0
     //   131: aload_0
-    //   132: ldc 235
+    //   132: ldc 236
     //   134: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   137: pop
     //   138: aload_0
     //   139: iload 4
-    //   141: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   141: invokevirtual 239	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   144: pop
     //   145: aload_0
-    //   146: ldc 240
+    //   146: ldc 241
     //   148: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   151: pop
     //   152: aload_0
     //   153: iload 6
-    //   155: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 239	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   158: pop
     //   159: ldc 92
     //   161: iconst_1
@@ -218,7 +218,7 @@ public class FastWebImageItemUtils
     //   210: invokespecial 81	java/lang/StringBuilder:<init>	()V
     //   213: astore_1
     //   214: aload_1
-    //   215: ldc 242
+    //   215: ldc 243
     //   217: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   220: pop
     //   221: aload_1
@@ -267,7 +267,7 @@ public class FastWebImageItemUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebImageItemUtils
  * JD-Core Version:    0.7.0.1
  */

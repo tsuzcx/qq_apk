@@ -32,7 +32,7 @@ class NearbyActivity$3
     Object localObject = this.a;
     int i = ((NearbyTabInfo)((NearbyActivity)localObject).mTabInfos.get(paramInt)).getTabIndex();
     ((NearbyActivity)localObject).mResumeTabIndex = i;
-    NearbyBaseFragment.a = i;
+    NearbyBaseFragment.j = i;
     if ((this.a.mClickTime == 0L) && (this.a.mResumeTabIndex == 2))
     {
       this.a.mClickTime = System.currentTimeMillis();
@@ -56,7 +56,7 @@ class NearbyActivity$3
       if (this.a.mTabBarIndex == this.a.mMsgBoxTabIndex) {
         i = 9;
       }
-      if (TextUtils.equals(HardCodeUtil.a(2131707129), ((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).getTabName())) {
+      if (TextUtils.equals(HardCodeUtil.a(2131904964), ((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).getTabName())) {
         i = 11;
       }
       int j = ((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).getReportId();
@@ -74,16 +74,16 @@ class NearbyActivity$3
     {
       ((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).setShowRedRot(false);
       NearbyActivity localNearbyActivity = this.a;
-      NearbyActivity.access$000(localNearbyActivity, localNearbyActivity.mBarView.a(this.a.mTabBarIndex));
+      NearbyActivity.access$000(localNearbyActivity, localNearbyActivity.mBarView.b(this.a.mTabBarIndex));
     }
     if (localObject != null) {
-      ((NearbyBaseFragment)localObject).aR_();
+      ((NearbyBaseFragment)localObject).dw_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity.3
  * JD-Core Version:    0.7.0.1
  */

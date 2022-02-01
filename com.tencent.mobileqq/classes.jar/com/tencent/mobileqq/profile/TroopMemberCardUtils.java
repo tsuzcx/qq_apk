@@ -80,8 +80,8 @@ public class TroopMemberCardUtils
       {
         Object localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
         paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-        Friends localFriends = ((FriendsManager)localObject).b(paramString2);
-        localObject = paramQQAppInterface.b(paramString1, paramString2);
+        Friends localFriends = ((FriendsManager)localObject).c(paramString2);
+        localObject = paramQQAppInterface.g(paramString1, paramString2);
         paramQQAppInterface = "";
         paramString1 = paramQQAppInterface;
         if (localFriends != null)
@@ -173,8 +173,8 @@ public class TroopMemberCardUtils
       if (TextUtils.isEmpty(str2)) {
         return;
       }
-      Object localObject = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(str2);
-      TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(str1);
+      Object localObject = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(str2);
+      TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(str1);
       AllInOne localAllInOne = null;
       paramQQAppInterface = null;
       if ((localObject != null) && (((Friends)localObject).isFriend()))
@@ -222,7 +222,7 @@ public class TroopMemberCardUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    Friends localFriends = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString2);
+    Friends localFriends = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString2);
     TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString1, false, false);
     Object localObject = null;
     paramQQAppInterface = null;
@@ -298,7 +298,7 @@ public class TroopMemberCardUtils
         localObject = TroopRankConfig.a().a(bool1, bool2);
         if (localObject != null)
         {
-          paramTroopMemberCard = ((TroopRankConfig.TroopRankItem)localObject).jdField_a_of_type_JavaLangString;
+          paramTroopMemberCard = ((TroopRankConfig.TroopRankItem)localObject).c;
           i = ((TroopRankConfig.TroopRankItem)localObject).b;
         }
         else
@@ -315,12 +315,12 @@ public class TroopMemberCardUtils
         TroopRankConfig.TroopRankItem localTroopRankItem = TroopRankConfig.a().a(paramTroopMemberCard.titleId, bool3 ^ true, bool1, bool2);
         if (localTroopRankItem != null)
         {
-          localObject = localTroopRankItem.jdField_a_of_type_JavaLangString;
+          localObject = localTroopRankItem.c;
           i = localTroopRankItem.b;
-          if (localTroopRankItem.jdField_a_of_type_Int == 302) {
+          if (localTroopRankItem.a == 302) {
             localObject = paramTroopMemberCard.mUniqueTitle;
           }
-          if (localTroopRankItem.jdField_a_of_type_Int == 315) {
+          if (localTroopRankItem.a == 315) {
             paramTroopMemberCard = (String)paramTroopInfo.getTroopLevelMap().get(Integer.valueOf(paramTroopMemberCard.realLevel));
           } else {
             paramTroopMemberCard = (TroopMemberCard)localObject;
@@ -343,19 +343,19 @@ public class TroopMemberCardUtils
       } else {
         j = 0;
       }
-      if ((!SimpleUIUtil.a()) && (j != 0))
+      if ((!SimpleUIUtil.e()) && (j != 0))
       {
         paramTroopInfo = paramTroopMemberCard;
       }
       else if (bool1)
       {
-        paramTroopInfo = HardCodeUtil.a(2131720028);
+        paramTroopInfo = HardCodeUtil.a(2131917633);
       }
       else
       {
         paramTroopInfo = str;
         if (bool2) {
-          paramTroopInfo = HardCodeUtil.a(2131720025);
+          paramTroopInfo = HardCodeUtil.a(2131917630);
         }
       }
       if (!TextUtils.isEmpty(paramTroopInfo))
@@ -374,7 +374,7 @@ public class TroopMemberCardUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.TroopMemberCardUtils
  * JD-Core Version:    0.7.0.1
  */

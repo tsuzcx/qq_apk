@@ -64,55 +64,6 @@ public class QimSegmentMergeUtil
     return null;
   }
   
-  public ArrayList<Long> a(List<String> paramList, String paramString)
-  {
-    if ((paramList != null) && (paramList.size() != 1) && (!TextUtils.isEmpty(paramString)))
-    {
-      long l3 = MediaUtil.a(paramString);
-      paramString = new LinkedHashMap();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localObject = (String)paramList.next();
-        if (paramString.containsKey(localObject))
-        {
-          l1 = ((Long)paramString.get(localObject)).longValue();
-          paramString.put(localObject, Long.valueOf(l1 + l1));
-        }
-        else
-        {
-          paramString.put(localObject, Long.valueOf(MediaUtil.a((String)localObject)));
-        }
-      }
-      paramList = new ArrayList();
-      Object localObject = paramString.keySet().iterator();
-      long l1 = 0L;
-      long l2 = 0L;
-      while (((Iterator)localObject).hasNext())
-      {
-        l2 += ((Long)paramString.get((String)((Iterator)localObject).next())).longValue();
-        paramList.add(Long.valueOf(l2));
-      }
-      if (l2 > l3) {
-        l1 = (l2 - l3) / (paramString.size() - 1) / 2L;
-      }
-      if (paramList.size() > 1) {
-        paramList.remove(paramList.size() - 1);
-      }
-      l2 = -50L;
-      int i = 0;
-      int j = paramList.size();
-      while (i < j)
-      {
-        paramList.set(i, Long.valueOf(((Long)paramList.get(i)).longValue() - l1 + l2));
-        l2 -= l1 * 2L;
-        i += 1;
-      }
-      return paramList;
-    }
-    return null;
-  }
-  
   /* Error */
   public boolean a(List<String> paramList, String paramString)
   {
@@ -121,13 +72,13 @@ public class QimSegmentMergeUtil
     //   1: astore 6
     //   3: aconst_null
     //   4: astore 5
-    //   6: new 114	java/io/FileOutputStream
+    //   6: new 95	java/io/FileOutputStream
     //   9: dup
-    //   10: new 116	java/io/File
+    //   10: new 97	java/io/File
     //   13: dup
     //   14: aload_2
-    //   15: invokespecial 119	java/io/File:<init>	(Ljava/lang/String;)V
-    //   18: invokespecial 122	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   15: invokespecial 100	java/io/File:<init>	(Ljava/lang/String;)V
+    //   18: invokespecial 103	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   21: astore_2
     //   22: iconst_0
     //   23: istore_3
@@ -135,21 +86,21 @@ public class QimSegmentMergeUtil
     //   25: aload_1
     //   26: invokeinterface 20 1 0
     //   31: if_icmpge +131 -> 162
-    //   34: new 124	java/io/RandomAccessFile
+    //   34: new 105	java/io/RandomAccessFile
     //   37: dup
     //   38: aload_1
     //   39: iload_3
-    //   40: invokeinterface 125 2 0
+    //   40: invokeinterface 107 2 0
     //   45: checkcast 39	java/lang/String
-    //   48: ldc 127
-    //   50: invokespecial 130	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   48: ldc 109
+    //   50: invokespecial 112	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   53: astore 5
-    //   55: ldc 131
+    //   55: ldc 113
     //   57: newarray byte
     //   59: astore 6
     //   61: aload 5
     //   63: aload 6
-    //   65: invokevirtual 135	java/io/RandomAccessFile:read	([B)I
+    //   65: invokevirtual 117	java/io/RandomAccessFile:read	([B)I
     //   68: istore 4
     //   70: iload 4
     //   72: iconst_m1
@@ -158,14 +109,14 @@ public class QimSegmentMergeUtil
     //   77: aload 6
     //   79: iconst_0
     //   80: iload 4
-    //   82: invokevirtual 139	java/io/FileOutputStream:write	([BII)V
+    //   82: invokevirtual 121	java/io/FileOutputStream:write	([BII)V
     //   85: goto -24 -> 61
     //   88: aload 5
-    //   90: invokevirtual 142	java/io/RandomAccessFile:close	()V
+    //   90: invokevirtual 124	java/io/RandomAccessFile:close	()V
     //   93: goto +10 -> 103
     //   96: astore 5
     //   98: aload 5
-    //   100: invokevirtual 145	java/lang/Exception:printStackTrace	()V
+    //   100: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   103: iload_3
     //   104: iconst_1
     //   105: iadd
@@ -175,38 +126,38 @@ public class QimSegmentMergeUtil
     //   111: goto +34 -> 145
     //   114: astore_1
     //   115: aload_1
-    //   116: invokevirtual 145	java/lang/Exception:printStackTrace	()V
+    //   116: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   119: aload 5
-    //   121: invokevirtual 142	java/io/RandomAccessFile:close	()V
+    //   121: invokevirtual 124	java/io/RandomAccessFile:close	()V
     //   124: goto +8 -> 132
     //   127: astore_1
     //   128: aload_1
-    //   129: invokevirtual 145	java/lang/Exception:printStackTrace	()V
+    //   129: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   132: aload_2
-    //   133: invokevirtual 146	java/io/FileOutputStream:close	()V
+    //   133: invokevirtual 128	java/io/FileOutputStream:close	()V
     //   136: iconst_0
     //   137: ireturn
     //   138: astore_1
     //   139: aload_1
-    //   140: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   140: invokevirtual 129	java/io/IOException:printStackTrace	()V
     //   143: iconst_0
     //   144: ireturn
     //   145: aload 5
-    //   147: invokevirtual 142	java/io/RandomAccessFile:close	()V
+    //   147: invokevirtual 124	java/io/RandomAccessFile:close	()V
     //   150: goto +10 -> 160
     //   153: astore 5
     //   155: aload 5
-    //   157: invokevirtual 145	java/lang/Exception:printStackTrace	()V
+    //   157: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   160: aload_1
     //   161: athrow
     //   162: aload_2
-    //   163: invokevirtual 146	java/io/FileOutputStream:close	()V
+    //   163: invokevirtual 128	java/io/FileOutputStream:close	()V
     //   166: aload_2
-    //   167: invokevirtual 146	java/io/FileOutputStream:close	()V
+    //   167: invokevirtual 128	java/io/FileOutputStream:close	()V
     //   170: goto +8 -> 178
     //   173: astore_1
     //   174: aload_1
-    //   175: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   175: invokevirtual 129	java/io/IOException:printStackTrace	()V
     //   178: iconst_1
     //   179: ireturn
     //   180: astore_1
@@ -227,26 +178,26 @@ public class QimSegmentMergeUtil
     //   205: aload_1
     //   206: astore 5
     //   208: aload_2
-    //   209: invokevirtual 145	java/lang/Exception:printStackTrace	()V
+    //   209: invokevirtual 127	java/lang/Exception:printStackTrace	()V
     //   212: aload_1
     //   213: ifnull +14 -> 227
     //   216: aload_1
-    //   217: invokevirtual 146	java/io/FileOutputStream:close	()V
+    //   217: invokevirtual 128	java/io/FileOutputStream:close	()V
     //   220: iconst_0
     //   221: ireturn
     //   222: astore_1
     //   223: aload_1
-    //   224: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   224: invokevirtual 129	java/io/IOException:printStackTrace	()V
     //   227: iconst_0
     //   228: ireturn
     //   229: aload_2
     //   230: ifnull +15 -> 245
     //   233: aload_2
-    //   234: invokevirtual 146	java/io/FileOutputStream:close	()V
+    //   234: invokevirtual 128	java/io/FileOutputStream:close	()V
     //   237: goto +8 -> 245
     //   240: astore_2
     //   241: aload_2
-    //   242: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   242: invokevirtual 129	java/io/IOException:printStackTrace	()V
     //   245: goto +5 -> 250
     //   248: aload_1
     //   249: athrow
@@ -348,7 +299,7 @@ public class QimSegmentMergeUtil
       i = paramInt1;
       paramInt1 = j;
     }
-    if (QQAudioHelper.d()) {
+    if (QQAudioHelper.g()) {
       return ((IHwVideoMerge)QRoute.api(IHwVideoMerge.class)).ffmpegMergeMultiVideo(paramList, paramString, i);
     }
     Object localObject4 = new ArrayList();
@@ -359,19 +310,19 @@ public class QimSegmentMergeUtil
       j += 1;
     }
     Object localObject5 = new EncodeConfig(paramString, paramInt1, paramInt2, CodecParam.mMaxrate, 1, false, i);
-    ((EncodeConfig)localObject5).b = true;
+    ((EncodeConfig)localObject5).n = true;
     for (;;)
     {
       try
       {
         paramList = ByteBuffer.allocate(1048576);
         paramString = new MediaCodec.BufferInfo();
-        Object localObject3 = new File(((EncodeConfig)localObject5).a);
+        Object localObject3 = new File(((EncodeConfig)localObject5).b);
         if (!((File)localObject3).exists()) {
           FileUtils.createFileIfNotExits(((File)localObject3).getAbsolutePath());
         }
-        localObject3 = new MediaMuxer(((EncodeConfig)localObject5).a, 0);
-        ((MediaMuxer)localObject3).setOrientationHint(((EncodeConfig)localObject5).g);
+        localObject3 = new MediaMuxer(((EncodeConfig)localObject5).b, 0);
+        ((MediaMuxer)localObject3).setOrientationHint(((EncodeConfig)localObject5).l);
         i = ((MediaMuxer)localObject3).addTrack(paramMediaFormat);
         ((MediaMuxer)localObject3).start();
         localObject4 = ((List)localObject4).iterator();
@@ -444,6 +395,55 @@ public class QimSegmentMergeUtil
       long l2 = 0L;
       long l3 = 0L;
     }
+  }
+  
+  public ArrayList<Long> b(List<String> paramList, String paramString)
+  {
+    if ((paramList != null) && (paramList.size() != 1) && (!TextUtils.isEmpty(paramString)))
+    {
+      long l3 = MediaUtil.a(paramString);
+      paramString = new LinkedHashMap();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (String)paramList.next();
+        if (paramString.containsKey(localObject))
+        {
+          l1 = ((Long)paramString.get(localObject)).longValue();
+          paramString.put(localObject, Long.valueOf(l1 + l1));
+        }
+        else
+        {
+          paramString.put(localObject, Long.valueOf(MediaUtil.a((String)localObject)));
+        }
+      }
+      paramList = new ArrayList();
+      Object localObject = paramString.keySet().iterator();
+      long l1 = 0L;
+      long l2 = 0L;
+      while (((Iterator)localObject).hasNext())
+      {
+        l2 += ((Long)paramString.get((String)((Iterator)localObject).next())).longValue();
+        paramList.add(Long.valueOf(l2));
+      }
+      if (l2 > l3) {
+        l1 = (l2 - l3) / (paramString.size() - 1) / 2L;
+      }
+      if (paramList.size() > 1) {
+        paramList.remove(paramList.size() - 1);
+      }
+      l2 = -50L;
+      int i = 0;
+      int j = paramList.size();
+      while (i < j)
+      {
+        paramList.set(i, Long.valueOf(((Long)paramList.get(i)).longValue() - l1 + l2));
+        l2 -= l1 * 2L;
+        i += 1;
+      }
+      return paramList;
+    }
+    return null;
   }
 }
 

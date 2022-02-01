@@ -14,7 +14,7 @@ class PrivacyShowSettingFragment$10
   public void run()
   {
     Object localObject = (FriendsManager)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Card localCard = ((FriendsManager)localObject).a(this.this$0.a.getCurrentAccountUin());
+    Card localCard = ((FriendsManager)localObject).f(this.this$0.a.getCurrentAccountUin());
     if (localCard != null)
     {
       localCard.isHidePrettyGroutIdentity = (this.a ^ true);
@@ -39,7 +39,7 @@ class PrivacyShowSettingFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyShowSettingFragment.10
  * JD-Core Version:    0.7.0.1
  */

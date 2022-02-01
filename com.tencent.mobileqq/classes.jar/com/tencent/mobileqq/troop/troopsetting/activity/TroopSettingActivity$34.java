@@ -13,14 +13,14 @@ class TroopSettingActivity$34
     if (!paramBoolean)
     {
       paramString = this.a;
-      QQToast.a(paramString, paramString.getString(2131696194), 0).b(this.a.getTitleBarHeight());
-      TroopSettingActivity.q(this.a);
+      QQToast.makeText(paramString, paramString.getString(2131893960), 0).show(this.a.getTitleBarHeight());
+      TroopSettingActivity.t(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.34
  * JD-Core Version:    0.7.0.1
  */

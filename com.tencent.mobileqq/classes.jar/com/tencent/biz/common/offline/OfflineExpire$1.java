@@ -15,23 +15,23 @@ final class OfflineExpire$1
   
   public void loaded(String paramString, int paramInt)
   {
-    paramString = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString = (AppRuntime)this.a.get();
     if (paramString != null)
     {
       paramString = (IPreDownloadController)paramString.getRuntimeService(IPreDownloadController.class, "");
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.b;
       long l;
       if (BidDownloader.a(paramInt)) {
-        l = this.jdField_a_of_type_Int;
+        l = this.c;
       } else {
         l = -1L;
       }
       paramString.preDownloadSuccess((String)localObject, l);
     }
-    paramString = OfflineExpire.jdField_a_of_type_JavaLangString;
+    paramString = OfflineExpire.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("finish predown bid=");
-    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append(", code=");
     ((StringBuilder)localObject).append(paramInt);
     QLog.i(paramString, 1, ((StringBuilder)localObject).toString());
@@ -44,7 +44,7 @@ final class OfflineExpire$1
       paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
       paramString.putExtra("verify", OfflineExpire.a((ArrayList)localObject, false));
       if (QLog.isColorLevel()) {
-        QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
+        QLog.d(OfflineExpire.a, 2, "sendBroadcast to close TMAssistant sdk process");
       }
       BaseApplication.getContext().sendBroadcast(paramString);
     }
@@ -54,7 +54,7 @@ final class OfflineExpire$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineExpire.1
  * JD-Core Version:    0.7.0.1
  */

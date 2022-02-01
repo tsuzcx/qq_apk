@@ -12,12 +12,12 @@ class QQMapRoutingHelper$1
   
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.a.post(new QQMapRoutingHelper.1.1(this, paramJSONObject, paramBundle));
+    this.a.k.post(new QQMapRoutingHelper.1.1(this, paramJSONObject, paramBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.QQMapRoutingHelper.1
  * JD-Core Version:    0.7.0.1
  */

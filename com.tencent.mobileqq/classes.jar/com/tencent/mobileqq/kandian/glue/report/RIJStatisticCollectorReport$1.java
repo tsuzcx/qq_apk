@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.kandian.glue.report;
 
 import android.content.Context;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ final class RIJStatisticCollectorReport$1
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
-      Object localObject2 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      Object localObject2 = this.a.entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
@@ -32,26 +31,25 @@ final class RIJStatisticCollectorReport$1
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("reportKandianVideoInfo, success =");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append(", data=");
       ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
       QLog.d("Q.readinjoy.video", 2, ((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = new HashMap(this.jdField_a_of_type_JavaUtilHashMap);
-    StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).collectPerformance(this.jdField_a_of_type_JavaLangString, "actKandianVideoWithExtraInfo", this.jdField_a_of_type_Boolean, -1L, 0L, (HashMap)localObject1, null);
+    Object localObject1 = new HashMap(this.a);
+    StatisticCollector.getInstance(this.c).collectPerformance(this.d, "actKandianVideoWithExtraInfo", this.b, -1L, 0L, (HashMap)localObject1, null);
     try
     {
-      this.jdField_a_of_type_JavaUtilHashMap.remove("param_speedList");
+      this.a.remove("param_speedList");
     }
     catch (Throwable localThrowable1)
     {
       QLog.e("RIJStatisticCollectorReport", 2, localThrowable1.getMessage());
     }
-    StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).collectPerformance(this.jdField_a_of_type_JavaLangString, "actKandianVideo", this.jdField_a_of_type_Boolean, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
+    StatisticCollector.getInstance(this.c).collectPerformance(this.d, "actKandianVideo", this.b, -1L, 0L, this.a, null);
     try
     {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaUtilHashMap);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X80096D9", "0X80096D9", 0, 0, "", "", "", localJSONObject.toString(), false);
+      PublicAccountReportUtils.a(null, null, "0X80096D9", "0X80096D9", 0, 0, "", "", "", new JSONObject(this.a).toString(), false);
       return;
     }
     catch (Throwable localThrowable2)
@@ -62,7 +60,7 @@ final class RIJStatisticCollectorReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJStatisticCollectorReport.1
  * JD-Core Version:    0.7.0.1
  */

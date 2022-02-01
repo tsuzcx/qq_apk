@@ -9,62 +9,62 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 public final class ExpandableWidgetHelper
 {
-  @IdRes
-  private int jdField_a_of_type_Int = 0;
   @NonNull
-  private final View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private final View a;
+  private boolean b = false;
+  @IdRes
+  private int c = 0;
   
   public ExpandableWidgetHelper(ExpandableWidget paramExpandableWidget)
   {
-    this.jdField_a_of_type_AndroidViewView = ((View)paramExpandableWidget);
+    this.a = ((View)paramExpandableWidget);
   }
   
-  private void a()
+  private void d()
   {
-    ViewParent localViewParent = this.jdField_a_of_type_AndroidViewView.getParent();
+    ViewParent localViewParent = this.a.getParent();
     if ((localViewParent instanceof CoordinatorLayout)) {
-      ((CoordinatorLayout)localViewParent).dispatchDependentViewsChanged(this.jdField_a_of_type_AndroidViewView);
+      ((CoordinatorLayout)localViewParent).dispatchDependentViewsChanged(this.a);
     }
-  }
-  
-  @IdRes
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NonNull
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("expanded", this.jdField_a_of_type_Boolean);
-    localBundle.putInt("expandedComponentIdHint", this.jdField_a_of_type_Int);
-    return localBundle;
   }
   
   public void a(@IdRes int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(@NonNull Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("expanded", false);
-    this.jdField_a_of_type_Int = paramBundle.getInt("expandedComponentIdHint", 0);
-    if (this.jdField_a_of_type_Boolean) {
-      a();
+    this.b = paramBundle.getBoolean("expanded", false);
+    this.c = paramBundle.getInt("expandedComponentIdHint", 0);
+    if (this.b) {
+      d();
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
+  }
+  
+  @NonNull
+  public Bundle b()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("expanded", this.b);
+    localBundle.putInt("expandedComponentIdHint", this.c);
+    return localBundle;
+  }
+  
+  @IdRes
+  public int c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.expandable.ExpandableWidgetHelper
  * JD-Core Version:    0.7.0.1
  */

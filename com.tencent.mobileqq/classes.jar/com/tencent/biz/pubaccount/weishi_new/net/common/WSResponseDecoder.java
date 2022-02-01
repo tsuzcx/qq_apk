@@ -40,7 +40,7 @@ public class WSResponseDecoder
     RspHeaderBean localRspHeaderBean = new RspHeaderBean();
     if ((paramQmfDownstream != null) && (paramQmfDownstream.mapExt != null))
     {
-      localRspHeaderBean.jdField_a_of_type_JavaUtilMap = paramQmfDownstream.mapExt;
+      localRspHeaderBean.a = paramQmfDownstream.mapExt;
       Object localObject1 = paramQmfDownstream.mapExt;
       int i = paramWSRequest.getRequestScene();
       Object localObject2 = new StringBuilder();
@@ -76,9 +76,9 @@ public class WSResponseDecoder
       ((StringBuilder)localObject2).append("}");
       WSLog.a("[WSService]", ((StringBuilder)localObject2).toString());
       if ("SimpleGetFeedList".equals(paramWSRequest.getOnlyCmd())) {
-        LocalMultiProcConfig.putString4Uin("key_default_test_id", (String)localObject1, WeishiUtils.a());
+        LocalMultiProcConfig.putString4Uin("key_default_test_id", (String)localObject1, WeishiUtils.b());
       }
-      localRspHeaderBean.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localRspHeaderBean.b = ((String)localObject1);
       WSReportUtils.a(i, (String)localObject1);
       localObject1 = (String)paramQmfDownstream.mapExt.get("person_id");
       localObject2 = new StringBuilder();
@@ -87,10 +87,10 @@ public class WSResponseDecoder
       ((StringBuilder)localObject2).append("}");
       WSLog.b("[WSService]", ((StringBuilder)localObject2).toString());
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        WeishiUtils.b((String)localObject1);
+        WeishiUtils.k((String)localObject1);
       }
       if ((paramQmfDownstream.iRet == -99) && (paramWSRequest.isShouldStartQQAuth())) {
-        WSQQConnectAuthManager.a().b();
+        WSQQConnectAuthManager.a().d();
       }
     }
     paramWSRequest.getTimeRecord().h();
@@ -245,9 +245,9 @@ public class WSResponseDecoder
   
   private static boolean a(RspHeaderBean paramRspHeaderBean)
   {
-    if ((paramRspHeaderBean != null) && (paramRspHeaderBean.jdField_a_of_type_JavaUtilMap != null))
+    if ((paramRspHeaderBean != null) && (paramRspHeaderBean.a != null))
     {
-      if (!paramRspHeaderBean.jdField_a_of_type_JavaUtilMap.containsKey("qq_compressed"))
+      if (!paramRspHeaderBean.a.containsKey("qq_compressed"))
       {
         WSLog.e("[WSService]", "[WSResponseDecoder.java][checkRspCompress] rsp is not compress");
         return false;
@@ -318,7 +318,7 @@ public class WSResponseDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSResponseDecoder
  * JD-Core Version:    0.7.0.1
  */

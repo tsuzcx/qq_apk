@@ -1,8 +1,5 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoByIdEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoByLinkEntity;
@@ -12,7 +9,6 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppCacheProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppCacheProxy.LinkData;
 import common.config.service.QzoneConfig;
 import java.util.List;
-import mqq.app.AppRuntime;
 
 @ProxyService(proxy=MiniAppCacheProxy.class)
 public class MiniAppCacheProxyImpl
@@ -20,11 +16,7 @@ public class MiniAppCacheProxyImpl
 {
   private MiniAppEntityManager a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (MiniAppEntityManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
-    }
-    return new MiniAppEntityManager(localAppRuntime.getAccount());
+    return MiniAppEntityManager.get();
   }
   
   public boolean deleteCacheByTimeStamp(long paramLong)
@@ -127,7 +119,7 @@ public class MiniAppCacheProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppCacheProxyImpl
  * JD-Core Version:    0.7.0.1
  */

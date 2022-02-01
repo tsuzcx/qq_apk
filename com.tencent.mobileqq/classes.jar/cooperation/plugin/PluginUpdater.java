@@ -36,20 +36,20 @@ import tencent.im.plugin.ResourceConfig.GetResourceRespV2;
 public class PluginUpdater
   implements Handler.Callback, Runnable
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private PluginUpdater.OnPluginInfoUpdateListener jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
-  private Map<String, PluginInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private final Map<String, PluginInfo> b = new HashMap();
+  private Context a;
+  private boolean b;
+  private Handler c;
+  private Map<String, PluginInfo> d = new HashMap();
+  private final Map<String, PluginInfo> e = new HashMap();
+  private PluginUpdater.OnPluginInfoUpdateListener f;
   
   public PluginUpdater(Context paramContext, Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramHandler.getLooper(), this);
-    paramContext = b(paramContext);
+    this.a = paramContext;
+    this.c = new Handler(paramHandler.getLooper(), this);
+    paramContext = c(paramContext);
     boolean bool = PluginInfoUtil.a(paramContext);
-    paramHandler = PluginInfoUtil.a(paramContext);
+    paramHandler = PluginInfoUtil.c(paramContext);
     if (paramHandler != null)
     {
       int j = paramHandler.length;
@@ -64,9 +64,9 @@ public class PluginUpdater
           }
           else
           {
-            PluginInfo localPluginInfo = PluginInfoUtil.a(localFile);
+            PluginInfo localPluginInfo = PluginInfoUtil.d(localFile);
             if (localPluginInfo != null) {
-              this.jdField_a_of_type_JavaUtilMap.put(localPluginInfo.mID, localPluginInfo);
+              this.d.put(localPluginInfo.mID, localPluginInfo);
             } else {
               localFile.delete();
             }
@@ -76,11 +76,11 @@ public class PluginUpdater
       }
     }
     if (bool) {
-      PluginInfoUtil.a(paramContext);
+      PluginInfoUtil.b(paramContext);
     }
     paramContext = new StringBuilder();
     paramContext.append("init plugin updater :");
-    paramContext.append(this.jdField_a_of_type_JavaUtilMap.size());
+    paramContext.append(this.d.size());
     QLog.d("plugin_tag", 1, paramContext.toString());
   }
   
@@ -165,7 +165,7 @@ public class PluginUpdater
     {
       try
       {
-        localObject4 = this.jdField_a_of_type_JavaUtilMap;
+        localObject4 = this.d;
         localObject5 = ((List)localObject1).iterator();
         if (((Iterator)localObject5).hasNext())
         {
@@ -190,7 +190,7 @@ public class PluginUpdater
             localHashMap.put(((PluginInfo)localObject1).mID, localObject2);
             continue;
           }
-          if ((this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener == null) || (!this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a((PluginInfo)localObject1))) {
+          if ((this.f == null) || (!this.f.a((PluginInfo)localObject1))) {
             continue;
           }
           ((Map)localObject4).remove(((PluginInfo)localObject1).mID);
@@ -251,15 +251,15 @@ public class PluginUpdater
           QLog.d("plugin_tag", 2, ((StringBuilder)localObject3).toString());
           break label1281;
         }
-        localObject1 = this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
+        localObject1 = this.f;
         if (localObject1 != null) {
           ((PluginUpdater.OnPluginInfoUpdateListener)localObject1).a(true);
         }
-        if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
+        if (this.d.isEmpty())
         {
           localObject1 = new HashMap();
-          StatisticCollector.fillFailCode((Map)localObject1, AppSetting.a());
-          StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).collectPerformance(String.valueOf(paramGetResourceRespV2.uin), "pluginUpdateEmpty", false, 0L, 0L, (HashMap)localObject1, "");
+          StatisticCollector.fillFailCode((Map)localObject1, AppSetting.d());
+          StatisticCollector.getInstance(this.a).collectPerformance(String.valueOf(paramGetResourceRespV2.uin), "pluginUpdateEmpty", false, 0L, 0L, (HashMap)localObject1, "");
         }
         if (i != 0)
         {
@@ -304,25 +304,25 @@ public class PluginUpdater
     }
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean b(Context paramContext)
   {
     return new File(a(paramContext), "enableDebug").exists();
   }
   
-  static File b(Context paramContext)
+  static File c(Context paramContext)
   {
     return paramContext.getDir("plugin_info", 0);
   }
   
   PluginInfo a(String paramString)
   {
-    return (PluginInfo)this.b.get(paramString);
+    return (PluginInfo)this.e.get(paramString);
   }
   
   public void a()
   {
-    File localFile = b(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject = PluginInfoUtil.a(localFile);
+    File localFile = c(this.a);
+    Object localObject = PluginInfoUtil.c(localFile);
     if (localObject != null)
     {
       int i = 0;
@@ -332,7 +332,7 @@ public class PluginUpdater
         i += 1;
       }
     }
-    localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    localObject = this.d.values().iterator();
     while (((Iterator)localObject).hasNext()) {
       PluginInfoUtil.a((PluginInfo)((Iterator)localObject).next(), localFile);
     }
@@ -343,7 +343,7 @@ public class PluginUpdater
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "handle getPluginList");
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     Object localObject1 = new ReqUserInfo();
     ((ReqUserInfo)localObject1).cType = 1;
     ((ReqUserInfo)localObject1).stGps = new GPS();
@@ -352,7 +352,7 @@ public class PluginUpdater
     ((ReqUserInfo)localObject1).vCells = new ArrayList();
     ((ReqUserInfo)localObject1).vMacs = new ArrayList();
     localObject1 = new ArrayList();
-    Object localObject2 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Object localObject2 = this.d.values().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       PluginInfo localPluginInfo = (PluginInfo)((Iterator)localObject2).next();
@@ -375,11 +375,11 @@ public class PluginUpdater
       QLog.d("plugin_tag", 2, "getPluginList: 128");
     }
     localObject2 = new ResourceConfig.GetResourceReqV2();
-    ((ResourceConfig.GetResourceReqV2)localObject2).appid.set(AppSetting.a());
+    ((ResourceConfig.GetResourceReqV2)localObject2).appid.set(AppSetting.d());
     ((ResourceConfig.GetResourceReqV2)localObject2).pluginType.set(128);
     ((ResourceConfig.GetResourceReqV2)localObject2).reqVer.set(1);
     ((ResourceConfig.GetResourceReqV2)localObject2).resReqInfo.set((List)localObject1);
-    ((ResourceConfig.GetResourceReqV2)localObject2).revision.set("01328a87");
+    ((ResourceConfig.GetResourceReqV2)localObject2).revision.set("846a9bfd");
     localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), ProtoServlet.class);
     ((NewIntent)localObject1).putExtra("cmd", "ResourceConfig.ClientReqV2");
     ((NewIntent)localObject1).putExtra("data", ((ResourceConfig.GetResourceReqV2)localObject2).toByteArray());
@@ -390,13 +390,13 @@ public class PluginUpdater
   void a(PluginInfo paramPluginInfo)
   {
     if (paramPluginInfo != null) {
-      PluginInfoUtil.a(paramPluginInfo, a(this.jdField_a_of_type_AndroidContentContext));
+      PluginInfoUtil.a(paramPluginInfo, a(this.a));
     }
   }
   
   public void a(PluginUpdater.OnPluginInfoUpdateListener paramOnPluginInfoUpdateListener)
   {
-    this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener = paramOnPluginInfoUpdateListener;
+    this.f = paramOnPluginInfoUpdateListener;
   }
   
   public void a(boolean paramBoolean, int paramInt, ResourceConfig.GetResourceRespV2 paramGetResourceRespV2)
@@ -410,7 +410,7 @@ public class PluginUpdater
     }
     if (paramInt != 128)
     {
-      paramGetResourceRespV2 = this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
+      paramGetResourceRespV2 = this.f;
       if (paramGetResourceRespV2 != null) {
         paramGetResourceRespV2.a(false);
       }
@@ -419,16 +419,34 @@ public class PluginUpdater
     if ((paramBoolean) && (paramGetResourceRespV2 != null))
     {
       a(paramGetResourceRespV2);
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       return;
     }
-    paramGetResourceRespV2 = this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
+    paramGetResourceRespV2 = this.f;
     if (paramGetResourceRespV2 != null) {
       paramGetResourceRespV2.a(false);
     }
   }
   
-  public boolean a(PluginInfo paramPluginInfo)
+  public PluginInfo b(String paramString)
+  {
+    PluginInfo localPluginInfo1 = (PluginInfo)this.e.get(paramString);
+    if ((!b(this.a)) || (localPluginInfo1 == null)) {
+      localPluginInfo1 = (PluginInfo)this.d.get(paramString);
+    }
+    PluginInfo localPluginInfo2 = localPluginInfo1;
+    if (localPluginInfo1 == null) {
+      localPluginInfo2 = BuiltinPluginManager.a(this.a).a(paramString);
+    }
+    return localPluginInfo2;
+  }
+  
+  public void b(boolean paramBoolean, int paramInt, ResourceConfig.GetResourceRespV2 paramGetResourceRespV2)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public boolean b(PluginInfo paramPluginInfo)
   {
     boolean bool2 = false;
     if (paramPluginInfo == null) {
@@ -471,24 +489,6 @@ public class PluginUpdater
     return bool1;
   }
   
-  public PluginInfo b(String paramString)
-  {
-    PluginInfo localPluginInfo1 = (PluginInfo)this.b.get(paramString);
-    if ((!a(this.jdField_a_of_type_AndroidContentContext)) || (localPluginInfo1 == null)) {
-      localPluginInfo1 = (PluginInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    PluginInfo localPluginInfo2 = localPluginInfo1;
-    if (localPluginInfo1 == null) {
-      localPluginInfo2 = BuiltinPluginManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
-    }
-    return localPluginInfo2;
-  }
-  
-  public void b(boolean paramBoolean, int paramInt, ResourceConfig.GetResourceRespV2 paramGetResourceRespV2)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what != 2) {
@@ -513,7 +513,7 @@ public class PluginUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginUpdater
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
 public class WSGridFeedInnerTitleController
   extends AbsWsUIGroup<stSimpleMetaFeed>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView g;
+  private stSimpleMetaFeed h;
   
   public WSGridFeedInnerTitleController(Context paramContext)
   {
@@ -20,49 +20,49 @@ public class WSGridFeedInnerTitleController
   
   protected void a()
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
-  }
-  
-  protected int b()
-  {
-    return 2131560431;
+    this.h = ((stSimpleMetaFeed)c());
   }
   
   protected void b()
   {
-    String str = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feed_desc;
+    String str = this.h.feed_desc;
     if (!TextUtils.isEmpty(str))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, d());
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      this.g.setVisibility(0);
+      this.g.setTextColor(l());
+      this.g.setTextSize(2, m());
+      this.g.setText(str);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.g.setVisibility(8);
+  }
+  
+  protected void f() {}
+  
+  protected int i()
+  {
+    return 2131626476;
+  }
+  
+  protected void j()
+  {
+    this.g = ((TextView)c(2131436091));
   }
   
   @ColorInt
-  protected int c()
+  protected int l()
   {
     return -1;
   }
   
-  protected void c() {}
-  
-  protected int d()
+  protected int m()
   {
     return 14;
-  }
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369121));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedInnerTitleController
  * JD-Core Version:    0.7.0.1
  */

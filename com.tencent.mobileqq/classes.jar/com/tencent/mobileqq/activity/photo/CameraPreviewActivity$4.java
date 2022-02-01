@@ -10,12 +10,12 @@ class CameraPreviewActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
+    this.a.d = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.CameraPreviewActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,15 @@ public class AECameraPrefsUtil
     List localList = a;
     Integer localInteger = Integer.valueOf(4);
     localList.add(new Pair("ShadowBackendSvc.GetCategoryMaterialMqStoryCamera", localInteger));
+    a.add(new Pair("ShadowBackendSvc.GetCategoryMaterialMqKuaishanCamera", localInteger));
     a.add(new Pair("ShadowBackendSvc.GetCategoryMaterialMqEmoCamera", localInteger));
     a.add(new Pair("ShadowBackendSvc.GetPlayShowCatMatTree", localInteger));
   }
   
   private AECameraPrefsUtil()
   {
-    Object localObject = AECameraPrefsUtil.MultiProcessPreferences.a("key_app_version", "");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!AppSetting.a().equals(localObject)))
+    Object localObject = AECameraPrefsUtil.MultiProcessPreferences.b("key_app_version", "");
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!AppSetting.b().equals(localObject)))
     {
       localObject = a.iterator();
       while (((Iterator)localObject).hasNext())
@@ -39,52 +40,13 @@ public class AECameraPrefsUtil
           AECameraPrefsUtil.DefaultPreferences.a((String)localPair.first);
         }
       }
-      AECameraPrefsUtil.MultiProcessPreferences.a("key_app_version", AppSetting.a());
+      AECameraPrefsUtil.MultiProcessPreferences.a("key_app_version", AppSetting.b());
     }
   }
   
   public static AECameraPrefsUtil a()
   {
     return AECameraPrefsUtil.UtilInstanceHolder.a();
-  }
-  
-  public float a(@NonNull String paramString, float paramFloat, int paramInt)
-  {
-    if (4 == paramInt) {
-      return AECameraPrefsUtil.MultiProcessPreferences.a(paramString, paramFloat);
-    }
-    return AECameraPrefsUtil.DefaultPreferences.a(paramString, paramFloat);
-  }
-  
-  public int a(@NonNull String paramString, int paramInt1, int paramInt2)
-  {
-    if (4 == paramInt2) {
-      return AECameraPrefsUtil.MultiProcessPreferences.a(paramString, paramInt1);
-    }
-    return AECameraPrefsUtil.DefaultPreferences.a(paramString, paramInt1);
-  }
-  
-  public long a(@NonNull String paramString, long paramLong, int paramInt)
-  {
-    if (4 == paramInt) {
-      return AECameraPrefsUtil.MultiProcessPreferences.a(paramString, paramLong);
-    }
-    return AECameraPrefsUtil.DefaultPreferences.a(paramString, paramLong);
-  }
-  
-  @NonNull
-  public SharedPreferences a()
-  {
-    return AECameraPrefsUtil.DefaultPreferences.a();
-  }
-  
-  @Nullable
-  public String a(@NonNull String paramString1, String paramString2, int paramInt)
-  {
-    if (4 == paramInt) {
-      return AECameraPrefsUtil.MultiProcessPreferences.a(paramString1, paramString2);
-    }
-    return AECameraPrefsUtil.DefaultPreferences.a(paramString1, paramString2);
   }
   
   public void a(@NonNull String paramString, float paramFloat, int paramInt)
@@ -147,25 +109,64 @@ public class AECameraPrefsUtil
     AECameraPrefsUtil.DefaultPreferences.a(paramString, paramBoolean);
   }
   
-  public boolean a(@NonNull String paramString, int paramInt)
+  public float b(@NonNull String paramString, float paramFloat, int paramInt)
   {
     if (4 == paramInt) {
-      return AECameraPrefsUtil.MultiProcessPreferences.a(paramString);
+      return AECameraPrefsUtil.MultiProcessPreferences.b(paramString, paramFloat);
     }
-    return AECameraPrefsUtil.DefaultPreferences.a(paramString);
+    return AECameraPrefsUtil.DefaultPreferences.b(paramString, paramFloat);
   }
   
-  public boolean a(@NonNull String paramString, boolean paramBoolean, int paramInt)
+  public int b(@NonNull String paramString, int paramInt1, int paramInt2)
+  {
+    if (4 == paramInt2) {
+      return AECameraPrefsUtil.MultiProcessPreferences.b(paramString, paramInt1);
+    }
+    return AECameraPrefsUtil.DefaultPreferences.b(paramString, paramInt1);
+  }
+  
+  public long b(@NonNull String paramString, long paramLong, int paramInt)
   {
     if (4 == paramInt) {
-      return AECameraPrefsUtil.MultiProcessPreferences.a(paramString, paramBoolean);
+      return AECameraPrefsUtil.MultiProcessPreferences.b(paramString, paramLong);
     }
-    return AECameraPrefsUtil.DefaultPreferences.a(paramString, paramBoolean);
+    return AECameraPrefsUtil.DefaultPreferences.b(paramString, paramLong);
+  }
+  
+  @NonNull
+  public SharedPreferences b()
+  {
+    return AECameraPrefsUtil.DefaultPreferences.a();
+  }
+  
+  @Nullable
+  public String b(@NonNull String paramString1, String paramString2, int paramInt)
+  {
+    if (4 == paramInt) {
+      return AECameraPrefsUtil.MultiProcessPreferences.b(paramString1, paramString2);
+    }
+    return AECameraPrefsUtil.DefaultPreferences.b(paramString1, paramString2);
+  }
+  
+  public boolean b(@NonNull String paramString, int paramInt)
+  {
+    if (4 == paramInt) {
+      return AECameraPrefsUtil.MultiProcessPreferences.b(paramString);
+    }
+    return AECameraPrefsUtil.DefaultPreferences.b(paramString);
+  }
+  
+  public boolean b(@NonNull String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (4 == paramInt) {
+      return AECameraPrefsUtil.MultiProcessPreferences.b(paramString, paramBoolean);
+    }
+    return AECameraPrefsUtil.DefaultPreferences.b(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.util.AECameraPrefsUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -43,8 +43,8 @@ public class c
       localObject = "N";
     }
     localHashMap.put("A85", localObject);
-    localHashMap.put("A20", localf.J());
-    localHashMap.put("A69", localf.K());
+    localHashMap.put("A20", localf.I());
+    localHashMap.put("A69", localf.J());
     return localHashMap;
   }
   

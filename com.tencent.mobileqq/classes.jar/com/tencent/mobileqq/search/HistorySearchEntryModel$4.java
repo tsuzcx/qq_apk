@@ -11,16 +11,16 @@ class HistorySearchEntryModel$4
   public void run()
   {
     Object localObject = this.this$0;
-    ((HistorySearchEntryModel)localObject).jdField_a_of_type_JavaUtilList = HistorySearchEntryModel.a((HistorySearchEntryModel)localObject);
-    localObject = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage();
+    ((HistorySearchEntryModel)localObject).e = HistorySearchEntryModel.b((HistorySearchEntryModel)localObject);
+    localObject = this.this$0.f.obtainMessage();
     ((Message)localObject).what = 1;
-    this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
-    this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessage((Message)localObject);
+    this.this$0.f.removeMessages(1);
+    this.this$0.f.sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.HistorySearchEntryModel.4
  * JD-Core Version:    0.7.0.1
  */

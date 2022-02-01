@@ -30,25 +30,25 @@ import java.util.PriorityQueue;
 
 public class CoreHelperProvider
 {
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private SparseArrayCompat<Long> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private final List<OnActivityResultCallback> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final SparseArrayCompat<SparseArrayCompat<ILifeCycleHelper>> jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat(23);
-  private final List<DialogGenerator> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private final SparseArrayCompat<IHelper> jdField_c_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private final List<OnAioAddShieldClickCallback> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private final List<OnHelperBusinessCallback> d = new ArrayList();
-  private final List<AIOOnTouchListener> e = new ArrayList();
-  private final List<Handler.Callback> f = new ArrayList();
-  private final List<OnFinishListener> g = new ArrayList();
-  private final List<View.OnTouchListener> h = new ArrayList();
-  private final List<View.OnClickListener> i = new ArrayList();
-  private final List<TopGestureTouchEventListener> j = new ArrayList();
-  private final List<AIOConfigurationListener> k = new ArrayList();
+  private final Activity a;
+  private SparseArrayCompat<Long> b = new SparseArrayCompat();
+  private final SparseArrayCompat<SparseArrayCompat<ILifeCycleHelper>> c = new SparseArrayCompat(23);
+  private final SparseArrayCompat<IHelper> d = new SparseArrayCompat();
+  private final List<OnActivityResultCallback> e = new ArrayList();
+  private final List<DialogGenerator> f = new ArrayList();
+  private final List<OnAioAddShieldClickCallback> g = new ArrayList();
+  private final List<OnHelperBusinessCallback> h = new ArrayList();
+  private final List<AIOOnTouchListener> i = new ArrayList();
+  private final List<Handler.Callback> j = new ArrayList();
+  private final List<OnFinishListener> k = new ArrayList();
+  private final List<View.OnTouchListener> l = new ArrayList();
+  private final List<View.OnClickListener> m = new ArrayList();
+  private final List<TopGestureTouchEventListener> n = new ArrayList();
+  private final List<AIOConfigurationListener> o = new ArrayList();
   
   public CoreHelperProvider(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   private void a(int paramInt1, long paramLong, int paramInt2, String paramString)
@@ -56,7 +56,7 @@ public class CoreHelperProvider
     if ((paramInt1 < 8) && (paramLong >= 20L))
     {
       paramString = new NewAIOTimeReporter.HelperReportData(paramLong, paramInt1, paramInt2, paramString);
-      NewAIOTimeReporter.a().a().offer(paramString);
+      NewAIOTimeReporter.b().a().offer(paramString);
     }
   }
   
@@ -65,12 +65,12 @@ public class CoreHelperProvider
   @IntRange(from=0L, to=2L)
   public int a()
   {
-    Object localObject = this.g.iterator();
+    Object localObject = this.k.iterator();
     while (((Iterator)localObject).hasNext())
     {
       OnFinishListener localOnFinishListener = (OnFinishListener)((Iterator)localObject).next();
-      int m = localOnFinishListener.a();
-      if (m != 0)
+      int i1 = localOnFinishListener.bM_();
+      if (i1 != 0)
       {
         if (QLog.isColorLevel())
         {
@@ -79,62 +79,20 @@ public class CoreHelperProvider
           ((StringBuilder)localObject).append(localOnFinishListener);
           QLog.i("HelperProvider", 2, ((StringBuilder)localObject).toString());
         }
-        return m;
+        return i1;
       }
     }
     return 0;
   }
   
-  public Dialog a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    Object localObject = null;
-    while (localIterator.hasNext())
-    {
-      Dialog localDialog = ((DialogGenerator)localIterator.next()).a(paramInt);
-      localObject = localDialog;
-      if (localDialog != null) {
-        localObject = localDialog;
-      }
-    }
-    return localObject;
-  }
-  
   public <T extends IHelper> T a(int paramInt)
   {
-    return (IHelper)this.jdField_c_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-  }
-  
-  public void a(int paramInt)
-  {
-    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-    if (localSparseArrayCompat == null) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int n = localSparseArrayCompat.size();
-    int m = 0;
-    while (m < n)
-    {
-      long l1 = SystemClock.uptimeMillis();
-      ILifeCycleHelper localILifeCycleHelper = (ILifeCycleHelper)localSparseArrayCompat.valueAt(m);
-      localILifeCycleHelper.onMoveToState(paramInt);
-      long l2 = SystemClock.uptimeMillis();
-      if (this.jdField_c_of_type_AndroidSupportV4UtilSparseArrayCompat.indexOfValue(localILifeCycleHelper) != -1) {
-        a(paramInt, l2 - l1, this.jdField_c_of_type_AndroidSupportV4UtilSparseArrayCompat.indexOfValue(localILifeCycleHelper), localILifeCycleHelper.getTag());
-      }
-      a(paramInt, localStringBuilder, localILifeCycleHelper, l2 - l1);
-      m += 1;
-    }
-    if (paramInt == 7) {
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.clear();
-    }
-    localStringBuilder.length();
+    return (IHelper)this.d.get(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext()) {
       ((OnAioAddShieldClickCallback)localIterator.next()).a(paramInt1, paramInt2);
     }
@@ -142,7 +100,7 @@ public class CoreHelperProvider
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext()) {
       ((OnActivityResultCallback)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -150,7 +108,7 @@ public class CoreHelperProvider
   
   public void a(int paramInt, Dialog paramDialog)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext()) {
       ((DialogGenerator)localIterator.next()).a(paramInt, paramDialog);
     }
@@ -158,33 +116,33 @@ public class CoreHelperProvider
   
   protected void a(int paramInt, IHelper paramIHelper)
   {
-    this.jdField_c_of_type_AndroidSupportV4UtilSparseArrayCompat.put(paramInt, paramIHelper);
+    this.d.put(paramInt, paramIHelper);
   }
   
   protected void a(int paramInt, ILifeCycleHelper paramILifeCycleHelper)
   {
-    this.jdField_c_of_type_AndroidSupportV4UtilSparseArrayCompat.put(paramInt, paramILifeCycleHelper);
+    this.d.put(paramInt, paramILifeCycleHelper);
     int[] arrayOfInt = paramILifeCycleHelper.interestedIn();
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      int i1 = arrayOfInt[m];
-      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i1);
+      int i3 = arrayOfInt[i1];
+      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.c.get(i3);
       SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
       if (localSparseArrayCompat2 == null)
       {
         localSparseArrayCompat1 = new SparseArrayCompat();
-        this.jdField_b_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i1, localSparseArrayCompat1);
+        this.c.put(i3, localSparseArrayCompat1);
       }
       localSparseArrayCompat1.put(paramInt, paramILifeCycleHelper);
-      m += 1;
+      i1 += 1;
     }
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    Iterator localIterator = this.d.iterator();
+    Iterator localIterator = this.h.iterator();
     while (localIterator.hasNext()) {
       ((OnHelperBusinessCallback)localIterator.next()).a(paramInt, paramVarArgs);
     }
@@ -192,7 +150,7 @@ public class CoreHelperProvider
   
   public void a(Configuration paramConfiguration)
   {
-    Iterator localIterator = this.k.iterator();
+    Iterator localIterator = this.o.iterator();
     while (localIterator.hasNext()) {
       ((AIOConfigurationListener)localIterator.next()).a(paramConfiguration);
     }
@@ -200,12 +158,12 @@ public class CoreHelperProvider
   
   public void a(Handler.Callback paramCallback)
   {
-    this.f.add(paramCallback);
+    this.j.add(paramCallback);
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
-    Iterator localIterator = this.j.iterator();
+    Iterator localIterator = this.n.iterator();
     while (localIterator.hasNext()) {
       ((TopGestureTouchEventListener)localIterator.next()).a(paramMotionEvent);
     }
@@ -213,12 +171,12 @@ public class CoreHelperProvider
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.i.add(paramOnClickListener);
+    this.m.add(paramOnClickListener);
   }
   
   public void a(View paramView)
   {
-    Iterator localIterator = this.i.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext()) {
       ((View.OnClickListener)localIterator.next()).onClick(paramView);
     }
@@ -226,68 +184,47 @@ public class CoreHelperProvider
   
   public void a(AIOConfigurationListener paramAIOConfigurationListener)
   {
-    this.k.add(paramAIOConfigurationListener);
+    this.o.add(paramAIOConfigurationListener);
   }
   
   public void a(AIOOnTouchListener paramAIOOnTouchListener)
   {
-    this.e.add(paramAIOOnTouchListener);
+    this.i.add(paramAIOOnTouchListener);
   }
   
   public void a(OnFinishListener paramOnFinishListener)
   {
-    this.g.add(paramOnFinishListener);
+    this.k.add(paramOnFinishListener);
   }
   
   public void a(TopGestureTouchEventListener paramTopGestureTouchEventListener)
   {
-    this.j.add(paramTopGestureTouchEventListener);
+    this.n.add(paramTopGestureTouchEventListener);
   }
   
   public void a(DialogGenerator paramDialogGenerator)
   {
-    this.jdField_b_of_type_JavaUtilList.add(paramDialogGenerator);
+    this.f.add(paramDialogGenerator);
   }
   
   public void a(OnActivityResultCallback paramOnActivityResultCallback)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramOnActivityResultCallback);
+    this.e.add(paramOnActivityResultCallback);
   }
   
   public void a(OnAioAddShieldClickCallback paramOnAioAddShieldClickCallback)
   {
-    this.jdField_c_of_type_JavaUtilList.add(paramOnAioAddShieldClickCallback);
+    this.g.add(paramOnAioAddShieldClickCallback);
   }
   
   public void a(OnHelperBusinessCallback paramOnHelperBusinessCallback)
   {
-    this.d.add(paramOnHelperBusinessCallback);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Object localObject = this.g.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      OnFinishListener localOnFinishListener = (OnFinishListener)((Iterator)localObject).next();
-      if (localOnFinishListener.a(paramInt))
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("onInterceptFinish by ");
-          ((StringBuilder)localObject).append(localOnFinishListener);
-          QLog.i("HelperProvider", 2, ((StringBuilder)localObject).toString());
-        }
-        return true;
-      }
-    }
-    return false;
+    this.h.add(paramOnHelperBusinessCallback);
   }
   
   public boolean a(Message paramMessage)
   {
-    Object localObject = this.f.iterator();
+    Object localObject = this.j.iterator();
     while (((Iterator)localObject).hasNext())
     {
       Handler.Callback localCallback = (Handler.Callback)((Iterator)localObject).next();
@@ -308,28 +245,9 @@ public class CoreHelperProvider
     return false;
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    Iterator localIterator = this.j.iterator();
-    while (localIterator.hasNext())
-    {
-      int m = ((TopGestureTouchEventListener)localIterator.next()).a(paramMotionEvent);
-      if (m != 0)
-      {
-        if (m == 1) {
-          return true;
-        }
-        if (m == 2) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-  
   public boolean a(BaseAIOContext paramBaseAIOContext, View paramView, MotionEvent paramMotionEvent)
   {
-    Iterator localIterator = this.e.iterator();
+    Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext())
     {
       AIOOnTouchListener localAIOOnTouchListener = (AIOOnTouchListener)localIterator.next();
@@ -352,7 +270,7 @@ public class CoreHelperProvider
   
   public boolean a(boolean paramBoolean)
   {
-    Object localObject = this.g.iterator();
+    Object localObject = this.k.iterator();
     while (((Iterator)localObject).hasNext())
     {
       OnFinishListener localOnFinishListener = (OnFinishListener)((Iterator)localObject).next();
@@ -373,15 +291,97 @@ public class CoreHelperProvider
   
   public void b(int paramInt)
   {
-    Iterator localIterator = this.g.iterator();
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.c.get(paramInt);
+    if (localSparseArrayCompat == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i2 = localSparseArrayCompat.size();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      long l1 = SystemClock.uptimeMillis();
+      ILifeCycleHelper localILifeCycleHelper = (ILifeCycleHelper)localSparseArrayCompat.valueAt(i1);
+      localILifeCycleHelper.onMoveToState(paramInt);
+      long l2 = SystemClock.uptimeMillis();
+      if (this.d.indexOfValue(localILifeCycleHelper) != -1) {
+        a(paramInt, l2 - l1, this.d.indexOfValue(localILifeCycleHelper), localILifeCycleHelper.getTag());
+      }
+      a(paramInt, localStringBuilder, localILifeCycleHelper, l2 - l1);
+      i1 += 1;
+    }
+    if (paramInt == 7) {
+      this.b.clear();
+    }
+    localStringBuilder.length();
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    Iterator localIterator = this.n.iterator();
+    while (localIterator.hasNext())
+    {
+      int i1 = ((TopGestureTouchEventListener)localIterator.next()).b(paramMotionEvent);
+      if (i1 != 0)
+      {
+        if (i1 == 1) {
+          return true;
+        }
+        if (i1 == 2) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  public Dialog c(int paramInt)
+  {
+    Iterator localIterator = this.f.iterator();
+    Object localObject = null;
+    while (localIterator.hasNext())
+    {
+      Dialog localDialog = ((DialogGenerator)localIterator.next()).a(paramInt);
+      localObject = localDialog;
+      if (localDialog != null) {
+        localObject = localDialog;
+      }
+    }
+    return localObject;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    Object localObject = this.k.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      OnFinishListener localOnFinishListener = (OnFinishListener)((Iterator)localObject).next();
+      if (localOnFinishListener.d(paramInt))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onInterceptFinish by ");
+          ((StringBuilder)localObject).append(localOnFinishListener);
+          QLog.i("HelperProvider", 2, ((StringBuilder)localObject).toString());
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void e(int paramInt)
+  {
+    Iterator localIterator = this.k.iterator();
     while (localIterator.hasNext()) {
-      ((OnFinishListener)localIterator.next()).d(paramInt);
+      ((OnFinishListener)localIterator.next()).e(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.helper.CoreHelperProvider
  * JD-Core Version:    0.7.0.1
  */

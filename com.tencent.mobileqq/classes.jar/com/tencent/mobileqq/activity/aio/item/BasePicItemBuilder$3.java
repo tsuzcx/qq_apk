@@ -14,18 +14,18 @@ class BasePicItemBuilder$3
 {
   BasePicItemBuilder$3(BasePicItemBuilder paramBasePicItemBuilder, MessageForPic paramMessageForPic, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i = 1;
     if (paramInt == 0)
     {
-      paramView = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a.getRuntimeService(ITransFileController.class)).findProcessor(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+      paramView = ((ITransFileController)this.c.d.getRuntimeService(ITransFileController.class)).findProcessor(this.a.frienduin, this.a.uniseq);
       if ((paramView != null) && ((paramView instanceof BaseTransProcessor)))
       {
         paramView = (BaseTransProcessor)paramView;
         if ((paramView.isRawPic()) && (paramView.isPause()))
         {
-          ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a.getRuntimeService(ITransFileController.class)).getBusHelper().resumeRawSend(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
+          ((ITransFileController)this.c.d.getRuntimeService(ITransFileController.class)).getBusHelper().resumeRawSend(this.a.frienduin, String.valueOf(this.a.uniseq));
           paramInt = i;
           break label122;
         }
@@ -33,15 +33,15 @@ class BasePicItemBuilder$3
       paramInt = 0;
       label122:
       if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        this.c.e(this.a);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BasePicItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

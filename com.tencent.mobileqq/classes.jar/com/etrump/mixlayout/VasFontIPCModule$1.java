@@ -21,13 +21,13 @@ class VasFontIPCModule$1
     if (new File(((StringBuilder)localObject).toString()).exists())
     {
       localObject = EIPCResult.createResult(0, null);
-      this.this$0.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject);
+      this.this$0.callbackResult(this.a, (EIPCResult)localObject);
       return;
     }
-    VasFontIPCModule.a(this.this$0).add(Integer.valueOf(this.jdField_a_of_type_Int));
-    if (VasFontIPCModule.a(this.this$0).compareAndSet(false, true))
+    VasFontIPCModule.a(this.this$0).add(Integer.valueOf(this.a));
+    if (VasFontIPCModule.b(this.this$0).compareAndSet(false, true))
     {
-      localObject = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+      localObject = (IVasQuickUpdateService)this.b.getRuntimeService(IVasQuickUpdateService.class, "");
       if (localObject != null) {
         ((IVasQuickUpdateService)localObject).downloadItem(1004L, "libVipFont_8417", "VasFontIPCModule");
       }

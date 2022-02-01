@@ -18,19 +18,19 @@ public class QlinkPluginProxyService
     localIntent.putExtra("useSkinEngine", 1);
     localIntent.putExtra("userQqResources", 2);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = QlinkPluginProxyActivity.a();
-    localPluginParams.e = PluginInfo.c;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams.f = "com.tencent.qlink.service.QlinkService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    localPluginParams.d = QlinkPluginProxyActivity.a();
+    localPluginParams.g = PluginInfo.c;
+    localPluginParams.c = paramAppRuntime.getAccount();
+    localPluginParams.h = "com.tencent.qlink.service.QlinkService";
+    localPluginParams.j = localIntent;
+    localPluginParams.o = paramServiceConnection;
     QLog.d("QLinkLog", 4, "Bind Qlink Service");
     IPluginManager.c(paramAppRuntime.getApplication(), localPluginParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

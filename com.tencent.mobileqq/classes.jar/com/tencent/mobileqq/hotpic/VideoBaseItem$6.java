@@ -21,7 +21,7 @@ class VideoBaseItem$6
       }
       if (VideoBaseItem.a(this.a) != null)
       {
-        VideoBaseItem.a(this.a).a(this.a.b, 1);
+        VideoBaseItem.a(this.a).a(this.a.c, 1);
         return false;
       }
     }
@@ -31,16 +31,16 @@ class VideoBaseItem$6
         QLog.d("VideoBaseItem", 2, "video start buffering !");
       }
       if (VideoBaseItem.a(this.a) != null) {
-        VideoBaseItem.a(this.a).a(this.a.b, 0);
+        VideoBaseItem.a(this.a).a(this.a.c, 0);
       }
-      this.a.c = 6;
+      this.a.g = 6;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.6
  * JD-Core Version:    0.7.0.1
  */

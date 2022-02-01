@@ -16,32 +16,32 @@ class EditUniqueTitleActivity$2
   
   public void afterTextChanged(Editable paramEditable)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    String str = this.a.h.getText().toString();
     if (str.equals("")) {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.a.i.setVisibility(8);
     } else {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      this.a.i.setVisibility(0);
     }
     int i = str.length();
     ThemeUtil.getCurrentThemeInfo().getString("themeId");
     if (i > 6)
     {
       EditUniqueTitleActivity.a(this.a, false);
-      if (!this.a.jdField_a_of_type_Boolean) {
+      if (!this.a.m) {
         this.a.rightViewText.setAlpha(0.5F);
       }
-      paramEditable = this.a.getResources().getColorStateList(2131167200);
+      paramEditable = this.a.getResources().getColorStateList(2131168185);
     }
     else
     {
       EditUniqueTitleActivity.b(this.a, true);
-      if (!this.a.jdField_a_of_type_Boolean) {
+      if (!this.a.m) {
         this.a.rightViewText.setAlpha(1.0F);
       }
-      paramEditable = this.a.getResources().getColorStateList(2131167144);
+      paramEditable = this.a.getResources().getColorStateList(2131168125);
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetTextView;
+    this.a.j.setTextColor(paramEditable);
+    paramEditable = this.a.j;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str.length());
     localStringBuilder.append("/");
@@ -52,7 +52,7 @@ class EditUniqueTitleActivity$2
     if (j < 0) {
       i = 0;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131696143), new Object[] { Integer.valueOf(i) }));
+    this.a.j.setContentDescription(String.format(this.a.getString(2131893908), new Object[] { Integer.valueOf(i) }));
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -61,7 +61,7 @@ class EditUniqueTitleActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.EditUniqueTitleActivity.2
  * JD-Core Version:    0.7.0.1
  */

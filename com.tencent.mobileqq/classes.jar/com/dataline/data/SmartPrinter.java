@@ -31,22 +31,22 @@ public class SmartPrinter
       if (paramList != null)
       {
         bool1 = bool2;
-        if (this.a != 0L)
+        if (this.c != 0L)
         {
           paramString = new ArrayList();
           paramList = paramList.iterator();
           while (paramList.hasNext()) {
-            paramString.add(((FileInfo)paramList.next()).c());
+            paramString.add(((FileInfo)paramList.next()).d());
           }
           paramQQAppInterface = (DeviceMsgHandle)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
           paramList = new Bundle();
           bool1 = true;
           paramList.putInt("copies", 1);
           paramList.putInt("duplexMode", 1);
-          paramQQAppInterface = paramQQAppInterface.a();
+          paramQQAppInterface = paramQQAppInterface.b();
           String str = DeviceMsgHandle.c;
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.a);
+          localStringBuilder.append(this.c);
           localStringBuilder.append("");
           paramQQAppInterface.a(str, localStringBuilder.toString(), paramString, paramList);
         }

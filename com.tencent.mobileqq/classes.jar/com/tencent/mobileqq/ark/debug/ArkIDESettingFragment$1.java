@@ -18,8 +18,8 @@ class ArkIDESettingFragment$1
     if (paramBoolean)
     {
       AboutActivity.a(5);
-      if (!this.a.b().equals("close")) {
-        this.a.b();
+      if (!this.a.e().equals("close")) {
+        this.a.f();
       }
       ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
       ((IArkEnvironment)QRoute.api(IArkEnvironment.class)).setScriptLeakCheckEnabled(true);
@@ -27,7 +27,7 @@ class ArkIDESettingFragment$1
     else
     {
       AboutActivity.a(0);
-      this.a.c();
+      this.a.g();
       ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
       ((IArkEnvironment)QRoute.api(IArkEnvironment.class)).setScriptLeakCheckEnabled(false);
     }
@@ -36,7 +36,7 @@ class ArkIDESettingFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

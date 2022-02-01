@@ -12,30 +12,28 @@ import qqcircle.QQCircleSwitch.SetMultiCircleSwitchRsp;
 class LebaQCircleListMgrItem$1
   implements VSDispatchObserver.onVSRspCallBack<QQCircleSwitch.SetMultiCircleSwitchRsp>
 {
-  LebaQCircleListMgrItem$1(LebaQCircleListMgrItem paramLebaQCircleListMgrItem, boolean paramBoolean, String paramString) {}
-  
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSwitch.SetMultiCircleSwitchRsp paramSetMultiCircleSwitchRsp)
   {
     if ((paramBoolean) && (paramLong == 0L))
     {
       paramBaseRequest = new StringBuilder();
       paramBaseRequest.append("list setCircleSwitch success isChecked");
-      paramBaseRequest.append(this.jdField_a_of_type_Boolean);
+      paramBaseRequest.append(this.a);
       QLog.w("LebaQCircleListMgrItem", 1, paramBaseRequest.toString());
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.a)
       {
-        QCircleUtils.a().clearPedPoint();
+        QCircleUtils.b().clearPedPoint();
         QLog.w("LebaQCircleListMgrItem", 1, "list setCircleSwitch success clearPedPoint");
       }
     }
     else
     {
-      paramBoolean = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+      paramBoolean = TextUtils.isEmpty(this.b);
       paramString = "0";
       if (!paramBoolean)
       {
         paramSetMultiCircleSwitchRsp = QzoneConfig.getInstance();
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.a) {
           paramBaseRequest = "0";
         } else {
           paramBaseRequest = "1";
@@ -43,7 +41,7 @@ class LebaQCircleListMgrItem$1
         paramSetMultiCircleSwitchRsp.updateOneConfig("qqcircle", "qqcircle_entrance_enable_on_children_mode", paramBaseRequest);
       }
       paramSetMultiCircleSwitchRsp = QzoneConfig.getInstance();
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         paramBaseRequest = paramString;
       } else {
         paramBaseRequest = "1";
@@ -58,7 +56,7 @@ class LebaQCircleListMgrItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mgr.LebaQCircleListMgrItem.1
  * JD-Core Version:    0.7.0.1
  */

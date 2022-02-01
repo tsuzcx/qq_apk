@@ -6,6 +6,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$DestInfo
   public int dest_type = 0;
   public int dest_url_display_type = 0;
   public String landing_page;
+  public String native_link;
   public String pop_sheet;
   public String universal_link;
 }

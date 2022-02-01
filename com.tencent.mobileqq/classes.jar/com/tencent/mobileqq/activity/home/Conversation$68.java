@@ -1,23 +1,25 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.activity.ConversationTitleBtnCtrl;
-import com.tencent.mobileqq.qqexpand.network.ExpandObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 class Conversation$68
-  extends ExpandObserver
+  implements Runnable
 {
   Conversation$68(Conversation paramConversation) {}
   
-  protected void b(boolean paramBoolean)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    if ((Conversation.y(this.this$0) != null) && (Conversation.y(this.this$0).isShowing()))
+    {
+      Conversation.y(this.this$0).dismiss();
+      QQToast.makeText(this.this$0.P(), 2, this.this$0.e(2131916886), 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.68
  * JD-Core Version:    0.7.0.1
  */

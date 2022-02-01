@@ -13,20 +13,20 @@ class ReadInJoyProteusFamilyListViewGroup$1
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.a.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    this.a.l.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.a.a(paramAbsListView, paramInt);
-    if ((RIJQQAppInterfaceUtil.a()) && (paramInt != 0)) {
-      DropFrameMonitor.a().a("proteus_family_feeds");
+    this.a.l.a(paramAbsListView, paramInt);
+    if ((RIJQQAppInterfaceUtil.g()) && (paramInt != 0)) {
+      DropFrameMonitor.b().a("proteus_family_feeds");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ReadInJoyProteusFamilyListViewGroup.1
  * JD-Core Version:    0.7.0.1
  */

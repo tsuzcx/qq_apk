@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -19,16 +18,21 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow.OnDismissListener;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.dimen;
+import androidx.appcompat.R.id;
+import androidx.appcompat.R.layout;
 import androidx.appcompat.R.styleable;
 import androidx.core.view.ActionProvider;
+import androidx.core.view.ViewCompat;
 
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class ActivityChooserView
   extends ViewGroup
   implements ActivityChooserModel.ActivityChooserModelClient
 {
-  private static final String LOG_TAG = "ActivityChooserView";
   private final View mActivityChooserContent;
   private final Drawable mActivityChooserContentBackground;
   final ActivityChooserView.ActivityChooserViewAdapter mAdapter;
@@ -48,45 +52,43 @@ public class ActivityChooserView
   private final ViewTreeObserver.OnGlobalLayoutListener mOnGlobalLayoutListener = new ActivityChooserView.2(this);
   ActionProvider mProvider;
   
-  public ActivityChooserView(Context paramContext)
+  public ActivityChooserView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet)
+  public ActivityChooserView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
   }
   
-  public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public ActivityChooserView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ActivityChooserView, paramInt, 0);
-    if (Build.VERSION.SDK_INT >= 29) {
-      saveAttributeDataForStyleable(paramContext, R.styleable.ActivityChooserView, paramAttributeSet, (TypedArray)localObject, paramInt, 0);
-    }
+    ViewCompat.saveAttributeDataForStyleable(this, paramContext, R.styleable.ActivityChooserView, paramAttributeSet, (TypedArray)localObject, paramInt, 0);
     this.mInitialActivityCount = ((TypedArray)localObject).getInt(R.styleable.ActivityChooserView_initialActivityCount, 4);
     paramAttributeSet = ((TypedArray)localObject).getDrawable(R.styleable.ActivityChooserView_expandActivityOverflowButtonDrawable);
     ((TypedArray)localObject).recycle();
-    LayoutInflater.from(getContext()).inflate(2131558406, this, true);
+    LayoutInflater.from(getContext()).inflate(R.layout.abc_activity_chooser_view, this, true);
     this.mCallbacks = new ActivityChooserView.Callbacks(this);
-    this.mActivityChooserContent = findViewById(2131362026);
+    this.mActivityChooserContent = findViewById(R.id.activity_chooser_view_content);
     this.mActivityChooserContentBackground = this.mActivityChooserContent.getBackground();
-    this.mDefaultActivityButton = ((FrameLayout)findViewById(2131365461));
+    this.mDefaultActivityButton = ((FrameLayout)findViewById(R.id.default_activity_button));
     this.mDefaultActivityButton.setOnClickListener(this.mCallbacks);
     this.mDefaultActivityButton.setOnLongClickListener(this.mCallbacks);
-    this.mDefaultActivityButtonImage = ((ImageView)this.mDefaultActivityButton.findViewById(2131368461));
-    localObject = (FrameLayout)findViewById(2131366352);
+    this.mDefaultActivityButtonImage = ((ImageView)this.mDefaultActivityButton.findViewById(R.id.image));
+    localObject = (FrameLayout)findViewById(R.id.expand_activities_button);
     ((FrameLayout)localObject).setOnClickListener(this.mCallbacks);
     ((FrameLayout)localObject).setAccessibilityDelegate(new ActivityChooserView.3(this));
     ((FrameLayout)localObject).setOnTouchListener(new ActivityChooserView.4(this, (View)localObject));
     this.mExpandActivityOverflowButton = ((FrameLayout)localObject);
-    this.mExpandActivityOverflowButtonImage = ((ImageView)((FrameLayout)localObject).findViewById(2131368461));
+    this.mExpandActivityOverflowButtonImage = ((ImageView)((FrameLayout)localObject).findViewById(R.id.image));
     this.mExpandActivityOverflowButtonImage.setImageDrawable(paramAttributeSet);
     this.mAdapter = new ActivityChooserView.ActivityChooserViewAdapter(this);
     this.mAdapter.registerDataSetObserver(new ActivityChooserView.5(this));
     paramContext = paramContext.getResources();
-    this.mListPopupMaxWidth = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(2131296279));
+    this.mListPopupMaxWidth = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(R.dimen.abc_config_prefDialogWidth));
   }
   
   public boolean dismissPopup()

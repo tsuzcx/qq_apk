@@ -7,8 +7,8 @@ class AVActivity$MyVideoObserver$2
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.l(-1052L);
+    if (this.a.b.K != null) {
+      this.a.b.K.n(-1052L);
     }
   }
 }

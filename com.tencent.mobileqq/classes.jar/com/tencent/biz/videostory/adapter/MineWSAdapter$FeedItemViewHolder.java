@@ -8,19 +8,19 @@ import com.tencent.biz.qqstory.widget.StoryCoverView;
 class MineWSAdapter$FeedItemViewHolder
   extends RecyclerView.ViewHolder
 {
-  final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  final StoryCoverView jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView;
+  final ImageView a;
+  final StoryCoverView b;
   
   MineWSAdapter$FeedItemViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368365));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131365305));
+    this.a = ((ImageView)paramView.findViewById(2131435244));
+    this.b = ((StoryCoverView)paramView.findViewById(2131431486));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.adapter.MineWSAdapter.FeedItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

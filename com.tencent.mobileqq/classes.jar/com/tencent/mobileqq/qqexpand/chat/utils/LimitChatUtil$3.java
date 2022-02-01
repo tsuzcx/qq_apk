@@ -14,21 +14,23 @@ final class LimitChatUtil$3
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject = this.a;
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      LimitChatUtil.a((QQAppInterface)localObject, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
-      if (this.jdField_a_of_type_Int == 1045)
+      LimitChatUtil.a((QQAppInterface)localObject, this.b, this.c, this.d, this.e);
+      if (this.d == 1045)
       {
-        ExpandFriendData.setMatchSrc((BaseQQAppInterface)localObject, this.jdField_a_of_type_JavaLangString, 6);
+        ExpandFriendData.setMatchSrc((BaseQQAppInterface)localObject, this.b, 6);
         return;
       }
       try
       {
-        int i = new JSONObject((String)this.jdField_a_of_type_JavaLangObject).getJSONObject("infos").getJSONObject("match_src").getInt("id");
-        ExpandFriendData.setMatchSrc((BaseQQAppInterface)localObject, this.jdField_a_of_type_JavaLangString, i);
-        LimitChatUtil.a((QQAppInterface)localObject, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, i);
+        int i = new JSONObject((String)this.e).getJSONObject("infos").getJSONObject("match_src").getInt("id");
+        if (i != 0) {
+          ExpandFriendData.setMatchSrc((BaseQQAppInterface)localObject, this.b, i);
+        }
+        LimitChatUtil.b((QQAppInterface)localObject, this.b, this.d, i);
         return;
       }
       catch (Exception localException)
@@ -45,7 +47,7 @@ final class LimitChatUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.utils.LimitChatUtil.3
  * JD-Core Version:    0.7.0.1
  */

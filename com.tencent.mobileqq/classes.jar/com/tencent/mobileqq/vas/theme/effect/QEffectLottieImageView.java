@@ -25,11 +25,11 @@ public class QEffectLottieImageView
   extends DiniFlyAnimationView
   implements IQEffect<QEffectData, Drawable>, GravitySensor.GravitySensorListener
 {
-  private OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new QEffectLottieImageView.1(this);
-  private QEffectData jdField_a_of_type_ComTencentQqEffectEngineQEffectData;
   protected SensorParams a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private QEffectData b;
+  private boolean c = false;
+  private boolean d = false;
+  private OnCompositionLoadedListener e = new QEffectLottieImageView.1(this);
   
   public QEffectLottieImageView(Context paramContext)
   {
@@ -60,14 +60,14 @@ public class QEffectLottieImageView
   
   public boolean isGravityEnable()
   {
-    QEffectData localQEffectData = this.jdField_a_of_type_ComTencentQqEffectEngineQEffectData;
+    QEffectData localQEffectData = this.b;
     return (localQEffectData != null) && (localQEffectData.gravity);
   }
   
   public void load(Context paramContext, QEffectView paramQEffectView, IQEffectLoad paramIQEffectLoad, QEffectData paramQEffectData)
   {
-    this.jdField_a_of_type_ComTencentQqEffectEngineQEffectData = paramQEffectData;
-    this.jdField_a_of_type_ComTencentQqEffectSensorSensorParams = new SensorParams(getContext(), this.jdField_a_of_type_ComTencentQqEffectEngineQEffectData);
+    this.b = paramQEffectData;
+    this.a = new SensorParams(getContext(), this.b);
     if ((paramQEffectData.resType == 3) && (paramQEffectData.resId > 0)) {
       return;
     }
@@ -83,7 +83,7 @@ public class QEffectLottieImageView
         paramIQEffectLoad.append(paramQEffectData.effectId);
         paramQEffectView.putString("key", paramIQEffectLoad.toString());
         paramQEffectView.putString("path", paramQEffectData.images);
-        LottieComposition.Factory.fromInputStreamWithCacheBitmap(getContext(), paramContext, getLottieDrawable(), this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener, paramQEffectView, GlobalImageCache.a);
+        LottieComposition.Factory.fromInputStreamWithCacheBitmap(getContext(), paramContext, getLottieDrawable(), this.e, paramQEffectView, GlobalImageCache.a);
       }
       catch (FileNotFoundException paramContext)
       {
@@ -100,7 +100,7 @@ public class QEffectLottieImageView
   
   public void play()
   {
-    this.b = false;
+    this.d = false;
   }
   
   public void resume()
@@ -110,21 +110,21 @@ public class QEffectLottieImageView
   
   public void stop()
   {
-    if ((QLog.isColorLevel()) && (!this.b)) {
+    if ((QLog.isColorLevel()) && (!this.d)) {
       QLog.i("QEffectLottieImageView", 1, "lottie stop");
     }
-    this.b = true;
+    this.d = true;
     endAnimation();
   }
   
   public void updateGravityData(float[] paramArrayOfFloat, boolean paramBoolean)
   {
-    QEffectUtils.updateGravityData(this, paramArrayOfFloat, this.jdField_a_of_type_ComTencentQqEffectSensorSensorParams, paramBoolean);
+    QEffectUtils.updateGravityData(this, paramArrayOfFloat, this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.effect.QEffectLottieImageView
  * JD-Core Version:    0.7.0.1
  */

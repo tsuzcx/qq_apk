@@ -26,31 +26,36 @@ public class PhotoListCustomizationQcircle
     super(paramAbstractPhotoListActivity);
   }
   
-  public void b(View paramView, int paramInt)
+  public Holder c(@NonNull Holder paramHolder, int paramInt)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.a(paramInt);
-    if (paramView.fileSize > this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.videoSizeLimit)
+    return super.c(paramHolder, paramInt);
+  }
+  
+  public void c(View paramView, int paramInt)
+  {
+    paramView = this.h.t.a(paramInt);
+    if (paramView.fileSize > this.e.filter.videoSizeLimit)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity;
+      paramView = this.c;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("请上传不超过");
-      ((StringBuilder)localObject1).append((float)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.videoSizeLimit / 1024.0F / 1024.0F / 1024.0F);
+      ((StringBuilder)localObject1).append((float)this.e.filter.videoSizeLimit / 1024.0F / 1024.0F / 1024.0F);
       ((StringBuilder)localObject1).append("G的视频");
-      QQToast.a(paramView, ((StringBuilder)localObject1).toString(), 0).a();
+      QQToast.makeText(paramView, ((StringBuilder)localObject1).toString(), 0).show();
       return;
     }
-    if (paramView.mDuration > this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.videoMaxDuration + 1000L)
+    if (paramView.mDuration > this.e.filter.videoMaxDuration + 1000L)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity;
+      paramView = this.c;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("请上传不超过");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.videoMaxDuration / 60L / 1000L);
+      ((StringBuilder)localObject1).append(this.e.filter.videoMaxDuration / 60L / 1000L);
       ((StringBuilder)localObject1).append("分钟的视频");
-      QQToast.a(paramView, ((StringBuilder)localObject1).toString(), 0).a();
+      QQToast.makeText(paramView, ((StringBuilder)localObject1).toString(), 0).show();
       return;
     }
     Object localObject1 = new Intent();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getIntent();
+    Object localObject2 = this.c.getIntent();
     if ((localObject2 != null) && (((Intent)localObject2).getExtras() != null)) {
       ((Intent)localObject1).putExtras(((Intent)localObject2).getExtras());
     }
@@ -61,18 +66,13 @@ public class PhotoListCustomizationQcircle
     ((Intent)localObject1).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", (ArrayList)localObject2);
     ((Intent)localObject1).putExtra("PeakConstants.selectedMediaInfoHashMap", localHashMap);
     ((Intent)localObject1).addFlags(268435456);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.setResult(-1, (Intent)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.finish();
-  }
-  
-  public Holder c(@NonNull Holder paramHolder, int paramInt)
-  {
-    return super.c(paramHolder, paramInt);
+    this.c.setResult(-1, (Intent)localObject1);
+    this.c.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationQcircle
  * JD-Core Version:    0.7.0.1
  */

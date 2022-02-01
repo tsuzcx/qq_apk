@@ -10,19 +10,19 @@ public abstract interface IAudioMediaServiceAdapter
 {
   public abstract ChannelInterface a();
   
-  public abstract AppGeneralInfoService a();
-  
-  public abstract HttpInterface a();
-  
-  public abstract LogInterface a();
-  
-  public abstract LoginServiceInterface a();
-  
   public abstract <T> void a(Class<T> paramClass, String paramString, ClassLoaderCallback paramClassLoaderCallback);
+  
+  public abstract LoginServiceInterface b();
+  
+  public abstract LogInterface c();
+  
+  public abstract AppGeneralInfoService d();
+  
+  public abstract HttpInterface e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.interfaces.IAudioMediaServiceAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,187 +9,187 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class UserInfo
   extends MessageNano
 {
-  private static volatile UserInfo[] a;
-  public int a;
+  private static volatile UserInfo[] i;
   public long a;
-  public String a;
-  public long b;
   public String b;
-  public String c;
+  public int c;
   public String d;
-  public String e;
+  public long e;
+  public String f;
+  public String g;
+  public String h;
   
   public UserInfo()
   {
-    a();
+    b();
   }
   
   public static UserInfo[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo == null) {
+    if (i == null) {
       synchronized (InternalNano.LAZY_INIT_LOCK)
       {
-        if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo == null) {
-          jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo = new UserInfo[0];
+        if (i == null) {
+          i = new UserInfo[0];
         }
       }
     }
-    return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
-  }
-  
-  public UserInfo a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
-    this.c = "";
-    this.d = "";
-    this.e = "";
-    this.cachedSize = -1;
-    return this;
+    return i;
   }
   
   public UserInfo a(CodedInputByteBufferNano paramCodedInputByteBufferNano)
   {
     for (;;)
     {
-      int i = paramCodedInputByteBufferNano.readTag();
-      if (i == 0) {
+      int j = paramCodedInputByteBufferNano.readTag();
+      if (j == 0) {
         break;
       }
-      if (i != 8)
+      if (j != 8)
       {
-        if (i != 18)
+        if (j != 18)
         {
-          if (i != 40)
+          if (j != 40)
           {
-            if (i != 50)
+            if (j != 50)
             {
-              if (i != 56)
+              if (j != 56)
               {
-                if (i != 66)
+                if (j != 66)
                 {
-                  if (i != 74)
+                  if (j != 74)
                   {
-                    if (i != 98)
+                    if (j != 98)
                     {
-                      if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                      if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, j)) {
                         return this;
                       }
                     }
                     else {
-                      this.e = paramCodedInputByteBufferNano.readString();
+                      this.h = paramCodedInputByteBufferNano.readString();
                     }
                   }
                   else {
-                    this.d = paramCodedInputByteBufferNano.readString();
+                    this.g = paramCodedInputByteBufferNano.readString();
                   }
                 }
                 else {
-                  this.c = paramCodedInputByteBufferNano.readString();
+                  this.f = paramCodedInputByteBufferNano.readString();
                 }
               }
               else {
-                this.jdField_b_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+                this.e = paramCodedInputByteBufferNano.readUInt64();
               }
             }
             else {
-              this.jdField_b_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+              this.d = paramCodedInputByteBufferNano.readString();
             }
           }
           else {
-            this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+            this.c = paramCodedInputByteBufferNano.readUInt32();
           }
         }
         else {
-          this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+          this.b = paramCodedInputByteBufferNano.readString();
         }
       }
       else {
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+        this.a = paramCodedInputByteBufferNano.readUInt64();
       }
     }
     return this;
   }
   
+  public UserInfo b()
+  {
+    this.a = 0L;
+    this.b = "";
+    this.c = 0;
+    this.d = "";
+    this.e = 0L;
+    this.f = "";
+    this.g = "";
+    this.h = "";
+    this.cachedSize = -1;
+    return this;
+  }
+  
   protected int computeSerializedSize()
   {
-    int i = super.computeSerializedSize();
-    long l = this.jdField_a_of_type_Long;
-    int j = i;
+    int j = super.computeSerializedSize();
+    long l = this.a;
+    int k = j;
     if (l != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(1, l);
+      k = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
-    i = j;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
+    j = k;
+    if (!this.b.equals("")) {
+      j = k + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
-    int k = this.jdField_a_of_type_Int;
-    j = i;
-    if (k != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(5, k);
+    int m = this.c;
+    k = j;
+    if (m != 0) {
+      k = j + CodedOutputByteBufferNano.computeUInt32Size(5, m);
     }
-    i = j;
-    if (!this.jdField_b_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(6, this.jdField_b_of_type_JavaLangString);
-    }
-    l = this.jdField_b_of_type_Long;
-    j = i;
-    if (l != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(7, l);
-    }
-    i = j;
-    if (!this.c.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(8, this.c);
-    }
-    j = i;
+    j = k;
     if (!this.d.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(9, this.d);
+      j = k + CodedOutputByteBufferNano.computeStringSize(6, this.d);
     }
-    i = j;
-    if (!this.e.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(12, this.e);
+    l = this.e;
+    k = j;
+    if (l != 0L) {
+      k = j + CodedOutputByteBufferNano.computeUInt64Size(7, l);
     }
-    return i;
+    j = k;
+    if (!this.f.equals("")) {
+      j = k + CodedOutputByteBufferNano.computeStringSize(8, this.f);
+    }
+    k = j;
+    if (!this.g.equals("")) {
+      k = j + CodedOutputByteBufferNano.computeStringSize(9, this.g);
+    }
+    j = k;
+    if (!this.h.equals("")) {
+      j = k + CodedOutputByteBufferNano.computeStringSize(12, this.h);
+    }
+    return j;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(2, this.b);
     }
-    int i = this.jdField_a_of_type_Int;
-    if (i != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(5, i);
+    int j = this.c;
+    if (j != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(5, j);
     }
-    if (!this.jdField_b_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(6, this.jdField_b_of_type_JavaLangString);
+    if (!this.d.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(6, this.d);
     }
-    l = this.jdField_b_of_type_Long;
+    l = this.e;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(7, l);
     }
-    if (!this.c.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(8, this.c);
+    if (!this.f.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(8, this.f);
     }
-    if (!this.d.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(9, this.d);
+    if (!this.g.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(9, this.g);
     }
-    if (!this.e.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(12, this.e);
+    if (!this.h.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(12, this.h);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.UserInfo
  * JD-Core Version:    0.7.0.1
  */

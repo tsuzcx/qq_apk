@@ -15,16 +15,16 @@ class AEPhotoListLogicBase$14
   {
     AEQLog.b("AEPhotoListLogicBase", "batchCompressDialog cancel clicked");
     AEPhotoListLogicBase.a(this.a, true);
-    this.a.h();
-    if (AEPhotoListLogicBase.a(this.a) != null) {
-      AEPhotoListLogicBase.a(this.a).countDown();
+    this.a.i();
+    if (AEPhotoListLogicBase.g(this.a) != null) {
+      AEPhotoListLogicBase.g(this.a).countDown();
     }
-    AEPhotoListLogicBase.a(this.a).cancel();
+    AEPhotoListLogicBase.h(this.a).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.14
  * JD-Core Version:    0.7.0.1
  */

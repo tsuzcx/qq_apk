@@ -11,14 +11,14 @@ import android.widget.ListView;
 public class DataReportListView
   extends ListView
 {
-  private int jdField_a_of_type_Int;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private WindowManager a;
+  private int b;
   
   public DataReportListView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getHeight() / 3);
+    this.a = ((WindowManager)paramContext.getSystemService("window"));
+    this.b = (this.a.getDefaultDisplay().getHeight() / 3);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -26,7 +26,7 @@ public class DataReportListView
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = getMeasuredHeight();
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (paramInt2 > i) {
       setMeasuredDimension(paramInt1, i);
     }
@@ -34,7 +34,7 @@ public class DataReportListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.DataReportListView
  * JD-Core Version:    0.7.0.1
  */

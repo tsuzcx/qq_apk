@@ -10,12 +10,12 @@ class ReadInJoyDeliverUGCActivity$13
   public void run()
   {
     ReadInJoyDeliverUGCActivity localReadInJoyDeliverUGCActivity = this.this$0;
-    localReadInJoyDeliverUGCActivity.jdField_a_of_type_Long = localReadInJoyDeliverUGCActivity.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcReadInJoyDraftboxModule.a(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_ComTencentMobileqqKandianRepoUgcReadInJoyDraftboxItem$ReadInJoyDraftboxContent);
+    localReadInJoyDeliverUGCActivity.W = localReadInJoyDeliverUGCActivity.V.a(this.this$0.W, this.this$0.X);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.13
  * JD-Core Version:    0.7.0.1
  */

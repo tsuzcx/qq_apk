@@ -4,13 +4,13 @@ import com.tencent.image.URLImageView;
 
 class VipPhotoViewForSimple$PhotoAdapter$ViewHolder
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  URLImageView a;
   
   VipPhotoViewForSimple$PhotoAdapter$ViewHolder(VipPhotoViewForSimple.PhotoAdapter paramPhotoAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipPhotoViewForSimple.PhotoAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

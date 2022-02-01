@@ -14,31 +14,31 @@ class BaseMessageManagerForTroopAndDisc$3
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("doMsgRevokeRequest ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getLogColorContent());
+      localStringBuilder.append(this.a.getLogColorContent());
       localStringBuilder.append(" holdFlag: ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.b);
       QLog.d("Q.msg.BaseMessageManager", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      BaseMessageManager.a.a(this.this$0.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L);
+      BaseMessageManager.e.a(this.this$0.a, this.a, 15000L);
       return;
     }
-    this.this$0.h(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.this$0.l(this.a);
     this.this$0.a();
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if (this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
-      BaseMessageManager.a.a(this.this$0.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L - (l1 - l2));
+    long l2 = this.c;
+    if (this.this$0.m(this.a)) {
+      BaseMessageManager.e.a(this.this$0.a, this.a, 15000L - (l1 - l2));
     } else {
-      BaseMessageManager.a.a(this.this$0.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, BaseMessageProcessor.b, BaseMessageProcessor.k);
+      BaseMessageManager.e.a(this.this$0.a, this.a.frienduin, this.a.istroop, BaseMessageProcessor.b, BaseMessageProcessor.k);
     }
-    this.this$0.h(null);
+    this.this$0.l(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc.3
  * JD-Core Version:    0.7.0.1
  */

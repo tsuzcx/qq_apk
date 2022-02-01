@@ -8,9 +8,9 @@ public class GetUserInfoHandler$UpdateUserInfoEvent
   extends BaseEvent
 {
   public QQUserUIItem a;
-  public String a;
-  public List<QQUserUIItem> a;
-  public String b;
+  public List<QQUserUIItem> b;
+  public String c;
+  public String d;
   
   public String toString()
   {
@@ -30,7 +30,7 @@ public class GetUserInfoHandler$UpdateUserInfoEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent
  * JD-Core Version:    0.7.0.1
  */

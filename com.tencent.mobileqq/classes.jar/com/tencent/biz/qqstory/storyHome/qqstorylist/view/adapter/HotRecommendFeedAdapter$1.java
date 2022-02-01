@@ -16,15 +16,15 @@ class HotRecommendFeedAdapter$1
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (UIUtils.b()) {
+    if (UIUtils.d()) {
       return;
     }
     if (paramInt >= 0)
     {
-      if (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+      if (paramInt >= this.a.b.size()) {
         return;
       }
-      paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramObject = (StoryVideoItem)this.a.b.get(paramInt);
       if (TextUtils.isEmpty(paramObject.mOwnerUid)) {
         return;
       }
@@ -32,11 +32,11 @@ class HotRecommendFeedAdapter$1
       if (paramObject == null) {
         return;
       }
-      if (paramView.getId() != 2131379896) {
+      if (paramView.getId() != 2131448770) {
         return;
       }
-      if (HotRecommendFeedAdapter.a(this.a) != null) {
-        HotRecommendFeedAdapter.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
+      if (HotRecommendFeedAdapter.b(this.a) != null) {
+        HotRecommendFeedAdapter.b(this.a).a(paramView, this.a.c, paramObject, paramInt);
       }
     }
   }

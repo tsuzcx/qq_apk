@@ -15,13 +15,13 @@ class VideoPlayerView$7
   {
     if (FastClickUtils.a("mLLSkipForwardWrapper", 500L))
     {
-      VideoPlayerView.e(this.a);
+      VideoPlayerView.i(this.a);
       VideoPlayerView localVideoPlayerView = this.a;
-      VideoPlayerView.a(localVideoPlayerView, VideoPlayerView.c(localVideoPlayerView), 0, 1, true);
-      if (this.a.a() != null)
+      VideoPlayerView.a(localVideoPlayerView, VideoPlayerView.k(localVideoPlayerView), 0, 1, true);
+      if (this.a.getSuperPlayer() != null)
       {
         localVideoPlayerView = this.a;
-        localVideoPlayerView.a(localVideoPlayerView.a().getCurrentPositionMs() + 10000L);
+        localVideoPlayerView.a(localVideoPlayerView.getSuperPlayer().getCurrentPositionMs() + 10000L);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

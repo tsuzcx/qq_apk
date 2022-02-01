@@ -9,24 +9,24 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ReadInJoyScreenShotReporter
 {
-  private static ReadInJoyScreenShotReporter jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter;
-  private ScreenshotContentObserver jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private Integer b;
+  private static ReadInJoyScreenShotReporter a;
+  private ScreenshotContentObserver b;
+  private Integer c;
+  private Integer d;
   
   public static ReadInJoyScreenShotReporter a(Activity paramActivity)
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter == null)
+    if (a == null)
     {
-      jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter = new ReadInJoyScreenShotReporter();
+      a = new ReadInJoyScreenShotReporter();
       Object localObject = new DisplayMetrics();
       paramActivity.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = ((DisplayMetrics)localObject).heightPixels;
       try
       {
-        jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver = new ScreenshotContentObserver(paramActivity, i, j);
-        jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver.a(new ReadInJoyScreenShotReporter.1());
+        a.b = new ScreenshotContentObserver(paramActivity, i, j);
+        a.b.a(new ReadInJoyScreenShotReporter.1());
       }
       catch (SecurityException paramActivity)
       {
@@ -34,50 +34,50 @@ public class ReadInJoyScreenShotReporter
         ((StringBuilder)localObject).append("SecurityException error = ");
         ((StringBuilder)localObject).append(paramActivity.toString());
         QLog.e("ReadInJoyScreenShotReporter", 1, ((StringBuilder)localObject).toString());
-        jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver = null;
+        a.b = null;
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter;
+    return a;
   }
   
   public void a()
   {
-    ReadInJoyScreenShotReporter localReadInJoyScreenShotReporter = jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter;
+    ReadInJoyScreenShotReporter localReadInJoyScreenShotReporter = a;
     if (localReadInJoyScreenShotReporter != null)
     {
-      localReadInJoyScreenShotReporter.jdField_a_of_type_JavaLangInteger = null;
-      localReadInJoyScreenShotReporter.b = null;
+      localReadInJoyScreenShotReporter.c = null;
+      localReadInJoyScreenShotReporter.d = null;
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    ReadInJoyScreenShotReporter localReadInJoyScreenShotReporter = jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter;
+    ReadInJoyScreenShotReporter localReadInJoyScreenShotReporter = a;
     if (localReadInJoyScreenShotReporter != null)
     {
-      localReadInJoyScreenShotReporter.jdField_a_of_type_JavaLangInteger = new Integer(paramInt2);
-      jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter.b = new Integer(paramInt1);
+      localReadInJoyScreenShotReporter.c = new Integer(paramInt2);
+      a.d = new Integer(paramInt1);
     }
   }
   
   public void b()
   {
-    Object localObject = jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter;
+    Object localObject = a;
     if (localObject != null)
     {
-      localObject = ((ReadInJoyScreenShotReporter)localObject).jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver;
+      localObject = ((ReadInJoyScreenShotReporter)localObject).b;
       if (localObject != null)
       {
         ((ScreenshotContentObserver)localObject).a();
-        jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver = null;
+        a.b = null;
       }
     }
-    jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyScreenShotReporter = null;
+    a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyScreenShotReporter
  * JD-Core Version:    0.7.0.1
  */

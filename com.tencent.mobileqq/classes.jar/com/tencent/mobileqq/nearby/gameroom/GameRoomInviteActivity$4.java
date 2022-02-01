@@ -15,16 +15,16 @@ class GameRoomInviteActivity$4
   {
     if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.mInviteId = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomConstants.a = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.mInviteId;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.init(false);
+      this.b.mInviteId = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomConstants.a = this.b.mInviteId;
+      this.b.init(false);
       return;
     }
-    paramRspBody = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+    paramRspBody = this.b;
     GameRoomConstants.a = null;
     paramRspBody.mInviteId = null;
     paramRspBody.mIsOwner = true;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       paramRspBody.invite();
       return;
@@ -34,7 +34,7 @@ class GameRoomInviteActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.4
  * JD-Core Version:    0.7.0.1
  */

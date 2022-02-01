@@ -1,23 +1,24 @@
 package com.tencent.aelight.camera.aeeditor.module.aifilter;
 
-import android.content.Context;
-
 class SilentBatchImageAIFilterProxy$1
-  implements Runnable
+  implements AEEditorAIFilterManager.AIFilterObserver
 {
-  SilentBatchImageAIFilterProxy$1(SilentBatchImageAIFilterProxy paramSilentBatchImageAIFilterProxy, Context paramContext, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback) {}
+  SilentBatchImageAIFilterProxy$1(SilentBatchImageAIFilterProxy paramSilentBatchImageAIFilterProxy) {}
   
-  public void run()
+  public void a(int paramInt, AIFilterResult paramAIFilterResult)
   {
-    SilentBatchImageAIFilterProxy localSilentBatchImageAIFilterProxy = this.this$0;
-    localSilentBatchImageAIFilterProxy.b = AIFilterProxyBase.a(SilentBatchImageAIFilterProxy.a(localSilentBatchImageAIFilterProxy), SilentBatchImageAIFilterProxy.b(this.this$0));
-    localSilentBatchImageAIFilterProxy = this.this$0;
-    localSilentBatchImageAIFilterProxy.a(this.jdField_a_of_type_AndroidContentContext, localSilentBatchImageAIFilterProxy.b, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterProxyBase$AIFilterProxyCallback);
+    if ((paramAIFilterResult instanceof BatchImageAIFilterResult))
+    {
+      SilentBatchImageAIFilterProxy.a(this.a, (BatchImageAIFilterResult)paramAIFilterResult);
+      SilentBatchImageAIFilterProxy.b(this.a).a(SilentBatchImageAIFilterProxy.a(this.a));
+    }
   }
+  
+  public void ar_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.SilentBatchImageAIFilterProxy.1
  * JD-Core Version:    0.7.0.1
  */

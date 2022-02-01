@@ -1,21 +1,16 @@
 package com.tencent.crossengine.offscreen;
 
-import android.content.Context;
 import android.opengl.GLSurfaceView.Renderer;
+import com.tencent.crossengine.log.Logger;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class OffscreenWorldRender
   implements GLSurfaceView.Renderer
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public OffscreenWorldRender(Context paramContext, long paramLong, String paramString)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  private long a;
+  private String b;
+  private boolean c;
   
   private native void nGLESDestory();
   
@@ -27,16 +22,37 @@ public class OffscreenWorldRender
   
   public void a()
   {
-    nGLESDestory();
+    this.c = true;
+  }
+  
+  public void b()
+  {
+    this.c = false;
   }
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    nGLESRender(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    if (this.c)
+    {
+      paramGL10 = new StringBuilder();
+      paramGL10.append("onDrawFrame return ");
+      paramGL10.append(this.c);
+      Logger.a("OffscreenWorldRender", paramGL10.toString());
+      return;
+    }
+    nGLESRender(this.a, this.b);
   }
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
+    if (this.c)
+    {
+      paramGL10 = new StringBuilder();
+      paramGL10.append("onSurfaceChanged return ");
+      paramGL10.append(this.c);
+      Logger.a("OffscreenWorldRender", paramGL10.toString());
+      return;
+    }
     nGLESResize(paramInt1, paramInt2);
   }
   
@@ -47,7 +63,7 @@ public class OffscreenWorldRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.offscreen.OffscreenWorldRender
  * JD-Core Version:    0.7.0.1
  */

@@ -55,7 +55,7 @@ public class TroopInfoHandlerConfig
     }
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
     boolean bool2 = TextUtils.isEmpty(paramString);
     boolean bool1 = true;
@@ -86,7 +86,7 @@ public class TroopInfoHandlerConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopInfoHandlerConfig
  * JD-Core Version:    0.7.0.1
  */

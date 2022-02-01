@@ -3,32 +3,32 @@ package com.tencent.mobileqq.uftransfer.proto;
 public class UFTC2CSetUploadSucReq
   extends UFTC2CUploadBaseInfo
 {
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  private byte[] a;
+  private String b;
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.a = paramArrayOfByte;
   }
   
   public byte[] a()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.proto.UFTC2CSetUploadSucReq
  * JD-Core Version:    0.7.0.1
  */

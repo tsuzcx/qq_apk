@@ -30,7 +30,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.pts.factory.TemplateFactory;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.pts.util.ProteusSupportUtil;
@@ -49,24 +49,24 @@ import org.json.JSONObject;
 
 public class DailyDynamicHeaderViewController
 {
-  private int jdField_a_of_type_Int = -1;
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new DailyDynamicHeaderViewController.1(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private DailyTitleBarSwitcher jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBarSwitcher;
-  private final ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new DailyDynamicHeaderViewController.6(this);
-  private final LbsManagerServiceOnLocationChangeListener jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener = new DailyDynamicHeaderViewController.5(this, "readinjoy_weather");
-  private int jdField_b_of_type_Int = -1;
-  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new DailyDynamicHeaderViewController.2(this);
-  private final View.OnClickListener c = new DailyDynamicHeaderViewController.3(this);
-  private final View.OnClickListener d = new DailyDynamicHeaderViewController.4(this);
-  private View.OnClickListener e;
+  private final VafContext a;
+  private final View.OnClickListener b = new DailyDynamicHeaderViewController.1(this);
+  private final View.OnClickListener c = new DailyDynamicHeaderViewController.2(this);
+  private final View.OnClickListener d = new DailyDynamicHeaderViewController.3(this);
+  private final View.OnClickListener e = new DailyDynamicHeaderViewController.4(this);
+  private final LbsManagerServiceOnLocationChangeListener f = new DailyDynamicHeaderViewController.5(this, "readinjoy_weather");
+  private View g;
+  private ViewGroup h;
+  private ImageView i;
+  private DailyTitleBarSwitcher j;
+  private View.OnClickListener k;
+  private int l = -1;
+  private int m = -1;
+  private final ReadInJoyObserver n = new DailyDynamicHeaderViewController.6(this);
   
   public DailyDynamicHeaderViewController(@NonNull VafContext paramVafContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
+    this.a = paramVafContext;
   }
   
   private static Container a(VafContext paramVafContext, JSONObject paramJSONObject)
@@ -109,28 +109,28 @@ public class DailyDynamicHeaderViewController
   
   private Container a(JSONObject paramJSONObject, View.OnClickListener paramOnClickListener)
   {
-    int i = this.jdField_b_of_type_Int;
-    if ((i != -1) && (i != 0))
+    int i1 = this.m;
+    if ((i1 != -1) && (i1 != 0))
     {
       e();
-      paramJSONObject = a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramJSONObject);
+      paramJSONObject = a(this.a, paramJSONObject);
       if (paramJSONObject != null)
       {
-        this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(paramOnClickListener);
-        a(this.jdField_a_of_type_AndroidViewViewGroup, paramJSONObject);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843328);
+        this.h.setOnClickListener(paramOnClickListener);
+        a(this.h, paramJSONObject);
+        this.i.setImageResource(2130844282);
         return paramJSONObject;
       }
       a(0);
     }
     else
     {
-      Container localContainer = a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramJSONObject);
+      Container localContainer = a(this.a, paramJSONObject);
       if (localContainer != null)
       {
-        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDrawable(2130843328);
-        a(this.jdField_a_of_type_AndroidViewView, localContainer, localDrawable, paramJSONObject);
-        this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(paramOnClickListener);
+        Drawable localDrawable = this.g.getContext().getResources().getDrawable(2130844282);
+        a(this.g, localContainer, localDrawable, paramJSONObject);
+        this.h.setOnClickListener(paramOnClickListener);
         return localContainer;
       }
       a(0);
@@ -141,7 +141,7 @@ public class DailyDynamicHeaderViewController
   private static URLDrawable.URLDrawableOptions a(Context paramContext)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    paramContext = paramContext.getResources().getDrawable(2130843328);
+    paramContext = paramContext.getResources().getDrawable(2130844282);
     localURLDrawableOptions.mLoadingDrawable = paramContext;
     localURLDrawableOptions.mFailedDrawable = paramContext;
     return localURLDrawableOptions;
@@ -165,14 +165,14 @@ public class DailyDynamicHeaderViewController
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[moveToState] from: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.l);
     ((StringBuilder)localObject).append(" to ");
     ((StringBuilder)localObject).append(paramInt);
     QLog.i("DailyHeaderViewController", 1, ((StringBuilder)localObject).toString());
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = paramInt;
-    RIJSPUtils.a("sp_key_daily_dynamic_header_state", Integer.valueOf(this.jdField_a_of_type_Int));
-    localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    this.m = this.l;
+    this.l = paramInt;
+    RIJSPUtils.a("sp_key_daily_dynamic_header_state", Integer.valueOf(this.l));
+    localObject = this.h;
     if (localObject != null) {
       ((ViewGroup)localObject).setOnClickListener(null);
     }
@@ -204,22 +204,22 @@ public class DailyDynamicHeaderViewController
   private void a(@NonNull View paramView, @NonNull Container paramContainer, @NonNull Drawable paramDrawable, JSONObject paramJSONObject)
   {
     QLog.i("DailyHeaderViewController", 1, "[setupDynamicHeader] ");
-    ((DailyTitleBar)paramView.findViewById(2131371951)).setVisibility(8);
-    DailyTitleBarSwitcher localDailyTitleBarSwitcher = (DailyTitleBarSwitcher)paramView.findViewById(2131365372);
+    ((DailyTitleBar)paramView.findViewById(2131439396)).setVisibility(8);
+    DailyTitleBarSwitcher localDailyTitleBarSwitcher = (DailyTitleBarSwitcher)paramView.findViewById(2131431565);
     localDailyTitleBarSwitcher.setVisibility(0);
-    localDailyTitleBarSwitcher.setOnLeftButtonClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localDailyTitleBarSwitcher.setOnRightButtonClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    localDailyTitleBarSwitcher.setOnTitleClickListener(this.e);
-    ReadInJoyDailyPullToZoomHeaderXListView localReadInJoyDailyPullToZoomHeaderXListView = (ReadInJoyDailyPullToZoomHeaderXListView)paramView.findViewById(2131378123);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramView.getContext()).inflate(2131560167, localReadInJoyDailyPullToZoomHeaderXListView, false));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363353));
+    localDailyTitleBarSwitcher.setOnLeftButtonClickListener(this.b);
+    localDailyTitleBarSwitcher.setOnRightButtonClickListener(this.c);
+    localDailyTitleBarSwitcher.setOnTitleClickListener(this.k);
+    ReadInJoyDailyPullToZoomHeaderXListView localReadInJoyDailyPullToZoomHeaderXListView = (ReadInJoyDailyPullToZoomHeaderXListView)paramView.findViewById(2131446630);
+    this.h = ((ViewGroup)LayoutInflater.from(paramView.getContext()).inflate(2131626214, localReadInJoyDailyPullToZoomHeaderXListView, false));
+    this.i = ((ImageView)this.h.findViewById(2131429242));
     DailyDynamicHeaderBackgroundController.a(paramDrawable);
-    DailyDynamicHeaderBackgroundController.a(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    a(this.jdField_a_of_type_AndroidViewViewGroup, paramContainer);
-    localReadInJoyDailyPullToZoomHeaderXListView.a(localDailyTitleBarSwitcher.a());
-    localReadInJoyDailyPullToZoomHeaderXListView.addHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
-    localReadInJoyDailyPullToZoomHeaderXListView.setHeaderImage(this.jdField_a_of_type_AndroidWidgetImageView);
+    DailyDynamicHeaderBackgroundController.a(this.i);
+    this.i.setImageDrawable(paramDrawable);
+    a(this.h, paramContainer);
+    localReadInJoyDailyPullToZoomHeaderXListView.a(localDailyTitleBarSwitcher.getOnScrollListener());
+    localReadInJoyDailyPullToZoomHeaderXListView.addHeaderView(this.h);
+    localReadInJoyDailyPullToZoomHeaderXListView.setHeaderImage(this.i);
     a(paramJSONObject);
   }
   
@@ -254,53 +254,35 @@ public class DailyDynamicHeaderViewController
     paramRunnable.run();
   }
   
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363353));
-    try
-    {
-      paramString = URLDrawable.getDrawable(paramString, a(this.jdField_a_of_type_AndroidWidgetImageView.getContext()));
-      DailyDynamicHeaderBackgroundController.a(paramString);
-      DailyDynamicHeaderBackgroundController.a(this.jdField_a_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2131166915);
-      QLog.e("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] ", paramString);
-    }
-  }
-  
   private void a(JSONObject paramJSONObject)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.g;
     if (localObject == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBarSwitcher == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBarSwitcher = ((DailyTitleBarSwitcher)((View)localObject).findViewById(2131365372));
+    if (this.j == null) {
+      this.j = ((DailyTitleBarSwitcher)((View)localObject).findViewById(2131431565));
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBarSwitcher != null) && (paramJSONObject != null))
+    if ((this.j != null) && (paramJSONObject != null))
     {
       localObject = paramJSONObject.optString("weather_summary_title");
       paramJSONObject = paramJSONObject.optString("weather_jump_url");
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBarSwitcher.setBackgroundViewTitle((String)localObject, 12.0F);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBarSwitcher.setOnTitleClickWeatherListener(new DailyDynamicHeaderViewController.10(this, paramJSONObject));
+        this.j.setBackgroundViewTitle((String)localObject, 12.0F);
+        this.j.setOnTitleClickWeatherListener(new DailyDynamicHeaderViewController.10(this, paramJSONObject));
         return;
       }
       QLog.i("DailyHeaderViewController", 1, "bindDataForTitleBar, no data.");
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBarSwitcher.setBackgroundViewTitle("", 12.0F);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTitleBarSwitcher.setOnTitleClickWeatherListener(null);
+      this.j.setBackgroundViewTitle("", 12.0F);
+      this.j.setOnTitleClickWeatherListener(null);
     }
   }
   
   private void a(boolean paramBoolean)
   {
     QLog.i("DailyHeaderViewController", 1, "[requestForUpdate] ");
-    long l1 = ((Long)RIJSPUtils.a("sp_key_daily_dynamic_header_last_refresh_time", Long.valueOf(0L))).longValue();
+    long l1 = ((Long)RIJSPUtils.b("sp_key_daily_dynamic_header_last_refresh_time", Long.valueOf(0L))).longValue();
     long l2 = System.currentTimeMillis();
     long l3 = Aladdin.getConfig(157).getIntegerFromString("refresh_debounce_interval", 5);
     if ((l2 - l1 <= 60000L * l3) && (!paramBoolean))
@@ -376,18 +358,18 @@ public class DailyDynamicHeaderViewController
   private void b()
   {
     QLog.i("DailyHeaderViewController", 1, "[handleStateNormal] ");
-    DailyTitleBar localDailyTitleBar = (DailyTitleBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131371951);
+    DailyTitleBar localDailyTitleBar = (DailyTitleBar)this.g.findViewById(2131439396);
     localDailyTitleBar.setVisibility(0);
-    ImmersiveUtils.setStatusTextColor(true, ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).getWindow());
-    localDailyTitleBar.setOnLeftButtonClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localDailyTitleBar.setOnRightButtonClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    localDailyTitleBar.setOnTitleClickListener(this.e);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131365372).setVisibility(8);
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    ImmersiveUtils.setStatusTextColor(true, ((Activity)this.g.getContext()).getWindow());
+    localDailyTitleBar.setOnLeftButtonClickListener(this.b);
+    localDailyTitleBar.setOnRightButtonClickListener(this.c);
+    localDailyTitleBar.setOnTitleClickListener(this.k);
+    this.g.findViewById(2131431565).setVisibility(8);
+    if (this.h != null)
     {
-      ((ReadInJoyDailyPullToZoomHeaderXListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378123)).removeHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
-      this.jdField_a_of_type_AndroidWidgetImageView = null;
+      ((ReadInJoyDailyPullToZoomHeaderXListView)this.g.findViewById(2131446630)).removeHeaderView(this.h);
+      this.h = null;
+      this.i = null;
     }
   }
   
@@ -404,8 +386,8 @@ public class DailyDynamicHeaderViewController
         {
           if (paramInt == 4)
           {
-            localJSONObject.putOpt("error_reason", HardCodeUtil.a(2131702883)).putOpt("operation_text", HardCodeUtil.a(2131702880));
-            localObject = this.c;
+            localJSONObject.putOpt("error_reason", HardCodeUtil.a(2131900861)).putOpt("operation_text", HardCodeUtil.a(2131900858));
+            localObject = this.d;
           }
           else
           {
@@ -417,14 +399,14 @@ public class DailyDynamicHeaderViewController
         }
         else
         {
-          localJSONObject.putOpt("error_reason", HardCodeUtil.a(2131702882)).putOpt("operation_text", HardCodeUtil.a(2131702879));
-          localObject = this.d;
+          localJSONObject.putOpt("error_reason", HardCodeUtil.a(2131900860)).putOpt("operation_text", HardCodeUtil.a(2131900857));
+          localObject = this.e;
         }
       }
       else
       {
-        localJSONObject.putOpt("error_reason", HardCodeUtil.a(2131702876)).putOpt("operation_text", HardCodeUtil.a(2131702881));
-        localObject = this.c;
+        localJSONObject.putOpt("error_reason", HardCodeUtil.a(2131900854)).putOpt("operation_text", HardCodeUtil.a(2131900859));
+        localObject = this.d;
       }
       a(localJSONObject, (View.OnClickListener)localObject);
       return;
@@ -445,7 +427,25 @@ public class DailyDynamicHeaderViewController
       a(3);
       return;
     }
-    a(((Integer)RIJSPUtils.a("sp_key_daily_dynamic_header_state", Integer.valueOf(0))).intValue());
+    a(((Integer)RIJSPUtils.b("sp_key_daily_dynamic_header_state", Integer.valueOf(0))).intValue());
+  }
+  
+  private void b(String paramString)
+  {
+    this.i = ((ImageView)this.h.findViewById(2131429242));
+    try
+    {
+      paramString = URLDrawable.getDrawable(paramString, a(this.i.getContext()));
+      DailyDynamicHeaderBackgroundController.a(paramString);
+      DailyDynamicHeaderBackgroundController.a(this.i);
+      this.i.setImageDrawable(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      this.i.setImageResource(2131167836);
+      QLog.e("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] ", paramString);
+    }
   }
   
   private static void b(String paramString, JSONObject paramJSONObject)
@@ -457,8 +457,7 @@ public class DailyDynamicHeaderViewController
     localObject = new RIJTransMergeKanDianReport.ReportR5Builder();
     ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).addStringNotThrow("model_type", a(paramString));
     ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).addStringNotThrow("topic_id", paramJSONObject.optString("topic_id", ""));
-    paramString = ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).build();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8009D12", "0X8009D12", 0, 0, "", "", "", paramString, false);
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009D12", "0X8009D12", 0, 0, "", "", "", ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).build(), false);
   }
   
   private void b(JSONObject paramJSONObject)
@@ -466,18 +465,18 @@ public class DailyDynamicHeaderViewController
     if (paramJSONObject == null) {
       return;
     }
-    a(paramJSONObject.optString("background_url"));
+    b(paramJSONObject.optString("background_url"));
     a(paramJSONObject);
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    this.i.requestLayout();
   }
   
   private void c()
   {
-    JSONObject localJSONObject = ReadInJoyLogicEngine.a().a();
-    int i = this.jdField_b_of_type_Int;
-    if ((i != -1) && (i != 0))
+    JSONObject localJSONObject = ReadInJoyLogicEngine.a().ad();
+    int i1 = this.m;
+    if ((i1 != -1) && (i1 != 0))
     {
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+      localObject = this.h;
       if (localObject != null)
       {
         if (a((Container)((ViewGroup)localObject).getChildAt(1), localJSONObject))
@@ -488,11 +487,11 @@ public class DailyDynamicHeaderViewController
         }
         QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] template mismatch, re-inflate");
         e();
-        localObject = b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localJSONObject);
+        localObject = b(this.a, localJSONObject);
         if (localObject != null)
         {
           QLog.i("DailyHeaderViewController", 1, "[handleStateDynamic] successfully inflate dynamic header, update.");
-          a(this.jdField_a_of_type_AndroidViewViewGroup, (Container)localObject);
+          a(this.h, (Container)localObject);
           b(localJSONObject);
           return;
         }
@@ -501,21 +500,21 @@ public class DailyDynamicHeaderViewController
         return;
       }
     }
-    Container localContainer = b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localJSONObject);
+    Container localContainer = b(this.a, localJSONObject);
     if (localContainer != null) {
       localObject = localJSONObject.optString("background_url");
     }
     try
     {
-      localObject = URLDrawable.getDrawable((String)localObject, a(this.jdField_a_of_type_AndroidViewView.getContext()));
+      localObject = URLDrawable.getDrawable((String)localObject, a(this.g.getContext()));
     }
     catch (Exception localException)
     {
       label165:
       break label165;
     }
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getContext().getResources().getDrawable(2131166915);
-    a(this.jdField_a_of_type_AndroidViewView, localContainer, (Drawable)localObject, localJSONObject);
+    Object localObject = this.g.getContext().getResources().getDrawable(2131167836);
+    a(this.g, localContainer, (Drawable)localObject, localJSONObject);
     return;
     a(0);
   }
@@ -529,8 +528,7 @@ public class DailyDynamicHeaderViewController
     localObject = new RIJTransMergeKanDianReport.ReportR5Builder();
     ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).addStringNotThrow("model_type", a(paramString));
     ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).addStringNotThrow("topic_id", paramJSONObject.optString("topic_id", ""));
-    paramString = ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).build();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8009D13", "0X8009D13", 0, 0, "", "", "", paramString, false);
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009D13", "0X8009D13", 0, 0, "", "", "", ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).build(), false);
   }
   
   private void d()
@@ -540,29 +538,29 @@ public class DailyDynamicHeaderViewController
     try
     {
       ((JSONObject)localObject1).putOpt("style_ID", "ReadInJoyDailyDynamicWeatherHeaderError");
-      int i = this.jdField_b_of_type_Int;
-      if (i != 2)
+      int i1 = this.m;
+      if (i1 != 2)
       {
-        if (i != 3)
+        if (i1 != 3)
         {
-          if ((i != 4) && (i != 5))
+          if ((i1 != 4) && (i1 != 5))
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("illegal state ");
-            ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+            ((StringBuilder)localObject2).append(this.m);
             throw new IllegalStateException(((StringBuilder)localObject2).toString());
           }
-          ((JSONObject)localObject1).putOpt("error_reason", HardCodeUtil.a(2131702877));
+          ((JSONObject)localObject1).putOpt("error_reason", HardCodeUtil.a(2131900855));
         }
         else
         {
-          ((JSONObject)localObject1).putOpt("error_reason", HardCodeUtil.a(2131702878));
+          ((JSONObject)localObject1).putOpt("error_reason", HardCodeUtil.a(2131900856));
         }
       }
       else {
-        ((JSONObject)localObject1).putOpt("error_reason", HardCodeUtil.a(2131702874));
+        ((JSONObject)localObject1).putOpt("error_reason", HardCodeUtil.a(2131900852));
       }
-      ((JSONObject)localObject1).putOpt("operation_text", HardCodeUtil.a(2131702875));
+      ((JSONObject)localObject1).putOpt("operation_text", HardCodeUtil.a(2131900853));
     }
     catch (Exception localException)
     {
@@ -575,37 +573,37 @@ public class DailyDynamicHeaderViewController
     if (localObject1 != null)
     {
       localObject1 = ((Container)localObject1).getVirtualView().findViewBaseByName("id_refresh_icon").getNativeView();
-      localObject2 = AnimationUtils.loadAnimation(((View)localObject1).getContext(), 2130772240);
+      localObject2 = AnimationUtils.loadAnimation(((View)localObject1).getContext(), 2130772306);
       ((Animation)localObject2).setFillAfter(true);
       ((View)localObject1).startAnimation((Animation)localObject2);
     }
-    this.jdField_a_of_type_AndroidViewView.postDelayed(new DailyDynamicHeaderViewController.11(this), 1000L);
+    this.g.postDelayed(new DailyDynamicHeaderViewController.11(this), 1000L);
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      while (this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(1) != null) {
-        this.jdField_a_of_type_AndroidViewViewGroup.removeViewAt(1);
+    if (this.h != null) {
+      while (this.h.getChildAt(1) != null) {
+        this.h.removeViewAt(1);
       }
     }
   }
   
   public void a()
   {
-    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(this.jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener);
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(this.f);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.n);
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.e = paramOnClickListener;
+    this.k = paramOnClickListener;
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    boolean bool = DailyModeConfigHandler.b();
+    this.g = paramView;
+    boolean bool = DailyModeConfigHandler.k();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onCreateView] enable_dynamic_header=");
     localStringBuilder.append(bool);
@@ -613,7 +611,7 @@ public class DailyDynamicHeaderViewController
     if (bool)
     {
       b(paramView);
-      ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+      ReadInJoyLogicEngineEventDispatcher.a().a(this.n);
       a(false);
       return;
     }
@@ -622,7 +620,7 @@ public class DailyDynamicHeaderViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyDynamicHeaderViewController
  * JD-Core Version:    0.7.0.1
  */

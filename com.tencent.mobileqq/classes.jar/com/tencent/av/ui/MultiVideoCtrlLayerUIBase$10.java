@@ -18,12 +18,12 @@ class MultiVideoCtrlLayerUIBase$10
   
   public void onClick(View paramView)
   {
-    if (!this.a.h())
+    if (!this.a.V())
     {
-      QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
-      DataReport.b(NetworkUtil.isWifiConnected((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()), this.a.jdField_a_of_type_ComTencentAvVideoController.a().j);
-      this.a.e();
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().ag = true;
+      QLog.d(this.a.X, 1, "onClick R.id.qav_btn_accept_video");
+      DataReport.b(NetworkUtil.isWifiConnected((Context)this.a.ak.get()), this.a.am.k().o);
+      this.a.K();
+      this.a.am.k().bA = true;
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

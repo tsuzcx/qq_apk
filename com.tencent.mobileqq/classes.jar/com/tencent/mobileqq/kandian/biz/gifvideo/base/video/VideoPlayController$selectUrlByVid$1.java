@@ -19,7 +19,7 @@ final class VideoPlayController$selectUrlByVid$1
     {
       paramArrayOfString1 = paramArrayOfString2[0];
       Intrinsics.checkExpressionValueIsNotNull(paramArrayOfString1, "urls[0]");
-      if ((paramVideoUrlInfo != null) && (paramVideoUrlInfo.c == 2))
+      if ((paramVideoUrlInfo != null) && (paramVideoUrlInfo.k == 2))
       {
         VideoPlayController.a(this.a, 0, 202, 108);
         return;
@@ -37,7 +37,7 @@ final class VideoPlayController$selectUrlByVid$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController.selectUrlByVid.1
  * JD-Core Version:    0.7.0.1
  */

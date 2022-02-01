@@ -176,7 +176,7 @@ public class TroopMemCardCmd
           if (localObject1 != null)
           {
             paramBundle = IntimateUtil.a(this.a.getApp(), ((MutualMarkForDisplayInfo)localObject1).a);
-            i = ((MutualMarkForDisplayInfo)localObject1).c;
+            i = ((MutualMarkForDisplayInfo)localObject1).q;
             localBundle.putString("bind_name", paramBundle);
             localBundle.putInt("bind_icon", i);
             paramBundle = localBundle;
@@ -193,7 +193,7 @@ public class TroopMemCardCmd
           if (localObject1 != null) {
             ((MqqHandler)localObject1).sendMessage(((MqqHandler)localObject1).obtainMessage(16711681, paramBundle));
           }
-          if (Utils.b(paramBundle)) {
+          if (Utils.c(paramBundle)) {
             ReportController.b(this.a, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
           }
           localObject1 = new Intent("ACTION_DELETE_FRIEND");
@@ -217,21 +217,21 @@ public class TroopMemCardCmd
           if (!bool1) {
             break label1374;
           }
-          l1 = MessageCache.a();
+          l1 = MessageCache.c();
           FriendsStatusUtil.a(paramBundle, (String)localObject1, 0, l1, true, false, null, true);
           paramBundle = localBundle;
           break;
         case 1014: 
           localObject1 = paramBundle.getString("uin");
           localObject2 = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-          localObject3 = ((FriendsManager)localObject2).b((String)localObject1);
+          localObject3 = ((FriendsManager)localObject2).c((String)localObject1);
           paramBundle = localBundle;
           if (localObject3 != null)
           {
             paramBundle = localBundle;
             if (((Friends)localObject3).isFriend())
             {
-              paramBundle = ((FriendsManager)localObject2).a((String)localObject1);
+              paramBundle = ((FriendsManager)localObject2).y((String)localObject1);
               bool1 = bool2;
               if (paramBundle != null)
               {
@@ -273,7 +273,7 @@ public class TroopMemCardCmd
         case 1010: 
           localObject1 = paramBundle.getString("troopUin");
           paramBundle = paramBundle.getStringArrayList("memberUins");
-          ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).b((String)localObject1, (String)paramBundle.get(0));
+          ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).d((String)localObject1, (String)paramBundle.get(0));
           paramBundle = localBundle;
           break;
         case 1009: 
@@ -285,8 +285,8 @@ public class TroopMemCardCmd
         case 1008: 
           paramBundle = paramBundle.getString("troopCode");
           localObject1 = (TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER);
-          this.a.getMessageFacade().a(paramBundle, 1);
-          ((TroopManager)localObject1).b(paramBundle);
+          this.a.getMessageFacade().c(paramBundle, 1);
+          ((TroopManager)localObject1).d(paramBundle);
           ((IBizTroopDBUtilsApi)QRoute.api(IBizTroopDBUtilsApi.class)).removeToopMsgFilter(this.a, paramBundle, this.a.getCurrentAccountUin(), this.a.getApp());
           paramBundle = localBundle;
           break;
@@ -320,7 +320,7 @@ public class TroopMemCardCmd
           break;
         case 1003: 
           paramBundle = paramBundle.getString("troopUin");
-          localBundle.putSerializable("troopInfo", ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramBundle));
+          localBundle.putSerializable("troopInfo", ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramBundle));
           paramBundle = localBundle;
           break;
         case 1002: 
@@ -357,7 +357,7 @@ public class TroopMemCardCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.troopmemcard.TroopMemCardCmd
  * JD-Core Version:    0.7.0.1
  */

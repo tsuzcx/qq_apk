@@ -7,12 +7,9 @@ import android.support.v7.widget.RecyclerView.OnScrollListener;
 public class ZhituPanelView$ZhituOnScrollListener
   extends RecyclerView.OnScrollListener
 {
-  public boolean a;
+  public boolean a = false;
   
-  public ZhituPanelView$ZhituOnScrollListener(ZhituPanelView paramZhituPanelView)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public ZhituPanelView$ZhituOnScrollListener(ZhituPanelView paramZhituPanelView) {}
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
@@ -20,7 +17,7 @@ public class ZhituPanelView$ZhituOnScrollListener
     if (paramInt == 0)
     {
       GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
+      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.a)) {
         ((ZhituPanelView.ZhituPanelAdapter)paramRecyclerView.getAdapter()).a();
       }
     }
@@ -35,12 +32,12 @@ public class ZhituPanelView$ZhituOnScrollListener
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.a = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView.ZhituOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

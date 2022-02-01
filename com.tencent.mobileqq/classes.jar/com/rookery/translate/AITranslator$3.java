@@ -19,9 +19,9 @@ class AITranslator$3
       if (QLog.isColorLevel()) {
         QLog.d("Translator", 2, "[policy update]: GOOGLE");
       }
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, paramArrayOfHeader);
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 0L);
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 200000L);
+      AITranslator.a(this.b, this.a, paramArrayOfHeader);
+      AITranslator.a(this.b, this.a, AITranslator.TranslatorType.GOOGLE, 0L);
+      AITranslator.a(this.b, this.a, AITranslator.TranslatorType.MS, 200000L);
       return;
     }
     if (paramString.equals("2"))
@@ -29,9 +29,9 @@ class AITranslator$3
       if (QLog.isColorLevel()) {
         QLog.d("Translator", 2, "[policy update]: MS");
       }
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, paramArrayOfHeader);
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.MS, 0L);
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, AITranslator.TranslatorType.GOOGLE, 200000L);
+      AITranslator.a(this.b, this.a, paramArrayOfHeader);
+      AITranslator.a(this.b, this.a, AITranslator.TranslatorType.MS, 0L);
+      AITranslator.a(this.b, this.a, AITranslator.TranslatorType.GOOGLE, 200000L);
       return;
     }
     if (paramString.equals("0"))
@@ -39,7 +39,7 @@ class AITranslator$3
       if (QLog.isColorLevel()) {
         QLog.d("Translator", 2, "[policy update]: stop service");
       }
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, Boolean.valueOf(false));
+      AITranslator.a(this.b, this.a, Boolean.valueOf(false));
       return;
     }
     if (paramString.equals("3"))
@@ -47,7 +47,7 @@ class AITranslator$3
       if (QLog.isColorLevel()) {
         QLog.d("Translator", 2, "[policy update]: decide by Client");
       }
-      AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_AndroidContentContext, paramArrayOfHeader);
+      AITranslator.a(this.b, this.a, paramArrayOfHeader);
       return;
     }
     if (QLog.isColorLevel()) {

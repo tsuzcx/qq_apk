@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.decoder.CodecHelper;
 import com.tencent.tav.decoder.EncoderWriter.OutputConfig;
+import org.jetbrains.annotations.NotNull;
 
 public class ExportConfig
   implements Cloneable
@@ -16,10 +17,13 @@ public class ExportConfig
   @Nullable
   private MediaFormat audioFormat;
   private int audioSampleRateHz = 44100;
+  public boolean enableAVSync = false;
   private boolean enableBFrame = false;
+  private boolean fixOutputSize = true;
   private boolean highProfile = false;
   private String outputFilePath;
   private int outputHeight;
+  private int outputRotate = 0;
   private String outputVideoMimeType = "video/avc";
   private int outputWidth;
   private int videoBitRate = 8000000;
@@ -99,9 +103,7 @@ public class ExportConfig
   
   private void initOutputSize()
   {
-    CGSize localCGSize = CodecHelper.correctSupportSize(getOutputSize(), this.outputVideoMimeType);
-    setToVideoFormat("width", (int)localCGSize.width);
-    setToVideoFormat("height", (int)localCGSize.height);
+    initOutputSize(this.fixOutputSize, true);
   }
   
   private void initOutputVideoMimeType()
@@ -162,6 +164,8 @@ public class ExportConfig
     localExportConfig.outputWidth = this.outputWidth;
     localExportConfig.outputHeight = this.outputHeight;
     localExportConfig.highProfile = this.highProfile;
+    localExportConfig.outputRotate = this.outputRotate;
+    localExportConfig.fixOutputSize = this.fixOutputSize;
     localExportConfig.audioBitRate = this.audioBitRate;
     localExportConfig.audioAacProfile = this.audioAacProfile;
     localExportConfig.audioChannelCount = this.audioChannelCount;
@@ -204,6 +208,15 @@ public class ExportConfig
     return findFormatValue("sample-rate", this.audioSampleRateHz, this.audioFormat);
   }
   
+  @NotNull
+  public CGSize getFormatOutputSize()
+  {
+    if (this.outputRotate % 2 != 0) {
+      return new CGSize(getOutputHeight(), getOutputWidth());
+    }
+    return new CGSize(getOutputWidth(), getOutputHeight());
+  }
+  
   public String getOutputFilePath()
   {
     return this.outputFilePath;
@@ -211,7 +224,15 @@ public class ExportConfig
   
   public int getOutputHeight()
   {
+    if (this.outputRotate % 2 != 0) {
+      return findVideoFormatValue("width", this.outputHeight);
+    }
     return findVideoFormatValue("height", this.outputHeight);
+  }
+  
+  public int getOutputRotate()
+  {
+    return this.outputRotate;
   }
   
   public CGSize getOutputSize()
@@ -226,6 +247,9 @@ public class ExportConfig
   
   public int getOutputWidth()
   {
+    if (this.outputRotate % 2 != 0) {
+      return findVideoFormatValue("height", this.outputWidth);
+    }
     return findVideoFormatValue("width", this.outputWidth);
   }
   
@@ -262,6 +286,17 @@ public class ExportConfig
     return this.videoIFrameInterval;
   }
   
+  public void initOutputSize(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    CGSize localCGSize2 = getFormatOutputSize();
+    CGSize localCGSize1 = localCGSize2;
+    if (paramBoolean1) {
+      localCGSize1 = CodecHelper.correctSupportSize(localCGSize2, this.outputVideoMimeType, paramBoolean2);
+    }
+    setToVideoFormat("width", (int)localCGSize1.width);
+    setToVideoFormat("height", (int)localCGSize1.height);
+  }
+  
   public boolean isHighProfile()
   {
     return this.highProfile;
@@ -285,6 +320,22 @@ public class ExportConfig
     initMaxBFrame();
   }
   
+  @Deprecated
+  public void setEncodeHevc(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      setOutputVideoMimeType("video/hevc");
+      return;
+    }
+    setOutputVideoMimeType("video/avc");
+  }
+  
+  public void setFixOutputSize(boolean paramBoolean)
+  {
+    this.fixOutputSize = paramBoolean;
+  }
+  
   public void setHighProfile(boolean paramBoolean)
   {
     this.highProfile = paramBoolean;
@@ -294,6 +345,11 @@ public class ExportConfig
   public void setOutputFilePath(String paramString)
   {
     this.outputFilePath = paramString;
+  }
+  
+  public void setOutputRotate(int paramInt)
+  {
+    this.outputRotate = paramInt;
   }
   
   public void setOutputSize(int paramInt1, int paramInt2)
@@ -329,7 +385,7 @@ public class ExportConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.ExportConfig
  * JD-Core Version:    0.7.0.1
  */

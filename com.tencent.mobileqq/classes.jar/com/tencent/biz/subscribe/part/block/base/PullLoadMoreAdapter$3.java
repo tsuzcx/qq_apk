@@ -7,7 +7,7 @@ class PullLoadMoreAdapter$3
 {
   public void run()
   {
-    this.this$0.a.scrollToPosition(0);
+    this.this$0.h.scrollToPosition(0);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.trtc;
 public class TRTCCloudDef$TRTCMixUser
 {
   public int height;
+  public int inputType;
   public boolean pureAudio;
   public String roomId;
   public int streamType;
@@ -21,6 +22,7 @@ public class TRTCCloudDef$TRTCMixUser
     this.height = 0;
     this.zOrder = 0;
     this.streamType = 0;
+    this.inputType = 0;
   }
   
   public TRTCCloudDef$TRTCMixUser(TRTCMixUser paramTRTCMixUser)
@@ -34,6 +36,7 @@ public class TRTCCloudDef$TRTCMixUser
     this.zOrder = paramTRTCMixUser.zOrder;
     this.streamType = paramTRTCMixUser.streamType;
     this.pureAudio = paramTRTCMixUser.pureAudio;
+    this.inputType = paramTRTCMixUser.inputType;
   }
   
   public TRTCCloudDef$TRTCMixUser(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -45,6 +48,7 @@ public class TRTCCloudDef$TRTCMixUser
     this.height = paramInt4;
     this.zOrder = paramInt5;
     this.streamType = 0;
+    this.inputType = 0;
   }
   
   public String toString()
@@ -68,6 +72,8 @@ public class TRTCCloudDef$TRTCMixUser
     localStringBuilder.append(this.streamType);
     localStringBuilder.append(", pureAudio=");
     localStringBuilder.append(this.pureAudio);
+    localStringBuilder.append(", inputType=");
+    localStringBuilder.append(this.inputType);
     return localStringBuilder.toString();
   }
 }

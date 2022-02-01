@@ -45,7 +45,7 @@ public class OfflineFileMsgBackupHandler
     ((StringBuilder)localObject).append(str);
     ((StringBuilder)localObject).append(a(paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, paramInt));
     paramFileManagerEntity = ((StringBuilder)localObject).toString();
-    if (a(paramString, paramFileManagerEntity))
+    if (b(paramString, paramFileManagerEntity))
     {
       if (QLog.isColorLevel())
       {
@@ -64,16 +64,16 @@ public class OfflineFileMsgBackupHandler
   private String a(String paramString1, String paramString2, int paramInt)
   {
     String str2 = FMSettings.a().getDefaultThumbPath();
-    String str1 = QQFileUtils.a(paramInt, com.tencent.securitysdk.utils.MD5.a(paramString1));
+    String str1 = QQFileUtils.a(paramInt, com.tencent.securitysdk.utils.MD5.b(paramString1));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str2);
     localStringBuilder.append(str1);
     paramString1 = str1;
-    if (!FileUtil.a(localStringBuilder.toString()))
+    if (!FileUtil.b(localStringBuilder.toString()))
     {
       paramString1 = str1;
       if (!TextUtils.isEmpty(paramString2)) {
-        paramString1 = QQFileUtils.a(paramInt, com.tencent.securitysdk.utils.MD5.a(paramString2));
+        paramString1 = QQFileUtils.a(paramInt, com.tencent.securitysdk.utils.MD5.b(paramString2));
       }
     }
     return paramString1;
@@ -100,7 +100,28 @@ public class OfflineFileMsgBackupHandler
     catch (JSONException paramFileManagerEntity) {}
   }
   
-  private boolean a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  private void b(FileManagerEntity paramFileManagerEntity, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("sha"))
+      {
+        paramFileManagerEntity.strFileSHA = paramString.getString("sha");
+        return;
+      }
+      if (paramString.has("sha3")) {
+        paramFileManagerEntity.strFileSha3 = paramString.getString("sha3");
+      }
+      return;
+    }
+    catch (JSONException paramFileManagerEntity) {}
+  }
+  
+  private boolean c(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
   {
     Object localObject2 = paramMessageRecord.getExtInfoFromExtStr("_backup_ForwardUuid");
     if (paramMessageRecord.isMultiMsg) {
@@ -114,10 +135,10 @@ public class OfflineFileMsgBackupHandler
       return false;
     }
     IMsgBackupTempApi localIMsgBackupTempApi = (IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class);
-    Object localObject3 = localIMsgBackupTempApi.queryFileManagerEntityByFileUuidForMemory(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (String)localObject2);
+    Object localObject3 = localIMsgBackupTempApi.queryFileManagerEntityByFileUuidForMemory(this.c, (String)localObject2);
     Object localObject1 = localObject3;
     if (localObject3 == null) {
-      localObject1 = localIMsgBackupTempApi.queryEntityForDbByFileId(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (String)localObject2);
+      localObject1 = localIMsgBackupTempApi.queryEntityForDbByFileId(this.c, (String)localObject2);
     }
     if (localObject1 != null)
     {
@@ -126,7 +147,7 @@ public class OfflineFileMsgBackupHandler
       {
         ((FileManagerEntity)localObject1).uniseq = paramMessageRecord.uniseq;
       }
-      else if (localIMsgBackupTempApi.getMessageRecord(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.shmsgseq, paramMessageRecord.msgtype) == null)
+      else if (localIMsgBackupTempApi.getMessageRecord(this.c, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.shmsgseq, paramMessageRecord.msgtype) == null)
       {
         l = paramMessageRecord.msgseq;
         localObject2 = new StringBuilder();
@@ -144,7 +165,7 @@ public class OfflineFileMsgBackupHandler
         while (paramList.hasNext())
         {
           localObject2 = (MsgBackupResEntity)paramList.next();
-          if ((a((MsgBackupResEntity)localObject2)) && (b(paramMessageRecord, (MsgBackupResEntity)localObject2)))
+          if ((b((MsgBackupResEntity)localObject2)) && (b(paramMessageRecord, (MsgBackupResEntity)localObject2)))
           {
             localObject3 = a((MsgBackupResEntity)localObject2);
             if (!TextUtils.isEmpty((CharSequence)localObject3)) {
@@ -190,33 +211,12 @@ public class OfflineFileMsgBackupHandler
           }
         }
       }
-      localIMsgBackupTempApi.updateFileEntity(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (FileManagerEntity)localObject1);
+      localIMsgBackupTempApi.updateFileEntity(this.c, (FileManagerEntity)localObject1);
     }
     return bool1;
   }
   
-  private void b(FileManagerEntity paramFileManagerEntity, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("sha"))
-      {
-        paramFileManagerEntity.strFileSHA = paramString.getString("sha");
-        return;
-      }
-      if (paramString.has("sha3")) {
-        paramFileManagerEntity.strFileSha3 = paramString.getString("sha3");
-      }
-      return;
-    }
-    catch (JSONException paramFileManagerEntity) {}
-  }
-  
-  private void c(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  private void d(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
   {
     long l = paramMessageRecord.msgseq;
     Object localObject1 = new StringBuilder();
@@ -228,19 +228,19 @@ public class OfflineFileMsgBackupHandler
     if (paramMessageRecord.isMultiMsg)
     {
       a("OfflineFileMsgBackupHandler<QFile>", "createOfflineFileRecord", String.valueOf(paramMessageRecord.msgseq), "create multi file info.");
-      localObject1 = QQFileManagerUtil.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (ChatMessage)paramMessageRecord);
+      localObject1 = QQFileManagerUtil.a(this.c, (ChatMessage)paramMessageRecord);
     }
     else
     {
       a("OfflineFileMsgBackupHandler<QFile>", "createOfflineFileRecord", String.valueOf(paramMessageRecord.msgseq), "create normal file info.");
       localObject1 = new FileManagerEntity();
-      ((FileManagerEntity)localObject1).nSessionId = QQFileManagerUtil.a().longValue();
+      ((FileManagerEntity)localObject1).nSessionId = QQFileManagerUtil.g().longValue();
       ((FileManagerEntity)localObject1).uniseq = paramMessageRecord.uniseq;
       ((FileManagerEntity)localObject1).selfUin = paramMessageRecord.selfuin;
       ((FileManagerEntity)localObject1).isReaded = false;
       ((FileManagerEntity)localObject1).peerUin = paramMessageRecord.frienduin;
       ((FileManagerEntity)localObject1).peerType = paramMessageRecord.istroop;
-      ((FileManagerEntity)localObject1).peerNick = QQFileManagerUtil.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, ((FileManagerEntity)localObject1).peerUin, null, ((FileManagerEntity)localObject1).peerType);
+      ((FileManagerEntity)localObject1).peerNick = QQFileManagerUtil.a(this.c, ((FileManagerEntity)localObject1).peerUin, null, ((FileManagerEntity)localObject1).peerType);
       ((FileManagerEntity)localObject1).Uuid = paramMessageRecord.getExtInfoFromExtStr("_backup_ForwardUuid");
       ((FileManagerEntity)localObject1).fileName = paramMessageRecord.getExtInfoFromExtStr("_backup_ForwardFileName");
       localObject2 = paramMessageRecord.getExtInfoFromExtStr("_backup_ForwardSize");
@@ -295,7 +295,7 @@ public class OfflineFileMsgBackupHandler
             while (paramList.hasNext())
             {
               localObject2 = (MsgBackupResEntity)paramList.next();
-              if ((a((MsgBackupResEntity)localObject2)) && (b(paramMessageRecord, (MsgBackupResEntity)localObject2)))
+              if ((b((MsgBackupResEntity)localObject2)) && (b(paramMessageRecord, (MsgBackupResEntity)localObject2)))
               {
                 Object localObject3 = a((MsgBackupResEntity)localObject2);
                 if (!TextUtils.isEmpty((CharSequence)localObject3)) {
@@ -335,8 +335,8 @@ public class OfflineFileMsgBackupHandler
             }
           }
           paramMessageRecord = (IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class);
-          paramMessageRecord.insertToMemMap(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (FileManagerEntity)localObject1);
-          paramMessageRecord.insertToFMList(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, (FileManagerEntity)localObject1);
+          paramMessageRecord.insertToMemMap(this.c, (FileManagerEntity)localObject1);
+          paramMessageRecord.insertToFMList(this.c, (FileManagerEntity)localObject1);
         }
         return;
         localNumberFormatException1 = localNumberFormatException1;
@@ -357,7 +357,7 @@ public class OfflineFileMsgBackupHandler
       {
         localJSONObject.put("msgType", 5);
         localJSONObject.put("msgSubType", paramInt);
-        Object localObject1 = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).queryFileEntityByUniseq(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+        Object localObject1 = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).queryFileEntityByUniseq(this.c, paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop);
         if (localObject1 == null)
         {
           a("OfflineFileMsgBackupHandler<QFile>", "buildResourceInfo", String.valueOf(paramMessageRecord.msgseq), "file entity is null.");
@@ -542,7 +542,7 @@ public class OfflineFileMsgBackupHandler
         QLog.i("<QFile_Backup>", 1, ((StringBuilder)localObject3).toString());
       }
       localObject1 = a((String)localObject2, (String)localObject1, 7);
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
     }
     else if (paramMsgBackupResEntity.msgSubType == 11)
     {
@@ -620,7 +620,7 @@ public class OfflineFileMsgBackupHandler
     {
       localObject1 = paramMessageRecord;
     }
-    localObject2 = ((IMsgBackupTempApi)localObject2).queryFileEntityByUniseq(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, ((MessageRecord)localObject1).uniseq, ((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop);
+    localObject2 = ((IMsgBackupTempApi)localObject2).queryFileEntityByUniseq(this.c, ((MessageRecord)localObject1).uniseq, ((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop);
     if (localObject2 == null)
     {
       QLog.i("OfflineFileMsgBackupHandler<QFile>", 1, "handleExport: get offline file entity null. ");
@@ -694,7 +694,7 @@ public class OfflineFileMsgBackupHandler
     localStringBuilder.append(paramMessageRecord);
     localStringBuilder.append("]");
     QLog.i("<QFile_Backup>", 1, localStringBuilder.toString());
-    paramMessageRecord = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).queryEntityForDbByFileId(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord);
+    paramMessageRecord = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).queryEntityForDbByFileId(this.c, paramMessageRecord);
     if (paramMessageRecord == null) {
       return true;
     }
@@ -747,13 +747,13 @@ public class OfflineFileMsgBackupHandler
         }
       }
     }
-    if (a(paramMessageRecord, paramList))
+    if (c(paramMessageRecord, paramList))
     {
       a("OfflineFileMsgBackupHandler<QFile>", "handleImport", String.valueOf(paramMessageRecord.msgseq), "update offline file record.");
     }
     else
     {
-      c(paramMessageRecord, paramList);
+      d(paramMessageRecord, paramList);
       a("OfflineFileMsgBackupHandler<QFile>", "handleImport", String.valueOf(paramMessageRecord.msgseq), "create offline file record.");
     }
     a(paramMessageRecord);
@@ -761,7 +761,7 @@ public class OfflineFileMsgBackupHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.msgbackup.OfflineFileMsgBackupHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class AEGIFStickerListPart$7$2
   
   public void run()
   {
-    AEGIFStickerListPart.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEGIFStickerListPart$7.a).a(this.jdField_a_of_type_Int);
+    AEGIFStickerListPart.i(this.b.a).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGIFStickerListPart.7.2
  * JD-Core Version:    0.7.0.1
  */

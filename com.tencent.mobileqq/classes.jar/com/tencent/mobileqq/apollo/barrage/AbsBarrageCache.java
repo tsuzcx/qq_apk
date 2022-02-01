@@ -23,20 +23,10 @@ import java.util.HashMap;
 
 public abstract class AbsBarrageCache
 {
-  private static TextPaint a;
   private static HashMap<Float, Float> b = new HashMap();
   private static HashMap<String, Integer> c = new HashMap();
-  protected HashMap<String, WeakReference<Bitmap>> a;
-  
-  static
-  {
-    jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
-  }
-  
-  public AbsBarrageCache()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  private static TextPaint d = new TextPaint(1);
+  protected HashMap<String, WeakReference<Bitmap>> a = new HashMap();
   
   public static float a(float paramFloat)
   {
@@ -44,10 +34,10 @@ public abstract class AbsBarrageCache
     Object localObject = localFloat;
     if (localFloat == null)
     {
-      if (paramFloat != jdField_a_of_type_AndroidTextTextPaint.getTextSize()) {
-        jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+      if (paramFloat != d.getTextSize()) {
+        d.setTextSize(paramFloat);
       }
-      localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      localObject = d.getFontMetrics();
       localObject = Float.valueOf(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent + ((Paint.FontMetrics)localObject).leading);
       b.put(Float.valueOf(paramFloat), localObject);
     }
@@ -58,31 +48,64 @@ public abstract class AbsBarrageCache
   {
     if ((paramBarrage1 != null) && (paramBarrage2 != null))
     {
-      float f1 = a(paramBarrage1.jdField_g_of_type_Float);
-      float f2 = paramBarrage1.h * 2;
-      return (a(paramBarrage2.jdField_g_of_type_Float) + paramBarrage2.h * 2) / (f1 + f2);
+      float f1 = a(paramBarrage1.l);
+      float f2 = paramBarrage1.t * 2;
+      return (a(paramBarrage2.l) + paramBarrage2.t * 2) / (f1 + f2);
     }
     return 1.0F;
   }
   
-  public Bitmap a(Barrage paramBarrage)
+  public void a(Barrage paramBarrage)
+  {
+    if ((paramBarrage != null) && (!TextUtils.isEmpty(paramBarrage.a)))
+    {
+      if (paramBarrage.b) {
+        return;
+      }
+      if (d.getTextSize() != paramBarrage.l) {
+        d.setTextSize(paramBarrage.l);
+      }
+      d.setColor(paramBarrage.k);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramBarrage.a);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(Float.valueOf(paramBarrage.l));
+      String str = ((StringBuilder)localObject).toString();
+      Integer localInteger = (Integer)c.get(str);
+      localObject = localInteger;
+      if (localInteger == null)
+      {
+        localObject = Integer.valueOf((int)Math.ceil(StaticLayout.getDesiredWidth(paramBarrage.a, d)));
+        c.put(str, localObject);
+      }
+      localObject = new StaticLayout(paramBarrage.a, d, ((Integer)localObject).intValue(), Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, true);
+      paramBarrage.q = (((StaticLayout)localObject).getWidth() + paramBarrage.s * 2);
+      paramBarrage.r = (((StaticLayout)localObject).getHeight() + paramBarrage.t * 2);
+      paramBarrage.b = true;
+      paramBarrage.w = ((StaticLayout)localObject);
+    }
+  }
+  
+  public abstract void a(Barrage paramBarrage, Bitmap paramBitmap);
+  
+  public Bitmap b(Barrage paramBarrage)
   {
     Object localObject4;
     Object localObject1;
     Canvas localCanvas;
-    if ((paramBarrage != null) && (paramBarrage.e != 0))
+    if ((paramBarrage != null) && (paramBarrage.q != 0))
     {
-      if (paramBarrage.f == 0) {
+      if (paramBarrage.r == 0) {
         return null;
       }
-      localObject4 = b(paramBarrage);
+      localObject4 = c(paramBarrage);
       if ((localObject4 != null) && (!((Bitmap)localObject4).isRecycled()))
       {
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("find from cache: ");
-          ((StringBuilder)localObject1).append(paramBarrage.jdField_a_of_type_JavaLangCharSequence);
+          ((StringBuilder)localObject1).append(paramBarrage.a);
           QLog.d("[cmshow]AbsBarrageCache", 2, ((StringBuilder)localObject1).toString());
         }
         return localObject4;
@@ -91,7 +114,7 @@ public abstract class AbsBarrageCache
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("buildCache: ");
-        ((StringBuilder)localObject1).append(paramBarrage.jdField_a_of_type_JavaLangCharSequence);
+        ((StringBuilder)localObject1).append(paramBarrage.a);
         QLog.d("[cmshow]AbsBarrageCache", 2, ((StringBuilder)localObject1).toString());
       }
       localCanvas = new Canvas();
@@ -101,17 +124,17 @@ public abstract class AbsBarrageCache
       Object localObject2;
       try
       {
-        localObject2 = Bitmap.createBitmap(paramBarrage.e, paramBarrage.f, Bitmap.Config.ARGB_8888);
+        localObject2 = Bitmap.createBitmap(paramBarrage.q, paramBarrage.r, Bitmap.Config.ARGB_8888);
         localObject3 = localObject2;
         localObject4 = localObject2;
         localCanvas.setBitmap((Bitmap)localObject2);
         localObject3 = localObject2;
         localObject4 = localObject2;
-        if (!TextUtils.isEmpty(paramBarrage.jdField_a_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramBarrage.c))
         {
           localObject3 = localObject2;
           localObject4 = localObject2;
-          localObject1 = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramBarrage.jdField_a_of_type_JavaLangString);
+          localObject1 = (WeakReference)this.a.get(paramBarrage.c);
           if (localObject1 == null) {
             continue;
           }
@@ -125,11 +148,11 @@ public abstract class AbsBarrageCache
             localObject1 = localObject3;
             localObject3 = localObject2;
             localObject4 = localObject2;
-            if (new File(paramBarrage.jdField_a_of_type_JavaLangString).exists())
+            if (new File(paramBarrage.c).exists())
             {
               localObject3 = localObject2;
               localObject4 = localObject2;
-              localObject5 = new FileInputStream(paramBarrage.jdField_a_of_type_JavaLangString);
+              localObject5 = new FileInputStream(paramBarrage.c);
               localObject3 = localObject2;
               localObject4 = localObject2;
               BufferedInputStream localBufferedInputStream = new BufferedInputStream((InputStream)localObject5);
@@ -138,7 +161,7 @@ public abstract class AbsBarrageCache
               localObject1 = BitmapFactory.decodeStream(localBufferedInputStream);
               localObject3 = localObject2;
               localObject4 = localObject2;
-              this.jdField_a_of_type_JavaUtilHashMap.put(paramBarrage.jdField_a_of_type_JavaLangString, new WeakReference(localObject1));
+              this.a.put(paramBarrage.c, new WeakReference(localObject1));
               localObject3 = localObject2;
               localObject4 = localObject2;
               localBufferedInputStream.close();
@@ -157,7 +180,7 @@ public abstract class AbsBarrageCache
         {
           localObject3 = localObject2;
           localObject4 = localObject2;
-          localObject5 = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get("apollo_barrage_bg");
+          localObject5 = (WeakReference)this.a.get("apollo_barrage_bg");
           localObject3 = localObject1;
           if (localObject5 != null)
           {
@@ -172,10 +195,10 @@ public abstract class AbsBarrageCache
         {
           localObject3 = localObject2;
           localObject4 = localObject2;
-          localObject1 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130838408, null);
+          localObject1 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130838466, null);
           localObject3 = localObject2;
           localObject4 = localObject2;
-          this.jdField_a_of_type_JavaUtilHashMap.put("apollo_barrage_bg", new WeakReference(localObject1));
+          this.a.put("apollo_barrage_bg", new WeakReference(localObject1));
         }
         localObject3 = localObject2;
         localObject4 = localObject2;
@@ -184,13 +207,13 @@ public abstract class AbsBarrageCache
         {
           localObject3 = localObject2;
           localObject4 = localObject2;
-          new NinePatch((Bitmap)localObject1, (byte[])localObject5, null).draw(localCanvas, new Rect(0, 0, paramBarrage.e, paramBarrage.f), null);
+          new NinePatch((Bitmap)localObject1, (byte[])localObject5, null).draw(localCanvas, new Rect(0, 0, paramBarrage.q, paramBarrage.r), null);
         }
         else
         {
           localObject3 = localObject2;
           localObject4 = localObject2;
-          localCanvas.drawBitmap((Bitmap)localObject1, new Rect(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight()), new Rect(0, 0, paramBarrage.e, paramBarrage.f), null);
+          localCanvas.drawBitmap((Bitmap)localObject1, new Rect(0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight()), new Rect(0, 0, paramBarrage.q, paramBarrage.r), null);
         }
       }
       catch (Exception localException)
@@ -211,10 +234,10 @@ public abstract class AbsBarrageCache
           localObject2 = localObject4;
         }
       }
-      if (paramBarrage.jdField_a_of_type_AndroidTextStaticLayout != null)
+      if (paramBarrage.w != null)
       {
-        localCanvas.translate(paramBarrage.jdField_g_of_type_Int, paramBarrage.h);
-        paramBarrage.jdField_a_of_type_AndroidTextStaticLayout.draw(localCanvas);
+        localCanvas.translate(paramBarrage.s, paramBarrage.t);
+        paramBarrage.w.draw(localCanvas);
       }
       a(paramBarrage, (Bitmap)localObject2);
       return localObject2;
@@ -222,44 +245,11 @@ public abstract class AbsBarrageCache
     }
   }
   
-  public void a(Barrage paramBarrage)
-  {
-    if ((paramBarrage != null) && (!TextUtils.isEmpty(paramBarrage.jdField_a_of_type_JavaLangCharSequence)))
-    {
-      if (paramBarrage.jdField_a_of_type_Boolean) {
-        return;
-      }
-      if (jdField_a_of_type_AndroidTextTextPaint.getTextSize() != paramBarrage.jdField_g_of_type_Float) {
-        jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramBarrage.jdField_g_of_type_Float);
-      }
-      jdField_a_of_type_AndroidTextTextPaint.setColor(paramBarrage.b);
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramBarrage.jdField_a_of_type_JavaLangCharSequence);
-      ((StringBuilder)localObject).append("_");
-      ((StringBuilder)localObject).append(Float.valueOf(paramBarrage.jdField_g_of_type_Float));
-      String str = ((StringBuilder)localObject).toString();
-      Integer localInteger = (Integer)c.get(str);
-      localObject = localInteger;
-      if (localInteger == null)
-      {
-        localObject = Integer.valueOf((int)Math.ceil(StaticLayout.getDesiredWidth(paramBarrage.jdField_a_of_type_JavaLangCharSequence, jdField_a_of_type_AndroidTextTextPaint)));
-        c.put(str, localObject);
-      }
-      localObject = new StaticLayout(paramBarrage.jdField_a_of_type_JavaLangCharSequence, jdField_a_of_type_AndroidTextTextPaint, ((Integer)localObject).intValue(), Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, true);
-      paramBarrage.e = (((StaticLayout)localObject).getWidth() + paramBarrage.jdField_g_of_type_Int * 2);
-      paramBarrage.f = (((StaticLayout)localObject).getHeight() + paramBarrage.h * 2);
-      paramBarrage.jdField_a_of_type_Boolean = true;
-      paramBarrage.jdField_a_of_type_AndroidTextStaticLayout = ((StaticLayout)localObject);
-    }
-  }
-  
-  public abstract void a(Barrage paramBarrage, Bitmap paramBitmap);
-  
-  public abstract Bitmap b(Barrage paramBarrage);
+  public abstract Bitmap c(Barrage paramBarrage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.AbsBarrageCache
  * JD-Core Version:    0.7.0.1
  */

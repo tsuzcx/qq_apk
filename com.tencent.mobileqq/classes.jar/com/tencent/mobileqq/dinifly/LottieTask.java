@@ -2,9 +2,9 @@ package com.tencent.mobileqq.dinifly;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.util.Log;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -23,13 +23,13 @@ public class LottieTask<T>
   private volatile LottieResult<T> result = null;
   private final Set<LottieListener<T>> successListeners = new LinkedHashSet(1);
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public LottieTask(Callable<LottieResult<T>> paramCallable)
   {
     this(paramCallable, false);
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   LottieTask(Callable<LottieResult<T>> paramCallable, boolean paramBoolean)
   {
     if (paramBoolean) {
@@ -54,7 +54,7 @@ public class LottieTask<T>
       Object localObject = new ArrayList(this.failureListeners);
       if (((List)localObject).isEmpty())
       {
-        Log.w("LOTTIE", "Lottie encountered an error but no failure listener was added.", paramThrowable);
+        Logger.warning("Lottie encountered an error but no failure listener was added:", paramThrowable);
         return;
       }
       localObject = ((List)localObject).iterator();
@@ -159,7 +159,7 @@ public class LottieTask<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieTask
  * JD-Core Version:    0.7.0.1
  */

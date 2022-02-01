@@ -33,7 +33,7 @@ public class QWalletApiImpl
   
   public long convertStringToTime(String paramString)
   {
-    return QWalletTools.b(paramString);
+    return QWalletTools.f(paramString);
   }
   
   public String cutTextByPix(Context paramContext, String paramString, float paramFloat, TextPaint paramTextPaint)
@@ -65,7 +65,7 @@ public class QWalletApiImpl
   
   public BaseQQAppInterface getQQAppInterface()
   {
-    return QWalletTools.a();
+    return QWalletTools.b();
   }
   
   public QIPCModule getQWalletIPCModule()
@@ -95,7 +95,7 @@ public class QWalletApiImpl
   
   public Object readObject(String paramString)
   {
-    return QWalletTools.a(paramString);
+    return QWalletTools.e(paramString);
   }
   
   public void reportTenpay(int paramInt, String paramString)
@@ -137,7 +137,7 @@ public class QWalletApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletApiImpl
  * JD-Core Version:    0.7.0.1
  */

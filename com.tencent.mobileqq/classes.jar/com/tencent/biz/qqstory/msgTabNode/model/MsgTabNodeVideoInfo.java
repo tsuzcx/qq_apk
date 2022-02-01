@@ -21,28 +21,21 @@ import org.json.JSONObject;
 
 public class MsgTabNodeVideoInfo
 {
-  public int a;
   public long a;
+  public boolean b;
   @Nullable
-  public StoryVideoItem a;
+  public String c = "";
   @Nullable
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
+  public String d = "";
   @Nullable
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public MsgTabNodeVideoInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = null;
-  }
+  public StoryVideoItem e = null;
+  public long f;
+  public int g;
+  public String h;
+  public String i;
+  public int j;
+  public String k;
+  public String l;
   
   public static MsgTabNodeVideoInfo a(List<MsgTabNodeVideoInfo> paramList, long paramLong)
   {
@@ -55,7 +48,7 @@ public class MsgTabNodeVideoInfo
       while (paramList.hasNext())
       {
         MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)paramList.next();
-        if (paramLong == localMsgTabNodeVideoInfo.jdField_a_of_type_Long) {
+        if (paramLong == localMsgTabNodeVideoInfo.a) {
           return localMsgTabNodeVideoInfo;
         }
       }
@@ -68,24 +61,24 @@ public class MsgTabNodeVideoInfo
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("videoIndex", this.jdField_a_of_type_Long);
-      localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("vid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("feedId", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("recommandId", this.jdField_b_of_type_Long);
-      localJSONObject.put("showBottom", this.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(this.c)) {
-        localJSONObject.put("bottomWording", this.c);
+      localJSONObject.put("videoIndex", this.a);
+      localJSONObject.put("didRead", this.b);
+      localJSONObject.put("vid", this.c);
+      localJSONObject.put("feedId", this.d);
+      localJSONObject.put("recommandId", this.f);
+      localJSONObject.put("showBottom", this.g);
+      if (!TextUtils.isEmpty(this.h)) {
+        localJSONObject.put("bottomWording", this.h);
       }
-      if (!TextUtils.isEmpty(this.d)) {
-        localJSONObject.put("bottomLink", this.d);
+      if (!TextUtils.isEmpty(this.i)) {
+        localJSONObject.put("bottomLink", this.i);
       }
-      localJSONObject.put("showText", this.jdField_b_of_type_Int);
-      if (!TextUtils.isEmpty(this.e)) {
-        localJSONObject.put("textWording", this.e);
+      localJSONObject.put("showText", this.j);
+      if (!TextUtils.isEmpty(this.k)) {
+        localJSONObject.put("textWording", this.k);
       }
-      if (!TextUtils.isEmpty(this.f)) {
-        localJSONObject.put("textLink", this.f);
+      if (!TextUtils.isEmpty(this.l)) {
+        localJSONObject.put("textLink", this.l);
       }
       return localJSONObject;
     }
@@ -98,56 +91,56 @@ public class MsgTabNodeVideoInfo
   
   public void a(qqstory_service.MsgTabNodeVideoInfo paramMsgTabNodeVideoInfo, ArrayDeque<String> paramArrayDeque)
   {
-    this.jdField_a_of_type_Long = paramMsgTabNodeVideoInfo.uint64_video_index.get();
+    this.a = paramMsgTabNodeVideoInfo.uint64_video_index.get();
     boolean bool;
     if (paramMsgTabNodeVideoInfo.uint32_did_read.get() != 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
     if (paramMsgTabNodeVideoInfo.vid.has()) {
-      this.jdField_a_of_type_JavaLangString = paramMsgTabNodeVideoInfo.vid.get().toStringUtf8();
+      this.c = paramMsgTabNodeVideoInfo.vid.get().toStringUtf8();
     }
     if (paramMsgTabNodeVideoInfo.feed_id.has())
     {
-      this.jdField_b_of_type_JavaLangString = paramMsgTabNodeVideoInfo.feed_id.get().toStringUtf8();
-      if (!TextUtils.equals(this.jdField_b_of_type_JavaLangString, (CharSequence)paramArrayDeque.peek())) {
-        paramArrayDeque.push(this.jdField_b_of_type_JavaLangString);
+      this.d = paramMsgTabNodeVideoInfo.feed_id.get().toStringUtf8();
+      if (!TextUtils.equals(this.d, (CharSequence)paramArrayDeque.peek())) {
+        paramArrayDeque.push(this.d);
       }
     }
     else
     {
       paramArrayDeque = (String)paramArrayDeque.peek();
       if (paramArrayDeque != null) {
-        this.jdField_b_of_type_JavaLangString = paramArrayDeque;
+        this.d = paramArrayDeque;
       }
     }
     if (paramMsgTabNodeVideoInfo.video_info.has())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = new StoryVideoItem();
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.convertFrom(paramMsgTabNodeVideoInfo.video_info);
+      this.e = new StoryVideoItem();
+      this.e.convertFrom(paramMsgTabNodeVideoInfo.video_info);
     }
     if (paramMsgTabNodeVideoInfo.recommand_id.has()) {
-      this.jdField_b_of_type_Long = paramMsgTabNodeVideoInfo.recommand_id.get();
+      this.f = paramMsgTabNodeVideoInfo.recommand_id.get();
     }
     if (paramMsgTabNodeVideoInfo.show_bottom.has()) {
-      this.jdField_a_of_type_Int = paramMsgTabNodeVideoInfo.show_bottom.get();
+      this.g = paramMsgTabNodeVideoInfo.show_bottom.get();
     }
     if (paramMsgTabNodeVideoInfo.bottom_wording.has()) {
-      this.c = paramMsgTabNodeVideoInfo.bottom_wording.get();
+      this.h = paramMsgTabNodeVideoInfo.bottom_wording.get();
     }
     if (paramMsgTabNodeVideoInfo.bottom_link.has()) {
-      this.d = paramMsgTabNodeVideoInfo.bottom_link.get();
+      this.i = paramMsgTabNodeVideoInfo.bottom_link.get();
     }
     if (paramMsgTabNodeVideoInfo.show_text.has()) {
-      this.jdField_b_of_type_Int = paramMsgTabNodeVideoInfo.show_text.get();
+      this.j = paramMsgTabNodeVideoInfo.show_text.get();
     }
     if (paramMsgTabNodeVideoInfo.text_wording.has()) {
-      this.e = paramMsgTabNodeVideoInfo.text_wording.get();
+      this.k = paramMsgTabNodeVideoInfo.text_wording.get();
     }
     if (paramMsgTabNodeVideoInfo.text_link.has()) {
-      this.f = paramMsgTabNodeVideoInfo.text_link.get();
+      this.l = paramMsgTabNodeVideoInfo.text_link.get();
     }
   }
   
@@ -155,24 +148,24 @@ public class MsgTabNodeVideoInfo
   {
     try
     {
-      this.jdField_a_of_type_Long = paramJSONObject.getLong("videoIndex");
-      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("vid", "");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("feedId", "");
-      this.jdField_b_of_type_Long = paramJSONObject.optLong("recommandId");
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("showBottom");
-      this.c = paramJSONObject.optString("bottomWording", "");
-      this.d = paramJSONObject.optString("bottomLink", "");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("showText");
-      this.e = paramJSONObject.optString("textWording", "");
-      this.f = paramJSONObject.optString("textLink", "");
+      this.a = paramJSONObject.getLong("videoIndex");
+      this.b = paramJSONObject.getBoolean("didRead");
+      this.c = paramJSONObject.optString("vid", "");
+      this.d = paramJSONObject.optString("feedId", "");
+      this.f = paramJSONObject.optLong("recommandId");
+      this.g = paramJSONObject.optInt("showBottom");
+      this.h = paramJSONObject.optString("bottomWording", "");
+      this.i = paramJSONObject.optString("bottomLink", "");
+      this.j = paramJSONObject.optInt("showText");
+      this.k = paramJSONObject.optString("textWording", "");
+      this.l = paramJSONObject.optString("textLink", "");
     }
     catch (JSONException paramJSONObject)
     {
       paramJSONObject.printStackTrace();
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.c)) {
+      this.e = ((StoryManager)SuperManager.a(5)).a(this.c);
     }
   }
   
@@ -185,45 +178,45 @@ public class MsgTabNodeVideoInfo
       return false;
     }
     paramObject = (MsgTabNodeVideoInfo)paramObject;
-    return this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long;
+    return this.a == paramObject.a;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MsgTabNodeVideoInfo{videoIndex=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", didRead=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", vid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", feedId='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", storyItem=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    localStringBuilder.append(", recommandId=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", showBottom=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", bottomWording=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(", bottomLink=");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(", showText=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", textWording=");
     localStringBuilder.append(this.e);
-    localStringBuilder.append(", textLink=");
+    localStringBuilder.append(", recommandId=");
     localStringBuilder.append(this.f);
+    localStringBuilder.append(", showBottom=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", bottomWording=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", bottomLink=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", showText=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", textWording=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", textLink=");
+    localStringBuilder.append(this.l);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVideoInfo
  * JD-Core Version:    0.7.0.1
  */

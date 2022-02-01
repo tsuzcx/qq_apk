@@ -80,7 +80,7 @@ public class QzoneContactsFeedUtils
           paramString = (String)localObject;
           if (localFriendsManager != null)
           {
-            paramString = localFriendsManager.e(str3);
+            paramString = localFriendsManager.m(str3);
             if (paramString != null) {
               localObject = paramString.getFriendNickWithAlias();
             }
@@ -111,7 +111,7 @@ public class QzoneContactsFeedUtils
     if (localObject1 == null) {
       return null;
     }
-    Object localObject2 = ((FriendsManager)localObject1).c();
+    Object localObject2 = ((FriendsManager)localObject1).j();
     if (localObject2 != null)
     {
       localObject1 = new ArrayList(((List)localObject2).size());
@@ -150,7 +150,7 @@ public class QzoneContactsFeedUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonestatus.QzoneContactsFeedUtils
  * JD-Core Version:    0.7.0.1
  */

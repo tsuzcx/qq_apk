@@ -26,7 +26,7 @@ public class TroopFeedParserHelper$CommonFeedParser
         localStringBuilder.append("");
         localStringBuilder.append(paramJSONObject.getLong("app_id"));
         localTroopFeedItem.ex_1 = localStringBuilder.toString();
-        if ((!QQStoryManager.i()) && (localTroopFeedItem.isStoryType()))
+        if ((!QQStoryManager.o()) && (localTroopFeedItem.isStoryType()))
         {
           if (!QLog.isColorLevel()) {
             break label178;
@@ -56,7 +56,7 @@ public class TroopFeedParserHelper$CommonFeedParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.CommonFeedParser
  * JD-Core Version:    0.7.0.1
  */

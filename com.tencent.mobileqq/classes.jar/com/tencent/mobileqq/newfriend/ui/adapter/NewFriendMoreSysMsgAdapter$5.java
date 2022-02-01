@@ -37,11 +37,11 @@ class NewFriendMoreSysMsgAdapter$5
   {
     label639:
     Object localObject4;
-    synchronized (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    synchronized (this.this$0.b)
     {
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      long l = FriendSystemMsgController.a().a(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      List localList = NewFriendMoreSysMsgAdapter.a(this.this$0).getAIOList(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l);
+      this.this$0.b.clear();
+      long l = FriendSystemMsgController.a().d(this.this$0.a);
+      List localList = NewFriendMoreSysMsgAdapter.d(this.this$0).getAIOList(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l);
       if ((localList != null) && (localList.size() > 0))
       {
         ArrayList localArrayList = new ArrayList(localList.size());
@@ -59,7 +59,7 @@ class NewFriendMoreSysMsgAdapter$5
             if (localMessageForSystemMsg.structMsg == null) {
               localMessageForSystemMsg.parse();
             }
-            if ((localMessageForSystemMsg.structMsg != null) && (localMessageForSystemMsg.structMsg.msg != null) && ((localMessageForSystemMsg.structMsg.msg.sub_type.get() != 13) || (!NewFriendMoreSysMsgAdapter.a(this.this$0).isFriend(String.valueOf(localMessageForSystemMsg.structMsg.req_uin.get())))))
+            if ((localMessageForSystemMsg.structMsg != null) && (localMessageForSystemMsg.structMsg.msg != null) && ((localMessageForSystemMsg.structMsg.msg.sub_type.get() != 13) || (!NewFriendMoreSysMsgAdapter.e(this.this$0).isFriend(String.valueOf(localMessageForSystemMsg.structMsg.req_uin.get())))))
             {
               if ((localMessageForSystemMsg.structMsg.msg.uint32_source_flag.get() & 0x8) == 8)
               {
@@ -67,13 +67,13 @@ class NewFriendMoreSysMsgAdapter$5
                 l = localMessageForSystemMsg.structMsg.msg.uint64_discuss_uin.get();
                 if (l != 0L)
                 {
-                  ??? = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getDiscussionNameCanNull(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface, String.valueOf(l));
+                  ??? = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getDiscussionNameCanNull(this.this$0.a, String.valueOf(l));
                   if (TextUtils.isEmpty((CharSequence)???)) {
-                    ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getDiscussInfo(l, this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
+                    ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getDiscussInfo(l, this.this$0.a);
                   }
                   try
                   {
-                    ConcurrentHashMap localConcurrentHashMap = this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+                    ConcurrentHashMap localConcurrentHashMap = this.this$0.b;
                     if (??? != null) {
                       break label639;
                     }
@@ -100,11 +100,11 @@ class NewFriendMoreSysMsgAdapter$5
         }
       }
       ??? = new ArrayList();
-      Object localObject2 = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getQIMNotifyAddFriendsMsg(true, this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      Object localObject2 = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getQIMNotifyAddFriendsMsg(true, this.this$0.a);
       if (((ArrayList)localObject2).size() > 0) {
         ((ArrayList)???).addAll((Collection)localObject2);
       }
-      localObject2 = NewFriendMoreSysMsgAdapter.a(this.this$0).getPhoneContactAddList();
+      localObject2 = NewFriendMoreSysMsgAdapter.f(this.this$0).getPhoneContactAddList();
       if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
       {
         localObject2 = ((ArrayList)((ArrayList)localObject2).clone()).iterator();
@@ -112,15 +112,15 @@ class NewFriendMoreSysMsgAdapter$5
           ((ArrayList)???).add(new PhoneContactAddMessage((PhoneContactAdd)((Iterator)localObject2).next()));
         }
       }
-      Collections.sort((List)???, NewFriendMoreSysMsgAdapter.a(this.this$0));
-      this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(new NewFriendMoreSysMsgAdapter.5.1(this, (ArrayList)???));
+      Collections.sort((List)???, NewFriendMoreSysMsgAdapter.g(this.this$0));
+      this.this$0.a.runOnUiThread(new NewFriendMoreSysMsgAdapter.5.1(this, (ArrayList)???));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.NewFriendMoreSysMsgAdapter.5
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,32 +26,31 @@ import org.json.JSONObject;
 public class CMShowKitFileManager
   extends BaseJsPlugin
 {
-  private static Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
-  private static String jdField_a_of_type_JavaLangString;
-  private static ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private static Timer jdField_a_of_type_JavaUtilTimer;
-  private static JSONArray jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
-  private static final String b;
-  private static final String c;
+  private static JSONArray a = new JSONArray();
+  private static ArrayList<String> b = new ArrayList();
+  private static String c;
   private static final String d;
-  private static String e = "download url is empty";
-  private static String f = "cache exists";
+  private static final String e;
+  private static final String f;
+  private static String g = "download url is empty";
+  private static String h = "cache exists";
+  private static Timer i;
+  private static Downloader.DownloadListener j;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir().getPath());
     localStringBuilder.append("/mini_cmshow/");
-    b = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b);
-    localStringBuilder.append("/dress/");
-    c = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b);
-    localStringBuilder.append("/face/");
     d = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d);
+    localStringBuilder.append("/dress/");
+    e = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d);
+    localStringBuilder.append("/face/");
+    f = localStringBuilder.toString();
   }
   
   private static String a(String paramString1, IMiniAppContext paramIMiniAppContext, String paramString2)
@@ -61,7 +60,7 @@ public class CMShowKitFileManager
     ((StringBuilder)localObject).append(paramString2);
     ((StringBuilder)localObject).append("/");
     paramString2 = ((StringBuilder)localObject).toString();
-    paramIMiniAppContext = ((MiniAppFileManager)paramIMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPathByWxFilePath(paramString2);
+    paramIMiniAppContext = ((IMiniAppFileManager)paramIMiniAppContext.getManager(IMiniAppFileManager.class)).getTmpPathByWxFilePath(paramString2);
     localObject = new File(paramIMiniAppContext);
     if (((File)localObject).exists()) {
       FileUtils.delete(paramIMiniAppContext, true);
@@ -95,9 +94,9 @@ public class CMShowKitFileManager
     }
     File localFile;
     if (paramString2 == "faceData") {
-      localFile = new File(d);
+      localFile = new File(f);
     } else {
-      localFile = new File(c);
+      localFile = new File(e);
     }
     if (!localFile.exists()) {
       localFile.mkdirs();
@@ -111,15 +110,15 @@ public class CMShowKitFileManager
     localStringBuilder.append(".zip");
     Object localObject = new File(localStringBuilder.toString());
     if (((File)localObject).exists()) {
-      return f;
+      return h;
     }
     ((File)localObject).getParentFile().mkdirs();
     paramString1 = new DownloadTask(paramString1, (File)localObject);
-    paramString1.p = true;
-    paramString1.n = true;
-    paramString1.b = 2;
-    paramString1.q = true;
-    paramString1.r = true;
+    paramString1.N = true;
+    paramString1.J = true;
+    paramString1.e = 2;
+    paramString1.P = true;
+    paramString1.Q = true;
     if (DownloaderFactory.a(paramString1, null) == 0)
     {
       if (!((File)localObject).exists())
@@ -166,32 +165,16 @@ public class CMShowKitFileManager
     return null;
   }
   
-  private static String a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null)
-    {
-      QLog.e("CMShowKitFileManager", 1, "resultData is null");
-      return "";
-    }
-    paramJSONObject = paramJSONObject.optString("extend_data");
-    if (TextUtils.isEmpty(paramJSONObject))
-    {
-      QLog.e("TAG", 1, "resultData.extend_data is empty!");
-      return "";
-    }
-    return paramJSONObject.split(",")[3].split("\"")[3];
-  }
-  
   private static Map<String, String> a(JSONObject paramJSONObject)
   {
     HashMap localHashMap = new HashMap();
     try
     {
       JSONArray localJSONArray = paramJSONObject.getJSONArray("avtr").getJSONObject(0).getJSONObject("avatar3D").getJSONArray("dress_infos");
-      int i = 0;
-      while (i < localJSONArray.length())
+      int k = 0;
+      while (k < localJSONArray.length())
       {
-        JSONObject localJSONObject = (JSONObject)localJSONArray.get(i);
+        JSONObject localJSONObject = (JSONObject)localJSONArray.get(k);
         Object localObject;
         try
         {
@@ -203,7 +186,7 @@ public class CMShowKitFileManager
           localObject = null;
         }
         localHashMap.put(localJSONObject.optString("dress_url"), localObject);
-        i += 1;
+        k += 1;
       }
       paramJSONObject.getJSONArray("avtr").getJSONObject(0).getJSONObject("avatar3D").remove("dress_infos");
       return localHashMap;
@@ -220,8 +203,8 @@ public class CMShowKitFileManager
     try
     {
       b();
-      jdField_a_of_type_JavaUtilTimer = new Timer();
-      jdField_a_of_type_JavaUtilTimer.schedule(new CMShowKitFileManager.1(), paramLong);
+      i = new Timer();
+      i.schedule(new CMShowKitFileManager.1(), paramLong);
       return;
     }
     finally
@@ -235,17 +218,17 @@ public class CMShowKitFileManager
   {
     if (TextUtils.isEmpty(paramString))
     {
-      QLog.e("CMShowKitFileManager", 1, e);
+      QLog.e("CMShowKitFileManager", 1, g);
       c();
       return;
     }
     String str = a(paramString, "faceData");
     paramString = str;
-    if (str.equals(f))
+    if (str.equals(h))
     {
       QLog.i("CMShowKitFileManager", 1, "read dressId faceData res from cache");
       paramString = new StringBuilder();
-      paramString.append(d);
+      paramString.append(f);
       paramString.append("/faceData/");
       File localFile = new File(paramString.toString());
       paramString = str;
@@ -259,8 +242,8 @@ public class CMShowKitFileManager
       c();
       return;
     }
-    jdField_a_of_type_JavaLangString = a(paramString, paramIMiniAppContext, "faceData");
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    c = a(paramString, paramIMiniAppContext, "faceData");
+    if (TextUtils.isEmpty(c))
     {
       QLog.e("CMShowKitFileManager", 1, "copy error.");
       c();
@@ -268,7 +251,7 @@ public class CMShowKitFileManager
     }
     try
     {
-      paramJSONObject.put("local_face_data", jdField_a_of_type_JavaLangString);
+      paramJSONObject.put("local_face_data", c);
       QLog.i("CMShowKitFileManager", 1, "gameFaceData ready.");
       return;
     }
@@ -288,14 +271,14 @@ public class CMShowKitFileManager
       Object localObject = (String)localIterator.next();
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        QLog.e("CMShowKitFileManager", 1, e);
+        QLog.e("CMShowKitFileManager", 1, g);
         c();
         return;
       }
       String str2 = (String)paramMap.get(localObject);
       String str1 = a((String)localObject, str2);
       localObject = str1;
-      if (str1.equals(f))
+      if (str1.equals(h))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("read dressId ");
@@ -303,7 +286,7 @@ public class CMShowKitFileManager
         ((StringBuilder)localObject).append(" res from cache");
         QLog.i("CMShowKitFileManager", 1, ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(c);
+        ((StringBuilder)localObject).append(e);
         ((StringBuilder)localObject).append("/");
         ((StringBuilder)localObject).append(str2);
         ((StringBuilder)localObject).append("/");
@@ -326,11 +309,11 @@ public class CMShowKitFileManager
         c();
         return;
       }
-      if (!a(jdField_a_of_type_OrgJsonJSONArray, (String)localObject)) {}
+      if (!a(a, (String)localObject)) {}
       try
       {
-        jdField_a_of_type_OrgJsonJSONArray.put(localObject);
-        paramJSONObject.put("local_dress_res", jdField_a_of_type_OrgJsonJSONArray);
+        a.put(localObject);
+        paramJSONObject.put("local_dress_res", a);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("dressRes id : ");
         ((StringBuilder)localObject).append(str2);
@@ -344,9 +327,9 @@ public class CMShowKitFileManager
       }
       c();
       return;
-      if ((jdField_a_of_type_OrgJsonJSONArray.length() == paramMap.keySet().size()) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
+      if ((a.length() == paramMap.keySet().size()) && (!TextUtils.isEmpty(c)))
       {
-        jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(null, null);
+        j.onDownloadSucceed(null, null);
         b();
       }
     }
@@ -355,10 +338,10 @@ public class CMShowKitFileManager
   public static void a(JSONObject paramJSONObject, IMiniAppContext paramIMiniAppContext, Downloader.DownloadListener paramDownloadListener)
   {
     a(5000L);
-    jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = paramDownloadListener;
-    jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
+    j = paramDownloadListener;
+    a = new JSONArray();
     d();
-    paramDownloadListener = a(paramJSONObject);
+    paramDownloadListener = b(paramJSONObject);
     Map localMap = a(paramJSONObject);
     try
     {
@@ -371,7 +354,7 @@ public class CMShowKitFileManager
         a(localMap, paramIMiniAppContext, paramJSONObject);
         return;
       }
-      QLog.e("CMShowKitFileManager", 1, e);
+      QLog.e("CMShowKitFileManager", 1, g);
       c();
       return;
     }
@@ -389,26 +372,42 @@ public class CMShowKitFileManager
       if (paramJSONArray.length() == 0) {
         return false;
       }
-      int i = 0;
-      while (i < paramJSONArray.length())
+      int k = 0;
+      while (k < paramJSONArray.length())
       {
-        if (paramString.equals(paramJSONArray.optString(i))) {
+        if (paramString.equals(paramJSONArray.optString(k))) {
           return true;
         }
-        i += 1;
+        k += 1;
       }
     }
     return false;
+  }
+  
+  private static String b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null)
+    {
+      QLog.e("CMShowKitFileManager", 1, "resultData is null");
+      return "";
+    }
+    paramJSONObject = paramJSONObject.optString("extend_data");
+    if (TextUtils.isEmpty(paramJSONObject))
+    {
+      QLog.e("TAG", 1, "resultData.extend_data is empty!");
+      return "";
+    }
+    return paramJSONObject.split(",")[3].split("\"")[3];
   }
   
   private static void b()
   {
     try
     {
-      if (jdField_a_of_type_JavaUtilTimer != null)
+      if (i != null)
       {
-        jdField_a_of_type_JavaUtilTimer.cancel();
-        jdField_a_of_type_JavaUtilTimer = null;
+        i.cancel();
+        i = null;
       }
       return;
     }
@@ -422,13 +421,13 @@ public class CMShowKitFileManager
   private static void c()
   {
     QLog.i("CMShowKitFileManager", 1, "callBackError.");
-    jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(null, null);
+    j.onDownloadFailed(null, null);
     b();
   }
   
   private static void d()
   {
-    File localFile = new File(b);
+    File localFile = new File(d);
     if ((!localFile.exists()) || (!localFile.isDirectory())) {
       localFile.mkdirs();
     }
@@ -436,7 +435,7 @@ public class CMShowKitFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.CMShowKitFileManager
  * JD-Core Version:    0.7.0.1
  */

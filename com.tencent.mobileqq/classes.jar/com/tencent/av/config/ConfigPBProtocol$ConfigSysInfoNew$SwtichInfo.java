@@ -2,7 +2,7 @@ package com.tencent.av.config;
 
 class ConfigPBProtocol$ConfigSysInfoNew$SwtichInfo
 {
-  byte jdField_a_of_type_Byte = 1;
+  byte a = 1;
   byte b = 0;
   byte c = 1;
   byte d = 1;

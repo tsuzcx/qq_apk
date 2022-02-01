@@ -20,86 +20,68 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/playfeeds/VideoFeedsStressFollowHelper;", "", "stressLayout", "Lcom/tencent/mobileqq/kandian/biz/playfeeds/VideoFeedsStressFollowLayout;", "originAvatarLayout", "Landroid/view/View;", "(Lcom/tencent/mobileqq/kandian/biz/playfeeds/VideoFeedsStressFollowLayout;Landroid/view/View;)V", "hasJudgeShowStressLayout", "", "isAnimating", "getOriginAvatarLayout", "()Landroid/view/View;", "originFollowBtn", "getStressLayout", "()Lcom/tencent/mobileqq/kandian/biz/playfeeds/VideoFeedsStressFollowLayout;", "canDoStressAnim", "percent", "", "setStressState", "", "state", "Lcom/tencent/mobileqq/kandian/biz/video/playfeeds/entity/StressState;", "startShrinkAnim", "startStretchAnim", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "updateVideoPlayPercent", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class VideoFeedsStressFollowHelper
 {
-  private static float jdField_a_of_type_Float;
-  private static int jdField_a_of_type_Int;
-  public static final VideoFeedsStressFollowHelper.Companion a;
-  private static int jdField_b_of_type_Int;
-  private static boolean c;
-  private final View jdField_a_of_type_AndroidViewView;
+  public static final VideoFeedsStressFollowHelper.Companion a = new VideoFeedsStressFollowHelper.Companion(null);
+  private static int g;
+  private static boolean h;
+  private static float i;
+  private static int j;
+  private final View b;
+  private boolean c;
+  private boolean d;
   @NotNull
-  private final VideoFeedsStressFollowLayout jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout;
-  private boolean jdField_a_of_type_Boolean;
+  private final VideoFeedsStressFollowLayout e;
   @NotNull
-  private final View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
+  private final View f;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowHelper$Companion = new VideoFeedsStressFollowHelper.Companion(null);
     Object localObject = Aladdin.getConfig(359);
     boolean bool = false;
     if (((AladdinConfig)localObject).getIntegerFromString("rij_is_strengthen_follow", 0) == 1) {
       bool = true;
     }
-    c = bool;
-    jdField_a_of_type_Float = Aladdin.getConfig(359).getFloatFromString("rij_show_strengthen_follow_timeinterval", 0.8F);
-    jdField_b_of_type_Int = Aladdin.getConfig(359).getIntegerFromString("rij_show_strengthen_follow_frequency", 5);
-    VideoFeedsStressFollowHelper.Companion.c(jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowHelper$Companion);
+    h = bool;
+    i = Aladdin.getConfig(359).getFloatFromString("rij_show_strengthen_follow_timeinterval", 0.8F);
+    j = Aladdin.getConfig(359).getIntegerFromString("rij_show_strengthen_follow_frequency", 5);
+    VideoFeedsStressFollowHelper.Companion.c(a);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("dump config: stressEnable:");
-      ((StringBuilder)localObject).append(c);
+      ((StringBuilder)localObject).append(h);
       ((StringBuilder)localObject).append(" showStrengthenInterval:");
-      ((StringBuilder)localObject).append(jdField_a_of_type_Float);
+      ((StringBuilder)localObject).append(i);
       ((StringBuilder)localObject).append(" stressCountLimit:");
-      ((StringBuilder)localObject).append(jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(j);
       QLog.d("VideoFeedsStressFollowHelper", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public VideoFeedsStressFollowHelper(@NotNull VideoFeedsStressFollowLayout paramVideoFeedsStressFollowLayout, @NotNull View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout = paramVideoFeedsStressFollowLayout;
-    this.jdField_b_of_type_AndroidViewView = paramView;
-    paramVideoFeedsStressFollowLayout = this.jdField_b_of_type_AndroidViewView.findViewById(2131368090);
+    this.e = paramVideoFeedsStressFollowLayout;
+    this.f = paramView;
+    paramVideoFeedsStressFollowLayout = this.f.findViewById(2131434944);
     Intrinsics.checkExpressionValueIsNotNull(paramVideoFeedsStressFollowLayout, "originAvatarLayout.findV…er_account_follow_button)");
-    this.jdField_a_of_type_AndroidViewView = paramVideoFeedsStressFollowLayout;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout.a((VideoFeedsStressFollowLayout.OnFollowActionListener)new VideoFeedsStressFollowHelper.1(this));
-  }
-  
-  private final void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout.a()) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout.a() != StressState.Shrink))
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "translationAnimator");
-      localValueAnimator.setDuration(400L);
-      localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new VideoFeedsStressFollowHelper.startShrinkAnim.1(this));
-      localValueAnimator.addListener((Animator.AnimatorListener)new VideoFeedsStressFollowHelper.startShrinkAnim.2(this));
-      localValueAnimator.start();
-    }
+    this.b = paramVideoFeedsStressFollowLayout;
+    this.e.a((VideoFeedsStressFollowLayout.OnFollowActionListener)new VideoFeedsStressFollowHelper.1(this));
   }
   
   private final void a(Animator.AnimatorListener paramAnimatorListener)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout.a()) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout.a() != StressState.Stretched))
+    if ((this.e.a()) && (this.e.getState() != StressState.Stretched))
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.c) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
-      VideoFeedsStressFollowHelper.Companion.b(jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowHelper$Companion);
+      this.c = true;
+      VideoFeedsStressFollowHelper.Companion.b(a);
       AnimatorSet localAnimatorSet1 = new AnimatorSet();
       localAnimatorSet1.setDuration(160L);
-      localAnimatorSet1.play((Animator)ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 1.06F })).with((Animator)ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 1.06F }));
+      localAnimatorSet1.play((Animator)ObjectAnimator.ofFloat(this.b, "scaleX", new float[] { 1.0F, 1.06F })).with((Animator)ObjectAnimator.ofFloat(this.b, "scaleY", new float[] { 1.0F, 1.06F }));
       AnimatorSet localAnimatorSet2 = new AnimatorSet();
       localAnimatorSet2.setDuration(200L);
-      localAnimatorSet2.play((Animator)ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.06F, 0.0F })).with((Animator)ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.06F, 0.0F }));
+      localAnimatorSet2.play((Animator)ObjectAnimator.ofFloat(this.b, "scaleX", new float[] { 1.06F, 0.0F })).with((Animator)ObjectAnimator.ofFloat(this.b, "scaleY", new float[] { 1.06F, 0.0F }));
       localAnimatorSet2.addListener((Animator.AnimatorListener)new VideoFeedsStressFollowHelper.startStretchAnim.1(this));
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "translationAnimator");
@@ -115,35 +97,52 @@ public final class VideoFeedsStressFollowHelper
   
   private final boolean a(float paramFloat)
   {
-    return (c) && (paramFloat >= jdField_a_of_type_Float) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout.b());
+    return (h) && (paramFloat >= i) && (this.e.b());
+  }
+  
+  private final void c()
+  {
+    if ((this.e.a()) && (this.e.getState() != StressState.Shrink))
+    {
+      if (this.c) {
+        return;
+      }
+      this.c = true;
+      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "translationAnimator");
+      localValueAnimator.setDuration(400L);
+      localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new VideoFeedsStressFollowHelper.startShrinkAnim.1(this));
+      localValueAnimator.addListener((Animator.AnimatorListener)new VideoFeedsStressFollowHelper.startShrinkAnim.2(this));
+      localValueAnimator.start();
+    }
   }
   
   @NotNull
   public final VideoFeedsStressFollowLayout a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout;
+    return this.e;
   }
   
   public final void a(float paramFloat, @Nullable Animator.AnimatorListener paramAnimatorListener)
   {
-    if ((a(paramFloat)) && (!this.jdField_b_of_type_Boolean))
+    if ((a(paramFloat)) && (!this.d))
     {
-      VideoFeedsStressFollowHelper.Companion.a(jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowHelper$Companion);
-      if (jdField_a_of_type_Int < jdField_b_of_type_Int)
+      VideoFeedsStressFollowHelper.Companion.a(a);
+      if (g < j)
       {
         a(paramAnimatorListener);
       }
-      else if ((!this.jdField_b_of_type_Boolean) && (QLog.isColorLevel()))
+      else if ((!this.d) && (QLog.isColorLevel()))
       {
         paramAnimatorListener = new StringBuilder();
         paramAnimatorListener.append("startStretchAnim ignore for nowStressCount:");
-        paramAnimatorListener.append(jdField_a_of_type_Int);
+        paramAnimatorListener.append(g);
         paramAnimatorListener.append(" is lager than stressCountLimit:");
-        paramAnimatorListener.append(jdField_b_of_type_Int);
+        paramAnimatorListener.append(j);
         paramAnimatorListener.append('.');
         QLog.w("VideoFeedsStressFollowHelper", 2, paramAnimatorListener.toString());
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.d = true;
     }
   }
   
@@ -152,21 +151,21 @@ public final class VideoFeedsStressFollowHelper
     Intrinsics.checkParameterIsNotNull(paramStressState, "state");
     if (paramStressState == StressState.Stretched)
     {
-      this.jdField_a_of_type_AndroidViewView.setScaleX(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(0.0F);
+      this.b.setScaleX(0.0F);
+      this.b.setScaleY(0.0F);
     }
     else
     {
-      this.jdField_a_of_type_AndroidViewView.setScaleX(1.0F);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(1.0F);
+      this.b.setScaleX(1.0F);
+      this.b.setScaleY(1.0F);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout.setStressState(paramStressState);
-    this.jdField_b_of_type_Boolean = false;
+    this.e.setStressState(paramStressState);
+    this.d = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsStressFollowHelper
  * JD-Core Version:    0.7.0.1
  */

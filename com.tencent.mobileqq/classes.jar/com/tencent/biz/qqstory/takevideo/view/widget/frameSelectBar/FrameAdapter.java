@@ -15,18 +15,18 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class FrameAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLoader jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader;
-  private int b;
+  private FrameLoader a;
+  private Context b;
   private int c;
+  private int d;
+  private int e;
   
   public FrameAdapter(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.b = paramContext;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
   public Bitmap a(int paramInt)
@@ -36,18 +36,18 @@ public class FrameAdapter
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.a = null;
+    this.b = null;
   }
   
   public void a(FrameLoader paramFrameLoader)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader = paramFrameLoader;
+    this.a = paramFrameLoader;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
   public long getItemId(int paramInt)
@@ -60,9 +60,9 @@ public class FrameAdapter
     Object localObject;
     if (paramView == null)
     {
-      localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      float f = TakeVideoUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources());
-      int i = this.b;
+      localObject = new ImageView(this.b);
+      float f = TakeVideoUtils.b(this.b.getResources());
+      int i = this.d;
       paramView = new ViewGroup.LayoutParams(i, (int)(f * i));
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
       ((ImageView)localObject).setLayoutParams(paramView);
@@ -77,7 +77,7 @@ public class FrameAdapter
       localObject = paramView;
       paramView = localHolder;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader.a(paramView.a, Integer.valueOf(paramInt));
+    this.a.b(paramView.a, Integer.valueOf(paramInt));
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
     return localObject;
   }

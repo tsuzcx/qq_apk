@@ -15,12 +15,12 @@ public class ShareActionSheetInject
   {
     QZoneShareData localQZoneShareData = new QZoneShareData();
     localQZoneShareData.mSummary = paramQzoneLinkShareInfo.b();
-    localQZoneShareData.mDefaultForwardReason = paramQzoneLinkShareInfo.d();
+    localQZoneShareData.mDefaultForwardReason = paramQzoneLinkShareInfo.f();
     localQZoneShareData.mTitle = paramQzoneLinkShareInfo.a();
-    localQZoneShareData.mImageUrls = paramQzoneLinkShareInfo.a();
-    localQZoneShareData.targetUrl = paramQzoneLinkShareInfo.c();
-    localQZoneShareData.from = paramQzoneLinkShareInfo.a();
-    QZoneShareManager.shareToQzone(paramContext, paramQzoneLinkShareInfo.e(), localQZoneShareData, null, paramQzoneLinkShareInfo.b());
+    localQZoneShareData.mImageUrls = paramQzoneLinkShareInfo.c();
+    localQZoneShareData.targetUrl = paramQzoneLinkShareInfo.d();
+    localQZoneShareData.from = paramQzoneLinkShareInfo.e();
+    QZoneShareManager.shareToQzone(paramContext, paramQzoneLinkShareInfo.g(), localQZoneShareData, null, paramQzoneLinkShareInfo.h());
   }
   
   public void a(Context paramContext, ArrayList<String> paramArrayList, int paramInt)
@@ -32,7 +32,7 @@ public class ShareActionSheetInject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.sharehelper.ShareActionSheetInject
  * JD-Core Version:    0.7.0.1
  */

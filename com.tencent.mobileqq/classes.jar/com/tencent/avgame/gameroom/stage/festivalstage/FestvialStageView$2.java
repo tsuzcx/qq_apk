@@ -8,7 +8,7 @@ class FestvialStageView$2
   public void run()
   {
     FestvialStageView localFestvialStageView = this.this$0;
-    localFestvialStageView.removeView(localFestvialStageView.a);
+    localFestvialStageView.removeView(localFestvialStageView.k);
   }
 }
 

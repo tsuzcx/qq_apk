@@ -13,14 +13,14 @@ final class NotifyMsgApiImpl$3
   
   public void run()
   {
-    if ((QWalletTools.a() != null) && (this.a != null)) {
+    if ((QWalletTools.b() != null) && (this.a != null)) {
       ((IMessageFacade)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IMessageFacade.class, "")).updateMsgFieldByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.NotifyMsgApiImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,12 @@ public class HippyVerticalScrollView
   private boolean mDragging;
   private boolean mFlingEnabled = true;
   private NativeGestureDispatcher mGestureDispatcher;
-  private HippyOnScrollHelper mHippyOnScrollHelper = new HippyOnScrollHelper();
+  private final HippyOnScrollHelper mHippyOnScrollHelper = new HippyOnScrollHelper();
   private long mLastScrollEventTimeStamp = -1L;
   private int mLastY = 0;
   private boolean mMomentumScrollBeginEventEnable = false;
   private boolean mMomentumScrollEndEventEnable = false;
   private boolean mPagingEnabled = false;
-  private boolean mScrollAnimationEndEventEnable = false;
   private boolean mScrollBeginDragEventEnable = false;
   private boolean mScrollEnabled = true;
   private boolean mScrollEndDragEventEnable = false;
@@ -76,11 +75,6 @@ public class HippyVerticalScrollView
       return;
     }
     smoothScrollTo(paramInt1, paramInt2);
-  }
-  
-  public void computeScroll()
-  {
-    super.computeScroll();
   }
   
   public void fling(int paramInt)
@@ -170,7 +164,7 @@ public class HippyVerticalScrollView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction() & 0xFF;
-    boolean bool1 = false;
+    boolean bool2 = false;
     if ((i == 0) && (!this.mDragging))
     {
       this.mDragging = true;
@@ -187,11 +181,16 @@ public class HippyVerticalScrollView
       setParentScrollableIfNeed(true);
       this.mDragging = false;
     }
-    if (this.mScrollEnabled) {
-      bool1 = super.onTouchEvent(paramMotionEvent);
+    boolean bool1 = bool2;
+    if (this.mScrollEnabled)
+    {
+      bool1 = bool2;
+      if (super.onTouchEvent(paramMotionEvent)) {
+        bool1 = true;
+      }
     }
     NativeGestureDispatcher localNativeGestureDispatcher = this.mGestureDispatcher;
-    boolean bool2 = bool1;
+    bool2 = bool1;
     if (localNativeGestureDispatcher != null) {
       bool2 = bool1 | localNativeGestureDispatcher.handleTouchEvent(paramMotionEvent);
     }
@@ -226,11 +225,6 @@ public class HippyVerticalScrollView
   public void setPagingEnabled(boolean paramBoolean)
   {
     this.mPagingEnabled = paramBoolean;
-  }
-  
-  public void setScrollAnimationEndEventEnable(boolean paramBoolean)
-  {
-    this.mScrollAnimationEndEventEnable = paramBoolean;
   }
   
   public void setScrollBeginDragEventEnable(boolean paramBoolean)
@@ -270,7 +264,7 @@ public class HippyVerticalScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.scroll.HippyVerticalScrollView
  * JD-Core Version:    0.7.0.1
  */

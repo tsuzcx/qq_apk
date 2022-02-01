@@ -19,14 +19,14 @@ public class HiddenChatProcessor
     return "HiddenChatTroopListProcessor";
   }
   
-  public boolean a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
+  public boolean b(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
     return paramRecentUser.isHiddenChat != 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.HiddenChatProcessor
  * JD-Core Version:    0.7.0.1
  */

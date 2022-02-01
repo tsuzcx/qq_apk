@@ -13,15 +13,15 @@ final class TroopAddFrdsInnerFrame$7
   public void run()
   {
     String str1;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       str1 = "multiMode_add";
     } else {
       str1 = "singleMode_add";
     }
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopuin;
-    if (this.jdField_a_of_type_Boolean) {}
-    while (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.recommendRemark))
+    AppInterface localAppInterface = this.b;
+    String str3 = this.c.troopuin;
+    if (this.a) {}
+    while (!TextUtils.isEmpty(this.c.recommendRemark))
     {
       str2 = "1";
       break;
@@ -32,7 +32,7 @@ final class TroopAddFrdsInnerFrame$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopAddFrdsInnerFrame.7
  * JD-Core Version:    0.7.0.1
  */

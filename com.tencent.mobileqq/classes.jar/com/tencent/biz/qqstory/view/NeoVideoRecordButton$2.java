@@ -10,8 +10,8 @@ class NeoVideoRecordButton$2
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
-    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    this.a.d.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
+    this.a.d.h = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
     NeoVideoRecordButton.a(this.a);
   }
 }

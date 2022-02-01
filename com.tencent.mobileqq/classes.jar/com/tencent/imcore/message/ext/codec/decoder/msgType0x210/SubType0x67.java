@@ -21,7 +21,7 @@ public class SubType0x67
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("receive msgtype0x210.submsgtype0x67 group recmd push: ");
-      ((StringBuilder)localObject).append(paramOnLinePushMessageProcessor.b(paramMsgType0x210));
+      ((StringBuilder)localObject).append(paramOnLinePushMessageProcessor.d(paramMsgType0x210));
       QLog.d("nearbyTroopPush", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new submsgtype0x67.MsgBody();
@@ -57,7 +57,7 @@ public class SubType0x67
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x67
  * JD-Core Version:    0.7.0.1
  */

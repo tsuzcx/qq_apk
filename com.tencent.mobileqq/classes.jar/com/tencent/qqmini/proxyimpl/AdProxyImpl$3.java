@@ -41,9 +41,9 @@ class AdProxyImpl$3
       }
       if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject2)))
       {
-        MiniLoadingAdManager.downloadAndSaveLoadingAd((String)localObject2, this.jdField_a_of_type_JavaLangString, this.b);
-        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener != null) {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onPreloadAdReceive(i);
+        MiniLoadingAdManager.downloadAndSaveLoadingAd((String)localObject2, this.a, this.b);
+        if (this.c != null) {
+          this.c.onPreloadAdReceive(i);
         }
         return;
       }
@@ -58,7 +58,7 @@ class AdProxyImpl$3
     if (paramJSONObject != null) {
       i = paramJSONObject.optInt("retCode", -1);
     }
-    paramJSONObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener;
+    paramJSONObject = this.c;
     if (paramJSONObject != null) {
       paramJSONObject.onPreloadAdReceive(i);
     }
@@ -66,7 +66,7 @@ class AdProxyImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

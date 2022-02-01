@@ -112,9 +112,14 @@ public class TopGestureLayout
   
   public int getPaddingTop()
   {
-    if (Build.VERSION.SDK_INT >= 19) {
+    if ((Build.VERSION.SDK_INT >= 19) && (!useSupPadding())) {
       return ImmersiveUtils.getStatusBarHeight(getContext());
     }
+    return super.getPaddingTop();
+  }
+  
+  public int getPaddingTop2()
+  {
     return super.getPaddingTop();
   }
   
@@ -242,7 +247,7 @@ public class TopGestureLayout
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (Build.VERSION.SDK_INT >= 19)
+    if ((Build.VERSION.SDK_INT >= 19) && (!useSupPadding()))
     {
       super.setPadding(paramInt1, ImmersiveUtils.getStatusBarHeight(getContext()), paramInt3, paramInt4);
       return;
@@ -254,10 +259,15 @@ public class TopGestureLayout
   {
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
   }
+  
+  protected boolean useSupPadding()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

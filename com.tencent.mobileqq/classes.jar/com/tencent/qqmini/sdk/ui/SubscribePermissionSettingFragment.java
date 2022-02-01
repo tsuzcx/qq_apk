@@ -230,7 +230,7 @@ public class SubscribePermissionSettingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(R.layout.mini_sdk_subscribe_permission_setting_layout, null);
-    if (DisplayUtil.isImmersiveSupported)
+    if (DisplayUtil.IS_IMMERSIVE_SUPPORTED)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
@@ -266,7 +266,7 @@ public class SubscribePermissionSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubscribePermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,19 @@ class CTEntryMng$4
   
   public void a(List<MayKnowRecommend> paramList)
   {
-    Object localObject2 = this.a.a(3);
-    boolean bool3 = ((CTEntry)localObject2).c;
-    Object localObject1 = ((CTEntry)localObject2).jdField_a_of_type_JavaLangObject;
+    Object localObject2 = this.a.c(3);
+    boolean bool3 = ((CTEntry)localObject2).k;
+    Object localObject1 = ((CTEntry)localObject2).n;
     if ((paramList != null) && (paramList.size() > 0))
     {
-      ((CTEntry)localObject2).jdField_a_of_type_JavaLangString = CTEntryMng.a(this.a).getApp().getResources().getString(2131699007);
-      ((CTEntry)localObject2).b = "";
-      ((CTEntry)localObject2).jdField_a_of_type_JavaLangObject = paramList;
+      ((CTEntry)localObject2).b = CTEntryMng.a(this.a).getApp().getResources().getString(2131897011);
+      ((CTEntry)localObject2).c = "";
+      ((CTEntry)localObject2).n = paramList;
     }
     else
     {
-      ((CTEntry)localObject2).jdField_a_of_type_JavaLangObject = null;
-      ((CTEntry)localObject2).b = null;
+      ((CTEntry)localObject2).n = null;
+      ((CTEntry)localObject2).c = null;
     }
     Object localObject3 = (MayknowRecommendManager)CTEntryMng.a(this.a).getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
     int i = 0;
@@ -37,8 +37,8 @@ class CTEntryMng$4
     boolean bool1;
     if (localObject3 != null)
     {
-      bool2 = ((MayknowRecommendManager)localObject3).b("sp_mayknow_entry_list_recommend");
-      bool1 = ((MayknowRecommendManager)localObject3).b("sp_mayknow_entry_list_head");
+      bool2 = ((MayknowRecommendManager)localObject3).d("sp_mayknow_entry_list_recommend");
+      bool1 = ((MayknowRecommendManager)localObject3).d("sp_mayknow_entry_list_head");
     }
     else
     {
@@ -46,17 +46,17 @@ class CTEntryMng$4
       bool2 = false;
     }
     if ((bool1) && (!bool2)) {
-      ((CTEntry)localObject2).c = true;
+      ((CTEntry)localObject2).k = true;
     } else {
-      ((CTEntry)localObject2).c = false;
+      ((CTEntry)localObject2).k = false;
     }
-    CTEntryMng.a(this.a);
+    CTEntryMng.d(this.a);
     if (QLog.isColorLevel())
     {
       localObject3 = Locale.getDefault();
-      bool1 = ((CTEntry)localObject2).c;
-      Object localObject4 = ((CTEntry)localObject2).jdField_a_of_type_JavaLangObject;
-      localObject2 = ((CTEntry)localObject2).b;
+      bool1 = ((CTEntry)localObject2).k;
+      Object localObject4 = ((CTEntry)localObject2).n;
+      localObject2 = ((CTEntry)localObject2).c;
       if (paramList != null) {
         i = paramList.size();
       }
@@ -66,23 +66,23 @@ class CTEntryMng$4
   
   public boolean a()
   {
-    CTEntry localCTEntry = this.a.a(3);
-    CTEntryMng.EntryUserSetting localEntryUserSetting = this.a.a(3);
+    CTEntry localCTEntry = this.a.c(3);
+    CTEntryMng.EntryUserSetting localEntryUserSetting = this.a.e(3);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isMayKnowEntryShown, canBeShown = ");
-      localStringBuilder.append(localCTEntry.c);
+      localStringBuilder.append(localCTEntry.k);
       localStringBuilder.append(", flagValue = ");
-      localStringBuilder.append(localEntryUserSetting.b);
+      localStringBuilder.append(localEntryUserSetting.c);
       QLog.d("CTEntryMng", 2, localStringBuilder.toString());
     }
-    return (localCTEntry.c) && (localEntryUserSetting.b == 0);
+    return (localCTEntry.k) && (localEntryUserSetting.c == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.4
  * JD-Core Version:    0.7.0.1
  */

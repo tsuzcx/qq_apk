@@ -32,18 +32,18 @@ public class ReadInJoyProteusFamilyFragment
   extends IphoneTitleBarFragment
   implements ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener, ReadInJoyProteusFamilyUtil.OnProteusFamilyDataLoaded
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ReadInJoyProteusFamilyViewController jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController;
+  private ReadInJoyProteusFamilyViewController a;
+  private Context b;
+  private TextView c;
   
   private void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.b;
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController = new ReadInJoyProteusFamilyViewController((Activity)localObject);
-      localObject = (ViewGroup)this.mContentView.findViewById(2131373168);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController.a((ViewGroup)localObject);
+      this.a = new ReadInJoyProteusFamilyViewController((Activity)localObject);
+      localObject = (ViewGroup)this.mContentView.findViewById(2131440778);
+      this.a.a((ViewGroup)localObject);
       b();
     }
   }
@@ -53,7 +53,7 @@ public class ReadInJoyProteusFamilyFragment
     if (this.leftView != null)
     {
       this.leftView.setTextColor(paramInt);
-      this.leftView.setBackgroundResource(2130849814);
+      this.leftView.setBackgroundResource(2130851519);
     }
     if (this.centerView != null) {
       this.centerView.setTextColor(paramInt);
@@ -62,13 +62,13 @@ public class ReadInJoyProteusFamilyFragment
   
   private void b()
   {
-    setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131717989));
+    setTitle(this.b.getString(2131915470));
     RIJAppSetting.a(getTitleBarView());
     a(-16777216);
     Object localObject = this.rightViewImg;
     if (localObject != null)
     {
-      ((ImageView)localObject).setImageResource(2130842958);
+      ((ImageView)localObject).setImageResource(2130843914);
       ((ImageView)localObject).setVisibility(0);
       ((ImageView)localObject).setBackgroundResource(0);
       ((ImageView)localObject).setOnClickListener(new ReadInJoyProteusFamilyFragment.2(this, (ImageView)localObject));
@@ -90,31 +90,31 @@ public class ReadInJoyProteusFamilyFragment
     int[] tmp24_20 = tmp20_16;
     tmp24_20[2] = 2;
     tmp24_20;
-    String str1 = BaseApplicationImpl.getApplication().getString(2131717989);
-    String str2 = BaseApplicationImpl.getApplication().getString(2131717989);
-    String str3 = BaseApplicationImpl.getApplication().getString(2131717989);
+    String str1 = BaseApplicationImpl.getApplication().getString(2131915470);
+    String str2 = BaseApplicationImpl.getApplication().getString(2131915470);
+    String str3 = BaseApplicationImpl.getApplication().getString(2131915470);
     int i = 0;
     while (i < arrayOfInt.length)
     {
       PopupMenuDialog.MenuItem localMenuItem = new PopupMenuDialog.MenuItem();
       localMenuItem.id = arrayOfInt[i];
       localMenuItem.title = new String[] { str1, str2, str3 }[i];
-      localMenuItem.iconId = new int[] { 2130842951, 2130842952, 2130842951 }[i];
+      localMenuItem.iconId = new int[] { 2130843907, 2130843908, 2130843907 }[i];
       localArrayList.add(localMenuItem);
       i += 1;
     }
-    i = ViewUtils.a(125.0F);
-    PopupMenuDialog.build(paramBaseActivity, localArrayList, new ReadInJoyProteusFamilyFragment.4(this), new ReadInJoyProteusFamilyFragment.5(this), i, false, -1, 2131755036).showAsDropDown(paramView, -(i - paramView.getWidth()), 0);
+    i = ViewUtils.dip2px(125.0F);
+    PopupMenuDialog.build(paramBaseActivity, localArrayList, new ReadInJoyProteusFamilyFragment.4(this), new ReadInJoyProteusFamilyFragment.5(this), i, false, -1, 2131951651).showAsDropDown(paramView, -(i - paramView.getWidth()), 0);
   }
   
   public void a(String paramString)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     if (localTextView == null) {
       return;
     }
     localTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.c.setVisibility(0);
   }
   
   public void a(boolean paramBoolean, List<AbsBaseArticleInfo> paramList)
@@ -128,14 +128,14 @@ public class ReadInJoyProteusFamilyFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController.aw_();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131366758));
-    ReadInJoyDropFrameHelper.a().a(8888, this);
+    this.a.cT_();
+    this.c = ((TextView)this.mContentView.findViewById(2131433080));
+    ReadInJoyDropFrameHelper.d().a(8888, this);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131560260;
+    return 2131626307;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -145,7 +145,7 @@ public class ReadInJoyProteusFamilyFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController;
+    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.a;
     if (localReadInJoyProteusFamilyViewController != null) {
       localReadInJoyProteusFamilyViewController.a(paramInt1, paramInt2, paramIntent);
     }
@@ -155,26 +155,26 @@ public class ReadInJoyProteusFamilyFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidContentContext = getBaseActivity();
-    ReadInJoyProteusFamilyUtil.a().a(this);
-    ReadInJoyProteusFamilyUtil.a().c();
+    this.b = getBaseActivity();
+    ReadInJoyProteusFamilyUtil.c().a(this);
+    ReadInJoyProteusFamilyUtil.c().d();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ReadInJoyProteusFamilyUtil.a().d();
-    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController;
+    ReadInJoyProteusFamilyUtil.c().f();
+    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.a;
     if (localReadInJoyProteusFamilyViewController != null) {
       localReadInJoyProteusFamilyViewController.e();
     }
-    ReadInJoyDropFrameHelper.a().b(8888, this);
+    ReadInJoyDropFrameHelper.d().b(8888, this);
   }
   
   public void onDetach()
   {
     super.onDetach();
-    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController;
+    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.a;
     if (localReadInJoyProteusFamilyViewController != null) {
       localReadInJoyProteusFamilyViewController.c();
     }
@@ -183,7 +183,7 @@ public class ReadInJoyProteusFamilyFragment
   public void onPause()
   {
     super.onPause();
-    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController;
+    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.a;
     if (localReadInJoyProteusFamilyViewController != null) {
       localReadInJoyProteusFamilyViewController.h();
     }
@@ -192,7 +192,7 @@ public class ReadInJoyProteusFamilyFragment
   public void onResume()
   {
     super.onResume();
-    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController;
+    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.a;
     if (localReadInJoyProteusFamilyViewController != null) {
       localReadInJoyProteusFamilyViewController.i();
     }
@@ -202,7 +202,7 @@ public class ReadInJoyProteusFamilyFragment
   public void onStart()
   {
     super.onStart();
-    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController;
+    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.a;
     if (localReadInJoyProteusFamilyViewController != null) {
       localReadInJoyProteusFamilyViewController.f();
     }
@@ -211,7 +211,7 @@ public class ReadInJoyProteusFamilyFragment
   public void onStop()
   {
     super.onStop();
-    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyProteusFamilyViewController;
+    ReadInJoyProteusFamilyViewController localReadInJoyProteusFamilyViewController = this.a;
     if (localReadInJoyProteusFamilyViewController != null) {
       localReadInJoyProteusFamilyViewController.g();
     }
@@ -219,7 +219,7 @@ public class ReadInJoyProteusFamilyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.fragment.ReadInJoyProteusFamilyFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class SelectToBottomHelper$1
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131362484) {
+    if (paramView.getId() == 2131428093) {
       SelectToBottomHelper.a(this.a, paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -19,7 +19,7 @@ class SelectToBottomHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.SelectToBottomHelper.1
  * JD-Core Version:    0.7.0.1
  */

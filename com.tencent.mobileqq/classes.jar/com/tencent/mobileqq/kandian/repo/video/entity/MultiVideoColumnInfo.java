@@ -16,68 +16,63 @@ import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
 public class MultiVideoColumnInfo
 {
   public int a;
-  public long a;
-  public UrlJumpInfo a;
-  public String a;
-  public List<SubVideoInfo> a;
-  public boolean a;
-  public int b;
-  public UrlJumpInfo b;
   public String b;
-  public int c;
   public String c;
-  public int d;
   public String d;
-  public int e;
   public String e;
-  public String f;
-  public String g;
-  public String h;
-  
-  public MultiVideoColumnInfo()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(6);
-  }
+  public int f;
+  public long g;
+  public int h;
+  public int i;
+  public boolean j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
+  public int o;
+  public List<SubVideoInfo> p = new ArrayList(6);
+  public UrlJumpInfo q;
+  public UrlJumpInfo r;
   
   public static MultiVideoColumnInfo a(articlesummary.VideoColumnInfo paramVideoColumnInfo)
   {
     MultiVideoColumnInfo localMultiVideoColumnInfo = new MultiVideoColumnInfo();
-    localMultiVideoColumnInfo.jdField_a_of_type_Int = paramVideoColumnInfo.uint32_column_id.get();
-    localMultiVideoColumnInfo.jdField_a_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_name.get().toStringUtf8();
-    localMultiVideoColumnInfo.jdField_b_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_icon_url.get().toStringUtf8();
-    localMultiVideoColumnInfo.jdField_d_of_type_JavaLangString = paramVideoColumnInfo.bytes_sub_title.get().toStringUtf8();
-    localMultiVideoColumnInfo.jdField_c_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_card_icon_url.get().toStringUtf8();
-    localMultiVideoColumnInfo.jdField_b_of_type_Int = paramVideoColumnInfo.uint32_update_count.get();
-    localMultiVideoColumnInfo.jdField_a_of_type_Long = paramVideoColumnInfo.uint64_last_update_time.get();
-    localMultiVideoColumnInfo.jdField_c_of_type_Int = paramVideoColumnInfo.uint32_video_count.get();
-    localMultiVideoColumnInfo.jdField_d_of_type_Int = paramVideoColumnInfo.uint32_subscribe_count.get();
-    int i = paramVideoColumnInfo.uint32_is_subscribed.get();
+    localMultiVideoColumnInfo.a = paramVideoColumnInfo.uint32_column_id.get();
+    localMultiVideoColumnInfo.b = paramVideoColumnInfo.bytes_column_name.get().toStringUtf8();
+    localMultiVideoColumnInfo.c = paramVideoColumnInfo.bytes_column_icon_url.get().toStringUtf8();
+    localMultiVideoColumnInfo.e = paramVideoColumnInfo.bytes_sub_title.get().toStringUtf8();
+    localMultiVideoColumnInfo.d = paramVideoColumnInfo.bytes_column_card_icon_url.get().toStringUtf8();
+    localMultiVideoColumnInfo.f = paramVideoColumnInfo.uint32_update_count.get();
+    localMultiVideoColumnInfo.g = paramVideoColumnInfo.uint64_last_update_time.get();
+    localMultiVideoColumnInfo.h = paramVideoColumnInfo.uint32_video_count.get();
+    localMultiVideoColumnInfo.i = paramVideoColumnInfo.uint32_subscribe_count.get();
+    int i1 = paramVideoColumnInfo.uint32_is_subscribed.get();
     boolean bool = true;
-    if (i != 1) {
+    if (i1 != 1) {
       bool = false;
     }
-    localMultiVideoColumnInfo.jdField_a_of_type_Boolean = bool;
-    localMultiVideoColumnInfo.jdField_e_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_card_bg_url.get().toStringUtf8();
-    localMultiVideoColumnInfo.f = paramVideoColumnInfo.bytes_column_card_bg_color.get().toStringUtf8();
-    localMultiVideoColumnInfo.g = paramVideoColumnInfo.bytes_app_name.get().toStringUtf8();
-    localMultiVideoColumnInfo.h = paramVideoColumnInfo.bytes_app_icon_url.get().toStringUtf8();
-    localMultiVideoColumnInfo.jdField_e_of_type_Int = paramVideoColumnInfo.uin32_column_card_bg_style.get();
+    localMultiVideoColumnInfo.j = bool;
+    localMultiVideoColumnInfo.k = paramVideoColumnInfo.bytes_column_card_bg_url.get().toStringUtf8();
+    localMultiVideoColumnInfo.l = paramVideoColumnInfo.bytes_column_card_bg_color.get().toStringUtf8();
+    localMultiVideoColumnInfo.m = paramVideoColumnInfo.bytes_app_name.get().toStringUtf8();
+    localMultiVideoColumnInfo.n = paramVideoColumnInfo.bytes_app_icon_url.get().toStringUtf8();
+    localMultiVideoColumnInfo.o = paramVideoColumnInfo.uin32_column_card_bg_style.get();
     Iterator localIterator = paramVideoColumnInfo.rpt_sub_video_info.get().iterator();
     while (localIterator.hasNext())
     {
       articlesummary.SubVideoInfo localSubVideoInfo = (articlesummary.SubVideoInfo)localIterator.next();
       SubVideoInfo localSubVideoInfo1 = new SubVideoInfo();
-      localSubVideoInfo1.jdField_a_of_type_Long = localSubVideoInfo.uint64_article_id.get();
-      localSubVideoInfo1.jdField_a_of_type_JavaLangString = localSubVideoInfo.bytes_inner_uniq_id.get().toStringUtf8();
-      localSubVideoInfo1.jdField_b_of_type_JavaLangString = localSubVideoInfo.bytes_article_title.get().toStringUtf8();
-      localSubVideoInfo1.jdField_c_of_type_JavaLangString = localSubVideoInfo.bytes_first_page_pic_url.get().toStringUtf8();
-      localSubVideoInfo1.jdField_a_of_type_Int = localSubVideoInfo.uint32_video_play_count.get();
-      localSubVideoInfo1.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = UrlJumpInfo.a((articlesummary.UrlJumpInfo)localSubVideoInfo.bytes_jum_url.get());
-      localSubVideoInfo1.jdField_b_of_type_Int = localSubVideoInfo.uint32_duration.get();
-      localMultiVideoColumnInfo.jdField_a_of_type_JavaUtilList.add(localSubVideoInfo1);
+      localSubVideoInfo1.a = localSubVideoInfo.uint64_article_id.get();
+      localSubVideoInfo1.b = localSubVideoInfo.bytes_inner_uniq_id.get().toStringUtf8();
+      localSubVideoInfo1.c = localSubVideoInfo.bytes_article_title.get().toStringUtf8();
+      localSubVideoInfo1.d = localSubVideoInfo.bytes_first_page_pic_url.get().toStringUtf8();
+      localSubVideoInfo1.f = localSubVideoInfo.uint32_video_play_count.get();
+      localSubVideoInfo1.e = UrlJumpInfo.a((articlesummary.UrlJumpInfo)localSubVideoInfo.bytes_jum_url.get());
+      localSubVideoInfo1.g = localSubVideoInfo.uint32_duration.get();
+      localMultiVideoColumnInfo.p.add(localSubVideoInfo1);
     }
-    localMultiVideoColumnInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
-    localMultiVideoColumnInfo.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
+    localMultiVideoColumnInfo.q = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
+    localMultiVideoColumnInfo.r = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
     return localMultiVideoColumnInfo;
   }
   
@@ -86,52 +81,52 @@ public class MultiVideoColumnInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\n");
     localStringBuilder.append("columnId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n");
     localStringBuilder.append("columnName=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n");
     localStringBuilder.append("columnIconUrl=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n");
     localStringBuilder.append("cardIconUrl=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("\n");
     localStringBuilder.append("subTitle=");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("\n");
     localStringBuilder.append("updateCount=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("updateTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("videoCount=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("subscribeCount=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("isSubscribed=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("cardBgUrl=");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n");
-    localStringBuilder.append("color=");
     localStringBuilder.append(this.f);
     localStringBuilder.append("\n");
-    localStringBuilder.append("appName=");
+    localStringBuilder.append("updateTime=");
     localStringBuilder.append(this.g);
     localStringBuilder.append("\n");
-    localStringBuilder.append("appIconUrl");
+    localStringBuilder.append("videoCount=");
     localStringBuilder.append(this.h);
     localStringBuilder.append("\n");
+    localStringBuilder.append("subscribeCount=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("isSubscribed=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("cardBgUrl=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("color=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("appName=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("appIconUrl");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append("\n");
     localStringBuilder.append("cardBgStyle");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.o);
     localStringBuilder.append("\n");
     localStringBuilder.append("subVideoInfoList={");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.p.iterator();
     while (localIterator.hasNext())
     {
       SubVideoInfo localSubVideoInfo = (SubVideoInfo)localIterator.next();
@@ -142,17 +137,17 @@ public class MultiVideoColumnInfo
     localStringBuilder.append("}");
     localStringBuilder.append("\n");
     localStringBuilder.append("defaultJumpUrl=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo.toString());
+    localStringBuilder.append(this.q.toString());
     localStringBuilder.append("\n");
     localStringBuilder.append("appJumpUrl=");
-    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo.toString());
+    localStringBuilder.append(this.r.toString());
     localStringBuilder.append("\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.entity.MultiVideoColumnInfo
  * JD-Core Version:    0.7.0.1
  */

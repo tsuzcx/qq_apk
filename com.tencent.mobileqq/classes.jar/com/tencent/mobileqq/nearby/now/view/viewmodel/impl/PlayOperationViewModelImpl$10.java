@@ -6,7 +6,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.nearby.INearbyCardManager;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 import com.tencent.mobileqq.nearby.now.utils.INowVideoReporter;
+import com.tencent.mobileqq.newnearby.INearbyReportHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 
 class PlayOperationViewModelImpl$10
@@ -19,11 +21,12 @@ class PlayOperationViewModelImpl$10
     this.a.onClickShare(paramView);
     ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_fw_click").LvInd1().reportByVideo(this.a.app);
     ThreadManagerV2.excute(new PlayOperationViewModelImpl.10.1(this, (INearbyCardManager)this.a.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 16, null, false);
+    ((INearbyReportHelper)QRoute.api(INearbyReportHelper.class)).reportTrendDetailShareClick(this.a.app, String.valueOf(this.a.mVideoData.i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.10
  * JD-Core Version:    0.7.0.1
  */

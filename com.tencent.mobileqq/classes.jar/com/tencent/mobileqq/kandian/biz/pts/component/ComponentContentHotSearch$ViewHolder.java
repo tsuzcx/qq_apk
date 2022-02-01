@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
@@ -23,21 +23,21 @@ import org.json.JSONObject;
 public class ComponentContentHotSearch$ViewHolder
   implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  HotWordItem jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsHotWordItem;
+  HotWordItem a;
   TextView b;
+  TextView c;
   
   protected ComponentContentHotSearch$ViewHolder(ComponentContentHotSearch paramComponentContentHotSearch) {}
   
   public void onClick(View paramView)
   {
-    paramView = new ActivityURIRequest(this.b.getContext(), "/pubaccount/browser");
-    paramView.extra().putString("url", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsHotWordItem.b);
+    paramView = new ActivityURIRequest(this.c.getContext(), "/pubaccount/browser");
+    paramView.extra().putString("url", this.a.b);
     QRoute.startUri(paramView, null);
-    paramView = RIJTransMergeKanDianReport.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsHotWordItem.a, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentHotSearch).innerUniqueID, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentHotSearch).hotWordInfo.a.indexOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsHotWordItem) + 1);
+    paramView = RIJTransMergeKanDianReport.a(this.a.a, ComponentContentHotSearch.a(this.d).innerUniqueID, ComponentContentHotSearch.a(this.d).hotWordInfo.a.indexOf(this.a) + 1);
     try
     {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80096DD", "0X80096DD", 0, 0, "", "", "", paramView.toString(), false);
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80096DD", "0X80096DD", 0, 0, "", "", "", paramView.toString(), false);
     }
     catch (Exception paramView)
     {
@@ -47,20 +47,20 @@ public class ComponentContentHotSearch$ViewHolder
       localStringBuilder.append(paramView);
       QLog.e((String)localObject, 1, localStringBuilder.toString());
     }
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentHotSearch.getContext(), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentHotSearch), ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentHotSearch), (int)ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentHotSearch).mChannelID);
+    RIJJumpUtils.a(this.d.getContext(), ComponentContentHotSearch.a(this.d), ComponentContentHotSearch.b(this.d), (int)ComponentContentHotSearch.a(this.d).mChannelID);
     paramView = new ArrayList();
     Object localObject = new ReportInfo();
-    ((ReportInfo)localObject).mUin = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+    ((ReportInfo)localObject).mUin = RIJQQAppInterfaceUtil.c();
     ((ReportInfo)localObject).mOperation = 53;
-    ((ReportInfo)localObject).mInnerId = ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentHotSearch).innerUniqueID;
-    ((ReportInfo)localObject).mHotWord = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsHotWordItem.a;
+    ((ReportInfo)localObject).mInnerId = ComponentContentHotSearch.a(this.d).innerUniqueID;
+    ((ReportInfo)localObject).mHotWord = this.a.a;
     paramView.add(localObject);
     ReadInJoyLogicEngine.a().a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentHotSearch.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

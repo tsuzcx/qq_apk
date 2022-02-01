@@ -33,34 +33,34 @@ public class ArkPlugin
   extends WebViewPlugin
   implements IPreCreatePluginChecker
 {
-  private int jdField_a_of_type_Int = 0;
-  private Dialog jdField_a_of_type_AndroidAppDialog = null;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = null;
-  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString = null;
-  private ConcurrentHashMap<String, Integer> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private String jdField_c_of_type_JavaLangString = null;
-  private ConcurrentHashMap<String, String> jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private String jdField_d_of_type_JavaLangString = null;
-  private ConcurrentHashMap<String, String> jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  boolean a = false;
+  private ConcurrentHashMap<String, Integer> b = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> c = new ConcurrentHashMap();
+  private String d = null;
   private String e = null;
+  private String f = null;
+  private String g = null;
+  private String h = null;
+  private ConcurrentHashMap<String, String> i = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, String> j = new ConcurrentHashMap();
+  private Dialog k = null;
+  private int l = 0;
+  private Context m;
   
   public ArkPlugin()
   {
     this.mPluginNameSpace = "lightapp";
   }
   
-  private void b(String paramString)
+  private void d(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("ArkPlugin", 1, "decodeArkH5Config, keywordCfgJsonStr is empty");
       return;
     }
-    this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.i.clear();
+    this.j.clear();
     try
     {
       paramString = new JSONObject(paramString);
@@ -76,7 +76,7 @@ public class ArkPlugin
           localObject3 = (String)((Iterator)localObject2).next();
           Object localObject4 = ((JSONObject)localObject1).get((String)localObject3);
           if (((localObject4 instanceof String)) && (localObject4 != null)) {
-            this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject3, (String)localObject4);
+            this.i.put(localObject3, (String)localObject4);
           }
         }
       }
@@ -88,7 +88,7 @@ public class ArkPlugin
           localObject2 = (String)((Iterator)localObject1).next();
           localObject3 = paramString.get((String)localObject2);
           if (((localObject3 instanceof String)) && (localObject3 != null)) {
-            this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, (String)localObject3);
+            this.j.put(localObject2, (String)localObject3);
           }
         }
       }
@@ -102,11 +102,62 @@ public class ArkPlugin
   
   Context a()
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    for (Activity localActivity = this.mRuntime.d(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
     return localActivity;
   }
   
-  protected String a(String paramString)
+  protected void a(String paramString)
+  {
+    Object localObject = this.k;
+    if (localObject == null)
+    {
+      this.k = new ReportDialog(QBaseActivity.sTopActivity, 2131953338);
+      this.k.setContentView(2131624611);
+      localObject = (TextView)this.k.findViewById(2131431880);
+      TextView localTextView1 = (TextView)this.k.findViewById(2131431876);
+      TextView localTextView2 = (TextView)this.k.findViewById(2131431864);
+      TextView localTextView3 = (TextView)this.k.findViewById(2131431870);
+      ((TextView)localObject).setText(2131917233);
+      if (!TextUtils.isEmpty(paramString)) {
+        localTextView1.setText(paramString);
+      }
+      localTextView3.setText(2131918066);
+      localTextView3.setOnClickListener(new ArkPlugin.1(this));
+      localTextView2.setOnClickListener(new ArkPlugin.2(this));
+      localTextView2.setText(2131887648);
+      return;
+    }
+    localObject = (TextView)((Dialog)localObject).findViewById(2131431876);
+    if (!TextUtils.isEmpty(paramString)) {
+      ((TextView)localObject).setText(paramString);
+    }
+  }
+  
+  protected boolean a(String paramString1, String paramString2)
+  {
+    boolean bool3 = TextUtils.isEmpty(paramString1);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        int n = paramString1.lastIndexOf(paramString2);
+        bool1 = bool2;
+        if (n >= 0)
+        {
+          bool1 = bool2;
+          if (n == paramString1.length() - paramString2.length()) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  protected String b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -120,9 +171,9 @@ public class ArkPlugin
     return null;
   }
   
-  protected void a()
+  protected void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     try
@@ -133,7 +184,7 @@ public class ArkPlugin
     {
       QLog.e("ArkPlugin", 1, String.format("setupArkEnvironment error, err=%s", new Object[] { localException.getMessage() }));
     }
-    Object localObject = (WebViewFragment)this.mRuntime.a();
+    Object localObject = (WebViewFragment)this.mRuntime.f();
     if (localObject != null)
     {
       localObject = ((WebViewFragment)localObject).getArguments();
@@ -142,60 +193,44 @@ public class ArkPlugin
         localObject = ((Intent)((Bundle)localObject).getParcelable("intent")).getExtras();
         if (localObject != null)
         {
-          this.e = ((Bundle)localObject).getString("h5_ark_app_name");
-          this.jdField_c_of_type_JavaLangString = ((Bundle)localObject).getString("h5_ark_app_path");
-          this.jdField_d_of_type_JavaLangString = ((Bundle)localObject).getString("h5_ark_app_des");
-          b(((Bundle)localObject).getString("h5_ark_check_config"));
-          this.jdField_a_of_type_Boolean = true;
+          this.h = ((Bundle)localObject).getString("h5_ark_app_name");
+          this.f = ((Bundle)localObject).getString("h5_ark_app_path");
+          this.g = ((Bundle)localObject).getString("h5_ark_app_des");
+          d(((Bundle)localObject).getString("h5_ark_check_config"));
+          this.a = true;
         }
       }
     }
   }
   
-  protected void a(String paramString)
+  protected void c()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppDialog;
-    if (localObject == null)
-    {
-      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(QBaseActivity.sTopActivity, 2131756189);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558978);
-      localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365648);
-      TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365644);
-      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365633);
-      TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365639);
-      ((TextView)localObject).setText(2131719632);
-      if (!TextUtils.isEmpty(paramString)) {
-        localTextView1.setText(paramString);
-      }
-      localTextView3.setText(2131720390);
-      localTextView3.setOnClickListener(new ArkPlugin.1(this));
-      localTextView2.setOnClickListener(new ArkPlugin.2(this));
-      localTextView2.setText(2131690728);
+    if (this.mRuntime == null) {
       return;
     }
-    localObject = (TextView)((Dialog)localObject).findViewById(2131365644);
-    if (!TextUtils.isEmpty(paramString)) {
-      ((TextView)localObject).setText(paramString);
+    Activity localActivity = this.mRuntime.d();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      QQToast.makeText(localActivity, HardCodeUtil.a(2131898963), 0).show();
     }
   }
   
-  protected boolean a(String paramString)
+  protected boolean c(String paramString)
   {
     boolean bool1 = TextUtils.isEmpty(paramString);
     Integer localInteger = Integer.valueOf(1);
     if (bool1) {
       return true;
     }
-    Object localObject1 = a(paramString);
+    Object localObject1 = b(paramString);
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return true;
     }
-    this.jdField_b_of_type_JavaLangString = ((String)localObject1);
-    boolean bool2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(this.jdField_b_of_type_JavaLangString);
+    this.e = ((String)localObject1);
+    boolean bool2 = this.b.containsKey(this.e);
     bool1 = false;
     if (bool2)
     {
-      localObject1 = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.jdField_b_of_type_JavaLangString);
+      localObject1 = (Integer)this.b.get(this.e);
       if (localObject1 != null)
       {
         if (((Integer)localObject1).intValue() == 1) {
@@ -203,119 +238,84 @@ public class ArkPlugin
         }
         if (((Integer)localObject1).intValue() == 0)
         {
-          b();
+          c();
           return true;
         }
       }
     }
-    a();
+    b();
     localObject1 = null;
-    Object localObject2 = this.mRuntime.a();
+    Object localObject2 = this.mRuntime.f();
     if (localObject2 != null) {
       localObject1 = ((WebViewProvider)localObject2).getUrlFromIntent();
     }
-    localObject1 = a((String)localObject1);
-    if (a(this.jdField_b_of_type_JavaLangString, (String)localObject1))
+    localObject1 = b((String)localObject1);
+    if (a(this.e, (String)localObject1))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_b_of_type_JavaLangString, localInteger);
+      this.b.put(this.e, localInteger);
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    localObject1 = this.jdField_a_of_type_AndroidAppDialog;
+    this.d = paramString;
+    localObject1 = this.k;
     if ((localObject1 != null) && (((Dialog)localObject1).isShowing())) {
       return true;
     }
-    this.jdField_a_of_type_Int = 0;
-    localObject1 = this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
+    this.l = 0;
+    localObject1 = this.i;
     if (localObject1 != null)
     {
       localObject1 = ((ConcurrentHashMap)localObject1).keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        if ((!TextUtils.isEmpty(this.e)) && (((String)localObject2).equals(this.e)))
+        if ((!TextUtils.isEmpty(this.h)) && (((String)localObject2).equals(this.h)))
         {
-          localObject1 = (String)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
-          i = 1;
+          localObject1 = (String)this.i.get(localObject2);
+          n = 1;
           break label297;
         }
       }
     }
     localObject1 = "ask";
-    int i = 0;
+    int n = 0;
     label297:
     if (!((String)localObject1).equals("allow"))
     {
       if (((String)localObject1).equals("ask"))
       {
-        if ((i == 0) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)))
+        if ((n == 0) && (!TextUtils.isEmpty(this.f)))
         {
-          localObject1 = ark.Application.Create(this.e, this.jdField_c_of_type_JavaLangString);
+          localObject1 = ark.Application.Create(this.h, this.f);
           if ((localObject1 != null) && (!TextUtils.isEmpty(paramString)))
           {
             bool1 = ((ark.Application)localObject1).CheckUrlLegality(paramString);
             ((ark.Application)localObject1).Release();
             if (bool1)
             {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_b_of_type_JavaLangString, localInteger);
+              this.b.put(this.e, localInteger);
               return false;
             }
           }
         }
-        paramString = this.mRuntime.a();
+        paramString = this.mRuntime.d();
         if (paramString != null)
         {
           if (paramString.isFinishing()) {
             return true;
           }
-          a(paramString.getString(2131690157));
-          this.jdField_a_of_type_AndroidAppDialog.show();
+          a(paramString.getString(2131887056));
+          this.k.show();
         }
         return true;
       }
       if (((String)localObject1).equals("forbidden"))
       {
-        b();
+        c();
         bool1 = true;
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_b_of_type_JavaLangString, Integer.valueOf(bool1 ^ true));
+    this.b.put(this.e, Integer.valueOf(bool1 ^ true));
     return bool1;
-  }
-  
-  protected boolean a(String paramString1, String paramString2)
-  {
-    boolean bool3 = TextUtils.isEmpty(paramString1);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!bool3)
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        int i = paramString1.lastIndexOf(paramString2);
-        bool1 = bool2;
-        if (i >= 0)
-        {
-          bool1 = bool2;
-          if (i == paramString1.length() - paramString2.length()) {
-            bool1 = true;
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  protected void b()
-  {
-    if (this.mRuntime == null) {
-      return;
-    }
-    Activity localActivity = this.mRuntime.a();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      QQToast.a(localActivity, HardCodeUtil.a(2131700939), 0).a();
-    }
   }
   
   public long getWebViewEventByNameSpace(String paramString)
@@ -326,7 +326,7 @@ public class ArkPlugin
   protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 16L) {
-      return a(paramString);
+      return c(paramString);
     }
     return false;
   }
@@ -339,12 +339,12 @@ public class ArkPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = a();
+    this.m = a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkPlugin
  * JD-Core Version:    0.7.0.1
  */

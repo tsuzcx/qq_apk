@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/o13" android:background="@drawable/dqq" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/bx6" android:layout_width="fill_parent" android:layout_height="36.0dip">
-        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.mobileqq.qqgamepub.view.CornerImageViewWithCircle android:id="@id/ld2" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="22.0dip" android:src="@drawable/csy" />
-            <com.tencent.mobileqq.qqgamepub.view.CornerImageViewWithCircle android:id="@id/ld1" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/csy" />
-        </FrameLayout>
-        <TextView android:textSize="14.0sp" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/ogz" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxLines="1" android:layout_weight="1.0" />
-        <LinearLayout android:layout_gravity="center|right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="12.0dip">
-            <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/oio" android:background="@drawable/g15" android:padding="1.0dip" android:layout_width="16.0dip" android:layout_height="16.0dip" android:text="99+" android:maxLines="1" />
-            <ImageView android:layout_gravity="center_vertical" android:layout_width="7.0dip" android:layout_height="11.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/go5" android:scaleType="centerCrop" />
-        </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dsa" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/ms">
+        <ImageView android:layout_width="@dimen/mv" android:layout_height="@dimen/mv" android:layout_marginLeft="16.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/9h" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/aqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="添加成员" />
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="0.5dip">
-        <View android:background="#fff1f3f8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
-    </LinearLayout>
-    <ViewSwitcher android:id="@id/fgm" android:background="@drawable/bxq" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="23.0dip" android:inAnimation="@anim/i2" android:outAnimation="@anim/i5" />
 </LinearLayout>

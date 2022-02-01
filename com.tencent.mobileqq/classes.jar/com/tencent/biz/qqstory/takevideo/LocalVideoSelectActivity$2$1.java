@@ -9,7 +9,7 @@ class LocalVideoSelectActivity$2$1
   
   public void run()
   {
-    LocalVideoSelectActivity.a(this.a.a).setVisibility(8);
+    LocalVideoSelectActivity.h(this.a.a).setVisibility(8);
   }
 }
 

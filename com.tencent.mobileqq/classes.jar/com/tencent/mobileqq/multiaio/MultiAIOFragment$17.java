@@ -10,12 +10,12 @@ class MultiAIOFragment$17
   
   public void a(String paramString, int paramInt)
   {
-    MultiAIOFragment.a(this.a).a(paramString, paramInt);
+    MultiAIOFragment.c(this.a).a(paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.17
  * JD-Core Version:    0.7.0.1
  */

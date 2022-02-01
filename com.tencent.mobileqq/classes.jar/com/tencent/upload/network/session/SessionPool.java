@@ -68,12 +68,10 @@ public class SessionPool
       }
       createSession(localUploadRoute);
       UploadLog.d("SessionPool", "changeRoute get next route !");
+      return true;
     }
-    else
-    {
-      UploadLog.d("SessionPool", "changeRoute network is not available return");
-    }
-    return true;
+    UploadLog.d("SessionPool", "changeRoute network is not available return");
+    return false;
   }
   
   private void createSession(int paramInt, UploadRoute paramUploadRoute)
@@ -169,6 +167,10 @@ public class SessionPool
       return;
     }
     UploadLog.d("SessionPool", "initSessions network is not available !");
+    SessionPool.PoolStateListener localPoolStateListener = this.mListener;
+    if (localPoolStateListener != null) {
+      localPoolStateListener.onNetWorkConnectFail(this, Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode());
+    }
   }
   
   private static boolean isInVaildServer(int paramInt)
@@ -421,7 +423,16 @@ public class SessionPool
               paramIUploadSession = new StringBuilder();
               paramIUploadSession.append("[connect] ");
               paramIUploadSession.append(getTag());
-              UploadLog.w(paramIUploadSession.toString(), "network is not available !!");
+              paramIUploadSession = paramIUploadSession.toString();
+              paramString = new StringBuilder();
+              paramString.append("network is not available !! mDetectingSession.size():");
+              paramString.append(this.mDetectingSession.size());
+              paramString.append(" mSessionQueue.size():");
+              paramString.append(this.mSessionQueue.size());
+              UploadLog.w(paramIUploadSession, paramString.toString());
+              if ((this.mDetectingSession.size() == 0) && (this.mSessionQueue.size() == 0) && (this.mListener != null)) {
+                this.mListener.onNetWorkConnectFail(this, Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode());
+              }
             }
           }
           return;
@@ -553,7 +564,7 @@ public class SessionPool
       else
       {
         if ((paramInt == Const.UploadRetCode.EINPROGRESS.getCode()) || (paramInt == Const.UploadRetCode.EAGAIN.getCode()) || (paramInt == Const.UploadRetCode.EHOSTUNREACH.getCode()) || (paramInt == Const.UploadRetCode.ENETUNREACH.getCode()) || (paramInt == Const.UploadRetCode.ENETDOWN.getCode()) || (paramInt == Const.UploadRetCode.ETIMEDOUT.getCode()) || (paramInt == Const.UploadRetCode.ECONNABORTED.getCode())) {
-          break label720;
+          break label755;
         }
         if ((paramInt == 30100) || (paramInt == Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode())) {
           break label649;
@@ -581,8 +592,11 @@ public class SessionPool
       paramString.append(paramInt);
       paramString.append(" 网络不可用 !");
       UploadLog.w(paramIUploadSession, paramString.toString());
+      if ((this.mSessionQueue.size() == 0) && (this.mListener != null)) {
+        this.mListener.onNetWorkConnectFail(this, Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode());
+      }
       return;
-      label720:
+      label755:
       paramIUploadSession = new StringBuilder();
       paramIUploadSession.append("[connect] ");
       paramIUploadSession.append(getTag());
@@ -592,6 +606,9 @@ public class SessionPool
       paramString.append(paramInt);
       paramString.append(" 网络异常 !");
       UploadLog.w(paramIUploadSession, paramString.toString());
+      if ((this.mSessionQueue.size() == 0) && (this.mListener != null)) {
+        this.mListener.onNetWorkConnectFail(this, Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode());
+      }
       return;
     }
     finally {}
@@ -737,7 +754,7 @@ public class SessionPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.session.SessionPool
  * JD-Core Version:    0.7.0.1
  */

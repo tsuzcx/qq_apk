@@ -20,33 +20,33 @@ class RedPacketShowerFragment$2
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131364028)
+    if (i != 2131429983)
     {
-      if (i == 2131369476)
+      if (i == 2131436547)
       {
-        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey("ext2")) {
-          this.a.jdField_a_of_type_JavaUtilMap.remove("ext2");
+        if (this.a.h.containsKey("ext2")) {
+          this.a.h.remove("ext2");
         }
         if (QLog.isColorLevel()) {
-          QLog.d("RedPacketShowerFragment", 2, new Object[] { "initUI close", this.a.jdField_a_of_type_JavaUtilMap });
+          QLog.d("RedPacketShowerFragment", 2, new Object[] { "initUI close", this.a.h });
         }
-        SpringHbReporter.a(ReportConstant.Event.o, 0, 0, this.a.jdField_a_of_type_JavaUtilMap, "close", true);
+        SpringHbReporter.a(ReportConstant.Event.o, 0, 0, this.a.h, "close", true);
         this.a.getActivity().finish();
       }
     }
     else if (this.a.a())
     {
-      if (this.a.jdField_a_of_type_JavaUtilMap.containsKey("ext2")) {
-        this.a.jdField_a_of_type_JavaUtilMap.remove("ext2");
+      if (this.a.h.containsKey("ext2")) {
+        this.a.h.remove("ext2");
       }
       if (QLog.isColorLevel()) {
-        QLog.d("RedPacketShowerFragment", 2, new Object[] { "initUI click", this.a.jdField_a_of_type_JavaUtilMap });
+        QLog.d("RedPacketShowerFragment", 2, new Object[] { "initUI click", this.a.h });
       }
-      SpringHbReporter.a(ReportConstant.Event.o, 0, 0, this.a.jdField_a_of_type_JavaUtilMap, "clk", true);
+      SpringHbReporter.a(ReportConstant.Event.o, 0, 0, this.a.h, "clk", true);
       StringBuilder localStringBuilder = new StringBuilder();
-      if (this.a.jdField_a_of_type_Int == 1)
+      if (this.a.i == 1)
       {
-        localStringBuilder.append(this.a.e);
+        localStringBuilder.append(this.a.q);
         localStringBuilder.append("&from=");
         localStringBuilder.append(25);
       }
@@ -54,13 +54,13 @@ class RedPacketShowerFragment$2
       {
         localStringBuilder.append("https://ti.qq.com/hb2021/packresult?_wv=16777219");
         localStringBuilder.append("&pack_id=");
-        localStringBuilder.append(this.a.f);
+        localStringBuilder.append(this.a.r);
         localStringBuilder.append("&business_id=");
-        localStringBuilder.append(this.a.c);
+        localStringBuilder.append(this.a.k);
         localStringBuilder.append("&type=");
-        localStringBuilder.append(this.a.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a.i);
         localStringBuilder.append("&state=");
-        localStringBuilder.append(this.a.b);
+        localStringBuilder.append(this.a.j);
         localStringBuilder.append("&from=");
         localStringBuilder.append(1);
       }
@@ -71,9 +71,9 @@ class RedPacketShowerFragment$2
         ((StringBuilder)localObject).append(localStringBuilder);
         QLog.d("RedPacketShowerFragment", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, QQBrowserActivity.class);
+      Object localObject = new Intent(this.a.s, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", localStringBuilder.toString());
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity((Intent)localObject);
+      this.a.s.startActivity((Intent)localObject);
       this.a.getActivity().finish();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -81,7 +81,7 @@ class RedPacketShowerFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.RedPacketShowerFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -39,7 +39,7 @@ public class InfoStickerUtils
     {
       localObject2 = localObject2[0];
       localObject1 = localObject2;
-      if (((String)localObject2).endsWith(HardCodeUtil.a(2064515410))) {
+      if (((String)localObject2).endsWith(HardCodeUtil.a(2064187697))) {
         localObject1 = paramString.substring(0, paramString.length() - 1);
       }
     }
@@ -49,39 +49,6 @@ public class InfoStickerUtils
     }
     SLog.b("InfoStickerUtils", "location name is %s.", localObject1);
     return localObject1;
-  }
-  
-  public static String[] a(long paramLong)
-  {
-    if (paramLong == -1L) {
-      paramLong = System.currentTimeMillis();
-    }
-    Object localObject2 = Calendar.getInstance();
-    ((Calendar)localObject2).setTime(new Date(paramLong));
-    Object localObject1 = new LunarSolarConverter.Solar();
-    ((LunarSolarConverter.Solar)localObject1).c = ((Calendar)localObject2).get(1);
-    ((LunarSolarConverter.Solar)localObject1).b = (((Calendar)localObject2).get(2) + 1);
-    ((LunarSolarConverter.Solar)localObject1).jdField_a_of_type_Int = ((Calendar)localObject2).get(5);
-    localObject2 = LunarSolarConverter.a((LunarSolarConverter.Solar)localObject1);
-    String[] arrayOfString = new String[4];
-    arrayOfString[0] = LunarSolarConverter.a(((LunarSolarConverter.Solar)localObject1).c);
-    if (((LunarSolarConverter.Lunar)localObject2).jdField_a_of_type_Boolean)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2064515395));
-      ((StringBuilder)localObject1).append(LunarSolarConverter.b(((LunarSolarConverter.Lunar)localObject2).b));
-      arrayOfString[1] = ((StringBuilder)localObject1).toString();
-    }
-    else
-    {
-      arrayOfString[1] = LunarSolarConverter.b(((LunarSolarConverter.Lunar)localObject2).b);
-    }
-    arrayOfString[2] = String.valueOf(LunarSolarConverter.c(((LunarSolarConverter.Lunar)localObject2).jdField_a_of_type_Int).charAt(0));
-    arrayOfString[3] = String.valueOf(LunarSolarConverter.c(((LunarSolarConverter.Lunar)localObject2).jdField_a_of_type_Int).charAt(1));
-    if (QLog.isColorLevel()) {
-      QLog.d("InfoStickerUtils", 2, TextUtils.join("  ", arrayOfString));
-    }
-    return arrayOfString;
   }
   
   public static String b(long paramLong)
@@ -152,10 +119,43 @@ public class InfoStickerUtils
     }
     return new SimpleDateFormat("HHmm").format(new Date(paramLong - 60000L));
   }
+  
+  public static String[] j(long paramLong)
+  {
+    if (paramLong == -1L) {
+      paramLong = System.currentTimeMillis();
+    }
+    Object localObject2 = Calendar.getInstance();
+    ((Calendar)localObject2).setTime(new Date(paramLong));
+    Object localObject1 = new LunarSolarConverter.Solar();
+    ((LunarSolarConverter.Solar)localObject1).c = ((Calendar)localObject2).get(1);
+    ((LunarSolarConverter.Solar)localObject1).b = (((Calendar)localObject2).get(2) + 1);
+    ((LunarSolarConverter.Solar)localObject1).a = ((Calendar)localObject2).get(5);
+    localObject2 = LunarSolarConverter.a((LunarSolarConverter.Solar)localObject1);
+    String[] arrayOfString = new String[4];
+    arrayOfString[0] = LunarSolarConverter.a(((LunarSolarConverter.Solar)localObject1).c);
+    if (((LunarSolarConverter.Lunar)localObject2).a)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2064187682));
+      ((StringBuilder)localObject1).append(LunarSolarConverter.b(((LunarSolarConverter.Lunar)localObject2).c));
+      arrayOfString[1] = ((StringBuilder)localObject1).toString();
+    }
+    else
+    {
+      arrayOfString[1] = LunarSolarConverter.b(((LunarSolarConverter.Lunar)localObject2).c);
+    }
+    arrayOfString[2] = String.valueOf(LunarSolarConverter.c(((LunarSolarConverter.Lunar)localObject2).b).charAt(0));
+    arrayOfString[3] = String.valueOf(LunarSolarConverter.c(((LunarSolarConverter.Lunar)localObject2).b).charAt(1));
+    if (QLog.isColorLevel()) {
+      QLog.d("InfoStickerUtils", 2, TextUtils.join("  ", arrayOfString));
+    }
+    return arrayOfString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.util.InfoStickerUtils
  * JD-Core Version:    0.7.0.1
  */

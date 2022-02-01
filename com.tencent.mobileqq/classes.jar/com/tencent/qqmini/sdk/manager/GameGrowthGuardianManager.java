@@ -247,7 +247,7 @@ public class GameGrowthGuardianManager
       } else {
         paramMiniAppInfo = "";
       }
-      localChannelProxy.ReportExecute(str, i, paramStJudgeTimingRsp, paramMiniAppInfo, new GameGrowthGuardianManager.3());
+      localChannelProxy.reportExecute(str, i, paramStJudgeTimingRsp, paramMiniAppInfo, new GameGrowthGuardianManager.3());
     }
   }
   
@@ -359,7 +359,7 @@ public class GameGrowthGuardianManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.GameGrowthGuardianManager
  * JD-Core Version:    0.7.0.1
  */

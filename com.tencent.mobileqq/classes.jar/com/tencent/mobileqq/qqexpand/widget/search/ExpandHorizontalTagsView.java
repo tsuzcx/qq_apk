@@ -19,25 +19,22 @@ public class ExpandHorizontalTagsView
   extends LinearLayout
   implements View.OnClickListener
 {
-  public int a;
-  public ExpandHorizontalTagsView.OnItemClickListener a;
+  public int a = -1;
+  public ExpandHorizontalTagsView.OnItemClickListener b;
   
   public ExpandHorizontalTagsView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
   }
   
   public ExpandHorizontalTagsView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
   }
   
   public ExpandHorizontalTagsView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = -1;
   }
   
   public void onClick(View paramView)
@@ -45,12 +42,12 @@ public class ExpandHorizontalTagsView
     if ((paramView.getTag() instanceof ExpandHorizontalTagsView.TagInfo))
     {
       Object localObject = (ExpandHorizontalTagsView.TagInfo)paramView.getTag();
-      if (((ExpandHorizontalTagsView.TagInfo)localObject).jdField_a_of_type_Int != this.jdField_a_of_type_Int)
+      if (((ExpandHorizontalTagsView.TagInfo)localObject).a != this.a)
       {
-        this.jdField_a_of_type_Int = ((ExpandHorizontalTagsView.TagInfo)localObject).jdField_a_of_type_Int;
-        ExpandHorizontalTagsView.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandHorizontalTagsView$OnItemClickListener;
+        this.a = ((ExpandHorizontalTagsView.TagInfo)localObject).a;
+        ExpandHorizontalTagsView.OnItemClickListener localOnItemClickListener = this.b;
         if (localOnItemClickListener != null) {
-          localOnItemClickListener.a(((ExpandHorizontalTagsView.TagInfo)localObject).jdField_a_of_type_JavaLangString, ((ExpandHorizontalTagsView.TagInfo)localObject).jdField_a_of_type_Int);
+          localOnItemClickListener.a(((ExpandHorizontalTagsView.TagInfo)localObject).b, ((ExpandHorizontalTagsView.TagInfo)localObject).a);
         }
         int i = 0;
         while (i < getChildCount())
@@ -72,7 +69,7 @@ public class ExpandHorizontalTagsView
   
   public void setOnItemClickListener(ExpandHorizontalTagsView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandHorizontalTagsView$OnItemClickListener = paramOnItemClickListener;
+    this.b = paramOnItemClickListener;
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList, int paramInt)
@@ -101,7 +98,7 @@ public class ExpandHorizontalTagsView
           localTextView.setContentDescription((CharSequence)localObject);
           if (i == paramInt)
           {
-            this.jdField_a_of_type_Int = i;
+            this.a = i;
             localTextView.setSelected(true);
           }
           else
@@ -114,8 +111,8 @@ public class ExpandHorizontalTagsView
           localTextView.setClickable(true);
           localTextView.setFocusable(true);
           localTextView.setPadding(m, 0, m, 0);
-          localTextView.setBackgroundResource(2130845103);
-          localTextView.setTextColor(getResources().getColorStateList(2131166385));
+          localTextView.setBackgroundResource(2130846540);
+          localTextView.setTextColor(getResources().getColorStateList(2131167221));
           localObject = new LinearLayout.LayoutParams(-2, n);
           if (j > 0) {
             ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(getContext(), 8.0F);
@@ -130,7 +127,7 @@ public class ExpandHorizontalTagsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.search.ExpandHorizontalTagsView
  * JD-Core Version:    0.7.0.1
  */

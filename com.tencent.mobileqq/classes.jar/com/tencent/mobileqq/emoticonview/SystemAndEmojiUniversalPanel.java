@@ -43,12 +43,14 @@ public class SystemAndEmojiUniversalPanel
   private boolean mFilterSysFaceBeyond255Enable = false;
   private EditText mInputEdit;
   private EmotionPanelInfo mPanelInfo;
+  private boolean mShowDescribeInPreview = false;
   private SystemAndEmojiAdapter mSystemAndEmojiAdapter;
   private int mainPanelWidth;
   private int minAlphaLeft;
   private int minAlphaTop;
   private boolean multiWindowMode;
   private int[] point = new int[2];
+  private int rowCount = 7;
   private boolean showCommonUsedSystemEmoji = false;
   private int spacing;
   private TextWatcher textWatcher = new SystemAndEmojiUniversalPanel.3(this);
@@ -164,6 +166,11 @@ public class SystemAndEmojiUniversalPanel
     }
   }
   
+  private void setShowDescribeInPreview(boolean paramBoolean)
+  {
+    this.mShowDescribeInPreview = paramBoolean;
+  }
+  
   private void updateSystemSmallEmojiAlpha(AbsListView paramAbsListView)
   {
     if (paramAbsListView != null)
@@ -240,7 +247,7 @@ public class SystemAndEmojiUniversalPanel
   
   protected int getLayoutId()
   {
-    return 2131562901;
+    return 2131629361;
   }
   
   public View getView()
@@ -250,11 +257,11 @@ public class SystemAndEmojiUniversalPanel
   
   public void init(IEmoticonMainPanelApp paramIEmoticonMainPanelApp)
   {
-    setBackgroundColor(getResources().getColor(2131167262));
+    setBackgroundColor(getResources().getColor(2131168260));
     this.density = getResources().getDisplayMetrics().density;
-    this.spacing = ViewUtils.a(5.0F);
-    this.mPanelInfo = new EmotionPanelInfo(7, 7, null);
-    this.mDeleteButton = ((ImageButton)findViewById(2131365500));
+    this.spacing = ViewUtils.dip2px(5.0F);
+    this.mPanelInfo = new EmotionPanelInfo(7, this.rowCount, null);
+    this.mDeleteButton = ((ImageButton)findViewById(2131431715));
     if (this.mInputEdit != null)
     {
       this.mDeleteButton.setVisibility(0);
@@ -262,13 +269,14 @@ public class SystemAndEmojiUniversalPanel
       this.mDeleteButton.setEnabled(TextUtils.isEmpty(localEditable) ^ true);
     }
     this.mDeleteButton.setOnClickListener(this);
-    this.mEmotionPanelListView = ((EmotionPanelListView)findViewById(2131366189));
+    this.mEmotionPanelListView = ((EmotionPanelListView)findViewById(2131432477));
     this.mEmotionPanelListView.setDivider(null);
     this.mEmotionPanelListView.setEdgeEffectEnabled(false);
-    this.mEmotionPanelListView.setSelector(2130850892);
+    this.mEmotionPanelListView.setSelector(2130852744);
     int i = getColumnNum();
     this.mSystemAndEmojiAdapter = new SystemAndEmojiAdapter(paramIEmoticonMainPanelApp, null, getContext(), i, 1, this.mPanelInfo.type, this.mCallback, 0);
     this.mSystemAndEmojiAdapter.setLastItemAddPaddingBottom(getLastItemAddPaddingBottom());
+    this.mSystemAndEmojiAdapter.setShowDescribeInPreview(this.mShowDescribeInPreview);
     paramIEmoticonMainPanelApp = this.mSystemAndEmojiAdapter;
     paramIEmoticonMainPanelApp.widthPixels = this.mainPanelWidth;
     paramIEmoticonMainPanelApp.curPanelInfo = this.mPanelInfo;
@@ -288,7 +296,7 @@ public class SystemAndEmojiUniversalPanel
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365500)
+    if (paramView.getId() == 2131431715)
     {
       EmoticonCallback localEmoticonCallback = this.mCallback;
       if (localEmoticonCallback != null) {
@@ -386,6 +394,11 @@ public class SystemAndEmojiUniversalPanel
     this.mFilterSysFaceBeyond255Enable = paramBoolean;
   }
   
+  public void setRowCount(int paramInt)
+  {
+    this.rowCount = paramInt;
+  }
+  
   public void setShowCommonUsedSystemEmoji(boolean paramBoolean)
   {
     this.showCommonUsedSystemEmoji = paramBoolean;
@@ -398,7 +411,7 @@ public class SystemAndEmojiUniversalPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class QrCodeDisplayConfProcessor
   @NonNull
   public static QrCodeConfBean a()
   {
-    QrCodeConfBean localQrCodeConfBean2 = (QrCodeConfBean)QConfigManager.a().a(630);
+    QrCodeConfBean localQrCodeConfBean2 = (QrCodeConfBean)QConfigManager.b().b(630);
     QrCodeConfBean localQrCodeConfBean1 = localQrCodeConfBean2;
     if (localQrCodeConfBean2 == null)
     {
@@ -36,7 +36,7 @@ public class QrCodeDisplayConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -98,7 +98,7 @@ public class QrCodeDisplayConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QrCodeDisplayConfProcessor
  * JD-Core Version:    0.7.0.1
  */

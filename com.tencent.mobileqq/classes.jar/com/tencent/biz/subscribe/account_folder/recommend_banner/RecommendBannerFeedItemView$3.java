@@ -24,7 +24,7 @@ class RecommendBannerFeedItemView$3
     localStringBuilder.append(str1);
     String str1 = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(RecommendBannerFeedItemView.a(this.a));
+    localStringBuilder.append(RecommendBannerFeedItemView.b(this.a));
     localStringBuilder.append("");
     VSReporter.a(str2, "auth_page", str1, 0, 0, new String[] { "", localStringBuilder.toString(), RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
   }

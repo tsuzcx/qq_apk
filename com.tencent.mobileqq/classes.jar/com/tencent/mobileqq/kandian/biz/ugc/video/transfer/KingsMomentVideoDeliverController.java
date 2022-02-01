@@ -29,36 +29,36 @@ import java.util.HashMap;
 public class KingsMomentVideoDeliverController
   extends KandianVideoUploadController
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Bundle a;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new KingsMomentVideoDeliverController.1(this);
-  TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
-  private WeakReference<KandianVideoUploadController.DeliverVideoTaskListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private QQAppInterface jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
-  private String d;
-  private String e;
-  private String f;
-  private String g;
-  private String h;
+  public Bundle o;
+  TransferRequest p;
+  TransProcessorHandler q = new KingsMomentVideoDeliverController.1(this);
+  private WeakReference<KandianVideoUploadController.DeliverVideoTaskListener> r;
+  private WeakReference<Context> s;
+  private QQAppInterface t;
+  private String u;
+  private String v;
+  private String w;
+  private String x;
+  private String y;
+  private Context z;
   
   public KingsMomentVideoDeliverController(Context paramContext, KandianVideoUploadController.DeliverVideoTaskListener paramDeliverVideoTaskListener, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDeliverVideoTaskListener);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ReadInJoyUtils.a());
-    this.jdField_a_of_type_AndroidOsBundle = paramIntent.getExtras();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.r = new WeakReference(paramDeliverVideoTaskListener);
+    this.s = new WeakReference(paramContext);
+    this.t = ((QQAppInterface)ReadInJoyUtils.b());
+    this.o = paramIntent.getExtras();
+    this.z = paramContext;
     c();
-    KanDianVideoUploadUtils.a(this.jdField_a_of_type_AndroidOsBundle);
+    KanDianVideoUploadUtils.a(this.o);
   }
   
   private void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.h = paramFloat;
+    WeakReference localWeakReference = this.r;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((KandianVideoUploadController.DeliverVideoTaskListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramFloat);
+      ((KandianVideoUploadController.DeliverVideoTaskListener)this.r.get()).a(this.g, paramFloat);
     }
   }
   
@@ -66,11 +66,11 @@ public class KingsMomentVideoDeliverController
   {
     paramString1 = VideoMetaInfo.a().a(paramString1).b(paramString2).d(paramString4).c(paramString3).e(paramString5).a();
     if (paramInt == 0) {
-      a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidOsBundle, paramString1, (KandianVideoUploadController.DeliverVideoTaskListener)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+      a(true, this.z, this.o, paramString1, (KandianVideoUploadController.DeliverVideoTaskListener)this.r.get());
     }
-    paramString2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    paramString2 = this.r;
     if ((paramString2 != null) && (paramString2.get() != null)) {
-      ((KandianVideoUploadController.DeliverVideoTaskListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramInt, paramString1);
+      ((KandianVideoUploadController.DeliverVideoTaskListener)this.r.get()).a(this.g, paramInt, paramString1);
     }
   }
   
@@ -81,9 +81,9 @@ public class KingsMomentVideoDeliverController
   
   private void c()
   {
-    this.g = this.jdField_a_of_type_AndroidOsBundle.getString("arg_video_path");
-    this.h = this.jdField_a_of_type_AndroidOsBundle.getString("arg_video_cover");
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("mTaskID");
+    this.x = this.o.getString("arg_video_path");
+    this.y = this.o.getString("arg_video_cover");
+    this.g = this.o.getString("mTaskID");
   }
   
   private void c(int paramInt)
@@ -91,9 +91,9 @@ public class KingsMomentVideoDeliverController
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_FailCode", String.valueOf(paramInt));
     long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get());
-    String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    long l2 = this.m;
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance((Context)this.s.get());
+    String str = this.t.getCurrentAccountUin();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
@@ -105,8 +105,8 @@ public class KingsMomentVideoDeliverController
   
   public void a()
   {
-    a(this.h);
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    a(this.y);
+    this.m = NetConnInfoCenter.getServerTimeMillis();
   }
   
   public void a(String paramString)
@@ -130,43 +130,43 @@ public class KingsMomentVideoDeliverController
       b(5);
       return;
     }
-    if (!NetworkUtil.a((Context)this.jdField_b_of_type_JavaLangRefWeakReference.get()))
+    if (!NetworkUtil.a((Context)this.s.get()))
     {
       b(1003);
       return;
     }
-    this.d = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.f = "";
+    this.u = "";
+    this.v = "";
+    this.w = "";
     localObject = new CompressInfo(paramString, 0);
-    ((CompressInfo)localObject).f = 0;
+    ((CompressInfo)localObject).o = 0;
     if (!((ICompressOperator)QRoute.api(ICompressOperator.class)).start((CompressInfo)localObject)) {
       c(1001);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startUploadPic compressPath=");
-    localStringBuilder.append(((CompressInfo)localObject).jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(((CompressInfo)localObject).l);
     localStringBuilder.append(", originPath=");
     localStringBuilder.append(paramString);
     localStringBuilder.append(", outWidth=");
-    localStringBuilder.append(((CompressInfo)localObject).d);
+    localStringBuilder.append(((CompressInfo)localObject).m);
     localStringBuilder.append(", outHeight=");
-    localStringBuilder.append(((CompressInfo)localObject).jdField_e_of_type_Int);
+    localStringBuilder.append(((CompressInfo)localObject).n);
     QLog.d("KingsMomentVideoDeliveControllerr", 1, localStringBuilder.toString());
-    if (!TextUtils.isEmpty(((CompressInfo)localObject).jdField_e_of_type_JavaLangString)) {
-      paramString = ((CompressInfo)localObject).jdField_e_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(((CompressInfo)localObject).l)) {
+      paramString = ((CompressInfo)localObject).l;
     }
-    this.d = paramString;
-    paramString = (ITransFileController)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
-    paramString.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = new TransferRequest();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+    this.u = paramString;
+    paramString = (ITransFileController)this.t.getRuntimeService(ITransFileController.class);
+    this.q.addFilter(new Class[] { BDHCommonUploadProcessor.class });
+    paramString.addHandle(this.q);
+    this.p = new TransferRequest();
+    localObject = this.p;
     ((TransferRequest)localObject).mIsUp = true;
     ((TransferRequest)localObject).mCommandId = 10;
-    ((TransferRequest)localObject).mLocalPath = this.d;
+    ((TransferRequest)localObject).mLocalPath = this.u;
     ((TransferRequest)localObject).mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
+    localObject = this.p;
     ((TransferRequest)localObject).mPeerUin = "0";
     ((TransferRequest)localObject).mFileType = 24;
     ((TransferRequest)localObject).mRichTag = "KandianUGCPicUpload";
@@ -175,12 +175,12 @@ public class KingsMomentVideoDeliverController
   
   public void b()
   {
-    KanDianVideoUploadUtils.a(this.d);
+    KanDianVideoUploadUtils.a(this.u);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.KingsMomentVideoDeliverController
  * JD-Core Version:    0.7.0.1
  */

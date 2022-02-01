@@ -14,11 +14,11 @@ class DownloadManagerV2$6
   {
     try
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a);
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.c(this.a);
       if (localTMAssistantDownloadTaskInfo != null)
       {
-        this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        this.this$0.c(this.a);
+        this.a.q = localTMAssistantDownloadTaskInfo.mSavePath;
+        this.this$0.e(this.a);
         this.this$0.a(4, this.a);
       }
       LogUtility.b("AppCenterReporter", "from:[onDownloadComplete]");
@@ -34,7 +34,7 @@ class DownloadManagerV2$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.6
  * JD-Core Version:    0.7.0.1
  */

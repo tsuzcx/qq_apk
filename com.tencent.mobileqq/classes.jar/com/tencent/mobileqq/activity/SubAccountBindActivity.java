@@ -21,12 +21,14 @@ import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.avatar.observer.AvatarObserver;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.subaccount.api.ISubAccountApi;
 import com.tencent.mobileqq.subaccount.api.ISubAccountService;
 import com.tencent.mobileqq.subaccount.api.impl.SubAccountServiceImpl;
 import com.tencent.mobileqq.utils.api.IContactUtils;
 import com.tencent.mobileqq.widget.FormItemRelativeLayout;
 import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -127,10 +129,10 @@ public class SubAccountBindActivity
         if (localSimpleAccount == null) {
           return;
         }
-        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131368343);
-        TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131371697);
-        TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131361863);
-        localObject1 = (ImageView)((View)localObject1).findViewById(2131364592);
+        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131435219);
+        TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131439121);
+        TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131427416);
+        localObject1 = (ImageView)((View)localObject1).findViewById(2131430661);
         localObject2 = ((IContactUtils)QRoute.api(IContactUtils.class)).getAccountNickName(this.app, localSimpleAccount.getUin());
         localObject1 = localObject2;
         if (localSimpleAccount.isLogined()) {
@@ -171,10 +173,19 @@ public class SubAccountBindActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562890);
-    setTitle(2131719312);
-    setContentBackgroundResource(2130838739);
-    this.accountListLinearLayout = ((LinearLayout)findViewById(2131361866));
+    super.setContentView(2131629342);
+    setTitle(2131916864);
+    setContentBackgroundResource(2130838958);
+    int i = getIntent().getIntExtra("fromWhereExactly", 0);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("report fromWhereExactly = ");
+      paramBundle.append(i);
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, paramBundle.toString());
+    }
+    ReportController.b(this.app, "dc00898", "", "", "0X800BDE7", "0X800BDE7", i, 0, "", "", "", "");
+    this.accountListLinearLayout = ((LinearLayout)findViewById(2131427419));
     if (!refreshAccountList(true)) {
       return false;
     }
@@ -220,15 +231,15 @@ public class SubAccountBindActivity
     {
       if (this.accountList.get(i) == null)
       {
-        localObject = getLayoutInflater().inflate(2131558442, this.accountListLinearLayout, false);
-        ((TextView)((View)localObject).findViewById(2131371780)).setText(2131719302);
+        localObject = getLayoutInflater().inflate(2131623978, this.accountListLinearLayout, false);
+        ((TextView)((View)localObject).findViewById(2131439215)).setText(2131916854);
         ((View)localObject).setOnClickListener(this.onAddAccountClick);
         ((View)localObject).setTag(null);
         this.accountListLinearLayout.addView((View)localObject);
       }
       else
       {
-        localObject = getLayoutInflater().inflate(2131558443, this.accountListLinearLayout, false);
+        localObject = getLayoutInflater().inflate(2131623979, this.accountListLinearLayout, false);
         if ((localObject instanceof FormItemRelativeLayout))
         {
           FormItemRelativeLayout localFormItemRelativeLayout = (FormItemRelativeLayout)localObject;
@@ -236,7 +247,7 @@ public class SubAccountBindActivity
           localFormItemRelativeLayout.setBGType(2);
         }
         ((View)localObject).setTag(Integer.valueOf(i));
-        ((ImageView)((View)localObject).findViewById(2131368343)).setScaleType(ImageView.ScaleType.FIT_CENTER);
+        ((ImageView)((View)localObject).findViewById(2131435219)).setScaleType(ImageView.ScaleType.FIT_CENTER);
         ((View)localObject).setOnClickListener(this.onSelectAccountClick);
         this.accountListLinearLayout.addView((View)localObject);
       }
@@ -253,7 +264,7 @@ public class SubAccountBindActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity
  * JD-Core Version:    0.7.0.1
  */

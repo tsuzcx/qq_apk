@@ -9,57 +9,20 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class RIJNetworkUtils
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static volatile boolean jdField_a_of_type_Boolean = false;
+  private static String a = "";
   private static String b = "";
-  
-  public static int a(Context paramContext)
-  {
-    int j = NetworkUtil.getSystemNetwork(paramContext);
-    int i;
-    if (j >= 1)
-    {
-      i = j;
-      if (j <= 4) {}
-    }
-    else
-    {
-      i = 5;
-    }
-    return i;
-  }
+  private static volatile boolean c = false;
   
   public static String a(Context paramContext)
   {
-    b(paramContext);
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return NetworkUtil.isNetworkAvailable(paramContext);
-  }
-  
-  public static int b(Context paramContext)
-  {
-    return NetworkUtil.getNetworkType(paramContext);
+    h(paramContext);
+    return a;
   }
   
   public static String b(Context paramContext)
   {
-    b(paramContext);
+    h(paramContext);
     return b;
-  }
-  
-  private static void b(Context paramContext)
-  {
-    if ((!jdField_a_of_type_Boolean) && (paramContext != null))
-    {
-      paramContext = paramContext.getApplicationContext();
-      jdField_a_of_type_Boolean = true;
-      AppNetConnInfo.registerNetChangeReceiver(paramContext, new RIJNetworkUtils.1(paramContext));
-      c(paramContext);
-    }
   }
   
   public static String c(Context paramContext)
@@ -82,7 +45,44 @@ public class RIJNetworkUtils
     return "";
   }
   
-  private static void c(Context paramContext)
+  public static int d(Context paramContext)
+  {
+    int j = NetworkUtil.getSystemNetwork(paramContext);
+    int i;
+    if (j >= 1)
+    {
+      i = j;
+      if (j <= 4) {}
+    }
+    else
+    {
+      i = 5;
+    }
+    return i;
+  }
+  
+  public static boolean e(Context paramContext)
+  {
+    return NetworkUtil.isNetworkAvailable(paramContext);
+  }
+  
+  public static int f(Context paramContext)
+  {
+    return NetworkUtil.getNetworkType(paramContext);
+  }
+  
+  private static void h(Context paramContext)
+  {
+    if ((!c) && (paramContext != null))
+    {
+      paramContext = paramContext.getApplicationContext();
+      c = true;
+      AppNetConnInfo.registerNetChangeReceiver(paramContext, new RIJNetworkUtils.1(paramContext));
+      i(paramContext);
+    }
+  }
+  
+  private static void i(Context paramContext)
   {
     if (paramContext != null)
     {
@@ -96,8 +96,8 @@ public class RIJNetworkUtils
         } else {
           paramContext = localWifiInfo.getBSSID();
         }
-        jdField_a_of_type_JavaLangString = paramContext;
-        if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+        a = paramContext;
+        if (TextUtils.isEmpty(a)) {
           paramContext = str;
         } else {
           paramContext = localWifiInfo.getSSID();
@@ -109,7 +109,7 @@ public class RIJNetworkUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.RIJNetworkUtils
  * JD-Core Version:    0.7.0.1
  */

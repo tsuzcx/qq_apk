@@ -38,45 +38,45 @@ import java.lang.ref.WeakReference;
 
 public class VipGeneralGdtShowView
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new VipGeneralGdtShowView.1(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-  private AlumBasicData jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData;
-  VipGeneralGdtShowView.VipGeneralGdtClickListner jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView$VipGeneralGdtClickListner;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private int jdField_d_of_type_Int;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private int jdField_e_of_type_Int;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private int f;
+  VipGeneralGdtShowView.VipGeneralGdtClickListner a;
+  View.OnClickListener b = new VipGeneralGdtShowView.1(this);
+  private Context c;
+  private int d = -1;
+  private ImageView e;
+  private TextView f;
+  private TextView g;
+  private TextView h;
+  private View i;
+  private RelativeLayout j;
+  private Handler k;
+  private AlumBasicData l;
+  private GdtAppReceiver m;
+  private TextView n;
+  private TextView o;
+  private ImageView p;
+  private int q;
+  private int r;
+  private int s;
+  private int t;
+  private int u;
   
   public VipGeneralGdtShowView(Context paramContext, int paramInt1, int paramInt2, int paramInt3, GdtAppReceiver paramGdtAppReceiver)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(paramInt1, null);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.c = paramContext;
+    this.d = paramInt1;
+    this.r = paramInt2;
+    this.i = LayoutInflater.from(paramContext).inflate(paramInt1, null);
+    this.k = new Handler(Looper.getMainLooper());
     if (paramGdtAppReceiver == null)
     {
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(this.jdField_a_of_type_AndroidContentContext);
+      this.m = new GdtAppReceiver();
+      this.m.register(this.c);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = paramGdtAppReceiver;
+      this.m = paramGdtAppReceiver;
     }
-    this.jdField_d_of_type_Int = paramInt3;
+    this.s = paramInt3;
   }
   
   private void a(AlumBasicData paramAlumBasicData)
@@ -84,45 +84,45 @@ public class VipGeneralGdtShowView
     URLDrawable localURLDrawable = URLDrawable.getDrawable(paramAlumBasicData.advimageUrl, null);
     if (localURLDrawable != null)
     {
-      this.jdField_e_of_type_Int = paramAlumBasicData.imageWith;
-      this.f = paramAlumBasicData.imageHeight;
-      int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - ViewUtils.b(56.0F);
-      int i = this.jdField_e_of_type_Int;
-      if (i != 0)
+      this.t = paramAlumBasicData.imageWith;
+      this.u = paramAlumBasicData.imageHeight;
+      int i2 = this.c.getResources().getDisplayMetrics().widthPixels - ViewUtils.dpToPx(56.0F);
+      int i1 = this.t;
+      if (i1 != 0)
       {
-        int k = this.f;
-        if (k != 0)
+        int i3 = this.u;
+        if (i3 != 0)
         {
-          double d1 = k;
-          double d2 = i;
+          double d1 = i3;
+          double d2 = i1;
           Double.isNaN(d2);
           Double.isNaN(d1);
           d1 /= d2 * 1.0D;
-          d2 = j;
+          d2 = i2;
           Double.isNaN(d2);
-          i = (int)(d1 * d2);
+          i1 = (int)(d1 * d2);
           break label125;
         }
       }
-      i = 0;
+      i1 = 0;
       label125:
-      if (i != 0)
+      if (i1 != 0)
       {
-        Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).height = i;
-        this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        Object localObject = this.e.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).height = i1;
+        this.e.setLayoutParams((ViewGroup.LayoutParams)localObject);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(" @getGdtInfo height  =");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(i1);
         ((StringBuilder)localObject).append("contrlwith =");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(i2);
         ((StringBuilder)localObject).append("imagewith =");
-        ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
+        ((StringBuilder)localObject).append(this.t);
         ((StringBuilder)localObject).append("imageheight =");
-        ((StringBuilder)localObject).append(this.f);
+        ((StringBuilder)localObject).append(this.u);
         QZLog.i("VipGeneralGdtShowView", ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+      this.e.setImageDrawable(localURLDrawable);
       if (paramAlumBasicData.hasExposed == 0)
       {
         paramAlumBasicData.hasExposed = 1;
@@ -134,30 +134,30 @@ public class VipGeneralGdtShowView
   
   private void b(AlumBasicData paramAlumBasicData)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getResources().getDrawable(2130840321);
+    Drawable localDrawable = this.f.getResources().getDrawable(2130841060);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = localDrawable;
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     localURLDrawableOptions.mUseMemoryCache = false;
     paramAlumBasicData = URLDrawable.getDrawable(paramAlumBasicData.advLogoUrl, localURLDrawableOptions);
-    if ((this.jdField_c_of_type_Int == 3) && (!SimpleUIUtil.a()))
+    if ((this.r == 3) && (!SimpleUIUtil.e()))
     {
-      paramAlumBasicData.setTag(URLDrawableDecodeHandler.a(ViewUtils.a(40.0F), ViewUtils.a(40.0F)));
-      paramAlumBasicData.setDecodeHandler(URLDrawableDecodeHandler.n);
+      paramAlumBasicData.setTag(URLDrawableDecodeHandler.a(ViewUtils.dip2px(40.0F), ViewUtils.dip2px(40.0F)));
+      paramAlumBasicData.setDecodeHandler(URLDrawableDecodeHandler.o);
     }
     else
     {
-      paramAlumBasicData.setTag(URLDrawableDecodeHandler.b(ViewUtils.a(40.0F), ViewUtils.a(40.0F), ViewUtils.a(3.5F)));
-      paramAlumBasicData.setDecodeHandler(URLDrawableDecodeHandler.i);
+      paramAlumBasicData.setTag(URLDrawableDecodeHandler.b(ViewUtils.dip2px(40.0F), ViewUtils.dip2px(40.0F), ViewUtils.dip2px(3.5F)));
+      paramAlumBasicData.setDecodeHandler(URLDrawableDecodeHandler.j);
     }
     if (paramAlumBasicData != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramAlumBasicData);
+      this.p.setImageDrawable(paramAlumBasicData);
     }
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.i;
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
@@ -165,13 +165,13 @@ public class VipGeneralGdtShowView
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      long l = 0L;
+      long l1 = 0L;
       if ((localObject instanceof QQAppInterface)) {
-        l = ((QQAppInterface)localObject).getLongAccountUin();
+        l1 = ((QQAppInterface)localObject).getLongAccountUin();
       }
       localObject = new VasAdMetaReportParam.Builder();
-      ((VasAdMetaReportParam.Builder)localObject).setAdvPos(Integer.valueOf(this.jdField_c_of_type_Int));
-      ((VasAdMetaReportParam.Builder)localObject).setUin(Long.valueOf(l));
+      ((VasAdMetaReportParam.Builder)localObject).setAdvPos(Integer.valueOf(this.r));
+      ((VasAdMetaReportParam.Builder)localObject).setUin(Long.valueOf(l1));
       ((VasAdMetaReportParam.Builder)localObject).setActionType(Integer.valueOf(paramInt1));
       ((VasAdMetaReportParam.Builder)localObject).setRecommendCookie(paramString);
       ((VasAdMetaReportParam.Builder)localObject).setFeedIndex(Integer.valueOf(paramInt2));
@@ -187,35 +187,35 @@ public class VipGeneralGdtShowView
     if (paramView == null) {
       return;
     }
-    this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView$VipGeneralGdtClickListner = paramVipGeneralGdtClickListner;
+    this.a = paramVipGeneralGdtClickListner;
     QZLog.i("VipGeneralGdtShowView", " @getGdtInfo initAdvView");
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367607));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367616));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367617));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367619));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367615));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367620));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367621));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367618));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.j = ((RelativeLayout)paramView.findViewById(2131434150));
+    this.e = ((ImageView)paramView.findViewById(2131434159));
+    this.h = ((TextView)paramView.findViewById(2131434160));
+    this.f = ((TextView)paramView.findViewById(2131434162));
+    this.g = ((TextView)paramView.findViewById(2131434158));
+    this.n = ((TextView)paramView.findViewById(2131434163));
+    this.o = ((TextView)paramView.findViewById(2131434164));
+    this.p = ((ImageView)paramView.findViewById(2131434161));
+    this.j.setOnClickListener(this.b);
+    this.h.setOnClickListener(this.b);
   }
   
   public void a(AlumBasicData paramAlumBasicData, int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData = paramAlumBasicData;
-      this.jdField_b_of_type_Int = (paramInt + 1);
-      if ((paramAlumBasicData != null) && (!TextUtils.isEmpty(paramAlumBasicData.advimageUrl)) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_b_of_type_AndroidWidgetTextView != null))
+      this.l = paramAlumBasicData;
+      this.q = (paramInt + 1);
+      if ((paramAlumBasicData != null) && (!TextUtils.isEmpty(paramAlumBasicData.advimageUrl)) && (this.j != null) && (this.e != null) && (this.h != null) && (this.f != null) && (this.g != null))
       {
         b(paramAlumBasicData);
         a(paramAlumBasicData);
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.leftBottomText);
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.rightBottomButton);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.advTextTitle);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.advTextText);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        this.n.setText(paramAlumBasicData.leftBottomText);
+        this.o.setText(paramAlumBasicData.rightBottomButton);
+        this.f.setText(paramAlumBasicData.advTextTitle);
+        this.g.setText(paramAlumBasicData.advTextText);
+        this.j.setVisibility(0);
         if (QZLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -230,8 +230,8 @@ public class VipGeneralGdtShowView
       }
       else
       {
-        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        if (this.j != null) {
+          this.j.setVisibility(8);
         }
         QZLog.i("VipGeneralGdtShowView", " @getGdtInfo setDataChanged is null");
         return;
@@ -251,17 +251,17 @@ public class VipGeneralGdtShowView
   public void a(WeakReference<Activity> paramWeakReference, int paramInt)
   {
     GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.jdField_c_of_type_Int = paramInt;
+    localParams.q = paramInt;
     if (paramWeakReference != null)
     {
-      localParams.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData.adInfo);
-      localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
-      localParams.jdField_a_of_type_Boolean = true;
-      localParams.jdField_b_of_type_Boolean = true;
-      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      if (this.jdField_c_of_type_Int == 3) {
-        localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_jc_kuolie");
+      localParams.r = paramWeakReference;
+      localParams.a = new GdtAd(this.l.adInfo);
+      localParams.s = new WeakReference(this.m);
+      localParams.b = true;
+      localParams.e = true;
+      localParams.p = new Bundle();
+      if (this.r == 3) {
+        localParams.p.putString("big_brother_ref_source_key", "biz_src_jc_kuolie");
       }
       GdtHandler.a(localParams);
       QZLog.i("VipGeneralGdtShowView", " @getGdtInfo clickAdvInfoToQiQiaoBan");
@@ -270,7 +270,7 @@ public class VipGeneralGdtShowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.widget.VipGeneralGdtShowView
  * JD-Core Version:    0.7.0.1
  */

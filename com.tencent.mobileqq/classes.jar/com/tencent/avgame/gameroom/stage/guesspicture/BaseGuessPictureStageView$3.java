@@ -11,11 +11,11 @@ class BaseGuessPictureStageView$3
   
   public void run()
   {
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.d);
-    if ((this.this$0.a != null) && (this.this$0.a.getVisibility() == 8)) {
-      this.this$0.a.setVisibility(0);
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.z);
+    if ((this.this$0.i != null) && (this.this$0.i.getVisibility() == 8)) {
+      this.this$0.i.setVisibility(0);
     }
-    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.d, 1000L);
+    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.z, 1000L);
   }
 }
 

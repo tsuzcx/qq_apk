@@ -380,47 +380,6 @@ public class TbsDownloadConfig
   }
   
   /* Error */
-  public boolean getTbsCoreLoadRenameFileLockEnable()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iconst_1
-    //   3: istore_1
-    //   4: aload_0
-    //   5: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   8: ldc_w 267
-    //   11: iconst_1
-    //   12: invokeinterface 271 3 0
-    //   17: istore_2
-    //   18: iload_2
-    //   19: istore_1
-    //   20: goto +8 -> 28
-    //   23: astore_3
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: aload_3
-    //   27: athrow
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: iload_1
-    //   31: ireturn
-    //   32: astore_3
-    //   33: goto -5 -> 28
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	TbsDownloadConfig
-    //   3	28	1	bool1	boolean
-    //   17	2	2	bool2	boolean
-    //   23	4	3	localObject	Object
-    //   32	1	3	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   4	18	23	finally
-    //   4	18	32	java/lang/Exception
-  }
-  
-  /* Error */
   public boolean getTbsCoreLoadRenameFileLockWaitEnable()
   {
     // Byte code:
@@ -430,7 +389,7 @@ public class TbsDownloadConfig
     //   3: istore_1
     //   4: aload_0
     //   5: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   8: ldc_w 274
+    //   8: ldc_w 267
     //   11: iconst_1
     //   12: invokeinterface 271 3 0
     //   17: istore_2
@@ -539,48 +498,6 @@ public class TbsDownloadConfig
   }
   
   /* Error */
-  public void setTbsCoreLoadRenameFileLockEnable(boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 56	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   6: invokeinterface 83 1 0
-    //   11: astore_2
-    //   12: aload_2
-    //   13: ldc_w 267
-    //   16: iload_1
-    //   17: invokeinterface 129 3 0
-    //   22: pop
-    //   23: aload_2
-    //   24: invokeinterface 91 1 0
-    //   29: pop
-    //   30: goto +8 -> 38
-    //   33: astore_2
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: aload_2
-    //   37: athrow
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: return
-    //   41: astore_2
-    //   42: goto -4 -> 38
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	45	0	this	TbsDownloadConfig
-    //   0	45	1	paramBoolean	boolean
-    //   11	13	2	localEditor	SharedPreferences.Editor
-    //   33	4	2	localObject	Object
-    //   41	1	2	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	30	33	finally
-    //   2	30	41	java/lang/Exception
-  }
-  
-  /* Error */
   public void setTbsCoreLoadRenameFileLockWaitEnable(boolean paramBoolean)
   {
     // Byte code:
@@ -591,7 +508,7 @@ public class TbsDownloadConfig
     //   6: invokeinterface 83 1 0
     //   11: astore_2
     //   12: aload_2
-    //   13: ldc_w 274
+    //   13: ldc_w 267
     //   16: iload_1
     //   17: invokeinterface 129 3 0
     //   22: pop
@@ -694,7 +611,7 @@ public class TbsDownloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

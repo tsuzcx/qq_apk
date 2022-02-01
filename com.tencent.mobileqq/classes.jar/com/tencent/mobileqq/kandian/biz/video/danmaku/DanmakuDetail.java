@@ -13,9 +13,9 @@ public final class DanmakuDetail
 {
   public static final DanmakuDetail.CREATOR CREATOR = new DanmakuDetail.CREATOR(null);
   @NotNull
-  private final DanmakuInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuInfo;
+  private final DanmakuInfo a;
   @NotNull
-  private final UserInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuUserInfo;
+  private final UserInfo b;
   
   public DanmakuDetail(@NotNull Parcel paramParcel)
   {
@@ -24,20 +24,20 @@ public final class DanmakuDetail
   
   public DanmakuDetail(@NotNull DanmakuInfo paramDanmakuInfo, @NotNull UserInfo paramUserInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuInfo = paramDanmakuInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuUserInfo = paramUserInfo;
+    this.a = paramDanmakuInfo;
+    this.b = paramUserInfo;
   }
   
   @NotNull
   public final DanmakuInfo a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuInfo;
+    return this.a;
   }
   
   @NotNull
-  public final UserInfo a()
+  public final UserInfo b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuUserInfo;
+    return this.b;
   }
   
   public int describeContents()
@@ -51,7 +51,7 @@ public final class DanmakuDetail
       if ((paramObject instanceof DanmakuDetail))
       {
         paramObject = (DanmakuDetail)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuInfo, paramObject.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuInfo)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuUserInfo, paramObject.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuUserInfo))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b))) {}
       }
       else
       {
@@ -63,7 +63,7 @@ public final class DanmakuDetail
   
   public int hashCode()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuInfo;
+    Object localObject = this.a;
     int j = 0;
     int i;
     if (localObject != null) {
@@ -71,7 +71,7 @@ public final class DanmakuDetail
     } else {
       i = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuUserInfo;
+    localObject = this.b;
     if (localObject != null) {
       j = localObject.hashCode();
     }
@@ -83,9 +83,9 @@ public final class DanmakuDetail
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DanmakuDetail(danmakuInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuInfo);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", userInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuUserInfo);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
@@ -93,13 +93,13 @@ public final class DanmakuDetail
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    paramParcel.writeParcelable((Parcelable)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuInfo, paramInt);
-    paramParcel.writeParcelable((Parcelable)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuUserInfo, paramInt);
+    paramParcel.writeParcelable((Parcelable)this.a, paramInt);
+    paramParcel.writeParcelable((Parcelable)this.b, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.DanmakuDetail
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,8 @@ import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.AudioInfo;
+import com.tencent.tav.decoder.IDecoderTrack;
+import com.tencent.tav.decoder.reverseaudio.ReverseAudioDecoderTrack;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,17 +16,23 @@ public class AssetReaderAudioMixOutput
   extends AssetReaderOutput
 {
   public static final String TAG = "AssetReaderAudioMixOutput";
-  private AudioCompositionDecoderTrack audioCompositionDecoderTrack;
+  private IDecoderTrack audioCompositionDecoderTrack;
   @Nullable
   private Map<String, Object> audioSettings;
   private ArrayList<AssetTrack> audioTracks;
   private boolean decoderStarted = false;
   
-  public AssetReaderAudioMixOutput(ArrayList<AssetTrack> paramArrayList, Map<String, Object> paramMap)
+  public AssetReaderAudioMixOutput(ArrayList<AssetTrack> paramArrayList, Map<String, Object> paramMap, boolean paramBoolean)
   {
     this.audioTracks = paramArrayList;
     this.audioSettings = paramMap;
-    this.audioCompositionDecoderTrack = new AudioCompositionDecoderTrack(paramArrayList, 2);
+    paramArrayList = new AudioCompositionDecoderTrack(paramArrayList, 2);
+    if (paramBoolean)
+    {
+      this.audioCompositionDecoderTrack = new ReverseAudioDecoderTrack(paramArrayList);
+      return;
+    }
+    this.audioCompositionDecoderTrack = paramArrayList;
   }
   
   @Nullable
@@ -47,9 +55,9 @@ public class AssetReaderAudioMixOutput
   
   void release()
   {
-    AudioCompositionDecoderTrack localAudioCompositionDecoderTrack = this.audioCompositionDecoderTrack;
-    if (localAudioCompositionDecoderTrack != null) {
-      localAudioCompositionDecoderTrack.release();
+    IDecoderTrack localIDecoderTrack = this.audioCompositionDecoderTrack;
+    if (localIDecoderTrack != null) {
+      localIDecoderTrack.release();
     }
   }
   
@@ -57,14 +65,27 @@ public class AssetReaderAudioMixOutput
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    this.audioCompositionDecoderTrack.setAudioInfo(paramAudioInfo);
+    IDecoderTrack localIDecoderTrack = this.audioCompositionDecoderTrack;
+    if ((localIDecoderTrack instanceof AudioCompositionDecoderTrack))
+    {
+      ((AudioCompositionDecoderTrack)localIDecoderTrack).setAudioInfo(paramAudioInfo);
+      return;
+    }
+    if ((localIDecoderTrack instanceof ReverseAudioDecoderTrack)) {
+      ((ReverseAudioDecoderTrack)localIDecoderTrack).setAudioInfo(paramAudioInfo);
+    }
   }
   
   public void setAudioMix(AudioMix paramAudioMix)
   {
-    AudioCompositionDecoderTrack localAudioCompositionDecoderTrack = this.audioCompositionDecoderTrack;
-    if (localAudioCompositionDecoderTrack != null) {
-      localAudioCompositionDecoderTrack.setAudioMix(paramAudioMix);
+    IDecoderTrack localIDecoderTrack = this.audioCompositionDecoderTrack;
+    if ((localIDecoderTrack instanceof AudioCompositionDecoderTrack))
+    {
+      ((AudioCompositionDecoderTrack)localIDecoderTrack).setAudioMix(paramAudioMix);
+      return;
+    }
+    if ((localIDecoderTrack instanceof ReverseAudioDecoderTrack)) {
+      ((ReverseAudioDecoderTrack)localIDecoderTrack).setAudioMix(paramAudioMix);
     }
   }
   
@@ -95,7 +116,7 @@ public class AssetReaderAudioMixOutput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetReaderAudioMixOutput
  * JD-Core Version:    0.7.0.1
  */

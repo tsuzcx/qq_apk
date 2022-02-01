@@ -16,12 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 public class NetNeedSignOnBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.k;
-  }
+  public static final int a = BannerTypeCollections.k;
   
   public NetNeedSignOnBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -35,9 +30,9 @@ public class NetNeedSignOnBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131694423));
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130838218));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsText(this.f.getString(2131892103));
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130839452));
     paramBanner.setVisibility(8);
     return paramBanner;
   }
@@ -51,11 +46,11 @@ public class NetNeedSignOnBannerProcessor
       } else {
         paramMessage = "https://qq.com";
       }
-      if (paramBanner.a.getVisibility() != 0) {
-        paramBanner.a.setVisibility(0);
+      if (paramBanner.c.getVisibility() != 0) {
+        paramBanner.c.setVisibility(0);
       }
-      paramBanner.a.setOnClickListener(new NetNeedSignOnBannerProcessor.1(this, paramMessage));
-      ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "CliOper", "", "", "0X8004028", "0X8004028", 0, 0, "", "", "", "");
+      paramBanner.c.setOnClickListener(new NetNeedSignOnBannerProcessor.1(this, paramMessage));
+      ReportController.a(this.f.getAppRuntime(), "CliOper", "", "", "0X8004028", "0X8004028", 0, 0, "", "", "", "");
       return;
     }
     if (QLog.isColorLevel()) {
@@ -65,12 +60,12 @@ public class NetNeedSignOnBannerProcessor
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.NetNeedSignOnBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

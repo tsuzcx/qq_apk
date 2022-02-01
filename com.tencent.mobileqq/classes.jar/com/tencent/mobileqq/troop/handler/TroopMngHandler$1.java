@@ -16,7 +16,7 @@ class TroopMngHandler$1
   
   public void onGet0x88d_Result(boolean paramBoolean, String paramString1, String paramString2, oidb_0x88d.GroupInfo paramGroupInfo)
   {
-    if ((paramString1.equals(String.valueOf(this.jdField_a_of_type_Long))) && (paramString2.equals("SUBCMD_GET_TROOP_TAG")))
+    if ((paramString1.equals(String.valueOf(this.a))) && (paramString2.equals("SUBCMD_GET_TROOP_TAG")))
     {
       Object localObject = null;
       paramString2 = localObject;
@@ -25,16 +25,16 @@ class TroopMngHandler$1
         paramString2 = localObject;
         if (paramGroupInfo != null)
         {
-          paramString2 = TroopMngHandler.a(this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopMngHandler, this.jdField_a_of_type_Long, paramGroupInfo);
+          paramString2 = TroopMngHandler.a(this.c, this.a, paramGroupInfo);
           paramGroupInfo = (ITroopSystemMsgUtilApi)QRoute.api(ITroopSystemMsgUtilApi.class);
-          paramGroupInfo.saveTroopNameToSP(TroopMngHandler.a(this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopMngHandler).getApp(), paramString2.troopuin, paramString2.troopname);
-          paramGroupInfo.saveTroopOptionToSP(TroopMngHandler.b(this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopMngHandler).getApp(), paramString2.troopuin, paramString2.cGroupOption);
-          paramGroupInfo.saveTroopQuestionToSP(TroopMngHandler.c(this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopMngHandler).getApp(), paramString2.troopuin, paramString2.joinTroopQuestion);
-          paramGroupInfo.saveTroopAnswerToSP(TroopMngHandler.d(this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopMngHandler).getApp(), paramString2.troopuin, paramString2.joinTroopAnswer);
+          paramGroupInfo.saveTroopNameToSP(TroopMngHandler.a(this.c).getApp(), paramString2.troopuin, paramString2.troopname);
+          paramGroupInfo.saveTroopOptionToSP(TroopMngHandler.b(this.c).getApp(), paramString2.troopuin, paramString2.cGroupOption);
+          paramGroupInfo.saveTroopQuestionToSP(TroopMngHandler.c(this.c).getApp(), paramString2.troopuin, paramString2.joinTroopQuestion);
+          paramGroupInfo.saveTroopAnswerToSP(TroopMngHandler.d(this.c).getApp(), paramString2.troopuin, paramString2.joinTroopAnswer);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopMngHandler.notifyUI(TroopMngObserver.f, paramBoolean, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int), paramString2 });
-      TroopMngHandler.e(this.jdField_a_of_type_ComTencentMobileqqTroopHandlerTroopMngHandler).removeObserver(this);
+      this.c.notifyUI(TroopMngObserver.g, paramBoolean, new Object[] { Long.valueOf(this.a), Integer.valueOf(this.b), paramString2 });
+      TroopMngHandler.e(this.c).removeObserver(this);
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder(150);
@@ -44,7 +44,7 @@ class TroopMngHandler$1
         paramString2.append("|troopuin = ");
         paramString2.append(paramString1);
         paramString2.append("|flag = ");
-        paramString2.append(this.jdField_a_of_type_Int);
+        paramString2.append(this.b);
         QLog.i("Q.troopquestionverify.", 2, paramString2.toString());
       }
     }
@@ -52,7 +52,7 @@ class TroopMngHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopMngHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ class RockDownloaderManager$2$1
       if (QLog.isColorLevel()) {
         QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
       }
-      boolean bool = RockDownloaderProxy.b(localRockDownloadInfo);
+      boolean bool = RockDownloaderProxy.c(localRockDownloadInfo);
       if (QLog.isColorLevel()) {
         QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
       }
@@ -35,7 +35,7 @@ class RockDownloaderManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2.1
  * JD-Core Version:    0.7.0.1
  */

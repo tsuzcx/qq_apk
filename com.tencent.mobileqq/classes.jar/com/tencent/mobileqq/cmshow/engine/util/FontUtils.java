@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
-import com.tencent.mobileqq.apollo.task.ApolloActionManager;
+import com.tencent.mobileqq.apollo.bubble.ApolloBubbleLogic;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.portal.StrokeTextView;
@@ -30,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 public class FontUtils
 {
   public static int a = -1;
-  private static Map a;
+  private static Map b;
   
   public static Bitmap a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, int paramInt5)
   {
@@ -73,8 +73,8 @@ public class FontUtils
       if (paramInt1 == 0) {
         paramInt2 = (int)(DeviceInfoUtil.a * 2.0F);
       }
-      paramInt1 = ApolloActionManager.a().a.get();
-      paramInt3 = jdField_a_of_type_Int;
+      paramInt1 = ApolloBubbleLogic.a.get();
+      paramInt3 = a;
       if (paramInt3 != -1) {
         paramInt1 = paramInt3;
       }
@@ -113,7 +113,7 @@ public class FontUtils
         for (;;)
         {
           paramFloat3 = f;
-          break label634;
+          break label631;
           if ((localApolloManagerServiceImpl == null) || (TextUtils.isEmpty(paramString1)) || (!localApolloManagerServiceImpl.isSuperYellow(paramString1))) {
             break;
           }
@@ -132,7 +132,7 @@ public class FontUtils
           }
         }
         paramInt1 = -1;
-        label634:
+        label631:
         localTextView.setGravity(17);
         localTextView.setTextColor(paramInt1);
         localTextView.setTextSize(42.0F / DeviceInfoUtil.a);
@@ -155,14 +155,14 @@ public class FontUtils
         for (;;)
         {
           paramInt1 = 2;
-          break label848;
+          break label845;
           if ((4 == paramInt1) || (5 == paramInt1)) {
             break;
           }
           if ((6 != paramInt1) && (7 != paramInt1) && (9 != paramInt1))
           {
             paramInt1 = 3;
-            break label848;
+            break label845;
           }
           localTextView.setGravity(17);
           localTextView.setTextColor(-16777216);
@@ -174,7 +174,7 @@ public class FontUtils
         localTextView.setTextSize(24.0F / DeviceInfoUtil.a);
         paramInt1 = 6;
       }
-      label848:
+      label845:
       localTextView.setWidth((int)paramFloat3);
       localTextView.setHeight((int)paramFloat4 + paramInt2);
       localTextView.setText(ApolloUtilImpl.autoSplitText(localTextView.getPaint(), paramFloat3, (String)localObject2, paramInt1));
@@ -205,7 +205,7 @@ public class FontUtils
       paramInt1 = 1;
       paramString2 = new Matrix();
       if (1 != paramInt4) {
-        break label1141;
+        break label1137;
       }
       paramString2.setValues(new float[] { -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F });
       paramString2.postTranslate(paramFloat3, 0.0F);
@@ -215,15 +215,15 @@ public class FontUtils
       localTextView.draw(paramString1);
       return localObject1;
       if (!QLog.isColorLevel()) {
-        break label1197;
+        break label1193;
       }
       QLog.d("[cmshow]FontUtils", 2, "errInfo->wrong slotName.");
       return null;
     }
     catch (Exception paramString1)
     {
-      label1035:
-      break label1035;
+      label1031:
+      break label1031;
     }
     QLog.d("[cmshow]FontUtils", 1, "errInfo->canvas failure.");
     return null;
@@ -474,14 +474,14 @@ public class FontUtils
   {
     if ((paramString != null) && (!paramString.equals("")))
     {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        jdField_a_of_type_JavaUtilMap = new HashMap();
+      if (b == null) {
+        b = new HashMap();
       }
-      if (jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        return (Typeface)jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (b.containsKey(paramString)) {
+        return (Typeface)b.get(paramString);
       }
       Typeface localTypeface = Typeface.createFromFile(paramString);
-      jdField_a_of_type_JavaUtilMap.put(paramString, localTypeface);
+      b.put(paramString, localTypeface);
       return localTypeface;
     }
     return null;
@@ -629,7 +629,7 @@ public class FontUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.util.FontUtils
  * JD-Core Version:    0.7.0.1
  */

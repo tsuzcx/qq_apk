@@ -17,12 +17,12 @@ class FolderRecommendTabFragment$2
     localTianShuAdPosItemData.a = 476;
     localTianShuAdPosItemData.b = 6;
     localArrayList.add(localTianShuAdPosItemData);
-    TianShuManager.getInstance().requestAdv(localArrayList, FolderRecommendTabFragment.a(this.this$0));
+    TianShuManager.getInstance().requestAdv(localArrayList, FolderRecommendTabFragment.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,24 +15,24 @@ public class UnreadTipLayout
   public UnreadTipLayout(Context paramContext)
   {
     super(paramContext);
-    a();
+    b();
   }
   
   public UnreadTipLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
   public UnreadTipLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    setBackgroundDrawable(getResources().getDrawable(2130846486));
+    setBackgroundDrawable(getResources().getDrawable(2130847959));
     setVisibility(4);
   }
   
@@ -48,12 +48,12 @@ public class UnreadTipLayout
   
   public void setUnreadNum(int paramInt)
   {
-    setText(String.format(getContext().getString(2131695274), new Object[] { Integer.valueOf(paramInt) }));
+    setText(String.format(getContext().getString(2131893009), new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.web.view.UnreadTipLayout
  * JD-Core Version:    0.7.0.1
  */

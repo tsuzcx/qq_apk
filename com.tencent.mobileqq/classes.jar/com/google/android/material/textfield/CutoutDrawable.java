@@ -17,11 +17,11 @@ import com.google.android.material.shape.ShapeAppearanceModel;
 class CutoutDrawable
   extends MaterialShapeDrawable
 {
-  private int jdField_a_of_type_Int;
   @NonNull
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private final Paint a = new Paint(1);
   @NonNull
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private final RectF b;
+  private int c;
   
   CutoutDrawable()
   {
@@ -31,8 +31,8 @@ class CutoutDrawable
   CutoutDrawable(@Nullable ShapeAppearanceModel paramShapeAppearanceModel)
   {
     super(paramShapeAppearanceModel);
-    b();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    c();
+    this.b = new RectF();
   }
   
   private void a(@NonNull Canvas paramCanvas)
@@ -56,40 +56,35 @@ class CutoutDrawable
     return paramCallback instanceof View;
   }
   
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-  }
-  
   private void b(@NonNull Canvas paramCanvas)
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.jdField_a_of_type_Int = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
+      this.c = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
       return;
     }
-    this.jdField_a_of_type_Int = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
+    this.c = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
+  }
+  
+  private void c()
+  {
+    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.a.setColor(-1);
+    this.a.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
   }
   
   private void c(@NonNull Canvas paramCanvas)
   {
     if (!a(getCallback())) {
-      paramCanvas.restoreToCount(this.jdField_a_of_type_Int);
+      paramCanvas.restoreToCount(this.c);
     }
-  }
-  
-  void a()
-  {
-    a(0.0F, 0.0F, 0.0F, 0.0F);
   }
   
   void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if ((paramFloat1 != this.jdField_a_of_type_AndroidGraphicsRectF.left) || (paramFloat2 != this.jdField_a_of_type_AndroidGraphicsRectF.top) || (paramFloat3 != this.jdField_a_of_type_AndroidGraphicsRectF.right) || (paramFloat4 != this.jdField_a_of_type_AndroidGraphicsRectF.bottom))
+    if ((paramFloat1 != this.b.left) || (paramFloat2 != this.b.top) || (paramFloat3 != this.b.right) || (paramFloat4 != this.b.bottom))
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+      this.b.set(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
       invalidateSelf();
     }
   }
@@ -101,20 +96,25 @@ class CutoutDrawable
   
   boolean a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsRectF.isEmpty() ^ true;
+    return this.b.isEmpty() ^ true;
+  }
+  
+  void b()
+  {
+    a(0.0F, 0.0F, 0.0F, 0.0F);
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
     a(paramCanvas);
     super.draw(paramCanvas);
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(this.b, this.a);
     c(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.CutoutDrawable
  * JD-Core Version:    0.7.0.1
  */

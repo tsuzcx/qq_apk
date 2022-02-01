@@ -26,43 +26,43 @@ class QQLSSensor$1
     if (QQLSSensor.a(this.a) == null) {
       return;
     }
-    if (DeviceInfoUtil.j())
+    if (DeviceInfoUtil.W())
     {
       this.a.a = false;
       return;
     }
-    if (???.values[0] < QQLSSensor.a(this.a)) {
+    if (???.values[0] < QQLSSensor.b(this.a)) {
       QQLSSensor.a(this.a, true);
     } else {
       QQLSSensor.a(this.a, false);
     }
     ??? = Build.MODEL;
-    if (DeviceInfoUtil.i())
+    if (DeviceInfoUtil.V())
     {
-      if (QQLSSensor.a(this.a).hasMessages(1)) {
-        QQLSSensor.a(this.a).removeMessages(1);
+      if (QQLSSensor.c(this.a).hasMessages(1)) {
+        QQLSSensor.c(this.a).removeMessages(1);
       }
-      QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 150L);
+      QQLSSensor.c(this.a).sendMessageDelayed(QQLSSensor.c(this.a).obtainMessage(1), 150L);
       return;
     }
     if ((!???.equalsIgnoreCase("mi 3c")) && (!???.equalsIgnoreCase("K-Touch W619")) && (!???.equalsIgnoreCase("mi 3w"))) {
       synchronized (this.a)
       {
         if (QQLSSensor.a(this.a) != null) {
-          QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
+          QQLSSensor.a(this.a).a(QQLSSensor.d(this.a));
         }
         return;
       }
     }
-    if (QQLSSensor.a(this.a).hasMessages(1)) {
-      QQLSSensor.a(this.a).removeMessages(1);
+    if (QQLSSensor.c(this.a).hasMessages(1)) {
+      QQLSSensor.c(this.a).removeMessages(1);
     }
-    QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 250L);
+    QQLSSensor.c(this.a).sendMessageDelayed(QQLSSensor.c(this.a).obtainMessage(1), 250L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQLSSensor.1
  * JD-Core Version:    0.7.0.1
  */

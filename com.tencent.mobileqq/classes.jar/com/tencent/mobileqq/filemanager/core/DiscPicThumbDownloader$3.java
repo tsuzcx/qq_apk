@@ -9,12 +9,12 @@ class DiscPicThumbDownloader$3
   
   public void run()
   {
-    FilePicURLDrawlableHelper.b(this.a.a);
+    FilePicURLDrawlableHelper.d(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader.3
  * JD-Core Version:    0.7.0.1
  */

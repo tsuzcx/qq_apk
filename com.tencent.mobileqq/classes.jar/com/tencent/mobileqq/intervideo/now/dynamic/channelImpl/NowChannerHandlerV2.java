@@ -17,8 +17,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class NowChannerHandlerV2
   extends BusinessHandler
 {
-  private Map<Integer, CommonCallback> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private Map<Integer, CommonCallback> a = new HashMap();
+  private AtomicInteger b = new AtomicInteger(0);
   
   public NowChannerHandlerV2(AppInterface paramAppInterface)
   {
@@ -29,7 +29,7 @@ public class NowChannerHandlerV2
   {
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      CommonCallback localCommonCallback = (CommonCallback)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+      CommonCallback localCommonCallback = (CommonCallback)this.a.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
       Bundle localBundle = new Bundle();
       localBundle.putByteArray("BUFFER", (byte[])paramObject);
       int i = 0;
@@ -68,9 +68,9 @@ public class NowChannerHandlerV2
     paramString1.setAttributes((HashMap)localObject);
     paramString1.setTimeout(15000L);
     sendPbReq(paramString1);
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    int i = this.b.incrementAndGet();
     paramString1.setRequestSsoSeq(i);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCommonCallback);
+    this.a.put(Integer.valueOf(i), paramCommonCallback);
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -94,7 +94,7 @@ public class NowChannerHandlerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.channelImpl.NowChannerHandlerV2
  * JD-Core Version:    0.7.0.1
  */

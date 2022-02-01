@@ -18,18 +18,18 @@ class FeedCommentLego$3
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    a(-1, HardCodeUtil.a(2131704511));
+    a(-1, HardCodeUtil.a(2131902423));
   }
   
   public void a(int paramInt, String paramString)
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131704534));
+    localStringBuilder.append(HardCodeUtil.a(2131902444));
     localStringBuilder.append(paramInt);
-    QQToast.a(localBaseApplication, 1, localStringBuilder.toString(), 0).a();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.e();
+    QQToast.makeText(localBaseApplication, 1, localStringBuilder.toString(), 0).show();
+    this.b.status = 0;
+    this.c.g();
     if (QLog.isColorLevel()) {
       QLog.e("FeedCommentLego", 2, new Object[] { "ReqGetLikeList ErrorCode:", Integer.valueOf(paramInt), " | ErrorMsg: ", paramString });
     }
@@ -37,20 +37,20 @@ class FeedCommentLego$3
   
   public void a(MessageMicro paramMessageMicro)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.e();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_ComTencentBizQqstoryModelCommentManager.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    StoryFailCommentCacher.a().a();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(false, null);
-    QQToast.a(BaseApplication.getContext(), 2, HardCodeUtil.a(2131704535), 0).a();
-    FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_Int, 2, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+    this.c.d.remove(this.a);
+    this.c.g();
+    this.c.m.d(this.b);
+    StoryFailCommentCacher.a().b();
+    this.c.a(false, null);
+    QQToast.makeText(BaseApplication.getContext(), 2, HardCodeUtil.a(2131902445), 0).show();
+    FeedCommentLego.a(this.c.h, 2, this.b.feedId, this.b.commentId);
   }
   
   public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentLego.3
  * JD-Core Version:    0.7.0.1
  */

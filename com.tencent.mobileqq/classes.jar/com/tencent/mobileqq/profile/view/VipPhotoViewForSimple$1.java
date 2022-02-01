@@ -32,15 +32,15 @@ class VipPhotoViewForSimple$1
       localObject2 = Message.obtain();
       ((Message)localObject2).what = 200;
       ((Message)localObject2).obj = localObject1;
-      VipPhotoViewForSimple.a(this.this$0).sendMessage((Message)localObject2);
+      VipPhotoViewForSimple.b(this.this$0).sendMessage((Message)localObject2);
       return;
     }
-    VipPhotoViewForSimple.a(this.this$0).sendEmptyMessage(201);
+    VipPhotoViewForSimple.b(this.this$0).sendEmptyMessage(201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipPhotoViewForSimple.1
  * JD-Core Version:    0.7.0.1
  */

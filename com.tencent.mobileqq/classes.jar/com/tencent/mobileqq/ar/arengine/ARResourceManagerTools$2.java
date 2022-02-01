@@ -24,14 +24,14 @@ class ARResourceManagerTools$2
     {
       if (paramString == null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+          this.b.remove(this.c);
+          if (this.b.size() == 0)
           {
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(true);
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(4, true);
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+            this.a.a(true);
+            this.a.a(4, true);
+            this.d.a();
           }
         }
         return;
@@ -45,55 +45,55 @@ class ARResourceManagerTools$2
           if (paramString.length() != 0) {
             paramString.getJSONObject(0).has("bid");
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback == null) {
+          if (this.a == null) {
             return;
           }
-          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
+          this.b.remove(this.c);
+          if (this.b.size() != 0) {
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(true);
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(4, true);
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+          this.a.a(true);
+          this.a.a(4, true);
+          this.d.a();
           return;
         }
-        paramString = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+        paramString = this.a;
         return;
       }
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
-        paramString = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+        paramString = this.a;
         if (paramString == null) {
           return;
         }
       }
       paramString.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(4, false);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+      this.a.a(4, false);
+      this.d.a();
     }
     else
     {
       if (paramInt == 7)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+          this.b.remove(this.c);
+          if (this.b.size() == 0)
           {
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(true);
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(4, true);
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+            this.a.a(true);
+            this.a.a(4, true);
+            this.d.a();
           }
         }
         return;
       }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+      paramString = this.a;
       if (paramString != null)
       {
         paramString.a(false);
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(4, false);
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+        this.a.a(4, false);
+        this.d.a();
       }
     }
   }
@@ -104,15 +104,15 @@ class ARResourceManagerTools$2
     ((StringBuilder)localObject).append("Load offline progress  = ");
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("AREngine_ARResourceManagerTools", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+    localObject = this.a;
     if (localObject != null) {
-      ((ARResourceManagerTools.ARResourceCallback)localObject).a(ARResourceManagerTools.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools, 0L, paramInt));
+      ((ARResourceManagerTools.ARResourceCallback)localObject).a(ARResourceManagerTools.a(this.d, 0L, paramInt));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARResourceManagerTools.2
  * JD-Core Version:    0.7.0.1
  */

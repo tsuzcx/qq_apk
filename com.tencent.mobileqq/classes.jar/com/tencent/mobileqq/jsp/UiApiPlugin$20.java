@@ -13,17 +13,17 @@ class UiApiPlugin$20
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
-    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    this.b.b(this.a);
+    String str = this.a.optString("callback");
     if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { String.valueOf(0) });
+      this.b.callJs(str, new String[] { String.valueOf(0) });
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.20
  * JD-Core Version:    0.7.0.1
  */

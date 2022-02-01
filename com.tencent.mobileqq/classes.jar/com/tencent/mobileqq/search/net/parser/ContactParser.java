@@ -15,7 +15,7 @@ public class ContactParser
 {
   ISearchResultGroupModel a(SearchResult paramSearchResult, List<ISearchResultModel> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    SearchStatisticsConstants.a(70);
+    SearchStatisticsConstants.b(70);
     return new GroupNetSearchModelPeople(paramSearchResult, paramList, paramString1);
   }
   
@@ -31,7 +31,7 @@ public class ContactParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.ContactParser
  * JD-Core Version:    0.7.0.1
  */

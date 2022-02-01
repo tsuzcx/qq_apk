@@ -18,23 +18,23 @@ class PublicAccountH5AbilityPluginImpl$2
   public void run()
   {
     CompressInfo localCompressInfo = new CompressInfo(this.this$0.cameraPath, 0);
-    localCompressInfo.f = 0;
+    localCompressInfo.o = 0;
     ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(localCompressInfo);
-    if (!StringUtil.a(localCompressInfo.e))
+    if (!StringUtil.isEmpty(localCompressInfo.l))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mqqpa://resourceid/");
       ((StringBuilder)localObject).append(this.this$0.cameraUUid);
       localObject = ((StringBuilder)localObject).toString();
-      PublicAccountH5AbilityPluginImpl.localIdMap.put(localObject, localCompressInfo.e);
+      PublicAccountH5AbilityPluginImpl.localIdMap.put(localObject, localCompressInfo.l);
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONArray.put(0, localObject);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("value", this.jdField_a_of_type_OrgJsonJSONArray);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
-        this.this$0.callJs(this.this$0.cameraCallback, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+        this.a.put(0, localObject);
+        this.b.put("value", this.a);
+        this.b.put("retCode", 0);
+        this.b.put("msg", "Success");
+        this.b.put("sourceType", "camera");
+        this.this$0.callJs(this.this$0.cameraCallback, new String[] { this.b.toString() });
         ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
       }
       catch (JSONException localJSONException1)
@@ -46,10 +46,10 @@ class PublicAccountH5AbilityPluginImpl$2
     {
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -1);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "compress fail");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
-        this.this$0.callJs(this.this$0.cameraCallback, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+        this.b.put("retCode", -1);
+        this.b.put("msg", "compress fail");
+        this.b.put("sourceType", "camera");
+        this.this$0.callJs(this.this$0.cameraCallback, new String[] { this.b.toString() });
         ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
       }
       catch (JSONException localJSONException2)
@@ -65,7 +65,7 @@ class PublicAccountH5AbilityPluginImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.2
  * JD-Core Version:    0.7.0.1
  */

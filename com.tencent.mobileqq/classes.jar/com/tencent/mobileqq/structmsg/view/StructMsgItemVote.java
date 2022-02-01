@@ -20,16 +20,15 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemVote
   extends AbsStructMsgTextElement
 {
-  public ArrayList<StructMsgItemVote.OptionItem> a;
-  public int o = 0;
-  public int p = 0;
-  public int q = 0;
+  public int aM = 0;
+  public int aN = 0;
+  public int aO = 0;
+  public ArrayList<StructMsgItemVote.OptionItem> aP = null;
   
   public StructMsgItemVote()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaLangString = "checklist";
-    c("12");
+    this.b = "checklist";
+    d("12");
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
@@ -38,27 +37,27 @@ public class StructMsgItemVote
     if (paramView == null)
     {
       paramView = new LinearLayout(paramContext);
-      paramView.setId(2131379570);
+      paramView.setId(2131448326);
       paramView.setOrientation(1);
     }
     else
     {
       paramView = (LinearLayout)paramView;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.aP != null)
     {
-      Drawable localDrawable = paramContext.getResources().getDrawable(2130850840);
+      Drawable localDrawable = paramContext.getResources().getDrawable(2130852675);
       int i = localDrawable.getIntrinsicWidth();
       int m = localDrawable.getIntrinsicHeight();
       int j = 0;
       localDrawable.setBounds(0, 0, i, m);
-      if (TextUtils.isEmpty(this.af)) {
-        i = f();
+      if (TextUtils.isEmpty(this.ax)) {
+        i = j();
       } else {
-        i = Integer.parseInt(this.af);
+        i = Integer.parseInt(this.ax);
       }
       m = i / 2;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() == paramView.getChildCount()) {
+      if (this.aP.size() == paramView.getChildCount()) {
         i = k;
       } else {
         i = 0;
@@ -66,10 +65,10 @@ public class StructMsgItemVote
       if ((i == 0) && (paramView.getChildCount() > 0)) {
         paramView.removeAllViews();
       }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 2) {
-        paramBundle = this.jdField_a_of_type_JavaUtilArrayList.subList(0, 2);
+      if (this.aP.size() > 2) {
+        paramBundle = this.aP.subList(0, 2);
       } else {
-        paramBundle = this.jdField_a_of_type_JavaUtilArrayList;
+        paramBundle = this.aP;
       }
       while (j < paramBundle.size())
       {
@@ -83,7 +82,7 @@ public class StructMsgItemVote
             localTextView = new TextView(paramContext);
           }
           localTextView.setSingleLine();
-          localTextView.setEllipsize(a());
+          localTextView.setEllipsize(g());
           localTextView.setGravity(16);
           localTextView.setTextSize(m);
           localTextView.setCompoundDrawables(localDrawable, null, null, null);
@@ -102,24 +101,19 @@ public class StructMsgItemVote
     return paramView;
   }
   
-  public String a()
-  {
-    return "Vote";
-  }
-  
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.p = paramObjectInput.readInt();
-    this.o = paramObjectInput.readInt();
-    this.q = paramObjectInput.readInt();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.q);
+    this.aN = paramObjectInput.readInt();
+    this.aM = paramObjectInput.readInt();
+    this.aO = paramObjectInput.readInt();
+    this.aP = new ArrayList(this.aO);
     int i = 0;
-    while (i < this.q)
+    while (i < this.aO)
     {
       String str1 = paramObjectInput.readUTF();
       String str2 = paramObjectInput.readUTF();
-      this.jdField_a_of_type_JavaUtilArrayList.add(new StructMsgItemVote.OptionItem(this, str1, str2));
+      this.aP.add(new StructMsgItemVote.OptionItem(this, str1, str2));
       i += 1;
     }
   }
@@ -127,25 +121,25 @@ public class StructMsgItemVote
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.p);
-    paramObjectOutput.writeInt(this.o);
-    paramObjectOutput.writeInt(this.q);
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    paramObjectOutput.writeInt(this.aN);
+    paramObjectOutput.writeInt(this.aM);
+    paramObjectOutput.writeInt(this.aO);
+    Object localObject = this.aP;
     int i;
-    if ((localObject != null) && (((ArrayList)localObject).size() == this.q)) {
+    if ((localObject != null) && (((ArrayList)localObject).size() == this.aO)) {
       i = 0;
     }
-    while (i < this.q)
+    while (i < this.aO)
     {
-      StructMsgItemVote.OptionItem localOptionItem = (StructMsgItemVote.OptionItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      StructMsgItemVote.OptionItem localOptionItem = (StructMsgItemVote.OptionItem)this.aP.get(i);
       if (localOptionItem != null)
       {
-        localObject = localOptionItem.jdField_a_of_type_JavaLangString;
+        localObject = localOptionItem.a;
         String str = "";
         if (localObject == null) {
           localObject = "";
         } else {
-          localObject = localOptionItem.jdField_a_of_type_JavaLangString;
+          localObject = localOptionItem.a;
         }
         paramObjectOutput.writeUTF((String)localObject);
         if (localOptionItem.b == null) {
@@ -166,25 +160,25 @@ public class StructMsgItemVote
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "checklist");
-    paramXmlSerializer.attribute(null, "min", String.valueOf(this.p));
-    paramXmlSerializer.attribute(null, "max", String.valueOf(this.o));
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    paramXmlSerializer.attribute(null, "min", String.valueOf(this.aN));
+    paramXmlSerializer.attribute(null, "max", String.valueOf(this.aM));
+    Object localObject = this.aP;
     if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.aP.size())
       {
-        StructMsgItemVote.OptionItem localOptionItem = (StructMsgItemVote.OptionItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        StructMsgItemVote.OptionItem localOptionItem = (StructMsgItemVote.OptionItem)this.aP.get(i);
         if (localOptionItem != null)
         {
-          paramXmlSerializer.startTag(null, localOptionItem.jdField_a_of_type_JavaLangString);
+          paramXmlSerializer.startTag(null, localOptionItem.a);
           if (localOptionItem.b == null) {
             localObject = "";
           } else {
             localObject = localOptionItem.b;
           }
           paramXmlSerializer.attribute(null, "min", (String)localObject);
-          paramXmlSerializer.endTag(null, localOptionItem.jdField_a_of_type_JavaLangString);
+          paramXmlSerializer.endTag(null, localOptionItem.a);
         }
         i += 1;
       }
@@ -201,8 +195,8 @@ public class StructMsgItemVote
     String str2 = paramStructMsgNode.a("max");
     try
     {
-      this.p = Integer.parseInt(str1);
-      this.o = Integer.parseInt(str2);
+      this.aN = Integer.parseInt(str1);
+      this.aM = Integer.parseInt(str2);
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -210,28 +204,33 @@ public class StructMsgItemVote
         QLog.d("StructMsg", 2, localNumberFormatException.getMessage());
       }
     }
-    this.q = paramStructMsgNode.a();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.q);
+    this.aO = paramStructMsgNode.a();
+    this.aP = new ArrayList(this.aO);
     int i = 0;
-    while (i < this.q)
+    while (i < this.aO)
     {
       StructMsgNode localStructMsgNode = paramStructMsgNode.a(i);
       if (localStructMsgNode != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new StructMsgItemVote.OptionItem(this, localStructMsgNode));
+        this.aP.add(new StructMsgItemVote.OptionItem(this, localStructMsgNode));
       }
       i += 1;
     }
     return true;
   }
   
-  protected int c()
+  public String b()
   {
-    return 2131379977;
+    return "Vote";
+  }
+  
+  protected int f()
+  {
+    return 2131448876;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemVote
  * JD-Core Version:    0.7.0.1
  */

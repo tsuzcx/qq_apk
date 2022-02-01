@@ -23,17 +23,17 @@ import java.util.List;
 public class OverlappingImgLayout
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int = 0;
-  private UserInfoHandler jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = new OverlappingImgLayout.1(this);
-  private List<ImageView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = null;
+  DecodeTaskCompletionListener a = new OverlappingImgLayout.1(this);
   private int b = 0;
   private int c = 0;
   private int d = 0;
-  private int e = 1;
+  private int e = 0;
+  private String[] f = null;
+  private List<ImageView> g = new ArrayList();
+  private IFaceDecoder h;
+  private UserInfoHandler i;
+  private boolean j = true;
+  private int k = 1;
   
   public OverlappingImgLayout(Context paramContext)
   {
@@ -50,9 +50,21 @@ public class OverlappingImgLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private Bitmap a(String paramString)
+  private Bitmap a(String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (paramInt != 1)
+    {
+      if (paramInt != 2) {
+        return null;
+      }
+      return c(paramString);
+    }
+    return b(paramString);
+  }
+  
+  private Bitmap b(String paramString)
+  {
+    Object localObject = this.h;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -64,54 +76,55 @@ public class OverlappingImgLayout
     if (localObject != null) {
       return localObject;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 4);
+    if (!this.h.isPausing()) {
+      this.h.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 4);
     }
     return null;
   }
   
-  private Bitmap a(String paramString, int paramInt)
+  private void b()
   {
-    if (paramInt != 1)
-    {
-      if (paramInt != 2) {
-        return null;
-      }
-      return b(paramString);
+    removeAllViews();
+    if (this.g.size() == 0) {
+      return;
     }
-    return a(paramString);
-  }
-  
-  private void a(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
-    if (localObject != null)
+    int m = 0;
+    int n = 0;
+    while (m < this.g.size())
     {
-      if (localObject.length == 0) {
-        return;
+      ImageView localImageView = (ImageView)this.g.get(m);
+      int i1 = (int)DisplayUtils.a(getContext(), 1.0F);
+      localImageView.setPadding(i1, i1, i1, i1);
+      if (!c()) {
+        localImageView.setBackgroundResource(2130837713);
+      } else {
+        localImageView.setBackgroundResource(2130837714);
       }
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        if (i >= 2) {
-          return;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          localObject = new ThemeImageView(getContext());
-        } else {
-          localObject = new ImageView(getContext());
-        }
-        ((ImageView)localObject).setImageBitmap(a(this.jdField_a_of_type_ArrayOfJavaLangString[i], paramInt));
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        i += 1;
-      }
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.c, this.b);
+      localLayoutParams.setMargins(n * -1, 0, 0, 0);
+      localImageView.setLayoutParams(localLayoutParams);
+      addView(localImageView);
+      n = this.d;
+      m += 1;
     }
   }
   
-  private boolean a()
+  private Bitmap c(String paramString)
   {
-    boolean bool2 = this.jdField_a_of_type_Boolean;
+    if (this.i == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("OverlappingImgLayout", 2, "mUserInfoHandler null");
+      }
+      return null;
+    }
+    QLog.d("OverlappingImgLayout", 2, "getFaceBitmapByUserInfoHandler 1");
+    return this.i.a(paramString, (byte)4, true, false);
+  }
+  
+  private boolean c()
+  {
+    boolean bool2 = this.j;
     boolean bool1 = false;
     if (!bool2) {
       return false;
@@ -122,60 +135,47 @@ public class OverlappingImgLayout
     return bool1;
   }
   
-  private Bitmap b(String paramString)
+  private void setImgs(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler == null)
+    this.g.clear();
+    Object localObject = this.f;
+    if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("OverlappingImgLayout", 2, "mUserInfoHandler null");
+      if (localObject.length == 0) {
+        return;
       }
-      return null;
-    }
-    QLog.d("OverlappingImgLayout", 2, "getFaceBitmapByUserInfoHandler 1");
-    return this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler.a(paramString, (byte)4, true, false);
-  }
-  
-  private void b()
-  {
-    removeAllViews();
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      return;
-    }
-    int i = 0;
-    int j = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = (int)DisplayUtils.a(getContext(), 1.0F);
-      localImageView.setPadding(k, k, k, k);
-      if (!a()) {
-        localImageView.setBackgroundResource(2130837689);
-      } else {
-        localImageView.setBackgroundResource(2130837690);
+      int m = 0;
+      while (m < this.f.length)
+      {
+        if (m >= 2) {
+          return;
+        }
+        if (this.j) {
+          localObject = new ThemeImageView(getContext());
+        } else {
+          localObject = new ImageView(getContext());
+        }
+        ((ImageView)localObject).setImageBitmap(a(this.f[m], paramInt));
+        this.g.add(localObject);
+        m += 1;
       }
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
-      localLayoutParams.setMargins(j * -1, 0, 0, 0);
-      localImageView.setLayoutParams(localLayoutParams);
-      addView(localImageView);
-      j = this.c;
-      i += 1;
     }
   }
   
   public void a()
   {
     removeAllViews();
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.g.clear();
   }
   
   public void a(int paramInt1, int paramInt2, UserInfoHandler paramUserInfoHandler)
   {
-    this.jdField_a_of_type_Int = ((int)DisplayUtils.a(getContext(), paramInt1));
-    this.b = ((int)DisplayUtils.a(getContext(), paramInt2));
-    this.d = ((int)DisplayUtils.a(getContext(), 9.0F));
+    this.b = ((int)DisplayUtils.a(getContext(), paramInt1));
+    this.c = ((int)DisplayUtils.a(getContext(), paramInt2));
+    this.e = ((int)DisplayUtils.a(getContext(), 9.0F));
     setGravity(5);
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = paramUserInfoHandler;
-    this.e = 2;
+    this.i = paramUserInfoHandler;
+    this.k = 2;
     a(null);
   }
   
@@ -194,46 +194,46 @@ public class OverlappingImgLayout
         ((StringBuilder)localObject).append(paramString);
         QLog.d("OverlappingImgLayout", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.j) {
         localObject = new ThemeImageView(getContext());
       } else {
         localObject = new ImageView(getContext());
       }
       ((ImageView)localObject).setImageBitmap(a(paramString, 2));
-      int i = (int)DisplayUtils.a(getContext(), 1.0F);
-      ((ImageView)localObject).setPadding(i, i, i, i);
-      if (!a()) {
-        ((ImageView)localObject).setBackgroundResource(2130837689);
+      int m = (int)DisplayUtils.a(getContext(), 1.0F);
+      ((ImageView)localObject).setPadding(m, m, m, m);
+      if (!c()) {
+        ((ImageView)localObject).setBackgroundResource(2130837713);
       } else {
-        ((ImageView)localObject).setBackgroundResource(2130837690);
+        ((ImageView)localObject).setBackgroundResource(2130837714);
       }
-      paramString = new RelativeLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
-      i = 0;
+      paramString = new RelativeLayout.LayoutParams(this.c, this.b);
+      m = 0;
       paramString.setMargins(0, 0, 0, 0);
       ((ImageView)localObject).setLayoutParams(paramString);
       addView((View)localObject);
       ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 0.0F, 1.0F }).setDuration(300L).start();
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (m < this.g.size())
       {
-        paramString = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramString = (ImageView)this.g.get(m);
         paramString.bringToFront();
-        paramString.animate().translationX(-this.d).setDuration(200L).start();
-        i += 1;
+        paramString.animate().translationX(-this.e).setDuration(200L).start();
+        m += 1;
       }
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
+      this.g.add(localObject);
     }
   }
   
   public void a(String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    a(this.e);
+    this.f = paramArrayOfString;
+    setImgs(this.k);
     b();
   }
   
   public void setNeedNightMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
 }
 

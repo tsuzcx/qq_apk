@@ -12,25 +12,25 @@ class TroopEssenceMsgManager$7$1$1
   
   public void run()
   {
-    if (TroopEssenceMsgManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem$TroopEssenceMsgPushItem.a))
+    if (TroopEssenceMsgManager.a(this.a.a.b, this.a.a.a.a))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopEssenceMsgManager", 2, "AddEssenceMsgGrayTip");
       }
-      TroopEssenceMsgManager.b(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem$TroopEssenceMsgPushItem);
-      MessageForUniteGrayTip localMessageForUniteGrayTip = TroopEssenceUtil.a(TroopEssenceMsgManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager), this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem$TroopEssenceMsgPushItem);
+      TroopEssenceMsgManager.b(this.a.a.b, this.a.a.a);
+      MessageForUniteGrayTip localMessageForUniteGrayTip = TroopEssenceUtil.a(TroopEssenceMsgManager.a(this.a.a.b), this.a.a.a);
       if (localMessageForUniteGrayTip != null)
       {
-        UniteGrayTipMsgUtil.a(TroopEssenceMsgManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager), localMessageForUniteGrayTip);
-        this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem$TroopEssenceMsgPushItem.a.graytipuniseq = localMessageForUniteGrayTip.uniseq;
+        UniteGrayTipMsgUtil.a(TroopEssenceMsgManager.a(this.a.a.b), localMessageForUniteGrayTip);
+        this.a.a.a.a.graytipuniseq = localMessageForUniteGrayTip.uniseq;
       }
     }
-    TroopEssenceMsgManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem$TroopEssenceMsgPushItem.a);
+    TroopEssenceMsgManager.b(this.a.a.b, this.a.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.7.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class TroopAssisSettingActivity$3
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton.getId() == 2131377494) {
+    if (paramCompoundButton.getId() == 2131445896) {
       TroopAssistantManager.a().a(this.a.app, paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -20,7 +20,7 @@ class TroopAssisSettingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssisSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

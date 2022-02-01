@@ -10,7 +10,6 @@ public class GYAITestUtil
     try
     {
       System.loadLibrary("c++_shared");
-      System.loadLibrary("opencv_world");
       System.loadLibrary("gy_test_all");
       return;
     }
@@ -33,7 +32,7 @@ public class GYAITestUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.gyailib.librarytest.GYAITestUtil
  * JD-Core Version:    0.7.0.1
  */

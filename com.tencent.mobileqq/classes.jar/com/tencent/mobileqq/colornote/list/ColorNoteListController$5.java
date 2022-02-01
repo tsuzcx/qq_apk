@@ -18,20 +18,20 @@ class ColorNoteListController$5
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    ColorNoteListController.b(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController).scrollTo(0, 0);
-    ColorNoteListController.b(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController).setAlpha(1.0F);
-    ColorNoteListController.b(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController).setBackgroundColor(ColorNoteListController.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController).getResources().getColor(ColorNoteListController.a()));
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a;
+    ColorNoteListController.g(this.b).scrollTo(0, 0);
+    ColorNoteListController.g(this.b).setAlpha(1.0F);
+    ColorNoteListController.g(this.b).setBackgroundColor(ColorNoteListController.c(this.b).getResources().getColor(ColorNoteListController.f()));
+    paramAnimator = this.b.a;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = -this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a.getMeasuredWidth();
+    if (this.a) {
+      i = -this.b.a.getMeasuredWidth();
     } else {
-      i = this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a.getMeasuredWidth();
+      i = this.b.a.getMeasuredWidth();
     }
     paramAnimator.setX(i);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a.setAlpha(0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListController.a.animate().setInterpolator(new DecelerateInterpolator()).alpha(1.0F).translationX(0.0F).setDuration(180L).start();
+    this.b.a.setAlpha(0.0F);
+    this.b.a.setVisibility(0);
+    this.b.a.animate().setInterpolator(new DecelerateInterpolator()).alpha(1.0F).translationX(0.0F).setDuration(180L).start();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -40,7 +40,7 @@ class ColorNoteListController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListController.5
  * JD-Core Version:    0.7.0.1
  */

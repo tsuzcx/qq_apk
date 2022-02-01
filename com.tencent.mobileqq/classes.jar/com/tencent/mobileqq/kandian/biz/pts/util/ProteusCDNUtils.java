@@ -5,9 +5,8 @@ import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJProteusCDNSp;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
@@ -18,18 +17,6 @@ import org.json.JSONObject;
 
 public class ProteusCDNUtils
 {
-  private static String a(String paramString)
-  {
-    String str = (String)RIJSPUtils.a(RIJProteusCDNSp.a(paramString), "");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[getCDNUrl], bid = ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(", cdnUrl = ");
-    localStringBuilder.append(str);
-    QLog.i("ProteusCDNUtils", 1, localStringBuilder.toString());
-    return str;
-  }
-  
   public static void a(String paramString1, String paramString2, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -42,9 +29,9 @@ public class ProteusCDNUtils
     QLog.i("ProteusCDNUtils", 1, localStringBuilder.toString());
     try
     {
-      if (a(paramString2))
+      if (b(paramString2))
       {
-        b(paramString1);
+        c(paramString1);
         return;
       }
     }
@@ -57,7 +44,30 @@ public class ProteusCDNUtils
     }
   }
   
-  private static boolean a(String paramString)
+  private static void b(String paramString1, String paramString2)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[reportData], eventType = ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", bid = ");
+    ((StringBuilder)localObject).append(paramString2);
+    QLog.i("ProteusCDNUtils", 1, ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("bid", paramString2);
+    }
+    catch (JSONException paramString2)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[reportData], e = ");
+      localStringBuilder.append(paramString2);
+      QLog.e("ProteusCDNUtils", 1, localStringBuilder.toString());
+    }
+    PublicAccountReportUtils.a(null, "", paramString1, paramString1, 0, 0, "", "", "", ((JSONObject)localObject).toString(), false);
+  }
+  
+  private static boolean b(String paramString)
   {
     boolean bool1 = TextUtils.isEmpty(paramString);
     boolean bool2 = false;
@@ -116,9 +126,9 @@ public class ProteusCDNUtils
     return bool1;
   }
   
-  private static void b(String paramString)
+  private static void c(String paramString)
   {
-    if (!b(paramString))
+    if (!d(paramString))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[downloadByCDN], no need to download by cdn, bid = ");
@@ -131,7 +141,7 @@ public class ProteusCDNUtils
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(".7z");
     localObject = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject).toString());
-    String str = a(paramString);
+    String str = e(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[downloadByCDN], bid = ");
     localStringBuilder.append(paramString);
@@ -144,32 +154,9 @@ public class ProteusCDNUtils
     b("0X800ABFE", paramString);
   }
   
-  private static void b(String paramString1, String paramString2)
+  private static boolean d(String paramString)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[reportData], eventType = ");
-    ((StringBuilder)localObject).append(paramString1);
-    ((StringBuilder)localObject).append(", bid = ");
-    ((StringBuilder)localObject).append(paramString2);
-    QLog.i("ProteusCDNUtils", 1, ((StringBuilder)localObject).toString());
-    localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("bid", paramString2);
-    }
-    catch (JSONException paramString2)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[reportData], e = ");
-      localStringBuilder.append(paramString2);
-      QLog.e("ProteusCDNUtils", 1, localStringBuilder.toString());
-    }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString1, paramString1, 0, 0, "", "", "", ((JSONObject)localObject).toString(), false);
-  }
-  
-  private static boolean b(String paramString)
-  {
-    Object localObject = a(paramString);
+    Object localObject = e(paramString);
     boolean bool2 = TextUtils.isEmpty((CharSequence)localObject);
     boolean bool1 = false;
     if ((!bool2) && (!TextUtils.equals("0", (CharSequence)localObject)))
@@ -208,7 +195,7 @@ public class ProteusCDNUtils
         localStringBuilder.append(localException);
         QLog.e("ProteusCDNUtils", 1, localStringBuilder.toString());
       }
-      paramString = HtmlOffline.a(paramString);
+      paramString = HtmlOffline.c(paramString);
       if (paramString != null) {
         l2 = paramString.optLong("version", 0L);
       }
@@ -227,14 +214,26 @@ public class ProteusCDNUtils
     return false;
   }
   
-  private static void c(String paramString)
+  private static String e(String paramString)
+  {
+    String str = (String)RIJSPUtils.b(RIJProteusCDNSp.a(paramString), "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getCDNUrl], bid = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", cdnUrl = ");
+    localStringBuilder.append(str);
+    QLog.i("ProteusCDNUtils", 1, localStringBuilder.toString());
+    return str;
+  }
+  
+  private static void f(String paramString)
   {
     ThreadManager.excute(new ProteusCDNUtils.2(paramString), 64, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.ProteusCDNUtils
  * JD-Core Version:    0.7.0.1
  */

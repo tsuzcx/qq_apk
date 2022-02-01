@@ -20,28 +20,28 @@ public class QQSettingJumpAction
   public boolean a()
   {
     Intent localIntent;
-    if ("general".equals(this.c))
+    if ("general".equals(this.e))
     {
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, GeneralSettingActivity.class);
+      localIntent = new Intent(this.b, GeneralSettingActivity.class);
       localIntent.addFlags(603979776);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      this.b.startActivity(localIntent);
     }
-    else if ("deviceLock".equals(this.c))
+    else if ("deviceLock".equals(this.e))
     {
       localIntent = new Intent();
-      localIntent.putExtra("from", (String)this.jdField_a_of_type_JavaUtilHashMap.get("from"));
+      localIntent.putExtra("from", (String)this.f.get("from"));
       localIntent.setFlags(67108864);
-      RouteUtils.a(this.jdField_a_of_type_AndroidContentContext, localIntent, "/base/safe/authDevActivity");
+      RouteUtils.a(this.b, localIntent, "/base/safe/authDevActivity");
     }
     else
     {
-      if (!"phone".equals(this.c)) {
+      if (!"phone".equals(this.e)) {
         break label155;
       }
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PhoneUnityBindInfoActivity.class);
+      localIntent = new Intent(this.b, PhoneUnityBindInfoActivity.class);
       localIntent.putExtra("from", "from_schema");
       localIntent.setFlags(67108864);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      this.b.startActivity(localIntent);
     }
     return true;
     label155:
@@ -50,7 +50,7 @@ public class QQSettingJumpAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQSettingJumpAction
  * JD-Core Version:    0.7.0.1
  */

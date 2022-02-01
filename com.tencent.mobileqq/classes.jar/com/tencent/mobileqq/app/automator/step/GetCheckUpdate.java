@@ -20,6 +20,8 @@ import com.tencent.mobileqq.service.message.GetBlackListItem;
 import com.tencent.mobileqq.service.profile.CheckUpdateItemInterface;
 import com.tencent.mobileqq.service.profile.GetSimpleInfoCheckUpdateItem;
 import com.tencent.mobileqq.util.QQSettingUtil.UserBitFlagCheckUpdate;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKProcessor;
 
 public class GetCheckUpdate
   extends AsyncStep
@@ -28,7 +30,7 @@ public class GetCheckUpdate
   
   protected int doStep()
   {
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
     int i;
     if (this.mStepId == 45) {
       i = 1;
@@ -42,25 +44,27 @@ public class GetCheckUpdate
   public void onCreate()
   {
     super.onCreate();
-    QQAppInterface localQQAppInterface = this.mAutomator.a;
+    QQAppInterface localQQAppInterface = this.mAutomator.k;
     if (this.mStepId == 45)
     {
       IPublicAccountHandler localIPublicAccountHandler = (IPublicAccountHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
       if (localIPublicAccountHandler.isNeedUpdate()) {
         this.mAutomator.a(102, (CheckUpdateItemInterface)localIPublicAccountHandler.newPublicAccountCheckUpdateItem());
       }
-      this.mAutomator.a(106, new QQSettingUtil.UserBitFlagCheckUpdate(this.mAutomator.a));
-      this.mAutomator.a(118, new BnrReport.BnrReportCheckUpdate(this.mAutomator.a));
-      this.mAutomator.a(127, new OfflineExpire.OfflineExpireCheckUpdate(this.mAutomator.a));
+      this.mAutomator.a(106, new QQSettingUtil.UserBitFlagCheckUpdate(this.mAutomator.k));
+      this.mAutomator.a(118, new BnrReport.BnrReportCheckUpdate(this.mAutomator.k));
+      this.mAutomator.a(127, new OfflineExpire.OfflineExpireCheckUpdate(this.mAutomator.k));
       this.mAutomator.a(117, new ReqDpcInfoNewItem(localQQAppInterface));
       this.mAutomator.a(113, new GetSimpleInfoCheckUpdateItem(localQQAppInterface));
       this.mAutomator.a(116, new GetBlackListItem(localQQAppInterface));
       this.mAutomator.a(114, new ReqSystemMsgNewItem(localQQAppInterface));
       this.mAutomator.a(115, new ReqGetSettingsItem(localQQAppInterface));
-      this.mAutomator.a(122, new ProfileCardCheckUpdate(localQQAppInterface));
+      if (QVipSDKProcessor.e().j()) {
+        this.mAutomator.a(122, new ProfileCardCheckUpdate(localQQAppInterface));
+      }
       this.mAutomator.a(119, new GetRichSig(localQQAppInterface));
       this.mAutomator.a(120, new AioAnimationConfigCheckUpdateItem(localQQAppInterface));
-      this.mAutomator.a(123, new PreloadInfoCheckUpdateItem(this.mAutomator.a));
+      this.mAutomator.a(123, new PreloadInfoCheckUpdateItem(this.mAutomator.k));
       this.mAutomator.a(126, new WebViewCheckUpdataItem(localQQAppInterface));
     }
     if (this.a == null)
@@ -74,14 +78,14 @@ public class GetCheckUpdate
   {
     if (this.a != null)
     {
-      this.mAutomator.a.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetCheckUpdate
  * JD-Core Version:    0.7.0.1
  */

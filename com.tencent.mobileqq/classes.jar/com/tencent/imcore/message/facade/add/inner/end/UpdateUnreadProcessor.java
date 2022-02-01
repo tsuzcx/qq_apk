@@ -14,13 +14,13 @@ class UpdateUnreadProcessor
   public void a(QQMessageFacade paramQQMessageFacade, QQAppInterface paramQQAppInterface, List<MessageRecord> paramList, BaseMessageManager.AddMessageContext paramAddMessageContext, boolean paramBoolean)
   {
     if (paramBoolean) {
-      paramAddMessageContext.a.addUnread(paramList);
+      paramAddMessageContext.l.addUnread(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.add.inner.end.UpdateUnreadProcessor
  * JD-Core Version:    0.7.0.1
  */

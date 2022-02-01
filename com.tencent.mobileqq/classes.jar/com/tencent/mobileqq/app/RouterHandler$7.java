@@ -10,16 +10,16 @@ class RouterHandler$7
   
   public void run()
   {
-    Session localSession = (Session)this.this$0.e.get(Long.valueOf(this.jdField_a_of_type_Long));
-    if ((this.jdField_a_of_type_Int == 2) && (localSession != null)) {
-      this.this$0.e.remove(Long.valueOf(this.jdField_a_of_type_Long));
+    Session localSession = (Session)this.this$0.o.get(Long.valueOf(this.a));
+    if ((this.b == 2) && (localSession != null)) {
+      this.this$0.o.remove(Long.valueOf(this.a));
     }
-    this.this$0.a(2, localSession, 0.0D, this.jdField_a_of_type_Int);
+    this.this$0.a(2, localSession, 0.0D, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RouterHandler.7
  * JD-Core Version:    0.7.0.1
  */

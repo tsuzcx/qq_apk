@@ -24,12 +24,12 @@ class DatalineFilesAdapter$2
   public void onClick(View paramView)
   {
     Object localObject = (DatalineFilesAdapter.ItemHolder)paramView.getTag();
-    int i = DataLineMsgRecord.getDevTypeBySeId(((DatalineFilesAdapter.ItemHolder)localObject).a.jdField_a_of_type_Long);
-    DataLineMsgRecord localDataLineMsgRecord = DatalineFilesAdapter.a(this.a).getMessageFacade().a(i).a(((DatalineFilesAdapter.ItemHolder)localObject).a.jdField_a_of_type_Long);
+    int i = DataLineMsgRecord.getDevTypeBySeId(((DatalineFilesAdapter.ItemHolder)localObject).a.a);
+    DataLineMsgRecord localDataLineMsgRecord = DatalineFilesAdapter.a(this.a).getMessageFacade().d(i).a(((DatalineFilesAdapter.ItemHolder)localObject).a.a);
     if (localDataLineMsgRecord != null)
     {
       DLFileInfo localDLFileInfo = ((DatalineFilesAdapter.ItemHolder)localObject).a;
-      i = localDLFileInfo.jdField_a_of_type_Int;
+      i = localDLFileInfo.b;
       boolean bool = false;
       if (i != 0)
       {
@@ -47,22 +47,22 @@ class DatalineFilesAdapter$2
             break label386;
           }
         }
-        if (NetworkUtil.isNetSupport(DatalineFilesAdapter.a(this.a)))
+        if (NetworkUtil.isNetSupport(DatalineFilesAdapter.c(this.a)))
         {
-          if ((FileManagerUtil.a()) && (localDLFileInfo.b > 3145728L))
+          if ((FileManagerUtil.b()) && (localDLFileInfo.e > 3145728L))
           {
-            if (localDLFileInfo.jdField_a_of_type_Int == 1) {
+            if (localDLFileInfo.b == 1) {
               bool = true;
             }
-            FileManagerUtil.a(bool, DatalineFilesAdapter.a(this.a), new DatalineFilesAdapter.2.1(this, localDataLineMsgRecord, (DatalineFilesAdapter.ItemHolder)localObject));
+            FileManagerUtil.a(bool, DatalineFilesAdapter.c(this.a), new DatalineFilesAdapter.2.1(this, localDataLineMsgRecord, (DatalineFilesAdapter.ItemHolder)localObject));
             break label386;
           }
           i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-          DataLineMsgSet localDataLineMsgSet = DatalineFilesAdapter.a(this.a).getDataLineMsgProxy(i).a(localDataLineMsgRecord.sessionid);
+          DataLineMsgSet localDataLineMsgSet = DatalineFilesAdapter.a(this.a).getDataLineMsgProxy(i).c(localDataLineMsgRecord.sessionid);
           if (localDataLineMsgSet != null) {
             localDataLineMsgSet.setPaused(false);
           }
-          if (localDLFileInfo.jdField_a_of_type_Int != 1)
+          if (localDLFileInfo.b != 1)
           {
             if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
               DataLineReportUtil.e(DatalineFilesAdapter.a(this.a));
@@ -73,7 +73,7 @@ class DatalineFilesAdapter$2
           DatalineFilesAdapter.b(this.a, (DatalineFilesAdapter.ItemHolder)localObject, localDataLineMsgRecord);
           break label386;
         }
-        FMToastUtil.a(2131694475);
+        FMToastUtil.a(2131892157);
         break label386;
       }
       label297:
@@ -85,9 +85,9 @@ class DatalineFilesAdapter$2
       }
       ((DataLineHandler)localObject).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
       if (localDataLineMsgRecord.isSendFromLocal()) {
-        localDLFileInfo.jdField_a_of_type_Int = 1;
+        localDLFileInfo.b = 1;
       } else {
-        localDLFileInfo.jdField_a_of_type_Int = 4;
+        localDLFileInfo.b = 4;
       }
     }
     label386:

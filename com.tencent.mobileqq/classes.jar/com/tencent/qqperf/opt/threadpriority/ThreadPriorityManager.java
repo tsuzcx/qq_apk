@@ -8,13 +8,13 @@ import java.util.HashMap;
 
 public class ThreadPriorityManager
 {
-  private static int jdField_a_of_type_Int = 1;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new ThreadPriorityManager.1(ThreadManager.getSubThreadLooper());
-  private static HashMap<Long, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap(40);
+  private static int a = 1;
+  private static HashMap<Long, Integer> b = new HashMap(40);
+  private static Handler c = new ThreadPriorityManager.1(ThreadManager.getSubThreadLooper());
   
   public static void a(boolean paramBoolean)
   {
-    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = c;
     int i;
     if (paramBoolean) {
       i = 2;
@@ -24,35 +24,17 @@ public class ThreadPriorityManager
     localHandler.sendEmptyMessage(i);
   }
   
-  private static Thread[] a()
-  {
-    try
-    {
-      ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup();
-      Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
-      localThreadGroup.enumerate(arrayOfThread);
-      return arrayOfThread;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadPriorityManager", 2, "", localException);
-      }
-    }
-    return new Thread[0];
-  }
-  
   private static void c()
   {
-    jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 30000L);
-    if (jdField_a_of_type_JavaUtilHashMap.size() > 0) {
+    c.removeMessages(1);
+    c.sendEmptyMessageDelayed(1, 30000L);
+    if (b.size() > 0) {
       return;
     }
-    Thread[] arrayOfThread = a();
+    Thread[] arrayOfThread = d();
     if (arrayOfThread.length < 2)
     {
-      jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      c.removeMessages(1);
       return;
     }
     Thread localThread1 = Looper.getMainLooper().getThread();
@@ -77,8 +59,8 @@ public class ThreadPriorityManager
       }
       try
       {
-        jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), Integer.valueOf(localThread3.getPriority()));
-        localThread3.setPriority(jdField_a_of_type_Int);
+        b.put(Long.valueOf(l), Integer.valueOf(localThread3.getPriority()));
+        localThread3.setPriority(a);
       }
       catch (IllegalArgumentException localIllegalArgumentException2)
       {
@@ -87,18 +69,36 @@ public class ThreadPriorityManager
       break label172;
       l = -1L;
       if (l != -1L) {
-        jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(l));
+        b.remove(Long.valueOf(l));
       }
       i += 1;
     }
   }
   
-  private static void d()
+  private static Thread[] d()
   {
-    if (jdField_a_of_type_JavaUtilHashMap.size() <= 0) {
+    try
+    {
+      ThreadGroup localThreadGroup = Thread.currentThread().getThreadGroup();
+      Thread[] arrayOfThread = new Thread[localThreadGroup.activeCount()];
+      localThreadGroup.enumerate(arrayOfThread);
+      return arrayOfThread;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadPriorityManager", 2, "", localException);
+      }
+    }
+    return new Thread[0];
+  }
+  
+  private static void e()
+  {
+    if (b.size() <= 0) {
       return;
     }
-    Thread[] arrayOfThread = a();
+    Thread[] arrayOfThread = d();
     int m = arrayOfThread.length;
     int j = 0;
     int k;
@@ -111,7 +111,7 @@ public class ThreadPriorityManager
         k = i;
         if (localThread.isAlive())
         {
-          Integer localInteger = (Integer)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(localThread.getId()));
+          Integer localInteger = (Integer)b.get(Long.valueOf(localThread.getId()));
           if (localInteger != null) {
             i = localInteger.intValue();
           }
@@ -136,12 +136,12 @@ public class ThreadPriorityManager
       label128:
       j += 1;
     }
-    jdField_a_of_type_JavaUtilHashMap.clear();
+    b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadPriorityManager
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ import mqq.app.ISecurityFileHelper;
 public class QQReaderSecurityFileHelper
   implements ISecurityFileHelper
 {
-  private FilenameFilter jdField_a_of_type_JavaIoFilenameFilter = new QQReaderSecurityFileHelper.1(this);
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
+  private Pattern a = Pattern.compile("\\d{5,}");
+  private FilenameFilter b = new QQReaderSecurityFileHelper.1(this);
   
   public String declareBusinessFileName()
   {
@@ -23,7 +23,7 @@ public class QQReaderSecurityFileHelper
   public boolean doMigrate(File paramFile)
   {
     File localFile1 = new File(AppConstants.SDCARD_ROOT, "/Tencent/ReaderZone/");
-    String[] arrayOfString = localFile1.list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    String[] arrayOfString = localFile1.list(this.b);
     if (arrayOfString != null)
     {
       if (arrayOfString.length == 0) {
@@ -64,7 +64,7 @@ public class QQReaderSecurityFileHelper
   
   public boolean needMigration()
   {
-    String[] arrayOfString = new File(AppConstants.SDCARD_ROOT, "/Tencent/ReaderZone/").list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    String[] arrayOfString = new File(AppConstants.SDCARD_ROOT, "/Tencent/ReaderZone/").list(this.b);
     return (arrayOfString != null) && (arrayOfString.length > 0);
   }
   
@@ -84,7 +84,7 @@ public class QQReaderSecurityFileHelper
   {
     String[] arrayOfString1 = new String[2];
     Object localObject = new File(AppConstants.SDCARD_ROOT, "/Tencent/ReaderZone/");
-    String[] arrayOfString2 = ((File)localObject).list(this.jdField_a_of_type_JavaIoFilenameFilter);
+    String[] arrayOfString2 = ((File)localObject).list(this.b);
     if ((arrayOfString2 != null) && (arrayOfString2.length > 0))
     {
       int j = arrayOfString2.length;
@@ -114,7 +114,7 @@ public class QQReaderSecurityFileHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqreader.QQReaderSecurityFileHelper
  * JD-Core Version:    0.7.0.1
  */

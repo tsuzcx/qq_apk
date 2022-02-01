@@ -10,7 +10,50 @@ public class StudyRoomPicUploadUtil
 {
   private static Map<String, IStudyRoomPicUploader> a = new ConcurrentHashMap();
   
-  public static JSONObject a(Bundle paramBundle)
+  public static void a(Bundle paramBundle, int paramInt)
+  {
+    paramBundle.putString("status", "progress");
+    paramBundle.putInt("downloadProgress", paramInt);
+  }
+  
+  public static void a(Bundle paramBundle, int paramInt, String paramString, boolean paramBoolean)
+  {
+    paramBundle.putString("status", "failed");
+    paramBundle.putInt("errorCode", paramInt);
+    paramBundle.putString("errorMsg", paramString);
+    if (paramBoolean) {
+      c(paramBundle);
+    }
+  }
+  
+  public static void a(Bundle paramBundle, String paramString1, String paramString2)
+  {
+    paramBundle.putString("status", "success");
+    paramBundle.putString("downloadUrl", paramString1);
+    paramBundle.putString("thumbUrl", paramString2);
+    c(paramBundle);
+  }
+  
+  public static void a(String paramString)
+  {
+    paramString = (IStudyRoomPicUploader)a.remove(paramString);
+    if (paramString != null) {
+      paramString.a();
+    }
+  }
+  
+  public static void a(String paramString, StudyRoomPicUploader paramStudyRoomPicUploader)
+  {
+    a.put(paramString, paramStudyRoomPicUploader);
+  }
+  
+  public static boolean a(Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("status");
+    return ("failed".equals(paramBundle)) || ("success".equals(paramBundle));
+  }
+  
+  public static JSONObject b(Bundle paramBundle)
   {
     JSONObject localJSONObject = new JSONObject();
     if (paramBundle == null) {
@@ -33,63 +76,20 @@ public class StudyRoomPicUploadUtil
     return localJSONObject;
   }
   
-  private static void a(Bundle paramBundle)
+  public static boolean b(String paramString)
+  {
+    return a.containsKey(paramString);
+  }
+  
+  private static void c(Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("localPath", "");
     a.remove(paramBundle);
   }
-  
-  public static void a(Bundle paramBundle, int paramInt)
-  {
-    paramBundle.putString("status", "progress");
-    paramBundle.putInt("downloadProgress", paramInt);
-  }
-  
-  public static void a(Bundle paramBundle, int paramInt, String paramString, boolean paramBoolean)
-  {
-    paramBundle.putString("status", "failed");
-    paramBundle.putInt("errorCode", paramInt);
-    paramBundle.putString("errorMsg", paramString);
-    if (paramBoolean) {
-      a(paramBundle);
-    }
-  }
-  
-  public static void a(Bundle paramBundle, String paramString1, String paramString2)
-  {
-    paramBundle.putString("status", "success");
-    paramBundle.putString("downloadUrl", paramString1);
-    paramBundle.putString("thumbUrl", paramString2);
-    a(paramBundle);
-  }
-  
-  public static void a(String paramString)
-  {
-    paramString = (IStudyRoomPicUploader)a.remove(paramString);
-    if (paramString != null) {
-      paramString.a();
-    }
-  }
-  
-  public static void a(String paramString, StudyRoomPicUploader paramStudyRoomPicUploader)
-  {
-    a.put(paramString, paramStudyRoomPicUploader);
-  }
-  
-  public static boolean a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("status");
-    return ("failed".equals(paramBundle)) || ("success".equals(paramBundle));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return a.containsKey(paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.upload.StudyRoomPicUploadUtil
  * JD-Core Version:    0.7.0.1
  */

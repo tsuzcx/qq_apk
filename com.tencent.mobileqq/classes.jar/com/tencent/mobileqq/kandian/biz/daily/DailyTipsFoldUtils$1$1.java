@@ -14,9 +14,9 @@ class DailyTipsFoldUtils$1$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    int i = (int)(this.jdField_a_of_type_Int * f);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
+    this.a.setAlpha(1.0F - f);
+    int i = (int)(this.b * f);
+    this.c.a.smoothScrollToPositionFromTop(this.c.a.getHeaderViewsCount(), -i, 0);
     if (QLog.isColorLevel())
     {
       paramValueAnimator = new StringBuilder();
@@ -30,7 +30,7 @@ class DailyTipsFoldUtils$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyTipsFoldUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,28 +18,28 @@ class MediaApiPlugin$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkBasePluginActivity.getOutActivity(), paramArrayOfString, paramArrayOfInt);
+    QLog.d(MediaApiPlugin.d, 1, "User requestPermissions RECORD_AUDIO denied");
+    DialogUtil.a(this.f.getOutActivity(), paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
-      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
+      this.g.startActivityForResult(this.a, (byte)1);
+      MediaApiPlugin.a(this.b).edit().putString("camera_photo_path", this.c).putString("getMediaParam", this.d.toString()).putBoolean("calledFromOpenApi", this.e).commit();
       return;
     }
     catch (Exception paramArrayOfString)
     {
-      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690725, 0).a();
+      QLog.e(MediaApiPlugin.d, 1, paramArrayOfString, new Object[0]);
+      QQToast.makeText(this.b, 2131887645, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MediaApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

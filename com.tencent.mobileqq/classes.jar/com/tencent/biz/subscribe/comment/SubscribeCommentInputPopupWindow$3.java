@@ -16,14 +16,14 @@ class SubscribeCommentInputPopupWindow$3
   
   public void delete()
   {
-    if (this.a.a.getSelectionStart() == 0) {
+    if (this.a.b.getSelectionStart() == 0) {
       return;
     }
     try
     {
-      Editable localEditable = this.a.a.getText();
-      int i = this.a.a.getSelectionStart();
-      int j = android.text.TextUtils.getOffsetBefore(this.a.a.getText(), i);
+      Editable localEditable = this.a.b.getText();
+      int i = this.a.b.getSelectionStart();
+      int j = android.text.TextUtils.getOffsetBefore(this.a.b.getText(), i);
       if (i != j)
       {
         localEditable.delete(Math.min(i, j), Math.max(i, j));
@@ -55,17 +55,17 @@ class SubscribeCommentInputPopupWindow$3
     int j;
     if ((paramEmoticonInfo instanceof SystemEmoticonInfo))
     {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
+      i = this.a.b.getSelectionStart();
+      j = this.a.b.getSelectionEnd();
       if ((i >= 0) && (j >= 0) && (j >= i)) {
-        this.a.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
+        this.a.b.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
       }
     }
     else if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
     {
       SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
+      i = this.a.b.getSelectionStart();
+      j = this.a.b.getSelectionEnd();
       int k = localSystemAndEmojiEmoticonInfo.emotionType;
       int m = localSystemAndEmojiEmoticonInfo.code;
       if ((i >= 0) && (j >= 0) && (j >= i))
@@ -78,8 +78,8 @@ class SubscribeCommentInputPopupWindow$3
         } else {
           paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m);
         }
-        this.a.a.getEditableText().replace(i, j, paramEmoticonInfo);
-        this.a.a.requestFocus();
+        this.a.b.getEditableText().replace(i, j, paramEmoticonInfo);
+        this.a.b.requestFocus();
       }
       if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
         localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);

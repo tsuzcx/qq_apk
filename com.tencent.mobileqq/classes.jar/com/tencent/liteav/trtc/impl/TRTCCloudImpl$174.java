@@ -1,27 +1,30 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.TXCRenderAndDec;
-import com.tencent.trtc.TRTCStatistics;
-import java.util.ArrayList;
+import com.tencent.trtc.TRTCCloudListener;
 
 class TRTCCloudImpl$174
-  implements TRTCRoomInfo.UserAction
+  implements Runnable
 {
-  TRTCCloudImpl$174(TRTCCloudImpl paramTRTCCloudImpl, TRTCStatistics paramTRTCStatistics, ArrayList paramArrayList) {}
+  TRTCCloudImpl$174(TRTCCloudImpl paramTRTCCloudImpl, int paramInt, String paramString) {}
   
-  public void accept(String paramString, TRTCRoomInfo.UserInfo paramUserInfo)
+  public void run()
   {
-    if (paramUserInfo.mainRender.render != null) {
-      TRTCCloudImpl.access$9300(this.this$0, paramUserInfo.mainRender.render, paramUserInfo, this.val$statistics, this.val$remoteQualityArray);
-    }
-    if ((paramUserInfo.subRender.render != null) && (paramUserInfo.subRender.render.isRendering())) {
-      TRTCCloudImpl.access$9300(this.this$0, paramUserInfo.subRender.render, paramUserInfo, this.val$statistics, this.val$remoteQualityArray);
+    Object localObject = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onTranscodingUpdated err:");
+    localStringBuilder.append(this.val$code);
+    localStringBuilder.append(", msg:");
+    localStringBuilder.append(this.val$msg);
+    ((TRTCCloudImpl)localObject).apiOnlineLog(localStringBuilder.toString());
+    localObject = this.this$0.mTRTCListener;
+    if (localObject != null) {
+      ((TRTCCloudListener)localObject).onSetMixTranscodingConfig(this.val$code, this.val$msg);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.174
  * JD-Core Version:    0.7.0.1
  */

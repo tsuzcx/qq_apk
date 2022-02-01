@@ -10,16 +10,16 @@ final class SubscribeFollowUserUtil$3
 {
   SubscribeFollowUserUtil$3(Context paramContext, String paramString, SubscribeFollowUserUtil.ResultListener paramResultListener, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (SubscribeFollowUserUtil.a()) {
       return;
     }
     SubscribeFollowUserUtil.a(true);
     if (paramInt == 0) {
-      SubscribeFollowUserUtil.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeFollowUserUtil$ResultListener);
+      SubscribeFollowUserUtil.c(this.a, this.b, this.c);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.d.dismiss();
   }
 }
 

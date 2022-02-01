@@ -5,6 +5,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
 import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.qcircle.api.global.QCircleHostGlobalInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.CustomWidgetUtil;
 import java.util.ArrayList;
@@ -17,81 +18,86 @@ class LebaQCirclePart$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      if (this.this$0.d != null) {
-        this.this$0.d.setVisibility(0);
+      if (this.this$0.k != null) {
+        this.this$0.k.setVisibility(0);
       }
-      CustomWidgetUtil.a(this.this$0.d, 2, 0, 0);
-      if (this.this$0.c != null) {
-        this.this$0.c.setVisibility(8);
+      CustomWidgetUtil.a(this.this$0.k, 2, 0, 0);
+      if (this.this$0.j != null) {
+        this.this$0.j.setVisibility(8);
       }
-      if (this.this$0.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.this$0.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (this.this$0.h != null) {
+        this.this$0.h.setVisibility(8);
       }
-      if (this.this$0.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (this.this$0.g != null) {
+        this.this$0.g.setVisibility(8);
       }
-      this.this$0.q();
+      this.this$0.x();
       return;
     }
-    if (this.this$0.d != null) {
-      this.this$0.d.setVisibility(8);
+    if (this.this$0.k != null) {
+      this.this$0.k.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.b > 0)
     {
-      if (this.this$0.c != null) {
-        this.this$0.c.setVisibility(0);
+      if (this.this$0.j != null) {
+        this.this$0.j.setVisibility(0);
       }
-      CustomWidgetUtil.a(this.this$0.c, 9, this.jdField_a_of_type_Int, 0);
-      CustomWidgetUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.this$0.c, 9, this.this$0.b());
+      CustomWidgetUtil.a(this.this$0.j, 9, this.b, 0);
+      CustomWidgetUtil.a(this.c, this.this$0.j, 9, this.this$0.k());
     }
-    else if (this.this$0.c != null)
+    else if (this.this$0.j != null)
     {
-      this.this$0.c.setVisibility(8);
+      this.this$0.j.setVisibility(8);
     }
-    if (this.this$0.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    if (this.this$0.h != null) {
+      this.this$0.h.setVisibility(8);
     }
     try
     {
-      ((RelativeLayout.LayoutParams)this.this$0.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).rightMargin = 0;
-      if (this.b)
+      ((RelativeLayout.LayoutParams)this.this$0.g.getLayoutParams()).rightMargin = 0;
+      if (QCircleHostGlobalInfo.needShowEntranceGuideTips())
       {
-        if (this.this$0.jdField_a_of_type_AndroidWidgetTextView != null)
+        this.this$0.a(QCircleHostGlobalInfo.getEntranceGuideTips(), this.c, null);
+        return;
+      }
+      if (this.d)
+      {
+        if (this.this$0.g != null)
         {
-          CustomWidgetUtil.a(this.this$0.jdField_a_of_type_AndroidWidgetTextView, 8, 0, 0);
-          CustomWidgetUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.this$0.jdField_a_of_type_AndroidWidgetTextView, 8, this.this$0.b());
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-            this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_JavaUtilList);
+          CustomWidgetUtil.a(this.this$0.g, 8, 0, 0);
+          CustomWidgetUtil.a(this.c, this.this$0.g, 8, this.this$0.k());
+          if (!TextUtils.isEmpty(this.e)) {
+            this.this$0.a(this.e, this.c, this.f);
           }
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.this$0.g.setVisibility(0);
         }
       }
-      else if (this.c)
+      else if (this.g)
       {
-        if (this.this$0.jdField_a_of_type_AndroidWidgetTextView != null)
+        if (this.this$0.g != null)
         {
-          this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          CustomWidgetUtil.a(this.this$0.jdField_a_of_type_AndroidWidgetTextView, 8, this.jdField_a_of_type_Int, 0);
-          CustomWidgetUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.this$0.jdField_a_of_type_AndroidWidgetTextView, 10, this.this$0.b());
+          this.this$0.g.setVisibility(0);
+          CustomWidgetUtil.a(this.this$0.g, 8, this.b, 0);
+          CustomWidgetUtil.a(this.c, this.this$0.g, 10, this.this$0.k());
         }
       }
-      else if (this.d) {
-        this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_JavaUtilList);
-      } else if (this.e) {
-        this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_JavaUtilList);
-      } else if (this.this$0.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      else if (this.h) {
+        this.this$0.a(this.e, this.c, this.f);
+      } else if (this.i) {
+        this.this$0.a(this.e, this.c, this.f);
+      } else if (this.this$0.g != null) {
+        this.this$0.g.setVisibility(8);
       }
       ArrayList localArrayList = new ArrayList();
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+      if (this.f != null) {
+        localArrayList.addAll(this.f);
       }
-      if ((this.this$0.jdField_b_of_type_AndroidWidgetImageSwitcher != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper != null)) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper.a(localArrayList);
+      if ((this.this$0.o != null) && (this.this$0.x != null)) {
+        this.this$0.x.a(localArrayList);
       }
-      this.this$0.q();
+      this.this$0.x();
       return;
     }
     catch (Exception localException)
@@ -105,7 +111,7 @@ class LebaQCirclePart$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mainbiz.LebaQCirclePart.2
  * JD-Core Version:    0.7.0.1
  */

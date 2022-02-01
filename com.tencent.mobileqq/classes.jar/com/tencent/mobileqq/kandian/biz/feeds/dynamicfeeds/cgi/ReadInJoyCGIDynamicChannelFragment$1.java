@@ -20,16 +20,16 @@ class ReadInJoyCGIDynamicChannelFragment$1
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).loadMoreComplete(true, true);
+      ReadInJoyCGIDynamicChannelFragment.b(this.a).a(paramList);
+      ReadInJoyCGIDynamicChannelFragment.c(this.a).loadMoreComplete(true, true);
       return;
     }
-    ReadInJoyCGIDynamicChannelFragment.b(this.a).startMachineRefresh();
+    ReadInJoyCGIDynamicChannelFragment.d(this.a).startMachineRefresh();
   }
   
   public void a(int paramInt1, boolean paramBoolean, List<HeaderDataModel> paramList, int paramInt2)
   {
-    if (paramInt1 != ReadInJoyCGIDynamicChannelFragment.d(this.a)) {
+    if (paramInt1 != ReadInJoyCGIDynamicChannelFragment.k(this.a)) {
       return;
     }
     if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
@@ -44,7 +44,7 @@ class ReadInJoyCGIDynamicChannelFragment$1
   
   public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
   {
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.b(this.a)) {
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.e(this.a)) {
       return;
     }
     int i;
@@ -55,32 +55,32 @@ class ReadInJoyCGIDynamicChannelFragment$1
     }
     String str;
     if ((paramBoolean1) && (i > 0)) {
-      str = String.format(this.a.getResources().getString(2131717753), new Object[] { Integer.valueOf(i) });
+      str = String.format(this.a.getResources().getString(2131915228), new Object[] { Integer.valueOf(i) });
     } else {
-      str = this.a.getResources().getString(2131717752);
+      str = this.a.getResources().getString(2131915227);
     }
-    ReadInJoyCGIDynamicChannelFragment.c(this.a).showRefreshResult(paramBoolean1, str);
+    ReadInJoyCGIDynamicChannelFragment.f(this.a).showRefreshResult(paramBoolean1, str);
     if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
+      ReadInJoyCGIDynamicChannelFragment.b(this.a).a(paramList);
     }
     QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onDataRefreshed, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", refreshSize = ", Integer.valueOf(i) });
-    ReadInJoyCGIDynamicChannelFragment.d(this.a).loadMoreComplete(true, true);
+    ReadInJoyCGIDynamicChannelFragment.g(this.a).loadMoreComplete(true, true);
   }
   
   public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
   {
-    if (paramInt != ReadInJoyCGIDynamicChannelFragment.c(this.a)) {
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.h(this.a)) {
       return;
     }
     int i = 0;
     if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0))
     {
-      ReadInJoyCGIDynamicChannelFragment.a(this.a).b(paramList);
-      ReadInJoyCGIDynamicChannelFragment.e(this.a).loadMoreComplete(true, paramBoolean2);
+      ReadInJoyCGIDynamicChannelFragment.b(this.a).b(paramList);
+      ReadInJoyCGIDynamicChannelFragment.i(this.a).loadMoreComplete(true, paramBoolean2);
     }
     else
     {
-      ReadInJoyCGIDynamicChannelFragment.f(this.a).loadMoreComplete(false, true);
+      ReadInJoyCGIDynamicChannelFragment.j(this.a).loadMoreComplete(false, true);
     }
     if (paramList != null) {
       i = paramList.size();
@@ -90,7 +90,7 @@ class ReadInJoyCGIDynamicChannelFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment.1
  * JD-Core Version:    0.7.0.1
  */

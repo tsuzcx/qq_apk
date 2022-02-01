@@ -22,55 +22,135 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class MemoriesVideoCollectionPresenter
   implements IEventReceiver
 {
-  public int a;
-  public ErrorMessage a;
-  private MemoriesVideoCollectionPresenter.GetCollectListEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetCollectListEventReceiver;
-  private MemoriesVideoCollectionPresenter.GetSimpleInfoListEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetSimpleInfoListEventReceiver;
-  private MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$VideoCollectionPresenterEventListener;
-  private MemoryDataPuller jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller;
-  private VideoCollectionItem.DataSortedComparator jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$DataSortedComparator = new VideoCollectionItem.DataSortedComparator();
   public String a;
-  public ArrayList<VideoCollectionItem> a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  public boolean b = true;
+  public boolean b = false;
+  public ErrorMessage c = null;
+  public ArrayList<VideoCollectionItem> d = new ArrayList();
+  public int e = -1;
+  public boolean f = true;
+  private VideoCollectionItem.DataSortedComparator g = new VideoCollectionItem.DataSortedComparator();
+  private AtomicBoolean h = new AtomicBoolean(false);
+  private MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener i;
+  private MemoryDataPuller j;
+  private MemoriesVideoCollectionPresenter.GetCollectListEventReceiver k;
+  private MemoriesVideoCollectionPresenter.GetSimpleInfoListEventReceiver l;
   
   public MemoriesVideoCollectionPresenter(String paramString, @NonNull MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener paramVideoCollectionPresenterEventListener)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$VideoCollectionPresenterEventListener = paramVideoCollectionPresenterEventListener;
+    this.a = paramString;
+    this.i = paramVideoCollectionPresenterEventListener;
   }
   
   private void a(VideoCollectionItem paramVideoCollectionItem)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoCollectionItem) > 0)
+    if (this.d.indexOf(paramVideoCollectionItem) > 0)
     {
       SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
       return;
     }
-    int i = Collections.binarySearch(this.jdField_a_of_type_JavaUtilArrayList, paramVideoCollectionItem, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$DataSortedComparator);
-    if (i < 0)
+    int m = Collections.binarySearch(this.d, paramVideoCollectionItem, this.g);
+    if (m < 0)
     {
-      i = -i;
-      this.jdField_a_of_type_JavaUtilArrayList.add(i - 1, paramVideoCollectionItem);
+      m = -m;
+      this.d.add(m - 1, paramVideoCollectionItem);
     }
   }
   
-  public VideoCollectionItem a()
+  public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    this.k = new MemoriesVideoCollectionPresenter.GetCollectListEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.k);
+    this.l = new MemoriesVideoCollectionPresenter.GetSimpleInfoListEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.l);
+  }
+  
+  public void a(String paramString)
+  {
+    SLog.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request video info list.");
+    this.j.a(paramString);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    SLog.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request visit count.");
+    this.j.b(paramList, true);
+  }
+  
+  public void a(List<VideoCollectionItem> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.d.clear();
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a((VideoCollectionItem)paramList.next());
+    }
+    if ((this.d.size() > 0) && (paramBoolean2))
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      paramList = ((UserManager)SuperManager.a(2)).b(this.a);
+      if ((paramList != null) && (!paramList.isMe()) && (!paramList.isFriend()) && (!paramList.isVip))
+      {
+        paramList = new VideoCollectionItem();
+        paramList.collectionType = 8;
+        paramList.collectionId = "";
+        paramList.collectionTime = -1L;
+        paramList.key = "local_desc_item";
+        paramList.isEmptyFakeItem = true;
+        this.d.add(paramList);
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request refresh video collection data. from cache : %s.", Boolean.valueOf(paramBoolean));
+    if (this.j == null)
+    {
+      this.j = new MemoryDataPuller(this.a, String.valueOf(hashCode()));
+      this.j.b();
+    }
+    if (paramBoolean)
+    {
+      DateCollectionListPageLoader.GetCollectionListEvent localGetCollectionListEvent = this.j.d();
+      a(localGetCollectionListEvent.e, localGetCollectionListEvent.c, localGetCollectionListEvent.a);
+      this.f = localGetCollectionListEvent.a;
+      if (this.d.size() > 0) {
+        this.b = true;
+      }
+      SLog.a("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "get video collection data from cache: collectionList.size() = %d.", Integer.valueOf(this.d.size()));
+      return;
+    }
+    this.j.f();
+  }
+  
+  public void b()
+  {
+    StoryDispatcher.a().unRegisterSubscriber(this.k);
+    StoryDispatcher.a().unRegisterSubscriber(this.l);
+    MemoryDataPuller localMemoryDataPuller = this.j;
+    if (localMemoryDataPuller != null) {
+      localMemoryDataPuller.c();
+    }
+    this.h.set(true);
+  }
+  
+  public void c()
+  {
+    SLog.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request load next page video collection.");
+    this.j.a(d());
+  }
+  
+  public VideoCollectionItem d()
+  {
+    if (this.d.size() > 0)
+    {
+      Object localObject = this.d;
       localObject = (VideoCollectionItem)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
       if (((VideoCollectionItem)localObject).isEmptyFakeItem)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 2)
+        if (this.d.size() >= 2)
         {
-          localObject = this.jdField_a_of_type_JavaUtilArrayList;
+          localObject = this.d;
           localObject = (VideoCollectionItem)((ArrayList)localObject).get(((ArrayList)localObject).size() - 2);
           if (!TextUtils.isEmpty(((VideoCollectionItem)localObject).collectionId)) {
             return localObject;
@@ -84,93 +164,9 @@ public class MemoriesVideoCollectionPresenter
     return null;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetCollectListEventReceiver = new MemoriesVideoCollectionPresenter.GetCollectListEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetCollectListEventReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetSimpleInfoListEventReceiver = new MemoriesVideoCollectionPresenter.GetSimpleInfoListEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetSimpleInfoListEventReceiver);
-  }
-  
-  public void a(String paramString)
-  {
-    SLog.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request video info list.");
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(paramString);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    SLog.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request visit count.");
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.b(paramList, true);
-  }
-  
-  public void a(List<VideoCollectionItem> paramList, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      a((VideoCollectionItem)paramList.next());
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (paramBoolean2))
-    {
-      paramList = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_JavaLangString);
-      if ((paramList != null) && (!paramList.isMe()) && (!paramList.isFriend()) && (!paramList.isVip))
-      {
-        paramList = new VideoCollectionItem();
-        paramList.collectionType = 8;
-        paramList.collectionId = "";
-        paramList.collectionTime = -1L;
-        paramList.key = "local_desc_item";
-        paramList.isEmptyFakeItem = true;
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramList);
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request refresh video collection data. from cache : %s.", Boolean.valueOf(paramBoolean));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller == null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller = new MemoryDataPuller(this.jdField_a_of_type_JavaLangString, String.valueOf(hashCode()));
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a();
-    }
-    if (paramBoolean)
-    {
-      DateCollectionListPageLoader.GetCollectionListEvent localGetCollectionListEvent = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a();
-      a(localGetCollectionListEvent.jdField_a_of_type_JavaUtilList, localGetCollectionListEvent.c, localGetCollectionListEvent.jdField_a_of_type_Boolean);
-      this.b = localGetCollectionListEvent.jdField_a_of_type_Boolean;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      SLog.a("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "get video collection data from cache: collectionList.size() = %d.", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.d();
-  }
-  
-  public void b()
-  {
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetCollectListEventReceiver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetSimpleInfoListEventReceiver);
-    MemoryDataPuller localMemoryDataPuller = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller;
-    if (localMemoryDataPuller != null) {
-      localMemoryDataPuller.b();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public void c()
-  {
-    SLog.c("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "request load next page video collection.");
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(a());
-  }
-  
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
+    return this.h.get() ^ true;
   }
 }
 

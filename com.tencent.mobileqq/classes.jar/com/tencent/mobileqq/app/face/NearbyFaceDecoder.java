@@ -21,44 +21,44 @@ public class NearbyFaceDecoder
   extends FaceDecoderBase
   implements DecodeCompletionListener, FaceDownloader.FaceDownloadListener
 {
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  FaceDownloader jdField_a_of_type_ComTencentMobileqqAppFaceFaceDownloader;
-  FaceObserver jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver;
+  AppInterface a;
+  FaceObserver b;
+  FaceDownloader c;
   
   public NearbyFaceDecoder(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDownloader = ((QQAvatarManagerServiceImpl)paramAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby")).getFaceDownloader();
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDownloader.addFaceDownloadListener(this);
+    this.a = paramAppInterface;
+    this.c = ((QQAvatarManagerServiceImpl)paramAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby")).getFaceDownloader();
+    this.c.addFaceDownloadListener(this);
   }
   
   public void destory()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver;
+    Object localObject = this.b;
     if (localObject != null)
     {
-      AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      AppInterface localAppInterface = this.a;
       if (localAppInterface != null)
       {
         localAppInterface.removeObserver((BusinessObserver)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver = null;
+        this.b = null;
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDownloader;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
+    localObject = this.c;
+    if ((localObject != null) && (this.a != null)) {
       ((FaceDownloader)localObject).removeFaceDownloadListener(this);
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    this.a = null;
     super.destory();
   }
   
   public Bitmap getBitmapFromCache(int paramInt1, String paramString, int paramInt2, byte paramByte, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+    if (this.a == null) {
       return null;
     }
     paramString = FaceInfo.a(paramInt1, paramString, paramInt2, paramByte, paramInt3);
-    Bitmap localBitmap = ((IQQAvatarManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby")).getFaceFromCache(paramString);
+    Bitmap localBitmap = ((IQQAvatarManagerService)this.a.getRuntimeService(IQQAvatarManagerService.class, "nearby")).getFaceFromCache(paramString);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -85,7 +85,7 @@ public class NearbyFaceDecoder
     }
     if (paramFaceInfo != null)
     {
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+      if (this.a == null) {
         return;
       }
       this.iRunningRequests -= 1;
@@ -95,19 +95,19 @@ public class NearbyFaceDecoder
       localObject = (FaceInfo)this.mInProgress.remove(paramFaceInfo.b());
       if (localObject != null)
       {
-        int j = FaceInfo.r;
+        int j = FaceInfo.D;
         int i;
         if (paramBitmap != null) {
-          i = FaceInfo.f;
+          i = FaceInfo.r;
         } else {
-          i = FaceInfo.g;
+          i = FaceInfo.s;
         }
         ((FaceInfo)localObject).a(j, i);
         if ((this.mStatDecodeTime) && (paramBitmap != null))
         {
           long l;
-          if ((paramBitmap != null) && (localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.r] > 0L) && (localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.j] > 0L)) {
-            l = localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.r] - localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.j];
+          if ((paramBitmap != null) && (localObject.o[FaceInfo.D] > 0L) && (localObject.o[FaceInfo.v] > 0L)) {
+            l = localObject.o[FaceInfo.D] - localObject.o[FaceInfo.v];
           } else {
             l = 0L;
           }
@@ -130,7 +130,7 @@ public class NearbyFaceDecoder
               }
             }
             if (localObject != null) {
-              StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), (String)localObject, true, l, 0L, null, "");
+              StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), (String)localObject, true, l, 0L, null, "");
             }
             if (QLog.isColorLevel())
             {
@@ -143,7 +143,7 @@ public class NearbyFaceDecoder
         }
       }
       if ((this.mDecodeTaskCompletionListener != null) && (paramBitmap != null)) {
-        this.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.iRunningRequests + this.mReadyRequests.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
+        this.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.iRunningRequests + this.mReadyRequests.size(), paramFaceInfo.b, paramFaceInfo.c, paramBitmap);
       }
     }
   }
@@ -153,14 +153,14 @@ public class NearbyFaceDecoder
     if (paramFaceInfo == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    if (this.a != null)
     {
       if (paramFaceInfo == null) {
         return;
       }
       this.iRunningRequests -= 1;
-      if ((paramFaceInfo.jdField_a_of_type_Int == 32) && (paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo == null) && ((FaceInfo)this.mInProgress.get(paramFaceInfo.b()) != null)) {
-        ((FaceHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(FaceConstant.Nearby.NEAR_BY_FACE_HANDLER)).a(paramFaceInfo);
+      if ((paramFaceInfo.b == 32) && (paramFaceInfo.p == null) && ((FaceInfo)this.mInProgress.get(paramFaceInfo.b()) != null)) {
+        ((FaceHandler)this.a.getBusinessHandler(FaceConstant.Nearby.NEAR_BY_FACE_HANDLER)).a(paramFaceInfo);
       }
       if ((!this.mPause) && (!this.mReadyRequests.isEmpty()) && (this.iRunningRequests < this.maxDecodingTask)) {
         runNextTask();
@@ -184,25 +184,25 @@ public class NearbyFaceDecoder
     }
     if (paramFaceInfo != null)
     {
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
+      if (this.a == null) {
         return;
       }
       localObject = (FaceInfo)this.mInProgress.remove(paramFaceInfo.b());
       if (localObject != null)
       {
-        int j = FaceInfo.r;
+        int j = FaceInfo.D;
         int i;
         if (paramBitmap != null) {
-          i = FaceInfo.f;
+          i = FaceInfo.r;
         } else {
-          i = FaceInfo.g;
+          i = FaceInfo.s;
         }
         ((FaceInfo)localObject).a(j, i);
         if ((this.mStatDecodeTime) && (paramBitmap != null))
         {
           long l;
-          if ((localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.r] > 0L) && (localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.j] > 0L)) {
-            l = localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.r] - localObject.jdField_a_of_type_ArrayOfLong[FaceInfo.j];
+          if ((localObject.o[FaceInfo.D] > 0L) && (localObject.o[FaceInfo.v] > 0L)) {
+            l = localObject.o[FaceInfo.D] - localObject.o[FaceInfo.v];
           } else {
             l = 0L;
           }
@@ -226,7 +226,7 @@ public class NearbyFaceDecoder
               }
             }
             if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), (String)localObject, true, l, 0L, null, "");
+              StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), (String)localObject, true, l, 0L, null, "");
             }
             if (QLog.isColorLevel())
             {
@@ -239,7 +239,7 @@ public class NearbyFaceDecoder
         }
       }
       if ((this.mDecodeTaskCompletionListener != null) && (paramBitmap != null)) {
-        this.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.iRunningRequests + this.mReadyRequests.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
+        this.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.iRunningRequests + this.mReadyRequests.size(), paramFaceInfo.b, paramFaceInfo.c, paramBitmap);
       }
     }
   }
@@ -264,8 +264,8 @@ public class NearbyFaceDecoder
       while (i < paramArrayList.size())
       {
         localObject = (HeadRequest)paramArrayList.get(i);
-        if (getBitmapFromCache(32, ((HeadRequest)localObject).jdField_a_of_type_JavaLangString, ((HeadRequest)localObject).jdField_a_of_type_Int, (byte)3, 0) == null) {
-          requestDecodeFaceWithFaceInfo(((HeadRequest)localObject).jdField_a_of_type_JavaLangString, ((HeadRequest)localObject).jdField_a_of_type_Int, true, 32, true, (byte)1, 3, ((HeadRequest)localObject).jdField_a_of_type_AvatarInfoQQHeadInfo);
+        if (getBitmapFromCache(32, ((HeadRequest)localObject).a, ((HeadRequest)localObject).b, (byte)3, 0) == null) {
+          requestDecodeFaceWithFaceInfo(((HeadRequest)localObject).a, ((HeadRequest)localObject).b, true, 32, true, (byte)1, 3, ((HeadRequest)localObject).d);
         }
         i += 1;
       }
@@ -283,7 +283,7 @@ public class NearbyFaceDecoder
     {
       localObject = FaceInfo.a(paramInt2, paramString, paramInt1, paramInt4);
       FaceInfo localFaceInfo = (FaceInfo)this.mInProgress.get(localObject);
-      if ((localFaceInfo != null) && (!localFaceInfo.a(FaceInfo.j, 300000L)))
+      if ((localFaceInfo != null) && (!localFaceInfo.a(FaceInfo.v, 300000L)))
       {
         if (QLog.isColorLevel())
         {
@@ -292,13 +292,13 @@ public class NearbyFaceDecoder
           ((StringBuilder)localObject).append(paramString);
           QLog.i("Q.qqhead.NearbyFaceDecoder", 2, ((StringBuilder)localObject).toString());
         }
-        if ((localFaceInfo.b) && (!paramBoolean2)) {
-          localFaceInfo.b = false;
+        if ((localFaceInfo.h) && (!paramBoolean2)) {
+          localFaceInfo.h = false;
         }
         return true;
       }
       paramString = new FaceInfo(paramInt2, paramString, paramBoolean2, (byte)1, paramInt3, false, paramInt1, paramBoolean3, paramInt4);
-      paramString.a(FaceInfo.j);
+      paramString.a(FaceInfo.v);
       this.mInProgress.put(localObject, paramString);
       enqueueDecode(paramString);
       return true;
@@ -319,7 +319,7 @@ public class NearbyFaceDecoder
     {
       Object localObject = FaceInfo.a(paramInt2, paramString, paramInt1, 0);
       FaceInfo localFaceInfo = (FaceInfo)this.mInProgress.get(localObject);
-      if ((localFaceInfo != null) && (!localFaceInfo.a(FaceInfo.j, 300000L)))
+      if ((localFaceInfo != null) && (!localFaceInfo.a(FaceInfo.v, 300000L)))
       {
         if (QLog.isColorLevel())
         {
@@ -328,8 +328,8 @@ public class NearbyFaceDecoder
           ((StringBuilder)localObject).append(paramString);
           QLog.i("Q.qqhead.NearbyFaceDecoder", 2, ((StringBuilder)localObject).toString());
         }
-        if ((localFaceInfo.b) && (!paramBoolean2)) {
-          localFaceInfo.b = false;
+        if ((localFaceInfo.h) && (!paramBoolean2)) {
+          localFaceInfo.h = false;
         }
         if (paramQQHeadInfo != null) {
           localFaceInfo.a(paramQQHeadInfo);
@@ -338,7 +338,7 @@ public class NearbyFaceDecoder
       }
       localFaceInfo = new FaceInfo(paramInt2, paramString, paramBoolean2, (byte)1, paramInt3, false, paramInt1, 1);
       localFaceInfo.a(paramQQHeadInfo);
-      localFaceInfo.a(FaceInfo.j);
+      localFaceInfo.a(FaceInfo.v);
       this.mInProgress.put(localObject, localFaceInfo);
       if (QLog.isColorLevel())
       {
@@ -371,7 +371,7 @@ public class NearbyFaceDecoder
       try
       {
         this.iRunningRequests += 1;
-        FaceDecodeTask.execute(FaceDecodeTask.getFaceDecodeTask(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localFaceInfo, this));
+        FaceDecodeTask.execute(FaceDecodeTask.getFaceDecodeTask(this.a, localFaceInfo, this));
         return;
       }
       catch (Throwable localThrowable1) {}
@@ -396,16 +396,16 @@ public class NearbyFaceDecoder
   
   public void setAppRuntime(AppInterface paramAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != paramAppInterface)
+    if (this.a != paramAppInterface)
     {
       destory();
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+      this.a = paramAppInterface;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.NearbyFaceDecoder
  * JD-Core Version:    0.7.0.1
  */

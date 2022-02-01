@@ -24,33 +24,28 @@ public abstract class AECircleBasePartFragment
   extends Fragment
   implements LifecycleOwner, ViewModelStoreOwner
 {
-  private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-  private ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore;
-  protected View a;
-  private AECirclePartManager jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager;
-  
-  protected abstract int a();
-  
-  public AECirclePartManager a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager;
-  }
-  
-  protected abstract List<AECircleBasePart> a();
+  private LifecycleRegistry a = new LifecycleRegistry(this);
+  private ViewModelStore b;
+  private AECirclePartManager c;
+  protected View j;
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager;
+    paramLayoutInflater = this.c;
     if (paramLayoutInflater != null)
     {
-      paramLayoutInflater.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager.onActivityCreated(getActivity(), paramBundle);
+      paramLayoutInflater.a(this.j);
+      this.c.onActivityCreated(getActivity(), paramBundle);
     }
   }
   
+  protected abstract List<AECircleBasePart> b();
+  
+  protected abstract int c();
+  
   public Lifecycle getLifecycle()
   {
-    return this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
+    return this.a;
   }
   
   @NonNull
@@ -58,18 +53,23 @@ public abstract class AECircleBasePartFragment
   {
     if (BaseApplicationImpl.getApplication() != null)
     {
-      if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore == null) {
-        this.jdField_a_of_type_AndroidArchLifecycleViewModelStore = new ViewModelStore();
+      if (this.b == null) {
+        this.b = new ViewModelStore();
       }
-      return this.jdField_a_of_type_AndroidArchLifecycleViewModelStore;
+      return this.b;
     }
     throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
+  }
+  
+  public AECirclePartManager h()
+  {
+    return this.c;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AECirclePartManager localAECirclePartManager = this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager;
+    AECirclePartManager localAECirclePartManager = this.c;
     if (localAECirclePartManager != null) {
       localAECirclePartManager.a(paramInt1, paramInt2, paramIntent);
     }
@@ -78,7 +78,7 @@ public abstract class AECircleBasePartFragment
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    AECirclePartManager localAECirclePartManager = this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager;
+    AECirclePartManager localAECirclePartManager = this.c;
     if (localAECirclePartManager != null) {
       localAECirclePartManager.a(paramConfiguration);
     }
@@ -87,12 +87,12 @@ public abstract class AECircleBasePartFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager = new AECirclePartManager(this, getView());
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager.a(a());
+    this.a = new LifecycleRegistry(this);
+    this.c = new AECirclePartManager(this, getView());
+    this.c.a(b());
     try
     {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
       return;
     }
     catch (Throwable paramBundle)
@@ -107,14 +107,14 @@ public abstract class AECircleBasePartFragment
   {
     try
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);
+      this.j = paramLayoutInflater.inflate(c(), paramViewGroup, false);
     }
     catch (Throwable localThrowable)
     {
       QLog.e("BasePartFragment", 1, localThrowable, new Object[0]);
     }
     a(paramLayoutInflater, paramViewGroup, paramBundle);
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.j;
   }
   
   @CallSuper
@@ -123,8 +123,8 @@ public abstract class AECircleBasePartFragment
     super.onDestroy();
     try
     {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager.onActivityDestroyed(getActivity());
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+      this.c.onActivityDestroyed(getActivity());
     }
     catch (Throwable localThrowable)
     {
@@ -133,7 +133,7 @@ public abstract class AECircleBasePartFragment
       break label28;
     }
     QLog.e("BasePartFragment", 1, "mLifecycleRegistry 初始化失败");
-    localViewModelStore = this.jdField_a_of_type_AndroidArchLifecycleViewModelStore;
+    localViewModelStore = this.b;
     if (localViewModelStore != null) {
       localViewModelStore.clear();
     }
@@ -144,8 +144,8 @@ public abstract class AECircleBasePartFragment
     super.onPause();
     try
     {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager.onActivityPaused(getActivity());
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+      this.c.onActivityPaused(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -161,8 +161,8 @@ public abstract class AECircleBasePartFragment
     super.onResume();
     try
     {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager.onActivityResumed(getActivity());
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+      this.c.onActivityResumed(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -178,8 +178,8 @@ public abstract class AECircleBasePartFragment
     super.onStart();
     try
     {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager.onActivityStarted(getActivity());
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_START);
+      this.c.onActivityStarted(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -195,8 +195,8 @@ public abstract class AECircleBasePartFragment
     super.onStop();
     try
     {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECirclePartManager.onActivityStopped(getActivity());
+      this.a.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+      this.c.onActivityStopped(getActivity());
       return;
     }
     catch (Throwable localThrowable)
@@ -209,7 +209,7 @@ public abstract class AECircleBasePartFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.base.AECircleBasePartFragment
  * JD-Core Version:    0.7.0.1
  */

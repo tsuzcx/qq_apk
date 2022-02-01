@@ -17,13 +17,13 @@ class StoryPlayerImpl$1
   
   public void a(IDataProvider.GroupId paramGroupId, String paramString, boolean paramBoolean)
   {
-    SLog.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramGroupId.a, paramString });
-    StoryPlayerImpl.a(this.a).a(paramGroupId, paramString, paramBoolean);
+    SLog.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramGroupId.b, paramString });
+    StoryPlayerImpl.b(this.a).a(paramGroupId, paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerImpl.1
  * JD-Core Version:    0.7.0.1
  */

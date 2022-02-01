@@ -16,9 +16,9 @@ final class CJPreloadMonitorReporter$4
   
   public void run()
   {
-    if (CJPreloadMonitorReporter.a(this.jdField_a_of_type_JavaLangString))
+    if (CJPreloadMonitorReporter.a(this.a))
     {
-      Object localObject = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(this.jdField_a_of_type_JavaLangString);
+      Object localObject = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(this.a);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         HashMap localHashMap = new HashMap();
@@ -28,19 +28,19 @@ final class CJPreloadMonitorReporter$4
         ((StringBuilder)localObject).append("");
         localHashMap.put("ext2", ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(CJPreloadMonitorReporter.b(721));
+        ((StringBuilder)localObject).append(CJPreloadMonitorReporter.c(721));
         ((StringBuilder)localObject).append("");
         localHashMap.put("ext3", ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append("");
         localHashMap.put("ext4", ((StringBuilder)localObject).toString());
-        SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 3, this.b, localHashMap, ReportConstant.Res.a(3));
+        SpringHbReporter.a(ReportConstant.Event.a, 3, this.c, localHashMap, ReportConstant.Res.a(3));
       }
-      if (this.b == 0) {
+      if (this.c == 0) {
         return;
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.b;
     }
   }
 }

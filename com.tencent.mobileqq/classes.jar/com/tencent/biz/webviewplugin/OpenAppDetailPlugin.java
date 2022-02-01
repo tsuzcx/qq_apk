@@ -25,8 +25,8 @@ public class OpenAppDetailPlugin
   public void a(String paramString1, String paramString2, String paramString3)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
-    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
+    localBundle.putString("uin", this.mRuntime.b().getCurrentAccountUin());
+    localBundle.putString("sid", this.mRuntime.d().getIntent().getStringExtra("vkey"));
     localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
     if ((paramString2 != null) && (paramString2.equals("true"))) {
       localBundle.putBoolean("autoDownload", true);
@@ -34,7 +34,7 @@ public class OpenAppDetailPlugin
     if (paramString3 != null) {
       localBundle.putString("packageName", paramString3);
     }
-    AppClient.a(this.mRuntime.a(), paramString1, 2470, localBundle);
+    AppClient.a(this.mRuntime.d(), paramString1, 2470, localBundle);
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -60,7 +60,7 @@ public class OpenAppDetailPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OpenAppDetailPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -25,36 +25,34 @@ import java.util.List;
 public class SelfViewHolder
   extends BaseViewHolder
 {
-  protected static int a;
-  protected static String a;
-  protected static int b;
-  protected static int c = 2;
-  protected boolean a;
+  protected static String g;
+  protected static int i = 0;
+  protected static int j = 1;
+  protected static int k = 2;
+  protected boolean h;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Q.qqstory.msgTab.");
     localStringBuilder.append(SelfViewHolder.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 1;
+    g = localStringBuilder.toString();
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    this.itemView.setTag(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+    this.itemView.setTag(paramMsgTabNodeInfo.d);
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject1 instanceof QQAppInterface))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-      Object localObject2 = String.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Long);
+      Object localObject2 = String.valueOf(paramMsgTabNodeInfo.c);
       localObject1 = localObject2;
       if ("0".equals(localObject2)) {
         localObject1 = localQQAppInterface.getCurrentAccountUin();
       }
       Object localObject3 = (UserManager)SuperManager.a(2);
-      localObject2 = QQStoryContext.a().b();
+      localObject2 = QQStoryContext.a().i();
       localObject3 = ((UserManager)localObject3).b((String)localObject2);
       if (localObject3 == null) {
         if ("0_1000".equals(localObject2))
@@ -74,69 +72,69 @@ public class SelfViewHolder
       } else {
         bool = false;
       }
-      this.jdField_a_of_type_Boolean = bool;
-      if (this.jdField_a_of_type_Boolean)
+      this.h = bool;
+      if (this.h)
       {
-        PlayModeUtils.b(this.jdField_a_of_type_AndroidWidgetImageView, ((QQUserUIItem)localObject3).headUrl, true, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
+        PlayModeUtils.b(this.b, ((QQUserUIItem)localObject3).headUrl, true, (int)DisplayUtils.a(this.d.getContext(), 50.0F));
       }
       else
       {
         localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 1, (String)localObject1);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+        this.b.setImageDrawable((Drawable)localObject1);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713688));
+      this.d.setText(HardCodeUtil.a(2131911233));
       if (QLog.isDevelopLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "update self view, isUploading:", Boolean.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Boolean), ", unUploadVideoCount: ", Integer.valueOf(paramMsgTabNodeInfo.d) });
+        QLog.d(g, 2, new Object[] { "update self view, isUploading:", Boolean.valueOf(paramMsgTabNodeInfo.s), ", unUploadVideoCount: ", Integer.valueOf(paramMsgTabNodeInfo.r) });
       }
-      if (paramMsgTabNodeInfo.jdField_b_of_type_Boolean)
+      if (paramMsgTabNodeInfo.s)
       {
-        a(paramMsgTabNodeInfo, jdField_b_of_type_Int);
+        a(paramMsgTabNodeInfo, j);
         return;
       }
-      if (paramMsgTabNodeInfo.d > 0)
+      if (paramMsgTabNodeInfo.r > 0)
       {
-        a(paramMsgTabNodeInfo, c);
+        a(paramMsgTabNodeInfo, k);
         return;
       }
-      a(paramMsgTabNodeInfo, jdField_a_of_type_Int);
+      a(paramMsgTabNodeInfo, i);
     }
   }
   
   protected void a(MsgTabNodeInfo paramMsgTabNodeInfo, int paramInt)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "setViewStatus: status=", Integer.valueOf(paramInt) });
+      QLog.d(g, 2, new Object[] { "setViewStatus: status=", Integer.valueOf(paramInt) });
     }
-    if (paramInt == jdField_a_of_type_Int)
+    if (paramInt == i)
     {
-      a(paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size(), paramMsgTabNodeInfo.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Boolean)
+      a(paramMsgTabNodeInfo.e.size(), paramMsgTabNodeInfo.i);
+      if (this.h)
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846865);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.c.setImageResource(2130848417);
+        this.c.setVisibility(0);
         return;
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.c.setVisibility(8);
       return;
     }
-    if (paramInt == jdField_b_of_type_Int)
+    if (paramInt == j)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.ROTATE);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.a.setBorderStyle(RotateCircleImageView.BorderStyle.ROTATE);
+      this.c.setVisibility(8);
       return;
     }
-    if (paramInt == c)
+    if (paramInt == k)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(new int[] { -65536 });
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846871);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
+      this.a.setBorderColors(new int[] { -65536 });
+      this.c.setImageResource(2130848423);
+      this.c.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.SelfViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -26,19 +26,19 @@ public class AsyncControlImpl
   public String getCameraCreatedResultInfo()
   {
     CaptureAsyncControl localCaptureAsyncControl = mAsyncControl;
-    return CaptureAsyncControl.b;
+    return CaptureAsyncControl.g;
   }
   
   public boolean isCameraCreated()
   {
     CaptureAsyncControl localCaptureAsyncControl = mAsyncControl;
-    return CaptureAsyncControl.d;
+    return CaptureAsyncControl.e;
   }
   
   public boolean isCameraCreatedResult()
   {
     CaptureAsyncControl localCaptureAsyncControl = mAsyncControl;
-    return CaptureAsyncControl.e;
+    return CaptureAsyncControl.f;
   }
   
   public void startAsyncStep(int paramInt)
@@ -58,7 +58,7 @@ public class AsyncControlImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.AsyncControlImpl
  * JD-Core Version:    0.7.0.1
  */

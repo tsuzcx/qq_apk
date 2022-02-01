@@ -151,7 +151,7 @@ public class ShortVideoPlayActivity
   public static final String TAG = "ShortVideoPlayActivity";
   public static final String TAG2 = "ShortVideoPlayerInner";
   public static final String TencentVideoSdkAppKey = "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==";
-  static String mCfgString = SharedPreUtils.f(BaseApplication.getContext());
+  static String mCfgString = SharedPreUtils.v(BaseApplication.getContext());
   static String[] mListString;
   String ad_gdt = "";
   boolean hasSeeked = false;
@@ -334,7 +334,7 @@ public class ShortVideoPlayActivity
     }
     if (i == 0)
     {
-      QQToast.a(paramContext, 1, 2131718574, 0).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(paramContext, 1, 2131916075, 0).show(paramContext.getResources().getDimensionPixelSize(2131299920));
       return false;
     }
     return true;
@@ -346,19 +346,19 @@ public class ShortVideoPlayActivity
     try
     {
       JSONObject localJSONObject = new JSONObject(this.mVideoInfo);
-      localShortVideoDownloadInfo.jdField_a_of_type_Int = localJSONObject.getInt("busi_type");
-      localShortVideoDownloadInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("file_uuid");
+      localShortVideoDownloadInfo.b = localJSONObject.getInt("busi_type");
+      localShortVideoDownloadInfo.a = localJSONObject.getString("file_uuid");
       String str = localJSONObject.getString("file_md5");
-      localShortVideoDownloadInfo.jdField_e_of_type_JavaLangString = str;
+      localShortVideoDownloadInfo.i = str;
       this.mMd5 = str;
-      localShortVideoDownloadInfo.jdField_b_of_type_Long = localJSONObject.getInt("file_size");
-      localShortVideoDownloadInfo.jdField_b_of_type_Int = this.mCurSessionType;
-      localShortVideoDownloadInfo.jdField_b_of_type_JavaLangString = this.mCurrentUin;
-      localShortVideoDownloadInfo.c = this.mCurSessionUin;
-      localShortVideoDownloadInfo.d = this.mCurSessionUin;
-      localShortVideoDownloadInfo.jdField_e_of_type_Int = 1001;
+      localShortVideoDownloadInfo.n = localJSONObject.getInt("file_size");
+      localShortVideoDownloadInfo.c = this.mCurSessionType;
+      localShortVideoDownloadInfo.d = this.mCurrentUin;
+      localShortVideoDownloadInfo.e = this.mCurSessionUin;
+      localShortVideoDownloadInfo.f = this.mCurSessionUin;
+      localShortVideoDownloadInfo.q = 1001;
       this.mFileType = 1001;
-      localShortVideoDownloadInfo.h = getPubAccountLocalPath(localShortVideoDownloadInfo.jdField_e_of_type_JavaLangString);
+      localShortVideoDownloadInfo.o = getPubAccountLocalPath(localShortVideoDownloadInfo.i);
       return localShortVideoDownloadInfo;
     }
     catch (Exception localException)
@@ -421,7 +421,7 @@ public class ShortVideoPlayActivity
   
   private void getHttpHeaderInfo(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return;
     }
     paramString = paramString.split("\r\n");
@@ -607,7 +607,7 @@ public class ShortVideoPlayActivity
       }
       else
       {
-        showErrorDlg(HardCodeUtil.a(2131713957));
+        showErrorDlg(HardCodeUtil.a(2131911488));
       }
       play(this.mCurrentPosition);
       return;
@@ -665,7 +665,7 @@ public class ShortVideoPlayActivity
             if (localObject != null)
             {
               ShortVideoBusiManager.a((ShortVideoReq)localObject, this.app);
-              this.mFileType = ((ShortVideoReq)localObject).a.jdField_e_of_type_Int;
+              this.mFileType = ((ShortVideoReq)localObject).e.q;
               reportDownloadVideo(this.mMsg);
             }
           }
@@ -775,7 +775,7 @@ public class ShortVideoPlayActivity
     String str = getVideoPath();
     if (!isVideoExist(str))
     {
-      QQToast.a(this.mContext, 0, 2131719067, 0).b(this.mContext.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.mContext, 0, 2131916603, 0).show(this.mContext.getResources().getDimensionPixelSize(2131299920));
       return;
     }
     Intent localIntent = new Intent("android.intent.action.VIEW");
@@ -810,7 +810,7 @@ public class ShortVideoPlayActivity
   private void remindIfContinueDownload()
   {
     boolean bool = this.mNeedDownload;
-    if ((SVBusiUtil.jdField_a_of_type_Boolean) || (System.currentTimeMillis() - SVBusiUtil.jdField_a_of_type_Long < 300000L))
+    if ((SVBusiUtil.b) || (System.currentTimeMillis() - SVBusiUtil.a < 300000L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoPlayActivity", 2, "needRemind=false");
@@ -819,8 +819,8 @@ public class ShortVideoPlayActivity
     }
     if (bool)
     {
-      Object localObject = this.mContext.getString(2131719087);
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(this.mContext, 230, null, (String)localObject, 2131694460, 2131720490, new ShortVideoPlayActivity.3(this), new ShortVideoPlayActivity.4(this));
+      Object localObject = this.mContext.getString(2131916623);
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this.mContext, 230, null, (String)localObject, 2131892140, 2131918207, new ShortVideoPlayActivity.3(this), new ShortVideoPlayActivity.4(this));
       localObject = CUOpenCardGuideMng.a(this.mContext, this.app, 1, (String)localObject);
       if ((localObject instanceof SpannableString)) {
         localQQCustomDialog.setMessageWithoutAutoLink((CharSequence)localObject);
@@ -888,7 +888,7 @@ public class ShortVideoPlayActivity
     String str = getVideoPath();
     if (!isVideoExist(str))
     {
-      QQToast.a(this.mContext, 0, 2131719067, 0).b(this.mContext.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.mContext, 0, 2131916603, 0).show(this.mContext.getResources().getDimensionPixelSize(2131299920));
       return;
     }
     if (this.mHandler.get() != null)
@@ -972,20 +972,20 @@ public class ShortVideoPlayActivity
     }
     if (i == 0)
     {
-      QQToast.a(this.mContext, 1, 2131718574, 0).b(this.mContext.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.mContext, 1, 2131916075, 0).show(this.mContext.getResources().getDimensionPixelSize(2131299920));
       return;
     }
     localObject = SVBusiUtil.a(2, 0);
     ShortVideoDownloadInfo localShortVideoDownloadInfo = creatDownloadInfo();
-    if ((!AppNetConnInfo.isWifiConn()) && (localShortVideoDownloadInfo != null) && (localShortVideoDownloadInfo.jdField_b_of_type_Long > 204800L)) {
-      showDialogSafe(DialogUtil.a(this, 230, getString(2131719088), getString(2131719089), new ShortVideoPlayActivity.16(this), new ShortVideoPlayActivity.17(this)));
+    if ((!AppNetConnInfo.isWifiConn()) && (localShortVideoDownloadInfo != null) && (localShortVideoDownloadInfo.n > 204800L)) {
+      showDialogSafe(DialogUtil.a(this, 230, getString(2131916624), getString(2131916625), new ShortVideoPlayActivity.16(this), new ShortVideoPlayActivity.17(this)));
     }
     if (localShortVideoDownloadInfo != null)
     {
-      localShortVideoDownloadInfo.jdField_b_of_type_Boolean = true;
-      ((ShortVideoReq)localObject).a = localShortVideoDownloadInfo;
+      localShortVideoDownloadInfo.t = true;
+      ((ShortVideoReq)localObject).e = localShortVideoDownloadInfo;
       ShortVideoBusiManager.a((ShortVideoReq)localObject, this.app);
-      this.publicAccountLocalPath = localShortVideoDownloadInfo.h;
+      this.publicAccountLocalPath = localShortVideoDownloadInfo.o;
     }
   }
   
@@ -1025,7 +1025,7 @@ public class ShortVideoPlayActivity
         return;
       }
       int k = this.mFileType;
-      if ((k != 6) && (k != 17) && (k != 9))
+      if ((k != 6) && (k != 17) && (k != 9) && (k != 67))
       {
         j = i;
         if (k != 20) {}
@@ -1063,7 +1063,7 @@ public class ShortVideoPlayActivity
           this.mMsg.md5 = ((String)localObject);
         }
       }
-      if ((this.mStatus == 2003) && (!StringUtil.a(this.mVideoPath)))
+      if ((this.mStatus == 2003) && (!StringUtil.isEmpty(this.mVideoPath)))
       {
         localObject = new File(this.mVideoPath);
         this.mMsg.lastModified = ((File)localObject).lastModified();
@@ -1193,12 +1193,12 @@ public class ShortVideoPlayActivity
     this.mErrCode = 9064;
     this.mStatus = 2005;
     updateMsgStatus();
-    showErrorDlg(HardCodeUtil.a(2131713941));
+    showErrorDlg(HardCodeUtil.a(2131911472));
     if ((!TextUtils.isEmpty(this.mUserReturnCode)) && (this.mUserReturnCode.equals("-5103059")))
     {
       this.mStatus = 5002;
       updateMsgStatus();
-      showErrorDlg(HardCodeUtil.a(2131713936));
+      showErrorDlg(HardCodeUtil.a(2131911467));
       break label1004;
       if (i != 7) {
         break label1007;
@@ -1532,7 +1532,7 @@ public class ShortVideoPlayActivity
     localStringBuffer.append(((StringBuilder)localObject1).toString());
     Object localObject2 = new StringBuffer("");
     localObject1 = null;
-    if (!StringUtil.a(this.mHttpUrl)) {
+    if (!StringUtil.isEmpty(this.mHttpUrl)) {
       localObject1 = InnerDns.getHostFromUrl(this.mHttpUrl);
     }
     Object localObject3 = this.mVideoUrls;
@@ -1555,7 +1555,7 @@ public class ShortVideoPlayActivity
         if (j == -1)
         {
           k = j;
-          if (!StringUtil.a((String)localObject1))
+          if (!StringUtil.isEmpty((String)localObject1))
           {
             k = j;
             if (((String)localObject1).equals(localObject3)) {
@@ -1699,7 +1699,7 @@ public class ShortVideoPlayActivity
       if (paramInt2 != -1) {
         return;
       }
-      QQToast.a(this, 2131719081, 0).a();
+      QQToast.makeText(this, 2131916617, 0).show();
       return;
     }
     if (paramInt1 == 21)
@@ -1715,27 +1715,27 @@ public class ShortVideoPlayActivity
   {
     super.doOnBackPressed();
     releaseMediaPlayer();
-    overridePendingTransition(0, 2130772405);
+    overridePendingTransition(0, 2130772510);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
-    LiuHaiUtils.a(this);
+    LiuHaiUtils.f(this);
     if (LiuHaiUtils.b()) {
       LiuHaiUtils.enableNotch(this);
     }
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561482);
+    super.setContentView(2131627839);
     getWindow().addFlags(128);
     this.mScreenDisplayWidth = getResources().getDisplayMetrics().widthPixels;
     this.mScreenDisplayHeight = getResources().getDisplayMetrics().heightPixels;
-    this.top_blackLH = ((LinearLayout)findViewById(2131363668));
+    this.top_blackLH = ((LinearLayout)findViewById(2131429581));
     Object localObject = this.top_blackLH;
     if (localObject != null)
     {
       localObject = ((LinearLayout)localObject).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).height = LiuHaiUtils.jdField_a_of_type_Int;
+      ((ViewGroup.LayoutParams)localObject).height = LiuHaiUtils.d;
       this.top_blackLH.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.top_blackLH.setVisibility(0);
     }
@@ -1799,7 +1799,7 @@ public class ShortVideoPlayActivity
     initData(super.getIntent());
     if (this.mIsHotVideo)
     {
-      paramBundle = (URLImageView)findViewById(2131369589);
+      paramBundle = (URLImageView)findViewById(2131436695);
       localObject = this.mHotVideoIconUrl;
       if ((localObject != null) && (!((String)localObject).isEmpty()))
       {
@@ -1829,7 +1829,7 @@ public class ShortVideoPlayActivity
           QLog.d("ShortVideoPlayActivity", 2, "onCreate(), IsHotVideo  mHotVideoIconUrl = null");
         }
       }
-      paramBundle = (URLImageView)findViewById(2131364415);
+      paramBundle = (URLImageView)findViewById(2131430446);
       String str1 = this.mHotVideoCertificatedIconUrl;
       if ((str1 != null) && (!str1.isEmpty()))
       {
@@ -1858,7 +1858,7 @@ public class ShortVideoPlayActivity
       paramBundle = this.mHotVideoTitle;
       if ((paramBundle != null) && (!paramBundle.isEmpty()))
       {
-        paramBundle = (TextView)findViewById(2131368311);
+        paramBundle = (TextView)findViewById(2131435184);
         paramBundle.setVisibility(0);
         paramBundle.setText(this.mHotVideoTitle);
         String str2 = this.mHotVideoJumpUrl;
@@ -2209,11 +2209,11 @@ public class ShortVideoPlayActivity
     int j = 0;
     this.mPlayResult = 0;
     this.mErrCode = 9001;
-    Object localObject2 = getString(2131719095);
+    Object localObject2 = getString(2131916631);
     Object localObject1;
     int k;
     Object localObject3;
-    if ((paramInt1 == 101) && (this.mVideoUrls != null) && (!StringUtil.a(this.mDomain)))
+    if ((paramInt1 == 101) && (this.mVideoUrls != null) && (!StringUtil.isEmpty(this.mDomain)))
     {
       localObject1 = this.mVideoUrls;
       k = localObject1.length;
@@ -2221,7 +2221,7 @@ public class ShortVideoPlayActivity
       while (i < k)
       {
         localObject3 = localObject1[i];
-        if (!StringUtil.a((String)localObject3)) {
+        if (!StringUtil.isEmpty((String)localObject3)) {
           InnerDns.getInstance().reportBadIp(this.mDomain, InnerDns.getHostFromUrl((String)localObject3), 1005);
         }
         i += 1;
@@ -2232,19 +2232,19 @@ public class ShortVideoPlayActivity
     {
       dismissLoadingView();
       dismissLoadingImage();
-      localObject1 = getString(2131719092);
+      localObject1 = getString(2131916628);
     }
     else if (i == 0)
     {
       localObject1 = localObject2;
       if (!this.mPlayFailReported)
       {
-        k = (int)(DeviceInfoUtil.e() / 1024L);
+        k = (int)(DeviceInfoUtil.r() / 1024L);
         i = j;
-        if (!StringUtil.a(this.mVideoPath)) {
+        if (!StringUtil.isEmpty(this.mVideoPath)) {
           i = (int)(new File(this.mVideoPath).length() / 1024L);
         }
-        localObject1 = DeviceInfoUtil.d();
+        localObject1 = DeviceInfoUtil.f();
         localObject3 = this.app;
         Object localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("");
@@ -2264,7 +2264,7 @@ public class ShortVideoPlayActivity
       if (i == 2)
       {
         adMsgVideoReport(this.ad_gdt, 0, 1002, this.msg_id);
-        localObject1 = getString(2131719092);
+        localObject1 = getString(2131916628);
       }
     }
     localObject2 = localObject1;
@@ -2276,7 +2276,7 @@ public class ShortVideoPlayActivity
       }
       else
       {
-        localObject2 = getString(2131719092);
+        localObject2 = getString(2131916628);
       }
     }
     showDialogSafe(DialogUtil.a(this, 232, null, (String)localObject2, new ShortVideoPlayActivity.20(this), null));
@@ -2317,7 +2317,7 @@ public class ShortVideoPlayActivity
       paramView.append(SVUtils.b(paramFileMsg.status));
       QLog.d("ShortVideoPlayActivity", 2, paramView.toString());
     }
-    if ((paramFileMsg.fileType == 6) || (paramFileMsg.fileType == 17) || (paramFileMsg.fileType == 9) || (paramFileMsg.fileType == 20))
+    if ((paramFileMsg.fileType == 6) || (paramFileMsg.fileType == 17) || (paramFileMsg.fileType == 9) || (paramFileMsg.fileType == 20) || (paramFileMsg.fileType == 67))
     {
       paramInt2 = paramFileMsg.status;
       if (paramInt2 != 1002) {
@@ -2333,7 +2333,7 @@ public class ShortVideoPlayActivity
       {
       default: 
       case 2005: 
-        QQToast.a(this.mContext, 2131719105, 0).b(this.mContext.getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(this.mContext, 2131916641, 0).show(this.mContext.getResources().getDimensionPixelSize(2131299920));
         this.mErrCode = paramFileMsg.errorCode;
         return;
       case 2003: 
@@ -2354,7 +2354,7 @@ public class ShortVideoPlayActivity
           this.mStepUrlCost = paramFileMsg.stepUrlCost;
           while (paramInt1 < 1)
           {
-            if (!StringUtil.a(this.mDomain))
+            if (!StringUtil.isEmpty(this.mDomain))
             {
               paramView = new StringBuilder();
               paramFileMsg = this.mVideoUrls;
@@ -2367,10 +2367,10 @@ public class ShortVideoPlayActivity
           }
           play(0L);
           return;
-          QQToast.a(this.mContext, 2131719104, 0).b(this.mContext.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(this.mContext, 2131916640, 0).show(this.mContext.getResources().getDimensionPixelSize(2131299920));
           this.mErrCode = paramFileMsg.errorCode;
           return;
-          QQToast.a(this.mContext, 2131719103, 0).b(this.mContext.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(this.mContext, 2131916639, 0).show(this.mContext.getResources().getDimensionPixelSize(2131299920));
           this.mErrCode = paramFileMsg.errorCode;
           return;
           switchToNormalPlayUI();
@@ -2420,7 +2420,7 @@ public class ShortVideoPlayActivity
       this.mMsg = ((MessageForShortVideo)paramIntent.getExtras().getParcelable("key_message_for_shortvideo"));
       if (this.mMsg == null)
       {
-        QQToast.a(this, 1, HardCodeUtil.a(2131713913), 0).b(getTitleBarHeight());
+        QQToast.makeText(this, 1, HardCodeUtil.a(2131911444), 0).show(getTitleBarHeight());
         finish();
         return;
       }
@@ -2506,11 +2506,11 @@ public class ShortVideoPlayActivity
     {
       installSDK();
       localContext = this.mContext;
-      QQToast.a(localContext, localContext.getResources().getString(2131697738), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(localContext, localContext.getResources().getString(2131895511), 0).show(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299920));
       return;
     }
     Context localContext = this.mContext;
-    DialogUtil.a(localContext, 232, null, localContext.getResources().getString(2131697735), new ShortVideoPlayActivity.11(this), new ShortVideoPlayActivity.12(this)).show();
+    DialogUtil.a(localContext, 232, null, localContext.getResources().getString(2131895508), new ShortVideoPlayActivity.11(this), new ShortVideoPlayActivity.12(this)).show();
   }
   
   void innerChangePlayerState(int paramInt)
@@ -2572,8 +2572,8 @@ public class ShortVideoPlayActivity
           }
           else
           {
-            this.mOperatorBtn.setImageResource(2130845892);
-            this.mOperatorBtn.setContentDescription(HardCodeUtil.a(2131713931));
+            this.mOperatorBtn.setImageResource(2130847362);
+            this.mOperatorBtn.setContentDescription(HardCodeUtil.a(2131911462));
             if (this.mHandler.get() != null) {
               ((MqqHandler)this.mHandler.get()).removeCallbacks(this.mProgressChecker);
             }
@@ -2582,16 +2582,16 @@ public class ShortVideoPlayActivity
         else
         {
           this.mPauseTimes += 1;
-          this.mOperatorBtn.setImageResource(2130845892);
-          this.mOperatorBtn.setContentDescription(HardCodeUtil.a(2131713940));
+          this.mOperatorBtn.setImageResource(2130847362);
+          this.mOperatorBtn.setContentDescription(HardCodeUtil.a(2131911471));
         }
       }
       else
       {
         this.mPlayStart = System.currentTimeMillis();
         this.mRealPlayTimes += 1;
-        this.mOperatorBtn.setImageResource(2130845894);
-        this.mOperatorBtn.setContentDescription(HardCodeUtil.a(2131713938));
+        this.mOperatorBtn.setImageResource(2130847364);
+        this.mOperatorBtn.setContentDescription(HardCodeUtil.a(2131911469));
         this.mCoverIV.setVisibility(8);
         if (this.mHandler.get() != null)
         {
@@ -2612,8 +2612,8 @@ public class ShortVideoPlayActivity
       if (this.mHandler.get() != null) {
         ((MqqHandler)this.mHandler.get()).removeCallbacks(this.mProgressChecker);
       }
-      this.mOperatorBtn.setImageResource(2130845892);
-      this.mOperatorBtn.setContentDescription(HardCodeUtil.a(2131713958));
+      this.mOperatorBtn.setImageResource(2130847362);
+      this.mOperatorBtn.setContentDescription(HardCodeUtil.a(2131911489));
     }
   }
   
@@ -2711,25 +2711,25 @@ public class ShortVideoPlayActivity
     {
     default: 
       break;
-    case 2131374342: 
+    case 2131442504: 
       userBackPressed();
       break;
-    case 2131372192: 
+    case 2131439679: 
       showAnimation();
       handleClick();
       break;
-    case 2131370792: 
+    case 2131438098: 
       showAnimation();
       if (this.mPlayState == 1) {
         pause();
       }
       this.mFavActionSheet.onClick(paramView);
       break;
-    case 2131364704: 
+    case 2131430807: 
       AioVideoTransFileController.b(this.app, this.mMsg.frienduin, this.mMsg.uniseq);
       userBackPressed();
       break;
-    case 2131363340: 
+    case 2131429218: 
       userBackPressed();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -2750,9 +2750,9 @@ public class ShortVideoPlayActivity
     super.onConfigurationChanged(paramConfiguration);
     if (this.mIsHotVideo) {
       if (paramConfiguration.orientation == 2) {
-        ((RelativeLayout)findViewById(2131368312)).setVisibility(8);
+        ((RelativeLayout)findViewById(2131435185)).setVisibility(8);
       } else {
-        ((RelativeLayout)findViewById(2131368312)).setVisibility(0);
+        ((RelativeLayout)findViewById(2131435185)).setVisibility(0);
       }
     }
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
@@ -2777,25 +2777,25 @@ public class ShortVideoPlayActivity
   
   void onCreateController()
   {
-    this.mVideoController = ((RelativeLayout)getLayoutInflater().inflate(2131561483, null, false));
-    this.mRoot = ((RelativeLayout)this.mVideoController.findViewById(2131376809));
-    this.mNormalOperateLayout = ((LinearLayout)this.mVideoController.findViewById(2131371936));
+    this.mVideoController = ((RelativeLayout)getLayoutInflater().inflate(2131627840, null, false));
+    this.mRoot = ((RelativeLayout)this.mVideoController.findViewById(2131445137));
+    this.mNormalOperateLayout = ((LinearLayout)this.mVideoController.findViewById(2131439381));
     setSystemUiVisibility();
-    this.mOperatorBar = this.mVideoController.findViewById(2131372191);
+    this.mOperatorBar = this.mVideoController.findViewById(2131439678);
     this.mOperatorBar.setOnClickListener(this);
-    this.mCoverIV = ((URLImageView)this.mVideoController.findViewById(2131365285));
-    this.mLoadingText = ((TextView)this.mVideoController.findViewById(2131370363));
-    this.mMenuBtn = ((ImageView)this.mVideoController.findViewById(2131370792));
+    this.mCoverIV = ((URLImageView)this.mVideoController.findViewById(2131431459));
+    this.mLoadingText = ((TextView)this.mVideoController.findViewById(2131437625));
+    this.mMenuBtn = ((ImageView)this.mVideoController.findViewById(2131438098));
     this.mMenuBtn.setOnClickListener(this);
-    this.mProgressTime = ((TextView)this.mVideoController.findViewById(2131373130));
-    this.mTotalTime = ((TextView)this.mVideoController.findViewById(2131379063));
-    this.mSeekBar = ((SeekBar)this.mVideoController.findViewById(2131377124));
+    this.mProgressTime = ((TextView)this.mVideoController.findViewById(2131440735));
+    this.mTotalTime = ((TextView)this.mVideoController.findViewById(2131447787));
+    this.mSeekBar = ((SeekBar)this.mVideoController.findViewById(2131445496));
     this.mSeekBar.setMax(10000);
-    this.mOperatorBtn = ((ImageView)this.mVideoController.findViewById(2131372192));
+    this.mOperatorBtn = ((ImageView)this.mVideoController.findViewById(2131439679));
     this.mOperatorBtn.setOnClickListener(this);
     this.mSeekBar.setOnSeekBarChangeListener(this.mOnSeekBarChangeListener);
-    this.mBufferLayout = ((RelativeLayout)this.mVideoController.findViewById(2131364130));
-    this.mRateText = ((TextView)this.mVideoController.findViewById(2131375985));
+    this.mBufferLayout = ((RelativeLayout)this.mVideoController.findViewById(2131430097));
+    this.mRateText = ((TextView)this.mVideoController.findViewById(2131444171));
     int i = this.mPlayCallerType;
     if ((i == 0) || (i == 5))
     {
@@ -2803,14 +2803,14 @@ public class ShortVideoPlayActivity
       if ((localObject != null) && ((((MessageForShortVideo)localObject).videoFileStatus == 1001) || (this.mMsg.videoFileStatus == 1002)) && (((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).findProcessor(this.mMsg.frienduin, this.mMsg.uniseq) != null))
       {
         this.mIsUploading = true;
-        this.mUploadOperateLayout = ((RelativeLayout)this.mVideoController.findViewById(2131380237));
+        this.mUploadOperateLayout = ((RelativeLayout)this.mVideoController.findViewById(2131449155));
         this.mUploadOperateLayout.setVisibility(0);
         this.mNormalOperateLayout.setVisibility(4);
-        this.mUploadingSeekBar = ((SeekBar)this.mVideoController.findViewById(2131380239));
+        this.mUploadingSeekBar = ((SeekBar)this.mVideoController.findViewById(2131449157));
         this.mUploadingSeekBar.setMax(100);
-        this.mCloseBtn = ((ImageView)this.mVideoController.findViewById(2131364704));
+        this.mCloseBtn = ((ImageView)this.mVideoController.findViewById(2131430807));
         this.mCloseBtn.setOnClickListener(this);
-        this.mUploadProgress = ((TextView)this.mVideoController.findViewById(2131380238));
+        this.mUploadProgress = ((TextView)this.mVideoController.findViewById(2131449156));
       }
     }
     this.mDragView = new DragView(this);
@@ -2818,7 +2818,7 @@ public class ShortVideoPlayActivity
     this.mDragView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.mDragView.setGestureChangeListener(this);
     if (LiuHaiUtils.b()) {
-      i = LiuHaiUtils.jdField_a_of_type_Int;
+      i = LiuHaiUtils.d;
     } else {
       i = 0;
     }
@@ -2830,19 +2830,19 @@ public class ShortVideoPlayActivity
       ((Rect)localObject).bottom -= i;
     }
     this.mDragView.setOriginRect(this.originRect);
-    this.mVideoLayout = ((RelativeLayout)findViewById(2131374342));
+    this.mVideoLayout = ((RelativeLayout)findViewById(2131442504));
     this.mVideoLayout.setOnClickListener(this);
     localObject = new RelativeLayout.LayoutParams(-1, -1);
     this.mVideoController.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.mVideoLayout.addView(this.mVideoController);
-    this.mTitleBar = ((RelativeLayout)this.mVideoLayout.findViewById(2131369874));
+    this.mTitleBar = ((RelativeLayout)this.mVideoLayout.findViewById(2131437011));
     this.mTitleBar.setVisibility(0);
     this.mTitleBar.bringToFront();
-    localObject = (RelativeLayout)this.mVideoLayout.findViewById(2131369873);
+    localObject = (RelativeLayout)this.mVideoLayout.findViewById(2131437010);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams();
     localLayoutParams.topMargin = ImmersiveUtils.getStatusBarHeight(getApplicationContext());
     ((RelativeLayout)localObject).setLayoutParams(localLayoutParams);
-    this.mReturnBtn = ((TextView)this.mVideoLayout.findViewById(2131363340));
+    this.mReturnBtn = ((TextView)this.mVideoLayout.findViewById(2131429218));
     this.mReturnBtn.setOnClickListener(this);
     setProgressTime(0L);
     this.mTotalTime.setText(ShortVideoUtils.stringForTime(0L));
@@ -2914,7 +2914,7 @@ public class ShortVideoPlayActivity
     finish();
     try
     {
-      overridePendingTransition(2130772065, 2130772067);
+      overridePendingTransition(2130772090, 2130772092);
       return;
     }
     catch (Exception localException)
@@ -3564,11 +3564,11 @@ public class ShortVideoPlayActivity
   
   protected void showActionSheet()
   {
-    String str2 = getResources().getString(2131719114);
-    String str3 = getResources().getString(2131719115);
-    String str4 = getResources().getString(2131719074);
-    String str5 = getResources().getString(2131719093);
-    String str6 = getResources().getString(2131690728);
+    String str2 = getResources().getString(2131916650);
+    String str3 = getResources().getString(2131916651);
+    String str4 = getResources().getString(2131916610);
+    String str5 = getResources().getString(2131916629);
+    String str6 = getResources().getString(2131887648);
     String str1;
     if (this.mPlayCallerType == 0) {
       str1 = SVUtils.a(this.mMsg, "mp4");
@@ -3673,7 +3673,7 @@ public class ShortVideoPlayActivity
   
   void showNetAlertDlg()
   {
-    showDialogSafe(DialogUtil.a(this, 232, null, getString(2131719096), new ShortVideoPlayActivity.23(this), new ShortVideoPlayActivity.24(this)));
+    showDialogSafe(DialogUtil.a(this, 232, null, getString(2131916632), new ShortVideoPlayActivity.23(this), new ShortVideoPlayActivity.24(this)));
   }
   
   void startHiding()
@@ -3737,7 +3737,7 @@ public class ShortVideoPlayActivity
     finish();
     try
     {
-      overridePendingTransition(2130772065, 2130772067);
+      overridePendingTransition(2130772090, 2130772092);
       return;
     }
     catch (Exception localException)
@@ -3754,7 +3754,7 @@ public class ShortVideoPlayActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity
  * JD-Core Version:    0.7.0.1
  */

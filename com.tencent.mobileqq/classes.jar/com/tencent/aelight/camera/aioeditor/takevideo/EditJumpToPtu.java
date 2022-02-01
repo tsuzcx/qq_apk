@@ -37,37 +37,146 @@ public class EditJumpToPtu
   extends EditVideoPart
 {
   public EditJumpToPtu.UIHandler a;
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
+  QQProgressDialog b;
+  public boolean c = false;
+  private String d;
   
   public EditJumpToPtu(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
     super(paramEditVideoPartManager);
-    this.jdField_a_of_type_Boolean = false;
   }
   
-  public int a()
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.d())
-    {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c()) {
-        return 3;
-      }
-      return 4;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c()) {
-      return 1;
-    }
-    return 2;
+    super.a();
+    this.a = new EditJumpToPtu.UIHandler(this);
   }
   
-  public Bitmap a(String paramString)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    Object localObject = this.t;
+    if (!EditVideoPartManager.a(this.t.I.c, 65536)) {
+      this.t.d(0);
+    }
+    if (paramInt1 == 100)
+    {
+      if (paramInt2 == -1)
+      {
+        localObject = this.t.M().getActivity();
+        if (localObject == null) {
+          return;
+        }
+        ((com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboManager)com.tencent.aelight.camera.aioeditor.capture.QIMManager.a(5)).o[c()].c((Activity)localObject);
+        if (this.t.ad != null) {
+          this.t.ad.clear();
+        }
+        try
+        {
+          paramIntent = ((Uri)paramIntent.getParcelableExtra("android.intent.extra.STREAM")).toString();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onActivityResult PI_TU, new path ");
+          ((StringBuilder)localObject).append(paramIntent);
+          SLog.b("EditJumpToPtu", ((StringBuilder)localObject).toString());
+          if (TextUtils.isEmpty(paramIntent)) {
+            break label198;
+          }
+          ThreadManager.excute(new EditJumpToPtu.2(this, paramIntent), 64, null, true);
+        }
+        catch (Exception paramIntent)
+        {
+          paramIntent.printStackTrace();
+        }
+      }
+      else
+      {
+        SLog.b("EditJumpToPtu", "onActivityResult cancel ");
+      }
+      label198:
+      paramIntent = this.d;
+      if (paramIntent != null)
+      {
+        FileUtil.a(new File(paramIntent));
+        this.d = null;
+      }
+    }
+  }
+  
+  public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
+  {
+    if (this.c)
+    {
+      paramGenerateContext = paramGenerateContext.l;
+      paramGenerateContext.f += 1;
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    if (paramInt != 10) {
+      return;
+    }
+    VideoEditReport.b("0X80080E2", VideoEditReport.c);
+    if (a(this.u.getContext()))
+    {
+      ThreadManager.post(new EditJumpToPtu.1(this), 5, null, true);
+      c(HardCodeUtil.a(2131901745));
+      return;
+    }
+    VideoEditReport.b("0X80080E4", VideoEditReport.c);
+    paramObject = new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserActivity");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", "https://tu.qq.com/websites/guide/sticker.html");
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_editor");
+    localIntent.setComponent(paramObject);
+    this.u.getActivity().startActivityForResult(localIntent, 101);
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    if (PackageUtil.d(paramContext, "com.tencent.ttpic")) {
+      try
+      {
+        int i = PackageUtil.a(paramContext, "com.tencent.ttpic");
+        if (i >= 490) {
+          return true;
+        }
+      }
+      catch (PackageManager.NameNotFoundException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    DoodleLayout localDoodleLayout = this.t.O.b();
+    if (localDoodleLayout != null)
+    {
+      Bitmap localBitmap3 = localDoodleLayout.a(0, false);
+      Bitmap localBitmap2 = this.t.H();
+      if (localBitmap2 == null) {
+        return false;
+      }
+      Bitmap localBitmap1 = localBitmap2;
+      if (localBitmap3 != null)
+      {
+        localBitmap1 = BitmapUtils.c(localBitmap2, localBitmap3);
+        localDoodleLayout.a(localBitmap3);
+      }
+      return BitmapUtils.a(localBitmap1, paramString);
+    }
+    return false;
+  }
+  
+  public Bitmap b(String paramString)
   {
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
-    Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().getResources().getDisplayMetrics();
+    Object localObject2 = this.u.getActivity().getResources().getDisplayMetrics();
     int i = EditPicRawImage.a((BitmapFactory.Options)localObject1, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
     ((BitmapFactory.Options)localObject1).inSampleSize = i;
@@ -90,7 +199,7 @@ public class EditJumpToPtu
       paramString.append("decode");
       paramString.append(null);
       QLog.e("EditJumpToPtu", 1, paramString.toString());
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.finish(0, null, 2130772056, 0);
+      this.u.finish(0, null, 2130772081, 0);
       return null;
     }
     localObject2 = new StringBuilder();
@@ -101,7 +210,7 @@ public class EditJumpToPtu
     ((StringBuilder)localObject2).append(" h ");
     ((StringBuilder)localObject2).append(((Bitmap)localObject1).getHeight());
     SLog.b("EditJumpToPtu", ((StringBuilder)localObject2).toString());
-    i = ImageUtil.c(paramString);
+    i = ImageUtil.h(paramString);
     paramString = (String)localObject1;
     if (i != 0)
     {
@@ -119,156 +228,46 @@ public class EditJumpToPtu
         paramString = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, j, k, paramString, true);
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditJumpToPtu$UIHandler.obtainMessage(2, paramString).sendToTarget();
+    this.a.obtainMessage(2, paramString).sendToTarget();
     return paramString;
   }
   
-  public void a()
+  public int c()
   {
-    super.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditJumpToPtu$UIHandler = new EditJumpToPtu.UIHandler(this);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager;
-    if (!EditVideoPartManager.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.c, 65536)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b(0);
-    }
-    if (paramInt1 == 100)
+    if (this.t.k())
     {
-      if (paramInt2 == -1)
-      {
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a().getActivity();
-        if (localObject == null) {
-          return;
-        }
-        ((com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboManager)com.tencent.aelight.camera.aioeditor.capture.QIMManager.a(5)).a[a()].c((Activity)localObject);
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidOsBundle != null) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidOsBundle.clear();
-        }
-        try
-        {
-          paramIntent = ((Uri)paramIntent.getParcelableExtra("android.intent.extra.STREAM")).toString();
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("onActivityResult PI_TU, new path ");
-          ((StringBuilder)localObject).append(paramIntent);
-          SLog.b("EditJumpToPtu", ((StringBuilder)localObject).toString());
-          if (TextUtils.isEmpty(paramIntent)) {
-            break label199;
-          }
-          ThreadManager.excute(new EditJumpToPtu.2(this, paramIntent), 64, null, true);
-        }
-        catch (Exception paramIntent)
-        {
-          paramIntent.printStackTrace();
-        }
+      if (this.t.j()) {
+        return 3;
       }
-      else
-      {
-        SLog.b("EditJumpToPtu", "onActivityResult cancel ");
-      }
-      label199:
-      paramIntent = this.jdField_a_of_type_JavaLangString;
-      if (paramIntent != null)
-      {
-        FileUtil.a(new File(paramIntent));
-        this.jdField_a_of_type_JavaLangString = null;
-      }
+      return 4;
     }
+    if (this.t.j()) {
+      return 1;
+    }
+    return 2;
   }
   
-  public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
+  void c(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramGenerateContext = paramGenerateContext.a;
-      paramGenerateContext.a += 1;
+    if (this.b == null) {
+      this.b = new QQProgressDialog(u(), s().getDimensionPixelSize(2131299920));
     }
+    this.b.a(paramString);
+    this.b.setCancelable(false);
+    this.b.show();
   }
   
-  public void a(int paramInt, Object paramObject)
+  void d()
   {
-    if (paramInt != 10) {
-      return;
-    }
-    VideoEditReport.b("0X80080E2", VideoEditReport.a);
-    if (a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext()))
-    {
-      ThreadManager.post(new EditJumpToPtu.1(this), 5, null, true);
-      a(HardCodeUtil.a(2131703798));
-      return;
-    }
-    VideoEditReport.b("0X80080E4", VideoEditReport.a);
-    paramObject = new ComponentName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserActivity");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("url", "https://tu.qq.com/websites/guide/sticker.html");
-    localIntent.putExtra("big_brother_source_key", "biz_src_jc_editor");
-    localIntent.setComponent(paramObject);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().startActivityForResult(localIntent, 101);
-  }
-  
-  void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(a(), a().getDimensionPixelSize(2131299168));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    if (PackageUtil.a(paramContext, "com.tencent.ttpic")) {
-      try
-      {
-        int i = PackageUtil.a(paramContext, "com.tencent.ttpic");
-        if (i >= 490) {
-          return true;
-        }
-      }
-      catch (PackageManager.NameNotFoundException paramContext)
-      {
-        paramContext.printStackTrace();
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    DoodleLayout localDoodleLayout = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoDoodle.a();
-    if (localDoodleLayout != null)
-    {
-      Bitmap localBitmap3 = localDoodleLayout.a(0, false);
-      Bitmap localBitmap2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a();
-      if (localBitmap2 == null) {
-        return false;
-      }
-      Bitmap localBitmap1 = localBitmap2;
-      if (localBitmap3 != null)
-      {
-        localBitmap1 = BitmapUtils.c(localBitmap2, localBitmap3);
-        localDoodleLayout.a(localBitmap3);
-      }
-      return BitmapUtils.a(localBitmap1, paramString);
-    }
-    return false;
-  }
-  
-  void b()
-  {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.b;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.b.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditJumpToPtu
  * JD-Core Version:    0.7.0.1
  */

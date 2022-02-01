@@ -838,7 +838,7 @@ public abstract class OidbWrapper
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.uint32_result.set(0);
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     paramString = createToServiceMsg(paramString);
     paramString.putWupBuffer(localOIDBSSOPkg.toByteArray());
@@ -849,7 +849,7 @@ public abstract class OidbWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.OidbWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.turingfd.sdk.xq;
 
 public abstract interface IteApkInfoResp
-  extends protected
+  extends Bootes
 {
   public static final int SL_HIGH = 1;
   public static final int SL_LOW = 3;
@@ -31,7 +31,7 @@ public abstract interface IteApkInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.IteApkInfoResp
  * JD-Core Version:    0.7.0.1
  */

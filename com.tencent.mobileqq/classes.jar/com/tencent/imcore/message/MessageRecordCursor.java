@@ -16,22 +16,18 @@ import java.util.List;
 public class MessageRecordCursor
   implements Cursor
 {
-  public static MessageRecordCursor.Callback a;
-  private int jdField_a_of_type_Int = -1;
-  private MsgProxy jdField_a_of_type_ComTencentImcoreMessageMsgProxy;
-  private List<MessageRecord> jdField_a_of_type_JavaUtilList;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "_id", "selfuin", "frienduin", "senderuin", "time", "msg", "msgtype", "isread", "issend", "msgseq", "shmsgseq", "istroop", "extraflag", "troopnick", "friendnick", "versionCode", "msgData", "vipBubbleID", "msgUid", "uniseq", "sendFailCode", "versionCode" };
+  public static MessageRecordCursor.Callback a = new MessageRecordCursor.1();
+  private MsgProxy b;
+  private List<MessageRecord> c;
+  private int d = -1;
+  private String[] e = { "_id", "selfuin", "frienduin", "senderuin", "time", "msg", "msgtype", "isread", "issend", "msgseq", "shmsgseq", "istroop", "extraflag", "troopnick", "friendnick", "versionCode", "msgData", "vipBubbleID", "msgUid", "uniseq", "sendFailCode", "versionCode" };
   
-  static
-  {
-    InitMsgModule.a();
-    jdField_a_of_type_ComTencentImcoreMessageMessageRecordCursor$Callback = new MessageRecordCursor.1();
-  }
+  static {}
   
   protected MessageRecordCursor(MsgProxy paramMsgProxy, List<MessageRecord> paramList)
   {
-    this.jdField_a_of_type_ComTencentImcoreMessageMsgProxy = paramMsgProxy;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramMsgProxy;
+    this.c = paramList;
   }
   
   private Object a(int paramInt)
@@ -41,7 +37,7 @@ public class MessageRecordCursor
   
   public static void a(MessageRecordCursor.Callback paramCallback)
   {
-    jdField_a_of_type_ComTencentImcoreMessageMessageRecordCursor$Callback = paramCallback;
+    a = paramCallback;
   }
   
   public void close() {}
@@ -86,7 +82,7 @@ public class MessageRecordCursor
   
   public int getColumnCount()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    return this.e.length;
   }
   
   public int getColumnIndex(String paramString)
@@ -175,7 +171,7 @@ public class MessageRecordCursor
   {
     if (paramInt > 0)
     {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      String[] arrayOfString = this.e;
       if (paramInt < arrayOfString.length) {
         return arrayOfString[paramInt];
       }
@@ -185,12 +181,12 @@ public class MessageRecordCursor
   
   public String[] getColumnNames()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    return this.e;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.c.size();
   }
   
   public double getDouble(int paramInt)
@@ -233,7 +229,7 @@ public class MessageRecordCursor
   
   public int getPosition()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
   }
   
   public short getShort(int paramInt)
@@ -265,12 +261,12 @@ public class MessageRecordCursor
     if (getCount() == 0) {
       return true;
     }
-    return this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size();
+    return this.d == this.c.size();
   }
   
   public boolean isBeforeFirst()
   {
-    return this.jdField_a_of_type_Int < 0;
+    return this.d < 0;
   }
   
   public boolean isClosed()
@@ -280,12 +276,12 @@ public class MessageRecordCursor
   
   public boolean isFirst()
   {
-    return this.jdField_a_of_type_Int == 0;
+    return this.d == 0;
   }
   
   public boolean isLast()
   {
-    return this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size() - 1;
+    return this.d == this.c.size() - 1;
   }
   
   public boolean isNull(int paramInt)
@@ -295,12 +291,12 @@ public class MessageRecordCursor
   
   public boolean move(int paramInt)
   {
-    if (this.jdField_a_of_type_Int + paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    if (this.d + paramInt < this.c.size())
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.d;
       if (i + paramInt >= 0)
       {
-        this.jdField_a_of_type_Int = (i + paramInt);
+        this.d = (i + paramInt);
         return true;
       }
     }
@@ -310,8 +306,8 @@ public class MessageRecordCursor
   public boolean moveToFirst()
   {
     boolean bool = false;
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+    this.d = 0;
+    if (this.c.size() > 0) {
       bool = true;
     }
     return bool;
@@ -319,15 +315,15 @@ public class MessageRecordCursor
   
   public boolean moveToLast()
   {
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
+    this.d = (this.c.size() - 1);
     return true;
   }
   
   public boolean moveToNext()
   {
-    if (this.jdField_a_of_type_Int <= this.jdField_a_of_type_JavaUtilList.size() - 1)
+    if (this.d <= this.c.size() - 1)
     {
-      this.jdField_a_of_type_Int += 1;
+      this.d += 1;
       return true;
     }
     return false;
@@ -335,9 +331,9 @@ public class MessageRecordCursor
   
   public boolean moveToPosition(int paramInt)
   {
-    if ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0))
+    if ((paramInt < this.c.size()) && (paramInt >= 0))
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.d = paramInt;
       return true;
     }
     return false;
@@ -345,10 +341,10 @@ public class MessageRecordCursor
   
   public boolean moveToPrevious()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (i > 0)
     {
-      this.jdField_a_of_type_Int = (i - 1);
+      this.d = (i - 1);
       return true;
     }
     return false;
@@ -381,7 +377,7 @@ public class MessageRecordCursor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MessageRecordCursor
  * JD-Core Version:    0.7.0.1
  */

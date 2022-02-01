@@ -21,64 +21,64 @@ public class GetShareGroupInfoHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<GetShareGroupInfoRequest, GetShareGroupInfoResponse>
 {
-  private GetShareGroupInfoHandler.OnGetShareGroupInfoCallback jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetShareGroupInfoHandler$OnGetShareGroupInfoCallback;
-  protected String a;
-  private final List<String> jdField_a_of_type_JavaUtilList;
+  protected String c;
+  private final List<String> d;
+  private GetShareGroupInfoHandler.OnGetShareGroupInfoCallback e;
   
   public GetShareGroupInfoHandler(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.d = new ArrayList();
+    this.d.add(paramString1);
+    this.c = paramString2;
   }
   
   public GetShareGroupInfoHandler(List<String> paramList, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramList;
+    this.c = paramString;
   }
   
   public GetShareGroupInfoHandler a(GetShareGroupInfoHandler.OnGetShareGroupInfoCallback paramOnGetShareGroupInfoCallback)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetShareGroupInfoHandler$OnGetShareGroupInfoCallback = paramOnGetShareGroupInfoCallback;
+    this.e = paramOnGetShareGroupInfoCallback;
     return this;
   }
   
   public void a()
   {
     GetShareGroupInfoRequest localGetShareGroupInfoRequest = new GetShareGroupInfoRequest();
-    localGetShareGroupInfoRequest.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    localGetShareGroupInfoRequest.e = this.d;
     CmdTaskManger.a().a(localGetShareGroupInfoRequest, this);
   }
   
   public void a(@NonNull GetShareGroupInfoRequest paramGetShareGroupInfoRequest, @Nullable GetShareGroupInfoResponse paramGetShareGroupInfoResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     paramGetShareGroupInfoRequest = new GetShareGroupInfoHandler.GetShareGroupInfoEvent();
-    paramGetShareGroupInfoRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    paramGetShareGroupInfoRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramGetShareGroupInfoRequest.g = paramErrorMessage;
+    paramGetShareGroupInfoRequest.a = this.c;
     if ((paramErrorMessage.isSuccess()) && (paramGetShareGroupInfoResponse != null))
     {
       paramErrorMessage = new ArrayList();
       ShareGroupManager localShareGroupManager = (ShareGroupManager)SuperManager.a(7);
-      if ((paramGetShareGroupInfoResponse.jdField_a_of_type_JavaUtilList != null) && (!paramGetShareGroupInfoResponse.jdField_a_of_type_JavaUtilList.isEmpty()))
+      if ((paramGetShareGroupInfoResponse.a != null) && (!paramGetShareGroupInfoResponse.a.isEmpty()))
       {
-        paramGetShareGroupInfoResponse = paramGetShareGroupInfoResponse.jdField_a_of_type_JavaUtilList.iterator();
+        paramGetShareGroupInfoResponse = paramGetShareGroupInfoResponse.a.iterator();
         while (paramGetShareGroupInfoResponse.hasNext()) {
           paramErrorMessage.add(localShareGroupManager.a((ShareGroupItem)paramGetShareGroupInfoResponse.next()));
         }
       }
       if (!paramErrorMessage.isEmpty()) {
-        paramGetShareGroupInfoRequest.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = ((ShareGroupItem)paramErrorMessage.get(0));
+        paramGetShareGroupInfoRequest.b = ((ShareGroupItem)paramErrorMessage.get(0));
       }
-      paramGetShareGroupInfoRequest.jdField_a_of_type_JavaUtilList = paramErrorMessage;
-      b();
+      paramGetShareGroupInfoRequest.c = paramErrorMessage;
+      c();
     }
     else
     {
-      c();
+      d();
     }
     StoryDispatcher.a().dispatch(paramGetShareGroupInfoRequest);
-    paramGetShareGroupInfoResponse = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetShareGroupInfoHandler$OnGetShareGroupInfoCallback;
+    paramGetShareGroupInfoResponse = this.e;
     if (paramGetShareGroupInfoResponse != null) {
       paramGetShareGroupInfoResponse.a(paramGetShareGroupInfoRequest);
     }
@@ -86,7 +86,7 @@ public class GetShareGroupInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetShareGroupInfoHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -29,24 +29,19 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/feeds/channelbanner/RIJChannelBannerController;", "", "channelId", "", "context", "Landroid/content/Context;", "channelBannerView", "Lcom/tencent/mobileqq/kandian/biz/feeds/channelbanner/RIJChannelBannerView;", "(ILandroid/content/Context;Lcom/tencent/mobileqq/kandian/biz/feeds/channelbanner/RIJChannelBannerView;)V", "channelBannerInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/ChannelBannerInfo;", "getChannelBannerView", "()Lcom/tencent/mobileqq/kandian/biz/feeds/channelbanner/RIJChannelBannerView;", "setChannelBannerView", "(Lcom/tencent/mobileqq/kandian/biz/feeds/channelbanner/RIJChannelBannerView;)V", "ptsComposer", "Lcom/tencent/pts/core/PTSComposer;", "ptsUpdateDataListener", "Lcom/tencent/pts/core/PTSComposer$IPTSUpdateDataListener;", "ptsliteEventListener", "Lcom/tencent/pts/core/lite/IPTSLiteEventListener;", "rijChannelBannerReport", "Lcom/tencent/mobileqq/kandian/biz/feeds/channelbanner/RIJChannelBannerReport;", "clickBannerCard", "", "clickBannerItem", "uin", "", "avatarStatus", "destroy", "exposeBannerCard", "exposeBannerItem", "exposeChannelBanner", "init", "rijChannelBannerView", "loadChannelBannerView", "refreshChannelBannerView", "reportData", "requestChannelBannerData", "setChannelBannerVisible", "visible", "", "updateAvatarStatus", "identifier", "newAvatarStatus", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJChannelBannerController
 {
-  public static final RIJChannelBannerController.Companion a;
-  private final int jdField_a_of_type_Int;
-  private final RIJChannelBannerReport jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport = new RIJChannelBannerReport();
+  public static final RIJChannelBannerController.Companion a = new RIJChannelBannerController.Companion(null);
   @Nullable
-  private RIJChannelBannerView jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView;
-  private ChannelBannerInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelBannerInfo;
-  private final PTSComposer.IPTSUpdateDataListener jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener = (PTSComposer.IPTSUpdateDataListener)new RIJChannelBannerController.ptsUpdateDataListener.1(this);
-  private PTSComposer jdField_a_of_type_ComTencentPtsCorePTSComposer;
-  private IPTSLiteEventListener jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerController$Companion = new RIJChannelBannerController.Companion(null);
-  }
+  private RIJChannelBannerView b;
+  private final int c;
+  private IPTSLiteEventListener d;
+  private PTSComposer e;
+  private final RIJChannelBannerReport f = new RIJChannelBannerReport();
+  private ChannelBannerInfo g;
+  private final PTSComposer.IPTSUpdateDataListener h = (PTSComposer.IPTSUpdateDataListener)new RIJChannelBannerController.ptsUpdateDataListener.1(this);
   
   public RIJChannelBannerController(int paramInt, @NotNull Context paramContext, @Nullable RIJChannelBannerView paramRIJChannelBannerView)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     a(paramInt, paramContext, paramRIJChannelBannerView);
   }
   
@@ -55,9 +50,9 @@ public final class RIJChannelBannerController
     if (!RIJChannelBannerUtil.a.a(paramInt)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView = paramRIJChannelBannerView;
-    this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener = ((IPTSLiteEventListener)new RIJChannelBannerController.init.1(this, paramContext));
-    paramContext = ReadInJoyUtils.a();
+    this.b = paramRIJChannelBannerView;
+    this.d = ((IPTSLiteEventListener)new RIJChannelBannerController.init.1(this, paramContext));
+    paramContext = ReadInJoyUtils.b();
     if (paramContext != null)
     {
       paramContext = (ReadInJoyLogicManager)((QQAppInterface)paramContext).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -66,7 +61,7 @@ public final class RIJChannelBannerController
         paramContext = paramContext.getReadInJoyLogicEngine();
         if (paramContext != null)
         {
-          paramContext = paramContext.a();
+          paramContext = paramContext.p();
           if (paramContext != null)
           {
             paramContext = paramContext.a(paramInt);
@@ -77,7 +72,7 @@ public final class RIJChannelBannerController
       paramContext = null;
       label87:
       if ((paramContext != null) && ((((Collection)paramContext).isEmpty() ^ true))) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelBannerInfo = ((ChannelBannerInfo)paramContext.get(0));
+        this.g = ((ChannelBannerInfo)paramContext.get(0));
       }
       return;
     }
@@ -91,7 +86,7 @@ public final class RIJChannelBannerController
       QLog.i("RIJChannelBannerController", 1, "[updateAvatarStatus] identifier is empty.");
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentPtsCorePTSComposer;
+    Object localObject = this.e;
     if (localObject != null) {
       localObject = ((PTSComposer)localObject).getJsonData();
     } else {
@@ -126,7 +121,7 @@ public final class RIJChannelBannerController
           ((StringBuilder)localObject).append(paramString);
           QLog.i("RIJChannelBannerController", 1, ((StringBuilder)localObject).toString());
         }
-        paramString = this.jdField_a_of_type_ComTencentPtsCorePTSComposer;
+        paramString = this.e;
         if (paramString != null)
         {
           paramString.setData(localJSONObject1.toString());
@@ -154,7 +149,7 @@ public final class RIJChannelBannerController
   
   private final void a(String paramString1, String paramString2, ChannelBannerInfo paramChannelBannerInfo)
   {
-    RIJChannelBannerReport.R5Builder localR5Builder = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.a(paramChannelBannerInfo);
+    RIJChannelBannerReport.R5Builder localR5Builder = this.f.a(paramChannelBannerInfo);
     localR5Builder.a("puin", paramString1);
     paramChannelBannerInfo = (CharSequence)String.valueOf(1);
     CharSequence localCharSequence = (CharSequence)paramString2;
@@ -172,7 +167,7 @@ public final class RIJChannelBannerController
       paramString2 = "0";
     }
     localR5Builder.a("is_update", paramString2);
-    ((Map)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.c()).put(paramString1, localR5Builder);
+    ((Map)this.f.c()).put(paramString1, localR5Builder);
   }
   
   private final void b(ChannelBannerInfo paramChannelBannerInfo)
@@ -181,8 +176,8 @@ public final class RIJChannelBannerController
     localStringBuilder.append("[exposeBannerCard] channelBannerInfo = ");
     localStringBuilder.append(paramChannelBannerInfo);
     QLog.i("RIJChannelBannerController", 1, localStringBuilder.toString());
-    if (!TextUtils.isEmpty((CharSequence)paramChannelBannerInfo.a())) {
-      ((Map)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.a()).put(paramChannelBannerInfo.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.a(paramChannelBannerInfo));
+    if (!TextUtils.isEmpty((CharSequence)paramChannelBannerInfo.b())) {
+      ((Map)this.f.a()).put(paramChannelBannerInfo.b(), this.f.a(paramChannelBannerInfo));
     }
   }
   
@@ -194,7 +189,7 @@ public final class RIJChannelBannerController
     ((StringBuilder)localObject).append(", avatarStatus = ");
     ((StringBuilder)localObject).append(paramString2);
     QLog.i("RIJChannelBannerController", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.a(paramChannelBannerInfo);
+    localObject = this.f.a(paramChannelBannerInfo);
     ((RIJChannelBannerReport.R5Builder)localObject).a("puin", paramString1);
     paramChannelBannerInfo = (CharSequence)String.valueOf(1);
     CharSequence localCharSequence = (CharSequence)paramString2;
@@ -212,7 +207,7 @@ public final class RIJChannelBannerController
       paramString2 = "0";
     }
     ((RIJChannelBannerReport.R5Builder)localObject).a("is_update", paramString2);
-    ((Map)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.d()).put(paramString1, localObject);
+    ((Map)this.f.d()).put(paramString1, localObject);
   }
   
   private final void c(ChannelBannerInfo paramChannelBannerInfo)
@@ -221,33 +216,24 @@ public final class RIJChannelBannerController
     localStringBuilder.append("[clickBannerCard] channelBannerInfo = ");
     localStringBuilder.append(paramChannelBannerInfo);
     QLog.i("RIJChannelBannerController", 1, localStringBuilder.toString());
-    if (!TextUtils.isEmpty((CharSequence)paramChannelBannerInfo.a())) {
-      ((Map)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.b()).put(paramChannelBannerInfo.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.a(paramChannelBannerInfo));
+    if (!TextUtils.isEmpty((CharSequence)paramChannelBannerInfo.b())) {
+      ((Map)this.f.b()).put(paramChannelBannerInfo.b(), this.f.a(paramChannelBannerInfo));
     }
   }
   
   @Nullable
   public final RIJChannelBannerView a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView;
-  }
-  
-  public final void a()
-  {
-    QLog.i("RIJChannelBannerController", 1, "[RIJChannelBannerController] destroy.");
-    PTSComposer localPTSComposer = this.jdField_a_of_type_ComTencentPtsCorePTSComposer;
-    if (localPTSComposer != null) {
-      localPTSComposer.destroy();
-    }
+    return this.b;
   }
   
   public final void a(@NotNull ChannelBannerInfo paramChannelBannerInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramChannelBannerInfo, "channelBannerInfo");
-    if (!RIJChannelBannerUtil.a.a(this.jdField_a_of_type_Int)) {
+    if (!RIJChannelBannerUtil.a.a(this.c)) {
       return;
     }
-    Object localObject1 = paramChannelBannerInfo.b();
+    Object localObject1 = paramChannelBannerInfo.c();
     String str = PTSStyleManager.a().a("default_feeds", (String)localObject1);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("[refreshChannelBannerView] pageName = ");
@@ -255,14 +241,14 @@ public final class RIJChannelBannerController
     QLog.i("RIJChannelBannerController", 1, ((StringBuilder)localObject2).toString());
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)str)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelBannerInfo = paramChannelBannerInfo;
+      this.g = paramChannelBannerInfo;
       b(paramChannelBannerInfo);
-      localObject2 = this.jdField_a_of_type_ComTencentPtsCorePTSComposer;
+      localObject2 = this.e;
       if (localObject2 != null) {
         ((PTSComposer)localObject2).destroy();
       }
-      paramChannelBannerInfo = PTSComposer.buildComposer((String)localObject1, str, paramChannelBannerInfo.c(), this.jdField_a_of_type_ComTencentPtsCoreLiteIPTSLiteEventListener, this.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView;
+      paramChannelBannerInfo = PTSComposer.buildComposer((String)localObject1, str, paramChannelBannerInfo.d(), this.d, this.h);
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((RIJChannelBannerView)localObject1).post((Runnable)new RIJChannelBannerController.refreshChannelBannerView.1(this, paramChannelBannerInfo));
       }
@@ -277,10 +263,10 @@ public final class RIJChannelBannerController
     ((StringBuilder)localObject).append("[setChannelBannerViewVisibility], visible = ");
     ((StringBuilder)localObject).append(paramBoolean);
     QLog.i("RIJChannelBannerController", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView;
+    localObject = this.b;
     if (localObject != null)
     {
-      localObject = ((RIJChannelBannerView)localObject).a();
+      localObject = ((RIJChannelBannerView)localObject).getPtsItemView();
       if (localObject != null)
       {
         int i;
@@ -293,13 +279,22 @@ public final class RIJChannelBannerController
       }
     }
     if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelBannerInfo = ((ChannelBannerInfo)null);
+      this.g = ((ChannelBannerInfo)null);
     }
   }
   
   public final void b()
   {
-    Object localObject = ReadInJoyUtils.a();
+    QLog.i("RIJChannelBannerController", 1, "[RIJChannelBannerController] destroy.");
+    PTSComposer localPTSComposer = this.e;
+    if (localPTSComposer != null) {
+      localPTSComposer.destroy();
+    }
+  }
+  
+  public final void c()
+  {
+    Object localObject = ReadInJoyUtils.b();
     if (localObject != null)
     {
       localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -308,9 +303,9 @@ public final class RIJChannelBannerController
         localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine();
         if (localObject != null)
         {
-          localObject = ((ReadInJoyLogicEngine)localObject).a();
+          localObject = ((ReadInJoyLogicEngine)localObject).p();
           if (localObject != null) {
-            ((RIJChannelBannerModule)localObject).a(this.jdField_a_of_type_Int, 1);
+            ((RIJChannelBannerModule)localObject).a(this.c, 1);
           }
         }
       }
@@ -319,22 +314,22 @@ public final class RIJChannelBannerController
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
   
-  public final void c()
+  public final void d()
   {
-    ChannelBannerInfo localChannelBannerInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelBannerInfo;
+    ChannelBannerInfo localChannelBannerInfo = this.g;
     if (localChannelBannerInfo != null) {
       a(localChannelBannerInfo);
     }
   }
   
-  public final void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerReport.a();
-  }
-  
   public final void e()
   {
-    ChannelBannerInfo localChannelBannerInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelBannerInfo;
+    this.f.e();
+  }
+  
+  public final void f()
+  {
+    ChannelBannerInfo localChannelBannerInfo = this.g;
     if (localChannelBannerInfo != null) {
       b(localChannelBannerInfo);
     }
@@ -342,7 +337,7 @@ public final class RIJChannelBannerController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelBannerController
  * JD-Core Version:    0.7.0.1
  */

@@ -28,26 +28,25 @@ import org.json.JSONArray;
 public class ShareGroupIconManager
   implements IManager, ITrimmable
 {
-  private int jdField_a_of_type_Int = Math.min(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 50.0F), 200);
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private final LruCache<String, ShareGroupDrawableState> jdField_a_of_type_AndroidUtilLruCache = new ShareGroupIconManager.1(this, 40);
-  private UrlBitmapDownloader jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = new ShareGroupIconManager.UrlBitmapDownloaderImp();
-  private AtomicReference<Drawable> jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference();
-  private AtomicReference<Bitmap> b = new AtomicReference();
+  private Context a = BaseApplicationImpl.getContext();
+  private AtomicReference<Drawable> b = new AtomicReference();
+  private AtomicReference<Bitmap> c = new AtomicReference();
+  private int d = Math.min(UIUtils.a(this.a, 50.0F), 200);
+  private UrlBitmapDownloader e = new ShareGroupIconManager.UrlBitmapDownloaderImp();
+  private final LruCache<String, ShareGroupDrawableState> f = new ShareGroupIconManager.1(this, 40);
   
-  private Bitmap a()
+  private Stream<Bitmap> b(List<String> paramList, String paramString)
   {
-    this.b.compareAndSet(null, Bitmap.createBitmap(ImageUtil.h()));
-    return (Bitmap)this.b.get();
+    return Stream.of(paramList).map(new ThreadOffFunction("story.icon.ShareGroupIconManager", 2)).map(new UidListToUrlListSegment(paramString)).map(new UrlListToBitmapListSegment(e(), paramString, this.d, this.e)).map(new BitmapListToIconSegment(this.a, paramString, this.d)).map(new UIThreadOffFunction(null));
   }
   
-  private Stream<Bitmap> a(List<String> paramList, String paramString)
+  private Stream<Bitmap> c(List<String> paramList, String paramString)
   {
-    return Stream.of(paramList).map(new ThreadOffFunction("story.icon.ShareGroupIconManager", 2)).map(new UidListToUrlListSegment(paramString)).map(new UrlListToBitmapListSegment(a(), paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader)).map(new BitmapListToIconSegment(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_Int)).map(new UIThreadOffFunction(null));
+    return Stream.of(paramList).map(new ThreadOffFunction("story.icon.ShareGroupIconManager", 2)).map(new UinListToUidListSegment(paramString)).map(new UidListToUrlListSegment(paramString)).map(new UrlListToBitmapListSegment(e(), paramString, this.d, this.e)).map(new BitmapListToIconSegment(this.a, paramString, this.d)).map(new UIThreadOffFunction(null));
   }
   
   @NonNull
-  public static String a(List<String> paramList)
+  public static String c(List<String> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
@@ -69,7 +68,7 @@ public class ShareGroupIconManager
     }
   }
   
-  private List<String> a(List<String> paramList)
+  private List<String> d(List<String> paramList)
   {
     if (paramList != null)
     {
@@ -81,47 +80,37 @@ public class ShareGroupIconManager
     throw new IllegalArgumentException("unionIdList should not be null");
   }
   
-  private Stream<Bitmap> b(List<String> paramList, String paramString)
+  private Bitmap e()
   {
-    return Stream.of(paramList).map(new ThreadOffFunction("story.icon.ShareGroupIconManager", 2)).map(new UinListToUidListSegment(paramString)).map(new UidListToUrlListSegment(paramString)).map(new UrlListToBitmapListSegment(a(), paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader)).map(new BitmapListToIconSegment(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_Int)).map(new UIThreadOffFunction(null));
-  }
-  
-  public Drawable a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.compareAndSet(null, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), a()));
-    return (Drawable)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
-  }
-  
-  public Drawable a(List<String> paramList)
-  {
-    return a(paramList, null);
+    this.c.compareAndSet(null, Bitmap.createBitmap(ImageUtil.n()));
+    return (Bitmap)this.c.get();
   }
   
   public Drawable a(List<String> paramList, String paramString)
   {
-    List localList = a(paramList);
+    List localList = d(paramList);
     if (localList.isEmpty())
     {
       IconLog.c("story.icon.ShareGroupIconManager", "getIconDrawable unionIdList is empty");
-      return a();
+      return d();
     }
-    String str = a(localList);
-    Object localObject = (ShareGroupDrawableState)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+    String str = c(localList);
+    Object localObject = (ShareGroupDrawableState)this.f.get(str);
     paramList = (List<String>)localObject;
     if (localObject == null) {
-      synchronized (this.jdField_a_of_type_AndroidUtilLruCache)
+      synchronized (this.f)
       {
-        localObject = (ShareGroupDrawableState)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+        localObject = (ShareGroupDrawableState)this.f.get(str);
         paramList = (List<String>)localObject;
         if (localObject == null)
         {
-          paramList = new ShareGroupDrawableState(str, this.jdField_a_of_type_AndroidContentContext, a());
+          paramList = new ShareGroupDrawableState(str, this.a, d());
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(String.valueOf(System.identityHashCode(paramList)));
           ((StringBuilder)localObject).append(".");
           ((StringBuilder)localObject).append(paramString);
           paramList.a(new ShareGroupIconManager.4(this, localList, ((StringBuilder)localObject).toString()));
-          this.jdField_a_of_type_AndroidUtilLruCache.put(str, paramList);
+          this.f.put(str, paramList);
           IconLog.c("story.icon.ShareGroupIconManager", "create share group state for uid list, state=%s, uid=%s", Integer.valueOf(System.identityHashCode(paramList)), new JSONArray(localList));
         }
       }
@@ -132,14 +121,14 @@ public class ShareGroupIconManager
   @Nullable
   public RestrictedBitmap a(List<String> paramList)
   {
-    paramList = a(paramList);
+    paramList = d(paramList);
     if (paramList.isEmpty())
     {
       IconLog.c("story.icon.ShareGroupIconManager", "getBitmap unionIdList is empty");
-      return new RestrictedBitmap(a());
+      return new RestrictedBitmap(e());
     }
-    paramList = a(paramList);
-    paramList = (ShareGroupDrawableState)this.jdField_a_of_type_AndroidUtilLruCache.get(paramList);
+    paramList = c(paramList);
+    paramList = (ShareGroupDrawableState)this.f.get(paramList);
     if (paramList != null)
     {
       paramList = paramList.a();
@@ -171,39 +160,44 @@ public class ShareGroupIconManager
       }
       SLog.d("story.icon.ShareGroupIconManager", "trimMemory to be 5");
       if (Build.VERSION.SDK_INT >= 17) {
-        this.jdField_a_of_type_AndroidUtilLruCache.trimToSize(5);
+        this.f.trimToSize(5);
       }
     }
   }
   
   public void a(List<String> paramList, @NonNull ShareGroupIconManager.LoadBitmapCallBack paramLoadBitmapCallBack)
   {
-    List localList = a(paramList);
+    List localList = d(paramList);
     if (localList.isEmpty())
     {
       IconLog.c("story.icon.ShareGroupIconManager", "addLoadBitmapCallBack unionIdList is empty");
-      paramLoadBitmapCallBack.a(new RestrictedBitmap(a()));
+      paramLoadBitmapCallBack.a(new RestrictedBitmap(e()));
       return;
     }
-    String str = a(a(paramList));
-    ShareGroupDrawableState localShareGroupDrawableState = (ShareGroupDrawableState)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+    String str = c(d(paramList));
+    ShareGroupDrawableState localShareGroupDrawableState = (ShareGroupDrawableState)this.f.get(str);
     paramList = localShareGroupDrawableState;
     if (localShareGroupDrawableState == null) {
-      synchronized (this.jdField_a_of_type_AndroidUtilLruCache)
+      synchronized (this.f)
       {
-        localShareGroupDrawableState = (ShareGroupDrawableState)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+        localShareGroupDrawableState = (ShareGroupDrawableState)this.f.get(str);
         paramList = localShareGroupDrawableState;
         if (localShareGroupDrawableState == null)
         {
-          paramList = new ShareGroupDrawableState(str, this.jdField_a_of_type_AndroidContentContext, a());
+          paramList = new ShareGroupDrawableState(str, this.a, d());
           paramList.a(new ShareGroupIconManager.2(this, localList, String.valueOf(System.identityHashCode(paramList))));
-          this.jdField_a_of_type_AndroidUtilLruCache.put(str, paramList);
+          this.f.put(str, paramList);
           IconLog.c("story.icon.ShareGroupIconManager", "create share group state for uin list for callback, state=%s, uin=%s", Integer.valueOf(System.identityHashCode(paramList)), new JSONArray(localList));
         }
       }
     }
     paramList.a(paramLoadBitmapCallBack);
-    paramList.b();
+    paramList.d();
+  }
+  
+  public Drawable b(List<String> paramList)
+  {
+    return a(paramList, null);
   }
   
   public void b()
@@ -215,9 +209,15 @@ public class ShareGroupIconManager
   
   public void c()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.set(null);
     this.b.set(null);
-    this.jdField_a_of_type_AndroidUtilLruCache.evictAll();
+    this.c.set(null);
+    this.f.evictAll();
+  }
+  
+  public Drawable d()
+  {
+    this.b.compareAndSet(null, new BitmapDrawable(this.a.getResources(), e()));
+    return (Drawable)this.b.get();
   }
 }
 

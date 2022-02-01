@@ -21,9 +21,9 @@ public class TroopTipsHelper
   extends TipsHelper
   implements IMsgTipsListener, OnActivityResultCallback
 {
-  GamePartyTipsBar jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar;
-  TroopAssistTipsBar jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar;
-  private final Observer jdField_a_of_type_JavaUtilObserver = new TroopTipsHelper.1(this);
+  TroopAssistTipsBar a;
+  GamePartyTipsBar b;
+  private final Observer h = new TroopTipsHelper.1(this);
   
   public TroopTipsHelper(AIOContext paramAIOContext)
   {
@@ -33,39 +33,39 @@ public class TroopTipsHelper
   protected void a()
   {
     super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(3))
+    if (this.c.z().a(3))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar = new TroopAssistTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar);
+      this.a = new TroopAssistTipsBar(this.d, this.f, this.e, this.g, this.c.G());
+      this.f.b(this.a);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(14))
+    if (this.c.z().a(14))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar = new GamePartyTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar);
+      this.b = new GamePartyTipsBar(this.d, this.f, this.e, this.g);
+      this.f.b(this.b);
     }
   }
   
   public void a(AIOContext paramAIOContext)
   {
-    if (a()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
+    if (c()) {
+      this.f.c();
     }
   }
   
   public void a(AIOContext paramAIOContext, Message paramMessage) {}
   
-  public boolean a()
-  {
-    TroopAssistTipsBar localTroopAssistTipsBar = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar;
-    return (localTroopAssistTipsBar != null) && (localTroopAssistTipsBar.a());
-  }
-  
   public void b()
   {
-    TroopAssistTipsBar localTroopAssistTipsBar = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar;
+    TroopAssistTipsBar localTroopAssistTipsBar = this.a;
     if (localTroopAssistTipsBar != null) {
-      localTroopAssistTipsBar.a();
+      localTroopAssistTipsBar.e();
     }
+  }
+  
+  public boolean c()
+  {
+    TroopAssistTipsBar localTroopAssistTipsBar = this.a;
+    return (localTroopAssistTipsBar != null) && (localTroopAssistTipsBar.d());
   }
   
   @NonNull
@@ -83,9 +83,9 @@ public class TroopTipsHelper
   {
     if (paramInt1 == 2000)
     {
-      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar;
-      if ((paramIntent != null) && (paramIntent.a()) && (TroopAssistantManager.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
+      paramIntent = this.a;
+      if ((paramIntent != null) && (paramIntent.d()) && (TroopAssistantManager.a().c(this.d, this.g.b))) {
+        this.f.c();
       }
     }
   }
@@ -98,15 +98,15 @@ public class TroopTipsHelper
       if (paramInt != 15) {
         return;
       }
-      ((GamePartyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+      ((GamePartyManager)this.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().deleteObserver(this.h);
       return;
     }
-    ((GamePartyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    ((GamePartyManager)this.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().addObserver(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopTipsHelper
  * JD-Core Version:    0.7.0.1
  */

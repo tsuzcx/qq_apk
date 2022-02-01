@@ -17,8 +17,8 @@ final class MiniProgramOpenSdkUtil$1
     {
       if (((this.val$context instanceof JumpActivity)) && (!((JumpActivity)this.val$context).isFinishing()))
       {
-        this.val$outInfo.progressDialog = new QQProgressDialog(this.val$context, 0, 2131558642, 17);
-        this.val$outInfo.progressDialog.a(this.val$context.getString(2131690163));
+        this.val$outInfo.progressDialog = new QQProgressDialog(this.val$context, 0, 2131624257, 17);
+        this.val$outInfo.progressDialog.a(this.val$context.getString(2131887062));
         this.val$outInfo.progressDialog.getWindow().setDimAmount(0.0F);
         this.val$outInfo.progressDialog.setCanceledOnTouchOutside(true);
         this.val$outInfo.progressDialog.show();
@@ -36,7 +36,7 @@ final class MiniProgramOpenSdkUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil.1
  * JD-Core Version:    0.7.0.1
  */

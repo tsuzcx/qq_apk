@@ -14,7 +14,7 @@ class SwiftBrowserMiscHandler$3
   public void run()
   {
     Object localObject1;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.a != null)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory());
@@ -25,14 +25,14 @@ class SwiftBrowserMiscHandler$3
       ((StringBuilder)localObject2).append(System.currentTimeMillis());
       ((StringBuilder)localObject2).append(".jpg");
       localObject2 = ((StringBuilder)localObject2).toString();
-      localObject1 = ScreenShotUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject1, (String)localObject2);
+      localObject1 = ScreenShotUtil.a(this.a, (File)localObject1, (String)localObject2);
       this.this$0.a = true;
     }
     else
     {
       localObject1 = "";
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserMiscHandler$ScreenShotCallback;
+    Object localObject2 = this.b;
     if (localObject2 != null) {
       ((SwiftBrowserMiscHandler.ScreenShotCallback)localObject2).a((String)localObject1);
     }
@@ -40,7 +40,7 @@ class SwiftBrowserMiscHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.3
  * JD-Core Version:    0.7.0.1
  */

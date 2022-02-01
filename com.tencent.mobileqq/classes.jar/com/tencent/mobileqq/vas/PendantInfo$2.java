@@ -15,32 +15,32 @@ class PendantInfo$2
     if (QLog.isColorLevel()) {
       QLog.d("PendantInfo", 2, "getDrawable, Runnable in");
     }
-    String str = AvatarPendantUtil.b(this.this$0.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-    if (2 == this.jdField_a_of_type_Int) {
-      str = AvatarPendantUtil.b(this.this$0.jdField_a_of_type_Long, 8);
+    String str = AvatarPendantUtil.b(this.this$0.p, this.a);
+    if (2 == this.a) {
+      str = AvatarPendantUtil.b(this.this$0.p, 8);
     }
     if (FileUtils.fileExists(str))
     {
-      if (2 == this.jdField_a_of_type_Int)
+      if (2 == this.a)
       {
-        this.this$0.a();
-        if (this.this$0.jdField_a_of_type_ArrayOfJavaLangString == null)
+        this.this$0.b();
+        if (this.this$0.u == null)
         {
-          this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+          this.this$0.a(this.a, this.b);
           return;
         }
-        PendantInfo.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+        PendantInfo.a(this.this$0, this.b, this.a);
         return;
       }
-      this.this$0.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, false, this.jdField_a_of_type_Long);
+      this.this$0.a(this.c, false, this.b);
       return;
     }
-    this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    this.this$0.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.PendantInfo.2
  * JD-Core Version:    0.7.0.1
  */

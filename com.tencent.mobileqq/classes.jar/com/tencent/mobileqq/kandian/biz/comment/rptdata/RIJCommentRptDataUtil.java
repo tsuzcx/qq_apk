@@ -16,11 +16,10 @@ import com.tencent.mobileqq.kandian.biz.comment.rptdata.at.RIJCommentAtSpan;
 import com.tencent.mobileqq.kandian.biz.comment.rptdata.at.RIJCommentAtUtil;
 import com.tencent.mobileqq.kandian.biz.comment.rptdata.topic.RIJCommentTopicUtil;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.ugc.Utils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Type;
@@ -102,7 +101,7 @@ public class RIJCommentRptDataUtil
         {
           BaseCommentData.CommentRptData localCommentRptData = (BaseCommentData.CommentRptData)paramCollection.next();
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("data_type", localCommentRptData.jdField_a_of_type_Int);
+          localJSONObject.put("data_type", localCommentRptData.a);
           a(localCommentRptData, localJSONObject);
           localJSONArray.put(localJSONObject);
         }
@@ -117,7 +116,7 @@ public class RIJCommentRptDataUtil
   
   private static void a(BaseCommentData.CommentRptData paramCommentRptData, JSONObject paramJSONObject)
   {
-    int i = paramCommentRptData.jdField_a_of_type_Int;
+    int i = paramCommentRptData.a;
     if (i != 0)
     {
       if (i != 1)
@@ -126,7 +125,7 @@ public class RIJCommentRptDataUtil
         {
           paramJSONObject = new StringBuilder();
           paramJSONObject.append("未处理的case: ");
-          paramJSONObject.append(paramCommentRptData.jdField_a_of_type_Int);
+          paramJSONObject.append(paramCommentRptData.a);
           ReadInJoyHelper.a("RIJCommentRptDataUtil", new IllegalArgumentException(paramJSONObject.toString()));
           return;
         }
@@ -171,10 +170,10 @@ public class RIJCommentRptDataUtil
         return;
       }
       SubCommentData.RepliedCommentData localRepliedCommentData = new SubCommentData.RepliedCommentData();
-      localRepliedCommentData.d = paramSubCommentData2.nickName;
-      localRepliedCommentData.jdField_a_of_type_JavaLangString = CommentProteusUtil.a(paramSubCommentData2);
-      localRepliedCommentData.c = paramSubCommentData2.homepage;
-      localRepliedCommentData.e = paramSubCommentData2.uin;
+      localRepliedCommentData.e = paramSubCommentData2.nickName;
+      localRepliedCommentData.a = CommentProteusUtil.a(paramSubCommentData2);
+      localRepliedCommentData.d = paramSubCommentData2.homepage;
+      localRepliedCommentData.f = paramSubCommentData2.uin;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramSubCommentData2.commentContent);
       if ((paramSubCommentData2.commentRptDataList != null) && (!paramSubCommentData2.commentRptDataList.isEmpty()))
@@ -183,8 +182,8 @@ public class RIJCommentRptDataUtil
         while (paramSubCommentData2.hasNext())
         {
           BaseCommentData.CommentRptData localCommentRptData = (BaseCommentData.CommentRptData)paramSubCommentData2.next();
-          if ((localCommentRptData != null) && (!TextUtils.isEmpty(localCommentRptData.jdField_a_of_type_JavaLangString))) {
-            localStringBuilder.append(localCommentRptData.jdField_a_of_type_JavaLangString);
+          if ((localCommentRptData != null) && (!TextUtils.isEmpty(localCommentRptData.b))) {
+            localStringBuilder.append(localCommentRptData.b);
           }
         }
       }
@@ -200,11 +199,11 @@ public class RIJCommentRptDataUtil
     if (paramSubCommentData == null) {
       return;
     }
-    if (!TextUtils.isEmpty(paramSubCommentData.d))
+    if (!TextUtils.isEmpty(paramSubCommentData.e))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append('@');
-      localStringBuilder.append(paramSubCommentData.d);
+      localStringBuilder.append(paramSubCommentData.e);
       localStringBuilder.append(':');
       a(localJSONArray, localStringBuilder.toString(), "#99262626");
     }
@@ -224,13 +223,13 @@ public class RIJCommentRptDataUtil
   
   public static void a(RIJCommentRptDataUtil.PTSCommentModel paramPTSCommentModel, BaseCommentData.CommentRptData paramCommentRptData, String paramString)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramPTSCommentModel.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    paramPTSCommentModel = new CommentReportR5Builder(localAbsBaseArticleInfo, paramPTSCommentModel.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData).a().c();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramPTSCommentModel.b;
+    paramPTSCommentModel = new CommentReportR5Builder(localAbsBaseArticleInfo, paramPTSCommentModel.a).a().e();
     try
     {
-      JSONObject localJSONObject = paramPTSCommentModel.a();
-      localJSONObject.put("subject_id", paramCommentRptData.d);
-      localJSONObject.put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+      JSONObject localJSONObject = paramPTSCommentModel.c();
+      localJSONObject.put("subject_id", paramCommentRptData.e);
+      localJSONObject.put("version", VideoReporter.a);
       localJSONObject.put("os", 1);
     }
     catch (JSONException paramCommentRptData)
@@ -241,8 +240,8 @@ public class RIJCommentRptDataUtil
     paramCommentRptData.append("reportClickRptData: actionCode=");
     paramCommentRptData.append(paramString);
     QLog.d("RIJCommentRptDataUtil", 1, paramCommentRptData.toString());
-    paramPTSCommentModel = paramPTSCommentModel.a();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, ReadInJoyCommentUtils.a(localAbsBaseArticleInfo), paramString, paramString, 0, 0, String.valueOf(localAbsBaseArticleInfo.mArticleID), String.valueOf(localAbsBaseArticleInfo.mAlgorithmID), localAbsBaseArticleInfo.innerUniqueID, paramPTSCommentModel, false);
+    paramPTSCommentModel = paramPTSCommentModel.b();
+    PublicAccountReportUtils.a(null, ReadInJoyCommentUtils.a(localAbsBaseArticleInfo), paramString, paramString, 0, 0, String.valueOf(localAbsBaseArticleInfo.mArticleID), String.valueOf(localAbsBaseArticleInfo.mAlgorithmID), localAbsBaseArticleInfo.innerUniqueID, paramPTSCommentModel, false);
   }
   
   private static void a(Iterable<BaseCommentData.CommentRptData> paramIterable)
@@ -251,7 +250,7 @@ public class RIJCommentRptDataUtil
     while (paramIterable.hasNext())
     {
       BaseCommentData.CommentRptData localCommentRptData = (BaseCommentData.CommentRptData)paramIterable.next();
-      localCommentRptData.jdField_a_of_type_JavaLangString = new String(Base64Util.encode(ReadInJoyCommentUtils.a(localCommentRptData.jdField_a_of_type_JavaLangString, false).getBytes(), 0));
+      localCommentRptData.b = new String(Base64Util.encode(ReadInJoyCommentUtils.a(localCommentRptData.b, false).getBytes(), 0));
     }
   }
   
@@ -263,10 +262,10 @@ public class RIJCommentRptDataUtil
   private static void a(Collection<BaseCommentData.CommentRptData> paramCollection, int paramInt, String paramString, IRIJCommentSpan paramIRIJCommentSpan)
   {
     BaseCommentData.CommentRptData localCommentRptData = new BaseCommentData.CommentRptData();
-    localCommentRptData.jdField_a_of_type_Int = paramInt;
-    localCommentRptData.jdField_a_of_type_JavaLangString = paramString;
+    localCommentRptData.a = paramInt;
+    localCommentRptData.b = paramString;
     if (paramInt == 1) {
-      localCommentRptData.b = ((RIJCommentAtSpan)paramIRIJCommentSpan).jdField_a_of_type_JavaLangString;
+      localCommentRptData.c = ((RIJCommentAtSpan)paramIRIJCommentSpan).a;
     }
     paramCollection.add(localCommentRptData);
   }
@@ -275,13 +274,13 @@ public class RIJCommentRptDataUtil
   {
     String str = UUID.randomUUID().toString();
     BaseCommentData.CommentRptData localCommentRptData = (BaseCommentData.CommentRptData)paramList.get(0);
-    localCommentRptData.jdField_a_of_type_JavaLangString = Utils.a(localCommentRptData.jdField_a_of_type_JavaLangString, str);
-    localCommentRptData.jdField_a_of_type_JavaLangString = StringUtil.a(localCommentRptData.jdField_a_of_type_JavaLangString);
-    localCommentRptData.jdField_a_of_type_JavaLangString = Utils.b(localCommentRptData.jdField_a_of_type_JavaLangString, str);
+    localCommentRptData.b = Utils.a(localCommentRptData.b, str);
+    localCommentRptData.b = StringUtil.a(localCommentRptData.b);
+    localCommentRptData.b = Utils.b(localCommentRptData.b, str);
     paramList = (BaseCommentData.CommentRptData)paramList.get(paramList.size() - 1);
-    paramList.jdField_a_of_type_JavaLangString = Utils.a(paramList.jdField_a_of_type_JavaLangString, str);
-    paramList.jdField_a_of_type_JavaLangString = StringUtil.b(paramList.jdField_a_of_type_JavaLangString);
-    paramList.jdField_a_of_type_JavaLangString = Utils.b(paramList.jdField_a_of_type_JavaLangString, str);
+    paramList.b = Utils.a(paramList.b, str);
+    paramList.b = StringUtil.b(paramList.b);
+    paramList.b = Utils.b(paramList.b, str);
   }
   
   private static void a(JSONArray paramJSONArray)
@@ -305,14 +304,14 @@ public class RIJCommentRptDataUtil
   
   private static void a(JSONArray paramJSONArray, BaseCommentData.CommentRptData paramCommentRptData)
   {
-    if (paramCommentRptData.jdField_a_of_type_JavaLangString != null)
+    if (paramCommentRptData.b != null)
     {
-      if (paramCommentRptData.jdField_a_of_type_JavaLangString.length() < 2) {
+      if (paramCommentRptData.b.length() < 2) {
         return;
       }
       if (!RIJCommentTopicUtil.a())
       {
-        a(paramJSONArray, paramCommentRptData.jdField_a_of_type_JavaLangString);
+        a(paramJSONArray, paramCommentRptData.b);
         return;
       }
       try
@@ -321,14 +320,14 @@ public class RIJCommentRptDataUtil
         localJSONObject.put("name", "a");
         Object localObject = new JSONObject();
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramCommentRptData.c);
+        localStringBuilder.append(paramCommentRptData.d);
         localStringBuilder.append("#comment_topic");
         ((JSONObject)localObject).put("href", localStringBuilder.toString());
         ((JSONObject)localObject).put("style", "color: #40A0FF;");
         localJSONObject.put("attrs", localObject);
         localObject = new JSONArray();
         a((JSONArray)localObject);
-        a((JSONArray)localObject, paramCommentRptData.jdField_a_of_type_JavaLangString.substring(1), "#40A0FF");
+        a((JSONArray)localObject, paramCommentRptData.b.substring(1), "#40A0FF");
         localJSONObject.put("children", localObject);
         paramJSONArray.put(localJSONObject);
         return;
@@ -346,7 +345,7 @@ public class RIJCommentRptDataUtil
     while (paramIterable.hasNext())
     {
       BaseCommentData.CommentRptData localCommentRptData = (BaseCommentData.CommentRptData)paramIterable.next();
-      int i = localCommentRptData.jdField_a_of_type_Int;
+      int i = localCommentRptData.a;
       if (i != 0)
       {
         if (i != 1)
@@ -358,11 +357,11 @@ public class RIJCommentRptDataUtil
             }
           }
           else {
-            a(paramJSONArray, localCommentRptData.jdField_a_of_type_JavaLangString);
+            a(paramJSONArray, localCommentRptData.b);
           }
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("未处理的case: ");
-          localStringBuilder.append(localCommentRptData.jdField_a_of_type_Int);
+          localStringBuilder.append(localCommentRptData.a);
           ReadInJoyHelper.a("RIJCommentRptDataUtil", new IllegalArgumentException(localStringBuilder.toString()));
         }
         else
@@ -371,7 +370,7 @@ public class RIJCommentRptDataUtil
         }
       }
       else {
-        a(paramJSONArray, localCommentRptData.jdField_a_of_type_JavaLangString);
+        a(paramJSONArray, localCommentRptData.b);
       }
     }
   }
@@ -430,8 +429,8 @@ public class RIJCommentRptDataUtil
     while (paramJSONObject.hasNext())
     {
       BaseCommentData.CommentRptData localCommentRptData = (BaseCommentData.CommentRptData)paramJSONObject.next();
-      if (!TextUtils.isEmpty(localCommentRptData.jdField_a_of_type_JavaLangString)) {
-        localCommentRptData.jdField_a_of_type_JavaLangString = new String(Base64Util.decode(localCommentRptData.jdField_a_of_type_JavaLangString, 0));
+      if (!TextUtils.isEmpty(localCommentRptData.b)) {
+        localCommentRptData.b = new String(Base64Util.decode(localCommentRptData.b, 0));
       }
     }
     paramBaseCommentData.commentRptDataList = localList;
@@ -457,7 +456,7 @@ public class RIJCommentRptDataUtil
   private static void b(BaseCommentData.CommentRptData paramCommentRptData, JSONObject paramJSONObject)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("content", paramCommentRptData.jdField_a_of_type_JavaLangString);
+    localJSONObject.put("content", paramCommentRptData.b);
     paramJSONObject.put("text_data", localJSONObject);
   }
   
@@ -465,12 +464,12 @@ public class RIJCommentRptDataUtil
   
   private static void b(JSONArray paramJSONArray, BaseCommentData.CommentRptData paramCommentRptData)
   {
-    if (paramCommentRptData.jdField_a_of_type_JavaLangString == null) {
+    if (paramCommentRptData.b == null) {
       return;
     }
     if (!RIJCommentAtUtil.a())
     {
-      a(paramJSONArray, paramCommentRptData.jdField_a_of_type_JavaLangString);
+      a(paramJSONArray, paramCommentRptData.b);
       return;
     }
     try
@@ -479,13 +478,13 @@ public class RIJCommentRptDataUtil
       localJSONObject.put("name", "a");
       Object localObject = new JSONObject();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramCommentRptData.b);
+      localStringBuilder.append(paramCommentRptData.c);
       localStringBuilder.append("#comment_at");
       ((JSONObject)localObject).put("href", localStringBuilder.toString());
       ((JSONObject)localObject).put("style", "color: #40A0FF;");
       localJSONObject.put("attrs", localObject);
       localObject = new JSONArray();
-      a((JSONArray)localObject, paramCommentRptData.jdField_a_of_type_JavaLangString, "#40A0FF");
+      a((JSONArray)localObject, paramCommentRptData.b, "#40A0FF");
       localJSONObject.put("children", localObject);
       paramJSONArray.put(localJSONObject);
       return;
@@ -499,23 +498,23 @@ public class RIJCommentRptDataUtil
   private static void c(BaseCommentData.CommentRptData paramCommentRptData, JSONObject paramJSONObject)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("content", paramCommentRptData.jdField_a_of_type_JavaLangString);
-    localJSONObject.put("url", paramCommentRptData.c);
-    localJSONObject.put("topic_id", paramCommentRptData.d);
+    localJSONObject.put("content", paramCommentRptData.b);
+    localJSONObject.put("url", paramCommentRptData.d);
+    localJSONObject.put("topic_id", paramCommentRptData.e);
     paramJSONObject.put("herf_data", localJSONObject);
   }
   
   private static void d(BaseCommentData.CommentRptData paramCommentRptData, JSONObject paramJSONObject)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("content", paramCommentRptData.jdField_a_of_type_JavaLangString);
-    localJSONObject.put("uid", paramCommentRptData.b);
+    localJSONObject.put("content", paramCommentRptData.b);
+    localJSONObject.put("uid", paramCommentRptData.c);
     paramJSONObject.put("at_data", localJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.rptdata.RIJCommentRptDataUtil
  * JD-Core Version:    0.7.0.1
  */

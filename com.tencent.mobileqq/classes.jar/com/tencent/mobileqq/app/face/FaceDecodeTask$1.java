@@ -36,7 +36,7 @@ final class FaceDecodeTask$1
             }
             if (paramMessage.needDownload)
             {
-              paramMessage.faceInfo.b = 2;
+              paramMessage.faceInfo.g = 2;
               localDecodeCompletionListener.onDecodeTaskCompletedNeedDownload(FaceDecodeTask.access$100(paramMessage), paramMessage.faceInfo);
             }
             else
@@ -58,7 +58,7 @@ final class FaceDecodeTask$1
         }
         if (paramMessage.needDownload)
         {
-          paramMessage.faceInfo.b = 2;
+          paramMessage.faceInfo.g = 2;
           localDecodeCompletionListener.onDecodeTaskCompletedNeedDownload(FaceDecodeTask.access$100(paramMessage), paramMessage.faceInfo);
           return;
         }
@@ -69,7 +69,7 @@ final class FaceDecodeTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecodeTask.1
  * JD-Core Version:    0.7.0.1
  */

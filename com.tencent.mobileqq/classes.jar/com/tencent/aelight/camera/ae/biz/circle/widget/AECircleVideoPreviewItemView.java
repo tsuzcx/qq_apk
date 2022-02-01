@@ -26,79 +26,77 @@ import java.text.SimpleDateFormat;
 public class AECircleVideoPreviewItemView
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-  private BaseVideoView jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
-  private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = null;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private LocalMediaInfo a;
+  private FrameLayout b;
+  private ImageView c;
+  private ImageView d;
+  private TextView e;
+  private TextView f;
+  private SeekBar g;
+  private BaseVideoView h;
+  private SimpleDateFormat i = null;
+  private Context j;
+  private View.OnClickListener k;
+  private SeekBar.OnSeekBarChangeListener l;
+  private View.OnTouchListener m;
+  private ColorDrawable n = new ColorDrawable(570425344);
+  private int o = -1;
   
   public AECircleVideoPreviewItemView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    View.inflate(paramContext, 2064318480, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2064122812));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2064122813));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2064122814));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2064122815));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2064122817));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2064122816));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(a());
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnTouchListener(a());
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setPadding(ImmersiveUtils.dpToPx(6.0F), 0, ImmersiveUtils.dpToPx(6.0F), 0);
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = ((BaseVideoView)QQVideoViewFactory.b(this.jdField_a_of_type_AndroidContentContext, 109L, null, null));
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setOnClickListener(a());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView, -1, -1);
+    this.j = paramContext;
+    View.inflate(paramContext, 2064056340, this);
+    this.b = ((FrameLayout)findViewById(2063991586));
+    this.c = ((ImageView)findViewById(2063991587));
+    this.f = ((TextView)findViewById(2063991588));
+    this.d = ((ImageView)findViewById(2063991589));
+    this.e = ((TextView)findViewById(2063991591));
+    this.g = ((SeekBar)findViewById(2063991590));
+    this.g.setOnSeekBarChangeListener(getOnSeekBarChangeListener());
+    this.g.setOnTouchListener(getSeekBarTouchListener());
+    this.g.setPadding(ImmersiveUtils.dpToPx(6.0F), 0, ImmersiveUtils.dpToPx(6.0F), 0);
+    this.h = ((BaseVideoView)QQVideoViewFactory.createBaseVideoView(this.j, 109L, null, null));
+    this.h.setOnClickListener(getOnVideoViewClickListener());
+    this.b.addView(this.h, -1, -1);
   }
   
-  private View.OnClickListener a()
+  private String a(long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = new AECircleVideoPreviewItemView.2(this);
+    if (this.i == null) {
+      this.i = new SimpleDateFormat("mm:ss");
     }
-    return this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    return this.i.format(Long.valueOf(paramLong));
   }
   
-  private View.OnTouchListener a()
+  private URLDrawable.URLDrawableOptions b(LocalMediaInfo paramLocalMediaInfo)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnTouchListener == null) {
-      this.jdField_a_of_type_AndroidViewView$OnTouchListener = new AECircleVideoPreviewItemView.4(this);
-    }
-    return this.jdField_a_of_type_AndroidViewView$OnTouchListener;
-  }
-  
-  private SeekBar.OnSeekBarChangeListener a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener == null) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new AECircleVideoPreviewItemView.3(this);
-    }
-    return this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener;
-  }
-  
-  private URLDrawable.URLDrawableOptions a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    int i = ImmersiveUtils.getScreenWidth();
-    int j = (int)(i / paramLocalMediaInfo.mediaWidth * paramLocalMediaInfo.mediaHeight);
+    int i1 = ImmersiveUtils.getScreenWidth();
+    int i2 = (int)(i1 / paramLocalMediaInfo.mediaWidth * paramLocalMediaInfo.mediaHeight);
     paramLocalMediaInfo = URLDrawable.URLDrawableOptions.obtain();
-    paramLocalMediaInfo.mRequestWidth = i;
-    paramLocalMediaInfo.mRequestHeight = j;
-    ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    paramLocalMediaInfo.mRequestWidth = i1;
+    paramLocalMediaInfo.mRequestHeight = i2;
+    ColorDrawable localColorDrawable = this.n;
     paramLocalMediaInfo.mFailedDrawable = localColorDrawable;
     paramLocalMediaInfo.mLoadingDrawable = localColorDrawable;
     return paramLocalMediaInfo;
   }
   
-  private VideoPlayParam a(LocalMediaInfo paramLocalMediaInfo)
+  private void b()
+  {
+    BaseVideoView localBaseVideoView = this.h;
+    if (localBaseVideoView != null)
+    {
+      if (localBaseVideoView.mIsPlayVideo)
+      {
+        this.h.resume();
+        return;
+      }
+      this.h.play();
+    }
+  }
+  
+  private VideoPlayParam c(LocalMediaInfo paramLocalMediaInfo)
   {
     VideoPlayParam localVideoPlayParam = new VideoPlayParam();
     localVideoPlayParam.mVideoFormat = 104;
@@ -111,44 +109,46 @@ public class AECircleVideoPreviewItemView
     return localVideoPlayParam;
   }
   
-  private String a(long paramLong)
+  private SeekBar.OnSeekBarChangeListener getOnSeekBarChangeListener()
   {
-    if (this.jdField_a_of_type_JavaTextSimpleDateFormat == null) {
-      this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("mm:ss");
+    if (this.l == null) {
+      this.l = new AECircleVideoPreviewItemView.3(this);
     }
-    return this.jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong));
+    return this.l;
   }
   
-  private void b()
+  private View.OnClickListener getOnVideoViewClickListener()
   {
-    BaseVideoView localBaseVideoView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
-    if (localBaseVideoView != null)
-    {
-      if (localBaseVideoView.mIsPlayVideo)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.resume();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.play();
+    if (this.k == null) {
+      this.k = new AECircleVideoPreviewItemView.2(this);
     }
+    return this.k;
+  }
+  
+  private View.OnTouchListener getSeekBarTouchListener()
+  {
+    if (this.m == null) {
+      this.m = new AECircleVideoPreviewItemView.4(this);
+    }
+    return this.m;
   }
   
   public void a()
   {
     b();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    Object localObject = this.c;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(0);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetSeekBar;
+    localObject = this.g;
     if (localObject != null) {
       ((SeekBar)localObject).setProgress(0);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    localObject = this.d;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(0);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    localObject = this.f;
     if (localObject != null) {
       ((TextView)localObject).setText(a(0L));
     }
@@ -156,14 +156,14 @@ public class AECircleVideoPreviewItemView
   
   public void a(LocalMediaInfo paramLocalMediaInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setVideoParam(a(paramLocalMediaInfo));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable(QAlbumUtil.generateAlbumVideoThumbURL(paramLocalMediaInfo.path, null), a(paramLocalMediaInfo)));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(a(paramLocalMediaInfo.mDuration));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.play();
+    this.a = paramLocalMediaInfo;
+    this.h.setVideoParam(c(paramLocalMediaInfo));
+    this.c.setImageDrawable(URLDrawable.getDrawable(QAlbumUtil.generateAlbumVideoThumbURL(paramLocalMediaInfo.path, null), b(paramLocalMediaInfo)));
+    this.c.setVisibility(0);
+    this.e.setText(a(paramLocalMediaInfo.mDuration));
+    this.d.setVisibility(0);
+    this.g.setProgress(0);
+    this.h.play();
   }
   
   protected void onAttachedToWindow()
@@ -175,18 +175,18 @@ public class AECircleVideoPreviewItemView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView != null)
+    if (this.h != null)
     {
       QLog.d("AECircleVideoPreviewItemView", 4, "onDetachedFromWindow: video release");
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.releasePlayer(false);
+      this.h.pause();
+      this.h.releasePlayer(false);
     }
   }
   
   protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView == null) {
+    if (this.h == null) {
       return;
     }
     if (paramInt == 0)
@@ -195,13 +195,13 @@ public class AECircleVideoPreviewItemView
       return;
     }
     QLog.d("AECircleVideoPreviewItemView", 4, "onVisibilityChanged: video release");
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.releasePlayer(false);
+    this.h.pause();
+    this.h.releasePlayer(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.widget.AECircleVideoPreviewItemView
  * JD-Core Version:    0.7.0.1
  */

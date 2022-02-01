@@ -72,7 +72,7 @@ public class AioMiniProfileLabelFlowLayout
         int i3 = localView.getMeasuredHeight();
         int n;
         if (paramInt4 == 1) {
-          n = i1 - ViewUtils.a(90.0F);
+          n = i1 - ViewUtils.dip2px(90.0F);
         } else {
           n = i1;
         }
@@ -126,7 +126,7 @@ public class AioMiniProfileLabelFlowLayout
         int i6 = i5 + ((ViewGroup.MarginLayoutParams)localObject).leftMargin + ((ViewGroup.MarginLayoutParams)localObject).rightMargin;
         i5 = i4 + ((ViewGroup.MarginLayoutParams)localObject).topMargin + ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
         if (n == 1) {
-          i4 = i - ViewUtils.a(90.0F);
+          i4 = i - ViewUtils.dip2px(90.0F);
         } else {
           i4 = i;
         }
@@ -188,7 +188,7 @@ public class AioMiniProfileLabelFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.view.AioMiniProfileLabelFlowLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.av.gaudio;
 
 class AVNotifyCenter$AddFriendInfo
 {
-  public int a;
   public long a;
+  public int b;
 }
 
 

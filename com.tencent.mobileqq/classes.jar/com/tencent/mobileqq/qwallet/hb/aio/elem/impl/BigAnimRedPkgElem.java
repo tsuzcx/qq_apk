@@ -7,8 +7,8 @@ import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 public class BigAnimRedPkgElem
   extends BaseRedPkgElem
 {
-  public Bitmap a;
-  public AnimationView.AnimationInfo a;
+  public Bitmap b;
+  public AnimationView.AnimationInfo c;
   
   public BigAnimRedPkgElem(String paramString)
   {
@@ -19,19 +19,19 @@ public class BigAnimRedPkgElem
   {
     if (paramRedPacketInfo != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
+      this.b = paramRedPacketInfo.specialBackground;
+      this.c = paramRedPacketInfo.specailBackgroundAnimInfo;
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
+    return (this.c != null) || (this.b != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.BigAnimRedPkgElem
  * JD-Core Version:    0.7.0.1
  */

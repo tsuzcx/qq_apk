@@ -18,24 +18,24 @@ class AvatarPendantAdapter$1
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantMarketConfig$EntryConfig.b);
+    Intent localIntent = new Intent(this.c.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.a.c);
     localIntent.putExtra("isShowAd", false);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
-      ((AvatarPendantActivity)this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext).a = -1L;
+    this.c.a.startActivity(localIntent);
+    if ((this.c.a instanceof AvatarPendantActivity)) {
+      ((AvatarPendantActivity)this.c.a).N = -1L;
     }
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.b == 1) {
       VasWebviewUtil.a("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
     } else {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
+      ReportController.b(this.c.b, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AvatarPendantAdapter.1
  * JD-Core Version:    0.7.0.1
  */

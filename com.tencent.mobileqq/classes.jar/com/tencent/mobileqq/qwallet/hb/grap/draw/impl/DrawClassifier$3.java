@@ -13,7 +13,7 @@ class DrawClassifier$3
   
   private void a()
   {
-    DrawClassifier.OnClassifierInitListener localOnClassifierInitListener = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnClassifierInitListener;
+    DrawClassifier.OnClassifierInitListener localOnClassifierInitListener = this.a;
     if (localOnClassifierInitListener != null) {
       localOnClassifierInitListener.a(false);
     }
@@ -28,12 +28,12 @@ class DrawClassifier$3
         paramPathResult = new File(paramPathResult.folderPath, "classes.txt").toString();
         if ((new File((String)localObject).exists()) && (new File(paramPathResult).exists()))
         {
-          DrawClassifier.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier, new DefaultClassifier((String)localObject, paramPathResult));
-          paramPathResult = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnClassifierInitListener;
+          DrawClassifier.a(this.b, new DefaultClassifier((String)localObject, paramPathResult));
+          paramPathResult = this.a;
           if (paramPathResult != null) {
             paramPathResult.a(true);
           }
-          DrawClassifier.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier, true);
+          DrawClassifier.a(this.b, true);
           if (QLog.isColorLevel()) {
             QLog.d("DrawClassifier", 2, "init success");
           }
@@ -66,7 +66,7 @@ class DrawClassifier$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawClassifier.3
  * JD-Core Version:    0.7.0.1
  */

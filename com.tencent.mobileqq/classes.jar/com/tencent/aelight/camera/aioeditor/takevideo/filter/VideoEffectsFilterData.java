@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 public class VideoEffectsFilterData
   extends FilterData
 {
-  public final int c;
+  public final int e;
   
   public VideoEffectsFilterData(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramInt3, paramString, paramInt1);
-    this.c = paramInt2;
+    this.e = paramInt2;
   }
   
   @NonNull
@@ -22,7 +22,7 @@ public class VideoEffectsFilterData
   }
   
   @NonNull
-  public Class<? extends FilterData.FilterPageItem> a()
+  public Class<? extends FilterData.FilterPageItem> b()
   {
     return VideoEffectsFilterData.VideoEffectsFilterPageItem.class;
   }
@@ -58,7 +58,7 @@ public class VideoEffectsFilterData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.filter.VideoEffectsFilterData
  * JD-Core Version:    0.7.0.1
  */

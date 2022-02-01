@@ -162,7 +162,7 @@ public class MsfHandlePatchUtils
           str = PatchCommonUtil.getPatchPath(paramJSONObject.substring(paramJSONObject.lastIndexOf(File.separator) + 1));
           if (!TextUtils.isEmpty(str))
           {
-            bool1 = e.a(paramJSONObject, str);
+            bool1 = f.a(paramJSONObject, str);
             paramJSONObject = new StringBuilder();
             paramJSONObject.append("download patch result=");
             paramJSONObject.append(bool1);
@@ -555,7 +555,7 @@ public class MsfHandlePatchUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfHandlePatchUtils
  * JD-Core Version:    0.7.0.1
  */

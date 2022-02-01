@@ -9,7 +9,7 @@ class RIJArticleInfoRepo$9
   
   public void run()
   {
-    EntityManager localEntityManager = RIJArticleInfoRepo.a(this.this$0);
+    EntityManager localEntityManager = RIJArticleInfoRepo.b(this.this$0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DELETE FROM ArticleInfo WHERE mChannelID = ");
     localStringBuilder.append(this.a);
@@ -18,7 +18,7 @@ class RIJArticleInfoRepo$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJArticleInfoRepo.9
  * JD-Core Version:    0.7.0.1
  */

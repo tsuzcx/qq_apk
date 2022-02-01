@@ -16,9 +16,9 @@ class StickerRecViewBinder$2
   public void a(LayoutStatusLiveData paramLayoutStatusLiveData)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("StickerRecViewBinder", 2, new Object[] { "layoutStatus change:", Integer.valueOf(paramLayoutStatusLiveData.jdField_a_of_type_Int), " ,layout:", this.a.a });
+      QLog.d("StickerRecViewBinder", 2, new Object[] { "layoutStatus change:", Integer.valueOf(paramLayoutStatusLiveData.a), " ,layout:", this.a.a });
     }
-    int i = paramLayoutStatusLiveData.jdField_a_of_type_Int;
+    int i = paramLayoutStatusLiveData.a;
     if (i != 1)
     {
       if (i != 2)
@@ -28,13 +28,13 @@ class StickerRecViewBinder$2
           if (i != 4) {
             return;
           }
-          if ((this.a.a != null) && (StickerRecViewBinder.a(this.a) != null))
+          if ((this.a.a != null) && (StickerRecViewBinder.d(this.a) != null))
           {
-            StickerRecViewBinder.a(this.a).removeView(this.a.a);
+            StickerRecViewBinder.d(this.a).removeView(this.a.a);
             paramLayoutStatusLiveData = this.a;
             paramLayoutStatusLiveData.a = null;
             StickerRecViewBinder.a(paramLayoutStatusLiveData, null);
-            StickerRecViewBinder.a(this.a).c(false);
+            StickerRecViewBinder.b(this.a).c(false);
           }
         }
         else
@@ -42,28 +42,28 @@ class StickerRecViewBinder$2
           if (this.a.a != null)
           {
             this.a.a.hide();
-            StickerRecViewBinder.a(this.a).c(false);
+            StickerRecViewBinder.b(this.a).c(false);
           }
-          ((IRecommendEmotionService)QRoute.api(IRecommendEmotionService.class)).clearSpecWordType(StickerRecViewBinder.a(this.a));
+          ((IRecommendEmotionService)QRoute.api(IRecommendEmotionService.class)).clearSpecWordType(StickerRecViewBinder.c(this.a));
         }
       }
       else if (this.a.a != null)
       {
         this.a.a.hide();
-        StickerRecViewBinder.a(this.a).c(false);
+        StickerRecViewBinder.b(this.a).c(false);
       }
     }
     else if (this.a.a != null)
     {
-      this.a.a.show(paramLayoutStatusLiveData.jdField_a_of_type_JavaLangString);
-      StickerRecViewBinder.a(this.a).c(true);
+      this.a.a.show(paramLayoutStatusLiveData.b);
+      StickerRecViewBinder.b(this.a).c(true);
       this.a.a.bringToFront();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.mvvm.StickerRecViewBinder.2
  * JD-Core Version:    0.7.0.1
  */

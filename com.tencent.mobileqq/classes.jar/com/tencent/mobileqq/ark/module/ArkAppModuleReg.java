@@ -59,7 +59,7 @@ public class ArkAppModuleReg
       try
       {
         localObject = (ArkAppModuleBase)((Class)localObject).getConstructor(new Class[] { ark.Application.class, Integer.TYPE }).newInstance(new Object[] { paramApplication, Integer.valueOf(i) });
-        if (((((ArkAppModuleBase)localObject).a()) || (i == 0)) && ((((ArkAppModuleBase)localObject).b()) || (MobileQQ.sProcessId == 1))) {
+        if (((((ArkAppModuleBase)localObject).b()) || (i == 0)) && ((((ArkAppModuleBase)localObject).c()) || (MobileQQ.sProcessId == 1))) {
           localArrayList.add(localObject);
         }
       }
@@ -90,7 +90,7 @@ public class ArkAppModuleReg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppModuleReg
  * JD-Core Version:    0.7.0.1
  */

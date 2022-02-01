@@ -12,15 +12,15 @@ class VideoStoryCapturePart$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((VideoStoryCapturePart.a(this.a) != null) && (VideoStoryCapturePart.a(this.a) != null)) {
-      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, VideoStoryCapturePart.a(this.a), VideoStoryCapturePart.a(this.a));
+    if ((VideoStoryCapturePart.a(this.a) != null) && (VideoStoryCapturePart.b(this.a) != null)) {
+      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, false, VideoStoryCapturePart.b(this.a), VideoStoryCapturePart.a(this.a));
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.capture.VideoStoryCapturePart.1
  * JD-Core Version:    0.7.0.1
  */

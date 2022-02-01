@@ -21,7 +21,7 @@ public class PreloadResourceImpl$DefaultDownloadListener
   
   private int a(String paramString, boolean paramBoolean)
   {
-    int i = ResDownRecordUtil.a(paramString, 0, this.a.getFilePos());
+    int i = ResDownRecordUtil.b(paramString, 0, this.a.getFilePos());
     if (i == 0)
     {
       if (paramBoolean) {
@@ -40,18 +40,18 @@ public class PreloadResourceImpl$DefaultDownloadListener
   
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    if ((paramDownloadTask != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
+    if ((paramDownloadTask != null) && (paramDownloadTask.g != null) && (!TextUtils.isEmpty(paramDownloadTask.b)))
     {
-      Object localObject1 = paramDownloadTask.a();
+      Object localObject1 = paramDownloadTask.b();
       PreloadModuleImpl localPreloadModuleImpl = (PreloadModuleImpl)((Bundle)localObject1).getSerializable("module");
       Object localObject2 = (PreloadResourceImpl)((Bundle)localObject1).getSerializable("resource");
-      Object localObject3 = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      Object localObject3 = (File)paramDownloadTask.g.get(paramDownloadTask.b);
       if (localObject3 == null) {
         localObject1 = "";
       } else {
         localObject1 = ((File)localObject3).getAbsolutePath();
       }
-      int i = paramDownloadTask.jdField_a_of_type_Int;
+      int i = paramDownloadTask.c;
       boolean bool = false;
       if ((i == 0) && (localObject2 != null))
       {
@@ -71,42 +71,42 @@ public class PreloadResourceImpl$DefaultDownloadListener
               ((StringBuilder)localObject3).append(((PreloadResourceImpl)localObject2).md5);
               QLog.d("PreloadResource", 2, ((StringBuilder)localObject3).toString());
             }
-            QWalletTools.a((String)localObject1);
-            ResDownRecordUtil.a(paramDownloadTask.jdField_a_of_type_JavaLangString, 5, this.a.getFilePos());
-            paramDownloadTask.jdField_a_of_type_Int = -1;
+            QWalletTools.b((String)localObject1);
+            ResDownRecordUtil.a(paramDownloadTask.b, 5, this.a.getFilePos());
+            paramDownloadTask.c = -1;
             i = 1;
             break label316;
           }
-          ResUtil.a(paramDownloadTask.jdField_a_of_type_JavaLangString, str, NetConnInfoCenter.getServerTimeMillis(), this.a.getFilePos());
-          if (PreloadResourceImpl.access$000(this.a, (String)localObject1, paramDownloadTask.jdField_a_of_type_JavaLangString)) {
-            this.a.unzip((String)localObject1, paramDownloadTask.jdField_a_of_type_JavaLangString);
+          ResUtil.a(paramDownloadTask.b, str, NetConnInfoCenter.getServerTimeMillis(), this.a.getFilePos());
+          if (PreloadResourceImpl.access$000(this.a, (String)localObject1, paramDownloadTask.b)) {
+            this.a.unzip((String)localObject1, paramDownloadTask.b);
           }
         }
       }
       i = 0;
       label316:
-      if (paramDownloadTask.jdField_a_of_type_Int == -118) {
+      if (paramDownloadTask.c == -118) {
         i = 1;
       }
       if ((i != 0) && (localPreloadModuleImpl != null)) {
         localPreloadModuleImpl.removeResource((PreloadResourceImpl)localObject2);
       }
-      localObject2 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_a_of_type_Int == 0) {
+      localObject2 = paramDownloadTask.b;
+      if (paramDownloadTask.c == 0) {
         bool = true;
       }
       i = a((String)localObject2, bool);
-      paramDownloadTask.a().putInt("scene", i);
-      if ((i == 7) && (paramDownloadTask.jdField_a_of_type_Int == 0)) {
-        ResUtil.a(paramDownloadTask.jdField_a_of_type_JavaLangString, this.a.getFilePos());
+      paramDownloadTask.b().putInt("scene", i);
+      if ((i == 7) && (paramDownloadTask.c == 0)) {
+        ResUtil.a(paramDownloadTask.b, this.a.getFilePos());
       }
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("preload onDoneFile|");
-        ((StringBuilder)localObject2).append(paramDownloadTask.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(paramDownloadTask.c);
         ((StringBuilder)localObject2).append("|");
-        ((StringBuilder)localObject2).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(paramDownloadTask.b);
         ((StringBuilder)localObject2).append("|");
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append("|");
@@ -114,15 +114,15 @@ public class PreloadResourceImpl$DefaultDownloadListener
         QLog.d("PreloadResource", 2, ((StringBuilder)localObject2).toString());
       }
       super.onDoneFile(paramDownloadTask);
-      if (this.a.isNeedReport(paramDownloadTask.jdField_a_of_type_JavaLangString)) {
-        this.a.reportDownload(paramDownloadTask.jdField_a_of_type_JavaLangString, paramDownloadTask.jdField_a_of_type_Int, localPreloadModuleImpl);
+      if (this.a.isNeedReport(paramDownloadTask.b)) {
+        this.a.reportDownload(paramDownloadTask.b, paramDownloadTask.c, localPreloadModuleImpl);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadResourceImpl.DefaultDownloadListener
  * JD-Core Version:    0.7.0.1
  */

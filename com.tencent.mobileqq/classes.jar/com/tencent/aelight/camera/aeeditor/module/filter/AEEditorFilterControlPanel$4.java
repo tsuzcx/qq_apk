@@ -15,13 +15,13 @@ class AEEditorFilterControlPanel$4
   public void b(int paramInt, @Nullable MetaCategory paramMetaCategory)
   {
     if (paramMetaCategory != null) {
-      AEReportUtils.a(AEEditorFilterControlPanel.a(this.a), paramMetaCategory.id);
+      AEReportUtils.b(AEEditorFilterControlPanel.d(this.a), paramMetaCategory.id);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorFilterControlPanel.4
  * JD-Core Version:    0.7.0.1
  */

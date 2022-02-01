@@ -13,24 +13,24 @@ class RefreshBadgeHelper$RefreshBadgeRunnable
   public void a()
   {
     int i;
-    if ((RefreshBadgeHelper.a(this.this$0).isLogin()) && (!RefreshBadgeHelper.a(this.this$0))) {
-      i = RefreshBadgeHelper.a(this.this$0).a();
+    if ((RefreshBadgeHelper.b(this.this$0).isLogin()) && (!RefreshBadgeHelper.c(this.this$0))) {
+      i = RefreshBadgeHelper.d(this.this$0).a();
     } else {
       i = 0;
     }
-    if (i != RefreshBadgeHelper.a(this.this$0))
+    if (i != RefreshBadgeHelper.e(this.this$0))
     {
       RefreshBadgeHelper.a(this.this$0, i);
-      BadgeUtils.a(RefreshBadgeHelper.a(this.this$0).getApplicationContext(), i);
+      BadgeUtils.a(RefreshBadgeHelper.b(this.this$0).getApplicationContext(), i);
       if (QLog.isColorLevel()) {
-        QLog.d("RefreshBadgeHelper", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(RefreshBadgeHelper.a(this.this$0).isLogin()), Boolean.valueOf(RefreshBadgeHelper.a(this.this$0)) }));
+        QLog.d("RefreshBadgeHelper", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(RefreshBadgeHelper.b(this.this$0).isLogin()), Boolean.valueOf(RefreshBadgeHelper.c(this.this$0)) }));
       }
     }
     else if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("refreshAppBadge fail cause same unreadcount = ");
-      localStringBuilder.append(RefreshBadgeHelper.a(this.this$0));
+      localStringBuilder.append(RefreshBadgeHelper.e(this.this$0));
       QLog.d("RefreshBadgeHelper", 2, localStringBuilder.toString());
     }
   }
@@ -39,13 +39,13 @@ class RefreshBadgeHelper$RefreshBadgeRunnable
   {
     a();
     RefreshBadgeHelper localRefreshBadgeHelper = this.this$0;
-    localRefreshBadgeHelper.a -= 1;
+    localRefreshBadgeHelper.b -= 1;
     RefreshBadgeHelper.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RefreshBadgeHelper.RefreshBadgeRunnable
  * JD-Core Version:    0.7.0.1
  */

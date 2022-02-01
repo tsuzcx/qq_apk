@@ -14,17 +14,17 @@ public class CaptureAsyncStep$InitCombo
   {
     LbsFilterStatusManager.a(CaptureContext.a());
     CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
-    localCaptureComboManager.c();
+    localCaptureComboManager.a();
     localCaptureComboManager.a(false);
     if ((this.mParams[0] != null) && ((this.mParams[0] instanceof VideoFilterTools.OnResourceDownloadListener))) {
-      ((VideoFilterTools.OnResourceDownloadListener)this.mParams[0]).g(false);
+      ((VideoFilterTools.OnResourceDownloadListener)this.mParams[0]).h(false);
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.CaptureAsyncStep.InitCombo
  * JD-Core Version:    0.7.0.1
  */

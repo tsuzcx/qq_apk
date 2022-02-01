@@ -12,12 +12,12 @@ import android.widget.TextView;
 public class ARTipsCircleProgress
   extends TextView
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private int a;
   private int b = 8;
-  private int c = getResources().getColor(2131165367);
+  private int c = getResources().getColor(2131165626);
   private int d = -1;
+  private Paint e;
+  private RectF f;
   
   public ARTipsCircleProgress(Context paramContext)
   {
@@ -37,31 +37,31 @@ public class ARTipsCircleProgress
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    if (this.e == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.b);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.e = new Paint();
+      this.e.setStyle(Paint.Style.STROKE);
+      this.e.setStrokeWidth(this.b);
+      this.e.setAntiAlias(true);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsRectF != null)
+    if (this.f != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, this.jdField_a_of_type_Int / 100.0F * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.e.setColor(this.d);
+      paramCanvas.drawArc(this.f, -90.0F, 360.0F, false, this.e);
+      this.e.setColor(this.c);
+      paramCanvas.drawArc(this.f, -90.0F, this.a / 100.0F * 360.0F, false, this.e);
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_AndroidGraphicsRectF == null) {
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    if (this.f == null) {
+      this.f = new RectF();
     }
     paramInt1 = getWidth();
     paramInt2 = getHeight();
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    RectF localRectF = this.f;
     paramInt3 = this.b;
     localRectF.left = (paramInt3 / 2);
     localRectF.top = (paramInt3 / 2);
@@ -71,16 +71,16 @@ public class ARTipsCircleProgress
   
   public void setProgress(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("%");
     setText(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress
  * JD-Core Version:    0.7.0.1
  */

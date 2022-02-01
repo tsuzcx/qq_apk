@@ -12,35 +12,35 @@ class AEBaseCameraUnit$3
   
   public void onOpenResult(int paramInt, boolean paramBoolean)
   {
-    String str = this.a.jdField_a_of_type_JavaLangString;
+    String str = this.a.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("tryOpenCamera result=");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(", whichCamera=");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", mActivityResume=");
-    localStringBuilder.append(this.a.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a.A);
     AEQLog.b(str, localStringBuilder.toString());
     if (paramBoolean)
     {
-      if (this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView != null) {
-        this.a.jdField_a_of_type_ComTencentAelightCameraAeCameraCoreAECameraGLSurfaceView.onChangeCamera(paramInt);
+      if (this.a.h != null) {
+        this.a.h.onChangeCamera(paramInt);
       }
-      if (this.a.a()) {
+      if (this.a.h()) {
         CameraHelper.a(paramInt);
       }
-      if (!this.a.jdField_a_of_type_Boolean)
+      if (!this.a.A)
       {
         this.a.b(false);
         return;
       }
-      this.a.l();
+      this.a.A();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEBaseCameraUnit.3
  * JD-Core Version:    0.7.0.1
  */

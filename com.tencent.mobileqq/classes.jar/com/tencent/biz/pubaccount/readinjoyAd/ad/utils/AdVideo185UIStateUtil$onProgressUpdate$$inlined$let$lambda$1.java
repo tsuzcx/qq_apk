@@ -16,15 +16,15 @@ final class AdVideo185UIStateUtil$onProgressUpdate$$inlined$let$lambda$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoRecommendADVideoFeedsManager;
+    paramView = this.c;
     if (paramView != null) {
-      paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyVideoAdHighLightBar.getContext(), 22, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam.a);
+      paramView.a(this.a.getContext(), 22, this.b, this.d.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdVideo185UIStateUtil.onProgressUpdate..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

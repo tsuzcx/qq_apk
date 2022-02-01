@@ -15,18 +15,18 @@ class BindVerifyActivity$7
     {
       long l = SystemClock.uptimeMillis();
       MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
-      BindVerifyActivity.a(this.this$0).dispatchTouchEvent(localMotionEvent);
+      BindVerifyActivity.c(this.this$0).dispatchTouchEvent(localMotionEvent);
       localMotionEvent.recycle();
       localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
-      BindVerifyActivity.a(this.this$0).dispatchTouchEvent(localMotionEvent);
+      BindVerifyActivity.c(this.this$0).dispatchTouchEvent(localMotionEvent);
       localMotionEvent.recycle();
-      BindVerifyActivity.a(this.this$0).setSelection(this.this$0.b().length());
+      BindVerifyActivity.c(this.this$0).setSelection(this.this$0.d().length());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindVerifyActivity.7
  * JD-Core Version:    0.7.0.1
  */

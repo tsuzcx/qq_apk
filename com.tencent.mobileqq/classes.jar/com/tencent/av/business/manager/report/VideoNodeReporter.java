@@ -29,18 +29,18 @@ import mqq.app.MobileQQ;
 public class VideoNodeReporter
   extends BusinessManager
 {
-  static String b;
-  int jdField_a_of_type_Int;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new VideoNodeReporter.1(this);
-  Handler jdField_a_of_type_AndroidOsHandler;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoNodeReportThread");
-  List<VideoNodeReporter.SeesionRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
+  static String d;
+  List<VideoNodeReporter.SeesionRecord> e = new ArrayList();
+  int f;
+  Handler g;
+  HandlerThread h = new HandlerThread("VideoNodeReportThread");
+  Handler.Callback i = new VideoNodeReporter.1(this);
   
   public VideoNodeReporter(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.h.start();
+    this.g = new Handler(this.h.getLooper(), this.i);
     paramVideoAppInterface = BaseApplicationImpl.processName.split(":");
     if ((paramVideoAppInterface != null) && (paramVideoAppInterface.length == 2)) {
       paramVideoAppInterface = paramVideoAppInterface[1];
@@ -50,31 +50,14 @@ public class VideoNodeReporter
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("avideo_node_report_");
     localStringBuilder.append(paramVideoAppInterface);
-    b = localStringBuilder.toString();
+    d = localStringBuilder.toString();
     if (QLog.isColorLevel())
     {
       paramVideoAppInterface = new StringBuilder();
       paramVideoAppInterface.append("construct VideoNodeReporter  sSPName = ");
-      paramVideoAppInterface.append(b);
+      paramVideoAppInterface.append(d);
       QLog.d("VideoNodeReporter", 2, paramVideoAppInterface.toString());
     }
-  }
-  
-  static String a()
-  {
-    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
-  }
-  
-  private String a(long paramLong)
-  {
-    String str = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).getString(String.valueOf(paramLong), "");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getSpSessionRecord roomId = ");
-    localStringBuilder.append(paramLong);
-    localStringBuilder.append(",result = ");
-    localStringBuilder.append(str);
-    QLog.d("VideoNodeReporter", 1, localStringBuilder.toString());
-    return str;
   }
   
   private void a(long paramLong, String paramString)
@@ -88,7 +71,7 @@ public class VideoNodeReporter
       ((StringBuilder)localObject).append(paramString);
       QLog.d("VideoNodeReporter", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).edit();
+    Object localObject = BaseApplicationImpl.getApplication().getSystemSharedPreferences(d, 0).edit();
     ((SharedPreferences.Editor)localObject).putString(String.valueOf(paramLong), paramString);
     ((SharedPreferences.Editor)localObject).commit();
   }
@@ -106,17 +89,17 @@ public class VideoNodeReporter
       ((StringBuilder)localObject1).append(paramLong1);
       QLog.d("VideoNodeReporter", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = a(paramLong1);
+    Object localObject2 = b(paramLong1);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new VideoNodeReporter.SeesionRecord();
       ((VideoNodeReporter.SeesionRecord)localObject1).a = paramLong1;
-      this.jdField_a_of_type_JavaUtilList.add(localObject1);
+      this.e.add(localObject1);
     }
-    localObject2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    Object localObject3 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-    if (((VideoNodeReporter.SeesionRecord)localObject1).a == ((SessionInfo)localObject3).b()) {
+    localObject2 = this.c.getCurrentAccountUin();
+    Object localObject3 = this.c.b().k();
+    if (((VideoNodeReporter.SeesionRecord)localObject1).a == ((SessionInfo)localObject3).D()) {
       ((VideoNodeReporter.SeesionRecord)localObject1).a((SessionInfo)localObject3, (String)localObject2);
     }
     localObject2 = ((VideoNodeReporter.SeesionRecord)localObject1).a();
@@ -127,9 +110,14 @@ public class VideoNodeReporter
     a(paramLong1, ((StringBuilder)localObject3).toString());
   }
   
-  private void c()
+  static String c()
   {
-    Object localObject1 = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0);
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
+  }
+  
+  private void d()
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication().getSystemSharedPreferences(d, 0);
     Map localMap = ((SharedPreferences)localObject1).getAll();
     if ((localMap != null) && (localMap.size() > 0))
     {
@@ -143,7 +131,7 @@ public class VideoNodeReporter
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
         try
         {
-          b(Long.decode((String)localEntry.getKey()).longValue());
+          c(Long.decode((String)localEntry.getKey()).longValue());
         }
         catch (Exception localException)
         {
@@ -158,9 +146,9 @@ public class VideoNodeReporter
     QLog.d("VideoNodeReporter", 1, ((StringBuilder)localObject1).toString());
   }
   
-  private void c(long paramLong)
+  private void d(long paramLong)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getSystemSharedPreferences(b, 0).edit();
+    Object localObject = BaseApplicationImpl.getApplication().getSystemSharedPreferences(d, 0).edit();
     ((SharedPreferences.Editor)localObject).remove(String.valueOf(paramLong));
     ((SharedPreferences.Editor)localObject).commit();
     localObject = new StringBuilder();
@@ -169,31 +157,27 @@ public class VideoNodeReporter
     AVLog.printAllUserLog("VideoNodeReporter", ((StringBuilder)localObject).toString());
   }
   
-  VideoNodeReporter.SeesionRecord a(long paramLong)
+  private String e(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        VideoNodeReporter.SeesionRecord localSeesionRecord = (VideoNodeReporter.SeesionRecord)localIterator.next();
-        if (paramLong == localSeesionRecord.a) {
-          return localSeesionRecord;
-        }
-      }
-    }
-    return null;
+    String str = BaseApplicationImpl.getApplication().getSystemSharedPreferences(d, 0).getString(String.valueOf(paramLong), "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getSpSessionRecord roomId = ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(",result = ");
+    localStringBuilder.append(str);
+    QLog.d("VideoNodeReporter", 1, localStringBuilder.toString());
+    return str;
   }
   
   protected void a()
   {
     AVLog.printAllUserLog("VideoNodeReporter", "onCreate ");
-    c();
+    d();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(int paramInt, long paramLong)
@@ -204,9 +188,9 @@ public class VideoNodeReporter
     localStringBuilder.append(",value = ");
     localStringBuilder.append(paramLong);
     QLog.d("VideoNodeReporter", 1, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() != null))
+    if ((this.c != null) && (this.c.b() != null) && (this.c.b().k() != null))
     {
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.d)
+      if (this.c.z)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(" report error 1 ,exit has been called,node = ");
@@ -214,14 +198,14 @@ public class VideoNodeReporter
         AVLog.printAllUserLog("VideoNodeReporter", localStringBuilder.toString());
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.3(this, paramInt, paramLong));
+      this.g.post(new VideoNodeReporter.3(this, paramInt, paramLong));
       return;
     }
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(" report error 0: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    localStringBuilder.append(this.c);
     AVLog.printAllUserLog("VideoNodeReporter", localStringBuilder.toString());
   }
   
@@ -231,7 +215,7 @@ public class VideoNodeReporter
     localStringBuilder.append("updateCallerRoomId roomId = ");
     localStringBuilder.append(paramLong);
     QLog.d("VideoNodeReporter", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.2(this, paramLong));
+    this.g.post(new VideoNodeReporter.2(this, paramLong));
   }
   
   public void a(long paramLong1, int paramInt, long paramLong2)
@@ -242,9 +226,9 @@ public class VideoNodeReporter
     localStringBuilder.append(",value = ");
     localStringBuilder.append(paramLong2);
     QLog.d("VideoNodeReporter", 1, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() != null))
+    if ((this.c != null) && (this.c.b() != null) && (this.c.b().k() != null))
     {
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.d)
+      if (this.c.z)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(" reportByRoomId error 1 ,exit has been called,node = ");
@@ -257,14 +241,14 @@ public class VideoNodeReporter
         QLog.d("VideoNodeReporter", 1, "reportByRoomId rooid is 0", new Throwable("test"));
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.4(this, paramLong1, paramInt, paramLong2));
+      this.g.post(new VideoNodeReporter.4(this, paramLong1, paramInt, paramLong2));
       return;
     }
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(" reportByRoomId error 0: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    localStringBuilder.append(this.c);
     AVLog.printAllUserLog("VideoNodeReporter", localStringBuilder.toString());
   }
   
@@ -279,19 +263,14 @@ public class VideoNodeReporter
     if (paramInt != 1) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (this.e.size() > 0)
     {
-      paramString1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      paramString1 = this.e.iterator();
       while (paramString1.hasNext()) {
-        ((VideoNodeReporter.SeesionRecord)paramString1.next()).b = System.currentTimeMillis();
+        ((VideoNodeReporter.SeesionRecord)paramString1.next()).i = System.currentTimeMillis();
       }
     }
-    a(38, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.5(this, paramString));
+    a(38, this.f);
   }
   
   protected boolean a(String paramString)
@@ -299,11 +278,27 @@ public class VideoNodeReporter
     return true;
   }
   
+  VideoNodeReporter.SeesionRecord b(long paramLong)
+  {
+    if (this.e.size() > 0)
+    {
+      Iterator localIterator = this.e.iterator();
+      while (localIterator.hasNext())
+      {
+        VideoNodeReporter.SeesionRecord localSeesionRecord = (VideoNodeReporter.SeesionRecord)localIterator.next();
+        if (paramLong == localSeesionRecord.a) {
+          return localSeesionRecord;
+        }
+      }
+    }
+    return null;
+  }
+  
   public void b()
   {
     try
     {
-      Object localObject = (ActivityManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getSystemService("activity");
+      Object localObject = (ActivityManager)this.c.getApplication().getSystemService("activity");
       ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
       ((ActivityManager)localObject).getMemoryInfo(localMemoryInfo);
       long l1 = DeviceInfoUtil.a(Process.myPid()) / 1024L / 1024L;
@@ -331,9 +326,14 @@ public class VideoNodeReporter
     }
   }
   
-  public void b(long paramLong)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoNodeReporter.6(this, paramLong));
+    this.g.post(new VideoNodeReporter.5(this, paramString));
+  }
+  
+  public void c(long paramLong)
+  {
+    this.g.post(new VideoNodeReporter.6(this, paramLong));
   }
 }
 

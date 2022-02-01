@@ -193,8 +193,9 @@ public class TAVRhythmAutomaticTemplate
     {
       paramTAVSticker = new CMTimeRange(paramCMTime, new CMTime(paramLong, 1000));
       paramCMTime = new FaceTransition();
-      paramCMTime.timeRange = paramTAVSticker;
-      paramCMTime.procMethod = paramTAVTransitionAutomaticEffect.getProcMethod();
+      paramCMTime.setTimeRange(paramTAVSticker);
+      paramCMTime.setProcMethod(paramTAVTransitionAutomaticEffect.getProcMethod());
+      paramCMTime.setPosition(paramInt);
       getFaceTransitions().add(paramCMTime);
       return;
     }
@@ -931,35 +932,40 @@ public class TAVRhythmAutomaticTemplate
   private int handleTransitionForSegment(int paramInt, TAVMovieClipEx paramTAVMovieClipEx1, TAVMovieClipEx paramTAVMovieClipEx2, CMTime paramCMTime1, CMTime paramCMTime2, CMTime paramCMTime3, TAVRhythmMovieSegment paramTAVRhythmMovieSegment1, TAVRhythmMovieSegment paramTAVRhythmMovieSegment2)
   {
     int j = paramInt;
-    long l2 = ((Long)this.rhythmTransitionHelper.getTransitionDurationMsList().get(j)).longValue();
+    long l1;
+    if (j < this.rhythmTransitionHelper.getTransitionDurationMsList().size()) {
+      l1 = ((Long)this.rhythmTransitionHelper.getTransitionDurationMsList().get(j)).longValue();
+    } else {
+      l1 = 0L;
+    }
     Object localObject2 = this.rhythmTransitionHelper.getTransitionEffect(j);
-    boolean bool2 = needNormalTransition(paramTAVMovieClipEx1, paramTAVMovieClipEx2, paramCMTime1);
     Object localObject3 = null;
-    long l1 = l2;
+    boolean bool2 = needNormalTransition(paramTAVMovieClipEx1, paramTAVMovieClipEx2, paramCMTime1);
+    long l2 = l1;
     Object localObject1 = localObject2;
-    boolean bool1 = bool2;
     paramCMTime1 = localObject3;
+    boolean bool1 = bool2;
     if (bool2)
     {
-      l1 = l2;
+      l2 = l1;
       localObject1 = localObject2;
-      bool1 = bool2;
       paramCMTime1 = localObject3;
+      bool1 = bool2;
       if (localObject2 != null)
       {
-        l1 = l2;
+        l2 = l1;
         localObject1 = localObject2;
-        bool1 = bool2;
         paramCMTime1 = localObject3;
+        bool1 = bool2;
         if (needFaceSubTransition((TAVTransitionAutomaticEffect)localObject2, paramTAVMovieClipEx1.getTavMovieClip(), paramTAVMovieClipEx2.getTavMovieClip()))
         {
           localObject1 = this.rhythmTransitionHelper.getFaceTransitionSubTransition(((TAVTransitionAutomaticEffect)localObject2).subTransitions);
           paramCMTime1 = this.rhythmTransitionHelper.getTransitionSticker((TAVTransitionAutomaticEffect)localObject1);
-          l1 = paramCMTime1.durationTime() / 1000L;
-          if (l1 > l2)
+          l2 = paramCMTime1.durationTime() / 1000L;
+          if (l2 > l1)
           {
             bool1 = false;
-            l1 = l2;
+            l2 = l1;
             localObject1 = localObject2;
             paramCMTime1 = localObject3;
           }
@@ -970,12 +976,12 @@ public class TAVRhythmAutomaticTemplate
         }
       }
     }
-    localObject2 = new CMTime(l1 / 2L, 1000);
+    localObject2 = new CMTime(l2 / 2L, 1000);
     int i = j;
     if (bool1)
     {
       i = j;
-      if (this.rhythmTransitionHelper.isDurationEnoughForTransition(paramCMTime2, paramCMTime3, l1))
+      if (this.rhythmTransitionHelper.isDurationEnoughForTransition(paramCMTime2, paramCMTime3, l2))
       {
         paramTAVMovieClipEx2 = paramTAVMovieClipEx2.getTavMovieClip().getResource();
         paramTAVMovieClipEx1 = paramTAVMovieClipEx1.getTavMovieClip().getResource();
@@ -1003,7 +1009,7 @@ public class TAVRhythmAutomaticTemplate
         paramTAVMovieClipEx1.setStart(paramTAVMovieClipEx2);
         paramTAVRhythmMovieSegment1.setTimeRange(paramTAVMovieClipEx1);
         if (localObject1 != null) {
-          applyTransitionToSegment((TAVTransitionAutomaticEffect)localObject1, paramCMTime1, paramTAVMovieClipEx2, l1, paramInt);
+          applyTransitionToSegment((TAVTransitionAutomaticEffect)localObject1, paramCMTime1, paramTAVMovieClipEx2, l2, paramInt);
         }
         paramInt = j + 1;
         i = paramInt;
@@ -1024,24 +1030,27 @@ public class TAVRhythmAutomaticTemplate
     {
       localObject2 = this.rhythmTransitionHelper.getFaceTransitionSubTransition(((TAVTransitionAutomaticEffect)localObject1).subTransitions);
       paramCMTime1 = this.rhythmTransitionHelper.getTransitionSticker((TAVTransitionAutomaticEffect)localObject2);
-      long l2 = paramCMTime1.durationTime() / 1000L;
-      if (l2 > l1)
+      if (paramCMTime1 != null)
       {
-        bool = false;
-      }
-      else
-      {
-        paramTAVMovieClipEx2.setTransitionEffectParam(TransitionUtils.getTransitionParams(paramCMTime1, ((TAVTransitionAutomaticEffect)localObject2).effectId));
-        localObject1 = localObject2;
-        l1 = l2;
-        localObject2 = paramCMTime1;
-        break label156;
+        long l2 = paramCMTime1.durationTime() / 1000L;
+        if (l2 > l1)
+        {
+          bool = false;
+        }
+        else
+        {
+          paramTAVMovieClipEx2.setTransitionEffectParam(TransitionUtils.getTransitionParams(paramCMTime1, ((TAVTransitionAutomaticEffect)localObject2).effectId));
+          localObject1 = localObject2;
+          l1 = l2;
+          localObject2 = paramCMTime1;
+          break label161;
+        }
       }
     }
     Object localObject2 = null;
     paramCMTime1 = (CMTime)localObject1;
     localObject1 = paramCMTime1;
-    label156:
+    label161:
     int j = this.rhythmTransitionHelper.getTransitionDurationMsList().size();
     int i = paramInt;
     if (bool)
@@ -1213,15 +1222,18 @@ public class TAVRhythmAutomaticTemplate
               localObject1 = localObject2;
               localObject2 = localObject3;
             }
-            localObject3 = ((TAVMovieClip)localObject11).clone();
-            localObject4 = ((TAVMovieClip)localObject3).getResource();
-            localObject8 = ((TAVMovieResource)localObject4).getTimeRange();
-            ((CMTimeRange)localObject8).setDuration((CMTime)localObject2);
-            ((TAVMovieResource)localObject4).setTimeRange((CMTimeRange)localObject8);
-            ((TAVMovieResource)localObject4).setDuration((CMTime)localObject2);
-            localObject2 = ((TAVMovieClipEx)paramList.get(k)).clone();
-            ((TAVMovieClipEx)localObject2).setTavMovieClip((TAVMovieClip)localObject3);
-            localArrayList.add(localObject2);
+            if (!((CMTime)localObject2).equalsTo(CMTime.CMTimeZero))
+            {
+              localObject3 = ((TAVMovieClip)localObject11).clone();
+              localObject4 = ((TAVMovieClip)localObject3).getResource();
+              localObject8 = ((TAVMovieResource)localObject4).getTimeRange();
+              ((CMTimeRange)localObject8).setDuration((CMTime)localObject2);
+              ((TAVMovieResource)localObject4).setTimeRange((CMTimeRange)localObject8);
+              ((TAVMovieResource)localObject4).setDuration((CMTime)localObject2);
+              localObject2 = ((TAVMovieClipEx)paramList.get(k)).clone();
+              ((TAVMovieClipEx)localObject2).setTavMovieClip((TAVMovieClip)localObject3);
+              localArrayList.add(localObject2);
+            }
             localObject4 = localObject7;
             localObject2 = localObject1;
           }
@@ -1253,7 +1265,7 @@ public class TAVRhythmAutomaticTemplate
               {
                 i = j;
                 if (j >= ((TAVRhythmAutomaticTemplate)localObject9).segments.size()) {
-                  break label693;
+                  break label707;
                 }
                 localObject2 = (TAVRhythmMovieSegment)((TAVRhythmAutomaticTemplate)localObject9).segments.get(j);
                 if (!((CMTime)localObject1).smallThan((CMTime)localObject4)) {
@@ -1263,7 +1275,7 @@ public class TAVRhythmAutomaticTemplate
                 j += 1;
               }
               i = j - 1;
-              label693:
+              label707:
               j = i;
               if (i == ((TAVRhythmAutomaticTemplate)localObject9).segments.size()) {
                 j = i - 1;
@@ -1367,6 +1379,9 @@ public class TAVRhythmAutomaticTemplate
           localObject1 = ((TAVRhythmMovieSegment)this.segments.get(j)).getMinOriginDuration().clone();
           j += 1;
         }
+        if (((CMTime)localObject1).equalsTo(CMTime.CMTimeZero)) {
+          continue;
+        }
         localObject3 = ((TAVMovieClip)localObject3).clone();
         localObject4 = ((TAVMovieClip)localObject3).getResource();
         localObject6 = ((TAVMovieResource)localObject4).getTimeRange();
@@ -1398,7 +1413,7 @@ public class TAVRhythmAutomaticTemplate
         {
           j = k;
           if (k >= this.segments.size()) {
-            break label381;
+            break label395;
           }
           localObject2 = (TAVRhythmMovieSegment)this.segments.get(k);
           if (!((CMTime)localObject1).smallThan(localCMTime2)) {
@@ -1408,7 +1423,7 @@ public class TAVRhythmAutomaticTemplate
           k += 1;
         }
         j = k - 1;
-        label381:
+        label395:
         k = j;
         if (j == this.segments.size()) {
           k = j - 1;
@@ -1669,7 +1684,10 @@ public class TAVRhythmAutomaticTemplate
         CMTime localCMTime1 = paramTAVMovie.getTimeRange().getStart();
         CMTime localCMTime2 = ((CMTimeRange)localObject1).getEnd();
         paramTAVMovie = (TAVMovieClip)localList.get(k);
-        long l1 = ((Long)this.rhythmTransitionHelper.getTransitionDurationMsList().get(i)).longValue();
+        long l1 = 0L;
+        if (i < this.rhythmTransitionHelper.getTransitionDurationMsList().size()) {
+          l1 = ((Long)this.rhythmTransitionHelper.getTransitionDurationMsList().get(i)).longValue();
+        }
         localObject1 = this.rhythmTransitionHelper.getTransitionEffect(i);
         if (needFaceSubTransition((TAVTransitionAutomaticEffect)localObject1, (TAVMovieClip)localObject3, paramTAVMovie))
         {
@@ -1680,7 +1698,7 @@ public class TAVRhythmAutomaticTemplate
           {
             paramTAVMovie = null;
             j = 0;
-            break label323;
+            break label340;
           }
           localObject1 = localObject3;
           l1 = l2;
@@ -1690,7 +1708,7 @@ public class TAVRhythmAutomaticTemplate
           paramTAVMovie = null;
         }
         int j = 1;
-        label323:
+        label340:
         if ((j != 0) && (localCMTime2.sub(localCMTime1).bigThan(new CMTime(l1 / 2L, 1000)))) {
           applyTransitionToSegment((TAVTransitionAutomaticEffect)localObject1, paramTAVMovie, localCMTime1, l1, i);
         }

@@ -24,11 +24,11 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class GameCardView
   extends FrameLayout
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
+  private View a;
   private TextView b;
+  private TextView c;
+  private URLDrawable d;
+  private String e;
   
   public GameCardView(@NonNull Context paramContext)
   {
@@ -50,60 +50,60 @@ public class GameCardView
   
   private void a()
   {
-    float f = ViewUtils.a(255.0F);
+    float f = ViewUtils.dip2px(255.0F);
     f = GameRoomViewLayoutParamsDef.v / f;
-    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131558676, null);
-    Object localObject = new FrameLayout.LayoutParams((int)(ViewUtils.a(205.0F) * f), GameRoomViewLayoutParamsDef.v);
+    this.a = View.inflate(getContext(), 2131624293, null);
+    Object localObject = new FrameLayout.LayoutParams((int)(ViewUtils.dip2px(205.0F) * f), GameRoomViewLayoutParamsDef.v);
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
-    addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-    int i = (int)(ViewUtils.a(33.0F) * f);
-    this.jdField_a_of_type_AndroidViewView.setPadding(i, 0, i, 0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371697));
-    localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject).height = ((int)(ViewUtils.a(26.0F) * f));
+    addView(this.a, (ViewGroup.LayoutParams)localObject);
+    int i = (int)(ViewUtils.dip2px(33.0F) * f);
+    this.a.setPadding(i, 0, i, 0);
+    this.b = ((TextView)findViewById(2131439121));
+    localObject = (ViewGroup.MarginLayoutParams)this.b.getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject).height = ((int)(ViewUtils.dip2px(26.0F) * f));
     ((ViewGroup.MarginLayoutParams)localObject).width = ((int)(((ViewGroup.MarginLayoutParams)localObject).height * 5.384615F));
-    ((ViewGroup.MarginLayoutParams)localObject).topMargin = ((int)(ViewUtils.a(106.0F) * f));
-    this.b = ((TextView)findViewById(2131365536));
+    ((ViewGroup.MarginLayoutParams)localObject).topMargin = ((int)(ViewUtils.dip2px(106.0F) * f));
+    this.c = ((TextView)findViewById(2131431757));
   }
   
   public void a(GameItem paramGameItem)
   {
     if (paramGameItem != null)
     {
-      if (!TextUtils.isEmpty(paramGameItem.m)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(URLDrawable.getDrawable(paramGameItem.m, URLDrawableHelperConstants.a, URLDrawableHelperConstants.a));
-      } else if (paramGameItem.jdField_a_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramGameItem.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(paramGameItem.s)) {
+        this.b.setBackgroundDrawable(URLDrawable.getDrawable(paramGameItem.s, URLDrawableHelperConstants.a, URLDrawableHelperConstants.a));
+      } else if (paramGameItem.b != null) {
+        this.b.setText(paramGameItem.b);
       }
-      Object localObject = this.jdField_a_of_type_JavaLangString;
-      if ((localObject != null) && (((String)localObject).equals(paramGameItem.c)))
+      Object localObject = this.e;
+      if ((localObject != null) && (((String)localObject).equals(paramGameItem.d)))
       {
-        localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+        localObject = this.d;
         if (localObject != null)
         {
-          this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
+          this.a.setBackgroundDrawable((Drawable)localObject);
           break label174;
         }
       }
-      localObject = AVGameUtil.a("avgame_list_card_bg@3x.png");
+      localObject = AVGameUtil.c("avgame_list_card_bg@3x.png");
       if (localObject != null) {
         localObject = new BitmapDrawable((Bitmap)localObject);
       } else {
         localObject = URLDrawableHelperConstants.a;
       }
-      if (!TextUtils.isEmpty(paramGameItem.c))
+      if (!TextUtils.isEmpty(paramGameItem.d))
       {
-        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramGameItem.c, (Drawable)localObject, (Drawable)localObject);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+        this.d = URLDrawable.getDrawable(paramGameItem.d, (Drawable)localObject, (Drawable)localObject);
+        this.a.setBackgroundDrawable(this.d);
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
+        this.a.setBackgroundDrawable((Drawable)localObject);
       }
-      this.jdField_a_of_type_JavaLangString = paramGameItem.c;
+      this.e = paramGameItem.d;
       label174:
-      if (!TextUtils.isEmpty(paramGameItem.b)) {
-        this.b.setText(paramGameItem.b);
+      if (!TextUtils.isEmpty(paramGameItem.c)) {
+        this.c.setText(paramGameItem.c);
       }
     }
   }

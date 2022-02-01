@@ -21,13 +21,8 @@ import mqq.os.MqqHandler;
 
 public class VSReporter
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  
-  public static long a()
-  {
-    return jdField_a_of_type_Long;
-  }
+  private static int a;
+  private static long b;
   
   public static COMM.Entry a(String paramString1, String paramString2)
   {
@@ -52,7 +47,7 @@ public class VSReporter
   
   public static List<COMM.Entry> a()
   {
-    return new ArrayList(Arrays.asList(new COMM.Entry[] { a("uin", String.valueOf(CommonDataAdapter.a().a())), a("timestamp", String.valueOf(System.currentTimeMillis())), a("qua", QUA.getQUA3()), a("version", "8.7.0.5295"), a("imei", MobileInfoUtil.getImei()), a("idfa", ""), a("idfv", ""), a("android_id", Settings.Secure.getString(CommonDataAdapter.a().a().getContentResolver(), "android_id")) }));
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { a("uin", String.valueOf(CommonDataAdapter.a().c())), a("timestamp", String.valueOf(System.currentTimeMillis())), a("qua", QUA.getQUA3()), a("version", "8.8.17.5770"), a("imei", MobileInfoUtil.getImei()), a("idfa", ""), a("idfv", ""), a("android_id", Settings.Secure.getString(CommonDataAdapter.a().b().getContentResolver(), "android_id")) }));
   }
   
   public static List<COMM.Entry> a(int paramInt, long paramLong1, String paramString1, long paramLong2, String paramString2)
@@ -96,17 +91,9 @@ public class VSReporter
   public static List<COMM.Entry> a(List<COMM.Entry> paramList)
   {
     if (paramList != null) {
-      paramList.add(a("unique_id", String.valueOf(a())));
+      paramList.add(a("unique_id", String.valueOf(c())));
     }
     return paramList;
-  }
-  
-  public static void a()
-  {
-    long l = System.currentTimeMillis() / 1000L;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Long = l << 32 | i;
-    jdField_a_of_type_Int = i + 1;
   }
   
   public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
@@ -132,6 +119,14 @@ public class VSReporter
     return null;
   }
   
+  public static void b()
+  {
+    long l = System.currentTimeMillis() / 1000L;
+    int i = a;
+    b = l << 32 | i;
+    a = i + 1;
+  }
+  
   public static void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
   {
     b("", paramString1, paramString2, paramInt1, paramInt2, paramVarArgs);
@@ -141,10 +136,15 @@ public class VSReporter
   {
     SubscribeReportController.a(null, paramString1, paramString2, paramString3, paramInt1, paramInt2, a(0, paramVarArgs), a(1, paramVarArgs), a(2, paramVarArgs), a(3, paramVarArgs));
   }
+  
+  public static long c()
+  {
+    return b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.support.VSReporter
  * JD-Core Version:    0.7.0.1
  */

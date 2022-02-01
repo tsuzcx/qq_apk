@@ -20,42 +20,42 @@ class OfflineFileMessageProcessor$2
   
   public ToServiceMsg a()
   {
-    ToServiceMsg localToServiceMsg = OfflineFileMessageProcessor.c(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor).createToServiceMsg("MessageSvc.PbSendMsg");
-    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    ToServiceMsg localToServiceMsg = OfflineFileMessageProcessor.c(this.e).createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.a);
     localToServiceMsg.extraData.putLong("msgsize", 0L);
-    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.uniseq);
+    localToServiceMsg.extraData.putLong("uniseq", this.b.uniseq);
     localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.uuid);
+    localToServiceMsg.extraData.putString("uuid", this.b.uuid);
     localToServiceMsg.extraData.putByte("cmd", (byte)0);
     localToServiceMsg.extraData.putByte("keyType", (byte)0);
-    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.busiType);
-    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
-    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.queueSeq);
-    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.sessionId);
-    localToServiceMsg.extraData.putInt("random", MessageUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.msgUid));
-    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.msgSeq));
+    localToServiceMsg.extraData.putInt("busiType", this.b.busiType);
+    localToServiceMsg.extraData.putString("toUin", this.a);
+    localToServiceMsg.extraData.putLong("queueSeq", this.b.queueSeq);
+    localToServiceMsg.extraData.putLong("sessionid", this.b.sessionId);
+    localToServiceMsg.extraData.putInt("random", MessageUtils.b(this.b.msgUid));
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.b.msgSeq));
     localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
-    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.c);
     TransMsgContext localTransMsgContext = new TransMsgContext();
-    localTransMsgContext.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.subCmd;
-    localTransMsgContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    msg_svc.PbSendMsgReq localPbSendMsgReq = MessageProtoCodec.a(OfflineFileMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor), 13, this.jdField_a_of_type_JavaLangString, localTransMsgContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.msgSeq, MessageUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.msgUid));
-    OfflineFileMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo);
-    OfflineFileMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo, localTransMsgContext);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.entity != null) {
-      localToServiceMsg.extraData.putLong("tmpSessionType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.entity.tmpSessionType);
+    localTransMsgContext.a = this.b.subCmd;
+    localTransMsgContext.b = this.d;
+    msg_svc.PbSendMsgReq localPbSendMsgReq = MessageProtoCodec.a(OfflineFileMessageProcessor.d(this.e), 13, this.a, localTransMsgContext, this.b.msgSeq, MessageUtils.b(this.b.msgUid));
+    OfflineFileMessageProcessor.a(this.e, localPbSendMsgReq, this.b);
+    OfflineFileMessageProcessor.a(this.e, localPbSendMsgReq, this.b, localTransMsgContext);
+    if (this.b.entity != null) {
+      localToServiceMsg.extraData.putLong("tmpSessionType", this.b.entity.tmpSessionType);
     }
-    if (QFileAssistantUtils.a(this.jdField_a_of_type_JavaLangString)) {
-      OfflineFileMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOfflineFileMessageProcessor, localPbSendMsgReq);
+    if (QFileAssistantUtils.a(this.a)) {
+      OfflineFileMessageProcessor.a(this.e, localPbSendMsgReq);
     }
     localToServiceMsg.putWupBuffer(localPbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong(FileTransferObserver.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo.observerSeq);
+    localToServiceMsg.extraData.putLong(FileTransferObserver.class.getName(), this.b.observerSeq);
     return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.OfflineFileMessageProcessor.2
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ class WebRecordApiPlugin$AudioApiHelper$1
       localObject = (JSONObject)paramMessage.obj;
       paramMessage = ((JSONObject)localObject).optString("msg", "");
       localObject = ((JSONObject)localObject).optString("path", "");
-      localWebRecordApiPlugin = this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
-      str = WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin);
+      localWebRecordApiPlugin = this.a.d;
+      str = WebRecordApiPlugin.a(this.a.d);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("{'code':1,'recordID':'");
       localStringBuilder.append((String)localObject);
@@ -45,8 +45,8 @@ class WebRecordApiPlugin$AudioApiHelper$1
       localObject = (JSONObject)paramMessage.obj;
       paramMessage = ((JSONObject)localObject).optString("msg", "");
       localObject = ((JSONObject)localObject).optString("path", "");
-      localWebRecordApiPlugin = this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin;
-      str = WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin);
+      localWebRecordApiPlugin = this.a.d;
+      str = WebRecordApiPlugin.a(this.a.d);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("{'code':0,'recordID':'");
       localStringBuilder.append((String)localObject);
@@ -67,8 +67,8 @@ class WebRecordApiPlugin$AudioApiHelper$1
         QLog.d("QQRecorder", 2, paramMessage.toString());
       }
       WebRecordApiPlugin.AudioApiHelper.a(this.a).c();
-      AudioUtil.b(2131230748, false);
-      QQAudioUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, false);
+      AudioUtil.b(2131230816, false);
+      QQAudioUtils.a(this.a.a, false);
       return;
     }
     this.a.a(1);
@@ -76,7 +76,7 @@ class WebRecordApiPlugin$AudioApiHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WebRecordApiPlugin.AudioApiHelper.1
  * JD-Core Version:    0.7.0.1
  */

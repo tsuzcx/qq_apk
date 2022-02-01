@@ -18,7 +18,7 @@ class NearbyProfileDisplayTribePanel$27
   
   public void onClick(View paramView)
   {
-    if (this.a.p)
+    if (this.a.aa)
     {
       NearbyProfileDisplayTribePanel.b(this.a);
       return;
@@ -31,32 +31,32 @@ class NearbyProfileDisplayTribePanel$27
     for (;;)
     {
       j = k;
-      if (i >= this.a.a.mPicInfo.size()) {
+      if (i >= this.a.e.mPicInfo.size()) {
         break;
       }
-      if (localPicInfo.jdField_a_of_type_Int == ((PicInfo)this.a.a.mPicInfo.get(i)).jdField_a_of_type_Int)
+      if (localPicInfo.a == ((PicInfo)this.a.e.mPicInfo.get(i)).a)
       {
         j = i;
         break;
       }
       i += 1;
     }
-    this.a.a.showBigPhoto(j, paramView);
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
-    if (this.a.a.mMode == 3) {
+    this.a.e.showBigPhoto(j, paramView);
+    ReportController.b(this.a.e.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
+    if (this.a.e.mMode == 3) {
       paramView = "2";
     } else {
       paramView = "1";
     }
     ReportController.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, paramView, "", "", "");
-    if (NearbyProxy.a(this.a.a.allinone.profileEntryType, this.a.a.mMode)) {
-      NearbyManagerHelper.a(this.a.a.app).a(localPicInfo.jdField_a_of_type_JavaLangString);
+    if (NearbyProxy.a(this.a.e.allinone.profileEntryType, this.a.e.mMode)) {
+      NearbyManagerHelper.a(this.a.e.app).b(localPicInfo.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.27
  * JD-Core Version:    0.7.0.1
  */

@@ -15,21 +15,20 @@ import java.util.HashMap;
 
 public class ARPreSoResourceDownload
 {
-  public QQAppInterface a;
-  private IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = null;
-  private IPreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<ARPreSoResourceDownload.DownloadInfo> jdField_a_of_type_JavaUtilArrayList = null;
-  private HashMap<String, ARPreSoResourceDownload.ARResourceDownloadCallback> jdField_a_of_type_JavaUtilHashMap;
+  public QQAppInterface a = null;
+  private ArrayList<ARPreSoResourceDownload.DownloadInfo> b = null;
+  private Object c = new Object();
+  private IHttpEngineService d = null;
+  private IPreDownloadController e;
+  private HashMap<String, ARPreSoResourceDownload.ARResourceDownloadCallback> f;
   
   public ARPreSoResourceDownload(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = ((IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all"));
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController = ((IPreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPreDownloadController.class));
+    this.a = paramQQAppInterface;
+    this.d = ((IHttpEngineService)this.a.getRuntimeService(IHttpEngineService.class, "all"));
+    this.b = new ArrayList();
+    this.f = new HashMap();
+    this.e = ((IPreDownloadController)this.a.getRuntimeService(IPreDownloadController.class));
   }
   
   public boolean a(ARPreSoResourceDownload.DownloadInfo paramDownloadInfo, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
@@ -43,15 +42,15 @@ public class ARPreSoResourceDownload
       ??? = new ARPreSoResourceDownload.2(this);
       HttpNetReq localHttpNetReq = new HttpNetReq();
       localHttpNetReq.mCallback = ((INetEngineListener)???);
-      localHttpNetReq.mReqUrl = paramDownloadInfo.jdField_a_of_type_JavaLangString;
+      localHttpNetReq.mReqUrl = paramDownloadInfo.b;
       localHttpNetReq.mHttpMethod = 0;
-      localHttpNetReq.mOutPath = paramDownloadInfo.c;
+      localHttpNetReq.mOutPath = paramDownloadInfo.d;
       localHttpNetReq.mPrioty = 1;
       localHttpNetReq.mSupportBreakResume = true;
-      paramDownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      paramDownloadInfo.g = localHttpNetReq;
+      synchronized (this.c)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramDownloadInfo);
+        this.b.add(paramDownloadInfo);
         int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
         if (i != 1)
         {
@@ -76,12 +75,12 @@ public class ARPreSoResourceDownload
         label152:
         i = 2;
         label154:
-        localObject1 = new ARPreSoResourceDownload.3(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDownloadInfo.b, (HttpEngineTask.IHttpEngineTask)localObject1, localHttpNetReq, paramDownloadInfo, paramARResourceDownloadCallback);
-        this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController.requestPreDownload(10065, "prd", paramDownloadInfo.b, 0, paramDownloadInfo.jdField_a_of_type_JavaLangString, localHttpNetReq.mOutPath, i, 0, false, (AbsPreDownloadTask)localObject1);
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramDownloadInfo.b, paramARResourceDownloadCallback);
+        localObject1 = new ARPreSoResourceDownload.3(this, this.a, paramDownloadInfo.c, (HttpEngineTask.IHttpEngineTask)localObject1, localHttpNetReq, paramDownloadInfo, paramARResourceDownloadCallback);
+        this.e.requestPreDownload(10065, "prd", paramDownloadInfo.c, 0, paramDownloadInfo.b, localHttpNetReq.mOutPath, i, 0, false, (AbsPreDownloadTask)localObject1);
+        this.f.put(paramDownloadInfo.c, paramARResourceDownloadCallback);
         paramARResourceDownloadCallback = new StringBuilder();
         paramARResourceDownloadCallback.append("submitDownloadTask. url = ");
-        paramARResourceDownloadCallback.append(paramDownloadInfo.jdField_a_of_type_JavaLangString);
+        paramARResourceDownloadCallback.append(paramDownloadInfo.b);
         QLog.i("AREngine_ARPreSoResourceDownload", 1, paramARResourceDownloadCallback.toString());
         return true;
       }
@@ -91,7 +90,7 @@ public class ARPreSoResourceDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload
  * JD-Core Version:    0.7.0.1
  */

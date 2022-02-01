@@ -23,20 +23,20 @@ class DoodleMsgLayout$1
     if (paramView == DoodleMsgLayout.a(this.a))
     {
       DoodleMsgLayout.a(this.a, true);
-      DoodleMsgLayout.a(this.a);
+      DoodleMsgLayout.b(this.a);
       return;
     }
-    if (paramView == DoodleMsgLayout.b(this.a))
+    if (paramView == DoodleMsgLayout.c(this.a))
     {
       ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
       return;
     }
-    DoodleMsgLayout.c(this.a);
+    DoodleMsgLayout.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.1
  * JD-Core Version:    0.7.0.1
  */

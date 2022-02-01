@@ -48,15 +48,15 @@ class QFlutterFaceLoader$1
           {
             QFlutterFaceLoader.a(this.a, j, str2);
             ((ArrayList)localObject).add(localDecodeRequest);
-            QFlutterFaceLoader.a(this.a).put(localDecodeRequest.c, str1);
+            QFlutterFaceLoader.a(this.a).put(localDecodeRequest.e, str1);
           }
           i += 1;
         }
         if (!((ArrayList)localObject).isEmpty())
         {
-          paramContext = QFlutterFaceLoader.a(this.a).obtainMessage(0);
+          paramContext = QFlutterFaceLoader.b(this.a).obtainMessage(0);
           paramContext.obj = localObject;
-          QFlutterFaceLoader.a(this.a).sendMessage(paramContext);
+          QFlutterFaceLoader.b(this.a).sendMessage(paramContext);
         }
       }
     }
@@ -64,7 +64,7 @@ class QFlutterFaceLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader.1
  * JD-Core Version:    0.7.0.1
  */

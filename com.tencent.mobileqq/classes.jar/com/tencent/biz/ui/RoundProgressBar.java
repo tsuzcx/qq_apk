@@ -14,19 +14,19 @@ import mqq.os.MqqHandler;
 public class RoundProgressBar
   extends View
 {
-  private float jdField_a_of_type_Float = 20.0F;
-  private int jdField_a_of_type_Int = -252645121;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  Runnable jdField_a_of_type_JavaLangRunnable = new RoundProgressBar.1(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float = 18.0F;
-  private int jdField_b_of_type_Int = -1529614848;
-  private float jdField_c_of_type_Float = 5.0F;
-  private int jdField_c_of_type_Int = -16777216;
-  private int d = 100;
-  private int e = 0;
-  private int f;
+  Runnable a = new RoundProgressBar.1(this);
+  private Paint b = new Paint();
+  private int c = -252645121;
+  private int d = -1529614848;
+  private int e = -16777216;
+  private float f = 20.0F;
+  private float g = 18.0F;
+  private float h = 5.0F;
+  private int i = 100;
+  private int j = 0;
+  private int k;
+  private RectF l = new RectF();
+  private boolean m = true;
   
   public RoundProgressBar(Context paramContext)
   {
@@ -45,64 +45,117 @@ public class RoundProgressBar
   
   private void a(int paramInt)
   {
-    this.f = paramInt;
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30L);
+    this.k = paramInt;
+    ThreadManager.getUIHandler().postDelayed(this.a, 30L);
+  }
+  
+  public int getCircleColor()
+  {
+    return this.c;
+  }
+  
+  public int getCircleProgressColor()
+  {
+    return this.d;
+  }
+  
+  public int getMax()
+  {
+    try
+    {
+      int n = this.i;
+      return n;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int getProgress()
+  {
+    try
+    {
+      int n = this.j;
+      return n;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public float getRoundWidth()
+  {
+    return this.h;
+  }
+  
+  public int getTextColor()
+  {
+    return this.e;
+  }
+  
+  public float getTextSize()
+  {
+    return this.f;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = getWidth() / 2;
-    float f1 = i;
-    int j = (int)(f1 - this.jdField_c_of_type_Float / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_c_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    paramCanvas.drawCircle(f1, f1, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_c_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    float f2 = i - j;
-    float f3 = i + j;
+    int n = getWidth() / 2;
+    float f1 = n;
+    int i1 = (int)(f1 - this.h / 2.0F);
+    this.b.setColor(this.c);
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setStrokeWidth(this.h);
+    this.b.setAntiAlias(true);
+    paramCanvas.drawCircle(f1, f1, i1, this.b);
+    this.b.setStrokeWidth(this.h);
+    this.b.setColor(this.d);
+    Object localObject = this.l;
+    float f2 = n - i1;
+    float f3 = n + i1;
     ((RectF)localObject).set(f2, f2, f3, f3);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, this.e * 360 / this.d, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT_BOLD);
-    i = this.e * 100 / this.d;
-    localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+    this.b.setStyle(Paint.Style.STROKE);
+    paramCanvas.drawArc(this.l, -90.0F, this.j * 360 / this.i, false, this.b);
+    this.b.setStrokeWidth(0.0F);
+    this.b.setColor(this.e);
+    this.b.setTextSize(this.f);
+    this.b.setStyle(Paint.Style.FILL);
+    this.b.setTypeface(Typeface.DEFAULT_BOLD);
+    n = this.j * 100 / this.i;
+    localObject = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i);
+    localStringBuilder.append(n);
     localStringBuilder.append("");
     f2 = ((Paint)localObject).measureText(localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_b_of_type_Float);
-    f3 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText("%");
-    if ((i != 0) && (this.jdField_a_of_type_Boolean))
+    this.b.setTextSize(this.g);
+    f3 = this.b.measureText("%");
+    if ((n != 0) && (this.m))
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Float);
+      this.b.setTextSize(this.f);
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(n);
       ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
       f3 = f1 - (f3 + f2) / 2.0F;
-      paramCanvas.drawText((String)localObject, f3, this.jdField_a_of_type_Float / 2.0F + f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_b_of_type_Float);
-      paramCanvas.drawText("%", f3 + f2, f1 + this.jdField_a_of_type_Float / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawText((String)localObject, f3, this.f / 2.0F + f1, this.b);
+      this.b.setTextSize(this.g);
+      paramCanvas.drawText("%", f3 + f2, f1 + this.f / 2.0F, this.b);
     }
   }
   
   public void setCircleColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void setCircleProgressColor(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void setMax(int paramInt)
@@ -110,7 +163,7 @@ public class RoundProgressBar
     if (paramInt >= 0) {
       try
       {
-        this.d = paramInt;
+        this.i = paramInt;
         return;
       }
       finally
@@ -125,26 +178,26 @@ public class RoundProgressBar
   
   public void setNeedShowProgreeText(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
   }
   
   public void setPercentMarkTextSize(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
+    this.g = paramFloat;
   }
   
   public void setProgress(int paramInt)
   {
     if (paramInt >= 0)
     {
-      int i = paramInt;
+      int n = paramInt;
       try
       {
-        if (paramInt > this.d) {
-          i = this.d;
+        if (paramInt > this.i) {
+          n = this.i;
         }
-        if ((i <= this.d) && (this.e != i)) {
-          a(i);
+        if ((n <= this.i) && (this.j != n)) {
+          a(n);
         }
         return;
       }
@@ -160,22 +213,22 @@ public class RoundProgressBar
   
   public void setRoundWidth(float paramFloat)
   {
-    this.jdField_c_of_type_Float = paramFloat;
+    this.h = paramFloat;
   }
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void setTextSize(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.f = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.RoundProgressBar
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ import com.tencent.aelight.camera.aeeditor.manage.AEEditorDataServiceHandler;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaClipModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaResourceModel;
+import com.tencent.qcircle.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -34,21 +34,21 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/module/edit/AEVideoEditViewModel;", "Landroidx/lifecycle/ViewModel;", "()V", "AUTO_TEMPLATE_KEY_FRAME_COUNT", "", "MAX_SAMPLE_SIZE", "autoTemplateRequested", "", "recommendFrameCacheList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Landroid/graphics/Bitmap;", "tavCutVideoSession", "Lcom/tencent/tavcut/session/TAVCutVideoSession;", "getTavCutVideoSession", "()Lcom/tencent/tavcut/session/TAVCutVideoSession;", "setTavCutVideoSession", "(Lcom/tencent/tavcut/session/TAVCutVideoSession;)V", "createFrameByteList", "Ljava/util/ArrayList;", "", "bitmaps", "", "requestAutoTemplate", "", "requestAutoTemplateFromPic", "pics", "", "aelight_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/module/edit/AEVideoEditViewModel;", "Landroidx/lifecycle/ViewModel;", "()V", "AUTO_TEMPLATE_KEY_FRAME_COUNT", "", "MAX_SAMPLE_SIZE", "autoTemplateRequested", "", "recommendFrameCacheList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Landroid/graphics/Bitmap;", "tavCutVideoSession", "Lcom/tencent/qcircle/tavcut/session/TAVCutVideoSession;", "getTavCutVideoSession", "()Lcom/tencent/qcircle/tavcut/session/TAVCutVideoSession;", "setTavCutVideoSession", "(Lcom/tencent/qcircle/tavcut/session/TAVCutVideoSession;)V", "createFrameByteList", "Ljava/util/ArrayList;", "", "bitmaps", "", "requestAutoTemplate", "", "requestAutoTemplateFromPic", "pics", "", "aelight_impl_release"}, k=1, mv={1, 1, 16})
 public final class AEVideoEditViewModel
   extends ViewModel
 {
-  private final int jdField_a_of_type_Int = 6;
-  @Nullable
-  private TAVCutVideoSession jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession;
-  private CopyOnWriteArrayList<Bitmap> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  private boolean jdField_a_of_type_Boolean;
+  private final int a = 6;
   private final int b = 240;
+  @Nullable
+  private TAVCutVideoSession c;
+  private CopyOnWriteArrayList<Bitmap> d;
+  private boolean e;
   
-  private final ArrayList<byte[]> a(List<Bitmap> paramList)
+  private final ArrayList<byte[]> b(List<Bitmap> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    double d1 = 102400.0F / this.jdField_a_of_type_Int;
+    double d1 = 102400.0F / this.a;
     double d2 = paramList.size();
     Double.isNaN(d1);
     Double.isNaN(d2);
@@ -100,10 +100,10 @@ public final class AEVideoEditViewModel
   
   public final void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession;
+    Object localObject1 = this.c;
     int n = 2;
     int i = n;
     Object localObject2;
@@ -114,20 +114,20 @@ public final class AEVideoEditViewModel
       Intrinsics.checkExpressionValueIsNotNull(localObject3, "session.duration");
       long l1 = ((CMTime)localObject3).getTimeUs();
       long l2 = 1000;
-      int j = this.jdField_a_of_type_Int;
+      int j = this.a;
       if (1 <= j)
       {
         i = 1;
         for (;;)
         {
-          ((List)localObject2).add(Long.valueOf(l1 * l2 / (this.jdField_a_of_type_Int + 1) * i));
+          ((List)localObject2).add(Long.valueOf(l1 * l2 / (this.a + 1) * i));
           if (i == j) {
             break;
           }
           i += 1;
         }
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null)
+      if (this.d == null)
       {
         localObject3 = (AEVideoEditViewModel)this;
         localObject2 = ((TAVCutVideoSession)localObject1).getMultiVideoFrame((List)localObject2, 250);
@@ -136,7 +136,7 @@ public final class AEVideoEditViewModel
           if (((List)localObject2).isEmpty()) {
             return;
           }
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList((Collection)localObject2);
+          this.d = new CopyOnWriteArrayList((Collection)localObject2);
           localObject2 = Unit.INSTANCE;
         }
       }
@@ -205,18 +205,18 @@ public final class AEVideoEditViewModel
       return;
     }
     label355:
-    localObject1 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    localObject1 = this.d;
     if (localObject1 != null)
     {
-      localObject1 = a((List)localObject1);
-      localObject2 = QQStoryContext.a().getBusinessHandler(PeakAppInterface.e);
+      localObject1 = b((List)localObject1);
+      localObject2 = QQStoryContext.k().getBusinessHandler(PeakAppInterface.f);
       if (localObject2 != null)
       {
         localObject2 = (AEEditorDataServiceHandler)localObject2;
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.e)
         {
           ((AEEditorDataServiceHandler)localObject2).a("MqCircleEditor", (ArrayList)localObject1, i);
-          this.jdField_a_of_type_Boolean = true;
+          this.e = true;
         }
       }
       else
@@ -228,25 +228,25 @@ public final class AEVideoEditViewModel
   
   public final void a(@Nullable TAVCutVideoSession paramTAVCutVideoSession)
   {
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession = paramTAVCutVideoSession;
+    this.c = paramTAVCutVideoSession;
   }
   
   public final void a(@NotNull List<String> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "pics");
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return;
     }
     Object localObject1 = (List)new ArrayList();
     int j = paramList.size();
-    int k = this.jdField_a_of_type_Int;
+    int k = this.a;
     int i;
     if (1 <= k)
     {
       i = 1;
       for (;;)
       {
-        ((List)localObject1).add(Integer.valueOf(j * 100 / (this.jdField_a_of_type_Int + 1) * i / 100));
+        ((List)localObject1).add(Integer.valueOf(j * 100 / (this.a + 1) * i / 100));
         if (i == k) {
           break;
         }
@@ -254,7 +254,7 @@ public final class AEVideoEditViewModel
       }
     }
     Object localObject2;
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList == null)
+    if (this.d == null)
     {
       localObject2 = (AEVideoEditViewModel)this;
       localObject2 = (Iterable)localObject1;
@@ -282,18 +282,18 @@ public final class AEVideoEditViewModel
       if (((List)localObject1).isEmpty()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList((Collection)localObject1);
+      this.d = new CopyOnWriteArrayList((Collection)localObject1);
       localObject1 = Unit.INSTANCE;
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    localObject1 = this.d;
     if (localObject1 != null)
     {
-      localObject1 = a((List)localObject1);
-      localObject2 = QQStoryContext.a().getBusinessHandler(PeakAppInterface.e);
+      localObject1 = b((List)localObject1);
+      localObject2 = QQStoryContext.k().getBusinessHandler(PeakAppInterface.f);
       if (localObject2 != null)
       {
         localObject2 = (AEEditorDataServiceHandler)localObject2;
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.e)
         {
           if (paramList.size() <= 1) {
             i = 1;
@@ -301,7 +301,7 @@ public final class AEVideoEditViewModel
             i = 3;
           }
           ((AEEditorDataServiceHandler)localObject2).a("MqCircleEditor", (ArrayList)localObject1, i);
-          this.jdField_a_of_type_Boolean = true;
+          this.e = true;
         }
       }
       else
@@ -313,7 +313,7 @@ public final class AEVideoEditViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEVideoEditViewModel
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package cooperation.qzone.mobilereport;
 import NS_USER_ACTION_REPORT.UserCommReport;
 import android.os.Build;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import cooperation.qzone.QUA;
 
@@ -19,9 +20,15 @@ public class UserCommReportBuilder
     localUserCommReport.client_type = "SQ";
     localUserCommReport.network_type = this.network_type;
     localUserCommReport.qua = QUA.getQUA3();
-    localUserCommReport.app_version = AppSetting.f();
-    localUserCommReport.os_version = DeviceInfoUtil.e();
-    localUserCommReport.mobile_type = Build.MODEL;
+    localUserCommReport.app_version = AppSetting.h();
+    if (PrivacyPolicyHelper.d())
+    {
+      localUserCommReport.os_version = DeviceInfoUtil.g();
+      localUserCommReport.mobile_type = Build.MODEL;
+      return localUserCommReport;
+    }
+    localUserCommReport.os_version = "";
+    localUserCommReport.mobile_type = "";
     return localUserCommReport;
   }
   
@@ -39,7 +46,7 @@ public class UserCommReportBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.mobilereport.UserCommReportBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,13 @@ import android.os.Handler;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.c.j.c;
-import com.tencent.mobileqq.msf.core.s;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.d.j.c;
+import com.tencent.mobileqq.msf.core.t;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.msf.sdk.y;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -76,7 +77,7 @@ public final class a
         paramContext = (WifiManager)paramContext.getSystemService("wifi");
         if (paramContext != null)
         {
-          paramContext = paramContext.getConnectionInfo();
+          paramContext = NetworkMonitor.getConnectionInfo(paramContext);
           i2 = 1;
           if (paramContext == null) {
             break label67;
@@ -570,14 +571,14 @@ public final class a
     //   1: aload_0
     //   2: getfield 70	com/tencent/mobileqq/msf/sdk/a/a:b	Ljava/lang/String;
     //   5: putfield 72	com/tencent/mobileqq/msf/sdk/a/a:c	Ljava/lang/String;
-    //   8: invokestatic 502	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   11: ldc_w 524
-    //   14: invokevirtual 505	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   17: checkcast 526	android/net/ConnectivityManager
+    //   8: invokestatic 504	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   11: ldc_w 526
+    //   14: invokevirtual 507	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   17: checkcast 528	android/net/ConnectivityManager
     //   20: astore_3
     //   21: aload_3
     //   22: iconst_0
-    //   23: invokevirtual 530	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
+    //   23: invokevirtual 532	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
     //   26: astore_2
     //   27: aload_2
     //   28: astore_1
@@ -585,28 +586,28 @@ public final class a
     //   30: ifnonnull +13 -> 43
     //   33: aload_3
     //   34: bipush 50
-    //   36: invokevirtual 530	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
+    //   36: invokevirtual 532	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
     //   39: astore_1
     //   40: goto +3 -> 43
     //   43: aload_1
     //   44: ifnull +12 -> 56
     //   47: aload_0
     //   48: aload_1
-    //   49: invokevirtual 450	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   49: invokevirtual 452	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   52: putfield 70	com/tencent/mobileqq/msf/sdk/a/a:b	Ljava/lang/String;
     //   55: return
     //   56: aconst_null
     //   57: astore_1
     //   58: aconst_null
     //   59: astore_2
-    //   60: invokestatic 502	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   63: invokevirtual 534	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   60: invokestatic 504	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   63: invokevirtual 536	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   66: getstatic 62	com/tencent/mobileqq/msf/sdk/a/a:h	Landroid/net/Uri;
     //   69: aconst_null
     //   70: aconst_null
     //   71: aconst_null
     //   72: aconst_null
-    //   73: invokevirtual 540	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   73: invokevirtual 542	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   76: astore_3
     //   77: aload_3
     //   78: ifnull +42 -> 120
@@ -615,7 +616,7 @@ public final class a
     //   83: aload_3
     //   84: astore_1
     //   85: aload_3
-    //   86: invokeinterface 545 1 0
+    //   86: invokeinterface 547 1 0
     //   91: ifeq +29 -> 120
     //   94: aload_3
     //   95: astore_2
@@ -624,9 +625,9 @@ public final class a
     //   98: aload_0
     //   99: aload_3
     //   100: aload_3
-    //   101: ldc_w 547
-    //   104: invokeinterface 551 2 0
-    //   109: invokeinterface 554 2 0
+    //   101: ldc_w 549
+    //   104: invokeinterface 553 2 0
+    //   109: invokeinterface 556 2 0
     //   114: putfield 70	com/tencent/mobileqq/msf/sdk/a/a:b	Ljava/lang/String;
     //   117: goto -40 -> 77
     //   120: aload_3
@@ -634,7 +635,7 @@ public final class a
     //   124: aload_3
     //   125: astore_1
     //   126: aload_1
-    //   127: invokeinterface 557 1 0
+    //   127: invokeinterface 559 1 0
     //   132: return
     //   133: astore_1
     //   134: goto +17 -> 151
@@ -642,35 +643,35 @@ public final class a
     //   138: aload_1
     //   139: astore_2
     //   140: aload_3
-    //   141: invokevirtual 226	java/lang/Throwable:printStackTrace	()V
+    //   141: invokevirtual 228	java/lang/Throwable:printStackTrace	()V
     //   144: aload_1
     //   145: ifnull +53 -> 198
     //   148: goto -22 -> 126
     //   151: aload_2
     //   152: ifnull +9 -> 161
     //   155: aload_2
-    //   156: invokeinterface 557 1 0
+    //   156: invokeinterface 559 1 0
     //   161: aload_1
     //   162: athrow
-    //   163: getstatic 217	com/tencent/mobileqq/msf/sdk/a/a:a	Ljava/lang/String;
+    //   163: getstatic 219	com/tencent/mobileqq/msf/sdk/a/a:a	Ljava/lang/String;
     //   166: astore_1
-    //   167: new 286	java/lang/StringBuilder
+    //   167: new 288	java/lang/StringBuilder
     //   170: dup
-    //   171: invokespecial 287	java/lang/StringBuilder:<init>	()V
+    //   171: invokespecial 289	java/lang/StringBuilder:<init>	()V
     //   174: astore_2
     //   175: aload_2
-    //   176: ldc_w 559
-    //   179: invokevirtual 293	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: ldc_w 561
+    //   179: invokevirtual 295	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: pop
     //   183: aload_2
     //   184: aload_3
-    //   185: invokevirtual 296	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   188: pop
     //   189: aload_1
     //   190: iconst_1
     //   191: aload_2
-    //   192: invokevirtual 299	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: invokestatic 302	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   192: invokevirtual 301	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   195: invokestatic 304	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   198: return
     //   199: astore_3
     //   200: goto -37 -> 163
@@ -750,7 +751,7 @@ public final class a
       localObject2 = localStringBuilder;
       if (localObject3 != null)
       {
-        localObject3 = ((WifiManager)localObject3).getConnectionInfo();
+        localObject3 = NetworkMonitor.getConnectionInfo((WifiManager)localObject3);
         localObject2 = localStringBuilder;
         if (localObject3 != null)
         {
@@ -931,7 +932,7 @@ public final class a
         i2 = i1;
         try
         {
-          localObject1 = NetworkInterface.getNetworkInterfaces();
+          localObject1 = NetworkMonitor.getNetworkInterfaces();
           do
           {
             do
@@ -1017,12 +1018,12 @@ public final class a
     try
     {
       int i1;
-      if (s.b != null)
+      if (t.b != null)
       {
         paramBoolean = bool;
-        if (s.b.sender != null)
+        if (t.b.sender != null)
         {
-          localObject1 = s.b.sender.l();
+          localObject1 = t.b.sender.l();
           paramBoolean = bool;
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
@@ -1073,10 +1074,10 @@ public final class a
     //   2: aconst_null
     //   3: astore_3
     //   4: aload_1
-    //   5: ldc_w 524
+    //   5: ldc_w 526
     //   8: invokevirtual 134	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   11: checkcast 526	android/net/ConnectivityManager
-    //   14: invokevirtual 647	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   11: checkcast 528	android/net/ConnectivityManager
+    //   14: invokevirtual 649	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   17: astore 4
     //   19: aload 4
     //   21: astore_3
@@ -1084,18 +1085,18 @@ public final class a
     //   25: astore_1
     //   26: goto +32 -> 58
     //   29: astore 4
-    //   31: getstatic 217	com/tencent/mobileqq/msf/sdk/a/a:a	Ljava/lang/String;
+    //   31: getstatic 219	com/tencent/mobileqq/msf/sdk/a/a:a	Ljava/lang/String;
     //   34: iconst_1
     //   35: aload 4
-    //   37: invokevirtual 253	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   37: invokevirtual 255	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   40: aload 4
-    //   42: invokevirtual 770	java/lang/Exception:getCause	()Ljava/lang/Throwable;
-    //   45: invokestatic 225	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   42: invokevirtual 772	java/lang/Exception:getCause	()Ljava/lang/Throwable;
+    //   45: invokestatic 227	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   48: aload_0
     //   49: aload_1
     //   50: aload_3
     //   51: aload_2
-    //   52: invokespecial 772	com/tencent/mobileqq/msf/sdk/a/a:a	(Landroid/content/Context;Landroid/net/NetworkInfo;Landroid/net/NetworkInfo;)V
+    //   52: invokespecial 774	com/tencent/mobileqq/msf/sdk/a/a:a	(Landroid/content/Context;Landroid/net/NetworkInfo;Landroid/net/NetworkInfo;)V
     //   55: aload_0
     //   56: monitorexit
     //   57: return
@@ -1242,7 +1243,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.a.a
  * JD-Core Version:    0.7.0.1
  */

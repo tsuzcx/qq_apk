@@ -14,12 +14,12 @@ public class FriendMessageSender
   public void b()
   {
     super.b();
-    ((FriendAIOContext)this.a).g();
+    ((FriendAIOContext)this.a).P();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.input.FriendMessageSender
  * JD-Core Version:    0.7.0.1
  */

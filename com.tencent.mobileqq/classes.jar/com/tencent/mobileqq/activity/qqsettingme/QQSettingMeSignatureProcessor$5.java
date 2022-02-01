@@ -10,13 +10,13 @@ class QQSettingMeSignatureProcessor$5
   
   public void run()
   {
-    QQSettingMeRedTouchUtil.a(this.this$0.jdField_a_of_type_MqqAppAppRuntime, this.a, this.this$0.jdField_a_of_type_JavaUtilHashSet);
-    this.this$0.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(this.a);
+    QQSettingMeRedTouchUtil.a(this.this$0.c, this.a, this.this$0.f);
+    this.this$0.a.setValue(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSignatureProcessor.5
  * JD-Core Version:    0.7.0.1
  */

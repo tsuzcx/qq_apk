@@ -36,13 +36,13 @@ public class ReplyOnlyHelper
   {
     if (paramInt == 10)
     {
-      if ((this.a.a() != null) && (this.a.a().getIntent() != null))
+      if ((this.a.aX() != null) && (this.a.aX().getIntent() != null))
       {
-        Intent localIntent = this.a.a().getIntent();
+        Intent localIntent = this.a.aX().getIntent();
         long l = localIntent.getLongExtra("key_reply_only_uniseq", 0L);
         if (l > 0L)
         {
-          ChatMessage localChatMessage = ((ForwardMsgManager)this.a.a.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(l);
+          ChatMessage localChatMessage = ((ForwardMsgManager)this.a.d.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(l);
           Object localObject3 = localIntent.getStringExtra("troop_code");
           Object localObject1 = localObject3;
           if (TextUtils.isEmpty((CharSequence)localObject3)) {
@@ -62,12 +62,12 @@ public class ReplyOnlyHelper
           Object localObject2;
           if (l > 0L)
           {
-            localObject2 = (TroopManager)this.a.a.getManager(QQManagerFactory.TROOP_MANAGER);
+            localObject2 = (TroopManager)this.a.d.getManager(QQManagerFactory.TROOP_MANAGER);
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append(l);
             ((StringBuilder)localObject3).append("");
             localObject3 = ((StringBuilder)localObject3).toString();
-            TroopInfo localTroopInfo = ((TroopManager)localObject2).b((String)localObject3);
+            TroopInfo localTroopInfo = ((TroopManager)localObject2).f((String)localObject3);
             localObject2 = localObject3;
             if (localTroopInfo != null)
             {
@@ -81,7 +81,7 @@ public class ReplyOnlyHelper
           {
             localObject2 = null;
           }
-          ((ReplyHelper)this.a.a(119)).a(localChatMessage, 0, l, (String)localObject2);
+          ((ReplyHelper)this.a.q(119)).a(localChatMessage, 0, l, (String)localObject2);
         }
         localIntent.removeExtra("key_reply_only_uniseq");
         return;
@@ -94,7 +94,7 @@ public class ReplyOnlyHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.ReplyOnlyHelper
  * JD-Core Version:    0.7.0.1
  */

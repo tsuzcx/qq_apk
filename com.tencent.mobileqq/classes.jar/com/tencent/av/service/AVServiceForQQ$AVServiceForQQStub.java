@@ -16,8 +16,8 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.filter.EffectFilterTools.DataReport;
 import com.tencent.av.business.manager.pendant.EffectPendantTools.DataReport;
 import com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport;
-import com.tencent.av.ui.BeautyToolbar.DataReport;
 import com.tencent.av.ui.VoiceChangeDataReport;
+import com.tencent.av.ui.effect.toolbar.oldversion.BeautyToolbar.DataReport;
 import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.TraeHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -32,10 +32,10 @@ class AVServiceForQQ$AVServiceForQQStub
   public int a(long paramLong, int paramInt)
   {
     Object localObject;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localObject = this.a.a.b();
     } else {
-      localObject = VideoController.a();
+      localObject = VideoController.f();
     }
     int k = 0;
     int j = 0;
@@ -43,15 +43,15 @@ class AVServiceForQQ$AVServiceForQQStub
     if (localObject != null)
     {
       i = k;
-      if (((VideoController)localObject).d)
+      if (((VideoController)localObject).j)
       {
         i = k;
-        if (((VideoController)localObject).a().E == paramInt)
+        if (((VideoController)localObject).k().aQ == paramInt)
         {
           i = k;
-          if (((VideoController)localObject).a().jdField_f_of_type_Long == paramLong)
+          if (((VideoController)localObject).k().aN == paramLong)
           {
-            localObject = ((VideoController)localObject).c().iterator();
+            localObject = ((VideoController)localObject).U().iterator();
             paramInt = j;
             for (;;)
             {
@@ -59,7 +59,7 @@ class AVServiceForQQ$AVServiceForQQStub
               if (!((Iterator)localObject).hasNext()) {
                 break;
               }
-              if (((VideoController.GAudioFriends)((Iterator)localObject).next()).d == 1) {
+              if (((VideoController.GAudioFriends)((Iterator)localObject).next()).n == 1) {
                 paramInt += 1;
               }
             }
@@ -70,68 +70,51 @@ class AVServiceForQQ$AVServiceForQQStub
     return i;
   }
   
-  public AVPbInfo a(byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVServiceForQQ", 2, "processQCallPush in AVServiceForQQ");
-    }
-    VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    } else {
-      localVideoController = VideoController.a();
-    }
-    if (localVideoController != null) {
-      return localVideoController.a(paramArrayOfByte);
-    }
-    return null;
-  }
-  
   public void a()
   {
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
-    int i = localVideoController.e();
-    localVideoController.a("startSpeak", localVideoController.jdField_a_of_type_Long, true, true, -1);
-    localVideoController.a(-1L, i, localVideoController.e());
+    int i = localVideoController.D();
+    localVideoController.a("startSpeak", localVideoController.k, true, true, -1);
+    localVideoController.a(-1L, i, localVideoController.D());
   }
   
   public void a(long paramLong)
   {
     b();
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
-    if (localVideoController.d)
+    if (localVideoController.j)
     {
       if (paramLong == 0L) {
-        paramLong = localVideoController.jdField_a_of_type_Long;
+        paramLong = localVideoController.k;
       }
-      localVideoController.a(localVideoController.b, localVideoController.jdField_a_of_type_Long, 95);
+      localVideoController.a(localVideoController.l, localVideoController.k, 95);
       return;
     }
-    localVideoController.a(AVServiceForQQ.a(this.a), paramLong, 96);
+    localVideoController.a(AVServiceForQQ.b(this.a), paramLong, 96);
   }
   
   public void a(long paramLong, String paramString)
   {
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
-    if ((localVideoController.d) && (localVideoController.a().as)) {
+    if ((localVideoController.j) && (localVideoController.k().ca)) {
       return;
     }
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("enterRoom, groupId[");
     localStringBuilder.append(paramLong);
@@ -141,23 +124,23 @@ class AVServiceForQQ$AVServiceForQQStub
     localStringBuilder.append(l);
     localStringBuilder.append("]");
     QLog.w("AVServiceForQQ", 1, localStringBuilder.toString());
-    localVideoController.a().b("enterRoom", true);
+    localVideoController.k().b("enterRoom", true);
     AVServiceForQQ.a(this.a, TraeHelper.a());
     AVServiceForQQ.a(this.a).a(null);
-    AVServiceForQQ.a(this.a).c();
-    AVServiceForQQ.a(this.a).d();
+    AVServiceForQQ.a(this.a).f();
+    AVServiceForQQ.a(this.a).g();
     paramString = this.a;
-    paramString.jdField_a_of_type_JavaLangString = SessionMgr.a(AVServiceForQQ.a(paramString), String.valueOf(paramLong), new int[0]);
-    SessionMgr.a().a(this.a.jdField_a_of_type_JavaLangString, false);
-    if (localVideoController.d) {
-      localVideoController.a(localVideoController.b, localVideoController.jdField_a_of_type_Long, 94);
+    paramString.c = SessionMgr.a(AVServiceForQQ.b(paramString), String.valueOf(paramLong), new int[0]);
+    SessionMgr.a().a(this.a.c, false);
+    if (localVideoController.j) {
+      localVideoController.a(localVideoController.l, localVideoController.k, 94);
     }
-    SessionMgr.a().b(this.a.jdField_a_of_type_JavaLangString);
-    AVServiceForQQ.a(this.a).b();
+    SessionMgr.a().e(this.a.c);
+    AVServiceForQQ.a(this.a).d();
     AVServiceForQQ.a(this.a).a("DEVICE_EARPHONE;DEVICE_SPEAKERPHONE;DEVICE_BLUETOOTH_HEADSET;DEVICE_WIRED_HEADSET;");
-    AVServiceForQQ.a(this.a).a();
-    localVideoController.c(false);
-    if (localVideoController.d)
+    AVServiceForQQ.a(this.a).b();
+    localVideoController.e(false);
+    if (localVideoController.j)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AVServiceForQQ", 2, "StartOrEnterGAudio already in room");
@@ -165,7 +148,7 @@ class AVServiceForQQ$AVServiceForQQStub
     }
     else
     {
-      int i = localVideoController.a(AVServiceForQQ.a(this.a), paramLong, AVServiceForQQ.b(this.a), new long[] { this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin() }, false);
+      int i = localVideoController.a(AVServiceForQQ.b(this.a), paramLong, AVServiceForQQ.c(this.a), new long[] { this.a.a.getLongAccountUin() }, false);
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
@@ -175,8 +158,8 @@ class AVServiceForQQ$AVServiceForQQStub
       }
       new Handler(Looper.getMainLooper()).post(new AVServiceForQQ.AVServiceForQQStub.2(this, i));
     }
-    localVideoController.a().a(l, "enterRoom", 3);
-    localVideoController.a().as = true;
+    localVideoController.k().a(l, "enterRoom", 3);
+    localVideoController.k().ca = true;
   }
   
   public void a(IAVServiceCallback paramIAVServiceCallback) {}
@@ -184,35 +167,35 @@ class AVServiceForQQ$AVServiceForQQStub
   public void a(String paramString)
   {
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
     if (localVideoController != null) {
-      localVideoController.i(paramString);
+      localVideoController.r(paramString);
     }
   }
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    if (this.a.a != null)
     {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      this.a.a.b();
       return;
     }
-    VideoController.a();
+    VideoController.f();
   }
   
   public void a(boolean paramBoolean)
   {
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
-    localVideoController.b(paramBoolean);
+    localVideoController.d(paramBoolean);
   }
   
   public void a(boolean paramBoolean, Notification paramNotification)
@@ -223,12 +206,12 @@ class AVServiceForQQ$AVServiceForQQStub
     if (paramBoolean)
     {
       if (paramNotification != null) {
-        this.a.jdField_a_of_type_AndroidAppNotification = paramNotification;
+        this.a.b = paramNotification;
       } else {
-        this.a.jdField_a_of_type_AndroidAppNotification = new Notification();
+        this.a.b = new Notification();
       }
-      if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new AVServiceForQQ.AVServiceForQQStub.1(this));
+      if (this.a.a != null) {
+        this.a.a.a().post(new AVServiceForQQ.AVServiceForQQStub.1(this));
       }
     }
     else
@@ -242,98 +225,115 @@ class AVServiceForQQ$AVServiceForQQStub
       {
         QLog.d("AVServiceForQQ", 1, "setAvServiceForegroud stop foreground fail", paramNotification);
       }
-      this.a.jdField_a_of_type_AndroidAppNotification = null;
+      this.a.b = null;
     }
   }
   
   public void a(byte[] paramArrayOfByte)
   {
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
     if (localVideoController != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putByteArray("buffer", paramArrayOfByte);
-      localVideoController.jdField_a_of_type_ComTencentAvQavChannelProxy.receiveMultiVideoMsg(localBundle);
+      localVideoController.n.receiveMultiVideoMsg(localBundle);
     }
   }
   
   public void b()
   {
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
-    int i = localVideoController.e();
-    localVideoController.a("stopSpeak", localVideoController.jdField_a_of_type_Long, false, true, -1);
-    localVideoController.a(-1L, i, localVideoController.e());
+    int i = localVideoController.D();
+    localVideoController.a("stopSpeak", localVideoController.k, false, true, -1);
+    localVideoController.a(-1L, i, localVideoController.D());
   }
   
   public void b(byte[] paramArrayOfByte)
   {
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
     if (localVideoController != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putByteArray("buffer", paramArrayOfByte);
-      localVideoController.jdField_a_of_type_ComTencentAvQavChannelProxy.receiveMultiVideoAck(localBundle);
+      localVideoController.n.receiveMultiVideoAck(localBundle);
     }
   }
   
   public void c()
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("exitQQCall, seq[");
     ((StringBuilder)localObject).append(l);
     ((StringBuilder)localObject).append("]");
     QLog.w("AVServiceForQQ", 1, ((StringBuilder)localObject).toString());
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localObject = this.a.a.b();
     } else {
-      localObject = VideoController.a();
+      localObject = VideoController.f();
     }
     TraeHelper.a().b(l);
-    ((VideoController)localObject).a().jdField_f_of_type_Boolean = false;
-    ((VideoController)localObject).a(((VideoController)localObject).a().c, 224);
+    ((VideoController)localObject).k().C = false;
+    ((VideoController)localObject).a(((VideoController)localObject).k().s, 224);
     ((VideoController)localObject).b(224);
-    if (((VideoController)localObject).a().z == -1) {
-      ((VideoController)localObject).a().z = 0;
+    if (((VideoController)localObject).k().ay == -1) {
+      ((VideoController)localObject).k().ay = 0;
     }
-    ((VideoController)localObject).a().s = true;
+    ((VideoController)localObject).k().R = true;
     AVLog.printColorLog("AVServiceForQQ", "DataReport onClose: ");
-    EffectFilterTools.DataReport.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    EffectZimuManager.DataReport.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    EffectPendantTools.DataReport.a("AVServiceForQQ", this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    BeautyToolbar.DataReport.b(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-    VoiceChangeDataReport.a(((VideoController)localObject).a());
-    ((VideoController)localObject).b(((VideoController)localObject).a().c, ((VideoController)localObject).a().z);
-    ((VideoController)localObject).a().a("exitQQCall", false);
-    ((VideoController)localObject).a().c("exitQQCall", 0);
+    EffectFilterTools.DataReport.a(this.a.a);
+    EffectZimuManager.DataReport.a(this.a.a);
+    EffectPendantTools.DataReport.a("AVServiceForQQ", this.a.a);
+    BeautyToolbar.DataReport.b(this.a.a.getCurrentAccountUin());
+    VoiceChangeDataReport.a(((VideoController)localObject).k());
+    ((VideoController)localObject).b(((VideoController)localObject).k().s, ((VideoController)localObject).k().ay);
+    ((VideoController)localObject).k().a("exitQQCall", false);
+    ((VideoController)localObject).k().c("exitQQCall", 0);
   }
   
   public void c(byte[] paramArrayOfByte)
   {
     VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
     } else {
-      localVideoController = VideoController.a();
+      localVideoController = VideoController.f();
     }
     if (localVideoController != null) {
-      localVideoController.jdField_a_of_type_ComTencentAvQavChannelProxy.a(paramArrayOfByte);
+      localVideoController.n.a(paramArrayOfByte);
     }
+  }
+  
+  public AVPbInfo d(byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AVServiceForQQ", 2, "processQCallPush in AVServiceForQQ");
+    }
+    VideoController localVideoController;
+    if (this.a.a != null) {
+      localVideoController = this.a.a.b();
+    } else {
+      localVideoController = VideoController.f();
+    }
+    if (localVideoController != null) {
+      return localVideoController.c(paramArrayOfByte);
+    }
+    return null;
   }
 }
 

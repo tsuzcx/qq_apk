@@ -27,45 +27,40 @@ import java.util.List;
 public class CardContainer
   extends BaseCardContainer
 {
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected AuthorityAccountView a;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private TextView d;
-  private TextView e;
-  private TextView f;
+  protected AuthorityAccountView k;
+  private ImageView l;
+  private ImageView m;
+  private TextView n;
+  private TextView o;
+  private TextView p;
+  private TextView q;
+  private TextView r;
+  private RelativeLayout s;
+  private TextView t;
   
   public CardContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public List<Permission> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   protected void a()
   {
     SSOLog.b("CardContainer", new Object[] { "displayCoverContainer" });
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.d)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof QBaseActivity)) {
-        ImmersiveUtils.setStatusTextColor(false, ((QBaseActivity)this.jdField_a_of_type_AndroidContentContext).getWindow());
+      this.d = true;
+      this.g.setVisibility(0);
+      if ((this.a instanceof QBaseActivity)) {
+        ImmersiveUtils.setStatusTextColor(false, ((QBaseActivity)this.a).getWindow());
       }
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof AuthorityActivity)) {
-        ((AuthorityActivity)this.jdField_a_of_type_AndroidContentContext).a();
-      } else if ((this.jdField_a_of_type_AndroidContentContext instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)this.jdField_a_of_type_AndroidContentContext).h();
+      if ((this.a instanceof AuthorityActivity)) {
+        ((AuthorityActivity)this.a).a();
+      } else if ((this.a instanceof QuickLoginAuthorityActivity)) {
+        ((QuickLoginAuthorityActivity)this.a).i();
       }
-      int i = (int)(this.jdField_a_of_type_Int / 1.307692F);
-      int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight();
-      a(this.jdField_a_of_type_ComTencentImageURLImageView, i, i - j, new CardContainer.1(this));
+      int i = (int)(this.b / 1.307692F);
+      int j = this.f.getHeight();
+      a(this.h, i, i - j, new CardContainer.1(this));
     }
   }
   
@@ -75,18 +70,18 @@ public class CardContainer
     localStringBuilder.append("switchToMode -->mode: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", mMode=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     SSOLog.a("CardContainer", new Object[] { localStringBuilder.toString() });
-    a(paramString);
-    if (paramInt == this.jdField_b_of_type_Int) {
+    b(paramString);
+    if (paramInt == this.e) {
       return;
     }
     if (paramInt == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.s.setVisibility(0);
     } else if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.s.setVisibility(8);
     }
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void a(String paramString, Bitmap paramBitmap)
@@ -98,14 +93,14 @@ public class CardContainer
     setVisibility(0);
     if ((!TextUtils.isEmpty(paramString)) && (getTag() != null))
     {
-      localObject = (TextView)findViewById(2131362302);
+      localObject = (TextView)findViewById(2131427901);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131701661));
+      localStringBuilder.append(HardCodeUtil.a(2131899683));
       localStringBuilder.append(paramString);
-      localStringBuilder.append(HardCodeUtil.a(2131701660));
+      localStringBuilder.append(HardCodeUtil.a(2131899682));
       ((TextView)localObject).setText(localStringBuilder.toString());
     }
-    localObject = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView;
+    localObject = this.k;
     if (localObject != null) {
       ((AuthorityAccountView)localObject).setAppInfo(paramString, paramBitmap);
     }
@@ -148,26 +143,26 @@ public class CardContainer
       ((StringBuilder)localObject2).append(",nick=");
       ((StringBuilder)localObject2).append(paramString2);
       SSOLog.b("CardContainer", ((StringBuilder)localObject2).toString());
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+      this.n.setText((CharSequence)localObject1);
+      this.o.setText((CharSequence)localObject1);
     }
     if (!TextUtils.isEmpty(paramString1))
     {
-      paramString2 = String.format(super.getContext().getString(2131689811), new Object[] { paramString1 });
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString2);
-      this.d.setText(paramString2);
-      if (this.e.getVisibility() == 0) {
-        this.e.setVisibility(8);
+      paramString2 = String.format(super.getContext().getString(2131886452), new Object[] { paramString1 });
+      this.p.setText(paramString2);
+      this.q.setText(paramString2);
+      if (this.r.getVisibility() == 0) {
+        this.r.setVisibility(8);
       }
     }
     if (paramBitmap != null)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      this.l.setImageBitmap(paramBitmap);
+      this.m.setImageBitmap(paramBitmap);
     }
     if (!TextUtils.isEmpty(paramString1))
     {
-      paramString2 = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView;
+      paramString2 = this.k;
       if (paramString2 != null) {
         paramString2.a(paramString1);
       }
@@ -176,7 +171,7 @@ public class CardContainer
   
   public boolean a(SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.c.clear();
     Object localObject = paramGetAuthApiListResponse.authorized_form_list.get();
     paramGetAuthApiListResponse = new StringBuilder(((List)localObject).size() * 128);
     localObject = ((List)localObject).iterator();
@@ -194,30 +189,30 @@ public class CardContainer
       if (localAuthItem.is_new.get() != 0)
       {
         Permission localPermission = new Permission();
-        localPermission.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
-        localPermission.jdField_a_of_type_Int = localAuthItem.default_flag.get();
-        localPermission.jdField_b_of_type_Int = localAuthItem.id.get();
+        localPermission.d = localAuthItem.api_list.get();
+        localPermission.a = localAuthItem.default_flag.get();
+        localPermission.e = localAuthItem.id.get();
         if (localAuthItem.is_new.get() == 0) {
           bool1 = false;
         }
-        localPermission.jdField_a_of_type_Boolean = bool1;
-        localPermission.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
+        localPermission.c = bool1;
+        localPermission.b = localAuthItem.title.get();
         paramGetAuthApiListResponse.append(localPermission.toString());
         paramGetAuthApiListResponse.append("\n");
-        this.jdField_a_of_type_JavaUtilList.add(localPermission);
+        this.c.add(localPermission);
       }
     }
     SSOLog.a("CardContainer", new Object[] { paramGetAuthApiListResponse.toString() });
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+    if (this.c.size() == 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
     if (bool1)
     {
-      paramGetAuthApiListResponse = this.jdField_a_of_type_ComTencentImageURLImageView;
+      paramGetAuthApiListResponse = this.h;
       a(1, paramString);
-      this.e.setVisibility(0);
+      this.r.setVisibility(0);
       SSOLog.a("CardContainer", new Object[] { "--> has been authority." });
       a(paramGetAuthApiListResponse, a(paramString));
       return bool1;
@@ -225,9 +220,9 @@ public class CardContainer
     a(0, paramString);
     SSOLog.a("CardContainer", new Object[] { "--> has not been authority." });
     paramGetAuthApiListResponse = "";
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.c.size())
     {
-      paramString = (Permission)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramString = (Permission)this.c.get(i);
       if (getTag() != null)
       {
         paramString = new StringBuilder();
@@ -240,7 +235,7 @@ public class CardContainer
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramGetAuthApiListResponse);
         ((StringBuilder)localObject).append("· ");
-        ((StringBuilder)localObject).append(paramString.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramString.b);
         paramGetAuthApiListResponse = ((StringBuilder)localObject).toString();
       }
       paramString = new StringBuilder();
@@ -249,45 +244,50 @@ public class CardContainer
       paramGetAuthApiListResponse = paramString.toString();
       i += 1;
     }
-    this.f.setText(paramGetAuthApiListResponse);
+    this.t.setText(paramGetAuthApiListResponse);
     return bool1;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a();
+    this.k.a();
   }
   
   public void c()
   {
-    AuthorityAccountView localAuthorityAccountView = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView;
+    AuthorityAccountView localAuthorityAccountView = this.k;
     if (localAuthorityAccountView != null) {
-      localAuthorityAccountView.c();
+      localAuthorityAccountView.f();
     }
+  }
+  
+  public List<Permission> getAuthList()
+  {
+    return this.c;
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362300));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362304));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362306));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362301));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362305));
-    this.d = ((TextView)super.findViewById(2131362307));
-    this.e = ((TextView)super.findViewById(2131362303));
-    this.e.setVisibility(8);
-    this.f = ((TextView)super.findViewById(2131372132));
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView = ((AuthorityAccountView)super.findViewById(2131361935));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363055));
-    FixedBounceScrollView localFixedBounceScrollView = (FixedBounceScrollView)super.findViewById(2131363068);
-    localFixedBounceScrollView.setMaxHeight(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 102.0F));
+    this.l = ((ImageView)super.findViewById(2131427899));
+    this.n = ((TextView)super.findViewById(2131427903));
+    this.p = ((TextView)super.findViewById(2131427905));
+    this.m = ((ImageView)super.findViewById(2131427900));
+    this.o = ((TextView)super.findViewById(2131427904));
+    this.q = ((TextView)super.findViewById(2131427906));
+    this.r = ((TextView)super.findViewById(2131427902));
+    this.r.setVisibility(8);
+    this.t = ((TextView)super.findViewById(2131439604));
+    this.k = ((AuthorityAccountView)super.findViewById(2131427489));
+    this.s = ((RelativeLayout)super.findViewById(2131428888));
+    FixedBounceScrollView localFixedBounceScrollView = (FixedBounceScrollView)super.findViewById(2131428903);
+    localFixedBounceScrollView.setMaxHeight(DisplayUtil.a(this.a, 102.0F));
     localFixedBounceScrollView.setNeedDisallowIntercept(true);
   }
   
   public void setAppType(String paramString)
   {
-    AuthorityAccountView localAuthorityAccountView = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView;
+    AuthorityAccountView localAuthorityAccountView = this.k;
     if (localAuthorityAccountView != null) {
       localAuthorityAccountView.setAppType(paramString);
     }
@@ -295,7 +295,7 @@ public class CardContainer
   
   public void setChangeAccountListener(AuthorityAccountView.IChangeAccountListener paramIChangeAccountListener)
   {
-    AuthorityAccountView localAuthorityAccountView = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView;
+    AuthorityAccountView localAuthorityAccountView = this.k;
     if (localAuthorityAccountView != null) {
       localAuthorityAccountView.setChangeAccountListener(paramIChangeAccountListener);
     }
@@ -303,7 +303,7 @@ public class CardContainer
   
   public void setDeleteLastAccountListener(AuthorityAccountView.IDeleteLastAccountListener paramIDeleteLastAccountListener)
   {
-    AuthorityAccountView localAuthorityAccountView = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView;
+    AuthorityAccountView localAuthorityAccountView = this.k;
     if (localAuthorityAccountView != null) {
       localAuthorityAccountView.setDeleteLastAccountListener(paramIDeleteLastAccountListener);
     }
@@ -311,7 +311,7 @@ public class CardContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.CardContainer
  * JD-Core Version:    0.7.0.1
  */

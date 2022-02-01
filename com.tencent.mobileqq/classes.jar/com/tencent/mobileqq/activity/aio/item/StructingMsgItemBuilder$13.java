@@ -38,34 +38,34 @@ class StructingMsgItemBuilder$13
   
   public void onClickAction(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    Object localObject1 = new ReportDialog(this.jdField_a_of_type_AndroidAppActivity);
+    Object localObject1 = new ReportDialog(this.a);
     ((Dialog)localObject1).requestWindowFeature(1);
     ((Dialog)localObject1).getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    ((Dialog)localObject1).setContentView(2131559640);
+    ((Dialog)localObject1).setContentView(2131625669);
     ((Dialog)localObject1).show();
-    new Handler(this.jdField_a_of_type_AndroidAppActivity.getMainLooper()).postDelayed(new StructingMsgItemBuilder.13.1(this, (Dialog)localObject1), 1500L);
-    ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    localObject1 = this.jdField_a_of_type_AndroidAppActivity;
-    if ((((localObject1 instanceof SplashActivity)) || ((localObject1 instanceof ChatActivity))) && (((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getChatFragment() != null) && (((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getChatFragment().a() != null))
+    new Handler(this.a.getMainLooper()).postDelayed(new StructingMsgItemBuilder.13.1(this, (Dialog)localObject1), 1500L);
+    ChatActivityFacade.b(this.f.d, this.b);
+    localObject1 = this.a;
+    if ((((localObject1 instanceof SplashActivity)) || ((localObject1 instanceof ChatActivity))) && (((BaseActivity)this.a).getChatFragment() != null) && (((BaseActivity)this.a).getChatFragment().k() != null))
     {
-      ((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      if ((StructLongMessageDownloadProcessor.isPALongMsg(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage)))
+      ((BaseActivity)this.f.e).getChatFragment().k().a(this.b);
+      if ((StructLongMessageDownloadProcessor.isPALongMsg(this.b)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(this.b)))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        localObject1 = this.b;
         if ((localObject1 instanceof MessageForStructing))
         {
           localObject1 = (MessageForStructing)localObject1;
-          StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((MessageForStructing)localObject1).uniseq);
+          StructLongMessageDownloadProcessor.deleteTask(this.f.d, ((MessageForStructing)localObject1).uniseq);
         }
       }
       long l = 0L;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+      localObject1 = this.c;
       if (localObject1 != null) {
         l = ((AbsStructMsg)localObject1).msgId;
       }
       int i = paramMenuItem.id;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      Object localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.f.d;
+      Object localObject2 = this.d;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
       ((StringBuilder)localObject3).append(l);
@@ -74,32 +74,32 @@ class StructingMsgItemBuilder$13
       localStringBuilder.append("");
       localStringBuilder.append(i + 1);
       ReportController.b((AppRuntime)localObject1, "P_CliOper", "Pb_account_lifeservice", (String)localObject2, "0X8006320", "0X8006320", 0, 0, (String)localObject3, "", localStringBuilder.toString(), paramMenuItem.title);
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramMenuItem.id) {
+      if (this.e.size() <= paramMenuItem.id) {
         return;
       }
-      paramMenuItem = (IPAReportUtil.AdverInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramMenuItem.id);
+      paramMenuItem = (IPAReportUtil.AdverInfo)this.e.get(paramMenuItem.id);
       localObject1 = new JSONObject();
       try
       {
-        ((JSONObject)localObject1).put("puin", paramMenuItem.jdField_a_of_type_JavaLangString);
+        ((JSONObject)localObject1).put("puin", paramMenuItem.a);
         ((JSONObject)localObject1).put("type", paramMenuItem.b);
         ((JSONObject)localObject1).put("index", paramMenuItem.c);
         ((JSONObject)localObject1).put("name", paramMenuItem.d);
         ((JSONObject)localObject1).put("net", paramMenuItem.e);
-        ((JSONObject)localObject1).put("mobile_imei", DeviceInfoUtil.a());
+        ((JSONObject)localObject1).put("mobile_imei", DeviceInfoUtil.b());
         try
         {
           ((JSONObject)localObject1).put("obj", "");
-          ((JSONObject)localObject1).put("gdt_cli_data", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("gdt_msgClick"));
-          ((JSONObject)localObject1).put("view_id", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("gdt_view_id"));
+          ((JSONObject)localObject1).put("gdt_cli_data", this.b.getExtInfoFromExtStr("gdt_msgClick"));
+          ((JSONObject)localObject1).put("view_id", this.b.getExtInfoFromExtStr("gdt_view_id"));
         }
         catch (JSONException paramMenuItem) {}
         paramMenuItem.printStackTrace();
       }
       catch (JSONException paramMenuItem) {}
       paramMenuItem = (IPAReportUtil)QRoute.api(IPAReportUtil.class);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.selfuin;
+      localObject2 = this.f.d;
+      localObject3 = this.b.selfuin;
       localObject1 = ((JSONObject)localObject1).toString();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
@@ -107,12 +107,12 @@ class StructingMsgItemBuilder$13
       paramMenuItem.reportClickEventForAdver((AppInterface)localObject2, (String)localObject3, (String)localObject1, localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    this.f.d.getMessageFacade().a(this.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.13
  * JD-Core Version:    0.7.0.1
  */

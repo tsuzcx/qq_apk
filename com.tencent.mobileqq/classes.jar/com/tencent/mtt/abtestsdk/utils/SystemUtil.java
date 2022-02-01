@@ -14,6 +14,7 @@ import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -61,7 +62,7 @@ public class SystemUtil
           InetAddress localInetAddress;
           do
           {
-            paramContext = NetworkInterface.getNetworkInterfaces();
+            paramContext = NetworkMonitor.getNetworkInterfaces();
             while (!((Enumeration)localObject).hasMoreElements())
             {
               if (!paramContext.hasMoreElements()) {
@@ -83,7 +84,7 @@ public class SystemUtil
           return "";
         }
       } else if (((NetworkInfo)localObject).getType() == 1) {
-        return intIP2StringIP(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getIpAddress());
+        return intIP2StringIP(NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi")).getIpAddress());
       }
     }
     return "";
@@ -164,7 +165,7 @@ public class SystemUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.utils.SystemUtil
  * JD-Core Version:    0.7.0.1
  */

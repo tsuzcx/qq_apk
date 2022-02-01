@@ -31,7 +31,7 @@ final class JSDebuggerSoLoader$1
       JSDebuggerSoLoader.a(6);
       QLog.i("JSDebuggerSoLoader", 2, "tryStartDownload.onDownloadArkJSDebugger failed!");
     }
-    synchronized (JSDebuggerSoLoader.a())
+    synchronized (JSDebuggerSoLoader.b())
     {
       JSDebuggerSoLoader.a(false);
       return;
@@ -40,7 +40,7 @@ final class JSDebuggerSoLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

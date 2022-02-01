@@ -10,13 +10,13 @@ class FastWebActivity$15
   public boolean queueIdle()
   {
     FastWebActivity localFastWebActivity = this.a;
-    FastWebActivity.a(localFastWebActivity, localFastWebActivity.a);
+    FastWebActivity.a(localFastWebActivity, localFastWebActivity.g);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.15
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ import kotlin.jvm.functions.Function1;
 public class TabLayout
   extends HorizontalListView
 {
-  private TabLayout.TabAdapter jdField_a_of_type_ComTencentBizWidgetsTabLayout$TabAdapter;
-  private Map<Integer, View> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Function1<Canvas, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = new TabLayout.3(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private Function1<Canvas, Unit> jdField_b_of_type_KotlinJvmFunctionsFunction1 = new TabLayout.4(this);
+  private TabLayout.TabAdapter a;
+  private Map<Integer, View> b = new HashMap();
+  private Map<Integer, Integer> c = new HashMap();
+  private boolean d = false;
+  private Function1<Canvas, Unit> e = new TabLayout.3(this);
+  private Function1<Canvas, Unit> f = new TabLayout.4(this);
   
   public TabLayout(Context paramContext)
   {
@@ -50,33 +50,16 @@ public class TabLayout
     setHorizontalScrollBarEnabled(false);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    if (paramInt < this.jdField_a_of_type_JavaUtilMap.size())
-    {
-      View localView = (View)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if (localView != null) {
-        return localView.getMeasuredWidth();
-      }
-    }
-    return 0;
-  }
-  
   @Nullable
   public View a(int paramInt)
   {
-    return (View)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    return (View)this.b.get(Integer.valueOf(paramInt));
   }
   
   public void a()
   {
-    TabLayout.TabAdapter localTabAdapter = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout$TabAdapter;
-    if ((localTabAdapter != null) && (!this.jdField_a_of_type_Boolean)) {
+    TabLayout.TabAdapter localTabAdapter = this.a;
+    if ((localTabAdapter != null) && (!this.d)) {
       localTabAdapter.notifyDataSetChanged();
     }
   }
@@ -88,11 +71,11 @@ public class TabLayout
     if (paramInt2 < j)
     {
       paramAnimatorListener.onAnimationEnd(null);
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       a();
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     j = getFirstVisiblePosition();
     int m = paramInt2 - getFirstVisiblePosition();
     View localView = getChildAt(paramInt1 - j);
@@ -117,13 +100,25 @@ public class TabLayout
       return;
     }
     paramAnimatorListener.onAnimationEnd(null);
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     a();
+  }
+  
+  public int b(int paramInt)
+  {
+    if (paramInt < this.b.size())
+    {
+      View localView = (View)this.b.get(Integer.valueOf(paramInt));
+      if (localView != null) {
+        return localView.getMeasuredWidth();
+      }
+    }
+    return 0;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    ((IRIJBlackWhiteModeHelper)QRoute.api(IRIJBlackWhiteModeHelper.class)).addBlackWhiteMode(paramCanvas, true, this.jdField_b_of_type_KotlinJvmFunctionsFunction1);
+    ((IRIJBlackWhiteModeHelper)QRoute.api(IRIJBlackWhiteModeHelper.class)).addBlackWhiteMode(paramCanvas, true, this.f);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -143,29 +138,34 @@ public class TabLayout
   
   public void draw(Canvas paramCanvas)
   {
-    ((IRIJBlackWhiteModeHelper)QRoute.api(IRIJBlackWhiteModeHelper.class)).addBlackWhiteMode(paramCanvas, true, this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
+    ((IRIJBlackWhiteModeHelper)QRoute.api(IRIJBlackWhiteModeHelper.class)).addBlackWhiteMode(paramCanvas, true, this.e);
+  }
+  
+  public int getChildSize()
+  {
+    return this.b.size();
   }
   
   public void setAdapter(TabLayout.TabAdapter paramTabAdapter)
   {
     super.setAdapter(paramTabAdapter);
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout$TabAdapter = paramTabAdapter;
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout$TabAdapter.a(this);
+    this.a = paramTabAdapter;
+    this.a.a(this);
   }
   
   public void setChildView(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramView);
+    this.b.put(Integer.valueOf(paramInt), paramView);
   }
   
   public void setChildWidth(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.c.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
   
   public void setSwappingAnimation()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
   public void smoothScrollToPositionFromLeftOrRight(int paramInt1, int paramInt2, int paramInt3)
@@ -175,7 +175,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout
  * JD-Core Version:    0.7.0.1
  */

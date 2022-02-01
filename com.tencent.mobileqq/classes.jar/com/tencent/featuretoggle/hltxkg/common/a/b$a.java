@@ -6,16 +6,16 @@ import java.util.List;
 
 final class b$a
 {
-  Integer jdField_a_of_type_JavaLangInteger;
-  String jdField_a_of_type_JavaLangString;
-  List<a> jdField_a_of_type_JavaUtilList = new ArrayList();
+  Integer a;
   String b;
   String c;
-  private String d;
+  List<a> d = new ArrayList();
+  String e;
+  private String f;
   
   public b$a(String paramString)
   {
-    this.d = paramString;
+    this.f = paramString;
   }
   
   public final void a(a parama)
@@ -28,7 +28,7 @@ final class b$a
       if (parama.b() > 5) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilList.add(parama);
+      this.d.add(parama);
     }
   }
   
@@ -39,8 +39,8 @@ final class b$a
     }
     try
     {
-      if (((parama.b() == 1) || (parama.b() == 2)) && (this.jdField_a_of_type_JavaUtilList.contains(parama))) {
-        this.jdField_a_of_type_JavaUtilList.remove(parama);
+      if (((parama.b() == 1) || (parama.b() == 2)) && (this.d.contains(parama))) {
+        this.d.remove(parama);
       }
       return;
     }
@@ -51,19 +51,19 @@ final class b$a
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
     Object localObject = new StringBuilder("Appid：");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangInteger);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(" domain：");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject).append("\r\n");
-    localStringBuilder1.append(((StringBuilder)localObject).toString());
-    localObject = new StringBuilder("apn：");
-    ((StringBuilder)localObject).append(this.d);
-    ((StringBuilder)localObject).append(" ckIP：");
     ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append("\r\n");
     localStringBuilder1.append(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder("apn：");
+    ((StringBuilder)localObject).append(this.f);
+    ((StringBuilder)localObject).append(" ckIP：");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("\r\n");
+    localStringBuilder1.append(((StringBuilder)localObject).toString());
     localObject = new ArrayList();
-    ((List)localObject).addAll(this.jdField_a_of_type_JavaUtilList);
+    ((List)localObject).addAll(this.d);
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -78,7 +78,7 @@ final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -133,7 +133,7 @@ public class VasExtensionDownloader
     try
     {
       str = paramDownloadParams.url.getFile();
-      if (EmosmUtils.b(str))
+      if (EmosmUtils.d(str))
       {
         if (QLog.isColorLevel())
         {
@@ -151,7 +151,7 @@ public class VasExtensionDownloader
         paramDownloadParams.append(str);
         QLog.d("VasExtensionDownloader", 2, paramDownloadParams.toString());
       }
-      paramDownloadParams = EmosmUtils.b(str);
+      paramDownloadParams = EmosmUtils.c(str);
       if (paramDownloadParams == null) {}
     }
     catch (Exception paramDownloadParams)
@@ -236,7 +236,7 @@ public class VasExtensionDownloader
     //   67: new 33	java/io/File
     //   70: dup
     //   71: aload 6
-    //   73: invokespecial 189	java/io/File:<init>	(Ljava/lang/String;)V
+    //   73: invokespecial 188	java/io/File:<init>	(Ljava/lang/String;)V
     //   76: astore 5
     //   78: aload 5
     //   80: invokestatic 236	com/tencent/image/GifDrawable:isGifFile	(Ljava/io/File;)Z
@@ -248,7 +248,7 @@ public class VasExtensionDownloader
     //   96: invokespecial 44	java/lang/StringBuilder:<init>	()V
     //   99: astore_2
     //   100: aload_2
-    //   101: ldc 188
+    //   101: ldc 187
     //   103: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: pop
     //   107: aload_2
@@ -862,7 +862,7 @@ public class VasExtensionDownloader
         return paramString;
       }
       paramDownloadParams = new DownloadTask(paramDownloadParams, paramString);
-      paramDownloadParams.e = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
+      paramDownloadParams.v = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
       if (((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download(paramDownloadParams, MobileQQ.sMobileQQ.waitAppRuntime(null)) == 0) {
         return paramString;
       }
@@ -901,9 +901,9 @@ public class VasExtensionDownloader
         QLog.d("VasExtensionDownloader", 2, ((StringBuilder)localObject1).toString());
       }
       if (bool) {
-        localObject1 = EmosmUtils.a(3, paramString2);
+        localObject1 = EmosmUtils.b(3, paramString2);
       } else {
-        localObject1 = EmosmUtils.a(4, paramString2);
+        localObject1 = EmosmUtils.b(4, paramString2);
       }
       localFile = new File((String)localObject1);
     }
@@ -915,15 +915,15 @@ public class VasExtensionDownloader
       if (bool)
       {
         if (!localBoolean.booleanValue()) {
-          paramString2 = EmosmUtils.b(3, paramString2);
+          paramString2 = EmosmUtils.c(3, paramString2);
         } else {
-          paramString2 = EmosmUtils.b(17, paramString2);
+          paramString2 = EmosmUtils.c(17, paramString2);
         }
       }
       else if (!localBoolean.booleanValue()) {
-        paramString2 = EmosmUtils.b(4, paramString2);
+        paramString2 = EmosmUtils.c(4, paramString2);
       } else {
-        paramString2 = EmosmUtils.b(18, paramString2);
+        paramString2 = EmosmUtils.c(18, paramString2);
       }
     }
     catch (OutOfMemoryError paramString2)
@@ -1009,7 +1009,7 @@ public class VasExtensionDownloader
         return paramDownloadParams;
       }
       paramString1 = new DownloadTask(paramString2, paramDownloadParams);
-      paramString1.e = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
+      paramString1.v = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
       if (((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download(paramString1, MobileQQ.sMobileQQ.waitAppRuntime(null)) == 0) {
         return paramDownloadParams;
       }
@@ -1047,7 +1047,7 @@ public class VasExtensionDownloader
       }
       Object localObject = new File(paramString3);
       DownloadTask localDownloadTask = new DownloadTask(paramString2, (File)localObject);
-      localDownloadTask.e = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
+      localDownloadTask.v = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
       int i = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download(localDownloadTask, MobileQQ.sMobileQQ.waitAppRuntime(null));
       reportFavoriteDownloadStatus(paramString1, i);
       if (i == 0)
@@ -1291,7 +1291,7 @@ public class VasExtensionDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VasExtensionDownloader
  * JD-Core Version:    0.7.0.1
  */

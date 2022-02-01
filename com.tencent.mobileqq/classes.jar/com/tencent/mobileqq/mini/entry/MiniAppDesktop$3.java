@@ -28,8 +28,8 @@ class MiniAppDesktop$3
     }
     MiniAppDesktop.access$300(this.this$0).desktopOpened();
     MiniAppDesktop.access$1300(this.this$0, 2);
-    if (MiniAppDesktop.access$500(this.this$0).b != null) {
-      MiniAppDesktop.access$500(this.this$0).b.g();
+    if (MiniAppDesktop.access$500(this.this$0).d != null) {
+      MiniAppDesktop.access$500(this.this$0).d.h();
     }
   }
   
@@ -69,7 +69,7 @@ class MiniAppDesktop$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.3
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ final class PublishArticlePage$initRichEditTextWithData$1
   
   public final void invoke()
   {
-    PublishArticlePage.d(this.this$0, true);
+    PublishArticlePage.a(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initRichEditTextWithData.1
  * JD-Core Version:    0.7.0.1
  */

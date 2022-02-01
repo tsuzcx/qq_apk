@@ -75,9 +75,9 @@ public class TurnBrandTipsDecoder
         ((QIMFollwerAdd)localObject).opType = paramForwardBody.uint32_op_type.get();
         ((QIMFollwerAdd)localObject).fansCount = paramForwardBody.uint64_fans_count.get();
         ((QIMFollwerAdd)localObject).longNick = RichStatus.parseStatus(paramForwardBody.bytes_longnick.get().toByteArray()).getPlainText();
-        ((QIMFollwerAdd)localObject).upTime = MessageCache.a();
+        ((QIMFollwerAdd)localObject).upTime = MessageCache.c();
         ((QIMFollwerAdd)localObject).source = paramForwardBody.bytes_src_wording.get().toStringUtf8();
-        ((INewFriendService)paramMessageHandler.a.getRuntimeService(INewFriendService.class)).handleQIMNewFollower((QIMFollwerAdd)localObject);
+        ((INewFriendService)paramMessageHandler.n.getRuntimeService(INewFriendService.class)).handleQIMNewFollower((QIMFollwerAdd)localObject);
       }
     }
     else
@@ -107,7 +107,7 @@ public class TurnBrandTipsDecoder
           paramForwardBody.videoInfos.add(localVideoInfo1);
           i += 1;
         }
-        paramForwardBody.pushTime = MessageCache.a();
+        paramForwardBody.pushTime = MessageCache.c();
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -115,7 +115,7 @@ public class TurnBrandTipsDecoder
           ((StringBuilder)localObject).append(paramForwardBody.toString());
           QLog.d("QIMNewNotifyPush_offLine", 2, ((StringBuilder)localObject).toString());
         }
-        ((QIMNewFriendManager)paramMessageHandler.a.getManager(QQManagerFactory.QIM_NEW_FRIEND_MANAGER)).a(paramForwardBody);
+        ((QIMNewFriendManager)paramMessageHandler.n.getManager(QQManagerFactory.QIM_NEW_FRIEND_MANAGER)).a(paramForwardBody);
       }
     }
   }
@@ -136,7 +136,7 @@ public class TurnBrandTipsDecoder
     if (paramForwardBody.uint64_din.has()) {
       localBundle.putLong("din", paramForwardBody.uint64_din.get());
     }
-    ((SmartDeviceProxyMgr)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(111, localBundle);
+    ((SmartDeviceProxyMgr)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(111, localBundle);
   }
   
   private void c(MessageHandler paramMessageHandler, SubMsgType0x6f.ForwardBody paramForwardBody)
@@ -184,8 +184,8 @@ public class TurnBrandTipsDecoder
         ((StringBuilder)localObject).append(j);
         QLog.d("TurnBrandTipsDecoder", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = ((TicketManager)paramMessageHandler.a.getManager(2)).getSkey(paramForwardBody);
-      ((VipInfoHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a((String)localObject, paramForwardBody);
+      localObject = ((TicketManager)paramMessageHandler.n.getManager(2)).getSkey(paramForwardBody);
+      ((VipInfoHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a((String)localObject, paramForwardBody);
     }
   }
   
@@ -227,7 +227,7 @@ public class TurnBrandTipsDecoder
       localStringBuilder.append(l);
       QLog.d("msg0x210.SubMsgType0x6f", 2, localStringBuilder.toString());
     }
-    paramMessageHandler = (DatingProxyManager)paramMessageHandler.a.getManager(QQManagerFactory.DATING_PROXY_MANAGER);
+    paramMessageHandler = (DatingProxyManager)paramMessageHandler.n.getManager(QQManagerFactory.DATING_PROXY_MANAGER);
     if (paramMessageHandler != null) {
       paramMessageHandler.a().a(localMCardNotificationLike);
     }
@@ -271,7 +271,7 @@ public class TurnBrandTipsDecoder
       } else if ((i == 2011) && (paramMsgType0x210.msg_mod_qim_friend_to_qq.has())) {
         a(paramMessageHandler, paramMsgType0x210);
       }
-      MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
+      MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.b());
       return;
     }
     catch (Exception paramMsgType0x210)
@@ -284,7 +284,7 @@ public class TurnBrandTipsDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.TurnBrandTipsDecoder
  * JD-Core Version:    0.7.0.1
  */

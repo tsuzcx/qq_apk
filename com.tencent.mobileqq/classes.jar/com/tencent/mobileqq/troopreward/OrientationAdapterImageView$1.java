@@ -11,23 +11,23 @@ class OrientationAdapterImageView$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+    if (this.a.d != null) {
       this.a.invalidate();
     }
     if (QLog.isColorLevel())
     {
       paramMessage = new StringBuilder();
       paramMessage.append("handleMessage:");
-      paramMessage.append(this.a.jdField_a_of_type_Int);
+      paramMessage.append(this.a.a);
       paramMessage.append(",");
-      paramMessage.append(this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramMessage.append(this.a.d);
       QLog.d("OrientationAdapterImageView", 2, paramMessage.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopreward.OrientationAdapterImageView.1
  * JD-Core Version:    0.7.0.1
  */

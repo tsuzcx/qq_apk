@@ -10,7 +10,7 @@ class FaceAreaManager$1
   
   public void ipJudgeSuccess(boolean paramBoolean, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager;
+    Object localObject = this.b;
     int i;
     if (paramBoolean) {
       i = 11;
@@ -19,7 +19,7 @@ class FaceAreaManager$1
     }
     ((FaceAreaManager)localObject).a = i;
     QLog.d("FaceContext", 1, new Object[] { "ipJudgeSuccess ", Boolean.valueOf(paramBoolean), paramString });
-    localObject = this.jdField_a_of_type_ComTencentMobileqqObserverLoginVerifyObserver;
+    localObject = this.a;
     if (localObject != null) {
       ((LoginVerifyObserver)localObject).ipJudgeSuccess(paramBoolean, paramString);
     }
@@ -28,8 +28,8 @@ class FaceAreaManager$1
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
     QLog.d("FaceContext", 1, new Object[] { "refreshIpState onFailedResponse : ", paramString2 });
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceAreaManager.a = 11;
-    LoginVerifyObserver localLoginVerifyObserver = this.jdField_a_of_type_ComTencentMobileqqObserverLoginVerifyObserver;
+    this.b.a = 11;
+    LoginVerifyObserver localLoginVerifyObserver = this.a;
     if (localLoginVerifyObserver != null) {
       localLoginVerifyObserver.onFailedResponse(paramString1, paramInt, paramString2);
     }
@@ -37,7 +37,7 @@ class FaceAreaManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.FaceAreaManager.1
  * JD-Core Version:    0.7.0.1
  */

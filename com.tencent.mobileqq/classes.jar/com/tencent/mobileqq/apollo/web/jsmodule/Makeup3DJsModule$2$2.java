@@ -5,7 +5,9 @@ import com.tencent.aelight.camera.cmsshow.api.CmShowAssetsData;
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.apollo.web.IApolloJsCallBack;
-import com.tencent.mobileqq.cmshow.engine.util.CMGetResPathUtil;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -24,20 +26,20 @@ class Makeup3DJsModule$2$2
     Object localObject1 = new JSONObject();
     try
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject2 = this.b.b.iterator();
       Object localObject3;
       while (((Iterator)localObject2).hasNext())
       {
         int i = ((Integer)((Iterator)localObject2).next()).intValue();
-        localObject3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+        localObject3 = (String)this.a.get(Integer.valueOf(i));
         if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
-          localObject3 = CMGetResPathUtil.a((String)localObject3);
+          localObject3 = ApolloResManagerFacade.a.a(Scene.MAKE_UP_3D).b((String)localObject3);
           boolean bool = TextUtils.isEmpty((CharSequence)localObject3);
           if (bool)
           {
             QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowChange3DAvatarComponent] fileJsonFilePath is null!");
-            this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_JavaLangString, "file face.json is not exists!");
+            this.b.g.a(this.b.c, "file face.json is not exists!");
             return;
           }
           localObject3 = new File((String)localObject3);
@@ -51,41 +53,41 @@ class Makeup3DJsModule$2$2
             else
             {
               QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowChange3DAvatarComponent] file face.json is empty!");
-              this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_JavaLangString, "file face.json is empty!");
-              Makeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule, false, "file face.json is empty!");
+              this.b.g.a(this.b.c, "file face.json is empty!");
+              Makeup3DJsModule.a(this.b.g, false, "file face.json is empty!");
             }
           }
           else
           {
             QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowChange3DAvatarComponent] file face.json is not exists!");
-            this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_JavaLangString, "file face.json is not exists!");
+            this.b.g.a(this.b.c, "file face.json is not exists!");
           }
         }
       }
       localObject2 = new JSONObject();
       ((JSONObject)localObject2).put(ApolloConstant.b, localObject1);
-      localObject1 = Makeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule);
+      localObject1 = Makeup3DJsModule.a(this.b.g);
       if (localObject1 != null)
       {
         localObject3 = new CmShowAssetsData();
-        ((CmShowAssetsData)localObject3).b = ((JSONObject)localObject2).toString();
+        ((CmShowAssetsData)localObject3).c = ((JSONObject)localObject2).toString();
         ((IApolloJsCallBack)localObject1).a((CmShowAssetsData)localObject3, 0);
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_JavaLangString);
-      Makeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule, true, "");
+      this.b.g.b(this.b.c);
+      Makeup3DJsModule.a(this.b.g, true, "");
       return;
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_JavaLangString, localException.getMessage());
-      Makeup3DJsModule.a(this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule$2.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule, false, localException.getMessage());
+      this.b.g.a(this.b.c, localException.getMessage());
+      Makeup3DJsModule.a(this.b.g, false, localException.getMessage());
       QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowChange3DAvatarComponent] read file face.json error!", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.Makeup3DJsModule.2.2
  * JD-Core Version:    0.7.0.1
  */

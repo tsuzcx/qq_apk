@@ -25,8 +25,8 @@ class GuessPictureClickStageView$3
       QLog.i("GuessPictureClickStageView", 2, localStringBuilder.toString());
     }
     ReportController.b(null, "dc00898", "", "", "0X800B0FA", "0X800B0FA", 0, 0, "", "", "", "");
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null) && (paramURLDrawable.getURL().toString().equals(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureClickStageView.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureClickStageView.d();
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null) && (paramURLDrawable.getURL().toString().equals(this.b.D))) {
+      this.b.e();
     }
   }
   
@@ -39,13 +39,13 @@ class GuessPictureClickStageView$3
     }
     ReportController.b(null, "dc00898", "", "", "0X800B0F5", "0X800B0F5", 0, 0, "", "", "", "");
     paramURLDrawable = MosaicUtil.a(paramURLDrawable.getCurrDrawable());
-    GuessPictureClickStageView localGuessPictureClickStageView = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureClickStageView;
-    localGuessPictureClickStageView.jdField_a_of_type_AndroidGraphicsBitmap = paramURLDrawable;
+    GuessPictureClickStageView localGuessPictureClickStageView = this.b;
+    localGuessPictureClickStageView.o = paramURLDrawable;
     int i;
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataTopicMosaicGuess.c == 0) {
+    if (this.a.m == 0) {
       i = 10;
     } else {
-      i = this.jdField_a_of_type_ComTencentAvgameGamelogicDataTopicMosaicGuess.c;
+      i = this.a.m;
     }
     localGuessPictureClickStageView.setMosaicBitmapFromOriginal(paramURLDrawable, i);
   }

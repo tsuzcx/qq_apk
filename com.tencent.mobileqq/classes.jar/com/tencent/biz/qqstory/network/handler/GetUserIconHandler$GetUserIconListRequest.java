@@ -46,7 +46,7 @@ public class GetUserIconHandler$GetUserIconListRequest
     return StoryApi.a("StorySvc.batch_get_user_icon_info");
   }
   
-  protected byte[] a()
+  protected byte[] b()
   {
     qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
     Iterator localIterator = this.a.iterator();
@@ -62,7 +62,7 @@ public class GetUserIconHandler$GetUserIconListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserIconHandler.GetUserIconListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class GameListView$5
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = IGameEngine.a().e();
+    boolean bool = IGameEngine.I().v();
     int i = paramMotionEvent.getAction() & 0xFF;
     if (i != 0)
     {
@@ -25,9 +25,9 @@ class GameListView$5
         } else {
           paramView = "avgame_match_start_normal@2x.png";
         }
-        paramView = AVGameUtil.a(paramView);
+        paramView = AVGameUtil.c(paramView);
         if (paramView != null) {
-          GameListView.a(this.a).setImageBitmap(paramView);
+          GameListView.b(this.a).setImageBitmap(paramView);
         }
       }
     }
@@ -38,9 +38,9 @@ class GameListView$5
       } else {
         paramView = "avgame_match_start_press@2x.png";
       }
-      paramView = AVGameUtil.a(paramView);
+      paramView = AVGameUtil.c(paramView);
       if (paramView != null) {
-        GameListView.a(this.a).setImageBitmap(paramView);
+        GameListView.b(this.a).setImageBitmap(paramView);
       }
     }
     return false;

@@ -19,23 +19,23 @@ import com.tencent.widget.URLThemeImageView;
 
 public class MemoryDayView$MemoryDayItem
 {
-  private View jdField_a_of_type_AndroidViewView = null;
-  private MemoryDayView.OnItemClick jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnItemClick = null;
-  private IntimateInfo.MemoryDayInfo jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo = null;
+  private View b = null;
+  private IntimateInfo.MemoryDayInfo c = null;
+  private MemoryDayView.OnItemClick d = null;
   
   public MemoryDayView$MemoryDayItem(MemoryDayView paramMemoryDayView, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559271, null);
+    this.b = LayoutInflater.from(paramContext).inflate(2131625192, null);
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.b;
   }
   
   public void a(MemoryDayView.OnItemClick paramOnItemClick)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView$OnItemClick = paramOnItemClick;
+    this.d = paramOnItemClick;
   }
   
   public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
@@ -43,23 +43,23 @@ public class MemoryDayView$MemoryDayItem
     TextView localTextView1;
     if (paramMemoryDayInfo != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo$MemoryDayInfo = paramMemoryDayInfo;
-      Object localObject = this.jdField_a_of_type_AndroidViewView;
+      this.c = paramMemoryDayInfo;
+      Object localObject = this.b;
       if (localObject == null) {
         return;
       }
       ((View)localObject).setTag(paramMemoryDayInfo);
-      localObject = (URLThemeImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368343);
-      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381180);
-      localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370088);
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370763);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363343);
+      localObject = (URLThemeImageView)this.b.findViewById(2131435219);
+      TextView localTextView2 = (TextView)this.b.findViewById(2131450229);
+      localTextView1 = (TextView)this.b.findViewById(2131437250);
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.b.findViewById(2131438069);
+      ImageView localImageView = (ImageView)this.b.findViewById(2131429221);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestWidth = 686;
       localURLDrawableOptions.mRequestHeight = 124;
       localURLDrawableOptions.mRetryCount = 3;
       localURLDrawableOptions.mPlayGifImage = true;
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView.jdField_a_of_type_JavaLangString;
+      String str = this.a.b;
       if (localObject != null)
       {
         if (((URLThemeImageView)localObject).themeImageWrapper != null) {
@@ -74,7 +74,7 @@ public class MemoryDayView$MemoryDayItem
       {
         localObject = str;
         if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView.b;
+          localObject = this.a.c;
         }
       }
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (localImageView != null)) {
@@ -90,8 +90,8 @@ public class MemoryDayView$MemoryDayItem
         } else {
           localObject = "";
         }
-        int i = AIOUtils.b(95.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView.jdField_a_of_type_AndroidContentContext.getResources());
-        i = MemoryDayView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateMemoryDayView, (String)localObject, 14.0F, i + 80);
+        int i = AIOUtils.b(95.0F, this.a.a.getResources());
+        i = MemoryDayView.a(this.a, (String)localObject, 14.0F, i + 80);
         if (i > 200) {
           localTextView2.setMaxWidth(i);
         } else {
@@ -119,7 +119,7 @@ public class MemoryDayView$MemoryDayItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.MemoryDayView.MemoryDayItem
  * JD-Core Version:    0.7.0.1
  */

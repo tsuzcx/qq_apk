@@ -10,15 +10,15 @@ class DropdownMenuEndIconDelegate$5
   
   public void a(@NonNull TextInputLayout paramTextInputLayout, int paramInt)
   {
-    paramTextInputLayout = (AutoCompleteTextView)paramTextInputLayout.a();
+    paramTextInputLayout = (AutoCompleteTextView)paramTextInputLayout.getEditText();
     if ((paramTextInputLayout != null) && (paramInt == 3))
     {
       paramTextInputLayout.post(new DropdownMenuEndIconDelegate.5.1(this, paramTextInputLayout));
-      if (paramTextInputLayout.getOnFocusChangeListener() == DropdownMenuEndIconDelegate.a(this.a)) {
+      if (paramTextInputLayout.getOnFocusChangeListener() == DropdownMenuEndIconDelegate.d(this.a)) {
         paramTextInputLayout.setOnFocusChangeListener(null);
       }
       paramTextInputLayout.setOnTouchListener(null);
-      if (DropdownMenuEndIconDelegate.b()) {
+      if (DropdownMenuEndIconDelegate.c()) {
         paramTextInputLayout.setOnDismissListener(null);
       }
     }
@@ -26,7 +26,7 @@ class DropdownMenuEndIconDelegate$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.DropdownMenuEndIconDelegate.5
  * JD-Core Version:    0.7.0.1
  */

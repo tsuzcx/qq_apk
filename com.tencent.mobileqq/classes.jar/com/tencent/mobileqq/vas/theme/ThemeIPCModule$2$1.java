@@ -10,12 +10,12 @@ class ThemeIPCModule$2$1
   
   public void run()
   {
-    this.this$0.a.postQuery(this.a);
+    this.this$0.b.postQuery(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.ThemeIPCModule.2.1
  * JD-Core Version:    0.7.0.1
  */

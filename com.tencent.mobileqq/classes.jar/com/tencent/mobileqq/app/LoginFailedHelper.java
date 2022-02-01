@@ -51,35 +51,24 @@ public class LoginFailedHelper
   
   private void a(Context paramContext, String paramString)
   {
-    DialogUtil.a(paramContext, 230, HardCodeUtil.a(2131706416), paramString, 2131692483, 2131694583, new LoginFailedHelper.3(this), null).show();
+    DialogUtil.a(paramContext, 230, HardCodeUtil.a(2131904275), paramString, 2131889471, 2131892267, new LoginFailedHelper.3(this), null).show();
   }
   
   private static void a(Context paramContext, String paramString1, AppRuntime paramAppRuntime, LoginFailedHelper.FrozenDialogCallback paramFrozenDialogCallback, String paramString2)
   {
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramContext, 230);
-    localQQCustomDialog.setTitle(2131699818);
+    localQQCustomDialog.setTitle(2131897863);
     if (TextUtils.isEmpty(paramString2)) {
-      localQQCustomDialog.setMessage(2131699817);
+      localQQCustomDialog.setMessage(2131897862);
     } else {
       localQQCustomDialog.setMessage(paramString2);
     }
-    localQQCustomDialog.setPositiveButton(2131694583, new LoginFailedHelper.4(paramContext, paramString1, paramAppRuntime, paramFrozenDialogCallback));
+    localQQCustomDialog.setPositiveButton(2131892267, new LoginFailedHelper.4(paramContext, paramString1, paramAppRuntime, paramFrozenDialogCallback));
     if (paramFrozenDialogCallback != null) {
       localQQCustomDialog.setOnCancelListener(new LoginFailedHelper.5(paramFrozenDialogCallback));
     }
     localQQCustomDialog.setCancelable(true);
     localQQCustomDialog.show();
-  }
-  
-  private void a(String paramString)
-  {
-    if (this.a.containsKey(paramString))
-    {
-      HashMap localHashMap = this.a;
-      localHashMap.put(paramString, Integer.valueOf(((Integer)localHashMap.get(paramString)).intValue() + 1));
-      return;
-    }
-    this.a.put(paramString, Integer.valueOf(1));
   }
   
   private void a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, int paramInt, String paramString2, Runnable paramRunnable)
@@ -89,7 +78,7 @@ public class LoginFailedHelper
       QLog.e("LoginFailedHelper", 1, "onClick action is null");
       return;
     }
-    DialogUtil.a(paramContext, 230, HardCodeUtil.a(2131706416), paramString2, 2131692483, 2131694583, new LoginFailedHelper.1(this, paramAppRuntime, paramString1, paramInt), new LoginFailedHelper.2(this, paramRunnable, paramAppRuntime, paramString1, paramInt)).show();
+    DialogUtil.a(paramContext, 230, HardCodeUtil.a(2131904275), paramString2, 2131889471, 2131892267, new LoginFailedHelper.1(this, paramAppRuntime, paramString1, paramInt), new LoginFailedHelper.2(this, paramRunnable, paramAppRuntime, paramString1, paramInt)).show();
   }
   
   private void a(AppRuntime paramAppRuntime, String paramString1, int paramInt, String paramString2)
@@ -163,6 +152,17 @@ public class LoginFailedHelper
     return false;
   }
   
+  private void b(String paramString)
+  {
+    if (this.a.containsKey(paramString))
+    {
+      HashMap localHashMap = this.a;
+      localHashMap.put(paramString, Integer.valueOf(((Integer)localHashMap.get(paramString)).intValue() + 1));
+      return;
+    }
+    this.a.put(paramString, Integer.valueOf(1));
+  }
+  
   public void a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString1, int paramInt, String paramString2, Runnable paramRunnable)
   {
     if ((paramAppRuntime != null) && (paramActivity != null) && (paramString1 != null))
@@ -176,7 +176,7 @@ public class LoginFailedHelper
       if (paramString2 == null) {
         str = "";
       }
-      a(paramString1);
+      b(paramString1);
       if (((Integer)this.a.get(paramString1)).intValue() >= 3)
       {
         a(paramAppRuntime, paramActivity, paramString1, paramInt, str, paramRunnable);
@@ -192,7 +192,7 @@ public class LoginFailedHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.LoginFailedHelper
  * JD-Core Version:    0.7.0.1
  */

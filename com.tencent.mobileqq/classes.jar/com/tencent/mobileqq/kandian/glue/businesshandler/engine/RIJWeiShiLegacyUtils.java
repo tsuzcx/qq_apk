@@ -42,7 +42,7 @@ public final class RIJWeiShiLegacyUtils
     localMessageRecord = MessageRecordFactory.a(-1000);
     MessageRecord.copyMessageRecordBaseField(localMessageRecord, paramMessageRecord);
     localMessageRecord.msgtype = -1000;
-    a(localMessageRecord, paramString, paramLong);
+    b(localMessageRecord, paramString, paramLong);
     return localMessageRecord;
   }
   
@@ -94,7 +94,7 @@ public final class RIJWeiShiLegacyUtils
     return localObject;
   }
   
-  private final void a(MessageRecord paramMessageRecord, String paramString, long paramLong)
+  private final void b(MessageRecord paramMessageRecord, String paramString, long paramLong)
   {
     if (paramMessageRecord == null) {
       Intrinsics.throwNpe();
@@ -110,115 +110,9 @@ public final class RIJWeiShiLegacyUtils
   }
   
   @Nullable
-  public final MessageForStructing a()
-  {
-    Object localObject1 = RIJQQAppInterfaceUtil.a();
-    if (localObject1 != null)
-    {
-      Object localObject3 = (QQAppInterface)localObject1;
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      if (localObject3 != null)
-      {
-        localObject1 = localObject2;
-        if (((QQAppInterface)localObject3).getMessageFacade() != null)
-        {
-          localObject1 = ((QQAppInterface)localObject3).getMessageFacade();
-          Intrinsics.checkExpressionValueIsNotNull(localObject1, "app.messageFacade");
-          if (((QQMessageFacade)localObject1).a() == null) {
-            return null;
-          }
-          localObject3 = ((QQAppInterface)localObject3).getMessageFacade().b(AppConstants.WEISHI_UIN, 1008);
-          localObject1 = localObject2;
-          if ((localObject3 instanceof MessageForStructing)) {
-            localObject1 = (MessageForStructing)localObject3;
-          }
-        }
-      }
-      return localObject1;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-  }
-  
-  @Nullable
-  public final MessageRecord a(@NotNull String paramString, long paramLong)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "brief");
-    Object localObject = RIJQQAppInterfaceUtil.a();
-    if (localObject != null)
-    {
-      localObject = (QQAppInterface)localObject;
-      if (localObject != null)
-      {
-        MessageRecord localMessageRecord = MessageRecordFactory.a(-1000);
-        localMessageRecord.selfuin = ((QQAppInterface)localObject).getCurrentAccountUin();
-        a(localMessageRecord, paramString, paramLong);
-        return localMessageRecord;
-      }
-      return null;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-  }
-  
-  @Nullable
-  public final WeishiRedDotInfo a()
-  {
-    Object localObject1 = RIJQQAppInterfaceUtil.a();
-    if (localObject1 != null)
-    {
-      Object localObject3 = (QQAppInterface)localObject1;
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      if (localObject3 != null)
-      {
-        localObject1 = localObject2;
-        if (((QQAppInterface)localObject3).getMessageFacade() != null)
-        {
-          if (((QQAppInterface)localObject3).getConversationFacade() == null) {
-            return null;
-          }
-          localObject1 = ((QQAppInterface)localObject3).getMessageFacade();
-          Intrinsics.checkExpressionValueIsNotNull(localObject1, "app.messageFacade");
-          ConversationFacade localConversationFacade = ((QQMessageFacade)localObject1).a();
-          Intrinsics.checkExpressionValueIsNotNull(localConversationFacade, "app.messageFacade.conversationFacade");
-          localObject1 = localObject2;
-          if (localConversationFacade.a(AppConstants.WEISHI_UIN, 1008) > 0)
-          {
-            localObject3 = ((QQAppInterface)localObject3).getMessageFacade().b(AppConstants.WEISHI_UIN, 1008);
-            Intrinsics.checkExpressionValueIsNotNull(localObject3, "app.messageFacade.getLas….UIN_TYPE_PUBLIC_ACCOUNT)");
-            localObject1 = localObject2;
-            if ((localObject3 instanceof MessageForStructing)) {
-              localObject1 = new WeishiRedDotInfo((MessageForStructing)localObject3);
-            }
-          }
-        }
-      }
-      return localObject1;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((MessageForStructing)localObject).structingMsg;
-      if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)((AbsStructMsg)localObject).mMsgActionData)))
-      {
-        localObject = ((AbsStructMsg)localObject).mMsgActionData;
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "structingMsg.mMsgActionData");
-        return localObject;
-      }
-    }
-    return "";
-  }
-  
-  @Nullable
   public final List<Long> a()
   {
-    Object localObject1 = RIJQQAppInterfaceUtil.a();
+    Object localObject1 = RIJQQAppInterfaceUtil.e();
     if (localObject1 != null)
     {
       Object localObject2 = (QQAppInterface)localObject1;
@@ -232,7 +126,7 @@ public final class RIJWeiShiLegacyUtils
           if (((QQMessageFacade)localObject3).a() == null) {
             return null;
           }
-          localObject2 = ((QQAppInterface)localObject2).getMessageFacade().b(AppConstants.WEISHI_UIN, 1008);
+          localObject2 = ((QQAppInterface)localObject2).getMessageFacade().r(AppConstants.WEISHI_UIN, 1008);
           Intrinsics.checkExpressionValueIsNotNull(localObject2, "app.messageFacade.getLas….UIN_TYPE_PUBLIC_ACCOUNT)");
           if ((localObject2 instanceof MessageForStructing))
           {
@@ -274,7 +168,7 @@ public final class RIJWeiShiLegacyUtils
   
   public final void a(@Nullable Activity paramActivity)
   {
-    Object localObject1 = RIJQQAppInterfaceUtil.a();
+    Object localObject1 = RIJQQAppInterfaceUtil.e();
     if (localObject1 != null)
     {
       localObject1 = (QQAppInterface)localObject1;
@@ -295,7 +189,7 @@ public final class RIJWeiShiLegacyUtils
   public final void a(@NotNull String paramString, long paramLong)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "brief");
-    Object localObject = RIJQQAppInterfaceUtil.a();
+    Object localObject = RIJQQAppInterfaceUtil.e();
     if (localObject != null)
     {
       localObject = (QQAppInterface)localObject;
@@ -321,10 +215,116 @@ public final class RIJWeiShiLegacyUtils
     }
     return TextUtils.equals((CharSequence)paramMessageRecord.frienduin, (CharSequence)AppConstants.WEISHI_UIN);
   }
+  
+  @Nullable
+  public final MessageForStructing b()
+  {
+    Object localObject1 = RIJQQAppInterfaceUtil.e();
+    if (localObject1 != null)
+    {
+      Object localObject3 = (QQAppInterface)localObject1;
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if (localObject3 != null)
+      {
+        localObject1 = localObject2;
+        if (((QQAppInterface)localObject3).getMessageFacade() != null)
+        {
+          localObject1 = ((QQAppInterface)localObject3).getMessageFacade();
+          Intrinsics.checkExpressionValueIsNotNull(localObject1, "app.messageFacade");
+          if (((QQMessageFacade)localObject1).a() == null) {
+            return null;
+          }
+          localObject3 = ((QQAppInterface)localObject3).getMessageFacade().r(AppConstants.WEISHI_UIN, 1008);
+          localObject1 = localObject2;
+          if ((localObject3 instanceof MessageForStructing)) {
+            localObject1 = (MessageForStructing)localObject3;
+          }
+        }
+      }
+      return localObject1;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+  }
+  
+  @Nullable
+  public final MessageRecord b(@NotNull String paramString, long paramLong)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "brief");
+    Object localObject = RIJQQAppInterfaceUtil.e();
+    if (localObject != null)
+    {
+      localObject = (QQAppInterface)localObject;
+      if (localObject != null)
+      {
+        MessageRecord localMessageRecord = MessageRecordFactory.a(-1000);
+        localMessageRecord.selfuin = ((QQAppInterface)localObject).getCurrentAccountUin();
+        b(localMessageRecord, paramString, paramLong);
+        return localMessageRecord;
+      }
+      return null;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+  }
+  
+  @NotNull
+  public final String c()
+  {
+    Object localObject = b();
+    if (localObject != null)
+    {
+      localObject = ((MessageForStructing)localObject).structingMsg;
+      if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)((AbsStructMsg)localObject).mMsgActionData)))
+      {
+        localObject = ((AbsStructMsg)localObject).mMsgActionData;
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "structingMsg.mMsgActionData");
+        return localObject;
+      }
+    }
+    return "";
+  }
+  
+  @Nullable
+  public final WeishiRedDotInfo d()
+  {
+    Object localObject1 = RIJQQAppInterfaceUtil.e();
+    if (localObject1 != null)
+    {
+      Object localObject3 = (QQAppInterface)localObject1;
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if (localObject3 != null)
+      {
+        localObject1 = localObject2;
+        if (((QQAppInterface)localObject3).getMessageFacade() != null)
+        {
+          if (((QQAppInterface)localObject3).getConversationFacade() == null) {
+            return null;
+          }
+          localObject1 = ((QQAppInterface)localObject3).getMessageFacade();
+          Intrinsics.checkExpressionValueIsNotNull(localObject1, "app.messageFacade");
+          ConversationFacade localConversationFacade = ((QQMessageFacade)localObject1).a();
+          Intrinsics.checkExpressionValueIsNotNull(localConversationFacade, "app.messageFacade.conversationFacade");
+          localObject1 = localObject2;
+          if (localConversationFacade.a(AppConstants.WEISHI_UIN, 1008) > 0)
+          {
+            localObject3 = ((QQAppInterface)localObject3).getMessageFacade().r(AppConstants.WEISHI_UIN, 1008);
+            Intrinsics.checkExpressionValueIsNotNull(localObject3, "app.messageFacade.getLas….UIN_TYPE_PUBLIC_ACCOUNT)");
+            localObject1 = localObject2;
+            if ((localObject3 instanceof MessageForStructing)) {
+              localObject1 = new WeishiRedDotInfo((MessageForStructing)localObject3);
+            }
+          }
+        }
+      }
+      return localObject1;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.RIJWeiShiLegacyUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GatewayLoginNewDevHelper
 {
-  protected static boolean a = false;
   protected static byte[] a;
+  protected static boolean b = false;
   
   public static void a()
   {
-    jdField_a_of_type_Boolean = true;
+    b = true;
     QLog.i("gateway_login_new_dev", 1, "startGateWayFlow");
   }
   
   public static void a(int paramInt)
   {
-    jdField_a_of_type_Boolean = false;
+    b = false;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cleanGateWayFlow from = ");
     localStringBuilder.append(paramInt);
@@ -24,30 +24,30 @@ public class GatewayLoginNewDevHelper
   
   public static void a(byte[] paramArrayOfByte)
   {
-    jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    a = paramArrayOfByte;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("stashGatewayLoginReq phoneToken=");
     localStringBuilder.append(paramArrayOfByte.length);
     QLog.i("gateway_login_new_dev", 1, localStringBuilder.toString());
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isGateWayFlow = ");
-    localStringBuilder.append(jdField_a_of_type_Boolean);
+    localStringBuilder.append(b);
     QLog.i("gateway_login_new_dev", 1, localStringBuilder.toString());
-    return jdField_a_of_type_Boolean;
+    return b;
   }
   
-  public static byte[] a()
+  public static byte[] c()
   {
-    return jdField_a_of_type_ArrayOfByte;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.GatewayLoginNewDevHelper
  * JD-Core Version:    0.7.0.1
  */

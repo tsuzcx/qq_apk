@@ -155,7 +155,7 @@ class FastScroller
       this.mOverlayPosition = localTypedArray.getInt(5, 0);
       this.mScrollCompleted = true;
       getSectionsFromIndexer();
-      this.mOverlaySize = paramContext.getResources().getDimensionPixelSize(2131297010);
+      this.mOverlaySize = paramContext.getResources().getDimensionPixelSize(2131297391);
       this.mOverlayPos = new RectF();
       this.mScrollFade = new FastScroller.ScrollFade(this);
       this.mPaint = new Paint();
@@ -233,8 +233,8 @@ class FastScroller
     this.mThumbDrawable = paramDrawable;
     if ((paramDrawable instanceof NinePatchDrawable))
     {
-      this.mThumbW = paramContext.getResources().getDimensionPixelSize(2131297012);
-      this.mThumbH = paramContext.getResources().getDimensionPixelSize(2131297011);
+      this.mThumbW = paramContext.getResources().getDimensionPixelSize(2131297393);
+      this.mThumbH = paramContext.getResources().getDimensionPixelSize(2131297392);
     }
     else
     {
@@ -926,7 +926,7 @@ class FastScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.FastScroller
  * JD-Core Version:    0.7.0.1
  */

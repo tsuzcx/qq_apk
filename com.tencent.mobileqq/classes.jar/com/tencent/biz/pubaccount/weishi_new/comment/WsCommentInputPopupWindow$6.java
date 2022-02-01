@@ -15,15 +15,15 @@ class WsCommentInputPopupWindow$6
     if ((paramInt != 4) && (paramInt != 6)) {
       return false;
     }
-    if (WsCommentInputPopupWindow.a(this.a) != null) {
-      WsCommentInputPopupWindow.a(this.a).a();
+    if (WsCommentInputPopupWindow.h(this.a) != null) {
+      WsCommentInputPopupWindow.h(this.a).a();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.6
  * JD-Core Version:    0.7.0.1
  */

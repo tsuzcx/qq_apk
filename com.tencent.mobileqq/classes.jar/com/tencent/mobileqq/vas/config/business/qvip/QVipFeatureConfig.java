@@ -10,6 +10,7 @@ import mqq.app.MobileQQ;
 public class QVipFeatureConfig
 {
   public boolean enableDownloadExtraTabIcon = true;
+  public boolean enableShootAnim = true;
   public boolean enableSplashAnim = true;
   
   private void setSplashEnable(boolean paramBoolean)
@@ -24,7 +25,7 @@ public class QVipFeatureConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipFeatureConfig
  * JD-Core Version:    0.7.0.1
  */

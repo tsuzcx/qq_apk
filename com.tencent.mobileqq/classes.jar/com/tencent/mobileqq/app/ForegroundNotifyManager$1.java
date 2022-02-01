@@ -6,7 +6,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
 import com.tencent.mobileqq.settings.message.ReportClickEventHelper;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -19,28 +18,26 @@ class ForegroundNotifyManager$1
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     boolean bool = QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext());
-    Object localObject = NewMsgNotificationManager.a(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager));
+    Object localObject = NewMsgNotificationManager.a(ForegroundNotifyManager.a(this.c));
     if ((!bool) && (localObject != null))
     {
-      ((NewMsgNotificationManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      ((NewMsgNotificationManager)localObject).a(this.a);
+      this.b.setOnCheckedChangeListener(null);
+      localObject = this.b;
       ((FormSwitchItem)localObject).setChecked(((FormSwitchItem)localObject).a() ^ true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager));
+      this.b.setOnCheckedChangeListener(ForegroundNotifyManager.b(this.c));
     }
     else
     {
-      if (SettingsConfigHelper.a(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager))) {
-        ReportClickEventHelper.a(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager), "0X800B845", paramBoolean);
-      }
-      SettingCloneUtil.writeValue(ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager).getApp(), ForegroundNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppForegroundNotifyManager).getCurrentUin(), null, "top_msg_notification_key", paramBoolean);
+      ReportClickEventHelper.a(ForegroundNotifyManager.a(this.c), "0X800B845", paramBoolean);
+      SettingCloneUtil.writeValue(ForegroundNotifyManager.a(this.c).getApp(), ForegroundNotifyManager.a(this.c).getCurrentUin(), null, "top_msg_notification_key", paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ForegroundNotifyManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,6 +27,7 @@ import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ParamInfo;
 import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ReqBody;
 import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.RspBody;
 
+@Deprecated
 public class RIJBiuAndCommentMixPBModule
   extends ReadInJoyEngineModule
 {
@@ -61,7 +62,7 @@ public class RIJBiuAndCommentMixPBModule
           paramAbsBaseArticleInfo = ReadInJoyCommentDataManager.a(paramAbsBaseArticleInfo);
           if (paramAbsBaseArticleInfo != null)
           {
-            paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.a(paramRIJBiuAndCommentRequestData.getReplyCommentId());
+            paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.k(paramRIJBiuAndCommentRequestData.getReplyCommentId());
             paramRIJBiuAndCommentRequestData.setReplyParentCommentId(paramAbsBaseArticleInfo);
             localCommentInfo.str_comment_id.set(paramAbsBaseArticleInfo);
           }
@@ -148,7 +149,7 @@ public class RIJBiuAndCommentMixPBModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.RIJBiuAndCommentMixPBModule
  * JD-Core Version:    0.7.0.1
  */

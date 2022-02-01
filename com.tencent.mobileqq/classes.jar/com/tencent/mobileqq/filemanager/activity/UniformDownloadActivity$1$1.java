@@ -9,7 +9,7 @@ class UniformDownloadActivity$1$1
   
   public void a()
   {
-    UniformDownloadActivity.a(this.a.a);
+    UniformDownloadActivity.b(this.a.a);
     this.a.a.finish();
     this.a.a.overridePendingTransition(0, 0);
   }
@@ -22,7 +22,7 @@ class UniformDownloadActivity$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

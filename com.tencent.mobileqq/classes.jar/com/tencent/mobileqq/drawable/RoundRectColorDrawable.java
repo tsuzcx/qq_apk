@@ -8,44 +8,44 @@ import android.graphics.drawable.ColorDrawable;
 public class RoundRectColorDrawable
   extends ColorDrawable
 {
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final int b;
+  private float a;
+  private final RectF b = new RectF();
+  private final Paint c;
+  private final int d;
+  private final int e;
   
   public RoundRectColorDrawable(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
   {
     super(paramInt1);
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt2, paramInt3);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    this.a = paramFloat;
+    this.c = new Paint();
+    this.c.setAntiAlias(true);
+    this.c.setColor(paramInt1);
+    this.b.set(0.0F, 0.0F, paramInt2, paramInt3);
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    float f = this.jdField_a_of_type_Float;
-    paramCanvas.drawRoundRect(localRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+    RectF localRectF = this.b;
+    float f = this.a;
+    paramCanvas.drawRoundRect(localRectF, f, f, this.c);
   }
   
   public int getIntrinsicHeight()
   {
-    return this.b;
+    return this.e;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.drawable.RoundRectColorDrawable
  * JD-Core Version:    0.7.0.1
  */

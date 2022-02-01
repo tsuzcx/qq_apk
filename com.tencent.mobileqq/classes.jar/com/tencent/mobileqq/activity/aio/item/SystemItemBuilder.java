@@ -12,11 +12,6 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 public class SystemItemBuilder
   extends BaseBubbleBuilder
 {
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
-  }
-  
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     return null;
@@ -27,21 +22,26 @@ public class SystemItemBuilder
     return new SystemItemBuilder.Holder(this);
   }
   
-  protected String a(ChatMessage paramChatMessage)
-  {
-    return "";
-  }
-  
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
   
   public QQCustomMenuItem[] a(View paramView)
   {
     return null;
   }
+  
+  public int c(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SystemItemBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -24,10 +24,10 @@ class PhoneLaunchActivity$1$1
     if (paramBoolean)
     {
       Object localObject = this.a.this$0;
-      if ((!PhoneLaunchActivity.a(this.a.this$0)) && (!PhoneLaunchActivity.b(this.a.this$0)))
+      if ((!PhoneLaunchActivity.b(this.a.this$0)) && (!PhoneLaunchActivity.c(this.a.this$0)))
       {
         localObject = new Intent((Context)localObject, SettingActivity2.class);
-        if (PhoneLaunchActivity.c(this.a.this$0)) {
+        if (PhoneLaunchActivity.d(this.a.this$0)) {
           ((Intent)localObject).putExtra("kSrouce", 7);
         }
         this.a.this$0.startActivityForResult((Intent)localObject, 2);
@@ -39,12 +39,12 @@ class PhoneLaunchActivity$1$1
       this.a.this$0.finish();
       return;
     }
-    this.a.this$0.showToast(HardCodeUtil.a(2131708015));
+    this.a.this$0.showToast(HardCodeUtil.a(2131905824));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

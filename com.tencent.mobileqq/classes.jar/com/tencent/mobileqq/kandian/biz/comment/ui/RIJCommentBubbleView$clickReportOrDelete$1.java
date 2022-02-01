@@ -16,12 +16,12 @@ public final class RIJCommentBubbleView$clickReportOrDelete$1
   public void a(@NotNull String paramString, int paramInt1, int paramInt2)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "msg");
-    RIJCommentBubbleView.a(this.a).a().b(RIJCommentBubbleView.a(this.a).a.commentId, paramString, paramInt1);
+    RIJCommentBubbleView.a(this.a).f().b(RIJCommentBubbleView.b(this.a).c.commentId, paramString, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.RIJCommentBubbleView.clickReportOrDelete.1
  * JD-Core Version:    0.7.0.1
  */

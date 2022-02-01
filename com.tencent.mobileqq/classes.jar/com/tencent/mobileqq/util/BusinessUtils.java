@@ -60,7 +60,7 @@ public class BusinessUtils
       if ((localAtTroopMemberInfo != null) && (localAtTroopMemberInfo.startPos == j))
       {
         str2 = str1.substring(localAtTroopMemberInfo.startPos, localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen);
-        i = a(str2);
+        i = f(str2);
         localAtTroopMemberInfo.startPos = ((short)(localAtTroopMemberInfo.startPos + n));
         localObject2 = localObject1;
         if (localObject1 == null) {
@@ -86,7 +86,7 @@ public class BusinessUtils
         }
         else
         {
-          i = a(i2);
+          i = b(i2);
         }
         str2 = null;
         i1 = i;
@@ -115,7 +115,7 @@ public class BusinessUtils
             str1 = localStringBuilder.substring(0, i);
             localObject2 = localStringBuilder.substring(i);
             localStringBuilder.setLength(0);
-            m = a((String)localObject2);
+            m = f((String)localObject2);
             localStringBuilder.append((String)localObject2);
             break label615;
           }
@@ -140,7 +140,7 @@ public class BusinessUtils
             str1 = localStringBuilder.substring(0, i);
             localObject2 = localStringBuilder.substring(i);
             localStringBuilder.setLength(0);
-            m = a((String)localObject2);
+            m = f((String)localObject2);
             localStringBuilder.append((String)localObject2);
             break label615;
           }
@@ -286,7 +286,7 @@ public class BusinessUtils
     if (!(paramAppRuntime instanceof QQAppInterface)) {
       return;
     }
-    ThreadManager.postImmediately(new BusinessUtils.1((QQAppInterface)paramAppRuntime, paramString), null, false);
+    ThreadManager.postImmediately(new BusinessUtils.1((QQAppInterface)paramAppRuntime), null, false);
     try
     {
       StatisticCollector.getInstance(BaseApplicationImpl.sApplication).setContact(paramString);
@@ -315,10 +315,10 @@ public class BusinessUtils
   
   public static boolean a(Context paramContext)
   {
-    if ((paramContext != null) && (!TextUtils.isEmpty(b)) && (!TextUtils.isEmpty(b.trim())))
+    if ((paramContext != null) && (!TextUtils.isEmpty(d)) && (!TextUtils.isEmpty(d.trim())))
     {
       Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", Utils.b.trim());
+      localIntent.putExtra("url", Utils.d.trim());
       paramContext.startActivity(localIntent);
       return true;
     }
@@ -327,7 +327,7 @@ public class BusinessUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.BusinessUtils
  * JD-Core Version:    0.7.0.1
  */

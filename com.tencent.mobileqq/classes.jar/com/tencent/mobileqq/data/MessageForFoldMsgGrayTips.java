@@ -39,7 +39,7 @@ public class MessageForFoldMsgGrayTips
     int i = 0;
     if (localSpannableString == null)
     {
-      this.clickSpan = new SpannableString(HardCodeUtil.a(2131706616));
+      this.clickSpan = new SpannableString(HardCodeUtil.a(2131904467));
       this.clickSpan.setSpan(new MessageForFoldMsgGrayTips.1(this, paramQQAppInterface, paramContext, 0xFF000000 | j), 0, this.clickSpan.length(), 33);
     }
     this.msg = "";
@@ -133,7 +133,7 @@ public class MessageForFoldMsgGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFoldMsgGrayTips
  * JD-Core Version:    0.7.0.1
  */

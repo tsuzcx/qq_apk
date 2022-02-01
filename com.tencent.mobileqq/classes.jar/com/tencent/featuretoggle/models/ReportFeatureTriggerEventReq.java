@@ -62,20 +62,20 @@ public final class ReportFeatureTriggerEventReq
   public ReportFeatureTriggerEventReq(ArrayList<FeatureTriggerEvent> paramArrayList)
   {
     this.events = paramArrayList;
-    this.sdkType = ToggleSetting.j();
-    this.sdkVersion = ToggleSetting.g();
-    this.startTime = TimeUtil.a();
+    this.sdkType = ToggleSetting.u();
+    this.sdkVersion = ToggleSetting.r();
+    this.startTime = TimeUtil.a(ToggleSetting.e());
     this.stopTime = TimeUtil.a();
-    this.productId = ToggleSetting.b();
-    this.moduleId = ToggleSetting.d();
-    this.moduleVersion = ToggleSetting.f();
-    this.bundleId = AppUtils.b(ToggleSetting.a());
-    this.qua = ToggleSetting.l();
-    this.channel = ToggleSetting.e();
-    this.os = ToggleSetting.j();
-    this.osVersion = DeviceUtils.e();
-    this.deviceId = DeviceUtils.a();
-    this.uploadIp = AppUtils.c(ToggleSetting.a());
+    this.productId = ToggleSetting.k();
+    this.moduleId = ToggleSetting.m();
+    this.moduleVersion = ToggleSetting.o();
+    this.bundleId = AppUtils.c(ToggleSetting.j());
+    this.qua = ToggleSetting.z();
+    this.channel = ToggleSetting.n();
+    this.os = ToggleSetting.u();
+    this.osVersion = DeviceUtils.b();
+    this.deviceId = ToggleSetting.c();
+    this.uploadIp = AppUtils.d(ToggleSetting.j());
   }
   
   public String className()
@@ -424,7 +424,7 @@ public final class ReportFeatureTriggerEventReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.models.ReportFeatureTriggerEventReq
  * JD-Core Version:    0.7.0.1
  */

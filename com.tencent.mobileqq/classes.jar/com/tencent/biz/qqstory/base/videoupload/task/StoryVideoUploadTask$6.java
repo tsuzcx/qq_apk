@@ -27,49 +27,49 @@ class StoryVideoUploadTask$6
   {
     if ((!paramErrorMessage.isFail()) && (paramPublishStoryVideoRespond != null))
     {
-      ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).d = (paramPublishStoryVideoRespond.jdField_a_of_type_Long * 1000L);
-      paramErrorMessage = ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a();
-      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "local feedId %s, remote id: %s", new Object[] { paramErrorMessage.feedId, paramPublishStoryVideoRespond.jdField_a_of_type_JavaLangString });
-      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "local date %s, date id: %s", new Object[] { paramErrorMessage.date, paramPublishStoryVideoRespond.c });
+      ((StoryVideoTaskInfo)this.a.b).q = (paramPublishStoryVideoRespond.a * 1000L);
+      paramErrorMessage = ((StoryVideoTaskInfo)this.a.b).b();
+      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "local feedId %s, remote id: %s", new Object[] { paramErrorMessage.feedId, paramPublishStoryVideoRespond.b });
+      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "local date %s, date id: %s", new Object[] { paramErrorMessage.date, paramPublishStoryVideoRespond.e });
       if (paramErrorMessage.isFakeFeedItem())
       {
-        ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a(paramPublishStoryVideoRespond.jdField_a_of_type_JavaLangString);
-        paramErrorMessage.setDate(paramPublishStoryVideoRespond.c);
+        ((StoryVideoTaskInfo)this.a.b).a(paramPublishStoryVideoRespond.b);
+        paramErrorMessage.setDate(paramPublishStoryVideoRespond.e);
       }
-      else if (!paramErrorMessage.feedId.equals(paramPublishStoryVideoRespond.jdField_a_of_type_JavaLangString))
+      else if (!paramErrorMessage.feedId.equals(paramPublishStoryVideoRespond.b))
       {
-        SLog.e("Q.qqstory.publish.upload:StoryVideoUploadTask", "local feedId %s, remote id: %s", new Object[] { paramErrorMessage.feedId, paramPublishStoryVideoRespond.jdField_a_of_type_JavaLangString });
+        SLog.e("Q.qqstory.publish.upload:StoryVideoUploadTask", "local feedId %s, remote id: %s", new Object[] { paramErrorMessage.feedId, paramPublishStoryVideoRespond.b });
       }
-      if (!TextUtils.isEmpty(paramPublishStoryVideoRespond.d))
+      if (!TextUtils.isEmpty(paramPublishStoryVideoRespond.f))
       {
-        ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).g = paramPublishStoryVideoRespond.d;
-        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish success and storyId:%s", new Object[] { paramPublishStoryVideoRespond.d });
+        ((StoryVideoTaskInfo)this.a.b).s = paramPublishStoryVideoRespond.f;
+        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish success and storyId:%s", new Object[] { paramPublishStoryVideoRespond.f });
       }
-      if (!TextUtils.isEmpty(paramPublishStoryVideoRespond.e))
+      if (!TextUtils.isEmpty(paramPublishStoryVideoRespond.h))
       {
-        ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).g = paramPublishStoryVideoRespond.e;
-        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish success and vid:%s", new Object[] { paramPublishStoryVideoRespond.e });
+        ((StoryVideoTaskInfo)this.a.b).s = paramPublishStoryVideoRespond.h;
+        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish success and vid:%s", new Object[] { paramPublishStoryVideoRespond.h });
       }
-      ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).b = paramPublishStoryVideoRespond.jdField_a_of_type_JavaUtilList;
+      ((StoryVideoTaskInfo)this.a.b).z = paramPublishStoryVideoRespond.i;
       paramErrorMessage = new StringBuilder();
       paramErrorMessage.append("add to shareGroup rsp:");
-      paramErrorMessage.append(((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).b);
+      paramErrorMessage.append(((StoryVideoTaskInfo)this.a.b).z);
       SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", paramErrorMessage.toString());
-      ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).e = paramPublishStoryVideoRespond.b;
-      if (this.a.a())
+      ((StoryVideoTaskInfo)this.a.b).A = paramPublishStoryVideoRespond.g;
+      if (this.a.d())
       {
         paramPublishStoryVideoRequest = this.a;
-        paramPublishStoryVideoRequest.a(paramPublishStoryVideoRequest.jdField_a_of_type_Int, new ErrorMessage());
-        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post success after stop:%s", new Object[] { this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo });
-        if (this.a.jdField_a_of_type_Int == 7)
+        paramPublishStoryVideoRequest.a(paramPublishStoryVideoRequest.d, new ErrorMessage());
+        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post success after stop:%s", new Object[] { this.a.b });
+        if (this.a.d == 7)
         {
-          new DeleteStoryVideoHandler().a(((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).g);
-          if (paramPublishStoryVideoRespond.jdField_a_of_type_JavaUtilList != null)
+          new DeleteStoryVideoHandler().a(((StoryVideoTaskInfo)this.a.b).s);
+          if (paramPublishStoryVideoRespond.i != null)
           {
-            paramPublishStoryVideoRequest = paramPublishStoryVideoRespond.jdField_a_of_type_JavaUtilList.iterator();
+            paramPublishStoryVideoRequest = paramPublishStoryVideoRespond.i.iterator();
             while (paramPublishStoryVideoRequest.hasNext())
             {
-              paramPublishStoryVideoRespond = ((AddGroupVideoResponse.AddGroupFeed)paramPublishStoryVideoRequest.next()).a.values().iterator();
+              paramPublishStoryVideoRespond = ((AddGroupVideoResponse.AddGroupFeed)paramPublishStoryVideoRequest.next()).c.values().iterator();
               while (paramPublishStoryVideoRespond.hasNext())
               {
                 paramErrorMessage = (String)paramPublishStoryVideoRespond.next();
@@ -82,10 +82,10 @@ class StoryVideoUploadTask$6
       else
       {
         this.a.a(5, new ErrorMessage());
-        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post success:%s", new Object[] { this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo });
-        if ((paramPublishStoryVideoRequest.a != null) && (paramPublishStoryVideoRequest.a.jdField_a_of_type_Int == 1))
+        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post success:%s", new Object[] { this.a.b });
+        if ((paramPublishStoryVideoRequest.R != null) && (paramPublishStoryVideoRequest.R.a == 1))
         {
-          int i = ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).f;
+          int i = ((StoryVideoTaskInfo)this.a.b).E;
           if (i != 0)
           {
             if (i != 1)
@@ -104,13 +104,13 @@ class StoryVideoUploadTask$6
             i = 2;
           }
           int j;
-          if (TextUtils.isEmpty(paramPublishStoryVideoRequest.a.e)) {
+          if (TextUtils.isEmpty(paramPublishStoryVideoRequest.R.f)) {
             j = 2;
           } else {
             j = 1;
           }
-          paramPublishStoryVideoRespond = paramPublishStoryVideoRequest.a.a();
-          if (paramPublishStoryVideoRequest.e == 1) {
+          paramPublishStoryVideoRespond = paramPublishStoryVideoRequest.R.a();
+          if (paramPublishStoryVideoRequest.w == 1) {
             paramPublishStoryVideoRequest = "2";
           } else {
             paramPublishStoryVideoRequest = "1";
@@ -123,13 +123,13 @@ class StoryVideoUploadTask$6
     {
       paramErrorMessage.extraMsg = "submit";
       this.a.a(6, paramErrorMessage);
-      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post fail:%s task:%s", new Object[] { paramErrorMessage, this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo });
+      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post fail:%s task:%s", new Object[] { paramErrorMessage, this.a.b });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask.6
  * JD-Core Version:    0.7.0.1
  */

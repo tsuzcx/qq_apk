@@ -18,7 +18,6 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.VipUtils;
 import java.util.ArrayList;
-import java.util.Map;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -27,23 +26,17 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/statistics/product/ApolloAioBubbleReportUtil;", "", "()V", "TAG", "", "exposeMessage", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "addExposeMessage", "", "uinseq", "clear", "hasExpose", "", "report", "sessionInfo", "Lcom/tencent/mobileqq/activity/aio/SessionInfo;", "message", "Lcom/tencent/mobileqq/apollo/model/MessageForApollo;", "reportAddAction", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "actionPackageData", "Lcom/tencent/mobileqq/apollo/model/ApolloFavActionData;", "reportApolloMsgClick", "ctx", "Landroid/content/Context;", "holder", "Lcom/tencent/mobileqq/apollo/aio/item/ApolloItemBuilder$Holder;", "mr", "status", "", "reportBubbleDel", "msg", "isNewAnimation", "reportBubbleFavorite", "reportBubbleLongClick", "reportBubbleRevoke", "reportGifClick", "actionId", "sflag3", "reportInviteTipShow", "tip", "reportOpenTipsShow", "reportPlusOneClick", "curPie", "Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;", "reportPlusOneShow", "curPlusOneMsgUni", "reportTailClick", "sflag4", "apolloManager", "Lcom/tencent/mobileqq/apollo/api/IApolloManagerService;", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloAioBubbleReportUtil
 {
-  public static final ApolloAioBubbleReportUtil a;
-  private static ArrayList<Long> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqApolloStatisticsProductApolloAioBubbleReportUtil = new ApolloAioBubbleReportUtil();
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public static final ApolloAioBubbleReportUtil a = new ApolloAioBubbleReportUtil();
+  private static ArrayList<Long> b = new ArrayList();
   
   public final void a()
   {
-    jdField_a_of_type_JavaUtilArrayList.clear();
+    b.clear();
   }
   
   public final void a(long paramLong)
   {
-    jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    b.add(Long.valueOf(paramLong));
   }
   
   public final void a(@NotNull SessionInfo paramSessionInfo, @NotNull MessageForApollo paramMessageForApollo)
@@ -67,10 +60,10 @@ public final class ApolloAioBubbleReportUtil
     Intrinsics.checkParameterIsNotNull(paramSessionInfo, "sessionInfo");
     Intrinsics.checkParameterIsNotNull(paramApolloFavActionData, "actionPackageData");
     AppInterface localAppInterface = (AppInterface)paramQQAppInterface;
-    int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramSessionInfo.jdField_a_of_type_Int);
+    int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramSessionInfo.a);
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append("");
-    paramQQAppInterface.append(paramApolloFavActionData.acitonId);
+    paramQQAppInterface.append(paramApolloFavActionData.actionId);
     paramSessionInfo = paramQQAppInterface.toString();
     if (TextUtils.isEmpty((CharSequence)paramApolloFavActionData.text)) {
       paramQQAppInterface = "0";
@@ -102,18 +95,8 @@ public final class ApolloAioBubbleReportUtil
       } else {
         str = "long_press_withdraw";
       }
-      VipUtils.a((AppInterface)paramQQAppInterface, "cmshow", "Apollo", str, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramSessionInfo.jdField_a_of_type_Int), 0, new String[] { Integer.toString(paramMessageForApollo.mApolloMessage.id) });
+      VipUtils.a((AppInterface)paramQQAppInterface, "cmshow", "Apollo", str, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramSessionInfo.a), 0, new String[] { Integer.toString(paramMessageForApollo.mApolloMessage.id) });
     }
-  }
-  
-  public final void a(@NotNull QQAppInterface paramQQAppInterface, @NotNull SessionInfo paramSessionInfo, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
-    Intrinsics.checkParameterIsNotNull(paramSessionInfo, "sessionInfo");
-    Intrinsics.checkParameterIsNotNull(paramString, "tip");
-    paramQQAppInterface = (AppInterface)paramQQAppInterface;
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Invitetip_show", 0, 0, new String[] { "" });
-    ApolloDtReportUtil.a("aio_bubble", "apollo_tips", "expose", (Map)new DtReportParamsBuilder().a(ApolloDtReportUtil.a(paramQQAppInterface)).b(ApolloDtReportUtil.a(paramSessionInfo.jdField_a_of_type_Int)).a(paramString).b(paramSessionInfo.jdField_a_of_type_JavaLangString).a());
   }
   
   public final void a(@NotNull QQAppInterface paramQQAppInterface, @NotNull SessionInfo paramSessionInfo, boolean paramBoolean, @NotNull MessageForApollo paramMessageForApollo)
@@ -126,7 +109,7 @@ public final class ApolloAioBubbleReportUtil
     Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
     Intrinsics.checkParameterIsNotNull(paramHolder, "holder");
     Intrinsics.checkParameterIsNotNull(paramString, "sflag3");
-    VipUtils.a((AppInterface)paramQQAppInterface, "cmshow", "Apollo", "clk_gif", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramHolder.a.istroop), 0, new String[] { String.valueOf(paramInt), paramString, "0", String.valueOf(System.currentTimeMillis() / 1000) });
+    VipUtils.a((AppInterface)paramQQAppInterface, "cmshow", "Apollo", "clk_gif", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramHolder.q.istroop), 0, new String[] { String.valueOf(paramInt), paramString, "0", String.valueOf(System.currentTimeMillis() / 1000) });
   }
   
   public final void a(@NotNull QQAppInterface paramQQAppInterface, @NotNull ApolloItemBuilder.Holder paramHolder, @NotNull String paramString, @NotNull IApolloManagerService paramIApolloManagerService)
@@ -139,8 +122,8 @@ public final class ApolloAioBubbleReportUtil
     Intrinsics.checkExpressionValueIsNotNull(localObject, "app\n            .getRunt…ava, ProcessConstant.ALL)");
     ApolloBaseInfo localApolloBaseInfo = ((IApolloDaoManagerService)localObject).getApolloBaseInfoFromCache(paramQQAppInterface.getCurrentUin());
     localObject = (AppInterface)paramQQAppInterface;
-    int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramHolder.a.istroop);
-    int j = paramHolder.e;
+    int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramHolder.q.istroop);
+    int j = paramHolder.a;
     if (localApolloBaseInfo == null)
     {
       paramQQAppInterface = "0";
@@ -156,11 +139,6 @@ public final class ApolloAioBubbleReportUtil
     paramHolder.append(String.valueOf(paramIApolloManagerService.getWhiteListStatus()));
     paramHolder.append("");
     VipUtils.a((AppInterface)localObject, "cmshow", "Apollo", "clk_icon", i, 0, new String[] { String.valueOf(j), paramQQAppInterface, paramString, paramHolder.toString() });
-  }
-  
-  public final boolean a(long paramLong)
-  {
-    return jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong));
   }
   
   public final void b(@NotNull SessionInfo paramSessionInfo, @NotNull MessageForApollo paramMessageForApollo)
@@ -180,13 +158,18 @@ public final class ApolloAioBubbleReportUtil
       } else {
         str = "long_press_del";
       }
-      VipUtils.a((AppInterface)paramQQAppInterface, "cmshow", "Apollo", str, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramSessionInfo.jdField_a_of_type_Int), 0, new String[] { Integer.toString(paramMessageForApollo.mApolloMessage.id) });
+      VipUtils.a((AppInterface)paramQQAppInterface, "cmshow", "Apollo", str, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramSessionInfo.a), 0, new String[] { Integer.toString(paramMessageForApollo.mApolloMessage.id) });
     }
+  }
+  
+  public final boolean b(long paramLong)
+  {
+    return b.contains(Long.valueOf(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.ApolloAioBubbleReportUtil
  * JD-Core Version:    0.7.0.1
  */

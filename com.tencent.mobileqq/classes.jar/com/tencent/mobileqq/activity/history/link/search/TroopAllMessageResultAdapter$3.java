@@ -18,7 +18,7 @@ class TroopAllMessageResultAdapter$3
 {
   public void run()
   {
-    Object localObject = TroopAllMessageResultAdapter.h(this.this$0).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.l(this.this$0).jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.m(this.this$0).jdField_a_of_type_Int, TroopAllMessageResultAdapter.n(this.this$0).d);
+    Object localObject = TroopAllMessageResultAdapter.z(this.this$0).getMessageFacade().a(this.a, TroopAllMessageResultAdapter.w(this.this$0).b, TroopAllMessageResultAdapter.x(this.this$0).a, TroopAllMessageResultAdapter.y(this.this$0).e);
     int j = 0;
     int i;
     MessageRecord localMessageRecord;
@@ -30,15 +30,15 @@ class TroopAllMessageResultAdapter$3
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
         if (TroopAllMessageResultAdapter.c(this.this$0, localMessageRecord))
         {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new MessageItem(TroopAllMessageResultAdapter.i(this.this$0), localMessageRecord));
-          this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
+          this.this$0.b.add(new MessageItem(TroopAllMessageResultAdapter.A(this.this$0), localMessageRecord));
+          this.this$0.c.add(Long.valueOf(localMessageRecord.shmsgseq));
         }
         i += 1;
       }
     }
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
     {
-      localObject = TroopAllMessageResultAdapter.j(this.this$0).getMessageFacade().a(TroopAllMessageResultAdapter.o(this.this$0).jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.p(this.this$0).jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
+      localObject = TroopAllMessageResultAdapter.D(this.this$0).getMessageFacade().b(TroopAllMessageResultAdapter.B(this.this$0).b, TroopAllMessageResultAdapter.C(this.this$0).a, ((ChatHistorySearchData)localObject).mSearchData2);
       if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
       {
         i = j;
@@ -47,8 +47,8 @@ class TroopAllMessageResultAdapter$3
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
           if (TroopAllMessageResultAdapter.d(this.this$0, localMessageRecord))
           {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new MessageItem(TroopAllMessageResultAdapter.k(this.this$0), localMessageRecord));
-            this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
+            this.this$0.b.add(new MessageItem(TroopAllMessageResultAdapter.E(this.this$0), localMessageRecord));
+            this.this$0.c.add(Long.valueOf(localMessageRecord.shmsgseq));
           }
           i += 1;
         }
@@ -58,18 +58,18 @@ class TroopAllMessageResultAdapter$3
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("localCacheMsgs size: ");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject).append(this.this$0.b.size());
       QLog.d("LinkMessageResultAdapter", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
-    ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    TroopAllMessageResultAdapter.d(this.this$0).obtainMessage(8, localObject).sendToTarget();
+    ((HashMap)localObject).put("keyword", this.a);
+    ((HashMap)localObject).put("sequence", Long.valueOf(this.b));
+    TroopAllMessageResultAdapter.F(this.this$0).obtainMessage(8, localObject).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.3
  * JD-Core Version:    0.7.0.1
  */

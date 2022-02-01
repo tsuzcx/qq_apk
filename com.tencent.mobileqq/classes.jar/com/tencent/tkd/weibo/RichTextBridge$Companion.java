@@ -11,12 +11,12 @@ public final class RichTextBridge$Companion
   @NotNull
   public final RichTextBridge a()
   {
-    return RichTextBridge.a();
+    return RichTextBridge.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.RichTextBridge.Companion
  * JD-Core Version:    0.7.0.1
  */

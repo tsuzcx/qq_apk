@@ -36,9 +36,9 @@ public final class ArticleInfoModuleUtils$FollowChannelDataHandler
       return localList;
     }
     paramRspChannelArticle = (List)ReadInJoyMSFHandlerUtils.a(paramRspChannelArticle, paramPBRepeatMessageField.get());
-    paramArticleInfoModule.a().a(paramRspChannelArticle, 70);
-    if (ReadInJoyProteusFamilyUtil.a()) {
-      ReadInJoyProteusFamilyUtil.a().a(70, paramPBRepeatMessageField.get(), paramRspChannelArticle);
+    paramArticleInfoModule.i().a(paramRspChannelArticle, 70);
+    if (ReadInJoyProteusFamilyUtil.e()) {
+      ReadInJoyProteusFamilyUtil.c().a(70, paramPBRepeatMessageField.get(), paramRspChannelArticle);
     }
     return paramRspChannelArticle;
   }
@@ -48,7 +48,7 @@ public final class ArticleInfoModuleUtils$FollowChannelDataHandler
     Intrinsics.checkParameterIsNotNull(paramPBBytesField, "cookie");
     if ((paramPBBytesField.has()) && (paramPBBytesField.get() != null))
     {
-      paramPBBytesField = Base64Util.encodeToString(RIJPBFieldUtils.a(paramPBBytesField), 0);
+      paramPBBytesField = Base64Util.encodeToString(RIJPBFieldUtils.b(paramPBBytesField), 0);
       ReadInJoyLogicEngine.a().e(paramPBBytesField);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getFollowTabData : lastRefreshCookie ");
@@ -117,13 +117,13 @@ public final class ArticleInfoModuleUtils$FollowChannelDataHandler
   {
     Intrinsics.checkParameterIsNotNull(paramPBUInt32Field, "redNum");
     if (paramPBUInt32Field.has()) {
-      ReadInJoyLogicEngine.a().f(paramPBUInt32Field.get());
+      ReadInJoyLogicEngine.a().k(paramPBUInt32Field.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticleInfoModuleUtils.FollowChannelDataHandler
  * JD-Core Version:    0.7.0.1
  */

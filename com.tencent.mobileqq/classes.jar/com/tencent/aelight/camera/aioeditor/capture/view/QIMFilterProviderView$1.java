@@ -12,7 +12,7 @@ class QIMFilterProviderView$1
   
   public void run()
   {
-    GridView localGridView = (GridView)this.this$0.a.a.get(this.this$0.b());
+    GridView localGridView = (GridView)this.this$0.b.c.get(this.this$0.h());
     if (localGridView != null)
     {
       localGridView.setSelection(this.a);
@@ -26,7 +26,7 @@ class QIMFilterProviderView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMFilterProviderView.1
  * JD-Core Version:    0.7.0.1
  */

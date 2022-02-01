@@ -5,9 +5,9 @@ import com.tencent.mtt.hippy.utils.LogUtils;
 
 class TextNode$a
 {
-  protected int a;
-  protected int b;
-  protected Object c;
+  protected final int a;
+  protected final int b;
+  protected final Object c;
   
   TextNode$a(int paramInt1, int paramInt2, Object paramObject)
   {
@@ -40,7 +40,7 @@ class TextNode$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.TextNode.a
  * JD-Core Version:    0.7.0.1
  */

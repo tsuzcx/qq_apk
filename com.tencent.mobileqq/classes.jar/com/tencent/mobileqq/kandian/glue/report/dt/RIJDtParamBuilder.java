@@ -27,11 +27,11 @@ public final class RIJDtParamBuilder
     localMap.put("dt_appkey", str);
   }
   
-  private final int a(VideoInfo paramVideoInfo)
+  private final int b(VideoInfo paramVideoInfo)
   {
     if (paramVideoInfo != null)
     {
-      String str = paramVideoInfo.w;
+      String str = paramVideoInfo.ao;
       if (str != null)
       {
         int i;
@@ -41,11 +41,11 @@ public final class RIJDtParamBuilder
           i = 0;
         }
         if (i == 1) {
-          return new JSONObject(paramVideoInfo.w).optInt("short_v");
+          return new JSONObject(paramVideoInfo.ao).optInt("short_v");
         }
       }
     }
-    if ((paramVideoInfo != null) && (paramVideoInfo.c > paramVideoInfo.b)) {
+    if ((paramVideoInfo != null) && (paramVideoInfo.d > paramVideoInfo.c)) {
       return 1;
     }
     return 0;
@@ -91,7 +91,7 @@ public final class RIJDtParamBuilder
     Map localMap = (Map)this.a;
     if (paramVideoInfo != null)
     {
-      localObject = paramVideoInfo.a;
+      localObject = paramVideoInfo.b;
       if (localObject != null) {}
     }
     else
@@ -102,7 +102,7 @@ public final class RIJDtParamBuilder
     localMap = (Map)this.a;
     if (paramVideoInfo != null)
     {
-      localObject = paramVideoInfo.g;
+      localObject = paramVideoInfo.l;
       if (localObject != null) {}
     }
     else
@@ -113,7 +113,7 @@ public final class RIJDtParamBuilder
     ((Map)this.a).put("cid", "");
     ((Map)this.a).put("cmsid", "");
     Object localObject = (Map)this.a;
-    int j = a(paramVideoInfo);
+    int j = b(paramVideoInfo);
     int i = 1;
     if (j != 1) {
       i = 6;
@@ -122,7 +122,7 @@ public final class RIJDtParamBuilder
     localMap = (Map)this.a;
     if (paramVideoInfo != null)
     {
-      localObject = paramVideoInfo.w;
+      localObject = paramVideoInfo.ao;
       if (localObject != null) {}
     }
     else
@@ -133,7 +133,7 @@ public final class RIJDtParamBuilder
     localObject = (Map)this.a;
     if (paramVideoInfo != null)
     {
-      paramVideoInfo = paramVideoInfo.j;
+      paramVideoInfo = paramVideoInfo.q;
       if (paramVideoInfo != null) {}
     }
     else
@@ -178,18 +178,6 @@ public final class RIJDtParamBuilder
   }
   
   @NotNull
-  public final PageParams a()
-  {
-    return new PageParams((Map)this.a);
-  }
-  
-  @NotNull
-  public final Map<String, Object> a()
-  {
-    return (Map)this.a;
-  }
-  
-  @NotNull
   public final RIJDtParamBuilder b(@NotNull Number paramNumber)
   {
     Intrinsics.checkParameterIsNotNull(paramNumber, "type");
@@ -206,11 +194,23 @@ public final class RIJDtParamBuilder
   }
   
   @NotNull
+  public final PageParams b()
+  {
+    return new PageParams((Map)this.a);
+  }
+  
+  @NotNull
   public final RIJDtParamBuilder c(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "actionid");
     ((Map)this.a).put("actionid", paramString);
     return this;
+  }
+  
+  @NotNull
+  public final Map<String, Object> c()
+  {
+    return (Map)this.a;
   }
   
   @JvmOverloads
@@ -252,7 +252,7 @@ public final class RIJDtParamBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.dt.RIJDtParamBuilder
  * JD-Core Version:    0.7.0.1
  */

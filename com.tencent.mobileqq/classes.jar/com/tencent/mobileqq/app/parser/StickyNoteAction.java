@@ -20,7 +20,7 @@ public class StickyNoteAction
     super(paramQQAppInterface, paramContext);
   }
   
-  private void a()
+  private void c()
   {
     Object localObject1 = new Bundle();
     ((Bundle)localObject1).putInt("fromTranslucent", 1);
@@ -39,9 +39,9 @@ public class StickyNoteAction
       localObject2 = new Intent();
       ((Intent)localObject2).putExtras((Bundle)localObject1);
       QzonePluginProxyActivity.setActivityNameToIntent((Intent)localObject2, "com.qzone.detail.ui.activity.StickyNoteDetailActivity");
-      if ((this.a instanceof QBaseActivity))
+      if ((this.b instanceof QBaseActivity))
       {
-        localObject3 = (QBaseActivity)this.a;
+        localObject3 = (QBaseActivity)this.b;
         localObject1 = null;
         if (((QBaseActivity)localObject3).getAppRuntime() != null) {
           localObject1 = ((QBaseActivity)localObject3).getAppRuntime().getCurrentUin();
@@ -68,9 +68,9 @@ public class StickyNoteAction
   {
     try
     {
-      if ("feeddetail".equals(this.c))
+      if ("feeddetail".equals(this.e))
       {
-        a();
+        c();
         return true;
       }
       return false;
@@ -81,14 +81,14 @@ public class StickyNoteAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("StickyNoteAction", 1, localStringBuilder.toString());
-      b_("StickyNoteAction");
+      h_("StickyNoteAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.StickyNoteAction
  * JD-Core Version:    0.7.0.1
  */

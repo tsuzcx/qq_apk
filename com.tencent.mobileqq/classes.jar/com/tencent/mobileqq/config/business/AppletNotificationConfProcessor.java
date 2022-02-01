@@ -21,12 +21,12 @@ public class AppletNotificationConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      AppletNotificationConfigureBean localAppletNotificationConfigureBean = AppletNotificationConfigureBean.a(paramArrayOfQConfItem[0].a);
+      AppletNotificationConfigureBean localAppletNotificationConfigureBean = AppletNotificationConfigureBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("AppletNotificationConfProcessor", 2, localStringBuilder.toString());
       }
       return localAppletNotificationConfigureBean;
@@ -101,7 +101,7 @@ public class AppletNotificationConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AppletNotificationConfProcessor
  * JD-Core Version:    0.7.0.1
  */

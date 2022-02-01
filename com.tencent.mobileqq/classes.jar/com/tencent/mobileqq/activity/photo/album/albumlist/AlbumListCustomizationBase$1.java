@@ -10,13 +10,13 @@ class AlbumListCustomizationBase$1
   public void run()
   {
     LogTag.a();
-    this.this$0.a.a(-1);
+    this.this$0.g.a(-1);
     LogTag.a("QQAlbum", "queryAlbumList");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.albumlist.AlbumListCustomizationBase.1
  * JD-Core Version:    0.7.0.1
  */

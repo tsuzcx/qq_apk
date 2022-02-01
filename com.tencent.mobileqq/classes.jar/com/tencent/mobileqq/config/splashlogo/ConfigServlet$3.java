@@ -10,7 +10,7 @@ class ConfigServlet$3
 {
   public void run()
   {
-    boolean bool1 = this.jdField_a_of_type_JavaIoFile.exists();
+    boolean bool1 = this.a.exists();
     int k = 0;
     if (!bool1)
     {
@@ -24,21 +24,21 @@ class ConfigServlet$3
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("begin download url is ");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-          localStringBuilder.append(" file is ");
-          localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-          localStringBuilder.append(" md5 ");
           localStringBuilder.append(this.b);
+          localStringBuilder.append(" file is ");
+          localStringBuilder.append(this.a.getAbsolutePath());
+          localStringBuilder.append(" md5 ");
+          localStringBuilder.append(this.c);
           QLog.d("SPLASH_ConfigServlet", 2, localStringBuilder.toString());
         }
-        bool1 = HttpDownloadUtil.download(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+        bool1 = HttpDownloadUtil.download(this.d, this.b, this.a);
         if (bool1)
         {
-          if (this.jdField_a_of_type_JavaIoFile.exists())
+          if (this.a.exists())
           {
             try
             {
-              boolean bool2 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
+              boolean bool2 = MD5.getFileMD5(this.a).equalsIgnoreCase(this.c);
               k = bool1;
               if (bool2) {
                 break label219;
@@ -84,7 +84,7 @@ class ConfigServlet$3
     {
       try
       {
-        bool1 = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile).equalsIgnoreCase(this.b);
+        bool1 = MD5.getFileMD5(this.a).equalsIgnoreCase(this.c);
         k = bool1;
       }
       catch (Exception localException)
@@ -97,16 +97,16 @@ class ConfigServlet$3
     }
     if (k == 0)
     {
-      File localFile = this.jdField_a_of_type_JavaIoFile;
+      File localFile = this.a;
       if ((localFile != null) && (localFile.exists())) {
-        this.jdField_a_of_type_JavaIoFile.delete();
+        this.a.delete();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.3
  * JD-Core Version:    0.7.0.1
  */

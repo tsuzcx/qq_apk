@@ -30,14 +30,14 @@ class FFmpeg$7
       {
         if (this.this$0.mLastTaskResult == 1)
         {
-          paramContext = HardCodeUtil.a(2131704599);
+          paramContext = HardCodeUtil.a(2131902504);
           this.this$0.mCurrentCommandUnit.callback.onSuccess(paramContext);
           this.this$0.mCurrentCommandUnit.callback.onFinish(true);
           SLog.d("FFmpegCmd", paramContext);
         }
         else
         {
-          paramContext = HardCodeUtil.a(2131704598);
+          paramContext = HardCodeUtil.a(2131902503);
           this.this$0.mCurrentCommandUnit.callback.onFailure(paramContext);
           this.this$0.mCurrentCommandUnit.callback.onFinish(false);
           SLog.d("FFmpegCmd", paramContext);
@@ -49,7 +49,7 @@ class FFmpeg$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.ffmpeg.FFmpeg.7
  * JD-Core Version:    0.7.0.1
  */

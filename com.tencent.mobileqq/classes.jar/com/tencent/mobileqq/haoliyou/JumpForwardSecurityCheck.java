@@ -40,15 +40,67 @@ import tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.VideoInfo;
 public class JumpForwardSecurityCheck
 {
   public QBaseActivity a;
-  UriParserPathHelper a;
-  public WeakReference<OnCheckShareListener> a;
-  public HashSet<String> a;
+  public HashSet<String> b;
+  public WeakReference<OnCheckShareListener> c;
+  UriParserPathHelper d;
   
   public JumpForwardSecurityCheck(QBaseActivity paramQBaseActivity, OnCheckShareListener paramOnCheckShareListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_JavaUtilHashSet = JumpForwardPkgManager.a(paramQBaseActivity);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnCheckShareListener);
+    this.a = paramQBaseActivity;
+    this.b = JumpForwardPkgManager.c(paramQBaseActivity);
+    this.c = new WeakReference(paramOnCheckShareListener);
+  }
+  
+  private boolean a(Uri paramUri, int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      this.d = new UriParserPathHelper(this.a, false, new JumpForwardSecurityCheck.1(this, paramInt, paramString));
+    }
+    String str = this.d.a(paramUri, true, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("system share.prepareFileInfoAndReq : uri= ");
+    localStringBuilder.append(paramUri);
+    localStringBuilder.append(", path= ");
+    localStringBuilder.append(str);
+    QLog.d("CheckForward.Security", 1, localStringBuilder.toString());
+    if (TextUtils.isEmpty(str)) {
+      return false;
+    }
+    if (!this.d.c)
+    {
+      if (this.d.a()) {
+        return true;
+      }
+      paramUri = new File(str);
+      long l = paramUri.length();
+      if ((!this.d.c) && (!this.d.a()) && (l == 0L)) {
+        return false;
+      }
+      if ((!ForwardFileBaseOption.g(str)) && (paramUri.canRead()))
+      {
+        if (paramInt == 2)
+        {
+          paramUri = new ArrayList();
+          paramUri.add(str);
+          a(paramUri, paramString);
+          return true;
+        }
+        if (paramInt == 4)
+        {
+          paramUri = new ArrayList();
+          paramUri.add(str);
+          b(paramUri, paramString);
+          return true;
+        }
+        if (paramInt == 3) {
+          a(str, paramString);
+        }
+        return true;
+      }
+      QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : can not Read");
+      return false;
+    }
+    return true;
   }
   
   public Uri a(Bundle paramBundle)
@@ -66,36 +118,14 @@ public class JumpForwardSecurityCheck
     return null;
   }
   
-  public ArrayList<String> a(Bundle paramBundle)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramBundle = paramBundle.get("android.intent.extra.STREAM");
-    if ((paramBundle != null) && ((paramBundle instanceof ArrayList)))
-    {
-      paramBundle = (ArrayList)paramBundle;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-      int i = 0;
-      localObject = new UriParserPathHelper((Activity)localObject, false, null);
-      while (i < paramBundle.size())
-      {
-        String str = ((UriParserPathHelper)localObject).a((Uri)paramBundle.get(i));
-        if (!TextUtils.isEmpty(str)) {
-          localArrayList.add(str);
-        }
-        i += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
   public oidb_cmd0xc78.CheckShareExtensionReq a()
   {
     oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq = new oidb_cmd0xc78.CheckShareExtensionReq();
-    localCheckShareExtensionReq.uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getCurrentAccountUin()).longValue());
-    Object localObject = this.jdField_a_of_type_JavaUtilHashSet;
+    localCheckShareExtensionReq.uin.set(Long.valueOf(this.a.getAppRuntime().getCurrentAccountUin()).longValue());
+    Object localObject = this.b;
     if ((localObject != null) && (!((HashSet)localObject).isEmpty()))
     {
-      localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      localObject = this.b.iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
@@ -103,7 +133,7 @@ public class JumpForwardSecurityCheck
       }
     }
     int i = 0;
-    if (JumpShareUtils.a())
+    if (JumpShareUtils.b())
     {
       localCheckShareExtensionReq.user_flag1.set(1L);
       i = JumpShareUtils.a();
@@ -129,15 +159,15 @@ public class JumpForwardSecurityCheck
       ((StringBuilder)localObject).append(paramString);
       QLog.d("CheckForward.Security", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (CheckForwardManager)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getManager(QQManagerFactory.CHECK_FORWARD_MANAGER);
+    Object localObject = (CheckForwardManager)this.a.getAppRuntime().getManager(QQManagerFactory.CHECK_FORWARD_MANAGER);
     oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq = a();
     localCheckShareExtensionReq.content_type.set(1);
     oidb_cmd0xc78.TextInfo localTextInfo = new oidb_cmd0xc78.TextInfo();
     localTextInfo.text_content.set(paramString);
     localCheckShareExtensionReq.texts.add(localTextInfo);
-    paramString = (OnCheckShareListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString = (OnCheckShareListener)this.c.get();
     if (paramString != null) {
-      ((CheckForwardManager)localObject).a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), localCheckShareExtensionReq, "android.intent.action.SEND", paramString);
+      ((CheckForwardManager)localObject).a((QQAppInterface)this.a.getAppRuntime(), localCheckShareExtensionReq, "android.intent.action.SEND", paramString);
     }
   }
   
@@ -155,13 +185,13 @@ public class JumpForwardSecurityCheck
       ((StringBuilder)localObject).append(paramString2);
       QLog.d("CheckForward.Security", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (CheckForwardManager)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getManager(QQManagerFactory.CHECK_FORWARD_MANAGER);
+    Object localObject = (CheckForwardManager)this.a.getAppRuntime().getManager(QQManagerFactory.CHECK_FORWARD_MANAGER);
     oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq = a();
     localCheckShareExtensionReq.content_type.set(3);
     if ((!TextUtils.isEmpty(paramString1)) && (new File(paramString1).exists()))
     {
       oidb_cmd0xc78.VideoInfo localVideoInfo = new oidb_cmd0xc78.VideoInfo();
-      String str = HexUtil.bytes2HexStr(FileManagerUtil.d(paramString1));
+      String str = HexUtil.bytes2HexStr(FileManagerUtil.g(paramString1));
       localVideoInfo.md5.set(str);
       long l = ShortVideoUtils.getDurationOfVideo(paramString1);
       if (QLog.isColorLevel())
@@ -177,9 +207,9 @@ public class JumpForwardSecurityCheck
       localVideoInfo.play_duration.set((int)l);
       localCheckShareExtensionReq.videos.add(localVideoInfo);
     }
-    paramString1 = (OnCheckShareListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString1 = (OnCheckShareListener)this.c.get();
     if (paramString1 != null) {
-      ((CheckForwardManager)localObject).a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), localCheckShareExtensionReq, paramString2, paramString1);
+      ((CheckForwardManager)localObject).a((QQAppInterface)this.a.getAppRuntime(), localCheckShareExtensionReq, paramString2, paramString1);
     }
   }
   
@@ -199,7 +229,7 @@ public class JumpForwardSecurityCheck
         ((StringBuilder)localObject1).append(paramString);
         QLog.d("CheckForward.Security", 2, ((StringBuilder)localObject1).toString());
       }
-      Object localObject1 = (CheckForwardManager)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getManager(QQManagerFactory.CHECK_FORWARD_MANAGER);
+      Object localObject1 = (CheckForwardManager)this.a.getAppRuntime().getManager(QQManagerFactory.CHECK_FORWARD_MANAGER);
       oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq = a();
       localCheckShareExtensionReq.content_type.set(2);
       paramArrayList = paramArrayList.iterator();
@@ -219,7 +249,7 @@ public class JumpForwardSecurityCheck
               QLog.d("CheckForward.Security", 2, ((StringBuilder)localObject3).toString());
             }
             Object localObject3 = new oidb_cmd0xc78.ImgInfo();
-            String str = HexUtil.bytes2HexStr(FileManagerUtil.d((String)localObject4));
+            String str = HexUtil.bytes2HexStr(FileManagerUtil.g((String)localObject4));
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
@@ -229,13 +259,13 @@ public class JumpForwardSecurityCheck
             }
             ((oidb_cmd0xc78.ImgInfo)localObject3).md5.set(str);
             ((oidb_cmd0xc78.ImgInfo)localObject3).sha1.set(JumpShareUtils.a((String)localObject4));
-            localObject4 = JumpShareUtils.a((String)localObject4);
+            localObject4 = JumpShareUtils.b((String)localObject4);
             if (localObject4 != null)
             {
               ((oidb_cmd0xc78.ImgInfo)localObject3).width.set(((Integer)((Pair)localObject4).first).intValue());
               ((oidb_cmd0xc78.ImgInfo)localObject3).height.set(((Integer)((Pair)localObject4).second).intValue());
             }
-            localObject2 = JumpShareUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, (File)localObject2);
+            localObject2 = JumpShareUtils.a(this.a, (File)localObject2);
             if (localObject2 != null)
             {
               if (!TextUtils.isEmpty((CharSequence)((Pair)localObject2).first)) {
@@ -249,9 +279,9 @@ public class JumpForwardSecurityCheck
           }
         }
       }
-      paramArrayList = (OnCheckShareListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramArrayList = (OnCheckShareListener)this.c.get();
       if (paramArrayList != null) {
-        ((CheckForwardManager)localObject1).a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), localCheckShareExtensionReq, paramString, paramArrayList);
+        ((CheckForwardManager)localObject1).a((QQAppInterface)this.a.getAppRuntime(), localCheckShareExtensionReq, paramString, paramArrayList);
       }
     }
   }
@@ -262,7 +292,7 @@ public class JumpForwardSecurityCheck
     {
       try
       {
-        if (!ZhuoXusManager.a().d()) {
+        if (!ZhuoXusManager.a().e()) {
           return false;
         }
         Bundle localBundle = paramIntent.getExtras();
@@ -291,7 +321,7 @@ public class JumpForwardSecurityCheck
               else
               {
                 if (!str.startsWith("video/")) {
-                  break label409;
+                  break label412;
                 }
                 if (a(paramIntent, i, paramString)) {
                   return true;
@@ -327,7 +357,7 @@ public class JumpForwardSecurityCheck
               }
               else
               {
-                paramIntent = a(localBundle);
+                paramIntent = b(localBundle);
                 if ((paramIntent != null) && (paramIntent.size() > 0))
                 {
                   a(paramIntent, paramString);
@@ -345,7 +375,7 @@ public class JumpForwardSecurityCheck
                   return false;
                 }
                 if (!str.startsWith("video/")) {
-                  break label414;
+                  break label417;
                 }
                 if (a(paramIntent, i, paramString)) {
                   return true;
@@ -354,7 +384,7 @@ public class JumpForwardSecurityCheck
             }
             else
             {
-              paramIntent = a(localBundle);
+              paramIntent = b(localBundle);
               if ((paramIntent != null) && (paramIntent.size() > 0))
               {
                 b(paramIntent, paramString);
@@ -373,64 +403,34 @@ public class JumpForwardSecurityCheck
         QLog.e("CheckForward.Security", 1, "system share.prepareSecurityCheck exception=", paramIntent);
       }
       return false;
-      label409:
+      label412:
       int i = 4;
       continue;
-      label414:
+      label417:
       i = 4;
     }
   }
   
-  public boolean a(Uri paramUri, int paramInt, String paramString)
+  public ArrayList<String> b(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper == null) {
-      this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper = new UriParserPathHelper(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, false, new JumpForwardSecurityCheck.1(this, paramInt, paramString));
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper.a(paramUri);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("system share.prepareFileInfoAndReq : uri= ");
-    localStringBuilder.append(paramUri);
-    localStringBuilder.append(", path= ");
-    localStringBuilder.append(str);
-    QLog.d("CheckForward.Security", 1, localStringBuilder.toString());
-    if (TextUtils.isEmpty(str)) {
-      return false;
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper.a)
+    ArrayList localArrayList = new ArrayList();
+    paramBundle = paramBundle.get("android.intent.extra.STREAM");
+    if ((paramBundle != null) && ((paramBundle instanceof ArrayList)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper.a()) {
-        return true;
-      }
-      paramUri = new File(str);
-      long l = paramUri.length();
-      if ((!this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper.a) && (!this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper.a()) && (l == 0L)) {
-        return false;
-      }
-      if ((!ForwardFileBaseOption.b(str)) && (paramUri.canRead()))
+      paramBundle = (ArrayList)paramBundle;
+      Object localObject = this.a;
+      int i = 0;
+      localObject = new UriParserPathHelper((Activity)localObject, false, null);
+      while (i < paramBundle.size())
       {
-        if (paramInt == 2)
-        {
-          paramUri = new ArrayList();
-          paramUri.add(str);
-          a(paramUri, paramString);
-          return true;
+        String str = ((UriParserPathHelper)localObject).a((Uri)paramBundle.get(i));
+        if (!TextUtils.isEmpty(str)) {
+          localArrayList.add(str);
         }
-        if (paramInt == 4)
-        {
-          paramUri = new ArrayList();
-          paramUri.add(str);
-          b(paramUri, paramString);
-          return true;
-        }
-        if (paramInt == 3) {
-          a(str, paramString);
-        }
-        return true;
+        i += 1;
       }
-      QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : can not Read");
-      return false;
     }
-    return true;
+    return localArrayList;
   }
   
   public void b(ArrayList<String> paramArrayList, String paramString)
@@ -449,7 +449,7 @@ public class JumpForwardSecurityCheck
         ((StringBuilder)localObject1).append(paramString);
         QLog.d("CheckForward.Security", 2, ((StringBuilder)localObject1).toString());
       }
-      Object localObject1 = (CheckForwardManager)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getManager(QQManagerFactory.CHECK_FORWARD_MANAGER);
+      Object localObject1 = (CheckForwardManager)this.a.getAppRuntime().getManager(QQManagerFactory.CHECK_FORWARD_MANAGER);
       oidb_cmd0xc78.CheckShareExtensionReq localCheckShareExtensionReq = a();
       localCheckShareExtensionReq.content_type.set(4);
       paramArrayList = paramArrayList.iterator();
@@ -469,7 +469,7 @@ public class JumpForwardSecurityCheck
               QLog.d("CheckForward.Security", 2, ((StringBuilder)localObject2).toString());
             }
             Object localObject2 = new oidb_cmd0xc78.AppFileMsgInfo();
-            String str2 = HexUtil.bytes2HexStr(FileManagerUtil.d(str1));
+            String str2 = HexUtil.bytes2HexStr(FileManagerUtil.g(str1));
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
@@ -484,16 +484,16 @@ public class JumpForwardSecurityCheck
           }
         }
       }
-      paramArrayList = (OnCheckShareListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramArrayList = (OnCheckShareListener)this.c.get();
       if (paramArrayList != null) {
-        ((CheckForwardManager)localObject1).a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), localCheckShareExtensionReq, paramString, paramArrayList);
+        ((CheckForwardManager)localObject1).a((QQAppInterface)this.a.getAppRuntime(), localCheckShareExtensionReq, paramString, paramArrayList);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JumpForwardSecurityCheck
  * JD-Core Version:    0.7.0.1
  */

@@ -16,37 +16,34 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/RIJBlackWhiteModeHelper;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "blackWhiteConfig", "", "getBlackWhiteConfig", "()Z", "setBlackWhiteConfig", "(Z)V", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "addBlackWhiteMode", "", "canvas", "Landroid/graphics/Canvas;", "needConfig", "drawCanvas", "Lkotlin/Function1;", "isBlackWhiteMode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class RIJBlackWhiteModeHelper
 {
+  public static final RIJBlackWhiteModeHelper a = new RIJBlackWhiteModeHelper();
   @NotNull
-  private static final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  public static final RIJBlackWhiteModeHelper a;
+  private static final String b = "RIJBlackWhiteModeHelper";
   @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "RIJBlackWhiteModeHelper";
-  private static boolean jdField_a_of_type_Boolean;
+  private static final Paint c = new Paint();
+  private static boolean d;
   
   static
   {
-    jdField_a_of_type_ComTencentBizPubaccountUtilRIJBlackWhiteModeHelper = new RIJBlackWhiteModeHelper();
-    jdField_a_of_type_JavaLangString = "RIJBlackWhiteModeHelper";
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     ColorMatrix localColorMatrix = new ColorMatrix();
     localColorMatrix.setSaturation(0.0F);
-    jdField_a_of_type_AndroidGraphicsPaint.setColorFilter((ColorFilter)new ColorMatrixColorFilter(localColorMatrix));
+    c.setColorFilter((ColorFilter)new ColorMatrixColorFilter(localColorMatrix));
   }
   
   public final void a(@NotNull Canvas paramCanvas, boolean paramBoolean, @NotNull Function1<? super Canvas, Unit> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "drawCanvas");
-    jdField_a_of_type_Boolean = b();
+    d = b();
     int i;
-    if ((paramBoolean) && (!jdField_a_of_type_Boolean)) {
+    if ((paramBoolean) && (!d)) {
       i = 0;
     } else {
       i = 1;
     }
     if (i != 0)
     {
-      paramCanvas.saveLayer(null, jdField_a_of_type_AndroidGraphicsPaint, 31);
+      paramCanvas.saveLayer(null, c, 31);
       paramFunction1.invoke(paramCanvas);
       paramCanvas.restore();
       return;
@@ -56,7 +53,7 @@ public final class RIJBlackWhiteModeHelper
   
   public final boolean a()
   {
-    return jdField_a_of_type_Boolean;
+    return d;
   }
   
   public final boolean b()
@@ -71,7 +68,7 @@ public final class RIJBlackWhiteModeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.RIJBlackWhiteModeHelper
  * JD-Core Version:    0.7.0.1
  */

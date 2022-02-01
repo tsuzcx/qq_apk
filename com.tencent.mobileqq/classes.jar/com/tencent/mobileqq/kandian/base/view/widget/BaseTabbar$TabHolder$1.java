@@ -11,14 +11,14 @@ class BaseTabbar$TabHolder$1
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    BaseTabbar.TabHolder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar$TabHolder, this.jdField_a_of_type_Boolean);
+    BaseTabbar.TabHolder.a(this.b, this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    BaseTabbar.TabHolder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar$TabHolder, this.jdField_a_of_type_Boolean);
-    BaseTabbar.TabHolder.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar$TabHolder);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBaseTabbar$TabHolder.b.clearAnimation();
+    BaseTabbar.TabHolder.a(this.b, this.a);
+    BaseTabbar.TabHolder.a(this.b);
+    this.b.e.clearAnimation();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -27,7 +27,7 @@ class BaseTabbar$TabHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.BaseTabbar.TabHolder.1
  * JD-Core Version:    0.7.0.1
  */

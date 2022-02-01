@@ -37,12 +37,12 @@ public class TofuHelper
   
   public static void a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg, boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramBeancurdMsg.frienduin);
+    boolean bool = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramBeancurdMsg.frienduin);
     QLog.d("Tofu_TofuHelper", 1, String.format("insertTofuMsg prefUpdate=%b [%s,%d] isFrd=%b", new Object[] { Boolean.valueOf(paramBoolean1), MobileQQ.getShortUinStr(paramBeancurdMsg.frienduin), Integer.valueOf(paramBeancurdMsg.busiid), Boolean.valueOf(bool) }));
     if (!bool) {
       return;
     }
-    if ((!paramBoolean1) || (!a(paramQQAppInterface, paramBeancurdMsg)))
+    if ((!paramBoolean1) || (!b(paramQQAppInterface, paramBeancurdMsg)))
     {
       BeancurdManager localBeancurdManager = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
       if (paramBoolean2) {
@@ -61,11 +61,11 @@ public class TofuHelper
       localStringBuilder.append(paramString);
       QLog.i("Tofu_TofuHelper", 2, localStringBuilder.toString());
     }
-    ((TofuManager)paramQQAppInterface.getManager(QQManagerFactory.TOFUMSG_MANAGER)).a(paramString);
-    ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).b(paramString);
+    ((TofuManager)paramQQAppInterface.getManager(QQManagerFactory.TOFUMSG_MANAGER)).b(paramString);
+    ((BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER)).c(paramString);
   }
   
-  private static boolean a(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg)
+  private static boolean b(QQAppInterface paramQQAppInterface, BeancurdMsg paramBeancurdMsg)
   {
     Object localObject = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
     int i = BeancurdManager.a(paramBeancurdMsg.busiid);
@@ -78,7 +78,7 @@ public class TofuHelper
       if (localMessageRecord != null) {
         l = localMessageRecord.time;
       } else {
-        l = MessageCache.a();
+        l = MessageCache.c();
       }
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
@@ -87,7 +87,7 @@ public class TofuHelper
         if (localMessageRecord != null)
         {
           paramQQAppInterface.getMessageFacade().a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.msgtype, localMessageRecord.uniseq);
-          paramQQAppInterface.getMessageFacade().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+          paramQQAppInterface.getMessageFacade().h(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
         }
       }
       if ((paramBeancurdMsg.buffer instanceof String)) {
@@ -109,7 +109,7 @@ public class TofuHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuHelper
  * JD-Core Version:    0.7.0.1
  */

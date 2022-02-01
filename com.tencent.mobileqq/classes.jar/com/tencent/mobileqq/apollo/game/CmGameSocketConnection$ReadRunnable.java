@@ -27,24 +27,24 @@ class CmGameSocketConnection$ReadRunnable
     }
     for (;;)
     {
-      if (CmGameSocketConnection.a((CmGameSocketConnection)localObject).get()) {
+      if (CmGameSocketConnection.e((CmGameSocketConnection)localObject).get()) {
         try
         {
-          MsfSocketInputBuffer localMsfSocketInputBuffer = CmGameSocketConnection.a((CmGameSocketConnection)localObject);
+          MsfSocketInputBuffer localMsfSocketInputBuffer = CmGameSocketConnection.f((CmGameSocketConnection)localObject);
           if (localMsfSocketInputBuffer == null) {
             return;
           }
           while (!localMsfSocketInputBuffer.isDataAvailable(10000)) {
-            if (!CmGameSocketConnection.a((CmGameSocketConnection)localObject).get()) {
+            if (!CmGameSocketConnection.e((CmGameSocketConnection)localObject).get()) {
               return;
             }
           }
-          if (!CmGameSocketConnection.a((CmGameSocketConnection)localObject).get()) {
+          if (!CmGameSocketConnection.e((CmGameSocketConnection)localObject).get()) {
             return;
           }
-          if (CmGameSocketConnection.a((CmGameSocketConnection)localObject) != null)
+          if (CmGameSocketConnection.g((CmGameSocketConnection)localObject) != null)
           {
-            CmGameSocketConnection.CmGameSocketConnectionListener localCmGameSocketConnectionListener = (CmGameSocketConnection.CmGameSocketConnectionListener)CmGameSocketConnection.a((CmGameSocketConnection)localObject).get();
+            CmGameSocketConnection.CmGameSocketConnectionListener localCmGameSocketConnectionListener = (CmGameSocketConnection.CmGameSocketConnectionListener)CmGameSocketConnection.g((CmGameSocketConnection)localObject).get();
             if (localCmGameSocketConnectionListener != null) {
               localCmGameSocketConnectionListener.a(localMsfSocketInputBuffer);
             }
@@ -62,7 +62,7 @@ class CmGameSocketConnection$ReadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.CmGameSocketConnection.ReadRunnable
  * JD-Core Version:    0.7.0.1
  */

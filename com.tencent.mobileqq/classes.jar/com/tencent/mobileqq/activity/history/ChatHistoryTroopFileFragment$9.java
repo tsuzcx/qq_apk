@@ -7,13 +7,13 @@ class ChatHistoryTroopFileFragment$9
   
   public void run()
   {
-    ChatHistoryTroopFileFragment.a(this.this$0, this.a);
-    ChatHistoryTroopFileFragment.a(this.this$0);
+    ChatHistoryTroopFileFragment.b(this.this$0, this.a);
+    ChatHistoryTroopFileFragment.f(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9
  * JD-Core Version:    0.7.0.1
  */

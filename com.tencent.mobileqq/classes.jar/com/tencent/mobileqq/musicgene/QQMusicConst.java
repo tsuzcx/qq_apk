@@ -16,7 +16,28 @@ import mqq.app.AppRuntime;
 
 public class QQMusicConst
 {
-  public static void a(Context paramContext, String paramString)
+  public static boolean a(Context paramContext)
+  {
+    return a(paramContext, "com.tencent.qqmusic");
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getPackageManager();
+    try
+    {
+      paramContext.getPackageInfo(paramString, 1);
+      return true;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label14:
+      break label14;
+    }
+    return false;
+  }
+  
+  public static void b(Context paramContext, String paramString)
   {
     long l = 0L;
     try
@@ -40,36 +61,15 @@ public class QQMusicConst
     Bundle localBundle;
     localBundle.putString("big_brother_source_key", "biz_src_qqmusic");
     localBundle.putLong("_filesize_from_dlg", l);
-    localBundle.putString("_filename_from_dlg", paramContext.getResources().getString(2131694577));
+    localBundle.putString("_filename_from_dlg", paramContext.getResources().getString(2131892261));
     localBundle.putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
     localBundle.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
     ((IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "")).startDownload(paramString, localBundle);
   }
-  
-  public static boolean a(Context paramContext)
-  {
-    return a(paramContext, "com.tencent.qqmusic");
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getPackageManager();
-    try
-    {
-      paramContext.getPackageInfo(paramString, 1);
-      return true;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      label14:
-      break label14;
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.QQMusicConst
  * JD-Core Version:    0.7.0.1
  */

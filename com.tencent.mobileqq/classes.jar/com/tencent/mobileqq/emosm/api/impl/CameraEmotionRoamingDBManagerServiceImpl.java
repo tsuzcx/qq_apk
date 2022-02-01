@@ -108,7 +108,7 @@ public class CameraEmotionRoamingDBManagerServiceImpl
       localCameraEmotionData.resid = paramCameraEmoImg.a;
       localCameraEmotionData.strContext = paramCameraEmoImg.b;
       localCameraEmotionData.templateId = paramCameraEmoImg.e;
-      if (StringUtil.a(paramCameraEmoImg.d)) {
+      if (StringUtil.isEmpty(paramCameraEmoImg.d)) {
         localCameraEmotionData.md5 = CameraEmoConstant.a(paramCameraEmoImg.a);
       } else {
         localCameraEmotionData.md5 = paramCameraEmoImg.d;
@@ -562,7 +562,7 @@ public class CameraEmotionRoamingDBManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.CameraEmotionRoamingDBManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

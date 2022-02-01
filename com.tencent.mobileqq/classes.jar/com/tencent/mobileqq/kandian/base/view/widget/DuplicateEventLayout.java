@@ -14,12 +14,12 @@ import com.tencent.TMG.utils.QLog;
 public class DuplicateEventLayout
   extends FrameLayout
 {
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ClipDianDianTouchAreaLayout jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetClipDianDianTouchAreaLayout;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b;
+  ViewGroup a;
+  ClipDianDianTouchAreaLayout b;
+  int c;
+  boolean d = false;
+  boolean e;
+  Rect f = new Rect();
   
   public DuplicateEventLayout(@NonNull Context paramContext)
   {
@@ -29,60 +29,60 @@ public class DuplicateEventLayout
   public DuplicateEventLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.c = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
   private void a(MotionEvent paramMotionEvent)
   {
-    int i = getScrollX() - this.jdField_a_of_type_AndroidViewViewGroup.getLeft();
-    int j = getScrollY() - this.jdField_a_of_type_AndroidViewViewGroup.getTop();
+    int i = getScrollX() - this.a.getLeft();
+    int j = getScrollY() - this.a.getTop();
     paramMotionEvent.offsetLocation(i, j);
-    this.jdField_a_of_type_AndroidViewViewGroup.dispatchTouchEvent(paramMotionEvent);
+    this.a.dispatchTouchEvent(paramMotionEvent);
     paramMotionEvent.offsetLocation(-i, -j);
   }
   
   private void b(MotionEvent paramMotionEvent)
   {
-    int i = getScrollX() - this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetClipDianDianTouchAreaLayout.getLeft();
-    int j = getScrollY() - this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetClipDianDianTouchAreaLayout.getTop();
+    int i = getScrollX() - this.b.getLeft();
+    int j = getScrollY() - this.b.getTop();
     paramMotionEvent.offsetLocation(i, j);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetClipDianDianTouchAreaLayout.dispatchTouchEvent(paramMotionEvent);
+    this.b.dispatchTouchEvent(paramMotionEvent);
     paramMotionEvent.offsetLocation(-i, -j);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetClipDianDianTouchAreaLayout != null))
+    if ((this.a != null) && (this.b != null))
     {
       int i = paramMotionEvent.getAction();
       if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetClipDianDianTouchAreaLayout.getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
+        this.b.getHitRect(this.f);
         i = (int)paramMotionEvent.getX();
         int j = (int)paramMotionEvent.getY();
-        if (this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j))
+        if (this.f.contains(i, j))
         {
           bool = super.dispatchTouchEvent(paramMotionEvent);
-          this.b = bool;
+          this.e = bool;
         }
         else
         {
           bool = super.dispatchTouchEvent(paramMotionEvent);
-          this.b = false;
+          this.e = false;
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.d = false;
         return bool;
       }
       MotionEvent localMotionEvent1 = MotionEvent.obtain(paramMotionEvent);
       boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      if ((this.b) && ((!bool) || ((bool) && (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetClipDianDianTouchAreaLayout.jdField_a_of_type_Boolean))))
+      if ((this.e) && ((!bool) || ((bool) && (this.b.a))))
       {
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.d)
         {
           MotionEvent localMotionEvent2 = MotionEvent.obtain(paramMotionEvent);
           localMotionEvent2.setAction(0);
           a(localMotionEvent2);
-          this.jdField_a_of_type_Boolean = true;
+          this.d = true;
           localMotionEvent2.recycle();
           paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
           paramMotionEvent.setAction(3);
@@ -105,13 +105,13 @@ public class DuplicateEventLayout
   
   public void setViews(ViewGroup paramViewGroup, ClipDianDianTouchAreaLayout paramClipDianDianTouchAreaLayout)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetClipDianDianTouchAreaLayout = paramClipDianDianTouchAreaLayout;
+    this.a = paramViewGroup;
+    this.b = paramClipDianDianTouchAreaLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.DuplicateEventLayout
  * JD-Core Version:    0.7.0.1
  */

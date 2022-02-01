@@ -12,26 +12,26 @@ import java.util.Iterator;
 class ActionListActivity$ViewPagerAdapter
   extends PagerAdapter
 {
-  private ArrayList<GridView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<GridView> b = new ArrayList();
   
   private ActionListActivity$ViewPagerAdapter(ActionListActivity paramActionListActivity) {}
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.b.clear();
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.a.d.iterator();
       while (localIterator.hasNext())
       {
         StateTag localStateTag = (StateTag)localIterator.next();
-        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
+        GridView localGridView = new GridView(this.a.getApplicationContext());
         localGridView.setNumColumns(3);
         localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         localGridView.setSelector(new ColorDrawable(0));
         localGridView.setScrollingCacheEnabled(false);
-        localGridView.setAdapter(new ActionListActivity.GridAdapter(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localStateTag.jdField_a_of_type_JavaUtilArrayList));
-        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
+        localGridView.setAdapter(new ActionListActivity.GridAdapter(this.a, localStateTag.b));
+        this.b.add(localGridView);
         continue;
         label118:
         System.gc();
@@ -48,17 +48,17 @@ class ActionListActivity$ViewPagerAdapter
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    paramViewGroup.removeView((View)this.b.get(paramInt));
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    GridView localGridView = (GridView)this.b.get(paramInt);
     paramViewGroup.addView(localGridView);
     return localGridView;
   }
@@ -70,7 +70,7 @@ class ActionListActivity$ViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ActionListActivity.ViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

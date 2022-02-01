@@ -10,19 +10,19 @@ import mqq.manager.ProxyIpManager.ProxyIp;
 
 public class HttpUrlProcessor
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Iterator<String> jdField_a_of_type_JavaUtilIterator;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private ProxyIpManager.ProxyIp jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp;
-  private boolean jdField_a_of_type_Boolean;
-  private Iterator<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilIterator;
-  private List<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean;
+  private List<String> a;
+  private String b;
+  private Iterator<String> c;
+  private List<ProxyIpManager.ProxyIp> d;
+  private Iterator<ProxyIpManager.ProxyIp> e;
+  private ProxyIpManager.ProxyIp f;
+  private boolean g;
+  private boolean h;
   
   public HttpUrlProcessor(AppRuntime paramAppRuntime, String paramString)
   {
     int i = 0;
-    this.jdField_b_of_type_Boolean = false;
+    this.h = false;
     int j = paramString.indexOf("://");
     if (j != -1) {
       i = j + 3;
@@ -71,42 +71,60 @@ public class HttpUrlProcessor
     }
     if ((localObject != null) && (paramString != null))
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.a = new ArrayList(1);
+      this.a.add(localObject);
+      this.c = this.a.iterator();
+      this.b = paramString;
     }
     a(paramAppRuntime);
   }
   
   private void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_b_of_type_JavaUtilList = ((ProxyIpManager)paramAppRuntime.getManager(3)).getProxyIp(5);
-    if (this.jdField_b_of_type_JavaUtilList == null)
+    this.d = ((ProxyIpManager)paramAppRuntime.getManager(3)).getProxyIp(5);
+    if (this.d == null)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("HttpUrlProcessor", 4, "HttpUrlProcessor: getProxyIp return null, so new empty ProxyList");
       }
-      this.jdField_b_of_type_JavaUtilList = new ArrayList();
+      this.d = new ArrayList();
     }
     a();
   }
   
-  public String a()
+  public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    this.e = this.d.iterator();
+    if (this.e.hasNext())
+    {
+      this.f = ((ProxyIpManager.ProxyIp)this.e.next());
+      this.g = true;
+    }
+    else
+    {
+      this.g = false;
+    }
+    List localList = this.a;
+    if (localList != null) {
+      this.c = localList.iterator();
+    }
+  }
+  
+  public String b()
+  {
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
-      if (!this.jdField_a_of_type_JavaUtilIterator.hasNext()) {
-        if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
+      if (!this.c.hasNext()) {
+        if (this.e.hasNext())
         {
-          this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
-          this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+          this.f = ((ProxyIpManager.ProxyIp)this.e.next());
+          this.c = this.a.iterator();
         }
-        else if (this.jdField_a_of_type_Boolean)
+        else if (this.g)
         {
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+          this.g = false;
+          this.c = this.a.iterator();
         }
         else
         {
@@ -116,13 +134,13 @@ public class HttpUrlProcessor
           return null;
         }
       }
-      Object localObject2 = (String)this.jdField_a_of_type_JavaUtilIterator.next();
+      Object localObject2 = (String)this.c.next();
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("waterLog- getNextUrl: host[");
       ((StringBuilder)localObject1).append((String)localObject2);
       ((StringBuilder)localObject1).append("]");
       QLog.e("HttpUrlProcessor", 4, ((StringBuilder)localObject1).toString());
-      if (this.jdField_a_of_type_Boolean)
+      if (this.g)
       {
         int i = ((String)localObject2).indexOf(":");
         Object localObject3;
@@ -132,7 +150,7 @@ public class HttpUrlProcessor
           localObject1 = ((String)localObject2).substring(i + 1);
           localObject2 = localObject3;
         }
-        else if (this.jdField_b_of_type_Boolean)
+        else if (this.h)
         {
           localObject1 = "443";
         }
@@ -140,14 +158,14 @@ public class HttpUrlProcessor
         {
           localObject1 = "80";
         }
-        if (this.jdField_b_of_type_Boolean)
+        if (this.h)
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("https://");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip);
+          ((StringBuilder)localObject3).append(this.f.ip);
           ((StringBuilder)localObject3).append(":");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port);
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append(this.f.port);
+          ((StringBuilder)localObject3).append(this.b);
           ((StringBuilder)localObject3).append("&bHost=");
           ((StringBuilder)localObject3).append((String)localObject2);
           ((StringBuilder)localObject3).append("&bPort=");
@@ -158,10 +176,10 @@ public class HttpUrlProcessor
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("http://");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip);
+          ((StringBuilder)localObject3).append(this.f.ip);
           ((StringBuilder)localObject3).append(":");
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port);
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append(this.f.port);
+          ((StringBuilder)localObject3).append(this.b);
           ((StringBuilder)localObject3).append("&bHost=");
           ((StringBuilder)localObject3).append((String)localObject2);
           ((StringBuilder)localObject3).append("&bPort=");
@@ -169,12 +187,12 @@ public class HttpUrlProcessor
           localObject1 = ((StringBuilder)localObject3).toString();
         }
       }
-      else if (this.jdField_b_of_type_Boolean)
+      else if (this.h)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("https://");
         ((StringBuilder)localObject1).append((String)localObject2);
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       else
@@ -182,7 +200,7 @@ public class HttpUrlProcessor
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("http://");
         ((StringBuilder)localObject1).append((String)localObject2);
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       if (QLog.isDevelopLevel())
@@ -199,28 +217,10 @@ public class HttpUrlProcessor
     }
     return null;
   }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_JavaUtilIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
-    {
-      this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
-      this.jdField_a_of_type_Boolean = true;
-    }
-    else
-    {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList != null) {
-      this.jdField_a_of_type_JavaUtilIterator = localList.iterator();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.filemanager.HttpUrlProcessor
  * JD-Core Version:    0.7.0.1
  */

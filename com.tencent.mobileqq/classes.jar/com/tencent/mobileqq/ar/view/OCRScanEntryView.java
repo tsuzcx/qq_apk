@@ -25,13 +25,13 @@ public class OCRScanEntryView
   extends ScanEntryProviderView
   implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AnimationQIMCircleProgress jdField_a_of_type_DovComQqImAeCurrentAnimationQIMCircleProgress;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private TextView b;
+  private RelativeLayout a;
+  private View b;
+  private TextView c;
+  private ImageView d;
+  private TextView e;
+  private AnimationQIMCircleProgress f;
+  private volatile boolean g;
   
   public OCRScanEntryView(Context paramContext, ScanEntryContainerViewListener paramScanEntryContainerViewListener)
   {
@@ -40,7 +40,7 @@ public class OCRScanEntryView
   
   private void b(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleTakePhotoBtnClick, is in recognize! filePath: ");
@@ -48,12 +48,12 @@ public class OCRScanEntryView
       QLog.e("AREngine_OCRScanEntryView", 1, localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    if (FileUtil.b(paramString))
+    this.g = true;
+    if (FileUtil.d(paramString))
     {
-      ((IOCR)QRoute.api(IOCR.class)).startOcrPerformFragment((Activity)this.jdField_a_of_type_AndroidContentContext, paramString, 0, -1008, null);
+      ((IOCR)QRoute.api(IOCR.class)).startOcrPerformFragment((Activity)this.E, paramString, 0, -1008, null);
       ReportController.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 2, 0, "", "0", "0", "");
-      this.jdField_a_of_type_Boolean = false;
+      this.g = false;
       return;
     }
     ThreadManager.getFileThreadHandler().post(new OCRScanEntryView.1(this));
@@ -61,31 +61,31 @@ public class OCRScanEntryView
   
   public void a(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560962, null, false));
+      this.a = ((RelativeLayout)LayoutInflater.from(this.E).inflate(2131627303, null, false));
       paramBundle = new FrameLayout.LayoutParams(-1, -1);
-      addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, paramBundle);
-      paramBundle = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      this.jdField_b_of_type_AndroidViewView = paramBundle;
-      this.jdField_a_of_type_AndroidViewView = paramBundle.findViewById(2131372075);
-      UniformUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_DovComQqImAeCurrentAnimationQIMCircleProgress = ((AnimationQIMCircleProgress)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372072));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372049));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372048));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372052));
-      this.jdField_a_of_type_DovComQqImAeCurrentAnimationQIMCircleProgress.setBackgroundResource(2130844508);
-      this.jdField_a_of_type_DovComQqImAeCurrentAnimationQIMCircleProgress.setCenterView();
-      this.jdField_a_of_type_DovComQqImAeCurrentAnimationQIMCircleProgress.changeMode(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_DovComQqImAeCurrentAnimationQIMCircleProgress.setOnClickListener(this);
+      addView(this.a, paramBundle);
+      paramBundle = this.a;
+      this.F = paramBundle;
+      this.b = paramBundle.findViewById(2131439539);
+      UniformUtils.a(this.E, this.b);
+      this.f = ((AnimationQIMCircleProgress)this.a.findViewById(2131439536));
+      this.c = ((TextView)this.a.findViewById(2131439512));
+      this.d = ((ImageView)this.a.findViewById(2131439511));
+      this.e = ((TextView)this.a.findViewById(2131439515));
+      this.f.setBackgroundResource(2130845881);
+      this.f.setCenterView();
+      this.f.changeMode(0);
+      this.c.setOnClickListener(this);
+      this.d.setOnClickListener(this);
+      this.f.setOnClickListener(this);
     }
   }
   
-  public void a(String paramString)
+  public void i_(String paramString)
   {
-    if (!FileUtil.b(paramString))
+    if (!FileUtil.d(paramString))
     {
       QLog.d("AREngine_OCRScanEntryView", 1, String.format("doDealGalleryPicFile path: %s is not exist", new Object[] { paramString }));
       return;
@@ -99,15 +99,15 @@ public class OCRScanEntryView
     {
     default: 
       break;
-    case 2131372072: 
+    case 2131439536: 
       ReportController.b(null, "dc00898", "", "", "0X8009C80", "0X8009C80", 0, 0, "", "0", "0", "");
       b(null);
       break;
-    case 2131372049: 
-      l();
+    case 2131439512: 
+      o();
       break;
-    case 2131372048: 
-      m();
+    case 2131439511: 
+      p();
       ReportController.b(null, "dc00898", "", "", "0X8009C86", "0X8009C86", 0, 0, "", "0", "0", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -115,7 +115,7 @@ public class OCRScanEntryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.OCRScanEntryView
  * JD-Core Version:    0.7.0.1
  */

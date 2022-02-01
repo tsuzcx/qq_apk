@@ -12,13 +12,13 @@ final class XAEngine$initAsync$1
   public final void run()
   {
     XAEngine localXAEngine = this.this$0;
-    XAEngine.access$setAnimData$p(localXAEngine, XAEngine.access$parseJson(localXAEngine, this.jdField_a_of_type_JavaLangString));
+    XAEngine.access$setAnimData$p(localXAEngine, XAEngine.access$parseJson(localXAEngine, this.a));
     XAEngine.access$postMainThread(this.this$0, (Runnable)new XAEngine.initAsync.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.impl.XAEngine.initAsync.1
  * JD-Core Version:    0.7.0.1
  */

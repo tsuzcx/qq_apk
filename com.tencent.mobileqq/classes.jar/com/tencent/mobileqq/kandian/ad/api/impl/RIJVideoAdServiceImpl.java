@@ -55,7 +55,7 @@ public class RIJVideoAdServiceImpl
   
   public boolean containsAdClick(AdvertisementInfo paramAdvertisementInfo)
   {
-    return VideoAdClickRecorder.a(paramAdvertisementInfo);
+    return VideoAdClickRecorder.c(paramAdvertisementInfo);
   }
   
   public ArrayList<oidb_0x885.AdTagInfo> convertAdTagInfos(ArrayList<VideoInfo.AdTagInfo> paramArrayList)
@@ -84,12 +84,12 @@ public class RIJVideoAdServiceImpl
   
   public int getAdStrategy()
   {
-    return VideoAdStrategyManager.a;
+    return VideoAdStrategyManager.b;
   }
   
   public AdvertisementInfo getAdvertisementInfo(VideoInfo paramVideoInfo)
   {
-    return (AdvertisementInfo)paramVideoInfo.a;
+    return (AdvertisementInfo)paramVideoInfo.aT;
   }
   
   public void handleCompleteState(Object paramObject)
@@ -184,12 +184,12 @@ public class RIJVideoAdServiceImpl
   
   public void setAdvertisementInfo(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo)
   {
-    paramVideoInfo.a = paramAdvertisementInfo;
+    paramVideoInfo.aT = paramAdvertisementInfo;
   }
   
   public void setMixStrategy(boolean paramBoolean)
   {
-    VideoAdStrategyManager.c = paramBoolean;
+    VideoAdStrategyManager.m = paramBoolean;
   }
   
   public boolean shouldRemoveAdReqParam()
@@ -213,7 +213,7 @@ public class RIJVideoAdServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJVideoAdServiceImpl
  * JD-Core Version:    0.7.0.1
  */

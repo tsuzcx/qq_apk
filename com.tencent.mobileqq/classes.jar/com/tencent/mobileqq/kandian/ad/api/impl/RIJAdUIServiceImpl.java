@@ -3,6 +3,9 @@ package com.tencent.mobileqq.kandian.ad.api.impl;
 import android.content.res.Resources;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdViewUtil;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.IReadInJoyArticleBottomVideoView;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUIService;
@@ -24,7 +27,7 @@ public class RIJAdUIServiceImpl
   
   public DownloadParams.DecodeHandler getRoundCornerDecoder()
   {
-    return URLDrawableDecodeHandler.i;
+    return URLDrawableDecodeHandler.j;
   }
   
   public float px2dp(int paramInt, Resources paramResources)
@@ -36,10 +39,15 @@ public class RIJAdUIServiceImpl
   {
     return PublicDrawableUtil.a(paramView, paramFloat, paramInt);
   }
+  
+  public void setVideoData(IReadInJoyArticleBottomVideoView paramIReadInJoyArticleBottomVideoView, AdvertisementInfo paramAdvertisementInfo)
+  {
+    ReadInJoyAdViewUtil.a(paramIReadInJoyArticleBottomVideoView, paramAdvertisementInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdUIServiceImpl
  * JD-Core Version:    0.7.0.1
  */

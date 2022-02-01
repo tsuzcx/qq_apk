@@ -14,12 +14,12 @@ import android.widget.FrameLayout;
 public class AdvRoundFrameLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private float jdField_b_of_type_Float;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private float a;
+  private float b;
   private float c;
   private float d;
+  private Paint e = new Paint();
+  private Paint f;
   
   public AdvRoundFrameLayout(Context paramContext)
   {
@@ -34,43 +34,43 @@ public class AdvRoundFrameLayout
   public AdvRoundFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(null);
+    this.e.setColor(-1);
+    this.e.setAntiAlias(true);
+    this.e.setStyle(Paint.Style.FILL);
+    this.e.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+    this.f = new Paint();
+    this.f.setXfermode(null);
   }
   
   private void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Float > 0.0F)
+    if (this.a > 0.0F)
     {
       Path localPath = new Path();
-      localPath.moveTo(0.0F, this.jdField_a_of_type_Float);
+      localPath.moveTo(0.0F, this.a);
       localPath.lineTo(0.0F, 0.0F);
-      localPath.lineTo(this.jdField_a_of_type_Float, 0.0F);
-      float f = this.jdField_a_of_type_Float;
-      localPath.arcTo(new RectF(0.0F, 0.0F, f * 2.0F, f * 2.0F), -90.0F, -90.0F);
+      localPath.lineTo(this.a, 0.0F);
+      float f1 = this.a;
+      localPath.arcTo(new RectF(0.0F, 0.0F, f1 * 2.0F, f1 * 2.0F), -90.0F, -90.0F);
       localPath.close();
-      paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(localPath, this.e);
     }
   }
   
   private void b(Canvas paramCanvas)
   {
-    if (this.jdField_b_of_type_Float > 0.0F)
+    if (this.b > 0.0F)
     {
       int i = getWidth();
       Path localPath = new Path();
       float f1 = i;
-      localPath.moveTo(f1 - this.jdField_b_of_type_Float, 0.0F);
+      localPath.moveTo(f1 - this.b, 0.0F);
       localPath.lineTo(f1, 0.0F);
-      localPath.lineTo(f1, this.jdField_b_of_type_Float);
-      float f2 = this.jdField_b_of_type_Float;
+      localPath.lineTo(f1, this.b);
+      float f2 = this.b;
       localPath.arcTo(new RectF(f1 - f2 * 2.0F, 0.0F, f1, f2 * 2.0F), 0.0F, -90.0F);
       localPath.close();
-      paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(localPath, this.e);
     }
   }
   
@@ -87,7 +87,7 @@ public class AdvRoundFrameLayout
       float f2 = this.c;
       localPath.arcTo(new RectF(0.0F, f1 - f2 * 2.0F, f2 * 2.0F, f1), 90.0F, 90.0F);
       localPath.close();
-      paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(localPath, this.e);
     }
   }
   
@@ -107,13 +107,13 @@ public class AdvRoundFrameLayout
       f3 = this.d;
       localPath.arcTo(new RectF(f1 - f3 * 2.0F, f2 - f3 * 2.0F, f1, f2), 0.0F, 90.0F);
       localPath.close();
-      paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(localPath, this.e);
     }
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), this.jdField_b_of_type_AndroidGraphicsPaint, 31);
+    paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), this.f, 31);
     super.dispatchDraw(paramCanvas);
     a(paramCanvas);
     b(paramCanvas);
@@ -124,24 +124,24 @@ public class AdvRoundFrameLayout
   
   public void setRaduis(int paramInt)
   {
-    float f = paramInt;
-    this.jdField_a_of_type_Float = f;
-    this.jdField_b_of_type_Float = f;
-    this.c = f;
-    this.d = f;
+    float f1 = paramInt;
+    this.a = f1;
+    this.b = f1;
+    this.c = f1;
+    this.d = f1;
   }
   
   public void setRaduis(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Float = paramInt1;
-    this.jdField_b_of_type_Float = paramInt2;
+    this.a = paramInt1;
+    this.b = paramInt2;
     this.c = paramInt3;
     this.d = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.logic.AdvRoundFrameLayout
  * JD-Core Version:    0.7.0.1
  */

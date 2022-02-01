@@ -14,14 +14,19 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class GetTagListRequest
   extends NetworkRequest<GetTagListResponse>
 {
-  private static final String jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.get_label_list");
-  private final boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private final String jdField_b_of_type_JavaLangString;
-  private int c;
-  private final int d;
+  private static final String e = StoryApi.a("StorySvc.get_label_list");
+  private int f;
+  private long g;
+  private final String h;
+  private final int i;
+  private final boolean j;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetTagList localRspGetTagList = new qqstory_service.RspGetTagList();
     try
@@ -35,27 +40,22 @@ public class GetTagListRequest
     return new GetTagListResponse(localRspGetTagList);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetTagList localReqGetTagList = new qqstory_service.ReqGetTagList();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.j)
     {
-      localReqGetTagList.music_type.set(this.c);
-      localReqGetTagList.music_id.set(this.jdField_b_of_type_Long);
+      localReqGetTagList.music_type.set(this.f);
+      localReqGetTagList.music_id.set(this.g);
     }
-    localReqGetTagList.start_cookie.set(this.jdField_b_of_type_JavaLangString);
-    localReqGetTagList.size.set(this.d);
+    localReqGetTagList.start_cookie.set(this.h);
+    localReqGetTagList.size.set(this.i);
     return localReqGetTagList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetTagListRequest
  * JD-Core Version:    0.7.0.1
  */

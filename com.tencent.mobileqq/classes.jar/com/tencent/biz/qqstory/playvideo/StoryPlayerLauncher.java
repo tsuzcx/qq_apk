@@ -32,7 +32,7 @@ public class StoryPlayerLauncher
   
   public static void a(Activity paramActivity, Serializable paramSerializable, int paramInt, @Nullable View paramView)
   {
-    paramSerializable = new OpenPlayerBuilder(paramSerializable, paramInt).a();
+    paramSerializable = new OpenPlayerBuilder(paramSerializable, paramInt).f();
     paramSerializable.mReportData.startActivityTimeStamp = SystemClock.uptimeMillis();
     Intent localIntent = new Intent(paramActivity, StoryPlayerActivity.class);
     localIntent.putExtra("story_data", paramSerializable);
@@ -45,12 +45,12 @@ public class StoryPlayerLauncher
   
   public static void a(Activity paramActivity, String paramString, int paramInt)
   {
-    a(paramActivity, new OpenPlayerBuilder(new SingleFeedPlayInfo(paramString, paramString, "", 1), paramInt).a(), null);
+    a(paramActivity, new OpenPlayerBuilder(new SingleFeedPlayInfo(paramString, paramString, "", 1), paramInt).f(), null);
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).a();
+    paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).f();
     paramString1.mUIStyle.mPlayerRepeatMode = 1;
     b(paramActivity, paramString1);
   }
@@ -80,7 +80,7 @@ public class StoryPlayerLauncher
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, ArrayList<String> paramArrayList1, int paramInt1, int paramInt2, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, View paramView, boolean paramBoolean, int paramInt3, String paramString3)
   {
-    paramString1 = new OpenPlayerBuilder(new MemorySelectVideoPlayInfo(paramString1, (String)paramArrayList2.get(paramInt1), paramString2, paramString3, paramArrayList1, paramBoolean, 0), paramInt3).d().e().a().b().a(false).a();
+    paramString1 = new OpenPlayerBuilder(new MemorySelectVideoPlayInfo(paramString1, (String)paramArrayList2.get(paramInt1), paramString2, paramString3, paramArrayList1, paramBoolean, 0), paramInt3).d().e().a().b().a(false).f();
     paramString1.mBundle.putStringArrayList("EXTRA_VIDEO_ID_LIST", paramArrayList3);
     paramString1.mBundle.putInt("EXTRA_INT_MAX_SELECT_COUNT", 20);
     a(paramActivity, paramString1, paramView);
@@ -102,7 +102,7 @@ public class StoryPlayerLauncher
   
   public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    paramString1 = new OpenPlayerBuilder(new SingleFeedPlayInfo(paramString1, paramString1, paramString2, 1, true), 31).a();
+    paramString1 = new OpenPlayerBuilder(new SingleFeedPlayInfo(paramString1, paramString1, paramString2, 1, true), 31).f();
     paramString1.mReportData.startActivityTimeStamp = SystemClock.uptimeMillis();
     paramString2 = new Intent(paramContext, StoryPlayerActivity.class);
     paramString2.putExtra("story_data", paramString1);
@@ -112,7 +112,7 @@ public class StoryPlayerLauncher
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).a();
+    paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).f();
     paramString1.mUIStyle.mPlayerRepeatMode = 1;
     a(paramContext, paramString1, null);
   }
@@ -123,7 +123,7 @@ public class StoryPlayerLauncher
     Intent localIntent = new Intent(paramActivity, StoryPlayerActivity.class);
     localIntent.putExtra("story_data", paramData);
     paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130771995, 2130771997);
+    paramActivity.overridePendingTransition(2130771998, 2130772000);
   }
   
   public static void b(Context paramContext, String paramString1, String paramString2, int paramInt)
@@ -131,7 +131,7 @@ public class StoryPlayerLauncher
     StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(paramString1);
     if ((localStoryVideoItem != null) && (!TextUtils.isEmpty(localStoryVideoItem.mLocalVideoPath)) && (localStoryVideoItem.mInteractStatus != -1) && (new File(localStoryVideoItem.mLocalVideoPath).length() > 0L))
     {
-      paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).a();
+      paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).f();
       paramString2 = paramString1.mUIStyle;
       if (localStoryVideoItem.mInteractStatus == 1) {
         paramInt = 1;
@@ -143,12 +143,12 @@ public class StoryPlayerLauncher
       a(paramContext, paramString1, null);
       return;
     }
-    PlayModeUtils.a(PlayModeUtils.a(), paramString1, new StoryPlayerLauncher.1(paramString2, paramString1, paramInt, paramContext));
+    PlayModeUtils.a(PlayModeUtils.b(), paramString1, new StoryPlayerLauncher.1(paramString2, paramString1, paramInt, paramContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerLauncher
  * JD-Core Version:    0.7.0.1
  */

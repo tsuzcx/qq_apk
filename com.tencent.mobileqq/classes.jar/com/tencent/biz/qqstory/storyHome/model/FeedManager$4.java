@@ -23,43 +23,43 @@ class FeedManager$4
   {
     paramBaseResponse = (BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp)paramBaseResponse;
     int j = paramErrorMessage.errorCode;
-    int k = paramBatchGetFriendStoryFeedInfoRequest.b.size();
+    int k = paramBatchGetFriendStoryFeedInfoRequest.g.size();
     int i;
     if (paramBaseResponse == null) {
       i = 0;
     } else {
-      i = paramBaseResponse.jdField_a_of_type_JavaUtilList.size();
+      i = paramBaseResponse.a.size();
     }
-    SLog.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec , error :%d , req size :%d , resp size :%d , list :%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), paramBatchGetFriendStoryFeedInfoRequest.b });
+    SLog.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec , error :%d , req size :%d , resp size :%d , list :%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), paramBatchGetFriendStoryFeedInfoRequest.g });
     if ((!paramErrorMessage.isFail()) && (paramBaseResponse != null))
     {
-      if (paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.size() != paramBaseResponse.jdField_a_of_type_JavaUtilList.size())
+      if (paramBatchGetFriendStoryFeedInfoRequest.f.size() != paramBaseResponse.a.size())
       {
         paramErrorMessage = new ArrayList();
-        paramBatchGetFriendStoryFeedInfoRequest = paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.iterator();
+        paramBatchGetFriendStoryFeedInfoRequest = paramBatchGetFriendStoryFeedInfoRequest.f.iterator();
         while (paramBatchGetFriendStoryFeedInfoRequest.hasNext())
         {
           FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)paramBatchGetFriendStoryFeedInfoRequest.next();
-          if (!paramBaseResponse.jdField_a_of_type_JavaUtilHashSet.contains(localFeedIdListSeqInfo.a))
+          if (!paramBaseResponse.b.contains(localFeedIdListSeqInfo.a))
           {
             paramErrorMessage.add(localFeedIdListSeqInfo.a);
-            FeedManager.a().remove(localFeedIdListSeqInfo.a);
+            FeedManager.k().remove(localFeedIdListSeqInfo.a);
           }
         }
         SLog.d("Q.qqstory.home.data.FeedManager", "request feed item list from net rec warning , some feed not return ! %s", new Object[] { paramErrorMessage });
       }
-      paramBatchGetFriendStoryFeedInfoRequest = paramBaseResponse.jdField_a_of_type_JavaUtilList.iterator();
+      paramBatchGetFriendStoryFeedInfoRequest = paramBaseResponse.a.iterator();
     }
     while (paramBatchGetFriendStoryFeedInfoRequest.hasNext())
     {
       paramBaseResponse = (StoryHomeFeed)paramBatchGetFriendStoryFeedInfoRequest.next();
-      this.a.a(paramBaseResponse.a());
+      this.a.a(paramBaseResponse.g());
       continue;
-      paramBatchGetFriendStoryFeedInfoRequest = paramBatchGetFriendStoryFeedInfoRequest.jdField_a_of_type_JavaUtilList.iterator();
+      paramBatchGetFriendStoryFeedInfoRequest = paramBatchGetFriendStoryFeedInfoRequest.f.iterator();
       while (paramBatchGetFriendStoryFeedInfoRequest.hasNext())
       {
         paramBaseResponse = (FeedIdListSeqInfo)paramBatchGetFriendStoryFeedInfoRequest.next();
-        FeedManager.a().remove(paramBaseResponse.a);
+        FeedManager.k().remove(paramBaseResponse.a);
       }
     }
   }

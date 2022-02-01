@@ -11,23 +11,8 @@ import org.xmlpull.v1.XmlPullParser;
 public class MiniScanDecodeSoLoader
   extends BaseQRScanResLoader
 {
-  private static final Object a;
   public static boolean a = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static byte a(String paramString)
-  {
-    return a(0, paramString);
-  }
-  
-  public static Object a()
-  {
-    return jdField_a_of_type_JavaLangObject;
-  }
+  private static final Object b = new Object();
   
   public static String a()
   {
@@ -42,7 +27,7 @@ public class MiniScanDecodeSoLoader
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(localObject);
     localStringBuilder.append("/pddata/prd/");
-    localStringBuilder.append("qq.android.minidecode.so_v8.2.0");
+    localStringBuilder.append("qq.android.minidecode.so_v8.8.5");
     localObject = localStringBuilder.toString();
     if (QLog.isColorLevel())
     {
@@ -65,19 +50,7 @@ public class MiniScanDecodeSoLoader
   
   protected static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if (!a(0, jdField_a_of_type_Boolean, "minicode"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDecodeSoLoader", 2, "native so is not exist!");
-      }
-      return false;
-    }
-    return true;
+    a = paramBoolean;
   }
   
   public static boolean a(String paramString, HashMap<String, String> paramHashMap)
@@ -127,11 +100,6 @@ public class MiniScanDecodeSoLoader
     }
   }
   
-  public static byte b(String paramString)
-  {
-    return a(0, jdField_a_of_type_Boolean, paramString);
-  }
-  
   public static String b(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -141,14 +109,41 @@ public class MiniScanDecodeSoLoader
     return localStringBuilder.toString();
   }
   
+  public static boolean b()
+  {
+    if (!a(0, a, "minicode"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.MiniScanDecodeSoLoader", 2, "native so is not exist!");
+      }
+      return false;
+    }
+    return true;
+  }
+  
+  public static Object c()
+  {
+    return b;
+  }
+  
   public static String c(String paramString)
   {
     return a(0, paramString);
   }
+  
+  public static byte d(String paramString)
+  {
+    return d(0, paramString);
+  }
+  
+  public static byte e(String paramString)
+  {
+    return b(0, a, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.earlydown.MiniScanDecodeSoLoader
  * JD-Core Version:    0.7.0.1
  */

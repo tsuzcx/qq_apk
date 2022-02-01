@@ -158,7 +158,7 @@ public final class PTSViewDecorationUtil$RoundedCorner
       ((View)localObject).setClipToOutline(true);
       this.hasSetOutline = true;
     }
-    this.borderWidth = PTSValueConvertUtil.getFloat(paramPTSNodeInfo.get("border-width"));
+    this.borderWidth = paramPTSNodeInfo.getBorderWidth();
     paramPTSNodeInfo = PTSValueConvertUtil.getString(paramPTSNodeInfo.get("border-color"));
     float f = this.borderWidth;
     if (f > 0.0F)
@@ -170,7 +170,7 @@ public final class PTSViewDecorationUtil$RoundedCorner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner
  * JD-Core Version:    0.7.0.1
  */

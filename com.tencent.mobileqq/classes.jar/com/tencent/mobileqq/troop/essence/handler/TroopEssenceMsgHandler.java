@@ -189,17 +189,12 @@ public class TroopEssenceMsgHandler
           bool = false;
           paramToServiceMsg = localTroopInfo;
         }
-        notifyUI(TroopEssenceMsgObserver.e, bool, new Object[] { String.valueOf(l), paramToServiceMsg });
+        notifyUI(TroopEssenceMsgObserver.f, bool, new Object[] { String.valueOf(l), paramToServiceMsg });
         return;
         paramObject = null;
         j = 0;
       }
     }
-  }
-  
-  protected String a()
-  {
-    return "TroopEssenceMsgHandler";
   }
   
   public void a(long paramLong, ArrayList<TroopEssenceMsgItem> paramArrayList)
@@ -272,17 +267,17 @@ public class TroopEssenceMsgHandler
       int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
       if (i == 0)
       {
-        notifyUI(TroopEssenceMsgObserver.a, true, new Object[] { paramToServiceMsg.extraData.getSerializable("extdata"), localRspBody, Integer.valueOf(i) });
+        notifyUI(TroopEssenceMsgObserver.b, true, new Object[] { paramToServiceMsg.extraData.getSerializable("extdata"), localRspBody, Integer.valueOf(i) });
         return;
       }
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("handleSetTroopEssenceMsg failed result:");
       paramFromServiceMsg.append(i);
       QLog.i("TroopEssenceMsgHandler", 2, paramFromServiceMsg.toString());
-      notifyUI(TroopEssenceMsgObserver.a, false, new Object[] { paramToServiceMsg.extraData.getSerializable("extdata"), localRspBody, Integer.valueOf(i) });
+      notifyUI(TroopEssenceMsgObserver.b, false, new Object[] { paramToServiceMsg.extraData.getSerializable("extdata"), localRspBody, Integer.valueOf(i) });
       return;
     }
-    notifyUI(TroopEssenceMsgObserver.a, false, new Object[] { Integer.valueOf(0), null, Integer.valueOf(-1) });
+    notifyUI(TroopEssenceMsgObserver.b, false, new Object[] { Integer.valueOf(0), null, Integer.valueOf(-1) });
   }
   
   public void a(String paramString)
@@ -402,13 +397,13 @@ public class TroopEssenceMsgHandler
           paramFromServiceMsg.append(i);
           QLog.i("TroopEssenceMsgHandler", 2, paramFromServiceMsg.toString());
         }
-        notifyUI(TroopEssenceMsgObserver.b, false, new Object[] { Long.valueOf(l), paramToServiceMsg.extraData.getSerializable("extdata"), localBatchRspBody, Integer.valueOf(i) });
+        notifyUI(TroopEssenceMsgObserver.c, false, new Object[] { Long.valueOf(l), paramToServiceMsg.extraData.getSerializable("extdata"), localBatchRspBody, Integer.valueOf(i) });
         return;
       }
-      notifyUI(TroopEssenceMsgObserver.b, true, new Object[] { Long.valueOf(l), paramToServiceMsg.extraData.getSerializable("extdata"), localBatchRspBody, Integer.valueOf(i) });
+      notifyUI(TroopEssenceMsgObserver.c, true, new Object[] { Long.valueOf(l), paramToServiceMsg.extraData.getSerializable("extdata"), localBatchRspBody, Integer.valueOf(i) });
       return;
     }
-    notifyUI(TroopEssenceMsgObserver.b, false, new Object[] { Integer.valueOf(0), null, null, Integer.valueOf(-1) });
+    notifyUI(TroopEssenceMsgObserver.c, false, new Object[] { Integer.valueOf(0), null, null, Integer.valueOf(-1) });
   }
   
   public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -430,7 +425,7 @@ public class TroopEssenceMsgHandler
             paramToServiceMsg.append(j);
             QLog.d("TroopEssenceMsgHandler", 2, paramToServiceMsg.toString());
           }
-          notifyUI(TroopEssenceMsgObserver.c, false, null);
+          notifyUI(TroopEssenceMsgObserver.d, false, null);
           return;
         }
         j = ((oidb_0xf10.RspBody)localObject).total_count.get();
@@ -479,12 +474,12 @@ public class TroopEssenceMsgHandler
             paramFromServiceMsg.add(localTroopCardEssenceMsg);
           }
         }
-        notifyUI(TroopEssenceMsgObserver.c, true, new Object[] { str, Integer.valueOf(i), paramFromServiceMsg, Integer.valueOf(j) });
+        notifyUI(TroopEssenceMsgObserver.d, true, new Object[] { str, Integer.valueOf(i), paramFromServiceMsg, Integer.valueOf(j) });
         return;
       }
       catch (Exception paramToServiceMsg)
       {
-        notifyUI(TroopEssenceMsgObserver.c, false, new Object[] { str, Integer.valueOf(i), null });
+        notifyUI(TroopEssenceMsgObserver.d, false, new Object[] { str, Integer.valueOf(i), null });
         paramToServiceMsg.printStackTrace();
         return;
       }
@@ -492,7 +487,7 @@ public class TroopEssenceMsgHandler
     if (QLog.isColorLevel()) {
       QLog.d("TroopEssenceMsgHandler", 2, "handleGetEssenceMsgListResp resp == null || res == null");
     }
-    notifyUI(TroopEssenceMsgObserver.c, false, null);
+    notifyUI(TroopEssenceMsgObserver.d, false, null);
   }
   
   public void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -510,7 +505,7 @@ public class TroopEssenceMsgHandler
           paramToServiceMsg.append("handleSettEssenceMsgShowInCardSwitchResp resp result：");
           paramToServiceMsg.append(i);
           QLog.e("TroopEssenceMsgHandler", 2, paramToServiceMsg.toString());
-          notifyUI(TroopEssenceMsgObserver.d, false, null);
+          notifyUI(TroopEssenceMsgObserver.e, false, null);
           return;
         }
         boolean bool = paramToServiceMsg.extraData.getBoolean("isChecked", false);
@@ -521,7 +516,7 @@ public class TroopEssenceMsgHandler
           paramFromServiceMsg.append("handleSettEssenceMsgShowInCardSwitchResp resp rs：");
           paramFromServiceMsg.append(i);
           QLog.e("TroopEssenceMsgHandler", 2, paramFromServiceMsg.toString());
-          notifyUI(TroopEssenceMsgObserver.d, false, new Object[] { paramToServiceMsg, Boolean.valueOf(bool) });
+          notifyUI(TroopEssenceMsgObserver.e, false, new Object[] { paramToServiceMsg, Boolean.valueOf(bool) });
           return;
         }
         paramFromServiceMsg = (ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "");
@@ -533,12 +528,12 @@ public class TroopEssenceMsgHandler
         i = 1;
         ((TroopInfoExt)localObject).essenceSwitch = i;
         paramFromServiceMsg.saveTroopInfo(paramObject);
-        notifyUI(TroopEssenceMsgObserver.d, true, new Object[] { paramToServiceMsg, Boolean.valueOf(bool) });
+        notifyUI(TroopEssenceMsgObserver.e, true, new Object[] { paramToServiceMsg, Boolean.valueOf(bool) });
         return;
       }
       catch (Exception paramToServiceMsg)
       {
-        notifyUI(TroopEssenceMsgObserver.d, false, null);
+        notifyUI(TroopEssenceMsgObserver.e, false, null);
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("handleSettEssenceMsgShowInCardSwitchResp resp e：");
         paramFromServiceMsg.append(paramToServiceMsg.getClass().getSimpleName());
@@ -547,11 +542,16 @@ public class TroopEssenceMsgHandler
         return;
       }
       QLog.e("TroopEssenceMsgHandler", 2, "handleSettEssenceMsgShowInCardSwitchResp resp == null || res == null");
-      notifyUI(TroopEssenceMsgObserver.d, false, null);
+      notifyUI(TroopEssenceMsgObserver.e, false, null);
       return;
       label322:
       int i = 0;
     }
+  }
+  
+  protected String dv_()
+  {
+    return "TroopEssenceMsgHandler";
   }
   
   public Set<String> getCommandList()
@@ -595,7 +595,7 @@ public class TroopEssenceMsgHandler
       }
       return;
     }
-    if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+    if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
     {
       if (QLog.isColorLevel())
       {
@@ -635,7 +635,7 @@ public class TroopEssenceMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essence.handler.TroopEssenceMsgHandler
  * JD-Core Version:    0.7.0.1
  */

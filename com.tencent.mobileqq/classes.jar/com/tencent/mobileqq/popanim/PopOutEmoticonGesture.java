@@ -24,37 +24,36 @@ import mqq.app.MobileQQ;
 public class PopOutEmoticonGesture
   implements EmoticonPopOutHelper.PopOutHelpListener
 {
-  private int jdField_a_of_type_Int = MobileQQ.getContext().getResources().getDisplayMetrics().heightPixels;
-  private View jdField_a_of_type_AndroidViewView = PopOutAnimViewHolder.a().a.findViewById(2131372942);
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private StateMachine jdField_a_of_type_ComTencentMobileqqPopanimStateStateMachine;
   public boolean a;
-  private boolean b;
-  private boolean c;
+  private EditText b;
+  private View c = PopOutAnimViewHolder.a().b.findViewById(2131440506);
+  private int d = MobileQQ.getContext().getResources().getDisplayMetrics().heightPixels;
+  private StateMachine e;
+  private boolean f;
+  private boolean g;
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateMachine.a();
+    this.e.a();
   }
   
   public void a(ViewGroup paramViewGroup1, ViewGroup paramViewGroup2, QQEmoticonPanelLinearLayoutHelper paramQQEmoticonPanelLinearLayoutHelper, IPanelInteractionListener paramIPanelInteractionListener)
   {
-    EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(paramIPanelInteractionListener);
-    if (localEmoticonMainPanel == null) {
+    Object localObject = (EmoticonMainPanel)((IEmosmService)QRoute.api(IEmosmService.class)).tryGetEmoticonMainPanel(paramIPanelInteractionListener);
+    if (localObject == null) {
       QLog.e("PopOutEmoticonGesture", 1, "init, get mainPane fail");
     } else {
-      ((EmoticonPopOutHelper)localEmoticonMainPanel.getEmoController().getHelperProvider().getHelper(11)).a(this);
+      ((EmoticonPopOutHelper)((EmoticonMainPanel)localObject).getEmoController().getHelperProvider().getHelper(11)).a(this);
     }
-    this.jdField_a_of_type_AndroidWidgetEditText = paramIPanelInteractionListener.getAIOInput();
-    StateContext localStateContext = new StateContext();
-    localStateContext.jdField_a_of_type_ComTencentMobileqqPopanimPopOutEmoticonGesture = this;
-    localStateContext.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig = paramIPanelInteractionListener.getPopOutAnimConfig();
-    localStateContext.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup1;
-    localStateContext.b = paramViewGroup2;
-    localStateContext.jdField_a_of_type_AndroidWidgetEditText = this.jdField_a_of_type_AndroidWidgetEditText;
-    localStateContext.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel = localEmoticonMainPanel;
-    localStateContext.jdField_a_of_type_ComTencentMobileqqEmoticonviewQQEmoticonPanelLinearLayoutHelper = paramQQEmoticonPanelLinearLayoutHelper;
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateMachine = new StateMachine(this, localStateContext);
+    this.b = paramIPanelInteractionListener.getAIOInput();
+    localObject = new StateContext();
+    ((StateContext)localObject).a = this;
+    ((StateContext)localObject).c = paramIPanelInteractionListener.getPopOutAnimConfig();
+    ((StateContext)localObject).d = paramViewGroup1;
+    ((StateContext)localObject).e = paramViewGroup2;
+    ((StateContext)localObject).f = this.b;
+    ((StateContext)localObject).g = paramQQEmoticonPanelLinearLayoutHelper;
+    this.e = new StateMachine(this, (StateContext)localObject);
     if (QLog.isColorLevel()) {
       QLog.i("PopOutEmoticonGesture", 2, "init");
     }
@@ -62,58 +61,58 @@ public class PopOutEmoticonGesture
   
   public void a(EmoticonInfo paramEmoticonInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateMachine.a(paramEmoticonInfo);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.a = true;
+    this.e.a(paramEmoticonInfo);
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateMachine.a(paramMotionEvent);
+    return this.e.a(paramMotionEvent);
   }
   
   public void b()
   {
-    this.b = true;
-    if (this.c) {
-      this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateMachine.a();
+    this.f = true;
+    if (this.g) {
+      this.e.a();
     }
   }
   
   public boolean b(MotionEvent paramMotionEvent)
   {
     int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidWidgetEditText.getLocationOnScreen(arrayOfInt);
+    this.b.getLocationOnScreen(arrayOfInt);
     return paramMotionEvent.getRawY() > arrayOfInt[1];
   }
   
-  public void c()
+  public boolean c()
   {
-    this.c = true;
-    if (this.b) {
-      this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateMachine.a();
-    }
+    return this.a;
   }
   
   public boolean c(MotionEvent paramMotionEvent)
   {
-    return paramMotionEvent.getRawY() > this.jdField_a_of_type_Int - this.jdField_a_of_type_AndroidViewView.getHeight();
+    return paramMotionEvent.getRawY() > this.d - this.c.getHeight();
   }
   
   public void d()
   {
-    this.b = false;
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
+    this.g = true;
+    if (this.f) {
+      this.e.a();
+    }
+  }
+  
+  public void e()
+  {
+    this.f = false;
+    this.g = false;
+    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.PopOutEmoticonGesture
  * JD-Core Version:    0.7.0.1
  */

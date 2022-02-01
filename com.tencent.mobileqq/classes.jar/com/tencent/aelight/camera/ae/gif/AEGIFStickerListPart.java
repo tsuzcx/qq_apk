@@ -33,41 +33,41 @@ import com.tencent.aelight.camera.ae.report.AEBaseReportParam;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.biz.videostory.animator.AnimationBuilder;
 import com.tencent.biz.videostory.animator.ViewAnimator;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator.OnTabListener;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.AbsSlidingIndicator.OnTabListener;
+import com.tencent.mobileqq.widget.SimpleSlidingIndicator;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import java.util.LinkedList;
 import java.util.List;
 
 public class AEGIFStickerListPart
   extends VideoStoryBasePart
-  implements SimpleSlidingIndicator.OnTabListener
+  implements AbsSlidingIndicator.OnTabListener
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private Pair<String[], int[]> jdField_a_of_type_AndroidUtilPair;
-  private AEPituCameraUnit jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
-  private AEVideoStoryGIFTplViewModel jdField_a_of_type_ComTencentAelightCameraAeGifAEVideoStoryGIFTplViewModel;
-  private AEGIFStickerAdapter jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter;
-  private AEVideoStoryCaptureModeViewModel jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel;
-  private AEVideoStoryStateViewModel jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel;
-  private SimpleSlidingIndicator jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator;
-  private String jdField_a_of_type_JavaLangString;
-  private List<AEGifCategoryWrapper> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  private List<AEMaterialWrapper> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean = false;
-  private String c;
+  private Context a;
+  private AEPituCameraUnit b;
+  private AEVideoStoryCaptureModeViewModel c;
+  private AEVideoStoryStateViewModel d;
+  private AEVideoStoryGIFTplViewModel e;
+  private SimpleSlidingIndicator f;
+  private Pair<String[], int[]> g;
+  private List<AEGifCategoryWrapper> h;
+  private RecyclerView i;
+  private LinearLayoutManager j;
+  private AEGIFStickerAdapter k;
+  private List<AEMaterialWrapper> l;
+  private String m;
+  private String n;
+  private String o;
+  private Dialog p;
+  private boolean q = false;
+  private boolean r = false;
   
   public AEGIFStickerListPart(Activity paramActivity, View paramView, VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
   {
     super(paramActivity, paramView, paramVideoStoryCapturePartManager);
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
+    this.a = paramView.getContext();
+    this.b = ((AEPituCameraUnit)paramVideoStoryCapturePartManager.a(65537, new Object[0]));
   }
   
   @Nullable
@@ -80,11 +80,11 @@ public class AEGIFStickerListPart
     if (CollectionUtils.isEmpty(((AEGifCategoryWrapper)localObject).materialWrapperList)) {
       return null;
     }
-    if ((((AEGifCategoryWrapper)localObject).materialWrapperList.get(0) != null) && (((AEMaterialWrapper)((AEGifCategoryWrapper)localObject).materialWrapperList.get(0)).b != 1))
+    if ((((AEGifCategoryWrapper)localObject).materialWrapperList.get(0) != null) && (((AEMaterialWrapper)((AEGifCategoryWrapper)localObject).materialWrapperList.get(0)).g != 1))
     {
       AEMaterialWrapper localAEMaterialWrapper = new AEMaterialWrapper();
-      localAEMaterialWrapper.b = 1;
-      localAEMaterialWrapper.jdField_a_of_type_JavaLangString = "none";
+      localAEMaterialWrapper.g = 1;
+      localAEMaterialWrapper.a = "none";
       ((AEGifCategoryWrapper)localObject).materialWrapperList.add(0, localAEMaterialWrapper);
     }
     localObject = b(paramList);
@@ -99,17 +99,17 @@ public class AEGIFStickerListPart
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit).get(AEVideoStoryCaptureModeViewModel.class));
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.a.observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AEGIFStickerListPart.2(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel.c.observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AEGIFStickerListPart.3(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel = ((AEVideoStoryStateViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit).get(AEVideoStoryStateViewModel.class));
-    this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel.a().observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AEGIFStickerListPart.4(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifAEVideoStoryGIFTplViewModel = ((AEVideoStoryGIFTplViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit).get(AEVideoStoryGIFTplViewModel.class));
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifAEVideoStoryGIFTplViewModel.a().observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AEGIFStickerListPart.5(this));
-    CameraOperationHelper.a().observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AEGIFStickerListPart.6(this));
-    CameraOperationHelper.c().observe(this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit, new AEGIFStickerListPart.7(this));
-    if (!this.jdField_a_of_type_Boolean) {
-      AEGifMaterialManager.a().a();
+    this.c = ((AEVideoStoryCaptureModeViewModel)AEViewModelProviders.a(this.b).get(AEVideoStoryCaptureModeViewModel.class));
+    this.c.a.observe(this.b, new AEGIFStickerListPart.2(this));
+    this.c.c.observe(this.b, new AEGIFStickerListPart.3(this));
+    this.d = ((AEVideoStoryStateViewModel)AEViewModelProviders.a(this.b).get(AEVideoStoryStateViewModel.class));
+    this.d.a().observe(this.b, new AEGIFStickerListPart.4(this));
+    this.e = ((AEVideoStoryGIFTplViewModel)AEViewModelProviders.a(this.b).get(AEVideoStoryGIFTplViewModel.class));
+    this.e.a().observe(this.b, new AEGIFStickerListPart.5(this));
+    CameraOperationHelper.c().observe(this.b, new AEGIFStickerListPart.6(this));
+    CameraOperationHelper.e().observe(this.b, new AEGIFStickerListPart.7(this));
+    if (!this.q) {
+      AEGifMaterialManager.a().b();
     }
   }
   
@@ -123,39 +123,39 @@ public class AEGIFStickerListPart
     localStringBuilder.append(", materialId=");
     localStringBuilder.append(str);
     AEQLog.a("AEGIFStickerListPart", localStringBuilder.toString());
-    this.jdField_a_of_type_Boolean = a(paramIntent, str);
-    if (this.jdField_a_of_type_Boolean)
+    this.q = a(paramIntent, str);
+    if (this.q)
     {
-      this.c = str;
+      this.o = str;
       c();
     }
   }
   
   private void a(@Nullable AEMaterialWrapper paramAEMaterialWrapper)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifAEVideoStoryGIFTplViewModel.c(paramAEMaterialWrapper);
+    this.e.c(paramAEMaterialWrapper);
     if (paramAEMaterialWrapper == null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifAEVideoStoryGIFTplViewModel.b(null);
-      this.c = null;
+      this.e.b(null);
+      this.o = null;
       return;
     }
-    this.c = paramAEMaterialWrapper.jdField_a_of_type_JavaLangString;
-    int i = paramAEMaterialWrapper.jdField_a_of_type_Int;
-    if (i != 0)
+    this.o = paramAEMaterialWrapper.a;
+    int i1 = paramAEMaterialWrapper.f;
+    if (i1 != 0)
     {
-      if (i != 2) {
+      if (i1 != 2) {
         return;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifAEVideoStoryGIFTplViewModel.b(paramAEMaterialWrapper);
+      this.e.b(paramAEMaterialWrapper);
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifAEVideoStoryGIFTplViewModel.a(paramAEMaterialWrapper);
+    this.e.a(paramAEMaterialWrapper);
   }
   
   private void a(@Nullable String paramString)
   {
-    AEVideoStoryGIFTplViewModel localAEVideoStoryGIFTplViewModel = this.jdField_a_of_type_ComTencentAelightCameraAeGifAEVideoStoryGIFTplViewModel;
+    AEVideoStoryGIFTplViewModel localAEVideoStoryGIFTplViewModel = this.e;
     if (localAEVideoStoryGIFTplViewModel != null) {
       localAEVideoStoryGIFTplViewModel.d().postValue(paramString);
     }
@@ -168,9 +168,195 @@ public class AEGIFStickerListPart
     }
   }
   
-  private boolean a()
+  private boolean a(@Nullable String paramString1, @Nullable String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAePartAEVideoStoryStateViewModel;
+    return (!TextUtils.isEmpty(paramString1)) && (AECaptureMode.GIF.name.equals(paramString1)) && (!TextUtils.isEmpty(paramString2));
+  }
+  
+  @Nullable
+  private Pair<Integer, Integer> b(@NonNull List<AEGifCategoryWrapper> paramList)
+  {
+    if (TextUtils.isEmpty(this.o))
+    {
+      AEQLog.b("AEGIFStickerListPart", "[findLastSelectedPosition] mPendingApplyGIFId is empty");
+      return null;
+    }
+    boolean bool = TextUtils.isEmpty(this.m);
+    int i3 = -1;
+    if (!bool)
+    {
+      i1 = 0;
+      while (i1 < paramList.size())
+      {
+        localObject1 = (AEGifCategoryWrapper)paramList.get(i1);
+        if ((localObject1 != null) && (!TextUtils.isEmpty(((AEGifCategoryWrapper)localObject1).categoryId)) && (((AEGifCategoryWrapper)localObject1).categoryId.equals(this.m))) {
+          break label110;
+        }
+        i1 += 1;
+      }
+    }
+    Object localObject1 = null;
+    int i1 = -1;
+    label110:
+    if ((localObject1 != null) && (!CollectionUtils.isEmpty(((AEGifCategoryWrapper)localObject1).materialWrapperList)))
+    {
+      i2 = 0;
+      while (i2 < ((AEGifCategoryWrapper)localObject1).materialWrapperList.size())
+      {
+        localObject2 = (AEMaterialWrapper)((AEGifCategoryWrapper)localObject1).materialWrapperList.get(i2);
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((AEMaterialWrapper)localObject2).a)) && (((AEMaterialWrapper)localObject2).a.equals(this.o)))
+        {
+          localObject1 = localObject2;
+          break label212;
+        }
+        i2 += 1;
+      }
+    }
+    localObject1 = null;
+    int i2 = i3;
+    label212:
+    if (localObject1 == null)
+    {
+      i3 = i1;
+      int i5 = 0;
+      i1 = i2;
+      i2 = i3;
+      for (;;)
+      {
+        i3 = i2;
+        i4 = i1;
+        localObject2 = localObject1;
+        if (i5 >= paramList.size()) {
+          break;
+        }
+        AEGifCategoryWrapper localAEGifCategoryWrapper = (AEGifCategoryWrapper)paramList.get(i5);
+        int i6 = i2;
+        int i7 = i1;
+        Object localObject3 = localObject1;
+        if (localAEGifCategoryWrapper != null) {
+          if (CollectionUtils.isEmpty(localAEGifCategoryWrapper.materialWrapperList))
+          {
+            i6 = i2;
+            i7 = i1;
+            localObject3 = localObject1;
+          }
+          else
+          {
+            i6 = 0;
+            for (;;)
+            {
+              i3 = i2;
+              i4 = i1;
+              localObject2 = localObject1;
+              if (i6 >= localAEGifCategoryWrapper.materialWrapperList.size()) {
+                break;
+              }
+              localObject2 = (AEMaterialWrapper)localAEGifCategoryWrapper.materialWrapperList.get(i6);
+              if ((localObject2 != null) && (!TextUtils.isEmpty(((AEMaterialWrapper)localObject2).a)) && (((AEMaterialWrapper)localObject2).a.equals(this.o)))
+              {
+                i3 = i5;
+                i4 = i6;
+                break;
+              }
+              i6 += 1;
+            }
+            i6 = i3;
+            i7 = i4;
+            localObject3 = localObject2;
+            if (localObject2 != null) {
+              break;
+            }
+          }
+        }
+        i5 += 1;
+        i2 = i6;
+        i1 = i7;
+        localObject1 = localObject3;
+      }
+    }
+    Object localObject2 = localObject1;
+    int i4 = i2;
+    i3 = i1;
+    if (localObject2 != null)
+    {
+      paramList = new StringBuilder();
+      paramList.append("[findLastSelectedPosition] found tabPosition=");
+      paramList.append(i3);
+      paramList.append(", itemPosition=");
+      paramList.append(i4);
+      AEQLog.b("AEGIFStickerListPart", paramList.toString());
+      return new Pair(Integer.valueOf(i3), Integer.valueOf(i4));
+    }
+    AEQLog.b("AEGIFStickerListPart", "[findLastSelectedPosition] not found");
+    return null;
+  }
+  
+  private void b()
+  {
+    ViewAnimator.a(new View[] { this.f, this.i }).d(new float[] { 0.0F, 1.0F }).a(300L).a(new AEGIFStickerListPart.8(this)).d();
+  }
+  
+  private Pair<String[], int[]> c(@NonNull List<AEGifCategoryWrapper> paramList)
+  {
+    boolean bool = CollectionUtils.isEmpty(paramList);
+    int i1 = 0;
+    if (bool) {
+      return new Pair(new String[0], new int[0]);
+    }
+    String[] arrayOfString = new String[paramList.size()];
+    int[] arrayOfInt = new int[paramList.size()];
+    while (i1 < paramList.size())
+    {
+      Object localObject = (AEGifCategoryWrapper)paramList.get(i1);
+      if ((localObject != null) && (!TextUtils.isEmpty(((AEGifCategoryWrapper)localObject).categoryName))) {
+        localObject = ((AEGifCategoryWrapper)localObject).categoryName;
+      } else {
+        localObject = "";
+      }
+      arrayOfString[i1] = localObject;
+      arrayOfInt[i1] = i1;
+      i1 += 1;
+    }
+    return new Pair(arrayOfString, arrayOfInt);
+  }
+  
+  private void c()
+  {
+    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
+    {
+      if (this.p == null)
+      {
+        this.p = new Dialog(this.mActivity, 2131953338);
+        this.p.setCancelable(true);
+        this.p.setCanceledOnTouchOutside(true);
+        this.p.setContentView(2131625585);
+        ((TextView)this.p.findViewById(2131440191)).setText(2064187671);
+        this.p.setOnCancelListener(new AEGIFStickerListPart.10(this));
+      }
+      if (!this.p.isShowing())
+      {
+        AEQLog.a("AEGIFStickerListPart", "[showTakeSameLoading], show dialog");
+        this.p.show();
+      }
+    }
+  }
+  
+  private void d()
+  {
+    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
+    {
+      Dialog localDialog = this.p;
+      if ((localDialog != null) && (localDialog.isShowing()))
+      {
+        AEQLog.a("AEGIFStickerListPart", "[hideTakeSameLoading], dismiss dialog");
+        this.p.dismiss();
+      }
+    }
+  }
+  
+  private boolean e()
+  {
+    Object localObject = this.d;
     if (localObject == null) {
       return false;
     }
@@ -181,211 +367,25 @@ public class AEGIFStickerListPart
     return ((Boolean)localObject).booleanValue();
   }
   
-  private boolean a(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    return (!TextUtils.isEmpty(paramString1)) && (AECaptureMode.GIF.name.equals(paramString1)) && (!TextUtils.isEmpty(paramString2));
-  }
-  
-  @Nullable
-  private Pair<Integer, Integer> b(@NonNull List<AEGifCategoryWrapper> paramList)
-  {
-    if (TextUtils.isEmpty(this.c))
-    {
-      AEQLog.b("AEGIFStickerListPart", "[findLastSelectedPosition] mPendingApplyGIFId is empty");
-      return null;
-    }
-    boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-    int k = -1;
-    if (!bool)
-    {
-      i = 0;
-      while (i < paramList.size())
-      {
-        localObject1 = (AEGifCategoryWrapper)paramList.get(i);
-        if ((localObject1 != null) && (!TextUtils.isEmpty(((AEGifCategoryWrapper)localObject1).categoryId)) && (((AEGifCategoryWrapper)localObject1).categoryId.equals(this.jdField_a_of_type_JavaLangString))) {
-          break label110;
-        }
-        i += 1;
-      }
-    }
-    Object localObject1 = null;
-    int i = -1;
-    label110:
-    if ((localObject1 != null) && (!CollectionUtils.isEmpty(((AEGifCategoryWrapper)localObject1).materialWrapperList)))
-    {
-      j = 0;
-      while (j < ((AEGifCategoryWrapper)localObject1).materialWrapperList.size())
-      {
-        localObject2 = (AEMaterialWrapper)((AEGifCategoryWrapper)localObject1).materialWrapperList.get(j);
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((AEMaterialWrapper)localObject2).jdField_a_of_type_JavaLangString)) && (((AEMaterialWrapper)localObject2).jdField_a_of_type_JavaLangString.equals(this.c)))
-        {
-          localObject1 = localObject2;
-          break label212;
-        }
-        j += 1;
-      }
-    }
-    localObject1 = null;
-    int j = k;
-    label212:
-    if (localObject1 == null)
-    {
-      k = i;
-      int n = 0;
-      i = j;
-      j = k;
-      for (;;)
-      {
-        k = j;
-        m = i;
-        localObject2 = localObject1;
-        if (n >= paramList.size()) {
-          break;
-        }
-        AEGifCategoryWrapper localAEGifCategoryWrapper = (AEGifCategoryWrapper)paramList.get(n);
-        int i1 = j;
-        int i2 = i;
-        Object localObject3 = localObject1;
-        if (localAEGifCategoryWrapper != null) {
-          if (CollectionUtils.isEmpty(localAEGifCategoryWrapper.materialWrapperList))
-          {
-            i1 = j;
-            i2 = i;
-            localObject3 = localObject1;
-          }
-          else
-          {
-            i1 = 0;
-            for (;;)
-            {
-              k = j;
-              m = i;
-              localObject2 = localObject1;
-              if (i1 >= localAEGifCategoryWrapper.materialWrapperList.size()) {
-                break;
-              }
-              localObject2 = (AEMaterialWrapper)localAEGifCategoryWrapper.materialWrapperList.get(i1);
-              if ((localObject2 != null) && (!TextUtils.isEmpty(((AEMaterialWrapper)localObject2).jdField_a_of_type_JavaLangString)) && (((AEMaterialWrapper)localObject2).jdField_a_of_type_JavaLangString.equals(this.c)))
-              {
-                k = n;
-                m = i1;
-                break;
-              }
-              i1 += 1;
-            }
-            i1 = k;
-            i2 = m;
-            localObject3 = localObject2;
-            if (localObject2 != null) {
-              break;
-            }
-          }
-        }
-        n += 1;
-        j = i1;
-        i = i2;
-        localObject1 = localObject3;
-      }
-    }
-    Object localObject2 = localObject1;
-    int m = j;
-    k = i;
-    if (localObject2 != null)
-    {
-      paramList = new StringBuilder();
-      paramList.append("[findLastSelectedPosition] found tabPosition=");
-      paramList.append(k);
-      paramList.append(", itemPosition=");
-      paramList.append(m);
-      AEQLog.b("AEGIFStickerListPart", paramList.toString());
-      return new Pair(Integer.valueOf(k), Integer.valueOf(m));
-    }
-    AEQLog.b("AEGIFStickerListPart", "[findLastSelectedPosition] not found");
-    return null;
-  }
-  
-  private void b()
-  {
-    ViewAnimator.a(new View[] { this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView }).b(new float[] { 0.0F, 1.0F }).a(300L).a(new AEGIFStickerListPart.8(this)).b();
-  }
-  
-  private Pair<String[], int[]> c(@NonNull List<AEGifCategoryWrapper> paramList)
-  {
-    boolean bool = CollectionUtils.isEmpty(paramList);
-    int i = 0;
-    if (bool) {
-      return new Pair(new String[0], new int[0]);
-    }
-    String[] arrayOfString = new String[paramList.size()];
-    int[] arrayOfInt = new int[paramList.size()];
-    while (i < paramList.size())
-    {
-      Object localObject = (AEGifCategoryWrapper)paramList.get(i);
-      if ((localObject != null) && (!TextUtils.isEmpty(((AEGifCategoryWrapper)localObject).categoryName))) {
-        localObject = ((AEGifCategoryWrapper)localObject).categoryName;
-      } else {
-        localObject = "";
-      }
-      arrayOfString[i] = localObject;
-      arrayOfInt[i] = i;
-      i += 1;
-    }
-    return new Pair(arrayOfString, arrayOfInt);
-  }
-  
-  private void c()
-  {
-    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
-    {
-      if (this.jdField_a_of_type_AndroidAppDialog == null)
-      {
-        this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.mActivity, 2131756189);
-        this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
-        this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559561);
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372646)).setText(2064515390);
-        this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new AEGIFStickerListPart.10(this));
-      }
-      if (!this.jdField_a_of_type_AndroidAppDialog.isShowing())
-      {
-        AEQLog.a("AEGIFStickerListPart", "[showTakeSameLoading], show dialog");
-        this.jdField_a_of_type_AndroidAppDialog.show();
-      }
-    }
-  }
-  
-  private void d()
-  {
-    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
-    {
-      Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
-      if ((localDialog != null) && (localDialog.isShowing()))
-      {
-        AEQLog.a("AEGIFStickerListPart", "[hideTakeSameLoading], dismiss dialog");
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-    }
-  }
-  
   public int a(int paramInt, boolean paramBoolean)
   {
-    Object localObject1 = (AEGifCategoryWrapper)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!this.jdField_b_of_type_JavaLangString.equals(((AEGifCategoryWrapper)localObject1).categoryId)))
+    Object localObject1 = (AEGifCategoryWrapper)this.h.get(paramInt);
+    if ((TextUtils.isEmpty(this.n)) || (!this.n.equals(((AEGifCategoryWrapper)localObject1).categoryId)))
     {
-      this.jdField_b_of_type_JavaLangString = ((AEGifCategoryWrapper)localObject1).categoryId;
-      AEBaseReportParam.a().s(this.jdField_b_of_type_JavaLangString);
-      AEBaseDataReporter.a().am();
+      this.n = ((AEGifCategoryWrapper)localObject1).categoryId;
+      AEBaseReportParam.a().D(this.n);
+      AEBaseDataReporter.a().ar();
     }
     if (!paramBoolean) {
       return 0;
     }
-    this.jdField_a_of_type_JavaLangString = ((AEGifCategoryWrapper)localObject1).categoryId;
+    this.m = ((AEGifCategoryWrapper)localObject1).categoryId;
     a(((AEGifCategoryWrapper)localObject1).fontId);
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.addAll(((AEGifCategoryWrapper)localObject1).materialWrapperList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.scrollToPositionWithOffset(0, 0);
+    this.l.clear();
+    this.l.addAll(((AEGifCategoryWrapper)localObject1).materialWrapperList);
+    this.k.a();
+    this.k.notifyDataSetChanged();
+    this.j.scrollToPositionWithOffset(0, 0);
     if (CollectionUtils.isEmpty(((AEGifCategoryWrapper)localObject1).materialWrapperList)) {
       localObject1 = null;
     } else {
@@ -395,7 +395,7 @@ public class AEGIFStickerListPart
     if (localObject1 != null)
     {
       localObject2 = localObject1;
-      if (((AEMaterialWrapper)localObject1).b == 1) {
+      if (((AEMaterialWrapper)localObject1).g == 1) {
         localObject2 = null;
       }
     }
@@ -408,20 +408,20 @@ public class AEGIFStickerListPart
     if (this.mRootView == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_AndroidUtilPair = new Pair(new String[0], new int[0]);
-    this.jdField_b_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator = ((SimpleSlidingIndicator)this.mRootView.findViewById(2064121904));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.setOnTabListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mRootView.findViewById(2064121905));
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter = new AEGIFStickerAdapter(this.mRootView.getContext(), this.jdField_b_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter.a(new AEGIFStickerListPart.1(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFStickerAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleSlidingIndicator.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
+    this.h = new LinkedList();
+    this.g = new Pair(new String[0], new int[0]);
+    this.l = new LinkedList();
+    this.f = ((SimpleSlidingIndicator)this.mRootView.findViewById(2063990838));
+    this.f.setOnTabListener(this);
+    this.i = ((RecyclerView)this.mRootView.findViewById(2063990839));
+    this.j = new LinearLayoutManager(this.a, 0, false);
+    this.i.setLayoutManager(this.j);
+    this.i.setItemAnimator(null);
+    this.k = new AEGIFStickerAdapter(this.mRootView.getContext(), this.l);
+    this.k.a(new AEGIFStickerListPart.1(this));
+    this.i.setAdapter(this.k);
+    this.f.setVisibility(8);
+    this.i.setVisibility(8);
     a(this.mActivity.getIntent());
     a();
   }
@@ -429,15 +429,15 @@ public class AEGIFStickerListPart
   public void onActivityResume()
   {
     super.onActivityResume();
-    AEVideoStoryCaptureModeViewModel localAEVideoStoryCaptureModeViewModel = this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModeViewModel;
+    AEVideoStoryCaptureModeViewModel localAEVideoStoryCaptureModeViewModel = this.c;
     if ((localAEVideoStoryCaptureModeViewModel != null) && (localAEVideoStoryCaptureModeViewModel.a())) {
-      AEBaseDataReporter.a().aj();
+      AEBaseDataReporter.a().ao();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGIFStickerListPart
  * JD-Core Version:    0.7.0.1
  */

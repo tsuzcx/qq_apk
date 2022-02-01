@@ -2,8 +2,8 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.af;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
 import com.tencent.mobileqq.msf.service.u;
@@ -512,7 +512,7 @@ public class j
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket, k paramk)
   {
-    af.a(paramFromServiceMsg);
+    ag.a(paramFromServiceMsg);
     VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
     localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
     localVerifyCodeInfo.wupSeq = paramUniPacket.getRequestId();
@@ -639,7 +639,7 @@ public class j
       byte[] arrayOfByte5 = locala.k();
       CodecWarpper.nativeSetAccountKey(paramk, new byte[0], (byte[])localObject, arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, new byte[0], null);
       this.n.m(locala.d());
-      ac.a(locala.d(), false);
+      ad.a(locala.d(), false);
       try
       {
         this.n.a.getWtLoginCenter().a(locala, true);
@@ -743,7 +743,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.j
  * JD-Core Version:    0.7.0.1
  */

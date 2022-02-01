@@ -6,12 +6,11 @@ import android.os.Bundle;
 public class FavoriteActionSheet$DefaultActions
   implements FavoriteActionSheet.Actions
 {
-  public int a()
-  {
-    return 0;
-  }
+  public void a() {}
   
-  public Intent a()
+  public void a(Bundle paramBundle) {}
+  
+  public Intent b()
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("forward_type", 22);
@@ -19,19 +18,16 @@ public class FavoriteActionSheet$DefaultActions
     return localIntent;
   }
   
-  public void a() {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void b() {}
-  
   public void c() {}
   
   public void d() {}
   
   public void e() {}
   
-  public void f() {}
+  public int f()
+  {
+    return 0;
+  }
   
   public void g() {}
   
@@ -48,10 +44,14 @@ public class FavoriteActionSheet$DefaultActions
   public void m() {}
   
   public void n() {}
+  
+  public void o() {}
+  
+  public void p() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.widget.FavoriteActionSheet.DefaultActions
  * JD-Core Version:    0.7.0.1
  */

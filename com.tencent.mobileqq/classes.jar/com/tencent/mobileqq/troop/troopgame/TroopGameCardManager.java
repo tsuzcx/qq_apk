@@ -14,14 +14,14 @@ import mqq.manager.Manager;
 public class TroopGameCardManager
   implements Manager
 {
-  private LruCache<String, MemberGradeLevelInfo> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(1000);
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private AppRuntime a;
+  private EntityManager b;
+  private LruCache<String, MemberGradeLevelInfo> c = new LruCache(1000);
   
   public TroopGameCardManager(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppRuntime.getEntityManagerFactory().createEntityManager();
+    this.a = paramAppRuntime;
+    this.b = paramAppRuntime.getEntityManagerFactory().createEntityManager();
   }
   
   private MemberGradeLevelInfo a(String paramString)
@@ -33,10 +33,10 @@ public class TroopGameCardManager
       }
       return null;
     }
-    Object localObject2 = (MemberGradeLevelInfo)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+    Object localObject2 = (MemberGradeLevelInfo)this.c.get(paramString);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = (MemberGradeLevelInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(MemberGradeLevelInfo.class, paramString);
+      localObject1 = (MemberGradeLevelInfo)this.b.find(MemberGradeLevelInfo.class, paramString);
     }
     if (QLog.isColorLevel())
     {
@@ -53,22 +53,22 @@ public class TroopGameCardManager
     return localObject1;
   }
   
-  private boolean a(Entity paramEntity)
+  private boolean b(Entity paramEntity)
   {
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen();
+    boolean bool2 = this.b.isOpen();
     boolean bool1 = false;
     if (bool2)
     {
       if (paramEntity.getStatus() == 1000)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+        this.b.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
         return bool1;
       }
       if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
-        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+        return this.b.update(paramEntity);
       }
     }
     return false;
@@ -92,10 +92,10 @@ public class TroopGameCardManager
         localStringBuilder.append(paramMemberGradeLevelInfo.gradeLevel);
         QLog.d("TroopGameCardManager", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(1000);
+      if (this.c == null) {
+        this.c = new LruCache(1000);
       }
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramMemberGradeLevelInfo.memberuin, paramMemberGradeLevelInfo);
+      this.c.put(paramMemberGradeLevelInfo.memberuin, paramMemberGradeLevelInfo);
       a(paramMemberGradeLevelInfo);
       return;
     }
@@ -117,8 +117,8 @@ public class TroopGameCardManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = null;
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    this.a = null;
+    EntityManager localEntityManager = this.b;
     if (localEntityManager != null) {
       localEntityManager.close();
     }
@@ -126,7 +126,7 @@ public class TroopGameCardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardManager
  * JD-Core Version:    0.7.0.1
  */

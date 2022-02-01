@@ -26,61 +26,61 @@ final class FileOperaterUtils$9
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    if ((this.a != null) && (this.b != null))
     {
       Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.c) {
         TenDocLogReportHelper.a(null, "0X800A21D");
       } else {
         ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X8009063", "0X8009063", 0, 0, "", "", "", "");
       }
       TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-      localTeamWorkFileImportInfo.c = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
-      localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
-      localTeamWorkFileImportInfo.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType;
-      if (this.jdField_a_of_type_Boolean) {
-        localTeamWorkFileImportInfo.jdField_d_of_type_Int = 8;
+      localTeamWorkFileImportInfo.d = this.a.getFilePath();
+      localTeamWorkFileImportInfo.c = this.a.fileName;
+      localTeamWorkFileImportInfo.u = this.a.nFileType;
+      if (this.c) {
+        localTeamWorkFileImportInfo.n = 8;
       } else {
-        localTeamWorkFileImportInfo.jdField_d_of_type_Int = 5;
+        localTeamWorkFileImportInfo.n = 5;
       }
-      localTeamWorkFileImportInfo.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+      localTeamWorkFileImportInfo.K = this.a.fileSize;
+      Activity localActivity = this.b;
       boolean bool1;
       if ((localActivity instanceof FileBrowserActivity))
       {
-        boolean bool2 = ((FileBrowserActivity)localActivity).g();
-        if ((((FileBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).c()) && (!bool2)) {
+        boolean bool2 = ((FileBrowserActivity)localActivity).l();
+        if ((((FileBrowserActivity)this.b).g()) && (!bool2)) {
           bool1 = true;
         } else {
           bool1 = false;
         }
-        localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = bool1;
+        localTeamWorkFileImportInfo.o = bool1;
         bool1 = bool2;
       }
       else
       {
         bool1 = false;
       }
-      if ((bool1) && (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())))
+      if ((bool1) && (!FileUtils.fileExistsAndNotEmpty(this.a.getFilePath())))
       {
-        QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131719533), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131917096), 0).show(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299920));
       }
       else
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin))
+        if (!TextUtils.isEmpty(this.a.peerUin))
         {
-          localTeamWorkFileImportInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-          localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-          localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
-          localTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-          localTeamWorkFileImportInfo.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-          localTeamWorkFileImportInfo.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq;
-          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 16) {
-            localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
+          localTeamWorkFileImportInfo.a = this.a.peerType;
+          localTeamWorkFileImportInfo.b = this.a.peerUin;
+          localTeamWorkFileImportInfo.j = String.valueOf(this.a.TroopUin);
+          localTeamWorkFileImportInfo.g = this.a.strTroopFilePath;
+          localTeamWorkFileImportInfo.h = this.a.busId;
+          localTeamWorkFileImportInfo.e = this.a.uniseq;
+          if (this.a.status != 16) {
+            localTeamWorkFileImportInfo.m = true;
           }
         }
-        TeamWorkConvertUtils.a(localTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidAppActivity, (AppInterface)localObject, localTeamWorkFileImportInfo.jdField_d_of_type_Int);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkConvertUtils$GetTeamWorkImportInfoListener;
+        TeamWorkConvertUtils.a(localTeamWorkFileImportInfo, this.b, (AppInterface)localObject, localTeamWorkFileImportInfo.n);
+        localObject = this.d;
         if (localObject != null) {
           ((TeamWorkConvertUtils.GetTeamWorkImportInfoListener)localObject).a(localTeamWorkFileImportInfo);
         }
@@ -88,14 +88,14 @@ final class FileOperaterUtils$9
     }
     else
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131719528), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131917091), 0).show(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299920));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,44 @@
 package com.tencent.turingfd.sdk.xq;
 
 public class Bilberry
-  implements goto
+  extends else
 {
-  public static final byte[] Mh = new byte[0];
-  public final String Eh;
-  public final long Fh;
-  public final String Hh;
-  public final String Ih;
-  public final String Jh;
-  public final String Kh;
-  public Cherry Lh;
-  public int Nh = 0;
-  public int Oh = 0;
-  public final int zg;
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
   
-  public Bilberry(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  public void a(case paramcase)
   {
-    this.Eh = "";
-    this.Fh = 0L;
-    this.zg = paramInt1;
-    this.Hh = "";
-    this.Ih = "";
-    this.Jh = "";
-    this.Kh = "";
-    this.Lh = new Cherry("");
-    this.Nh = paramInt2;
-    this.Oh = paramInt3;
+    paramcase.a(this.a, 0);
+    paramcase.a(this.b, 1);
+    paramcase.a(this.c, 2);
   }
   
-  public Bilberry(Bilberry.do paramdo)
+  public void a(try paramtry)
   {
-    this.Eh = paramdo.jdField_a_of_type_JavaLangString;
-    this.Fh = paramdo.jdField_a_of_type_Long;
-    this.zg = paramdo.jdField_a_of_type_Int;
-    byte[] arrayOfByte = paramdo.jdField_a_of_type_ArrayOfByte;
-    this.Hh = paramdo.b;
-    this.Ih = paramdo.c;
-    this.Jh = paramdo.d;
-    this.Kh = paramdo.e;
-    this.Lh = paramdo.jdField_a_of_type_ComTencentTuringfdSdkXqCherry;
+    this.a = paramtry.a(this.a, 0, false);
+    this.b = paramtry.a(this.b, 1, false);
+    this.c = paramtry.a(this.c, 2, false);
   }
   
-  public static Bilberry.do create(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    return new Bilberry.do(paramInt, null);
-  }
-  
-  public static Bilberry g(int paramInt)
-  {
-    return new Bilberry(paramInt, Mh, 0, 0);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof Bilberry)) {
+      return false;
+    }
+    paramObject = (Bilberry)paramObject;
+    return (goto.a(this.a, paramObject.a)) && (goto.a(this.b, paramObject.b)) && (goto.a(this.c, paramObject.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Bilberry
  * JD-Core Version:    0.7.0.1
  */

@@ -32,20 +32,10 @@ public final class ConstellationUtilKt
   @NotNull
   private static final SimpleDateFormat b = new SimpleDateFormat("yyyyMMdd");
   
-  public static final long a(@NotNull AppRuntime paramAppRuntime)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
-    paramAppRuntime = BaseSharedPreUtil.a((Context)MobileQQ.sMobileQQ, paramAppRuntime.getCurrentAccountUin(), "key_ext_info_request_interval_second", Long.valueOf(0L));
-    if (paramAppRuntime != null) {
-      return ((Long)paramAppRuntime).longValue();
-    }
-    throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
-  }
-  
   @NotNull
   public static final String a()
   {
-    Object localObject = a();
+    Object localObject = f();
     localObject = a.format((Date)localObject);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultDateFormat.format(date)");
     return localObject;
@@ -100,29 +90,6 @@ public final class ConstellationUtilKt
     throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
   }
   
-  @NotNull
-  public static final String a(@NotNull AppRuntime paramAppRuntime, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
-    Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    paramAppRuntime = paramAppRuntime.getRuntimeService(IFriendDataService.class, "");
-    Intrinsics.checkExpressionValueIsNotNull(paramAppRuntime, "app.getRuntimeService(IF…va, ProcessConstant.MAIN)");
-    paramAppRuntime = ((IFriendDataService)paramAppRuntime).getFriend(paramString, true, true, true);
-    Intrinsics.checkExpressionValueIsNotNull(paramAppRuntime, "friends");
-    return b(paramAppRuntime);
-  }
-  
-  @NotNull
-  public static final SimpleDateFormat a()
-  {
-    return a;
-  }
-  
-  private static final Date a()
-  {
-    return new Date(NetConnInfoCenter.getServerTimeMillis());
-  }
-  
   public static final void a(@NotNull AppRuntime paramAppRuntime, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
@@ -146,41 +113,10 @@ public final class ConstellationUtilKt
     BaseSharedPreUtil.a(localContext, paramAppRuntime, true, "key_today_constellation_trends_json", paramString);
   }
   
-  public static final boolean a(@NotNull AppRuntime paramAppRuntime)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
-    long l1 = System.currentTimeMillis() / 1000L;
-    long l2 = a(paramAppRuntime);
-    boolean bool;
-    if (l1 - b(paramAppRuntime) >= l2) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramAppRuntime = new StringBuilder();
-      paramAppRuntime.append("expired: ");
-      paramAppRuntime.append(bool);
-      QLog.d("ConstellationUtil", 2, new Object[] { "isConstellationRequestExpired: called. ", paramAppRuntime.toString() });
-    }
-    return bool;
-  }
-  
-  public static final long b(@NotNull AppRuntime paramAppRuntime)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
-    paramAppRuntime = BaseSharedPreUtil.a((Context)MobileQQ.sMobileQQ, paramAppRuntime.getCurrentAccountUin(), "key_constellation_last_request_second", Long.valueOf(0L));
-    if (paramAppRuntime != null) {
-      return ((Long)paramAppRuntime).longValue();
-    }
-    throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
-  }
-  
   @NotNull
   public static final String b()
   {
-    Object localObject = a();
+    Object localObject = f();
     localObject = b.format((Date)localObject);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultRequestDateFormat.format(date)");
     return localObject;
@@ -253,25 +189,11 @@ public final class ConstellationUtilKt
   {
     Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    paramAppRuntime = OnlineStatusUtil.b(((IProfileCardUtil)QRoute.api(IProfileCardUtil.class)).initCard(paramAppRuntime, paramString).constellation);
-    Intrinsics.checkExpressionValueIsNotNull(paramAppRuntime, "constellationStr");
-    return paramAppRuntime;
-  }
-  
-  public static final void b(@NotNull AppRuntime paramAppRuntime, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
-    Intrinsics.checkParameterIsNotNull(paramString, "color");
-    BaseSharedPreUtil.a((Context)MobileQQ.sMobileQQ, paramAppRuntime.getCurrentAccountUin(), true, "key_constellation_text_color", paramString);
-  }
-  
-  public static final boolean b(@NotNull AppRuntime paramAppRuntime)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
-    paramAppRuntime = paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
-    Intrinsics.checkExpressionValueIsNotNull(paramAppRuntime, "app.getRuntimeService(IO…va, ProcessConstant.MAIN)");
-    paramAppRuntime = (IOnlineStatusService)paramAppRuntime;
-    return (paramAppRuntime.getOnlineStatus() == AppRuntime.Status.online) && (paramAppRuntime.getExtOnlineStatus() == 1040);
+    paramAppRuntime = paramAppRuntime.getRuntimeService(IFriendDataService.class, "");
+    Intrinsics.checkExpressionValueIsNotNull(paramAppRuntime, "app.getRuntimeService(IF…va, ProcessConstant.MAIN)");
+    paramAppRuntime = ((IFriendDataService)paramAppRuntime).getFriend(paramString, true, true, true);
+    Intrinsics.checkExpressionValueIsNotNull(paramAppRuntime, "friends");
+    return b(paramAppRuntime);
   }
   
   @NotNull
@@ -279,7 +201,7 @@ public final class ConstellationUtilKt
   {
     Object localObject = Calendar.getInstance();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "cal");
-    ((Calendar)localObject).setTime(a());
+    ((Calendar)localObject).setTime(f());
     ((Calendar)localObject).add(5, 1);
     localObject = b.format(((Calendar)localObject).getTime());
     Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultRequestDateFormat.format(cal.time)");
@@ -312,12 +234,29 @@ public final class ConstellationUtilKt
     return "";
   }
   
+  public static final void c(@NotNull AppRuntime paramAppRuntime, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
+    Intrinsics.checkParameterIsNotNull(paramString, "color");
+    BaseSharedPreUtil.a((Context)MobileQQ.sMobileQQ, paramAppRuntime.getCurrentAccountUin(), true, "key_constellation_text_color", paramString);
+  }
+  
+  public static final long d(@NotNull AppRuntime paramAppRuntime)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
+    paramAppRuntime = BaseSharedPreUtil.a((Context)MobileQQ.sMobileQQ, paramAppRuntime.getCurrentAccountUin(), "key_ext_info_request_interval_second", Long.valueOf(0L));
+    if (paramAppRuntime != null) {
+      return ((Long)paramAppRuntime).longValue();
+    }
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
+  }
+  
   @NotNull
   public static final String d()
   {
     Object localObject = Calendar.getInstance();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "cal");
-    ((Calendar)localObject).setTime(a());
+    ((Calendar)localObject).setTime(f());
     ((Calendar)localObject).add(5, -1);
     localObject = b.format(((Calendar)localObject).getTime());
     Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultRequestDateFormat.format(cal.time)");
@@ -338,7 +277,17 @@ public final class ConstellationUtilKt
   }
   
   @NotNull
-  public static final String d(@NotNull AppRuntime paramAppRuntime)
+  public static final String d(@NotNull AppRuntime paramAppRuntime, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
+    Intrinsics.checkParameterIsNotNull(paramString, "uin");
+    paramAppRuntime = OnlineStatusUtil.b(((IProfileCardUtil)QRoute.api(IProfileCardUtil.class)).initCard(paramAppRuntime, paramString).constellation);
+    Intrinsics.checkExpressionValueIsNotNull(paramAppRuntime, "constellationStr");
+    return paramAppRuntime;
+  }
+  
+  @NotNull
+  public static final String e(@NotNull AppRuntime paramAppRuntime)
   {
     Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
     paramAppRuntime = BaseSharedPreUtil.a((Context)MobileQQ.sMobileQQ, paramAppRuntime.getCurrentAccountUin(), "key_constellation_text_color", "");
@@ -349,7 +298,13 @@ public final class ConstellationUtilKt
   }
   
   @NotNull
-  public static final String e(@NotNull AppRuntime paramAppRuntime)
+  public static final SimpleDateFormat e()
+  {
+    return a;
+  }
+  
+  @NotNull
+  public static final String f(@NotNull AppRuntime paramAppRuntime)
   {
     Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
     IRuntimeService localIRuntimeService = paramAppRuntime.getRuntimeService(IFriendDataService.class, "");
@@ -360,10 +315,55 @@ public final class ConstellationUtilKt
     }
     return "";
   }
+  
+  private static final Date f()
+  {
+    return new Date(NetConnInfoCenter.getServerTimeMillis());
+  }
+  
+  public static final long g(@NotNull AppRuntime paramAppRuntime)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
+    paramAppRuntime = BaseSharedPreUtil.a((Context)MobileQQ.sMobileQQ, paramAppRuntime.getCurrentAccountUin(), "key_constellation_last_request_second", Long.valueOf(0L));
+    if (paramAppRuntime != null) {
+      return ((Long)paramAppRuntime).longValue();
+    }
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
+  }
+  
+  public static final boolean h(@NotNull AppRuntime paramAppRuntime)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
+    long l1 = System.currentTimeMillis() / 1000L;
+    long l2 = d(paramAppRuntime);
+    boolean bool;
+    if (l1 - g(paramAppRuntime) >= l2) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("expired: ");
+      paramAppRuntime.append(bool);
+      QLog.d("ConstellationUtil", 2, new Object[] { "isConstellationRequestExpired: called. ", paramAppRuntime.toString() });
+    }
+    return bool;
+  }
+  
+  public static final boolean i(@NotNull AppRuntime paramAppRuntime)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
+    paramAppRuntime = paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
+    Intrinsics.checkExpressionValueIsNotNull(paramAppRuntime, "app.getRuntimeService(IO…va, ProcessConstant.MAIN)");
+    paramAppRuntime = (IOnlineStatusService)paramAppRuntime;
+    return (paramAppRuntime.getOnlineStatus() == AppRuntime.Status.online) && (paramAppRuntime.getExtOnlineStatus() == 1040);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.constellation.ConstellationUtilKt
  * JD-Core Version:    0.7.0.1
  */

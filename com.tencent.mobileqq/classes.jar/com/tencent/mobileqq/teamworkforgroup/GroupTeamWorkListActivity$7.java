@@ -20,32 +20,32 @@ class GroupTeamWorkListActivity$7
     int i;
     switch (paramMenuItem.id)
     {
-    case 2131364739: 
+    case 2131430847: 
     default: 
       i = 0;
       break;
-    case 2131364741: 
+    case 2131430849: 
       ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).report(this.a.app, "0X800993C");
       paramMenuItem = (ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class);
       localObject1 = this.a.app;
       localObject2 = this.a;
-      paramMenuItem.openTroopTemplatePreviewUrlWithCheck((AppInterface)localObject1, (Activity)localObject2, 2, "group_online_doc", ((GroupTeamWorkListActivity)localObject2).a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      paramMenuItem.openTroopTemplatePreviewUrlWithCheck((AppInterface)localObject1, (Activity)localObject2, 2, "group_online_doc", ((GroupTeamWorkListActivity)localObject2).m, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
       i = 2;
       break;
-    case 2131364740: 
+    case 2131430848: 
       ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).report(this.a.app, "0X800993B");
       paramMenuItem = (ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class);
       localObject1 = this.a.app;
       localObject2 = this.a;
-      paramMenuItem.openTroopTemplatePreviewUrlWithCheck((AppInterface)localObject1, (Activity)localObject2, 1, "group_online_doc", ((GroupTeamWorkListActivity)localObject2).a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      paramMenuItem.openTroopTemplatePreviewUrlWithCheck((AppInterface)localObject1, (Activity)localObject2, 1, "group_online_doc", ((GroupTeamWorkListActivity)localObject2).m, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
       i = 1;
       break;
-    case 2131364738: 
+    case 2131430846: 
       ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).report(this.a.app, "0X800993C");
       paramMenuItem = (ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class);
       localObject1 = this.a.app;
       localObject2 = this.a;
-      paramMenuItem.openTroopTemplatePreviewUrlWithCheck((AppInterface)localObject1, (Activity)localObject2, 3, "group_online_doc", ((GroupTeamWorkListActivity)localObject2).a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      paramMenuItem.openTroopTemplatePreviewUrlWithCheck((AppInterface)localObject1, (Activity)localObject2, 3, "group_online_doc", ((GroupTeamWorkListActivity)localObject2).m, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
       i = 3;
     }
     paramMenuItem = this.a.app;
@@ -61,7 +61,7 @@ class GroupTeamWorkListActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.7
  * JD-Core Version:    0.7.0.1
  */

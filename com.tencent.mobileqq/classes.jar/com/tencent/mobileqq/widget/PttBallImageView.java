@@ -10,12 +10,12 @@ import android.widget.ImageView;
 public class PttBallImageView
   extends ImageView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private Bitmap a;
+  private int b;
+  private int c;
+  private float d;
+  private float e;
+  private Matrix f = new Matrix();
   
   public PttBallImageView(Context paramContext)
   {
@@ -35,39 +35,39 @@ public class PttBallImageView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.a;
     if (localBitmap != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Float / localBitmap.getWidth(), this.jdField_b_of_type_Float / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      float f1 = this.jdField_a_of_type_Int;
-      float f2 = this.jdField_a_of_type_Float / 2.0F;
-      float f3 = this.jdField_b_of_type_Int;
-      float f4 = this.jdField_b_of_type_Float / 2.0F;
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(f1 - f2, f3 - f4);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+      this.f.setScale(this.d / localBitmap.getWidth(), this.e / this.a.getHeight());
+      float f1 = this.b;
+      float f2 = this.d / 2.0F;
+      float f3 = this.c;
+      float f4 = this.e / 2.0F;
+      this.f.postTranslate(f1 - f2, f3 - f4);
+      paramCanvas.drawBitmap(this.a, this.f, null);
     }
   }
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.a = paramBitmap;
   }
   
   public void setBitmapWH(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Float = paramInt1;
-    this.jdField_b_of_type_Float = paramInt2;
+    this.d = paramInt1;
+    this.e = paramInt2;
   }
   
   public void setPos(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PttBallImageView
  * JD-Core Version:    0.7.0.1
  */

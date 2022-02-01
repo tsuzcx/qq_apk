@@ -5,25 +5,14 @@ import com.tencent.qphone.base.util.QLog;
 public class QQStoryLoggingDelegate
   implements LoggingDelegate
 {
-  public static final QQStoryLoggingDelegate a;
-  public int a;
-  public String a;
-  private int b = -1;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizQqstorySupportLoggingQQStoryLoggingDelegate = new QQStoryLoggingDelegate();
-  }
-  
-  private QQStoryLoggingDelegate()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 3;
-  }
+  public static final QQStoryLoggingDelegate a = new QQStoryLoggingDelegate();
+  public String b = null;
+  public int c = 3;
+  private int d = -1;
   
   public static QQStoryLoggingDelegate a()
   {
-    return jdField_a_of_type_ComTencentBizQqstorySupportLoggingQQStoryLoggingDelegate;
+    return a;
   }
   
   private void a(int paramInt, String paramString1, String paramString2)
@@ -72,11 +61,6 @@ public class QQStoryLoggingDelegate
     QLog.d(paramString1, 2, paramString2, paramThrowable);
   }
   
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
   public void a(String paramString1, String paramString2)
   {
     a(2, paramString1, paramString2);
@@ -89,7 +73,7 @@ public class QQStoryLoggingDelegate
   
   public boolean a(int paramInt)
   {
-    int i = this.b;
+    int i = this.d;
     if ((i != -1) && (paramInt >= i)) {
       return true;
     }
@@ -99,7 +83,12 @@ public class QQStoryLoggingDelegate
     if (!QLog.isColorLevel()) {
       return false;
     }
-    return this.jdField_a_of_type_Int <= paramInt;
+    return this.c <= paramInt;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.d = paramInt;
   }
   
   public void b(String paramString1, String paramString2)

@@ -23,12 +23,12 @@ final class TroopHonorAIOUtils$1
     }
     ArrayList localArrayList = new ArrayList();
     Object localObject = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_AndroidWidgetImageView);
+    localArrayList.add(this.a);
     localArrayList.add(this.b);
-    if (!TroopHonorAIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localArrayList, (List)localObject, paramTroopInfo, this.jdField_a_of_type_Boolean)) {
-      TroopHonorAIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localArrayList, (List)localObject, paramTroopInfo, this.jdField_a_of_type_Boolean);
+    if (!TroopHonorAIOUtils.a(this.c, this.d, localArrayList, (List)localObject, paramTroopInfo, this.e)) {
+      TroopHonorAIOUtils.b(this.c, this.d, localArrayList, (List)localObject, paramTroopInfo, this.e);
     } else {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "AIO_Luckyword_exp", 0, 0, "", "", "", "");
+      ReportController.b(this.c, "dc00899", "Grp_AIO", "", "Grp_AIO_display", "AIO_Luckyword_exp", 0, 0, "", "", "", "");
     }
     if (((List)localObject).size() > 0) {
       paramTroopInfo = (MutualMarkForDisplayInfo)((List)localObject).get(0);
@@ -41,17 +41,17 @@ final class TroopHonorAIOUtils$1
       localObject = null;
     }
     if (paramTroopInfo == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
+      this.a.setOnTouchListener(null);
     }
     if (localObject == null) {
       this.b.setOnTouchListener(null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeftForMutualMark(paramTroopInfo, (MutualMarkForDisplayInfo)localObject);
+    this.f.setTitleIconLeftForMutualMark(paramTroopInfo, (MutualMarkForDisplayInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.TroopHonorAIOUtils.1
  * JD-Core Version:    0.7.0.1
  */

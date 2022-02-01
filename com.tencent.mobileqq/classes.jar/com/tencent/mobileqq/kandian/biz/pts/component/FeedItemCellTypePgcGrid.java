@@ -11,55 +11,55 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class FeedItemCellTypePgcGrid
   extends FeedItemCell
 {
-  private ComponentContentGridImage.Model a;
+  private ComponentContentGridImage.Model G;
   
   public FeedItemCellTypePgcGrid(Context paramContext, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder).g().q().l().n().j();
+    this.h = true;
+    return c(this.g, this.f).i().t().n().p().l();
   }
   
   public FeedItemCell c(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IFaceDecoder paramIFaceDecoder)
   {
     super.c(paramReadInJoyBaseAdapter, paramIFaceDecoder);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPublish.jdField_a_of_type_Boolean = true;
+    this.y.i = true;
     return this;
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      LinearLayout localLinearLayout = new LinearLayout(this.e);
       localLinearLayout.setOrientation(1);
       localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPublish != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPublish);
+      if (this.y != null) {
+        localLinearLayout.addView(this.y);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView instanceof ComponentContentGridImage)))
+      if ((this.l != null) && ((this.l instanceof ComponentContentGridImage)))
       {
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.setMargins(AIOUtils.b(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.b(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-        ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView).setLayoutParams(localLayoutParams);
-        ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView).setOnNoItemClickListener(new FeedItemCellTypePgcGrid.1(this));
-        localLinearLayout.addView((ComponentContentGridImage)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView);
+        localLayoutParams.setMargins(AIOUtils.b(12.0F, this.e.getResources()), 0, AIOUtils.b(12.0F, this.e.getResources()), 0);
+        ((ComponentContentGridImage)this.l).setLayoutParams(localLayoutParams);
+        ((ComponentContentGridImage)this.l).setOnNoItemClickListener(new FeedItemCellTypePgcGrid.1(this));
+        localLinearLayout.addView((ComponentContentGridImage)this.l);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentUgcSource != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentUgcSource);
+      if (this.o != null) {
+        localLinearLayout.addView(this.o);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentSocialOperation != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentSocialOperation);
+      if (this.x != null) {
+        localLinearLayout.addView(this.x);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider);
+      if (this.r != null) {
+        localLinearLayout.addView(this.r);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead);
+      if (this.t != null) {
+        localLinearLayout.addView(this.t);
       }
       a(localLinearLayout);
       return this;
@@ -67,45 +67,45 @@ public class FeedItemCellTypePgcGrid
     throw new Exception("buildComponent() must after buildComponent()!");
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return null;
   }
   
-  public FeedItemCell g()
+  public FeedItemCell i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
+    this.l = new ComponentContentGridImage(this.e);
     return this;
   }
   
-  public FeedItemCell o()
+  public FeedItemCell q()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPublish != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPublish.a(this.jdField_a_of_type_JavaLangObject);
+    if (this.y != null) {
+      this.y.a(this.b);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView != null)
+    if (this.l != null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView instanceof ComponentContentGridImage)) {
-        ((ComponentContentGridImage)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      if ((this.l instanceof ComponentContentGridImage)) {
+        ((ComponentContentGridImage)this.l).setMIReadInJoyModel(this.b);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGridImage$Model = ComponentContentGridImage.a(this.jdField_a_of_type_JavaLangObject, 0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGridImage$Model);
+      this.G = ComponentContentGridImage.a(this.b, 0);
+      this.l.a(this.G);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    if (this.o != null) {
+      this.o.a(this.b);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    if (this.x != null) {
+      this.x.a(this.b);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+    if (this.r != null) {
+      this.r.a(this.b);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
+    if (this.t != null) {
+      this.t.a(this.b);
     }
     try
     {
-      e();
+      f();
       return this;
     }
     catch (Exception localException)
@@ -117,7 +117,7 @@ public class FeedItemCellTypePgcGrid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypePgcGrid
  * JD-Core Version:    0.7.0.1
  */

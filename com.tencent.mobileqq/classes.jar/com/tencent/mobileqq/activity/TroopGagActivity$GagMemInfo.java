@@ -2,13 +2,13 @@ package com.tencent.mobileqq.activity;
 
 public class TroopGagActivity$GagMemInfo
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
+  String a;
   String b;
+  long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopGagActivity.GagMemInfo
  * JD-Core Version:    0.7.0.1
  */

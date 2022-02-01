@@ -9,12 +9,12 @@ class NearbyAppInterfaceImpl$3
   
   public void run()
   {
-    this.this$0.getNearbyProcManager().a(false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.f, this.g, this.h, this.i);
+    this.this$0.getNearbyProcManager().a(false, this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.NearbyAppInterfaceImpl.3
  * JD-Core Version:    0.7.0.1
  */

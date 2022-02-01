@@ -10,17 +10,17 @@ public class CaptureAsyncStep$InitMusic
 {
   protected int doStep()
   {
-    QimMusicPlayer localQimMusicPlayer = (QimMusicPlayer)QIMManager.a().c(8);
+    QimMusicPlayer localQimMusicPlayer = (QimMusicPlayer)QIMManager.a().d(8);
     if (localQimMusicPlayer != null) {
       localQimMusicPlayer.e();
     }
-    ((QIMMusicConfigManager)QIMManager.a(2)).c();
+    ((QIMMusicConfigManager)QIMManager.a(2)).a();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.CaptureAsyncStep.InitMusic
  * JD-Core Version:    0.7.0.1
  */

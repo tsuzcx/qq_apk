@@ -28,10 +28,10 @@ class AETipsViewController$TipsHandler
         if (i != 1018) {
           return;
         }
-        ((AETipsViewController)this.a.get()).a();
+        ((AETipsViewController)this.a.get()).b();
         return;
       }
-      AETipsViewController.a((AETipsViewController)this.a.get());
+      AETipsViewController.b((AETipsViewController)this.a.get());
       return;
     }
     removeCallbacksAndMessages(null);
@@ -39,7 +39,7 @@ class AETipsViewController$TipsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.tips.AETipsViewController.TipsHandler
  * JD-Core Version:    0.7.0.1
  */

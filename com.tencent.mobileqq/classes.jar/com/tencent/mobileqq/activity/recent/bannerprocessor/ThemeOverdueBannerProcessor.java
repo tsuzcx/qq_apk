@@ -16,12 +16,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 public class ThemeOverdueBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.B;
-  }
+  public static final int a = BannerTypeCollections.C;
   
   public ThemeOverdueBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -35,8 +30,8 @@ public class ThemeOverdueBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130850978));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130853142));
     paramBanner.setVisibility(8);
     return paramBanner;
   }
@@ -44,8 +39,8 @@ public class ThemeOverdueBannerProcessor
   public void a(Banner paramBanner, Message paramMessage)
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    if (this.f != null) {
+      localObject = this.f.getAppRuntime();
     } else {
       localObject = null;
     }
@@ -58,7 +53,7 @@ public class ThemeOverdueBannerProcessor
         return;
       }
       paramMessage = (Bundle)paramMessage.obj;
-      paramBanner = (TipsBar)paramBanner.a;
+      paramBanner = (TipsBar)paramBanner.c;
       paramBanner.setVisibility(0);
       paramBanner.setTipsText(paramMessage.getString("expireMsg"));
       int i = paramMessage.getInt("expireType", 4);
@@ -66,19 +61,19 @@ public class ThemeOverdueBannerProcessor
       int j = paramMessage.getInt("authResult");
       int k = paramMessage.getInt("sSimpleOpen");
       ReportController.b(null, "CliOper", "", "", "theme", "0X8007232", 0, 0, String.valueOf(i), "", "", "");
-      ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 15, 0, "", "", "", "");
+      ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 15, 0, "", "", "", "");
       paramBanner.setOnClickListener(new ThemeOverdueBannerProcessor.1(this, k, j, (String)localObject, i));
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ThemeOverdueBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

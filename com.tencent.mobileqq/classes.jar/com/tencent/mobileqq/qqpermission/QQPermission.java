@@ -2,10 +2,8 @@ package com.tencent.mobileqq.qqpermission;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build.VERSION;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import com.tencent.mobileqq.qqpermission.annotation.QQPermissionConfig;
+import com.tencent.mobileqq.qqpermission.business.BusinessConfig;
 import com.tencent.mobileqq.qqpermission.business.QQPermissionBusinessManager;
 import com.tencent.mobileqq.qqpermission.permissionhandler.AndroidPermissionHandler;
 import com.tencent.mobileqq.qqpermission.permissionhandler.BasePermissionHandler;
@@ -17,55 +15,27 @@ import java.util.Iterator;
 
 public class QQPermission
 {
-  protected Activity a;
-  protected Context a;
-  protected Fragment a;
-  QQPermissionConfig jdField_a_of_type_ComTencentMobileqqQqpermissionAnnotationQQPermissionConfig;
-  private AndroidPermissionHandler jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler;
-  private ArrayList<BasePermissionHandler> jdField_a_of_type_JavaUtilArrayList;
+  BusinessConfig a;
+  protected Activity b;
+  protected Fragment c;
+  protected Context d;
+  private ArrayList<BasePermissionHandler> e;
+  private AndroidPermissionHandler f;
   
   QQPermission(Activity paramActivity, Fragment paramFragment)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidxFragmentAppFragment = paramFragment;
-    paramActivity = this.jdField_a_of_type_AndroidAppActivity;
+    this.b = paramActivity;
+    this.c = paramFragment;
+    paramActivity = this.b;
     if (paramActivity != null)
     {
-      this.jdField_a_of_type_AndroidContentContext = paramActivity;
+      this.d = paramActivity;
       return;
     }
-    paramActivity = this.jdField_a_of_type_AndroidxFragmentAppFragment;
+    paramActivity = this.c;
     if (paramActivity != null) {
-      this.jdField_a_of_type_AndroidContentContext = paramActivity.getContext();
+      this.d = paramActivity.getContext();
     }
-  }
-  
-  QQPermission(Fragment paramFragment)
-  {
-    this(null, paramFragment);
-  }
-  
-  private BasePermissionHandler a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      a();
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      BasePermissionHandler localBasePermissionHandler = (BasePermissionHandler)localIterator.next();
-      if (localBasePermissionHandler.a(paramString)) {
-        return localBasePermissionHandler;
-      }
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.add(new NotificationPermissionHandler(this));
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler = new AndroidPermissionHandler(this);
   }
   
   private boolean a(String[] paramArrayOfString)
@@ -75,7 +45,23 @@ public class QQPermission
       QPLog.b("QQPermission", new Object[] { "check: illegal size" });
       return false;
     }
-    return QQPermissionBusinessManager.a(this.jdField_a_of_type_ComTencentMobileqqQqpermissionAnnotationQQPermissionConfig, paramArrayOfString);
+    return QQPermissionBusinessManager.a(this.a, paramArrayOfString);
+  }
+  
+  private BasePermissionHandler b(String paramString)
+  {
+    if (this.e == null) {
+      e();
+    }
+    Iterator localIterator = this.e.iterator();
+    while (localIterator.hasNext())
+    {
+      BasePermissionHandler localBasePermissionHandler = (BasePermissionHandler)localIterator.next();
+      if (localBasePermissionHandler.b(paramString)) {
+        return localBasePermissionHandler;
+      }
+    }
+    return this.f;
   }
   
   private boolean b(String[] paramArrayOfString)
@@ -162,40 +148,43 @@ public class QQPermission
     return bool;
   }
   
-  public Activity a()
+  private void e()
   {
-    return this.jdField_a_of_type_AndroidAppActivity;
+    this.e = new ArrayList();
+    this.e.add(new NotificationPermissionHandler(this));
+    this.f = new AndroidPermissionHandler(this);
   }
   
-  public Context a()
+  public int a(String paramString)
   {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public Fragment a()
-  {
-    return this.jdField_a_of_type_AndroidxFragmentAppFragment;
-  }
-  
-  public QQPermissionConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQqpermissionAnnotationQQPermissionConfig;
-  }
-  
-  public void a(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler != null) && (Build.VERSION.SDK_INT >= 23)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqpermissionPermissionhandlerAndroidPermissionHandler.a(paramInt, paramArrayOfString, paramArrayOfInt);
+    Object localObject = b(paramString);
+    int i;
+    if (localObject != null) {
+      i = ((BasePermissionHandler)localObject).a(paramString);
+    } else {
+      i = -2;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("requestPermission: ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(i);
+    QPLog.a("QQPermission", ((StringBuilder)localObject).toString());
+    return i;
   }
   
-  void a(QQPermissionConfig paramQQPermissionConfig)
+  public BusinessConfig a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqpermissionAnnotationQQPermissionConfig = paramQQPermissionConfig;
-    paramQQPermissionConfig = new StringBuilder();
-    paramQQPermissionConfig.append("setBusiness: ");
-    paramQQPermissionConfig.append(this.jdField_a_of_type_ComTencentMobileqqQqpermissionAnnotationQQPermissionConfig);
-    QPLog.a("QQPermission", new Object[] { paramQQPermissionConfig.toString() });
+    return this.a;
+  }
+  
+  void a(BusinessConfig paramBusinessConfig)
+  {
+    this.a = paramBusinessConfig;
+    paramBusinessConfig = new StringBuilder();
+    paramBusinessConfig.append("setBusiness: ");
+    paramBusinessConfig.append(this.a);
+    QPLog.a("QQPermission", new Object[] { paramBusinessConfig.toString() });
   }
   
   public void a(String[] paramArrayOfString, int paramInt, QQPermission.BasePermissionsListener paramBasePermissionsListener)
@@ -211,12 +200,27 @@ public class QQPermission
       QPLog.b("QQPermission", new Object[] { "requestPermissions: illegal request!" });
       return;
     }
-    new QQPermission.MultiPermissionRequester(this, paramArrayOfString, paramInt, paramBasePermissionsListener).a();
+    new QQPermission.MultiPermissionRequester(this, paramArrayOfString, paramInt, paramBasePermissionsListener).b();
+  }
+  
+  public Activity b()
+  {
+    return this.b;
+  }
+  
+  public Fragment c()
+  {
+    return this.c;
+  }
+  
+  public Context d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.QQPermission
  * JD-Core Version:    0.7.0.1
  */

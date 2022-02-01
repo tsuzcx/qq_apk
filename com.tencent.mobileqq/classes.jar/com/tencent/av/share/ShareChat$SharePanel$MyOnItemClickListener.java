@@ -11,24 +11,24 @@ import com.tencent.qphone.base.util.QLog;
 class ShareChat$SharePanel$MyOnItemClickListener
   implements ShareActionSheet.OnItemClickListener
 {
-  long jdField_a_of_type_Long = 0L;
-  Context jdField_a_of_type_AndroidContentContext;
+  long a = 0L;
+  Context b;
   
   public ShareChat$SharePanel$MyOnItemClickListener(ShareChat.SharePanel paramSharePanel, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    paramShareActionSheet = this.jdField_a_of_type_AndroidContentContext;
+    paramShareActionSheet = this.b;
     if (paramShareActionSheet == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
-      this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+    if (this.c.d != null) {
+      this.c.d.dismiss();
     }
-    if (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel$IHandle == null) {
+    if (this.c.f == null) {
       return;
     }
     int i = paramActionSheetItem.action;
@@ -97,48 +97,48 @@ class ShareChat$SharePanel$MyOnItemClickListener
     else {
       i = 4;
     }
-    this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_Int = i;
+    this.c.b = i;
     if ((i == 2) || (i == 3))
     {
       int j;
-      if (!WXShareHelper.a().a()) {
-        j = 2131720478;
-      } else if (!WXShareHelper.a().b()) {
-        j = 2131720479;
+      if (!WXShareHelper.a().b()) {
+        j = 2131918154;
+      } else if (!WXShareHelper.a().c()) {
+        j = 2131918155;
       } else {
         j = -1;
       }
       if (j != -1)
       {
-        paramActionSheetItem = this.jdField_a_of_type_AndroidContentContext;
-        QQToast.a(paramActionSheetItem, paramActionSheetItem.getString(j), 0).a();
-        paramActionSheetItem = this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel;
-        paramActionSheetItem.a(paramActionSheetItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b, 3);
+        paramActionSheetItem = this.b;
+        QQToast.makeText(paramActionSheetItem, paramActionSheetItem.getString(j), 0).show();
+        paramActionSheetItem = this.c;
+        paramActionSheetItem.a(paramActionSheetItem.b, this.c.c, 3);
         return;
       }
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onItemClick, mChoosedChannel[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c.b);
     localStringBuilder.append("], position[], id[");
     localStringBuilder.append(i);
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], mChoosedLinkType[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b);
+    localStringBuilder.append(this.c.c);
     localStringBuilder.append("]");
     QLog.w("ShareChat", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b == -1)
+    if (this.c.c == -1)
     {
-      this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.b(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
+      this.c.b(this.a, paramShareActionSheet, paramActionSheetItem);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvShareShareChat$SharePanel.a(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
+    this.c.a(this.a, paramShareActionSheet, paramActionSheetItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.MyOnItemClickListener
  * JD-Core Version:    0.7.0.1
  */

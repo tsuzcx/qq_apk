@@ -12,18 +12,18 @@ class StoryPlayerGroupHolder$2
   
   public void a(@NonNull View paramView, int paramInt)
   {
-    if (LiuHaiUtils.a)
+    if (LiuHaiUtils.b)
     {
-      paramInt = StoryPlayerGroupHolder.a(this.a);
-      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+      paramInt = StoryPlayerGroupHolder.b(this.a);
+      paramView = (RelativeLayout.LayoutParams)this.a.j.getLayoutParams();
       paramView.bottomMargin = paramInt;
-      this.a.a.setLayoutParams(paramView);
+      this.a.j.setLayoutParams(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder.2
  * JD-Core Version:    0.7.0.1
  */

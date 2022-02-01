@@ -17,49 +17,26 @@ import com.tencent.widget.XPanelContainer;
 public class PokeAndEmoPanelProvider
   implements PanelProvider<PokeAndEmoPanel>
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private PokeAndEmoPanel jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
+  private BaseChatPie a;
+  private PokeAndEmoPanel b;
   
   public PokeAndEmoPanelProvider(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   public PokeAndEmoPanel a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
+    return this.b;
   }
   
   public PokeAndEmoPanel a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel = ((PokeAndEmoPanel)View.inflate(paramContext, 2131558563, null));
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    paramContext.a(localBaseChatPie, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
-  }
-  
-  public void a()
-  {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-    if (a(localQQAppInterface, localSessionInfo, PokeItemHelper.a(localQQAppInterface)))
-    {
-      ChatActivityFacade.b(localQQAppInterface, BaseApplicationImpl.getContext(), localSessionInfo);
-      return;
-    }
-    PokeItemHelper.d(localQQAppInterface);
-    if (PokePanel.c)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a(23);
-      }
-    }
-    else
-    {
-      a(localQQAppInterface);
-      ChatActivityFacade.b(localQQAppInterface, BaseApplicationImpl.getContext(), localSessionInfo);
-    }
+    this.b = ((PokeAndEmoPanel)View.inflate(paramContext, 2131624120, null));
+    paramContext = this.b;
+    BaseChatPie localBaseChatPie = this.a;
+    paramContext.a(localBaseChatPie, localBaseChatPie.ah);
+    return this.b;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -71,10 +48,33 @@ public class PokeAndEmoPanelProvider
   {
     boolean bool2 = TextUtils.isEmpty(paramString);
     boolean bool1 = false;
-    if ((bool2) || ((PokeItemHelper.b(paramQQAppInterface, 1) == 0) && (PokeItemHelper.b(paramQQAppInterface, 0) == 0)) || (QidianManager.b(paramQQAppInterface, paramSessionInfo.a))) {
+    if ((bool2) || ((PokeItemHelper.b(paramQQAppInterface, 1) == 0) && (PokeItemHelper.b(paramQQAppInterface, 0) == 0)) || (QidianManager.b(paramQQAppInterface, paramSessionInfo.b))) {
       bool1 = true;
     }
     return bool1;
+  }
+  
+  public void b()
+  {
+    QQAppInterface localQQAppInterface = this.a.i();
+    SessionInfo localSessionInfo = this.a.aE();
+    if (a(localQQAppInterface, localSessionInfo, PokeItemHelper.a(localQQAppInterface)))
+    {
+      ChatActivityFacade.b(localQQAppInterface, BaseApplicationImpl.getContext(), localSessionInfo);
+      return;
+    }
+    PokeItemHelper.g(localQQAppInterface);
+    if (PokePanel.f)
+    {
+      if (this.a.bm() != null) {
+        this.a.bm().a(23);
+      }
+    }
+    else
+    {
+      a(localQQAppInterface);
+      ChatActivityFacade.b(localQQAppInterface, BaseApplicationImpl.getContext(), localSessionInfo);
+    }
   }
   
   public int getPanelId()
@@ -94,14 +94,14 @@ public class PokeAndEmoPanelProvider
     PokeAndEmoPanel localPokeAndEmoPanel;
     if (paramInt2 == 23)
     {
-      localPokeAndEmoPanel = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
+      localPokeAndEmoPanel = this.b;
       if (localPokeAndEmoPanel != null) {
         localPokeAndEmoPanel.a();
       }
     }
     if (paramInt1 == 23)
     {
-      localPokeAndEmoPanel = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPokeAndEmoPanel;
+      localPokeAndEmoPanel = this.b;
       if (localPokeAndEmoPanel != null) {
         localPokeAndEmoPanel.c();
       }
@@ -110,24 +110,24 @@ public class PokeAndEmoPanelProvider
   
   public void onPanelIconClick(XPanelContainer paramXPanelContainer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setShowRed(23, false);
-    PokeItemHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-    a();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "CliOper", "", "", "0X8007F20", "0X8007F20", 0, 0, "", "", "", "");
+    this.a.W.setShowRed(23, false);
+    PokeItemHelper.b(this.a.d, true);
+    b();
+    ReportController.b(this.a.i(), "CliOper", "", "", "0X8007F20", "0X8007F20", 0, 0, "", "", "", "");
   }
   
   public void onPanelIconClickBeforeCreate(int paramInt) {}
   
   public void postOnPanelChanged(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 == 23) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setSelected(8);
+    if ((paramInt2 == 23) && (this.a.W != null)) {
+      this.a.W.setSelected(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanelProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ import java.util.ArrayList;
 class ActionListActivity$GridAdapter
   extends BaseAdapter
 {
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<Integer> b;
   
   public ActionListActivity$GridAdapter(ArrayList<Integer> paramArrayList)
   {
     Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.b = localObject;
   }
   
   public int getCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList == null) {
       return 0;
     }
@@ -33,7 +33,7 @@ class ActionListActivity$GridAdapter
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -46,37 +46,37 @@ class ActionListActivity$GridAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2131562875, paramViewGroup, false);
+      localView = this.a.getLayoutInflater().inflate(2131629327, paramViewGroup, false);
       paramView = new ActionListActivity.ActionViewHolder(null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131378021));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378022));
+      paramView.a = ((ImageView)localView.findViewById(2131446519));
+      paramView.b = ((TextView)localView.findViewById(2131446520));
       localView.setTag(paramView);
     }
     paramView = (ActionListActivity.ActionViewHolder)localView.getTag();
-    ActionInfo localActionInfo = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
-    if ((localActionInfo != null) && (paramView.jdField_a_of_type_Int != localActionInfo.jdField_a_of_type_Int))
+    ActionInfo localActionInfo = ActionListActivity.a(this.a).a(((Integer)this.b.get(paramInt)).intValue());
+    if ((localActionInfo != null) && (paramView.c != localActionInfo.b))
     {
-      paramView.jdField_a_of_type_Int = localActionInfo.jdField_a_of_type_Int;
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(localActionInfo.jdField_a_of_type_Int, 201), false, false));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localActionInfo.c);
-      if (localActionInfo.b == 1)
+      paramView.c = localActionInfo.b;
+      paramView.a.setImageDrawable(new StatableBitmapDrawable(this.a.getResources(), ActionListActivity.a(this.a).a(localActionInfo.b, 201), false, false));
+      paramView.b.setText(localActionInfo.e);
+      if (localActionInfo.g == 1)
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        paramView.b.setCompoundDrawables(null, null, null, null);
       }
       else
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130839270), null);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+        paramView.b.setCompoundDrawablesWithIntrinsicBounds(null, null, this.a.getResources().getDrawable(2130839446), null);
+        paramView.b.setCompoundDrawablePadding(10);
       }
     }
-    localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
+    localView.setOnClickListener(this.a);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ActionListActivity.GridAdapter
  * JD-Core Version:    0.7.0.1
  */

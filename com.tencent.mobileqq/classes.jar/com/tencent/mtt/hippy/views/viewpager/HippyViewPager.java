@@ -22,11 +22,10 @@ public class HippyViewPager
   private Promise mCallBackPromise;
   private boolean mFirstUpdateChild = true;
   private NativeGestureDispatcher mGestureDispatcher;
-  private Handler mHandler = new Handler(Looper.getMainLooper());
+  private final Handler mHandler = new Handler(Looper.getMainLooper());
   private final Runnable mMeasureAndLayout = new HippyViewPager.1(this);
-  private String mOverflow;
   private ViewPagerPageChangeListener mPageListener;
-  private boolean mReNotifyOnAttach = false;
+  private final boolean mReNotifyOnAttach = false;
   
   public HippyViewPager(Context paramContext)
   {
@@ -108,7 +107,7 @@ public class HippyViewPager
     localStringBuilder.append(", repopulate=");
     localStringBuilder.append(this.mNeedRepopulate);
     localStringBuilder.append(", renotifyOnAttach=");
-    localStringBuilder.append(this.mReNotifyOnAttach);
+    localStringBuilder.append(false);
     LogUtils.d("HippyViewPager", localStringBuilder.toString());
   }
   
@@ -123,7 +122,7 @@ public class HippyViewPager
     localStringBuilder.append(", repopulate=");
     localStringBuilder.append(this.mNeedRepopulate);
     localStringBuilder.append(", renotifyOnAttach=");
-    localStringBuilder.append(this.mReNotifyOnAttach);
+    localStringBuilder.append(false);
     LogUtils.d("HippyViewPager", localStringBuilder.toString());
   }
   
@@ -186,10 +185,8 @@ public class HippyViewPager
   
   public void setOverflow(String paramString)
   {
-    this.mOverflow = paramString;
-    if (!TextUtils.isEmpty(this.mOverflow))
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString = this.mOverflow;
       int i = -1;
       int j = paramString.hashCode();
       if (j != -1217487446)
@@ -257,7 +254,7 @@ public class HippyViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.HippyViewPager
  * JD-Core Version:    0.7.0.1
  */

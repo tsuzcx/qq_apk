@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.InputMethodRelativeLayout android:id="@id/root_layout" android:background="@drawable/b70" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/e3e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/i7j" android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_above="@id/e3e">
-        <View android:id="@id/ix5" android:layout_width="0.0dip" android:layout_height="0.0dip" />
-        <ImageButton android:id="@id/dfd" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/nd" android:layout_marginRight="@dimen/nd" android:src="@drawable/d0a" android:layout_centerVertical="true" android:contentDescription="@string/dty" />
-        <LinearLayout android:gravity="bottom|center|left" android:orientation="horizontal" android:background="@drawable/h21" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
-            <EditText android:textSize="16.0sp" android:textColor="@color/skin_input" android:gravity="center|left|top" android:id="@id/bys" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="3" android:shadowColor="@color/dn" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_weight="1.0" android:inputType="textMultiLine" android:contentDescription="@string/psh" android:textSelectHandle="@drawable/h57" />
-        </LinearLayout>
-        <Button android:enabled="true" android:textSize="14.0sp" android:textColor="@color/skin_aio_send_button" android:layout_gravity="bottom" android:id="@id/send_btn" android:background="@drawable/dj" android:layout_width="57.0dip" android:layout_height="@dimen/ad9" android:layout_marginLeft="7.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="4.0dip" android:text="@string/a1p" />
-    </com.tencent.mobileqq.activity.aio.InputLinearLayout>
-    <View android:id="@id/jvv" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/i7j" />
-    <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignBottom="@id/i7j" />
-    <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignTop="@id/i7j" />
-</com.tencent.mobileqq.widget.InputMethodRelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/nl0" android:background="@drawable/8z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="新人推荐" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/nl1" android:background="@drawable/8z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="新人推荐" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/nl2" android:background="@drawable/8z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="新人推荐" />
+</LinearLayout>

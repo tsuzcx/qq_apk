@@ -22,7 +22,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$3
         ((StringBuilder)localObject).append(paramPathResult);
         ((StringBuilder)localObject).append(File.separator);
         paramPathResult = ((StringBuilder)localObject).toString();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo;
+        localObject = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramPathResult);
         localStringBuilder.append("anim_bg");
@@ -31,7 +31,7 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$3
         {
           paramPathResult = new StringBuilder();
           paramPathResult.append("TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=");
-          paramPathResult.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo.specailBackgroundAnimInfo);
+          paramPathResult.append(this.a.specailBackgroundAnimInfo);
           QLog.d("CustomizeStrategyFactory", 2, paramPathResult.toString());
         }
       }
@@ -40,12 +40,12 @@ class CustomizeStrategyFactory$SkinRedPacketStrategy$3
         paramPathResult.printStackTrace();
       }
     }
-    CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfo);
+    CustomizeStrategyFactory.d().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.SkinRedPacketStrategy.3
  * JD-Core Version:    0.7.0.1
  */

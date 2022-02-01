@@ -7,15 +7,15 @@ import org.json.JSONObject;
 class AVPreloadDispatcher$DispatcherResponse
   implements HttpResponse
 {
-  private AVPreloadDispatcher.Result jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher$Result = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private AVPreloadDispatcher.Result b = null;
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
     if (paramJSONObject == null)
     {
       AVPreloadLog.b("StreamDispatcher", "dispatcher onResponse is null!", new Object[0]);
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return;
     }
     Object localObject = new StringBuilder();
@@ -26,7 +26,7 @@ class AVPreloadDispatcher$DispatcherResponse
     {
       if (paramJSONObject.getInt("error") != 0)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.a = true;
         return;
       }
       paramJSONObject = paramJSONObject.getJSONObject("data");
@@ -36,12 +36,12 @@ class AVPreloadDispatcher$DispatcherResponse
       while (paramInt < paramJSONObject.length())
       {
         localObject = paramJSONObject.getJSONObject(paramInt);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher$Result = new AVPreloadDispatcher.Result();
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher$Result.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("stream");
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher$Result.b = ((JSONObject)localObject).getJSONArray("sug").getString(0);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher$Result.c = ((JSONObject)localObject).getJSONArray("bak").getString(0);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher$Result.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher$Result.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.b = new AVPreloadDispatcher.Result();
+        this.b.a = ((JSONObject)localObject).getString("stream");
+        this.b.b = ((JSONObject)localObject).getJSONArray("sug").getString(0);
+        this.b.c = ((JSONObject)localObject).getJSONArray("bak").getString(0);
+        this.b.e = i;
+        this.b.d = System.currentTimeMillis();
         paramInt += 1;
       }
       return;
@@ -49,13 +49,13 @@ class AVPreloadDispatcher$DispatcherResponse
     catch (Exception paramJSONObject)
     {
       paramJSONObject.printStackTrace();
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadDispatcher.DispatcherResponse
  * JD-Core Version:    0.7.0.1
  */

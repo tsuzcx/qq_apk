@@ -85,10 +85,10 @@ public class NewFriendPushUtil
     ((SubMsgType0x27.MsgBody)localObject2).msg_client_report.set(localClientReport);
     localPushPlatform.uint32_forward_type.set(1);
     localPushPlatform.uint64_from_uin.set(paramLong2);
-    paramMsg = String.format(HardCodeUtil.a(2131707522), new Object[] { localObject1 });
+    paramMsg = String.format(HardCodeUtil.a(2131905337), new Object[] { localObject1 });
     localPushPlatform.str_desc.set(paramMsg);
     localPushPlatform.str_target_url.set(Base64.encodeToString("newfrd_add".getBytes(), 0));
-    localPushPlatform.str_title.set(HardCodeUtil.a(2131707523));
+    localPushPlatform.str_title.set(HardCodeUtil.a(2131905338));
     paramMsg = new pushsvrExt.ExtData();
     paramMsg.uint64_to_uin.set(paramLong2);
     paramMsg.str_remark.set(ByteStringMicro.copyFromUtf8((String)localObject1));
@@ -99,7 +99,7 @@ public class NewFriendPushUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendPushUtil
  * JD-Core Version:    0.7.0.1
  */

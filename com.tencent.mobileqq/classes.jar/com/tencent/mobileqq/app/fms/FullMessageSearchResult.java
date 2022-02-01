@@ -6,18 +6,13 @@ import java.util.List;
 
 public class FullMessageSearchResult
 {
-  public int a;
   public List<FullMessageSearchResult.SearchResultItem> a;
-  
-  public FullMessageSearchResult()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public int b = 0;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("FullMessageSearchResult:");
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     if (localObject == null)
     {
       localStringBuilder.append("null");
@@ -50,14 +45,14 @@ public class FullMessageSearchResult
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" searchFinFlag=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.b);
     localStringBuilder.append(((StringBuilder)localObject).toString());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.fms.FullMessageSearchResult
  * JD-Core Version:    0.7.0.1
  */

@@ -13,20 +13,20 @@ public class VideoAdInfo$NegFeedback
 {
   public static final Parcelable.Creator<NegFeedback> CREATOR = new VideoAdInfo.NegFeedback.1();
   public long a;
-  public String a;
+  public String b;
   
   public VideoAdInfo$NegFeedback() {}
   
   protected VideoAdInfo$NegFeedback(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readString();
   }
   
   public VideoAdInfo$NegFeedback(oidb_0x6cf.NegFeedback paramNegFeedback)
   {
-    this.jdField_a_of_type_Long = paramNegFeedback.uint64_type_id.get();
-    this.jdField_a_of_type_JavaLangString = paramNegFeedback.bytes_type_desc.get().toStringUtf8();
+    this.a = paramNegFeedback.uint64_type_id.get();
+    this.b = paramNegFeedback.bytes_type_desc.get().toStringUtf8();
   }
   
   public int describeContents()
@@ -36,13 +36,13 @@ public class VideoAdInfo$NegFeedback
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeString(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo.NegFeedback
  * JD-Core Version:    0.7.0.1
  */

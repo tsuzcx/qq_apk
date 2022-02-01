@@ -12,31 +12,31 @@ import java.util.List;
 public class ExternalDirFileOperationMonitor
   implements IFileMonitor
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  String jdField_a_of_type_JavaLangString;
+  Context a;
+  String b;
   
   public ExternalDirFileOperationMonitor(Context paramContext)
   {
     File localFile = paramContext.getExternalCacheDir();
     if (localFile != null) {
-      this.jdField_a_of_type_JavaLangString = localFile.getParent();
+      this.b = localFile.getParent();
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   void a(String paramString1, String paramString2)
   {
-    if (!ExternalDirOperationConfig.a(this.jdField_a_of_type_AndroidContentContext)) {
+    if (!ExternalDirOperationConfig.a(this.a)) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.b != null)
     {
       if (TextUtils.isEmpty(paramString1)) {
         return;
       }
-      if (paramString1.startsWith(ExternalDirOperationConfig.jdField_a_of_type_JavaLangString))
+      if (paramString1.startsWith(ExternalDirOperationConfig.a))
       {
-        if (paramString1.startsWith(this.jdField_a_of_type_JavaLangString)) {
+        if (paramString1.startsWith(this.b)) {
           return;
         }
         if (paramString2 == null) {
@@ -45,13 +45,13 @@ public class ExternalDirFileOperationMonitor
           paramString2 = String.format("external file rename from %s to %s", new Object[] { paramString1, paramString2 });
         }
         QLog.e("ExternalDirFileOperationMonitor", 1, paramString2);
-        Object localObject = ExternalDirOperationConfigProcessor.a().jdField_a_of_type_JavaUtilList.iterator();
+        Object localObject = ExternalDirOperationConfigProcessor.a().c.iterator();
         while (((Iterator)localObject).hasNext()) {
           if (paramString1.startsWith((String)((Iterator)localObject).next())) {
             return;
           }
         }
-        int i = ExternalDirOperationConfig.jdField_a_of_type_JavaLangString.length();
+        int i = ExternalDirOperationConfig.a.length();
         int j = paramString1.lastIndexOf(File.separator);
         if (i >= j) {
           paramString1 = "";
@@ -78,7 +78,7 @@ public class ExternalDirFileOperationMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.file.ExternalDirFileOperationMonitor
  * JD-Core Version:    0.7.0.1
  */

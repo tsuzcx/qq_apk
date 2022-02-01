@@ -32,70 +32,34 @@ import org.json.JSONObject;
 
 public class DynamicChannelHeaderModule
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ConcurrentHashMap<Integer, List<HeaderDataModel>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-  private ConcurrentHashMap<Integer, List<ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig>> b = new ConcurrentHashMap();
+  private ExecutorService a = MonitorTimeExecutor.a();
+  private Handler b;
+  private ConcurrentHashMap<Integer, List<HeaderDataModel>> c = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, List<ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig>> d = new ConcurrentHashMap();
   
   public DynamicChannelHeaderModule(Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.b = paramHandler;
   }
   
   public static DynamicChannelHeaderModule a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.b();
     if (localQQAppInterface != null) {
-      return ((ReadInJoyLogicManager)localQQAppInterface.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().a();
+      return ((ReadInJoyLogicManager)localQQAppInterface.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().g();
     }
     return null;
-  }
-  
-  private JSONObject a(int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      Object localObject1 = ReadInJoyUtils.b();
-      boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-      if (bool) {
-        localObject1 = "";
-      }
-      localJSONObject.put("imei", localObject1);
-      localJSONObject.put("platform", "Android");
-      localJSONObject.put("qqVersionID", "8.7.0");
-      Object localObject2 = (QQAppInterface)ReadInJoyUtils.a();
-      localObject1 = ((QQAppInterface)localObject2).getAccount();
-      localObject2 = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
-      localJSONObject.put("uin", localObject1);
-      if (localObject2 == null) {
-        localObject1 = "";
-      } else {
-        localObject1 = ReadInJoyWebDataManager.a((String)localObject2);
-      }
-      localJSONObject.put("token", localObject1);
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("readinjoy_dynamic_channel_header_cookie_");
-      ((StringBuilder)localObject1).append(paramInt);
-      localJSONObject.put("cookieString", RIJSPUtils.a(((StringBuilder)localObject1).toString(), ""));
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("DynamicChannelHeaderModule", 2, "makeRequestParams, e = ", localJSONException);
-    }
-    QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "makeRequestParams params = ", localJSONObject });
-    return localJSONObject;
   }
   
   private JSONObject a(JSONObject paramJSONObject, int paramInt, ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig paramOfflineHeaderConfig)
   {
     long l = System.currentTimeMillis();
     QLog.d("DynamicChannelHeaderModule", 1, "preProcessReqData, begin.");
-    Object localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramInt));
+    Object localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.d(paramInt));
     Object localObject1 = paramJSONObject;
     if (localObject2 != null)
     {
-      localObject2 = ((TemplateFactory)localObject2).a();
+      localObject2 = ((TemplateFactory)localObject2).f();
       localObject1 = paramJSONObject;
       if (localObject2 != null)
       {
@@ -124,8 +88,8 @@ public class DynamicChannelHeaderModule
   
   private void a(int paramInt1, int paramInt2, ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig paramOfflineHeaderConfig)
   {
-    JSONObject localJSONObject = a(a(paramInt1), paramInt1, paramOfflineHeaderConfig);
-    Bundle localBundle = JSONUtils.a(localJSONObject);
+    JSONObject localJSONObject = a(d(paramInt1), paramInt1, paramOfflineHeaderConfig);
+    Bundle localBundle = JSONUtils.b(localJSONObject);
     HashMap localHashMap = new HashMap();
     localHashMap.put("BUNDLE", localBundle);
     localHashMap.put("CONTEXT", BaseApplicationImpl.getApplication());
@@ -139,12 +103,12 @@ public class DynamicChannelHeaderModule
     if (paramHeaderDataModel == null) {
       return;
     }
-    Object localObject2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    Object localObject2 = (List)this.c.get(Integer.valueOf(paramInt));
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject1);
+      this.c.put(Integer.valueOf(paramInt), localObject1);
     }
     if (((List)localObject1).size() > 0)
     {
@@ -152,7 +116,7 @@ public class DynamicChannelHeaderModule
       while (paramInt < ((List)localObject1).size())
       {
         localObject2 = (HeaderDataModel)((List)localObject1).get(paramInt);
-        if (((HeaderDataModel)localObject2).jdField_a_of_type_Int > paramHeaderDataModel.jdField_a_of_type_Int)
+        if (((HeaderDataModel)localObject2).c > paramHeaderDataModel.c)
         {
           ((List)localObject1).add(paramInt, paramHeaderDataModel);
           QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "putHeaderDataModel, i = ", Integer.valueOf(paramInt), "dataModel = ", localObject2 });
@@ -227,9 +191,9 @@ public class DynamicChannelHeaderModule
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             localObject2 = new HeaderDataModel();
-            ((HeaderDataModel)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+            ((HeaderDataModel)localObject2).a = ((String)localObject1);
             ((HeaderDataModel)localObject2).b = paramBundle.toString();
-            ((HeaderDataModel)localObject2).jdField_a_of_type_Int = i;
+            ((HeaderDataModel)localObject2).c = i;
             paramOfflineHeaderConfig.add(localObject2);
             QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "handleRequest [", Integer.valueOf(j), "] = ", localObject2 });
           }
@@ -239,7 +203,7 @@ public class DynamicChannelHeaderModule
       if (paramOfflineHeaderConfig.size() > 0)
       {
         b(paramInt, paramOfflineHeaderConfig);
-        a(paramInt, true, a(paramInt), i);
+        a(paramInt, true, c(paramInt), i);
       }
     }
     else
@@ -251,21 +215,15 @@ public class DynamicChannelHeaderModule
   
   private void a(int paramInt1, boolean paramBoolean, List<HeaderDataModel> paramList, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new DynamicChannelHeaderModule.3(this, paramInt1, paramBoolean, paramList, paramInt2));
-  }
-  
-  private boolean a()
-  {
-    ExecutorService localExecutorService = this.jdField_a_of_type_JavaUtilConcurrentExecutorService;
-    return (localExecutorService != null) && (!localExecutorService.isShutdown());
+    this.b.post(new DynamicChannelHeaderModule.3(this, paramInt1, paramBoolean, paramList, paramInt2));
   }
   
   private JSONObject b(JSONObject paramJSONObject, int paramInt, ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig paramOfflineHeaderConfig)
   {
-    Object localObject = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramInt));
+    Object localObject = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.d(paramInt));
     if (localObject != null)
     {
-      localObject = ((TemplateFactory)localObject).a();
+      localObject = ((TemplateFactory)localObject).f();
       if (localObject != null)
       {
         localObject = ((DynamicChannelConfig)localObject).a("dp_environment_id");
@@ -301,29 +259,51 @@ public class DynamicChannelHeaderModule
     }
   }
   
-  public List<HeaderDataModel> a(int paramInt)
+  private boolean c()
   {
-    ArrayList localArrayList = new ArrayList();
-    List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if ((localList != null) && (localList.size() > 0)) {
-      localArrayList.addAll(localList);
-    }
-    return localArrayList;
+    ExecutorService localExecutorService = this.a;
+    return (localExecutorService != null) && (!localExecutorService.isShutdown());
   }
   
-  public void a()
+  private JSONObject d(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.b.clear();
-    ExecutorService localExecutorService = this.jdField_a_of_type_JavaUtilConcurrentExecutorService;
-    if (localExecutorService != null) {
-      localExecutorService.shutdownNow();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      Object localObject1 = ReadInJoyUtils.c();
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+      if (bool) {
+        localObject1 = "";
+      }
+      localJSONObject.put("imei", localObject1);
+      localJSONObject.put("platform", "Android");
+      localJSONObject.put("qqVersionID", "8.8.17");
+      Object localObject2 = (QQAppInterface)ReadInJoyUtils.b();
+      localObject1 = ((QQAppInterface)localObject2).getAccount();
+      localObject2 = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
+      localJSONObject.put("uin", localObject1);
+      if (localObject2 == null) {
+        localObject1 = "";
+      } else {
+        localObject1 = ReadInJoyWebDataManager.a((String)localObject2);
+      }
+      localJSONObject.put("token", localObject1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("readinjoy_dynamic_channel_header_cookie_");
+      ((StringBuilder)localObject1).append(paramInt);
+      localJSONObject.put("cookieString", RIJSPUtils.b(((StringBuilder)localObject1).toString(), ""));
     }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("DynamicChannelHeaderModule", 2, "makeRequestParams, e = ", localJSONException);
+    }
+    QLog.d("DynamicChannelHeaderModule", 2, new Object[] { "makeRequestParams params = ", localJSONObject });
+    return localJSONObject;
   }
   
   public void a(int paramInt)
   {
-    List localList = (List)this.b.get(Integer.valueOf(paramInt));
+    List localList = (List)this.d.get(Integer.valueOf(paramInt));
     if ((localList != null) && (localList.size() > 0))
     {
       ArrayList localArrayList = new ArrayList();
@@ -331,17 +311,17 @@ public class DynamicChannelHeaderModule
       while (i < localList.size())
       {
         ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig localOfflineHeaderConfig = (ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig)localList.get(i);
-        if ((!TextUtils.isEmpty(localOfflineHeaderConfig.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localOfflineHeaderConfig.b)))
+        if ((!TextUtils.isEmpty(localOfflineHeaderConfig.a)) && (!TextUtils.isEmpty(localOfflineHeaderConfig.b)))
         {
           HeaderDataModel localHeaderDataModel = new HeaderDataModel();
-          localHeaderDataModel.jdField_a_of_type_JavaLangString = localOfflineHeaderConfig.jdField_a_of_type_JavaLangString;
+          localHeaderDataModel.a = localOfflineHeaderConfig.a;
           localHeaderDataModel.b = localOfflineHeaderConfig.b;
-          localHeaderDataModel.jdField_a_of_type_Int = i;
+          localHeaderDataModel.c = i;
           localArrayList.add(localHeaderDataModel);
         }
         i += 1;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localArrayList);
+      this.c.put(Integer.valueOf(paramInt), localArrayList);
     }
   }
   
@@ -352,30 +332,50 @@ public class DynamicChannelHeaderModule
       if (paramList.isEmpty()) {
         return;
       }
-      this.b.put(Integer.valueOf(paramInt), paramList);
+      this.d.put(Integer.valueOf(paramInt), paramList);
+    }
+  }
+  
+  public void b()
+  {
+    this.c.clear();
+    this.d.clear();
+    ExecutorService localExecutorService = this.a;
+    if (localExecutorService != null) {
+      localExecutorService.shutdownNow();
     }
   }
   
   public void b(int paramInt)
   {
-    List localList = (List)this.b.get(Integer.valueOf(paramInt));
+    List localList = (List)this.d.get(Integer.valueOf(paramInt));
     if ((localList != null) && (localList.size() > 0))
     {
       int i = 0;
       while (i < localList.size())
       {
         ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig localOfflineHeaderConfig = (ReadInJoyDynamicChannelBaseFragment.OfflineHeaderConfig)localList.get(i);
-        if ((!TextUtils.isEmpty(localOfflineHeaderConfig.c)) && (a())) {
-          this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new DynamicChannelHeaderModule.1(this, paramInt, i, localOfflineHeaderConfig));
+        if ((!TextUtils.isEmpty(localOfflineHeaderConfig.c)) && (c())) {
+          this.a.execute(new DynamicChannelHeaderModule.1(this, paramInt, i, localOfflineHeaderConfig));
         }
         i += 1;
       }
     }
   }
+  
+  public List<HeaderDataModel> c(int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    List localList = (List)this.c.get(Integer.valueOf(paramInt));
+    if ((localList != null) && (localList.size() > 0)) {
+      localArrayList.addAll(localList);
+    }
+    return localArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.DynamicChannelHeaderModule
  * JD-Core Version:    0.7.0.1
  */

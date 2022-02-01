@@ -36,38 +36,32 @@ import java.util.List;
 public class ARCamera
   implements Camera.AutoFocusCallback
 {
-  private static final int jdField_a_of_type_Int = ScreenUtil.SCREEN_WIDTH * 3 / 4;
-  private static long jdField_a_of_type_Long = -1L;
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static final int jdField_b_of_type_Int = ScreenUtil.SCREEN_WIDTH * 3 / 4;
-  private static int jdField_c_of_type_Int;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private Camera jdField_a_of_type_AndroidHardwareCamera;
-  SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener = new ARCamera.2(this);
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager = (SensorManager)BaseApplicationImpl.getContext().getSystemService("sensor");
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private ARCamera.AutoFocusListener jdField_a_of_type_ComTencentMobileqqArArengineARCamera$AutoFocusListener;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
+  private static final int b = ScreenUtil.SCREEN_WIDTH * 3 / 4;
+  private static final int c = ScreenUtil.SCREEN_WIDTH * 3 / 4;
+  private static final Object d = new Object();
+  private static int e = -3;
+  private static long f = -1L;
+  SensorEventListener a = new ARCamera.2(this);
+  private Camera g;
+  private Handler h = null;
   private int i;
   private int j;
   private int k;
   private int l;
-  private int m = 0;
-  private int n = 0;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_c_of_type_Int = -3;
-  }
+  private int m;
+  private boolean n = false;
+  private Matrix o = new Matrix();
+  private int p;
+  private int q;
+  private boolean r;
+  private boolean s;
+  private int t;
+  private int u;
+  private int v = 0;
+  private int w = 0;
+  private SensorManager x = (SensorManager)BaseApplicationImpl.getContext().getSystemService("sensor");
+  private ARCamera.AutoFocusListener y;
+  private boolean z = false;
   
   private int a(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -87,20 +81,20 @@ public class ARCamera
     paramInt1 = a(paramInt1 - i1, 0, paramInt3 - paramInt5);
     paramInt2 = a(paramInt2 - i1, 0, paramInt4 - paramInt5);
     RectF localRectF = new RectF(paramInt1, paramInt2, paramInt1 + paramInt5, paramInt2 + paramInt5);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(localRectF);
+    this.o.mapRect(localRectF);
     return new Rect(Math.round(localRectF.left), Math.round(localRectF.top), Math.round(localRectF.right), Math.round(localRectF.bottom));
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if ((this.jdField_a_of_type_AndroidHardwareCamera != null) && (b()))
+    if ((this.g != null) && (n()))
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.n) {
         return;
       }
       try
       {
-        Camera.Parameters localParameters1 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        Camera.Parameters localParameters1 = this.g.getParameters();
         if (!localParameters1.getSupportedFocusModes().contains("auto")) {
           return;
         }
@@ -120,10 +114,10 @@ public class ARCamera
           ((List)localObject).add(new Camera.Area(localRect, 1000));
           localParameters1.setMeteringAreas((List)localObject);
         }
-        this.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
-        this.jdField_a_of_type_AndroidHardwareCamera.setParameters(localParameters1);
-        this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(this);
-        this.jdField_a_of_type_Boolean = true;
+        this.g.cancelAutoFocus();
+        this.g.setParameters(localParameters1);
+        this.g.autoFocus(this);
+        this.n = true;
         return;
       }
       catch (Exception localException1)
@@ -131,10 +125,10 @@ public class ARCamera
         QLog.i("AREngine_ARCamera", 1, "focusOnArea fail.", localException1);
         try
         {
-          this.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
-          Camera.Parameters localParameters2 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+          this.g.cancelAutoFocus();
+          Camera.Parameters localParameters2 = this.g.getParameters();
           CameraParameters.a(localParameters2);
-          this.jdField_a_of_type_AndroidHardwareCamera.setParameters(localParameters2);
+          this.g.setParameters(localParameters2);
           return;
         }
         catch (Exception localException2)
@@ -180,16 +174,16 @@ public class ARCamera
     {
       try
       {
-        if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+        if (this.g != null)
         {
           bool = true;
-          this.jdField_b_of_type_Boolean = true;
+          this.r = true;
           if (paramInt2 > paramInt1)
           {
-            this.jdField_c_of_type_Boolean = bool;
-            this.k = paramInt1;
-            this.l = paramInt2;
-            g();
+            this.s = bool;
+            this.t = paramInt1;
+            this.u = paramInt2;
+            p();
           }
         }
         else
@@ -205,33 +199,33 @@ public class ARCamera
     }
   }
   
-  private boolean b()
+  private boolean n()
   {
     return ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProduct(CameraCompatibleConstants.a) ^ true;
   }
   
-  private void f()
+  private void o()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARCamera", 2, String.format("revertZoom mZooming=%s", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
+      QLog.d("AREngine_ARCamera", 2, String.format("revertZoom mZooming=%s", new Object[] { Boolean.valueOf(this.r) }));
     }
     try
     {
-      if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+      if (this.g != null)
       {
-        this.jdField_b_of_type_Boolean = false;
-        if (this.jdField_a_of_type_AndroidOsHandler != null)
+        this.r = false;
+        if (this.h != null)
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(102);
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+          this.h.removeMessages(102);
+          this.h.removeMessages(101);
         }
-        Camera.Parameters localParameters = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        Camera.Parameters localParameters = this.g.getParameters();
         if (localParameters.isZoomSupported())
         {
           int i1 = localParameters.getZoom();
-          if (i1 != this.i)
+          if (i1 != this.p)
           {
-            b(i1, this.i);
+            b(i1, this.p);
             ReportController.b(null, "dc00898", "", "", "0X80085B0", "0X80085B0", 0, 0, "", "", "", "");
           }
         }
@@ -241,38 +235,38 @@ public class ARCamera
     catch (Exception localException) {}
   }
   
-  private void g()
+  private void p()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+      if (this.g != null)
       {
-        int i1 = this.k;
-        int i2 = this.l;
+        int i1 = this.t;
+        int i2 = this.u;
         if (i1 != i2)
         {
           try
           {
-            if (this.jdField_c_of_type_Boolean)
+            if (this.s)
             {
-              this.k += 5;
-              this.k = Math.min(this.k, this.l);
+              this.t += 5;
+              this.t = Math.min(this.t, this.u);
             }
             else
             {
-              this.k -= 5;
-              this.k = Math.max(this.k, this.l);
+              this.t -= 5;
+              this.t = Math.max(this.t, this.u);
             }
-            this.k = Math.min(this.k, this.j);
-            this.k = Math.max(this.k, this.i);
-            Camera.Parameters localParameters = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-            localParameters.setZoom(this.k);
-            this.jdField_a_of_type_AndroidHardwareCamera.setParameters(localParameters);
-            if (this.jdField_a_of_type_AndroidOsHandler == null) {
+            this.t = Math.min(this.t, this.q);
+            this.t = Math.max(this.t, this.p);
+            Camera.Parameters localParameters = this.g.getParameters();
+            localParameters.setZoom(this.t);
+            this.g.setParameters(localParameters);
+            if (this.h == null) {
               break label189;
             }
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(102);
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(102, 20L);
+            this.h.removeMessages(102);
+            this.h.sendEmptyMessageDelayed(102, 20L);
             return;
           }
           catch (Exception localException1)
@@ -285,7 +279,7 @@ public class ARCamera
         }
         else
         {
-          this.jdField_b_of_type_Boolean = false;
+          this.r = false;
         }
       }
       label189:
@@ -296,25 +290,25 @@ public class ARCamera
   
   public int a()
   {
-    return this.jdField_d_of_type_Int;
+    return this.i;
   }
   
   public int a(int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      long l1 = jdField_a_of_type_Long;
+      long l1 = f;
       int i2 = 0;
       int i1 = i2;
       if (l1 != -1L) {
-        if (Thread.currentThread().getId() == jdField_a_of_type_Long)
+        if (Thread.currentThread().getId() == f)
         {
           i1 = i2;
         }
         else
         {
           i1 = i2;
-          if (jdField_c_of_type_Int == 0) {
+          if (e == 0) {
             i1 = 1;
           }
         }
@@ -330,13 +324,13 @@ public class ARCamera
   {
     ??? = new StringBuilder();
     ((StringBuilder)???).append("openCamera mCamera=");
-    ((StringBuilder)???).append(this.jdField_a_of_type_AndroidHardwareCamera);
+    ((StringBuilder)???).append(this.g);
     QLog.i("AREngine_ARCamera", 1, ((StringBuilder)???).toString());
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (this.g != null) {
+      synchronized (d)
       {
-        jdField_c_of_type_Int = 0;
-        jdField_a_of_type_Long = Thread.currentThread().getId();
+        e = 0;
+        f = Thread.currentThread().getId();
         return 0;
       }
     }
@@ -363,7 +357,7 @@ public class ARCamera
             i2 = b(paramInt);
             try
             {
-              this.jdField_a_of_type_AndroidHardwareCamera = CameraUtil.a(i2, 1);
+              this.g = CameraUtil.a(i2, 1);
             }
             catch (Exception localException1)
             {
@@ -374,37 +368,37 @@ public class ARCamera
               QLog.i("AREngine_ARCamera", 1, localStringBuilder.toString(), localException1);
             }
             i1 = i2;
-            if (this.jdField_a_of_type_AndroidHardwareCamera == null)
+            if (this.g == null)
             {
               i1 = i2;
               if (i2 != 1)
               {
-                this.jdField_a_of_type_AndroidHardwareCamera = CameraUtil.a(1, 1);
+                this.g = CameraUtil.a(1, 1);
                 i1 = 1;
               }
             }
-            if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+            if (this.g != null)
             {
               ??? = new Camera.CameraInfo();
               Camera.getCameraInfo(i1, (Camera.CameraInfo)???);
-              this.m = ((Camera.CameraInfo)???).orientation;
+              this.v = ((Camera.CameraInfo)???).orientation;
             }
           }
         }
         else {
-          this.jdField_a_of_type_AndroidHardwareCamera = CameraUtil.a(-1, 1);
+          this.g = CameraUtil.a(-1, 1);
         }
-        if (this.jdField_a_of_type_AndroidHardwareCamera == null)
+        if (this.g == null)
         {
           QLog.i("AREngine_ARCamera", 1, "openCamera fail. mCamera is null.");
-          synchronized (jdField_a_of_type_JavaLangObject)
+          synchronized (d)
           {
-            jdField_c_of_type_Int = -3;
-            jdField_a_of_type_Long = Thread.currentThread().getId();
+            e = -3;
+            f = Thread.currentThread().getId();
             return -3;
           }
         }
-        CameraParameters.a(this.jdField_a_of_type_AndroidHardwareCamera, 1280, 720, ScanEntranceDPC.a().jdField_a_of_type_Int);
+        CameraParameters.a(this.g, 1280, 720, ScanEntranceDPC.a().b);
         i2 = 90;
         int i1 = i2;
         if (((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProduct(CameraCompatibleConstants.g))
@@ -425,30 +419,30 @@ public class ARCamera
         }
         else
         {
-          this.jdField_a_of_type_AndroidHardwareCamera.setDisplayOrientation(i2);
-          ??? = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-          this.f = ((Camera.Parameters)???).getPreviewFormat();
+          this.g.setDisplayOrientation(i2);
+          ??? = this.g.getParameters();
+          this.k = ((Camera.Parameters)???).getPreviewFormat();
           PixelFormat localPixelFormat = new PixelFormat();
-          PixelFormat.getPixelFormatInfo(this.f, localPixelFormat);
+          PixelFormat.getPixelFormatInfo(this.k, localPixelFormat);
           Camera.Size localSize = ((Camera.Parameters)???).getPreviewSize();
-          this.jdField_d_of_type_Int = localSize.width;
-          this.e = localSize.height;
-          this.jdField_a_of_type_Boolean = false;
-          this.i = ((Camera.Parameters)???).getZoom();
-          this.j = (((Camera.Parameters)???).getMaxZoom() / 3 * 2);
-          QLog.d("AREngine_ARCamera", 1, String.format("openCamera mInitZoom=%s mMaxZoom=%s supportMaxZoom=%s", new Object[] { Integer.valueOf(this.i), Integer.valueOf(this.j), Integer.valueOf(((Camera.Parameters)???).getMaxZoom()) }));
-          i1 = this.jdField_d_of_type_Int * this.e * localPixelFormat.bitsPerPixel / 8;
+          this.i = localSize.width;
+          this.j = localSize.height;
+          this.n = false;
+          this.p = ((Camera.Parameters)???).getZoom();
+          this.q = (((Camera.Parameters)???).getMaxZoom() / 3 * 2);
+          QLog.d("AREngine_ARCamera", 1, String.format("openCamera mInitZoom=%s mMaxZoom=%s supportMaxZoom=%s", new Object[] { Integer.valueOf(this.p), Integer.valueOf(this.q), Integer.valueOf(((Camera.Parameters)???).getMaxZoom()) }));
+          i1 = this.i * this.j * localPixelFormat.bitsPerPixel / 8;
           paramInt = 0;
           if (paramInt < 3)
           {
-            this.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(new byte[i1]);
+            this.g.addCallbackBuffer(new byte[i1]);
             paramInt += 1;
             continue;
           }
-          synchronized (jdField_a_of_type_JavaLangObject)
+          synchronized (d)
           {
-            jdField_c_of_type_Int = 0;
-            jdField_a_of_type_Long = Thread.currentThread().getId();
+            e = 0;
+            f = Thread.currentThread().getId();
             return 0;
           }
           continue;
@@ -457,10 +451,10 @@ public class ARCamera
       catch (Exception localException2)
       {
         QLog.i("AREngine_ARCamera", 1, "openCamera fail.", localException2);
-        synchronized (jdField_a_of_type_JavaLangObject)
+        synchronized (d)
         {
-          jdField_c_of_type_Int = -3;
-          jdField_a_of_type_Long = Thread.currentThread().getId();
+          e = -3;
+          f = Thread.currentThread().getId();
           return -3;
         }
         throw localObject7;
@@ -469,40 +463,12 @@ public class ARCamera
     }
   }
   
-  public void a()
-  {
-    QLog.i("AREngine_ARCamera", 1, String.format("stopPreview mCamera=%s", new Object[] { this.jdField_a_of_type_AndroidHardwareCamera }));
-    c();
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
-    if (localObject != null) {
-      ((Handler)localObject).removeCallbacksAndMessages(null);
-    }
-    localObject = this.jdField_a_of_type_AndroidHardwareCamera;
-    if (localObject != null) {
-      try
-      {
-        ((Camera)localObject).setPreviewCallbackWithBuffer(null);
-        this.jdField_a_of_type_AndroidHardwareCamera.stopPreview();
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera$AutoFocusListener = null;
-        if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
-        {
-          this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.i("AREngine_ARCamera", 1, "stopCamera fail.", localException);
-      }
-    }
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
     QLog.i("AREngine_ARCamera", 1, String.format("autoFocus surfaceWidth=%s surfaceHeight=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null)
+    if (this.g != null)
     {
-      if ((this.g != paramInt1) || (this.h != paramInt2))
+      if ((this.l != paramInt1) || (this.m != paramInt2))
       {
         localObject = new Matrix();
         ((Matrix)localObject).setScale(1.0F, 1.0F);
@@ -512,15 +478,15 @@ public class ARCamera
         float f3 = paramInt2;
         ((Matrix)localObject).postScale(f2, f3 / 2000.0F);
         ((Matrix)localObject).postTranslate(f1 / 2.0F, f3 / 2.0F);
-        ((Matrix)localObject).invert(this.jdField_a_of_type_AndroidGraphicsMatrix);
-        this.g = paramInt1;
-        this.h = paramInt2;
+        ((Matrix)localObject).invert(this.o);
+        this.l = paramInt1;
+        this.m = paramInt2;
       }
-      Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+      Object localObject = this.h;
       if (localObject != null)
       {
         ((Handler)localObject).removeMessages(100);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 500L);
+        this.h.sendEmptyMessageDelayed(100, 500L);
       }
     }
   }
@@ -528,147 +494,28 @@ public class ARCamera
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     QLog.i("AREngine_ARCamera", 1, String.format("manualFocus touchX=%s touchY=%s surfaceWidth=%s surfaceHeight=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null) {
+    if (this.g != null) {
       CameraProxy.a().a(new ARCamera.1(this, paramInt1, paramInt2, paramInt3, paramInt4));
     }
-  }
-  
-  /* Error */
-  public boolean a()
-  {
-    // Byte code:
-    //   0: ldc 177
-    //   2: iconst_1
-    //   3: ldc_w 564
-    //   6: iconst_1
-    //   7: anewarray 4	java/lang/Object
-    //   10: dup
-    //   11: iconst_0
-    //   12: aload_0
-    //   13: getfield 150	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   16: aastore
-    //   17: invokestatic 185	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   20: invokestatic 279	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   23: aload_0
-    //   24: getfield 150	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   27: astore_1
-    //   28: aload_1
-    //   29: ifnull +124 -> 153
-    //   32: aload_1
-    //   33: invokevirtual 567	android/hardware/Camera:release	()V
-    //   36: aload_0
-    //   37: aconst_null
-    //   38: putfield 150	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   41: getstatic 46	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   44: astore_1
-    //   45: aload_1
-    //   46: monitorenter
-    //   47: bipush 253
-    //   49: putstatic 48	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_c_of_type_Int	I
-    //   52: invokestatic 377	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   55: invokevirtual 381	java/lang/Thread:getId	()J
-    //   58: putstatic 52	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_Long	J
-    //   61: aload_1
-    //   62: monitorexit
-    //   63: iconst_1
-    //   64: ireturn
-    //   65: astore_2
-    //   66: aload_1
-    //   67: monitorexit
-    //   68: aload_2
-    //   69: athrow
-    //   70: astore_2
-    //   71: goto +48 -> 119
-    //   74: astore_1
-    //   75: ldc 177
-    //   77: iconst_1
-    //   78: ldc_w 569
-    //   81: aload_1
-    //   82: invokestatic 235	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   85: aload_0
-    //   86: aconst_null
-    //   87: putfield 150	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   90: getstatic 46	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   93: astore_1
-    //   94: aload_1
-    //   95: monitorenter
-    //   96: bipush 253
-    //   98: putstatic 48	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_c_of_type_Int	I
-    //   101: invokestatic 377	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   104: invokevirtual 381	java/lang/Thread:getId	()J
-    //   107: putstatic 52	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_Long	J
-    //   110: aload_1
-    //   111: monitorexit
-    //   112: iconst_1
-    //   113: ireturn
-    //   114: astore_2
-    //   115: aload_1
-    //   116: monitorexit
-    //   117: aload_2
-    //   118: athrow
-    //   119: aload_0
-    //   120: aconst_null
-    //   121: putfield 150	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   124: getstatic 46	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   127: astore_1
-    //   128: aload_1
-    //   129: monitorenter
-    //   130: bipush 253
-    //   132: putstatic 48	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_c_of_type_Int	I
-    //   135: invokestatic 377	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   138: invokevirtual 381	java/lang/Thread:getId	()J
-    //   141: putstatic 52	com/tencent/mobileqq/ar/arengine/ARCamera:jdField_a_of_type_Long	J
-    //   144: aload_1
-    //   145: monitorexit
-    //   146: aload_2
-    //   147: athrow
-    //   148: astore_2
-    //   149: aload_1
-    //   150: monitorexit
-    //   151: aload_2
-    //   152: athrow
-    //   153: iconst_1
-    //   154: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	155	0	this	ARCamera
-    //   27	40	1	localObject1	Object
-    //   74	8	1	localException	Exception
-    //   93	57	1	localObject2	Object
-    //   65	4	2	localObject3	Object
-    //   70	1	2	localObject4	Object
-    //   114	33	2	localObject5	Object
-    //   148	4	2	localObject6	Object
-    // Exception table:
-    //   from	to	target	type
-    //   47	63	65	finally
-    //   66	68	65	finally
-    //   32	36	70	finally
-    //   75	85	70	finally
-    //   32	36	74	java/lang/Exception
-    //   96	112	114	finally
-    //   115	117	114	finally
-    //   130	146	148	finally
-    //   149	151	148	finally
   }
   
   public boolean a(float paramFloat, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARCamera", 2, String.format("directZoom scale=%.2f autoRevert=%s mZooming=%s", new Object[] { Float.valueOf(paramFloat), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
+      QLog.d("AREngine_ARCamera", 2, String.format("directZoom scale=%.2f autoRevert=%s mZooming=%s", new Object[] { Float.valueOf(paramFloat), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.r) }));
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.r)
     {
-      this.jdField_b_of_type_Boolean = false;
-      localObject = this.jdField_a_of_type_AndroidOsHandler;
+      this.r = false;
+      localObject = this.h;
       if (localObject != null)
       {
         ((Handler)localObject).removeMessages(102);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+        this.h.removeMessages(101);
       }
     }
-    Object localObject = this.jdField_a_of_type_AndroidHardwareCamera;
-    if ((localObject != null) && (!this.jdField_b_of_type_Boolean)) {}
+    Object localObject = this.g;
+    if ((localObject != null) && (!this.r)) {}
     for (;;)
     {
       int i11;
@@ -723,18 +570,18 @@ public class ARCamera
           }
           if ((((Camera.Parameters)localObject).isZoomSupported()) && (i9 >= 0) && (i9 != i11))
           {
-            i1 = Math.max(Math.min(i9, this.j), this.i);
+            i1 = Math.max(Math.min(i9, this.q), this.p);
             if (i1 != i11)
             {
               ((Camera.Parameters)localObject).setZoom(i1);
-              this.jdField_a_of_type_AndroidHardwareCamera.setParameters((Camera.Parameters)localObject);
+              this.g.setParameters((Camera.Parameters)localObject);
               return true;
             }
-            if (this.jdField_a_of_type_AndroidOsHandler != null)
+            if (this.h != null)
             {
-              this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+              this.h.removeMessages(101);
               if (paramBoolean) {
-                this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 5000L);
+                this.h.sendEmptyMessageDelayed(101, 5000L);
               }
             }
           }
@@ -774,19 +621,19 @@ public class ARCamera
   {
     boolean bool1 = false;
     boolean bool2 = false;
-    QLog.i("AREngine_ARCamera", 1, String.format("startPreview callback=%s surfaceTexture=%s mCamera=%s", new Object[] { paramPreviewCallback, paramSurfaceTexture, this.jdField_a_of_type_AndroidHardwareCamera }));
-    Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
+    QLog.i("AREngine_ARCamera", 1, String.format("startPreview callback=%s surfaceTexture=%s mCamera=%s", new Object[] { paramPreviewCallback, paramSurfaceTexture, this.g }));
+    Camera localCamera = this.g;
     if (localCamera != null) {
       try
       {
         localCamera.setPreviewCallbackWithBuffer(paramPreviewCallback);
-        this.jdField_a_of_type_AndroidHardwareCamera.setPreviewTexture(paramSurfaceTexture);
-        this.jdField_a_of_type_AndroidHardwareCamera.startPreview();
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera$AutoFocusListener = paramAutoFocusListener;
+        this.g.setPreviewTexture(paramSurfaceTexture);
+        this.g.startPreview();
+        this.y = paramAutoFocusListener;
         try
         {
-          if (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
-            this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1), 3);
+          if (this.x != null) {
+            this.x.registerListener(this.a, this.x.getDefaultSensor(1), 3);
           }
           return true;
         }
@@ -806,7 +653,7 @@ public class ARCamera
   
   public boolean a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidHardwareCamera;
+    Object localObject = this.g;
     if (localObject != null) {
       try
       {
@@ -819,7 +666,7 @@ public class ARCamera
         } else {
           ((Camera.Parameters)localObject).setFlashMode("off");
         }
-        this.jdField_a_of_type_AndroidHardwareCamera.setParameters((Camera.Parameters)localObject);
+        this.g.setParameters((Camera.Parameters)localObject);
         return true;
       }
       catch (Exception localException)
@@ -832,61 +679,213 @@ public class ARCamera
   
   public int b()
   {
-    return this.e;
-  }
-  
-  public void b()
-  {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if (localHandler != null)
-    {
-      localHandler.removeMessages(100);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 100L);
-    }
+    return this.j;
   }
   
   public int c()
   {
-    return this.f;
+    return this.k;
   }
   
-  public void c()
+  public int d()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    return (this.v - this.w + 360) % 360;
+  }
+  
+  public int e()
+  {
+    return a(0, 0L);
+  }
+  
+  public void f()
+  {
+    QLog.i("AREngine_ARCamera", 1, String.format("stopPreview mCamera=%s", new Object[] { this.g }));
+    i();
+    Object localObject = this.h;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
+    }
+    localObject = this.g;
+    if (localObject != null) {
+      try
+      {
+        ((Camera)localObject).setPreviewCallbackWithBuffer(null);
+        this.g.stopPreview();
+        this.y = null;
+        if (this.x != null)
+        {
+          this.x.unregisterListener(this.a);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.i("AREngine_ARCamera", 1, "stopCamera fail.", localException);
+      }
+    }
+  }
+  
+  /* Error */
+  public boolean g()
+  {
+    // Byte code:
+    //   0: ldc 189
+    //   2: iconst_1
+    //   3: ldc_w 642
+    //   6: iconst_1
+    //   7: anewarray 4	java/lang/Object
+    //   10: dup
+    //   11: iconst_0
+    //   12: aload_0
+    //   13: getfield 162	com/tencent/mobileqq/ar/arengine/ARCamera:g	Landroid/hardware/Camera;
+    //   16: aastore
+    //   17: invokestatic 197	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   20: invokestatic 288	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   23: aload_0
+    //   24: getfield 162	com/tencent/mobileqq/ar/arengine/ARCamera:g	Landroid/hardware/Camera;
+    //   27: astore_1
+    //   28: aload_1
+    //   29: ifnull +124 -> 153
+    //   32: aload_1
+    //   33: invokevirtual 645	android/hardware/Camera:release	()V
+    //   36: aload_0
+    //   37: aconst_null
+    //   38: putfield 162	com/tencent/mobileqq/ar/arengine/ARCamera:g	Landroid/hardware/Camera;
+    //   41: getstatic 58	com/tencent/mobileqq/ar/arengine/ARCamera:d	Ljava/lang/Object;
+    //   44: astore_1
+    //   45: aload_1
+    //   46: monitorenter
+    //   47: bipush 253
+    //   49: putstatic 60	com/tencent/mobileqq/ar/arengine/ARCamera:e	I
+    //   52: invokestatic 389	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   55: invokevirtual 393	java/lang/Thread:getId	()J
+    //   58: putstatic 64	com/tencent/mobileqq/ar/arengine/ARCamera:f	J
+    //   61: aload_1
+    //   62: monitorexit
+    //   63: iconst_1
+    //   64: ireturn
+    //   65: astore_2
+    //   66: aload_1
+    //   67: monitorexit
+    //   68: aload_2
+    //   69: athrow
+    //   70: astore_2
+    //   71: goto +48 -> 119
+    //   74: astore_1
+    //   75: ldc 189
+    //   77: iconst_1
+    //   78: ldc_w 647
+    //   81: aload_1
+    //   82: invokestatic 247	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   85: aload_0
+    //   86: aconst_null
+    //   87: putfield 162	com/tencent/mobileqq/ar/arengine/ARCamera:g	Landroid/hardware/Camera;
+    //   90: getstatic 58	com/tencent/mobileqq/ar/arengine/ARCamera:d	Ljava/lang/Object;
+    //   93: astore_1
+    //   94: aload_1
+    //   95: monitorenter
+    //   96: bipush 253
+    //   98: putstatic 60	com/tencent/mobileqq/ar/arengine/ARCamera:e	I
+    //   101: invokestatic 389	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   104: invokevirtual 393	java/lang/Thread:getId	()J
+    //   107: putstatic 64	com/tencent/mobileqq/ar/arengine/ARCamera:f	J
+    //   110: aload_1
+    //   111: monitorexit
+    //   112: iconst_1
+    //   113: ireturn
+    //   114: astore_2
+    //   115: aload_1
+    //   116: monitorexit
+    //   117: aload_2
+    //   118: athrow
+    //   119: aload_0
+    //   120: aconst_null
+    //   121: putfield 162	com/tencent/mobileqq/ar/arengine/ARCamera:g	Landroid/hardware/Camera;
+    //   124: getstatic 58	com/tencent/mobileqq/ar/arengine/ARCamera:d	Ljava/lang/Object;
+    //   127: astore_1
+    //   128: aload_1
+    //   129: monitorenter
+    //   130: bipush 253
+    //   132: putstatic 60	com/tencent/mobileqq/ar/arengine/ARCamera:e	I
+    //   135: invokestatic 389	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   138: invokevirtual 393	java/lang/Thread:getId	()J
+    //   141: putstatic 64	com/tencent/mobileqq/ar/arengine/ARCamera:f	J
+    //   144: aload_1
+    //   145: monitorexit
+    //   146: aload_2
+    //   147: athrow
+    //   148: astore_2
+    //   149: aload_1
+    //   150: monitorexit
+    //   151: aload_2
+    //   152: athrow
+    //   153: iconst_1
+    //   154: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	155	0	this	ARCamera
+    //   27	40	1	localObject1	Object
+    //   74	8	1	localException	Exception
+    //   93	57	1	localObject2	Object
+    //   65	4	2	localObject3	Object
+    //   70	1	2	localObject4	Object
+    //   114	33	2	localObject5	Object
+    //   148	4	2	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   47	63	65	finally
+    //   66	68	65	finally
+    //   32	36	70	finally
+    //   75	85	70	finally
+    //   32	36	74	java/lang/Exception
+    //   96	112	114	finally
+    //   115	117	114	finally
+    //   130	146	148	finally
+    //   149	151	148	finally
+  }
+  
+  public void h()
+  {
+    Handler localHandler = this.h;
+    if (localHandler != null)
+    {
+      localHandler.removeMessages(100);
+      this.h.sendEmptyMessageDelayed(100, 100L);
+    }
+  }
+  
+  public void i()
+  {
+    Handler localHandler = this.h;
     if (localHandler != null) {
       localHandler.removeMessages(100);
     }
   }
   
-  public int d()
-  {
-    return (this.m - this.n + 360) % 360;
-  }
-  
-  public void d()
+  public void j()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARCamera", 2, String.format("autoZoom mZooming=%s", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
+      QLog.d("AREngine_ARCamera", 2, String.format("autoZoom mZooming=%s", new Object[] { Boolean.valueOf(this.r) }));
     }
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null) {
+    if (this.g != null) {
       try
       {
-        this.jdField_b_of_type_Boolean = false;
-        if (this.jdField_a_of_type_AndroidOsHandler != null)
+        this.r = false;
+        if (this.h != null)
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(102);
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(101);
+          this.h.removeMessages(102);
+          this.h.removeMessages(101);
         }
-        Camera.Parameters localParameters = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        Camera.Parameters localParameters = this.g.getParameters();
         if (localParameters.isZoomSupported())
         {
           int i1 = localParameters.getZoom();
-          if (i1 == this.i) {
-            b(i1, this.j);
+          if (i1 == this.p) {
+            b(i1, this.q);
           } else {
-            b(i1, this.i);
+            b(i1, this.p);
           }
-          ScanEntranceReport.a().b();
+          ScanEntranceReport.a().c();
           return;
         }
       }
@@ -897,48 +896,43 @@ public class ARCamera
     }
   }
   
-  public int e()
+  public void k()
   {
-    return a(0, 0L);
-  }
-  
-  public void e()
-  {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.h;
     if (localHandler != null)
     {
       localHandler.removeMessages(101);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(101, 20L);
+      this.h.sendEmptyMessageDelayed(101, 20L);
     }
   }
   
   public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
     QLog.d("AREngine_ARCamera", 1, String.format("onAutoFocus success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    if (this.jdField_a_of_type_Boolean)
+    if (this.n)
     {
       try
       {
-        this.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
-        paramCamera = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
+        this.g.cancelAutoFocus();
+        paramCamera = this.g.getParameters();
         CameraParameters.a(paramCamera);
-        this.jdField_a_of_type_AndroidHardwareCamera.setParameters(paramCamera);
+        this.g.setParameters(paramCamera);
       }
       catch (Exception paramCamera)
       {
         QLog.i("AREngine_ARCamera", 1, "focusOnArea fail.", paramCamera);
       }
-      paramCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera$AutoFocusListener;
+      paramCamera = this.y;
       if (paramCamera != null) {
         paramCamera.a(paramBoolean);
       }
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.n = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCamera
  * JD-Core Version:    0.7.0.1
  */

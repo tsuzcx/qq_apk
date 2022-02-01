@@ -59,8 +59,8 @@ final class UpgradeDetailWrapper$1
       localApkUpdateDetail.versionname = paramParcel.readString();
     }
     paramParcel = new UpgradeDetailWrapper(localUpgradeInfo, localApkUpdateDetail);
-    paramParcel.b = str;
-    paramParcel.a = ConfigHandler.a(localUpgradeInfo);
+    paramParcel.k = str;
+    paramParcel.e = ConfigHandler.a(localUpgradeInfo);
     return paramParcel;
   }
   
@@ -71,7 +71,7 @@ final class UpgradeDetailWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeDetailWrapper.1
  * JD-Core Version:    0.7.0.1
  */

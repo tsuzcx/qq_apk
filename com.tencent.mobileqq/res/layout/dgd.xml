@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/ok8" android:layout_width="fill_parent" android:layout_height="310.0dip" android:layout_marginBottom="50.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <View android:id="@id/ok_" android:background="@drawable/h0k" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ok8" />
+    <View android:background="@drawable/h0s" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.timi.game.component.chat.message.MessageLayoutImpl android:id="@id/ok9" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/qa3" />
+    <com.tencent.timi.game.team.impl.input.TeamOperateView android:id="@id/qa3" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginBottom="22.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.timi.game.team.impl.chat.TeamInputView android:id="@id/o0j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</merge>

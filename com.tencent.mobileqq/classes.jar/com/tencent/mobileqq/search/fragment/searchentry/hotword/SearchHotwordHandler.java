@@ -80,8 +80,8 @@ public class SearchHotwordHandler
   public String getHotwordExtInfo()
   {
     HotWordSearchEntryDataModel localHotWordSearchEntryDataModel = this.dataModel;
-    if ((localHotWordSearchEntryDataModel != null) && (localHotWordSearchEntryDataModel.a != null)) {
-      return this.dataModel.a;
+    if ((localHotWordSearchEntryDataModel != null) && (localHotWordSearchEntryDataModel.e != null)) {
+      return this.dataModel.e;
     }
     return "";
   }
@@ -120,7 +120,7 @@ public class SearchHotwordHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler
  * JD-Core Version:    0.7.0.1
  */

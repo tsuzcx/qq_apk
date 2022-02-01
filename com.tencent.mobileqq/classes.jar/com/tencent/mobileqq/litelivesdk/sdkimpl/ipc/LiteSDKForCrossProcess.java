@@ -38,37 +38,24 @@ public class LiteSDKForCrossProcess
   extends QIPCModule
   implements ILiveSDK
 {
-  private static LiteSDKForCrossProcess jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteSDKForCrossProcess = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = -1L;
-  private PendingIPCTaskManager jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager = new PendingIPCTaskManager();
-  private Map<String, List<ILiveLoginTicketListener>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final Object c = new Object();
+  private static LiteSDKForCrossProcess d = null;
+  private int a = 0;
+  private boolean b = false;
+  private Map<String, List<ILiveLoginTicketListener>> e = new HashMap();
+  private PendingIPCTaskManager f = new PendingIPCTaskManager();
+  private long g = -1L;
   
   private LiteSDKForCrossProcess(String paramString)
   {
     super(paramString);
-    c();
-  }
-  
-  public static LiteSDKForCrossProcess a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteSDKForCrossProcess == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteSDKForCrossProcess == null) {
-          jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteSDKForCrossProcess = new LiteSDKForCrossProcess("LiteSDKServerModuleName");
-        }
-      }
-    }
-    return jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcLiteSDKForCrossProcess;
+    g();
   }
   
   private void a(int paramInt)
   {
     LogFactory.a().e("LiteSDKForCrossProcess", "ilive requestHostRefreshToken----");
-    Object localObject = (List)this.jdField_a_of_type_JavaUtilMap.get(BusinessManager.a.a().a);
+    Object localObject = (List)this.e.get(BusinessManager.a.b().a);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -82,11 +69,11 @@ public class LiteSDKForCrossProcess
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.b(paramString);
-    CustomizedServiceManager.a.a(paramString);
+    this.f.c(paramString);
+    CustomizedServiceManager.c.c(paramString);
     BusinessManager.a.a(false);
     BusinessManager.a.a(null);
-    BusinessManager.a.a();
+    BusinessManager.a.k();
   }
   
   private void b(String paramString)
@@ -97,20 +84,69 @@ public class LiteSDKForCrossProcess
     ThreadManager.getUIHandler().post(new LiteSDKForCrossProcess.2(this));
   }
   
-  private boolean b()
+  private boolean b(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Int != 1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doEnterRoom-----IPC State = ");
+    ((StringBuilder)localObject).append(this.a);
+    ((StringBuilder)localObject).append(" appid = ");
+    ((StringBuilder)localObject).append(paramString1);
+    QLog.e("LiteSDKForCrossProcess", 1, ((StringBuilder)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("Key_mqq", paramString2);
+    if (h())
+    {
+      if (!this.f.b(paramString1)) {
+        this.f.a(paramString1);
+      }
+      paramString1 = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_EnterRoom", (Bundle)localObject);
+      return (paramString1 != null) && (paramString1.isSuccess());
+    }
+    b(paramString1);
+    this.f.a(paramString1, "Action_Client_EnterRoom", (Bundle)localObject);
+    return true;
+  }
+  
+  public static LiteSDKForCrossProcess f()
+  {
+    if (d == null) {
+      synchronized (c)
+      {
+        if (d == null) {
+          d = new LiteSDKForCrossProcess("LiteSDKServerModuleName");
+        }
+      }
+    }
+    return d;
+  }
+  
+  private void g()
+  {
+    if (this.b) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("LiteSDKForCrossProcess", 2, "init");
+    }
+    this.b = true;
+    QIPCServerHelper.getInstance().getServer().addListener(new LiteSDKForCrossProcess.MyEIPCOnGetConnectionListener(this));
+    h();
+  }
+  
+  private boolean h()
+  {
+    if (this.a != 1)
     {
       long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
+      long l2 = this.g;
       if ((l2 == -1L) || (l1 - l2 > 1000L))
       {
-        this.jdField_a_of_type_Long = l1;
+        this.g = l1;
         QLog.e("LiteSDKForCrossProcess", 1, "ilive not connect, try connect ");
         Intent localIntent = new Intent(BaseApplicationImpl.getContext(), PreloadWebService.class);
         localIntent.putExtra("startTime", System.currentTimeMillis());
         localIntent.putExtra("liveSdkBinding", true);
-        localIntent.putExtra("liveBindState", this.jdField_a_of_type_Int);
+        localIntent.putExtra("liveBindState", this.a);
         try
         {
           BaseApplicationImpl.getContext().startService(localIntent);
@@ -131,63 +167,27 @@ public class LiteSDKForCrossProcess
     return true;
   }
   
-  private boolean b(String paramString1, String paramString2)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("doEnterRoom-----IPC State = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-    ((StringBuilder)localObject).append(" appid = ");
-    ((StringBuilder)localObject).append(paramString1);
-    QLog.e("LiteSDKForCrossProcess", 1, ((StringBuilder)localObject).toString());
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("Key_mqq", paramString2);
-    if (b())
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(paramString1)) {
-        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(paramString1);
-      }
-      paramString1 = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_EnterRoom", (Bundle)localObject);
-      return (paramString1 != null) && (paramString1.isSuccess());
-    }
-    b(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(paramString1, "Action_Client_EnterRoom", (Bundle)localObject);
-    return true;
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("LiteSDKForCrossProcess", 2, "init");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    QIPCServerHelper.getInstance().getServer().addListener(new LiteSDKForCrossProcess.MyEIPCOnGetConnectionListener(this));
-    b();
-  }
-  
-  private void d()
+  private void i()
   {
     QLog.e("LiteSDKForCrossProcess", 1, "---onBind----start ");
-    this.jdField_a_of_type_Int = 1;
+    this.a = 1;
     IliveLiteMonitorUtil.b();
-    BusinessConfig localBusinessConfig = BusinessManager.a.a();
-    if ((localBusinessConfig != null) && (!this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(localBusinessConfig.a)))
+    BusinessConfig localBusinessConfig = BusinessManager.a.b();
+    if ((localBusinessConfig != null) && (!this.f.b(localBusinessConfig.a)))
     {
       QLog.e("LiteSDKForCrossProcess", 1, "---onConnectBind----will do pending IPC task");
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(localBusinessConfig.a);
+      this.f.a(localBusinessConfig.a);
     }
     IliveLiteMonitorUtil.c();
-    if ((!a()) && (localBusinessConfig != null))
+    if ((!c()) && (localBusinessConfig != null))
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("---onConnectBind----will Reinit Business appid = ");
       ((StringBuilder)localObject1).append(localBusinessConfig.a);
       QLog.e("LiteSDKForCrossProcess", 1, ((StringBuilder)localObject1).toString());
-      Object localObject2 = CustomizedServiceManager.a.b(localBusinessConfig.a);
-      localObject1 = CustomizedServiceManager.a.a(localBusinessConfig.a);
-      CustomizedServiceManager.a.a();
+      Object localObject2 = CustomizedServiceManager.c.b(localBusinessConfig.a);
+      localObject1 = CustomizedServiceManager.c.a(localBusinessConfig.a);
+      CustomizedServiceManager.c.a();
       BusinessManager.a.a(null);
       Iterator localIterator = ((Map)localObject2).keySet().iterator();
       while (localIterator.hasNext())
@@ -206,37 +206,9 @@ public class LiteSDKForCrossProcess
     }
   }
   
-  public BusinessConfig a()
-  {
-    if (b())
-    {
-      EIPCResult localEIPCResult = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_GetActiveBizConfig", null);
-      if ((localEIPCResult != null) && (localEIPCResult.code == 0))
-      {
-        localEIPCResult.data.setClassLoader(BusinessConfig.class.getClassLoader());
-        return (BusinessConfig)localEIPCResult.data.getParcelable("Key_BusinessConfig");
-      }
-    }
-    return null;
-  }
-  
-  public LoginResult a()
-  {
-    if (b())
-    {
-      EIPCResult localEIPCResult = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_getLiveLoginTicket", null);
-      if ((localEIPCResult != null) && (localEIPCResult.code == 0))
-      {
-        localEIPCResult.data.setClassLoader(LoginResult.class.getClassLoader());
-        return (LoginResult)localEIPCResult.data.getParcelable("Key_LoginResult");
-      }
-    }
-    return null;
-  }
-  
   public void a()
   {
-    if (b()) {
+    if (h()) {
       QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_UninitLiteSDK", null);
     }
   }
@@ -248,17 +220,17 @@ public class LiteSDKForCrossProcess
     }
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("Key_BusinessConfig", paramBusinessConfig);
-    if (b()) {
+    if (h()) {
       QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_InitLiteSDK", localBundle);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(paramBusinessConfig.a, "Action_Client_InitLiteSDK", localBundle);
+      this.f.a(paramBusinessConfig.a, "Action_Client_InitLiteSDK", localBundle);
     }
-    if ((BusinessManager.a.a()) && (BusinessManager.a.a() != null) && (!TextUtils.isEmpty(BusinessManager.a.a().a)))
+    if ((BusinessManager.a.a()) && (BusinessManager.a.b() != null) && (!TextUtils.isEmpty(BusinessManager.a.b().a)))
     {
-      if (BusinessManager.a.a().a.equals(paramBusinessConfig.a)) {
+      if (BusinessManager.a.b().a.equals(paramBusinessConfig.a)) {
         return;
       }
-      a(BusinessManager.a.a().a);
+      a(BusinessManager.a.b().a);
     }
     BusinessManager.a.a(true);
     BusinessManager.a.a(paramBusinessConfig);
@@ -268,12 +240,12 @@ public class LiteSDKForCrossProcess
   {
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("Key_BizLoginRequest", paramBizLoginRequest);
-    if (b())
+    if (h())
     {
       QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_Login", localBundle);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(paramBizLoginRequest.a, "Action_Client_Login", localBundle);
+    this.f.a(paramBizLoginRequest.a, "Action_Client_Login", localBundle);
   }
   
   public void a(String paramString, int paramInt, Class<? extends BaseSDKPageBizBootModules> paramClass)
@@ -282,12 +254,12 @@ public class LiteSDKForCrossProcess
     localBundle.putString("Key_Appid", paramString);
     localBundle.putInt("Key_PageType", paramInt);
     localBundle.putSerializable("Key_BizModulesClazz", paramClass);
-    if (b()) {
+    if (h()) {
       QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_CustomizedBizModules", localBundle);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(paramString, "Action_Client_CustomizedBizModules", localBundle);
+      this.f.a(paramString, "Action_Client_CustomizedBizModules", localBundle);
     }
-    CustomizedServiceManager.a.a(paramString, paramInt, paramClass);
+    CustomizedServiceManager.c.a(paramString, paramInt, paramClass);
   }
   
   public void a(String paramString, IBusinessExpireObserver paramIBusinessExpireObserver)
@@ -297,12 +269,12 @@ public class LiteSDKForCrossProcess
   
   public void a(String paramString, ILiveLoginTicketListener paramILiveLoginTicketListener)
   {
-    List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    List localList = (List)this.e.get(paramString);
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      this.e.put(paramString, localObject);
     }
     ((List)localObject).clear();
     ((List)localObject).add(paramILiveLoginTicketListener);
@@ -314,24 +286,12 @@ public class LiteSDKForCrossProcess
     localBundle.putString("Key_Appid", paramString);
     localBundle.putSerializable("Key_ServiceClazz", paramClass);
     localBundle.putSerializable("Key_ServiceBuildClazz", paramClass1);
-    if (b()) {
+    if (h()) {
       QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_customizedBizSDKService", localBundle);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkSdkimplIpcPendingIPCTaskManager.a(paramString, "Action_Client_customizedBizSDKService", localBundle);
+      this.f.a(paramString, "Action_Client_customizedBizSDKService", localBundle);
     }
-    CustomizedServiceManager.a.a(paramString, paramClass, paramClass1);
-  }
-  
-  public boolean a()
-  {
-    if (b())
-    {
-      EIPCResult localEIPCResult = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_isInitLiteSDK", null);
-      if ((localEIPCResult != null) && (localEIPCResult.code == 0)) {
-        return localEIPCResult.data.getBoolean("Key_Inited");
-      }
-    }
-    return false;
+    CustomizedServiceManager.c.a(paramString, paramClass, paramClass1);
   }
   
   public boolean a(String paramString1, String paramString2)
@@ -342,30 +302,70 @@ public class LiteSDKForCrossProcess
     localStringBuilder.append(", mqq = ");
     localStringBuilder.append(paramString2);
     QLog.e("LiteSDKForCrossProcess", 1, localStringBuilder.toString());
-    if ((BusinessManager.a.a() != null) && (BusinessManager.a.a().a.equals(paramString1))) {
+    if ((BusinessManager.a.b() != null) && (BusinessManager.a.b().a.equals(paramString1))) {
       return b(paramString1, paramString2);
     }
     QLog.e("LiteSDKForCrossProcess", 1, "warn: enterRoom-----当前业务初始化信息已被清理");
-    BusinessManager.a.a(paramString1).a(new LiteSDKForCrossProcess.1(this, paramString1, paramString2));
+    BusinessManager.a.c(paramString1).a(new LiteSDKForCrossProcess.1(this, paramString1, paramString2));
     return true;
   }
   
-  public void b()
+  public BusinessConfig b()
   {
-    if (b()) {
-      QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_Logout", null);
+    if (h())
+    {
+      EIPCResult localEIPCResult = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_GetActiveBizConfig", null);
+      if ((localEIPCResult != null) && (localEIPCResult.code == 0))
+      {
+        localEIPCResult.data.setClassLoader(BusinessConfig.class.getClassLoader());
+        return (BusinessConfig)localEIPCResult.data.getParcelable("Key_BusinessConfig");
+      }
     }
+    return null;
   }
   
   public void b(BusinessConfig paramBusinessConfig)
   {
-    if (b())
+    if (h())
     {
       Bundle localBundle = new Bundle();
       localBundle.putParcelable("Key_BusinessConfig", paramBusinessConfig);
       QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_UpdateActiveBizConfig", localBundle);
     }
     BusinessManager.a.a(paramBusinessConfig);
+  }
+  
+  public boolean c()
+  {
+    if (h())
+    {
+      EIPCResult localEIPCResult = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_isInitLiteSDK", null);
+      if ((localEIPCResult != null) && (localEIPCResult.code == 0)) {
+        return localEIPCResult.data.getBoolean("Key_Inited");
+      }
+    }
+    return false;
+  }
+  
+  public LoginResult d()
+  {
+    if (h())
+    {
+      EIPCResult localEIPCResult = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_getLiveLoginTicket", null);
+      if ((localEIPCResult != null) && (localEIPCResult.code == 0))
+      {
+        localEIPCResult.data.setClassLoader(LoginResult.class.getClassLoader());
+        return (LoginResult)localEIPCResult.data.getParcelable("Key_LoginResult");
+      }
+    }
+    return null;
+  }
+  
+  public void e()
+  {
+    if (h()) {
+      QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:tool", 1, "LiteSDKClientModuleName", "Action_Client_Logout", null);
+    }
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -377,13 +377,13 @@ public class LiteSDKForCrossProcess
     localLogInterface.c("LiteSDKForCrossProcess", localStringBuilder.toString());
     if ("Action_Server_OnBind".equals(paramString))
     {
-      d();
+      i();
     }
     else if ("Action_Server_OnLoginSuccess".equals(paramString))
     {
       paramBundle.setClassLoader(LoginResult.class.getClassLoader());
       paramString = (LoginResult)paramBundle.getParcelable("Key_LoginResult");
-      paramBundle = (List)this.jdField_a_of_type_JavaUtilMap.get(BusinessManager.a.a().a);
+      paramBundle = (List)this.e.get(BusinessManager.a.b().a);
       if (paramBundle != null)
       {
         paramBundle = paramBundle.iterator();
@@ -394,7 +394,7 @@ public class LiteSDKForCrossProcess
     }
     else if ("Action_Server_OnLoginFailed".equals(paramString))
     {
-      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(BusinessManager.a.a().a);
+      paramString = (List)this.e.get(BusinessManager.a.b().a);
       if (paramString != null)
       {
         paramString = paramString.iterator();
@@ -419,7 +419,7 @@ public class LiteSDKForCrossProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteSDKForCrossProcess
  * JD-Core Version:    0.7.0.1
  */

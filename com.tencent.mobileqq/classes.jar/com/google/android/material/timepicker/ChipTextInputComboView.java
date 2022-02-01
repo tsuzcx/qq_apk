@@ -30,11 +30,11 @@ class ChipTextInputComboView
   extends FrameLayout
   implements Checkable
 {
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
-  private final EditText jdField_a_of_type_AndroidWidgetEditText;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final Chip jdField_a_of_type_ComGoogleAndroidMaterialChipChip;
-  private final TextInputLayout jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout;
+  private final Chip a;
+  private final TextInputLayout b;
+  private final EditText c;
+  private TextWatcher d;
+  private TextView e;
   
   public ChipTextInputComboView(@NonNull Context paramContext)
   {
@@ -50,77 +50,77 @@ class ChipTextInputComboView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip = ((Chip)paramContext.inflate(R.layout.p, this, false));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout = ((TextInputLayout)paramContext.inflate(R.layout.q, this, false));
-    this.jdField_a_of_type_AndroidWidgetEditText = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a();
-    this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(4);
-    this.jdField_a_of_type_AndroidTextTextWatcher = new ChipTextInputComboView.TextFormatter(this, null);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-    a();
-    addView(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip);
-    addView(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.t));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSaveEnabled(false);
+    this.a = ((Chip)paramContext.inflate(R.layout.p, this, false));
+    this.b = ((TextInputLayout)paramContext.inflate(R.layout.q, this, false));
+    this.c = this.b.getEditText();
+    this.c.setVisibility(4);
+    this.d = new ChipTextInputComboView.TextFormatter(this, null);
+    this.c.addTextChangedListener(this.d);
+    b();
+    addView(this.a);
+    addView(this.b);
+    this.e = ((TextView)findViewById(R.id.t));
+    this.c.setSaveEnabled(false);
   }
   
-  private String a(CharSequence paramCharSequence)
+  private String b(CharSequence paramCharSequence)
   {
     return TimeModel.a(getResources(), paramCharSequence);
   }
   
-  private void a()
+  private void b()
   {
     if (Build.VERSION.SDK_INT >= 24)
     {
       LocaleList localLocaleList = getContext().getResources().getConfiguration().getLocales();
-      this.jdField_a_of_type_AndroidWidgetEditText.setImeHintLocales(localLocaleList);
+      this.c.setImeHintLocales(localLocaleList);
     }
   }
   
   public TextInputLayout a()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout;
+    return this.b;
   }
   
   public void a(InputFilter paramInputFilter)
   {
-    InputFilter[] arrayOfInputFilter1 = this.jdField_a_of_type_AndroidWidgetEditText.getFilters();
+    InputFilter[] arrayOfInputFilter1 = this.c.getFilters();
     InputFilter[] arrayOfInputFilter2 = (InputFilter[])Arrays.copyOf(arrayOfInputFilter1, arrayOfInputFilter1.length + 1);
     arrayOfInputFilter2[arrayOfInputFilter1.length] = paramInputFilter;
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(arrayOfInputFilter2);
+    this.c.setFilters(arrayOfInputFilter2);
   }
   
   public void a(AccessibilityDelegateCompat paramAccessibilityDelegateCompat)
   {
-    ViewCompat.setAccessibilityDelegate(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip, paramAccessibilityDelegateCompat);
+    ViewCompat.setAccessibilityDelegate(this.a, paramAccessibilityDelegateCompat);
   }
   
   public void a(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.setText(a(paramCharSequence));
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText()))
+    this.a.setText(b(paramCharSequence));
+    if (!TextUtils.isEmpty(this.c.getText()))
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(null);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      this.c.removeTextChangedListener(this.d);
+      this.c.setText(null);
+      this.c.addTextChangedListener(this.d);
     }
   }
   
   public boolean isChecked()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.isChecked();
+    return this.a.isChecked();
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    a();
+    b();
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.setChecked(paramBoolean);
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+    this.a.setChecked(paramBoolean);
+    Object localObject = this.c;
     int j = 0;
     if (paramBoolean) {
       i = 0;
@@ -128,7 +128,7 @@ class ChipTextInputComboView
       i = 4;
     }
     ((EditText)localObject).setVisibility(i);
-    localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip;
+    localObject = this.a;
     int i = j;
     if (paramBoolean) {
       i = 8;
@@ -136,10 +136,10 @@ class ChipTextInputComboView
     ((Chip)localObject).setVisibility(i);
     if (isChecked())
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetEditText.getText()))
+      this.c.requestFocus();
+      if (!TextUtils.isEmpty(this.c.getText()))
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+        localObject = this.c;
         ((EditText)localObject).setSelection(((EditText)localObject).getText().length());
       }
     }
@@ -147,22 +147,22 @@ class ChipTextInputComboView
   
   public void setOnClickListener(@Nullable View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.setOnClickListener(paramOnClickListener);
+    this.a.setOnClickListener(paramOnClickListener);
   }
   
   public void setTag(int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.setTag(paramInt, paramObject);
+    this.a.setTag(paramInt, paramObject);
   }
   
   public void toggle()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.toggle();
+    this.a.toggle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.timepicker.ChipTextInputComboView
  * JD-Core Version:    0.7.0.1
  */

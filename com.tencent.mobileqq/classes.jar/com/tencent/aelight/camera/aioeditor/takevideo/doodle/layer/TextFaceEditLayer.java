@@ -21,61 +21,80 @@ public class TextFaceEditLayer
   implements Drawable.Callback
 {
   public static final String a = "TextFaceEditLayer";
-  public int a;
-  public TextFaceEditLayer.LayerListener a;
-  public GestureHelper.ZoomItem a;
-  public GestureHelper a;
-  public boolean a;
+  public GestureHelper.ZoomItem b;
+  public GestureHelper c = new GestureHelper();
+  public int d;
+  public boolean e;
+  public TextFaceEditLayer.LayerListener f;
   
   public TextFaceEditLayer(DoodleView paramDoodleView)
   {
     super(paramDoodleView);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper = new GestureHelper();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(true);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(6.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(0.2F);
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, f1, f2))
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.j = 0;
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.c(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, f1, f2))
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.j = 1;
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, f1, f2)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.j = 2;
-    }
+    this.c.a(true);
+    this.c.a(6.0F);
+    this.c.b(0.2F);
   }
   
   private boolean a(float paramFloat1, float paramFloat2)
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, paramFloat1, paramFloat2, true);
+    return this.c.a(this.b, paramFloat1, paramFloat2, true);
   }
   
-  private void b(MotionEvent paramMotionEvent)
+  private void c(GestureHelper.ZoomItem paramZoomItem)
+  {
+    boolean bool1 = this.c.a(paramZoomItem, StoryGuideLineView.a, true);
+    boolean bool2 = this.c.a(paramZoomItem, StoryGuideLineView.b, false);
+    boolean bool3 = this.c.b(paramZoomItem, StoryGuideLineView.d, false);
+    TextFaceEditLayer.LayerListener localLayerListener = this.f;
+    if (localLayerListener != null) {
+      localLayerListener.a(bool1, bool2, false, bool3, paramZoomItem.S);
+    }
+    if (paramZoomItem != null)
+    {
+      if (paramZoomItem.M)
+      {
+        this.z.a(paramZoomItem.S, paramZoomItem.C, paramZoomItem.D, paramZoomItem.E, paramZoomItem.A, paramZoomItem.T, 2);
+        return;
+      }
+      this.z.a(paramZoomItem.S, paramZoomItem.C, paramZoomItem.D, paramZoomItem.E, paramZoomItem.A, paramZoomItem.T, 1);
+    }
+  }
+  
+  private void e(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (this.c.a(this.b, f1, f2))
+    {
+      this.b.O = 0;
+      return;
+    }
+    if (this.c.c(this.b, f1, f2))
+    {
+      this.b.O = 1;
+      return;
+    }
+    if (this.c.b(this.b, f1, f2)) {
+      this.b.O = 2;
+    }
+  }
+  
+  private void f(MotionEvent paramMotionEvent)
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, f1, f2))
+    if (this.c.a(this.b, f1, f2))
     {
-      paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener;
+      paramMotionEvent = this.f;
       if (paramMotionEvent != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
+        localObject = this.b;
         if ((localObject instanceof TextLayer.TextItem))
         {
-          paramMotionEvent = ((TextLayer.TextItem)localObject).a;
+          paramMotionEvent = ((TextLayer.TextItem)localObject).c;
           if (paramMotionEvent != null) {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, paramMotionEvent.b(), 2);
+            this.f.a(this.b, paramMotionEvent.g(), 2);
           }
         }
         else
@@ -84,100 +103,69 @@ public class TextFaceEditLayer
         }
       }
     }
-    else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.c(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, f1, f2))
+    else if (this.c.c(this.b, f1, f2))
     {
-      paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener;
+      paramMotionEvent = this.f;
       if (paramMotionEvent != null) {
-        paramMotionEvent.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem);
+        paramMotionEvent.a(this.b);
       }
     }
-    else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, f1, f2))
+    else if (this.c.b(this.b, f1, f2))
     {
-      paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener;
+      paramMotionEvent = this.f;
       if (paramMotionEvent != null) {
-        paramMotionEvent.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem);
+        paramMotionEvent.b(this.b);
       }
     }
-    else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, f1, f2, true)) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener != null))
+    else if ((this.c.a(this.b, f1, f2, true)) && (this.f != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
+      localObject = this.b;
       if (localObject != null) {
         if ((localObject instanceof TextLayer.TextItem))
         {
-          localObject = ((TextLayer.TextItem)localObject).a;
+          localObject = ((TextLayer.TextItem)localObject).c;
           if (localObject != null)
           {
-            if ((((DynamicTextItem)localObject).a()) && (((DynamicTextItem)localObject).f()))
+            if ((((DynamicTextItem)localObject).a()) && (((DynamicTextItem)localObject).q()))
             {
-              int i = ((DynamicTextItem)localObject).a(paramMotionEvent, c(), d(), (TextLayer.TextItem)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper);
-              ((DynamicTextItem)localObject).b(i);
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, i, 3, f1, f2);
+              int i = ((DynamicTextItem)localObject).a(paramMotionEvent, s(), t(), (TextLayer.TextItem)this.b, this.c);
+              ((DynamicTextItem)localObject).e(i);
+              this.f.a(this.b, i, 3, f1, f2);
               return;
             }
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, ((DynamicTextItem)localObject).b(), 0, f1, f2);
+            this.f.a(this.b, ((DynamicTextItem)localObject).g(), 0, f1, f2);
           }
         }
         else
         {
-          paramMotionEvent = jdField_a_of_type_JavaLangString;
+          paramMotionEvent = a;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("click the item:");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem);
+          ((StringBuilder)localObject).append(this.b);
           SLog.b(paramMotionEvent, ((StringBuilder)localObject).toString());
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, 0, 0, f1, f2);
+          this.f.a(this.b, 0, 0, f1, f2);
         }
       }
     }
   }
   
-  private void c(GestureHelper.ZoomItem paramZoomItem)
+  private void j()
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramZoomItem, StoryGuideLineView.jdField_a_of_type_Int, true);
-    boolean bool2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramZoomItem, StoryGuideLineView.b, false);
-    boolean bool3 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(paramZoomItem, StoryGuideLineView.d, false);
-    TextFaceEditLayer.LayerListener localLayerListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener;
-    if (localLayerListener != null) {
-      localLayerListener.a(bool1, bool2, false, bool3, paramZoomItem.g);
-    }
-    if (paramZoomItem != null)
-    {
-      if (paramZoomItem.f)
-      {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(paramZoomItem.g, paramZoomItem.k, paramZoomItem.l, paramZoomItem.m, paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF, paramZoomItem.h, 2);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(paramZoomItem.g, paramZoomItem.k, paramZoomItem.l, paramZoomItem.m, paramZoomItem.jdField_a_of_type_AndroidGraphicsPointF, paramZoomItem.h, 1);
-    }
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(false, 0.0F, 0.0F, 0.0F, null, false, 1);
-  }
-  
-  public GestureHelper.ZoomItem a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
+    this.z.a(false, 0.0F, 0.0F, 0.0F, null, false, 1);
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem = null;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a();
+    return a;
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem == null) {
+    if (this.b == null) {
       return;
     }
     paramCanvas.save();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.a(paramCanvas);
+    this.b.a(paramCanvas);
     paramCanvas.restore();
   }
   
@@ -188,33 +176,28 @@ public class TextFaceEditLayer
   
   public void a(TextFaceEditLayer.LayerListener paramLayerListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerTextFaceEditLayer$LayerListener = paramLayerListener;
+    this.f = paramLayerListener;
   }
   
   public void a(GestureHelper.ZoomItem paramZoomItem)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem = paramZoomItem;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem == null) {
+    this.b = paramZoomItem;
+    if (this.b == null) {
       return;
     }
     TextLayer.c(true);
-    paramZoomItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
+    paramZoomItem = this.b;
     if ((paramZoomItem instanceof TextLayer.TextItem))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(6.0F);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(0.2F);
+      this.c.a(6.0F);
+      this.c.b(0.2F);
       return;
     }
     if (((paramZoomItem instanceof FaceLayer.FaceItem)) || ((paramZoomItem instanceof FaceLayer.FaceAndTextItem)))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(18.0F);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.b(0.2F);
+      this.c.a(18.0F);
+      this.c.b(0.2F);
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
   
   public boolean a(long paramLong)
@@ -227,6 +210,12 @@ public class TextFaceEditLayer
     return false;
   }
   
+  public void b()
+  {
+    this.b = null;
+    this.c.a();
+  }
+  
   public void b(Canvas paramCanvas)
   {
     throw new IllegalStateException("TextFaceEditLayer should not save");
@@ -237,23 +226,18 @@ public class TextFaceEditLayer
     if (paramZoomItem == null) {
       return;
     }
-    paramZoomItem.f = true;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem != null) {
-      paramZoomItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.lockData(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isDataLocked());
+    paramZoomItem.M = true;
+    if (this.b != null) {
+      paramZoomItem.U.lockData(this.b.U.isDataLocked());
     }
     if ((paramZoomItem instanceof FaceLayer.FaceItem))
     {
       FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)paramZoomItem;
-      if ((localFaceItem.h == 1) || (localFaceItem.h == 3)) {
-        localFaceItem.a.setCallback(this);
+      if ((localFaceItem.y == 1) || (localFaceItem.y == 3)) {
+        localFaceItem.l.setCallback(this);
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem = paramZoomItem;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem != null;
+    this.b = paramZoomItem;
   }
   
   public boolean b(MotionEvent paramMotionEvent)
@@ -262,11 +246,11 @@ public class TextFaceEditLayer
     float f2 = paramMotionEvent.getY();
     String str;
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem, f1, f2, true))
+    if (this.c.a(this.b, f1, f2, true))
     {
       if (QLog.isColorLevel())
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("accept inside x:");
         localStringBuilder.append(paramMotionEvent.getX());
@@ -278,7 +262,7 @@ public class TextFaceEditLayer
     }
     if (QLog.isColorLevel())
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("accept outside x:");
       localStringBuilder.append(paramMotionEvent.getX());
@@ -289,13 +273,18 @@ public class TextFaceEditLayer
     return false;
   }
   
+  public boolean c()
+  {
+    return false;
+  }
+  
   public boolean c(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerBaseBaseLayer$OnLayerTouchListener != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerBaseBaseLayer$OnLayerTouchListener.a(this, paramMotionEvent);
+    if (this.K != null) {
+      this.K.a(this, paramMotionEvent);
     }
     int j = (int)paramMotionEvent.getY();
-    int k = Math.abs(j - this.jdField_a_of_type_Int);
+    int k = Math.abs(j - this.d);
     int m = paramMotionEvent.getAction() & 0xFF;
     int i = 0;
     if (m != 0) {
@@ -309,52 +298,62 @@ public class TextFaceEditLayer
       break;
       if (k > 10)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
         continue;
-        if (!this.jdField_a_of_type_Boolean) {
-          b(paramMotionEvent);
+        if (!this.e) {
+          f(paramMotionEvent);
         }
-        GestureHelper.ZoomItem localZoomItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
+        GestureHelper.ZoomItem localZoomItem = this.b;
         if (localZoomItem != null) {
-          localZoomItem.j = -1;
+          localZoomItem.O = -1;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a();
+        this.c.a();
         break;
-        this.jdField_a_of_type_Int = j;
-        this.jdField_a_of_type_Boolean = false;
+        this.d = j;
+        this.e = false;
         a(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
-        localZoomItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
+        localZoomItem = this.b;
         if (localZoomItem != null) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(localZoomItem);
+          this.c.a(localZoomItem);
         }
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem != null) {
-          a(paramMotionEvent);
+        if (this.b != null) {
+          e(paramMotionEvent);
         }
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(paramMotionEvent, true);
+    this.c.a(paramMotionEvent, true);
     if (i == 0)
     {
-      e();
+      j();
       return true;
     }
-    paramMotionEvent = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem;
+    paramMotionEvent = this.b;
     if (((paramMotionEvent instanceof FaceLayer.FaceItem)) || ((paramMotionEvent instanceof TextLayer.TextItem))) {
-      c(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem);
+      c(this.b);
     }
     return true;
   }
   
-  public void d()
+  public boolean d()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper$ZoomItem = null;
+    return this.b != null;
+  }
+  
+  public GestureHelper.ZoomItem h()
+  {
+    return this.b;
+  }
+  
+  public void i()
+  {
+    this.b = null;
     TextLayer.c(false);
-    k();
+    u();
   }
   
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    k();
+    u();
   }
   
   public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
@@ -363,7 +362,7 @@ public class TextFaceEditLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.TextFaceEditLayer
  * JD-Core Version:    0.7.0.1
  */

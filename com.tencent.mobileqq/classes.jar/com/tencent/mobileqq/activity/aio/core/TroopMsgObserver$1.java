@@ -14,16 +14,16 @@ class TroopMsgObserver$1
   {
     if (this.a.sendFailCode == 41)
     {
-      QQToast.a(this.this$0.a.getApp(), 2131691925, 0).a();
+      QQToast.makeText(this.this$0.c.getApp(), 2131888892, 0).show();
       return;
     }
-    QQToast.a(this.this$0.a.getApp(), 2131719235, 0).a();
-    VasWebviewUtil.a(this.this$0.a.getCurrentUin(), "Stick", "Send", "2", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    QQToast.makeText(this.this$0.c.getApp(), 2131916787, 0).show();
+    VasWebviewUtil.a(this.this$0.c.getCurrentUin(), "Stick", "Send", "2", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopMsgObserver.1
  * JD-Core Version:    0.7.0.1
  */

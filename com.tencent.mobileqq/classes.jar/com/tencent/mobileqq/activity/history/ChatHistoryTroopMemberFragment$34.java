@@ -50,93 +50,93 @@ class ChatHistoryTroopMemberFragment$34
       case 10: 
       default: 
       case 15: 
-        if ((this.a.jdField_c_of_type_AndroidAppDialog != null) && (this.a.jdField_c_of_type_AndroidAppDialog.isShowing()))
+        if ((this.a.L != null) && (this.a.L.isShowing()))
         {
-          this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
+          this.a.L.dismiss();
           return;
         }
         break;
       case 14: 
-        this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        this.a.aP.setVisibility(0);
         return;
       case 13: 
         paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Double += ChatHistoryTroopMemberFragment.jdField_b_of_type_Double;
-        if ((this.a.jdField_a_of_type_Double > this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress()) && (this.a.jdField_a_of_type_Double < 90.0D) && (ChatHistoryTroopMemberFragment.a(this.a) > 0))
+        paramMessage.bp += ChatHistoryTroopMemberFragment.bq;
+        if ((this.a.bp > this.a.aR.getProgress()) && (this.a.bp < 90.0D) && (ChatHistoryTroopMemberFragment.m(this.a) > 0))
         {
-          i = (int)this.a.jdField_a_of_type_Double;
-          d1 = ChatHistoryTroopMemberFragment.a(this.a);
-          d2 = this.a.jdField_a_of_type_Double;
+          i = (int)this.a.bp;
+          d1 = ChatHistoryTroopMemberFragment.m(this.a);
+          d2 = this.a.bp;
           Double.isNaN(d1);
           j = (int)(d1 * d2 / 100.0D);
           paramMessage = this.a;
-          ChatHistoryTroopMemberFragment.a(paramMessage, j, ChatHistoryTroopMemberFragment.a(paramMessage), i);
-          this.a.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(13), 800L);
+          ChatHistoryTroopMemberFragment.a(paramMessage, j, ChatHistoryTroopMemberFragment.m(paramMessage), i);
+          this.a.bn.sendMessageDelayed(this.a.bn.obtainMessage(13), 800L);
           return;
         }
         break;
       case 12: 
         synchronized (this.a)
         {
-          ChatHistoryTroopMemberFragment.b(this.a);
+          ChatHistoryTroopMemberFragment.n(this.a);
           Object localObject2 = (List)paramMessage.obj;
-          if ((localObject2 == null) && (this.a.jdField_d_of_type_Int != 14)) {
+          if ((localObject2 == null) && (this.a.az != 14)) {
             return;
           }
-          if (this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+          if (this.a.aP.getVisibility() == 0)
           {
-            this.a.jdField_b_of_type_AndroidOsHandler.removeMessages(13);
+            this.a.bn.removeMessages(13);
             i = paramMessage.arg1;
             d1 = i;
             Double.isNaN(d1);
-            i = ChatHistoryTroopMemberFragment.a(this.a);
+            i = ChatHistoryTroopMemberFragment.m(this.a);
             d2 = i;
             Double.isNaN(d2);
             d1 = d1 * 1.0D / d2;
             d1 = Math.min(d1 + 0.9D, 1.0D);
             i = (int)(100.0D * d1);
-            if (i > this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress())
+            if (i > this.a.aR.getProgress())
             {
-              j = ChatHistoryTroopMemberFragment.a(this.a);
+              j = ChatHistoryTroopMemberFragment.m(this.a);
               d2 = j;
               Double.isNaN(d2);
               j = (int)(d2 * d1);
-              ChatHistoryTroopMemberFragment.a(this.a, j, ChatHistoryTroopMemberFragment.a(this.a), i);
+              ChatHistoryTroopMemberFragment.a(this.a, j, ChatHistoryTroopMemberFragment.m(this.a), i);
             }
           }
           if (localObject2 != null) {
-            this.a.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+            this.a.J.addAll((Collection)localObject2);
           }
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("handleMessage, mJobCount left:");
-            ((StringBuilder)localObject2).append(ChatHistoryTroopMemberFragment.c(this.a));
+            ((StringBuilder)localObject2).append(ChatHistoryTroopMemberFragment.o(this.a));
             ((StringBuilder)localObject2).append("mATroopMemberList.size():");
-            ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_JavaUtilList.size());
+            ((StringBuilder)localObject2).append(this.a.J.size());
             QLog.d("Q.history.BaseFragment", 2, ((StringBuilder)localObject2).toString());
           }
-          if (ChatHistoryTroopMemberFragment.c(this.a) <= 0) {
+          if (ChatHistoryTroopMemberFragment.o(this.a) <= 0) {
             ChatHistoryTroopMemberFragment.b(this.a, true);
           }
-          if ((ChatHistoryTroopMemberFragment.b(this.a)) && (ChatHistoryTroopMemberFragment.d(this.a)))
+          if ((ChatHistoryTroopMemberFragment.k(this.a)) && (ChatHistoryTroopMemberFragment.p(this.a)))
           {
-            if (this.a.jdField_a_of_type_JavaUtilList.isEmpty()) {
+            if (this.a.J.isEmpty()) {
               return;
             }
-            this.a.z();
+            this.a.D();
             if (QLog.isColorLevel())
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("handleMessage real totalTime:");
-              ((StringBuilder)localObject2).append(System.currentTimeMillis() - ChatHistoryTroopMemberFragment.a(this.a));
+              ((StringBuilder)localObject2).append(System.currentTimeMillis() - ChatHistoryTroopMemberFragment.q(this.a));
               ((StringBuilder)localObject2).append("start refreshUI");
               QLog.d("Q.history.BaseFragment", 2, ((StringBuilder)localObject2).toString());
             }
-            if (this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager() != null) {
-              this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().notifyRefreshTroopMember();
+            if (this.a.bc.getProxyManager() != null) {
+              this.a.bc.getProxyManager().notifyRefreshTroopMember();
             }
-            paramMessage.obj = this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a();
+            paramMessage.obj = this.a.K.b();
             ChatHistoryTroopMemberFragment.a(this.a, paramMessage);
           }
           return;
@@ -144,36 +144,36 @@ class ChatHistoryTroopMemberFragment$34
       case 11: 
         paramMessage = (TroopInfo)paramMessage.obj;
         if (paramMessage.troopowneruin != null) {
-          this.a.f = paramMessage.troopowneruin;
+          this.a.C = paramMessage.troopowneruin;
         }
         if (paramMessage.Administrator != null) {
-          this.a.g = paramMessage.Administrator;
+          this.a.D = paramMessage.Administrator;
         }
         ??? = this.a;
         bool1 = bool2;
-        if (!((ChatHistoryTroopMemberFragment)???).jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramMessage.troopowneruin)) {
-          if ((this.a.g != null) && (this.a.g.contains(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+        if (!((ChatHistoryTroopMemberFragment)???).bc.getCurrentAccountUin().equals(paramMessage.troopowneruin)) {
+          if ((this.a.D != null) && (this.a.D.contains(this.a.bc.getCurrentAccountUin()))) {
             bool1 = bool2;
           } else {
             bool1 = false;
           }
         }
-        ((ChatHistoryTroopMemberFragment)???).jdField_d_of_type_Boolean = bool1;
-        if ((this.a.f != null) && (this.a.f.equals(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          this.a.o = "0";
-        } else if ((this.a.g != null) && (this.a.g.contains(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          this.a.o = "1";
+        ((ChatHistoryTroopMemberFragment)???).t = bool1;
+        if ((this.a.C != null) && (this.a.C.equals(this.a.bc.getCurrentAccountUin()))) {
+          this.a.aK = "0";
+        } else if ((this.a.D != null) && (this.a.D.contains(this.a.bc.getCurrentAccountUin()))) {
+          this.a.aK = "1";
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null)
+        if (this.a.K != null)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a();
+          this.a.K.c();
           return;
         }
         break;
       case 9: 
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null)
+        if (this.a.K != null)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a();
+          this.a.K.c();
           return;
         }
         break;
@@ -181,33 +181,33 @@ class ChatHistoryTroopMemberFragment$34
         paramMessage = (Object[])paramMessage.obj;
         bool1 = ((Boolean)paramMessage[0]).booleanValue();
         paramMessage = (ArrayList)paramMessage[1];
-        ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).inviteMember(this.a.getActivity(), this.a.jdField_c_of_type_JavaLangString, bool1, paramMessage, 1);
+        ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).inviteMember(this.a.getActivity(), this.a.w, bool1, paramMessage, 1);
         return;
       case 7: 
-        if ((this.a.jdField_c_of_type_AndroidAppDialog != null) && (this.a.jdField_c_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
+        if ((this.a.L != null) && (this.a.L.isShowing())) {
+          this.a.L.dismiss();
         }
-        QQToast.a(this.a.getBaseActivity(), this.a.getString(2131691473), 0).b(this.a.jdField_b_of_type_AndroidViewView.getHeight());
+        QQToast.makeText(this.a.getBaseActivity(), this.a.getString(2131888431), 0).show(this.a.M.getHeight());
         return;
       case 6: 
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null)
+        if (this.a.K != null)
         {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.b != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.b.clear();
+          if (this.a.K.e != null) {
+            this.a.K.e.clear();
           }
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a();
+          this.a.K.c();
         }
-        if ((this.a.jdField_c_of_type_AndroidAppDialog != null) && (this.a.jdField_c_of_type_AndroidAppDialog.isShowing())) {
-          this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
+        if ((this.a.L != null) && (this.a.L.isShowing())) {
+          this.a.L.dismiss();
         }
-        QQToast.a(this.a.getBaseActivity(), this.a.getString(2131691474), 0).b(this.a.jdField_b_of_type_AndroidViewView.getHeight());
-        ChatHistoryTroopMemberFragment.a(this.a);
+        QQToast.makeText(this.a.getBaseActivity(), this.a.getString(2131888432), 0).show(this.a.M.getHeight());
+        ChatHistoryTroopMemberFragment.c(this.a);
         return;
       case 5: 
-        this.a.z();
+        this.a.D();
         return;
       case 2: 
-        this.a.z();
+        this.a.D();
       case 1: 
         ChatHistoryTroopMemberFragment.a(this.a, paramMessage);
       }
@@ -216,7 +216,7 @@ class ChatHistoryTroopMemberFragment$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.34
  * JD-Core Version:    0.7.0.1
  */

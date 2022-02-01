@@ -10,7 +10,7 @@ class ViolaVideoView$3
   public void run()
   {
     ViolaVideoView.a(this.this$0, 8, 500);
-    if (ViolaVideoView.a(this.this$0).getVisibility() == 0)
+    if (ViolaVideoView.b(this.this$0).getVisibility() == 0)
     {
       ViolaVideoView.a(this.this$0, 5, null);
       return;
@@ -20,7 +20,7 @@ class ViolaVideoView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.ViolaVideoView.3
  * JD-Core Version:    0.7.0.1
  */

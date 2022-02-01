@@ -34,6 +34,9 @@ public class HippyQQImageLoader
   extends HippyImageLoader
 {
   protected static final int MAX_DOWNLOAD_RETRY_COUNT = 3;
+  private static final String PROTOCOL_FILE = "file:";
+  private static final String PROTOCOL_HTTP = "http:";
+  private static final String PROTOCOL_HTTPS = "https:";
   protected static final String TAG = "HippyImageAdapter";
   private Handler mHandler = new Handler(Looper.getMainLooper());
   private Set<URLDrawable> urlDrawableList = new HashSet();
@@ -81,6 +84,7 @@ public class HippyQQImageLoader
     localApngOptions.c(paramHippyImageInfo.reqHeight);
     localApngOptions.b(paramHippyImageInfo.reqWidth);
     localApngOptions.a(paramHippyImageInfo.repeatCount);
+    localApngOptions.a(false);
     return ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramHippyImageInfo.url, localApngOptions, str);
   }
   
@@ -103,8 +107,8 @@ public class HippyQQImageLoader
       QLog.d("HippyImageAdapter", 1, ((StringBuilder)localObject).toString());
     }
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = MobileQQ.getContext().getResources().getDrawable(2130851078);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = MobileQQ.getContext().getResources().getDrawable(2130851078);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = MobileQQ.getContext().getResources().getDrawable(2130853309);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = MobileQQ.getContext().getResources().getDrawable(2130853309);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramHippyImageInfo.reqWidth;
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramHippyImageInfo.reqHeight;
     ((URLDrawable.URLDrawableOptions)localObject).mUseApngImage = paramHippyImageInfo.isApng;
@@ -155,6 +159,7 @@ public class HippyQQImageLoader
     ((ApngOptions)localObject1).c(paramHippyImageInfo.reqHeight);
     ((ApngOptions)localObject1).b(paramHippyImageInfo.reqWidth);
     ((ApngOptions)localObject1).a(paramHippyImageInfo.repeatCount);
+    ((ApngOptions)localObject1).a(false);
     Object localObject2 = VasApngUtil.getCacheFilePath(paramHippyImageInfo.url);
     URLDrawable localURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramHippyImageInfo.url, (ApngOptions)localObject1, (String)localObject2);
     if (localURLDrawable == null)
@@ -202,8 +207,8 @@ public class HippyQQImageLoader
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = MobileQQ.getContext().getResources().getDrawable(2130851078);
-    localURLDrawableOptions.mLoadingDrawable = MobileQQ.getContext().getResources().getDrawable(2130851078);
+    localURLDrawableOptions.mFailedDrawable = MobileQQ.getContext().getResources().getDrawable(2130853309);
+    localURLDrawableOptions.mLoadingDrawable = MobileQQ.getContext().getResources().getDrawable(2130853309);
     localURLDrawableOptions.mRequestWidth = paramHippyImageInfo.reqWidth;
     localURLDrawableOptions.mRequestHeight = paramHippyImageInfo.reqHeight;
     localURLDrawableOptions.mUseApngImage = paramHippyImageInfo.isApng;
@@ -403,7 +408,7 @@ public class HippyQQImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQImageLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,9 @@ import android.util.Xml;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
-import androidx.collection.ArrayMap;
+import androidx.appcompat.resources.R.drawable;
 import androidx.collection.LongSparseArray;
+import androidx.collection.SimpleArrayMap;
 import androidx.collection.SparseArrayCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -37,7 +38,7 @@ public final class ResourceManagerInternal
   private static final String PLATFORM_VD_CLAZZ = "android.graphics.drawable.VectorDrawable";
   private static final String SKIP_DRAWABLE_TAG = "appcompat_skip_skip";
   private static final String TAG = "ResourceManagerInternal";
-  private ArrayMap<String, ResourceManagerInternal.InflateDelegate> mDelegates;
+  private SimpleArrayMap<String, ResourceManagerInternal.InflateDelegate> mDelegates;
   private final WeakHashMap<Context, LongSparseArray<WeakReference<Drawable.ConstantState>>> mDrawableCaches = new WeakHashMap(0);
   private boolean mHasCheckedVectorDrawableSetup;
   private ResourceManagerInternal.ResourceManagerHooks mHooks;
@@ -48,7 +49,7 @@ public final class ResourceManagerInternal
   private void addDelegate(@NonNull String paramString, @NonNull ResourceManagerInternal.InflateDelegate paramInflateDelegate)
   {
     if (this.mDelegates == null) {
-      this.mDelegates = new ArrayMap();
+      this.mDelegates = new SimpleArrayMap();
     }
     this.mDelegates.put(paramString, paramInflateDelegate);
   }
@@ -90,27 +91,13 @@ public final class ResourceManagerInternal
     localSparseArrayCompat1.append(paramInt, paramColorStateList);
   }
   
-  private static boolean arrayContains(int[] paramArrayOfInt, int paramInt)
-  {
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (paramArrayOfInt[i] == paramInt) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
   private void checkVectorDrawableSetup(@NonNull Context paramContext)
   {
     if (this.mHasCheckedVectorDrawableSetup) {
       return;
     }
     this.mHasCheckedVectorDrawableSetup = true;
-    paramContext = getDrawable(paramContext, 2130837590);
+    paramContext = getDrawable(paramContext, R.drawable.abc_vector_test);
     if ((paramContext != null) && (isVectorDrawable(paramContext))) {
       return;
     }
@@ -189,7 +176,7 @@ public final class ResourceManagerInternal
           paramContext = ((Drawable.ConstantState)localObject).newDrawable(paramContext.getResources());
           return paramContext;
         }
-        localLongSparseArray.delete(paramLong);
+        localLongSparseArray.remove(paramLong);
       }
       return null;
     }
@@ -246,7 +233,7 @@ public final class ResourceManagerInternal
   private Drawable loadDrawableFromDelegates(@NonNull Context paramContext, @DrawableRes int paramInt)
   {
     Object localObject1 = this.mDelegates;
-    if ((localObject1 != null) && (!((ArrayMap)localObject1).isEmpty()))
+    if ((localObject1 != null) && (!((SimpleArrayMap)localObject1).isEmpty()))
     {
       localObject1 = this.mKnownDrawableIdTags;
       if (localObject1 != null)
@@ -331,14 +318,6 @@ public final class ResourceManagerInternal
       return localObject2;
     }
     return null;
-  }
-  
-  private void removeDelegate(@NonNull String paramString, @NonNull ResourceManagerInternal.InflateDelegate paramInflateDelegate)
-  {
-    ArrayMap localArrayMap = this.mDelegates;
-    if ((localArrayMap != null) && (localArrayMap.get(paramString) == paramInflateDelegate)) {
-      this.mDelegates.remove(paramString);
-    }
   }
   
   private Drawable tintDrawable(@NonNull Context paramContext, @DrawableRes int paramInt, boolean paramBoolean, @NonNull Drawable paramDrawable)

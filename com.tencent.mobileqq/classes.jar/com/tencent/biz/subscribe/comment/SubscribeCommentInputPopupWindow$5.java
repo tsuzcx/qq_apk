@@ -14,14 +14,14 @@ class SubscribeCommentInputPopupWindow$5
   public void a()
   {
     QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
-    if (SubscribeCommentInputPopupWindow.a(this.a))
+    if (SubscribeCommentInputPopupWindow.e(this.a))
     {
       SubscribeCommentInputPopupWindow.b(this.a, false);
-      if (SubscribeCommentInputPopupWindow.a(this.a) != null) {
-        SubscribeCommentInputPopupWindow.a(this.a).getView().setVisibility(0);
+      if (SubscribeCommentInputPopupWindow.f(this.a) != null) {
+        SubscribeCommentInputPopupWindow.f(this.a).getView().setVisibility(0);
       }
-      if (SubscribeCommentInputPopupWindow.a(this.a) != null) {
-        SubscribeCommentInputPopupWindow.a(this.a).setVisibility(0);
+      if (SubscribeCommentInputPopupWindow.g(this.a) != null) {
+        SubscribeCommentInputPopupWindow.g(this.a).setVisibility(0);
       }
     }
     else
@@ -34,12 +34,12 @@ class SubscribeCommentInputPopupWindow$5
   public void a(int paramInt)
   {
     QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
-    if (SubscribeCommentInputPopupWindow.a(this.a) != paramInt)
+    if (SubscribeCommentInputPopupWindow.b(this.a) != paramInt)
     {
       SubscribeCommentInputPopupWindow.a(this.a, paramInt);
-      SubscribeCommentInputPopupWindow.a(this.a);
-      SubscribeCommentInputPopupWindow.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
-      SubscribeCommentInputPopupWindow.a(this.a).commit();
+      SubscribeCommentInputPopupWindow.c(this.a);
+      SubscribeCommentInputPopupWindow.d(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      SubscribeCommentInputPopupWindow.d(this.a).commit();
     }
     this.a.c();
     SubscribeCommentInputPopupWindow.a(this.a, true);

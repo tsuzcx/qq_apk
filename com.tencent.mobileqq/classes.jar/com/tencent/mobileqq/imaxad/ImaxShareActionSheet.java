@@ -21,17 +21,16 @@ import java.util.List;
 public class ImaxShareActionSheet
   implements AdapterView.OnItemClickListener
 {
-  public static URLDrawable a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AdvertisementItem jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem;
-  public ImaxadThirdProcessorProxy a;
+  public static URLDrawable c;
   protected ShareActionSheetBuilder a;
+  public ImaxadThirdProcessorProxy b = new ImaxadThirdProcessorProxy();
+  private Context d;
+  private AdvertisementItem e;
   
   public ImaxShareActionSheet(Context paramContext, AdvertisementItem paramAdvertisementItem)
   {
-    this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy = new ImaxadThirdProcessorProxy();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem = paramAdvertisementItem;
+    this.d = paramContext;
+    this.e = paramAdvertisementItem;
   }
   
   private boolean a(Context paramContext, String paramString1, String paramString2, String paramString3)
@@ -64,7 +63,7 @@ public class ImaxShareActionSheet
     boolean bool = true;
     label79:
     if (!bool) {
-      QQToast.a(paramContext, 2131719009, 0).a();
+      QQToast.makeText(paramContext, 2131916544, 0).show();
     }
     return bool;
   }
@@ -72,7 +71,7 @@ public class ImaxShareActionSheet
   public ShareActionSheetBuilder.ActionSheetItem a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString)
   {
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = this.jdField_a_of_type_AndroidContentContext.getString(paramInt1);
+    localActionSheetItem.label = this.d.getString(paramInt1);
     localActionSheetItem.icon = paramInt2;
     localActionSheetItem.iconNeedBg = paramBoolean;
     localActionSheetItem.action = paramInt3;
@@ -82,16 +81,16 @@ public class ImaxShareActionSheet
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719029));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(this);
+      this.a = new ShareActionSheetBuilder(this.d);
+      this.a.setActionSheetTitle(this.d.getString(2131916565));
+      this.a.setActionSheetItems(b());
+      this.a.setItemClickListener(this);
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+      this.a.show();
       return;
     }
     catch (Exception localException)
@@ -102,20 +101,20 @@ public class ImaxShareActionSheet
     }
   }
   
-  public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  public List<ShareActionSheetBuilder.ActionSheetItem>[] b()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(a(2131719034, 2130839067, true, 2, ""));
-    localArrayList.add(a(2131719036, 2130839068, true, 3, ""));
-    localArrayList.add(a(2131719041, 2130839071, true, 9, ""));
-    localArrayList.add(a(2131719032, 2130839065, true, 10, ""));
+    localArrayList.add(a(2131916570, 2130839221, true, 2, ""));
+    localArrayList.add(a(2131916572, 2130839222, true, 3, ""));
+    localArrayList.add(a(2131916577, 2130839225, true, 9, ""));
+    localArrayList.add(a(2131916568, 2130839219, true, 10, ""));
     return (List[])new ArrayList[] { localArrayList };
   }
   
-  public void b()
+  public void c()
   {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = null;
+    this.d = null;
+    this.a = null;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -125,38 +124,38 @@ public class ImaxShareActionSheet
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onshare_ItemClick mAdItem ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
+      ((StringBuilder)localObject1).append(this.e);
       if (((StringBuilder)localObject1).toString() == null) {
         localObject1 = " null";
       } else {
-        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.toString();
+        localObject1 = this.e.toString();
       }
       QLog.d("ImaxAdvertisement", 2, (String)localObject1);
     }
     Object localObject3 = paramView.getTag();
     if (localObject3 != null)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem;
+      localObject1 = this.e;
       if (localObject1 != null)
       {
-        String str3 = ((AdvertisementItem)localObject1).a.x;
-        Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.t;
-        String str2 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.s;
-        String str1 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.u;
+        String str3 = ((AdvertisementItem)localObject1).g.N;
+        Object localObject2 = this.e.g.J;
+        String str2 = this.e.g.I;
+        String str1 = this.e.g.K;
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.e;
+          localObject1 = this.e.i;
         }
         localObject2 = str2;
         if (TextUtils.isEmpty(str2)) {
-          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.d;
+          localObject2 = this.e.h;
         }
         if (TextUtils.isEmpty(str1)) {
-          str1 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.f;
+          str1 = this.e.j;
         }
-        if (a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2, (String)localObject1, str3))
+        if (a(this.d, (String)localObject2, (String)localObject1, str3))
         {
-          int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject3).a.action;
+          int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject3).c.action;
           if (i != 2)
           {
             if (i != 3)
@@ -164,21 +163,21 @@ public class ImaxShareActionSheet
               if (i != 9)
               {
                 if (i == 10) {
-                  this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem, jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_AndroidContentContext, (String)localObject2, str1, str3, (String)localObject1, 1002);
+                  this.b.a(this.e, c, this.d, (String)localObject2, str1, str3, (String)localObject1, 1002);
                 }
               }
               else {
-                this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem, jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_AndroidContentContext, (String)localObject2, str1, str3, (String)localObject1, 1001);
+                this.b.a(this.e, c, this.d, (String)localObject2, str1, str3, (String)localObject1, 1001);
               }
             }
             else {
-              this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy.b(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem, this.jdField_a_of_type_AndroidContentContext, (String)localObject2, str1, str3, (String)localObject1);
+              this.b.b(this.e, this.d, (String)localObject2, str1, str3, (String)localObject1);
             }
           }
           else {
-            this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem, this.jdField_a_of_type_AndroidContentContext, (String)localObject1, (String)localObject2, str1, str3);
+            this.b.a(this.e, this.d, (String)localObject1, (String)localObject2, str1, str3);
           }
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+          this.a.dismiss();
         }
       }
     }
@@ -187,7 +186,7 @@ public class ImaxShareActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxShareActionSheet
  * JD-Core Version:    0.7.0.1
  */

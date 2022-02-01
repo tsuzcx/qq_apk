@@ -3,6 +3,8 @@ package com.tencent.mobileqq.mini.apkgEntity;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.mini.entity.AppDetainRecordEntity;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.SQLiteOpenHelperFacade;
 import com.tencent.mobileqq.persistence.TableBuilder;
@@ -10,7 +12,7 @@ import com.tencent.mobileqq.persistence.TableBuilder;
 public class MiniAppEntityManagerFactory
   extends EntityManagerFactory
 {
-  private static final int DB_VERSION = 12;
+  private static final int DB_VERSION = 14;
   
   public MiniAppEntityManagerFactory(String paramString)
   {
@@ -25,7 +27,7 @@ public class MiniAppEntityManagerFactory
       localStringBuilder.append("miniapp_");
       localStringBuilder.append(paramString);
       localStringBuilder.append(".db");
-      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), 12);
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, localStringBuilder.toString(), 14);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
@@ -40,6 +42,7 @@ public class MiniAppEntityManagerFactory
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppShowInfoEntity()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoByIdEntity()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoByLinkEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new AppDetainRecordEntity()));
   }
   
   protected String getPackageName()
@@ -65,11 +68,14 @@ public class MiniAppEntityManagerFactory
     if (paramInt1 < 11) {
       paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MiniAppShowInfoEntity.class.getSimpleName()));
     }
+    if (paramInt1 < 14) {
+      paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MiniAppLocalSearchEntity.class.getSimpleName()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

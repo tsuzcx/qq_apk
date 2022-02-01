@@ -34,7 +34,7 @@ public class TroopSystemMsgUtil
   
   public static String a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    List localList = a(paramString);
+    List localList = c(paramString);
     String str1 = paramString;
     if (localList.size() > 0)
     {
@@ -74,7 +74,16 @@ public class TroopSystemMsgUtil
     return paramString1.replace(paramString3.toString(), localStringBuilder.toString());
   }
   
-  private static List<String> a(String paramString)
+  public static String b(String paramString)
+  {
+    paramString = Pattern.compile("\"\\d+\"", 2).matcher(paramString);
+    if (paramString.find()) {
+      return paramString.group();
+    }
+    return null;
+  }
+  
+  private static List<String> c(String paramString)
   {
     Object localObject = Pattern.compile("\"\\d+\"", 2);
     Pattern localPattern = Pattern.compile("\\d+", 2);
@@ -89,19 +98,10 @@ public class TroopSystemMsgUtil
     }
     return localArrayList;
   }
-  
-  public static String b(String paramString)
-  {
-    paramString = Pattern.compile("\"\\d+\"", 2).matcher(paramString);
-    if (paramString.find()) {
-      return paramString.group();
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.TroopSystemMsgUtil
  * JD-Core Version:    0.7.0.1
  */

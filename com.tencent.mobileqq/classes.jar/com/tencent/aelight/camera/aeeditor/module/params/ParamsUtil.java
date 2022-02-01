@@ -17,11 +17,6 @@ public class ParamsUtil
     a.add("pbem00");
   }
   
-  public static int a()
-  {
-    return OfflineConfig.getPhonePerfLevel(BaseApplicationImpl.getContext());
-  }
-  
   public static int a(double paramDouble)
   {
     double d = Math.floor(paramDouble);
@@ -79,6 +74,11 @@ public class ParamsUtil
     return (String)a("低端机", "中端机", "高端机");
   }
   
+  public static int b()
+  {
+    return OfflineConfig.getPhonePerfLevel(BaseApplicationImpl.getContext());
+  }
+  
   public static <T> T b(T paramT1, T paramT2, T paramT3)
   {
     long l = LightDeviceUtils.getTotalRamMemory(BaseApplicationImpl.getContext());
@@ -91,14 +91,14 @@ public class ParamsUtil
     return paramT3;
   }
   
-  public static String b()
+  public static String c()
   {
     return Build.MODEL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.params.ParamsUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -27,6 +27,8 @@ public abstract interface ISPReporter
   
   public abstract void onOpenMediaPlayer(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerOption paramSuperPlayerOption);
   
+  public abstract void onPcdnDownloadFailed(String paramString);
+  
   public abstract void onPrePlayViewShow();
   
   public abstract void onPrepared();
@@ -53,7 +55,7 @@ public abstract interface ISPReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.report.ISPReporter
  * JD-Core Version:    0.7.0.1
  */

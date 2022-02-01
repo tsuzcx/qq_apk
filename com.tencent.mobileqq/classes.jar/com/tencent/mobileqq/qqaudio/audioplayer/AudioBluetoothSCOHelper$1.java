@@ -31,15 +31,15 @@ class AudioBluetoothSCOHelper$1
             paramInt = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
           }
         }
-        AudioDeviceHelper.jdField_a_of_type_Int = paramInt;
+        AudioDeviceHelper.c = paramInt;
       }
       else
       {
-        AudioDeviceHelper.jdField_a_of_type_Int = 0;
+        AudioDeviceHelper.c = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase.d(true);
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerBase.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
+      this.a.e(true);
+      this.a.c(this.b, this.c);
+      this.d.closeProfileProxy(1, paramBluetoothProfile);
     }
   }
   
@@ -47,7 +47,7 @@ class AudioBluetoothSCOHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioBluetoothSCOHelper.1
  * JD-Core Version:    0.7.0.1
  */

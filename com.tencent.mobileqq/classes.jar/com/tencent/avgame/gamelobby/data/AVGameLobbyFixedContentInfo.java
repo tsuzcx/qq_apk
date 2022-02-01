@@ -5,95 +5,95 @@ import androidx.annotation.NonNull;
 public class AVGameLobbyFixedContentInfo
   extends AVGameBaseData
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private static boolean a = false;
+  private String b;
   private int c;
   private int d;
+  private int e;
+  private String f;
+  private String[] g;
+  private int h;
   
   public AVGameLobbyFixedContentInfo(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String[] paramArrayOfString, int paramInt4)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.d = paramInt4;
+    this.b = paramString1;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramString2;
+    this.g = paramArrayOfString;
+    this.h = paramInt4;
   }
   
   public static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    a = paramBoolean;
   }
   
-  public static boolean b()
+  public static boolean k()
   {
-    return jdField_a_of_type_Boolean;
+    return a;
   }
   
   public int a()
   {
-    return this.d;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.h;
   }
   
   public void a(int paramInt)
   {
-    this.c = paramInt;
+    this.e = paramInt;
   }
   
   public void a(String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-  }
-  
-  public boolean a()
-  {
-    return this.d == 1;
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  @NonNull
-  public int b()
-  {
-    return 4;
+    this.g = paramArrayOfString;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
+  @NonNull
   public int c()
   {
-    return this.jdField_a_of_type_Int;
+    return 4;
   }
   
   public int d()
   {
-    return this.jdField_b_of_type_Int;
+    return this.c;
   }
   
   public int e()
   {
-    return this.c;
+    return this.d;
   }
   
   public int f()
   {
-    return this.d;
+    return this.e;
+  }
+  
+  public String g()
+  {
+    return this.f;
+  }
+  
+  public String[] h()
+  {
+    return this.g;
+  }
+  
+  public int i()
+  {
+    return this.h;
+  }
+  
+  public boolean j()
+  {
+    return this.h == 1;
   }
 }
 

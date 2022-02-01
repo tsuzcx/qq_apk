@@ -8,13 +8,13 @@ import org.xmlpull.v1.XmlPullParser;
 
 final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
 {
-  private CloudAVEngineImpl.AVEngineCache.CacheFileVisitor jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
-  private File jdField_a_of_type_JavaIoFile;
+  private CloudAVEngineImpl.AVEngineCache.CacheFileVisitor a;
+  private File b;
   
   public CloudAVEngineImpl$AVEngineCache$CacheFileReader(File paramFile, CloudAVEngineImpl.AVEngineCache.CacheFileVisitor paramCacheFileVisitor)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache$CacheFileVisitor = paramCacheFileVisitor;
+    this.b = paramFile;
+    this.a = paramCacheFileVisitor;
   }
   
   private Pair<String, ICloudAVEngine.ResultBundle> a(XmlPullParser paramXmlPullParser)
@@ -26,14 +26,14 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
         return null;
       }
       ICloudAVEngine.ResultBundle localResultBundle = new ICloudAVEngine.ResultBundle();
-      localResultBundle.jdField_a_of_type_Int = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "AttrType"));
+      localResultBundle.a = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "AttrType"));
       localResultBundle.b = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "Category"));
       localResultBundle.c = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "SubCategory"));
-      localResultBundle.d = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "Action"));
-      localResultBundle.jdField_a_of_type_Long = Long.parseLong(paramXmlPullParser.getAttributeValue(null, "ExpireTime"));
+      localResultBundle.e = Integer.parseInt(paramXmlPullParser.getAttributeValue(null, "Action"));
+      localResultBundle.d = Long.parseLong(paramXmlPullParser.getAttributeValue(null, "ExpireTime"));
       paramXmlPullParser = paramXmlPullParser.getAttributeValue(null, "ExtraInfo");
       if (!TextUtils.isEmpty(paramXmlPullParser)) {
-        localResultBundle.jdField_a_of_type_ArrayOfByte = Base64.decode(paramXmlPullParser, 0);
+        localResultBundle.g = Base64.decode(paramXmlPullParser, 0);
       }
       paramXmlPullParser = new Pair(str, localResultBundle);
       return paramXmlPullParser;
@@ -49,52 +49,52 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
   public void a()
   {
     // Byte code:
-    //   0: new 99	javax/crypto/spec/IvParameterSpec
+    //   0: new 101	javax/crypto/spec/IvParameterSpec
     //   3: dup
-    //   4: invokestatic 104	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache:a	()[B
-    //   7: invokespecial 107	javax/crypto/spec/IvParameterSpec:<init>	([B)V
+    //   4: invokestatic 106	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache:b	()[B
+    //   7: invokespecial 109	javax/crypto/spec/IvParameterSpec:<init>	([B)V
     //   10: astore 4
-    //   12: new 109	javax/crypto/spec/SecretKeySpec
+    //   12: new 111	javax/crypto/spec/SecretKeySpec
     //   15: dup
-    //   16: invokestatic 111	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache:b	()[B
-    //   19: ldc 113
-    //   21: invokespecial 116	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   16: invokestatic 113	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache:c	()[B
+    //   19: ldc 115
+    //   21: invokespecial 118	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   24: astore 5
-    //   26: ldc 118
-    //   28: invokestatic 124	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   26: ldc 120
+    //   28: invokestatic 126	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   31: astore 6
     //   33: aload 6
     //   35: iconst_2
     //   36: aload 5
     //   38: aload 4
-    //   40: invokevirtual 128	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
-    //   43: new 130	javax/crypto/CipherInputStream
+    //   40: invokevirtual 130	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
+    //   43: new 132	javax/crypto/CipherInputStream
     //   46: dup
-    //   47: new 132	java/io/BufferedInputStream
+    //   47: new 134	java/io/BufferedInputStream
     //   50: dup
-    //   51: new 134	java/io/FileInputStream
+    //   51: new 136	java/io/FileInputStream
     //   54: dup
     //   55: aload_0
-    //   56: getfield 14	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   59: invokespecial 137	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   62: invokespecial 140	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   56: getfield 15	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:b	Ljava/io/File;
+    //   59: invokespecial 139	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   62: invokespecial 142	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   65: aload 6
-    //   67: invokespecial 143	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
+    //   67: invokespecial 145	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
     //   70: astore 6
     //   72: aload 6
     //   74: astore 4
-    //   76: invokestatic 149	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
+    //   76: invokestatic 151	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
     //   79: astore 8
     //   81: aload 6
     //   83: astore 4
     //   85: aload 8
     //   87: aload 6
-    //   89: ldc 151
-    //   91: invokeinterface 155 3 0
+    //   89: ldc 153
+    //   91: invokeinterface 157 3 0
     //   96: aload 6
     //   98: astore 4
     //   100: aload 8
-    //   102: invokeinterface 159 1 0
+    //   102: invokeinterface 161 1 0
     //   107: istore_3
     //   108: iconst_0
     //   109: istore_1
@@ -109,21 +109,21 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
     //   123: aload 6
     //   125: astore 4
     //   127: aload 8
-    //   129: invokeinterface 163 1 0
+    //   129: invokeinterface 165 1 0
     //   134: astore 9
     //   136: aload 6
     //   138: astore 4
     //   140: aload 9
-    //   142: ldc 165
-    //   144: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   142: ldc 167
+    //   144: invokevirtual 173	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   147: ifeq +27 -> 174
     //   150: aload 6
     //   152: astore 4
     //   154: aload 8
     //   156: aconst_null
-    //   157: ldc 173
-    //   159: invokeinterface 28 3 0
-    //   164: invokestatic 45	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   157: ldc 175
+    //   159: invokeinterface 29 3 0
+    //   164: invokestatic 46	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   167: iconst_1
     //   168: if_icmpeq +317 -> 485
     //   171: goto +162 -> 333
@@ -140,14 +140,14 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
     //   190: aload 6
     //   192: astore 4
     //   194: aload 9
-    //   196: ldc 175
-    //   198: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   196: ldc 177
+    //   198: invokevirtual 173	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   201: ifeq +111 -> 312
     //   204: aload 6
     //   206: astore 4
     //   208: aload_0
     //   209: aload 8
-    //   211: invokespecial 177	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:a	(Lorg/xmlpull/v1/XmlPullParser;)Lcom/tencent/util/Pair;
+    //   211: invokespecial 179	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:a	(Lorg/xmlpull/v1/XmlPullParser;)Lcom/tencent/util/Pair;
     //   214: astore 5
     //   216: iload_1
     //   217: istore_2
@@ -165,10 +165,10 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
     //   236: astore 5
     //   238: aload 6
     //   240: astore 4
-    //   242: ldc 175
+    //   242: ldc 177
     //   244: aload 8
-    //   246: invokeinterface 163 1 0
-    //   251: invokevirtual 171	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   246: invokeinterface 165 1 0
+    //   251: invokevirtual 173	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   254: ifeq +58 -> 312
     //   257: iload_1
     //   258: istore_2
@@ -179,25 +179,25 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
     //   268: aload 6
     //   270: astore 4
     //   272: aload_0
-    //   273: getfield 16	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache$CacheFileVisitor	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
+    //   273: getfield 17	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:a	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
     //   276: ifnull +218 -> 494
     //   279: aload 6
     //   281: astore 4
     //   283: aload_0
-    //   284: getfield 16	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache$CacheFileVisitor	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
+    //   284: getfield 17	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:a	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
     //   287: aload 7
-    //   289: getfield 181	com/tencent/util/Pair:first	Ljava/lang/Object;
-    //   292: checkcast 167	java/lang/String
+    //   289: getfield 183	com/tencent/util/Pair:first	Ljava/lang/Object;
+    //   292: checkcast 169	java/lang/String
     //   295: aload 7
-    //   297: getfield 184	com/tencent/util/Pair:second	Ljava/lang/Object;
-    //   300: checkcast 36	com/tencent/qqprotect/qsec/ICloudAVEngine$ResultBundle
-    //   303: invokevirtual 189	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor:a	(Ljava/lang/String;Lcom/tencent/qqprotect/qsec/ICloudAVEngine$ResultBundle;)Z
+    //   297: getfield 186	com/tencent/util/Pair:second	Ljava/lang/Object;
+    //   300: checkcast 37	com/tencent/qqprotect/qsec/ICloudAVEngine$ResultBundle
+    //   303: invokevirtual 191	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor:a	(Ljava/lang/String;Lcom/tencent/qqprotect/qsec/ICloudAVEngine$ResultBundle;)Z
     //   306: ifne +188 -> 494
     //   309: goto +24 -> 333
     //   312: aload 6
     //   314: astore 4
     //   316: aload 8
-    //   318: invokeinterface 192 1 0
+    //   318: invokeinterface 194 1 0
     //   323: istore_3
     //   324: iload_2
     //   325: istore_1
@@ -205,13 +205,13 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
     //   328: astore 7
     //   330: goto -217 -> 113
     //   333: aload 6
-    //   335: invokevirtual 197	java/io/InputStream:close	()V
+    //   335: invokevirtual 199	java/io/InputStream:close	()V
     //   338: goto +10 -> 348
     //   341: astore 4
     //   343: aload 4
-    //   345: invokevirtual 198	java/io/IOException:printStackTrace	()V
+    //   345: invokevirtual 200	java/io/IOException:printStackTrace	()V
     //   348: aload_0
-    //   349: getfield 16	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache$CacheFileVisitor	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
+    //   349: getfield 17	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:a	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
     //   352: astore 4
     //   354: aload 4
     //   356: ifnull +73 -> 429
@@ -230,22 +230,22 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
     //   384: aload 5
     //   386: astore 4
     //   388: aload 7
-    //   390: invokevirtual 93	java/lang/Exception:printStackTrace	()V
+    //   390: invokevirtual 95	java/lang/Exception:printStackTrace	()V
     //   393: aload 5
     //   395: ifnull +18 -> 413
     //   398: aload 5
-    //   400: invokevirtual 197	java/io/InputStream:close	()V
+    //   400: invokevirtual 199	java/io/InputStream:close	()V
     //   403: goto +10 -> 413
     //   406: astore 4
     //   408: aload 4
-    //   410: invokevirtual 198	java/io/IOException:printStackTrace	()V
+    //   410: invokevirtual 200	java/io/IOException:printStackTrace	()V
     //   413: aload_0
-    //   414: getfield 16	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache$CacheFileVisitor	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
+    //   414: getfield 17	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:a	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
     //   417: astore 4
     //   419: aload 4
     //   421: ifnull +8 -> 429
     //   424: aload 4
-    //   426: invokevirtual 200	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor:a	()V
+    //   426: invokevirtual 202	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor:a	()V
     //   429: return
     //   430: astore 6
     //   432: aload 4
@@ -255,18 +255,18 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
     //   440: aload 5
     //   442: ifnull +18 -> 460
     //   445: aload 5
-    //   447: invokevirtual 197	java/io/InputStream:close	()V
+    //   447: invokevirtual 199	java/io/InputStream:close	()V
     //   450: goto +10 -> 460
     //   453: astore 5
     //   455: aload 5
-    //   457: invokevirtual 198	java/io/IOException:printStackTrace	()V
+    //   457: invokevirtual 200	java/io/IOException:printStackTrace	()V
     //   460: aload_0
-    //   461: getfield 16	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl$AVEngineCache$CacheFileVisitor	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
+    //   461: getfield 17	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileReader:a	Lcom/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor;
     //   464: astore 5
     //   466: aload 5
     //   468: ifnull +8 -> 476
     //   471: aload 5
-    //   473: invokevirtual 200	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor:a	()V
+    //   473: invokevirtual 202	com/tencent/qqprotect/qsec/CloudAVEngineImpl$AVEngineCache$CacheFileVisitor:a	()V
     //   476: goto +6 -> 482
     //   479: aload 4
     //   481: athrow
@@ -340,7 +340,7 @@ final class CloudAVEngineImpl$AVEngineCache$CacheFileReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.AVEngineCache.CacheFileReader
  * JD-Core Version:    0.7.0.1
  */

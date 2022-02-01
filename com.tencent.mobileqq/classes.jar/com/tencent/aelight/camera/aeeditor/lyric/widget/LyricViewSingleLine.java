@@ -11,16 +11,21 @@ public class LyricViewSingleLine
   public LyricViewSingleLine(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = LayoutInflater.from(paramContext).inflate(2064318577, this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll = ((LyricViewScroll)paramContext.findViewById(2064122852));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewInternalBase = ((LyricViewInternalSingleLine)paramContext.findViewById(2064122851));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewInternalBase.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewAttribute);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.setScrollEnable(false);
+    paramContext = LayoutInflater.from(paramContext).inflate(2064056449, this);
+    this.b = ((LyricViewScroll)paramContext.findViewById(2063991625));
+    this.a = ((LyricViewInternalSingleLine)paramContext.findViewById(2063991624));
+    this.a.a(this.c);
+    this.b.setScrollEnable(false);
+  }
+  
+  public LyricViewInternalBase getInternal()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricViewSingleLine
  * JD-Core Version:    0.7.0.1
  */

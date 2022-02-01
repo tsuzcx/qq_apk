@@ -19,18 +19,18 @@ import tencent.im.msg.im_msg_body.RichText;
 public class MixedMsgManager$PicUploadCallBack2
   implements UpCallBack
 {
-  protected MessageForMixedMsg a;
-  protected String a;
   protected ArrayList<AtTroopMemberInfo> a;
-  protected Map<String, List<Integer>> a;
+  protected Map<String, List<Integer>> b;
+  protected MessageForMixedMsg c;
+  protected String d;
   
   public MixedMsgManager$PicUploadCallBack2(MessageForMixedMsg paramMessageForMixedMsg, Map<String, List<Integer>> paramMap, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg = paramMap;
-    this.jdField_a_of_type_JavaLangString = paramArrayList;
-    this.jdField_a_of_type_JavaUtilMap = paramString;
+    this.c = paramMap;
+    this.d = paramArrayList;
+    this.b = paramString;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.a = localObject;
   }
   
   private void a(MessageForMixedMsg paramMessageForMixedMsg)
@@ -38,8 +38,8 @@ public class MixedMsgManager$PicUploadCallBack2
     if ((paramMessageForMixedMsg.msgElemList.get(0) instanceof MessageForText))
     {
       localObject = (MessageForText)paramMessageForMixedMsg.msgElemList.get(0);
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (((MessageForText)localObject).atInfoList == null)) {
-        ((MessageForText)localObject).atInfoList = this.jdField_a_of_type_JavaUtilArrayList;
+      if ((this.a != null) && (((MessageForText)localObject).atInfoList == null)) {
+        ((MessageForText)localObject).atInfoList = this.a;
       }
     }
     if (paramMessageForMixedMsg.istroop == 1)
@@ -51,13 +51,13 @@ public class MixedMsgManager$PicUploadCallBack2
         AnonymousChatHelper.a().a(localMessageRecord);
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager;
-    MixedMsgManager.a((MixedMsgManager)localObject, ((MixedMsgManager)localObject).a, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg, true);
+    Object localObject = this.e;
+    MixedMsgManager.a((MixedMsgManager)localObject, ((MixedMsgManager)localObject).b, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg, true);
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    Object localObject1 = (List)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = (List)this.b.get(this.d);
     if (localObject1 != null)
     {
       if (((List)localObject1).isEmpty()) {
@@ -67,7 +67,7 @@ public class MixedMsgManager$PicUploadCallBack2
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (Integer)((Iterator)localObject1).next();
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.getSubMessage(((Integer)localObject2).intValue());
+        localObject2 = this.c.getSubMessage(((Integer)localObject2).intValue());
         if ((localObject2 instanceof MessageForPic)) {
           ((MessageForPic)localObject2).richText = paramRichText;
         }
@@ -83,7 +83,7 @@ public class MixedMsgManager$PicUploadCallBack2
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.jdField_a_of_type_JavaLangString);
+      localObject1 = new ErrorMessage(paramSendResult.b, paramSendResult.c);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("reqUploadMultiPics UiCallBack success result = ");
       ((StringBuilder)localObject2).append(paramSendResult);
@@ -92,17 +92,17 @@ public class MixedMsgManager$PicUploadCallBack2
       QLog.d("MixedMsgManager", 2, ((StringBuilder)localObject2).toString());
     }
     StringBuilder localStringBuilder;
-    if (paramSendResult.jdField_b_of_type_Int != 0)
+    if (paramSendResult.b != 0)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager;
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+      localObject1 = this.e;
+      localObject2 = this.c;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("send Msg fail: ");
       localStringBuilder.append(paramSendResult);
       MixedMsgManager.a((MixedMsgManager)localObject1, (MessageForMixedMsg)localObject2, false, localStringBuilder.toString());
       return;
     }
-    Object localObject1 = (List)this.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = (List)this.b.remove(this.d);
     if (localObject1 != null)
     {
       if (((List)localObject1).isEmpty()) {
@@ -112,7 +112,7 @@ public class MixedMsgManager$PicUploadCallBack2
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Integer)((Iterator)localObject1).next();
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.getSubMessage(((Integer)localObject2).intValue());
+        localObject2 = this.c.getSubMessage(((Integer)localObject2).intValue());
         if ((localObject2 instanceof MessageForPic))
         {
           localObject2 = (MessageForPic)localObject2;
@@ -123,10 +123,10 @@ public class MixedMsgManager$PicUploadCallBack2
             localStringBuilder.append(((MessageForPic)localObject2).toLogString());
             QLog.d("MixedMsgManager", 2, localStringBuilder.toString());
           }
-          ((MessageForPic)localObject2).md5 = paramSendResult.d;
-          ((MessageForPic)localObject2).uuid = paramSendResult.c;
-          ((MessageForPic)localObject2).size = paramSendResult.jdField_a_of_type_Long;
-          ((MessageForPic)localObject2).groupFileID = paramSendResult.jdField_b_of_type_Long;
+          ((MessageForPic)localObject2).md5 = paramSendResult.g;
+          ((MessageForPic)localObject2).uuid = paramSendResult.f;
+          ((MessageForPic)localObject2).size = paramSendResult.e;
+          ((MessageForPic)localObject2).groupFileID = paramSendResult.h;
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
@@ -134,22 +134,22 @@ public class MixedMsgManager$PicUploadCallBack2
             localStringBuilder.append(((MessageForPic)localObject2).toLogString());
             QLog.d("MixedMsgManager", 2, localStringBuilder.toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.prewrite();
+          this.c.prewrite();
         }
       }
-      if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
+      if (this.b.isEmpty())
       {
         if (QLog.isColorLevel()) {
           QLog.d("MixedMsgManager", 2, "onSend, mMsgMap isEmpty, packAndSend..");
         }
-        a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+        a(this.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager.PicUploadCallBack2
  * JD-Core Version:    0.7.0.1
  */

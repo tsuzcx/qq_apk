@@ -2,9 +2,9 @@ package com.tencent.mobileqq.msf.core.net;
 
 import android.os.Handler;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ak;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.al;
 import com.tencent.mobileqq.msf.core.d;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.qphone.base.a;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -135,7 +135,7 @@ class n$b
     //   115: iload_1
     //   116: putfield 21	com/tencent/mobileqq/msf/core/net/n$b:a	I
     //   119: iconst_0
-    //   120: putstatic 95	com/tencent/mobileqq/msf/core/ac:P	Z
+    //   120: putstatic 95	com/tencent/mobileqq/msf/core/ad:P	Z
     //   123: aload_0
     //   124: invokevirtual 98	java/lang/Object:notifyAll	()V
     //   127: aload_0
@@ -179,8 +179,8 @@ class n$b
   
   private void b(CopyOnWriteArrayList paramCopyOnWriteArrayList1, CopyOnWriteArrayList paramCopyOnWriteArrayList2, CopyOnWriteArrayList paramCopyOnWriteArrayList3, CopyOnWriteArrayList paramCopyOnWriteArrayList4, ArrayList paramArrayList)
   {
-    ak.a(String.format("开始竞速: delay %d..", new Object[] { Long.valueOf(this.d.f.delayIpRace.get()) }));
-    com.tencent.mobileqq.msf.core.ac.P = true;
+    al.a(String.format("开始竞速: delay %d..", new Object[] { Long.valueOf(this.d.f.delayIpRace.get()) }));
+    com.tencent.mobileqq.msf.core.ad.P = true;
     ArrayList localArrayList = new ArrayList();
     n.b(this.d, paramCopyOnWriteArrayList3, paramCopyOnWriteArrayList4, localArrayList, 1);
     n.b(this.d, paramCopyOnWriteArrayList1, paramCopyOnWriteArrayList2, paramArrayList, 0);
@@ -521,7 +521,7 @@ class n$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.n.b
  * JD-Core Version:    0.7.0.1
  */

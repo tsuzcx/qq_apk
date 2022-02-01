@@ -2,34 +2,34 @@ package com.tencent.mobileqq.config.business;
 
 public class OpenSdkRandomConfBean
 {
-  private OpenSdkRandomConfBean.OpenSdkRandomConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessOpenSdkRandomConfBean$OpenSdkRandomConfig;
-  private String jdField_a_of_type_JavaLangString;
+  private OpenSdkRandomConfBean.OpenSdkRandomConfig a;
+  private String b;
   
   public OpenSdkRandomConfBean()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessOpenSdkRandomConfBean$OpenSdkRandomConfig = new OpenSdkRandomConfBean.OpenSdkRandomConfig();
+    this.b = "";
+    this.a = new OpenSdkRandomConfBean.OpenSdkRandomConfig();
   }
   
   public OpenSdkRandomConfBean(String paramString, OpenSdkRandomConfBean.OpenSdkRandomConfig paramOpenSdkRandomConfig)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessOpenSdkRandomConfBean$OpenSdkRandomConfig = paramOpenSdkRandomConfig;
-  }
-  
-  public OpenSdkRandomConfBean.OpenSdkRandomConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessOpenSdkRandomConfBean$OpenSdkRandomConfig;
+    this.b = paramString;
+    this.a = paramOpenSdkRandomConfig;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
+  }
+  
+  public OpenSdkRandomConfBean.OpenSdkRandomConfig b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkRandomConfBean
  * JD-Core Version:    0.7.0.1
  */

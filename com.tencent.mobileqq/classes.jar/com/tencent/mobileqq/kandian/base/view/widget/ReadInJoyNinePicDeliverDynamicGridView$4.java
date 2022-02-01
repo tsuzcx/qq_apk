@@ -11,20 +11,20 @@ class ReadInJoyNinePicDeliverDynamicGridView$4
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView, false);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView, this.jdField_a_of_type_AndroidViewView);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.b, false);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.b);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.b, this.a);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView, true);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyNinePicDeliverDynamicGridView);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.b, true);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyNinePicDeliverDynamicGridView.4
  * JD-Core Version:    0.7.0.1
  */

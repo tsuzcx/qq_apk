@@ -10,7 +10,7 @@ public class MiniPieFactory
   public static MiniPie a(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
     int i = paramSessionInfo.a;
-    if (paramSessionInfo.f == 3) {
+    if (paramSessionInfo.B == 3) {
       return new MiniPieForForward(paramContext, paramSessionInfo, paramQQAppInterface);
     }
     if (i != 0)
@@ -22,15 +22,15 @@ public class MiniPieFactory
           if (i != 1001)
           {
             if (i == 1022) {
-              break label141;
+              break label149;
             }
             if (i != 3000)
             {
               if (i == 10002) {
-                break label127;
+                break label135;
               }
-              if ((i == 10008) || (i == 10010)) {
-                break label141;
+              if ((i == 10008) || (i == 10010) || (i == 10013)) {
+                break label149;
               }
             }
           }
@@ -41,12 +41,12 @@ public class MiniPieFactory
             break;
             paramContext = new MiniPieForDisc(paramContext, paramSessionInfo, paramQQAppInterface);
             break;
-            label127:
+            label135:
             paramContext = new MiniPieForNearby(paramContext, paramSessionInfo, paramQQAppInterface);
             break;
           }
         }
-        label141:
+        label149:
         paramContext = new MiniPieForStranger(paramContext, paramSessionInfo, paramQQAppInterface);
       }
       else
@@ -76,7 +76,7 @@ public class MiniPieFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPieFactory
  * JD-Core Version:    0.7.0.1
  */

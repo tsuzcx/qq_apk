@@ -11,12 +11,12 @@ class VideoBaseItem$2
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    VideoBaseItem.a(this.a).post(new VideoBaseItem.2.1(this));
+    VideoBaseItem.c(this.a).post(new VideoBaseItem.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class FrameControllerInjectImpl$1
   public void run()
   {
     ((IRIJTabInject)QRoute.api(IRIJTabInject.class)).updateKanDianRedTouch(this.a);
-    ((IRIJTabInject)QRoute.api(IRIJTabInject.class)).kanDianTabExposure(this.a.jdField_a_of_type_JavaUtilHashMap, this.a.jdField_a_of_type_ArrayOfAndroidViewView);
+    ((IRIJTabInject)QRoute.api(IRIJTabInject.class)).kanDianTabExposure(this.a.G, this.a.z);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.controllerinject.FrameControllerInjectImpl.1
  * JD-Core Version:    0.7.0.1
  */

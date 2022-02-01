@@ -24,29 +24,29 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x42.Submsgtype0x42.GameStatusSync;
 public class MSFToWebViewConnector
 {
   protected Context a;
-  protected MSFToWebViewConnector.IOnMsgReceiveListener a;
-  protected String a;
-  ArrayList<MSFToWebViewConnector.GameCacheMsg> a;
-  protected String b = "";
-  protected String c = "";
+  protected String b;
+  protected MSFToWebViewConnector.IOnMsgReceiveListener c;
+  ArrayList<MSFToWebViewConnector.GameCacheMsg> d;
+  protected String e = "";
+  protected String f = "";
   
   public String a(String paramString)
   {
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(paramString))) {
-      return this.c;
+    if ((!TextUtils.isEmpty(this.e)) && (this.e.equals(paramString))) {
+      return this.f;
     }
     return "";
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector$IOnMsgReceiveListener = null;
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    this.c = null;
+    ArrayList localArrayList = this.d;
     if (localArrayList != null) {
       try
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_JavaUtilArrayList = null;
+        this.d.clear();
+        this.d = null;
         return;
       }
       finally {}
@@ -80,21 +80,21 @@ public class MSFToWebViewConnector
         ((UniPacket)localObject2).setEncodeName("utf-8");
         ((UniPacket)localObject2).decode(paramIntent);
         paramIntent = (SvcReqPushMsg)((UniPacket)localObject2).getByClass("req", localObject1);
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        if (this.d == null) {
+          this.d = new ArrayList();
         }
         int j = paramFromServiceMsg.getRequestSsoSeq();
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+        localObject1 = this.d;
         Object localObject3;
         if (localObject1 != null) {
           try
           {
-            localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+            localObject2 = this.d.iterator();
             if (!((Iterator)localObject2).hasNext()) {
-              break label872;
+              break label873;
             }
             localObject3 = (MSFToWebViewConnector.GameCacheMsg)((Iterator)localObject2).next();
-            if ((((MSFToWebViewConnector.GameCacheMsg)localObject3).jdField_a_of_type_Int != j) || (((MSFToWebViewConnector.GameCacheMsg)localObject3).jdField_a_of_type_Long != paramIntent.lUin)) {
+            if ((((MSFToWebViewConnector.GameCacheMsg)localObject3).a != j) || (((MSFToWebViewConnector.GameCacheMsg)localObject3).b != paramIntent.lUin)) {
               continue;
             }
           }
@@ -102,7 +102,7 @@ public class MSFToWebViewConnector
         } else {
           i = 0;
         }
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+        localObject1 = this.d;
         if (localObject1 != null)
         {
           if (i != 0) {}
@@ -118,12 +118,12 @@ public class MSFToWebViewConnector
             return;
           }
           finally {}
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() < 60)
+          if (this.d.size() < 60)
           {
             localObject2 = new MSFToWebViewConnector.GameCacheMsg(this, null);
-            ((MSFToWebViewConnector.GameCacheMsg)localObject2).jdField_a_of_type_Int = j;
-            ((MSFToWebViewConnector.GameCacheMsg)localObject2).jdField_a_of_type_Long = paramIntent.lUin;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+            ((MSFToWebViewConnector.GameCacheMsg)localObject2).a = j;
+            ((MSFToWebViewConnector.GameCacheMsg)localObject2).b = paramIntent.lUin;
+            this.d.add(localObject2);
             if (QLog.isColorLevel())
             {
               localObject2 = new StringBuilder();
@@ -137,7 +137,7 @@ public class MSFToWebViewConnector
             if (QLog.isColorLevel()) {
               QLog.d("MSFToWebViewConnector", 2, "remove first cache msg");
             }
-            this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+            this.d.remove(0);
           }
         }
         localObject1 = new ArrayList();
@@ -169,10 +169,10 @@ public class MSFToWebViewConnector
                 ((Submsgtype0x42.GameStatusSync)localObject4).mergeFrom(((MsgType0x210)localObject3).vProtobuf);
                 i = ((Submsgtype0x42.GameStatusSync)localObject4).uint32_game_appid.get();
                 localObject3 = ((Submsgtype0x42.GameStatusSync)localObject4).bytes_data.get();
-                if ((this.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector$IOnMsgReceiveListener != null) && (localObject3 != null))
+                if ((this.c != null) && (localObject3 != null))
                 {
                   localObject3 = new String(((ByteStringMicro)localObject3).toByteArray());
-                  this.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector$IOnMsgReceiveListener.a(i, (String)localObject3);
+                  this.c.a(i, (String)localObject3);
                   continue;
                 }
                 if (!QLog.isColorLevel()) {
@@ -199,16 +199,16 @@ public class MSFToWebViewConnector
           QLog.d("MSFToWebViewConnector", 2, "msgInfo is null or size=0");
         }
         if (((ArrayList)localObject1).size() <= 0) {
-          break label871;
+          break label872;
         }
         localObject2 = new SvcRespPushMsg();
         i = paramFromServiceMsg.getRequestSsoSeq();
         ((SvcRespPushMsg)localObject2).lUin = paramIntent.lUin;
         ((SvcRespPushMsg)localObject2).svrip = paramIntent.svrip;
         ((SvcRespPushMsg)localObject2).vDelInfos = ((ArrayList)localObject1);
-        paramIntent = this.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector$IOnMsgReceiveListener;
+        paramIntent = this.c;
         if (paramIntent == null) {
-          break label871;
+          break label872;
         }
         paramIntent.a(i, (SvcRespPushMsg)localObject2);
         return;
@@ -234,21 +234,21 @@ public class MSFToWebViewConnector
         paramFromServiceMsg.append(paramIntent);
         QLog.d("MSFToWebViewConnector", 2, paramFromServiceMsg.toString());
       }
-      label871:
-      return;
       label872:
+      return;
+      label873:
       i = 0;
     }
   }
   
   public void a(String paramString1, String paramString2, AppRuntime paramAppRuntime, Context paramContext, MSFToWebViewConnector.IOnMsgReceiveListener paramIOnMsgReceiveListener)
   {
-    this.b = paramString1;
-    this.c = paramString2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector$IOnMsgReceiveListener = paramIOnMsgReceiveListener;
-    this.jdField_a_of_type_JavaLangString = MsfSdkUtils.getProcessName(paramContext);
-    if (this.jdField_a_of_type_JavaLangString.equals("com.tencent.mobileqq:MSF")) {
+    this.e = paramString1;
+    this.f = paramString2;
+    this.a = paramContext;
+    this.c = paramIOnMsgReceiveListener;
+    this.b = MsfSdkUtils.getProcessName(paramContext);
+    if (this.b.equals("com.tencent.mobileqq:MSF")) {
       return;
     }
     a(paramAppRuntime);
@@ -268,7 +268,7 @@ public class MSFToWebViewConnector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.MSFToWebViewConnector
  * JD-Core Version:    0.7.0.1
  */

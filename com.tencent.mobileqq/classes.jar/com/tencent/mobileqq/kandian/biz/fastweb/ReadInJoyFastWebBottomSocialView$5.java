@@ -12,15 +12,15 @@ class ReadInJoyFastWebBottomSocialView$5
   
   public void run()
   {
-    Context localContext = ReadInJoyFastWebBottomSocialView.a(this.this$0).getContentView().getContext();
+    Context localContext = ReadInJoyFastWebBottomSocialView.g(this.this$0).getContentView().getContext();
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing())) {
-      ReadInJoyFastWebBottomSocialView.a(this.this$0).dismiss();
+      ReadInJoyFastWebBottomSocialView.g(this.this$0).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialView.5
  * JD-Core Version:    0.7.0.1
  */

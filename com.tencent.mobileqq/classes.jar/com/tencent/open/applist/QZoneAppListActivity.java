@@ -29,15 +29,15 @@ public class QZoneAppListActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback
 {
-  private int jdField_a_of_type_Int = 0;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager;
+  private int a = 0;
+  private IPluginManager b;
+  private WeakReferenceHandler c;
+  private TextView d;
+  private View e;
   
   private String a()
   {
-    switch (this.jdField_a_of_type_Int)
+    switch (this.a)
     {
     default: 
       return null;
@@ -59,9 +59,9 @@ public class QZoneAppListActivity
     return "com.tencent.plugin.qappcenter.QZoneAppListActivity";
   }
   
-  private void a()
+  private void b()
   {
-    PluginInfo localPluginInfo = this.jdField_a_of_type_CooperationPluginIPluginManager.a("qappcenter_plugin.apk");
+    PluginInfo localPluginInfo = this.b.d("qappcenter_plugin.apk");
     if (localPluginInfo != null)
     {
       int i;
@@ -72,48 +72,48 @@ public class QZoneAppListActivity
       else
       {
         if (localPluginInfo.mState != 1) {
-          this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("qappcenter_plugin.apk", new QZoneAppListActivity.1(this));
+          this.b.installPlugin("qappcenter_plugin.apk", new QZoneAppListActivity.1(this));
         }
         i = 0;
       }
       if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 400L);
+        this.c.sendEmptyMessageDelayed(1, 400L);
         return;
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(5, 0L);
+      this.c.sendEmptyMessageDelayed(5, 0L);
     }
   }
   
-  private void b()
+  private void c()
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.b = "qappcenter_plugin.apk";
-    localPluginParams.e = HardCodeUtil.a(2131711552);
-    localPluginParams.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
-    localPluginParams.f = a();
+    localPluginParams.d = "qappcenter_plugin.apk";
+    localPluginParams.g = HardCodeUtil.a(2131909199);
+    localPluginParams.c = this.app.getCurrentAccountUin();
+    localPluginParams.h = a();
     Intent localIntent = getIntent();
     if (localIntent != null)
     {
       if (localIntent.getIntExtra("process_id", -1) == 2) {
-        localPluginParams.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityQzone.class;
+        localPluginParams.i = QAppCenterPluginProxyActivityQzone.class;
       } else {
-        localPluginParams.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
+        localPluginParams.i = QAppCenterPluginProxyActivityTools.class;
       }
     }
     else {
-      localPluginParams.jdField_a_of_type_JavaLangClass = QAppCenterPluginProxyActivityTools.class;
+      localPluginParams.i = QAppCenterPluginProxyActivityTools.class;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[launchPlugin] class:");
-    ((StringBuilder)localObject).append(localPluginParams.jdField_a_of_type_JavaLangClass);
+    ((StringBuilder)localObject).append(localPluginParams.i);
     LogUtility.b("GHOST", ((StringBuilder)localObject).toString());
     localObject = new Intent();
     ((Intent)localObject).putExtra("userQqResources", 2);
     if ((localIntent != null) && (localIntent.getExtras() != null)) {
       ((Intent)localObject).putExtras(localIntent.getExtras());
     }
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = ((Intent)localObject);
+    localPluginParams.j = ((Intent)localObject);
     IPluginManager.a(this, localPluginParams);
     finish();
   }
@@ -127,8 +127,8 @@ public class QZoneAppListActivity
   {
     if (paramPluginBaseInfo == null)
     {
-      if (!this.jdField_a_of_type_CooperationPluginIPluginManager.isReady()) {
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 400L);
+      if (!this.b.isReady()) {
+        this.c.sendEmptyMessageDelayed(1, 400L);
       }
       return;
     }
@@ -153,26 +153,26 @@ public class QZoneAppListActivity
               if (i != 5) {
                 return;
               }
-              this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 400L);
+              this.c.sendEmptyMessageDelayed(1, 400L);
               return;
             }
             a(100);
-            b();
+            c();
             return;
           }
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(3);
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 400L);
+          this.c.sendEmptyMessage(3);
+          this.c.sendEmptyMessageDelayed(1, 400L);
           return;
         }
         i = (int)(paramPluginBaseInfo.mDownloadProgress * 90.0F);
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(2, i, 0).sendToTarget();
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 400L);
+        this.c.obtainMessage(2, i, 0).sendToTarget();
+        this.c.sendEmptyMessageDelayed(1, 400L);
         return;
       }
-      this.jdField_a_of_type_CooperationPluginIPluginManager.d("qappcenter_plugin.apk");
+      this.b.e("qappcenter_plugin.apk");
       return;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+    this.c.sendEmptyMessage(4);
   }
   
   @Override
@@ -187,15 +187,15 @@ public class QZoneAppListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167333);
-    setContentView(2131559650);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373123));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("0%");
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371767);
-    setTitle(2131695331);
+    getWindow().setBackgroundDrawableResource(2131168376);
+    setContentView(2131625679);
+    this.d = ((TextView)findViewById(2131440726));
+    this.d.setText("0%");
+    this.e = findViewById(2131439201);
+    setTitle(2131893070);
     updateAppRuntime();
-    this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this);
+    this.b = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
+    this.c = new WeakReferenceHandler(this);
     int i;
     if (DownloadSDKConfigManager.canGotoNewAppListPage()) {
       i = 6;
@@ -203,12 +203,12 @@ public class QZoneAppListActivity
       i = 1;
     }
     DownloadSDKConfigManager.refreshNewAppCenterConfig();
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("goto_type", i);
+    this.a = getIntent().getIntExtra("goto_type", i);
     paramBundle = new StringBuilder();
     paramBundle.append("[doOnCreate] mGotoType:");
-    paramBundle.append(this.jdField_a_of_type_Int);
+    paramBundle.append(this.a);
     LogUtility.b("GHOST", paramBundle.toString());
-    a();
+    b();
     return true;
   }
   
@@ -226,7 +226,7 @@ public class QZoneAppListActivity
             if (i != 5) {
               return true;
             }
-            b();
+            c();
             return true;
           }
         }
@@ -235,7 +235,7 @@ public class QZoneAppListActivity
           int j = 0;
           try
           {
-            i = Integer.valueOf(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()).intValue();
+            i = Integer.valueOf(this.d.getText().toString()).intValue();
           }
           catch (Exception paramMessage)
           {
@@ -263,7 +263,7 @@ public class QZoneAppListActivity
       }
     }
     else if (!isFinishing()) {
-      a("qappcenter_plugin.apk", this.jdField_a_of_type_CooperationPluginIPluginManager.a("qappcenter_plugin.apk"));
+      a("qappcenter_plugin.apk", this.b.d("qappcenter_plugin.apk"));
     }
     return true;
   }
@@ -277,7 +277,7 @@ public class QZoneAppListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.applist.QZoneAppListActivity
  * JD-Core Version:    0.7.0.1
  */

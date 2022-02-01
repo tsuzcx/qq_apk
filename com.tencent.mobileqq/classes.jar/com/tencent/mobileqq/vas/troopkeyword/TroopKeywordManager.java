@@ -32,31 +32,23 @@ import mqq.app.AppRuntime;
 
 public class TroopKeywordManager
 {
-  private static int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = 0L;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ConcurrentHashMap<String, List<TroopKeyWord>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
+  private static int c = -1;
+  private QQAppInterface a;
+  private EntityManager b;
+  private boolean d;
+  private Object e = new Object();
+  private ConcurrentHashMap<String, List<TroopKeyWord>> f = new ConcurrentHashMap();
+  private long g = 0L;
   
   public TroopKeywordManager(QQAppInterface paramQQAppInterface, EntityManager paramEntityManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
-  }
-  
-  private long a()
-  {
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = QVipConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_last_pull_timestamp", 0L);
-    }
-    return this.jdField_a_of_type_Long;
+    this.a = paramQQAppInterface;
+    this.b = paramEntityManager;
   }
   
   public static TroopKeywordManager a(QQAppInterface paramQQAppInterface)
   {
-    return ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+    return ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).h;
   }
   
   private void a(long paramLong)
@@ -68,20 +60,20 @@ public class TroopKeywordManager
       localStringBuilder.append(paramLong);
       QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Long = paramLong;
-    QVipConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_last_pull_timestamp", paramLong);
+    this.g = paramLong;
+    QVipConfigManager.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_last_pull_timestamp", paramLong);
   }
   
   private void a(HashMap<String, List<TroopKeyWord>> paramHashMap)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    synchronized (this.f)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+      Object localObject = this.f.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
         if (!paramHashMap.containsKey(str)) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+          this.f.remove(str);
         }
       }
       if (QLog.isColorLevel())
@@ -91,9 +83,9 @@ public class TroopKeywordManager
         ((StringBuilder)localObject).append(paramHashMap);
         QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(paramHashMap);
-      this.jdField_a_of_type_Boolean = true;
-      d();
+      this.f.putAll(paramHashMap);
+      this.d = true;
+      f();
       return;
     }
     for (;;)
@@ -122,22 +114,25 @@ public class TroopKeywordManager
     return bool1;
   }
   
-  private static long b()
+  private long d()
   {
-    return QzoneConfig.getInstance().getConfig("K_QQ_VAS", "SK_QQ_VAS_KeywordAIORefreshFrequency", 1) * 60L * 1000L;
+    if (this.g == 0L) {
+      this.g = QVipConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "troop_keyword_last_pull_timestamp", 0L);
+    }
+    return this.g;
   }
   
-  private void c()
+  private void e()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    synchronized (this.f)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.d) {
         return;
       }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TroopKeyWord.class);
+      Object localObject1 = this.b.query(TroopKeyWord.class);
       HashMap localHashMap = new HashMap();
       if (localObject1 != null)
       {
@@ -162,8 +157,8 @@ public class TroopKeywordManager
         ((StringBuilder)localObject1).append(localHashMap);
         QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, ((StringBuilder)localObject1).toString());
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(localHashMap);
-      this.jdField_a_of_type_Boolean = true;
+      this.f.putAll(localHashMap);
+      this.d = true;
       return;
     }
     for (;;)
@@ -172,114 +167,15 @@ public class TroopKeywordManager
     }
   }
   
-  private void d()
+  private void f()
   {
     ThreadManagerV2.excute(new TroopKeywordManager.1(this), 32, null, true);
   }
   
-  public EntryStatus a(String paramString)
+  private static long g()
   {
-    EntryStatus localEntryStatus = new EntryStatus();
-    if ((!TextUtils.isEmpty(paramString)) && (a()))
-    {
-      c();
-      Object localObject1 = BaseApplicationImpl.getContext().getResources();
-      List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      int i;
-      boolean bool;
-      if ((localList != null) && (!localList.isEmpty()))
-      {
-        Object localObject2 = new ExpireSet();
-        Object localObject3 = localList.iterator();
-        int j = 0;
-        i = 0;
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (TroopKeyWord)((Iterator)localObject3).next();
-          if (((TroopKeyWord)localObject4).expiredFlag == 3)
-          {
-            j += 1;
-            ((ExpireSet)localObject2).add(Long.valueOf(((TroopKeyWord)localObject4).wordId));
-          }
-          else if (((TroopKeyWord)localObject4).expiredFlag == 2)
-          {
-            i += 1;
-            ((ExpireSet)localObject2).add(Long.valueOf(((TroopKeyWord)localObject4).wordId));
-          }
-        }
-        localEntryStatus.jdField_a_of_type_Int = j;
-        localEntryStatus.jdField_b_of_type_Int = i;
-        localEntryStatus.jdField_b_of_type_JavaLangString = ((ExpireSet)localObject2).toJson();
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        Object localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append("troop_keyword_expire_list_");
-        ((StringBuilder)localObject4).append(paramString);
-        localObject3 = QVipConfigManager.a((AppRuntime)localObject3, ((StringBuilder)localObject4).toString(), null);
-        bool = ExpireSet.fromJson((String)localObject3).containsAll((Collection)localObject2) ^ true;
-        if (bool)
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("expireList hasNewExpiredId, last:");
-          ((StringBuilder)localObject2).append((String)localObject3);
-          ((StringBuilder)localObject2).append(" now:");
-          ((StringBuilder)localObject2).append(localEntryStatus.jdField_b_of_type_JavaLangString);
-          QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, ((StringBuilder)localObject2).toString());
-        }
-        else
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append("troop_keyword_expire_list_");
-          ((StringBuilder)localObject3).append(paramString);
-          QVipConfigManager.a((AppRuntime)localObject2, ((StringBuilder)localObject3).toString(), localEntryStatus.jdField_b_of_type_JavaLangString);
-        }
-        if (j > 0)
-        {
-          localObject1 = ((Resources)localObject1).getString(2131699493, new Object[] { Integer.valueOf(j) });
-          i = 5;
-        }
-        else if (i > 0)
-        {
-          localObject1 = ((Resources)localObject1).getString(2131699498);
-          i = 4;
-        }
-        else
-        {
-          localObject1 = ((Resources)localObject1).getString(2131699494, new Object[] { Integer.valueOf(localList.size()) });
-          i = 3;
-          bool = false;
-        }
-      }
-      else
-      {
-        localObject1 = ((Resources)localObject1).getString(2131692934);
-        if ((!QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "troop_keyword_guide_clicked", false)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-        if (bool) {
-          i = 2;
-        } else {
-          i = 1;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, new Object[] { "getTips, troopUin=", paramString, " tips=", localObject1, " red=", Boolean.valueOf(bool) });
-      }
-      localEntryStatus.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localEntryStatus.jdField_a_of_type_Boolean = bool;
-      localEntryStatus.c = i;
-      return localEntryStatus;
-    }
-    localEntryStatus.jdField_a_of_type_JavaLangString = "";
-    localEntryStatus.jdField_a_of_type_Boolean = false;
-    localEntryStatus.c = 1;
-    QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, new Object[] { "getTips error, troopUin=", paramString, " enable=", Boolean.valueOf(a()) });
-    return localEntryStatus;
+    return QzoneConfig.getInstance().getConfig("K_QQ_VAS", "SK_QQ_VAS_KeywordAIORefreshFrequency", 1) * 60L * 1000L;
   }
-  
-  public void a() {}
   
   public void a(GetUsrKeyWordInfoRsp paramGetUsrKeyWordInfoRsp)
   {
@@ -340,20 +236,6 @@ public class TroopKeywordManager
     a(localHashMap);
   }
   
-  public void a(String paramString)
-  {
-    if (a(paramString))
-    {
-      long l = System.currentTimeMillis();
-      if (Math.abs(l - a()) > b())
-      {
-        QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeywordTimeoutCheck");
-        a(l);
-        b();
-      }
-    }
-  }
-  
   public void a(boolean paramBoolean)
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
@@ -371,7 +253,7 @@ public class TroopKeywordManager
       QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "hasKeyword, troopUin is empty");
       return false;
     }
-    paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    paramString = (List)this.f.get(paramString);
     bool1 = bool2;
     if (paramString != null)
     {
@@ -396,8 +278,8 @@ public class TroopKeywordManager
       QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, "containsKeyword, troopUin is empty");
       return false;
     }
-    c();
-    Object localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString2);
+    e();
+    Object localObject = (List)this.f.get(paramString2);
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       paramString1 = paramString1.toLowerCase();
@@ -422,15 +304,133 @@ public class TroopKeywordManager
     return false;
   }
   
-  public void b()
+  public EntryStatus b(String paramString)
+  {
+    EntryStatus localEntryStatus = new EntryStatus();
+    if ((!TextUtils.isEmpty(paramString)) && (a()))
+    {
+      e();
+      Object localObject1 = BaseApplicationImpl.getContext().getResources();
+      List localList = (List)this.f.get(paramString);
+      int i;
+      boolean bool;
+      if ((localList != null) && (!localList.isEmpty()))
+      {
+        Object localObject2 = new ExpireSet();
+        Object localObject3 = localList.iterator();
+        int j = 0;
+        i = 0;
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (TroopKeyWord)((Iterator)localObject3).next();
+          if (((TroopKeyWord)localObject4).expiredFlag == 3)
+          {
+            j += 1;
+            ((ExpireSet)localObject2).add(Long.valueOf(((TroopKeyWord)localObject4).wordId));
+          }
+          else if (((TroopKeyWord)localObject4).expiredFlag == 2)
+          {
+            i += 1;
+            ((ExpireSet)localObject2).add(Long.valueOf(((TroopKeyWord)localObject4).wordId));
+          }
+        }
+        localEntryStatus.d = j;
+        localEntryStatus.e = i;
+        localEntryStatus.b = ((ExpireSet)localObject2).toJson();
+        localObject3 = this.a;
+        Object localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("troop_keyword_expire_list_");
+        ((StringBuilder)localObject4).append(paramString);
+        localObject3 = QVipConfigManager.a((AppRuntime)localObject3, ((StringBuilder)localObject4).toString(), null);
+        bool = ExpireSet.fromJson((String)localObject3).containsAll((Collection)localObject2) ^ true;
+        if (bool)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("expireList hasNewExpiredId, last:");
+          ((StringBuilder)localObject2).append((String)localObject3);
+          ((StringBuilder)localObject2).append(" now:");
+          ((StringBuilder)localObject2).append(localEntryStatus.b);
+          QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, ((StringBuilder)localObject2).toString());
+        }
+        else
+        {
+          localObject2 = this.a;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("troop_keyword_expire_list_");
+          ((StringBuilder)localObject3).append(paramString);
+          QVipConfigManager.b((AppRuntime)localObject2, ((StringBuilder)localObject3).toString(), localEntryStatus.b);
+        }
+        if (j > 0)
+        {
+          localObject1 = ((Resources)localObject1).getString(2131897524, new Object[] { Integer.valueOf(j) });
+          i = 5;
+        }
+        else if (i > 0)
+        {
+          localObject1 = ((Resources)localObject1).getString(2131897529);
+          i = 4;
+        }
+        else
+        {
+          localObject1 = ((Resources)localObject1).getString(2131897525, new Object[] { Integer.valueOf(localList.size()) });
+          i = 3;
+          bool = false;
+        }
+      }
+      else
+      {
+        localObject1 = ((Resources)localObject1).getString(2131890047);
+        if ((!QVipConfigManager.a(this.a, "troop_keyword_guide_clicked", false)) && (this.f.isEmpty())) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        if (bool) {
+          i = 2;
+        } else {
+          i = 1;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopKeywordManager.troop.special_msg.keyword", 2, new Object[] { "getTips, troopUin=", paramString, " tips=", localObject1, " red=", Boolean.valueOf(bool) });
+      }
+      localEntryStatus.a = ((String)localObject1);
+      localEntryStatus.c = bool;
+      localEntryStatus.f = i;
+      return localEntryStatus;
+    }
+    localEntryStatus.a = "";
+    localEntryStatus.c = false;
+    localEntryStatus.f = 1;
+    QLog.e("TroopKeywordManager.troop.special_msg.keyword", 1, new Object[] { "getTips error, troopUin=", paramString, " enable=", Boolean.valueOf(a()) });
+    return localEntryStatus;
+  }
+  
+  public void b() {}
+  
+  public void c()
   {
     QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeywordChangePush");
-    ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(new TroopKeywordManager.MyBusinessObserver(this), true);
+    ((ISVIPHandler)this.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(new TroopKeywordManager.MyBusinessObserver(this), true);
+  }
+  
+  public void c(String paramString)
+  {
+    if (a(paramString))
+    {
+      long l = System.currentTimeMillis();
+      if (Math.abs(l - d()) > g())
+      {
+        QLog.i("TroopKeywordManager.troop.special_msg.keyword", 1, "onKeywordTimeoutCheck");
+        a(l);
+        c();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopkeyword.TroopKeywordManager
  * JD-Core Version:    0.7.0.1
  */

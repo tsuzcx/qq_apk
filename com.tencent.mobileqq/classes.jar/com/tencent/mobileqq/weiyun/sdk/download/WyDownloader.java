@@ -47,36 +47,36 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class WyDownloader
   implements INetEngineListener, InfoRecorder.InfoRecorderCallback, LocalProcessor.LocalProcessorCallback, UrlFetcher.UrlFetcherCallback
 {
-  private static Singleton<WyDownloader, Void> jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new WyDownloader.1();
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
-  private IFetchListener jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIFetchListener;
-  private final DownloadJobCounter jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadDownloadJobCounter = new DownloadJobCounter();
-  private InfoRecorder jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorInfoRecorder;
-  private LocalProcessor jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorLocalProcessor;
-  private UrlFetcher jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher;
-  private final ThreadPoolWrapper jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper = new ThreadPoolWrapper("WyDownloader");
-  private final DualHashMap<Long, String> jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap = new DualHashMap();
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private final HashMap<Long, DownloadJobContext> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private LinkedList<Long> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private List<IDownloadStatusListener> jdField_a_of_type_JavaUtilList;
-  private Map<Long, NetReq> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private IHttpEngineService jdField_b_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
-  private final HashSet<Long> jdField_b_of_type_JavaUtilHashSet = new HashSet();
-  private LinkedList<Long> jdField_b_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<String, HttpNetReq> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private static final AtomicInteger f = new AtomicInteger(0);
+  private static Singleton<WyDownloader, Void> u = new WyDownloader.1();
+  private final HashMap<Long, DownloadJobContext> a = new HashMap();
+  private final DualHashMap<Long, String> b = new DualHashMap();
+  private final HashSet<Long> c = new HashSet();
+  private final HashSet<Long> d = new HashSet();
+  private final ThreadPoolWrapper e = new ThreadPoolWrapper("WyDownloader");
+  private final DownloadJobCounter g = new DownloadJobCounter();
+  private IFetchListener h;
+  private List<IDownloadStatusListener> i;
+  private InfoRecorder j;
+  private LocalProcessor k;
+  private UrlFetcher l;
+  private IHttpEngineService m;
+  private IHttpEngineService n;
+  private Context o;
+  private Object p = new Object();
+  private LinkedList<Long> q = new LinkedList();
+  private LinkedList<Long> r = new LinkedList();
+  private Map<Long, NetReq> s = new HashMap();
+  private Map<String, HttpNetReq> t = new HashMap();
   
   private WyDownloader()
   {
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, new WyDownloader.2(this));
+    AppNetConnInfo.registerConnectionChangeReceiver(this.o, new WyDownloader.2(this));
   }
   
   public static WyDownloader a()
   {
-    return (WyDownloader)jdField_a_of_type_ComTencentWeiyunUtilsSingleton.get(null);
+    return (WyDownloader)u.get(null);
   }
   
   private String a(String paramString1, String paramString2)
@@ -89,70 +89,29 @@ public class WyDownloader
     return localStringBuilder.toString();
   }
   
-  private void a()
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilLinkedList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Long)localIterator.next();
-      if (localObject == null)
-      {
-        localIterator.remove();
-      }
-      else
-      {
-        localObject = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-        if ((localObject == null) || (((DownloadJobContext)localObject).d())) {
-          localIterator.remove();
-        }
-      }
-    }
-  }
-  
-  private void a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilLinkedList.remove(Long.valueOf(paramLong)))
-      {
-        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-      }
-      else if (this.jdField_b_of_type_JavaUtilLinkedList.remove(Long.valueOf(paramLong)))
-      {
-        b();
-      }
-      else
-      {
-        a();
-        b();
-      }
-      return;
-    }
-  }
-  
   private void a(long paramLong, NetReq paramNetReq)
   {
     if (paramNetReq == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.p)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.add(Long.valueOf(paramLong));
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), paramNetReq);
-      a();
-      b();
+      this.q.add(Long.valueOf(paramLong));
+      this.s.put(Long.valueOf(paramLong), paramNetReq);
+      g();
+      h();
       return;
     }
   }
   
   private boolean a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
       if (localDownloadJobContext == null)
       {
-        a(paramLong);
+        d(paramLong);
         return false;
       }
       if (paramBoolean1) {
@@ -171,17 +130,17 @@ public class WyDownloader
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 212	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   4: invokestatic 216	com/tencent/mobileqq/weiyun/utils/WeiyunPathUtil:a	()Ljava/lang/String;
-    //   7: invokevirtual 222	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1: invokevirtual 206	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   4: invokestatic 210	com/tencent/mobileqq/weiyun/utils/WeiyunPathUtil:a	()Ljava/lang/String;
+    //   7: invokevirtual 216	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   10: ifne +5 -> 15
     //   13: iconst_0
     //   14: ireturn
     //   15: aload_1
-    //   16: invokevirtual 225	java/io/File:getName	()Ljava/lang/String;
+    //   16: invokevirtual 219	java/io/File:getName	()Ljava/lang/String;
     //   19: astore_3
     //   20: aload_3
-    //   21: invokestatic 230	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil:b	(Ljava/lang/String;)I
+    //   21: invokestatic 224	com/tencent/mobileqq/filemanager/util/QQFileManagerUtil:k	(Ljava/lang/String;)I
     //   24: istore_2
     //   25: iload_2
     //   26: ifeq +15 -> 41
@@ -195,249 +154,257 @@ public class WyDownloader
     //   40: ireturn
     //   41: aload_0
     //   42: aload_3
-    //   43: invokestatic 236	com/tencent/mobileqq/transfile/filebrowser/MimeTypesTools:getMimeType	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   43: invokestatic 230	com/tencent/mobileqq/transfile/filebrowser/MimeTypesTools:getMimeType	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   46: astore 5
-    //   48: new 238	android/content/ContentValues
+    //   48: new 232	android/content/ContentValues
     //   51: dup
-    //   52: invokespecial 239	android/content/ContentValues:<init>	()V
+    //   52: invokespecial 233	android/content/ContentValues:<init>	()V
     //   55: astore 4
     //   57: aload 4
-    //   59: ldc 241
+    //   59: ldc 235
     //   61: aload_3
-    //   62: invokevirtual 244	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   62: invokevirtual 238	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   65: aload 4
-    //   67: ldc 246
+    //   67: ldc 240
     //   69: aload_3
-    //   70: invokevirtual 244	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: invokevirtual 238	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   73: aload 4
-    //   75: ldc 248
+    //   75: ldc 242
     //   77: aload_1
-    //   78: invokevirtual 252	java/io/File:lastModified	()J
-    //   81: ldc2_w 253
+    //   78: invokevirtual 246	java/io/File:lastModified	()J
+    //   81: ldc2_w 247
     //   84: ldiv
-    //   85: invokestatic 173	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   88: invokevirtual 257	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   85: invokestatic 168	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   88: invokevirtual 251	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   91: aload 4
-    //   93: ldc_w 259
-    //   96: aload 5
-    //   98: invokevirtual 244	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   101: aload 4
-    //   103: ldc_w 261
-    //   106: aload_1
-    //   107: invokevirtual 264	java/io/File:length	()J
-    //   110: invokestatic 173	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   113: invokevirtual 257	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   116: iload_2
-    //   117: ifne +24 -> 141
-    //   120: aload 4
-    //   122: ldc_w 266
-    //   125: invokestatic 271	java/lang/System:currentTimeMillis	()J
-    //   128: invokestatic 173	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   131: invokevirtual 257	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   134: getstatic 277	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   137: astore_3
-    //   138: goto +33 -> 171
-    //   141: iload_2
-    //   142: iconst_2
-    //   143: if_icmpne +24 -> 167
-    //   146: aload 4
-    //   148: ldc_w 266
-    //   151: invokestatic 271	java/lang/System:currentTimeMillis	()J
-    //   154: invokestatic 173	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   157: invokevirtual 257	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   160: getstatic 280	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   163: astore_3
-    //   164: goto +7 -> 171
-    //   167: getstatic 283	android/provider/MediaStore$Audio$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
-    //   170: astore_3
-    //   171: aload_0
-    //   172: invokevirtual 289	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   175: astore_0
-    //   176: aload_0
-    //   177: aload_3
-    //   178: aload 4
-    //   180: invokevirtual 295	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   183: astore_3
-    //   184: aload_3
-    //   185: ifnull +145 -> 330
-    //   188: aload_0
-    //   189: aload_3
-    //   190: ldc_w 297
-    //   193: invokevirtual 301	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
-    //   196: astore 5
-    //   198: aload 5
-    //   200: ifnull +130 -> 330
-    //   203: aconst_null
-    //   204: astore 4
-    //   206: new 303	java/io/BufferedInputStream
-    //   209: dup
-    //   210: new 305	java/io/FileInputStream
-    //   213: dup
-    //   214: aload_1
-    //   215: invokespecial 308	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   218: invokespecial 311	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   221: astore_3
-    //   222: new 313	java/io/BufferedOutputStream
-    //   225: dup
-    //   226: new 315	java/io/FileOutputStream
-    //   229: dup
-    //   230: aload 5
-    //   232: invokevirtual 321	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   235: invokespecial 324	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
-    //   238: invokespecial 327	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   241: astore_1
-    //   242: sipush 8192
-    //   245: newarray byte
-    //   247: astore_0
-    //   248: aload_3
-    //   249: aload_0
-    //   250: invokevirtual 333	java/io/InputStream:read	([B)I
-    //   253: istore_2
-    //   254: iload_2
-    //   255: ifle +13 -> 268
-    //   258: aload_1
-    //   259: aload_0
-    //   260: iconst_0
-    //   261: iload_2
-    //   262: invokevirtual 339	java/io/OutputStream:write	([BII)V
-    //   265: goto -17 -> 248
-    //   268: aload_1
-    //   269: invokevirtual 342	java/io/OutputStream:flush	()V
-    //   272: aload_3
-    //   273: invokestatic 348	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   276: aload_1
-    //   277: invokestatic 348	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   280: aload 5
-    //   282: invokevirtual 351	android/os/ParcelFileDescriptor:close	()V
-    //   285: iconst_1
-    //   286: ireturn
-    //   287: astore_0
-    //   288: goto +16 -> 304
-    //   291: astore_0
-    //   292: aload 4
-    //   294: astore_1
-    //   295: goto +9 -> 304
-    //   298: astore_0
-    //   299: aconst_null
-    //   300: astore_3
-    //   301: aload 4
-    //   303: astore_1
-    //   304: aload_3
-    //   305: invokestatic 348	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   308: aload_1
-    //   309: invokestatic 348	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   312: aload 5
-    //   314: invokevirtual 351	android/os/ParcelFileDescriptor:close	()V
-    //   317: aload_0
-    //   318: athrow
-    //   319: astore_0
-    //   320: ldc 84
-    //   322: iconst_2
-    //   323: ldc_w 353
-    //   326: aload_0
-    //   327: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   330: iconst_0
-    //   331: ireturn
-    //   332: astore_0
-    //   333: iconst_1
-    //   334: ireturn
-    //   335: astore_1
-    //   336: goto -19 -> 317
+    //   93: ldc 253
+    //   95: aload 5
+    //   97: invokevirtual 238	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: aload 4
+    //   102: ldc 255
+    //   104: aload_1
+    //   105: invokevirtual 258	java/io/File:length	()J
+    //   108: invokestatic 168	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   111: invokevirtual 251	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   114: iload_2
+    //   115: ifne +24 -> 139
+    //   118: aload 4
+    //   120: ldc_w 260
+    //   123: invokestatic 265	java/lang/System:currentTimeMillis	()J
+    //   126: invokestatic 168	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   129: invokevirtual 251	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   132: getstatic 271	android/provider/MediaStore$Images$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   135: astore_3
+    //   136: goto +33 -> 169
+    //   139: iload_2
+    //   140: iconst_2
+    //   141: if_icmpne +24 -> 165
+    //   144: aload 4
+    //   146: ldc_w 260
+    //   149: invokestatic 265	java/lang/System:currentTimeMillis	()J
+    //   152: invokestatic 168	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   155: invokevirtual 251	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   158: getstatic 274	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   161: astore_3
+    //   162: goto +7 -> 169
+    //   165: getstatic 277	android/provider/MediaStore$Audio$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   168: astore_3
+    //   169: aload_0
+    //   170: invokevirtual 283	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   173: astore_0
+    //   174: aload_0
+    //   175: aload_3
+    //   176: aload 4
+    //   178: invokevirtual 289	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   181: astore_3
+    //   182: aload_3
+    //   183: ifnull +145 -> 328
+    //   186: aload_0
+    //   187: aload_3
+    //   188: ldc_w 291
+    //   191: invokevirtual 295	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   194: astore 5
+    //   196: aload 5
+    //   198: ifnull +130 -> 328
+    //   201: aconst_null
+    //   202: astore 4
+    //   204: new 297	java/io/BufferedInputStream
+    //   207: dup
+    //   208: new 299	java/io/FileInputStream
+    //   211: dup
+    //   212: aload_1
+    //   213: invokespecial 302	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   216: invokespecial 305	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   219: astore_3
+    //   220: new 307	java/io/BufferedOutputStream
+    //   223: dup
+    //   224: new 309	java/io/FileOutputStream
+    //   227: dup
+    //   228: aload 5
+    //   230: invokevirtual 315	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   233: invokespecial 318	java/io/FileOutputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   236: invokespecial 321	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   239: astore_1
+    //   240: sipush 8192
+    //   243: newarray byte
+    //   245: astore_0
+    //   246: aload_3
+    //   247: aload_0
+    //   248: invokevirtual 327	java/io/InputStream:read	([B)I
+    //   251: istore_2
+    //   252: iload_2
+    //   253: ifle +13 -> 266
+    //   256: aload_1
+    //   257: aload_0
+    //   258: iconst_0
+    //   259: iload_2
+    //   260: invokevirtual 333	java/io/OutputStream:write	([BII)V
+    //   263: goto -17 -> 246
+    //   266: aload_1
+    //   267: invokevirtual 336	java/io/OutputStream:flush	()V
+    //   270: aload_3
+    //   271: invokestatic 342	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   274: aload_1
+    //   275: invokestatic 342	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   278: aload 5
+    //   280: invokevirtual 345	android/os/ParcelFileDescriptor:close	()V
+    //   283: iconst_1
+    //   284: ireturn
+    //   285: astore_0
+    //   286: goto +16 -> 302
+    //   289: astore_0
+    //   290: aload 4
+    //   292: astore_1
+    //   293: goto +9 -> 302
+    //   296: astore_0
+    //   297: aconst_null
+    //   298: astore_3
+    //   299: aload 4
+    //   301: astore_1
+    //   302: aload_3
+    //   303: invokestatic 342	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   306: aload_1
+    //   307: invokestatic 342	com/tencent/weiyun/utils/IOUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   310: aload 5
+    //   312: invokevirtual 345	android/os/ParcelFileDescriptor:close	()V
+    //   315: aload_0
+    //   316: athrow
+    //   317: astore_0
+    //   318: ldc 103
+    //   320: iconst_2
+    //   321: ldc_w 347
+    //   324: aload_0
+    //   325: invokestatic 352	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   328: iconst_0
+    //   329: ireturn
+    //   330: astore_0
+    //   331: iconst_1
+    //   332: ireturn
+    //   333: astore_1
+    //   334: goto -19 -> 315
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	339	0	paramContext	Context
-    //   0	339	1	paramFile	File
-    //   24	238	2	i	int
-    //   19	286	3	localObject1	Object
-    //   55	247	4	localContentValues	android.content.ContentValues
-    //   46	267	5	localObject2	Object
+    //   0	337	0	paramContext	Context
+    //   0	337	1	paramFile	File
+    //   24	236	2	i1	int
+    //   19	284	3	localObject1	Object
+    //   55	245	4	localContentValues	android.content.ContentValues
+    //   46	265	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   242	248	287	finally
-    //   248	254	287	finally
-    //   258	265	287	finally
-    //   268	272	287	finally
-    //   222	242	291	finally
-    //   206	222	298	finally
-    //   20	25	319	java/lang/Throwable
-    //   41	116	319	java/lang/Throwable
-    //   120	138	319	java/lang/Throwable
-    //   146	164	319	java/lang/Throwable
-    //   167	171	319	java/lang/Throwable
-    //   171	184	319	java/lang/Throwable
-    //   188	198	319	java/lang/Throwable
-    //   272	280	319	java/lang/Throwable
-    //   304	312	319	java/lang/Throwable
-    //   317	319	319	java/lang/Throwable
-    //   280	285	332	java/lang/Throwable
-    //   312	317	335	java/lang/Throwable
+    //   240	246	285	finally
+    //   246	252	285	finally
+    //   256	263	285	finally
+    //   266	270	285	finally
+    //   220	240	289	finally
+    //   204	220	296	finally
+    //   20	25	317	java/lang/Throwable
+    //   41	114	317	java/lang/Throwable
+    //   118	136	317	java/lang/Throwable
+    //   144	162	317	java/lang/Throwable
+    //   165	169	317	java/lang/Throwable
+    //   169	182	317	java/lang/Throwable
+    //   186	196	317	java/lang/Throwable
+    //   270	278	317	java/lang/Throwable
+    //   302	310	317	java/lang/Throwable
+    //   315	317	317	java/lang/Throwable
+    //   278	283	330	java/lang/Throwable
+    //   310	315	333	java/lang/Throwable
   }
   
-  private void b()
+  private void d(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    synchronized (this.p)
     {
-      int i;
-      if (this.jdField_b_of_type_JavaUtilLinkedList.size() < 2) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      if (i != 0)
+      if (this.q.remove(Long.valueOf(paramLong)))
       {
-        Long localLong = (Long)this.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        NetReq localNetReq = (NetReq)this.jdField_a_of_type_JavaUtilMap.remove(localLong);
+        this.s.remove(Long.valueOf(paramLong));
+      }
+      else if (this.r.remove(Long.valueOf(paramLong)))
+      {
+        h();
+      }
+      else
+      {
+        g();
+        h();
+      }
+      return;
+    }
+  }
+  
+  private void g()
+  {
+    Iterator localIterator = this.r.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Long)localIterator.next();
+      if (localObject == null)
+      {
+        localIterator.remove();
+      }
+      else
+      {
+        localObject = (DownloadJobContext)this.a.get(localObject);
+        if ((localObject == null) || (((DownloadJobContext)localObject).g())) {
+          localIterator.remove();
+        }
+      }
+    }
+  }
+  
+  private void h()
+  {
+    if (this.q.size() > 0)
+    {
+      int i1;
+      if (this.r.size() < 2) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      if (i1 != 0)
+      {
+        Long localLong = (Long)this.q.remove(0);
+        NetReq localNetReq = (NetReq)this.s.remove(localLong);
         if (localNetReq == null)
         {
-          b();
+          h();
           return;
         }
-        DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(localLong);
-        if ((localDownloadJobContext != null) && (a(localDownloadJobContext.c())) && (!localDownloadJobContext.d()))
+        DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(localLong);
+        if ((localDownloadJobContext != null) && (a(localDownloadJobContext.f())) && (!localDownloadJobContext.g()))
         {
-          this.jdField_b_of_type_JavaUtilLinkedList.add(localLong);
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService == null) {
-            this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = WeiyunNetEngine.a();
+          this.r.add(localLong);
+          if (this.m == null) {
+            this.m = WeiyunNetEngine.a();
           }
-          this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new WyDownloader.6(this, localLong, localNetReq));
+          this.e.submit(new WyDownloader.6(this, localLong, localNetReq));
           return;
         }
-        b();
+        h();
       }
     }
-  }
-  
-  public int a()
-  {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadDownloadJobCounter.a();
-    int i = ((DownloadJobCounter)???).d;
-    int j = ((DownloadJobCounter)???).c;
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilHashMap.keySet());
-      if (!localArrayList.isEmpty()) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new WyDownloader.7(this, localArrayList));
-      }
-      return i + j;
-    }
-  }
-  
-  public DownloadJobContext a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      if (localDownloadJobContext == null) {
-        return null;
-      }
-      return DownloadJobContext.a(localDownloadJobContext.a(), localDownloadJobContext.a().a(), localDownloadJobContext.b(), localDownloadJobContext.a().a());
-    }
-  }
-  
-  public DownloadJobCounter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadDownloadJobCounter.a();
   }
   
   public String a(DownloadFile paramDownloadFile, String paramString, IDownloadStatusListener paramIDownloadStatusListener)
@@ -452,9 +419,9 @@ public class WyDownloader
   
   public String a(String paramString1, String paramString2, String paramString3, String paramString4, IDownloadStatusListener paramIDownloadStatusListener)
   {
-    int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    a(paramString1, paramString2, paramString3, paramString4, new WyDownloader.3(this, paramIDownloadStatusListener, i), Integer.toString(i));
-    return Integer.toString(i);
+    int i1 = f.getAndIncrement();
+    a(paramString1, paramString2, paramString3, paramString4, new WyDownloader.3(this, paramIDownloadStatusListener, i1), Integer.toString(i1));
+    return Integer.toString(i1);
   }
   
   void a(int paramInt, DownloadJobContext paramDownloadJobContext)
@@ -462,10 +429,10 @@ public class WyDownloader
     if (paramDownloadJobContext == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap.put(Long.valueOf(paramDownloadJobContext.a()), Integer.toString(paramInt));
-      ??? = this.jdField_a_of_type_JavaUtilList.iterator();
+      this.b.put(Long.valueOf(paramDownloadJobContext.h()), Integer.toString(paramInt));
+      ??? = this.i.iterator();
       while (((Iterator)???).hasNext())
       {
         IDownloadStatusListener localIDownloadStatusListener = (IDownloadStatusListener)((Iterator)???).next();
@@ -473,8 +440,8 @@ public class WyDownloader
           localIDownloadStatusListener.a(Integer.toString(paramInt));
         }
       }
-      if (paramDownloadJobContext.a() != null) {
-        paramDownloadJobContext.a().a(Integer.toString(paramInt));
+      if (paramDownloadJobContext.l() != null) {
+        paramDownloadJobContext.l().a(Integer.toString(paramInt));
       }
       return;
     }
@@ -486,37 +453,37 @@ public class WyDownloader
   
   public void a(int paramInt, DownloadJobContext paramDownloadJobContext, String paramString)
   {
-    int i;
+    int i1;
     label184:
     label190:
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      long l = paramDownloadJobContext.a();
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l));
+      long l1 = paramDownloadJobContext.h();
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(l1));
       if (localDownloadJobContext == null)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), paramDownloadJobContext);
+        this.a.put(Long.valueOf(l1), paramDownloadJobContext);
       }
       else
       {
-        if (!localDownloadJobContext.a().a()) {
+        if (!localDownloadJobContext.m().a()) {
           break label190;
         }
-        paramDownloadJobContext.a().jdField_a_of_type_Int = localDownloadJobContext.a().jdField_a_of_type_Int;
-        paramDownloadJobContext.a().jdField_b_of_type_Int = localDownloadJobContext.a().jdField_b_of_type_Int;
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), paramDownloadJobContext);
+        paramDownloadJobContext.m().a = localDownloadJobContext.m().a;
+        paramDownloadJobContext.m().b = localDownloadJobContext.m().b;
+        this.a.put(Long.valueOf(l1), paramDownloadJobContext);
         break label184;
         a(paramInt, paramDownloadJobContext);
-        if (i != 0)
+        if (i1 != 0)
         {
           paramDownloadJobContext.b(paramString);
         }
         else
         {
-          localDownloadJobContext.a(paramDownloadJobContext.b());
-          localDownloadJobContext.b(paramDownloadJobContext.c());
+          localDownloadJobContext.a(paramDownloadJobContext.e());
+          localDownloadJobContext.b(paramDownloadJobContext.f());
         }
-        if (i == 0) {
+        if (i1 == 0) {
           paramDownloadJobContext = localDownloadJobContext;
         }
         a(paramDownloadJobContext, 1, 0, null);
@@ -527,16 +494,16 @@ public class WyDownloader
   
   public void a(long paramLong, int paramInt, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
       if (localDownloadJobContext == null) {
         return;
       }
-      if (localDownloadJobContext.d()) {
+      if (localDownloadJobContext.g()) {
         return;
       }
-      if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+      if (!NetworkUtil.isNetworkAvailable(this.o))
       {
         a(localDownloadJobContext, 5, 1810004, null);
         return;
@@ -548,26 +515,26 @@ public class WyDownloader
   
   public void a(long paramLong, DownloadFile.DownloadServerInfo paramDownloadServerInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
       if (localDownloadJobContext == null) {
         return;
       }
-      if (localDownloadJobContext.d()) {
+      if (localDownloadJobContext.g()) {
         return;
       }
-      if ((paramDownloadServerInfo != null) && (!TextUtils.isEmpty(paramDownloadServerInfo.c)))
+      if ((paramDownloadServerInfo != null) && (!TextUtils.isEmpty(paramDownloadServerInfo.d)))
       {
-        if (!a(localDownloadJobContext.c()))
+        if (!a(localDownloadJobContext.f()))
         {
           a(localDownloadJobContext, 5, 1810004, null);
           return;
         }
-        ??? = DownloadJobContext.a(localDownloadJobContext, paramDownloadServerInfo.c, localDownloadJobContext.d(), paramDownloadServerInfo.jdField_b_of_type_JavaLangString, true, this, a(localDownloadJobContext.d(), localDownloadJobContext.a().jdField_a_of_type_JavaLangString));
+        ??? = DownloadJobContext.a(localDownloadJobContext, paramDownloadServerInfo.d, localDownloadJobContext.j(), paramDownloadServerInfo.c, true, this, a(localDownloadJobContext.j(), localDownloadJobContext.c().b));
         localDownloadJobContext.a((HttpNetReq)???);
-        localDownloadJobContext.a(paramDownloadServerInfo.e);
-        localDownloadJobContext.a().d = paramDownloadServerInfo.e;
+        localDownloadJobContext.a(paramDownloadServerInfo.f);
+        localDownloadJobContext.m().h = paramDownloadServerInfo.f;
         a(paramLong, (NetReq)???);
         return;
       }
@@ -578,16 +545,16 @@ public class WyDownloader
   
   public void a(long paramLong, boolean paramBoolean, DownloadJobContext paramDownloadJobContext)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
       if (localDownloadJobContext != null) {
         a(localDownloadJobContext, 5, 1810002, null);
       }
       if (paramDownloadJobContext != null)
       {
-        paramDownloadJobContext.a().jdField_a_of_type_Int = 0;
-        paramDownloadJobContext.a().jdField_b_of_type_Int = 1810002;
+        paramDownloadJobContext.m().a = 0;
+        paramDownloadJobContext.m().b = 1810002;
         a(paramDownloadJobContext, true);
       }
       return;
@@ -596,16 +563,16 @@ public class WyDownloader
   
   public void a(long paramLong, boolean paramBoolean1, WeiyunDownloadStatusInfo paramWeiyunDownloadStatusInfo, boolean paramBoolean2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
       ??? = localDownloadJobContext;
       if (localDownloadJobContext == null)
       {
         if (paramWeiyunDownloadStatusInfo == null) {
           paramWeiyunDownloadStatusInfo = null;
         } else {
-          paramWeiyunDownloadStatusInfo = paramWeiyunDownloadStatusInfo.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadJobContext;
+          paramWeiyunDownloadStatusInfo = paramWeiyunDownloadStatusInfo.i;
         }
         ??? = paramWeiyunDownloadStatusInfo;
         if (paramWeiyunDownloadStatusInfo == null) {
@@ -619,13 +586,13 @@ public class WyDownloader
   
   public void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
       if (localDownloadJobContext == null) {
         return;
       }
-      if (localDownloadJobContext.d()) {
+      if (localDownloadJobContext.g()) {
         return;
       }
       localDownloadJobContext.b(paramString);
@@ -644,33 +611,33 @@ public class WyDownloader
         a(localDownloadJobContext, 5, 1810031, null);
         return;
       }
-      if (!a(localDownloadJobContext.c()))
+      if (!a(localDownloadJobContext.f()))
       {
         a(localDownloadJobContext, 5, 1810004, null);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher.a(localDownloadJobContext, 0);
+      this.l.a(localDownloadJobContext, 0);
       return;
     }
   }
   
   public void a(IDownloadStatusListener paramIDownloadStatusListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramIDownloadStatusListener);
+    this.i.add(paramIDownloadStatusListener);
   }
   
   public void a(IFetchListener paramIFetchListener, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIFetchListener = paramIFetchListener;
-    if (this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIFetchListener != null)
+    this.h = paramIFetchListener;
+    if (this.h != null)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.i = new ArrayList();
       paramIFetchListener = new ReleaseLooperHandler("weiyun_download-work-thread");
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorInfoRecorder = new InfoRecorder(this, paramIFetchListener);
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorLocalProcessor = new LocalProcessor(this, paramIFetchListener);
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher = new UrlFetcher(this, this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIFetchListener, paramIFetchListener);
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorInfoRecorder.a(WeiyunTransmissionGlobal.getInstance().getHostInterface().getCurrentUid());
+      this.j = new InfoRecorder(this, paramIFetchListener);
+      this.k = new LocalProcessor(this, paramIFetchListener);
+      this.l = new UrlFetcher(this, this.h, paramIFetchListener);
+      this.o = paramContext;
+      this.j.a(WeiyunTransmissionGlobal.getInstance().getHostInterface().getCurrentUid());
       return;
     }
     throw new NullPointerException("IFetchListener can not be null!");
@@ -678,8 +645,8 @@ public class WyDownloader
   
   void a(DownloadJobContext paramDownloadJobContext, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadDownloadJobCounter.a();
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadDownloadJobCounter.a(paramDownloadJobContext, paramInt1, paramInt2);
+    this.g.a();
+    this.g.a(paramDownloadJobContext, paramInt1, paramInt2);
   }
   
   void a(DownloadJobContext paramDownloadJobContext, int paramInt1, int paramInt2, String paramString)
@@ -688,7 +655,7 @@ public class WyDownloader
       return;
     }
     label461:
-    int i;
+    int i1;
     if (paramInt1 != 0)
     {
       if (paramInt1 != 1)
@@ -703,23 +670,23 @@ public class WyDownloader
                 break label461;
               }
               if (paramInt2 == 1810002) {
-                synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+                synchronized (this.a)
                 {
-                  this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramDownloadJobContext.a()));
-                  synchronized (this.jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap)
+                  this.a.remove(Long.valueOf(paramDownloadJobContext.h()));
+                  synchronized (this.b)
                   {
-                    this.jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap.removeByKey(Long.valueOf(paramDownloadJobContext.a()));
-                    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+                    this.b.removeByKey(Long.valueOf(paramDownloadJobContext.h()));
+                    synchronized (this.c)
                     {
-                      this.jdField_a_of_type_JavaUtilHashSet.remove(Long.valueOf(paramDownloadJobContext.a()));
-                      synchronized (this.jdField_b_of_type_JavaUtilHashSet)
+                      this.c.remove(Long.valueOf(paramDownloadJobContext.h()));
+                      synchronized (this.d)
                       {
-                        this.jdField_b_of_type_JavaUtilHashSet.remove(Long.valueOf(paramDownloadJobContext.a()));
+                        this.d.remove(Long.valueOf(paramDownloadJobContext.h()));
                         paramDownloadJobContext.c(true);
-                        if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService == null) {
-                          this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = WeiyunNetEngine.a();
+                        if (this.m == null) {
+                          this.m = WeiyunNetEngine.a();
                         }
-                        this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.cancelReq(paramDownloadJobContext.a());
+                        this.m.cancelReq(paramDownloadJobContext.k());
                         paramInt1 = 0;
                       }
                     }
@@ -727,87 +694,87 @@ public class WyDownloader
                 }
               }
               if ((paramInt2 != 1810003) && (paramInt2 != 1810004)) {
-                synchronized (this.jdField_b_of_type_JavaUtilHashSet)
+                synchronized (this.d)
                 {
-                  this.jdField_b_of_type_JavaUtilHashSet.add(Long.valueOf(paramDownloadJobContext.a()));
+                  this.d.add(Long.valueOf(paramDownloadJobContext.h()));
                 }
               }
-              synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+              synchronized (this.c)
               {
-                this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(paramDownloadJobContext.a()));
+                this.c.add(Long.valueOf(paramDownloadJobContext.h()));
                 paramInt1 = 1;
-                a(paramDownloadJobContext.a());
+                d(paramDownloadJobContext.h());
               }
             }
-            synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+            synchronized (this.a)
             {
-              this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramDownloadJobContext.a()));
-              synchronized (this.jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap)
+              this.a.remove(Long.valueOf(paramDownloadJobContext.h()));
+              synchronized (this.b)
               {
-                this.jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap.removeByKey(Long.valueOf(paramDownloadJobContext.a()));
-                synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+                this.b.removeByKey(Long.valueOf(paramDownloadJobContext.h()));
+                synchronized (this.c)
                 {
-                  this.jdField_a_of_type_JavaUtilHashSet.remove(Long.valueOf(paramDownloadJobContext.a()));
-                  synchronized (this.jdField_b_of_type_JavaUtilHashSet)
+                  this.c.remove(Long.valueOf(paramDownloadJobContext.h()));
+                  synchronized (this.d)
                   {
-                    this.jdField_b_of_type_JavaUtilHashSet.remove(Long.valueOf(paramDownloadJobContext.a()));
-                    paramDownloadJobContext.a().jdField_b_of_type_JavaLangString = paramDownloadJobContext.d();
-                    paramDownloadJobContext.a().jdField_b_of_type_Long = paramDownloadJobContext.a().jdField_a_of_type_Long;
-                    paramDownloadJobContext.a().jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadJobContext = paramDownloadJobContext;
-                    a(paramDownloadJobContext.a());
+                    this.d.remove(Long.valueOf(paramDownloadJobContext.h()));
+                    paramDownloadJobContext.m().f = paramDownloadJobContext.j();
+                    paramDownloadJobContext.m().e = paramDownloadJobContext.m().d;
+                    paramDownloadJobContext.m().i = paramDownloadJobContext;
+                    d(paramDownloadJobContext.h());
                     bool1 = true;
                   }
                 }
               }
             }
           }
-          bool1 = paramDownloadJobContext.a().b();
+          bool1 = paramDownloadJobContext.m().b();
           if (bool1) {
-            synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+            synchronized (this.c)
             {
-              this.jdField_a_of_type_JavaUtilHashSet.remove(Long.valueOf(paramDownloadJobContext.a()));
+              this.c.remove(Long.valueOf(paramDownloadJobContext.h()));
               paramDownloadJobContext.c(true);
               paramDownloadJobContext.b(false);
-              if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService == null) {
-                this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = WeiyunNetEngine.a();
+              if (this.m == null) {
+                this.m = WeiyunNetEngine.a();
               }
-              this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.cancelReq(paramDownloadJobContext.a());
-              a(paramDownloadJobContext.a());
+              this.m.cancelReq(paramDownloadJobContext.k());
+              d(paramDownloadJobContext.h());
             }
           }
           break label753;
         }
-        bool1 = paramDownloadJobContext.a().c();
+        bool1 = paramDownloadJobContext.m().c();
         break label753;
       }
-      int j = 0;
-      i = paramInt1;
-      paramInt1 = j;
+      int i2 = 0;
+      i1 = paramInt1;
+      paramInt1 = i2;
     }
     else
     {
-      a(paramDownloadJobContext.a());
+      d(paramDownloadJobContext.h());
       paramInt1 = 1;
-      i = 1;
+      i1 = 1;
     }
     boolean bool2;
-    if ((paramInt1 == 0) && (!paramDownloadJobContext.a().a())) {
+    if ((paramInt1 == 0) && (!paramDownloadJobContext.m().a())) {
       bool2 = false;
     } else {
       bool2 = true;
     }
-    paramInt1 = i;
+    paramInt1 = i1;
     boolean bool1 = bool2;
     if (bool2) {
-      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+      synchronized (this.c)
       {
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Long.valueOf(paramDownloadJobContext.a()));
-        synchronized (this.jdField_b_of_type_JavaUtilHashSet)
+        this.c.remove(Long.valueOf(paramDownloadJobContext.h()));
+        synchronized (this.d)
         {
-          this.jdField_b_of_type_JavaUtilHashSet.remove(Long.valueOf(paramDownloadJobContext.a()));
+          this.d.remove(Long.valueOf(paramDownloadJobContext.h()));
           paramDownloadJobContext.c(false);
-          this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorLocalProcessor.a(paramDownloadJobContext);
-          paramInt1 = i;
+          this.k.a(paramDownloadJobContext);
+          paramInt1 = i1;
           bool1 = bool2;
         }
       }
@@ -815,12 +782,12 @@ public class WyDownloader
     label753:
     if (bool1)
     {
-      i = paramDownloadJobContext.a().jdField_a_of_type_Int;
-      paramDownloadJobContext.a().jdField_a_of_type_Int = paramInt1;
-      paramDownloadJobContext.a().jdField_b_of_type_Int = paramInt2;
-      paramDownloadJobContext.a().jdField_a_of_type_JavaLangString = DownloadHelper.a(paramInt2, paramString);
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorInfoRecorder.a(paramDownloadJobContext, true);
-      a(paramDownloadJobContext, i, paramInt1);
+      i1 = paramDownloadJobContext.m().a;
+      paramDownloadJobContext.m().a = paramInt1;
+      paramDownloadJobContext.m().b = paramInt2;
+      paramDownloadJobContext.m().c = DownloadHelper.a(paramInt2, paramString);
+      this.j.a(paramDownloadJobContext, true);
+      a(paramDownloadJobContext, i1, paramInt1);
     }
   }
   
@@ -829,16 +796,16 @@ public class WyDownloader
     if (paramDownloadJobContext == null) {
       return;
     }
-    Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+    Iterator localIterator = new ArrayList(this.i).iterator();
     while (localIterator.hasNext())
     {
       IDownloadStatusListener localIDownloadStatusListener = (IDownloadStatusListener)localIterator.next();
       if (localIDownloadStatusListener != null) {
-        localIDownloadStatusListener.a(paramDownloadJobContext.a(), paramDownloadJobContext.a(), paramDownloadJobContext.b(), paramBoolean);
+        localIDownloadStatusListener.a(paramDownloadJobContext.b(), paramDownloadJobContext.h(), paramDownloadJobContext.n(), paramBoolean);
       }
     }
-    if (paramDownloadJobContext.a() != null) {
-      paramDownloadJobContext.a().a(paramDownloadJobContext.a(), paramDownloadJobContext.a(), paramDownloadJobContext.b(), paramBoolean);
+    if (paramDownloadJobContext.l() != null) {
+      paramDownloadJobContext.l().a(paramDownloadJobContext.b(), paramDownloadJobContext.h(), paramDownloadJobContext.n(), paramBoolean);
     }
   }
   
@@ -850,12 +817,12 @@ public class WyDownloader
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, IDownloadListener paramIDownloadListener, String paramString5)
   {
     paramString1 = DownloadJobContext.a(paramString4, paramString1, paramString2, paramString3, true, new WyDownloader.4(this, paramIDownloadListener, paramString4, paramString2));
-    if (this.jdField_b_of_type_ComTencentMobileqqTransfileApiIHttpEngineService == null) {
-      this.jdField_b_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = WeiyunNetEngine.b();
+    if (this.n == null) {
+      this.n = WeiyunNetEngine.b();
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new WyDownloader.5(this, paramString1));
+    this.e.submit(new WyDownloader.5(this, paramString1));
     if (paramString5 != null) {
-      this.jdField_b_of_type_JavaUtilMap.put(paramString5, paramString1);
+      this.t.put(paramString5, paramString1);
     }
   }
   
@@ -866,22 +833,22 @@ public class WyDownloader
       if (paramList.isEmpty()) {
         return;
       }
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      synchronized (this.a)
       {
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           DownloadJobContext localDownloadJobContext = (DownloadJobContext)paramList.next();
-          long l = localDownloadJobContext.a();
-          int i = localDownloadJobContext.a().jdField_a_of_type_Int;
-          localDownloadJobContext.a().jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(l), localDownloadJobContext);
-          if ((i != 0) && (i != 1) && (i != 2))
+          long l1 = localDownloadJobContext.h();
+          int i1 = localDownloadJobContext.m().a;
+          localDownloadJobContext.m().a = 0;
+          this.a.put(Long.valueOf(l1), localDownloadJobContext);
+          if ((i1 != 0) && (i1 != 1) && (i1 != 2))
           {
-            if (i != 3)
+            if (i1 != 3)
             {
-              if (i == 5) {
-                a(localDownloadJobContext, 5, localDownloadJobContext.a().jdField_b_of_type_Int, localDownloadJobContext.a().jdField_a_of_type_JavaLangString);
+              if (i1 == 5) {
+                a(localDownloadJobContext, 5, localDownloadJobContext.m().b, localDownloadJobContext.m().c);
               }
             }
             else {
@@ -902,9 +869,9 @@ public class WyDownloader
     if (paramBoolean1)
     {
       ArrayList localArrayList = new ArrayList();
-      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+      synchronized (this.c)
       {
-        localArrayList.addAll(this.jdField_a_of_type_JavaUtilHashSet);
+        localArrayList.addAll(this.c);
         ??? = localArrayList.iterator();
         if (!((Iterator)???).hasNext()) {
           return;
@@ -912,23 +879,23 @@ public class WyDownloader
         a(((Long)((Iterator)???).next()).longValue(), false, false, false, false);
       }
     }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      Iterator localIterator = this.a.entrySet().iterator();
       while (localIterator.hasNext())
       {
         DownloadJobContext localDownloadJobContext = (DownloadJobContext)((Map.Entry)localIterator.next()).getValue();
-        if ((localDownloadJobContext.c()) && (paramBoolean2))
+        if ((localDownloadJobContext.f()) && (paramBoolean2))
         {
-          if ((localDownloadJobContext.c()) && (paramBoolean2) && (localDownloadJobContext.a().d())) {
-            a(localDownloadJobContext.a(), false, false, false, false);
+          if ((localDownloadJobContext.f()) && (paramBoolean2) && (localDownloadJobContext.m().d())) {
+            a(localDownloadJobContext.h(), false, false, false, false);
           }
         }
-        else if (localDownloadJobContext.a().b())
+        else if (localDownloadJobContext.m().b())
         {
           localDownloadJobContext.c(true);
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService != null) {
-            this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.cancelReq(localDownloadJobContext.a());
+          if (this.m != null) {
+            this.m.cancelReq(localDownloadJobContext.k());
           }
           a(localDownloadJobContext, 5, 1810004, null);
         }
@@ -937,20 +904,14 @@ public class WyDownloader
     }
   }
   
-  public boolean a()
-  {
-    DownloadJobCounter localDownloadJobCounter = this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadDownloadJobCounter.a();
-    return localDownloadJobCounter.jdField_a_of_type_Int + localDownloadJobCounter.jdField_b_of_type_Int > 0;
-  }
-  
   public boolean a(long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
       if (localDownloadJobContext == null)
       {
-        a(paramLong);
+        d(paramLong);
         return false;
       }
       a(localDownloadJobContext, 3, 0, null);
@@ -960,12 +921,12 @@ public class WyDownloader
   
   public boolean a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
       if (localDownloadJobContext == null)
       {
-        a(paramLong);
+        d(paramLong);
         return false;
       }
       if (paramBoolean1)
@@ -983,20 +944,20 @@ public class WyDownloader
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqTransfileApiIHttpEngineService != null)
+    if (this.n != null)
     {
-      ??? = (HttpNetReq)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+      ??? = (HttpNetReq)this.t.get(paramString);
       if (??? != null) {
-        this.jdField_b_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.cancelReq((NetReq)???);
+        this.n.cancelReq((NetReq)???);
       }
     }
-    synchronized (this.jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap)
+    synchronized (this.b)
     {
-      paramString = (Long)this.jdField_a_of_type_ComTencentWeiyunUtilsDualHashMap.getByValue(paramString);
+      paramString = (Long)this.b.getByValue(paramString);
       if (paramString == null) {
         return false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorInfoRecorder.a(paramString.longValue(), true);
+      this.j.a(paramString.longValue(), true);
       return true;
     }
   }
@@ -1011,58 +972,97 @@ public class WyDownloader
     return NetworkUtils.isNetworkAvailable(localContext);
   }
   
-  public int b()
+  public DownloadJobContext b(long paramLong)
   {
-    ??? = this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadDownloadJobCounter.a();
-    int i = ((DownloadJobCounter)???).d;
-    int j = ((DownloadJobCounter)???).jdField_a_of_type_Int;
-    int k = ((DownloadJobCounter)???).jdField_b_of_type_Int;
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilHashMap.keySet());
-      if (!localArrayList.isEmpty()) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new WyDownloader.8(this, localArrayList));
+      DownloadJobContext localDownloadJobContext = (DownloadJobContext)this.a.get(Long.valueOf(paramLong));
+      if (localDownloadJobContext == null) {
+        return null;
       }
-      return i + j + k;
+      return DownloadJobContext.a(localDownloadJobContext.b(), localDownloadJobContext.c().a(), localDownloadJobContext.d(), localDownloadJobContext.m().e());
     }
+  }
+  
+  public DownloadJobCounter b()
+  {
+    return this.g.a();
   }
   
   String b(DownloadFile paramDownloadFile, String paramString, boolean paramBoolean, IDownloadStatusListener paramIDownloadStatusListener)
   {
-    int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    int i1 = f.getAndIncrement();
     paramString = DownloadJobContext.a(WeiyunTransmissionGlobal.getInstance().getHostInterface().getCurrentUid(), paramDownloadFile, paramString, new WeiyunDownloadStatusInfo());
     paramString.b(paramBoolean);
-    paramString.a().c = paramDownloadFile.jdField_a_of_type_JavaLangString;
+    paramString.m().g = paramDownloadFile.b;
     paramString.a(paramIDownloadStatusListener);
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorInfoRecorder.a(i, paramString);
-    return Integer.toString(i);
+    this.j.a(i1, paramString);
+    return Integer.toString(i1);
   }
   
   public void b(IDownloadStatusListener paramIDownloadStatusListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramIDownloadStatusListener)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramIDownloadStatusListener);
+    if (this.i.contains(paramIDownloadStatusListener)) {
+      this.i.remove(paramIDownloadStatusListener);
     }
   }
   
-  public boolean b(long paramLong)
+  public boolean c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorInfoRecorder.a(paramLong, true);
+    DownloadJobCounter localDownloadJobCounter = this.g.a();
+    return localDownloadJobCounter.a + localDownloadJobCounter.b > 0;
+  }
+  
+  public boolean c(long paramLong)
+  {
+    this.j.a(paramLong, true);
     return true;
   }
   
-  public int c()
+  public int d()
+  {
+    ??? = this.g.a();
+    int i1 = ((DownloadJobCounter)???).d;
+    int i2 = ((DownloadJobCounter)???).c;
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.a)
+    {
+      localArrayList.addAll(this.a.keySet());
+      if (!localArrayList.isEmpty()) {
+        this.e.submit(new WyDownloader.7(this, localArrayList));
+      }
+      return i1 + i2;
+    }
+  }
+  
+  public int e()
+  {
+    ??? = this.g.a();
+    int i1 = ((DownloadJobCounter)???).d;
+    int i2 = ((DownloadJobCounter)???).a;
+    int i3 = ((DownloadJobCounter)???).b;
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.a)
+    {
+      localArrayList.addAll(this.a.keySet());
+      if (!localArrayList.isEmpty()) {
+        this.e.submit(new WyDownloader.8(this, localArrayList));
+      }
+      return i1 + i2 + i3;
+    }
+  }
+  
+  public int f()
   {
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_b_of_type_JavaUtilHashSet)
+    synchronized (this.d)
     {
-      int i = this.jdField_b_of_type_JavaUtilHashSet.size();
-      localArrayList.addAll(this.jdField_b_of_type_JavaUtilHashSet);
+      int i1 = this.d.size();
+      localArrayList.addAll(this.d);
       if (!localArrayList.isEmpty()) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsThreadPoolWrapper.submit(new WyDownloader.9(this, localArrayList));
+        this.e.submit(new WyDownloader.9(this, localArrayList));
       }
-      return i;
+      return i1;
     }
   }
   
@@ -1071,13 +1071,13 @@ public class WyDownloader
     if (paramNetResp.mResult == 3) {
       return;
     }
-    int i;
+    int i1;
     if (paramNetResp.mResult == 0) {
-      i = 1;
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    int j = paramNetResp.mErrCode;
+    int i2 = paramNetResp.mErrCode;
     paramNetResp = ((HttpNetReq)paramNetResp.mReq).getUserData();
     if ((paramNetResp != null) && ((paramNetResp instanceof DownloadJobContext)))
     {
@@ -1085,12 +1085,12 @@ public class WyDownloader
       if (paramNetResp == null) {
         return;
       }
-      if (paramNetResp.d()) {
+      if (paramNetResp.g()) {
         return;
       }
-      if (i != 0)
+      if (i1 != 0)
       {
-        File localFile = new File(paramNetResp.d());
+        File localFile = new File(paramNetResp.j());
         if (localFile.exists())
         {
           if (!a(WeiyunTransmissionGlobal.getInstance().getContext(), localFile)) {
@@ -1102,15 +1102,15 @@ public class WyDownloader
         a(paramNetResp, 5, 1810031, null);
         return;
       }
-      if (paramNetResp.d()) {
+      if (paramNetResp.g()) {
         return;
       }
-      if (DownloadHelper.a(j))
+      if (DownloadHelper.a(i2))
       {
-        a(paramNetResp, 0, j, null);
+        a(paramNetResp, 0, i2, null);
         return;
       }
-      a(paramNetResp, 5, j, null);
+      a(paramNetResp, 5, i2, null);
     }
   }
   
@@ -1123,25 +1123,25 @@ public class WyDownloader
       if (paramNetReq == null) {
         return;
       }
-      if (paramNetReq.d()) {
+      if (paramNetReq.g()) {
         return;
       }
-      if (paramNetReq.a().c()) {
+      if (paramNetReq.m().c()) {
         a(paramNetReq, 2, 0, null);
       }
-      paramNetReq.a().jdField_a_of_type_Long = paramLong2;
-      WeiyunDownloadStatusInfo localWeiyunDownloadStatusInfo = paramNetReq.a();
+      paramNetReq.m().d = paramLong2;
+      WeiyunDownloadStatusInfo localWeiyunDownloadStatusInfo = paramNetReq.m();
       if (paramLong1 >= paramLong2) {
         paramLong1 = paramLong2;
       }
-      localWeiyunDownloadStatusInfo.jdField_b_of_type_Long = paramLong1;
+      localWeiyunDownloadStatusInfo.e = paramLong1;
       a(paramNetReq, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.download.WyDownloader
  * JD-Core Version:    0.7.0.1
  */

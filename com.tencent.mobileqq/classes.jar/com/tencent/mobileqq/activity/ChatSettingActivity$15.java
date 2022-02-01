@@ -1,34 +1,81 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Message;
-import mqq.os.MqqHandler;
+import MQQ.GetRoamToastRsp;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SVIPObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class ChatSettingActivity$15
-  implements Runnable
+  extends SVIPObserver
 {
-  ChatSettingActivity$15(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
+  ChatSettingActivity$15(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void onGetRoamToast(boolean paramBoolean, GetRoamToastRsp paramGetRoamToastRsp)
   {
-    Object localObject1 = this.a;
-    if ((localObject1 != null) && (((StringBuilder)localObject1).length() > 0)) {
-      localObject1 = this.a.toString();
-    } else {
-      localObject1 = null;
+    if (this.a.w == null) {
+      return;
     }
-    Object localObject2 = this.this$0;
-    if (ChatSettingActivity.a((ChatSettingActivity)localObject2, ChatSettingActivity.a((ChatSettingActivity)localObject2), ChatSettingActivity.a(this.this$0), this.a) > 0)
+    Object localObject2;
+    Object localObject1;
+    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((ISVIPHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b(paramGetRoamToastRsp)))
     {
-      localObject2 = this.this$0.a.obtainMessage();
-      ((Message)localObject2).what = 18;
-      ((Message)localObject2).obj = localObject1;
-      ((Message)localObject2).sendToTarget();
+      localObject2 = paramGetRoamToastRsp.sToast;
+      int i = ((String)localObject2).indexOf('#');
+      localObject1 = localObject2;
+      if (i >= 0)
+      {
+        int j = i + 1;
+        int k = ((String)localObject2).indexOf('#', j);
+        localObject1 = localObject2;
+        if (k >= 0)
+        {
+          localObject1 = new SpannableStringBuilder();
+          ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2, 0, i);
+          ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2, j, k);
+          ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2, k + 1, ((String)localObject2).length());
+          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(-12541697), i, k - 1, 33);
+        }
+      }
+      this.a.x.setText((CharSequence)localObject1);
+      this.a.w.setTag(paramGetRoamToastRsp);
+      this.a.w.setVisibility(0);
+      ReportController.b(this.a.app, "dc00898", "", "", "0X8009E31", "0X8009E31", 0, 0, "", "", "", "");
+      return;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = ChatSettingActivity.e(this.a);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onGetRoamToast: ");
+      ((StringBuilder)localObject2).append(paramBoolean);
+      ((StringBuilder)localObject2).append(",");
+      if (paramGetRoamToastRsp == null) {
+        paramGetRoamToastRsp = "null";
+      } else {
+        paramGetRoamToastRsp = paramGetRoamToastRsp.sToast;
+      }
+      ((StringBuilder)localObject2).append(paramGetRoamToastRsp);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    this.a.w.setVisibility(8);
+  }
+  
+  public void onGetRoamType(String paramString, int paramInt)
+  {
+    ChatSettingActivity.m(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.15
  * JD-Core Version:    0.7.0.1
  */

@@ -203,6 +203,11 @@ public class MotionScene$Transition
     return localStringBuilder.toString();
   }
   
+  public int getAutoTransition()
+  {
+    return this.mAutoTransition;
+  }
+  
   public int getDuration()
   {
     return this.mDuration;
@@ -263,6 +268,11 @@ public class MotionScene$Transition
     return (paramInt & this.mTransitionFlags) != 0;
   }
   
+  public void setAutoTransition(int paramInt)
+  {
+    this.mAutoTransition = paramInt;
+  }
+  
   public void setDuration(int paramInt)
   {
     this.mDuration = paramInt;
@@ -285,7 +295,7 @@ public class MotionScene$Transition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.MotionScene.Transition
  * JD-Core Version:    0.7.0.1
  */

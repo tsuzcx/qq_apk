@@ -76,6 +76,7 @@ public class EmotionPanelViewPagerAdapter
   public Map<Integer, BaseEmotionAdapter> otherEmotionAdapters;
   IEmoticonPanelController panelController;
   EmotionPanelInjectionInfoManager panelInjectionInfoManager;
+  boolean showDescInPreview = false;
   int[] sysEmotionOrder = null;
   
   public EmotionPanelViewPagerAdapter(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, IPanelInteractionListener paramIPanelInteractionListener, Context paramContext, EmoticonCallback paramEmoticonCallback, int paramInt, boolean paramBoolean)
@@ -114,8 +115,8 @@ public class EmotionPanelViewPagerAdapter
     localRelativeLayout.addView(paramEmotionPanelListView, new RelativeLayout.LayoutParams(-1, -1));
     paramEmotionPanelListView = new RelativeLayout.LayoutParams(-2, -2);
     ImageButton localImageButton = new ImageButton(this.mContext);
-    localImageButton.setContentDescription(this.mContext.getString(2131689853));
-    localImageButton.setBackgroundResource(2130837955);
+    localImageButton.setContentDescription(this.mContext.getString(2131886494));
+    localImageButton.setBackgroundResource(2130837979);
     localImageButton.setOnClickListener(this);
     int i;
     if (TextUtils.isEmpty(this.interactionListener.getAIOInput().getText())) {
@@ -124,8 +125,8 @@ public class EmotionPanelViewPagerAdapter
       i = 0;
     }
     localImageButton.setVisibility(i);
-    paramEmotionPanelListView.rightMargin = ViewUtils.a(5.0F);
-    paramEmotionPanelListView.bottomMargin = ViewUtils.a(7.0F);
+    paramEmotionPanelListView.rightMargin = ViewUtils.dip2px(5.0F);
+    paramEmotionPanelListView.bottomMargin = ViewUtils.dip2px(7.0F);
     paramEmotionPanelListView.addRule(11);
     paramEmotionPanelListView.addRule(12);
     localRelativeLayout.addView(localImageButton, paramEmotionPanelListView);
@@ -301,7 +302,7 @@ public class EmotionPanelViewPagerAdapter
       ((ViewGroup)paramView).removeView((View)paramObject);
       if ((paramObject instanceof RelativeLayout))
       {
-        paramView = (EmotionPanelListView)((RelativeLayout)paramObject).findViewById(2131362358);
+        paramView = (EmotionPanelListView)((RelativeLayout)paramObject).findViewById(2131427958);
         ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
       else
@@ -447,9 +448,9 @@ public class EmotionPanelViewPagerAdapter
       ((LinearLayout)localObject).addView(paramEmotionPanelListView);
       localRelativeLayout.addView((View)localObject, new RelativeLayout.LayoutParams(-1, -1));
       localObject = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = ViewUtils.a(60.0F);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = ViewUtils.dip2px(60.0F);
       ((RelativeLayout.LayoutParams)localObject).addRule(12);
-      View localView = View.inflate(this.mContext, 2131558536, null);
+      View localView = View.inflate(this.mContext, 2131624089, null);
       localRelativeLayout.addView(localView, (ViewGroup.LayoutParams)localObject);
       addHeaderAndFooterView(paramEmotionPanelListView, paramBaseEmotionAdapter, localView, paramInt);
       paramEmotionPanelListView.setVerticalScrollBarEnabled(false);
@@ -507,8 +508,9 @@ public class EmotionPanelViewPagerAdapter
     localEmotionPanelListView.setDivider(null);
     localEmotionPanelListView.setVerticalScrollBarEnabled(true);
     localEmotionPanelListView.setEdgeEffectEnabled(false);
-    localEmotionPanelListView.setSelector(2130851081);
-    localEmotionPanelListView.setId(2131362358);
+    localEmotionPanelListView.setSelector(2130853313);
+    localEmotionPanelListView.setId(2131427958);
+    localEmotionPanelListView.setMotionEventSplittingEnabled(false);
     EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)this.data.get(paramInt);
     int k = EmotionPanelConstans.getPanelType(this.app, localEmotionPanelInfo);
     int j = localEmotionPanelInfo.columnNum;
@@ -544,6 +546,7 @@ public class EmotionPanelViewPagerAdapter
       localObject1 = (SystemAndEmojiAdapter)localBaseEmotionAdapter;
       ((SystemAndEmojiAdapter)localObject1).isOnlySysEmotion = this.isOnlySysEmotion;
       ((SystemAndEmojiAdapter)localObject1).setPanelController(this.panelController);
+      ((SystemAndEmojiAdapter)localObject1).setShowDescribeInPreview(this.showDescInPreview);
     }
     else if ((localBaseEmotionAdapter instanceof EmotionHotPicSearchAdapter))
     {
@@ -566,15 +569,15 @@ public class EmotionPanelViewPagerAdapter
           if ((k != 1) && (k != 2))
           {
             localObject1 = getHotPicSearchEmoticonLayout(localEmotionPanelListView, k, localBaseEmotionAdapter);
-            break label544;
+            break label559;
           }
           localObject1 = getSystemSmallEmoticonRelativeLayout(paramInt, localEmotionPanelListView, localBaseEmotionAdapter);
-          break label544;
+          break label559;
         }
       }
     }
     Object localObject1 = null;
-    label544:
+    label559:
     localBaseEmotionAdapter.widthPixels = this.mainPanelWidth;
     localBaseEmotionAdapter.curPanelInfo = this.curItemInfo;
     localBaseEmotionAdapter.setCurrentListView(localEmotionPanelListView);
@@ -607,13 +610,13 @@ public class EmotionPanelViewPagerAdapter
       if ((localViewParent != localObject2) && (paramInt < getCount()))
       {
         ((ViewGroup)localObject2).addView((View)localObject1);
-        break label813;
+        break label828;
       }
     }
     if ((localEmotionPanelListView.getParent() != paramView) && (paramInt < getCount())) {
       ((ViewGroup)paramView).addView(localEmotionPanelListView);
     }
-    label813:
+    label828:
     localEmotionPanelListView.setTag(localEmotionPanelInfo);
     asyncGetPanelData(k, localEmotionPanelInfo, localBaseEmotionAdapter, localEmotionPanelListView);
     if (localObject1 != null) {
@@ -772,7 +775,7 @@ public class EmotionPanelViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

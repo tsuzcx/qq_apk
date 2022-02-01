@@ -21,7 +21,7 @@ public final class VasTempApiImpl$requestPagDownload$1
     if ((Intrinsics.areEqual(paramAEResInfo, AEResInfo.LIGHT_RES_BASE_PACKAGE) ^ true)) {
       return;
     }
-    paramAEResInfo = PagViewProxy.a.a();
+    paramAEResInfo = PagViewProxy.d.a();
     paramString = new StringBuilder();
     paramString.append("onAEDownloadFinish : downloaded : ");
     paramString.append(paramBoolean);
@@ -35,7 +35,7 @@ public final class VasTempApiImpl$requestPagDownload$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.impl.VasTempApiImpl.requestPagDownload.1
  * JD-Core Version:    0.7.0.1
  */

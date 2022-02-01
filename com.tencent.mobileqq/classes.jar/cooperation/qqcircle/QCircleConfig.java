@@ -6,16 +6,16 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.util.DisplayMetrics;
 import com.tencent.biz.qcircleshadow.delegateimpl.QCircleConfigImpl;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.download.RFWDownloader;
 import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
 import com.tencent.biz.richframework.download.RFWDownloaderFactory;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.common.config.provider.QZConfigProviderUtil;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleSetCircleSwitchRequest;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.studymode.api.IStudyModeManager;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import com.tencent.qcircle.cooperation.config.download.QCircleDownloadConfig;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
@@ -172,34 +172,9 @@ public class QCircleConfig
     return "1".equals(QZConfigProviderUtil.a("qqcircle", "qqcircle_use_eevee_red_point", "1"));
   }
   
-  public static boolean isShowQQCircleMainTabEntrance()
-  {
-    boolean bool = QCircleServiceImpl.getStudyModeMgr().getStudyModeSwitch();
-    Object localObject = Integer.valueOf(0);
-    int i;
-    if (bool) {
-      i = getInstance().getConfigValue("qqcircle", "qqcircle_show_entrance_on_main_tab_on_children_mode", (Integer)localObject).intValue();
-    } else {
-      i = getInstance().getConfigValue("qqcircle", "qqcircle_show_entrance_on_main_tab", (Integer)localObject).intValue();
-    }
-    try
-    {
-      int j = RFLog.USR;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("initQCircleTab isQQCircleMainTabEntrance:");
-      ((StringBuilder)localObject).append(i);
-      RFLog.e("QCircleConfig", j, ((StringBuilder)localObject).toString());
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return i == 1;
-  }
-  
   public static void release()
   {
-    RFLog.d("QCircleConfig", RFLog.DEV, "release");
+    QLog.d("QCircleConfig", 4, "release");
     sInstance = null;
   }
   
@@ -208,13 +183,12 @@ public class QCircleConfig
     int i = getInstance().getConfigValue("qqcircle", "qqcircle_use_okhppt_download_pic", Integer.valueOf(1)).intValue();
     try
     {
-      if (RFLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        int j = RFLog.USR;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("useOkHttp downloadpic:");
         localStringBuilder.append(i);
-        RFLog.e("QCircleConfig", j, localStringBuilder.toString());
+        QLog.e("QCircleConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
@@ -324,13 +298,12 @@ public class QCircleConfig
     String str = QZConfigProviderUtil.a("qqcircle", "qqcircle_enable_eevee_polling", "1");
     try
     {
-      if (RFLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        int i = RFLog.USR;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("isEeveeSysTemPolling:");
         localStringBuilder.append(str);
-        RFLog.e("QCircleConfig", i, localStringBuilder.toString());
+        QLog.e("QCircleConfig", 1, localStringBuilder.toString());
       }
     }
     catch (Exception localException)
@@ -349,13 +322,12 @@ public class QCircleConfig
     } else {
       bool = false;
     }
-    if (RFLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      int i = RFLog.USR;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("isNeedShowPublishGuideBubble: ");
       ((StringBuilder)localObject).append(bool);
-      RFLog.d("QCircleConfig", i, ((StringBuilder)localObject).toString());
+      QLog.d("QCircleConfig", 1, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
@@ -369,13 +341,12 @@ public class QCircleConfig
     } else {
       bool = false;
     }
-    if (RFLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      int i = RFLog.USR;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("isNeedShowPublishLabelGuideBubble: ");
       ((StringBuilder)localObject).append(bool);
-      RFLog.d("QCircleConfig", i, ((StringBuilder)localObject).toString());
+      QLog.d("QCircleConfig", 1, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
@@ -386,11 +357,10 @@ public class QCircleConfig
     int i = getConfigValue("qqcircle", "qqcircle_show_entrance_on_recommend_tab", Integer.valueOf(0)).intValue();
     try
     {
-      int j = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isQQCircleShowLebaEntrance:");
       localStringBuilder.append(i);
-      RFLog.e("QCircleConfig", j, localStringBuilder.toString());
+      QLog.e("QCircleConfig", 1, localStringBuilder.toString());
     }
     catch (Exception localException)
     {
@@ -400,7 +370,7 @@ public class QCircleConfig
     if (i == 1)
     {
       bool1 = bool2;
-      if (!isShowQQCircleMainTabEntrance()) {
+      if (!QCircleConfigHelper.a(((IStudyModeManager)QRoute.api(IStudyModeManager.class)).getStudyModeSwitch())) {
         bool1 = true;
       }
     }
@@ -457,13 +427,12 @@ public class QCircleConfig
     if (localObject != null) {
       ((SharedPreferences)localObject).edit().putBoolean("qcircle_show_publish_feed_guide_bubble_v2", paramBoolean).apply();
     }
-    if (RFLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      int i = RFLog.USR;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setNeedShowPublishGuideBubble: ");
       ((StringBuilder)localObject).append(paramBoolean);
-      RFLog.d("QCircleConfig", i, ((StringBuilder)localObject).toString());
+      QLog.d("QCircleConfig", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -473,13 +442,12 @@ public class QCircleConfig
     if (localObject != null) {
       ((SharedPreferences)localObject).edit().putBoolean("qcircle_show_publish_label_guide_bubble", paramBoolean).apply();
     }
-    if (RFLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      int i = RFLog.USR;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setNeedShowPublishLabelGuideBubble: ");
       ((StringBuilder)localObject).append(paramBoolean);
-      RFLog.d("QCircleConfig", i, ((StringBuilder)localObject).toString());
+      QLog.d("QCircleConfig", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -496,7 +464,6 @@ public class QCircleConfig
   
   public void tryGetSplashVideoAsync()
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("tryGetSplashVideoAsync ");
     boolean bool;
@@ -506,7 +473,7 @@ public class QCircleConfig
       bool = false;
     }
     localStringBuilder.append(bool);
-    RFLog.d("QCircleConfig", i, localStringBuilder.toString());
+    QLog.d("QCircleConfig", 1, localStringBuilder.toString());
     try
     {
       this.mGetFileListener = new QCircleConfig.1(this);
@@ -515,7 +482,7 @@ public class QCircleConfig
     }
     catch (Exception localException)
     {
-      RFLog.e("QCircleConfig", RFLog.USR, new Object[] { "tryGetSplashVideoAsync error:", localException });
+      QLog.e("QCircleConfig", 1, "tryGetSplashVideoAsync error:", localException);
     }
   }
   
@@ -526,7 +493,7 @@ public class QCircleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.QCircleConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ import com.tencent.qphone.base.util.QLog;
 final class PngFrameDrawable$PngFrameState
   extends Drawable.ConstantState
 {
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Shader.TileMode jdField_a_of_type_AndroidGraphicsShader$TileMode = null;
-  boolean jdField_a_of_type_Boolean;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  int jdField_b_of_type_Int;
-  Shader.TileMode jdField_b_of_type_AndroidGraphicsShader$TileMode = null;
-  String[] jdField_b_of_type_ArrayOfJavaLangString;
-  int c = 119;
-  int d = 160;
+  String[] a;
+  String[] b;
+  int c;
+  int d;
+  int e = 119;
+  boolean f;
+  Paint g = new Paint(6);
+  Shader.TileMode h = null;
+  Shader.TileMode i = null;
+  int j = 160;
   
   public PngFrameDrawable$PngFrameState(PngPlayParam paramPngPlayParam)
   {
@@ -30,11 +30,11 @@ final class PngFrameDrawable$PngFrameState
       }
       throw new IllegalArgumentException("【ramdom magic】 png frame param is null.");
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramPngPlayParam.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramPngPlayParam.jdField_b_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_Int = paramPngPlayParam.c;
-    this.jdField_b_of_type_Int = paramPngPlayParam.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Boolean = paramPngPlayParam.jdField_a_of_type_Boolean;
+    this.a = paramPngPlayParam.e;
+    this.b = paramPngPlayParam.f;
+    this.c = paramPngPlayParam.c;
+    this.d = paramPngPlayParam.b;
+    this.f = paramPngPlayParam.g;
   }
   
   public int getChangingConfigurations()
@@ -57,7 +57,7 @@ final class PngFrameDrawable$PngFrameState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameDrawable.PngFrameState
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public abstract interface ServerHandshake
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.handshake.ServerHandshake
  * JD-Core Version:    0.7.0.1
  */

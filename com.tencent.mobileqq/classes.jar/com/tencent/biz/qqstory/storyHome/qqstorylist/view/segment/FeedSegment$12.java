@@ -12,8 +12,8 @@ class FeedSegment$12
   
   public void onDismiss()
   {
-    StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a().get(this.jdField_a_of_type_Int);
-    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, localStoryHomeFeed, "clk_hide");
+    StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.b.b.i().get(this.a);
+    FeedSegment.a(this.b, localStoryHomeFeed, "clk_hide");
   }
 }
 

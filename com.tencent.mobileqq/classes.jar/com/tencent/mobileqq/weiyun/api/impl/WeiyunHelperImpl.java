@@ -78,7 +78,7 @@ public final class WeiyunHelperImpl
   
   public boolean checkSOExists(Context paramContext)
   {
-    return SoHelper.a(paramContext);
+    return SoHelper.c(paramContext);
   }
   
   public void cleanPwdRecord(Context paramContext, long paramLong)
@@ -306,7 +306,7 @@ public final class WeiyunHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiyunHelperImpl
  * JD-Core Version:    0.7.0.1
  */

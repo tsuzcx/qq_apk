@@ -32,36 +32,36 @@ class AccountDetailGroupListContainer$14$1
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = ((Iterator)localObject1).next();
-        if (((localObject2 instanceof AppletItem)) && (((AppletItem)localObject2).c().equals(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString)))
+        if (((localObject2 instanceof AppletItem)) && (((AppletItem)localObject2).f().equals(this.b.c.g)))
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.d = this.jdField_a_of_type_Int;
+          this.b.a.f = this.a;
           paramObject = null;
-          localObject1 = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+          localObject1 = (IPublicAccountDataManager)this.b.c.b.getRuntimeService(IPublicAccountDataManager.class, "all");
           if (localObject1 != null) {
-            paramObject = (PublicAccountDetailImpl)((IPublicAccountDataManager)localObject1).findAccountDetailInfo(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString);
+            paramObject = (PublicAccountDetailImpl)((IPublicAccountDataManager)localObject1).findAccountDetailInfo(this.b.c.g);
           }
           if (paramObject != null)
           {
-            int i = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.e;
+            int i = this.b.a.g;
             boolean bool = true;
             if (i == 6)
             {
-              i = this.jdField_a_of_type_Int;
+              i = this.a;
               if (i == 1) {
                 paramObject.mShowMsgFlag = i;
               }
             }
-            else if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.e == 3)
+            else if (this.b.a.g == 3)
             {
               paramObject.isSyncLbs = true;
-              if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.d != 1) {
+              if (this.b.a.f != 1) {
                 bool = false;
               }
               paramObject.isAgreeSyncLbs = bool;
             }
             ThreadManager.getSubThreadHandler().postDelayed(new AccountDetailGroupListContainer.14.1.1(this, paramObject), 10L);
-            AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo);
-            ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).sendDetailInfoRequest(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString);
+            AccountDetailGroupListContainer.a(this.b.c, this.b.a);
+            ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).sendDetailInfoRequest(this.b.c.b, this.b.c.b.getApplication(), this.b.c.g);
           }
           return;
         }
@@ -83,14 +83,14 @@ class AccountDetailGroupListContainer$14$1
   
   public void b(Object paramObject)
   {
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer$14.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer, 2131695217);
+    AccountDetailGroupListContainer.a(this.b.c, 2131892951);
   }
   
   public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.14.1
  * JD-Core Version:    0.7.0.1
  */

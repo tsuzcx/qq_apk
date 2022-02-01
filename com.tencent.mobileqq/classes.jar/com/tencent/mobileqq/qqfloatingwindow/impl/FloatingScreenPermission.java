@@ -375,7 +375,7 @@ public class FloatingScreenPermission
       return;
     }
     FloatingScreenReporter.b();
-    DialogUtil.a(paramContext, 230, paramContext.getString(2131699795), paramContext.getString(2131699793), paramContext.getString(2131699792), paramContext.getString(2131699794), new FloatingScreenPermission.1(paramContext), null).show();
+    DialogUtil.a(paramContext, 230, paramContext.getString(2131897830), paramContext.getString(2131897828), paramContext.getString(2131897827), paramContext.getString(2131897829), new FloatingScreenPermission.1(paramContext), null).show();
   }
   
   public static void enterPermissionRequestDialogCustom(Context paramContext, int paramInt1, int paramInt2)
@@ -384,14 +384,14 @@ public class FloatingScreenPermission
       return;
     }
     FloatingScreenReporter.b();
-    DialogUtil.a(paramContext, 230, paramContext.getString(paramInt1), paramContext.getString(paramInt2), paramContext.getString(2131699792), paramContext.getString(2131699794), new FloatingScreenPermission.2(paramContext), null).show();
+    DialogUtil.a(paramContext, 230, paramContext.getString(paramInt1), paramContext.getString(paramInt2), paramContext.getString(2131897827), paramContext.getString(2131897829), new FloatingScreenPermission.2(paramContext), null).show();
   }
   
   private static boolean handleVivoPermissionDialog(Context paramContext)
   {
     if (canUseCheckOpForVivo())
     {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131699795), paramContext.getString(2131699804), paramContext.getString(2131699792), paramContext.getString(2131694674), new FloatingScreenPermission.3(paramContext), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131897830), paramContext.getString(2131897839), paramContext.getString(2131897827), paramContext.getString(2131892366), new FloatingScreenPermission.3(paramContext), null).show();
       return true;
     }
     return false;
@@ -656,7 +656,7 @@ public class FloatingScreenPermission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenPermission
  * JD-Core Version:    0.7.0.1
  */

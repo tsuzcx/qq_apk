@@ -6,10 +6,10 @@ public class WSFetchDataModuleFactory
 {
   public static IFetchDataModule a()
   {
-    if (WeishiUtils.a(13)) {
+    if (WeishiUtils.b(13)) {
       return new WSFetchPreloadDataModule();
     }
-    if (WeishiUtils.a() != null) {
+    if (WeishiUtils.g() != null) {
       return new WSFetchPushDataModule();
     }
     return new WSFetchLocalDataModule();
@@ -17,7 +17,7 @@ public class WSFetchDataModuleFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.module.WSFetchDataModuleFactory
  * JD-Core Version:    0.7.0.1
  */

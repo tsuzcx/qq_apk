@@ -23,11 +23,11 @@ class DeviceCapabilityExamination$MyHttpListener
     label228:
     try
     {
-      if (DeviceCapabilityExamination.a != null)
+      if (DeviceCapabilityExamination.b != null)
       {
-        DeviceCapabilityExamination.a.a(str, bool);
-        if (DeviceCapabilityExamination.a.a()) {
-          DeviceCapabilityExamination.a = null;
+        DeviceCapabilityExamination.b.a(str, bool);
+        if (DeviceCapabilityExamination.b.a()) {
+          DeviceCapabilityExamination.b = null;
         }
       }
       if (!bool)

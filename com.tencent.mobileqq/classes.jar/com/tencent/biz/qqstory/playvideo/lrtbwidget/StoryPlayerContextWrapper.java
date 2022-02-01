@@ -17,49 +17,9 @@ public class StoryPlayerContextWrapper
     return this.a.a();
   }
   
-  public IDataProvider.GroupId a()
-  {
-    return this.a.a();
-  }
-  
-  public IDataProvider.StartInfo a()
-  {
-    return this.a.a();
-  }
-  
-  public OpenPlayerBuilder.Data a()
-  {
-    return this.a.a();
-  }
-  
-  public PlayerStrategy a()
-  {
-    return this.a.a();
-  }
-  
-  public StoryPlayerContext a()
-  {
-    return this.a;
-  }
-  
-  public StoryPlayerObjectRecycler a()
-  {
-    return this.a.a();
-  }
-  
-  public XViewPager a()
-  {
-    return this.a.a();
-  }
-  
   public String a(String paramString)
   {
     return this.a.a(paramString);
-  }
-  
-  public void a()
-  {
-    this.a.a();
   }
   
   public void a(Intent paramIntent)
@@ -92,11 +52,6 @@ public class StoryPlayerContextWrapper
     this.a.a(paramVideoHolderBase);
   }
   
-  public boolean a()
-  {
-    return this.a.a();
-  }
-  
   public void b(QQStoryObserver paramQQStoryObserver)
   {
     this.a.b(paramQQStoryObserver);
@@ -111,10 +66,55 @@ public class StoryPlayerContextWrapper
   {
     return this.a.b();
   }
+  
+  public XViewPager c()
+  {
+    return this.a.c();
+  }
+  
+  public OpenPlayerBuilder.Data i()
+  {
+    return this.a.i();
+  }
+  
+  public PlayerStrategy j()
+  {
+    return this.a.j();
+  }
+  
+  public StoryPlayerObjectRecycler k()
+  {
+    return this.a.k();
+  }
+  
+  public boolean l()
+  {
+    return this.a.l();
+  }
+  
+  public IDataProvider.StartInfo m()
+  {
+    return this.a.m();
+  }
+  
+  public void n()
+  {
+    this.a.n();
+  }
+  
+  public IDataProvider.GroupId o()
+  {
+    return this.a.o();
+  }
+  
+  public StoryPlayerContext v()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerContextWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class TroopHonorManager$1
   
   public void run()
   {
-    TroopHonorConfig localTroopHonorConfig = (TroopHonorConfig)QConfigManager.a().a(544);
+    TroopHonorConfig localTroopHonorConfig = (TroopHonorConfig)QConfigManager.b().b(544);
     this.this$0.a(localTroopHonorConfig, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.TroopHonorManager.1
  * JD-Core Version:    0.7.0.1
  */

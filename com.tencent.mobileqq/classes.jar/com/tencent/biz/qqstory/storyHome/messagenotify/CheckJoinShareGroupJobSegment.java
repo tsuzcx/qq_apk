@@ -20,9 +20,9 @@ public class CheckJoinShareGroupJobSegment
   
   public void a(GetShareGroupInfoHandler.GetShareGroupInfoEvent paramGetShareGroupInfoEvent)
   {
-    if ((paramGetShareGroupInfoEvent != null) && (!paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    if ((paramGetShareGroupInfoEvent != null) && (!paramGetShareGroupInfoEvent.g.isFail()) && (paramGetShareGroupInfoEvent.b != null))
     {
-      if (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isInvalid())
+      if (paramGetShareGroupInfoEvent.b.isInvalid())
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.msgList.jobCheck", 2, "invalid");
@@ -30,7 +30,7 @@ public class CheckJoinShareGroupJobSegment
         notifyError(new ErrorMessage(-2, ""));
         return;
       }
-      if (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic())
+      if (paramGetShareGroupInfoEvent.b.isPublic())
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.msgList.jobCheck", 2, "public group from remote");
@@ -38,7 +38,7 @@ public class CheckJoinShareGroupJobSegment
         notifyResult(this.a);
         return;
       }
-      if (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isSubscribe())
+      if (paramGetShareGroupInfoEvent.b.isSubscribe())
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqstory.msgList.jobCheck", 2, "member");
@@ -60,7 +60,7 @@ public class CheckJoinShareGroupJobSegment
   
   protected void a(JobContext paramJobContext, MessageData paramMessageData)
   {
-    if (paramMessageData.f != 99)
+    if (paramMessageData.t != 99)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.msgList.jobCheck", 2, "skip");
@@ -68,7 +68,7 @@ public class CheckJoinShareGroupJobSegment
       notifyResult(paramMessageData);
       return;
     }
-    paramJobContext = ((ShareGroupManager)SuperManager.a(7)).a(paramMessageData.m);
+    paramJobContext = ((ShareGroupManager)SuperManager.a(7)).a(paramMessageData.C);
     if ((paramJobContext != null) && (paramJobContext.isPublic()))
     {
       if (QLog.isColorLevel()) {
@@ -79,7 +79,7 @@ public class CheckJoinShareGroupJobSegment
     }
     this.a = paramMessageData;
     paramJobContext = new ArrayList();
-    paramJobContext.add(paramMessageData.m);
+    paramJobContext.add(paramMessageData.C);
     new GetShareGroupInfoHandler(paramJobContext, String.valueOf(System.currentTimeMillis())).a(this).a();
   }
 }

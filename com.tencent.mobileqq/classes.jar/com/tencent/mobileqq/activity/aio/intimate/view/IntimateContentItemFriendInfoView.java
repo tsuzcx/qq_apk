@@ -41,17 +41,17 @@ import com.tencent.qphone.base.util.QLog;
 public class IntimateContentItemFriendInfoView
   extends IntimateContentItemBaseView
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TickerView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new IntimateContentItemFriendInfoView.2(this);
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  private TextView d;
-  private TextView e;
+  Runnable i = new IntimateContentItemFriendInfoView.2(this);
+  private ImageView j;
+  private ImageView k;
+  private TickerView l;
+  private TextView m;
+  private TextView n;
+  private LinearLayout o;
+  private TextView p;
+  private View q;
+  private TextView r;
+  private TextView s;
   
   public IntimateContentItemFriendInfoView(Context paramContext)
   {
@@ -72,11 +72,11 @@ public class IntimateContentItemFriendInfoView
   {
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      int i = Math.min(paramBitmap.getWidth(), paramBitmap.getHeight()) + 8;
-      Bitmap localBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
+      int i1 = Math.min(paramBitmap.getWidth(), paramBitmap.getHeight()) + 8;
+      Bitmap localBitmap = Bitmap.createBitmap(i1, i1, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(localBitmap);
       Paint localPaint = new Paint();
-      float f1 = i / 2.0F;
+      float f1 = i1 / 2.0F;
       localPaint.setAntiAlias(true);
       localCanvas.drawARGB(0, 0, 0, 0);
       localPaint.setColor(-1);
@@ -118,17 +118,61 @@ public class IntimateContentItemFriendInfoView
   {
     if ((!TextUtils.isEmpty(paramString)) && (WebViewComUtils.a(1000L)))
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
       localIntent.putExtra("url", paramString);
       localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      this.a.startActivity(localIntent);
     }
   }
   
-  private boolean b()
+  private void o()
+  {
+    if (!this.g) {
+      return;
+    }
+    if (this.d != null)
+    {
+      this.d.lastAnimAfterFriendDays = this.d.beFriendDays;
+      ThreadManager.postImmediately(new IntimateContentItemFriendInfoView.1(this), null, true);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDaysUpdated intimateInfo: ");
+      localStringBuilder.append(this.d);
+      QLog.d("intimate_relationship", 2, localStringBuilder.toString());
+    }
+  }
+  
+  private void p()
+  {
+    if (!this.g) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkAndStartUpdateAnim isResumed:");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(" currentShowType:");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append(" intimateInfo:");
+      localStringBuilder.append(this.d);
+      QLog.i("IntimateContentItemFriendInfoView", 2, localStringBuilder.toString());
+    }
+    if ((this.b) && (this.d != null))
+    {
+      removeCallbacks(this.i);
+      if ((q()) && (this.d.lastAnimAfterFriendDays != this.d.beFriendDays) && (this.d.beFriendDays > 0)) {
+        postDelayed(this.i, 300L);
+      }
+    }
+  }
+  
+  private boolean q()
   {
     boolean bool;
-    if (this.jdField_b_of_type_Int == 4) {
+    if (this.f == 4) {
       bool = false;
     } else {
       bool = true;
@@ -139,114 +183,70 @@ public class IntimateContentItemFriendInfoView
       localStringBuilder.append("canUpdateAnim res: ");
       localStringBuilder.append(bool);
       localStringBuilder.append("  currentShowType:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.f);
       QLog.d("IntimateContentItemFriendInfoView", 2, localStringBuilder.toString());
     }
     return bool;
   }
   
-  private void n()
+  private void r()
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.lastAnimAfterFriendDays = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.beFriendDays;
-      ThreadManager.postImmediately(new IntimateContentItemFriendInfoView.1(this), null, true);
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onDaysUpdated intimateInfo: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo);
-      QLog.d("intimate_relationship", 2, localStringBuilder.toString());
-    }
-  }
-  
-  private void o()
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkAndStartUpdateAnim isResumed:");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
-      localStringBuilder.append(" currentShowType:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
-      localStringBuilder.append(" intimateInfo:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo);
-      QLog.i("IntimateContentItemFriendInfoView", 2, localStringBuilder.toString());
-    }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null))
-    {
-      removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if ((b()) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.lastAnimAfterFriendDays != this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.beFriendDays) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.beFriendDays > 0)) {
-        postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
-      }
-    }
-  }
-  
-  private void p()
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    int m = Math.max(0, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.lastAnimAfterFriendDays);
-    int k = Math.max(0, this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.beFriendDays);
+    int i4 = Math.max(0, this.d.lastAnimAfterFriendDays);
+    int i3 = Math.max(0, this.d.beFriendDays);
     boolean bool = QLog.isColorLevel();
-    int j = 2;
+    int i2 = 2;
     if (bool)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("smoothUpdateDays fromDays:");
-      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append(i4);
       ((StringBuilder)localObject).append(" toDays:");
-      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(i3);
       QLog.i("IntimateContentItemFriendInfoView", 2, ((StringBuilder)localObject).toString());
     }
-    if (m <= 0)
+    if (i4 <= 0)
     {
-      int n = String.valueOf(k).length();
+      int i5 = String.valueOf(i3).length();
       localObject = "";
-      i = 0;
-      while ((i < n) && (i < 5))
+      i1 = 0;
+      while ((i1 < i5) && (i1 < 5))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("0");
         localObject = localStringBuilder.toString();
-        i += 1;
+        i1 += 1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setText((String)localObject, false);
+      this.l.setText((String)localObject, false);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView;
-    int i = j;
-    if (k > m) {
-      i = 1;
+    Object localObject = this.l;
+    int i1 = i2;
+    if (i3 > i4) {
+      i1 = 1;
     }
-    ((TickerView)localObject).setPreferredScrollingDirection(i);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setDigitalAnimWidthSpeedIncrement(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setIgnoreWidthAnim(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setText(String.valueOf(k));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    n();
+    ((TickerView)localObject).setPreferredScrollingDirection(i1);
+    this.l.setDigitalAnimWidthSpeedIncrement(true);
+    this.l.setIgnoreWidthAnim(true);
+    this.l.setText(String.valueOf(i3));
+    this.m.setVisibility(0);
+    o();
   }
   
-  private void q()
+  private void s()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView != null)
+    if (this.h != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {
+      if (this.d == null) {
         return;
       }
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a();
-      int i = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.maskType;
-      if (IntimateUtil.a(i))
+      String str = this.h.k();
+      int i1 = this.d.maskType;
+      if (IntimateUtil.a(i1))
       {
-        Object localObject = FriendIntimateRelationshipHelper.b();
+        Object localObject = FriendIntimateRelationshipHelper.c();
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains("frd_uin=")) && (((String)localObject).contains("frd_type=")))
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -255,68 +255,38 @@ public class IntimateContentItemFriendInfoView
           str = ((String)localObject).replace("frd_uin=", localStringBuilder.toString());
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("frd_type=");
-          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(i1);
           str = str.replace("frd_type=", ((StringBuilder)localObject).toString());
-          a(i);
+          a(i1);
           a(str);
         }
       }
       else
       {
-        str = FriendIntimateRelationshipHelper.a(str);
-        a(i);
+        str = FriendIntimateRelationshipHelper.b(str);
+        a(i1);
         a(str);
       }
     }
   }
   
-  protected void a()
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559254, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377184));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367324));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView = ((TickerView)localView.findViewById(2131368928));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368927));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368925));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368396));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365344));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368395);
-    this.d = ((TextView)localView.findViewById(2131365345));
-    this.e = ((TextView)localView.findViewById(2131371847));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setCharacterLists(new String[] { "9876543210" });
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setAnimationDuration(2000L);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.e.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(this);
-    this.e.setOnTouchListener(this);
-    if (AppSetting.d)
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131705901));
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131705899));
-    }
-  }
-  
   public void a(Bitmap paramBitmap, String paramString)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
-    if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a()))
+    if (paramString.equals(this.h.k()))
     {
       paramBitmap = a(paramBitmap);
       if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        this.k.setImageBitmap(paramBitmap);
       }
     }
-    else if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a() != null) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getCurrentAccountUin())))
+    else if ((this.h.n() != null) && (paramString.equals(this.h.n().getCurrentAccountUin())))
     {
       paramBitmap = a(paramBitmap);
       if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        this.j.setImageBitmap(paramBitmap);
       }
     }
   }
@@ -327,36 +297,36 @@ public class IntimateContentItemFriendInfoView
     {
     default: 
       return;
-    case 2131377184: 
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a() == null)
+    case 2131445565: 
+      if (this.h.m() == null)
       {
-        paramView = new AllInOne(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getCurrentAccountUin(), 0);
-        ProfileUtils.openProfileCard(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramView);
+        paramView = new AllInOne(this.h.n().getCurrentAccountUin(), 0);
+        ProfileUtils.openProfileCard(this.h.l(), paramView);
         return;
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().a();
+      paramView = this.h.m().m();
       if (!TextUtils.isEmpty(paramView))
       {
-        TroopMemberCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getCurrentAccountUin(), 0, -1);
+        TroopMemberCardUtils.a(this.h.n(), this.a, paramView, this.h.n().getCurrentAccountUin(), 0, -1);
         return;
       }
       QLog.e("intimate_relationship", 2, "open troop member card troop uin empty");
       return;
-    case 2131368396: 
-    case 2131371847: 
-      q();
+    case 2131435280: 
+    case 2131439286: 
+      s();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a() == null)
+    if (this.h.m() == null)
     {
-      paramView = new AllInOne(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), 1);
-      ProfileUtils.openProfileCard(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), paramView);
+      paramView = new AllInOne(this.h.k(), 1);
+      ProfileUtils.openProfileCard(this.h.l(), paramView);
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().a();
+    paramView = this.h.m().m();
     if (!TextUtils.isEmpty(paramView))
     {
-      TroopMemberCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), this.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), 0, -1);
+      TroopMemberCardUtils.a(this.h.n(), this.a, paramView, this.h.k(), 0, -1);
       return;
     }
     QLog.e("intimate_relationship", 2, "open troop member card troop uin empty");
@@ -364,132 +334,132 @@ public class IntimateContentItemFriendInfoView
   
   protected void a(IntimateInfo paramIntimateInfo, int paramInt)
   {
-    int j = paramIntimateInfo.beFriendDays;
-    int i = j;
-    if (b())
+    int i2 = paramIntimateInfo.beFriendDays;
+    int i1 = i2;
+    if (q())
     {
-      i = j;
+      i1 = i2;
       if (paramIntimateInfo.beFriendDays > 0) {
-        i = Math.max(0, paramIntimateInfo.lastAnimAfterFriendDays);
+        i1 = Math.max(0, paramIntimateInfo.lastAnimAfterFriendDays);
       }
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateIntimateInfo beFriendDays: ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       QLog.d("IntimateContentItemFriendInfoView", 2, ((StringBuilder)localObject).toString());
     }
-    if (i >= -1)
+    if (i1 >= -1)
     {
-      if (i == 0)
+      if (i1 == 0)
       {
-        localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693402);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        localObject = this.a.getResources().getString(2131890951);
+        this.m.setVisibility(8);
       }
       else
       {
-        if (i == -1) {
+        if (i1 == -1) {
           localObject = "999+";
         } else {
-          localObject = String.valueOf(i);
+          localObject = String.valueOf(i1);
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.m.setVisibility(0);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setText((String)localObject, false);
-      i = 2130845478;
+      this.l.setText((String)localObject, false);
+      i1 = 2130846934;
       if (paramInt == 3)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693404);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845470);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131166429));
-        this.e.setBackgroundResource(2130845476);
-        j = 2131165729;
-        paramInt = 2131165728;
-        i = 2130845476;
+        this.n.setText(2131890953);
+        this.o.setBackgroundResource(2130846926);
+        this.q.setBackgroundColor(getResources().getColor(2131167268));
+        this.s.setBackgroundResource(2130846932);
+        i2 = 2131166323;
+        paramInt = 2131166322;
+        i1 = 2130846932;
       }
       else if (paramInt == 2)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693403);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845469);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131166428));
-        this.e.setBackgroundResource(2130845475);
-        j = 2131165727;
-        paramInt = 2131165726;
-        i = 2130845475;
+        this.n.setText(2131890952);
+        this.o.setBackgroundResource(2130846925);
+        this.q.setBackgroundColor(getResources().getColor(2131167267));
+        this.s.setBackgroundResource(2130846931);
+        i2 = 2131166321;
+        paramInt = 2131166320;
+        i1 = 2130846931;
       }
       else if (paramInt == 1)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693405);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845471);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131166430));
-        this.e.setBackgroundResource(2130845477);
-        j = 2131165731;
-        paramInt = 2131165730;
-        i = 2130845477;
+        this.n.setText(2131890954);
+        this.o.setBackgroundResource(2130846927);
+        this.q.setBackgroundColor(getResources().getColor(2131167269));
+        this.s.setBackgroundResource(2130846933);
+        i2 = 2131166325;
+        paramInt = 2131166324;
+        i1 = 2130846933;
       }
       else if (paramInt == 26)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693406);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845472);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131166431));
-        this.e.setBackgroundResource(2130845478);
-        j = 2131165733;
-        paramInt = 2131165732;
+        this.n.setText(2131890955);
+        this.o.setBackgroundResource(2130846928);
+        this.q.setBackgroundColor(getResources().getColor(2131167270));
+        this.s.setBackgroundResource(2130846934);
+        i2 = 2131166327;
+        paramInt = 2131166326;
       }
       else
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693400);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845468);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131166427));
-        this.e.setBackgroundResource(2130845474);
-        j = 2131165734;
-        paramInt = 2131165735;
-        i = 2130845474;
+        this.n.setText(2131890949);
+        this.o.setBackgroundResource(2130846924);
+        this.q.setBackgroundColor(getResources().getColor(2131167266));
+        this.s.setBackgroundResource(2130846930);
+        i2 = 2131166328;
+        paramInt = 2131166329;
+        i1 = 2130846930;
       }
       if ((paramIntimateInfo.scoreCardInfo != null) && (!TextUtils.isEmpty(paramIntimateInfo.scoreCardInfo.typeDescribe)))
       {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramIntimateInfo.scoreCardInfo.typeDescribe);
-        this.d.setText(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131693420), new Object[] { Integer.valueOf(paramIntimateInfo.scoreCardInfo.score) }));
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.p.setText(paramIntimateInfo.scoreCardInfo.typeDescribe);
+        this.r.setText(String.format(this.a.getString(2131890969), new Object[] { Integer.valueOf(paramIntimateInfo.scoreCardInfo.score) }));
+        this.o.setVisibility(0);
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        this.o.setVisibility(8);
       }
       if ((paramIntimateInfo.scoreCardInfo != null) && (!TextUtils.isEmpty(paramIntimateInfo.scoreCardInfo.levelDescribe)))
       {
-        this.e.setText(paramIntimateInfo.scoreCardInfo.levelDescribe);
-        this.e.setVisibility(0);
+        this.s.setText(paramIntimateInfo.scoreCardInfo.levelDescribe);
+        this.s.setVisibility(0);
       }
       else
       {
-        this.e.setVisibility(8);
+        this.s.setVisibility(8);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(j));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(j));
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(j));
-      this.e.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(paramInt));
-      this.e.setBackgroundResource(i);
+      this.l.setTextColor(this.a.getResources().getColor(i2));
+      this.m.setTextColor(this.a.getResources().getColor(i2));
+      this.n.setTextColor(this.a.getResources().getColor(i2));
+      this.s.setTextColor(this.a.getResources().getColor(paramInt));
+      this.s.setBackgroundResource(i1);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetTickerTickerView.setText("");
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      this.d.setVisibility(4);
-      this.e.setVisibility(4);
+      this.l.setText("");
+      this.m.setVisibility(8);
+      this.n.setText("");
+      this.r.setVisibility(4);
+      this.s.setVisibility(4);
     }
-    o();
+    p();
     Object localObject = FriendIntimateRelationshipConfProcessor.a();
-    if (paramIntimateInfo.currentScore >= ((FriendIntimateRelationshipBean)localObject).a)
+    if (paramIntimateInfo.currentScore >= ((FriendIntimateRelationshipBean)localObject).U)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.e.setVisibility(0);
+      this.o.setVisibility(0);
+      this.s.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.e.setVisibility(8);
+    this.o.setVisibility(8);
+    this.s.setVisibility(8);
   }
   
   protected boolean a()
@@ -499,50 +469,80 @@ public class IntimateContentItemFriendInfoView
   
   protected void b()
   {
-    o();
+    View localView = LayoutInflater.from(this.a).inflate(2131625175, this, true);
+    this.j = ((ImageView)localView.findViewById(2131445565));
+    this.k = ((ImageView)localView.findViewById(2131433781));
+    this.l = ((TickerView)localView.findViewById(2131435877));
+    this.m = ((TextView)localView.findViewById(2131435876));
+    this.n = ((TextView)localView.findViewById(2131435874));
+    this.o = ((LinearLayout)localView.findViewById(2131435280));
+    this.p = ((TextView)localView.findViewById(2131431528));
+    this.q = localView.findViewById(2131435279);
+    this.r = ((TextView)localView.findViewById(2131431529));
+    this.s = ((TextView)localView.findViewById(2131439286));
+    this.l.setCharacterLists(new String[] { "9876543210" });
+    this.l.setAnimationDuration(2000L);
+    this.o.setOnClickListener(this);
+    this.s.setOnClickListener(this);
+    this.j.setOnClickListener(this);
+    this.k.setOnClickListener(this);
+    this.j.setOnTouchListener(this);
+    this.k.setOnTouchListener(this);
+    this.o.setOnTouchListener(this);
+    this.s.setOnTouchListener(this);
+    if (AppSetting.e)
+    {
+      this.k.setContentDescription(HardCodeUtil.a(2131903782));
+      this.j.setContentDescription(HardCodeUtil.a(2131903780));
+    }
   }
   
   protected void c()
   {
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    p();
   }
   
   protected void d()
   {
-    o();
+    removeCallbacks(this.i);
   }
   
   protected void e()
   {
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    p();
   }
   
   protected void f()
   {
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    removeCallbacks(this.i);
   }
   
-  public void m()
+  protected void g()
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    removeCallbacks(this.i);
+  }
+  
+  public void n()
+  {
+    if (!this.g) {
       return;
     }
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().getCurrentAccountUin());
+    Bitmap localBitmap = this.h.b(this.h.n().getCurrentAccountUin());
     if (localBitmap != null)
     {
       localBitmap = a(localBitmap);
       if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+        this.j.setImageBitmap(localBitmap);
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a()))
+    if (!TextUtils.isEmpty(this.h.k()))
     {
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
+      localBitmap = this.h.b(this.h.k());
       if (localBitmap != null)
       {
         localBitmap = a(localBitmap);
         if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+          this.k.setImageBitmap(localBitmap);
         }
       }
     }
@@ -550,7 +550,7 @@ public class IntimateContentItemFriendInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemFriendInfoView
  * JD-Core Version:    0.7.0.1
  */

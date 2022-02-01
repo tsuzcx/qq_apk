@@ -7,21 +7,19 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class ClickableToastView$2
   implements View.OnClickListener
 {
-  ClickableToastView$2(ClickableToastView paramClickableToastView) {}
-  
   public void onClick(View paramView)
   {
-    if (ClickableToastView.a(this.a).a != null)
+    if (ClickableToastView.a(this.a).d != null)
     {
-      this.a.b();
-      ClickableToastView.a(this.a).a.onClick(paramView);
+      this.a.a();
+      ClickableToastView.a(this.a).d.onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClickableToastView.2
  * JD-Core Version:    0.7.0.1
  */

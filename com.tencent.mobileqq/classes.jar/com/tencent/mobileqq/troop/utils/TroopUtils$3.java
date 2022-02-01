@@ -12,12 +12,12 @@ final class TroopUtils$3
   public void run()
   {
     Context localContext = this.a;
-    DialogUtil.a(localContext, 230, null, localContext.getString(2131691876), this.a.getString(2131694583), null, null, new TroopUtils.3.1(this)).show();
+    DialogUtil.a(localContext, 230, null, localContext.getString(2131888841), this.a.getString(2131892267), null, null, new TroopUtils.3.1(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUtils.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class OCRResultFragmentNew$9
 {
   OCRResultFragmentNew$9(OCRResultFragmentNew paramOCRResultFragmentNew, List paramList, OCRPerformUtil.OCRLanHolder paramOCRLanHolder) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt < this.a.size())
     {
-      paramView = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView = (String)this.a.get(paramInt);
       StringBuilder localStringBuilder;
-      if (paramView.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder.a))
+      if (paramView.equalsIgnoreCase(this.b.a))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("lanCode equals, return, selectedLan:");
@@ -28,8 +28,8 @@ class OCRResultFragmentNew$9
       }
       else
       {
-        QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 0, 2131699077, 0).a();
-        OCRPerformUtil.a.a(paramView);
+        QQToast.makeText(OCRResultFragmentNew.a(this.c), 0, 2131897086, 0).show();
+        OCRPerformUtil.b.a(paramView);
         try
         {
           if (QLog.isColorLevel())
@@ -38,10 +38,10 @@ class OCRResultFragmentNew$9
             localStringBuilder.append("requestOcr lan:");
             localStringBuilder.append(paramView);
             localStringBuilder.append(", ctx:");
-            localStringBuilder.append(OCRPerformUtil.a.a());
+            localStringBuilder.append(OCRPerformUtil.b.b());
             QLog.i("OCRResultFragmentNew", 2, localStringBuilder.toString());
           }
-          OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, OCRPerformUtil.a);
+          OCRResultFragmentNew.a(this.c, OCRPerformUtil.b);
         }
         catch (Exception paramView)
         {
@@ -49,15 +49,15 @@ class OCRResultFragmentNew$9
         }
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a.dismiss();
+    if ((this.c.m != null) && (this.c.m.isShowing())) {
+      this.c.m.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.a = null;
+    this.c.m = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.9
  * JD-Core Version:    0.7.0.1
  */

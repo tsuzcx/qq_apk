@@ -77,21 +77,21 @@ public class SoLocalInfo
     localStringBuilder.append("&name=");
     localStringBuilder.append(this.mSoName);
     localStringBuilder.append("&path=");
-    localStringBuilder.append(SoDataUtil.a(this.mSoPath));
+    localStringBuilder.append(SoDataUtil.b(this.mSoPath));
     localStringBuilder.append("&crc=");
     localStringBuilder.append(this.mSoCRC);
     localStringBuilder.append("&url=");
-    localStringBuilder.append(SoDataUtil.a(this.mUrl));
+    localStringBuilder.append(SoDataUtil.b(this.mUrl));
     localStringBuilder.append("&rUrl=");
-    localStringBuilder.append(SoDataUtil.a(this.mRFileUrl));
+    localStringBuilder.append(SoDataUtil.b(this.mRFileUrl));
     localStringBuilder.append("&rPath=");
-    localStringBuilder.append(SoDataUtil.a(this.mRFileFolder));
+    localStringBuilder.append(SoDataUtil.b(this.mRFileFolder));
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.SoLocalInfo
  * JD-Core Version:    0.7.0.1
  */

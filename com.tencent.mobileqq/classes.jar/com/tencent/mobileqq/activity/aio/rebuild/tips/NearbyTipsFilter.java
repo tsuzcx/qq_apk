@@ -27,7 +27,7 @@ public class NearbyTipsFilter
     String str;
     if (AppConstants.LBS_HELLO_UIN.equals(paramMessage.frienduin))
     {
-      str = ContactUtils.g(paramAIOContext.a(), paramMessage.senderuin);
+      str = ContactUtils.h(paramAIOContext.a(), paramMessage.senderuin);
       paramAIOContext = str;
       if (TextUtils.isEmpty(str)) {
         return paramMessage.senderuin;
@@ -35,7 +35,7 @@ public class NearbyTipsFilter
     }
     else
     {
-      str = ContactUtils.g(paramAIOContext.a(), paramMessage.frienduin);
+      str = ContactUtils.h(paramAIOContext.a(), paramMessage.frienduin);
       paramAIOContext = str;
       if (TextUtils.isEmpty(str)) {
         paramAIOContext = paramMessage.frienduin;
@@ -59,28 +59,16 @@ public class NearbyTipsFilter
     return null;
   }
   
-  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
-  {
-    if ((1010 == paramMessage.istroop) || (1001 == paramMessage.istroop))
-    {
-      paramMessageRecord = a(paramAIOContext, paramMessage);
-      if (paramMessage.msgtype == -1024) {
-        return String.format(paramAIOContext.a().getResources().getString(2131698742), new Object[] { paramMessageRecord });
-      }
-    }
-    return null;
-  }
-  
   public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
   {
     paramMessageRecord = (HotChatManager)paramAIOContext.a().getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-    paramAIOContext = paramAIOContext.a().getIntent();
+    paramAIOContext = paramAIOContext.b().getIntent();
     String str = paramAIOContext.getStringExtra("uin");
     boolean bool1 = paramMessageRecord.b(str);
     boolean bool2 = paramAIOContext.getBooleanExtra("isGameRoom", false);
     if ((bool1) || (bool2))
     {
-      paramAIOContext = paramMessageRecord.a(str);
+      paramAIOContext = paramMessageRecord.c(str);
       if (((paramAIOContext == null) || (!paramAIOContext.isGameRoom)) && (!bool2)) {
         return true;
       }
@@ -88,7 +76,7 @@ public class NearbyTipsFilter
     if (paramMessageRecord.b(paramMessage.frienduin)) {
       return true;
     }
-    if (((paramMessage.istroop == 1001) || (paramMessage.istroop == 10002)) && (UinTypeUtil.a(paramMessage))) {
+    if (((paramMessage.istroop == 1001) || (paramMessage.istroop == 10002)) && (UinTypeUtil.c(paramMessage))) {
       return true;
     }
     if (((IWerewolvesMsgUtilDelegate)QRoute.api(IWerewolvesMsgUtilDelegate.class)).isWerewolvesMsg(paramMessage)) {
@@ -96,10 +84,22 @@ public class NearbyTipsFilter
     }
     return UinTypeUtil.d(paramMessage.senderuin);
   }
+  
+  public CharSequence b(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    if ((1010 == paramMessage.istroop) || (1001 == paramMessage.istroop))
+    {
+      paramMessageRecord = a(paramAIOContext, paramMessage);
+      if (paramMessage.msgtype == -1024) {
+        return String.format(paramAIOContext.b().getResources().getString(2131896700), new Object[] { paramMessageRecord });
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.NearbyTipsFilter
  * JD-Core Version:    0.7.0.1
  */

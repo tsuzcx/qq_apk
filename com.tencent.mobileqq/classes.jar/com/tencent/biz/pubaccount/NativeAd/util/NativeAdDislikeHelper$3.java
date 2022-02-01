@@ -20,14 +20,14 @@ class NativeAdDislikeHelper$3
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("key_from_type", 1);
-    localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-    ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchReadInJoyUninterestComplainFragmentForResult(NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper), localIntent);
-    NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper).dismiss();
+    localIntent.putExtra("key_ad_info", this.a);
+    ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchReadInJoyUninterestComplainFragmentForResult(NativeAdDislikeHelper.b(this.b), localIntent);
+    NativeAdDislikeHelper.c(this.b).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdDislikeHelper.3
  * JD-Core Version:    0.7.0.1
  */

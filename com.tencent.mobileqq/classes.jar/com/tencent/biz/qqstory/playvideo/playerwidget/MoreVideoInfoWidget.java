@@ -67,22 +67,22 @@ public class MoreVideoInfoWidget
   extends AbsVideoInfoWidget
   implements View.OnClickListener
 {
-  private StorySingleFileDownloader jdField_a_of_type_ComTencentBizQqstoryBasePreloadStorySingleFileDownloader = new StorySingleFileDownloader();
-  protected StoryShare a;
-  private MoreVideoInfoWidget.MyActivityLifeCycle jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget$MyActivityLifeCycle;
-  private MoreVideoInfoWidget.RenderResDownloadListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget$RenderResDownloadListener;
-  private final FeedManager jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager;
-  public ActionSheet a;
-  private View b;
+  protected StoryShare s;
+  public ActionSheet t;
+  private final FeedManager u;
+  private View v;
+  private MoreVideoInfoWidget.MyActivityLifeCycle w;
+  private StorySingleFileDownloader x = new StorySingleFileDownloader();
+  private MoreVideoInfoWidget.RenderResDownloadListener y;
   
   public MoreVideoInfoWidget(View paramView)
   {
     super(paramView);
-    this.jdField_b_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
+    this.v = paramView;
+    this.u = ((FeedManager)SuperManager.a(11));
   }
   
-  private boolean a(StoryVideoItem paramStoryVideoItem)
+  private boolean d(StoryVideoItem paramStoryVideoItem)
   {
     QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).c(paramStoryVideoItem.mOwnerUid);
     if ((paramStoryVideoItem.mStoryType == 1) && (localQQUserUIItem != null) && (!localQQUserUIItem.isVip()) && (!localQQUserUIItem.isFriend())) {
@@ -118,7 +118,7 @@ public class MoreVideoInfoWidget
     } else {
       n = 0;
     }
-    int i1 = a().mUIStyle.bottomWidgetShowFlag;
+    int i1 = i().mUIStyle.bottomWidgetShowFlag;
     if (i1 != 1)
     {
       if (i1 != 2)
@@ -135,26 +135,26 @@ public class MoreVideoInfoWidget
       }
       else
       {
-        SLog.d(this.jdField_b_of_type_JavaLangString, "hide BottomWidget because flag 2");
+        SLog.d(this.i, "hide BottomWidget because flag 2");
       }
       return false;
     }
     else
     {
-      SLog.d(this.jdField_b_of_type_JavaLangString, "show BottomWidget because flag 1");
+      SLog.d(this.i, "show BottomWidget because flag 1");
     }
     label237:
     return true;
   }
   
-  private void c(StoryVideoItem paramStoryVideoItem)
+  private void e(StoryVideoItem paramStoryVideoItem)
   {
-    Object localObject = ((StoryPlayerGroupHolder)a()).a();
+    Object localObject = ((StoryPlayerGroupHolder)d()).r();
     if (localObject != null) {
       ((VideoViewVideoHolder)localObject).c(true);
     }
     localObject = new MoreVideoInfoWidget.7(this, (VideoViewVideoHolder)localObject, paramStoryVideoItem);
-    localObject = DialogUtil.a(b(), 230, 2131558978, HardCodeUtil.a(2131706920), null, HardCodeUtil.a(2131706918), HardCodeUtil.a(2131706925), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+    localObject = DialogUtil.a(y(), 230, 2131624611, HardCodeUtil.a(2131904763), null, HardCodeUtil.a(2131898212), HardCodeUtil.a(2131904768), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
     ((QQCustomDialog)localObject).setCancelable(false);
     ((QQCustomDialog)localObject).getWindow().setBackgroundDrawable(new ColorDrawable(0));
     ((QQCustomDialog)localObject).show();
@@ -162,14 +162,14 @@ public class MoreVideoInfoWidget
     StoryReportor.a("play_video", "clk_delete", 0, 0, new String[] { "", "2", "", paramStoryVideoItem.mVid });
   }
   
-  private void d()
+  private void h()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData == null) {
+    if (this.p == null) {
       return;
     }
-    Object localObject = ((StoryPlayerGroupHolder)a()).a();
-    VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
+    Object localObject = ((StoryPlayerGroupHolder)d()).r();
+    VideoListFeedItem localVideoListFeedItem = this.p.f();
+    StoryVideoItem localStoryVideoItem = this.p.e();
     QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).c(localStoryVideoItem.mOwnerUid);
     int i;
     if ((localQQUserUIItem != null) && (localQQUserUIItem.isVip())) {
@@ -178,9 +178,9 @@ public class MoreVideoInfoWidget
       i = 0;
     }
     boolean bool = PlayModeUtils.a(localStoryVideoItem);
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(b(), null);
-    localActionSheet.addButton(HardCodeUtil.a(2131706917), 5);
-    localActionSheet.addCancelButton(2131690728);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.c(y(), null);
+    localActionSheet.addButton(HardCodeUtil.a(2131904761), 5);
+    localActionSheet.addCancelButton(2131887648);
     AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
     localActionSheet.setOnButtonClickListener(new MoreVideoInfoWidget.2(this, localStoryVideoItem, (VideoViewVideoHolder)localObject, localAtomicBoolean, localActionSheet));
     localActionSheet.setOnDismissListener(new MoreVideoInfoWidget.3(this, localAtomicBoolean, (VideoViewVideoHolder)localObject));
@@ -205,16 +205,16 @@ public class MoreVideoInfoWidget
     }
   }
   
-  private void e()
+  private void p()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData == null) {
+    if (this.p == null) {
       return;
     }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)a()).a();
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(b(), null);
-    localActionSheet.addButton(HardCodeUtil.a(2131706914), 5);
-    localActionSheet.addCancelButton(2131690728);
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)d()).r();
+    StoryVideoItem localStoryVideoItem = this.p.e();
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.c(y(), null);
+    localActionSheet.addButton(HardCodeUtil.a(2131904759), 5);
+    localActionSheet.addCancelButton(2131887648);
     AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
     localActionSheet.setOnButtonClickListener(new MoreVideoInfoWidget.4(this, localStoryVideoItem, localAtomicBoolean, localActionSheet));
     localActionSheet.setOnDismissListener(new MoreVideoInfoWidget.5(this, localAtomicBoolean, localVideoViewVideoHolder));
@@ -227,70 +227,44 @@ public class MoreVideoInfoWidget
     }
   }
   
-  protected StoryShare a(ShareUI paramShareUI)
-  {
-    if (paramShareUI == null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = StoryShare.a(b());
-    } else {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = StoryShare.a(b(), paramShareUI);
-    }
-    return this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare;
-  }
-  
-  public String a()
-  {
-    return "MoreVideoInfoWidget";
-  }
-  
-  public String a(StoryVideoItem paramStoryVideoItem)
-  {
-    if (paramStoryVideoItem.isUploadFail()) {
-      return "3";
-    }
-    if (paramStoryVideoItem.isUploading()) {
-      return "1";
-    }
-    return "2";
-  }
-  
   public void a(View paramView)
   {
     new MoreVideoInfoWidget.1(this);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.v.setOnClickListener(this);
   }
   
   public void a(StoryVideoItem paramStoryVideoItem)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData == null) {
+    if (this.p == null) {
       return;
     }
-    if (!NetworkUtils.a(QQStoryContext.a().a()))
+    if (!NetworkUtils.a(QQStoryContext.a().c()))
     {
-      QQToast.a(BaseApplicationImpl.getApplication().getApplicationContext(), 1, HardCodeUtil.a(2131706924), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication().getApplicationContext(), 1, HardCodeUtil.a(2131904767), 0).show();
       return;
     }
-    QQToast.a(b(), HardCodeUtil.a(2131706921), 0).a();
+    QQToast.makeText(y(), HardCodeUtil.a(2131904764), 0).show();
     new ReportNoInterestingVideoHandler().a(paramStoryVideoItem.mVid);
     FeedVideoManager localFeedVideoManager = (FeedVideoManager)SuperManager.a(12);
-    localFeedVideoManager.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.jdField_b_of_type_JavaLangString, 0, paramStoryVideoItem);
-    localFeedVideoManager.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.jdField_b_of_type_JavaLangString, 1, paramStoryVideoItem);
+    localFeedVideoManager.a(this.p.c, 0, paramStoryVideoItem);
+    localFeedVideoManager.a(this.p.c, 1, paramStoryVideoItem);
     paramStoryVideoItem = new ReportNoInterestingVideoHandler.ReportNoInterestingVideoEvent(new ErrorMessage(), paramStoryVideoItem.mVid);
     StoryDispatcher.a().dispatch(paramStoryVideoItem);
   }
   
   public void a(ShareUI paramShareUI)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData == null) {
+    if (this.p == null) {
       return;
     }
     Object localObject2 = (UserManager)SuperManager.a(2);
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
+    StoryVideoItem localStoryVideoItem = this.p.e();
     if (localStoryVideoItem == null)
     {
-      SLog.e(this.jdField_b_of_type_JavaLangString, "click error , video info not found , vid :%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.jdField_a_of_type_JavaLangString });
+      SLog.e(this.i, "click error , video info not found , vid :%s", new Object[] { this.p.b });
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
+    Object localObject1 = this.p.f();
     QQUserUIItem localQQUserUIItem = ((UserManager)localObject2).b(localStoryVideoItem.mOwnerUid);
     boolean bool3;
     if ((localQQUserUIItem != null) && (localQQUserUIItem.isVip)) {
@@ -319,10 +293,10 @@ public class MoreVideoInfoWidget
     }
     boolean bool1;
     long l;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId))
+    if ((this.e instanceof MsgTabPlayPageLoader.MsgTabGroupId))
     {
-      localObject2 = ((MsgTabPlayPageLoader.MsgTabGroupId)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo;
-      bool1 = MsgTabStoryManager.a(QQStoryContext.a()).a(((MsgTabPlayPageLoader.MsgTabGroupId)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a());
+      localObject2 = ((MsgTabPlayPageLoader.MsgTabGroupId)this.e).a;
+      bool1 = MsgTabStoryManager.a(QQStoryContext.j()).a(((MsgTabPlayPageLoader.MsgTabGroupId)this.e).a());
       if (bool1) {
         l = ((MsgTabNodeInfo)localObject2).a(localStoryVideoItem.mVid);
       } else {
@@ -335,13 +309,13 @@ public class MoreVideoInfoWidget
       bool1 = false;
     }
     Object localObject3;
-    if ((localStoryVideoItem.mStoryType == 2) && (!TextUtils.isEmpty(b())))
+    if ((localStoryVideoItem.mStoryType == 2) && (!TextUtils.isEmpty(D())))
     {
-      localObject2 = ((ShareGroupManager)SuperManager.a(7)).a(b());
+      localObject2 = ((ShareGroupManager)SuperManager.a(7)).a(D());
       if (localObject2 != null)
       {
-        localObject3 = ((TroopManager)PlayModeUtils.a().getManager(QQManagerFactory.TROOP_MANAGER)).c(String.valueOf(((ShareGroupItem)localObject2).groupUin));
-        localObject4 = PlayModeUtils.a().getCurrentAccountUin();
+        localObject3 = ((TroopManager)PlayModeUtils.b().getManager(QQManagerFactory.TROOP_MANAGER)).g(String.valueOf(((ShareGroupItem)localObject2).groupUin));
+        localObject4 = PlayModeUtils.b().getCurrentAccountUin();
         if ((localObject3 != null) && ((((TroopInfo)localObject3).isTroopAdmin((String)localObject4)) || (((TroopInfo)localObject3).isTroopOwner((String)localObject4)))) {
           bool2 = true;
         } else {
@@ -354,11 +328,11 @@ public class MoreVideoInfoWidget
     boolean bool6 = false;
     boolean bool2 = false;
     label363:
-    Object localObject4 = ((StoryPlayerGroupHolder)a()).a();
+    Object localObject4 = ((StoryPlayerGroupHolder)d()).r();
     int j;
     if (bool4)
     {
-      j = c();
+      j = C();
       if (localObject1 != null) {
         localObject2 = ((VideoListFeedItem)localObject1).feedId;
       } else {
@@ -389,39 +363,39 @@ public class MoreVideoInfoWidget
       ((VideoViewVideoHolder)localObject4).c(true);
     }
     new MoreVideoInfoWidget.6(this, new Boolean[] { Boolean.valueOf(false) }, (VideoViewVideoHolder)localObject4);
-    localObject1 = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    localObject1 = this.t;
     if ((localObject1 != null) && (((ActionSheet)localObject1).isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.t.dismiss();
     }
     if (localObject3 == null) {
       localObject2 = null;
     } else {
       localObject2 = ((VideoListFeedItem)localObject3).feedId;
     }
-    if (c() == 12) {
+    if (C() == 12) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    boolean bool9 = a().mUIStyle.showVideoNoInteresting;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId)) {
-      ((MsgTabPlayPageLoader.MsgTabGroupId)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a();
+    boolean bool9 = i().mUIStyle.showVideoNoInteresting;
+    if ((this.e instanceof MsgTabPlayPageLoader.MsgTabGroupId)) {
+      ((MsgTabPlayPageLoader.MsgTabGroupId)this.e).b();
     }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof FeedIdBasePlayPageLoader.FeedBaseGroupId))
+    if ((this.e instanceof FeedIdBasePlayPageLoader.FeedBaseGroupId))
     {
-      localObject1 = (FeedIdBasePlayPageLoader.FeedBaseGroupId)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
+      localObject1 = (FeedIdBasePlayPageLoader.FeedBaseGroupId)this.e;
       if (((FeedIdBasePlayPageLoader.FeedBaseGroupId)localObject1).a != null)
       {
-        localObject1 = ((FeedIdBasePlayPageLoader.FeedBaseGroupId)localObject1).a.jdField_a_of_type_JavaLangString;
-        localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a((String)localObject1, true);
+        localObject1 = ((FeedIdBasePlayPageLoader.FeedBaseGroupId)localObject1).a.a;
+        localObject1 = this.u.a((String)localObject1, true);
         if (!(localObject1 instanceof GeneralRecommendFeedItem)) {
           bool9 = localObject1 instanceof TagFeedItem;
         }
       }
     }
-    SLog.d(this.jdField_b_of_type_JavaLangString, "onShareMoreClick, vip=%s, troop=%s, mine=%s, friend=%s, memory=%s, vid=%s, isShareGroupOwner=%s, isTroopManager=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool8), Boolean.valueOf(bool5), Boolean.valueOf(bool1), localStoryVideoItem.mVid, Boolean.valueOf(bool6), Boolean.valueOf(bool2) });
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().isGameVideo()) {
-      StoryReportor.a("video_game", "clk_challenge", 0, 0, new String[] { "", "", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().getVideoGameInfo().jdField_a_of_type_JavaLangString });
+    SLog.d(this.i, "onShareMoreClick, vip=%s, troop=%s, mine=%s, friend=%s, memory=%s, vid=%s, isShareGroupOwner=%s, isTroopManager=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool8), Boolean.valueOf(bool5), Boolean.valueOf(bool1), localStoryVideoItem.mVid, Boolean.valueOf(bool6), Boolean.valueOf(bool2) });
+    if (this.p.e().isGameVideo()) {
+      StoryReportor.a("video_game", "clk_challenge", 0, 0, new String[] { "", "", this.p.e().getVideoGameInfo().b });
     }
     if (bool4)
     {
@@ -436,28 +410,22 @@ public class MoreVideoInfoWidget
       else {
         localObject1 = Arrays.asList(new int[][] { { 10, 7, 8 } });
       }
-      a(paramShareUI).a((List)localObject1).a().a(new MyContentStoryShareMode(localStoryVideoItem, bool1, (String)localObject2)).a(new MoreVideoInfoWidget.OnSimpleShareListenerImpl(this, bool1, (VideoListFeedItem)localObject3, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject4, bool3, localQQUserUIItem, bool7, l)).b();
+      b(paramShareUI).a((List)localObject1).a().a(new MyContentStoryShareMode(localStoryVideoItem, bool1, (String)localObject2)).a(new MoreVideoInfoWidget.OnSimpleShareListenerImpl(this, bool1, (VideoListFeedItem)localObject3, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject4, bool3, localQQUserUIItem, bool7, l)).b();
       return;
     }
     if (bool8)
     {
-      a(paramShareUI).a(Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6, 7, 8 } })).a(2131719029).a(new MyContentStoryShareMode(localStoryVideoItem, bool1, (String)localObject2)).a(new MoreVideoInfoWidget.OnSimpleShareListenerImpl(this, bool1, (VideoListFeedItem)localObject3, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject4, bool3, localQQUserUIItem, bool7, l)).b();
+      b(paramShareUI).a(Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6, 7, 8 } })).a(2131916565).a(new MyContentStoryShareMode(localStoryVideoItem, bool1, (String)localObject2)).a(new MoreVideoInfoWidget.OnSimpleShareListenerImpl(this, bool1, (VideoListFeedItem)localObject3, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject4, bool3, localQQUserUIItem, bool7, l)).b();
       return;
     }
     if (bool5)
     {
-      a(paramShareUI).a(Arrays.asList(new int[][] { { 10, 7, 9 } })).a().a(new MyContentStoryShareMode(localStoryVideoItem, bool1, (String)localObject2)).a(new MoreVideoInfoWidget.OnSimpleShareListenerImpl(this, bool1, (VideoListFeedItem)localObject3, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject4, bool3, localQQUserUIItem, bool7, l)).b();
+      b(paramShareUI).a(Arrays.asList(new int[][] { { 10, 7, 9 } })).a().a(new MyContentStoryShareMode(localStoryVideoItem, bool1, (String)localObject2)).a(new MoreVideoInfoWidget.OnSimpleShareListenerImpl(this, bool1, (VideoListFeedItem)localObject3, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject4, bool3, localQQUserUIItem, bool7, l)).b();
       return;
     }
     if ((bool3) || (i != 0)) {
-      a(paramShareUI).a(Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6, 9 } })).a(2131719029).a(new MyContentStoryShareMode(localStoryVideoItem, bool1, (String)localObject2)).a(new MoreVideoInfoWidget.OnSimpleShareListenerImpl(this, bool1, (VideoListFeedItem)localObject3, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject4, bool3, localQQUserUIItem, bool7, l)).b();
+      b(paramShareUI).a(Arrays.asList(new int[][] { { 1, 2, 3, 4, 5 }, { 6, 9 } })).a(2131916565).a(new MyContentStoryShareMode(localStoryVideoItem, bool1, (String)localObject2)).a(new MoreVideoInfoWidget.OnSimpleShareListenerImpl(this, bool1, (VideoListFeedItem)localObject3, (String)localObject2, localStoryVideoItem, bool8, (VideoViewVideoHolder)localObject4, bool3, localQQUserUIItem, bool7, l)).b();
     }
-  }
-  
-  public void a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    SLog.a(this.jdField_b_of_type_JavaLangString, "bindData=%s", paramStoryPlayerVideoData);
-    j();
   }
   
   protected void a(@NonNull Map<Subscriber, String> paramMap)
@@ -469,29 +437,34 @@ public class MoreVideoInfoWidget
     paramMap.put(new MoreVideoInfoWidget.GetFeedItemReceiver(this), "");
     paramMap.put(new MoreVideoInfoWidget.DownloadStatusUpdateReceiver(this), "");
     paramMap.put(new MoreVideoInfoWidget.GetUserInfoReceiver(this), "");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget$MyActivityLifeCycle = new MoreVideoInfoWidget.MyActivityLifeCycle(this);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget$MyActivityLifeCycle);
+    this.w = new MoreVideoInfoWidget.MyActivityLifeCycle(this);
+    a(this.w);
   }
   
   protected boolean a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    return (!a().mUIStyle.hideMoreIcon) && ((paramStoryPlayerVideoData.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo == null) || (paramStoryPlayerVideoData.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.a != 13));
+    return (!i().mUIStyle.hideMoreIcon) && ((paramStoryPlayerVideoData.a == null) || (paramStoryPlayerVideoData.a.b != 13));
   }
   
-  public int b()
+  protected StoryShare b(ShareUI paramShareUI)
   {
-    return -1;
+    if (paramShareUI == null) {
+      this.s = StoryShare.a(y());
+    } else {
+      this.s = StoryShare.a(y(), paramShareUI);
+    }
+    return this.s;
   }
   
   public void b(StoryVideoItem paramStoryVideoItem)
   {
-    Object localObject = ((StoryPlayerGroupHolder)a()).a();
+    Object localObject = ((StoryPlayerGroupHolder)d()).r();
     FeedVideoManager localFeedVideoManager = (FeedVideoManager)SuperManager.a(12);
     if (localObject != null) {
       ((VideoViewVideoHolder)localObject).c(true);
     }
     localObject = new MoreVideoInfoWidget.8(this, (VideoViewVideoHolder)localObject, paramStoryVideoItem, localFeedVideoManager);
-    localObject = DialogUtil.a(b(), 230, 2131558978, HardCodeUtil.a(2131706911), null, HardCodeUtil.a(2131706916), HardCodeUtil.a(2131706923), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+    localObject = DialogUtil.a(y(), 230, 2131624611, HardCodeUtil.a(2131904756), null, HardCodeUtil.a(2131898212), HardCodeUtil.a(2131904766), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
     ((QQCustomDialog)localObject).setCancelable(false);
     ((QQCustomDialog)localObject).getWindow().setBackgroundDrawable(new ColorDrawable(0));
     ((QQCustomDialog)localObject).show();
@@ -499,36 +472,39 @@ public class MoreVideoInfoWidget
     StoryReportor.a("play_video", "clk_delete", 0, 0, new String[] { "", "1", "", paramStoryVideoItem.mVid });
   }
   
-  protected void f() {}
-  
-  public void g()
+  public void b(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadStorySingleFileDownloader;
-    if (localObject != null) {
-      ((StorySingleFileDownloader)localObject).a();
+    SLog.a(this.i, "bindData=%s", paramStoryPlayerVideoData);
+    z();
+  }
+  
+  public String c(StoryVideoItem paramStoryVideoItem)
+  {
+    if (paramStoryVideoItem.isUploadFail()) {
+      return "3";
     }
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget$MyActivityLifeCycle;
-    if (localObject != null) {
-      b((ActivityLifeCycle)localObject);
+    if (paramStoryVideoItem.isUploading()) {
+      return "1";
     }
+    return "2";
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null)
+    if (this.p != null)
     {
-      StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
+      StoryVideoItem localStoryVideoItem = this.p.e();
       int i = 0;
       if (localStoryVideoItem == null)
       {
-        SLog.e(this.jdField_b_of_type_JavaLangString, "click error , video info not found , vid :%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.jdField_a_of_type_JavaLangString });
+        SLog.e(this.i, "click error , video info not found , vid :%s", new Object[] { this.p.b });
       }
       else
       {
         if (localStoryVideoItem.mStoryType == 2) {
           i = 1;
         }
-        boolean bool = a(localStoryVideoItem);
+        boolean bool = d(localStoryVideoItem);
         if (i != 0) {
           a(null);
         } else if (PlayModeUtils.a(localStoryVideoItem))
@@ -536,17 +512,41 @@ public class MoreVideoInfoWidget
           if ((!localStoryVideoItem.isUploadFail()) && (!localStoryVideoItem.isUploading())) {
             a(null);
           } else {
-            e();
+            p();
           }
         }
         else if (bool) {
           a(null);
         } else {
-          d();
+          h();
         }
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  protected void q() {}
+  
+  public void r()
+  {
+    Object localObject = this.x;
+    if (localObject != null) {
+      ((StorySingleFileDownloader)localObject).a();
+    }
+    localObject = this.w;
+    if (localObject != null) {
+      b((ActivityLifeCycle)localObject);
+    }
+  }
+  
+  public int s()
+  {
+    return -1;
+  }
+  
+  public String t()
+  {
+    return "MoreVideoInfoWidget";
   }
 }
 

@@ -12,14 +12,14 @@ class DailyDynamicHeaderViewController$10
   
   public void onClick(View paramView)
   {
-    if ((DailyDynamicHeaderViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyDynamicHeaderViewController) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      ReadInJoyUtils.a(DailyDynamicHeaderViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyDailyDynamicHeaderViewController).getContext(), this.jdField_a_of_type_JavaLangString);
+    if ((DailyDynamicHeaderViewController.d(this.b) != null) && (!TextUtils.isEmpty(this.a))) {
+      ReadInJoyUtils.a(DailyDynamicHeaderViewController.d(this.b).getContext(), this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyDynamicHeaderViewController.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.kandian.biz.hippy.module;
 
-import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.kandian.biz.comment.util.api.IRIJCommentEntranceUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.comment.base.ReadInJoyCommentEntrance;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
 import junit.framework.AssertionFailedError;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 final class TKDCommentBizModule$openCommentPublisher$1
@@ -33,10 +30,7 @@ final class TKDCommentBizModule$openCommentPublisher$1
     try
     {
       localObject = TKDCommentBizModule.access$buildCommentEditorIntent(this.this$0, this.$params);
-      IRIJCommentEntranceUtils localIRIJCommentEntranceUtils = (IRIJCommentEntranceUtils)QRoute.api(IRIJCommentEntranceUtils.class);
-      Activity localActivity = TKDCommentBizModule.access$getActivity(this.this$0);
-      Intrinsics.checkExpressionValueIsNotNull(localActivity, "activity");
-      localIRIJCommentEntranceUtils.startForResult(localActivity, (Intent)localObject, 117);
+      ReadInJoyCommentEntrance.a(TKDCommentBizModule.access$getActivity(this.this$0), (Intent)localObject, 117);
       return;
     }
     catch (AssertionFailedError localAssertionFailedError)
@@ -52,7 +46,7 @@ final class TKDCommentBizModule$openCommentPublisher$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDCommentBizModule.openCommentPublisher.1
  * JD-Core Version:    0.7.0.1
  */

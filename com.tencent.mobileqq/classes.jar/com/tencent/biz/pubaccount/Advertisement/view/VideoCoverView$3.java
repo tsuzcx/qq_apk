@@ -11,12 +11,12 @@ class VideoCoverView$3
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    VideoCoverView.a(this.a, true);
+    VideoCoverView.b(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -44,14 +44,14 @@ class VisitorsActivity$12
     }
     if (paramBoolean)
     {
-      paramString = this.a.jdField_b_of_type_JavaUtilArrayList;
-      if (this.a.jdField_b_of_type_Boolean) {
+      paramString = this.a.l;
+      if (this.a.m) {
         paramString = new ArrayList();
       }
       paramArrayOfByte = this.a;
-      paramArrayOfByte.jdField_b_of_type_Long = paramLong2;
-      paramArrayOfByte = paramArrayOfByte.jdField_b_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter;
-      if (this.a.jdField_b_of_type_Long != -1L) {
+      paramArrayOfByte.o = paramLong2;
+      paramArrayOfByte = paramArrayOfByte.k;
+      if (this.a.o != -1L) {
         paramBoolean = true;
       } else {
         paramBoolean = false;
@@ -92,7 +92,7 @@ class VisitorsActivity$12
       return;
     }
     if (!paramBoolean) {
-      this.a.a(1, HardCodeUtil.a(2131716296));
+      this.a.a(1, HardCodeUtil.a(2131913738));
     }
   }
   
@@ -105,14 +105,14 @@ class VisitorsActivity$12
     {
       if (!paramBoolean)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.b(paramString2, paramInt1, true);
+        this.a.c.b(paramString2, paramInt1, true);
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(paramString2, paramInt1, true);
+      this.a.c.a(paramString2, paramInt1, true);
       return;
     }
     if (paramInt2 == 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(Long.parseLong(paramString2));
+      this.a.c.a(Long.parseLong(paramString2));
     }
   }
   
@@ -165,18 +165,18 @@ class VisitorsActivity$12
     }
     if (paramBoolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(paramArrayList1, paramInt1, paramInt2, paramLong1);
-      paramString = this.a.jdField_a_of_type_JavaUtilArrayList;
-      if (this.a.jdField_a_of_type_Boolean)
+      this.a.c.a(paramArrayList1, paramInt1, paramInt2, paramLong1);
+      paramString = this.a.d;
+      if (this.a.g)
       {
         this.a.app.getMessageFacade().a(AppConstants.VOTE_MSG_UIN, 1001);
         this.a.app.getMessageFacade().a(AppConstants.VOTE_MSG_UIN, 10002);
         paramString = new ArrayList();
       }
       paramArrayList1 = this.a;
-      paramArrayList1.jdField_a_of_type_Long = paramLong2;
-      paramArrayList1 = paramArrayList1.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity$VisitorAdapter;
-      if (this.a.jdField_a_of_type_Long != -1L) {
+      paramArrayList1.i = paramLong2;
+      paramArrayList1 = paramArrayList1.f;
+      if (this.a.i != -1L) {
         paramBoolean = true;
       } else {
         paramBoolean = false;
@@ -195,7 +195,7 @@ class VisitorsActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.12
  * JD-Core Version:    0.7.0.1
  */

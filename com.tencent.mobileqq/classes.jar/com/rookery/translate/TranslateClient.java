@@ -18,7 +18,7 @@ public abstract class TranslateClient
     finally {}
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     return a != null;
   }

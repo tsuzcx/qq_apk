@@ -6,18 +6,18 @@ import com.tencent.mobileqq.qroute.QRoute;
 
 public class AEKitResItemChecker
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = 0L;
-  private final int b;
+  private int a = -1;
+  private long b = 0L;
+  private final int c;
   
   public AEKitResItemChecker(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
   }
   
   public boolean a(VideoAppInterface paramVideoAppInterface)
@@ -27,10 +27,10 @@ public class AEKitResItemChecker
   
   public boolean b()
   {
-    if (PtuResChecker.b(this.b)) {
-      return PtuResChecker.b();
+    if (PtuResChecker.b(this.c)) {
+      return PtuResChecker.c();
     }
-    return ((IAEResUtil)QRoute.api(IAEResUtil.class)).isAEResExist(PtuResChecker.a(this.b));
+    return ((IAEResUtil)QRoute.api(IAEResUtil.class)).isAEResExist(PtuResChecker.c(this.c));
   }
 }
 

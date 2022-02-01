@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ViolaLogUtils$1
+class ViolaLogUtils$1
   implements View.OnClickListener
 {
   public void onClick(View paramView)
@@ -18,7 +18,7 @@ final class ViolaLogUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.ViolaLogUtils.1
  * JD-Core Version:    0.7.0.1
  */

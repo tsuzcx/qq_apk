@@ -20,41 +20,41 @@ public abstract interface IEmoticonFromGroupManager
   
   public abstract EmoticonFromGroupEntity a(MessageRecord paramMessageRecord);
   
-  public abstract <T extends MessageRecord> T a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity);
-  
   public abstract String a(String paramString1, int paramInt, String paramString2);
-  
-  public abstract List<EmoticonFromGroupEntity> a();
-  
-  public abstract Map<String, List<EmoticonFromGroupEntity>> a(List<EmoticonFromGroupEntity> paramList);
-  
-  public abstract void a();
   
   public abstract void a(Context paramContext, MessageForPic paramMessageForPic, View paramView);
   
   public abstract void a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity);
   
-  public abstract void a(MessageRecord paramMessageRecord);
-  
   public abstract void a(List<MessageRecord> paramList);
   
-  public abstract boolean a(EmoticonFromGroupEntity paramEmoticonFromGroupEntity);
-  
   public abstract boolean a(List<CustomEmotionData> paramList, String paramString);
+  
+  public abstract List<EmoticonFromGroupEntity> b();
+  
+  public abstract Map<String, List<EmoticonFromGroupEntity>> b(List<EmoticonFromGroupEntity> paramList);
   
   public abstract void b(EmoticonFromGroupEntity paramEmoticonFromGroupEntity);
   
   public abstract void b(MessageRecord paramMessageRecord);
   
-  public abstract void b(List<EmoticonFromGroupEntity> paramList);
+  public abstract void c(MessageRecord paramMessageRecord);
   
   public abstract void c(List<EmoticonFromGroupEntity> paramList);
   
   public abstract void d(List<EmoticonFromGroupEntity> paramList);
+  
+  public abstract boolean d(EmoticonFromGroupEntity paramEmoticonFromGroupEntity);
+  
+  public abstract void e(List<EmoticonFromGroupEntity> paramList);
+  
+  public abstract <T extends MessageRecord> T f(EmoticonFromGroupEntity paramEmoticonFromGroupEntity);
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.IEmoticonFromGroupManager
  * JD-Core Version:    0.7.0.1
  */

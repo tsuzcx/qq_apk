@@ -25,7 +25,7 @@ public final class oidb_0x990$TranslateRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x990.oidb_0x990.TranslateRsp
  * JD-Core Version:    0.7.0.1
  */

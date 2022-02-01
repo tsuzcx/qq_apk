@@ -34,21 +34,16 @@ import com.tencent.widget.Switch;
 public class QQStoryFriendSettingDelegate
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, KeepConstructor, ActivityDelegate<QQStoryFriendSettings>
 {
-  protected int a;
-  protected QQStoryObserver a;
-  protected QQStoryFriendSettings a;
   protected View[] a;
-  
-  public QQStoryFriendSettingDelegate()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new QQStoryFriendSettingDelegate.1(this);
-  }
+  protected int b;
+  protected QQStoryFriendSettings c;
+  protected QQStoryObserver d = new QQStoryFriendSettingDelegate.1(this);
   
   protected View a(int paramInt1, String paramString, int paramInt2)
   {
-    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561545, null);
-    ((TextView)localView.findViewById(2131378784)).setText(paramString);
-    ((TextView)localView.findViewById(2131368773)).setText("");
+    View localView = View.inflate(this.c, 2131627906, null);
+    ((TextView)localView.findViewById(2131447463)).setText(paramString);
+    ((TextView)localView.findViewById(2131435692)).setText("");
     localView.setTag(Integer.valueOf(paramInt1));
     localView.setOnClickListener(this);
     localView.setBackgroundResource(paramInt2);
@@ -57,33 +52,33 @@ public class QQStoryFriendSettingDelegate
   
   protected View a(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561548, null);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1] = localView;
-    Object localObject = (FormSwitchItem)localView.findViewById(2131369172);
-    ((FormSwitchItem)localObject).a().setTextSize(1, 18.0F);
+    View localView = View.inflate(this.c, 2131627909, null);
+    this.a[paramInt1] = localView;
+    Object localObject = (FormSwitchItem)localView.findViewById(2131436145);
+    ((FormSwitchItem)localObject).getTextView().setTextSize(1, 18.0F);
     ((FormSwitchItem)localObject).setText(paramString);
     ((FormSwitchItem)localObject).setContentDescription(paramString);
     ((FormSwitchItem)localObject).setBgType(paramInt2);
-    localObject = ((FormSwitchItem)localObject).a();
+    localObject = ((FormSwitchItem)localObject).getSwitch();
     ((Switch)localObject).setTag(Integer.valueOf(paramInt1));
     ((Switch)localObject).setOnCheckedChangeListener(null);
     ((Switch)localObject).setChecked(paramBoolean);
     ((Switch)localObject).setOnCheckedChangeListener(this);
     ((Switch)localObject).setContentDescription(paramString);
-    ((TextView)localView.findViewById(2131368846)).setVisibility(8);
+    ((TextView)localView.findViewById(2131435777)).setVisibility(8);
     return localView;
   }
   
   protected void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.isResume()) {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, paramInt, paramString, 0).b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getTitleBarHeight());
+    if (this.c.isResume()) {
+      QQToast.makeText(this.c, paramInt, paramString, 0).show(this.c.getTitleBarHeight());
     }
   }
   
   protected void a(int paramInt, boolean paramBoolean)
   {
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt].findViewById(2131369172);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.a[paramInt].findViewById(2131436145);
     localFormSwitchItem.setOnCheckedChangeListener(null);
     localFormSwitchItem.setChecked(paramBoolean);
     localFormSwitchItem.setOnCheckedChangeListener(this);
@@ -91,62 +86,62 @@ public class QQStoryFriendSettingDelegate
   
   public void a(QQStoryFriendSettings paramQQStoryFriendSettings)
   {
-    paramQQStoryFriendSettings.app.removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
+    paramQQStoryFriendSettings.app.removeObserver(this.d);
   }
   
   public void a(QQStoryFriendSettings paramQQStoryFriendSettings, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings = paramQQStoryFriendSettings;
-    this.jdField_a_of_type_Int = paramQQStoryFriendSettings.getIntent().getIntExtra("from", 1);
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings);
+    this.c = paramQQStoryFriendSettings;
+    this.b = paramQQStoryFriendSettings.getIntent().getIntExtra("from", 1);
+    LinearLayout localLinearLayout = new LinearLayout(this.c);
     paramBundle = new LinearLayout.LayoutParams(-1, -1);
-    localLinearLayout.setBackgroundResource(2130838740);
+    localLinearLayout.setBackgroundResource(2130838959);
     localLinearLayout.setLayoutParams(paramBundle);
     localLinearLayout.setOrientation(1);
     int i = AIOUtils.b(20.0F, paramQQStoryFriendSettings.getResources());
     paramBundle = Boolean.valueOf(false);
     localLinearLayout.setPadding(0, i, 0, 0);
-    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[9];
+    this.a = new View[9];
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131710797));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131908474));
     ((StringBuilder)localObject).append(QQStoryConstant.b);
-    localLinearLayout.addView(a(0, ((StringBuilder)localObject).toString(), 2130839449));
+    localLinearLayout.addView(a(0, ((StringBuilder)localObject).toString(), 2130839638));
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131710831));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131908506));
     ((StringBuilder)localObject).append(QQStoryConstant.b);
-    localLinearLayout.addView(a(1, ((StringBuilder)localObject).toString(), 2130839440));
-    localLinearLayout.addView(View.inflate(paramQQStoryFriendSettings, 2131561565, null));
+    localLinearLayout.addView(a(1, ((StringBuilder)localObject).toString(), 2130839629));
+    localLinearLayout.addView(View.inflate(paramQQStoryFriendSettings, 2131627926, null));
     localObject = (QQStoryManager)paramQQStoryFriendSettings.app.getManager(QQManagerFactory.QQSTORY_MANAGER);
-    localLinearLayout.addView(a(2, HardCodeUtil.a(2131710829), 1, ((QQStoryManager)localObject).a()));
+    localLinearLayout.addView(a(2, HardCodeUtil.a(2131908504), 1, ((QQStoryManager)localObject).c()));
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131710826));
+    localStringBuilder.append(HardCodeUtil.a(2131908501));
     localStringBuilder.append(QQStoryConstant.b);
-    localStringBuilder.append(HardCodeUtil.a(2131710813));
-    localLinearLayout.addView(a(3, localStringBuilder.toString(), 2, ((QQStoryManager)localObject).b()));
-    if (((QQStoryManager)localObject).d())
+    localStringBuilder.append(HardCodeUtil.a(2131908490));
+    localLinearLayout.addView(a(3, localStringBuilder.toString(), 2, ((QQStoryManager)localObject).d()));
+    if (((QQStoryManager)localObject).f())
     {
-      i = ((QQStoryManager)localObject).b();
-      localLinearLayout.addView(a(5, String.format(HardCodeUtil.a(2131710807), new Object[] { Integer.valueOf(i), HardCodeUtil.a(2131710830) }), 2, ((QQStoryManager)localObject).c()));
+      i = ((QQStoryManager)localObject).g();
+      localLinearLayout.addView(a(5, String.format(HardCodeUtil.a(2131908484), new Object[] { Integer.valueOf(i), HardCodeUtil.a(2131908505) }), 2, ((QQStoryManager)localObject).e()));
       StoryReportor.a("friend_story_settings", "exp_strange", 0, 0, new String[0]);
     }
     localObject = (StoryConfigManager)SuperManager.a(10);
-    boolean bool1 = ((Boolean)((StoryConfigManager)localObject).b("story_publish_flag_compress_configurable", paramBundle)).booleanValue();
-    boolean bool2 = ((Boolean)((StoryConfigManager)localObject).b("story_publish_flag_compress", paramBundle)).booleanValue();
+    boolean bool1 = ((Boolean)((StoryConfigManager)localObject).c("story_publish_flag_compress_configurable", paramBundle)).booleanValue();
+    boolean bool2 = ((Boolean)((StoryConfigManager)localObject).c("story_publish_flag_compress", paramBundle)).booleanValue();
     SLog.d("QQStoryFriendSettingDelegate", "skipEncodeVisible=%s, skipEncodeEnable=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
     if (bool1)
     {
-      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561565, null));
+      localLinearLayout.addView(View.inflate(this.c, 2131627926, null));
       paramBundle = new StringBuilder();
-      paramBundle.append(HardCodeUtil.a(2131710827));
+      paramBundle.append(HardCodeUtil.a(2131908502));
       paramBundle.append(QQStoryConstant.a);
       localLinearLayout.addView(a(7, paramBundle.toString(), 0, bool2));
     }
     paramBundle = (MsgTabStoryNodeConfigManager)paramQQStoryFriendSettings.app.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
     if ((paramBundle.b) && (paramBundle.c))
     {
-      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561565, null));
+      localLinearLayout.addView(View.inflate(this.c, 2131627926, null));
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131710803));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131908480));
       ((StringBuilder)localObject).append(QQStoryConstant.b);
       localLinearLayout.addView(a(8, ((StringBuilder)localObject).toString(), 1, paramBundle.d));
       if (paramBundle.d) {
@@ -159,11 +154,11 @@ public class QQStoryFriendSettingDelegate
     paramQQStoryFriendSettings.setContentView(localLinearLayout);
     paramBundle = new StringBuilder();
     paramBundle.append(QQStoryConstant.a);
-    paramBundle.append(HardCodeUtil.a(2131710820));
+    paramBundle.append(HardCodeUtil.a(2131908496));
     paramQQStoryFriendSettings.setTitle(paramBundle.toString());
-    paramQQStoryFriendSettings.app.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
+    paramQQStoryFriendSettings.app.addObserver(this.d);
     ((QQStoryHandler)paramQQStoryFriendSettings.app.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a();
-    StoryReportor.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "1", "", "", "" });
+    StoryReportor.a("friend_story_settings", "exp_set", this.b, 0, new String[] { "1", "", "", "" });
   }
   
   public void a(boolean paramBoolean)
@@ -205,8 +200,8 @@ public class QQStoryFriendSettingDelegate
               {
                 if (i == 8)
                 {
-                  ((MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a(paramBoolean);
-                  QQStoryHandler localQQStoryHandler = (QQStoryHandler)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
+                  ((MsgTabStoryNodeConfigManager)this.c.app.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a(paramBoolean);
+                  QQStoryHandler localQQStoryHandler = (QQStoryHandler)this.c.app.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
                   if (paramBoolean) {
                     i = 2;
                   } else {
@@ -219,10 +214,10 @@ public class QQStoryFriendSettingDelegate
                   StoryReportor.a("msg_tab", "turn_story", 0, 0, new String[] { "1", localObject });
                 }
               }
-              else if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+              else if (!NetworkUtil.isNetSupport(this.c))
               {
                 a(7, paramBoolean ^ true);
-                a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692183));
+                a(0, this.c.getString(2131889169));
               }
               else
               {
@@ -230,10 +225,10 @@ public class QQStoryFriendSettingDelegate
                 SLog.d("QQStoryFriendSettingDelegate", "VIEW_ID_ALLOW_SKIP_ENCODE_THREAD %s", new Object[] { Boolean.valueOf(paramBoolean) });
               }
             }
-            else if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+            else if (!NetworkUtil.isNetSupport(this.c))
             {
               a(5, paramBoolean ^ true);
-              a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692183));
+              a(0, this.c.getString(2131889169));
             }
             else
             {
@@ -245,13 +240,13 @@ public class QQStoryFriendSettingDelegate
             }
           }
           else {
-            ((QQStoryManager)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getManager(QQManagerFactory.QQSTORY_MANAGER)).g(paramBoolean);
+            ((QQStoryManager)this.c.app.getManager(QQManagerFactory.QQSTORY_MANAGER)).g(paramBoolean);
           }
         }
-        else if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+        else if (!NetworkUtil.isNetSupport(this.c))
         {
           a(3, paramBoolean ^ true);
-          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692183));
+          a(0, this.c.getString(2131889169));
         }
         else
         {
@@ -262,10 +257,10 @@ public class QQStoryFriendSettingDelegate
           StoryReportor.a("friend_story_settings", "receive_care", 0, 0, new String[] { localObject, "", "", "" });
         }
       }
-      else if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+      else if (!NetworkUtil.isNetSupport(this.c))
       {
         a(2, paramBoolean ^ true);
-        a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692183));
+        a(0, this.c.getString(2131889169));
       }
       else
       {
@@ -282,7 +277,7 @@ public class QQStoryFriendSettingDelegate
   public void onClick(View paramView)
   {
     int i = ((Integer)paramView.getTag()).intValue();
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, QQStoryShieldListActivity.class);
+    Intent localIntent = new Intent(this.c, QQStoryShieldListActivity.class);
     if (i != 0)
     {
       if (i == 1)
@@ -296,7 +291,7 @@ public class QQStoryFriendSettingDelegate
       localIntent.putExtra("sheild_type", 1);
       StoryReportor.a("friend_story_settings", "clk_notsee", 0, 0, new String[] { "", "", "", "" });
     }
-    this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.startActivity(localIntent);
+    this.c.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

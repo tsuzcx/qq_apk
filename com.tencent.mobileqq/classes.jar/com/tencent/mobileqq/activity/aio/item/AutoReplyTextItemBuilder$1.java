@@ -12,13 +12,13 @@ class AutoReplyTextItemBuilder$1
   
   public void onClick(View paramView)
   {
-    AutoReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAutoReplyTextItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForAutoReply);
+    AutoReplyTextItemBuilder.a(this.b, this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AutoReplyTextItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

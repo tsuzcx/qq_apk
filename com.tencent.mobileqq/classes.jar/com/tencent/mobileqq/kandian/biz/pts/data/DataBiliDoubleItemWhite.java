@@ -187,7 +187,7 @@ public final class DataBiliDoubleItemWhite
     if (i <= 0) {
       return;
     }
-    paramJSONObject.put("pts_page_name", RIJPreParseData.a(paramAbsBaseArticleInfo, "bili_double_items_white"));
+    paramJSONObject.put("pts_page_name", RIJPreParseData.c(paramAbsBaseArticleInfo, "bili_double_items_white"));
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put(0, a(paramAbsBaseArticleInfo));
     localObject = paramAbsBaseArticleInfo.mSubArticleList;
@@ -247,7 +247,7 @@ public final class DataBiliDoubleItemWhite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.DataBiliDoubleItemWhite
  * JD-Core Version:    0.7.0.1
  */

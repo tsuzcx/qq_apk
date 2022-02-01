@@ -54,9 +54,9 @@ import tencent.im.msg.im_msg_body.GeneralFlags;
 
 public class MessageFactorySender
 {
-  private static MessageFactorySender.Callback jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback;
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private static MessageFactorySender.Callback c;
+  AppRuntime a;
+  AtomicInteger b = new AtomicInteger();
   
   static {}
   
@@ -87,7 +87,7 @@ public class MessageFactorySender
   
   public static void a(MessageFactorySender.Callback paramCallback)
   {
-    jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback = paramCallback;
+    c = paramCallback;
   }
   
   private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -288,7 +288,7 @@ public class MessageFactorySender
     Object localObject = new AccostSvc.ReqHeader();
     ((AccostSvc.ReqHeader)localObject).shVersion = 0;
     ((AccostSvc.ReqHeader)localObject).lMID = a(Long.parseLong(paramToServiceMsg.getUin()));
-    ((AccostSvc.ReqHeader)localObject).iAppID = AppSetting.a();
+    ((AccostSvc.ReqHeader)localObject).iAppID = AppSetting.d();
     long l = paramToServiceMsg.extraData.getLong("lNextMid");
     if (l < 0L) {
       return false;
@@ -306,7 +306,7 @@ public class MessageFactorySender
     Object localObject = new AccostSvc.ReqHeader();
     ((AccostSvc.ReqHeader)localObject).shVersion = 0;
     ((AccostSvc.ReqHeader)localObject).lMID = a(Long.parseLong(paramToServiceMsg.getUin()));
-    ((AccostSvc.ReqHeader)localObject).iAppID = AppSetting.a();
+    ((AccostSvc.ReqHeader)localObject).iAppID = AppSetting.d();
     String str = paramToServiceMsg.extraData.getString("deleteUin");
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(str));
@@ -323,7 +323,7 @@ public class MessageFactorySender
     Object localObject = new AccostSvc.ReqHeader();
     ((AccostSvc.ReqHeader)localObject).shVersion = 0;
     ((AccostSvc.ReqHeader)localObject).lMID = a(Long.parseLong(paramToServiceMsg.getUin()));
-    ((AccostSvc.ReqHeader)localObject).iAppID = AppSetting.a();
+    ((AccostSvc.ReqHeader)localObject).iAppID = AppSetting.d();
     String str = paramToServiceMsg.extraData.getString("insertUin");
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(str));
@@ -340,24 +340,24 @@ public class MessageFactorySender
     AccostSvc.ReqHeader localReqHeader = new AccostSvc.ReqHeader();
     localReqHeader.shVersion = 0;
     localReqHeader.lMID = a(Long.parseLong(paramToServiceMsg.getUin()));
-    localReqHeader.iAppID = AppSetting.a();
+    localReqHeader.iAppID = AppSetting.d();
     long l1 = paramToServiceMsg.extraData.getLong("to");
     Object localObject3 = paramToServiceMsg.extraData.getString("msg");
     boolean bool = paramToServiceMsg.extraData.getBoolean("hello");
-    byte b = paramToServiceMsg.extraData.getByte("cType");
+    byte b1 = paramToServiceMsg.extraData.getByte("cType");
     Object localObject2 = paramToServiceMsg.extraData.getString("pyNickname");
     long l2 = paramToServiceMsg.extraData.getLong("msgSeq");
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    if (b == 18) {
+    if (b1 == 18) {
       localObject2 = ((String)localObject3).getBytes();
     } else {
-      localObject2 = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject3);
+      localObject2 = c.f((String)localObject3);
     }
     long l3 = paramToServiceMsg.extraData.getLong("timeOut");
-    localObject3 = new MsgItem(b, (byte[])localObject2);
+    localObject3 = new MsgItem(b1, (byte[])localObject2);
     localObject2 = new ArrayList();
     ((ArrayList)localObject2).add(localObject3);
     localObject3 = new UserInfo();
@@ -438,7 +438,7 @@ public class MessageFactorySender
     } else {
       paramToServiceMsg = "null";
     }
-    jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a(localSvcRequestSendVideoMsg, paramToServiceMsg);
+    c.a(localSvcRequestSendVideoMsg, paramToServiceMsg);
     return true;
   }
   
@@ -604,11 +604,11 @@ public class MessageFactorySender
     paramToServiceMsg = new StreamInfo();
     paramToServiceMsg.lFromUIN = a((String)localObject2);
     paramToServiceMsg.lToUIN = a((String)localObject3);
-    paramToServiceMsg.iMsgId = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject1);
+    paramToServiceMsg.iMsgId = c.a((String)localObject1);
     paramToServiceMsg.type = 1;
     paramToServiceMsg.iSendTime = 0;
-    paramToServiceMsg.shPackNum = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.b((String)localObject1);
-    paramToServiceMsg.shFlowLayer = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject1);
+    paramToServiceMsg.shPackNum = c.c((String)localObject1);
+    paramToServiceMsg.shFlowLayer = c.b((String)localObject1);
     paramToServiceMsg.pttTime = l4;
     paramToServiceMsg.pttFormat = l3;
     paramToServiceMsg.subBubbleId = l5;
@@ -648,13 +648,13 @@ public class MessageFactorySender
     if (((StreamData)localObject2).shPackSeq < paramToServiceMsg.shPackNum) {
       paramToServiceMsg.shPackNum = 0;
     }
-    ((StreamData)localObject2).vData = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject1, localShort.shortValue());
-    boolean bool = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject1);
+    ((StreamData)localObject2).vData = c.a((String)localObject1, localShort.shortValue());
+    boolean bool = c.d((String)localObject1);
     if (bool)
     {
       paramToServiceMsg.shPackNum = 0;
       paramToServiceMsg.oprType = 1;
-      jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.b((String)localObject1);
+      c.e((String)localObject1);
     }
     if (QLog.isColorLevel())
     {
@@ -695,11 +695,11 @@ public class MessageFactorySender
     paramToServiceMsg = new StreamInfo();
     paramToServiceMsg.lFromUIN = a(str2);
     paramToServiceMsg.lToUIN = a(str1);
-    paramToServiceMsg.iMsgId = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject);
+    paramToServiceMsg.iMsgId = c.a((String)localObject);
     paramToServiceMsg.type = 1;
     paramToServiceMsg.iSendTime = 0;
     paramToServiceMsg.shPackNum = 0;
-    paramToServiceMsg.shFlowLayer = jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender$Callback.a((String)localObject);
+    paramToServiceMsg.shFlowLayer = c.b((String)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -729,12 +729,12 @@ public class MessageFactorySender
   @NotNull
   public CSUploadStreamMsg a(UniPacket paramUniPacket, StreamInfo paramStreamInfo, StreamData paramStreamData, short paramShort)
   {
-    return new CSUploadStreamMsg(paramShort, paramUniPacket.getRequestId(), paramStreamInfo, paramStreamData, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet());
+    return new CSUploadStreamMsg(paramShort, paramUniPacket.getRequestId(), paramStreamInfo, paramStreamData, this.b.incrementAndGet());
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.a = paramAppRuntime;
   }
   
   public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -917,7 +917,7 @@ public class MessageFactorySender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageFactorySender
  * JD-Core Version:    0.7.0.1
  */

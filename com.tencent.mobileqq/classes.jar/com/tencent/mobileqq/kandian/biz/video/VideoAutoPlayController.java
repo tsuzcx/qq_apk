@@ -117,7 +117,7 @@ public class VideoAutoPlayController
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("canAutoPlayVideo：getKandianMode: ");
-      ((StringBuilder)localObject).append(RIJAppSetting.a());
+      ((StringBuilder)localObject).append(RIJAppSetting.b());
       QLog.d("VideoAutoPlayController", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = RIJQQAppInterfaceUtil.a();
@@ -127,7 +127,7 @@ public class VideoAutoPlayController
     if ((localObject != null) && (((QQAppInterface)localObject).isVideoChatting())) {
       return false;
     }
-    if (RIJAppSetting.a() == 6)
+    if (RIJAppSetting.b() == 6)
     {
       mVideoAutoPlaySettingVideoFlow = RIJAppSetting.a(this.mChannelFrom);
       if ("2".equals(mVideoAutoPlaySettingVideoFlow)) {
@@ -254,7 +254,7 @@ public class VideoAutoPlayController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoAutoPlayController
  * JD-Core Version:    0.7.0.1
  */

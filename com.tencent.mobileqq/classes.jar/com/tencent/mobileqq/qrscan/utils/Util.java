@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qrscan.api.IMiniCodeApi;
-import com.tencent.mobileqq.qrscan.api.IQRScanTempApi;
+import com.tencent.mobileqq.qrscan.api.IQRScanAbilityApi;
 import com.tencent.mobileqq.utils.AudioUtil;
 import com.tencent.mobileqq.utils.BasePhotoUtils;
 import com.tencent.qphone.base.util.MD5;
@@ -163,14 +163,14 @@ public class Util
   
   public static void a(AppRuntime paramAppRuntime)
   {
-    if ((!((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).isRingerVibrate(paramAppRuntime)) && (!((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).isRingerSilent(paramAppRuntime)) && (!((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).isRingEqualsZero(paramAppRuntime))) {
-      AudioUtil.b(2131230765, false);
+    if ((!((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).isRingerVibrate(paramAppRuntime)) && (!((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).isRingerSilent(paramAppRuntime)) && (!((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).isRingEqualsZero(paramAppRuntime))) {
+      AudioUtil.b(2131230835, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.utils.Util
  * JD-Core Version:    0.7.0.1
  */

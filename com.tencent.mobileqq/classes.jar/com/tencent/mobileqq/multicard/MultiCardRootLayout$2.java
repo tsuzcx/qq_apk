@@ -13,22 +13,22 @@ class MultiCardRootLayout$2
   public boolean a(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
+    if (MultiCardRootLayout.b(this.a) != null)
     {
-      MultiCardRootLayout.MultiCardRootLayoutListener localMultiCardRootLayoutListener = (MultiCardRootLayout.MultiCardRootLayoutListener)MultiCardRootLayout.a(this.a).get();
+      MultiCardRootLayout.MultiCardRootLayoutListener localMultiCardRootLayoutListener = (MultiCardRootLayout.MultiCardRootLayoutListener)MultiCardRootLayout.b(this.a).get();
       if ((localMultiCardRootLayoutListener != null) && (localMultiCardRootLayoutListener.a(i))) {
         return true;
       }
     }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
+    if (MultiCardRootLayout.c(this.a) != null) {
+      MultiCardRootLayout.c(this.a).onTouchEvent(paramMotionEvent);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRootLayout.2
  * JD-Core Version:    0.7.0.1
  */

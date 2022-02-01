@@ -10,12 +10,12 @@ class SwiftBrowserScreenShotHandler$6$1
   
   public void run()
   {
-    SwiftBrowserScreenShotHandler.a(this.a.this$0).a().dismiss();
+    SwiftBrowserScreenShotHandler.a(this.a.this$0).o().dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.6.1
  * JD-Core Version:    0.7.0.1
  */

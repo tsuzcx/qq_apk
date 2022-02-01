@@ -18,9 +18,9 @@ public class BaseFrameBusiness
 {
   public void a() {}
   
-  public void a(int paramInt) {}
-  
   public void a(FrameFragment paramFrameFragment) {}
+  
+  public void a(FrameFragment paramFrameFragment, int paramInt) {}
   
   public void a(FrameFragment paramFrameFragment, int paramInt1, int paramInt2) {}
   
@@ -36,10 +36,7 @@ public class BaseFrameBusiness
   
   public void a(AppRuntime paramAppRuntime, SparseArray<TabDragAnimationView> paramSparseArray, int paramInt) {}
   
-  public boolean a(FrameFragment paramFrameFragment)
-  {
-    return false;
-  }
+  public void a(boolean paramBoolean) {}
   
   public boolean a(AppRuntime paramAppRuntime)
   {
@@ -56,15 +53,20 @@ public class BaseFrameBusiness
   
   public void d(FrameFragment paramFrameFragment) {}
   
-  public void e(FrameFragment paramFrameFragment) {}
+  public boolean e(FrameFragment paramFrameFragment)
+  {
+    return false;
+  }
   
   public void f(FrameFragment paramFrameFragment) {}
   
   public void g(FrameFragment paramFrameFragment) {}
+  
+  public void h(FrameFragment paramFrameFragment) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.BaseFrameBusiness
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class TagAdapter$2
   public void onClick(View paramView)
   {
     if (TagAdapter.a(this.a) != null) {
-      TagAdapter.a(this.a).f();
+      TagAdapter.a(this.a).bv_();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

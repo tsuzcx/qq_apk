@@ -29,7 +29,7 @@ class Conversation$TPHInCon
       return;
     }
     FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((Conversation.a(localConversation) != null) && (localFileMsg != null))
+    if ((Conversation.i(localConversation) != null) && (localFileMsg != null))
     {
       if (TextUtils.isEmpty(localFileMsg.mUin)) {
         return;
@@ -51,7 +51,7 @@ class Conversation$TPHInCon
       {
         i = 1;
       }
-      if ((i != 0) || (((k == 1003) || (k == 2003)) && ((localFileMsg.fileType == 2) || (localConversation.e))))
+      if ((i != 0) || (((k == 1003) || (k == 2003)) && ((localFileMsg.fileType == 2) || (localConversation.C))))
       {
         localConversation.a(8, localFileMsg.mUin, -2147483648);
         if (QLog.isColorLevel()) {
@@ -63,7 +63,7 @@ class Conversation$TPHInCon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.TPHInCon
  * JD-Core Version:    0.7.0.1
  */

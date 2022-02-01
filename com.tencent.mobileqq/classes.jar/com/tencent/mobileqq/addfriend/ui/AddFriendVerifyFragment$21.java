@@ -31,7 +31,7 @@ class AddFriendVerifyFragment$21
   
   public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList<AddBatchPhoneFriendResult> paramArrayList)
   {
-    if (AddFriendVerifyFragment.b(this.a)) {
+    if (AddFriendVerifyFragment.k(this.a)) {
       return;
     }
     Object localObject;
@@ -52,28 +52,28 @@ class AddFriendVerifyFragment$21
     }
     if (paramBoolean)
     {
-      if (AddFriendVerifyFragment.a(this.a) != null) {
-        AddFriendVerifyFragment.a(this.a).dismiss();
+      if (AddFriendVerifyFragment.n(this.a) != null) {
+        AddFriendVerifyFragment.n(this.a).dismiss();
       }
-      QQToast.a(this.a.getActivity(), 2, 2131718752, 0).b(this.a.getQBaseActivity().getTitleBarHeight());
+      QQToast.makeText(this.a.getActivity(), 2, 2131916258, 0).show(this.a.getQBaseActivity().getTitleBarHeight());
       localObject = new Intent();
       ((Intent)localObject).putExtra("result", paramArrayList);
       this.a.getActivity().setResult(-1, (Intent)localObject);
       this.a.getActivity().finish();
       return;
     }
-    if (AddFriendVerifyFragment.a(this.a) != null) {
-      AddFriendVerifyFragment.a(this.a).dismiss();
+    if (AddFriendVerifyFragment.n(this.a) != null) {
+      AddFriendVerifyFragment.n(this.a).dismiss();
     }
-    AddFriendVerifyFragment.b(this.a).clear();
-    QQToast.a(this.a.getActivity(), 1, 2131718220, 0).b(this.a.getQBaseActivity().getTitleBarHeight());
+    AddFriendVerifyFragment.s(this.a).clear();
+    QQToast.makeText(this.a.getActivity(), 1, 2131915702, 0).show(this.a.getQBaseActivity().getTitleBarHeight());
     this.a.getActivity().setResult(0);
     this.a.getActivity().finish();
   }
   
   protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle)
   {
-    if (AddFriendVerifyFragment.b(this.a)) {
+    if (AddFriendVerifyFragment.k(this.a)) {
       return;
     }
     Object localObject = "";
@@ -83,7 +83,7 @@ class AddFriendVerifyFragment$21
       AddFriendVerifyFragment.a(this.a, paramBundle);
       localObject = paramBundle.getString("security_check_url", "");
       str = paramBundle.getString("security_check_buffer", "");
-      ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).openSecCheckWebForFragment(AddFriendVerifyFragment.a(this.a), this.a.getActivity(), this.a, 1004, (String)localObject, str);
+      ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).openSecCheckWebForFragment(AddFriendVerifyFragment.f(this.a), this.a.getActivity(), this.a, 1004, (String)localObject, str);
       paramBundle = (Bundle)localObject;
     }
     else
@@ -112,7 +112,7 @@ class AddFriendVerifyFragment$21
         return;
       }
       if (paramBoolean) {
-        if ((!((IAddFriendApi)QRoute.api(IAddFriendApi.class)).shouldUseLocalRemark(AddFriendVerifyFragment.a(this.a))) && (this.a.a == null))
+        if ((!((IAddFriendApi)QRoute.api(IAddFriendApi.class)).shouldUseLocalRemark(AddFriendVerifyFragment.m(this.a))) && (this.a.e == null))
         {
           if (QLog.isColorLevel())
           {
@@ -121,13 +121,13 @@ class AddFriendVerifyFragment$21
             paramString1.append(paramString2);
             QLog.d("IphoneTitleBarFragment", 2, paramString1.toString());
           }
-          AddFriendVerifyFragment.b(this.a).setText(paramString2);
+          AddFriendVerifyFragment.o(this.a).setText(paramString2);
         }
       }
     }
     try
     {
-      AddFriendVerifyFragment.b(this.a).setSelection(AddFriendVerifyFragment.b(this.a).getText().length());
+      AddFriendVerifyFragment.o(this.a).setSelection(AddFriendVerifyFragment.o(this.a).getText().length());
     }
     catch (IndexOutOfBoundsException paramString1)
     {
@@ -137,31 +137,31 @@ class AddFriendVerifyFragment$21
     if (QLog.isColorLevel()) {
       QLog.d("IphoneTitleBarFragment", 2, "onGetAutoInfo | IndexOutOfBoundsException");
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
-      paramString1 = AddFriendVerifyFragment.a(this.a);
+      paramString1 = AddFriendVerifyFragment.p(this.a);
       paramString2 = new StringBuilder();
-      paramString2.append(this.a.getResources().getString(2131693375));
-      paramString2.append(AddFriendVerifyFragment.b(this.a).getText().toString());
+      paramString2.append(this.a.getResources().getString(2131890924));
+      paramString2.append(AddFriendVerifyFragment.o(this.a).getText().toString());
       paramString1.setContentDescription(paramString2.toString());
     }
     AddFriendVerifyFragment.a(this.a, paramInt);
-    AddFriendVerifyFragment.c(this.a).setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(AddFriendVerifyFragment.a(this.a), AddFriendVerifyFragment.b(this.a)));
+    AddFriendVerifyFragment.r(this.a).setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(AddFriendVerifyFragment.f(this.a), AddFriendVerifyFragment.q(this.a)));
     return;
     AddFriendVerifyFragment.a(this.a, 0);
-    AddFriendVerifyFragment.c(this.a).setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(AddFriendVerifyFragment.a(this.a), AddFriendVerifyFragment.b(this.a)));
+    AddFriendVerifyFragment.r(this.a).setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(AddFriendVerifyFragment.f(this.a), AddFriendVerifyFragment.q(this.a)));
   }
   
   protected void onGetInfoWithOpenId(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (AddFriendVerifyFragment.b(this.a)) {
+    if (AddFriendVerifyFragment.k(this.a)) {
       return;
     }
     if ((paramBoolean) && (TextUtils.equals(paramString1, AddFriendVerifyFragment.a(this.a))) && (!TextUtils.isEmpty(paramString2)))
     {
-      AddFriendVerifyFragment.a(this.a).setText(paramString2);
-      if (AppSetting.d) {
-        AddFriendVerifyFragment.a(this.a).setContentDescription(paramString2);
+      AddFriendVerifyFragment.b(this.a).setText(paramString2);
+      if (AppSetting.e) {
+        AddFriendVerifyFragment.b(this.a).setContentDescription(paramString2);
       }
     }
   }
@@ -180,18 +180,17 @@ class AddFriendVerifyFragment$21
           if (paramBoolean2)
           {
             paramString = this.a;
-            paramString.a(AddFriendVerifyFragment.a(paramString).getText().toString().trim(), paramBundle.getByteArray("sig"), paramBundle.getString("security_ticket", ""));
+            paramString.a(AddFriendVerifyFragment.c(paramString).getText().toString().trim(), paramBundle.getByteArray("sig"), paramBundle.getString("security_ticket", ""));
             return;
           }
           if ((paramBundle.getString("ErrorString") != null) && (!paramBundle.getString("ErrorString").trim().equals(""))) {
             paramString = paramBundle.getString("ErrorString");
           } else {
-            paramString = this.a.getString(2131690016);
+            paramString = this.a.getString(2131886665);
           }
-          QQToast.a(this.a.getActivity(), 1, paramString, 1).b(this.a.getQBaseActivity().getTitleBarHeight());
+          QQToast.makeText(this.a.getActivity(), 1, paramString, 1).show(this.a.getQBaseActivity().getTitleBarHeight());
           return;
         }
-        Object localObject;
         if (paramBundle.getInt("resultCode") == 0)
         {
           i = paramBundle.getInt("friend_setting");
@@ -201,37 +200,37 @@ class AddFriendVerifyFragment$21
             {
               if (i != 100)
               {
-                if (AddFriendVerifyFragment.a(this.a) != null)
+                if (AddFriendVerifyFragment.n(this.a) != null)
                 {
-                  AddFriendVerifyFragment.a(this.a).cancel();
+                  AddFriendVerifyFragment.n(this.a).cancel();
                   AddFriendVerifyFragment.a(this.a, null);
                 }
-                QQToast.a(this.a.getActivity(), 2, 2131718219, 0).b(this.a.getQBaseActivity().getTitleBarHeight());
-                this.a.a();
+                QQToast.makeText(this.a.getActivity(), 2, 2131915701, 0).show(this.a.getQBaseActivity().getTitleBarHeight());
+                this.a.b();
               }
             }
             else
             {
-              if (AddFriendVerifyFragment.a(this.a) != null)
+              if (AddFriendVerifyFragment.n(this.a) != null)
               {
-                AddFriendVerifyFragment.a(this.a).cancel();
+                AddFriendVerifyFragment.n(this.a).cancel();
                 AddFriendVerifyFragment.a(this.a, null);
               }
-              QQToast.a(this.a.getActivity(), 2, 2131718219, 0).b(this.a.getQBaseActivity().getTitleBarHeight());
-              this.a.a();
+              QQToast.makeText(this.a.getActivity(), 2, 2131915701, 0).show(this.a.getQBaseActivity().getTitleBarHeight());
+              this.a.b();
               return;
             }
           }
-          if (AddFriendVerifyFragment.a(this.a) != null)
+          if (AddFriendVerifyFragment.n(this.a) != null)
           {
-            AddFriendVerifyFragment.a(this.a).cancel();
+            AddFriendVerifyFragment.n(this.a).cancel();
             AddFriendVerifyFragment.a(this.a, null);
           }
-          QQToast.a(this.a.getActivity(), 2, 2131689599, 0).b(this.a.getQBaseActivity().getTitleBarHeight());
-          if (Utils.b(paramString))
+          QQToast.makeText(this.a.getActivity(), 2, 2131886209, 0).show(this.a.getQBaseActivity().getTitleBarHeight());
+          if (Utils.c(paramString))
           {
-            localObject = AddFriendVerifyFragment.b(this.a).getText().toString();
-            String str = AddFriendVerifyFragment.a(this.a).getText().toString();
+            localObject = AddFriendVerifyFragment.o(this.a).getText().toString();
+            String str = AddFriendVerifyFragment.b(this.a).getText().toString();
             paramBundle = (Bundle)localObject;
             if (TextUtils.isEmpty((CharSequence)localObject)) {
               paramBundle = str;
@@ -244,55 +243,59 @@ class AddFriendVerifyFragment$21
             paramString.extra().putAll(((Intent)localObject).getExtras());
             paramString.setFlags(((Intent)localObject).getFlags());
             QRoute.startUri(paramString);
-            ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).sendAddFriendNoticeForBaby(AddFriendVerifyFragment.a(this.a), this.a.getActivity().getIntent());
+            ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).sendAddFriendNoticeForBaby(AddFriendVerifyFragment.f(this.a), this.a.getActivity().getIntent());
             return;
           }
-          this.a.a();
+          this.a.b();
           return;
         }
-        if (AddFriendVerifyFragment.a(this.a) != null)
+        if (AddFriendVerifyFragment.n(this.a) != null)
         {
-          AddFriendVerifyFragment.a(this.a).cancel();
+          AddFriendVerifyFragment.n(this.a).cancel();
           AddFriendVerifyFragment.a(this.a, null);
         }
         int i = paramBundle.getInt("error_code", 0);
-        paramString = paramBundle.getString("ErrorString");
-        if (i == 167)
-        {
-          AddFriendVerifyFragment.a(this.a, paramString);
-          return;
-        }
+        Object localObject = paramBundle.getString("ErrorString");
         if (i == 168)
         {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("add friend response error and ErroString = ");
-            ((StringBuilder)localObject).append(paramString);
-            QLog.d("IphoneTitleBarFragment", 2, ((StringBuilder)localObject).toString());
-          }
           AddFriendVerifyFragment.a(this.a, paramBundle.getString("error_tips_wording"), paramBundle.getString("error_tips_cancel_wording"), paramBundle.getString("error_tips_jump_btn_wording"), paramBundle.getString("error_tips_h5_url"), paramBundle.getString("error_tips_mini_app_url"));
+          return;
         }
-      }
-      else
-      {
-        if (AddFriendVerifyFragment.a(this.a) != null)
+        if (i == 167)
         {
-          AddFriendVerifyFragment.a(this.a).cancel();
-          AddFriendVerifyFragment.a(this.a, null);
+          AddFriendVerifyFragment.a(this.a, (String)localObject);
+          return;
         }
-        paramString = this.a;
-        AddFriendVerifyFragment.b(paramString, paramString.getString(2131718220));
-        if (QLog.isColorLevel()) {
-          QLog.d("IphoneTitleBarFragment", 2, "add friend response error and isSuccuss = NO");
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("add friend response error and ErroString = ");
+          paramString.append((String)localObject);
+          QLog.d("IphoneTitleBarFragment", 2, paramString.toString());
         }
+        paramString = (String)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramString = this.a.getString(2131915702);
+        }
+        AddFriendVerifyFragment.b(this.a, paramString);
+        return;
+      }
+      if (AddFriendVerifyFragment.n(this.a) != null)
+      {
+        AddFriendVerifyFragment.n(this.a).cancel();
+        AddFriendVerifyFragment.a(this.a, null);
+      }
+      paramString = this.a;
+      AddFriendVerifyFragment.b(paramString, paramString.getString(2131915702));
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarFragment", 2, "add friend response error and isSuccuss = NO");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.21
  * JD-Core Version:    0.7.0.1
  */

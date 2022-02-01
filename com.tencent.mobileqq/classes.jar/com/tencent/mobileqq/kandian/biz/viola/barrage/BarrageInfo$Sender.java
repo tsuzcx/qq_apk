@@ -9,15 +9,15 @@ public class BarrageInfo$Sender
 {
   public static final Parcelable.Creator<Sender> CREATOR = new BarrageInfo.Sender.1();
   public String a;
-  public boolean a;
   public String b;
   public String c;
+  public boolean d;
   
   public BarrageInfo$Sender() {}
   
   protected BarrageInfo$Sender(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     int i = paramParcel.readByte();
@@ -25,7 +25,7 @@ public class BarrageInfo$Sender
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.d = bool;
   }
   
   public int describeContents()
@@ -37,7 +37,7 @@ public class BarrageInfo$Sender
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Sender{avatarUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", name='");
     localStringBuilder.append(this.b);
@@ -46,7 +46,7 @@ public class BarrageInfo$Sender
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isAuthor='");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -54,15 +54,15 @@ public class BarrageInfo$Sender
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeByte((byte)this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageInfo.Sender
  * JD-Core Version:    0.7.0.1
  */

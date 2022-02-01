@@ -9,28 +9,28 @@ class PickerContainer$4
   
   public void run()
   {
-    if ((PickerContainer.a(this.this$0) != null) && (PickerContainer.a(this.this$0).a(this.a)))
+    if ((PickerContainer.d(this.this$0) != null) && (PickerContainer.d(this.this$0).a(this.a)))
     {
-      PickerContainer.a(this.this$0).stop();
-      PickerContainer.a(this.this$0).a(PickerContainer.b(this.this$0) ^ true);
-      PickerContainer.a(this.this$0).a(1);
-      PickerContainer.a(this.this$0).start();
+      PickerContainer.d(this.this$0).stop();
+      PickerContainer.d(this.this$0).a(PickerContainer.e(this.this$0) ^ true);
+      PickerContainer.d(this.this$0).a(1);
+      PickerContainer.d(this.this$0).start();
     }
-    if (PickerContainer.a(this.this$0) != null) {
-      PickerContainer.a(this.this$0).setVisibility(0);
+    if (PickerContainer.f(this.this$0) != null) {
+      PickerContainer.f(this.this$0).setVisibility(0);
     }
-    if ((!PickerContainer.b(this.this$0)) && (PickerContainer.a(this.this$0) != null))
+    if ((!PickerContainer.e(this.this$0)) && (PickerContainer.g(this.this$0) != null))
     {
-      PickerContainer.a(this.this$0).stop();
-      PickerContainer.a(this.this$0).a(true);
-      PickerContainer.a(this.this$0).a(1);
-      PickerContainer.a(this.this$0).start();
+      PickerContainer.g(this.this$0).stop();
+      PickerContainer.g(this.this$0).a(true);
+      PickerContainer.g(this.this$0).a(1);
+      PickerContainer.g(this.this$0).start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.PickerContainer.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.qwallet.hb.grap.draw.impl;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -13,8 +15,8 @@ import java.util.List;
 public class DoodleView
   extends View
 {
-  private DoodleView.DoodleViewListener jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDoodleView$DoodleViewListener;
-  private LineLayer jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+  private LineLayer a;
+  private DoodleView.DoodleViewListener b;
   
   public DoodleView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,10 +25,10 @@ public class DoodleView
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer = new LineLayer(this);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer.a();
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer.a(new DoodleView.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer.a(LineLayer.a);
+    this.a = new LineLayer(this);
+    this.a.a();
+    this.a.a(new DoodleView.1(this));
+    this.a.a(LineLayer.d);
     super.requestLayout();
   }
   
@@ -35,76 +37,96 @@ public class DoodleView
     LineLayer localLineLayer;
     if (!paramBoolean)
     {
-      localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+      localLineLayer = this.a;
       if (localLineLayer != null) {
-        return localLineLayer.b();
+        return localLineLayer.j();
       }
     }
     else
     {
-      localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+      localLineLayer = this.a;
       if (localLineLayer != null) {
-        return localLineLayer.c();
+        return localLineLayer.k();
       }
     }
     return 0;
   }
   
-  public DoodleItem a(boolean paramBoolean)
+  public Bitmap a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer == null) {
-      return null;
+    int i = getWidth();
+    i = (int)(getHeight() * 1.0F / i * paramInt);
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramInt, i, Bitmap.Config.ARGB_8888);
+      if (localBitmap == null) {
+        return null;
+      }
+      Canvas localCanvas = new Canvas(localBitmap);
+      if (this.a != null) {
+        this.a.d(localCanvas);
+      }
+      return localBitmap;
     }
-    DoodleItem localDoodleItem = new DoodleItem();
-    localDoodleItem.a(a(), paramBoolean, true);
-    localDoodleItem.a().a(a());
-    return localDoodleItem;
-  }
-  
-  public DoodleParam a()
-  {
-    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
-    if (localLineLayer == null) {
-      return null;
-    }
-    return localLineLayer.a();
-  }
-  
-  public List<PathData> a()
-  {
-    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
-    if (localLineLayer != null) {
-      return localLineLayer.a();
-    }
+    catch (OutOfMemoryError|Exception localOutOfMemoryError) {}
     return null;
   }
   
   public void a()
   {
-    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+    LineLayer localLineLayer = this.a;
     if (localLineLayer != null) {
-      localLineLayer.b();
+      localLineLayer.g();
     }
   }
   
   public void a(DoodleView.DoodleViewListener paramDoodleViewListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDoodleView$DoodleViewListener = paramDoodleViewListener;
+    this.b = paramDoodleViewListener;
     b();
   }
   
-  public void a(boolean paramBoolean)
+  public DoodleItem b(boolean paramBoolean)
   {
-    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+    if (this.a == null) {
+      return null;
+    }
+    DoodleItem localDoodleItem = new DoodleItem();
+    localDoodleItem.a(getLinePathList(), paramBoolean, true);
+    localDoodleItem.a().a(getDoodleParam());
+    return localDoodleItem;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    LineLayer localLineLayer = this.a;
     if (localLineLayer != null) {
       localLineLayer.a(paramBoolean);
     }
     super.invalidate();
   }
   
+  public DoodleParam getDoodleParam()
+  {
+    LineLayer localLineLayer = this.a;
+    if (localLineLayer == null) {
+      return null;
+    }
+    return localLineLayer.i();
+  }
+  
+  public List<PathData> getLinePathList()
+  {
+    LineLayer localLineLayer = this.a;
+    if (localLineLayer != null) {
+      return localLineLayer.h();
+    }
+    return null;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
-    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+    LineLayer localLineLayer = this.a;
     if (localLineLayer != null) {
       localLineLayer.a(paramCanvas);
     }
@@ -117,7 +139,7 @@ public class DoodleView
       if (paramInt2 <= 0) {
         return;
       }
-      LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+      LineLayer localLineLayer = this.a;
       if (localLineLayer != null) {
         localLineLayer.a(paramInt1, paramInt2);
       }
@@ -126,7 +148,7 @@ public class DoodleView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+    LineLayer localLineLayer = this.a;
     if (localLineLayer != null) {
       return localLineLayer.a(paramMotionEvent);
     }
@@ -141,23 +163,23 @@ public class DoodleView
     }
     if (paramInt != 0)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
-      if ((paramView != null) && (paramView.b() == 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer.a(true);
+      paramView = this.a;
+      if ((paramView != null) && (paramView.j() == 0)) {
+        this.a.a(true);
       }
     }
     else
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+      paramView = this.a;
       if (paramView != null) {
-        paramView.d();
+        paramView.e();
       }
     }
   }
   
   public void setLineColor(int paramInt)
   {
-    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+    LineLayer localLineLayer = this.a;
     if (localLineLayer != null) {
       localLineLayer.a(paramInt);
     }
@@ -165,7 +187,7 @@ public class DoodleView
   
   public void setLineTexture(int paramInt)
   {
-    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLineLayer;
+    LineLayer localLineLayer = this.a;
     if (localLineLayer != null) {
       localLineLayer.b(paramInt);
     }
@@ -173,7 +195,7 @@ public class DoodleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DoodleView
  * JD-Core Version:    0.7.0.1
  */

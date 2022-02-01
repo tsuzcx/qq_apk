@@ -35,6 +35,14 @@ public abstract interface IResourceUtil
   
   public abstract int getNearbyNowliveShortvideoLike();
   
+  public abstract int getNearbyTabColor(boolean paramBoolean);
+  
+  public abstract int getNearbyTabIconId();
+  
+  public abstract int getNearbyTabItem();
+  
+  public abstract int getNearbyTabNameId();
+  
   public abstract int getNearbyVideoPlayerErrorLayout();
   
   public abstract int getOutsideErrorView();
@@ -67,7 +75,7 @@ public abstract interface IResourceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.IResourceUtil
  * JD-Core Version:    0.7.0.1
  */

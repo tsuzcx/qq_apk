@@ -18,15 +18,15 @@ class ArkAppDownloadModule$5$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ArkAppDownloadModule.a(this.a.this$0, true);
-    WadlProxyServiceUtil.a().b(this.a.jdField_a_of_type_Int, this.a.b);
-    ReportController.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.b, "");
+    WadlProxyServiceUtil.a().b(this.a.c, this.a.d);
+    ReportController.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.d, "");
     if ((paramDialogInterface instanceof QQCustomDialog))
     {
       boolean bool = ((QQCustomDialog)paramDialogInterface).getCheckBoxState();
-      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      if (this.a.e != null) {
         try
         {
-          this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.c, bool ^ true).apply();
+          this.a.e.edit().putBoolean(this.a.f, bool ^ true).apply();
           return;
         }
         catch (Exception paramDialogInterface)
@@ -39,7 +39,7 @@ class ArkAppDownloadModule$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.5.1
  * JD-Core Version:    0.7.0.1
  */

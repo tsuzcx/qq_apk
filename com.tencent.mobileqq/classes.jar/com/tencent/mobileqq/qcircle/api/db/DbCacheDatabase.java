@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.qcircle.api.db.util.EncryptUtil;
 import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -20,39 +20,37 @@ public class DbCacheDatabase
   extends SQLiteOpenHelper
   implements Sessional
 {
-  private static HashMap<String, DbCacheDatabase> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   public static volatile boolean a = false;
-  private static boolean d = true;
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private EncryptUtil jdField_a_of_type_ComTencentMobileqqQcircleApiDbUtilEncryptUtil;
-  private String jdField_a_of_type_JavaLangString;
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private int jdField_b_of_type_Int = 1;
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private boolean c = true;
+  private static boolean i = true;
+  private static HashMap<String, DbCacheDatabase> j = new HashMap();
+  private String b;
+  private HashSet<Integer> c = new HashSet();
+  private Context d = null;
+  private volatile boolean e = false;
+  private boolean f = true;
+  private int g = 0;
+  private EncryptUtil h;
   
   @TargetApi(11)
   protected DbCacheDatabase(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt1, int paramInt2, DatabaseErrorHandler paramDatabaseErrorHandler)
   {
     super(paramContext, paramString, paramCursorFactory, paramInt1, paramDatabaseErrorHandler);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqQcircleApiDbUtilEncryptUtil = new EncryptUtil(a(false));
-    jdField_a_of_type_Boolean = QCircleConfigHelper.a("QZoneSetting", "enablewal", Boolean.valueOf(d)).booleanValue();
+    this.b = paramString;
+    this.d = paramContext;
+    this.h = new EncryptUtil(a(false));
+    a = QCircleConfigHelper.a("QZoneSetting", "enablewal", Boolean.valueOf(i)).booleanValue();
   }
   
   public static DbCacheDatabase a(Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
     try
     {
-      DbCacheDatabase localDbCacheDatabase2 = (DbCacheDatabase)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      DbCacheDatabase localDbCacheDatabase2 = (DbCacheDatabase)j.get(paramString);
       DbCacheDatabase localDbCacheDatabase1 = localDbCacheDatabase2;
       if (localDbCacheDatabase2 == null)
       {
         localDbCacheDatabase1 = new DbCacheDatabase(paramContext, paramString, null, paramInt1, paramInt2, new DbCacheDatabase.1());
-        jdField_a_of_type_JavaUtilHashMap.put(paramString, localDbCacheDatabase1);
+        j.put(paramString, localDbCacheDatabase1);
       }
       return localDbCacheDatabase1;
     }
@@ -63,12 +61,12 @@ public class DbCacheDatabase
   {
     try
     {
-      DbCacheExceptionHandler.a().a(paramThrowable, this.jdField_a_of_type_JavaLangString);
+      DbCacheExceptionHandler.a().a(paramThrowable, this.b);
       return;
     }
     catch (Throwable paramThrowable)
     {
-      RFLog.e("QCircleDbCacheDatabase", RFLog.USR, new Object[] { "handleException error", paramThrowable });
+      QLog.e("QCircleDbCacheDatabase", 1, "handleException error", paramThrowable);
     }
   }
   
@@ -94,13 +92,13 @@ public class DbCacheDatabase
           localObject5 = localObject1;
           try
           {
-            if (!this.jdField_b_of_type_Boolean) {
+            if (!this.e) {
               break;
             }
             if (localObject1 != null) {
               localObject1.close();
             }
-            a();
+            b();
             if (paramBoolean) {}
             try
             {
@@ -114,11 +112,11 @@ public class DbCacheDatabase
             {
               a(localThrowable2);
             }
-            this.jdField_b_of_type_Boolean = false;
+            this.e = false;
             localObject6 = localObject1;
           }
           finally {}
-          a();
+          b();
         }
         finally
         {
@@ -146,10 +144,10 @@ public class DbCacheDatabase
         a(localThrowable3);
       }
       localObject7 = localObject4;
-    } while (this.jdField_b_of_type_Boolean);
+    } while (this.e);
     if (localObject7 != null)
     {
-      paramBoolean = jdField_a_of_type_Boolean;
+      paramBoolean = a;
       if (paramBoolean) {
         try
         {
@@ -157,16 +155,16 @@ public class DbCacheDatabase
         }
         catch (Throwable localThrowable1)
         {
-          jdField_a_of_type_Boolean = false;
+          a = false;
           a(localThrowable1);
         }
       }
     }
     return localObject7;
     label174:
-    if (this.jdField_b_of_type_Boolean)
+    if (this.e)
     {
-      a();
+      b();
       if (paramBoolean) {}
       try
       {
@@ -177,7 +175,7 @@ public class DbCacheDatabase
         a(localThrowable4);
       }
       getReadableDatabase();
-      this.jdField_b_of_type_Boolean = false;
+      this.e = false;
     }
     throw localThrowable1;
     for (;;)
@@ -188,70 +186,67 @@ public class DbCacheDatabase
   
   public EncryptUtil a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQcircleApiDbUtilEncryptUtil;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContext.deleteDatabase(this.jdField_a_of_type_JavaLangString);
-    RFLog.e("QCircleDbCacheDatabase", RFLog.USR, new Object[] { Integer.valueOf(RFLog.USR), "detele db:", this.jdField_a_of_type_JavaLangString });
+    return this.h;
   }
   
   public void attach(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramInt))) {
-        this.jdField_a_of_type_Int += 1;
+      if (this.c.add(Integer.valueOf(paramInt))) {
+        this.g += 1;
       }
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[DB]");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("  attach sessionId:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("mAttachCount:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      RFLog.i("QCircleDbCacheDatabase", i, localStringBuilder.toString());
+      localStringBuilder.append(this.g);
+      QLog.i("QCircleDbCacheDatabase", 1, localStringBuilder.toString());
       return;
     }
     finally {}
+  }
+  
+  public void b()
+  {
+    this.d.deleteDatabase(this.b);
+    QLog.e("QCircleDbCacheDatabase", 1, new Object[] { Integer.valueOf(1), "detele db:", this.b });
   }
   
   public void detach(int paramInt)
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(paramInt));
-      int j = 0;
-      int i = j;
+      boolean bool = this.c.remove(Integer.valueOf(paramInt));
+      int m = 0;
+      int k = m;
       if (bool)
       {
-        int k = this.jdField_a_of_type_Int - 1;
-        this.jdField_a_of_type_Int = k;
-        i = j;
-        if (k == 0) {
-          i = 1;
+        int n = this.g - 1;
+        this.g = n;
+        k = m;
+        if (n == 0) {
+          k = 1;
         }
       }
-      j = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[DB]");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("  detach sessionId:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("mAttachCount:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      RFLog.i("QCircleDbCacheDatabase", j, localStringBuilder.toString());
-      if ((i != 0) && (this.c))
+      localStringBuilder.append(this.g);
+      QLog.i("QCircleDbCacheDatabase", 1, localStringBuilder.toString());
+      if ((k != 0) && (this.f))
       {
-        paramInt = RFLog.USR;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[DB] close ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(",mAttachCount:");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
-        RFLog.i("QCircleDbCacheDatabase", paramInt, localStringBuilder.toString());
+        localStringBuilder.append(this.g);
+        QLog.i("QCircleDbCacheDatabase", 1, localStringBuilder.toString());
         close();
       }
       return;
@@ -264,42 +259,34 @@ public class DbCacheDatabase
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 203	com/tencent/mobileqq/qcircle/api/db/DbCacheDatabase:close	()V
+    //   1: invokevirtual 205	com/tencent/mobileqq/qcircle/api/db/DbCacheDatabase:close	()V
     //   4: aload_0
-    //   5: invokespecial 208	java/lang/Object:finalize	()V
+    //   5: invokespecial 210	java/lang/Object:finalize	()V
     //   8: return
     //   9: astore_1
-    //   10: goto +28 -> 38
+    //   10: goto +16 -> 26
     //   13: astore_1
-    //   14: ldc 116
-    //   16: getstatic 121	com/tencent/biz/richframework/delegate/impl/RFLog:USR	I
-    //   19: iconst_2
-    //   20: anewarray 123	java/lang/Object
-    //   23: dup
-    //   24: iconst_0
-    //   25: ldc 210
-    //   27: aastore
-    //   28: dup
-    //   29: iconst_1
-    //   30: aload_1
-    //   31: aastore
-    //   32: invokestatic 129	com/tencent/biz/richframework/delegate/impl/RFLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   35: goto -31 -> 4
-    //   38: aload_0
-    //   39: invokespecial 208	java/lang/Object:finalize	()V
-    //   42: goto +5 -> 47
-    //   45: aload_1
-    //   46: athrow
-    //   47: goto -2 -> 45
+    //   14: ldc 120
+    //   16: iconst_1
+    //   17: ldc 212
+    //   19: aload_1
+    //   20: invokestatic 127	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   23: goto -19 -> 4
+    //   26: aload_0
+    //   27: invokespecial 210	java/lang/Object:finalize	()V
+    //   30: goto +5 -> 35
+    //   33: aload_1
+    //   34: athrow
+    //   35: goto -2 -> 33
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	50	0	this	DbCacheDatabase
+    //   0	38	0	this	DbCacheDatabase
     //   9	1	1	localObject	Object
-    //   13	33	1	localException	java.lang.Exception
+    //   13	21	1	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
     //   0	4	9	finally
-    //   14	35	9	finally
+    //   14	23	9	finally
     //   0	4	13	java/lang/Exception
   }
   
@@ -309,161 +296,153 @@ public class DbCacheDatabase
   
   public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    int i = RFLog.USR;
     paramSQLiteDatabase = new StringBuilder();
     paramSQLiteDatabase.append("DbCacheDatabase onDowngrade oldVersion:");
     paramSQLiteDatabase.append(paramInt1);
     paramSQLiteDatabase.append(",newVersion=");
     paramSQLiteDatabase.append(paramInt2);
-    RFLog.i("QCircleDbCacheDatabase", i, paramSQLiteDatabase.toString());
-    this.jdField_b_of_type_Boolean = true;
+    QLog.i("QCircleDbCacheDatabase", 1, paramSQLiteDatabase.toString());
+    this.e = true;
   }
   
   public void onOpen(SQLiteDatabase paramSQLiteDatabase)
   {
     super.onOpen(paramSQLiteDatabase);
-    int i;
     Object localObject1;
-    if (RFLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      i = RFLog.CLR;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("[DB]");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append(" onOpen");
-      RFLog.i("QCircleDbCacheDatabase", i, ((StringBuilder)localObject1).toString());
+      QLog.i("QCircleDbCacheDatabase", 2, ((StringBuilder)localObject1).toString());
     }
     for (;;)
     {
+      int k;
       try
       {
         localObject1 = SQLiteDatabase.class.getDeclaredField("mConfigurationLocked");
         ((Field)localObject1).setAccessible(true);
-        Object localObject2 = ((Field)localObject1).get(paramSQLiteDatabase);
-        localObject1 = localObject2.getClass().getDeclaredField("maxSqlCacheSize");
-        ((Field)localObject1).setAccessible(true);
-        ((Field)localObject1).set(localObject2, Integer.valueOf(150));
-        localObject1 = SQLiteDatabase.class.getDeclaredField("mConnectionPoolLocked");
-        ((Field)localObject1).setAccessible(true);
-        Object localObject3 = ((Field)localObject1).get(paramSQLiteDatabase);
-        localObject1 = null;
-        Method[] arrayOfMethod = localObject3.getClass().getDeclaredMethods();
-        int j = arrayOfMethod.length;
-        i = 0;
-        paramSQLiteDatabase = (SQLiteDatabase)localObject1;
-        if (i < j)
-        {
-          paramSQLiteDatabase = arrayOfMethod[i];
-          if (!TextUtils.equals(paramSQLiteDatabase.getName(), "reconfigure")) {
-            break label632;
-          }
+        localObject1 = ((Field)localObject1).get(paramSQLiteDatabase);
+        Object localObject2 = localObject1.getClass().getDeclaredField("maxSqlCacheSize");
+        ((Field)localObject2).setAccessible(true);
+        ((Field)localObject2).set(localObject1, Integer.valueOf(150));
+        localObject2 = SQLiteDatabase.class.getDeclaredField("mConnectionPoolLocked");
+        ((Field)localObject2).setAccessible(true);
+        localObject2 = ((Field)localObject2).get(paramSQLiteDatabase);
+        Method[] arrayOfMethod = localObject2.getClass().getDeclaredMethods();
+        int m = arrayOfMethod.length;
+        k = 0;
+        if (k >= m) {
+          break label605;
+        }
+        paramSQLiteDatabase = arrayOfMethod[k];
+        if (!TextUtils.equals(paramSQLiteDatabase.getName(), "reconfigure")) {
+          break label598;
         }
         if (paramSQLiteDatabase != null)
         {
           paramSQLiteDatabase.setAccessible(true);
-          paramSQLiteDatabase.invoke(localObject3, new Object[] { localObject2 });
-          if (RFLog.isColorLevel())
+          paramSQLiteDatabase.invoke(localObject2, new Object[] { localObject1 });
+          if (QLog.isColorLevel())
           {
-            i = RFLog.CLR;
             paramSQLiteDatabase = new StringBuilder();
             paramSQLiteDatabase.append("[DB]");
-            paramSQLiteDatabase.append(this.jdField_a_of_type_JavaLangString);
+            paramSQLiteDatabase.append(this.b);
             paramSQLiteDatabase.append(" LRU MAX SIZE = ");
-            paramSQLiteDatabase.append(localObject2.getClass().getDeclaredField("maxSqlCacheSize").getInt(localObject2));
-            RFLog.i("QCircleDbCacheDatabase", i, paramSQLiteDatabase.toString());
+            paramSQLiteDatabase.append(localObject1.getClass().getDeclaredField("maxSqlCacheSize").getInt(localObject1));
+            QLog.i("QCircleDbCacheDatabase", 2, paramSQLiteDatabase.toString());
           }
         }
-        else if (RFLog.isColorLevel())
+        else if (QLog.isColorLevel())
         {
-          i = RFLog.CLR;
           paramSQLiteDatabase = new StringBuilder();
           paramSQLiteDatabase.append("[DB]");
-          paramSQLiteDatabase.append(this.jdField_a_of_type_JavaLangString);
+          paramSQLiteDatabase.append(this.b);
           paramSQLiteDatabase.append(" not find reconfigure()");
-          RFLog.i("QCircleDbCacheDatabase", i, paramSQLiteDatabase.toString());
+          QLog.i("QCircleDbCacheDatabase", 2, paramSQLiteDatabase.toString());
           return;
         }
       }
       catch (InvocationTargetException paramSQLiteDatabase)
       {
         paramSQLiteDatabase.printStackTrace();
-        if (RFLog.isColorLevel())
+        if (QLog.isColorLevel())
         {
-          i = RFLog.USR;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("[DB]");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.b);
           ((StringBuilder)localObject1).append("  onOpen");
           ((StringBuilder)localObject1).append(paramSQLiteDatabase.getMessage());
-          RFLog.w("QCircleDbCacheDatabase", i, ((StringBuilder)localObject1).toString());
+          QLog.w("QCircleDbCacheDatabase", 1, ((StringBuilder)localObject1).toString());
           return;
         }
       }
       catch (IllegalAccessException paramSQLiteDatabase)
       {
         paramSQLiteDatabase.printStackTrace();
-        if (RFLog.isColorLevel())
+        if (QLog.isColorLevel())
         {
-          i = RFLog.USR;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("[DB]");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.b);
           ((StringBuilder)localObject1).append("  onOpen");
           ((StringBuilder)localObject1).append(paramSQLiteDatabase.getMessage());
-          RFLog.w("QCircleDbCacheDatabase", i, ((StringBuilder)localObject1).toString());
+          QLog.w("QCircleDbCacheDatabase", 1, ((StringBuilder)localObject1).toString());
           return;
         }
       }
       catch (IllegalArgumentException paramSQLiteDatabase)
       {
         paramSQLiteDatabase.printStackTrace();
-        if (RFLog.isColorLevel())
+        if (QLog.isColorLevel())
         {
-          i = RFLog.USR;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("[DB]");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.b);
           ((StringBuilder)localObject1).append("  onOpen");
           ((StringBuilder)localObject1).append(paramSQLiteDatabase.getMessage());
-          RFLog.w("QCircleDbCacheDatabase", i, ((StringBuilder)localObject1).toString());
+          QLog.w("QCircleDbCacheDatabase", 1, ((StringBuilder)localObject1).toString());
           return;
         }
       }
       catch (NoSuchFieldException paramSQLiteDatabase)
       {
         paramSQLiteDatabase.printStackTrace();
-        if (RFLog.isColorLevel())
+        if (QLog.isColorLevel())
         {
-          i = RFLog.USR;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("[DB]");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.b);
           ((StringBuilder)localObject1).append("  onOpen");
           ((StringBuilder)localObject1).append(paramSQLiteDatabase.getMessage());
-          RFLog.w("QCircleDbCacheDatabase", i, ((StringBuilder)localObject1).toString());
+          QLog.w("QCircleDbCacheDatabase", 1, ((StringBuilder)localObject1).toString());
         }
       }
       return;
-      label632:
-      i += 1;
+      label598:
+      k += 1;
+      continue;
+      label605:
+      paramSQLiteDatabase = null;
     }
   }
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    int i = RFLog.USR;
     paramSQLiteDatabase = new StringBuilder();
     paramSQLiteDatabase.append("DbCacheDatabase onUpgrade oldVersion:");
     paramSQLiteDatabase.append(paramInt1);
     paramSQLiteDatabase.append(",newVersion=");
     paramSQLiteDatabase.append(paramInt2);
-    RFLog.i("QCircleDbCacheDatabase", i, paramSQLiteDatabase.toString());
-    this.jdField_b_of_type_Boolean = true;
+    QLog.i("QCircleDbCacheDatabase", 1, paramSQLiteDatabase.toString());
+    this.e = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.DbCacheDatabase
  * JD-Core Version:    0.7.0.1
  */

@@ -27,17 +27,17 @@ import java.util.Arrays;
 public class TroopMemberNewLevelView
   extends RelativeLayout
 {
-  private static final int[] jdField_c_of_type_ArrayOfInt = { 2130846391, 2130846392, 2130846393, 2130846394, 2130846395, 2130846396, 2130846397, 2130846398, 2130846399, 2130846400, 2130846401 };
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = null;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int[] jdField_b_of_type_ArrayOfInt = null;
-  private int jdField_c_of_type_Int = 0;
+  private static final int[] k = { 2130847864, 2130847865, 2130847866, 2130847867, 2130847868, 2130847869, 2130847870, 2130847871, 2130847872, 2130847873, 2130847874 };
+  private boolean a = false;
+  private boolean b = false;
+  private int c = 0;
+  private String d = "";
+  private float e = 0.0F;
+  private int[] f = null;
+  private int[] g = null;
+  private int h = 0;
+  private int i = 0;
+  private String j;
   
   public TroopMemberNewLevelView(Context paramContext)
   {
@@ -66,10 +66,10 @@ public class TroopMemberNewLevelView
   
   private void a(RelativeLayout.LayoutParams paramLayoutParams)
   {
-    int i = getChildCount();
-    if (i >= 1)
+    int m = getChildCount();
+    if (m >= 1)
     {
-      View localView = getChildAt(i - 1);
+      View localView = getChildAt(m - 1);
       if (localView == null) {
         return;
       }
@@ -80,13 +80,23 @@ public class TroopMemberNewLevelView
     }
   }
   
-  public float a()
+  public boolean a()
   {
-    Object localObject = String.valueOf(this.jdField_a_of_type_Int).toCharArray();
-    boolean bool = this.jdField_b_of_type_Boolean;
+    return this.a;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public float getExpectedWidth()
+  {
+    Object localObject = String.valueOf(this.c).toCharArray();
+    boolean bool = this.b;
     float f1 = 0.0F;
     float f2;
-    if ((bool) && (this.jdField_a_of_type_Boolean))
+    if ((bool) && (this.a))
     {
       if (localObject != null)
       {
@@ -94,7 +104,7 @@ public class TroopMemberNewLevelView
           return 0.0F;
         }
         f2 = localObject.length * 5.0F + 14.5F + (localObject.length - 1) * 0.0F + 3.0F;
-        f1 = ViewUtils.c(this.jdField_a_of_type_Float);
+        f1 = ViewUtils.pxToDp(this.e);
       }
       else
       {
@@ -103,7 +113,7 @@ public class TroopMemberNewLevelView
     }
     else
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.a) {
         break label119;
       }
       f2 = localObject.length * 5.0F + 14.5F;
@@ -112,8 +122,8 @@ public class TroopMemberNewLevelView
     f1 = f2 + f1 + 4.0F + 1.0F;
     break label145;
     label119:
-    if (this.jdField_b_of_type_Boolean) {
-      f1 = 0.0F + (ViewUtils.c(this.jdField_a_of_type_Float) + 4.0F + 4.0F + 1.0F);
+    if (this.b) {
+      f1 = 0.0F + (ViewUtils.pxToDp(this.e) + 4.0F + 4.0F + 1.0F);
     }
     label145:
     if (QLog.isColorLevel())
@@ -123,17 +133,7 @@ public class TroopMemberNewLevelView
       ((StringBuilder)localObject).append(f1);
       QLog.d("TroopMemberNewLevelView", 2, ((StringBuilder)localObject).toString());
     }
-    return ViewUtils.a(f1);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    return ViewUtils.dip2px(f1);
   }
   
   public void setTroopMemberNewLevel(TroopMemberRankItem paramTroopMemberRankItem)
@@ -145,7 +145,7 @@ public class TroopMemberNewLevelView
       }
       return;
     }
-    setTroopMemberNewLevel(paramTroopMemberRankItem.jdField_a_of_type_Boolean, paramTroopMemberRankItem.jdField_b_of_type_Boolean, paramTroopMemberRankItem.jdField_b_of_type_Int, paramTroopMemberRankItem.jdField_a_of_type_JavaLangString, paramTroopMemberRankItem.jdField_b_of_type_ArrayOfInt, paramTroopMemberRankItem.jdField_a_of_type_ArrayOfInt, paramTroopMemberRankItem.d, paramTroopMemberRankItem.jdField_c_of_type_Int, paramTroopMemberRankItem.jdField_b_of_type_JavaLangString);
+    setTroopMemberNewLevel(paramTroopMemberRankItem.f, paramTroopMemberRankItem.g, paramTroopMemberRankItem.b, paramTroopMemberRankItem.c, paramTroopMemberRankItem.e, paramTroopMemberRankItem.d, paramTroopMemberRankItem.i, paramTroopMemberRankItem.h, paramTroopMemberRankItem.j);
   }
   
   public void setTroopMemberNewLevel(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt2, int paramInt3, String paramString2)
@@ -178,7 +178,7 @@ public class TroopMemberNewLevelView
       }
       return;
     }
-    if ((this.jdField_a_of_type_Boolean == paramBoolean1) && (this.jdField_b_of_type_Boolean == paramBoolean2) && (this.jdField_a_of_type_Int == paramInt1) && (this.jdField_a_of_type_JavaLangString.equals(paramString1)) && (Arrays.equals(paramArrayOfInt1, this.jdField_a_of_type_ArrayOfInt)) && (Arrays.equals(paramArrayOfInt2, this.jdField_b_of_type_ArrayOfInt)) && (this.jdField_b_of_type_Int == paramInt2) && (this.jdField_c_of_type_Int == paramInt3) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramString2)))
+    if ((this.a == paramBoolean1) && (this.b == paramBoolean2) && (this.c == paramInt1) && (this.d.equals(paramString1)) && (Arrays.equals(paramArrayOfInt1, this.f)) && (Arrays.equals(paramArrayOfInt2, this.g)) && (this.h == paramInt2) && (this.i == paramInt3) && (TextUtils.equals(this.j, paramString2)))
     {
       setVisibility(0);
       if (QLog.isColorLevel()) {
@@ -188,15 +188,15 @@ public class TroopMemberNewLevelView
     }
     removeAllViews();
     setVisibility(8);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
-    this.jdField_b_of_type_ArrayOfInt = paramArrayOfInt2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramInt1;
+    this.d = paramString1;
+    this.a = paramBoolean1;
+    this.b = paramBoolean2;
+    this.f = paramArrayOfInt1;
+    this.g = paramArrayOfInt2;
+    this.h = paramInt2;
+    this.i = paramInt3;
+    this.j = paramString2;
     if ((!paramBoolean1) && (!paramBoolean2)) {
       return;
     }
@@ -204,33 +204,33 @@ public class TroopMemberNewLevelView
     if ((paramBoolean1) && (paramBoolean2))
     {
       paramArrayOfInt1 = new GradientDrawable(GradientDrawable.Orientation.TL_BR, paramArrayOfInt2);
-      paramArrayOfInt1.setCornerRadius(ViewUtils.b(3.0F));
+      paramArrayOfInt1.setCornerRadius(ViewUtils.dpToPx(3.0F));
       setBackgroundDrawable(paramArrayOfInt1);
       setGravity(16);
-      paramArrayOfInt1 = new RelativeLayout.LayoutParams(ViewUtils.a(10.0F), ViewUtils.a(6.0F));
-      paramArrayOfInt1.leftMargin = ViewUtils.a(4.0F);
-      paramArrayOfInt1.rightMargin = ViewUtils.a(0.5F);
+      paramArrayOfInt1 = new RelativeLayout.LayoutParams(ViewUtils.dip2px(10.0F), ViewUtils.dip2px(6.0F));
+      paramArrayOfInt1.leftMargin = ViewUtils.dip2px(4.0F);
+      paramArrayOfInt1.rightMargin = ViewUtils.dip2px(0.5F);
       paramArrayOfInt2 = new ImageView(getContext());
-      paramArrayOfInt2.setImageResource(jdField_c_of_type_ArrayOfInt[10]);
+      paramArrayOfInt2.setImageResource(k[10]);
       paramArrayOfInt2.setColorFilter(paramInt2);
-      paramArrayOfInt2.setContentDescription(HardCodeUtil.a(2131699502));
+      paramArrayOfInt2.setContentDescription(HardCodeUtil.a(2131897533));
       a(paramArrayOfInt2, paramArrayOfInt1);
       addView(paramArrayOfInt2, paramArrayOfInt1);
       paramArrayOfInt2 = String.valueOf(paramInt1).toCharArray();
       paramInt1 = 0;
       while (paramInt1 < paramArrayOfInt2.length)
       {
-        int i = paramArrayOfInt2[paramInt1] - '0';
-        if ((i >= 0) && (i < 10))
+        int m = paramArrayOfInt2[paramInt1] - '0';
+        if ((m >= 0) && (m < 10))
         {
-          localObject = new RelativeLayout.LayoutParams(ViewUtils.a(5.0F), ViewUtils.a(7.0F));
+          localObject = new RelativeLayout.LayoutParams(ViewUtils.dip2px(5.0F), ViewUtils.dip2px(7.0F));
           ImageView localImageView = new ImageView(getContext());
-          localImageView.setImageResource(jdField_c_of_type_ArrayOfInt[i]);
+          localImageView.setImageResource(k[m]);
           localImageView.setColorFilter(paramInt2);
           if (paramInt1 != paramArrayOfInt2.length - 1) {
-            ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.a(0.0F);
+            ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.dip2px(0.0F);
           }
-          localImageView.setContentDescription(String.valueOf(i));
+          localImageView.setContentDescription(String.valueOf(m));
           a(localImageView, (RelativeLayout.LayoutParams)localObject);
           a((RelativeLayout.LayoutParams)localObject);
           addView(localImageView, (ViewGroup.LayoutParams)localObject);
@@ -247,29 +247,29 @@ public class TroopMemberNewLevelView
       paramArrayOfInt2.setTypeface(Typeface.defaultFromStyle(1));
       paramArrayOfInt2.setTextColor(paramInt3);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.a(3.0F);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.a(4.0F);
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.dip2px(3.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.dip2px(4.0F);
       a(paramArrayOfInt2, (RelativeLayout.LayoutParams)localObject);
       a((RelativeLayout.LayoutParams)localObject);
-      paramArrayOfInt1.topMargin = ViewUtils.a(0.5F);
-      paramArrayOfInt1.bottomMargin = ViewUtils.a(0.5F);
-      this.jdField_a_of_type_Float = paramArrayOfInt2.getPaint().measureText(paramString1);
+      paramArrayOfInt1.topMargin = ViewUtils.dip2px(0.5F);
+      paramArrayOfInt1.bottomMargin = ViewUtils.dip2px(0.5F);
+      this.e = paramArrayOfInt2.getPaint().measureText(paramString1);
       addView(paramArrayOfInt2, (ViewGroup.LayoutParams)localObject);
       setVisibility(0);
     }
     else if (paramBoolean1)
     {
       paramString1 = new GradientDrawable(GradientDrawable.Orientation.TL_BR, paramArrayOfInt1);
-      paramString1.setCornerRadius(ViewUtils.b(3.0F));
+      paramString1.setCornerRadius(ViewUtils.dpToPx(3.0F));
       setBackgroundDrawable(paramString1);
       setGravity(16);
-      paramArrayOfInt1 = new RelativeLayout.LayoutParams(ViewUtils.a(10.0F), ViewUtils.a(6.0F));
-      paramArrayOfInt1.leftMargin = ViewUtils.a(4.0F);
-      paramArrayOfInt1.rightMargin = ViewUtils.a(0.5F);
+      paramArrayOfInt1 = new RelativeLayout.LayoutParams(ViewUtils.dip2px(10.0F), ViewUtils.dip2px(6.0F));
+      paramArrayOfInt1.leftMargin = ViewUtils.dip2px(4.0F);
+      paramArrayOfInt1.rightMargin = ViewUtils.dip2px(0.5F);
       paramString1 = new ImageView(getContext());
       paramString1.setColorFilter(paramInt2);
-      paramString1.setImageResource(jdField_c_of_type_ArrayOfInt[10]);
-      paramString1.setContentDescription(HardCodeUtil.a(2131699502));
+      paramString1.setImageResource(k[10]);
+      paramString1.setContentDescription(HardCodeUtil.a(2131897533));
       a(paramString1, paramArrayOfInt1);
       addView(paramString1, paramArrayOfInt1);
       paramArrayOfInt1 = String.valueOf(paramInt1).toCharArray();
@@ -279,17 +279,17 @@ public class TroopMemberNewLevelView
         paramInt3 = paramArrayOfInt1[paramInt1] - '0';
         if ((paramInt3 >= 0) && (paramInt3 < 10))
         {
-          paramArrayOfInt2 = new RelativeLayout.LayoutParams(ViewUtils.a(5.0F), ViewUtils.a(7.0F));
+          paramArrayOfInt2 = new RelativeLayout.LayoutParams(ViewUtils.dip2px(5.0F), ViewUtils.dip2px(7.0F));
           localObject = new ImageView(getContext());
-          ((ImageView)localObject).setImageResource(jdField_c_of_type_ArrayOfInt[paramInt3]);
+          ((ImageView)localObject).setImageResource(k[paramInt3]);
           paramString1.setColorFilter(paramInt2);
           if (paramInt1 == paramArrayOfInt1.length - 1) {
-            paramArrayOfInt2.rightMargin = ViewUtils.a(4.0F);
+            paramArrayOfInt2.rightMargin = ViewUtils.dip2px(4.0F);
           } else {
-            paramArrayOfInt2.rightMargin = ViewUtils.a(0.0F);
+            paramArrayOfInt2.rightMargin = ViewUtils.dip2px(0.0F);
           }
-          paramArrayOfInt2.bottomMargin = ViewUtils.a(3.0F);
-          paramArrayOfInt2.topMargin = ViewUtils.a(3.0F);
+          paramArrayOfInt2.bottomMargin = ViewUtils.dip2px(3.0F);
+          paramArrayOfInt2.topMargin = ViewUtils.dip2px(3.0F);
           ((ImageView)localObject).setContentDescription(String.valueOf(paramInt3));
           a((View)localObject, paramArrayOfInt2);
           a(paramArrayOfInt2);
@@ -302,7 +302,7 @@ public class TroopMemberNewLevelView
     else if (paramBoolean2)
     {
       paramArrayOfInt1 = new GradientDrawable(GradientDrawable.Orientation.TL_BR, paramArrayOfInt2);
-      paramArrayOfInt1.setCornerRadius(ViewUtils.b(3.0F));
+      paramArrayOfInt1.setCornerRadius(ViewUtils.dpToPx(3.0F));
       setBackgroundDrawable(paramArrayOfInt1);
       paramArrayOfInt1 = new TextView(getContext());
       paramArrayOfInt1.setText(paramString1);
@@ -314,21 +314,21 @@ public class TroopMemberNewLevelView
       paramArrayOfInt1.setTypeface(Typeface.defaultFromStyle(1));
       paramArrayOfInt1.setTextColor(paramInt3);
       paramArrayOfInt2 = new RelativeLayout.LayoutParams(-2, -2);
-      paramArrayOfInt2.leftMargin = ViewUtils.a(4.0F);
-      paramArrayOfInt2.rightMargin = ViewUtils.a(4.0F);
-      paramArrayOfInt2.topMargin = ViewUtils.a(0.5F);
-      paramArrayOfInt2.bottomMargin = ViewUtils.a(0.5F);
-      this.jdField_a_of_type_Float = paramArrayOfInt1.getPaint().measureText(paramString1);
+      paramArrayOfInt2.leftMargin = ViewUtils.dip2px(4.0F);
+      paramArrayOfInt2.rightMargin = ViewUtils.dip2px(4.0F);
+      paramArrayOfInt2.topMargin = ViewUtils.dip2px(0.5F);
+      paramArrayOfInt2.bottomMargin = ViewUtils.dip2px(0.5F);
+      this.e = paramArrayOfInt1.getPaint().measureText(paramString1);
       a(paramArrayOfInt1, paramArrayOfInt2);
       addView(paramArrayOfInt1, paramArrayOfInt2);
       setVisibility(0);
     }
-    ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).clothEffectView(getContext(), this, (int)a(), paramString2);
+    ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).clothEffectView(getContext(), this, (int)getExpectedWidth(), paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.troopmemberlevel.TroopMemberNewLevelView
  * JD-Core Version:    0.7.0.1
  */

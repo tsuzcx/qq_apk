@@ -36,17 +36,17 @@ class MiniSDKClientQIPCModule$6
       }
       paramJSONObject.put("retCode", 2);
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(":fail ");
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("(");
       localStringBuilder.append(i);
       localStringBuilder.append(")");
       paramJSONObject.put("errMsg", localStringBuilder.toString());
-      IJsService localIJsService = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIJsService;
+      IJsService localIJsService = this.b;
       if (localIJsService != null)
       {
-        localIJsService.evaluateCallbackJs(this.jdField_a_of_type_Int, paramJSONObject.toString());
+        localIJsService.evaluateCallbackJs(this.c, paramJSONObject.toString());
         return;
       }
       QLog.d("MiniSDKClientQIPCModule", 1, "createUpdatableMsg error, null jsService");
@@ -57,7 +57,7 @@ class MiniSDKClientQIPCModule$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule.6
  * JD-Core Version:    0.7.0.1
  */

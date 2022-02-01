@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.dimen;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 
@@ -39,12 +41,12 @@ public class MenuPopupHelper
   
   public MenuPopupHelper(@NonNull Context paramContext, @NonNull MenuBuilder paramMenuBuilder)
   {
-    this(paramContext, paramMenuBuilder, null, false, 2131034953, 0);
+    this(paramContext, paramMenuBuilder, null, false, R.attr.popupMenuStyle, 0);
   }
   
   public MenuPopupHelper(@NonNull Context paramContext, @NonNull MenuBuilder paramMenuBuilder, @NonNull View paramView)
   {
-    this(paramContext, paramMenuBuilder, paramView, false, 2131034953, 0);
+    this(paramContext, paramMenuBuilder, paramView, false, R.attr.popupMenuStyle, 0);
   }
   
   public MenuPopupHelper(@NonNull Context paramContext, @NonNull MenuBuilder paramMenuBuilder, @NonNull View paramView, boolean paramBoolean, @AttrRes int paramInt)
@@ -73,7 +75,7 @@ public class MenuPopupHelper
       ((Display)localObject).getSize(localPoint);
     }
     int i;
-    if (Math.min(localPoint.x, localPoint.y) >= this.mContext.getResources().getDimensionPixelSize(2131296278)) {
+    if (Math.min(localPoint.x, localPoint.y) >= this.mContext.getResources().getDimensionPixelSize(R.dimen.abc_cascading_menus_min_smallest_width)) {
       i = 1;
     } else {
       i = 0;

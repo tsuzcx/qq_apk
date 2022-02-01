@@ -9,21 +9,21 @@ import com.tencent.mobileqq.widget.SquareImageView;
 public class FontBubblePanelView$FontBubbleHolder
   extends RecyclerView.ViewHolder
 {
-  public ImageView a;
-  public TextView a;
   public SquareImageView a;
+  public TextView b;
+  public ImageView c;
   
   public FontBubblePanelView$FontBubbleHolder(FontBubblePanelView paramFontBubblePanelView, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131367110));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380104));
+    this.a = ((SquareImageView)paramView.findViewById(2131433564));
+    this.b = ((TextView)paramView.findViewById(2131439121));
+    this.c = ((ImageView)paramView.findViewById(2131449017));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubblePanelView.FontBubbleHolder
  * JD-Core Version:    0.7.0.1
  */

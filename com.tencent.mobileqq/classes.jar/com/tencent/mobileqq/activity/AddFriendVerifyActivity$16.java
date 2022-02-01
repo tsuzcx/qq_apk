@@ -21,44 +21,44 @@ class AddFriendVerifyActivity$16
       if ((paramObject instanceof Card))
       {
         localObject = (Card)paramObject;
-        if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
+        if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.d(this.a))))
         {
           paramObject = ProfileCardUtil.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
-          if (this.a.a != null) {
+          if (this.a.v != null) {
             paramObject = ProfileCardUtil.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
           }
           if (!TextUtils.isEmpty(paramObject))
           {
-            this.a.c.setVisibility(0);
-            this.a.c.setText(paramObject);
+            this.a.i.setVisibility(0);
+            this.a.i.setText(paramObject);
           }
         }
       }
       else if ((paramObject instanceof ContactCard))
       {
         localObject = (ContactCard)paramObject;
-        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
+        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.d(this.a))))
         {
           paramObject = ProfileCardUtil.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
-          if (this.a.a != null) {
+          if (this.a.v != null) {
             paramObject = ProfileCardUtil.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
           }
           if (!TextUtils.isEmpty(paramObject))
           {
-            this.a.c.setVisibility(0);
-            this.a.c.setText(paramObject);
+            this.a.i.setVisibility(0);
+            this.a.i.setText(paramObject);
           }
         }
       }
-      if (QidianManager.a(this.a.app, AddFriendVerifyActivity.a(this.a))) {
-        this.a.c.setVisibility(8);
+      if (QidianManager.a(this.a.app, AddFriendVerifyActivity.d(this.a))) {
+        this.a.i.setVisibility(8);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.16
  * JD-Core Version:    0.7.0.1
  */

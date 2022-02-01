@@ -13,6 +13,7 @@ import android.widget.AbsListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.R.attr;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 import androidx.core.widget.ListViewAutoScrollHelper;
@@ -38,9 +39,9 @@ class DropDownListView
   private DropDownListView.GateKeeperDrawable mSelector;
   private final Rect mSelectorRect = new Rect();
   
-  DropDownListView(Context paramContext, boolean paramBoolean)
+  DropDownListView(@NonNull Context paramContext, boolean paramBoolean)
   {
-    super(paramContext, null, 2131034526);
+    super(paramContext, null, R.attr.dropDownListViewStyle);
     this.mHijackFocus = paramBoolean;
     setCacheColorHint(0);
     try
@@ -318,8 +319,6 @@ class DropDownListView
   {
     paramInt2 = getListPaddingTop();
     paramInt3 = getListPaddingBottom();
-    getListPaddingLeft();
-    getListPaddingRight();
     int i = getDividerHeight();
     Object localObject = getDivider();
     ListAdapter localListAdapter = getAdapter();

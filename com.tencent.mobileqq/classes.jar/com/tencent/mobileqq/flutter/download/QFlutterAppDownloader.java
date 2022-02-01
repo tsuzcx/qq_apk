@@ -18,37 +18,11 @@ import protocol.KQQConfig.GetResourceReqInfoV2;
 public class QFlutterAppDownloader
   extends EarlyHandler
 {
-  private boolean d;
-  
-  public int a()
-  {
-    return 10093;
-  }
+  private boolean h;
   
   public Class<? extends XmlData> a()
   {
     return QFlutterAppData.class;
-  }
-  
-  public String a()
-  {
-    return QFlutterAppData.class.getSimpleName();
-  }
-  
-  public GetResourceReqInfo a()
-  {
-    GetResourceReqInfo localGetResourceReqInfo = super.a();
-    if (localGetResourceReqInfo != null) {
-      localGetResourceReqInfo.strPkgName = QFlutterResConfigProcessor.a().a("qq.android.flutter.app.v8.5.0");
-    }
-    return localGetResourceReqInfo;
-  }
-  
-  public GetResourceReqInfoV2 a(String paramString)
-  {
-    paramString = super.a(paramString);
-    paramString.strPkgName = QFlutterResConfigProcessor.a().a("qq.android.flutter.app.v8.5.0");
-    return paramString;
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -85,13 +59,13 @@ public class QFlutterAppDownloader
       localStringBuilder.append(paramString);
       QLog.d("QFlutter.QFlutterAppDownloader", 2, localStringBuilder.toString());
     }
-    if (QFlutterInstaller.a(paramString, a()))
+    if (QFlutterInstaller.a(paramString, h()))
     {
       QFlutterInstaller.a(1, true);
     }
     else
     {
-      f();
+      x();
       QFlutterInstaller.a(1, false);
     }
     super.a(paramString);
@@ -103,28 +77,21 @@ public class QFlutterAppDownloader
       QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("restartDownload userClick: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
     super.a(paramBoolean);
-    if (!this.d) {
-      this.d = paramBoolean;
+    if (!this.h) {
+      this.h = paramBoolean;
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
   
   public String b()
   {
-    return "prd";
+    return QFlutterAppData.class.getSimpleName();
   }
   
-  public void b()
+  public GetResourceReqInfoV2 b(String paramString)
   {
-    String str = e();
-    boolean bool = FileUtil.a(new File(str));
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }));
-    }
+    paramString = super.b(paramString);
+    paramString.strPkgName = QFlutterResConfigProcessor.a().a("qq.android.flutter.app.v8.5.0");
+    return paramString;
   }
   
   public void b(XmlData paramXmlData)
@@ -141,18 +108,60 @@ public class QFlutterAppDownloader
     }
   }
   
-  public boolean c()
+  public int c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.d) }));
-    }
-    if (this.d) {
-      return true;
-    }
-    return super.c();
+    return 10093;
   }
   
-  public String e()
+  public String d()
+  {
+    return "prd";
+  }
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public void j()
+  {
+    String str = w();
+    boolean bool = FileUtil.a(new File(str));
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("delete unzipFile: %s, ret: %s", new Object[] { str, Boolean.valueOf(bool) }));
+    }
+  }
+  
+  public boolean m()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.QFlutterAppDownloader", 2, String.format("isNetValid2Download mHadRequestedByUser: %s", new Object[] { Boolean.valueOf(this.h) }));
+    }
+    if (this.h) {
+      return true;
+    }
+    return super.m();
+  }
+  
+  public boolean o()
+  {
+    QLog.d("QFlutter.QFlutterAppDownloader", 1, String.format("downloadResource, mHadRequestedByUser = %s", new Object[] { Boolean.valueOf(this.h) }));
+    if (!this.h) {
+      return false;
+    }
+    return super.o();
+  }
+  
+  public GetResourceReqInfo q()
+  {
+    GetResourceReqInfo localGetResourceReqInfo = super.q();
+    if (localGetResourceReqInfo != null) {
+      localGetResourceReqInfo.strPkgName = QFlutterResConfigProcessor.a().a("qq.android.flutter.app.v8.5.0");
+    }
+    return localGetResourceReqInfo;
+  }
+  
+  public String w()
   {
     Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
     if (localObject == null)
@@ -177,28 +186,19 @@ public class QFlutterAppDownloader
     return localObject;
   }
   
-  public boolean e()
-  {
-    QLog.d("QFlutter.QFlutterAppDownloader", 1, String.format("downloadResource, mHadRequestedByUser = %s", new Object[] { Boolean.valueOf(this.d) }));
-    if (!this.d) {
-      return false;
-    }
-    return super.e();
-  }
-  
-  public void f()
+  public void x()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.QFlutterAppDownloader", 2, new Object[] { "restoreState() res:", "qq.android.flutter.app.v8.5.0" });
     }
-    a().loadState = 0;
-    a().Version = 0;
-    EarlyDataFactory.a(a(), new String[0]);
+    h().loadState = 0;
+    h().Version = 0;
+    EarlyDataFactory.a(h(), new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.download.QFlutterAppDownloader
  * JD-Core Version:    0.7.0.1
  */

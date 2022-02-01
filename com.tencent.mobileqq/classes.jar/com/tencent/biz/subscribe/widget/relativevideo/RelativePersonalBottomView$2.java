@@ -19,17 +19,17 @@ class RelativePersonalBottomView$2
   public void onPageSelected(int paramInt)
   {
     
-    if ((RelativePersonalBottomView.a(this.a) != null) && (RelativePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
-      RelativePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
+    if ((RelativePersonalBottomView.d(this.a) != null) && (RelativePersonalBottomView.d(this.a).getChildCount() > paramInt)) {
+      RelativePersonalBottomView.d(this.a).getChildAt(paramInt).performClick();
     }
-    if (RelativePersonalBottomView.a(this.a).size() > paramInt) {
-      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.a(this.a).get(paramInt)).a(paramInt);
+    if (RelativePersonalBottomView.e(this.a).size() > paramInt) {
+      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.e(this.a).get(paramInt)).a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView.2
  * JD-Core Version:    0.7.0.1
  */

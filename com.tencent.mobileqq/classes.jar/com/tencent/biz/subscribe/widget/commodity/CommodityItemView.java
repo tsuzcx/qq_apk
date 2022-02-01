@@ -26,14 +26,14 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class CommodityItemView
   extends BaseWidgetView
 {
-  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
+  private SquareImageView c;
+  private TextView d;
+  private TextView e;
+  private View f;
+  private View g;
+  private boolean h;
+  private int i;
+  private CertifiedAccountMeta.StFeed j;
   
   public CommodityItemView(Context paramContext)
   {
@@ -50,33 +50,18 @@ public class CommodityItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected int a()
-  {
-    return 2131558737;
-  }
-  
-  protected View.OnClickListener a()
-  {
-    return new CommodityItemView.2(this);
-  }
-  
-  protected View a()
-  {
-    return this;
-  }
-  
   protected void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369330));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379589));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379590));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379555);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369336);
-    this.c = (ImmersiveUtils.getScreenWidth() * 5 / 6);
+    this.c = ((SquareImageView)paramView.findViewById(2131436331));
+    this.d = ((TextView)paramView.findViewById(2131448346));
+    this.e = ((TextView)paramView.findViewById(2131448347));
+    this.f = paramView.findViewById(2131448307);
+    this.g = paramView.findViewById(2131436341);
+    this.i = (ImmersiveUtils.getScreenWidth() * 5 / 6);
     if (getLayoutParams() == null) {
-      setLayoutParams(new FrameLayout.LayoutParams(this.c, ImmersiveUtils.dpToPx(132.0F)));
+      setLayoutParams(new FrameLayout.LayoutParams(this.i, ImmersiveUtils.dpToPx(132.0F)));
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(ImmersiveUtils.getScreenWidth() / 750 * 24);
+    this.e.setTextSize(ImmersiveUtils.getScreenWidth() / 750 * 24);
   }
   
   protected void a(Object paramObject)
@@ -97,13 +82,13 @@ public class CommodityItemView
       l = paramObject.price.get();
       paramObject = paramObject.img.get();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    this.d.setText((CharSequence)localObject);
     if (l % 100L == 0L) {
       localObject = String.format("%d", new Object[] { Long.valueOf(l / 100L) });
     } else {
       localObject = String.format("%.2f", new Object[] { Float.valueOf((float)l / 100.0F) });
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    this.e.setText((CharSequence)localObject);
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
     {
       try
@@ -113,20 +98,20 @@ public class CommodityItemView
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.getFailedDrawable();
         paramObject = URLDrawable.getDrawable(paramObject, (URLDrawable.URLDrawableOptions)localObject);
         if (paramObject != null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable(paramObject);
+          this.c.setImageDrawable(paramObject);
         }
       }
       catch (Exception paramObject)
       {
         paramObject.printStackTrace();
       }
-      paramObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+      paramObject = this.j;
       if (paramObject != null)
       {
         paramObject = paramObject.poster.id.get();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("auth_");
-        ((StringBuilder)localObject).append(SubscribeShareHelper.a(a()));
+        ((StringBuilder)localObject).append(SubscribeShareHelper.a(getExtraTypeInfo()));
         VSReporter.a(paramObject, ((StringBuilder)localObject).toString(), "exp_goods", 0, 0, new String[0]);
       }
     }
@@ -136,33 +121,48 @@ public class CommodityItemView
     }
   }
   
-  public View b()
+  protected View f()
   {
-    return this.jdField_b_of_type_AndroidViewView;
+    return this;
+  }
+  
+  public View getDeleteBtn()
+  {
+    return this.g;
+  }
+  
+  protected int getLayoutId()
+  {
+    return 2131624357;
+  }
+  
+  protected View.OnClickListener getOnClickLister()
+  {
+    return new CommodityItemView.2(this);
   }
   
   public void setCurrentFeed(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    this.j = paramStFeed;
   }
   
   public void setIsPublishUI(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
     if (!paramBoolean) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.f.getVisibility() == 0) {
+      this.f.setVisibility(8);
     }
-    if (this.jdField_b_of_type_AndroidViewView.getVisibility() == 8) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    if (this.g.getVisibility() == 8) {
+      this.g.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityItemView
  * JD-Core Version:    0.7.0.1
  */

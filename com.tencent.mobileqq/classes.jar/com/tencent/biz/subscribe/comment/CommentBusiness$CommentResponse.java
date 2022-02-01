@@ -5,20 +5,20 @@ import com.tencent.mobileqq.pb.PBStringField;
 
 class CommentBusiness$CommentResponse
 {
-  public COMM.StCommonExt a;
   public boolean a;
-  public boolean b;
+  public COMM.StCommonExt b;
+  public boolean c;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CommentResponse{hasMore=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", attachInfo='");
-    localStringBuilder.append(this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get());
+    localStringBuilder.append(this.b.attachInfo.get());
     localStringBuilder.append('\'');
     localStringBuilder.append(", hasResponse='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();

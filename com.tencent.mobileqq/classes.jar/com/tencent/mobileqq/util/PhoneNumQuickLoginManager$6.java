@@ -17,14 +17,14 @@ final class PhoneNumQuickLoginManager$6
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginTouchControllerFrameLayout.setMaxScrollHeight(Utils.a(50.0F, this.jdField_a_of_type_AndroidAppDialog.getContext().getResources()));
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      this.b.setMaxScrollHeight(Utils.a(50.0F, this.c.getContext().getResources()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.6
  * JD-Core Version:    0.7.0.1
  */

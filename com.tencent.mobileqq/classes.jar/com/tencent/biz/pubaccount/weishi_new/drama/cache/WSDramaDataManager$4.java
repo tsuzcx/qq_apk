@@ -12,7 +12,7 @@ class WSDramaDataManager$4
 {
   public void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    IFetchDataRspListener localIFetchDataRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+    IFetchDataRspListener localIFetchDataRspListener = this.c;
     if (localIFetchDataRspListener != null) {
       localIFetchDataRspListener.a(paramInt, paramString, paramBoolean1, paramBoolean2);
     }
@@ -20,14 +20,14 @@ class WSDramaDataManager$4
   
   public void a(List<stDramaFeed> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
-    WSDramaDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataManager).a(paramList, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams.a());
+    WSDramaDataManager.a(this.d).a(paramList, this.a.d());
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSDramaDataManager.java][getEpisodeFeeds] isPreloadData:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams.c());
+    ((StringBuilder)localObject).append(this.a.i());
     WSLog.a("WSDramaDataManager-nel-log", ((StringBuilder)localObject).toString());
-    localObject = WSDramaDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataManager).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams.a()).a();
-    paramList = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIWSDramaFeedTransfer.a((stDrama)localObject, paramList);
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+    localObject = WSDramaDataManager.a(this.d).a(this.a.d()).f();
+    paramList = this.b.a((stDrama)localObject, paramList);
+    localObject = this.c;
     if (localObject != null) {
       ((IFetchDataRspListener)localObject).a(paramList, paramBoolean1, paramBoolean2, paramObject);
     }
@@ -35,7 +35,7 @@ class WSDramaDataManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaDataManager.4
  * JD-Core Version:    0.7.0.1
  */

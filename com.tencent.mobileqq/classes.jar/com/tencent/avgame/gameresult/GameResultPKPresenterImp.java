@@ -13,45 +13,38 @@ import com.tencent.qphone.base.util.QLog;
 public class GameResultPKPresenterImp
   implements IGameResultPresenter
 {
-  private UserInfoObserver a;
   protected IGameResultView a;
-  protected SimpleGameRoomStatusListener a;
+  protected SimpleGameRoomStatusListener b = new GameResultPKPresenterImp.2(this);
+  private UserInfoObserver c = new GameResultPKPresenterImp.1(this);
   
   public GameResultPKPresenterImp(IGameResultView paramIGameResultView)
   {
-    this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver = new GameResultPKPresenterImp.1(this);
-    this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener = new GameResultPKPresenterImp.2(this);
-    this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView = paramIGameResultView;
+    this.a = paramIGameResultView;
   }
   
   private void a()
   {
-    EngineData localEngineData = GameEngine.a().a();
-    GameEngine.a().a(localEngineData.b());
+    EngineData localEngineData = GameEngine.a().s();
+    GameEngine.a().a(localEngineData.n());
   }
   
   public void a(int paramInt, String paramString1, String paramString2) {}
   
-  public boolean a()
-  {
-    return GameEngine.a().d();
-  }
-  
   public void b()
   {
-    SurvivalPkResultInfo localSurvivalPkResultInfo = GameEngine.a().a().a();
-    GameEngine.a().a().addObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver, false);
-    IGameResultView localIGameResultView = this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView;
+    SurvivalPkResultInfo localSurvivalPkResultInfo = GameEngine.a().s().Z();
+    GameEngine.a().f().addObserver(this.c, false);
+    IGameResultView localIGameResultView = this.a;
     if ((localIGameResultView instanceof GamePKResultFragment)) {
       ((GamePKResultFragment)localIGameResultView).a(localSurvivalPkResultInfo);
     }
-    GameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
+    GameEngine.a().a(this.b);
   }
   
   public void c()
   {
-    GameEngine.a().a().removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverUserInfoObserver);
-    GameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
+    GameEngine.a().f().removeObserver(this.c);
+    GameEngine.a().b(this.b);
   }
   
   public void d()
@@ -59,33 +52,38 @@ public class GameResultPKPresenterImp
     if (QLog.isColorLevel()) {
       QLog.i("GameResultPKPresenterImp", 1, "playAgain");
     }
-    GameEngine.a().a().c();
-    GameEngine.a().l();
+    GameEngine.a().s().c();
+    GameEngine.a().x();
   }
   
-  public void e()
+  public boolean f()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView != null) {
-      FloatWindowController.a().a(this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView.a(), false, true);
-    }
-  }
-  
-  public void f()
-  {
-    a();
-    QLog.i("GameResultPKPresenterImp", 1, "exitGameRoom from result.");
-    GameEngine.a().a(false, 1);
-    if (this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView.a() != null) {
-      this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView.a().finish();
-    }
+    return GameEngine.a().r();
   }
   
   public void g()
   {
-    GameEngine.a().d();
-    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().a();
+    if (this.a != null) {
+      FloatWindowController.c().a(this.a.d(), false, true);
+    }
+  }
+  
+  public void h()
+  {
+    a();
+    QLog.i("GameResultPKPresenterImp", 1, "exitGameRoom from result.");
+    GameEngine.a().a(false, 1);
+    if (this.a.d() != null) {
+      this.a.d().finish();
+    }
+  }
+  
+  public void i()
+  {
+    GameEngine.a().q();
+    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().f();
     String str = localBaseAVGameAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultView.a(localBaseAVGameAppInterface, 0L, str, 0, null, null);
+    this.a.a(localBaseAVGameAppInterface, 0L, str, 0, null, null);
   }
 }
 

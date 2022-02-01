@@ -18,8 +18,8 @@ class SDKAvatarSettingManager$3
         return;
       }
       this.a.d();
-      if (SDKAvatarSettingManager.a(this.a) != null) {
-        SDKAvatarSettingManager.a(this.a).removeCallbacks(SDKAvatarSettingManager.b(this.a));
+      if (SDKAvatarSettingManager.b(this.a) != null) {
+        SDKAvatarSettingManager.b(this.a).removeCallbacks(SDKAvatarSettingManager.e(this.a));
       }
       if (paramInt == 16)
       {
@@ -27,13 +27,13 @@ class SDKAvatarSettingManager$3
         return;
       }
       paramArrayOfByte = this.a;
-      SDKAvatarSettingManager.a(paramArrayOfByte, SDKAvatarSettingManager.a(paramArrayOfByte));
+      SDKAvatarSettingManager.a(paramArrayOfByte, SDKAvatarSettingManager.f(paramArrayOfByte));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.3
  * JD-Core Version:    0.7.0.1
  */

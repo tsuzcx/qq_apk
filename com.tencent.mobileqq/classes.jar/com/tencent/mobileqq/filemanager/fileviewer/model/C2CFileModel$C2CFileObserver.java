@@ -20,8 +20,8 @@ class C2CFileModel$C2CFileObserver
   
   protected void a(int paramInt, long paramLong, String paramString)
   {
-    ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(this.a.jdField_a_of_type_AndroidAppActivity, paramInt);
-    if (paramLong != this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().nSessionId) {
+    ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(this.a.i, paramInt);
+    if (paramLong != this.a.c.r().nSessionId) {
       return;
     }
     FileManagerUtil.a(paramLong, paramInt, paramString);
@@ -29,48 +29,48 @@ class C2CFileModel$C2CFileObserver
   
   protected void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    if (paramLong != this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().nSessionId) {
+    if (paramLong != this.a.c.r().nSessionId) {
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnMMApkSafeCheckListener != null) && (paramInt1 == 0)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnMMApkSafeCheckListener.a(paramInt2, paramString1, paramString2, paramBundle);
+    if ((this.a.y != null) && (paramInt1 == 0)) {
+      this.a.y.a(paramInt2, paramString1, paramString2, paramBundle);
     }
   }
   
   protected void a(long paramLong1, long paramLong2)
   {
     super.a(paramLong1, paramLong2);
-    if ((paramLong1 == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a();
+    if ((paramLong1 == this.a.c.a()) && (this.a.k != null)) {
+      this.a.k.b();
     }
   }
   
   protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (paramLong2 != this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) {
+    if (paramLong2 != this.a.c.a()) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.d();
+    if (this.a.q != null) {
+      this.a.q.d();
     }
   }
   
   protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    if (paramLong != this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().nSessionId) {
+    if (paramLong != this.a.c.r().nSessionId) {
       return;
     }
     if ((paramString2 != null) && (paramString2.length() > 0) && (paramInt != 0)) {
-      FileManagerUtil.a(paramString2);
+      FileManagerUtil.l(paramString2);
     }
   }
   
   protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    if ((!TextUtils.isEmpty(paramThumbnailInfo.a)) && (!TextUtils.isEmpty(paramThumbnailInfo.b)))
+    if ((!TextUtils.isEmpty(paramThumbnailInfo.a)) && (!TextUtils.isEmpty(paramThumbnailInfo.d)))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(paramThumbnailInfo.a, paramThumbnailInfo.b);
+      if (this.a.s != null) {
+        this.a.s.a(paramThumbnailInfo.a, paramThumbnailInfo.d);
       }
       return;
     }
@@ -80,7 +80,7 @@ class C2CFileModel$C2CFileObserver
       localStringBuilder.append("OnThumbDownLoad error : [fileId] = ");
       localStringBuilder.append(paramThumbnailInfo.a);
       localStringBuilder.append(" [path] = ");
-      localStringBuilder.append(paramThumbnailInfo.b);
+      localStringBuilder.append(paramThumbnailInfo.d);
       QLog.i("C2CFileModel<FileAssistant>", 2, localStringBuilder.toString());
     }
   }
@@ -95,17 +95,17 @@ class C2CFileModel$C2CFileObserver
     if (!paramBoolean) {
       return;
     }
-    paramInt = this.a.e();
+    paramInt = this.a.z();
     if (paramInt == 4)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(String.valueOf(paramLong), paramString2);
+      if (this.a.s != null) {
+        this.a.s.a(String.valueOf(paramLong), paramString2);
       }
     }
     else if (paramInt == 0)
     {
-      if ((this.a.d() == paramLong) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(String.valueOf(paramLong), paramString2);
+      if ((this.a.C() == paramLong) && (this.a.s != null)) {
+        this.a.s.a(String.valueOf(paramLong), paramString2);
       }
     }
     else if (QLog.isColorLevel())
@@ -129,18 +129,18 @@ class C2CFileModel$C2CFileObserver
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (paramLong2 != this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) {
+    if (paramLong2 != this.a.c.a()) {
       return;
     }
-    paramString = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
+    paramString = this.a.c.r();
     if (paramString == null) {
       return;
     }
     if ((paramString.getCloudType() == 0) && (paramString.nOpType == 10)) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.a(paramString.fProgress);
+    if (this.a.q != null) {
+      this.a.q.a(paramString.fProgress);
     }
   }
   
@@ -161,37 +161,37 @@ class C2CFileModel$C2CFileObserver
       localStringBuilder.append("]");
       QLog.d("C2CFileModel<FileAssistant>", 2, localStringBuilder.toString());
     }
-    ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(this.a.jdField_a_of_type_AndroidAppActivity, paramInt2);
-    if (paramLong2 != this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()) {
+    ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(this.a.i, paramInt2);
+    if (paramLong2 != this.a.c.a()) {
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener == null) {
+    if (this.a.q == null) {
       return;
     }
     if (!paramBoolean)
     {
       FileManagerUtil.a(paramLong2, paramInt2, paramString2);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.g();
+      this.a.q.g();
       return;
     }
-    if (this.a.e() == 2)
+    if (this.a.z() == 2)
     {
       new Handler().postDelayed(new C2CFileModel.C2CFileObserver.1(this), 1000L);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.f();
+    this.a.q.f();
   }
   
   protected void c(int paramInt, String paramString)
   {
-    FileManagerUtil.a(paramString);
+    FileManagerUtil.l(paramString);
   }
   
   protected void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel.C2CFileObserver
  * JD-Core Version:    0.7.0.1
  */

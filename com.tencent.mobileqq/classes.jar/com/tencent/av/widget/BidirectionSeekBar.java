@@ -39,13 +39,13 @@ public class BidirectionSeekBar
     if (getThumbOffset() != 0) {
       setThumbOffset(0);
     }
-    int i = getResources().getDrawable(2130842018).getIntrinsicWidth();
+    int i = getResources().getDrawable(2130842935).getIntrinsicWidth();
     Object localObject = getProgressDrawable();
     if ((localObject instanceof LayerDrawable))
     {
       localObject = (LayerDrawable)localObject;
       Drawable localDrawable = ((LayerDrawable)localObject).findDrawableByLayerId(16908301);
-      BidirectionClipDrawable localBidirectionClipDrawable = new BidirectionClipDrawable(getResources().getDrawable(2130842010), getResources().getDrawable(2130842013), 1, i);
+      BidirectionClipDrawable localBidirectionClipDrawable = new BidirectionClipDrawable(getResources().getDrawable(2130842927), getResources().getDrawable(2130842930), 1, i);
       localBidirectionClipDrawable.setLevel(localDrawable.getLevel());
       ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localBidirectionClipDrawable);
     }

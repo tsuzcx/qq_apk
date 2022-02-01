@@ -9,10 +9,10 @@ import com.tencent.mobileqq.kandian.base.image.api.IBitmapCache;
 import com.tencent.mobileqq.kandian.base.image.api.IBitmapCallback;
 import com.tencent.mobileqq.kandian.base.image.api.ICloseableBitmap;
 import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
+import com.tencent.mobileqq.kandian.base.image.imageloader.BitmapCache;
 import com.tencent.mobileqq.kandian.base.image.imageloader.RIJImageOptLinkedBlockingDeque;
 import com.tencent.mobileqq.kandian.base.image.imageloader.RIJImageOptReport;
 import com.tencent.mobileqq.kandian.base.image.imageloader.Utils;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.monitor.memory.MemoryManager;
@@ -55,7 +55,7 @@ public class ImageManager
     {
       try
       {
-        GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.evict(0);
+        GlobalImageCache.a.evict(0);
       }
       catch (Exception localException)
       {
@@ -65,11 +65,11 @@ public class ImageManager
         localStringBuilder.append(localException);
         QLog.e((String)localObject2, 1, localStringBuilder.toString());
       }
-      i = GlobalImageCache.jdField_a_of_type_Int * 2 / 3;
+      i = GlobalImageCache.c * 2 / 3;
     }
     else
     {
-      int j = (int)(MemoryManager.a() / 10L);
+      int j = (int)(MemoryManager.d() / 10L);
       i = 4194304;
       if (j > 4194304) {
         i = j;
@@ -83,7 +83,7 @@ public class ImageManager
       ((StringBuilder)localObject2).append(i);
       Utils.a((String)localObject1, ((StringBuilder)localObject2).toString());
     }
-    this.mBitmapCache = ((IBitmapCache)QRoute.api(IBitmapCache.class));
+    this.mBitmapCache = new BitmapCache();
     Object localObject1 = new ThreadPoolParams();
     ((ThreadPoolParams)localObject1).poolThreadName = "image-manager";
     ((ThreadPoolParams)localObject1).corePoolsize = 4;
@@ -194,13 +194,13 @@ public class ImageManager
           }
           RIJImageOptReport.b(1, paramImageRequest);
           if (paramIBitmapCallback != null) {
-            paramIBitmapCallback.a(paramImageRequest, ((ICloseableBitmap)localObject1).a());
+            paramIBitmapCallback.a(paramImageRequest, ((ICloseableBitmap)localObject1).c());
           }
           ((ICloseableBitmap)localObject1).a();
           RIJImageOptReport.a(6, paramImageRequest);
           return;
         }
-        if ((paramImageRequest.b) && (this.mFinishedPreloadJobs.containsKey(paramImageRequest)))
+        if ((paramImageRequest.e) && (this.mFinishedPreloadJobs.containsKey(paramImageRequest)))
         {
           RIJImageOptReport.a(6, paramImageRequest);
           return;
@@ -226,7 +226,7 @@ public class ImageManager
             Utils.a((String)localObject2, localStringBuilder.toString(), true);
           }
           ((RunningJob)localObject1).a(paramIBitmapCallback);
-          paramImageRequest.e = 0;
+          paramImageRequest.q = 0;
           RIJImageOptReport.a(6, paramImageRequest);
         }
         else
@@ -286,7 +286,7 @@ public class ImageManager
   {
     try
     {
-      if (paramImageRequest.b) {
+      if (paramImageRequest.e) {
         this.mFinishedPreloadJobs.put(paramImageRequest, Boolean.valueOf(true));
       }
       this.mRunningJobs.remove(paramImageRequest);
@@ -326,7 +326,7 @@ public class ImageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.ImageManager
  * JD-Core Version:    0.7.0.1
  */

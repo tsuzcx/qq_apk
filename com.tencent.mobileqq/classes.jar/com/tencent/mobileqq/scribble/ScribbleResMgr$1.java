@@ -44,7 +44,7 @@ class ScribbleResMgr$1
       if (localObject2 != null)
       {
         View localView = ((ScribbleResMgr.CallbackPack)localObject2).a();
-        localObject2 = ((ScribbleResMgr.CallbackPack)localObject2).a();
+        localObject2 = ((ScribbleResMgr.CallbackPack)localObject2).b();
         if ((localView != null) && (localObject2 != null)) {
           ((ResCallback)localObject2).a(localView, paramMessage.arg1, (ResInfo)paramMessage.obj, paramMessage.what);
         } else {
@@ -56,7 +56,7 @@ class ScribbleResMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr.1
  * JD-Core Version:    0.7.0.1
  */

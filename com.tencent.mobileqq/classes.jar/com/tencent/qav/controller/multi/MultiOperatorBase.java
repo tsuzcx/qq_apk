@@ -22,18 +22,18 @@ import java.util.ArrayList;
 public abstract class MultiOperatorBase
   implements QQGAudioCtrlCallback
 {
-  protected long a;
   protected Context a;
-  protected QQGAudioCtrl a;
-  protected VideoChannelInterface a;
-  protected VideoChannelProxy a;
+  protected long b;
+  protected QQGAudioCtrl c;
+  protected VideoChannelInterface d;
+  protected VideoChannelProxy e;
   
   public MultiOperatorBase(Context paramContext, long paramLong, VideoChannelInterface paramVideoChannelInterface, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface = paramVideoChannelInterface;
-    this.jdField_a_of_type_ComTencentQavChannelVideoChannelProxy = new VideoChannelProxy(paramContext, paramVideoChannelInterface);
+    this.a = paramContext;
+    this.b = paramLong;
+    this.d = paramVideoChannelInterface;
+    this.e = new VideoChannelProxy(paramContext, paramVideoChannelInterface);
     a(paramBoolean);
   }
   
@@ -42,10 +42,10 @@ public abstract class MultiOperatorBase
     AVLog.c("MultiOperatorBase", "unInitGAudioCtrl");
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.uninit();
-        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
+        this.c.uninit();
+        this.c = null;
         return;
       }
     }
@@ -63,18 +63,18 @@ public abstract class MultiOperatorBase
     AVLog.c("MultiOperatorBase", localStringBuilder.toString());
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = QQGAudioCtrl.getGAudioCtrlInstance();
-        if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+        this.c = QQGAudioCtrl.getGAudioCtrlInstance();
+        if (this.c != null)
         {
-          int i = QavCtrl.a();
-          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setCallback(this);
-          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setNetChannel(this.jdField_a_of_type_ComTencentQavChannelVideoChannelProxy);
-          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setAppId(AppSetting.a());
-          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setApType(i);
-          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.init(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, 1, paramBoolean);
-          ClientLogReport.instance().init(this.jdField_a_of_type_AndroidContentContext, AppSetting.a());
+          int i = QavCtrl.e();
+          this.c.setCallback(this);
+          this.c.setNetChannel(this.e);
+          this.c.setAppId(AppSetting.d());
+          this.c.setApType(i);
+          this.c.init(this.a, this.b, 1, paramBoolean);
+          ClientLogReport.instance().init(this.a, AppSetting.d());
           GAClientLogReport.instance();
           return;
         }
@@ -85,18 +85,13 @@ public abstract class MultiOperatorBase
     catch (Exception localException)
     {
       AVLog.a("MultiOperatorBase", "initGAudioCtrl  fail.", localException);
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
+      this.c = null;
     }
   }
   
   public long a(int paramInt1, int paramInt2, long paramLong)
   {
     return 0L;
-  }
-  
-  public QQGAudioCtrl a()
-  {
-    return this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
   }
   
   public void a(long paramLong1, long paramLong2, String paramString) {}
@@ -117,7 +112,7 @@ public abstract class MultiOperatorBase
     ((StringBuilder)localObject1).append("]");
     QLog.w("MultiOperatorBase", 1, ((StringBuilder)localObject1).toString());
     localObject1 = GraphicRenderMgr.getInstance();
-    Object localObject2 = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
+    Object localObject2 = this.c;
     if (localObject2 != null)
     {
       paramLong = 0L;
@@ -129,7 +124,7 @@ public abstract class MultiOperatorBase
             ((IGraphicRender)localObject1).decreaseDecoderPtrRef();
           }
           if (((IGraphicRender)localObject1).getDecodePtrRef() == 0) {
-            this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setProcessDecoderFrameFunctionptr(0L);
+            this.c.setProcessDecoderFrameFunctionptr(0L);
           }
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("setEncodeDecodePtr, decoderPtrRef:=");
@@ -141,7 +136,7 @@ public abstract class MultiOperatorBase
         if (((IGraphicRender)localObject1).getDecodePtrRef() >= 1)
         {
           paramLong = ((IGraphicRender)localObject1).getRecvDecoderFrameFunctionPtr();
-          this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setProcessDecoderFrameFunctionptr(paramLong);
+          this.c.setProcessDecoderFrameFunctionptr(paramLong);
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("setEncodeDecodePtr, decoderPtrRef:=");
@@ -158,19 +153,24 @@ public abstract class MultiOperatorBase
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public boolean a(long paramLong, int paramInt)
+  public boolean b(long paramLong, int paramInt)
   {
     return false;
   }
   
-  public void b(long paramLong, ArrayList<AVUserInfo> paramArrayList) {}
+  public void c(long paramLong, ArrayList<AVUserInfo> paramArrayList) {}
   
-  public void g()
+  public void j()
   {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface = null;
+    this.a = null;
+    this.b = 0L;
+    this.d = null;
     a();
+  }
+  
+  public QQGAudioCtrl k()
+  {
+    return this.c;
   }
   
   public void onCheckScreenShareAvailable(int paramInt, byte[] paramArrayOfByte) {}
@@ -227,6 +227,8 @@ public abstract class MultiOperatorBase
   
   public void onHowling() {}
   
+  public void onInitAIDenoiseStatus() {}
+  
   public void onKickOutFail(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
   public void onKickOutSuc(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
@@ -255,7 +257,7 @@ public abstract class MultiOperatorBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.controller.multi.MultiOperatorBase
  * JD-Core Version:    0.7.0.1
  */

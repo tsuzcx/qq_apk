@@ -18,32 +18,20 @@ import java.util.List;
 
 public class WSFeedsPreloadStrategy
 {
-  private int jdField_a_of_type_Int;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private String a = "";
   private boolean b;
+  private Runnable c;
+  private boolean d;
+  private int e;
   
   public WSFeedsPreloadStrategy(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private long a()
-  {
-    return WSExpPreloadABTestManager.a().a() * 1000L;
-  }
-  
-  private ArrayList<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_JavaLangString);
-    return localArrayList;
+    this.e = paramInt;
   }
   
   private void a(WeishiTask paramWeishiTask)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     if (paramWeishiTask == null)
     {
       WSLog.d("WSFeedsPreloadStrategy", "WSRedDot preloadTask is null.");
@@ -51,49 +39,49 @@ public class WSFeedsPreloadStrategy
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("onTaskResponse-resultCode:");
-    ((StringBuilder)localObject1).append(paramWeishiTask.b);
+    ((StringBuilder)localObject1).append(paramWeishiTask.e);
     ((StringBuilder)localObject1).append(" | resultBean:");
-    ((StringBuilder)localObject1).append(paramWeishiTask.jdField_a_of_type_JavaLangObject);
+    ((StringBuilder)localObject1).append(paramWeishiTask.m);
     ((StringBuilder)localObject1).append(" | thread:");
     ((StringBuilder)localObject1).append(Thread.currentThread().getName());
     WSLog.b("WSFeedsPreloadStrategy", ((StringBuilder)localObject1).toString());
-    if (!paramWeishiTask.a())
+    if (!paramWeishiTask.b())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("WSRedDot preload request error. resultCode=");
-      ((StringBuilder)localObject1).append(paramWeishiTask.b);
+      ((StringBuilder)localObject1).append(paramWeishiTask.e);
       WSLog.d("WSFeedsPreloadStrategy", ((StringBuilder)localObject1).toString());
       return;
     }
-    if (!(paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest instanceof RecommendRequest)) {
+    if (!(paramWeishiTask.g instanceof RecommendRequest)) {
       return;
     }
-    localObject1 = (RecommendRequest)paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest;
+    localObject1 = (RecommendRequest)paramWeishiTask.g;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("WSRedDot recommendRequest.mRequestId=");
-    ((StringBuilder)localObject2).append(((RecommendRequest)localObject1).b);
+    ((StringBuilder)localObject2).append(((RecommendRequest)localObject1).d);
     ((StringBuilder)localObject2).append(", mCurrentUniSeq=");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(this.a);
     WSLog.b("WSFeedsPreloadStrategy", ((StringBuilder)localObject2).toString());
-    if ((TextUtils.equals(((RecommendRequest)localObject1).b, this.jdField_a_of_type_JavaLangString)) && ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp)) && (((stSimpleGetFeedListRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject).feeds != null) && (((stSimpleGetFeedListRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject).feeds.size() > 0))
+    if ((TextUtils.equals(((RecommendRequest)localObject1).d, this.a)) && ((paramWeishiTask.m instanceof stSimpleGetFeedListRsp)) && (((stSimpleGetFeedListRsp)paramWeishiTask.m).feeds != null) && (((stSimpleGetFeedListRsp)paramWeishiTask.m).feeds.size() > 0))
     {
-      localObject2 = (stSimpleGetFeedListRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
+      localObject2 = (stSimpleGetFeedListRsp)paramWeishiTask.m;
       localObject1 = ((stSimpleGetFeedListRsp)localObject2).feeds;
-      if (paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean != null) {
-        WSRecommendReportManager.a().a(((stSimpleGetFeedListRsp)localObject2).trace_id, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean.a);
+      if (paramWeishiTask.n != null) {
+        WSRecommendReportManager.a().a(((stSimpleGetFeedListRsp)localObject2).trace_id, paramWeishiTask.n.a);
       }
-      long l = a();
-      WeiShiCacheManager.a().a((List)localObject1, l, this.jdField_a_of_type_Int);
+      long l = d();
+      WeiShiCacheManager.a().a((List)localObject1, l, this.e);
       paramWeishiTask = new StringBuilder();
       paramWeishiTask.append("WSRedDot preloadList.size:");
       paramWeishiTask.append(((ArrayList)localObject1).size());
       WSLog.a("WSFeedsPreloadStrategy", paramWeishiTask.toString());
-      this.b = false;
+      this.d = false;
       return;
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("WSRedDot preloadList is empty. task.mResultBean=");
-    ((StringBuilder)localObject1).append(paramWeishiTask.jdField_a_of_type_JavaLangObject);
+    ((StringBuilder)localObject1).append(paramWeishiTask.m);
     WSLog.d("WSFeedsPreloadStrategy", ((StringBuilder)localObject1).toString());
   }
   
@@ -106,7 +94,7 @@ public class WSFeedsPreloadStrategy
     if (paramInt == 0) {
       return;
     }
-    boolean bool = WeishiUtils.b();
+    boolean bool = WeishiUtils.i();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[checkSendRequest] inRealActionLoginB: ");
     localStringBuilder.append(bool);
@@ -117,21 +105,28 @@ public class WSFeedsPreloadStrategy
       WSLog.b("WSFeedsPreloadStrategy", "[checkSendRequest] sendRequest!");
       return;
     }
-    this.jdField_a_of_type_JavaLangRunnable = new WSFeedsPreloadStrategy.1(this, paramString, paramInt);
-    WeishiBusinessLooper.a().a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    this.c = new WSFeedsPreloadStrategy.1(this, paramString, paramInt);
+    WeishiBusinessLooper.a().a(this.c, 30000L);
     WSLog.b("WSFeedsPreloadStrategy", "[checkSendRequest] postDelayed start!");
   }
   
   private void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = false;
-    WSSharePreferencesUtil.a("key_red_dot_msg_uin", this.jdField_a_of_type_JavaLangString);
+    this.a = paramString;
+    this.b = false;
+    WSSharePreferencesUtil.a("key_red_dot_msg_uin", this.a);
+  }
+  
+  private ArrayList<String> c()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.a);
+    return localArrayList;
   }
   
   private void c(String paramString)
   {
-    Object localObject = WeishiUtils.a();
+    Object localObject = WeishiUtils.g();
     if (localObject != null) {
       localObject = ((WSRedDotPushMsg)localObject).mMsgData;
     } else {
@@ -139,25 +134,30 @@ public class WSFeedsPreloadStrategy
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[realPreloadRedData] scene:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", feedId=");
     localStringBuilder.append(paramString);
     localStringBuilder.append(", wsPushMsgData.mMsgData=");
     localStringBuilder.append((String)localObject);
     WSLog.d("WSFeedsPreloadStrategy", localStringBuilder.toString());
-    localObject = new RecommendRequest(null, (byte)0, (byte)1, a(), this.jdField_a_of_type_Int, null, null, null, (String)localObject);
-    ((RecommendRequest)localObject).b = paramString;
+    localObject = new RecommendRequest(null, (byte)0, (byte)1, c(), this.e, null, null, null, (String)localObject);
+    ((RecommendRequest)localObject).d = paramString;
     paramString = new WeishiTask((WeishiRequest)localObject, null, new WSFeedsPreloadStrategy.2(this), 1001);
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     WeishiBusinessLooper.a().a(paramString);
+  }
+  
+  private long d()
+  {
+    return WSExpPreloadABTestManager.a().f() * 1000L;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    if (this.c != null)
     {
-      WeishiBusinessLooper.a().b(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      WeishiBusinessLooper.a().b(this.c);
+      this.c = null;
       WSLog.b("WSFeedsPreloadStrategy", "[cancelPostDelayRunnable]");
     }
   }
@@ -166,38 +166,38 @@ public class WSFeedsPreloadStrategy
   {
     try
     {
-      if (!WSExpPreloadABTestManager.a().c())
+      if (!WSExpPreloadABTestManager.a().e())
       {
         paramString = new StringBuilder();
         paramString.append("[preloadRedDotData] mHadCleanPreCache:");
-        paramString.append(this.b);
+        paramString.append(this.d);
         WSLog.d("WSFeedsPreloadStrategy", paramString.toString());
-        if (!this.b) {
-          WeiShiCacheManager.a().a(this.jdField_a_of_type_Int);
+        if (!this.d) {
+          WeiShiCacheManager.a().c(this.e);
         }
-        this.b = true;
+        this.d = true;
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[preloadRedDotData] mCurrentUniSeq=structMsg.uniSeq: ");
       localStringBuilder.append(paramString);
       WSLog.b("WSFeedsPreloadStrategy", localStringBuilder.toString());
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString))
+      if (TextUtils.equals(this.a, paramString))
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
+        boolean bool = this.b;
         if (bool) {
           return;
         }
-        if (WeiShiCacheManager.a().a(this.jdField_a_of_type_Int))
+        if (WeiShiCacheManager.a().a(this.e))
         {
           WSLog.d("WSFeedsPreloadStrategy", "[preloadRedDotData] isRedCacheInValidDuration: true");
           return;
         }
         paramString = new StringBuilder();
         paramString.append("[preloadRedDotData] mIsPreloadOutValidDuration: ");
-        paramString.append(WSExpPreloadABTestManager.a().d());
+        paramString.append(WSExpPreloadABTestManager.a().g());
         WSLog.d("WSFeedsPreloadStrategy", paramString.toString());
-        if (!WSExpPreloadABTestManager.a().d()) {
+        if (!WSExpPreloadABTestManager.a().g()) {
           WSLog.d("WSFeedsPreloadStrategy", "[preloadRedDotData] mIsPreloadOutValidDuration: false");
         }
       }
@@ -207,12 +207,12 @@ public class WSFeedsPreloadStrategy
       }
       paramString = new StringBuilder();
       paramString.append("[preloadRedDotData] mCurrentUniSeq: ");
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.a);
       paramString.append(", mIsSendingRequest: ");
-      paramString.append(this.jdField_a_of_type_Boolean);
+      paramString.append(this.b);
       WSLog.d("WSFeedsPreloadStrategy", paramString.toString());
       a();
-      a(this.jdField_a_of_type_JavaLangString, 3);
+      a(this.a, 3);
       return;
     }
     finally {}
@@ -220,13 +220,13 @@ public class WSFeedsPreloadStrategy
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    WeiShiCacheManager.a().a(this.jdField_a_of_type_Int);
+    this.b = false;
+    WeiShiCacheManager.a().c(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WSFeedsPreloadStrategy
  * JD-Core Version:    0.7.0.1
  */

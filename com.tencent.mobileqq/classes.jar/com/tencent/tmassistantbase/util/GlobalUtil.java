@@ -1,7 +1,5 @@
 package com.tencent.tmassistantbase.util;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,8 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.net.Uri.Builder;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -25,8 +21,9 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.tmassistant.common.jce.BoutiqueGameConfig;
+import com.tencent.tmdownloader.internal.storage.b;
 import java.io.File;
 import java.io.IOException;
 import java.net.NetworkInterface;
@@ -320,7 +317,7 @@ public class GlobalUtil
   {
     try
     {
-      Object localObject1 = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
+      Object localObject1 = Collections.list(NetworkMonitor.getNetworkInterfaces()).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (NetworkInterface)((Iterator)localObject1).next();
@@ -363,7 +360,7 @@ public class GlobalUtil
     }
     try
     {
-      Object localObject = ((WifiManager)getContext().getSystemService("wifi")).getConnectionInfo();
+      Object localObject = NetworkMonitor.getConnectionInfo((WifiManager)getContext().getSystemService("wifi"));
       if (localObject != null)
       {
         this.mMACAdress = ((WifiInfo)localObject).getMacAddress();
@@ -572,7 +569,7 @@ public class GlobalUtil
   
   public static boolean isRecommendGame(String paramString)
   {
-    Object localObject = (BoutiqueGameConfig)com.tencent.tmdownloader.internal.storage.b.a().a("key_recommend_games_config", BoutiqueGameConfig.class);
+    Object localObject = (BoutiqueGameConfig)b.a().a("key_recommend_games_config", BoutiqueGameConfig.class);
     if ((localObject != null) && (((BoutiqueGameConfig)localObject).pkgList != null) && (((BoutiqueGameConfig)localObject).pkgList.size() != 0))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -610,76 +607,6 @@ public class GlobalUtil
       str = Pattern.compile("\\s*|\t|\r|\n").matcher(paramString).replaceAll("");
     }
     return str;
-  }
-  
-  public static void setClipboardCMD(Context paramContext, String paramString, long paramLong1, long paramLong2)
-  {
-    Object localObject1 = TAG;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("setClipboardCMD taskTmast:");
-    ((StringBuilder)localObject2).append(paramString);
-    ((StringBuilder)localObject2).append(", startTime=");
-    ((StringBuilder)localObject2).append(paramLong1);
-    ((StringBuilder)localObject2).append(", endTime=");
-    ((StringBuilder)localObject2).append(paramLong2);
-    com.tencent.tmassistantbase.util.b.b.a((String)localObject1, ((StringBuilder)localObject2).toString());
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    localObject1 = Uri.parse(paramString);
-    paramString = ((Uri)localObject1).buildUpon();
-    paramLong2 -= paramLong1;
-    if (paramLong2 < 300000L) {
-      paramLong2 = 1800000L;
-    }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("");
-    ((StringBuilder)localObject2).append(paramLong1);
-    paramString.appendQueryParameter("clipboard_start_time", ((StringBuilder)localObject2).toString());
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("");
-    ((StringBuilder)localObject2).append(paramLong2);
-    paramString.appendQueryParameter("clipboard_expiry_time", ((StringBuilder)localObject2).toString());
-    try
-    {
-      if (TextUtils.isEmpty(((Uri)localObject1).getQueryParameter("hostpname")))
-      {
-        localObject1 = getAppPackageName(paramContext);
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(getAppVersionCode(paramContext));
-        localObject2 = ((StringBuilder)localObject2).toString();
-        paramString.appendQueryParameter("hostpname", (String)localObject1);
-        paramString.appendQueryParameter("hostversioncode", (String)localObject2);
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      com.tencent.tmassistantbase.util.b.b.a(TAG, "setClipboardCMD hostpname set failed.", localThrowable);
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("$");
-    localStringBuilder.append(paramString.build().toString());
-    localStringBuilder.append("$");
-    setPlainTextToClipboard(paramContext, localStringBuilder.toString());
-  }
-  
-  public static void setPlainTextToClipboard(Context paramContext, String paramString)
-  {
-    paramContext = (ClipboardManager)paramContext.getSystemService("clipboard");
-    if (paramContext == null)
-    {
-      com.tencent.tmassistantbase.util.b.b.b(TAG, "cm is null!");
-      return;
-    }
-    Object localObject = ClipData.newPlainText("", paramString);
-    ClipboardMonitor.setPrimaryClip(paramContext, (ClipData)localObject);
-    paramContext.setPrimaryClip((ClipData)localObject);
-    paramContext = TAG;
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("setPlainTextToClipboard plainText:");
-    ((StringBuilder)localObject).append(paramString);
-    com.tencent.tmassistantbase.util.b.b.a(paramContext, ((StringBuilder)localObject).toString());
   }
   
   public static void updateFilePathAuthorized(String paramString)
@@ -1013,28 +940,42 @@ public class GlobalUtil
       try
       {
         w.a("com.tencent.beacon.event.UserAction").a("initUserAction", new Object[] { this.mContext.getApplicationContext() });
-        mQImei = (String)w.a("com.tencent.beacon.event.UserAction").d("getQIMEI").a();
+        String str1 = (String)w.a("com.tencent.beacon.event.UserAction").d("getQIMEI").a();
+        localObject1 = (String)w.a("com.tencent.beacon.event.UserAction").d("getQimeiNew").a();
+        localObject2 = new StringBuilder(str1);
+        ((StringBuilder)localObject2).append("-");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        mQImei = ((StringBuilder)localObject2).toString();
+        localObject2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(">getQimei: qimei=");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("; qimei36=");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append("; mQImei=");
+        localStringBuilder.append(mQImei);
+        ab.c((String)localObject2, localStringBuilder.toString());
       }
       catch (Throwable localThrowable)
       {
-        localObject = TAG;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(">getQimei");
-        localStringBuilder.append(localThrowable.getMessage());
-        ab.e((String)localObject, localStringBuilder.toString());
+        localObject1 = TAG;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(">getQimei");
+        ((StringBuilder)localObject2).append(localThrowable.getMessage());
+        ab.e((String)localObject1, ((StringBuilder)localObject2).toString());
       }
-      str = TAG;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(">getQimei");
-      ((StringBuilder)localObject).append(mQImei);
-      ab.c(str, ((StringBuilder)localObject).toString());
+      str2 = TAG;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(">getQimei");
+      ((StringBuilder)localObject1).append(mQImei);
+      ab.c(str2, ((StringBuilder)localObject1).toString());
       return mQImei;
     }
-    String str = TAG;
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(">getQimei");
-    ((StringBuilder)localObject).append(mQImei);
-    ab.c(str, ((StringBuilder)localObject).toString());
+    String str2 = TAG;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(">getQimei");
+    ((StringBuilder)localObject1).append(mQImei);
+    ab.c(str2, ((StringBuilder)localObject1).toString());
     return mQImei;
   }
   
@@ -1095,7 +1036,7 @@ public class GlobalUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.GlobalUtil
  * JD-Core Version:    0.7.0.1
  */

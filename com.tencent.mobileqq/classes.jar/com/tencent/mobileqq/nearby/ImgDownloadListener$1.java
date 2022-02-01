@@ -15,7 +15,7 @@ class ImgDownloadListener$1
   {
     long l1 = SystemClock.elapsedRealtime();
     long l2 = ImgDownloadListener.a(this.this$0);
-    Object localObject2 = NetworkUtil.getApn(ImgDownloadListener.a(this.this$0));
+    Object localObject2 = NetworkUtil.getApn(ImgDownloadListener.b(this.this$0));
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "wifi";
@@ -39,7 +39,7 @@ class ImgDownloadListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ImgDownloadListener.1
  * JD-Core Version:    0.7.0.1
  */

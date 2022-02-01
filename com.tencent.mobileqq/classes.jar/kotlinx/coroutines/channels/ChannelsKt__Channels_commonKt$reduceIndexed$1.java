@@ -1,0 +1,43 @@
+package kotlinx.coroutines.channels;
+
+import kotlin.Metadata;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.jvm.internal.ContinuationImpl;
+import kotlin.coroutines.jvm.internal.DebugMetadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"reduceIndexed", "", "S", "E", "Lkotlinx/coroutines/channels/ReceiveChannel;", "operation", "Lkotlin/Function3;", "", "Lkotlin/ParameterName;", "name", "index", "acc", "continuation", "Lkotlin/coroutines/Continuation;"}, k=3, mv={1, 1, 16})
+@DebugMetadata(c="kotlinx.coroutines.channels.ChannelsKt__Channels_commonKt", f="Channels.common.kt", i={0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1}, l={2062, 2065}, m="reduceIndexed", n={"$this$reduceIndexed", "operation", "$this$consume$iv", "cause$iv", "$this$consume", "iterator", "$this$reduceIndexed", "operation", "$this$consume$iv", "cause$iv", "$this$consume", "iterator", "index", "accumulator"}, s={"L$0", "L$1", "L$2", "L$3", "L$4", "L$5", "L$0", "L$1", "L$2", "L$3", "L$4", "L$5", "I$0", "L$6"})
+public final class ChannelsKt__Channels_commonKt$reduceIndexed$1
+  extends ContinuationImpl
+{
+  int I$0;
+  Object L$0;
+  Object L$1;
+  Object L$2;
+  Object L$3;
+  Object L$4;
+  Object L$5;
+  Object L$6;
+  int label;
+  
+  public ChannelsKt__Channels_commonKt$reduceIndexed$1(Continuation paramContinuation)
+  {
+    super(paramContinuation);
+  }
+  
+  @Nullable
+  public final Object invokeSuspend(@NotNull Object paramObject)
+  {
+    this.result = paramObject;
+    this.label |= 0x80000000;
+    return ChannelsKt.reduceIndexed(null, null, this);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+ * Qualified Name:     kotlinx.coroutines.channels.ChannelsKt__Channels_commonKt.reduceIndexed.1
+ * JD-Core Version:    0.7.0.1
+ */

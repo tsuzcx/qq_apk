@@ -27,24 +27,24 @@ class LyricsController$3
       ((StringBuilder)localObject).append(" uin:");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(" mFloatParams:");
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams);
+      ((StringBuilder)localObject).append(this.a.d);
       QLog.i("LyricsController", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.a(paramInt, paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.jdField_b_of_type_Boolean != paramBoolean1))
+    if ((this.a.d.b(paramInt, paramString)) && (this.a.d.f != paramBoolean1))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.jdField_b_of_type_Boolean = paramBoolean1;
+      this.a.d.f = paramBoolean1;
       LyricsController.a(this.a);
-      if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!paramBoolean1) && (paramBoolean2))
+      if ((!TextUtils.isEmpty(this.a.C)) && (!paramBoolean1) && (paramBoolean2))
       {
         localObject = this.a;
-        LyricsController.a((LyricsController)localObject, ((LyricsController)localObject).jdField_b_of_type_JavaLangString);
-        if (this.a.jdField_a_of_type_JavaLangBoolean != null)
+        LyricsController.a((LyricsController)localObject, ((LyricsController)localObject).C);
+        if (this.a.E != null)
         {
           localObject = this.a;
-          LyricsController.a((LyricsController)localObject, ((LyricsController)localObject).jdField_b_of_type_JavaLangString, this.a.c, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue());
+          LyricsController.a((LyricsController)localObject, ((LyricsController)localObject).C, this.a.D, this.a.E.booleanValue());
         }
         localObject = this.a;
-        LyricsController.a((LyricsController)localObject, ((LyricsController)localObject).jdField_b_of_type_JavaLangString, this.a.i);
+        LyricsController.a((LyricsController)localObject, ((LyricsController)localObject).C, this.a.B);
       }
     }
     if (paramBoolean2) {
@@ -58,7 +58,7 @@ class LyricsController$3
       return;
     }
     boolean bool;
-    if (paramListenTogetherSession.i == 2) {
+    if (paramListenTogetherSession.q == 2) {
       bool = true;
     } else {
       bool = false;
@@ -77,15 +77,15 @@ class LyricsController$3
       localObject1 = localObject2;
       if (paramListenTogetherSession != null)
       {
-        MusicInfo localMusicInfo = paramListenTogetherSession.a();
+        MusicInfo localMusicInfo = paramListenTogetherSession.e();
         localObject1 = localObject2;
         if (localMusicInfo != null) {
-          localObject1 = localMusicInfo.e;
+          localObject1 = localMusicInfo.g;
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.a = ((String)localObject1);
-      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.g = paramListenTogetherSession.d;
-      this.a.l();
+      this.a.d.g = ((String)localObject1);
+      this.a.d.q = paramListenTogetherSession.k;
+      this.a.n();
       LyricsController.a(this.a);
     }
   }
@@ -100,7 +100,7 @@ class LyricsController$3
       QLog.i("LyricsController", 2, localStringBuilder.toString());
     }
     LyricsController.a(this.a, paramISong.a());
-    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.a = paramISong.d();
+    this.a.d.g = paramISong.f();
     LyricsController.a(this.a);
   }
   
@@ -115,21 +115,21 @@ class LyricsController$3
     }
     if (paramInt == 2)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(true);
+      if (this.a.i != null) {
+        this.a.i.setPlayState(true);
       }
     }
     else if (paramInt == 3)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(false);
+      if (this.a.i != null) {
+        this.a.i.setPlayState(false);
       }
     }
-    else if ((paramInt == 4) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(false);
+    else if ((paramInt == 4) && (this.a.i != null)) {
+      this.a.i.setPlayState(false);
     }
     LyricsController.b(this.a, paramString, paramInt);
-    FloatViewSkin.a().a();
+    FloatViewSkin.a().c();
   }
   
   protected void a(String paramString, int paramInt1, int paramInt2)
@@ -157,18 +157,18 @@ class LyricsController$3
     if (paramListenTogetherSession == null) {
       return;
     }
-    int i = paramListenTogetherSession.f;
-    String str = paramListenTogetherSession.e;
+    int i = paramListenTogetherSession.m;
+    String str = paramListenTogetherSession.n;
     if (paramBoolean)
     {
       localObject = null;
-      MusicInfo localMusicInfo = paramListenTogetherSession.a();
+      MusicInfo localMusicInfo = paramListenTogetherSession.e();
       if (localMusicInfo != null) {
-        localObject = localMusicInfo.e;
+        localObject = localMusicInfo.g;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.a = ((String)localObject);
-      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.g = paramListenTogetherSession.d;
-      this.a.l();
+      this.a.d.g = ((String)localObject);
+      this.a.d.q = paramListenTogetherSession.k;
+      this.a.n();
       this.a.a(i, str);
       return;
     }
@@ -177,14 +177,14 @@ class LyricsController$3
   
   protected void d()
   {
-    if ((this.a.jdField_b_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.e();
+    if ((this.a.e) && (this.a.i != null)) {
+      this.a.i.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.3
  * JD-Core Version:    0.7.0.1
  */

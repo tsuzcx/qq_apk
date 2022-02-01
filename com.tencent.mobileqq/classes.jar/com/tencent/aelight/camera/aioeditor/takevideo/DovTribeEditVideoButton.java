@@ -24,14 +24,14 @@ public class DovTribeEditVideoButton
   extends EditVideoButton
 {
   public static final String a = "DovTribeEditVideoButton";
-  private static final String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131703641);
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private int jdField_b_of_type_Int = -1;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  private String d = "barindex";
+  private static final String m = HardCodeUtil.a(2131901590);
+  private View n;
+  private RelativeLayout o;
+  private TextView p;
+  private TextView q;
+  private int r = -1;
+  private String s;
+  private String x = "barindex";
   
   public DovTribeEditVideoButton(EditVideoPartManager paramEditVideoPartManager, int paramInt)
   {
@@ -47,7 +47,7 @@ public class DovTribeEditVideoButton
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getTribeJsonExtra option: ");
         localStringBuilder.append(paramBundle);
@@ -62,7 +62,7 @@ public class DovTribeEditVideoButton
       {
         if (QLog.isColorLevel())
         {
-          str = jdField_a_of_type_JavaLangString;
+          str = a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("getTribeJsonExtra: ");
           localStringBuilder.append(paramBundle);
@@ -80,12 +80,12 @@ public class DovTribeEditVideoButton
     }
     int i = paramIntent.getIntExtra("theme_id", -1);
     paramIntent = paramIntent.getStringExtra("theme_name");
-    this.jdField_b_of_type_Int = i;
+    this.r = i;
     StringBuilder localStringBuilder;
     if (i == -1)
     {
-      b(jdField_b_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = "";
+      b(m);
+      this.s = "";
     }
     else if (paramIntent != null)
     {
@@ -93,16 +93,16 @@ public class DovTribeEditVideoButton
       localStringBuilder.append("#");
       localStringBuilder.append(paramIntent);
       b(localStringBuilder.toString());
-      this.jdField_c_of_type_JavaLangString = paramIntent;
+      this.s = paramIntent;
     }
     if (QLog.isColorLevel())
     {
-      paramIntent = jdField_a_of_type_JavaLangString;
+      paramIntent = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleSelectedTheme mThemeID = ");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.r);
       localStringBuilder.append(" mThemeName = ");
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(this.s);
       QLog.d(paramIntent, 2, localStringBuilder.toString());
     }
   }
@@ -110,7 +110,7 @@ public class DovTribeEditVideoButton
   private void a(String paramString)
   {
     int i;
-    if ("barindex".equals(this.d)) {
+    if ("barindex".equals(this.x)) {
       i = 1;
     } else {
       i = 2;
@@ -121,85 +121,75 @@ public class DovTribeEditVideoButton
   private void b(String paramString)
   {
     paramString = new SpannableString(paramString);
-    int j = this.jdField_b_of_type_Int;
+    int j = this.r;
     int i = -1;
     if (j != -1) {
       i = -18432;
     }
-    paramString.setSpan(new VerticalImageSpan(a(), 2130842679), 0, 1, 33);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(i);
+    paramString.setSpan(new VerticalImageSpan(u(), 2130843632), 0, 1, 33);
+    this.p.setText(paramString);
+    this.p.setTextColor(i);
   }
   
-  private void g()
+  private void k()
   {
-    if ((this.jdField_b_of_type_Int != -1) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)))
+    if ((this.r != -1) && (!TextUtils.isEmpty(this.s)))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("#");
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(this.s);
       b(localStringBuilder.toString());
     }
     else
     {
-      b(jdField_b_of_type_JavaLangString);
+      b(m);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new DovTribeEditVideoButton.1(this));
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    this.p.setTextColor(-1);
+    this.p.setTextSize(16.0F);
+    this.p.setOnClickListener(new DovTribeEditVideoButton.1(this));
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2064122007));
-    this.jdField_a_of_type_AndroidViewView = ((ImageView)a(2064122719));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2064122067));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131703640));
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(a());
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth(DisplayUtil.a(a(), 192.0F));
-    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
-    int i = DisplayUtil.a(a(), 10.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842680);
-    Object localObject = new RelativeLayout.LayoutParams(-2, DisplayUtil.a(a(), 28.0F));
+    this.o = ((RelativeLayout)d(2063990938));
+    this.n = ((ImageView)d(2063991499));
+    this.q = ((TextView)d(2063990984));
+    this.n.setVisibility(8);
+    this.q.setText(HardCodeUtil.a(2131901589));
+    this.p = new TextView(u());
+    this.p.setGravity(17);
+    this.p.setMaxWidth(DisplayUtil.a(u(), 192.0F));
+    this.p.setEllipsize(TextUtils.TruncateAt.END);
+    this.p.setSingleLine(true);
+    int i = DisplayUtil.a(u(), 10.0F);
+    this.p.setPadding(i, 0, i, 0);
+    this.p.setBackgroundResource(2130843633);
+    Object localObject = new RelativeLayout.LayoutParams(-2, DisplayUtil.a(u(), 28.0F));
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(a(), 10.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    localObject = a(((EditVideoParams)((Activity)a()).getIntent().getParcelableExtra(EditVideoParams.class.getName())).a);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(u(), 10.0F);
+    this.o.addView(this.p, (ViewGroup.LayoutParams)localObject);
+    localObject = a(((EditVideoParams)((Activity)u()).getIntent().getParcelableExtra(EditVideoParams.class.getName())).d);
     if (localObject != null)
     {
       boolean bool = ((JSONObject)localObject).optBoolean("needTheme", false);
-      this.d = ((JSONObject)localObject).optString("from", "");
-      this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("theme_id", -1);
-      this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("theme_name", "");
+      this.x = ((JSONObject)localObject).optString("from", "");
+      this.r = ((JSONObject)localObject).optInt("theme_id", -1);
+      this.s = ((JSONObject)localObject).optString("theme_name", "");
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onCreate mThemeID = ");
-        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(this.r);
         localStringBuilder.append(" mThemeName = ");
-        localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+        localStringBuilder.append(this.s);
         QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
-      g();
+      k();
       if (!bool) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.p.setVisibility(8);
       }
     }
   }
@@ -215,10 +205,20 @@ public class DovTribeEditVideoButton
     }
     a(paramIntent);
   }
+  
+  public int c()
+  {
+    return this.r;
+  }
+  
+  public String d()
+  {
+    return this.s;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.DovTribeEditVideoButton
  * JD-Core Version:    0.7.0.1
  */

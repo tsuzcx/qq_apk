@@ -12,13 +12,13 @@ class SpringFestivalEntryManager$2
   {
     try
     {
-      if ((SpringFestivalEntryManager.a(this.this$0) != 0) && (SpringFestivalEntryManager.a(this.this$0) != 3) && (SpringFestivalEntryManager.a(this.this$0) != 4)) {
-        SpringFestivalEntryManager.a(this.this$0, this.this$0.a());
+      if ((SpringFestivalEntryManager.b(this.this$0) != 0) && (SpringFestivalEntryManager.b(this.this$0) != 3) && (SpringFestivalEntryManager.b(this.this$0) != 4)) {
+        SpringFestivalEntryManager.a(this.this$0, this.this$0.i());
       }
-      SpringFestivalEntryManager.b(this.this$0);
       SpringFestivalEntryManager.c(this.this$0);
       SpringFestivalEntryManager.d(this.this$0);
       SpringFestivalEntryManager.e(this.this$0);
+      SpringFestivalEntryManager.f(this.this$0);
       return;
     }
     catch (Throwable localThrowable)
@@ -33,7 +33,7 @@ class SpringFestivalEntryManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager.2
  * JD-Core Version:    0.7.0.1
  */

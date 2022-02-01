@@ -18,7 +18,7 @@ final class QZoneNotifyServlet$2
   {
     QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
     long l1 = System.currentTimeMillis();
-    long l2 = QZoneNotifyServlet.a();
+    long l2 = QZoneNotifyServlet.b();
     QzoneLbsReporter.reportLocationResult(paramInt, this.businessId, l1 - l2);
     if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
@@ -37,7 +37,7 @@ final class QZoneNotifyServlet$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.2
  * JD-Core Version:    0.7.0.1
  */

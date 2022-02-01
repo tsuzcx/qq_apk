@@ -19,11 +19,11 @@ public class VasAvatar
   implements MosaicEffect.IMosaicEffect
 {
   public Drawable a;
-  private View.OnLongClickListener a;
-  protected AvatarLayout a;
-  public VasAvatarLoader a;
-  protected MosaicEffect a;
-  protected String a;
+  public VasAvatarLoader b;
+  protected AvatarLayout c;
+  protected String d;
+  protected MosaicEffect e;
+  private View.OnLongClickListener f;
   
   public VasAvatar(Context paramContext)
   {
@@ -67,7 +67,7 @@ public class VasAvatar
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
+    Object localObject = this.c;
     if (localObject != null) {
       ((AvatarLayout)localObject).setGoneBelow(1);
     }
@@ -75,19 +75,19 @@ public class VasAvatar
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("show vas avatar of ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.d);
       QLog.d("Q.qqhead.VasFaceManager", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_AndroidViewView$OnLongClickListener != null;
+    return this.f != null;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    MosaicEffect localMosaicEffect = this.e;
     if (localMosaicEffect != null)
     {
       localMosaicEffect.a(paramCanvas);
@@ -98,7 +98,7 @@ public class VasAvatar
   
   protected void onDraw(Canvas paramCanvas)
   {
-    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    MosaicEffect localMosaicEffect = this.e;
     if (localMosaicEffect != null)
     {
       localMosaicEffect.b(paramCanvas);
@@ -113,46 +113,46 @@ public class VasAvatar
     a();
     paramURLDrawable = paramURLDrawable.getCurrDrawable();
     if ((ApngDrawable.class.isInstance(paramURLDrawable)) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))) {
-      VasFaceManager.a(this.jdField_a_of_type_JavaLangString, (ApngDrawable)paramURLDrawable);
+      VasFaceManager.a(this.d, (ApngDrawable)paramURLDrawable);
     }
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader = null;
+    this.b = null;
   }
   
   public void setLoader(AvatarLayout paramAvatarLayout, VasAvatarLoader paramVasAvatarLoader)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader = paramVasAvatarLoader;
-    this.jdField_a_of_type_JavaLangString = paramVasAvatarLoader.jdField_a_of_type_JavaLangString;
+    this.a = paramVasAvatarLoader.g;
+    paramVasAvatarLoader.g = null;
+    setImageDrawable(this.a);
+    this.c = paramAvatarLayout;
+    this.b = paramVasAvatarLoader;
+    this.d = paramVasAvatarLoader.b;
     paramVasAvatarLoader.a(this);
   }
   
   public void setLoaderForCmshow(AvatarLayout paramAvatarLayout, VasAvatarLoader paramVasAvatarLoader, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    paramVasAvatarLoader.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader = paramVasAvatarLoader;
-    this.jdField_a_of_type_JavaLangString = paramVasAvatarLoader.jdField_a_of_type_JavaLangString;
+    this.a = paramVasAvatarLoader.g;
+    paramVasAvatarLoader.g = null;
+    setImageDrawable(this.a);
+    this.c = paramAvatarLayout;
+    this.b = paramVasAvatarLoader;
+    this.d = paramVasAvatarLoader.b;
     paramVasAvatarLoader.a(this, paramInt1, paramInt2);
   }
   
   public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
-    MosaicEffect localMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    MosaicEffect localMosaicEffect = this.e;
     if (localMosaicEffect != null) {
       localMosaicEffect.a(null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect = paramMosaicEffect;
-    paramMosaicEffect = this.jdField_a_of_type_ComTencentMobileqqWidgetMosaicEffect;
+    this.e = paramMosaicEffect;
+    paramMosaicEffect = this.e;
     if (paramMosaicEffect != null) {
       paramMosaicEffect.a(this);
     }
@@ -162,7 +162,7 @@ public class VasAvatar
   public void setOnLongClickListener(@android.support.annotation.Nullable @androidx.annotation.Nullable View.OnLongClickListener paramOnLongClickListener)
   {
     super.setOnLongClickListener(paramOnLongClickListener);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
+    this.f = paramOnLongClickListener;
   }
   
   public void superDrawMosaic(Canvas paramCanvas)
@@ -177,7 +177,7 @@ public class VasAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatar
  * JD-Core Version:    0.7.0.1
  */

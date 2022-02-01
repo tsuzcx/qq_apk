@@ -14,9 +14,9 @@ class MediaFocusManager$FocusEventHandlerDelegate$1
   
   public void handleMessage(Message paramMessage)
   {
-    synchronized (MediaFocusManager.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$FocusEventHandlerDelegate.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager))
+    synchronized (MediaFocusManager.a(this.b.a))
     {
-      MediaFocusManager.OnMediaFocusChangeListener localOnMediaFocusChangeListener = MediaFocusManager.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager$FocusEventHandlerDelegate.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusManager, (String)paramMessage.obj);
+      MediaFocusManager.OnMediaFocusChangeListener localOnMediaFocusChangeListener = MediaFocusManager.a(this.b.a, (String)paramMessage.obj);
       if (localOnMediaFocusChangeListener != null) {
         localOnMediaFocusChangeListener.a(paramMessage.what);
       }
@@ -26,7 +26,7 @@ class MediaFocusManager$FocusEventHandlerDelegate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusManager.FocusEventHandlerDelegate.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class MultiAIOBaseViewPager$MyAccessibilityDelegate
   
   private boolean a()
   {
-    return (this.a.a != null) && (this.a.a.getCount() > 1);
+    return (this.a.c != null) && (this.a.c.getCount() > 1);
   }
   
   public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
@@ -22,11 +22,11 @@ class MultiAIOBaseViewPager$MyAccessibilityDelegate
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(MultiAIOBaseViewPager.class.getName());
     paramAccessibilityEvent.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.a.a != null))
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.a.c != null))
     {
-      paramAccessibilityEvent.setItemCount(this.a.a.getCount());
-      paramAccessibilityEvent.setFromIndex(this.a.b);
-      paramAccessibilityEvent.setToIndex(this.a.b);
+      paramAccessibilityEvent.setItemCount(this.a.c.getCount());
+      paramAccessibilityEvent.setFromIndex(this.a.d);
+      paramAccessibilityEvent.setToIndex(this.a.d);
     }
   }
   
@@ -56,7 +56,7 @@ class MultiAIOBaseViewPager$MyAccessibilityDelegate
       if (this.a.canScrollHorizontally(-1))
       {
         paramView = this.a;
-        paramView.setCurrentItem(paramView.b - 1);
+        paramView.setCurrentItem(paramView.d - 1);
         return true;
       }
       return false;
@@ -64,7 +64,7 @@ class MultiAIOBaseViewPager$MyAccessibilityDelegate
     if (this.a.canScrollHorizontally(1))
     {
       paramView = this.a;
-      paramView.setCurrentItem(paramView.b + 1);
+      paramView.setCurrentItem(paramView.d + 1);
       return true;
     }
     return false;
@@ -72,7 +72,7 @@ class MultiAIOBaseViewPager$MyAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.MyAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

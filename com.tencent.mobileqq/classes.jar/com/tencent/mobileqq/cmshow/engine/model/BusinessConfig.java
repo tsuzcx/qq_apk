@@ -12,28 +12,28 @@ import org.jetbrains.annotations.NotNull;
 public final class BusinessConfig
 {
   @NotNull
-  private final ReadWriteProperty jdField_a_of_type_KotlinPropertiesReadWriteProperty;
+  private final ReadWriteProperty b;
   
   public BusinessConfig(@NotNull Function3<? super KProperty<?>, Object, Object, Unit> paramFunction3)
   {
     Object localObject = Delegates.INSTANCE;
     localObject = Integer.valueOf(-1);
-    this.jdField_a_of_type_KotlinPropertiesReadWriteProperty = ((ReadWriteProperty)new BusinessConfig..special..inlined.observable.1(paramFunction3, localObject, localObject));
+    this.b = ((ReadWriteProperty)new BusinessConfig..special..inlined.observable.1(paramFunction3, localObject, localObject));
   }
   
   public final int a()
   {
-    return ((Number)this.jdField_a_of_type_KotlinPropertiesReadWriteProperty.getValue(this, jdField_a_of_type_ArrayOfKotlinReflectKProperty[0])).intValue();
+    return ((Number)this.b.getValue(this, a[0])).intValue();
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_KotlinPropertiesReadWriteProperty.setValue(this, jdField_a_of_type_ArrayOfKotlinReflectKProperty[0], Integer.valueOf(paramInt));
+    this.b.setValue(this, a[0], Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.model.BusinessConfig
  * JD-Core Version:    0.7.0.1
  */

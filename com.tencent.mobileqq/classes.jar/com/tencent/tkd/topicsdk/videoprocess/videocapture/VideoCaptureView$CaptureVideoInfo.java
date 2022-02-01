@@ -3,29 +3,31 @@ package com.tencent.tkd.topicsdk.videoprocess.videocapture;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "", "filePath", "", "(Ljava/lang/String;)V", "value", "", "endTime", "getEndTime", "()I", "setEndTime", "(I)V", "getFilePath", "()Ljava/lang/String;", "startTime", "getStartTime", "setStartTime", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "", "filePath", "", "(Ljava/lang/String;)V", "coverRatio", "", "getCoverRatio", "()F", "setCoverRatio", "(F)V", "value", "", "endTime", "getEndTime", "()I", "setEndTime", "(I)V", "getFilePath", "()Ljava/lang/String;", "startTime", "getStartTime", "setStartTime", "videoHeight", "getVideoHeight", "setVideoHeight", "videoWidth", "getVideoWidth", "setVideoWidth", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class VideoCaptureView$CaptureVideoInfo
 {
-  private int jdField_a_of_type_Int;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
+  private int a;
   private int b;
+  private int c;
+  private int d;
+  private float e;
+  @NotNull
+  private final String f;
   
   public VideoCaptureView$CaptureVideoInfo(@NotNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = paramString;
     this.b = 2147483647;
   }
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  @NotNull
-  public final String a()
+  public final void a(float paramFloat)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.e = paramFloat;
   }
   
   public final void a(int paramInt)
@@ -33,7 +35,7 @@ public final class VideoCaptureView$CaptureVideoInfo
     if (paramInt <= 0) {
       paramInt = 0;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public final int b()
@@ -43,7 +45,7 @@ public final class VideoCaptureView$CaptureVideoInfo
   
   public final void b(int paramInt)
   {
-    if (paramInt > this.jdField_a_of_type_Int)
+    if (paramInt > this.a)
     {
       this.b = paramInt;
       return;
@@ -51,10 +53,41 @@ public final class VideoCaptureView$CaptureVideoInfo
     a(0);
     this.b = 2147483647;
   }
+  
+  public final int c()
+  {
+    return this.c;
+  }
+  
+  public final void c(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public final int d()
+  {
+    return this.d;
+  }
+  
+  public final void d(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public final float e()
+  {
+    return this.e;
+  }
+  
+  @NotNull
+  public final String f()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCaptureView.CaptureVideoInfo
  * JD-Core Version:    0.7.0.1
  */

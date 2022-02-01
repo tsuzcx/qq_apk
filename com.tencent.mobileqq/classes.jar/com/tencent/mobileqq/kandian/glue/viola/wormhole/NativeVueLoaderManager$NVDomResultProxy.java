@@ -9,63 +9,63 @@ import com.tencent.viola.utils.ViolaUtils;
 class NativeVueLoaderManager$NVDomResultProxy
   implements NativeVueEngine.DomResult, Runnable
 {
-  private long jdField_a_of_type_Long;
-  private NativeVueEngine.DomResult jdField_a_of_type_ComTencentNativevueNativeVueEngine$DomResult;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private NativeVueEngine.DomResult a;
+  private volatile boolean b;
+  private String c;
+  private long d;
   
   public NativeVueLoaderManager$NVDomResultProxy(NativeVueLoaderManager paramNativeVueLoaderManager, NativeVueEngine.DomResult paramDomResult, String paramString)
   {
-    this.jdField_a_of_type_ComTencentNativevueNativeVueEngine$DomResult = paramDomResult;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramDomResult;
+    this.c = paramString;
     NativeVueLoaderManager.a(paramNativeVueLoaderManager).postDelayed(this, 1300L);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.d = System.currentTimeMillis();
   }
   
   public void onResult(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       QLog.e("NativeVueLoaderManager", 1, "waiting native vue timeout");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.d;
     NativeVueLoaderManager.a(this.this$0).removeCallbacks(this);
-    NativeVueEngine.DomResult localDomResult = this.jdField_a_of_type_ComTencentNativevueNativeVueEngine$DomResult;
+    NativeVueEngine.DomResult localDomResult = this.a;
     if (localDomResult != null) {
       localDomResult.onResult(paramString);
     }
-    NativeVueLoaderManager.a(this.this$0, l1 - l2, this.jdField_a_of_type_JavaLangString);
+    NativeVueLoaderManager.a(this.this$0, l1 - l2, this.c);
     if (!TextUtils.isEmpty(paramString)) {
       paramString = "1";
     } else {
       paramString = "2";
     }
-    ViolaUtils.reportNVProcess(paramString, this.jdField_a_of_type_JavaLangString);
+    ViolaUtils.reportNVProcess(paramString, this.c);
     NativeVueLoaderManager.a(this.this$0, null);
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentNativevueNativeVueEngine$DomResult;
+    this.b = true;
+    Object localObject = this.a;
     if (localObject != null) {
       ((NativeVueEngine.DomResult)localObject).onResult("");
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("NativeVue create Dom timeout, url: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.c);
     QLog.e("NativeVueLoaderManager", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.wormhole.NativeVueLoaderManager.NVDomResultProxy
  * JD-Core Version:    0.7.0.1
  */

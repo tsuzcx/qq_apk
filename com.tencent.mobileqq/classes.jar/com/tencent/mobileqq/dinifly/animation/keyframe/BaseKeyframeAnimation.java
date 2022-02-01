@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.dinifly.animation.keyframe;
 
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
 import android.view.animation.Interpolator;
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import java.util.ArrayList;
@@ -13,38 +14,37 @@ public abstract class BaseKeyframeAnimation<K, A>
   private float cachedEndProgress = -1.0F;
   @Nullable
   private A cachedGetValue = null;
-  @Nullable
-  private Keyframe<K> cachedGetValueKeyframe;
-  private float cachedGetValueProgress = -1.0F;
-  @Nullable
-  private Keyframe<K> cachedKeyframe;
   private float cachedStartDelayProgress = -1.0F;
   private boolean isDiscrete = false;
-  private final List<? extends Keyframe<K>> keyframes;
+  private final BaseKeyframeAnimation.KeyframesWrapper<K> keyframesWrapper;
   final List<BaseKeyframeAnimation.AnimationListener> listeners = new ArrayList(1);
-  private float progress = 0.0F;
+  protected float progress = 0.0F;
   @Nullable
   protected LottieValueCallback<A> valueCallback;
   
   BaseKeyframeAnimation(List<? extends Keyframe<K>> paramList)
   {
-    this.keyframes = paramList;
+    this.keyframesWrapper = wrap(paramList);
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   private float getStartDelayProgress()
   {
-    if (this.cachedStartDelayProgress == -1.0F)
-    {
-      float f;
-      if (this.keyframes.isEmpty()) {
-        f = 0.0F;
-      } else {
-        f = ((Keyframe)this.keyframes.get(0)).getStartProgress();
-      }
-      this.cachedStartDelayProgress = f;
+    if (this.cachedStartDelayProgress == -1.0F) {
+      this.cachedStartDelayProgress = this.keyframesWrapper.getStartDelayProgress();
     }
     return this.cachedStartDelayProgress;
+  }
+  
+  private static <T> BaseKeyframeAnimation.KeyframesWrapper<T> wrap(List<? extends Keyframe<T>> paramList)
+  {
+    if (paramList.isEmpty()) {
+      return new BaseKeyframeAnimation.EmptyKeyframeWrapper(null);
+    }
+    if (paramList.size() == 1) {
+      return new BaseKeyframeAnimation.SingleKeyframeWrapper(paramList);
+    }
+    return new BaseKeyframeAnimation.KeyframesWrapperImpl(paramList);
   }
   
   public void addUpdateListener(BaseKeyframeAnimation.AnimationListener paramAnimationListener)
@@ -54,46 +54,17 @@ public abstract class BaseKeyframeAnimation<K, A>
   
   protected Keyframe<K> getCurrentKeyframe()
   {
-    Object localObject = this.cachedKeyframe;
-    if ((localObject != null) && (((Keyframe)localObject).containsProgress(this.progress))) {
-      return this.cachedKeyframe;
-    }
-    localObject = this.keyframes;
-    Keyframe localKeyframe = (Keyframe)((List)localObject).get(((List)localObject).size() - 1);
-    localObject = localKeyframe;
-    if (this.progress < localKeyframe.getStartProgress())
-    {
-      int i = this.keyframes.size() - 1;
-      localObject = localKeyframe;
-      while (i >= 0)
-      {
-        localObject = (Keyframe)this.keyframes.get(i);
-        if (((Keyframe)localObject).containsProgress(this.progress)) {
-          break;
-        }
-        i -= 1;
-      }
-    }
-    this.cachedKeyframe = ((Keyframe)localObject);
-    return localObject;
+    L.beginSection("BaseKeyframeAnimation#getCurrentKeyframe");
+    Keyframe localKeyframe = this.keyframesWrapper.getCurrentKeyframe();
+    L.endSection("BaseKeyframeAnimation#getCurrentKeyframe");
+    return localKeyframe;
   }
   
   @FloatRange(from=0.0D, to=1.0D)
   float getEndProgress()
   {
-    if (this.cachedEndProgress == -1.0F)
-    {
-      float f;
-      if (this.keyframes.isEmpty())
-      {
-        f = 1.0F;
-      }
-      else
-      {
-        List localList = this.keyframes;
-        f = ((Keyframe)localList.get(localList.size() - 1)).getEndProgress();
-      }
-      this.cachedEndProgress = f;
+    if (this.cachedEndProgress == -1.0F) {
+      this.cachedEndProgress = this.keyframesWrapper.getEndProgress();
     }
     return this.cachedEndProgress;
   }
@@ -126,19 +97,26 @@ public abstract class BaseKeyframeAnimation<K, A>
   
   public A getValue()
   {
-    Object localObject = getCurrentKeyframe();
-    float f = getInterpolatedCurrentKeyframeProgress();
-    if ((this.valueCallback == null) && (localObject == this.cachedGetValueKeyframe) && (this.cachedGetValueProgress == f)) {
+    float f = getLinearCurrentKeyframeProgress();
+    if ((this.valueCallback == null) && (this.keyframesWrapper.isCachedValueEnabled(f))) {
       return this.cachedGetValue;
     }
-    this.cachedGetValueKeyframe = ((Keyframe)localObject);
-    this.cachedGetValueProgress = f;
-    localObject = getValue((Keyframe)localObject, f);
+    Object localObject = getCurrentKeyframe();
+    if ((((Keyframe)localObject).xInterpolator != null) && (((Keyframe)localObject).yInterpolator != null)) {
+      localObject = getValue((Keyframe)localObject, f, ((Keyframe)localObject).xInterpolator.getInterpolation(f), ((Keyframe)localObject).yInterpolator.getInterpolation(f));
+    } else {
+      localObject = getValue((Keyframe)localObject, getInterpolatedCurrentKeyframeProgress());
+    }
     this.cachedGetValue = localObject;
     return localObject;
   }
   
   abstract A getValue(Keyframe<K> paramKeyframe, float paramFloat);
+  
+  protected A getValue(Keyframe<K> paramKeyframe, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    throw new UnsupportedOperationException("This animation does not support split dimensions!");
+  }
   
   public void notifyListeners()
   {
@@ -157,10 +135,9 @@ public abstract class BaseKeyframeAnimation<K, A>
   
   public void setProgress(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    if (this.keyframes.isEmpty()) {
+    if (this.keyframesWrapper.isEmpty()) {
       return;
     }
-    Keyframe localKeyframe1 = getCurrentKeyframe();
     float f;
     if (paramFloat < getStartDelayProgress())
     {
@@ -177,8 +154,7 @@ public abstract class BaseKeyframeAnimation<K, A>
       return;
     }
     this.progress = f;
-    Keyframe localKeyframe2 = getCurrentKeyframe();
-    if ((localKeyframe1 != localKeyframe2) || (!localKeyframe2.isStatic())) {
+    if (this.keyframesWrapper.isValueChanged(f)) {
       notifyListeners();
     }
   }
@@ -197,7 +173,7 @@ public abstract class BaseKeyframeAnimation<K, A>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

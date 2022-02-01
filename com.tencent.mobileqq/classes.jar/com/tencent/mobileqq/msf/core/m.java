@@ -27,7 +27,7 @@ public class m
   {
     if (paramn != null)
     {
-      paramn = new m.e(this, paramn);
+      paramn = new m.f(this, paramn);
       this.c.postDelayed(paramn, paramLong);
       return paramn;
     }
@@ -36,11 +36,20 @@ public class m
   
   public Runnable a(ToServiceMsg paramToServiceMsg, long paramLong)
   {
-    m.d locald = new m.d(this, paramToServiceMsg);
+    m.e locale = new m.e(this, paramToServiceMsg);
     if (paramToServiceMsg != null) {
-      this.c.postDelayed(locald, paramLong);
+      this.c.postDelayed(locale, paramLong);
     }
-    return locald;
+    return locale;
+  }
+  
+  public Runnable a(ToServiceMsg paramToServiceMsg, long paramLong, m.d paramd)
+  {
+    paramd = new m.e(this, paramToServiceMsg, paramd);
+    if (paramToServiceMsg != null) {
+      this.c.postDelayed(paramd, paramLong);
+    }
+    return paramd;
   }
   
   public void a()
@@ -83,7 +92,7 @@ public class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.m
  * JD-Core Version:    0.7.0.1
  */

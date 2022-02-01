@@ -13,42 +13,42 @@ class MusicPlayerProxyImpl$2
   {
     if (MusicPlayerProxyImpl.a(this.a) != null)
     {
-      if ((MusicPlayerProxyImpl.a(this.a).a() != null) && (!MusicPlayerProxyImpl.a(this.a).a().equals(MusicPlayerProxyImpl.a(this.a)))) {
+      if ((MusicPlayerProxyImpl.a(this.a).r() != null) && (!MusicPlayerProxyImpl.a(this.a).r().equals(MusicPlayerProxyImpl.c(this.a)))) {
         return;
       }
-      if (MusicPlayerProxyImpl.a(this.a) != null) {
-        MusicPlayerProxyImpl.a(this.a).onPlayStateChanged(paramInt);
+      if (MusicPlayerProxyImpl.d(this.a) != null) {
+        MusicPlayerProxyImpl.d(this.a).onPlayStateChanged(paramInt);
       }
     }
   }
   
   public void a(com.tencent.mobileqq.music.SongInfo paramSongInfo)
   {
-    if (MusicPlayerProxyImpl.a(this.a) != null)
+    if (MusicPlayerProxyImpl.d(this.a) != null)
     {
       com.tencent.qqmini.sdk.launcher.core.model.SongInfo localSongInfo = new com.tencent.qqmini.sdk.launcher.core.model.SongInfo();
-      localSongInfo.album = paramSongInfo.g;
-      localSongInfo.coverUrl = paramSongInfo.e;
-      localSongInfo.detailUrl = paramSongInfo.f;
-      localSongInfo.duration = paramSongInfo.jdField_d_of_type_Long;
-      localSongInfo.fromMini = paramSongInfo.jdField_a_of_type_Boolean;
-      localSongInfo.id = paramSongInfo.jdField_a_of_type_Long;
-      localSongInfo.mid = paramSongInfo.jdField_a_of_type_JavaLangString;
-      localSongInfo.singer = paramSongInfo.h;
-      localSongInfo.singerId = paramSongInfo.jdField_c_of_type_Long;
-      localSongInfo.startTime = paramSongInfo.jdField_a_of_type_Int;
-      localSongInfo.summary = paramSongInfo.jdField_d_of_type_JavaLangString;
-      localSongInfo.title = paramSongInfo.jdField_c_of_type_JavaLangString;
-      localSongInfo.type = paramSongInfo.jdField_b_of_type_Int;
-      localSongInfo.uin = paramSongInfo.jdField_b_of_type_Long;
-      localSongInfo.url = paramSongInfo.jdField_b_of_type_JavaLangString;
-      MusicPlayerProxyImpl.a(this.a).onPlaySongChanged(localSongInfo);
+      localSongInfo.album = paramSongInfo.i;
+      localSongInfo.coverUrl = paramSongInfo.g;
+      localSongInfo.detailUrl = paramSongInfo.h;
+      localSongInfo.duration = paramSongInfo.p;
+      localSongInfo.fromMini = paramSongInfo.n;
+      localSongInfo.id = paramSongInfo.a;
+      localSongInfo.mid = paramSongInfo.b;
+      localSongInfo.singer = paramSongInfo.j;
+      localSongInfo.singerId = paramSongInfo.k;
+      localSongInfo.startTime = paramSongInfo.l;
+      localSongInfo.summary = paramSongInfo.f;
+      localSongInfo.title = paramSongInfo.e;
+      localSongInfo.type = paramSongInfo.m;
+      localSongInfo.uin = paramSongInfo.c;
+      localSongInfo.url = paramSongInfo.d;
+      MusicPlayerProxyImpl.d(this.a).onPlaySongChanged(localSongInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MusicPlayerProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

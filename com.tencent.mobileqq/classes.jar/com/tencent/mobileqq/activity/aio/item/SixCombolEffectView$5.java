@@ -13,10 +13,10 @@ class SixCombolEffectView$5
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+    if (!SixCombolEffectView.i) {
       return;
     }
-    SixCombolEffectView.b(this.a).start();
+    SixCombolEffectView.c(this.a).start();
   }
   
   public void onAnimationStart(Animator paramAnimator)
@@ -25,19 +25,19 @@ class SixCombolEffectView$5
     if (SixCombolEffectView.a(this.a)) {
       return;
     }
-    SixCombolEffectView.jdField_a_of_type_Int = 2;
+    SixCombolEffectView.j = 2;
     if (QLog.isColorLevel())
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("Animation 2 ,mAnimationState = ");
-      paramAnimator.append(SixCombolEffectView.jdField_a_of_type_Int);
+      paramAnimator.append(SixCombolEffectView.j);
       QLog.w("SixCombolEffectView", 2, paramAnimator.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.5
  * JD-Core Version:    0.7.0.1
  */

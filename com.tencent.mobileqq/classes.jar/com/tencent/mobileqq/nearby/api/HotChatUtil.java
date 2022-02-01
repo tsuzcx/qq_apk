@@ -35,10 +35,10 @@ public class HotChatUtil
   public static Drawable a(Resources paramResources, int paramInt)
   {
     if (paramInt == 0) {
-      return BizTroopUtil.a(paramResources, paramResources.getColor(2131166269));
+      return BizTroopUtil.a(paramResources, paramResources.getColor(2131167002));
     }
     if (paramInt == 1) {
-      return BizTroopUtil.a(paramResources, paramResources.getColor(2131166267));
+      return BizTroopUtil.a(paramResources, paramResources.getColor(2131167000));
     }
     return null;
   }
@@ -55,13 +55,13 @@ public class HotChatUtil
           if (paramInt != 5) {
             return HotChatHandler.JOIN_HOT_CHAT_FAIL;
           }
-          return HardCodeUtil.a(2131705689);
+          return HardCodeUtil.a(2131903574);
         }
-        return HardCodeUtil.a(2131705688);
+        return HardCodeUtil.a(2131903573);
       }
-      return HardCodeUtil.a(2131705691);
+      return HardCodeUtil.a(2131903576);
     }
-    return HardCodeUtil.a(2131705690);
+    return HardCodeUtil.a(2131903575);
   }
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
@@ -77,7 +77,7 @@ public class HotChatUtil
       if (!bool)
       {
         localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        if ((localObject != null) && (((FriendsManager)localObject).b(paramString2)))
+        if ((localObject != null) && (((FriendsManager)localObject).n(paramString2)))
         {
           j = 1;
           break label84;
@@ -89,7 +89,7 @@ public class HotChatUtil
       paramQQAppInterface = null;
       if (localHotChatManager != null)
       {
-        HotChatInfo localHotChatInfo = localHotChatManager.a(paramString1);
+        HotChatInfo localHotChatInfo = localHotChatManager.c(paramString1);
         localObject = localHotChatInfo;
         if (localHotChatInfo != null)
         {
@@ -191,7 +191,7 @@ public class HotChatUtil
     }
     else
     {
-      long l = paramMessageCacheItem.a(0, paramString);
+      long l = paramMessageCacheItem.b(0, paramString);
       if (1L + l == paramLong)
       {
         bool = true;
@@ -209,11 +209,6 @@ public class HotChatUtil
     if (QLog.isColorLevel()) {
       NearbyUtils.a("PttShow", new Object[] { "addLocalMaxMsgSeq", String.format("needUpdateLocal:%b    from:%d     msgSeq:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt), Long.valueOf(paramLong) }) });
     }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 1281) || (paramInt == 1287);
   }
   
   public static boolean a(int paramInt, String paramString)
@@ -263,10 +258,15 @@ public class HotChatUtil
     }
     return false;
   }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 1281) || (paramInt == 1287);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.HotChatUtil
  * JD-Core Version:    0.7.0.1
  */

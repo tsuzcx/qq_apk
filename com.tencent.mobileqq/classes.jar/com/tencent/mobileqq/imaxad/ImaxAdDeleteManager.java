@@ -24,17 +24,17 @@ import org.json.JSONObject;
 
 public class ImaxAdDeleteManager
 {
-  private static ImaxAdDeleteManager jdField_a_of_type_ComTencentMobileqqImaxadImaxAdDeleteManager;
-  private ConcurrentLinkedQueue<String> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private static ImaxAdDeleteManager a;
+  private ConcurrentLinkedQueue<String> b = new ConcurrentLinkedQueue();
   
   public static ImaxAdDeleteManager a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqImaxadImaxAdDeleteManager == null) {
-        jdField_a_of_type_ComTencentMobileqqImaxadImaxAdDeleteManager = new ImaxAdDeleteManager();
+      if (a == null) {
+        a = new ImaxAdDeleteManager();
       }
-      ImaxAdDeleteManager localImaxAdDeleteManager = jdField_a_of_type_ComTencentMobileqqImaxadImaxAdDeleteManager;
+      ImaxAdDeleteManager localImaxAdDeleteManager = a;
       return localImaxAdDeleteManager;
     }
     finally {}
@@ -42,7 +42,7 @@ public class ImaxAdDeleteManager
   
   public static void a(String paramString1, AdvertisementItem paramAdvertisementItem, String paramString2)
   {
-    ImaxAdUtil.b(paramString1, paramString2);
+    ImaxAdUtil.c(paramString1, paramString2);
     if (paramAdvertisementItem != null)
     {
       if (QLog.isColorLevel())
@@ -52,40 +52,19 @@ public class ImaxAdDeleteManager
         paramString1.append(paramString2);
         QLog.d("ImaxAdvertisement", 2, paramString1.toString());
       }
-      paramString1 = paramAdvertisementItem.a.iterator();
+      paramString1 = paramAdvertisementItem.c.iterator();
       while (paramString1.hasNext()) {
-        ImaxAdVideoPreloadManager.b(((VideoCoverItem)paramString1.next()).b);
+        ImaxAdVideoPreloadManager.c(((VideoCoverItem)paramString1.next()).c);
       }
     }
   }
   
-  private boolean b(String paramString)
+  private boolean e(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramString);
+      return this.b.contains(paramString);
     }
     return false;
-  }
-  
-  public String a()
-  {
-    localJSONArray = new JSONArray();
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("senderUin", str);
-        localJSONArray.put(localJSONObject);
-      }
-      return localJSONArray.toString();
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -101,11 +80,11 @@ public class ImaxAdDeleteManager
     if (localObject1 == null) {
       localObject1 = null;
     } else {
-      localObject1 = ((ProxyManager)localObject1).a();
+      localObject1 = ((ProxyManager)localObject1).g();
     }
     if (localObject1 != null)
     {
-      RecentUser localRecentUser = ((RecentUserProxy)localObject1).a(paramString, 10005);
+      RecentUser localRecentUser = ((RecentUserProxy)localObject1).b(paramString, 10005);
       if (localRecentUser != null)
       {
         if (QLog.isColorLevel())
@@ -120,7 +99,7 @@ public class ImaxAdDeleteManager
         localStringBuilder.append(localRecentUser.uin);
         localStringBuilder.append("-");
         localStringBuilder.append(localRecentUser.getType());
-        ((RecentDataListManager)localObject2).a(localStringBuilder.toString());
+        ((RecentDataListManager)localObject2).b(localStringBuilder.toString());
         ((RecentUserProxy)localObject1).a(localRecentUser);
         RecentUtil.b(paramQQAppInterface, paramString, 10005);
         paramQQAppInterface.getMessageFacade().a(paramString, 10005);
@@ -137,31 +116,52 @@ public class ImaxAdDeleteManager
   
   public void a(String paramString)
   {
-    if (!b(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramString);
+    if (!e(paramString)) {
+      this.b.add(paramString);
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
   }
   
   public boolean a(String paramString1, String paramString2)
   {
-    if (b(paramString2)) {
+    if (e(paramString2)) {
       return true;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("delete_st_");
     localStringBuilder.append(paramString2);
-    return true ^ TextUtils.isEmpty(ImaxAdUtil.a(paramString1, localStringBuilder.toString()));
+    return true ^ TextUtils.isEmpty(ImaxAdUtil.b(paramString1, localStringBuilder.toString()));
   }
   
-  public void b(String paramString)
+  public String b()
+  {
+    localJSONArray = new JSONArray();
+    try
+    {
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("senderUin", str);
+        localJSONArray.put(localJSONObject);
+      }
+      return localJSONArray.toString();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return this.b.remove(paramString);
+  }
+  
+  public void c(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -170,7 +170,7 @@ public class ImaxAdDeleteManager
       localStringBuilder.append(paramString);
       QLog.d("ImaxAdvertisement", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.b.clear();
     try
     {
       paramString = new JSONArray(paramString);
@@ -188,31 +188,31 @@ public class ImaxAdDeleteManager
     }
   }
   
-  public void c(String paramString)
+  public void d(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("delete_st_");
       localStringBuilder.append(str);
-      long l = Long.valueOf(ImaxAdUtil.a(paramString, localStringBuilder.toString())).longValue();
+      long l = Long.valueOf(ImaxAdUtil.b(paramString, localStringBuilder.toString())).longValue();
       if (NetConnInfoCenter.getServerTimeMillis() - l > 86400000L)
       {
-        a(str);
+        b(str);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("delete_st_");
         localStringBuilder.append(str);
         ImaxAdUtil.a(paramString, localStringBuilder.toString());
       }
     }
-    ImaxAdUtil.a(paramString, "delete_uin_list", a());
+    ImaxAdUtil.a(paramString, "delete_uin_list", b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdDeleteManager
  * JD-Core Version:    0.7.0.1
  */

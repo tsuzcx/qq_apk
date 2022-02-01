@@ -15,22 +15,22 @@ class GdtBannerAd$2
   public void onClick(View paramView)
   {
     GdtLog.b("GdtBannerAd", "getView().onClick");
-    if (!GdtBannerAd.access$200(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd))
+    if (!GdtBannerAd.access$200(this.b))
     {
       GdtLog.d("GdtBannerAd", "getView().onClick !isValidClick()");
     }
     else
     {
-      GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).a.a = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView.a().onClick(paramView);
-      GdtHandler.a(GdtBannerAd.access$300(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd).a);
-      GdtBannerAd.access$400(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
+      GdtBannerAd.access$300(this.b).b.n = this.a.getAntiSpamForClick().onClick(paramView);
+      GdtHandler.a(GdtBannerAd.access$300(this.b).b);
+      GdtBannerAd.access$400(this.b);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.GdtBannerAd.2
  * JD-Core Version:    0.7.0.1
  */

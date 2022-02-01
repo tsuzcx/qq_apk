@@ -14,13 +14,13 @@ final class ScreenCaptureHelper$captureViewLowApi$1
   
   public final void run()
   {
-    Bitmap localBitmap = ScreenCaptureHelper.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Float);
+    Bitmap localBitmap = ScreenCaptureHelper.a(this.this$0, this.a, this.b);
     ThreadManager.getUIHandler().post((Runnable)new ScreenCaptureHelper.captureViewLowApi.1.1(this, localBitmap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeedback.ScreenCaptureHelper.captureViewLowApi.1
  * JD-Core Version:    0.7.0.1
  */

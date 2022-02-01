@@ -17,40 +17,40 @@ import java.util.List;
 class ReceiptMessageDetailFragment$ReceiptMessageDownloadCallBack
   implements DownCallBack
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ReceiptMessageDetailFragment> a;
+  private int b;
   
   ReceiptMessageDetailFragment$ReceiptMessageDownloadCallBack(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
   public void a(int paramInt, boolean paramBoolean) {}
   
   public void a(DownCallBack.DownResult paramDownResult)
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
     if (localReceiptMessageDetailFragment == null) {
       return;
     }
     Object localObject;
-    if ((paramDownResult.b == 0) && (paramDownResult.a != null))
+    if ((paramDownResult.b == 0) && (paramDownResult.f != null))
     {
-      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMessageFacade().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
+      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment).getMessageFacade().a(ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment).b, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment).a, ReceiptMessageDetailFragment.u(localReceiptMessageDetailFragment));
       localObject = localMessageRecord;
       if (localMessageRecord == null)
       {
         localObject = new MessageForStructing();
         ((MessageRecord)localObject).senderuin = "0";
-        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
+        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.u(localReceiptMessageDetailFragment);
       }
-      paramDownResult = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getProxyManager().a().a(paramDownResult.a, null, (MessageRecord)localObject, null);
+      paramDownResult = ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment).getProxyManager().b().a(paramDownResult.f, null, (MessageRecord)localObject, null);
       if ((paramDownResult != null) && (!paramDownResult.isEmpty()))
       {
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
+        ReceiptMessageDetailFragment.r(localReceiptMessageDetailFragment).sendEmptyMessage(10);
         return;
       }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+      ReceiptMessageDetailFragment.r(localReceiptMessageDetailFragment).sendEmptyMessage(11);
       return;
     }
     if (QLog.isColorLevel())
@@ -60,19 +60,19 @@ class ReceiptMessageDetailFragment$ReceiptMessageDownloadCallBack
       ((StringBuilder)localObject).append(paramDownResult.b);
       QLog.d("ReceiptMessageDetailFragment", 2, ((StringBuilder)localObject).toString());
     }
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
+    int i = this.b + 1;
+    this.b = i;
     if (i <= 3)
     {
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
+      ReceiptMessageDetailFragment.r(localReceiptMessageDetailFragment).sendEmptyMessage(0);
       return;
     }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
+    ReceiptMessageDetailFragment.r(localReceiptMessageDetailFragment).sendEmptyMessage(11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.ReceiptMessageDownloadCallBack
  * JD-Core Version:    0.7.0.1
  */

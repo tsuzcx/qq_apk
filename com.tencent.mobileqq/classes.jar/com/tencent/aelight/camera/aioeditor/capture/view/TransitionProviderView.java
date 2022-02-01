@@ -39,73 +39,47 @@ public class TransitionProviderView
   extends ProviderView
   implements Handler.Callback, QIMSlidingTabView.IOnTabCheckListener, BounceViewPager.PageChangedObserver, AdapterView.OnItemClickListener
 {
-  public int a;
-  private TransitionProviderPagerAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterTransitionProviderPagerAdapter;
-  MusicDownloadListener jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener = new TransitionProviderView.1(this);
-  public MusicItemInfo a;
-  private BounceViewPager jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager;
-  WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
   public ArrayList<FilterCategory> a;
-  public int b = -1;
-  public int c = 0;
+  public int b = 0;
+  public int c = -1;
+  public MusicItemInfo d;
+  WeakReferenceHandler e = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  public int f = 0;
+  MusicDownloadListener g = new TransitionProviderView.1(this);
+  private BounceViewPager h;
+  private TransitionProviderPagerAdapter i;
   
   public TransitionProviderView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
   }
   
   private void a(MusicItemInfo paramMusicItemInfo)
   {
     if (paramMusicItemInfo != null)
     {
-      QimMusicPlayer localQimMusicPlayer = (QimMusicPlayer)QIMManager.a().c(8);
+      QimMusicPlayer localQimMusicPlayer = (QimMusicPlayer)QIMManager.a().d(8);
       if ((localQimMusicPlayer != null) && (localQimMusicPlayer.b(paramMusicItemInfo)))
       {
         localQimMusicPlayer.a(paramMusicItemInfo);
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener != null) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener.c(true);
+        if (this.F != null) {
+          this.F.c(true);
         }
       }
       else if (localQimMusicPlayer != null)
       {
-        localQimMusicPlayer.a(paramMusicItemInfo, this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener);
+        localQimMusicPlayer.a(paramMusicItemInfo, this.g);
       }
     }
   }
   
-  protected int a()
-  {
-    return 0;
-  }
-  
-  public ArrayList<QIMSlidingTabView.TabIcon> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      QIMSlidingTabView.TabIcon localTabIcon = new QIMSlidingTabView.TabIcon();
-      localTabIcon.jdField_a_of_type_JavaLangString = ((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
-      localTabIcon.jdField_a_of_type_Boolean = false;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131714851));
-      localStringBuilder.append(localTabIcon.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(HardCodeUtil.a(2131714852));
-      localTabIcon.b = localStringBuilder.toString();
-      localArrayList.add(localTabIcon);
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterTransitionProviderPagerAdapter;
+    Object localObject = this.i;
     if (localObject != null) {
       ((TransitionProviderPagerAdapter)localObject).a();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager;
+    localObject = this.h;
     if (localObject != null) {
       ((BounceViewPager)localObject).b(this);
     }
@@ -114,7 +88,7 @@ public class TransitionProviderView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.onTabChecked(paramInt);
+    this.v.onTabChecked(paramInt);
   }
   
   public void a(int paramInt1, float paramFloat, int paramInt2) {}
@@ -125,15 +99,15 @@ public class TransitionProviderView
       QLog.d("QCombo", 2, "TransitionProviderView onCreate");
     }
     super.a(paramBundle);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.setTabCheckListener(this);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)LayoutInflater.from(getContext()).inflate(2131560878, this, false));
+    this.v.setTabCheckListener(this);
+    if (this.w == null) {
+      this.h = ((BounceViewPager)LayoutInflater.from(getContext()).inflate(2131627201, this, false));
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)this.jdField_a_of_type_AndroidViewView);
+      this.h = ((BounceViewPager)this.w);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.a(this);
-    a(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager);
-    paramBundle = ((CaptureComboManager)QIMManager.a(5)).a;
+    this.h.a(this);
+    a(this.h);
+    paramBundle = ((CaptureComboManager)QIMManager.a(5)).l;
     if (paramBundle == null)
     {
       if (QLog.isColorLevel()) {
@@ -141,7 +115,7 @@ public class TransitionProviderView
       }
     }
     else {
-      setup(paramBundle.a());
+      setup(paramBundle.c());
     }
   }
   
@@ -161,22 +135,47 @@ public class TransitionProviderView
   
   public void g()
   {
-    if (!this.d) {
+    if (!this.B) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TransitionProviderView", 2, "TransitionProviderView updateSelectedState");
     }
-    TransitionProviderPagerAdapter localTransitionProviderPagerAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterTransitionProviderPagerAdapter;
+    TransitionProviderPagerAdapter localTransitionProviderPagerAdapter = this.i;
     if (localTransitionProviderPagerAdapter != null) {
       localTransitionProviderPagerAdapter.b();
     }
   }
   
+  protected int getInflateLayout()
+  {
+    return 0;
+  }
+  
+  public ArrayList<QIMSlidingTabView.TabIcon> getTabTextList()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int j = 0;
+    while (j < this.a.size())
+    {
+      QIMSlidingTabView.TabIcon localTabIcon = new QIMSlidingTabView.TabIcon();
+      localTabIcon.a = ((FilterCategory)this.a.get(j)).b;
+      localTabIcon.b = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131912351));
+      localStringBuilder.append(localTabIcon.a);
+      localStringBuilder.append(HardCodeUtil.a(2131912352));
+      localTabIcon.c = localStringBuilder.toString();
+      localArrayList.add(localTabIcon);
+      j += 1;
+    }
+    return localArrayList;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1) {
-      a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
+      a(this.d);
     }
     return false;
   }
@@ -186,31 +185,31 @@ public class TransitionProviderView
     if (paramView == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem() >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+    if (this.h.getCurrentItem() >= this.a.size()) {
       return;
     }
-    paramAdapterView = (FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem());
-    if (paramInt >= paramAdapterView.jdField_a_of_type_JavaUtilList.size()) {
+    paramAdapterView = (FilterCategory)this.a.get(this.h.getCurrentItem());
+    if (paramInt >= paramAdapterView.c.size()) {
       return;
     }
-    paramView = (TransitionCategoryItem)paramAdapterView.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((paramView != null) && (!paramView.equals(VideoFilterTools.a().a())))
+    paramView = (TransitionCategoryItem)paramAdapterView.c.get(paramInt);
+    if ((paramView != null) && (!paramView.equals(VideoFilterTools.a().c())))
     {
       VideoFilterTools.a().a(paramView);
       g();
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener != null)
+      if (this.F != null)
       {
-        paramInt = Integer.parseInt(paramView.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener.b(paramInt);
+        paramInt = Integer.parseInt(paramView.a);
+        this.F.b(paramInt);
       }
-      StoryReportor.a("video_edit_transition", "clk_effects", EditVideoTransfer.a(this.b), 0, new String[] { paramView.k, paramView.n, paramView.l, paramView.m });
+      StoryReportor.a("video_edit_transition", "clk_effects", EditVideoTransfer.b(this.c), 0, new String[] { paramView.t, paramView.w, paramView.u, paramView.v });
     }
-    if (SlideShowPhotoListManager.a().b() == 22) {
-      if ((paramView != null) && (Integer.valueOf(paramView.jdField_a_of_type_JavaLangString).intValue() < 0)) {
+    if (SlideShowPhotoListManager.a().e() == 22) {
+      if ((paramView != null) && (Integer.valueOf(paramView.a).intValue() < 0)) {
         LpReportInfo_pf00064.allReport(680, 7, 2);
-      } else if ((paramView != null) && (Integer.valueOf(paramView.jdField_a_of_type_JavaLangString).intValue() == 4)) {
+      } else if ((paramView != null) && (Integer.valueOf(paramView.a).intValue() == 4)) {
         LpReportInfo_pf00064.allReport(680, 7, 1);
-      } else if ((paramView != null) && (Integer.valueOf(paramView.jdField_a_of_type_JavaLangString).intValue() > 0)) {
+      } else if ((paramView != null) && (Integer.valueOf(paramView.a).intValue() > 0)) {
         LpReportInfo_pf00064.allReport(680, 7, 3);
       }
     }
@@ -218,11 +217,11 @@ public class TransitionProviderView
     {
       paramAdapterView = new MusicItemInfo();
       paramAdapterView.mType = 2;
-      paramView = SlideShowConfigManager.a(getContext()).a(paramView.k);
+      paramView = SlideShowConfigManager.a(getContext()).a(paramView.t);
       if ((paramView != null) && (paramView.size() > 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = ((QIMMusicConfigManager)QIMManager.a(2)).a(((SlideShowConfigManager.Music)paramView.get(0)).jdField_a_of_type_Int, ((SlideShowConfigManager.Music)paramView.get(0)).b);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
+        this.d = ((QIMMusicConfigManager)QIMManager.a(2)).a(((SlideShowConfigManager.Music)paramView.get(0)).a, ((SlideShowConfigManager.Music)paramView.get(0)).b);
+        paramView = this.d;
         if (paramView != null)
         {
           a(paramView);
@@ -239,10 +238,10 @@ public class TransitionProviderView
   {
     if (paramInt >= 0)
     {
-      if (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (paramInt > this.a.size()) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setCurrentItem(paramInt);
+      this.h.setCurrentItem(paramInt);
     }
   }
   
@@ -251,26 +250,26 @@ public class TransitionProviderView
     if (paramArrayList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.initTabItemsWithRedDot(a());
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterTransitionProviderPagerAdapter = new TransitionProviderPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.g);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterTransitionProviderPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterTransitionProviderPagerAdapter.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterTransitionProviderPagerAdapter);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureAdapterTransitionProviderPagerAdapter.notifyDataSetChanged();
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int j = this.c;
-    if (i > j)
+    this.a = new ArrayList(5);
+    this.a.addAll(paramArrayList);
+    this.v.initTabItemsWithRedDot(getTabTextList());
+    this.i = new TransitionProviderPagerAdapter(this.r, this.D);
+    this.i.a(this.a);
+    this.i.a(this);
+    this.h.setAdapter(this.i);
+    this.i.notifyDataSetChanged();
+    int j = this.a.size();
+    int k = this.f;
+    if (j > k)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setCurrentItem(j);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.onTabChecked(this.c);
+      this.h.setCurrentItem(k);
+      this.v.onTabChecked(this.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.TransitionProviderView
  * JD-Core Version:    0.7.0.1
  */

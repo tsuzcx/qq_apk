@@ -12,12 +12,12 @@ final class FadeThroughProvider$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(TransitionUtils.a(this.jdField_a_of_type_Float, this.b, this.c, this.d, f));
+    this.a.setAlpha(TransitionUtils.a(this.b, this.c, this.d, this.e, f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.FadeThroughProvider.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ public class SmallVideoParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new SmallVideoAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "now";
-    paramBaseQQAppInterface.c = "playmedia";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "now";
+    paramBaseQQAppInterface.e = "playmedia";
     return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.SmallVideoParser
  * JD-Core Version:    0.7.0.1
  */

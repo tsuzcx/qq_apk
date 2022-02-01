@@ -14,11 +14,7 @@ import java.util.concurrent.TimeUnit;
 public final class d
   implements IHttpRequest
 {
-  private int jdField_a_of_type_Int = 0;
-  private f jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF;
-  private Object jdField_a_of_type_JavaLangObject;
   public String a;
-  private CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
   public byte[] b;
   public Map<String, String> c;
   public boolean d = false;
@@ -32,10 +28,14 @@ public final class d
   public boolean l = true;
   public volatile boolean m = false;
   public String n;
+  private Object o;
+  private int p = 0;
+  private f q;
+  private CountDownLatch r = new CountDownLatch(1);
   
   public d(String paramString, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     this.b = paramArrayOfByte;
     this.g = c.c();
   }
@@ -51,7 +51,7 @@ public final class d
   {
     try
     {
-      this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF = paramf;
+      this.q = paramf;
       return;
     }
     finally
@@ -65,7 +65,7 @@ public final class d
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await(this.k, TimeUnit.MILLISECONDS);
+      boolean bool = this.r.await(this.k, TimeUnit.MILLISECONDS);
       return bool;
     }
     catch (InterruptedException localInterruptedException)
@@ -87,14 +87,14 @@ public final class d
   
   public final void b()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.r.countDown();
   }
   
   public final f c()
   {
     try
     {
-      f localf = this.jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonBAF;
+      f localf = this.q;
       return localf;
     }
     finally
@@ -111,7 +111,7 @@ public final class d
   
   public final Object getTag()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.o;
   }
   
   public final String getUniqueId()
@@ -154,12 +154,12 @@ public final class d
   
   public final void setMode(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.p = paramInt;
   }
   
   public final void setTag(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.o = paramObject;
   }
   
   public final void setTimeout(int paramInt)
@@ -171,7 +171,7 @@ public final class d
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder("url:");
-    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder2.append(this.a);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder(",body:");
     localStringBuilder2.append(c.b(this.b));
@@ -183,19 +183,19 @@ public final class d
     localStringBuilder2.append(this.f);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder(",tag:");
-    localStringBuilder2.append(this.jdField_a_of_type_JavaLangObject);
+    localStringBuilder2.append(this.o);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder(",httpCallback:");
     localStringBuilder2.append(this.h);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder(",testMode:");
-    localStringBuilder2.append(this.jdField_a_of_type_Int);
+    localStringBuilder2.append(this.p);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder(",httpCallback:");
     localStringBuilder2.append(this.h);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder(",testMode:");
-    localStringBuilder2.append(this.jdField_a_of_type_Int);
+    localStringBuilder2.append(this.p);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder(",followRedirects:");
     localStringBuilder2.append(this.e);
@@ -211,7 +211,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.access.http.a.d
  * JD-Core Version:    0.7.0.1
  */

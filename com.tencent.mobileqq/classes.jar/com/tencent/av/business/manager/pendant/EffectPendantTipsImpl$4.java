@@ -11,7 +11,7 @@ class EffectPendantTipsImpl$4
   {
     try
     {
-      TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016);
+      TipsUtil.b(EffectPendantTipsImpl.a(this.this$0), 1016);
       return;
     }
     catch (Exception localException)

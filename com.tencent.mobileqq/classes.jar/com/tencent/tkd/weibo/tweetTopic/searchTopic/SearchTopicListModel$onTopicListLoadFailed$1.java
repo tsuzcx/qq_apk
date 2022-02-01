@@ -12,12 +12,12 @@ final class SearchTopicListModel$onTopicListLoadFailed$1
   
   public final void run()
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction7.invoke(Boolean.valueOf(false), Boolean.valueOf(true), Integer.valueOf(0), new ArrayList(), null, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+    this.a.invoke(Boolean.valueOf(false), Boolean.valueOf(true), Integer.valueOf(0), new ArrayList(), null, Integer.valueOf(this.b), this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.searchTopic.SearchTopicListModel.onTopicListLoadFailed.1
  * JD-Core Version:    0.7.0.1
  */

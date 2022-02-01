@@ -2,14 +2,14 @@ package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXFileObject
   implements WXMediaMessage.IMediaObject
 {
-  private static final int CONTENT_LENGTH_LIMIT = 10485760;
+  private static final int CONTENT_LENGTH_LIMIT = 1920991232;
   private static final String TAG = "MicroMsg.SDK.WXFileObject";
-  private int contentLengthLimit = 10485760;
+  private int contentLengthLimit = 1920991232;
   public byte[] fileData;
   public String filePath;
   
@@ -31,7 +31,7 @@ public class WXFileObject
   
   private int getFileSize(String paramString)
   {
-    return d.getFileSize(paramString);
+    return b.a(paramString);
   }
   
   public boolean checkArgs()
@@ -100,7 +100,7 @@ public class WXFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXFileObject
  * JD-Core Version:    0.7.0.1
  */

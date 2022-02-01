@@ -6,22 +6,22 @@ import android.view.ViewGroup;
 public class VideoPauseVideoHolder
   extends VideoHolderBase
 {
-  public final View b;
+  public final View j;
   
   public VideoPauseVideoHolder(View paramView)
   {
     super((ViewGroup)paramView.getParent());
-    this.b = paramView;
+    this.j = paramView;
   }
   
   protected View a(ViewGroup paramViewGroup)
   {
-    return this.b;
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoPauseVideoHolder
  * JD-Core Version:    0.7.0.1
  */

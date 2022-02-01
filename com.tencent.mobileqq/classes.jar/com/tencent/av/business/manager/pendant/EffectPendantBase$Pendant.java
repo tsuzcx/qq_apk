@@ -4,9 +4,9 @@ import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 public class EffectPendantBase$Pendant
 {
-  public PendantItem a;
   public VideoMaterial a;
-  public String a;
+  public String b;
+  public PendantItem c;
 }
 
 

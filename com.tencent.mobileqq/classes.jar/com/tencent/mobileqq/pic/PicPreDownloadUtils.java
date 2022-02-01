@@ -41,7 +41,13 @@ public class PicPreDownloadUtils
     } else {
       k = 0;
     }
+    int m;
     if (paramInt == 0) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    if (paramInt == 10014) {
       paramInt = 1;
     } else {
       paramInt = 0;
@@ -56,8 +62,11 @@ public class PicPreDownloadUtils
       if (k != 0) {
         return 2;
       }
+      if (m != 0) {
+        return 3;
+      }
     } while (paramInt == 0);
-    return 3;
+    return 4;
   }
   
   public static long a(AppInterface paramAppInterface, String paramString, long paramLong)
@@ -173,7 +182,31 @@ public class PicPreDownloadUtils
     }
   }
   
-  public static long[] a()
+  public static void b(AppInterface paramAppInterface, MessageForPic paramMessageForPic)
+  {
+    if (paramAppInterface != null)
+    {
+      if (paramMessageForPic == null) {
+        return;
+      }
+      if (paramMessageForPic.preDownState == 0)
+      {
+        paramMessageForPic.preDownState = 1;
+        paramMessageForPic.preDownNetworkType = a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("networkType:");
+        localStringBuilder.append(paramMessageForPic.preDownNetworkType);
+        localStringBuilder.append(",state:");
+        localStringBuilder.append(paramMessageForPic.preDownState);
+        localStringBuilder.append(",uniseq:");
+        localStringBuilder.append(paramMessageForPic.uniseq);
+        Logger.a("PIC_TAG_PRELOAD", "updateDownState4SD", localStringBuilder.toString());
+        a(paramAppInterface, paramMessageForPic);
+      }
+    }
+  }
+  
+  public static long[] b()
   {
     Object localObject = a.getString("PeakFlowTimePeriod", "");
     if ((localObject != null) && (localObject != ""))
@@ -205,34 +238,10 @@ public class PicPreDownloadUtils
     }
     return new long[0];
   }
-  
-  public static void b(AppInterface paramAppInterface, MessageForPic paramMessageForPic)
-  {
-    if (paramAppInterface != null)
-    {
-      if (paramMessageForPic == null) {
-        return;
-      }
-      if (paramMessageForPic.preDownState == 0)
-      {
-        paramMessageForPic.preDownState = 1;
-        paramMessageForPic.preDownNetworkType = a();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("networkType:");
-        localStringBuilder.append(paramMessageForPic.preDownNetworkType);
-        localStringBuilder.append(",state:");
-        localStringBuilder.append(paramMessageForPic.preDownState);
-        localStringBuilder.append(",uniseq:");
-        localStringBuilder.append(paramMessageForPic.uniseq);
-        Logger.a("PIC_TAG_PRELOAD", "updateDownState4SD", localStringBuilder.toString());
-        a(paramAppInterface, paramMessageForPic);
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloadUtils
  * JD-Core Version:    0.7.0.1
  */

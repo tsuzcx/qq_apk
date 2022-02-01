@@ -30,42 +30,8 @@ import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp.RedPointInfo;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/ecshop/redpoint/QQShopRedPointUtil;", "", "()V", "SP_KEY_CONF_REDPOINT_CLICK_PREFIX", "", "SP_KEY_CONF_REDPOINT_INFO_PREFIX", "SP_KEY_CONF_SHOW_REDPOINT_PREFIX", "TAG", "mRedPointCallbackRef", "Lmqq/util/WeakReference;", "Lcom/tencent/mobileqq/ecshop/redpoint/QQShopRedPointUtil$IGetRedPointCallback;", "clearRedPointClickTag", "", "tabId", "", "clearRedPointInfos", "clearRedPointShowTag", "getRedPointClickTag", "", "taksId", "getRedPointInfo", "shouldReqQgg", "getRedPointInfos", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/ecshop/redpoint/RedPointInfo;", "getRedPointShowDelay", "", "redPointInfo", "currentTime", "getRedPointShowTag", "onResponseRedPoint", "", "Ltencent/im/oidb/qqshop/qq_ad$QQAdGetRsp$RedPointInfo;", "parseToArrayList", "redPointInfos", "resetRedPointShowTag", "saveRedPointClickTag", "saveRedPointInfos", "saveRedPointShowTag", "setGetRedPointCallback", "callback", "verifyRedPointInfo", "currentTabId", "IGetRedPointCallback", "qqshop-feature-impl_release"}, k=1, mv={1, 1, 16})
 public final class QQShopRedPointUtil
 {
-  public static final QQShopRedPointUtil a;
-  private static WeakReference<QQShopRedPointUtil.IGetRedPointCallback> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqEcshopRedpointQQShopRedPointUtil = new QQShopRedPointUtil();
-  }
-  
-  @JvmStatic
-  @Nullable
-  public static final ArrayList<RedPointInfo> a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("redpoint_info_");
-    ((StringBuilder)localObject).append(AppUtils.a().getCurrentAccountUin());
-    localObject = SharedPreferencesUtil.a(((StringBuilder)localObject).toString());
-    Type localType = new QQShopRedPointUtil.getRedPointInfos.type.1().getType();
-    return (ArrayList)new Gson().fromJson((String)localObject, localType);
-  }
-  
-  private final ArrayList<RedPointInfo> a(List<qq_ad.QQAdGetRsp.RedPointInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList.isEmpty()) {
-      return localArrayList;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = (qq_ad.QQAdGetRsp.RedPointInfo)paramList.next();
-      localObject = new RedPointInfo().parse((qq_ad.QQAdGetRsp.RedPointInfo)localObject);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "RedPointInfo().parse(redPointInfoFromRsp)");
-      localArrayList.add(localObject);
-    }
-    return localArrayList;
-  }
+  public static final QQShopRedPointUtil a = new QQShopRedPointUtil();
+  private static WeakReference<QQShopRedPointUtil.IGetRedPointCallback> b;
   
   @JvmStatic
   public static final void a()
@@ -73,46 +39,20 @@ public final class QQShopRedPointUtil
     Object localObject = EcshopConfProcessor.a();
     if (localObject != null)
     {
-      localObject = ((EcshopConfBean)localObject).a;
+      localObject = ((EcshopConfBean)localObject).k;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "ecshopConfBean.tabConfs");
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        b(((EcshopConfBean.TabConfBean)((Iterator)localObject).next()).a);
+        c(((EcshopConfBean.TabConfBean)((Iterator)localObject).next()).b);
       }
     }
-  }
-  
-  @JvmStatic
-  public static final void a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("redpoint_show_");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("_");
-    localStringBuilder.append(AppUtils.a().getCurrentAccountUin());
-    SharedPreferencesUtil.a(localStringBuilder.toString(), true);
-  }
-  
-  @JvmStatic
-  public static final void a(int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[saveRedPointClickTag]  taksId: ");
-    localStringBuilder.append(paramInt2);
-    QLog.i("QQShopRedPointUtil", 2, localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("redpoint_click_");
-    localStringBuilder.append(paramInt1);
-    localStringBuilder.append("_");
-    localStringBuilder.append(AppUtils.a().getCurrentAccountUin());
-    SharedPreferencesUtil.a(localStringBuilder.toString(), paramInt2);
   }
   
   @JvmStatic
   public static final void a(@NotNull QQShopRedPointUtil.IGetRedPointCallback paramIGetRedPointCallback)
   {
     Intrinsics.checkParameterIsNotNull(paramIGetRedPointCallback, "callback");
-    jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramIGetRedPointCallback);
+    b = new WeakReference(paramIGetRedPointCallback);
   }
   
   @JvmStatic
@@ -122,7 +62,7 @@ public final class QQShopRedPointUtil
     if (QLog.isColorLevel()) {
       QLog.i("QQShopRedPointUtil", 2, "[onResponseRedpoint]");
     }
-    paramList = jdField_a_of_type_ComTencentMobileqqEcshopRedpointQQShopRedPointUtil.a(paramList);
+    paramList = a.b(paramList);
     Object localObject;
     if (QLog.isColorLevel())
     {
@@ -133,8 +73,8 @@ public final class QQShopRedPointUtil
     }
     if ((((Collection)paramList).isEmpty() ^ true))
     {
-      jdField_a_of_type_ComTencentMobileqqEcshopRedpointQQShopRedPointUtil.a(paramList);
-      localObject = jdField_a_of_type_MqqUtilWeakReference;
+      a.a(paramList);
+      localObject = b;
       if (localObject != null)
       {
         localObject = (QQShopRedPointUtil.IGetRedPointCallback)((WeakReference)localObject).get();
@@ -148,10 +88,10 @@ public final class QQShopRedPointUtil
   @JvmStatic
   public static final void a(boolean paramBoolean)
   {
-    Object localObject1 = a();
+    Object localObject1 = b();
     if ((localObject1 != null) && ((((Collection)localObject1).isEmpty() ^ true)))
     {
-      Object localObject2 = jdField_a_of_type_MqqUtilWeakReference;
+      Object localObject2 = b;
       if (localObject2 != null)
       {
         localObject2 = (QQShopRedPointUtil.IGetRedPointCallback)((WeakReference)localObject2).get();
@@ -182,7 +122,7 @@ public final class QQShopRedPointUtil
       localStringBuilder.append(paramInt);
       localStringBuilder.append("_");
       localStringBuilder.append(AppUtils.a().getCurrentAccountUin());
-      boolean bool = SharedPreferencesUtil.a(localStringBuilder.toString());
+      boolean bool = SharedPreferencesUtil.d(localStringBuilder.toString());
       return bool;
     }
     catch (Exception localException)
@@ -202,7 +142,7 @@ public final class QQShopRedPointUtil
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("_");
       localStringBuilder.append(AppUtils.a().getCurrentAccountUin());
-      paramInt1 = SharedPreferencesUtil.a(localStringBuilder.toString());
+      paramInt1 = SharedPreferencesUtil.b(localStringBuilder.toString());
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -224,7 +164,62 @@ public final class QQShopRedPointUtil
   }
   
   @JvmStatic
+  @Nullable
+  public static final ArrayList<RedPointInfo> b()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("redpoint_info_");
+    ((StringBuilder)localObject).append(AppUtils.a().getCurrentAccountUin());
+    localObject = SharedPreferencesUtil.a(((StringBuilder)localObject).toString());
+    Type localType = new QQShopRedPointUtil.getRedPointInfos.type.1().getType();
+    return (ArrayList)new Gson().fromJson((String)localObject, localType);
+  }
+  
+  private final ArrayList<RedPointInfo> b(List<qq_ad.QQAdGetRsp.RedPointInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList.isEmpty()) {
+      return localArrayList;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (qq_ad.QQAdGetRsp.RedPointInfo)paramList.next();
+      localObject = new RedPointInfo().parse((qq_ad.QQAdGetRsp.RedPointInfo)localObject);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "RedPointInfo().parse(redPointInfoFromRsp)");
+      localArrayList.add(localObject);
+    }
+    return localArrayList;
+  }
+  
+  @JvmStatic
   public static final void b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("redpoint_show_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(AppUtils.a().getCurrentAccountUin());
+    SharedPreferencesUtil.a(localStringBuilder.toString(), true);
+  }
+  
+  @JvmStatic
+  public static final void b(int paramInt1, int paramInt2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[saveRedPointClickTag]  taksId: ");
+    localStringBuilder.append(paramInt2);
+    QLog.i("QQShopRedPointUtil", 2, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("redpoint_click_");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(AppUtils.a().getCurrentAccountUin());
+    SharedPreferencesUtil.a(localStringBuilder.toString(), paramInt2);
+  }
+  
+  @JvmStatic
+  public static final void c(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("redpoint_show_");
@@ -325,7 +320,7 @@ public final class QQShopRedPointUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.redpoint.QQShopRedPointUtil
  * JD-Core Version:    0.7.0.1
  */

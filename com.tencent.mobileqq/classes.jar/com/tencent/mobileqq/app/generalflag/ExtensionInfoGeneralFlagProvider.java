@@ -56,7 +56,7 @@ public class ExtensionInfoGeneralFlagProvider
   
   public boolean[] a(AppInterface paramAppInterface, boolean paramBoolean1, boolean paramBoolean2, MessageRecord paramMessageRecord, generalflags.ResvAttr paramResvAttr, msg_svc.PbSendMsgReq paramPbSendMsgReq, im_msg_body.GeneralFlags paramGeneralFlags)
   {
-    paramAppInterface = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramAppInterface.getCurrentUin());
+    paramAppInterface = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(paramAppInterface.getCurrentUin());
     if (paramAppInterface != null)
     {
       paramGeneralFlags.uint64_pendant_id.set(paramAppInterface.pendantId);
@@ -71,7 +71,7 @@ public class ExtensionInfoGeneralFlagProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.generalflag.ExtensionInfoGeneralFlagProvider
  * JD-Core Version:    0.7.0.1
  */

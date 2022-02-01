@@ -9,32 +9,31 @@ import java.util.List;
 public class ShareGroupPageLoader$GetShareGroupListEvent
   extends BasePageLoaderEvent
 {
-  public int a;
-  public String a;
-  public List<ShareGroupCollectionItem> a;
+  public List<ShareGroupCollectionItem> e = new ArrayList();
+  public int f;
+  public String h;
   
   public ShareGroupPageLoader$GetShareGroupListEvent(ErrorMessage paramErrorMessage, String paramString)
   {
     super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetShareGroupListEvent{mShareGroupList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(this.e.size());
     localStringBuilder.append(", mShareGroupTotalCount=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", errorCode=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode);
+    localStringBuilder.append(this.g.errorCode);
     localStringBuilder.append(", isLocalData=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", isFirstPage=");
     localStringBuilder.append(this.c);
     localStringBuilder.append(", isEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

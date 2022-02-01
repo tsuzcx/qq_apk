@@ -9,9 +9,9 @@ public class WSPushPreloadModel
   implements Parcelable
 {
   public static final Parcelable.Creator<WSPushPreloadModel> CREATOR = new WSPushPreloadModel.1();
-  public long a;
   public boolean a;
-  public boolean b;
+  public long b;
+  public boolean c;
   
   public WSPushPreloadModel() {}
   
@@ -25,14 +25,14 @@ public class WSPushPreloadModel
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.a = bool1;
+    this.b = paramParcel.readLong();
     if (paramParcel.readByte() != 0) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    this.b = bool1;
+    this.c = bool1;
   }
   
   public static WSPushPreloadModel a(JSONObject paramJSONObject)
@@ -41,9 +41,9 @@ public class WSPushPreloadModel
       return null;
     }
     WSPushPreloadModel localWSPushPreloadModel = new WSPushPreloadModel();
-    localWSPushPreloadModel.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("is_preload_data");
-    localWSPushPreloadModel.jdField_a_of_type_Long = paramJSONObject.optLong("valid_duration");
-    localWSPushPreloadModel.b = paramJSONObject.optBoolean("is_preload_out_valid_duration");
+    localWSPushPreloadModel.a = paramJSONObject.optBoolean("is_preload_data");
+    localWSPushPreloadModel.b = paramJSONObject.optLong("valid_duration");
+    localWSPushPreloadModel.c = paramJSONObject.optBoolean("is_preload_out_valid_duration");
     return localWSPushPreloadModel;
   }
   
@@ -59,7 +59,7 @@ public class WSPushPreloadModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel
  * JD-Core Version:    0.7.0.1
  */

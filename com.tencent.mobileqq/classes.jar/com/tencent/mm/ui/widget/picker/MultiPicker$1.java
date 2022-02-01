@@ -1,0 +1,21 @@
+package com.tencent.mm.ui.widget.picker;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class MultiPicker$1
+  implements DialogInterface.OnDismissListener
+{
+  MultiPicker$1(MultiPicker paramMultiPicker) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    MultiPicker.a(this.a, null);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mm.ui.widget.picker.MultiPicker.1
+ * JD-Core Version:    0.7.0.1
+ */

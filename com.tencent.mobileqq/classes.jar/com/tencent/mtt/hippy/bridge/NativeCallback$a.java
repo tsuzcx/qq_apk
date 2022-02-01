@@ -5,10 +5,10 @@ import android.os.Message;
 public class NativeCallback$a
   implements Runnable
 {
-  private long a;
-  private NativeCallback b;
-  private Message c = null;
-  private String d = null;
+  private final long a;
+  private final NativeCallback b;
+  private Message c;
+  private String d;
   
   public NativeCallback$a(NativeCallback paramNativeCallback, long paramLong, Message paramMessage, String paramString)
   {
@@ -25,7 +25,7 @@ public class NativeCallback$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.NativeCallback.a
  * JD-Core Version:    0.7.0.1
  */

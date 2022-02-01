@@ -15,23 +15,23 @@ import com.google.android.material.R.layout;
 class MonthsPagerAdapter
   extends RecyclerView.Adapter<MonthsPagerAdapter.ViewHolder>
 {
-  private final int jdField_a_of_type_Int;
-  private final Context jdField_a_of_type_AndroidContentContext;
+  private final Context a;
   @NonNull
-  private final CalendarConstraints jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints;
-  private final DateSelector<?> jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector;
-  private final MaterialCalendar.OnDayClickListener jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendar$OnDayClickListener;
+  private final CalendarConstraints b;
+  private final DateSelector<?> c;
+  private final MaterialCalendar.OnDayClickListener d;
+  private final int e;
   
   MonthsPagerAdapter(@NonNull Context paramContext, DateSelector<?> paramDateSelector, @NonNull CalendarConstraints paramCalendarConstraints, MaterialCalendar.OnDayClickListener paramOnDayClickListener)
   {
-    Month localMonth1 = paramCalendarConstraints.a();
-    Month localMonth2 = paramCalendarConstraints.b();
-    Month localMonth3 = paramCalendarConstraints.c();
+    Month localMonth1 = paramCalendarConstraints.b();
+    Month localMonth2 = paramCalendarConstraints.c();
+    Month localMonth3 = paramCalendarConstraints.d();
     if (localMonth1.a(localMonth3) <= 0)
     {
       if (localMonth3.a(localMonth2) <= 0)
       {
-        int j = MonthAdapter.jdField_a_of_type_Int;
+        int j = MonthAdapter.a;
         int k = MaterialCalendar.a(paramContext);
         int i;
         if (MaterialDatePicker.a(paramContext)) {
@@ -39,11 +39,11 @@ class MonthsPagerAdapter
         } else {
           i = 0;
         }
-        this.jdField_a_of_type_AndroidContentContext = paramContext;
-        this.jdField_a_of_type_Int = (j * k + i);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints = paramCalendarConstraints;
-        this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector = paramDateSelector;
-        this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendar$OnDayClickListener = paramOnDayClickListener;
+        this.a = paramContext;
+        this.e = (j * k + i);
+        this.b = paramCalendarConstraints;
+        this.c = paramDateSelector;
+        this.d = paramOnDayClickListener;
         setHasStableIds(true);
         return;
       }
@@ -54,13 +54,7 @@ class MonthsPagerAdapter
   
   int a(@NonNull Month paramMonth)
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints.a().b(paramMonth);
-  }
-  
-  @NonNull
-  Month a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints.a().a(paramInt);
+    return this.b.b().b(paramMonth);
   }
   
   @NonNull
@@ -69,7 +63,7 @@ class MonthsPagerAdapter
     LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(paramViewGroup.getContext()).inflate(R.layout.w, paramViewGroup, false);
     if (MaterialDatePicker.a(paramViewGroup.getContext()))
     {
-      localLinearLayout.setLayoutParams(new RecyclerView.LayoutParams(-1, this.jdField_a_of_type_Int));
+      localLinearLayout.setLayoutParams(new RecyclerView.LayoutParams(-1, this.e));
       return new MonthsPagerAdapter.ViewHolder(localLinearLayout, true);
     }
     return new MonthsPagerAdapter.ViewHolder(localLinearLayout, false);
@@ -78,41 +72,47 @@ class MonthsPagerAdapter
   @NonNull
   CharSequence a(int paramInt)
   {
-    return a(paramInt).a(this.jdField_a_of_type_AndroidContentContext);
+    return b(paramInt).a(this.a);
   }
   
   public void a(@NonNull MonthsPagerAdapter.ViewHolder paramViewHolder, int paramInt)
   {
-    Month localMonth = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints.a().a(paramInt);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMonth.a(paramViewHolder.itemView.getContext()));
-    paramViewHolder = (MaterialCalendarGridView)paramViewHolder.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendarGridView.findViewById(R.id.C);
-    if ((paramViewHolder.a() != null) && (localMonth.equals(paramViewHolder.a().jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth)))
+    Month localMonth = this.b.b().b(paramInt);
+    paramViewHolder.a.setText(localMonth.a(paramViewHolder.itemView.getContext()));
+    paramViewHolder = (MaterialCalendarGridView)paramViewHolder.b.findViewById(R.id.C);
+    if ((paramViewHolder.a() != null) && (localMonth.equals(paramViewHolder.a().b)))
     {
       paramViewHolder.invalidate();
       paramViewHolder.a().a(paramViewHolder);
     }
     else
     {
-      MonthAdapter localMonthAdapter = new MonthAdapter(localMonth, this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector, this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints);
+      MonthAdapter localMonthAdapter = new MonthAdapter(localMonth, this.c, this.b);
       paramViewHolder.setNumColumns(localMonth.c);
       paramViewHolder.setAdapter(localMonthAdapter);
     }
     paramViewHolder.setOnItemClickListener(new MonthsPagerAdapter.1(this, paramViewHolder));
   }
   
+  @NonNull
+  Month b(int paramInt)
+  {
+    return this.b.b().b(paramInt);
+  }
+  
   public int getItemCount()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints.a();
+    return this.b.e();
   }
   
   public long getItemId(int paramInt)
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints.a().a(paramInt).a();
+    return this.b.b().b(paramInt).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.MonthsPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

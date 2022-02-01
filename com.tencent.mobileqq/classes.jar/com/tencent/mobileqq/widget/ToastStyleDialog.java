@@ -15,12 +15,12 @@ public class ToastStyleDialog
   
   public ToastStyleDialog(Context paramContext)
   {
-    super(paramContext, 2131755332);
+    super(paramContext, 2131952026);
     getWindow().setFlags(16, 16);
     getWindow().setFlags(8, 8);
     getWindow().setGravity(17);
-    setContentView(2131561518);
-    this.a = ((TextView)findViewById(2131378963));
+    setContentView(2131627879);
+    this.a = ((TextView)findViewById(2131447672));
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
       this.a.setTextColor(Color.parseColor("#FF737373"));
     }
@@ -34,7 +34,7 @@ public class ToastStyleDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ToastStyleDialog
  * JD-Core Version:    0.7.0.1
  */

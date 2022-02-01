@@ -16,21 +16,21 @@ class TextItemBuilder$8
   
   public void run()
   {
-    SpannableString localSpannableString = this.this$0.a(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Long);
+    SpannableString localSpannableString = this.this$0.a(this.a, this.b);
     if (localSpannableString != null) {
-      synchronized (TextItemBuilder.jdField_a_of_type_ComTencentUtilLRULinkedHashMap)
+      synchronized (TextItemBuilder.B)
       {
-        TextItemBuilder.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(Long.valueOf(this.b), localSpannableString);
+        TextItemBuilder.B.put(Long.valueOf(this.c), localSpannableString);
       }
     }
-    Object localObject3 = this.this$0.b.obtainMessage();
+    Object localObject3 = this.this$0.A.obtainMessage();
     ((Message)localObject3).what = 1;
     ((Message)localObject3).obj = localObject1;
     ??? = new Bundle();
-    ((Bundle)???).putLong("msg_id", this.b);
+    ((Bundle)???).putLong("msg_id", this.c);
     ((Message)localObject3).setData((Bundle)???);
-    this.this$0.b.sendMessage((Message)localObject3);
-    localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(MiniChatActivity.class);
+    this.this$0.A.sendMessage((Message)localObject3);
+    localObject3 = this.this$0.d.getHandler(MiniChatActivity.class);
     if (localObject3 != null)
     {
       localObject3 = ((MqqHandler)localObject3).obtainMessage();
@@ -43,7 +43,7 @@ class TextItemBuilder$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

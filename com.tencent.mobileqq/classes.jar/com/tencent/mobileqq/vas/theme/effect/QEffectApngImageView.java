@@ -30,9 +30,9 @@ public class QEffectApngImageView
   public static QEffectApngImageView.ApngOptions a(int[] paramArrayOfInt, String paramString)
   {
     QEffectApngImageView.ApngOptions localApngOptions = new QEffectApngImageView.ApngOptions();
-    localApngOptions.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    localApngOptions.a = paramArrayOfInt;
+    localApngOptions.c = paramString;
     localApngOptions.b = paramString;
-    localApngOptions.jdField_a_of_type_JavaLangString = paramString;
     return localApngOptions;
   }
   
@@ -55,13 +55,13 @@ public class QEffectApngImageView
     else
     {
       this.a = new QEffectApngImageView.ApngOptions();
-      this.a.jdField_a_of_type_JavaLangString = String.valueOf(paramQEffectData.effectId);
       this.a.b = String.valueOf(paramQEffectData.effectId);
-      this.a.jdField_a_of_type_ArrayOfInt = new int[] { paramQEffectData.effectId };
+      this.a.c = String.valueOf(paramQEffectData.effectId);
+      this.a.a = new int[] { paramQEffectData.effectId };
     }
     paramContext = new Bundle();
     paramContext.putBoolean("key_double_bitmap", true);
-    paramContext = VasApngUtil.getApngDrawable(MobileQQ.sMobileQQ.waitAppRuntime(null), paramQEffectData.src, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_ArrayOfInt, this.a.b, paramContext);
+    paramContext = VasApngUtil.getApngDrawable(MobileQQ.sMobileQQ.waitAppRuntime(null), paramQEffectData.src, this.a.b, this.a.d, this.a.a, this.a.c, paramContext);
     if (paramContext == null)
     {
       paramContext = new StringBuilder();
@@ -78,7 +78,7 @@ public class QEffectApngImageView
   
   public void pause()
   {
-    int[] arrayOfInt = this.a.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.a.a;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -90,7 +90,7 @@ public class QEffectApngImageView
   
   public void resume()
   {
-    int[] arrayOfInt = this.a.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.a.a;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -102,7 +102,7 @@ public class QEffectApngImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.effect.QEffectApngImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ class MiniPie$8
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean))
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.z))
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
+      this.a.A.removeView(this.a.y.getView());
       paramKeyEvent = this.a;
-      paramKeyEvent.jdField_a_of_type_Boolean = false;
-      paramKeyEvent = ((Activity)paramKeyEvent.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      paramKeyEvent.z = false;
+      paramKeyEvent = ((Activity)paramKeyEvent.b).getWindow().getAttributes();
       paramKeyEvent.y = 0;
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramKeyEvent);
+      ((Activity)this.a.b).getWindow().setAttributes(paramKeyEvent);
       return true;
     }
     return false;
@@ -29,7 +29,7 @@ class MiniPie$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.8
  * JD-Core Version:    0.7.0.1
  */

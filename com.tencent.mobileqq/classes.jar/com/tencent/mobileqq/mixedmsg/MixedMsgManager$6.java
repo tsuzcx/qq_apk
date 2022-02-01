@@ -4,10 +4,10 @@ import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.pic.api.IPicHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 
-class MixedMsgManager$6
+final class MixedMsgManager$6
   implements Runnable
 {
-  MixedMsgManager$6(MixedMsgManager paramMixedMsgManager, MessageForPic paramMessageForPic) {}
+  MixedMsgManager$6(MessageForPic paramMessageForPic) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ class MixedMsgManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager.6
  * JD-Core Version:    0.7.0.1
  */

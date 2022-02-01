@@ -10,22 +10,22 @@ public class PobingTemplateAdapter$Holder
   extends RecyclerView.ViewHolder
 {
   public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public ProgressBar d;
   
   public PobingTemplateAdapter$Holder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372888));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372887));
-    this.b = ((ImageView)paramView.findViewById(2131372885));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372889));
+    this.a = ((ImageView)paramView.findViewById(2131440451));
+    this.b = ((TextView)paramView.findViewById(2131440450));
+    this.c = ((ImageView)paramView.findViewById(2131440448));
+    this.d = ((ProgressBar)paramView.findViewById(2131440452));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PobingTemplateAdapter.Holder
  * JD-Core Version:    0.7.0.1
  */

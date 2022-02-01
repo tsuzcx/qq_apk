@@ -22,8 +22,8 @@ import org.json.JSONObject;
 public class AddContactSecCheckWebPlugin
   extends VasWebviewJsPlugin
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString;
+  private int a = 0;
+  private String b;
   
   public AddContactSecCheckWebPlugin()
   {
@@ -32,7 +32,7 @@ public class AddContactSecCheckWebPlugin
   
   private int a(Activity paramActivity, int paramInt)
   {
-    WebViewProvider localWebViewProvider = this.mRuntime.a();
+    WebViewProvider localWebViewProvider = this.mRuntime.f();
     if ((paramActivity instanceof WebViewPluginContainer)) {
       return ((WebViewPluginContainer)paramActivity).switchRequestCode(this, (byte)paramInt);
     }
@@ -109,10 +109,10 @@ public class AddContactSecCheckWebPlugin
       if (this.mRuntime.a() == null) {
         return;
       }
-      if (this.mRuntime.a() == null) {
+      if (this.mRuntime.b() == null) {
         return;
       }
-      Object localObject = this.mRuntime.a();
+      Object localObject = this.mRuntime.d();
       if (localObject == null) {
         return;
       }
@@ -145,23 +145,23 @@ public class AddContactSecCheckWebPlugin
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("targetAct", 0);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("callBackName", "");
+      this.a = paramString.optInt("targetAct", 0);
+      this.b = paramString.optString("callBackName", "");
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("launchAct, mTargetAct=");
-        paramString.append(this.jdField_a_of_type_Int);
+        paramString.append(this.a);
         paramString.append(", mCallBackName=");
-        paramString.append(this.jdField_a_of_type_JavaLangString);
+        paramString.append(this.b);
         QLog.d("AddContactSecCheckWebPlugin", 2, paramString.toString());
       }
-      if ((this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      if ((this.a > 0) && (!TextUtils.isEmpty(this.b)))
       {
-        if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+        if ((this.mRuntime != null) && (this.mRuntime.d() != null))
         {
-          paramString = this.mRuntime.a();
-          int i = this.jdField_a_of_type_Int;
+          paramString = this.mRuntime.d();
+          int i = this.a;
           Intent localIntent;
           if (i == 1)
           {
@@ -171,7 +171,7 @@ public class AddContactSecCheckWebPlugin
             paramString.startActivityForResult(localIntent, a(paramString, 1));
             return;
           }
-          if (this.jdField_a_of_type_Int == 2)
+          if (this.a == 2)
           {
             localIntent = new Intent(paramString, PhoneUnityBindInfoActivity.class);
             localIntent.putExtra("kSrouce", 21);
@@ -242,7 +242,7 @@ public class AddContactSecCheckWebPlugin
     {
       paramIntent.put("targetAct", paramByte);
       paramIntent.put("status", paramInt);
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramIntent.toString() });
+      callJs(this.b, new String[] { paramIntent.toString() });
       return;
     }
     catch (Exception paramIntent)
@@ -253,7 +253,7 @@ public class AddContactSecCheckWebPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactSecCheckWebPlugin
  * JD-Core Version:    0.7.0.1
  */

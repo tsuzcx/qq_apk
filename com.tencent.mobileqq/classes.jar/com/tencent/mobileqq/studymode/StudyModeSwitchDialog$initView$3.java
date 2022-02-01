@@ -12,13 +12,13 @@ final class StudyModeSwitchDialog$initView$3
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    StudyModeSwitchDialog.a(this.a).b((ModeSwitchManager.OnModeChangeResultCallback)this.a);
-    StudyModeSwitchDialog.a(this.a).a();
+    StudyModeSwitchDialog.c(this.a).b((ModeSwitchManager.OnModeChangeResultCallback)this.a);
+    StudyModeSwitchDialog.c(this.a).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog.initView.3
  * JD-Core Version:    0.7.0.1
  */

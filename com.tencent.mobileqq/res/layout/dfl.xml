@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.timi.game.ui.pag.TimiGamePAGView android:id="@id/nzd" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="5.0dip" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/q9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_toRightOf="@id/nzd" android:layout_centerVertical="true">
+        <TextView android:textSize="10.0dip" android:textColor="#ff29b48a" android:id="@id/q9v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="1.0dip" android:text="组队中" />
+        <TextView android:textSize="9.0dip" android:textColor="#ff999999" android:id="@id/q9r" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:id="@id/q9s" android:background="#ffcccccc" android:layout_width="0.5dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" android:layout_toRightOf="@id/q9w" android:layout_centerVertical="true" />
+    <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="14.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/nzc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/q9u" android:layout_toRightOf="@id/q9s" android:layout_centerVertical="true" />
+    <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="14.0dip" android:textColor="#ff999999" android:id="@id/q9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginRight="3.0dip" android:text="加入" android:drawableRight="@drawable/jfh" android:drawablePadding="4.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</merge>

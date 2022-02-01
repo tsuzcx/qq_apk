@@ -11,14 +11,14 @@ import mqq.os.MqqHandler;
 public class WSPlayerReportImpl
   implements IWSPlayerReport
 {
-  private long jdField_a_of_type_Long;
-  private WSPlayerReportData jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData = new WSPlayerReportData();
-  private boolean jdField_a_of_type_Boolean;
+  private WSPlayerReportData a = new WSPlayerReportData();
+  private boolean b;
+  private long c;
   
   private void a()
   {
     WSLog.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onInfo] 播放状态回调 PLAYER_INFO_CHANGE_HW_BACKUP_URL");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_c_of_type_Boolean = true;
+    this.a.F = true;
   }
   
   private void a(WSPlayerReportData paramWSPlayerReportData)
@@ -27,7 +27,7 @@ public class WSPlayerReportImpl
     localStringBuilder.append("[WSPlayerReportImpl.java][onStop] mReportData:");
     localStringBuilder.append(paramWSPlayerReportData.toString());
     WSLog.d("WS_VIDEO_REPORT", localStringBuilder.toString());
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     WSPlayerReporter.a(paramWSPlayerReportData);
   }
   
@@ -39,7 +39,7 @@ public class WSPlayerReportImpl
       if (paramObject.length == 2)
       {
         String str = paramObject[1];
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_e_of_type_JavaLangString = str;
+        this.a.A = str;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[WSPlayerReportImpl.java][onInfo] PERFORMANCE_REPORT method:");
         localStringBuilder.append(paramObject[0]);
@@ -59,24 +59,24 @@ public class WSPlayerReportImpl
   {
     WSLog.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onInfo] 播放状态回调 PLAYER_INFO_HW_DECODE_FAILED");
     if ((paramObject instanceof String)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_h_of_type_JavaLangString = ((String)paramObject);
+      this.a.E = ((String)paramObject);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_d_of_type_Int = paramInt;
+    this.a.k = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    WSPlayerReportData localWSPlayerReportData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData;
+    WSPlayerReportData localWSPlayerReportData = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt1);
     localStringBuilder.append(":");
     localStringBuilder.append(paramInt2);
-    localWSPlayerReportData.jdField_f_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_g_of_type_JavaLangString = paramString;
+    localWSPlayerReportData.C = localStringBuilder.toString();
+    this.a.D = paramString;
   }
   
   public void a(int paramInt, Object paramObject)
@@ -104,67 +104,67 @@ public class WSPlayerReportImpl
   
   public void a(WSPlayerWrapper paramWSPlayerWrapper)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.o = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+    this.a.z = (SystemClock.uptimeMillis() - this.c);
     ThreadManager.getSubThreadHandler().post(new WSPlayerReportImpl.1(this, paramWSPlayerWrapper));
   }
   
   public void a(WSPlayerWrapper paramWSPlayerWrapper, boolean paramBoolean)
   {
-    WSPlayerReportData localWSPlayerReportData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData;
+    WSPlayerReportData localWSPlayerReportData = this.a;
     int i;
-    if ((paramWSPlayerWrapper.a() instanceof SuperPlayerImpl)) {
+    if ((paramWSPlayerWrapper.b() instanceof SuperPlayerImpl)) {
       i = 1;
     } else {
       i = 0;
     }
-    localWSPlayerReportData.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_b_of_type_Boolean = paramWSPlayerWrapper.g();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_c_of_type_JavaLangString = paramWSPlayerWrapper.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_a_of_type_Long = paramWSPlayerWrapper.c();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_b_of_type_Long = paramWSPlayerWrapper.d();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_f_of_type_Int = paramWSPlayerWrapper.c();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_e_of_type_Int = paramWSPlayerWrapper.d();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_c_of_type_Long = paramWSPlayerWrapper.e();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_d_of_type_JavaLangString = paramWSPlayerWrapper.c();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_f_of_type_Long = paramWSPlayerWrapper.g();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_d_of_type_Long = paramWSPlayerWrapper.i();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_e_of_type_Long = paramWSPlayerWrapper.h();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_g_of_type_Long = paramWSPlayerWrapper.j();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.i = paramWSPlayerWrapper.b();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_h_of_type_Long = paramWSPlayerWrapper.f();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_d_of_type_Boolean = WSExpABTestManager.a().c();
-    a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData);
+    localWSPlayerReportData.a = i;
+    this.a.j = paramWSPlayerWrapper.L();
+    this.a.d = paramWSPlayerWrapper.v();
+    this.a.e = paramWSPlayerWrapper.t();
+    this.a.h = paramWSPlayerWrapper.u();
+    this.a.B = paramWSPlayerWrapper.w();
+    this.a.m = paramWSPlayerWrapper.A();
+    this.a.l = paramWSPlayerWrapper.z();
+    this.a.n = paramWSPlayerWrapper.G();
+    this.a.q = paramWSPlayerWrapper.F();
+    this.a.o = paramWSPlayerWrapper.I();
+    this.a.p = paramWSPlayerWrapper.H();
+    this.a.r = paramWSPlayerWrapper.J();
+    this.a.H = paramWSPlayerWrapper.x();
+    this.a.s = paramWSPlayerWrapper.B();
+    this.a.G = WSExpABTestManager.a().i();
+    a(this.a);
   }
   
   public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
     WSLog.e("WS_VIDEO_REPORT", "[WSPlayerReportImpl.java][onOpenVideo] ==== start ====");
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     long l;
     if (!paramBoolean) {
       l = SystemClock.uptimeMillis();
     } else {
       l = 0L;
     }
-    this.jdField_a_of_type_Long = l;
-    WSPlayerReportData localWSPlayerReportData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData;
-    localWSPlayerReportData.jdField_b_of_type_JavaLangString = paramString1;
-    localWSPlayerReportData.jdField_a_of_type_JavaLangString = paramString2;
-    localWSPlayerReportData.jdField_a_of_type_Boolean = false;
-    localWSPlayerReportData.jdField_b_of_type_Boolean = false;
-    localWSPlayerReportData.jdField_d_of_type_Int = 0;
-    localWSPlayerReportData.jdField_b_of_type_Int = 0;
-    localWSPlayerReportData.jdField_c_of_type_Int = 0;
-    localWSPlayerReportData.jdField_f_of_type_Int = 0;
-    localWSPlayerReportData.jdField_e_of_type_Long = 0L;
-    localWSPlayerReportData.jdField_d_of_type_Long = 0L;
-    localWSPlayerReportData.jdField_d_of_type_JavaLangString = "";
-    localWSPlayerReportData.jdField_f_of_type_JavaLangString = "";
-    localWSPlayerReportData.jdField_g_of_type_JavaLangString = "";
-    localWSPlayerReportData.jdField_c_of_type_JavaLangString = "";
-    localWSPlayerReportData.jdField_e_of_type_JavaLangString = "";
-    localWSPlayerReportData.jdField_h_of_type_JavaLangString = "";
-    localWSPlayerReportData.jdField_c_of_type_Boolean = false;
+    this.c = l;
+    WSPlayerReportData localWSPlayerReportData = this.a;
+    localWSPlayerReportData.c = paramString1;
+    localWSPlayerReportData.b = paramString2;
+    localWSPlayerReportData.i = false;
+    localWSPlayerReportData.j = false;
+    localWSPlayerReportData.k = 0;
+    localWSPlayerReportData.f = 0;
+    localWSPlayerReportData.g = 0;
+    localWSPlayerReportData.B = 0;
+    localWSPlayerReportData.p = 0L;
+    localWSPlayerReportData.o = 0L;
+    localWSPlayerReportData.n = "";
+    localWSPlayerReportData.C = "";
+    localWSPlayerReportData.D = "";
+    localWSPlayerReportData.d = "";
+    localWSPlayerReportData.A = "";
+    localWSPlayerReportData.E = "";
+    localWSPlayerReportData.F = false;
   }
   
   public void a(boolean paramBoolean)
@@ -173,31 +173,31 @@ public class WSPlayerReportImpl
     localStringBuilder.append("[WSPlayerReportImpl.java][onHitPreload] loaded:");
     localStringBuilder.append(paramBoolean);
     WSLog.e("WS_VIDEO_REPORT", localStringBuilder.toString());
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = SystemClock.uptimeMillis();
+    this.a.i = paramBoolean;
   }
   
   public void b(WSPlayerWrapper paramWSPlayerWrapper)
   {
-    WSPlayerReportData localWSPlayerReportData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData;
+    WSPlayerReportData localWSPlayerReportData = this.a;
     int j = 0;
     if (paramWSPlayerWrapper != null) {
-      i = paramWSPlayerWrapper.a();
+      i = paramWSPlayerWrapper.q();
     } else {
       i = 0;
     }
-    localWSPlayerReportData.jdField_b_of_type_Int = i;
-    localWSPlayerReportData = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerReportWSPlayerReportData;
+    localWSPlayerReportData.f = i;
+    localWSPlayerReportData = this.a;
     int i = j;
     if (paramWSPlayerWrapper != null) {
-      i = paramWSPlayerWrapper.b();
+      i = paramWSPlayerWrapper.r();
     }
-    localWSPlayerReportData.jdField_c_of_type_Int = i;
+    localWSPlayerReportData.g = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.report.WSPlayerReportImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ class ReadInJoyCGIDynamicChannelFragment$2
     QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startLoadMore.");
     paramXRecyclerView = DynamicChannelDataModule.a();
     if (paramXRecyclerView != null) {
-      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.f(this.a), ReadInJoyCGIDynamicChannelFragment.a(this.a).a(), 10);
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.m(this.a), ReadInJoyCGIDynamicChannelFragment.b(this.a).e(), 10);
     }
   }
   
@@ -29,13 +29,13 @@ class ReadInJoyCGIDynamicChannelFragment$2
     QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startTopRefresh.");
     paramXRecyclerView = DynamicChannelDataModule.a();
     if (paramXRecyclerView != null) {
-      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.e(this.a));
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.l(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment.2
  * JD-Core Version:    0.7.0.1
  */

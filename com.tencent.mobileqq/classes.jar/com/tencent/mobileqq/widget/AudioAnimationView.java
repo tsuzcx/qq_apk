@@ -16,18 +16,18 @@ import com.tencent.qphone.base.util.QLog;
 public class AudioAnimationView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  volatile boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private Rect[] jdField_a_of_type_ArrayOfAndroidGraphicsRect;
+  volatile boolean a = false;
   private int b;
   private int c;
-  private int d = 7;
-  private int e = 1;
+  private int d;
+  private Resources e;
+  private Paint f;
+  private int g = 7;
+  private Rect[] h;
+  private int[] i;
+  private int j = 1;
+  private Handler k = new Handler();
+  private Drawable l;
   
   public AudioAnimationView(Context paramContext)
   {
@@ -53,29 +53,29 @@ public class AudioAnimationView
   
   void a()
   {
-    this.jdField_a_of_type_AndroidContentResResources = getResources();
-    this.jdField_a_of_type_Int = a(2, getResources());
+    this.e = getResources();
     this.b = a(2, getResources());
-    this.c = a(12, getResources());
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(4.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(204);
+    this.c = a(2, getResources());
+    this.d = a(12, getResources());
+    this.f = new Paint();
+    this.f.setColor(-1);
+    this.f.setStyle(Paint.Style.FILL);
+    this.f.setStrokeWidth(4.0F);
+    this.f.setAlpha(204);
   }
   
   void b()
   {
-    int j = (int)(this.c * 0.6777F);
-    int i = 0;
-    while (i < this.d)
+    int n = (int)(this.d * 0.6777F);
+    int m = 0;
+    while (m < this.g)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      double d1 = j;
+      int[] arrayOfInt = this.i;
+      double d1 = n;
       double d2 = Math.random();
       Double.isNaN(d1);
-      arrayOfInt[i] = ((int)(d1 * d2));
-      i += 1;
+      arrayOfInt[m] = ((int)(d1 * d2));
+      m += 1;
     }
   }
   
@@ -88,14 +88,14 @@ public class AudioAnimationView
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startAnimation(), mRunning= ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       QLog.d("AudioAnimationView", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new AudioAnimationView.Animator(this, null));
+      this.a = true;
+      this.k.removeCallbacksAndMessages(null);
+      this.k.post(new AudioAnimationView.Animator(this, null));
     }
   }
   
@@ -105,16 +105,16 @@ public class AudioAnimationView
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("stopAnimation(), mRunning= ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       QLog.d("AudioAnimationView", 2, localStringBuilder.toString());
     }
     if (getVisibility() != 0) {
       setVisibility(0);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.a = false;
+      this.k.removeCallbacksAndMessages(null);
       requestLayout();
       invalidate();
     }
@@ -123,7 +123,7 @@ public class AudioAnimationView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.k;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
@@ -132,27 +132,27 @@ public class AudioAnimationView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      int k;
-      for (int i = 0; i < this.d; i = k)
+      int i1;
+      for (int m = 0; m < this.g; m = i1)
       {
-        localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i];
-        int n = this.jdField_a_of_type_Int;
-        int i1 = this.b;
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-        int i2 = arrayOfInt[i];
-        k = i + 1;
-        int m = this.c;
-        int j = m;
-        if (this.e == 1) {
-          j = m - arrayOfInt[i];
+        localObject = this.h[m];
+        int i3 = this.b;
+        int i4 = this.c;
+        int[] arrayOfInt = this.i;
+        int i5 = arrayOfInt[m];
+        i1 = m + 1;
+        int i2 = this.d;
+        int n = i2;
+        if (this.j == 1) {
+          n = i2 - arrayOfInt[m];
         }
-        ((Rect)localObject).set((n + i1) * i, i2, n * k + i1 * i, j);
-        paramCanvas.drawRect((Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
+        ((Rect)localObject).set((i3 + i4) * m, i5, i3 * i1 + i4 * m, n);
+        paramCanvas.drawRect((Rect)localObject, this.f);
       }
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = this.l;
     if (localObject != null) {
       ((Drawable)localObject).draw(paramCanvas);
     }
@@ -161,21 +161,21 @@ public class AudioAnimationView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.a;
     paramInt2 = 0;
     if (bool)
     {
+      paramInt1 = this.g;
+      paramInt2 = this.b * paramInt1 + (paramInt1 - 1) * this.c;
       paramInt1 = this.d;
-      paramInt2 = this.jdField_a_of_type_Int * paramInt1 + (paramInt1 - 1) * this.b;
-      paramInt1 = this.c;
     }
     else
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      Drawable localDrawable = this.l;
       if (localDrawable != null)
       {
         paramInt2 = localDrawable.getIntrinsicWidth();
-        paramInt1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+        paramInt1 = this.l.getIntrinsicHeight();
       }
       else
       {
@@ -187,7 +187,7 @@ public class AudioAnimationView
   
   public void setColor(int paramInt)
   {
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    Paint localPaint = this.f;
     if (localPaint != null) {
       localPaint.setColor(paramInt);
     }
@@ -195,10 +195,10 @@ public class AudioAnimationView
   
   public void setIcon(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    paramDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    this.l = paramDrawable;
+    paramDrawable = this.l;
     if (paramDrawable != null) {
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.l.getIntrinsicHeight());
     }
     requestLayout();
     invalidate();
@@ -206,15 +206,15 @@ public class AudioAnimationView
   
   public void setRectCount(int paramInt)
   {
-    this.d = paramInt;
-    paramInt = this.d;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = new Rect[paramInt];
-    this.jdField_a_of_type_ArrayOfInt = new int[paramInt];
+    this.g = paramInt;
+    paramInt = this.g;
+    this.h = new Rect[paramInt];
+    this.i = new int[paramInt];
     paramInt = 0;
-    while (paramInt <= this.d - 1)
+    while (paramInt <= this.g - 1)
     {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[paramInt] = new Rect();
-      this.jdField_a_of_type_ArrayOfInt[paramInt] = 0;
+      this.h[paramInt] = new Rect();
+      this.i[paramInt] = 0;
       paramInt += 1;
     }
     b();
@@ -224,27 +224,27 @@ public class AudioAnimationView
   
   public void setRectHeightMax(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
   }
   
   public void setRectInterval(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public void setRectWidth(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void setSyle(int paramInt)
   {
-    this.e = paramInt;
+    this.j = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AudioAnimationView
  * JD-Core Version:    0.7.0.1
  */

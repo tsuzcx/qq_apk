@@ -14,22 +14,22 @@ class DynamicNowManager$9
   
   public void a(int paramInt, String paramString)
   {
-    if ((DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager, paramInt)) && (!TextUtils.isEmpty(paramString)))
+    if ((DynamicNowManager.a(this.d, paramInt)) && (!TextUtils.isEmpty(paramString)))
     {
-      this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setSkey(paramString.getBytes());
-      this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setST(this.jdField_a_of_type_MqqManagerTicketManager.getSt(this.jdField_a_of_type_JavaLangString, 16));
-      this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setSTKey(this.jdField_a_of_type_MqqManagerTicketManager.getStkey(this.jdField_a_of_type_JavaLangString, 16));
-      this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setUserId(this.jdField_a_of_type_JavaLangString);
-      if ((!TextUtils.isEmpty(DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).b())) && (!TextUtils.isEmpty(DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a())))
+      this.a.setSkey(paramString.getBytes());
+      this.a.setST(this.b.getSt(this.c, 16));
+      this.a.setSTKey(this.b.getStkey(this.c, 16));
+      this.a.setUserId(this.c);
+      if ((!TextUtils.isEmpty(DynamicNowManager.d(this.d).d())) && (!TextUtils.isEmpty(DynamicNowManager.d(this.d).c())))
       {
-        this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setKey(DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).b().getBytes());
-        this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setAuthAppId("101490787");
-        this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData.setOriginalId(DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a());
-        NowLive.login(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData);
-        DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).set(System.currentTimeMillis());
+        this.a.setKey(DynamicNowManager.d(this.d).d().getBytes());
+        this.a.setAuthAppId("101490787");
+        this.a.setOriginalId(DynamicNowManager.d(this.d).c());
+        NowLive.login(this.a);
+        DynamicNowManager.e(this.d).set(System.currentTimeMillis());
         return;
       }
-      NowLive.login(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginData);
+      NowLive.login(this.a);
       return;
     }
     paramString = new StringBuilder();
@@ -40,7 +40,7 @@ class DynamicNowManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.9
  * JD-Core Version:    0.7.0.1
  */

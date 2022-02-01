@@ -16,9 +16,9 @@ final class RIJAppSetting$1
       if (!localQQAppInterface.isLogin()) {
         return;
       }
-      if (RIJAppSetting.a)
+      if (RIJAppSetting.b)
       {
-        RIJAppSetting.b(this.a);
+        RIJAppSetting.c(this.a);
         if (QLog.isColorLevel()) {
           QLog.d("RIJAppSetting", 2, "handNet2Wifi is show conversation");
         }
@@ -28,7 +28,7 @@ final class RIJAppSetting$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting.1
  * JD-Core Version:    0.7.0.1
  */

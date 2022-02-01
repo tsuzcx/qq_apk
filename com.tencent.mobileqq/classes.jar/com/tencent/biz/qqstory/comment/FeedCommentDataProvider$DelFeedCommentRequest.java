@@ -15,15 +15,15 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class FeedCommentDataProvider$DelFeedCommentRequest
   extends LegoRequestBase
 {
-  int jdField_a_of_type_Int;
-  LegoResponseCallBack jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack;
-  String jdField_a_of_type_JavaLangString;
+  String a;
+  int b;
+  LegoResponseCallBack c;
   
   public FeedCommentDataProvider$DelFeedCommentRequest(CommentEntry paramCommentEntry, LegoResponseCallBack paramLegoResponseCallBack)
   {
-    this.jdField_a_of_type_JavaLangString = paramCommentEntry.feedId;
-    this.jdField_a_of_type_Int = paramCommentEntry.commentId;
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack = paramLegoResponseCallBack;
+    this.a = paramCommentEntry.feedId;
+    this.b = paramCommentEntry.commentId;
+    this.c = paramLegoResponseCallBack;
   }
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
@@ -32,7 +32,7 @@ public class FeedCommentDataProvider$DelFeedCommentRequest
     try
     {
       ((qqstory_service.RspDelFeedComment)localObject).mergeFrom(paramArrayOfByte);
-      return new FeedCommentDataProvider.DelFeedCommentResponse((qqstory_service.RspDelFeedComment)localObject, this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack);
+      return new FeedCommentDataProvider.DelFeedCommentResponse((qqstory_service.RspDelFeedComment)localObject, this.c);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
@@ -49,17 +49,17 @@ public class FeedCommentDataProvider$DelFeedCommentRequest
     return FeedCommentDataProvider.b;
   }
   
-  protected byte[] a()
+  protected byte[] b()
   {
     qqstory_service.ReqDelFeedComment localReqDelFeedComment = new qqstory_service.ReqDelFeedComment();
-    localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqDelFeedComment.comment_id.set(this.jdField_a_of_type_Int);
+    localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqDelFeedComment.comment_id.set(this.b);
     return localReqDelFeedComment.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider.DelFeedCommentRequest
  * JD-Core Version:    0.7.0.1
  */

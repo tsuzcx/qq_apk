@@ -30,174 +30,174 @@ public class BaseVideoItemHolder
   implements IBaseVideoItemHolder
 {
   @JvmField
-  @NotNull
-  public ViewGroup a;
-  @JvmField
-  @NotNull
-  public SeekBar a;
-  @JvmField
-  @NotNull
-  public IMsgLayoutHelper a;
+  @Nullable
+  public IVideoFeedsItemUIDelegate aA;
   @JvmField
   @Nullable
-  public IVideoFeedsItemUIDelegate a;
+  public IVideoFeedsVideoUIDelegate aB;
+  @JvmField
+  @NotNull
+  public IMsgLayoutHelper aC;
+  @JvmField
+  public int aD;
+  @JvmField
+  @NotNull
+  public ViewGroup aa;
+  @JvmField
+  @NotNull
+  public ViewGroup ab;
+  @JvmField
+  @NotNull
+  public AbsVideoFeedsGestureLayout ac;
+  @JvmField
+  @NotNull
+  public ImageView ad;
+  @JvmField
+  @NotNull
+  public ViewGroup ae;
+  @JvmField
+  @NotNull
+  public ViewGroup af;
+  @JvmField
+  @NotNull
+  public ViewGroup ag;
+  @JvmField
+  @NotNull
+  public ImageView ah;
+  @JvmField
+  @NotNull
+  public SeekBar ai;
+  @JvmField
+  @NotNull
+  public SeekBar aj;
+  @JvmField
+  @NotNull
+  public TextView ak;
+  @JvmField
+  @NotNull
+  public TextView al;
+  @JvmField
+  @NotNull
+  public TextView am;
+  @JvmField
+  @NotNull
+  public ViewGroup an;
+  @JvmField
+  @NotNull
+  public URLImageView ao;
+  @JvmField
+  @NotNull
+  public ViewGroup ap;
+  @JvmField
+  @NotNull
+  public TextView aq;
+  @JvmField
+  @NotNull
+  public TextView ar;
+  @JvmField
+  @NotNull
+  public TextView as;
+  @JvmField
+  @NotNull
+  public ViewGroup at;
+  @JvmField
+  @NotNull
+  public ImageView au;
+  @JvmField
+  @NotNull
+  public TextView av;
+  @JvmField
+  @NotNull
+  public View aw;
   @JvmField
   @Nullable
-  public IVideoFeedsVideoUIDelegate a;
-  @JvmField
-  @NotNull
-  public AbsVideoFeedsGestureLayout a;
+  public ViewGroup ax;
   @JvmField
   @Nullable
-  public VideoPlayParam a;
-  @JvmField
-  @NotNull
-  public ViewGroup b;
-  @JvmField
-  @NotNull
-  public SeekBar b;
-  @JvmField
-  @NotNull
-  public ViewGroup c;
-  @JvmField
-  @NotNull
-  public URLImageView c;
-  @JvmField
-  public int d;
-  @JvmField
-  @NotNull
-  public ViewGroup d;
-  @JvmField
-  @NotNull
-  public ViewGroup e;
-  @JvmField
-  @NotNull
-  public ViewGroup f;
-  @JvmField
-  @NotNull
-  public ViewGroup g;
-  @JvmField
-  @NotNull
-  public ImageView g;
-  @JvmField
-  @NotNull
-  public ViewGroup h;
-  @JvmField
-  @NotNull
-  public ImageView h;
+  public ImageView ay;
   @JvmField
   @Nullable
-  public ViewGroup i;
-  @JvmField
-  @NotNull
-  public ImageView i;
-  @JvmField
-  @Nullable
-  public ImageView j;
-  @JvmField
-  @NotNull
-  public View o;
-  @JvmField
-  @NotNull
-  public TextView o;
-  @JvmField
-  @NotNull
-  public TextView p;
-  @JvmField
-  @NotNull
-  public TextView q;
-  @JvmField
-  @NotNull
-  public TextView r;
-  @JvmField
-  @NotNull
-  public TextView s;
-  @JvmField
-  @NotNull
-  public TextView t;
-  @JvmField
-  @NotNull
-  public TextView u;
+  public VideoPlayParam az;
   
   public BaseVideoItemHolder(@NotNull View paramView, int paramInt)
   {
     super(paramView, paramInt);
     View localView = paramView.findViewById(RR.id.a.a());
     Intrinsics.checkExpressionValueIsNotNull(localView, "view.findViewById(R.id.inner_auto_seekBar)");
-    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)localView);
+    this.aj = ((SeekBar)localView);
     paramView = paramView.findViewById(RR.id.a.b());
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.common_content_view_group)");
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-    paramView = (View)this.jdField_a_of_type_AndroidViewViewGroup;
+    this.aa = ((ViewGroup)paramView);
+    paramView = (View)this.aa;
     localView = paramView.findViewById(RR.id.a.c());
     Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.video_layout)");
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localView);
+    this.ab = ((ViewGroup)localView);
     localView = paramView.findViewById(RR.id.a.d());
     if (localView != null)
     {
       if (localView != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityAbsVideoFeedsGestureLayout = ((AbsVideoFeedsGestureLayout)localView);
+        this.ac = ((AbsVideoFeedsGestureLayout)localView);
         localView = paramView.findViewById(RR.id.a.e());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.cover_imageview)");
-        this.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)localView);
+        this.ao = ((URLImageView)localView);
         localView = paramView.findViewById(RR.id.a.f());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.play_button)");
-        this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)localView);
+        this.ad = ((ImageView)localView);
         localView = paramView.findViewById(RR.id.a.g());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.video_controller_layout)");
-        this.d = ((ViewGroup)localView);
+        this.af = ((ViewGroup)localView);
         localView = paramView.findViewById(RR.id.a.h());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.seekbar)");
-        this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)localView);
+        this.ai = ((SeekBar)localView);
         localView = paramView.findViewById(RR.id.a.i());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.current_time_textview)");
-        this.jdField_o_of_type_AndroidWidgetTextView = ((TextView)localView);
+        this.ak = ((TextView)localView);
         localView = paramView.findViewById(RR.id.a.j());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.total_time_textview)");
-        this.q = ((TextView)localView);
+        this.am = ((TextView)localView);
         localView = paramView.findViewById(RR.id.a.k());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.play_button_layout)");
-        this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)localView);
+        this.ae = ((ViewGroup)localView);
         localView = paramView.findViewById(RR.id.a.l());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.bottom_controller_layout)");
-        this.jdField_g_of_type_AndroidViewViewGroup = ((ViewGroup)localView);
+        this.ap = ((ViewGroup)localView);
         localView = paramView.findViewById(RR.id.a.m());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.full_screen_operation)");
-        this.jdField_h_of_type_AndroidViewViewGroup = ((ViewGroup)localView);
+        this.at = ((ViewGroup)localView);
         localView = paramView.findViewById(RR.id.a.n());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.full_screen_operation_icon)");
-        this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)localView);
+        this.au = ((ImageView)localView);
         localView = paramView.findViewById(RR.id.a.o());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.operate_button_xg)");
-        this.r = ((TextView)localView);
+        this.aq = ((TextView)localView);
         localView = paramView.findViewById(RR.id.a.p());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.file_size_black_toast)");
-        this.s = ((TextView)localView);
+        this.ar = ((TextView)localView);
         localView = paramView.findViewById(RR.id.a.q());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.king_card_guide)");
-        this.t = ((TextView)localView);
+        this.as = ((TextView)localView);
         localView = paramView.findViewById(RR.id.a.r());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.show_video_info_for_debug)");
-        this.p = ((TextView)localView);
+        this.al = ((TextView)localView);
         localView = paramView.findViewById(RR.id.a.s());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.full_screen_layout)");
-        this.e = ((ViewGroup)localView);
+        this.ag = ((ViewGroup)localView);
         localView = paramView.findViewById(RR.id.a.t());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.close_button)");
-        this.f = ((ViewGroup)localView);
+        this.an = ((ViewGroup)localView);
         localView = paramView.findViewById(RR.id.a.u());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.full_screen_title)");
-        this.u = ((TextView)localView);
+        this.av = ((TextView)localView);
         localView = paramView.findViewById(RR.id.a.v());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.video_volume_icon)");
-        this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)localView);
+        this.ah = ((ImageView)localView);
         localView = paramView.findViewById(RR.id.a.w());
         Intrinsics.checkExpressionValueIsNotNull(localView, "root.findViewById(R.id.video_end_mask_view)");
-        this.jdField_o_of_type_AndroidViewView = localView;
-        this.j = ((ImageView)paramView.findViewById(RR.id.a.x()));
-        this.jdField_i_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(RR.id.a.y()));
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIMsgLayoutHelper = ((IMsgLayoutHelperFactory)QRoute.api(IMsgLayoutHelperFactory.class)).create(paramView, null);
+        this.aw = localView;
+        this.ay = ((ImageView)paramView.findViewById(RR.id.a.x()));
+        this.ax = ((ViewGroup)paramView.findViewById(RR.id.a.y()));
+        this.aC = ((IMsgLayoutHelperFactory)QRoute.api(IMsgLayoutHelperFactory.class)).create(paramView, null);
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.AbsVideoFeedsGestureLayout");
@@ -205,21 +205,21 @@ public class BaseVideoItemHolder
     throw new TypeCastException("null cannot be cast to non-null type android.view.View");
   }
   
-  public boolean a()
+  public boolean L()
   {
-    VideoPlayParam localVideoPlayParam = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam;
+    VideoPlayParam localVideoPlayParam = this.az;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localVideoPlayParam != null)
     {
       bool1 = bool2;
-      if (localVideoPlayParam.a != null)
+      if (localVideoPlayParam.c != null)
       {
         bool1 = bool2;
-        if (localVideoPlayParam.a.r)
+        if (localVideoPlayParam.c.aq)
         {
           bool1 = bool2;
-          if (localVideoPlayParam.a.g()) {
+          if (localVideoPlayParam.c.n()) {
             bool1 = true;
           }
         }
@@ -230,7 +230,7 @@ public class BaseVideoItemHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.viewholder.BaseVideoItemHolder
  * JD-Core Version:    0.7.0.1
  */

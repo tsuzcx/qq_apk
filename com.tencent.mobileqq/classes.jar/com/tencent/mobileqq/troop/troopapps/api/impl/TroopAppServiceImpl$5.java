@@ -12,18 +12,18 @@ class TroopAppServiceImpl$5
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)localIterator.next();
-      TroopAppServiceImpl.access$100(this.this$0, this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, localTroopAIOAppInfo);
+      TroopAppServiceImpl.access$100(this.this$0, this.b, localTroopAIOAppInfo);
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.b.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.impl.TroopAppServiceImpl.5
  * JD-Core Version:    0.7.0.1
  */

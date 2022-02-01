@@ -10,18 +10,18 @@ class GaInviteLockActivity$10
   
   public void a()
   {
-    if (this.a.a != null)
+    if (this.a.L != null)
     {
-      this.a.a.setViewEnable(2131373511, false);
-      this.a.a.setViewEnable(2131373510, false);
-      this.a.a.setViewEnable(2131363119, false);
+      this.a.L.setViewEnable(2131441183, false);
+      this.a.L.setViewEnable(2131441182, false);
+      this.a.L.setViewEnable(2131428972, false);
     }
   }
   
   public void b()
   {
     this.a.finish();
-    this.a.overridePendingTransition(0, 2130772219);
+    this.a.overridePendingTransition(0, 2130772285);
   }
 }
 

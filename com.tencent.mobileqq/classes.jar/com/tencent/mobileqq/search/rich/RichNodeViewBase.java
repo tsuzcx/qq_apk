@@ -9,20 +9,15 @@ import android.widget.TextView;
 public abstract class RichNodeViewBase
   implements IRichNodeView
 {
-  private View jdField_a_of_type_AndroidViewView;
   public IRichNode a;
-  private RichNodeRootLayout jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
-  private View b;
+  private RichNodeRootLayout b;
+  private View c;
+  private View d;
   
   public RichNodeViewBase(IRichNode paramIRichNode, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichIRichNode = paramIRichNode;
-    a(paramContext);
-  }
-  
-  public final View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
+    this.a = paramIRichNode;
+    b(paramContext);
   }
   
   public abstract View a(Context paramContext);
@@ -32,45 +27,9 @@ public abstract class RichNodeViewBase
     return null;
   }
   
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public IRichNode a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichIRichNode;
-  }
-  
-  public String a()
-  {
-    IRichNode localIRichNode = a();
-    if (localIRichNode != null) {
-      return localIRichNode.a();
-    }
-    return null;
-  }
-  
-  public void a(Context paramContext)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(2131561425, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131376818));
-    this.b = localView.findViewById(2131365759);
-    this.jdField_a_of_type_AndroidViewView = a(paramContext);
-    paramContext = this.jdField_a_of_type_AndroidViewView;
-    if (paramContext != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(paramContext);
-    }
-  }
-  
   public void a(boolean paramBoolean)
   {
-    View localView = this.b;
+    View localView = this.d;
     if (localView != null)
     {
       if (paramBoolean)
@@ -82,14 +41,21 @@ public abstract class RichNodeViewBase
     }
   }
   
-  public ImageView b()
+  public TextView b()
   {
     return null;
   }
   
-  public TextView b()
+  public void b(Context paramContext)
   {
-    return null;
+    View localView = LayoutInflater.from(paramContext).inflate(2131627781, null, false);
+    this.b = ((RichNodeRootLayout)localView.findViewById(2131445148));
+    this.d = localView.findViewById(2131432003);
+    this.c = a(paramContext);
+    paramContext = this.c;
+    if (paramContext != null) {
+      this.b.addView(paramContext);
+    }
   }
   
   public void b(boolean paramBoolean) {}
@@ -104,22 +70,56 @@ public abstract class RichNodeViewBase
     return null;
   }
   
-  public void d()
+  public TextView e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichIRichNode = null;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.b = null;
+    return null;
   }
   
-  public void f()
+  public ImageView f()
   {
-    d();
+    return null;
+  }
+  
+  public ImageView g()
+  {
+    return null;
+  }
+  
+  public final View h()
+  {
+    return this.b;
+  }
+  
+  public void i()
+  {
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+  }
+  
+  public void l()
+  {
+    i();
+  }
+  
+  public IRichNode m()
+  {
+    return this.a;
+  }
+  
+  public String n()
+  {
+    IRichNode localIRichNode = m();
+    if (localIRichNode != null) {
+      return localIRichNode.j();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichNodeViewBase
  * JD-Core Version:    0.7.0.1
  */

@@ -60,42 +60,37 @@ public class BlessSelectMemberActivity
   extends SelectMemberActivity
   implements Handler.Callback
 {
-  private static int jdField_a_of_type_Int = 1;
-  private static long jdField_a_of_type_Long = 60000L;
-  private static MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
   public static String a = "";
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static long jdField_b_of_type_Long = 60000L;
   public static String b = "";
-  private static AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static boolean jdField_b_of_type_Boolean = false;
-  private static long jdField_c_of_type_Long = 0L;
-  private static long jdField_d_of_type_Long = 0L;
-  private static long jdField_e_of_type_Long = 0L;
-  protected Dialog a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new BlessSelectMemberActivity.10(this);
-  private BaseMessageObserver jdField_a_of_type_ComTencentMobileqqAppBaseMessageObserver = new BlessSelectMemberActivity.1(this);
-  private MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic = null;
-  private BlessSelectMemberActivity.BlessPTVUploadTask jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask;
-  private ResultListener jdField_a_of_type_ComTencentMobileqqShortvideoResultListener = new BlessSelectMemberActivity.11(this);
-  protected ArrayList<String> a;
-  protected boolean a;
-  private int jdField_b_of_type_Int = ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_UNKNOW_Value();
-  private Dialog jdField_b_of_type_AndroidAppDialog = null;
-  private int jdField_c_of_type_Int = 0;
-  private String jdField_c_of_type_JavaLangString = null;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private String jdField_e_of_type_JavaLangString;
-  private long jdField_f_of_type_Long = 0L;
-  private String jdField_f_of_type_JavaLangString;
-  private String g;
-  private String h = null;
-  
-  public BlessSelectMemberActivity()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  private static int f = 1;
+  private static long g = 60000L;
+  private static long h = 60000L;
+  private static AtomicBoolean i = new AtomicBoolean(false);
+  private static AtomicBoolean j = new AtomicBoolean(false);
+  private static long k = 0L;
+  private static long l = 0L;
+  private static long p = 0L;
+  private static MqqWeakReferenceHandler t;
+  private static boolean u = false;
+  private BaseMessageObserver A = new BlessSelectMemberActivity.1(this);
+  private String B = null;
+  private Dialog C = null;
+  private BroadcastReceiver D = new BlessSelectMemberActivity.10(this);
+  private ResultListener E = new BlessSelectMemberActivity.11(this);
+  protected Dialog c;
+  protected ArrayList<String> d;
+  protected boolean e = false;
+  private int m = ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_UNKNOW_Value();
+  private String n = null;
+  private int o = 0;
+  private long q = 0L;
+  private BlessSelectMemberActivity.BlessPTVUploadTask r;
+  private String s;
+  private int v;
+  private String w;
+  private String x;
+  private String y;
+  private MessageForPic z = null;
   
   public static int a(int paramInt)
   {
@@ -111,7 +106,7 @@ public class BlessSelectMemberActivity
   
   public static void a(Context paramContext, int paramInt)
   {
-    DialogUtil.a(paramContext, 232, null, paramContext.getString(paramInt), 2131690728, 2131693528, new BlessSelectMemberActivity.8(paramContext), new BlessSelectMemberActivity.9()).show();
+    DialogUtil.a(paramContext, 232, null, paramContext.getString(paramInt), 2131887648, 2131891084, new BlessSelectMemberActivity.8(paramContext), new BlessSelectMemberActivity.9()).show();
   }
   
   public static void a(Context paramContext, int paramInt, boolean paramBoolean)
@@ -121,47 +116,47 @@ public class BlessSelectMemberActivity
   
   private void c(String paramString)
   {
-    if (!a())
+    if (!b())
     {
-      c();
+      d();
       return;
     }
     if (!paramString.equals(""))
     {
-      this.jdField_a_of_type_Boolean = true;
-      ((IBlessApi)QRoute.api(IBlessApi.class)).sendBlessTextMsg(this.app, paramString, this.jdField_a_of_type_JavaUtilArrayList, null);
+      this.e = true;
+      ((IBlessApi)QRoute.api(IBlessApi.class)).sendBlessTextMsg(this.app, paramString, this.d, null);
       return;
     }
     QLog.e("BlessSelectMemberActivity", 1, "Blesswords is null!");
-    c();
+    d();
   }
   
-  private void e()
+  private void m()
   {
     IBlessApi localIBlessApi = (IBlessApi)QRoute.api(IBlessApi.class);
-    String str1 = this.jdField_f_of_type_JavaLangString;
-    String str2 = this.g;
-    String str3 = this.jdField_e_of_type_JavaLangString;
+    String str1 = this.x;
+    String str2 = this.y;
+    String str3 = this.w;
     boolean bool;
-    if (this.jdField_d_of_type_Int == 1) {
+    if (this.v == 1) {
       bool = true;
     } else {
       bool = false;
     }
-    localIBlessApi.realStartEncode(this, str1, str2, str3, bool, this.jdField_a_of_type_ComTencentMobileqqShortvideoResultListener);
+    localIBlessApi.realStartEncode(this, str1, str2, str3, bool, this.E);
   }
   
-  private void f()
+  private void n()
   {
     MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((IBlessApi)QRoute.api(IBlessApi.class)).getPtvMessage(this.app);
     MessageForBlessPTV localMessageForBlessPTV = (MessageForBlessPTV)localMessageForShortVideo;
     if (localMessageForBlessPTV != null)
     {
       boolean bool = true;
-      this.jdField_a_of_type_Boolean = true;
+      this.e = true;
       if (this.mEntrance == 15)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_UPDATE_MSGTAB_NUM_Value()) {
+        if (this.d.size() > ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_UPDATE_MSGTAB_NUM_Value()) {
           bool = false;
         }
         localMessageForBlessPTV.needUpdateMsgTag = bool;
@@ -174,25 +169,25 @@ public class BlessSelectMemberActivity
     }
   }
   
-  private void g()
+  private void o()
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
+    if (this.z != null)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = this.d;
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
         boolean bool = true;
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
         if (this.mEntrance == 15)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() > ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_UPDATE_MSGTAB_NUM_Value()) {
+          localObject = this.z;
+          if (this.d.size() > ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_UPDATE_MSGTAB_NUM_Value()) {
             bool = false;
           }
           ((MessageForPic)localObject).needUpdateMsgTag = bool;
         }
-        ((IBlessApi)QRoute.api(IBlessApi.class)).sendBlessMsg(this.app, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_JavaUtilArrayList, ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessReportParams(this.app, ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PIC_Value(), 0));
+        ((IBlessApi)QRoute.api(IBlessApi.class)).sendBlessMsg(this.app, this.z, this.d, ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessReportParams(this.app, ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PIC_Value(), 0));
         return;
       }
     }
@@ -200,24 +195,24 @@ public class BlessSelectMemberActivity
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("sendBlessPic failed!");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      ((StringBuilder)localObject).append(this.z);
       ((StringBuilder)localObject).append(" ,uinList:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList);
+      ((StringBuilder)localObject).append(this.d);
       QLog.i("BlessSelectMemberActivity", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  private void h()
+  private void p()
   {
-    if (this.jdField_c_of_type_Int == 1) {
+    if (this.o == 1) {
       return;
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
     try
     {
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      this.jdField_c_of_type_Int = 1;
+      registerReceiver(this.D, localIntentFilter);
+      this.o = 1;
       return;
     }
     catch (Exception localException)
@@ -236,15 +231,15 @@ public class BlessSelectMemberActivity
       if ((localIHttpCommunicatorListener != null) && (IShortVideoUploadProcessor.class.isInstance(localIHttpCommunicatorListener)))
       {
         bool = ((BaseTransProcessor)localIHttpCommunicatorListener).isPause();
-        int i = ((MessageForShortVideo)localObject).videoFileStatus;
-        if ((bool) || (i == 1002) || (i == 1001)) {
+        int i1 = ((MessageForShortVideo)localObject).videoFileStatus;
+        if ((bool) || (i1 == 1002) || (i1 == 1001)) {
           ((IBlessApi)QRoute.api(IBlessApi.class)).stopSendingShortVideo(this.app, ((MessageForShortVideo)localObject).frienduin, ((MessageForShortVideo)localObject).uniseq);
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
+    if (this.z != null)
     {
-      localObject = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).findProcessor(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+      localObject = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class, "")).findProcessor(this.z.frienduin, this.z.uniseq);
       if ((localObject != null) && (((IPicTransFile)this.app.getRuntimeService(IPicTransFile.class, "")).getC2CUploadProClass().isInstance(localObject)))
       {
         bool = ((BaseTransProcessor)localObject).isPause();
@@ -257,24 +252,24 @@ public class BlessSelectMemberActivity
         }
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask;
+    localObject = this.r;
     if ((localObject != null) && (((BlessSelectMemberActivity.BlessPTVUploadTask)localObject).getStatus() != AsyncTask.Status.FINISHED))
     {
       if (QLog.isColorLevel()) {
         QLog.d("BlessSelectMemberActivity", 2, "cancel the uploadTask!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask.cancel(true);
+      this.r.cancel(true);
     }
   }
   
   public void a(long paramLong)
   {
-    long l = paramLong;
+    long l1 = paramLong;
     if (paramLong > 300L) {
-      l = 300L;
+      l1 = 300L;
     }
-    paramLong = l;
-    if (l <= 0L) {
+    paramLong = l1;
+    if (l1 <= 0L) {
       paramLong = 15L;
     }
     if (QLog.isColorLevel())
@@ -284,80 +279,80 @@ public class BlessSelectMemberActivity
       localStringBuilder.append(paramLong);
       QLog.d("BlessSelectMemberActivity", 2, localStringBuilder.toString());
     }
-    jdField_c_of_type_Long = paramLong;
+    k = paramLong;
   }
   
   protected void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this, 2131756189);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558715);
-      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new BlessSelectMemberActivity.5(this));
-      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131378496).setOnClickListener(new BlessSelectMemberActivity.6(this));
-      this.jdField_a_of_type_AndroidAppDialog.show();
+      this.c = new ReportDialog(this, 2131953338);
+      this.c.setContentView(2131624332);
+      this.c.setOnKeyListener(new BlessSelectMemberActivity.5(this));
+      this.c.findViewById(2131447111).setOnClickListener(new BlessSelectMemberActivity.6(this));
+      this.c.show();
       localObject = getWindowManager().getDefaultDisplay();
-      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
+      WindowManager.LayoutParams localLayoutParams = this.c.getWindow().getAttributes();
       localLayoutParams.width = ((Display)localObject).getWidth();
       localLayoutParams.height = ((Display)localObject).getHeight();
-      this.jdField_a_of_type_AndroidAppDialog.getWindow().setAttributes(localLayoutParams);
-      if (this.jdField_b_of_type_Int == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value())
+      this.c.getWindow().setAttributes(localLayoutParams);
+      if (this.m == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value())
       {
-        localObject = this.jdField_a_of_type_AndroidAppDialog.getWindow();
+        localObject = this.c.getWindow();
         ((Window)localObject).getAttributes().dimAmount = 0.7F;
         ((Window)localObject).addFlags(2);
       }
     }
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372646);
+    Object localObject = (TextView)this.c.findViewById(2131440191);
     if (TextUtils.isEmpty(paramString)) {
-      ((TextView)localObject).setText(2131718765);
+      ((TextView)localObject).setText(2131916271);
     } else {
       ((TextView)localObject).setText(paramString);
     }
-    if (!this.jdField_a_of_type_AndroidAppDialog.isShowing())
+    if (!this.c.isShowing())
     {
       if (QLog.isColorLevel()) {
         QLog.e("BlessSelectMemberActivity", 2, "showProgressDialog");
       }
-      this.jdField_a_of_type_AndroidAppDialog.show();
+      this.c.show();
     }
   }
   
   protected void a(boolean paramBoolean)
   {
-    int i = (int)((System.currentTimeMillis() - this.jdField_f_of_type_Long) / 1000L);
+    int i1 = (int)((System.currentTimeMillis() - this.q) / 1000L);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onSendMessageResultForWeb result:");
       ((StringBuilder)localObject1).append(paramBoolean);
       ((StringBuilder)localObject1).append(" ,type:");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject1).append(this.m);
       ((StringBuilder)localObject1).append(" ,cost:");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(i1);
       QLog.i("BlessSelectMemberActivity", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramBoolean)
     {
       Object localObject2 = (IBlessApi)QRoute.api(IBlessApi.class);
-      c();
+      d();
       localObject1 = new Intent();
       ((Intent)localObject1).setAction(((IBlessApi)localObject2).getBlessJsApiPlugin_ACTION_StringValue());
-      ((Intent)localObject1).putExtra(((IBlessApi)localObject2).getBlessJsApiPlugin_PARAM_CALLBACK_StringValue(), this.jdField_d_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra(((IBlessApi)localObject2).getBlessJsApiPlugin_PARAM_BLESS_TYPE_StringValue(), this.jdField_b_of_type_Int);
-      ((Intent)localObject1).putExtra(((IBlessApi)localObject2).getBlessJsApiPlugin_PARAM_BLESS_NUM_StringValue(), this.jdField_a_of_type_JavaUtilArrayList.size());
-      if ((this.jdField_b_of_type_Int == ((IBlessApi)localObject2).getBlessManager_TYPE_TEXT_Value()) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)))
+      ((Intent)localObject1).putExtra(((IBlessApi)localObject2).getBlessJsApiPlugin_PARAM_CALLBACK_StringValue(), this.s);
+      ((Intent)localObject1).putExtra(((IBlessApi)localObject2).getBlessJsApiPlugin_PARAM_BLESS_TYPE_StringValue(), this.m);
+      ((Intent)localObject1).putExtra(((IBlessApi)localObject2).getBlessJsApiPlugin_PARAM_BLESS_NUM_StringValue(), this.d.size());
+      if ((this.m == ((IBlessApi)localObject2).getBlessManager_TYPE_TEXT_Value()) && (!TextUtils.isEmpty(this.n)))
       {
-        ReportController.b(this.app, "CliOper", "", "", "0X8006196", "0X8006196", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X8006196", "0X8006196", 0, 0, String.valueOf(this.m), String.valueOf(this.d.size()), "", "");
       }
-      else if ((this.jdField_b_of_type_Int == ((IBlessApi)localObject2).getBlessManager_TYPE_PTV_Value()) || (this.jdField_b_of_type_Int == ((IBlessApi)localObject2).getBlessManager_TYPE_PIC_Value()))
+      else if ((this.m == ((IBlessApi)localObject2).getBlessManager_TYPE_PTV_Value()) || (this.m == ((IBlessApi)localObject2).getBlessManager_TYPE_PIC_Value()))
       {
         Object localObject3 = new Intent("tencent.video.q2v.startUploadPTV");
         ((Intent)localObject3).putExtra("broadcastType", 1);
-        ((Intent)localObject3).putExtra("recordType", this.jdField_b_of_type_Int);
+        ((Intent)localObject3).putExtra("recordType", this.m);
         this.app.getApp().sendBroadcast((Intent)localObject3);
         MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((IBlessApi)localObject2).getPtvMessage(this.app);
-        if ((this.jdField_b_of_type_Int == ((IBlessApi)localObject2).getBlessManager_TYPE_PTV_Value()) && (localMessageForShortVideo != null))
+        if ((this.m == ((IBlessApi)localObject2).getBlessManager_TYPE_PTV_Value()) && (localMessageForShortVideo != null))
         {
           localObject3 = ((IBlessApi)localObject2).getPtvUrlByUuid(this.app, localMessageForShortVideo.uuid, localMessageForShortVideo.md5);
           ((Intent)localObject1).putExtra(((IBlessApi)localObject2).getBlessJsApiPlugin_PARAM_PTV_URL_StringValue(), (String)localObject3);
@@ -381,13 +376,13 @@ public class BlessSelectMemberActivity
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("Send blessword failed! blessType:");
-    ((StringBuilder)localObject1).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject1).append(this.m);
     QLog.e("BlessSelectMemberActivity", 1, ((StringBuilder)localObject1).toString());
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = (int)((System.currentTimeMillis() - this.jdField_f_of_type_Long) / 1000L);
+    int i1 = (int)((System.currentTimeMillis() - this.q) / 1000L);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -395,23 +390,23 @@ public class BlessSelectMemberActivity
       localStringBuilder.append("onSendMessageResult result:");
       localStringBuilder.append(paramBoolean1);
       localStringBuilder.append(" ,type:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.m);
       localStringBuilder.append(" ,cost:");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       QLog.i("BlessSelectMemberActivity", 2, localStringBuilder.toString());
     }
     if (paramBoolean1)
     {
-      c();
-      if ((this.jdField_b_of_type_Int == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_TEXT_Value()) && (!this.jdField_c_of_type_JavaLangString.equals("")))
+      d();
+      if ((this.m == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_TEXT_Value()) && (!this.n.equals("")))
       {
-        ((IBlessApi)QRoute.api(IBlessApi.class)).saveSendWording(this.app, this.jdField_c_of_type_JavaLangString);
+        ((IBlessApi)QRoute.api(IBlessApi.class)).saveSendWording(this.app, this.n);
         ((IBlessApi)QRoute.api(IBlessApi.class)).clearEditingWordings(this.app);
         b(paramBoolean2);
-        ReportController.b(this.app, "CliOper", "", "", "0X8006196", "0X8006196", 0, 0, String.valueOf(this.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X8006196", "0X8006196", 0, 0, String.valueOf(this.m), String.valueOf(this.d.size()), "", "");
         return;
       }
-      if ((this.jdField_b_of_type_Int == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value()) || (this.jdField_b_of_type_Int == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PIC_Value())) {
+      if ((this.m == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value()) || (this.m == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PIC_Value())) {
         b(paramBoolean2);
       }
     }
@@ -419,79 +414,8 @@ public class BlessSelectMemberActivity
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Send blessword failed! blessType:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.m);
       QLog.e("BlessSelectMemberActivity", 1, localStringBuilder.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    if (jdField_c_of_type_Long > 0L)
-    {
-      long l = System.currentTimeMillis() - jdField_d_of_type_Long;
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("send text overload=");
-        localStringBuilder.append(l / 1000L);
-        localStringBuilder.append(" duration=");
-        localStringBuilder.append(jdField_c_of_type_Long);
-        QLog.d("BlessSelectMemberActivity", 2, localStringBuilder.toString());
-      }
-      if (l > jdField_c_of_type_Long * 1000L)
-      {
-        a(0L);
-        jdField_d_of_type_Long = 0L;
-        return true;
-      }
-      a(this, 2131690674, true);
-      return false;
-    }
-    return true;
-  }
-  
-  protected void b()
-  {
-    ReportController.b(this.app, "CliOper", "", "", "0X8006190", "0X8006190", 0, 0, String.valueOf(this.jdField_b_of_type_Int), "", "", "");
-    if ((this.h == null) || (this.jdField_b_of_type_AndroidAppDialog == null))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (this.mEntrance == 15) {
-        localStringBuilder.append(getString(2131690670));
-      } else if (this.mEntrance == 32) {
-        localStringBuilder.append(getString(2131720364));
-      }
-      int i = 0;
-      while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < 50))
-      {
-        localObject = CommonUtils.a(this.app, (String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-        if (localObject != null)
-        {
-          localStringBuilder.append(((Friends)localObject).getFriendNick());
-          localStringBuilder.append("、 ");
-        }
-        i += 1;
-      }
-      localStringBuilder.setLength(localStringBuilder.length() - 2);
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1) {
-        localStringBuilder.append(String.format(getString(2131690671), new Object[] { "", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
-      }
-      this.h = localStringBuilder.toString();
-      this.jdField_b_of_type_AndroidAppDialog = DialogUtil.a(this, -1, null, this.h, 2131690728, 2131690669, new BlessSelectMemberActivity.2(this), new BlessSelectMemberActivity.3(this));
-      if (this.jdField_b_of_type_Int == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value())
-      {
-        localObject = this.jdField_b_of_type_AndroidAppDialog.getWindow();
-        ((Window)localObject).getAttributes().dimAmount = 0.7F;
-        ((Window)localObject).addFlags(2);
-      }
-      Object localObject = (TextView)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131365644);
-      ((TextView)localObject).setMaxLines(4);
-      ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.MIDDLE);
-      ((TextView)localObject).setGravity(3);
-      ((TextView)localObject).post(new BlessSelectMemberActivity.4(this, (TextView)localObject, localStringBuilder));
-    }
-    if (!isFinishing()) {
-      this.jdField_b_of_type_AndroidAppDialog.show();
     }
   }
   
@@ -504,8 +428,8 @@ public class BlessSelectMemberActivity
     ((PicUploadInfo.Builder)localObject).d("0");
     ((PicUploadInfo.Builder)localObject).c(this.app.getCurrentAccountUin());
     ((PicUploadInfo.Builder)localObject).e(0);
-    paramString = ((PicUploadInfo.Builder)localObject).a();
-    paramString.jdField_b_of_type_Boolean = false;
+    paramString = ((PicUploadInfo.Builder)localObject).k();
+    paramString.v = false;
     localObject = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(2, 1056);
     ((PicReq)localObject).a(paramString);
     ((IPicBus)QRoute.api(IPicBus.class)).launch((PicReq)localObject);
@@ -515,31 +439,102 @@ public class BlessSelectMemberActivity
   {
     Intent localIntent = new Intent("tencent.video.q2v.startUploadPTV");
     localIntent.putExtra("broadcastType", 1);
-    localIntent.putExtra("recordType", this.jdField_b_of_type_Int);
+    localIntent.putExtra("recordType", this.m);
     this.app.getApp().sendBroadcast(localIntent);
-    ((IBlessApi)QRoute.api(IBlessApi.class)).reportSendResult(this.app, this.jdField_a_of_type_JavaUtilArrayList, a(this.mEntrance));
+    ((IBlessApi)QRoute.api(IBlessApi.class)).reportSendResult(this.app, this.d, a(this.mEntrance));
     if (this.mEntrance == 32)
     {
       ((IBlessApi)QRoute.api(IBlessApi.class)).gotoSplashActivity(this, paramBoolean);
       finish();
-      QQToast.a(this, 2, 2131720365, 1).a();
+      QQToast.makeText(this, 2, 2131918003, 1).show();
     }
+  }
+  
+  public boolean b()
+  {
+    if (k > 0L)
+    {
+      long l1 = System.currentTimeMillis() - l;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("send text overload=");
+        localStringBuilder.append(l1 / 1000L);
+        localStringBuilder.append(" duration=");
+        localStringBuilder.append(k);
+        QLog.d("BlessSelectMemberActivity", 2, localStringBuilder.toString());
+      }
+      if (l1 > k * 1000L)
+      {
+        a(0L);
+        l = 0L;
+        return true;
+      }
+      a(this, 2131887589, true);
+      return false;
+    }
+    return true;
   }
   
   protected void c()
   {
+    ReportController.b(this.app, "CliOper", "", "", "0X8006190", "0X8006190", 0, 0, String.valueOf(this.m), "", "", "");
+    if ((this.B == null) || (this.C == null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (this.mEntrance == 15) {
+        localStringBuilder.append(getString(2131887585));
+      } else if (this.mEntrance == 32) {
+        localStringBuilder.append(getString(2131918002));
+      }
+      int i1 = 0;
+      while ((i1 < this.d.size()) && (i1 < 50))
+      {
+        localObject = CommonUtils.b(this.app, (String)this.d.get(i1));
+        if (localObject != null)
+        {
+          localStringBuilder.append(((Friends)localObject).getFriendNick());
+          localStringBuilder.append("、 ");
+        }
+        i1 += 1;
+      }
+      localStringBuilder.setLength(localStringBuilder.length() - 2);
+      if (this.d.size() != 1) {
+        localStringBuilder.append(String.format(getString(2131887586), new Object[] { "", Integer.valueOf(this.d.size()) }));
+      }
+      this.B = localStringBuilder.toString();
+      this.C = DialogUtil.a(this, -1, null, this.B, 2131887648, 2131887584, new BlessSelectMemberActivity.2(this), new BlessSelectMemberActivity.3(this));
+      if (this.m == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value())
+      {
+        localObject = this.C.getWindow();
+        ((Window)localObject).getAttributes().dimAmount = 0.7F;
+        ((Window)localObject).addFlags(2);
+      }
+      Object localObject = (TextView)this.C.findViewById(2131431876);
+      ((TextView)localObject).setMaxLines(4);
+      ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.MIDDLE);
+      ((TextView)localObject).setGravity(3);
+      ((TextView)localObject).post(new BlessSelectMemberActivity.4(this, (TextView)localObject, localStringBuilder));
+    }
+    if (!isFinishing()) {
+      this.C.show();
+    }
+  }
+  
+  protected void d()
+  {
     try
     {
-      if (this.jdField_a_of_type_AndroidAppDialog != null)
+      if (this.c != null)
       {
         if (QLog.isColorLevel()) {
           QLog.e("BlessSelectMemberActivity", 2, "cancelProgressDialog");
         }
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        this.c.dismiss();
       }
-      if (jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null)
+      if (t != null)
       {
-        jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(2);
+        t.removeMessages(2);
         return;
       }
     }
@@ -548,51 +543,6 @@ public class BlessSelectMemberActivity
       if (QLog.isColorLevel()) {
         QLog.e("BlessSelectMemberActivity", 2, "cancelProgressDialog excep!", localException);
       }
-    }
-  }
-  
-  protected void d()
-  {
-    a(null);
-    jdField_b_of_type_Boolean = false;
-    ((IBlessApi)QRoute.api(IBlessApi.class)).saveUinListToSend(this.app, this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_f_of_type_Long = System.currentTimeMillis();
-    jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(2, jdField_b_of_type_Long);
-    if (this.jdField_b_of_type_Int == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_TEXT_Value())
-    {
-      c(this.jdField_c_of_type_JavaLangString);
-      return;
-    }
-    if (this.jdField_b_of_type_Int == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value())
-    {
-      if (!a())
-      {
-        c();
-        return;
-      }
-      new BlessSelectMemberActivity.BlessPTVProcessTask(this.app, this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-      BlessSelectMemberActivity.BlessPTVUploadTask localBlessPTVUploadTask = this.jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask;
-      if ((localBlessPTVUploadTask != null) && (localBlessPTVUploadTask.getStatus() != AsyncTask.Status.FINISHED))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BlessSelectMemberActivity", 2, "There is still a running uploadTask!");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask.cancel(true);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask = new BlessSelectMemberActivity.BlessPTVUploadTask(this.app, this, this.jdField_a_of_type_JavaUtilArrayList, this.mEntrance);
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-      return;
-    }
-    if (this.jdField_b_of_type_Int == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PIC_Value())
-    {
-      if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
-      {
-        QQToast.a(this, 1, 2131698963, 1).a();
-        c();
-        finish();
-        return;
-      }
-      b(this.jdField_f_of_type_JavaLangString);
     }
   }
   
@@ -608,22 +558,22 @@ public class BlessSelectMemberActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_b_of_type_Int = this.mIntent.getExtras().getInt("param_blesstype");
-    this.jdField_c_of_type_JavaLangString = this.mIntent.getExtras().getString("param_blessword_content");
-    this.jdField_d_of_type_Int = this.mIntent.getIntExtra("encode_type", 0);
-    this.jdField_e_of_type_JavaLangString = this.mIntent.getStringExtra("fake_id");
-    this.jdField_f_of_type_JavaLangString = this.mIntent.getStringExtra("thumbfile_send_path");
-    this.g = this.mIntent.getStringExtra("thumbfile_md5");
-    this.jdField_d_of_type_JavaLangString = this.mIntent.getStringExtra("param_web_callback");
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageObserver);
-    h();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    jdField_a_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_Boolean = false;
+    this.m = this.mIntent.getExtras().getInt("param_blesstype");
+    this.n = this.mIntent.getExtras().getString("param_blessword_content");
+    this.v = this.mIntent.getIntExtra("encode_type", 0);
+    this.w = this.mIntent.getStringExtra("fake_id");
+    this.x = this.mIntent.getStringExtra("thumbfile_send_path");
+    this.y = this.mIntent.getStringExtra("thumbfile_md5");
+    this.s = this.mIntent.getStringExtra("param_web_callback");
+    addObserver(this.A);
+    p();
+    this.d = new ArrayList();
+    i.set(false);
+    f = 1;
+    a = "";
+    u = false;
     this.mIsNeedSendIsResumeBroadcast = false;
-    jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
+    t = new MqqWeakReferenceHandler(this);
     paramBundle = new Intent("tencent.video.q2v.startUploadPTV");
     paramBundle.putExtra("broadcastType", 2);
     this.app.getApp().sendBroadcast(paramBundle);
@@ -633,25 +583,25 @@ public class BlessSelectMemberActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageObserver);
-    Object localObject = jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+    removeObserver(this.A);
+    Object localObject = t;
     if (localObject != null) {
       ((MqqWeakReferenceHandler)localObject).removeMessages(2);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask;
+    localObject = this.r;
     if ((localObject != null) && (((BlessSelectMemberActivity.BlessPTVUploadTask)localObject).getStatus() != AsyncTask.Status.FINISHED))
     {
       if (QLog.isColorLevel()) {
         QLog.d("BlessSelectMemberActivity", 2, "destroy the uploadTask!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberBlessSelectMemberActivity$BlessPTVUploadTask.cancel(true);
+      this.r.cancel(true);
     }
     try
     {
-      if (this.jdField_c_of_type_Int == 1)
+      if (this.o == 1)
       {
-        unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_c_of_type_Int = 0;
+        unregisterReceiver(this.D);
+        this.o = 0;
       }
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -664,8 +614,8 @@ public class BlessSelectMemberActivity
         QLog.d("BlessSelectMemberActivity", 2, localStringBuilder.toString());
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = null;
-    jdField_e_of_type_Long = 0L;
+    this.z = null;
+    p = 0L;
   }
   
   protected void doOnNewIntent(Intent paramIntent)
@@ -680,9 +630,54 @@ public class BlessSelectMemberActivity
     super.doOnResume();
     if (this.mSystemBarComp != null)
     {
-      int i = getResources().getColor(2131165357);
-      this.mSystemBarComp.setStatusColor(i);
-      this.mSystemBarComp.setStatusBarColor(i);
+      int i1 = getResources().getColor(2131165599);
+      this.mSystemBarComp.setStatusColor(i1);
+      this.mSystemBarComp.setStatusBarColor(i1);
+    }
+  }
+  
+  protected void e()
+  {
+    a(null);
+    u = false;
+    ((IBlessApi)QRoute.api(IBlessApi.class)).saveUinListToSend(this.app, this.d);
+    this.q = System.currentTimeMillis();
+    t.sendEmptyMessageDelayed(2, h);
+    if (this.m == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_TEXT_Value())
+    {
+      c(this.n);
+      return;
+    }
+    if (this.m == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value())
+    {
+      if (!b())
+      {
+        d();
+        return;
+      }
+      new BlessSelectMemberActivity.BlessPTVProcessTask(this.app, this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+      BlessSelectMemberActivity.BlessPTVUploadTask localBlessPTVUploadTask = this.r;
+      if ((localBlessPTVUploadTask != null) && (localBlessPTVUploadTask.getStatus() != AsyncTask.Status.FINISHED))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BlessSelectMemberActivity", 2, "There is still a running uploadTask!");
+        }
+        this.r.cancel(true);
+      }
+      this.r = new BlessSelectMemberActivity.BlessPTVUploadTask(this.app, this, this.d, this.mEntrance);
+      this.r.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+      return;
+    }
+    if (this.m == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PIC_Value())
+    {
+      if (TextUtils.isEmpty(this.x))
+      {
+        QQToast.makeText(this, 1, 2131896955, 1).show();
+        d();
+        finish();
+        return;
+      }
+      b(this.x);
     }
   }
   
@@ -696,17 +691,17 @@ public class BlessSelectMemberActivity
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 1)
+    int i1 = paramMessage.what;
+    if (i1 != 1)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i == 3)
+        if (i1 == 3)
         {
           if (QLog.isColorLevel()) {
             QLog.i("BlessSelectMemberActivity", 2, "handleMessage realStartEncode!");
           }
-          e();
+          m();
         }
       }
       else
@@ -715,9 +710,9 @@ public class BlessSelectMemberActivity
           QLog.i("BlessSelectMemberActivity", 2, "handleMessage: send bless msg timeout!");
         }
         a();
-        jdField_b_of_type_Boolean = true;
-        c();
-        a(this, 2131719113);
+        u = true;
+        d();
+        a(this, 2131916649);
       }
     }
     else
@@ -726,8 +721,8 @@ public class BlessSelectMemberActivity
         QLog.i("BlessSelectMemberActivity", 2, "handleMessage: send video cannel!");
       }
       a();
-      jdField_b_of_type_Boolean = true;
-      c();
+      u = true;
+      d();
     }
     return false;
   }
@@ -735,10 +730,10 @@ public class BlessSelectMemberActivity
   protected void initTitleBar()
   {
     super.initTitleBar();
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2131165357));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2131165599));
     this.mTitle.setTextColor(-1);
-    this.mLeftBackBtn.setTextColor(getResources().getColorStateList(2131165352));
-    this.mRightBtn.setTextColor(getResources().getColorStateList(2131165352));
+    this.mLeftBackBtn.setTextColor(getResources().getColorStateList(2131165594));
+    this.mRightBtn.setTextColor(getResources().getColorStateList(2131165594));
   }
   
   protected boolean isWrapContent()
@@ -767,7 +762,7 @@ public class BlessSelectMemberActivity
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          Friends localFriends = CommonUtils.a(this.app, str);
+          Friends localFriends = CommonUtils.b(this.app, str);
           if (localFriends != null) {
             localArrayList.add(constructAResultRecord(str, localFriends.getFriendNick(), 0, "-1"));
           }
@@ -788,22 +783,22 @@ public class BlessSelectMemberActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.d.clear();
     if (this.mResultList.size() > 0)
     {
       Iterator localIterator = this.mResultList.iterator();
       while (localIterator.hasNext())
       {
         ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localResultRecord.uin);
+        this.d.add(localResultRecord.uin);
       }
     }
-    b();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity
  * JD-Core Version:    0.7.0.1
  */

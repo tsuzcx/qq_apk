@@ -12,10 +12,10 @@ class WSVerticalForFollowPresenter$1
   
   public void a(boolean paramBoolean1, List<stSimpleMetaFeed> paramList, boolean paramBoolean2)
   {
-    paramList = WSVerticalForFollowPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoPresenterWSVerticalForFollowPresenter, paramList);
-    IFetchDataRspListener localIFetchDataRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+    paramList = WSVerticalForFollowPresenter.a(this.d, paramList);
+    IFetchDataRspListener localIFetchDataRspListener = this.a;
     if (localIFetchDataRspListener != null) {
-      localIFetchDataRspListener.a(paramList, this.jdField_a_of_type_Boolean, this.b, null);
+      localIFetchDataRspListener.a(paramList, this.b, this.c, null);
     }
   }
   
@@ -23,17 +23,17 @@ class WSVerticalForFollowPresenter$1
   {
     if (!paramBoolean3)
     {
-      paramObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+      paramObject = this.a;
       if (paramObject != null) {
         paramObject.a(-1, "task failed.", paramBoolean1, paramBoolean2);
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoPresenterWSVerticalForFollowPresenter.a(-1, "task failed.", paramBoolean1, paramBoolean2);
+      this.d.a(-1, "task failed.", paramBoolean1, paramBoolean2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForFollowPresenter.1
  * JD-Core Version:    0.7.0.1
  */

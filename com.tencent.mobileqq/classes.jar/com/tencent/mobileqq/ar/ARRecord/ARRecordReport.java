@@ -15,12 +15,6 @@ public class ARRecordReport
     return a;
   }
   
-  public void a()
-  {
-    QLog.d("ARRecordReport", 2, "reportPreRecordStart");
-    ThreadManager.post(new ARRecordReport.1(this), 5, null, false);
-  }
-  
   public void a(int paramInt)
   {
     QLog.d("ARRecordReport", 2, String.format("reportRecordFail failType=%s", new Object[] { Integer.valueOf(paramInt) }));
@@ -38,10 +32,16 @@ public class ARRecordReport
     QLog.d("ARRecordReport", 2, String.format("reportActiveRecordStart inPreRecord=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     ThreadManager.post(new ARRecordReport.2(this, paramBoolean), 5, null, false);
   }
+  
+  public void b()
+  {
+    QLog.d("ARRecordReport", 2, "reportPreRecordStart");
+    ThreadManager.post(new ARRecordReport.1(this), 5, null, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARRecordReport
  * JD-Core Version:    0.7.0.1
  */

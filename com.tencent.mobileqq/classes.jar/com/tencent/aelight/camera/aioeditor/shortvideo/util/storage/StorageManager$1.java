@@ -14,25 +14,25 @@ class StorageManager$1
     if (paramIntent.getAction() == null) {
       return;
     }
-    paramContext = this.a.jdField_a_of_type_JavaLangString;
-    this.a.b();
-    if ((this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilStorageStorageManager$OnSdCardChangedListener != null) && (!paramContext.equals(this.a.jdField_a_of_type_JavaLangString)))
+    paramContext = this.a.d;
+    this.a.c();
+    if ((this.a.j != null) && (!paramContext.equals(this.a.d)))
     {
       if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
       {
-        this.a.a();
-        this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilStorageStorageManager$OnSdCardChangedListener.a(0, this.a.jdField_a_of_type_JavaLangString);
+        this.a.b();
+        this.a.j.a(0, this.a.d);
         return;
       }
       if (paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED")) {
-        this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoUtilStorageStorageManager$OnSdCardChangedListener.a(1, this.a.jdField_a_of_type_JavaLangString);
+        this.a.j.a(1, this.a.d);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.util.storage.StorageManager.1
  * JD-Core Version:    0.7.0.1
  */

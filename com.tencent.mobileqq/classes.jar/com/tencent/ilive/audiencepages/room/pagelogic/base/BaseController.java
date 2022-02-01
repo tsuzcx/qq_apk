@@ -117,7 +117,7 @@ public abstract class BaseController
     try
     {
       localObject = (FragmentActivity)localObject;
-      DialogUtil.createOneBtnDialog((Context)localObject, null, paramString, ((FragmentActivity)localObject).getString(2131694584), new BaseController.1(this, paramRoomPageActionInterface)).setRightBtnColor(((FragmentActivity)localObject).getResources().getColor(2131165273)).show(((FragmentActivity)localObject).getSupportFragmentManager(), "");
+      DialogUtil.createOneBtnDialog((Context)localObject, null, paramString, ((FragmentActivity)localObject).getString(2131892268), new BaseController.1(this, paramRoomPageActionInterface)).setRightBtnColor(((FragmentActivity)localObject).getResources().getColor(2131165499)).show(((FragmentActivity)localObject).getSupportFragmentManager(), "");
       return;
     }
     catch (Exception paramString)
@@ -128,7 +128,7 @@ public abstract class BaseController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.base.BaseController
  * JD-Core Version:    0.7.0.1
  */

@@ -17,17 +17,17 @@ final class PhoneNumQuickLoginManager$16
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     QLog.d("PhoneNumQuickLoginManager", 1, "setSelectAccountView onItemClick");
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilPhoneNumQuickLoginManager$OnUinClickListener != null)
+    if (this.a != null)
     {
-      PhoneNumQuickLoginManager.AccountInfo localAccountInfo = (PhoneNumQuickLoginManager.AccountInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqUtilPhoneNumQuickLoginManager$OnUinClickListener.a(this.jdField_a_of_type_AndroidAppDialog, this.jdField_a_of_type_JavaUtilMap, localAccountInfo);
+      PhoneNumQuickLoginManager.AccountInfo localAccountInfo = (PhoneNumQuickLoginManager.AccountInfo)this.b.get(paramInt);
+      this.a.a(this.c, this.d, localAccountInfo);
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.16
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ public class OpenOnProfileSettingParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new OpenOnProfileSettingAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "profile";
-    paramBaseQQAppInterface.c = "setting";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "profile";
+    paramBaseQQAppInterface.e = "setting";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class OpenOnProfileSettingParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OpenOnProfileSettingParser
  * JD-Core Version:    0.7.0.1
  */

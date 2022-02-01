@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.common;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
@@ -17,7 +16,7 @@ final class ReadInJoyHelper$4
     {
       JSONObject localJSONObject = new JSONObject();
       ReadInJoyHelper.a(localJSONObject);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), "0X8009662", "0X8009662", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", localJSONObject.toString(), false);
+      PublicAccountReportUtils.a(null, this.a.getAccount(), "0X8009662", "0X8009662", 0, 0, String.valueOf(this.b), String.valueOf(this.c), "", localJSONObject.toString(), false);
       return;
     }
     catch (Exception localException)
@@ -34,7 +33,7 @@ final class ReadInJoyHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -10,33 +10,29 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CountDownTimer
   extends Handler
 {
-  private long jdField_a_of_type_Long = 1000L;
-  public CopyOnWriteArrayList<CountDownTimer.CountDownTimerListener> a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean = false;
+  public CopyOnWriteArrayList<CountDownTimer.CountDownTimerListener> a = new CopyOnWriteArrayList();
+  private long b = 1000L;
+  private long c;
+  private boolean d = false;
+  private boolean e = false;
   
-  public CountDownTimer()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
+  public CountDownTimer() {}
   
   public CountDownTimer(Looper paramLooper)
   {
     super(paramLooper);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.e = false;
     b();
     c();
   }
   
   public void a(long paramLong)
   {
-    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + paramLong * 1000L, this.jdField_b_of_type_Long);
+    this.c = Math.max(SystemClock.elapsedRealtime() + paramLong * 1000L, this.c);
     f();
   }
   
@@ -45,7 +41,7 @@ public class CountDownTimer
     long l = SystemClock.elapsedRealtime();
     if (CountDownTimer.CountDownTimerListener.a(paramCountDownTimerListener) > l)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramCountDownTimerListener);
+      this.a.add(paramCountDownTimerListener);
       a(CountDownTimer.CountDownTimerListener.a(paramCountDownTimerListener) - l);
       return;
     }
@@ -54,10 +50,10 @@ public class CountDownTimer
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) {
+    if (this.a.isEmpty()) {
       g();
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((CountDownTimer.CountDownTimerListener)localIterator.next()).a();
     }
@@ -65,15 +61,15 @@ public class CountDownTimer
   
   public void b(CountDownTimer.CountDownTimerListener paramCountDownTimerListener)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramCountDownTimerListener);
+    this.a.remove(paramCountDownTimerListener);
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 2) {
+    if (this.a.size() < 2) {
       g();
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((CountDownTimer.CountDownTimerListener)localIterator.next()).b();
     }
@@ -82,13 +78,13 @@ public class CountDownTimer
   public void d()
   {
     removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
   public void e()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_b_of_type_Long >= SystemClock.elapsedRealtime()) {
+    this.d = false;
+    if (this.c >= SystemClock.elapsedRealtime()) {
       sendMessage(obtainMessage(1));
     }
   }
@@ -97,16 +93,16 @@ public class CountDownTimer
   {
     try
     {
-      boolean bool = this.jdField_b_of_type_Boolean;
+      boolean bool = this.e;
       if (bool) {
         return;
       }
-      if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
+      if (this.c <= SystemClock.elapsedRealtime())
       {
         a();
         return;
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.e = true;
       sendMessage(obtainMessage(1));
       return;
     }
@@ -115,21 +111,21 @@ public class CountDownTimer
   
   public void g()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.e = false;
     removeMessages(1);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.a.clear();
   }
   
   public void handleMessage(Message paramMessage)
   {
     try
     {
-      long l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
+      long l = this.c - SystemClock.elapsedRealtime();
       if (l <= 0L)
       {
         a();
       }
-      else if (l < this.jdField_a_of_type_Long)
+      else if (l < this.b)
       {
         sendMessageDelayed(obtainMessage(1), l);
       }
@@ -137,7 +133,7 @@ public class CountDownTimer
       {
         l = SystemClock.elapsedRealtime();
         b();
-        for (l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
+        for (l = l + this.b - SystemClock.elapsedRealtime(); l < 0L; l += this.b) {}
         sendMessageDelayed(obtainMessage(1), l);
       }
       return;
@@ -151,7 +147,7 @@ public class CountDownTimer
   
   public boolean sendMessageAtTime(Message paramMessage, long paramLong)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return super.sendMessageAtTime(paramMessage, paramLong);
     }
     return false;
@@ -159,7 +155,7 @@ public class CountDownTimer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photopreview.CountDownTimer
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class ThemeURLImageView
   {
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.mPaint.setColorFilter(QQTheme.a);
+    this.mPaint.setColorFilter(QQTheme.NIGHTMODE_COLORFILTER);
   }
   
   public static void setCurThemeId(String paramString)
@@ -47,7 +47,7 @@ public class ThemeURLImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.isSupportMaskView) && (QQUIDelegate.b()))
+    if ((this.isSupportMaskView) && (QQUIDelegate.c()))
     {
       paramCanvas.saveLayer(null, this.mPaint, 31);
       super.onDraw(paramCanvas);
@@ -64,7 +64,7 @@ public class ThemeURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ThemeURLImageView
  * JD-Core Version:    0.7.0.1
  */

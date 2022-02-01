@@ -18,16 +18,16 @@ import java.util.concurrent.ExecutorService;
 
 public class ReadInJoyUserInfoRepository
 {
-  private ReadInJoyUserInfoModule jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoyUserInfoModule;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private ConcurrentHashMap<String, ReadInJoyUserInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private ConcurrentHashMap<String, ReadInJoyUserInfo> a = new ConcurrentHashMap();
+  private ExecutorService b;
+  private ReadInJoyUserInfoModule c;
+  private EntityManager d;
   
   public ReadInJoyUserInfoRepository(ExecutorService paramExecutorService, ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, EntityManager paramEntityManager)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoyUserInfoModule = paramReadInJoyUserInfoModule;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
+    this.b = paramExecutorService;
+    this.c = paramReadInJoyUserInfoModule;
+    this.d = paramEntityManager;
   }
   
   private static Boolean a(ReadInJoyUserInfo paramReadInJoyUserInfo, long paramLong)
@@ -48,7 +48,7 @@ public class ReadInJoyUserInfoRepository
       QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "saveReadInJoyUserInfoToDB, \n  userInfo = ", paramReadInJoyUserInfo });
     }
     if (paramReadInJoyUserInfo != null) {
-      RIJThreadHandler.a("saveReadInJoyUserInfoToDB", new ReadInJoyUserInfoRepository.1(this, paramReadInJoyUserInfo), this.jdField_a_of_type_JavaUtilConcurrentExecutorService);
+      RIJThreadHandler.a("saveReadInJoyUserInfoToDB", new ReadInJoyUserInfoRepository.1(this, paramReadInJoyUserInfo), this.b);
     }
   }
   
@@ -57,13 +57,13 @@ public class ReadInJoyUserInfoRepository
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)this.a.get(paramString);
     if ((localReadInJoyUserInfo != null) && (!localReadInJoyUserInfo.requestFlag))
     {
       localReadInJoyUserInfo.requestFlag = true;
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(paramString);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoyUserInfoModule;
+      paramString = this.c;
       if (paramString != null) {
         paramString.a(localArrayList, 1, 1, 0);
       }
@@ -74,23 +74,18 @@ public class ReadInJoyUserInfoRepository
     return localReadInJoyUserInfo;
   }
   
-  public List<ReadInJoyUserInfo> a(String paramString)
-  {
-    return a(paramString, true);
-  }
-  
   public List<ReadInJoyUserInfo> a(String paramString, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(ReadInJoyUserInfo.class, true, "uin = ?", new String[] { paramString }, null, null, null, "1");
+    List localList = this.d.query(ReadInJoyUserInfo.class, true, "uin = ?", new String[] { paramString }, null, null, null, "1");
     if ((localList != null) && (localList.size() > 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "loadSingleReadInJoyUserInfoFromDB, userInfo = ", localList.get(0) });
       }
-      if ((localList.get(0) != null) && (a((ReadInJoyUserInfo)localList.get(0), RIJUserInfoAladdinConfig.a.a()).booleanValue())) {
+      if ((localList.get(0) != null) && (a((ReadInJoyUserInfo)localList.get(0), RIJUserInfoAladdinConfig.a.b()).booleanValue())) {
         return null;
       }
       a(paramString, (ReadInJoyUserInfo)localList.get(0), false, paramBoolean);
@@ -102,7 +97,7 @@ public class ReadInJoyUserInfoRepository
   public void a()
   {
     QLog.d("ReadInJoyUserInfoRepository", 2, "resetRequestFlag.");
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((ConcurrentHashMap)localObject).entrySet().iterator();
@@ -118,7 +113,7 @@ public class ReadInJoyUserInfoRepository
       return;
     }
     QLog.d("ReadInJoyUserInfoRepository", 2, "notifyCallback.");
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoyUserInfoModule;
+    Object localObject1 = this.c;
     if (localObject1 != null)
     {
       Object localObject2 = ((ReadInJoyUserInfoModule)localObject1).a();
@@ -146,7 +141,7 @@ public class ReadInJoyUserInfoRepository
       {
         QLog.d("ReadInJoyUserInfoRepository", 2, "notifyCallback callbackList is null.");
       }
-      paramReadInJoyUserInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonReadInJoyUserInfoModule.b();
+      paramReadInJoyUserInfo = this.c.b();
       if (paramReadInJoyUserInfo != null) {
         paramReadInJoyUserInfo.remove(paramString);
       }
@@ -157,7 +152,7 @@ public class ReadInJoyUserInfoRepository
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramReadInJoyUserInfo != null))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramReadInJoyUserInfo);
+      this.a.put(paramString, paramReadInJoyUserInfo);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "updateReadInJoyUserInfo, \n uin = ", paramString, Character.valueOf('\n'), "userInfo = ", paramReadInJoyUserInfo, Character.valueOf('\n'), "saveToDB = ", Boolean.valueOf(paramBoolean1), Character.valueOf('\n'), "notifyCallback = ", Boolean.valueOf(paramBoolean2) });
       }
@@ -172,14 +167,19 @@ public class ReadInJoyUserInfoRepository
     QLog.d("ReadInJoyUserInfoRepository", 2, "updateReadInJoyUserInfo failed, uin is null or empty, or userInfo is null");
   }
   
+  public List<ReadInJoyUserInfo> b(String paramString)
+  {
+    return a(paramString, true);
+  }
+  
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoRepository
  * JD-Core Version:    0.7.0.1
  */

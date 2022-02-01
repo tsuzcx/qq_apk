@@ -16,7 +16,7 @@ public class PhotoListCustomizationAECameraForCMShow
   extends PhotoListCustomizationDefault
 {
   public static final String a = "com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationAECameraForCMShow";
-  protected long a;
+  protected long i;
   
   PhotoListCustomizationAECameraForCMShow(AbstractPhotoListActivity paramAbstractPhotoListActivity)
   {
@@ -25,43 +25,43 @@ public class PhotoListCustomizationAECameraForCMShow
   
   public void a(View paramView)
   {
-    ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListExit(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListExit(System.currentTimeMillis() - this.i);
+    this.i = System.currentTimeMillis();
     paramView = new Intent();
-    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList);
-    ((IAECMSShow)QRoute.api(IAECMSShow.class)).jumpToMe(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, paramView);
+    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.e.selectedPhotoList);
+    ((IAECMSShow)QRoute.api(IAECMSShow.class)).jumpToMe(this.c, paramView);
   }
   
   public void b(Intent paramIntent)
   {
-    ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListExit(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListExit(System.currentTimeMillis() - this.i);
     super.b(paramIntent);
   }
   
   public void b(View paramView)
   {
     ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListClickCloseBtn();
-    ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListExit(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListExit(System.currentTimeMillis() - this.i);
     super.b(paramView);
   }
   
-  protected void e(LocalMediaInfo paramLocalMediaInfo)
+  protected void f(LocalMediaInfo paramLocalMediaInfo)
   {
     ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListPickPhoto();
-    super.e(paramLocalMediaInfo);
+    super.f(paramLocalMediaInfo);
   }
   
-  public void h()
+  public void k()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.i = System.currentTimeMillis();
     ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoListExpose();
-    super.h();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.setVisibility(8);
+    super.k();
+    this.h.n.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationAECameraForCMShow
  * JD-Core Version:    0.7.0.1
  */

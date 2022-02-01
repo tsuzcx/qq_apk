@@ -13,20 +13,20 @@ class PublicAccountChatPie$5
   
   public void run()
   {
-    Object localObject = (IPublicAccountDataManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+    Object localObject = (IPublicAccountDataManager)this.this$0.d.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localObject != null) {
-      localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfo(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      localObject = (PublicAccountInfo)((IPublicAccountDataManager)localObject).findPublicAccountInfo(this.this$0.ah.b);
     } else {
       localObject = null;
     }
     if (localObject != null) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.this$0.ce.sendEmptyMessage(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.5
  * JD-Core Version:    0.7.0.1
  */

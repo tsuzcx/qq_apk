@@ -80,14 +80,14 @@ public class StructMsgForAudioShare
     localStructMsgForAudioShare.mContentCover = "https://url.cn/R3i1JD";
     localStructMsgForAudioShare.mContentLayout = 2;
     localStructMsgForAudioShare.mContentSrc = "https://url.cn/JpkdzT";
-    localStructMsgForAudioShare.mContentSummary = HardCodeUtil.a(2131714400);
+    localStructMsgForAudioShare.mContentSummary = HardCodeUtil.a(2131911911);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131714403));
+    localStringBuilder.append(HardCodeUtil.a(2131911914));
     localStringBuilder.append(new Date());
     localStructMsgForAudioShare.mContentTitle = localStringBuilder.toString();
     localStructMsgForAudioShare.mMsgUrl = "https://y.qq.com/i/song.html?songid=625023&source=qq";
     localStructMsgForAudioShare.mSourceName = "QQ音乐";
-    localStructMsgForAudioShare.mMsgBrief = HardCodeUtil.a(2131714412);
+    localStructMsgForAudioShare.mMsgBrief = HardCodeUtil.a(2131911923);
     localStructMsgForAudioShare.mMsgAction = "web";
     localStructMsgForAudioShare.mMsgActionData = "y.qq.com";
     localStructMsgForAudioShare.mMsg_A_ActionData = "com.tencent.qqmusic";
@@ -113,7 +113,7 @@ public class StructMsgForAudioShare
       ((Intent)localObject).putExtra("url", paramStructMsgForAudioShare.mMsgUrl);
       ((Intent)localObject).putExtra("param_force_internal_browser", true);
       ((Intent)localObject).putExtra("isAppShare", true);
-      ((Intent)localObject).putExtra("appShareID", AppShareIDUtil.a(paramStructMsgForAudioShare.mSourceAppid));
+      ((Intent)localObject).putExtra("appShareID", AppShareIDUtil.c(paramStructMsgForAudioShare.mSourceAppid));
       paramContext.sendBroadcast(new Intent("qqplayer_exit_action"));
       ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(paramStructMsgForAudioShare.message, (Intent)localObject, paramStructMsgForAudioShare.mMsgUrl);
       paramContext.startActivity((Intent)localObject);
@@ -148,11 +148,11 @@ public class StructMsgForAudioShare
   public View getPreDialogView(Context paramContext, View paramView)
   {
     if (paramView == null) {
-      paramView = LayoutInflater.from(paramContext).inflate(2131562867, null);
+      paramView = LayoutInflater.from(paramContext).inflate(2131629318, null);
     }
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368633);
-    Object localObject = (TextView)paramView.findViewById(2131379930);
-    TextView localTextView = (TextView)paramView.findViewById(2131379906);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131435545);
+    Object localObject = (TextView)paramView.findViewById(2131448814);
+    TextView localTextView = (TextView)paramView.findViewById(2131448780);
     String str1 = this.mContentCover;
     String str2 = this.mContentTitle;
     String str3 = this.mContentSummary;
@@ -174,7 +174,7 @@ public class StructMsgForAudioShare
       i = 3;
     }
     ((TextView)localObject).setMaxLines(i);
-    localObject = paramContext.getResources().getDrawable(2130850841);
+    localObject = paramContext.getResources().getDrawable(2130852676);
     localImageView.setBackgroundDrawable(null);
     if (TextUtils.isEmpty(str1))
     {
@@ -203,16 +203,16 @@ public class StructMsgForAudioShare
     if (this.mMsgException)
     {
       paramContext = getVersionExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle);
-      paramContext.setId(2131377989);
-      paramContext.setTag(2131377989, this);
+      paramContext.setId(2131446476);
+      paramContext.setTag(2131446476, this);
       return paramContext;
     }
     paramBundle = paramContext.getResources();
-    paramView = LayoutInflater.from(paramContext).inflate(2131562864, null);
-    paramOnLongClickAndTouchListener = (URLImageView)paramView.findViewById(2131368633);
+    paramView = LayoutInflater.from(paramContext).inflate(2131629315, null);
+    paramOnLongClickAndTouchListener = (URLImageView)paramView.findViewById(2131435545);
     this.mCoverImage = new WeakReference(paramOnLongClickAndTouchListener);
-    Object localObject1 = (TextView)paramView.findViewById(2131379930);
-    Object localObject2 = (TextView)paramView.findViewById(2131379906);
+    Object localObject1 = (TextView)paramView.findViewById(2131448814);
+    Object localObject2 = (TextView)paramView.findViewById(2131448780);
     ((TextView)localObject1).setText(this.mContentTitle);
     ((TextView)localObject2).setText(this.mContentSummary);
     boolean bool2 = TextUtils.isEmpty(this.mContentTitle);
@@ -235,20 +235,20 @@ public class StructMsgForAudioShare
     }
     ((TextView)localObject1).setMaxLines(i);
     paramOnLongClickAndTouchListener.setVisibility(0);
-    if (QQPlayerService.a(this))
+    if (QQPlayerService.d(this))
     {
-      paramOnLongClickAndTouchListener.setImageResource(2130845586);
-      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131690213));
+      paramOnLongClickAndTouchListener.setImageResource(2130847050);
+      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131887113));
     }
     else
     {
-      paramOnLongClickAndTouchListener.setImageResource(2130845585);
-      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131690211));
+      paramOnLongClickAndTouchListener.setImageResource(2130847049);
+      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131887111));
     }
     if (!TextUtils.isEmpty(this.mContentCover))
     {
       localObject1 = this.mContentCover;
-      localObject2 = paramBundle.getDrawable(2130850841);
+      localObject2 = paramBundle.getDrawable(2130852676);
     }
     for (;;)
     {
@@ -273,7 +273,7 @@ public class StructMsgForAudioShare
       paramBundle.append(paramContext.getMessage());
       QLog.d("AudioShareMsg", 2, paramBundle.toString());
       break label382;
-      paramOnLongClickAndTouchListener.setBackgroundResource(2130850841);
+      paramOnLongClickAndTouchListener.setBackgroundResource(2130852676);
       label382:
       paramContext = paramView.getLayoutParams();
       if (paramContext == null)
@@ -288,8 +288,8 @@ public class StructMsgForAudioShare
       paramView.setLayoutParams(paramContext);
       paramOnLongClickAndTouchListener.setTag(this);
       paramOnLongClickAndTouchListener.setOnClickListener(this.musicShareCoverClikListener);
-      paramView.setId(2131377989);
-      paramView.setTag(2131377989, this);
+      paramView.setId(2131446476);
+      paramView.setTag(2131446476, this);
       return paramView;
       label455:
       bool1 = true;
@@ -311,11 +311,11 @@ public class StructMsgForAudioShare
       if ((paramInt != 2) && (paramInt != 1))
       {
         ((URLImageView)localObject).post(new StructMsgForAudioShare.4(this, (URLImageView)localObject));
-        ((URLImageView)localObject).setContentDescription(localResources.getString(2131690211));
+        ((URLImageView)localObject).setContentDescription(localResources.getString(2131887111));
         return;
       }
       ((URLImageView)localObject).post(new StructMsgForAudioShare.3(this, (URLImageView)localObject));
-      ((URLImageView)localObject).setContentDescription(localResources.getString(2131690213));
+      ((URLImageView)localObject).setContentDescription(localResources.getString(2131887113));
     }
   }
   
@@ -674,7 +674,7 @@ public class StructMsgForAudioShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForAudioShare
  * JD-Core Version:    0.7.0.1
  */

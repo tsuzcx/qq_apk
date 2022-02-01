@@ -18,13 +18,13 @@ class ForwardMarketFaceOption$1
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramURLDrawable.setBounds(ImageUtil.a(paramURLDrawable, 36, 100, this.a.a));
+    paramURLDrawable.setBounds(ImageUtil.a(paramURLDrawable, 36, 100, this.a.z));
     ForwardMarketFaceOption.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMarketFaceOption.1
  * JD-Core Version:    0.7.0.1
  */

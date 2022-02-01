@@ -9,21 +9,21 @@ class ARCloudControl$5
   
   public void run()
   {
-    if ((ARCloudControl.a(this.this$0) != null) && (ARCloudControl.b(this.this$0)))
+    if ((ARCloudControl.b(this.this$0) != null) && (ARCloudControl.c(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "onARCloudUploadImgComplete .isTimeOut= ");
       if (ARCloudControl.a(this.this$0)) {
         return;
       }
       ARCloudControl.a(this.this$0, true);
-      ARCloudControl.a(this.this$0).a(1, null);
-      this.this$0.b = System.currentTimeMillis();
+      ARCloudControl.b(this.this$0).a(1, null);
+      this.this$0.o = System.currentTimeMillis();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.5
  * JD-Core Version:    0.7.0.1
  */

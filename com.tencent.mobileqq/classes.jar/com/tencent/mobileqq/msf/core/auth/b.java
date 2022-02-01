@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
 import com.tencent.msf.boot.config.NativeConfigStore;
@@ -132,119 +132,108 @@ public class b
   
   private void b(ArrayList paramArrayList)
   {
-    Iterator localIterator = l.e.GetAllLoginInfo().iterator();
-    Object localObject1;
+    Object localObject1 = l.e.GetAllLoginInfo();
+    StringBuilder localStringBuilder = new StringBuilder("loadAccountInfoFromWt");
+    Iterator localIterator = ((List)localObject1).iterator();
     if (localIterator.hasNext()) {
       localObject1 = (WloginLoginInfo)localIterator.next();
     }
     for (;;)
     {
-      label618:
       try
       {
         for (;;)
         {
-          localObject2 = String.valueOf(((WloginLoginInfo)localObject1).mUin);
-          Object localObject3;
-          if (QLog.isDevelopLevel())
-          {
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("loadAccountInfoFromWt uin: ");
-            ((StringBuilder)localObject3).append((String)localObject2);
-            QLog.d("MSF.C.AccountCenter", 4, ((StringBuilder)localObject3).toString());
+          String str = String.valueOf(((WloginLoginInfo)localObject1).mUin);
+          localStringBuilder.append(",uin=");
+          localStringBuilder.append(MsfSdkUtils.getShortUin(str));
+          if (l.e.IsNeedLoginWithPasswd(str, 16L).booleanValue()) {
+            break label592;
           }
-          if (l.e.IsNeedLoginWithPasswd((String)localObject2, 16L).booleanValue()) {
-            break label618;
-          }
-          Object localObject4 = l.e.GetLocalSig((String)localObject2, 16L);
-          byte[] arrayOfByte2 = WtloginHelper.GetTicketSig((WUserSigInfo)localObject4, 64);
-          byte[] arrayOfByte3 = WtloginHelper.GetTicketSig((WUserSigInfo)localObject4, 262144);
-          byte[] arrayOfByte1 = WtloginHelper.GetTicketSigKey((WUserSigInfo)localObject4, 262144);
-          if ((localObject4 != null) && (arrayOfByte2 != null) && (arrayOfByte2.length != 0) && (arrayOfByte3 != null) && (arrayOfByte3.length != 0) && (arrayOfByte1 != null) && (arrayOfByte1.length != 0))
+          Object localObject2 = l.e.GetLocalSig(str, 16L);
+          byte[] arrayOfByte2 = WtloginHelper.GetTicketSig((WUserSigInfo)localObject2, 64);
+          byte[] arrayOfByte3 = WtloginHelper.GetTicketSig((WUserSigInfo)localObject2, 262144);
+          byte[] arrayOfByte1 = WtloginHelper.GetTicketSigKey((WUserSigInfo)localObject2, 262144);
+          boolean bool = false;
+          a locala;
+          if ((localObject2 != null) && (arrayOfByte2 != null) && (arrayOfByte2.length != 0) && (arrayOfByte3 != null) && (arrayOfByte3.length != 0) && (arrayOfByte1 != null) && (arrayOfByte1.length != 0))
           {
-            localObject3 = new a((String)localObject2);
-            ((a)localObject3).e(arrayOfByte2);
-            ((a)localObject3).h(arrayOfByte3);
+            locala = new a(str);
+            locala.e(arrayOfByte2);
+            locala.h(arrayOfByte3);
             arrayOfByte2 = new byte[16];
             j.a(arrayOfByte2, 0, arrayOfByte1, arrayOfByte1.length);
-            ((a)localObject3).j(arrayOfByte2);
-            ((a)localObject3).b(WtloginHelper.GetTicketSig((WUserSigInfo)localObject4, 4096));
-            ((a)localObject3).c(WtloginHelper.GetTicketSig((WUserSigInfo)localObject4, 32));
-            i1 = 1;
-            ((a)localObject3).a(true);
-            ((a)localObject3).a(System.currentTimeMillis());
-            long l2 = a((String)localObject2, 64);
-            long l3 = a((String)localObject2, 262144);
+            locala.j(arrayOfByte2);
+            locala.b(WtloginHelper.GetTicketSig((WUserSigInfo)localObject2, 4096));
+            locala.c(WtloginHelper.GetTicketSig((WUserSigInfo)localObject2, 32));
+            locala.a(true);
+            locala.a(System.currentTimeMillis());
+            long l2 = a(str, 64);
+            long l3 = a(str, 262144);
             long l1 = l2;
             if (l2 > l3) {
               l1 = l3;
             }
-            ((a)localObject3).b(l1);
-            ((a)localObject3).c(a((String)localObject2, 524288));
-            l2 = a((String)localObject2, 4096);
-            l3 = a((String)localObject2, 32);
-            ((a)localObject3).d(l2);
+            locala.b(l1);
+            locala.c(a(str, 524288));
+            l2 = a(str, 4096);
+            l3 = a(str, 32);
+            locala.d(l2);
             l1 = l2;
             if (l2 > l3) {
               l1 = l3;
             }
-            ((a)localObject3).e(l1);
+            locala.e(l1);
             if (((WloginLoginInfo)localObject1).mLoginBitmap == 0) {
-              ((a)localObject3).c("QQ");
+              locala.c("QQ");
             }
-            localObject4 = new WloginSimpleInfo();
-            if (l.e.GetBasicUserInfo((String)localObject2, (WloginSimpleInfo)localObject4).booleanValue())
+            localObject2 = new WloginSimpleInfo();
+            if (l.e.GetBasicUserInfo(str, (WloginSimpleInfo)localObject2).booleanValue())
             {
-              ((a)localObject3).b(localObject4._age[0]);
-              ((a)localObject3).n(((WloginSimpleInfo)localObject4)._nick);
-              if (localObject4._gender[0] != 1) {
-                break label675;
+              locala.b(localObject2._age[0]);
+              locala.n(((WloginSimpleInfo)localObject2)._nick);
+              if (localObject2._gender[0] != 1) {
+                break label622;
               }
-              ((a)localObject3).c(i1);
-              ((a)localObject3).a(util.buf_to_int16(((WloginSimpleInfo)localObject4)._face, 0));
+              i1 = 1;
+              locala.c(i1);
+              locala.a(util.buf_to_int16(((WloginSimpleInfo)localObject2)._face, 0));
             }
-            if (QLog.isColorLevel())
-            {
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("load account from wt ");
-              ((StringBuilder)localObject2).append(((a)localObject3).d());
-              ((StringBuilder)localObject2).append(" logined:");
-              ((StringBuilder)localObject2).append(((a)localObject3).n());
-              ((StringBuilder)localObject2).append(" mLoginBitmap:");
-              ((StringBuilder)localObject2).append(((WloginLoginInfo)localObject1).mLoginBitmap);
-              QLog.d("MSF.C.AccountCenter", 2, ((StringBuilder)localObject2).toString());
-            }
+            localStringBuilder.append(",isAlive=");
+            localStringBuilder.append(locala.n());
+            localStringBuilder.append(",mLoginBitmap=");
+            localStringBuilder.append(((WloginLoginInfo)localObject1).mLoginBitmap);
           }
           try
           {
-            paramArrayList.add(localObject3);
+            paramArrayList.add(locala);
           }
           catch (Throwable localThrowable1)
           {
-            break label623;
+            break label597;
           }
         }
-        if (!QLog.isColorLevel()) {
-          break;
+        localStringBuilder.append(",invalid token");
+        localStringBuilder.append(",sigInfo=");
+        if (localObject2 == null) {
+          bool = true;
         }
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("load account from wt failed, because of invalid token ");
-        ((StringBuilder)localObject1).append((String)localObject2);
-        QLog.w("MSF.C.AccountCenter", 2, ((StringBuilder)localObject1).toString());
+        localStringBuilder.append(bool);
+        CodecWarpper.printBytes(",_A2=", arrayOfByte2, localStringBuilder);
+        CodecWarpper.printBytes(",_D2=", arrayOfByte3, localStringBuilder);
+        CodecWarpper.printBytes(",_D2_Key=", arrayOfByte1, localStringBuilder);
         break;
       }
-      catch (Throwable localThrowable2) {}
-      label623:
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Throwable localThrowable2)
+      {
+        label592:
+        label597:
+        QLog.i("MSF.C.AccountCenter", 1, "loadAccountInfoFromWt", localThrowable2);
       }
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("parse account from wt error ");
-      ((StringBuilder)localObject2).append(localThrowable2.toString());
-      QLog.w("MSF.C.AccountCenter", 2, ((StringBuilder)localObject2).toString(), localThrowable2);
       break;
+      QLog.i("MSF.C.AccountCenter", 1, localStringBuilder.toString());
       return;
-      label675:
+      label622:
       int i1 = 2;
     }
   }
@@ -260,7 +249,7 @@ public class b
       ((StringBuilder)localObject).append(MsfSdkUtils.getShortUin(parama.d()));
       QLog.d("MSF.C.AccountCenter", 1, ((StringBuilder)localObject).toString());
       CodecWarpper.nativeSetAccountKey(parama.d(), parama.e(), parama.f(), parama.g(), parama.h(), parama.i(), parama.j(), parama.k(), parama.l(), null);
-      ac.a(parama.d(), false);
+      ad.a(parama.d(), false);
       localObject = MsfStore.getNativeConfigStore();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("__loginSdk_uinMapping_");
@@ -622,7 +611,7 @@ public class b
     CodecWarpper.nativeSetUseSimpleHead(parama.d(), false);
     a(parama);
     m(parama.d());
-    ac.a(parama.d(), false);
+    ad.a(parama.d(), false);
   }
   
   public void b(String paramString)
@@ -914,7 +903,7 @@ public class b
         this.a.stopPCActivePolling("setNoLogin");
       }
       a locala = l(paramString);
-      ac.a(paramString, false);
+      ad.a(paramString, false);
       if (locala != null)
       {
         locala.a(false);
@@ -973,7 +962,7 @@ public class b
     ((StringBuilder)localObject2).append(Thread.currentThread().getName());
     ((StringBuilder)localObject2).append(" reloadKeys setKey ");
     ((StringBuilder)localObject2).append(MsfSdkUtils.getShortUin(((a)localObject1).d()));
-    QLog.d("MSF.C.AccountCenter", 1, ((StringBuilder)localObject2).toString());
+    QLog.i("MSF.C.AccountCenter", 1, ((StringBuilder)localObject2).toString());
     localObject2 = ((a)localObject1).d();
     byte[] arrayOfByte1 = ((a)localObject1).f();
     byte[] arrayOfByte2 = ((a)localObject1).g();
@@ -982,12 +971,12 @@ public class b
     byte[] arrayOfByte5 = ((a)localObject1).j();
     localObject1 = ((a)localObject1).k();
     CodecWarpper.nativeSetAccountKey((String)localObject2, new byte[0], arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, (byte[])localObject1, new byte[0], null);
-    ac.a(paramString, false);
+    ad.a(paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.b
  * JD-Core Version:    0.7.0.1
  */

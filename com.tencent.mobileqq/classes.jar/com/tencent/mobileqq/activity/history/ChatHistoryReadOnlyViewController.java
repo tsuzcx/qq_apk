@@ -7,39 +7,34 @@ import com.tencent.widget.FadeIconImageView;
 public class ChatHistoryReadOnlyViewController
   extends ChatHistoryCommonViewController
 {
-  public static final int[] a;
-  public static final int[] b = { 2131364495 };
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131690808 };
-  }
+  public static final int[] e = { 2131887738 };
+  public static final int[] f = { 2131430552 };
   
   public ChatHistoryReadOnlyViewController(BaseActivity paramBaseActivity)
   {
     super(paramBaseActivity);
   }
   
-  public void a()
+  public void c()
   {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
+    super.c();
+    this.n.setVisibility(8);
+    this.o.setVisibility(8);
   }
   
-  protected int[] a()
+  protected int[] k()
   {
-    return b;
+    return f;
   }
   
-  protected int[] b()
+  protected int[] l()
   {
-    return jdField_a_of_type_ArrayOfInt;
+    return e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryReadOnlyViewController
  * JD-Core Version:    0.7.0.1
  */

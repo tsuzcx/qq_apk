@@ -99,22 +99,22 @@ public class VideoQCallDecoder
         ((StringBuilder)localObject).append(paramList);
         QLog.d("decodeC2CMsgPkg_QCall", 2, ((StringBuilder)localObject).toString());
       }
-      if (paramMessageHandler.a.getMsgCache().a(l2, paramList))
+      if (paramMessageHandler.n.getMsgCache().a(l2, paramList))
       {
         if (QLog.isColorLevel()) {
           QLog.d("decodeC2CMsgPkg_QCall", 2, "msg has been pulled");
         }
         return;
       }
-      l3 = MessageCache.a();
-      l4 = Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
+      l3 = MessageCache.c();
+      l4 = Long.valueOf(paramMessageHandler.n.getCurrentAccountUin()).longValue();
       paramMsg = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
       paramList = new byte[4];
       Object localObject = new byte[4];
       System.arraycopy(paramMsg, 0, paramList, 0, 4);
       System.arraycopy(paramMsg, 4, localObject, 0, 4);
-      int i = VideoPackageUtils.a(paramList, 4);
-      int j = VideoPackageUtils.a((byte[])localObject, 4);
+      int i = VideoPackageUtils.b(paramList, 4);
+      int j = VideoPackageUtils.b((byte[])localObject, 4);
       if ((i > 0) && (j > 0))
       {
         paramMsg = a("decodeC2CMsgPkg_QCall", paramMsg, 8, i, j);
@@ -125,8 +125,8 @@ public class VideoQCallDecoder
           }
           return;
         }
-        boolean bool = AVMsgUtil.a(paramMsg);
-        if (((!paramDecodeProtoPkgContext.jdField_a_of_type_Boolean) && (!paramDecodeProtoPkgContext.f)) || ((paramDecodeProtoPkgContext.jdField_a_of_type_Long == paramDecodeProtoPkgContext.b) && ((paramDecodeProtoPkgContext.jdField_a_of_type_Long != paramDecodeProtoPkgContext.b) || (bool))))
+        boolean bool = AVMsgUtil.b(paramMsg);
+        if (((!paramDecodeProtoPkgContext.g) && (!paramDecodeProtoPkgContext.l)) || ((paramDecodeProtoPkgContext.a == paramDecodeProtoPkgContext.b) && ((paramDecodeProtoPkgContext.a != paramDecodeProtoPkgContext.b) || (bool))))
         {
           a(paramMessageHandler, "decodeC2CMsgPkg_QCall", (int)l1, l2, l4, l3 - l1, paramMsg, bool);
           return;
@@ -135,9 +135,9 @@ public class VideoQCallDecoder
         {
           paramMessageHandler = new StringBuilder();
           paramMessageHandler.append("<---decodeC2CMsgPkg_QCall return null:,isReaded:");
-          paramMessageHandler.append(paramDecodeProtoPkgContext.jdField_a_of_type_Boolean);
+          paramMessageHandler.append(paramDecodeProtoPkgContext.g);
           paramMessageHandler.append("syncOther:");
-          paramMessageHandler.append(paramDecodeProtoPkgContext.f);
+          paramMessageHandler.append(paramDecodeProtoPkgContext.l);
           paramMessageHandler.append(",isSharpRequest");
           paramMessageHandler.append(bool);
           QLog.e("decodeC2CMsgPkg_QCall", 2, paramMessageHandler.toString());
@@ -168,7 +168,7 @@ public class VideoQCallDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.VideoQCallDecoder
  * JD-Core Version:    0.7.0.1
  */

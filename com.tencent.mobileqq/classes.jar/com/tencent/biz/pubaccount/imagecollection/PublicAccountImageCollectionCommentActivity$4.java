@@ -11,7 +11,7 @@ class PublicAccountImageCollectionCommentActivity$4
   
   public void onGlobalLayout()
   {
-    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
+    int i = PublicAccountImageCollectionCommentActivity.b(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.b(this.a).getHeight();
     if (QLog.isDevelopLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -24,7 +24,7 @@ class PublicAccountImageCollectionCommentActivity$4
       PublicAccountImageCollectionCommentActivity.a(this.a, true);
       return;
     }
-    if (PublicAccountImageCollectionCommentActivity.a(this.a))
+    if (PublicAccountImageCollectionCommentActivity.c(this.a))
     {
       PublicAccountImageCollectionCommentActivity.a(this.a, false);
       PublicAccountImageCollectionCommentActivity.a(this.a, 0);
@@ -33,7 +33,7 @@ class PublicAccountImageCollectionCommentActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionCommentActivity.4
  * JD-Core Version:    0.7.0.1
  */

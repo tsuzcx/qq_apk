@@ -25,7 +25,7 @@ public class VipGiftPlugin
   
   private void a()
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if (localActivity != null) {
       localActivity.finish();
     }
@@ -33,7 +33,7 @@ public class VipGiftPlugin
   
   private void a(String paramString)
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if (localActivity == null) {
       return;
     }
@@ -98,7 +98,7 @@ public class VipGiftPlugin
                 if (i != 2) {
                   return;
                 }
-                localActivity.overridePendingTransition(2130772342, 0);
+                localActivity.overridePendingTransition(2130772434, 0);
                 return;
               }
               localActivity.overridePendingTransition(0, 0);
@@ -134,7 +134,7 @@ public class VipGiftPlugin
   {
     if (paramLong == 8589934595L)
     {
-      paramString = this.mRuntime.a();
+      paramString = this.mRuntime.d();
       if (paramString == null) {
         return false;
       }
@@ -231,7 +231,7 @@ public class VipGiftPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipgift.VipGiftPlugin
  * JD-Core Version:    0.7.0.1
  */

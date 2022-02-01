@@ -24,7 +24,7 @@ public abstract interface IODCsChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.cschannel.IODCsChannel
  * JD-Core Version:    0.7.0.1
  */

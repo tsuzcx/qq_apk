@@ -13,19 +13,19 @@ class FeedLikeLego$3
 {
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-    if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount > 0)
+    this.this$0.g.a(this.this$0.b);
+    if (this.this$0.b.mLikeCount > 0)
     {
-      CommentLikeFeedItem localCommentLikeFeedItem = this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      CommentLikeFeedItem localCommentLikeFeedItem = this.this$0.b;
       localCommentLikeFeedItem.mLikeCount -= 1;
     }
     int i = 0;
-    while (i < this.this$0.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.this$0.e.size())
     {
-      if (((LikeEntry)this.this$0.jdField_a_of_type_JavaUtilList.get(i)).unionId.equals(this.a))
+      if (((LikeEntry)this.this$0.e.get(i)).unionId.equals(this.a))
       {
-        this.this$0.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager.b((LikeEntry)this.this$0.jdField_a_of_type_JavaUtilList.get(i));
-        this.this$0.jdField_a_of_type_JavaUtilList.remove(i);
+        this.this$0.f.b((LikeEntry)this.this$0.e.get(i));
+        this.this$0.e.remove(i);
       }
       i += 1;
     }
@@ -34,7 +34,7 @@ class FeedLikeLego$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeLego.3
  * JD-Core Version:    0.7.0.1
  */

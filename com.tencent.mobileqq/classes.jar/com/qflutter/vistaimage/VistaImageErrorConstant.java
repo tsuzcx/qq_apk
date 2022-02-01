@@ -4,6 +4,8 @@ public final class VistaImageErrorConstant
 {
   public static final String CREATE_TEXTURE_CODE = "-10";
   public static final String CREATE_TEXTURE_MSG = "create texture error";
+  public static final String INVALID_TASK_TYPE_CODE = "-12";
+  public static final String INVALID_TASK_TYPE_MSG = "invalid task type";
   public static final String INVALID_TEXTURE_ID_CODE = "-8";
   public static final String INVALID_TEXTURE_ID_MSG = "invalid texture id";
   public static final String LOAD_BITMAP_ERROR_CODE = "-5";
@@ -29,7 +31,7 @@ public final class VistaImageErrorConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.VistaImageErrorConstant
  * JD-Core Version:    0.7.0.1
  */

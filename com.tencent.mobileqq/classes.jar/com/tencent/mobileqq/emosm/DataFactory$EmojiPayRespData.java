@@ -4,23 +4,21 @@ import android.os.Bundle;
 
 public class DataFactory$EmojiPayRespData
 {
-  public int a;
-  public String a;
+  public int a = -1;
   public int b = 0;
   public int c = -1;
   public int d = -1;
   public int e = -1;
+  public String f = "";
   
   public DataFactory$EmojiPayRespData(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
     this.d = paramInt4;
     this.e = paramInt5;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
   public static EmojiPayRespData a(Bundle paramBundle)
@@ -54,18 +52,18 @@ public class DataFactory$EmojiPayRespData
   public Bundle a()
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("result", this.jdField_a_of_type_Int);
+    localBundle.putInt("result", this.a);
     localBundle.putInt("realSaveNum", this.b);
     localBundle.putInt("payChannel", this.c);
     localBundle.putInt("payState", this.d);
     localBundle.putInt("provideState", this.e);
-    localBundle.putString("message", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("message", this.f);
     return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.DataFactory.EmojiPayRespData
  * JD-Core Version:    0.7.0.1
  */

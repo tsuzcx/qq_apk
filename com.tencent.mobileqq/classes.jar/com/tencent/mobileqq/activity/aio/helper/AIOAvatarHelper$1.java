@@ -25,12 +25,12 @@ class AIOAvatarHelper$1
     if (paramString == null) {
       return;
     }
-    AvatarLayout.a(AIOAvatarHelper.a(this.a), AIOAvatarHelper.a(this.a).a, Collections.singletonList(paramString));
+    AvatarLayout.a(AIOAvatarHelper.a(this.a), AIOAvatarHelper.b(this.a).U, Collections.singletonList(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOAvatarHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,49 +10,44 @@ public class NativeMiddleBodyView
   extends RelativeLayout
   implements IView
 {
-  private static String e = "NativeMiddleBodyView";
-  View jdField_a_of_type_AndroidViewView = null;
-  NativeMiddleBodyView.RadiusView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView = null;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String b;
-  String c;
+  private static String h = "NativeMiddleBodyView";
+  boolean a = false;
+  View b = null;
+  NativeMiddleBodyView.RadiusView c = null;
   String d;
+  String e;
+  String f;
+  String g;
   
   public NativeMiddleBodyView(Context paramContext)
   {
     super(paramContext);
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
   public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
     if (paramLayoutParams != null) {
       super.addView(paramView, paramLayoutParams);
     } else {
       super.addView(paramView);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView == null)
+      if (this.c == null)
       {
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         if (paramLayoutParams != null) {
           localLayoutParams.setMargins(paramLayoutParams.leftMargin, paramLayoutParams.topMargin, paramLayoutParams.rightMargin, paramLayoutParams.bottomMargin);
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView = new NativeMiddleBodyView.RadiusView(getContext());
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView.setLeftTopRadius(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView.setRightTopRadius(this.b);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView.setBottomRightRadius(this.c);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView.setBottomLeftRadius(this.d);
-        addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView, localLayoutParams);
+        this.c = new NativeMiddleBodyView.RadiusView(getContext());
+        this.c.setLeftTopRadius(this.d);
+        this.c.setRightTopRadius(this.e);
+        this.c.setBottomRightRadius(this.f);
+        this.c.setBottomLeftRadius(this.g);
+        addView(this.c, localLayoutParams);
       }
-      paramView.addOnLayoutChangeListener(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeMiddleBodyView$RadiusView.a());
+      paramView.addOnLayoutChangeListener(this.c.getLayoutChangeListener());
     }
   }
   
@@ -69,6 +64,11 @@ public class NativeMiddleBodyView
   public int getComMeasuredWidth()
   {
     return getMeasuredWidth();
+  }
+  
+  public View getContent()
+  {
+    return this.b;
   }
   
   public void measureComponent(int paramInt1, int paramInt2)
@@ -88,11 +88,11 @@ public class NativeMiddleBodyView
   
   public void setRadius(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    this.a = true;
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramString3;
+    this.g = paramString4;
   }
   
   public void setVisibility(int paramInt)
@@ -102,7 +102,7 @@ public class NativeMiddleBodyView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeMiddleBodyView
  * JD-Core Version:    0.7.0.1
  */

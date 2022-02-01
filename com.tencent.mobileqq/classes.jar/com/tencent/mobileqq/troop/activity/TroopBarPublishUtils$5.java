@@ -10,19 +10,19 @@ final class TroopBarPublishUtils$5
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopBarPublishUtils.a().a();
+    TroopBarPublishUtils.b().a();
     if (paramInt != 0)
     {
       if (paramInt != 1) {
         return;
       }
       paramDialogInterface.dismiss();
-      TroopBarPublishUtils.a(this.b, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
+      TroopBarPublishUtils.a(this.c, this.d, this.a);
       return;
     }
     paramDialogInterface.dismiss();
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("bid", "0");
-    boolean bool = "interestcircle".endsWith(this.jdField_a_of_type_AndroidOsBundle.getString("from"));
+    String str2 = this.a.getString("bid", "0");
+    boolean bool = "interestcircle".endsWith(this.a.getString("from"));
     paramDialogInterface = "pub_page_new";
     if (!bool) {
       for (;;)
@@ -33,12 +33,12 @@ final class TroopBarPublishUtils$5
       }
     }
     String str1;
-    if (this.jdField_a_of_type_Int == 3) {
+    if (this.b == 3) {
       str1 = "Clk_cancel";
     } else {
       str1 = "Clk_cancelup";
     }
-    if (this.jdField_a_of_type_Int == 3)
+    if (this.b == 3)
     {
       if ("0".endsWith(str2)) {
         paramInt = 2;
@@ -54,7 +54,7 @@ final class TroopBarPublishUtils$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.5
  * JD-Core Version:    0.7.0.1
  */

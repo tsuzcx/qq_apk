@@ -14,38 +14,28 @@ import java.lang.reflect.Field;
 public class MiddleBracketsTitleTextView
   extends TextView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 2;
+  private int a = 0;
+  private Paint b;
+  private boolean c;
+  private int d = 2;
+  private String e;
   
   public MiddleBracketsTitleTextView(Context paramContext)
   {
     super(paramContext);
-    a();
+    b();
   }
   
   public MiddleBracketsTitleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
   public MiddleBracketsTitleTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint = getPaint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getTextSize());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getCurrentTextColor());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    b();
   }
   
   private void a(Canvas paramCanvas)
@@ -55,25 +45,25 @@ public class MiddleBracketsTitleTextView
       int j;
       try
       {
-        this.jdField_a_of_type_Int = (getMeasuredWidth() - getPaddingLeft() - getPaddingRight());
-        if (this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString) > this.b * this.jdField_a_of_type_Int)
+        this.a = (getMeasuredWidth() - getPaddingLeft() - getPaddingRight());
+        if (this.b.measureText(this.e) > this.d * this.a)
         {
-          float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText("...]");
-          float f2 = this.b * this.jdField_a_of_type_Int;
+          float f1 = this.b.measureText("...]");
+          float f2 = this.d * this.a;
           i = 0;
-          if (i < this.jdField_a_of_type_JavaLangString.length())
+          if (i < this.e.length())
           {
-            Object localObject = this.jdField_a_of_type_JavaLangString;
+            Object localObject = this.e;
             j = i + 1;
             localObject = ((String)localObject).substring(0, j);
-            if (this.jdField_a_of_type_AndroidGraphicsPaint.measureText((String)localObject) <= f2 - f1 * 1.8F) {
+            if (this.b.measureText((String)localObject) <= f2 - f1 * 1.8F) {
               break label201;
             }
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString.substring(0, i));
+            ((StringBuilder)localObject).append(this.e.substring(0, i));
             ((StringBuilder)localObject).append("...]");
-            this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-            setText(this.jdField_a_of_type_JavaLangString);
+            this.e = ((StringBuilder)localObject).toString();
+            setText(this.e);
           }
         }
         else
@@ -95,6 +85,16 @@ public class MiddleBracketsTitleTextView
     }
   }
   
+  private void b()
+  {
+    this.b = getPaint();
+    this.b.setTextSize(getTextSize());
+    this.b.setColor(getCurrentTextColor());
+    this.b.setAntiAlias(true);
+    this.b.setTextAlign(Paint.Align.LEFT);
+    this.b.setStyle(Paint.Style.STROKE);
+  }
+  
   public boolean a()
   {
     boolean bool = false;
@@ -106,7 +106,7 @@ public class MiddleBracketsTitleTextView
       if (localObject == null) {
         return false;
       }
-      int i = ((Layout)localObject).getEllipsisCount(this.b - 1);
+      int i = ((Layout)localObject).getEllipsisCount(this.d - 1);
       if (i > 0) {
         bool = true;
       }
@@ -123,7 +123,7 @@ public class MiddleBracketsTitleTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (getText() != null) && (this.jdField_a_of_type_Boolean) && (a()))
+    if ((this.e != null) && (getText() != null) && (this.c) && (a()))
     {
       a(paramCanvas);
       return;
@@ -133,17 +133,17 @@ public class MiddleBracketsTitleTextView
   
   public void setNeedAddBrackets(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void setTitle(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.MiddleBracketsTitleTextView
  * JD-Core Version:    0.7.0.1
  */

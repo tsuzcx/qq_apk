@@ -44,26 +44,26 @@ public class PicOcrHandler
   extends BusinessHandler
 {
   public static final String a = "com.tencent.mobileqq.ocr.api.impl.PicOcrHandler";
-  private static Map a = new HashMap();
   public static String b = "OidbSvc.0xe07_0";
+  private static Map c = new HashMap();
   
   static
   {
-    Map localMap = a;
+    Map localMap = c;
     Integer localInteger1 = Integer.valueOf(0);
     localMap.put(localInteger1, localInteger1);
-    localMap = a;
+    localMap = c;
     Integer localInteger2 = Integer.valueOf(1);
     localMap.put(localInteger2, localInteger2);
-    a.put(Integer.valueOf(-1001), localInteger1);
-    a.put(Integer.valueOf(-1002), localInteger2);
-    a.put(Integer.valueOf(-1003), Integer.valueOf(2));
-    a.put(Integer.valueOf(-1004), Integer.valueOf(3));
-    a.put(Integer.valueOf(-1005), Integer.valueOf(4));
-    a.put(Integer.valueOf(-1006), Integer.valueOf(5));
-    a.put(Integer.valueOf(-1007), Integer.valueOf(6));
-    a.put(Integer.valueOf(-1008), Integer.valueOf(7));
-    a.put(Integer.valueOf(-1009), Integer.valueOf(10));
+    c.put(Integer.valueOf(-1001), localInteger1);
+    c.put(Integer.valueOf(-1002), localInteger2);
+    c.put(Integer.valueOf(-1003), Integer.valueOf(2));
+    c.put(Integer.valueOf(-1004), Integer.valueOf(3));
+    c.put(Integer.valueOf(-1005), Integer.valueOf(4));
+    c.put(Integer.valueOf(-1006), Integer.valueOf(5));
+    c.put(Integer.valueOf(-1007), Integer.valueOf(6));
+    c.put(Integer.valueOf(-1008), Integer.valueOf(7));
+    c.put(Integer.valueOf(-1009), Integer.valueOf(10));
   }
   
   public PicOcrHandler(AppInterface paramAppInterface)
@@ -73,15 +73,15 @@ public class PicOcrHandler
   
   private static int a(int paramInt)
   {
-    if (a.containsKey(Integer.valueOf(paramInt))) {
-      return ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
+    if (c.containsKey(Integer.valueOf(paramInt))) {
+      return ((Integer)c.get(Integer.valueOf(paramInt))).intValue();
     }
     return 2;
   }
   
   public void a(OCRReqContext paramOCRReqContext)
   {
-    a(paramOCRReqContext.f, paramOCRReqContext.jdField_b_of_type_Long, paramOCRReqContext.jdField_d_of_type_JavaLangString, paramOCRReqContext.e, paramOCRReqContext.jdField_a_of_type_Int, (int)paramOCRReqContext.jdField_a_of_type_Long, paramOCRReqContext.jdField_b_of_type_Int, paramOCRReqContext.jdField_c_of_type_Int, paramOCRReqContext.jdField_a_of_type_Boolean, paramOCRReqContext.jdField_a_of_type_JavaLangString);
+    a(paramOCRReqContext.l, paramOCRReqContext.k, paramOCRReqContext.f, paramOCRReqContext.g, paramOCRReqContext.b, (int)paramOCRReqContext.e, paramOCRReqContext.i, paramOCRReqContext.j, paramOCRReqContext.h, paramOCRReqContext.a);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -470,12 +470,12 @@ public class PicOcrHandler
           break label2146;
         }
         i2 = new JSONObject(new JSONObject((String)localObject2).optString("Parag")).optInt("ParagNo");
-        ((PicOcrResultBean)localObject11).jdField_a_of_type_JavaLangString = ((String)localObject12);
-        ((PicOcrResultBean)localObject11).jdField_a_of_type_Int = i4;
-        ((PicOcrResultBean)localObject11).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject10);
-        ((PicOcrResultBean)localObject11).jdField_b_of_type_Int = i2;
-        ((PicOcrResultBean)localObject11).jdField_c_of_type_Int = n;
-        ((PicOcrResultBean)localObject11).jdField_d_of_type_Int = i1;
+        ((PicOcrResultBean)localObject11).a = ((String)localObject12);
+        ((PicOcrResultBean)localObject11).b = i4;
+        ((PicOcrResultBean)localObject11).c = ((ArrayList)localObject10);
+        ((PicOcrResultBean)localObject11).d = i2;
+        ((PicOcrResultBean)localObject11).e = n;
+        ((PicOcrResultBean)localObject11).f = i1;
         localArrayList.add(localObject11);
         continue;
         j = i6;
@@ -606,18 +606,18 @@ public class PicOcrHandler
     if (bool1)
     {
       paramToServiceMsg = paramFromServiceMsg;
-      paramToServiceMsg.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      paramToServiceMsg.jdField_b_of_type_JavaLangString = ((String)localObject3);
-      paramToServiceMsg.jdField_b_of_type_JavaUtilArrayList.addAll(paramObject);
-      paramToServiceMsg.jdField_a_of_type_Int = n;
-      paramToServiceMsg.jdField_b_of_type_Int = i1;
-      paramToServiceMsg.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-      paramToServiceMsg.jdField_c_of_type_JavaLangString = str1;
-      paramToServiceMsg.jdField_a_of_type_JavaUtilHashMap = localHashMap;
-      paramToServiceMsg.jdField_c_of_type_Int = m;
-      paramToServiceMsg.jdField_d_of_type_Int = k;
-      paramToServiceMsg.e = j;
-      paramToServiceMsg.jdField_d_of_type_JavaLangString = str2;
+      paramToServiceMsg.a = ((String)localObject1);
+      paramToServiceMsg.d = ((String)localObject3);
+      paramToServiceMsg.g.addAll(paramObject);
+      paramToServiceMsg.b = n;
+      paramToServiceMsg.c = i1;
+      paramToServiceMsg.f.addAll(localArrayList);
+      paramToServiceMsg.e = str1;
+      paramToServiceMsg.h = localHashMap;
+      paramToServiceMsg.i = m;
+      paramToServiceMsg.j = k;
+      paramToServiceMsg.k = j;
+      paramToServiceMsg.l = str2;
       try
       {
         ((IPicOcrService)this.appRuntime.getRuntimeService(IPicOcrService.class, "")).putOcrResult((String)localObject1, paramToServiceMsg);
@@ -668,8 +668,12 @@ public class PicOcrHandler
     if (!TextUtils.isEmpty(paramString4)) {
       ((cmd0xe07.OCRReqBody)localObject).languageType.set(paramString4);
     }
-    ((cmd0xe07.OCRReqBody)localObject).originMd5.set(paramString2);
-    ((cmd0xe07.OCRReqBody)localObject).afterCompressMd5.set(paramString3);
+    if (!TextUtils.isEmpty(paramString2)) {
+      ((cmd0xe07.OCRReqBody)localObject).originMd5.set(paramString2);
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      ((cmd0xe07.OCRReqBody)localObject).afterCompressMd5.set(paramString3);
+    }
     ((cmd0xe07.OCRReqBody)localObject).afterCompressFileSize.set(paramInt2);
     ((cmd0xe07.OCRReqBody)localObject).afterCompressWeight.set(paramInt3);
     ((cmd0xe07.OCRReqBody)localObject).afterCompressHeight.set(paramInt4);
@@ -679,7 +683,7 @@ public class PicOcrHandler
     paramString4.client.set(0);
     paramString4.entrance.set(a(paramInt1));
     paramString4.ocrReqBody.set((MessageMicro)localObject);
-    paramString4 = makeOIDBPkg(jdField_b_of_type_JavaLangString, 3591, 0, paramString4.toByteArray());
+    paramString4 = makeOIDBPkg(b, 3591, 0, paramString4.toByteArray());
     paramString4.getAttributes().put("key_ocr_seq", Long.valueOf(paramLong));
     paramString4.getAttributes().put("key_ocr_md5", paramString2);
     paramString4.getAttributes().put("key_ocr_url", paramString1);
@@ -695,7 +699,7 @@ public class PicOcrHandler
     if (this.allowCmdSet == null)
     {
       this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add(jdField_b_of_type_JavaLangString);
+      this.allowCmdSet.add(b);
     }
     return this.allowCmdSet;
   }
@@ -724,7 +728,7 @@ public class PicOcrHandler
         }
         return;
       }
-      if (jdField_b_of_type_JavaLangString.equals(str)) {
+      if (b.equals(str)) {
         a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       }
     }
@@ -732,7 +736,7 @@ public class PicOcrHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.PicOcrHandler
  * JD-Core Version:    0.7.0.1
  */

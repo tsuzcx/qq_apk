@@ -57,11 +57,12 @@ public abstract interface ProcessConstant
   @Deprecated
   public static final String WEB = "web";
   public static final String WEIYUN = "weiyun";
+  public static final String WXA_CONTAINER = "wxa_container";
   public static final String ZEBRA = "zebra";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     mqq.app.api.ProcessConstant
  * JD-Core Version:    0.7.0.1
  */

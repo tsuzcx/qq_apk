@@ -57,155 +57,15 @@ public class ReportDbHelper
     finally {}
   }
   
-  public int a(String paramString)
-  {
-    try
-    {
-      int i = b("table_new_data", paramString) + 0;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("new_table>>count=");
-      localStringBuilder.append(i);
-      LogUtility.b("Jie", localStringBuilder.toString());
-      i += b("table_old_data", paramString);
-      paramString = new StringBuilder();
-      paramString.append("all_table>>>count=");
-      paramString.append(i);
-      LogUtility.b("Jie", paramString.toString());
-      return i;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  /* Error */
-  public int a(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aconst_null
-    //   3: astore 6
-    //   5: aconst_null
-    //   6: astore 4
-    //   8: aload_0
-    //   9: invokevirtual 143	com/tencent/open/business/viareport/ReportDbHelper:a	()Landroid/database/sqlite/SQLiteDatabase;
-    //   12: astore 5
-    //   14: aload_2
-    //   15: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   18: ifeq +26 -> 44
-    //   21: aload 5
-    //   23: aload_1
-    //   24: aconst_null
-    //   25: aconst_null
-    //   26: invokevirtual 153	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   29: istore_3
-    //   30: aload 5
-    //   32: ifnull +8 -> 40
-    //   35: aload 5
-    //   37: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: iload_3
-    //   43: ireturn
-    //   44: aload 5
-    //   46: aload_1
-    //   47: ldc 158
-    //   49: iconst_1
-    //   50: anewarray 160	java/lang/String
-    //   53: dup
-    //   54: iconst_0
-    //   55: aload_2
-    //   56: aastore
-    //   57: invokevirtual 153	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   60: istore_3
-    //   61: aload 5
-    //   63: ifnull +8 -> 71
-    //   66: aload 5
-    //   68: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
-    //   71: aload_0
-    //   72: monitorexit
-    //   73: iload_3
-    //   74: ireturn
-    //   75: astore_1
-    //   76: goto +53 -> 129
-    //   79: astore_2
-    //   80: aload 5
-    //   82: astore_1
-    //   83: goto +15 -> 98
-    //   86: astore_1
-    //   87: aload 4
-    //   89: astore 5
-    //   91: goto +38 -> 129
-    //   94: astore_2
-    //   95: aload 6
-    //   97: astore_1
-    //   98: aload_1
-    //   99: astore 4
-    //   101: aload_2
-    //   102: invokevirtual 161	java/lang/Exception:printStackTrace	()V
-    //   105: aload_1
-    //   106: astore 4
-    //   108: ldc 98
-    //   110: aload_2
-    //   111: invokevirtual 162	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
-    //   114: invokestatic 105	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   117: aload_1
-    //   118: ifnull +7 -> 125
-    //   121: aload_1
-    //   122: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
-    //   125: aload_0
-    //   126: monitorexit
-    //   127: iconst_m1
-    //   128: ireturn
-    //   129: aload 5
-    //   131: ifnull +8 -> 139
-    //   134: aload 5
-    //   136: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
-    //   139: aload_1
-    //   140: athrow
-    //   141: astore_1
-    //   142: aload_0
-    //   143: monitorexit
-    //   144: aload_1
-    //   145: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	146	0	this	ReportDbHelper
-    //   0	146	1	paramString1	String
-    //   0	146	2	paramString2	String
-    //   29	45	3	i	int
-    //   6	101	4	str	String
-    //   12	123	5	localObject1	Object
-    //   3	93	6	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   14	30	75	finally
-    //   44	61	75	finally
-    //   14	30	79	java/lang/Exception
-    //   44	61	79	java/lang/Exception
-    //   8	14	86	finally
-    //   101	105	86	finally
-    //   108	117	86	finally
-    //   8	14	94	java/lang/Exception
-    //   35	40	141	finally
-    //   66	71	141	finally
-    //   121	125	141	finally
-    //   134	139	141	finally
-    //   139	141	141	finally
-  }
-  
   /* Error */
   public int a(String paramString, ArrayList<BatchReportInfo> paramArrayList)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 168	com/tencent/mobileqq/app/SQLiteDatabase:beginTransactionLog	()V
+    //   2: invokestatic 117	com/tencent/mobileqq/app/SQLiteDatabase:beginTransactionLog	()V
     //   5: aload_0
-    //   6: invokevirtual 143	com/tencent/open/business/viareport/ReportDbHelper:a	()Landroid/database/sqlite/SQLiteDatabase;
+    //   6: invokevirtual 120	com/tencent/open/business/viareport/ReportDbHelper:b	()Landroid/database/sqlite/SQLiteDatabase;
     //   9: astore 5
     //   11: iconst_0
     //   12: istore 4
@@ -218,14 +78,14 @@ public class ReportDbHelper
     //   23: iconst_0
     //   24: ireturn
     //   25: aload 5
-    //   27: invokevirtual 171	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   27: invokevirtual 123	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
     //   30: aload_2
-    //   31: invokevirtual 177	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   31: invokevirtual 129	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   34: astore_2
     //   35: iload_3
     //   36: istore 4
     //   38: aload_2
-    //   39: invokeinterface 183 1 0
+    //   39: invokeinterface 135 1 0
     //   44: ifeq +30 -> 74
     //   47: iload_3
     //   48: istore 4
@@ -233,9 +93,9 @@ public class ReportDbHelper
     //   51: aload 5
     //   53: aload_1
     //   54: aload_2
-    //   55: invokeinterface 187 1 0
+    //   55: invokeinterface 139 1 0
     //   60: checkcast 21	com/tencent/open/business/viareport/BatchReportInfo
-    //   63: invokespecial 189	com/tencent/open/business/viareport/ReportDbHelper:a	(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Lcom/tencent/open/business/viareport/BatchReportInfo;)J
+    //   63: invokespecial 141	com/tencent/open/business/viareport/ReportDbHelper:a	(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Lcom/tencent/open/business/viareport/BatchReportInfo;)J
     //   66: pop2
     //   67: iload_3
     //   68: iconst_1
@@ -245,24 +105,24 @@ public class ReportDbHelper
     //   74: iload_3
     //   75: istore 4
     //   77: aload 5
-    //   79: invokevirtual 192	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   79: invokevirtual 144	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
     //   82: aload 5
-    //   84: invokevirtual 195	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   84: invokevirtual 147	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   87: aload 5
-    //   89: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
-    //   92: invokestatic 198	com/tencent/mobileqq/app/SQLiteDatabase:endTransactionLog	()V
+    //   89: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
+    //   92: invokestatic 153	com/tencent/mobileqq/app/SQLiteDatabase:endTransactionLog	()V
     //   95: goto +32 -> 127
     //   98: astore_1
     //   99: goto +32 -> 131
     //   102: astore_1
     //   103: ldc 98
-    //   105: ldc 200
+    //   105: ldc 155
     //   107: aload_1
-    //   108: invokestatic 203	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   108: invokestatic 158	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   111: aload 5
-    //   113: invokevirtual 195	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   113: invokevirtual 147	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   116: aload 5
-    //   118: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
+    //   118: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
     //   121: iload 4
     //   123: istore_3
     //   124: goto -32 -> 92
@@ -271,10 +131,10 @@ public class ReportDbHelper
     //   129: iload_3
     //   130: ireturn
     //   131: aload 5
-    //   133: invokevirtual 195	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   133: invokevirtual 147	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   136: aload 5
-    //   138: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
-    //   141: invokestatic 198	com/tencent/mobileqq/app/SQLiteDatabase:endTransactionLog	()V
+    //   138: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
+    //   141: invokestatic 153	com/tencent/mobileqq/app/SQLiteDatabase:endTransactionLog	()V
     //   144: aload_1
     //   145: athrow
     //   146: astore_1
@@ -334,7 +194,7 @@ public class ReportDbHelper
     //   2: ldc2_w 84
     //   5: lstore_3
     //   6: aload_0
-    //   7: invokevirtual 143	com/tencent/open/business/viareport/ReportDbHelper:a	()Landroid/database/sqlite/SQLiteDatabase;
+    //   7: invokevirtual 120	com/tencent/open/business/viareport/ReportDbHelper:b	()Landroid/database/sqlite/SQLiteDatabase;
     //   10: astore 7
     //   12: lload_3
     //   13: lstore 5
@@ -344,12 +204,12 @@ public class ReportDbHelper
     //   21: aload 7
     //   23: aload_1
     //   24: aload_2
-    //   25: invokespecial 189	com/tencent/open/business/viareport/ReportDbHelper:a	(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Lcom/tencent/open/business/viareport/BatchReportInfo;)J
+    //   25: invokespecial 141	com/tencent/open/business/viareport/ReportDbHelper:a	(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Lcom/tencent/open/business/viareport/BatchReportInfo;)J
     //   28: lstore 5
     //   30: lload 5
     //   32: lstore_3
     //   33: aload 7
-    //   35: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
+    //   35: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
     //   38: lload_3
     //   39: lstore 5
     //   41: goto +26 -> 67
@@ -357,12 +217,12 @@ public class ReportDbHelper
     //   45: goto +15 -> 60
     //   48: astore_1
     //   49: ldc 98
-    //   51: ldc 212
+    //   51: ldc 169
     //   53: aload_1
-    //   54: invokestatic 203	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   54: invokestatic 158	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   57: goto -24 -> 33
     //   60: aload 7
-    //   62: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
+    //   62: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
     //   65: aload_1
     //   66: athrow
     //   67: aload_0
@@ -394,20 +254,6 @@ public class ReportDbHelper
     //   60	67	72	finally
   }
   
-  protected SQLiteDatabase a()
-  {
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = ReportSqliteHelper.a(CommonDataAdapter.a().a()).getWritableDatabase();
-      return localSQLiteDatabase;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
-  }
-  
   public ArrayList<BatchReportInfo> a(String paramString)
   {
     try
@@ -428,12 +274,12 @@ public class ReportDbHelper
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 173	java/util/ArrayList
+    //   2: new 125	java/util/ArrayList
     //   5: dup
-    //   6: invokespecial 234	java/util/ArrayList:<init>	()V
+    //   6: invokespecial 177	java/util/ArrayList:<init>	()V
     //   9: astore 11
     //   11: aload_2
-    //   12: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   12: invokestatic 183	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   15: istore_3
     //   16: aconst_null
     //   17: astore 9
@@ -449,20 +295,20 @@ public class ReportDbHelper
     //   33: astore 7
     //   35: goto +3 -> 38
     //   38: aload_2
-    //   39: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   39: invokestatic 183	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   42: ifeq +9 -> 51
     //   45: aconst_null
     //   46: astore 8
     //   48: goto +13 -> 61
     //   51: iconst_1
-    //   52: anewarray 160	java/lang/String
+    //   52: anewarray 185	java/lang/String
     //   55: dup
     //   56: iconst_0
     //   57: aload_2
     //   58: aastore
     //   59: astore 8
     //   61: aload_0
-    //   62: invokevirtual 143	com/tencent/open/business/viareport/ReportDbHelper:a	()Landroid/database/sqlite/SQLiteDatabase;
+    //   62: invokevirtual 120	com/tencent/open/business/viareport/ReportDbHelper:b	()Landroid/database/sqlite/SQLiteDatabase;
     //   65: astore 4
     //   67: aload 10
     //   69: astore_2
@@ -478,7 +324,7 @@ public class ReportDbHelper
     //   86: aconst_null
     //   87: aconst_null
     //   88: aconst_null
-    //   89: invokevirtual 238	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   89: invokevirtual 189	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   92: astore_1
     //   93: aload_1
     //   94: astore_2
@@ -487,7 +333,7 @@ public class ReportDbHelper
     //   99: aload_1
     //   100: astore 6
     //   102: aload_1
-    //   103: invokeinterface 243 1 0
+    //   103: invokeinterface 194 1 0
     //   108: pop
     //   109: aload_1
     //   110: astore_2
@@ -496,7 +342,7 @@ public class ReportDbHelper
     //   115: aload_1
     //   116: astore 6
     //   118: aload_1
-    //   119: invokeinterface 246 1 0
+    //   119: invokeinterface 197 1 0
     //   124: ifne +393 -> 517
     //   127: aload_1
     //   128: astore_2
@@ -506,7 +352,7 @@ public class ReportDbHelper
     //   134: astore 6
     //   136: new 21	com/tencent/open/business/viareport/BatchReportInfo
     //   139: dup
-    //   140: invokespecial 247	com/tencent/open/business/viareport/BatchReportInfo:<init>	()V
+    //   140: invokespecial 198	com/tencent/open/business/viareport/BatchReportInfo:<init>	()V
     //   143: astore 7
     //   145: aload_1
     //   146: astore_2
@@ -518,8 +364,8 @@ public class ReportDbHelper
     //   156: aload_1
     //   157: aload_1
     //   158: ldc 19
-    //   160: invokeinterface 250 2 0
-    //   165: invokeinterface 254 2 0
+    //   160: invokeinterface 202 2 0
+    //   165: invokeinterface 206 2 0
     //   170: putfield 25	com/tencent/open/business/viareport/BatchReportInfo:c	Ljava/lang/String;
     //   173: aload_1
     //   174: astore_2
@@ -531,8 +377,8 @@ public class ReportDbHelper
     //   184: aload_1
     //   185: aload_1
     //   186: ldc 31
-    //   188: invokeinterface 250 2 0
-    //   193: invokeinterface 254 2 0
+    //   188: invokeinterface 202 2 0
+    //   193: invokeinterface 206 2 0
     //   198: putfield 33	com/tencent/open/business/viareport/BatchReportInfo:a	Ljava/lang/String;
     //   201: aload_1
     //   202: astore_2
@@ -544,8 +390,8 @@ public class ReportDbHelper
     //   212: aload_1
     //   213: aload_1
     //   214: ldc 35
-    //   216: invokeinterface 250 2 0
-    //   221: invokeinterface 254 2 0
+    //   216: invokeinterface 202 2 0
+    //   221: invokeinterface 206 2 0
     //   226: putfield 38	com/tencent/open/business/viareport/BatchReportInfo:e	Ljava/lang/String;
     //   229: aload_1
     //   230: astore_2
@@ -557,8 +403,8 @@ public class ReportDbHelper
     //   240: aload_1
     //   241: aload_1
     //   242: ldc 40
-    //   244: invokeinterface 250 2 0
-    //   249: invokeinterface 254 2 0
+    //   244: invokeinterface 202 2 0
+    //   249: invokeinterface 206 2 0
     //   254: putfield 43	com/tencent/open/business/viareport/BatchReportInfo:d	Ljava/lang/String;
     //   257: aload_1
     //   258: astore_2
@@ -570,8 +416,8 @@ public class ReportDbHelper
     //   268: aload_1
     //   269: aload_1
     //   270: ldc 45
-    //   272: invokeinterface 250 2 0
-    //   277: invokeinterface 254 2 0
+    //   272: invokeinterface 202 2 0
+    //   277: invokeinterface 206 2 0
     //   282: putfield 48	com/tencent/open/business/viareport/BatchReportInfo:b	Ljava/lang/String;
     //   285: aload_1
     //   286: astore_2
@@ -583,9 +429,9 @@ public class ReportDbHelper
     //   296: aload_1
     //   297: aload_1
     //   298: ldc 50
-    //   300: invokeinterface 250 2 0
-    //   305: invokeinterface 254 2 0
-    //   310: putfield 257	com/tencent/open/business/viareport/BatchReportInfo:f	Ljava/lang/String;
+    //   300: invokeinterface 202 2 0
+    //   305: invokeinterface 206 2 0
+    //   310: putfield 209	com/tencent/open/business/viareport/BatchReportInfo:f	Ljava/lang/String;
     //   313: aload_1
     //   314: astore_2
     //   315: aload 4
@@ -596,8 +442,8 @@ public class ReportDbHelper
     //   324: aload_1
     //   325: aload_1
     //   326: ldc 55
-    //   328: invokeinterface 250 2 0
-    //   333: invokeinterface 254 2 0
+    //   328: invokeinterface 202 2 0
+    //   333: invokeinterface 206 2 0
     //   338: putfield 58	com/tencent/open/business/viareport/BatchReportInfo:g	Ljava/lang/String;
     //   341: aload_1
     //   342: astore_2
@@ -609,8 +455,8 @@ public class ReportDbHelper
     //   352: aload_1
     //   353: aload_1
     //   354: ldc 60
-    //   356: invokeinterface 250 2 0
-    //   361: invokeinterface 254 2 0
+    //   356: invokeinterface 202 2 0
+    //   361: invokeinterface 206 2 0
     //   366: putfield 63	com/tencent/open/business/viareport/BatchReportInfo:h	Ljava/lang/String;
     //   369: aload_1
     //   370: astore_2
@@ -622,8 +468,8 @@ public class ReportDbHelper
     //   380: aload_1
     //   381: aload_1
     //   382: ldc 65
-    //   384: invokeinterface 250 2 0
-    //   389: invokeinterface 254 2 0
+    //   384: invokeinterface 202 2 0
+    //   389: invokeinterface 206 2 0
     //   394: putfield 68	com/tencent/open/business/viareport/BatchReportInfo:i	Ljava/lang/String;
     //   397: aload_1
     //   398: astore_2
@@ -635,8 +481,8 @@ public class ReportDbHelper
     //   408: aload_1
     //   409: aload_1
     //   410: ldc 70
-    //   412: invokeinterface 250 2 0
-    //   417: invokeinterface 254 2 0
+    //   412: invokeinterface 202 2 0
+    //   417: invokeinterface 206 2 0
     //   422: putfield 73	com/tencent/open/business/viareport/BatchReportInfo:j	Ljava/lang/String;
     //   425: aload_1
     //   426: astore_2
@@ -648,8 +494,8 @@ public class ReportDbHelper
     //   436: aload_1
     //   437: aload_1
     //   438: ldc 75
-    //   440: invokeinterface 250 2 0
-    //   445: invokeinterface 254 2 0
+    //   440: invokeinterface 202 2 0
+    //   445: invokeinterface 206 2 0
     //   450: putfield 78	com/tencent/open/business/viareport/BatchReportInfo:k	Ljava/lang/String;
     //   453: aload_1
     //   454: astore_2
@@ -661,8 +507,8 @@ public class ReportDbHelper
     //   464: aload_1
     //   465: aload_1
     //   466: ldc 80
-    //   468: invokeinterface 250 2 0
-    //   473: invokeinterface 254 2 0
+    //   468: invokeinterface 202 2 0
+    //   473: invokeinterface 206 2 0
     //   478: putfield 83	com/tencent/open/business/viareport/BatchReportInfo:l	Ljava/lang/String;
     //   481: aload_1
     //   482: astore_2
@@ -672,7 +518,7 @@ public class ReportDbHelper
     //   488: astore 6
     //   490: aload 11
     //   492: aload 7
-    //   494: invokevirtual 261	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   494: invokevirtual 213	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   497: pop
     //   498: aload_1
     //   499: astore_2
@@ -681,16 +527,16 @@ public class ReportDbHelper
     //   504: aload_1
     //   505: astore 6
     //   507: aload_1
-    //   508: invokeinterface 264 1 0
+    //   508: invokeinterface 216 1 0
     //   513: pop
     //   514: goto -405 -> 109
     //   517: aload_1
     //   518: ifnull +140 -> 658
     //   521: aload_1
-    //   522: invokeinterface 265 1 0
+    //   522: invokeinterface 217 1 0
     //   527: goto +131 -> 658
     //   530: aload_1
-    //   531: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
+    //   531: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
     //   534: goto +79 -> 613
     //   537: astore_1
     //   538: goto +80 -> 618
@@ -714,19 +560,19 @@ public class ReportDbHelper
     //   570: aload_1
     //   571: astore 5
     //   573: aload 7
-    //   575: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   575: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   578: aload 6
     //   580: astore_2
     //   581: aload_1
     //   582: astore 5
     //   584: ldc 98
     //   586: aload 7
-    //   588: invokevirtual 162	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
+    //   588: invokevirtual 219	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
     //   591: invokestatic 105	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   594: aload 6
     //   596: ifnull +10 -> 606
     //   599: aload 6
-    //   601: invokeinterface 265 1 0
+    //   601: invokeinterface 217 1 0
     //   606: aload_1
     //   607: ifnull +6 -> 613
     //   610: goto -80 -> 530
@@ -737,11 +583,11 @@ public class ReportDbHelper
     //   618: aload_2
     //   619: ifnull +9 -> 628
     //   622: aload_2
-    //   623: invokeinterface 265 1 0
+    //   623: invokeinterface 217 1 0
     //   628: aload 5
     //   630: ifnull +8 -> 638
     //   633: aload 5
-    //   635: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
+    //   635: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
     //   638: aload_1
     //   639: athrow
     //   640: astore_1
@@ -751,7 +597,7 @@ public class ReportDbHelper
     //   646: aload_1
     //   647: athrow
     //   648: goto -2 -> 646
-    //   651: ldc 158
+    //   651: ldc 221
     //   653: astore 7
     //   655: goto -617 -> 38
     //   658: aload 4
@@ -834,8 +680,176 @@ public class ReportDbHelper
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
+    //   2: aconst_null
+    //   3: astore 6
+    //   5: aconst_null
+    //   6: astore 4
+    //   8: aload_0
+    //   9: invokevirtual 120	com/tencent/open/business/viareport/ReportDbHelper:b	()Landroid/database/sqlite/SQLiteDatabase;
+    //   12: astore 5
+    //   14: aload_2
+    //   15: invokestatic 183	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   18: ifeq +26 -> 44
+    //   21: aload 5
+    //   23: aload_1
+    //   24: aconst_null
+    //   25: aconst_null
+    //   26: invokevirtual 227	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   29: istore_3
+    //   30: aload 5
+    //   32: ifnull +8 -> 40
+    //   35: aload 5
+    //   37: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
+    //   40: aload_0
+    //   41: monitorexit
+    //   42: iload_3
+    //   43: ireturn
+    //   44: aload 5
+    //   46: aload_1
+    //   47: ldc 221
+    //   49: iconst_1
+    //   50: anewarray 185	java/lang/String
+    //   53: dup
+    //   54: iconst_0
+    //   55: aload_2
+    //   56: aastore
+    //   57: invokevirtual 227	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   60: istore_3
+    //   61: aload 5
+    //   63: ifnull +8 -> 71
+    //   66: aload 5
+    //   68: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
+    //   71: aload_0
+    //   72: monitorexit
+    //   73: iload_3
+    //   74: ireturn
+    //   75: astore_1
+    //   76: goto +53 -> 129
+    //   79: astore_2
+    //   80: aload 5
+    //   82: astore_1
+    //   83: goto +15 -> 98
+    //   86: astore_1
+    //   87: aload 4
+    //   89: astore 5
+    //   91: goto +38 -> 129
+    //   94: astore_2
+    //   95: aload 6
+    //   97: astore_1
+    //   98: aload_1
+    //   99: astore 4
+    //   101: aload_2
+    //   102: invokevirtual 218	java/lang/Exception:printStackTrace	()V
+    //   105: aload_1
+    //   106: astore 4
+    //   108: ldc 98
+    //   110: aload_2
+    //   111: invokevirtual 219	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
+    //   114: invokestatic 105	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   117: aload_1
+    //   118: ifnull +7 -> 125
+    //   121: aload_1
+    //   122: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
+    //   125: aload_0
+    //   126: monitorexit
+    //   127: iconst_m1
+    //   128: ireturn
+    //   129: aload 5
+    //   131: ifnull +8 -> 139
+    //   134: aload 5
+    //   136: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
+    //   139: aload_1
+    //   140: athrow
+    //   141: astore_1
+    //   142: aload_0
+    //   143: monitorexit
+    //   144: aload_1
+    //   145: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	146	0	this	ReportDbHelper
+    //   0	146	1	paramString1	String
+    //   0	146	2	paramString2	String
+    //   29	45	3	i	int
+    //   6	101	4	str	String
+    //   12	123	5	localObject1	Object
+    //   3	93	6	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   14	30	75	finally
+    //   44	61	75	finally
+    //   14	30	79	java/lang/Exception
+    //   44	61	79	java/lang/Exception
+    //   8	14	86	finally
+    //   101	105	86	finally
+    //   108	117	86	finally
+    //   8	14	94	java/lang/Exception
+    //   35	40	141	finally
+    //   66	71	141	finally
+    //   121	125	141	finally
+    //   134	139	141	finally
+    //   139	141	141	finally
+  }
+  
+  protected SQLiteDatabase b()
+  {
+    try
+    {
+      SQLiteDatabase localSQLiteDatabase = ReportSqliteHelper.a(CommonDataAdapter.a().b()).getWritableDatabase();
+      return localSQLiteDatabase;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public ArrayList<BatchReportInfo> b(String paramString)
+  {
+    try
+    {
+      paramString = a("table_old_data", paramString);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public int c(String paramString)
+  {
+    try
+    {
+      int i = c("table_new_data", paramString) + 0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new_table>>count=");
+      localStringBuilder.append(i);
+      LogUtility.b("Jie", localStringBuilder.toString());
+      i += c("table_old_data", paramString);
+      paramString = new StringBuilder();
+      paramString.append("all_table>>>count=");
+      paramString.append(i);
+      LogUtility.b("Jie", paramString.toString());
+      return i;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  /* Error */
+  public int c(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
     //   2: aload_2
-    //   3: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 183	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: istore 4
     //   8: aconst_null
     //   9: astore 10
@@ -851,20 +865,20 @@ public class ReportDbHelper
     //   26: astore 6
     //   28: goto +3 -> 31
     //   31: aload_2
-    //   32: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   32: invokestatic 183	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   35: ifeq +9 -> 44
     //   38: aconst_null
     //   39: astore 8
     //   41: goto +13 -> 54
     //   44: iconst_1
-    //   45: anewarray 160	java/lang/String
+    //   45: anewarray 185	java/lang/String
     //   48: dup
     //   49: iconst_0
     //   50: aload_2
     //   51: aastore
     //   52: astore 8
     //   54: aload_0
-    //   55: invokevirtual 143	com/tencent/open/business/viareport/ReportDbHelper:a	()Landroid/database/sqlite/SQLiteDatabase;
+    //   55: invokevirtual 120	com/tencent/open/business/viareport/ReportDbHelper:b	()Landroid/database/sqlite/SQLiteDatabase;
     //   58: astore 7
     //   60: aload 11
     //   62: astore_2
@@ -878,7 +892,7 @@ public class ReportDbHelper
     //   75: aconst_null
     //   76: aconst_null
     //   77: aconst_null
-    //   78: invokevirtual 238	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   78: invokevirtual 189	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   81: astore_1
     //   82: aload_1
     //   83: astore_2
@@ -890,11 +904,11 @@ public class ReportDbHelper
     //   94: aload_1
     //   95: ifnull +9 -> 104
     //   98: aload_1
-    //   99: invokeinterface 265 1 0
+    //   99: invokeinterface 217 1 0
     //   104: aload 7
     //   106: ifnull +8 -> 114
     //   109: aload 7
-    //   111: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
+    //   111: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
     //   114: aload_0
     //   115: monitorexit
     //   116: iload_3
@@ -929,19 +943,19 @@ public class ReportDbHelper
     //   165: aload 9
     //   167: astore_1
     //   168: aload 5
-    //   170: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   170: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   173: ldc 98
     //   175: aload 5
-    //   177: invokevirtual 162	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
+    //   177: invokevirtual 219	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
     //   180: invokestatic 105	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   183: aload_2
     //   184: ifnull +9 -> 193
     //   187: aload_2
-    //   188: invokeinterface 265 1 0
+    //   188: invokeinterface 217 1 0
     //   193: aload_1
     //   194: ifnull +7 -> 201
     //   197: aload_1
-    //   198: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
+    //   198: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
     //   201: aload_0
     //   202: monitorexit
     //   203: iconst_0
@@ -954,11 +968,11 @@ public class ReportDbHelper
     //   213: aload 5
     //   215: ifnull +10 -> 225
     //   218: aload 5
-    //   220: invokeinterface 265 1 0
+    //   220: invokeinterface 217 1 0
     //   225: aload_1
     //   226: ifnull +7 -> 233
     //   229: aload_1
-    //   230: invokevirtual 156	android/database/sqlite/SQLiteDatabase:close	()V
+    //   230: invokevirtual 150	android/database/sqlite/SQLiteDatabase:close	()V
     //   233: aload_2
     //   234: athrow
     //   235: astore_1
@@ -966,7 +980,7 @@ public class ReportDbHelper
     //   237: monitorexit
     //   238: aload_1
     //   239: athrow
-    //   240: ldc 158
+    //   240: ldc 221
     //   242: astore 6
     //   244: goto -213 -> 31
     // Local variable table:
@@ -1009,24 +1023,10 @@ public class ReportDbHelper
     //   229	233	235	finally
     //   233	235	235	finally
   }
-  
-  public ArrayList<BatchReportInfo> b(String paramString)
-  {
-    try
-    {
-      paramString = a("table_old_data", paramString);
-      return paramString;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.viareport.ReportDbHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -25,26 +25,26 @@ class ReceiptMessageReadMemberListContainerFragment$3
         }
         return;
       }
-      paramString = ReceiptMessageReadMemberListContainerFragment.a(this.a).getApp();
+      paramString = ReceiptMessageReadMemberListContainerFragment.c(this.a).getApp();
       paramList = new StringBuilder();
       paramList.append("last_update_time");
-      paramList.append(ReceiptMessageReadMemberListContainerFragment.a(this.a).getCurrentAccountUin());
+      paramList.append(ReceiptMessageReadMemberListContainerFragment.c(this.a).getCurrentAccountUin());
       paramString = paramString.getSharedPreferences(paramList.toString(), 4).edit();
       paramList = new StringBuilder();
       paramList.append("key_last_update_time");
-      paramList.append(ReceiptMessageReadMemberListContainerFragment.a(this.a));
+      paramList.append(ReceiptMessageReadMemberListContainerFragment.d(this.a));
       paramString.putLong(paramList.toString(), paramLong).apply();
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(4);
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).removeObserver(this);
+      ReceiptMessageReadMemberListContainerFragment.f(this.a).sendEmptyMessage(4);
+      ReceiptMessageReadMemberListContainerFragment.c(this.a).removeObserver(this);
       return;
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).sendEmptyMessage(-1);
+    ReceiptMessageReadMemberListContainerFragment.f(this.a).sendEmptyMessage(-1);
     QLog.d("ReceiptMessageReadMemberListContainerFragment", 1, "mTroopModifyObserver onUpdateTroopGetMemberList fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.3
  * JD-Core Version:    0.7.0.1
  */

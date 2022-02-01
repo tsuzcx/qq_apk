@@ -7,14 +7,14 @@ class ThumbDownloadManager$1
   
   public void run()
   {
-    if (ThumbDownloadManager.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
+    if (ThumbDownloadManager.a(this.this$0, this.a, this.b, this.c)) {
       ThumbDownloadManager.a(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

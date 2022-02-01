@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.BaseProtocolCoder;
+import com.tencent.mobileqq.guild.api.IQQGuildRouterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.msf.service.protocol.push.SvcReqSetToken;
 import com.tencent.msf.service.protocol.push.SvcRespSetToken;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -44,6 +46,13 @@ public class PushService
     }
     localSvcReqSetToken.bEnterVersion = 37;
     localSvcReqSetToken.bPushMsg = 1;
+    long l;
+    if (((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).isShowGuildTab()) {
+      l = 1L;
+    } else {
+      l = 0L;
+    }
+    localSvcReqSetToken.uGroupProSwitch = l;
     paramUniPacket.put("SvcReqSetToken", localSvcReqSetToken);
     paramUniPacket.setServantName("PushService");
     paramUniPacket.setFuncName("SvcReqSetToken");
@@ -54,6 +63,8 @@ public class PushService
       paramUniPacket.append(str);
       paramUniPacket.append(",profileid = ");
       paramUniPacket.append(paramToServiceMsg);
+      paramUniPacket.append(" uGroupProSwitch:");
+      paramUniPacket.append(localSvcReqSetToken.uGroupProSwitch);
       QLog.d("PushService", 2, paramUniPacket.toString());
     }
     return true;
@@ -138,7 +149,7 @@ public class PushService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.push.PushService
  * JD-Core Version:    0.7.0.1
  */

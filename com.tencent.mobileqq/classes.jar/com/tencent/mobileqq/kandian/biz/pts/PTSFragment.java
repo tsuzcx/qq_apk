@@ -27,36 +27,36 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class PTSFragment
   extends PublicBaseFragment
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener jdField_a_of_type_ComTencentMobileqqKandianBizDebugReadInJoyDropFrameHelper$OnFeedsFluencyResultListener = new PTSFragment.5(this);
-  private PTSAppInstance jdField_a_of_type_ComTencentPtsCorePTSAppInstance;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  ReadInJoyDropFrameHelper.OnFeedsFluencyResultListener a = new PTSFragment.5(this);
+  private PTSAppInstance b;
+  private Activity c;
   private String d;
   private String e;
+  private String f;
+  private String g;
+  private String h;
   
   private void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+    Object localObject = this.c.getIntent();
     if (localObject != null)
     {
-      this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName");
-      this.b = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.FrameTreeJson");
-      this.c = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageJs");
-      this.d = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.BindDataJs");
-      this.e = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.AnimationJs");
+      this.d = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName");
+      this.e = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.FrameTreeJson");
+      this.f = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageJs");
+      this.g = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.BindDataJs");
+      this.h = ((Intent)localObject).getStringExtra("com.tencent.biz.pubaccount.readinjoy.pts.AnimationJs");
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[initArguments], pageName = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.d);
     QLog.i("PTSFragment", 1, ((StringBuilder)localObject).toString());
   }
   
   private void a(View paramView)
   {
-    ReadInJoyDropFrameHelper.a().a(9999, this.jdField_a_of_type_ComTencentMobileqqKandianBizDebugReadInJoyDropFrameHelper$OnFeedsFluencyResultListener);
-    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.addOnRecyclerViewScrollListener(new PTSFragment.6(this));
+    ReadInJoyDropFrameHelper.d().a(9999, this.a);
+    this.b.addOnRecyclerViewScrollListener(new PTSFragment.6(this));
   }
   
   private void a(ViewGroup paramViewGroup)
@@ -64,12 +64,12 @@ public class PTSFragment
     if (paramViewGroup == null) {
       return;
     }
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "daily_feeds"))
+    if (TextUtils.equals(this.d, "daily_feeds"))
     {
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560171, paramViewGroup);
-      View localView1 = paramViewGroup.findViewById(2131370524);
-      View localView2 = paramViewGroup.findViewById(2131370529);
-      ((TextView)paramViewGroup.findViewById(2131379938)).setVisibility(8);
+      paramViewGroup = View.inflate(this.c, 2131626218, paramViewGroup);
+      View localView1 = paramViewGroup.findViewById(2131437797);
+      View localView2 = paramViewGroup.findViewById(2131437802);
+      ((TextView)paramViewGroup.findViewById(2131448824)).setVisibility(8);
       localView1.setOnClickListener(new PTSFragment.3(this));
       localView2.setOnClickListener(new PTSFragment.4(this));
     }
@@ -77,29 +77,29 @@ public class PTSFragment
   
   private void b()
   {
-    PTSReport.a("0X800A7C7", "", "", "", new PTSReport.R5Builder().a("page_name", this.jdField_a_of_type_JavaLangString).a());
+    PTSReport.a("0X800A7C7", "", "", "", new PTSReport.R5Builder().a("page_name", this.d).a());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidAppActivity = getBaseActivity();
+    this.c = getBaseActivity();
     a();
-    paramViewGroup = paramLayoutInflater.inflate(2131560261, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131626308, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
       paramViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
     }
-    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131365187);
-    a((ViewGroup)paramViewGroup.findViewById(2131378807));
-    paramBundle = PTSJSBridgeManager.getInstance().getJSBridge(this.jdField_a_of_type_AndroidAppActivity, this.d, this.e);
-    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance = new PTSAppInstance.Builder().withContext(this.jdField_a_of_type_AndroidAppActivity).withRootView(paramLayoutInflater).withRootNodeType(0).withPTSJSBridge(paramBundle).withPageName(this.jdField_a_of_type_JavaLangString).withFrameTreeJson(this.b).withPageJs(this.c).build();
-    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onCreate();
+    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131431349);
+    a((ViewGroup)paramViewGroup.findViewById(2131447489));
+    paramBundle = PTSJSBridgeManager.getInstance().getJSBridge(this.c, this.g, this.h);
+    this.b = new PTSAppInstance.Builder().withContext(this.c).withRootView(paramLayoutInflater).withRootNodeType(0).withPTSJSBridge(paramBundle).withPageName(this.d).withFrameTreeJson(this.e).withPageJs(this.f).build();
+    this.b.onCreate();
     a(paramViewGroup);
     b();
     VideoReport.addToDetectionWhitelist(getBaseActivity());
     VideoReport.setPageId(paramViewGroup, "14");
-    VideoReport.setPageParams(paramViewGroup, new RIJDtParamBuilder().a(Integer.valueOf(DailyModeConfigHandler.b())).a());
+    VideoReport.setPageParams(paramViewGroup, new RIJDtParamBuilder().a(Integer.valueOf(DailyModeConfigHandler.j())).b());
     return paramViewGroup;
   }
   
@@ -107,8 +107,8 @@ public class PTSFragment
   {
     QLog.i("PTSFragment", 1, "[onDestroy]");
     super.onDestroy();
-    PTSThreadUtil.runOnSubThread(new PTSFragment.1(this, this.jdField_a_of_type_AndroidAppActivity));
-    ReadInJoyDropFrameHelper.a().b(9999, this.jdField_a_of_type_ComTencentMobileqqKandianBizDebugReadInJoyDropFrameHelper$OnFeedsFluencyResultListener);
+    PTSThreadUtil.runOnSubThread(new PTSFragment.1(this, this.c));
+    ReadInJoyDropFrameHelper.d().b(9999, this.a);
   }
   
   public void onFinish()
@@ -121,20 +121,20 @@ public class PTSFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onPause();
+    this.b.onPause();
   }
   
   public void onResume()
   {
     super.onResume();
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.c;
     RIJAppSetting.a(localActivity, true, RIJAppSetting.a(localActivity));
-    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onResume();
+    this.b.onResume();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.PTSFragment
  * JD-Core Version:    0.7.0.1
  */

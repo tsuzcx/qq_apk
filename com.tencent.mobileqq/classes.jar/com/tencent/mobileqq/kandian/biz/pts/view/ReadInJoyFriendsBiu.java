@@ -12,9 +12,8 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafCon
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyHeadImageView;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,178 +23,166 @@ public class ReadInJoyFriendsBiu
   extends ViewBase
 {
   public static String a = "ReadInJoyFriendsBiu";
-  private double jdField_a_of_type_Double = 0.18D;
-  private int jdField_a_of_type_Int = 22;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b = 115;
-  private int c;
-  private int d;
-  private int e = 351;
-  private int f = 1;
-  private int g = 11;
-  private int h = 3;
-  private int i = 0;
-  private int j = 6;
+  private FrameLayout b;
+  private TextView c;
+  private Context d;
+  private ArrayList<Long> e = new ArrayList();
+  private int f = 22;
+  private int g = 115;
+  private int h;
+  private int i;
+  private int j = 351;
+  private double k = 0.18D;
+  private int l = 1;
+  private int m = 11;
+  private int n = 3;
+  private int o = 0;
+  private int p = 6;
   
   public ReadInJoyFriendsBiu(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_AndroidContentContext = paramVafContext.getContext();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.c = Utils.rp2px(this.jdField_a_of_type_Int);
-    this.d = Utils.rp2px(this.b);
-    this.e = Utils.rp2px(this.e);
-    this.g = Utils.rp2px(this.g);
-    this.f = Utils.rp2px(this.f);
+    this.d = paramVafContext.getContext();
+    this.b = new FrameLayout(this.d);
+    this.c = new TextView(this.d);
+    this.h = Utils.rp2px(this.f);
+    this.i = Utils.rp2px(this.g);
     this.j = Utils.rp2px(this.j);
-  }
-  
-  private int a()
-  {
-    int k = this.e;
-    int m = this.c;
-    double d1 = k - m;
-    double d2 = m;
-    double d3 = this.jdField_a_of_type_Double;
-    Double.isNaN(d2);
-    Double.isNaN(d1);
-    return (int)(d1 / (d2 * (1.0D - d3)) + 1.0D);
+    this.m = Utils.rp2px(this.m);
+    this.l = Utils.rp2px(this.l);
+    this.p = Utils.rp2px(this.p);
   }
   
   private void a()
   {
-    int i1 = a();
-    double d1 = this.jdField_a_of_type_JavaUtilArrayList.size();
-    double d2 = i1;
+    int i4 = b();
+    double d1 = this.e.size();
+    double d2 = i4;
     Double.isNaN(d1);
     Double.isNaN(d2);
-    int i2 = (int)Math.ceil(d1 / d2);
-    int m = 1;
-    while (m <= i2)
+    int i5 = (int)Math.ceil(d1 / d2);
+    int i2 = 1;
+    while (i2 <= i5)
     {
-      int i3 = m - 1;
-      int i4 = i3 * i1;
-      int k = i4 + i1;
-      if (k > this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        k = this.jdField_a_of_type_JavaUtilArrayList.size() % i1 + i4;
+      int i6 = i2 - 1;
+      int i7 = i6 * i4;
+      int i1 = i7 + i4;
+      if (i1 > this.e.size()) {
+        i1 = this.e.size() % i4 + i7;
       }
-      int n = this.h;
-      if (k > n) {
-        k = n;
+      int i3 = this.n;
+      if (i1 > i3) {
+        i1 = i3;
       }
-      a(i4 + 1, k, i3 * this.c + this.g);
-      m += 1;
+      a(i7 + 1, i1, i6 * this.h + this.m);
+      i2 += 1;
     }
-    a(i2);
+    a(i5);
   }
   
   private void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    if (!this.e.isEmpty())
     {
-      int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int i1 = this.e.size();
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append("人也Biu了");
       localObject = ((StringBuilder)localObject).toString();
-      long l = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
-      if ((this.jdField_a_of_type_JavaUtilArrayList.size() == 1) && (l == ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue()))
+      long l1 = RIJQQAppInterfaceUtil.c();
+      if ((this.e.size() == 1) && (l1 == ((Long)this.e.get(0)).longValue()))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("还Biu了");
-        ((StringBuilder)localObject).append(this.i);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131712917));
+        ((StringBuilder)localObject).append(this.o);
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131910487));
         localObject = ((StringBuilder)localObject).toString();
       }
-      else if (k > this.h)
+      else if (i1 > this.n)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131713043));
-        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131910604));
+        ((StringBuilder)localObject).append(i1);
         ((StringBuilder)localObject).append("人也Biu了");
         localObject = ((StringBuilder)localObject).toString();
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      k = a();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= k) {
-        k = this.jdField_a_of_type_JavaUtilArrayList.size();
+      this.c.setText((CharSequence)localObject);
+      i1 = b();
+      if (this.e.size() <= i1) {
+        i1 = this.e.size();
       }
-      int n = this.h;
-      int m = k;
-      if (k > n) {
-        m = n;
+      int i3 = this.n;
+      int i2 = i1;
+      if (i1 > i3) {
+        i2 = i3;
       }
-      if (m > 1)
+      if (i2 > 1)
       {
-        double d1 = m - 1;
-        double d2 = this.jdField_a_of_type_Double;
+        double d1 = i2 - 1;
+        double d2 = this.k;
         Double.isNaN(d1);
-        k = this.c;
-        double d3 = k;
+        i1 = this.h;
+        double d3 = i1;
         Double.isNaN(d3);
-        double d4 = k;
+        double d4 = i1;
         Double.isNaN(d4);
-        double d5 = this.d;
+        double d5 = this.i;
         Double.isNaN(d5);
-        k = (int)(d1 * (1.0D - d2) * d3 + d4 + d5);
+        i1 = (int)(d1 * (1.0D - d2) * d3 + d4 + d5);
       }
       else
       {
-        k = m * this.c + this.d;
+        i1 = i2 * this.h + this.i;
       }
-      if (k > this.e)
+      if (i1 > this.j)
       {
-        m = this.c;
+        i2 = this.h;
       }
       else
       {
         paramInt -= 1;
-        m = this.c;
+        i2 = this.h;
       }
-      n = this.d;
-      localObject = new FrameLayout.LayoutParams(n, -2);
-      ((FrameLayout.LayoutParams)localObject).setMargins(k - n, paramInt * m + this.g, 0, 0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165414));
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(this.j, 0, 0, 0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+      i3 = this.i;
+      localObject = new FrameLayout.LayoutParams(i3, -2);
+      ((FrameLayout.LayoutParams)localObject).setMargins(i1 - i3, paramInt * i2 + this.m, 0, 0);
+      this.c.setTextColor(this.d.getResources().getColor(2131165710));
+      this.c.setPadding(this.p, 0, 0, 0);
+      this.b.addView(this.c, (ViewGroup.LayoutParams)localObject);
     }
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int k = paramInt2 - 1;
-    while (k >= paramInt1 - 1)
+    int i1 = paramInt2 - 1;
+    while (i1 >= paramInt1 - 1)
     {
-      ReadInJoyHeadImageView localReadInJoyHeadImageView = new ReadInJoyHeadImageView(this.jdField_a_of_type_AndroidContentContext);
-      int m = this.c;
-      FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(m, m);
-      double d1 = k - paramInt1 + 1;
-      double d2 = this.jdField_a_of_type_Double;
+      ReadInJoyHeadImageView localReadInJoyHeadImageView = new ReadInJoyHeadImageView(this.d);
+      int i2 = this.h;
+      FrameLayout.LayoutParams localLayoutParams1 = new FrameLayout.LayoutParams(i2, i2);
+      double d1 = i1 - paramInt1 + 1;
+      double d2 = this.k;
       Double.isNaN(d1);
-      double d3 = this.c;
+      double d3 = this.h;
       Double.isNaN(d3);
-      int n = (int)(d1 * (1.0D - d2) * d3);
-      if (paramInt2 == this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        m = 20;
+      int i3 = (int)(d1 * (1.0D - d2) * d3);
+      if (paramInt2 == this.e.size()) {
+        i2 = 20;
       } else {
-        m = 0;
+        i2 = 0;
       }
-      localLayoutParams1.setMargins(n, paramInt3, 0, m);
-      localReadInJoyHeadImageView.setHeadImgByUin(((Long)this.jdField_a_of_type_JavaUtilArrayList.get(k)).longValue());
-      int i1 = this.c;
-      int i2 = this.f;
-      FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(i2 * 2 + i1, i1 + i2 * 2);
-      ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      i1 = this.f;
-      localLayoutParams2.setMargins(n - i1, paramInt3 - i1, 0, m);
-      localImageView.setBackgroundResource(2130849714);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localImageView, localLayoutParams2);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localReadInJoyHeadImageView, localLayoutParams1);
-      k -= 1;
+      localLayoutParams1.setMargins(i3, paramInt3, 0, i2);
+      localReadInJoyHeadImageView.setHeadImgByUin(((Long)this.e.get(i1)).longValue());
+      int i4 = this.h;
+      int i5 = this.l;
+      FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(i5 * 2 + i4, i4 + i5 * 2);
+      ImageView localImageView = new ImageView(this.d);
+      i4 = this.l;
+      localLayoutParams2.setMargins(i3 - i4, paramInt3 - i4, 0, i2);
+      localImageView.setBackgroundResource(2130851423);
+      this.b.addView(localImageView, localLayoutParams2);
+      this.b.addView(localReadInJoyHeadImageView, localLayoutParams1);
+      i1 -= 1;
     }
   }
   
@@ -203,28 +190,28 @@ public class ReadInJoyFriendsBiu
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+      if (this.b != null) {
+        this.b.removeAllViews();
       }
-      this.i = 0;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.o = 0;
+      this.e.clear();
       paramObject = (JSONObject)paramObject;
       localObject = paramObject.keys();
       while (((Iterator)localObject).hasNext())
       {
-        long l = Long.parseLong(paramObject.get((String)((Iterator)localObject).next()).toString());
-        this.i += 1;
-        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(l))) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
+        long l1 = Long.parseLong(paramObject.get((String)((Iterator)localObject).next()).toString());
+        this.o += 1;
+        if (!this.e.contains(Long.valueOf(l1))) {
+          this.e.add(Long.valueOf(l1));
         }
       }
       a();
       if (QLog.isColorLevel())
       {
-        paramObject = jdField_a_of_type_JavaLangString;
+        paramObject = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("parseUinList :");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        ((StringBuilder)localObject).append(this.e.size());
         QLog.d(paramObject, 2, ((StringBuilder)localObject).toString());
         return;
       }
@@ -234,7 +221,7 @@ public class ReadInJoyFriendsBiu
       Object localObject;
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("parseUinList error:");
         localStringBuilder.append(paramObject.toString());
@@ -243,11 +230,23 @@ public class ReadInJoyFriendsBiu
     }
   }
   
+  private int b()
+  {
+    int i1 = this.j;
+    int i2 = this.h;
+    double d1 = i1 - i2;
+    double d2 = i2;
+    double d3 = this.k;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    return (int)(d1 / (d2 * (1.0D - d3)) + 1.0D);
+  }
+  
   private void b(Object paramObject)
   {
-    int k = Utils.parseColor(paramObject.toString());
-    if (k != 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(k);
+    int i1 = Utils.parseColor(paramObject.toString());
+    if (i1 != 0) {
+      this.c.setTextColor(i1);
     }
   }
   
@@ -256,11 +255,11 @@ public class ReadInJoyFriendsBiu
     Object localObject = Utils.toDouble(paramObject);
     if (localObject != null)
     {
-      int k = Utils.dp2px(((Double)localObject).doubleValue());
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(k);
+      int i1 = Utils.dp2px(((Double)localObject).doubleValue());
+      this.c.setTextSize(i1);
       return;
     }
-    localObject = jdField_a_of_type_JavaLangString;
+    localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setTextSize: fail to parse - ");
     localStringBuilder.append(paramObject);
@@ -269,27 +268,27 @@ public class ReadInJoyFriendsBiu
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredHeight();
+    return this.b.getMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getMeasuredWidth();
+    return this.b.getMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    return this.b;
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.b.layout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.measure(paramInt1, paramInt2);
+    this.b.measure(paramInt1, paramInt2);
   }
   
   public void onParseValueFinished()
@@ -320,14 +319,14 @@ public class ReadInJoyFriendsBiu
     }
     try
     {
-      this.d = Utils.rp2px(Integer.valueOf(paramObject.toString()).intValue());
+      this.i = Utils.rp2px(Integer.valueOf(paramObject.toString()).intValue());
       return bool;
     }
     catch (Exception paramObject)
     {
       if (QLog.isColorLevel())
       {
-        String str = jdField_a_of_type_JavaLangString;
+        String str = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("parse STR_ID_BORDER_WIDTH error:");
         localStringBuilder.append(paramObject.toString());
@@ -339,7 +338,7 @@ public class ReadInJoyFriendsBiu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyFriendsBiu
  * JD-Core Version:    0.7.0.1
  */

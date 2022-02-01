@@ -33,22 +33,22 @@ import com.google.android.material.shape.ShapeAppearanceModel.Builder;
 class DropdownMenuEndIconDelegate
   extends EndIconDelegate
 {
-  private static final boolean jdField_a_of_type_Boolean;
-  private long jdField_a_of_type_Long = 9223372036854775807L;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private StateListDrawable jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable;
-  private final TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new DropdownMenuEndIconDelegate.1(this);
-  private final View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new DropdownMenuEndIconDelegate.2(this);
-  @Nullable
-  private AccessibilityManager jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager;
-  private MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-  private final TextInputLayout.AccessibilityDelegate jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$AccessibilityDelegate = new DropdownMenuEndIconDelegate.3(this, this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout);
-  private final TextInputLayout.OnEditTextAttachedListener jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEditTextAttachedListener = new DropdownMenuEndIconDelegate.4(this);
+  private static final boolean d;
+  private final TextWatcher e = new DropdownMenuEndIconDelegate.1(this);
+  private final View.OnFocusChangeListener f = new DropdownMenuEndIconDelegate.2(this);
+  private final TextInputLayout.AccessibilityDelegate g = new DropdownMenuEndIconDelegate.3(this, this.a);
+  private final TextInputLayout.OnEditTextAttachedListener h = new DropdownMenuEndIconDelegate.4(this);
   @SuppressLint({"ClickableViewAccessibility"})
-  private final TextInputLayout.OnEndIconChangedListener jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEndIconChangedListener = new DropdownMenuEndIconDelegate.5(this);
-  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
+  private final TextInputLayout.OnEndIconChangedListener i = new DropdownMenuEndIconDelegate.5(this);
+  private boolean j = false;
+  private boolean k = false;
+  private long l = 9223372036854775807L;
+  private StateListDrawable m;
+  private MaterialShapeDrawable n;
+  @Nullable
+  private AccessibilityManager o;
+  private ValueAnimator p;
+  private ValueAnimator q;
   
   static
   {
@@ -58,7 +58,7 @@ class DropdownMenuEndIconDelegate
     } else {
       bool = false;
     }
-    jdField_a_of_type_Boolean = bool;
+    d = bool;
   }
   
   DropdownMenuEndIconDelegate(@NonNull TextInputLayout paramTextInputLayout)
@@ -78,7 +78,7 @@ class DropdownMenuEndIconDelegate
   private MaterialShapeDrawable a(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
     ShapeAppearanceModel localShapeAppearanceModel = ShapeAppearanceModel.a().b(paramFloat1).c(paramFloat1).e(paramFloat2).d(paramFloat2).a();
-    MaterialShapeDrawable localMaterialShapeDrawable = MaterialShapeDrawable.a(this.jdField_a_of_type_AndroidContentContext, paramFloat3);
+    MaterialShapeDrawable localMaterialShapeDrawable = MaterialShapeDrawable.a(this.b, paramFloat3);
     localMaterialShapeDrawable.setShapeAppearanceModel(localShapeAppearanceModel);
     localMaterialShapeDrawable.a(0, paramInt, 0, paramInt);
     return localMaterialShapeDrawable;
@@ -89,21 +89,21 @@ class DropdownMenuEndIconDelegate
     if (paramAutoCompleteTextView == null) {
       return;
     }
-    if (c()) {
-      this.jdField_b_of_type_Boolean = false;
+    if (d()) {
+      this.j = false;
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.j)
     {
-      if (jdField_a_of_type_Boolean)
+      if (d)
       {
-        b(this.c ^ true);
+        b(this.k ^ true);
       }
       else
       {
-        this.c ^= true;
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalCheckableImageButton.toggle();
+        this.k ^= true;
+        this.c.toggle();
       }
-      if (this.c)
+      if (this.k)
       {
         paramAutoCompleteTextView.requestFocus();
         paramAutoCompleteTextView.showDropDown();
@@ -112,20 +112,20 @@ class DropdownMenuEndIconDelegate
       paramAutoCompleteTextView.dismissDropDown();
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.j = false;
   }
   
   private void a(@NonNull AutoCompleteTextView paramAutoCompleteTextView, int paramInt, int[][] paramArrayOfInt, @NonNull MaterialShapeDrawable paramMaterialShapeDrawable)
   {
-    int i = MaterialColors.a(paramAutoCompleteTextView, R.attr.n);
-    MaterialShapeDrawable localMaterialShapeDrawable1 = new MaterialShapeDrawable(paramMaterialShapeDrawable.a());
-    paramInt = MaterialColors.a(paramInt, i, 0.1F);
+    int i1 = MaterialColors.a(paramAutoCompleteTextView, R.attr.t);
+    MaterialShapeDrawable localMaterialShapeDrawable1 = new MaterialShapeDrawable(paramMaterialShapeDrawable.getShapeAppearanceModel());
+    paramInt = MaterialColors.a(paramInt, i1, 0.1F);
     localMaterialShapeDrawable1.g(new ColorStateList(paramArrayOfInt, new int[] { paramInt, 0 }));
-    if (jdField_a_of_type_Boolean)
+    if (d)
     {
-      localMaterialShapeDrawable1.setTint(i);
-      paramArrayOfInt = new ColorStateList(paramArrayOfInt, new int[] { paramInt, i });
-      MaterialShapeDrawable localMaterialShapeDrawable2 = new MaterialShapeDrawable(paramMaterialShapeDrawable.a());
+      localMaterialShapeDrawable1.setTint(i1);
+      paramArrayOfInt = new ColorStateList(paramArrayOfInt, new int[] { paramInt, i1 });
+      MaterialShapeDrawable localMaterialShapeDrawable2 = new MaterialShapeDrawable(paramMaterialShapeDrawable.getShapeAppearanceModel());
       localMaterialShapeDrawable2.setTint(-1);
       paramArrayOfInt = new LayerDrawable(new Drawable[] { new RippleDrawable(paramArrayOfInt, localMaterialShapeDrawable1, localMaterialShapeDrawable2), paramMaterialShapeDrawable });
     }
@@ -136,8 +136,57 @@ class DropdownMenuEndIconDelegate
     ViewCompat.setBackground(paramAutoCompleteTextView, paramArrayOfInt);
   }
   
+  private void b(@NonNull AutoCompleteTextView paramAutoCompleteTextView)
+  {
+    if (d)
+    {
+      int i1 = this.a.getBoxBackgroundMode();
+      if (i1 == 2)
+      {
+        paramAutoCompleteTextView.setDropDownBackgroundDrawable(this.n);
+        return;
+      }
+      if (i1 == 1) {
+        paramAutoCompleteTextView.setDropDownBackgroundDrawable(this.m);
+      }
+    }
+  }
+  
+  private void b(@NonNull AutoCompleteTextView paramAutoCompleteTextView, int paramInt, int[][] paramArrayOfInt, @NonNull MaterialShapeDrawable paramMaterialShapeDrawable)
+  {
+    int i1 = this.a.getBoxBackgroundColor();
+    paramInt = MaterialColors.a(paramInt, i1, 0.1F);
+    int[] arrayOfInt = new int[2];
+    arrayOfInt[0] = paramInt;
+    arrayOfInt[1] = i1;
+    if (d)
+    {
+      ViewCompat.setBackground(paramAutoCompleteTextView, new RippleDrawable(new ColorStateList(paramArrayOfInt, arrayOfInt), paramMaterialShapeDrawable, paramMaterialShapeDrawable));
+      return;
+    }
+    MaterialShapeDrawable localMaterialShapeDrawable = new MaterialShapeDrawable(paramMaterialShapeDrawable.getShapeAppearanceModel());
+    localMaterialShapeDrawable.g(new ColorStateList(paramArrayOfInt, arrayOfInt));
+    paramArrayOfInt = new LayerDrawable(new Drawable[] { paramMaterialShapeDrawable, localMaterialShapeDrawable });
+    paramInt = ViewCompat.getPaddingStart(paramAutoCompleteTextView);
+    i1 = paramAutoCompleteTextView.getPaddingTop();
+    int i2 = ViewCompat.getPaddingEnd(paramAutoCompleteTextView);
+    int i3 = paramAutoCompleteTextView.getPaddingBottom();
+    ViewCompat.setBackground(paramAutoCompleteTextView, paramArrayOfInt);
+    ViewCompat.setPaddingRelative(paramAutoCompleteTextView, paramInt, i1, i2, i3);
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    if (this.k != paramBoolean)
+    {
+      this.k = paramBoolean;
+      this.q.cancel();
+      this.p.start();
+    }
+  }
+  
   @NonNull
-  private static AutoCompleteTextView b(EditText paramEditText)
+  private static AutoCompleteTextView c(EditText paramEditText)
   {
     if ((paramEditText instanceof AutoCompleteTextView)) {
       return (AutoCompleteTextView)paramEditText;
@@ -145,142 +194,93 @@ class DropdownMenuEndIconDelegate
     throw new RuntimeException("EditText needs to be an AutoCompleteTextView if an Exposed Dropdown Menu is being used.");
   }
   
-  private void b()
-  {
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = a(67, new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = a(50, new float[] { 1.0F, 0.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new DropdownMenuEndIconDelegate.9(this));
-  }
-  
-  private void b(@NonNull AutoCompleteTextView paramAutoCompleteTextView)
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      int i = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a();
-      if (i == 2)
-      {
-        paramAutoCompleteTextView.setDropDownBackgroundDrawable(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable);
-        return;
-      }
-      if (i == 1) {
-        paramAutoCompleteTextView.setDropDownBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
-      }
-    }
-  }
-  
-  private void b(@NonNull AutoCompleteTextView paramAutoCompleteTextView, int paramInt, int[][] paramArrayOfInt, @NonNull MaterialShapeDrawable paramMaterialShapeDrawable)
-  {
-    int i = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.b();
-    paramInt = MaterialColors.a(paramInt, i, 0.1F);
-    int[] arrayOfInt = new int[2];
-    arrayOfInt[0] = paramInt;
-    arrayOfInt[1] = i;
-    if (jdField_a_of_type_Boolean)
-    {
-      ViewCompat.setBackground(paramAutoCompleteTextView, new RippleDrawable(new ColorStateList(paramArrayOfInt, arrayOfInt), paramMaterialShapeDrawable, paramMaterialShapeDrawable));
-      return;
-    }
-    MaterialShapeDrawable localMaterialShapeDrawable = new MaterialShapeDrawable(paramMaterialShapeDrawable.a());
-    localMaterialShapeDrawable.g(new ColorStateList(paramArrayOfInt, arrayOfInt));
-    paramArrayOfInt = new LayerDrawable(new Drawable[] { paramMaterialShapeDrawable, localMaterialShapeDrawable });
-    paramInt = ViewCompat.getPaddingStart(paramAutoCompleteTextView);
-    i = paramAutoCompleteTextView.getPaddingTop();
-    int j = ViewCompat.getPaddingEnd(paramAutoCompleteTextView);
-    int k = paramAutoCompleteTextView.getPaddingBottom();
-    ViewCompat.setBackground(paramAutoCompleteTextView, paramArrayOfInt);
-    ViewCompat.setPaddingRelative(paramAutoCompleteTextView, paramInt, i, j, k);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (this.c != paramBoolean)
-    {
-      this.c = paramBoolean;
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    }
-  }
-  
-  private static boolean b(@NonNull EditText paramEditText)
-  {
-    return paramEditText.getKeyListener() != null;
-  }
-  
   private void c(@NonNull AutoCompleteTextView paramAutoCompleteTextView)
   {
-    if (b(paramAutoCompleteTextView)) {
+    if (d(paramAutoCompleteTextView)) {
       return;
     }
-    int i = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a();
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a();
-    int j = MaterialColors.a(paramAutoCompleteTextView, R.attr.colorControlHighlight);
+    int i1 = this.a.getBoxBackgroundMode();
+    MaterialShapeDrawable localMaterialShapeDrawable = this.a.getBoxBackground();
+    int i2 = MaterialColors.a(paramAutoCompleteTextView, R.attr.o);
     int[][] arrayOfInt = new int[2][];
     arrayOfInt[0] = { 16842919 };
     arrayOfInt[1] = new int[0];
-    if (i == 2)
+    if (i1 == 2)
     {
-      a(paramAutoCompleteTextView, j, arrayOfInt, localMaterialShapeDrawable);
+      a(paramAutoCompleteTextView, i2, arrayOfInt, localMaterialShapeDrawable);
       return;
     }
-    if (i == 1) {
-      b(paramAutoCompleteTextView, j, arrayOfInt, localMaterialShapeDrawable);
+    if (i1 == 1) {
+      b(paramAutoCompleteTextView, i2, arrayOfInt, localMaterialShapeDrawable);
     }
-  }
-  
-  private boolean c()
-  {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    return (l < 0L) || (l > 300L);
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void d(@NonNull AutoCompleteTextView paramAutoCompleteTextView)
   {
     paramAutoCompleteTextView.setOnTouchListener(new DropdownMenuEndIconDelegate.7(this, paramAutoCompleteTextView));
-    paramAutoCompleteTextView.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-    if (jdField_a_of_type_Boolean) {
+    paramAutoCompleteTextView.setOnFocusChangeListener(this.f);
+    if (d) {
       paramAutoCompleteTextView.setOnDismissListener(new DropdownMenuEndIconDelegate.8(this));
     }
   }
   
-  void a()
+  private boolean d()
   {
-    float f1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(R.dimen.aj);
-    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(R.dimen.ac);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(R.dimen.ad);
-    MaterialShapeDrawable localMaterialShapeDrawable1 = a(f1, f1, f2, i);
-    MaterialShapeDrawable localMaterialShapeDrawable2 = a(0.0F, f1, f2, i);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = localMaterialShapeDrawable1;
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable = new StateListDrawable();
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.addState(new int[] { 16842922 }, localMaterialShapeDrawable1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.addState(new int[0], localMaterialShapeDrawable2);
-    if (jdField_a_of_type_Boolean) {
-      i = R.drawable.e;
-    } else {
-      i = R.drawable.f;
-    }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconDrawable(AppCompatResources.getDrawable(this.jdField_a_of_type_AndroidContentContext, i));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconContentDescription(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.getResources().getText(R.string.g));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setEndIconOnClickListener(new DropdownMenuEndIconDelegate.6(this));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEditTextAttachedListener);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout$OnEndIconChangedListener);
-    b();
-    this.jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager = ((AccessibilityManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("accessibility"));
+    long l1 = System.currentTimeMillis() - this.l;
+    return (l1 < 0L) || (l1 > 300L);
   }
   
-  boolean a()
+  private static boolean d(@NonNull EditText paramEditText)
   {
-    return true;
+    return paramEditText.getKeyListener() != null;
+  }
+  
+  private void e()
+  {
+    this.q = a(67, new float[] { 0.0F, 1.0F });
+    this.p = a(50, new float[] { 1.0F, 0.0F });
+    this.p.addListener(new DropdownMenuEndIconDelegate.9(this));
+  }
+  
+  void a()
+  {
+    float f1 = this.b.getResources().getDimensionPixelOffset(R.dimen.aj);
+    float f2 = this.b.getResources().getDimensionPixelOffset(R.dimen.ac);
+    int i1 = this.b.getResources().getDimensionPixelOffset(R.dimen.ad);
+    MaterialShapeDrawable localMaterialShapeDrawable1 = a(f1, f1, f2, i1);
+    MaterialShapeDrawable localMaterialShapeDrawable2 = a(0.0F, f1, f2, i1);
+    this.n = localMaterialShapeDrawable1;
+    this.m = new StateListDrawable();
+    this.m.addState(new int[] { 16842922 }, localMaterialShapeDrawable1);
+    this.m.addState(new int[0], localMaterialShapeDrawable2);
+    if (d) {
+      i1 = R.drawable.e;
+    } else {
+      i1 = R.drawable.f;
+    }
+    this.a.setEndIconDrawable(AppCompatResources.getDrawable(this.b, i1));
+    this.a.setEndIconContentDescription(this.a.getResources().getText(R.string.g));
+    this.a.setEndIconOnClickListener(new DropdownMenuEndIconDelegate.6(this));
+    this.a.a(this.h);
+    this.a.a(this.i);
+    e();
+    this.o = ((AccessibilityManager)this.b.getSystemService("accessibility"));
   }
   
   boolean a(int paramInt)
   {
     return paramInt != 0;
   }
+  
+  boolean b()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.DropdownMenuEndIconDelegate
  * JD-Core Version:    0.7.0.1
  */

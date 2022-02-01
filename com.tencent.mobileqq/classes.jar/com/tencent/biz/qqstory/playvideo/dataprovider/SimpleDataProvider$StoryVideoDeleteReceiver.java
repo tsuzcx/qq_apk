@@ -17,8 +17,8 @@ public class SimpleDataProvider$StoryVideoDeleteReceiver
   
   protected void a(@NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    if (paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      this.a.a(paramDeleteStoryVideoEvent.jdField_a_of_type_JavaLangString);
+    if (paramDeleteStoryVideoEvent.g.isSuccess()) {
+      this.a.a(paramDeleteStoryVideoEvent.a);
     }
   }
   
@@ -29,7 +29,7 @@ public class SimpleDataProvider$StoryVideoDeleteReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.SimpleDataProvider.StoryVideoDeleteReceiver
  * JD-Core Version:    0.7.0.1
  */

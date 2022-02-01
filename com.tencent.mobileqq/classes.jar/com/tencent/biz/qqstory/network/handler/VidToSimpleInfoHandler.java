@@ -22,22 +22,21 @@ public class VidToSimpleInfoHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<GetSimpleInfoListRequest, GetSimpleInfoListResponse>
 {
-  protected String a;
-  protected List<String> a;
+  protected List<String> c = new ArrayList();
+  protected String d;
   
   public VidToSimpleInfoHandler(String paramString, List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.c.addAll(paramList);
     }
   }
   
   public void a()
   {
     GetSimpleInfoListRequest localGetSimpleInfoListRequest = new GetSimpleInfoListRequest();
-    localGetSimpleInfoListRequest.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    localGetSimpleInfoListRequest.e = this.c;
     CmdTaskManger.a().a(localGetSimpleInfoListRequest, this);
   }
   
@@ -46,20 +45,20 @@ public class VidToSimpleInfoHandler
     paramGetSimpleInfoListRequest = new VidToSimpleInfoHandler.GetSimpleInfoListEvent();
     if ((paramGetSimpleInfoListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      b();
-      paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList);
-      paramGetSimpleInfoListRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramGetSimpleInfoListResponse = paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      c();
+      paramGetSimpleInfoListResponse.a = ((StoryManager)SuperManager.a(5)).a(paramGetSimpleInfoListResponse.a);
+      paramGetSimpleInfoListRequest.a = this.d;
+      paramGetSimpleInfoListResponse = paramGetSimpleInfoListResponse.a.iterator();
       while (paramGetSimpleInfoListResponse.hasNext())
       {
         paramErrorMessage = (StoryVideoItem)paramGetSimpleInfoListResponse.next();
         paramErrorMessage = new VideoCollectionItem.FakeVideoUIItem(paramErrorMessage.mVid, paramErrorMessage);
-        paramGetSimpleInfoListRequest.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
+        paramGetSimpleInfoListRequest.b.add(paramErrorMessage);
       }
       StoryDispatcher.a().dispatch(paramGetSimpleInfoListRequest);
       return;
     }
-    c();
+    d();
     StoryDispatcher.a().dispatch(paramGetSimpleInfoListRequest);
   }
   
@@ -67,16 +66,16 @@ public class VidToSimpleInfoHandler
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VidToSimpleInfoHandler{mVidList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mCollectionId=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler
  * JD-Core Version:    0.7.0.1
  */

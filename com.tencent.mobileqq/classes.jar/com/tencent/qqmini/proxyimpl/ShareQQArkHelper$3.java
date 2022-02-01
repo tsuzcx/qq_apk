@@ -18,19 +18,19 @@ final class ShareQQArkHelper$3
     if (paramBoolean)
     {
       paramBundle = paramBundle.getString("imageUrl");
-      this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniArkShareModel.setPicUrl(paramBundle);
-      ShareQQArkHelper.c(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniArkShareModel, this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener);
-      ShareQQArkHelper.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+      this.a.setPicUrl(paramBundle);
+      ShareQQArkHelper.c(this.b, this.a, this.c);
+      ShareQQArkHelper.a(this.d);
       return;
     }
     QLog.e("ShareQQArkHelper", 1, "dealWithShareImage error!");
-    ShareQQArkHelper.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    ShareQQArkHelper.a(this.d);
     ShareQQArkHelper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareQQArkHelper.3
  * JD-Core Version:    0.7.0.1
  */

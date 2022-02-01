@@ -24,13 +24,13 @@ class MultiCardFragment$1
     Object localObject3;
     if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.a != null)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("updateData uinlist: ");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)localObject2).append(this.a.size());
         ((StringBuilder)localObject2).append("  ");
-        localObject3 = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject3 = this.a.iterator();
         while (((Iterator)localObject3).hasNext())
         {
           ((StringBuilder)localObject2).append((Long)((Iterator)localObject3).next());
@@ -38,13 +38,13 @@ class MultiCardFragment$1
         }
         QLog.d("MultiCardFragment", 2, ((StringBuilder)localObject2).toString());
       }
-      if (this.jdField_a_of_type_JavaUtilMap != null)
+      if (this.b != null)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("updateData intimateinfo map: ");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilMap.size());
+        ((StringBuilder)localObject2).append(this.b.size());
         ((StringBuilder)localObject2).append("  ");
-        localObject3 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        localObject3 = this.b.entrySet().iterator();
         while (((Iterator)localObject3).hasNext())
         {
           ((StringBuilder)localObject2).append(((Map.Entry)((Iterator)localObject3).next()).getKey());
@@ -52,13 +52,13 @@ class MultiCardFragment$1
         }
         QLog.d("MultiCardFragment", 2, ((StringBuilder)localObject2).toString());
       }
-      if (this.b != null)
+      if (this.c != null)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("updateData name map: ");
-        ((StringBuilder)localObject2).append(this.b.size());
+        ((StringBuilder)localObject2).append(this.c.size());
         ((StringBuilder)localObject2).append("  ");
-        localObject3 = this.b.entrySet().iterator();
+        localObject3 = this.c.entrySet().iterator();
       }
     }
     for (;;)
@@ -76,9 +76,9 @@ class MultiCardFragment$1
         ((StringBuilder)localObject2).append(" ");
         continue;
         QLog.d("MultiCardFragment", 2, ((StringBuilder)localObject2).toString());
-        localObject2 = ((MultiCardContext)localObject1).a(this.jdField_a_of_type_JavaUtilList);
-        localObject3 = ((MultiCardContext)localObject1).a(this.jdField_a_of_type_JavaUtilMap);
-        localObject1 = ((MultiCardContext)localObject1).b(this.b);
+        localObject2 = ((MultiCardContext)localObject1).a(this.a);
+        localObject3 = ((MultiCardContext)localObject1).a(this.b);
+        localObject1 = ((MultiCardContext)localObject1).b(this.c);
         if ((localObject2 != null) && (localObject3 == null))
         {
           MultiCardFragment.a(this.this$0, -1);
@@ -109,7 +109,7 @@ class MultiCardFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.1
  * JD-Core Version:    0.7.0.1
  */

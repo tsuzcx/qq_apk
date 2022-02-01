@@ -27,8 +27,8 @@ class DefaultDoraemonAppInfoHelper$1
     try
     {
       Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.7.0&data_version=");
-      ((StringBuilder)localObject1).append(this.this$0.b);
+      ((StringBuilder)localObject1).append("https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.8.17&data_version=");
+      ((StringBuilder)localObject1).append(this.this$0.f);
       localObject1 = ((StringBuilder)localObject1).toString();
       ??? = MobileQQ.sMobileQQ.waitAppRuntime(null);
       if (??? == null)
@@ -58,7 +58,7 @@ class DefaultDoraemonAppInfoHelper$1
         ??? = ((JSONObject)???).getJSONObject("result");
         long l1 = ((JSONObject)???).getLong("version");
         long l2 = ((JSONObject)???).getLong("next_req_duration") * 1000L;
-        if (this.this$0.b == l1)
+        if (this.this$0.f == l1)
         {
           ??? = new StringBuilder();
           ((StringBuilder)???).append("no update, next=");
@@ -66,18 +66,18 @@ class DefaultDoraemonAppInfoHelper$1
           ((StringBuilder)???).append(", ver=");
           ((StringBuilder)???).append(l1);
           QLog.i("DoraemonOpenAPI.permissionHelper", 1, ((StringBuilder)???).toString());
-          synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+          synchronized (this.this$0.a)
           {
-            this.this$0.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(300000L, l2));
+            this.this$0.e = (NetConnInfoCenter.getServerTimeMillis() + Math.max(300000L, l2));
             DefaultDoraemonAppInfoHelper.a(this.this$0, (Closeable)localObject1);
             return;
           }
         }
         JSONObject localJSONObject = ((JSONObject)???).getJSONObject("list");
-        synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+        synchronized (this.this$0.a)
         {
-          this.this$0.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(300000L, l2));
-          this.this$0.b = l1;
+          this.this$0.e = (NetConnInfoCenter.getServerTimeMillis() + Math.max(300000L, l2));
+          this.this$0.f = l1;
           ??? = localJSONObject.toString();
           if (QLog.isColorLevel())
           {
@@ -92,9 +92,9 @@ class DefaultDoraemonAppInfoHelper$1
           }
           synchronized (this.this$0)
           {
-            this.this$0.jdField_a_of_type_OrgJsonJSONObject = localJSONObject;
-            this.this$0.jdField_a_of_type_JavaUtilMap.clear();
-            BaseApplication.getContext().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)???).putLong("version", l1).putString("app_version", "8.7.0").apply();
+            this.this$0.c = localJSONObject;
+            this.this$0.d.clear();
+            BaseApplication.getContext().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)???).putLong("version", l1).putString("app_version", "8.8.17").apply();
             return;
           }
         }
@@ -109,7 +109,7 @@ class DefaultDoraemonAppInfoHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.1
  * JD-Core Version:    0.7.0.1
  */

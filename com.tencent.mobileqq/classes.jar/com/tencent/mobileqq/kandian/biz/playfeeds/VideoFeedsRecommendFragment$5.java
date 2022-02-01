@@ -14,21 +14,21 @@ class VideoFeedsRecommendFragment$5
   
   public void closeComment()
   {
-    VideoFeedsRecommendFragment.e(this.a, true);
-    this.a.c();
-    VideoFeedsRecommendFragment.e(this.a, false);
+    VideoFeedsRecommendFragment.f(this.a, true);
+    this.a.i();
+    VideoFeedsRecommendFragment.f(this.a, false);
   }
   
   public void onCreateComment(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, @NotNull String paramString6, String paramString7)
   {
-    if (VideoFeedsRecommendFragment.a(this.a) != null)
+    if (VideoFeedsRecommendFragment.f(this.a) != null)
     {
-      paramString2 = VideoFeedsRecommendFragment.a(this.a).a();
-      if ((paramString2 != null) && (paramString2.a != null) && (TextUtils.equals(paramString1, paramString2.a.innerUniqueID)) && (VideoFeedsRecommendFragment.a(this.a) != null))
+      paramString2 = VideoFeedsRecommendFragment.f(this.a).n();
+      if ((paramString2 != null) && (paramString2.aB != null) && (TextUtils.equals(paramString1, paramString2.aB.innerUniqueID)) && (VideoFeedsRecommendFragment.d(this.a) != null))
       {
-        paramString2.e += 1;
-        if (VideoFeedsRecommendFragment.a(this.a) != null) {
-          VideoFeedsRecommendFragment.a(this.a).a(paramString2);
+        paramString2.p += 1;
+        if (VideoFeedsRecommendFragment.d(this.a) != null) {
+          VideoFeedsRecommendFragment.d(this.a).a(paramString2);
         }
       }
     }
@@ -36,18 +36,18 @@ class VideoFeedsRecommendFragment$5
   
   public void onDeleteComment(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
   {
-    if (VideoFeedsRecommendFragment.a(this.a) != null)
+    if (VideoFeedsRecommendFragment.f(this.a) != null)
     {
-      paramString2 = VideoFeedsRecommendFragment.a(this.a).a();
+      paramString2 = VideoFeedsRecommendFragment.f(this.a).n();
       if (paramString2 != null) {
         try
         {
-          if ((paramString2.a != null) && (TextUtils.equals(paramString1, paramString2.a.innerUniqueID)) && (VideoFeedsRecommendFragment.a(this.a) != null))
+          if ((paramString2.aB != null) && (TextUtils.equals(paramString1, paramString2.aB.innerUniqueID)) && (VideoFeedsRecommendFragment.d(this.a) != null))
           {
-            paramString2.e -= Integer.parseInt(paramString4);
-            if (VideoFeedsRecommendFragment.a(this.a) != null)
+            paramString2.p -= Integer.parseInt(paramString4);
+            if (VideoFeedsRecommendFragment.d(this.a) != null)
             {
-              VideoFeedsRecommendFragment.a(this.a).a(paramString2);
+              VideoFeedsRecommendFragment.d(this.a).a(paramString2);
               return;
             }
           }
@@ -62,7 +62,7 @@ class VideoFeedsRecommendFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -22,17 +22,12 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AdBaseHandler
   implements IBaseHandler
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private IReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter;
+  private IReadInJoyBaseAdapter a;
+  private ViewGroup b;
   
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.a();
-  }
-  
-  public final Activity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.a();
+    return this.a.c();
   }
   
   @Nullable
@@ -41,45 +36,10 @@ public abstract class AdBaseHandler
     return null;
   }
   
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public AnimationSet a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.a();
-  }
-  
-  public final IFaceDecoder a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.a();
-  }
-  
-  public final IReadInJoyBaseAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter;
-  }
-  
-  @Nullable
-  public Boolean a()
-  {
-    return null;
-  }
-  
   public Integer a(int paramInt)
   {
-    return Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.getItemViewType(paramInt));
+    return Integer.valueOf(this.a.getItemViewType(paramInt));
   }
-  
-  public final Object a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.getItem(paramInt);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
   
   public void a(int paramInt1, int paramInt2, @Nullable Intent paramIntent) {}
   
@@ -97,12 +57,12 @@ public abstract class AdBaseHandler
   
   public void a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.b = paramViewGroup;
   }
   
   public final void a(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter;
+    this.a = paramIReadInJoyBaseAdapter;
   }
   
   public void a(@Nullable AbsListView paramAbsListView) {}
@@ -125,45 +85,85 @@ public abstract class AdBaseHandler
   
   public void a(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2) {}
   
-  public boolean a()
+  public final IReadInJoyBaseAdapter b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.a();
+    return this.a;
   }
   
-  public boolean a(int paramInt)
+  public final Object b(int paramInt)
+  {
+    return this.a.getItem(paramInt);
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2) {}
+  
+  public final Activity c()
+  {
+    return this.a.a();
+  }
+  
+  public void c(int paramInt) {}
+  
+  public ViewGroup d()
+  {
+    return this.b;
+  }
+  
+  public boolean d(int paramInt)
   {
     return false;
   }
   
-  public int b()
+  public int e()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.b();
+    return this.a.i();
   }
   
-  public void b() {}
-  
-  public void b(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2) {}
-  
-  public int c()
+  public int f()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyBaseAdapter.getCount();
+    return this.a.getCount();
   }
   
-  public void c() {}
+  public boolean g()
+  {
+    return this.a.j();
+  }
   
-  public void d() {}
+  public AnimationSet h()
+  {
+    return this.a.k();
+  }
   
-  public void e() {}
+  public final IFaceDecoder i()
+  {
+    return this.a.l();
+  }
   
-  public void f() {}
+  public void j() {}
   
-  public void g() {}
+  public void k() {}
   
-  public void h() {}
+  public void l() {}
+  
+  public void m() {}
+  
+  public void n() {}
+  
+  public void o() {}
+  
+  @Nullable
+  public Boolean p()
+  {
+    return null;
+  }
+  
+  public void q() {}
+  
+  public void r() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.handlers.AdBaseHandler
  * JD-Core Version:    0.7.0.1
  */

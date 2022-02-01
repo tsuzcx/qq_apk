@@ -28,15 +28,9 @@ public class WSMinePanelImpl
     WSProfileCardReport.a(paramBoolean, paramString);
   }
   
-  public void reportProfilePageVisitEnter(String paramString, boolean paramBoolean)
-  {
-    WSProfileCardReport.a(paramString, paramBoolean);
-  }
+  public void reportProfilePageVisitEnter(String paramString, boolean paramBoolean) {}
   
-  public void reportProfilePageVisitExit(String paramString, boolean paramBoolean)
-  {
-    WSProfileCardReport.b(paramString, paramBoolean);
-  }
+  public void reportProfilePageVisitExit(String paramString, boolean paramBoolean) {}
   
   public void reportProfileSettingBtnClick(boolean paramBoolean)
   {
@@ -59,7 +53,7 @@ public class WSMinePanelImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.api.impl.WSMinePanelImpl
  * JD-Core Version:    0.7.0.1
  */

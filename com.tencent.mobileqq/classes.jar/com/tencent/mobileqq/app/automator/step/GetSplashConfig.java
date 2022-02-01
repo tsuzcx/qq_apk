@@ -23,26 +23,26 @@ public class GetSplashConfig
 {
   protected int doStep()
   {
-    Config localConfig = this.mAutomator.a.getConfig(this.mAutomator.a.getCurrentAccountUin(), true);
+    Config localConfig = this.mAutomator.k.getConfig(this.mAutomator.k.getCurrentAccountUin(), true);
     if (QLog.isColorLevel()) {
       QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "GetSplashConfig config: %s", new Object[] { localConfig }));
     }
-    ConfigServlet.a(this.mAutomator.a, this.mAutomator.a.getCurrentAccountUin());
-    QQStoryConfigServlet.a(this.mAutomator.a, this.mAutomator.a.getCurrentUin());
-    AEOldShortVideoResManager.a(this.mAutomator.a, 1);
-    ShortVideoResourceManager.a(this.mAutomator.a, 1);
-    ConfigServlet.d(this.mAutomator.a, this.mAutomator.a.getCurrentAccountUin());
+    ConfigServlet.a(this.mAutomator.k, this.mAutomator.k.getCurrentAccountUin());
+    QQStoryConfigServlet.a(this.mAutomator.k, this.mAutomator.k.getCurrentUin());
+    AEOldShortVideoResManager.a(this.mAutomator.k, 1);
+    ShortVideoResourceManager.a(this.mAutomator.k, 1);
+    ConfigServlet.d(this.mAutomator.k, this.mAutomator.k.getCurrentAccountUin());
     ((IAladdinConfigServletUtil)QRoute.api(IAladdinConfigServletUtil.class)).maybeGetAllConfigs();
-    ((SpringFestivalRedpacketConfigManager)this.mAutomator.a.getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER)).b(this.mAutomator.a, 0);
-    PackageUpdateManager.a().a(this.mAutomator.a);
-    this.mAutomator.a.getMessageFacade().addObserver(new StructMsgObserver());
-    this.mAutomator.a.getSignInInfo(1);
+    ((SpringFestivalRedpacketConfigManager)this.mAutomator.k.getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER)).b(this.mAutomator.k, 0);
+    PackageUpdateManager.a().a(this.mAutomator.k);
+    this.mAutomator.k.getMessageFacade().addObserver(new StructMsgObserver());
+    this.mAutomator.k.getSignInInfo(1);
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetSplashConfig
  * JD-Core Version:    0.7.0.1
  */

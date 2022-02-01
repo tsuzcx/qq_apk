@@ -22,39 +22,39 @@ public class UFTDiscUploadFileOp
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(i());
     ((StringBuilder)localObject).append("] start disc ftn upload.");
     UFTLog.b("[UFTTransfer] UFTDiscUploadFileOp", 1, ((StringBuilder)localObject).toString());
     localObject = new UFTFileUploaderProp.FtnMoreUrlFUperProp();
+    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).a(paramUFTDiscUploadTaskInfo.n());
+    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).a(paramUFTDiscUploadTaskInfo.b());
     ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).a(paramUFTDiscUploadTaskInfo.a());
-    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).a(paramUFTDiscUploadTaskInfo.a());
-    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).a(paramUFTDiscUploadTaskInfo.c());
-    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).b(paramDiscUploadSrvBusiProp.a());
-    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).f(paramDiscUploadSrvBusiProp.b());
     ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).b(paramDiscUploadSrvBusiProp.c());
-    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).c(paramDiscUploadSrvBusiProp.d());
+    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).f(paramDiscUploadSrvBusiProp.d());
+    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).b(paramDiscUploadSrvBusiProp.g());
+    ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).c(paramDiscUploadSrvBusiProp.h());
     paramUFTDiscUploadTaskInfo = paramDiscUploadSrvBusiProp.a();
     if ((paramUFTDiscUploadTaskInfo != null) && (paramUFTDiscUploadTaskInfo.size() != 0))
     {
       ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).a(paramUFTDiscUploadTaskInfo);
-      ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).e(paramDiscUploadSrvBusiProp.a());
-      this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader = UFTFileTransferFactory.a(this.jdField_a_of_type_MqqAppAppRuntime, (UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader == null)
+      ((UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject).e(paramDiscUploadSrvBusiProp.b());
+      this.c = UFTFileTransferFactory.a(this.g, (UFTFileUploaderProp.FtnMoreUrlFUperProp)localObject);
+      if (this.c == null)
       {
         paramUFTDiscUploadTaskInfo = new StringBuilder();
         paramUFTDiscUploadTaskInfo.append("TId[");
-        paramUFTDiscUploadTaskInfo.append(a());
+        paramUFTDiscUploadTaskInfo.append(i());
         paramUFTDiscUploadTaskInfo.append("] upload error. cannot create ftn uploader");
         UFTLog.d("[UFTTransfer] UFTDiscUploadFileOp", 1, paramUFTDiscUploadTaskInfo.toString());
         c("file uploader can not create");
         return 9045;
       }
-      this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader.a(this);
-      if (!this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferIUFTFileUploader.a(0L))
+      this.c.a(this);
+      if (!this.c.a(0L))
       {
         paramUFTDiscUploadTaskInfo = new StringBuilder();
         paramUFTDiscUploadTaskInfo.append("TId[");
-        paramUFTDiscUploadTaskInfo.append(a());
+        paramUFTDiscUploadTaskInfo.append(i());
         paramUFTDiscUploadTaskInfo.append("] upload error. ftn uploader start fail");
         UFTLog.d("[UFTTransfer] UFTDiscUploadFileOp", 1, paramUFTDiscUploadTaskInfo.toString());
         c("run upload file fail");
@@ -64,7 +64,7 @@ public class UFTDiscUploadFileOp
     }
     paramUFTDiscUploadTaskInfo = new StringBuilder();
     paramUFTDiscUploadTaskInfo.append("TId[");
-    paramUFTDiscUploadTaskInfo.append(a());
+    paramUFTDiscUploadTaskInfo.append(i());
     paramUFTDiscUploadTaskInfo.append("] upload error. no host");
     UFTLog.d("[UFTTransfer] UFTDiscUploadFileOp", 1, paramUFTDiscUploadTaskInfo.toString());
     c("no host list");
@@ -76,21 +76,21 @@ public class UFTDiscUploadFileOp
     return false;
   }
   
-  protected int b()
+  protected int c()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(i());
     ((StringBuilder)localObject).append("] do start disc upload op");
     UFTLog.b("[UFTTransfer] UFTDiscUploadFileOp", 1, ((StringBuilder)localObject).toString());
-    localObject = (UFTDiscUploadTaskInfo)this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo;
-    UFTUploadSrvBusiProp.DiscUploadSrvBusiProp localDiscUploadSrvBusiProp = ((UFTDiscUploadTaskInfo)localObject).a();
+    localObject = (UFTDiscUploadTaskInfo)this.h;
+    UFTUploadSrvBusiProp.DiscUploadSrvBusiProp localDiscUploadSrvBusiProp = ((UFTDiscUploadTaskInfo)localObject).f();
     if (localDiscUploadSrvBusiProp == null)
     {
       c("upload file srv busi info is null");
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("TId[");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append("] do start disc upload fail. srv busi info is null");
       UFTLog.d("[UFTTransfer] UFTDiscUploadFileOp", 1, ((StringBuilder)localObject).toString());
       return 9005;
@@ -100,7 +100,7 @@ public class UFTDiscUploadFileOp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTDiscUploadFileOp
  * JD-Core Version:    0.7.0.1
  */

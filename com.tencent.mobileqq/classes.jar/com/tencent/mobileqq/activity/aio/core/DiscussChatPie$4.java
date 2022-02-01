@@ -16,28 +16,28 @@ class DiscussChatPie$4
   {
     if (paramBoolean)
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()))
+      if ((this.a.f != null) && (this.a.f.isResume()))
       {
-        DiscussChatPie.a(this.a);
+        DiscussChatPie.b(this.a);
         return;
       }
       if (!paramBoolean1.booleanValue())
       {
         paramString1 = BaseActivity.sTopActivity;
         if (paramString1 != null) {
-          DialogUtil.a(paramString1, 230, paramString1.getString(2131689903), null, null, paramString1.getString(2131719065), new DiscussChatPie.4.1(this, paramString1), null).show();
+          DialogUtil.a(paramString1, 230, paramString1.getString(2131886544), null, null, paramString1.getString(2131916601), new DiscussChatPie.4.1(this, paramString1), null).show();
         }
       }
     }
     else
     {
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
+      QQToast.makeText(this.a.e, paramInt, 0).show(this.a.A());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.DiscussChatPie.4
  * JD-Core Version:    0.7.0.1
  */

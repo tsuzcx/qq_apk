@@ -15,8 +15,8 @@ class DetailBaseBlock$4
     if ((paramBoolean) && ((paramDrawable instanceof AnimationDrawable)))
     {
       paramDrawable = (AnimationDrawable)paramDrawable;
-      if (DetailBaseBlock.g(this.a) != null) {
-        DetailBaseBlock.m(this.a).runOnUiThread(new DetailBaseBlock.4.1(this, paramDrawable));
+      if (DetailBaseBlock.j(this.a) != null) {
+        DetailBaseBlock.p(this.a).runOnUiThread(new DetailBaseBlock.4.1(this, paramDrawable));
       }
       return;
     }

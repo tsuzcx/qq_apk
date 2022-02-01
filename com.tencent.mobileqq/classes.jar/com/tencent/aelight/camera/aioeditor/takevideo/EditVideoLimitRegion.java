@@ -22,16 +22,16 @@ public class EditVideoLimitRegion
     ThreadManager.excute(new EditVideoLimitRegion.1(paramStoryGuideLineView), 16, null, true);
   }
   
-  private boolean b()
+  private boolean c()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView != null) {
+      if (this.a != null) {
         return true;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a().g();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView = ((StoryGuideLineView)a(2131372358));
-      a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView);
+      this.t.N().l();
+      this.a = ((StoryGuideLineView)d(2131439874));
+      a(this.a);
       return true;
     }
     catch (Exception localException)
@@ -49,31 +49,31 @@ public class EditVideoLimitRegion
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    if (!b()) {
+    if (!c()) {
       return;
     }
     if (paramBoolean4)
     {
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager instanceof QzEditVideoPartManager)) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView.a(true ^ ((QzEditVideoPartManager)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager).m);
+      if ((this.t instanceof QzEditVideoPartManager)) {
+        this.a.a(true ^ ((QzEditVideoPartManager)this.t).A);
       } else {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView.a(true);
+        this.a.a(true);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView.a();
+      this.a.a();
     }
     if (paramBoolean2) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView.b();
+      this.a.b();
     } else {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView.c();
+      this.a.c();
     }
     if (paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView.d();
+      this.a.d();
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView.e();
+    this.a.e();
   }
   
   protected boolean a(Message paramMessage)
@@ -97,21 +97,21 @@ public class EditVideoLimitRegion
       if (localLimitMessage.e) {
         a(localLimitMessage.d, localLimitMessage.c, localLimitMessage.a, localLimitMessage.b);
       } else {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiWidgetStoryGuideLineView.f();
+        this.a.f();
       }
     }
     return super.a(paramMessage);
   }
   
-  public void d()
+  public void f()
   {
-    super.d();
-    b();
+    super.f();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoLimitRegion
  * JD-Core Version:    0.7.0.1
  */

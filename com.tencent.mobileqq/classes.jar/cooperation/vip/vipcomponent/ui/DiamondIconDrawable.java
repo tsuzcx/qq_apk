@@ -10,27 +10,27 @@ import android.support.annotation.Nullable;
 public class DiamondIconDrawable
   extends Drawable
 {
-  private int jdField_a_of_type_Int = -1;
-  private DiamondIconDrawable.DiamondState jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+  private DiamondIconDrawable.DiamondState a;
   private int b = -1;
+  private int c = -1;
   
   public DiamondIconDrawable()
   {
-    this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState = new DiamondIconDrawable.DiamondState();
+    this.a = new DiamondIconDrawable.DiamondState();
   }
   
   public DiamondIconDrawable(DiamondIconDrawable.DiamondState paramDiamondState)
   {
-    this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState = paramDiamondState;
+    this.a = paramDiamondState;
     if (paramDiamondState != null)
     {
-      h(paramDiamondState.d);
-      h(paramDiamondState.b);
-      h(paramDiamondState.c);
       h(paramDiamondState.e);
+      h(paramDiamondState.c);
+      h(paramDiamondState.d);
       h(paramDiamondState.f);
       h(paramDiamondState.g);
-      h(paramDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      h(paramDiamondState.h);
+      h(paramDiamondState.b);
     }
   }
   
@@ -54,58 +54,24 @@ public class DiamondIconDrawable
         localRect.top = Math.min(paramDrawable.top, localRect.top);
         localRect.bottom = Math.max(paramDrawable.bottom, localRect.bottom);
         setBounds(localRect);
-        this.jdField_a_of_type_Int = Math.max(this.jdField_a_of_type_Int, localRect.right - localRect.left);
-        this.b = Math.max(this.b, localRect.bottom - localRect.top);
+        this.b = Math.max(this.b, localRect.right - localRect.left);
+        this.c = Math.max(this.c, localRect.bottom - localRect.top);
       }
     }
   }
   
   public int a()
   {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
-    if ((localDiamondState != null) && (localDiamondState.b != null)) {
-      return Math.abs(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b.getBounds().left - getBounds().left);
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
+    if ((localDiamondState != null) && (localDiamondState.c != null)) {
+      return Math.abs(this.a.c.getBounds().left - getBounds().left);
     }
     return 0;
-  }
-  
-  public Drawable.ConstantState a()
-  {
-    return this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
   }
   
   public void a(Drawable paramDrawable)
   {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
-    if (localDiamondState != null)
-    {
-      localDiamondState.b = paramDrawable;
-      h(paramDrawable);
-    }
-  }
-  
-  public boolean a()
-  {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
-    if ((localDiamondState != null) && (localDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)) {
-      return false;
-    }
-    localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
-    return (localDiamondState == null) || ((localDiamondState.d == null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.f == null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.e == null) && (this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.c == null));
-  }
-  
-  public int b()
-  {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
-    if ((localDiamondState != null) && (localDiamondState.b != null)) {
-      return Math.abs(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b.getBounds().top - getBounds().top);
-    }
-    return 0;
-  }
-  
-  public void b(Drawable paramDrawable)
-  {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
     if (localDiamondState != null)
     {
       localDiamondState.c = paramDrawable;
@@ -113,9 +79,18 @@ public class DiamondIconDrawable
     }
   }
   
-  public void c(Drawable paramDrawable)
+  public int b()
   {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
+    if ((localDiamondState != null) && (localDiamondState.c != null)) {
+      return Math.abs(this.a.c.getBounds().top - getBounds().top);
+    }
+    return 0;
+  }
+  
+  public void b(Drawable paramDrawable)
+  {
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
     if (localDiamondState != null)
     {
       localDiamondState.d = paramDrawable;
@@ -123,9 +98,9 @@ public class DiamondIconDrawable
     }
   }
   
-  public void d(Drawable paramDrawable)
+  public void c(Drawable paramDrawable)
   {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
     if (localDiamondState != null)
     {
       localDiamondState.e = paramDrawable;
@@ -133,38 +108,24 @@ public class DiamondIconDrawable
     }
   }
   
-  public void draw(Canvas paramCanvas)
+  public boolean c()
   {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
-    if (localDiamondState != null)
-    {
-      if (localDiamondState.d != null) {
-        localDiamondState.d.draw(paramCanvas);
-      }
-      if (localDiamondState.f != null) {
-        localDiamondState.f.draw(paramCanvas);
-      }
-      if (localDiamondState.g != null) {
-        localDiamondState.g.draw(paramCanvas);
-      }
-      if (localDiamondState.e != null) {
-        localDiamondState.e.draw(paramCanvas);
-      }
-      if (localDiamondState.b != null) {
-        localDiamondState.b.draw(paramCanvas);
-      }
-      if (localDiamondState.c != null) {
-        localDiamondState.c.draw(paramCanvas);
-      }
-      if (localDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        localDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      }
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
+    if ((localDiamondState != null) && (localDiamondState.b != null)) {
+      return false;
     }
+    localDiamondState = this.a;
+    return (localDiamondState == null) || ((localDiamondState.e == null) && (this.a.g == null) && (this.a.f == null) && (this.a.d == null));
   }
   
-  public void e(Drawable paramDrawable)
+  public Drawable.ConstantState d()
   {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    return this.a;
+  }
+  
+  public void d(Drawable paramDrawable)
+  {
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
     if (localDiamondState != null)
     {
       localDiamondState.f = paramDrawable;
@@ -172,9 +133,38 @@ public class DiamondIconDrawable
     }
   }
   
-  public void f(Drawable paramDrawable)
+  public void draw(Canvas paramCanvas)
   {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
+    if (localDiamondState != null)
+    {
+      if (localDiamondState.e != null) {
+        localDiamondState.e.draw(paramCanvas);
+      }
+      if (localDiamondState.g != null) {
+        localDiamondState.g.draw(paramCanvas);
+      }
+      if (localDiamondState.h != null) {
+        localDiamondState.h.draw(paramCanvas);
+      }
+      if (localDiamondState.f != null) {
+        localDiamondState.f.draw(paramCanvas);
+      }
+      if (localDiamondState.c != null) {
+        localDiamondState.c.draw(paramCanvas);
+      }
+      if (localDiamondState.d != null) {
+        localDiamondState.d.draw(paramCanvas);
+      }
+      if (localDiamondState.b != null) {
+        localDiamondState.b.draw(paramCanvas);
+      }
+    }
+  }
+  
+  public void e(Drawable paramDrawable)
+  {
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
     if (localDiamondState != null)
     {
       localDiamondState.g = paramDrawable;
@@ -182,35 +172,45 @@ public class DiamondIconDrawable
     }
   }
   
-  public void g(Drawable paramDrawable)
+  public void f(Drawable paramDrawable)
   {
-    DiamondIconDrawable.DiamondState localDiamondState = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
     if (localDiamondState != null)
     {
-      localDiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      localDiamondState.h = paramDrawable;
+      h(paramDrawable);
+    }
+  }
+  
+  public void g(Drawable paramDrawable)
+  {
+    DiamondIconDrawable.DiamondState localDiamondState = this.a;
+    if (localDiamondState != null)
+    {
+      localDiamondState.b = paramDrawable;
       h(paramDrawable);
     }
   }
   
   public int getChangingConfigurations()
   {
-    return super.getChangingConfigurations() | this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.jdField_a_of_type_Int;
+    return super.getChangingConfigurations() | this.a.a;
   }
   
   public final Drawable.ConstantState getConstantState()
   {
-    this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.jdField_a_of_type_Int = getChangingConfigurations();
-    return this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState;
+    this.a.a = getChangingConfigurations();
+    return this.a;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.b;
+    return this.c;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public int getOpacity()
@@ -228,16 +228,16 @@ public class DiamondIconDrawable
       int i = getBounds().top;
       if ((j != paramInt1) || (i != paramInt2))
       {
-        Drawable localDrawable = this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.d;
+        Drawable localDrawable = this.a.e;
         j = paramInt1 - j;
         i = paramInt2 - i;
         a(localDrawable, j, i);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.e, j, i);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.f, j, i);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.b, j, i);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.c, j, i);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.g, j, i);
-        a(this.jdField_a_of_type_CooperationVipVipcomponentUiDiamondIconDrawable$DiamondState.jdField_a_of_type_AndroidGraphicsDrawableDrawable, j, i);
+        a(this.a.f, j, i);
+        a(this.a.g, j, i);
+        a(this.a.c, j, i);
+        a(this.a.d, j, i);
+        a(this.a.h, j, i);
+        a(this.a.b, j, i);
       }
     }
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -247,7 +247,7 @@ public class DiamondIconDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.vipcomponent.ui.DiamondIconDrawable
  * JD-Core Version:    0.7.0.1
  */

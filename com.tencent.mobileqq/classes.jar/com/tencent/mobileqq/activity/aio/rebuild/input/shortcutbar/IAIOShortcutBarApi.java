@@ -7,11 +7,7 @@ import android.view.ViewGroup.LayoutParams;
 
 public abstract interface IAIOShortcutBarApi
 {
-  public abstract int a();
-  
   public abstract View a();
-  
-  public abstract ViewGroup.LayoutParams a();
   
   public abstract void a(int paramInt, Bundle paramBundle);
   
@@ -19,11 +15,15 @@ public abstract interface IAIOShortcutBarApi
   
   public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public abstract int b();
+  public abstract ViewGroup.LayoutParams b();
+  
+  public abstract int c();
+  
+  public abstract int d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.IAIOShortcutBarApi
  * JD-Core Version:    0.7.0.1
  */

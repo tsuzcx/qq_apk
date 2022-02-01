@@ -12,13 +12,13 @@ class QQComicConfBean$ServiceAccountConfig$1
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setReaded(this.jdField_a_of_type_JavaLangString, 1008, true, true);
+      this.a.setReaded(this.b, 1008, true, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.config.QQComicConfBean.ServiceAccountConfig.1
  * JD-Core Version:    0.7.0.1
  */

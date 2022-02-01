@@ -6,7 +6,7 @@ import com.tencent.mobileqq.activity.photo.album.albumlist.AbstractAlbumListFrag
 public class AlbumListCustomizationMiniApp
   extends AlbumListCustomizationDefault
 {
-  public static final String a = "com.tencent.mobileqq.activity.photo.albumlogicImp.AlbumListCustomizationMiniApp";
+  public static final String j = "com.tencent.mobileqq.activity.photo.albumlogicImp.AlbumListCustomizationMiniApp";
   
   protected AlbumListCustomizationMiniApp(AbstractAlbumListFragment paramAbstractAlbumListFragment)
   {
@@ -15,7 +15,7 @@ public class AlbumListCustomizationMiniApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.AlbumListCustomizationMiniApp
  * JD-Core Version:    0.7.0.1
  */

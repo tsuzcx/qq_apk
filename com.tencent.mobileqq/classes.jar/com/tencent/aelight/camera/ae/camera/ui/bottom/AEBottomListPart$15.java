@@ -11,10 +11,10 @@ class AEBottomListPart$15
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.b(this.this$0.a());
-    this.this$0.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListAdapter.a((List)localObject);
-    localObject = AEMaterialManager.a();
-    if ((localObject != null) && (!((AEMaterialMetaData)localObject).equals(AEMaterialMetaData.a)))
+    Object localObject = this.this$0.e.d(this.this$0.k());
+    this.this$0.c.a((List)localObject);
+    localObject = AEMaterialManager.n();
+    if ((localObject != null) && (!((AEMaterialMetaData)localObject).equals(AEMaterialMetaData.l)))
     {
       AEBottomListPart.a(this.this$0, (AEMaterialMetaData)localObject);
       return;
@@ -24,7 +24,7 @@ class AEBottomListPart$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.15
  * JD-Core Version:    0.7.0.1
  */

@@ -2,25 +2,25 @@ package com.tencent.av.screenshare;
 
 public class ScreenShareTipsHelper
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = -1L;
-  private static String jdField_a_of_type_JavaLangString = "";
   public static boolean a = false;
+  private static long b = -1L;
+  private static int c = 0;
+  private static String d = "";
   
   public static int a()
   {
-    return jdField_a_of_type_Int;
-  }
-  
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
+    return c;
   }
   
   public static void a(int paramInt, String paramString)
   {
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_JavaLangString = paramString;
+    c = paramInt;
+    d = paramString;
+  }
+  
+  public static String b()
+  {
+    return d;
   }
 }
 

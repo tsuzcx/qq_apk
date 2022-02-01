@@ -10,7 +10,7 @@ class HippyBridgeImpl$1
   
   public void a(String paramString)
   {
-    LogUtils.e("hippyCore", "js debug socket connect success");
+    LogUtils.d("hippyCore", "js debug socket connect success");
     HippyBridgeImpl.access$000(this.b, this.a);
   }
   
@@ -22,7 +22,7 @@ class HippyBridgeImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.HippyBridgeImpl.1
  * JD-Core Version:    0.7.0.1
  */

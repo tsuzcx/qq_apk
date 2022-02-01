@@ -1,11 +1,17 @@
 package com.tencent.mobileqq.apollo.utils;
 
+import com.tencent.mobileqq.apollo.store.webview.BridgeStream;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ResponseUtil
 {
+  public static WebResourceResponse a()
+  {
+    return new WebResourceResponse("application/octet-stream", "utf-8", new BridgeStream(null, null, null));
+  }
+  
   public static void a(WebResourceResponse paramWebResourceResponse)
   {
     if (paramWebResourceResponse != null)
@@ -22,7 +28,7 @@ public class ResponseUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ResponseUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -91,7 +91,7 @@ public class AudioViewController
     super.dispatchFunction(paramAudioView, paramString, paramHippyArray);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="autoPlay")
+  @HippyControllerProps(defaultType="boolean", name="autoPlay")
   public void setAutoPlay(AudioView paramAudioView, boolean paramBoolean)
   {
     paramAudioView.setAudioAutoPlay(paramBoolean);
@@ -133,7 +133,7 @@ public class AudioViewController
     paramAudioView.setOnPlayStart(paramBoolean);
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="src")
+  @HippyControllerProps(defaultType="string", name="src")
   public void setUrl(AudioView paramAudioView, String paramString)
   {
     paramAudioView.setAudioPlayUrl(paramString);
@@ -141,7 +141,7 @@ public class AudioViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.audioview.AudioViewController
  * JD-Core Version:    0.7.0.1
  */

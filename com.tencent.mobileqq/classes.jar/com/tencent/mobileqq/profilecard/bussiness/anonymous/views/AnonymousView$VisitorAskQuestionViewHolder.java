@@ -12,13 +12,13 @@ public class AnonymousView$VisitorAskQuestionViewHolder
   public AnonymousView$VisitorAskQuestionViewHolder(View paramView)
   {
     super(paramView);
-    this.viewAskQues = paramView.findViewById(2131374168);
-    this.ll = paramView.findViewById(2131374168);
+    this.viewAskQues = paramView.findViewById(2131442263);
+    this.ll = paramView.findViewById(2131442263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView.VisitorAskQuestionViewHolder
  * JD-Core Version:    0.7.0.1
  */

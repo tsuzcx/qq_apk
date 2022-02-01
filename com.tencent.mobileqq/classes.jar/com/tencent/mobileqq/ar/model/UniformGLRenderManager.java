@@ -15,14 +15,6 @@ import java.nio.FloatBuffer;
 public abstract interface UniformGLRenderManager
   extends GLSurfaceView.Renderer
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
   public abstract void a(int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
   public abstract void a(int paramInt, Object paramObject);
@@ -41,8 +33,6 @@ public abstract interface UniformGLRenderManager
   
   public abstract void a(FloatBuffer paramFloatBuffer, Size paramSize);
   
-  public abstract boolean a();
-  
   public abstract boolean a(GLSurfaceView paramGLSurfaceView, Context paramContext);
   
   public abstract boolean a(ARRenderResourceInfo paramARRenderResourceInfo);
@@ -51,17 +41,27 @@ public abstract interface UniformGLRenderManager
   
   public abstract void b();
   
+  public abstract void b(int paramInt);
+  
   public abstract void b(long paramLong);
   
-  public abstract boolean b();
+  public abstract boolean e();
   
-  public abstract void c();
+  public abstract void f();
   
-  public abstract void d();
+  public abstract void g();
+  
+  public abstract boolean h();
+  
+  public abstract int i();
+  
+  public abstract void j();
+  
+  public abstract long k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.UniformGLRenderManager
  * JD-Core Version:    0.7.0.1
  */

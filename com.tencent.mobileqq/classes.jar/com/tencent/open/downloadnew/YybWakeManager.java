@@ -13,39 +13,39 @@ import com.tencent.open.base.LogUtility;
 
 public class YybWakeManager
 {
-  private static volatile YybWakeManager jdField_a_of_type_ComTencentOpenDownloadnewYybWakeManager;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new YybWakeManager.2(this);
-  private Context jdField_a_of_type_AndroidContentContext = CommonDataAdapter.a().a();
-  private Handler jdField_a_of_type_AndroidOsHandler = new YybWakeManager.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
+  private static volatile YybWakeManager a;
+  private Context b = CommonDataAdapter.a().b();
+  private boolean c = false;
+  private Handler d = new YybWakeManager.1(this);
+  private BroadcastReceiver e = new YybWakeManager.2(this);
   
   public static YybWakeManager a()
   {
-    if (jdField_a_of_type_ComTencentOpenDownloadnewYybWakeManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentOpenDownloadnewYybWakeManager == null) {
-          jdField_a_of_type_ComTencentOpenDownloadnewYybWakeManager = new YybWakeManager();
+        if (a == null) {
+          a = new YybWakeManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentOpenDownloadnewYybWakeManager;
+    return a;
   }
   
-  private void b()
+  private void c()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
+      if (this.b == null) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.c) {
         return;
       }
       IntentFilter localIntentFilter = new IntentFilter("com.tencent.android.qqdownloader.action.CONNECT_PC_STATE");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      this.jdField_a_of_type_Boolean = true;
+      this.b.registerReceiver(this.e, localIntentFilter);
+      this.c = true;
       return;
     }
     catch (Exception localException)
@@ -57,25 +57,25 @@ public class YybWakeManager
     }
   }
   
-  private void c()
+  private void d()
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (this.b == null) {
       return;
     }
-    if (!ControlPolicyUtil.j()) {
+    if (!ControlPolicyUtil.n()) {
       return;
     }
     try
     {
       Object localObject = new Bundle();
-      ((Bundle)localObject).putString("from", this.jdField_a_of_type_AndroidContentContext.getPackageName());
+      ((Bundle)localObject).putString("from", this.b.getPackageName());
       ((Bundle)localObject).putString("via", "CALL_LIVE_QQ");
-      boolean bool = CommonDataAdapter.a().a().startInstrumentation(new ComponentName("com.tencent.android.qqdownloader", "com.live.watermelon.Instrumentation"), null, (Bundle)localObject);
+      boolean bool = CommonDataAdapter.a().b().startInstrumentation(new ComponentName("com.tencent.android.qqdownloader", "com.live.watermelon.Instrumentation"), null, (Bundle)localObject);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("拉活结果=");
       ((StringBuilder)localObject).append(bool);
       LogUtility.c("YybWakeManager", ((StringBuilder)localObject).toString());
-      ControlPolicyUtil.c();
+      ControlPolicyUtil.v();
       return;
     }
     catch (Exception localException)
@@ -87,27 +87,27 @@ public class YybWakeManager
     }
   }
   
-  public void a()
+  public void b()
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (this.b == null) {
       return;
     }
-    b();
+    c();
     Object localObject = new Intent();
     ((Intent)localObject).setAction("com.tencent.android.qqdownloader.action.QUERY_CONNECT_STATE");
     ((Intent)localObject).putExtra("is_from_mq", true);
     ((Intent)localObject).setPackage("com.tencent.android.qqdownloader");
-    this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject);
+    this.b.sendBroadcast((Intent)localObject);
     localObject = Message.obtain();
     ((Message)localObject).what = 100;
     ((Message)localObject).arg1 = 101;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, 5000L);
+    this.d.sendMessageDelayed((Message)localObject, 5000L);
     LogUtility.c("YybWakeManager", "tryInstrumentWake");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybWakeManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,11 +14,11 @@ class OfflineFileMultiOperate$2
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       QLog.d("OfflineFileMultiOperate", 1, "doFileMutiDelete: can not find any msg,but delete.");
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
@@ -32,10 +32,10 @@ class OfflineFileMultiOperate$2
           localStringBuilder.append(localFileManagerEntity.nSessionId);
           QLog.d("OfflineFileMultiOperate", 1, localStringBuilder.toString());
         }
-        OfflineFileMultiOperate.a(this.this$0).getFileManagerEngine().b(localFileManagerEntity.nSessionId);
+        OfflineFileMultiOperate.a(this.this$0).getFileManagerEngine().c(localFileManagerEntity.nSessionId);
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+    localObject = this.b;
     if (localObject != null) {
       ((QFileMultiOperateCallback)localObject).a(3, 0);
     }
@@ -43,7 +43,7 @@ class OfflineFileMultiOperate$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate.2
  * JD-Core Version:    0.7.0.1
  */

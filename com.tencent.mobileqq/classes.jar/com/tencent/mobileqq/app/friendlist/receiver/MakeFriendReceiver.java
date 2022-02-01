@@ -33,26 +33,26 @@ public class MakeFriendReceiver
       a(15, false, null);
       return;
     }
-    paramFromServiceMsg = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+    paramFromServiceMsg = (IPhoneContactService)this.a.getRuntimeService(IPhoneContactService.class, "");
     if (paramFromServiceMsg != null) {
       paramFromServiceMsg.onFriendListChanged();
     }
-    ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(String.valueOf(paramDelFriendResp.deluin));
-    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).s(String.valueOf(paramDelFriendResp.deluin));
+    paramFromServiceMsg = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramDelFriendResp.deluin);
     localStringBuilder.append("");
     IceBreakingUtil.a(paramFromServiceMsg, localStringBuilder.toString());
-    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramFromServiceMsg = this.a;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramDelFriendResp.deluin);
     localStringBuilder.append("");
     TofuHelper.a(paramFromServiceMsg, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(String.valueOf(paramDelFriendResp.deluin), true);
-    paramFromServiceMsg = (INearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+    this.a.getProxyManager().g().a(String.valueOf(paramDelFriendResp.deluin), true);
+    paramFromServiceMsg = (INearbyCardManager)this.a.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
     if (paramFromServiceMsg != null)
     {
-      paramFromServiceMsg = paramFromServiceMsg.a();
+      paramFromServiceMsg = paramFromServiceMsg.f();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
       localStringBuilder.append(paramDelFriendResp.deluin);
@@ -73,7 +73,7 @@ public class MakeFriendReceiver
     if (i == 0)
     {
       paramToServiceMsg.extraData.getString("strNickName");
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.addFriendToFriendList(str, k, 3999, null, false, false, -1L);
+      this.b.addFriendToFriendList(str, k, 3999, null, false, false, -1L);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
@@ -81,7 +81,7 @@ public class MakeFriendReceiver
     localStringBuilder.append(paramToServiceMsg.extraData.getLong("infotime", 0L));
     localStringBuilder.append(paramToServiceMsg.extraData.getLong("dbid", 0L));
     paramToServiceMsg = localStringBuilder.toString();
-    ContactConfig.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramToServiceMsg, i);
+    ContactConfig.b(this.a.getApp().getApplicationContext(), paramToServiceMsg, i);
     a(10, true, new Object[] { str, Integer.valueOf(i) });
   }
   
@@ -116,7 +116,7 @@ public class MakeFriendReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.MakeFriendReceiver
  * JD-Core Version:    0.7.0.1
  */

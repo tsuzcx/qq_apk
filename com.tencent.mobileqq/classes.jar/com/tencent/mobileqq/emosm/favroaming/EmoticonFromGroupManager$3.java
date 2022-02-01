@@ -17,13 +17,13 @@ class EmoticonFromGroupManager$3
       paramDialogInterface.dismiss();
     }
     if (paramInt == 1) {
-      VasH5PayUtil.a(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).getString(2131719393), "");
+      VasH5PayUtil.a(this.a, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", EmoticonFromGroupManager.a(this.b).getString(2131916948), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.3
  * JD-Core Version:    0.7.0.1
  */

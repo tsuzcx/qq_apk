@@ -32,34 +32,34 @@ import java.util.Set;
 public class FileSelectorSearchEngine
   implements SearchTask.SearchTaskCallBack, ISearchEngine<FileSelectorSearchResultModel>
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FileSelectorSearchEngine.SearchRunnable jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable = new FileSelectorSearchEngine.SearchRunnable(this, null);
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private int a = 0;
+  private QQAppInterface b;
+  private Context c;
+  private Bundle d;
+  private boolean e = false;
+  private boolean f = false;
+  private FileSelectorSearchEngine.SearchRunnable g = new FileSelectorSearchEngine.SearchRunnable(this, null);
   
   public FileSelectorSearchEngine(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramQQAppInterface;
+    this.c = paramContext;
+    this.a = paramInt;
   }
   
   private List<FileSelectorSearchResultModel> b(SearchRequest paramSearchRequest)
   {
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramSearchRequest.a);
+    Map localMap = this.b.getFileManagerDataCenter().e(paramSearchRequest.a);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = localMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      RecentFileSearchResultModel localRecentFileSearchResultModel = new RecentFileSearchResultModel(paramSearchRequest.a, this.jdField_a_of_type_Int);
+      RecentFileSearchResultModel localRecentFileSearchResultModel = new RecentFileSearchResultModel(paramSearchRequest.a, this.a);
       localObject = (List)localMap.get(localObject);
-      localRecentFileSearchResultModel.a(this.jdField_a_of_type_AndroidOsBundle);
+      localRecentFileSearchResultModel.a(this.d);
       localRecentFileSearchResultModel.a((List)localObject);
-      if (localRecentFileSearchResultModel.e_() > 0) {
+      if (localRecentFileSearchResultModel.i() > 0) {
         localArrayList.add(localRecentFileSearchResultModel);
       }
     }
@@ -70,13 +70,13 @@ public class FileSelectorSearchEngine
   {
     ArrayList localArrayList = new ArrayList();
     HashMap localHashMap = new HashMap();
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("file_choose_extension_handle_type", -1);
+    int i = this.d.getInt("file_choose_extension_handle_type", -1);
     Object localObject4;
     Object localObject2;
     if (i == 1)
     {
-      localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("file_choose_extension_in_filter");
-      localObject4 = this.jdField_a_of_type_AndroidOsBundle.getString("file_choose_extension_out_filter");
+      localObject3 = this.d.getString("file_choose_extension_in_filter");
+      localObject4 = this.d.getString("file_choose_extension_out_filter");
       if (!((String)localObject3).equals(""))
       {
         localObject2 = localObject3;
@@ -110,9 +110,9 @@ public class FileSelectorSearchEngine
     if (!TextUtils.isEmpty((CharSequence)localObject3)) {
       ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).scanFileList(true, (String)localObject3, (String)localObject2, (String)localObject1, localHashMap, null);
     }
-    if ((i == -1) && (a()))
+    if ((i == -1) && (f()))
     {
-      localObject3 = ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).qureyApks(this.jdField_a_of_type_AndroidContentContext, null);
+      localObject3 = ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).qureyApks(this.c, null);
       if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
         localHashMap.put("installedApk", localObject3);
       }
@@ -139,7 +139,7 @@ public class FileSelectorSearchEngine
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (FileInfo)((Iterator)localObject2).next();
-          localObject4 = ((FileInfo)localObject3).d();
+          localObject4 = ((FileInfo)localObject3).e();
           if (((String)localObject4).indexOf(paramSearchRequest.a) >= 0)
           {
             if (!((Map)localObject1).containsKey(localObject4)) {
@@ -147,7 +147,7 @@ public class FileSelectorSearchEngine
             }
             ((List)((Map)localObject1).get(localObject4)).add(localObject3);
           }
-          else if (SearchUtils.b(paramSearchRequest.a, (String)localObject4, IContactSearchable.g) > -9223372036854775808L)
+          else if (SearchUtils.b(paramSearchRequest.a, (String)localObject4, IContactSearchable.k) > -9223372036854775808L)
           {
             if (!((Map)localObject1).containsKey(localObject4)) {
               ((Map)localObject1).put(localObject4, new ArrayList());
@@ -162,9 +162,9 @@ public class FileSelectorSearchEngine
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (String)((Iterator)localObject2).next();
-          localObject4 = new LocalFileSearchResultModel(paramSearchRequest.a, this.jdField_a_of_type_Int);
+          localObject4 = new LocalFileSearchResultModel(paramSearchRequest.a, this.a);
           ((LocalFileSearchResultModel)localObject4).a((List)((Map)localObject1).get(localObject3));
-          ((LocalFileSearchResultModel)localObject4).a(this.jdField_a_of_type_AndroidOsBundle);
+          ((LocalFileSearchResultModel)localObject4).a(this.d);
           localArrayList.add(localObject4);
         }
       }
@@ -179,7 +179,7 @@ public class FileSelectorSearchEngine
   
   public List<FileSelectorSearchResultModel> a(SearchRequest paramSearchRequest)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 16) {
       paramSearchRequest = b(paramSearchRequest);
     } else if (i == 17) {
@@ -202,7 +202,7 @@ public class FileSelectorSearchEngine
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.d = paramBundle;
   }
   
   public void a(SearchRequest paramSearchRequest, ISearchListener<FileSelectorSearchResultModel> paramISearchListener)
@@ -212,34 +212,24 @@ public class FileSelectorSearchEngine
       if (TextUtils.isEmpty(paramSearchRequest.a.trim())) {
         return;
       }
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable)
+      synchronized (this.g)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest = paramSearchRequest;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = paramISearchListener;
-        ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable, 64);
-        ThreadManager.executeOnFileThread(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable);
+        this.g.a = paramSearchRequest;
+        this.g.b = paramISearchListener;
+        ThreadManager.removeJobFromThreadPool(this.g, 64);
+        ThreadManager.executeOnFileThread(this.g);
         return;
       }
     }
   }
   
-  protected boolean a()
-  {
-    if (this.b) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("qfile_permission", 0).getBoolean("qfile_permission_access_apps", false);
-    this.b = true;
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   public void b()
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable)
+    synchronized (this.g)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = null;
-      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable, 64);
+      this.g.a = null;
+      this.g.b = null;
+      ThreadManager.removeJobFromThreadPool(this.g, 64);
       return;
     }
   }
@@ -249,10 +239,20 @@ public class FileSelectorSearchEngine
   public void d() {}
   
   public void e() {}
+  
+  protected boolean f()
+  {
+    if (this.f) {
+      return this.e;
+    }
+    this.e = this.c.getSharedPreferences("qfile_permission", 0).getBoolean("qfile_permission_access_apps", false);
+    this.f = true;
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchEngine
  * JD-Core Version:    0.7.0.1
  */

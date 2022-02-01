@@ -43,28 +43,27 @@ import org.jetbrains.annotations.Nullable;
 public final class WeatherArkViewWrapper
   extends FrameLayout
 {
-  public static final WeatherArkViewWrapper.Companion a;
-  private byte jdField_a_of_type_Byte;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  public static final WeatherArkViewWrapper.Companion a = new WeatherArkViewWrapper.Companion(null);
   @NotNull
-  private final MutableLiveData<MotionEvent> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private ArkViewImplement.LoadCallback jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback;
+  private final ArkView b;
   @NotNull
-  private final ArkView jdField_a_of_type_ComTencentArkOpenArkView;
-  private WeatherWebArkViewModel jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel;
-  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new WeatherArkViewWrapper.topPadding.2(this));
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final Lazy jdField_b_of_type_KotlinLazy = LazyKt.lazy((Function0)new WeatherArkViewWrapper.scaledTouchSlop.2(this));
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private final MutableLiveData<MotionEvent> c = new MutableLiveData();
   private boolean d;
+  private WeatherWebArkViewModel e;
+  private int f;
+  private final Lazy g = LazyKt.lazy((Function0)new WeatherArkViewWrapper.topPadding.2(this));
+  private boolean h;
+  private float i;
+  private float j;
+  private long k;
+  private byte l;
+  private final Lazy m = LazyKt.lazy((Function0)new WeatherArkViewWrapper.scaledTouchSlop.2(this));
+  private boolean n;
+  private ArkViewImplement.LoadCallback o;
+  private boolean p;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherArkViewWrapper$Companion = new WeatherArkViewWrapper.Companion(null);
     QRouteApi localQRouteApi = QRoute.api(IArkEnvironment.class);
     Intrinsics.checkExpressionValueIsNotNull(localQRouteApi, "QRoute.api(IArkEnvironment::class.java)");
     ((IArkEnvironment)localQRouteApi).initMultiProcEnv((IArkEnvDelegate)QRoute.api(IArkEnvDelegate.class));
@@ -83,79 +82,22 @@ public final class WeatherArkViewWrapper
   public WeatherArkViewWrapper(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentArkOpenArkView = new ArkView(paramContext, null);
+    this.b = new ArkView(paramContext, null);
     paramContext = getResources();
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "resources");
     paramContext = new ArkAppInfo.Size(paramContext.getDisplayMetrics().widthPixels, -1);
     setArkFixScaleDensity();
-    this.jdField_a_of_type_ComTencentArkOpenArkView.setSize(paramContext, paramContext, paramContext);
-    this.jdField_a_of_type_ComTencentArkOpenArkView.setBorderType(0);
-    addView((View)this.jdField_a_of_type_ComTencentArkOpenArkView);
+    this.b.setSize(paramContext, paramContext, paramContext);
+    this.b.setBorderType(0);
+    addView((View)this.b);
     setArkHeight(Utils.a(310, getResources()));
-  }
-  
-  private final float a(float paramFloat)
-  {
-    float f = getScrollY();
-    int i;
-    if (this.jdField_a_of_type_Int > 0) {
-      i = a();
-    } else {
-      i = 0;
-    }
-    return paramFloat + f - i;
-  }
-  
-  private final int a()
-  {
-    return ((Number)this.jdField_a_of_type_KotlinLazy.getValue()).intValue();
-  }
-  
-  private final View a()
-  {
-    Object localObject = new FrameLayout.LayoutParams(-1, this.jdField_a_of_type_Int);
-    ((FrameLayout.LayoutParams)localObject).gravity = 1;
-    LinearLayout localLinearLayout = new LinearLayout(getContext());
-    localLinearLayout.setId(2131381049);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localLinearLayout.setBackgroundColor(-1);
-    localObject = new ImageView(getContext());
-    ((ImageView)localObject).setImageResource(2130839477);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    int j = Utils.a(170.0F, getResources()) - a();
-    int i = j;
-    if (ImmersiveUtils.isSupporImmersive() == 1) {
-      i = j + ImmersiveUtils.getStatusBarHeight(getContext());
-    }
-    localLayoutParams.topMargin = i;
-    localLayoutParams.gravity = 1;
-    localLinearLayout.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
-    localObject = new TextView(getContext());
-    ((TextView)localObject).setText(2131720356);
-    ((TextView)localObject).setTextSize(1, 15.0F);
-    ((TextView)localObject).setTextColor(-16777216);
-    localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = Utils.a(20.0F, getResources());
-    localLayoutParams.gravity = 1;
-    localLinearLayout.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
-    return (View)localLinearLayout;
-  }
-  
-  private final void a()
-  {
-    WeatherWebArkViewModel localWeatherWebArkViewModel = this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel;
-    if (localWeatherWebArkViewModel != null) {
-      localWeatherWebArkViewModel.a(1);
-    }
-    WeatherDCReportHelper.a().a(null, "new_ark_callup_success");
   }
   
   private final void a(float paramFloat1, float paramFloat2)
   {
-    paramFloat1 = Math.abs(paramFloat1 - this.jdField_a_of_type_Float);
-    paramFloat2 = Math.abs(paramFloat2 - this.jdField_b_of_type_Float);
-    if ((paramFloat1 > b()) || (paramFloat2 > b()))
+    paramFloat1 = Math.abs(paramFloat1 - this.i);
+    paramFloat2 = Math.abs(paramFloat2 - this.j);
+    if ((paramFloat1 > getScaledTouchSlop()) || (paramFloat2 > getScaledTouchSlop()))
     {
       byte b1;
       if (paramFloat2 > paramFloat1) {
@@ -163,7 +105,7 @@ public final class WeatherArkViewWrapper
       } else {
         b1 = 1;
       }
-      this.jdField_a_of_type_Byte = b1;
+      this.l = b1;
     }
     if (QLog.isColorLevel())
     {
@@ -173,16 +115,16 @@ public final class WeatherArkViewWrapper
       localStringBuilder.append(", absDy -> ");
       localStringBuilder.append(paramFloat2);
       localStringBuilder.append(", mSlideStartDir -> ");
-      localStringBuilder.append(this.jdField_a_of_type_Byte);
+      localStringBuilder.append(this.l);
       QLog.d("WeatherWebArkWrapper", 2, localStringBuilder.toString());
     }
   }
   
   private final void a(boolean paramBoolean)
   {
-    if (!this.c)
+    if (!this.n)
     {
-      this.c = true;
+      this.n = true;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -190,15 +132,15 @@ public final class WeatherArkViewWrapper
         ((StringBuilder)localObject).append(paramBoolean);
         QLog.d("WeatherWebArkWrapper", 2, ((StringBuilder)localObject).toString());
       }
-      long l = this.jdField_a_of_type_Long;
-      Object localObject = MotionEvent.obtain(l, l, 0, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, 0);
+      long l1 = this.k;
+      Object localObject = MotionEvent.obtain(l1, l1, 0, this.i, this.j, 0);
       if (paramBoolean)
       {
         super.dispatchTouchEvent((MotionEvent)localObject);
       }
       else
       {
-        MutableLiveData localMutableLiveData = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+        MutableLiveData localMutableLiveData = this.c;
         if (localObject != null) {
           localMutableLiveData.setValue(localObject);
         }
@@ -211,7 +153,7 @@ public final class WeatherArkViewWrapper
   {
     int[] arrayOfInt = new int[2];
     getLocationOnScreen(arrayOfInt);
-    float f = a(paramFloat);
+    float f1 = b(paramFloat);
     boolean bool1 = QLog.isColorLevel();
     boolean bool2 = false;
     if (bool1)
@@ -226,44 +168,60 @@ public final class WeatherArkViewWrapper
       localStringBuilder.append(", eventY -> ");
       localStringBuilder.append(paramFloat);
       localStringBuilder.append(", arkHeight-> ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.f);
       QLog.d("WeatherWebArkWrapper", 2, localStringBuilder.toString());
     }
     bool1 = bool2;
-    if (f >= arrayOfInt[1])
+    if (f1 >= arrayOfInt[1])
     {
       bool1 = bool2;
-      if (f <= arrayOfInt[1] + this.jdField_a_of_type_Int) {
+      if (f1 <= arrayOfInt[1] + this.f) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  private final int b()
+  private final float b(float paramFloat)
   {
-    return ((Number)this.jdField_b_of_type_KotlinLazy.getValue()).intValue();
+    float f1 = getScrollY();
+    int i1;
+    if (this.f > 0) {
+      i1 = getTopPadding();
+    } else {
+      i1 = 0;
+    }
+    return paramFloat + f1 - i1;
   }
   
   private final void b()
   {
-    WeatherWebArkViewModel localWeatherWebArkViewModel = this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel;
+    WeatherWebArkViewModel localWeatherWebArkViewModel = this.e;
+    if (localWeatherWebArkViewModel != null) {
+      localWeatherWebArkViewModel.a(1);
+    }
+    WeatherDCReportHelper.a().a(null, "new_ark_callup_success");
+  }
+  
+  private final void c()
+  {
+    WeatherWebArkViewModel localWeatherWebArkViewModel = this.e;
     if (localWeatherWebArkViewModel != null) {
       localWeatherWebArkViewModel.a(0);
     }
   }
   
-  private final void c()
+  private final void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel;
+    Object localObject = this.e;
     if (localObject != null) {
       ((WeatherWebArkViewModel)localObject).a(-1);
     }
     setArkHeight(Utils.a(310, getResources()));
-    View localView = findViewById(2131381049);
+    View localView = findViewById(2131450059);
     if (localView == null)
     {
-      localObject = a();
+      localObject = e();
     }
     else
     {
@@ -286,22 +244,51 @@ public final class WeatherArkViewWrapper
     WeatherDCReportHelper.a().a(null, "new_ark_callup_fail");
   }
   
-  @NotNull
-  public final MutableLiveData<MotionEvent> a()
+  private final View e()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+    Object localObject = new FrameLayout.LayoutParams(-1, this.f);
+    ((FrameLayout.LayoutParams)localObject).gravity = 1;
+    LinearLayout localLinearLayout = new LinearLayout(getContext());
+    localLinearLayout.setId(2131450059);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localLinearLayout.setBackgroundColor(-1);
+    localObject = new ImageView(getContext());
+    ((ImageView)localObject).setImageResource(2130839667);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    int i2 = Utils.a(170.0F, getResources()) - getTopPadding();
+    int i1 = i2;
+    if (ImmersiveUtils.isSupporImmersive() == 1) {
+      i1 = i2 + ImmersiveUtils.getStatusBarHeight(getContext());
+    }
+    localLayoutParams.topMargin = i1;
+    localLayoutParams.gravity = 1;
+    localLinearLayout.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
+    localObject = new TextView(getContext());
+    ((TextView)localObject).setText(2131917993);
+    ((TextView)localObject).setTextSize(1, 15.0F);
+    ((TextView)localObject).setTextColor(-16777216);
+    localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams.topMargin = Utils.a(20.0F, getResources());
+    localLayoutParams.gravity = 1;
+    localLinearLayout.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
+    return (View)localLinearLayout;
   }
   
-  @NotNull
-  public final ArkView a()
+  private final int getScaledTouchSlop()
   {
-    return this.jdField_a_of_type_ComTencentArkOpenArkView;
+    return ((Number)this.m.getValue()).intValue();
+  }
+  
+  private final int getTopPadding()
+  {
+    return ((Number)this.g.getValue()).intValue();
   }
   
   public final void a(@NotNull WeatherWebArkViewModel paramWeatherWebArkViewModel)
   {
     Intrinsics.checkParameterIsNotNull(paramWeatherWebArkViewModel, "viewModel");
-    this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel = paramWeatherWebArkViewModel;
+    this.e = paramWeatherWebArkViewModel;
   }
   
   public final void a(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4)
@@ -328,13 +315,13 @@ public final class WeatherArkViewWrapper
       localStringBuilder.append((String)localObject);
       QLog.d("WeatherWebArkWrapper", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback = ((ArkViewImplement.LoadCallback)new WeatherArkViewWrapper.initArkView.1(this));
-    this.jdField_a_of_type_ComTencentArkOpenArkView.load(paramString1, paramString2, paramString3, paramString4, (String)localObject, this.jdField_a_of_type_ComTencentArkArkViewImplement$LoadCallback);
+    this.o = ((ArkViewImplement.LoadCallback)new WeatherArkViewWrapper.initArkView.1(this));
+    this.b.load(paramString1, paramString2, paramString3, paramString4, (String)localObject, this.o);
   }
   
   public final boolean a()
   {
-    return this.d;
+    return this.p;
   }
   
   public boolean dispatchTouchEvent(@Nullable MotionEvent paramMotionEvent)
@@ -345,127 +332,144 @@ public final class WeatherArkViewWrapper
     } else {
       localObject = null;
     }
-    int i = 0;
-    int j = 0;
+    int i1 = 0;
+    int i2 = 0;
     boolean bool = true;
     if ((localObject != null) && (((Integer)localObject).intValue() == 0))
     {
-      this.jdField_b_of_type_Boolean = a(paramMotionEvent.getY());
-      this.jdField_a_of_type_Boolean = false;
-      this.c = false;
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      j = i;
+      this.h = a(paramMotionEvent.getY());
+      this.d = false;
+      this.n = false;
+      this.i = paramMotionEvent.getX();
+      this.j = paramMotionEvent.getY();
+      this.k = SystemClock.uptimeMillis();
+      i2 = i1;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onTouchEvent ACTION_DOWN  downInArk: ");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.h);
         QLog.d("WeatherWebArkWrapper", 2, ((StringBuilder)localObject).toString());
-        j = i;
+        i2 = i1;
       }
     }
     else if ((localObject != null) && (((Integer)localObject).intValue() == 2))
     {
-      if (this.jdField_a_of_type_Byte == 0) {
+      if (this.l == 0) {
         a(paramMotionEvent.getX(), paramMotionEvent.getY());
       }
-      if (this.jdField_a_of_type_Byte == 0) {
+      if (this.l == 0) {
         return true;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
       getParent().requestDisallowInterceptTouchEvent(true);
-      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Byte == 1))
+      if ((this.h) && (this.l == 1))
       {
         a(true);
-        i = 1;
+        i1 = 1;
       }
       else
       {
         a(false);
-        localObject = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-        i = j;
+        localObject = this.c;
+        i1 = i2;
         if (paramMotionEvent != null)
         {
           ((MutableLiveData)localObject).setValue(paramMotionEvent);
-          i = j;
+          i1 = i2;
         }
       }
-      j = i;
+      i2 = i1;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onTouchEvent ACTION_MOVE mSlideStartDir: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Byte);
+        ((StringBuilder)localObject).append(this.l);
         ((StringBuilder)localObject).append(", downInArk: ");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.h);
         QLog.d("WeatherWebArkWrapper", 2, ((StringBuilder)localObject).toString());
-        j = i;
+        i2 = i1;
       }
     }
     else if ((localObject == null) || (((Integer)localObject).intValue() != 1))
     {
       if (localObject == null)
       {
-        j = i;
+        i2 = i1;
       }
       else
       {
-        j = i;
+        i2 = i1;
         if (((Integer)localObject).intValue() != 3) {}
       }
     }
     else
     {
-      if ((this.jdField_b_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Byte == 1)))
+      if ((this.h) && ((!this.d) || (this.l == 1)))
       {
         a(true);
-        i = 1;
+        i1 = 1;
       }
       else
       {
         a(false);
-        localObject = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+        localObject = this.c;
         if (paramMotionEvent != null) {
           ((MutableLiveData)localObject).setValue(paramMotionEvent);
         }
-        i = 0;
+        i1 = 0;
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onTouchEvent ACTION_UP mSlideStartDir: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Byte);
+        ((StringBuilder)localObject).append(this.l);
         ((StringBuilder)localObject).append(", downInArk: ");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.h);
         ((StringBuilder)localObject).append(", hasMove:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("WeatherWebArkWrapper", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_Float = 0.0F;
-      this.jdField_b_of_type_Float = 0.0F;
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_Byte = 0;
-      this.jdField_b_of_type_Boolean = false;
-      this.c = false;
-      j = i;
+      this.i = 0.0F;
+      this.j = 0.0F;
+      this.k = 0L;
+      this.l = 0;
+      this.h = false;
+      this.n = false;
+      i2 = i1;
     }
-    if (j != 0) {
+    if (i2 != 0) {
       bool = super.dispatchTouchEvent(paramMotionEvent);
     }
     return bool;
   }
   
+  public final int getArkHeight()
+  {
+    return this.f;
+  }
+  
+  @NotNull
+  public final ArkView getArkView()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final MutableLiveData<MotionEvent> getTouchEventData()
+  {
+    return this.c;
+  }
+  
   public final void setArkFixScaleDensity()
   {
-    float f = FontSettingManager.systemMetrics.density;
+    float f1 = FontSettingManager.systemMetrics.density;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setArkFixScaleDensity system: ");
-    localStringBuilder.append(f);
+    localStringBuilder.append(f1);
     QLog.i("WeatherWebArkWrapper", 1, localStringBuilder.toString());
-    if (f > 0) {
-      this.jdField_a_of_type_ComTencentArkOpenArkView.setScaleDensity(f);
+    if (f1 > 0) {
+      this.b.setScaleDensity(f1);
     }
   }
   
@@ -478,24 +482,24 @@ public final class WeatherArkViewWrapper
       localStringBuilder.append(paramInt);
       QLog.d("WeatherWebArkWrapper", 2, localStringBuilder.toString());
     }
-    int i;
+    int i1;
     if (paramInt > 0) {
-      i = a();
+      i1 = getTopPadding();
     } else {
-      i = 0;
+      i1 = 0;
     }
-    setPadding(0, i, 0, 0);
-    this.jdField_a_of_type_Int = paramInt;
+    setPadding(0, i1, 0, 0);
+    this.f = paramInt;
   }
   
   public final void setArkLoaded(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.p = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherArkViewWrapper
  * JD-Core Version:    0.7.0.1
  */

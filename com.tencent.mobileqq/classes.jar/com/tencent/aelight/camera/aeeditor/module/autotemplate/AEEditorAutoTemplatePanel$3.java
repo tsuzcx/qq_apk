@@ -13,20 +13,20 @@ class AEEditorAutoTemplatePanel$3
   public void a(int paramInt, @Nullable MetaCategory paramMetaCategory)
   {
     if (paramMetaCategory != null) {
-      AEReportUtils.b(paramMetaCategory.id);
+      AEReportUtils.a(paramMetaCategory.id);
     }
   }
   
   public void b(int paramInt, @Nullable MetaCategory paramMetaCategory)
   {
     if (paramMetaCategory != null) {
-      AEReportUtils.c(paramMetaCategory.id);
+      AEReportUtils.b(paramMetaCategory.id);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.autotemplate.AEEditorAutoTemplatePanel.3
  * JD-Core Version:    0.7.0.1
  */

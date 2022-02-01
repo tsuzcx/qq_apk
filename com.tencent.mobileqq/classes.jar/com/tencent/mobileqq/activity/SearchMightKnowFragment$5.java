@@ -14,7 +14,7 @@ class SearchMightKnowFragment$5
   public void a()
   {
     SearchMightKnowFragment.a(this.a).setVisibility(0);
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
+    SearchMightKnowFragment.b(this.a).setVisibility(8);
   }
   
   public void a(String paramString) {}
@@ -24,12 +24,12 @@ class SearchMightKnowFragment$5
   public void b()
   {
     SearchMightKnowFragment.a(this.a).setVisibility(8);
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    SearchMightKnowFragment.b(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SearchMightKnowFragment.5
  * JD-Core Version:    0.7.0.1
  */

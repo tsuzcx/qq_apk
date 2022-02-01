@@ -27,231 +27,221 @@ import com.tencent.mobileqq.qqexpand.widget.pulltorefresh.PullToRefreshBase.Orie
 abstract class LoadingLayout
   extends LoadingLayoutBase
 {
-  static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
-  private final FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  protected final ImageView a;
-  protected final ProgressBar a;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected final PullToRefreshBase.Mode a;
-  protected final PullToRefreshBase.Orientation a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private boolean jdField_a_of_type_Boolean;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private CharSequence c;
-  private CharSequence d;
+  static final Interpolator a = new LinearInterpolator();
+  protected final ImageView b;
+  protected final ProgressBar c;
+  protected final PullToRefreshBase.Mode d;
+  protected final PullToRefreshBase.Orientation e;
+  private final TextView f;
+  private final TextView g;
+  private final FrameLayout h;
+  private boolean i;
+  private CharSequence j;
+  private CharSequence k;
+  private CharSequence l;
+  private CharSequence m;
   
   public LoadingLayout(Context paramContext, PullToRefreshBase.Mode paramMode, PullToRefreshBase.Orientation paramOrientation, TypedArray paramTypedArray)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Mode = paramMode;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Orientation = paramOrientation;
+    this.d = paramMode;
+    this.e = paramOrientation;
     if (LoadingLayout.1.a[paramOrientation.ordinal()] != 1) {
-      LayoutInflater.from(paramContext).inflate(2131559583, this);
+      LayoutInflater.from(paramContext).inflate(2131625612, this);
     } else {
-      LayoutInflater.from(paramContext).inflate(2131559582, this);
+      LayoutInflater.from(paramContext).inflate(2131625611, this);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366923));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131373283));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131373281));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131373282));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131373278));
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    int i;
+    this.h = ((FrameLayout)findViewById(2131433269));
+    this.f = ((TextView)this.h.findViewById(2131440892));
+    this.c = ((ProgressBar)this.h.findViewById(2131440890));
+    this.g = ((TextView)this.h.findViewById(2131440891));
+    this.b = ((ImageView)this.h.findViewById(2131440887));
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.h.getLayoutParams();
+    int n;
     if (LoadingLayout.1.b[paramMode.ordinal()] != 1)
     {
       if (paramOrientation == PullToRefreshBase.Orientation.VERTICAL) {
-        i = 80;
+        n = 80;
       } else {
-        i = 5;
+        n = 5;
       }
-      localLayoutParams.gravity = i;
-      this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(2131695290);
-      this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131695291);
-      this.c = paramContext.getString(2131695292);
+      localLayoutParams.gravity = n;
+      this.j = paramContext.getString(2131893025);
+      this.k = paramContext.getString(2131893026);
+      this.l = paramContext.getString(2131893027);
     }
     else
     {
       if (paramOrientation == PullToRefreshBase.Orientation.VERTICAL) {
-        i = 48;
+        n = 48;
       } else {
-        i = 3;
+        n = 3;
       }
-      localLayoutParams.gravity = i;
-      this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(2131695287);
-      this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131695288);
-      this.c = paramContext.getString(2131695289);
+      localLayoutParams.gravity = n;
+      this.j = paramContext.getString(2131893022);
+      this.k = paramContext.getString(2131893023);
+      this.l = paramContext.getString(2131893024);
     }
-    if (paramTypedArray.hasValue(R.styleable.i))
+    if (paramTypedArray.hasValue(R.styleable.aZ))
     {
-      paramOrientation = paramTypedArray.getDrawable(R.styleable.i);
+      paramOrientation = paramTypedArray.getDrawable(R.styleable.aZ);
       if (paramOrientation != null) {
         ViewCompat.a(this, paramOrientation);
       }
     }
-    if (paramTypedArray.hasValue(R.styleable.m))
+    if (paramTypedArray.hasValue(R.styleable.bd))
     {
       paramOrientation = new TypedValue();
-      paramTypedArray.getValue(R.styleable.m, paramOrientation);
-      b(paramOrientation.data);
+      paramTypedArray.getValue(R.styleable.bd, paramOrientation);
+      setTextAppearance(paramOrientation.data);
     }
-    if (paramTypedArray.hasValue(R.styleable.t))
+    if (paramTypedArray.hasValue(R.styleable.bk))
     {
       paramOrientation = new TypedValue();
-      paramTypedArray.getValue(R.styleable.t, paramOrientation);
-      a(paramOrientation.data);
+      paramTypedArray.getValue(R.styleable.bk, paramOrientation);
+      setSubTextAppearance(paramOrientation.data);
     }
-    if (paramTypedArray.hasValue(R.styleable.n))
+    if (paramTypedArray.hasValue(R.styleable.be))
     {
-      paramOrientation = paramTypedArray.getColorStateList(R.styleable.n);
+      paramOrientation = paramTypedArray.getColorStateList(R.styleable.be);
       if (paramOrientation != null) {
-        b(paramOrientation);
+        setTextColor(paramOrientation);
       }
     }
-    if (paramTypedArray.hasValue(R.styleable.l))
+    if (paramTypedArray.hasValue(R.styleable.bc))
     {
-      paramOrientation = paramTypedArray.getColorStateList(R.styleable.l);
+      paramOrientation = paramTypedArray.getColorStateList(R.styleable.bc);
       if (paramOrientation != null) {
-        a(paramOrientation);
+        setSubTextColor(paramOrientation);
       }
     }
     paramOrientation = null;
-    if (paramTypedArray.hasValue(R.styleable.d)) {
-      paramOrientation = paramTypedArray.getDrawable(R.styleable.d);
+    if (paramTypedArray.hasValue(R.styleable.aU)) {
+      paramOrientation = paramTypedArray.getDrawable(R.styleable.aU);
     }
     if (LoadingLayout.1.b[paramMode.ordinal()] != 1)
     {
-      if (paramTypedArray.hasValue(R.styleable.g))
+      if (paramTypedArray.hasValue(R.styleable.aX))
       {
-        paramMode = paramTypedArray.getDrawable(R.styleable.g);
+        paramMode = paramTypedArray.getDrawable(R.styleable.aX);
       }
       else
       {
         paramMode = paramOrientation;
-        if (paramTypedArray.hasValue(R.styleable.h)) {
-          paramMode = paramTypedArray.getDrawable(R.styleable.h);
+        if (paramTypedArray.hasValue(R.styleable.aY)) {
+          paramMode = paramTypedArray.getDrawable(R.styleable.aY);
         }
       }
     }
-    else if (paramTypedArray.hasValue(R.styleable.f))
+    else if (paramTypedArray.hasValue(R.styleable.aW))
     {
-      paramMode = paramTypedArray.getDrawable(R.styleable.f);
+      paramMode = paramTypedArray.getDrawable(R.styleable.aW);
     }
     else
     {
       paramMode = paramOrientation;
-      if (paramTypedArray.hasValue(R.styleable.e)) {
-        paramMode = paramTypedArray.getDrawable(R.styleable.e);
+      if (paramTypedArray.hasValue(R.styleable.aV)) {
+        paramMode = paramTypedArray.getDrawable(R.styleable.aV);
       }
     }
     paramOrientation = paramMode;
     if (paramMode == null) {
-      paramOrientation = paramContext.getResources().getDrawable(b());
+      paramOrientation = paramContext.getResources().getDrawable(getDefaultDrawableResId());
     }
     setLoadingDrawable(paramOrientation);
     g();
   }
   
-  private void a(int paramInt)
+  private void setSubHeaderText(CharSequence paramCharSequence)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (localTextView != null) {
-      localTextView.setTextAppearance(getContext(), paramInt);
-    }
-  }
-  
-  private void a(ColorStateList paramColorStateList)
-  {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (localTextView != null) {
-      localTextView.setTextColor(paramColorStateList);
-    }
-  }
-  
-  private void a(CharSequence paramCharSequence)
-  {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.g;
     if (localTextView != null) {
       localTextView.setText(paramCharSequence);
     }
   }
   
-  private void b(int paramInt)
+  private void setSubTextAppearance(int paramInt)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localTextView != null) {
-      localTextView.setTextAppearance(getContext(), paramInt);
-    }
-    localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.g;
     if (localTextView != null) {
       localTextView.setTextAppearance(getContext(), paramInt);
     }
   }
   
-  private void b(ColorStateList paramColorStateList)
+  private void setSubTextColor(ColorStateList paramColorStateList)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localTextView != null) {
-      localTextView.setTextColor(paramColorStateList);
-    }
-    localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.g;
     if (localTextView != null) {
       localTextView.setTextColor(paramColorStateList);
     }
   }
   
-  public final int a()
+  private void setTextAppearance(int paramInt)
   {
-    if (LoadingLayout.1.a[this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetPulltorefreshPullToRefreshBase$Orientation.ordinal()] != 1) {
-      return this.jdField_a_of_type_AndroidWidgetFrameLayout.getHeight();
+    TextView localTextView = this.f;
+    if (localTextView != null) {
+      localTextView.setTextAppearance(getContext(), paramInt);
     }
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
+    localTextView = this.g;
+    if (localTextView != null) {
+      localTextView.setTextAppearance(getContext(), paramInt);
+    }
+  }
+  
+  private void setTextColor(ColorStateList paramColorStateList)
+  {
+    TextView localTextView = this.f;
+    if (localTextView != null) {
+      localTextView.setTextColor(paramColorStateList);
+    }
+    localTextView = this.g;
+    if (localTextView != null) {
+      localTextView.setTextColor(paramColorStateList);
+    }
   }
   
   public final void a(float paramFloat)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.i) {
       b(paramFloat);
     }
   }
   
   protected abstract void a(Drawable paramDrawable);
   
-  protected abstract int b();
-  
   protected abstract void b(float paramFloat);
   
   public final void d()
   {
     g();
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.f;
     if (localTextView != null) {
-      localTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      localTextView.setText(this.j);
     }
     i();
   }
   
   public final void e()
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.f;
     if (localTextView != null) {
-      localTextView.setText(this.c);
+      localTextView.setText(this.l);
     }
     k();
   }
   
   public final void f()
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.f;
     if (localTextView != null) {
-      localTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
+      localTextView.setText(this.k);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+    if (this.i) {
+      ((AnimationDrawable)this.b.getDrawable()).start();
     } else {
       j();
     }
-    localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    localTextView = this.g;
     if (localTextView != null) {
       localTextView.setVisibility(8);
     }
@@ -259,35 +249,45 @@ abstract class LoadingLayout
   
   public final void g()
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.f;
     if (localTextView != null) {
-      localTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      localTextView.setText(this.j);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.jdField_a_of_type_Boolean) {
-      ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+    this.b.setVisibility(0);
+    if (this.i) {
+      ((AnimationDrawable)this.b.getDrawable()).stop();
     } else {
       l();
     }
-    localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    localTextView = this.g;
     if (localTextView != null)
     {
       if (TextUtils.isEmpty(localTextView.getText()))
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.g.setVisibility(8);
         return;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.g.setVisibility(0);
     }
   }
   
+  public final int getContentSize()
+  {
+    if (LoadingLayout.1.a[this.e.ordinal()] != 1) {
+      return this.h.getHeight();
+    }
+    return this.h.getWidth();
+  }
+  
+  protected abstract int getDefaultDrawableResId();
+  
   public final void h()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject = this.f;
     if (localObject != null) {
-      ((TextView)localObject).setText(this.d);
+      ((TextView)localObject).setText(this.m);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    localObject = this.c;
     if (localObject != null) {
       ((ProgressBar)localObject).setVisibility(4);
     }
@@ -303,44 +303,44 @@ abstract class LoadingLayout
   
   public void setLastUpdatedLabel(CharSequence paramCharSequence)
   {
-    a(paramCharSequence);
+    setSubHeaderText(paramCharSequence);
   }
   
   public final void setLoadingDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_Boolean = (paramDrawable instanceof AnimationDrawable);
+    this.b.setImageDrawable(paramDrawable);
+    this.i = (paramDrawable instanceof AnimationDrawable);
     a(paramDrawable);
   }
   
   public void setPullLabel(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.j = paramCharSequence;
   }
   
   public void setRefreshResultLabel(CharSequence paramCharSequence)
   {
-    this.d = paramCharSequence;
+    this.m = paramCharSequence;
   }
   
   public void setRefreshingLabel(CharSequence paramCharSequence)
   {
-    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
+    this.k = paramCharSequence;
   }
   
   public void setReleaseLabel(CharSequence paramCharSequence)
   {
-    this.c = paramCharSequence;
+    this.l = paramCharSequence;
   }
   
   public void setTextTypeface(Typeface paramTypeface)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(paramTypeface);
+    this.f.setTypeface(paramTypeface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.pulltorefresh.internal.LoadingLayout
  * JD-Core Version:    0.7.0.1
  */

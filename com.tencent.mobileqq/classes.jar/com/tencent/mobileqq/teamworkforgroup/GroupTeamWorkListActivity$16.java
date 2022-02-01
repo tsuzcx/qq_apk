@@ -29,19 +29,19 @@ class GroupTeamWorkListActivity$16
     }
     if ((paramBoolean) && (paramInt == 0))
     {
-      GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 5);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691493), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+      GroupTeamWorkListActivity.a(this.a, 5);
+      QQToast.makeText(this.a.app.getApp(), 1, this.a.getString(2131888452), 0).show(this.a.getTitleBarHeight());
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691486), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+    QQToast.makeText(this.a.app.getApp(), 1, this.a.getString(2131888445), 0).show(this.a.getTitleBarHeight());
+    this.a.a(2);
   }
   
   public void a(boolean paramBoolean, int paramInt, String paramString, List<GPadInfo> paramList)
   {
     if (QLog.isColorLevel())
     {
-      paramList = jdField_a_of_type_JavaLangString;
+      paramList = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" onGetPadTemplateList success: ");
       localStringBuilder.append(paramBoolean);
@@ -53,9 +53,9 @@ class GroupTeamWorkListActivity$16
     }
     if ((paramBoolean) && (paramInt == 0))
     {
-      GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 2);
-      if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) {
-        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
+      GroupTeamWorkListActivity.b(this.a, 2);
+      if (GroupTeamWorkListActivity.l(this.a) != null) {
+        GroupTeamWorkListActivity.l(this.a).notifyDataSetChanged();
       }
     }
   }
@@ -64,7 +64,7 @@ class GroupTeamWorkListActivity$16
   {
     if (QLog.isColorLevel())
     {
-      paramList = jdField_a_of_type_JavaLangString;
+      paramList = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" onGetPadList success: ");
       localStringBuilder.append(paramBoolean);
@@ -76,9 +76,9 @@ class GroupTeamWorkListActivity$16
       localStringBuilder.append(paramInt2);
       QLog.i(paramList, 2, localStringBuilder.toString());
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity;
-    paramString.b = paramInt2;
-    boolean bool = GroupTeamWorkListActivity.a(paramString);
+    paramString = this.a;
+    paramString.p = paramInt2;
+    boolean bool = GroupTeamWorkListActivity.f(paramString);
     int j = 0;
     int i = 0;
     if (bool)
@@ -88,14 +88,14 @@ class GroupTeamWorkListActivity$16
       } else {
         paramInt2 = 2;
       }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.obtainMessage(111, paramInt2, 0);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.sendMessageDelayed(paramString, 500L);
-      GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
+      paramString = this.a.b.obtainMessage(111, paramInt2, 0);
+      this.a.b.sendMessageDelayed(paramString, 500L);
+      GroupTeamWorkListActivity.a(this.a, false);
     }
-    if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
+    if (GroupTeamWorkListActivity.g(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
-      GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
+      this.a.a(2);
+      GroupTeamWorkListActivity.b(this.a, false);
     }
     paramInt2 = 3;
     if (paramInt3 != 2) {
@@ -107,41 +107,41 @@ class GroupTeamWorkListActivity$16
     }
     if ((paramBoolean) && (paramInt1 == 0))
     {
-      GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, paramInt2);
+      GroupTeamWorkListActivity.a(this.a, paramInt2);
       paramInt1 = j;
     }
     else
     {
       if (paramInt2 == 2) {
-        if ((GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) && (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCount() == 0))
+        if ((GroupTeamWorkListActivity.c(this.a) != null) && (GroupTeamWorkListActivity.c(this.a).getCount() == 0))
         {
-          GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
-          if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getVisibility() == 0) {
-            GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+          GroupTeamWorkListActivity.h(this.a).setVisibility(8);
+          if (GroupTeamWorkListActivity.i(this.a).getVisibility() == 0) {
+            GroupTeamWorkListActivity.i(this.a).setVisibility(8);
           }
-          GroupTeamWorkListActivity.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(0);
+          GroupTeamWorkListActivity.j(this.a).setVisibility(0);
         }
         else
         {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131693799), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+          QQToast.makeText(this.a.app.getApp(), 1, this.a.getString(2131891374), 0).show(this.a.getTitleBarHeight());
         }
       }
       paramInt1 = i;
       if (paramInt2 == 4)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131693799), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+        QQToast.makeText(this.a.app.getApp(), 1, this.a.getString(2131891374), 0).show(this.a.getTitleBarHeight());
         paramInt1 = 1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+      this.a.a(2);
     }
     if (paramInt1 != 0) {
-      GroupTeamWorkListActivity.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+      GroupTeamWorkListActivity.k(this.a).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.16
  * JD-Core Version:    0.7.0.1
  */

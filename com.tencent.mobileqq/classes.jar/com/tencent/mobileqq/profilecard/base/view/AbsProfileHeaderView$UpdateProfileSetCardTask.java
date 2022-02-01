@@ -55,7 +55,7 @@ class AbsProfileHeaderView$UpdateProfileSetCardTask
             if ((l2 > 0L) && (l3 > 0L) && (i == 0))
             {
               localObject2 = new SimpleDateFormat("yyyyMMdd").format(new Date(System.currentTimeMillis()));
-              localObject3 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(localQQAppInterface.getCurrentAccountUin());
+              localObject3 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(localQQAppInterface.getCurrentAccountUin());
               if (localObject3 != null) {
                 l1 = ((Card)localObject3).lCurrentBgId;
               }
@@ -108,7 +108,7 @@ class AbsProfileHeaderView$UpdateProfileSetCardTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.UpdateProfileSetCardTask
  * JD-Core Version:    0.7.0.1
  */

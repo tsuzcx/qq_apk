@@ -25,24 +25,24 @@ class QQStoryCmdHandler$4
   {
     try
     {
-      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a();
-      paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
-      AppInterface localAppInterface = QQStoryContext.a();
+      paramJobContext = this.a.c();
+      paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.b).getAndIncrement());
+      AppInterface localAppInterface = QQStoryContext.k();
       NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), StoryMsfServlet.class);
       localNewIntent.putExtra("storySeq", paramArrayOfObject);
-      localNewIntent.putExtra("cmd", this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a());
+      localNewIntent.putExtra("cmd", this.a.a());
       localNewIntent.putExtra("data", paramJobContext);
       localNewIntent.putExtra("start_time", System.currentTimeMillis());
-      if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.b())))
+      if (this.b.a.contains(Integer.valueOf(this.a.e())))
       {
         localNewIntent.putExtra("timeout", 10000L);
         localNewIntent.putExtra("support_retry", true);
       }
-      else if (this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a > 0L)
+      else if (this.a.b > 0L)
       {
-        localNewIntent.putExtra("timeout", this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a);
+        localNewIntent.putExtra("timeout", this.a.b);
       }
-      QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);
+      QQStoryCmdHandler.b(this.b).put(paramArrayOfObject, this.a);
       localAppInterface.startServlet(localNewIntent);
       return null;
     }
@@ -60,7 +60,7 @@ class QQStoryCmdHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler.4
  * JD-Core Version:    0.7.0.1
  */

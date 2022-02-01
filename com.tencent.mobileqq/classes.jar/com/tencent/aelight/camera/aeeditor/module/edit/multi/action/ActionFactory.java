@@ -2,15 +2,15 @@ package com.tencent.aelight.camera.aeeditor.module.edit.multi.action;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.tavcut.bean.CropConfig;
+import com.tencent.qcircle.tavcut.bean.CropConfig;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.CutModelKt;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.ResourceModel;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaClipModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaResourceModel;
+import com.tencent.qcircle.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
-import com.tencent.weseevideo.camera.mvauto.redo.ResourceModel;
-import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -212,7 +212,7 @@ public class ActionFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.action.ActionFactory
  * JD-Core Version:    0.7.0.1
  */

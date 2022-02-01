@@ -14,13 +14,13 @@ class ChatHistory$ChatHistoryAdapter$7
   
   public void onClick(View paramView)
   {
-    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a, AnimationUtils.a(paramView));
+    AIOEmotionFragment.a(paramView.getContext(), this.a, this.b.f.K, AnimationUtils.a(paramView));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.7
  * JD-Core Version:    0.7.0.1
  */

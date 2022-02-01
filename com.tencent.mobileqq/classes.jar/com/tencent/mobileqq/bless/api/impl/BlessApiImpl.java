@@ -34,12 +34,12 @@ public class BlessApiImpl
 {
   public void clearEditingWordings(AppInterface paramAppInterface)
   {
-    ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).c();
+    ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).u();
   }
   
   public void clearUinListToSend(AppInterface paramAppInterface)
   {
-    ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).b();
+    ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).k();
   }
   
   public Object createShortVideoUploadInfo(Object paramObject1, Object paramObject2)
@@ -49,12 +49,12 @@ public class BlessApiImpl
   
   public int getAvailableSendCount(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).f();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).q();
   }
   
   public int getAvailableUinCount(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).d();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).o();
   }
   
   public String getBlessJsApiPlugin_ACTION_StringValue()
@@ -144,7 +144,7 @@ public class BlessApiImpl
   
   public Object getPtvMessage(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).z();
   }
   
   public String getPtvUrlByUuid(AppInterface paramAppInterface, String paramString1, String paramString2)
@@ -159,37 +159,37 @@ public class BlessApiImpl
   
   public int getTotalSendLimit(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).e();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).p();
   }
   
   public int getTotalUinLimit(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).c();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).n();
   }
   
   public ArrayList<String> getUinListToSend(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).l();
   }
   
   public int getWebAvailableSendCount(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).k();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).I();
   }
   
   public int getWebAvailableUinCount(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).j();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).H();
   }
   
   public int getWebTotalSendLimit(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).h();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).F();
   }
   
   public int getWebTotalUinLimit(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).i();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).G();
   }
   
   public void gotoSplashActivity(Activity paramActivity, boolean paramBoolean)
@@ -214,7 +214,7 @@ public class BlessApiImpl
   
   public boolean isUinListToSendChangedOnMem(AppInterface paramAppInterface)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).g();
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).m();
   }
   
   public boolean isVideoSoLibLoaded()
@@ -224,7 +224,7 @@ public class BlessApiImpl
   
   public boolean isWebUinSended(AppInterface paramAppInterface, String paramString)
   {
-    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).b(paramString);
+    return ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).e(paramString);
   }
   
   public void launchForShortVideoBusiManager(Object paramObject, AppInterface paramAppInterface)
@@ -261,7 +261,7 @@ public class BlessApiImpl
   
   public void saveSendWording(AppInterface paramAppInterface, String paramString)
   {
-    ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a(paramString);
+    ((BlessManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).c(paramString);
   }
   
   public void saveUinListToSend(AppInterface paramAppInterface, List<String> paramList)
@@ -303,7 +303,7 @@ public class BlessApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bless.api.impl.BlessApiImpl
  * JD-Core Version:    0.7.0.1
  */

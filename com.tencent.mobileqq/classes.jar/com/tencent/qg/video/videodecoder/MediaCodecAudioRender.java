@@ -21,52 +21,14 @@ import java.nio.ByteBuffer;
 public class MediaCodecAudioRender
   extends MediaCodecRender
 {
-  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public AudioDecodeConfig a;
-  private MediaCodecAudioRender.AudioDecodeHandler jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecAudioRender$AudioDecodeHandler;
-  
-  private AudioTrack a()
-  {
-    Object localObject = null;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.e != 1) {
-          break label113;
-        }
-        i = 4;
-        if (this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.b != 16) {
-          break label119;
-        }
-        j = 2;
-        int k = AudioTrack.getMinBufferSize(this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.d, i, j);
-        ReportAudioTrack localReportAudioTrack = new ReportAudioTrack(3, this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.d, i, j, k, 1);
-        try
-        {
-          localReportAudioTrack.play();
-          return localReportAudioTrack;
-        }
-        catch (Throwable localThrowable1)
-        {
-          localObject = localReportAudioTrack;
-        }
-        SLog.c("Q.qqstory.mediadecoderMediaCodecAudioRender", "AudioTrack init fail :%s", localThrowable2);
-      }
-      catch (Throwable localThrowable2) {}
-      return localObject;
-      label113:
-      int i = 12;
-      continue;
-      label119:
-      int j = 3;
-    }
-  }
+  private AudioTrack p;
+  private HandlerThread q;
+  private MediaCodecAudioRender.AudioDecodeHandler r;
   
   private void a(AudioTrack paramAudioTrack, byte[] paramArrayOfByte, int paramInt)
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_Int;
+    int j = this.a.d;
     int i = 1;
     byte[] arrayOfByte;
     if (j != 1)
@@ -77,7 +39,7 @@ public class MediaCodecAudioRender
         {
           if (j != 4)
           {
-            if (!this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecRender$MediaContext.a) {
+            if (!this.l.a) {
               paramAudioTrack.write(paramArrayOfByte, 0, paramInt);
             }
             paramArrayOfByte = null;
@@ -118,26 +80,58 @@ public class MediaCodecAudioRender
     i = paramInt;
     paramInt = j;
     label179:
-    if ((!this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecRender$MediaContext.a) && (paramInt == 0) && (paramArrayOfByte != null)) {
+    if ((!this.l.a) && (paramInt == 0) && (paramArrayOfByte != null)) {
       paramAudioTrack.write(paramArrayOfByte, 0, i);
+    }
+  }
+  
+  private AudioTrack k()
+  {
+    Object localObject = null;
+    for (;;)
+    {
+      try
+      {
+        if (this.a.b.g != 1) {
+          break label113;
+        }
+        i = 4;
+        if (this.a.b.d != 16) {
+          break label119;
+        }
+        j = 2;
+        int k = AudioTrack.getMinBufferSize(this.a.b.f, i, j);
+        ReportAudioTrack localReportAudioTrack = new ReportAudioTrack(3, this.a.b.f, i, j, k, 1);
+        try
+        {
+          localReportAudioTrack.play();
+          return localReportAudioTrack;
+        }
+        catch (Throwable localThrowable1)
+        {
+          localObject = localReportAudioTrack;
+        }
+        SLog.c("Q.qqstory.mediadecoderMediaCodecAudioRender", "AudioTrack init fail :%s", localThrowable2);
+      }
+      catch (Throwable localThrowable2) {}
+      return localObject;
+      label113:
+      int i = 12;
+      continue;
+      label119:
+      int j = 3;
     }
   }
   
   public long a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidMediaAudioTrack.flush();
+    this.p.flush();
     return super.a(paramLong);
   }
   
   protected String a()
   {
     return "Q.qqstory.mediadecoderMediaCodecAudioRender";
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidMediaAudioTrack.play();
   }
   
   protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
@@ -152,11 +146,11 @@ public class MediaCodecAudioRender
           if ((paramBufferInfo.flags & 0x4) != 0)
           {
             SLog.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "output EOS");
-            this.jdField_b_of_type_Boolean = true;
+            this.h = true;
           }
           try
           {
-            Object localObject = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
+            Object localObject = this.e[i];
             if (localObject == null)
             {
               SLog.e("Q.qqstory.mediadecoderMediaCodecAudioRender", "find no data");
@@ -173,7 +167,7 @@ public class MediaCodecAudioRender
             localObject = Message.obtain();
             ((Message)localObject).what = 1;
             ((Message)localObject).obj = new Pair(paramBufferInfo, Integer.valueOf(j));
-            this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecAudioRender$AudioDecodeHandler.sendMessage((Message)localObject);
+            this.r.sendMessage((Message)localObject);
             paramMediaCodec.releaseOutputBuffer(i, false);
             return;
           }
@@ -193,15 +187,15 @@ public class MediaCodecAudioRender
       return;
     }
     SLog.b("Q.qqstory.mediadecoderMediaCodecAudioRender", "INFO_OUTPUT_BUFFERS_CHANGED");
-    this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
+    this.e = paramMediaCodec.getOutputBuffers();
   }
   
   protected void a(MediaCodecRender.MediaCodecInfo paramMediaCodecInfo, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.e = paramMediaFormat.getInteger("channel-count");
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.d = AudioSampleRateExtract.a(paramMediaFormat);
+      this.a.b.g = paramMediaFormat.getInteger("channel-count");
+      this.a.b.f = AudioSampleRateExtract.a(paramMediaFormat);
     }
     catch (Throwable paramMediaCodecInfo)
     {
@@ -209,41 +203,47 @@ public class MediaCodecAudioRender
     }
     paramMediaCodecInfo = new StringBuilder();
     paramMediaCodecInfo.append("config after b=");
-    paramMediaCodecInfo.append(this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.c);
+    paramMediaCodecInfo.append(this.a.b.e);
     paramMediaCodecInfo.append(" c=");
-    paramMediaCodecInfo.append(this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.e);
+    paramMediaCodecInfo.append(this.a.b.g);
     paramMediaCodecInfo.append(" sc=");
-    paramMediaCodecInfo.append(this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.d);
+    paramMediaCodecInfo.append(this.a.b.f);
     SLog.b("Q.qqstory.mediadecoderMediaCodecAudioRender", paramMediaCodecInfo.toString());
     paramMediaCodec.configure(paramMediaFormat, null, null, 0);
-    this.jdField_a_of_type_AndroidMediaAudioTrack = a();
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("mc_audio_thread");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecAudioRender$AudioDecodeHandler = new MediaCodecAudioRender.AudioDecodeHandler(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.p = k();
+    this.q = new HandlerThread("mc_audio_thread");
+    this.q.start();
+    this.r = new MediaCodecAudioRender.AudioDecodeHandler(this, this.q.getLooper());
   }
   
   public void b()
   {
     super.b();
-    Object localObject = this.jdField_a_of_type_AndroidMediaAudioTrack;
+    this.p.play();
+  }
+  
+  public void c()
+  {
+    super.c();
+    Object localObject = this.p;
     if (localObject != null)
     {
       ((AudioTrack)localObject).stop();
-      this.jdField_a_of_type_AndroidMediaAudioTrack.release();
-      this.jdField_a_of_type_AndroidMediaAudioTrack = null;
+      this.p.release();
+      this.p = null;
     }
-    localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    localObject = this.q;
     if (localObject != null)
     {
       ((HandlerThread)localObject).getLooper().quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaCodecAudioRender$AudioDecodeHandler = null;
+      this.q = null;
+      this.r = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.video.videodecoder.MediaCodecAudioRender
  * JD-Core Version:    0.7.0.1
  */

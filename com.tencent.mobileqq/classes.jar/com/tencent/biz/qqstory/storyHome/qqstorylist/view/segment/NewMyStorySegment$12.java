@@ -17,33 +17,33 @@ class NewMyStorySegment$12
   {
     if (paramView == paramBaseViewHolder.a())
     {
-      paramObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment;
-      NewMyStorySegment.a(paramObject, paramInt, (StoryVideoItem)NewMyStorySegment.a(paramObject).a().get(paramInt), paramView);
+      paramObject = this.b;
+      NewMyStorySegment.a(paramObject, paramInt, (StoryVideoItem)NewMyStorySegment.b(paramObject).b().get(paramInt), paramView);
       return;
     }
-    if (paramView == paramBaseViewHolder.a(2131374567))
+    if (paramView == paramBaseViewHolder.a(2131442737))
     {
-      paramView = (StoryCoverView)paramBaseViewHolder.a(2131374566);
-      if (this.jdField_a_of_type_Boolean)
+      paramView = (StoryCoverView)paramBaseViewHolder.a(2131442736);
+      if (this.a)
       {
-        paramObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment;
-        NewMyStorySegment.a(paramObject, paramInt, (StoryVideoItem)NewMyStorySegment.a(paramObject).a().get(paramInt), paramView);
+        paramObject = this.b;
+        NewMyStorySegment.a(paramObject, paramInt, (StoryVideoItem)NewMyStorySegment.b(paramObject).b().get(paramInt), paramView);
         return;
       }
-      paramObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment;
-      NewMyStorySegment.b(paramObject, paramInt, (StoryVideoItem)NewMyStorySegment.a(paramObject).a().get(paramInt), paramView);
+      paramObject = this.b;
+      NewMyStorySegment.b(paramObject, paramInt, (StoryVideoItem)NewMyStorySegment.b(paramObject).b().get(paramInt), paramView);
       return;
     }
-    if ((paramView != paramBaseViewHolder.a(2131374611)) && (paramView != paramBaseViewHolder.a(2131374569)))
+    if ((paramView != paramBaseViewHolder.a(2131442781)) && (paramView != paramBaseViewHolder.a(2131442739)))
     {
-      if (paramView == paramBaseViewHolder.a(2131374607)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment.a(paramBaseViewHolder, paramInt);
+      if (paramView == paramBaseViewHolder.a(2131442777)) {
+        this.b.a(paramBaseViewHolder, paramInt);
       }
     }
     else
     {
-      paramView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment;
-      NewMyStorySegment.a(paramView, paramInt, (StoryVideoItem)NewMyStorySegment.a(paramView).a().get(paramInt));
+      paramView = this.b;
+      NewMyStorySegment.a(paramView, paramInt, (StoryVideoItem)NewMyStorySegment.b(paramView).b().get(paramInt));
     }
   }
 }

@@ -50,24 +50,24 @@ public class CacheManager
     initData();
   }
   
-  private Map<String, ExpEntity> getExpEntityMapFromDisk()
+  private ConcurrentHashMap<String, ExpEntity> getExpEntityMapFromDisk()
   {
-    Object localObject = new ConcurrentHashMap();
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
     String str = this.mMMKVTabTest.a("exp_data");
     if (!TextUtils.isEmpty(str)) {
-      localObject = (Map)new Gson().fromJson(str, new CacheManager.2(this).getType());
+      localConcurrentHashMap = (ConcurrentHashMap)new Gson().fromJson(str, new CacheManager.2(this).getType());
     }
-    return localObject;
+    return localConcurrentHashMap;
   }
   
   private ExpStrategyEntity getExpReportStrategyFromDisk()
   {
     ExpStrategyEntity localExpStrategyEntity = new ExpStrategyEntity();
     boolean bool = this.mMMKVTabTest.b("enableReport", false);
-    Object localObject = this.mMMKVTabTest.a("id", "");
-    String str = this.mMMKVTabTest.a("token", "");
-    int i = this.mMMKVTabTest.a("refreshDuration", 30);
-    long l = this.mMMKVTabTest.a("updateTime", 0L);
+    Object localObject = this.mMMKVTabTest.b("id", "");
+    String str = this.mMMKVTabTest.b("token", "");
+    int i = this.mMMKVTabTest.c("refreshDuration", 30);
+    long l = this.mMMKVTabTest.b("updateTime", 0L);
     localExpStrategyEntity.setEnableReport(bool);
     localExpStrategyEntity.setReportId((String)localObject);
     localExpStrategyEntity.setReportToken(str);
@@ -98,11 +98,11 @@ public class CacheManager
   {
     FeatureStrategyEntity localFeatureStrategyEntity = new FeatureStrategyEntity();
     boolean bool = this.mMMKVFeature.b("enableReport", false);
-    int i = this.mMMKVFeature.a("sdkReportRate", 0);
-    Object localObject = this.mMMKVFeature.a("reportType", "atta");
-    String str1 = this.mMMKVFeature.a("reportId", "");
-    String str2 = this.mMMKVFeature.a("reportToken", "");
-    long l = this.mMMKVFeature.a("reportLastFetchTime", 0L);
+    int i = this.mMMKVFeature.c("sdkReportRate", 0);
+    Object localObject = this.mMMKVFeature.b("reportType", "atta");
+    String str1 = this.mMMKVFeature.b("reportId", "");
+    String str2 = this.mMMKVFeature.b("reportToken", "");
+    long l = this.mMMKVFeature.b("reportLastFetchTime", 0L);
     localFeatureStrategyEntity.setEnableReport(bool);
     localFeatureStrategyEntity.setReportInter(i);
     localFeatureStrategyEntity.setReportType((String)localObject);
@@ -132,7 +132,7 @@ public class CacheManager
   
   private long getRemoteConfigFetchTimeFromDisk()
   {
-    return this.mMMKVRemoteConfig.a("config_last_update_time", 0L);
+    return this.mMMKVRemoteConfig.b("config_last_update_time", 0L);
   }
   
   private Map<String, ConfigValue> getRemoteConfigMapFromDisk()
@@ -151,7 +151,7 @@ public class CacheManager
   
   private String getRemoteConfigVersionFromDisk()
   {
-    return this.mMMKVRemoteConfig.a("config_last_update_version", "");
+    return this.mMMKVRemoteConfig.b("config_last_update_version", "");
   }
   
   private void initData()
@@ -194,7 +194,7 @@ public class CacheManager
     this.mMMKVTabTest.a("enableReport", paramExpStrategyEntity.isEnableReport());
     this.mMMKVTabTest.a("id", paramExpStrategyEntity.getReportId());
     this.mMMKVTabTest.a("token", paramExpStrategyEntity.getReportToken());
-    this.mMMKVTabTest.a("refreshDuration", paramExpStrategyEntity.getRefreshDuration());
+    this.mMMKVTabTest.b("refreshDuration", paramExpStrategyEntity.getRefreshDuration());
     this.mMMKVTabTest.a("updateTime", paramExpStrategyEntity.getLastFetchDataTime());
   }
   
@@ -207,7 +207,7 @@ public class CacheManager
   private void saveFeatureReportStrategyToDisk(FeatureStrategyEntity paramFeatureStrategyEntity)
   {
     this.mMMKVFeature.a("enableReport", paramFeatureStrategyEntity.isEnableReport());
-    this.mMMKVFeature.a("sdkReportRate", paramFeatureStrategyEntity.getReportInter());
+    this.mMMKVFeature.b("sdkReportRate", paramFeatureStrategyEntity.getReportInter());
     this.mMMKVFeature.a("reportType", paramFeatureStrategyEntity.getReportType());
     this.mMMKVFeature.a("reportId", paramFeatureStrategyEntity.getReportId());
     this.mMMKVFeature.a("reportToken", paramFeatureStrategyEntity.getReportToken());
@@ -233,14 +233,14 @@ public class CacheManager
   public List<ExpEntity> getCacheAllExpData()
   {
     ArrayList localArrayList2 = new ArrayList();
-    Map localMap = getExpEntityMap();
+    ConcurrentHashMap localConcurrentHashMap = getExpEntityMap();
     ArrayList localArrayList1 = localArrayList2;
-    if (localMap != null)
+    if (localConcurrentHashMap != null)
     {
-      if (localMap.isEmpty()) {
+      if (localConcurrentHashMap.isEmpty()) {
         return localArrayList2;
       }
-      localArrayList1 = new ArrayList(localMap.values());
+      localArrayList1 = new ArrayList(localConcurrentHashMap.values());
     }
     return localArrayList1;
   }
@@ -251,10 +251,10 @@ public class CacheManager
     Object localObject = getExpEntityMap();
     if (localObject != null)
     {
-      if (((Map)localObject).isEmpty()) {
+      if (((ConcurrentHashMap)localObject).isEmpty()) {
         return localExpEntity1;
       }
-      localObject = ((Map)localObject).entrySet().iterator();
+      localObject = ((ConcurrentHashMap)localObject).entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         ExpEntity localExpEntity2 = (ExpEntity)((Map.Entry)((Iterator)localObject).next()).getValue();
@@ -269,16 +269,16 @@ public class CacheManager
   public DeviceEntity getCommonDeviceEntity()
   {
     DeviceEntity localDeviceEntity = new DeviceEntity();
-    String str1 = this.mMMKVTabCommon.a("ENV", "RELEASE");
-    String str2 = this.mMMKVTabCommon.a("guid", "");
-    String str3 = this.mMMKVTabCommon.a("language", SystemUtil.getSystemLanguage());
-    String str4 = this.mMMKVTabCommon.a("os_version", SystemUtil.getSystemVersion());
-    String str5 = this.mMMKVTabCommon.a("device_brand", SystemUtil.getDeviceBrand());
-    String str6 = this.mMMKVTabCommon.a("device_version", SystemUtil.getSystemModel());
-    String str7 = this.mMMKVTabCommon.a("device_width", String.valueOf(SystemUtil.getWidth(this.mContext)));
-    String str8 = this.mMMKVTabCommon.a("device_height", String.valueOf(SystemUtil.getHeight(this.mContext)));
-    String str9 = this.mMMKVTabCommon.a("bundle_package_name", String.valueOf(SystemUtil.getAppInfo(this.mContext)));
-    String str10 = this.mMMKVTabCommon.a("bundle_version", String.valueOf(SystemUtil.getVersionName(this.mContext)));
+    String str1 = this.mMMKVTabCommon.b("ENV", "RELEASE");
+    String str2 = this.mMMKVTabCommon.b("guid", "");
+    String str3 = this.mMMKVTabCommon.b("language", SystemUtil.getSystemLanguage());
+    String str4 = this.mMMKVTabCommon.b("os_version", SystemUtil.getSystemVersion());
+    String str5 = this.mMMKVTabCommon.b("device_brand", SystemUtil.getDeviceBrand());
+    String str6 = this.mMMKVTabCommon.b("device_version", SystemUtil.getSystemModel());
+    String str7 = this.mMMKVTabCommon.b("device_width", String.valueOf(SystemUtil.getWidth(this.mContext)));
+    String str8 = this.mMMKVTabCommon.b("device_height", String.valueOf(SystemUtil.getHeight(this.mContext)));
+    String str9 = this.mMMKVTabCommon.b("bundle_package_name", String.valueOf(SystemUtil.getAppInfo(this.mContext)));
+    String str10 = this.mMMKVTabCommon.b("bundle_version", String.valueOf(SystemUtil.getVersionName(this.mContext)));
     localDeviceEntity.setEnv(str1);
     localDeviceEntity.setGuid(str2);
     localDeviceEntity.setLanguage(str3);
@@ -293,22 +293,22 @@ public class CacheManager
     return localDeviceEntity;
   }
   
-  public Map<String, ExpEntity> getExpEntityMap()
+  public ConcurrentHashMap<String, ExpEntity> getExpEntityMap()
   {
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.mMemoryCache.get("exp_data");
-    Object localObject = localConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.mMemoryCache.get("exp_data");
+    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
     if (this.mIsDiskCache) {
-      if (localConcurrentHashMap != null)
+      if (localConcurrentHashMap2 != null)
       {
-        localObject = localConcurrentHashMap;
-        if (!localConcurrentHashMap.isEmpty()) {}
+        localConcurrentHashMap1 = localConcurrentHashMap2;
+        if (!localConcurrentHashMap2.isEmpty()) {}
       }
       else
       {
-        localObject = getExpEntityMapFromDisk();
+        localConcurrentHashMap1 = getExpEntityMapFromDisk();
       }
     }
-    return localObject;
+    return localConcurrentHashMap1;
   }
   
   public ExpStrategyEntity getExpReportStrategy()
@@ -461,13 +461,13 @@ public class CacheManager
               ABTestLog.warn("mmkvName data not match format", new Object[0]);
               return "";
             }
-            return this.mMMKVRemoteConfig.a(paramString2, paramString3);
+            return this.mMMKVRemoteConfig.b(paramString2, paramString3);
           }
-          return this.mMMKVFeature.a(paramString2, paramString3);
+          return this.mMMKVFeature.b(paramString2, paramString3);
         }
-        return this.mMMKVTabTest.a(paramString2, paramString3);
+        return this.mMMKVTabTest.b(paramString2, paramString3);
       }
-      return this.mMMKVTabCommon.a(paramString2, paramString3);
+      return this.mMMKVTabCommon.b(paramString2, paramString3);
     }
     return "";
   }
@@ -632,7 +632,7 @@ public class CacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.manager.CacheManager
  * JD-Core Version:    0.7.0.1
  */

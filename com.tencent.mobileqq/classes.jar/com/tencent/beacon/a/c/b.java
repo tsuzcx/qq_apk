@@ -88,7 +88,7 @@ public class b
       if (paramString.trim().length() <= 0) {
         return false;
       }
-      if (!com.tencent.beacon.e.b.a().k())
+      if (!com.tencent.beacon.e.b.a().l())
       {
         com.tencent.beacon.base.util.c.a("[DeviceInfo] current collect Process Info be refused! isCollect Process Info: %s", new Object[] { Boolean.valueOf(false) });
         return true;
@@ -126,7 +126,7 @@ public class b
     if (b == 0) {
       b = Process.myPid();
     }
-    if (!com.tencent.beacon.e.b.a().k())
+    if (!com.tencent.beacon.e.b.a().l())
     {
       com.tencent.beacon.base.util.c.a("[DeviceInfo] current collect Process Info be refused! isCollect Process Info: %s", new Object[] { Boolean.valueOf(false) });
       return -2;

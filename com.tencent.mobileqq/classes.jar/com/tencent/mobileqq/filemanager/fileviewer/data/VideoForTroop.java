@@ -17,67 +17,62 @@ public class VideoForTroop
   implements BaseVideoBiz
 {
   protected QQAppInterface a;
-  private TroopFileStatusInfo jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo;
-  private UUID jdField_a_of_type_JavaUtilUUID;
+  private TroopFileStatusInfo b;
+  private UUID c;
   
   public VideoForTroop(QQAppInterface paramQQAppInterface, TroopFileStatusInfo paramTroopFileStatusInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo = paramTroopFileStatusInfo;
-    this.jdField_a_of_type_JavaUtilUUID = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID;
-    if (this.jdField_a_of_type_JavaUtilUUID != null)
+    this.b = paramTroopFileStatusInfo;
+    this.c = this.b.a;
+    if (this.c != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      this.a = paramQQAppInterface;
       return;
     }
     throw new NullPointerException("TroopFileStatusInfo Id null");
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.c;
-  }
-  
   public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e;
+    return this.b.r;
   }
   
   public void a(long paramLong)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.b.d);
     if (localTroopFileTransferManager == null)
     {
       QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
       return;
     }
-    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.i(this.b.a);
     if (localItem != null)
     {
       localItem.ProgressValue = paramLong;
-      localTroopFileTransferManager.a(localItem, 8);
+      localTroopFileTransferManager.b(localItem, 8);
     }
   }
   
   public void a(FileVideoDownloadManager.FileVideoManagerCallback paramFileVideoManagerCallback)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.b.d);
     if (localTroopFileTransferManager == null)
     {
       QLog.e("VideoForTroop<QFile>", 1, "getUrl: get troopFileTransferManager failed.");
       return;
     }
-    localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.c, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.h, new VideoForTroop.1(this, paramFileVideoManagerCallback));
+    localTroopFileTransferManager.a(this.b.r, this.b.t, this.b.i, this.b.u, new VideoForTroop.1(this, paramFileVideoManagerCallback));
   }
   
   public void a(String paramString)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.b.d);
     if (localTroopFileTransferManager == null)
     {
       QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed: get troopFileTransferManager failed.");
       return;
     }
-    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.i(this.b.a);
     if (localItem != null)
     {
       boolean bool = TroopFileInfo.FileStatus.b(localItem.Status);
@@ -89,14 +84,14 @@ public class VideoForTroop
         localStringBuilder.append("]");
         QLog.e("VideoForTroop<QFile>", 1, localStringBuilder.toString());
       }
-      if ((!bool) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Int != 7))
+      if ((!bool) && (this.b.e != 7))
       {
-        localTroopFileTransferManager.a(localItem, 6);
+        localTroopFileTransferManager.b(localItem, 6);
       }
       else
       {
         localItem.LocalFile = paramString;
-        localTroopFileTransferManager.a(localItem, 11);
+        localTroopFileTransferManager.b(localItem, 11);
       }
     }
     FileVideoDownloadManager.a(this);
@@ -104,18 +99,18 @@ public class VideoForTroop
   
   public void a(boolean paramBoolean)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.b.d);
     if (localTroopFileTransferManager == null)
     {
       QLog.e("VideoForTroop<QFile>", 1, "notifyFileFailed: get troopFileTransferManager failed.");
       return;
     }
-    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.i(this.b.a);
     if (localItem != null)
     {
       if (paramBoolean)
       {
-        localTroopFileTransferManager.a(localItem, 12);
+        localTroopFileTransferManager.b(localItem, 12);
         return;
       }
       if (QLog.isColorLevel())
@@ -128,31 +123,36 @@ public class VideoForTroop
         localStringBuilder.append("]");
         QLog.e("VideoForTroop<QFile>", 1, localStringBuilder.toString());
       }
-      if ((!TroopFileInfo.FileStatus.b(localItem.Status)) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Int != 7)) {
-        localTroopFileTransferManager.a(localItem, 3);
+      if ((!TroopFileInfo.FileStatus.b(localItem.Status)) && (this.b.e != 7)) {
+        localTroopFileTransferManager.b(localItem, 3);
       } else {
-        localTroopFileTransferManager.a(localItem, 10);
+        localTroopFileTransferManager.b(localItem, 10);
       }
     }
     FileVideoDownloadManager.a(this);
   }
   
-  public String b()
+  public long b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(FMSettings.a().getDefaultTmpPath());
-    localStringBuilder.append(MD5.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e));
-    return localStringBuilder.toString();
+    return this.b.i;
   }
   
   public String c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FMSettings.a().getDefaultTmpPath());
+    localStringBuilder.append(MD5.b(this.b.r));
+    return localStringBuilder.toString();
+  }
+  
+  public String d()
+  {
+    return this.b.t;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForTroop
  * JD-Core Version:    0.7.0.1
  */

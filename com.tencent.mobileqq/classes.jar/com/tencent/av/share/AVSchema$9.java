@@ -10,45 +10,45 @@ class AVSchema$9
   
   public void a()
   {
-    String str = AVSchema.a();
+    String str = AVSchema.e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("joinVideoChat.onCancel, isDetached[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached());
+    localStringBuilder.append(this.b.isDetached());
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
+    this.b.d();
   }
   
   public void b()
   {
-    String str = AVSchema.a();
+    String str = AVSchema.e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("joinVideoChat.onBeforeStartActivity, isDetached[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached());
+    localStringBuilder.append(this.b.isDetached());
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
   }
   
   public void c()
   {
-    String str = AVSchema.a();
+    String str = AVSchema.e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("joinVideoChat.onAfterStartActivity, isDetached[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached());
+    localStringBuilder.append(this.b.isDetached());
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
+    this.b.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.9
  * JD-Core Version:    0.7.0.1
  */

@@ -8,42 +8,42 @@ import mqq.observer.AccountObserver;
 public class OldBigDataChannelManager
   implements Manager
 {
-  private int jdField_a_of_type_Int = 0;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new OldBigDataChannelManager.1(this);
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = null;
+  private AppInterface a;
   private byte[] b = null;
+  private byte[] c = null;
+  private String[] d = null;
+  private int e = 0;
+  private AccountObserver f = new OldBigDataChannelManager.1(this);
   
   public OldBigDataChannelManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-    c();
+    this.a = paramAppInterface;
+    this.a.registObserver(this.f);
+    f();
   }
   
   /* Error */
-  private void b()
+  private void e()
   {
     // Byte code:
-    //   0: new 52	java/io/ByteArrayOutputStream
+    //   0: new 55	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 53	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 56	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore_3
-    //   8: new 55	java/io/ObjectOutputStream
+    //   8: new 58	java/io/ObjectOutputStream
     //   11: dup
     //   12: aload_3
-    //   13: invokespecial 58	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   13: invokespecial 61	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   16: astore_1
     //   17: aload_1
     //   18: astore_2
     //   19: aload_0
-    //   20: getfield 20	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfByte	[B
+    //   20: getfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
     //   23: ifnull +40 -> 63
     //   26: aload_1
     //   27: astore_2
     //   28: aload_0
-    //   29: getfield 20	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfByte	[B
+    //   29: getfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
     //   32: arraylength
     //   33: ifne +6 -> 39
     //   36: goto +27 -> 63
@@ -51,30 +51,30 @@ public class OldBigDataChannelManager
     //   40: astore_2
     //   41: aload_1
     //   42: aload_0
-    //   43: getfield 20	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfByte	[B
+    //   43: getfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
     //   46: arraylength
-    //   47: invokevirtual 62	java/io/ObjectOutputStream:writeInt	(I)V
+    //   47: invokevirtual 65	java/io/ObjectOutputStream:writeInt	(I)V
     //   50: aload_1
     //   51: astore_2
     //   52: aload_1
     //   53: aload_0
-    //   54: getfield 20	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfByte	[B
-    //   57: invokevirtual 66	java/io/ObjectOutputStream:write	([B)V
+    //   54: getfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
+    //   57: invokevirtual 69	java/io/ObjectOutputStream:write	([B)V
     //   60: goto +10 -> 70
     //   63: aload_1
     //   64: astore_2
     //   65: aload_1
     //   66: iconst_0
-    //   67: invokevirtual 62	java/io/ObjectOutputStream:writeInt	(I)V
+    //   67: invokevirtual 65	java/io/ObjectOutputStream:writeInt	(I)V
     //   70: aload_1
     //   71: astore_2
     //   72: aload_0
-    //   73: getfield 22	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
+    //   73: getfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:c	[B
     //   76: ifnull +40 -> 116
     //   79: aload_1
     //   80: astore_2
     //   81: aload_0
-    //   82: getfield 22	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
+    //   82: getfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:c	[B
     //   85: arraylength
     //   86: ifne +6 -> 92
     //   89: goto +27 -> 116
@@ -82,80 +82,80 @@ public class OldBigDataChannelManager
     //   93: astore_2
     //   94: aload_1
     //   95: aload_0
-    //   96: getfield 22	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
+    //   96: getfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:c	[B
     //   99: arraylength
-    //   100: invokevirtual 62	java/io/ObjectOutputStream:writeInt	(I)V
+    //   100: invokevirtual 65	java/io/ObjectOutputStream:writeInt	(I)V
     //   103: aload_1
     //   104: astore_2
     //   105: aload_1
     //   106: aload_0
-    //   107: getfield 22	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
-    //   110: invokevirtual 66	java/io/ObjectOutputStream:write	([B)V
+    //   107: getfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:c	[B
+    //   110: invokevirtual 69	java/io/ObjectOutputStream:write	([B)V
     //   113: goto +10 -> 123
     //   116: aload_1
     //   117: astore_2
     //   118: aload_1
     //   119: iconst_0
-    //   120: invokevirtual 62	java/io/ObjectOutputStream:writeInt	(I)V
+    //   120: invokevirtual 65	java/io/ObjectOutputStream:writeInt	(I)V
     //   123: aload_1
     //   124: astore_2
     //   125: aload_1
     //   126: aload_0
-    //   127: getfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_Int	I
-    //   130: invokevirtual 62	java/io/ObjectOutputStream:writeInt	(I)V
+    //   127: getfield 30	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:e	I
+    //   130: invokevirtual 65	java/io/ObjectOutputStream:writeInt	(I)V
     //   133: aload_1
     //   134: astore_2
     //   135: aload_1
     //   136: aload_0
-    //   137: getfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   140: invokevirtual 70	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   137: getfield 28	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:d	[Ljava/lang/String;
+    //   140: invokevirtual 73	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   143: aload_1
     //   144: astore_2
     //   145: aload_1
-    //   146: invokevirtual 73	java/io/ObjectOutputStream:flush	()V
+    //   146: invokevirtual 76	java/io/ObjectOutputStream:flush	()V
     //   149: aload_1
     //   150: astore_2
     //   151: aload_0
-    //   152: getfield 35	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   155: invokevirtual 77	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   158: invokevirtual 83	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   152: getfield 39	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:a	Lcom/tencent/common/app/AppInterface;
+    //   155: invokevirtual 80	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   158: invokevirtual 86	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
     //   161: astore 4
     //   163: aload_1
     //   164: astore_2
-    //   165: new 85	java/lang/StringBuilder
+    //   165: new 88	java/lang/StringBuilder
     //   168: dup
-    //   169: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   169: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   172: astore 5
     //   174: aload_1
     //   175: astore_2
     //   176: aload 5
     //   178: aload_0
-    //   179: getfield 35	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   182: invokevirtual 90	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   185: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: getfield 39	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:a	Lcom/tencent/common/app/AppInterface;
+    //   182: invokevirtual 93	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   185: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   188: pop
     //   189: aload_1
     //   190: astore_2
     //   191: aload 5
-    //   193: ldc 96
-    //   195: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: ldc 99
+    //   195: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   198: pop
     //   199: aload_1
     //   200: astore_2
-    //   201: new 98	java/io/File
+    //   201: new 101	java/io/File
     //   204: dup
     //   205: aload 4
     //   207: aload 5
-    //   209: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   212: invokespecial 104	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   215: invokevirtual 107	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   209: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   212: invokespecial 107	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   215: invokevirtual 110	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   218: aload_3
-    //   219: invokevirtual 111	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   219: invokevirtual 114	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   222: iconst_0
-    //   223: invokestatic 117	com/tencent/mobileqq/utils/FileUtils:pushData2File	(Ljava/lang/String;[BZ)Z
+    //   223: invokestatic 120	com/tencent/mobileqq/utils/FileUtils:pushData2File	(Ljava/lang/String;[BZ)Z
     //   226: pop
     //   227: aload_1
-    //   228: invokevirtual 120	java/io/ObjectOutputStream:close	()V
+    //   228: invokevirtual 123	java/io/ObjectOutputStream:close	()V
     //   231: return
     //   232: astore_3
     //   233: goto +12 -> 245
@@ -168,34 +168,34 @@ public class OldBigDataChannelManager
     //   244: astore_1
     //   245: aload_1
     //   246: astore_2
-    //   247: invokestatic 126	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   247: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   250: ifeq +49 -> 299
     //   253: aload_1
     //   254: astore_2
-    //   255: new 85	java/lang/StringBuilder
+    //   255: new 88	java/lang/StringBuilder
     //   258: dup
-    //   259: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   259: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   262: astore 4
     //   264: aload_1
     //   265: astore_2
     //   266: aload 4
-    //   268: ldc 128
-    //   270: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: ldc 131
+    //   270: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   273: pop
     //   274: aload_1
     //   275: astore_2
     //   276: aload 4
     //   278: aload_3
-    //   279: invokevirtual 131	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   282: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   279: invokevirtual 134	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   282: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   285: pop
     //   286: aload_1
     //   287: astore_2
-    //   288: ldc 133
+    //   288: ldc 136
     //   290: iconst_2
     //   291: aload 4
-    //   293: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   296: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   293: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   296: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   299: aload_1
     //   300: ifnull +6 -> 306
     //   303: goto -76 -> 227
@@ -204,7 +204,7 @@ public class OldBigDataChannelManager
     //   308: aload_2
     //   309: ifnull +7 -> 316
     //   312: aload_2
-    //   313: invokevirtual 120	java/io/ObjectOutputStream:close	()V
+    //   313: invokevirtual 123	java/io/ObjectOutputStream:close	()V
     //   316: goto +5 -> 321
     //   319: aload_1
     //   320: athrow
@@ -278,59 +278,59 @@ public class OldBigDataChannelManager
   }
   
   /* Error */
-  private void c()
+  private void f()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_0
-    //   3: getfield 35	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   6: invokevirtual 77	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   9: invokevirtual 83	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   3: getfield 39	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:a	Lcom/tencent/common/app/AppInterface;
+    //   6: invokevirtual 80	com/tencent/common/app/AppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   9: invokevirtual 86	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
     //   12: astore_2
-    //   13: new 85	java/lang/StringBuilder
+    //   13: new 88	java/lang/StringBuilder
     //   16: dup
-    //   17: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   17: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   20: astore 4
     //   22: aload 4
     //   24: aload_0
-    //   25: getfield 35	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   28: invokevirtual 90	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   31: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: getfield 39	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:a	Lcom/tencent/common/app/AppInterface;
+    //   28: invokevirtual 93	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   31: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: pop
     //   35: aload 4
-    //   37: ldc 96
-    //   39: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: ldc 99
+    //   39: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: pop
-    //   43: new 98	java/io/File
+    //   43: new 101	java/io/File
     //   46: dup
     //   47: aload_2
     //   48: aload 4
-    //   50: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokespecial 104	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   50: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: invokespecial 107	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   56: astore_2
     //   57: aload_2
-    //   58: invokevirtual 141	java/io/File:exists	()Z
+    //   58: invokevirtual 144	java/io/File:exists	()Z
     //   61: ifeq +318 -> 379
     //   64: aload_2
-    //   65: invokestatic 145	com/tencent/mobileqq/utils/FileUtils:fileToBytes	(Ljava/io/File;)[B
+    //   65: invokestatic 148	com/tencent/mobileqq/utils/FileUtils:fileToBytes	(Ljava/io/File;)[B
     //   68: astore 6
-    //   70: new 147	java/io/ByteArrayInputStream
+    //   70: new 150	java/io/ByteArrayInputStream
     //   73: dup
     //   74: aload 6
-    //   76: invokespecial 149	java/io/ByteArrayInputStream:<init>	([B)V
+    //   76: invokespecial 152	java/io/ByteArrayInputStream:<init>	([B)V
     //   79: astore_2
-    //   80: new 151	java/io/ObjectInputStream
+    //   80: new 154	java/io/ObjectInputStream
     //   83: dup
     //   84: aload_2
-    //   85: invokespecial 154	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   85: invokespecial 157	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   88: astore_3
     //   89: aload_2
     //   90: astore 4
     //   92: aload_3
     //   93: astore 5
     //   95: aload_3
-    //   96: invokevirtual 158	java/io/ObjectInputStream:readInt	()I
+    //   96: invokevirtual 161	java/io/ObjectInputStream:readInt	()I
     //   99: istore_1
     //   100: aload_2
     //   101: astore 4
@@ -349,22 +349,22 @@ public class OldBigDataChannelManager
     //   123: aload_0
     //   124: iload_1
     //   125: newarray byte
-    //   127: putfield 20	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfByte	[B
+    //   127: putfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
     //   130: aload_2
     //   131: astore 4
     //   133: aload_3
     //   134: astore 5
     //   136: aload_3
     //   137: aload_0
-    //   138: getfield 20	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfByte	[B
-    //   141: invokevirtual 162	java/io/ObjectInputStream:read	([B)I
+    //   138: getfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
+    //   141: invokevirtual 165	java/io/ObjectInputStream:read	([B)I
     //   144: pop
     //   145: aload_2
     //   146: astore 4
     //   148: aload_3
     //   149: astore 5
     //   151: aload_3
-    //   152: invokevirtual 158	java/io/ObjectInputStream:readInt	()I
+    //   152: invokevirtual 161	java/io/ObjectInputStream:readInt	()I
     //   155: istore_1
     //   156: aload_2
     //   157: astore 4
@@ -383,15 +383,15 @@ public class OldBigDataChannelManager
     //   179: aload_0
     //   180: iload_1
     //   181: newarray byte
-    //   183: putfield 22	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
+    //   183: putfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:c	[B
     //   186: aload_2
     //   187: astore 4
     //   189: aload_3
     //   190: astore 5
     //   192: aload_3
     //   193: aload_0
-    //   194: getfield 22	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
-    //   197: invokevirtual 162	java/io/ObjectInputStream:read	([B)I
+    //   194: getfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:c	[B
+    //   197: invokevirtual 165	java/io/ObjectInputStream:read	([B)I
     //   200: pop
     //   201: aload_2
     //   202: astore 4
@@ -399,34 +399,34 @@ public class OldBigDataChannelManager
     //   205: astore 5
     //   207: aload_0
     //   208: aload_3
-    //   209: invokevirtual 158	java/io/ObjectInputStream:readInt	()I
-    //   212: putfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_Int	I
+    //   209: invokevirtual 161	java/io/ObjectInputStream:readInt	()I
+    //   212: putfield 30	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:e	I
     //   215: aload_2
     //   216: astore 4
     //   218: aload_3
     //   219: astore 5
     //   221: aload_0
     //   222: aload_3
-    //   223: invokevirtual 166	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   226: checkcast 167	[Ljava/lang/String;
-    //   229: checkcast 167	[Ljava/lang/String;
-    //   232: putfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   223: invokevirtual 169	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   226: checkcast 170	[Ljava/lang/String;
+    //   229: checkcast 170	[Ljava/lang/String;
+    //   232: putfield 28	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:d	[Ljava/lang/String;
     //   235: goto +146 -> 381
     //   238: aload_2
     //   239: astore 4
     //   241: aload_3
     //   242: astore 5
-    //   244: new 85	java/lang/StringBuilder
+    //   244: new 88	java/lang/StringBuilder
     //   247: dup
-    //   248: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   248: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   251: astore 6
     //   253: aload_2
     //   254: astore 4
     //   256: aload_3
     //   257: astore 5
     //   259: aload 6
-    //   261: ldc 169
-    //   263: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: ldc 172
+    //   263: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   266: pop
     //   267: aload_2
     //   268: astore 4
@@ -434,33 +434,33 @@ public class OldBigDataChannelManager
     //   271: astore 5
     //   273: aload 6
     //   275: iload_1
-    //   276: invokevirtual 172	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   276: invokevirtual 175	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   279: pop
     //   280: aload_2
     //   281: astore 4
     //   283: aload_3
     //   284: astore 5
-    //   286: new 174	java/lang/RuntimeException
+    //   286: new 177	java/lang/RuntimeException
     //   289: dup
     //   290: aload 6
-    //   292: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   295: invokespecial 177	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   292: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   295: invokespecial 180	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   298: athrow
     //   299: aload_2
     //   300: astore 4
     //   302: aload_3
     //   303: astore 5
-    //   305: new 85	java/lang/StringBuilder
+    //   305: new 88	java/lang/StringBuilder
     //   308: dup
-    //   309: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   309: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   312: astore 6
     //   314: aload_2
     //   315: astore 4
     //   317: aload_3
     //   318: astore 5
     //   320: aload 6
-    //   322: ldc 179
-    //   324: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: ldc 182
+    //   324: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   327: pop
     //   328: aload_2
     //   329: astore 4
@@ -468,17 +468,17 @@ public class OldBigDataChannelManager
     //   332: astore 5
     //   334: aload 6
     //   336: iload_1
-    //   337: invokevirtual 172	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   337: invokevirtual 175	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   340: pop
     //   341: aload_2
     //   342: astore 4
     //   344: aload_3
     //   345: astore 5
-    //   347: new 174	java/lang/RuntimeException
+    //   347: new 177	java/lang/RuntimeException
     //   350: dup
     //   351: aload 6
-    //   353: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   356: invokespecial 177	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   353: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   356: invokespecial 180	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   359: athrow
     //   360: astore 6
     //   362: goto +59 -> 421
@@ -495,12 +495,12 @@ public class OldBigDataChannelManager
     //   381: aload_3
     //   382: ifnull +10 -> 392
     //   385: aload_3
-    //   386: invokevirtual 180	java/io/ObjectInputStream:close	()V
+    //   386: invokevirtual 183	java/io/ObjectInputStream:close	()V
     //   389: goto +3 -> 392
     //   392: aload_2
     //   393: ifnull +85 -> 478
     //   396: aload_2
-    //   397: invokevirtual 181	java/io/ByteArrayInputStream:close	()V
+    //   397: invokevirtual 184	java/io/ByteArrayInputStream:close	()V
     //   400: goto +78 -> 478
     //   403: goto +75 -> 478
     //   406: astore_3
@@ -520,53 +520,53 @@ public class OldBigDataChannelManager
     //   425: astore 5
     //   427: aload_0
     //   428: aconst_null
-    //   429: putfield 20	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_ArrayOfByte	[B
+    //   429: putfield 24	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:b	[B
     //   432: aload_2
     //   433: astore 4
     //   435: aload_3
     //   436: astore 5
-    //   438: invokestatic 126	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   438: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   441: ifeq +19 -> 460
     //   444: aload_2
     //   445: astore 4
     //   447: aload_3
     //   448: astore 5
-    //   450: ldc 133
+    //   450: ldc 136
     //   452: iconst_2
-    //   453: ldc 183
+    //   453: ldc 186
     //   455: aload 6
-    //   457: invokestatic 186	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   457: invokestatic 189	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   460: aload_3
     //   461: ifnull +10 -> 471
     //   464: aload_3
-    //   465: invokevirtual 180	java/io/ObjectInputStream:close	()V
+    //   465: invokevirtual 183	java/io/ObjectInputStream:close	()V
     //   468: goto +3 -> 471
     //   471: aload_2
     //   472: ifnull +6 -> 478
     //   475: goto -79 -> 396
-    //   478: invokestatic 126	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   478: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   481: ifeq +37 -> 518
-    //   484: new 85	java/lang/StringBuilder
+    //   484: new 88	java/lang/StringBuilder
     //   487: dup
-    //   488: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   488: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   491: astore_2
     //   492: aload_2
-    //   493: ldc 188
-    //   495: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   493: ldc 191
+    //   495: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   498: pop
     //   499: aload_2
     //   500: aload_0
-    //   501: getfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_Int	I
-    //   504: invokevirtual 172	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   501: getfield 30	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:e	I
+    //   504: invokevirtual 175	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   507: pop
-    //   508: ldc 133
+    //   508: ldc 136
     //   510: iconst_2
     //   511: aload_2
-    //   512: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   515: invokestatic 136	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   512: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   515: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   518: aload_0
     //   519: iconst_0
-    //   520: putfield 26	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:jdField_a_of_type_Int	I
+    //   520: putfield 30	com/tencent/mobileqq/nearby/api/OldBigDataChannelManager:e	I
     //   523: return
     //   524: astore_3
     //   525: aload 4
@@ -574,12 +574,12 @@ public class OldBigDataChannelManager
     //   528: aload 5
     //   530: ifnull +11 -> 541
     //   533: aload 5
-    //   535: invokevirtual 180	java/io/ObjectInputStream:close	()V
+    //   535: invokevirtual 183	java/io/ObjectInputStream:close	()V
     //   538: goto +3 -> 541
     //   541: aload_2
     //   542: ifnull +7 -> 549
     //   545: aload_2
-    //   546: invokevirtual 181	java/io/ByteArrayInputStream:close	()V
+    //   546: invokevirtual 184	java/io/ByteArrayInputStream:close	()V
     //   549: goto +5 -> 554
     //   552: aload_3
     //   553: athrow
@@ -668,44 +668,10 @@ public class OldBigDataChannelManager
     //   545	549	574	java/io/IOException
   }
   
-  private void d()
+  private void g()
   {
-    this.jdField_a_of_type_ArrayOfByte = null;
     this.b = null;
-  }
-  
-  public String a()
-  {
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-    if ((arrayOfString != null) && (arrayOfString.length != 0))
-    {
-      this.jdField_a_of_type_Int %= arrayOfString.length;
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getCircleSrvUrl | usingIndex = ");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
-        localStringBuilder.append(" | count = ");
-        localStringBuilder.append(arrayOfString.length);
-        localStringBuilder.append(" | result = ");
-        localStringBuilder.append(arrayOfString[this.jdField_a_of_type_Int]);
-        QLog.d("OldBigDataChannelManager", 2, localStringBuilder.toString());
-      }
-      return arrayOfString[this.jdField_a_of_type_Int];
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onResponseException | current index = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      QLog.d("OldBigDataChannelManager", 2, localStringBuilder.toString());
-    }
-    this.jdField_a_of_type_Int += 1;
+    this.c = null;
   }
   
   public void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String[] paramArrayOfString)
@@ -718,7 +684,7 @@ public class OldBigDataChannelManager
         if (paramArrayOfByte1.length <= 0) {
           break label151;
         }
-        this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+        this.b = paramArrayOfByte1;
         bool2 = true;
         boolean bool1 = bool2;
         if (paramArrayOfByte2 != null)
@@ -726,7 +692,7 @@ public class OldBigDataChannelManager
           bool1 = bool2;
           if (paramArrayOfByte2.length > 0)
           {
-            this.b = paramArrayOfByte2;
+            this.c = paramArrayOfByte2;
             bool1 = true;
           }
         }
@@ -736,13 +702,13 @@ public class OldBigDataChannelManager
           bool2 = bool1;
           if (paramArrayOfString.length > 0)
           {
-            this.jdField_a_of_type_Int = 0;
-            this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+            this.e = 0;
+            this.d = paramArrayOfString;
             bool2 = true;
           }
         }
         if (bool2) {
-          b();
+          e();
         }
         if (QLog.isColorLevel())
         {
@@ -750,7 +716,7 @@ public class OldBigDataChannelManager
           paramArrayOfByte1.append("saveSrvParam | changed = ");
           paramArrayOfByte1.append(bool2);
           paramArrayOfByte1.append(" | usingIndex = ");
-          paramArrayOfByte1.append(this.jdField_a_of_type_Int);
+          paramArrayOfByte1.append(this.e);
           QLog.d("OldBigDataChannelManager", 2, paramArrayOfByte1.toString());
         }
         return;
@@ -767,22 +733,56 @@ public class OldBigDataChannelManager
   
   public byte[] a()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    return this.b;
   }
   
   public byte[] b()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public String c()
+  {
+    String[] arrayOfString = this.d;
+    if ((arrayOfString != null) && (arrayOfString.length != 0))
+    {
+      this.e %= arrayOfString.length;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getCircleSrvUrl | usingIndex = ");
+        localStringBuilder.append(this.e);
+        localStringBuilder.append(" | count = ");
+        localStringBuilder.append(arrayOfString.length);
+        localStringBuilder.append(" | result = ");
+        localStringBuilder.append(arrayOfString[this.e]);
+        QLog.d("OldBigDataChannelManager", 2, localStringBuilder.toString());
+      }
+      return arrayOfString[this.e];
+    }
+    return null;
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResponseException | current index = ");
+      localStringBuilder.append(this.e);
+      QLog.d("OldBigDataChannelManager", 2, localStringBuilder.toString());
+    }
+    this.e += 1;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
+    this.a.unRegistObserver(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.OldBigDataChannelManager
  * JD-Core Version:    0.7.0.1
  */

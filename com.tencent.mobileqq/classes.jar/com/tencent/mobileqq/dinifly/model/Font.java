@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dinifly.model;
 
-import android.support.annotation.RestrictTo;
+import androidx.annotation.RestrictTo;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
 public class Font
 {
   private final float ascent;
@@ -40,7 +40,7 @@ public class Font
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.Font
  * JD-Core Version:    0.7.0.1
  */

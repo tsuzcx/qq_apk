@@ -10,7 +10,7 @@ public class FaceDrawableImpl$InternalGroupObserver
   FaceDrawableImpl$InternalGroupObserver(FaceDrawableImpl paramFaceDrawableImpl, FaceDrawable paramFaceDrawable)
   {
     if ((paramFaceDrawable != null) && (paramFaceDrawable.mFaceInfo != null)) {
-      this.discussionUin = paramFaceDrawable.mFaceInfo.a;
+      this.discussionUin = paramFaceDrawable.mFaceInfo.c;
     }
   }
   
@@ -43,7 +43,7 @@ public class FaceDrawableImpl$InternalGroupObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawableImpl.InternalGroupObserver
  * JD-Core Version:    0.7.0.1
  */

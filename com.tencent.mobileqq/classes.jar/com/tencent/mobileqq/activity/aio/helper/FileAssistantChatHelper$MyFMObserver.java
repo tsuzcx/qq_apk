@@ -24,31 +24,31 @@ class FileAssistantChatHelper$MyFMObserver
   
   protected void a()
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void a(int paramInt, long paramLong, String paramString)
   {
     FileManagerUtil.a(paramLong, paramInt, paramString);
     ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(null, paramInt);
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void a(long paramLong1, long paramLong2)
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
     if ((paramString2 != null) && (paramString2.length() > 0))
     {
-      FileManagerUtil.a(paramString2);
+      FileManagerUtil.l(paramString2);
       return;
     }
     FileManagerUtil.a(paramLong);
@@ -57,9 +57,9 @@ class FileAssistantChatHelper$MyFMObserver
   protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
   {
     if ((paramString != null) && (paramString.length() > 0)) {
-      FileManagerUtil.a(paramString);
+      FileManagerUtil.l(paramString);
     }
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void a(ThumbnailInfo paramThumbnailInfo)
@@ -67,34 +67,34 @@ class FileAssistantChatHelper$MyFMObserver
     if (paramThumbnailInfo == null) {
       return;
     }
-    if ((paramThumbnailInfo.a instanceof FileManagerEntity))
+    if ((paramThumbnailInfo.c instanceof FileManagerEntity))
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-      if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0))
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.c;
+      if ((paramThumbnailInfo.d != null) && (paramThumbnailInfo.d.length() > 0))
       {
-        localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-        FileAssistantChatHelper.a(this.a).getFileManagerDataCenter().c(localFileManagerEntity);
-        FileAssistantChatHelper.a(this.a).an();
+        localFileManagerEntity.strThumbPath = paramThumbnailInfo.d;
+        FileAssistantChatHelper.b(this.a).getFileManagerDataCenter().c(localFileManagerEntity);
+        FileAssistantChatHelper.a(this.a).bt();
         return;
       }
       if (localFileManagerEntity.thumbInvalidCode == 1)
       {
-        FileAssistantChatHelper.a(this.a).getFileManagerDataCenter().c(localFileManagerEntity);
-        FileAssistantChatHelper.a(this.a).an();
+        FileAssistantChatHelper.b(this.a).getFileManagerDataCenter().c(localFileManagerEntity);
+        FileAssistantChatHelper.a(this.a).bt();
       }
     }
   }
   
   protected void a(Integer paramInteger, long paramLong, String paramString)
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
     FileManagerUtil.a(paramLong, paramInteger.intValue(), paramString);
     ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(null, paramInteger.intValue());
   }
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -114,60 +114,60 @@ class FileAssistantChatHelper$MyFMObserver
       localStringBuilder.append("]");
       QLog.d("FileAssistantChatHelper<FileAssistant>", 2, localStringBuilder.toString());
     }
-    paramString1 = FileAssistantChatHelper.a(this.a).getFileManagerDataCenter().a(paramLong2);
+    paramString1 = FileAssistantChatHelper.b(this.a).getFileManagerDataCenter().a(paramLong2);
     if ((paramString1 != null) && (paramString1.nOpType == 6))
     {
       if (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt2)) {
         if (paramBoolean)
         {
-          ((IWeiyunSaveTipsHelper)QRoute.api(IWeiyunSaveTipsHelper.class)).showTopTips(FileAssistantChatHelper.a(this.a), FileAssistantChatHelper.a(this.a).a(), AIOUtils.a(FileAssistantChatHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
+          ((IWeiyunSaveTipsHelper)QRoute.api(IWeiyunSaveTipsHelper.class)).showTopTips(FileAssistantChatHelper.b(this.a), FileAssistantChatHelper.a(this.a).aX(), AIOUtils.a(FileAssistantChatHelper.a(this.a).e));
         }
         else if (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).needShowGrayTips())
         {
-          ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).showGrayTips(FileAssistantChatHelper.a(this.a));
+          ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).showGrayTips(FileAssistantChatHelper.b(this.a));
         }
         else
         {
           if (!TextUtils.isEmpty(paramString2)) {
-            QQToast.a(FileAssistantChatHelper.a(this.a).getApp(), paramString2, 1).b(AIOUtils.a(FileAssistantChatHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
+            QQToast.makeText(FileAssistantChatHelper.b(this.a).getApp(), paramString2, 1).show(AIOUtils.a(FileAssistantChatHelper.a(this.a).e));
           } else {
-            QQToast.a(FileAssistantChatHelper.a(this.a).getApp(), 2131692689, 1).b(AIOUtils.a(FileAssistantChatHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
+            QQToast.makeText(FileAssistantChatHelper.b(this.a).getApp(), 2131889760, 1).show(AIOUtils.a(FileAssistantChatHelper.a(this.a).e));
           }
           ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(null, paramInt2);
         }
       }
     }
-    else if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(FileAssistantChatHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    else if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(FileAssistantChatHelper.a(this.a).ah.b)))
     {
       FileManagerUtil.a(paramLong2, paramInt2, paramString2);
       ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(null, paramInt2);
     }
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void b()
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void c()
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
   
   protected void d()
   {
-    FileAssistantChatHelper.a(this.a).an();
+    FileAssistantChatHelper.a(this.a).bt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FileAssistantChatHelper.MyFMObserver
  * JD-Core Version:    0.7.0.1
  */

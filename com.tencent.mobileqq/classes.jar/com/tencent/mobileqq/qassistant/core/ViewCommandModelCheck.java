@@ -12,13 +12,7 @@ public class ViewCommandModelCheck
   
   public ViewCommandModelCheck()
   {
-    b();
-  }
-  
-  public static void a()
-  {
-    a += 1;
-    ThreadManager.getFileThreadHandler().post(new ViewCommandModelCheck.2());
+    d();
   }
   
   public static boolean a()
@@ -26,24 +20,30 @@ public class ViewCommandModelCheck
     return a < 3;
   }
   
-  private int b()
+  public static void b()
   {
-    return AssistantUtils.a().getSharedPreferences("view_command_count_file", 0).getInt("view_command_count", 0);
+    a += 1;
+    ThreadManager.getFileThreadHandler().post(new ViewCommandModelCheck.2());
   }
   
-  private void b()
+  private static void c(int paramInt)
+  {
+    AssistantUtils.d().getSharedPreferences("view_command_count_file", 0).edit().putInt("view_command_count", paramInt).apply();
+  }
+  
+  private void d()
   {
     ThreadManager.getFileThreadHandler().post(new ViewCommandModelCheck.1(this));
   }
   
-  private static void b(int paramInt)
+  private int e()
   {
-    AssistantUtils.a().getSharedPreferences("view_command_count_file", 0).edit().putInt("view_command_count", paramInt).apply();
+    return AssistantUtils.d().getSharedPreferences("view_command_count_file", 0).getInt("view_command_count", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.ViewCommandModelCheck
  * JD-Core Version:    0.7.0.1
  */

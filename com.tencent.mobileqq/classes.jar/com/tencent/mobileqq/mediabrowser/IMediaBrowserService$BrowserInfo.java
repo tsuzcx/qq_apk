@@ -6,41 +6,41 @@ import java.util.List;
 
 public class IMediaBrowserService$BrowserInfo
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private IMediaBrowserProvider jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserProvider;
-  private List<RichMediaBrowserInfo> jdField_a_of_type_JavaUtilList;
+  private IMediaBrowserProvider a;
+  private List<RichMediaBrowserInfo> b;
+  private int c;
+  private Rect d;
   
   public IMediaBrowserService$BrowserInfo(IMediaBrowserProvider paramIMediaBrowserProvider, List<RichMediaBrowserInfo> paramList, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserProvider = paramIMediaBrowserProvider;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
+    this.a = paramIMediaBrowserProvider;
+    this.b = paramList;
+    this.c = paramInt;
   }
   
   public IMediaBrowserProvider a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMediabrowserIMediaBrowserProvider;
-  }
-  
-  public List<RichMediaBrowserInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    this.d = paramRect;
+  }
+  
+  public List<RichMediaBrowserInfo> b()
+  {
+    return this.b;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public Rect d()
+  {
+    return this.d;
   }
 }
 

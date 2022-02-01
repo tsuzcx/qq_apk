@@ -11,111 +11,111 @@ import mqq.app.AppRuntime;
 
 public class StreamFileInfo
 {
-  public final int a;
-  public long a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<StreamDataInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private short jdField_a_of_type_Short = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
+  boolean a = false;
   public long b;
-  private short jdField_b_of_type_Short = 0;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private short jdField_c_of_type_Short = 1;
+  public long c;
+  public final int d;
+  private int e;
+  private List<StreamDataInfo> f = new ArrayList();
+  private String g;
+  private int h;
+  private long i;
+  private short j = 0;
+  private short k = 0;
+  private short l = 1;
   
   public StreamFileInfo(AppRuntime paramAppRuntime, int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.g = paramString;
+    this.e = paramInt2;
     paramInt2 = NetworkCenter.getInstance().getNetType();
-    this.jdField_a_of_type_Int = ((IStreamParams)QRoute.api(IStreamParams.class)).getSliceSize(paramAppRuntime, paramInt1, paramInt2);
+    this.d = ((IStreamParams)QRoute.api(IStreamParams.class)).getSliceSize(paramAppRuntime, paramInt1, paramInt2);
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).createBufferTask(paramString);
   }
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public File a()
-  {
-    return new File(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public List<StreamDataInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public short a()
-  {
-    return this.jdField_b_of_type_Short;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Short = 0;
+    return this.e;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_c_of_type_Long = paramLong;
+    this.i = paramLong;
   }
   
   public void a(short paramShort)
   {
-    this.jdField_b_of_type_Short = paramShort;
+    this.k = paramShort;
   }
   
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      ((IPttBuffer)QRoute.api(IPttBuffer.class)).flush(this.jdField_a_of_type_JavaLangString);
+      ((IPttBuffer)QRoute.api(IPttBuffer.class)).flush(this.g);
       return;
     }
-    ((IPttBuffer)QRoute.api(IPttBuffer.class)).cancelBufferTask(this.jdField_a_of_type_JavaLangString);
+    ((IPttBuffer)QRoute.api(IPttBuffer.class)).cancelBufferTask(this.g);
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt)
   {
-    ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramInt);
+    ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(this.g, paramArrayOfByte, paramInt);
   }
   
-  public int b()
+  public List<StreamDataInfo> b()
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public short b()
-  {
-    return this.jdField_c_of_type_Short;
+    return this.f;
   }
   
   public void b(short paramShort)
   {
-    this.jdField_c_of_type_Short = paramShort;
+    this.l = paramShort;
   }
   
-  public short c()
+  public File c()
   {
-    return this.jdField_a_of_type_Short;
+    return new File(this.g);
   }
   
   public void c(short paramShort)
   {
-    this.jdField_a_of_type_Short = paramShort;
+    this.j = paramShort;
+  }
+  
+  public short d()
+  {
+    return this.k;
+  }
+  
+  public int e()
+  {
+    return this.h;
+  }
+  
+  public short f()
+  {
+    return this.l;
+  }
+  
+  public short g()
+  {
+    return this.j;
+  }
+  
+  public void h()
+  {
+    this.j = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.streamtransfile.StreamFileInfo
  * JD-Core Version:    0.7.0.1
  */

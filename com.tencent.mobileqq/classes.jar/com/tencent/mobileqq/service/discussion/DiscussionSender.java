@@ -22,12 +22,12 @@ import java.util.Map;
 
 public class DiscussionSender
 {
-  private final int jdField_a_of_type_Int = 0;
-  private DiscussReqHeader jdField_a_of_type_QQServiceDiscussReqHeader = new DiscussReqHeader();
+  private final int a = 0;
+  private DiscussReqHeader b = new DiscussReqHeader();
   
   public DiscussionSender()
   {
-    this.jdField_a_of_type_QQServiceDiscussReqHeader.Version = 0;
+    this.b.Version = 0;
   }
   
   private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -38,7 +38,7 @@ public class DiscussionSender
     localReqSetDiscussFlag.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
     localReqSetDiscussFlag.Flag = paramToServiceMsg.extraData.getByte("flag");
     paramUniPacket.put("ReqSetDiscussFlag", localReqSetDiscussFlag);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -63,7 +63,7 @@ public class DiscussionSender
       i += 1;
     }
     paramUniPacket.put("ReqSetDiscussAttr", localReqSetDiscussAttr);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -74,7 +74,7 @@ public class DiscussionSender
     ReqQuitDiscuss localReqQuitDiscuss = new ReqQuitDiscuss();
     localReqQuitDiscuss.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
     paramUniPacket.put("ReqQuitDiscuss", localReqQuitDiscuss);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -111,7 +111,7 @@ public class DiscussionSender
       QLog.d("DiscussionSender", 2, paramToServiceMsg.toString());
     }
     paramUniPacket.put("ReqGetDiscussInfo", localReqGetDiscussInfo);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -132,7 +132,7 @@ public class DiscussionSender
       QLog.d("DiscussionSender", 2, paramToServiceMsg.toString());
     }
     paramUniPacket.put("ReqGetDiscussInteRemark", localReqGetDiscussInteRemark);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -163,7 +163,7 @@ public class DiscussionSender
     localReqCreateDiscuss.Members = localArrayList;
     localReqCreateDiscuss.Refer = j;
     paramUniPacket.put("ReqCreateDiscuss", localReqCreateDiscuss);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -175,7 +175,7 @@ public class DiscussionSender
     localReqChangeDiscussName.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
     localReqChangeDiscussName.NewName = paramToServiceMsg.extraData.getString("newName");
     paramUniPacket.put("ReqChangeDiscussName", localReqChangeDiscussName);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -204,7 +204,7 @@ public class DiscussionSender
     }
     localReqAddDiscussMember.Members = localArrayList;
     paramUniPacket.put("ReqAddDiscussMember", localReqAddDiscussMember);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -216,7 +216,7 @@ public class DiscussionSender
     localReqJoinDiscuss.Signature = paramToServiceMsg.extraData.getString("signature");
     localReqJoinDiscuss.From = paramToServiceMsg.extraData.getInt("addDisSource");
     paramUniPacket.put("ReqJoinDiscuss", localReqJoinDiscuss);
-    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    paramUniPacket.put("DiscussReqHeader", this.b);
     return true;
   }
   
@@ -265,7 +265,7 @@ public class DiscussionSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.discussion.DiscussionSender
  * JD-Core Version:    0.7.0.1
  */

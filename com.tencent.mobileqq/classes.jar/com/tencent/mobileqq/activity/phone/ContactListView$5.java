@@ -21,12 +21,12 @@ class ContactListView$5
     Message localMessage = new Message();
     localMessage.what = 6;
     localMessage.obj = paramQQPimTipsInfo;
-    this.a.a.sendMessage(localMessage);
+    this.a.r.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.ContactListView.5
  * JD-Core Version:    0.7.0.1
  */

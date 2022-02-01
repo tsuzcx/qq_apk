@@ -4,15 +4,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ReadInJoyAdLog
 {
-  private static int a()
-  {
-    return 2;
-  }
-  
   public static void a(String paramString1, String paramString2)
   {
     if (a()) {
-      QLog.d(paramString1, a(), paramString2);
+      QLog.d(paramString1, b(), paramString2);
     }
   }
   
@@ -21,16 +16,21 @@ public class ReadInJoyAdLog
     return QLog.isColorLevel();
   }
   
+  private static int b()
+  {
+    return 2;
+  }
+  
   public static void b(String paramString1, String paramString2)
   {
     if (a()) {
-      QLog.e(paramString1, a(), paramString2);
+      QLog.e(paramString1, b(), paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog
  * JD-Core Version:    0.7.0.1
  */

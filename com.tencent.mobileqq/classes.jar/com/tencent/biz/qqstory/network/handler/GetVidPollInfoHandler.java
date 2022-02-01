@@ -40,18 +40,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class GetVidPollInfoHandler
   implements CmdTaskManger.CommandCallback<CommonRequest<qqstory_service.ReqBatchStoryPollData>, CommonResponse>
 {
-  public static final String a;
-  public ArrayList<String> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.batch_poll_data");
-  }
+  public static final String a = StoryApi.a("StorySvc.batch_poll_data");
+  public ArrayList<String> b = new ArrayList();
   
   public GetVidPollInfoHandler(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.b.addAll(paramList);
   }
   
   public static void a(@NonNull List<String> paramList)
@@ -68,13 +62,13 @@ public class GetVidPollInfoHandler
   public void a()
   {
     Object localObject = new qqstory_service.ReqBatchStoryPollData();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       ((qqstory_service.ReqBatchStoryPollData)localObject).vid_list.add(ByteStringMicro.copyFromUtf8(str));
     }
-    localObject = new CommonRequest(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
+    localObject = new CommonRequest(a, (MessageMicro)localObject, null);
     CmdTaskManger.a().a((NetworkRequest)localObject, this);
   }
   
@@ -85,7 +79,7 @@ public class GetVidPollInfoHandler
       paramCommonRequest = new qqstory_service.RspBatchStoryPollData();
       try
       {
-        paramCommonRequest.mergeFrom(paramCommonResponse.a);
+        paramCommonRequest.mergeFrom(paramCommonResponse.b);
         paramCommonResponse = (StoryManager)SuperManager.a(5);
         paramErrorMessage = new GetVidPollInfoHandler.GetVidPollInfoEvent();
         int i = 0;
@@ -151,7 +145,7 @@ public class GetVidPollInfoHandler
           i += 1;
         }
         StoryDispatcher.a().dispatch(paramErrorMessage);
-        StoryAIOUtils.a(QQStoryContext.a());
+        StoryAIOUtils.a(QQStoryContext.j());
         return;
       }
       catch (InvalidProtocolBufferMicroException paramCommonRequest)
@@ -165,7 +159,7 @@ public class GetVidPollInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetVidPollInfoHandler
  * JD-Core Version:    0.7.0.1
  */

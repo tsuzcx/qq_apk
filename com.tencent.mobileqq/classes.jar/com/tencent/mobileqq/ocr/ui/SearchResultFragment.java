@@ -15,19 +15,14 @@ import java.util.List;
 public class SearchResultFragment
   extends BaseOCRTextSearchFragment
 {
-  protected int a;
-  ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  ScrolledTabHost jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost;
-  SearchResultViewPagerAdapter jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter;
-  
-  public SearchResultFragment()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  ViewPager c;
+  ScrolledTabHost d;
+  SearchResultViewPagerAdapter e;
+  protected int f = 0;
   
   public void a()
   {
-    ScrolledTabHost localScrolledTabHost = this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost;
+    ScrolledTabHost localScrolledTabHost = this.d;
     if (localScrolledTabHost != null) {
       localScrolledTabHost.b();
     }
@@ -35,21 +30,21 @@ public class SearchResultFragment
   
   public void a(String paramString, int paramInt, OCRTextSearchInfo.SearchResult paramSearchResult)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramString, paramInt, paramSearchResult);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a();
+    paramString = this.e.a(paramString, paramInt, paramSearchResult);
+    this.d.a();
     paramInt = 0;
     while (paramInt < paramString.size())
     {
       paramSearchResult = (TabItem)paramString.get(paramInt);
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(paramSearchResult.a);
+      this.d.a(paramSearchResult.b);
       paramInt += 1;
     }
     if (paramString.size() == 1) {
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setVisibility(8);
+      this.d.setVisibility(8);
     } else {
-      this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setVisibility(0);
+      this.d.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(0);
+    this.d.setCurrentTab(0);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -60,20 +55,20 @@ public class SearchResultFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559807, null);
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = ((ViewPager)paramLayoutInflater.findViewById(2131380907));
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost = ((ScrolledTabHost)paramLayoutInflater.findViewById(2131378246));
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter = new SearchResultViewPagerAdapter(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface, this, this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager);
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setOnTabSelectedListener(new SearchResultFragment.1(this));
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.setOnPageChangeListener(new SearchResultFragment.2(this));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625850, null);
+    this.c = ((ViewPager)paramLayoutInflater.findViewById(2131449896));
+    this.d = ((ScrolledTabHost)paramLayoutInflater.findViewById(2131446765));
+    this.e = new SearchResultViewPagerAdapter(this.a, this, this.c);
+    this.c.setAdapter(this.e);
+    this.d.setOnTabSelectedListener(new SearchResultFragment.1(this));
+    this.c.setOnPageChangeListener(new SearchResultFragment.2(this));
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchResultFragment
  * JD-Core Version:    0.7.0.1
  */

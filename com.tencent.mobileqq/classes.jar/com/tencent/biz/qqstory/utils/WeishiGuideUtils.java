@@ -29,116 +29,18 @@ public class WeishiGuideUtils
 {
   public static String a = "{\"appName\":\"微视\",\"appid\":\"1101083114 \",\"isAutoDownload\":\"1\",\"isAutoInstall\":\"1\",\"isAutoInstallBySDK\":1,\"isShowNotification\":\"1\",\"packageName\":\"com.tencent.weishi\",\"url\":\"https://qzs.qzone.qq.com/qzone/qzact/act/external/weishi/weishi-download/index.html?pkg=3006\",\"via\":\"ANDROIDQQ.FEED\"}";
   
-  public static WeishiGuideUtils.JumpObject a(Object paramObject)
-  {
-    Object localObject5 = "3";
-    Object localObject4 = "2";
-    Object localObject3 = "5";
-    String str = "";
-    int i = 0;
-    Object localObject6 = null;
-    Object localObject7 = null;
-    Object localObject1 = localObject3;
-    Object localObject2 = localObject7;
-    if (paramObject != null)
-    {
-      if (paramObject.getClass().getName().contains("QIMFilterCategoryItem"))
-      {
-        if (((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).isCombo(paramObject))
-        {
-          str = ((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).getItemName(paramObject);
-          paramObject = ((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).getJumApp(paramObject);
-          localObject3 = "7";
-          localObject4 = "clk_combo";
-          localObject1 = "2";
-          localObject2 = "1";
-          i = 1;
-          break label306;
-        }
-        str = ((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).getItemName(paramObject);
-        paramObject = ((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).getJumApp(paramObject);
-        localObject4 = "clk_filter";
-        localObject1 = "11";
-        localObject2 = localObject1;
-        localObject3 = localObject2;
-        break label306;
-      }
-      if ((paramObject instanceof MusicItemInfo))
-      {
-        paramObject = (MusicItemInfo)paramObject;
-        str = paramObject.mMusicName;
-        paramObject = paramObject.jumpWs;
-        localObject1 = "4";
-        localObject3 = "9";
-        localObject5 = "clk_music";
-        i = 2;
-        localObject2 = localObject4;
-        localObject4 = localObject5;
-        break label306;
-      }
-      if ((paramObject instanceof PtvTemplateInfo))
-      {
-        paramObject = (PtvTemplateInfo)paramObject;
-        str = paramObject.e;
-        paramObject = paramObject.h;
-        localObject3 = "8";
-        localObject4 = "clk_poster";
-        i = 3;
-        localObject2 = "3";
-        localObject1 = localObject5;
-        break label306;
-      }
-      if ((paramObject instanceof PressDarkImageButton))
-      {
-        localObject1 = "5";
-        paramObject = localObject6;
-        break label299;
-      }
-      localObject1 = localObject3;
-      localObject2 = localObject7;
-      if ((paramObject instanceof String))
-      {
-        localObject2 = (String)paramObject;
-        localObject1 = "6";
-      }
-    }
-    localObject4 = "1";
-    paramObject = localObject2;
-    localObject3 = localObject1;
-    localObject1 = localObject4;
-    label299:
-    localObject4 = "";
-    localObject2 = localObject4;
-    label306:
-    localObject5 = paramObject;
-    if (StringUtil.a(paramObject)) {
-      localObject5 = "weishi://camera?logsour=3006";
-    }
-    paramObject = new WeishiGuideUtils.JumpObject();
-    paramObject.jdField_a_of_type_JavaLangString = ((String)localObject1);
-    paramObject.jdField_b_of_type_JavaLangString = str;
-    paramObject.jdField_c_of_type_JavaLangString = ((String)localObject3);
-    paramObject.jdField_a_of_type_Int = 1;
-    paramObject.e = ((String)localObject2);
-    paramObject.f = ((String)localObject5);
-    paramObject.g = ((String)localObject4);
-    paramObject.jdField_b_of_type_Int = i;
-    paramObject.jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131716381);
-    return paramObject;
-  }
-  
   public static WeShiGuideDialog a(Context paramContext, Object paramObject, int paramInt)
   {
-    WeishiGuideUtils.JumpObject localJumpObject = a(paramObject);
+    WeishiGuideUtils.JumpObject localJumpObject = b(paramObject);
     if (localJumpObject == null) {
       return null;
     }
-    String str1 = localJumpObject.jdField_a_of_type_JavaLangString;
-    String str2 = localJumpObject.jdField_b_of_type_JavaLangString;
-    String str3 = localJumpObject.f;
-    int i = localJumpObject.jdField_a_of_type_Int;
-    String str4 = localJumpObject.e;
-    int j = localJumpObject.jdField_b_of_type_Int;
+    String str1 = localJumpObject.a;
+    String str2 = localJumpObject.b;
+    String str3 = localJumpObject.h;
+    int i = localJumpObject.d;
+    String str4 = localJumpObject.f;
+    int j = localJumpObject.g;
     if (paramInt == 2) {
       i = 1;
     } else {
@@ -182,7 +84,7 @@ public class WeishiGuideUtils
       }
       ReportController.b(null, "dc00898", "", "", "weishi_share_shoot", (String)localObject, j, 0, "", "", "", "");
     }
-    ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", localJumpObject.g, 0, 0, str1, str2, "", "");
+    ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", localJumpObject.i, 0, 0, str1, str2, "", "");
     if (a(paramContext))
     {
       ReportController.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 1, str4, "weishi", "", "");
@@ -200,9 +102,9 @@ public class WeishiGuideUtils
       return null;
     }
     ReportController.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 0, str4, "weishi", "", "");
-    Object localObject = localJumpObject.jdField_c_of_type_JavaLangString;
+    Object localObject = localJumpObject.c;
     ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 2, str1, str2, "", "");
-    paramContext = new WeShiGuideDialog(paramContext, 2131756410, paramObject);
+    paramContext = new WeShiGuideDialog(paramContext, 2131953580, paramObject);
     paramContext.a("https://pub.idqqimg.com/pc/misc/files/20180423/4c3ece054ae044eb85797d31fa487ce7.jpg");
     paramContext.a("", (String)localObject, "");
     paramContext.show();
@@ -218,20 +120,20 @@ public class WeishiGuideUtils
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
-      ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString = localJSONObject.getString("appid");
-      ((DownloadInfo)localObject).jdField_d_of_type_JavaLangString = localJSONObject.getString("url");
+      ((DownloadInfo)localObject).c = localJSONObject.getString("appid");
+      ((DownloadInfo)localObject).d = localJSONObject.getString("url");
       ((DownloadInfo)localObject).e = localJSONObject.getString("packageName");
       ((DownloadInfo)localObject).h = localJSONObject.getString("via");
-      ((DownloadInfo)localObject).a = true;
-      ((DownloadInfo)localObject).jdField_d_of_type_Boolean = true;
-      ((DownloadInfo)localObject).i = TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE;
+      ((DownloadInfo)localObject).w = true;
+      ((DownloadInfo)localObject).G = true;
+      ((DownloadInfo)localObject).C = TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE;
       String str = localJSONObject.getString("isAutoInstall");
       if (str != null) {
-        ((DownloadInfo)localObject).a = str.equals("1");
+        ((DownloadInfo)localObject).w = str.equals("1");
       }
       str = localJSONObject.getString("isAutoInstallBySDK");
       if (str != null) {
-        ((DownloadInfo)localObject).jdField_d_of_type_Boolean = str.equals("1");
+        ((DownloadInfo)localObject).G = str.equals("1");
       }
       str = localJSONObject.getString("isShowNotification");
       if (str != null)
@@ -242,17 +144,17 @@ public class WeishiGuideUtils
         } else {
           i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE;
         }
-        ((DownloadInfo)localObject).i = i;
+        ((DownloadInfo)localObject).C = i;
       }
-      ((DownloadInfo)localObject).jdField_c_of_type_Boolean = true;
-      ((DownloadInfo)localObject).m = "biz_src_jc_qzone";
+      ((DownloadInfo)localObject).A = true;
+      ((DownloadInfo)localObject).r = "biz_src_jc_qzone";
       ((DownloadInfo)localObject).f = localJSONObject.getString("appName");
       return localObject;
     }
     catch (JSONException localJSONException)
     {
-      label202:
-      break label202;
+      label193:
+      break label193;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("json err:");
@@ -265,11 +167,11 @@ public class WeishiGuideUtils
   {
     if (!NetworkUtils.b(paramContext))
     {
-      QQToast.a(paramContext, HardCodeUtil.a(2131716383), 0).a();
+      QQToast.makeText(paramContext, HardCodeUtil.a(2131913823), 0).show();
       return;
     }
     ((IQIMBeautyManager)QRoute.api(IQIMBeautyManager.class)).parseConfig();
-    DownloadInfo localDownloadInfo = a(jdField_a_of_type_JavaLangString);
+    DownloadInfo localDownloadInfo = a(a);
     if (localDownloadInfo == null)
     {
       SLog.d("WeishiGuideUtils", "get null info");
@@ -279,11 +181,11 @@ public class WeishiGuideUtils
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" gotoWeishiDownload = ");
-      ((StringBuilder)localObject).append(localDownloadInfo.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(localDownloadInfo.d);
       QLog.d("gotoWeishiDownload", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new Intent(paramContext, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", localDownloadInfo.jdField_d_of_type_JavaLangString);
+    ((Intent)localObject).putExtra("url", localDownloadInfo.d);
     if (!TextUtils.isEmpty(paramString)) {
       ((Intent)localObject).putExtra("big_brother_source_key", paramString);
     }
@@ -319,12 +221,12 @@ public class WeishiGuideUtils
   
   public static void a(Object paramObject)
   {
-    paramObject = a(paramObject);
+    paramObject = b(paramObject);
     if (paramObject == null) {
       return;
     }
-    int i = paramObject.jdField_a_of_type_Int;
-    int j = paramObject.jdField_b_of_type_Int;
+    int i = paramObject.d;
+    int j = paramObject.g;
     if (i == 1) {
       ReportController.b(null, "dc00898", "", "", "weishi_share_shoot", "story_entry_exp", j, 0, "", "", "", "");
     }
@@ -337,7 +239,7 @@ public class WeishiGuideUtils
     }
     try
     {
-      PackageUtil.a(paramContext, "com.tencent.weishi");
+      PackageUtil.b(paramContext, "com.tencent.weishi");
       return true;
     }
     catch (Throwable paramContext)
@@ -348,6 +250,104 @@ public class WeishiGuideUtils
       QLog.e("WeishiGuideUtils", 2, localStringBuilder.toString());
     }
     return false;
+  }
+  
+  public static WeishiGuideUtils.JumpObject b(Object paramObject)
+  {
+    Object localObject5 = "3";
+    Object localObject4 = "2";
+    Object localObject3 = "5";
+    String str = "";
+    int i = 0;
+    Object localObject6 = null;
+    Object localObject7 = null;
+    Object localObject1 = localObject3;
+    Object localObject2 = localObject7;
+    if (paramObject != null)
+    {
+      if (paramObject.getClass().getName().contains("QIMFilterCategoryItem"))
+      {
+        if (((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).isCombo(paramObject))
+        {
+          str = ((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).getItemName(paramObject);
+          paramObject = ((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).getJumApp(paramObject);
+          localObject3 = "7";
+          localObject4 = "clk_combo";
+          localObject1 = "2";
+          localObject2 = "1";
+          i = 1;
+          break label328;
+        }
+        str = ((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).getItemName(paramObject);
+        paramObject = ((IGategoryItemManager)QRoute.api(IGategoryItemManager.class)).getJumApp(paramObject);
+        localObject4 = "clk_filter";
+        localObject1 = "11";
+        localObject2 = localObject1;
+        localObject3 = localObject2;
+        break label328;
+      }
+      if ((paramObject instanceof MusicItemInfo))
+      {
+        paramObject = (MusicItemInfo)paramObject;
+        str = paramObject.mMusicName;
+        paramObject = paramObject.jumpWs;
+        localObject1 = "4";
+        localObject3 = "9";
+        localObject5 = "clk_music";
+        i = 2;
+        localObject2 = localObject4;
+        localObject4 = localObject5;
+        break label328;
+      }
+      if ((paramObject instanceof PtvTemplateInfo))
+      {
+        paramObject = (PtvTemplateInfo)paramObject;
+        str = paramObject.e;
+        paramObject = paramObject.s;
+        localObject3 = "8";
+        localObject4 = "clk_poster";
+        i = 3;
+        localObject2 = "3";
+        localObject1 = localObject5;
+        break label328;
+      }
+      if ((paramObject instanceof PressDarkImageButton))
+      {
+        localObject1 = "5";
+        paramObject = localObject6;
+        break label321;
+      }
+      localObject1 = localObject3;
+      localObject2 = localObject7;
+      if ((paramObject instanceof String))
+      {
+        localObject2 = (String)paramObject;
+        localObject1 = "6";
+      }
+    }
+    localObject4 = "1";
+    paramObject = localObject2;
+    localObject3 = localObject1;
+    localObject1 = localObject4;
+    label321:
+    localObject4 = "";
+    localObject2 = localObject4;
+    label328:
+    localObject5 = paramObject;
+    if (StringUtil.isEmpty(paramObject)) {
+      localObject5 = "weishi://camera?logsour=3006";
+    }
+    paramObject = new WeishiGuideUtils.JumpObject();
+    paramObject.a = ((String)localObject1);
+    paramObject.b = str;
+    paramObject.c = ((String)localObject3);
+    paramObject.d = 1;
+    paramObject.f = ((String)localObject2);
+    paramObject.h = ((String)localObject5);
+    paramObject.i = ((String)localObject4);
+    paramObject.g = i;
+    paramObject.e = HardCodeUtil.a(2131913821);
+    return paramObject;
   }
 }
 

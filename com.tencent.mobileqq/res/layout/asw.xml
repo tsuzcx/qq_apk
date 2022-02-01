@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/b5h" android:background="@drawable/jj" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/adj" android:layout_marginTop="@dimen/adk" android:layout_marginBottom="@dimen/adk"
+<RelativeLayout android:id="@id/b5h" android:background="@drawable/common_list_item_background" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/adj" android:layout_marginTop="@dimen/adk" android:layout_marginBottom="@dimen/adk"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/icon" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_marginLeft="@dimen/is" android:src="@drawable/qq_confess_icon_entry" android:scaleType="centerInside" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/yy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/iu" android:layout_alignParentRight="true" android:layout_centerVertical="true">

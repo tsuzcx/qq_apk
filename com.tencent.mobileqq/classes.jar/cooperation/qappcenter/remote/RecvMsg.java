@@ -13,48 +13,43 @@ public class RecvMsg
 {
   public static final Parcelable.Creator<RecvMsg> CREATOR = new RecvMsg.1();
   public int a;
-  public Bundle a;
-  public String a;
-  public int b;
+  public String b;
+  public int c;
+  public Bundle d = new Bundle();
   
-  public RecvMsg()
-  {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-  }
+  public RecvMsg() {}
   
   public RecvMsg(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_Int = 1001;
-    this.b = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = 1001;
+    this.c = paramInt;
+    this.b = paramString;
   }
   
   public RecvMsg(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     a(paramParcel);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_AndroidOsBundle.getInt("_ssoSeqKey", -1);
+    return this.d.getInt("_ssoSeqKey", -1);
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle.putString("error", paramString);
+    this.a = paramInt;
+    this.d.putString("error", paramString);
   }
   
   public void a(Parcel paramParcel)
   {
     try
     {
-      this.b = paramParcel.readInt();
-      this.jdField_a_of_type_Int = paramParcel.readInt();
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_a_of_type_AndroidOsBundle.clear();
+      this.c = paramParcel.readInt();
+      this.a = paramParcel.readInt();
+      this.b = paramParcel.readString();
+      this.d.clear();
       paramParcel = paramParcel.readBundle(getClass().getClassLoader());
       try
       {
@@ -64,7 +59,7 @@ public class RecvMsg
       {
         localException.printStackTrace();
       }
-      this.jdField_a_of_type_AndroidOsBundle.putAll(paramParcel);
+      this.d.putAll(paramParcel);
       return;
     }
     catch (RuntimeException paramParcel)
@@ -85,11 +80,11 @@ public class RecvMsg
     localStringBuilder.append("RecvMsg ssoseq:");
     localStringBuilder.append(a());
     localStringBuilder.append(" resultCode:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" serviceCmd:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" appSeq:");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(" appSeq:");
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
   
@@ -97,10 +92,10 @@ public class RecvMsg
   {
     try
     {
-      paramParcel.writeInt(this.b);
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
+      paramParcel.writeInt(this.c);
+      paramParcel.writeInt(this.a);
+      paramParcel.writeString(this.b);
+      paramParcel.writeBundle(this.d);
       return;
     }
     catch (RuntimeException paramParcel)
@@ -112,7 +107,7 @@ public class RecvMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qappcenter.remote.RecvMsg
  * JD-Core Version:    0.7.0.1
  */

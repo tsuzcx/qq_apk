@@ -9,14 +9,14 @@ class AsyncSteps$1
   {
     if (this.a.b())
     {
-      this.a.c();
-      this.this$0.c();
+      this.a.f();
+      this.this$0.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.AsyncSteps.1
  * JD-Core Version:    0.7.0.1
  */

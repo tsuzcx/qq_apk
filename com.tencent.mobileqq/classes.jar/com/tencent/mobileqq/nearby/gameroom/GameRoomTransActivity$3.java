@@ -46,7 +46,7 @@ class GameRoomTransActivity$3
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onAcceptInvite invitedId = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" errorCode = ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(" ,errTitle = ");
@@ -64,61 +64,61 @@ class GameRoomTransActivity$3
           if (paramInt == 1008)
           {
             localObject = paramRspBody.string_invite_id.get().toStringUtf8();
-            GameRoomConstants.jdField_a_of_type_JavaLangString = (String)localObject;
-            paramInt = this.jdField_a_of_type_Int;
+            GameRoomConstants.a = (String)localObject;
+            paramInt = this.b;
             if (paramRspBody.uint32_max_member_num.has()) {
               paramInt = paramRspBody.uint32_max_member_num.get();
             }
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showTeamExistDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2, (String)localObject, paramInt);
+            this.c.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showTeamExistDialog(this.c, str1, str2, (String)localObject, paramInt);
           }
           else if (paramInt == 1009)
           {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity;
+            localObject = this.c;
             ((GameRoomTransActivity)localObject).dialog = DialogUtil.a((Context)localObject, 230);
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog.setTitle(str1);
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog.setMessage(str2);
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog.setPositiveButton(HardCodeUtil.a(2131705237), new GameRoomTransActivity.3.1(this, paramRspBody));
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog.setNegativeButton(2131690529, new GameRoomTransActivity.3.2(this));
-            if (!this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.isFinishing()) {
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog.show();
+            this.c.dialog.setTitle(str1);
+            this.c.dialog.setMessage(str2);
+            this.c.dialog.setPositiveButton(HardCodeUtil.a(2131903122), new GameRoomTransActivity.3.1(this, paramRspBody));
+            this.c.dialog.setNegativeButton(2131887440, new GameRoomTransActivity.3.2(this));
+            if (!this.c.isFinishing()) {
+              this.c.dialog.show();
             }
           }
           else if (!TextUtils.isEmpty(str2))
           {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showConfirmDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
+            this.c.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showConfirmDialog(this.c, str1, str2);
           }
           else
           {
-            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 1, HardCodeUtil.a(2131705213), 1).a();
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
+            QQToast.makeText(this.c, 1, HardCodeUtil.a(2131903099), 1).show();
+            this.c.finish();
           }
         }
         else
         {
           paramRspBody = new Intent();
-          paramRspBody.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-          paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
-          GameRoomConstants.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.startActivity(paramRspBody);
-          RouteUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, paramRspBody, "/nearby/gameroom/invite");
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
+          paramRspBody.putExtra("inviteId", this.a);
+          paramRspBody.putExtra("roomNum", this.b);
+          GameRoomConstants.a = this.a;
+          this.c.startActivity(paramRspBody);
+          RouteUtils.a(this.c, paramRspBody, "/nearby/gameroom/invite");
+          this.c.finish();
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showCreateNewGameDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
+        this.c.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showCreateNewGameDialog(this.c, str1, str2);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showConfirmDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
+      this.c.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showConfirmDialog(this.c, str1, str2);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.disMissListener);
+    if (this.c.dialog != null) {
+      this.c.dialog.setOnDismissListener(this.c.disMissListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity.3
  * JD-Core Version:    0.7.0.1
  */

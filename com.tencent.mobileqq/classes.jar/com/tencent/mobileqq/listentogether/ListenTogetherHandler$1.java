@@ -12,17 +12,17 @@ class ListenTogetherHandler$1
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("server_request", String.valueOf(this.jdField_a_of_type_Long - this.b));
-    localHashMap.put("serverInterval", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("server_request", String.valueOf(this.a - this.b));
+    localHashMap.put("serverInterval", String.valueOf(this.a));
     localHashMap.put("requestInterval", String.valueOf(this.b));
-    localHashMap.put("reportType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("interval", String.valueOf(this.c));
+    localHashMap.put("reportType", String.valueOf(this.c));
+    localHashMap.put("interval", String.valueOf(this.d));
     StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "listen_together_seek_adjust", true, 0L, 0L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherHandler.1
  * JD-Core Version:    0.7.0.1
  */

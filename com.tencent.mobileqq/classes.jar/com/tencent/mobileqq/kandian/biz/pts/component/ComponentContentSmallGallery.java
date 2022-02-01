@@ -11,7 +11,7 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
 public class ComponentContentSmallGallery
   extends ComponentContentSmall
 {
-  TextView a;
+  TextView d;
   
   public ComponentContentSmallGallery(Context paramContext)
   {
@@ -28,15 +28,10 @@ public class ComponentContentSmallGallery
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public View a(Context paramContext)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131560133, this, true);
-  }
-  
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131367434));
+    this.d = ((TextView)paramView.findViewById(2131433937));
   }
   
   public void a(Object paramObject)
@@ -44,9 +39,14 @@ public class ComponentContentSmallGallery
     super.a(paramObject);
     if ((paramObject instanceof IReadInJoyModel))
     {
-      paramObject = ((IReadInJoyModel)paramObject).a();
-      this.a.setText(String.valueOf(paramObject.mGalleryPicNumber));
+      paramObject = ((IReadInJoyModel)paramObject).k();
+      this.d.setText(String.valueOf(paramObject.mGalleryPicNumber));
     }
+  }
+  
+  public View b(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131626180, this, true);
   }
   
   public void b()
@@ -56,7 +56,7 @@ public class ComponentContentSmallGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentSmallGallery
  * JD-Core Version:    0.7.0.1
  */

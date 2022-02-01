@@ -18,25 +18,25 @@ class PicShareToWX$1
       localStringBuilder.append("onWXShareResp resp.errCode = ");
       localStringBuilder.append(paramBaseResp.errCode);
       localStringBuilder.append(", fromType = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       QLog.d("PicShareToWX", 1, localStringBuilder.toString());
     }
     if (paramBaseResp.errCode == 0)
     {
-      PicShareToWX.a(this.jdField_a_of_type_Int, true);
-      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, true, 0, 1);
+      PicShareToWX.a(this.a, true);
+      PicShareToWX.a(this.b, true, 0, 1);
     }
     else
     {
-      PicShareToWX.a(this.jdField_a_of_type_Int, false);
-      PicShareToWX.a(this.jdField_a_of_type_ComTencentMobileqqPicPicShareToWX, false, paramBaseResp.errCode, 1);
+      PicShareToWX.a(this.a, false);
+      PicShareToWX.a(this.b, false, paramBaseResp.errCode, 1);
     }
     WXShareHelper.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicShareToWX.1
  * JD-Core Version:    0.7.0.1
  */

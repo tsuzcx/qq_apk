@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.qqgamepub.utils;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
@@ -14,14 +13,6 @@ public class UIUtils
     return paramInt / paramResources.getDisplayMetrics().density;
   }
   
-  public static float a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return 0.0F;
-    }
-    return paramContext.getResources().getDisplayMetrics().density;
-  }
-  
   public static final int a(float paramFloat, Resources paramResources)
   {
     if (paramFloat == 0.0F) {
@@ -32,7 +23,7 @@ public class UIUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.UIUtils
  * JD-Core Version:    0.7.0.1
  */

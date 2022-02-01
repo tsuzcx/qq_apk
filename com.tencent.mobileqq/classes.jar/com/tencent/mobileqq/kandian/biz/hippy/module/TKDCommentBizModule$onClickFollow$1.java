@@ -25,14 +25,14 @@ final class TKDCommentBizModule$onClickFollow$1
     {
       localObject = ReadInJoyLogicEngine.a();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "ReadInJoyLogicEngine.getInstance()");
-      ((ReadInJoyLogicEngine)localObject).a().a(l, 2);
-      ReadInJoyLogicEngineEventDispatcher.a().b();
+      ((ReadInJoyLogicEngine)localObject).W().a(l, 2);
+      ReadInJoyLogicEngineEventDispatcher.a().a(l, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDCommentBizModule.onClickFollow.1
  * JD-Core Version:    0.7.0.1
  */

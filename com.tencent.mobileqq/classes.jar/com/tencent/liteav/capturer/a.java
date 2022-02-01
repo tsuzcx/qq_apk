@@ -14,7 +14,7 @@ import android.hardware.Camera.Size;
 import android.os.Build.VERSION;
 import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.e;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -85,7 +85,7 @@ public class a
     return new Rect(i1, i2, i3, i4);
   }
   
-  private static d a(Camera.Parameters paramParameters, int paramInt1, int paramInt2)
+  private static e a(Camera.Parameters paramParameters, int paramInt1, int paramInt2)
   {
     TXCLog.d("TXCCameraCapturer", "camera preview wanted: %d x %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     paramParameters = paramParameters.getSupportedPreviewSizes();
@@ -135,21 +135,21 @@ public class a
       }
     }
     TXCLog.i("TXCCameraCapturer", "best match preview size: %d x %d", new Object[] { Integer.valueOf(paramParameters.width), Integer.valueOf(paramParameters.height) });
-    return new d(paramParameters.width, paramParameters.height);
+    return new e(paramParameters.width, paramParameters.height);
   }
   
-  private static d b(boolean paramBoolean, int paramInt1, int paramInt2)
+  private static e b(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     if (paramBoolean) {
-      return new d(paramInt1, paramInt2);
+      return new e(paramInt1, paramInt2);
     }
-    d[] arrayOfd = new d[1];
-    d locald = new d(1080, 1920);
+    e[] arrayOfe = new e[1];
+    e locale = new e(1080, 1920);
     int i2 = 0;
-    arrayOfd[0] = locald;
+    arrayOfe[0] = locale;
     float f1 = Math.min(paramInt1, paramInt2);
     float f2 = Math.max(paramInt1, paramInt2);
-    int i4 = arrayOfd.length;
+    int i4 = arrayOfe.length;
     int i1;
     int i3;
     for (;;)
@@ -159,17 +159,17 @@ public class a
       if (i2 >= i4) {
         break;
       }
-      locald = arrayOfd[i2];
-      if ((f1 <= locald.a) && (f2 <= locald.b))
+      locale = arrayOfe[i2];
+      if ((f1 <= locale.a) && (f2 <= locale.b))
       {
-        f1 = Math.min(locald.a / f1, locald.b / f2);
+        f1 = Math.min(locale.a / f1, locale.b / f2);
         i1 = (int)(paramInt1 * f1);
         i3 = (int)(paramInt2 * f1);
         break;
       }
       i2 += 1;
     }
-    return new d(i1, i3);
+    return new e(i1, i3);
   }
   
   private int d(int paramInt)
@@ -673,9 +673,9 @@ public class a
       this.c.setPreviewCallback(this);
     }
     localObject2 = b(this.t, this.q, this.r);
-    localObject2 = a((Camera.Parameters)localObject1, Math.max(((d)localObject2).a, ((d)localObject2).b), Math.min(((d)localObject2).a, ((d)localObject2).b));
-    this.h = ((d)localObject2).a;
-    this.i = ((d)localObject2).b;
+    localObject2 = a((Camera.Parameters)localObject1, Math.max(((e)localObject2).a, ((e)localObject2).b), Math.min(((e)localObject2).a, ((e)localObject2).b));
+    this.h = ((e)localObject2).a;
+    this.i = ((e)localObject2).b;
     ((Camera.Parameters)localObject1).setPreviewSize(this.h, this.i);
     localObject2 = e(this.f);
     if (localObject2 != null) {
@@ -890,7 +890,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.capturer.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,27 +8,23 @@ public class InviteBaseData
   implements Parcelable
 {
   public static final Parcelable.Creator<InviteBaseData> CREATOR = new InviteBaseData.1();
-  public int a;
   public String a;
   public int b;
-  public String b;
   public String c;
-  public String d = "-1";
+  public String d;
+  public int e = 0;
+  public String f = "-1";
   
-  public InviteBaseData()
-  {
-    this.jdField_b_of_type_Int = 0;
-  }
+  public InviteBaseData() {}
   
   protected InviteBaseData(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readInt();
     this.c = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
     this.d = paramParcel.readString();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
   }
   
   public int describeContents()
@@ -40,23 +36,23 @@ public class InviteBaseData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[uin=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",phone=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeInt(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
     paramParcel.writeString(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
   }
 }
 

@@ -19,7 +19,7 @@ public class QQStoryConfigServletHandlerExt
 {
   private boolean a(List<String> paramList)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.k();
     StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
     boolean bool1 = paramList.isEmpty();
     boolean bool2 = false;
@@ -28,7 +28,7 @@ public class QQStoryConfigServletHandlerExt
       if (QLog.isColorLevel()) {
         QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodeConfigCmd data is null!!!");
       }
-      localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(false));
+      localStoryConfigManager.d("key_story_msg_tab_show", Boolean.valueOf(false));
       bool1 = true;
     }
     else
@@ -54,8 +54,8 @@ public class QQStoryConfigServletHandlerExt
           break label215;
         }
         bool1 = true;
-        localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(bool1));
-        localStoryConfigManager.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
+        localStoryConfigManager.d("key_story_msg_tab_show", Boolean.valueOf(bool1));
+        localStoryConfigManager.d("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
       }
       catch (JSONException paramList)
       {
@@ -97,8 +97,8 @@ public class QQStoryConfigServletHandlerExt
       int i = paramList.getInt("MsgTabPrestrainbNum");
       paramList = paramList.getString("4G");
       localObject = (StoryConfigManager)SuperManager.a(10);
-      ((StoryConfigManager)localObject).b("key_story_msg_tab_node_preload", Integer.valueOf(i));
-      ((StoryConfigManager)localObject).b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
+      ((StoryConfigManager)localObject).d("key_story_msg_tab_node_preload", Integer.valueOf(i));
+      ((StoryConfigManager)localObject).d("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
       return true;
     }
     catch (JSONException paramList)
@@ -124,7 +124,7 @@ public class QQStoryConfigServletHandlerExt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.extension.config.QQStoryConfigServletHandlerExt
  * JD-Core Version:    0.7.0.1
  */

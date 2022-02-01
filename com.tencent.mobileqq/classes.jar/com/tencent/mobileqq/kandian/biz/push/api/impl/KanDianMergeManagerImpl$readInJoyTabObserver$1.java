@@ -14,7 +14,7 @@ public final class KanDianMergeManagerImpl$readInJoyTabObserver$1
 {
   public void a()
   {
-    if (ReadInJoyHelper.l()) {
+    if (ReadInJoyHelper.v()) {
       UiThreadUtil.a((Runnable)new KanDianMergeManagerImpl.readInJoyTabObserver.1.onMainVideoRedTabChange.1(this));
     }
   }
@@ -34,7 +34,7 @@ public final class KanDianMergeManagerImpl$readInJoyTabObserver$1
     a(1, paramView);
   }
   
-  public void j()
+  public void i()
   {
     if (!RIJShowKanDianTabSp.c()) {
       return;
@@ -44,7 +44,7 @@ public final class KanDianMergeManagerImpl$readInJoyTabObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.api.impl.KanDianMergeManagerImpl.readInJoyTabObserver.1
  * JD-Core Version:    0.7.0.1
  */

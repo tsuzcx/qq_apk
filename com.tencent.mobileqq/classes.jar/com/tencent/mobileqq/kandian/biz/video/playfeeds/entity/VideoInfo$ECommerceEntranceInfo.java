@@ -10,53 +10,47 @@ public class VideoInfo$ECommerceEntranceInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ECommerceEntranceInfo> CREATOR = new VideoInfo.ECommerceEntranceInfo.1();
-  public int a;
-  public UrlJumpInfo a;
   public String a;
-  public int[] a;
-  public int b;
   public String b;
-  public int c;
   public String c;
-  public int d;
   public String d;
   public int e;
-  public String e;
-  public int f;
   public String f;
-  public int g;
-  public String g;
-  public int h;
-  public String h;
+  public int[] g;
+  public int h = -1;
+  public int i = -1;
+  public String j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
+  public UrlJumpInfo p;
+  public String q;
+  public String r;
   
-  public VideoInfo$ECommerceEntranceInfo()
-  {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-  }
+  public VideoInfo$ECommerceEntranceInfo() {}
   
   protected VideoInfo$ECommerceEntranceInfo(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ArrayOfInt = paramParcel.createIntArray();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.jdField_g_of_type_Int = paramParcel.readInt();
-    this.jdField_h_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
-    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.g = paramParcel.createIntArray();
+    this.i = paramParcel.readInt();
+    this.h = paramParcel.readInt();
+    this.j = paramParcel.readString();
+    this.k = paramParcel.readInt();
+    this.l = paramParcel.readInt();
+    this.m = paramParcel.readInt();
+    this.n = paramParcel.readInt();
+    this.o = paramParcel.readInt();
+    this.p = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
+    this.q = paramParcel.readString();
+    this.r = paramParcel.readString();
   }
   
   public int describeContents()
@@ -68,42 +62,42 @@ public class VideoInfo$ECommerceEntranceInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("commerceEntranceInfo{title='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", subTitle='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", thumbnailUrl='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", linkIconUrl='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", jumpType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", jumpUrl='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", showPosition=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfInt));
+    localStringBuilder.append(Arrays.toString(this.g));
     localStringBuilder.append(", showPercent=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", playTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", commonData=");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", displayCountsVersion=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", sessionDisplayCounts=");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", oneDayMaxDisplayCounts=");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(", videoSource=");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(this.n);
     localStringBuilder.append(", style=");
-    localStringBuilder.append(this.jdField_h_of_type_Int);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(", appInfo=");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo;
+    Object localObject = this.p;
     if (localObject == null) {
       localObject = "null";
     } else {
@@ -111,38 +105,38 @@ public class VideoInfo$ECommerceEntranceInfo
     }
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(", downloadBtnText=");
-    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append(this.q);
     localStringBuilder.append(", openBtnText=");
-    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append(this.r);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeIntArray(this.jdField_a_of_type_ArrayOfInt);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeInt(this.jdField_g_of_type_Int);
-    paramParcel.writeInt(this.jdField_h_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo, paramInt);
-    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
+    paramParcel.writeIntArray(this.g);
+    paramParcel.writeInt(this.i);
+    paramParcel.writeInt(this.h);
+    paramParcel.writeString(this.j);
+    paramParcel.writeInt(this.k);
+    paramParcel.writeInt(this.l);
+    paramParcel.writeInt(this.m);
+    paramParcel.writeInt(this.n);
+    paramParcel.writeInt(this.o);
+    paramParcel.writeParcelable(this.p, paramInt);
+    paramParcel.writeString(this.q);
+    paramParcel.writeString(this.r);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.ECommerceEntranceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,23 +17,23 @@ import org.json.JSONObject;
 public final class RIJCommentBubbleView$SheetItemClickProcessor
   extends ReadInJoyShareHelperV2.BaseSheetItemClickProcessor
 {
-  private final QShareUtils jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesQShareUtils;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private final WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private final QShareUtils a;
   @NotNull
   private final String b;
   @NotNull
   private final String c;
+  @NotNull
+  private final String d;
+  @NotNull
+  private final WeakReference<Activity> e;
   
   public RIJCommentBubbleView$SheetItemClickProcessor(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull WeakReference<Activity> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesQShareUtils = new QShareUtils();
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.e = paramWeakReference;
+    this.a = new QShareUtils();
   }
   
   public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
@@ -45,7 +45,7 @@ public final class RIJCommentBubbleView$SheetItemClickProcessor
       localJSONObject.put("shareCallBack", "");
       localJSONObject.put("title", "腾讯看点热评");
       localJSONObject.put("back", true);
-      localJSONObject.put("sourceName", HardCodeUtil.a(2131702884));
+      localJSONObject.put("sourceName", HardCodeUtil.a(2131900862));
       localJSONObject.put("WXShareFromQQKandian", 1);
       localJSONObject.put("src_iconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
       localJSONObject.put("srcIconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
@@ -54,21 +54,21 @@ public final class RIJCommentBubbleView$SheetItemClickProcessor
       localJSONObject.put("src_actionData", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("精彩评论： ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       localJSONObject.put("desc", ((StringBuilder)localObject).toString());
-      localJSONObject.put("menu_title", HardCodeUtil.a(2131713504));
-      localJSONObject.put("share_url", this.b);
-      localJSONObject.put("image_url", this.c);
+      localJSONObject.put("menu_title", HardCodeUtil.a(2131911054));
+      localJSONObject.put("share_url", this.c);
+      localJSONObject.put("image_url", this.d);
       localJSONObject.put("keepShareUrl", 1);
-      localJSONObject.put("weibo_title", HardCodeUtil.a(2131712964));
+      localJSONObject.put("weibo_title", HardCodeUtil.a(2131910530));
       localJSONObject.put("uin", "");
       localJSONObject.put("puin", 0);
       localObject = (String)null;
       if (paramActionSheetItem.action == 72) {
         localObject = paramActionSheetItem.uin;
       }
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesQShareUtils.a(localJSONObject, paramInt, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (String)localObject, paramActionSheetItem.uinType, paramActionSheetItem.label);
+      if (this.e.get() != null) {
+        this.a.a(localJSONObject, paramInt, (Activity)this.e.get(), (String)localObject, paramActionSheetItem.uinType, paramActionSheetItem.label);
       }
     }
     catch (NullPointerException localNullPointerException)
@@ -84,7 +84,7 @@ public final class RIJCommentBubbleView$SheetItemClickProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.RIJCommentBubbleView.SheetItemClickProcessor
  * JD-Core Version:    0.7.0.1
  */

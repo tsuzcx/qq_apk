@@ -3,7 +3,6 @@ package com.tencent.mobileqq.statistics;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -44,7 +43,7 @@ public class FightReporter
     }
     Object localObject1 = AIOConfigManager.a;
     String str1;
-    if ((localObject1 != null) && (((AIOConfigData)localObject1).f == 1))
+    if ((localObject1 != null) && (((AIOConfigData)localObject1).g == 1))
     {
       b = true;
       localObject1 = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
@@ -158,39 +157,37 @@ public class FightReporter
       return;
     }
     d = true;
-    Object localObject1 = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-    if (((SharedPreferences)localObject1).getBoolean("FightReporter_cpu_abi", false)) {
+    Object localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
+    if (((SharedPreferences)localObject).getBoolean("FightReporter_cpu_abi_new", false)) {
       return;
     }
-    ((SharedPreferences)localObject1).edit().putBoolean("FightReporter_cpu_abi", true).apply();
-    Object localObject2 = new HashMap();
-    if (Build.VERSION.SDK_INT >= 21) {
-      localObject1 = Build.SUPPORTED_ABIS[0];
+    ((SharedPreferences)localObject).edit().putBoolean("FightReporter_cpu_abi_new", true).apply();
+    String str2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    HashMap localHashMap = new HashMap();
+    String str3 = DailyReport.ReportArchInfo.a();
+    localHashMap.put("support_arch", str3);
+    boolean bool = str3.contains("arm");
+    String str1 = "1";
+    if (bool) {
+      localObject = "1";
     } else {
-      localObject1 = Build.CPU_ABI;
+      localObject = "0";
     }
-    ((HashMap)localObject2).put("cpu_abi", localObject1);
-    Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(Build.VERSION.SDK_INT);
-    ((StringBuilder)localObject3).append("");
-    ((HashMap)localObject2).put("sdk", ((StringBuilder)localObject3).toString());
-    localObject3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)localObject3, "FightReporter_cpu_abi", true, 0L, 0L, (HashMap)localObject2, null);
-    if (QLog.isDevelopLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("rYU.i.A.report real...cpu abi = ");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(",sdk = ");
-      ((StringBuilder)localObject2).append(Build.VERSION.SDK_INT);
-      QLog.d("FightReporter_", 2, ((StringBuilder)localObject2).toString());
+    localHashMap.put("is_arm", localObject);
+    if (str3.contains("arm64-v8a")) {
+      localObject = str1;
+    } else {
+      localObject = "0";
     }
+    localHashMap.put("support_arm64", localObject);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str2, "arch_report_abi_list", true, 0L, 0L, localHashMap, null);
+    QLog.d("FightReporter_", 1, new Object[] { "[reportArchInfo] list: ", str3 });
   }
   
   public static void c()
   {
     AIOConfigData localAIOConfigData = AIOConfigManager.a;
-    if ((localAIOConfigData != null) && (localAIOConfigData.e == 1)) {
+    if ((localAIOConfigData != null) && (localAIOConfigData.f == 1)) {
       a("FightReporter_openthirdappnullinfo");
     }
   }
@@ -209,8 +206,8 @@ public class FightReporter
     catch (Exception localException)
     {
       String str1;
-      label49:
-      break label49;
+      label50:
+      break label50;
     }
     str1 = "";
     str3 = SecurityUtile.encode(str3);
@@ -238,7 +235,7 @@ public class FightReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FightReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -14,20 +14,20 @@ import com.tencent.shadow.dynamic.host.MultiLoaderPpsController;
 public class PluginToolProcessService
   extends MultiLoaderPluginProcessService
 {
-  private long jdField_a_of_type_Long = 0L;
-  private MultiLoaderPpsController jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController;
+  private MultiLoaderPpsController a;
+  private long b = 0L;
   
   public IBinder onBind(Intent paramIntent)
   {
     paramIntent = super.onBind(paramIntent);
-    this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController = wrapBinder(paramIntent);
+    this.a = wrapBinder(paramIntent);
     return paramIntent;
   }
   
   public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.b = SystemClock.elapsedRealtime();
     ((IDynamicNowManagerApi)QRoute.api(IDynamicNowManagerApi.class)).addJumpCallback();
   }
   
@@ -35,13 +35,13 @@ public class PluginToolProcessService
   {
     super.onDestroy();
     Process.killProcess(Process.myPid());
-    MultiLoaderPpsController localMultiLoaderPpsController = this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController;
+    MultiLoaderPpsController localMultiLoaderPpsController = this.a;
     if (localMultiLoaderPpsController != null) {}
     try
     {
       localMultiLoaderPpsController.exit();
       label23:
-      this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController = null;
+      this.a = null;
       return;
     }
     catch (RemoteException localRemoteException)
@@ -53,13 +53,13 @@ public class PluginToolProcessService
   public void onTaskRemoved(Intent paramIntent)
   {
     super.onTaskRemoved(paramIntent);
-    if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < 1000L)
+    if (SystemClock.elapsedRealtime() - this.b < 1000L)
     {
       QLog.i("QTProxyService", 2, "onTaskRemoved, SystemClock.elapsedRealtime() - mOnCreateTimeStamp < 1000");
       return;
     }
     QLog.i("QTProxyService", 2, "onTaskRemoved");
-    paramIntent = this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController;
+    paramIntent = this.a;
     if (paramIntent != null) {
       try
       {
@@ -77,7 +77,7 @@ public class PluginToolProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.proxyinner.plugin.loader.PluginToolProcessService
  * JD-Core Version:    0.7.0.1
  */

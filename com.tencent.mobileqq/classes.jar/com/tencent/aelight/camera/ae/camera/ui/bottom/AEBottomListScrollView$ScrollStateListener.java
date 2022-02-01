@@ -12,7 +12,7 @@ class AEBottomListScrollView$ScrollStateListener
     if (AEBottomListScrollView.a(this.a) == null) {
       return;
     }
-    int i = AEBottomListScrollView.a(this.a).b();
+    int i = AEBottomListScrollView.b(this.a).e();
     RecyclerView.ViewHolder localViewHolder = this.a.a(i);
     if (localViewHolder != null) {
       AEBottomListScrollView.a(this.a, localViewHolder, i);
@@ -24,8 +24,8 @@ class AEBottomListScrollView$ScrollStateListener
     if (AEBottomListScrollView.a(this.a) == null) {
       return;
     }
-    int i = this.a.a();
-    int j = AEBottomListScrollView.a(this.a).a();
+    int i = this.a.getCurrentItem();
+    int j = AEBottomListScrollView.b(this.a).d();
     if (i != j)
     {
       AEBottomListScrollView localAEBottomListScrollView = this.a;
@@ -35,10 +35,10 @@ class AEBottomListScrollView$ScrollStateListener
   
   public void b()
   {
-    if ((AEBottomListScrollView.a(this.a) == null) && (AEBottomListScrollView.a(this.a) == null)) {
+    if ((AEBottomListScrollView.c(this.a) == null) && (AEBottomListScrollView.a(this.a) == null)) {
       return;
     }
-    int i = AEBottomListScrollView.a(this.a).b();
+    int i = AEBottomListScrollView.b(this.a).e();
     RecyclerView.ViewHolder localViewHolder = this.a.a(i);
     if (localViewHolder != null)
     {
@@ -59,7 +59,7 @@ class AEBottomListScrollView$ScrollStateListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListScrollView.ScrollStateListener
  * JD-Core Version:    0.7.0.1
  */

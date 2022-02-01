@@ -22,7 +22,7 @@ class CenterProcessor$1
         if (QLog.isColorLevel()) {
           QLog.d(localAbsBaseProcessor.a(), 0, "destroy()");
         }
-        localAbsBaseProcessor.c();
+        localAbsBaseProcessor.d();
       }
     }
     CenterProcessor.a(this.this$0).clear();
@@ -30,7 +30,7 @@ class CenterProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.redpoint.troopsettingredpoint.CenterProcessor.1
  * JD-Core Version:    0.7.0.1
  */

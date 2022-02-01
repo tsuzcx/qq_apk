@@ -2,35 +2,30 @@ package com.tencent.avgame.gameroom.seat.background;
 
 public class SurvivalMemberInfo
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private long a;
   private int b;
+  private int c;
   
   public SurvivalMemberInfo()
   {
-    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
   public SurvivalMemberInfo(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = -1;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramLong;
+    this.c = -1;
+    this.b = 0;
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public int b()
@@ -40,7 +35,12 @@ public class SurvivalMemberInfo
   
   public void b(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
 }
 

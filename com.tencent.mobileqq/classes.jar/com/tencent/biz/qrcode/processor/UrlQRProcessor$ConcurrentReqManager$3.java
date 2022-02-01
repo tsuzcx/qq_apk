@@ -9,8 +9,8 @@ class UrlQRProcessor$ConcurrentReqManager$3
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.b();
+    this.a.a(false);
+    this.a.b();
   }
 }
 

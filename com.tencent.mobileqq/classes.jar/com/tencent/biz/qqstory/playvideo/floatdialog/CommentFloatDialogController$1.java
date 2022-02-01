@@ -12,19 +12,19 @@ class CommentFloatDialogController$1
   public void a(int paramInt)
   {
     if ((paramInt == 1) && (CommentFloatDialogController.a(this.a) != null) && (CommentFloatDialogController.a(this.a).a != null)) {
-      if (!CommentFloatDialogController.a(this.a).a())
+      if (!CommentFloatDialogController.a(this.a).b())
       {
-        if (CommentFloatDialogController.a(this.a).a(true)) {
-          CommentFloatDialogController.a(this.a).c();
+        if (CommentFloatDialogController.a(this.a).b(true)) {
+          CommentFloatDialogController.b(this.a).c();
         }
       }
       else
       {
-        if (CommentFloatDialogController.a(this.a).a(false)) {
-          CommentFloatDialogController.b(this.a).c();
+        if (CommentFloatDialogController.a(this.a).b(false)) {
+          CommentFloatDialogController.c(this.a).c();
         }
-        if (CommentFloatDialogController.a(this.a).a(true)) {
-          CommentFloatDialogController.a(this.a).c();
+        if (CommentFloatDialogController.a(this.a).b(true)) {
+          CommentFloatDialogController.b(this.a).c();
         }
       }
     }
@@ -32,7 +32,7 @@ class CommentFloatDialogController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ import com.tencent.mobileqq.qwallet.preload.IPreloadService;
 class CustomizeStrategyFactory$ThemeAnimStrategy
   implements CustomizeStrategyFactory.HBCustomizeStrategy
 {
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private IPreloadService jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService = null;
+  private BaseQQAppInterface a;
+  private IPreloadService b = null;
   
   public CustomizeStrategyFactory$ThemeAnimStrategy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    paramBaseQQAppInterface = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    this.a = paramBaseQQAppInterface;
+    paramBaseQQAppInterface = this.a;
     if (paramBaseQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService = ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, ""));
+      this.b = ((IPreloadService)paramBaseQQAppInterface.getRuntimeService(IPreloadService.class, ""));
     }
   }
   
@@ -33,13 +33,13 @@ class CustomizeStrategyFactory$ThemeAnimStrategy
   public void a(RedPacketInfo paramRedPacketInfo, InterfaceRedPkgElem paramInterfaceRedPkgElem)
   {
     if ((paramRedPacketInfo != null) && ((paramInterfaceRedPkgElem instanceof ThemeRedPkgElem))) {
-      paramRedPacketInfo.animInfo = ((ThemeRedPkgElem)paramInterfaceRedPkgElem).a;
+      paramRedPacketInfo.animInfo = ((ThemeRedPkgElem)paramInterfaceRedPkgElem).c;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.ThemeAnimStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public final class QWalletPubAdReport$TerminalInfor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.qqwallet.QWalletPubAdReport.TerminalInfor
  * JD-Core Version:    0.7.0.1
  */

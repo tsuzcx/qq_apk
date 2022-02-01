@@ -14,14 +14,14 @@ class QfileBaseCloudFileTabView$9
   
   public void onClick(View paramView)
   {
-    if (QfileBaseCloudFileTabView.a(this.a))
+    if (QfileBaseCloudFileTabView.c(this.a))
     {
-      QfileBaseCloudFileTabView.a(this.a);
+      QfileBaseCloudFileTabView.d(this.a);
       this.a.f();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() > 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.expandGroup(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1);
+      if (this.a.j.getGroupCount() > 0) {
+        this.a.f.expandGroup(this.a.j.getGroupCount() - 1);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+      this.a.f.setSelection(this.a.f.getAdapter().getCount() - 1);
       QfileBaseCloudFileTabView.a(this.a, false);
       this.a.h();
     }
@@ -30,7 +30,7 @@ class QfileBaseCloudFileTabView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.9
  * JD-Core Version:    0.7.0.1
  */

@@ -5,44 +5,40 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PublicTracker
 {
-  public static int a;
-  private static long jdField_a_of_type_Long;
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
   public static boolean a;
-  private static long b;
   public static boolean b;
-  private static long c;
   public static boolean c;
-  private static long d;
   public static boolean d;
-  private static long e;
   public static boolean e;
-  private static long f;
+  public static int f = 1;
+  private static ConcurrentHashMap<String, Long> g = new ConcurrentHashMap(new HashMap(8));
+  private static long h = 0L;
+  private static long i = 0L;
+  private static long j = 0L;
+  private static long k;
+  private static long l;
+  private static long m;
   
   static
   {
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    jdField_c_of_type_Long = 0L;
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    jdField_c_of_type_Boolean = true;
-    jdField_d_of_type_Boolean = true;
-    jdField_e_of_type_Boolean = true;
-    jdField_d_of_type_Long = 0L;
-    jdField_e_of_type_Long = 0L;
-    f = 0L;
-    jdField_a_of_type_Int = 1;
+    a = true;
+    b = true;
+    c = true;
+    d = true;
+    e = true;
+    k = 0L;
+    l = 0L;
+    m = 0L;
   }
   
   public static void a()
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    jdField_c_of_type_Boolean = true;
-    jdField_d_of_type_Boolean = true;
-    jdField_e_of_type_Boolean = true;
-    jdField_a_of_type_Int = 1;
+    a = true;
+    b = true;
+    c = true;
+    d = true;
+    e = true;
+    f = 1;
   }
   
   public static void a(String paramString1, String paramString2)
@@ -52,7 +48,7 @@ public class PublicTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicTracker
  * JD-Core Version:    0.7.0.1
  */

@@ -10,28 +10,28 @@ public class QIMNotifyAddFriendMsg
   
   public QIMNotifyAddFriendMsg(QIMNotifyAddFriend paramQIMNotifyAddFriend)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
-    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
+    this.a = paramQIMNotifyAddFriend;
+    this.d = paramQIMNotifyAddFriend.pushTime;
   }
   
   public String a()
   {
-    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
+    return String.valueOf(this.a.uin);
   }
   
-  public String a(AppRuntime paramAppRuntime)
+  public String b(AppRuntime paramAppRuntime)
   {
     return "getMessage";
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
+    return this.a.hasRead;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.msg.QIMNotifyAddFriendMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -30,16 +30,16 @@ final class RIJCommentNetworkHelper$createSubComment$2
     if (paramString != null)
     {
       CreateCommentResult localCreateCommentResult = new CreateCommentResult();
-      localCreateCommentResult.jdField_a_of_type_Long = this.$commentSeq;
-      localCreateCommentResult.jdField_a_of_type_Boolean = false;
-      localCreateCommentResult.jdField_a_of_type_Int = paramInt;
-      localCreateCommentResult.jdField_b_of_type_Int = 1;
-      localCreateCommentResult.jdField_a_of_type_JavaLangString = "";
-      localCreateCommentResult.jdField_b_of_type_JavaLangString = this.$commentJsonStr;
-      localCreateCommentResult.jdField_c_of_type_JavaLangString = paramSubCommentCreateRsp.actual_create_content.get();
-      localCreateCommentResult.d = paramSubCommentCreateRsp.share_url.get();
-      localCreateCommentResult.jdField_c_of_type_Int = this.$feedsType;
-      localCreateCommentResult.jdField_b_of_type_Boolean = this.$isFeeds;
+      localCreateCommentResult.a = this.$commentSeq;
+      localCreateCommentResult.b = false;
+      localCreateCommentResult.c = paramInt;
+      localCreateCommentResult.d = 1;
+      localCreateCommentResult.e = "";
+      localCreateCommentResult.f = this.$commentJsonStr;
+      localCreateCommentResult.g = paramSubCommentCreateRsp.actual_create_content.get();
+      localCreateCommentResult.h = paramSubCommentCreateRsp.share_url.get();
+      localCreateCommentResult.i = this.$feedsType;
+      localCreateCommentResult.j = this.$isFeeds;
       paramSubCommentCreateRsp = new StringBuilder();
       paramSubCommentCreateRsp.append("createSubComment: result=");
       paramSubCommentCreateRsp.append(localCreateCommentResult.toString());
@@ -51,7 +51,7 @@ final class RIJCommentNetworkHelper$createSubComment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper.createSubComment.2
  * JD-Core Version:    0.7.0.1
  */

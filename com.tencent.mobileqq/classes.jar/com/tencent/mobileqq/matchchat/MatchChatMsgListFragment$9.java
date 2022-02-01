@@ -11,12 +11,12 @@ final class MatchChatMsgListFragment$9
   public void run()
   {
     Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
+    this.a.setEnabled(true);
+    this.a.getHitRect((Rect)localObject);
+    ((Rect)localObject).top -= this.b;
+    ((Rect)localObject).bottom += this.c;
+    ((Rect)localObject).left -= this.d;
+    ((Rect)localObject).right += this.e;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -26,9 +26,9 @@ final class MatchChatMsgListFragment$9
       localStringBuilder.append(((Rect)localObject).bottom);
       QLog.d("TouchDelegate", 2, localStringBuilder.toString());
     }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidViewView.getParent() instanceof View)) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    localObject = new TouchDelegate((Rect)localObject, this.a);
+    if ((this.a.getParent() instanceof View)) {
+      ((View)this.a.getParent()).setTouchDelegate((TouchDelegate)localObject);
     }
   }
 }

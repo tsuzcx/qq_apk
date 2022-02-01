@@ -21,31 +21,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class NearbyImgLoader
 {
   public static int a;
-  private static NearbyImgLoader jdField_a_of_type_ComTencentMobileqqFreshnewsFeedNearbyImgLoader = new NearbyImgLoader();
   public static int b;
   public static int c;
-  NearbyImgDownloader jdField_a_of_type_ComTencentMobileqqTransfileNearbyImgDownloader = new NearbyImgDownloader();
-  ArrayList<NearbyImgLoader.OnLoadNearbyImgsCallback> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public List<URL> a;
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  private static NearbyImgLoader h = new NearbyImgLoader();
+  NearbyImgDownloader d = new NearbyImgDownloader();
+  public List<URL> e = new ArrayList();
+  ArrayList<NearbyImgLoader.OnLoadNearbyImgsCallback> f = new ArrayList();
+  AtomicInteger g = new AtomicInteger();
   
   static
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     int i = ((WindowManager)localBaseApplication.getSystemService("window")).getDefaultDisplay().getWidth();
     b = (i - AIOUtils.b(2.0F, localBaseApplication.getResources())) / 2;
-    jdField_a_of_type_Int = i;
+    a = i;
     c = localBaseApplication.getResources().getDisplayMetrics().densityDpi;
-  }
-  
-  private NearbyImgLoader()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public static NearbyImgLoader a()
   {
-    return jdField_a_of_type_ComTencentMobileqqFreshnewsFeedNearbyImgLoader;
+    return h;
   }
   
   public Pair<Bitmap, Boolean> a(String paramString, Bitmap paramBitmap, int paramInt)
@@ -73,13 +68,13 @@ public class NearbyImgLoader
       }
       else
       {
-        i = jdField_a_of_type_Int;
+        i = a;
         j = i / 2;
       }
     }
     else
     {
-      i = jdField_a_of_type_Int;
+      i = a;
       j = i * 3 / 4;
     }
     int k = paramBitmap.getWidth();
@@ -94,7 +89,7 @@ public class NearbyImgLoader
         if (paramInt != 3) {
           break label780;
         }
-        f = j / m;
+        f1 = j / m;
         paramString = paramBitmap;
       }
     }
@@ -102,7 +97,7 @@ public class NearbyImgLoader
     {
       localObject = new Matrix();
       paramString = paramBitmap;
-      ((Matrix)localObject).setScale(f, f);
+      ((Matrix)localObject).setScale(f1, f1);
       paramString = paramBitmap;
       localObject = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, (Matrix)localObject, false);
       if (paramBitmap != localObject) {
@@ -145,11 +140,11 @@ public class NearbyImgLoader
       }
     }
     paramString = paramBitmap;
-    float f = i / k;
+    float f1 = i / k;
     paramString = paramBitmap;
     localObject = new Matrix();
     paramString = paramBitmap;
-    ((Matrix)localObject).setScale(f, f);
+    ((Matrix)localObject).setScale(f1, f1);
     paramString = paramBitmap;
     localObject = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, (Matrix)localObject, false);
     if (paramBitmap != localObject)
@@ -174,11 +169,11 @@ public class NearbyImgLoader
         paramString = paramBitmap;
         break label780;
         paramString = paramBitmap;
-        f = i / k;
+        f1 = i / k;
         paramString = paramBitmap;
         localObject = new Matrix();
         paramString = paramBitmap;
-        ((Matrix)localObject).setScale(f, f);
+        ((Matrix)localObject).setScale(f1, f1);
         paramString = paramBitmap;
         paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, (Matrix)localObject, false);
         paramString = paramBitmap;
@@ -275,26 +270,38 @@ public class NearbyImgLoader
     }
   }
   
-  void a()
+  public void a(URL paramURL)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < 4) {}
+    synchronized (this.e)
+    {
+      if (!this.e.contains(paramURL)) {
+        this.e.add(paramURL);
+      }
+      b();
+      return;
+    }
+  }
+  
+  void b()
+  {
+    if (this.g.get() < 4) {}
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      synchronized (this.e)
       {
-        if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
+        if (this.e.size() <= 0) {
           break label117;
         }
-        ??? = (URL)this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        ??? = (URL)this.e.remove(this.e.size() - 1);
         if (??? != null)
         {
           ThreadManager.post(new NearbyImgLoader.RequestLoadedImgTask(this, (URL)???), 8, null, true);
           return;
         }
-        synchronized (this.jdField_a_of_type_JavaUtilList)
+        synchronized (this.e)
         {
-          if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-            a();
+          if (this.e.size() > 0) {
+            b();
           }
           return;
         }
@@ -305,26 +312,14 @@ public class NearbyImgLoader
     }
   }
   
-  public void a(URL paramURL)
+  public void c()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.e)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramURL)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramURL);
-      }
-      a();
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      this.e.clear();
+      synchronized (this.f)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.f.clear();
         return;
       }
     }
@@ -332,7 +327,7 @@ public class NearbyImgLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.feed.NearbyImgLoader
  * JD-Core Version:    0.7.0.1
  */

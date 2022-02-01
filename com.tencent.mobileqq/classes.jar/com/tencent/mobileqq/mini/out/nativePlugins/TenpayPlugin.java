@@ -35,11 +35,11 @@ public class TenpayPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin");
-    if ((!StringUtil.a(str2)) && (str2.equals(this.app.getCurrentAccountUin())) && (!StringUtil.a(str1)))
+    if ((!StringUtil.isEmpty(str2)) && (str2.equals(this.app.getCurrentAccountUin())) && (!StringUtil.isEmpty(str1)))
     {
       Object localObject = ((ITenCookie)QRoute.api(ITenCookie.class)).getTempArgs(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (StringUtil.a((String)localObject))
+      if (StringUtil.isEmpty((String)localObject))
       {
         paramJSONObject = SharedPreferencesProxyManager.getInstance();
         localObject = new StringBuilder();
@@ -200,7 +200,7 @@ public class TenpayPlugin
         this.app = ((BaseActivity)paramJSContext.getActivity()).getAppInterface();
         if (paramJSONObject == null)
         {
-          this.jsContext.evaluateCallback(false, null, HardCodeUtil.a(2131714653));
+          this.jsContext.evaluateCallback(false, null, HardCodeUtil.a(2131912162));
           return;
         }
         if (QLog.isColorLevel()) {
@@ -222,7 +222,7 @@ public class TenpayPlugin
           if (PayBridgeActivity.tenpay(this.jsContext.getActivity(), 5, paramJSContext, this.payRecevicer)) {
             return;
           }
-          this.jsContext.evaluateCallback(false, null, HardCodeUtil.a(2131714654));
+          this.jsContext.evaluateCallback(false, null, HardCodeUtil.a(2131912163));
           return;
         }
         if (!paramJSContext.equals("qWalletBridge")) {
@@ -235,7 +235,7 @@ public class TenpayPlugin
       catch (JSONException paramJSONObject)
       {
         paramJSONObject.printStackTrace();
-        this.jsContext.evaluateCallback(false, null, HardCodeUtil.a(2131714653));
+        this.jsContext.evaluateCallback(false, null, HardCodeUtil.a(2131912162));
         return;
       }
     } else {
@@ -245,7 +245,7 @@ public class TenpayPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TenpayPlugin
  * JD-Core Version:    0.7.0.1
  */

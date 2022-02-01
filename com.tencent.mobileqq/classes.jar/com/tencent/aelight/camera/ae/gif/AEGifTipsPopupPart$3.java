@@ -11,7 +11,7 @@ class AEGifTipsPopupPart$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_JavaLangRunnable;
+    paramAnimation = this.a;
     if (paramAnimation != null) {
       paramAnimation.run();
     }
@@ -21,12 +21,12 @@ class AEGifTipsPopupPart$3
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    AEGifTipsPopupPart.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEGifTipsPopupPart).setVisibility(0);
+    AEGifTipsPopupPart.b(this.b).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGifTipsPopupPart.3
  * JD-Core Version:    0.7.0.1
  */

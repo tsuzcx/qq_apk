@@ -48,90 +48,35 @@ import mqq.os.MqqHandler;
 
 public class QQAudioHelper
 {
-  private static long jdField_a_of_type_Long = 0L;
-  static String jdField_a_of_type_JavaLangString;
-  public static boolean a = false;
-  static final int[] jdField_a_of_type_ArrayOfInt = new int[39];
-  static String b;
+  static final int[] a = new int[39];
   public static boolean b = false;
-  public static boolean c = false;
-  static boolean d = false;
-  private static boolean e = false;
-  private static boolean f = false;
+  static String c;
+  public static boolean d = false;
+  public static boolean e = false;
+  static boolean f = false;
+  static String g = null;
+  private static boolean h = false;
+  private static boolean i = false;
+  private static long j;
   
   static
   {
-    jdField_a_of_type_Boolean = false;
-    int i = 0;
-    while (i < 39)
+    int k = 0;
+    while (k < 39)
     {
-      jdField_a_of_type_ArrayOfInt[i] = -1000;
-      i += 1;
+      a[k] = -1000;
+      k += 1;
     }
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaLangString = "actAVFunChatExpression";
-    jdField_b_of_type_Boolean = false;
+    j = 0L;
+    c = "actAVFunChatExpression";
+    d = false;
     boolean bool;
     if (Build.VERSION.SDK_INT >= 17) {
       bool = true;
     } else {
       bool = false;
     }
-    c = bool;
-    d = false;
-    jdField_b_of_type_JavaLangString = null;
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return -1;
-    }
-    if (jdField_a_of_type_ArrayOfInt[paramInt] == -1000)
-    {
-      if (jdField_a_of_type_Long == 0L)
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("getDebugValue, uin is empty, [");
-        ((StringBuilder)localObject1).append(paramInt);
-        ((StringBuilder)localObject1).append("]");
-        QLog.w("AudioHelper", 1, ((StringBuilder)localObject1).toString());
-        return -1;
-      }
-      Object localObject1 = BaseApplication.getContext();
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("debugconfig_");
-      ((StringBuilder)localObject2).append(jdField_a_of_type_Long);
-      localObject1 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4);
-      localObject2 = jdField_a_of_type_ArrayOfInt;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("debugvalue");
-      localStringBuilder.append(paramInt);
-      localObject2[paramInt] = ((SharedPreferences)localObject1).getInt(localStringBuilder.toString(), -1);
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getDebugValue, [");
-      ((StringBuilder)localObject1).append(paramInt);
-      ((StringBuilder)localObject1).append("]=[");
-      ((StringBuilder)localObject1).append(jdField_a_of_type_ArrayOfInt[paramInt]);
-      ((StringBuilder)localObject1).append("], mUin[");
-      ((StringBuilder)localObject1).append(jdField_a_of_type_Long);
-      ((StringBuilder)localObject1).append("]");
-      QLog.w("AudioHelper", 1, ((StringBuilder)localObject1).toString());
-    }
-    return jdField_a_of_type_ArrayOfInt[paramInt];
-  }
-  
-  public static long a()
-  {
-    if (f()) {
-      return System.currentTimeMillis();
-    }
-    return MessageCache.a() * 1000L;
-  }
-  
-  public static String a(AppInterface paramAppInterface)
-  {
-    return a(paramAppInterface, -1);
+    e = bool;
   }
   
   public static String a(AppInterface paramAppInterface, int paramInt)
@@ -143,109 +88,107 @@ public class QQAudioHelper
     }
     try
     {
-      if (jdField_b_of_type_JavaLangString == null)
+      if (g == null)
       {
         long l;
         if ((paramAppInterface instanceof VideoAppInterface)) {
           l = VcSystemInfo.getMaxCpuFreq();
         } else {
-          l = DeviceInfoUtil.b();
+          l = DeviceInfoUtil.k();
         }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("BaseInfo, APPID[");
-        ((StringBuilder)localObject).append(AppSetting.a());
-        ((StringBuilder)localObject).append("], \nisPublicVersion[");
-        ((StringBuilder)localObject).append(true);
-        ((StringBuilder)localObject).append("], \nisGrayVersion[");
-        ((StringBuilder)localObject).append(false);
-        ((StringBuilder)localObject).append("], \nisDebugVersion[");
-        ((StringBuilder)localObject).append(false);
-        ((StringBuilder)localObject).append("], \nquaMainVersion[");
-        ((StringBuilder)localObject).append("2013 8.7.0");
-        ((StringBuilder)localObject).append("], \nversionCode[");
-        ((StringBuilder)localObject).append(ApkUtils.a(paramAppInterface.getApp()));
-        ((StringBuilder)localObject).append("], \nrevision[");
-        ((StringBuilder)localObject).append(AppSetting.g());
-        ((StringBuilder)localObject).append("], \nisSupporImmersive[");
-        ((StringBuilder)localObject).append(ImmersiveUtils.isSupporImmersive());
-        ((StringBuilder)localObject).append("], \nStatusBarHeight[");
-        ((StringBuilder)localObject).append(ImmersiveUtils.getStatusBarHeight(paramAppInterface.getApp()));
-        ((StringBuilder)localObject).append("], \nhasSmartBar[");
-        ((StringBuilder)localObject).append(UITools.a());
-        ((StringBuilder)localObject).append("], \naboutSubVersionLog[");
-        ((StringBuilder)localObject).append(AppSetting.b());
-        ((StringBuilder)localObject).append("], \ngetQUA[");
-        ((StringBuilder)localObject).append(a(AppSetting.e()));
-        ((StringBuilder)localObject).append("], \nTYPE[");
-        ((StringBuilder)localObject).append(Build.TYPE);
-        ((StringBuilder)localObject).append("], \nTAGS[");
-        ((StringBuilder)localObject).append(Build.TAGS);
-        ((StringBuilder)localObject).append("], \nMANUFACTURER[");
-        ((StringBuilder)localObject).append(Build.MANUFACTURER);
-        ((StringBuilder)localObject).append("], \nPRODUCT[");
-        ((StringBuilder)localObject).append(Build.PRODUCT);
-        ((StringBuilder)localObject).append("], \nRELEASE[");
-        ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
-        ((StringBuilder)localObject).append("], \nDISPLAY[");
-        ((StringBuilder)localObject).append(Build.DISPLAY);
-        ((StringBuilder)localObject).append("], \nCODENAME[");
-        ((StringBuilder)localObject).append(Build.VERSION.CODENAME);
-        ((StringBuilder)localObject).append("], \nINCREMENTAL[");
-        ((StringBuilder)localObject).append(Build.VERSION.INCREMENTAL);
-        ((StringBuilder)localObject).append("], \nBRAND[");
-        ((StringBuilder)localObject).append(Build.BRAND);
-        ((StringBuilder)localObject).append("], \nMODEL[");
-        ((StringBuilder)localObject).append(Build.MODEL);
-        ((StringBuilder)localObject).append("], \nCPU_ABI[");
-        ((StringBuilder)localObject).append(Build.CPU_ABI);
-        ((StringBuilder)localObject).append("], \nCPU_ABI2[");
-        ((StringBuilder)localObject).append(Build.CPU_ABI2);
-        ((StringBuilder)localObject).append("], \nCPU[");
-        ((StringBuilder)localObject).append(Build.HARDWARE);
-        ((StringBuilder)localObject).append("], \nCPUModel[");
-        ((StringBuilder)localObject).append(VcSystemInfo.getCpuModel());
-        ((StringBuilder)localObject).append("], \nisExistSDCard[");
-        ((StringBuilder)localObject).append(SystemUtil.a());
-        ((StringBuilder)localObject).append("], \nsdkVersion[");
-        ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
-        ((StringBuilder)localObject).append("], \ndevicesInfo[");
-        ((StringBuilder)localObject).append(AppSetting.c);
-        ((StringBuilder)localObject).append("], \nVendorId[");
-        ((StringBuilder)localObject).append(VcSystemInfo.getVendorId());
-        ((StringBuilder)localObject).append("], \nIsMarvell[");
-        ((StringBuilder)localObject).append(VcSystemInfo.getIsMarvell());
-        ((StringBuilder)localObject).append("], \nOpenGLVersion[");
-        ((StringBuilder)localObject).append(VcSystemInfo.getOpenGLVersion());
-        ((StringBuilder)localObject).append("], \nGLVersion[");
-        ((StringBuilder)localObject).append(Utils.a(paramAppInterface.getApp()));
-        ((StringBuilder)localObject).append("], \ncupReport[");
-        ((StringBuilder)localObject).append(VcSystemInfo.getCpuReport());
-        ((StringBuilder)localObject).append("], \nFeature[");
-        ((StringBuilder)localObject).append(VcSystemInfo.getFeature());
-        ((StringBuilder)localObject).append("], \nMaxCpuFreq[");
-        ((StringBuilder)localObject).append(l);
-        ((StringBuilder)localObject).append("], \nSystemTotalMemory[");
-        ((StringBuilder)localObject).append(DeviceInfoUtil.a());
-        ((StringBuilder)localObject).append("], \nCpuNum[");
-        ((StringBuilder)localObject).append(DeviceInfoUtil.b());
-        ((StringBuilder)localObject).append("], \nuid[");
-        ((StringBuilder)localObject).append(paramAppInterface.getApp().getApplicationInfo().uid);
-        ((StringBuilder)localObject).append("], \nPermission_PackageName[");
-        ((StringBuilder)localObject).append(paramAppInterface.getApp().getPackageName());
-        ((StringBuilder)localObject).append("], \n");
-        jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("BaseInfo, APPID[");
+        localStringBuilder.append(AppSetting.d());
+        localStringBuilder.append("], \nisPublicVersion[");
+        localStringBuilder.append(true);
+        localStringBuilder.append("], \nisGrayVersion[");
+        localStringBuilder.append(false);
+        localStringBuilder.append("], \nisDebugVersion[");
+        localStringBuilder.append(false);
+        localStringBuilder.append("], \nquaMainVersion[");
+        localStringBuilder.append("2013 8.8.17");
+        localStringBuilder.append("], \nversionCode[");
+        localStringBuilder.append(ApkUtils.a(paramAppInterface.getApp()));
+        localStringBuilder.append("], \nrevision[");
+        localStringBuilder.append(AppSetting.i());
+        localStringBuilder.append("], \nisSupporImmersive[");
+        localStringBuilder.append(ImmersiveUtils.isSupporImmersive());
+        localStringBuilder.append("], \nStatusBarHeight[");
+        localStringBuilder.append(ImmersiveUtils.getStatusBarHeight(paramAppInterface.getApp()));
+        localStringBuilder.append("], \nhasSmartBar[");
+        localStringBuilder.append(UITools.a());
+        localStringBuilder.append("], \naboutSubVersionLog[");
+        localStringBuilder.append(AppSetting.c());
+        localStringBuilder.append("], \ngetQUA[");
+        localStringBuilder.append(a(AppSetting.g()));
+        localStringBuilder.append("], \nTYPE[");
+        localStringBuilder.append(Build.TYPE);
+        localStringBuilder.append("], \nTAGS[");
+        localStringBuilder.append(Build.TAGS);
+        localStringBuilder.append("], \nMANUFACTURER[");
+        localStringBuilder.append(Build.MANUFACTURER);
+        localStringBuilder.append("], \nPRODUCT[");
+        localStringBuilder.append(Build.PRODUCT);
+        localStringBuilder.append("], \nRELEASE[");
+        localStringBuilder.append(Build.VERSION.RELEASE);
+        localStringBuilder.append("], \nDISPLAY[");
+        localStringBuilder.append(Build.DISPLAY);
+        localStringBuilder.append("], \nCODENAME[");
+        localStringBuilder.append(Build.VERSION.CODENAME);
+        localStringBuilder.append("], \nINCREMENTAL[");
+        localStringBuilder.append(Build.VERSION.INCREMENTAL);
+        localStringBuilder.append("], \nBRAND[");
+        localStringBuilder.append(Build.BRAND);
+        localStringBuilder.append("], \nMODEL[");
+        localStringBuilder.append(Build.MODEL);
+        localStringBuilder.append("], \nCPU_ABI[");
+        localStringBuilder.append(Build.CPU_ABI);
+        localStringBuilder.append("], \nCPU_ABI2[");
+        localStringBuilder.append(Build.CPU_ABI2);
+        localStringBuilder.append("], \nCPU[");
+        localStringBuilder.append(Build.HARDWARE);
+        localStringBuilder.append("], \nCPUModel[");
+        localStringBuilder.append(VcSystemInfo.getCpuModel());
+        localStringBuilder.append("], \nisExistSDCard[");
+        localStringBuilder.append(SystemUtil.a());
+        localStringBuilder.append("], \nsdkVersion[");
+        localStringBuilder.append(Build.VERSION.SDK_INT);
+        localStringBuilder.append("], \ndevicesInfo[");
+        localStringBuilder.append(AppSetting.u);
+        localStringBuilder.append("], \nVendorId[");
+        localStringBuilder.append(VcSystemInfo.getVendorId());
+        localStringBuilder.append("], \nIsMarvell[");
+        localStringBuilder.append(VcSystemInfo.getIsMarvell());
+        localStringBuilder.append("], \nOpenGLVersion[");
+        localStringBuilder.append(VcSystemInfo.getOpenGLVersion());
+        localStringBuilder.append("], \nGLVersion[");
+        localStringBuilder.append(Utils.a(paramAppInterface.getApp()));
+        localStringBuilder.append("], \ncupReport[");
+        localStringBuilder.append(VcSystemInfo.getCpuReport());
+        localStringBuilder.append("], \nFeature[");
+        localStringBuilder.append(VcSystemInfo.getFeature());
+        localStringBuilder.append("], \nMaxCpuFreq[");
+        localStringBuilder.append(l);
+        localStringBuilder.append("], \nSystemTotalMemory[");
+        localStringBuilder.append(DeviceInfoUtil.a());
+        localStringBuilder.append("], \nCpuNum[");
+        localStringBuilder.append(DeviceInfoUtil.h());
+        localStringBuilder.append("], \nuid[");
+        localStringBuilder.append(paramAppInterface.getApp().getApplicationInfo().uid);
+        localStringBuilder.append("], \nPermission_PackageName[");
+        localStringBuilder.append(paramAppInterface.getApp().getPackageName());
+        localStringBuilder.append("], \n");
+        g = localStringBuilder.toString();
       }
-      Object localObject = paramAppInterface.getApp().getResources().getDisplayMetrics();
+      paramAppInterface = paramAppInterface.getApp().getResources().getDisplayMetrics();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_b_of_type_JavaLangString);
-      localStringBuilder.append("UIN[");
-      localStringBuilder.append(paramAppInterface.getAccount());
+      localStringBuilder.append(g);
       localStringBuilder.append("], \ndisplayMetrics[");
-      localStringBuilder.append(localObject);
+      localStringBuilder.append(paramAppInterface);
       localStringBuilder.append("], \ndensity[");
-      localStringBuilder.append(((DisplayMetrics)localObject).density);
+      localStringBuilder.append(paramAppInterface.density);
       localStringBuilder.append("], \ndensityDpi[");
-      localStringBuilder.append(((DisplayMetrics)localObject).densityDpi);
+      localStringBuilder.append(paramAppInterface.densityDpi);
       localStringBuilder.append("], \nlogLevel[");
       localStringBuilder.append(QLog.getUIN_REPORTLOG_LEVEL());
       localStringBuilder.append("], \nisDevelopLevel[");
@@ -285,17 +228,17 @@ public class QQAudioHelper
     if (b())
     {
       boolean bool = paramObject instanceof String[];
-      int j = 0;
-      int i = 0;
+      int m = 0;
+      int k = 0;
       Object localObject1 = "";
       Object localObject2;
       if (bool)
       {
         paramObject = (String[])paramObject;
-        j = paramObject.length;
-        while (i < j)
+        m = paramObject.length;
+        while (k < m)
         {
-          localObject2 = paramObject[i];
+          localObject2 = paramObject[k];
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append((String)localObject1);
           localStringBuilder.append((String)localObject2);
@@ -304,27 +247,27 @@ public class QQAudioHelper
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("|");
           localObject1 = ((StringBuilder)localObject2).toString();
-          i += 1;
+          k += 1;
         }
         return localObject1;
       }
       if ((paramObject instanceof int[]))
       {
         paramObject = (int[])paramObject;
-        int k = paramObject.length;
-        i = j;
-        while (i < k)
+        int n = paramObject.length;
+        k = m;
+        while (k < n)
         {
-          j = paramObject[i];
+          m = paramObject[k];
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append(j);
+          ((StringBuilder)localObject2).append(m);
           localObject1 = ((StringBuilder)localObject2).toString();
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append("|");
           localObject1 = ((StringBuilder)localObject2).toString();
-          i += 1;
+          k += 1;
         }
         return localObject1;
       }
@@ -357,7 +300,7 @@ public class QQAudioHelper
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("m");
-    localEditor = localEditor.putInt(localStringBuilder.toString(), paramAudioPlayerParameter.jdField_a_of_type_Int);
+    localEditor = localEditor.putInt(localStringBuilder.toString(), paramAudioPlayerParameter.a);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("s");
@@ -365,36 +308,36 @@ public class QQAudioHelper
     localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("so");
-    localEditor.putBoolean(localStringBuilder.toString(), paramAudioPlayerParameter.jdField_a_of_type_Boolean).commit();
+    localEditor.putBoolean(localStringBuilder.toString(), paramAudioPlayerParameter.c).commit();
   }
   
   public static void a(long paramLong)
   {
-    if (jdField_a_of_type_Long != paramLong)
+    if (j != paramLong)
     {
-      jdField_a_of_type_Long = paramLong;
-      int i = 0;
-      while (i < 39)
+      j = paramLong;
+      int k = 0;
+      while (k < 39)
       {
-        jdField_a_of_type_ArrayOfInt[i] = -1000;
-        i += 1;
+        a[k] = -1000;
+        k += 1;
       }
     }
   }
   
   public static void a(Context paramContext)
   {
-    if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = b();
+    if (!b) {
+      b = b();
     }
-    if (a(2) == 1)
+    if (b(2) == 1)
     {
       QLog.d("AudioHelper", 1, "setBeaconDebug begin");
-      UserAction.setLogAble(AppSetting.c() ^ true, true);
+      UserAction.setLogAble(AppSetting.k() ^ true, true);
       if (paramContext != null) {
         UserAction.initUserAction(paramContext);
       }
-      UserAction.setLogAble(AppSetting.c() ^ true, true);
+      UserAction.setLogAble(AppSetting.k() ^ true, true);
       QLog.d("AudioHelper", 1, "setBeaconDebug end");
     }
   }
@@ -424,10 +367,10 @@ public class QQAudioHelper
   {
     if (paramBoolean)
     {
-      a(paramResources, paramTextView, paramInt, 2131166043, 2131166044);
+      a(paramResources, paramTextView, paramInt, 2131166770, 2131166771);
       return;
     }
-    a(paramResources, paramTextView, paramInt, 2131166006, 2131166007);
+    a(paramResources, paramTextView, paramInt, 2131166728, 2131166729);
   }
   
   public static void a(AppInterface paramAppInterface)
@@ -474,11 +417,11 @@ public class QQAudioHelper
           Object localObject5 = paramBundle.get(str);
           Object localObject4 = null;
           if (localObject5 == null) {
-            break label581;
+            break label583;
           }
           localObject1 = paramString;
           if (!(localObject5 instanceof long[])) {
-            break label581;
+            break label583;
           }
           localObject1 = paramString;
           long[] arrayOfLong = (long[])localObject5;
@@ -490,13 +433,13 @@ public class QQAudioHelper
           ((StringBuilder)localObject2).append(arrayOfLong.length);
           localObject1 = paramString;
           localObject2 = ((StringBuilder)localObject2).toString();
-          int i = 0;
+          int k = 0;
           localObject3 = localObject2;
           localObject1 = paramString;
-          if (i < arrayOfLong.length)
+          if (k < arrayOfLong.length)
           {
             localObject3 = localObject2;
-            if (i < 5)
+            if (k < 5)
             {
               localObject1 = paramString;
               localObject3 = new StringBuilder();
@@ -505,12 +448,12 @@ public class QQAudioHelper
               localObject1 = paramString;
               ((StringBuilder)localObject3).append("[");
               localObject1 = paramString;
-              ((StringBuilder)localObject3).append(arrayOfLong[i]);
+              ((StringBuilder)localObject3).append(arrayOfLong[k]);
               localObject1 = paramString;
               ((StringBuilder)localObject3).append("]");
               localObject1 = paramString;
               localObject2 = ((StringBuilder)localObject3).toString();
-              i += 1;
+              k += 1;
               continue;
             }
           }
@@ -581,7 +524,7 @@ public class QQAudioHelper
         }
       }
       return;
-      label581:
+      label583:
       Object localObject3 = null;
     }
   }
@@ -595,9 +538,9 @@ public class QQAudioHelper
     ((StringBuilder)localObject1).append(";");
     ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
     String str = ((StringBuilder)localObject1).toString();
-    Object localObject2 = SharedPreUtils.d(BaseApplicationImpl.getContext());
+    Object localObject2 = SharedPreUtils.k(BaseApplicationImpl.getContext());
     localObject1 = localObject2;
-    if (StringUtil.a((String)localObject2)) {
+    if (StringUtil.isEmpty((String)localObject2)) {
       localObject1 = "HUAWEI;HUAWEI NXT-AL10;24|HUAWEI;FRD-AL00;24|HUAWEI;EVA-AL00;24|HUAWEI;KNT-AL10;24|HUAWEI;EDI-AL10;24";
     }
     if (QLog.isColorLevel())
@@ -612,11 +555,11 @@ public class QQAudioHelper
     localObject1 = ((String)localObject1).split("\\|");
     if ((localObject1 != null) && (localObject1.length > 0))
     {
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
+      int m = localObject1.length;
+      int k = 0;
+      while (k < m)
       {
-        localObject2 = localObject1[i];
+        localObject2 = localObject1[k];
         if ((localObject2 != null) && (((String)localObject2).equals(str)))
         {
           if (QLog.isColorLevel())
@@ -628,7 +571,7 @@ public class QQAudioHelper
           }
           return true;
         }
-        i += 1;
+        k += 1;
       }
     }
     return false;
@@ -646,7 +589,7 @@ public class QQAudioHelper
       ((StringBuilder)localObject1).append(Build.MANUFACTURER);
       QLog.d("AudioHelper", 2, ((StringBuilder)localObject1).toString());
     }
-    boolean bool2 = e();
+    boolean bool2 = h();
     boolean bool1 = false;
     if (bool2)
     {
@@ -658,12 +601,12 @@ public class QQAudioHelper
         try
         {
           Object localObject2 = localObject1.getClass().getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
-          int i = AudioUtil.b[paramInt];
+          int k = AudioUtil.b[paramInt];
           if (Build.VERSION.SDK_INT < 19) {
-            i = AudioUtil.jdField_a_of_type_ArrayOfInt[paramInt];
+            k = AudioUtil.a[paramInt];
           }
           ApplicationInfo localApplicationInfo = BaseApplicationImpl.getContext().getApplicationInfo();
-          paramInt = ((Integer)((Method)localObject2).invoke(localObject1, new Object[] { Integer.valueOf(i), Integer.valueOf(localApplicationInfo.uid), localApplicationInfo.packageName })).intValue();
+          paramInt = ((Integer)((Method)localObject2).invoke(localObject1, new Object[] { Integer.valueOf(k), Integer.valueOf(localApplicationInfo.uid), localApplicationInfo.packageName })).intValue();
           if (QLog.isColorLevel())
           {
             localObject1 = QQAudioHelper.class.getSimpleName();
@@ -690,8 +633,8 @@ public class QQAudioHelper
   
   public static boolean a(BaseApplicationImpl paramBaseApplicationImpl, long paramLong)
   {
-    if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = b();
+    if (!b) {
+      b = b();
     }
     a(paramLong);
     if (paramBaseApplicationImpl != null)
@@ -705,24 +648,52 @@ public class QQAudioHelper
     return false;
   }
   
-  public static long b()
+  public static int b(int paramInt)
   {
-    try
-    {
-      long l = AudioHelperUtil.a();
-      return l;
+    if (!b) {
+      return -1;
     }
-    finally
+    if (a[paramInt] == -1000)
     {
-      localObject = finally;
-      throw localObject;
+      if (j == 0L)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getDebugValue, uin is empty, [");
+        ((StringBuilder)localObject1).append(paramInt);
+        ((StringBuilder)localObject1).append("]");
+        QLog.w("AudioHelper", 1, ((StringBuilder)localObject1).toString());
+        return -1;
+      }
+      Object localObject1 = BaseApplication.getContext();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("debugconfig_");
+      ((StringBuilder)localObject2).append(j);
+      localObject1 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 4);
+      localObject2 = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("debugvalue");
+      localStringBuilder.append(paramInt);
+      localObject2[paramInt] = ((SharedPreferences)localObject1).getInt(localStringBuilder.toString(), -1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getDebugValue, [");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("]=[");
+      ((StringBuilder)localObject1).append(a[paramInt]);
+      ((StringBuilder)localObject1).append("]");
+      QLog.w("AudioHelper", 1, ((StringBuilder)localObject1).toString());
     }
+    return a[paramInt];
+  }
+  
+  public static String b(AppInterface paramAppInterface)
+  {
+    return a(paramAppInterface, -1);
   }
   
   @TargetApi(17)
   public static void b(String paramString)
   {
-    if ((c) && (d))
+    if ((e) && (f))
     {
       long l = SystemClock.elapsedRealtimeNanos();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -737,16 +708,15 @@ public class QQAudioHelper
   
   public static boolean b()
   {
-    return AudioHelperUtil.b();
+    return AudioHelperUtil.c();
   }
   
-  @TargetApi(17)
   public static long c()
   {
-    if (c) {
-      return SystemClock.elapsedRealtimeNanos();
+    if (i()) {
+      return System.currentTimeMillis();
     }
-    return 0L;
+    return MessageCache.c() * 1000L;
   }
   
   public static void c(String paramString)
@@ -762,12 +732,35 @@ public class QQAudioHelper
     }
   }
   
-  public static boolean c()
+  public static long d()
   {
-    return AudioHelperUtil.a();
+    try
+    {
+      long l = AudioHelperUtil.a();
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public static boolean d()
+  @TargetApi(17)
+  public static long e()
+  {
+    if (e) {
+      return SystemClock.elapsedRealtimeNanos();
+    }
+    return 0L;
+  }
+  
+  public static boolean f()
+  {
+    return AudioHelperUtil.b();
+  }
+  
+  public static boolean g()
   {
     if (!((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).isSegmentMediaCodecEncodeSwtichOpen())
     {
@@ -776,18 +769,18 @@ public class QQAudioHelper
       }
       return true;
     }
-    if (f)
+    if (i)
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("isHuaweiGreenForSegmentLocal ");
-        ((StringBuilder)localObject1).append(e);
+        ((StringBuilder)localObject1).append(h);
         QLog.d("AudioHelper", 2, ((StringBuilder)localObject1).toString());
       }
-      return e;
+      return h;
     }
-    f = true;
+    i = true;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(Build.MANUFACTURER);
     ((StringBuilder)localObject1).append(";");
@@ -798,11 +791,11 @@ public class QQAudioHelper
     Object localObject2 = "HUAWEI;HUAWEI NXT-AL10;24|HUAWEI;BLN-AL40;24|HUAWEI;FRD-AL10;24|HUAWEI;HUAWEI NXT-DL00;24|HUAWEI;NEXT;23|vivo;vivo X5Pro D;21|asus;ASUS_Z00ADB;21|HUAWEI;LON-AL00;26|HUAWEI;COL-AL10;27|HUAWEI;STF_AL00;26".split("\\|");
     if ((localObject2 != null) && (localObject2.length > 0))
     {
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
+      int m = localObject2.length;
+      int k = 0;
+      while (k < m)
       {
-        Object localObject3 = localObject2[i];
+        Object localObject3 = localObject2[k];
         if ((localObject3 != null) && (localObject3.equals(localObject1)))
         {
           if (QLog.isColorLevel())
@@ -812,25 +805,25 @@ public class QQAudioHelper
             ((StringBuilder)localObject2).append((String)localObject1);
             QLog.d("AudioHelper", 2, ((StringBuilder)localObject2).toString());
           }
-          e = true;
+          h = true;
           return true;
         }
-        i += 1;
+        k += 1;
       }
     }
     return false;
   }
   
-  private static boolean e()
+  private static boolean h()
   {
     return "Xiaomi".equalsIgnoreCase(Build.MANUFACTURER);
   }
   
-  private static boolean f()
+  private static boolean i()
   {
-    if (a(15) == 1)
+    if (b(15) == 1)
     {
-      a(HardCodeUtil.a(2131701014));
+      a(HardCodeUtil.a(2131899035));
       return true;
     }
     return false;
@@ -838,7 +831,7 @@ public class QQAudioHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQAudioHelper
  * JD-Core Version:    0.7.0.1
  */

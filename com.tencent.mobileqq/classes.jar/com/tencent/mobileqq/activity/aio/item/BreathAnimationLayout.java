@@ -15,8 +15,8 @@ import android.widget.RemoteViews.RemoteView;
 public class BreathAnimationLayout
   extends RelativeLayout
 {
-  private long jdField_a_of_type_Long = -1L;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private long b = -1L;
   
   public BreathAnimationLayout(Context paramContext)
   {
@@ -36,16 +36,16 @@ public class BreathAnimationLayout
   @TargetApi(21)
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       Drawable localDrawable = getBackground();
       if (localDrawable != null)
       {
         long l = AnimationUtils.currentAnimationTimeMillis();
-        if (this.jdField_a_of_type_Long == -1L) {
-          this.jdField_a_of_type_Long = l;
+        if (this.b == -1L) {
+          this.b = l;
         }
-        double d = (l - this.jdField_a_of_type_Long) % 1600L;
+        double d = (l - this.b) % 1600L;
         Double.isNaN(d);
         int i = Math.min(255, (int)((Math.sin(d / 1600.0D * 6.283185307179586D) + 1.0D) / 2.0D * 255.0D + 0.5D));
         localDrawable.setBounds(0, 0, getWidth(), getHeight());
@@ -69,10 +69,10 @@ public class BreathAnimationLayout
   
   public void setAnimating(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.a != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Long = -1L;
+      this.a = paramBoolean;
+      this.b = -1L;
       if (!paramBoolean) {
         refreshDrawableState();
       }
@@ -82,7 +82,7 @@ public class BreathAnimationLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout
  * JD-Core Version:    0.7.0.1
  */

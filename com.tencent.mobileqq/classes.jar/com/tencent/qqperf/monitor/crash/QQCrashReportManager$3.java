@@ -17,10 +17,10 @@ class QQCrashReportManager$3
   
   public void run()
   {
-    Object localObject1 = ReportControllerServiceHolder.a();
+    Object localObject1 = ReportControllerServiceHolder.d();
     int i;
     if (localObject1 != null) {
-      i = ((ILocalMultiProcConfigService)localObject1).a("version_patchlib_load", 0);
+      i = ((ILocalMultiProcConfigService)localObject1).b("version_patchlib_load", 0);
     } else {
       i = 0;
     }
@@ -54,7 +54,7 @@ class QQCrashReportManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.QQCrashReportManager.3
  * JD-Core Version:    0.7.0.1
  */

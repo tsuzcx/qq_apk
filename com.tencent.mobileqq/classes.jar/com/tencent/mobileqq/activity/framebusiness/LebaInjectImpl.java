@@ -22,11 +22,11 @@ import java.util.HashMap;
 public class LebaInjectImpl
   extends BaseFrameBusiness
 {
-  public static final String a = FrameControllerUtil.jdField_d_of_type_JavaLangString;
+  public static final String a = FrameControllerUtil.o;
   
   public void a()
   {
-    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(((ILebaFrameApi)QRoute.api(ILebaFrameApi.class)).getLebaFrameClass(), FrameControllerUtil.jdField_d_of_type_Int, FrameControllerUtil.jdField_d_of_type_JavaLangString, 2130850754, 2130850755, 2131693876, 14, 4));
+    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(((ILebaFrameApi)QRoute.api(ILebaFrameApi.class)).getLebaFrameClass(), FrameControllerUtil.d, FrameControllerUtil.o, 2130852570, 2130852572, 2131891481, 14, 4));
   }
   
   public void a(FrameFragment paramFrameFragment)
@@ -39,23 +39,23 @@ public class LebaInjectImpl
   
   public void a(FrameFragment paramFrameFragment, FrameFragment.DragViewTouchListener paramDragViewTouchListener)
   {
-    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[3].findViewById(2131378232);
+    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.z[3].findViewById(2131446751);
     localTabDragAnimationView.setOnTouchListener(paramDragViewTouchListener);
     localTabDragAnimationView.a("动态");
-    paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.put(FrameControllerUtil.jdField_d_of_type_Int, localTabDragAnimationView);
-    paramFrameFragment.b.put(FrameControllerUtil.jdField_d_of_type_Int, (TextView)paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[3].findViewById(2131379917));
+    paramFrameFragment.B.put(FrameControllerUtil.d, localTabDragAnimationView);
+    paramFrameFragment.C.put(FrameControllerUtil.d, (TextView)paramFrameFragment.z[3].findViewById(2131448791));
   }
   
   public void a(FrameFragment paramFrameFragment, String paramString)
   {
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateTabContentDescription(paramFrameFragment, FrameControllerUtil.jdField_d_of_type_JavaLangString, ((ITabFrameController)QRoute.api(ITabFrameController.class)).getCurrentTabTag(paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost));
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateTabContentDescription(paramFrameFragment, FrameControllerUtil.o, ((ITabFrameController)QRoute.api(ITabFrameController.class)).getCurrentTabTag(paramFrameFragment.s));
   }
   
   public void a(RedTouch paramRedTouch, FrameFragment paramFrameFragment, int paramInt, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, IRedTouchManager paramIRedTouchManager)
   {
     if (paramInt == 34)
     {
-      paramRedTouch = (RedTouch)paramFrameFragment.jdField_a_of_type_JavaUtilHashMap.get(FrameControllerUtil.jdField_d_of_type_JavaLangString);
+      paramRedTouch = (RedTouch)paramFrameFragment.G.get(FrameControllerUtil.o);
       ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateRedTouch(paramFrameFragment, paramInt, paramRedTouch, paramRedTypeInfo);
       paramIRedTouchManager.reportLevelZeroRedInfo(0, 30);
     }
@@ -69,33 +69,33 @@ public class LebaInjectImpl
   public void b()
   {
     FrameInfoBean localFrameInfoBean = ((ITabFrameController)QRoute.api(ITabFrameController.class)).getFrameInfoByClazz(((ILebaFrameApi)QRoute.api(ILebaFrameApi.class)).getLebaFrameClass());
-    localFrameInfoBean.a(FrameControllerUtil.jdField_d_of_type_Int);
+    localFrameInfoBean.a(FrameControllerUtil.d);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("doOnUpdateFrameInfo className: ");
     localStringBuilder.append(localFrameInfoBean.a().getName());
     localStringBuilder.append(" tabIndex: ");
-    localStringBuilder.append(localFrameInfoBean.a());
+    localStringBuilder.append(localFrameInfoBean.c());
     QLog.d("TabFrameControllerImplBusiness", 1, localStringBuilder.toString());
   }
   
   public void b(FrameFragment paramFrameFragment)
   {
-    paramFrameFragment.a(FrameControllerUtil.jdField_d_of_type_Int, -1, 2130850906);
+    paramFrameFragment.a(FrameControllerUtil.d, -1, 2130852758);
   }
   
   public void b(FrameFragment paramFrameFragment, String paramString)
   {
-    if (paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime == null) {
+    if (paramFrameFragment.A == null) {
       return;
     }
     if (((ILebaFrameApi)QRoute.api(ILebaFrameApi.class)).isLeba(paramString))
     {
-      paramString = paramFrameFragment.a();
+      paramString = paramFrameFragment.v();
       if (((ILebaFrameApi)QRoute.api(ILebaFrameApi.class)).isLebaFrame(paramString))
       {
-        paramFrameFragment = (RedTouch)paramFrameFragment.jdField_a_of_type_JavaUtilHashMap.get(FrameControllerUtil.jdField_d_of_type_JavaLangString);
+        paramFrameFragment = (RedTouch)paramFrameFragment.G.get(FrameControllerUtil.o);
         boolean bool;
-        if ((paramFrameFragment != null) && (paramFrameFragment.c())) {
+        if ((paramFrameFragment != null) && (paramFrameFragment.h())) {
           bool = true;
         } else {
           bool = false;
@@ -103,7 +103,7 @@ public class LebaInjectImpl
         if (paramFrameFragment == null) {
           paramFrameFragment = null;
         } else {
-          paramFrameFragment = paramFrameFragment.a();
+          paramFrameFragment = paramFrameFragment.getRedType();
         }
         ((ILebaFrameApi)QRoute.api(ILebaFrameApi.class)).onSwitchToLeba(paramString, bool, paramFrameFragment);
       }
@@ -112,7 +112,7 @@ public class LebaInjectImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.LebaInjectImpl
  * JD-Core Version:    0.7.0.1
  */

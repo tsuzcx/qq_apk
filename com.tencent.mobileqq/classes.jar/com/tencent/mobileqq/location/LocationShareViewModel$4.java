@@ -10,12 +10,12 @@ final class LocationShareViewModel$4
   
   public void run()
   {
-    LocationProtoUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
+    LocationProtoUtil.a(this.a, this.b, this.c, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.LocationShareViewModel.4
  * JD-Core Version:    0.7.0.1
  */

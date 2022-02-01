@@ -15,10 +15,10 @@ public class TopPanelView
   extends RelativeLayout
   implements TopPanelContract.View
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private PassiveBubbleView jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView;
-  private RecommendBannerView jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView;
-  private TopPanelContract.Presenter jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter;
+  private TopPanelContract.Presenter a;
+  private RecommendBannerView b;
+  private PassiveBubbleView c;
+  private TextView d;
   
   public TopPanelView(Context paramContext)
   {
@@ -40,16 +40,16 @@ public class TopPanelView
   
   public void a()
   {
-    ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView, 8);
+    ViewUtils.setViewVisibility(this.c, 8);
   }
   
   public void a(int paramInt)
   {
-    PassiveBubbleView localPassiveBubbleView = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView;
+    PassiveBubbleView localPassiveBubbleView = this.c;
     if (localPassiveBubbleView != null)
     {
       localPassiveBubbleView.a(paramInt);
-      ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView, 0);
+      ViewUtils.setViewVisibility(this.c, 0);
     }
   }
   
@@ -60,15 +60,15 @@ public class TopPanelView
       b();
       return;
     }
-    RecommendBannerView localRecommendBannerView = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView;
+    RecommendBannerView localRecommendBannerView = this.b;
     if (localRecommendBannerView != null) {
       localRecommendBannerView.a(paramStEntry, paramList, paramBoolean);
     }
-    ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView, 0);
-    ViewUtils.a(this.jdField_a_of_type_AndroidWidgetTextView, 0);
+    ViewUtils.setViewVisibility(this.b, 0);
+    ViewUtils.setViewVisibility(this.d, 0);
     if (((paramList == null) || (paramList.size() < 10)) && (paramBoolean))
     {
-      paramStEntry = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView;
+      paramStEntry = this.b;
       if (paramStEntry != null) {
         paramStEntry.a();
       }
@@ -77,23 +77,23 @@ public class TopPanelView
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131558742, this);
-    setBackgroundResource(2130839393);
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView = ((RecommendBannerView)findViewById(2131376213));
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderPassive_bubblePassiveBubbleView = ((PassiveBubbleView)findViewById(2131372341));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378082));
+    inflate(paramContext, 2131624362, this);
+    setBackgroundResource(2130839577);
+    this.b = ((RecommendBannerView)findViewById(2131444421));
+    this.c = ((PassiveBubbleView)findViewById(2131439856));
+    this.d = ((TextView)findViewById(2131446588));
   }
   
   public void b()
   {
-    ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView, 8);
-    ViewUtils.a(this.jdField_a_of_type_AndroidWidgetTextView, 8);
+    ViewUtils.setViewVisibility(this.b, 8);
+    ViewUtils.setViewVisibility(this.d, 8);
   }
   
   public void setPresenter(TopPanelContract.Presenter paramPresenter)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter = paramPresenter;
-    RecommendBannerView localRecommendBannerView = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerView;
+    this.a = paramPresenter;
+    RecommendBannerView localRecommendBannerView = this.b;
     if (localRecommendBannerView != null) {
       localRecommendBannerView.setPresenter(paramPresenter);
     }

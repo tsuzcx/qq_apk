@@ -20,42 +20,13 @@ import java.util.Set;
 public class QfileLocalFileMediaTabView
   extends QfileBaseLocalFileTabView
 {
-  private int a;
+  private int a = 3;
   
   public QfileLocalFileMediaTabView(Context paramContext, int paramInt, List<QfileTabBarView.ScanParams> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
-    this.jdField_a_of_type_Int = 3;
     setEditbarButton(false, false, true, true, true);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private HashMap<String, List<FileInfo>> a()
-  {
-    HashMap localHashMap = new HashMap();
-    if ((this.jdField_a_of_type_Int & 0x1) > 0)
-    {
-      Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
-      }
-      FileCategoryUtil.a(localHashMap);
-    }
-    return localHashMap;
-  }
-  
-  private HashMap<String, List<FileInfo>> b()
-  {
-    HashMap localHashMap = new HashMap();
-    if ((this.jdField_a_of_type_Int & 0x2) > 0)
-    {
-      Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
-      }
-      FileCategoryUtil.a(localHashMap);
-    }
-    return localHashMap;
+    this.a = paramInt;
   }
   
   private void d(ArrayList<FileInfo> paramArrayList)
@@ -63,9 +34,9 @@ public class QfileLocalFileMediaTabView
     if (paramArrayList == null) {
       return;
     }
-    if ((this.f) && ((this.jdField_a_of_type_Int & 0x1) > 0))
+    if ((this.n) && ((this.a & 0x1) > 0))
     {
-      Map localMap = FileCategoryUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+      Map localMap = FileCategoryUtil.c(this.C);
       if (localMap != null)
       {
         Iterator localIterator = localMap.keySet().iterator();
@@ -85,9 +56,9 @@ public class QfileLocalFileMediaTabView
     if (paramArrayList == null) {
       return;
     }
-    if ((this.f) && ((this.jdField_a_of_type_Int & 0x2) > 0))
+    if ((this.n) && ((this.a & 0x2) > 0))
     {
-      Map localMap = FileCategoryUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
+      Map localMap = FileCategoryUtil.b(this.C);
       if (localMap != null)
       {
         Iterator localIterator = localMap.keySet().iterator();
@@ -102,15 +73,32 @@ public class QfileLocalFileMediaTabView
     }
   }
   
-  protected QfileBaseExpandableListAdapter a()
+  private HashMap<String, List<FileInfo>> o()
   {
-    return new QfileLocalFileBaseExpandableListAdapter(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
+    HashMap localHashMap = new HashMap();
+    if ((this.a & 0x1) > 0)
+    {
+      Iterator localIterator = this.m.iterator();
+      while (localIterator.hasNext()) {
+        FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", ".mpg", localHashMap, null);
+      }
+      FileCategoryUtil.a(localHashMap);
+    }
+    return localHashMap;
   }
   
-  protected void a()
+  private HashMap<String, List<FileInfo>> p()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new QfileLocalFileMediaTabView.1(this);
-    ThreadManagerV2.excute(this.jdField_a_of_type_JavaLangRunnable, 64, null, true);
+    HashMap localHashMap = new HashMap();
+    if ((this.a & 0x2) > 0)
+    {
+      Iterator localIterator = this.m.iterator();
+      while (localIterator.hasNext()) {
+        FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|", "", localHashMap, null);
+      }
+      FileCategoryUtil.a(localHashMap);
+    }
+    return localHashMap;
   }
   
   public void a(Set<FileInfo> paramSet)
@@ -122,49 +110,60 @@ public class QfileLocalFileMediaTabView
       }
       paramSet = paramSet.iterator();
       while (paramSet.hasNext()) {
-        b((FileInfo)paramSet.next());
+        e((FileInfo)paramSet.next());
       }
     }
   }
   
-  protected void b(FileInfo paramFileInfo)
+  protected void d(FileInfo paramFileInfo)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramFileInfo)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramFileInfo);
+    if (!this.v.contains(paramFileInfo)) {
+      this.v.add(paramFileInfo);
     }
     a(new QfileLocalFileMediaTabView.2(this, paramFileInfo));
   }
   
-  protected boolean b(FileInfo paramFileInfo)
+  protected boolean e(FileInfo paramFileInfo)
   {
     String str = paramFileInfo.a();
-    if (!this.jdField_c_of_type_JavaUtilLinkedHashMap.containsKey(str))
+    if (!this.l.containsKey(str))
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "delRecentFileRecords, fileEntities find, but recentRecords not find!");
+      QLog.e(o, 1, "delRecentFileRecords, fileEntities find, but recentRecords not find!");
       return false;
     }
-    ((List)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(str)).remove(paramFileInfo);
+    ((List)this.l.get(str)).remove(paramFileInfo);
     i();
     return true;
+  }
+  
+  protected QfileBaseExpandableListAdapter getQfileRecentFileBaseExpandableListAdapter()
+  {
+    return new QfileLocalFileBaseExpandableListAdapter(getActivity(), this.l, getActivity(), this.y, this.B, this.A, this.K);
+  }
+  
+  protected void getRecentFileRecords()
+  {
+    this.J = new QfileLocalFileMediaTabView.1(this);
+    ThreadManagerV2.excute(this.J, 64, null, true);
   }
   
   public void j()
   {
     super.j();
     setEditbarButton(false, false, true, true, true);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.k()) {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().R();
+    if (!this.C.K()) {
+      if (this.C.q()) {
+        this.C.A().R();
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().W();
+        this.C.A().W();
       }
     }
-    o();
+    k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView
  * JD-Core Version:    0.7.0.1
  */

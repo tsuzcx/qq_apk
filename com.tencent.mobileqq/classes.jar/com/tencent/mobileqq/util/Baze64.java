@@ -4,24 +4,6 @@ import java.io.UnsupportedEncodingException;
 
 public class Baze64
 {
-  static
-  {
-    jdField_a_of_type_Boolean = Baze64.class.desiredAssertionStatus() ^ true;
-  }
-  
-  public static String a(byte[] paramArrayOfByte, int paramInt)
-  {
-    try
-    {
-      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
-      return paramArrayOfByte;
-    }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      throw new AssertionError(paramArrayOfByte);
-    }
-  }
-  
   public static byte[] a(String paramString, int paramInt)
   {
     return a(paramString.getBytes(), paramInt);
@@ -37,26 +19,34 @@ public class Baze64
     Baze64.Decoder localDecoder = new Baze64.Decoder(paramInt3, new byte[paramInt2 * 3 / 4]);
     if (localDecoder.a(paramArrayOfByte, paramInt1, paramInt2, true))
     {
-      if (localDecoder.jdField_a_of_type_Int == localDecoder.jdField_a_of_type_ArrayOfByte.length) {
-        return localDecoder.jdField_a_of_type_ArrayOfByte;
+      if (localDecoder.b == localDecoder.a.length) {
+        return localDecoder.a;
       }
-      paramArrayOfByte = new byte[localDecoder.jdField_a_of_type_Int];
-      System.arraycopy(localDecoder.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localDecoder.jdField_a_of_type_Int);
+      paramArrayOfByte = new byte[localDecoder.b];
+      System.arraycopy(localDecoder.a, 0, paramArrayOfByte, 0, localDecoder.b);
       return paramArrayOfByte;
     }
     throw new IllegalArgumentException("bad base-64");
   }
   
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
+  public static String b(byte[] paramArrayOfByte, int paramInt)
   {
-    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+    try
+    {
+      paramArrayOfByte = new String(c(paramArrayOfByte, paramInt), "US-ASCII");
+      return paramArrayOfByte;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      throw new AssertionError(paramArrayOfByte);
+    }
   }
   
   public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     Baze64.Encoder localEncoder = new Baze64.Encoder(paramInt3, null);
     int i = paramInt2 / 3 * 4;
-    boolean bool = localEncoder.jdField_a_of_type_Boolean;
+    boolean bool = localEncoder.d;
     int j = 2;
     int k;
     if (bool)
@@ -85,13 +75,13 @@ public class Baze64
       }
     }
     i = paramInt3;
-    if (localEncoder.b)
+    if (localEncoder.e)
     {
       i = paramInt3;
       if (paramInt2 > 0)
       {
         k = (paramInt2 - 1) / 57;
-        if (localEncoder.c) {
+        if (localEncoder.f) {
           i = j;
         } else {
           i = 1;
@@ -99,17 +89,22 @@ public class Baze64
         i = paramInt3 + (k + 1) * i;
       }
     }
-    localEncoder.jdField_a_of_type_ArrayOfByte = new byte[i];
+    localEncoder.a = new byte[i];
     localEncoder.a(paramArrayOfByte, paramInt1, paramInt2, true);
-    if ((!jdField_a_of_type_Boolean) && (localEncoder.jdField_a_of_type_Int != i)) {
+    if ((!a) && (localEncoder.b != i)) {
       throw new AssertionError();
     }
-    return localEncoder.jdField_a_of_type_ArrayOfByte;
+    return localEncoder.a;
+  }
+  
+  public static byte[] c(byte[] paramArrayOfByte, int paramInt)
+  {
+    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.Baze64
  * JD-Core Version:    0.7.0.1
  */

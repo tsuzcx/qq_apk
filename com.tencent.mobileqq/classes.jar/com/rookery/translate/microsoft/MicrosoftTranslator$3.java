@@ -11,12 +11,12 @@ class MicrosoftTranslator$3
   
   public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComRookeryAsyncHttpClientJsonHttpResponseHandler.a(paramInt, paramArrayOfHeader, paramJSONObject);
+    this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
   }
   
   public void a(Throwable paramThrowable, String paramString)
   {
-    this.jdField_a_of_type_ComRookeryAsyncHttpClientJsonHttpResponseHandler.a(paramThrowable, paramString);
+    this.a.a(paramThrowable, paramString);
     super.a(paramThrowable, paramString);
   }
 }

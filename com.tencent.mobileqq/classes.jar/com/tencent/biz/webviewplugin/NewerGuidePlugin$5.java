@@ -14,17 +14,17 @@ class NewerGuidePlugin$5
   
   public int getRowCount(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    return this.a.length;
   }
   
   public String getText(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
+    return this.a[paramInt2];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.5
  * JD-Core Version:    0.7.0.1
  */

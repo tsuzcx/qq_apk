@@ -10,17 +10,17 @@ class TroopGagMgr$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+      QQToast.makeText(this.b, 2, this.c, 0).show(this.d);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130839590, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    QQToast.makeText(this.b, 2130840055, this.c, 0).show(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGagMgr.1
  * JD-Core Version:    0.7.0.1
  */

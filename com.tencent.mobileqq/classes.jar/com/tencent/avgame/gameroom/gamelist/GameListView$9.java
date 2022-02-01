@@ -10,7 +10,7 @@ class GameListView$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameListView.a(this.a, GameListView.a);
+    GameListView.a(this.a, GameListView.k);
   }
 }
 

@@ -18,7 +18,7 @@ public class AutoPlayManager$GetStoryListReceiver
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
     }
-    paramAutoPlayManager.b(paramPlayerVideoListEvent.a);
+    paramAutoPlayManager.b(paramPlayerVideoListEvent.e);
   }
   
   public Class acceptEventClass()

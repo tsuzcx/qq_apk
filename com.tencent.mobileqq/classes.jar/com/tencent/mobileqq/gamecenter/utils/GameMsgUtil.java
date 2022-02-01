@@ -23,24 +23,26 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.data.GameBoxRecentUser;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ConversationInfo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
-import com.tencent.mobileqq.gamecenter.api.ITempApi;
 import com.tencent.mobileqq.gamecenter.data.GameDelSessionDataHelper;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameBasicInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameSwitchConfig;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameUserInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameBasicInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameSwitchConfig;
+import com.tencent.mobileqq.gamecenter.msginfo.GameUserInfo;
 import com.tencent.mobileqq.gamecenter.protocols.GameCenterUnissoHandler;
 import com.tencent.mobileqq.gamecenter.util.RoleIdUtil;
 import com.tencent.mobileqq.msg.api.IConversationFacade;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameConfigUtil;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHippyApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -54,6 +56,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
@@ -62,33 +65,15 @@ import org.json.JSONObject;
 public class GameMsgUtil
 {
   public static String a;
-  public static boolean a;
+  public static boolean b = false;
+  private static int c = -1;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(GameCenterUnissoHandler.b);
     localStringBuilder.append("GameMsgUtil");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static long a(AppInterface paramAppInterface)
-  {
-    SharedPreferences localSharedPreferences = paramAppInterface.getApplication().getSharedPreferences("game_center_sp", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("sp_top_last_time");
-    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
-    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
-  }
-  
-  public static long a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("sp_last_game_session_clicked");
-    localStringBuilder.append(paramString);
-    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    a = localStringBuilder.toString();
   }
   
   public static long a(String paramString1, String paramString2)
@@ -100,28 +85,72 @@ public class GameMsgUtil
     return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
   }
   
+  private static Bitmap a(AppInterface paramAppInterface, GameUserInfo paramGameUserInfo)
+  {
+    if (paramAppInterface != null)
+    {
+      if (paramGameUserInfo == null) {
+        return null;
+      }
+      paramAppInterface = paramAppInterface.getApplication().getResources().getDrawable(2130841158);
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramAppInterface;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramAppInterface;
+      try
+      {
+        paramAppInterface = URLDrawable.getDrawable(new URL(paramGameUserInfo.mFaceUrl), (URLDrawable.URLDrawableOptions)localObject);
+        try
+        {
+          paramAppInterface.setTag(URLDrawableDecodeHandler.a(100, 100, 6));
+          paramAppInterface.setDecodeHandler(URLDrawableDecodeHandler.a);
+        }
+        catch (MalformedURLException paramGameUserInfo) {}
+        paramGameUserInfo.printStackTrace();
+      }
+      catch (MalformedURLException paramGameUserInfo)
+      {
+        paramAppInterface = null;
+      }
+      if (paramAppInterface != null)
+      {
+        paramAppInterface = paramAppInterface.getCurrDrawable();
+        if (QLog.isColorLevel())
+        {
+          paramGameUserInfo = a;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getGameRoleBitmap is called!.");
+          ((StringBuilder)localObject).append(paramAppInterface.getClass().getSimpleName());
+          QLog.d(paramGameUserInfo, 2, ((StringBuilder)localObject).toString());
+        }
+        if ((paramAppInterface instanceof BitmapDrawable)) {
+          return ((BitmapDrawable)paramAppInterface).getBitmap();
+        }
+      }
+    }
+    return null;
+  }
+  
   public static Bitmap a(Message paramMessage, AppInterface paramAppInterface)
   {
-    StringBuilder localStringBuilder1 = null;
     if (paramAppInterface == null) {
       return null;
     }
     paramMessage = RoleIdUtil.b(paramMessage);
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append("[getGameRoleBitmap],roleId:");
-      localStringBuilder2.append(paramMessage);
-      localStringBuilder2.append(" thread column = ");
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getGameRoleBitmap],roleId:");
+      localStringBuilder.append(paramMessage);
+      localStringBuilder.append(" thread column = ");
       boolean bool;
       if (Looper.getMainLooper() == Looper.myLooper()) {
         bool = true;
       } else {
         bool = false;
       }
-      localStringBuilder2.append(bool);
-      QLog.d((String)localObject, 2, localStringBuilder2.toString());
+      localStringBuilder.append(bool);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     long l1 = SystemClock.elapsedRealtime();
     Object localObject = (IGameMsgManagerService)paramAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
@@ -129,108 +158,51 @@ public class GameMsgUtil
       return null;
     }
     localObject = ((IGameMsgManagerService)localObject).findGameUserInfo(paramMessage);
-    if (localObject == null)
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameUserInfo)localObject).mFaceUrl)))
     {
-      paramAppInterface = jdField_a_of_type_JavaLangString;
-      localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("getGameRoleBitmap usrInfo is null, roleId:");
-      localStringBuilder1.append(paramMessage);
-      QLog.w(paramAppInterface, 1, localStringBuilder1.toString());
-      return null;
-    }
-    if (TextUtils.isEmpty(((GameUserInfo)localObject).mFaceUrl))
-    {
-      paramAppInterface = jdField_a_of_type_JavaLangString;
-      localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append(" getGameRoleBitmap faceurl is null, roleId:");
-      localStringBuilder1.append(paramMessage);
-      QLog.w(paramAppInterface, 1, localStringBuilder1.toString());
-      return null;
-    }
-    paramMessage = AbsDownloader.getFile(((GameUserInfo)localObject).mFaceUrl);
-    if ((paramMessage != null) && (paramMessage.exists()))
-    {
-      paramAppInterface = BitmapFactory.decodeFile(paramMessage.getAbsolutePath());
-      paramMessage = paramAppInterface;
-      if (QLog.isColorLevel())
+      paramMessage = AbsDownloader.getFile(((GameUserInfo)localObject).mFaceUrl);
+      if ((paramMessage != null) && (paramMessage.exists()))
       {
-        paramMessage = jdField_a_of_type_JavaLangString;
-        localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("getGameRoleBitmap is called!.decode from file");
-        localStringBuilder1.append(paramAppInterface);
-        QLog.d(paramMessage, 2, localStringBuilder1.toString());
+        paramAppInterface = BitmapFactory.decodeFile(paramMessage.getAbsolutePath());
         paramMessage = paramAppInterface;
-      }
-    }
-    else
-    {
-      paramMessage = paramAppInterface.getApplication().getResources().getDrawable(2130840405);
-      paramAppInterface = URLDrawable.URLDrawableOptions.obtain();
-      paramAppInterface.mFailedDrawable = paramMessage;
-      paramAppInterface.mLoadingDrawable = paramMessage;
-      try
-      {
-        paramMessage = URLDrawable.getDrawable(new URL(((GameUserInfo)localObject).mFaceUrl), paramAppInterface);
-        try
-        {
-          paramMessage.setTag(URLDrawableDecodeHandler.a(100, 100, 6));
-          paramMessage.setDecodeHandler(URLDrawableDecodeHandler.a);
-          paramAppInterface = paramMessage;
-        }
-        catch (MalformedURLException paramAppInterface) {}
-        paramAppInterface.printStackTrace();
-      }
-      catch (MalformedURLException paramAppInterface)
-      {
-        paramMessage = null;
-      }
-      paramAppInterface = paramMessage;
-      paramMessage = localStringBuilder1;
-      if (paramAppInterface != null)
-      {
-        paramAppInterface = paramAppInterface.getCurrDrawable();
         if (QLog.isColorLevel())
         {
-          paramMessage = jdField_a_of_type_JavaLangString;
+          paramMessage = a;
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("getGameRoleBitmap is called!.");
-          ((StringBuilder)localObject).append(paramAppInterface.getClass().getSimpleName());
+          ((StringBuilder)localObject).append("getGameRoleBitmap is called!.decode from file");
+          ((StringBuilder)localObject).append(paramAppInterface);
           QLog.d(paramMessage, 2, ((StringBuilder)localObject).toString());
-        }
-        paramMessage = localStringBuilder1;
-        if ((paramAppInterface instanceof BitmapDrawable))
-        {
-          paramAppInterface = ((BitmapDrawable)paramAppInterface).getBitmap();
           paramMessage = paramAppInterface;
-          if (QLog.isColorLevel())
-          {
-            paramMessage = jdField_a_of_type_JavaLangString;
-            localStringBuilder1 = new StringBuilder();
-            localStringBuilder1.append("getGameRoleBitmap is called!. bitmap = ");
-            localStringBuilder1.append(paramAppInterface);
-            QLog.d(paramMessage, 2, localStringBuilder1.toString());
-            paramMessage = paramAppInterface;
-          }
         }
       }
+      else
+      {
+        paramMessage = a(paramAppInterface, (GameUserInfo)localObject);
+      }
+      long l2 = SystemClock.elapsedRealtime();
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getGameRoleBitmap is called!. total cost = ");
+        ((StringBuilder)localObject).append(l2 - l1);
+        QLog.d(paramAppInterface, 2, ((StringBuilder)localObject).toString());
+      }
+      return paramMessage;
     }
-    long l2 = SystemClock.elapsedRealtime();
-    if (QLog.isColorLevel())
-    {
-      paramAppInterface = jdField_a_of_type_JavaLangString;
-      localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("getGameRoleBitmap is called!. total cost = ");
-      localStringBuilder1.append(l2 - l1);
-      QLog.d(paramAppInterface, 2, localStringBuilder1.toString());
-    }
-    return paramMessage;
+    paramAppInterface = a;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getGameRoleBitmap usrInfo or face url is null, roleId:");
+    ((StringBuilder)localObject).append(paramMessage);
+    QLog.w(paramAppInterface, 1, ((StringBuilder)localObject).toString());
+    return null;
   }
   
   public static Drawable a(AppInterface paramAppInterface, String paramString)
   {
     try
     {
-      Drawable localDrawable = BaseApplication.getContext().getResources().getDrawable(2130840321);
+      Drawable localDrawable = BaseApplication.getContext().getResources().getDrawable(2130841060);
       paramString = a(paramAppInterface, paramString);
       if (paramString != null)
       {
@@ -244,9 +216,9 @@ public class GameMsgUtil
     }
     catch (Throwable paramAppInterface)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramAppInterface.getMessage());
+      QLog.e(a, 1, paramAppInterface.getMessage());
     }
-    return BaseApplication.getContext().getResources().getDrawable(2130840321);
+    return BaseApplication.getContext().getResources().getDrawable(2130841060);
   }
   
   public static AppInterface a()
@@ -263,7 +235,7 @@ public class GameMsgUtil
     paramAppInterface = ((IGameMsgManagerService)paramAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).findGameUserInfo(paramString);
     if (paramAppInterface == null)
     {
-      paramContext = jdField_a_of_type_JavaLangString;
+      paramContext = a;
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("usrInfo is null, roleId:");
       paramAppInterface.append(paramString);
@@ -272,14 +244,14 @@ public class GameMsgUtil
     }
     if (TextUtils.isEmpty(paramAppInterface.mFaceUrl))
     {
-      paramContext = jdField_a_of_type_JavaLangString;
+      paramContext = a;
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("faceurl is null, roleId:");
       paramAppInterface.append(paramString);
       QLog.w(paramContext, 1, paramAppInterface.toString());
       return null;
     }
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130840321);
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130841060);
     paramString = URLDrawable.URLDrawableOptions.obtain();
     paramString.mFailedDrawable = localDrawable;
     paramString.mLoadingDrawable = localDrawable;
@@ -288,7 +260,11 @@ public class GameMsgUtil
     paramContext = localObject;
     try
     {
-      paramAppInterface = URLDrawable.getDrawable(new URL(paramAppInterface.mFaceUrl), paramString);
+      paramAppInterface = new URL(paramAppInterface.mFaceUrl);
+      paramContext = localObject;
+      paramString.mMemoryCacheKeySuffix = "normal_mode";
+      paramContext = localObject;
+      paramAppInterface = URLDrawable.getDrawable(paramAppInterface, paramString);
       paramContext = paramAppInterface;
       paramAppInterface.setTag(URLDrawableDecodeHandler.a(100, 100, 6));
       paramContext = paramAppInterface;
@@ -302,24 +278,24 @@ public class GameMsgUtil
     return paramContext;
   }
   
-  public static MessageRecord a(AppInterface paramAppInterface, String paramString)
+  public static MessageRecord a(AppRuntime paramAppRuntime, String paramString)
   {
-    if (paramAppInterface != null)
+    if (paramAppRuntime != null)
     {
       if (TextUtils.isEmpty(paramString)) {
         return null;
       }
-      paramAppInterface = (IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "");
-      if (paramAppInterface == null) {
+      paramAppRuntime = (IMessageFacade)paramAppRuntime.getRuntimeService(IMessageFacade.class, "");
+      if (paramAppRuntime == null) {
         return null;
       }
-      paramAppInterface = paramAppInterface.getAllMessages(paramString, 10007, new int[] { -1000 }, 10);
-      if (paramAppInterface != null)
+      paramAppRuntime = paramAppRuntime.getAllMessages(paramString, 10007, new int[] { -1000, -2000, -2001 }, 10);
+      if (paramAppRuntime != null)
       {
-        if (paramAppInterface.size() == 0) {
+        if (paramAppRuntime.size() == 0) {
           return null;
         }
-        return (MessageRecord)paramAppInterface.get(paramAppInterface.size() - 1);
+        return (MessageRecord)paramAppRuntime.get(paramAppRuntime.size() - 1);
       }
     }
     return null;
@@ -357,33 +333,11 @@ public class GameMsgUtil
     return localStringBuilder.toString();
   }
   
-  public static String a(long paramLong)
-  {
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).set(((Calendar)localObject).get(1), ((Calendar)localObject).get(2), ((Calendar)localObject).get(5) - 1, 0, 0, 0);
-    long l = ((Calendar)localObject).getTime().getTime();
-    if (a(paramLong))
-    {
-      localObject = new Date(paramLong);
-      return new SimpleDateFormat("HH:mm").format((Date)localObject);
-    }
-    if (paramLong > l) {
-      return "昨天";
-    }
-    if (paramLong > l - 518400000L) {
-      return "两天前";
-    }
-    if (paramLong > l - 2505600000L) {
-      return "一周前";
-    }
-    return "一月前";
-  }
-  
   public static String a(AppInterface paramAppInterface, MessageRecord paramMessageRecord, CharSequence paramCharSequence)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(BaseApplication.getContext().getString(2131692793));
     ((StringBuilder)localObject).append(paramCharSequence);
+    ((StringBuilder)localObject).append("");
     paramCharSequence = ((StringBuilder)localObject).toString();
     if (paramAppInterface == null) {
       return paramCharSequence;
@@ -411,8 +365,8 @@ public class GameMsgUtil
         return paramCharSequence;
       }
       paramCharSequence = new StringBuilder();
-      paramCharSequence.append(paramAppInterface.getApplication().getString(2131692794));
-      paramCharSequence.append(paramMessageRecord.i);
+      paramCharSequence.append(paramAppInterface.getApplication().getString(2131889897));
+      paramCharSequence.append(paramMessageRecord.k);
       return paramCharSequence.toString();
     }
     return paramCharSequence;
@@ -436,7 +390,7 @@ public class GameMsgUtil
         return paramMessageRecord.nickName;
       }
     }
-    return paramAppInterface.getApplication().getResources().getString(2131692790);
+    return paramAppInterface.getApplication().getResources().getString(2131889891);
   }
   
   public static String a(String paramString, AppInterface paramAppInterface)
@@ -468,12 +422,12 @@ public class GameMsgUtil
         }
       }
     }
-    return paramAppInterface.getApplication().getResources().getString(2131692790);
+    return paramAppInterface.getApplication().getResources().getString(2131889891);
   }
   
   public static void a(int paramInt1, int paramInt2)
   {
-    String str = b(paramInt1);
+    String str = c(paramInt1);
     ReportController.b(null, "dc00898", "", "", str, str, paramInt2, 0, "", "", "", "");
   }
   
@@ -484,7 +438,7 @@ public class GameMsgUtil
     }
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[openGameMsgSessionPage],from:");
       localStringBuilder.append(paramString);
@@ -494,7 +448,7 @@ public class GameMsgUtil
     if (localObject == null) {
       return;
     }
-    if (a(paramContext, paramString)) {
+    if (b(paramContext, paramString)) {
       return;
     }
     paramString = (IGameMsgManagerService)((AppInterface)localObject).getRuntimeService(IGameMsgManagerService.class, "");
@@ -506,18 +460,18 @@ public class GameMsgUtil
     if (paramGameCenterSessionInfo != null)
     {
       paramString = (String)localObject;
-      if (paramGameCenterSessionInfo.a() == 0)
+      if (paramGameCenterSessionInfo.f() == 0)
       {
         paramString = new StringBuilder();
         paramString.append((String)localObject);
         paramString.append("&&gameId=");
-        paramString.append(paramGameCenterSessionInfo.e());
+        paramString.append(paramGameCenterSessionInfo.h());
         paramString.append("&gameName=");
-        paramString.append(paramGameCenterSessionInfo.f());
+        paramString.append(paramGameCenterSessionInfo.i());
         paramString.append("&sessionId=");
-        paramString.append(paramGameCenterSessionInfo.d());
+        paramString.append(paramGameCenterSessionInfo.g());
         paramString.append("&requestCount=");
-        paramString.append(paramGameCenterSessionInfo.b());
+        paramString.append(paramGameCenterSessionInfo.l());
         paramString = paramString.toString();
       }
     }
@@ -537,31 +491,31 @@ public class GameMsgUtil
     }
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[openGameMsgSessionPageFromToolProcess],from:");
       localStringBuilder.append(paramString1);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (a(paramContext, paramString1)) {
+    if (b(paramContext, paramString1)) {
       return;
     }
     paramString1 = paramString2;
     if (paramGameCenterSessionInfo != null)
     {
       paramString1 = paramString2;
-      if (paramGameCenterSessionInfo.a() == 0)
+      if (paramGameCenterSessionInfo.f() == 0)
       {
         paramString1 = new StringBuilder();
         paramString1.append(paramString2);
         paramString1.append("&&gameId=");
-        paramString1.append(paramGameCenterSessionInfo.e());
+        paramString1.append(paramGameCenterSessionInfo.h());
         paramString1.append("&gameName=");
-        paramString1.append(paramGameCenterSessionInfo.f());
+        paramString1.append(paramGameCenterSessionInfo.i());
         paramString1.append("&sessionId=");
-        paramString1.append(paramGameCenterSessionInfo.d());
+        paramString1.append(paramGameCenterSessionInfo.g());
         paramString1.append("&requestCount=");
-        paramString1.append(paramGameCenterSessionInfo.b());
+        paramString1.append(paramGameCenterSessionInfo.l());
         paramString1 = paramString1.toString();
       }
     }
@@ -576,18 +530,18 @@ public class GameMsgUtil
   
   public static void a(Context paramContext, GameDetailInfo paramGameDetailInfo)
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[startGame]");
+    QLog.i(a, 1, "[startGame]");
     if (paramGameDetailInfo == null)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "fail to start game, detailInfo is null.");
+      QLog.w(a, 1, "fail to start game, detailInfo is null.");
       return;
     }
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("appId:");
     ((StringBuilder)localObject2).append(paramGameDetailInfo.c);
     QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    localObject2 = paramGameDetailInfo.l;
+    localObject2 = paramGameDetailInfo.o;
     localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = GameBasicInfo.getDefaultGameLaunchUrl(paramGameDetailInfo.c);
@@ -604,7 +558,7 @@ public class GameMsgUtil
     }
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[openGameMsgSettingPage],from:");
       localStringBuilder.append(paramString);
@@ -627,14 +581,9 @@ public class GameMsgUtil
     QRoute.startUri(paramContext, null);
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    a(paramContext, paramString1, paramString2, paramString3, 0);
-  }
-  
-  private static void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[enterGameMsgChatPie], convertUin:");
     localStringBuilder.append(paramString1);
@@ -650,26 +599,17 @@ public class GameMsgUtil
     paramContext.extra().putString("game_msg_friend_role_id", paramString2);
     paramContext.extra().putString("game_msg_my_role_id", paramString3);
     paramContext.extra().putInt("uintype", 10007);
-    paramContext.extra().putInt("game_msg_enter_from", paramInt);
-    paramContext.extra().putInt("game_msg_open_aio_from", 1);
+    paramContext.extra().putInt("game_msg_open_aio_from", paramInt);
     paramContext.setFlags(268435456);
     QRoute.startUri(paramContext, null);
   }
   
-  public static void a(AppInterface paramAppInterface)
+  public static void a(AppInterface paramAppInterface, int paramInt, Message paramMessage)
   {
-    ThreadManager.getSubThreadHandler().post(new GameMsgUtil.2(paramAppInterface));
-  }
-  
-  public static void a(AppInterface paramAppInterface, int paramInt, String paramString)
-  {
-    if (paramAppInterface != null)
-    {
-      if (paramInt != 10007) {
-        return;
-      }
-      ThreadManager.getSubThreadHandler().post(new GameMsgUtil.4(paramAppInterface, paramString));
+    if (paramMessage == null) {
+      return;
     }
+    ThreadManager.getSubThreadHandler().post(new GameMsgUtil.2(paramAppInterface, paramInt, paramMessage));
   }
   
   public static void a(AppInterface paramAppInterface, Context paramContext, String paramString)
@@ -678,28 +618,28 @@ public class GameMsgUtil
       try
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "enterGameMsgChatPie is called.");
+          QLog.d(a, 2, "enterGameMsgChatPie is called.");
         }
         ConversationInfo localConversationInfo = ((IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "")).getTinyConvInfo(paramString, 10007);
         if (localConversationInfo != null)
         {
-          String str1 = localConversationInfo.tinyInfo.fromRoleId;
-          String str2 = localConversationInfo.tinyInfo.toRoleId;
-          Object localObject = (IGameMsgManagerService)paramAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
-          if (localObject == null) {
+          Object localObject1 = (IGameMsgManagerService)paramAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
+          if (localObject1 == null) {
             return;
           }
-          GameCenterSessionInfo localGameCenterSessionInfo = ((IGameMsgManagerService)localObject).getSessionInfoByUin(paramString);
-          localObject = localGameCenterSessionInfo;
-          if (localGameCenterSessionInfo == null) {
-            localObject = new GameCenterSessionInfo();
+          Object localObject2 = ((IGameMsgManagerService)localObject1).getSessionInfoByUin(paramString);
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = new GameCenterSessionInfo();
           }
-          ((GameCenterSessionInfo)localObject).e(paramString);
-          ((GameCenterSessionInfo)localObject).d(str1);
-          ((GameCenterSessionInfo)localObject).b(str2);
-          ((GameCenterSessionInfo)localObject).c(localConversationInfo.tinyInfo.fromTinyId);
-          ((GameCenterSessionInfo)localObject).d(localConversationInfo.tinyInfo.toTinyId);
-          a(paramContext, (GameCenterSessionInfo)localObject, "src2");
+          ((GameCenterSessionInfo)localObject1).e(paramString);
+          localObject2 = localConversationInfo.tinyInfo.fromRoleId;
+          String str = localConversationInfo.tinyInfo.toRoleId;
+          ((GameCenterSessionInfo)localObject1).d((String)localObject2);
+          ((GameCenterSessionInfo)localObject1).b(str);
+          ((GameCenterSessionInfo)localObject1).c(localConversationInfo.tinyInfo.fromTinyId);
+          ((GameCenterSessionInfo)localObject1).d(localConversationInfo.tinyInfo.toTinyId);
+          a(paramContext, (GameCenterSessionInfo)localObject1, "src2");
           a(paramAppInterface, paramString, 10004, 1);
           return;
         }
@@ -711,34 +651,15 @@ public class GameMsgUtil
     }
   }
   
-  public static void a(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString)
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString, int paramInt)
   {
-    ThreadManager.getSubThreadHandler().post(new GameMsgUtil.3(paramAppInterface, paramMessageRecord, paramString));
-  }
-  
-  public static void a(AppInterface paramAppInterface, Object paramObject)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    paramObject = (ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
-    if (paramObject == null) {
-      return;
-    }
-    paramObject = paramObject.getMsgBoxRecentUsers();
-    if ((paramObject != null) && (!paramObject.isEmpty()))
+    MessageRecord localMessageRecord = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getLastGameMsg(paramAppInterface, paramString);
+    if (localMessageRecord != null)
     {
-      paramObject = (RecentUser)paramObject.get(0);
-      if (paramObject != null)
-      {
-        if (paramObject.getType() != 10007) {
-          return;
-        }
-        ThreadManager.getSubThreadHandler().post(new GameMsgUtil.1(paramAppInterface, paramObject));
-      }
+      a(paramContext, paramString, RoleIdUtil.b(localMessageRecord), RoleIdUtil.a(localMessageRecord), paramInt);
       return;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "reportClickMsgBox: msgBoxRecentUsers.isEmpty()");
+    ((IGameMsgBoxManager)paramAppInterface.getRuntimeService(IGameMsgBoxManager.class, "")).asyncFindGameBoxRecentUserInfo(paramString, new GameMsgUtil.1(paramAppInterface, paramContext, paramInt));
   }
   
   public static void a(AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2)
@@ -746,7 +667,7 @@ public class GameMsgUtil
     if (paramAppInterface == null) {
       return;
     }
-    String str = b(paramInt1);
+    String str = c(paramInt1);
     try
     {
       paramAppInterface = (IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "");
@@ -757,7 +678,7 @@ public class GameMsgUtil
       boolean bool = QLog.isColorLevel();
       if (bool)
       {
-        paramString = jdField_a_of_type_JavaLangString;
+        paramString = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("report called with: key = [");
         localStringBuilder.append(str);
@@ -770,7 +691,7 @@ public class GameMsgUtil
       }
       if (paramAppInterface == null)
       {
-        paramAppInterface = jdField_a_of_type_JavaLangString;
+        paramAppInterface = a;
         paramString = new StringBuilder();
         paramString.append("report called with: conversationInfo null. key = [");
         paramString.append(str);
@@ -793,7 +714,7 @@ public class GameMsgUtil
         return;
       }
       catch (Exception paramAppInterface) {}
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
     }
     catch (Exception paramAppInterface) {}
     StringBuilder localStringBuilder = new StringBuilder();
@@ -805,11 +726,6 @@ public class GameMsgUtil
     localStringBuilder.append(paramInt2);
     localStringBuilder.append("]");
     QLog.e(paramString, 1, localStringBuilder.toString(), paramAppInterface);
-  }
-  
-  public static void a(String paramString)
-  {
-    GameDelSessionDataHelper.a(paramString);
   }
   
   public static void a(String paramString, long paramLong)
@@ -841,34 +757,34 @@ public class GameMsgUtil
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject();
-      localJSONObject3.put("sq_ver", "8.7.0");
-      localJSONObject3.put("device_type", Build.BRAND);
-      localJSONObject3.put("domain", "1");
-      localJSONObject3.put("gameappid", paramString1);
-      localJSONObject3.put("ext12", paramString3);
-      localJSONObject3.put("ext11", paramString2);
-      localJSONObject3.put("ext1", paramString5);
-      localJSONObject3.put("oper_moudle", paramString4);
-      localJSONObject3.put("oper_id", paramString6);
-      localJSONObject3.put("ext2", paramString8);
-      localJSONObject3.put("ext4", paramString7);
-      localJSONObject3.put("ext6", paramString9);
-      localJSONObject3.put("ext8", paramString10);
-      localJSONObject3.put("tianji_report_str", paramString11);
-      localJSONObject2.put("data", localJSONObject3);
-      localJSONObject2.put("dc_id", "dc00087");
-      localJSONArray.put(localJSONObject2);
-      localJSONObject1.put("report_list", localJSONArray);
-      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(localJSONObject1, 0);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("sq_ver", "8.8.17");
+      localJSONObject.put("device_type", Build.BRAND);
+      localJSONObject.put("domain", "1");
+      localJSONObject.put("gameappid", paramString1);
+      localJSONObject.put("ext12", paramString3);
+      localJSONObject.put("ext11", paramString2);
+      localJSONObject.put("ext1", paramString5);
+      localJSONObject.put("oper_moudle", paramString4);
+      localJSONObject.put("oper_id", paramString6);
+      localJSONObject.put("ext2", paramString8);
+      localJSONObject.put("ext4", paramString7);
+      localJSONObject.put("ext6", paramString9);
+      localJSONObject.put("ext8", paramString10);
+      localJSONObject.put("tianji_report_str", paramString11);
+      paramString1 = new JSONObject();
+      paramString1.put("data", localJSONObject);
+      paramString1.put("dc_id", "dc00087");
+      paramString2 = new JSONArray();
+      paramString2.put(paramString1);
+      paramString1 = new JSONObject();
+      paramString1.put("report_list", paramString2);
+      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(paramString1, 0);
       return;
     }
     catch (Exception paramString1)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString1.getMessage());
+      QLog.e(a, 1, paramString1.getMessage());
     }
   }
   
@@ -876,73 +792,41 @@ public class GameMsgUtil
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject();
-      localJSONObject3.put("sq_ver", "8.7.0");
-      localJSONObject3.put("device_type", Build.BRAND);
-      localJSONObject3.put("domain", "1");
-      localJSONObject3.put("gameappid", paramString1);
-      localJSONObject3.put("ext12", paramString3);
-      localJSONObject3.put("ext11", paramString2);
-      localJSONObject3.put("ext1", paramString5);
-      localJSONObject3.put("oper_moudle", paramString4);
-      localJSONObject3.put("oper_id", paramString6);
-      localJSONObject3.put("ext2", paramString7);
-      localJSONObject3.put("ext3", paramString8);
-      localJSONObject3.put("ext4", paramString9);
-      localJSONObject3.put("ext6", paramString10);
-      localJSONObject3.put("ext7", paramString11);
-      localJSONObject3.put("ext8", paramString12);
-      localJSONObject2.put("data", localJSONObject3);
-      localJSONObject2.put("dc_id", "dc00087");
-      localJSONArray.put(localJSONObject2);
-      localJSONObject1.put("report_list", localJSONArray);
-      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(localJSONObject1, 0);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("sq_ver", "8.8.17");
+      localJSONObject.put("device_type", Build.BRAND);
+      localJSONObject.put("domain", "1");
+      localJSONObject.put("gameappid", paramString1);
+      localJSONObject.put("ext12", paramString3);
+      localJSONObject.put("ext11", paramString2);
+      localJSONObject.put("ext1", paramString5);
+      localJSONObject.put("oper_moudle", paramString4);
+      localJSONObject.put("oper_id", paramString6);
+      localJSONObject.put("ext2", paramString7);
+      localJSONObject.put("ext3", paramString8);
+      localJSONObject.put("ext4", paramString9);
+      localJSONObject.put("ext6", paramString10);
+      localJSONObject.put("ext7", paramString11);
+      localJSONObject.put("ext8", paramString12);
+      paramString1 = new JSONObject();
+      paramString1.put("data", localJSONObject);
+      paramString1.put("dc_id", "dc00087");
+      paramString2 = new JSONArray();
+      paramString2.put(paramString1);
+      paramString1 = new JSONObject();
+      paramString1.put("report_list", paramString2);
+      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(paramString1, 0);
       return;
     }
     catch (Exception paramString1)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString1.getMessage());
+      QLog.e(a, 1, paramString1.getMessage());
     }
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject();
-      localJSONObject3.put("sq_ver", "8.7.0");
-      localJSONObject3.put("device_type", Build.BRAND);
-      localJSONObject3.put("domain", "1");
-      localJSONObject3.put("gameappid", paramString1);
-      localJSONObject3.put("ext12", paramString3);
-      localJSONObject3.put("ext11", paramString2);
-      localJSONObject3.put("ext1", paramString5);
-      localJSONObject3.put("oper_moudle", paramString4);
-      localJSONObject3.put("oper_id", paramString6);
-      localJSONObject3.put("ext2", paramString7);
-      localJSONObject3.put("ext3", paramString8);
-      localJSONObject3.put("ext4", paramString9);
-      localJSONObject3.put("ext6", paramString10);
-      localJSONObject3.put("ext7", paramString11);
-      localJSONObject3.put("ext8", paramString12);
-      localJSONObject3.put("tianji_report_str", paramString13);
-      localJSONObject2.put("data", localJSONObject3);
-      localJSONObject2.put("dc_id", "dc00087");
-      localJSONArray.put(localJSONObject2);
-      localJSONObject1.put("report_list", localJSONArray);
-      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(localJSONObject1, 0);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString1.getMessage());
-    }
+    a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, "");
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
@@ -950,36 +834,36 @@ public class GameMsgUtil
     try
     {
       paramString11 = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("sq_ver", "8.7.0");
-      localJSONObject2.put("device_type", Build.BRAND);
-      localJSONObject2.put("domain", "1");
-      localJSONObject2.put("gameappid", paramString1);
-      localJSONObject2.put("ext12", paramString3);
-      localJSONObject2.put("ext11", paramString2);
-      localJSONObject2.put("ext1", paramString5);
-      localJSONObject2.put("oper_moudle", paramString4);
-      localJSONObject2.put("oper_id", paramString6);
-      localJSONObject2.put("logic_id", paramString7);
-      localJSONObject2.put("ext2", paramString8);
-      localJSONObject2.put("ext3", paramString9);
-      localJSONObject2.put("ext4", paramString10);
-      localJSONObject2.put("ext6", paramString7);
-      localJSONObject2.put("ext10", paramString12);
-      localJSONObject2.put("ext11", paramString13);
-      localJSONObject2.put("ext24", paramString14);
-      localJSONObject1.put("data", localJSONObject2);
-      localJSONObject1.put("dc_id", "dc00087");
-      localJSONArray.put(localJSONObject1);
-      paramString11.put("report_list", localJSONArray);
-      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(paramString11, 0);
+      paramString11.put("sq_ver", "8.8.17");
+      paramString11.put("device_type", Build.BRAND);
+      paramString11.put("domain", "1");
+      paramString11.put("gameappid", paramString1);
+      paramString11.put("ext12", paramString3);
+      paramString11.put("ext11", paramString2);
+      paramString11.put("ext1", paramString5);
+      paramString11.put("oper_moudle", paramString4);
+      paramString11.put("oper_id", paramString6);
+      paramString11.put("logic_id", paramString7);
+      paramString11.put("ext2", paramString8);
+      paramString11.put("ext3", paramString9);
+      paramString11.put("ext4", paramString10);
+      paramString11.put("ext6", paramString7);
+      paramString11.put("ext10", paramString12);
+      paramString11.put("ext11", paramString13);
+      paramString11.put("ext24", paramString14);
+      paramString1 = new JSONObject();
+      paramString1.put("data", paramString11);
+      paramString1.put("dc_id", "dc00087");
+      paramString2 = new JSONArray();
+      paramString2.put(paramString1);
+      paramString1 = new JSONObject();
+      paramString1.put("report_list", paramString2);
+      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(paramString1, 0);
       return;
     }
     catch (Exception paramString1)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString1.getMessage());
+      QLog.e(a, 1, paramString1.getMessage());
     }
   }
   
@@ -1003,30 +887,6 @@ public class GameMsgUtil
     Date localDate = new Date(paramLong);
     paramString = new SimpleDateFormat(paramString);
     return paramString.format(localDate).equals(paramString.format(new Date()));
-  }
-  
-  private static boolean a(Context paramContext, String paramString)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    if (!((ITempApi)QRoute.api(ITempApi.class)).getHippySwitch())
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "hippy switch is off, ail to open by hippy");
-      return false;
-    }
-    try
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "openGameMsgSessionPageByHippy runs.");
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("https://speed.gamecenter.qq.com/pushgame/v1/home-spa/msg?_wv=18950115&_wwv=393&page=msg&adtag=");
-      ((StringBuilder)localObject).append(paramString);
-      localObject = ((StringBuilder)localObject).toString();
-      ((ITempApi)QRoute.api(ITempApi.class)).openQQGameCenterByHippy(paramContext, (String)localObject, paramString);
-      return true;
-    }
-    catch (Throwable paramContext) {}
-    return false;
   }
   
   public static boolean a(AppInterface paramAppInterface)
@@ -1074,7 +934,7 @@ public class GameMsgUtil
         {
           paramMessage = new StringBuilder();
           paramMessage.append("[");
-          paramMessage.append(paramAppInterface.i);
+          paramMessage.append(paramAppInterface.k);
           paramMessage.append("]");
           paramMsgSummary.prefixOfContent = paramMessage.toString();
         }
@@ -1082,19 +942,6 @@ public class GameMsgUtil
       }
     }
     return false;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, String paramString)
-  {
-    paramAppInterface = a(paramAppInterface, paramString);
-    boolean bool = false;
-    if (paramAppInterface == null) {
-      return false;
-    }
-    if (new TinyInfo(paramAppInterface.getExtInfoFromExtStr("ext_key_game_msg_info")).redpointSwitch == 1) {
-      bool = true;
-    }
-    return bool;
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
@@ -1107,7 +954,7 @@ public class GameMsgUtil
     }
     if (QLog.isColorLevel())
     {
-      paramMessageRecord = jdField_a_of_type_JavaLangString;
+      paramMessageRecord = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[checkMesssageIsValid] ret = ");
       localStringBuilder.append(bool);
@@ -1125,7 +972,191 @@ public class GameMsgUtil
     return localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
   }
   
-  private static String b(int paramInt)
+  public static int b(AppInterface paramAppInterface)
+  {
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("game_msg_unread_count");
+    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    return localSharedPreferences.getInt(localStringBuilder.toString(), -1);
+  }
+  
+  public static long b(String paramString)
+  {
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_last_game_session_clicked");
+    localStringBuilder.append(paramString);
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+  }
+  
+  public static Drawable b(AppInterface paramAppInterface, String paramString)
+  {
+    GameBoxRecentUser localGameBoxRecentUser = ((IGameMsgBoxManager)paramAppInterface.getRuntimeService(IGameMsgBoxManager.class, "")).findGameBoxRecentUserInfo(paramString);
+    if (localGameBoxRecentUser == null) {
+      return a(paramAppInterface, paramString);
+    }
+    return a(BaseApplication.getContext(), paramAppInterface, localGameBoxRecentUser.mToRoleId);
+  }
+  
+  public static String b(long paramLong)
+  {
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).set(((Calendar)localObject).get(1), ((Calendar)localObject).get(2), ((Calendar)localObject).get(5) - 1, 0, 0, 0);
+    long l = ((Calendar)localObject).getTime().getTime();
+    if (a(paramLong))
+    {
+      localObject = new Date(paramLong);
+      return new SimpleDateFormat("HH:mm").format((Date)localObject);
+    }
+    if (paramLong > l) {
+      return "昨天";
+    }
+    if (paramLong > l - 518400000L) {
+      return "两天前";
+    }
+    if (paramLong > l - 2505600000L) {
+      return "一周前";
+    }
+    return "一月前";
+  }
+  
+  public static void b(AppInterface paramAppInterface, int paramInt)
+  {
+    c = paramInt;
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("game_msg_unread_count");
+    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    paramAppInterface = localStringBuilder.toString();
+    localSharedPreferences.edit().putInt(paramAppInterface, paramInt).commit();
+  }
+  
+  public static void b(String paramString, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_last_game_session_clicked");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    localSharedPreferences.edit().putLong(paramString, paramLong).commit();
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("sq_ver", "8.8.17");
+      localJSONObject.put("device_type", Build.BRAND);
+      localJSONObject.put("domain", "1");
+      localJSONObject.put("gameappid", paramString1);
+      localJSONObject.put("ext12", paramString3);
+      localJSONObject.put("ext11", paramString2);
+      localJSONObject.put("ext1", paramString5);
+      localJSONObject.put("oper_moudle", paramString4);
+      localJSONObject.put("oper_id", paramString6);
+      localJSONObject.put("ext2", paramString8);
+      localJSONObject.put("ext4", paramString7);
+      localJSONObject.put("ext6", paramString9);
+      localJSONObject.put("ext8", paramString10);
+      paramString1 = new JSONObject();
+      paramString1.put("data", localJSONObject);
+      paramString1.put("dc_id", "dc00087");
+      paramString2 = new JSONArray();
+      paramString2.put(paramString1);
+      paramString1 = new JSONObject();
+      paramString1.put("report_list", paramString2);
+      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(paramString1, 0);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e(a, 1, paramString1.getMessage());
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("sq_ver", "8.8.17");
+      localJSONObject.put("device_type", Build.BRAND);
+      localJSONObject.put("domain", "1");
+      localJSONObject.put("gameappid", paramString1);
+      localJSONObject.put("ext12", paramString3);
+      localJSONObject.put("ext11", paramString2);
+      localJSONObject.put("ext1", paramString5);
+      localJSONObject.put("oper_moudle", paramString4);
+      localJSONObject.put("oper_id", paramString6);
+      localJSONObject.put("ext2", paramString7);
+      localJSONObject.put("ext3", paramString8);
+      localJSONObject.put("ext4", paramString9);
+      localJSONObject.put("ext6", paramString10);
+      localJSONObject.put("ext7", paramString11);
+      localJSONObject.put("ext8", paramString12);
+      localJSONObject.put("tianji_report_str", paramString13);
+      paramString1 = new JSONObject();
+      paramString1.put("data", localJSONObject);
+      paramString1.put("dc_id", "dc00087");
+      paramString2 = new JSONArray();
+      paramString2.put(paramString1);
+      paramString1 = new JSONObject();
+      paramString1.put("report_list", paramString2);
+      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(paramString1, 0);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e(a, 1, paramString1.getMessage());
+    }
+  }
+  
+  public static void b(String paramString, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_aio_game_entry_shown");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    localSharedPreferences.edit().putBoolean(paramString, paramBoolean).commit();
+  }
+  
+  private static boolean b(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    if (!((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getHippySwitch())
+    {
+      QLog.e(a, 1, "hippy switch is off, ail to open by hippy");
+      return false;
+    }
+    try
+    {
+      QLog.i(a, 1, "openGameMsgSessionPageByHippy runs.");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("https://speed.gamecenter.qq.com/pushgame/v1/home-spa/msg?_wv=18950115&_wwv=393&page=msg&adtag=");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+      ((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).openQQGameCenterByHippy(paramContext, (String)localObject, paramString);
+      return true;
+    }
+    catch (Throwable paramContext) {}
+    return false;
+  }
+  
+  public static long c(AppInterface paramAppInterface)
+  {
+    SharedPreferences localSharedPreferences = paramAppInterface.getApplication().getSharedPreferences("game_center_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_top_last_time");
+    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+  }
+  
+  private static String c(int paramInt)
   {
     switch (paramInt)
     {
@@ -1145,104 +1176,20 @@ public class GameMsgUtil
     return "0X800AD42";
   }
   
-  public static void b(String paramString, long paramLong)
+  public static boolean c(AppInterface paramAppInterface, String paramString)
   {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("sp_last_game_session_clicked");
-    localStringBuilder.append(paramString);
-    paramString = localStringBuilder.toString();
-    localSharedPreferences.edit().putLong(paramString, paramLong).commit();
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
-  {
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject();
-      localJSONObject3.put("sq_ver", "8.7.0");
-      localJSONObject3.put("device_type", Build.BRAND);
-      localJSONObject3.put("domain", "1");
-      localJSONObject3.put("gameappid", paramString1);
-      localJSONObject3.put("ext12", paramString3);
-      localJSONObject3.put("ext11", paramString2);
-      localJSONObject3.put("ext1", paramString5);
-      localJSONObject3.put("oper_moudle", paramString4);
-      localJSONObject3.put("oper_id", paramString6);
-      localJSONObject3.put("ext2", paramString8);
-      localJSONObject3.put("ext4", paramString7);
-      localJSONObject3.put("ext6", paramString9);
-      localJSONObject3.put("ext8", paramString10);
-      localJSONObject2.put("data", localJSONObject3);
-      localJSONObject2.put("dc_id", "dc00087");
-      localJSONArray.put(localJSONObject2);
-      localJSONObject1.put("report_list", localJSONArray);
-      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(localJSONObject1, 0);
-      return;
+    paramAppInterface = a(paramAppInterface, paramString);
+    boolean bool = false;
+    if (paramAppInterface == null) {
+      return false;
     }
-    catch (Exception paramString1)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString1.getMessage());
+    if (new TinyInfo(paramAppInterface.getExtInfoFromExtStr("ext_key_game_msg_info")).redpointSwitch == 1) {
+      bool = true;
     }
+    return bool;
   }
   
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
-  {
-    a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13, "");
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
-  {
-    try
-    {
-      paramString11 = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("sq_ver", "8.7.0");
-      localJSONObject2.put("device_type", Build.BRAND);
-      localJSONObject2.put("domain", "1");
-      localJSONObject2.put("gameappid", paramString1);
-      localJSONObject2.put("ext12", paramString3);
-      localJSONObject2.put("ext11", paramString2);
-      localJSONObject2.put("ext1", paramString5);
-      localJSONObject2.put("oper_moudle", paramString4);
-      localJSONObject2.put("oper_id", paramString6);
-      localJSONObject2.put("logic_id", paramString7);
-      localJSONObject2.put("ext2", paramString8);
-      localJSONObject2.put("ext3", paramString9);
-      localJSONObject2.put("ext4", paramString10);
-      localJSONObject2.put("ext6", paramString7);
-      localJSONObject2.put("ext10", paramString12);
-      localJSONObject2.put("ext11", paramString13);
-      localJSONObject2.put("tianji_report_str", paramString14);
-      localJSONObject1.put("data", localJSONObject2);
-      localJSONObject1.put("dc_id", "dc00087");
-      localJSONArray.put(localJSONObject1);
-      paramString11.put("report_list", localJSONArray);
-      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).report(paramString11, 0);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString1.getMessage());
-    }
-  }
-  
-  public static void b(String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("sp_aio_game_entry_shown");
-    localStringBuilder.append(paramString);
-    paramString = localStringBuilder.toString();
-    localSharedPreferences.edit().putBoolean(paramString, paramBoolean).commit();
-  }
-  
-  public static boolean b(String paramString)
+  public static boolean c(String paramString)
   {
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -1250,10 +1197,31 @@ public class GameMsgUtil
     localStringBuilder.append(paramString);
     return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
+  
+  public static void d(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new GameMsgUtil.3(paramAppInterface));
+  }
+  
+  public static void d(AppInterface paramAppInterface, String paramString)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new GameMsgUtil.4(paramAppInterface, paramString));
+  }
+  
+  public static void d(String paramString)
+  {
+    GameDelSessionDataHelper.a(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.utils.GameMsgUtil
  * JD-Core Version:    0.7.0.1
  */

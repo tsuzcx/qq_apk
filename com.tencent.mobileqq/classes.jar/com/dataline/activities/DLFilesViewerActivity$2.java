@@ -21,8 +21,8 @@ class DLFilesViewerActivity$2
   protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
   {
     super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    DLFilesViewerActivity.b(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.d(this.a);
   }
   
   protected void a(String paramString)
@@ -35,31 +35,31 @@ class DLFilesViewerActivity$2
       if (paramString.equals(localDataLineMsgRecord.strMoloKey))
       {
         localDataLineMsgRecord.nAppStatus = 1;
-        DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+        DLFilesViewerActivity.b(this.a).notifyDataSetChanged();
       }
     }
-    DLFilesViewerActivity.b(this.a);
+    DLFilesViewerActivity.d(this.a);
   }
   
   protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
     super.a(paramBoolean, paramLong, paramString);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    DLFilesViewerActivity.b(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.d(this.a);
   }
   
   protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
   {
     super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    DLFilesViewerActivity.b(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.d(this.a);
   }
   
   protected void b(boolean paramBoolean, long paramLong, String paramString)
   {
     super.a(paramBoolean, paramLong, paramString);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    DLFilesViewerActivity.b(this.a).notifyDataSetChanged();
+    DLFilesViewerActivity.d(this.a);
   }
 }
 

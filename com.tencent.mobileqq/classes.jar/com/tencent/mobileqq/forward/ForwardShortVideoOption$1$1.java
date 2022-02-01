@@ -11,24 +11,24 @@ class ForwardShortVideoOption$1$1
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentImageURLDrawable.setBounds(0, 0, this.a.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicWidth(), this.a.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicHeight());
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.a.jdField_a_of_type_ComTencentImageURLDrawable, true, 0, true);
-    if (this.a.jdField_a_of_type_Boolean)
+    this.a.a.setBounds(0, 0, this.a.a.getIntrinsicWidth(), this.a.a.getIntrinsicHeight());
+    this.a.b.setPreviewImage(this.a.a, true, 0, true);
+    if (this.a.c)
     {
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.b != 0))
+      if ((this.a.d != 0) && (this.a.e != 0))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, ShortVideoUtils.stringForFileSize(this.a.this$0.a, this.a.jdField_a_of_type_Int), ShortVideoUtils.stringForTime(this.a.b * 1000));
+        this.a.b.setVideoFormat(true, false, ShortVideoUtils.stringForFileSize(this.a.this$0.I, this.a.d), ShortVideoUtils.stringForTime(this.a.e * 1000));
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, null, null);
+      this.a.b.setVideoFormat(true, false, null, null);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, null, null);
+    this.a.b.setVideoFormat(true, false, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption.1.1
  * JD-Core Version:    0.7.0.1
  */

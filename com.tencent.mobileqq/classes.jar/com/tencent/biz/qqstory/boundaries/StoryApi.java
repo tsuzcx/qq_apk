@@ -14,11 +14,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 
 public class StoryApi
 {
-  public static int a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
-  }
-  
   public static <T extends Activity> ActivityDelegate<T> a(Class<? extends ActivityDelegate<T>> paramClass, Class<ActivityDelegate<T>> paramClass1, Object... paramVarArgs)
   {
     return (ActivityDelegate)ExtensionFactoryImplement.a(paramClass, paramClass1, paramVarArgs);
@@ -37,11 +32,6 @@ public class StoryApi
   public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
   {
     return ExtensionFactoryImplement.a(paramClass, paramVarArgs);
-  }
-  
-  public static String a(int paramInt)
-  {
-    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
   }
   
   public static String a(int paramInt, Object... paramVarArgs)
@@ -74,14 +64,24 @@ public class StoryApi
     return StoryConfigImplement.a();
   }
   
-  public static String[] a(int paramInt)
+  public static String b(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
+  }
+  
+  public static String[] c(int paramInt)
   {
     return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+  }
+  
+  public static int d(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.StoryApi
  * JD-Core Version:    0.7.0.1
  */

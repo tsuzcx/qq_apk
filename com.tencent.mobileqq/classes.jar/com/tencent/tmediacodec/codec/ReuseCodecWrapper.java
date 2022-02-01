@@ -49,9 +49,9 @@ public abstract class ReuseCodecWrapper
   public static final int ID_HISTORY_LIMIT = 100;
   public static final int METHOD_DEQUEUE_INPUT_BUFFER = 0;
   public static final int METHOD_DEQUEUE_OUTPUT_BUFFER = 1;
-  public static final String TAG = "ReuseCodecWrapper";
   public static final int TRY_AGAIN_LATER_LIMIT = 100;
   private static final Map<Surface, ReuseCodecWrapper> mSurfaceMap = new ConcurrentHashMap();
+  public final String TAG;
   private final ReuseHelper.AdaptationWorkaroundMode adaptationMode;
   public boolean adaptive;
   @Nullable
@@ -64,32 +64,45 @@ public abstract class ReuseCodecWrapper
   protected final CodecMaxValues codecMaxValues;
   protected final String codecName;
   @NonNull
-  public ReuseCodecWrapper.DecodeState decodeState = ReuseCodecWrapper.DecodeState.Started;
+  public ReuseCodecWrapper.DecodeState decodeState;
   @NonNull
   public final FormatWrapper format;
   private boolean hasReused;
   public boolean isRecycled;
   private int mCantReuseCount;
-  private int[] mDequeueInOutputTryAgainCount = new int[2];
+  private int[] mDequeueInOutputTryAgainCount;
   private boolean mErrorHappened;
   private boolean mHasAlwaysTryAgainError;
   private boolean mHasConfigureCalled;
-  private final HashSet<Integer> mHoldBufferOutIndex = new HashSet();
+  private final HashSet<Integer> mHoldBufferOutIndex;
   private boolean mReleaseCalled;
-  private final Set<SurfaceTexture> mStoreToRelease = new LinkedHashSet();
+  private final Set<SurfaceTexture> mStoreToRelease;
   @Nullable
   protected Surface mSurface;
-  private String mSurfaceTextureName = "";
+  private String mSurfaceTextureName;
   private long mThreadId;
-  private final ArrayList<Long> mThreadIdHistory = new ArrayList();
+  private final ArrayList<Long> mThreadIdHistory;
   @NonNull
-  private ReuseHelper.ReuseType reuseType = ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO;
+  private ReuseHelper.ReuseType reuseType;
   public boolean secure;
   @NonNull
-  private ReuseCodecWrapper.CodecState state = ReuseCodecWrapper.CodecState.Uninitialized;
+  private ReuseCodecWrapper.CodecState state;
   
   public ReuseCodecWrapper(@NonNull MediaCodec paramMediaCodec, @NonNull FormatWrapper paramFormatWrapper)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReuseCodecWrapper[");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append("]");
+    this.TAG = localStringBuilder.toString();
+    this.decodeState = ReuseCodecWrapper.DecodeState.Started;
+    this.mSurfaceTextureName = "";
+    this.state = ReuseCodecWrapper.CodecState.Uninitialized;
+    this.mHoldBufferOutIndex = new HashSet();
+    this.mThreadIdHistory = new ArrayList();
+    this.reuseType = ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO;
+    this.mStoreToRelease = new LinkedHashSet();
+    this.mDequeueInOutputTryAgainCount = new int[2];
     boolean bool2 = false;
     this.mErrorHappened = false;
     this.mHasAlwaysTryAgainError = false;
@@ -106,10 +119,11 @@ public abstract class ReuseCodecWrapper
       } else {
         bool1 = true;
       }
-      paramMediaCodec = new StringBuilder();
-      paramMediaCodec.append("canCallGetCodecInfo:");
-      paramMediaCodec.append(bool1);
-      LogUtils.d("ReuseCodecWrapper", paramMediaCodec.toString());
+      paramMediaCodec = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("canCallGetCodecInfo:");
+      localStringBuilder.append(bool1);
+      LogUtils.d(paramMediaCodec, localStringBuilder.toString());
       if (bool1) {
         this.capabilities = this.codec.getCodecInfo().getCapabilitiesForType(paramFormatWrapper.sampleMimeType);
       }
@@ -145,41 +159,44 @@ public abstract class ReuseCodecWrapper
   
   private void checkSurfaceBindingAndRecycle(Surface paramSurface)
   {
-    Object localObject;
+    Object localObject1;
+    Object localObject2;
     if (LogUtils.isLogEnable())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this);
-      ((StringBuilder)localObject).append(" checkSurfaceBinding size:");
-      ((StringBuilder)localObject).append(mSurfaceMap.size());
-      ((StringBuilder)localObject).append(" mSurfaceMap:");
-      ((StringBuilder)localObject).append(mSurfaceMap);
-      LogUtils.d("ReuseCodecWrapper", ((StringBuilder)localObject).toString());
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this);
+      ((StringBuilder)localObject2).append(" checkSurfaceBinding size:");
+      ((StringBuilder)localObject2).append(mSurfaceMap.size());
+      ((StringBuilder)localObject2).append(" mSurfaceMap:");
+      ((StringBuilder)localObject2).append(mSurfaceMap);
+      LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
     }
     if (mSurfaceMap.containsKey(paramSurface))
     {
-      localObject = (ReuseCodecWrapper)mSurfaceMap.get(paramSurface);
+      localObject1 = (ReuseCodecWrapper)mSurfaceMap.get(paramSurface);
       boolean bool;
-      if ((localObject != null) && (((ReuseCodecWrapper)localObject).isReleaseCalled())) {
+      if ((localObject1 != null) && (((ReuseCodecWrapper)localObject1).isReleaseCalled())) {
         bool = true;
       } else {
         bool = false;
       }
       if (LogUtils.isLogEnable())
       {
+        localObject2 = this.TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(this);
         localStringBuilder.append(", surface:");
         localStringBuilder.append(paramSurface);
         localStringBuilder.append(" has been used by ");
-        localStringBuilder.append(localObject);
+        localStringBuilder.append(localObject1);
         localStringBuilder.append(" isReleaseCalled:");
         localStringBuilder.append(bool);
         localStringBuilder.append(", ignore but we can release it...");
-        LogUtils.e("ReuseCodecWrapper", localStringBuilder.toString());
+        LogUtils.e((String)localObject2, localStringBuilder.toString());
       }
       if (bool) {
-        ((ReuseCodecWrapper)localObject).recycle();
+        ((ReuseCodecWrapper)localObject1).recycle();
       }
     }
   }
@@ -224,7 +241,7 @@ public abstract class ReuseCodecWrapper
           localStringBuilder.append("\n");
           paramInt3 = 0;
           if (paramInt3 >= 16) {
-            break label161;
+            break label165;
           }
           localStringBuilder.append(" ");
           localStringBuilder.append(byte2HexString(Byte.valueOf(localByteBuffer.get(paramInt1 * 4 + paramInt2 + paramInt3))));
@@ -233,29 +250,30 @@ public abstract class ReuseCodecWrapper
         }
         if (LogUtils.isLogEnable())
         {
-          LogUtils.v("ReuseCodecWrapper", localStringBuilder.toString());
+          LogUtils.v(this.TAG, localStringBuilder.toString());
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        LogUtils.e("ReuseCodecWrapper", "dumpInputBuffer error", localThrowable);
+        LogUtils.e(this.TAG, "dumpInputBuffer error", localThrowable);
       }
       return;
-      label161:
+      label165:
       paramInt1 += 1;
     }
   }
   
   private void dumpSurfaceMap(String paramString)
   {
+    String str = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this);
     localStringBuilder.append("    ");
     localStringBuilder.append(paramString);
     localStringBuilder.append("     dumpSurfaceMap:");
     localStringBuilder.append(mSurfaceMap);
-    LogUtils.i("ReuseCodecWrapper", localStringBuilder.toString());
+    LogUtils.i(str, localStringBuilder.toString());
   }
   
   private void handleCoreAPIException(int paramInt, String paramString, Throwable paramThrowable)
@@ -266,16 +284,15 @@ public abstract class ReuseCodecWrapper
   private void handleCoreAPIException(int paramInt, String paramString, Throwable paramThrowable, boolean paramBoolean, Surface paramSurface)
   {
     this.mErrorHappened = true;
-    String str;
     if (paramThrowable == null) {
-      str = "";
+      localObject = "";
     } else {
-      str = paramThrowable.getLocalizedMessage();
+      localObject = paramThrowable.getLocalizedMessage();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append(" handleCoreAPIException exception:");
-    localStringBuilder.append(str);
+    localStringBuilder.append((String)localObject);
     paramString = localStringBuilder.toString();
     int i = paramInt;
     if (paramBoolean)
@@ -299,14 +316,15 @@ public abstract class ReuseCodecWrapper
     {
       paramSurface.printStackTrace();
     }
-    paramSurface = new StringBuilder();
-    paramSurface.append("hasReused:");
-    paramSurface.append(this.hasReused);
-    paramSurface.append("    errorCode:");
-    paramSurface.append(i);
-    paramSurface.append(", ");
-    paramSurface.append(paramString);
-    LogUtils.e("ReuseCodecWrapper", paramSurface.toString(), paramThrowable);
+    paramSurface = this.TAG;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("hasReused:");
+    ((StringBuilder)localObject).append(this.hasReused);
+    ((StringBuilder)localObject).append("    errorCode:");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtils.e(paramSurface, ((StringBuilder)localObject).toString(), paramThrowable);
     releaseCodecWhenError(i);
   }
   
@@ -326,13 +344,14 @@ public abstract class ReuseCodecWrapper
   {
     if (this.mSurface == paramSurface)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this);
-      ((StringBuilder)localObject).append(", innerSetOutputSurface error surface:");
-      ((StringBuilder)localObject).append(paramSurface);
-      ((StringBuilder)localObject).append(" is same, stack:");
-      ((StringBuilder)localObject).append(Log.getStackTraceString(new Throwable()));
-      LogUtils.w("ReuseCodecWrapper", ((StringBuilder)localObject).toString());
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this);
+      localStringBuilder.append(", innerSetOutputSurface error surface:");
+      localStringBuilder.append(paramSurface);
+      localStringBuilder.append(" is same, stack:");
+      localStringBuilder.append(Log.getStackTraceString(new Throwable()));
+      LogUtils.w((String)localObject, localStringBuilder.toString());
       return;
     }
     Object localObject = null;
@@ -347,7 +366,7 @@ public abstract class ReuseCodecWrapper
       ((StringBuilder)localObject).append(" callByInner:");
       ((StringBuilder)localObject).append(paramBoolean);
       localObject = ((StringBuilder)localObject).toString();
-      LogUtils.d("ReuseCodecWrapper", (String)localObject);
+      LogUtils.d(this.TAG, (String)localObject);
     }
     try
     {
@@ -403,28 +422,30 @@ public abstract class ReuseCodecWrapper
     {
       if ((localSurface instanceof PreloadSurface))
       {
-        Object localObject = ((PreloadSurface)localSurface).getSurfaceTexture();
-        if ((localObject instanceof PreloadSurfaceTexture)) {
-          this.mStoreToRelease.add(localObject);
+        Object localObject1 = ((PreloadSurface)localSurface).getSurfaceTexture();
+        if ((localObject1 instanceof PreloadSurfaceTexture)) {
+          this.mStoreToRelease.add(localObject1);
         }
         if (LogUtils.isLogEnable())
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("markPreloadSurfaceTexture oldSurface:");
-          ((StringBuilder)localObject).append(localSurface);
-          ((StringBuilder)localObject).append(" success");
-          LogUtils.d("ReuseCodecWrapper", ((StringBuilder)localObject).toString());
+          localObject1 = this.TAG;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("markPreloadSurfaceTexture oldSurface:");
+          ((StringBuilder)localObject2).append(localSurface);
+          ((StringBuilder)localObject2).append(" success");
+          LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
           return;
         }
       }
     }
     catch (Throwable localThrowable)
     {
+      Object localObject2 = this.TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("markPreloadSurfaceTexture oldSurface:");
       localStringBuilder.append(localSurface);
       localStringBuilder.append(" failed");
-      LogUtils.e("ReuseCodecWrapper", localStringBuilder.toString(), localThrowable);
+      LogUtils.e((String)localObject2, localStringBuilder.toString(), localThrowable);
     }
   }
   
@@ -461,7 +482,7 @@ public abstract class ReuseCodecWrapper
       processInputBufferWithReConfig(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
       return;
     }
-    LogUtils.w("ReuseCodecWrapper", "queueInputBufferForAdaptation error for KEEP_CODEC_RESULT_NO");
+    LogUtils.w(this.TAG, "queueInputBufferForAdaptation error for KEEP_CODEC_RESULT_NO");
   }
   
   private void realConfigure(@NonNull MediaFormat paramMediaFormat, @Nullable Surface paramSurface, int paramInt, @Nullable MediaDescrambler paramMediaDescrambler)
@@ -484,7 +505,7 @@ public abstract class ReuseCodecWrapper
       ((StringBuilder)localObject).append(" mHasConfigureCalled：");
       ((StringBuilder)localObject).append(this.mHasConfigureCalled);
       localObject = ((StringBuilder)localObject).toString();
-      LogUtils.d("ReuseCodecWrapper", (String)localObject);
+      LogUtils.d(this.TAG, (String)localObject);
     }
     else
     {
@@ -561,7 +582,7 @@ public abstract class ReuseCodecWrapper
         localObject1 = localObject3;
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject1 = localObject2;
-        LogUtils.d("ReuseCodecWrapper", (String)localObject2);
+        LogUtils.d(this.TAG, (String)localObject2);
       }
       localObject1 = localObject2;
       this.codec.configure(paramMediaFormat, paramSurface, paramMediaCrypto, paramInt);
@@ -599,11 +620,12 @@ public abstract class ReuseCodecWrapper
     }
     if (i != 0)
     {
+      String str = this.TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(this);
       localStringBuilder.append("    releaseCodecWhenError, errorCode:");
       localStringBuilder.append(paramInt);
-      LogUtils.e("ReuseCodecWrapper", localStringBuilder.toString());
+      LogUtils.e(str, localStringBuilder.toString());
       release();
     }
   }
@@ -625,11 +647,12 @@ public abstract class ReuseCodecWrapper
     Object localObject;
     if (LogUtils.isLogEnable())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this);
-      ((StringBuilder)localObject).append(", releaseStoreSurfaceTexture mStoreToRelease:");
-      ((StringBuilder)localObject).append(this.mStoreToRelease);
-      LogUtils.d("ReuseCodecWrapper", ((StringBuilder)localObject).toString());
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this);
+      localStringBuilder.append(", releaseStoreSurfaceTexture mStoreToRelease:");
+      localStringBuilder.append(this.mStoreToRelease);
+      LogUtils.d((String)localObject, localStringBuilder.toString());
     }
     if (!this.mStoreToRelease.isEmpty())
     {
@@ -646,34 +669,37 @@ public abstract class ReuseCodecWrapper
   
   private final void releaseSurfaceTexture(List<SurfaceTexture> paramList)
   {
+    Object localObject2;
     if (LogUtils.isLogEnable())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this);
-      ((StringBuilder)localObject).append(", releaseSurfaceTexture toReleaseSet:");
-      ((StringBuilder)localObject).append(paramList);
-      LogUtils.d("ReuseCodecWrapper", ((StringBuilder)localObject).toString());
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this);
+      ((StringBuilder)localObject2).append(", releaseSurfaceTexture toReleaseSet:");
+      ((StringBuilder)localObject2).append(paramList);
+      LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
     }
-    Object localObject = new LinkedHashSet();
+    Object localObject1 = new LinkedHashSet();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      SurfaceTexture localSurfaceTexture = (SurfaceTexture)paramList.next();
-      HookManager.realReleaseSurfaceTexture(localSurfaceTexture);
-      ((Set)localObject).add(localSurfaceTexture.toString());
+      localObject2 = (SurfaceTexture)paramList.next();
+      HookManager.realReleaseSurfaceTexture((SurfaceTexture)localObject2);
+      ((Set)localObject1).add(localObject2.toString());
     }
-    removeSurfaceBinding((Set)localObject);
+    removeSurfaceBinding((Set)localObject1);
   }
   
   private final void removeStoreSurfaceTextureFromToReleaseSet(String paramString)
   {
     if (LogUtils.isLogEnable())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this);
-      ((StringBuilder)localObject).append(", removeStoreSurfaceTexture nameSurfaceTexture:");
-      ((StringBuilder)localObject).append(paramString);
-      LogUtils.d("ReuseCodecWrapper", ((StringBuilder)localObject).toString());
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this);
+      localStringBuilder.append(", removeStoreSurfaceTexture nameSurfaceTexture:");
+      localStringBuilder.append(paramString);
+      LogUtils.d((String)localObject, localStringBuilder.toString());
     }
     Object localObject = this.mStoreToRelease.iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -690,30 +716,32 @@ public abstract class ReuseCodecWrapper
   
   private void removeSurfaceBinding(Set paramSet1, Set paramSet2)
   {
+    Object localObject2;
     if (LogUtils.isLogEnable())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this);
-      ((StringBuilder)localObject).append(", removeSurfaceBinding toReleaseNameSet:");
-      ((StringBuilder)localObject).append(paramSet1);
-      ((StringBuilder)localObject).append(" toReleaseCodecSet:");
-      ((StringBuilder)localObject).append(paramSet2);
-      LogUtils.d("ReuseCodecWrapper", ((StringBuilder)localObject).toString());
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this);
+      ((StringBuilder)localObject2).append(", removeSurfaceBinding toReleaseNameSet:");
+      ((StringBuilder)localObject2).append(paramSet1);
+      ((StringBuilder)localObject2).append(" toReleaseCodecSet:");
+      ((StringBuilder)localObject2).append(paramSet2);
+      LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
     }
-    Object localObject = mSurfaceMap.entrySet().iterator();
-    while (((Iterator)localObject).hasNext())
+    Object localObject1 = mSurfaceMap.entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      String str = TUtils.getSurfaceTextureName((Surface)localEntry.getKey());
+      localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      String str = TUtils.getSurfaceTextureName((Surface)((Map.Entry)localObject2).getKey());
       int i;
-      if ((!paramSet1.contains(str)) && (!paramSet2.contains(localEntry.getValue()))) {
+      if ((!paramSet1.contains(str)) && (!paramSet2.contains(((Map.Entry)localObject2).getValue()))) {
         i = 0;
       } else {
         i = 1;
       }
       if (i != 0)
       {
-        ((Iterator)localObject).remove();
+        ((Iterator)localObject1).remove();
         onSurfaceTextureUnbinding(str);
       }
     }
@@ -729,13 +757,14 @@ public abstract class ReuseCodecWrapper
   {
     if (LogUtils.isLogEnable())
     {
+      String str = this.TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(this);
       localStringBuilder.append(", oldSurface:");
       localStringBuilder.append(this.mSurface);
       localStringBuilder.append(" CodecWrapperSetSurface surface:");
       localStringBuilder.append(paramSurface);
-      LogUtils.i("ReuseCodecWrapper", localStringBuilder.toString());
+      LogUtils.i(str, localStringBuilder.toString());
     }
     HookManager.unHookSurfaceCallback(this.mSurfaceTextureName);
     removeSurfaceBinding(new HashSet(Collections.singletonList(this.mSurfaceTextureName)));
@@ -809,7 +838,7 @@ public abstract class ReuseCodecWrapper
   {
     if (isNotMyThread())
     {
-      LogUtils.w("ReuseCodecWrapper", "ignore call method configure for isNotMyThread");
+      LogUtils.w(this.TAG, "ignore call method configure for isNotMyThread");
       return;
     }
     this.mHasConfigureCalled = true;
@@ -838,7 +867,7 @@ public abstract class ReuseCodecWrapper
   {
     if (isNotMyThread())
     {
-      LogUtils.w("ReuseCodecWrapper", "ignore call method configure for isNotMyThread");
+      LogUtils.w(this.TAG, "ignore call method configure for isNotMyThread");
       return;
     }
     this.mHasConfigureCalled = true;
@@ -867,7 +896,7 @@ public abstract class ReuseCodecWrapper
   {
     if (isNotMyThread())
     {
-      LogUtils.w("ReuseCodecWrapper", "ignore call method dequeueInputBuffer for isNotMyThread");
+      LogUtils.w(this.TAG, "ignore call method dequeueInputBuffer for isNotMyThread");
       return -1;
     }
     Object localObject3 = null;
@@ -899,7 +928,7 @@ public abstract class ReuseCodecWrapper
         localObject1 = localObject3;
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject1 = localObject2;
-        LogUtils.v("ReuseCodecWrapper", (String)localObject2);
+        LogUtils.v(this.TAG, (String)localObject2);
       }
       localObject1 = localObject2;
       this.decodeState = ReuseCodecWrapper.DecodeState.DequeueIn;
@@ -929,7 +958,7 @@ public abstract class ReuseCodecWrapper
   {
     if (isNotMyThread())
     {
-      LogUtils.w("ReuseCodecWrapper", "ignore call method dequeueOutputBuffer for isNotMyThread");
+      LogUtils.w(this.TAG, "ignore call method dequeueOutputBuffer for isNotMyThread");
       return -1;
     }
     String str = null;
@@ -957,7 +986,7 @@ public abstract class ReuseCodecWrapper
         if ((this instanceof VideoCodecWrapper))
         {
           localObject1 = str;
-          LogUtils.v("ReuseCodecWrapper", str);
+          LogUtils.v(this.TAG, str);
           paramBufferInfo = str;
         }
       }
@@ -985,7 +1014,7 @@ public abstract class ReuseCodecWrapper
   public void flush()
   {
     if (isNotMyThread()) {
-      LogUtils.w("ReuseCodecWrapper", "call method flush for isNotMyThread...");
+      LogUtils.w(this.TAG, "call method flush for isNotMyThread...");
     }
     Object localObject3 = null;
     Object localObject2 = null;
@@ -1005,7 +1034,7 @@ public abstract class ReuseCodecWrapper
         localObject1 = localObject3;
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject1 = localObject2;
-        LogUtils.d("ReuseCodecWrapper", (String)localObject2);
+        LogUtils.d(this.TAG, (String)localObject2);
       }
       localObject1 = localObject2;
       this.codec.flush();
@@ -1057,6 +1086,9 @@ public abstract class ReuseCodecWrapper
   
   public boolean isNeedKeep()
   {
+    if (TCodecManager.isLeakFixed()) {
+      return (!this.mErrorHappened) && (TCodecManager.getInstance().isGlobalReuseEnable()) && (TCodecManager.getInstance().isAllowKeepPool());
+    }
     return (!this.mErrorHappened) && (TCodecManager.getInstance().isGlobalReuseEnable());
   }
   
@@ -1073,7 +1105,20 @@ public abstract class ReuseCodecWrapper
   public void prepareToReUse()
   {
     resetParam();
-    if (this.state != ReuseCodecWrapper.CodecState.Flushed) {
+    if (TCodecManager.isLeakFixed())
+    {
+      if (this.state == ReuseCodecWrapper.CodecState.Running) {
+        try
+        {
+          flush();
+        }
+        catch (IllegalStateException localIllegalStateException)
+        {
+          LogUtils.e(this.TAG, "flush failed in prepareToReUse", localIllegalStateException);
+        }
+      }
+    }
+    else if (this.state != ReuseCodecWrapper.CodecState.Flushed) {
       flush();
     }
     this.hasReused = true;
@@ -1083,7 +1128,7 @@ public abstract class ReuseCodecWrapper
   {
     if (isNotMyThread())
     {
-      LogUtils.w("ReuseCodecWrapper", "ignore call method queueInputBuffer for isNotMyThread");
+      LogUtils.w(this.TAG, "ignore call method queueInputBuffer for isNotMyThread");
       return;
     }
     Object localObject = null;
@@ -1107,7 +1152,7 @@ public abstract class ReuseCodecWrapper
       ((StringBuilder)localObject).append(" decodeState:");
       ((StringBuilder)localObject).append(this.decodeState);
       localObject = ((StringBuilder)localObject).toString();
-      LogUtils.v("ReuseCodecWrapper", (String)localObject);
+      LogUtils.v(this.TAG, (String)localObject);
     }
     try
     {
@@ -1140,16 +1185,19 @@ public abstract class ReuseCodecWrapper
   
   public final void recycle()
   {
+    String str = this.TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this);
     localStringBuilder.append(", recycle isRecycled:");
     localStringBuilder.append(this.isRecycled);
-    localStringBuilder.append(" ...... stack:");
+    localStringBuilder.append("  mSurfaceMap.size:");
+    localStringBuilder.append(mSurfaceMap.size());
+    localStringBuilder.append("...... stack:");
     localStringBuilder.append(Log.getStackTraceString(new Throwable()));
-    LogUtils.d("ReuseCodecWrapper", localStringBuilder.toString());
+    LogUtils.d(str, localStringBuilder.toString());
     if (this.isRecycled)
     {
-      LogUtils.w("ReuseCodecWrapper", "ignore recycle for has isRecycled is true.");
+      LogUtils.w(this.TAG, "ignore recycle for has isRecycled is true.");
       return;
     }
     this.mHasConfigureCalled = false;
@@ -1165,6 +1213,7 @@ public abstract class ReuseCodecWrapper
     StringBuilder localStringBuilder;
     if (LogUtils.isLogEnable())
     {
+      String str1 = this.TAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(this);
       localStringBuilder.append(" call release mHoldBufferOutIndex:");
@@ -1173,22 +1222,30 @@ public abstract class ReuseCodecWrapper
       localStringBuilder.append(this.mReleaseCalled);
       localStringBuilder.append(" stack:");
       localStringBuilder.append(Log.getStackTraceString(new Throwable()));
-      LogUtils.d("ReuseCodecWrapper", localStringBuilder.toString());
+      LogUtils.d(str1, localStringBuilder.toString());
     }
     this.mReleaseCalled = true;
     this.mHasConfigureCalled = false;
     if (isNeedKeep())
     {
-      flush();
+      try
+      {
+        flush();
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        LogUtils.e(this.TAG, "flush failed for not in the Executing state.", localIllegalStateException);
+      }
       TCodecManager.getInstance().recycleCodecFromRunning(this);
       return;
     }
     if (LogUtils.isLogEnable())
     {
+      String str2 = this.TAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Don't not keep the codec, release it ..., mErrorHappened:");
       localStringBuilder.append(this.mErrorHappened);
-      LogUtils.w("ReuseCodecWrapper", localStringBuilder.toString());
+      LogUtils.w(str2, localStringBuilder.toString());
     }
     TCodecManager.getInstance().removeCodecFromRunningPool(this);
     recycle();
@@ -1200,7 +1257,7 @@ public abstract class ReuseCodecWrapper
   {
     if (isNotMyThread())
     {
-      LogUtils.w("ReuseCodecWrapper", "ignore call method releaseOutputBuffer for isNotMyThread");
+      LogUtils.w(this.TAG, "ignore call method releaseOutputBuffer for isNotMyThread");
       return;
     }
     Object localObject = null;
@@ -1214,7 +1271,7 @@ public abstract class ReuseCodecWrapper
       localObject = str;
       if ((this instanceof VideoCodecWrapper))
       {
-        LogUtils.v("ReuseCodecWrapper", str);
+        LogUtils.v(this.TAG, str);
         localObject = str;
       }
     }
@@ -1242,7 +1299,7 @@ public abstract class ReuseCodecWrapper
   {
     if (isNotMyThread())
     {
-      LogUtils.w("ReuseCodecWrapper", "ignore call method releaseOutputBuffer for isNotMyThread");
+      LogUtils.w(this.TAG, "ignore call method releaseOutputBuffer for isNotMyThread");
       return;
     }
     Object localObject = null;
@@ -1253,7 +1310,7 @@ public abstract class ReuseCodecWrapper
       ((StringBuilder)localObject).append(", releaseOutputBuffer render:");
       ((StringBuilder)localObject).append(paramBoolean);
       localObject = ((StringBuilder)localObject).toString();
-      LogUtils.v("ReuseCodecWrapper", (String)localObject);
+      LogUtils.v(this.TAG, (String)localObject);
     }
     try
     {
@@ -1264,10 +1321,11 @@ public abstract class ReuseCodecWrapper
     {
       if (this.state != ReuseCodecWrapper.CodecState.Flushed)
       {
+        String str = this.TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(this);
         localStringBuilder.append(", releaseOutputBuffer failed, ignore e:");
-        LogUtils.w("ReuseCodecWrapper", localStringBuilder.toString(), localThrowable);
+        LogUtils.w(str, localStringBuilder.toString(), localThrowable);
       }
       paramInt = 0;
       if ((Build.VERSION.SDK_INT >= 21) && ((localThrowable instanceof MediaCodec.CodecException))) {
@@ -1301,7 +1359,7 @@ public abstract class ReuseCodecWrapper
         localObject1 = localObject3;
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject1 = localObject2;
-        LogUtils.d("ReuseCodecWrapper", (String)localObject2);
+        LogUtils.d(this.TAG, (String)localObject2);
       }
       localObject1 = localObject2;
       if (!isNeedKeep())
@@ -1357,10 +1415,11 @@ public abstract class ReuseCodecWrapper
   {
     if (this.state != ReuseCodecWrapper.CodecState.Configured)
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("start ignore:");
-      ((StringBuilder)localObject1).append(this.state);
-      LogUtils.d("ReuseCodecWrapper", ((StringBuilder)localObject1).toString());
+      localObject1 = this.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("start ignore:");
+      ((StringBuilder)localObject2).append(this.state);
+      LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
       return;
     }
     Object localObject3 = null;
@@ -1381,7 +1440,7 @@ public abstract class ReuseCodecWrapper
         localObject1 = localObject3;
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject1 = localObject2;
-        LogUtils.d("ReuseCodecWrapper", (String)localObject2);
+        LogUtils.d(this.TAG, (String)localObject2);
       }
       localObject1 = localObject2;
       if (this.state == ReuseCodecWrapper.CodecState.Configured)
@@ -1408,25 +1467,38 @@ public abstract class ReuseCodecWrapper
   
   public void stop()
   {
+    String str;
     StringBuilder localStringBuilder;
     if (LogUtils.isLogEnable())
     {
+      str = this.TAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(this);
       localStringBuilder.append(", stop");
-      LogUtils.d("ReuseCodecWrapper", localStringBuilder.toString());
+      LogUtils.d(str, localStringBuilder.toString());
     }
     if (!isNeedKeep())
     {
       if (LogUtils.isLogEnable())
       {
+        str = this.TAG;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(this);
         localStringBuilder.append(", codec real stop");
-        LogUtils.d("ReuseCodecWrapper", localStringBuilder.toString());
+        LogUtils.d(str, localStringBuilder.toString());
       }
-      this.codec.stop();
-      this.state = ReuseCodecWrapper.CodecState.Uninitialized;
+      try
+      {
+        this.codec.stop();
+        this.state = ReuseCodecWrapper.CodecState.Uninitialized;
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        this.state = ReuseCodecWrapper.CodecState.Uninitialized;
+        LogUtils.e(this.TAG, "stop failed", localIllegalStateException);
+        throw localIllegalStateException;
+      }
     }
   }
   
@@ -1449,7 +1521,7 @@ public abstract class ReuseCodecWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.codec.ReuseCodecWrapper
  * JD-Core Version:    0.7.0.1
  */

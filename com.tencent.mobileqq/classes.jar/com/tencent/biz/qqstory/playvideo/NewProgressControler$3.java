@@ -17,16 +17,16 @@ class NewProgressControler$3
     {
       localNewProgressControler = this.this$0;
       localNewProgressControler.c = localNewProgressControler.b;
-      if (this.this$0.jdField_a_of_type_JavaUtilTimer != null) {
-        this.this$0.jdField_a_of_type_JavaUtilTimer.cancel();
+      if (this.this$0.f != null) {
+        this.this$0.f.cancel();
       }
     }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    this.this$0.g.sendEmptyMessage(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.NewProgressControler.3
  * JD-Core Version:    0.7.0.1
  */

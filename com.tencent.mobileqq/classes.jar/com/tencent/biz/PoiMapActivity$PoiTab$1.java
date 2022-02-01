@@ -11,13 +11,13 @@ class PoiMapActivity$PoiTab$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.a(paramInt, true);
-    int i = this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    this.b.a(paramInt, true);
+    int i = this.b.l.d.length;
     paramInt = 0;
     while (paramInt < i)
     {
-      if (this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.e != paramInt) {
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      if (this.b.i != paramInt) {
+        this.b.l.d[paramInt].a(-1, false);
       }
       paramInt += 1;
     }

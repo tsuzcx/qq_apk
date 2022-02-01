@@ -147,7 +147,7 @@ public class ArkModuleAPIAuthority
     }
     else
     {
-      if ((!bool) && (ArkAppModuleBase.a))
+      if ((!bool) && (ArkAppModuleBase.j))
       {
         ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkModuleAPIAuthority.1(str, paramString4, paramString2, paramAuthDialogEventHandler, paramString3, paramString1));
         localSharedPreferences.edit().putBoolean((String)localObject, true).apply();
@@ -168,7 +168,7 @@ public class ArkModuleAPIAuthority
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkModuleAPIAuthority
  * JD-Core Version:    0.7.0.1
  */

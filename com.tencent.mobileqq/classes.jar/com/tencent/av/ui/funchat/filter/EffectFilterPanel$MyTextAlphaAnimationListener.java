@@ -9,16 +9,16 @@ import java.lang.ref.WeakReference;
 class EffectFilterPanel$MyTextAlphaAnimationListener
   implements Animation.AnimationListener
 {
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<View> b;
   
   EffectFilterPanel$MyTextAlphaAnimationListener(EffectFilterPanel paramEffectFilterPanel, View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramView);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    View localView = (View)this.b.get();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MyTextAlphaAnimationListener onAnimationEnd :");
     localStringBuilder.append(localView);

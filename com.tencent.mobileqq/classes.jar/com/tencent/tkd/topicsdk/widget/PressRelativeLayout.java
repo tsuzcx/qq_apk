@@ -25,11 +25,16 @@ public class PressRelativeLayout
     super(paramContext, paramAttributeSet);
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.e);
-      this.a = paramContext.getBoolean(R.styleable.h, false);
-      this.b = paramContext.getBoolean(R.styleable.i, false);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.l);
+      this.a = paramContext.getBoolean(R.styleable.m, false);
+      this.b = paramContext.getBoolean(R.styleable.n, false);
       paramContext.recycle();
     }
+  }
+  
+  public final boolean getEnablePressEffect()
+  {
+    return this.c;
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
@@ -67,7 +72,7 @@ public class PressRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.PressRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

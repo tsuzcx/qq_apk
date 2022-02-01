@@ -9,12 +9,12 @@ class LocationShareLocationManager$4
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey, this.jdField_a_of_type_Boolean);
+    this.this$0.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationShareLocationManager.4
  * JD-Core Version:    0.7.0.1
  */

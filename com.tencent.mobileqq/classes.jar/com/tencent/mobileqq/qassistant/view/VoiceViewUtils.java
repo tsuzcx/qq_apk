@@ -13,17 +13,9 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class VoiceViewUtils
 {
-  public static View a(@NonNull Context paramContext)
-  {
-    paramContext = new View(paramContext);
-    paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    paramContext.setBackgroundColor(0);
-    return paramContext;
-  }
-  
   public static View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramContext).inflate(2131563045, paramViewGroup, false);
+    return LayoutInflater.from(paramContext).inflate(2131629660, paramViewGroup, false);
   }
   
   public static TextView a(@NonNull Context paramContext)
@@ -32,7 +24,7 @@ public class VoiceViewUtils
     paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     paramContext.setGravity(17);
     paramContext.setTextColor(-1);
-    paramContext.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131167387);
+    paramContext.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131168447);
     paramContext.setTextSize(1, 22.0F);
     paramContext.setPadding(ScreenUtil.dip2px(23.0F), 0, ScreenUtil.dip2px(23.0F), 0);
     return paramContext;
@@ -40,7 +32,7 @@ public class VoiceViewUtils
   
   public static View b(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramContext).inflate(2131563043, paramViewGroup, false);
+    return LayoutInflater.from(paramContext).inflate(2131629657, paramViewGroup, false);
   }
   
   public static TextView b(@NonNull Context paramContext)
@@ -48,15 +40,15 @@ public class VoiceViewUtils
     TextView localTextView = new TextView(paramContext);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     localTextView.setGravity(17);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131167378));
+    localTextView.setTextColor(paramContext.getResources().getColor(2131168433));
     localTextView.setTextSize(1, 14.0F);
-    localTextView.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131167387);
+    localTextView.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131168447);
     return localTextView;
   }
   
   public static View c(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramContext).inflate(2131563041, paramViewGroup, false);
+    return LayoutInflater.from(paramContext).inflate(2131629655, paramViewGroup, false);
   }
   
   public static TextView c(@NonNull Context paramContext)
@@ -66,13 +58,13 @@ public class VoiceViewUtils
     paramContext.setGravity(17);
     paramContext.setTextColor(-1);
     paramContext.setTextSize(1, 34.0F);
-    paramContext.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131167387);
+    paramContext.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131168447);
     return paramContext;
   }
   
   public static View d(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramContext).inflate(2131563042, paramViewGroup, false);
+    return LayoutInflater.from(paramContext).inflate(2131629656, paramViewGroup, false);
   }
   
   public static TextView d(@NonNull Context paramContext)
@@ -82,11 +74,19 @@ public class VoiceViewUtils
     paramContext.setGravity(17);
     paramContext.setTextColor(-1);
     paramContext.setTextSize(1, 22.0F);
-    paramContext.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131167387);
+    paramContext.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131168447);
     return paramContext;
   }
   
-  public static TextView e(@NonNull Context paramContext)
+  public static View e(@NonNull Context paramContext)
+  {
+    paramContext = new View(paramContext);
+    paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    paramContext.setBackgroundColor(0);
+    return paramContext;
+  }
+  
+  public static TextView f(@NonNull Context paramContext)
   {
     paramContext = new TextView(paramContext);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
@@ -95,13 +95,13 @@ public class VoiceViewUtils
     paramContext.setLayoutParams(localLayoutParams);
     paramContext.setTextColor(-1);
     paramContext.setTextSize(1, 22.0F);
-    paramContext.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131167387);
+    paramContext.setShadowLayer(0.0F, ScreenUtil.dip2px(0.5F), ScreenUtil.dip2px(1.5F), 2131168447);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.view.VoiceViewUtils
  * JD-Core Version:    0.7.0.1
  */

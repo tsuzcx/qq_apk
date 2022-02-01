@@ -41,7 +41,7 @@ public class NativeTextContentConfigHandler
       }
       if (paramInt1 != 0)
       {
-        localObject1 = RIJQQAppInterfaceUtil.a();
+        localObject1 = RIJQQAppInterfaceUtil.e();
         if (localObject1 != null)
         {
           RIJShowKanDianTabSp.a((AppRuntime)localObject1, "local_kd_native_main_text_style", paramString.toString());
@@ -60,7 +60,7 @@ public class NativeTextContentConfigHandler
   public void onWipeConfig(int paramInt)
   {
     super.onWipeConfig(paramInt);
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
       RIJShowKanDianTabSp.a(localAppRuntime, "local_kd_native_main_text_style", "");
     }
@@ -68,7 +68,7 @@ public class NativeTextContentConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.NativeTextContentConfigHandler
  * JD-Core Version:    0.7.0.1
  */

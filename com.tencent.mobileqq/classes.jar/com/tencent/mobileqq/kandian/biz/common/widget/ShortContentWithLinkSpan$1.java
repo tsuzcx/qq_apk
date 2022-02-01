@@ -18,22 +18,22 @@ final class ShortContentWithLinkSpan$1
   
   public void onClick(@NonNull View paramView)
   {
-    RIJJumpUtils.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, null);
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    RIJJumpUtils.a(paramView.getContext(), this.b, null);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.c;
     if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.isPGCShortContent()))
     {
-      localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      localAbsBaseArticleInfo = this.c;
       localAbsBaseArticleInfo.clickArea = 11;
-      localAbsBaseArticleInfo.clickJumpTarget = PGCShortContentUtils.a(this.jdField_a_of_type_JavaLangString, "-1");
+      localAbsBaseArticleInfo.clickJumpTarget = PGCShortContentUtils.a(this.b, "-1");
       paramView = paramView.getContext();
-      localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      localAbsBaseArticleInfo = this.c;
       RIJFrameworkReportManager.a(paramView, localAbsBaseArticleInfo, (int)localAbsBaseArticleInfo.mChannelID);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ShortContentWithLinkSpan.1
  * JD-Core Version:    0.7.0.1
  */

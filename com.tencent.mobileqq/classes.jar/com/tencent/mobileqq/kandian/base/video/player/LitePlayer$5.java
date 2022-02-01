@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.kandian.base.video.player;
 
 import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 class LitePlayer$5
   implements Runnable
@@ -10,15 +10,15 @@ class LitePlayer$5
   
   public void run()
   {
-    Iterator localIterator = LitePlayer.a(this.this$0).iterator();
+    Iterator localIterator = LitePlayer.b(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((PlayerStatusListener)localIterator.next()).onVideoRestart();
+      ((PlayerStatusListener)localIterator.next()).onVideoStart();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.LitePlayer.5
  * JD-Core Version:    0.7.0.1
  */

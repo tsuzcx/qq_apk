@@ -168,7 +168,7 @@ public class AudienceRoomActivity
       UIUtil.setStatusBarColor(this, 0);
     }
     paramBundle = new ViewGroup.LayoutParams(-1, -1);
-    this.mViewPager = ((AudienceRoomViewPager)LayoutInflater.from(this).inflate(2131559245, null).findViewById(2131363023));
+    this.mViewPager = ((AudienceRoomViewPager)LayoutInflater.from(this).inflate(2131625165, null).findViewById(2131428833));
     this.mViewPager.initRoomPageAction(new AudienceRoomActivity.1(this));
     this.mViewPager.setIntent(getIntent());
     this.mRootLayout.addView(this.mViewPager, paramBundle);
@@ -295,7 +295,7 @@ public class AudienceRoomActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.AudienceRoomActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -22,16 +22,16 @@ import com.tencent.qphone.base.util.QLog;
 public class TalkingEffectLayout
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private ImageView a;
+  private ImageView b;
+  private int c;
+  private int d;
+  private Path e;
+  private RectF f;
+  private float g;
+  private float h;
+  private AnimatorSet i;
+  private Animator.AnimatorListener j;
   
   public TalkingEffectLayout(Context paramContext)
   {
@@ -53,47 +53,47 @@ public class TalkingEffectLayout
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.e = new Path();
+    this.f = new RectF();
     if (Build.VERSION.SDK_INT < 18) {
       setLayerType(1, null);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    Bitmap localBitmap = AVGameUtil.a("avgame_pk_player_talking_inner.png");
+    this.b = new ImageView(getContext());
+    Bitmap localBitmap = AVGameUtil.c("avgame_pk_player_talking_inner.png");
     if (localBitmap != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      this.b.setImageBitmap(localBitmap);
     } else {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838699));
+      this.b.setImageDrawable(getResources().getDrawable(2130838913));
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    localBitmap = AVGameUtil.a("avgame_pk_player_talking_outer.png");
+    this.a = new ImageView(getContext());
+    localBitmap = AVGameUtil.c("avgame_pk_player_talking_outer.png");
     if (localBitmap != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      this.a.setImageBitmap(localBitmap);
     } else {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130838700));
+      this.a.setImageDrawable(getResources().getDrawable(2130838914));
     }
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
-    addView(this.jdField_b_of_type_AndroidWidgetImageView, new RelativeLayout.LayoutParams(-1, -1));
+    addView(this.a, new RelativeLayout.LayoutParams(-1, -1));
+    addView(this.b, new RelativeLayout.LayoutParams(-1, -1));
   }
   
   private void d()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    Object localObject = this.i;
     if (localObject != null)
     {
       ((AnimatorSet)localObject).cancel();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.removeAllListeners();
+      this.i.removeAllListeners();
     }
-    localObject = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F });
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 0.35F, 0.35F, 0.35F, 0.0F });
-    int i = this.jdField_a_of_type_Int;
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, "clipPadding", new float[] { i * 0.0666667F, i * 0.01111111F, i * 0.03333334F, i * 0.01111111F, i * 0.0666667F });
+    localObject = ObjectAnimator.ofFloat(this.b, "alpha", new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.a, "alpha", new float[] { 0.0F, 0.35F, 0.35F, 0.35F, 0.0F });
+    int k = this.c;
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, "clipPadding", new float[] { k * 0.0666667F, k * 0.01111111F, k * 0.03333334F, k * 0.01111111F, k * 0.0666667F });
     ((ObjectAnimator)localObject).setDuration(1000L);
     localObjectAnimator1.setDuration(1000L);
     localObjectAnimator2.setDuration(1000L);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject, localObjectAnimator1, localObjectAnimator2 });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new TalkingEffectLayout.1(this));
+    this.i = new AnimatorSet();
+    this.i.playTogether(new Animator[] { localObject, localObjectAnimator1, localObjectAnimator2 });
+    this.i.addListener(new TalkingEffectLayout.1(this));
   }
   
   public void a()
@@ -102,22 +102,22 @@ public class TalkingEffectLayout
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("playAnimation animatorSet = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidAnimationAnimatorSet);
+      ((StringBuilder)localObject).append(this.i);
       QLog.d("TalkingEffectLayout", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    Object localObject = this.i;
     if (localObject == null) {
       return;
     }
     if (((AnimatorSet)localObject).isRunning()) {
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    this.i.start();
   }
   
   public void b()
   {
-    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    AnimatorSet localAnimatorSet = this.i;
     if (localAnimatorSet == null) {
       return;
     }
@@ -126,40 +126,45 @@ public class TalkingEffectLayout
   
   public void dispatchDraw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    float f1 = this.jdField_b_of_type_Float;
-    float f2 = this.jdField_a_of_type_Int;
-    float f3 = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, f1, f2 - f1, f3 - f1);
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Float = (i * 0.1333333F + (i * 0.08888889F - this.jdField_b_of_type_Float));
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    f1 = this.jdField_a_of_type_Float;
+    this.e.reset();
+    float f1 = this.h;
+    float f2 = this.c;
+    float f3 = this.d;
+    this.f.set(f1, f1, f2 - f1, f3 - f1);
+    int k = this.c;
+    this.g = (k * 0.1333333F + (k * 0.08888889F - this.h));
+    Path localPath = this.e;
+    RectF localRectF = this.f;
+    f1 = this.g;
     localPath.addRoundRect(localRectF, f1, f1, Path.Direction.CW);
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    paramCanvas.clipPath(this.e);
     super.dispatchDraw(paramCanvas);
+  }
+  
+  public float getClipPadding()
+  {
+    return this.h;
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt3 = this.jdField_a_of_type_Int;
+    paramInt3 = this.c;
     if ((paramInt3 == 0) || (paramInt3 != paramInt1))
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
+      this.c = paramInt1;
+      this.d = paramInt2;
       d();
     }
   }
   
   public void setAnimatorListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = paramAnimatorListener;
+    this.j = paramAnimatorListener;
   }
   
   public void setClipPadding(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
+    this.h = paramFloat;
     invalidate();
   }
 }

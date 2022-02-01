@@ -21,33 +21,33 @@ import mqq.os.MqqHandler;
 public class LebaQZoneFacePlayHelper
   implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private ImageSwitcher jdField_a_of_type_AndroidWidgetImageSwitcher;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LebaQZoneFacePlayHelper.FacePlayInfo jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private ImageSwitcher jdField_b_of_type_AndroidWidgetImageSwitcher;
-  private LebaQZoneFacePlayHelper.FacePlayInfo jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-  private boolean jdField_b_of_type_Boolean = false;
-  private LebaQZoneFacePlayHelper.FacePlayInfo c;
-  private LebaQZoneFacePlayHelper.FacePlayInfo d;
+  private ImageSwitcher a;
+  private ImageSwitcher b;
+  private ImageView c;
+  private boolean d = false;
+  private LebaQZoneFacePlayHelper.FacePlayInfo e;
+  private LebaQZoneFacePlayHelper.FacePlayInfo f;
+  private LebaQZoneFacePlayHelper.FacePlayInfo g;
+  private LebaQZoneFacePlayHelper.FacePlayInfo h;
+  private int i;
+  private ArrayList<String> j;
+  private int k = 0;
+  private MqqHandler l;
+  private QQAppInterface m;
+  private boolean n = false;
   
   public LebaQZoneFacePlayHelper(ImageSwitcher paramImageSwitcher1, ImageSwitcher paramImageSwitcher2, ImageView paramImageView, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidWidgetImageSwitcher = paramImageSwitcher1;
-    this.jdField_b_of_type_AndroidWidgetImageSwitcher = paramImageSwitcher2;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramImageSwitcher1;
+    this.b = paramImageSwitcher2;
+    this.c = paramImageView;
+    this.l = new MqqHandler(Looper.getMainLooper(), this);
+    this.m = paramQQAppInterface;
   }
   
   private LebaQZoneFacePlayHelper.FacePlayInfo a(String paramString)
   {
-    Object localObject = this.d;
+    Object localObject = this.h;
     if (localObject != null) {
       if (((LebaQZoneFacePlayHelper.FacePlayInfo)localObject).a(paramString))
       {
@@ -68,55 +68,16 @@ public class LebaQZoneFacePlayHelper
           ((StringBuilder)localObject).append(paramString);
           QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, ((StringBuilder)localObject).toString());
         }
-        this.d.a();
-        this.d = null;
+        this.h.c();
+        this.h = null;
       }
     }
-    return this.d;
-  }
-  
-  private String a(int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      if (paramInt != 1)
-      {
-        if (paramInt != 2)
-        {
-          if (paramInt != 4) {
-            return HardCodeUtil.a(2131706092);
-          }
-          return HardCodeUtil.a(2131706097);
-        }
-        return HardCodeUtil.a(2131706095);
-      }
-      return HardCodeUtil.a(2131706096);
-    }
-    return HardCodeUtil.a(2131706094);
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageSwitcher == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "mQzoneFeedSubIcon=null");
-      }
-      return false;
-    }
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "activeFeedsUin没有uin数据");
-    }
-    return false;
+    return this.h;
   }
   
   private boolean a(int paramInt)
   {
-    return this.jdField_b_of_type_Int >= paramInt;
+    return this.k >= paramInt;
   }
   
   private static boolean a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
@@ -137,21 +98,21 @@ public class LebaQZoneFacePlayHelper
         }
         return false;
       }
-      int i = 0;
+      int i1 = 0;
       try
       {
-        while (i < paramArrayList1.size())
+        while (i1 < paramArrayList1.size())
         {
-          String str1 = (String)paramArrayList1.get(i);
-          String str2 = (String)paramArrayList2.get(i);
+          String str1 = (String)paramArrayList1.get(i1);
+          String str2 = (String)paramArrayList2.get(i1);
           if (!str1.equals(str2))
           {
             if (QLog.isColorLevel()) {
-              QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("not equal index: %d,uin1:%s,uin2:%s", new Object[] { Integer.valueOf(i), str1, str2 }));
+              QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("not equal index: %d,uin1:%s,uin2:%s", new Object[] { Integer.valueOf(i1), str1, str2 }));
             }
             return false;
           }
-          i += 1;
+          i1 += 1;
         }
         return true;
       }
@@ -167,141 +128,180 @@ public class LebaQZoneFacePlayHelper
     return false;
   }
   
-  private boolean b()
+  private boolean b(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    boolean bool = false;
-    if ((i >= j) || ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilArrayList.size() == 2)) || ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilArrayList.size() - 1)))
+    return this.k < paramInt;
+  }
+  
+  private String c(int paramInt)
+  {
+    if (paramInt != 0)
     {
-      Object localObject = this.d;
-      if ((localObject != null) && (this.jdField_b_of_type_Int != 4)) {
-        if (this.jdField_a_of_type_Boolean)
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
         {
-          localObject = this.c;
-          if ((localObject != null) && (!((LebaQZoneFacePlayHelper.FacePlayInfo)localObject).a()))
+          if (paramInt != 4) {
+            return HardCodeUtil.a(2131903964);
+          }
+          return HardCodeUtil.a(2131903969);
+        }
+        return HardCodeUtil.a(2131903967);
+      }
+      return HardCodeUtil.a(2131903968);
+    }
+    return HardCodeUtil.a(2131903966);
+  }
+  
+  private boolean h()
+  {
+    if (this.a == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "mQzoneFeedSubIcon=null");
+      }
+      return false;
+    }
+    ArrayList localArrayList = this.j;
+    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "activeFeedsUin没有uin数据");
+    }
+    return false;
+  }
+  
+  private boolean i()
+  {
+    int i1 = this.i;
+    int i2 = this.j.size();
+    boolean bool = false;
+    if ((i1 >= i2) || ((this.d) && (this.j.size() == 2)) || ((this.d) && (this.i >= this.j.size() - 1)))
+    {
+      Object localObject = this.h;
+      if ((localObject != null) && (this.k != 4)) {
+        if (this.d)
+        {
+          localObject = this.g;
+          if ((localObject != null) && (!((LebaQZoneFacePlayHelper.FacePlayInfo)localObject).d()))
           {
-            if (!this.c.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaUtilArrayList.get(1)))
+            if (!this.g.a.equals(this.j.get(1)))
             {
-              if (!this.c.a())
+              if (!this.g.d())
               {
-                this.c.a();
-                this.c = null;
+                this.g.c();
+                this.g = null;
               }
-              localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-              if ((!this.d.a()) && (this.d.jdField_a_of_type_JavaLangString.equals(localObject)))
+              localObject = (String)this.j.get(1);
+              if ((!this.h.d()) && (this.h.a.equals(localObject)))
               {
-                this.c = this.d;
-                this.d = null;
+                this.g = this.h;
+                this.h = null;
               }
               else
               {
-                this.c = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                this.g = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.m);
               }
             }
           }
           else
           {
-            localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-            if ((!this.d.a()) && (this.d.jdField_a_of_type_JavaLangString.equals(localObject)))
+            localObject = (String)this.j.get(1);
+            if ((!this.h.d()) && (this.h.a.equals(localObject)))
             {
-              this.c = this.d;
-              this.d = null;
+              this.g = this.h;
+              this.h = null;
             }
             else
             {
-              this.c = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+              this.g = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.m);
             }
           }
-          this.jdField_b_of_type_AndroidWidgetImageSwitcher.setImageDrawable(this.c.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
+          this.b.setImageDrawable(this.g.c);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("isPlayFinished play two");
-            ((StringBuilder)localObject).append(this.c.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(this.g.a);
             QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, ((StringBuilder)localObject).toString());
           }
-          localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-          LebaQZoneFacePlayHelper.FacePlayInfo localFacePlayInfo = this.d;
-          if ((localFacePlayInfo != null) && (!localFacePlayInfo.a()) && (this.d.jdField_a_of_type_JavaLangString.equals(localObject)))
+          localObject = (String)this.j.get(0);
+          LebaQZoneFacePlayHelper.FacePlayInfo localFacePlayInfo = this.h;
+          if ((localFacePlayInfo != null) && (!localFacePlayInfo.d()) && (this.h.a.equals(localObject)))
           {
-            this.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable(this.d.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
-            this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-            this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = this.d;
-            this.d = null;
+            this.a.setImageDrawable(this.h.c);
+            this.e = this.f;
+            this.f = this.h;
+            this.h = null;
           }
           else
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-            localFacePlayInfo = this.d;
-            if ((localFacePlayInfo != null) && (!localFacePlayInfo.a()))
+            this.e = this.f;
+            localFacePlayInfo = this.h;
+            if ((localFacePlayInfo != null) && (!localFacePlayInfo.d()))
             {
-              this.d.a();
-              this.d = null;
+              this.h.c();
+              this.h = null;
             }
-            this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            this.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable(this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
+            this.f = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.m);
+            this.a.setImageDrawable(this.f.c);
           }
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable(((LebaQZoneFacePlayHelper.FacePlayInfo)localObject).jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
-          this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-          this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = this.d;
-          this.d = null;
+          this.a.setImageDrawable(((LebaQZoneFacePlayHelper.FacePlayInfo)localObject).c);
+          this.e = this.f;
+          this.f = this.h;
+          this.h = null;
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("isPlayFinished play one");
-            ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(this.f.a);
             QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, ((StringBuilder)localObject).toString());
           }
         }
       }
-      this.jdField_b_of_type_Int = 4;
+      this.k = 4;
     }
-    if (this.jdField_b_of_type_Int == 4) {
+    if (this.k == 4) {
       bool = true;
     }
     return bool;
   }
   
-  private boolean b(int paramInt)
+  private void j()
   {
-    return this.jdField_b_of_type_Int < paramInt;
-  }
-  
-  private void g()
-  {
-    LebaQZoneFacePlayHelper.FacePlayInfo localFacePlayInfo = this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-    if ((localFacePlayInfo != null) && (!localFacePlayInfo.a()))
+    LebaQZoneFacePlayHelper.FacePlayInfo localFacePlayInfo = this.e;
+    if ((localFacePlayInfo != null) && (!localFacePlayInfo.d()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = null;
+      this.e.c();
+      this.e = null;
     }
-    localFacePlayInfo = this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-    if ((localFacePlayInfo != null) && (!localFacePlayInfo.a()))
+    localFacePlayInfo = this.f;
+    if ((localFacePlayInfo != null) && (!localFacePlayInfo.d()))
     {
-      this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.a();
-      this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = null;
+      this.f.c();
+      this.f = null;
     }
-    localFacePlayInfo = this.c;
-    if ((localFacePlayInfo != null) && (!localFacePlayInfo.a()))
+    localFacePlayInfo = this.g;
+    if ((localFacePlayInfo != null) && (!localFacePlayInfo.d()))
     {
-      this.c.a();
-      this.c = null;
+      this.g.c();
+      this.g = null;
     }
-    localFacePlayInfo = this.d;
-    if ((localFacePlayInfo != null) && (!localFacePlayInfo.a()))
+    localFacePlayInfo = this.h;
+    if ((localFacePlayInfo != null) && (!localFacePlayInfo.d()))
     {
-      this.d.a();
-      this.d = null;
+      this.h.c();
+      this.h = null;
     }
   }
   
-  private void h()
+  private void k()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageSwitcher;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -309,66 +309,57 @@ public class LebaQZoneFacePlayHelper
     if (localObject != null) {
       ((Animation)localObject).cancel();
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageSwitcher.getOutAnimation();
+    localObject = this.a.getOutAnimation();
     if (localObject != null) {
       ((Animation)localObject).cancel();
     }
-    this.jdField_a_of_type_AndroidWidgetImageSwitcher.setOutAnimation(null);
-    this.jdField_a_of_type_AndroidWidgetImageSwitcher.setInAnimation(null);
-    this.jdField_b_of_type_AndroidWidgetImageSwitcher.setOutAnimation(null);
-    this.jdField_b_of_type_AndroidWidgetImageSwitcher.setInAnimation(null);
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidWidgetImageSwitcher.getChildCount())
+    this.a.setOutAnimation(null);
+    this.a.setInAnimation(null);
+    this.b.setOutAnimation(null);
+    this.b.setInAnimation(null);
+    int i1 = 0;
+    while (i1 < this.a.getChildCount())
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetImageSwitcher.getChildAt(i);
+      localObject = this.a.getChildAt(i1);
       if (localObject != null) {
         ((View)localObject).clearAnimation();
       }
-      i += 1;
+      i1 += 1;
     }
-    i = 0;
-    while (i < this.jdField_b_of_type_AndroidWidgetImageSwitcher.getChildCount())
+    i1 = 0;
+    while (i1 < this.b.getChildCount())
     {
-      localObject = this.jdField_b_of_type_AndroidWidgetImageSwitcher.getChildAt(i);
+      localObject = this.b.getChildAt(i1);
       if (localObject != null) {
         ((View)localObject).clearAnimation();
       }
-      i += 1;
+      i1 += 1;
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.n = false;
   }
   
-  private void i()
+  private void l()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.c != null)
     {
       if (!"1000".equals(ThemeUtil.curThemeId))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.c.setVisibility(8);
         return;
       }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      if ((this.d) && (this.c.getVisibility() != 0)) {
+        this.c.setVisibility(0);
       }
     }
-  }
-  
-  public int a()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null) {
-      return localArrayList.size();
-    }
-    return 0;
   }
   
   void a()
   {
     try
     {
-      if (a())
+      if (h())
       {
-        if (b())
+        if (i())
         {
           if (!QLog.isColorLevel()) {
             return;
@@ -379,98 +370,98 @@ public class LebaQZoneFacePlayHelper
         Object localObject;
         if (a(2))
         {
-          if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 1) && (this.jdField_a_of_type_Int > 0)) {
+          if ((this.j.size() > 1) && (this.i > 0)) {
             a(true);
           } else {
-            h();
+            k();
           }
           if (QLog.isColorLevel()) {
-            QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("play index :%d, uin:%s,total size=:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+            QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("play index :%d, uin:%s,total size=:%d", new Object[] { Integer.valueOf(this.i), this.j.get(this.i), Integer.valueOf(this.j.size()) }));
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-          localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-          if (this.jdField_a_of_type_Boolean)
+          this.e = this.f;
+          localObject = (String)this.j.get(this.i);
+          if (this.d)
           {
-            if ((this.c != null) && (!this.c.a()))
+            if ((this.g != null) && (!this.g.d()))
             {
-              if (this.c.jdField_a_of_type_JavaLangString.equals(localObject))
+              if (this.g.a.equals(localObject))
               {
-                this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = this.c;
-                this.c = null;
+                this.f = this.g;
+                this.g = null;
               }
-              else if (!this.c.a())
+              else if (!this.g.d())
               {
-                this.c.a();
-                this.c = null;
+                this.g.c();
+                this.g = null;
               }
             }
-            else if ((this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo == null) || ((!this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.a()) && (!this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.jdField_a_of_type_JavaLangString.equals(localObject)))) {
-              this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            else if ((this.f == null) || ((!this.f.d()) && (!this.f.a.equals(localObject)))) {
+              this.f = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.m);
             }
-            localObject = this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.a();
-            this.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject);
+            localObject = this.f.b();
+            this.a.setImageDrawable((Drawable)localObject);
             boolean bool = QLog.isColorLevel();
             if (bool)
             {
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("play two");
-              ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject).append(this.f.a);
               QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, ((StringBuilder)localObject).toString());
             }
-            this.c = a((String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int + 1));
-            if (this.c == null) {
-              this.c = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int + 1), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            this.g = a((String)this.j.get(this.i + 1));
+            if (this.g == null) {
+              this.g = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)this.j.get(this.i + 1), this.m);
             }
-            localObject = this.c.a();
+            localObject = this.g.b();
             if (localObject != null)
             {
-              this.jdField_b_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject);
+              this.b.setImageDrawable((Drawable)localObject);
               if (QLog.isColorLevel())
               {
                 localObject = new StringBuilder();
                 ((StringBuilder)localObject).append("play two");
-                ((StringBuilder)localObject).append(this.c.jdField_a_of_type_JavaLangString);
+                ((StringBuilder)localObject).append(this.g.a);
                 QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, ((StringBuilder)localObject).toString());
               }
             }
           }
           else
           {
-            this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = a((String)localObject);
-            if (this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo == null) {
-              this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            this.f = a((String)localObject);
+            if (this.f == null) {
+              this.f = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.m);
             }
-            localObject = this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.a();
+            localObject = this.f.b();
             if (localObject != null)
             {
-              this.jdField_a_of_type_AndroidWidgetImageSwitcher.setImageDrawable((Drawable)localObject);
+              this.a.setImageDrawable((Drawable)localObject);
               if (QLog.isColorLevel())
               {
                 localObject = new StringBuilder();
                 ((StringBuilder)localObject).append("play one");
-                ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo.jdField_a_of_type_JavaLangString);
+                ((StringBuilder)localObject).append(this.f.a);
                 QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, ((StringBuilder)localObject).toString());
               }
             }
           }
-          if (this.jdField_a_of_type_Int == 0) {
-            this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1688002, 1400L);
+          if (this.i == 0) {
+            this.l.sendEmptyMessageDelayed(1688002, 1400L);
           }
-          this.jdField_a_of_type_Int += 1;
-          if (((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size() - 1)) || ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())))
+          this.i += 1;
+          if (((this.d) && (this.i < this.j.size() - 1)) || ((!this.d) && (this.i < this.j.size())))
           {
-            localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-            if (this.jdField_a_of_type_Boolean) {
-              localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int + 1);
+            localObject = (String)this.j.get(this.i);
+            if (this.d) {
+              localObject = (String)this.j.get(this.i + 1);
             }
-            this.d = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            this.h = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)localObject, this.m);
             return;
           }
-          if (((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilArrayList.size())) || ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilArrayList.size() - 1)))
+          if (((!this.d) && (this.i == this.j.size())) || ((this.d) && (this.i == this.j.size() - 1)))
           {
-            this.d = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            if (this.jdField_a_of_type_Boolean) {
-              this.c = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(1), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            this.h = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)this.j.get(0), this.m);
+            if (this.d) {
+              this.g = LebaQZoneFacePlayHelper.FacePlayInfo.a((String)this.j.get(1), this.m);
             }
           }
         }
@@ -478,7 +469,7 @@ public class LebaQZoneFacePlayHelper
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("播放状态不对，不进行播放 playState:");
-          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(this.k);
           QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, ((StringBuilder)localObject).toString());
         }
       }
@@ -491,7 +482,7 @@ public class LebaQZoneFacePlayHelper
     catch (Throwable localThrowable)
     {
       QLog.e("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 1, "播放头像过程中出现错误，请关注异常信息", localThrowable);
-      ((IQzoneExceptionReport)QRoute.api(IQzoneExceptionReport.class)).doReport(localThrowable, HardCodeUtil.a(2131706093));
+      ((IQzoneExceptionReport)QRoute.api(IQzoneExceptionReport.class)).doReport(localThrowable, HardCodeUtil.a(2131903965));
     }
     return;
   }
@@ -499,68 +490,68 @@ public class LebaQZoneFacePlayHelper
   public void a(QQAppInterface paramQQAppInterface)
   {
     d();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.m = paramQQAppInterface;
   }
   
   public void a(ArrayList<String> paramArrayList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.m == null) {
       return;
     }
     if ((paramArrayList != null) && (paramArrayList.size() > 1)) {
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
     } else {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("start play qzone face pre list:%s, current list:%s, currentPlayState:%s, currentIndex:%d", new Object[] { String.valueOf(this.jdField_a_of_type_JavaUtilArrayList), String.valueOf(paramArrayList), a(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, String.format("start play qzone face pre list:%s, current list:%s, currentPlayState:%s, currentIndex:%d", new Object[] { String.valueOf(this.j), String.valueOf(paramArrayList), c(this.k), Integer.valueOf(this.i) }));
     }
-    if ((!b(2)) && (a(this.jdField_a_of_type_JavaUtilArrayList, paramArrayList)))
+    if ((!b(2)) && (a(this.j, paramArrayList)))
     {
       if (QLog.isColorLevel())
       {
         paramArrayList = new StringBuilder();
         paramArrayList.append("数据没有发生变化，保持原有的播放状态:");
-        paramArrayList.append(this.jdField_a_of_type_JavaUtilArrayList);
+        paramArrayList.append(this.j);
         QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, paramArrayList.toString());
       }
     }
     else
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1688002);
+      this.l.removeMessages(1688002);
       if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
       {
-        this.jdField_b_of_type_Int = 2;
-        this.jdField_a_of_type_Int = 0;
-        ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+        this.k = 2;
+        this.i = 0;
+        ArrayList localArrayList = this.j;
         if (localArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramArrayList.size());
+          this.j = new ArrayList(paramArrayList.size());
         } else {
           localArrayList.clear();
         }
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-        paramArrayList = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Boolean) {
-          paramArrayList = (String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int + 1);
+        this.j.addAll(paramArrayList);
+        paramArrayList = (String)this.j.get(this.i);
+        if (this.d) {
+          paramArrayList = (String)this.j.get(this.i + 1);
         }
-        this.d = LebaQZoneFacePlayHelper.FacePlayInfo.a(paramArrayList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        if (this.jdField_a_of_type_AndroidWidgetImageSwitcher.getVisibility() != 0) {
-          this.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
+        this.h = LebaQZoneFacePlayHelper.FacePlayInfo.a(paramArrayList, this.m);
+        if (this.a.getVisibility() != 0) {
+          this.a.setVisibility(0);
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.d)
         {
-          if (this.jdField_b_of_type_AndroidWidgetImageSwitcher.getVisibility() != 0) {
-            this.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(0);
+          if (this.b.getVisibility() != 0) {
+            this.b.setVisibility(0);
           }
-          i();
+          l();
         }
         else
         {
-          paramArrayList = this.jdField_b_of_type_AndroidWidgetImageSwitcher;
+          paramArrayList = this.b;
           if (paramArrayList != null) {
             paramArrayList.setVisibility(8);
           }
-          paramArrayList = this.jdField_a_of_type_AndroidWidgetImageView;
+          paramArrayList = this.c;
           if (paramArrayList != null) {
             paramArrayList.setVisibility(8);
           }
@@ -572,33 +563,33 @@ public class LebaQZoneFacePlayHelper
         QLog.i("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, "start play qzone face 更新数据为 null，隐藏头像");
       }
       d();
-      this.jdField_b_of_type_Int = 0;
+      this.k = 0;
     }
   }
   
   void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageSwitcher;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.n) {
       return;
     }
     ((ImageSwitcher)localObject).setAnimateFirstView(false);
-    this.jdField_b_of_type_AndroidWidgetImageSwitcher.setAnimateFirstView(false);
+    this.b.setAnimateFirstView(false);
     localObject = new AlphaAnimation(0.0F, 1.0F);
     ((Animation)localObject).setDuration(1400L);
     ((Animation)localObject).setAnimationListener(new LebaQZoneFacePlayHelper.1(this, paramBoolean));
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setDuration(1400L);
-    this.jdField_a_of_type_AndroidWidgetImageSwitcher.setInAnimation((Animation)localObject);
-    this.jdField_b_of_type_AndroidWidgetImageSwitcher.setInAnimation(localAlphaAnimation);
+    this.a.setInAnimation((Animation)localObject);
+    this.b.setInAnimation(localAlphaAnimation);
     localObject = new AlphaAnimation(1.0F, 0.0F);
     ((Animation)localObject).setDuration(1400L);
-    this.jdField_a_of_type_AndroidWidgetImageSwitcher.setOutAnimation((Animation)localObject);
-    this.jdField_b_of_type_AndroidWidgetImageSwitcher.setOutAnimation((Animation)localObject);
-    this.jdField_b_of_type_Boolean = true;
+    this.a.setOutAnimation((Animation)localObject);
+    this.b.setOutAnimation((Animation)localObject);
+    this.n = true;
   }
   
   public void b()
@@ -607,40 +598,40 @@ public class LebaQZoneFacePlayHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pausePlayFace pre playState=");
-      localStringBuilder.append(a(this.jdField_b_of_type_Int));
+      localStringBuilder.append(c(this.k));
       QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, localStringBuilder.toString());
     }
     if ((a(2)) && (b(4)))
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1688002);
-      this.jdField_b_of_type_Int = 1;
+      this.l.removeMessages(1688002);
+      this.k = 1;
     }
   }
   
   public void c()
   {
-    i();
+    l();
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("resumePlayFace pre playState=");
-      ((StringBuilder)localObject).append(a(this.jdField_b_of_type_Int));
+      ((StringBuilder)localObject).append(c(this.k));
       QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, ((StringBuilder)localObject).toString());
     }
     if (!b(4))
     {
-      this.jdField_b_of_type_Int = 2;
-      this.jdField_a_of_type_Int = 0;
+      this.k = 2;
+      this.i = 0;
       a();
       return;
     }
     if (a(1))
     {
-      this.jdField_b_of_type_Int = 2;
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
-      if ((localObject != null) && (this.jdField_a_of_type_Int >= ((ArrayList)localObject).size())) {
-        this.jdField_a_of_type_Int = 0;
+      this.k = 2;
+      localObject = this.j;
+      if ((localObject != null) && (this.i >= ((ArrayList)localObject).size())) {
+        this.i = 0;
       }
       a();
     }
@@ -648,46 +639,55 @@ public class LebaQZoneFacePlayHelper
   
   public void d()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.j;
     if (localObject != null)
     {
       ((ArrayList)localObject).clear();
-      this.jdField_a_of_type_Int = 0;
+      this.i = 0;
     }
-    h();
-    localObject = this.jdField_a_of_type_AndroidWidgetImageSwitcher;
+    k();
+    localObject = this.a;
     if (localObject != null)
     {
       ((ImageSwitcher)localObject).setImageDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetImageSwitcher.setVisibility(8);
+      this.a.setVisibility(8);
     }
-    localObject = this.jdField_b_of_type_AndroidWidgetImageSwitcher;
+    localObject = this.b;
     if (localObject != null)
     {
       ((ImageSwitcher)localObject).setImageDrawable(null);
-      this.jdField_b_of_type_AndroidWidgetImageSwitcher.setVisibility(8);
+      this.b.setVisibility(8);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    localObject = this.c;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
     }
-    g();
+    j();
   }
   
   public void e()
   {
     d();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.m = null;
   }
   
-  public void f()
+  public int f()
   {
-    i();
+    ArrayList localArrayList = this.j;
+    if (localArrayList != null) {
+      return localArrayList.size();
+    }
+    return 0;
+  }
+  
+  public void g()
+  {
+    l();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.m;
     if ((localQQAppInterface != null) && ("0".equals(localQQAppInterface.getCurrentAccountUin()))) {
       return false;
     }
@@ -696,8 +696,8 @@ public class LebaQZoneFacePlayHelper
     default: 
       return false;
     case 1688003: 
-      this.jdField_a_of_type_Int = 0;
-      paramMessage = this.jdField_a_of_type_JavaUtilArrayList;
+      this.i = 0;
+      paramMessage = this.j;
       if (paramMessage != null) {
         paramMessage.clear();
       }
@@ -709,7 +709,7 @@ public class LebaQZoneFacePlayHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper
  * JD-Core Version:    0.7.0.1
  */

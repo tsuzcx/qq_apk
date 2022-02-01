@@ -12,27 +12,21 @@ import com.tencent.biz.qqstory.newshare.util.ShareUtils;
 public abstract class CardShareModeBase
   extends ShareModeBase
 {
-  protected int a;
-  protected boolean a;
-  protected int b = -1;
   protected String e;
   protected String f;
   protected String g;
   protected String h;
-  protected String i = QQStoryContext.a().b();
+  protected String i = QQStoryContext.a().i();
   protected String j;
   protected String k;
-  
-  public CardShareModeBase()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  protected int l = -1;
+  protected int m = -1;
+  protected boolean n = false;
   
   public final void a(ShareCopyLinkData paramShareCopyLinkData)
   {
     super.a(paramShareCopyLinkData);
-    paramShareCopyLinkData.jdField_a_of_type_JavaLangString = a(6);
+    paramShareCopyLinkData.a = a(6);
     a(paramShareCopyLinkData);
   }
   
@@ -41,20 +35,20 @@ public abstract class CardShareModeBase
   public void a(ShareQQData paramShareQQData)
   {
     super.a(paramShareQQData);
-    paramShareQQData.b = 1;
-    paramShareQQData.m = this.h;
-    paramShareQQData.jdField_d_of_type_JavaLangString = this.g;
-    paramShareQQData.l = this.f;
-    paramShareQQData.k = this.e;
-    paramShareQQData.jdField_a_of_type_JavaLangString = this.j;
-    paramShareQQData.h = a(1);
-    int m = this.jdField_a_of_type_Int;
-    if (m != -1) {
-      paramShareQQData.jdField_d_of_type_Int = m;
+    paramShareQQData.a = 1;
+    paramShareQQData.t = this.h;
+    paramShareQQData.h = this.g;
+    paramShareQQData.s = this.f;
+    paramShareQQData.r = this.e;
+    paramShareQQData.f = this.j;
+    paramShareQQData.m = a(1);
+    int i1 = this.l;
+    if (i1 != -1) {
+      paramShareQQData.p = i1;
     }
-    m = this.b;
-    if (m != -1) {
-      paramShareQQData.e = m;
+    i1 = this.m;
+    if (i1 != -1) {
+      paramShareQQData.q = i1;
     }
     a(paramShareQQData);
   }
@@ -62,50 +56,50 @@ public abstract class CardShareModeBase
   public void a(ShareQZoneData paramShareQZoneData)
   {
     super.a(paramShareQZoneData);
-    paramShareQZoneData.c = this.e;
-    paramShareQZoneData.jdField_d_of_type_JavaLangString = this.f;
-    paramShareQZoneData.jdField_a_of_type_JavaLangString = this.j;
-    paramShareQZoneData.e = a(2);
+    paramShareQZoneData.f = this.e;
+    paramShareQZoneData.g = this.f;
+    paramShareQZoneData.a = this.j;
+    paramShareQZoneData.h = a(2);
     a(paramShareQZoneData);
   }
   
   public void a(ShareSinaData paramShareSinaData)
   {
     super.a(paramShareSinaData);
-    paramShareSinaData.jdField_a_of_type_JavaLangString = this.k;
+    paramShareSinaData.a = this.k;
     String str = this.j;
-    paramShareSinaData.e = str;
-    paramShareSinaData.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramShareSinaData.jdField_d_of_type_JavaLangString = ShareUtils.a(str);
-    paramShareSinaData.c = a(5);
+    paramShareSinaData.h = str;
+    paramShareSinaData.i = this.n;
+    paramShareSinaData.g = ShareUtils.a(str);
+    paramShareSinaData.f = a(5);
     a(paramShareSinaData);
   }
   
   public void a(ShareWeChatData paramShareWeChatData)
   {
     super.a(paramShareWeChatData);
-    paramShareWeChatData.jdField_a_of_type_JavaLangString = this.e;
-    paramShareWeChatData.c = this.f;
-    paramShareWeChatData.jdField_d_of_type_JavaLangString = a(3);
-    paramShareWeChatData.e = this.j;
-    paramShareWeChatData.b = true;
+    paramShareWeChatData.f = this.e;
+    paramShareWeChatData.g = this.f;
+    paramShareWeChatData.h = a(3);
+    paramShareWeChatData.i = this.j;
+    paramShareWeChatData.k = true;
     a(paramShareWeChatData);
   }
   
   public void b(ShareWeChatData paramShareWeChatData)
   {
     super.b(paramShareWeChatData);
-    paramShareWeChatData.jdField_a_of_type_JavaLangString = this.e;
-    paramShareWeChatData.c = this.f;
-    paramShareWeChatData.jdField_d_of_type_JavaLangString = a(4);
-    paramShareWeChatData.e = this.j;
-    paramShareWeChatData.b = true;
+    paramShareWeChatData.f = this.e;
+    paramShareWeChatData.g = this.f;
+    paramShareWeChatData.h = a(4);
+    paramShareWeChatData.i = this.j;
+    paramShareWeChatData.k = true;
     a(paramShareWeChatData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.CardShareModeBase
  * JD-Core Version:    0.7.0.1
  */

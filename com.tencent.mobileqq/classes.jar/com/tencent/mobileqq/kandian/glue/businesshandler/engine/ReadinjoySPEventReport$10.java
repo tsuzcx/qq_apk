@@ -18,12 +18,12 @@ class ReadinjoySPEventReport$10
     Object localObject = localAttributeList.att_value;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     ((PBStringField)localObject).set(localStringBuilder.toString());
     localObject = new oidb_cmd0x80a.AttributeList();
     ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
     ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("leavetime");
-    ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(this.jdField_a_of_type_Long / 1000L));
+    ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(this.b / 1000L));
     localArrayList.add(localAttributeList);
     localArrayList.add(localObject);
     ReadinjoyReportUtils.a(20, localArrayList);
@@ -31,7 +31,7 @@ class ReadinjoySPEventReport$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.10
  * JD-Core Version:    0.7.0.1
  */

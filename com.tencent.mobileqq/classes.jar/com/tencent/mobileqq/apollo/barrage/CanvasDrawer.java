@@ -11,9 +11,9 @@ import java.util.List;
 public class CanvasDrawer
   extends AbsDrawer<Canvas>
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Rect b = new Rect();
+  private Paint b = new Paint(2);
+  private Rect c = new Rect();
+  private Rect d = new Rect();
   
   public boolean a(Canvas paramCanvas, float paramFloat)
   {
@@ -22,11 +22,11 @@ public class CanvasDrawer
     }
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         Barrage localBarrage = (Barrage)localIterator.next();
-        localBarrage.b();
+        localBarrage.d();
         Object localObject;
         if (!localBarrage.a())
         {
@@ -41,36 +41,36 @@ public class CanvasDrawer
         }
         else
         {
-          localObject = localBarrage.a();
+          localObject = localBarrage.c();
           if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
           {
             paramCanvas.save();
             float f = 1.0F;
             if (paramFloat == 1.0F)
             {
-              if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() != localBarrage.d) {
-                this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localBarrage.d);
+              if (this.b.getAlpha() != localBarrage.p) {
+                this.b.setAlpha(localBarrage.p);
               }
             }
             else {
-              this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * paramFloat));
+              this.b.setAlpha((int)(255.0F * paramFloat));
             }
-            if (localBarrage.h > 0.0F) {
-              f = localBarrage.h;
+            if (localBarrage.u > 0.0F) {
+              f = localBarrage.u;
             }
-            paramCanvas.clipRect(localBarrage.jdField_e_of_type_Float, localBarrage.jdField_f_of_type_Float, localBarrage.jdField_e_of_type_Float + localBarrage.jdField_e_of_type_Int * f, localBarrage.jdField_f_of_type_Float + localBarrage.jdField_f_of_type_Int * f);
-            paramCanvas.translate(localBarrage.jdField_e_of_type_Float, localBarrage.jdField_f_of_type_Float);
-            if (localBarrage.h != 0.0F) {
-              paramCanvas.scale(localBarrage.h, localBarrage.h);
+            paramCanvas.clipRect(localBarrage.i, localBarrage.j, localBarrage.i + localBarrage.q * f, localBarrage.j + localBarrage.r * f);
+            paramCanvas.translate(localBarrage.i, localBarrage.j);
+            if (localBarrage.u != 0.0F) {
+              paramCanvas.scale(localBarrage.u, localBarrage.u);
             }
-            this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-            this.b.set(0, 0, localBarrage.jdField_e_of_type_Int, localBarrage.jdField_f_of_type_Int);
-            paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+            this.c.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+            this.d.set(0, 0, localBarrage.q, localBarrage.r);
+            paramCanvas.drawBitmap((Bitmap)localObject, this.c, this.d, this.b);
             paramCanvas.restore();
           }
         }
       }
-      boolean bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+      boolean bool = this.a.isEmpty();
       return bool ^ true;
     }
     finally {}
@@ -82,7 +82,7 @@ public class CanvasDrawer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.CanvasDrawer
  * JD-Core Version:    0.7.0.1
  */

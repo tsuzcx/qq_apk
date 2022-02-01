@@ -8,15 +8,16 @@ import java.util.List;
 public class TroopUploadingTask
   extends UploadingTask
 {
-  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList)
+  public void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList, BaseUrlAction paramBaseUrlAction)
   {
     if ((this.a == null) || (this.a.getState() == Thread.State.TERMINATED)) {
-      this.a = ((TroopUploadingThread)UploadingFactory.a(paramClass));
+      this.a = ((TroopUploadingThread)UploadingFactory.b(paramClass));
     }
     if (this.a == null) {
       return;
     }
     this.a.a(paramArrayList, paramHashMap, paramList, this);
+    this.a.a(paramBaseUrlAction);
     if (!this.a.isAlive()) {
       this.a.start();
     }
@@ -24,7 +25,7 @@ public class TroopUploadingTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.TroopUploadingTask
  * JD-Core Version:    0.7.0.1
  */

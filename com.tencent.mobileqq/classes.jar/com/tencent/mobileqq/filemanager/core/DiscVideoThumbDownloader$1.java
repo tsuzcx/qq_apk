@@ -13,7 +13,7 @@ class DiscVideoThumbDownloader$1
 {
   DiscVideoThumbDownloader$1(DiscVideoThumbDownloader paramDiscVideoThumbDownloader) {}
   
-  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, long paramLong, Bundle paramBundle)
+  protected void c(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, long paramLong, Bundle paramBundle)
   {
     paramString1 = new StringBuilder();
     paramString1.append("[downloadThumb]  ID[");
@@ -46,7 +46,7 @@ class DiscVideoThumbDownloader$1
     }
     if (!paramBoolean)
     {
-      this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.b });
       this.a.a(paramLong);
       this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
@@ -58,7 +58,7 @@ class DiscVideoThumbDownloader$1
       paramString1.append(paramLong);
       paramString1.append("] OnGetDiscVideoThumbInfo url=null");
       QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, paramString1.toString());
-      this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.b });
       this.a.a(paramLong);
       this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
@@ -84,9 +84,9 @@ class DiscVideoThumbDownloader$1
       paramString4.append("/ftn_video_pic/rkey=");
       paramString4.append(paramString3);
       paramString4.append("&filetype=");
-      paramString4.append(localVideoSession.b);
+      paramString4.append(localVideoSession.d);
       paramString4.append("&size=");
-      paramString4.append(this.a.a(localVideoSession.jdField_a_of_type_Int));
+      paramString4.append(this.a.a(localVideoSession.c));
       paramString4.append("&");
       paramString5 = paramString4.toString();
       if ((((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsThumb4Disc(this.a.a)) && (paramBundle != null))
@@ -117,14 +117,14 @@ class DiscVideoThumbDownloader$1
       this.a.a(paramLong, true, paramString1, paramInt2, paramString5, null, paramString2, paramBoolean, paramString3, s, paramString4);
       return;
     }
-    this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+    this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.b });
     this.a.a(paramLong);
     this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.DiscVideoThumbDownloader.1
  * JD-Core Version:    0.7.0.1
  */

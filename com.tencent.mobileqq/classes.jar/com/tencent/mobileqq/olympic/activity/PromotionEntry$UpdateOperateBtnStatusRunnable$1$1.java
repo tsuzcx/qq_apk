@@ -20,14 +20,14 @@ class PromotionEntry$UpdateOperateBtnStatusRunnable$1$1
   
   public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    Object localObject = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry$UpdateOperateBtnStatusRunnable).get();
+    Object localObject = (ImageView)PromotionEntry.UpdateOperateBtnStatusRunnable.a(this.a.b).get();
     if (localObject != null)
     {
       paramLottieImageAsset = paramLottieImageAsset.getFileName();
       int i = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
       int j = ((ImageView)localObject).getResources().getDisplayMetrics().densityDpi;
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a.a);
       ((StringBuilder)localObject).append("entry_images");
       ((StringBuilder)localObject).append(File.separator);
       ((StringBuilder)localObject).append(paramLottieImageAsset);
@@ -38,9 +38,9 @@ class PromotionEntry$UpdateOperateBtnStatusRunnable$1$1
       }
       catch (Exception paramLottieImageAsset)
       {
-        if (QQAudioHelper.c())
+        if (QQAudioHelper.f())
         {
-          String str = PromotionEntry.jdField_a_of_type_JavaLangString;
+          String str = PromotionEntry.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("UpdateOperateBtnStatusRunnable Exception, imagePath[");
           localStringBuilder.append((String)localObject);
@@ -62,7 +62,7 @@ class PromotionEntry$UpdateOperateBtnStatusRunnable$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable.1.1
  * JD-Core Version:    0.7.0.1
  */

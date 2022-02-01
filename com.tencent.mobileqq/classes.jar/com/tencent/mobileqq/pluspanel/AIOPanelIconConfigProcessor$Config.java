@@ -26,17 +26,17 @@ public final class AIOPanelIconConfigProcessor$Config
           {
             AIOPanelIconItem localAIOPanelIconItem = new AIOPanelIconItem();
             JSONObject localJSONObject = paramString.getJSONObject(i);
-            localAIOPanelIconItem.jdField_a_of_type_Int = localJSONObject.optInt("appid");
-            localAIOPanelIconItem.d = localJSONObject.optString("title");
-            localAIOPanelIconItem.e = localJSONObject.optString("iconNormal");
-            localAIOPanelIconItem.f = localJSONObject.optString("iconPress");
-            localAIOPanelIconItem.g = localJSONObject.optString("iconNightNormal");
-            localAIOPanelIconItem.h = localJSONObject.optString("iconNightPress");
-            localAIOPanelIconItem.jdField_b_of_type_Int = localJSONObject.optInt("redDotID");
-            localAIOPanelIconItem.jdField_c_of_type_JavaLangString = localJSONObject.optString("redDotPath");
-            localAIOPanelIconItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("actionType");
-            localAIOPanelIconItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("action");
-            localAIOPanelIconItem.jdField_c_of_type_Int = localJSONObject.optInt("order");
+            localAIOPanelIconItem.a = localJSONObject.optInt("appid");
+            localAIOPanelIconItem.h = localJSONObject.optString("title");
+            localAIOPanelIconItem.i = localJSONObject.optString("iconNormal");
+            localAIOPanelIconItem.j = localJSONObject.optString("iconPress");
+            localAIOPanelIconItem.k = localJSONObject.optString("iconNightNormal");
+            localAIOPanelIconItem.l = localJSONObject.optString("iconNightPress");
+            localAIOPanelIconItem.b = localJSONObject.optInt("redDotID");
+            localAIOPanelIconItem.e = localJSONObject.optString("redDotPath");
+            localAIOPanelIconItem.c = localJSONObject.optString("actionType");
+            localAIOPanelIconItem.d = localJSONObject.optString("action");
+            localAIOPanelIconItem.f = localJSONObject.optInt("order");
             localAIOPanelIconItem.a();
             localAIOPanelIconItem.b();
             this.a.add(localAIOPanelIconItem);
@@ -54,7 +54,7 @@ public final class AIOPanelIconConfigProcessor$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.AIOPanelIconConfigProcessor.Config
  * JD-Core Version:    0.7.0.1
  */

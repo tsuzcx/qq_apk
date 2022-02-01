@@ -11,7 +11,7 @@ public class ReadInjoyBePraisedDialog
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i != 2131370525) && (i != 2131379594)) {
+    if ((i != 2131437798) && (i != 2131448351)) {
       return;
     }
     dismiss();
@@ -19,7 +19,7 @@ public class ReadInjoyBePraisedDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInjoyBePraisedDialog
  * JD-Core Version:    0.7.0.1
  */

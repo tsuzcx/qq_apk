@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.request;
 
 import android.content.Intent;
 import com.tencent.mobileqq.apollo.handler.ApolloExtensionHandler;
-import com.tencent.mobileqq.emosm.web.RequestRoute;
+import com.tencent.mobileqq.apollo.utils.RequestRoute;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
@@ -21,13 +21,13 @@ public final class ApolloStoreRequestReceiver
   @RequestRoute(a="apollo_dc_report.service_monit")
   private final void handleReportApolloStoreStabilityResp(ApolloRequestReceiveParams paramApolloRequestReceiveParams)
   {
-    Object localObject = paramApolloRequestReceiveParams.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    Object localObject = paramApolloRequestReceiveParams.c;
     if (localObject != null)
     {
-      Intent localIntent = paramApolloRequestReceiveParams.jdField_a_of_type_AndroidContentIntent;
+      Intent localIntent = paramApolloRequestReceiveParams.b;
       if (localIntent != null)
       {
-        paramApolloRequestReceiveParams = paramApolloRequestReceiveParams.jdField_a_of_type_ArrayOfByte;
+        paramApolloRequestReceiveParams = paramApolloRequestReceiveParams.d;
         if (paramApolloRequestReceiveParams != null)
         {
           if ((localIntent != null) && (paramApolloRequestReceiveParams != null) && (localObject != null) && (((FromServiceMsg)localObject).isSuccess()))
@@ -61,13 +61,13 @@ public final class ApolloStoreRequestReceiver
   public final void handleSetZanCount(@NotNull ApolloRequestReceiveParams paramApolloRequestReceiveParams)
   {
     Intrinsics.checkParameterIsNotNull(paramApolloRequestReceiveParams, "params");
-    Object localObject1 = paramApolloRequestReceiveParams.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    Object localObject1 = paramApolloRequestReceiveParams.c;
     if (localObject1 != null)
     {
-      Object localObject2 = paramApolloRequestReceiveParams.jdField_a_of_type_ArrayOfByte;
+      Object localObject2 = paramApolloRequestReceiveParams.d;
       if (localObject2 != null)
       {
-        paramApolloRequestReceiveParams = paramApolloRequestReceiveParams.jdField_a_of_type_ComTencentMobileqqApolloHandlerApolloExtensionHandler;
+        paramApolloRequestReceiveParams = paramApolloRequestReceiveParams.e;
         if (paramApolloRequestReceiveParams != null)
         {
           if ((localObject2 != null) && (((FromServiceMsg)localObject1).isSuccess())) {
@@ -111,7 +111,7 @@ public final class ApolloStoreRequestReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.request.ApolloStoreRequestReceiver
  * JD-Core Version:    0.7.0.1
  */

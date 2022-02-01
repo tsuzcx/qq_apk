@@ -28,70 +28,35 @@ import mqq.app.Constants.LogoutReason;
 public class ArConfigService
   extends AppService
 {
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private RemoteCallbackList<IArRemoteCallback> jdField_a_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
-  ARGlobalConfigManager jdField_a_of_type_ComTencentMobileqqArARGlobalConfigManager = null;
-  private IArConfigListener jdField_a_of_type_ComTencentMobileqqArIArConfigListener = new ArConfigService.1(this);
-  private final IArConfigManager.Stub jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager$Stub = new ArConfigService.ArConfigManagerStub(this);
-  private ARPreSoResourceDownload.ARResourceDownloadCallback jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback = new ArConfigService.4(this);
-  private EarlyDownLoadListener jdField_a_of_type_ComTencentMobileqqEarlydownloadEarlyDownLoadListener = new ArConfigService.3(this);
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private RemoteCallbackList<IArFaceCallback> jdField_b_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
-  private ARPreSoResourceDownload.ARResourceDownloadCallback jdField_b_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback = new ArConfigService.5(this);
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private RemoteCallbackList<IArSoCallback> jdField_c_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
-  private ARPreSoResourceDownload.ARResourceDownloadCallback jdField_c_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback = new ArConfigService.6(this);
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int = 100;
-  private ARPreSoResourceDownload.ARResourceDownloadCallback jdField_d_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback = new ArConfigService.7(this);
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int = 100;
-  private boolean jdField_e_of_type_Boolean = true;
-  private boolean f = true;
+  WeakReference<QQAppInterface> a;
+  ARGlobalConfigManager b = null;
+  Object c = new Object();
+  private RemoteCallbackList<IArRemoteCallback> d = new RemoteCallbackList();
+  private RemoteCallbackList<IArFaceCallback> e = new RemoteCallbackList();
+  private IArConfigListener f = new ArConfigService.1(this);
+  private final IArConfigManager.Stub g = new ArConfigService.ArConfigManagerStub(this);
+  private Handler h = new Handler();
+  private RemoteCallbackList<IArSoCallback> i = new RemoteCallbackList();
+  private boolean j = false;
+  private boolean k = false;
+  private int l = 0;
+  private boolean m = false;
+  private int n = 0;
+  private boolean o = false;
+  private int p = 0;
+  private boolean q = true;
+  private int r = 100;
+  private boolean s = true;
+  private int t = 100;
+  private EarlyDownLoadListener u = new ArConfigService.3(this);
+  private ARPreSoResourceDownload.ARResourceDownloadCallback v = new ArConfigService.4(this);
+  private ARPreSoResourceDownload.ARResourceDownloadCallback w = new ArConfigService.5(this);
+  private ARPreSoResourceDownload.ARResourceDownloadCallback x = new ArConfigService.6(this);
+  private ARPreSoResourceDownload.ARResourceDownloadCallback y = new ArConfigService.7(this);
   
   public ArConfigService()
   {
     QLog.w("ArConfig_ArConfigService", 1, "ArConfig_ArConfigService, init");
-  }
-  
-  private void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "downloadArSoInternal");
-    }
-    boolean bool;
-    if (c()) {
-      bool = true;
-    } else {
-      bool = b();
-    }
-    this.jdField_b_of_type_Boolean = bool;
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      ArNativeSoDownloadHandler localArNativeSoDownloadHandler = (ArNativeSoDownloadHandler)((IEarlyDownloadService)this.app.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler("qq.android.ar.native.so_v8.3.6");
-      if (localArNativeSoDownloadHandler != null)
-      {
-        localArNativeSoDownloadHandler.a(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadEarlyDownLoadListener);
-        this.jdField_a_of_type_Int = 0;
-        XmlData localXmlData = localArNativeSoDownloadHandler.a();
-        if ((localXmlData != null) && (localXmlData.loadState == 2))
-        {
-          QLog.d("ArConfig_ArConfigService", 1, "downloadArSoInternal in download queue? force download!!!");
-          localArNativeSoDownloadHandler.a(true, true);
-          return;
-        }
-        localArNativeSoDownloadHandler.a(true);
-      }
-    }
-    else
-    {
-      this.jdField_a_of_type_Int = 100;
-    }
   }
   
   /* Error */
@@ -99,12 +64,12 @@ public class ArConfigService
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 62	com/tencent/mobileqq/ar/ArConfigService:jdField_c_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   1: getfield 81	com/tencent/mobileqq/ar/ArConfigService:i	Landroid/os/RemoteCallbackList;
     //   4: astore 4
     //   6: aload 4
     //   8: ifnull +66 -> 74
     //   11: aload 4
-    //   13: invokevirtual 185	android/os/RemoteCallbackList:beginBroadcast	()I
+    //   13: invokevirtual 155	android/os/RemoteCallbackList:beginBroadcast	()I
     //   16: istore_3
     //   17: iconst_0
     //   18: istore_2
@@ -112,29 +77,29 @@ public class ArConfigService
     //   20: iload_3
     //   21: if_icmpge +27 -> 48
     //   24: aload_0
-    //   25: getfield 62	com/tencent/mobileqq/ar/ArConfigService:jdField_c_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   25: getfield 81	com/tencent/mobileqq/ar/ArConfigService:i	Landroid/os/RemoteCallbackList;
     //   28: iload_2
-    //   29: invokevirtual 189	android/os/RemoteCallbackList:getBroadcastItem	(I)Landroid/os/IInterface;
-    //   32: checkcast 191	com/tencent/mobileqq/ar/aidl/IArSoCallback
+    //   29: invokevirtual 159	android/os/RemoteCallbackList:getBroadcastItem	(I)Landroid/os/IInterface;
+    //   32: checkcast 161	com/tencent/mobileqq/ar/aidl/IArSoCallback
     //   35: iload_1
-    //   36: invokeinterface 193 2 0
+    //   36: invokeinterface 163 2 0
     //   41: iload_2
     //   42: iconst_1
     //   43: iadd
     //   44: istore_2
     //   45: goto -26 -> 19
     //   48: aload_0
-    //   49: getfield 62	com/tencent/mobileqq/ar/ArConfigService:jdField_c_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
-    //   52: invokevirtual 196	android/os/RemoteCallbackList:finishBroadcast	()V
+    //   49: getfield 81	com/tencent/mobileqq/ar/ArConfigService:i	Landroid/os/RemoteCallbackList;
+    //   52: invokevirtual 166	android/os/RemoteCallbackList:finishBroadcast	()V
     //   55: return
     //   56: astore 4
-    //   58: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   58: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   61: ifeq +13 -> 74
-    //   64: ldc 111
+    //   64: ldc 130
     //   66: iconst_2
-    //   67: ldc 198
+    //   67: ldc 172
     //   69: aload 4
-    //   71: invokestatic 201	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   71: invokestatic 175	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   74: return
     //   75: astore 4
     //   77: goto -29 -> 48
@@ -142,8 +107,8 @@ public class ArConfigService
     //   start	length	slot	name	signature
     //   0	80	0	this	ArConfigService
     //   0	80	1	paramInt	int
-    //   18	27	2	i	int
-    //   16	6	3	j	int
+    //   18	27	2	i1	int
+    //   16	6	3	i2	int
     //   4	8	4	localRemoteCallbackList	RemoteCallbackList
     //   56	14	4	localException1	Exception
     //   75	1	4	localException2	Exception
@@ -160,10 +125,10 @@ public class ArConfigService
     boolean bool2;
     if (paramAppRuntime != null)
     {
-      boolean bool4 = paramAppRuntime.g();
-      int i = paramAppRuntime.b();
+      boolean bool4 = paramAppRuntime.r();
+      int i1 = paramAppRuntime.f();
       boolean bool1;
-      if ((paramAppRuntime.g()) && (i > 0)) {
+      if ((paramAppRuntime.r()) && (i1 > 0)) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -173,7 +138,7 @@ public class ArConfigService
       bool2 = bool3;
       if (QLog.isColorLevel())
       {
-        QLog.d("ArConfig_ArConfigService", 2, String.format("isArSoDownload isSuccess=%s version=%s fileExist = %s result=%s ", new Object[] { Boolean.valueOf(bool4), Integer.valueOf(i), Boolean.valueOf(bool5), Boolean.valueOf(bool3) }));
+        QLog.d("ArConfig_ArConfigService", 2, String.format("isArSoDownload isSuccess=%s version=%s fileExist = %s result=%s ", new Object[] { Boolean.valueOf(bool4), Integer.valueOf(i1), Boolean.valueOf(bool5), Boolean.valueOf(bool3) }));
         bool2 = bool3;
       }
     }
@@ -186,56 +151,6 @@ public class ArConfigService
     paramAppRuntime.append(bool2);
     QLog.d("ArConfig_ArConfigService", 1, paramAppRuntime.toString());
     return bool2;
-  }
-  
-  private void b()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "downArCoreSoInternal,mApp is null! ");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "downArCoreSoInternal");
-    }
-    IArCoreNativeSoLoader localIArCoreNativeSoLoader = ArCoreNativeSoManager.a();
-    if (localIArCoreNativeSoLoader == null)
-    {
-      this.jdField_e_of_type_Boolean = true;
-      this.jdField_d_of_type_Int = 100;
-      return;
-    }
-    this.jdField_e_of_type_Boolean = d();
-    if (!this.jdField_e_of_type_Boolean)
-    {
-      Object localObject = (ARGlobalConfigManager)this.app.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER);
-      if (localObject != null)
-      {
-        try
-        {
-          localObject = ((ARGlobalConfigManager)localObject).a(true);
-          if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-            new ArNativeSoManager(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, localIArCoreNativeSoLoader.a(), this.jdField_c_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback);
-          }
-          this.jdField_d_of_type_Int = 0;
-          return;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ArConfig_ArConfigService", 1, "downArCoreSoInternal fail!", localException);
-          if (this.jdField_a_of_type_Boolean) {
-            return;
-          }
-        }
-        this.jdField_a_of_type_AndroidOsHandler.post(new ArConfigService.8(this));
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    else
-    {
-      this.jdField_d_of_type_Int = 100;
-    }
   }
   
   private boolean b()
@@ -271,49 +186,6 @@ public class ArConfigService
     return false;
   }
   
-  private void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "downloadArFeatureSoInternal");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadArFeatureSoInternal,mApp is null! ");
-      return;
-    }
-    this.f = e();
-    if (!this.f)
-    {
-      Object localObject = (ARGlobalConfigManager)this.app.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER);
-      if (localObject != null)
-      {
-        try
-        {
-          localObject = ((ARGlobalConfigManager)localObject).a(true);
-          if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-            new ArNativeSoManager(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arfeature", this.jdField_d_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback);
-          }
-          this.jdField_e_of_type_Int = 0;
-          return;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ArConfig_ArConfigService", 1, "downloadArCloudSoInternal fail!", localException);
-          if (this.jdField_a_of_type_Boolean) {
-            return;
-          }
-        }
-        this.jdField_a_of_type_AndroidOsHandler.post(new ArConfigService.9(this));
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    else
-    {
-      this.jdField_e_of_type_Int = 100;
-    }
-  }
-  
   private static boolean c()
   {
     return ArNativeSoLoader.a("ArMapEngine836");
@@ -322,49 +194,6 @@ public class ArConfigService
   public static boolean c(AppRuntime paramAppRuntime)
   {
     return true;
-  }
-  
-  private void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "downloadArCloudSoInternal");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadArCloudSoInternal,mApp is null! ");
-      return;
-    }
-    this.jdField_c_of_type_Boolean = f();
-    if (!this.jdField_c_of_type_Boolean)
-    {
-      Object localObject = (ARGlobalConfigManager)this.app.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER);
-      if (localObject != null)
-      {
-        try
-        {
-          localObject = ((ARGlobalConfigManager)localObject).a(true);
-          if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-            new ArNativeSoManager(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud", this.jdField_b_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback);
-          }
-          this.jdField_b_of_type_Int = 0;
-          return;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ArConfig_ArConfigService", 1, "downloadArCloudSoInternal fail!", localException);
-          if (this.jdField_a_of_type_Boolean) {
-            return;
-          }
-        }
-        this.jdField_a_of_type_AndroidOsHandler.post(new ArConfigService.10(this));
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    else
-    {
-      this.jdField_b_of_type_Int = 100;
-    }
   }
   
   private boolean d()
@@ -396,49 +225,6 @@ public class ArConfigService
     return false;
   }
   
-  private void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "downloadArSDK2SoInternal");
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadArSDK2SoInternal,mApp is null! ");
-      return;
-    }
-    this.jdField_d_of_type_Boolean = g();
-    if (!this.jdField_d_of_type_Boolean)
-    {
-      Object localObject = (ARGlobalConfigManager)this.app.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER);
-      if (localObject != null)
-      {
-        try
-        {
-          localObject = ((ARGlobalConfigManager)localObject).a(true);
-          if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
-            new ArNativeSoManager(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2", this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback);
-          }
-          this.jdField_c_of_type_Int = 0;
-          return;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ArConfig_ArConfigService", 1, "downloadArSDK2SoInternal fail!", localException);
-          if (this.jdField_a_of_type_Boolean) {
-            return;
-          }
-        }
-        this.jdField_a_of_type_AndroidOsHandler.post(new ArConfigService.11(this));
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
-    else
-    {
-      this.jdField_c_of_type_Int = 100;
-    }
-  }
-  
   private boolean e()
   {
     return c(this.app);
@@ -447,39 +233,6 @@ public class ArConfigService
   public static boolean e(AppRuntime paramAppRuntime)
   {
     return (c()) && (d(paramAppRuntime)) && (f(paramAppRuntime)) && (b(paramAppRuntime));
-  }
-  
-  private void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "notifyArSoDownloadSuccess ");
-    }
-    RemoteCallbackList localRemoteCallbackList = this.jdField_c_of_type_AndroidOsRemoteCallbackList;
-    if (localRemoteCallbackList != null) {}
-    for (;;)
-    {
-      try
-      {
-        int j = localRemoteCallbackList.beginBroadcast();
-        i = 0;
-        if (i >= j) {}
-      }
-      catch (Exception localException1)
-      {
-        int i;
-        if (QLog.isColorLevel()) {
-          QLog.e("ArConfig_ArConfigService", 2, "notifyArSoDownloadSuccess fail!", localException1);
-        }
-      }
-      try
-      {
-        ((IArSoCallback)this.jdField_c_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a();
-        i += 1;
-      }
-      catch (Exception localException2) {}
-    }
-    this.jdField_c_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
-    return;
   }
   
   private boolean f()
@@ -511,17 +264,269 @@ public class ArConfigService
     return false;
   }
   
+  private boolean g()
+  {
+    return f(this.app);
+  }
+  
+  private void h()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "downloadArSoInternal");
+    }
+    boolean bool;
+    if (c()) {
+      bool = true;
+    } else {
+      bool = b();
+    }
+    this.k = bool;
+    if (!this.k)
+    {
+      ArNativeSoDownloadHandler localArNativeSoDownloadHandler = (ArNativeSoDownloadHandler)((IEarlyDownloadService)this.app.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler("qq.android.ar.native.so_v8.3.6");
+      if (localArNativeSoDownloadHandler != null)
+      {
+        localArNativeSoDownloadHandler.a(this.u);
+        this.l = 0;
+        XmlData localXmlData = localArNativeSoDownloadHandler.h();
+        if ((localXmlData != null) && (localXmlData.loadState == 2))
+        {
+          QLog.d("ArConfig_ArConfigService", 1, "downloadArSoInternal in download queue? force download!!!");
+          localArNativeSoDownloadHandler.a(true, true);
+          return;
+        }
+        localArNativeSoDownloadHandler.a(true);
+      }
+    }
+    else
+    {
+      this.l = 100;
+    }
+  }
+  
+  private void i()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "downArCoreSoInternal,mApp is null! ");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "downArCoreSoInternal");
+    }
+    IArCoreNativeSoLoader localIArCoreNativeSoLoader = ArCoreNativeSoManager.a();
+    if (localIArCoreNativeSoLoader == null)
+    {
+      this.q = true;
+      this.r = 100;
+      return;
+    }
+    this.q = d();
+    if (!this.q)
+    {
+      Object localObject = (ARGlobalConfigManager)this.app.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER);
+      if (localObject != null)
+      {
+        try
+        {
+          localObject = ((ARGlobalConfigManager)localObject).a(true);
+          if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
+            new ArNativeSoManager(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, localIArCoreNativeSoLoader.a(), this.x);
+          }
+          this.r = 0;
+          return;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("ArConfig_ArConfigService", 1, "downArCoreSoInternal fail!", localException);
+          if (this.j) {
+            return;
+          }
+        }
+        this.h.post(new ArConfigService.8(this));
+        this.j = true;
+      }
+    }
+    else
+    {
+      this.r = 100;
+    }
+  }
+  
+  private void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "downloadArFeatureSoInternal");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "downloadArFeatureSoInternal,mApp is null! ");
+      return;
+    }
+    this.s = e();
+    if (!this.s)
+    {
+      Object localObject = (ARGlobalConfigManager)this.app.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER);
+      if (localObject != null)
+      {
+        try
+        {
+          localObject = ((ARGlobalConfigManager)localObject).a(true);
+          if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
+            new ArNativeSoManager(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arfeature", this.y);
+          }
+          this.t = 0;
+          return;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("ArConfig_ArConfigService", 1, "downloadArCloudSoInternal fail!", localException);
+          if (this.j) {
+            return;
+          }
+        }
+        this.h.post(new ArConfigService.9(this));
+        this.j = true;
+      }
+    }
+    else
+    {
+      this.t = 100;
+    }
+  }
+  
+  private void k()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "downloadArCloudSoInternal");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "downloadArCloudSoInternal,mApp is null! ");
+      return;
+    }
+    this.m = f();
+    if (!this.m)
+    {
+      Object localObject = (ARGlobalConfigManager)this.app.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER);
+      if (localObject != null)
+      {
+        try
+        {
+          localObject = ((ARGlobalConfigManager)localObject).a(true);
+          if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
+            new ArNativeSoManager(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arcloud", this.w);
+          }
+          this.n = 0;
+          return;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("ArConfig_ArConfigService", 1, "downloadArCloudSoInternal fail!", localException);
+          if (this.j) {
+            return;
+          }
+        }
+        this.h.post(new ArConfigService.10(this));
+        this.j = true;
+      }
+    }
+    else
+    {
+      this.n = 100;
+    }
+  }
+  
+  private void l()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "downloadArSDK2SoInternal");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "downloadArSDK2SoInternal,mApp is null! ");
+      return;
+    }
+    this.o = g();
+    if (!this.o)
+    {
+      Object localObject = (ARGlobalConfigManager)this.app.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER);
+      if (localObject != null)
+      {
+        try
+        {
+          localObject = ((ARGlobalConfigManager)localObject).a(true);
+          if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0)) {
+            new ArNativeSoManager(localQQAppInterface).a(((ARCommonConfigInfo)localObject).nativeSoResList, "arsdk2", this.v);
+          }
+          this.p = 0;
+          return;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("ArConfig_ArConfigService", 1, "downloadArSDK2SoInternal fail!", localException);
+          if (this.j) {
+            return;
+          }
+        }
+        this.h.post(new ArConfigService.11(this));
+        this.j = true;
+      }
+    }
+    else
+    {
+      this.p = 100;
+    }
+  }
+  
+  private void m()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, "notifyArSoDownloadSuccess ");
+    }
+    RemoteCallbackList localRemoteCallbackList = this.i;
+    if (localRemoteCallbackList != null) {}
+    for (;;)
+    {
+      try
+      {
+        int i2 = localRemoteCallbackList.beginBroadcast();
+        i1 = 0;
+        if (i1 >= i2) {}
+      }
+      catch (Exception localException1)
+      {
+        int i1;
+        if (QLog.isColorLevel()) {
+          QLog.e("ArConfig_ArConfigService", 2, "notifyArSoDownloadSuccess fail!", localException1);
+        }
+      }
+      try
+      {
+        ((IArSoCallback)this.i.getBroadcastItem(i1)).a();
+        i1 += 1;
+      }
+      catch (Exception localException2) {}
+    }
+    this.i.finishBroadcast();
+    return;
+  }
+  
   /* Error */
-  private void g()
+  private void n()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 62	com/tencent/mobileqq/ar/ArConfigService:jdField_c_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   1: getfield 81	com/tencent/mobileqq/ar/ArConfigService:i	Landroid/os/RemoteCallbackList;
     //   4: astore_3
     //   5: aload_3
     //   6: ifnull +63 -> 69
     //   9: aload_3
-    //   10: invokevirtual 185	android/os/RemoteCallbackList:beginBroadcast	()I
+    //   10: invokevirtual 155	android/os/RemoteCallbackList:beginBroadcast	()I
     //   13: istore_2
     //   14: iconst_0
     //   15: istore_1
@@ -529,36 +534,36 @@ public class ArConfigService
     //   17: iload_2
     //   18: if_icmpge +26 -> 44
     //   21: aload_0
-    //   22: getfield 62	com/tencent/mobileqq/ar/ArConfigService:jdField_c_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
+    //   22: getfield 81	com/tencent/mobileqq/ar/ArConfigService:i	Landroid/os/RemoteCallbackList;
     //   25: iload_1
-    //   26: invokevirtual 189	android/os/RemoteCallbackList:getBroadcastItem	(I)Landroid/os/IInterface;
-    //   29: checkcast 191	com/tencent/mobileqq/ar/aidl/IArSoCallback
-    //   32: invokeinterface 401 1 0
+    //   26: invokevirtual 159	android/os/RemoteCallbackList:getBroadcastItem	(I)Landroid/os/IInterface;
+    //   29: checkcast 161	com/tencent/mobileqq/ar/aidl/IArSoCallback
+    //   32: invokeinterface 419 1 0
     //   37: iload_1
     //   38: iconst_1
     //   39: iadd
     //   40: istore_1
     //   41: goto -25 -> 16
     //   44: aload_0
-    //   45: getfield 62	com/tencent/mobileqq/ar/ArConfigService:jdField_c_of_type_AndroidOsRemoteCallbackList	Landroid/os/RemoteCallbackList;
-    //   48: invokevirtual 196	android/os/RemoteCallbackList:finishBroadcast	()V
+    //   45: getfield 81	com/tencent/mobileqq/ar/ArConfigService:i	Landroid/os/RemoteCallbackList;
+    //   48: invokevirtual 166	android/os/RemoteCallbackList:finishBroadcast	()V
     //   51: return
     //   52: astore_3
-    //   53: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   53: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   56: ifeq +13 -> 69
-    //   59: ldc 111
+    //   59: ldc 130
     //   61: iconst_2
-    //   62: ldc_w 403
+    //   62: ldc_w 421
     //   65: aload_3
-    //   66: invokestatic 201	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   66: invokestatic 175	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   69: return
     //   70: astore_3
     //   71: goto -27 -> 44
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	74	0	this	ArConfigService
-    //   15	26	1	i	int
-    //   13	6	2	j	int
+    //   15	26	1	i1	int
+    //   13	6	2	i2	int
     //   4	6	3	localRemoteCallbackList	RemoteCallbackList
     //   52	14	3	localException1	Exception
     //   70	1	3	localException2	Exception
@@ -567,11 +572,6 @@ public class ArConfigService
     //   9	14	52	java/lang/Exception
     //   44	51	52	java/lang/Exception
     //   21	37	70	java/lang/Exception
-  }
-  
-  private boolean g()
-  {
-    return f(this.app);
   }
   
   public void onAccountChanged()
@@ -586,7 +586,7 @@ public class ArConfigService
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_ArConfigService", 2, "onBind");
     }
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager$Stub;
+    return this.g;
   }
   
   public void onCreate()
@@ -602,8 +602,8 @@ public class ArConfigService
     }
     if ((this.app instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((QQAppInterface)this.app);
-      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      this.a = new WeakReference((QQAppInterface)this.app);
+      localObject = (QQAppInterface)this.a.get();
       if (localObject == null)
       {
         QLog.d("ArConfig_ArConfigService", 1, "onCreate,mApp is null! ");
@@ -611,12 +611,12 @@ public class ArConfigService
       }
       ArResourceManager localArResourceManager = (ArResourceManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
       if (localArResourceManager != null) {
-        localArResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener);
+        localArResourceManager.a(this.f);
       }
-      this.jdField_a_of_type_ComTencentMobileqqArARGlobalConfigManager = ((ARGlobalConfigManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARGlobalConfigManager;
+      this.b = ((ARGlobalConfigManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER));
+      localObject = this.b;
       if (localObject != null) {
-        ((ARGlobalConfigManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener);
+        ((ARGlobalConfigManager)localObject).a(this.f);
       }
       FaceScanDownloadManager.a(new ArConfigService.2(this));
     }
@@ -632,12 +632,12 @@ public class ArConfigService
       localStringBuilder.append(this);
       QLog.d("ArConfig_ArConfigService", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidOsRemoteCallbackList.kill();
-    this.jdField_b_of_type_AndroidOsRemoteCallbackList.kill();
-    this.jdField_a_of_type_AndroidOsRemoteCallbackList = null;
-    this.jdField_b_of_type_AndroidOsRemoteCallbackList = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentMobileqqArARGlobalConfigManager = null;
+    this.d.kill();
+    this.e.kill();
+    this.d = null;
+    this.e = null;
+    this.a = null;
+    this.b = null;
     FaceScanDownloadManager.a();
   }
   
@@ -648,12 +648,12 @@ public class ArConfigService
   
   public boolean onUnbind(Intent paramIntent)
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (QQAppInterface)this.a.get();
     if (localObject != null)
     {
       localObject = (ArResourceManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
       if (localObject != null) {
-        ((ArResourceManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener);
+        ((ArResourceManager)localObject).b(this.f);
       }
     }
     return super.onUnbind(paramIntent);
@@ -661,7 +661,7 @@ public class ArConfigService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService
  * JD-Core Version:    0.7.0.1
  */

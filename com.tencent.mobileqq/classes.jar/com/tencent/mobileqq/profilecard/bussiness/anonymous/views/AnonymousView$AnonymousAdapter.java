@@ -17,7 +17,6 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.bean.AnonymousQuestion;
 import com.tencent.mobileqq.profilecard.bussiness.anonymous.constant.AnonymousConstant;
 import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
-import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -51,7 +50,7 @@ public class AnonymousView$AnonymousAdapter
     paramListViewHolder.tvAnswer.setText(new QQText(QzoneEmotionUtils.emCodesToQQcodes(localAnonymousQuestion.mAnswer), 3, 16));
     paramListViewHolder.ivAnswer.setImageBitmap(this.this$0.getFaceBitmap(localAnonymousQuestion.mOwnerUin));
     TextView localTextView = paramListViewHolder.tvBrowse;
-    String str = this.this$0.getContext().getString(2131698623);
+    String str = this.this$0.getContext().getString(2131896570);
     Object localObject;
     if (localAnonymousQuestion.mTotalViewCount > 0L) {
       localObject = ProfileUtils.formatPraiseNum((int)localAnonymousQuestion.mTotalViewCount);
@@ -61,23 +60,13 @@ public class AnonymousView$AnonymousAdapter
     localTextView.setText(String.format(str, new Object[] { localObject }));
     if (ThemeUtil.isInNightMode(this.this$0.appInterface))
     {
-      paramListViewHolder.ll.setBackgroundResource(2130845909);
-      paramListViewHolder.rl.setBackgroundResource(2130845898);
+      paramListViewHolder.ll.setBackgroundResource(2130847379);
+      paramListViewHolder.rl.setBackgroundResource(2130847368);
     }
-    if (SimpleUIUtil.a())
-    {
-      paramListViewHolder.ivQues.setImageResource(2130845915);
-      paramListViewHolder.ivQuesHeadBg.setImageResource(2130845912);
-      paramListViewHolder.ivQuesHeadCircle.setImageResource(2130845914);
-      paramListViewHolder.ivAnswerHeadCircle.setImageResource(2130845900);
-    }
-    else
-    {
-      paramListViewHolder.ivQues.setImageResource(2130845910);
-      paramListViewHolder.ivQuesHeadBg.setImageResource(2130845911);
-      paramListViewHolder.ivQuesHeadCircle.setImageResource(2130845913);
-      paramListViewHolder.ivAnswerHeadCircle.setImageResource(2130845899);
-    }
+    paramListViewHolder.ivQues.setImageResource(2130847380);
+    paramListViewHolder.ivQuesHeadBg.setImageResource(2130847381);
+    paramListViewHolder.ivQuesHeadCircle.setImageResource(2130847383);
+    paramListViewHolder.ivAnswerHeadCircle.setImageResource(2130847369);
     int i = AnonymousView.access$300(this.this$0);
     int j = AnonymousConstant.HEAD_BG_COLOR.length;
     paramListViewHolder.ivQuesHeadBg.clearColorFilter();
@@ -102,7 +91,7 @@ public class AnonymousView$AnonymousAdapter
   
   private void setLikeUi(boolean paramBoolean, TextView paramTextView, ImageView paramImageView, long paramLong)
   {
-    Drawable localDrawable = this.this$0.getContext().getResources().getDrawable(2130845981);
+    Drawable localDrawable = this.this$0.getContext().getResources().getDrawable(2130847451);
     int i = Color.parseColor("#FFB0B3BF");
     if (paramBoolean)
     {
@@ -153,7 +142,7 @@ public class AnonymousView$AnonymousAdapter
       localObject = (AnonymousView.VisitorAskQuestionViewHolder)paramViewHolder;
       ((AnonymousView.VisitorAskQuestionViewHolder)localObject).viewAskQues.setOnClickListener(this.this$0);
       if (ThemeUtil.isInNightMode(this.this$0.appInterface)) {
-        ((AnonymousView.VisitorAskQuestionViewHolder)localObject).ll.setBackgroundResource(2130845903);
+        ((AnonymousView.VisitorAskQuestionViewHolder)localObject).ll.setBackgroundResource(2130847373);
       }
     }
     else if ((paramViewHolder instanceof AnonymousView.HostShowTotalViewHolder))
@@ -161,7 +150,7 @@ public class AnonymousView$AnonymousAdapter
       localObject = (AnonymousView.HostShowTotalViewHolder)paramViewHolder;
       ((AnonymousView.HostShowTotalViewHolder)localObject).viewTotal.setOnClickListener(this.this$0);
       if (ThemeUtil.isInNightMode(this.this$0.appInterface)) {
-        ((AnonymousView.HostShowTotalViewHolder)localObject).ll.setBackgroundResource(2130845903);
+        ((AnonymousView.HostShowTotalViewHolder)localObject).ll.setBackgroundResource(2130847373);
       }
     }
     else
@@ -174,26 +163,26 @@ public class AnonymousView$AnonymousAdapter
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     if (4 == paramInt) {
-      return new AnonymousView.VisitorEmptyViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131561307, paramViewGroup, false));
+      return new AnonymousView.VisitorEmptyViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131627663, paramViewGroup, false));
     }
     if (5 == paramInt) {
-      return new AnonymousView.VisitorAskQuestionViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131561306, paramViewGroup, false));
+      return new AnonymousView.VisitorAskQuestionViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131627662, paramViewGroup, false));
     }
     if (1 == paramInt) {
-      return new AnonymousView.HostEmptyQuestionViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131561303, paramViewGroup, false));
+      return new AnonymousView.HostEmptyQuestionViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131627659, paramViewGroup, false));
     }
     if (2 == paramInt) {
-      return new AnonymousView.HostEmptyAnswerViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131561302, paramViewGroup, false));
+      return new AnonymousView.HostEmptyAnswerViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131627658, paramViewGroup, false));
     }
     if (3 == paramInt) {
-      return new AnonymousView.HostShowTotalViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131561304, paramViewGroup, false));
+      return new AnonymousView.HostShowTotalViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131627660, paramViewGroup, false));
     }
-    return new AnonymousView.ListViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131561305, paramViewGroup, false));
+    return new AnonymousView.ListViewHolder(LayoutInflater.from(this.this$0.getContext()).inflate(2131627661, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView.AnonymousAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ class QRDisplayActivity$18
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (this.a.g != null)
+    if (this.a.F != null)
     {
-      if (!this.a.g.equals(paramBaseResp.transaction)) {
+      if (!this.a.F.equals(paramBaseResp.transaction)) {
         return;
       }
       int i = paramBaseResp.errCode;
@@ -21,10 +21,10 @@ class QRDisplayActivity$18
       {
         if (i != 0)
         {
-          QRUtils.a(1, 2131719009);
+          QRUtils.a(1, 2131916544);
           return;
         }
-        QRUtils.a(2, 2131719027);
+        QRUtils.a(2, 2131916563);
       }
     }
   }

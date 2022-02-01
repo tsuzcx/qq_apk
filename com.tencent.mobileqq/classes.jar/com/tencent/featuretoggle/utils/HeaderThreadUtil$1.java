@@ -28,26 +28,26 @@ class HeaderThreadUtil$1
         default: 
           return;
         case 1005: 
-          if (ToggleSetting.a()) {
+          if (ToggleSetting.f()) {
             break;
           }
-          CacheManager.a().b();
-          sendEmptyMessageDelayed(1005, ToggleSetting.a().a());
+          CacheManager.a().d();
+          sendEmptyMessageDelayed(1005, ToggleSetting.a().j());
           return;
         case 1004: 
           HalleyRequestImpl.a().a(false);
           return;
         case 1003: 
-          HeaderThreadUtil.a();
+          HeaderThreadUtil.d();
           return;
         case 1002: 
-          if (!ToggleSetting.b()) {
+          if (!ToggleSetting.g()) {
             break;
           }
-          HalleyRequestImpl.a().a();
+          HalleyRequestImpl.a().b();
           return;
         case 1001: 
-          if (!ToggleSetting.a()) {
+          if (!ToggleSetting.f()) {
             break;
           }
           HalleyRequestImpl.a().a(true);
@@ -59,8 +59,8 @@ class HeaderThreadUtil$1
         if (paramMessage.obj == null) {
           ToggleSetting.a(2);
         }
-        if (ToggleSetting.b()) {
-          HalleyRequestImpl.a().a();
+        if (ToggleSetting.g()) {
+          HalleyRequestImpl.a().b();
         }
       }
     }
@@ -68,7 +68,7 @@ class HeaderThreadUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.HeaderThreadUtil.1
  * JD-Core Version:    0.7.0.1
  */

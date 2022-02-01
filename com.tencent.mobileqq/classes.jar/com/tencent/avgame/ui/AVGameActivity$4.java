@@ -12,7 +12,7 @@ class AVGameActivity$4
     if (this.this$0.isFinishing()) {
       return;
     }
-    QQToast.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).a();
+    QQToast.makeText(this.this$0, this.a, this.b, 0).show();
   }
 }
 

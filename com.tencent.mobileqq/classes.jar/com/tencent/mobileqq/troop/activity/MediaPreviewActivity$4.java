@@ -16,9 +16,9 @@ class MediaPreviewActivity$4
   {
     if (this.this$0.app != null)
     {
-      int j = ((INearbyCardManager)this.this$0.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).b();
+      int j = ((INearbyCardManager)this.this$0.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)).c();
       int i;
-      if ((this.this$0.b > 0) && (((MediaPreviewInfo)this.this$0.a.get(0)).a == 2)) {
+      if ((this.this$0.j > 0) && (((MediaPreviewInfo)this.this$0.h.get(0)).a == 2)) {
         i = 1;
       } else {
         i = 0;
@@ -40,7 +40,7 @@ class MediaPreviewActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.4
  * JD-Core Version:    0.7.0.1
  */

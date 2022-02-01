@@ -3,11 +3,13 @@ package cooperation.qqcircle.eevee;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import android.util.Pair;
+import androidx.annotation.NonNull;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mqq.api.IAccountRuntime;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -20,20 +22,29 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.qcircle.api.IQCircleColdBootService;
+import com.tencent.mobileqq.qcircle.api.event.QCircleFlutterUpdateFuelEvent;
 import com.tencent.mobileqq.qcircle.api.event.QCirclePublishButtonEvent;
 import com.tencent.mobileqq.qcircle.api.event.QCirclePushToastEvent;
 import com.tencent.mobileqq.qcircle.api.global.QCircleHostGlobalInfo;
 import com.tencent.mobileqq.qcircle.api.global.QCircleTipsConfig;
+import com.tencent.mobileqq.qcircle.api.helper.QCircleChatBoxHelper;
 import com.tencent.mobileqq.qcircle.api.helper.QCircleEeveeAttachInfoHelper;
 import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleEeveeUndealMsgRequest;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleRedPointEvent;
 import com.tencent.mobileqq.qcircle.api.utils.EeveeRedpointUtil;
 import com.tencent.mobileqq.qcircle.api.utils.QCircleHostConfig;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.studymode.api.IStudyModeManager;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.QCircleConfig;
 import cooperation.qqcircle.beans.SingleUndealMsg;
 import cooperation.qqcircle.report.QCircleLpReportDc010001;
+import cooperation.qqcircle.report.QCircleLpReportDc010001.DataBuilder;
 import cooperation.qqcircle.report.QCircleReportHelper;
+import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QUA;
 import feedcloud.FeedCloudCommon.BytesEntry;
 import feedcloud.FeedCloudCommon.StCommonExt;
@@ -43,11 +54,15 @@ import feedcloud.FeedCloudEeveeUndealmsg.BizUndealMsg;
 import feedcloud.FeedCloudEeveeUndealmsg.FcUndealMsgsRsp;
 import feedcloud.FeedCloudEeveeUndealmsg.IntervalControl;
 import feedcloud.FeedCloudEeveeUndealmsg.SignalMsg;
+import feedcloud.FeedCloudMeta.StDittoFeed;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 import feedcloud.FeedCloudToastshowsvr.StGetToastDetailRsp;
 import feedcloud.FeedCloudToastshowsvr.StShowControl;
 import feedcloud.FeedCloudToastshowsvr.StShowTime;
 import feedcloud.FeedCloudToastshowsvr.StToast;
 import feedcloud.FeedCloudToastshowsvr.StToastContent;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -55,11 +70,14 @@ import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 import qqcircle.QQCircleBase.StPublishButtonAnimationInfo;
-import qqcircle.QQCircleCounter.AllPushPointInfo;
+import qqcircle.QQCircleCounter.AttachInfo;
 import qqcircle.QQCircleCounter.CountInfoRsp;
 import qqcircle.QQCircleCounter.OutLayerPointInfo;
 import qqcircle.QQCircleCounter.RedDisplayInfo;
 import qqcircle.QQCircleCounter.RedPointInfo;
+import qqcircle.QQCircleDitto.StCircleDittoDataNew;
+import qqcircle.QQCircleDitto.StItemContainer;
+import qqcircle.QQCircleDitto.StItemInfo;
 import qqcircle.QQCircleEnvHub.GetUserFullEnvRsp;
 import qqcircle.QQCircleEnvHub.UserLayerInfo;
 import qqcircle.TaskCenterReader.EeveeMyFuel;
@@ -70,7 +88,7 @@ public class QCircleEeveeMananger
   private static Object dbLock = new Object();
   public static long lastpollingTime = 0L;
   private static Object lock = new Object();
-  private static QCircleEeveeMananger mInstance;
+  private static volatile QCircleEeveeMananger mInstance;
   private Runnable getEeveeUndealMsgRunnable = new QCircleEeveeMananger.3(this);
   public long homeSwitchInterval = 45000L;
   private EntityManager mEm;
@@ -78,11 +96,69 @@ public class QCircleEeveeMananger
   private long mLastGetbySwitchTab = 0L;
   public long pollingInterval = 60000L;
   public long sceneSwitchInterval = 5000L;
-  private MqqHandler undealCountHandler;
+  private volatile MqqHandler undealCountHandler;
   
   QCircleEeveeMananger()
   {
     getmEm();
+  }
+  
+  private List<FeedCloudEeveeBase.StEeveeAttachInfo> appendLightSDKVersion(@NonNull List<FeedCloudEeveeBase.StEeveeAttachInfo> paramList)
+  {
+    Object localObject = paramList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localStEeveeAttachInfo = (FeedCloudEeveeBase.StEeveeAttachInfo)((Iterator)localObject).next();
+      if ((localStEeveeAttachInfo != null) && ("110_1100001_LightSDKVersion".equals(localStEeveeAttachInfo.key.get()))) {
+        return paramList;
+      }
+    }
+    FeedCloudEeveeBase.StEeveeAttachInfo localStEeveeAttachInfo = new FeedCloudEeveeBase.StEeveeAttachInfo();
+    localStEeveeAttachInfo.key.set("110_1100001_LightSDKVersion");
+    localStEeveeAttachInfo.tag.set(0);
+    if (!TextUtils.isEmpty("2.6.0.23"))
+    {
+      localObject = "2.6.0.23".split("\\.");
+      if (localObject.length > 3)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localObject[0]);
+        localStringBuilder.append(".");
+        localStringBuilder.append(localObject[1]);
+        localStringBuilder.append(".");
+        localStringBuilder.append(localObject[2]);
+        localObject = localStringBuilder.toString();
+        break label158;
+      }
+    }
+    localObject = "2.2.6";
+    label158:
+    localStEeveeAttachInfo.value.set((String)localObject);
+    paramList.add(localStEeveeAttachInfo);
+    return paramList;
+  }
+  
+  private String getAccount()
+  {
+    try
+    {
+      String str = ((IAccountRuntime)QRoute.api(IAccountRuntime.class)).getAccount();
+      return str;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QCircleEeveeMananger", 1, "", localException);
+    }
+    return "";
+  }
+  
+  private List<FeedCloudEeveeBase.StEeveeAttachInfo> getEeeveeAttachInfo()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(QCircleEeveeAttachInfoHelper.getInstance().getEeveeAttachInfos());
+    localArrayList.add(getPrivateMessageAttachInfo());
+    appendLightSDKVersion(localArrayList);
+    return localArrayList;
   }
   
   public static QCircleEeveeMananger getInstance()
@@ -92,12 +168,33 @@ public class QCircleEeveeMananger
       {
         if (mInstance == null)
         {
-          RFLog.e("QCircleEeveeMananger", RFLog.USR, "getInstance");
+          QLog.e("QCircleEeveeMananger", 1, "getInstance");
           mInstance = new QCircleEeveeMananger();
         }
       }
     }
     return mInstance;
+  }
+  
+  private FeedCloudEeveeBase.StEeveeAttachInfo getPrivateMessageAttachInfo()
+  {
+    FeedCloudEeveeBase.StEeveeAttachInfo localStEeveeAttachInfo = new FeedCloudEeveeBase.StEeveeAttachInfo();
+    Pair localPair = QCircleChatBoxHelper.getInstance().getUnReadMessages();
+    if (localPair != null)
+    {
+      if (localPair.second == null) {
+        return localStEeveeAttachInfo;
+      }
+      QQCircleCounter.AttachInfo localAttachInfo = new QQCircleCounter.AttachInfo();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPrivateMessageAttachInfo unReadMessages size =");
+      localStringBuilder.append(((List)localPair.second).size());
+      QLog.d("QCircleEeveeMananger", 1, localStringBuilder.toString());
+      localAttachInfo.privateMsgList.set((List)localPair.second);
+      localStEeveeAttachInfo.key.set("106_1060001_AttachInfo");
+      localStEeveeAttachInfo.busiData.set(ByteStringMicro.copyFrom(localAttachInfo.toByteArray()));
+    }
+    return localStEeveeAttachInfo;
   }
   
   private MqqHandler getSubThreadHandler()
@@ -107,7 +204,7 @@ public class QCircleEeveeMananger
       {
         if (this.undealCountHandler == null)
         {
-          RFLog.e("QCircleEeveeMananger", RFLog.USR, "getSubThreadHandler");
+          QLog.e("QCircleEeveeMananger", 1, "getSubThreadHandler");
           HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("eevee_timer", 0);
           localHandlerThread.start();
           this.undealCountHandler = new MqqHandler(localHandlerThread.getLooper());
@@ -137,11 +234,10 @@ public class QCircleEeveeMananger
         }
         catch (Exception localException)
         {
-          int i = RFLog.USR;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getmEm ");
           localStringBuilder.append(localException);
-          RFLog.e("QCircleEeveeMananger", i, localStringBuilder.toString());
+          QLog.e("QCircleEeveeMananger", 1, localStringBuilder.toString());
           return null;
         }
       }
@@ -160,15 +256,33 @@ public class QCircleEeveeMananger
       localObject1 = null;
     }
     Object localObject2;
-    int j;
     switch (i)
     {
+    case 109: 
     default: 
       return;
+    case 110: 
+      try
+      {
+        saveBizUndealMsgBuffer(i, (byte[])localObject1);
+        LocalMultiProcConfig.putLong("qqcircle_get_photo_cluster_last_time", System.currentTimeMillis());
+        return;
+      }
+      catch (Exception paramBizUndealMsg)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleBizUndealMsg error: mainType ");
+        ((StringBuilder)localObject1).append(i);
+        QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject1).toString(), paramBizUndealMsg);
+        return;
+      }
     case 108: 
       initUserEnv((byte[])localObject1);
       return;
     case 107: 
+      if (localObject1 == null) {
+        return;
+      }
       try
       {
         paramBizUndealMsg = new QQCircleBase.StPublishButtonAnimationInfo();
@@ -195,18 +309,17 @@ public class QCircleEeveeMananger
         ((StringBuilder)localObject2).append(paramBizUndealMsg.animationShowTime.get());
         ((StringBuilder)localObject2).append(", reportExt: ");
         ((StringBuilder)localObject2).append(paramBizUndealMsg.reportExt.get());
-        RFLog.d("QCircleEeveeMananger", RFLog.USR, new Object[] { localObject2 });
+        QLog.d("QCircleEeveeMananger", 1, new Object[] { localObject2 });
         SimpleEventBus.getInstance().dispatchEvent(new QCirclePublishButtonEvent(paramBizUndealMsg.toByteArray()));
         saveBizUndealMsgBuffer(i, (byte[])localObject1);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramBizUndealMsg)
       {
-        j = RFLog.USR;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("handleBizUndealMsg error: mainType ");
         ((StringBuilder)localObject1).append(i);
-        RFLog.e("QCircleEeveeMananger", j, new Object[] { ((StringBuilder)localObject1).toString(), paramBizUndealMsg });
+        QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject1).toString(), paramBizUndealMsg);
         return;
       }
     case 104: 
@@ -231,18 +344,17 @@ public class QCircleEeveeMananger
         ((StringBuilder)localObject2).append(paramBizUndealMsg.toastInfo.toastContent.title.get());
         ((StringBuilder)localObject2).append(", content: ");
         ((StringBuilder)localObject2).append(paramBizUndealMsg.toastInfo.toastContent.content.get());
-        RFLog.d("QCircleEeveeMananger", RFLog.USR, new Object[] { localObject2 });
+        QLog.d("QCircleEeveeMananger", 1, new Object[] { localObject2 });
         SimpleEventBus.getInstance().dispatchEvent(new QCirclePushToastEvent(paramBizUndealMsg.toByteArray()));
         saveBizUndealMsgBuffer(i, (byte[])localObject1);
         return;
       }
       catch (Exception paramBizUndealMsg)
       {
-        j = RFLog.USR;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("handleBizUndealMsg error: mainType ");
         ((StringBuilder)localObject1).append(i);
-        RFLog.e("QCircleEeveeMananger", j, new Object[] { ((StringBuilder)localObject1).toString(), paramBizUndealMsg });
+        QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject1).toString(), paramBizUndealMsg);
         return;
       }
     }
@@ -250,61 +362,62 @@ public class QCircleEeveeMananger
     {
       localObject2 = new QQCircleCounter.CountInfoRsp();
       ((QQCircleCounter.CountInfoRsp)localObject2).mergeFrom((byte[])localObject1);
-      j = RFLog.USR;
-      paramBizUndealMsg = new StringBuilder();
-      paramBizUndealMsg.append("handleBizUndealMsg mainType ");
-      paramBizUndealMsg.append(i);
-      paramBizUndealMsg.append(", ");
-      paramBizUndealMsg.append(((QQCircleCounter.CountInfoRsp)localObject2).rptRedPoint.size());
-      RFLog.d("QCircleEeveeMananger", j, paramBizUndealMsg.toString());
-      paramBizUndealMsg = EeveeRedpointUtil.getRedPointInfoByAppid("circle_entrance", (QQCircleCounter.CountInfoRsp)localObject2);
       localObject1 = new StringBuilder();
-      if (paramBizUndealMsg != null)
+      ((StringBuilder)localObject1).append("handleBizUndealMsg mainType ");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(", ");
+      ((StringBuilder)localObject1).append(((QQCircleCounter.CountInfoRsp)localObject2).rptRedPoint.size());
+      QLog.d("QCircleEeveeMananger", 1, ((StringBuilder)localObject1).toString());
+      localObject1 = EeveeRedpointUtil.getRedPointInfoByAppid("circle_entrance", (QQCircleCounter.CountInfoRsp)localObject2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (localObject1 != null)
       {
-        ((StringBuilder)localObject1).append("[handleBizUndealMsg] receive redpoint. appid: ");
-        ((StringBuilder)localObject1).append(paramBizUndealMsg.appid.get());
-        ((StringBuilder)localObject1).append(", redType: ");
-        ((StringBuilder)localObject1).append(paramBizUndealMsg.redType.get());
-        ((StringBuilder)localObject1).append(", redTotalNum: ");
-        ((StringBuilder)localObject1).append(paramBizUndealMsg.redTotalNum.get());
-        ((StringBuilder)localObject1).append(", wording");
-        ((StringBuilder)localObject1).append(paramBizUndealMsg.allPushInfo.wording.get());
-        ((StringBuilder)localObject1).append(", combineRedTypes: ");
-        ((StringBuilder)localObject1).append(paramBizUndealMsg.outLayerInfo.combineRedTypes.get());
-        ((StringBuilder)localObject1).append(", tabType: ");
-        ((StringBuilder)localObject1).append(paramBizUndealMsg.tabType.get());
-        ((StringBuilder)localObject1).append(", extend: ");
-        ((StringBuilder)localObject1).append(paramBizUndealMsg.extend.get());
-        Object localObject3 = paramBizUndealMsg.rptRedInfo.get();
-        if ((localObject3 != null) && (((List)localObject3).size() > 0))
+        localStringBuilder.append("[handleBizUndealMsg] receive redpoint. appid: ");
+        localStringBuilder.append(((QQCircleCounter.RedPointInfo)localObject1).appid.get());
+        localStringBuilder.append(", redType: ");
+        localStringBuilder.append(((QQCircleCounter.RedPointInfo)localObject1).redType.get());
+        localStringBuilder.append(", redTotalNum: ");
+        localStringBuilder.append(((QQCircleCounter.RedPointInfo)localObject1).redTotalNum.get());
+        localStringBuilder.append(", wording");
+        localStringBuilder.append(((QQCircleCounter.RedPointInfo)localObject1).wording.get());
+        localStringBuilder.append(", combineRedTypes: ");
+        localStringBuilder.append(((QQCircleCounter.RedPointInfo)localObject1).outLayerInfo.combineRedTypes.get());
+        localStringBuilder.append(", tabType: ");
+        localStringBuilder.append(((QQCircleCounter.RedPointInfo)localObject1).tabType.get());
+        localStringBuilder.append(", extend: ");
+        localStringBuilder.append(((QQCircleCounter.RedPointInfo)localObject1).extend.get());
+        localStringBuilder.append(", msgId: ");
+        localStringBuilder.append(paramBizUndealMsg.msgid.get());
+        paramBizUndealMsg = ((QQCircleCounter.RedPointInfo)localObject1).rptRedInfo.get();
+        if ((paramBizUndealMsg != null) && (paramBizUndealMsg.size() > 0))
         {
-          ((StringBuilder)localObject1).append(", uinInfo: ");
-          localObject3 = ((List)localObject3).iterator();
-          while (((Iterator)localObject3).hasNext())
+          localStringBuilder.append(", uinInfo: ");
+          paramBizUndealMsg = paramBizUndealMsg.iterator();
+          while (paramBizUndealMsg.hasNext())
           {
-            QQCircleCounter.RedDisplayInfo localRedDisplayInfo = (QQCircleCounter.RedDisplayInfo)((Iterator)localObject3).next();
-            ((StringBuilder)localObject1).append("(");
-            ((StringBuilder)localObject1).append(localRedDisplayInfo.headImg.get());
-            ((StringBuilder)localObject1).append(",");
-            ((StringBuilder)localObject1).append(localRedDisplayInfo.num.get());
-            ((StringBuilder)localObject1).append(")");
+            QQCircleCounter.RedDisplayInfo localRedDisplayInfo = (QQCircleCounter.RedDisplayInfo)paramBizUndealMsg.next();
+            localStringBuilder.append("(");
+            localStringBuilder.append(localRedDisplayInfo.headImg.get());
+            localStringBuilder.append(",");
+            localStringBuilder.append(localRedDisplayInfo.num.get());
+            localStringBuilder.append(")");
           }
         }
-        RFLog.d("QCircleEeveeMananger", RFLog.USR, new Object[] { localObject1 });
-        if (!EeveeRedpointUtil.isValidRedPointInfo("circle_entrance", paramBizUndealMsg))
+        QLog.d("QCircleEeveeMananger", 1, new Object[] { localStringBuilder });
+        if (!EeveeRedpointUtil.isValidRedPointInfo("circle_entrance", (QQCircleCounter.RedPointInfo)localObject1))
         {
-          RFLog.d("QCircleEeveeMananger", RFLog.USR, "[handleBizUndealMsg] invalid red point info! ignore it.");
+          QLog.d("QCircleEeveeMananger", 1, "[handleBizUndealMsg] invalid red point info! ignore it.");
           return;
         }
         if (i == 101)
         {
-          localObject1 = ((QQCircleCounter.CountInfoRsp)localObject2).extInfo.mapBytesInfo.get();
-          if (localObject1 != null)
+          paramBizUndealMsg = ((QQCircleCounter.CountInfoRsp)localObject2).extInfo.mapBytesInfo.get();
+          if (paramBizUndealMsg != null)
           {
-            localObject1 = ((List)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext())
+            paramBizUndealMsg = paramBizUndealMsg.iterator();
+            while (paramBizUndealMsg.hasNext())
             {
-              localObject2 = (FeedCloudCommon.BytesEntry)((Iterator)localObject1).next();
+              localObject2 = (FeedCloudCommon.BytesEntry)paramBizUndealMsg.next();
               if ((localObject2 != null) && (TextUtils.equals("follow_page_delay_second", ((FeedCloudCommon.BytesEntry)localObject2).key.get())) && (((FeedCloudCommon.BytesEntry)localObject2).value.get() != null))
               {
                 localObject2 = ((FeedCloudCommon.BytesEntry)localObject2).value.get().toStringUtf8();
@@ -314,32 +427,31 @@ public class QCircleEeveeMananger
                 }
                 catch (NumberFormatException localNumberFormatException)
                 {
-                  RFLog.e("QCircleEeveeMananger", RFLog.USR, new Object[] { "handleBizUndealMsg  saveFollowTabClearRedDotDelayInSecond error!", localNumberFormatException });
+                  QLog.e("QCircleEeveeMananger", 1, "handleBizUndealMsg  saveFollowTabClearRedDotDelayInSecond error!", localNumberFormatException);
                 }
               }
             }
           }
         }
-        SimpleEventBus.getInstance().dispatchEvent(new QCircleRedPointEvent(i, paramBizUndealMsg));
-        saveBizUndealMsgBuffer(i, paramBizUndealMsg.toByteArray());
+        SimpleEventBus.getInstance().dispatchEvent(new QCircleRedPointEvent(i, (QQCircleCounter.RedPointInfo)localObject1));
+        saveBizUndealMsgBuffer(i, ((QQCircleCounter.RedPointInfo)localObject1).toByteArray());
         return;
       }
-      RFLog.d("QCircleEeveeMananger", RFLog.USR, "[handleBizUndealMsg] don't have qcircle entrance reddot!");
+      QLog.d("QCircleEeveeMananger", 1, "[handleBizUndealMsg] don't have qcircle entrance reddot!");
       return;
     }
     catch (Exception paramBizUndealMsg)
     {
-      j = RFLog.USR;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("handleBizUndealMsg error: mainType ");
       ((StringBuilder)localObject1).append(i);
-      RFLog.e("QCircleEeveeMananger", j, new Object[] { ((StringBuilder)localObject1).toString(), paramBizUndealMsg });
+      QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject1).toString(), paramBizUndealMsg);
     }
   }
   
   private void initUserEnv(byte[] paramArrayOfByte)
   {
-    RFLog.d("QCircleEeveeMananger", RFLog.USR, "初始化用户配置信息");
+    QLog.d("QCircleEeveeMananger", 1, "初始化用户配置信息");
     try
     {
       QQCircleEnvHub.GetUserFullEnvRsp localGetUserFullEnvRsp = new QQCircleEnvHub.GetUserFullEnvRsp();
@@ -356,7 +468,7 @@ public class QCircleEeveeMananger
   
   private boolean isQCircleShowEntrance()
   {
-    return (QCircleConfig.getInstance().isQQCircleShowLebaEntrance()) || (QCircleConfig.isShowQQCircleMainTabEntrance());
+    return (QCircleConfig.getInstance().isQQCircleShowLebaEntrance()) || (QCircleConfigHelper.a(((IStudyModeManager)QRoute.api(IStudyModeManager.class)).getStudyModeSwitch()));
   }
   
   private void onResponse(FeedCloudEeveeUndealmsg.FcUndealMsgsRsp paramFcUndealMsgsRsp, int paramInt)
@@ -371,26 +483,28 @@ public class QCircleEeveeMananger
         {
           FeedCloudEeveeUndealmsg.BizUndealMsg localBizUndealMsg = (FeedCloudEeveeUndealmsg.BizUndealMsg)((Iterator)localObject).next();
           handleBizUndealMsg(localBizUndealMsg);
+          QCircleLpReportDc010001.DataBuilder localDataBuilder = new QCircleLpReportDc010001.DataBuilder().setActionType(500);
+          int i;
           if (paramInt == 1000) {
-            QCircleLpReportDc010001.report(500, 15, 1, null, null, null, localBizUndealMsg.msgid.get(), paramInt);
+            i = 15;
           } else {
-            QCircleLpReportDc010001.report(500, 20, 1, null, null, null, localBizUndealMsg.msgid.get(), paramInt);
+            i = 20;
           }
+          QCircleLpReportDc010001.report(localDataBuilder.setSubActionType(i).setThrActionType(1).setEeveeMsgId(localBizUndealMsg.msgid.get()).setScene(paramInt));
         }
       }
       saveInterval(paramFcUndealMsgsRsp.intervalCtl);
-      paramInt = RFLog.CLR;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("attachInfo size = ");
       ((StringBuilder)localObject).append(paramFcUndealMsgsRsp.attachInfo.get().size());
-      RFLog.i("QCircleEeveeMananger", paramInt, ((StringBuilder)localObject).toString());
+      QLog.i("QCircleEeveeMananger", 2, ((StringBuilder)localObject).toString());
       saveAttachInfo(paramFcUndealMsgsRsp.attachInfo.get());
     }
   }
   
   public static void releaseInstance()
   {
-    RFLog.e("QCircleEeveeMananger", RFLog.USR, "releaseInstance");
+    QLog.e("QCircleEeveeMananger", 1, "releaseInstance");
     if (mInstance != null) {
       synchronized (lock)
       {
@@ -439,7 +553,6 @@ public class QCircleEeveeMananger
     if (k > 0) {
       this.homeSwitchInterval = (k * 1000L);
     }
-    int m = RFLog.USR;
     paramIntervalControl = new StringBuilder();
     paramIntervalControl.append("saveInterval pollingInterval= ");
     paramIntervalControl.append(i);
@@ -447,18 +560,17 @@ public class QCircleEeveeMananger
     paramIntervalControl.append(j);
     paramIntervalControl.append("homeSwitchInterval");
     paramIntervalControl.append(k);
-    RFLog.e("QCircleEeveeMananger", m, paramIntervalControl.toString());
+    QLog.e("QCircleEeveeMananger", 1, paramIntervalControl.toString());
   }
   
   private void scheduleEeveeTask()
   {
     try
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("scheduleEeveeTask pollingInterval= ");
       localStringBuilder.append(this.pollingInterval);
-      RFLog.e("QCircleEeveeMananger", i, localStringBuilder.toString());
+      QLog.e("QCircleEeveeMananger", 1, localStringBuilder.toString());
       getSubThreadHandler().removeCallbacks(this.getEeveeUndealMsgRunnable);
       getSubThreadHandler().postDelayed(this.getEeveeUndealMsgRunnable, this.pollingInterval);
       return;
@@ -466,13 +578,17 @@ public class QCircleEeveeMananger
     finally {}
   }
   
+  public void deleteAllRecomAutoTemplateData()
+  {
+    deleteBizUndealMsgBuffer(110);
+  }
+  
   public void deleteBizUndealMsgBuffer(int paramInt)
   {
-    int i = RFLog.USR;
     ??? = new StringBuilder();
     ((StringBuilder)???).append("deleteBizUndealMsgBuffer type=");
     ((StringBuilder)???).append(paramInt);
-    RFLog.e("QCircleEeveeMananger", i, ((StringBuilder)???).toString());
+    QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)???).toString());
     if (getmEm() != null) {
       synchronized (dbLock)
       {
@@ -487,13 +603,65 @@ public class QCircleEeveeMananger
     }
   }
   
+  public void deleteOneRecomAutoTemplateData(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Object localObject2 = getBizUndealMsgBuffer(110);
+    if (localObject2 != null) {}
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new FeedCloudRead.StGetFeedListRsp();
+        ((FeedCloudRead.StGetFeedListRsp)localObject1).mergeFrom((byte[])localObject2);
+        localObject2 = ((FeedCloudRead.StGetFeedListRsp)localObject1).vecFeed.get();
+        if (((List)localObject2).size() == 0) {
+          return;
+        }
+        QQCircleDitto.StCircleDittoDataNew localStCircleDittoDataNew = new QQCircleDitto.StCircleDittoDataNew();
+        localStCircleDittoDataNew.mergeFrom(((FeedCloudMeta.StFeed)((List)localObject2).get(0)).dittoFeed.dittoDataNew.get().toByteArray());
+        List localList = localStCircleDittoDataNew.itemContainter.items.get();
+        if (localList == null) {
+          return;
+        }
+        Iterator localIterator = localList.iterator();
+        if (!localIterator.hasNext()) {
+          break label251;
+        }
+        QQCircleDitto.StItemInfo localStItemInfo = (QQCircleDitto.StItemInfo)localIterator.next();
+        if (!paramString.equals(localStItemInfo.id.get())) {
+          continue;
+        }
+        localList.remove(localStItemInfo);
+        i = 1;
+        if (i != 0)
+        {
+          ((FeedCloudMeta.StFeed)((List)localObject2).get(0)).dittoFeed.dittoDataNew.set(ByteStringMicro.copyFrom(localStCircleDittoDataNew.toByteArray()));
+          saveBizUndealMsgBuffer(110, ((FeedCloudRead.StGetFeedListRsp)localObject1).toByteArray());
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("deleteRecomAutoTemplateData ");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject1).toString());
+      }
+      return;
+      label251:
+      int i = 0;
+    }
+  }
+  
   public byte[] getBizUndealMsgBuffer(int paramInt)
   {
-    int i = RFLog.USR;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getBizUndealMsgBuffer type=");
     ((StringBuilder)localObject).append(paramInt);
-    RFLog.e("QCircleEeveeMananger", i, ((StringBuilder)localObject).toString());
+    QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject).toString());
     if (getmEm() != null)
     {
       localObject = getmEm();
@@ -513,8 +681,8 @@ public class QCircleEeveeMananger
   {
     try
     {
-      if (RFLog.isColorLevel()) {
-        RFLog.i("QCircleEeveeMananger", RFLog.CLR, "handleFuelData");
+      if (QLog.isColorLevel()) {
+        QLog.i("QCircleEeveeMananger", 2, "handleFuelData");
       }
       TaskCenterReader.EeveeMyFuel localEeveeMyFuel = null;
       ByteStringMicro localByteStringMicro = paramPBBytesField.get();
@@ -527,13 +695,12 @@ public class QCircleEeveeMananger
       long l = localEeveeMyFuel.pushTime.get();
       if (l > QCircleHostConfig.getPushFuleCountTime())
       {
-        if (RFLog.isColorLevel())
+        if (QLog.isColorLevel())
         {
-          int i = RFLog.CLR;
           paramPBBytesField = new StringBuilder();
           paramPBBytesField.append("handleFuelData fuelcount:");
           paramPBBytesField.append(localEeveeMyFuel.myFuelValue.get());
-          RFLog.i("QCircleEeveeMananger", i, paramPBBytesField.toString());
+          QLog.i("QCircleEeveeMananger", 2, paramPBBytesField.toString());
         }
         QCircleConfig.getInstance().saveFuleCount(localEeveeMyFuel.myFuelValue.get());
         QCircleHostConfig.savePushFuleCountTime(l);
@@ -542,7 +709,7 @@ public class QCircleEeveeMananger
     }
     catch (Exception paramPBBytesField)
     {
-      RFLog.e("QCircleEeveeMananger", RFLog.USR, new Object[] { paramPBBytesField });
+      QLog.e("QCircleEeveeMananger", 1, paramPBBytesField, new Object[0]);
     }
   }
   
@@ -550,17 +717,15 @@ public class QCircleEeveeMananger
   {
     if (TextUtils.isEmpty(paramString))
     {
-      RFLog.e("QCircleEeveeMananger", RFLog.USR, "pushData == null");
+      QLog.e("QCircleEeveeMananger", 1, "pushData == null");
       return;
     }
-    int i;
-    if (RFLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      i = RFLog.CLR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("qcircle pushdata:");
       localStringBuilder.append(paramString);
-      RFLog.i("QCircleEeveeMananger", i, localStringBuilder.toString());
+      QLog.i("QCircleEeveeMananger", 2, localStringBuilder.toString());
     }
     int j;
     do
@@ -577,8 +742,9 @@ public class QCircleEeveeMananger
       }
       catch (Exception paramString)
       {
+        int i;
         long l;
-        RFLog.e("QCircleEeveeMananger", RFLog.USR, new Object[] { paramString });
+        QLog.e("QCircleEeveeMananger", 1, paramString, new Object[0]);
       }
       paramString = paramString.optString("pushStr");
       if (!TextUtils.isEmpty(paramString))
@@ -588,16 +754,16 @@ public class QCircleEeveeMananger
         if (l > QCircleHostConfig.getPushFuleCountTime())
         {
           i = paramString.optInt("myFuelValue");
-          if (RFLog.isColorLevel())
+          if (QLog.isColorLevel())
           {
-            j = RFLog.CLR;
             paramString = new StringBuilder();
             paramString.append("handleFuelData fuelcount:");
             paramString.append(i);
-            RFLog.i("QCircleEeveeMananger", j, paramString.toString());
+            QLog.i("QCircleEeveeMananger", 2, paramString.toString());
           }
           QCircleConfig.getInstance().saveFuleCount(i);
           QCircleHostConfig.savePushFuleCountTime(l);
+          SimpleEventBus.getInstance().dispatchEvent(new QCircleFlutterUpdateFuelEvent(getAccount(), i));
           return;
         }
       }
@@ -612,14 +778,12 @@ public class QCircleEeveeMananger
   
   public void onSend(int paramInt, String paramString1, String paramString2)
   {
-    int i;
     Object localObject1;
     if ((!isQCircleShowEntrance()) || (!QCircleConfig.getInstance().isEeveeSysTemPolling()))
     {
       if (5 == paramInt)
       {
         ThreadManager.getSubThreadHandler().post(new QCircleEeveeMananger.1(this));
-        i = RFLog.USR;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("visitScene = ");
         ((StringBuilder)localObject1).append(paramInt);
@@ -627,14 +791,14 @@ public class QCircleEeveeMananger
         ((StringBuilder)localObject1).append(isQCircleShowEntrance());
         ((StringBuilder)localObject1).append(" isEeveeSysTemPolling= ");
         ((StringBuilder)localObject1).append(QCircleConfig.getInstance().isEeveeSysTemPolling());
-        RFLog.e("QCircleEeveeMananger", i, ((StringBuilder)localObject1).toString());
+        QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject1).toString());
       }
     }
     else
     {
       if ((paramInt == 999) && (isBackGround()))
       {
-        RFLog.e("QCircleEeveeMananger", RFLog.USR, "isBackgroundPause");
+        QLog.e("QCircleEeveeMananger", 1, "isBackgroundPause");
         scheduleEeveeTask();
         return;
       }
@@ -660,13 +824,12 @@ public class QCircleEeveeMananger
         case 999: 
           if (System.currentTimeMillis() - lastpollingTime < this.pollingInterval)
           {
-            if (RFLog.isColorLevel())
+            if (QLog.isColorLevel())
             {
-              paramInt = RFLog.CLR;
               paramString1 = new StringBuilder();
               paramString1.append("onSend.pollingInterval time is not enough");
               paramString1.append(this.pollingInterval);
-              RFLog.d("QCircleEeveeMananger", paramInt, paramString1.toString());
+              QLog.d("QCircleEeveeMananger", 2, paramString1.toString());
             }
             scheduleEeveeTask();
             return;
@@ -686,15 +849,16 @@ public class QCircleEeveeMananger
         }
         this.mLastGetbySwitchHome = System.currentTimeMillis();
       }
+      ((IQCircleColdBootService)QRoute.api(IQCircleColdBootService.class)).prepare();
       Object localObject2 = new FeedCloudEeveeBase.ClientInfo();
       ((FeedCloudEeveeBase.ClientInfo)localObject2).clientAppVersion.set(QUA.getQUA3());
+      int i;
       if (QCircleReportHelper.isQQCircleActive()) {
         i = 2;
       } else {
         i = 1;
       }
-      localObject1 = new QCircleEeveeUndealMsgRequest((FeedCloudEeveeBase.ClientInfo)localObject2, paramInt, i, (FeedCloudEeveeUndealmsg.SignalMsg)localObject1, QCircleEeveeAttachInfoHelper.getInstance().getEeveeAttachInfos());
-      i = RFLog.USR;
+      localObject1 = new QCircleEeveeUndealMsgRequest((FeedCloudEeveeBase.ClientInfo)localObject2, paramInt, i, (FeedCloudEeveeUndealmsg.SignalMsg)localObject1, getEeeveeAttachInfo());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("request traceid");
       ((StringBuilder)localObject2).append(((QCircleEeveeUndealMsgRequest)localObject1).getTraceId());
@@ -706,27 +870,25 @@ public class QCircleEeveeMananger
       ((StringBuilder)localObject2).append(paramString2);
       ((StringBuilder)localObject2).append(" isQQCircleActive() = ");
       ((StringBuilder)localObject2).append(QCircleReportHelper.isQQCircleActive());
-      RFLog.e("QCircleEeveeMananger", i, ((StringBuilder)localObject2).toString());
+      QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject2).toString());
       VSNetworkHelper.getInstance().sendRequest((BaseRequest)localObject1, new QCircleEeveeMananger.2(this, paramInt, paramString2));
       scheduleEeveeTask();
       return;
     }
-    paramInt = RFLog.USR;
     paramString1 = new StringBuilder();
     paramString1.append(" isQQCircleShow= ");
     paramString1.append(isQCircleShowEntrance());
     paramString1.append(" isEeveeSysTemPolling= ");
     paramString1.append(QCircleConfig.getInstance().isEeveeSysTemPolling());
-    RFLog.e("QCircleEeveeMananger", paramInt, paramString1.toString());
+    QLog.e("QCircleEeveeMananger", 1, paramString1.toString());
   }
   
   public void saveBizUndealMsgBuffer(int paramInt, byte[] arg2)
   {
-    int i = RFLog.USR;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("saveBizUndealMsgBuffer type=");
     ((StringBuilder)localObject1).append(paramInt);
-    RFLog.e("QCircleEeveeMananger", i, ((StringBuilder)localObject1).toString());
+    QLog.e("QCircleEeveeMananger", 1, ((StringBuilder)localObject1).toString());
     localObject1 = new SingleUndealMsg(paramInt, ???);
     if (getmEm() != null) {
       synchronized (dbLock)
@@ -745,7 +907,7 @@ public class QCircleEeveeMananger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.eevee.QCircleEeveeMananger
  * JD-Core Version:    0.7.0.1
  */

@@ -27,17 +27,17 @@ class NearbyPeopleProfileActivity$4
           return;
         case 204: 
           paramMessage = this.a;
-          paramMessage.showWaitingDialog(paramMessage.getString(2131694409));
+          paramMessage.showWaitingDialog(paramMessage.getString(2131892088));
           return;
         case 203: 
-          NearbyPeopleProfileActivity.access$500(this.a).a(false);
+          NearbyPeopleProfileActivity.access$400(this.a).a(false);
           return;
         }
-        NearbyPeopleProfileActivity.access$500(this.a).a(true);
+        NearbyPeopleProfileActivity.access$400(this.a).a(true);
         this.a.mHandler.sendEmptyMessageDelayed(203, 1500L);
         return;
       case 102: 
-        NearbyPeopleProfileActivity.access$500(this.a).a(paramMessage.arg1, paramMessage.arg2);
+        NearbyPeopleProfileActivity.access$400(this.a).a(paramMessage.arg1, paramMessage.arg2);
         return;
       case 101: 
         this.a.dismissWaittingDialog();
@@ -54,20 +54,20 @@ class NearbyPeopleProfileActivity$4
         ((NearbyPeopleProfileActivity)localObject).handleNearbyProfileCard(paramMessage, true, false);
         return;
       case 100: 
-        if (NearbyPeopleProfileActivity.access$400(this.a) == null) {
+        if (NearbyPeopleProfileActivity.access$300(this.a) == null) {
           break;
         }
-        NearbyPeopleProfileActivity.access$400(this.a).b();
+        NearbyPeopleProfileActivity.access$300(this.a).e();
         return;
       }
     } else {
-      this.a.showWaitingDialog(HardCodeUtil.a(2131707277));
+      this.a.showWaitingDialog(HardCodeUtil.a(2131905103));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.4
  * JD-Core Version:    0.7.0.1
  */

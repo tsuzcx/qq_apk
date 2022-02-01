@@ -21,7 +21,7 @@ public class ViewExposeUtil
     while (i >= 0)
     {
       ViewExposeUtil.ViewExposeUnit localViewExposeUnit = (ViewExposeUtil.ViewExposeUnit)a.get(i);
-      if ((paramClass == localViewExposeUnit.jdField_a_of_type_JavaLangClass) && (paramInt == localViewExposeUnit.jdField_a_of_type_Long))
+      if ((paramClass == localViewExposeUnit.a) && (paramInt == localViewExposeUnit.b))
       {
         a.remove(i);
         return localViewExposeUnit;
@@ -37,7 +37,7 @@ public class ViewExposeUtil
     while (localIterator.hasNext())
     {
       ViewExposeUtil.ViewExposeUnit localViewExposeUnit = (ViewExposeUtil.ViewExposeUnit)localIterator.next();
-      localViewExposeUnit.b += paramLong;
+      localViewExposeUnit.c += paramLong;
     }
   }
   
@@ -58,14 +58,14 @@ public class ViewExposeUtil
       while (i >= 0)
       {
         ViewExposeUtil.ViewExposeUnit localViewExposeUnit = (ViewExposeUtil.ViewExposeUnit)a.get(i);
-        if (localViewExposeUnit.jdField_a_of_type_JavaLangClass == paramClass)
+        if (localViewExposeUnit.a == paramClass)
         {
           if ((paramAppInterface instanceof BaseQQAppInterface)) {
-            ReportController.b((BaseQQAppInterface)paramAppInterface, "CliOper", "", "", localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.b), "", "");
+            ReportController.b((BaseQQAppInterface)paramAppInterface, "CliOper", "", "", localViewExposeUnit.d, localViewExposeUnit.d, localViewExposeUnit.e, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.c), "", "");
           } else if (paramAppInterface != null) {
-            UtilApi.a.a(paramAppInterface, "CliOper", "", "", localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.b), "", "");
+            UtilApi.b.a(paramAppInterface, "CliOper", "", "", localViewExposeUnit.d, localViewExposeUnit.d, localViewExposeUnit.e, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.c), "", "");
           } else {
-            ReportController.b(null, "CliOper", "", "", localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.b), "", "");
+            ReportController.b(null, "CliOper", "", "", localViewExposeUnit.d, localViewExposeUnit.d, localViewExposeUnit.e, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.c), "", "");
           }
           a.remove(i);
         }
@@ -73,11 +73,11 @@ public class ViewExposeUtil
       }
     }
     paramAppInterface = new ViewExposeUtil.ViewExposeUnit();
-    paramAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
-    paramAppInterface.jdField_a_of_type_Long = paramInt1;
-    paramAppInterface.b = SystemClock.elapsedRealtime();
-    paramAppInterface.jdField_a_of_type_JavaLangString = paramString1;
-    paramAppInterface.jdField_a_of_type_Int = paramInt2;
+    paramAppInterface.a = paramClass;
+    paramAppInterface.b = paramInt1;
+    paramAppInterface.c = SystemClock.elapsedRealtime();
+    paramAppInterface.d = paramString1;
+    paramAppInterface.e = paramInt2;
     a.add(paramAppInterface);
   }
   
@@ -107,7 +107,7 @@ public class ViewExposeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ViewExposeUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@
     <RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="45.0dip">
         <RelativeLayout android:id="@id/id_" android:paddingLeft="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
             <ImageView android:id="@id/dxa" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/fz3" android:rotation="90.0" />
-            <TextView android:textSize="14.0dip" android:textColor="#ffa4a4a4" android:gravity="center_vertical" android:id="@id/k_m" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="-5.0dip" android:text="@string/sgk" android:layout_toRightOf="@id/dxa" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffa4a4a4" android:gravity="center_vertical" android:id="@id/k_m" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="-5.0dip" android:text="@string/lr0" android:layout_toRightOf="@id/dxa" />
         </RelativeLayout>
         <TextView android:textSize="16.0dip" android:textColor="#ffa4a4a4" android:id="@id/jfv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sfo" android:layout_centerInParent="true" />
         <FrameLayout android:id="@id/aes" android:paddingLeft="8.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">

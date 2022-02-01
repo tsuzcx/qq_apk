@@ -10,19 +10,19 @@ class MagicfaceViewController$6$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.jdField_a_of_type_Int == 1) {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(8);
+    if (this.b.a == 1) {
+      if (this.a == null) {
+        this.b.c.p.setVisibility(8);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(0);
+        this.b.c.p.setVisibility(0);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.b.b.setText(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class CallingStateMonitor$1
     if (CallingStateMonitor.a(this.this$0) == null)
     {
       CallingStateMonitor localCallingStateMonitor = this.this$0;
-      CallingStateMonitor.a(localCallingStateMonitor, new PhoneStatusMonitor(CallingStateMonitor.a(localCallingStateMonitor), this.this$0));
+      CallingStateMonitor.a(localCallingStateMonitor, new PhoneStatusMonitor(CallingStateMonitor.b(localCallingStateMonitor), this.this$0));
     }
     if (QLog.isColorLevel()) {
       QLog.i("CallingStateMonitor", 2, "end init PhoneStatusMonitor");
@@ -25,7 +25,7 @@ class CallingStateMonitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.monitor.CallingStateMonitor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,15 @@ import com.tencent.mobileqq.apollo.model.ApolloDress;
 import com.tencent.mobileqq.apollo.model.ApolloDress.Dress;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader;
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.apollo.task.OnDressDoneListener;
-import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
+import com.tencent.mobileqq.apollo.res.api.IApolloResHelper;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.OnDressDoneListener;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -37,26 +39,26 @@ import org.json.JSONObject;
 public class ApolloGuestsPresenter
   implements OnDressDoneListener
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  ApolloExtensionObserver jdField_a_of_type_ComTencentMobileqqApolloHandlerApolloExtensionObserver = new ApolloGuestsPresenter.1(this);
-  private IApolloResDownloader.OnApolloDownLoadListener jdField_a_of_type_ComTencentMobileqqApolloResApiIApolloResDownloader$OnApolloDownLoadListener = new ApolloGuestsPresenter.2(this);
-  private IApolloGuestsView jdField_a_of_type_ComTencentMobileqqApolloStoreIApolloGuestsView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ApolloTextureView jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTextureView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
+  ApolloExtensionObserver a = new ApolloGuestsPresenter.1(this);
+  private IApolloGuestsView b;
+  private QQAppInterface c;
+  private String d;
+  private ApolloTextureView e;
+  private boolean f = false;
+  private int g;
+  private Context h;
+  private float i = 0.0F;
+  private IApolloResDownloader.OnApolloDownLoadListener j = new ApolloGuestsPresenter.2(this);
   
   public ApolloGuestsPresenter(IApolloGuestsView paramIApolloGuestsView, QQAppInterface paramQQAppInterface, Context paramContext, String paramString, ApolloTextureView paramApolloTextureView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreIApolloGuestsView = paramIApolloGuestsView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTextureView = paramApolloTextureView;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqApolloHandlerApolloExtensionObserver);
+    this.b = paramIApolloGuestsView;
+    this.d = paramString;
+    this.c = paramQQAppInterface;
+    this.e = paramApolloTextureView;
+    this.h = paramContext;
+    this.i = paramContext.getResources().getDisplayMetrics().density;
+    this.c.addObserver(this.a);
   }
   
   private int a(int paramInt1, int paramInt2)
@@ -83,22 +85,22 @@ public class ApolloGuestsPresenter
       }
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = ((HashMap)localObject1).entrySet().iterator();
-      int i;
+      int k;
       while (localIterator.hasNext())
       {
         DressDescriptionItem localDressDescriptionItem = new DressDescriptionItem();
         localObject1 = (Map.Entry)localIterator.next();
         if (localObject1 != null)
         {
-          i = ((Integer)((Map.Entry)localObject1).getKey()).intValue();
-          localDressDescriptionItem.jdField_a_of_type_Int = i;
+          k = ((Integer)((Map.Entry)localObject1).getKey()).intValue();
+          localDressDescriptionItem.a = k;
           ApolloDress.Dress localDress = (ApolloDress.Dress)((Map.Entry)localObject1).getValue();
           if ((localDress != null) && (localDress.attachPart != null) && (localDress.attachPart.size() != 0))
           {
-            localDressDescriptionItem.g = a(localDress.tag, localDress.feeType);
+            localDressDescriptionItem.h = a(localDress.tag, localDress.feeType);
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/");
-            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(k);
             ((StringBuilder)localObject1).append("/config.json");
             localObject1 = new File(((StringBuilder)localObject1).toString());
             if (((File)localObject1).exists()) {
@@ -121,7 +123,7 @@ public class ApolloGuestsPresenter
                   localObject1 = localJSONObject.getString("showName");
                 }
               }
-              localDressDescriptionItem.h = ((Integer)ApolloDress.DRESS_UNIT_MAP.get(localDress.attachPart.get(0))).intValue();
+              localDressDescriptionItem.i = ((Integer)ApolloDress.DRESS_UNIT_MAP.get(localDress.attachPart.get(0))).intValue();
               localObject3 = localObject1;
               if (localObject1 != null)
               {
@@ -131,9 +133,9 @@ public class ApolloGuestsPresenter
                 }
               }
               localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append(ApolloDress.DRESS_UNIT_DESCRIPTION_ARRAY[localDressDescriptionItem.h]);
+              ((StringBuilder)localObject1).append(ApolloDress.DRESS_UNIT_DESCRIPTION_ARRAY[localDressDescriptionItem.i]);
               ((StringBuilder)localObject1).append((String)localObject3);
-              localDressDescriptionItem.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+              localDressDescriptionItem.b = ((StringBuilder)localObject1).toString();
             }
             catch (Exception localException)
             {
@@ -142,26 +144,26 @@ public class ApolloGuestsPresenter
               ((StringBuilder)localObject3).append(localException.toString());
               QLog.e("[cmshow]ApolloGuestsPresenter", 1, ((StringBuilder)localObject3).toString());
             }
-            Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTextureView.onGetDressRect((String)localDress.attachPart.get(0));
+            Object localObject2 = this.e.onGetDressRect((String)localDress.attachPart.get(0));
             if ((localObject2 != null) && ((((RectF)localObject2).bottom != ((RectF)localObject2).top) || (((RectF)localObject2).left != ((RectF)localObject2).right)))
             {
-              localDressDescriptionItem.d = (((int)((RectF)localObject2).top + (int)((RectF)localObject2).bottom) / 2);
-              localDressDescriptionItem.f = ((int)((RectF)localObject2).left);
-              localDressDescriptionItem.e = ((int)((RectF)localObject2).right);
-              localDressDescriptionItem.i = paramApolloDress.belongCombId;
-              localDressDescriptionItem.j = paramApolloDress.combIsCollected;
+              localDressDescriptionItem.e = (((int)((RectF)localObject2).top + (int)((RectF)localObject2).bottom) / 2);
+              localDressDescriptionItem.g = ((int)((RectF)localObject2).left);
+              localDressDescriptionItem.f = ((int)((RectF)localObject2).right);
+              localDressDescriptionItem.j = paramApolloDress.belongCombId;
+              localDressDescriptionItem.k = paramApolloDress.combIsCollected;
               localArrayList.add(localDressDescriptionItem);
               if (QLog.isColorLevel())
               {
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append("item.name =");
-                ((StringBuilder)localObject2).append(localDressDescriptionItem.jdField_a_of_type_JavaLangString);
+                ((StringBuilder)localObject2).append(localDressDescriptionItem.b);
                 ((StringBuilder)localObject2).append(" item.y = ");
-                ((StringBuilder)localObject2).append(localDressDescriptionItem.d);
-                ((StringBuilder)localObject2).append(" item.left = ");
-                ((StringBuilder)localObject2).append(localDressDescriptionItem.f);
-                ((StringBuilder)localObject2).append(" item.right = ");
                 ((StringBuilder)localObject2).append(localDressDescriptionItem.e);
+                ((StringBuilder)localObject2).append(" item.left = ");
+                ((StringBuilder)localObject2).append(localDressDescriptionItem.g);
+                ((StringBuilder)localObject2).append(" item.right = ");
+                ((StringBuilder)localObject2).append(localDressDescriptionItem.f);
                 QLog.d("[cmshow]ApolloGuestsPresenter", 2, ((StringBuilder)localObject2).toString());
               }
             }
@@ -171,31 +173,31 @@ public class ApolloGuestsPresenter
       if (localArrayList.size() > 4)
       {
         Collections.sort(localArrayList, new ApolloGuestsPresenter.3(this));
-        i = localArrayList.size() - 1;
-        while (i >= 4)
+        k = localArrayList.size() - 1;
+        while (k >= 4)
         {
-          localArrayList.remove(i);
-          i -= 1;
+          localArrayList.remove(k);
+          k -= 1;
         }
       }
       Collections.sort(localArrayList);
-      int j = 0;
-      for (int k = 0; j < localArrayList.size(); k = i)
+      int m = 0;
+      for (int n = 0; m < localArrayList.size(); n = k)
       {
-        ((DressDescriptionItem)localArrayList.get(j)).b = k;
-        ((DressDescriptionItem)localArrayList.get(j)).c = ((int)(this.jdField_a_of_type_Float * 123.0F));
-        if (k == 0)
+        ((DressDescriptionItem)localArrayList.get(m)).c = n;
+        ((DressDescriptionItem)localArrayList.get(m)).d = ((int)(this.i * 123.0F));
+        if (n == 0)
         {
-          i = 1;
+          k = 1;
         }
         else
         {
-          i = k;
-          if (k == 1) {
-            i = 0;
+          k = n;
+          if (n == 1) {
+            k = 0;
           }
         }
-        j += 1;
+        m += 1;
       }
       return localArrayList;
     }
@@ -208,63 +210,63 @@ public class ApolloGuestsPresenter
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.c == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("cmshow_zan", 0);
+    Object localObject = this.h.getSharedPreferences("cmshow_zan", 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("apollo_zan_count");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    int j = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
-    localObject = String.valueOf(j);
-    int i = j;
-    if (j >= 99999)
+    localStringBuilder.append(this.d);
+    int m = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+    localObject = String.valueOf(m);
+    int k = m;
+    if (m >= 99999)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(99999);
       ((StringBuilder)localObject).append("+");
       localObject = ((StringBuilder)localObject).toString();
-      i = 99999;
+      k = 99999;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreIApolloGuestsView.onApprovalGet((String)localObject, i, i);
-    ((ApolloExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(this.jdField_a_of_type_JavaLangString, 256L, "myApollo");
+    this.b.onApprovalGet((String)localObject, k, k);
+    ((ApolloExtensionHandler)this.c.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(this.d, 256L, "myApollo");
   }
   
   public void b()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.c;
     if (localQQAppInterface != null) {
-      ((ApolloExtensionHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(this.jdField_a_of_type_JavaLangString, "myApollo");
+      ((ApolloExtensionHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(this.d, "myApollo");
     }
   }
   
   public void c()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = this.c;
     if (localObject1 == null) {
       return;
     }
-    localObject1 = ((ApolloDaoManagerServiceImpl)((QQAppInterface)localObject1).getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(this.jdField_a_of_type_JavaLangString);
+    localObject1 = ((ApolloDaoManagerServiceImpl)((QQAppInterface)localObject1).getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(this.d);
     Object localObject2 = null;
     if (localObject1 != null)
     {
       localObject1 = ((ApolloBaseInfo)localObject1).getApolloDress();
       if (localObject1 != null)
       {
-        i = ((ApolloDress)localObject1).roleId;
+        k = ((ApolloDress)localObject1).roleId;
         localObject2 = ((ApolloDress)localObject1).getDressIds();
         break label106;
       }
-      ((ApolloExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).b(this.jdField_a_of_type_JavaLangString);
+      ((ApolloExtensionHandler)this.c.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).b(this.d);
     }
     else
     {
-      ((ApolloExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).b(this.jdField_a_of_type_JavaLangString);
+      ((ApolloExtensionHandler)this.c.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).b(this.d);
     }
-    int i = 0;
+    int k = 0;
     label106:
     localObject1 = localObject2;
-    if (i > 0)
+    if (k > 0)
     {
       localObject1 = localObject2;
       if (localObject2 != null)
@@ -273,15 +275,15 @@ public class ApolloGuestsPresenter
         if (localObject2.length > 0)
         {
           localObject1 = localObject2;
-          if (!ApolloActionHelperImpl.isRscValid(this.jdField_a_of_type_JavaLangString, i, (int[])localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloResApiIApolloResDownloader$OnApolloDownLoadListener)) {
-            localObject1 = ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(i);
+          if (!ApolloResManagerFacade.a.a(Scene.WEB_STORE_OR_GAME).a(this.d, k, (int[])localObject2, this.c, this.j)) {
+            localObject1 = ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(k);
           }
         }
       }
     }
-    int j = i;
-    if (i < 0) {
-      j = 0;
+    int m = k;
+    if (k < 0) {
+      m = 0;
     }
     if (localObject1 != null)
     {
@@ -290,40 +292,40 @@ public class ApolloGuestsPresenter
     }
     else
     {
-      localObject2 = ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(j);
+      localObject2 = ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(m);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreIApolloGuestsView;
+    localObject1 = this.b;
     if (localObject1 != null) {
-      ((IApolloGuestsView)localObject1).onLoadApolloInfo((int[])localObject2, j);
+      ((IApolloGuestsView)localObject1).onLoadApolloInfo((int[])localObject2, m);
     }
-    this.jdField_a_of_type_Int = j;
+    this.g = m;
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       return;
     }
-    Object localObject = ((ApolloDaoManagerServiceImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(this.jdField_a_of_type_JavaLangString);
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreIApolloGuestsView != null) && (this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTextureView != null))
+    Object localObject = ((ApolloDaoManagerServiceImpl)this.c.getRuntimeService(IApolloDaoManagerService.class, "all")).getApolloBaseInfo(this.d);
+    if ((localObject != null) && (this.b != null) && (this.e != null))
     {
       localObject = a(((ApolloBaseInfo)localObject).getApolloDress());
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreIApolloGuestsView.onTagLoad((List)localObject);
+      this.b.onTagLoad((List)localObject);
     }
   }
   
   public void e()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.c;
     if (localQQAppInterface != null) {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqApolloHandlerApolloExtensionObserver);
+      localQQAppInterface.removeObserver(this.a);
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.f = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter
  * JD-Core Version:    0.7.0.1
  */

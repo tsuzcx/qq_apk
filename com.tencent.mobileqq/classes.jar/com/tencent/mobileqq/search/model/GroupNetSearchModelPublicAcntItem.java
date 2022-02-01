@@ -16,30 +16,20 @@ import com.tencent.qphone.base.util.QLog;
 public class GroupNetSearchModelPublicAcntItem
   extends ISearchResultPositionModel
 {
-  private AccountSearchPb.record jdField_a_of_type_AddcontactsAccountSearchPb$record;
   public CharSequence a;
-  private String jdField_a_of_type_JavaLangString;
+  private AccountSearchPb.record b;
+  private String c;
   
   public GroupNetSearchModelPublicAcntItem(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-  }
-  
-  public int a()
-  {
-    return 1;
+    this.b = paramrecord;
+    this.c = paramString;
+    this.a = paramCharSequence;
   }
   
   public CharSequence a()
   {
-    return HardCodeUtil.a(2131705447);
-  }
-  
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.uin.get());
+    return HardCodeUtil.a(2131903335);
   }
   
   public void a(View paramView)
@@ -47,37 +37,57 @@ public class GroupNetSearchModelPublicAcntItem
     Context localContext = paramView.getContext();
     if ((localContext != null) && ((localContext instanceof BaseActivity)))
     {
-      PublicView.a((QQAppInterface)((BaseActivity)localContext).getAppRuntime(), localContext, this.jdField_a_of_type_AddcontactsAccountSearchPb$record.class_index.get(), String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.uin.get()), String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.uin.get()), this.jdField_a_of_type_AddcontactsAccountSearchPb$record.account_flag.get(), this.jdField_a_of_type_AddcontactsAccountSearchPb$record.name.get(), 4);
-      SearchUtils.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-      SearchUtils.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
+      PublicView.a((QQAppInterface)((BaseActivity)localContext).getAppRuntime(), localContext, this.b.class_index.get(), String.valueOf(this.b.uin.get()), String.valueOf(this.b.uin.get()), this.b.account_flag.get(), this.b.name.get(), 4);
+      SearchUtils.a(this.c, 70, 0, paramView);
+      SearchUtils.a(this.c, 70, paramView, false);
     }
   }
   
-  public boolean a()
+  public int b()
+  {
+    return 1;
+  }
+  
+  public String c()
+  {
+    return String.valueOf(this.b.uin.get());
+  }
+  
+  public CharSequence d()
+  {
+    return SearchUtils.a(this.b.name.get(), this.c);
+  }
+  
+  public CharSequence e()
+  {
+    return null;
+  }
+  
+  public CharSequence f()
+  {
+    return null;
+  }
+  
+  public String g()
+  {
+    return this.c;
+  }
+  
+  public boolean h()
   {
     return false;
   }
   
-  public CharSequence b()
-  {
-    return SearchUtils.a(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.name.get(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean b()
+  public boolean i()
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("name = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", isCert = ");
       boolean bool;
-      if ((this.jdField_a_of_type_AddcontactsAccountSearchPb$record.has()) && (this.jdField_a_of_type_AddcontactsAccountSearchPb$record.flag.get() == 1L)) {
+      if ((this.b.has()) && (this.b.flag.get() == 1L)) {
         bool = true;
       } else {
         bool = false;
@@ -85,22 +95,12 @@ public class GroupNetSearchModelPublicAcntItem
       localStringBuilder.append(bool);
       QLog.d("GroupNetSearchModelPublicAcntItem", 2, localStringBuilder.toString());
     }
-    return (this.jdField_a_of_type_AddcontactsAccountSearchPb$record.flag.has()) && (this.jdField_a_of_type_AddcontactsAccountSearchPb$record.flag.get() == 1L);
-  }
-  
-  public CharSequence c()
-  {
-    return null;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
+    return (this.b.flag.has()) && (this.b.flag.get() == 1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupNetSearchModelPublicAcntItem
  * JD-Core Version:    0.7.0.1
  */

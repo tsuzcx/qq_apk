@@ -13,26 +13,14 @@ import org.jetbrains.annotations.Nullable;
 public abstract class BaseProtocolReceiver<T extends BusinessHandler>
 {
   @NotNull
-  private final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private final AppInterface a;
   @NotNull
-  private final T jdField_a_of_type_ComTencentMobileqqAppBusinessHandler;
+  private final T b;
   
   public BaseProtocolReceiver(@NotNull AppInterface paramAppInterface, @NotNull T paramT)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessHandler = paramT;
-  }
-  
-  @NotNull
-  public final AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  }
-  
-  @NotNull
-  public final T a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBusinessHandler;
+    this.a = paramAppInterface;
+    this.b = paramT;
   }
   
   @NotNull
@@ -45,10 +33,22 @@ public abstract class BaseProtocolReceiver<T extends BusinessHandler>
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return Intrinsics.areEqual(a(), paramString);
   }
+  
+  @NotNull
+  public final AppInterface b()
+  {
+    return this.a;
+  }
+  
+  @NotNull
+  public final T c()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.BaseProtocolReceiver
  * JD-Core Version:    0.7.0.1
  */

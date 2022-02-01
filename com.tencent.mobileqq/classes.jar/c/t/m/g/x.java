@@ -131,52 +131,52 @@ public final class x
     //   72: ldc 105
     //   74: invokevirtual 115	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   77: checkcast 145	android/net/wifi/WifiManager
-    //   80: invokevirtual 149	android/net/wifi/WifiManager:getConnectionInfo	()Landroid/net/wifi/WifiInfo;
+    //   80: invokestatic 151	com/tencent/mobileqq/qmethodmonitor/monitor/NetworkMonitor:getConnectionInfo	(Landroid/net/wifi/WifiManager;)Landroid/net/wifi/WifiInfo;
     //   83: astore_3
-    //   84: new 151	java/lang/StringBuilder
+    //   84: new 153	java/lang/StringBuilder
     //   87: dup
-    //   88: ldc 153
-    //   90: invokespecial 154	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   88: ldc 155
+    //   90: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   93: astore 4
     //   95: aload 4
     //   97: aload_3
-    //   98: invokevirtual 159	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
-    //   101: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 161	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
+    //   101: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: pop
     //   105: aload 4
     //   107: aload_3
-    //   108: invokevirtual 166	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
-    //   111: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: invokevirtual 168	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
+    //   111: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: aload 4
-    //   117: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   120: putstatic 95	c/t/m/g/x:c	Ljava/lang/String;
     //   123: goto +271 -> 394
     //   126: aload_3
-    //   127: invokevirtual 172	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   127: invokevirtual 174	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   130: astore 4
     //   132: aload 4
     //   134: ifnull +209 -> 343
     //   137: aload 4
-    //   139: invokevirtual 177	java/lang/String:trim	()Ljava/lang/String;
-    //   142: invokevirtual 180	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   139: invokevirtual 179	java/lang/String:trim	()Ljava/lang/String;
+    //   142: invokevirtual 182	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   145: putstatic 109	c/t/m/g/x:b	Ljava/lang/String;
     //   148: iload_1
     //   149: ifne +169 -> 318
-    //   152: new 151	java/lang/StringBuilder
+    //   152: new 153	java/lang/StringBuilder
     //   155: dup
-    //   156: ldc 182
-    //   158: invokespecial 154	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   156: ldc 184
+    //   158: invokespecial 156	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   161: astore 4
     //   163: aload 4
     //   165: getstatic 109	c/t/m/g/x:b	Ljava/lang/String;
-    //   168: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: pop
     //   172: aload 4
-    //   174: invokevirtual 169	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   174: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   177: putstatic 95	c/t/m/g/x:c	Ljava/lang/String;
     //   180: aload_3
-    //   181: invokevirtual 185	android/net/NetworkInfo:getSubtype	()I
+    //   181: invokevirtual 187	android/net/NetworkInfo:getSubtype	()I
     //   184: istore_1
     //   185: iload_1
     //   186: putstatic 138	c/t/m/g/x:f	I
@@ -199,8 +199,8 @@ public final class x
     //   221: iconst_2
     //   222: putstatic 97	c/t/m/g/x:d	I
     //   225: getstatic 109	c/t/m/g/x:b	Ljava/lang/String;
-    //   228: ldc 187
-    //   230: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   228: ldc 189
+    //   230: invokevirtual 193	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   233: istore_2
     //   234: iload_2
     //   235: putstatic 140	c/t/m/g/x:e	Z
@@ -208,32 +208,32 @@ public final class x
     //   239: ifeq +155 -> 394
     //   242: getstatic 109	c/t/m/g/x:b	Ljava/lang/String;
     //   245: getstatic 54	c/t/m/g/x:k	Ljava/lang/String;
-    //   248: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   248: invokevirtual 193	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   251: ifeq +13 -> 264
-    //   254: ldc 193
+    //   254: ldc 195
     //   256: astore_3
     //   257: aload_3
     //   258: putstatic 46	c/t/m/g/x:i	Ljava/lang/String;
     //   261: goto +133 -> 394
     //   264: getstatic 109	c/t/m/g/x:b	Ljava/lang/String;
     //   267: getstatic 50	c/t/m/g/x:j	Ljava/lang/String;
-    //   270: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   270: invokevirtual 193	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   273: ifeq +9 -> 282
-    //   276: ldc 193
+    //   276: ldc 195
     //   278: astore_3
     //   279: goto -22 -> 257
     //   282: getstatic 109	c/t/m/g/x:b	Ljava/lang/String;
     //   285: getstatic 58	c/t/m/g/x:l	Ljava/lang/String;
-    //   288: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   288: invokevirtual 193	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   291: ifeq +9 -> 300
-    //   294: ldc 193
+    //   294: ldc 195
     //   296: astore_3
     //   297: goto -40 -> 257
     //   300: getstatic 109	c/t/m/g/x:b	Ljava/lang/String;
     //   303: getstatic 62	c/t/m/g/x:m	Ljava/lang/String;
-    //   306: invokevirtual 191	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   306: invokevirtual 193	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   309: ifeq +356 -> 665
-    //   312: ldc 195
+    //   312: ldc 197
     //   314: astore_3
     //   315: goto -58 -> 257
     //   318: ldc 14
@@ -278,19 +278,19 @@ public final class x
     //   405: aload_3
     //   406: monitorenter
     //   407: getstatic 39	c/t/m/g/x:g	Ljava/util/Map;
-    //   410: invokeinterface 199 1 0
-    //   415: invokeinterface 205 1 0
+    //   410: invokeinterface 201 1 0
+    //   415: invokeinterface 207 1 0
     //   420: astore 4
     //   422: aload 4
-    //   424: invokeinterface 210 1 0
+    //   424: invokeinterface 212 1 0
     //   429: ifeq +28 -> 457
     //   432: aload 4
-    //   434: invokeinterface 214 1 0
-    //   439: checkcast 216	c/t/m/g/x$a
+    //   434: invokeinterface 216 1 0
+    //   439: checkcast 218	c/t/m/g/x$a
     //   442: ifnull -20 -> 422
     //   445: getstatic 97	c/t/m/g/x:d	I
     //   448: getstatic 95	c/t/m/g/x:c	Ljava/lang/String;
-    //   451: invokestatic 219	c/t/m/g/x$a:a	(ILjava/lang/String;)V
+    //   451: invokestatic 221	c/t/m/g/x$a:a	(ILjava/lang/String;)V
     //   454: goto -32 -> 422
     //   457: aload_3
     //   458: monitorexit
@@ -306,7 +306,7 @@ public final class x
     //   472: goto +88 -> 560
     //   475: astore_3
     //   476: aload_3
-    //   477: invokevirtual 222	java/lang/Throwable:printStackTrace	()V
+    //   477: invokevirtual 224	java/lang/Throwable:printStackTrace	()V
     //   480: iload_0
     //   481: getstatic 97	c/t/m/g/x:d	I
     //   484: if_icmpeq +72 -> 556
@@ -315,19 +315,19 @@ public final class x
     //   491: aload_3
     //   492: monitorenter
     //   493: getstatic 39	c/t/m/g/x:g	Ljava/util/Map;
-    //   496: invokeinterface 199 1 0
-    //   501: invokeinterface 205 1 0
+    //   496: invokeinterface 201 1 0
+    //   501: invokeinterface 207 1 0
     //   506: astore 4
     //   508: aload 4
-    //   510: invokeinterface 210 1 0
+    //   510: invokeinterface 212 1 0
     //   515: ifeq +28 -> 543
     //   518: aload 4
-    //   520: invokeinterface 214 1 0
-    //   525: checkcast 216	c/t/m/g/x$a
+    //   520: invokeinterface 216 1 0
+    //   525: checkcast 218	c/t/m/g/x$a
     //   528: ifnull -20 -> 508
     //   531: getstatic 97	c/t/m/g/x:d	I
     //   534: getstatic 95	c/t/m/g/x:c	Ljava/lang/String;
-    //   537: invokestatic 219	c/t/m/g/x$a:a	(ILjava/lang/String;)V
+    //   537: invokestatic 221	c/t/m/g/x$a:a	(ILjava/lang/String;)V
     //   540: goto -32 -> 508
     //   543: aload_3
     //   544: monitorexit
@@ -350,19 +350,19 @@ public final class x
     //   571: aload_3
     //   572: monitorenter
     //   573: getstatic 39	c/t/m/g/x:g	Ljava/util/Map;
-    //   576: invokeinterface 199 1 0
-    //   581: invokeinterface 205 1 0
+    //   576: invokeinterface 201 1 0
+    //   581: invokeinterface 207 1 0
     //   586: astore 5
     //   588: aload 5
-    //   590: invokeinterface 210 1 0
+    //   590: invokeinterface 212 1 0
     //   595: ifeq +28 -> 623
     //   598: aload 5
-    //   600: invokeinterface 214 1 0
-    //   605: checkcast 216	c/t/m/g/x$a
+    //   600: invokeinterface 216 1 0
+    //   605: checkcast 218	c/t/m/g/x$a
     //   608: ifnull -20 -> 588
     //   611: getstatic 97	c/t/m/g/x:d	I
     //   614: getstatic 95	c/t/m/g/x:c	Ljava/lang/String;
-    //   617: invokestatic 219	c/t/m/g/x$a:a	(ILjava/lang/String;)V
+    //   617: invokestatic 221	c/t/m/g/x$a:a	(ILjava/lang/String;)V
     //   620: goto -32 -> 588
     //   623: aload_3
     //   624: monitorexit

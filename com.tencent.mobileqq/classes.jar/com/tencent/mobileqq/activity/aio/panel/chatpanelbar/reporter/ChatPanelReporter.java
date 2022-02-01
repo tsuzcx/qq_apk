@@ -18,9 +18,9 @@ import org.jetbrains.annotations.NotNull;
 public class ChatPanelReporter
   implements IChatPanelReporter
 {
-  private IChatPanelBarController jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController;
-  private IChatPanelBarData jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarData;
-  Map<Integer, IPanelBizReporter> jdField_a_of_type_JavaUtilMap = new TreeMap();
+  Map<Integer, IPanelBizReporter> a = new TreeMap();
+  private IChatPanelBarData b;
+  private IChatPanelBarController c;
   
   public ChatPanelReporter()
   {
@@ -29,22 +29,22 @@ public class ChatPanelReporter
   
   public ChatPanelReporter(IChatPanelBarController paramIChatPanelBarController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController = paramIChatPanelBarController;
+    this.c = paramIChatPanelBarController;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(40), new CmGamePanelBizReporter());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), new AudioPanelBizReporter());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(6), new PtvPanelBizReporter(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(24), new HotPicPanelBizReporter(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarController));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10), new HongbaoPanelBizReporter());
+    this.a.put(Integer.valueOf(40), new CmGamePanelBizReporter());
+    this.a.put(Integer.valueOf(2), new AudioPanelBizReporter());
+    this.a.put(Integer.valueOf(6), new PtvPanelBizReporter(this.c));
+    this.a.put(Integer.valueOf(24), new HotPicPanelBizReporter(this.c));
+    this.a.put(Integer.valueOf(10), new HongbaoPanelBizReporter());
   }
   
   public void a(@NotNull IChatPanelBarData paramIChatPanelBarData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarData = paramIChatPanelBarData;
+    this.b = paramIChatPanelBarData;
   }
   
   public void a(List<AIOPanelIconItem> paramList)
@@ -58,9 +58,9 @@ public class ChatPanelReporter
       while (paramList.hasNext())
       {
         AIOPanelIconItem localAIOPanelIconItem = (AIOPanelIconItem)paramList.next();
-        IPanelBizReporter localIPanelBizReporter = (IPanelBizReporter)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(localAIOPanelIconItem.d));
+        IPanelBizReporter localIPanelBizReporter = (IPanelBizReporter)this.a.get(Integer.valueOf(localAIOPanelIconItem.g));
         if (localIPanelBizReporter != null) {
-          localIPanelBizReporter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarData, localAIOPanelIconItem);
+          localIPanelBizReporter.a(this.b, localAIOPanelIconItem);
         }
       }
     }
@@ -72,20 +72,20 @@ public class ChatPanelReporter
     if ((localObject instanceof Integer))
     {
       int i = ((Integer)localObject).intValue();
-      localObject = (IPanelBizReporter)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      localObject = (IPanelBizReporter)this.a.get(Integer.valueOf(i));
       if (localObject != null) {}
     }
     else
     {
       return false;
     }
-    ((IPanelBizReporter)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarIChatPanelBarData, paramView);
+    ((IPanelBizReporter)localObject).a(this.b, paramView);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.reporter.ChatPanelReporter
  * JD-Core Version:    0.7.0.1
  */

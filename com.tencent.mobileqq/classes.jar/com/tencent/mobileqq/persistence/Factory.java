@@ -9,11 +9,11 @@ import android.database.sqlite.SQLiteQuery;
 public class Factory
   implements SQLiteDatabase.CursorFactory
 {
-  private final EntityManagerFactory a;
+  private final EntityManagerFactory mEmf;
   
   public Factory(EntityManagerFactory paramEntityManagerFactory)
   {
-    this.a = paramEntityManagerFactory;
+    this.mEmf = paramEntityManagerFactory;
   }
   
   public Cursor newCursor(SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
@@ -23,7 +23,7 @@ public class Factory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.Factory
  * JD-Core Version:    0.7.0.1
  */

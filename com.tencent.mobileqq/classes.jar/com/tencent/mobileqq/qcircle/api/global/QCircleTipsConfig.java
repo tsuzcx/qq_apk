@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.qcircle.api.global;
 
 import android.util.SparseArray;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import qqcircle.QQCircleEnvHub.ExposeTipsRsp;
@@ -44,7 +44,7 @@ public class QCircleTipsConfig
   {
     if (paramGetUserFullEnvRsp == null)
     {
-      RFLog.d("QCircleTipsConfig", RFLog.USR, "saveTipsConfig() -> exposeTipsRsp is null");
+      QLog.d("QCircleTipsConfig", 1, "saveTipsConfig() -> exposeTipsRsp is null");
       return;
     }
     paramGetUserFullEnvRsp = paramGetUserFullEnvRsp.tipsList.get();
@@ -57,7 +57,7 @@ public class QCircleTipsConfig
         this.mTipsSparseArray.put(localTips.id.get(), localTips);
       }
     }
-    RFLog.d("QCircleTipsConfig", RFLog.USR, "tipsInfoList is null");
+    QLog.d("QCircleTipsConfig", 1, "tipsInfoList is null");
   }
   
   public void updateTipsConfig(byte[] paramArrayOfByte)
@@ -72,7 +72,7 @@ public class QCircleTipsConfig
         this.mTipsSparseArray.put(paramArrayOfByte.id.get(), paramArrayOfByte);
         return;
       }
-      RFLog.d("QCircleTipsConfig", RFLog.USR, "tips is null");
+      QLog.d("QCircleTipsConfig", 1, "tips is null");
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -83,7 +83,7 @@ public class QCircleTipsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.global.QCircleTipsConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ class MessengerService$QWalletMsgHandler
   extends Handler
 {
   protected Bundle a;
-  private WeakReference<MessengerService> a;
+  private WeakReference<MessengerService> b;
   
   public MessengerService$QWalletMsgHandler(MessengerService paramMessengerService)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
+    this.b = new WeakReference(paramMessengerService);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.b;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -49,17 +49,17 @@ class MessengerService$QWalletMsgHandler
     }
     localBundle.putBoolean("qwallet.isSuccess", bool);
     localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
-    paramMessage = this.jdField_a_of_type_AndroidOsBundle;
+    paramMessage = this.a;
     if (paramMessage != null)
     {
       paramMessage.putBundle("response", localBundle);
-      ((MessengerService)localObject).a(this.jdField_a_of_type_AndroidOsBundle);
+      ((MessengerService)localObject).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.QWalletMsgHandler
  * JD-Core Version:    0.7.0.1
  */

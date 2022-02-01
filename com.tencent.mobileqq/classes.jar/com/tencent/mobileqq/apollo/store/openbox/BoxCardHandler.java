@@ -29,20 +29,314 @@ import org.json.JSONObject;
 public class BoxCardHandler
   implements BusinessObserver
 {
-  private BoxCardHandler.OnBoxCardHandlerListener jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener;
-  private LRULinkedHashMap<String, String> jdField_a_of_type_ComTencentUtilLRULinkedHashMap;
-  private String jdField_a_of_type_JavaLangString;
+  private BoxCardHandler.OnBoxCardHandlerListener a;
   private String b;
+  private String c;
+  private LRULinkedHashMap<String, String> d;
   
   public BoxCardHandler(BoxCardHandler.OnBoxCardHandlerListener paramOnBoxCardHandlerListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener = paramOnBoxCardHandlerListener;
-    this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(32);
+    this.a = paramOnBoxCardHandlerListener;
+    this.d = new LRULinkedHashMap(32);
+  }
+  
+  private int a(List<ApolloBoxData.ApolloBoxDataItem> paramList, JSONArray paramJSONArray, int paramInt, ApolloBoxData paramApolloBoxData)
+  {
+    int i = paramInt;
+    if (paramJSONArray != null)
+    {
+      i = paramInt;
+      if (paramJSONArray.length() > 0)
+      {
+        int j = 0;
+        while (j < paramJSONArray.length())
+        {
+          JSONObject localJSONObject = paramJSONArray.getJSONObject(j);
+          ApolloBoxData.ApolloBoxDataItem localApolloBoxDataItem = new ApolloBoxData.ApolloBoxDataItem();
+          localApolloBoxDataItem.a = localJSONObject.optLong("uin");
+          localApolloBoxDataItem.e = localJSONObject.optLong("ts");
+          localApolloBoxDataItem.f = ((short)localJSONObject.optInt("giftType"));
+          if (localApolloBoxDataItem.f == 7) {
+            localApolloBoxDataItem.t = 2;
+          } else if (localApolloBoxDataItem.f == 15) {
+            localApolloBoxDataItem.t = 3;
+          }
+          if (localJSONObject.has("layoutStyle")) {
+            localApolloBoxDataItem.t = localJSONObject.optInt("layoutStyle");
+          }
+          ApolloBoxData.BoxCardListSummary localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)paramApolloBoxData.l.get(Short.valueOf(localApolloBoxDataItem.f));
+          if ((localBoxCardListSummary == null) || (localBoxCardListSummary.a))
+          {
+            localApolloBoxDataItem.s = localJSONObject.optInt("giftNum");
+            localApolloBoxDataItem.j = localJSONObject.optString("nick");
+            localApolloBoxDataItem.l = localJSONObject.optString("head");
+            localApolloBoxDataItem.i = localJSONObject.optString("grade");
+            localApolloBoxDataItem.w = localJSONObject.optString("gradeUrl");
+            i = paramInt;
+            if (!TextUtils.isEmpty(this.c))
+            {
+              i = paramInt;
+              if (this.c.equals(String.valueOf(localApolloBoxDataItem.a)))
+              {
+                i = paramInt;
+                if (localJSONObject.optInt("zanmark") == 0) {
+                  i = 0;
+                }
+              }
+            }
+            localApolloBoxDataItem.c = localApolloBoxDataItem.a(this.c);
+            if (localApolloBoxDataItem.c)
+            {
+              paramList.add(0, localApolloBoxDataItem);
+              paramInt = i;
+            }
+            else
+            {
+              paramList.add(localApolloBoxDataItem);
+              paramInt = i;
+            }
+          }
+          j += 1;
+        }
+        i = paramInt;
+      }
+    }
+    return i;
+  }
+  
+  private int a(List<ApolloBoxData.ApolloBoxDataItem> paramList, JSONArray paramJSONArray, String paramString1, short paramShort, long paramLong, boolean paramBoolean, String paramString2)
+  {
+    int j = -1;
+    int i = j;
+    if (paramJSONArray != null)
+    {
+      i = j;
+      if (paramJSONArray.length() > 0)
+      {
+        j = 0;
+        int k;
+        for (i = -1; j < paramJSONArray.length(); i = k)
+        {
+          JSONObject localJSONObject = (JSONObject)paramJSONArray.get(j);
+          ApolloBoxData.ApolloBoxDataItem localApolloBoxDataItem = new ApolloBoxData.ApolloBoxDataItem();
+          localApolloBoxDataItem.h = localJSONObject.optString("name");
+          localApolloBoxDataItem.a = localJSONObject.optLong("uin");
+          localApolloBoxDataItem.r = localJSONObject.optLong("finishts");
+          localApolloBoxDataItem.q = localJSONObject.optLong("redeemts");
+          localApolloBoxDataItem.g = localJSONObject.optInt("id");
+          localApolloBoxDataItem.e = localJSONObject.optLong("ts");
+          localApolloBoxDataItem.i = localJSONObject.optString("grade");
+          localApolloBoxDataItem.w = localJSONObject.optString("gradeUrl");
+          localApolloBoxDataItem.j = localJSONObject.optString("nick");
+          localApolloBoxDataItem.l = localJSONObject.optString("head");
+          localApolloBoxDataItem.m = localJSONObject.optInt("viplevel");
+          localApolloBoxDataItem.n = localJSONObject.optInt("chiptotal");
+          localApolloBoxDataItem.o = localJSONObject.optInt("minenum");
+          localApolloBoxDataItem.u = localJSONObject.optString("picUrl");
+          localApolloBoxDataItem.v = localJSONObject.optString("picDesc");
+          localApolloBoxDataItem.x = localJSONObject.optInt("isSquare");
+          localApolloBoxDataItem.s = localJSONObject.optInt("giftNum", 1);
+          if ((localApolloBoxDataItem.b == localApolloBoxDataItem.a) && (TextUtils.isEmpty(localApolloBoxDataItem.j))) {
+            localApolloBoxDataItem.j = paramString1;
+          }
+          if (TextUtils.isEmpty(localApolloBoxDataItem.j)) {
+            localApolloBoxDataItem.j = "TA";
+          }
+          localApolloBoxDataItem.f = ((short)localJSONObject.optInt("type"));
+          localApolloBoxDataItem.k = paramShort;
+          localApolloBoxDataItem.b = paramLong;
+          localApolloBoxDataItem.d = paramBoolean;
+          localApolloBoxDataItem.p = ApolloUtilImpl.colorParse(paramString2);
+          k = i;
+          if (!TextUtils.isEmpty(this.c))
+          {
+            k = i;
+            if (this.c.equals(String.valueOf(localApolloBoxDataItem.a)))
+            {
+              k = i;
+              if (localJSONObject.optInt("zanmark") == 0) {
+                k = 0;
+              }
+            }
+          }
+          localApolloBoxDataItem.t = 0;
+          if (localJSONObject.has("layoutStyle")) {
+            localApolloBoxDataItem.t = localJSONObject.optInt("layoutStyle");
+          }
+          localApolloBoxDataItem.c = localApolloBoxDataItem.a(this.c);
+          if (localApolloBoxDataItem.c) {
+            paramList.add(0, localApolloBoxDataItem);
+          } else {
+            paramList.add(localApolloBoxDataItem);
+          }
+          j += 1;
+        }
+      }
+    }
+    return i;
+  }
+  
+  private void a(long paramLong, String paramString)
+  {
+    BoxCardHandler.OnBoxCardHandlerListener localOnBoxCardHandlerListener = this.a;
+    if (localOnBoxCardHandlerListener != null) {
+      localOnBoxCardHandlerListener.a("apollo_interact.thank_zan", true, paramLong, null, paramString);
+    }
+  }
+  
+  private void a(ApolloBoxData paramApolloBoxData, JSONArray paramJSONArray)
+  {
+    if (paramJSONArray != null)
+    {
+      int j = paramJSONArray.length();
+      int i = 0;
+      while (i < j)
+      {
+        JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
+        if (localJSONObject != null)
+        {
+          ApolloBoxData.BoxCardListSummary localBoxCardListSummary = new ApolloBoxData.BoxCardListSummary();
+          localBoxCardListSummary.b = localJSONObject.optInt("giftType");
+          localBoxCardListSummary.c = localJSONObject.optInt("giftTotal");
+          localBoxCardListSummary.e = localJSONObject.optString("iconUrl");
+          localBoxCardListSummary.f = localJSONObject.optString("jumpUrl");
+          int k = localJSONObject.optInt("isShow");
+          boolean bool = true;
+          if (k != 1) {
+            bool = false;
+          }
+          localBoxCardListSummary.a = bool;
+          if (localBoxCardListSummary.a)
+          {
+            paramApolloBoxData.l.put(Integer.valueOf(localBoxCardListSummary.b), localBoxCardListSummary);
+            paramApolloBoxData.m.add(localBoxCardListSummary);
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private void a(WebSSOAgent.UniSsoServerRsp paramUniSsoServerRsp, long paramLong, String paramString)
+  {
+    paramUniSsoServerRsp = paramUniSsoServerRsp.rspdata.get();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get Url onReceive retCode->");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" respStr->");
+      ((StringBuilder)localObject).append(paramUniSsoServerRsp);
+      QLog.d("[cmshow]BoxCardHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    paramUniSsoServerRsp = new JSONObject(paramUniSsoServerRsp).optJSONObject("data").optString("qq_head");
+    if (!TextUtils.isEmpty(paramUniSsoServerRsp)) {
+      this.d.put(paramString, paramUniSsoServerRsp);
+    }
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((BoxCardHandler.OnBoxCardHandlerListener)localObject).a("apollo_core.get_user_info_v2", true, 0L, paramUniSsoServerRsp, paramString);
+    }
+  }
+  
+  private void b(WebSSOAgent.UniSsoServerRsp paramUniSsoServerRsp, long paramLong, String paramString)
+  {
+    if ((!TextUtils.isEmpty(this.b)) && (!this.b.equals(paramString))) {
+      return;
+    }
+    if (paramLong == -501028L)
+    {
+      paramUniSsoServerRsp = this.a;
+      if (paramUniSsoServerRsp != null) {
+        paramUniSsoServerRsp.a("apollo_interact.take_chips", true, paramLong, null, paramString);
+      }
+      return;
+    }
+    paramUniSsoServerRsp = paramUniSsoServerRsp.rspdata.get();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onReceive retCode->");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(" respStr->");
+      ((StringBuilder)localObject1).append(paramUniSsoServerRsp);
+      QLog.d("[cmshow]BoxCardHandler", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2 = new JSONObject(paramUniSsoServerRsp).optJSONObject("data");
+    ((JSONObject)localObject2).optLong("checkpoint");
+    long l = ((JSONObject)localObject2).optLong("master");
+    short s = (short)((JSONObject)localObject2).optInt("chipnum");
+    int i = ((JSONObject)localObject2).optInt("mine_chipnum");
+    int j = ((JSONObject)localObject2).optInt("goldNum");
+    String str = ((JSONObject)localObject2).optString("card_mask_color");
+    Object localObject1 = ((JSONObject)localObject2).optString("nick");
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      paramUniSsoServerRsp = "TA";
+    }
+    else
+    {
+      paramUniSsoServerRsp = (WebSSOAgent.UniSsoServerRsp)localObject1;
+      if (CharacterUtil.a((String)localObject1) > 20)
+      {
+        paramUniSsoServerRsp = CharacterUtil.a((String)localObject1, 0, 20);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramUniSsoServerRsp);
+        ((StringBuilder)localObject1).append("...");
+        paramUniSsoServerRsp = ((StringBuilder)localObject1).toString();
+      }
+    }
+    localObject1 = new ApolloBoxData();
+    ((ApolloBoxData)localObject1).d = paramUniSsoServerRsp;
+    ((ApolloBoxData)localObject1).f = ((JSONObject)localObject2).optLong("firstcode");
+    ArrayList localArrayList = new ArrayList(4);
+    ((ApolloBoxData)localObject1).b = paramString;
+    ((ApolloBoxData)localObject1).g = ((JSONObject)localObject2).optLong("chestid");
+    ((ApolloBoxData)localObject1).a = this.c;
+    ((ApolloBoxData)localObject1).e = paramLong;
+    ((ApolloBoxData)localObject1).j = ApolloUtilImpl.colorParse(((JSONObject)localObject2).optString("back_color"));
+    ((ApolloBoxData)localObject1).h = ((JSONObject)localObject2).optString("topUrl");
+    ((ApolloBoxData)localObject1).i = ((JSONObject)localObject2).optString("bottomUrl");
+    a((ApolloBoxData)localObject1, ((JSONObject)localObject2).optJSONArray("giftTotalList"));
+    Object localObject3 = (ApolloBoxData.BoxCardListSummary)((ApolloBoxData)localObject1).l.get(Integer.valueOf(3));
+    if ((localObject3 != null) && (((ApolloBoxData.BoxCardListSummary)localObject3).c == 0)) {
+      ((ApolloBoxData.BoxCardListSummary)localObject3).c = i;
+    }
+    localObject3 = (ApolloBoxData.BoxCardListSummary)((ApolloBoxData)localObject1).l.get(Integer.valueOf(7));
+    if ((localObject3 != null) && (((ApolloBoxData.BoxCardListSummary)localObject3).c == 0)) {
+      ((ApolloBoxData.BoxCardListSummary)localObject3).c = j;
+    }
+    localObject3 = ((JSONObject)localObject2).optJSONArray("tooklist");
+    localObject2 = ((JSONObject)localObject2).optJSONArray("tookGiftList");
+    boolean bool;
+    if ((((ApolloBoxData)localObject1).f == 0L) && (((ApolloBoxData)localObject1).e != -501031L)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    if (paramLong != -501040L) {
+      i = a(localArrayList, (JSONArray)localObject2, a(localArrayList, (JSONArray)localObject3, paramUniSsoServerRsp, s, l, bool, str), (ApolloBoxData)localObject1);
+    } else {
+      i = -1;
+    }
+    if (i == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((ApolloBoxData)localObject1).c = bool;
+    Collections.sort(localArrayList);
+    ((ApolloBoxData)localObject1).n = localArrayList;
+    ((ApolloBoxData)localObject1).a();
+    paramUniSsoServerRsp = this.a;
+    if (paramUniSsoServerRsp != null) {
+      paramUniSsoServerRsp.a("apollo_interact.take_chips", true, paramLong, localObject1, paramString);
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener = null;
+    this.a = null;
   }
   
   public void a(Context paramContext, long paramLong, AppInterface paramAppInterface, String paramString1, String paramString2)
@@ -57,7 +351,7 @@ public class BoxCardHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -101,14 +395,14 @@ public class BoxCardHandler
       if (paramString1 == null) {
         return;
       }
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
+      this.b = paramString1;
+      this.c = paramAppInterface.getCurrentAccountUin();
       try
       {
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -126,7 +420,7 @@ public class BoxCardHandler
         }
         ((JSONObject)localObject).put("from", paramString2);
         ((JSONObject)localObject).put("dstuin", Long.parseLong(paramString1));
-        ((JSONObject)localObject).put("skey", ((TicketManager)paramAppInterface.getManager(2)).getSkey(this.jdField_b_of_type_JavaLangString));
+        ((JSONObject)localObject).put("skey", ((TicketManager)paramAppInterface.getManager(2)).getSkey(this.c));
         localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
         paramContext = new NewIntent(paramContext, WebSSOAgentServlet.class);
         paramContext.putExtra("extra_cmd", "apollo_interact.take_chips");
@@ -147,497 +441,79 @@ public class BoxCardHandler
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str1 = "nick";
     if (paramBundle == null) {
       return;
     }
-    i = paramBundle.getInt("extra_result_code");
-    String str2 = paramBundle.getString("extra_callbackid");
-    String str3 = paramBundle.getString("extra_cmd");
+    int i = paramBundle.getInt("extra_result_code");
+    String str1 = paramBundle.getString("extra_callbackid");
+    String str2 = paramBundle.getString("extra_cmd");
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("OpenPandora onReceive type:");
-      ((StringBuilder)localObject1).append(paramInt);
-      ((StringBuilder)localObject1).append(", isSuccess: ");
-      ((StringBuilder)localObject1).append(paramBoolean);
-      ((StringBuilder)localObject1).append(", svrRet: ");
-      ((StringBuilder)localObject1).append(i);
-      ((StringBuilder)localObject1).append(", uin:");
-      ((StringBuilder)localObject1).append(str2);
-      QLog.d("[cmshow]BoxCardHandler", 2, ((StringBuilder)localObject1).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OpenPandora onReceive type:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", isSuccess: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", svrRet: ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", uin:");
+      ((StringBuilder)localObject).append(str1);
+      QLog.d("[cmshow]BoxCardHandler", 2, ((StringBuilder)localObject).toString());
     }
     long l1 = -9223372036854775808L;
-    long l3;
-    long l2;
     if (paramBoolean)
     {
-      l3 = l1;
-      for (;;)
-      {
-        try
-        {
-          paramBundle = paramBundle.getByteArray("extra_data");
-          l3 = l1;
-          localObject1 = new WebSSOAgent.UniSsoServerRsp();
-          l3 = l1;
-          ((WebSSOAgent.UniSsoServerRsp)localObject1).mergeFrom(paramBundle);
-          l3 = l1;
-          l1 = ((WebSSOAgent.UniSsoServerRsp)localObject1).ret.get();
-          l2 = l1;
-          try
-          {
-            bool1 = "apollo_interact.thank_zan".equals(str3);
-            if (bool1)
-            {
-              l3 = l2;
-              if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener != null)
-              {
-                l3 = l2;
-                this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener.a("apollo_interact.thank_zan", paramBoolean, l2, null, str2);
-              }
-              return;
-            }
-            bool1 = "apollo_core.get_user_info_v2".equals(str3);
-            if (bool1) {
-              try
-              {
-                paramBundle = ((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get();
-                paramBoolean = QLog.isColorLevel();
-                if (paramBoolean)
-                {
-                  l3 = l2;
-                  localObject1 = new StringBuilder();
-                  l3 = l2;
-                  ((StringBuilder)localObject1).append("get Url onReceive retCode->");
-                  l3 = l2;
-                  ((StringBuilder)localObject1).append(l2);
-                  l3 = l2;
-                  ((StringBuilder)localObject1).append(" respStr->");
-                  l3 = l2;
-                  ((StringBuilder)localObject1).append(paramBundle);
-                  l3 = l2;
-                  QLog.d("[cmshow]BoxCardHandler", 2, ((StringBuilder)localObject1).toString());
-                }
-                paramBundle = new JSONObject(paramBundle).optJSONObject("data").optString("qq_head");
-                paramBoolean = TextUtils.isEmpty(paramBundle);
-                if (!paramBoolean)
-                {
-                  l3 = l2;
-                  this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str2, paramBundle);
-                }
-                if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener == null) {
-                  continue;
-                }
-                localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener;
-                try
-                {
-                  ((BoxCardHandler.OnBoxCardHandlerListener)localObject1).a("apollo_core.get_user_info_v2", true, 0L, paramBundle, str2);
-                }
-                catch (Exception paramBundle)
-                {
-                  continue;
-                }
-                short s;
-                int k;
-                Object localObject7;
-                try
-                {
-                  if (!"apollo_interact.take_chips".equals(str3)) {
-                    continue;
-                  }
-                  bool1 = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-                  if (bool1) {}
-                }
-                catch (Exception paramBundle) {}
-              }
-              catch (Exception paramBundle) {}
-            }
-          }
-          catch (Exception paramBundle) {}
-        }
-        catch (Exception paramBundle)
-        {
-          l2 = l3;
-        }
-        try
-        {
-          if (!this.jdField_a_of_type_JavaLangString.equals(str2)) {
-            return;
-          }
-          if (l2 == -501028L)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener != null)
-            {
-              paramBundle = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener;
-              l3 = l2;
-              paramBundle.a("apollo_interact.take_chips", paramBoolean, l2, null, str2);
-            }
-            return;
-          }
-          paramBundle = ((WebSSOAgent.UniSsoServerRsp)localObject1).rspdata.get();
-          bool1 = QLog.isColorLevel();
-          if (bool1)
-          {
-            l3 = l2;
-            localObject1 = new StringBuilder();
-            l3 = l2;
-            ((StringBuilder)localObject1).append("onReceive retCode->");
-            l3 = l2;
-            ((StringBuilder)localObject1).append(l2);
-            l3 = l2;
-            ((StringBuilder)localObject1).append(" respStr->");
-            l3 = l2;
-            ((StringBuilder)localObject1).append(paramBundle);
-            l3 = l2;
-            QLog.d("[cmshow]BoxCardHandler", 2, ((StringBuilder)localObject1).toString());
-          }
-          localObject4 = new JSONObject(paramBundle).optJSONObject("data");
-          ((JSONObject)localObject4).optLong("checkpoint");
-          l3 = ((JSONObject)localObject4).optLong("master");
-          s = (short)((JSONObject)localObject4).optInt("chipnum");
-          j = ((JSONObject)localObject4).optInt("mine_chipnum");
-          k = ((JSONObject)localObject4).optInt("goldNum");
-          localObject7 = ((JSONObject)localObject4).optString("card_mask_color");
-          paramBundle = ((JSONObject)localObject4).optString("nick");
-          bool1 = TextUtils.isEmpty(paramBundle);
-          if (bool1) {
-            localObject1 = "TA";
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          continue;
-          bool1 = false;
-          continue;
-          continue;
-          continue;
-          i = paramInt;
-          continue;
-          j += 1;
-          continue;
-          break label2386;
-          i = -1;
-          localObject4 = localObject2;
-          localObject1 = paramBundle;
-          paramBundle = this;
-          bool1 = false;
-          if (i != 0) {
-            break label2402;
-          }
-          bool1 = true;
-          continue;
-          continue;
-        }
-        try
-        {
-          paramInt = CharacterUtil.a(paramBundle);
-          localObject1 = paramBundle;
-          if (paramInt > 20) {
-            try
-            {
-              paramBundle = CharacterUtil.a(paramBundle, 0, 20);
-              localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append(paramBundle);
-              ((StringBuilder)localObject1).append("...");
-              localObject1 = ((StringBuilder)localObject1).toString();
-            }
-            catch (Exception paramBundle)
-            {
-              continue;
-            }
-          }
-          try
-          {
-            localObject2 = new ApolloBoxData();
-            ((ApolloBoxData)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1);
-            ((ApolloBoxData)localObject2).jdField_b_of_type_Long = ((JSONObject)localObject4).optLong("firstcode");
-            paramBundle = new ArrayList(4);
-            ((ApolloBoxData)localObject2).jdField_b_of_type_JavaLangString = str2;
-            ((ApolloBoxData)localObject2).jdField_c_of_type_Long = ((JSONObject)localObject4).optLong("chestid");
-            ((ApolloBoxData)localObject2).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-            ((ApolloBoxData)localObject2).jdField_a_of_type_Long = l2;
-            ((ApolloBoxData)localObject2).jdField_a_of_type_Int = ApolloUtilImpl.colorParse(((JSONObject)localObject4).optString("back_color"));
-            ((ApolloBoxData)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject4).optString("topUrl");
-            ((ApolloBoxData)localObject2).jdField_e_of_type_JavaLangString = ((JSONObject)localObject4).optString("bottomUrl");
-            Object localObject3 = ((JSONObject)localObject4).optJSONArray("giftTotalList");
-            Object localObject5;
-            Object localObject6;
-            if (localObject3 != null) {
-              try
-              {
-                paramInt = ((JSONArray)localObject3).length();
-                i = 0;
-                if (i < paramInt) {
-                  try
-                  {
-                    localObject5 = ((JSONArray)localObject3).optJSONObject(i);
-                    if (localObject5 != null)
-                    {
-                      localObject6 = new ApolloBoxData.BoxCardListSummary();
-                      ((ApolloBoxData.BoxCardListSummary)localObject6).jdField_a_of_type_Int = ((JSONObject)localObject5).optInt("giftType");
-                      ((ApolloBoxData.BoxCardListSummary)localObject6).jdField_b_of_type_Int = ((JSONObject)localObject5).optInt("giftTotal");
-                      ((ApolloBoxData.BoxCardListSummary)localObject6).jdField_a_of_type_JavaLangString = ((JSONObject)localObject5).optString("iconUrl");
-                      ((ApolloBoxData.BoxCardListSummary)localObject6).jdField_b_of_type_JavaLangString = ((JSONObject)localObject5).optString("jumpUrl");
-                      if (((JSONObject)localObject5).optInt("isShow") != 1) {
-                        break label2342;
-                      }
-                      bool1 = true;
-                      ((ApolloBoxData.BoxCardListSummary)localObject6).jdField_a_of_type_Boolean = bool1;
-                      if (((ApolloBoxData.BoxCardListSummary)localObject6).jdField_a_of_type_Boolean)
-                      {
-                        ((ApolloBoxData)localObject2).jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((ApolloBoxData.BoxCardListSummary)localObject6).jdField_a_of_type_Int), localObject6);
-                        ((ApolloBoxData)localObject2).jdField_a_of_type_JavaUtilList.add(localObject6);
-                      }
-                    }
-                    i += 1;
-                  }
-                  catch (Exception paramBundle) {}
-                }
-              }
-              catch (Exception paramBundle) {}
-            }
-            try
-            {
-              localObject3 = (ApolloBoxData.BoxCardListSummary)((ApolloBoxData)localObject2).jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
-              if ((localObject3 != null) && (((ApolloBoxData.BoxCardListSummary)localObject3).jdField_b_of_type_Int == 0)) {
-                ((ApolloBoxData.BoxCardListSummary)localObject3).jdField_b_of_type_Int = j;
-              }
-              localObject3 = (ApolloBoxData.BoxCardListSummary)((ApolloBoxData)localObject2).jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(7));
-              if ((localObject3 != null) && (((ApolloBoxData.BoxCardListSummary)localObject3).jdField_b_of_type_Int == 0)) {
-                ((ApolloBoxData.BoxCardListSummary)localObject3).jdField_b_of_type_Int = k;
-              }
-              localObject5 = ((JSONObject)localObject4).optJSONArray("tooklist");
-              localObject4 = ((JSONObject)localObject4).optJSONArray("tookGiftList");
-              long l4 = ((ApolloBoxData)localObject2).jdField_b_of_type_Long;
-              if (l4 == 0L)
-              {
-                l4 = ((ApolloBoxData)localObject2).jdField_a_of_type_Long;
-                if (l4 != -501031L)
-                {
-                  bool1 = false;
-                  continue;
-                }
-              }
-              bool1 = true;
-              if (l2 == -501040L) {
-                break label2376;
-              }
-              localObject6 = "uin";
-              if (localObject5 != null)
-              {
-                try
-                {
-                  paramInt = ((JSONArray)localObject5).length();
-                  if (paramInt <= 0) {
-                    continue;
-                  }
-                  i = 0;
-                  paramInt = -1;
-                  localObject3 = paramBundle;
-                  paramBundle = (Bundle)localObject2;
-                  localObject2 = localObject6;
-                  try
-                  {
-                    if (i < ((JSONArray)localObject5).length())
-                    {
-                      JSONObject localJSONObject = (JSONObject)((JSONArray)localObject5).get(i);
-                      ApolloBoxData.ApolloBoxDataItem localApolloBoxDataItem = new ApolloBoxData.ApolloBoxDataItem();
-                      localApolloBoxDataItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("name");
-                      localApolloBoxDataItem.jdField_a_of_type_Long = localJSONObject.optLong((String)localObject2);
-                      localApolloBoxDataItem.jdField_e_of_type_Long = localJSONObject.optLong("finishts");
-                      localApolloBoxDataItem.jdField_d_of_type_Long = localJSONObject.optLong("redeemts");
-                      localApolloBoxDataItem.jdField_a_of_type_Int = localJSONObject.optInt("id");
-                      localApolloBoxDataItem.jdField_c_of_type_Long = localJSONObject.optLong("ts");
-                      localApolloBoxDataItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("grade");
-                      localApolloBoxDataItem.jdField_g_of_type_JavaLangString = localJSONObject.optString("gradeUrl");
-                      localApolloBoxDataItem.jdField_c_of_type_JavaLangString = localJSONObject.optString(str1);
-                      localApolloBoxDataItem.jdField_d_of_type_JavaLangString = localJSONObject.optString("head");
-                      localApolloBoxDataItem.jdField_b_of_type_Int = localJSONObject.optInt("viplevel");
-                      localApolloBoxDataItem.jdField_c_of_type_Int = localJSONObject.optInt("chiptotal");
-                      localApolloBoxDataItem.jdField_d_of_type_Int = localJSONObject.optInt("minenum");
-                      localApolloBoxDataItem.jdField_e_of_type_JavaLangString = localJSONObject.optString("picUrl");
-                      localApolloBoxDataItem.jdField_f_of_type_JavaLangString = localJSONObject.optString("picDesc");
-                      localApolloBoxDataItem.h = localJSONObject.optInt("isSquare");
-                      localApolloBoxDataItem.jdField_f_of_type_Int = localJSONObject.optInt("giftNum", 1);
-                      l2 = localApolloBoxDataItem.jdField_b_of_type_Long;
-                      l4 = localApolloBoxDataItem.jdField_a_of_type_Long;
-                      if (l2 == l4) {
-                        try
-                        {
-                          if (TextUtils.isEmpty(localApolloBoxDataItem.jdField_c_of_type_JavaLangString)) {
-                            localApolloBoxDataItem.jdField_c_of_type_JavaLangString = ((String)localObject1);
-                          }
-                        }
-                        catch (Exception paramBundle)
-                        {
-                          continue;
-                        }
-                      }
-                      boolean bool2 = TextUtils.isEmpty(localApolloBoxDataItem.jdField_c_of_type_JavaLangString);
-                      if (bool2) {
-                        localApolloBoxDataItem.jdField_c_of_type_JavaLangString = "TA";
-                      }
-                      localApolloBoxDataItem.jdField_a_of_type_Short = ((short)localJSONObject.optInt("type"));
-                      localApolloBoxDataItem.jdField_b_of_type_Short = s;
-                      localApolloBoxDataItem.jdField_b_of_type_Long = l3;
-                      localApolloBoxDataItem.jdField_b_of_type_Boolean = bool1;
-                      localApolloBoxDataItem.jdField_e_of_type_Int = ApolloUtilImpl.colorParse((String)localObject7);
-                      localObject6 = this;
-                      try
-                      {
-                        if ((TextUtils.isEmpty(((BoxCardHandler)localObject6).jdField_b_of_type_JavaLangString)) || (!((BoxCardHandler)localObject6).jdField_b_of_type_JavaLangString.equals(String.valueOf(localApolloBoxDataItem.jdField_a_of_type_Long))) || (localJSONObject.optInt("zanmark") != 0)) {
-                          break label2348;
-                        }
-                        paramInt = 0;
-                        localApolloBoxDataItem.jdField_g_of_type_Int = 0;
-                        if (localJSONObject.has("layoutStyle")) {
-                          localApolloBoxDataItem.jdField_g_of_type_Int = localJSONObject.optInt("layoutStyle");
-                        }
-                        localApolloBoxDataItem.jdField_a_of_type_Boolean = localApolloBoxDataItem.a(((BoxCardHandler)localObject6).jdField_b_of_type_JavaLangString);
-                        if (localApolloBoxDataItem.jdField_a_of_type_Boolean) {
-                          ((List)localObject3).add(0, localApolloBoxDataItem);
-                        } else {
-                          ((List)localObject3).add(localApolloBoxDataItem);
-                        }
-                        i += 1;
-                      }
-                      catch (Exception paramBundle)
-                      {
-                        continue;
-                      }
-                    }
-                    localObject5 = localObject2;
-                    localObject1 = localObject3;
-                    localObject2 = localObject4;
-                    localObject3 = localObject5;
-                  }
-                  catch (Exception paramBundle) {}
-                }
-                catch (Exception paramBundle) {}
-                l2 = l1;
-                break label2267;
-              }
-              str1 = "nick";
-              localObject3 = "uin";
-              localObject1 = paramBundle;
-              paramInt = -1;
-              paramBundle = (Bundle)localObject2;
-              localObject2 = localObject4;
-              localObject5 = this;
-              i = paramInt;
-              localObject4 = paramBundle;
-              if (localObject2 != null)
-              {
-                i = paramInt;
-                localObject4 = paramBundle;
-              }
-            }
-            catch (Exception paramBundle) {}
-          }
-          catch (Exception paramBundle) {}
-        }
-        catch (Exception paramBundle) {}
-      }
-    }
-    try
-    {
-      if (((JSONArray)localObject2).length() <= 0) {
-        break label2369;
-      }
-      j = 0;
-      i = paramInt;
-      localObject4 = paramBundle;
-      if (j >= ((JSONArray)localObject2).length()) {
-        break label2369;
-      }
-      localObject4 = ((JSONArray)localObject2).getJSONObject(j);
-      localObject6 = new ApolloBoxData.ApolloBoxDataItem();
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_a_of_type_Long = ((JSONObject)localObject4).optLong((String)localObject3);
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_c_of_type_Long = ((JSONObject)localObject4).optLong("ts");
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_a_of_type_Short = ((short)((JSONObject)localObject4).optInt("giftType"));
-      i = ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_a_of_type_Short;
-      if (i == 7) {}
       try
       {
-        ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_g_of_type_Int = 2;
+        paramBundle = paramBundle.getByteArray("extra_data");
+        localObject = new WebSSOAgent.UniSsoServerRsp();
+        ((WebSSOAgent.UniSsoServerRsp)localObject).mergeFrom(paramBundle);
+        long l2 = ((WebSSOAgent.UniSsoServerRsp)localObject).ret.get();
+        try
+        {
+          if ("apollo_interact.thank_zan".equals(str2))
+          {
+            a(l2, str1);
+            return;
+          }
+          if ("apollo_core.get_user_info_v2".equals(str2))
+          {
+            a((WebSSOAgent.UniSsoServerRsp)localObject, l2, str1);
+            return;
+          }
+          if (!"apollo_interact.take_chips".equals(str2)) {
+            return;
+          }
+          b((WebSSOAgent.UniSsoServerRsp)localObject, l2, str1);
+          return;
+        }
+        catch (Exception paramBundle)
+        {
+          l1 = l2;
+        }
+        localObject = this.a;
       }
       catch (Exception paramBundle) {}
-      if (((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_a_of_type_Short != 15) {
-        break label2351;
+      if (localObject != null) {
+        ((BoxCardHandler.OnBoxCardHandlerListener)localObject).a(str2, false, l1, null, str1);
       }
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_g_of_type_Int = 3;
-      if (((JSONObject)localObject4).has("layoutStyle")) {
-        ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_g_of_type_Int = ((JSONObject)localObject4).optInt("layoutStyle");
-      }
-      localObject7 = (ApolloBoxData.BoxCardListSummary)paramBundle.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_a_of_type_Short));
-      if ((localObject7 != null) && (!((ApolloBoxData.BoxCardListSummary)localObject7).jdField_a_of_type_Boolean)) {
-        break label2360;
-      }
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_f_of_type_Int = ((JSONObject)localObject4).optInt("giftNum");
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_c_of_type_JavaLangString = ((JSONObject)localObject4).optString(str1);
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_d_of_type_JavaLangString = ((JSONObject)localObject4).optString("head");
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("grade");
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_g_of_type_JavaLangString = ((JSONObject)localObject4).optString("gradeUrl");
-      if (TextUtils.isEmpty(((BoxCardHandler)localObject5).jdField_b_of_type_JavaLangString)) {
-        break label2354;
-      }
-      i = paramInt;
-      if (((BoxCardHandler)localObject5).jdField_b_of_type_JavaLangString.equals(String.valueOf(((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_a_of_type_Long)))
-      {
-        i = paramInt;
-        if (((JSONObject)localObject4).optInt("zanmark") == 0) {
-          i = 0;
-        }
-      }
-      ((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_a_of_type_Boolean = ((ApolloBoxData.ApolloBoxDataItem)localObject6).a(((BoxCardHandler)localObject5).jdField_b_of_type_JavaLangString);
-      if (((ApolloBoxData.ApolloBoxDataItem)localObject6).jdField_a_of_type_Boolean)
-      {
-        ((List)localObject1).add(0, localObject6);
-        paramInt = i;
-      }
-      else
-      {
-        ((List)localObject1).add(localObject6);
-        paramInt = i;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      break label2231;
-    }
-    ((ApolloBoxData)localObject4).jdField_a_of_type_Boolean = bool1;
-    Collections.sort((List)localObject1);
-    ((ApolloBoxData)localObject4).jdField_b_of_type_JavaUtilList = ((List)localObject1);
-    ((ApolloBoxData)localObject4).a();
-    if (paramBundle.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener != null)
-    {
-      paramBundle.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener.a("apollo_interact.take_chips", paramBoolean, l1, localObject4, str2);
-      return;
-      label2231:
-      l2 = l1;
-      break label2267;
-      l2 = l1;
-      label2267:
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener;
-      if (localObject1 != null) {
-        ((BoxCardHandler.OnBoxCardHandlerListener)localObject1).a(str3, false, l2, null, str2);
-      }
-      if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.e("[cmshow]BoxCardHandler", 2, paramBundle.getMessage());
-        return;
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler$OnBoxCardHandlerListener;
-        if (paramBundle != null) {
-          paramBundle.a(str3, false, -9223372036854775808L, null, str2);
-        }
+      }
+    }
+    else
+    {
+      paramBundle = this.a;
+      if (paramBundle != null) {
+        paramBundle.a(str2, false, -9223372036854775808L, null, str1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.BoxCardHandler
  * JD-Core Version:    0.7.0.1
  */

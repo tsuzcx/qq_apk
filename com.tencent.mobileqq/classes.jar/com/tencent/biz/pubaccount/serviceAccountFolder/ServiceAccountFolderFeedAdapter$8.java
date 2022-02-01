@@ -17,28 +17,28 @@ class ServiceAccountFolderFeedAdapter$8
   
   public void run()
   {
-    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(ServiceAccountFolderFeedAdapter.a(this.this$0), this.jdField_a_of_type_JavaLangString);
+    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(ServiceAccountFolderFeedAdapter.a(this.this$0), this.a);
     Object localObject = (IPublicAccountDataManager)ServiceAccountFolderFeedAdapter.a(this.this$0).getRuntimeService(IPublicAccountDataManager.class, "all");
     if (localObject != null)
     {
-      ((IPublicAccountDataManager)localObject).delPublicAccountInfoCache(this.jdField_a_of_type_JavaLangString);
-      ((IPublicAccountDataManager)localObject).delPublicAccountInfo(this.jdField_a_of_type_JavaLangString);
-      IPublicAccountDetail localIPublicAccountDetail = ((IPublicAccountDataManager)localObject).findAccountDetailInfo(this.jdField_a_of_type_JavaLangString);
+      ((IPublicAccountDataManager)localObject).delPublicAccountInfoCache(this.a);
+      ((IPublicAccountDataManager)localObject).delPublicAccountInfo(this.a);
+      IPublicAccountDetail localIPublicAccountDetail = ((IPublicAccountDataManager)localObject).findAccountDetailInfo(this.a);
       if (localIPublicAccountDetail != null)
       {
-        ((IPublicAccountDataManager)localObject).delAccountDetailInfoCache(this.jdField_a_of_type_JavaLangString);
+        ((IPublicAccountDataManager)localObject).delAccountDetailInfoCache(this.a);
         localObject = ServiceAccountFolderFeedAdapter.a(this.this$0).getEntityManagerFactory().createEntityManager();
         ((EntityManager)localObject).remove(localIPublicAccountDetail.getEntity());
         ((EntityManager)localObject).close();
       }
     }
-    ServiceAccountFolderFeedAdapter.a(this.this$0).getMessageFacade().a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, 1008);
-    RecentUtil.b(ServiceAccountFolderFeedAdapter.a(this.this$0), this.jdField_a_of_type_JavaLangString, 1008);
+    ServiceAccountFolderFeedAdapter.a(this.this$0).getMessageFacade().c(this.b.b, 1008);
+    RecentUtil.b(ServiceAccountFolderFeedAdapter.a(this.this$0), this.a, 1008);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter.8
  * JD-Core Version:    0.7.0.1
  */

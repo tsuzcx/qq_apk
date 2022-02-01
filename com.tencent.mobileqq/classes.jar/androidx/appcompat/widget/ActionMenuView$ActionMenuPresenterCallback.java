@@ -1,14 +1,15 @@
 package androidx.appcompat.widget;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPresenter.Callback;
 
 class ActionMenuView$ActionMenuPresenterCallback
   implements MenuPresenter.Callback
 {
-  public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean) {}
+  public void onCloseMenu(@NonNull MenuBuilder paramMenuBuilder, boolean paramBoolean) {}
   
-  public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
+  public boolean onOpenSubMenu(@NonNull MenuBuilder paramMenuBuilder)
   {
     return false;
   }

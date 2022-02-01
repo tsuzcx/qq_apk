@@ -12,77 +12,77 @@ import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
 @Deprecated
 final class GdtDwellTimeStatisticsAfterClick
 {
-  private long jdField_a_of_type_Long;
-  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private GdtAd a;
+  private WeakReference<View> b;
+  private boolean c;
+  private boolean d;
+  private long e;
   
   private void a()
   {
     WeakReference localWeakReference1 = new WeakReference(this);
-    if (this.b)
+    if (this.d)
     {
-      localWeakReference2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localWeakReference2 = this.b;
       if ((localWeakReference2 != null) && (localWeakReference2.get() != null))
       {
-        if (((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isShown())
+        if (((View)this.b.get()).isShown())
         {
-          this.b = false;
-          this.jdField_a_of_type_Boolean = false;
+          this.d = false;
+          this.c = false;
           c();
           return;
         }
-        ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
+        ((View)this.b.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
         return;
       }
-      this.b = false;
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
+      this.c = false;
       c();
       return;
     }
-    WeakReference localWeakReference2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference2 = this.b;
     if ((localWeakReference2 != null) && (localWeakReference2.get() != null))
     {
-      if (!((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isShown())
+      if (!((View)this.b.get()).isShown())
       {
-        this.b = true;
+        this.d = true;
         b();
-        ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
+        ((View)this.b.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
         return;
       }
-      ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
+      ((View)this.b.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    GdtLog.b("GdtDwellTimeStatisticsAfterClick", String.format("enter %d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
+    this.e = SystemClock.elapsedRealtime();
+    GdtLog.b("GdtDwellTimeStatisticsAfterClick", String.format("enter %d", new Object[] { Long.valueOf(this.e) }));
   }
   
   private void c()
   {
     long l = SystemClock.elapsedRealtime();
     GdtLog.b("GdtDwellTimeStatisticsAfterClick", String.format("leave %d", new Object[] { Long.valueOf(l) }));
-    if (this.jdField_a_of_type_Long == -2147483648L) {
+    if (this.e == -2147483648L) {
       GdtLog.d("GdtDwellTimeStatisticsAfterClick", "leave error");
     }
-    l -= this.jdField_a_of_type_Long;
+    l -= this.e;
     GdtLog.b("GdtDwellTimeStatisticsAfterClick", String.format("dwell %d", new Object[] { Long.valueOf(l) }));
-    this.jdField_a_of_type_Long = -2147483648L;
+    this.e = -2147483648L;
     GdtActionReporter.Params localParams = new GdtActionReporter.Params();
-    localParams.jdField_a_of_type_ComTencentAdTangramAd = this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-    localParams.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.set(42);
-    localParams.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.latency_ms.set(l);
+    localParams.a = this.a;
+    localParams.b.landing_page_action_type.set(42);
+    localParams.b.latency_ms.set(l);
     GdtActionReporter.a(localParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick
  * JD-Core Version:    0.7.0.1
  */

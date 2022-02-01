@@ -8,12 +8,12 @@ class QfileFavPicFileTabView$5
   public void run()
   {
     QfileFavPicFileTabView.a(this.this$0);
-    this.this$0.q();
+    this.this$0.r();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView.5
  * JD-Core Version:    0.7.0.1
  */

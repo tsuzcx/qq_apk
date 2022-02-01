@@ -11,22 +11,22 @@ class RefreshAnimView$3$2
   
   public void run()
   {
-    float f = DisplayUtil.a(this.a.a.getContext(), 44.0F) / 88.0F;
+    float f = DisplayUtil.a(this.a.c.getContext(), 44.0F) / 88.0F;
     LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(RefreshAnimView.a(this.a.a));
+    localLottieDrawable.setComposition(RefreshAnimView.d(this.a.c));
     localLottieDrawable.loop(false);
-    RefreshAnimView.a(this.a.a).setImageDrawable(localLottieDrawable);
-    RefreshAnimView.a(this.a.a).invalidate();
-    RefreshAnimView.a(this.a.a).setScaleX(f);
-    RefreshAnimView.a(this.a.a).setScaleY(f);
-    RefreshAnimView.a(this.a.a).setPivotX(RefreshAnimView.a(this.a.a).getWidth() / 2);
-    RefreshAnimView.a(this.a.a).setPivotY(RefreshAnimView.a(this.a.a).getHeight() / 2);
+    RefreshAnimView.e(this.a.c).setImageDrawable(localLottieDrawable);
+    RefreshAnimView.e(this.a.c).invalidate();
+    RefreshAnimView.e(this.a.c).setScaleX(f);
+    RefreshAnimView.e(this.a.c).setScaleY(f);
+    RefreshAnimView.e(this.a.c).setPivotX(RefreshAnimView.e(this.a.c).getWidth() / 2);
+    RefreshAnimView.e(this.a.c).setPivotY(RefreshAnimView.e(this.a.c).getHeight() / 2);
     localLottieDrawable.playAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.RefreshAnimView.3.2
  * JD-Core Version:    0.7.0.1
  */

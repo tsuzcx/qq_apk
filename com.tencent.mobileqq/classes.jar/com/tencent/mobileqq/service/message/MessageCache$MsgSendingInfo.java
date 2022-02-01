@@ -2,42 +2,42 @@ package com.tencent.mobileqq.service.message;
 
 public class MessageCache$MsgSendingInfo
 {
-  public int a;
-  public long a;
   public String a;
   public int b;
-  public long b;
+  public long c;
+  public long d;
+  public int e;
   
   public MessageCache$MsgSendingInfo(String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Int = MessageCache.jdField_a_of_type_Int;
+    this.a = paramString;
+    this.b = paramInt;
+    this.c = paramLong1;
+    this.d = paramLong2;
+    this.e = MessageCache.a;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MsgSendingInfo{frienduin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", istroop=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", uniseq=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", localSendTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", delayTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageCache.MsgSendingInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -10,34 +10,34 @@ import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData;
 class CommentRichTextView$2
   implements ValueAnimator.AnimatorUpdateListener
 {
-  String jdField_a_of_type_JavaLangString = CommentRichTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentRichTextView).a.commentId;
+  String a = CommentRichTextView.b(this.c).c.commentId;
   
   CommentRichTextView$2(CommentRichTextView paramCommentRichTextView, View paramView) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((CommentRichTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentRichTextView) != null) && (CommentRichTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentRichTextView).a != null))
+    if ((CommentRichTextView.b(this.c) != null) && (CommentRichTextView.b(this.c).c != null))
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       if (str != null)
       {
-        if (!str.equals(CommentRichTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentRichTextView).a.commentId))
+        if (!str.equals(CommentRichTextView.b(this.c).c.commentId))
         {
-          CommentRichTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentRichTextView, this.jdField_a_of_type_AndroidViewView);
+          CommentRichTextView.a(this.c, this.b);
           return;
         }
         int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-        CommentRichTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentRichTextView).setAlpha(i);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(CommentRichTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentRichTextView));
+        CommentRichTextView.c(this.c).setAlpha(i);
+        this.b.setBackgroundDrawable(CommentRichTextView.c(this.c));
         return;
       }
     }
-    CommentRichTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentRichTextView, this.jdField_a_of_type_AndroidViewView);
+    CommentRichTextView.a(this.c, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.CommentRichTextView.2
  * JD-Core Version:    0.7.0.1
  */

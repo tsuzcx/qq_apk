@@ -11,14 +11,14 @@ class BaseChatItemLayout$1
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(15, 0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewBasicAbility.getTop() + (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewBasicAbility.getHeight() - BaseChatItemLayout.V) / 2);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.a.addRule(15, 0);
+    this.a.topMargin = (this.b.getTop() + (this.b.getHeight() - BaseChatItemLayout.V) / 2);
+    this.c.setLayoutParams(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseChatItemLayout.1
  * JD-Core Version:    0.7.0.1
  */

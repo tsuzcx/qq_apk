@@ -11,8 +11,6 @@ import com.tencent.mobileqq.nearby.NearbyConstants;
 public class NearbyMsgBoxSendCallback
   implements IMsgUpdateCallback
 {
-  public void a(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
-  
   public boolean a(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     return false;
@@ -20,19 +18,21 @@ public class NearbyMsgBoxSendCallback
   
   public void b(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
   
-  public boolean b(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  
+  public boolean d(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
-    if (paramAIOContext.a().a == 1001) {
+    if (paramAIOContext.O().a == 1001) {
       ((NearbyHandler)paramAIOContext.a().getBusinessHandler(NearbyConstants.a)).a(paramChatMessage, 1);
     }
     return false;
   }
   
-  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  public void e(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NearbyMsgBoxSendCallback
  * JD-Core Version:    0.7.0.1
  */

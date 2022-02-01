@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 public class ApolloBaseInfoBatchUpdater
 {
-  private IApolloDaoManagerService jdField_a_of_type_ComTencentMobileqqApolloPersistenceApiIApolloDaoManagerService;
-  private ArrayList<ApolloBaseInfo> jdField_a_of_type_JavaUtilArrayList;
+  private IApolloDaoManagerService a;
+  private ArrayList<ApolloBaseInfo> b;
   
   public ApolloBaseInfoBatchUpdater(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqApolloPersistenceApiIApolloDaoManagerService = ((IApolloDaoManagerService)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all"));
+    this.b = new ArrayList(paramInt);
+    this.a = ((IApolloDaoManagerService)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all"));
   }
   
   public void a()
@@ -26,40 +26,38 @@ public class ApolloBaseInfoBatchUpdater
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("saveInBatch size=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      localStringBuilder.append(this.b.size());
       QLog.i("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloPersistenceApiIApolloDaoManagerService.bulkSaveOrUpdateApolloBaseInfos(this.jdField_a_of_type_JavaUtilArrayList);
+    this.a.bulkSaveOrUpdateApolloBaseInfos(this.b);
   }
   
   public void a(Friends paramFriends, FriendInfo paramFriendInfo)
   {
-    ApolloBaseInfo localApolloBaseInfo = this.jdField_a_of_type_ComTencentMobileqqApolloPersistenceApiIApolloDaoManagerService.getApolloBaseInfo(paramFriends.uin);
-    if (localApolloBaseInfo != null)
-    {
-      if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime) || (localApolloBaseInfo.cmshow3dFlag != paramFriendInfo.cCentiShow3DFlag))
-      {
-        localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
-        localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
-        localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
-        localApolloBaseInfo.apolloSignStr = "";
-        localApolloBaseInfo.cmshow3dFlag = paramFriendInfo.cCentiShow3DFlag;
-        localApolloBaseInfo.apolloUpdateTime = NetConnInfoCenter.getServerTime();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localApolloBaseInfo);
-      }
-    }
-    else if (QLog.isColorLevel())
+    ApolloBaseInfo localApolloBaseInfo = this.a.getApolloBaseInfo(paramFriends.uin);
+    if (localApolloBaseInfo == null)
     {
       paramFriendInfo = new StringBuilder();
       paramFriendInfo.append("apolloBaseInfo return null uin: ");
       paramFriendInfo.append(paramFriends.uin);
       QLog.e("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, paramFriendInfo.toString());
+      return;
+    }
+    if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime) || (localApolloBaseInfo.cmshow3dFlag != paramFriendInfo.cCentiShow3DFlag))
+    {
+      localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
+      localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
+      localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
+      localApolloBaseInfo.apolloSignStr = "";
+      localApolloBaseInfo.cmshow3dFlag = paramFriendInfo.cCentiShow3DFlag;
+      localApolloBaseInfo.apolloUpdateTime = NetConnInfoCenter.getServerTime();
+      this.b.add(localApolloBaseInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloBaseInfoBatchUpdater
  * JD-Core Version:    0.7.0.1
  */

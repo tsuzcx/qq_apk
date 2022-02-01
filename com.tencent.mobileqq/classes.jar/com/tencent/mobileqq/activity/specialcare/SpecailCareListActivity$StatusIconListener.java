@@ -12,18 +12,18 @@ class SpecailCareListActivity$StatusIconListener
   {
     if ((paramBitmap != null) && (paramInt2 == 200))
     {
-      if (this.b.d != 0)
+      if (this.b.E != 0)
       {
-        this.b.b = true;
+        this.b.y = true;
         return;
       }
-      this.b.a.notifyDataSetChanged();
+      this.b.o.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.StatusIconListener
  * JD-Core Version:    0.7.0.1
  */

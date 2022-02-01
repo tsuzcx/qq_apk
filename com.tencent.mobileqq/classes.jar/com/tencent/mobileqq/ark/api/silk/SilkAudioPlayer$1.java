@@ -10,13 +10,13 @@ class SilkAudioPlayer$1
   public void onAudioFocusChange(int paramInt)
   {
     if ((SilkAudioPlayer.a(this.a) != null) && (paramInt == -1)) {
-      SilkAudioPlayer.a(this.a).a(false);
+      SilkAudioPlayer.b(this.a).a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.silk.SilkAudioPlayer.1
  * JD-Core Version:    0.7.0.1
  */

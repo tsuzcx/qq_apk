@@ -2,8 +2,7 @@ package com.tencent.mobileqq.kandian.repo.aladdin;
 
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.mobileqq.kandian.repo.daily.api.IDailyModeConfigHandler;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.daily.api.impl.DailyModeConfigHandlerSingleton;
 import com.tencent.qphone.base.util.QLog;
 
 public class RIJDeleteArticleAfterRefreshAladdinConfig
@@ -13,7 +12,7 @@ public class RIJDeleteArticleAfterRefreshAladdinConfig
   public static boolean a(int paramInt)
   {
     boolean bool = false;
-    if ((paramInt != 0) && (!((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDailyUnlimitChannel(paramInt))) {
+    if ((paramInt != 0) && (!DailyModeConfigHandlerSingleton.INSTANCE.isDailyUnlimitChannel(paramInt))) {
       return false;
     }
     if (a.getIntegerFromString("enable_delete_article_after_refresh", 0) == 1) {
@@ -33,7 +32,7 @@ public class RIJDeleteArticleAfterRefreshAladdinConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.RIJDeleteArticleAfterRefreshAladdinConfig
  * JD-Core Version:    0.7.0.1
  */

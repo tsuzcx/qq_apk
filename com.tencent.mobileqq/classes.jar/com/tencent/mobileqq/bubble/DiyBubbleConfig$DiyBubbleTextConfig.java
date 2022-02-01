@@ -20,23 +20,18 @@ import org.json.JSONObject;
 public final class DiyBubbleConfig$DiyBubbleTextConfig
   extends DiyBubbleConfig
 {
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  
-  public DiyBubbleConfig$DiyBubbleTextConfig()
-  {
-    this.jdField_c_of_type_Int = -1;
-  }
+  public int f = -1;
+  public int g;
+  public String h;
+  public int i;
   
   public static DiyBubbleConfig a(JSONObject paramJSONObject)
   {
     DiyBubbleTextConfig localDiyBubbleTextConfig = new DiyBubbleTextConfig();
     Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
-    localDiyBubbleTextConfig.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align");
-    localDiyBubbleTextConfig.d = (DisplayUtil.c(localContext, paramJSONObject.optInt("text_size") / 2) + 1);
-    localDiyBubbleTextConfig.jdField_c_of_type_JavaLangString = paramJSONObject.optString("text_align");
+    localDiyBubbleTextConfig.a = paramJSONObject.optString("align");
+    localDiyBubbleTextConfig.g = (DisplayUtil.c(localContext, paramJSONObject.optInt("text_size") / 2) + 1);
+    localDiyBubbleTextConfig.h = paramJSONObject.optString("text_align");
     Object localObject2 = paramJSONObject.optString("text_color");
     Object localObject1 = localObject2;
     if (((String)localObject2).startsWith("0x")) {
@@ -47,12 +42,12 @@ public final class DiyBubbleConfig$DiyBubbleTextConfig
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("#");
       ((StringBuilder)localObject2).append((String)localObject1);
-      localDiyBubbleTextConfig.jdField_c_of_type_Int = Color.parseColor(((StringBuilder)localObject2).toString());
+      localDiyBubbleTextConfig.f = Color.parseColor(((StringBuilder)localObject2).toString());
     }
     catch (Exception localException)
     {
       label120:
-      int i;
+      int j;
       break label120;
     }
     if (QLog.isColorLevel()) {
@@ -61,15 +56,15 @@ public final class DiyBubbleConfig$DiyBubbleTextConfig
     if (paramJSONObject.has("rect"))
     {
       localObject1 = paramJSONObject.optJSONArray("rect");
-      localDiyBubbleTextConfig.jdField_a_of_type_ArrayOfInt = new int[4];
-      i = 0;
-      while (i < ((JSONArray)localObject1).length())
+      localDiyBubbleTextConfig.b = new int[4];
+      j = 0;
+      while (j < ((JSONArray)localObject1).length())
       {
-        localDiyBubbleTextConfig.jdField_a_of_type_ArrayOfInt[i] = DisplayUtil.a(localContext, ((JSONArray)localObject1).optInt(i) / 2);
-        i += 1;
+        localDiyBubbleTextConfig.b[j] = DisplayUtil.a(localContext, ((JSONArray)localObject1).optInt(j) / 2);
+        j += 1;
       }
     }
-    localDiyBubbleTextConfig.e = paramJSONObject.optInt("text_max_count");
+    localDiyBubbleTextConfig.i = paramJSONObject.optInt("text_max_count");
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -85,75 +80,75 @@ public final class DiyBubbleConfig$DiyBubbleTextConfig
   {
     paramCanvas = paramVipBubbleDrawable.getBounds();
     Object localObject = BaseApplicationImpl.getContext().getResources();
-    if (b == -1) {
-      b = AIOUtils.b(48.0F, (Resources)localObject);
+    if (d == -1) {
+      d = AIOUtils.b(48.0F, (Resources)localObject);
     }
-    float f4 = this.jdField_a_of_type_ArrayOfInt[3];
-    int i = paramCanvas.height();
-    int j = b;
+    float f4 = this.b[3];
+    int j = paramCanvas.height();
+    int k = d;
     float f3 = 1.0F;
-    if (i < j)
+    if (j < k)
     {
-      i = AIOUtils.b(2.0F, (Resources)localObject);
-      j = AIOUtils.b(9.0F, (Resources)localObject);
-      int k = AIOUtils.b(7.0F, (Resources)localObject);
-      f3 = (paramCanvas.height() - k * 2) * 1.0F / (b - j * 2);
-      f4 = this.jdField_a_of_type_ArrayOfInt[3] * f3;
+      j = AIOUtils.b(2.0F, (Resources)localObject);
+      k = AIOUtils.b(9.0F, (Resources)localObject);
+      int m = AIOUtils.b(7.0F, (Resources)localObject);
+      f3 = (paramCanvas.height() - m * 2) * 1.0F / (d - k * 2);
+      f4 = this.b[3] * f3;
     }
     else
     {
-      i = 0;
+      j = 0;
     }
-    boolean bool = this.jdField_a_of_type_JavaLangString.startsWith("T");
+    boolean bool = this.a.startsWith("T");
     float f2 = 0.0F;
     float f1;
     if (bool)
     {
-      f1 = this.jdField_a_of_type_ArrayOfInt[1] - i;
+      f1 = this.b[1] - j;
     }
-    else if (this.jdField_a_of_type_JavaLangString.startsWith("B"))
+    else if (this.a.startsWith("B"))
     {
-      f1 = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height();
-      f1 = i + (f1 - f4);
+      f1 = this.b[1] + this.b[3] + paramCanvas.height();
+      f1 = j + (f1 - f4);
     }
     else
     {
       f1 = 0.0F;
     }
-    if (this.jdField_a_of_type_JavaLangString.endsWith("L")) {}
-    for (i = this.jdField_a_of_type_ArrayOfInt[0];; i = this.jdField_a_of_type_ArrayOfInt[0] + paramCanvas.width())
+    if (this.a.endsWith("L")) {}
+    for (j = this.b[0];; j = this.b[0] + paramCanvas.width())
     {
-      f2 = i;
+      f2 = j;
       break;
-      if (!this.jdField_a_of_type_JavaLangString.endsWith("R")) {
+      if (!this.a.endsWith("R")) {
         break;
       }
     }
-    i = this.jdField_a_of_type_ArrayOfInt[2];
-    j = this.d;
-    if (j != 0) {
-      paramPaint.setTextSize(j * f3);
+    j = this.b[2];
+    k = this.g;
+    if (k != 0) {
+      paramPaint.setTextSize(k * f3);
     }
     paramPaint.setAntiAlias(true);
     paramPaint.setFakeBoldText(true);
-    localObject = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
+    localObject = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, paramVipBubbleDrawable.c);
     Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
     float f5 = DiyBubbleConfig.a(paramPaint, (String)localObject);
     float f6 = f4 / 2.0F;
     float f7 = (localFontMetrics.bottom - localFontMetrics.top) / 2.0F;
     float f8 = localFontMetrics.top;
-    if (this.jdField_c_of_type_JavaLangString.equals("center"))
+    if (this.h.equals("center"))
     {
-      f3 = f2 + (i - f5) / 2.0F;
+      f3 = f2 + (j - f5) / 2.0F;
     }
     else
     {
       f3 = f2;
-      if (this.jdField_c_of_type_JavaLangString.equals("right")) {
-        f3 = f2 + i - f5;
+      if (this.h.equals("right")) {
+        f3 = f2 + j - f5;
       }
     }
-    return DiyBubbleConfig.a(paramVipBubbleDrawable, paramCanvas, f4, f3, f1 + f6 - f7 - f8, i, f5);
+    return DiyBubbleConfig.a(paramVipBubbleDrawable, paramCanvas, f4, f3, f1 + f6 - f7 - f8, j, f5);
   }
   
   public void a(VipBubbleDrawable paramVipBubbleDrawable, Canvas paramCanvas)
@@ -163,13 +158,13 @@ public final class DiyBubbleConfig$DiyBubbleTextConfig
       if (paramVipBubbleDrawable == null) {
         return;
       }
-      String str = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      String str = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, paramVipBubbleDrawable.c);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.a)))
       {
         Paint localPaint = new Paint();
-        int i = this.jdField_c_of_type_Int;
-        if (i != -1) {
-          localPaint.setColor(i);
+        int j = this.f;
+        if (j != -1) {
+          localPaint.setColor(j);
         }
         paramVipBubbleDrawable = a(paramVipBubbleDrawable, paramCanvas, localPaint);
         paramCanvas.drawText(str, paramVipBubbleDrawable.left, paramVipBubbleDrawable.top, localPaint);
@@ -179,7 +174,7 @@ public final class DiyBubbleConfig$DiyBubbleTextConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.DiyBubbleConfig.DiyBubbleTextConfig
  * JD-Core Version:    0.7.0.1
  */

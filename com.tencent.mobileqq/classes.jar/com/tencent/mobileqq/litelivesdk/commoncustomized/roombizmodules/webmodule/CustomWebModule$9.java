@@ -19,9 +19,9 @@ class CustomWebModule$9
     ((StringBuilder)localObject).append(paramScreenModeEvent.isLandscape);
     QLog.d("IliveCustomWebModule", 1, ((StringBuilder)localObject).toString());
     localObject = this.a;
-    ((CustomWebModule)localObject).jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp = ((CustomWebModule)localObject).a();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleJsApp.b(paramScreenModeEvent.isLandscape);
+    ((CustomWebModule)localObject).c = ((CustomWebModule)localObject).r();
+    if (this.a.c != null) {
+      this.a.c.b(paramScreenModeEvent.isLandscape);
     }
     if (this.a.getAudienceRoomPager() != null)
     {
@@ -31,7 +31,7 @@ class CustomWebModule$9
         ((IAudienceRoomPager)localObject).setScrollForbidden(true);
         return;
       }
-      if (!this.a.jdField_a_of_type_Boolean)
+      if (!this.a.j)
       {
         ((IAudienceRoomPager)localObject).setScrollForbidden(true);
         return;
@@ -42,7 +42,7 @@ class CustomWebModule$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.9
  * JD-Core Version:    0.7.0.1
  */

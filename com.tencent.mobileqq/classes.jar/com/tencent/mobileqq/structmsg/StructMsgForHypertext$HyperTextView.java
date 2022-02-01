@@ -17,22 +17,22 @@ public final class StructMsgForHypertext$HyperTextView
   extends TextView
   implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  Context b = null;
   
   public StructMsgForHypertext$HyperTextView(Context paramContext)
   {
     super(paramContext);
     setOnClickListener(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   public boolean a()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (!a(this))) {
+    if ((!this.a) && (!a(this))) {
       return true;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
     return false;
   }
   
@@ -62,7 +62,7 @@ public final class StructMsgForHypertext$HyperTextView
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag(2131377989);
+    Object localObject = paramView.getTag(2131446476);
     if ((localObject != null) && ((localObject instanceof StructMsgForHypertext)))
     {
       localObject = (StructMsgForHypertext)localObject;
@@ -78,7 +78,7 @@ public final class StructMsgForHypertext$HyperTextView
         localIntent.putExtra("url", ((StructMsgForHypertext)localObject).mMsgUrl);
         ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
         localContext.startActivity(localIntent);
-        this.jdField_a_of_type_Boolean = true;
+        this.a = true;
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -87,14 +87,14 @@ public final class StructMsgForHypertext$HyperTextView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForHypertext.HyperTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -24,30 +24,30 @@ class QfileBaseRecentFileTabView$5
     if (bool)
     {
       localObject2 = (RecentItemHolder)paramView.getTag();
-      localAsyncImageView = ((RecentItemHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-      localObject1 = (FileManagerEntity)((RecentItemHolder)localObject2).jdField_a_of_type_JavaLangObject;
-      i = ((RecentItemHolder)localObject2).b;
-      i = ((RecentItemHolder)localObject2).c;
+      localAsyncImageView = ((RecentItemHolder)localObject2).f;
+      localObject1 = (FileManagerEntity)((RecentItemHolder)localObject2).i;
+      i = ((RecentItemHolder)localObject2).j;
+      i = ((RecentItemHolder)localObject2).k;
     }
     else if ((localObject1 instanceof ImageHolder))
     {
       localObject2 = (ImageHolder)paramView.getTag();
-      localAsyncImageView = ((ImageHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-      localObject1 = (FileManagerEntity)((ImageHolder)localObject2).jdField_a_of_type_JavaLangObject;
-      i = ((ImageHolder)localObject2).b;
-      i = ((ImageHolder)localObject2).jdField_a_of_type_Int;
+      localAsyncImageView = ((ImageHolder)localObject2).a;
+      localObject1 = (FileManagerEntity)((ImageHolder)localObject2).i;
+      i = ((ImageHolder)localObject2).h;
+      i = ((ImageHolder)localObject2).g;
     }
     else
     {
       localObject1 = null;
     }
-    if ((paramView.getId() == 2131366781) && (QfileBaseRecentFileTabView.b(this.a))) {
-      ReportController.b(QfileBaseRecentFileTabView.i(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+    if ((paramView.getId() == 2131433103) && (QfileBaseRecentFileTabView.k(this.a))) {
+      ReportController.b(QfileBaseRecentFileTabView.l(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
     }
     if (localObject1 != null)
     {
       localObject2 = this.a;
-      if (paramView.getId() == 2131366781) {
+      if (paramView.getId() == 2131433103) {
         bool = true;
       } else {
         bool = false;
@@ -59,7 +59,7 @@ class QfileBaseRecentFileTabView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.5
  * JD-Core Version:    0.7.0.1
  */

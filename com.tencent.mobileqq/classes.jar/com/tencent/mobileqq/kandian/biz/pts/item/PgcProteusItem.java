@@ -12,12 +12,12 @@ import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.kandian.biz.framework.click.ListenerBuilder;
 import com.tencent.mobileqq.kandian.biz.framework.click.OnGalleryImageClickListener;
 import com.tencent.mobileqq.kandian.biz.pts.ProteusItem;
-import com.tencent.mobileqq.kandian.biz.pts.api.IReadInJoyPTSCostHelper;
 import com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentBig;
 import com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentGridImage;
 import com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentPgcVideo;
 import com.tencent.mobileqq.kandian.biz.pts.component.ComponentView;
 import com.tencent.mobileqq.kandian.biz.pts.data.ProteusItemDataBuilder;
+import com.tencent.mobileqq.kandian.biz.pts.network.ReadInJoyPTSCostHelper;
 import com.tencent.mobileqq.kandian.biz.pts.view.ArticleCommentView;
 import com.tencent.mobileqq.kandian.biz.pts.view.PgcSmallView;
 import com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyMiddleBodyView;
@@ -29,7 +29,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.PGCFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.TraceUtils;
 import java.util.ArrayList;
 import org.json.JSONObject;
@@ -39,8 +38,8 @@ public class PgcProteusItem
 {
   private View a(int paramInt, Context paramContext, IReadInJoyModel paramIReadInJoyModel)
   {
-    paramIReadInJoyModel = paramIReadInJoyModel.a();
-    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mSocialFeedInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (ComponentContentGridImage.a(paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size(), paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_Int) == 1)) {
+    paramIReadInJoyModel = paramIReadInJoyModel.k();
+    if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mSocialFeedInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.t != null) && (paramIReadInJoyModel.mSocialFeedInfo.t.a != null) && (paramIReadInJoyModel.mSocialFeedInfo.t.a.size() > 0) && (ComponentContentGridImage.a(paramIReadInJoyModel.mSocialFeedInfo.t.a.size(), paramIReadInJoyModel.mSocialFeedInfo.b) == 1)) {
       return new ComponentContentBig(paramContext);
     }
     return new ComponentContentGridImage(paramContext);
@@ -49,7 +48,7 @@ public class PgcProteusItem
   private void a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     int i = a(paramAbsBaseArticleInfo, paramReadInJoyBaseAdapter);
-    paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.a().a();
+    paramReadInJoyBaseAdapter = paramReadInJoyBaseAdapter.y().d();
     if (paramReadInJoyBaseAdapter != null) {
       paramReadInJoyBaseAdapter.a(paramContext, paramAbsBaseArticleInfo, paramInt1, paramString, i, paramInt2, paramInt3);
     }
@@ -57,8 +56,8 @@ public class PgcProteusItem
   
   private void a(Context paramContext, IReadInJoyModel paramIReadInJoyModel, int paramInt)
   {
-    OnGalleryImageClickListener localOnGalleryImageClickListener = ((ReadInJoyBaseAdapter)paramIReadInJoyModel.a()).a().a();
-    paramIReadInJoyModel = paramIReadInJoyModel.a();
+    OnGalleryImageClickListener localOnGalleryImageClickListener = ((ReadInJoyBaseAdapter)paramIReadInJoyModel.u()).y().d();
+    paramIReadInJoyModel = paramIReadInJoyModel.k();
     if ((paramIReadInJoyModel != null) && (localOnGalleryImageClickListener != null)) {
       localOnGalleryImageClickListener.a(paramContext, paramIReadInJoyModel, 0, paramIReadInJoyModel.innerUniqueID, 5, paramInt, 0);
     }
@@ -66,13 +65,13 @@ public class PgcProteusItem
   
   private void b(int paramInt1, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
-    if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (ComponentContentGridImage.a(localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size(), localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int) == 1))
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
+    if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.t.a != null) && (localAbsBaseArticleInfo.mSocialFeedInfo.t.a.size() > 0) && (ComponentContentGridImage.a(localAbsBaseArticleInfo.mSocialFeedInfo.t.a.size(), localAbsBaseArticleInfo.mSocialFeedInfo.b) == 1))
     {
       c(paramInt1, paramIReadInJoyModel, paramNativeMiddleBodyView, paramInt2, paramContainer);
       return;
     }
-    paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+    paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.getContent();
     paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramIReadInJoyModel, paramInt1));
     paramNativeMiddleBodyView.setMIReadInJoyModel(paramIReadInJoyModel);
     paramNativeMiddleBodyView.setGalleryClickListener(new PgcProteusItem.5(this, paramIReadInJoyModel, paramContainer, paramInt2));
@@ -80,13 +79,13 @@ public class PgcProteusItem
   
   private void c(int paramInt1, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
   {
-    paramNativeMiddleBodyView.a().setOnClickListener(new PgcProteusItem.6(this, paramIReadInJoyModel, paramContainer, paramInt2));
-    ((ComponentView)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+    paramNativeMiddleBodyView.getContent().setOnClickListener(new PgcProteusItem.6(this, paramIReadInJoyModel, paramContainer, paramInt2));
+    ((ComponentView)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
   }
   
   public int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    return GalleryReportedUtils.a(paramReadInJoyBaseAdapter.a(), RIJFeedsType.a(paramAbsBaseArticleInfo));
+    return GalleryReportedUtils.a(paramReadInJoyBaseAdapter.c(), RIJFeedsType.g(paramAbsBaseArticleInfo));
   }
   
   protected View a(int paramInt, Context paramContext, IReadInJoyModel paramIReadInJoyModel, ReadInJoyMiddleBodyView paramReadInJoyMiddleBodyView)
@@ -132,10 +131,10 @@ public class PgcProteusItem
         return a(paramInt, paramContext, paramIReadInJoyModel);
       }
       paramContext = new ComponentContentGridImage(paramContext);
-      if (paramReadInJoyMiddleBodyView.a())
+      if (paramReadInJoyMiddleBodyView.e())
       {
-        paramContext.jdField_a_of_type_Int = paramReadInJoyMiddleBodyView.getComPaddingLeft();
-        paramContext.b = paramReadInJoyMiddleBodyView.getComPaddingRight();
+        paramContext.b = paramReadInJoyMiddleBodyView.getComPaddingLeft();
+        paramContext.c = paramReadInJoyMiddleBodyView.getComPaddingRight();
       }
       return paramContext;
     }
@@ -163,17 +162,17 @@ public class PgcProteusItem
       l1 = 0L;
     }
     TraceUtils.traceBegin("PgcProteusItem.bindArticleComment");
-    if ((paramInt != 20) && (paramInt != 16) && (paramInt != 83) && (paramInt != 86) && ((!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSummary)) || (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mTitle)) || ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaLangString != null)))) {
+    if ((paramInt != 20) && (paramInt != 16) && (paramInt != 83) && (paramInt != 86) && ((!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSummary)) || (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mTitle)) || ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t.c != null)))) {
       localProteusItemDataBuilder.p(paramAbsBaseArticleInfo);
     }
     TraceUtils.traceEnd();
     TraceUtils.traceBegin("PgcProteusItem.bindReadArticle");
     if ((paramInt == 34) || (paramInt == 85)) {
-      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131707979));
+      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131905789));
     }
     TraceUtils.traceEnd();
     if (paramInt == 29) {
-      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131707978));
+      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131905788));
     }
     TraceUtils.traceBegin("PgcProteusItem.bindTopicCapsule");
     if (paramInt != 29) {
@@ -187,7 +186,7 @@ public class PgcProteusItem
     localProteusItemDataBuilder.z(paramAbsBaseArticleInfo);
     TraceUtils.traceEnd();
     TraceUtils.traceEnd();
-    ((IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class)).printCost("PgcProteusItem", String.valueOf(paramInt), "PgcProteusItem.getDataJson", System.currentTimeMillis() - l2);
+    ReadInJoyPTSCostHelper.a("PgcProteusItem", String.valueOf(paramInt), "PgcProteusItem.getDataJson", System.currentTimeMillis() - l2);
     return localProteusItemDataBuilder.a();
   }
   
@@ -211,7 +210,7 @@ public class PgcProteusItem
     BindViewHelper.d(localViewBase, paramIReadInJoyModel);
     TraceUtils.traceEnd();
     TraceUtils.traceEnd();
-    ((IReadInJoyPTSCostHelper)QRoute.api(IReadInJoyPTSCostHelper.class)).printCost("PgcProteusItem", String.valueOf(paramInt1), "PgcProteusItem.bindView", System.currentTimeMillis() - l);
+    ReadInJoyPTSCostHelper.a("PgcProteusItem", String.valueOf(paramInt1), "PgcProteusItem.bindView", System.currentTimeMillis() - l);
   }
   
   protected void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2, ViewBase paramViewBase)
@@ -226,12 +225,12 @@ public class PgcProteusItem
   
   protected void a(int paramInt1, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
   {
-    if (paramNativeMiddleBodyView.a() != null)
+    if (paramNativeMiddleBodyView.getContent() != null)
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.u() == null) {
         return;
       }
-      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
+      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
       if (paramInt1 != 29)
       {
         if (paramInt1 != 34)
@@ -257,28 +256,28 @@ public class PgcProteusItem
                 break;
               }
             }
-            paramNativeMiddleBodyView.a().setOnClickListener(new PgcProteusItem.4(this, paramIReadInJoyModel, localReadInJoyBaseAdapter));
-            ((ComponentView)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+            paramNativeMiddleBodyView.getContent().setOnClickListener(new PgcProteusItem.4(this, paramIReadInJoyModel, localReadInJoyBaseAdapter));
+            ((ComponentView)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
             return;
           }
           label201:
           b(paramInt1, paramIReadInJoyModel, paramNativeMiddleBodyView, paramInt2, paramContainer);
           return;
         }
-        paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+        paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.getContent();
         paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramIReadInJoyModel, paramInt1));
         paramNativeMiddleBodyView.setMIReadInJoyModel(paramIReadInJoyModel);
         paramNativeMiddleBodyView.setOnNoItemClickListener(new PgcProteusItem.3(this, paramIReadInJoyModel));
         return;
       }
-      ((ComponentView)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+      ((ComponentView)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
     }
   }
   
   protected void a(IReadInJoyModel paramIReadInJoyModel, ViewBase paramViewBase)
   {
     TraceUtils.traceBegin("PgcProteusItem.bindView.bindBiuTime");
-    BindViewHelper.a(paramViewBase, paramIReadInJoyModel.a());
+    BindViewHelper.a(paramViewBase, paramIReadInJoyModel.k());
     TraceUtils.traceEnd();
   }
   
@@ -318,7 +317,7 @@ public class PgcProteusItem
     if (localReadInJoyMiddleBodyView != null)
     {
       NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localReadInJoyMiddleBodyView.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
+      if (localNativeMiddleBodyView.getContent() == null)
       {
         View localView = a(paramInt1, paramContainer.getContext(), paramIReadInJoyModel, localReadInJoyMiddleBodyView);
         if ((localView != null) && ((localView.getLayoutParams() instanceof RelativeLayout.LayoutParams))) {
@@ -340,7 +339,7 @@ public class PgcProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcProteusItem
  * JD-Core Version:    0.7.0.1
  */

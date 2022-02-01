@@ -1,21 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class ForwardRecentActivity$9
-  implements Comparator<RecentUser>
+  extends BroadcastReceiver
 {
   ForwardRecentActivity$9(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
+    if (!this.a.isFinishing()) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.9
  * JD-Core Version:    0.7.0.1
  */

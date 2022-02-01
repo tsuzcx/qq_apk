@@ -14,30 +14,30 @@ class TeamWorkForceShare$2$1$1
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (TeamWorkForceShare.b(this.a.a.this$0) != null)
+    if (TeamWorkForceShare.e(this.a.c.this$0) != null)
     {
-      if (!TeamWorkForceShare.b(this.a.a.this$0).equals(paramBaseResp.transaction)) {
+      if (!TeamWorkForceShare.e(this.a.c.this$0).equals(paramBaseResp.transaction)) {
         return;
       }
-      String str = TeamWorkForceShare.a();
+      String str = TeamWorkForceShare.d();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("wx rsp = ");
       localStringBuilder.append(paramBaseResp.errCode);
       QLog.d(str, 1, localStringBuilder.toString());
       byte b;
-      if (this.a.a.a) {
+      if (this.a.c.a) {
         b = 86;
       } else {
         b = 120;
       }
-      TeamWorkForceShare.a(this.a.a.this$0).onActivityResult(new Intent(), b, paramBaseResp.errCode);
+      TeamWorkForceShare.f(this.a.c.this$0).onActivityResult(new Intent(), b, paramBaseResp.errCode);
       WXShareHelper.a().b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.2.1.1
  * JD-Core Version:    0.7.0.1
  */

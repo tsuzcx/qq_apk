@@ -12,13 +12,13 @@ class TextTranslationItemBuilder$1
   
   public void a(View paramView)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (BaseActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+    ChatActivityUtils.a(this.a.d, paramView, (BaseActivity)this.a.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

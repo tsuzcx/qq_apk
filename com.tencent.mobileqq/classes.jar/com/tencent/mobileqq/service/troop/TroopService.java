@@ -9,33 +9,33 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class TroopService
   extends BaseProtocolCoder
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceTroopSvc" };
-  private TroopReceiver jdField_a_of_type_ComTencentMobileqqServiceTroopTroopReceiver = new TroopReceiver();
-  private TroopSender jdField_a_of_type_ComTencentMobileqqServiceTroopTroopSender;
+  private static String[] a = { "QQServiceTroopSvc" };
+  private TroopSender b;
+  private TroopReceiver c = new TroopReceiver();
   
   public TroopService(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqServiceTroopTroopSender = new TroopSender(paramAppInterface);
+    this.b = new TroopSender(paramAppInterface);
   }
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return a;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqServiceTroopTroopReceiver.a(paramToServiceMsg, paramFromServiceMsg);
+    return this.c.a(paramToServiceMsg, paramFromServiceMsg);
   }
   
   public boolean encodeReqMsg(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqServiceTroopTroopSender.a(paramToServiceMsg, paramUniPacket);
+    return this.b.a(paramToServiceMsg, paramUniPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.troop.TroopService
  * JD-Core Version:    0.7.0.1
  */

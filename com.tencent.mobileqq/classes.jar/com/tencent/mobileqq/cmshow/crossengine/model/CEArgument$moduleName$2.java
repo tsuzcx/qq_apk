@@ -17,12 +17,12 @@ final class CEArgument$moduleName$2
   
   public final String invoke()
   {
-    return this.this$0.a().optString("module");
+    return this.this$0.d().optString("module");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.model.CEArgument.moduleName.2
  * JD-Core Version:    0.7.0.1
  */

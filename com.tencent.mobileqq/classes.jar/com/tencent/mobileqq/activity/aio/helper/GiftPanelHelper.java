@@ -24,8 +24,8 @@ import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.QCircleChatPie;
 import com.tencent.mobileqq.activity.aio.rebuild.RobotChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.vas.config.business.qvip.QVipGiftConfig;
 import com.tencent.mobileqq.vas.config.business.qvip.QVipGiftProcessor;
 import com.tencent.mobileqq.vaswebviewplugin.GiftJsPlugin;
@@ -33,19 +33,19 @@ import com.tencent.mobileqq.vaswebviewplugin.GiftJsPlugin;
 public class GiftPanelHelper
   implements AIOOnTouchListener, OnFinishListener, ILifeCycleHelper, OnActivityResultCallback
 {
-  protected Activity a;
-  public AIOGiftPanelContainer a;
-  protected AIOContext a;
   protected BaseChatPie a;
-  protected QQAppInterface a;
-  protected TroopGiftAnimationController a;
+  protected AIOContext b;
+  protected Activity c;
+  protected QQAppInterface d;
+  public AIOGiftPanelContainer e;
+  protected TroopGiftAnimationController f;
   
   public GiftPanelHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramBaseChatPie.b();
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.a = paramBaseChatPie;
+    this.b = paramBaseChatPie.bv();
+    this.c = paramBaseChatPie.aX();
+    this.d = paramBaseChatPie.d;
     a();
   }
   
@@ -53,7 +53,7 @@ public class GiftPanelHelper
   {
     if ((paramIntent != null) && (paramInt == -1))
     {
-      TroopGiftPanel localTroopGiftPanel = this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a();
+      TroopGiftPanel localTroopGiftPanel = this.e.d();
       if (localTroopGiftPanel != null)
       {
         paramIntent = paramIntent.getExtras();
@@ -66,113 +66,63 @@ public class GiftPanelHelper
   
   private void a(Intent paramIntent)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer;
+    Object localObject = this.e;
     if (localObject != null)
     {
-      localObject = ((AIOGiftPanelContainer)localObject).a();
+      localObject = ((AIOGiftPanelContainer)localObject).d();
       if (localObject != null) {
         ((TroopGiftPanel)localObject).a(paramIntent.getStringExtra("member_uin"), paramIntent.getStringExtra("member_display_name"));
       }
     }
   }
   
-  private void c()
+  private void f()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer;
+    Object localObject = this.e;
     if (localObject != null)
     {
-      localObject = ((AIOGiftPanelContainer)localObject).a();
+      localObject = ((AIOGiftPanelContainer)localObject).d();
       if (localObject != null) {
         ((TroopGiftPanel)localObject).a(null);
       }
     }
   }
   
-  public int a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if (((localObject instanceof LimitChatPie)) || ((localObject instanceof QCircleChatPie)) || ((localObject instanceof RobotChatPie)))
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer;
-      if ((localObject != null) && (((AIOGiftPanelContainer)localObject).a()))
-      {
-        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a();
-        return 1;
-      }
-    }
-    return 0;
-  }
-  
-  public TroopGiftAioPanelData a()
-  {
-    AIOGiftPanelContainer localAIOGiftPanelContainer = this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer;
-    if (localAIOGiftPanelContainer != null) {
-      return localAIOGiftPanelContainer.a();
-    }
-    return null;
-  }
-  
-  public TroopGiftAnimationController a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController = new TroopGiftAnimationController(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController;
-  }
-  
   protected void a()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.a;
     if ((!(localBaseChatPie instanceof HotChatPie)) && (!(localBaseChatPie instanceof TroopChatPie)) && (!(localBaseChatPie instanceof NearbyChatPie)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this);
+      this.b.d().a(this);
+      this.b.d().a(this);
+      this.b.d().a(this);
     }
   }
   
   public void a(int paramInt)
   {
-    AIOGiftPanelContainer localAIOGiftPanelContainer = this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer;
+    AIOGiftPanelContainer localAIOGiftPanelContainer = this.e;
     if (localAIOGiftPanelContainer != null) {
       localAIOGiftPanelContainer.a(paramInt);
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    a(paramBoolean, TroopGiftPanel.e);
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
     if (QVipGiftProcessor.a().isEnable())
     {
-      GiftJsPlugin.openGiftBrowser(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a);
+      GiftJsPlugin.openGiftBrowser(this.b.b(), this.b.O().b);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer == null) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer = new AIOGiftPanelContainer(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    if (this.e == null) {
+      this.e = new AIOGiftPanelContainer(this.a);
     }
-    this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a(paramBoolean, paramInt);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    AIOGiftPanelContainer localAIOGiftPanelContainer = this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer;
-    if ((localAIOGiftPanelContainer != null) && (localAIOGiftPanelContainer.a()))
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a();
-      if (paramInt == 0) {
-        return true;
-      }
-    }
-    return false;
+    this.e.a(paramBoolean, paramInt);
   }
   
   public boolean a(BaseAIOContext paramBaseAIOContext, View paramView, MotionEvent paramMotionEvent)
   {
-    b();
+    e();
     return false;
   }
   
@@ -181,15 +131,65 @@ public class GiftPanelHelper
     return false;
   }
   
-  public void b()
+  public TroopGiftAnimationController b()
   {
-    AIOGiftPanelContainer localAIOGiftPanelContainer = this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer;
+    if (this.f == null) {
+      this.f = new TroopGiftAnimationController(this.a, this.c, this.d);
+    }
+    return this.f;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    a(paramBoolean, TroopGiftPanel.e);
+  }
+  
+  public int bM_()
+  {
+    Object localObject = this.a;
+    if (((localObject instanceof LimitChatPie)) || ((localObject instanceof QCircleChatPie)) || ((localObject instanceof RobotChatPie)))
+    {
+      localObject = this.e;
+      if ((localObject != null) && (((AIOGiftPanelContainer)localObject).c()))
+      {
+        this.e.a();
+        return 1;
+      }
+    }
+    return 0;
+  }
+  
+  public TroopGiftAioPanelData d()
+  {
+    AIOGiftPanelContainer localAIOGiftPanelContainer = this.e;
+    if (localAIOGiftPanelContainer != null) {
+      return localAIOGiftPanelContainer.b();
+    }
+    return null;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    AIOGiftPanelContainer localAIOGiftPanelContainer = this.e;
+    if ((localAIOGiftPanelContainer != null) && (localAIOGiftPanelContainer.c()))
+    {
+      this.e.a();
+      if (paramInt == 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void e()
+  {
+    AIOGiftPanelContainer localAIOGiftPanelContainer = this.e;
     if (localAIOGiftPanelContainer != null) {
       localAIOGiftPanelContainer.a();
     }
   }
   
-  public void d(int paramInt) {}
+  public void e(int paramInt) {}
   
   @NonNull
   public String getTag()
@@ -207,9 +207,9 @@ public class GiftPanelHelper
     if (paramInt1 == 12008) {
       a(paramInt2, paramIntent);
     } else if (paramInt1 == 12007) {
-      c();
+      f();
     }
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof DiscussChatPie)) && (paramInt2 == -1) && (paramInt1 == 12006)) {
+    if (((this.a instanceof DiscussChatPie)) && (paramInt2 == -1) && (paramInt1 == 12006)) {
       a(paramIntent);
     }
   }
@@ -224,14 +224,14 @@ public class GiftPanelHelper
         if (paramInt != 11) {
           return;
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController;
+        localObject = this.f;
         if (localObject != null) {
-          ((TroopGiftAnimationController)localObject).c();
+          ((TroopGiftAnimationController)localObject).d();
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+        localObject = this.a;
         if (!(localObject instanceof TroopChatPie)) {
           AIOAnimationControlManager.a((BaseChatPie)localObject, true);
         }
@@ -239,13 +239,13 @@ public class GiftPanelHelper
     }
     else
     {
-      b();
+      e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.GiftPanelHelper
  * JD-Core Version:    0.7.0.1
  */

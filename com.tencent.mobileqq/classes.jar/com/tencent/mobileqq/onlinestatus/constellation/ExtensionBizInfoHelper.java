@@ -106,7 +106,7 @@ public final class ExtensionBizInfoHelper
   {
     Intrinsics.checkParameterIsNotNull(paramAppRuntime, "app");
     String str1 = paramAppRuntime.getCurrentAccountUin();
-    String str2 = ConstellationUtilKt.e(paramAppRuntime);
+    String str2 = ConstellationUtilKt.f(paramAppRuntime);
     Intrinsics.checkExpressionValueIsNotNull(str1, "uin");
     a(paramAppRuntime, paramInt, str2, ConstellationUtilKt.a(str1), ConstellationUtilKt.b(str1), ConstellationUtilKt.b(), ConstellationUtilKt.c(str1), ConstellationUtilKt.d(str1));
   }
@@ -167,7 +167,7 @@ public final class ExtensionBizInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.constellation.ExtensionBizInfoHelper
  * JD-Core Version:    0.7.0.1
  */

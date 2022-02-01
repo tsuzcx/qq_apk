@@ -12,7 +12,7 @@ class BaseStageView$5$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.removeView(this.a.a.b);
+    this.a.a.removeView(this.a.a.z);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

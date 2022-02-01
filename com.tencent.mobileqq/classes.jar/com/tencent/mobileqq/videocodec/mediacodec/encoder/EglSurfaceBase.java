@@ -8,26 +8,25 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(17)
 public class EglSurfaceBase
 {
-  private EGLSurface a;
   protected EglCore a;
+  private EGLSurface b = EGL14.EGL_NO_SURFACE;
   
   public EglSurfaceBase(EglCore paramEglCore)
   {
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore = paramEglCore;
+    this.a = paramEglCore;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
+    this.a.a(this.b);
+    this.b = EGL14.EGL_NO_SURFACE;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface == EGL14.EGL_NO_SURFACE)
+    if (this.b == EGL14.EGL_NO_SURFACE)
     {
-      this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore.a(paramInt1, paramInt2);
+      this.b = this.a.a(paramInt1, paramInt2);
       return;
     }
     throw new IllegalStateException("surface already created");
@@ -35,36 +34,36 @@ public class EglSurfaceBase
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
+    this.a.a(this.b, paramLong);
   }
   
   public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface == EGL14.EGL_NO_SURFACE)
+    if (this.b == EGL14.EGL_NO_SURFACE)
     {
-      this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore.a(paramObject);
+      this.b = this.a.a(paramObject);
       return;
     }
     throw new IllegalStateException("surface already created");
   }
   
-  public boolean a()
+  public void b()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    this.a.b(this.b);
+  }
+  
+  public boolean c()
+  {
+    boolean bool = this.a.c(this.b);
     if ((!bool) && (QLog.isColorLevel())) {
       QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
     }
     return bool;
   }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.encoder.EglSurfaceBase
  * JD-Core Version:    0.7.0.1
  */

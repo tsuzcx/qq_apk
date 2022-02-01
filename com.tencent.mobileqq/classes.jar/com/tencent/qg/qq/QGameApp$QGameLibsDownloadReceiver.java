@@ -16,7 +16,7 @@ public class QGameApp$QGameLibsDownloadReceiver
   
   public void a(@NonNull QGameApp paramQGameApp, @NonNull MiniAppEvent paramMiniAppEvent)
   {
-    if (!TextUtils.equals(paramMiniAppEvent.jdField_a_of_type_JavaLangString, "QGameApp")) {
+    if (!TextUtils.equals(paramMiniAppEvent.d, "QGameApp")) {
       return;
     }
     if (QLog.isColorLevel())
@@ -26,21 +26,21 @@ public class QGameApp$QGameLibsDownloadReceiver
       ((StringBuilder)localObject).append(paramMiniAppEvent.toString());
       QLog.d("QGameApp", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[0];
-    if (paramMiniAppEvent.jdField_a_of_type_Int != 5) {
+    Object localObject = (String)paramMiniAppEvent.e[0];
+    if (paramMiniAppEvent.c != 5) {
       return;
     }
     if (TextUtils.equals((CharSequence)localObject, "ak:3214"))
     {
-      if (paramMiniAppEvent.jdField_a_of_type_Boolean)
+      if (paramMiniAppEvent.b)
       {
-        localObject = (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[3];
+        localObject = (String)paramMiniAppEvent.e[3];
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
           QGameApp.a(paramQGameApp, 1002);
           return;
         }
-        int i = ((Integer)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue();
+        int i = ((Integer)paramMiniAppEvent.e[2]).intValue();
         if (i != 1)
         {
           if (i != 2)
@@ -48,13 +48,13 @@ public class QGameApp$QGameLibsDownloadReceiver
             if (i != 3) {
               return;
             }
-            QGameApp.a(paramQGameApp, false, (String)localObject);
+            QGameApp.b(paramQGameApp, false, (String)localObject);
             return;
           }
-          QGameApp.jdField_a_of_type_Boolean = false;
+          QGameApp.c = false;
           return;
         }
-        QGameApp.a(paramQGameApp, true, (String)localObject);
+        QGameApp.b(paramQGameApp, true, (String)localObject);
         return;
       }
       QGameApp.a(paramQGameApp, 1002);
@@ -68,7 +68,7 @@ public class QGameApp$QGameLibsDownloadReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.qq.QGameApp.QGameLibsDownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,10 @@ class RegisterBaseActivity$3
   {
     try
     {
-      if ((this.this$0.a != null) && (this.this$0.a.isShowing())) {
-        this.this$0.a.dismiss();
+      if ((this.this$0.e != null) && (this.this$0.e.isShowing())) {
+        this.this$0.e.dismiss();
       }
-      this.this$0.a = null;
+      this.this$0.e = null;
       return;
     }
     catch (Exception localException)
@@ -25,7 +25,7 @@ class RegisterBaseActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity.3
  * JD-Core Version:    0.7.0.1
  */

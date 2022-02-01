@@ -11,12 +11,12 @@ class TroopAvatarWallEditActivity$11
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    TroopAvatarWallEditActivity.a(this.c, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.11
  * JD-Core Version:    0.7.0.1
  */

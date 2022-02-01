@@ -20,24 +20,24 @@ class C2CLinkMessageResultAdapter$1
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("loadMessageResult, run(), keyword = ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(this.a);
       ((StringBuilder)???).append(", loadType = ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)???).append(this.b);
       QLog.i("C2CLinkMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     ??? = null;
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     boolean bool1 = true;
     if (i == 1)
     {
       ??? = this.this$0;
-      ??? = ((C2CLinkMessageResultAdapter)???).a(((C2CLinkMessageResultAdapter)???).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-      HistoryChatMsgSearchKeyUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      ??? = ((C2CLinkMessageResultAdapter)???).a(((C2CLinkMessageResultAdapter)???).g, this.a);
+      HistoryChatMsgSearchKeyUtil.a(this.this$0.h.getCurrentAccountUin(), this.a);
     }
     else if (i == 2)
     {
       ??? = this.this$0;
-      ??? = ((C2CLinkMessageResultAdapter)???).a(((C2CLinkMessageResultAdapter)???).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "");
+      ??? = ((C2CLinkMessageResultAdapter)???).a(((C2CLinkMessageResultAdapter)???).g, "");
     }
     Object localObject2 = new ArrayList();
     Object localObject4 = this.this$0.b((ChatHistorySearchData)???, (ArrayList)localObject2);
@@ -50,11 +50,11 @@ class C2CLinkMessageResultAdapter$1
     }
     for (;;)
     {
-      synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+      synchronized (this.this$0.a)
       {
-        if (this.this$0.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
+        if (this.this$0.i.equals(this.a))
         {
-          i = this.jdField_a_of_type_Int;
+          i = this.b;
           boolean bool2 = false;
           C2CLinkMessageResultAdapter localC2CLinkMessageResultAdapter;
           if (i == 1)
@@ -64,29 +64,29 @@ class C2CLinkMessageResultAdapter$1
             if (((ArrayList)localObject2).size() < 20) {
               bool1 = true;
             }
-            localC2CLinkMessageResultAdapter.jdField_a_of_type_Boolean = bool1;
-            this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-            localObject2 = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
+            localC2CLinkMessageResultAdapter.j = bool1;
+            this.this$0.k = ((ChatHistorySearchData)localObject4);
+            localObject2 = this.this$0.f.obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject4).putLong("searchSequence", this.c);
+            ((Bundle)localObject4).putString("searchKeyword", this.a);
             ((Message)localObject2).setData((Bundle)localObject4);
             ((Message)localObject2).sendToTarget();
           }
-          else if (this.jdField_a_of_type_Int == 2)
+          else if (this.b == 2)
           {
             localC2CLinkMessageResultAdapter = this.this$0;
             if (((ArrayList)localObject2).size() >= 20) {
               break label469;
             }
-            localC2CLinkMessageResultAdapter.jdField_a_of_type_Boolean = bool1;
-            this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-            localObject2 = this.this$0.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
+            localC2CLinkMessageResultAdapter.j = bool1;
+            this.this$0.k = ((ChatHistorySearchData)localObject4);
+            localObject2 = this.this$0.f.obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 2;
             localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject4).putLong("searchSequence", this.c);
+            ((Bundle)localObject4).putString("searchKeyword", this.a);
             ((Message)localObject2).setData((Bundle)localObject4);
             ((Message)localObject2).sendToTarget();
           }
@@ -100,7 +100,7 @@ class C2CLinkMessageResultAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

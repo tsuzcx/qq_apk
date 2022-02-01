@@ -2,9 +2,9 @@ package com.tencent.mobileqq.apollo.utils.api.impl;
 
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.aio.ApolloMsgPlayController;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -15,68 +15,52 @@ import com.tencent.mobileqq.text.style.EmoticonSpan;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 class ApolloUtilImpl$2
   implements Runnable
 {
-  ApolloUtilImpl$2(ApolloUtilImpl paramApolloUtilImpl, int paramInt, boolean paramBoolean, CharSequence paramCharSequence, ApolloDaoManagerServiceImpl paramApolloDaoManagerServiceImpl, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ApolloManagerServiceImpl paramApolloManagerServiceImpl, MessageRecord paramMessageRecord) {}
+  ApolloUtilImpl$2(ApolloUtilImpl paramApolloUtilImpl, int paramInt, boolean paramBoolean, CharSequence paramCharSequence, ApolloDaoManagerServiceImpl paramApolloDaoManagerServiceImpl, ApolloManagerServiceImpl paramApolloManagerServiceImpl, AppRuntime paramAppRuntime, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
     int j;
-    if ((this.jdField_a_of_type_Int == 2) && (!this.jdField_a_of_type_Boolean)) {
+    if ((this.a == 2) && (!this.b)) {
       j = 0;
     } else {
       j = 1;
     }
-    Object localObject1 = (QQText)this.jdField_a_of_type_JavaLangCharSequence;
+    Object localObject1 = (QQText)this.c;
     ArrayList localArrayList = new ArrayList();
     Object localObject2 = (EmoticonSpan[])((QQText)localObject1).getSpans(0, ((QQText)localObject1).length(), EmoticonSpan.class);
-    int i;
     if ((localObject2 != null) && (localObject2.length > 0))
     {
-      int n = localObject2.length;
+      int m = localObject2.length;
       int k = 0;
-      for (i = 0;; i = m)
+      while (k < m)
       {
-        m = i;
-        if (k >= n) {
-          break;
-        }
-        int i1 = localObject2[k].getIndex();
-        m = i;
-        if (TextUtils.isApolloEmoticon(i1))
+        int n = localObject2[k].getIndex();
+        if (TextUtils.isApolloEmoticon(n))
         {
-          i1 = QQSysFaceUtil.convertToServer(i1);
-          m = i;
-          if (i1 >= 0)
+          n = QQSysFaceUtil.convertToServer(n);
+          if ((n >= 0) && (j != 0))
           {
-            if (j != 0)
-            {
-              i = ApolloUtilImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqApolloPersistenceApiImplApolloDaoManagerServiceImpl, i1, this.jdField_a_of_type_Int);
-              if (i > 0) {
-                localArrayList.add(Integer.valueOf(i));
-              }
+            n = ApolloUtilImpl.access$000(this.d, n, this.a);
+            if (n > 0) {
+              localArrayList.add(Integer.valueOf(n));
             }
-            m = 1;
           }
         }
         k += 1;
       }
     }
-    int m = 0;
-    if ((j == 0) && (m != 0)) {
-      ApolloUtilImpl.addWhiteFaceUnSupportTips(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
-    if ((localArrayList.size() == 0) && (1 == this.jdField_a_of_type_ComTencentMobileqqApolloApiImplApolloManagerServiceImpl.getApolloUserStatus()))
+    if ((localArrayList.size() == 0) && (1 == this.e.getApolloUserStatus()) && (!ApolloUtilImpl.access$100(this.this$0, this.f)))
     {
-      ApolloUtilImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (QQText)localObject1, localArrayList);
-      i = 1;
+      ApolloUtilImpl.access$200(this.g, this.h, (QQText)localObject1, localArrayList);
+      j = 1;
     }
     else
     {
-      i = 0;
+      j = 0;
     }
     if (localArrayList.size() > 0)
     {
@@ -84,28 +68,24 @@ class ApolloUtilImpl$2
         QLog.d("[cmshow]ApolloUtil", 2, new Object[] { "[playApolloEmoticonAction] send action list to play, actionList=", localArrayList });
       }
       localObject2 = ApolloMsgPlayController.a();
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      if (i != 0) {
+      QQAppInterface localQQAppInterface = this.g;
+      MessageRecord localMessageRecord = this.i;
+      if (j != 0) {
         localObject1 = localArrayList;
       } else {
         localObject1 = null;
       }
       ((ApolloMsgPlayController)localObject2).a(localQQAppInterface, localMessageRecord, localArrayList, (ArrayList)localObject1);
     }
-    localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject1 != null)
-    {
-      localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(QQManagerFactory.MGR_MSG_FACADE);
-      if (localObject1 != null) {
-        ((QQMessageFacade)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
-      }
+    localObject1 = (QQMessageFacade)this.f.getManager(QQManagerFactory.MGR_MSG_FACADE);
+    if (localObject1 != null) {
+      ((QQMessageFacade)localObject1).a(this.i.frienduin, this.i.istroop, this.i.uniseq, "extStr", this.i.extStr);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl.2
  * JD-Core Version:    0.7.0.1
  */

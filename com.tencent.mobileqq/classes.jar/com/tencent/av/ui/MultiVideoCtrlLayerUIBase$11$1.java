@@ -13,8 +13,8 @@ class MultiVideoCtrlLayerUIBase$11$1
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.k();
+    if (this.a.b.am != null) {
+      this.a.b.am.M();
     }
     ReportController.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);

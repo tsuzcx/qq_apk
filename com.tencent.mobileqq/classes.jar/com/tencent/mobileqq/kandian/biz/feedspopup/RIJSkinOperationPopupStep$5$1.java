@@ -11,12 +11,12 @@ class RIJSkinOperationPopupStep$5$1
   
   public void run()
   {
-    RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep$5.a, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$GuideInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$RefreshInfo, this.jdField_a_of_type_TencentImOidbCmd0x5bdOidb_0x5bd$SkinInfo, this.b);
+    RIJSkinOperationPopupStep.a(this.f.a, this.a, this.b, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJSkinOperationPopupStep.5.1
  * JD-Core Version:    0.7.0.1
  */

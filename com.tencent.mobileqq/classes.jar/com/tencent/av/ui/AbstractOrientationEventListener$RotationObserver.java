@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 class AbstractOrientationEventListener$RotationObserver
   extends ContentObserver
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  private ContentResolver b;
   
   public AbstractOrientationEventListener$RotationObserver(AbstractOrientationEventListener paramAbstractOrientationEventListener, Handler paramHandler)
   {
@@ -23,12 +23,12 @@ class AbstractOrientationEventListener$RotationObserver
       QLog.e("RotationObserver", 2, "RotationObserver construct context as null, the auto-rotation listener when flat placed wont work!!");
       return;
     }
-    this.jdField_a_of_type_AndroidContentContentResolver = paramAbstractOrientationEventListener.getContentResolver();
+    this.b = paramAbstractOrientationEventListener.getContentResolver();
   }
   
   public void a()
   {
-    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidContentContentResolver;
+    ContentResolver localContentResolver = this.b;
     if (localContentResolver != null) {
       localContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
     }
@@ -40,7 +40,7 @@ class AbstractOrientationEventListener$RotationObserver
     if (PhoneStatusTools.d())
     {
       QLog.d("RotationObserver", 2, "onChange onOrientationChanged when detect auto-rotation locked.");
-      this.jdField_a_of_type_ComTencentAvUiAbstractOrientationEventListener.onOrientationChanged(-2);
+      this.a.onOrientationChanged(-2);
     }
   }
 }

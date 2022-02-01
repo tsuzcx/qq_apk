@@ -29,12 +29,12 @@ import mqq.os.MqqHandler;
 public class IMECommandListener
   implements XEditTextEx.OnPrivateIMECommandListener
 {
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private ISogouEmoji jdField_a_of_type_ComTencentMobileqqEmoticonISogouEmoji;
+  private AIOContext a;
+  private ISogouEmoji b;
   
   public IMECommandListener(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.a = paramAIOContext;
   }
   
   private void a(Bundle paramBundle)
@@ -54,46 +54,13 @@ public class IMECommandListener
       ((StringBuilder)localObject).append(paramBundle);
       QLog.d("IMECommandListener", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonISogouEmoji == null)
+    if (this.b == null)
     {
       paramBundle = (ISogouEmojiService)QRoute.api(ISogouEmojiService.class);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonISogouEmoji = paramBundle.createSogouEmoji((BaseAIOContext)localObject, ((AIOContext)localObject).a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+      localObject = this.a;
+      this.b = paramBundle.createSogouEmoji((BaseAIOContext)localObject, ((AIOContext)localObject).b(), this.a.a());
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonISogouEmoji.trySend(i, str);
-  }
-  
-  private void a(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, View paramView)
-  {
-    Object localObject = paramBundle.getString("SOGOU_APP_ID");
-    String str2 = paramQQAppInterface.getCurrentAccountUin();
-    String str1 = AuthorityUtil.b(paramQQAppInterface.getApp(), str2, (String)localObject);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onPrivateIMECommand(), appId:");
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append("selfUin:");
-      localStringBuilder.append(str2);
-      localStringBuilder.append("openId:");
-      localStringBuilder.append(str1);
-      QLog.d("IMECommandListener", 2, localStringBuilder.toString());
-    }
-    paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
-    if (paramContext != null)
-    {
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("SOGOU_OPENID", str1);
-      paramContext.sendAppPrivateCommand(paramView, "com.tencent.mobileqq.sogou.openid", (Bundle)localObject);
-    }
-    paramBundle = paramBundle.getStringArrayList("EXP_ALL_PACKID");
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonISogouEmoji == null)
-    {
-      paramContext = (ISogouEmojiService)QRoute.api(ISogouEmojiService.class);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonISogouEmoji = paramContext.createSogouEmoji(paramView, paramView.a(), paramQQAppInterface);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonISogouEmoji.pullMultipleEmojiKey(paramBundle);
+    this.b.trySend(i, str);
   }
   
   private void a(String paramString, Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext)
@@ -119,7 +86,7 @@ public class IMECommandListener
       QLog.d("IMECommandListener", 2, paramBundle.toString());
     }
     if (!TextUtils.isEmpty(paramString)) {
-      ChatActivityFacade.a(paramQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), paramString, i);
+      ChatActivityFacade.a(paramQQAppInterface, paramContext, this.a.O(), paramString, i);
     }
   }
   
@@ -128,7 +95,7 @@ public class IMECommandListener
     String str = paramBundle.getString("PCMFilePath");
     int i = paramBundle.getInt("SampleRate");
     int j = paramBundle.getInt("Channels");
-    RecordParams.RecorderParam localRecorderParam = (RecordParams.RecorderParam)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
+    RecordParams.RecorderParam localRecorderParam = (RecordParams.RecorderParam)this.a.p().d().f().i();
     paramBundle = paramBundle.getString("InputMethodName");
     if (QLog.isColorLevel())
     {
@@ -145,7 +112,7 @@ public class IMECommandListener
       localStringBuilder.append(localRecorderParam.a);
       QLog.d("sougouptt", 2, localStringBuilder.toString());
     }
-    if ((i == localRecorderParam.a) && (!StringUtil.a(str)))
+    if ((i == localRecorderParam.a) && (!StringUtil.isEmpty(str)))
     {
       ThreadManager.getSubThreadHandler().post(new IMECommandListener.1(this, paramQQAppInterface, str, i, paramBundle, paramContext, paramView));
       return false;
@@ -156,9 +123,42 @@ public class IMECommandListener
     return true;
   }
   
+  private void b(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, View paramView)
+  {
+    Object localObject = paramBundle.getString("SOGOU_APP_ID");
+    String str2 = paramQQAppInterface.getCurrentAccountUin();
+    String str1 = AuthorityUtil.b(paramQQAppInterface.getApp(), str2, (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPrivateIMECommand(), appId:");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("selfUin:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append("openId:");
+      localStringBuilder.append(str1);
+      QLog.d("IMECommandListener", 2, localStringBuilder.toString());
+    }
+    paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
+    if (paramContext != null)
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("SOGOU_OPENID", str1);
+      paramContext.sendAppPrivateCommand(paramView, "com.tencent.mobileqq.sogou.openid", (Bundle)localObject);
+    }
+    paramBundle = paramBundle.getStringArrayList("EXP_ALL_PACKID");
+    if (this.b == null)
+    {
+      paramContext = (ISogouEmojiService)QRoute.api(ISogouEmojiService.class);
+      paramView = this.a;
+      this.b = paramContext.createSogouEmoji(paramView, paramView.b(), paramQQAppInterface);
+    }
+    this.b.pullMultipleEmojiKey(paramBundle);
+  }
+  
   public void a()
   {
-    ISogouEmoji localISogouEmoji = this.jdField_a_of_type_ComTencentMobileqqEmoticonISogouEmoji;
+    ISogouEmoji localISogouEmoji = this.b;
     if (localISogouEmoji != null) {
       localISogouEmoji.onDestroy();
     }
@@ -173,15 +173,15 @@ public class IMECommandListener
       ((StringBuilder)localObject).append(paramString);
       QLog.d("IMECommandListener", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    XEditTextEx localXEditTextEx = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a().a();
+    Object localObject = this.a.a();
+    BaseActivity localBaseActivity = this.a.b();
+    XEditTextEx localXEditTextEx = this.a.p().d().f().b();
     if ((!TextUtils.isEmpty(paramString)) && (paramBundle != null) && (InputMethodUtil.a(localBaseActivity))) {
       if ((!"com.sogou.inputmethod.expression".equals(paramString)) && (!"com.tencent.qqpinyin.expression".equals(paramString)))
       {
         if ("com.sogou.inputmethod.appid".equals(paramString))
         {
-          a(paramBundle, (QQAppInterface)localObject, localBaseActivity, localXEditTextEx);
+          b(paramBundle, (QQAppInterface)localObject, localBaseActivity, localXEditTextEx);
           return true;
         }
         if ((!"com.sogou.inputmethod.qqexp".equals(paramString)) && (!"com.tencent.qqpinyin.qqexp".equals(paramString)))
@@ -206,7 +206,7 @@ public class IMECommandListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.IMECommandListener
  * JD-Core Version:    0.7.0.1
  */

@@ -55,13 +55,13 @@ public class MsgProxyCallback
   {
     boolean bool = paramMessageRecord instanceof MessageForUniteGrayTip;
     int i;
-    if ((bool) && (((MessageForUniteGrayTip)paramMessageRecord).tipParam.b == 3211265)) {
+    if ((bool) && (((MessageForUniteGrayTip)paramMessageRecord).tipParam.i == 3211265)) {
       i = 1;
     } else {
       i = 0;
     }
     int j;
-    if ((bool) && (((MessageForUniteGrayTip)paramMessageRecord).tipParam.b == 655392)) {
+    if ((bool) && (((MessageForUniteGrayTip)paramMessageRecord).tipParam.i == 655392)) {
       j = 1;
     } else {
       j = 0;
@@ -150,11 +150,11 @@ public class MsgProxyCallback
     }
   }
   
-  private void b(AppRuntime paramAppRuntime)
+  private void f(AppRuntime paramAppRuntime)
   {
     paramAppRuntime = (PasswdRedBagFoldManager)paramAppRuntime.getManager(QQManagerFactory.PASSWD_RED_BAG_FOLD_MANAGER);
-    paramAppRuntime.a = null;
-    paramAppRuntime.b = null;
+    paramAppRuntime.f = null;
+    paramAppRuntime.g = null;
   }
   
   public int a(String paramString, int paramInt1, long paramLong, int paramInt2, AppRuntime paramAppRuntime)
@@ -162,7 +162,7 @@ public class MsgProxyCallback
     paramInt1 = paramInt2;
     if (QFileAssistantUtils.a(paramString))
     {
-      int i = ((DataLineHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).c();
+      int i = ((DataLineHandler)((QQAppInterface)paramAppRuntime).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).p();
       paramInt1 = paramInt2 + i;
       paramString = new StringBuilder();
       paramString.append("get Old Msg Unread count : ");
@@ -174,12 +174,7 @@ public class MsgProxyCallback
   
   public Pair<Long, Long> a(String paramString, AppRuntime paramAppRuntime)
   {
-    return ((QQAppInterface)paramAppRuntime).getMsgCache().b(paramString);
-  }
-  
-  public SQLiteDatabase a(AppRuntime paramAppRuntime)
-  {
-    return ((QQAppInterface)paramAppRuntime).getWritableDatabase();
+    return ((QQAppInterface)paramAppRuntime).getMsgCache().N(paramString);
   }
   
   public MessageRecord a(String paramString, int paramInt, long paramLong, MsgProxy paramMsgProxy, AppRuntime paramAppRuntime)
@@ -193,15 +188,15 @@ public class MsgProxyCallback
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("select * from ");
-    localStringBuilder.append(paramMsgProxy.b(paramString, paramInt));
+    localStringBuilder.append(paramMsgProxy.l(paramString, paramInt));
     localStringBuilder.append(" where shmsgseq=?");
     paramMsgProxy = localStringBuilder.toString();
-    paramMsgProxy = paramAppRuntime.a().a(paramMsgProxy, new String[] { String.valueOf(paramLong) });
+    paramMsgProxy = paramAppRuntime.d().a(paramMsgProxy, new String[] { String.valueOf(paramLong) });
     if (QLog.isColorLevel())
     {
       paramAppRuntime = new StringBuilder();
       paramAppRuntime.append("queryMsgItemHistoryByShmsgseq, slow db return peerUin[");
-      paramAppRuntime.append(FileManagerUtil.d(paramString));
+      paramAppRuntime.append(FileManagerUtil.k(paramString));
       paramAppRuntime.append("] type[");
       paramAppRuntime.append(paramInt);
       paramAppRuntime.append("] shmsgseq[");
@@ -224,22 +219,17 @@ public class MsgProxyCallback
   public EntityManager a(AppRuntime paramAppRuntime)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      return (MessageRecordEntityManager)((QQAppInterface)paramAppRuntime).getEntityManagerFactory().a();
+      return (MessageRecordEntityManager)((QQAppInterface)paramAppRuntime).getEntityManagerFactory().b();
     }
     return null;
-  }
-  
-  public Object a(AppRuntime paramAppRuntime)
-  {
-    return ((QQAppInterface)paramAppRuntime).getProxyManager().transSaveLock;
   }
   
   public String a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt, String paramString3)
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString2;
-    localSessionInfo.jdField_a_of_type_Int = paramInt;
-    localSessionInfo.d = paramString3;
+    localSessionInfo.b = paramString2;
+    localSessionInfo.a = paramInt;
+    localSessionInfo.e = paramString3;
     paramAppRuntime = (QQAppInterface)paramAppRuntime;
     return ContactUtils.a(paramAppRuntime, localSessionInfo, paramString1.equals(paramAppRuntime.getCurrentAccountUin()), paramString1);
   }
@@ -249,7 +239,7 @@ public class MsgProxyCallback
     paramString1 = (QSlowTableManager)paramAppRuntime.getManager(QQManagerFactory.SLOW_TABLE_MANAGER);
     if (paramString1 != null)
     {
-      paramString1 = paramString1.a();
+      paramString1 = paramString1.d();
       paramMsgProxy = new StringBuilder();
       paramMsgProxy.append(paramString2);
       paramMsgProxy.append(paramInt2);
@@ -273,15 +263,15 @@ public class MsgProxyCallback
   
   public List<MessageRecord> a(String paramString, String[] paramArrayOfString, BaseMsgProxy paramBaseMsgProxy)
   {
-    return ((MessageRecordEntityManager)paramBaseMsgProxy.a()).a(paramString, paramArrayOfString);
+    return ((MessageRecordEntityManager)paramBaseMsgProxy.d()).a(paramString, paramArrayOfString);
   }
   
   public void a(int paramInt, List<MessageRecord> paramList, AppRuntime paramAppRuntime)
   {
-    if ((paramList != null) && (paramList.size() == 0) && (GroupSystemMsgController.a().a(paramAppRuntime) <= 0))
+    if ((paramList != null) && (paramList.size() == 0) && (GroupSystemMsgController.a().b(paramAppRuntime) <= 0))
     {
-      paramList = ((QQAppInterface)paramAppRuntime).getProxyManager().a();
-      paramAppRuntime = paramList.a(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
+      paramList = ((QQAppInterface)paramAppRuntime).getProxyManager().g();
+      paramAppRuntime = paramList.b(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
       if (paramAppRuntime != null) {
         paramList.a(paramAppRuntime);
       }
@@ -290,7 +280,7 @@ public class MsgProxyCallback
   
   public void a(MsgProxy paramMsgProxy, AppRuntime paramAppRuntime)
   {
-    paramMsgProxy = paramMsgProxy.a().getAllTableNameFromCache();
+    paramMsgProxy = paramMsgProxy.l().getAllTableNameFromCache();
     if (paramMsgProxy == null) {
       return;
     }
@@ -308,7 +298,7 @@ public class MsgProxyCallback
   public void a(String paramString, int paramInt, long paramLong1, long paramLong2, MessageRecord paramMessageRecord, AppRuntime paramAppRuntime)
   {
     if (paramMessageRecord.msgtype == -2005) {
-      ((QQAppInterface)paramAppRuntime).getFileManagerDataCenter().a(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramLong2);
+      ((QQAppInterface)paramAppRuntime).getFileManagerDataCenter().b(paramMessageRecord.uniseq, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramLong2);
     }
   }
   
@@ -329,14 +319,14 @@ public class MsgProxyCallback
       paramString2.append(paramInt);
       paramString2.append(" itemList size=");
       paramString2.append(paramList.size());
-      paramInt = jdField_a_of_type_Int;
+      paramInt = a;
       if ((paramInt % 20 == 0) && (paramInt > 100))
       {
         paramString2.append("\n");
         paramString2.append(QLog.getStackTraceString(new Throwable("MsgProxy_getMsgList1")));
       }
       QLog.d("Q.msg.MsgProxy", 2, paramString2.toString());
-      jdField_a_of_type_Int += 1;
+      a += 1;
     }
   }
   
@@ -360,7 +350,7 @@ public class MsgProxyCallback
     if (PasswdRedBagFoldManager.a(paramAppRuntime, paramInt, paramString)) {
       FoldMessageManager.a(paramAppRuntime.getMessageFacade().a(paramInt), paramAppRuntime, paramList1, paramList1, true, false);
     }
-    if ((paramInt == 0) && (paramList2.size() > 0) && (UniteGrayTipMsgUtil.a((MessageRecord)paramList2.get(0)))) {
+    if ((paramInt == 0) && (paramList2.size() > 0) && (UniteGrayTipMsgUtil.b((MessageRecord)paramList2.get(0)))) {
       paramInt = paramList1.size() - 1;
     }
     while (paramInt >= 0)
@@ -385,7 +375,7 @@ public class MsgProxyCallback
       return;
     }
     if (paramAppRuntime != null) {
-      paramAppRuntime.a(paramMsgProxy.b(paramString, paramInt), null, null);
+      paramAppRuntime.a(paramMsgProxy.l(paramString, paramInt), null, null);
     }
   }
   
@@ -398,16 +388,16 @@ public class MsgProxyCallback
   {
     if (StartupTrackerForAio.a())
     {
-      MessageCache.MsgCacheStrategyParam localMsgCacheStrategyParam2 = (MessageCache.MsgCacheStrategyParam)MessageCache.b.get(paramString2);
+      MessageCache.MsgCacheStrategyParam localMsgCacheStrategyParam2 = (MessageCache.MsgCacheStrategyParam)MessageCache.p.get(paramString2);
       MessageCache.MsgCacheStrategyParam localMsgCacheStrategyParam1 = localMsgCacheStrategyParam2;
       if (localMsgCacheStrategyParam2 == null) {
         localMsgCacheStrategyParam1 = new MessageCache.MsgCacheStrategyParam();
       }
-      localMsgCacheStrategyParam1.jdField_a_of_type_JavaLangString = paramString1;
-      localMsgCacheStrategyParam1.jdField_a_of_type_Boolean = false;
-      localMsgCacheStrategyParam1.b = (paramList.isEmpty() ^ true);
-      localMsgCacheStrategyParam1.jdField_a_of_type_Long = ((System.nanoTime() - paramLong) / 1000000L);
-      MessageCache.b.put(paramString2, localMsgCacheStrategyParam1);
+      localMsgCacheStrategyParam1.a = paramString1;
+      localMsgCacheStrategyParam1.b = false;
+      localMsgCacheStrategyParam1.c = (paramList.isEmpty() ^ true);
+      localMsgCacheStrategyParam1.d = ((System.nanoTime() - paramLong) / 1000000L);
+      MessageCache.p.put(paramString2, localMsgCacheStrategyParam1);
     }
   }
   
@@ -438,14 +428,9 @@ public class MsgProxyCallback
     MsgProxyUtils.a(paramList, paramMessageRecord, paramBoolean);
   }
   
-  public void a(AppRuntime paramAppRuntime)
-  {
-    b(paramAppRuntime);
-  }
-  
   public void a(AppRuntime paramAppRuntime, EntityManager paramEntityManager, QueryHistoryParam paramQueryHistoryParam)
   {
-    paramQueryHistoryParam.jdField_b_of_type_JavaLangObject = MessageSearchUtils.a((QQAppInterface)paramAppRuntime, paramEntityManager, paramQueryHistoryParam.jdField_a_of_type_AndroidDatabaseCursor, paramQueryHistoryParam.jdField_a_of_type_JavaLangString, paramQueryHistoryParam.jdField_a_of_type_Int, paramQueryHistoryParam.jdField_b_of_type_JavaLangString, (FullMessageSearchTask)paramQueryHistoryParam.jdField_a_of_type_JavaLangObject);
+    paramQueryHistoryParam.g = MessageSearchUtils.a((QQAppInterface)paramAppRuntime, paramEntityManager, paramQueryHistoryParam.f, paramQueryHistoryParam.a, paramQueryHistoryParam.b, paramQueryHistoryParam.c, (FullMessageSearchTask)paramQueryHistoryParam.e);
   }
   
   public void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
@@ -462,21 +447,21 @@ public class MsgProxyCallback
   
   public boolean a(String paramString1, int paramInt, String paramString2, MsgProxy paramMsgProxy)
   {
-    boolean bool = ((IOrderMediaMsgService)paramMsgProxy.b().getRuntimeService(IOrderMediaMsgService.class, "")).isSessionOrderSending(paramString1);
-    return (!paramMsgProxy.a().containsKey(paramString2)) && (bool);
+    boolean bool = ((IOrderMediaMsgService)paramMsgProxy.n().getRuntimeService(IOrderMediaMsgService.class, "")).isSessionOrderSending(paramString1);
+    return (!paramMsgProxy.j().containsKey(paramString2)) && (bool);
   }
   
   public boolean a(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)paramAppRuntime).getMsgCache().b(paramMessageRecord);
+      return ((QQAppInterface)paramAppRuntime).getMsgCache().f(paramMessageRecord);
     }
     return false;
   }
   
-  public SQLiteDatabase b(AppRuntime paramAppRuntime)
+  public Object b(AppRuntime paramAppRuntime)
   {
-    return ((QQAppInterface)paramAppRuntime).getReadableDatabase();
+    return ((QQAppInterface)paramAppRuntime).getProxyManager().transSaveLock;
   }
   
   public List<MessageRecord> b(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2, String[] paramArrayOfString, MsgProxy paramMsgProxy, AppRuntime paramAppRuntime)
@@ -492,7 +477,7 @@ public class MsgProxyCallback
       paramMsgProxy.append(" and isValid=1) order by shmsgseq asc limit ");
       paramMsgProxy.append(paramInt2);
       paramString2 = paramMsgProxy.toString();
-      paramString1 = paramString1.a().a(paramString2, paramArrayOfString);
+      paramString1 = paramString1.d().a(paramString2, paramArrayOfString);
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder();
@@ -511,10 +496,70 @@ public class MsgProxyCallback
   }
   
   public void b(String paramString, int paramInt, List<MessageRecord> paramList) {}
+  
+  public void b(String paramString, int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2, AppRuntime paramAppRuntime)
+  {
+    Iterator localIterator = paramList1.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (MessageRecord)localIterator.next();
+      if ((localObject instanceof MessageForPoke))
+      {
+        localObject = (MessageForPoke)localObject;
+        if (!((MessageForPoke)localObject).isPlayed) {
+          ((MessageForPoke)localObject).setPlayed((QQAppInterface)paramAppRuntime);
+        }
+      }
+    }
+    paramAppRuntime = (QQAppInterface)paramAppRuntime;
+    if (PasswdRedBagFoldManager.a(paramAppRuntime, paramInt, paramString)) {
+      FoldMessageManager.a(paramAppRuntime.getMessageFacade().a(paramInt), paramAppRuntime, paramList1, paramList1, true, false);
+    }
+    if ((paramInt == 0) && (paramList2.size() > 0) && (UniteGrayTipMsgUtil.b((MessageRecord)paramList2.get(0))))
+    {
+      paramInt = paramList1.size() - 1;
+      while (paramInt >= 0)
+      {
+        MsgProxyUtils.a(paramList2, (MessageRecord)paramList1.get(paramInt), true);
+        paramInt -= 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.MsgProxy", 2, new Object[] { "onAddAIOMessageLocked insertToList friend. list size: ", Integer.valueOf(paramList1.size()) });
+      }
+    }
+    else
+    {
+      int i = paramList1.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        MsgProxyUtils.a(paramList2, (MessageRecord)paramList1.get(paramInt), true);
+        paramInt += 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.MsgProxy", 2, new Object[] { "onAddAIOMessageLocked insertToList other. list size: ", Integer.valueOf(paramList1.size()) });
+      }
+    }
+  }
+  
+  public SQLiteDatabase c(AppRuntime paramAppRuntime)
+  {
+    return ((QQAppInterface)paramAppRuntime).getWritableDatabase();
+  }
+  
+  public SQLiteDatabase d(AppRuntime paramAppRuntime)
+  {
+    return ((QQAppInterface)paramAppRuntime).getReadableDatabase();
+  }
+  
+  public void e(AppRuntime paramAppRuntime)
+  {
+    f(paramAppRuntime);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.tmassistantbase.common.a;
 import com.tencent.tmassistantbase.common.e;
 
@@ -100,7 +101,7 @@ public class o
       if (paramContext != null) {
         try
         {
-          paramContext = paramContext.getConnectionInfo();
+          paramContext = NetworkMonitor.getConnectionInfo(paramContext);
           if (paramContext != null)
           {
             locale.e = paramContext.getBSSID();
@@ -252,7 +253,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
+import android.content.Context;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -33,24 +34,6 @@ import tencent.im.onlinestatus.OnlineStatusExtInfo.ZodiacBizInfo;
 public class OnlineStatusUtil
 {
   public static final String[] a = { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
-  
-  public static int a()
-  {
-    int i;
-    if (b()) {
-      i = 3;
-    } else {
-      i = 1;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("HPush_Huawei Push pushType : ");
-      localStringBuilder.append(i);
-      QLog.d("", 2, localStringBuilder.toString());
-    }
-    return i;
-  }
   
   public static String a(int paramInt)
   {
@@ -172,8 +155,29 @@ public class OnlineStatusUtil
   
   public static String a(AppRuntime paramAppRuntime, TextView paramTextView, @NonNull Friends paramFriends, int paramInt)
   {
-    if (!a(paramFriends)) {
+    if (!b(paramFriends)) {
       return "";
+    }
+    int i;
+    if ((paramAppRuntime != null) && (paramFriends.uin != null) && (paramFriends.uin.equals(paramAppRuntime.getAccount()))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      if (Build.VERSION.SDK_INT >= 23) {
+        i = paramTextView.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION");
+      } else {
+        i = 0;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWeatherDisplayInfo isSelfUin granted=");
+      localStringBuilder.append(i);
+      QLog.i("OnlineStatusUtil", 1, localStringBuilder.toString());
+      if (i != 0) {
+        return paramTextView.getContext().getString(2131896450);
+      }
     }
     paramFriends = a(paramAppRuntime, paramFriends, false);
     paramAppRuntime = paramFriends;
@@ -182,7 +186,7 @@ public class OnlineStatusUtil
       if (QLog.isColorLevel()) {
         QLog.d("OnlineStatusUtil", 2, "getWeatherDisplayInfo fromContacts");
       }
-      paramAppRuntime = a(paramTextView.getPaint(), paramFriends, ViewUtils.a(200.0F));
+      paramAppRuntime = a(paramTextView.getPaint(), paramFriends, ViewUtils.dip2px(200.0F));
     }
     paramTextView = new StringBuilder();
     paramTextView.append(paramAppRuntime);
@@ -192,7 +196,7 @@ public class OnlineStatusUtil
   
   public static String a(AppRuntime paramAppRuntime, @NonNull Friends paramFriends, boolean paramBoolean)
   {
-    boolean bool = a(paramFriends);
+    boolean bool = b(paramFriends);
     Object localObject1 = "";
     if (!bool) {
       return "";
@@ -384,13 +388,8 @@ public class OnlineStatusUtil
   
   public static boolean a()
   {
-    OnlineAutoStatusBean localOnlineAutoStatusBean = (OnlineAutoStatusBean)QConfigManager.a().a(652);
-    return (localOnlineAutoStatusBean != null) && (localOnlineAutoStatusBean.a != null) && (a(localOnlineAutoStatusBean.a.a));
-  }
-  
-  public static boolean a(Friends paramFriends)
-  {
-    return (c(paramFriends)) && (paramFriends.weatherFlag == 0);
+    OnlineAutoStatusBean localOnlineAutoStatusBean = (OnlineAutoStatusBean)QConfigManager.b().b(652);
+    return (localOnlineAutoStatusBean != null) && (localOnlineAutoStatusBean.a != null) && (a(localOnlineAutoStatusBean.a.b));
   }
   
   public static boolean a(OnlineStatusItem paramOnlineStatusItem)
@@ -399,18 +398,36 @@ public class OnlineStatusUtil
     if (paramOnlineStatusItem == null) {
       return false;
     }
-    if (paramOnlineStatusItem.a != 40001L) {
+    if (paramOnlineStatusItem.b != 40001L) {
       return false;
     }
     boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramOnlineStatusItem.b))
+    if (!TextUtils.isEmpty(paramOnlineStatusItem.c))
     {
       bool1 = bool2;
-      if (!TextUtils.isEmpty(paramOnlineStatusItem.c)) {
+      if (!TextUtils.isEmpty(paramOnlineStatusItem.d)) {
         bool1 = true;
       }
     }
     return bool1;
+  }
+  
+  public static int b()
+  {
+    int i;
+    if (c()) {
+      i = 3;
+    } else {
+      i = 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("HPush_Huawei Push pushType : ");
+      localStringBuilder.append(i);
+      QLog.d("", 2, localStringBuilder.toString());
+    }
+    return i;
   }
   
   public static final String b(int paramInt)
@@ -421,7 +438,65 @@ public class OnlineStatusUtil
     return "";
   }
   
-  public static String b(Friends paramFriends)
+  public static boolean b(Friends paramFriends)
+  {
+    return (d(paramFriends)) && (paramFriends.weatherFlag == 0);
+  }
+  
+  public static boolean b(OnlineStatusItem paramOnlineStatusItem)
+  {
+    boolean bool2 = false;
+    if (paramOnlineStatusItem == null) {
+      return false;
+    }
+    if (paramOnlineStatusItem.b != 40001L) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramOnlineStatusItem.c))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramOnlineStatusItem.d))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramOnlineStatusItem.i)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean c()
+  {
+    return ("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT >= 21);
+  }
+  
+  public static boolean c(Friends paramFriends)
+  {
+    String str = ConstellationUtilKt.b(paramFriends);
+    if (QLog.isColorLevel()) {
+      QLog.d("OnlineStatusUtil", 2, new Object[] { "isConstellationInfoValid: invoked. ", " suitableTrend: ", str });
+    }
+    return (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramFriends.constellationJumpUrl));
+  }
+  
+  public static boolean d(Friends paramFriends)
+  {
+    if (paramFriends == null) {
+      return false;
+    }
+    if ((!TextUtils.isEmpty(paramFriends.weatherType)) && (!TextUtils.isEmpty(paramFriends.temper)))
+    {
+      if (TextUtils.isEmpty(paramFriends.weatherTypeId)) {
+        return false;
+      }
+      return TextUtils.isEmpty(paramFriends.adCode) ^ true;
+    }
+    return false;
+  }
+  
+  public static String e(Friends paramFriends)
   {
     int i = OnlineStatusUtils.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
     if (i == 4)
@@ -435,7 +510,7 @@ public class OnlineStatusUtil
           break label121;
         }
       }
-      else if (!OnlineStatusUtils.a(paramFriends))
+      else if (!OnlineStatusUtils.b(paramFriends))
       {
         int j = ((IFriendsUtils)QRoute.api(IFriendsUtils.class)).getNetworkType(paramFriends.eNetwork, paramFriends.iTermType, paramFriends.netTypeIconId);
         str1 = ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).getStatusNamePlusNetWorkType(j);
@@ -463,7 +538,7 @@ public class OnlineStatusUtil
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject2 = localObject1;
-        paramFriends = MobileQQ.sMobileQQ.getString(2131719230);
+        paramFriends = MobileQQ.sMobileQQ.getString(2131916782);
       }
     }
     catch (Throwable paramFriends)
@@ -480,63 +555,10 @@ public class OnlineStatusUtil
     }
     return paramFriends;
   }
-  
-  public static boolean b()
-  {
-    return ("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT >= 21);
-  }
-  
-  public static boolean b(Friends paramFriends)
-  {
-    String str = ConstellationUtilKt.b(paramFriends);
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusUtil", 2, new Object[] { "isConstellationInfoValid: invoked. ", " suitableTrend: ", str });
-    }
-    return (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramFriends.constellationJumpUrl));
-  }
-  
-  public static boolean b(OnlineStatusItem paramOnlineStatusItem)
-  {
-    boolean bool2 = false;
-    if (paramOnlineStatusItem == null) {
-      return false;
-    }
-    if (paramOnlineStatusItem.a != 40001L) {
-      return false;
-    }
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramOnlineStatusItem.b))
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramOnlineStatusItem.c))
-      {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramOnlineStatusItem.e)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean c(Friends paramFriends)
-  {
-    if (paramFriends == null) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(paramFriends.weatherType)) && (!TextUtils.isEmpty(paramFriends.temper)))
-    {
-      if (TextUtils.isEmpty(paramFriends.weatherTypeId)) {
-        return false;
-      }
-      return TextUtils.isEmpty(paramFriends.adCode) ^ true;
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusUtil
  * JD-Core Version:    0.7.0.1
  */

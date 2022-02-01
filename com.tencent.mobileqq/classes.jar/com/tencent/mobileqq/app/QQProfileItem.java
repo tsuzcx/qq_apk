@@ -76,16 +76,16 @@ import tencent.intimate_relation.intimate_relation.IntimateInfo;
 public class QQProfileItem
   implements CheckUpdateItemInterface
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ByteStringMicro jdField_a_of_type_ComTencentMobileqqPbByteStringMicro;
+  private final QQAppInterface a;
+  private ByteStringMicro b;
   
   public QQProfileItem(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = null;
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "775_hot_friend_new_boat_clear_version");
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "top_position_and_disturb_clear_version");
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "check_message_preview_version_clear");
+    this.a = paramQQAppInterface;
+    this.b = null;
+    a(this.a, "775_hot_friend_new_boat_clear_version");
+    a(this.a, "top_position_and_disturb_clear_version");
+    a(this.a, "check_message_preview_version_clear");
   }
   
   public static void a(long paramLong, String paramString, DiscussionManager paramDiscussionManager)
@@ -100,7 +100,7 @@ public class QQProfileItem
       ((StringBuilder)localObject1).append(paramString);
       QLog.d("QQProfileItem", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = paramDiscussionManager.a();
+    Object localObject2 = paramDiscussionManager.b();
     if (localObject2 != null)
     {
       localObject1 = new ArrayList();
@@ -108,7 +108,7 @@ public class QQProfileItem
       while (((Iterator)localObject2).hasNext())
       {
         DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Iterator)localObject2).next();
-        DiscussionMemberInfo localDiscussionMemberInfo = paramDiscussionManager.a(localDiscussionInfo.uin, Long.toString(paramLong));
+        DiscussionMemberInfo localDiscussionMemberInfo = paramDiscussionManager.b(localDiscussionInfo.uin, Long.toString(paramLong));
         if ((localDiscussionMemberInfo != null) && (a(paramString, localDiscussionMemberInfo.memberName)))
         {
           localDiscussionMemberInfo.memberName = paramString;
@@ -138,8 +138,8 @@ public class QQProfileItem
   
   private void a(FriendsManager paramFriendsManager, Friends[] paramArrayOfFriends, int paramInt, ArrayList<Friends> paramArrayList)
   {
-    Object localObject = paramFriendsManager.c();
-    paramFriendsManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject = paramFriendsManager.j();
+    paramFriendsManager = this.a.getMsgCache().b;
     localObject = ((List)localObject).iterator();
     int i;
     for (;;)
@@ -253,38 +253,38 @@ public class QQProfileItem
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 119	java/util/ArrayList:size	()I
+    //   1: invokevirtual 120	java/util/ArrayList:size	()I
     //   4: ifle +69 -> 73
     //   7: aload_2
-    //   8: invokevirtual 260	com/tencent/mobileqq/app/FriendsManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   8: invokevirtual 261	com/tencent/mobileqq/app/FriendsManager:r	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   11: astore_2
     //   12: aload_2
-    //   13: invokevirtual 265	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   13: invokevirtual 266	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   16: aload_1
-    //   17: invokevirtual 71	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   17: invokevirtual 72	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   20: astore_1
     //   21: aload_1
-    //   22: invokeinterface 76 1 0
+    //   22: invokeinterface 77 1 0
     //   27: ifeq +19 -> 46
     //   30: aload_3
     //   31: aload_1
-    //   32: invokeinterface 80 1 0
-    //   37: checkcast 267	com/tencent/mobileqq/data/troop/TroopInfo
-    //   40: invokevirtual 272	com/tencent/mobileqq/app/TroopManager:b	(Lcom/tencent/mobileqq/data/troop/TroopInfo;)V
+    //   32: invokeinterface 81 1 0
+    //   37: checkcast 268	com/tencent/mobileqq/data/troop/TroopInfo
+    //   40: invokevirtual 273	com/tencent/mobileqq/app/TroopManager:b	(Lcom/tencent/mobileqq/data/troop/TroopInfo;)V
     //   43: goto -22 -> 21
     //   46: aload_2
-    //   47: invokevirtual 274	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   47: invokevirtual 275	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   50: goto +12 -> 62
     //   53: astore_1
     //   54: goto +13 -> 67
     //   57: astore_1
     //   58: aload_1
-    //   59: invokevirtual 277	java/lang/Exception:printStackTrace	()V
+    //   59: invokevirtual 278	java/lang/Exception:printStackTrace	()V
     //   62: aload_2
-    //   63: invokevirtual 280	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   63: invokevirtual 281	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   66: return
     //   67: aload_2
-    //   68: invokevirtual 280	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   68: invokevirtual 281	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   71: aload_1
     //   72: athrow
     //   73: return
@@ -307,7 +307,7 @@ public class QQProfileItem
   
   private void a(ArrayList<Friends> paramArrayList1, ArrayList<Friends> paramArrayList2)
   {
-    DiscussionManager localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    DiscussionManager localDiscussionManager = (DiscussionManager)this.a.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     Object localObject;
     if (paramArrayList1.size() > 0)
     {
@@ -349,7 +349,7 @@ public class QQProfileItem
           } else {
             ((FriendsStatusUtil.UpdateFriendStatusItem)localObject1).a(localSnsUpdateItem.bytes_value.get().toByteArray());
           }
-          FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FriendsStatusUtil.UpdateFriendStatusItem)localObject1, null);
+          FriendsStatusUtil.a(this.a, (FriendsStatusUtil.UpdateFriendStatusItem)localObject1, null);
         }
         else if (localSnsUpdateItem.uint32_update_sns_type.get() == 13579)
         {
@@ -358,17 +358,17 @@ public class QQProfileItem
           }
           localObject1 = new FriendsStatusUtil.UpdateFriendStatusItem(String.valueOf(l), 13579, 19);
           ((FriendsStatusUtil.UpdateFriendStatusItem)localObject1).b(localSnsUpdateItem.bytes_value.get().toByteArray());
-          FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FriendsStatusUtil.UpdateFriendStatusItem)localObject1, null);
+          FriendsStatusUtil.a(this.a, (FriendsStatusUtil.UpdateFriendStatusItem)localObject1, null);
         }
         else
         {
           if (localSnsUpdateItem.uint32_update_sns_type.get() == 13568) {
-            QvipSpecialCareUtil.a(String.valueOf(paramSnsUpateBuffer.uint64_uin.get()), localSnsUpdateItem.bytes_value.get().toStringUtf8(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            QvipSpecialCareUtil.a(String.valueOf(paramSnsUpateBuffer.uint64_uin.get()), localSnsUpdateItem.bytes_value.get().toStringUtf8(), this.a);
           }
           localObject1 = localObject2;
           if (localObject2 == null)
           {
-            localObject2 = paramFriendsManager.a(String.valueOf(l));
+            localObject2 = paramFriendsManager.y(String.valueOf(l));
             localObject1 = localObject2;
             if (localObject2 == null)
             {
@@ -402,7 +402,7 @@ public class QQProfileItem
             }
             String str = String.valueOf(paramSnsUpateBuffer.uint64_uin.get());
             byte[] arrayOfByte = localSnsUpdateItem.bytes_value.get().toByteArray();
-            localObject3 = paramFriendsManager.a(str);
+            localObject3 = paramFriendsManager.x(str);
             localObject2 = localObject3;
             if (localObject3 == null)
             {
@@ -446,7 +446,7 @@ public class QQProfileItem
         if (QLog.isColorLevel()) {
           QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate GroupList：uin = ");
         }
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true);
+        ((FriendListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true);
       }
     }
   }
@@ -460,7 +460,7 @@ public class QQProfileItem
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(l);
       ((StringBuilder)localObject).append("");
-      localObject = paramFriendsManager.a(((StringBuilder)localObject).toString());
+      localObject = paramFriendsManager.f(((StringBuilder)localObject).toString());
       if (localObject != null)
       {
         int j = paramContentItem.uint32_gender.get();
@@ -481,11 +481,11 @@ public class QQProfileItem
           }
         }
         ((Card)localObject).shGender = ((short)i);
-        if (Utils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), String.valueOf(l)))
+        if (Utils.a(this.a.getCurrentAccountUin(), String.valueOf(l)))
         {
-          paramContentItem = (INearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
+          paramContentItem = (INearbyCardManager)this.a.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
           if (paramContentItem != null) {
-            paramContentItem.b(((Card)localObject).shGender);
+            paramContentItem.c(((Card)localObject).shGender);
           }
         }
         paramFriendsManager.a((Card)localObject);
@@ -517,17 +517,17 @@ public class QQProfileItem
       break;
     case 18: 
       if (paramContentItem.msg_mutual_mark_data.has()) {
-        MutualMarkDataS2CHandleHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Oidb_0xd6b.MutualMarkData)paramContentItem.msg_mutual_mark_data.get());
+        MutualMarkDataS2CHandleHelper.a(this.a, (Oidb_0xd6b.MutualMarkData)paramContentItem.msg_mutual_mark_data.get());
       }
       break;
     case 17: 
       if (paramContentItem.msg_ext_sns_frd_data.has()) {
-        ExtSnsFrdDataHandleHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Oidb_0xd50.ExtSnsFrdData)paramContentItem.msg_ext_sns_frd_data.get());
+        ExtSnsFrdDataHandleHelper.a(this.a, (Oidb_0xd50.ExtSnsFrdData)paramContentItem.msg_ext_sns_frd_data.get());
       }
       break;
     case 16: 
       if (paramContentItem.msg_intimate_info.has()) {
-        FriendIntimateRelationshipHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (intimate_relation.IntimateInfo)paramContentItem.msg_intimate_info.get());
+        FriendIntimateRelationshipHelper.a(this.a, (intimate_relation.IntimateInfo)paramContentItem.msg_intimate_info.get());
       }
       break;
     case 15: 
@@ -566,9 +566,9 @@ public class QQProfileItem
     case 1: 
       a(paramContentItem, paramFriendsManager, paramArrayList1, paramArrayOfFriends, paramInt);
     }
-    if (!TextUtils.isEmpty(localFriendHeadFlagItem.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(localFriendHeadFlagItem.a))
     {
-      paramContentItem = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
+      paramContentItem = (ClassicHeadActivityManager)this.a.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
       if (paramContentItem != null) {
         paramContentItem.a(localFriendHeadFlagItem);
       }
@@ -584,9 +584,9 @@ public class QQProfileItem
       long l = paramContentItem.uint64_uin.get();
       Object localObject2 = paramContentItem.rpt_msg_profile_info.get();
       paramFriendHeadFlagItem.a();
-      paramFriendHeadFlagItem.jdField_a_of_type_JavaLangString = Long.toString(l);
-      IApolloManagerService localIApolloManagerService = (IApolloManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-      paramContentItem = (IApolloDaoManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
+      paramFriendHeadFlagItem.a = Long.toString(l);
+      IApolloManagerService localIApolloManagerService = (IApolloManagerService)this.a.getRuntimeService(IApolloManagerService.class, "all");
+      paramContentItem = (IApolloDaoManagerService)this.a.getRuntimeService(IApolloDaoManagerService.class, "all");
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(l);
       ((StringBuilder)localObject1).append("");
@@ -626,11 +626,11 @@ public class QQProfileItem
                   if (i != 40556)
                   {
                     if (i == 42099) {
-                      paramFriendHeadFlagItem.jdField_a_of_type_Long = localProfileTvInfo.uint64_field_int_value.get();
+                      paramFriendHeadFlagItem.b = localProfileTvInfo.uint64_field_int_value.get();
                     }
                   }
                   else {
-                    paramFriendHeadFlagItem.c = localProfileTvInfo.uint64_field_int_value.get();
+                    paramFriendHeadFlagItem.d = localProfileTvInfo.uint64_field_int_value.get();
                   }
                 }
                 else {
@@ -650,7 +650,7 @@ public class QQProfileItem
           }
         }
         else {
-          paramFriendHeadFlagItem.b = localProfileTvInfo.uint64_field_int_value.get();
+          paramFriendHeadFlagItem.c = localProfileTvInfo.uint64_field_int_value.get();
         }
       }
       if (bool) {
@@ -680,7 +680,7 @@ public class QQProfileItem
           paramContentItem.append(MessageRecordUtil.a(str));
           QLog.d("ProfileService.CheckUpdateReq", 2, paramContentItem.toString());
         }
-        Object localObject = paramFriendsManager.e(Long.toString(l));
+        Object localObject = paramFriendsManager.m(Long.toString(l));
         paramContentItem = null;
         if (localObject != null) {
           paramContentItem = ((Friends)localObject).remark;
@@ -688,7 +688,7 @@ public class QQProfileItem
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(l);
         localStringBuilder.append("");
-        paramFriendsManager = paramFriendsManager.b(localStringBuilder.toString(), str);
+        paramFriendsManager = paramFriendsManager.d(localStringBuilder.toString(), str);
         if ((localObject != null) && (((Friends)localObject).isFriend()) && (b(str, paramContentItem))) {
           paramArrayList.add(paramFriendsManager);
         }
@@ -732,7 +732,7 @@ public class QQProfileItem
               paramArrayList1.append(paramFriendsManager);
               QLog.d("ProfileService.CheckUpdateReq", 2, paramArrayList1.toString());
             }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramArrayList, paramArrayList);
+            this.a.getMsgCache().b.put(paramArrayList, paramArrayList);
             continue;
             if ((paramContentItem != null) && (paramContentItem.uint64_uin.has()) && (paramContentItem.rpt_msg_sns_update_item.has())) {
               a(paramContentItem, paramFriendsManager, paramArrayList, paramMap, paramArrayList1);
@@ -764,7 +764,7 @@ public class QQProfileItem
           paramContentItem.append(MessageRecordUtil.a(str));
           QLog.d("ProfileService.CheckUpdateReq", 2, paramContentItem.toString());
         }
-        Object localObject = paramFriendsManager.e(Long.toString(l));
+        Object localObject = paramFriendsManager.m(Long.toString(l));
         paramContentItem = null;
         if (localObject != null) {
           paramContentItem = ((Friends)localObject).name;
@@ -772,7 +772,7 @@ public class QQProfileItem
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(l);
         localStringBuilder.append("");
-        paramFriendsManager = paramFriendsManager.a(localStringBuilder.toString(), str);
+        paramFriendsManager = paramFriendsManager.c(localStringBuilder.toString(), str);
         paramArrayOfFriends[paramInt] = paramFriendsManager;
         if ((localObject != null) && (((Friends)localObject).isFriend()) && (a(str, paramContentItem))) {
           paramArrayList.add(paramFriendsManager);
@@ -789,7 +789,7 @@ public class QQProfileItem
       if ((localObject != null) && (((Oidb_0x5e0.ValueBit)localObject).uint64_uin.has()))
       {
         long l = ((Oidb_0x5e0.ValueBit)localObject).uint64_uin.get();
-        paramContentItem = paramFriendsManager.e(Long.toString(l));
+        paramContentItem = paramFriendsManager.m(Long.toString(l));
         int i;
         int j;
         int k;
@@ -881,7 +881,7 @@ public class QQProfileItem
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(l);
         localStringBuilder.append("");
-        paramTroopManager = paramTroopManager.b(localStringBuilder.toString());
+        paramTroopManager = paramTroopManager.f(localStringBuilder.toString());
         if (paramTroopManager != null)
         {
           paramTroopManager.troopname = paramContentItem;
@@ -906,7 +906,7 @@ public class QQProfileItem
   private void a(Oidb_0x5e0.ProfileTvInfo paramProfileTvInfo, FriendsManager paramFriendsManager, long paramLong)
   {
     long l = paramProfileTvInfo.uint64_field_int_value.get();
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(Long.toString(paramLong));
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(Long.toString(paramLong));
     paramProfileTvInfo = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -932,13 +932,13 @@ public class QQProfileItem
   
   private void a(Oidb_0x5e0.RspBody paramRspBody)
   {
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    FriendsManager localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    TroopManager localTroopManager = (TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER);
     Object localObject5 = paramRspBody.rpt_msg_contentItem.get();
     if (localObject5 == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(((List)localObject5).size());
+    this.a.getMsgCache().c.addAndGet(((List)localObject5).size());
     boolean bool1;
     if ((paramRspBody.uint32_over_flag.has()) && (paramRspBody.uint32_over_flag.get() == 1)) {
       bool1 = true;
@@ -1003,19 +1003,19 @@ public class QQProfileItem
     }
     if (localArrayList7.size() > 0)
     {
-      localFriendsManager.c(localArrayList7);
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(97, true, new Object[] { Boolean.valueOf(true), localArrayList7 });
+      localFriendsManager.d(localArrayList7);
+      ((FriendListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(97, true, new Object[] { Boolean.valueOf(true), localArrayList7 });
     }
     if (QLog.isColorLevel()) {
       QLog.d("tag_hidden_chat", 2, new Object[] { "0x5e0 hiddenChatMap.size:", Integer.valueOf(localHashMap2.size()) });
     }
     if (localHashMap2.size() > 0) {
-      FriendsStatusUtil.a(localHashMap2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      FriendsStatusUtil.a(localHashMap2, this.a);
     }
     if (localArrayList6.size() > 0) {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(104, true, localArrayList6);
+      ((FriendListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(104, true, localArrayList6);
     }
-    if ((bool2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0))
+    if ((bool2) && (this.a.getMsgCache().c.get() != 0))
     {
       localObject1 = new ArrayList();
       a(localFriendsManager, localObject4, 0, (ArrayList)localObject1);
@@ -1046,15 +1046,15 @@ public class QQProfileItem
     b(paramRspBody);
     if ((paramRspBody.uint32_over_flag.has()) && (paramRspBody.uint32_over_flag.get() == 1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = null;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      this.b = null;
+      this.a.getMsgCache().b.clear();
+      this.a.getMsgCache().c.set(0);
       return;
     }
     if (paramRspBody.bytes_svrcontext.has())
     {
-      this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = paramRspBody.bytes_svrcontext.get();
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getCheckUpdate(false, 1);
+      this.b = paramRspBody.bytes_svrcontext.get();
+      ((FriendListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getCheckUpdate(false, 1);
     }
   }
   
@@ -1128,7 +1128,7 @@ public class QQProfileItem
       {
         paramApolloBaseInfo.apolloAISwitch = i;
         bool1 = bool2;
-        if (String.valueOf(paramLong).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()))
+        if (String.valueOf(paramLong).equals(this.a.getCurrentUin()))
         {
           paramIApolloManagerService.updateUserFlag(i, 3);
           bool1 = bool2;
@@ -1183,7 +1183,7 @@ public class QQProfileItem
       ((StringBuilder)localObject1).append(paramString);
       QLog.d("QQProfileItem", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = paramDiscussionManager.a();
+    Object localObject2 = paramDiscussionManager.b();
     if (localObject2 != null)
     {
       localObject1 = new ArrayList();
@@ -1191,7 +1191,7 @@ public class QQProfileItem
       while (((Iterator)localObject2).hasNext())
       {
         DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Iterator)localObject2).next();
-        DiscussionMemberInfo localDiscussionMemberInfo = paramDiscussionManager.a(localDiscussionInfo.uin, Long.toString(paramLong));
+        DiscussionMemberInfo localDiscussionMemberInfo = paramDiscussionManager.b(localDiscussionInfo.uin, Long.toString(paramLong));
         if ((localDiscussionMemberInfo != null) && (b(paramString, localDiscussionMemberInfo.inteRemark)))
         {
           localDiscussionMemberInfo.inteRemark = paramString;
@@ -1233,7 +1233,7 @@ public class QQProfileItem
           long l2 = 0xFFFFFFFF & paramContentItem.getInt();
           byte[] arrayOfByte = new byte[paramContentItem.getShort() & 0xFFFF];
           paramContentItem.get(arrayOfByte);
-          ExtensionInfo localExtensionInfo = paramFriendsManager.a(Long.toString(l1));
+          ExtensionInfo localExtensionInfo = paramFriendsManager.x(Long.toString(l1));
           ExtensionInfoLogUtils.a("QQProfileItem", "handleUpdateProfileItemIdxNewRichStatus before fm.getExtensionInfo，friendUin:", localExtensionInfo);
           paramContentItem = localExtensionInfo;
           if (localExtensionInfo == null)
@@ -1244,7 +1244,7 @@ public class QQProfileItem
           if (paramContentItem.richTime != l2)
           {
             ExtensionRichStatus.a(paramContentItem, arrayOfByte, l2);
-            paramContentItem.isAdded2C2C = SignatureManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(l1), ExtensionRichStatus.a(paramContentItem));
+            paramContentItem.isAdded2C2C = SignatureManager.a(this.a, Long.toString(l1), ExtensionRichStatus.c(paramContentItem));
             ExtensionInfoLogUtils.a("QQProfileItem", "handleUpdateProfileItemIdxNewRichStatus before save，friendUin:", paramContentItem);
             paramFriendsManager.a(paramContentItem);
             if (QLog.isColorLevel())
@@ -1265,7 +1265,7 @@ public class QQProfileItem
   private void b(Oidb_0x5e0.ProfileTvInfo paramProfileTvInfo, FriendsManager paramFriendsManager, long paramLong)
   {
     long l = paramProfileTvInfo.uint64_field_int_value.get();
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(Long.toString(paramLong));
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(Long.toString(paramLong));
     paramProfileTvInfo = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -1293,7 +1293,7 @@ public class QQProfileItem
     Object localObject1 = paramRspBody.rpt_msg_ProfileListResult.get();
     if (localObject1 != null)
     {
-      paramRspBody = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+      paramRspBody = this.a.getPreferences().edit();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
@@ -1381,7 +1381,7 @@ public class QQProfileItem
         if (paramContentItem.remaining() >= 8)
         {
           l2 = paramContentItem.getLong();
-          Object localObject = paramFriendsManager.a(String.valueOf(l1));
+          Object localObject = paramFriendsManager.x(String.valueOf(l1));
           ExtensionInfoLogUtils.a("QQProfileItem", "handleUpdateProfileItemIdxFaceAddonId before fm.getExtensionInfo，friendUin:", (ExtensionInfo)localObject);
           paramContentItem = (Oidb_0x5e0.ContentItem)localObject;
           if (localObject == null)
@@ -1413,7 +1413,7 @@ public class QQProfileItem
   private void c(Oidb_0x5e0.ProfileTvInfo paramProfileTvInfo, FriendsManager paramFriendsManager, long paramLong)
   {
     long l = paramProfileTvInfo.uint64_field_int_value.get();
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(Long.toString(paramLong));
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(Long.toString(paramLong));
     paramProfileTvInfo = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -1460,7 +1460,7 @@ public class QQProfileItem
         if (paramContentItem.remaining() >= 4)
         {
           int i = paramContentItem.getInt();
-          ExtensionInfo localExtensionInfo = paramFriendsManager.a(String.valueOf(l1));
+          ExtensionInfo localExtensionInfo = paramFriendsManager.x(String.valueOf(l1));
           paramContentItem = localExtensionInfo;
           if (localExtensionInfo == null)
           {
@@ -1495,7 +1495,7 @@ public class QQProfileItem
   private void d(Oidb_0x5e0.ProfileTvInfo paramProfileTvInfo, FriendsManager paramFriendsManager, long paramLong)
   {
     long l = paramProfileTvInfo.uint64_field_int_value.get();
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(Long.toString(paramLong));
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(Long.toString(paramLong));
     paramProfileTvInfo = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -1542,7 +1542,7 @@ public class QQProfileItem
         if (paramContentItem.remaining() >= 4)
         {
           int i = paramContentItem.getInt();
-          ExtensionInfo localExtensionInfo = paramFriendsManager.a(String.valueOf(l1));
+          ExtensionInfo localExtensionInfo = paramFriendsManager.x(String.valueOf(l1));
           paramContentItem = localExtensionInfo;
           if (localExtensionInfo == null)
           {
@@ -1556,7 +1556,7 @@ public class QQProfileItem
             paramContentItem.colorRingId = l3;
             paramContentItem.timestamp = System.currentTimeMillis();
             paramFriendsManager.a(paramContentItem);
-            ColorRingManager.a(paramContentItem.uin, 1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            ColorRingManager.a(paramContentItem.uin, 1, this.a.getCurrentAccountUin());
           }
           if (QLog.isColorLevel())
           {
@@ -1591,7 +1591,7 @@ public class QQProfileItem
     }
     ReqItem localReqItem = new ReqItem();
     localReqItem.eServiceID = 101;
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+    Object localObject1 = this.a.getPreferences();
     Object localObject3 = new long[19];
     int i = 0;
     while (i < 19)
@@ -1630,7 +1630,7 @@ public class QQProfileItem
     localUpdateProfileList3.uint32_friendlist_type.set(0);
     localUpdateProfileList3.uint32_get_content_timestamp.set((int)localObject3[3]);
     Object localObject2 = null;
-    if (!((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).isSyncingAllFriendsRichStatus())
+    if (!((FriendListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).isSyncingAllFriendsRichStatus())
     {
       localObject1 = new Oidb_0x5e0.UpdateProfileList();
       ((Oidb_0x5e0.UpdateProfileList)localObject1).uint32_need_content.set(0);
@@ -1697,7 +1697,7 @@ public class QQProfileItem
     localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(27201));
     localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(40530));
     localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(27254));
-    Object localObject4 = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
+    Object localObject4 = (ClassicHeadActivityManager)this.a.getManager(QQManagerFactory.CLASSIC_HEAD_ACIVITY_MANAGER);
     if ((localObject4 != null) && (((ClassicHeadActivityManager)localObject4).a()))
     {
       localUpdateProfileList10.rpt_uint32_profile_field_list.add(Integer.valueOf(42099));
@@ -1759,8 +1759,8 @@ public class QQProfileItem
       QLog.d("ProfileService.CheckUpdateReq", 2, ((StringBuilder)localObject7).toString());
     }
     localObject3 = new Oidb_0x5e0.ReqBody();
-    if (this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro != null) {
-      ((Oidb_0x5e0.ReqBody)localObject3).bytes_svrcontext.set(this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro);
+    if (this.b != null) {
+      ((Oidb_0x5e0.ReqBody)localObject3).bytes_svrcontext.set(this.b);
     }
     ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList1);
     ((Oidb_0x5e0.ReqBody)localObject3).rpt_msg_update_profile_list.add(localUpdateProfileList2);
@@ -1827,7 +1827,7 @@ public class QQProfileItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQProfileItem
  * JD-Core Version:    0.7.0.1
  */

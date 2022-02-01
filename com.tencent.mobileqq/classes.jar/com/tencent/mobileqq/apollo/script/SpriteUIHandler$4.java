@@ -14,14 +14,14 @@ class SpriteUIHandler$4
   {
     try
     {
-      if (SpriteUIHandler.a(this.this$0).a() == null) {
+      if (SpriteUIHandler.c(this.this$0).l() == null) {
         return;
       }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131376809);
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.c(this.this$0).m().aW().findViewById(2131445137);
       if (1 == this.a)
       {
-        if (localXPanelContainer.a() == 21) {
-          SpriteUIHandler.a(this.this$0).a().Q();
+        if (localXPanelContainer.getCurrentPanel() == 21) {
+          SpriteUIHandler.c(this.this$0).m().aw();
         }
       }
       else if (2 == this.a)
@@ -38,7 +38,7 @@ class SpriteUIHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.4
  * JD-Core Version:    0.7.0.1
  */

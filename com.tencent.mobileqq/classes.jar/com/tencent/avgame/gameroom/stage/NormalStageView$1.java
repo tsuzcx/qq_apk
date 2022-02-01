@@ -8,7 +8,7 @@ class NormalStageView$1
   public void run()
   {
     NormalStageView localNormalStageView = this.this$0;
-    localNormalStageView.removeView(localNormalStageView.a);
+    localNormalStageView.removeView(localNormalStageView.j);
   }
 }
 

@@ -17,12 +17,12 @@ class AEFilterListAdapter$2
       AEQLog.d("AEFilterListAdapter", "view is null.");
       return;
     }
-    AEFilterListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoViewWidgetAEFilterListAdapter, paramView.getContext(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem);
+    AEFilterListAdapter.a(this.b, paramView.getContext(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.AEFilterListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

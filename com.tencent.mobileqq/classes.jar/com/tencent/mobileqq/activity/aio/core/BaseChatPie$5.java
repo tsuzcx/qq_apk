@@ -18,18 +18,18 @@ class BaseChatPie$5
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateSession_forwardType, postDelayed Run! needToBottom=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.a);
       QLog.i("forward", 1, ((StringBuilder)localObject).toString());
     }
-    this.this$0.f(this.jdField_a_of_type_AndroidContentIntent);
-    if (this.jdField_a_of_type_Boolean) {
+    this.this$0.g(this.b);
+    if (this.a) {
       BaseChatPie.c(this.this$0);
     }
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromShare", false))
+    if (this.b.getBooleanExtra("isFromShare", false))
     {
-      this.jdField_a_of_type_AndroidContentIntent.removeExtra("forward_type");
-      this.jdField_a_of_type_AndroidContentIntent.removeExtra("isFromShare");
-      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("leftBackText");
+      this.b.removeExtra("forward_type");
+      this.b.removeExtra("isFromShare");
+      String str = this.b.getStringExtra("leftBackText");
       if (str != null)
       {
         localObject = str;
@@ -37,27 +37,27 @@ class BaseChatPie$5
       }
       else
       {
-        localObject = this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131690706);
+        localObject = this.this$0.e.getString(2131887625);
       }
       if (QLog.isColorLevel())
       {
-        str = this.this$0.b;
+        str = this.this$0.c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("set left text from forward: ");
         localStringBuilder.append((String)localObject);
         QLog.i(str, 2, localStringBuilder.toString());
       }
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      this.this$0.ai();
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO != null) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.e();
+      this.this$0.s.setText((CharSequence)localObject);
+      this.this$0.bf();
+      if (this.this$0.p != null) {
+        this.this$0.p.e();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.5
  * JD-Core Version:    0.7.0.1
  */

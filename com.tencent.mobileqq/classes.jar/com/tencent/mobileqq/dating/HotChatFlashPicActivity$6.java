@@ -12,21 +12,15 @@ class HotChatFlashPicActivity$6
   public void run()
   {
     Object localObject = this.this$0;
-    localObject = ((HotChatFlashPicActivity)localObject).getSharedPreferences(HotChatFlashPicActivity.f((HotChatFlashPicActivity)localObject), 4).edit();
-    if (HotChatFlashPicActivity.b(this.this$0)) {
-      ((SharedPreferences.Editor)localObject).putInt("HOTCHAT_FLASHPIC_SHOT", HotChatFlashPicActivity.a(this.this$0));
-    } else {
-      ((SharedPreferences.Editor)localObject).putInt("commen_flashpic_shot", HotChatFlashPicActivity.a(this.this$0));
-    }
-    if (HotChatFlashPicActivity.a(this.this$0) == 1)
+    localObject = ((HotChatFlashPicActivity)localObject).getSharedPreferences(HotChatFlashPicActivity.A((HotChatFlashPicActivity)localObject), 4).edit();
+    ((SharedPreferences.Editor)localObject).putInt("commen_flashpic_shot", HotChatFlashPicActivity.t(this.this$0));
+    if (HotChatFlashPicActivity.t(this.this$0) == 1)
     {
       ReportController.b(this.this$0.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
     }
-    else if (HotChatFlashPicActivity.a(this.this$0) >= 2)
+    else if (HotChatFlashPicActivity.t(this.this$0) >= 2)
     {
-      if (!HotChatFlashPicActivity.b(this.this$0)) {
-        ((SharedPreferences.Editor)localObject).putLong("commen_flashpic_shot_deadlineday", HotChatFlashPicActivity.b(this.this$0) + 518400000L);
-      }
+      ((SharedPreferences.Editor)localObject).putLong("commen_flashpic_shot_deadlineday", HotChatFlashPicActivity.B(this.this$0) + 518400000L);
       ReportController.b(this.this$0.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
     }
     ((SharedPreferences.Editor)localObject).commit();
@@ -34,7 +28,7 @@ class HotChatFlashPicActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.dating.HotChatFlashPicActivity.6
  * JD-Core Version:    0.7.0.1
  */

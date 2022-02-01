@@ -7,15 +7,6 @@ import com.tencent.mobileqq.app.AppConstants;
 
 public class ContactConfig
 {
-  public static long a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pref_req_self_level_time");
-    localStringBuilder.append(paramString);
-    return paramContext.getLong(localStringBuilder.toString(), 0L);
-  }
-  
   public static void a(Context paramContext, String paramString, int paramInt)
   {
     long l1 = System.currentTimeMillis();
@@ -45,15 +36,6 @@ public class ContactConfig
   public static boolean a(Context paramContext, String paramString)
   {
     return paramContext.getSharedPreferences(paramString, 0).getBoolean("fl_show_pc_icon", false);
-  }
-  
-  public static long b(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pref_req_x_man_prefix");
-    localStringBuilder.append(paramString);
-    return paramContext.getLong(localStringBuilder.toString(), 0L);
   }
   
   public static void b(Context paramContext, String paramString, int paramInt)
@@ -87,7 +69,7 @@ public class ContactConfig
   {
     paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pref_last_req_x_man_scene_2_time_prefix_");
+    localStringBuilder.append("pref_req_self_level_time");
     localStringBuilder.append(paramString);
     return paramContext.getLong(localStringBuilder.toString(), 0L);
   }
@@ -100,10 +82,28 @@ public class ContactConfig
     localStringBuilder.append(paramString);
     paramContext.putLong(localStringBuilder.toString(), paramLong).commit();
   }
+  
+  public static long d(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pref_req_x_man_prefix");
+    localStringBuilder.append(paramString);
+    return paramContext.getLong(localStringBuilder.toString(), 0L);
+  }
+  
+  public static long e(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pref_last_req_x_man_scene_2_time_prefix_");
+    localStringBuilder.append(paramString);
+    return paramContext.getLong(localStringBuilder.toString(), 0L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ContactConfig
  * JD-Core Version:    0.7.0.1
  */

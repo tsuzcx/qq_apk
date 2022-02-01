@@ -10,13 +10,13 @@ import mqq.observer.CheckConErroObserver;
 public class TroopFileProtoReqMgrImpl$CheckConErroObserverImp
   extends CheckConErroObserver
 {
-  TroopFileProtoReqMgrImpl.ProtoRequest jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest;
-  TroopFileProtoReqMgrImpl.ProtoResponse jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse;
+  TroopFileProtoReqMgrImpl.ProtoResponse a;
+  TroopFileProtoReqMgrImpl.ProtoRequest b;
   
   public TroopFileProtoReqMgrImpl$CheckConErroObserverImp(TroopFileProtoReqMgrImpl paramTroopFileProtoReqMgrImpl, TroopFileProtoReqMgrImpl.ProtoResponse paramProtoResponse, TroopFileProtoReqMgrImpl.ProtoRequest paramProtoRequest)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse = paramProtoResponse;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest = paramProtoRequest;
+    this.a = paramProtoResponse;
+    this.b = paramProtoRequest;
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
@@ -38,11 +38,11 @@ public class TroopFileProtoReqMgrImpl$CheckConErroObserverImp
         ((StringBuilder)localObject1).append(paramBundle);
         QLog.d("TroopFileProtoReqMgr", 2, ((StringBuilder)localObject1).toString());
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse;
+      localObject2 = this.a;
       localObject1 = paramBundle;
       if (localObject2 != null)
       {
-        localObject2 = ((TroopFileProtoReqMgrImpl.ProtoResponse)localObject2).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+        localObject2 = ((TroopFileProtoReqMgrImpl.ProtoResponse)localObject2).a;
         localObject1 = paramBundle;
         if (localObject2 != null)
         {
@@ -55,25 +55,25 @@ public class TroopFileProtoReqMgrImpl$CheckConErroObserverImp
     {
       localObject1 = "";
     }
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest;
-    if ((paramBundle != null) && (paramBundle.jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver != null))
+    paramBundle = this.b;
+    if ((paramBundle != null) && (paramBundle.l != null))
     {
       paramBundle = new Bundle();
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest.jdField_a_of_type_AndroidOsBundle != null) {
-        paramBundle.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest.jdField_a_of_type_AndroidOsBundle);
+      if (this.b.m != null) {
+        paramBundle.putAll(this.b.m);
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse;
-      if ((localObject2 != null) && (((TroopFileProtoReqMgrImpl.ProtoResponse)localObject2).jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg != null))
+      localObject2 = this.a;
+      if ((localObject2 != null) && (((TroopFileProtoReqMgrImpl.ProtoResponse)localObject2).a != null))
       {
-        paramBundle.putString("data_error_msg", this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailMsg());
-        paramBundle.putInt("data_error_code", this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailCode());
+        paramBundle.putString("data_error_msg", this.a.a.getBusinessFailMsg());
+        paramBundle.putInt("data_error_code", this.a.a.getBusinessFailCode());
         paramBundle = new StringBuilder();
         paramBundle.append("cookie<");
-        paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest.b);
+        paramBundle.append(this.a.b.o);
         paramBundle.append("> onProtoResponse fail end. failCode:");
-        paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getBusinessFailCode());
+        paramBundle.append(this.a.a.getBusinessFailCode());
         paramBundle.append(" retryCount:");
-        paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse.jdField_a_of_type_ComTencentMobileqqAppStatictisInfo.c);
+        paramBundle.append(this.a.f.c);
         paramBundle.append(" msfConErro:");
         paramBundle.append((String)localObject1);
         QLog.e("TroopFileProtoReqMgr", 1, paramBundle.toString());
@@ -82,13 +82,13 @@ public class TroopFileProtoReqMgrImpl$CheckConErroObserverImp
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("cookie<");
-        TroopFileProtoReqMgrImpl.ProtoResponse localProtoResponse = this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse;
+        TroopFileProtoReqMgrImpl.ProtoResponse localProtoResponse = this.a;
         paramBundle = str;
         if (localProtoResponse != null)
         {
           paramBundle = str;
-          if (localProtoResponse.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest != null) {
-            paramBundle = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest.b);
+          if (localProtoResponse.b != null) {
+            paramBundle = Long.valueOf(this.a.b.o);
           }
         }
         ((StringBuilder)localObject2).append(paramBundle);
@@ -96,13 +96,13 @@ public class TroopFileProtoReqMgrImpl$CheckConErroObserverImp
         ((StringBuilder)localObject2).append((String)localObject1);
         QLog.e("TroopFileProtoReqMgr", 1, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest.jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver.onResult(-1, null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest.jdField_a_of_type_AndroidOsBundle);
+      this.b.l.onResult(-1, null, this.b.m);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.TroopFileProtoReqMgrImpl.CheckConErroObserverImp
  * JD-Core Version:    0.7.0.1
  */

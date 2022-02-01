@@ -15,13 +15,7 @@ class b$2
   
   public void Call(long paramLong, Message paramMessage, String paramString)
   {
-    int i;
-    if (paramLong == 1L) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i != 0)
+    if (paramLong == 1L)
     {
       b.a(this.b, HippyEngine.ModuleLoadStatus.STATUS_OK, null, this.a);
       return;
@@ -31,7 +25,7 @@ class b$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.b.2
  * JD-Core Version:    0.7.0.1
  */

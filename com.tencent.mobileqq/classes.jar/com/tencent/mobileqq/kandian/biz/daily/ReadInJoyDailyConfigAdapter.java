@@ -12,17 +12,17 @@ import java.util.List;
 public class ReadInJoyDailyConfigAdapter
   extends RecyclerView.Adapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReadInJoyDailySettingPopupWindow.Callback jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingPopupWindow$Callback;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<String> a = new ArrayList();
   private List<String> b = new ArrayList();
+  private Context c;
+  private ReadInJoyDailySettingPopupWindow.Callback d;
   
   public ReadInJoyDailyConfigAdapter(Context paramContext, List<String> paramList1, List<String> paramList2, ReadInJoyDailySettingPopupWindow.Callback paramCallback)
   {
     this.b = paramList1;
-    this.jdField_a_of_type_JavaUtilList = paramList2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingPopupWindow$Callback = paramCallback;
+    this.a = paramList2;
+    this.c = paramContext;
+    this.d = paramCallback;
   }
   
   public int getItemCount()
@@ -42,7 +42,7 @@ public class ReadInJoyDailyConfigAdapter
       if ((paramInt >= 0) && (paramInt < this.b.size()))
       {
         String str1 = (String)this.b.get(paramInt);
-        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        String str2 = (String)this.a.get(paramInt);
         paramViewHolder.a.setText(str1);
         paramViewHolder.a.setOnClickListener(new ReadInJoyDailyConfigAdapter.1(this, str2, str1));
       }
@@ -51,12 +51,12 @@ public class ReadInJoyDailyConfigAdapter
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new ReadInJoyDailyConfigAdapter.DailyConfigViewHolder(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560161, null));
+    return new ReadInJoyDailyConfigAdapter.DailyConfigViewHolder(this, View.inflate(this.c, 2131626208, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyConfigAdapter
  * JD-Core Version:    0.7.0.1
  */

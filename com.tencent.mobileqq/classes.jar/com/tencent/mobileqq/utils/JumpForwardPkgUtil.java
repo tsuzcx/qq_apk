@@ -17,13 +17,13 @@ public class JumpForwardPkgUtil
     }
     try
     {
-      if (JumpForwardPkgManager.a().a())
+      if (JumpForwardPkgManager.a().c())
       {
-        String str = JumpForwardPkgManager.a(paramActivity);
+        String str = JumpForwardPkgManager.b(paramActivity);
         if (!TextUtils.isEmpty(str))
         {
           if (paramBoolean) {
-            QQToast.a(paramActivity, 1, str, 1000).b(paramActivity.getResources().getDimensionPixelSize(2131299168));
+            QQToast.makeText(paramActivity, 1, str, 1000).show(paramActivity.getResources().getDimensionPixelSize(2131299920));
           }
           paramActivity.moveTaskToBack(true);
           if (QLog.isColorLevel()) {
@@ -40,7 +40,7 @@ public class JumpForwardPkgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpForwardPkgUtil
  * JD-Core Version:    0.7.0.1
  */

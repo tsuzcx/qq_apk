@@ -11,13 +11,13 @@ class LebaQzoneAndPluginPart$13
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyCardManager.b();
-    new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("exp").a(new String[] { "", String.valueOf(i), "", "" }).a();
+    int i = this.a.c();
+    new ReportTask(this.b).a("dc00899").b("grp_lbs").c("entry").d("exp").a(new String[] { "", String.valueOf(i), "", "" }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.13
  * JD-Core Version:    0.7.0.1
  */

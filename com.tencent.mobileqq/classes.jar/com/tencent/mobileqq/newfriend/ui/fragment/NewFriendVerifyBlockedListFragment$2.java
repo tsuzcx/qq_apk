@@ -21,9 +21,9 @@ class NewFriendVerifyBlockedListFragment$2
       paramList.append(paramBoolean);
       QLog.i("BlockedListFragment", 2, paramList.toString());
     }
-    if ((paramBoolean) && (NewFriendVerifyBlockedListFragment.a(this.a) != null) && (!NewFriendVerifyBlockedListFragment.a(this.a).isFinishing()) && (NewFriendVerifyBlockedListFragment.a(this.a) != null))
+    if ((paramBoolean) && (NewFriendVerifyBlockedListFragment.b(this.a) != null) && (!NewFriendVerifyBlockedListFragment.b(this.a).isFinishing()) && (NewFriendVerifyBlockedListFragment.c(this.a) != null))
     {
-      if (NewFriendVerifyBlockedListFragment.a(this.a) == null) {
+      if (NewFriendVerifyBlockedListFragment.d(this.a) == null) {
         return;
       }
       this.a.a.removeMessages(1);
@@ -42,7 +42,7 @@ class NewFriendVerifyBlockedListFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.fragment.NewFriendVerifyBlockedListFragment.2
  * JD-Core Version:    0.7.0.1
  */

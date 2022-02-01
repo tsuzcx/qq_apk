@@ -21,7 +21,7 @@ class DefaultMediaPlayer$1
   
   public void a(long paramLong)
   {
-    if (DefaultMediaPlayer.a(this.a) == 0)
+    if (DefaultMediaPlayer.b(this.a) == 0)
     {
       VideoPerformanceMonitor.a(this.a.hashCode(), "[Player] on video decode first frame");
       DefaultMediaPlayer.a(this.a, 1);
@@ -54,12 +54,12 @@ class DefaultMediaPlayer$1
   {
     SLog.d("DefaultMediaPlayer", "decoder -> onDecodeRepeat");
     DefaultMediaPlayer.a(this.a);
-    DefaultMediaPlayer.b(this.a);
+    DefaultMediaPlayer.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.video.DefaultMediaPlayer.1
  * JD-Core Version:    0.7.0.1
  */

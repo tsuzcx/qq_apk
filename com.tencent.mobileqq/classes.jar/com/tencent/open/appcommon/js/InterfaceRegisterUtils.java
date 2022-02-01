@@ -58,14 +58,14 @@ public class InterfaceRegisterUtils
   
   public static void a(List<BaseInterface> paramList, WebView paramWebView, String paramString, JsBridge paramJsBridge)
   {
-    if (!StringAddition.a(paramString))
+    if (!StringAddition.d(paramString))
     {
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
         BaseInterface localBaseInterface = (BaseInterface)localIterator.next();
         paramJsBridge.a(localBaseInterface, localBaseInterface.getInterfaceName());
-        AsyncMethodMap.a.put(localBaseInterface.getInterfaceName(), localBaseInterface.getClass());
+        AsyncMethodMap.b.put(localBaseInterface.getInterfaceName(), localBaseInterface.getClass());
         localBaseInterface.setCurrentUrl(paramString);
       }
     }
@@ -74,7 +74,7 @@ public class InterfaceRegisterUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.InterfaceRegisterUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -45,10 +45,10 @@ public class TroopShortcutBarUtil
       Object localObject = (ChatFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
       if (localObject != null)
       {
-        localObject = ((ChatFragment)localObject).a();
-        if ((localObject != null) && ((localObject instanceof BaseTroopChatPie)) && (((BaseChatPie)localObject).d() >= 2))
+        localObject = ((ChatFragment)localObject).k();
+        if ((localObject != null) && ((localObject instanceof BaseTroopChatPie)) && (((BaseChatPie)localObject).bb() >= 2))
         {
-          String str = ((BaseChatPie)localObject).b();
+          String str = ((BaseChatPie)localObject).ae();
           if ((!TextUtils.isEmpty(str)) && (str.equals(paramString))) {
             return localObject;
           }
@@ -79,10 +79,10 @@ public class TroopShortcutBarUtil
           {
             paramRspBody = (oidb_0xece.App)paramRspBody.get(0);
             localObject1 = new TroopShortcutBarUtil.RemindGrayTipItem();
-            ((TroopShortcutBarUtil.RemindGrayTipItem)localObject1).jdField_a_of_type_Long = paramRspBody.appid.get();
-            ((TroopShortcutBarUtil.RemindGrayTipItem)localObject1).jdField_a_of_type_JavaLangString = paramRspBody.app_name.get();
-            ((TroopShortcutBarUtil.RemindGrayTipItem)localObject1).jdField_b_of_type_Long = paramRspBody.source.get();
-            ((TroopShortcutBarUtil.RemindGrayTipItem)localObject1).jdField_b_of_type_JavaLangString = paramRspBody.url.get();
+            ((TroopShortcutBarUtil.RemindGrayTipItem)localObject1).a = paramRspBody.appid.get();
+            ((TroopShortcutBarUtil.RemindGrayTipItem)localObject1).c = paramRspBody.app_name.get();
+            ((TroopShortcutBarUtil.RemindGrayTipItem)localObject1).b = paramRspBody.source.get();
+            ((TroopShortcutBarUtil.RemindGrayTipItem)localObject1).d = paramRspBody.url.get();
           }
         }
       }
@@ -103,11 +103,11 @@ public class TroopShortcutBarUtil
         paramString2 = a(paramString1);
         if (paramString2 != null)
         {
-          TroopAppShortcutUtils.a(paramQQAppInterface, paramString2.jdField_a_of_type_AndroidContentContext, paramString2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString1, localRemindGrayTipItem.jdField_a_of_type_Long, localRemindGrayTipItem.jdField_b_of_type_JavaLangString, 0, 0);
+          TroopAppShortcutUtils.a(paramQQAppInterface, paramString2.e, paramString2.f, paramString1, localRemindGrayTipItem.a, localRemindGrayTipItem.d, 0, 0);
           return;
         }
         if ((paramContext != null) && ((paramContext instanceof BaseActivity))) {
-          TroopAppShortcutUtils.a(paramQQAppInterface, paramContext, (BaseActivity)paramContext, paramString1, localRemindGrayTipItem.jdField_a_of_type_Long, localRemindGrayTipItem.jdField_b_of_type_JavaLangString, 0, 0);
+          TroopAppShortcutUtils.a(paramQQAppInterface, paramContext, (BaseActivity)paramContext, paramString1, localRemindGrayTipItem.a, localRemindGrayTipItem.d, 0, 0);
         }
       }
     }
@@ -115,54 +115,43 @@ public class TroopShortcutBarUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ReportController.b(null, "dc00898", "", paramString, "0X800B447", "0X800B447", 0, 0, String.valueOf(b(paramQQAppInterface, paramString)), "", "", "");
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
-  {
-    if (paramQQAppInterface != null)
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-      ThreadManager.excute(new TroopShortcutBarUtil.2(paramQQAppInterface, paramString, paramLong), 32, null, true);
-    }
+    ReportController.b(null, "dc00898", "", paramString, "0X800B447", "0X800B447", 0, 0, String.valueOf(d(paramQQAppInterface, paramString)), "", "", "");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, TroopShortcutBarUtil.RemindGrayTipItem paramRemindGrayTipItem)
   {
-    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)) && (paramRemindGrayTipItem != null) && (!TextUtils.isEmpty(paramRemindGrayTipItem.jdField_a_of_type_JavaLangString)))
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)) && (paramRemindGrayTipItem != null) && (!TextUtils.isEmpty(paramRemindGrayTipItem.c)))
     {
-      if (TextUtils.isEmpty(paramRemindGrayTipItem.jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramRemindGrayTipItem.d)) {
         return;
       }
       TroopShortcutBarManager localTroopShortcutBarManager = (TroopShortcutBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER);
-      long l = localTroopShortcutBarManager.a(paramString);
+      long l = localTroopShortcutBarManager.b(paramString);
       if (l != 0L) {
-        a(paramQQAppInterface, paramString, l);
+        b(paramQQAppInterface, paramString, l);
       }
-      String str1 = BaseApplicationImpl.getContext().getResources().getString(2131720040);
-      String str2 = BaseApplicationImpl.getContext().getResources().getString(2131720041);
-      Object localObject1 = BaseApplicationImpl.getContext().getResources().getString(2131720043);
-      String str3 = BaseApplicationImpl.getContext().getResources().getString(2131720042);
+      String str1 = BaseApplicationImpl.getContext().getResources().getString(2131917661);
+      String str2 = BaseApplicationImpl.getContext().getResources().getString(2131917662);
+      Object localObject1 = BaseApplicationImpl.getContext().getResources().getString(2131917664);
+      String str3 = BaseApplicationImpl.getContext().getResources().getString(2131917663);
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(str1);
-      ((StringBuilder)localObject2).append(paramRemindGrayTipItem.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramRemindGrayTipItem.c);
       ((StringBuilder)localObject2).append(str2);
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(str3);
       localObject2 = ((StringBuilder)localObject2).toString();
-      localObject1 = new UniteGrayTipParam(paramString, paramString, (String)localObject2, 1, -5040, 131091, MessageCache.a());
+      localObject1 = new UniteGrayTipParam(paramString, paramString, (String)localObject2, 1, -5040, 131091, MessageCache.c());
       Bundle localBundle = new Bundle();
       localBundle.putInt("key_action", 62);
       localBundle.putString("textColor", "#40A0FF");
       localBundle.putString("key_action_DATA", paramRemindGrayTipItem.a());
-      ((UniteGrayTipParam)localObject1).a(str1.length(), str1.length() + paramRemindGrayTipItem.jdField_a_of_type_JavaLangString.length(), localBundle);
+      ((UniteGrayTipParam)localObject1).a(str1.length(), str1.length() + paramRemindGrayTipItem.c.length(), localBundle);
       localBundle = new Bundle();
       localBundle.putInt("key_action", 63);
       localBundle.putString("textColor", "#40A0FF");
       localBundle.putString("key_action_DATA", paramRemindGrayTipItem.a());
-      ((UniteGrayTipParam)localObject1).a(str1.length() + paramRemindGrayTipItem.jdField_a_of_type_JavaLangString.length() + str2.length(), ((String)localObject2).length() - str3.length(), localBundle);
+      ((UniteGrayTipParam)localObject1).a(str1.length() + paramRemindGrayTipItem.c.length() + str2.length(), ((String)localObject2).length() - str3.length(), localBundle);
       paramRemindGrayTipItem = new MessageForUniteGrayTip();
       paramRemindGrayTipItem.createMessageUniseq();
       paramRemindGrayTipItem.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject1);
@@ -178,63 +167,36 @@ public class TroopShortcutBarUtil
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      if (!((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).l(paramString1))
+      if (!((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).Y(paramString1))
       {
         if (BaseActivity.sTopActivity != null) {
-          QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131720034), 0).a();
+          QQToast.makeText(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131917655), 0).show();
         }
         return;
       }
       if ((!((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(paramQQAppInterface, paramString1, paramQQAppInterface.getCurrentUin())) && (!TroopUtils.a(paramQQAppInterface, paramString1, paramQQAppInterface.getCurrentUin())))
       {
         if (BaseActivity.sTopActivity != null) {
-          QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131720044), 0).a();
+          QQToast.makeText(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131917665), 0).show();
         }
         return;
       }
-      boolean bool1 = a(paramQQAppInterface, paramString1);
+      boolean bool1 = c(paramQQAppInterface, paramString1);
       TroopShortcutBarUtil.RemindGrayTipItem localRemindGrayTipItem = new TroopShortcutBarUtil.RemindGrayTipItem();
       if (localRemindGrayTipItem.a(paramString2))
       {
-        long l = localRemindGrayTipItem.jdField_a_of_type_Long;
+        long l = localRemindGrayTipItem.a;
         boolean bool2 = a(paramQQAppInterface, paramString1, l);
         if ((bool1) && (bool2))
         {
           if (BaseActivity.sTopActivity != null) {
-            QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131720035), 0).a();
+            QQToast.makeText(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131917656), 0).show();
           }
           return;
         }
-        new AddTroopAppCgi(new TroopShortcutBarUtil.1(bool1, paramString1, paramQQAppInterface, l), paramString1, localRemindGrayTipItem.jdField_a_of_type_Long, localRemindGrayTipItem.jdField_b_of_type_Long, true, null).a(paramQQAppInterface);
+        new AddTroopAppCgi(new TroopShortcutBarUtil.1(bool1, paramString1, paramQQAppInterface, l), paramString1, localRemindGrayTipItem.a, localRemindGrayTipItem.b, true, null).a(paramQQAppInterface);
       }
     }
-  }
-  
-  private static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null) {
-      if (TextUtils.isEmpty(paramString)) {
-        return false;
-      }
-    }
-    try
-    {
-      long l = Long.parseLong(paramString);
-      paramQQAppInterface = ((TroopShortcutBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(l));
-      bool1 = bool2;
-      if (paramQQAppInterface != null)
-      {
-        bool1 = bool2;
-        if (paramQQAppInterface.b() == 0) {
-          bool1 = true;
-        }
-      }
-      return bool1;
-    }
-    catch (Exception paramQQAppInterface) {}
-    return false;
   }
   
   private static boolean a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
@@ -264,7 +226,45 @@ public class TroopShortcutBarUtil
     return false;
   }
   
-  private static long b(QQAppInterface paramQQAppInterface, String paramString)
+  private static void b(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    if (paramQQAppInterface != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      ThreadManager.excute(new TroopShortcutBarUtil.2(paramQQAppInterface, paramString, paramLong), 32, null, true);
+    }
+  }
+  
+  private static boolean c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      paramQQAppInterface = ((TroopShortcutBarManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER)).a(Long.valueOf(l));
+      bool1 = bool2;
+      if (paramQQAppInterface != null)
+      {
+        bool1 = bool2;
+        if (paramQQAppInterface.b() == 0) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    catch (Exception paramQQAppInterface) {}
+    return false;
+  }
+  
+  private static long d(QQAppInterface paramQQAppInterface, String paramString)
   {
     long l2 = 0L;
     long l1 = l2;
@@ -277,7 +277,7 @@ public class TroopShortcutBarUtil
       l1 = l2;
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.c(paramString);
+        paramQQAppInterface = paramQQAppInterface.g(paramString);
         l1 = l2;
         if (paramQQAppInterface != null) {
           l1 = paramQQAppInterface.dwGroupClassExt;
@@ -289,7 +289,7 @@ public class TroopShortcutBarUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarUtil
  * JD-Core Version:    0.7.0.1
  */

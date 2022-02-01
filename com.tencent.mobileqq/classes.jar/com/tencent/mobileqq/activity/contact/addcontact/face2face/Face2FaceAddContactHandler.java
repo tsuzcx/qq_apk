@@ -413,7 +413,7 @@ public class Face2FaceAddContactHandler
           {
             submsgtype0x133.FaceFriend localFaceFriend = (submsgtype0x133.FaceFriend)localIterator.next();
             Face2FaceFriendInfo localFace2FaceFriendInfo = new Face2FaceFriendInfo();
-            localFace2FaceFriendInfo.jdField_a_of_type_JavaLangString = String.valueOf(localFaceFriend.uint64_friend.get());
+            localFace2FaceFriendInfo.a = String.valueOf(localFaceFriend.uint64_friend.get());
             if (!localFaceFriend.bytes_name.has()) {
               break label420;
             }
@@ -423,7 +423,7 @@ public class Face2FaceAddContactHandler
               break label427;
             }
             i = localFaceFriend.uint32_type.get();
-            localFace2FaceFriendInfo.jdField_a_of_type_Int = i;
+            localFace2FaceFriendInfo.c = i;
             ((List)localObject3).add(localFace2FaceFriendInfo);
             continue;
           }
@@ -522,7 +522,7 @@ public class Face2FaceAddContactHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactHandler
  * JD-Core Version:    0.7.0.1
  */

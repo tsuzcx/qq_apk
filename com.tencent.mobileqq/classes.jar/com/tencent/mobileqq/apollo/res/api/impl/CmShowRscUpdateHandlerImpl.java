@@ -13,8 +13,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
 import com.tencent.mobileqq.apollo.res.api.ICmShowRscCacheManager;
 import com.tencent.mobileqq.apollo.res.api.ICmShowRscUpdateHandler;
+import com.tencent.mobileqq.apollo.utils.ApolloResDownloaderUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.jsp.WebSSOAgentServlet;
@@ -28,7 +28,6 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.open.base.BspatchUtil;
 import com.tencent.open.base.MD5Utils;
@@ -45,6 +44,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 
@@ -83,10 +83,10 @@ public class CmShowRscUpdateHandlerImpl
     if (paramContentUpdateCheckResult == null) {
       return false;
     }
-    if (TextUtils.isEmpty(paramContentUpdateCheckResult.jdField_d_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(paramContentUpdateCheckResult.k)) {
       return true;
     }
-    return (paramString != null) && (paramString.equalsIgnoreCase(paramContentUpdateCheckResult.jdField_d_of_type_JavaLangString));
+    return (paramString != null) && (paramString.equalsIgnoreCase(paramContentUpdateCheckResult.k));
   }
   
   private void downloadAllZip(CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult paramContentUpdateCheckResult)
@@ -108,15 +108,11 @@ public class CmShowRscUpdateHandlerImpl
       if (localObject == null) {
         return;
       }
-      localObject = (DownloaderFactory)((AppInterface)localObject).getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+      localObject = ApolloResDownloaderUtil.a((AppRuntime)localObject);
       if (localObject == null) {
         return;
       }
-      localObject = ((DownloaderFactory)localObject).a(3);
-      if (localObject == null) {
-        return;
-      }
-      if (TextUtils.isEmpty(paramContentUpdateCheckResult.jdField_b_of_type_JavaLangString))
+      if (TextUtils.isEmpty(paramContentUpdateCheckResult.f))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("downloadAllZip result.mDownloadFileUrl is empty result:");
@@ -129,18 +125,18 @@ public class CmShowRscUpdateHandlerImpl
       if (localFile.exists()) {
         localFile.delete();
       }
-      DownloadTask localDownloadTask = new DownloadTask(paramContentUpdateCheckResult.jdField_b_of_type_JavaLangString, localFile);
-      localDownloadTask.p = true;
-      localDownloadTask.n = true;
-      localDownloadTask.f = "apollo_res";
-      localDownloadTask.jdField_b_of_type_Int = 1;
-      localDownloadTask.q = true;
-      localDownloadTask.r = true;
+      DownloadTask localDownloadTask = new DownloadTask(paramContentUpdateCheckResult.f, localFile);
+      localDownloadTask.N = true;
+      localDownloadTask.J = true;
+      localDownloadTask.L = "apollo_res";
+      localDownloadTask.e = 1;
+      localDownloadTask.P = true;
+      localDownloadTask.Q = true;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramContentUpdateCheckResult.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramContentUpdateCheckResult.f);
       localStringBuilder.append("_");
-      localStringBuilder.append(paramContentUpdateCheckResult.jdField_a_of_type_JavaLangString);
-      localDownloadTask.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      localStringBuilder.append(paramContentUpdateCheckResult.c);
+      localDownloadTask.b = localStringBuilder.toString();
       ((DownloaderInterface)localObject).startDownload(localDownloadTask, new CmShowRscUpdateHandlerImpl.4(this, localFile, paramContentUpdateCheckResult), null);
     }
   }
@@ -161,15 +157,11 @@ public class CmShowRscUpdateHandlerImpl
     if (localObject == null) {
       return;
     }
-    localObject = (DownloaderFactory)((AppInterface)localObject).getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+    localObject = ApolloResDownloaderUtil.a((AppRuntime)localObject);
     if (localObject == null) {
       return;
     }
-    localObject = ((DownloaderFactory)localObject).a(3);
-    if (localObject == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramContentUpdateCheckResult.c))
+    if (TextUtils.isEmpty(paramContentUpdateCheckResult.j))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("downloadZipAndPatch result.mDownloadPatchFileUrl is empty result:");
@@ -182,18 +174,18 @@ public class CmShowRscUpdateHandlerImpl
     if (localFile.exists()) {
       localFile.delete();
     }
-    DownloadTask localDownloadTask = new DownloadTask(paramContentUpdateCheckResult.c, localFile);
-    localDownloadTask.p = true;
-    localDownloadTask.n = true;
-    localDownloadTask.f = "apollo_res";
-    localDownloadTask.jdField_b_of_type_Int = 1;
-    localDownloadTask.q = true;
-    localDownloadTask.r = true;
+    DownloadTask localDownloadTask = new DownloadTask(paramContentUpdateCheckResult.j, localFile);
+    localDownloadTask.N = true;
+    localDownloadTask.J = true;
+    localDownloadTask.L = "apollo_res";
+    localDownloadTask.e = 1;
+    localDownloadTask.P = true;
+    localDownloadTask.Q = true;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramContentUpdateCheckResult.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(paramContentUpdateCheckResult.f);
     localStringBuilder.append("_");
-    localStringBuilder.append(paramContentUpdateCheckResult.jdField_a_of_type_JavaLangString);
-    localDownloadTask.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append(paramContentUpdateCheckResult.c);
+    localDownloadTask.b = localStringBuilder.toString();
     ((DownloaderInterface)localObject).startDownload(localDownloadTask, new CmShowRscUpdateHandlerImpl.3(this, localFile, paramContentUpdateCheckResult), null);
   }
   
@@ -202,10 +194,10 @@ public class CmShowRscUpdateHandlerImpl
     if (paramContentUpdateCheckResult == null) {
       return false;
     }
-    if (TextUtils.isEmpty(paramContentUpdateCheckResult.jdField_e_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(paramContentUpdateCheckResult.l)) {
       return false;
     }
-    return paramContentUpdateCheckResult.jdField_e_of_type_JavaLangString.endsWith(".zip");
+    return paramContentUpdateCheckResult.l.endsWith(".zip");
   }
   
   private void onContentCheckFailed(int paramInt)
@@ -235,10 +227,10 @@ public class CmShowRscUpdateHandlerImpl
       ((StringBuilder)localObject1).append(paramContentUpdateCheckResult);
       QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((paramContentUpdateCheckResult.jdField_a_of_type_Int == 100) && (paramContentUpdateCheckResult.jdField_a_of_type_Long == 1L)) {
+    if ((paramContentUpdateCheckResult.a == 100) && (paramContentUpdateCheckResult.b == 1L)) {
       if (1 != BaseApplicationImpl.sProcessId)
       {
-        if ("all_room3D".equals(paramContentUpdateCheckResult.jdField_a_of_type_JavaLangString)) {
+        if ("all_room3D".equals(paramContentUpdateCheckResult.c)) {
           ((ICmShowRscCacheManager)QRoute.api(ICmShowRscCacheManager.class)).onRoomZipUpdated();
         } else {
           QLog.i("rscContent_CmShowRscUpdateHandler", 1, "check update from QQ process");
@@ -262,24 +254,24 @@ public class CmShowRscUpdateHandlerImpl
         }
       }
     }
-    saveContentVersion(paramContentUpdateCheckResult, paramContentUpdateCheckResult.jdField_b_of_type_Int);
-    if (paramContentUpdateCheckResult.jdField_b_of_type_Boolean) {
-      if (paramContentUpdateCheckResult.jdField_d_of_type_Int > 0)
+    saveContentVersion(paramContentUpdateCheckResult, paramContentUpdateCheckResult.d);
+    if (paramContentUpdateCheckResult.n) {
+      if (paramContentUpdateCheckResult.o > 0)
       {
-        if (sJsonContentUpdateInterval != paramContentUpdateCheckResult.jdField_d_of_type_Int)
+        if (sJsonContentUpdateInterval != paramContentUpdateCheckResult.o)
         {
-          sJsonContentUpdateInterval = paramContentUpdateCheckResult.jdField_d_of_type_Int;
-          this.mSharedPreferences.edit().putInt("json_content_update_interval", paramContentUpdateCheckResult.jdField_d_of_type_Int).commit();
+          sJsonContentUpdateInterval = paramContentUpdateCheckResult.o;
+          this.mSharedPreferences.edit().putInt("json_content_update_interval", paramContentUpdateCheckResult.o).commit();
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("onContentCheckSuccess interval != result.mCheckServerInterval:");
-          ((StringBuilder)localObject2).append(paramContentUpdateCheckResult.jdField_d_of_type_Int);
+          ((StringBuilder)localObject2).append(paramContentUpdateCheckResult.o);
           QLog.i("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject2).toString());
         }
         else if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("onContentCheckSuccess interval == result.mCheckServerInterval:");
-          ((StringBuilder)localObject2).append(paramContentUpdateCheckResult.jdField_d_of_type_Int);
+          ((StringBuilder)localObject2).append(paramContentUpdateCheckResult.o);
           QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject2).toString());
         }
       }
@@ -287,7 +279,7 @@ public class CmShowRscUpdateHandlerImpl
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("onContentCheckSuccess result.mCheckServerInterval <= 0");
-        ((StringBuilder)localObject2).append(paramContentUpdateCheckResult.jdField_d_of_type_Int);
+        ((StringBuilder)localObject2).append(paramContentUpdateCheckResult.o);
         QLog.i("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject2).toString());
       }
     }
@@ -318,163 +310,152 @@ public class CmShowRscUpdateHandlerImpl
   
   private void updateResource(int paramInt, List<CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult> paramList)
   {
-    if (paramList != null)
+    if (paramList == null)
     {
-      if (QLog.isColorLevel())
+      onContentCheckSuccess(paramInt, null);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateResource checkResults:");
+      ((StringBuilder)localObject1).append(paramList.size());
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (paramList.isEmpty()) {
+      return;
+    }
+    Object localObject1 = (AppInterface)this.mAppRef.get();
+    if (localObject1 == null) {
+      return;
+    }
+    if (ApolloResDownloaderUtil.a((AppRuntime)localObject1) == null) {
+      return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult localContentUpdateCheckResult = (CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult)paramList.next();
+      if (localContentUpdateCheckResult != null)
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("updateResource checkResults:");
-        ((StringBuilder)localObject1).append(paramList.size());
-        QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject1).toString());
-      }
-      if (paramList.isEmpty()) {
-        return;
-      }
-      Object localObject1 = (AppInterface)this.mAppRef.get();
-      if (localObject1 == null) {
-        return;
-      }
-      localObject1 = (DownloaderFactory)((AppInterface)localObject1).getManager(QQManagerFactory.DOWNLOADER_FACTORY);
-      if (localObject1 == null) {
-        return;
-      }
-      if (((DownloaderFactory)localObject1).a(3) == null) {
-        return;
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult localContentUpdateCheckResult = (CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult)paramList.next();
-        if (localContentUpdateCheckResult != null)
+        localObject1 = new File(localContentUpdateCheckResult.c());
+        ((File)localObject1).getParentFile().mkdirs();
+        if (((File)localObject1).exists()) {
+          ((File)localObject1).delete();
+        }
+        Object localObject2 = localContentUpdateCheckResult.e();
+        Object localObject3;
+        if ((localContentUpdateCheckResult.g) && (!new File((String)localObject2).exists()))
         {
-          localObject1 = new File(localContentUpdateCheckResult.c());
-          ((File)localObject1).getParentFile().mkdirs();
-          if (((File)localObject1).exists()) {
-            ((File)localObject1).delete();
-          }
-          Object localObject2 = localContentUpdateCheckResult.e();
-          Object localObject3;
-          if ((localContentUpdateCheckResult.jdField_a_of_type_Boolean) && (!new File((String)localObject2).exists()))
+          localContentUpdateCheckResult.g = false;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("updateResource old version File no exist :");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          QLog.e("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject3).toString());
+        }
+        if (!localContentUpdateCheckResult.g)
+        {
+          downloadAllZip(localContentUpdateCheckResult);
+        }
+        else if (localContentUpdateCheckResult.h == null)
+        {
+          downloadZipAndPatch(localContentUpdateCheckResult);
+        }
+        else
+        {
+          localObject3 = localContentUpdateCheckResult.d();
+          if (!FileUtils.writeFile(localContentUpdateCheckResult.h, (String)localObject3))
           {
-            localContentUpdateCheckResult.jdField_a_of_type_Boolean = false;
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("updateResource old version File no exist :");
-            ((StringBuilder)localObject3).append((String)localObject2);
-            QLog.e("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject3).toString());
+            downloadAllZip(localContentUpdateCheckResult);
           }
-          if (localContentUpdateCheckResult.jdField_a_of_type_Boolean)
+          else if (!BspatchUtil.a((String)localObject2, (String)localObject3, ((File)localObject1).getAbsolutePath()))
           {
-            if (localContentUpdateCheckResult.jdField_a_of_type_ArrayOfByte != null)
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("BspatchUtil.patch failed path:");
+            ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+            QLog.e("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject2).toString());
+            downloadAllZip(localContentUpdateCheckResult);
+          }
+          else
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("BspatchUtil.patch success path:");
+            ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject2).toString());
+            localObject2 = MD5Utils.encodeFileHexStr(((File)localObject1).getAbsolutePath());
+            if (QLog.isColorLevel())
             {
-              localObject3 = localContentUpdateCheckResult.d();
-              if (FileUtils.writeFile(localContentUpdateCheckResult.jdField_a_of_type_ArrayOfByte, (String)localObject3))
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append(" updateResource onDone dstMd5:");
+              ((StringBuilder)localObject3).append((String)localObject2);
+              ((StringBuilder)localObject3).append(" result.mMd5:");
+              ((StringBuilder)localObject3).append(localContentUpdateCheckResult.k);
+              QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject3).toString());
+            }
+            if (!checkZipMd5(localContentUpdateCheckResult, (String)localObject2))
+            {
+              QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
+              downloadAllZip(localContentUpdateCheckResult);
+            }
+            else
+            {
+              try
               {
-                if (BspatchUtil.a((String)localObject2, (String)localObject3, ((File)localObject1).getAbsolutePath()))
+                if (needUnzip(localContentUpdateCheckResult))
                 {
                   localObject2 = new StringBuilder();
-                  ((StringBuilder)localObject2).append("BspatchUtil.patch success path:");
-                  ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-                  QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject2).toString());
-                  try
+                  ((StringBuilder)localObject2).append(((File)localObject1).getParent());
+                  ((StringBuilder)localObject2).append(File.separator);
+                  ZipUtils.unZipFile((File)localObject1, ((StringBuilder)localObject2).toString());
+                  if (QLog.isColorLevel())
                   {
-                    localObject2 = MD5Utils.encodeFileHexStr(((File)localObject1).getAbsolutePath());
-                    if (QLog.isColorLevel())
-                    {
-                      localObject3 = new StringBuilder();
-                      ((StringBuilder)localObject3).append(" updateResource onDone dstMd5:");
-                      ((StringBuilder)localObject3).append((String)localObject2);
-                      ((StringBuilder)localObject3).append(" result.mMd5:");
-                      ((StringBuilder)localObject3).append(localContentUpdateCheckResult.jdField_d_of_type_JavaLangString);
-                      QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject3).toString());
-                    }
-                    if (checkZipMd5(localContentUpdateCheckResult, (String)localObject2))
-                    {
-                      if (needUnzip(localContentUpdateCheckResult))
-                      {
-                        localObject2 = new StringBuilder();
-                        ((StringBuilder)localObject2).append(((File)localObject1).getParent());
-                        ((StringBuilder)localObject2).append(File.separator);
-                        ZipUtils.unZipFile((File)localObject1, ((StringBuilder)localObject2).toString());
-                        if (QLog.isColorLevel())
-                        {
-                          localObject2 = new StringBuilder();
-                          ((StringBuilder)localObject2).append("updateResource unZipFile ok file dstpath:");
-                          ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-                          QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject2).toString());
-                        }
-                      }
-                      else
-                      {
-                        localObject2 = ((File)localObject1).getAbsolutePath();
-                        localObject3 = new StringBuilder();
-                        ((StringBuilder)localObject3).append(localContentUpdateCheckResult.b());
-                        ((StringBuilder)localObject3).append(localContentUpdateCheckResult.jdField_e_of_type_JavaLangString);
-                        boolean bool = FileUtils.copyFile((String)localObject2, ((StringBuilder)localObject3).toString());
-                        localObject2 = new StringBuilder();
-                        ((StringBuilder)localObject2).append("downloadAllZip no need unzip copy:");
-                        ((StringBuilder)localObject2).append(bool);
-                        QLog.i("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject2).toString());
-                      }
-                      onContentCheckSuccess(localContentUpdateCheckResult.jdField_e_of_type_Int, localContentUpdateCheckResult);
-                      continue;
-                    }
-                    QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-                    downloadAllZip(localContentUpdateCheckResult);
-                  }
-                  catch (OutOfMemoryError localOutOfMemoryError)
-                  {
-                    ((File)localObject1).delete();
-                    if (!QLog.isColorLevel()) {
-                      continue;
-                    }
                     localObject2 = new StringBuilder();
-                    ((StringBuilder)localObject2).append("updateResource unZipFile file error path->");
+                    ((StringBuilder)localObject2).append("updateResource unZipFile ok file dstpath:");
                     ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-                    ((StringBuilder)localObject2).append(localOutOfMemoryError.getMessage());
                     QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject2).toString());
-                  }
-                  catch (Exception localException)
-                  {
-                    ((File)localObject1).delete();
-                    if (QLog.isColorLevel())
-                    {
-                      localObject2 = new StringBuilder();
-                      ((StringBuilder)localObject2).append("updateResource unZipFile file error path->");
-                      ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-                      ((StringBuilder)localObject2).append(localException.getMessage());
-                      QLog.d("rscContent_CmShowRscUpdateHandler", 2, ((StringBuilder)localObject2).toString());
-                    }
-                    onContentCheckFailed(paramInt);
                   }
                 }
                 else
                 {
+                  localObject2 = ((File)localObject1).getAbsolutePath();
+                  localObject3 = new StringBuilder();
+                  ((StringBuilder)localObject3).append(localContentUpdateCheckResult.b());
+                  ((StringBuilder)localObject3).append(localContentUpdateCheckResult.l);
+                  boolean bool = FileUtils.copyFile((String)localObject2, ((StringBuilder)localObject3).toString());
                   localObject2 = new StringBuilder();
-                  ((StringBuilder)localObject2).append("BspatchUtil.patch failed path:");
-                  ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-                  QLog.e("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject2).toString());
-                  downloadAllZip(localException);
+                  ((StringBuilder)localObject2).append("downloadAllZip no need unzip copy:");
+                  ((StringBuilder)localObject2).append(bool);
+                  QLog.i("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject2).toString());
                 }
+                onContentCheckSuccess(localContentUpdateCheckResult.p, localContentUpdateCheckResult);
               }
-              else {
-                downloadAllZip(localException);
+              catch (OutOfMemoryError localOutOfMemoryError)
+              {
+                ((File)localObject1).delete();
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("updateResource unZipFile file error path->");
+                ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+                ((StringBuilder)localObject2).append(localOutOfMemoryError.getMessage());
+                QLog.d("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject2).toString());
+              }
+              catch (Exception localException)
+              {
+                ((File)localObject1).delete();
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("updateResource unZipFile file error path->");
+                ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+                ((StringBuilder)localObject2).append(localException.getMessage());
+                QLog.d("rscContent_CmShowRscUpdateHandler", 1, ((StringBuilder)localObject2).toString());
+                onContentCheckFailed(paramInt);
               }
             }
-            else
-            {
-              downloadZipAndPatch(localException);
-            }
-          }
-          else {
-            downloadAllZip(localException);
           }
         }
       }
     }
-    onContentCheckSuccess(paramInt, null);
   }
   
-  public void addChecListener(int paramInt, CmShowRscUpdateHandlerImpl.OnCheckContentListener paramOnCheckContentListener)
+  public void addCheckListener(int paramInt, CmShowRscUpdateHandlerImpl.OnCheckContentListener paramOnCheckContentListener)
   {
     synchronized (this.mCheckContentListeners)
     {
@@ -525,7 +506,7 @@ public class CmShowRscUpdateHandlerImpl
       localObject3 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject3).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject3).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject3).mqqver.set("8.7.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject3).mqqver.set("8.8.17");
       localObject2 = new WebSSOAgent.UniSsoServerReq();
       ((WebSSOAgent.UniSsoServerReq)localObject2).comm.set((MessageMicro)localObject3);
       ((WebSSOAgent.UniSsoServerReq)localObject2).pbReqData.set(ByteStringMicro.copyFrom(((CmShowContentUpdate.STContUpdReq)localObject1).toByteArray()));
@@ -626,7 +607,7 @@ public class CmShowRscUpdateHandlerImpl
     }
   }
   
-  public void removeCheckLisntener(int paramInt)
+  public void removeCheckListener(int paramInt)
   {
     synchronized (this.mCheckContentListeners)
     {
@@ -661,7 +642,7 @@ public class CmShowRscUpdateHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.res.api.impl.CmShowRscUpdateHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

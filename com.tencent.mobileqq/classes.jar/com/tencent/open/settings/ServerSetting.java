@@ -9,23 +9,18 @@ import java.net.URL;
 
 public class ServerSetting
 {
-  protected static ServerSetting a;
   protected static final String a = "com.tencent.open.settings.ServerSetting";
-  protected volatile WeakReference<SharedPreferences> a;
-  
-  public ServerSetting()
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
+  protected static ServerSetting b;
+  protected volatile WeakReference<SharedPreferences> c = null;
   
   public static ServerSetting a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentOpenSettingsServerSetting == null) {
-        jdField_a_of_type_ComTencentOpenSettingsServerSetting = new ServerSetting();
+      if (b == null) {
+        b = new ServerSetting();
       }
-      ServerSetting localServerSetting = jdField_a_of_type_ComTencentOpenSettingsServerSetting;
+      ServerSetting localServerSetting = b;
       return localServerSetting;
     }
     finally {}
@@ -38,8 +33,8 @@ public class ServerSetting
   
   public String a(String paramString, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(OpensdkPreference.a(CommonDataAdapter.a().a(), "OpenSettings"));
+    if ((this.c == null) || (this.c.get() == null)) {
+      this.c = new WeakReference(OpensdkPreference.a(CommonDataAdapter.a().b(), "OpenSettings"));
     }
     String str1 = paramString;
     try
@@ -48,7 +43,7 @@ public class ServerSetting
       if (localObject1 == null)
       {
         str1 = paramString;
-        paramBundle = jdField_a_of_type_JavaLangString;
+        paramBundle = a;
         str1 = paramString;
         localObject1 = new StringBuilder();
         str1 = paramString;
@@ -60,7 +55,7 @@ public class ServerSetting
         return paramString;
       }
       str1 = paramString;
-      Object localObject2 = (SharedPreferences)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      Object localObject2 = (SharedPreferences)this.c.get();
       if (localObject2 != null)
       {
         str1 = paramString;
@@ -78,7 +73,7 @@ public class ServerSetting
             str1 = paramString;
             paramString = paramString.replace((CharSequence)localObject1, str2);
             str1 = paramString;
-            paramBundle = jdField_a_of_type_JavaLangString;
+            paramBundle = a;
             str1 = paramString;
             localObject1 = new StringBuilder();
             str1 = paramString;
@@ -91,7 +86,7 @@ public class ServerSetting
           }
         }
         str1 = paramString;
-        paramBundle = jdField_a_of_type_JavaLangString;
+        paramBundle = a;
         str1 = paramString;
         localObject2 = new StringBuilder();
         str1 = paramString;
@@ -110,7 +105,7 @@ public class ServerSetting
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       paramBundle = new StringBuilder();
       paramBundle.append("getEnvUrl error. url=");
       paramBundle.append(str1);
@@ -121,7 +116,7 @@ public class ServerSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.settings.ServerSetting
  * JD-Core Version:    0.7.0.1
  */

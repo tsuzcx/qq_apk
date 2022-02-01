@@ -16,19 +16,19 @@ class ExpandHandlerImpl$1
   {
     if (paramBoolean)
     {
-      paramObject = (FriendsManager)ExpandHandlerImpl.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkImplExpandHandlerImpl).getManager(QQManagerFactory.FRIENDS_MANAGER);
-      Card localCard = paramObject.b(this.jdField_a_of_type_JavaLangString);
-      localCard.clothesId = this.jdField_a_of_type_Int;
-      localCard.fontId = this.b;
+      paramObject = (FriendsManager)ExpandHandlerImpl.a(this.d).getManager(QQManagerFactory.FRIENDS_MANAGER);
+      Card localCard = paramObject.g(this.a);
+      localCard.clothesId = this.b;
+      localCard.fontId = this.c;
       localCard.updateTime = NetConnInfoCenter.getServerTimeMillis();
       paramObject.a(localCard);
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkImplExpandHandlerImpl.notifyUI(1, paramBoolean, null);
+      this.d.notifyUI(1, paramBoolean, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.impl.ExpandHandlerImpl.1
  * JD-Core Version:    0.7.0.1
  */

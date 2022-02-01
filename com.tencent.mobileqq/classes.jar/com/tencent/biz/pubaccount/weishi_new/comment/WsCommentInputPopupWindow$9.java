@@ -1,31 +1,21 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import android.widget.ImageButton;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 class WsCommentInputPopupWindow$9
   implements Runnable
 {
-  WsCommentInputPopupWindow$9(WsCommentInputPopupWindow paramWsCommentInputPopupWindow, int paramInt) {}
+  WsCommentInputPopupWindow$9(WsCommentInputPopupWindow paramWsCommentInputPopupWindow, View paramView) {}
   
   public void run()
   {
-    WsCommentInputPopupWindow.a(this.this$0, true);
-    WsCommentInputPopupWindow.a(this.this$0).setVisibility(0);
-    WsCommentInputPopupWindow.b(this.this$0).setVisibility(8);
-    int i = this.a;
-    if (i == 2)
-    {
-      WsCommentInputPopupWindow.c(this.this$0).performClick();
-      return;
-    }
-    if (i == 3) {
-      WsCommentInputPopupWindow.d(this.this$0).performClick();
-    }
+    WsCommentInputPopupWindow.m(this.this$0).showSoftInput(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.9
  * JD-Core Version:    0.7.0.1
  */

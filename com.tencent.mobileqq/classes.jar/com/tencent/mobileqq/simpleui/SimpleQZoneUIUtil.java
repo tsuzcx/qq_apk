@@ -20,7 +20,7 @@ public class SimpleQZoneUIUtil
     if (!a()) {
       return null;
     }
-    int i = SimpleUIUtil.d();
+    int i = SimpleUIUtil.f();
     if (ImmersiveUtils.couldSetStatusTextColor())
     {
       paramActivity.getWindow().addFlags(ImmersiveUtils.FLAG_TRANSLUCENT_STATUS);
@@ -60,12 +60,12 @@ public class SimpleQZoneUIUtil
   
   public static final boolean a()
   {
-    return (SimpleUIUtil.a()) && (!QQTheme.d()) && (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzonesimpleui", true));
+    return (SimpleUIUtil.e()) && (!QQTheme.isNowThemeIsNightForQzone()) && (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzonesimpleui", true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleQZoneUIUtil
  * JD-Core Version:    0.7.0.1
  */

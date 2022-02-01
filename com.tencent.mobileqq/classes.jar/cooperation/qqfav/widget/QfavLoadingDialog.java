@@ -18,16 +18,16 @@ import com.tencent.widget.FadeIconImageView;
 public class QfavLoadingDialog
   extends ReportDialog
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
+  Animatable a = null;
+  SlideDetectListView b = null;
+  TextView c = null;
+  Context d = null;
   
   public QfavLoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131756192);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560767, null);
+    super(paramContext, 2131953341);
+    this.d = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131627025, null);
     setContentView(paramContext);
     Object localObject = getWindow();
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
@@ -35,26 +35,26 @@ public class QfavLoadingDialog
     localLayoutParams.height = -1;
     ((Window)localObject).setAttributes(localLayoutParams);
     setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131369202);
+    localObject = (TextView)paramContext.findViewById(2131436180);
     if (localObject != null)
     {
       ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131690706);
+      ((TextView)localObject).setText(2131887625);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131369249));
+    this.c = ((TextView)paramContext.findViewById(2131436227));
     try
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692234);
+        this.c.setVisibility(0);
+        this.c.setText(2131889221);
       }
       label140:
-      paramContext = (FadeIconImageView)paramContext.findViewById(2131369216);
+      paramContext = (FadeIconImageView)paramContext.findViewById(2131436194);
       if (paramContext != null)
       {
         paramContext.setVisibility(0);
-        paramContext.setImageResource(2130840334);
+        paramContext.setImageResource(2130841074);
       }
       if (QLog.isColorLevel()) {
         QLog.d("qqfav", 2, "enter into QfavLoadingDialog");
@@ -70,7 +70,7 @@ public class QfavLoadingDialog
   public void dismiss()
   {
     super.dismiss();
-    Animatable localAnimatable = this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
+    Animatable localAnimatable = this.a;
     if (localAnimatable != null) {
       localAnimatable.stop();
     }
@@ -79,22 +79,22 @@ public class QfavLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839404));
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null)
+    this.a = ((Animatable)this.d.getResources().getDrawable(2130839588));
+    if (this.a != null)
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = this.c;
       if (localTextView != null)
       {
         localTextView.setCompoundDrawablePadding(10);
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+        this.c.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.a, null, null, null);
+        this.a.start();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.widget.QfavLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

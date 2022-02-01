@@ -14,84 +14,75 @@ import java.util.Set;
 
 public class BeautyConfig
 {
-  private static final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(13);
-  private final LinkedHashMap<String, BeautyConfig.Beauty> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(12);
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = true;
+  private static final SparseArray<String> a = new SparseArray(13);
+  private final LinkedHashMap<String, BeautyConfig.Beauty> b = new LinkedHashMap(12);
+  private boolean c = false;
+  private boolean d = true;
   
   static
   {
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.COLOR_TONE.value, "COLOR_TONE");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.EYE_LIGHTEN.value, "EYE_LIGHTEN");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.TOOTH_WHITEN.value, "TOOTH_WHITEN");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.EYE.value, "ENLARGE_EYE");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.MOUTH_SHAPE.value, "MOUTH_SHAPE");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.CHIN.value, "CHIN");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.FACE_THIN.value, "FACE_THIN");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.FACE_V.value, "FACE_V");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.BASIC4.value, "FACE_SHAPE_4");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.FACE_SHORTEN.value, "FACE_SHORTEN");
-    jdField_a_of_type_AndroidUtilSparseArray.put(BeautyRealConfig.TYPE.NOSE.value, "NOSE_THIN");
+    a.put(BeautyRealConfig.TYPE.COLOR_TONE.value, "COLOR_TONE");
+    a.put(BeautyRealConfig.TYPE.EYE_LIGHTEN.value, "EYE_LIGHTEN");
+    a.put(BeautyRealConfig.TYPE.TOOTH_WHITEN.value, "TOOTH_WHITEN");
+    a.put(BeautyRealConfig.TYPE.EYE.value, "ENLARGE_EYE");
+    a.put(BeautyRealConfig.TYPE.MOUTH_SHAPE.value, "MOUTH_SHAPE");
+    a.put(BeautyRealConfig.TYPE.CHIN.value, "CHIN");
+    a.put(BeautyRealConfig.TYPE.FACE_THIN.value, "FACE_THIN");
+    a.put(BeautyRealConfig.TYPE.FACE_V.value, "FACE_V");
+    a.put(BeautyRealConfig.TYPE.BASIC4.value, "FACE_SHAPE_4");
+    a.put(BeautyRealConfig.TYPE.FACE_SHORTEN.value, "FACE_SHORTEN");
+    a.put(BeautyRealConfig.TYPE.NOSE.value, "NOSE_THIN");
   }
   
   public BeautyConfig()
   {
-    d();
+    g();
   }
   
   public static String a(int paramInt)
   {
-    return (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return (String)a.get(paramInt);
   }
   
-  private void d()
+  private void g()
   {
     if (AEFilterSupport.a() >= 7) {
-      this.b = false;
+      this.d = false;
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("BEAUTY_SKIN", new BeautyConfig.Beauty(null, 1, 50, 0));
-    if (this.b)
+    this.b.clear();
+    this.b.put("BEAUTY_SKIN", new BeautyConfig.Beauty(null, 1, 50, 0));
+    if (this.d)
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("COLOR_TONE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.COLOR_TONE, 2, 50, 50));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("EYE_LIGHTEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.EYE_LIGHTEN, 2, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("TOOTH_WHITEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.TOOTH_WHITEN, 2, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ENLARGE_EYE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.EYE, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("MOUTH_SHAPE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.MOUTH_SHAPE, 3, 50, 50));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("CHIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.CHIN, 3, 50, 50));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_THIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_THIN, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_V", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_V, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHAPE_4", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.BASIC4, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHORTEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_SHORTEN, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("NOSE_THIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.NOSE, 3, 0, 0));
+      this.b.put("COLOR_TONE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.COLOR_TONE, 2, 50, 50));
+      this.b.put("EYE_LIGHTEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.EYE_LIGHTEN, 2, 0, 0));
+      this.b.put("TOOTH_WHITEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.TOOTH_WHITEN, 2, 0, 0));
+      this.b.put("ENLARGE_EYE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.EYE, 3, 0, 0));
+      this.b.put("MOUTH_SHAPE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.MOUTH_SHAPE, 3, 50, 50));
+      this.b.put("CHIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.CHIN, 3, 50, 50));
+      this.b.put("FACE_THIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_THIN, 3, 0, 0));
+      this.b.put("FACE_V", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_V, 3, 0, 0));
+      this.b.put("FACE_SHAPE_4", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.BASIC4, 3, 0, 0));
+      this.b.put("FACE_SHORTEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_SHORTEN, 3, 0, 0));
+      this.b.put("NOSE_THIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.NOSE, 3, 0, 0));
       return;
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("COLOR_TONE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.COLOR_TONE, 2, 50, 50));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("EYE_LIGHTEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.EYE_LIGHTEN, 2, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("TOOTH_WHITEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.TOOTH_WHITEN, 2, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ENLARGE_EYE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.EYE, 3, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("MOUTH_SHAPE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.MOUTH_SHAPE, 3, 50, 50));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("CHIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.CHIN, 3, 50, 50));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_THIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_THIN, 3, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_V", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_V, 3, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHAPE_4", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.BASIC4, 3, 40, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHORTEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_SHORTEN, 3, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("NOSE_THIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.NOSE, 3, 0, 0));
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
-    if (paramString != null) {
-      return paramString.d;
-    }
-    return 0;
+    this.b.put("COLOR_TONE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.COLOR_TONE, 2, 50, 50));
+    this.b.put("EYE_LIGHTEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.EYE_LIGHTEN, 2, 0, 0));
+    this.b.put("TOOTH_WHITEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.TOOTH_WHITEN, 2, 0, 0));
+    this.b.put("ENLARGE_EYE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.EYE, 3, 0, 0));
+    this.b.put("MOUTH_SHAPE", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.MOUTH_SHAPE, 3, 50, 50));
+    this.b.put("CHIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.CHIN, 3, 50, 50));
+    this.b.put("FACE_THIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_THIN, 3, 0, 0));
+    this.b.put("FACE_V", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_V, 3, 0, 0));
+    this.b.put("FACE_SHAPE_4", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.BASIC4, 3, 40, 0));
+    this.b.put("FACE_SHORTEN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.FACE_SHORTEN, 3, 0, 0));
+    this.b.put("NOSE_THIN", new BeautyConfig.Beauty(BeautyRealConfig.TYPE.NOSE, 3, 0, 0));
   }
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet());
+    Object localObject = new ArrayList(this.b.keySet());
     Collections.sort((List)localObject);
     localStringBuilder.append("VERSION");
     localStringBuilder.append(":");
@@ -100,13 +91,13 @@ public class BeautyConfig
     while (i < ((List)localObject).size())
     {
       String str = (String)((List)localObject).get(i);
-      BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
-      if ((localBeauty != null) && (localBeauty.d != localBeauty.b))
+      BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)this.b.get(str);
+      if ((localBeauty != null) && (localBeauty.e != localBeauty.c))
       {
         localStringBuilder.append(",");
         localStringBuilder.append(str);
         localStringBuilder.append(":");
-        localStringBuilder.append(localBeauty.d);
+        localStringBuilder.append(localBeauty.e);
       }
       i += 1;
     }
@@ -121,21 +112,16 @@ public class BeautyConfig
     return localStringBuilder.toString();
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
   void a(int paramInt, List<BeautyConfig.Beauty> paramList)
   {
     if (paramList == null) {
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)localIterator.next()).getValue();
-      if ((localBeauty != null) && ((paramInt == 0) || (localBeauty.jdField_a_of_type_Int == paramInt))) {
+      if ((localBeauty != null) && ((paramInt == 0) || (localBeauty.a == paramInt))) {
         paramList.add(localBeauty);
       }
     }
@@ -146,13 +132,13 @@ public class BeautyConfig
     if (paramBeautyConfig == null) {
       return;
     }
-    Iterator localIterator = paramBeautyConfig.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = paramBeautyConfig.b.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
+      BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)this.b.get(str);
       if (localBeauty != null) {
-        localBeauty.d = paramBeautyConfig.a(str);
+        localBeauty.e = paramBeautyConfig.b(str);
       }
     }
   }
@@ -191,11 +177,11 @@ public class BeautyConfig
               }
               else
               {
-                localObject2 = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localCharSequence);
+                localObject2 = (BeautyConfig.Beauty)this.b.get(localCharSequence);
                 k = j;
                 if (localObject2 != null)
                 {
-                  ((BeautyConfig.Beauty)localObject2).d = m;
+                  ((BeautyConfig.Beauty)localObject2).e = m;
                   k = j;
                 }
               }
@@ -209,14 +195,14 @@ public class BeautyConfig
         }
         i += 1;
       }
-      if ((j < 1) && (this.b))
+      if ((j < 1) && (this.d))
       {
-        localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+        localObject1 = this.b.entrySet().iterator();
         for (i = 1; ((Iterator)localObject1).hasNext(); i = 0)
         {
           label186:
           BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)((Iterator)localObject1).next()).getValue();
-          if ((localBeauty == null) || (localBeauty.jdField_a_of_type_Int == 1) || (localBeauty.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE == BeautyRealConfig.TYPE.BASIC4) || (localBeauty.d == localBeauty.b)) {
+          if ((localBeauty == null) || (localBeauty.a == 1) || (localBeauty.b == BeautyRealConfig.TYPE.BASIC4) || (localBeauty.e == localBeauty.c)) {
             break label186;
           }
         }
@@ -224,7 +210,7 @@ public class BeautyConfig
         if (i != 0)
         {
           j = i;
-          if (a("FACE_SHAPE_4") != 40) {
+          if (b("FACE_SHAPE_4") != 40) {
             j = 0;
           }
         }
@@ -245,67 +231,81 @@ public class BeautyConfig
   
   public void a(String paramString, int paramInt)
   {
-    paramString = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
-    if ((paramString != null) && (paramString.d != paramInt))
+    paramString = (BeautyConfig.Beauty)this.b.get(paramString);
+    if ((paramString != null) && (paramString.e != paramInt))
     {
-      paramString.d = paramInt;
-      this.jdField_a_of_type_Boolean = true;
+      paramString.e = paramInt;
+      this.c = true;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public int b(String paramString)
   {
-    paramString = (BeautyConfig.Beauty)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    paramString = (BeautyConfig.Beauty)this.b.get(paramString);
     if (paramString != null) {
-      return paramString.c;
+      return paramString.e;
     }
     return 0;
   }
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    this.c = false;
+  }
+  
+  public int c(String paramString)
+  {
+    paramString = (BeautyConfig.Beauty)this.b.get(paramString);
+    if (paramString != null) {
+      return paramString.d;
+    }
+    return 0;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public void d()
+  {
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)localIterator.next()).getValue();
-      if ((localBeauty != null) && (localBeauty.d != localBeauty.b))
+      if ((localBeauty != null) && (localBeauty.e != localBeauty.c))
       {
-        localBeauty.d = localBeauty.b;
-        this.jdField_a_of_type_Boolean = true;
+        localBeauty.e = localBeauty.c;
+        this.c = true;
       }
     }
   }
   
-  public boolean b()
+  public void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)localIterator.next()).getValue();
-      if ((localBeauty != null) && (localBeauty.d != localBeauty.c)) {
+      if ((localBeauty != null) && (localBeauty.e != localBeauty.d))
+      {
+        localBeauty.e = localBeauty.d;
+        this.c = true;
+      }
+    }
+  }
+  
+  public boolean f()
+  {
+    Iterator localIterator = this.b.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)localIterator.next()).getValue();
+      if ((localBeauty != null) && (localBeauty.e != localBeauty.d)) {
         return true;
       }
     }
     return false;
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      BeautyConfig.Beauty localBeauty = (BeautyConfig.Beauty)((Map.Entry)localIterator.next()).getValue();
-      if ((localBeauty != null) && (localBeauty.d != localBeauty.c))
-      {
-        localBeauty.d = localBeauty.c;
-        this.jdField_a_of_type_Boolean = true;
-      }
-    }
   }
 }
 

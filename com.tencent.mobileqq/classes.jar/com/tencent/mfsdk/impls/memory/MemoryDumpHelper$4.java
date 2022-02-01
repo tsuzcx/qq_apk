@@ -24,21 +24,21 @@ class MemoryDumpHelper$4
         QLog.d("QAPM_MemoryDumpHelper", 2, "init dialog error!");
         return;
       }
-      if (!MemoryDumpHelper.a(this.this$0).isShowing())
+      if (!MemoryDumpHelper.b(this.this$0).isShowing())
       {
-        MemoryDumpHelper.a(this.this$0).setMessage(this.jdField_a_of_type_JavaLangString);
-        MemoryDumpHelper.a(this.this$0).setPositiveButton(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-        MemoryDumpHelper.a(this.this$0).setNegativeButton(2131690728, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-        MemoryDumpHelper.a(this.this$0).show();
-        Object localObject = MemoryDumpHelper.a(this.this$0);
+        MemoryDumpHelper.b(this.this$0).setMessage(this.a);
+        MemoryDumpHelper.b(this.this$0).setPositiveButton(this.b, this.c);
+        MemoryDumpHelper.b(this.this$0).setNegativeButton(2131887648, this.d);
+        MemoryDumpHelper.b(this.this$0).show();
+        Object localObject = MemoryDumpHelper.e(this.this$0);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("DumpCount");
-        localStringBuilder.append(AppSetting.a());
+        localStringBuilder.append(AppSetting.d());
         int i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
-        localObject = MemoryDumpHelper.a(this.this$0).edit();
+        localObject = MemoryDumpHelper.e(this.this$0).edit();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("DumpCount");
-        localStringBuilder.append(AppSetting.a());
+        localStringBuilder.append(AppSetting.d());
         ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), i + 1).putLong("DumpTime", System.currentTimeMillis()).commit();
         if (QLog.isColorLevel())
         {
@@ -58,7 +58,7 @@ class MemoryDumpHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.MemoryDumpHelper.4
  * JD-Core Version:    0.7.0.1
  */

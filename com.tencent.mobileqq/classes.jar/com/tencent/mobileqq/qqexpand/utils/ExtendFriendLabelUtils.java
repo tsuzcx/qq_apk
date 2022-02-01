@@ -26,39 +26,53 @@ public class ExtendFriendLabelUtils
     } else {
       i = 1;
     }
-    localLabelInfo.jdField_a_of_type_Int = i;
+    localLabelInfo.a = i;
     String str;
     if (paramStrangerInfo.mAge == -1) {
       str = "";
     } else {
       str = String.valueOf(paramStrangerInfo.mAge);
     }
-    localLabelInfo.jdField_a_of_type_JavaLangString = str;
+    localLabelInfo.b = str;
     if ((paramStrangerInfo.mGender == 1) || (paramStrangerInfo.mGender == 2))
     {
       if (paramStrangerInfo.mGender == 2) {
-        paramContext = paramContext.getResources().getDrawable(2130845139);
+        paramContext = paramContext.getResources().getDrawable(2130846579);
       } else {
-        paramContext = paramContext.getResources().getDrawable(2130845140);
+        paramContext = paramContext.getResources().getDrawable(2130846580);
       }
-      localLabelInfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext;
+      localLabelInfo.e = paramContext;
       if (paramStrangerInfo.mGender == 2) {
         paramContext = "#FF80BF";
       } else {
         paramContext = "#02B2DD";
       }
-      localLabelInfo.b = paramContext;
+      localLabelInfo.c = paramContext;
       if (paramStrangerInfo.mGender == 2) {
         paramStrangerInfo = "#33FF80BF";
       } else {
         paramStrangerInfo = "#3300CAFC";
       }
-      localLabelInfo.c = paramStrangerInfo;
+      localLabelInfo.d = paramStrangerInfo;
     }
     return localLabelInfo;
   }
   
-  public static List<LabelInfo> a(StrangerInfo paramStrangerInfo, Context paramContext)
+  public static LabelInfo b(StrangerInfo paramStrangerInfo, Context paramContext)
+  {
+    if (paramStrangerInfo == null) {
+      return null;
+    }
+    LabelInfo localLabelInfo = new LabelInfo();
+    localLabelInfo.a = 2;
+    localLabelInfo.b = String.valueOf(paramStrangerInfo.mPopularity);
+    localLabelInfo.c = "#8173FF";
+    localLabelInfo.d = "#338173FF";
+    localLabelInfo.e = paramContext.getResources().getDrawable(2130846581);
+    return localLabelInfo;
+  }
+  
+  public static List<LabelInfo> c(StrangerInfo paramStrangerInfo, Context paramContext)
   {
     if (paramStrangerInfo == null) {
       return null;
@@ -69,25 +83,25 @@ public class ExtendFriendLabelUtils
         return null;
       }
       ArrayList localArrayList = new ArrayList();
-      String[] arrayOfString = paramContext.getResources().getStringArray(2130968660);
-      paramContext = paramContext.getResources().getStringArray(2130968659);
+      String[] arrayOfString = paramContext.getResources().getStringArray(2130968662);
+      paramContext = paramContext.getResources().getStringArray(2130968661);
       int i = 0;
       while (i < paramStrangerInfo.mLabelInfos.size())
       {
         LabelInfo localLabelInfo = new LabelInfo();
-        localLabelInfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-        localLabelInfo.jdField_a_of_type_Int = 3;
-        localLabelInfo.jdField_a_of_type_JavaLangString = ((StrangerInfo.LabelInfo)paramStrangerInfo.mLabelInfos.get(i)).jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(localLabelInfo.jdField_a_of_type_JavaLangString))
+        localLabelInfo.e = null;
+        localLabelInfo.a = 3;
+        localLabelInfo.b = ((StrangerInfo.LabelInfo)paramStrangerInfo.mLabelInfos.get(i)).b;
+        if (!TextUtils.isEmpty(localLabelInfo.b))
         {
           int j;
-          if (TextUtils.isEmpty(localLabelInfo.jdField_a_of_type_JavaLangString)) {
+          if (TextUtils.isEmpty(localLabelInfo.b)) {
             j = 0;
           } else {
-            j = localLabelInfo.jdField_a_of_type_JavaLangString.charAt(0);
+            j = localLabelInfo.b.charAt(0);
           }
-          localLabelInfo.b = arrayOfString[(j % arrayOfString.length)];
-          localLabelInfo.c = paramContext[(j % paramContext.length)];
+          localLabelInfo.c = arrayOfString[(j % arrayOfString.length)];
+          localLabelInfo.d = paramContext[(j % paramContext.length)];
           localArrayList.add(localLabelInfo);
         }
         i += 1;
@@ -96,24 +110,10 @@ public class ExtendFriendLabelUtils
     }
     return null;
   }
-  
-  public static LabelInfo b(StrangerInfo paramStrangerInfo, Context paramContext)
-  {
-    if (paramStrangerInfo == null) {
-      return null;
-    }
-    LabelInfo localLabelInfo = new LabelInfo();
-    localLabelInfo.jdField_a_of_type_Int = 2;
-    localLabelInfo.jdField_a_of_type_JavaLangString = String.valueOf(paramStrangerInfo.mPopularity);
-    localLabelInfo.b = "#8173FF";
-    localLabelInfo.c = "#338173FF";
-    localLabelInfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845141);
-    return localLabelInfo;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ExtendFriendLabelUtils
  * JD-Core Version:    0.7.0.1
  */

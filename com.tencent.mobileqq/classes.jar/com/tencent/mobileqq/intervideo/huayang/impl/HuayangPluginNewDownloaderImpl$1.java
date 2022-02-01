@@ -55,7 +55,7 @@ class HuayangPluginNewDownloaderImpl$1
       }
       paramMessage = this.a;
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131705731));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131903616));
       ((StringBuilder)localObject1).append(System.currentTimeMillis() - HuayangPluginNewDownloaderImpl.access$500(this.a));
       HuayangPluginNewDownloaderImpl.access$600(paramMessage, "HuayangPluginNewDownloader", ((StringBuilder)localObject1).toString());
       HuayangPluginNewDownloaderImpl.access$702(this.a, false);
@@ -80,7 +80,7 @@ class HuayangPluginNewDownloaderImpl$1
       }
       if (MonitorConfig.a.get(HuayangPluginNewDownloaderImpl.access$300(this.a)) != null)
       {
-        Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginNewDownloaderImpl.access$300(this.a))).c));
+        Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginNewDownloaderImpl.access$300(this.a))).d));
         return false;
       }
       break;
@@ -90,7 +90,7 @@ class HuayangPluginNewDownloaderImpl$1
       }
       if (MonitorConfig.a.get(HuayangPluginNewDownloaderImpl.access$300(this.a)) != null)
       {
-        Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginNewDownloaderImpl.access$300(this.a))).b));
+        Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginNewDownloaderImpl.access$300(this.a))).c));
         return false;
       }
       break;
@@ -114,7 +114,7 @@ class HuayangPluginNewDownloaderImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.impl.HuayangPluginNewDownloaderImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class FraudHelper$1$1
   
   public void run()
   {
-    if ((FraudHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFraudHelper$1.a) != null) && (this.jdField_a_of_type_Long == Long.parseLong(FraudHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFraudHelper$1.a).a().a))) {
-      FraudHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperFraudHelper$1.a).a();
+    if ((FraudHelper.a(this.b.a) != null) && (this.a == Long.parseLong(FraudHelper.b(this.b.a).O().b))) {
+      FraudHelper.a(this.b.a).d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FraudHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

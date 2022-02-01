@@ -43,7 +43,7 @@ public class AioShortcutBarProvider
   
   public void onPanelChanged(int paramInt1, int paramInt2)
   {
-    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.a.a(52);
+    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.a.q(52);
     if (localAIOShortcutBarHelper != null)
     {
       AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent();
@@ -68,7 +68,7 @@ public class AioShortcutBarProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.miniapp.AioShortcutBarProvider
  * JD-Core Version:    0.7.0.1
  */

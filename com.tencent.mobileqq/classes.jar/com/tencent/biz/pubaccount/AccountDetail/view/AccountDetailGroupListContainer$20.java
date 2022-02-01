@@ -68,22 +68,22 @@ class AccountDetailGroupListContainer$20
             }
             paramInt = j;
           }
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.a.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+          this.a.p.clear();
+          this.a.p.addAll(localArrayList);
           if (paramBundle.uint32_privilege_flag.has())
           {
             localObject1 = this.a;
             if (paramBundle.uint32_privilege_flag.get() == 1) {
               bool = true;
             }
-            ((AccountDetailGroupListContainer)localObject1).d = bool;
+            ((AccountDetailGroupListContainer)localObject1).q = bool;
           }
-          localObject1 = (TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+          localObject1 = (TroopBindPublicAccountMgr)this.a.b.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
           Object localObject2 = new Bundle();
-          ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.d);
+          ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.q);
           ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", localArrayList);
-          ((TroopBindPublicAccountMgr)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
-          this.a.d();
+          ((TroopBindPublicAccountMgr)localObject1).a(this.a.g, (Bundle)localObject2);
+          this.a.e();
         }
         if (QLog.isColorLevel())
         {
@@ -98,7 +98,7 @@ class AccountDetailGroupListContainer$20
           paramBundle.append(",");
           paramBundle.append(paramArrayOfByte);
           paramBundle.append(",");
-          paramBundle.append(this.a.d);
+          paramBundle.append(this.a.q);
           QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, paramBundle.toString());
           return;
         }
@@ -124,7 +124,7 @@ class AccountDetailGroupListContainer$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.20
  * JD-Core Version:    0.7.0.1
  */

@@ -14,20 +14,15 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/request/ApolloRequestCallbackManager;", "", "()V", "mApolloRspCallbackMap", "Ljava/util/HashMap;", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mobileqq/apollo/listener/ApolloRspCallback;", "Lkotlin/collections/HashMap;", "requestIndex", "Ljava/util/concurrent/atomic/AtomicLong;", "handleRspCallBack", "", "callbackIndex", "success", "", "retCode", "errMsg", "", "recordApolloRspCallback", "callback", "intent", "Lmqq/app/NewIntent;", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloRequestCallbackManager
 {
-  public static final ApolloRequestCallbackManager a;
-  private static final HashMap<Long, WeakReference<ApolloRspCallback>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqApolloRequestApolloRequestCallbackManager = new ApolloRequestCallbackManager();
-  }
+  public static final ApolloRequestCallbackManager a = new ApolloRequestCallbackManager();
+  private static final HashMap<Long, WeakReference<ApolloRspCallback>> b = new HashMap();
+  private static final AtomicLong c = new AtomicLong(0L);
   
   public final void a(long paramLong1, boolean paramBoolean, long paramLong2, @Nullable String paramString)
   {
     if (paramLong1 > 0L)
     {
-      Object localObject = jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong1));
+      Object localObject = b.remove(Long.valueOf(paramLong1));
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
@@ -43,15 +38,15 @@ public final class ApolloRequestCallbackManager
     Intrinsics.checkParameterIsNotNull(paramNewIntent, "intent");
     if (paramApolloRspCallback != null)
     {
-      long l = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.incrementAndGet();
+      long l = c.incrementAndGet();
       paramNewIntent.putExtra("index", l);
-      ((Map)jdField_a_of_type_JavaUtilHashMap).put(Long.valueOf(l), new WeakReference(paramApolloRspCallback));
+      ((Map)b).put(Long.valueOf(l), new WeakReference(paramApolloRspCallback));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.request.ApolloRequestCallbackManager
  * JD-Core Version:    0.7.0.1
  */

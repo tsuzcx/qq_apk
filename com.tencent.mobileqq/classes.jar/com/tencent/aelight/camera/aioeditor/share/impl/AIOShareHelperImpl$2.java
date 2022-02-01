@@ -21,7 +21,7 @@ class AIOShareHelperImpl$2
   
   public void run()
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a();
+    Object localObject2 = this.a.b();
     Object localObject1 = new File((String)localObject2);
     if (!((File)localObject1).exists())
     {
@@ -29,17 +29,17 @@ class AIOShareHelperImpl$2
       AEQLog.d("AIOShareHelperImpl", "share video to QQ, but video file is not exist");
       return;
     }
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_type", 21);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("file_send_path", this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.a());
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("from_uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_need_sendmsg", true);
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.d();
-    int j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.b();
-    int k = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.c();
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("file_send_size", (int)((File)localObject1).length());
-    localObject2 = HexUtil.bytes2HexStr(FileManagerUtil.d((String)localObject2));
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("file_shortvideo_md5", (String)localObject2);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("file_name", ((File)localObject1).getName());
+    this.b.putExtra("forward_type", 21);
+    this.b.putExtra("file_send_path", this.a.b());
+    this.b.putExtra("from_uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    this.b.putExtra("forward_need_sendmsg", true);
+    int i = this.a.f();
+    int j = this.a.d();
+    int k = this.a.e();
+    this.b.putExtra("file_send_size", (int)((File)localObject1).length());
+    localObject2 = HexUtil.bytes2HexStr(FileManagerUtil.g((String)localObject2));
+    this.b.putExtra("file_shortvideo_md5", (String)localObject2);
+    this.b.putExtra("file_name", ((File)localObject1).getName());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("video file md5 = ");
     localStringBuilder.append((String)localObject2);
@@ -48,17 +48,17 @@ class AIOShareHelperImpl$2
     AEQLog.b("AIOShareHelperImpl", localStringBuilder.toString());
     if (i > 0)
     {
-      localObject1 = this.jdField_a_of_type_AndroidContentIntent;
+      localObject1 = this.b;
       double d = i;
       Double.isNaN(d);
       ((Intent)localObject1).putExtra("file_send_duration", (int)Math.round(d / 1000.0D));
     }
     if ((j > 0) && (k > 0))
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("file_width", j);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("file_height", k);
+      this.b.putExtra("file_width", j);
+      this.b.putExtra("file_height", k);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject.b();
+    localObject1 = this.a.c();
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       AEQLog.b("AIOShareHelperImpl", "video file has thumbnail");
@@ -69,12 +69,12 @@ class AIOShareHelperImpl$2
       j = ((BitmapFactory.Options)localObject2).outHeight;
       if ((i > 0) && (j > 0))
       {
-        localObject2 = HexUtil.bytes2HexStr(FileManagerUtil.d((String)localObject1));
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("thumbfile_md5", (String)localObject2);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_thumb", (String)localObject1);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("thumbfile_send_path", (String)localObject1);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("thumbfile_send_width", i);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("thumbfile_send_height", j);
+        localObject2 = HexUtil.bytes2HexStr(FileManagerUtil.g((String)localObject1));
+        this.b.putExtra("thumbfile_md5", (String)localObject2);
+        this.b.putExtra("forward_thumb", (String)localObject1);
+        this.b.putExtra("thumbfile_send_path", (String)localObject1);
+        this.b.putExtra("thumbfile_send_width", i);
+        this.b.putExtra("thumbfile_send_height", j);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("decode video thumbnail success, width = ");
         ((StringBuilder)localObject1).append(i);
@@ -89,12 +89,12 @@ class AIOShareHelperImpl$2
         AEQLog.d("AIOShareHelperImpl", "decode video thumbnail fail");
       }
     }
-    ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
+    ThreadManager.getUIHandler().post(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.share.impl.AIOShareHelperImpl.2
  * JD-Core Version:    0.7.0.1
  */

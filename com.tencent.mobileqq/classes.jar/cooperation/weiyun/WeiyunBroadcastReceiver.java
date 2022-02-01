@@ -28,9 +28,9 @@ public class WeiyunBroadcastReceiver
     localForwardFileInfo.b(10001);
     localForwardFileInfo.b(paramFileManagerEntity.nSessionId);
     localForwardFileInfo.d(paramWeiYunFileInfo.c);
-    localForwardFileInfo.c(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+    localForwardFileInfo.c(paramWeiYunFileInfo.a);
     localForwardFileInfo.c(2);
-    localForwardFileInfo.d(paramWeiYunFileInfo.jdField_a_of_type_Long);
+    localForwardFileInfo.d(paramWeiYunFileInfo.d);
     localForwardFileInfo.a(paramWeiYunFileInfo);
     localForwardFileInfo.a(paramFileManagerEntity.getFilePath());
     localForwardFileInfo.c(paramFileManagerEntity.uniseq);
@@ -73,7 +73,7 @@ public class WeiyunBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -19,18 +19,18 @@ class BlankRecommendItemView$InnerRecommendItemView$1
   
   public void onClick(View paramView)
   {
-    SubscribeLaucher.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoBlankRecommendItemView$InnerRecommendItemView.a.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 0, TransitionAnimHelper.a(BlankRecommendItemView.InnerRecommendItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoBlankRecommendItemView$InnerRecommendItemView), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get()));
-    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+    SubscribeLaucher.a(this.b.a.getContext(), this.a, 0, TransitionAnimHelper.a(BlankRecommendItemView.InnerRecommendItemView.a(this.b), this.a.cover.width.get(), this.a.cover.height.get()));
+    String str = this.a.poster.id.get();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BlankRecommendItemView.InnerRecommendItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoBlankRecommendItemView$InnerRecommendItemView));
+    localStringBuilder.append(BlankRecommendItemView.InnerRecommendItemView.b(this.b));
     localStringBuilder.append("");
-    VSReporter.b(str, "auth_follow", "blank_content_clk", 0, 0, new String[] { "", localStringBuilder.toString(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+    VSReporter.b(str, "auth_follow", "blank_content_clk", 0, 0, new String[] { "", localStringBuilder.toString(), this.a.poster.nick.get(), this.a.title.get() });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView.InnerRecommendItemView.1
  * JD-Core Version:    0.7.0.1
  */

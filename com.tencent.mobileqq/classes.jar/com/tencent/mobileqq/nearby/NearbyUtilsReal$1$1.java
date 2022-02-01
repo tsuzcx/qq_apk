@@ -36,7 +36,7 @@ class NearbyUtilsReal$1$1
             {
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("get nearby_sig,targetUin:");
-              ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject).append(this.a.a);
               ((StringBuilder)localObject).append(", errMsg:");
               ((StringBuilder)localObject).append(paramBundle);
               QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, ((StringBuilder)localObject).toString());
@@ -49,7 +49,7 @@ class NearbyUtilsReal$1$1
             {
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("get nearby_sig,targetUin:");
-              ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject).append(this.a.a);
               ((StringBuilder)localObject).append("signature:");
               ((StringBuilder)localObject).append(paramBundle);
               QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, ((StringBuilder)localObject).toString());
@@ -59,12 +59,12 @@ class NearbyUtilsReal$1$1
               if (TextUtils.isEmpty(paramBundle)) {
                 return;
               }
-              if (this.a.jdField_a_of_type_Int == 0)
+              if (this.a.b == 0)
               {
-                this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().g(this.a.jdField_a_of_type_JavaLangString, Base64Util.decode(paramBundle, 0));
+                this.a.c.getMsgCache().g(this.a.a, Base64Util.decode(paramBundle, 0));
                 return;
               }
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().h(this.a.jdField_a_of_type_JavaLangString, Base64Util.decode(paramBundle, 0));
+              this.a.c.getMsgCache().h(this.a.a, Base64Util.decode(paramBundle, 0));
               return;
             }
             catch (Exception paramBundle)
@@ -97,7 +97,7 @@ class NearbyUtilsReal$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyUtilsReal.1.1
  * JD-Core Version:    0.7.0.1
  */

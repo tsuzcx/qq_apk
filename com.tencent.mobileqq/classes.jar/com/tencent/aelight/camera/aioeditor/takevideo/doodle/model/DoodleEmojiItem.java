@@ -44,13 +44,13 @@ public class DoodleEmojiItem
   public DoodleEmojiItem(GetEmojiPackInfoListResponse.EmojiPack paramEmojiPack)
   {
     this.pack_id = paramEmojiPack.a;
-    this.icon = paramEmojiPack.jdField_b_of_type_JavaLangString;
+    this.icon = paramEmojiPack.b;
     this.download_icon = paramEmojiPack.c;
     this.name = paramEmojiPack.d;
     this.download_url = paramEmojiPack.e;
     this.config = paramEmojiPack.g;
     this.md5 = paramEmojiPack.f;
-    this.type = paramEmojiPack.jdField_b_of_type_Int;
+    this.type = paramEmojiPack.i;
   }
   
   public DoodleEmojiItem(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -88,11 +88,11 @@ public class DoodleEmojiItem
     if (i == 3)
     {
       localDoodleEmojiItem.mInfoItemList = InformationFacePackage.a(paramJSONObject.getJSONArray("info_poster_list"));
-      localDoodleEmojiItem.mCityRes = InformationFacePackage.a(paramJSONObject.optJSONArray("city_res"));
+      localDoodleEmojiItem.mCityRes = InformationFacePackage.b(paramJSONObject.optJSONArray("city_res"));
       if (QLog.isColorLevel()) {
         QLog.d("QIMInformationPasterManager", 2, "parsed information item list");
       }
-      paramJSONObject = (QIMInformationPasterManager)QIMManager.a().c(12);
+      paramJSONObject = (QIMInformationPasterManager)QIMManager.a().d(12);
       if (NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext()))
       {
         if (QLog.isColorLevel()) {
@@ -176,7 +176,7 @@ public class DoodleEmojiItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.model.DoodleEmojiItem
  * JD-Core Version:    0.7.0.1
  */

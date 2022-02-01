@@ -22,7 +22,7 @@ class ArticleInfoModule$4
   
   public void run()
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     boolean bool3 = false;
     boolean bool1;
     if (l == -1L) {
@@ -30,27 +30,27 @@ class ArticleInfoModule$4
     } else {
       bool1 = false;
     }
-    ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ArrayOfByte);
-    ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Boolean)
+    ArticleInfoModule.a(this.this$0).a(Integer.valueOf(this.b), this.c);
+    ArticleInfoModule.b(this.this$0).a(this.b);
+    if (this.d)
     {
-      Object localObject2 = ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Int);
+      Object localObject2 = ArticleInfoModule.a(this.this$0).a(this.b);
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new ConcurrentHashMap();
       }
       localObject2 = new StringBuilder("\n");
-      Object localObject3 = this.jdField_a_of_type_JavaUtilList;
+      Object localObject3 = this.e;
       if (localObject3 != null)
       {
         localObject3 = ((List)localObject3).iterator();
-        int i = 0;
+        int j = 0;
         while (((Iterator)localObject3).hasNext())
         {
           AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((Iterator)localObject3).next();
           Object localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("article【");
-          ((StringBuilder)localObject4).append(i);
+          ((StringBuilder)localObject4).append(j);
           ((StringBuilder)localObject4).append("】 id : ");
           ((StringBuilder)localObject4).append(localAbsBaseArticleInfo.mArticleID);
           ((StringBuilder)localObject4).append(" seq : ");
@@ -94,11 +94,11 @@ class ArticleInfoModule$4
             {
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("SocialFeedInfo: mFeedId: ");
-              localStringBuilder.append(((SocializeFeedsInfo)localObject4).jdField_a_of_type_Long);
+              localStringBuilder.append(((SocializeFeedsInfo)localObject4).a);
               localStringBuilder.append(" mFeedStatus: ");
-              localStringBuilder.append(((SocializeFeedsInfo)localObject4).k);
+              localStringBuilder.append(((SocializeFeedsInfo)localObject4).C);
               localStringBuilder.append(" mFollowStatus: ");
-              localStringBuilder.append(((SocializeFeedsInfo)localObject4).h);
+              localStringBuilder.append(((SocializeFeedsInfo)localObject4).o);
               ((StringBuilder)localObject2).append(localStringBuilder.toString());
               ((StringBuilder)localObject2).append("\n");
             }
@@ -107,32 +107,32 @@ class ArticleInfoModule$4
           {
             ((StringBuilder)localObject2).append("\n");
           }
-          if ((RIJFeedsType.F(localAbsBaseArticleInfo)) && (!((ConcurrentMap)localObject1).containsKey(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq)))) {
+          if ((RIJFeedsType.L(localAbsBaseArticleInfo)) && (!((ConcurrentMap)localObject1).containsKey(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq)))) {
             ((ConcurrentMap)localObject1).put(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq), Boolean.valueOf(false));
           }
-          i += 1;
+          j += 1;
         }
         if (((ConcurrentMap)localObject1).size() > 0) {
-          ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Int, (ConcurrentMap)localObject1);
+          ArticleInfoModule.a(this.this$0).a(this.b, (ConcurrentMap)localObject1);
         }
       }
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("handleRefreshChannel success=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.d);
       ((StringBuilder)localObject1).append(" channelId=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append(" noMoreData=");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.f);
       ((StringBuilder)localObject1).append(" beginRecommendSeq=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append(" endRecommendSeq=");
-      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject1).append(this.g);
       ((StringBuilder)localObject1).append(" isInMsgTab : ");
       boolean bool2 = bool3;
-      if (ArticleInfoModule.a(this.this$0) != null)
+      if (ArticleInfoModule.c(this.this$0) != null)
       {
         bool2 = bool3;
-        if ((ArticleInfoModule.b(this.this$0) instanceof QQAppInterface)) {
+        if ((ArticleInfoModule.d(this.this$0) instanceof QQAppInterface)) {
           bool2 = true;
         }
       }
@@ -142,25 +142,25 @@ class ArticleInfoModule$4
       ((StringBuilder)localObject1).append(", ");
       ((StringBuilder)localObject1).append(((StringBuilder)localObject2).toString());
       QLog.i("ArticleInfoModule", 1, ((StringBuilder)localObject1).toString());
-      ArticleInfoModule.a(this.jdField_a_of_type_JavaUtilList);
+      ArticleInfoModule.a(this.e);
     }
-    PreLoader.a().a(this.jdField_a_of_type_JavaUtilList);
-    ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    PreLoader.a().a(this.e);
+    ArticleInfoModule.a(this.this$0).a(this.b, this.e);
     if (bool1)
     {
-      ArticleInfoModule.a(this.this$0).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
-      ArticleInfoModule.a(this.this$0, this.jdField_a_of_type_JavaUtilList);
+      ArticleInfoModule.a(this.this$0).a(this.d, this.b, this.f, this.e, this.a, this.g, this.h, this.i);
+      ArticleInfoModule.a(this.this$0, this.e);
     }
     else
     {
-      ArticleInfoModule.a(this.this$0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+      ArticleInfoModule.a(this.this$0, this.d, this.b, this.f, this.e, this.a, this.g);
     }
-    FeedsRefreshUtilImpl.Companion.a(this.jdField_a_of_type_Int, System.currentTimeMillis());
+    FeedsRefreshUtilImpl.Companion.a(this.b, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticleInfoModule.4
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ class WeiYunLogicCenter$6
       paramAioPicAndVideoCopyToWeiyunMsgRsp.append(paramString);
       QLog.d("WeiYunLogicCenter<FileAssistant>", 2, paramAioPicAndVideoCopyToWeiyunMsgRsp.toString());
     }
-    paramAioPicAndVideoCopyToWeiyunMsgRsp = this.jdField_a_of_type_ComTencentMobileqqWeiyunWeiyunCallback;
+    paramAioPicAndVideoCopyToWeiyunMsgRsp = this.a;
     if (paramAioPicAndVideoCopyToWeiyunMsgRsp != null) {
       paramAioPicAndVideoCopyToWeiyunMsgRsp.a(paramInt, paramString);
     }
@@ -32,7 +32,7 @@ class WeiYunLogicCenter$6
     if (QLog.isColorLevel()) {
       QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
     }
-    paramAioPicAndVideoCopyToWeiyunMsgRsp = this.jdField_a_of_type_ComTencentMobileqqWeiyunWeiyunCallback;
+    paramAioPicAndVideoCopyToWeiyunMsgRsp = this.a;
     if (paramAioPicAndVideoCopyToWeiyunMsgRsp != null) {
       paramAioPicAndVideoCopyToWeiyunMsgRsp.a(null);
     }
@@ -40,7 +40,7 @@ class WeiYunLogicCenter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class RIJCommentAtUtil
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    localObject = paramView.getTag(2131376111);
+    localObject = paramView.getTag(2131444314);
     if (!(localObject instanceof RIJCommentRptDataUtil.PTSCommentModel))
     {
       paramView = new StringBuilder();
@@ -34,17 +34,17 @@ public class RIJCommentAtUtil
       return;
     }
     localObject = (RIJCommentRptDataUtil.PTSCommentModel)localObject;
-    ReadInJoyCommentUtils.a(paramString, paramView.getContext(), ((RIJCommentRptDataUtil.PTSCommentModel)localObject).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    ReadInJoyCommentUtils.a(paramString, paramView.getContext(), ((RIJCommentRptDataUtil.PTSCommentModel)localObject).b);
     a((RIJCommentRptDataUtil.PTSCommentModel)localObject, paramString);
   }
   
   private static void a(RIJCommentRptDataUtil.PTSCommentModel paramPTSCommentModel, CharSequence paramCharSequence)
   {
-    Iterator localIterator = paramPTSCommentModel.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.commentRptDataList.iterator();
+    Iterator localIterator = paramPTSCommentModel.a.commentRptDataList.iterator();
     while (localIterator.hasNext())
     {
       BaseCommentData.CommentRptData localCommentRptData = (BaseCommentData.CommentRptData)localIterator.next();
-      if ((localCommentRptData.a == 1) && (TextUtils.equals(paramCharSequence, localCommentRptData.b))) {
+      if ((localCommentRptData.a == 1) && (TextUtils.equals(paramCharSequence, localCommentRptData.c))) {
         RIJCommentRptDataUtil.a(paramPTSCommentModel, localCommentRptData, "0X800BAC2");
       }
     }
@@ -80,7 +80,7 @@ public class RIJCommentAtUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.rptdata.at.RIJCommentAtUtil
  * JD-Core Version:    0.7.0.1
  */

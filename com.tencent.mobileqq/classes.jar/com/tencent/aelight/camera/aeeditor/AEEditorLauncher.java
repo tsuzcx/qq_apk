@@ -9,19 +9,19 @@ public class AEEditorLauncher
   public static void a(Activity paramActivity, int paramInt1, Bundle paramBundle, int paramInt2)
   {
     int i;
-    if (paramInt1 == 0)
-    {
+    if (paramInt1 == 0) {
       i = 10000;
-    }
-    else if (paramInt1 == 1)
-    {
+    } else if (paramInt1 == 1) {
       i = 10001;
-    }
-    else
+    } else if ((paramInt1 != 2) && (paramInt1 != 3))
     {
-      if ((paramInt1 != 2) && (paramInt1 != 3)) {
+      if (paramInt1 == 4) {
+        i = 10003;
+      } else {
         throw new IllegalArgumentException("wrong editor type");
       }
+    }
+    else {
       i = 10002;
     }
     Intent localIntent1 = new Intent(paramActivity, AEEditorActivity.class);
@@ -56,7 +56,7 @@ public class AEEditorLauncher
   
   public static boolean a(Bundle paramBundle)
   {
-    return a(paramBundle, 0);
+    return a(paramBundle, 4);
   }
   
   private static boolean a(Bundle paramBundle, int paramInt)
@@ -76,17 +76,22 @@ public class AEEditorLauncher
   
   public static boolean b(Bundle paramBundle)
   {
-    return a(paramBundle, 1);
+    return a(paramBundle, 0);
   }
   
   public static boolean c(Bundle paramBundle)
+  {
+    return a(paramBundle, 1);
+  }
+  
+  public static boolean d(Bundle paramBundle)
   {
     return a(paramBundle, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.AEEditorLauncher
  * JD-Core Version:    0.7.0.1
  */

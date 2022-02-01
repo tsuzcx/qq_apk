@@ -8,11 +8,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings.Global;
 import android.provider.Settings.System;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import androidx.annotation.NonNull;
 import com.tencent.mtt.hippy.common.HippyMap;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -98,7 +98,7 @@ public class DimensionsUtil
         localObject2 = Display.class.getMethod("getRawHeight", new Class[0]);
         localObject3 = Display.class.getMethod("getRawWidth", new Class[0]).invoke(localObject1, new Object[0]);
         if (localObject3 == null) {
-          break label637;
+          break label640;
         }
         i = ((Integer)localObject3).intValue();
         localDisplayMetrics1.widthPixels = i;
@@ -175,7 +175,8 @@ public class DimensionsUtil
       }
       paramContext.pushDouble("densityDpi", paramInt1);
       paramContext.pushDouble("statusBarHeight", STATUS_BAR_HEIGHT);
-      paramContext.pushDouble("navigationBarHeight", i);
+      double d = i;
+      paramContext.pushDouble("navigationBarHeight", d);
       localHippyMap.pushMap("windowPhysicalPixels", paramContext);
       paramContext = new HippyMap();
       paramContext.pushInt("width", localDisplayMetrics1.widthPixels);
@@ -184,10 +185,10 @@ public class DimensionsUtil
       paramContext.pushDouble("fontScale", localDisplayMetrics1.scaledDensity);
       paramContext.pushDouble("densityDpi", localDisplayMetrics1.densityDpi);
       paramContext.pushDouble("statusBarHeight", STATUS_BAR_HEIGHT);
-      paramContext.pushDouble("navigationBarHeight", i);
+      paramContext.pushDouble("navigationBarHeight", d);
       localHippyMap.pushMap("screenPhysicalPixels", paramContext);
       return localHippyMap;
-      label637:
+      label640:
       i = 0;
     }
   }
@@ -245,7 +246,7 @@ public class DimensionsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.DimensionsUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -13,34 +13,34 @@ class HongBaoPanel$MyViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  HongBaoPanel.OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$OnHolderItemClickListener;
+  HongBaoPanel.OnHolderItemClickListener a;
   ImageView b;
+  TextView c;
+  ImageView d;
+  RelativeLayout e;
   
   public HongBaoPanel$MyViewHolder(HongBaoPanel paramHongBaoPanel, View paramView, HongBaoPanel.OnHolderItemClickListener paramOnHolderItemClickListener)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$OnHolderItemClickListener = paramOnHolderItemClickListener;
+    this.a = paramOnHolderItemClickListener;
     paramView.setOnClickListener(this);
-    if (paramHongBaoPanel.a)
+    if (paramHongBaoPanel.i)
     {
       paramOnHolderItemClickListener = paramView.getLayoutParams();
-      paramOnHolderItemClickListener.height += paramHongBaoPanel.b + 5;
+      paramOnHolderItemClickListener.height += paramHongBaoPanel.l + 5;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(R.id.L));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(R.id.X));
-    if (HongBaoPanel.a(paramHongBaoPanel)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(HongBaoPanel.a(paramHongBaoPanel));
+    this.b = ((ImageView)paramView.findViewById(R.id.Q));
+    this.c = ((TextView)paramView.findViewById(R.id.ac));
+    if (HongBaoPanel.e(paramHongBaoPanel)) {
+      this.c.setTextColor(HongBaoPanel.f(paramHongBaoPanel));
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(R.id.P));
-    this.b = ((ImageView)paramView.findViewById(R.id.aj));
+    this.e = ((RelativeLayout)paramView.findViewById(R.id.U));
+    this.d = ((ImageView)paramView.findViewById(R.id.aq));
   }
   
   public void onClick(View paramView)
   {
-    HongBaoPanel.OnHolderItemClickListener localOnHolderItemClickListener = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel$OnHolderItemClickListener;
+    HongBaoPanel.OnHolderItemClickListener localOnHolderItemClickListener = this.a;
     if (localOnHolderItemClickListener != null) {
       localOnHolderItemClickListener.a(paramView, getPosition());
     }
@@ -48,7 +48,7 @@ class HongBaoPanel$MyViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

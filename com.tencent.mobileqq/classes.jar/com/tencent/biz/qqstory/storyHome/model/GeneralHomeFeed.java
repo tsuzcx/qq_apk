@@ -17,24 +17,19 @@ import java.util.List;
 public class GeneralHomeFeed
   extends VideoListHomeFeed<GeneralFeedItem>
 {
-  public boolean a;
+  public boolean e;
   
   public GeneralHomeFeed(@NonNull GeneralFeedItem paramGeneralFeedItem)
   {
     super(paramGeneralFeedItem);
   }
   
-  public GeneralFeedItem a()
-  {
-    return (GeneralFeedItem)super.a();
-  }
-  
   public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
     Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_feed.get();
-    ((GeneralFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
-    ((GeneralFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    SLog.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.a).feedSourceTagType), ((GeneralFeedItem)this.a).feedId);
+    ((GeneralFeedItem)this.f).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
+    ((GeneralFeedItem)this.f).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    SLog.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.f).feedSourceTagType), ((GeneralFeedItem)this.f).feedId);
     paramStoryFeed = new ArrayList();
     localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
     while (((Iterator)localObject).hasNext())
@@ -46,6 +41,11 @@ public class GeneralHomeFeed
     }
     c(paramStoryFeed, true);
     return true;
+  }
+  
+  public GeneralFeedItem h()
+  {
+    return (GeneralFeedItem)super.i();
   }
 }
 

@@ -116,7 +116,7 @@ public class EcShopHandler
         {
           if ((paramArrayOfByte.binduin.has()) && (paramArrayOfByte.puin.has()))
           {
-            EcShopAssistantManager.a.put(String.valueOf(paramArrayOfByte.puin.get()), String.valueOf(paramArrayOfByte.binduin.get()));
+            EcShopAssistantManager.j.put(String.valueOf(paramArrayOfByte.puin.get()), String.valueOf(paramArrayOfByte.binduin.get()));
             notifyUI(3, true, null);
           }
         }
@@ -214,7 +214,7 @@ public class EcShopHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopHandler
  * JD-Core Version:    0.7.0.1
  */

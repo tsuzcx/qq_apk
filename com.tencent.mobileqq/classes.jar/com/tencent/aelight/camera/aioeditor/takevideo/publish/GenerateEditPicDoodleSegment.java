@@ -14,15 +14,15 @@ import java.lang.ref.WeakReference;
 public class GenerateEditPicDoodleSegment
   extends MeasureJobSegment<GenerateContext, GenerateContext>
 {
-  public final String a;
   public final WeakReference<EditDoodleExport> a;
-  private boolean a;
+  public final String b;
+  private boolean c;
   
   public GenerateEditPicDoodleSegment(EditDoodleExport paramEditDoodleExport, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramEditDoodleExport);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = false;
+    this.a = new WeakReference(paramEditDoodleExport);
+    this.b = paramString;
+    this.c = false;
   }
   
   private Bitmap a(GenerateContext paramGenerateContext, Bitmap paramBitmap)
@@ -56,19 +56,19 @@ public class GenerateEditPicDoodleSegment
   protected void a(JobContext paramJobContext, GenerateContext paramGenerateContext)
   {
     long l = SystemClock.uptimeMillis();
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.b;
     paramJobContext = (JobContext)localObject;
     if (localObject == null) {
-      paramJobContext = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.b, ".png");
+      paramJobContext = PublishFileManager.a(paramGenerateContext.b, paramGenerateContext.p, ".png");
     }
-    localObject = (EditDoodleExport)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject != null) && (!((EditDoodleExport)localObject).f_()))
+    localObject = (EditDoodleExport)this.a.get();
+    if ((localObject != null) && (!((EditDoodleExport)localObject).h()))
     {
-      localObject = ((EditDoodleExport)localObject).a();
+      localObject = ((EditDoodleExport)localObject).i();
       if (localObject != null)
       {
-        paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.b = ((Bitmap)localObject);
-        paramGenerateContext.jdField_a_of_type_Boolean = true;
+        paramGenerateContext.l.d = ((Bitmap)localObject);
+        paramGenerateContext.f = true;
         Bitmap localBitmap = a(paramGenerateContext, (Bitmap)localObject);
         if (localBitmap != null)
         {
@@ -79,11 +79,11 @@ public class GenerateEditPicDoodleSegment
         {
           SLog.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", "generateFilterBitmap failed");
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.c)
         {
           boolean bool = BitmapUtils.a((Bitmap)localObject, Bitmap.CompressFormat.PNG, 60, paramJobContext);
-          paramGenerateContext.jdField_a_of_type_Boolean = bool;
-          paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.doodlePath = paramJobContext;
+          paramGenerateContext.f = bool;
+          paramGenerateContext.d.doodlePath = paramJobContext;
           if (!bool)
           {
             localObject = new StringBuilder();
@@ -98,7 +98,7 @@ public class GenerateEditPicDoodleSegment
     }
     paramJobContext = new StringBuilder();
     paramJobContext.append("GenerateEditPicDoodleSegment");
-    paramJobContext.append(paramGenerateContext.jdField_a_of_type_Boolean);
+    paramJobContext.append(paramGenerateContext.f);
     paramJobContext.append(" cost ");
     paramJobContext.append(SystemClock.uptimeMillis() - l);
     SLog.d("Q.qqstory.publish.edit.GenerateDoodleImageSegment", paramJobContext.toString());
@@ -107,7 +107,7 @@ public class GenerateEditPicDoodleSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.GenerateEditPicDoodleSegment
  * JD-Core Version:    0.7.0.1
  */

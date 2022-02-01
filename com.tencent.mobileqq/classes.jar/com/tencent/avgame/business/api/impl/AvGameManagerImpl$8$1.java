@@ -17,35 +17,35 @@ class AvGameManagerImpl$8$1
     Object localObject1;
     if (paramBoolean)
     {
-      localObject1 = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject1 = (Activity)this.a.a.get();
       if ((localObject1 != null) && (!((Activity)localObject1).isFinishing()))
       {
-        ReportController.b(null, "dc00898", "", "", "0X800B079", "0X800B079", this.a.jdField_a_of_type_Int, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800B079", "0X800B079", this.a.b, 0, "", "", "", "");
         Object localObject2;
-        if (this.a.jdField_a_of_type_JavaLangString.isEmpty())
+        if (this.a.c.isEmpty())
         {
           if (QLog.isColorLevel()) {
             QLog.i("AvGameManager", 2, "onGetRealNameStatusForAV createAvGameRoom");
           }
-          if (this.a.jdField_b_of_type_Int == 9)
+          if (this.a.d == 9)
           {
-            this.a.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl.startStrangerMatch((Activity)localObject1, 9);
+            this.a.h.startStrangerMatch((Activity)localObject1, 9);
           }
-          else if ((this.a.jdField_b_of_type_Int != 11) && (this.a.jdField_b_of_type_Int != 13))
+          else if ((this.a.d != 11) && (this.a.d != 13))
           {
-            this.a.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl.createAvGameRoom((Activity)localObject1, this.a.jdField_b_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.c);
+            this.a.h.createAvGameRoom((Activity)localObject1, this.a.d, this.a.f, this.a.e);
           }
           else
           {
-            localObject2 = this.a.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl;
-            int j = this.a.c;
+            localObject2 = this.a.h;
+            int j = this.a.e;
             int i;
-            if (this.a.c > 0) {
+            if (this.a.e > 0) {
               i = 1;
             } else {
               i = 0;
             }
-            ((AvGameManagerImpl)localObject2).startStrangerMatchV2((Activity)localObject1, j, i, this.a.jdField_b_of_type_Int);
+            ((AvGameManagerImpl)localObject2).startStrangerMatchV2((Activity)localObject1, j, i, this.a.d);
           }
         }
         else
@@ -54,10 +54,10 @@ class AvGameManagerImpl$8$1
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("onGetRealNameStatusForAV joinAvGameRoom. roomId: ");
-            ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(this.a.c);
             QLog.i("AvGameManager", 2, ((StringBuilder)localObject2).toString());
           }
-          this.a.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl.joinAvGameRoom((Activity)localObject1, this.a.jdField_b_of_type_Int, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
+          this.a.h.joinAvGameRoom((Activity)localObject1, this.a.d, this.a.c, this.a.f);
         }
       }
     }
@@ -69,7 +69,7 @@ class AvGameManagerImpl$8$1
       ((StringBuilder)localObject1).append(". Remove observer.");
       QLog.i("RealName", 2, ((StringBuilder)localObject1).toString());
     }
-    AvGameManagerImpl.access$200(this.a.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl).removeObserver(AvGameManagerImpl.access$300(this.a.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl));
+    AvGameManagerImpl.access$200(this.a.h).removeObserver(AvGameManagerImpl.access$300(this.a.h));
   }
 }
 

@@ -2,29 +2,29 @@ package com.tencent.mobileqq.kandian.repo.atlas;
 
 public class AtlasStackInfo$StackGallery
 {
-  public int a;
   public AtlasModelImageList a;
-  public boolean a;
-  public boolean b;
+  public int b;
+  public boolean c;
+  public boolean d;
   
   public AtlasStackInfo$StackGallery(AtlasStackInfo paramAtlasStackInfo, AtlasModelImageList paramAtlasModelImageList, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoAtlasAtlasModelImageList = paramAtlasModelImageList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    this.a = paramAtlasModelImageList;
+    this.b = paramInt;
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
   }
   
   public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    if (this.b == 0) {
+      this.b = paramInt;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = paramBoolean1;
+    if (!this.c) {
+      this.c = paramBoolean1;
     }
-    if (!this.b) {
-      this.b = paramBoolean2;
+    if (!this.d) {
+      this.d = paramBoolean2;
     }
   }
   
@@ -32,21 +32,21 @@ public class AtlasStackInfo$StackGallery
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("StackGallery{rowKey='");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoAtlasAtlasModelImageList.mParsedInfo.b);
+    localStringBuilder.append(this.a.mParsedInfo.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", place=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", isExposure=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", isClicked=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", isExposure=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", isClicked=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.atlas.AtlasStackInfo.StackGallery
  * JD-Core Version:    0.7.0.1
  */

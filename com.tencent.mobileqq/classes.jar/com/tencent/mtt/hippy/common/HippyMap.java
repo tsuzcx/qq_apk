@@ -235,21 +235,22 @@ public class HippyMap
       pushArray(paramString, (HippyArray)paramObject);
       return;
     }
+    int i;
     if ((paramObject instanceof Integer))
     {
-      paramObject = (Integer)paramObject;
-      label73:
-      pushInt(paramString, paramObject.intValue());
+      i = ((Integer)paramObject).intValue();
+      label77:
+      pushInt(paramString, i);
       return;
     }
     if ((paramObject instanceof Boolean))
     {
-      label90:
+      label92:
       pushBoolean(paramString, ((Boolean)paramObject).booleanValue());
       return;
     }
     if ((paramObject instanceof Double)) {}
-    label110:
+    label112:
     for (double d = ((Double)paramObject).doubleValue();; d = ((Number)paramObject).doubleValue())
     {
       pushDouble(paramString, d);
@@ -258,7 +259,7 @@ public class HippyMap
         break;
       }
     }
-    label132:
+    label134:
     if ((paramObject instanceof Long)) {}
     Class localClass;
     do
@@ -267,21 +268,21 @@ public class HippyMap
       return;
       if ((paramObject instanceof Byte))
       {
-        paramObject = Integer.valueOf(((Byte)paramObject).intValue());
-        break label73;
+        i = ((Byte)paramObject).intValue();
+        break label77;
       }
       localClass = paramObject.getClass();
       if (localClass.isAssignableFrom(Integer.TYPE)) {
         break;
       }
       if (localClass.isAssignableFrom(Boolean.TYPE)) {
-        break label90;
+        break label92;
       }
       if (localClass.isAssignableFrom(Double.TYPE)) {
-        break label110;
+        break label112;
       }
       if (localClass.isAssignableFrom(Float.TYPE)) {
-        break label132;
+        break label134;
       }
     } while (localClass.isAssignableFrom(Long.TYPE));
     paramString = new RuntimeException("push unsupported object into HippyMap");
@@ -352,7 +353,7 @@ public class HippyMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.common.HippyMap
  * JD-Core Version:    0.7.0.1
  */

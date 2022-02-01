@@ -25,26 +25,26 @@ class AEEditorMultiCutEditFragment$14
     if (AEFastClickThrottle.a(paramView)) {
       return;
     }
-    AEBaseDataReporter.a().F();
-    AEReportUtils.p();
+    AEBaseDataReporter.a().G();
+    AEReportUtils.o();
     QQCustomDialog localQQCustomDialog;
-    if (this.a.a != null)
+    if (this.a.h != null)
     {
-      paramView = this.a.a.a();
+      paramView = this.a.h.getSelectedVideoClip();
       if (paramView == null) {
         return;
       }
-      if (AEEditorMultiCutEditFragment.a(this.a).size() == 1)
+      if (AEEditorMultiCutEditFragment.f(this.a).size() == 1)
       {
-        QQToast.a(this.a.getActivity(), 2064515125, 0).a();
+        QQToast.makeText(this.a.getActivity(), 2064187467, 0).show();
         return;
       }
       FragmentActivity localFragmentActivity = this.a.getActivity();
       localQQCustomDialog = DialogUtil.a(localFragmentActivity, 230);
-      localQQCustomDialog.setTitle(localFragmentActivity.getString(2064515124));
-      localQQCustomDialog.setMessage(localFragmentActivity.getString(2064515123));
-      localQQCustomDialog.setPositiveButton(localFragmentActivity.getString(2064515168), new AEEditorMultiCutEditFragment.14.1(this, paramView));
-      localQQCustomDialog.setNegativeButton(localFragmentActivity.getString(2064515117), new AEEditorMultiCutEditFragment.14.2(this));
+      localQQCustomDialog.setTitle(localFragmentActivity.getString(2064187466));
+      localQQCustomDialog.setMessage(localFragmentActivity.getString(2064187465));
+      localQQCustomDialog.setPositiveButton(localFragmentActivity.getString(2064187510), new AEEditorMultiCutEditFragment.14.1(this, paramView));
+      localQQCustomDialog.setNegativeButton(localFragmentActivity.getString(2064187459), new AEEditorMultiCutEditFragment.14.2(this));
       if (localQQCustomDialog == null) {}
     }
     try
@@ -59,7 +59,7 @@ class AEEditorMultiCutEditFragment$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.14
  * JD-Core Version:    0.7.0.1
  */

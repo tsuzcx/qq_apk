@@ -2,112 +2,101 @@ package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringUtil
 {
-  public static int a(String paramString)
-  {
-    int j = 0;
-    if (paramString == null) {
-      return 0;
-    }
-    int i = 0;
-    while (j < paramString.length())
-    {
-      int k = paramString.charAt(j);
-      if ((k >= 0) && (k <= 255)) {
-        i += 1;
-      } else {
-        i += 2;
-      }
-      j += 1;
-    }
-    return i;
-  }
+  private static final String ELIPSE_CHARACTOR = "…";
+  public static final int ERR_ACC_INVALID = 4;
+  public static final int ERR_UIN_EMPTY = 3;
+  public static final int ERR_UIN_INVALID_EMAIL = 2;
+  public static final int ERR_UIN_TOO_LONG = 1;
+  public static final int ERR_UIN_TOO_SHORT = 0;
+  public static final int RES_VALID_UIN = -1;
   
-  public static long a(String paramString1, String paramString2)
+  public static String byte2HexString(byte[] paramArrayOfByte)
   {
-    try
-    {
-      long l = Long.parseLong(paramString2);
-      return l;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("stringToLong Exception, value[");
-        localStringBuilder.append(paramString2);
-        localStringBuilder.append("]");
-        QLog.w(paramString1, 1, localStringBuilder.toString(), localException);
-      }
-    }
-    return 0L;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = "";
-    if (paramString == null) {
-      return "";
-    }
-    int i1 = 0;
+    StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
-    int k = 1;
-    int m;
-    int n;
-    for (int j = 0;; j = n)
+    while (i < paramArrayOfByte.length)
     {
-      m = i1;
-      if (i >= paramString.length()) {
-        break;
-      }
-      if (k != 0)
+      if (Integer.toHexString(paramArrayOfByte[i] & 0xFF).length() == 1)
       {
-        m = k;
-        n = j;
-        if (a(paramString.charAt(i)))
-        {
-          n = i;
-          m = 0;
-        }
+        localStringBuffer.append("0");
+        localStringBuffer.append(Integer.toHexString(paramArrayOfByte[i] & 0xFF));
       }
       else
       {
-        m = k;
-        n = j;
-        if (a(paramString.charAt(i))) {
-          if (paramString.length() - 1 != i)
-          {
-            m = k;
-            n = j;
-            if (a(paramString.charAt(i + 1))) {}
-          }
-          else
-          {
-            m = i;
-            break;
-          }
-        }
+        localStringBuffer.append(Integer.toHexString(paramArrayOfByte[i] & 0xFF));
       }
       i += 1;
-      k = m;
     }
-    i = m + 1;
-    if (j < i)
+    return localStringBuffer.toString();
+  }
+  
+  public static String crypticCenter(String paramString)
+  {
+    String str = paramString;
+    if (paramString != null)
     {
-      if (i >= paramString.length()) {
-        i = paramString.length();
+      if (paramString.length() < 2) {
+        return paramString;
       }
-      str = paramString.substring(j, i);
+      int j = paramString.length() - 1;
+      int i = j;
+      if (j == 1) {
+        i = 2;
+      }
+      paramString = new StringBuffer(paramString);
+      paramString.replace(1, i, "*");
+      str = paramString.toString();
     }
     return str;
   }
   
-  public static String a(String paramString, int paramInt)
+  public static String formatSize(long paramLong)
+  {
+    Object localObject2 = new StringBuilder();
+    Object localObject1 = "";
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(paramLong);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if ((paramLong >= 0L) && (paramLong < 1024L))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("B");
+      return ((StringBuilder)localObject1).toString();
+    }
+    if ((paramLong >= 1024L) && (paramLong < 1048576L))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Long.toString(paramLong / 1024L));
+      ((StringBuilder)localObject1).append("KB");
+      return ((StringBuilder)localObject1).toString();
+    }
+    if ((paramLong >= 1048576L) && (paramLong < 1073741824L))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Long.toString(paramLong / 1048576L));
+      ((StringBuilder)localObject1).append("MB");
+      return ((StringBuilder)localObject1).toString();
+    }
+    if (paramLong >= 1073741824L)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Long.toString(paramLong / 1073741824L));
+      ((StringBuilder)localObject1).append("GB");
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    return localObject1;
+  }
+  
+  public static String getElipseStringWide(String paramString, int paramInt)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
@@ -118,7 +107,7 @@ public class StringUtil
     {
       double d2 = f;
       double d1;
-      if (c(paramString.charAt(i))) {
+      if (isChinese(paramString.charAt(i))) {
         d1 = 2.0D;
       } else {
         d1 = 1.5D;
@@ -145,81 +134,151 @@ public class StringUtil
     return localObject;
   }
   
-  public static String a(String paramString, int paramInt1, int paramInt2)
+  public static String getSimpleUinForPrint(String paramString)
   {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramString.length() <= 4) {
+        return paramString;
+      }
+      str = substring(paramString, paramString.length() - 4, paramString.length());
+    }
+    return str;
+  }
+  
+  public static int getWordCount(String paramString)
+  {
+    int j = 0;
     if (paramString == null) {
-      return null;
+      return 0;
     }
-    int j = 0;
-    StringBuffer localStringBuffer = new StringBuffer(paramInt2);
-    int i = paramInt1;
-    paramInt1 = j;
-    while (i < paramString.length())
+    int i = 0;
+    while (j < paramString.length())
     {
-      char c = paramString.charAt(i);
-      if ((c >= 0) && (c <= 'ÿ')) {
-        paramInt1 += 1;
+      int k = paramString.charAt(j);
+      if ((k >= 0) && (k <= 255)) {
+        i += 1;
       } else {
-        paramInt1 += 2;
+        i += 2;
       }
-      if (paramInt1 > paramInt2) {
-        break;
-      }
-      localStringBuffer.append(c);
-      i += 1;
+      j += 1;
     }
-    return localStringBuffer.toString();
+    return i;
   }
   
-  public static String a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public static int getWordCountNeo(String paramString)
   {
-    if (paramString1 == null) {
-      return null;
-    }
     int j = 0;
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = paramInt1;
-    paramInt1 = j;
-    while (i < paramString1.length())
+    if (paramString == null) {
+      return 0;
+    }
+    int k = paramString.length();
+    int i = 0;
+    while (j < k)
     {
-      char c = paramString1.charAt(i);
-      if ((c >= 0) && (c <= 'ÿ')) {
-        paramInt1 += 1;
+      int m = paramString.codePointAt(j);
+      if ((m >= 0) && (m <= 255)) {
+        i += 1;
       } else {
-        paramInt1 += 2;
+        i += 2;
       }
-      if (paramInt1 > paramInt2)
+      j += Character.charCount(m);
+    }
+    return i;
+  }
+  
+  public static int hexToInt(String paramString, int paramInt1, int paramInt2)
+  {
+    long l = 0L;
+    while (paramInt1 < paramInt2)
+    {
+      int i = paramInt1 + 1;
+      l = l * 16L + Integer.parseInt(paramString.substring(paramInt1, i), 16);
+      paramInt1 = i;
+    }
+    return (int)l;
+  }
+  
+  public static boolean isAlphaDigit(char paramChar)
+  {
+    return (Character.isDigit(paramChar)) || ((paramChar >= 'A') && (paramChar <= 'Z')) || ((paramChar >= 'a') && (paramChar <= 'z'));
+  }
+  
+  public static boolean isAsciiAlpha(char paramChar)
+  {
+    return ((paramChar >= 'A') && (paramChar <= 'Z')) || ((paramChar >= 'a') && (paramChar <= 'z'));
+  }
+  
+  public static boolean isChinese(char paramChar)
+  {
+    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
+    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
+  }
+  
+  public static boolean isEmpty(String paramString)
+  {
+    return (paramString == null) || (paramString.length() == 0);
+  }
+  
+  public static boolean isNoneOutOfDateMobileNum(String paramString)
+  {
+    boolean bool = false;
+    if (paramString != null)
+    {
+      if ("".equals(paramString.trim())) {
+        return false;
+      }
+      if (paramString.trim().equals("0")) {
+        return false;
+      }
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static boolean isReadableChar(char paramChar)
+  {
+    return (!Character.isISOControl(paramChar)) || (Character.isLetterOrDigit(paramChar)) || (Character.isSpace(paramChar)) || (Character.isSpaceChar(paramChar));
+  }
+  
+  public static boolean isValidEmail(String paramString)
+  {
+    return Pattern.compile("^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[A-Z]{2,4}$", 2).matcher(paramString).matches();
+  }
+  
+  public static boolean isValidMobileNumForHead(String paramString)
+  {
+    return (paramString != null) && (!"".equals(paramString.trim())) && (paramString.trim().startsWith("+"));
+  }
+  
+  public static boolean isValideUin(String paramString)
+  {
+    boolean bool = false;
+    if (paramString != null)
+    {
+      if ("".equals(paramString.trim())) {
+        return false;
+      }
+      paramString = paramString.trim();
+      int j = paramString.length();
+      if (j < 5) {
+        return false;
+      }
+      int i = 0;
+      while (i < j)
       {
-        localStringBuffer.append(paramString2);
-        break;
+        if (!Character.isDigit(paramString.charAt(i))) {
+          return false;
+        }
+        i += 1;
       }
-      localStringBuffer.append(c);
-      i += 1;
+      bool = true;
     }
-    return localStringBuffer.toString();
+    return bool;
   }
   
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((paramString1 != null) && (paramString2 != null))
-    {
-      if (paramString3 == null) {
-        return null;
-      }
-      int i = paramString1.indexOf(paramString2);
-      if (i < 0) {
-        return null;
-      }
-      int j = paramString1.indexOf(paramString3, paramString2.length() + i);
-      if (j < 0) {
-        return null;
-      }
-      return paramString1.substring(i + paramString2.length(), j);
-    }
-    return null;
-  }
-  
-  public static String a(List<? extends Object> paramList, String paramString)
+  public static String listToString(List<? extends Object> paramList, String paramString)
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
@@ -237,7 +296,17 @@ public class StringUtil
     return "";
   }
   
-  public static String a(Object... paramVarArgs)
+  public static String longToString(long paramLong)
+  {
+    BigInteger localBigInteger2 = BigInteger.valueOf(paramLong);
+    BigInteger localBigInteger1 = localBigInteger2;
+    if (localBigInteger2.signum() < 0) {
+      localBigInteger1 = localBigInteger2.add(BigInteger.ONE.shiftLeft(64));
+    }
+    return localBigInteger1.toString();
+  }
+  
+  public static String makeLogMsg(Object... paramVarArgs)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
@@ -259,17 +328,7 @@ public class StringUtil
     return localStringBuilder.toString();
   }
   
-  public static boolean a(char paramChar)
-  {
-    return (!Character.isISOControl(paramChar)) || (Character.isLetterOrDigit(paramChar)) || (Character.isSpace(paramChar)) || (Character.isSpaceChar(paramChar));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (paramString == null) || (paramString.length() == 0);
-  }
-  
-  public static String[] a(String paramString, char paramChar)
+  public static String[] split(String paramString, char paramChar)
   {
     if (paramString == null) {
       return null;
@@ -303,7 +362,145 @@ public class StringUtil
     return (String[])localArrayList.toArray(new String[localArrayList.size()]);
   }
   
-  public static String b(String paramString)
+  public static String stringFilter(String paramString)
+  {
+    paramString = paramString.replaceAll("【", "[").replaceAll("】", "]").replaceAll("！", "!").replaceAll("：", ":");
+    return Pattern.compile("[『』]").matcher(paramString).replaceAll("").trim();
+  }
+  
+  public static long stringToLong(String paramString1, String paramString2)
+  {
+    try
+    {
+      long l = Long.parseLong(paramString2);
+      return l;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("stringToLong Exception, value[");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append("]");
+        QLog.w(paramString1, 1, localStringBuilder.toString(), localException);
+      }
+    }
+    return 0L;
+  }
+  
+  public static String substring(String paramString, int paramInt1, int paramInt2)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    int j = 0;
+    StringBuffer localStringBuffer = new StringBuffer(paramInt2);
+    int i = paramInt1;
+    paramInt1 = j;
+    while (i < paramString.length())
+    {
+      char c = paramString.charAt(i);
+      if ((c >= 0) && (c <= 'ÿ')) {
+        paramInt1 += 1;
+      } else {
+        paramInt1 += 2;
+      }
+      if (paramInt1 > paramInt2) {
+        break;
+      }
+      localStringBuffer.append(c);
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String substring(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    if (paramString1 == null) {
+      return null;
+    }
+    int j = 0;
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = paramInt1;
+    paramInt1 = j;
+    while (i < paramString1.length())
+    {
+      char c = paramString1.charAt(i);
+      if ((c >= 0) && (c <= 'ÿ')) {
+        paramInt1 += 1;
+      } else {
+        paramInt1 += 2;
+      }
+      if (paramInt1 > paramInt2)
+      {
+        localStringBuffer.append(paramString2);
+        break;
+      }
+      localStringBuffer.append(c);
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String substring(String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramString1 != null) && (paramString2 != null))
+    {
+      if (paramString3 == null) {
+        return null;
+      }
+      int i = paramString1.indexOf(paramString2);
+      if (i < 0) {
+        return null;
+      }
+      int j = paramString1.indexOf(paramString3, paramString2.length() + i);
+      if (j < 0) {
+        return null;
+      }
+      return paramString1.substring(i + paramString2.length(), j);
+    }
+    return null;
+  }
+  
+  public static String substringNeo(String paramString, int paramInt1, int paramInt2)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramInt2);
+    while (paramInt1 < paramString.length())
+    {
+      char c = paramString.charAt(paramInt1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localStringBuffer.toString());
+      localStringBuilder.append(c);
+      if (getWordCountNeo(localStringBuilder.toString()) > paramInt2) {
+        break;
+      }
+      localStringBuffer.append(c);
+      paramInt1 += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String toDBC(String paramString)
+  {
+    paramString = paramString.toCharArray();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      if (paramString[i] == '　') {
+        paramString[i] = 32;
+      } else if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+        paramString[i] = ((char)(paramString[i] - 65248));
+      }
+      i += 1;
+    }
+    return new String(paramString);
+  }
+  
+  public static String toHexString(String paramString)
   {
     if (paramString != null)
     {
@@ -324,27 +521,27 @@ public class StringUtil
     return "";
   }
   
-  public static boolean b(char paramChar)
+  public static String toNoSpaceHexString(String paramString)
   {
-    return ((paramChar >= 'A') && (paramChar <= 'Z')) || ((paramChar >= 'a') && (paramChar <= 'z'));
-  }
-  
-  public static boolean b(String paramString)
-  {
-    boolean bool = false;
-    try
+    if (paramString != null)
     {
-      long l = Long.valueOf(Long.parseLong(paramString)).longValue();
-      if (l > 10000L) {
-        bool = true;
+      if ("".equals(paramString)) {
+        return "";
       }
-      return bool;
+      StringBuffer localStringBuffer = new StringBuffer();
+      paramString = paramString.getBytes();
+      int i = 0;
+      while (i < paramString.length)
+      {
+        localStringBuffer.append(Integer.toHexString(new Integer(paramString[i] & 0xFF).intValue()));
+        i += 1;
+      }
+      return localStringBuffer.toString();
     }
-    catch (Exception paramString) {}
-    return false;
+    return "";
   }
   
-  public static String c(String paramString)
+  public static String toSemiAngleString(String paramString)
   {
     paramString = paramString.toCharArray();
     int i = 0;
@@ -360,39 +557,7 @@ public class StringUtil
     return String.valueOf(paramString);
   }
   
-  public static boolean c(char paramChar)
-  {
-    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
-    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
-  }
-  
-  public static boolean c(String paramString)
-  {
-    boolean bool = false;
-    if (paramString != null)
-    {
-      if ("".equals(paramString.trim())) {
-        return false;
-      }
-      paramString = paramString.trim();
-      int j = paramString.length();
-      if (j < 5) {
-        return false;
-      }
-      int i = 0;
-      while (i < j)
-      {
-        if (!Character.isDigit(paramString.charAt(i))) {
-          return false;
-        }
-        i += 1;
-      }
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public static String d(String paramString)
+  public static String trim(String paramString)
   {
     String str = paramString;
     if (paramString != null)
@@ -417,63 +582,125 @@ public class StringUtil
     return str;
   }
   
-  public static boolean d(String paramString)
+  public static String trimUnreadableInFriendRequest(String paramString)
   {
-    return (paramString != null) && (!"".equals(paramString.trim())) && (paramString.trim().startsWith("+"));
-  }
-  
-  public static String e(String paramString)
-  {
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (paramString.length() <= 4) {
-        return paramString;
-      }
-      str = a(paramString, paramString.length() - 4, paramString.length());
+    String str = "";
+    if (paramString == null) {
+      return "";
     }
-    return str;
-  }
-  
-  public static String f(String paramString)
-  {
-    paramString = paramString.toCharArray();
+    int i1 = 0;
     int i = 0;
-    while (i < paramString.length)
+    int k = 1;
+    int m;
+    int n;
+    for (int j = 0;; j = n)
     {
-      if (paramString[i] == '　') {
-        paramString[i] = 32;
-      } else if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-        paramString[i] = ((char)(paramString[i] - 65248));
+      m = i1;
+      if (i >= paramString.length()) {
+        break;
+      }
+      if (k != 0)
+      {
+        m = k;
+        n = j;
+        if (isReadableChar(paramString.charAt(i)))
+        {
+          n = i;
+          m = 0;
+        }
+      }
+      else
+      {
+        m = k;
+        n = j;
+        if (isReadableChar(paramString.charAt(i))) {
+          if (paramString.length() - 1 != i)
+          {
+            m = k;
+            n = j;
+            if (isReadableChar(paramString.charAt(i + 1))) {}
+          }
+          else
+          {
+            m = i;
+            break;
+          }
+        }
       }
       i += 1;
+      k = m;
     }
-    return new String(paramString);
-  }
-  
-  public static String g(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null)
+    i = m + 1;
+    if (j < i)
     {
-      if (paramString.length() < 2) {
-        return paramString;
+      if (i >= paramString.length()) {
+        i = paramString.length();
       }
-      int j = paramString.length() - 1;
-      int i = j;
-      if (j == 1) {
-        i = 2;
-      }
-      paramString = new StringBuffer(paramString);
-      paramString.replace(1, i, "*");
-      str = paramString.toString();
+      str = paramString.substring(j, i);
     }
     return str;
+  }
+  
+  public static int validateAccount(String paramString)
+  {
+    if ((paramString != null) && (!"".equals(paramString.trim())))
+    {
+      paramString = paramString.trim();
+      int k = paramString.length();
+      int i = 0;
+      int j = 1;
+      while (i < k)
+      {
+        if (!Character.isDigit(paramString.charAt(i))) {
+          j = 0;
+        }
+        i += 1;
+      }
+      if (j != 0)
+      {
+        if (k < 5) {
+          return 0;
+        }
+        if (k > 15) {
+          return 1;
+        }
+      }
+      else
+      {
+        if (!paramString.contains("@")) {
+          break label98;
+        }
+        if (!isValidEmail(paramString)) {
+          break label96;
+        }
+      }
+      return -1;
+      label96:
+      return 2;
+      label98:
+      return 4;
+    }
+    return 3;
+  }
+  
+  public static boolean verifyUin(String paramString)
+  {
+    boolean bool = false;
+    try
+    {
+      long l = Long.valueOf(Long.parseLong(paramString)).longValue();
+      if (l > 10000L) {
+        bool = true;
+      }
+      return bool;
+    }
+    catch (Exception paramString) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.StringUtil
  * JD-Core Version:    0.7.0.1
  */

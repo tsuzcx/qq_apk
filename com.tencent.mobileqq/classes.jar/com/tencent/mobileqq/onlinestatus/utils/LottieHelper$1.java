@@ -23,11 +23,11 @@ final class LottieHelper$1
     }
     LottieDrawable localLottieDrawable = new LottieDrawable();
     localLottieDrawable.setComposition(paramLottieComposition);
-    if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
+    if ((this.a > 0) && (this.b > 0))
     {
       paramLottieComposition = paramLottieComposition.getBounds();
-      int i = ViewUtils.b(this.jdField_a_of_type_Int);
-      int j = ViewUtils.b(this.b);
+      int i = ViewUtils.dpToPx(this.a);
+      int j = ViewUtils.dpToPx(this.b);
       localLottieDrawable.setScale(i / paramLottieComposition.width(), j / paramLottieComposition.height());
     }
     localLottieDrawable.setRepeatCount(0);
@@ -37,7 +37,7 @@ final class LottieHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.utils.LottieHelper.1
  * JD-Core Version:    0.7.0.1
  */

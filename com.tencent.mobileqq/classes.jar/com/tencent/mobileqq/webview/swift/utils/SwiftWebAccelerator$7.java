@@ -20,15 +20,15 @@ final class SwiftWebAccelerator$7
     ((StringBuilder)???).append("ms.");
     QLog.i("WebLog_SwiftWebAccelerator", 1, ((StringBuilder)???).toString());
     l = System.currentTimeMillis();
-    synchronized (SwiftWebAccelerator.a)
+    synchronized (SwiftWebAccelerator.d)
     {
-      if (WebViewPluginEngine.a == null)
+      if (WebViewPluginEngine.f == null)
       {
         AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
         if (localAppRuntime != null)
         {
           localAppRuntime = localAppRuntime.getAppRuntime("modular_web");
-          WebViewPluginEngine.a = WebAccelerateHelper.getInstance().createWebViewPluginEngine(localAppRuntime, null, null, null);
+          WebViewPluginEngine.f = WebAccelerateHelper.getInstance().createWebViewPluginEngine(localAppRuntime, null, null, null);
         }
       }
       ??? = new StringBuilder();
@@ -42,7 +42,7 @@ final class SwiftWebAccelerator$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.7
  * JD-Core Version:    0.7.0.1
  */

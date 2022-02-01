@@ -16,7 +16,7 @@ class CropImageView$1
   
   public void run()
   {
-    Bitmap localBitmap = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropModelImageState.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropModelImageState.b(), this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropModelImageState.a());
+    Bitmap localBitmap = BitmapUtils.a(this.a, this.b.a(), this.b.b(), this.b.c());
     boolean bool = true;
     int i;
     if (localBitmap != null) {
@@ -32,10 +32,10 @@ class CropImageView$1
     localStringBuilder.append(System.currentTimeMillis());
     ((StringBuilder)localObject).append(AbsDownloader.getFileName(localStringBuilder.toString()));
     localObject = ((StringBuilder)localObject).toString();
-    if ((i == 0) || (!BitmapUtils.a(localBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap$CompressFormat, this.jdField_a_of_type_Int, (String)localObject))) {
+    if ((i == 0) || (!BitmapUtils.a(localBitmap, this.c, this.d, (String)localObject))) {
       bool = false;
     }
-    CropImageView.a(this.this$0, (String)localObject, bool, this.jdField_a_of_type_ComTencentMobileqqKandianBaseImagecropCallbackCropCallback);
+    CropImageView.a(this.this$0, (String)localObject, bool, this.e);
     if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       localBitmap.recycle();
     }
@@ -43,7 +43,7 @@ class CropImageView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.imagecrop.CropImageView.1
  * JD-Core Version:    0.7.0.1
  */

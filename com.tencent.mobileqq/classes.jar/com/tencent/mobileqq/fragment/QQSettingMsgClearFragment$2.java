@@ -12,12 +12,12 @@ class QQSettingMsgClearFragment$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     DeepCleanConfigReporter.b(2);
-    QQSettingMsgClearFragment.a(this.a);
+    QQSettingMsgClearFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment.2
  * JD-Core Version:    0.7.0.1
  */

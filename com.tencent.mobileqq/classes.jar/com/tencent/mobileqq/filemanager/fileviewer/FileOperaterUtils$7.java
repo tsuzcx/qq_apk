@@ -21,10 +21,10 @@ final class FileOperaterUtils$7
     {
       FileManagerReporter.FileAssistantReportData localFileAssistantReportData = new FileManagerReporter.FileAssistantReportData();
       localFileAssistantReportData.b = "file_forward";
-      localFileAssistantReportData.a = 9;
+      localFileAssistantReportData.c = 9;
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       FileManagerReporter.a(localQQAppInterface.getCurrentAccountUin(), localFileAssistantReportData);
-      QFileUtils.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      QFileUtils.a(localQQAppInterface, this.a.getActivity(), this.b);
       label55:
       EventCollector.getInstance().onViewClicked(paramView);
       return;
@@ -37,7 +37,7 @@ final class FileOperaterUtils$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.7
  * JD-Core Version:    0.7.0.1
  */

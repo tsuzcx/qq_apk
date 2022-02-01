@@ -20,17 +20,17 @@ class VideoFeedsShareController$SendToReadInJoyShareAction
     if (paramVideoInfo != null) {
       try
       {
-        VideoFeedsShareController.a(this.a).b(VideoFeedsShareController.b(this.a));
-        paramString = new Intent(VideoFeedsShareController.a(this.a), ReadInJoyDeliverBiuActivity.class);
-        if ((VideoFeedsShareController.a(this.a).jdField_a_of_type_Int == 6) && (paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)) {
-          paramString.putExtra("feedsType", VideoFeedsShareController.a(this.a).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedType);
+        VideoFeedsShareController.b(this.a).b(VideoFeedsShareController.c(this.a));
+        paramString = new Intent(VideoFeedsShareController.f(this.a), ReadInJoyDeliverBiuActivity.class);
+        if ((VideoFeedsShareController.e(this.a).a == 6) && (paramVideoInfo.aB != null)) {
+          paramString.putExtra("feedsType", VideoFeedsShareController.e(this.a).aB.mFeedType);
         }
-        paramString.putExtra("ARG_VIDEO_ARTICLE_ID", VideoFeedsShareController.a(this.a).g);
+        paramString.putExtra("ARG_VIDEO_ARTICLE_ID", VideoFeedsShareController.e(this.a).l);
         paramString.putExtra("biu_src", 2);
         paramString.putExtra("arg_from_type", 8);
-        paramString.putExtra("arg_article_info", paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-        VideoFeedsShareController.a(this.a).startActivityForResult(paramString, 102);
-        VideoFeedsShareController.a(this.a).overridePendingTransition(0, 0);
+        paramString.putExtra("arg_article_info", paramVideoInfo.aB);
+        VideoFeedsShareController.f(this.a).startActivityForResult(paramString, 102);
+        VideoFeedsShareController.f(this.a).overridePendingTransition(0, 0);
         return;
       }
       catch (Exception paramVideoInfo)
@@ -42,14 +42,14 @@ class VideoFeedsShareController$SendToReadInJoyShareAction
           paramString.append(paramVideoInfo.getMessage());
           QLog.e("VideoFeedsShareController", 2, paramString.toString());
         }
-        VideoFeedsShareController.a(this.a).b(false);
+        VideoFeedsShareController.b(this.a).b(false);
       }
     }
   }
   
   public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    RIJUserLevelModule.getInstance().doActionsByUserLevel(VideoFeedsShareController.a(this.a), 2, new VideoFeedsShareController.SendToReadInJoyShareAction.1(this, paramInt, paramVideoInfo, paramString, paramActionSheetItem));
+    RIJUserLevelModule.getInstance().doActionsByUserLevel(VideoFeedsShareController.f(this.a), 2, new VideoFeedsShareController.SendToReadInJoyShareAction.1(this, paramInt, paramVideoInfo, paramString, paramActionSheetItem));
   }
   
   public int c()
@@ -59,7 +59,7 @@ class VideoFeedsShareController$SendToReadInJoyShareAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.SendToReadInJoyShareAction
  * JD-Core Version:    0.7.0.1
  */

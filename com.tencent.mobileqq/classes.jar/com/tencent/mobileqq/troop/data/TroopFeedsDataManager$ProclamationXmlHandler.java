@@ -22,8 +22,8 @@ public class TroopFeedsDataManager$ProclamationXmlHandler
       paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
       if (this.e.equals("title"))
       {
-        if (StringUtil.a(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+        if (StringUtil.isEmpty(this.a)) {
+          this.a = paramArrayOfChar;
         }
       }
       else if (this.e.equals("summary")) {
@@ -49,7 +49,7 @@ public class TroopFeedsDataManager$ProclamationXmlHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.ProclamationXmlHandler
  * JD-Core Version:    0.7.0.1
  */

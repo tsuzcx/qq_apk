@@ -20,9 +20,9 @@ import java.util.List;
 public class QuicResDownload
   implements ShortVideoResourceStatus.ISVConfig
 {
-  private static final String jdField_a_of_type_JavaLangString;
   public static boolean a = false;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private static final String c;
+  private QQAppInterface b;
   
   static
   {
@@ -31,36 +31,17 @@ public class QuicResDownload
     localStringBuilder.append("/data/");
     localStringBuilder.append(BaseApplicationImpl.sApplication.getBaseContext().getPackageName());
     localStringBuilder.append("/app_lib/quic/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    c = localStringBuilder.toString();
   }
   
   public QuicResDownload(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static int a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("quic_res_config", 4).getInt("quic_res_version", 0);
+    this.b = paramQQAppInterface;
   }
   
   public static String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  private boolean a()
-  {
-    boolean bool = NetworkUtil.isWifiConnected(null);
-    if (bool)
-    {
-      VideoEnvironment.LogDownLoad("QuicResDownload", "QUIC配置下载中...", null);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getShortVideoResourceManager();
-      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      return bool;
-    }
-    VideoEnvironment.LogDownLoad("QuicResDownload", HardCodeUtil.a(2131711189), null);
-    return bool;
+    return c;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
@@ -78,7 +59,7 @@ public class QuicResDownload
   public static String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(c);
     localStringBuilder.append("backup");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
@@ -86,7 +67,26 @@ public class QuicResDownload
   
   public static String c()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("quic_res_config", 4).getString("quic_res_load_path", jdField_a_of_type_JavaLangString);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("quic_res_config", 4).getString("quic_res_load_path", c);
+  }
+  
+  public static int d()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("quic_res_config", 4).getInt("quic_res_version", 0);
+  }
+  
+  private boolean e()
+  {
+    boolean bool = NetworkUtil.isWifiConnected(null);
+    if (bool)
+    {
+      VideoEnvironment.LogDownLoad("QuicResDownload", "QUIC配置下载中...", null);
+      this.b.getShortVideoResourceManager();
+      ShortVideoResourceManager.b(this.b, this);
+      return bool;
+    }
+    VideoEnvironment.LogDownLoad("QuicResDownload", HardCodeUtil.a(2131908847), null);
+    return bool;
   }
   
   public void onConfigResult(int paramInt1, int paramInt2)
@@ -114,7 +114,7 @@ public class QuicResDownload
       return;
     }
     localObject = new ArrayList(1);
-    paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject);
+    paramInt1 = ShortVideoResourceManager.a(this.b, (List)localObject);
     if (paramInt1 == 0)
     {
       VideoEnvironment.LogDownLoad("QuicResDownload", "onConfigResult| check config success...", null);
@@ -130,7 +130,7 @@ public class QuicResDownload
           localStringBuilder.append(" url=");
           localStringBuilder.append(localSVConfigItem.armv7a_url);
           VideoEnvironment.LogDownLoad("QuicResDownload", localStringBuilder.toString(), null);
-          ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject);
+          ShortVideoResourceManager.b(this.b, (List)localObject);
         }
       }
     }
@@ -142,7 +142,7 @@ public class QuicResDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.quic.QuicResDownload
  * JD-Core Version:    0.7.0.1
  */

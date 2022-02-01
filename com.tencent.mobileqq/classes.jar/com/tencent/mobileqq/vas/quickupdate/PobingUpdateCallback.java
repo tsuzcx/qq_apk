@@ -77,16 +77,16 @@ public class PobingUpdateCallback
     ((BitmapFactory.Options)localObject).inTargetDensity = 320;
     BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
     BitmapManager.a(paramString, (BitmapFactory.Options)localObject, localBitmapDecodeResult);
-    if (localBitmapDecodeResult.jdField_a_of_type_Int != 0)
+    if (localBitmapDecodeResult.b != 0)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(" decodeFail: ");
-      ((StringBuilder)localObject).append(localBitmapDecodeResult.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(localBitmapDecodeResult.b);
       QLog.e("PobingUpdateCallback", 1, ((StringBuilder)localObject).toString());
       return null;
     }
-    return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
+    return localBitmapDecodeResult.a;
   }
   
   public long getBID()
@@ -129,7 +129,7 @@ public class PobingUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.PobingUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

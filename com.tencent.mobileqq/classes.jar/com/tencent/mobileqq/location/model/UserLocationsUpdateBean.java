@@ -8,12 +8,12 @@ import java.util.List;
 public class UserLocationsUpdateBean
 {
   public LocationRoom.RoomKey a;
-  public LocationRoom.Venue a;
-  public List<LocationItem> a;
+  public LocationRoom.Venue b;
+  public List<LocationItem> c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.model.UserLocationsUpdateBean
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ final class IndividuationUrlHelper$1
 {
   private void a(Resources paramResources, IndividuationUrlHelper.IconExtendData paramIconExtendData, String paramString)
   {
-    ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).setVipCardDrawable(paramResources, paramIconExtendData.jdField_a_of_type_AndroidWidgetImageView, paramString);
+    ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).setVipCardDrawable(paramResources, paramIconExtendData.a, paramString);
   }
   
   public void update()
@@ -28,9 +28,9 @@ final class IndividuationUrlHelper$1
         localObject = (IndividuationUrlHelper.IconExtendData)((SoftReference)localObject).get();
         if (localObject != null)
         {
-          String str = (String)IndividuationUrlHelper.a.get(((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_JavaLangString);
-          if ((((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_AndroidWidgetImageView != null) && (!TextUtils.isEmpty(str))) {
-            ((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_AndroidWidgetImageView.post(new IndividuationUrlHelper.1.1(this, (IndividuationUrlHelper.IconExtendData)localObject, str));
+          String str = (String)IndividuationUrlHelper.a.get(((IndividuationUrlHelper.IconExtendData)localObject).b);
+          if ((((IndividuationUrlHelper.IconExtendData)localObject).a != null) && (!TextUtils.isEmpty(str))) {
+            ((IndividuationUrlHelper.IconExtendData)localObject).a.post(new IndividuationUrlHelper.1.1(this, (IndividuationUrlHelper.IconExtendData)localObject, str));
           }
         }
       }
@@ -41,7 +41,7 @@ final class IndividuationUrlHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationUrlHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class MusicPlayerBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    Object localObject = QQPlayerService.a();
+    Object localObject = QQPlayerService.m();
     if (localObject != null)
     {
       MusicPlayerBannerProcessor.a(this.a).startActivity((Intent)localObject);
@@ -42,7 +42,7 @@ class MusicPlayerBannerProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MusicPlayerBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

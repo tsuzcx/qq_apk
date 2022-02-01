@@ -3,7 +3,7 @@ package androidx.appcompat.widget;
 import android.os.Parcel;
 import android.os.Parcelable.ClassLoaderCreator;
 
-final class SearchView$SavedState$1
+class SearchView$SavedState$1
   implements Parcelable.ClassLoaderCreator<SearchView.SavedState>
 {
   public SearchView.SavedState createFromParcel(Parcel paramParcel)

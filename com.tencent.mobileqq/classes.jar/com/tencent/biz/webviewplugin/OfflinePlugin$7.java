@@ -19,29 +19,29 @@ class OfflinePlugin$7
   
   public void onClick(View paramView)
   {
-    Activity localActivity = this.a.mRuntime.a();
-    if ((localActivity != null) && (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null) && (!TextUtils.isEmpty(OfflinePlugin.a(this.a))))
+    Activity localActivity = this.a.mRuntime.d();
+    if ((localActivity != null) && (OfflinePlugin.e != null) && (!TextUtils.isEmpty(OfflinePlugin.a(this.a))))
     {
-      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
+      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.e.get(OfflinePlugin.a(this.a));
       if (localOfflineUpdateStatus != null) {
-        if (localOfflineUpdateStatus.b() == 3)
+        if (localOfflineUpdateStatus.c() == 3)
         {
           localOfflineUpdateStatus.a();
-          this.a.b();
+          this.a.c();
           localOfflineUpdateStatus.a(4);
-          if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-            this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+          if (this.a.a != null) {
+            this.a.a.setVisibility(8);
           }
-          OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.remove(OfflinePlugin.a(this.a));
+          OfflinePlugin.e.remove(OfflinePlugin.a(this.a));
         }
-        else if (localOfflineUpdateStatus.b() == 0)
+        else if (localOfflineUpdateStatus.c() == 0)
         {
-          HtmlOffline.a(localActivity.getApplicationContext(), OfflinePlugin.a(this.a), localOfflineUpdateStatus.f, localOfflineUpdateStatus.a, localOfflineUpdateStatus);
+          HtmlOffline.a(localActivity.getApplicationContext(), OfflinePlugin.a(this.a), localOfflineUpdateStatus.f, localOfflineUpdateStatus.g, localOfflineUpdateStatus);
           localOfflineUpdateStatus.a(1);
-          if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-            this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+          if (this.a.c != null) {
+            this.a.c.setCompoundDrawables(null, null, null, null);
           }
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
+          this.a.u.postDelayed(this.a.B, 2000L);
         }
       }
     }
@@ -50,7 +50,7 @@ class OfflinePlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.7
  * JD-Core Version:    0.7.0.1
  */

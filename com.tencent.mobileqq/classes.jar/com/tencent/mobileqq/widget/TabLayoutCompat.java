@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.widget;
 
+import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -35,41 +36,41 @@ import java.util.Iterator;
 public class TabLayoutCompat
   extends HorizontalScrollView
 {
-  private static final Pools.Pool<TabLayoutCompat.Tab> jdField_a_of_type_AndroidSupportV4UtilPools$Pool = new Pools.SynchronizedPool(16);
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842901, 16842904 };
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private PagerAdapter jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
-  private TabLayoutCompat.AdapterChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$AdapterChangeListener;
-  private TabLayoutCompat.OnTabSelectedListener jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener;
-  private TabLayoutCompat.PagerAdapterObserver jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$PagerAdapterObserver;
-  private final TabLayoutCompat.SlidingTabStrip jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip;
-  private TabLayoutCompat.Tab jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab;
-  private TabLayoutCompat.TabLayoutOnPageChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabLayoutOnPageChangeListener;
-  private TabLayoutCompat.ViewPagerTabEventListener jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$ViewPagerTabEventListener;
-  ViewPagerCompat jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat;
-  private final ArrayList<TabLayoutCompat.Tab> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  private final Pools.Pool<TabLayoutCompat.TabView> jdField_b_of_type_AndroidSupportV4UtilPools$Pool = new Pools.SimplePool(12);
-  private TabLayoutCompat.OnTabSelectedListener jdField_b_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener;
-  private final ArrayList<TabLayoutCompat.OnTabSelectedListener> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
+  private static final Pools.Pool<TabLayoutCompat.Tab> n = new Pools.SynchronizedPool(16);
+  private static final int[] o = { 16842901, 16842904 };
+  private ValueAnimator A;
+  private PagerAdapter B;
+  private TabLayoutCompat.PagerAdapterObserver C;
+  private TabLayoutCompat.TabLayoutOnPageChangeListener D;
+  private TabLayoutCompat.AdapterChangeListener E;
+  private boolean F;
+  private TabLayoutCompat.ViewPagerTabEventListener G;
+  private boolean H;
+  private final Pools.Pool<TabLayoutCompat.TabView> I = new Pools.SimplePool(12);
+  int a;
+  int b;
   int c;
   int d;
   int e;
-  int f;
-  int g = 2147483647;
-  int h;
+  ColorStateList f;
+  float g;
+  float h;
   int i;
-  private final int j;
-  private final int k;
-  private int l;
-  private int m;
-  private int n;
+  int j = 2147483647;
+  int k;
+  int l;
+  ViewPagerCompat m;
+  private final ArrayList<TabLayoutCompat.Tab> p = new ArrayList();
+  private TabLayoutCompat.Tab q;
+  private final TabLayoutCompat.SlidingTabStrip r;
+  private final int s;
+  private final int t;
+  private int u;
+  private int v;
+  private int w;
+  private TabLayoutCompat.OnTabSelectedListener x;
+  private final ArrayList<TabLayoutCompat.OnTabSelectedListener> y = new ArrayList();
+  private TabLayoutCompat.OnTabSelectedListener z;
   
   public TabLayoutCompat(Context paramContext)
   {
@@ -85,49 +86,49 @@ public class TabLayoutCompat
   {
     super(paramContext, paramAttributeSet, paramInt);
     setHorizontalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip = new TabLayoutCompat.SlidingTabStrip(this, paramContext);
-    super.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip, 0, new FrameLayout.LayoutParams(-2, -1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.b(DisplayUtil.a(paramContext, 2.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.a(-1);
+    this.r = new TabLayoutCompat.SlidingTabStrip(this, paramContext);
+    super.addView(this.r, 0, new FrameLayout.LayoutParams(-2, -1));
+    this.r.b(DisplayUtil.a(paramContext, 2.0F));
+    this.r.a(-1);
     this.d = 0;
     this.c = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
+    this.b = 0;
+    this.a = 0;
+    this.a = 0;
+    this.b = 0;
     this.c = 0;
     this.d = 0;
-    this.jdField_a_of_type_Float = DisplayUtil.c(paramContext, 12.0F);
-    this.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(-1979711488);
-    this.f = 0;
-    this.m = 0;
-    this.n = 0;
-    this.i = 1;
-    this.h = 1;
-    this.jdField_b_of_type_Float = DisplayUtil.a(paramContext, 12.0F);
-    this.l = DisplayUtil.a(paramContext, 72.0F);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bz);
-    this.j = paramContext.getDimensionPixelSize(R.styleable.bS, -1);
-    this.k = paramContext.getDimensionPixelSize(R.styleable.bR, -1);
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.bU, 0);
-    this.c = paramContext.getDimensionPixelSize(R.styleable.bT, 0);
-    this.m = paramContext.getDimensionPixelSize(R.styleable.bQ, 0);
-    this.n = paramContext.getDimensionPixelSize(R.styleable.bP, 0);
+    this.g = DisplayUtil.c(paramContext, 12.0F);
+    this.f = ColorStateList.valueOf(-1979711488);
+    this.i = 0;
+    this.v = 0;
+    this.w = 0;
+    this.l = 1;
+    this.k = 1;
+    this.h = DisplayUtil.a(paramContext, 12.0F);
+    this.u = DisplayUtil.a(paramContext, 72.0F);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.eB);
+    this.s = paramContext.getDimensionPixelSize(R.styleable.eF, -1);
+    this.t = paramContext.getDimensionPixelSize(R.styleable.eE, -1);
+    this.a = paramContext.getDimensionPixelSize(R.styleable.eH, 0);
+    this.c = paramContext.getDimensionPixelSize(R.styleable.eG, 0);
+    this.v = paramContext.getDimensionPixelSize(R.styleable.eD, 0);
+    this.w = paramContext.getDimensionPixelSize(R.styleable.eC, 0);
     paramContext.recycle();
-    e();
+    g();
   }
   
   private int a(int paramInt, float paramFloat)
   {
-    int i1 = this.i;
+    int i1 = this.l;
     int i2 = 0;
     if (i1 == 0)
     {
-      View localView2 = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(paramInt);
+      View localView2 = this.r.getChildAt(paramInt);
       paramInt += 1;
       View localView1;
-      if (paramInt < this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildCount()) {
-        localView1 = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(paramInt);
+      if (paramInt < this.r.getChildCount()) {
+        localView1 = this.r.getChildAt(paramInt);
       } else {
         localView1 = null;
       }
@@ -159,16 +160,9 @@ public class TabLayoutCompat
     return new ColorStateList(new int[][] { SELECTED_STATE_SET, EMPTY_STATE_SET }, new int[] { paramInt2, paramInt1 });
   }
   
-  private LinearLayout.LayoutParams a()
-  {
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
-    a(localLayoutParams);
-    return localLayoutParams;
-  }
-  
   private TabLayoutCompat.TabView a(@NonNull TabLayoutCompat.Tab paramTab)
   {
-    Object localObject1 = this.jdField_b_of_type_AndroidSupportV4UtilPools$Pool;
+    Object localObject1 = this.I;
     if (localObject1 != null) {
       localObject1 = (TabLayoutCompat.TabView)((Pools.Pool)localObject1).acquire();
     } else {
@@ -180,194 +174,209 @@ public class TabLayoutCompat
     }
     ((TabLayoutCompat.TabView)localObject2).a(paramTab);
     ((TabLayoutCompat.TabView)localObject2).setFocusable(true);
-    ((TabLayoutCompat.TabView)localObject2).setMinimumWidth(f());
+    ((TabLayoutCompat.TabView)localObject2).setMinimumWidth(getTabMinWidth());
     return localObject2;
   }
   
   private void a(int paramInt)
   {
-    TabLayoutCompat.TabView localTabView = (TabLayoutCompat.TabView)this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.removeViewAt(paramInt);
+    TabLayoutCompat.TabView localTabView = (TabLayoutCompat.TabView)this.r.getChildAt(paramInt);
+    this.r.removeViewAt(paramInt);
     if (localTabView != null)
     {
       localTabView.a();
-      this.jdField_b_of_type_AndroidSupportV4UtilPools$Pool.release(localTabView);
+      this.I.release(localTabView);
     }
     requestLayout();
   }
   
   private void a(LinearLayout.LayoutParams paramLayoutParams)
   {
-    if ((this.i == 1) && (this.h == 0))
+    if ((this.l == 1) && (this.k == 0))
     {
       paramLayoutParams.width = 0;
       paramLayoutParams.weight = 1.0F;
       return;
     }
-    paramLayoutParams.width = f();
+    paramLayoutParams.width = getTabMinWidth();
     paramLayoutParams.weight = 0.0F;
-  }
-  
-  private void a(TabLayoutCompat.Tab paramTab)
-  {
-    TabLayoutCompat.TabView localTabView = paramTab.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.addView(localTabView, paramTab.a(), a());
   }
   
   private void a(TabLayoutCompat.Tab paramTab, int paramInt)
   {
-    paramTab.a(paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramTab);
-    int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
+    paramTab.b(paramInt);
+    this.p.add(paramInt, paramTab);
+    int i1 = this.p.size();
     for (;;)
     {
       paramInt += 1;
       if (paramInt >= i1) {
         break;
       }
-      ((TabLayoutCompat.Tab)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a(paramInt);
+      ((TabLayoutCompat.Tab)this.p.get(paramInt)).b(paramInt);
     }
   }
   
   private void a(@Nullable ViewPagerCompat paramViewPagerCompat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat;
+    Object localObject = this.m;
     if (localObject != null)
     {
-      TabLayoutCompat.TabLayoutOnPageChangeListener localTabLayoutOnPageChangeListener = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabLayoutOnPageChangeListener;
+      TabLayoutCompat.TabLayoutOnPageChangeListener localTabLayoutOnPageChangeListener = this.D;
       if (localTabLayoutOnPageChangeListener != null) {
         ((ViewPagerCompat)localObject).removeOnPageChangeListener(localTabLayoutOnPageChangeListener);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$AdapterChangeListener;
+      localObject = this.E;
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat.b((ViewPagerCompat.OnAdapterChangeListener)localObject);
+        this.m.b((ViewPagerCompat.OnAdapterChangeListener)localObject);
       }
     }
-    localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener;
+    localObject = this.z;
     if (localObject != null)
     {
       b((TabLayoutCompat.OnTabSelectedListener)localObject);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener = null;
+      this.z = null;
     }
     if (paramViewPagerCompat != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat = paramViewPagerCompat;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabLayoutOnPageChangeListener == null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabLayoutOnPageChangeListener = new TabLayoutCompat.TabLayoutOnPageChangeListener(this);
+      this.m = paramViewPagerCompat;
+      if (this.D == null) {
+        this.D = new TabLayoutCompat.TabLayoutOnPageChangeListener(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabLayoutOnPageChangeListener.a();
-      paramViewPagerCompat.addOnPageChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabLayoutOnPageChangeListener);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener = new TabLayoutCompat.ViewPagerOnTabSelectedListener(paramViewPagerCompat);
-      a(this.jdField_b_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener);
+      this.D.a();
+      paramViewPagerCompat.addOnPageChangeListener(this.D);
+      this.z = new TabLayoutCompat.ViewPagerOnTabSelectedListener(paramViewPagerCompat);
+      a(this.z);
       localObject = paramViewPagerCompat.getAdapter();
       if (localObject != null) {
         a((PagerAdapter)localObject, paramBoolean1);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$AdapterChangeListener == null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$AdapterChangeListener = new TabLayoutCompat.AdapterChangeListener(this);
+      if (this.E == null) {
+        this.E = new TabLayoutCompat.AdapterChangeListener(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$AdapterChangeListener.a(paramBoolean1);
-      paramViewPagerCompat.a(this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$AdapterChangeListener);
+      this.E.a(paramBoolean1);
+      paramViewPagerCompat.a(this.E);
       setScrollPosition(paramViewPagerCompat.getCurrentItem(), 0.0F, true);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat = null;
+      this.m = null;
       a(null, false);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean2;
+    this.F = paramBoolean2;
   }
   
-  private void b(int paramInt)
+  private void b(TabLayoutCompat.Tab paramTab)
+  {
+    TabLayoutCompat.TabView localTabView = paramTab.b;
+    this.r.addView(localTabView, paramTab.d(), e());
+  }
+  
+  private void c(@NonNull TabLayoutCompat.Tab paramTab)
+  {
+    int i1 = this.y.size() - 1;
+    while (i1 >= 0)
+    {
+      ((TabLayoutCompat.OnTabSelectedListener)this.y.get(i1)).a(paramTab);
+      i1 -= 1;
+    }
+  }
+  
+  private void d()
+  {
+    Iterator localIterator = this.p.iterator();
+    while (localIterator.hasNext()) {
+      ((TabLayoutCompat.Tab)localIterator.next()).k();
+    }
+  }
+  
+  private void d(int paramInt)
   {
     if (paramInt == -1) {
       return;
     }
-    if ((getWindowToken() != null) && (ViewCompat.isLaidOut(this)) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.a()))
+    if ((getWindowToken() != null) && (ViewCompat.isLaidOut(this)) && (!this.r.a()))
     {
       int i1 = getScrollX();
       int i2 = a(paramInt, 0.0F);
       if (i1 != i2)
       {
-        d();
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { i1, i2 });
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+        f();
+        this.A.setIntValues(new int[] { i1, i2 });
+        this.A.start();
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.b(paramInt, 300);
+      this.r.b(paramInt, 300);
       return;
     }
     setScrollPosition(paramInt, 0.0F, true);
   }
   
-  private void b(@NonNull TabLayoutCompat.Tab paramTab)
+  private LinearLayout.LayoutParams e()
   {
-    int i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-    while (i1 >= 0)
-    {
-      ((TabLayoutCompat.OnTabSelectedListener)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).a(paramTab);
-      i1 -= 1;
-    }
-  }
-  
-  private void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((TabLayoutCompat.Tab)localIterator.next()).c();
-    }
-  }
-  
-  private void c(int paramInt)
-  {
-    int i2 = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildCount();
-    if (paramInt < i2)
-    {
-      int i1 = 0;
-      while (i1 < i2)
-      {
-        View localView = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(i1);
-        boolean bool;
-        if (i1 == paramInt) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-        localView.setSelected(bool);
-        i1 += 1;
-      }
-    }
-  }
-  
-  private void c(@NonNull TabLayoutCompat.Tab paramTab)
-  {
-    int i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-    while (i1 >= 0)
-    {
-      ((TabLayoutCompat.OnTabSelectedListener)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).b(paramTab);
-      i1 -= 1;
-    }
-  }
-  
-  private int d()
-  {
-    return Math.max(0, this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getWidth() - getWidth() - getPaddingLeft() - getPaddingRight());
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
+    a(localLayoutParams);
+    return localLayoutParams;
   }
   
   @RequiresApi(api=11)
-  private void d()
+  private void f()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    if (this.A == null)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new FastOutSlowInInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new TabLayoutCompat.1(this));
+      this.A = new ValueAnimator();
+      this.A.setInterpolator(new FastOutSlowInInterpolator());
+      this.A.setDuration(300L);
+      this.A.addUpdateListener(new TabLayoutCompat.1(this));
     }
   }
   
-  private int e()
+  private void f(@NonNull TabLayoutCompat.Tab paramTab)
   {
-    int i4 = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i1 = this.y.size() - 1;
+    while (i1 >= 0)
+    {
+      ((TabLayoutCompat.OnTabSelectedListener)this.y.get(i1)).b(paramTab);
+      i1 -= 1;
+    }
+  }
+  
+  private void g()
+  {
+    int i3 = this.v;
+    int i2 = this.w;
+    int i1 = i3;
+    if (this.l == 0)
+    {
+      i1 = Math.max(0, i3 - this.a);
+      i2 = Math.max(0, this.w - this.c);
+    }
+    ViewCompat.setPaddingRelative(this.r, i1, 0, i2, 0);
+    i1 = this.l;
+    if (i1 != 0)
+    {
+      if (i1 == 1) {
+        this.r.setGravity(1);
+      }
+    }
+    else {
+      this.r.setGravity(8388611);
+    }
+    c(true);
+  }
+  
+  private void g(@NonNull TabLayoutCompat.Tab paramTab)
+  {
+    int i1 = this.y.size() - 1;
+    while (i1 >= 0)
+    {
+      ((TabLayoutCompat.OnTabSelectedListener)this.y.get(i1)).c(paramTab);
+      i1 -= 1;
+    }
+  }
+  
+  private int getDefaultHeight()
+  {
+    int i4 = this.p.size();
     int i3 = 0;
     int i1 = 0;
     int i2;
@@ -377,8 +386,8 @@ public class TabLayoutCompat
       if (i1 >= i4) {
         break;
       }
-      TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if ((localTab != null) && (localTab.a() != null) && (!TextUtils.isEmpty(localTab.a())))
+      TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)this.p.get(i1);
+      if ((localTab != null) && (localTab.c() != null) && (!TextUtils.isEmpty(localTab.e())))
       {
         i2 = 1;
         break;
@@ -391,105 +400,64 @@ public class TabLayoutCompat
     return 48;
   }
   
-  private void e()
+  private float getScrollPosition()
   {
-    int i3 = this.m;
-    int i2 = this.n;
-    int i1 = i3;
-    if (this.i == 0)
-    {
-      i1 = Math.max(0, i3 - this.jdField_a_of_type_Int);
-      i2 = Math.max(0, this.n - this.c);
-    }
-    ViewCompat.setPaddingRelative(this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip, i1, 0, i2, 0);
-    i1 = this.i;
-    if (i1 != 0)
-    {
-      if (i1 == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.setGravity(1);
-      }
-    }
-    else {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.setGravity(8388611);
-    }
-    c(true);
+    return this.r.b();
   }
   
-  private int f()
+  private int getTabMinWidth()
   {
-    int i1 = this.j;
+    int i1 = this.s;
     if (i1 != -1) {
       return i1;
     }
-    if (this.i == 0) {
-      return this.l;
+    if (this.l == 0) {
+      return this.u;
     }
     return 0;
   }
   
-  private void f(@NonNull TabLayoutCompat.Tab paramTab)
+  private int getTabScrollRange()
   {
-    int i1 = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-    while (i1 >= 0)
+    return Math.max(0, this.r.getWidth() - getWidth() - getPaddingLeft() - getPaddingRight());
+  }
+  
+  private void setSelectedTabView(int paramInt)
+  {
+    int i2 = this.r.getChildCount();
+    if (paramInt < i2)
     {
-      ((TabLayoutCompat.OnTabSelectedListener)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).c(paramTab);
-      i1 -= 1;
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        View localView = this.r.getChildAt(i1);
+        boolean bool;
+        if (i1 == paramInt) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        localView.setSelected(bool);
+        i1 += 1;
+      }
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  int a(int paramInt)
-  {
-    return Math.round(getResources().getDisplayMetrics().density * paramInt);
   }
   
   @NonNull
   public TabLayoutCompat.Tab a()
   {
-    Object localObject2 = (TabLayoutCompat.Tab)jdField_a_of_type_AndroidSupportV4UtilPools$Pool.acquire();
+    Object localObject2 = (TabLayoutCompat.Tab)n.acquire();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new TabLayoutCompat.Tab();
     }
-    ((TabLayoutCompat.Tab)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat = this;
-    ((TabLayoutCompat.Tab)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView = a((TabLayoutCompat.Tab)localObject1);
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$ViewPagerTabEventListener;
+    ((TabLayoutCompat.Tab)localObject1).a = this;
+    ((TabLayoutCompat.Tab)localObject1).b = a((TabLayoutCompat.Tab)localObject1);
+    localObject2 = this.G;
     if (localObject2 != null) {
-      ((TabLayoutCompat.Tab)localObject1).a(((TabLayoutCompat.ViewPagerTabEventListener)localObject2).a(((TabLayoutCompat.Tab)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView));
+      ((TabLayoutCompat.Tab)localObject1).a(((TabLayoutCompat.ViewPagerTabEventListener)localObject2).a(((TabLayoutCompat.Tab)localObject1).b));
     }
     return localObject1;
-  }
-  
-  @Nullable
-  public TabLayoutCompat.Tab a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < a())) {
-      return (TabLayoutCompat.Tab)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildCount() - 1;
-    while (i1 >= 0)
-    {
-      a(i1);
-      i1 -= 1;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)localIterator.next();
-      localIterator.remove();
-      localTab.d();
-      jdField_a_of_type_AndroidSupportV4UtilPools$Pool.release(localTab);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab = null;
   }
   
   void a(int paramInt, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
@@ -497,60 +465,60 @@ public class TabLayoutCompat
     int i1 = Math.round(paramInt + paramFloat);
     if (i1 >= 0)
     {
-      if (i1 >= this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildCount()) {
+      if (i1 >= this.r.getChildCount()) {
         return;
       }
       if (paramBoolean2) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.a(paramInt, paramFloat);
+        this.r.a(paramInt, paramFloat);
       }
-      ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+      ValueAnimator localValueAnimator = this.A;
       if ((localValueAnimator != null) && (localValueAnimator.isRunning())) {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+        this.A.cancel();
       }
       scrollTo(a(paramInt, paramFloat), 0);
       if (paramBoolean1) {
-        c(i1);
+        setSelectedTabView(i1);
       }
     }
   }
   
   void a(@Nullable PagerAdapter paramPagerAdapter, boolean paramBoolean)
   {
-    PagerAdapter localPagerAdapter = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+    PagerAdapter localPagerAdapter = this.B;
     if (localPagerAdapter != null)
     {
-      TabLayoutCompat.PagerAdapterObserver localPagerAdapterObserver = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$PagerAdapterObserver;
+      TabLayoutCompat.PagerAdapterObserver localPagerAdapterObserver = this.C;
       if (localPagerAdapterObserver != null) {
         localPagerAdapter.unregisterDataSetObserver(localPagerAdapterObserver);
       }
     }
-    this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter = paramPagerAdapter;
+    this.B = paramPagerAdapter;
     if (paramPagerAdapter != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$PagerAdapterObserver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$PagerAdapterObserver = new TabLayoutCompat.PagerAdapterObserver(this);
+      if (this.C == null) {
+        this.C = new TabLayoutCompat.PagerAdapterObserver(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$PagerAdapterObserver.a(paramBoolean);
-      paramPagerAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$PagerAdapterObserver);
+      this.C.a(paramBoolean);
+      paramPagerAdapter.registerDataSetObserver(this.C);
     }
-    b();
+    c();
   }
   
   public void a(@NonNull TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
   {
-    if (!this.jdField_b_of_type_JavaUtilArrayList.contains(paramOnTabSelectedListener)) {
-      this.jdField_b_of_type_JavaUtilArrayList.add(paramOnTabSelectedListener);
+    if (!this.y.contains(paramOnTabSelectedListener)) {
+      this.y.add(paramOnTabSelectedListener);
     }
   }
   
   public void a(@NonNull TabLayoutCompat.Tab paramTab, int paramInt, boolean paramBoolean)
   {
-    if (paramTab.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat == this)
+    if (paramTab.a == this)
     {
       a(paramTab, paramInt);
-      a(paramTab);
+      b(paramTab);
       if (paramBoolean) {
-        paramTab.a();
+        paramTab.f();
       }
       return;
     }
@@ -559,7 +527,7 @@ public class TabLayoutCompat
   
   public void a(@NonNull TabLayoutCompat.Tab paramTab, boolean paramBoolean)
   {
-    a(paramTab, this.jdField_a_of_type_JavaUtilArrayList.size(), paramBoolean);
+    a(paramTab, this.p.size(), paramBoolean);
   }
   
   public void addView(View paramView)
@@ -582,128 +550,147 @@ public class TabLayoutCompat
     QLog.e("TabLayoutCompat", 2, "TabLayoutCompat#addView had been deprecated !", new IllegalAccessException("call addTab instead !"));
   }
   
-  public int b()
+  @Nullable
+  public TabLayoutCompat.Tab b(int paramInt)
   {
-    TabLayoutCompat.Tab localTab = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab;
-    if (localTab != null) {
-      return localTab.a();
+    if ((paramInt >= 0) && (paramInt < getTabCount())) {
+      return (TabLayoutCompat.Tab)this.p.get(paramInt);
     }
-    return -1;
+    return null;
   }
   
-  void b()
+  public void b()
   {
-    a();
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+    int i1 = this.r.getChildCount() - 1;
+    while (i1 >= 0)
+    {
+      a(i1);
+      i1 -= 1;
+    }
+    Iterator localIterator = this.p.iterator();
+    while (localIterator.hasNext())
+    {
+      TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)localIterator.next();
+      localIterator.remove();
+      localTab.l();
+      n.release(localTab);
+    }
+    this.q = null;
+  }
+  
+  public void b(@NonNull TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
+  {
+    this.y.remove(paramOnTabSelectedListener);
+  }
+  
+  void b(TabLayoutCompat.Tab paramTab, boolean paramBoolean)
+  {
+    TabLayoutCompat.Tab localTab = this.q;
+    if (localTab == paramTab)
+    {
+      if (localTab != null)
+      {
+        g(paramTab);
+        d(paramTab.d());
+      }
+    }
+    else
+    {
+      int i1;
+      if (paramTab != null) {
+        i1 = paramTab.d();
+      } else {
+        i1 = -1;
+      }
+      if (paramBoolean)
+      {
+        if (((localTab == null) || (localTab.d() == -1)) && (i1 != -1)) {
+          setScrollPosition(i1, 0.0F, true);
+        } else {
+          d(i1);
+        }
+        if (i1 != -1) {
+          setSelectedTabView(i1);
+        }
+      }
+      if (localTab != null) {
+        f(localTab);
+      }
+      this.q = paramTab;
+      if (paramTab != null) {
+        c(paramTab);
+      }
+    }
+  }
+  
+  int c(int paramInt)
+  {
+    return Math.round(getResources().getDisplayMetrics().density * paramInt);
+  }
+  
+  void c()
+  {
+    b();
+    Object localObject = this.B;
     if (localObject != null)
     {
       int i2 = ((PagerAdapter)localObject).getCount();
       int i1 = 0;
       while (i1 < i2)
       {
-        a(a().a(this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageTitle(i1)), false);
+        a(a().a(this.B.getPageTitle(i1)), false);
         i1 += 1;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat;
+      localObject = this.m;
       if ((localObject != null) && (i2 > 0))
       {
         i1 = ((ViewPagerCompat)localObject).getCurrentItem();
-        if ((i1 != b()) && (i1 < a())) {
-          e(a(i1));
+        if ((i1 != getSelectedTabPosition()) && (i1 < getTabCount())) {
+          e(b(i1));
         }
       }
     }
-  }
-  
-  public void b(@NonNull TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
-  {
-    this.jdField_b_of_type_JavaUtilArrayList.remove(paramOnTabSelectedListener);
-  }
-  
-  void b(TabLayoutCompat.Tab paramTab, boolean paramBoolean)
-  {
-    TabLayoutCompat.Tab localTab = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab;
-    if (localTab == paramTab)
-    {
-      if (localTab != null)
-      {
-        f(paramTab);
-        b(paramTab.a());
-      }
-    }
-    else
-    {
-      int i1;
-      if (paramTab != null) {
-        i1 = paramTab.a();
-      } else {
-        i1 = -1;
-      }
-      if (paramBoolean)
-      {
-        if (((localTab == null) || (localTab.a() == -1)) && (i1 != -1)) {
-          setScrollPosition(i1, 0.0F, true);
-        } else {
-          b(i1);
-        }
-        if (i1 != -1) {
-          c(i1);
-        }
-      }
-      if (localTab != null) {
-        c(localTab);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab = paramTab;
-      if (paramTab != null) {
-        b(paramTab);
-      }
-    }
-  }
-  
-  int c()
-  {
-    return this.g;
   }
   
   void c(TabLayoutCompat.Tab paramTab, boolean paramBoolean)
   {
-    TabLayoutCompat.Tab localTab = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab;
+    TabLayoutCompat.Tab localTab = this.q;
     if (localTab == paramTab)
     {
       if (localTab != null) {
-        b(paramTab.a());
+        d(paramTab.d());
       }
     }
     else
     {
       int i1;
       if (paramTab != null) {
-        i1 = paramTab.a();
+        i1 = paramTab.d();
       } else {
         i1 = -1;
       }
       if (paramBoolean)
       {
-        if (((localTab == null) || (localTab.a() == -1)) && (i1 != -1)) {
+        if (((localTab == null) || (localTab.d() == -1)) && (i1 != -1)) {
           setScrollPosition(i1, 0.0F, true);
         } else {
-          b(i1);
+          d(i1);
         }
         if (i1 != -1) {
-          c(i1);
+          setSelectedTabView(i1);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab = paramTab;
+      this.q = paramTab;
     }
   }
   
   void c(boolean paramBoolean)
   {
     int i1 = 0;
-    while (i1 < this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildCount())
+    while (i1 < this.r.getChildCount())
     {
-      View localView = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.getChildAt(i1);
-      localView.setMinimumWidth(f());
+      View localView = this.r.getChildAt(i1);
+      localView.setMinimumWidth(getTabMinWidth());
       a((LinearLayout.LayoutParams)localView.getLayoutParams());
       if (paramBoolean) {
         localView.requestLayout();
@@ -714,7 +701,7 @@ public class TabLayoutCompat
   
   public void d(@NonNull TabLayoutCompat.Tab paramTab)
   {
-    a(paramTab, this.jdField_a_of_type_JavaUtilArrayList.isEmpty());
+    a(paramTab, this.p.isEmpty());
   }
   
   void e(TabLayoutCompat.Tab paramTab)
@@ -727,10 +714,45 @@ public class TabLayoutCompat
     return generateDefaultLayoutParams();
   }
   
+  public int getSelectedTabPosition()
+  {
+    TabLayoutCompat.Tab localTab = this.q;
+    if (localTab != null) {
+      return localTab.d();
+    }
+    return -1;
+  }
+  
+  public int getTabCount()
+  {
+    return this.p.size();
+  }
+  
+  public int getTabGravity()
+  {
+    return this.k;
+  }
+  
+  int getTabMaxWidth()
+  {
+    return this.j;
+  }
+  
+  public int getTabMode()
+  {
+    return this.l;
+  }
+  
+  @Nullable
+  public ColorStateList getTabTextColors()
+  {
+    return this.f;
+  }
+  
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat == null)
+    if (this.m == null)
     {
       ViewParent localViewParent = getParent();
       if ((localViewParent instanceof ViewPagerCompat)) {
@@ -742,16 +764,16 @@ public class TabLayoutCompat
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.F)
     {
       setupWithViewPager(null);
-      this.jdField_a_of_type_Boolean = false;
+      this.F = false;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i1 = a(e()) + getPaddingTop() + getPaddingBottom();
+    int i1 = c(getDefaultHeight()) + getPaddingTop() + getPaddingBottom();
     int i2 = View.MeasureSpec.getMode(paramInt2);
     if (i2 != -2147483648)
     {
@@ -765,18 +787,18 @@ public class TabLayoutCompat
     i2 = View.MeasureSpec.getSize(paramInt1);
     if (View.MeasureSpec.getMode(paramInt1) != 0)
     {
-      i1 = this.k;
+      i1 = this.t;
       if (i1 <= 0) {
-        i1 = i2 - a(56);
+        i1 = i2 - c(56);
       }
-      this.g = i1;
+      this.j = i1;
     }
     super.onMeasure(paramInt1, paramInt2);
     if (getChildCount() == 1)
     {
       paramInt1 = 0;
       View localView = getChildAt(0);
-      i1 = this.i;
+      i1 = this.l;
       if (i1 != 0)
       {
         if ((i1 != 1) || (localView.getMeasuredWidth() == getMeasuredWidth())) {}
@@ -798,17 +820,17 @@ public class TabLayoutCompat
   
   public void setCutomViewBeRelated(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.H = paramBoolean;
   }
   
   @Deprecated
   public void setOnTabSelectedListener(@Nullable TabLayoutCompat.OnTabSelectedListener paramOnTabSelectedListener)
   {
-    TabLayoutCompat.OnTabSelectedListener localOnTabSelectedListener = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener;
+    TabLayoutCompat.OnTabSelectedListener localOnTabSelectedListener = this.x;
     if (localOnTabSelectedListener != null) {
       b(localOnTabSelectedListener);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$OnTabSelectedListener = paramOnTabSelectedListener;
+    this.x = paramOnTabSelectedListener;
     if (paramOnTabSelectedListener != null) {
       a(paramOnTabSelectedListener);
     }
@@ -819,6 +841,13 @@ public class TabLayoutCompat
     super.setOverScrollMode(2);
   }
   
+  @RequiresApi(api=11)
+  void setScrollAnimatorListener(Animator.AnimatorListener paramAnimatorListener)
+  {
+    f();
+    this.A.addListener(paramAnimatorListener);
+  }
+  
   public void setScrollPosition(int paramInt, float paramFloat, boolean paramBoolean)
   {
     a(paramInt, paramFloat, paramBoolean, true);
@@ -826,45 +855,45 @@ public class TabLayoutCompat
   
   public void setScrollableTabMinWidth(int paramInt)
   {
-    this.l = paramInt;
+    this.u = paramInt;
   }
   
   public void setSelectedTabIndicatorColor(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.a(paramInt);
+    this.r.a(paramInt);
   }
   
   public void setSelectedTabIndicatorHeight(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.b(paramInt);
+    this.r.b(paramInt);
   }
   
   public void setSelectedTabIndicatorPaddingBottom(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.e(paramInt);
+    this.r.e(paramInt);
   }
   
   public void setSelectedTabIndicatorPaddingLeft(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.c(paramInt);
+    this.r.c(paramInt);
   }
   
   public void setSelectedTabIndicatorPaddingRight(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip.d(paramInt);
+    this.r.d(paramInt);
   }
   
   public void setTabBackgroundResId(int paramInt)
   {
-    if (this.f != paramInt)
+    if (this.i != paramInt)
     {
-      this.f = paramInt;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      this.i = paramInt;
+      Iterator localIterator = this.p.iterator();
       while (localIterator.hasNext())
       {
         TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)localIterator.next();
-        if (localTab.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView != null) {
-          localTab.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView.setBackgroundResource(this.f);
+        if (localTab.b != null) {
+          localTab.b.setBackgroundResource(this.i);
         }
       }
     }
@@ -872,19 +901,19 @@ public class TabLayoutCompat
   
   public void setTabGravity(int paramInt)
   {
-    if (this.h != paramInt)
+    if (this.k != paramInt)
     {
-      this.h = paramInt;
-      e();
+      this.k = paramInt;
+      g();
     }
   }
   
   public void setTabMode(int paramInt)
   {
-    if (paramInt != this.i)
+    if (paramInt != this.l)
     {
-      this.i = paramInt;
-      e();
+      this.l = paramInt;
+      g();
     }
   }
   
@@ -895,26 +924,26 @@ public class TabLayoutCompat
   
   public void setTabTextColors(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.f != paramColorStateList)
     {
-      this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-      c();
+      this.f = paramColorStateList;
+      d();
     }
   }
   
   public void setTabTextSize(int paramInt)
   {
-    float f1 = this.jdField_a_of_type_Float;
+    float f1 = this.g;
     float f2 = paramInt;
     if (f1 != f2)
     {
-      this.jdField_a_of_type_Float = f2;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      this.g = f2;
+      Iterator localIterator = this.p.iterator();
       while (localIterator.hasNext())
       {
         TabLayoutCompat.Tab localTab = (TabLayoutCompat.Tab)localIterator.next();
-        if ((localTab.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView != null) && (TabLayoutCompat.TabView.a(localTab.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView) != null)) {
-          TabLayoutCompat.TabView.a(localTab.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$TabView).setTextSize(this.jdField_a_of_type_Float);
+        if ((localTab.b != null) && (TabLayoutCompat.TabView.a(localTab.b) != null)) {
+          TabLayoutCompat.TabView.a(localTab.b).setTextSize(this.g);
         }
       }
     }
@@ -928,7 +957,7 @@ public class TabLayoutCompat
   
   public void setViewPagerTabEventListener(TabLayoutCompat.ViewPagerTabEventListener paramViewPagerTabEventListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$ViewPagerTabEventListener = paramViewPagerTabEventListener;
+    this.G = paramViewPagerTabEventListener;
   }
   
   public void setupWithViewPager(@Nullable ViewPagerCompat paramViewPagerCompat)
@@ -943,12 +972,12 @@ public class TabLayoutCompat
   
   public boolean shouldDelayChildPressedState()
   {
-    return d() > 0;
+    return getTabScrollRange() > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabLayoutCompat
  * JD-Core Version:    0.7.0.1
  */

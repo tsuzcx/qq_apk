@@ -8,33 +8,33 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 public class KandianPopupWindowForAd
   extends KandianPopupWindow
 {
-  public boolean b = true;
+  public boolean k = true;
   
   public KandianPopupWindowForAd(Activity paramActivity)
   {
     super(paramActivity);
   }
   
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131706012));
-    }
-    b();
-  }
-  
   protected void a(IBinder paramIBinder)
   {
-    if (this.b) {
+    if (this.k) {
       super.a(paramIBinder);
     }
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.a = false;
+    if (this.b != null) {
+      this.b.setText(HardCodeUtil.a(2131903886));
+    }
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.KandianPopupWindowForAd
  * JD-Core Version:    0.7.0.1
  */

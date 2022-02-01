@@ -12,12 +12,11 @@ import mqq.app.MobileQQ;
 
 public class HighlightModel
 {
-  public int a;
   public List<String> a;
+  public int b = 0;
   
   public HighlightModel(List<String> paramList, String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
     Object localObject = paramList;
     if (paramList == null) {
       localObject = new ArrayList();
@@ -26,7 +25,7 @@ public class HighlightModel
       ((List)localObject).add(paramString);
     }
     Collections.sort((List)localObject, new HighlightModel.1(this));
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject);
+    this.a = ((List)localObject);
   }
   
   public int a(String paramString1, String paramString2, int paramInt)
@@ -48,15 +47,15 @@ public class HighlightModel
       return null;
     }
     Object localObject1 = new SpannableString(paramCharSequence);
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject2 = this.a;
     if (localObject2 != null)
     {
       if (((List)localObject2).size() <= 0) {
         return localObject1;
       }
       localObject2 = paramCharSequence.toString();
-      Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
-      this.jdField_a_of_type_Int = 0;
+      Object[] arrayOfObject = this.a.toArray();
+      this.b = 0;
       paramCharSequence = (CharSequence)localObject1;
       int m = 0;
       int i = 0;
@@ -171,7 +170,7 @@ public class HighlightModel
               }
             }
             ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(i1), n, str2.length() + n, 34);
-            this.jdField_a_of_type_Int += 1;
+            this.b += 1;
             i1 = i;
             k = j;
           }
@@ -199,7 +198,7 @@ public class HighlightModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.HighlightModel
  * JD-Core Version:    0.7.0.1
  */

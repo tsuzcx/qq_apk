@@ -21,7 +21,7 @@ final class ApolloDtReportUtil$report$1
   public final void run()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.a);
     ((StringBuilder)localObject1).append('#');
     ((StringBuilder)localObject1).append(this.b);
     ((StringBuilder)localObject1).append('#');
@@ -43,7 +43,7 @@ final class ApolloDtReportUtil$report$1
     }
     localMap.put("qqUin", localObject1);
     localMap.put("timestamp", String.valueOf(System.currentTimeMillis() / 1000));
-    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject1 = this.d;
     if (localObject1 != null) {
       ((HashMap)localObject2).putAll((Map)localObject1);
     }
@@ -68,7 +68,7 @@ final class ApolloDtReportUtil$report$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil.report.1
  * JD-Core Version:    0.7.0.1
  */

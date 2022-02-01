@@ -25,7 +25,7 @@ public class LoginUtils
 {
   public static Dialog a(Activity paramActivity, int paramInt)
   {
-    return DialogUtil.a(paramActivity, paramInt);
+    return DialogUtil.b(paramActivity, paramInt);
   }
   
   public static String a(String paramString)
@@ -89,16 +89,6 @@ public class LoginUtils
     paramAppRuntime.sendEmptyMessage(2002);
   }
   
-  public static void a(AppRuntime paramAppRuntime, Class<?> paramClass)
-  {
-    if (!(paramAppRuntime instanceof AppInterface))
-    {
-      QLog.e("LoginRegister.LoginUtils", 1, "removeHandler, but appRuntime is not appinterface");
-      return;
-    }
-    ((AppInterface)paramAppRuntime).removeHandler(paramClass);
-  }
-  
   public static void a(AppRuntime paramAppRuntime, Class<?> paramClass, MqqHandler paramMqqHandler)
   {
     if (!(paramAppRuntime instanceof AppInterface))
@@ -156,10 +146,20 @@ public class LoginUtils
     }
     paramAppRuntime.sendEmptyMessage(2001);
   }
+  
+  public static void b(AppRuntime paramAppRuntime, Class<?> paramClass)
+  {
+    if (!(paramAppRuntime instanceof AppInterface))
+    {
+      QLog.e("LoginRegister.LoginUtils", 1, "removeHandler, but appRuntime is not appinterface");
+      return;
+    }
+    ((AppInterface)paramAppRuntime).removeHandler(paramClass);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.LoginUtils
  * JD-Core Version:    0.7.0.1
  */

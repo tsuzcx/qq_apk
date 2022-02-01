@@ -4,12 +4,13 @@ import android.content.Context;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.panel.PanelProvider;
-import com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl;
+import com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.BaseChatPanelBarConfProcessor.C2CChatPanelBarConfProcessor;
+import com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.BaseChatPanelBarConfProcessor.GroupChatPanelBarConfProcessor;
+import com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.ChatPanelBarConfBean;
 import com.tencent.mobileqq.apollo.aio.panel.api.ICmGamePanelProvider;
-import com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloBattleGameViewBinder;
-import com.tencent.mobileqq.apollo.handler.ApolloExtensionObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.apollo.aio.panel.viewbinder.CmGameViewBinder;
+import com.tencent.mobileqq.apollo.view.hippy.CMBattleGameFragment;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 
 public class CmGamePanelProviderImpl
@@ -18,24 +19,29 @@ public class CmGamePanelProviderImpl
   private static final String TAG = "[cmshow]CmGamePanelProvider";
   private BaseChatPie chatPie;
   private View cmGamePanel;
-  private ApolloExtensionObserver mApolloBattleGameObserver = new CmGamePanelProviderImpl.2(this);
-  private ApolloBattleGameViewBinder mApolloBattleGameViewBinder;
-  private int mSceneId;
+  private CmGameViewBinder viewBinder;
   
   public View createPanel(Context paramContext)
   {
-    this.mApolloBattleGameViewBinder = new ApolloBattleGameViewBinder(this.chatPie.a(), paramContext, this.chatPie.a());
-    this.cmGamePanel = this.mApolloBattleGameViewBinder.c();
-    if (CmShowAioMatcherImpl.judgeSupported(this.chatPie.b(), 1)) {
-      this.mSceneId = 4018;
-    } else if (CmShowAioMatcherImpl.judgeSupported(this.chatPie.b(), 2)) {
-      this.mSceneId = 4019;
-    } else {
-      this.mSceneId = -1;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("createPanel cmGamePanel is null=");
+      boolean bool;
+      if (this.cmGamePanel == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("[cmshow]CmGamePanelProvider", 2, ((StringBuilder)localObject).toString());
     }
-    this.mApolloBattleGameViewBinder.a(true);
-    this.chatPie.a.addObserver(this.mApolloBattleGameObserver);
-    ThreadManagerV2.executeOnSubThread(new CmGamePanelProviderImpl.1(this));
+    Object localObject = this.cmGamePanel;
+    if (localObject != null) {
+      return localObject;
+    }
+    this.viewBinder = new CmGameViewBinder(this.chatPie.i(), paramContext, this.chatPie.aE());
+    this.cmGamePanel = this.viewBinder.i();
     return this.cmGamePanel;
   }
   
@@ -51,7 +57,15 @@ public class CmGamePanelProviderImpl
   
   public void init(Object paramObject)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow]CmGamePanelProvider", 2, "init");
+    }
     this.chatPie = ((BaseChatPie)paramObject);
+    boolean bool1 = BaseChatPanelBarConfProcessor.C2CChatPanelBarConfProcessor.a().a();
+    boolean bool2 = BaseChatPanelBarConfProcessor.GroupChatPanelBarConfProcessor.b().a();
+    if ((bool1) || (bool2)) {
+      CMBattleGameFragment.a(this.chatPie.d, this.chatPie.F());
+    }
   }
   
   public boolean isNeedRecreatePanel()
@@ -59,10 +73,7 @@ public class CmGamePanelProviderImpl
     return false;
   }
   
-  public void onHideAllPanel()
-  {
-    this.chatPie.a.removeObserver(this.mApolloBattleGameObserver);
-  }
+  public void onHideAllPanel() {}
   
   public void onPanelChanged(int paramInt1, int paramInt2) {}
   
@@ -71,13 +82,32 @@ public class CmGamePanelProviderImpl
     paramXPanelContainer.a(40);
   }
   
-  public void onPanelIconClickBeforeCreate(int paramInt) {}
+  public void onPanelIconClickBeforeCreate(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPanelIconClickBeforeCreate viewBinder=null:");
+      boolean bool;
+      if (this.viewBinder == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("[cmshow]CmGamePanelProvider", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.viewBinder;
+    if (localObject != null) {
+      ((CmGameViewBinder)localObject).d();
+    }
+  }
   
   public void postOnPanelChanged(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.api.impl.CmGamePanelProviderImpl
  * JD-Core Version:    0.7.0.1
  */

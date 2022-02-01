@@ -9,6 +9,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.ae.camera.ui.dashboard.AEDashboardUtil;
 import com.tencent.aelight.camera.aioeditor.QIMCaptureVarManager;
 import com.tencent.aelight.camera.aioeditor.activity.richmedia.VideoFilterTools;
 import com.tencent.aelight.camera.aioeditor.activity.richmedia.VideoFilterTools.ComboFilterData;
@@ -35,58 +36,47 @@ public class CaptureComboManager
   implements Handler.Callback, IEventReceiver
 {
   public static int a = 4;
-  public Handler a;
-  public VideoFilterTools.ComboFilterData a;
-  private ComboLockManager jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager;
-  public ComboSet a;
-  public FilterSet a;
-  public ArrayList<QIMFilterCategoryItem> a;
-  public HashMap<String, ComboSet> a;
-  private boolean jdField_a_of_type_Boolean;
-  public CaptureComboManager.CaptureRecord[] a;
-  int b;
-  public Handler b;
-  public ArrayList<QIMFilterCategoryItem> b;
-  public HashMap<String, FilterSet> b;
-  public Handler c;
-  ArrayList<CaptureComboManager.CaptureComboListener> c;
-  public HashMap<String, CaptureComboFilter> c;
-  public HashMap<String, ArrayList<CaptureComboManager.ComboApplyTask>> d = new HashMap();
+  public HashMap<String, ComboSet> b = new HashMap();
+  public HashMap<String, FilterSet> c = new HashMap();
+  public HashMap<String, CaptureComboFilter> d = new HashMap();
+  public Handler e = null;
+  public Handler f = new Handler(Looper.getMainLooper(), new CaptureComboManager.2(this));
+  public ArrayList<QIMFilterCategoryItem> g = new ArrayList();
+  public ArrayList<QIMFilterCategoryItem> h = new ArrayList();
+  public Handler i = new Handler(Looper.getMainLooper(), this);
+  public HashMap<String, ArrayList<CaptureComboManager.ComboApplyTask>> j = new HashMap();
+  ArrayList<CaptureComboManager.CaptureComboListener> k = new ArrayList();
+  public VideoFilterTools.ComboFilterData l = null;
+  public ComboSet m;
+  public FilterSet n;
+  public CaptureComboManager.CaptureRecord[] o = new CaptureComboManager.CaptureRecord[5];
+  int p;
+  private ComboLockManager q;
+  private boolean r;
   
   public CaptureComboManager()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new CaptureComboManager.2(this));
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData = null;
-    this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureDataCaptureComboManager$CaptureRecord = new CaptureComboManager.CaptureRecord[5];
-    int i = 0;
+    int i1 = 0;
     for (;;)
     {
-      CaptureComboManager.CaptureRecord[] arrayOfCaptureRecord = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureDataCaptureComboManager$CaptureRecord;
-      if (i >= arrayOfCaptureRecord.length) {
+      CaptureComboManager.CaptureRecord[] arrayOfCaptureRecord = this.o;
+      if (i1 >= arrayOfCaptureRecord.length) {
         break;
       }
-      arrayOfCaptureRecord[i] = new CaptureComboManager.CaptureRecord(i);
-      i += 1;
+      arrayOfCaptureRecord[i1] = new CaptureComboManager.CaptureRecord(i1);
+      i1 += 1;
     }
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new CaptureComboManager.1(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager = new ComboLockManager();
+    this.p = 0;
+    this.r = false;
+    this.e = new Handler(ThreadManager.getSubThreadLooper(), new CaptureComboManager.1(this));
+    this.q = new ComboLockManager();
   }
   
-  private static boolean a(QIMFilterCategoryItem paramQIMFilterCategoryItem)
+  private static boolean d(QIMFilterCategoryItem paramQIMFilterCategoryItem)
   {
-    if ((paramQIMFilterCategoryItem != null) && (paramQIMFilterCategoryItem.jdField_a_of_type_JavaUtilArrayList != null))
+    if ((paramQIMFilterCategoryItem != null) && (paramQIMFilterCategoryItem.j != null))
     {
-      paramQIMFilterCategoryItem = paramQIMFilterCategoryItem.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramQIMFilterCategoryItem = paramQIMFilterCategoryItem.j.iterator();
       while (paramQIMFilterCategoryItem.hasNext()) {
         if ("EMPTY".equals((String)paramQIMFilterCategoryItem.next())) {
           return true;
@@ -96,768 +86,42 @@ public class CaptureComboManager
     return false;
   }
   
-  public VideoFilterTools.DataSet a()
-  {
-    VideoFilterTools.ComboFilterData localComboFilterData = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData;
-    if (localComboFilterData != null) {
-      return localComboFilterData.a;
-    }
-    return null;
-  }
-  
   public CaptureComboFilter a(FilterDesc paramFilterDesc)
   {
-    CaptureComboFilter localCaptureComboFilter2 = (CaptureComboFilter)this.jdField_c_of_type_JavaUtilHashMap.get(paramFilterDesc.name);
+    CaptureComboFilter localCaptureComboFilter2 = (CaptureComboFilter)this.d.get(paramFilterDesc.name);
     CaptureComboFilter localCaptureComboFilter1 = localCaptureComboFilter2;
     if (localCaptureComboFilter2 == null)
     {
       localCaptureComboFilter1 = new CaptureComboFilter(paramFilterDesc);
-      this.jdField_c_of_type_JavaUtilHashMap.put(paramFilterDesc.name, localCaptureComboFilter1);
+      this.d.put(paramFilterDesc.name, localCaptureComboFilter1);
     }
     return localCaptureComboFilter1;
   }
   
-  public ComboLockManager a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager;
-  }
-  
-  /* Error */
-  public ComboSet a(QIMFilterCategoryItem paramQIMFilterCategoryItem)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 40	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   4: aload_1
-    //   5: getfield 161	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   8: invokevirtual 146	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   11: checkcast 163	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet
-    //   14: astore 11
-    //   16: aload 11
-    //   18: astore 10
-    //   20: aload 11
-    //   22: ifnonnull +1249 -> 1271
-    //   25: new 163	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet
-    //   28: dup
-    //   29: aload_1
-    //   30: invokespecial 166	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:<init>	(Ljava/lang/Object;)V
-    //   33: astore 12
-    //   35: aload_1
-    //   36: getfield 107	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   39: invokevirtual 111	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   42: astore 10
-    //   44: aload 10
-    //   46: invokeinterface 117 1 0
-    //   51: ifeq +89 -> 140
-    //   54: aload 10
-    //   56: invokeinterface 123 1 0
-    //   61: checkcast 125	java/lang/String
-    //   64: astore 11
-    //   66: invokestatic 171	com/tencent/aelight/camera/aioeditor/activity/richmedia/VideoFilterTools:a	()Lcom/tencent/aelight/camera/aioeditor/activity/richmedia/VideoFilterTools;
-    //   69: aload 11
-    //   71: invokevirtual 174	com/tencent/aelight/camera/aioeditor/activity/richmedia/VideoFilterTools:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/richmedia/capture/data/FilterDesc;
-    //   74: astore 13
-    //   76: aload 13
-    //   78: ifnull +17 -> 95
-    //   81: aload 12
-    //   83: aload_0
-    //   84: aload 13
-    //   86: invokevirtual 176	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboManager:a	(Lcom/tencent/mobileqq/richmedia/capture/data/FilterDesc;)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboFilter;
-    //   89: invokevirtual 179	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
-    //   92: goto -48 -> 44
-    //   95: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   98: ifeq -54 -> 44
-    //   101: new 186	java/lang/StringBuilder
-    //   104: dup
-    //   105: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   108: astore 13
-    //   110: aload 13
-    //   112: ldc 189
-    //   114: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: pop
-    //   118: aload 13
-    //   120: aload 11
-    //   122: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: pop
-    //   126: ldc 195
-    //   128: iconst_2
-    //   129: aload 13
-    //   131: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   137: goto -93 -> 44
-    //   140: aload_1
-    //   141: getfield 205	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   144: astore 10
-    //   146: ldc 207
-    //   148: astore 11
-    //   150: aload 10
-    //   152: ifnull +250 -> 402
-    //   155: aload_1
-    //   156: getfield 205	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   159: invokevirtual 213	org/json/JSONArray:length	()I
-    //   162: istore 8
-    //   164: iconst_0
-    //   165: istore 7
-    //   167: iconst_0
-    //   168: istore 5
-    //   170: iload 5
-    //   172: istore 6
-    //   174: iload 7
-    //   176: iload 8
-    //   178: if_icmpge +227 -> 405
-    //   181: aload_1
-    //   182: getfield 205	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_a_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   185: iload 7
-    //   187: invokevirtual 217	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   190: astore 14
-    //   192: iload 5
-    //   194: istore 6
-    //   196: aload 14
-    //   198: ifnull +191 -> 389
-    //   201: aload 14
-    //   203: ldc 219
-    //   205: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   208: astore 15
-    //   210: aload 14
-    //   212: ldc 227
-    //   214: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   217: astore 10
-    //   219: aload 14
-    //   221: ldc 229
-    //   223: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   226: invokestatic 235	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   229: invokevirtual 239	java/lang/Float:floatValue	()F
-    //   232: fstore_2
-    //   233: aload 14
-    //   235: ldc 241
-    //   237: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   240: invokestatic 235	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   243: invokevirtual 239	java/lang/Float:floatValue	()F
-    //   246: fstore_3
-    //   247: aload 14
-    //   249: ldc 207
-    //   251: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   254: invokestatic 235	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   257: invokevirtual 239	java/lang/Float:floatValue	()F
-    //   260: fstore 4
-    //   262: new 243	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper
-    //   265: dup
-    //   266: invokespecial 244	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:<init>	()V
-    //   269: astore 13
-    //   271: aload 13
-    //   273: aload 14
-    //   275: invokevirtual 248	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:fromJSONObject	(Lorg/json/JSONObject;)V
-    //   278: aload_1
-    //   279: getfield 161	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   282: aload 15
-    //   284: aload 10
-    //   286: fload_2
-    //   287: fload_3
-    //   288: fload 4
-    //   290: invokestatic 253	com/tencent/aelight/camera/aioeditor/capture/paster/CaptureComboPasterFactory:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;FFF)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;
-    //   293: astore 14
-    //   295: aload 14
-    //   297: ifnull +24 -> 321
-    //   300: aload 14
-    //   302: aload 13
-    //   304: invokevirtual 258	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase:a	(Lcom/tencent/mobileqq/richmedia/capture/data/SegmentKeeper;)V
-    //   307: aload 12
-    //   309: aload 14
-    //   311: invokevirtual 179	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
-    //   314: iload 5
-    //   316: istore 6
-    //   318: goto +71 -> 389
-    //   321: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   324: ifeq +40 -> 364
-    //   327: new 186	java/lang/StringBuilder
-    //   330: dup
-    //   331: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   334: astore 13
-    //   336: aload 13
-    //   338: ldc_w 260
-    //   341: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   344: pop
-    //   345: aload 13
-    //   347: aload 10
-    //   349: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   352: pop
-    //   353: ldc 195
-    //   355: iconst_2
-    //   356: aload 13
-    //   358: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   361: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   364: iconst_1
-    //   365: istore 6
-    //   367: goto +22 -> 389
-    //   370: astore 10
-    //   372: iconst_1
-    //   373: istore 5
-    //   375: goto +5 -> 380
-    //   378: astore 10
-    //   380: aload 10
-    //   382: invokevirtual 263	java/lang/Exception:printStackTrace	()V
-    //   385: iload 5
-    //   387: istore 6
-    //   389: iload 7
-    //   391: iconst_1
-    //   392: iadd
-    //   393: istore 7
-    //   395: iload 6
-    //   397: istore 5
-    //   399: goto -229 -> 170
-    //   402: iconst_0
-    //   403: istore 6
-    //   405: aload_1
-    //   406: getfield 265	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_b_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   409: ifnull +190 -> 599
-    //   412: aload_1
-    //   413: getfield 265	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_b_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   416: invokevirtual 213	org/json/JSONArray:length	()I
-    //   419: istore 8
-    //   421: iconst_0
-    //   422: istore 7
-    //   424: iload 6
-    //   426: istore 5
-    //   428: iload 7
-    //   430: iload 8
-    //   432: if_icmpge +171 -> 603
-    //   435: aload_1
-    //   436: getfield 265	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_b_of_type_OrgJsonJSONArray	Lorg/json/JSONArray;
-    //   439: iload 7
-    //   441: invokevirtual 217	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   444: astore 13
-    //   446: iload 6
-    //   448: istore 5
-    //   450: aload 13
-    //   452: ifnull +134 -> 586
-    //   455: aload 13
-    //   457: ldc_w 267
-    //   460: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   463: astore 10
-    //   465: aload 13
-    //   467: ldc_w 269
-    //   470: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   473: astore 13
-    //   475: aload 13
-    //   477: invokestatic 272	com/tencent/aelight/camera/aioeditor/capture/paster/CaptureComboPasterFactory:a	(Ljava/lang/String;)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;
-    //   480: astore 14
-    //   482: aload 14
-    //   484: ifnull +17 -> 501
-    //   487: aload 12
-    //   489: aload 14
-    //   491: invokevirtual 179	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
-    //   494: iload 6
-    //   496: istore 5
-    //   498: goto +88 -> 586
-    //   501: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   504: ifeq +57 -> 561
-    //   507: new 186	java/lang/StringBuilder
-    //   510: dup
-    //   511: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   514: astore 14
-    //   516: aload 14
-    //   518: ldc_w 274
-    //   521: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   524: pop
-    //   525: aload 14
-    //   527: aload 10
-    //   529: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   532: pop
-    //   533: aload 14
-    //   535: ldc_w 276
-    //   538: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   541: pop
-    //   542: aload 14
-    //   544: aload 13
-    //   546: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   549: pop
-    //   550: ldc 195
-    //   552: iconst_2
-    //   553: aload 14
-    //   555: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   558: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   561: iconst_1
-    //   562: istore 5
-    //   564: goto +22 -> 586
-    //   567: astore 10
-    //   569: iconst_1
-    //   570: istore 5
-    //   572: goto +9 -> 581
-    //   575: astore 10
-    //   577: iload 6
-    //   579: istore 5
-    //   581: aload 10
-    //   583: invokevirtual 263	java/lang/Exception:printStackTrace	()V
-    //   586: iload 7
-    //   588: iconst_1
-    //   589: iadd
-    //   590: istore 7
-    //   592: iload 5
-    //   594: istore 6
-    //   596: goto -172 -> 424
-    //   599: iload 6
-    //   601: istore 5
-    //   603: iload 5
-    //   605: istore 6
-    //   607: aload_1
-    //   608: getfield 278	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:c	Lorg/json/JSONArray;
-    //   611: ifnull +202 -> 813
-    //   614: aload_1
-    //   615: getfield 278	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:c	Lorg/json/JSONArray;
-    //   618: invokevirtual 213	org/json/JSONArray:length	()I
-    //   621: istore 8
-    //   623: iconst_0
-    //   624: istore 7
-    //   626: iload 5
-    //   628: istore 6
-    //   630: iload 7
-    //   632: iload 8
-    //   634: if_icmpge +179 -> 813
-    //   637: aload_1
-    //   638: getfield 278	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:c	Lorg/json/JSONArray;
-    //   641: iload 7
-    //   643: invokevirtual 217	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   646: astore 13
-    //   648: iload 5
-    //   650: istore 6
-    //   652: aload 13
-    //   654: ifnull +146 -> 800
-    //   657: aload 13
-    //   659: ldc_w 267
-    //   662: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   665: astore 10
-    //   667: aload 13
-    //   669: ldc_w 269
-    //   672: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   675: astore 13
-    //   677: iload 5
-    //   679: istore 6
-    //   681: aload 10
-    //   683: invokestatic 283	com/tencent/mobileqq/utils/StringUtil:a	(Ljava/lang/String;)Z
-    //   686: ifne +114 -> 800
-    //   689: aload 13
-    //   691: invokestatic 285	com/tencent/aelight/camera/aioeditor/capture/paster/CaptureComboPasterFactory:b	(Ljava/lang/String;)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;
-    //   694: astore 14
-    //   696: aload 14
-    //   698: ifnull +17 -> 715
-    //   701: aload 12
-    //   703: aload 14
-    //   705: invokevirtual 179	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
-    //   708: iload 5
-    //   710: istore 6
-    //   712: goto +88 -> 800
-    //   715: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   718: ifeq +57 -> 775
-    //   721: new 186	java/lang/StringBuilder
-    //   724: dup
-    //   725: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   728: astore 14
-    //   730: aload 14
-    //   732: ldc_w 287
-    //   735: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   738: pop
-    //   739: aload 14
-    //   741: aload 10
-    //   743: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   746: pop
-    //   747: aload 14
-    //   749: ldc_w 276
-    //   752: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   755: pop
-    //   756: aload 14
-    //   758: aload 13
-    //   760: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   763: pop
-    //   764: ldc 195
-    //   766: iconst_2
-    //   767: aload 14
-    //   769: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   772: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   775: iconst_1
-    //   776: istore 6
-    //   778: goto +22 -> 800
-    //   781: astore 10
-    //   783: iconst_1
-    //   784: istore 5
-    //   786: goto +5 -> 791
-    //   789: astore 10
-    //   791: aload 10
-    //   793: invokevirtual 263	java/lang/Exception:printStackTrace	()V
-    //   796: iload 5
-    //   798: istore 6
-    //   800: iload 7
-    //   802: iconst_1
-    //   803: iadd
-    //   804: istore 7
-    //   806: iload 6
-    //   808: istore 5
-    //   810: goto -184 -> 626
-    //   813: iload 6
-    //   815: istore 5
-    //   817: aload_1
-    //   818: getfield 289	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:d	Lorg/json/JSONArray;
-    //   821: ifnull +427 -> 1248
-    //   824: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   827: ifeq +64 -> 891
-    //   830: new 186	java/lang/StringBuilder
-    //   833: dup
-    //   834: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   837: astore 10
-    //   839: aload 10
-    //   841: ldc_w 291
-    //   844: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   847: pop
-    //   848: aload 10
-    //   850: aload_1
-    //   851: getfield 289	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:d	Lorg/json/JSONArray;
-    //   854: invokevirtual 294	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   857: pop
-    //   858: aload 10
-    //   860: ldc_w 296
-    //   863: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   866: pop
-    //   867: aload 10
-    //   869: aload_1
-    //   870: getfield 289	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:d	Lorg/json/JSONArray;
-    //   873: invokevirtual 213	org/json/JSONArray:length	()I
-    //   876: invokevirtual 299	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   879: pop
-    //   880: ldc 195
-    //   882: iconst_2
-    //   883: aload 10
-    //   885: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   888: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   891: aload_1
-    //   892: getfield 289	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:d	Lorg/json/JSONArray;
-    //   895: invokevirtual 213	org/json/JSONArray:length	()I
-    //   898: istore 8
-    //   900: iload 6
-    //   902: istore 5
-    //   904: iconst_0
-    //   905: istore 7
-    //   907: iload 8
-    //   909: istore 6
-    //   911: iload 7
-    //   913: iload 6
-    //   915: if_icmpge +333 -> 1248
-    //   918: aload_1
-    //   919: getfield 289	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:d	Lorg/json/JSONArray;
-    //   922: iload 7
-    //   924: invokevirtual 217	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   927: astore 13
-    //   929: aload 13
-    //   931: ifnull +308 -> 1239
-    //   934: aload 13
-    //   936: ldc_w 301
-    //   939: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   942: astore 10
-    //   944: aload 13
-    //   946: ldc_w 303
-    //   949: invokevirtual 307	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   952: astore 15
-    //   954: aload 15
-    //   956: ifnull +283 -> 1239
-    //   959: new 66	java/util/ArrayList
-    //   962: dup
-    //   963: invokespecial 67	java/util/ArrayList:<init>	()V
-    //   966: astore 14
-    //   968: iconst_0
-    //   969: istore 8
-    //   971: iload 8
-    //   973: aload 15
-    //   975: invokevirtual 213	org/json/JSONArray:length	()I
-    //   978: if_icmpge +33 -> 1011
-    //   981: aload 15
-    //   983: iload 8
-    //   985: invokevirtual 311	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   988: astore 16
-    //   990: aload 16
-    //   992: invokestatic 317	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   995: ifne +285 -> 1280
-    //   998: aload 14
-    //   1000: aload 16
-    //   1002: invokeinterface 322 2 0
-    //   1007: pop
-    //   1008: goto +272 -> 1280
-    //   1011: aload 13
-    //   1013: ldc 229
-    //   1015: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1018: invokestatic 235	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   1021: invokevirtual 239	java/lang/Float:floatValue	()F
-    //   1024: fstore_2
-    //   1025: aload 13
-    //   1027: ldc 241
-    //   1029: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1032: invokestatic 235	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   1035: invokevirtual 239	java/lang/Float:floatValue	()F
-    //   1038: fstore_3
-    //   1039: aload 13
-    //   1041: aload 11
-    //   1043: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1046: invokestatic 235	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
-    //   1049: invokevirtual 239	java/lang/Float:floatValue	()F
-    //   1052: fstore 4
-    //   1054: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1057: istore 9
-    //   1059: iload 9
-    //   1061: ifeq +233 -> 1294
-    //   1064: new 186	java/lang/StringBuilder
-    //   1067: dup
-    //   1068: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   1071: astore 15
-    //   1073: aload 15
-    //   1075: ldc_w 324
-    //   1078: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1081: pop
-    //   1082: aload 15
-    //   1084: aload 10
-    //   1086: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1089: pop
-    //   1090: ldc 195
-    //   1092: iconst_2
-    //   1093: aload 15
-    //   1095: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1098: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1101: goto +3 -> 1104
-    //   1104: new 243	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper
-    //   1107: dup
-    //   1108: invokespecial 244	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:<init>	()V
-    //   1111: astore 15
-    //   1113: aload 15
-    //   1115: aload 13
-    //   1117: invokevirtual 248	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:fromJSONObject	(Lorg/json/JSONObject;)V
-    //   1120: aload 10
-    //   1122: aload 14
-    //   1124: fload_2
-    //   1125: fload_3
-    //   1126: fload 4
-    //   1128: invokestatic 327	com/tencent/aelight/camera/aioeditor/capture/paster/CaptureComboPasterFactory:a	(Ljava/lang/String;Ljava/util/List;FFF)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;
-    //   1131: astore 13
-    //   1133: aload 13
-    //   1135: ifnull +20 -> 1155
-    //   1138: aload 13
-    //   1140: aload 15
-    //   1142: invokevirtual 258	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase:a	(Lcom/tencent/mobileqq/richmedia/capture/data/SegmentKeeper;)V
-    //   1145: aload 12
-    //   1147: aload 13
-    //   1149: invokevirtual 179	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
-    //   1152: goto +87 -> 1239
-    //   1155: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1158: ifeq +52 -> 1210
-    //   1161: new 186	java/lang/StringBuilder
-    //   1164: dup
-    //   1165: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   1168: astore 13
-    //   1170: aload 13
-    //   1172: ldc_w 329
-    //   1175: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1178: pop
-    //   1179: aload 13
-    //   1181: aload 10
-    //   1183: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1186: pop
-    //   1187: aload 13
-    //   1189: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1192: astore 10
-    //   1194: ldc 195
-    //   1196: iconst_2
-    //   1197: aload 10
-    //   1199: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1202: goto +8 -> 1210
-    //   1205: astore 10
-    //   1207: goto +11 -> 1218
-    //   1210: iconst_1
-    //   1211: istore 5
-    //   1213: goto +26 -> 1239
-    //   1216: astore 10
-    //   1218: iconst_1
-    //   1219: istore 5
-    //   1221: goto +10 -> 1231
-    //   1224: astore 10
-    //   1226: goto +5 -> 1231
-    //   1229: astore 10
-    //   1231: aload 10
-    //   1233: invokevirtual 263	java/lang/Exception:printStackTrace	()V
-    //   1236: goto +3 -> 1239
-    //   1239: iload 7
-    //   1241: iconst_1
-    //   1242: iadd
-    //   1243: istore 7
-    //   1245: goto -334 -> 911
-    //   1248: iload 5
-    //   1250: ifne +17 -> 1267
-    //   1253: aload_0
-    //   1254: getfield 40	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   1257: aload_1
-    //   1258: getfield 161	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1261: aload 12
-    //   1263: invokevirtual 155	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1266: pop
-    //   1267: aload 12
-    //   1269: astore 10
-    //   1271: aload 10
-    //   1273: aload_1
-    //   1274: putfield 332	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   1277: aload 10
-    //   1279: areturn
-    //   1280: iload 8
-    //   1282: iconst_1
-    //   1283: iadd
-    //   1284: istore 8
-    //   1286: goto -315 -> 971
-    //   1289: astore 10
-    //   1291: goto -60 -> 1231
-    //   1294: goto -190 -> 1104
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	1297	0	this	CaptureComboManager
-    //   0	1297	1	paramQIMFilterCategoryItem	QIMFilterCategoryItem
-    //   232	893	2	f1	float
-    //   246	880	3	f2	float
-    //   260	867	4	f3	float
-    //   168	1081	5	i	int
-    //   172	744	6	j	int
-    //   165	1079	7	k	int
-    //   162	1123	8	m	int
-    //   1057	3	9	bool	boolean
-    //   18	330	10	localObject1	Object
-    //   370	1	10	localException1	java.lang.Exception
-    //   378	3	10	localException2	java.lang.Exception
-    //   463	65	10	str1	String
-    //   567	1	10	localException3	java.lang.Exception
-    //   575	7	10	localException4	java.lang.Exception
-    //   665	77	10	str2	String
-    //   781	1	10	localException5	java.lang.Exception
-    //   789	3	10	localException6	java.lang.Exception
-    //   837	361	10	localObject2	Object
-    //   1205	1	10	localException7	java.lang.Exception
-    //   1216	1	10	localException8	java.lang.Exception
-    //   1224	1	10	localException9	java.lang.Exception
-    //   1229	3	10	localException10	java.lang.Exception
-    //   1269	9	10	localObject3	Object
-    //   1289	1	10	localException11	java.lang.Exception
-    //   14	1028	11	localObject4	Object
-    //   33	1235	12	localComboSet	ComboSet
-    //   74	1114	13	localObject5	Object
-    //   190	933	14	localObject6	Object
-    //   208	933	15	localObject7	Object
-    //   988	13	16	str3	String
-    // Exception table:
-    //   from	to	target	type
-    //   321	364	370	java/lang/Exception
-    //   201	295	378	java/lang/Exception
-    //   300	314	378	java/lang/Exception
-    //   501	561	567	java/lang/Exception
-    //   455	482	575	java/lang/Exception
-    //   487	494	575	java/lang/Exception
-    //   715	775	781	java/lang/Exception
-    //   657	677	789	java/lang/Exception
-    //   681	696	789	java/lang/Exception
-    //   701	708	789	java/lang/Exception
-    //   1194	1202	1205	java/lang/Exception
-    //   1155	1194	1216	java/lang/Exception
-    //   1073	1101	1224	java/lang/Exception
-    //   1104	1133	1224	java/lang/Exception
-    //   1138	1152	1224	java/lang/Exception
-    //   934	954	1229	java/lang/Exception
-    //   959	968	1229	java/lang/Exception
-    //   971	1008	1229	java/lang/Exception
-    //   1011	1059	1229	java/lang/Exception
-    //   1064	1073	1289	java/lang/Exception
-  }
-  
-  public ComboSet a(QIMFilterCategoryItem paramQIMFilterCategoryItem, Activity paramActivity, Bundle paramBundle)
-  {
-    CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
-    ComboSet localComboSet = localCaptureComboManager.a(paramQIMFilterCategoryItem);
-    localComboSet.b(paramActivity, paramBundle.getInt("capture_scene", -1));
-    localComboSet.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    localCaptureComboManager.a(paramQIMFilterCategoryItem);
-    int i = localComboSet.jdField_a_of_type_Int;
-    if (i != 1)
-    {
-      if (i != 2)
-      {
-        if (i == 3)
-        {
-          a(new CaptureComboManager.ComboApplyTask(localComboSet, paramBundle, paramActivity));
-          paramQIMFilterCategoryItem = Message.obtain(this.jdField_c_of_type_AndroidOsHandler, 7, 0, 0, localComboSet);
-          if (Looper.getMainLooper() == Looper.myLooper()) {
-            a(paramQIMFilterCategoryItem);
-          } else {
-            paramQIMFilterCategoryItem.sendToTarget();
-          }
-        }
-      }
-      else
-      {
-        a(new CaptureComboManager.ComboApplyTask(localComboSet, paramBundle, paramActivity));
-        localComboSet.b();
-      }
-    }
-    else {
-      a(new CaptureComboManager.ComboApplyTask(localComboSet, paramBundle, paramActivity));
-    }
-    if (QLog.isColorLevel())
-    {
-      paramQIMFilterCategoryItem = new StringBuilder();
-      paramQIMFilterCategoryItem.append("applyCombo state = ");
-      paramQIMFilterCategoryItem.append(localComboSet.jdField_a_of_type_Int);
-      QLog.i("QCombo", 2, paramQIMFilterCategoryItem.toString());
-    }
-    return localComboSet;
-  }
-  
   public ComboSet a(String paramString)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData;
+    Object localObject2 = this.l;
     Object localObject1 = null;
     ComboSet localComboSet = null;
     if (localObject2 != null)
     {
-      localObject2 = ((VideoFilterTools.ComboFilterData)localObject2).a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject2 = ((VideoFilterTools.ComboFilterData)localObject2).d.a.iterator();
       for (;;)
       {
         localObject1 = localComboSet;
         if (!((Iterator)localObject2).hasNext()) {
           return localObject1;
         }
-        localObject1 = ((FilterCategory)((Iterator)localObject2).next()).jdField_a_of_type_JavaUtilList.iterator();
+        localObject1 = ((FilterCategory)((Iterator)localObject2).next()).c.iterator();
         if (((Iterator)localObject1).hasNext())
         {
           QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)((Iterator)localObject1).next();
-          if (!TextUtils.equals(localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, paramString)) {
+          if (!TextUtils.equals(localQIMFilterCategoryItem.a, paramString)) {
             break;
           }
-          localComboSet = a(localQIMFilterCategoryItem);
+          localComboSet = c(localQIMFilterCategoryItem);
         }
       }
-    }
-    return localObject1;
-  }
-  
-  public FilterSet a(QIMFilterCategoryItem paramQIMFilterCategoryItem)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = paramQIMFilterCategoryItem.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = VideoFilterTools.a().a((String)localObject2);
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-    }
-    Object localObject2 = (FilterSet)this.jdField_b_of_type_JavaUtilHashMap.get(paramQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = new FilterSet(paramQIMFilterCategoryItem);
-      localObject2 = localArrayList.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((FilterSet)localObject1).c(a((FilterDesc)((Iterator)localObject2).next()));
-      }
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, localObject1);
     }
     return localObject1;
   }
@@ -865,11 +129,11 @@ public class CaptureComboManager
   public QIMFilterCategoryItem a(ComboSet paramComboSet, ArrayList<QIMFilterCategoryItem> paramArrayList)
   {
     Object localObject2 = null;
-    if ((paramComboSet != null) && ((paramComboSet.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem)))
+    if ((paramComboSet != null) && ((paramComboSet.e instanceof QIMFilterCategoryItem)))
     {
-      Object localObject3 = (QIMFilterCategoryItem)paramComboSet.jdField_a_of_type_JavaLangObject;
+      Object localObject3 = (QIMFilterCategoryItem)paramComboSet.e;
       Object localObject1;
-      if (((QIMFilterCategoryItem)localObject3).jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      if (((QIMFilterCategoryItem)localObject3).j.isEmpty())
       {
         localObject1 = null;
       }
@@ -884,13 +148,13 @@ public class CaptureComboManager
             break label143;
           }
           localObject1 = (QIMFilterCategoryItem)localIterator1.next();
-          if (((QIMFilterCategoryItem)localObject1).jdField_a_of_type_JavaUtilArrayList.size() == ((QIMFilterCategoryItem)localObject3).jdField_a_of_type_JavaUtilArrayList.size())
+          if (((QIMFilterCategoryItem)localObject1).j.size() == ((QIMFilterCategoryItem)localObject3).j.size())
           {
-            Iterator localIterator2 = ((QIMFilterCategoryItem)localObject3).jdField_a_of_type_JavaUtilArrayList.iterator();
+            Iterator localIterator2 = ((QIMFilterCategoryItem)localObject3).j.iterator();
             if (localIterator2.hasNext())
             {
               String str = (String)localIterator2.next();
-              if (!((QIMFilterCategoryItem)localObject1).jdField_a_of_type_JavaUtilArrayList.contains(str)) {
+              if (!((QIMFilterCategoryItem)localObject1).j.contains(str)) {
                 break;
               }
               paramComboSet = (ComboSet)localObject1;
@@ -901,7 +165,7 @@ public class CaptureComboManager
       label143:
       if (localObject1 == null)
       {
-        localObject3 = ((QIMFilterCategoryItem)localObject3).jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject3 = ((QIMFilterCategoryItem)localObject3).j.iterator();
         paramComboSet = (ComboSet)localObject2;
         for (;;)
         {
@@ -925,7 +189,7 @@ public class CaptureComboManager
           while (paramComboSet.hasNext())
           {
             paramArrayList = (QIMFilterCategoryItem)paramComboSet.next();
-            if ((paramArrayList.jdField_a_of_type_JavaUtilArrayList.size() == 1) && (paramArrayList.jdField_a_of_type_JavaUtilArrayList.contains(((FilterDesc)localObject2).name))) {
+            if ((paramArrayList.j.size() == 1) && (paramArrayList.j.contains(((FilterDesc)localObject2).name))) {
               return paramArrayList;
             }
           }
@@ -938,17 +202,17 @@ public class CaptureComboManager
   
   public void a(int paramInt)
   {
-    int i = this.jdField_b_of_type_Int;
-    if ((i & 0x3) == 3) {
+    int i1 = this.p;
+    if ((i1 & 0x3) == 3) {
       return;
     }
-    this.jdField_b_of_type_Int = (paramInt | i);
-    if ((this.jdField_b_of_type_Int & 0x3) == 3)
+    this.p = (paramInt | i1);
+    if ((this.p & 0x3) == 3)
     {
       if (QLog.isColorLevel()) {
         QLog.i("CaptureComboManager", 2, "first random");
       }
-      e();
+      h();
     }
   }
   
@@ -957,14 +221,14 @@ public class CaptureComboManager
     Object localObject = VideoFilterTools.a().a(paramInt);
     if (localObject != null)
     {
-      localObject = a((QIMFilterCategoryItem)localObject);
-      if ((localObject != null) && (((ComboSet)localObject).jdField_a_of_type_Int == 1))
+      localObject = c((QIMFilterCategoryItem)localObject);
+      if ((localObject != null) && (((ComboSet)localObject).b == 1))
       {
         localObject = new Bundle();
         ((Bundle)localObject).putInt("capture_scene", paramInt);
-        ComboSet localComboSet = VideoFilterTools.a().a[paramInt];
+        ComboSet localComboSet = VideoFilterTools.a().e[paramInt];
         if (localComboSet != null) {
-          a((QIMFilterCategoryItem)localComboSet.jdField_a_of_type_JavaLangObject, paramActivity, (Bundle)localObject);
+          b((QIMFilterCategoryItem)localComboSet.e, paramActivity, (Bundle)localObject);
         }
         if (QLog.isColorLevel())
         {
@@ -979,13 +243,13 @@ public class CaptureComboManager
   
   public void a(Activity paramActivity)
   {
-    CaptureComboManager.CaptureRecord[] arrayOfCaptureRecord = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureDataCaptureComboManager$CaptureRecord;
-    int j = arrayOfCaptureRecord.length;
-    int i = 0;
-    while (i < j)
+    CaptureComboManager.CaptureRecord[] arrayOfCaptureRecord = this.o;
+    int i2 = arrayOfCaptureRecord.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      arrayOfCaptureRecord[i].c(paramActivity);
-      i += 1;
+      arrayOfCaptureRecord[i1].c(paramActivity);
+      i1 += 1;
     }
   }
   
@@ -1006,19 +270,19 @@ public class CaptureComboManager
     }
     if (paramComboFilterData != null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData = paramComboFilterData;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager.a(paramComboFilterData);
-      Message.obtain(this.jdField_c_of_type_AndroidOsHandler, 9, paramComboFilterData).sendToTarget();
+      this.l = paramComboFilterData;
+      this.q.a(paramComboFilterData);
+      Message.obtain(this.i, 9, paramComboFilterData).sendToTarget();
     }
     a(1);
   }
   
   public void a(CaptureComboManager.CaptureComboListener paramCaptureComboListener)
   {
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+    synchronized (this.k)
     {
-      if (!this.jdField_c_of_type_JavaUtilArrayList.contains(paramCaptureComboListener)) {
-        this.jdField_c_of_type_JavaUtilArrayList.add(paramCaptureComboListener);
+      if (!this.k.contains(paramCaptureComboListener)) {
+        this.k.add(paramCaptureComboListener);
       }
       return;
     }
@@ -1026,15 +290,15 @@ public class CaptureComboManager
   
   public void a(CaptureComboManager.ComboApplyTask paramComboApplyTask)
   {
-    synchronized (this.d)
+    synchronized (this.j)
     {
-      String str = paramComboApplyTask.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureSet.b();
-      ArrayList localArrayList2 = (ArrayList)this.d.get(str);
+      String str = paramComboApplyTask.a.h();
+      ArrayList localArrayList2 = (ArrayList)this.j.get(str);
       ArrayList localArrayList1 = localArrayList2;
       if (localArrayList2 == null)
       {
         localArrayList1 = new ArrayList();
-        this.d.put(str, localArrayList1);
+        this.j.put(str, localArrayList1);
       }
       localArrayList1.add(paramComboApplyTask);
       return;
@@ -1050,11 +314,11 @@ public class CaptureComboManager
       ((StringBuilder)???).append(paramCaptureSet);
       QLog.i("QCombo", 2, ((StringBuilder)???).toString());
     }
-    if ((paramCaptureSet.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem)) {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    if ((paramCaptureSet.e instanceof QIMFilterCategoryItem)) {
+      synchronized (this.h)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.add((QIMFilterCategoryItem)paramCaptureSet.jdField_a_of_type_JavaLangObject);
-        Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, 0, 7, paramCaptureSet).sendToTarget();
+        this.h.add((QIMFilterCategoryItem)paramCaptureSet.e);
+        Message.obtain(this.e, 1, 0, 7, paramCaptureSet).sendToTarget();
         return;
       }
     }
@@ -1069,11 +333,11 @@ public class CaptureComboManager
       ((StringBuilder)???).append(paramCaptureSet);
       QLog.i("QCombo", 2, ((StringBuilder)???).toString());
     }
-    if ((paramCaptureSet.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem)) {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    if ((paramCaptureSet.e instanceof QIMFilterCategoryItem)) {
+      synchronized (this.h)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.add((QIMFilterCategoryItem)paramCaptureSet.jdField_a_of_type_JavaLangObject);
-        Message.obtain(this.jdField_c_of_type_AndroidOsHandler, 1, paramInt, 7, paramCaptureSet).sendToTarget();
+        this.h.add((QIMFilterCategoryItem)paramCaptureSet.e);
+        Message.obtain(this.i, 1, paramInt, 7, paramCaptureSet).sendToTarget();
         return;
       }
     }
@@ -1081,7 +345,7 @@ public class CaptureComboManager
   
   public void a(ComboSet paramComboSet)
   {
-    Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.k.iterator();
     while (localIterator.hasNext()) {
       ((CaptureComboManager.CaptureComboListener)localIterator.next()).a(paramComboSet);
     }
@@ -1090,10 +354,10 @@ public class CaptureComboManager
   public void a(QIMFilterCategoryItem paramQIMFilterCategoryItem)
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("pre_capture_combo_select", 0);
-    if ((!paramQIMFilterCategoryItem.e()) && (!paramQIMFilterCategoryItem.b())) {
+    if ((!paramQIMFilterCategoryItem.f()) && (!paramQIMFilterCategoryItem.c())) {
       paramQIMFilterCategoryItem = "";
     } else {
-      paramQIMFilterCategoryItem = paramQIMFilterCategoryItem.jdField_a_of_type_JavaLangString;
+      paramQIMFilterCategoryItem = paramQIMFilterCategoryItem.a;
     }
     Object localObject = paramQIMFilterCategoryItem;
     if (paramQIMFilterCategoryItem == null) {
@@ -1104,16 +368,16 @@ public class CaptureComboManager
   
   public void a(QIMFilterCategoryItem paramQIMFilterCategoryItem, Activity paramActivity, Bundle paramBundle)
   {
-    int i = paramBundle.getInt("capture_scene", -1);
-    QIMFilterCategoryItem localQIMFilterCategoryItem = VideoFilterTools.a().b(i);
+    int i1 = paramBundle.getInt("capture_scene", -1);
+    QIMFilterCategoryItem localQIMFilterCategoryItem = VideoFilterTools.a().b(i1);
     boolean bool1;
-    if ((localQIMFilterCategoryItem != null) && (TextUtils.equals(localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, paramQIMFilterCategoryItem.jdField_a_of_type_JavaLangString))) {
+    if ((localQIMFilterCategoryItem != null) && (TextUtils.equals(localQIMFilterCategoryItem.a, paramQIMFilterCategoryItem.a))) {
       bool1 = true;
     } else {
       bool1 = false;
     }
     boolean bool2;
-    if ((localQIMFilterCategoryItem == null) && (a(paramQIMFilterCategoryItem))) {
+    if ((localQIMFilterCategoryItem == null) && (d(paramQIMFilterCategoryItem))) {
       bool2 = true;
     } else {
       bool2 = false;
@@ -1122,22 +386,22 @@ public class CaptureComboManager
     if (((bool1) || (bool2)) && (!bool3))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("CaptureComboManager", 2, new Object[] { "applyFilters repeat, sameItem: ", Boolean.valueOf(bool1), " emptyItem:", Boolean.valueOf(bool2), " filterItem:", paramQIMFilterCategoryItem.jdField_b_of_type_JavaLangString, " isForceEnable:", Boolean.valueOf(bool3) });
+        QLog.d("CaptureComboManager", 2, new Object[] { "applyFilters repeat, sameItem: ", Boolean.valueOf(bool1), " emptyItem:", Boolean.valueOf(bool2), " filterItem:", paramQIMFilterCategoryItem.b, " isForceEnable:", Boolean.valueOf(bool3) });
       }
       return;
     }
-    paramQIMFilterCategoryItem = ((CaptureComboManager)QIMManager.a(5)).a(paramQIMFilterCategoryItem);
-    paramQIMFilterCategoryItem.b(paramActivity, i);
-    paramQIMFilterCategoryItem.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    i = paramQIMFilterCategoryItem.jdField_a_of_type_Int;
-    if (i != 1)
+    paramQIMFilterCategoryItem = ((CaptureComboManager)QIMManager.a(5)).b(paramQIMFilterCategoryItem);
+    paramQIMFilterCategoryItem.c(paramActivity, i1);
+    paramQIMFilterCategoryItem.f = new WeakReference(paramActivity);
+    i1 = paramQIMFilterCategoryItem.b;
+    if (i1 != 1)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i == 3)
+        if (i1 == 3)
         {
           a(new CaptureComboManager.ComboApplyTask(paramQIMFilterCategoryItem, paramBundle, paramActivity));
-          paramActivity = Message.obtain(this.jdField_c_of_type_AndroidOsHandler, 7, 0, 0, paramQIMFilterCategoryItem);
+          paramActivity = Message.obtain(this.i, 7, 0, 0, paramQIMFilterCategoryItem);
           if (Looper.getMainLooper() == Looper.myLooper()) {
             a(paramActivity);
           } else {
@@ -1149,7 +413,7 @@ public class CaptureComboManager
       {
         a(new CaptureComboManager.ComboApplyTask(paramQIMFilterCategoryItem, paramBundle, paramActivity));
         QIMCommonLoadingProgress.a(paramQIMFilterCategoryItem).a();
-        paramQIMFilterCategoryItem.b();
+        paramQIMFilterCategoryItem.d();
       }
     }
     else {
@@ -1159,7 +423,7 @@ public class CaptureComboManager
     {
       paramActivity = new StringBuilder();
       paramActivity.append("applyFilters state = ");
-      paramActivity.append(paramQIMFilterCategoryItem.jdField_a_of_type_Int);
+      paramActivity.append(paramQIMFilterCategoryItem.b);
       QLog.i("QCombo", 2, paramActivity.toString());
     }
   }
@@ -1173,119 +437,22 @@ public class CaptureComboManager
       localStringBuilder.append(paramBoolean);
       QLog.i("CaptureComboManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_b_of_type_JavaUtilArrayList);
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      if (QLog.isColorLevel())
-      {
-        ??? = new StringBuilder();
-        ((StringBuilder)???).append("syncStateAndProgress ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilArrayList.size());
-        QLog.i("QCombo", 2, ((StringBuilder)???).toString());
-      }
-      boolean bool = false;
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-      while (i >= 0)
-      {
-        Object localObject2 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ??? = a((QIMFilterCategoryItem)localObject2);
-        StringBuilder localStringBuilder;
-        if (((CaptureSet)???).jdField_a_of_type_Int == 1)
-        {
-          int j = ((CaptureSet)???).a();
-          if (j != ((CaptureSet)???).jdField_a_of_type_Int)
-          {
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("buildComboBatch progress: ");
-              localStringBuilder.append(((QIMFilterCategoryItem)localObject2).jdField_b_of_type_JavaLangString);
-              localStringBuilder.append(", progress: ");
-              localStringBuilder.append(((CaptureSet)???).jdField_b_of_type_Int);
-              QLog.d("QCombo", 2, localStringBuilder.toString());
-            }
-            ((CaptureSet)???).jdField_a_of_type_Int = j;
-          }
-          j = (int)(((CaptureSet)???).a() * 10000.0F);
-          if (j != ((CaptureSet)???).jdField_b_of_type_Int)
-          {
-            ((CaptureSet)???).jdField_b_of_type_Int = j;
-            if (QLog.isColorLevel())
-            {
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("buildComboBatch progress: ");
-              ((StringBuilder)localObject2).append(j);
-              ((StringBuilder)localObject2).append(", progress: ");
-              ((StringBuilder)localObject2).append(((CaptureSet)???).jdField_b_of_type_Int);
-              QLog.i("QCombo", 2, ((StringBuilder)localObject2).toString());
-            }
-          }
-        }
-        else if (((CaptureSet)???).jdField_a_of_type_Int == 2)
-        {
-          ((CaptureSet)???).a();
-          localObject2 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("removeComboBatch: ");
-            localStringBuilder.append(((QIMFilterCategoryItem)localObject2).jdField_b_of_type_JavaLangString);
-            localStringBuilder.append(",  STATE_NEED_DOWNLOAD progress: ");
-            localStringBuilder.append(((CaptureSet)???).jdField_b_of_type_Int);
-            QLog.i("QCombo", 2, localStringBuilder.toString());
-          }
-        }
-        else
-        {
-          if (((CaptureSet)???).jdField_a_of_type_Int != 3) {
-            break label525;
-          }
-          ((CaptureSet)???).a();
-          ((CaptureSet)???).jdField_b_of_type_Int = 10000;
-          localObject2 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-          QIMCommonLoadingProgress.a(???).b();
-          Message.obtain(this.jdField_b_of_type_AndroidOsHandler, 2, ???).sendToTarget();
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("removeComboBatch: ");
-            localStringBuilder.append(((QIMFilterCategoryItem)localObject2).jdField_b_of_type_JavaLangString);
-            localStringBuilder.append(", STATE_DOWNLOADED progress: ");
-            localStringBuilder.append(((CaptureSet)???).jdField_b_of_type_Int);
-            QLog.i("QCombo", 2, localStringBuilder.toString());
-          }
-        }
-        bool = true;
-        label525:
-        i -= 1;
-      }
-      return bool;
-    }
-    for (;;)
-    {
-      throw localObject3;
-    }
+    this.r = paramBoolean;
   }
   
   public boolean a(Message paramMessage)
   {
-    int i = paramMessage.what;
+    int i1 = paramMessage.what;
     Object localObject1;
-    if (i != 7)
+    if (i1 != 7)
     {
-      if (i != 9) {
+      if (i1 != 9) {
         return false;
       }
       paramMessage = (VideoFilterTools.ComboFilterData)paramMessage.obj;
       try
       {
-        localObject1 = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+        localObject1 = this.k.iterator();
         while (((Iterator)localObject1).hasNext()) {
           ((CaptureComboManager.CaptureComboListener)((Iterator)localObject1).next()).a(paramMessage);
         }
@@ -1293,99 +460,99 @@ public class CaptureComboManager
       }
       finally {}
     }
-    i = paramMessage.arg1;
+    i1 = paramMessage.arg1;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("MSG_APPLY error ");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(i1);
       ((StringBuilder)localObject1).append(" ");
       ((StringBuilder)localObject1).append(paramMessage.obj);
       QLog.d("QCombo", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject2;
     Object localObject3;
-    int j;
+    int i2;
     if ((paramMessage.obj instanceof FilterSet))
     {
       paramMessage = (FilterSet)paramMessage.obj;
-      if (i == 0) {
-        QIMCommonLoadingProgress.a(paramMessage).b();
-      } else {
+      if (i1 == 0) {
         QIMCommonLoadingProgress.a(paramMessage).c();
+      } else {
+        QIMCommonLoadingProgress.a(paramMessage).d();
       }
-      localObject1 = paramMessage.b();
-      localObject1 = (ArrayList)this.d.get(localObject1);
+      localObject1 = paramMessage.h();
+      localObject1 = (ArrayList)this.j.get(localObject1);
       if (localObject1 != null)
       {
         localObject2 = (ArrayList)((ArrayList)localObject1).clone();
         ((ArrayList)localObject1).clear();
-        localObject1 = (QIMFilterCategoryItem)paramMessage.jdField_a_of_type_JavaLangObject;
-        if (i == 0)
+        localObject1 = (QIMFilterCategoryItem)paramMessage.e;
+        if (i1 == 0)
         {
           localObject2 = ((ArrayList)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (CaptureComboManager.ComboApplyTask)((Iterator)localObject2).next();
-            i = ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle.getInt("capture_scene", -1);
-            ??? = VideoFilterTools.a().b(i);
-            if ((localObject1 != null) && (??? != null) && (TextUtils.equals(((QIMFilterCategoryItem)localObject1).jdField_a_of_type_JavaLangString, ((QIMFilterCategoryItem)???).jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_Boolean))
+            i1 = ((CaptureComboManager.ComboApplyTask)localObject3).b.getInt("capture_scene", -1);
+            ??? = VideoFilterTools.a().b(i1);
+            if ((localObject1 != null) && (??? != null) && (TextUtils.equals(((QIMFilterCategoryItem)localObject1).a, ((QIMFilterCategoryItem)???).a)) && (!this.r))
             {
               if (QLog.isColorLevel())
               {
                 ??? = new StringBuilder();
                 ((StringBuilder)???).append("MSG_APPLY filter ");
-                ((StringBuilder)???).append(i);
+                ((StringBuilder)???).append(i1);
                 ((StringBuilder)???).append(" ");
                 ((StringBuilder)???).append(???);
                 QLog.d("QCombo", 2, ((StringBuilder)???).toString());
               }
-              ((QIMCaptureVarManager)QIMManager.a(13)).a(((QIMFilterCategoryItem)???).jdField_a_of_type_JavaLangString);
-              ??? = (Activity)((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_JavaLangRefWeakReference.get();
+              ((QIMCaptureVarManager)QIMManager.a(13)).a(((QIMFilterCategoryItem)???).a);
+              ??? = (Activity)((CaptureComboManager.ComboApplyTask)localObject3).c.get();
               if (??? != null)
               {
-                paramMessage.a((Activity)???, i);
-                synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+                paramMessage.a((Activity)???, i1);
+                synchronized (this.k)
                 {
-                  ??? = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+                  ??? = this.k.iterator();
                   while (((Iterator)???).hasNext()) {
-                    ((CaptureComboManager.CaptureComboListener)((Iterator)???).next()).a(paramMessage, true, 0, ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle);
+                    ((CaptureComboManager.CaptureComboListener)((Iterator)???).next()).a(paramMessage, true, 0, ((CaptureComboManager.ComboApplyTask)localObject3).b);
                   }
                 }
               }
             }
           }
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataFilterSet = paramMessage;
+          this.n = paramMessage;
           return false;
         }
         localObject2 = ((ArrayList)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (CaptureComboManager.ComboApplyTask)((Iterator)localObject2).next();
-          j = ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle.getInt("capture_scene", -1);
-          ??? = VideoFilterTools.a().b(j);
-          if ((localObject1 != null) && (??? != null) && (TextUtils.equals(((QIMFilterCategoryItem)localObject1).jdField_a_of_type_JavaLangString, ((QIMFilterCategoryItem)???).jdField_a_of_type_JavaLangString)))
+          i2 = ((CaptureComboManager.ComboApplyTask)localObject3).b.getInt("capture_scene", -1);
+          ??? = VideoFilterTools.a().b(i2);
+          if ((localObject1 != null) && (??? != null) && (TextUtils.equals(((QIMFilterCategoryItem)localObject1).a, ((QIMFilterCategoryItem)???).a)))
           {
             if (QLog.isColorLevel())
             {
               ??? = new StringBuilder();
               ((StringBuilder)???).append("MSG_APPLY filter ");
-              ((StringBuilder)???).append(j);
+              ((StringBuilder)???).append(i2);
               ((StringBuilder)???).append(" ");
               ((StringBuilder)???).append(???);
               QLog.d("QCombo", 2, ((StringBuilder)???).toString());
             }
-            ((QIMCaptureVarManager)QIMManager.a(13)).a(((QIMFilterCategoryItem)???).jdField_a_of_type_JavaLangString);
-            if ((Activity)((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-              synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+            ((QIMCaptureVarManager)QIMManager.a(13)).a(((QIMFilterCategoryItem)???).a);
+            if ((Activity)((CaptureComboManager.ComboApplyTask)localObject3).c.get() != null) {
+              synchronized (this.k)
               {
-                ??? = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+                ??? = this.k.iterator();
                 while (((Iterator)???).hasNext()) {
-                  ((CaptureComboManager.CaptureComboListener)((Iterator)???).next()).a(paramMessage, false, i, ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle);
+                  ((CaptureComboManager.CaptureComboListener)((Iterator)???).next()).a(paramMessage, false, i1, ((CaptureComboManager.ComboApplyTask)localObject3).b);
                 }
               }
             }
-            QQToast.a(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131701567), 0).a();
+            QQToast.makeText(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131899589), 0).show();
           }
         }
       }
@@ -1393,91 +560,91 @@ public class CaptureComboManager
     else if ((paramMessage.obj instanceof ComboSet))
     {
       paramMessage = (ComboSet)paramMessage.obj;
-      if (i == 0) {
-        QIMCommonLoadingProgress.a(paramMessage).b();
-      } else {
+      if (i1 == 0) {
         QIMCommonLoadingProgress.a(paramMessage).c();
+      } else {
+        QIMCommonLoadingProgress.a(paramMessage).d();
       }
-      localObject1 = (QIMFilterCategoryItem)paramMessage.jdField_a_of_type_JavaLangObject;
-      localObject2 = paramMessage.b();
-      localObject2 = (ArrayList)this.d.get(localObject2);
+      localObject1 = (QIMFilterCategoryItem)paramMessage.e;
+      localObject2 = paramMessage.h();
+      localObject2 = (ArrayList)this.j.get(localObject2);
       if (localObject2 != null)
       {
         localObject3 = (ArrayList)((ArrayList)localObject2).clone();
         ((ArrayList)localObject2).clear();
-        if (i == 0)
+        if (i1 == 0)
         {
           localObject2 = ((ArrayList)localObject3).iterator();
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (CaptureComboManager.ComboApplyTask)((Iterator)localObject2).next();
-            ??? = (Activity)((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_JavaLangRefWeakReference.get();
+            ??? = (Activity)((CaptureComboManager.ComboApplyTask)localObject3).c.get();
             if (??? != null)
             {
-              i = ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle.getInt("capture_scene", -1);
-              ??? = VideoFilterTools.a().a(i);
-              if ((??? != null) && (TextUtils.equals(((QIMFilterCategoryItem)???).jdField_a_of_type_JavaLangString, ((QIMFilterCategoryItem)localObject1).jdField_a_of_type_JavaLangString)))
+              i1 = ((CaptureComboManager.ComboApplyTask)localObject3).b.getInt("capture_scene", -1);
+              ??? = VideoFilterTools.a().a(i1);
+              if ((??? != null) && (TextUtils.equals(((QIMFilterCategoryItem)???).a, ((QIMFilterCategoryItem)localObject1).a)))
               {
                 if (QLog.isColorLevel())
                 {
                   ??? = new StringBuilder();
                   ((StringBuilder)???).append("MSG_APPLY success ");
-                  ((StringBuilder)???).append(i);
+                  ((StringBuilder)???).append(i1);
                   ((StringBuilder)???).append(" ");
                   ((StringBuilder)???).append(localObject1);
                   QLog.d("QCombo", 2, ((StringBuilder)???).toString());
                 }
-                ((QIMCaptureVarManager)QIMManager.a(13)).b(((QIMFilterCategoryItem)localObject1).jdField_a_of_type_JavaLangString);
-                if (!CaptureComboFilter.a(paramMessage, i)) {
-                  paramMessage.a((Activity)???, i);
+                ((QIMCaptureVarManager)QIMManager.a(13)).b(((QIMFilterCategoryItem)localObject1).a);
+                if (!CaptureComboFilter.a(paramMessage, i1)) {
+                  paramMessage.a((Activity)???, i1);
                 }
-                synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+                synchronized (this.k)
                 {
-                  ??? = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+                  ??? = this.k.iterator();
                   while (((Iterator)???).hasNext()) {
-                    ((CaptureComboManager.CaptureComboListener)((Iterator)???).next()).a(paramMessage, true, 0, ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle);
+                    ((CaptureComboManager.CaptureComboListener)((Iterator)???).next()).a(paramMessage, true, 0, ((CaptureComboManager.ComboApplyTask)localObject3).b);
                   }
                 }
               }
             }
           }
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboSet = paramMessage;
+          this.m = paramMessage;
           return false;
         }
         localObject2 = ((ArrayList)localObject3).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (CaptureComboManager.ComboApplyTask)((Iterator)localObject2).next();
-          j = ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle.getInt("capture_scene", -1);
-          ??? = VideoFilterTools.a().a(j);
-          if ((??? != null) && (TextUtils.equals(((QIMFilterCategoryItem)???).jdField_a_of_type_JavaLangString, ((QIMFilterCategoryItem)localObject1).jdField_a_of_type_JavaLangString)))
+          i2 = ((CaptureComboManager.ComboApplyTask)localObject3).b.getInt("capture_scene", -1);
+          ??? = VideoFilterTools.a().a(i2);
+          if ((??? != null) && (TextUtils.equals(((QIMFilterCategoryItem)???).a, ((QIMFilterCategoryItem)localObject1).a)))
           {
             if (QLog.isColorLevel())
             {
               ??? = new StringBuilder();
               ((StringBuilder)???).append("MSG_APPLY fail ");
-              ((StringBuilder)???).append(j);
+              ((StringBuilder)???).append(i2);
               ((StringBuilder)???).append(" ");
               ((StringBuilder)???).append(localObject1);
               QLog.d("QCombo", 2, ((StringBuilder)???).toString());
             }
-            ((QIMCaptureVarManager)QIMManager.a(13)).b(((QIMFilterCategoryItem)localObject1).jdField_a_of_type_JavaLangString);
-            ??? = (Activity)((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_JavaLangRefWeakReference.get();
+            ((QIMCaptureVarManager)QIMManager.a(13)).b(((QIMFilterCategoryItem)localObject1).a);
+            ??? = (Activity)((CaptureComboManager.ComboApplyTask)localObject3).c.get();
             if (??? != null) {
-              synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+              synchronized (this.k)
               {
-                Object localObject6 = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+                Object localObject6 = this.k.iterator();
                 while (((Iterator)localObject6).hasNext()) {
-                  ((CaptureComboManager.CaptureComboListener)((Iterator)localObject6).next()).a(paramMessage, false, i, ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle);
+                  ((CaptureComboManager.CaptureComboListener)((Iterator)localObject6).next()).a(paramMessage, false, i1, ((CaptureComboManager.ComboApplyTask)localObject3).b);
                 }
                 ??? = (CaptureComboManager)QIMManager.a(5);
-                localObject6 = ((CaptureComboManager)???).jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboSet;
+                localObject6 = ((CaptureComboManager)???).m;
                 if (localObject6 != null) {
-                  ((CaptureComboManager)???).a((QIMFilterCategoryItem)((ComboSet)localObject6).jdField_a_of_type_JavaLangObject, (Activity)???, ((CaptureComboManager.ComboApplyTask)localObject3).jdField_a_of_type_AndroidOsBundle);
+                  ((CaptureComboManager)???).b((QIMFilterCategoryItem)((ComboSet)localObject6).e, (Activity)???, ((CaptureComboManager.ComboApplyTask)localObject3).b);
                 }
               }
             }
-            QQToast.a(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131701569), 0).a();
+            QQToast.makeText(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131899591), 0).show();
           }
         }
       }
@@ -1499,7 +666,7 @@ public class CaptureComboManager
     if (((Iterator)localObject).hasNext())
     {
       FilterCategory localFilterCategory = (FilterCategory)((Iterator)localObject).next();
-      Iterator localIterator = localFilterCategory.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = localFilterCategory.c.iterator();
       boolean bool2 = bool1;
       for (;;)
       {
@@ -1508,45 +675,116 @@ public class CaptureComboManager
           break;
         }
         QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)localIterator.next();
-        if (localFilterCategory.jdField_a_of_type_Boolean) {
-          paramList = a(localQIMFilterCategoryItem);
+        if (localFilterCategory.d) {
+          paramList = c(localQIMFilterCategoryItem);
         } else {
-          paramList = a(localQIMFilterCategoryItem);
+          paramList = b(localQIMFilterCategoryItem);
         }
-        paramList.jdField_a_of_type_Int = paramList.a();
-        if (paramList.jdField_a_of_type_Int == 1)
+        paramList.b = paramList.c();
+        if (paramList.b == 1)
         {
-          paramList.jdField_b_of_type_Int = ((int)(paramList.a() * 10000.0F));
+          paramList.c = ((int)(paramList.e() * 10000.0F));
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("preInitCombo progress: ");
-            localStringBuilder.append(localQIMFilterCategoryItem.jdField_b_of_type_JavaLangString);
+            localStringBuilder.append(localQIMFilterCategoryItem.b);
             localStringBuilder.append(", progress: ");
-            localStringBuilder.append(paramList.jdField_b_of_type_Int);
+            localStringBuilder.append(paramList.c);
             QLog.d("QCombo", 2, localStringBuilder.toString());
           }
           bool2 = true;
         }
-        else if ((paramList.jdField_a_of_type_Int != 2) && (paramList.jdField_a_of_type_Int == 3))
+        else if ((paramList.b != 2) && (paramList.b == 3))
         {
-          paramList.jdField_b_of_type_Int = 10000;
+          paramList.c = 10000;
         }
       }
     }
     return bool1;
   }
   
+  public ComboSet b(QIMFilterCategoryItem paramQIMFilterCategoryItem, Activity paramActivity, Bundle paramBundle)
+  {
+    CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
+    ComboSet localComboSet = localCaptureComboManager.c(paramQIMFilterCategoryItem);
+    localComboSet.c(paramActivity, paramBundle.getInt("capture_scene", -1));
+    localComboSet.f = new WeakReference(paramActivity);
+    localCaptureComboManager.a(paramQIMFilterCategoryItem);
+    int i1 = localComboSet.b;
+    if (i1 != 1)
+    {
+      if (i1 != 2)
+      {
+        if (i1 == 3)
+        {
+          a(new CaptureComboManager.ComboApplyTask(localComboSet, paramBundle, paramActivity));
+          paramQIMFilterCategoryItem = Message.obtain(this.i, 7, 0, 0, localComboSet);
+          if (Looper.getMainLooper() == Looper.myLooper()) {
+            a(paramQIMFilterCategoryItem);
+          } else {
+            paramQIMFilterCategoryItem.sendToTarget();
+          }
+        }
+      }
+      else
+      {
+        a(new CaptureComboManager.ComboApplyTask(localComboSet, paramBundle, paramActivity));
+        localComboSet.d();
+      }
+    }
+    else {
+      a(new CaptureComboManager.ComboApplyTask(localComboSet, paramBundle, paramActivity));
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQIMFilterCategoryItem = new StringBuilder();
+      paramQIMFilterCategoryItem.append("applyCombo state = ");
+      paramQIMFilterCategoryItem.append(localComboSet.b);
+      QLog.i("QCombo", 2, paramQIMFilterCategoryItem.toString());
+    }
+    return localComboSet;
+  }
+  
+  public FilterSet b(QIMFilterCategoryItem paramQIMFilterCategoryItem)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = paramQIMFilterCategoryItem.j.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      localObject2 = VideoFilterTools.a().a((String)localObject2);
+      if (localObject2 != null) {
+        localArrayList.add(localObject2);
+      }
+    }
+    Object localObject2 = (FilterSet)this.c.get(paramQIMFilterCategoryItem.a);
+    localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new FilterSet(paramQIMFilterCategoryItem);
+      localObject2 = localArrayList.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((FilterSet)localObject1).c(a((FilterDesc)((Iterator)localObject2).next()));
+      }
+      this.c.put(paramQIMFilterCategoryItem.a, localObject1);
+    }
+    return localObject1;
+  }
+  
   public void b()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataComboLockManager.a();
+    VideoFilterTools.a().a(BaseApplicationImpl.getContext(), null, false);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("CaptureComboManager", 4, "initComboConfig");
+    }
   }
   
   public void b(CaptureComboManager.CaptureComboListener paramCaptureComboListener)
   {
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+    synchronized (this.k)
     {
-      this.jdField_c_of_type_JavaUtilArrayList.remove(paramCaptureComboListener);
+      this.k.remove(paramCaptureComboListener);
       return;
     }
   }
@@ -1560,30 +798,775 @@ public class CaptureComboManager
       ((StringBuilder)???).append(paramCaptureSet);
       QLog.i("QCombo", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    synchronized (this.h)
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add((QIMFilterCategoryItem)paramCaptureSet.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.h.add((QIMFilterCategoryItem)paramCaptureSet.e);
+      this.e.sendEmptyMessage(1);
       return;
     }
   }
   
-  public boolean b()
+  /* Error */
+  public ComboSet c(QIMFilterCategoryItem paramQIMFilterCategoryItem)
   {
-    return this.jdField_a_of_type_Boolean;
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 54	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboManager:b	Ljava/util/HashMap;
+    //   4: aload_1
+    //   5: getfield 184	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:a	Ljava/lang/String;
+    //   8: invokevirtual 155	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   11: checkcast 195	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet
+    //   14: astore 11
+    //   16: aload 11
+    //   18: astore 10
+    //   20: aload 11
+    //   22: ifnonnull +1265 -> 1287
+    //   25: new 195	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet
+    //   28: dup
+    //   29: aload_1
+    //   30: invokespecial 599	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:<init>	(Ljava/lang/Object;)V
+    //   33: astore 12
+    //   35: aload_1
+    //   36: getfield 122	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:j	Ljava/util/ArrayList;
+    //   39: invokevirtual 126	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   42: astore 10
+    //   44: aload 10
+    //   46: invokeinterface 132 1 0
+    //   51: ifeq +91 -> 142
+    //   54: aload 10
+    //   56: invokeinterface 138 1 0
+    //   61: checkcast 140	java/lang/String
+    //   64: astore 11
+    //   66: invokestatic 213	com/tencent/aelight/camera/aioeditor/activity/richmedia/VideoFilterTools:a	()Lcom/tencent/aelight/camera/aioeditor/activity/richmedia/VideoFilterTools;
+    //   69: aload 11
+    //   71: invokevirtual 216	com/tencent/aelight/camera/aioeditor/activity/richmedia/VideoFilterTools:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/richmedia/capture/data/FilterDesc;
+    //   74: astore 13
+    //   76: aload 13
+    //   78: ifnull +17 -> 95
+    //   81: aload 12
+    //   83: aload_0
+    //   84: aload 13
+    //   86: invokevirtual 572	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboManager:a	(Lcom/tencent/mobileqq/richmedia/capture/data/FilterDesc;)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboFilter;
+    //   89: invokevirtual 600	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
+    //   92: goto -48 -> 44
+    //   95: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   98: ifeq -54 -> 44
+    //   101: new 264	java/lang/StringBuilder
+    //   104: dup
+    //   105: invokespecial 265	java/lang/StringBuilder:<init>	()V
+    //   108: astore 13
+    //   110: aload 13
+    //   112: ldc_w 602
+    //   115: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: pop
+    //   119: aload 13
+    //   121: aload 11
+    //   123: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: pop
+    //   127: ldc_w 276
+    //   130: iconst_2
+    //   131: aload 13
+    //   133: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   136: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   139: goto -95 -> 44
+    //   142: aload_1
+    //   143: getfield 605	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:k	Lorg/json/JSONArray;
+    //   146: astore 10
+    //   148: ldc_w 607
+    //   151: astore 11
+    //   153: aload 10
+    //   155: ifnull +256 -> 411
+    //   158: aload_1
+    //   159: getfield 605	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:k	Lorg/json/JSONArray;
+    //   162: invokevirtual 612	org/json/JSONArray:length	()I
+    //   165: istore 8
+    //   167: iconst_0
+    //   168: istore 7
+    //   170: iconst_0
+    //   171: istore 5
+    //   173: iload 5
+    //   175: istore 6
+    //   177: iload 7
+    //   179: iload 8
+    //   181: if_icmpge +233 -> 414
+    //   184: aload_1
+    //   185: getfield 605	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:k	Lorg/json/JSONArray;
+    //   188: iload 7
+    //   190: invokevirtual 616	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   193: astore 14
+    //   195: iload 5
+    //   197: istore 6
+    //   199: aload 14
+    //   201: ifnull +197 -> 398
+    //   204: aload 14
+    //   206: ldc_w 618
+    //   209: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   212: astore 15
+    //   214: aload 14
+    //   216: ldc_w 626
+    //   219: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   222: astore 10
+    //   224: aload 14
+    //   226: ldc_w 628
+    //   229: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   232: invokestatic 633	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   235: invokevirtual 636	java/lang/Float:floatValue	()F
+    //   238: fstore_2
+    //   239: aload 14
+    //   241: ldc_w 638
+    //   244: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   247: invokestatic 633	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   250: invokevirtual 636	java/lang/Float:floatValue	()F
+    //   253: fstore_3
+    //   254: aload 14
+    //   256: ldc_w 607
+    //   259: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   262: invokestatic 633	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   265: invokevirtual 636	java/lang/Float:floatValue	()F
+    //   268: fstore 4
+    //   270: new 640	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper
+    //   273: dup
+    //   274: invokespecial 641	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:<init>	()V
+    //   277: astore 13
+    //   279: aload 13
+    //   281: aload 14
+    //   283: invokevirtual 645	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:fromJSONObject	(Lorg/json/JSONObject;)V
+    //   286: aload_1
+    //   287: getfield 184	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:a	Ljava/lang/String;
+    //   290: aload 15
+    //   292: aload 10
+    //   294: fload_2
+    //   295: fload_3
+    //   296: fload 4
+    //   298: invokestatic 650	com/tencent/aelight/camera/aioeditor/capture/paster/CaptureComboPasterFactory:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;FFF)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;
+    //   301: astore 14
+    //   303: aload 14
+    //   305: ifnull +24 -> 329
+    //   308: aload 14
+    //   310: aload 13
+    //   312: invokevirtual 655	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase:a	(Lcom/tencent/mobileqq/richmedia/capture/data/SegmentKeeper;)V
+    //   315: aload 12
+    //   317: aload 14
+    //   319: invokevirtual 600	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
+    //   322: iload 5
+    //   324: istore 6
+    //   326: goto +72 -> 398
+    //   329: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   332: ifeq +41 -> 373
+    //   335: new 264	java/lang/StringBuilder
+    //   338: dup
+    //   339: invokespecial 265	java/lang/StringBuilder:<init>	()V
+    //   342: astore 13
+    //   344: aload 13
+    //   346: ldc_w 657
+    //   349: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   352: pop
+    //   353: aload 13
+    //   355: aload 10
+    //   357: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   360: pop
+    //   361: ldc_w 276
+    //   364: iconst_2
+    //   365: aload 13
+    //   367: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   370: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   373: iconst_1
+    //   374: istore 6
+    //   376: goto +22 -> 398
+    //   379: astore 10
+    //   381: iconst_1
+    //   382: istore 5
+    //   384: goto +5 -> 389
+    //   387: astore 10
+    //   389: aload 10
+    //   391: invokevirtual 660	java/lang/Exception:printStackTrace	()V
+    //   394: iload 5
+    //   396: istore 6
+    //   398: iload 7
+    //   400: iconst_1
+    //   401: iadd
+    //   402: istore 7
+    //   404: iload 6
+    //   406: istore 5
+    //   408: goto -235 -> 173
+    //   411: iconst_0
+    //   412: istore 6
+    //   414: aload_1
+    //   415: getfield 662	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:l	Lorg/json/JSONArray;
+    //   418: ifnull +191 -> 609
+    //   421: aload_1
+    //   422: getfield 662	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:l	Lorg/json/JSONArray;
+    //   425: invokevirtual 612	org/json/JSONArray:length	()I
+    //   428: istore 8
+    //   430: iconst_0
+    //   431: istore 7
+    //   433: iload 6
+    //   435: istore 5
+    //   437: iload 7
+    //   439: iload 8
+    //   441: if_icmpge +172 -> 613
+    //   444: aload_1
+    //   445: getfield 662	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:l	Lorg/json/JSONArray;
+    //   448: iload 7
+    //   450: invokevirtual 616	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   453: astore 13
+    //   455: iload 6
+    //   457: istore 5
+    //   459: aload 13
+    //   461: ifnull +135 -> 596
+    //   464: aload 13
+    //   466: ldc_w 664
+    //   469: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   472: astore 10
+    //   474: aload 13
+    //   476: ldc_w 666
+    //   479: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   482: astore 13
+    //   484: aload 13
+    //   486: invokestatic 669	com/tencent/aelight/camera/aioeditor/capture/paster/CaptureComboPasterFactory:a	(Ljava/lang/String;)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;
+    //   489: astore 14
+    //   491: aload 14
+    //   493: ifnull +17 -> 510
+    //   496: aload 12
+    //   498: aload 14
+    //   500: invokevirtual 600	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
+    //   503: iload 6
+    //   505: istore 5
+    //   507: goto +89 -> 596
+    //   510: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   513: ifeq +58 -> 571
+    //   516: new 264	java/lang/StringBuilder
+    //   519: dup
+    //   520: invokespecial 265	java/lang/StringBuilder:<init>	()V
+    //   523: astore 14
+    //   525: aload 14
+    //   527: ldc_w 671
+    //   530: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   533: pop
+    //   534: aload 14
+    //   536: aload 10
+    //   538: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   541: pop
+    //   542: aload 14
+    //   544: ldc_w 673
+    //   547: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   550: pop
+    //   551: aload 14
+    //   553: aload 13
+    //   555: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   558: pop
+    //   559: ldc_w 276
+    //   562: iconst_2
+    //   563: aload 14
+    //   565: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   568: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   571: iconst_1
+    //   572: istore 5
+    //   574: goto +22 -> 596
+    //   577: astore 10
+    //   579: iconst_1
+    //   580: istore 5
+    //   582: goto +9 -> 591
+    //   585: astore 10
+    //   587: iload 6
+    //   589: istore 5
+    //   591: aload 10
+    //   593: invokevirtual 660	java/lang/Exception:printStackTrace	()V
+    //   596: iload 7
+    //   598: iconst_1
+    //   599: iadd
+    //   600: istore 7
+    //   602: iload 5
+    //   604: istore 6
+    //   606: goto -173 -> 433
+    //   609: iload 6
+    //   611: istore 5
+    //   613: iload 5
+    //   615: istore 6
+    //   617: aload_1
+    //   618: getfield 675	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:m	Lorg/json/JSONArray;
+    //   621: ifnull +203 -> 824
+    //   624: aload_1
+    //   625: getfield 675	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:m	Lorg/json/JSONArray;
+    //   628: invokevirtual 612	org/json/JSONArray:length	()I
+    //   631: istore 8
+    //   633: iconst_0
+    //   634: istore 7
+    //   636: iload 5
+    //   638: istore 6
+    //   640: iload 7
+    //   642: iload 8
+    //   644: if_icmpge +180 -> 824
+    //   647: aload_1
+    //   648: getfield 675	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:m	Lorg/json/JSONArray;
+    //   651: iload 7
+    //   653: invokevirtual 616	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   656: astore 13
+    //   658: iload 5
+    //   660: istore 6
+    //   662: aload 13
+    //   664: ifnull +147 -> 811
+    //   667: aload 13
+    //   669: ldc_w 664
+    //   672: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   675: astore 10
+    //   677: aload 13
+    //   679: ldc_w 666
+    //   682: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   685: astore 13
+    //   687: iload 5
+    //   689: istore 6
+    //   691: aload 10
+    //   693: invokestatic 680	com/tencent/mobileqq/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
+    //   696: ifne +115 -> 811
+    //   699: aload 13
+    //   701: invokestatic 682	com/tencent/aelight/camera/aioeditor/capture/paster/CaptureComboPasterFactory:b	(Ljava/lang/String;)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;
+    //   704: astore 14
+    //   706: aload 14
+    //   708: ifnull +17 -> 725
+    //   711: aload 12
+    //   713: aload 14
+    //   715: invokevirtual 600	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
+    //   718: iload 5
+    //   720: istore 6
+    //   722: goto +89 -> 811
+    //   725: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   728: ifeq +58 -> 786
+    //   731: new 264	java/lang/StringBuilder
+    //   734: dup
+    //   735: invokespecial 265	java/lang/StringBuilder:<init>	()V
+    //   738: astore 14
+    //   740: aload 14
+    //   742: ldc_w 684
+    //   745: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   748: pop
+    //   749: aload 14
+    //   751: aload 10
+    //   753: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   756: pop
+    //   757: aload 14
+    //   759: ldc_w 673
+    //   762: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   765: pop
+    //   766: aload 14
+    //   768: aload 13
+    //   770: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   773: pop
+    //   774: ldc_w 276
+    //   777: iconst_2
+    //   778: aload 14
+    //   780: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   783: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   786: iconst_1
+    //   787: istore 6
+    //   789: goto +22 -> 811
+    //   792: astore 10
+    //   794: iconst_1
+    //   795: istore 5
+    //   797: goto +5 -> 802
+    //   800: astore 10
+    //   802: aload 10
+    //   804: invokevirtual 660	java/lang/Exception:printStackTrace	()V
+    //   807: iload 5
+    //   809: istore 6
+    //   811: iload 7
+    //   813: iconst_1
+    //   814: iadd
+    //   815: istore 7
+    //   817: iload 6
+    //   819: istore 5
+    //   821: goto -185 -> 636
+    //   824: iload 6
+    //   826: istore 5
+    //   828: aload_1
+    //   829: getfield 686	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:n	Lorg/json/JSONArray;
+    //   832: ifnull +432 -> 1264
+    //   835: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   838: ifeq +65 -> 903
+    //   841: new 264	java/lang/StringBuilder
+    //   844: dup
+    //   845: invokespecial 265	java/lang/StringBuilder:<init>	()V
+    //   848: astore 10
+    //   850: aload 10
+    //   852: ldc_w 688
+    //   855: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   858: pop
+    //   859: aload 10
+    //   861: aload_1
+    //   862: getfield 686	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:n	Lorg/json/JSONArray;
+    //   865: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   868: pop
+    //   869: aload 10
+    //   871: ldc_w 690
+    //   874: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   877: pop
+    //   878: aload 10
+    //   880: aload_1
+    //   881: getfield 686	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:n	Lorg/json/JSONArray;
+    //   884: invokevirtual 612	org/json/JSONArray:length	()I
+    //   887: invokevirtual 274	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   890: pop
+    //   891: ldc_w 276
+    //   894: iconst_2
+    //   895: aload 10
+    //   897: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   900: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   903: aload_1
+    //   904: getfield 686	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:n	Lorg/json/JSONArray;
+    //   907: invokevirtual 612	org/json/JSONArray:length	()I
+    //   910: istore 8
+    //   912: iload 6
+    //   914: istore 5
+    //   916: iconst_0
+    //   917: istore 7
+    //   919: iload 8
+    //   921: istore 6
+    //   923: iload 7
+    //   925: iload 6
+    //   927: if_icmpge +337 -> 1264
+    //   930: aload_1
+    //   931: getfield 686	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:n	Lorg/json/JSONArray;
+    //   934: iload 7
+    //   936: invokevirtual 616	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   939: astore 13
+    //   941: aload 13
+    //   943: ifnull +312 -> 1255
+    //   946: aload 13
+    //   948: ldc_w 692
+    //   951: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   954: astore 10
+    //   956: aload 13
+    //   958: ldc_w 694
+    //   961: invokevirtual 698	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   964: astore 15
+    //   966: aload 15
+    //   968: ifnull +287 -> 1255
+    //   971: new 80	java/util/ArrayList
+    //   974: dup
+    //   975: invokespecial 81	java/util/ArrayList:<init>	()V
+    //   978: astore 14
+    //   980: iconst_0
+    //   981: istore 8
+    //   983: iload 8
+    //   985: aload 15
+    //   987: invokevirtual 612	org/json/JSONArray:length	()I
+    //   990: if_icmpge +33 -> 1023
+    //   993: aload 15
+    //   995: iload 8
+    //   997: invokevirtual 701	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   1000: astore 16
+    //   1002: aload 16
+    //   1004: invokestatic 704	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1007: ifne +289 -> 1296
+    //   1010: aload 14
+    //   1012: aload 16
+    //   1014: invokeinterface 705 2 0
+    //   1019: pop
+    //   1020: goto +276 -> 1296
+    //   1023: aload 13
+    //   1025: ldc_w 628
+    //   1028: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1031: invokestatic 633	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   1034: invokevirtual 636	java/lang/Float:floatValue	()F
+    //   1037: fstore_2
+    //   1038: aload 13
+    //   1040: ldc_w 638
+    //   1043: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1046: invokestatic 633	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   1049: invokevirtual 636	java/lang/Float:floatValue	()F
+    //   1052: fstore_3
+    //   1053: aload 13
+    //   1055: aload 11
+    //   1057: invokevirtual 624	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1060: invokestatic 633	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   1063: invokevirtual 636	java/lang/Float:floatValue	()F
+    //   1066: fstore 4
+    //   1068: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1071: istore 9
+    //   1073: iload 9
+    //   1075: ifeq +235 -> 1310
+    //   1078: new 264	java/lang/StringBuilder
+    //   1081: dup
+    //   1082: invokespecial 265	java/lang/StringBuilder:<init>	()V
+    //   1085: astore 15
+    //   1087: aload 15
+    //   1089: ldc_w 707
+    //   1092: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1095: pop
+    //   1096: aload 15
+    //   1098: aload 10
+    //   1100: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1103: pop
+    //   1104: ldc_w 276
+    //   1107: iconst_2
+    //   1108: aload 15
+    //   1110: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1113: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1116: goto +3 -> 1119
+    //   1119: new 640	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper
+    //   1122: dup
+    //   1123: invokespecial 641	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:<init>	()V
+    //   1126: astore 15
+    //   1128: aload 15
+    //   1130: aload 13
+    //   1132: invokevirtual 645	com/tencent/mobileqq/richmedia/capture/data/SegmentKeeper:fromJSONObject	(Lorg/json/JSONObject;)V
+    //   1135: aload 10
+    //   1137: aload 14
+    //   1139: fload_2
+    //   1140: fload_3
+    //   1141: fload 4
+    //   1143: invokestatic 710	com/tencent/aelight/camera/aioeditor/capture/paster/CaptureComboPasterFactory:a	(Ljava/lang/String;Ljava/util/List;FFF)Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;
+    //   1146: astore 13
+    //   1148: aload 13
+    //   1150: ifnull +20 -> 1170
+    //   1153: aload 13
+    //   1155: aload 15
+    //   1157: invokevirtual 655	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase:a	(Lcom/tencent/mobileqq/richmedia/capture/data/SegmentKeeper;)V
+    //   1160: aload 12
+    //   1162: aload 13
+    //   1164: invokevirtual 600	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:c	(Lcom/tencent/aelight/camera/aioeditor/capture/data/CaptureComboBase;)V
+    //   1167: goto +88 -> 1255
+    //   1170: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1173: ifeq +53 -> 1226
+    //   1176: new 264	java/lang/StringBuilder
+    //   1179: dup
+    //   1180: invokespecial 265	java/lang/StringBuilder:<init>	()V
+    //   1183: astore 13
+    //   1185: aload 13
+    //   1187: ldc_w 712
+    //   1190: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1193: pop
+    //   1194: aload 13
+    //   1196: aload 10
+    //   1198: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1201: pop
+    //   1202: aload 13
+    //   1204: invokevirtual 280	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1207: astore 10
+    //   1209: ldc_w 276
+    //   1212: iconst_2
+    //   1213: aload 10
+    //   1215: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1218: goto +8 -> 1226
+    //   1221: astore 10
+    //   1223: goto +11 -> 1234
+    //   1226: iconst_1
+    //   1227: istore 5
+    //   1229: goto +26 -> 1255
+    //   1232: astore 10
+    //   1234: iconst_1
+    //   1235: istore 5
+    //   1237: goto +10 -> 1247
+    //   1240: astore 10
+    //   1242: goto +5 -> 1247
+    //   1245: astore 10
+    //   1247: aload 10
+    //   1249: invokevirtual 660	java/lang/Exception:printStackTrace	()V
+    //   1252: goto +3 -> 1255
+    //   1255: iload 7
+    //   1257: iconst_1
+    //   1258: iadd
+    //   1259: istore 7
+    //   1261: goto -338 -> 923
+    //   1264: iload 5
+    //   1266: ifne +17 -> 1283
+    //   1269: aload_0
+    //   1270: getfield 54	com/tencent/aelight/camera/aioeditor/capture/data/CaptureComboManager:b	Ljava/util/HashMap;
+    //   1273: aload_1
+    //   1274: getfield 184	com/tencent/aelight/camera/aioeditor/capture/data/QIMFilterCategoryItem:a	Ljava/lang/String;
+    //   1277: aload 12
+    //   1279: invokevirtual 164	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1282: pop
+    //   1283: aload 12
+    //   1285: astore 10
+    //   1287: aload 10
+    //   1289: aload_1
+    //   1290: putfield 198	com/tencent/aelight/camera/aioeditor/capture/data/ComboSet:e	Ljava/lang/Object;
+    //   1293: aload 10
+    //   1295: areturn
+    //   1296: iload 8
+    //   1298: iconst_1
+    //   1299: iadd
+    //   1300: istore 8
+    //   1302: goto -319 -> 983
+    //   1305: astore 10
+    //   1307: goto -60 -> 1247
+    //   1310: goto -191 -> 1119
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1313	0	this	CaptureComboManager
+    //   0	1313	1	paramQIMFilterCategoryItem	QIMFilterCategoryItem
+    //   238	902	2	f1	float
+    //   253	888	3	f2	float
+    //   268	874	4	f3	float
+    //   171	1094	5	i1	int
+    //   175	753	6	i2	int
+    //   168	1092	7	i3	int
+    //   165	1136	8	i4	int
+    //   1071	3	9	bool	boolean
+    //   18	338	10	localObject1	Object
+    //   379	1	10	localException1	java.lang.Exception
+    //   387	3	10	localException2	java.lang.Exception
+    //   472	65	10	str1	String
+    //   577	1	10	localException3	java.lang.Exception
+    //   585	7	10	localException4	java.lang.Exception
+    //   675	77	10	str2	String
+    //   792	1	10	localException5	java.lang.Exception
+    //   800	3	10	localException6	java.lang.Exception
+    //   848	366	10	localObject2	Object
+    //   1221	1	10	localException7	java.lang.Exception
+    //   1232	1	10	localException8	java.lang.Exception
+    //   1240	1	10	localException9	java.lang.Exception
+    //   1245	3	10	localException10	java.lang.Exception
+    //   1285	9	10	localObject3	Object
+    //   1305	1	10	localException11	java.lang.Exception
+    //   14	1042	11	localObject4	Object
+    //   33	1251	12	localComboSet	ComboSet
+    //   74	1129	13	localObject5	Object
+    //   193	945	14	localObject6	Object
+    //   212	944	15	localObject7	Object
+    //   1000	13	16	str3	String
+    // Exception table:
+    //   from	to	target	type
+    //   329	373	379	java/lang/Exception
+    //   204	303	387	java/lang/Exception
+    //   308	322	387	java/lang/Exception
+    //   510	571	577	java/lang/Exception
+    //   464	491	585	java/lang/Exception
+    //   496	503	585	java/lang/Exception
+    //   725	786	792	java/lang/Exception
+    //   667	687	800	java/lang/Exception
+    //   691	706	800	java/lang/Exception
+    //   711	718	800	java/lang/Exception
+    //   1209	1218	1221	java/lang/Exception
+    //   1170	1209	1232	java/lang/Exception
+    //   1087	1116	1240	java/lang/Exception
+    //   1119	1148	1240	java/lang/Exception
+    //   1153	1167	1240	java/lang/Exception
+    //   946	966	1245	java/lang/Exception
+    //   971	980	1245	java/lang/Exception
+    //   983	1020	1245	java/lang/Exception
+    //   1023	1073	1245	java/lang/Exception
+    //   1078	1087	1305	java/lang/Exception
   }
   
   public void d()
   {
-    VideoFilterTools.a().a(BaseApplicationImpl.getContext(), null, false);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CaptureComboManager", 4, "initComboConfig");
+    this.q.a();
+  }
+  
+  public boolean e()
+  {
+    synchronized (this.h)
+    {
+      this.g.addAll(this.h);
+      this.h.clear();
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("syncStateAndProgress ");
+        ((StringBuilder)???).append(this.g.size());
+        QLog.i("QCombo", 2, ((StringBuilder)???).toString());
+      }
+      boolean bool = false;
+      int i1 = this.g.size() - 1;
+      while (i1 >= 0)
+      {
+        Object localObject2 = (QIMFilterCategoryItem)this.g.get(i1);
+        ??? = c((QIMFilterCategoryItem)localObject2);
+        StringBuilder localStringBuilder;
+        if (((CaptureSet)???).b == 1)
+        {
+          int i2 = ((CaptureSet)???).c();
+          if (i2 != ((CaptureSet)???).b)
+          {
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("buildComboBatch progress: ");
+              localStringBuilder.append(((QIMFilterCategoryItem)localObject2).b);
+              localStringBuilder.append(", progress: ");
+              localStringBuilder.append(((CaptureSet)???).c);
+              QLog.d("QCombo", 2, localStringBuilder.toString());
+            }
+            ((CaptureSet)???).b = i2;
+          }
+          i2 = (int)(((CaptureSet)???).e() * 10000.0F);
+          if (i2 != ((CaptureSet)???).c)
+          {
+            ((CaptureSet)???).c = i2;
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("buildComboBatch progress: ");
+              ((StringBuilder)localObject2).append(i2);
+              ((StringBuilder)localObject2).append(", progress: ");
+              ((StringBuilder)localObject2).append(((CaptureSet)???).c);
+              QLog.i("QCombo", 2, ((StringBuilder)localObject2).toString());
+            }
+          }
+        }
+        else if (((CaptureSet)???).b == 2)
+        {
+          ((CaptureSet)???).c();
+          localObject2 = (QIMFilterCategoryItem)this.g.remove(i1);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("removeComboBatch: ");
+            localStringBuilder.append(((QIMFilterCategoryItem)localObject2).b);
+            localStringBuilder.append(",  STATE_NEED_DOWNLOAD progress: ");
+            localStringBuilder.append(((CaptureSet)???).c);
+            QLog.i("QCombo", 2, localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          if (((CaptureSet)???).b != 3) {
+            break label530;
+          }
+          ((CaptureSet)???).c();
+          ((CaptureSet)???).c = 10000;
+          localObject2 = (QIMFilterCategoryItem)this.g.remove(i1);
+          QIMCommonLoadingProgress.a(???).c();
+          Message.obtain(this.f, 2, ???).sendToTarget();
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("removeComboBatch: ");
+            localStringBuilder.append(((QIMFilterCategoryItem)localObject2).b);
+            localStringBuilder.append(", STATE_DOWNLOADED progress: ");
+            localStringBuilder.append(((CaptureSet)???).c);
+            QLog.i("QCombo", 2, localStringBuilder.toString());
+          }
+        }
+        bool = true;
+        label530:
+        i1 -= 1;
+      }
+      return bool;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
   
-  public void e()
+  public VideoFilterTools.DataSet f()
   {
-    VideoFilterTools.ComboFilterData localComboFilterData = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData;
+    if (this.l != null)
+    {
+      if (AEDashboardUtil.d()) {
+        return this.l.e;
+      }
+      return this.l.d;
+    }
+    return null;
+  }
+  
+  public void h()
+  {
+    VideoFilterTools.ComboFilterData localComboFilterData = this.l;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -1593,7 +1576,7 @@ public class CaptureComboManager
     }
     if (localComboFilterData != null)
     {
-      localComboFilterData.a();
+      localComboFilterData.b();
       a(localComboFilterData);
     }
   }
@@ -1603,14 +1586,24 @@ public class CaptureComboManager
     return a(paramMessage);
   }
   
+  public ComboLockManager i()
+  {
+    return this.q;
+  }
+  
   public boolean isValidate()
   {
     return false;
   }
+  
+  public boolean j()
+  {
+    return this.r;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboManager
  * JD-Core Version:    0.7.0.1
  */

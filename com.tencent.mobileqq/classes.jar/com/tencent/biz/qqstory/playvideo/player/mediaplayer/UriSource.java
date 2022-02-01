@@ -7,32 +7,32 @@ import java.util.Map;
 public class UriSource
   implements MediaSource
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Uri jdField_a_of_type_AndroidNetUri;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private Uri jdField_b_of_type_AndroidNetUri;
-  private Map<String, String> jdField_b_of_type_JavaUtilMap;
+  private Context a;
+  private Uri b;
+  private Uri c;
+  private Map<String, String> d;
+  private Map<String, String> e;
   
   public UriSource(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidNetUri = paramUri;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.a = paramContext;
+    this.b = paramUri;
+    this.d = paramMap;
   }
   
   public MediaExtractor a()
   {
     MediaExtractor localMediaExtractor = new MediaExtractor();
-    localMediaExtractor.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
+    localMediaExtractor.a(this.a, this.b, this.d);
     return localMediaExtractor;
   }
   
   public MediaExtractor b()
   {
-    if (this.jdField_b_of_type_AndroidNetUri != null)
+    if (this.c != null)
     {
       MediaExtractor localMediaExtractor = new MediaExtractor();
-      localMediaExtractor.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
+      localMediaExtractor.a(this.a, this.c, this.e);
       return localMediaExtractor;
     }
     return null;

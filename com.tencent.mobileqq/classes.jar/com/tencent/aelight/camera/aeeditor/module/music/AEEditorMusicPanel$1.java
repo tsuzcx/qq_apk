@@ -15,8 +15,8 @@ class AEEditorMusicPanel$1
     boolean bool = AEEditorMusicPanel.a(this.a).isChecked() ^ true;
     AEEditorMusicPanel.a(this.a).setChecked(bool);
     AEEditorMusicPanel.b(this.a).setChecked(bool);
-    if (AEEditorMusicPanel.a(this.a) != null) {
-      AEEditorMusicPanel.a(this.a).f(bool);
+    if (AEEditorMusicPanel.c(this.a) != null) {
+      AEEditorMusicPanel.c(this.a).f(bool);
     }
     int i;
     if (bool) {
@@ -24,12 +24,12 @@ class AEEditorMusicPanel$1
     } else {
       i = 4;
     }
-    AEReportUtils.b(i);
+    AEReportUtils.a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicPanel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,34 @@
 package com.tencent.gdtad.web;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.ad.tangram.analysis.AdAnalysis;
-import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
-import com.tencent.ad.tangram.analysis.AdAnalysisUtil;
-import com.tencent.ad.tangram.protocol.gdt_analysis_event;
+import com.tencent.ad.tangram.protocol.link_report.LinkReport.ReportBiz;
+import com.tencent.ad.tangram.statistics.AdReporterForLinkEvent;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.gdtad.IGdtAdAPI;
 import com.tencent.gdtad.log.GdtLog;
-import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.gdtad.params.InitGdtContextParams;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Map;
+import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class GdtLandingPageReport
   implements GdtWebReportInterface
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private GdtWebReportPlugin jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private long a;
+  private boolean b = false;
+  private boolean c;
+  private GdtWebReportPlugin d;
+  private boolean e;
+  private String f;
   
   public GdtLandingPageReport(GdtWebReportPlugin paramGdtWebReportPlugin)
   {
@@ -35,14 +36,14 @@ public final class GdtLandingPageReport
       return;
     }
     GdtLog.a("GdtLandingPageReport", " GdtLandingPageReport");
-    this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin = paramGdtWebReportPlugin;
+    this.d = paramGdtWebReportPlugin;
   }
   
   private String a(long paramLong, String paramString1, String paramString2)
   {
     GdtLog.a("GdtLandingPageReport", " getScript== start ");
-    if (this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin != null) {
-      localObject1 = GdtLandingPageConfig.a().a(this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin.a());
+    if (this.d != null) {
+      localObject1 = GdtLandingPageConfig.a().b(this.d.b());
     } else {
       localObject1 = "";
     }
@@ -70,87 +71,50 @@ public final class GdtLandingPageReport
     return paramString1;
   }
   
-  private String a(String paramString)
+  private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin;
-    if (localObject != null) {
-      localObject = ((GdtWebReportPlugin)localObject).a();
-    } else {
-      localObject = null;
-    }
-    if ((localObject != null) && (((Activity)localObject).getIntent() != null)) {
-      localObject = ((Activity)localObject).getIntent().getStringExtra(paramString);
-    } else {
-      localObject = "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("name = ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(", s = ");
-    localStringBuilder.append((String)localObject);
-    Log.i("GdtLandingPageReport", localStringBuilder.toString());
-    return localObject;
-  }
-  
-  private void a(CustomWebView paramCustomWebView, GdtLandingPageReport.WebviewEvaluateListener paramWebviewEvaluateListener)
-  {
-    if (paramCustomWebView == null)
+    if (QLog.isDebugVersion())
     {
-      GdtLog.d("GdtLandingPageReport", " webviewCheckPerformanceFuncExist webview is null");
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("report eventId is ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("costTime is");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("isCgi ");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.d("GdtLandingPageReport", 2, ((StringBuilder)localObject).toString());
     }
-    a(paramCustomWebView, "typeof __TG_GET_PAGE_PERFORMANCE__ === \"function\"", 3, new GdtLandingPageReport.4(this, paramWebviewEvaluateListener));
-  }
-  
-  private void a(CustomWebView paramCustomWebView, String paramString)
-  {
-    if (!GdtLandingPageConfig.a().a()) {
-      return;
+    ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).initGdtContext(MobileQQ.sMobileQQ, new InitGdtContextParams());
+    Object localObject = new link_report.LinkReport.ReportBiz();
+    ((link_report.LinkReport.ReportBiz)localObject).cost_time = paramInt2;
+    ((link_report.LinkReport.ReportBiz)localObject).bp = paramInt3;
+    ((link_report.LinkReport.ReportBiz)localObject).wv_progress = 2;
+    ((link_report.LinkReport.ReportBiz)localObject).click_req_type = 0;
+    if (this.c) {
+      ((link_report.LinkReport.ReportBiz)localObject).lp_type = 1;
+    } else {
+      ((link_report.LinkReport.ReportBiz)localObject).lp_type = 4;
     }
-    if (paramCustomWebView == null)
-    {
-      GdtLog.d("GdtLandingPageReport", " webviewInjectScript webview is null");
-      return;
-    }
-    AdThreadManager.INSTANCE.post(new GdtLandingPageReport.1(this, paramString, paramCustomWebView), 3);
+    ((link_report.LinkReport.ReportBiz)localObject).aid = c("GdtWebReportQQ_AD_ID");
+    ((link_report.LinkReport.ReportBiz)localObject).pid = c("GdtWebReportQQ_POS_ID");
+    ((link_report.LinkReport.ReportBiz)localObject).traceid = c("GdtWebReportQQ_TRACE_ID");
+    AdReporterForLinkEvent.reportAsync(MobileQQ.sMobileQQ, paramInt1, null, (link_report.LinkReport.ReportBiz)localObject, null);
   }
   
   private void a(CustomWebView paramCustomWebView, String paramString, int paramInt, GdtLandingPageReport.WebviewEvaluateListener paramWebviewEvaluateListener)
   {
     if ((paramCustomWebView != null) && (!TextUtils.isEmpty(paramString)))
     {
-      if (!GdtLandingPageConfig.a().a()) {
-        return;
-      }
-      if (!a()) {
-        return;
-      }
       long l = System.currentTimeMillis();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" injectScript scene: ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" 注入JS.");
       GdtLog.a("GdtLandingPageReport", localStringBuilder.toString());
-      a(new GdtLandingPageReport.2(this, paramString, paramCustomWebView, paramInt, l, paramWebviewEvaluateListener));
+      a(new -..Lambda.GdtLandingPageReport.swYlMymhIxQoDGerA7dGgnFpkLw(paramString, paramCustomWebView, paramInt, l, paramWebviewEvaluateListener));
       return;
     }
     GdtLog.a("GdtLandingPageReport", " injectScript webview or script is null");
-  }
-  
-  private void a(CustomWebView paramCustomWebView, String paramString1, String paramString2)
-  {
-    if (paramCustomWebView == null)
-    {
-      GdtLog.d("GdtLandingPageReport", " webviewSupplyInject webview is null");
-      return;
-    }
-    if (!a()) {
-      return;
-    }
-    if (!GdtLandingPageConfig.a().a()) {
-      return;
-    }
-    a(paramCustomWebView, new GdtLandingPageReport.5(this, paramCustomWebView, paramString2));
   }
   
   static void a(Runnable paramRunnable)
@@ -173,8 +137,7 @@ public final class GdtLandingPageReport
       localStringBuilder.append(" performanceJson: ");
       localStringBuilder.append(paramString);
       GdtLog.a("GdtLandingPageReport", localStringBuilder.toString());
-      b(paramString.getJSONArray("event_report"));
-      a(paramString.getJSONArray("rpt_report"));
+      a(paramString.getJSONArray("event_report"));
       return;
     }
     catch (Exception paramString)
@@ -184,59 +147,6 @@ public final class GdtLandingPageReport
   }
   
   private void a(JSONArray paramJSONArray)
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(" rptBatchReport: ");
-    ((StringBuilder)localObject1).append(paramJSONArray);
-    GdtLog.a("GdtLandingPageReport", ((StringBuilder)localObject1).toString());
-    if (JSONObject.NULL.equals(paramJSONArray))
-    {
-      GdtLog.d("GdtLandingPageReport", " rptBatchReport data is null");
-      return;
-    }
-    try
-    {
-      localObject1 = new JSONArray();
-      int j = paramJSONArray.length();
-      int i = 0;
-      while (i < j)
-      {
-        ((JSONArray)localObject1).put(paramJSONArray.get(i));
-        Object localObject2;
-        if (((JSONArray)localObject1).length() < 20)
-        {
-          localObject2 = localObject1;
-          if (i != j - 1) {}
-        }
-        else
-        {
-          localObject2 = new Bundle();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.putOpt("data", localObject1);
-          ((Bundle)localObject2).putString("Postbody", localJSONObject.toString());
-          ((Bundle)localObject2).putString("Referer", "h5.gdt.qq.com");
-          HttpBaseUtil.a("https://rpt.gdt.qq.com/batch_landing_page", "POST", (Bundle)localObject2, null);
-          localObject2 = new JSONArray();
-        }
-        i += 1;
-        localObject1 = localObject2;
-      }
-      return;
-    }
-    catch (Exception paramJSONArray)
-    {
-      GdtLog.d("GdtLandingPageReport", " rptBatchReport exception.", paramJSONArray);
-    }
-  }
-  
-  private boolean a()
-  {
-    String str1 = a("GdtWebReportQQ_ACTION_URL");
-    String str2 = a("GdtWebReportQQ_TRACE_ID");
-    return (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2));
-  }
-  
-  private void b(JSONArray paramJSONArray)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" eventReport: ");
@@ -255,9 +165,9 @@ public final class GdtLandingPageReport
       {
         localObject = (JSONObject)paramJSONArray.get(i);
         int k = ((JSONObject)localObject).getInt("eventId");
-        long l = ((JSONObject)localObject).optLong("duration");
+        localObject = ((JSONObject)localObject).getJSONObject("biz");
         if (k != -2147483648) {
-          a(k, l);
+          a(k, (int)((JSONObject)localObject).optLong("cost_time"), (int)((JSONObject)localObject).optLong("bp", 0L));
         }
         i += 1;
       }
@@ -269,45 +179,55 @@ public final class GdtLandingPageReport
     }
   }
   
+  private void b(String paramString)
+  {
+    AdThreadManager.INSTANCE.post(new -..Lambda.GdtLandingPageReport.GXZ1ubSp8vYt0PdsMwp6O747FKc(this, paramString), 3);
+  }
+  
+  private String c(String paramString)
+  {
+    Object localObject = this.d;
+    if (localObject != null) {
+      localObject = ((GdtWebReportPlugin)localObject).b();
+    } else {
+      localObject = null;
+    }
+    if ((localObject != null) && (((Activity)localObject).getIntent() != null)) {
+      localObject = ((Activity)localObject).getIntent().getStringExtra(paramString);
+    } else {
+      localObject = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("name = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", s = ");
+    localStringBuilder.append((String)localObject);
+    Log.i("GdtLandingPageReport", localStringBuilder.toString());
+    return localObject;
+  }
+  
+  private boolean d()
+  {
+    return TextUtils.isEmpty(c("GdtWebReportQQ_TRACE_ID")) ^ true;
+  }
+  
+  private boolean e()
+  {
+    GdtWebReportPlugin localGdtWebReportPlugin = this.d;
+    return (localGdtWebReportPlugin != null) && (localGdtWebReportPlugin.a() != null);
+  }
+  
   public void a()
   {
     GdtLog.a("GdtLandingPageReport", " init");
-    GdtWebReportPlugin localGdtWebReportPlugin = this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin;
-    if ((localGdtWebReportPlugin != null) && (localGdtWebReportPlugin.a() != null))
+    GdtWebReportPlugin localGdtWebReportPlugin = this.d;
+    if ((localGdtWebReportPlugin != null) && (localGdtWebReportPlugin.b() != null))
     {
       GdtLog.a("GdtLandingPageReport", " init success");
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin.a());
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin.a().getIntent().getLongExtra("GdtWebReportQQ_CLICK_TIME", System.currentTimeMillis());
+      this.a = this.d.b().getIntent().getLongExtra("GdtWebReportQQ_CLICK_TIME", System.currentTimeMillis());
+      this.c = this.d.b().getIntent().getBooleanExtra("GdtWebReportQQ_IS_H5", true);
+      this.b = GdtWebReportQQ.a(this.d.b().getIntent().getStringExtra("GdtWebReportQQ_CLICK_URL"));
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    a(paramInt, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return;
-    }
-    if (!GdtLandingPageConfig.a().a()) {
-      return;
-    }
-    if (!a()) {
-      return;
-    }
-    gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
-    AdAnalysisUtil.initEvent((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramInt, localgdt_analysis_event);
-    localgdt_analysis_event.duration = paramLong;
-    AdAnalysisEvent localAdAnalysisEvent = new AdAnalysisEvent(localgdt_analysis_event, 102);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("reportEvent eventId =");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("duration =");
-    localStringBuilder.append(localgdt_analysis_event.duration);
-    GdtLog.a("GdtLandingPageReport", localStringBuilder.toString());
-    AdAnalysis.INSTANCE.handleAsync(this.jdField_a_of_type_JavaLangRefWeakReference, localAdAnalysisEvent);
   }
   
   public void a(CustomWebView paramCustomWebView)
@@ -318,20 +238,13 @@ public final class GdtLandingPageReport
       return;
     }
     GdtLog.a("GdtLandingPageReport", " webviewGetPerformanceResult");
-    a(paramCustomWebView, "__TG_GET_PAGE_PERFORMANCE__()", 2, new GdtLandingPageReport.3(this));
+    a(paramCustomWebView, "__TG_GET_PAGE_PERFORMANCE__()", 2, new -..Lambda.GdtLandingPageReport.ageohy0r3_eTvD9i1wK0izhBJbA(this));
   }
   
   public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (!a()) {
+    if (!d()) {
       return false;
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramMap = this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin;
-      if ((paramMap != null) && (paramMap.a() != null) && ((paramLong == 8589934593L) || (paramLong == 8589934594L))) {
-        a((CustomWebView)this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin.a().get(), a("GdtWebReportQQ_TRACE_ID"), "");
-      }
     }
     paramMap = new StringBuilder();
     paramMap.append(" handleEvent url = ");
@@ -339,42 +252,52 @@ public final class GdtLandingPageReport
     paramMap.append("==type ==");
     paramMap.append(paramLong);
     GdtLog.a("GdtLandingPageReport", paramMap.toString());
-    if ((GdtWebReportQQ.a(paramString)) && (this.jdField_a_of_type_Int == 0))
+    if ((e()) && ((paramLong == 8589934593L) || (paramLong == 8589934594L)) && (!GdtWebReportQQ.a(paramString)))
     {
-      this.jdField_a_of_type_Int = 1;
-      a(1500009);
+      a((CustomWebView)this.d.a().get(), this.f, 1, null);
+      paramMap = new StringBuilder();
+      paramMap.append(" start inject url = ");
+      paramMap.append(paramString);
+      paramMap.append("  type ==");
+      paramMap.append(paramLong);
+      GdtLog.a("GdtLandingPageReport", paramMap.toString());
     }
-    if ((this.jdField_a_of_type_Int == 1) && (paramLong == 8589934593L) && (!GdtWebReportQQ.a(paramString)))
-    {
-      a(1500010);
-      this.jdField_a_of_type_Int = 2;
+    if ((paramLong == 8589934598L) && (!GdtWebReportQQ.a(paramString))) {
+      c();
     }
     return false;
   }
   
   public void b()
   {
+    if (!d()) {
+      return;
+    }
     a();
-    a(1500000);
+    a(4003005, (int)(System.currentTimeMillis() - this.a), 0);
+    b("");
   }
   
   public void b(CustomWebView paramCustomWebView)
   {
-    a(1500001);
-    a(paramCustomWebView, "");
+    if (!d()) {
+      return;
+    }
+    a(4003007, (int)(System.currentTimeMillis() - this.a), 0);
   }
   
   public void c()
   {
-    GdtWebReportPlugin localGdtWebReportPlugin = this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin;
-    if ((localGdtWebReportPlugin != null) && (localGdtWebReportPlugin.a() != null) && (a())) {
-      a((CustomWebView)this.jdField_a_of_type_ComTencentGdtadWebGdtWebReportPlugin.a().get());
+    if ((e()) && (d()) && (!this.e))
+    {
+      this.e = true;
+      a((CustomWebView)this.d.a().get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtLandingPageReport
  * JD-Core Version:    0.7.0.1
  */

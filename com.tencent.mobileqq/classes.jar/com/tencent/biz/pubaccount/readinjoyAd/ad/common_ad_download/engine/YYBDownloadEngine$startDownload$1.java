@@ -17,69 +17,69 @@ final class YYBDownloadEngine$startDownload$1
 {
   public final void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData == null) {
+      if (this.b == null) {
         return;
       }
       AdDownloadInfo localAdDownloadInfo = new AdDownloadInfo();
-      localAdDownloadInfo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d);
-      localAdDownloadInfo.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.jdField_a_of_type_JavaLangString);
+      localAdDownloadInfo.a(this.b.d);
+      localAdDownloadInfo.c(this.b.a);
       Object localObject2;
-      if (YYBDownloadEngine.a(YYBDownloadEngine.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData))
+      if (YYBDownloadEngine.a(YYBDownloadEngine.a, this.b))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        localObject2 = this.b;
         RIJAdUrlChangeUtil localRIJAdUrlChangeUtil = RIJAdUrlChangeUtil.a;
-        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+        localObject1 = this.a;
         if (localObject1 != null) {
-          localObject1 = ((RIJDownloadView)localObject1).a();
+          localObject1 = ((RIJDownloadView)localObject1).getDownloadScene();
         } else {
           localObject1 = null;
         }
-        ((ADVideoAppDownloadData)localObject2).c = localRIJAdUrlChangeUtil.a((AdDownloadScene)localObject1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.b);
+        ((ADVideoAppDownloadData)localObject2).c = localRIJAdUrlChangeUtil.a((AdDownloadScene)localObject1, this.b.b);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("needReplaceUrl: pkg = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d);
+        ((StringBuilder)localObject1).append(this.b.d);
         ((StringBuilder)localObject1).append("  url = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c);
+        ((StringBuilder)localObject1).append(this.b.c);
         ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", ((StringBuilder)localObject1).toString());
         localObject1 = AdDownloadStateHandler.OnReplaceUrl;
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-        localAdDownloadInfo.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c);
+        localObject2 = this.a;
+        localAdDownloadInfo.e(this.b.c);
         ((AdDownloadStateHandler)localObject1).doCallBack((RIJDownloadView)localObject2, localAdDownloadInfo);
       }
-      if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c))
+      if (TextUtils.isEmpty((CharSequence)this.b.c))
       {
         localObject1 = AdDownloadStateHandler.OnReplaceUrl;
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+        localObject2 = this.a;
         localAdDownloadInfo.e("");
         ((AdDownloadStateHandler)localObject1).doCallBack((RIJDownloadView)localObject2, localAdDownloadInfo);
         localObject1 = AdDownloadStateHandler.OnErrorDownload;
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+        localObject2 = this.a;
         localAdDownloadInfo.c(-1);
         localAdDownloadInfo.b("url is empty");
         localAdDownloadInfo.a(6);
         ((AdDownloadStateHandler)localObject1).doCallBack((RIJDownloadView)localObject2, localAdDownloadInfo);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.jdField_a_of_type_Int == 4) {
-        AdDownloadStateHandler.OnResumeDownload.doCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, localAdDownloadInfo);
+      if (this.b.f == 4) {
+        AdDownloadStateHandler.OnResumeDownload.doCallBack(this.a, localAdDownloadInfo);
       } else {
-        AdDownloadStateHandler.OnStartDownload.doCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, localAdDownloadInfo);
+        AdDownloadStateHandler.OnStartDownload.doCallBack(this.a, localAdDownloadInfo);
       }
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("startDownload: pkg = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d);
+      ((StringBuilder)localObject1).append(this.b.d);
       ((StringBuilder)localObject1).append("  url = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c);
+      ((StringBuilder)localObject1).append(this.b.c);
       ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", ((StringBuilder)localObject1).toString());
-      DownloadProxy.a().a(null, YYBDownloadEngine.a(YYBDownloadEngine.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData), "biz_src_feeds_kandianads", null, 0);
+      DownloadProxy.a().a(null, YYBDownloadEngine.b(YYBDownloadEngine.a, this.b), "biz_src_feeds_kandianads", null, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.YYBDownloadEngine.startDownload.1
  * JD-Core Version:    0.7.0.1
  */

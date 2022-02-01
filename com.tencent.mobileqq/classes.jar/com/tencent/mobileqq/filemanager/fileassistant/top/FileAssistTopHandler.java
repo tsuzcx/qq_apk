@@ -31,13 +31,12 @@ public class FileAssistTopHandler
   extends BusinessHandler
 {
   public QQAppInterface a;
-  private boolean a;
+  private boolean b = false;
   
   protected FileAssistTopHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -93,12 +92,12 @@ public class FileAssistTopHandler
           } else {
             bool2 = false;
           }
-          this.jdField_a_of_type_Boolean = bool2;
+          this.b = bool2;
           paramFromServiceMsg = new StringBuilder();
           paramFromServiceMsg.append("handleGetFileAssistTop  isTop:");
-          paramFromServiceMsg.append(this.jdField_a_of_type_Boolean);
+          paramFromServiceMsg.append(this.b);
           QLog.i("FileAssistTopHandler<FileAssistant>", 1, paramFromServiceMsg.toString());
-          notifyUI(1, bool1, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+          notifyUI(1, bool1, Boolean.valueOf(this.b));
         }
       }
     }
@@ -143,7 +142,7 @@ public class FileAssistTopHandler
   
   public void a(boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = this.a;
     if (localObject1 == null)
     {
       QLog.e("FileAssistTopHandler<FileAssistant>", 1, "setFileAssistTop app null!");
@@ -183,7 +182,7 @@ public class FileAssistTopHandler
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public void b(boolean paramBoolean)
@@ -195,9 +194,9 @@ public class FileAssistTopHandler
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.i("FileAssistTopHandler<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
-    String str = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy();
-    RecentUser localRecentUser = localRecentUserProxy.b(str, 0);
+    String str = QFileAssistantUtils.b(this.a);
+    RecentUserProxy localRecentUserProxy = this.a.getRecentUserProxy();
+    RecentUser localRecentUser = localRecentUserProxy.c(str, 0);
     Object localObject = localRecentUser;
     if (localRecentUser == null) {
       localObject = new RecentUser(str, 0);
@@ -208,11 +207,11 @@ public class FileAssistTopHandler
       ((RecentUser)localObject).showUpTime = 0L;
     }
     localRecentUserProxy.b((RecentUser)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    localObject = this.a.getHandler(Conversation.class);
     if (localObject != null) {
       ((MqqHandler)localObject).sendEmptyMessage(1009);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
     notifyUI(1, true, Boolean.valueOf(paramBoolean));
   }
   
@@ -258,7 +257,7 @@ public class FileAssistTopHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.top.FileAssistTopHandler
  * JD-Core Version:    0.7.0.1
  */

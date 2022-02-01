@@ -25,12 +25,12 @@ public final class GdtIPCManager
   
   public void a(Context paramContext)
   {
-    AdIPCManager.INSTANCE.init(paramContext, new WeakReference(GdtManager.a().a()));
+    AdIPCManager.INSTANCE.init(paramContext, new WeakReference(GdtManager.a().b()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.ipc.GdtIPCManager
  * JD-Core Version:    0.7.0.1
  */

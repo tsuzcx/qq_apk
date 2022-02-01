@@ -22,40 +22,40 @@ class PublicAccountAdvertisementActivity$3
     {
     default: 
       break;
-    case 2131380574: 
-      if ((PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null))
+    case 2131449533: 
+      if ((PublicAccountAdvertisementActivity.f(this.a)) && (PublicAccountAdvertisementActivity.j(this.a) != null))
       {
-        PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
+        PublicAccountAdvertisementActivity.j(this.a).setCurrentPage(1);
         PublicAccountAdvertisementActivity.b(this.a, 1);
       }
       break;
-    case 2131380567: 
-      this.a.b();
+    case 2131449524: 
+      this.a.c();
       break;
-    case 2131380545: 
+    case 2131449502: 
       PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.c(this.a);
+      PublicAccountAdvertisementActivity.g(this.a);
       PublicAccountAdvertisementActivity.b(this.a);
-      AdvertisementRecentUserManager.a().a((AppInterface)this.a.getAppRuntime(), 4, PublicAccountAdvertisementActivity.a(this.a));
-      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
+      AdvertisementRecentUserManager.a().a((AppInterface)this.a.getAppRuntime(), 4, PublicAccountAdvertisementActivity.h(this.a));
+      PublicAccountAdvertisementActivity.i(this.a).setVisibility(8);
       this.a.finish();
       break;
-    case 2131371487: 
-      PublicAccountAdvertisementActivity.a(this.a, 2);
+    case 2131438862: 
+      PublicAccountAdvertisementActivity.c(this.a, 2);
       break;
-    case 2131362163: 
-      ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-      PublicAccountAdvertisementActivity.d(this.a);
+    case 2131427742: 
+      ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.h(this.a).g.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.h(this.a).g.c, "", "", PublicAccountAdvertisementActivity.h(this.a).g.b);
+      PublicAccountAdvertisementActivity.k(this.a);
       break;
-    case 2131362152: 
-      PublicAccountAdvertisementActivity.a(this.a, 1);
+    case 2131427732: 
+      PublicAccountAdvertisementActivity.c(this.a, 1);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.3
  * JD-Core Version:    0.7.0.1
  */

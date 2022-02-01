@@ -28,34 +28,34 @@ public class QFileDownloadConfigProcessor
   {
     QLog.i("QFileDownloadConfigProcessor", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QFileDownloadConfigBean)QStorage.a(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString, QFileDownloadConfigBean.class);
+      return (QFileDownloadConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QFileDownloadConfigBean.class);
     }
     return null;
   }
   
   public void a(QFileDownloadConfigBean paramQFileDownloadConfigBean)
   {
-    if ((paramQFileDownloadConfigBean != null) && (paramQFileDownloadConfigBean.jdField_a_of_type_JavaUtilHashMap != null))
+    if ((paramQFileDownloadConfigBean != null) && (paramQFileDownloadConfigBean.a != null))
     {
-      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
       if (localBaseQQAppInterface != null)
       {
-        if (!TextUtils.isEmpty(paramQFileDownloadConfigBean.jdField_a_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(paramQFileDownloadConfigBean.b))
         {
           Object localObject = localBaseQQAppInterface.getApplicationContext();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("file_config_");
           localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
           localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
-          ((SharedPreferences.Editor)localObject).putString("qfile_file_auto_download", paramQFileDownloadConfigBean.jdField_a_of_type_JavaLangString);
+          ((SharedPreferences.Editor)localObject).putString("qfile_file_auto_download", paramQFileDownloadConfigBean.b);
           ((SharedPreferences.Editor)localObject).apply();
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("save download config [");
-          ((StringBuilder)localObject).append(paramQFileDownloadConfigBean.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramQFileDownloadConfigBean.b);
           ((StringBuilder)localObject).append("]");
           QLog.i("QFileDownloadConfigProcessor", 1, ((StringBuilder)localObject).toString());
         }
-        QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileDownloadConfigBean.jdField_a_of_type_JavaUtilHashMap);
+        QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileDownloadConfigBean.a);
       }
     }
   }
@@ -96,7 +96,7 @@ public class QFileDownloadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileDownloadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

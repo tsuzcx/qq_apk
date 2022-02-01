@@ -29,7 +29,7 @@ class GaInviteLockActivity$4
     long l1 = paramIntent.getLongExtra("groupId", 0L);
     long l2 = paramIntent.getLongExtra("roomId", 0L);
     boolean bool;
-    if ((this.a.jdField_a_of_type_Long == l1) && (GaInviteLockActivity.a(this.a) == l2)) {
+    if ((this.a.b == l1) && (GaInviteLockActivity.e(this.a) == l2)) {
       bool = true;
     } else {
       bool = false;
@@ -38,14 +38,14 @@ class GaInviteLockActivity$4
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localObject = this.a.jdField_b_of_type_JavaLangString;
+      localObject = this.a.l;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleMsgType0x210SuMsgType0x116 mMemberChangeEventReceiver fit=");
       localStringBuilder.append(bool);
       localStringBuilder.append(";current roomId=");
-      localStringBuilder.append(GaInviteLockActivity.a(this.a));
+      localStringBuilder.append(GaInviteLockActivity.e(this.a));
       localStringBuilder.append(";groupId=");
-      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a.b);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if ("tencent.video.q2v.GvideoMemInviteUpdate".equals(paramContext)) {
@@ -60,12 +60,12 @@ class GaInviteLockActivity$4
         paramIntent = new HashSet();
         localObject = GaInviteLockActivity.a(this.a).iterator();
         while (((Iterator)localObject).hasNext()) {
-          paramIntent.add(Long.valueOf(((Memberinfo)((Iterator)localObject).next()).jdField_a_of_type_Long));
+          paramIntent.add(Long.valueOf(((Memberinfo)((Iterator)localObject).next()).a));
         }
         int n = paramContext.enum_event_type.get();
         if (QLog.isColorLevel())
         {
-          localObject = this.a.jdField_b_of_type_JavaLangString;
+          localObject = this.a.l;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("mMemberChangeEventReceiver before totalCount:");
           localStringBuilder.append(paramContext.uint32_invite_list_total_count.get());
@@ -79,7 +79,7 @@ class GaInviteLockActivity$4
           localObject = (submsgtype0x116.MemberInfo)paramContext.rpt_msg_member_join.get(j);
           l1 = ((submsgtype0x116.MemberInfo)localObject).uint64_member_uin.get();
           int m;
-          if ((l1 != this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin()) && (l1 != this.a.jdField_b_of_type_Long)) {
+          if ((l1 != this.a.e.getLongAccountUin()) && (l1 != this.a.c)) {
             m = 1;
           } else {
             m = 0;
@@ -93,7 +93,7 @@ class GaInviteLockActivity$4
               GaInviteLockActivity.a(this.a).add(new Memberinfo(((submsgtype0x116.MemberInfo)localObject).uint64_member_uin.get(), ((submsgtype0x116.MemberInfo)localObject).uint32_invite_timestamp.get()));
               if (QLog.isColorLevel())
               {
-                localObject = this.a.jdField_b_of_type_JavaLangString;
+                localObject = this.a.l;
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append("mMemberChangeEventReceiver add member UIN:");
                 localStringBuilder.append(l1);
@@ -118,14 +118,14 @@ class GaInviteLockActivity$4
               break;
             }
             paramIntent = (Memberinfo)((Iterator)localObject).next();
-          } while (paramIntent.jdField_a_of_type_Long != l1);
+          } while (paramIntent.a != l1);
           GaInviteLockActivity.a(this.a).remove(paramIntent);
           if (QLog.isColorLevel())
           {
-            localObject = this.a.jdField_b_of_type_JavaLangString;
+            localObject = this.a.l;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("mMemberChangeEventReceiver remove member UIN:");
-            localStringBuilder.append(paramIntent.jdField_a_of_type_Long);
+            localStringBuilder.append(paramIntent.a);
             QLog.d((String)localObject, 2, localStringBuilder.toString());
           }
           k = j;
@@ -137,7 +137,7 @@ class GaInviteLockActivity$4
         }
         if (QLog.isColorLevel())
         {
-          paramIntent = this.a.jdField_b_of_type_JavaLangString;
+          paramIntent = this.a.l;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("mMemberChangeEventReceiver after totalCount:");
           ((StringBuilder)localObject).append(paramContext.uint32_invite_list_total_count.get());
@@ -157,7 +157,7 @@ class GaInviteLockActivity$4
       {
         paramContext.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver throw exception");
+          QLog.d(this.a.l, 2, "mMemberChangeEventReceiver throw exception");
         }
       }
     }

@@ -24,27 +24,22 @@ public class RecommendFollowNodeViewHolder
     String str = super.a(paramQQUserUIItem);
     paramQQUserUIItem = str;
     if (str == null) {
-      paramQQUserUIItem = HardCodeUtil.a(2131713179);
+      paramQQUserUIItem = HardCodeUtil.a(2131910735);
     }
     return paramQQUserUIItem;
-  }
-  
-  public void a()
-  {
-    this.a.setTag(2131374589, null);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
-    this.a.setDisplayState(2);
-    if (!TextUtils.equals((String)this.a.getTag(2131374589), paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString))
+    this.c.setDisplayState(2);
+    if (!TextUtils.equals((String)this.c.getTag(2131442759), paramMsgTabNodeInfo.d))
     {
       Object localObject;
-      if ((paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList != null) && (paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size() > 0))
+      if ((paramMsgTabNodeInfo.e != null) && (paramMsgTabNodeInfo.e.size() > 0))
       {
-        String str = ((MsgTabNodeVideoInfo)paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
-        Iterator localIterator = paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.iterator();
+        String str = ((MsgTabNodeVideoInfo)paramMsgTabNodeInfo.e.get(0)).c;
+        Iterator localIterator = paramMsgTabNodeInfo.e.iterator();
         do
         {
           localObject = str;
@@ -52,15 +47,15 @@ public class RecommendFollowNodeViewHolder
             break;
           }
           localObject = (MsgTabNodeVideoInfo)localIterator.next();
-        } while (((MsgTabNodeVideoInfo)localObject).jdField_a_of_type_Boolean);
-        localObject = ((MsgTabNodeVideoInfo)localObject).jdField_a_of_type_JavaLangString;
+        } while (((MsgTabNodeVideoInfo)localObject).b);
+        localObject = ((MsgTabNodeVideoInfo)localObject).c;
       }
       else
       {
         localObject = "";
       }
-      StoryReportor.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, "1", "", localObject });
-      this.a.setTag(2131374589, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+      StoryReportor.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramMsgTabNodeInfo.d, "1", "", localObject });
+      this.c.setTag(2131442759, paramMsgTabNodeInfo.d);
     }
   }
   
@@ -71,17 +66,22 @@ public class RecommendFollowNodeViewHolder
   
   protected void a(String paramString, boolean paramBoolean, MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    if ((!TextUtils.isEmpty(paramMsgTabNodeInfo.j)) && (!paramBoolean))
+    if ((!TextUtils.isEmpty(paramMsgTabNodeInfo.y)) && (!paramBoolean))
     {
-      this.a.setNodeName(paramString, paramMsgTabNodeInfo.j);
+      this.c.setNodeName(paramString, paramMsgTabNodeInfo.y);
       return;
     }
     super.a(paramString, paramBoolean, paramMsgTabNodeInfo);
   }
+  
+  public void b()
+  {
+    this.c.setTag(2131442759, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.RecommendFollowNodeViewHolder
  * JD-Core Version:    0.7.0.1
  */

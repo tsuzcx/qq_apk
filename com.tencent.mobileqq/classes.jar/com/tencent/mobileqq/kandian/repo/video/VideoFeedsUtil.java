@@ -27,7 +27,7 @@ public class VideoFeedsUtil
       d = paramInt;
       Double.isNaN(d);
       ((StringBuilder)localObject).append(localDecimalFormat.format(d / 100000000.0D));
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715948));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131913403));
       return ((StringBuilder)localObject).toString();
     }
     if (paramInt >= 10000)
@@ -37,7 +37,7 @@ public class VideoFeedsUtil
       d = paramInt;
       Double.isNaN(d);
       ((StringBuilder)localObject).append(localDecimalFormat.format(d / 10000.0D));
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715946));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131913401));
       return ((StringBuilder)localObject).toString();
     }
     if (paramInt >= 0)
@@ -52,7 +52,7 @@ public class VideoFeedsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.VideoFeedsUtil
  * JD-Core Version:    0.7.0.1
  */

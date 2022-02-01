@@ -13,21 +13,21 @@ import java.io.File;
 public class VasSplashDownloadManager$DownLoadNetEngine
   implements INetEngineListener
 {
-  int jdField_a_of_type_Int;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
+  int a;
   String b;
   String c;
   String d;
+  String e;
+  QQAppInterface f;
   
   public VasSplashDownloadManager$DownLoadNetEngine(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString4;
-    this.d = paramString2;
-    this.c = paramString3;
+    this.f = paramQQAppInterface;
+    this.b = paramString1;
+    this.a = paramInt;
+    this.c = paramString4;
+    this.e = paramString2;
+    this.d = paramString3;
   }
   
   public void onResp(NetResp paramNetResp)
@@ -37,30 +37,30 @@ public class VasSplashDownloadManager$DownLoadNetEngine
       int i = paramNetResp.mResult;
       if (i == 0)
       {
-        QLog.i("QSplash@VasSplashDownloadManager", 1, "ResFile has download!");
-        if (!TextUtils.isEmpty(this.d))
+        QLog.i("splash.tag.QSplash@VasSplashDownloadManager", 1, "ResFile has download!");
+        if (!TextUtils.isEmpty(this.e))
         {
-          if (SplashItem.a(this.d, false))
+          if (SplashItem.a(this.e, false))
           {
-            paramNetResp = new File(this.d);
-            paramNetResp.renameTo(new File(this.d.substring(0, this.d.lastIndexOf("."))));
+            paramNetResp = new File(this.e);
+            paramNetResp.renameTo(new File(this.e.substring(0, this.e.lastIndexOf("."))));
             long l = paramNetResp.length();
-            paramNetResp = (IPreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPreDownloadController.class);
+            paramNetResp = (IPreDownloadController)this.f.getRuntimeService(IPreDownloadController.class);
             if (paramNetResp.isEnable())
             {
               QLog.i("QSplash@VasSplashUtil", 1, "preDownloadSuccess");
-              paramNetResp.preDownloadSuccess(this.b, l);
+              paramNetResp.preDownloadSuccess(this.c, l);
             }
-            VasSplashDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_JavaLangString);
+            VasSplashDownloadManager.a(this.f.getAccount(), this.b);
             return;
           }
-          VasSplashDownloadManager.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+          VasSplashDownloadManager.a(this.c, this.f, this.b);
           QLog.i("QSplash@VasSplashUtil", 1, "ResFile check not exist");
         }
       }
       else if (paramNetResp.mResult == 1)
       {
-        VasSplashDownloadManager.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        VasSplashDownloadManager.a(this.c, this.f, this.b);
         QLog.i("QSplash@VasSplashUtil", 1, "ResFile dowload faield");
       }
       return;
@@ -72,7 +72,7 @@ public class VasSplashDownloadManager$DownLoadNetEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vassplash.common.VasSplashDownloadManager.DownLoadNetEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -20,38 +20,37 @@ public class SubscriptRecommendAdapter
   extends BaseAdapter
   implements DecodeTaskCompletionListener
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  private SubscriptPicManager jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  public IFaceDecoder a;
-  protected List<SubscriptRecommendAccountInfo> a;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  Activity a;
+  public IFaceDecoder b;
+  protected List<SubscriptRecommendAccountInfo> c = null;
+  QQAppInterface d = null;
+  boolean e = false;
+  boolean f = false;
+  private SubscriptPicManager g;
   
   public SubscriptRecommendAdapter(Activity paramActivity, QQAppInterface paramQQAppInterface, SubscriptPicManager paramSubscriptPicManager)
   {
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(11);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager = paramSubscriptPicManager;
-    this.jdField_a_of_type_Boolean = ThemeUtil.isInNightMode(paramQQAppInterface);
+    this.a = paramActivity;
+    this.c = new ArrayList(11);
+    this.b = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
+    this.b.setDecodeTaskCompletionListener(this);
+    this.d = paramQQAppInterface;
+    this.g = paramSubscriptPicManager;
+    this.e = ThemeUtil.isInNightMode(paramQQAppInterface);
     if (Build.MANUFACTURER.toUpperCase().equals("XIAOMI")) {
-      this.b = true;
+      this.f = true;
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.c.clear();
   }
   
   public void a(SubscriptRecommendAccountInfo paramSubscriptRecommendAccountInfo)
   {
     if (paramSubscriptRecommendAccountInfo != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramSubscriptRecommendAccountInfo);
+      this.c.add(paramSubscriptRecommendAccountInfo);
     }
   }
   
@@ -78,12 +77,12 @@ public class SubscriptRecommendAdapter
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(null);
+    this.b.setDecodeTaskCompletionListener(null);
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList == null) {
       return 0;
     }
@@ -92,8 +91,8 @@ public class SubscriptRecommendAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt <= getCount()) && (paramInt >= 0)) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((this.c != null) && (paramInt <= getCount()) && (paramInt >= 0)) {
+      return this.c.get(paramInt);
     }
     return null;
   }
@@ -108,8 +107,8 @@ public class SubscriptRecommendAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131560403, null);
-      paramView = new SubscriptRecommendAdapter.RecommendItem(this, localView, this.jdField_a_of_type_Boolean);
+      localView = this.a.getLayoutInflater().inflate(2131626448, null);
+      paramView = new SubscriptRecommendAdapter.RecommendItem(this, localView, this.e);
       localView.setVisibility(0);
       localView.setFocusable(false);
       localView.setTag(paramView);
@@ -120,7 +119,7 @@ public class SubscriptRecommendAdapter
       localView = paramView;
       paramView = localRecommendItem;
     }
-    paramView.a((SubscriptRecommendAccountInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+    paramView.a((SubscriptRecommendAccountInfo)this.c.get(paramInt), paramInt);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
@@ -132,7 +131,7 @@ public class SubscriptRecommendAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter
  * JD-Core Version:    0.7.0.1
  */

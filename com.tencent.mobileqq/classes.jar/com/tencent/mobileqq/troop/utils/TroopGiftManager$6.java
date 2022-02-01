@@ -30,7 +30,7 @@ class TroopGiftManager$6
         }
       }
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+    paramArrayOfByte = this.b;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(paramInt, paramBundle);
     }
@@ -38,7 +38,7 @@ class TroopGiftManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager.6
  * JD-Core Version:    0.7.0.1
  */

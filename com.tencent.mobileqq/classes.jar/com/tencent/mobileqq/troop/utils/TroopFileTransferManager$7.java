@@ -32,7 +32,7 @@ class TroopFileTransferManager$7
     long l = paramBundle.getLong("troopUin");
     try
     {
-      Object localObject2 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+      Object localObject2 = (TroopFileTransferManager)TroopFileTransferManager.t().get(Long.valueOf(l));
       if (localObject2 == null)
       {
         if (QLog.isDevelopLevel())
@@ -56,7 +56,7 @@ class TroopFileTransferManager$7
       label973:
       try
       {
-        localObject1 = (TroopFileTransferManager.Item)((TroopFileTransferManager)localObject2).jdField_a_of_type_JavaUtilMap.get(localObject1);
+        localObject1 = (TroopFileTransferManager.Item)((TroopFileTransferManager)localObject2).l.get(localObject1);
         if (localObject1 == null)
         {
           if (QLog.isDevelopLevel())
@@ -68,24 +68,24 @@ class TroopFileTransferManager$7
           }
           return;
         }
-        i = FileManagerUtil.a(FileUtil.a(((TroopFileTransferManager.Item)localObject1).FileName));
+        i = FileManagerUtil.c(FileUtil.a(((TroopFileTransferManager.Item)localObject1).FileName));
         paramInt = paramBundle.getInt("thumbNail");
         bool2 = paramBundle.getBoolean("isPreview", false);
         paramBundle = new TroopFileTransferManager.PreviewInfo();
-        paramBundle.jdField_a_of_type_Int = -1;
+        paramBundle.f = -1;
       }
       finally {}
     }
     finally {}
     try
     {
-      paramBundle.e = ((TroopFileTransferManager.Item)localObject1).Id.toString();
+      paramBundle.g = ((TroopFileTransferManager.Item)localObject1).Id.toString();
     }
     catch (NullPointerException localNullPointerException)
     {
       break label234;
     }
-    paramBundle.e = null;
+    paramBundle.g = null;
     if (QLog.isDevelopLevel())
     {
       localObject2 = new StringBuilder();
@@ -103,17 +103,17 @@ class TroopFileTransferManager$7
     if ((paramDownloadFileRspBody != null) && (paramBoolean))
     {
       i = paramDownloadFileRspBody.int32_ret_code.get();
-      paramBundle.jdField_a_of_type_Int = i;
+      paramBundle.f = i;
       if (bool2)
       {
-        paramBundle.jdField_a_of_type_Boolean = false;
-        paramBundle.jdField_a_of_type_JavaLangString = paramDownloadFileRspBody.str_download_ip.get();
-        if ((TextUtils.isEmpty(paramBundle.jdField_a_of_type_JavaLangString)) || (paramBundle.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
-          paramBundle.jdField_a_of_type_JavaLangString = paramDownloadFileRspBody.str_download_dns.get().toString();
+        paramBundle.a = false;
+        paramBundle.b = paramDownloadFileRspBody.str_download_ip.get();
+        if ((TextUtils.isEmpty(paramBundle.b)) || (paramBundle.b.equals("0.0.0.0"))) {
+          paramBundle.b = paramDownloadFileRspBody.str_download_dns.get().toString();
         }
-        paramBundle.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
-        paramBundle.c = paramDownloadFileRspBody.str_ret_msg.get();
-        paramBundle.d = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+        paramBundle.c = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
+        paramBundle.d = paramDownloadFileRspBody.str_ret_msg.get();
+        paramBundle.e = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
       }
       if (QLog.isColorLevel())
       {
@@ -153,18 +153,18 @@ class TroopFileTransferManager$7
         }
         if (bool2)
         {
-          TroopFileError.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, 700);
-          if (TextUtils.isEmpty(paramBundle.c)) {
-            paramBundle.c = HardCodeUtil.a(2131715139);
+          TroopFileError.a(this.a.j, this.a.k, 700);
+          if (TextUtils.isEmpty(paramBundle.d)) {
+            paramBundle.d = HardCodeUtil.a(2131912627);
           }
-          paramBundle.jdField_a_of_type_Boolean = false;
-          ((TroopFileHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).c(paramBundle);
+          paramBundle.a = false;
+          ((TroopFileHandler)this.a.j.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).c(paramBundle);
           return;
         }
         localObject2 = (QQAppInterface)this.mApp.get();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("download_failed,troopUin=");
-        ((StringBuilder)localObject2).append(this.a.e);
+        ((StringBuilder)localObject2).append(this.a.k);
         ((StringBuilder)localObject2).append(",fileName=");
         ((StringBuilder)localObject2).append(((TroopFileTransferManager.Item)localObject1).FileName);
         ((StringBuilder)localObject2).append(",filePath=");
@@ -198,8 +198,8 @@ class TroopFileTransferManager$7
         if (((TroopFileTransferManager.Item)localObject1).TmpFile != null) {
           new File(((TroopFileTransferManager.Item)localObject1).TmpFile).delete();
         }
-        ((TroopFileTransferManager.Item)localObject1).deleteThumbnailFile(this.a.e, 128);
-        ((TroopFileTransferManager.Item)localObject1).deleteThumbnailFile(this.a.e, 640);
+        ((TroopFileTransferManager.Item)localObject1).deleteThumbnailFile(this.a.k, 128);
+        ((TroopFileTransferManager.Item)localObject1).deleteThumbnailFile(this.a.k, 640);
         TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject1);
         if (paramInt == 0) {
           TroopTechReportUtils.b(TroopTechReportUtils.TroopFileReportResultCode.c, i);
@@ -208,8 +208,8 @@ class TroopFileTransferManager$7
       }
       if (bool2)
       {
-        paramBundle.jdField_a_of_type_Boolean = true;
-        ((TroopFileHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).c(paramBundle);
+        paramBundle.a = true;
+        ((TroopFileHandler)this.a.j.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).c(paramBundle);
         return;
       }
       ((TroopFileTransferManager.Item)localObject1).cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
@@ -238,14 +238,14 @@ class TroopFileTransferManager$7
       }
       if ((paramInt != 128) && (paramInt != 383) && (paramInt != 640))
       {
-        if (this.a.c((TroopFileTransferManager.Item)localObject1)) {
+        if (this.a.h((TroopFileTransferManager.Item)localObject1)) {
           return;
         }
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqTroopUtilsTroopFileTransferManager$TaskPool[3].a(new TroopFileTransferManager.TaskHttpDownload(this.a, (TroopFileTransferManager.Item)localObject1));
+        this.a.i[3].a(new TroopFileTransferManager.TaskHttpDownload(this.a, (TroopFileTransferManager.Item)localObject1));
         return;
       }
       paramDownloadFileRspBody = new TroopFileTransferManager.TaskHttpDownloadThumbnail(this.a, (TroopFileTransferManager.Item)localObject1, paramInt, String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get()));
-      this.a.jdField_a_of_type_ArrayOfComTencentMobileqqTroopUtilsTroopFileTransferManager$TaskPool[4].a(paramDownloadFileRspBody);
+      this.a.i[4].a(paramDownloadFileRspBody);
       return;
     }
     if ((i == 2) && (QLog.isColorLevel()))
@@ -283,9 +283,9 @@ class TroopFileTransferManager$7
     }
     if (bool2)
     {
-      TroopFileError.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, 700);
-      paramBundle.jdField_a_of_type_Boolean = false;
-      ((TroopFileHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).c(paramBundle);
+      TroopFileError.a(this.a.j, this.a.k, 700);
+      paramBundle.a = false;
+      ((TroopFileHandler)this.a.j.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).c(paramBundle);
       return;
     }
     this.a.a((TroopFileTransferManager.Item)localObject1, 10, 103);
@@ -293,7 +293,7 @@ class TroopFileTransferManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.7
  * JD-Core Version:    0.7.0.1
  */

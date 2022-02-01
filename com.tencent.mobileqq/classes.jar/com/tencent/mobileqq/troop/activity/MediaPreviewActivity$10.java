@@ -10,7 +10,7 @@ class MediaPreviewActivity$10
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.b = false;
+    this.a.k = false;
     paramAnimation.setAnimationListener(null);
     this.a.finish();
   }
@@ -21,7 +21,7 @@ class MediaPreviewActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.10
  * JD-Core Version:    0.7.0.1
  */

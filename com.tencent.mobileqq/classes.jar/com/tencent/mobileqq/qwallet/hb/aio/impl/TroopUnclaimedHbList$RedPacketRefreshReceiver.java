@@ -18,7 +18,7 @@ class TroopUnclaimedHbList$RedPacketRefreshReceiver
   {
     if ("troop_hblist_broadcast_action".equals(paramIntent.getAction()))
     {
-      if (!TroopUnclaimedHbList.b(this.a)) {
+      if (!TroopUnclaimedHbList.i(this.a)) {
         return;
       }
       int i = paramIntent.getIntExtra("result_code", 0);
@@ -37,25 +37,25 @@ class TroopUnclaimedHbList$RedPacketRefreshReceiver
       }
       if (i == -20180322)
       {
-        if (TroopUnclaimedHbList.b(this.a) != null) {
-          TroopUnclaimedHbList.b(this.a).setVisibility(8);
+        if (TroopUnclaimedHbList.j(this.a) != null) {
+          TroopUnclaimedHbList.j(this.a).setVisibility(8);
         }
-        if (TroopUnclaimedHbList.a(this.a) != null) {
-          TroopUnclaimedHbList.a(this.a).setVisibility(8);
+        if (TroopUnclaimedHbList.e(this.a) != null) {
+          TroopUnclaimedHbList.e(this.a).setVisibility(8);
         }
       }
       else if (i == -20180323)
       {
-        if (TroopUnclaimedHbList.b(this.a) != null) {
-          TroopUnclaimedHbList.b(this.a).setVisibility(0);
+        if (TroopUnclaimedHbList.j(this.a) != null) {
+          TroopUnclaimedHbList.j(this.a).setVisibility(0);
         }
-        if (TroopUnclaimedHbList.a(this.a) != null) {
-          TroopUnclaimedHbList.a(this.a).setVisibility(0);
+        if (TroopUnclaimedHbList.e(this.a) != null) {
+          TroopUnclaimedHbList.e(this.a).setVisibility(0);
         }
-        if ((TroopUnclaimedHbList.a(this.a) != null) && (!TextUtils.isEmpty(paramContext)))
+        if ((TroopUnclaimedHbList.c(this.a) != null) && (!TextUtils.isEmpty(paramContext)))
         {
-          TroopUnclaimedHbList.a(this.a).a(paramContext);
-          NotifyMsgApiImpl.onGroupHbGrabbedNotify(TroopUnclaimedHbList.a(this.a), TroopUnclaimedHbList.a(this.a), paramContext);
+          TroopUnclaimedHbList.c(this.a).a(paramContext);
+          NotifyMsgApiImpl.onGroupHbGrabbedNotify(TroopUnclaimedHbList.k(this.a), TroopUnclaimedHbList.l(this.a), paramContext);
         }
       }
     }
@@ -63,7 +63,7 @@ class TroopUnclaimedHbList$RedPacketRefreshReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.TroopUnclaimedHbList.RedPacketRefreshReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -11,44 +11,44 @@ import java.io.ByteArrayOutputStream;
 
 public class ShortVideoVoiceRecognizer
 {
-  private static String jdField_a_of_type_JavaLangString = "wx7d02f7e92ea2884d";
-  private AudioCapture jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioCapture;
-  private boolean jdField_a_of_type_Boolean;
+  private static String a = "wx7d02f7e92ea2884d";
+  private boolean b;
+  private AudioCapture c;
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioCapture.b(false);
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioCapture.b();
+      this.b = false;
+      this.c.b(false);
+      this.c.c();
       VoiceTextRecognizer.getInstance().destroy();
     }
   }
   
   public void a(Context paramContext, AudioCapture paramAudioCapture)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
+    this.b = true;
     FeatureManager.Features.VOICE_TO_TEXT.init();
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioCapture = paramAudioCapture;
-    VoiceTextRecognizer.setWxVoiceRecognizerAppid(jdField_a_of_type_JavaLangString);
+    this.c = paramAudioCapture;
+    VoiceTextRecognizer.setWxVoiceRecognizerAppid(a);
     VoiceTextRecognizer.getInstance().init(paramContext, false);
     VoiceTextRecognizer.getInstance().setVRErrorListener(new ShortVideoVoiceRecognizer.1(this));
     VoiceTextRecognizer.getInstance().start();
     paramAudioCapture.b(true);
-    paramAudioCapture.e();
+    paramAudioCapture.f();
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramInt2 > 0))
+    if ((this.b) && (paramInt2 > 0))
     {
       ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte, 0, paramInt2);
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(Math.max((int)Math.ceil(paramInt2 * 16000 / this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioCapture.a()), 1));
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(Math.max((int)Math.ceil(paramInt2 * 16000 / this.c.a()), 1));
       try
       {
-        paramInt1 = this.jdField_a_of_type_ComTencentMobileqqVideocodecAudioAudioCapture.a();
+        paramInt1 = this.c.a();
         try
         {
           new SSRC(localByteArrayInputStream, localByteArrayOutputStream, paramInt1, 16000, 2, 2, 1, paramInt2, 0.0D, 0, true);
@@ -74,7 +74,7 @@ public class ShortVideoVoiceRecognizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.ShortVideoVoiceRecognizer
  * JD-Core Version:    0.7.0.1
  */

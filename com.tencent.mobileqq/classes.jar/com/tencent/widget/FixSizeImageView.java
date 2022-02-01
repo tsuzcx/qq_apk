@@ -50,12 +50,12 @@ public class FixSizeImageView
     Object localObject;
     if (paramLong == 1L)
     {
-      i = 2130850815;
+      i = 2130852645;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
     }
     else if (paramLong == 2L)
     {
-      i = 2130850817;
+      i = 2130852647;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
     }
     else
@@ -183,7 +183,7 @@ public class FixSizeImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.FixSizeImageView
  * JD-Core Version:    0.7.0.1
  */

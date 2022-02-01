@@ -29,14 +29,14 @@ import tencent.mobileim.structmsg.structmsg.SystemMsg;
 public class TroopMsgObserver
   extends BaseTroopMsgObserver
 {
-  protected TroopChatPie a;
-  private BaseActivity a;
+  protected TroopChatPie d;
+  private BaseActivity e;
   
   TroopMsgObserver(TroopChatPie paramTroopChatPie)
   {
     super(paramTroopChatPie);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    this.d = paramTroopChatPie;
+    this.e = paramTroopChatPie.f;
   }
   
   private void a(String paramString, int paramInt, MessageRecord paramMessageRecord)
@@ -44,14 +44,14 @@ public class TroopMsgObserver
     if (QLog.isColorLevel()) {
       QLog.i("BaseTroopMsgObserver", 2, "onUpdateSendMsgError, sticker msg is failed!");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageRecord, false);
+    this.c.getMessageFacade().a(paramMessageRecord, false);
     paramString = UinTypeUtil.a(paramString, paramInt);
-    boolean bool3 = EmojiStickerManager.a().b.containsKey(paramString);
+    boolean bool3 = EmojiStickerManager.a().F.containsKey(paramString);
     boolean bool2 = true;
     boolean bool1 = bool2;
     if (bool3)
     {
-      long l = ((Long)EmojiStickerManager.a().b.get(paramString)).longValue();
+      long l = ((Long)EmojiStickerManager.a().F.get(paramString)).longValue();
       if (System.currentTimeMillis() - l > 300000L) {
         bool1 = bool2;
       } else {
@@ -67,14 +67,14 @@ public class TroopMsgObserver
     }
     if (bool1)
     {
-      EmojiStickerManager.a().b.put(paramString, Long.valueOf(System.currentTimeMillis()));
+      EmojiStickerManager.a().F.put(paramString, Long.valueOf(System.currentTimeMillis()));
       ThreadManager.getUIHandler().post(new TroopMsgObserver.1(this, paramMessageRecord));
     }
   }
   
   private boolean a(String paramString, int paramInt, long paramLong)
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt == this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
+    if ((paramString != null) && (paramString.equals(this.b.b)) && (paramInt == this.b.a)) {
       return false;
     }
     if (QLog.isColorLevel())
@@ -88,13 +88,13 @@ public class TroopMsgObserver
       localStringBuilder.append(paramLong);
       QLog.d("BaseTroopMsgObserver", 2, localStringBuilder.toString());
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramInt, paramLong);
+    paramString = this.c.getMessageFacade().a(paramString, paramInt, paramLong);
     if ((paramString != null) && (paramString.msgtype == -2058) && ((paramString.extraflag == 32768) || (paramString.sendFailCode == 41)))
     {
       if (QLog.isColorLevel()) {
         QLog.i("BaseTroopMsgObserver", 2, "onUpdateSendMsgError, sticker msg is failed!, now remove!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, false);
+      this.c.getMessageFacade().a(paramString, false);
     }
     return true;
   }
@@ -106,7 +106,7 @@ public class TroopMsgObserver
       if (QLog.isColorLevel()) {
         QLog.i("BaseTroopMsgObserver", 2, "onGetSystemMsgFin.success");
       }
-      List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
+      List localList = this.c.getMessageFacade().h(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
       StringBuilder localStringBuilder = null;
       paramList = localStringBuilder;
       if (localList != null)
@@ -128,14 +128,14 @@ public class TroopMsgObserver
           if ((i == 3) || (i == 15))
           {
             long l = paramList.msg.group_code.get();
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null)
+            if (this.b.b != null)
             {
-              paramList = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+              paramList = this.b.b;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("");
               localStringBuilder.append(l);
               if (paramList.equalsIgnoreCase(localStringBuilder.toString())) {
-                this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.ay();
+                this.d.bQ();
               }
             }
           }
@@ -152,16 +152,16 @@ public class TroopMsgObserver
     } else {
       paramList = (MessageRecord)paramList.get(0);
     }
-    if ((paramList != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 35)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a(true, true);
+    if ((paramList != null) && (this.d.n.getCurrentPanel() == 35)) {
+      this.d.a(true, true);
     }
   }
   
   protected void onUpdateMsgDelFriend(String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    if ((paramString != null) && (paramString.equals(this.b.b)))
     {
-      if (paramInt1 != this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) {
+      if (paramInt1 != this.b.a) {
         return;
       }
       if (paramInt1 == 1)
@@ -171,15 +171,15 @@ public class TroopMsgObserver
           if (paramInt2 != 3) {
             return;
           }
-          paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b.obtainMessage(5, 1, 0, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131689976));
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b.sendMessage(paramString);
+          paramString = this.d.bX.obtainMessage(5, 1, 0, this.e.getString(2131886618));
+          this.d.bX.sendMessage(paramString);
         }
         else
         {
-          paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b.obtainMessage(5, 1, 0, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131689982));
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b.sendMessage(paramString);
+          paramString = this.d.bX.obtainMessage(5, 1, 0, this.e.getString(2131886624));
+          this.d.bX.sendMessage(paramString);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.q();
+        this.d.L();
       }
     }
   }
@@ -202,24 +202,24 @@ public class TroopMsgObserver
     }
     if ((paramInt1 == 1) || (paramInt1 == 3000) || (paramInt1 == 0))
     {
-      paramSendMessageHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1, paramInt1, paramLong2);
+      paramSendMessageHandler = this.c.getMessageFacade().a(paramString1, paramInt1, paramLong2);
       if ((paramSendMessageHandler instanceof MessageForStructing))
       {
         if ("viewMultiMsg".equals(((MessageForStructing)paramSendMessageHandler).structingMsg.mMsgAction)) {
-          MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramInt1, paramLong2, false);
+          MultiMsgManager.a().a(this.c, paramString1, paramInt1, paramLong2, false);
         }
       }
       else if ((paramSendMessageHandler != null) && (paramSendMessageHandler.msgtype == -2058) && ((paramSendMessageHandler.extraflag == 32768) || (paramSendMessageHandler.sendFailCode == 41))) {
         a(paramString1, paramInt1, paramSendMessageHandler);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a(paramInt1, paramInt2, paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.e(196608);
+    this.d.a(paramInt1, paramInt2, paramString2);
+    this.d.j(196608);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopMsgObserver
  * JD-Core Version:    0.7.0.1
  */

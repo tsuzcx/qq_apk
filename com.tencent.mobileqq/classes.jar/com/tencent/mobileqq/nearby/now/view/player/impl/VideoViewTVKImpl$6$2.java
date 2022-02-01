@@ -10,16 +10,16 @@ class VideoViewTVKImpl$6$2
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.c)))
+    if ((this.a.c.b != null) && (!TextUtils.isEmpty(this.a.c.f)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.c, 0L, 0L, null, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTVKImpl.jdField_a_of_type_Int = 1;
+      this.a.c.b.openMediaPlayerByUrl(this.a.c.c, this.a.c.f, 0L, 0L, null, this.a.b);
+      this.a.c.h = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTVKImpl.6.2
  * JD-Core Version:    0.7.0.1
  */

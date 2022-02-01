@@ -13,8 +13,8 @@ class ShortVideoShareUtil$1$2$1
   
   public void run()
   {
-    ReportTask localReportTask = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyNowShareShortVideoShareUtil$1$2.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getAnchorUin());
-    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyINearbyCardManager.b();
+    ReportTask localReportTask = new ReportTask(this.b.a.h).a("dc00899").b("grp_lbs").c("video").d("playpage_fw_suc").e(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getAnchorUin());
+    int i = this.a.c();
     String str2 = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFrom();
     String str1;
     if (TextUtils.equals(((INowVideoReporter)QRoute.api(INowVideoReporter.class)).getFrom(), "2")) {
@@ -27,7 +27,7 @@ class ShortVideoShareUtil$1$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.2.1
  * JD-Core Version:    0.7.0.1
  */

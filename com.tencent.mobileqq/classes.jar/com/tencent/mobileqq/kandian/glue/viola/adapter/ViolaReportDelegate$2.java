@@ -14,11 +14,11 @@ class ViolaReportDelegate$2
   {
     try
     {
-      String str1 = ReadInJoyHelper.b();
+      String str1 = ReadInJoyHelper.N();
       if (!TextUtils.isEmpty(str1))
       {
         new JSONObject(str1);
-        ReadInJoyHelper.e("");
+        ReadInJoyHelper.i("");
         ReadInJoyHelper.e(false);
         return;
       }
@@ -38,7 +38,7 @@ class ViolaReportDelegate$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.adapter.ViolaReportDelegate.2
  * JD-Core Version:    0.7.0.1
  */

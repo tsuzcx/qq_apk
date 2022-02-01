@@ -41,58 +41,58 @@ public class MessageNotificationSettingFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, MessageNotificationSettingManager.RingCallback
 {
-  private int jdField_a_of_type_Int;
-  private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
-  private FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private MessageNotificationSettingManager jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager;
-  private ITroopSettingHandler jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiITroopSettingHandler;
-  private TroopSettingObserver jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiTroopSettingObserver;
-  private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private String jdField_a_of_type_JavaLangString;
-  private FormSwitchItem b;
+  private FriendListObserver a;
+  private QQAppInterface b;
   private FormSwitchItem c;
+  private FormSwitchItem d;
+  private FormSimpleItem e;
+  private FormSwitchItem f;
+  private FriendListHandler g;
+  private String h;
+  private int i;
+  private ITroopSettingHandler j;
+  private TroopSettingObserver k;
+  private FriendsManager l;
+  private MessageNotificationSettingManager m;
+  private TroopManager n;
   
   private void a()
   {
     Object localObject = getBaseActivity().getIntent();
     if (localObject != null)
     {
-      this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("uin");
-      this.jdField_a_of_type_Int = ((Intent)localObject).getIntExtra("uintype", -1);
+      this.h = ((Intent)localObject).getStringExtra("uin");
+      this.i = ((Intent)localObject).getIntExtra("uintype", -1);
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" mUin: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.h);
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" mUinType: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.i);
       QLog.e("MessageNotificationSettingFragment", 2, new Object[] { "initData . ", localObject, localStringBuilder.toString() });
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      i = this.jdField_a_of_type_Int;
+    if (!TextUtils.isEmpty(this.h)) {
+      i1 = this.i;
     }
-    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    int i = this.jdField_a_of_type_Int;
-    if (i == 0)
+    this.m.d(this.h, this.i);
+    int i1 = this.i;
+    if (i1 == 0)
     {
       ReportController.b(null, "dc00898", "", "", "0X800A3C7", "0X800A3C7", 1, 0, "", "", "", "");
       return;
     }
-    if (i == 1) {
+    if (i1 == 1) {
       ReportController.b(null, "dc00898", "", "", "0X800A3C7", "0X800A3C7", 2, 0, "", "", "", "");
     }
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    QQToast.a(BaseApplication.getContext(), paramInt2, paramInt1, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), paramInt2, paramInt1, 0).show();
   }
   
   public static void a(Activity paramActivity, Intent paramIntent)
@@ -104,15 +104,15 @@ public class MessageNotificationSettingFragment
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      a(2131692183, 1);
-      this.c.setOnCheckedChangeListener(null);
-      this.c.setChecked(true ^ paramCompoundButton.isChecked());
-      this.c.setOnCheckedChangeListener(this);
+      a(2131889169, 1);
+      this.f.setOnCheckedChangeListener(null);
+      this.f.setChecked(true ^ paramCompoundButton.isChecked());
+      this.f.setOnCheckedChangeListener(this);
       return;
     }
     if (paramBoolean2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiITroopSettingHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramInt1, 4096, paramInt2);
+      this.j.a(this.h, this.b.getCurrentUin(), paramInt1, 4096, paramInt2);
       if (paramBoolean1) {
         paramInt1 = 1;
       } else {
@@ -121,7 +121,7 @@ public class MessageNotificationSettingFragment
       ReportController.b(null, "dc00898", "", "", "0X800A3CD", "0X800A3CD", paramInt1, 0, "", "", "", "");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.setMessageNotificationSetting(3, paramArrayOfString, paramArrayOfBoolean);
+    this.g.setMessageNotificationSetting(3, paramArrayOfString, paramArrayOfBoolean);
     if (paramBoolean1) {
       paramInt1 = 1;
     } else {
@@ -140,31 +140,31 @@ public class MessageNotificationSettingFragment
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new MessageNotificationSettingFragment.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiTroopSettingObserver = new MessageNotificationSettingFragment.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiTroopSettingObserver);
-    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.a(this);
+    this.a = new MessageNotificationSettingFragment.1(this);
+    this.b.addObserver(this.a);
+    this.k = new MessageNotificationSettingFragment.2(this);
+    this.b.addObserver(this.k);
+    this.m.a(this);
   }
   
   private void b(CompoundButton paramCompoundButton, boolean paramBoolean1, String[] paramArrayOfString, boolean[] paramArrayOfBoolean, boolean paramBoolean2, int paramInt1, int paramInt2)
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      a(2131692183, 1);
-      this.b.setOnCheckedChangeListener(null);
-      this.b.setChecked(true ^ paramCompoundButton.isChecked());
-      this.b.setOnCheckedChangeListener(this);
+      a(2131889169, 1);
+      this.d.setOnCheckedChangeListener(null);
+      this.d.setChecked(true ^ paramCompoundButton.isChecked());
+      this.d.setOnCheckedChangeListener(this);
       return;
     }
     if (paramBoolean1) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
+      this.e.setVisibility(0);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+      this.e.setVisibility(8);
     }
     if (paramBoolean2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiITroopSettingHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramInt1, 2048, paramInt2);
+      this.j.a(this.h, this.b.getCurrentUin(), paramInt1, 2048, paramInt2);
       if (paramBoolean1) {
         paramInt1 = 1;
       } else {
@@ -173,7 +173,7 @@ public class MessageNotificationSettingFragment
       ReportController.b(null, "dc00898", "", "", "0X800A3CC", "0X800A3CC", paramInt1, 0, "", "", "", "");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.setMessageNotificationSetting(2, paramArrayOfString, paramArrayOfBoolean);
+    this.g.setMessageNotificationSetting(2, paramArrayOfString, paramArrayOfBoolean);
     if (paramBoolean1) {
       paramInt1 = 1;
     } else {
@@ -192,34 +192,34 @@ public class MessageNotificationSettingFragment
   
   private void c()
   {
-    setTitle(getString(2131694518));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)a(2131377301));
-    this.b = ((FormSwitchItem)a(2131377302));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131377303));
-    this.c = ((FormSwitchItem)a(2131377304));
-    int i = this.jdField_a_of_type_Int;
-    if (i == 0) {
+    setTitle(getString(2131892201));
+    this.c = ((FormSwitchItem)b(2131445689));
+    this.d = ((FormSwitchItem)b(2131445690));
+    this.e = ((FormSimpleItem)b(2131445691));
+    this.f = ((FormSwitchItem)b(2131445692));
+    int i1 = this.i;
+    if (i1 == 0) {
       e();
-    } else if (i == 1) {
+    } else if (i1 == 1) {
       d();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-    this.b.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
     this.c.setOnCheckedChangeListener(this);
+    this.d.setOnCheckedChangeListener(this);
+    this.e.setOnClickListener(this);
+    this.f.setOnCheckedChangeListener(this);
     if (Build.VERSION.SDK_INT >= 29)
     {
-      this.c.setVisibility(8);
-      this.b.setBgType(3);
+      this.f.setVisibility(8);
+      this.d.setBgType(3);
     }
-    i = this.jdField_a_of_type_Int;
-    if (i == 0)
+    i1 = this.i;
+    if (i1 == 0)
     {
-      VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "bell", "C2C_show", "", 1, 0, 0, "", "", "");
+      VasWebviewUtil.a(this.b.getCurrentAccountUin(), "bell", "C2C_show", "", 1, 0, 0, "", "", "");
       return;
     }
-    if (i == 1) {
-      VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "bell", "group_show", "", 1, 0, 0, "", "", "");
+    if (i1 == 1) {
+      VasWebviewUtil.a(this.b.getCurrentAccountUin(), "bell", "group_show", "", 1, 0, 0, "", "", "");
     }
   }
   
@@ -227,15 +227,15 @@ public class MessageNotificationSettingFragment
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      a(2131692183, 1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true ^ paramCompoundButton.isChecked());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+      a(2131889169, 1);
+      this.c.setOnCheckedChangeListener(null);
+      this.c.setChecked(true ^ paramCompoundButton.isChecked());
+      this.c.setOnCheckedChangeListener(this);
       return;
     }
     if (paramBoolean2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiITroopSettingHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramInt1, 1024, paramInt2);
+      this.j.a(this.h, this.b.getCurrentUin(), paramInt1, 1024, paramInt2);
       if (paramBoolean1) {
         paramInt1 = 1;
       } else {
@@ -244,7 +244,7 @@ public class MessageNotificationSettingFragment
       ReportController.b(null, "dc00898", "", "", "0X800A3CB", "0X800A3CB", paramInt1, 0, "", "", "", "");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.setMessageNotificationSetting(1, paramArrayOfString, paramArrayOfBoolean);
+    this.g.setMessageNotificationSetting(1, paramArrayOfString, paramArrayOfBoolean);
     if (paramBoolean1) {
       paramInt1 = 1;
     } else {
@@ -263,7 +263,7 @@ public class MessageNotificationSettingFragment
   
   private void d()
   {
-    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_JavaLangString);
+    TroopInfo localTroopInfo = this.n.f(this.h);
     if (localTroopInfo == null)
     {
       QLog.d("MessageNotificationSettingFragment", 1, new Object[] { "initViews: invoked. ", " troopInfo: ", localTroopInfo });
@@ -272,29 +272,29 @@ public class MessageNotificationSettingFragment
     if (QLog.isColorLevel()) {
       QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "initViews: invoked. ", " troopInfo.cmdUinFlagEx2: ", Long.valueOf(localTroopInfo.cmdUinFlagEx2) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(c(localTroopInfo));
-    this.b.setChecked(b(localTroopInfo));
-    this.c.setChecked(a(localTroopInfo));
+    this.c.setChecked(c(localTroopInfo));
+    this.d.setChecked(b(localTroopInfo));
+    this.f.setChecked(a(localTroopInfo));
     if (b(localTroopInfo))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
+      this.e.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
+    this.e.setVisibility(8);
   }
   
   private void e()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.l;
+    Object localObject2 = this.h;
     boolean bool2 = true;
-    localObject1 = ((FriendsManager)localObject1).a((String)localObject2, true);
+    localObject1 = ((FriendsManager)localObject1).d((String)localObject2, true);
     if (localObject1 == null)
     {
       QLog.d("MessageNotificationSettingFragment", 1, new Object[] { "initViews: invoked. ", " extensionInfo: ", localObject1 });
       return;
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+    localObject2 = this.c;
     boolean bool1;
     if (((ExtensionInfo)localObject1).messageEnablePreviewNew == 0) {
       bool1 = true;
@@ -302,14 +302,14 @@ public class MessageNotificationSettingFragment
       bool1 = false;
     }
     ((FormSwitchItem)localObject2).setChecked(bool1);
-    localObject2 = this.b;
+    localObject2 = this.d;
     if (((ExtensionInfo)localObject1).messageEnableSoundNew == 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
     ((FormSwitchItem)localObject2).setChecked(bool1);
-    localObject2 = this.c;
+    localObject2 = this.f;
     if (((ExtensionInfo)localObject1).messageEnableVibrateNew == 0) {
       bool1 = bool2;
     } else {
@@ -318,25 +318,25 @@ public class MessageNotificationSettingFragment
     ((FormSwitchItem)localObject2).setChecked(bool1);
     if (((ExtensionInfo)localObject1).messageEnableSoundNew == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
+      this.e.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
-  }
-  
-  protected final <T extends View> T a(int paramInt)
-  {
-    return this.mContentView.findViewById(paramInt);
+    this.e.setVisibility(8);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.m.a(this.e, paramInt, this.h, this.i);
+  }
+  
+  protected final <T extends View> T b(int paramInt)
+  {
+    return this.mContentView.findViewById(paramInt);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131559132;
+    return 2131624876;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -346,32 +346,32 @@ public class MessageNotificationSettingFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131377303)
+    if (paramView.getId() == 2131445691)
     {
-      int j = this.jdField_a_of_type_Int;
-      int i = 1;
-      if (j == 0)
+      int i2 = this.i;
+      int i1 = 1;
+      if (i2 == 0)
       {
         ReportController.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 1, 0, "", "", "", "");
-        VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "bell", "C2C_click", "", 1, 0, 0, "", "", "");
+        VasWebviewUtil.a(this.b.getCurrentAccountUin(), "bell", "C2C_click", "", 1, 0, 0, "", "", "");
       }
-      else if (j == 1)
+      else if (i2 == 1)
       {
         ReportController.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 3, 0, "", "", "", "");
-        VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "bell", "group_click", "", 1, 0, 0, "", "", "");
+        VasWebviewUtil.a(this.b.getCurrentAccountUin(), "bell", "group_click", "", 1, 0, 0, "", "", "");
       }
       Intent localIntent = new Intent(getBaseActivity(), QQBrowserActivity.class);
       String str2 = IndividuationUrlHelper.a("specialCareRingUrl");
-      if (this.jdField_a_of_type_Int != 1) {
-        i = 0;
+      if (this.i != 1) {
+        i1 = 0;
       }
       String str1;
-      if (i != 0) {
+      if (i1 != 0) {
         str1 = "3";
       } else {
         str1 = "2";
       }
-      localIntent.putExtra("url", str2.replace("[uid]", this.jdField_a_of_type_JavaLangString).replace("[lType]", str1));
+      localIntent.putExtra("url", str2.replace("[uid]", this.h).replace("[lType]", str1));
       startActivity(localIntent);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -385,57 +385,57 @@ public class MessageNotificationSettingFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiTroopSettingObserver);
-    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.b(this);
+    this.b.removeObserver(this.a);
+    this.b.removeObserver(this.k);
+    this.m.b(this);
   }
   
   public void onResume()
   {
     super.onResume();
-    int k = this.jdField_a_of_type_Int;
-    int j = 0;
-    int i = 0;
+    int i3 = this.i;
+    int i2 = 0;
+    int i1 = 0;
     Object localObject;
-    if (k == 0)
+    if (i3 == 0)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString, false);
+      localObject = this.l.d(this.h, false);
       if (localObject == null) {
         QLog.d("MessageNotificationSettingFragment", 1, new Object[] { "onResume: invoked. ", " extensionInfo: ", localObject });
       } else {
-        i = ((ExtensionInfo)localObject).friendRingId;
+        i1 = ((ExtensionInfo)localObject).friendRingId;
       }
-      this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, i, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.m.a(this.e, i1, this.h, this.i);
       return;
     }
-    if (k == 1)
+    if (i3 == 1)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_JavaLangString);
+      localObject = this.n.f(this.h);
       if (localObject == null)
       {
         QLog.d("MessageNotificationSettingFragment", 1, new Object[] { "onResume: invoked. ", " troopInfo: ", localObject });
-        i = j;
+        i1 = i2;
       }
       else
       {
         if (QLog.isColorLevel()) {
           QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "onResume: invoked. ", " troopInfo.cmdUinFlagEx2: ", Long.valueOf(((TroopInfo)localObject).cmdUinFlagEx2) });
         }
-        i = (int)((TroopInfo)localObject).udwCmdUinRingtoneID;
+        i1 = (int)((TroopInfo)localObject).udwCmdUinRingtoneID;
       }
-      this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, i);
+      this.m.a(this.e, i1);
     }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiITroopSettingHandler = ((ITroopSettingHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SETTING_HANDLER));
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqChatMessageNotificationSettingManager = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.b = getBaseActivity().app;
+    this.g = ((FriendListHandler)this.b.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
+    this.j = ((ITroopSettingHandler)this.b.getBusinessHandler(BusinessHandlerFactory.TROOP_SETTING_HANDLER));
+    this.l = ((FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER));
+    this.n = ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER));
+    this.m = MessageNotificationSettingManager.a(this.b);
     a();
     c();
     b();
@@ -443,7 +443,7 @@ public class MessageNotificationSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment
  * JD-Core Version:    0.7.0.1
  */

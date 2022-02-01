@@ -14,14 +14,14 @@ class HomeworkTroopController$5
   public void a(int paramInt)
   {
     if (!((IHWTroopUtilsApi)QRoute.api(IHWTroopUtilsApi.class)).hasHomeworkTroopIdentity(paramInt)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
+      this.b.b(this.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopLogicHomeworkTroopController.e(HWTroopUtils.a(paramInt));
+    this.b.e(HWTroopUtils.a(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.HomeworkTroopController.5
  * JD-Core Version:    0.7.0.1
  */

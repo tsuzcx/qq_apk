@@ -45,7 +45,7 @@ public class ShareToQQActivity
     String str = getIntent().getStringExtra("sourceFrom");
     if ((TextUtils.equals(this.mSourceFrom, "share_from_troop_member_card")) && (paramInt2 == -1))
     {
-      paramIntent.putExtra("selfSet_leftViewText", getString(2131719442));
+      paramIntent.putExtra("selfSet_leftViewText", getString(2131917002));
       new Intent(this, SplashActivity.class);
       localObject = AIOUtils.a(paramIntent, null);
       ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
@@ -133,7 +133,7 @@ public class ShareToQQActivity
             l = Long.parseLong(paramBundle);
             paramBundle = new ArrayList();
             paramBundle.add(Long.valueOf(l));
-            int i = ProfileCardUtil.a(this.allinone);
+            int i = ProfileCardUtil.b(this.allinone);
             if (bool)
             {
               ((ShieldMsgManger)localObject).b(i, paramBundle);
@@ -223,7 +223,7 @@ public class ShareToQQActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.ShareToQQActivity
  * JD-Core Version:    0.7.0.1
  */

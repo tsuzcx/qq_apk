@@ -30,27 +30,27 @@ class C2CLinkMessageSearchDialog$4
       ((StringBuilder)localObject).append(i);
       QLog.i("LinkMessageSearchDialog", 2, ((StringBuilder)localObject).toString());
     }
-    if (i != 2131365311)
+    if (i != 2131431492)
     {
-      if ((i == 2131367180) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg instanceof AbsShareMsg)))
+      if ((i == 2131433636) && (this.a.j != null) && (this.a.B != null) && (this.a.B.structingMsg != null) && ((this.a.B.structingMsg instanceof AbsShareMsg)))
       {
-        localObject = (AbsShareMsg)this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
-        Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+        localObject = (AbsShareMsg)this.a.B.structingMsg;
+        Intent localIntent = new Intent(this.a.c, ForwardRecentActivity.class);
         localIntent.putExtra("forward_type", -3);
         localIntent.putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject).getBytes());
         localIntent.putExtra("is_need_show_sources", false);
-        ForwardBaseOption.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, 21);
+        ForwardBaseOption.a((Activity)this.a.c, localIntent, 21);
       }
     }
-    else if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem != null) {
-      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem.a.msg);
+    else if (this.a.j != null) {
+      ((ClipboardManager)this.a.c.getSystemService("clipboard")).setText(this.a.j.b.msg);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkMessageSearchDialog.4
  * JD-Core Version:    0.7.0.1
  */

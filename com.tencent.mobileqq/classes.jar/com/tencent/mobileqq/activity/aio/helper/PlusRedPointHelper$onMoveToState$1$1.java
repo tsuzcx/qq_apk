@@ -18,15 +18,15 @@ final class PlusRedPointHelper$onMoveToState$1$1
     ArrayList localArrayList = this.a;
     Intrinsics.checkExpressionValueIsNotNull(localArrayList, "it");
     PlusRedPointHelper.a((PlusRedPointHelper)localObject, localArrayList);
-    localObject = PlusRedPointHelper.a(this.this$0.a).a;
+    localObject = PlusRedPointHelper.a(this.this$0.a).W;
     if (localObject != null) {
-      ((PanelIconLinearLayout)localObject).a();
+      ((PanelIconLinearLayout)localObject).getPlusRedTouchAndUpdate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PlusRedPointHelper.onMoveToState.1.1
  * JD-Core Version:    0.7.0.1
  */

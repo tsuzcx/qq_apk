@@ -8,95 +8,95 @@ import android.widget.BaseAdapter;
 class AsyncBaseAdapter
   extends BaseAdapter
 {
-  final BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  final ItemManager jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager;
+  final ItemManager a;
+  final BaseAdapter b;
   
   AsyncBaseAdapter(ItemManager paramItemManager, BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager = paramItemManager;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    this.a = paramItemManager;
+    this.b = paramBaseAdapter;
   }
   
   public boolean areAllItemsEnabled()
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.areAllItemsEnabled();
+    return this.b.areAllItemsEnabled();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    return this.b.getCount();
   }
   
   public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getDropDownView(paramInt, paramView, paramViewGroup);
+    return this.b.getDropDownView(paramInt, paramView, paramViewGroup);
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(paramInt);
+    return this.b.getItem(paramInt);
   }
   
   public long getItemId(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(paramInt);
+    return this.b.getItemId(paramInt);
   }
   
   public int getItemViewType(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(paramInt);
+    return this.b.getItemViewType(paramInt);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(paramInt, paramView, paramViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager.a(paramViewGroup, paramView, paramInt);
+    paramView = this.b.getView(paramInt, paramView, paramViewGroup);
+    this.a.a(paramViewGroup, paramView, paramInt);
     return paramView;
   }
   
   public int getViewTypeCount()
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getViewTypeCount();
+    return this.b.getViewTypeCount();
   }
   
   public boolean hasStableIds()
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.hasStableIds();
+    return this.b.hasStableIds();
   }
   
   public boolean isEmpty()
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.isEmpty();
+    return this.b.isEmpty();
   }
   
   public boolean isEnabled(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.isEnabled(paramInt);
+    return this.b.isEnabled(paramInt);
   }
   
   public void notifyDataSetChanged()
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+    this.b.notifyDataSetChanged();
   }
   
   public void notifyDataSetInvalidated()
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetInvalidated();
+    this.b.notifyDataSetInvalidated();
   }
   
   public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(paramDataSetObserver);
+    this.b.registerDataSetObserver(paramDataSetObserver);
   }
   
   public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.unregisterDataSetObserver(paramDataSetObserver);
+    this.b.unregisterDataSetObserver(paramDataSetObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.AsyncBaseAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,21 +11,21 @@ import java.io.File;
 class NearByFaceDownloader$UpdateSettingRunnable
   implements Runnable
 {
-  FaceInfo jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo;
-  Setting jdField_a_of_type_ComTencentMobileqqDataSetting;
+  Setting a;
+  FaceInfo b;
   
   public NearByFaceDownloader$UpdateSettingRunnable(NearByFaceDownloader paramNearByFaceDownloader, Setting paramSetting, FaceInfo paramFaceInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo = paramFaceInfo;
+    this.a = paramSetting;
+    this.b = paramFaceInfo;
   }
   
   public void run()
   {
     Object localObject1 = (IQQAvatarManagerService)this.this$0.a.getRuntimeService(IQQAvatarManagerService.class, "nearby");
-    ((IQQAvatarManagerService)localObject1).updateFaceSetting(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.a;
-    localObject2 = ((IQQAvatarManagerService)localObject1).getFacePath(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
+    ((IQQAvatarManagerService)localObject1).updateFaceSetting(this.a);
+    Object localObject2 = this.b.p;
+    localObject2 = ((IQQAvatarManagerService)localObject1).getFacePath(this.b);
     localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
     localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).endsWith("jpg_")))
@@ -53,7 +53,7 @@ class NearByFaceDownloader$UpdateSettingRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearByFaceDownloader.UpdateSettingRunnable
  * JD-Core Version:    0.7.0.1
  */

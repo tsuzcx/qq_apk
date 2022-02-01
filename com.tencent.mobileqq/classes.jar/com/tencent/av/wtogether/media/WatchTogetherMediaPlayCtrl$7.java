@@ -7,10 +7,10 @@ class WatchTogetherMediaPlayCtrl$7
   
   public void run()
   {
-    if (WatchTogetherMediaPlayCtrl.a(this.this$0) == null) {
+    if (WatchTogetherMediaPlayCtrl.c(this.this$0) == null) {
       return;
     }
-    WatchTogetherMediaPlayCtrl.a(this.this$0).a(this.a, this.b);
+    WatchTogetherMediaPlayCtrl.c(this.this$0).a(this.a, this.b);
   }
 }
 

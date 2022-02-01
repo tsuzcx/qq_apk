@@ -36,13 +36,13 @@ class ProfileColorScreenComponent$ColorScreenLoader
       {
         paramObject = new StringBuilder();
         paramObject.append("onComplete, anim file is ");
-        paramObject.append(paramColorScreenConfig.jdField_a_of_type_JavaLangString);
+        paramObject.append(paramColorScreenConfig.a);
         QLog.d("ProfileColorScreenComponent", 2, paramObject.toString());
       }
       this.mConfig = paramColorScreenConfig;
       try
       {
-        paramColorScreenConfig = new FileInputStream(paramColorScreenConfig.jdField_a_of_type_JavaLangString);
+        paramColorScreenConfig = new FileInputStream(paramColorScreenConfig.a);
         paramObject = new Bundle();
         StringBuilder localStringBuilder = AIOUtils.a();
         localStringBuilder.append("lottie_colorscreen_");
@@ -98,7 +98,7 @@ class ProfileColorScreenComponent$ColorScreenLoader
         localObject = new ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener(this, this.mComposition.getDuration());
         ProfileColorScreenComponent.access$400(this.this$0).setComposition(this.mComposition);
         ProfileColorScreenComponent.access$400(this.this$0).setProgress(0.0F);
-        ProfileColorScreenComponent.access$400(this.this$0).setRepeatCount(this.mConfig.jdField_a_of_type_Int);
+        ProfileColorScreenComponent.access$400(this.this$0).setRepeatCount(this.mConfig.c);
         ProfileColorScreenComponent.access$400(this.this$0).addAnimatorListener((Animator.AnimatorListener)localObject);
         ProfileColorScreenComponent.access$400(this.this$0).addAnimatorUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject);
         ProfileColorScreenComponent.access$400(this.this$0).setVisibility(0);
@@ -124,7 +124,7 @@ class ProfileColorScreenComponent$ColorScreenLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader
  * JD-Core Version:    0.7.0.1
  */

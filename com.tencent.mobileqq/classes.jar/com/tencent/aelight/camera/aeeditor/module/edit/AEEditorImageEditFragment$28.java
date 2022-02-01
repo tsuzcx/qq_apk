@@ -10,12 +10,12 @@ class AEEditorImageEditFragment$28
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    return AEEditorImageEditFragment.a(this.a).b(AEEditorImageEditFragment.a(this.a)) != paramInt2;
+    return AEEditorImageEditFragment.u(this.a).c(AEEditorImageEditFragment.e(this.a)) != paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment.28
  * JD-Core Version:    0.7.0.1
  */

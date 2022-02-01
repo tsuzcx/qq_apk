@@ -10,10 +10,10 @@ class GuessSongClickStageView$2
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.g != null)
     {
-      this.this$0.a.setVisibility(8);
-      this.this$0.b.setVisibility(8);
+      this.this$0.g.setVisibility(8);
+      this.this$0.e.setVisibility(8);
     }
   }
 }

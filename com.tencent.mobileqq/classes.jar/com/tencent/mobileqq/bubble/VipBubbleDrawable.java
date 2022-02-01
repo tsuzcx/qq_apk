@@ -30,42 +30,41 @@ import java.util.concurrent.ConcurrentHashMap;
 public class VipBubbleDrawable
   extends Drawable
 {
-  private static final ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter = new ColorMatrixColorFilter(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -26.0F, 0.0F, 1.0F, 0.0F, 0.0F, -26.0F, 0.0F, 0.0F, 1.0F, 0.0F, -26.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F });
-  private static int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
-  private int jdField_a_of_type_Int = 160;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private NinePatch jdField_a_of_type_AndroidGraphicsNinePatch;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  public String a;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private NinePatch jdField_b_of_type_AndroidGraphicsNinePatch;
-  private String jdField_b_of_type_JavaLangString;
+  private static final ColorFilter f = new ColorMatrixColorFilter(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -26.0F, 0.0F, 1.0F, 0.0F, 0.0F, -26.0F, 0.0F, 0.0F, 1.0F, 0.0F, -26.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F });
+  private static int[] j = { 16842919 };
+  public boolean a = false;
   public boolean b;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = false;
-  private boolean e = false;
-  private boolean f;
+  public String c;
+  private int d = 160;
+  private Paint e;
+  private int g;
+  private int h;
+  private boolean i;
+  private Resources k;
+  private Handler l;
+  private boolean m = false;
+  private boolean n = false;
+  private String o;
+  private int[] p;
+  private String q;
+  private boolean r;
+  private NinePatch s;
+  private NinePatch t;
+  private int u;
   
   public VipBubbleDrawable(Resources paramResources, NinePatch paramNinePatch1, NinePatch paramNinePatch2, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
-    this.jdField_a_of_type_AndroidGraphicsNinePatch = paramNinePatch1;
-    this.jdField_b_of_type_AndroidGraphicsNinePatch = paramNinePatch2;
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
+    this.k = paramResources;
+    this.s = paramNinePatch1;
+    this.t = paramNinePatch2;
+    this.u = paramInt;
+    this.e = new Paint();
+    this.e.setDither(true);
     if (paramResources != null)
     {
-      this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
-      this.jdField_b_of_type_Int = AIOUtils.b(65.0F, paramResources);
-      this.jdField_c_of_type_Int = AIOUtils.b(57.0F, paramResources);
+      this.d = paramResources.getDisplayMetrics().densityDpi;
+      this.g = AIOUtils.b(BubbleInfo.c(), paramResources);
+      this.h = AIOUtils.b(57.0F, paramResources);
     }
   }
   
@@ -77,8 +76,8 @@ public class VipBubbleDrawable
     if (Build.VERSION.SDK_INT >= 12) {
       return paramBitmap.getByteCount();
     }
-    int i = paramBitmap.getRowBytes();
-    return paramBitmap.getHeight() * i;
+    int i1 = paramBitmap.getRowBytes();
+    return paramBitmap.getHeight() * i1;
   }
   
   private void a(Canvas paramCanvas)
@@ -86,49 +85,49 @@ public class VipBubbleDrawable
     if (paramCanvas == null) {
       return;
     }
-    int j = 0;
+    int i2 = 0;
     Object localObject1 = AIOUtils.a();
     ((StringBuilder)localObject1).append("bubblebg://");
     ((StringBuilder)localObject1).append("0_local_default_");
-    ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject1).append(this.b);
     localObject1 = ((StringBuilder)localObject1).toString();
-    int i = j;
+    int i1 = i2;
     Object localObject2;
     if (GlobalImageCache.a != null)
     {
       localObject2 = (Pair)GlobalImageCache.a.get(localObject1);
-      i = j;
+      i1 = i2;
       if (localObject2 != null)
       {
         localObject2 = (NinePatch)((Pair)localObject2).first;
-        i = j;
+        i1 = i2;
         if (localObject2 != null)
         {
-          ((NinePatch)localObject2).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-          i = 1;
+          ((NinePatch)localObject2).draw(paramCanvas, getBounds(), this.e);
+          i1 = 1;
         }
       }
     }
-    if (i == 0)
+    if (i1 == 0)
     {
-      if (this.jdField_b_of_type_Boolean) {
-        i = 2130850159;
+      if (this.b) {
+        i1 = 2130851944;
       } else {
-        i = 2130850335;
+        i1 = 2130852126;
       }
       localObject2 = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject2).inDensity = 320;
-      ((BitmapFactory.Options)localObject2).inTargetDensity = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi;
+      ((BitmapFactory.Options)localObject2).inTargetDensity = this.k.getDisplayMetrics().densityDpi;
       try
       {
-        a(paramCanvas, (String)localObject1, BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, i, (BitmapFactory.Options)localObject2));
+        a(paramCanvas, (String)localObject1, BitmapFactory.decodeResource(this.k, i1, (BitmapFactory.Options)localObject2));
         return;
       }
       catch (OutOfMemoryError paramCanvas)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("drawDefaultBubbleBg, decode default bubble bg error, bubbleId=");
-        ((StringBuilder)localObject1).append(this.jdField_d_of_type_Int);
+        ((StringBuilder)localObject1).append(this.u);
         QLog.e("VipBubbleDrawable", 1, ((StringBuilder)localObject1).toString(), paramCanvas);
       }
     }
@@ -142,7 +141,7 @@ public class VipBubbleDrawable
       if (localObject != null)
       {
         localObject = new NinePatch(paramBitmap, (byte[])localObject, null);
-        ((NinePatch)localObject).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+        ((NinePatch)localObject).draw(paramCanvas, getBounds(), this.e);
         if (GlobalImageCache.a != null)
         {
           paramCanvas = new Pair(localObject, Integer.valueOf(a(paramBitmap)));
@@ -154,94 +153,94 @@ public class VipBubbleDrawable
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramBoolean;
+    this.c = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.f = paramBoolean;
+    this.r = paramBoolean;
     invalidateSelf();
   }
   
   public void a(boolean paramBoolean, String paramString1, int[] paramArrayOfInt, String paramString2)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    this.e = paramBoolean;
-    if (this.jdField_d_of_type_Boolean)
+    this.m = paramBoolean;
+    this.n = paramBoolean;
+    if (this.m)
     {
-      this.jdField_b_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_ArrayOfInt = paramArrayOfInt;
-      this.jdField_c_of_type_JavaLangString = paramString2;
+      this.o = paramString1;
+      this.p = paramArrayOfInt;
+      this.q = paramString2;
     }
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.f = paramBoolean2;
+    this.b = paramBoolean1;
+    this.r = paramBoolean2;
   }
   
   public void b(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
+      this.e.setColorFilter(f);
     } else {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
+      this.e.setColorFilter(null);
     }
     invalidateSelf();
   }
   
   public void c(boolean paramBoolean)
   {
-    if (!this.e) {
+    if (!this.n) {
       return;
     }
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.m = paramBoolean;
+    if (this.l == null) {
+      this.l = new Handler(Looper.getMainLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new VipBubbleDrawable.1(this));
+    this.l.post(new VipBubbleDrawable.1(this));
   }
   
   public void draw(Canvas paramCanvas)
   {
     Rect localRect = getBounds();
-    int i = paramCanvas.save();
-    if (this.f)
+    int i1 = paramCanvas.save();
+    if (this.r)
     {
-      localObject = this.jdField_b_of_type_AndroidGraphicsNinePatch;
+      localObject = this.t;
       if (localObject != null) {}
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsNinePatch;
+      localObject = this.s;
     }
     if (localObject != null)
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.b) {
         paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
       }
-      ((NinePatch)localObject).draw(paramCanvas, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      ((NinePatch)localObject).draw(paramCanvas, getBounds(), this.e);
     }
     else
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("draw, ninePatch null, use default, mUseAnimationBg=");
-      ((StringBuilder)localObject).append(this.f);
+      ((StringBuilder)localObject).append(this.r);
       ((StringBuilder)localObject).append(", mNormalNinePatch=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsNinePatch);
+      ((StringBuilder)localObject).append(this.s);
       ((StringBuilder)localObject).append(", mAnimationNinePath");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidGraphicsNinePatch);
+      ((StringBuilder)localObject).append(this.t);
       ((StringBuilder)localObject).append(", bubbleId=");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
+      ((StringBuilder)localObject).append(this.u);
       ((StringBuilder)localObject).append(", drawable=");
       ((StringBuilder)localObject).append(this);
       QLog.e("VipBubbleDrawable", 1, ((StringBuilder)localObject).toString());
       a(paramCanvas);
     }
-    paramCanvas.restoreToCount(i);
-    Object localObject = (HashMap)BubbleDiyFetcher.a().a.get(Integer.valueOf(this.jdField_d_of_type_Int));
+    paramCanvas.restoreToCount(i1);
+    Object localObject = (HashMap)BubbleDiyFetcher.a().k.get(Integer.valueOf(this.u));
     if ((localObject != null) && (((HashMap)localObject).size() > 0))
     {
       localObject = ((HashMap)localObject).values().iterator();
@@ -253,17 +252,17 @@ public class VipBubbleDrawable
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_c_of_type_Int;
+    return this.h;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_b_of_type_Int;
+    return this.g;
   }
   
   public int getOpacity()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsNinePatch;
+    Object localObject = this.s;
     if (localObject != null)
     {
       if (((NinePatch)localObject).hasAlpha()) {
@@ -271,7 +270,7 @@ public class VipBubbleDrawable
       }
       return -1;
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+    localObject = this.e;
     if ((localObject != null) && (((Paint)localObject).getAlpha() < 255)) {
       return -3;
     }
@@ -285,16 +284,16 @@ public class VipBubbleDrawable
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    boolean bool = StateSet.stateSetMatches(jdField_a_of_type_ArrayOfInt, paramArrayOfInt);
-    if (this.jdField_c_of_type_Boolean != bool)
+    boolean bool = StateSet.stateSetMatches(j, paramArrayOfInt);
+    if (this.i != bool)
     {
-      this.jdField_c_of_type_Boolean = bool;
-      if ((this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
+      this.i = bool;
+      if ((this.i) && (!this.a)) {
+        this.e.setColorFilter(f);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
+        this.e.setColorFilter(null);
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
       invalidateSelf();
       return true;
     }
@@ -303,7 +302,7 @@ public class VipBubbleDrawable
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.e.setAlpha(paramInt);
     invalidateSelf();
   }
   
@@ -311,7 +310,7 @@ public class VipBubbleDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.VipBubbleDrawable
  * JD-Core Version:    0.7.0.1
  */

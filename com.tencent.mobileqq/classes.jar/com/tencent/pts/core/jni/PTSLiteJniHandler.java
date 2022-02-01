@@ -17,7 +17,7 @@ public class PTSLiteJniHandler
     int i = paramPTSAppInstance.getUniqueID();
     float f1 = paramPTSAppInstance.getRootViewWidth();
     float f2 = PTSDeviceUtil.getScreenScale();
-    float f3 = PTSDeviceUtil.getRPXScaling();
+    float f3 = PTSDeviceUtil.getRPXScaling(paramPTSAppInstance.getRootViewWidth());
     int j = paramPTSAppInstance.getRootNodeType();
     boolean bool = true;
     if (j != 1) {
@@ -61,7 +61,7 @@ public class PTSLiteJniHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.jni.PTSLiteJniHandler
  * JD-Core Version:    0.7.0.1
  */

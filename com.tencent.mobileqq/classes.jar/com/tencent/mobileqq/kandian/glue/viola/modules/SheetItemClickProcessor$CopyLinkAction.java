@@ -16,13 +16,18 @@ public class SheetItemClickProcessor$CopyLinkAction
   
   public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText(paramString1);
-    QRUtils.a(2, 2131691296);
+    paramString3 = (ClipboardManager)this.b.getSystemService("clipboard");
+    if ((paramString2 != null) && (paramString2.contains("kandianshare.html5.qq.com"))) {
+      paramString3.setText(paramString2);
+    } else {
+      paramString3.setText(paramString1);
+    }
+    QRUtils.a(2, 2131888247);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.SheetItemClickProcessor.CopyLinkAction
  * JD-Core Version:    0.7.0.1
  */

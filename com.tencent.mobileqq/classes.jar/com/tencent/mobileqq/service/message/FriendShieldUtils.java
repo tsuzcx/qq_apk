@@ -13,8 +13,8 @@ public class FriendShieldUtils
   public static void a(AppInterface paramAppInterface, String paramString)
   {
     String str1 = paramAppInterface.getCurrentAccountUin();
-    String str2 = HardCodeUtil.a(2131706699);
-    long l = MessageCache.a();
+    String str2 = HardCodeUtil.a(2131904550);
+    long l = MessageCache.c();
     MessageRecord localMessageRecord = MessageRecordFactory.a(-2012);
     localMessageRecord.init(str1, paramString, str1, str2, l, 0, 0, l);
     localMessageRecord.msgtype = -2012;
@@ -42,7 +42,7 @@ public class FriendShieldUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.FriendShieldUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class QQVipIndicator
   implements ViewPager.OnPageChangeListener
 {
   public ViewPager a;
-  private QQVipIndicator.IPageListener a;
+  private QQVipIndicator.IPageListener b;
   
   public QQVipIndicator(Context paramContext)
   {
@@ -56,7 +56,7 @@ public class QQVipIndicator
     localLayoutParams.bottomMargin = i;
     localLayoutParams.topMargin = i;
     local1.setButtonDrawable(null);
-    local1.setBackgroundResource(2130847167);
+    local1.setBackgroundResource(2130848719);
     local1.setGravity(17);
     local1.setText(String.valueOf(paramInt1));
     if (paramInt2 + 1 == paramInt1) {
@@ -74,7 +74,7 @@ public class QQVipIndicator
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -84,7 +84,7 @@ public class QQVipIndicator
     }
     int k = ((PagerAdapter)localObject).getCount();
     super.removeAllViews();
-    int j = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getCurrentItem();
+    int j = this.a.getCurrentItem();
     int i = 0;
     while (i < k)
     {
@@ -105,13 +105,22 @@ public class QQVipIndicator
       return;
     }
     super.setVisibility(0);
+    localObject = this.b;
+    if (localObject != null) {
+      ((QQVipIndicator.IPageListener)localObject).a(i);
+    }
+  }
+  
+  public ViewPager getViewPager()
+  {
+    return this.a;
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    QQVipIndicator.IPageListener localIPageListener = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener;
+    QQVipIndicator.IPageListener localIPageListener = this.b;
     if (localIPageListener != null) {
       localIPageListener.a(paramInt1, paramFloat, paramInt2);
     }
@@ -119,7 +128,7 @@ public class QQVipIndicator
   
   public void onPageSelected(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -139,7 +148,7 @@ public class QQVipIndicator
     if (localObject != null) {
       ((RadioButton)localObject).setChecked(true);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener;
+    localObject = this.b;
     if (localObject != null) {
       ((QQVipIndicator.IPageListener)localObject).a(paramInt);
     }
@@ -159,13 +168,13 @@ public class QQVipIndicator
   
   public void setPageListener(QQVipIndicator.IPageListener paramIPageListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator$IPageListener = paramIPageListener;
+    this.b = paramIPageListener;
   }
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
-    paramViewPager = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    this.a = paramViewPager;
+    paramViewPager = this.a;
     if (paramViewPager != null) {
       paramViewPager.setOnPageChangeListener(this);
     }
@@ -173,7 +182,7 @@ public class QQVipIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipIndicator
  * JD-Core Version:    0.7.0.1
  */

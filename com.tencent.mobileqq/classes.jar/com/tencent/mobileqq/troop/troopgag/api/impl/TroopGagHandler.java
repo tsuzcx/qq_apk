@@ -104,7 +104,7 @@ public class TroopGagHandler
   private void a(String paramString, boolean paramBoolean, long paramLong)
   {
     paramString = new GagStatus(paramString, new GagTroopMemberResult(paramBoolean, paramLong));
-    paramString.b = 3;
+    paramString.h = 3;
     a(paramString);
   }
   
@@ -114,14 +114,9 @@ public class TroopGagHandler
     this.appRuntime.addDefaultObservers(paramString);
   }
   
-  protected String a()
-  {
-    return "TroopGagHandler";
-  }
-  
   public void a(GagStatus paramGagStatus)
   {
-    notifyUI(TroopGagObserver.a, true, paramGagStatus);
+    notifyUI(TroopGagObserver.b, true, paramGagStatus);
   }
   
   public void a(String paramString)
@@ -187,8 +182,8 @@ public class TroopGagHandler
         localObject1 = (ITroopGagHandler.GagMemberParam)paramArrayList.get(i);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(str);
-        ((StringBuilder)localObject2).append(((ITroopGagHandler.GagMemberParam)localObject1).jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject2).append(((ITroopGagHandler.GagMemberParam)localObject1).jdField_a_of_type_Long);
+        ((StringBuilder)localObject2).append(((ITroopGagHandler.GagMemberParam)localObject1).a);
+        ((StringBuilder)localObject2).append(((ITroopGagHandler.GagMemberParam)localObject1).b);
         ((StringBuilder)localObject2).append("|");
         str = ((StringBuilder)localObject2).toString();
         i += 1;
@@ -206,10 +201,10 @@ public class TroopGagHandler
       while (i < paramArrayList.size())
       {
         localObject2 = (ITroopGagHandler.GagMemberParam)paramArrayList.get(i);
-        ((ByteBuffer)localObject1).putInt((int)Long.valueOf(((ITroopGagHandler.GagMemberParam)localObject2).jdField_a_of_type_JavaLangString).longValue());
-        ((ByteBuffer)localObject1).putInt((int)((ITroopGagHandler.GagMemberParam)localObject2).jdField_a_of_type_Long);
-        str = ((ITroopGagHandler.GagMemberParam)localObject2).jdField_a_of_type_JavaLangString;
-        l = ((ITroopGagHandler.GagMemberParam)localObject2).jdField_a_of_type_Long;
+        ((ByteBuffer)localObject1).putInt((int)Long.valueOf(((ITroopGagHandler.GagMemberParam)localObject2).a).longValue());
+        ((ByteBuffer)localObject1).putInt((int)((ITroopGagHandler.GagMemberParam)localObject2).b);
+        str = ((ITroopGagHandler.GagMemberParam)localObject2).a;
+        l = ((ITroopGagHandler.GagMemberParam)localObject2).b;
         i += 1;
       }
       localObject1 = ((ByteBuffer)localObject1).array();
@@ -231,6 +226,11 @@ public class TroopGagHandler
     if (QLog.isDevelopLevel()) {
       QLog.e("TroopGagHandler", 4, String.format("doGagTroopMember:sUin=%s, empty arList error", new Object[] { paramString }));
     }
+  }
+  
+  protected String dv_()
+  {
+    return "TroopGagHandler";
   }
   
   public Set<String> getCommandList()
@@ -264,7 +264,7 @@ public class TroopGagHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -287,7 +287,7 @@ public class TroopGagHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgag.api.impl.TroopGagHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ final class QQFileUtilsImpl$1
   
   public void a()
   {
-    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).startActivityByLinkByWeiyunFragment(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_JavaLangString, false);
+    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).startActivityByLinkByWeiyunFragment(this.a, null, this.b, false);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileUtilsImpl.1
  * JD-Core Version:    0.7.0.1
  */

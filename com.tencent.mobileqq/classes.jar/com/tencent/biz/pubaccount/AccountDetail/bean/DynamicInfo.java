@@ -8,24 +8,24 @@ import org.json.JSONObject;
 
 public class DynamicInfo
 {
-  public MsgAttr a;
-  public PictureAttr a;
-  public VideoAttr a;
   public String a;
-  public boolean a;
   public String b;
   public String c;
+  public MsgAttr d;
+  public PictureAttr e;
+  public VideoAttr f;
+  public boolean g;
   
   private void a(JSONObject paramJSONObject)
   {
     if (paramJSONObject.has("title")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("title");
+      this.a = paramJSONObject.getString("title");
     }
     if (paramJSONObject.has("video")) {
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("video");
+      this.b = paramJSONObject.getString("video");
     }
     if (paramJSONObject.has("picture")) {
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("picture");
+      this.c = paramJSONObject.getString("picture");
     }
     if (paramJSONObject.has("picture_attr")) {
       c(paramJSONObject.getJSONObject("picture_attr"));
@@ -37,87 +37,87 @@ public class DynamicInfo
   
   private void b(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr = null;
+    this.d = null;
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr = new MsgAttr();
+      this.d = new MsgAttr();
       if (paramJSONObject.has("articleid")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.jdField_a_of_type_Long = paramJSONObject.getLong("articleid");
+        this.d.a = paramJSONObject.getLong("articleid");
       }
       if (paramJSONObject.has("id")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.jdField_b_of_type_Long = paramJSONObject.getLong("id");
+        this.d.b = paramJSONObject.getLong("id");
       }
       if (paramJSONObject.has("jumpurl")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.jdField_a_of_type_JavaLangString = paramJSONObject.getString("jumpurl");
+        this.d.c = paramJSONObject.getString("jumpurl");
       }
       if (paramJSONObject.has("msgtype")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.jdField_a_of_type_Int = paramJSONObject.getInt("msgtype");
+        this.d.d = paramJSONObject.getInt("msgtype");
       }
       if (paramJSONObject.has("tasktype")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.jdField_b_of_type_Int = paramJSONObject.getInt("tasktype");
+        this.d.e = paramJSONObject.getInt("tasktype");
       }
       if (paramJSONObject.has("time")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.c = paramJSONObject.getLong("time");
+        this.d.f = paramJSONObject.getLong("time");
       }
       if (paramJSONObject.has("uniqueid")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.d = paramJSONObject.getLong("uniqueid");
+        this.d.g = paramJSONObject.getLong("uniqueid");
       }
       if (paramJSONObject.has("rowkey")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.jdField_b_of_type_JavaLangString = paramJSONObject.getString("rowkey");
+        this.d.h = paramJSONObject.getString("rowkey");
       }
     }
   }
   
   private void c(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr = null;
+    this.e = null;
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr = new PictureAttr();
+      this.e = new PictureAttr();
       if (paramJSONObject.has("cover")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
+        this.e.a = paramJSONObject.getString("cover");
       }
       if (paramJSONObject.has("cover_orig")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr.jdField_b_of_type_JavaLangString = paramJSONObject.getString("cover_orig");
+        this.e.c = paramJSONObject.getString("cover_orig");
       }
       if (paramJSONObject.has("large")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr.jdField_a_of_type_Int = paramJSONObject.getInt("large");
+        this.e.b = paramJSONObject.getInt("large");
       }
     }
   }
   
   private void d(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr = null;
+    this.f = null;
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr = new VideoAttr();
+      this.f = new VideoAttr();
       if (paramJSONObject.has("busitype")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_a_of_type_Int = paramJSONObject.getInt("busitype");
+        this.f.a = paramJSONObject.getInt("busitype");
       }
       if (paramJSONObject.has("cover")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_a_of_type_JavaLangString = paramJSONObject.getString("cover");
+        this.f.b = paramJSONObject.getString("cover");
       }
       if (paramJSONObject.has("cover_orig")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_d_of_type_JavaLangString = paramJSONObject.getString("cover_orig");
+        this.f.i = paramJSONObject.getString("cover_orig");
       }
       if (paramJSONObject.has("fulltime")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_b_of_type_Int = paramJSONObject.getInt("fulltime");
+        this.f.d = paramJSONObject.getInt("fulltime");
       }
       if (paramJSONObject.has("h5url")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_b_of_type_JavaLangString = paramJSONObject.getString("h5url");
+        this.f.c = paramJSONObject.getString("h5url");
       }
       if (paramJSONObject.has("preheight")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_c_of_type_Int = paramJSONObject.getInt("preheight");
+        this.f.e = paramJSONObject.getInt("preheight");
       }
       if (paramJSONObject.has("prewidth")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_d_of_type_Int = paramJSONObject.getInt("prewidth");
+        this.f.f = paramJSONObject.getInt("prewidth");
       }
       if (paramJSONObject.has("vid")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_c_of_type_JavaLangString = paramJSONObject.getString("vid");
+        this.f.g = paramJSONObject.getString("vid");
       }
       if (paramJSONObject.has("large")) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.e = paramJSONObject.getInt("large");
+        this.f.h = paramJSONObject.getInt("large");
       }
     }
   }
@@ -195,7 +195,7 @@ public class DynamicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.bean.DynamicInfo
  * JD-Core Version:    0.7.0.1
  */

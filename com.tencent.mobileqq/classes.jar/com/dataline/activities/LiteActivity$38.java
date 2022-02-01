@@ -9,7 +9,7 @@ class LiteActivity$38
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaUtilObservable, this.jdField_a_of_type_JavaLangObject);
+    this.this$0.a(this.a, this.b);
   }
 }
 

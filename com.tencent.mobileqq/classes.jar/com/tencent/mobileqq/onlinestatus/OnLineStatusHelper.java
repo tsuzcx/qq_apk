@@ -1,8 +1,11 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.BatteryManager;
 import android.os.Build.VERSION;
@@ -24,10 +27,16 @@ import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService;
 import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
 import com.tencent.mobileqq.onlinestatus.config.AutoStatusElement;
 import com.tencent.mobileqq.onlinestatus.config.WeatherUrl;
+import com.tencent.mobileqq.onlinestatus.config.olympic.OlympicConfBean;
+import com.tencent.mobileqq.onlinestatus.config.olympic.OlympicConfBean.OlympicConfig;
+import com.tencent.mobileqq.onlinestatus.config.olympic.OlympicConfProcessor;
 import com.tencent.mobileqq.onlinestatus.constellation.ConstellationLauncher;
 import com.tencent.mobileqq.onlinestatus.constellation.ConstellationUtilKt;
 import com.tencent.mobileqq.onlinestatus.manager.IOnlineMusicStatusManager;
+import com.tencent.mobileqq.onlinestatus.manager.IOnlineStatusOlympicManager;
 import com.tencent.mobileqq.onlinestatus.manager.OnlineMusicStatusManager;
+import com.tencent.mobileqq.onlinestatus.manager.OnlineStatusOlympicManager;
+import com.tencent.mobileqq.onlinestatus.olympic.model.OlympicMedalEventInfo;
 import com.tencent.mobileqq.onlinestatus.utils.OnlineStatusSPUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -35,11 +44,13 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.relation.api.IContactUtilsApi;
 import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.CommonImageCacheHelper;
 import com.tencent.mobileqq.vas.onlinestatus.api.ICustomOnlineStatusManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.OnlineBatteryProducer;
 import java.util.ArrayList;
+import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.app.AppRuntime.Status;
 import mqq.app.MobileQQ;
@@ -47,10 +58,119 @@ import tencent.im.onlinestatus.OnlineStatusExtInfo.WeatherBizInfo;
 
 public class OnLineStatusHelper
 {
-  private int jdField_a_of_type_Int = 0;
-  private OnlineBatteryProducer jdField_a_of_type_ComTencentWidgetOnlineBatteryProducer = new OnlineBatteryProducer();
+  private int a = 0;
+  private OnlineBatteryProducer b = new OnlineBatteryProducer();
+  private OlympicMedalEventInfo c;
   
-  public static int a()
+  private int a(int paramInt)
+  {
+    int j = 12;
+    int i = j;
+    if (paramInt != 0) {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          i = j;
+        } else {
+          i = 32;
+        }
+      }
+      else {
+        i = 24;
+      }
+    }
+    return Utils.a(i, MobileQQ.sMobileQQ.getResources());
+  }
+  
+  public static OnLineStatusHelper a()
+  {
+    return OnLineStatusHelper.OnLineStatusHelperHolder.a();
+  }
+  
+  private String a(AppRuntime paramAppRuntime, Friends paramFriends, IOnlineStatusService paramIOnlineStatusService)
+  {
+    if (paramAppRuntime.getCurrentAccountUin().equals(paramFriends.uin))
+    {
+      if (paramIOnlineStatusService.getPowerConnect() == 1)
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append(paramIOnlineStatusService.getBatteryCapacity());
+        paramAppRuntime.append("% ");
+        paramAppRuntime.append(c(paramFriends));
+        paramAppRuntime.append("充电中");
+        return paramAppRuntime.toString();
+      }
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append(paramIOnlineStatusService.getBatteryCapacity());
+      paramAppRuntime.append("% ");
+      paramAppRuntime.append(c(paramFriends));
+      paramAppRuntime.append("电量");
+      return paramAppRuntime.toString();
+    }
+    if (a(paramFriends) > 0)
+    {
+      if (paramFriends.isBatteryCharging())
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append(a(paramFriends));
+        paramAppRuntime.append("% ");
+        paramAppRuntime.append(c(paramFriends));
+        paramAppRuntime.append("充电中");
+        return paramAppRuntime.toString();
+      }
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append(a(paramFriends));
+      paramAppRuntime.append("% ");
+      paramAppRuntime.append(c(paramFriends));
+      paramAppRuntime.append("电量");
+      return paramAppRuntime.toString();
+    }
+    return ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getStatusName(paramFriends);
+  }
+  
+  public static int b(int paramInt1, int paramInt2)
+  {
+    int i;
+    if (paramInt2 == 1) {
+      i = paramInt1 | 0x80;
+    } else {
+      i = paramInt1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OnLineStatusHelper", 2, new Object[] { "OnlineStatusHelper ret:", Integer.valueOf(i), " batteryCapacity:", Integer.valueOf(paramInt1), " powerConectStatus:", Integer.valueOf(paramInt2) });
+    }
+    return i;
+  }
+  
+  private String c(Friends paramFriends)
+  {
+    if ((paramFriends != null) && (a(paramFriends.uin))) {
+      paramFriends = ((ICustomOnlineStatusManager)QRoute.api(ICustomOnlineStatusManager.class)).getOwnerOnlineStatus();
+    } else if ((paramFriends != null) && (!TextUtils.isEmpty(paramFriends.strTermDesc))) {
+      paramFriends = paramFriends.strTermDesc;
+    } else {
+      paramFriends = null;
+    }
+    if ((!TextUtils.isEmpty(paramFriends)) && (paramFriends.contains("在线")))
+    {
+      paramFriends = paramFriends.substring(0, paramFriends.length() - 2);
+      if (!TextUtils.isEmpty(paramFriends)) {
+        return paramFriends;
+      }
+    }
+    return "手机";
+  }
+  
+  public static boolean c(AppRuntime.Status paramStatus, long paramLong)
+  {
+    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.b().b(578);
+    if (localOnlineStatusBean == null) {
+      return false;
+    }
+    return localOnlineStatusBean.c(paramStatus, paramLong);
+  }
+  
+  public static int g()
   {
     int i;
     if (Build.VERSION.SDK_INT >= 21)
@@ -74,163 +194,7 @@ public class OnLineStatusHelper
     return j;
   }
   
-  private int a(int paramInt)
-  {
-    int j = 12;
-    int i = j;
-    if (paramInt != 0) {
-      if (paramInt != 1)
-      {
-        if (paramInt != 2) {
-          i = j;
-        } else {
-          i = 32;
-        }
-      }
-      else {
-        i = 24;
-      }
-    }
-    return Utils.a(i, MobileQQ.sMobileQQ.getResources());
-  }
-  
-  public static int a(int paramInt1, int paramInt2)
-  {
-    int i;
-    if (paramInt2 == 1) {
-      i = paramInt1 | 0x80;
-    } else {
-      i = paramInt1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OnLineStatusHelper", 2, new Object[] { "OnlineStatusHelper ret:", Integer.valueOf(i), " batteryCapacity:", Integer.valueOf(paramInt1), " powerConectStatus:", Integer.valueOf(paramInt2) });
-    }
-    return i;
-  }
-  
-  private Drawable a(OnlineStatusItem paramOnlineStatusItem, int paramInt)
-  {
-    if (paramInt == 5) {
-      return URLDrawable.getDrawable(paramOnlineStatusItem.d, URLDrawable.URLDrawableOptions.obtain());
-    }
-    return URLDrawable.getDrawable(paramOnlineStatusItem.c, URLDrawable.URLDrawableOptions.obtain());
-  }
-  
-  private Drawable a(OnlineStatusItem paramOnlineStatusItem, @Nullable Friends paramFriends, int paramInt1, int paramInt2)
-  {
-    int i = a(paramInt1);
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramOnlineStatusItem != null)
-    {
-      if (paramOnlineStatusItem.jdField_a_of_type_Int == 2)
-      {
-        paramOnlineStatusItem = paramOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status;
-        paramInt1 = i;
-        if (paramInt2 == 1) {
-          paramInt1 = 0;
-        }
-        return OnlineStatusConstants.a(paramOnlineStatusItem, paramInt1);
-      }
-      if (a(paramOnlineStatusItem))
-      {
-        if (a(paramFriends) > 0) {
-          return this.jdField_a_of_type_ComTencentWidgetOnlineBatteryProducer.a(a(paramFriends), paramInt1);
-        }
-        if (paramFriends != null)
-        {
-          localObject1 = localObject2;
-          if (!a(paramFriends.uin)) {}
-        }
-        else
-        {
-          paramOnlineStatusItem = a(paramOnlineStatusItem, paramInt2);
-          paramOnlineStatusItem.setBounds(0, 0, i, i);
-          return paramOnlineStatusItem;
-        }
-      }
-      else
-      {
-        if (paramOnlineStatusItem.jdField_a_of_type_Long == 1030L)
-        {
-          localObject1 = (OnlineAutoStatusBean)QConfigManager.a().a(652);
-          if ((localObject1 != null) && (paramFriends != null))
-          {
-            localObject1 = ((OnlineAutoStatusBean)localObject1).a(paramFriends.weatherTypeId);
-            if (QLog.isColorLevel()) {
-              QLog.d("OnLineStatusHelper", 4, new Object[] { "weatherTypeId=", paramFriends.weatherTypeId });
-            }
-            if (localObject1 != null)
-            {
-              paramFriends = ((WeatherUrl)localObject1).d;
-              if (paramInt2 != 5) {
-                break label219;
-              }
-              paramFriends = ((WeatherUrl)localObject1).e;
-              break label219;
-            }
-          }
-          paramFriends = "";
-          label219:
-          if (QLog.isColorLevel()) {
-            QLog.d("OnLineStatusHelper", 4, new Object[] { "URL=", paramFriends });
-          }
-          localObject1 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = i;
-          ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i;
-          if (!TextUtils.isEmpty(paramFriends))
-          {
-            paramOnlineStatusItem = URLDrawable.getDrawable(paramFriends, (URLDrawable.URLDrawableOptions)localObject1);
-            paramOnlineStatusItem.setBounds(0, 0, i, i);
-          }
-          else
-          {
-            paramOnlineStatusItem = a(paramOnlineStatusItem, paramInt2);
-            paramOnlineStatusItem.setBounds(0, 0, i, i);
-          }
-          return paramOnlineStatusItem;
-        }
-        localObject1 = a(paramOnlineStatusItem, paramInt2);
-        ((Drawable)localObject1).setBounds(0, 0, i, i);
-      }
-    }
-    return localObject1;
-  }
-  
-  public static OnLineStatusHelper a()
-  {
-    return OnLineStatusHelper.OnLineStatusHelperHolder.a();
-  }
-  
-  private String a(Friends paramFriends)
-  {
-    if ((paramFriends != null) && (a(paramFriends.uin))) {
-      paramFriends = ((ICustomOnlineStatusManager)QRoute.api(ICustomOnlineStatusManager.class)).getOwnerOnlineStatus();
-    } else if ((paramFriends != null) && (!TextUtils.isEmpty(paramFriends.strTermDesc))) {
-      paramFriends = paramFriends.strTermDesc;
-    } else {
-      paramFriends = null;
-    }
-    if ((!TextUtils.isEmpty(paramFriends)) && (paramFriends.contains("在线")))
-    {
-      paramFriends = paramFriends.substring(0, paramFriends.length() - 2);
-      if (!TextUtils.isEmpty(paramFriends)) {
-        return paramFriends;
-      }
-    }
-    return "手机";
-  }
-  
-  public static boolean a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.a().a(578);
-    if (localOnlineStatusBean == null) {
-      return false;
-    }
-    return localOnlineStatusBean.a(paramStatus, paramLong);
-  }
-  
-  public static int b()
+  public static int h()
   {
     int j = OnlineStatusSPUtil.b(MobileQQ.sMobileQQ);
     int i = j;
@@ -260,7 +224,7 @@ public class OnLineStatusHelper
     return i;
   }
   
-  public static int c()
+  public static int i()
   {
     int i = 0;
     int j = 0;
@@ -272,7 +236,7 @@ public class OnLineStatusHelper
         {
           BatteryManager localBatteryManager = (BatteryManager)BaseApplication.getContext().getSystemService("batterymanager");
           if (Build.VERSION.SDK_INT < 23) {
-            break label139;
+            break label137;
           }
           bool = localBatteryManager.isCharging();
           int k = localBatteryManager.getIntProperty(6);
@@ -297,7 +261,7 @@ public class OnLineStatusHelper
         i = j;
       }
       return i;
-      label139:
+      label137:
       boolean bool = false;
     }
   }
@@ -307,24 +271,7 @@ public class OnLineStatusHelper
     if ((paramFriends != null) && (!a(paramFriends.uin))) {
       return Math.max(0, Math.min(paramFriends.getBatteryCapacity(), 100));
     }
-    return a();
-  }
-  
-  public int a(AppRuntime paramAppRuntime)
-  {
-    paramAppRuntime = (IOnlineStatusService)paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
-    AppRuntime.Status localStatus = paramAppRuntime.getOnlineStatus();
-    long l = paramAppRuntime.getExtOnlineStatus();
-    if ((localStatus == AppRuntime.Status.online) && (l == 1000L)) {
-      return 1;
-    }
-    if ((localStatus == AppRuntime.Status.online) && (l == 1030L)) {
-      return 4;
-    }
-    if ((localStatus == AppRuntime.Status.online) && (l == 1040L)) {
-      return 3;
-    }
-    return 0;
+    return g();
   }
   
   public long a(AppRuntime paramAppRuntime)
@@ -349,32 +296,543 @@ public class OnLineStatusHelper
     return l1;
   }
   
+  public Bitmap a(int paramInt1, int paramInt2)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramInt2);
+    String str = ((StringBuilder)localObject).toString();
+    Bitmap localBitmap = CommonImageCacheHelper.a(str);
+    localObject = localBitmap;
+    if (localBitmap == null)
+    {
+      Drawable localDrawable = this.b.a(paramInt1, paramInt2);
+      localObject = localBitmap;
+      if ((localDrawable instanceof BitmapDrawable))
+      {
+        localObject = ((BitmapDrawable)localDrawable).getBitmap();
+        CommonImageCacheHelper.a(str, (Bitmap)localObject);
+      }
+    }
+    return localObject;
+  }
+  
   public Drawable a(long paramLong, AppRuntime.Status paramStatus, int paramInt, Friends paramFriends)
+  {
+    return a(paramLong, paramStatus, paramInt, paramFriends, 3);
+  }
+  
+  public Drawable a(long paramLong, AppRuntime.Status paramStatus, int paramInt1, Friends paramFriends, int paramInt2)
   {
     if (paramStatus == AppRuntime.Status.online)
     {
       OnlineStatusItem localOnlineStatusItem = a(AppRuntime.Status.online, paramLong);
       if (localOnlineStatusItem != null) {
-        return a(localOnlineStatusItem, paramFriends, paramInt, 3);
+        return a(localOnlineStatusItem, paramFriends, paramInt1, paramInt2);
       }
     }
-    return OnlineStatusConstants.a(paramStatus, a(paramInt));
+    return OnlineStatusConstants.a(paramStatus, a(paramInt1));
   }
   
-  public Drawable a(OnlineStatusItem paramOnlineStatusItem, Friends paramFriends)
+  Drawable a(OnlineStatusItem paramOnlineStatusItem, int paramInt)
   {
-    return a(paramOnlineStatusItem, paramFriends, 0, 1);
+    if (paramInt == 5) {
+      return URLDrawable.getDrawable(paramOnlineStatusItem.e, URLDrawable.URLDrawableOptions.obtain());
+    }
+    return URLDrawable.getDrawable(paramOnlineStatusItem.d, URLDrawable.URLDrawableOptions.obtain());
+  }
+  
+  public Drawable a(OnlineStatusItem paramOnlineStatusItem, int paramInt1, int paramInt2)
+  {
+    if (d()) {
+      return a(paramOnlineStatusItem.m, paramInt1);
+    }
+    if (paramInt2 == 6)
+    {
+      OlympicConfBean.OlympicConfig localOlympicConfig = OlympicConfProcessor.b().b();
+      if (TextUtils.isEmpty(localOlympicConfig.d)) {
+        return a(paramOnlineStatusItem, paramInt2);
+      }
+      return a(localOlympicConfig.d, paramInt1);
+    }
+    return a(paramOnlineStatusItem, paramInt2);
   }
   
   public Drawable a(OnlineStatusItem paramOnlineStatusItem, Friends paramFriends, int paramInt)
   {
-    if (paramInt == 5) {
-      return a(paramOnlineStatusItem, paramFriends, 2, 5);
+    if ((paramInt != 5) && (paramInt != 6)) {
+      return b(paramOnlineStatusItem, paramFriends);
     }
-    return a(paramOnlineStatusItem, paramFriends);
+    return a(paramOnlineStatusItem, paramFriends, 2, paramInt);
   }
   
-  public Bundle a(Friends paramFriends)
+  Drawable a(OnlineStatusItem paramOnlineStatusItem, @Nullable Friends paramFriends, int paramInt1, int paramInt2)
+  {
+    int i = a(paramInt1);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramOnlineStatusItem != null)
+    {
+      if (paramOnlineStatusItem.f == 2)
+      {
+        paramOnlineStatusItem = paramOnlineStatusItem.g;
+        paramInt1 = i;
+        if (paramInt2 == 1) {
+          paramInt1 = 0;
+        }
+        return OnlineStatusConstants.a(paramOnlineStatusItem, paramInt1);
+      }
+      if (a(paramOnlineStatusItem))
+      {
+        if (a(paramFriends) > 0) {
+          return this.b.a(a(paramFriends), paramInt1);
+        }
+        if (paramFriends != null)
+        {
+          localObject1 = localObject2;
+          if (!a(paramFriends.uin)) {}
+        }
+        else
+        {
+          paramOnlineStatusItem = a(paramOnlineStatusItem, paramInt2);
+          paramOnlineStatusItem.setBounds(0, 0, i, i);
+          return paramOnlineStatusItem;
+        }
+      }
+      else
+      {
+        if (paramOnlineStatusItem.b == 1030L)
+        {
+          localObject1 = (OnlineAutoStatusBean)QConfigManager.b().b(652);
+          if ((localObject1 != null) && (paramFriends != null)) {
+            paramFriends = a(paramFriends, BaseApplication.getContext(), paramInt2, (OnlineAutoStatusBean)localObject1);
+          } else {
+            paramFriends = "";
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("OnLineStatusHelper", 4, new Object[] { "URL=", paramFriends });
+          }
+          localObject1 = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = i;
+          ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i;
+          if (!TextUtils.isEmpty(paramFriends))
+          {
+            paramOnlineStatusItem = URLDrawable.getDrawable(paramFriends, (URLDrawable.URLDrawableOptions)localObject1);
+            paramOnlineStatusItem.setBounds(0, 0, i, i);
+          }
+          else
+          {
+            paramOnlineStatusItem = a(paramOnlineStatusItem, paramInt2);
+            paramOnlineStatusItem.setBounds(0, 0, i, i);
+          }
+          return paramOnlineStatusItem;
+        }
+        if (paramOnlineStatusItem.b == 1080L)
+        {
+          paramOnlineStatusItem = a(paramOnlineStatusItem, i, paramInt2);
+          localObject1 = paramOnlineStatusItem;
+          if (paramOnlineStatusItem != null)
+          {
+            paramOnlineStatusItem.setBounds(0, 0, i, i);
+            return paramOnlineStatusItem;
+          }
+        }
+        else
+        {
+          localObject1 = a(paramOnlineStatusItem, paramInt2);
+          ((Drawable)localObject1).setBounds(0, 0, i, i);
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  public Bundle a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    paramAppRuntime = (IOnlineStatusService)paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
+    int i = paramAppRuntime.getBatteryCapacity();
+    int j = paramAppRuntime.getPowerConnect();
+    int k = b(i, j);
+    localBundle.putInt("BatteryInfo", k);
+    localBundle.putBoolean("from_register", paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("OnLineStatusHelper", 2, new Object[] { "buildSetBatteryData batteryCapacity:", Integer.valueOf(i), " powerConnect:", Integer.valueOf(j), " sendBattery:", Integer.valueOf(k), " fromRegister:", Boolean.valueOf(paramBoolean) });
+    }
+    return localBundle;
+  }
+  
+  URLDrawable a(String paramString, int paramInt)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = paramInt;
+    localURLDrawableOptions.mRequestHeight = paramInt;
+    localURLDrawableOptions.mUseApngImage = true;
+    return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+  }
+  
+  public OnlineStatusItem a(AppRuntime.Status paramStatus, long paramLong)
+  {
+    return a(paramStatus, paramLong, false);
+  }
+  
+  public OnlineStatusItem a(AppRuntime.Status paramStatus, long paramLong, boolean paramBoolean)
+  {
+    if (paramStatus == null) {
+      localObject = Integer.valueOf(-1);
+    } else {
+      localObject = paramStatus;
+    }
+    QLog.d("OnLineStatusHelper", 1, new Object[] { "getOnlineStatusItem status=", localObject, " onlineStatusIDValue=", Long.valueOf(paramLong) });
+    if ((paramStatus == AppRuntime.Status.online) && (paramLong > 40000L))
+    {
+      localObject = (OnlineAutoStatusBean)QConfigManager.b().b(652);
+      if (localObject != null)
+      {
+        if (paramBoolean) {
+          paramStatus = ((OnlineAutoStatusBean)localObject).b(paramStatus, paramLong);
+        } else {
+          paramStatus = ((OnlineAutoStatusBean)localObject).a(paramStatus, paramLong);
+        }
+        localObject = paramStatus;
+        if (paramStatus == null) {
+          localObject = new OnlineStatusItem(AppRuntime.Status.online);
+        }
+        return localObject;
+      }
+    }
+    Object localObject = (OnlineStatusBean)QConfigManager.b().b(578);
+    if ((localObject != null) && (paramStatus == AppRuntime.Status.online)) {
+      return ((OnlineStatusBean)localObject).b(paramStatus, paramLong);
+    }
+    if (localObject != null) {
+      return ((OnlineStatusBean)localObject).b(paramStatus, 0L);
+    }
+    return new OnlineStatusItem(AppRuntime.Status.online);
+  }
+  
+  public String a(long paramLong, AppRuntime.Status paramStatus)
+  {
+    if (paramStatus == AppRuntime.Status.online)
+    {
+      if (paramLong == 1000L) {
+        return "我的电量";
+      }
+      OnlineStatusItem localOnlineStatusItem = a(AppRuntime.Status.online, paramLong);
+      if ((localOnlineStatusItem != null) && (!TextUtils.isEmpty(localOnlineStatusItem.c))) {
+        return localOnlineStatusItem.c;
+      }
+    }
+    return OnlineStatusConstants.a(paramStatus);
+  }
+  
+  protected String a(Friends paramFriends, Context paramContext, int paramInt, OnlineAutoStatusBean paramOnlineAutoStatusBean)
+  {
+    boolean bool = a(paramFriends.uin);
+    int i;
+    if (Build.VERSION.SDK_INT >= 23) {
+      i = paramContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION");
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (bool)) {
+      paramContext = paramOnlineAutoStatusBean.b("202");
+    } else {
+      paramContext = paramOnlineAutoStatusBean.b(paramFriends.weatherTypeId);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OnLineStatusHelper", 2, new Object[] { "weatherTypeId=", paramFriends.weatherTypeId, ",isSelfUin=", Boolean.valueOf(bool) });
+    }
+    if (paramContext != null)
+    {
+      paramFriends = paramContext.d;
+      if (paramInt == 5) {
+        return paramContext.e;
+      }
+    }
+    else
+    {
+      paramFriends = "";
+    }
+    return paramFriends;
+  }
+  
+  public String a(AppRuntime paramAppRuntime, Friends paramFriends, TextView paramTextView, int paramInt, OnlineStatusItem paramOnlineStatusItem, Boolean paramBoolean)
+  {
+    AppRuntime.Status localStatus = a().b(paramOnlineStatusItem);
+    if (!Boolean.valueOf(a(paramOnlineStatusItem, paramFriends, paramBoolean.booleanValue())).booleanValue())
+    {
+      if ((paramInt != 5) && (paramInt != 1)) {
+        paramAppRuntime = OnlineStatusUtil.e(paramFriends);
+      } else {
+        paramAppRuntime = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getStatusName(paramFriends);
+      }
+      paramFriends = paramAppRuntime;
+      if (TextUtils.isEmpty(paramAppRuntime)) {
+        paramFriends = MobileQQ.sMobileQQ.getResources().getString(2131916782);
+      }
+      return paramFriends;
+    }
+    return a().b(paramAppRuntime, paramOnlineStatusItem, localStatus, paramFriends, paramTextView, paramInt);
+  }
+  
+  public String a(AppRuntime paramAppRuntime, OnlineStatusItem paramOnlineStatusItem, AppRuntime.Status paramStatus, Friends paramFriends, TextView paramTextView, int paramInt)
+  {
+    if (paramStatus == AppRuntime.Status.online)
+    {
+      boolean bool;
+      if (paramOnlineStatusItem.b > 0L) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      return a(paramAppRuntime, paramFriends, paramTextView, 4, paramOnlineStatusItem, Boolean.valueOf(bool));
+    }
+    return b(paramAppRuntime, paramOnlineStatusItem, paramStatus, paramFriends, paramTextView, paramInt);
+  }
+  
+  public void a(Friends paramFriends, TextView paramTextView, boolean paramBoolean, OnlineStatusItem paramOnlineStatusItem, int paramInt)
+  {
+    Drawable[] arrayOfDrawable = paramTextView.getCompoundDrawables();
+    if (paramBoolean)
+    {
+      paramTextView.setCompoundDrawablePadding(0);
+      paramTextView.setCompoundDrawables(null, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      return;
+    }
+    int i;
+    if ((OnlineStatusUtils.a(paramFriends.detalStatusFlag, paramFriends.iTermType) == 4) && (paramFriends.uExtOnlineStatus > 0L) && (paramOnlineStatusItem != null)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i == 0) && (paramInt != 5) && (paramInt != 6))
+    {
+      paramTextView.setCompoundDrawablePadding(0);
+      paramTextView.setCompoundDrawables(null, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      return;
+    }
+    paramFriends = a().a(paramOnlineStatusItem, paramFriends, paramInt);
+    if (paramFriends != null)
+    {
+      paramTextView.setCompoundDrawablePadding(Utils.a(4.0F, MobileQQ.sMobileQQ.getResources()));
+      paramTextView.setCompoundDrawables(paramFriends, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+    }
+  }
+  
+  public void a(OlympicMedalEventInfo paramOlympicMedalEventInfo)
+  {
+    this.c = paramOlympicMedalEventInfo;
+  }
+  
+  public void a(AppRuntime paramAppRuntime, Friends paramFriends, TextView paramTextView, boolean paramBoolean)
+  {
+    Drawable[] arrayOfDrawable = paramTextView.getCompoundDrawables();
+    if (paramFriends == null)
+    {
+      paramTextView.setCompoundDrawablePadding(0);
+      paramTextView.setCompoundDrawables(null, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      return;
+    }
+    int i = OnlineStatusUtils.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
+    boolean bool = paramAppRuntime.getCurrentUin().equals(paramFriends.uin);
+    paramAppRuntime = a(AppRuntime.Status.online, paramFriends.uExtOnlineStatus, bool ^ true);
+    if ((paramBoolean) && (i == 4) && (paramFriends.uExtOnlineStatus > 0L) && (paramAppRuntime != null))
+    {
+      if (a(paramAppRuntime))
+      {
+        if (a(paramFriends) > 0) {
+          paramBoolean = true;
+        } else {
+          paramBoolean = false;
+        }
+      }
+      else if (paramFriends.uExtOnlineStatus == 40001L) {
+        paramBoolean = OnlineStatusUtil.b(paramAppRuntime);
+      } else if (paramFriends.uExtOnlineStatus == 1040L) {
+        paramBoolean = OnlineStatusUtil.c(paramFriends);
+      } else {
+        paramBoolean = a(paramAppRuntime, paramFriends) ^ true;
+      }
+      if (paramBoolean)
+      {
+        paramFriends = b(paramAppRuntime, paramFriends);
+        paramAppRuntime = paramFriends;
+        if (paramFriends != null)
+        {
+          paramBoolean = true;
+          paramAppRuntime = paramFriends;
+          break label213;
+        }
+      }
+      else
+      {
+        paramAppRuntime = null;
+        break label213;
+      }
+    }
+    else
+    {
+      paramAppRuntime = null;
+    }
+    paramBoolean = false;
+    label213:
+    if (paramBoolean)
+    {
+      paramTextView.setCompoundDrawablePadding(Utils.a(4.0F, MobileQQ.sMobileQQ.getResources()));
+      paramTextView.setCompoundDrawables(paramAppRuntime, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      return;
+    }
+    paramTextView.setCompoundDrawablePadding(0);
+    paramTextView.setCompoundDrawables(null, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+  }
+  
+  public boolean a(OnlineStatusItem paramOnlineStatusItem)
+  {
+    return (paramOnlineStatusItem != null) && (paramOnlineStatusItem.b == 1000L);
+  }
+  
+  boolean a(OnlineStatusItem paramOnlineStatusItem, Friends paramFriends)
+  {
+    return (paramOnlineStatusItem.b == 1030L) && (!OnlineStatusUtil.b(paramFriends));
+  }
+  
+  public boolean a(OnlineStatusItem paramOnlineStatusItem, Friends paramFriends, boolean paramBoolean)
+  {
+    boolean bool = paramBoolean;
+    if (paramBoolean)
+    {
+      bool = paramBoolean;
+      if (OnlineStatusItem.a(paramOnlineStatusItem.b)) {
+        if (a().a(paramFriends) > 0) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+      }
+    }
+    paramBoolean = bool;
+    if (paramOnlineStatusItem.b == 1030L)
+    {
+      paramBoolean = bool;
+      if (!OnlineStatusUtil.b(paramFriends)) {
+        paramBoolean = false;
+      }
+    }
+    bool = paramBoolean;
+    if (paramOnlineStatusItem.b == 1040L)
+    {
+      bool = paramBoolean;
+      if (!OnlineStatusUtil.c(paramFriends)) {
+        bool = false;
+      }
+    }
+    paramBoolean = bool;
+    if (paramOnlineStatusItem.b == 40001L)
+    {
+      paramBoolean = bool;
+      if (!OnlineStatusUtil.b(paramOnlineStatusItem)) {
+        paramBoolean = false;
+      }
+    }
+    return paramBoolean;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    if (MobileQQ.sProcessId != 1) {
+      return false;
+    }
+    return MobileQQ.sMobileQQ.peekAppRuntime().getCurrentUin().equals(paramString);
+  }
+  
+  public boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString, View paramView)
+  {
+    if (a(paramAppRuntime, paramString))
+    {
+      paramView = ((IFriendDataService)paramAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString);
+      boolean bool = paramAppRuntime.getCurrentUin().equals(paramString);
+      paramString = a(AppRuntime.Status.online, paramView.uExtOnlineStatus, bool ^ true);
+      if (paramString.b == 1028L)
+      {
+        if (!TextUtils.isEmpty(paramView.songId))
+        {
+          ((OnlineMusicStatusManager)((IOnlineStatusManagerService)paramAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class)).a(paramActivity, paramView.songId);
+          return true;
+        }
+      }
+      else if (paramString.b == 1030L)
+      {
+        paramAppRuntime = (OnlineAutoStatusBean)QConfigManager.b().b(652);
+        if ((paramAppRuntime != null) && (paramAppRuntime.a != null) && (!TextUtils.isEmpty(paramAppRuntime.a.c)))
+        {
+          paramString = new StringBuilder();
+          paramString.append(paramAppRuntime.a.c);
+          paramString.append(paramView.adCode);
+          paramAppRuntime = paramString.toString();
+          ConstellationLauncher.c.a(paramActivity, paramAppRuntime, 4014);
+          ReportHelperKt.a("0X800AF4C", 2);
+          return true;
+        }
+      }
+      else
+      {
+        if (paramString.b == 1040L)
+        {
+          ConstellationLauncher.c.a(paramActivity, paramView.constellationJumpUrl, 4014);
+          ReportHelperKt.a("0X800AF4C", 1);
+          return true;
+        }
+        if (paramString.b == 1080L)
+        {
+          if (!TextUtils.isEmpty(paramString.n))
+          {
+            paramAppRuntime = (OnlineStatusOlympicManager)((IOnlineStatusManagerService)paramAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusOlympicManager.class);
+            paramView = new StringBuilder();
+            paramView.append(paramString.n);
+            paramView.append("&from=");
+            paramView.append(2);
+            paramAppRuntime.a(paramActivity, paramView.toString());
+          }
+          ReportHelperKt.a("0X800BD1E", 0);
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(AppRuntime paramAppRuntime, String paramString)
+  {
+    Friends localFriends = ((IFriendDataService)paramAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString);
+    boolean bool = paramAppRuntime.getCurrentUin().equals(paramString);
+    if (localFriends != null)
+    {
+      paramAppRuntime = a(AppRuntime.Status.online, localFriends.uExtOnlineStatus, bool ^ true);
+      if (paramAppRuntime.b == 1028L) {
+        return true;
+      }
+      if (paramAppRuntime.b == 1030L) {
+        return OnlineStatusUtil.b(localFriends);
+      }
+      if (paramAppRuntime.b == 1040L) {
+        return OnlineStatusUtil.c(localFriends);
+      }
+      if (paramAppRuntime.b == 1080L) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public Drawable b(OnlineStatusItem paramOnlineStatusItem, Friends paramFriends)
+  {
+    return a(paramOnlineStatusItem, paramFriends, 0, 1);
+  }
+  
+  public Bundle b(Friends paramFriends)
   {
     Bundle localBundle = new Bundle();
     OnlineStatusExtInfo.WeatherBizInfo localWeatherBizInfo = new OnlineStatusExtInfo.WeatherBizInfo();
@@ -419,13 +877,13 @@ public class OnLineStatusHelper
     return localBundle;
   }
   
-  public Bundle a(AppRuntime paramAppRuntime)
+  public Bundle b(AppRuntime paramAppRuntime)
   {
     Bundle localBundle = new Bundle();
     paramAppRuntime = (IOnlineStatusService)paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
     int i = paramAppRuntime.getBatteryCapacity();
     int j = paramAppRuntime.getPowerConnect();
-    int k = a(i, j);
+    int k = b(i, j);
     localBundle.putInt("BatteryInfo", k);
     if (QLog.isColorLevel()) {
       QLog.d("OnLineStatusHelper", 2, new Object[] { "OnlineStatusHelper batteryCapacity:", Integer.valueOf(i), " powerConnect:", Integer.valueOf(j), " sendBattery:", Integer.valueOf(k) });
@@ -433,351 +891,11 @@ public class OnLineStatusHelper
     return localBundle;
   }
   
-  public Bundle a(AppRuntime paramAppRuntime, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    paramAppRuntime = (IOnlineStatusService)paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
-    int i = paramAppRuntime.getBatteryCapacity();
-    int j = paramAppRuntime.getPowerConnect();
-    int k = a(i, j);
-    localBundle.putInt("BatteryInfo", k);
-    localBundle.putBoolean("from_register", paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("OnLineStatusHelper", 2, new Object[] { "buildSetBatteryData batteryCapacity:", Integer.valueOf(i), " powerConnect:", Integer.valueOf(j), " sendBattery:", Integer.valueOf(k), " fromRegister:", Boolean.valueOf(paramBoolean) });
-    }
-    return localBundle;
-  }
-  
-  public OnlineStatusItem a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    return a(paramStatus, paramLong, false);
-  }
-  
-  public OnlineStatusItem a(AppRuntime.Status paramStatus, long paramLong, boolean paramBoolean)
-  {
-    if (paramStatus == null) {
-      localObject = Integer.valueOf(-1);
-    } else {
-      localObject = paramStatus;
-    }
-    QLog.d("OnLineStatusHelper", 1, new Object[] { "getOnlineStatusItem status=", localObject, " onlineStatusIDValue=", Long.valueOf(paramLong) });
-    if ((paramStatus == AppRuntime.Status.online) && (paramLong > 40000L))
-    {
-      localObject = (OnlineAutoStatusBean)QConfigManager.a().a(652);
-      if (localObject != null)
-      {
-        if (paramBoolean) {
-          paramStatus = ((OnlineAutoStatusBean)localObject).b(paramStatus, paramLong);
-        } else {
-          paramStatus = ((OnlineAutoStatusBean)localObject).a(paramStatus, paramLong);
-        }
-        localObject = paramStatus;
-        if (paramStatus == null) {
-          localObject = new OnlineStatusItem(AppRuntime.Status.online);
-        }
-        return localObject;
-      }
-    }
-    Object localObject = (OnlineStatusBean)QConfigManager.a().a(578);
-    if ((localObject != null) && (paramStatus == AppRuntime.Status.online)) {
-      return ((OnlineStatusBean)localObject).a(paramStatus, paramLong);
-    }
-    if (localObject != null) {
-      return ((OnlineStatusBean)localObject).a(paramStatus, 0L);
-    }
-    return new OnlineStatusItem(AppRuntime.Status.online);
-  }
-  
-  public String a(long paramLong, AppRuntime.Status paramStatus)
-  {
-    if (paramStatus == AppRuntime.Status.online)
-    {
-      if (paramLong == 1000L) {
-        return "我的电量";
-      }
-      OnlineStatusItem localOnlineStatusItem = a(AppRuntime.Status.online, paramLong);
-      if ((localOnlineStatusItem != null) && (!TextUtils.isEmpty(localOnlineStatusItem.b))) {
-        return localOnlineStatusItem.b;
-      }
-    }
-    return OnlineStatusConstants.a(paramStatus);
-  }
-  
-  public String a(AppRuntime paramAppRuntime, Friends paramFriends, TextView paramTextView, int paramInt, OnlineStatusItem paramOnlineStatusItem, Boolean paramBoolean)
-  {
-    AppRuntime.Status localStatus = a().a(paramOnlineStatusItem);
-    if (!Boolean.valueOf(a(paramOnlineStatusItem, paramFriends, paramBoolean.booleanValue())).booleanValue())
-    {
-      if ((paramInt != 5) && (paramInt != 1)) {
-        paramAppRuntime = OnlineStatusUtil.b(paramFriends);
-      } else {
-        paramAppRuntime = ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getStatusName(paramFriends);
-      }
-      paramFriends = paramAppRuntime;
-      if (TextUtils.isEmpty(paramAppRuntime)) {
-        paramFriends = MobileQQ.sMobileQQ.getResources().getString(2131719230);
-      }
-      return paramFriends;
-    }
-    return a().b(paramAppRuntime, paramOnlineStatusItem, localStatus, paramFriends, paramTextView, paramInt);
-  }
-  
-  public String a(AppRuntime paramAppRuntime, OnlineStatusItem paramOnlineStatusItem, AppRuntime.Status paramStatus, Friends paramFriends, TextView paramTextView, int paramInt)
-  {
-    if (paramStatus == AppRuntime.Status.online)
-    {
-      boolean bool;
-      if (paramOnlineStatusItem.jdField_a_of_type_Long > 0L) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      return a(paramAppRuntime, paramFriends, paramTextView, 4, paramOnlineStatusItem, Boolean.valueOf(bool));
-    }
-    return b(paramAppRuntime, paramOnlineStatusItem, paramStatus, paramFriends, paramTextView, paramInt);
-  }
-  
-  ArrayList<OnlineStatusItem> a()
-  {
-    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.a().a(578);
-    if (localOnlineStatusBean != null) {
-      return localOnlineStatusBean.b();
-    }
-    return null;
-  }
-  
-  public ArrayList<OnlineStatusItem> a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.a().a(578);
-    if (localOnlineStatusBean != null) {
-      return localOnlineStatusBean.a(paramStatus, paramLong);
-    }
-    return null;
-  }
-  
-  public AppRuntime.Status a(OnlineStatusItem paramOnlineStatusItem)
-  {
-    if (paramOnlineStatusItem != null) {
-      return paramOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status;
-    }
-    return null;
-  }
-  
-  public void a(Friends paramFriends, TextView paramTextView, boolean paramBoolean, OnlineStatusItem paramOnlineStatusItem, int paramInt)
-  {
-    Drawable[] arrayOfDrawable = paramTextView.getCompoundDrawables();
-    if (paramBoolean)
-    {
-      paramTextView.setCompoundDrawablePadding(0);
-      paramTextView.setCompoundDrawables(null, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      return;
-    }
-    int i;
-    if ((OnlineStatusUtils.a(paramFriends.detalStatusFlag, paramFriends.iTermType) == 4) && (paramFriends.uExtOnlineStatus > 0L) && (paramOnlineStatusItem != null)) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if ((i == 0) && (paramInt != 5))
-    {
-      paramTextView.setCompoundDrawablePadding(0);
-      paramTextView.setCompoundDrawables(null, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      return;
-    }
-    paramFriends = a().a(paramOnlineStatusItem, paramFriends, paramInt);
-    if (paramFriends != null)
-    {
-      paramTextView.setCompoundDrawablePadding(Utils.a(4.0F, MobileQQ.sMobileQQ.getResources()));
-      paramTextView.setCompoundDrawables(paramFriends, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-    }
-  }
-  
-  public void a(AppRuntime paramAppRuntime, Friends paramFriends, TextView paramTextView, boolean paramBoolean)
-  {
-    Drawable[] arrayOfDrawable = paramTextView.getCompoundDrawables();
-    if (paramFriends == null)
-    {
-      paramTextView.setCompoundDrawablePadding(0);
-      paramTextView.setCompoundDrawables(null, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      return;
-    }
-    int i = OnlineStatusUtils.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
-    boolean bool = paramAppRuntime.getCurrentUin().equals(paramFriends.uin);
-    paramAppRuntime = a(AppRuntime.Status.online, paramFriends.uExtOnlineStatus, bool ^ true);
-    if ((paramBoolean) && (i == 4) && (paramFriends.uExtOnlineStatus > 0L) && (paramAppRuntime != null))
-    {
-      if (a(paramAppRuntime))
-      {
-        if (a(paramFriends) > 0) {
-          paramBoolean = true;
-        } else {
-          paramBoolean = false;
-        }
-      }
-      else if (paramFriends.uExtOnlineStatus == 40001L) {
-        paramBoolean = OnlineStatusUtil.b(paramAppRuntime);
-      } else if (paramFriends.uExtOnlineStatus == 1040L) {
-        paramBoolean = OnlineStatusUtil.b(paramFriends);
-      } else {
-        paramBoolean = a(paramAppRuntime, paramFriends) ^ true;
-      }
-      if (paramBoolean)
-      {
-        paramFriends = a(paramAppRuntime, paramFriends);
-        paramAppRuntime = paramFriends;
-        if (paramFriends != null)
-        {
-          paramBoolean = true;
-          paramAppRuntime = paramFriends;
-          break label213;
-        }
-      }
-      else
-      {
-        paramAppRuntime = null;
-        break label213;
-      }
-    }
-    else
-    {
-      paramAppRuntime = null;
-    }
-    paramBoolean = false;
-    label213:
-    if (paramBoolean)
-    {
-      paramTextView.setCompoundDrawablePadding(Utils.a(4.0F, MobileQQ.sMobileQQ.getResources()));
-      paramTextView.setCompoundDrawables(paramAppRuntime, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-      return;
-    }
-    paramTextView.setCompoundDrawablePadding(0);
-    paramTextView.setCompoundDrawables(null, arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
-  }
-  
-  boolean a(OnlineStatusItem paramOnlineStatusItem)
-  {
-    return (paramOnlineStatusItem != null) && (paramOnlineStatusItem.jdField_a_of_type_Long == 1000L);
-  }
-  
-  boolean a(OnlineStatusItem paramOnlineStatusItem, Friends paramFriends)
-  {
-    return (paramOnlineStatusItem.jdField_a_of_type_Long == 1030L) && (!OnlineStatusUtil.a(paramFriends));
-  }
-  
-  public boolean a(OnlineStatusItem paramOnlineStatusItem, Friends paramFriends, boolean paramBoolean)
-  {
-    boolean bool = paramBoolean;
-    if (paramBoolean)
-    {
-      bool = paramBoolean;
-      if (OnlineStatusItem.a(paramOnlineStatusItem.jdField_a_of_type_Long)) {
-        if (a().a(paramFriends) > 0) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-      }
-    }
-    paramBoolean = bool;
-    if (paramOnlineStatusItem.jdField_a_of_type_Long == 1030L)
-    {
-      paramBoolean = bool;
-      if (!OnlineStatusUtil.a(paramFriends)) {
-        paramBoolean = false;
-      }
-    }
-    bool = paramBoolean;
-    if (paramOnlineStatusItem.jdField_a_of_type_Long == 1040L)
-    {
-      bool = paramBoolean;
-      if (!OnlineStatusUtil.b(paramFriends)) {
-        bool = false;
-      }
-    }
-    paramBoolean = bool;
-    if (paramOnlineStatusItem.jdField_a_of_type_Long == 40001L)
-    {
-      paramBoolean = bool;
-      if (!OnlineStatusUtil.b(paramOnlineStatusItem)) {
-        paramBoolean = false;
-      }
-    }
-    return paramBoolean;
-  }
-  
-  protected boolean a(String paramString)
-  {
-    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-    if (MobileQQ.sProcessId != 1) {
-      return false;
-    }
-    return MobileQQ.sMobileQQ.peekAppRuntime().getCurrentUin().equals(paramString);
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString, View paramView)
-  {
-    if (a(paramAppRuntime, paramString))
-    {
-      paramView = ((IFriendDataService)paramAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString);
-      boolean bool = paramAppRuntime.getCurrentUin().equals(paramString);
-      paramString = a(AppRuntime.Status.online, paramView.uExtOnlineStatus, bool ^ true);
-      if (paramString.jdField_a_of_type_Long == 1028L)
-      {
-        if (!TextUtils.isEmpty(paramView.songId))
-        {
-          ((OnlineMusicStatusManager)((IOnlineStatusManagerService)paramAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class)).a(paramActivity, paramView.songId);
-          return true;
-        }
-      }
-      else if (paramString.jdField_a_of_type_Long == 1030L)
-      {
-        paramAppRuntime = (OnlineAutoStatusBean)QConfigManager.a().a(652);
-        if ((paramAppRuntime != null) && (paramAppRuntime.a != null) && (!TextUtils.isEmpty(paramAppRuntime.a.a)))
-        {
-          paramString = new StringBuilder();
-          paramString.append(paramAppRuntime.a.a);
-          paramString.append(paramView.adCode);
-          paramAppRuntime = paramString.toString();
-          ConstellationLauncher.a.a(paramActivity, paramAppRuntime, 4014);
-          ReportHelperKt.a("0X800AF4C", 2);
-          return true;
-        }
-      }
-      else if (paramString.jdField_a_of_type_Long == 1040L)
-      {
-        ConstellationLauncher.a.a(paramActivity, paramView.constellationJumpUrl, 4014);
-        ReportHelperKt.a("0X800AF4C", 1);
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime, String paramString)
-  {
-    Friends localFriends = ((IFriendDataService)paramAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(paramString);
-    boolean bool = paramAppRuntime.getCurrentUin().equals(paramString);
-    if (localFriends != null)
-    {
-      paramAppRuntime = a(AppRuntime.Status.online, localFriends.uExtOnlineStatus, bool ^ true);
-      if (paramAppRuntime.jdField_a_of_type_Long == 1028L) {
-        return true;
-      }
-      if (paramAppRuntime.jdField_a_of_type_Long == 1030L) {
-        return OnlineStatusUtil.a(localFriends);
-      }
-      if (paramAppRuntime.jdField_a_of_type_Long == 1040L) {
-        return OnlineStatusUtil.b(localFriends);
-      }
-    }
-    return false;
-  }
-  
   public String b(long paramLong, AppRuntime.Status paramStatus)
   {
     OnlineStatusItem localOnlineStatusItem = a(AppRuntime.Status.online, paramLong);
     if (OnlineStatusUtil.b(localOnlineStatusItem)) {
-      return localOnlineStatusItem.e;
+      return localOnlineStatusItem.i;
     }
     return a(paramLong, paramStatus);
   }
@@ -787,114 +905,151 @@ public class OnLineStatusHelper
     IOnlineStatusService localIOnlineStatusService = (IOnlineStatusService)paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
     if ((paramStatus == AppRuntime.Status.online) && (paramOnlineStatusItem != null))
     {
-      if ((paramOnlineStatusItem.jdField_a_of_type_Long == 1000L) && (paramFriends != null))
-      {
-        if (paramAppRuntime.getCurrentAccountUin().equals(paramFriends.uin))
-        {
-          if (localIOnlineStatusService.getPowerConnect() == 1)
-          {
-            paramAppRuntime = new StringBuilder();
-            paramAppRuntime.append(localIOnlineStatusService.getBatteryCapacity());
-            paramAppRuntime.append("% ");
-            paramAppRuntime.append(a(paramFriends));
-            paramAppRuntime.append("充电中");
-            return paramAppRuntime.toString();
-          }
-          paramAppRuntime = new StringBuilder();
-          paramAppRuntime.append(localIOnlineStatusService.getBatteryCapacity());
-          paramAppRuntime.append("% ");
-          paramAppRuntime.append(a(paramFriends));
-          paramAppRuntime.append("电量");
-          return paramAppRuntime.toString();
-        }
-        if (a(paramFriends) > 0)
-        {
-          if (paramFriends.isBatteryCharging())
-          {
-            paramAppRuntime = new StringBuilder();
-            paramAppRuntime.append(a(paramFriends));
-            paramAppRuntime.append("% ");
-            paramAppRuntime.append(a(paramFriends));
-            paramAppRuntime.append("充电中");
-            return paramAppRuntime.toString();
-          }
-          paramAppRuntime = new StringBuilder();
-          paramAppRuntime.append(a(paramFriends));
-          paramAppRuntime.append("% ");
-          paramAppRuntime.append(a(paramFriends));
-          paramAppRuntime.append("电量");
-          return paramAppRuntime.toString();
-        }
-        return ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getStatusName(paramFriends);
+      if ((paramOnlineStatusItem.b == 1000L) && (paramFriends != null)) {
+        return a(paramAppRuntime, paramFriends, localIOnlineStatusService);
       }
-      if ((paramOnlineStatusItem.jdField_a_of_type_Long == 1028L) && (paramFriends != null)) {
+      if ((paramOnlineStatusItem.b == 1028L) && (paramFriends != null)) {
         return OnlineMusicStatusManager.a(paramAppRuntime, paramFriends, paramTextView);
       }
-      if ((paramOnlineStatusItem.jdField_a_of_type_Long == 1030L) && (paramFriends != null)) {
+      if ((paramOnlineStatusItem.b == 1030L) && (paramFriends != null)) {
         return OnlineStatusUtil.a(paramAppRuntime, paramTextView, paramFriends, paramInt);
       }
-      if ((paramOnlineStatusItem.jdField_a_of_type_Long == 1040L) && (paramFriends != null))
+      if ((paramOnlineStatusItem.b == 1040L) && (paramFriends != null))
       {
         paramAppRuntime = ConstellationUtilKt.b(paramFriends);
         if (QLog.isColorLevel()) {
           QLog.d("OnLineStatusHelper", 2, new Object[] { "getAIOStatusName: invoked. ", " suitableTrend: ", paramAppRuntime });
         }
-        if (OnlineStatusUtil.b(paramFriends)) {
+        if (OnlineStatusUtil.c(paramFriends)) {
           return paramAppRuntime;
         }
         return "";
       }
-      if (paramOnlineStatusItem.jdField_a_of_type_Long > 40001L)
+      if (paramOnlineStatusItem.b == 1080L) {
+        return paramOnlineStatusItem.c;
+      }
+      if (paramOnlineStatusItem.b > 40001L)
       {
-        if (!TextUtils.isEmpty(paramOnlineStatusItem.b))
+        if (!TextUtils.isEmpty(paramOnlineStatusItem.c))
         {
           long l = paramFriends.autoStatusUpdateSecond;
           paramStatus = OnlineStatusUtil.a(NetConnInfoCenter.getServerTime(), l);
-          QLog.d("OnLineStatusHelper", 1, new Object[] { "getAIOStatusName: invoked. [status-time] ", " passTimeStr: ", paramStatus, " autoStatusUpdateSecond: ", Long.valueOf(l), " extOnlineStatus.title: ", paramOnlineStatusItem.b, " friend.uin: ", paramFriends.uin, " during second: ", Long.valueOf(NetConnInfoCenter.getServerTime() - l) });
+          QLog.d("OnLineStatusHelper", 1, new Object[] { "getAIOStatusName: invoked. [status-time] ", " passTimeStr: ", paramStatus, " autoStatusUpdateSecond: ", Long.valueOf(l), " extOnlineStatus.title: ", paramOnlineStatusItem.c, " friend.uin: ", paramFriends.uin, " during second: ", Long.valueOf(NetConnInfoCenter.getServerTime() - l) });
           if ((!TextUtils.isEmpty(paramStatus)) && (!paramAppRuntime.getCurrentAccountUin().equals(paramFriends.uin)))
           {
             paramAppRuntime = new StringBuilder();
-            paramAppRuntime.append(paramOnlineStatusItem.b);
+            paramAppRuntime.append(paramOnlineStatusItem.c);
             paramAppRuntime.append(String.format("(%s)", new Object[] { paramStatus }));
             return paramAppRuntime.toString();
           }
-          return paramOnlineStatusItem.b;
+          return paramOnlineStatusItem.c;
         }
         return "";
       }
-      if (paramOnlineStatusItem.jdField_a_of_type_Long == 40001L)
+      if (paramOnlineStatusItem.b == 40001L)
       {
-        if (paramOnlineStatusItem.e == null) {
+        if (paramOnlineStatusItem.i == null) {
           return "";
         }
-        return paramOnlineStatusItem.e;
+        return paramOnlineStatusItem.i;
       }
-      if ((a(paramStatus, paramOnlineStatusItem.jdField_a_of_type_Long)) && (!TextUtils.isEmpty(paramOnlineStatusItem.b)) && (paramTextView != null) && (paramOnlineStatusItem.jdField_a_of_type_Long != 1055L))
+      if ((c(paramStatus, paramOnlineStatusItem.b)) && (!TextUtils.isEmpty(paramOnlineStatusItem.c)) && (paramTextView != null) && (paramOnlineStatusItem.b != 1055L))
       {
         paramAppRuntime = new StringBuilder();
-        paramAppRuntime.append(paramTextView.getResources().getString(2131719228));
-        paramAppRuntime.append(paramOnlineStatusItem.b);
+        paramAppRuntime.append(paramTextView.getResources().getString(2131916780));
+        paramAppRuntime.append(paramOnlineStatusItem.c);
         return paramAppRuntime.toString();
       }
-      if (!TextUtils.isEmpty(paramOnlineStatusItem.b)) {
-        return paramOnlineStatusItem.b;
+      if (!TextUtils.isEmpty(paramOnlineStatusItem.c)) {
+        return paramOnlineStatusItem.c;
       }
     }
     return OnlineStatusConstants.a(paramStatus);
   }
   
-  public ArrayList<OnlineStatusItem> b()
+  ArrayList<OnlineStatusItem> b()
   {
-    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.a().a(578);
+    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.b().b(578);
+    if (localOnlineStatusBean != null) {
+      return localOnlineStatusBean.b();
+    }
+    return null;
+  }
+  
+  public ArrayList<OnlineStatusItem> b(AppRuntime.Status paramStatus, long paramLong)
+  {
+    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.b().b(578);
+    if (localOnlineStatusBean != null) {
+      return localOnlineStatusBean.a(paramStatus, paramLong);
+    }
+    return null;
+  }
+  
+  public AppRuntime.Status b(OnlineStatusItem paramOnlineStatusItem)
+  {
+    if (paramOnlineStatusItem != null) {
+      return paramOnlineStatusItem.g;
+    }
+    return null;
+  }
+  
+  public int c(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = (IOnlineStatusService)paramAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
+    AppRuntime.Status localStatus = paramAppRuntime.getOnlineStatus();
+    long l = paramAppRuntime.getExtOnlineStatus();
+    if ((localStatus == AppRuntime.Status.online) && (l == 1000L)) {
+      return 1;
+    }
+    if ((localStatus == AppRuntime.Status.online) && (l == 1030L)) {
+      return 4;
+    }
+    if ((localStatus == AppRuntime.Status.online) && (l == 1040L)) {
+      return 3;
+    }
+    return 0;
+  }
+  
+  public ArrayList<OnlineStatusItem> c()
+  {
+    OnlineStatusBean localOnlineStatusBean = (OnlineStatusBean)QConfigManager.b().b(578);
     if (localOnlineStatusBean != null) {
       return localOnlineStatusBean.a();
+    }
+    return null;
+  }
+  
+  public boolean d()
+  {
+    OlympicMedalEventInfo localOlympicMedalEventInfo = this.c;
+    return (localOlympicMedalEventInfo != null) && (localOlympicMedalEventInfo.d() > System.currentTimeMillis() / 1000L);
+  }
+  
+  public String e()
+  {
+    OlympicMedalEventInfo localOlympicMedalEventInfo = this.c;
+    if (localOlympicMedalEventInfo == null) {
+      return "";
+    }
+    return localOlympicMedalEventInfo.f();
+  }
+  
+  public OnlineStatusItem f()
+  {
+    Iterator localIterator = c().iterator();
+    while (localIterator.hasNext())
+    {
+      OnlineStatusItem localOnlineStatusItem = (OnlineStatusItem)localIterator.next();
+      if (localOnlineStatusItem.b == 1080L) {
+        return localOnlineStatusItem;
+      }
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnLineStatusHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -28,121 +28,116 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoFeedsStressFollowLayout
   extends FrameLayout
 {
-  public static final VideoFeedsStressFollowLayout.Companion a;
-  private static final float jdField_b_of_type_Float = 0.48F;
-  private final float jdField_a_of_type_Float = DisplayUtils.a((Context)BaseApplication.getContext(), 48.0F);
-  private int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final ScalingFrameLayout jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetScalingFrameLayout;
-  private StressState jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityStressState = StressState.Shrink;
-  private VideoInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-  private final ArrayList<VideoFeedsStressFollowLayout.OnFollowActionListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final View jdField_b_of_type_AndroidViewView;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private final View c;
+  public static final VideoFeedsStressFollowLayout.Companion a = new VideoFeedsStressFollowLayout.Companion(null);
+  private static final float o = 0.48F;
+  private final float b = DisplayUtils.a((Context)BaseApplication.getContext(), 48.0F);
+  private int c;
   private final View d;
   private final View e;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsStressFollowLayout$Companion = new VideoFeedsStressFollowLayout.Companion(null);
-  }
+  private final View f;
+  private final View g;
+  private final ScalingFrameLayout h;
+  private final View i;
+  private final TextView j;
+  private final TextView k;
+  private final ArrayList<VideoFeedsStressFollowLayout.OnFollowActionListener> l = new ArrayList();
+  private StressState m = StressState.Shrink;
+  private VideoInfo n;
   
   public VideoFeedsStressFollowLayout(@NotNull Context paramContext)
   {
     super(paramContext);
-    LayoutInflater.from(getContext()).inflate(2131560355, (ViewGroup)this, true);
-    setBackgroundResource(2130843351);
-    paramContext = findViewById(2131368851);
+    LayoutInflater.from(getContext()).inflate(2131626401, (ViewGroup)this, true);
+    setBackgroundResource(2130844305);
+    paramContext = findViewById(2131435785);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.info_view)");
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    paramContext = findViewById(2131366937);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.fl_scaling_layout)");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetScalingFrameLayout = ((ScalingFrameLayout)paramContext);
-    paramContext = findViewById(2131368088);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_avatar_bg)");
-    this.jdField_b_of_type_AndroidViewView = paramContext;
-    paramContext = findViewById(2131368096);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_imageview)");
-    this.c = paramContext;
-    paramContext = findViewById(2131368098);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_living)");
     this.d = paramContext;
-    paramContext = findViewById(2131368860);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.inner_account_follow_button)");
+    paramContext = findViewById(2131433290);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.fl_scaling_layout)");
+    this.h = ((ScalingFrameLayout)paramContext);
+    paramContext = findViewById(2131434942);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_avatar_bg)");
     this.e = paramContext;
-    paramContext = findViewById(2131379784);
+    paramContext = findViewById(2131434950);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_imageview)");
+    this.f = paramContext;
+    paramContext = findViewById(2131434952);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_living)");
+    this.g = paramContext;
+    paramContext = findViewById(2131435794);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.inner_account_follow_button)");
+    this.i = paramContext;
+    paramContext = findViewById(2131448606);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_nickname)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(2131379688);
+    this.j = ((TextView)paramContext);
+    paramContext = findViewById(2131448470);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_follow_count)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    this.e.setOnClickListener((View.OnClickListener)new VideoFeedsStressFollowLayout.1(this));
+    this.k = ((TextView)paramContext);
+    this.i.setOnClickListener((View.OnClickListener)new VideoFeedsStressFollowLayout.1(this));
   }
   
   public VideoFeedsStressFollowLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131560355, (ViewGroup)this, true);
-    setBackgroundResource(2130843351);
-    paramContext = findViewById(2131368851);
+    LayoutInflater.from(getContext()).inflate(2131626401, (ViewGroup)this, true);
+    setBackgroundResource(2130844305);
+    paramContext = findViewById(2131435785);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.info_view)");
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    paramContext = findViewById(2131366937);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.fl_scaling_layout)");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetScalingFrameLayout = ((ScalingFrameLayout)paramContext);
-    paramContext = findViewById(2131368088);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_avatar_bg)");
-    this.jdField_b_of_type_AndroidViewView = paramContext;
-    paramContext = findViewById(2131368096);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_imageview)");
-    this.c = paramContext;
-    paramContext = findViewById(2131368098);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_living)");
     this.d = paramContext;
-    paramContext = findViewById(2131368860);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.inner_account_follow_button)");
+    paramContext = findViewById(2131433290);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.fl_scaling_layout)");
+    this.h = ((ScalingFrameLayout)paramContext);
+    paramContext = findViewById(2131434942);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_avatar_bg)");
     this.e = paramContext;
-    paramContext = findViewById(2131379784);
+    paramContext = findViewById(2131434950);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_imageview)");
+    this.f = paramContext;
+    paramContext = findViewById(2131434952);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_living)");
+    this.g = paramContext;
+    paramContext = findViewById(2131435794);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.inner_account_follow_button)");
+    this.i = paramContext;
+    paramContext = findViewById(2131448606);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_nickname)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(2131379688);
+    this.j = ((TextView)paramContext);
+    paramContext = findViewById(2131448470);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_follow_count)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    this.e.setOnClickListener((View.OnClickListener)new VideoFeedsStressFollowLayout.1(this));
+    this.k = ((TextView)paramContext);
+    this.i.setOnClickListener((View.OnClickListener)new VideoFeedsStressFollowLayout.1(this));
   }
   
   public VideoFeedsStressFollowLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(getContext()).inflate(2131560355, (ViewGroup)this, true);
-    setBackgroundResource(2130843351);
-    paramContext = findViewById(2131368851);
+    LayoutInflater.from(getContext()).inflate(2131626401, (ViewGroup)this, true);
+    setBackgroundResource(2130844305);
+    paramContext = findViewById(2131435785);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.info_view)");
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    paramContext = findViewById(2131366937);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.fl_scaling_layout)");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetScalingFrameLayout = ((ScalingFrameLayout)paramContext);
-    paramContext = findViewById(2131368088);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_avatar_bg)");
-    this.jdField_b_of_type_AndroidViewView = paramContext;
-    paramContext = findViewById(2131368096);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_imageview)");
-    this.c = paramContext;
-    paramContext = findViewById(2131368098);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_living)");
     this.d = paramContext;
-    paramContext = findViewById(2131368860);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.inner_account_follow_button)");
+    paramContext = findViewById(2131433290);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.fl_scaling_layout)");
+    this.h = ((ScalingFrameLayout)paramContext);
+    paramContext = findViewById(2131434942);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_avatar_bg)");
     this.e = paramContext;
-    paramContext = findViewById(2131379784);
+    paramContext = findViewById(2131434950);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_imageview)");
+    this.f = paramContext;
+    paramContext = findViewById(2131434952);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.header_account_icon_living)");
+    this.g = paramContext;
+    paramContext = findViewById(2131435794);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.inner_account_follow_button)");
+    this.i = paramContext;
+    paramContext = findViewById(2131448606);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_nickname)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(2131379688);
+    this.j = ((TextView)paramContext);
+    paramContext = findViewById(2131448470);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_follow_count)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    this.e.setOnClickListener((View.OnClickListener)new VideoFeedsStressFollowLayout.1(this));
+    this.k = ((TextView)paramContext);
+    this.i.setOnClickListener((View.OnClickListener)new VideoFeedsStressFollowLayout.1(this));
   }
   
   private final String a(int paramInt)
@@ -158,80 +153,80 @@ public final class VideoFeedsStressFollowLayout
     return localObject;
   }
   
-  @NotNull
-  public final StressState a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityStressState;
-  }
-  
   public final void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.c == 0) {
       return;
     }
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    localLayoutParams.width = ((int)(this.jdField_a_of_type_Int * paramFloat + this.jdField_a_of_type_Float));
+    localLayoutParams.width = ((int)(this.c * paramFloat + this.b));
     setLayoutParams(localLayoutParams);
-    float f = RangesKt.coerceAtLeast(paramFloat - jdField_b_of_type_Float, 0.0F) / (1.0F - jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(f);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetScalingFrameLayout.setScale(1.2F - 0.2F * paramFloat);
-    int i;
+    float f1 = RangesKt.coerceAtLeast(paramFloat - o, 0.0F) / (1.0F - o);
+    this.d.setAlpha(f1);
+    this.h.setScale(1.2F - 0.2F * paramFloat);
+    int i1;
     if (paramFloat == 0.0F) {
-      i = 8;
+      i1 = 8;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    if (this.e.getVisibility() != i) {
-      this.e.setVisibility(i);
+    if (this.i.getVisibility() != i1) {
+      this.i.setVisibility(i1);
     }
   }
   
   public final void a(@NotNull VideoFeedsStressFollowLayout.OnFollowActionListener paramOnFollowActionListener)
   {
     Intrinsics.checkParameterIsNotNull(paramOnFollowActionListener, "onFollowActionListener");
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramOnFollowActionListener);
+    this.l.add(paramOnFollowActionListener);
   }
   
   public final boolean a()
   {
-    VideoInfo localVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-    return (localVideoInfo != null) && (!localVideoInfo.p);
+    VideoInfo localVideoInfo = this.n;
+    return (localVideoInfo != null) && (!localVideoInfo.al);
   }
   
   public final boolean b()
   {
-    VideoInfo localVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-    return (localVideoInfo != null) && (localVideoInfo.j == true);
+    VideoInfo localVideoInfo = this.n;
+    return (localVideoInfo != null) && (localVideoInfo.Z == true);
+  }
+  
+  @NotNull
+  public final StressState getState()
+  {
+    return this.m;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.c == 0)
     {
-      this.jdField_a_of_type_Int = ((int)(getMeasuredWidth() - this.jdField_a_of_type_Float));
-      float f;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityStressState == StressState.Stretched) {
-        f = 1.0F;
+      this.c = ((int)(getMeasuredWidth() - this.b));
+      float f1;
+      if (this.m == StressState.Stretched) {
+        f1 = 1.0F;
       } else {
-        f = 0.0F;
+        f1 = 0.0F;
       }
-      a(f);
+      a(f1);
     }
   }
   
   public final void setStressState(@NotNull StressState paramStressState)
   {
     Intrinsics.checkParameterIsNotNull(paramStressState, "state");
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityStressState == paramStressState) {
+    if (this.m == paramStressState) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityStressState = paramStressState;
-    VideoInfo localVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+    this.m = paramStressState;
+    VideoInfo localVideoInfo = this.n;
     if (localVideoInfo != null) {
-      localVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityStressState = paramStressState;
+      localVideoInfo.aP = paramStressState;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityStressState == StressState.Stretched) {
+    if (this.m == StressState.Stretched) {
       a(1.0F);
     } else {
       a(0.0F);
@@ -242,17 +237,17 @@ public final class VideoFeedsStressFollowLayout
   public final void setVideoInfo(@NotNull VideoInfo paramVideoInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramVideoInfo, "info");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo = paramVideoInfo;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVideoInfo.k);
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    this.n = paramVideoInfo;
+    this.j.setText((CharSequence)paramVideoInfo.r);
+    TextView localTextView = this.k;
     BaseApplication localBaseApplication = BaseApplication.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "BaseApplication.getContext()");
-    localTextView.setText((CharSequence)localBaseApplication.getResources().getString(2131717925, new Object[] { a(paramVideoInfo.n) }));
+    localTextView.setText((CharSequence)localBaseApplication.getResources().getString(2131915399, new Object[] { a(paramVideoInfo.Y) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsStressFollowLayout
  * JD-Core Version:    0.7.0.1
  */

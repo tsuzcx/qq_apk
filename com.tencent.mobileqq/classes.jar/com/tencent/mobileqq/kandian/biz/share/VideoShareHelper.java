@@ -24,9 +24,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasManager.AtlasCallbackImpl;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoShareUtils;
@@ -38,7 +37,6 @@ import com.tencent.mobileqq.kandian.glue.video.report.VideoR5;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo.VideoExtraRepoerData;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
@@ -55,47 +53,38 @@ import org.json.JSONObject;
 public class VideoShareHelper
   implements AdapterView.OnItemClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private SparseArray<ShareAction> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private View jdField_a_of_type_AndroidViewView;
-  private EncryptUinHandler jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable = null;
-  private ReadInJoyAtlasManager.AtlasCallbackImpl jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl = new VideoShareHelper.4(this);
-  private ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  private KandianFavoriteBroadcastReceiver jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver;
-  private ReadInJoyShareHelperV2 jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2;
-  private VideoShareListener jdField_a_of_type_ComTencentMobileqqKandianBizShareVideoShareListener;
-  private VideoPlayManager jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPlayManager;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
-  private boolean d = false;
+  private AbsBaseArticleInfo a;
+  private ReadInJoyBaseAdapter b;
+  private int c;
+  private Activity d;
+  private Context e;
+  private Bundle f;
+  private Bitmap g = null;
+  private URLDrawable h = null;
+  private VideoShareListener i;
+  private VideoPlayManager j;
+  private boolean k = true;
+  private boolean l = false;
+  private boolean m = false;
+  private int n;
+  private View o;
+  private ActionSheet p;
+  private KandianFavoriteBroadcastReceiver q;
+  private HashSet<String> r = new HashSet();
+  private ReadInJoyShareHelperV2 s;
+  private EncryptUinHandler t;
+  private SparseArray<ShareAction> u = new SparseArray();
+  private boolean v = false;
+  private ReadInJoyAtlasManager.AtlasCallbackImpl w = new VideoShareHelper.4(this);
   
   public VideoShareHelper(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver = new KandianFavoriteBroadcastReceiver(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl);
+    this.d = paramActivity;
+    this.e = paramActivity;
+    this.q = new KandianFavoriteBroadcastReceiver(this.w);
     paramActivity = new IntentFilter();
     paramActivity.addAction("com.tencent.process.fav");
-    this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver, paramActivity);
-  }
-  
-  private QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
+    this.d.registerReceiver(this.q, paramActivity);
   }
   
   private String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -105,7 +94,7 @@ public class VideoShareHelper
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    EncryptUinHandler localEncryptUinHandler = this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler;
+    EncryptUinHandler localEncryptUinHandler = this.t;
     if (localEncryptUinHandler != null) {
       str = localEncryptUinHandler.a();
     }
@@ -125,48 +114,47 @@ public class VideoShareHelper
   
   private void a(int paramInt1, int paramInt2, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    String str1 = new VideoR5.Builder(null, paramAbsBaseArticleInfo.mSubscribeID, paramAbsBaseArticleInfo.mVideoVid, String.valueOf(paramAbsBaseArticleInfo.innerUniqueID), this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPlayManager.b(), paramAbsBaseArticleInfo.mVideoDuration * 1000).e(paramAbsBaseArticleInfo.mAlgorithmID).c(paramAbsBaseArticleInfo.mStrategyId).a(this.jdField_b_of_type_Int).a().a();
-    int i = 1;
+    String str1 = new VideoR5.Builder(null, paramAbsBaseArticleInfo.mSubscribeID, paramAbsBaseArticleInfo.mVideoVid, String.valueOf(paramAbsBaseArticleInfo.innerUniqueID), this.j.f(), paramAbsBaseArticleInfo.mVideoDuration * 1000).e(paramAbsBaseArticleInfo.mAlgorithmID).c(paramAbsBaseArticleInfo.mStrategyId).a(this.n).b().a();
+    int i1 = 1;
     if ((paramInt1 != 1) && (paramInt1 != 11) && (paramInt1 != 6))
     {
-      long l = this.jdField_a_of_type_AndroidAppActivity.getIntent().getLongExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);
+      long l1 = this.d.getIntent().getLongExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);
       localObject = new ReportInfo.VideoExtraRepoerData();
-      ((ReportInfo.VideoExtraRepoerData)localObject).d = ((int)this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPlayManager.b());
+      ((ReportInfo.VideoExtraRepoerData)localObject).d = ((int)this.j.f());
       ((ReportInfo.VideoExtraRepoerData)localObject).e = (paramAbsBaseArticleInfo.getVideoDuration() * 1000);
-      if (l == 0L) {
-        paramInt1 = i;
+      if (l1 == 0L) {
+        paramInt1 = i1;
       } else {
         paramInt1 = 2;
       }
       ((ReportInfo.VideoExtraRepoerData)localObject).c = paramInt1;
-      VideoReporter.a(paramAbsBaseArticleInfo, this.jdField_b_of_type_Int, 26, -1L, (ReportInfo.VideoExtraRepoerData)localObject);
+      VideoReporter.a(paramAbsBaseArticleInfo, this.n, 26, -1L, (ReportInfo.VideoExtraRepoerData)localObject);
     }
-    Object localObject = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-    String str2 = paramAbsBaseArticleInfo.mSubscribeID;
-    String str3 = Integer.toString(paramInt2);
+    Object localObject = paramAbsBaseArticleInfo.mSubscribeID;
+    String str2 = Integer.toString(paramInt2);
     if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID)) {
       paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.innerUniqueID;
     } else {
       paramAbsBaseArticleInfo = "0";
     }
-    ((IPublicAccountReportUtils)localObject).publicAccountReportClickEvent(null, str2, "0X800740F", "0X800740F", 0, 0, "1", str3, paramAbsBaseArticleInfo, str1, false);
+    PublicAccountReportUtils.a(null, (String)localObject, "0X800740F", "0X800740F", 0, 0, "1", str2, paramAbsBaseArticleInfo, str1, false);
   }
   
   private void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null) {
+    if (this.a == null) {
       return;
     }
     try
     {
       Object localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("network", GalleryReportedUtils.a(this.jdField_a_of_type_AndroidContentContext));
+      ((JSONObject)localObject1).put("network", GalleryReportedUtils.a(this.e));
       ((JSONObject)localObject1).put("os", "1");
-      ((JSONObject)localObject1).put("uin", String.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin()));
-      ((JSONObject)localObject1).put("rowkey", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID);
+      ((JSONObject)localObject1).put("uin", String.valueOf(RIJQQAppInterfaceUtil.c()));
+      ((JSONObject)localObject1).put("rowkey", this.a.innerUniqueID);
       ((JSONObject)localObject1).put("source", "2");
       ((JSONObject)localObject1).put("version", VideoReporter.a);
-      ((JSONObject)localObject1).put("vid", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.getVideoVid());
+      ((JSONObject)localObject1).put("vid", this.a.getVideoVid());
       if (paramBoolean) {
         ((JSONObject)localObject1).put("cancel", String.valueOf(1));
       }
@@ -191,12 +179,12 @@ public class VideoShareHelper
       localObject2 = "";
     }
     Object localObject2 = new VideoR5.Builder((String)localObject2);
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009546", "0X8009546", 0, 0, "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mAlgorithmID), ((VideoR5.Builder)localObject2).a().a(), false);
+    PublicAccountReportUtils.a(null, "", "0X8009546", "0X8009546", 0, 0, "", String.valueOf(this.a.mArticleID), String.valueOf(this.a.mAlgorithmID), ((VideoR5.Builder)localObject2).b().a(), false);
   }
   
   private void a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.k = false;
     boolean bool1;
     if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.wechatShareUrl))
     {
@@ -235,10 +223,10 @@ public class VideoShareHelper
       ((StringBuilder)localObject2).append(VideoFeedsHelper.b(paramAbsBaseArticleInfo.mVideoPlayCount));
       ((StringBuilder)localObject2).append(" ");
     }
-    paramString = (BaseActivity)this.jdField_a_of_type_AndroidAppActivity;
+    paramString = (BaseActivity)this.d;
     String str = paramAbsBaseArticleInfo.mTitle;
     localObject2 = ((StringBuilder)localObject2).toString();
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.g;
     boolean bool2;
     if (paramInt == 9) {
       bool2 = true;
@@ -254,14 +242,14 @@ public class VideoShareHelper
     localIntent.putExtras(VideoStructMsgHelper.a.a(paramAbsBaseArticleInfo));
     if ((paramString1 != null) && (paramString1.length() >= 5))
     {
-      localIntent.setClass(this.jdField_a_of_type_AndroidAppActivity, DirectForwardActivity.class);
+      localIntent.setClass(this.d, DirectForwardActivity.class);
       localIntent.putExtra("toUin", paramString1);
       localIntent.putExtra("uinType", paramInt);
       localIntent.putExtra("uinname", paramString2);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 21);
+      this.d.startActivityForResult(localIntent, 21);
       return;
     }
-    ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, 21);
+    ForwardBaseOption.a(this.d, localIntent, 21);
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -269,17 +257,17 @@ public class VideoShareHelper
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "shareMsgToSina start!");
     }
-    paramString2 = this.jdField_a_of_type_AndroidAppActivity;
+    paramString2 = this.d;
     Object localObject = new String[9];
     localObject[0] = "这个视频不错 ~\\(≧▽≦)/~";
-    localObject[1] = HardCodeUtil.a(2131716122);
-    localObject[2] = HardCodeUtil.a(2131716120);
-    localObject[3] = HardCodeUtil.a(2131716119);
-    localObject[4] = HardCodeUtil.a(2131716109);
-    localObject[5] = HardCodeUtil.a(2131716118);
-    localObject[6] = HardCodeUtil.a(2131716121);
-    localObject[7] = HardCodeUtil.a(2131716123);
-    localObject[8] = HardCodeUtil.a(2131716127);
+    localObject[1] = HardCodeUtil.a(2131913571);
+    localObject[2] = HardCodeUtil.a(2131913569);
+    localObject[3] = HardCodeUtil.a(2131913568);
+    localObject[4] = HardCodeUtil.a(2131913558);
+    localObject[5] = HardCodeUtil.a(2131913567);
+    localObject[6] = HardCodeUtil.a(2131913570);
+    localObject[7] = HardCodeUtil.a(2131913572);
+    localObject[8] = HardCodeUtil.a(2131913576);
     localObject = localObject[new java.util.Random().nextInt(localObject.length)];
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("#QQ看点#");
@@ -325,7 +313,7 @@ public class VideoShareHelper
       }
       catch (Exception paramString1)
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131719009, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(this.e, 0, 2131916544, 0).show(this.e.getResources().getDimensionPixelSize(2131299920));
         paramString1.printStackTrace();
       }
       if (QLog.isColorLevel()) {
@@ -336,69 +324,68 @@ public class VideoShareHelper
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "shareMsgToSina empty title or share_url");
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131719009, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(this.e, 0, 2131916544, 0).show(this.e.getResources().getDimensionPixelSize(2131299920));
   }
   
-  private void a(boolean paramBoolean)
+  private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2 == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2 = new ReadInJoyShareHelperV2(this.jdField_a_of_type_AndroidAppActivity, a(), new VideoShareHelper.SheetItemClickProcessor(this));
+    if (this.s == null) {
+      this.s = new ReadInJoyShareHelperV2(this.d, e(), new VideoShareHelper.SheetItemClickProcessor(this));
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2.a().setActionSheetTitle("biu出去让更多好友看到");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2.a().setOnDismissListener(new VideoShareHelper.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2.a().setCancelListener(new VideoShareHelper.2(this));
-    a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-    ReadInJoyShareHelperV2 localReadInJoyShareHelperV2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2;
+    this.s.a().setActionSheetTitle("biu出去让更多好友看到");
+    this.s.a().setOnDismissListener(new VideoShareHelper.1(this));
+    this.s.a().setCancelListener(new VideoShareHelper.2(this));
+    a(this.a);
+    ReadInJoyShareHelperV2 localReadInJoyShareHelperV2 = this.s;
     List[] arrayOfList = a(paramBoolean);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = ((AbsBaseArticleInfo)localObject).innerUniqueID;
     } else {
       localObject = "";
     }
     localReadInJoyShareHelperV2.a(arrayOfList, 14, (String)localObject);
-    c();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(13, new VideoShareHelper.SendToReadInJoyShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(72, new VideoShareHelper.SendToSpecialFriendShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, new VideoShareHelper.SendToFriendShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(73, new VideoShareHelper.SendToMoreFriendShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, new VideoShareHelper.SendToQzoneShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(9, new VideoShareHelper.SendToWeChatShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(10, new VideoShareHelper.SendToWeChatCircleShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(12, new VideoShareHelper.SendToSinaShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(5, new VideoShareHelper.OpenInQQBrowserShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(4, new VideoShareHelper.OpenInSysBrowserShareAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(26, new VideoShareHelper.SendToPcAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, new VideoShareHelper.CopyLinkAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(6, new VideoShareHelper.AddFavoriteAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, new VideoShareHelper.ReportAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(44, new VideoShareHelper.ReportDislikeAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(161, new VideoShareHelper.ReportVideoPlayFeedbackAction(this));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(134, new VideoShareHelper.AddVideoToTopic(this));
+    d();
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.u.put(13, new VideoShareHelper.SendToReadInJoyShareAction(this));
+    this.u.put(72, new VideoShareHelper.SendToSpecialFriendShareAction(this));
+    this.u.put(2, new VideoShareHelper.SendToFriendShareAction(this));
+    this.u.put(73, new VideoShareHelper.SendToMoreFriendShareAction(this));
+    this.u.put(3, new VideoShareHelper.SendToQzoneShareAction(this));
+    this.u.put(9, new VideoShareHelper.SendToWeChatShareAction(this));
+    this.u.put(10, new VideoShareHelper.SendToWeChatCircleShareAction(this));
+    this.u.put(12, new VideoShareHelper.SendToSinaShareAction(this));
+    this.u.put(5, new VideoShareHelper.OpenInQQBrowserShareAction(this));
+    this.u.put(4, new VideoShareHelper.OpenInSysBrowserShareAction(this));
+    this.u.put(26, new VideoShareHelper.SendToPcAction(this));
+    this.u.put(1, new VideoShareHelper.CopyLinkAction(this));
+    this.u.put(6, new VideoShareHelper.AddFavoriteAction(this));
+    this.u.put(11, new VideoShareHelper.ReportAction(this));
+    this.u.put(44, new VideoShareHelper.ReportDislikeAction(this));
+    this.u.put(161, new VideoShareHelper.ReportVideoPlayFeedbackAction(this));
+  }
+  
+  private void d()
+  {
+    this.g = null;
+    this.h = null;
     try
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.getVideoCoverURL(), null, null);
-      URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
-      if ((localURLDrawable != null) && (localURLDrawable.getStatus() == 1) && ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable)))
+      this.h = URLDrawable.getDrawable(this.a.getVideoCoverURL(), null, null);
+      URLDrawable localURLDrawable = this.h;
+      if ((localURLDrawable != null) && (localURLDrawable.getStatus() == 1) && ((this.h.getCurrDrawable() instanceof RegionDrawable)))
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = ((RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getBitmap();
+        this.g = ((RegionDrawable)this.h.getCurrDrawable()).getBitmap();
         return;
       }
-      localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      localURLDrawable = this.h;
       if (localURLDrawable != null)
       {
         localURLDrawable.setURLDrawableListener(new VideoShareHelper.3(this));
-        this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+        this.h.startDownload();
       }
       return;
     }
@@ -412,35 +399,29 @@ public class VideoShareHelper
     }
   }
   
-  public EncryptUinHandler a()
+  private QQAppInterface e()
   {
-    return (EncryptUinHandler)a().getBusinessHandler(BusinessHandlerFactory.ENCRYPT_UIN_HANDLER);
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
   }
   
-  public void a()
+  public EncryptUinHandler a()
   {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-    if (localActivity != null)
-    {
-      KandianFavoriteBroadcastReceiver localKandianFavoriteBroadcastReceiver = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver;
-      if (localKandianFavoriteBroadcastReceiver != null)
-      {
-        localActivity.unregisterReceiver(localKandianFavoriteBroadcastReceiver);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver = null;
-      }
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
+    return (EncryptUinHandler)e().getBusinessHandler(BusinessHandlerFactory.ENCRYPT_UIN_HANDLER);
   }
   
   public void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
+    this.o = paramView;
+    this.c = paramInt;
   }
   
   public void a(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = paramReadInJoyBaseAdapter;
+    this.b = paramReadInJoyBaseAdapter;
   }
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, Bundle paramBundle, VideoPlayManager paramVideoPlayManager, VideoShareListener paramVideoShareListener, int paramInt, boolean paramBoolean)
@@ -450,31 +431,31 @@ public class VideoShareHelper
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, Bundle paramBundle, VideoPlayManager paramVideoPlayManager, VideoShareListener paramVideoShareListener, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareVideoShareListener = paramVideoShareListener;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPlayManager = paramVideoPlayManager;
-    this.jdField_b_of_type_Int = paramInt;
+    this.a = paramAbsBaseArticleInfo;
+    this.i = paramVideoShareListener;
+    this.f = paramBundle;
+    this.j = paramVideoPlayManager;
+    this.n = paramInt;
     if (paramBoolean1) {
-      a(paramBoolean2);
+      b(paramBoolean2);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler = a();
-    paramAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountEncryptUinHandler;
+    this.t = a();
+    paramAbsBaseArticleInfo = this.t;
     if (paramAbsBaseArticleInfo != null) {
-      paramAbsBaseArticleInfo.a();
+      paramAbsBaseArticleInfo.b();
     }
-    if (!this.d)
+    if (!this.v)
     {
-      this.d = true;
-      b();
+      this.v = true;
+      c();
     }
   }
   
   public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    this.c = true;
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    ShareAction localShareAction = (ShareAction)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    this.m = true;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.a;
+    ShareAction localShareAction = (ShareAction)this.u.get(paramInt);
     if (localShareAction == null)
     {
       paramActionSheetItem = new StringBuilder();
@@ -483,34 +464,47 @@ public class VideoShareHelper
       QLog.e("Q.readinjoy.video.VideoShareHelper", 2, paramActionSheetItem.toString());
       return false;
     }
-    int i = localShareAction.c();
-    int j = localShareAction.a();
-    int k = localShareAction.b();
+    int i1 = localShareAction.c();
+    int i2 = localShareAction.a();
+    int i3 = localShareAction.b();
     localShareAction.a(paramInt, localAbsBaseArticleInfo, a(localAbsBaseArticleInfo), paramActionSheetItem);
-    a(paramInt, k, localAbsBaseArticleInfo);
-    a(i, j, false);
+    a(paramInt, i3, localAbsBaseArticleInfo);
+    a(i1, i2, false);
     return true;
   }
   
   public List<Integer>[] a(boolean paramBoolean)
   {
-    List localList = ReadInJoyShareHelperV2.a();
+    List localList = ReadInJoyShareHelperV2.i();
     if (!paramBoolean) {
       return new List[] { localList };
     }
     ArrayList localArrayList = new ArrayList();
-    if (RIJUgcUtils.a(a(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.isForbidReprint)) {
-      localArrayList.add(Integer.valueOf(134));
-    } else {
+    if (!RIJUgcUtils.a(e(), this.a.isForbidReprint)) {
       localArrayList.add(Integer.valueOf(6));
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mDislikeInfos != null) && (!this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mDislikeInfos.isEmpty())) {
+    if ((this.a.mDislikeInfos != null) && (!this.a.mDislikeInfos.isEmpty())) {
       localArrayList.add(Integer.valueOf(44));
     }
     localArrayList.add(Integer.valueOf(1));
     localArrayList.add(Integer.valueOf(11));
     localArrayList.add(Integer.valueOf(161));
     return new List[] { localList, localArrayList };
+  }
+  
+  public void b()
+  {
+    Activity localActivity = this.d;
+    if (localActivity != null)
+    {
+      KandianFavoriteBroadcastReceiver localKandianFavoriteBroadcastReceiver = this.q;
+      if (localKandianFavoriteBroadcastReceiver != null)
+      {
+        localActivity.unregisterReceiver(localKandianFavoriteBroadcastReceiver);
+        this.q = null;
+      }
+    }
+    this.o = null;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -534,7 +528,7 @@ public class VideoShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper
  * JD-Core Version:    0.7.0.1
  */

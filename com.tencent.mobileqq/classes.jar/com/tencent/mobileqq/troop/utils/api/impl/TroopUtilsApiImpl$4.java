@@ -11,15 +11,15 @@ class TroopUtilsApiImpl$4
   
   public void run()
   {
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.a;
     if (localAppRuntime != null) {
-      ((ITroopInfoService)localAppRuntime.getRuntimeService(ITroopInfoService.class, "")).saveTroopInfo(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
+      ((ITroopInfoService)localAppRuntime.getRuntimeService(ITroopInfoService.class, "")).saveTroopInfo(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.api.impl.TroopUtilsApiImpl.4
  * JD-Core Version:    0.7.0.1
  */

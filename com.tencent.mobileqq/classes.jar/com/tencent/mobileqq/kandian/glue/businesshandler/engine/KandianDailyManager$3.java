@@ -27,18 +27,18 @@ class KandianDailyManager$3
     ((msg_svc.PbC2CReadedReportReq.UinPairReadInfo)localObject).last_read_time.set((int)NetConnInfoCenter.getServerTime());
     msg_svc.PbC2CReadedReportReq localPbC2CReadedReportReq = new msg_svc.PbC2CReadedReportReq();
     localPbC2CReadedReportReq.pair_info.add((MessageMicro)localObject);
-    localObject = this.this$0.a.getMsgHandler().a().a();
+    localObject = this.this$0.b.getMsgHandler().l().e();
     if (localObject != null) {
       localPbC2CReadedReportReq.sync_cookie.set(ByteStringMicro.copyFrom((byte[])localObject));
     }
     localObject = new msg_svc.PbMsgReadedReportReq();
     ((msg_svc.PbMsgReadedReportReq)localObject).c2c_read_report.set(localPbC2CReadedReportReq);
-    this.this$0.a.getMsgHandler().a("c2c_processor").a((msg_svc.PbMsgReadedReportReq)localObject);
+    this.this$0.b.getMsgHandler().a("c2c_processor").a((msg_svc.PbMsgReadedReportReq)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianDailyManager.3
  * JD-Core Version:    0.7.0.1
  */

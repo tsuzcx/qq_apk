@@ -11,20 +11,20 @@ class HotChatPostItemView$1$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetHotChatPostItemView$1$1.this$0.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String))
+    if ((this.b.this$0.a.getTag() instanceof String))
     {
-      String str = (String)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetHotChatPostItemView$1$1.this$0.jdField_a_of_type_AndroidWidgetImageView.getTag();
-      if ((this.jdField_a_of_type_AndroidUtilPair != null) && (str.endsWith(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetHotChatPostItemView$1$1.this$0.jdField_a_of_type_JavaLangString)))
+      String str = (String)this.b.this$0.a.getTag();
+      if ((this.a != null) && (str.endsWith(this.b.this$0.e)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetHotChatPostItemView$1$1.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
-        HotChatPostItemView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetHotChatPostItemView$1$1.this$0.jdField_a_of_type_JavaLangString, (Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
+        this.b.this$0.a.setImageBitmap((Bitmap)this.a.first);
+        HotChatPostItemView.a(this.b.this$0.e, (Bitmap)this.a.first);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.HotChatPostItemView.1.1.1
  * JD-Core Version:    0.7.0.1
  */

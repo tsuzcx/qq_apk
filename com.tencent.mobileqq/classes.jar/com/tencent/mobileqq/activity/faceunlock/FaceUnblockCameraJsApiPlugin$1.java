@@ -16,7 +16,7 @@ class FaceUnblockCameraJsApiPlugin$1
   {
     if (paramIntent.getBooleanExtra("recording_time_out", false))
     {
-      QQToast.a(this.a.mRuntime.a(), 2131698930, 0).a();
+      QQToast.makeText(this.a.mRuntime.d(), 2131896904, 0).show();
       QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
       return;
     }
@@ -26,7 +26,7 @@ class FaceUnblockCameraJsApiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.faceunlock.FaceUnblockCameraJsApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

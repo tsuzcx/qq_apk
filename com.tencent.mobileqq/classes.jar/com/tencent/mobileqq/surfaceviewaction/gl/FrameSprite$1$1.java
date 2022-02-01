@@ -12,8 +12,8 @@ class FrameSprite$1$1
     int i;
     synchronized (this.a.this$0)
     {
-      Texture[] arrayOfTexture = FrameSprite.a(this.a.this$0);
-      if ((arrayOfTexture != null) && (!FrameSprite.a(this.a.this$0)))
+      Texture[] arrayOfTexture = FrameSprite.f(this.a.this$0);
+      if ((arrayOfTexture != null) && (!FrameSprite.b(this.a.this$0)))
       {
         FrameSprite.a(this.a.this$0, new Texture[FrameSprite.a(this.a.this$0).length / 2]);
         i = 0;
@@ -26,7 +26,7 @@ class FrameSprite$1$1
           }
           else
           {
-            FrameSprite.a(this.a.this$0).remove(arrayOfTexture[i]);
+            FrameSprite.g(this.a.this$0).remove(arrayOfTexture[i]);
             arrayOfTexture[i].c();
           }
         }
@@ -40,7 +40,7 @@ class FrameSprite$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.1.1
  * JD-Core Version:    0.7.0.1
  */

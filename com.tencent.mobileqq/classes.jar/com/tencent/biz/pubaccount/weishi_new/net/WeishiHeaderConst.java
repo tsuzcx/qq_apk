@@ -5,11 +5,11 @@ import cooperation.qzone.util.QZLog;
 
 public class WeishiHeaderConst
 {
-  public static int a = 0;
   public static String a = "1522415138827987";
-  public static int b;
-  public static String b;
-  public static String c;
+  public static int b = 760;
+  public static String c = "";
+  public static String d = "";
+  public static int e = 0;
   
   static
   {
@@ -20,15 +20,11 @@ public class WeishiHeaderConst
     } else {
       i = j;
     }
-    a = i;
+    b = i;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("appversion:");
     localStringBuilder.append(j);
     QZLog.d("WeishiHeaderConst", 4, localStringBuilder.toString());
-    a = 760;
-    jdField_b_of_type_JavaLangString = "";
-    c = "";
-    jdField_b_of_type_Int = 0;
   }
   
   static int a()
@@ -57,7 +53,7 @@ public class WeishiHeaderConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiHeaderConst
  * JD-Core Version:    0.7.0.1
  */

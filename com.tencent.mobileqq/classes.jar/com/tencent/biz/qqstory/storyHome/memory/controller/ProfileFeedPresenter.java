@@ -22,75 +22,73 @@ import mqq.os.MqqHandler;
 public class ProfileFeedPresenter
   extends HomeFeedPresenter
 {
-  private static String jdField_a_of_type_JavaLangString = "feed_data_request";
-  private static String jdField_b_of_type_JavaLangString = "year_node_data_request";
-  private ProfileFeedPresenter.FeedPresenterListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$FeedPresenterListener;
-  private ProfileFeedPresenter.GetYearNodeListEvent jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent;
-  private ProfileFeedPresenter.GetYearNodeListReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListReceiver;
-  private ProfileFeedPresenter.UploadStatusReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$UploadStatusReceiver;
-  private ProfileFeedPresenter.VideoDeleteReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$VideoDeleteReceiver;
-  private HomeFeedData jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData;
-  public List<MomeriesYearNode> a;
-  public boolean a;
-  private List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private static String d = "feed_data_request";
+  private static String e = "year_node_data_request";
+  public boolean a = false;
+  public List<MomeriesYearNode> b = new ArrayList();
+  private List<String> f = new ArrayList();
+  private HomeFeedData g;
+  private ProfileFeedPresenter.GetYearNodeListEvent h;
+  private ProfileFeedPresenter.FeedPresenterListener i;
+  private ProfileFeedPresenter.VideoDeleteReceiver j;
+  private ProfileFeedPresenter.UploadStatusReceiver k;
+  private ProfileFeedPresenter.GetYearNodeListReceiver l;
   
   public ProfileFeedPresenter(int paramInt, @NonNull HomeFeedPresenter.HomeFeedPresenterListener paramHomeFeedPresenterListener, @NonNull ProfileFeedPresenter.FeedPresenterListener paramFeedPresenterListener, boolean paramBoolean)
   {
     super(paramInt, paramHomeFeedPresenterListener, paramBoolean);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$FeedPresenterListener = paramFeedPresenterListener;
+    this.i = paramFeedPresenterListener;
   }
   
   private void a(List<MomeriesYearNode> paramList, boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.b.addAll(paramList);
   }
   
   private void b(boolean paramBoolean)
   {
     SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "request year node list. single refresh : %s.", Boolean.valueOf(paramBoolean));
     GetProfileYearNodeListRequest localGetProfileYearNodeListRequest = new GetProfileYearNodeListRequest();
-    localGetProfileYearNodeListRequest.jdField_a_of_type_JavaLangString = QQStoryContext.a().b();
+    localGetProfileYearNodeListRequest.e = QQStoryContext.a().i();
     CmdTaskManger.a().a(localGetProfileYearNodeListRequest, new ProfileFeedPresenter.1(this, paramBoolean));
   }
   
-  private void f()
+  private void j()
   {
-    SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "check result. remain requests's size is %d.", Integer.valueOf(this.jdField_b_of_type_JavaUtilList.size()));
-    if (!this.jdField_b_of_type_JavaUtilList.isEmpty()) {
+    SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "check result. remain requests's size is %d.", Integer.valueOf(this.f.size()));
+    if (!this.f.isEmpty()) {
       return;
     }
-    HomeFeedData localHomeFeedData = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData;
-    if ((localHomeFeedData != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent != null))
+    HomeFeedData localHomeFeedData = this.g;
+    if ((localHomeFeedData != null) && (this.h != null))
     {
-      if ((!localHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+      if ((!localHomeFeedData.g.isFail()) && (!this.h.g.isFail()))
       {
         SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "check result and result is successful. start updating data.");
-        this.jdField_a_of_type_Boolean = true;
-        a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_JavaUtilList, true);
-        b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
+        this.a = true;
+        a(this.h.b, true);
+        b(this.g);
         return;
       }
-      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result and result is failed. mFeedDataRsp is failed = %s, mYearNodeRsp is failed = %s.", new Object[] { Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) });
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$FeedPresenterListener.a(false);
+      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result and result is failed. mFeedDataRsp is failed = %s, mYearNodeRsp is failed = %s.", new Object[] { Boolean.valueOf(this.g.g.isFail()), Boolean.valueOf(this.h.g.isFail()) });
+      this.i.a(false);
       return;
     }
-    SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result mFeedDataRsp or mYearNodeRsp is null, mFeedDataRsp = %s, mYearNodeRsp = %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent });
+    SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result mFeedDataRsp or mYearNodeRsp is null, mFeedDataRsp = %s, mYearNodeRsp = %s", new Object[] { this.g, this.h });
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$VideoDeleteReceiver = new ProfileFeedPresenter.VideoDeleteReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$VideoDeleteReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$UploadStatusReceiver = new ProfileFeedPresenter.UploadStatusReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$UploadStatusReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListReceiver = new ProfileFeedPresenter.GetYearNodeListReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListReceiver);
+    this.j = new ProfileFeedPresenter.VideoDeleteReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.j);
+    this.k = new ProfileFeedPresenter.UploadStatusReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.k);
+    this.l = new ProfileFeedPresenter.GetYearNodeListReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.l);
   }
   
   public void a(HomeFeedData paramHomeFeedData)
@@ -105,29 +103,29 @@ public class ProfileFeedPresenter
     if (paramBoolean)
     {
       super.a(true);
-      a(((MemoryManager)SuperManager.a(19)).a(), true);
-      if ((a().size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-        this.jdField_a_of_type_Boolean = true;
+      a(((MemoryManager)SuperManager.a(19)).c(), true);
+      if ((i().size() > 0) && (this.b.size() > 0)) {
+        this.a = true;
       }
     }
     else
     {
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData = null;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent = null;
+      this.f.clear();
+      this.g = null;
+      this.h = null;
       super.a(false);
-      this.jdField_b_of_type_JavaUtilList.add(jdField_a_of_type_JavaLangString);
+      this.f.add(d);
       b(false);
-      this.jdField_b_of_type_JavaUtilList.add(jdField_b_of_type_JavaLangString);
+      this.f.add(e);
     }
   }
   
   public void b()
   {
     super.b();
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$VideoDeleteReceiver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$UploadStatusReceiver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListReceiver);
+    StoryDispatcher.a().unRegisterSubscriber(this.j);
+    StoryDispatcher.a().unRegisterSubscriber(this.k);
+    StoryDispatcher.a().unRegisterSubscriber(this.l);
   }
   
   protected void b(HomeFeedData paramHomeFeedData)

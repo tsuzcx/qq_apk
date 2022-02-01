@@ -17,23 +17,17 @@ import java.util.ArrayList;
 public class GameMsgQuickReplayAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<GameMsgQuickReplyInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public GameMsgQuickReplayAdapter(Context paramContext, ArrayList<GameMsgQuickReplyInfo> paramArrayList)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-  }
+  private ArrayList<GameMsgQuickReplyInfo> a;
+  private Context b;
   
   public GameMsgQuickReplyInfo a(int paramInt)
   {
-    return (GameMsgQuickReplyInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return (GameMsgQuickReplyInfo)this.a.get(paramInt);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public long getItemId(int paramInt)
@@ -47,8 +41,8 @@ public class GameMsgQuickReplayAdapter
     if (paramView == null)
     {
       localViewHolder = new GameMsgQuickReplayAdapter.ViewHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559140, paramViewGroup, false);
-      localViewHolder.a = ((TextView)paramView.findViewById(2131377458));
+      paramView = LayoutInflater.from(this.b).inflate(2131624891, paramViewGroup, false);
+      localViewHolder.a = ((TextView)paramView.findViewById(2131445857));
       paramView.setTag(localViewHolder);
     }
     else
@@ -63,9 +57,9 @@ public class GameMsgQuickReplayAdapter
       localViewHolder.a.setTextColor(Color.parseColor("#1C1D1E"));
     }
     if (bool) {
-      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838593));
+      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838710));
     } else {
-      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838592));
+      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838709));
     }
     localViewHolder.a.setText(localGameMsgQuickReplyInfo.a);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
@@ -74,7 +68,7 @@ public class GameMsgQuickReplayAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.adapter.GameMsgQuickReplayAdapter
  * JD-Core Version:    0.7.0.1
  */

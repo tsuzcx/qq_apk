@@ -20,17 +20,17 @@ class SubscriptFeedsActivity$11
 {
   SubscriptFeedsActivity$11(SubscriptFeedsActivity paramSubscriptFeedsActivity, String paramString, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      TroopBarAssistantManager.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity, null);
-      paramInt = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString);
-      RecentUtil.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString, paramInt);
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app.getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 1008);
+      TroopBarAssistantManager.a().a(this.a, this.c.app, this.c, null);
+      paramInt = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.c.app, this.a);
+      RecentUtil.b(this.c.app, this.a, paramInt);
+      this.c.app.getMessageFacade().a(this.a, 1008);
       ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8006113", "0X8006113", 0, 0, "", "", "", "");
       int i = 0;
-      paramView = SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity).iterator();
+      paramView = SubscriptFeedsActivity.d(this.c).iterator();
       do
       {
         paramInt = i;
@@ -38,20 +38,20 @@ class SubscriptFeedsActivity$11
           break;
         }
         localObject = (SubscriptionFeed)paramView.next();
-      } while ((((SubscriptionFeed)localObject).jdField_a_of_type_JavaLangString == null) || (!((SubscriptionFeed)localObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)));
+      } while ((((SubscriptionFeed)localObject).c == null) || (!((SubscriptionFeed)localObject).c.equals(this.a)));
       paramInt = ((SubscriptionFeed)localObject).b;
-      paramView = this.jdField_a_of_type_JavaLangString;
+      paramView = this.a;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
       ((StringBuilder)localObject).append(paramInt);
       ReportController.b(null, "dc00899", "Pb_account_lifeservice", paramView, "0X80064CF", "0X80064CF", 0, 0, ((StringBuilder)localObject).toString(), "", "", "");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.11
  * JD-Core Version:    0.7.0.1
  */

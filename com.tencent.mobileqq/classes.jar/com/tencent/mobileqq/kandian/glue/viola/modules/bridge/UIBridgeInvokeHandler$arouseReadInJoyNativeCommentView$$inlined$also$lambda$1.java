@@ -12,12 +12,12 @@ final class UIBridgeInvokeHandler$arouseReadInJoyNativeCommentView$$inlined$also
   
   public final void a(String paramString, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeUIBridgeInvokeHandler.a(paramString, paramJSONObject);
+    this.a.a(paramString, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.UIBridgeInvokeHandler.arouseReadInJoyNativeCommentView..inlined.also.lambda.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,11 @@ public abstract interface IReadInJoyShareHelper
   public static final int ACTION_OPEN_WEISHI_ACCOUNT = 22;
   public static final int ADD_FAVOURITE = 12;
   public static final int ADD_FRIEND = 17;
-  public static final int ADD_TO_COLUMN = 37;
   public static final int COLOR_NOTE = 32;
   public static final int COLOR_NOTE_DELETE = 33;
   public static final int COPY_LINK = 14;
   public static final int CREATE_SHARED_CARD = 30;
   public static final int DELETE = 25;
-  public static final int DELETE_COLUMN = 36;
   public static final int DIS_LIKE = 15;
   public static final int EDIT = 35;
   public static final int EXPORT_TENCENT_DOCS = 28;
@@ -32,7 +30,6 @@ public abstract interface IReadInJoyShareHelper
   public static final int QQ_FRIEND = 2;
   public static final int QZONE = 3;
   public static final int REMOVE_FANS = 18;
-  public static final int REMOVE_FROM_COLUMN = 38;
   public static final int REPORT = 20;
   public static final int SAVE_PIC = 11;
   public static final int SAVE_SHARED_CARD = 31;
@@ -52,7 +49,7 @@ public abstract interface IReadInJoyShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.api.IReadInJoyShareHelper
  * JD-Core Version:    0.7.0.1
  */

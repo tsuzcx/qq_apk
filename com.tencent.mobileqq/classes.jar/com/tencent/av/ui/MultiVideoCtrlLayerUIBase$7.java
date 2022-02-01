@@ -13,12 +13,12 @@ class MultiVideoCtrlLayerUIBase$7
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.am != null)
     {
-      if (this.jdField_a_of_type_ComTencentUtilPair.second == null) {
+      if (this.a.second == null) {
         return;
       }
-      ArrayList localArrayList = this.this$0.a.a(((Integer)this.jdField_a_of_type_ComTencentUtilPair.first).intValue(), (ArrayList)this.jdField_a_of_type_ComTencentUtilPair.second);
+      ArrayList localArrayList = this.this$0.am.a(((Integer)this.a.first).intValue(), (ArrayList)this.a.second);
       ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.7.1(this, localArrayList));
     }
   }

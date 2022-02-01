@@ -37,7 +37,7 @@ class VideoCallStateMonitor$TimerHandler
         if (i != 3) {
           return;
         }
-        VideoCallStateMonitor.a(localVideoCallStateMonitor);
+        VideoCallStateMonitor.b(localVideoCallStateMonitor);
         return;
       }
       VideoCallStateMonitor.a(localVideoCallStateMonitor, paramMessage.what);

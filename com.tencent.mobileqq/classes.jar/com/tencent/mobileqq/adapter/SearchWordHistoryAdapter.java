@@ -20,41 +20,41 @@ import java.util.List;
 public class SearchWordHistoryAdapter
   extends BaseAdapter
 {
-  protected int a;
   protected Context a;
-  protected View a;
-  protected QQAppInterface a;
-  protected SearchWordHistoryManager a;
-  public List<String> a;
+  protected SearchWordHistoryManager b;
+  protected QQAppInterface c;
+  protected View d;
+  public List<String> e;
+  protected int f;
   
   public SearchWordHistoryAdapter(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager = ((SearchWordHistoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SEARCH_WORD_HISTORY_MANAGER));
+    this.a = paramContext;
+    this.c = paramQQAppInterface;
+    this.d = paramView;
+    this.f = paramInt;
+    this.b = ((SearchWordHistoryManager)this.c.getManager(QQManagerFactory.SEARCH_WORD_HISTORY_MANAGER));
   }
   
   public String a(int paramInt)
   {
-    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (String)this.e.get(paramInt);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager.a();
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.e = this.b.b();
+    if (this.e.isEmpty()) {
+      this.d.setVisibility(8);
     } else {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.d.setVisibility(0);
     }
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.e;
     if (localList == null) {
       return 0;
     }
@@ -71,13 +71,13 @@ public class SearchWordHistoryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559808, paramViewGroup, false);
+      localView = LayoutInflater.from(this.a).inflate(2131625851, paramViewGroup, false);
       paramView = new SearchWordHistoryAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368193));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368194));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)localView.findViewById(2131376671));
-      paramView.b = localView.findViewById(2131365776);
-      paramView.jdField_a_of_type_AndroidViewView = localView;
+      paramView.c = ((ImageView)localView.findViewById(2131435058));
+      paramView.d = ((TextView)localView.findViewById(2131435059));
+      paramView.e = ((PressEffectImageView)localView.findViewById(2131444937));
+      paramView.b = localView.findViewById(2131432033);
+      paramView.a = localView;
       localView.setTag(paramView);
     }
     else
@@ -86,35 +86,35 @@ public class SearchWordHistoryAdapter
       localView = paramView;
       paramView = localViewHolder;
     }
-    paramView.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    paramView.f = paramInt;
+    if (this.e != null) {
+      paramView.d.setText((CharSequence)this.e.get(paramInt));
     }
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991B8"));
+      paramView.d.setTextColor(Color.parseColor("#6991B8"));
       paramView.b.setBackgroundColor(Color.parseColor("#040E1C"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846215);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839385);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846213);
+      paramView.c.setImageResource(2130847685);
+      paramView.a.setBackgroundResource(2130839569);
+      paramView.e.setImageResource(2130847683);
     }
     else
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4D4D4D"));
+      paramView.d.setTextColor(Color.parseColor("#4D4D4D"));
       paramView.b.setBackgroundColor(Color.parseColor("#E6E6E6"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846214);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839384);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846212);
+      paramView.c.setImageResource(2130847684);
+      paramView.a.setBackgroundResource(2130839568);
+      paramView.e.setImageResource(2130847682);
     }
     localView.setOnClickListener(paramView);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramView);
+    paramView.e.setOnClickListener(paramView);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.SearchWordHistoryAdapter
  * JD-Core Version:    0.7.0.1
  */

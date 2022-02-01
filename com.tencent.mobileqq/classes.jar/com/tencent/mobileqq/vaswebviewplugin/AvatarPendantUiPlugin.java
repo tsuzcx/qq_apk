@@ -32,7 +32,7 @@ public class AvatarPendantUiPlugin
   void OnActivityResume()
   {
     super.OnActivityResume();
-    this.activity.setTitle(HardCodeUtil.a(2131701098));
+    this.activity.setTitle(HardCodeUtil.a(2131899116));
   }
   
   public String decodeUrl(String paramString)
@@ -47,7 +47,7 @@ public class AvatarPendantUiPlugin
     if (paramString == null) {
       return null;
     }
-    Object localObject2 = paramString.replace("[client]", "androidQQ").replace("[version]", "8.7.0.5295").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
+    Object localObject2 = paramString.replace("[client]", "androidQQ").replace("[version]", "8.8.17.5770").replace("[system]", Build.VERSION.RELEASE).replace("[device]", Build.DEVICE);
     Object localObject1 = super.getInfoIntent();
     if (((Intent)localObject1).getBooleanExtra("key_update_flag", false)) {
       paramString = "1";
@@ -243,7 +243,7 @@ public class AvatarPendantUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantUiPlugin
  * JD-Core Version:    0.7.0.1
  */

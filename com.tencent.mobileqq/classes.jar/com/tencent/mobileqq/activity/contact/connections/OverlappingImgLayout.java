@@ -18,15 +18,15 @@ import java.util.List;
 public class OverlappingImgLayout
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 0;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = new OverlappingImgLayout.1(this);
-  private List<ImageView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = null;
+  DecodeTaskCompletionListener a = new OverlappingImgLayout.1(this);
   private int b = 0;
   private int c = 0;
-  private int d = 1;
+  private int d = 0;
+  private String[] e = null;
+  private List<ImageView> f = new ArrayList();
+  private IFaceDecoder g;
+  private boolean h = true;
+  private int i = 1;
   
   public OverlappingImgLayout(Context paramContext)
   {
@@ -45,7 +45,7 @@ public class OverlappingImgLayout
   
   private Bitmap a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    Object localObject = this.g;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -57,8 +57,8 @@ public class OverlappingImgLayout
     if (localObject != null) {
       return localObject;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 4);
+    if (!this.g.isPausing()) {
+      this.g.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 4);
     }
     return null;
   }
@@ -74,60 +74,33 @@ public class OverlappingImgLayout
   private void a()
   {
     removeAllViews();
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+    if (this.f.size() == 0) {
       return;
     }
-    int i = 0;
     int j = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    int k = 0;
+    while (j < this.f.size())
     {
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = (int)DisplayUtils.a(getContext(), 1.0F);
-      localImageView.setPadding(k, k, k, k);
-      if (!a()) {
-        localImageView.setBackgroundResource(2130837689);
+      ImageView localImageView = (ImageView)this.f.get(j);
+      int m = (int)DisplayUtils.a(getContext(), 1.0F);
+      localImageView.setPadding(m, m, m, m);
+      if (!b()) {
+        localImageView.setBackgroundResource(2130837713);
       } else {
-        localImageView.setBackgroundResource(2130837690);
+        localImageView.setBackgroundResource(2130837714);
       }
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
-      localLayoutParams.setMargins(j * -1, 0, 0, 0);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.c, this.b);
+      localLayoutParams.setMargins(k * -1, 0, 0, 0);
       localImageView.setLayoutParams(localLayoutParams);
       addView(localImageView);
-      j = this.c;
-      i += 1;
+      k = this.d;
+      j += 1;
     }
   }
   
-  private void a(int paramInt)
+  private boolean b()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
-    if (localObject != null)
-    {
-      if (localObject.length == 0) {
-        return;
-      }
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        if (i >= 3) {
-          return;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          localObject = new ThemeImageView(getContext());
-        } else {
-          localObject = new ImageView(getContext());
-        }
-        ((ImageView)localObject).setImageBitmap(a(this.jdField_a_of_type_ArrayOfJavaLangString[i], paramInt));
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        i += 1;
-      }
-    }
-  }
-  
-  private boolean a()
-  {
-    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool2 = this.h;
     boolean bool1 = false;
     if (!bool2) {
       return false;
@@ -138,17 +111,44 @@ public class OverlappingImgLayout
     return bool1;
   }
   
+  private void setImgs(int paramInt)
+  {
+    this.f.clear();
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      if (localObject.length == 0) {
+        return;
+      }
+      int j = 0;
+      while (j < this.e.length)
+      {
+        if (j >= 3) {
+          return;
+        }
+        if (this.h) {
+          localObject = new ThemeImageView(getContext());
+        } else {
+          localObject = new ImageView(getContext());
+        }
+        ((ImageView)localObject).setImageBitmap(a(this.e[j], paramInt));
+        this.f.add(localObject);
+        j += 1;
+      }
+    }
+  }
+  
   public void a(int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString, IFaceDecoder paramIFaceDecoder)
   {
-    this.jdField_a_of_type_Int = ((int)DisplayUtils.a(getContext(), paramInt1));
-    this.b = ((int)DisplayUtils.a(getContext(), paramInt2));
-    this.c = paramInt3;
+    this.b = ((int)DisplayUtils.a(getContext(), paramInt1));
+    this.c = ((int)DisplayUtils.a(getContext(), paramInt2));
+    this.d = paramInt3;
     setOrientation(0);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
+    this.g = paramIFaceDecoder;
     if (paramIFaceDecoder != null) {
-      paramIFaceDecoder.setDecodeTaskCompletionListener(this.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener);
+      paramIFaceDecoder.setDecodeTaskCompletionListener(this.a);
     }
-    this.d = 1;
+    this.i = 1;
     a(paramArrayOfString);
   }
   
@@ -159,19 +159,19 @@ public class OverlappingImgLayout
   
   public void a(String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    a(this.d);
+    this.e = paramArrayOfString;
+    setImgs(this.i);
     a();
   }
   
   public void setNeedNightMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ import mqq.app.AppRuntime;
 public abstract class UFTHttpCommunicator
   implements IHttpCommunicatorListener
 {
-  protected final long a;
-  private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
-  protected final AppRuntime a;
-  private boolean jdField_a_of_type_Boolean = false;
-  protected boolean b = true;
+  private HttpMsg a;
+  private boolean b = false;
+  protected final AppRuntime c;
+  protected final long d;
+  protected boolean e = true;
   
   public UFTHttpCommunicator(AppRuntime paramAppRuntime, long paramLong)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramAppRuntime;
+    this.d = paramLong;
   }
   
   private TimeoutParam a()
@@ -51,7 +51,7 @@ public abstract class UFTHttpCommunicator
     }
     int j = 0;
     label50:
-    int m = UFTDependFeatureApi.b();
+    int m = UFTDependFeatureApi.d();
     if (m == 2) {
       k = 1;
     } else {
@@ -85,7 +85,48 @@ public abstract class UFTHttpCommunicator
     return null;
   }
   
-  private void a(HttpMsg paramHttpMsg)
+  private boolean a(HttpMsg paramHttpMsg)
+  {
+    Object localObject = this.a;
+    if (paramHttpMsg == localObject) {
+      return true;
+    }
+    if ((paramHttpMsg != null) && (localObject != null))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("id[");
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append("],Req Serial[");
+      ((StringBuilder)localObject).append(String.valueOf(paramHttpMsg.getSerial()));
+      ((StringBuilder)localObject).append("], curRequest Serial[");
+      ((StringBuilder)localObject).append(String.valueOf(this.a.getSerial()));
+      ((StringBuilder)localObject).append("]");
+      UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, ((StringBuilder)localObject).toString());
+    }
+    else if (paramHttpMsg != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("id[");
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append("],Req Serial[");
+      ((StringBuilder)localObject).append(String.valueOf(paramHttpMsg.getSerial()));
+      ((StringBuilder)localObject).append("]");
+      UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, ((StringBuilder)localObject).toString());
+    }
+    else if (this.a != null)
+    {
+      paramHttpMsg = new StringBuilder();
+      paramHttpMsg.append("id[");
+      paramHttpMsg.append(this.d);
+      paramHttpMsg.append("],curRequest Serial[");
+      paramHttpMsg.append(String.valueOf(this.a.getSerial()));
+      paramHttpMsg.append("]");
+      UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, paramHttpMsg.toString());
+    }
+    return false;
+  }
+  
+  private void b(HttpMsg paramHttpMsg)
   {
     if (paramHttpMsg.getResponseCode() == 200)
     {
@@ -108,12 +149,12 @@ public abstract class UFTHttpCommunicator
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("id[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append("],decodePost userRetCode[");
       ((StringBuilder)localObject).append(l2);
       ((StringBuilder)localObject).append("]");
       UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, ((StringBuilder)localObject).toString());
-      c(paramHttpMsg);
+      d(paramHttpMsg);
       return;
     }
     l1 = -1L;
@@ -133,61 +174,20 @@ public abstract class UFTHttpCommunicator
     return;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("id[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append("],decodePost but response Code [");
     ((StringBuilder)localObject).append(paramHttpMsg.getResponseCode());
     ((StringBuilder)localObject).append("] is not 200");
     UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, ((StringBuilder)localObject).toString());
   }
   
-  private boolean a(HttpMsg paramHttpMsg)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
-    if (paramHttpMsg == localObject) {
-      return true;
-    }
-    if ((paramHttpMsg != null) && (localObject != null))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("id[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
-      ((StringBuilder)localObject).append("],Req Serial[");
-      ((StringBuilder)localObject).append(String.valueOf(paramHttpMsg.getSerial()));
-      ((StringBuilder)localObject).append("], curRequest Serial[");
-      ((StringBuilder)localObject).append(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()));
-      ((StringBuilder)localObject).append("]");
-      UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, ((StringBuilder)localObject).toString());
-    }
-    else if (paramHttpMsg != null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("id[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
-      ((StringBuilder)localObject).append("],Req Serial[");
-      ((StringBuilder)localObject).append(String.valueOf(paramHttpMsg.getSerial()));
-      ((StringBuilder)localObject).append("]");
-      UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, ((StringBuilder)localObject).toString());
-    }
-    else if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
-    {
-      paramHttpMsg = new StringBuilder();
-      paramHttpMsg.append("id[");
-      paramHttpMsg.append(this.jdField_a_of_type_Long);
-      paramHttpMsg.append("],curRequest Serial[");
-      paramHttpMsg.append(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getSerial()));
-      paramHttpMsg.append("]");
-      UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, paramHttpMsg.toString());
-    }
-    return false;
-  }
-  
-  private void b(HttpMsg paramHttpMsg)
+  private void c(HttpMsg paramHttpMsg)
   {
     if ((paramHttpMsg.getResponseCode() != 206) && (paramHttpMsg.getResponseCode() != 200))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("] decodeGet resp Code [");
       localStringBuilder.append(paramHttpMsg.getResponseCode());
       localStringBuilder.append("] no 200|206");
@@ -197,7 +197,7 @@ public abstract class UFTHttpCommunicator
     a(new UFTHttpCommunicator.UFTHttpRsp(paramHttpMsg.getRecvData(), paramHttpMsg.rawRespHeader, 0L, 0L, paramHttpMsg.getTotalLen()));
   }
   
-  private void c(HttpMsg paramHttpMsg)
+  private void d(HttpMsg paramHttpMsg)
   {
     String str = null;
     if (paramHttpMsg != null)
@@ -207,7 +207,7 @@ public abstract class UFTHttpCommunicator
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("id[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("], httpReq Error:");
       localStringBuilder.append(paramHttpMsg.errCode);
       localStringBuilder.append(" ");
@@ -218,17 +218,12 @@ public abstract class UFTHttpCommunicator
     }
     paramHttpMsg = new StringBuilder();
     paramHttpMsg.append("id[");
-    paramHttpMsg.append(this.jdField_a_of_type_Long);
+    paramHttpMsg.append(this.d);
     paramHttpMsg.append("], httpReq Error:");
     paramHttpMsg.append(9001);
     paramHttpMsg.append(" null rsp");
     UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, paramHttpMsg.toString());
     a(new UFTHttpCommunicator.UFTHttpErr(9001, "null", "null", null));
-  }
-  
-  protected HttpCommunicator a()
-  {
-    return (HttpCommunicator)((IHttpEngineService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IHttpEngineService.class, "all")).getCommunicator();
   }
   
   protected abstract void a(UFTHttpCommunicator.UFTHttpErr paramUFTHttpErr);
@@ -243,85 +238,85 @@ public abstract class UFTHttpCommunicator
     {
       paramUFTHttpReq = new StringBuilder();
       paramUFTHttpReq.append("id[");
-      paramUFTHttpReq.append(this.jdField_a_of_type_Long);
+      paramUFTHttpReq.append(this.d);
       paramUFTHttpReq.append("]sendReq. req = null");
       UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, paramUFTHttpReq.toString());
       return false;
     }
-    this.b = false;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = new HttpMsg(UFTHttpCommunicator.UFTHttpReq.a(paramUFTHttpReq), UFTHttpCommunicator.UFTHttpReq.a(paramUFTHttpReq), this, UFTHttpCommunicator.UFTHttpReq.a(paramUFTHttpReq));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setInstanceFollowRedirects(false);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("cache-control", "no-cache");
-    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.b(paramUFTHttpReq))) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestMethod(UFTHttpCommunicator.UFTHttpReq.b(paramUFTHttpReq));
+    this.e = false;
+    this.a = new HttpMsg(UFTHttpCommunicator.UFTHttpReq.a(paramUFTHttpReq), UFTHttpCommunicator.UFTHttpReq.b(paramUFTHttpReq), this, UFTHttpCommunicator.UFTHttpReq.c(paramUFTHttpReq));
+    this.a.setInstanceFollowRedirects(false);
+    this.a.setRequestProperty("cache-control", "no-cache");
+    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.d(paramUFTHttpReq))) {
+      this.a.setRequestMethod(UFTHttpCommunicator.UFTHttpReq.d(paramUFTHttpReq));
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setPriority(UFTHttpCommunicator.UFTHttpReq.a(paramUFTHttpReq));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.fileType = UFTHttpCommunicator.UFTHttpReq.b(paramUFTHttpReq);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.busiType = UFTHttpCommunicator.UFTHttpReq.c(paramUFTHttpReq);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.msgId = String.valueOf(this.jdField_a_of_type_Long);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getRequestMethod();
+    this.a.setPriority(UFTHttpCommunicator.UFTHttpReq.e(paramUFTHttpReq));
+    this.a.fileType = UFTHttpCommunicator.UFTHttpReq.f(paramUFTHttpReq);
+    this.a.busiType = UFTHttpCommunicator.UFTHttpReq.g(paramUFTHttpReq);
+    this.a.msgId = String.valueOf(this.d);
+    Object localObject = this.a.getRequestMethod();
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return false;
     }
     if (((String)localObject).toUpperCase().equals("POST")) {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     } else {
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
     }
-    if (UFTHttpCommunicator.UFTHttpReq.b(paramUFTHttpReq))
+    if (UFTHttpCommunicator.UFTHttpReq.h(paramUFTHttpReq))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
+      localObject = this.a;
       ((HttpMsg)localObject).mIsHttps = true;
-      ((HttpMsg)localObject).mIsHostIP = UFTHttpCommunicator.UFTHttpReq.c(paramUFTHttpReq);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.mReqHost = UFTHttpCommunicator.UFTHttpReq.c(paramUFTHttpReq);
+      ((HttpMsg)localObject).mIsHostIP = UFTHttpCommunicator.UFTHttpReq.i(paramUFTHttpReq);
+      this.a.mReqHost = UFTHttpCommunicator.UFTHttpReq.j(paramUFTHttpReq);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setDataSlice(UFTHttpCommunicator.UFTHttpReq.d(paramUFTHttpReq));
+    this.a.setDataSlice(UFTHttpCommunicator.UFTHttpReq.k(paramUFTHttpReq));
     if (UFTDependFeatureApi.a() == 1) {
       localObject = "wifi";
     } else {
       localObject = "gprs";
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("Net-type", (String)localObject);
-    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.d(paramUFTHttpReq))) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("User-Agent", UFTHttpCommunicator.UFTHttpReq.d(paramUFTHttpReq));
+    this.a.setRequestProperty("Net-type", (String)localObject);
+    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.l(paramUFTHttpReq))) {
+      this.a.setRequestProperty("User-Agent", UFTHttpCommunicator.UFTHttpReq.l(paramUFTHttpReq));
     }
-    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.e(paramUFTHttpReq))) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("Cookie", UFTHttpCommunicator.UFTHttpReq.e(paramUFTHttpReq));
+    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.m(paramUFTHttpReq))) {
+      this.a.setRequestProperty("Cookie", UFTHttpCommunicator.UFTHttpReq.m(paramUFTHttpReq));
     }
-    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.f(paramUFTHttpReq))) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("Range", UFTHttpCommunicator.UFTHttpReq.f(paramUFTHttpReq));
+    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.n(paramUFTHttpReq))) {
+      this.a.setRequestProperty("Range", UFTHttpCommunicator.UFTHttpReq.n(paramUFTHttpReq));
     }
-    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.g(paramUFTHttpReq))) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.setRequestProperty("Accept-Encoding", UFTHttpCommunicator.UFTHttpReq.g(paramUFTHttpReq));
+    if (!TextUtils.isEmpty(UFTHttpCommunicator.UFTHttpReq.o(paramUFTHttpReq))) {
+      this.a.setRequestProperty("Accept-Encoding", UFTHttpCommunicator.UFTHttpReq.o(paramUFTHttpReq));
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.timeoutParam = a();
-    localObject = a();
+    this.a.timeoutParam = a();
+    localObject = c();
     if (localObject == null)
     {
       paramUFTHttpReq = new StringBuilder();
       paramUFTHttpReq.append("id[");
-      paramUFTHttpReq.append(this.jdField_a_of_type_Long);
+      paramUFTHttpReq.append(this.d);
       paramUFTHttpReq.append("]sendReq. but communicator stop service!!");
       UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, paramUFTHttpReq.toString());
       return false;
     }
-    int i = ((HttpCommunicator)localObject).sendMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+    int i = ((HttpCommunicator)localObject).sendMsg(this.a);
     if (UFTLog.a())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("id[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append("]sendReq. url:");
       ((StringBuilder)localObject).append(UFTHttpCommunicator.UFTHttpReq.a(paramUFTHttpReq));
       ((StringBuilder)localObject).append(" msgId:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.msgId);
+      ((StringBuilder)localObject).append(this.a.msgId);
       ((StringBuilder)localObject).append(" ret:");
       ((StringBuilder)localObject).append(i);
       UFTLog.a("[UFTTransfer] UFTHttpCommunicator", 4, ((StringBuilder)localObject).toString());
     }
     if (i == -1)
     {
-      this.b = true;
+      this.e = true;
       return false;
     }
     return true;
@@ -329,21 +324,26 @@ public abstract class UFTHttpCommunicator
   
   public void b()
   {
-    this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
+    this.e = true;
+    if (this.a != null)
     {
-      a().cancelMsg(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
+      c().cancelMsg(this.a);
+      this.a = null;
     }
+  }
+  
+  protected HttpCommunicator c()
+  {
+    return (HttpCommunicator)((IHttpEngineService)this.c.getRuntimeService(IHttpEngineService.class, "all")).getCommunicator();
   }
   
   public final void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    if (this.b)
+    if (this.e)
     {
       paramHttpMsg1 = new StringBuilder();
       paramHttpMsg1.append("id[");
-      paramHttpMsg1.append(this.jdField_a_of_type_Long);
+      paramHttpMsg1.append(this.d);
       paramHttpMsg1.append("]已经结束,返回");
       UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, paramHttpMsg1.toString());
       return;
@@ -351,33 +351,33 @@ public abstract class UFTHttpCommunicator
     if (!a(paramHttpMsg1)) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      a(paramHttpMsg2);
-      return;
-    }
-    b(paramHttpMsg2);
-  }
-  
-  public final void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    if (this.b) {
-      return;
-    }
-    if (!a(paramHttpMsg1)) {
+      b(paramHttpMsg2);
       return;
     }
     c(paramHttpMsg2);
   }
   
+  public final void handleError(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  {
+    if (this.e) {
+      return;
+    }
+    if (!a(paramHttpMsg1)) {
+      return;
+    }
+    d(paramHttpMsg2);
+  }
+  
   public final void handleRedirect(String paramString)
   {
-    if (this.b) {
+    if (this.e) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("], onNetRedirect:");
     localStringBuilder.append(paramString);
     UFTLog.d("[UFTTransfer] UFTHttpCommunicator", 1, localStringBuilder.toString());
@@ -391,7 +391,7 @@ public abstract class UFTHttpCommunicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.UFTHttpCommunicator
  * JD-Core Version:    0.7.0.1
  */

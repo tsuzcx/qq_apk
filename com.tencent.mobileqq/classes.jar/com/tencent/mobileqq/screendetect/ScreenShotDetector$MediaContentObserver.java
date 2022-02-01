@@ -10,18 +10,18 @@ import mqq.os.MqqHandler;
 class ScreenShotDetector$MediaContentObserver
   extends ContentObserver
 {
-  private Uri jdField_a_of_type_AndroidNetUri;
+  private Uri b;
   
   public ScreenShotDetector$MediaContentObserver(ScreenShotDetector paramScreenShotDetector, Uri paramUri, Handler paramHandler)
   {
     super(paramHandler);
-    this.jdField_a_of_type_AndroidNetUri = paramUri;
+    this.b = paramUri;
   }
   
   public void onChange(boolean paramBoolean)
   {
     super.onChange(paramBoolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqScreendetectScreenShotDetector.a()) {
+    if (this.a.b()) {
       return;
     }
     try
@@ -37,7 +37,7 @@ class ScreenShotDetector$MediaContentObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotDetector.MediaContentObserver
  * JD-Core Version:    0.7.0.1
  */

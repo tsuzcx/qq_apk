@@ -34,18 +34,18 @@ class ReminderCardItemPage$1
     try
     {
       paramURLDrawable = paramURLDrawable.getCurrDrawable();
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
-        int j = ReminderCardItemPage.a();
+        int j = ReminderCardItemPage.f();
         int i = j;
         if (j == 0) {
-          i = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
+          i = this.b.getWidth();
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.MATRIX);
+        this.b.setScaleType(ImageView.ScaleType.MATRIX);
         Matrix localMatrix = new Matrix();
         float f = i * 1.0F / paramURLDrawable.getIntrinsicWidth();
         localMatrix.setScale(f, f);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageMatrix(localMatrix);
+        this.b.setImageMatrix(localMatrix);
         return;
       }
     }
@@ -57,7 +57,7 @@ class ReminderCardItemPage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ import com.tencent.mobileqq.data.AtTroopMemberInfo;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.HiBoomMessage;
 import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
@@ -106,34 +107,9 @@ public class MessageProtoCodec
     return QMessageProtoCodec.a(paramInt, paramQQAppInterface);
   }
   
-  public static int a(msg_comm.Msg paramMsg)
-  {
-    return QMessageProtoCodec.d(paramMsg);
-  }
-  
   public static int a(im_msg_body.RichText paramRichText, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
     return QMessageProtoCodec.a(paramRichText, paramString, paramArrayList);
-  }
-  
-  public static long a(msg_comm.Msg paramMsg)
-  {
-    if (paramMsg.msg_body.has())
-    {
-      if (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()) {
-        return -1L;
-      }
-      long l = a(paramMsg, -1L);
-      if (QLog.isColorLevel())
-      {
-        paramMsg = new StringBuilder();
-        paramMsg.append("decodeC2CMsgPkg_VipFontID: fontid = ");
-        paramMsg.append(l);
-        QLog.d("Q.msg.MessageHandler", 2, paramMsg.toString());
-      }
-      return l;
-    }
-    return -1L;
   }
   
   protected static long a(msg_comm.Msg paramMsg, long paramLong)
@@ -260,11 +236,13 @@ public class MessageProtoCodec
     paramList = (MessageForMixedMsg)MessageRecordFactory.a(-1035);
     paramList.msgtype = -1035;
     paramList.msgData = localMsg.toByteArray();
-    if ((paramMessageInfo != null) && (paramMessageInfo.jdField_a_of_type_Int == 3000)) {
-      paramList.frienduin = paramMessageInfo.jdField_a_of_type_JavaLangString;
+    if ((paramMessageInfo != null) && (paramMessageInfo.b == 3000)) {
+      paramList.frienduin = paramMessageInfo.a;
+    } else if ((paramMessageInfo != null) && (paramMessageInfo.b == 10014)) {
+      paramList.istroop = 10014;
     }
     if ((j != 0) && (paramMessageInfo != null)) {
-      AtTroopMemberSpan.a(paramMessageInfo.jdField_a_of_type_Int, localJSONObject.toString(), paramList);
+      AtTroopMemberSpan.a(paramMessageInfo.b, localJSONObject.toString(), paramList);
     }
     if (paramArrayOfByte != null) {
       paramList.saveExtInfoToExtStr("sens_msg_ctrl_info", HexUtil.bytes2HexStr(paramArrayOfByte));
@@ -327,7 +305,7 @@ public class MessageProtoCodec
   
   public static msg_svc.PbSendMsgReq a(BaseMessageHandler paramBaseMessageHandler, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, TransMsgContext paramTransMsgContext, long paramLong, int paramInt3)
   {
-    return QMessageProtoCodec.a(paramBaseMessageHandler.a(), paramString, paramArrayOfByte, paramInt1, paramInt2, paramTransMsgContext, paramLong, paramInt3);
+    return QMessageProtoCodec.a(paramBaseMessageHandler.b(), paramString, paramArrayOfByte, paramInt1, paramInt2, paramTransMsgContext, paramLong, paramInt3);
   }
   
   public static generalflags.ResvAttr a(im_msg_body.GeneralFlags paramGeneralFlags)
@@ -409,9 +387,9 @@ public class MessageProtoCodec
         {
           paramChatMessage = paramChatMessage.getSummery();
           if ((paramChatMessage != null) && (paramChatMessage.length() != 0)) {
-            paramChatMessage = String.format(BaseApplication.getContext().getString(2131693631), new Object[] { paramChatMessage });
+            paramChatMessage = String.format(BaseApplication.getContext().getString(2131891206), new Object[] { paramChatMessage });
           } else {
-            paramChatMessage = BaseApplication.getContext().getString(2131693630);
+            paramChatMessage = BaseApplication.getContext().getString(2131891205);
           }
         }
         localObject1 = localObject2;
@@ -493,6 +471,33 @@ public class MessageProtoCodec
     return paramString;
   }
   
+  public static im_msg_body.RichText a(MessageForAniSticker paramMessageForAniSticker)
+  {
+    Object localObject1 = new im_msg_body.CommonElem();
+    ((im_msg_body.CommonElem)localObject1).uint32_service_type.set(37);
+    ((im_msg_body.CommonElem)localObject1).uint32_business_type.set(paramMessageForAniSticker.stickerType);
+    ((im_msg_body.CommonElem)localObject1).bytes_pb_elem.set(ByteStringMicro.copyFrom(paramMessageForAniSticker.serializeMsgBody()));
+    im_msg_body.Elem localElem = new im_msg_body.Elem();
+    localElem.common_elem.set((MessageMicro)localObject1);
+    Object localObject2 = paramMessageForAniSticker.text.substring(1);
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = HardCodeUtil.a(2131916985);
+    }
+    localObject2 = ByteStringMicro.copyFrom(String.format(HardCodeUtil.a(2131886650), new Object[] { localObject1 }).getBytes());
+    localObject1 = new TextMsgExtPb.ResvAttr();
+    ((TextMsgExtPb.ResvAttr)localObject1).wording.set((ByteStringMicro)localObject2);
+    localObject2 = new im_msg_body.Text();
+    ((im_msg_body.Text)localObject2).bytes_pb_reserve.set(ByteStringMicro.copyFrom(((TextMsgExtPb.ResvAttr)localObject1).toByteArray()));
+    ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFrom(paramMessageForAniSticker.text.getBytes()));
+    paramMessageForAniSticker = new im_msg_body.Elem();
+    paramMessageForAniSticker.text.set((MessageMicro)localObject2);
+    localObject1 = new im_msg_body.RichText();
+    ((im_msg_body.RichText)localObject1).elems.add(localElem);
+    ((im_msg_body.RichText)localObject1).elems.add(paramMessageForAniSticker);
+    return localObject1;
+  }
+  
   public static im_msg_body.RichText a(MessageForLongTextMsg paramMessageForLongTextMsg, boolean paramBoolean)
   {
     if (paramMessageForLongTextMsg == null) {
@@ -546,7 +551,7 @@ public class MessageProtoCodec
       Object localObject;
       if (TextUtils.isEmpty(paramMessageForMarketFace.mMarkFaceMessage.faceName))
       {
-        localObject = HardCodeUtil.a(2131706684);
+        localObject = HardCodeUtil.a(2131904535);
       }
       else
       {
@@ -722,7 +727,7 @@ public class MessageProtoCodec
             localObject3 = (AbsStructMsgElement)((Iterator)localObject1).next();
             if ((localObject3 instanceof AbsStructMsgItem))
             {
-              localObject3 = ((AbsStructMsgItem)localObject3).a;
+              localObject3 = ((AbsStructMsgItem)localObject3).ax;
               if (localObject3 != null)
               {
                 localObject3 = ((List)localObject3).iterator();
@@ -732,7 +737,7 @@ public class MessageProtoCodec
                   if (!(localAbsStructMsgElement instanceof StructMsgItemVideo)) {
                     break;
                   }
-                  if (((StructMsgItemVideo)localAbsStructMsgElement).a()) {
+                  if (((StructMsgItemVideo)localAbsStructMsgElement).c()) {
                     ((im_msg_body.RichMsg)localObject2).uint32_flags.set(4);
                   } else {
                     ((im_msg_body.RichMsg)localObject2).uint32_flags.set(2);
@@ -939,7 +944,7 @@ public class MessageProtoCodec
   
   public static void a(BaseMessageHandler paramBaseMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, MessageInfo paramMessageInfo, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    QMessageProtoCodec.a(paramBaseMessageHandler.a(), paramList, paramMsg, paramBoolean1, paramBoolean2, paramMessageInfo, paramTempSessionInfo, paramDecodeProtoPkgContext);
+    QMessageProtoCodec.a(paramBaseMessageHandler.b(), paramList, paramMsg, paramBoolean1, paramBoolean2, paramMessageInfo, paramTempSessionInfo, paramDecodeProtoPkgContext);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, msg_svc.RoutingHead paramRoutingHead)
@@ -954,7 +959,7 @@ public class MessageProtoCodec
   
   public static int b(msg_comm.Msg paramMsg)
   {
-    return QMessageProtoCodec.c(paramMsg);
+    return QMessageProtoCodec.e(paramMsg);
   }
   
   public static im_msg_body.RichText b(ChatMessage paramChatMessage)
@@ -994,7 +999,7 @@ public class MessageProtoCodec
       paramChatMessage.common_elem.set((MessageMicro)localObject2, true);
       localObject1 = new im_msg_body.Elem();
       localObject2 = new im_msg_body.Text();
-      ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131706687)));
+      ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131904538)));
       ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject2);
       ((im_msg_body.Elem)localObject1).text.setHasFlag(true);
       localObject2 = new im_msg_body.RichText();
@@ -1013,10 +1018,9 @@ public class MessageProtoCodec
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  @Deprecated
   public static int c(msg_comm.Msg paramMsg)
   {
-    return QMessageProtoCodec.e(paramMsg);
+    return QMessageProtoCodec.d(paramMsg);
   }
   
   public static im_msg_body.RichText c(ChatMessage paramChatMessage)
@@ -1149,6 +1153,12 @@ public class MessageProtoCodec
     return null;
   }
   
+  @Deprecated
+  public static int d(msg_comm.Msg paramMsg)
+  {
+    return QMessageProtoCodec.f(paramMsg);
+  }
+  
   public static im_msg_body.RichText d(ChatMessage paramChatMessage)
   {
     if (!(paramChatMessage instanceof MessageForHiBoom)) {
@@ -1183,6 +1193,26 @@ public class MessageProtoCodec
     return localObject1;
   }
   
+  public static long e(msg_comm.Msg paramMsg)
+  {
+    if (paramMsg.msg_body.has())
+    {
+      if (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()) {
+        return -1L;
+      }
+      long l = a(paramMsg, -1L);
+      if (QLog.isColorLevel())
+      {
+        paramMsg = new StringBuilder();
+        paramMsg.append("decodeC2CMsgPkg_VipFontID: fontid = ");
+        paramMsg.append(l);
+        QLog.d("Q.msg.MessageHandler", 2, paramMsg.toString());
+      }
+      return l;
+    }
+    return -1L;
+  }
+  
   public static im_msg_body.RichText e(ChatMessage paramChatMessage)
   {
     Object localObject1 = new im_msg_body.CommonElem();
@@ -1215,7 +1245,7 @@ public class MessageProtoCodec
     }
     paramChatMessage = new im_msg_body.Elem();
     paramChatMessage.common_elem.set((MessageMicro)localObject1);
-    Object localObject2 = HardCodeUtil.a(2131706686);
+    Object localObject2 = HardCodeUtil.a(2131904537);
     localObject1 = new im_msg_body.Text();
     ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8((String)localObject2));
     localObject2 = new im_msg_body.Elem();
@@ -1233,7 +1263,7 @@ public class MessageProtoCodec
   {
     Object localObject3 = new im_msg_body.CommonElem();
     ((im_msg_body.CommonElem)localObject3).uint32_service_type.set(23);
-    Object localObject1 = HardCodeUtil.a(2131706691);
+    Object localObject1 = HardCodeUtil.a(2131904542);
     boolean bool = paramChatMessage instanceof MessageForPokeEmo;
     Object localObject2 = "";
     if (bool)
@@ -1328,7 +1358,7 @@ public class MessageProtoCodec
       paramChatMessage.common_elem.set((MessageMicro)localObject2);
       localObject1 = new im_msg_body.Elem();
       localObject2 = new im_msg_body.Text();
-      ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131706683)));
+      ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131904534)));
       ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject2);
       ((im_msg_body.Elem)localObject1).text.setHasFlag(true);
       localObject2 = new im_msg_body.RichText();
@@ -1344,7 +1374,7 @@ public class MessageProtoCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageProtoCodec
  * JD-Core Version:    0.7.0.1
  */

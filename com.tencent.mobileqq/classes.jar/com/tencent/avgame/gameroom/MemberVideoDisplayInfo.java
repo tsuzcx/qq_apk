@@ -2,47 +2,47 @@ package com.tencent.avgame.gameroom;
 
 public class MemberVideoDisplayInfo
 {
-  public int a;
   public long a;
-  public boolean a;
   public int b;
-  public boolean b;
   public int c;
-  public boolean c;
   public int d;
-  public int e = 1;
-  public int f;
-  public int g;
-  public int h;
+  public int e;
+  public int f = 1;
+  public boolean g;
+  public boolean h;
   public int i;
+  public int j;
+  public int k;
+  public int l;
+  public boolean m;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MemberVideoDisplayInfo{uin=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", x=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", y=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", width=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", height=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", showCameraVideo=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", isCameraBigger=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", [showStarVideo=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(", starX=");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(", starY=");
     localStringBuilder.append(this.g);
-    localStringBuilder.append(", starWidth=");
+    localStringBuilder.append(", isCameraBigger=");
     localStringBuilder.append(this.h);
-    localStringBuilder.append(", starHeight=");
+    localStringBuilder.append(", [showStarVideo=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", starX=");
     localStringBuilder.append(this.i);
+    localStringBuilder.append(", starY=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", starWidth=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", starHeight=");
+    localStringBuilder.append(this.l);
     localStringBuilder.append("]}");
     return localStringBuilder.toString();
   }

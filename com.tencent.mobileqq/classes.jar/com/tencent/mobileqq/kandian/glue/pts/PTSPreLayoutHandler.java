@@ -13,21 +13,6 @@ import java.util.List;
 
 public class PTSPreLayoutHandler
 {
-  public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return "null";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" title = ");
-    localStringBuilder.append(paramAbsBaseArticleInfo.mTitle);
-    localStringBuilder.append(", rowKey = ");
-    localStringBuilder.append(paramAbsBaseArticleInfo.innerUniqueID);
-    localStringBuilder.append(", pageName = ");
-    localStringBuilder.append(paramAbsBaseArticleInfo.ptsLitePageName);
-    return localStringBuilder.toString();
-  }
-  
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo != null)
@@ -39,7 +24,7 @@ public class PTSPreLayoutHandler
       paramAbsBaseArticleInfo.ptsComposer = null;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[destroy] succeed, ");
-      localStringBuilder.append(a(paramAbsBaseArticleInfo));
+      localStringBuilder.append(b(paramAbsBaseArticleInfo));
       QLog.i("PTSPreLayoutHandler", 1, localStringBuilder.toString());
     }
   }
@@ -52,7 +37,7 @@ public class PTSPreLayoutHandler
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[parsePtsCardType] ptsRoundCornerCard = true, articleInfo = ");
-        localStringBuilder.append(a(paramAbsBaseArticleInfo));
+        localStringBuilder.append(b(paramAbsBaseArticleInfo));
         QLog.i("PTSPreLayoutHandler", 1, localStringBuilder.toString());
         paramAbsBaseArticleInfo.ptsRoundCornerCard = true;
       }
@@ -60,7 +45,7 @@ public class PTSPreLayoutHandler
       {
         paramString = new StringBuilder();
         paramString.append("[parsePtsCardType] ptsSpecialCard = true, articleInfo = ");
-        paramString.append(a(paramAbsBaseArticleInfo));
+        paramString.append(b(paramAbsBaseArticleInfo));
         QLog.i("PTSPreLayoutHandler", 1, paramString.toString());
         paramAbsBaseArticleInfo.ptsSpecialCard = true;
       }
@@ -73,7 +58,7 @@ public class PTSPreLayoutHandler
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      if (!PTSLiteSwitchManager.a().a())
+      if (!PTSLiteSwitchManager.a().b())
       {
         QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] pts lite master switch disabled.");
         return;
@@ -82,7 +67,7 @@ public class PTSPreLayoutHandler
       while (paramList.hasNext())
       {
         AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramList.next();
-        if (!PTSLiteItemViewBuilder.b(localAbsBaseArticleInfo))
+        if (!PTSLiteItemViewBuilder.c(localAbsBaseArticleInfo))
         {
           QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], articleInfo is not valid.");
         }
@@ -100,7 +85,7 @@ public class PTSPreLayoutHandler
             a(localAbsBaseArticleInfo, str);
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("[preHandleArticleInfo] succeed, ");
-            ((StringBuilder)localObject).append(a(localAbsBaseArticleInfo));
+            ((StringBuilder)localObject).append(b(localAbsBaseArticleInfo));
             QLog.i("PTSPreLayoutHandler", 1, ((StringBuilder)localObject).toString());
           }
         }
@@ -108,6 +93,21 @@ public class PTSPreLayoutHandler
       return;
     }
     QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] articleInfoList is empty.");
+  }
+  
+  public static String b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return "null";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" title = ");
+    localStringBuilder.append(paramAbsBaseArticleInfo.mTitle);
+    localStringBuilder.append(", rowKey = ");
+    localStringBuilder.append(paramAbsBaseArticleInfo.innerUniqueID);
+    localStringBuilder.append(", pageName = ");
+    localStringBuilder.append(paramAbsBaseArticleInfo.ptsLitePageName);
+    return localStringBuilder.toString();
   }
   
   public static void b(List<AbsBaseArticleInfo> paramList)
@@ -118,7 +118,7 @@ public class PTSPreLayoutHandler
       while (paramList.hasNext())
       {
         AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramList.next();
-        if (!PTSLiteItemViewBuilder.b(localAbsBaseArticleInfo)) {
+        if (!PTSLiteItemViewBuilder.c(localAbsBaseArticleInfo)) {
           QLog.i("PTSPreLayoutHandler", 1, "[destroy], articleInfo is not valid.");
         } else {
           a(localAbsBaseArticleInfo);
@@ -131,7 +131,7 @@ public class PTSPreLayoutHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.PTSPreLayoutHandler
  * JD-Core Version:    0.7.0.1
  */

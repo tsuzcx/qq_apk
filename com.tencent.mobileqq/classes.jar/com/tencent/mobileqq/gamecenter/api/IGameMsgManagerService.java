@@ -1,21 +1,35 @@
 package com.tencent.mobileqq.gamecenter.api;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
 import com.tencent.mobileqq.gamecenter.config.GameCenterMsgBean;
+import com.tencent.mobileqq.gamecenter.data.GameMsgRemoteUserItem;
 import com.tencent.mobileqq.gamecenter.data.IDataVisitor;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameBasicInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameSwitchConfig;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameUserInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameBasicInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameSwitchConfig;
+import com.tencent.mobileqq.gamecenter.msginfo.GameUserInfo;
+import com.tencent.mobileqq.gamecenter.sso.GameCenterUnissoObserver;
+import com.tencent.mobileqq.gamecenter.trpcprotocol.GameMsgGreeting.QueryAIOGreetInfoRsp;
 import com.tencent.mobileqq.qroute.annotation.Service;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import mqq.app.api.IRuntimeService;
+import org.json.JSONObject;
 
 @Service(needUin=false, process={"all"})
 public abstract interface IGameMsgManagerService
   extends IRuntimeService
 {
+  public static final String GAMEID_GET_UNREAD_NUM = "-10001";
+  public static final String GAMEID_INIT = "-10000";
+  
+  public abstract void addUserInfoChangedObserver(GameCenterUnissoObserver paramGameCenterUnissoObserver);
+  
   public abstract void cleanSessionUnread(String paramString);
   
   public abstract GameBasicInfo findGameConfig(String paramString);
@@ -40,6 +54,8 @@ public abstract interface IGameMsgManagerService
   
   public abstract String getGameBuddyAppName();
   
+  public abstract HashMap<String, GameDetailInfo> getGameDetailInfo(ArrayList<String> paramArrayList);
+  
   public abstract String getGameMsgListUrl();
   
   public abstract String getGameMsgSettingUrl();
@@ -60,7 +76,11 @@ public abstract interface IGameMsgManagerService
   
   public abstract String getRedDotConfig(String paramString);
   
+  public abstract void getRemoteGameSessionList(IRemoteUserListCallback paramIRemoteUserListCallback);
+  
   public abstract long getReqMsgCnt();
+  
+  public abstract JSONObject getSayHiDefaultConfig();
   
   public abstract IDataVisitor getSessionDelDataHelper();
   
@@ -82,13 +102,19 @@ public abstract interface IGameMsgManagerService
   
   public abstract int getUnreadCnt4MsgTab();
   
+  public abstract HashMap<String, Integer> getUnreadForEachGame();
+  
   public abstract List<String> getUnreadFriIcon();
   
   public abstract int getUnshowedUnreadCnt();
   
+  public abstract int getUnshowedUnreadCntMsgBoxExclusive();
+  
   public abstract int getViewType();
   
   public abstract boolean isGameBuddySwitchOpen();
+  
+  public abstract boolean isGameMsgBlocked(String paramString);
   
   public abstract boolean isGameMsgShowInBoxFormTabConfig();
   
@@ -100,13 +126,27 @@ public abstract interface IGameMsgManagerService
   
   public abstract boolean isInited();
   
+  public abstract boolean isJumpGameProfileCard();
+  
   public abstract boolean isShowInMsgBox();
+  
+  public abstract void notifyGameMsgSayHiInfo(int paramInt, long paramLong, String paramString, GameMsgGreeting.QueryAIOGreetInfoRsp paramQueryAIOGreetInfoRsp);
+  
+  public abstract void notifyReceiveGameMsgSayHiMessage(String paramString1, String paramString2);
+  
+  public abstract void notifyRemoteUserReady(int paramInt, ArrayList<GameMsgRemoteUserItem> paramArrayList);
   
   public abstract void notifySessionChangedBySwitch();
   
   public abstract void onGameMsgRRecv(int paramInt);
   
   public abstract void onGameSwitchChange(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void removeGameMsgSayHiCallback();
+  
+  public abstract void removeUserInfoChangedObserver(GameCenterUnissoObserver paramGameCenterUnissoObserver);
+  
+  public abstract void reqGameMsgSayHiInfo(String paramString1, String paramString2, IGameMsgSayHiCallback paramIGameMsgSayHiCallback);
   
   public abstract void saveOrUpdateGameBasicConfigs(ArrayList<GameBasicInfo> paramArrayList);
   
@@ -128,13 +168,15 @@ public abstract interface IGameMsgManagerService
   
   public abstract void setUnshowedUnreadCntV2(int paramInt, boolean paramBoolean);
   
+  public abstract PopupWindow showGameAIOStatusPopupWindow(GameDetailInfo paramGameDetailInfo, Activity paramActivity, Bundle paramBundle, View.OnClickListener paramOnClickListener);
+  
   public abstract void updateMgrConfig(GameCenterMsgBean paramGameCenterMsgBean);
   
   public abstract void updateRedDotConfig(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService
  * JD-Core Version:    0.7.0.1
  */

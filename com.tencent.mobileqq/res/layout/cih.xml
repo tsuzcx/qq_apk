@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/e1h" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.ark.open.ArkView android:layout_gravity="center" android:id="@id/cvu" android:layout_width="350.0dip" android:layout_height="373.0dip" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/n8f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <com.tencent.mobileqq.guild.widget.CharacterCountEditText android:textColor="@color/aqv" android:id="@id/nsh" android:background="@drawable/e1j" android:paddingLeft="12.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="64.0dip" android:singleLine="true" />
+        <ImageView android:id="@id/ntf" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/bky" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:layout_gravity="right" android:id="@id/nsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="18.0dip" />
+</LinearLayout>

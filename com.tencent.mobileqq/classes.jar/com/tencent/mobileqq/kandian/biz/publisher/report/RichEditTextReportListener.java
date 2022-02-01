@@ -2,9 +2,7 @@ package com.tencent.mobileqq.kandian.biz.publisher.report;
 
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.tkd.topicsdk.framework.eventdispatch.IEventObserver;
 import com.tencent.tkd.topicsdk.framework.events.RichEditTextEvent;
 import com.tencent.tkd.weibo.bean.EditObject.EditObjectType;
@@ -20,14 +18,14 @@ public final class RichEditTextReportListener
 {
   private final void a(JSONObject paramJSONObject, RichEditTextEvent paramRichEditTextEvent)
   {
-    paramJSONObject.put("type", paramRichEditTextEvent.a());
+    paramJSONObject.put("type", paramRichEditTextEvent.e());
   }
   
   private final void b(JSONObject paramJSONObject, RichEditTextEvent paramRichEditTextEvent)
   {
-    paramJSONObject.put("topic_id", paramRichEditTextEvent.a());
+    paramJSONObject.put("topic_id", paramRichEditTextEvent.e());
     int i;
-    if (((CharSequence)paramRichEditTextEvent.a()).length() == 0) {
+    if (((CharSequence)paramRichEditTextEvent.e()).length() == 0) {
       i = 1;
     } else {
       i = 0;
@@ -37,7 +35,7 @@ public final class RichEditTextReportListener
     } else {
       paramJSONObject.put("is_new_topic", 0);
     }
-    paramRichEditTextEvent = paramRichEditTextEvent.a();
+    paramRichEditTextEvent = paramRichEditTextEvent.g();
     if (paramRichEditTextEvent != null) {
       paramRichEditTextEvent = paramRichEditTextEvent.get("from");
     } else {
@@ -55,9 +53,9 @@ public final class RichEditTextReportListener
   {
     Intrinsics.checkParameterIsNotNull(paramRichEditTextEvent, "event");
     JSONObject localJSONObject = new JSONObject();
-    String str = PublisherReportUtils.a.a(paramRichEditTextEvent.a(), paramRichEditTextEvent.a());
-    EditObject.EditObjectType localEditObjectType = paramRichEditTextEvent.a();
-    int i = RichEditTextReportListener.WhenMappings.a[localEditObjectType.ordinal()];
+    String str = PublisherReportUtils.a.a(paramRichEditTextEvent.f(), paramRichEditTextEvent.d());
+    EditObject.EditObjectType localEditObjectType = paramRichEditTextEvent.f();
+    int i = RichEditTextReportListener.WhenMappings.$EnumSwitchMapping$0[localEditObjectType.ordinal()];
     if (i != 1)
     {
       if (i != 2) {
@@ -74,8 +72,7 @@ public final class RichEditTextReportListener
     paramRichEditTextEvent = paramRichEditTextEvent.getRuntime();
     if (paramRichEditTextEvent != null)
     {
-      paramRichEditTextEvent = (QQAppInterface)paramRichEditTextEvent;
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent((AppInterface)paramRichEditTextEvent, "", str, str, 0, 0, "", "", "", localJSONObject.toString(), false);
+      PublicAccountReportUtils.a((AppInterface)paramRichEditTextEvent, "", str, str, 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -83,7 +80,7 @@ public final class RichEditTextReportListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.report.RichEditTextReportListener
  * JD-Core Version:    0.7.0.1
  */

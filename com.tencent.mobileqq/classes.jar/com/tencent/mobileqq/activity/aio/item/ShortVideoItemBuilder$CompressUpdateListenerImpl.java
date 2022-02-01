@@ -22,8 +22,8 @@ class ShortVideoItemBuilder$CompressUpdateListenerImpl
     localStringBuilder.append(paramMessageForShortVideo.frienduin);
     localStringBuilder.append(paramMessageForShortVideo.uniseq);
     paramMessageForShortVideo = localStringBuilder.toString();
-    localHolder.a.setAnimProgress(HardCodeUtil.a(2131713942), paramMessageForShortVideo);
-    localHolder.a.a(paramMessageForShortVideo, paramFloat);
+    localHolder.c.setAnimProgress(HardCodeUtil.a(2131911473), paramMessageForShortVideo);
+    localHolder.c.a(paramMessageForShortVideo, paramFloat);
   }
   
   public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
@@ -56,7 +56,7 @@ class ShortVideoItemBuilder$CompressUpdateListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.CompressUpdateListenerImpl
  * JD-Core Version:    0.7.0.1
  */

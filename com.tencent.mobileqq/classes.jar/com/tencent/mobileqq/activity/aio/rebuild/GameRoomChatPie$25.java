@@ -33,25 +33,25 @@ class GameRoomChatPie$25
     {
       if (QLog.isColorLevel())
       {
-        paramRspBody = this.a.b;
+        paramRspBody = this.a.c;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("startAnotherRound failed! errorCode = ");
         ((StringBuilder)localObject1).append(paramInt);
         QLog.d(paramRspBody, 2, ((StringBuilder)localObject1).toString());
       }
-      QQToast.a(this.a.a(), 1, HardCodeUtil.a(2131705197), 1).a();
+      QQToast.makeText(this.a.aX(), 1, HardCodeUtil.a(2131903083), 1).show();
       return;
     }
     Object localObject2 = paramRspBody.poi_info;
     HotChatInfo localHotChatInfo = HotChatInfo.createHotChat((Common.WifiPOIInfo)localObject2, false, 0);
     localHotChatInfo.isGameRoom = true;
-    paramRspBody = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHotChatMng(true);
-    Object localObject1 = paramRspBody.a();
+    paramRspBody = this.a.d.getHotChatMng(true);
+    Object localObject1 = paramRspBody.c();
     if ((localObject1 != null) && (!((List)localObject1).contains(localHotChatInfo))) {
       ((List)localObject1).add(localHotChatInfo);
     }
     paramRspBody.a(localHotChatInfo, 4);
-    localObject1 = this.a.a().getIntent();
+    localObject1 = this.a.aX().getIntent();
     paramRspBody = (oidb_0x8e4.RspBody)localObject1;
     if (localObject1 == null) {
       paramRspBody = new Intent();
@@ -69,33 +69,33 @@ class GameRoomChatPie$25
     paramRspBody.putExtra("uinname", localHotChatInfo.name);
     paramRspBody.putExtra("hotnamecode", (String)localObject1);
     paramRspBody.putExtra("isNeedShowLoading", false);
-    paramRspBody.putExtra("leftViewText", this.a.a().getString(2131690529));
-    ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
-    paramInt = AIOUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramRspBody);
+    paramRspBody.putExtra("leftViewText", this.a.aX().getString(2131887440));
+    ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.a.d.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.c()));
+    paramInt = AIOUtils.a(this.a.d, this.a.f, paramRspBody);
     if (paramInt == 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "openAIO by start SplashAct");
+        QLog.d(this.a.c, 2, "openAIO by start SplashAct");
       }
-      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+      localObject1 = this.a.bC.c();
       if (localObject1 != null) {
         ((WerewolvesPluginInterface)localObject1).a();
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramRspBody);
+      this.a.f.startActivity(paramRspBody);
     }
     else if (paramInt == 2)
     {
-      QLog.e(this.a.b, 1, "openAIO rediectToAIOWithMt 2");
+      QLog.e(this.a.c, 1, "openAIO rediectToAIOWithMt 2");
       return;
     }
-    if ((paramRspBody.getBooleanExtra("finishAIO", false)) && ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatActivity))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    if ((paramRspBody.getBooleanExtra("finishAIO", false)) && ((this.a.f instanceof ChatActivity))) {
+      this.a.f.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.25
  * JD-Core Version:    0.7.0.1
  */

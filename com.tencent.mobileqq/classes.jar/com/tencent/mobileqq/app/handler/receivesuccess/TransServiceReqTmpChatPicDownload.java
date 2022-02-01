@@ -12,7 +12,7 @@ public class TransServiceReqTmpChatPicDownload
     {
       if (paramObject == null)
       {
-        paramMessageHandler.d(paramToServiceMsg, paramFromServiceMsg);
+        paramMessageHandler.e(paramToServiceMsg, paramFromServiceMsg);
         return;
       }
       paramMessageHandler.a(paramToServiceMsg, 3012, true, new Object[] { paramObject });
@@ -21,7 +21,7 @@ public class TransServiceReqTmpChatPicDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.TransServiceReqTmpChatPicDownload
  * JD-Core Version:    0.7.0.1
  */

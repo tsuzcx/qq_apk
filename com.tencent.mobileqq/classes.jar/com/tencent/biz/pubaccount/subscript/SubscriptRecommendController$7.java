@@ -11,8 +11,8 @@ class SubscriptRecommendController$7
   public void onAnimationEnd(Animation paramAnimation)
   {
     paramAnimation = this.a;
-    paramAnimation.a(SubscriptRecommendController.a(paramAnimation));
-    this.a.c();
+    paramAnimation.a(SubscriptRecommendController.b(paramAnimation));
+    this.a.d();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -21,7 +21,7 @@ class SubscriptRecommendController$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.7
  * JD-Core Version:    0.7.0.1
  */

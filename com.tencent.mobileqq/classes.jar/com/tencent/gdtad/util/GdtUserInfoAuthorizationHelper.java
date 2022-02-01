@@ -50,7 +50,7 @@ public class GdtUserInfoAuthorizationHelper
         }
         if (paramUserInfoCallback != null)
         {
-          paramUserInfoEntity.a = 0;
+          paramUserInfoEntity.d = 0;
           paramUserInfoCallback.a(paramUserInfoEntity);
         }
       }
@@ -62,7 +62,7 @@ public class GdtUserInfoAuthorizationHelper
         paramActivity = new AuthorizationDialog(paramActivity, paramUserInfoEntity, paramUserInfoCallback, paramList);
         paramUserInfoEntity = paramActivity.getWindow();
         if (paramUserInfoEntity != null) {
-          paramUserInfoEntity.setWindowAnimations(2131755012);
+          paramUserInfoEntity.setWindowAnimations(2131951622);
         }
         paramActivity.show();
       }
@@ -75,7 +75,7 @@ public class GdtUserInfoAuthorizationHelper
       if (paramUserInfoCallback != null) {
         paramUserInfoCallback.a(GdtUserInfoAuthorizationHelper.UserInfoEntity.a());
       }
-      Toast.makeText(paramActivity, paramActivity.getString(2131690232), 0).show();
+      Toast.makeText(paramActivity, paramActivity.getString(2131887132), 0).show();
     }
   }
   
@@ -97,7 +97,7 @@ public class GdtUserInfoAuthorizationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper
  * JD-Core Version:    0.7.0.1
  */

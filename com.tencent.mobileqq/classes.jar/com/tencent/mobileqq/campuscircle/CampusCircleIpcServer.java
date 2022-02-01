@@ -145,7 +145,7 @@ public class CampusCircleIpcServer
     }
     int i = paramBundle.getInt("nSwitchValue");
     paramString = (CTEntryMng)paramString.getManager(QQManagerFactory.CTENTRY_MNG);
-    paramBundle = paramString.a(1);
+    paramBundle = paramString.c(1);
     paramString.a(paramBundle, (short)i);
     paramString.a(paramBundle);
     paramString = new EIPCResult();
@@ -199,7 +199,7 @@ public class CampusCircleIpcServer
       long l2 = localRedTouchItem.curSeq;
       if (l1 >= l2)
       {
-        ((LocalRedTouchManager)localObject).a(103421);
+        ((LocalRedTouchManager)localObject).b(103421);
       }
       else
       {
@@ -379,7 +379,7 @@ public class CampusCircleIpcServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCircleIpcServer
  * JD-Core Version:    0.7.0.1
  */

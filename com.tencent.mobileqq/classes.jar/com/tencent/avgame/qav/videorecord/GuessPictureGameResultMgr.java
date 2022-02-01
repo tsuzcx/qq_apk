@@ -13,34 +13,29 @@ import java.util.List;
 
 public class GuessPictureGameResultMgr
 {
-  public GuessPictureGamePaintLogic a;
-  public String a;
-  private List<ArrayList<GameImageData>> a;
   public boolean a;
   public String b;
-  private volatile boolean b;
-  private boolean c;
-  private boolean d;
-  
-  public GuessPictureGameResultMgr()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public String c;
+  public GuessPictureGamePaintLogic d;
+  private List<ArrayList<GameImageData>> e = new ArrayList();
+  private volatile boolean f;
+  private boolean g;
+  private boolean h;
   
   private void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (this.e.isEmpty())
     {
       QLog.d("GuessPictureGameResultMgr", 1, "generateVideoPhoto, gameImageDataCache is empty");
       return;
     }
     ArrayList localArrayList1 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       ArrayList localArrayList2 = (ArrayList)localIterator.next();
-      if (!((GameImageData)localArrayList2.get(0)).jdField_a_of_type_Boolean) {
-        localArrayList1.add(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.indexOf(localArrayList2)));
+      if (!((GameImageData)localArrayList2.get(0)).i) {
+        localArrayList1.add(Integer.valueOf(this.e.indexOf(localArrayList2)));
       }
     }
     double d1;
@@ -49,7 +44,7 @@ public class GuessPictureGameResultMgr
     if (localArrayList1.isEmpty())
     {
       d1 = Math.random();
-      d2 = this.jdField_a_of_type_JavaUtilList.size();
+      d2 = this.e.size();
       Double.isNaN(d2);
       i = (int)(d1 * d2);
     }
@@ -60,26 +55,41 @@ public class GuessPictureGameResultMgr
       Double.isNaN(d2);
       i = ((Integer)localArrayList1.get((int)(d1 * d2))).intValue();
     }
-    if (!a((ArrayList)this.jdField_a_of_type_JavaUtilList.get(i))) {
-      this.jdField_b_of_type_JavaLangString = null;
+    if (!c((ArrayList)this.e.get(i))) {
+      this.c = null;
     }
   }
   
-  private boolean a(ArrayList<GameImageData> paramArrayList)
+  private void b(ArrayList<GameImageData> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        GameImageData localGameImageData = (GameImageData)paramArrayList.next();
+        if ((!localGameImageData.a.isRecycled()) && (!localGameImageData.h.equals("Back Image"))) {
+          localGameImageData.a.recycle();
+        }
+      }
+    }
+  }
+  
+  private boolean c(ArrayList<GameImageData> paramArrayList)
   {
     boolean bool2 = paramArrayList.isEmpty();
     boolean bool1 = false;
-    if ((!bool2) && (((GameImageData)paramArrayList.get(0)).jdField_a_of_type_AndroidGraphicsBitmap != null))
+    if ((!bool2) && (((GameImageData)paramArrayList.get(0)).a != null))
     {
       try
       {
-        Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.a, this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.b, Bitmap.Config.ARGB_8888);
+        Bitmap localBitmap = Bitmap.createBitmap(this.d.a, this.d.b, Bitmap.Config.ARGB_8888);
         Canvas localCanvas = new Canvas(localBitmap);
-        this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.a(localCanvas, (GameImageData)paramArrayList.get(0), false);
-        if ((paramArrayList.size() > 1) && (((GameImageData)paramArrayList.get(1)).jdField_b_of_type_JavaLangString.equals("Tips"))) {
-          this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.b(localCanvas, (GameImageData)paramArrayList.get(1), false);
+        this.d.a(localCanvas, (GameImageData)paramArrayList.get(0), false);
+        if ((paramArrayList.size() > 1) && (((GameImageData)paramArrayList.get(1)).h.equals("Tips"))) {
+          this.d.b(localCanvas, (GameImageData)paramArrayList.get(1), false);
         }
-        bool2 = FileUtil.a(localBitmap, this.jdField_b_of_type_JavaLangString);
+        bool2 = FileUtil.a(localBitmap, this.c);
         try
         {
           localBitmap.recycle();
@@ -99,27 +109,12 @@ public class GuessPictureGameResultMgr
     return false;
   }
   
-  private void b(ArrayList<GameImageData> paramArrayList)
-  {
-    if (paramArrayList != null)
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        GameImageData localGameImageData = (GameImageData)paramArrayList.next();
-        if ((!localGameImageData.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) && (!localGameImageData.jdField_b_of_type_JavaLangString.equals("Back Image"))) {
-          localGameImageData.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        }
-      }
-    }
-  }
-  
   public void a(String paramString1, String paramString2, GuessPictureGamePaintLogic paramGuessPictureGamePaintLogic)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic = paramGuessPictureGamePaintLogic;
+    this.a = true;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramGuessPictureGamePaintLogic;
   }
   
   public void a(ArrayList<GameImageData> paramArrayList)
@@ -131,22 +126,22 @@ public class GuessPictureGameResultMgr
         {
           int j = 0;
           int i = 0;
-          if (((GameImageData)paramArrayList.get(0)).jdField_a_of_type_AndroidGraphicsBitmap != null)
+          if (((GameImageData)paramArrayList.get(0)).a != null)
           {
-            String str = ((GameImageData)paramArrayList.get(0)).jdField_a_of_type_JavaLangString;
+            String str = ((GameImageData)paramArrayList.get(0)).g;
             if ((!str.equals("Mosaic Image")) && (!str.equals("Tips")))
             {
               i = j;
-              if (this.jdField_b_of_type_Boolean)
+              if (this.f)
               {
                 i = j;
-                if (this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.b())
+                if (this.d.b())
                 {
                   i = j;
-                  if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+                  if (!this.e.isEmpty())
                   {
-                    this.c = true;
-                    ((GameImageData)((ArrayList)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).get(0)).jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.a();
+                    this.g = true;
+                    ((GameImageData)((ArrayList)this.e.get(this.e.size() - 1)).get(0)).i = this.d.a();
                     i = j;
                   }
                 }
@@ -154,38 +149,38 @@ public class GuessPictureGameResultMgr
             }
             else
             {
-              if ((str.equals("Mosaic Image")) && (this.c))
+              if ((str.equals("Mosaic Image")) && (this.g))
               {
-                this.jdField_b_of_type_Boolean = false;
-                this.c = false;
+                this.f = false;
+                this.g = false;
               }
               j = i;
-              if (!this.jdField_b_of_type_Boolean)
+              if (!this.f)
               {
-                this.jdField_b_of_type_Boolean = true;
-                this.jdField_a_of_type_JavaUtilList.add(paramArrayList);
+                this.f = true;
+                this.e.add(paramArrayList);
                 j = 1;
               }
               i = j;
               if (str.equals("Tips"))
               {
                 i = j;
-                if (this.jdField_b_of_type_Boolean)
+                if (this.f)
                 {
                   i = j;
-                  if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+                  if (!this.e.isEmpty())
                   {
-                    b((ArrayList)this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1));
-                    this.jdField_a_of_type_JavaUtilList.add(paramArrayList);
+                    b((ArrayList)this.e.remove(this.e.size() - 1));
+                    this.e.add(paramArrayList);
                     i = 1;
                   }
                 }
               }
             }
-            if (!this.d)
+            if (!this.h)
             {
-              this.d = true;
-              a(paramArrayList);
+              this.h = true;
+              c(paramArrayList);
             }
             if (i == 0) {
               b(paramArrayList);
@@ -202,10 +197,10 @@ public class GuessPictureGameResultMgr
   {
     try
     {
-      if ((this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+      if ((this.f) && (!this.e.isEmpty()))
       {
-        this.c = true;
-        ((GameImageData)((ArrayList)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).get(0)).jdField_a_of_type_Boolean = paramBoolean;
+        this.g = true;
+        ((GameImageData)((ArrayList)this.e.get(this.e.size() - 1)).get(0)).i = paramBoolean;
       }
       return;
     }
@@ -218,9 +213,9 @@ public class GuessPictureGameResultMgr
   
   public void a(boolean paramBoolean, long paramLong)
   {
-    if (!IGameEngine.k())
+    if (!IGameEngine.J())
     {
-      localObject = IGameEngine.a().a();
+      localObject = IGameEngine.I().s();
     }
     else
     {
@@ -234,21 +229,21 @@ public class GuessPictureGameResultMgr
     else if (localObject != null)
     {
       a();
-      ((EngineData)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramLong);
+      ((EngineData)localObject).a(this.b, this.c, paramLong);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameResultMgr", 2, new Object[] { "saveResult, videoPath:", this.jdField_a_of_type_JavaLangString, " photoPath:", this.jdField_b_of_type_JavaLangString });
+      QLog.d("GuessPictureGameResultMgr", 2, new Object[] { "saveResult, videoPath:", this.b, " photoPath:", this.c });
     }
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.c = null;
+    this.b = null;
+    Object localObject = this.e.iterator();
     while (((Iterator)localObject).hasNext()) {
       b((ArrayList)((Iterator)localObject).next());
     }
-    this.d = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.h = false;
+    this.f = false;
+    this.g = false;
+    this.e.clear();
   }
 }
 

@@ -43,7 +43,7 @@ public class IliveMsfChannelService
     return null;
   }
   
-  private String a()
+  private String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_login_data_");
@@ -51,7 +51,7 @@ public class IliveMsfChannelService
     return localStringBuilder.toString();
   }
   
-  private String a(LoginInfo paramLoginInfo)
+  private String b(LoginInfo paramLoginInfo)
   {
     if (paramLoginInfo == null) {
       return "";
@@ -76,7 +76,7 @@ public class IliveMsfChannelService
   
   protected LoginInfo a()
   {
-    String str = this.a.getString(a(), "");
+    String str = this.a.getString(b(), "");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -94,7 +94,7 @@ public class IliveMsfChannelService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.service.IliveMsfChannelService
  * JD-Core Version:    0.7.0.1
  */

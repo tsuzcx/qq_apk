@@ -29,15 +29,15 @@ public class RIJNewBiuCardTransformManager
     localStringBuilder.append(" ,isFromRecommentFeeds:");
     localStringBuilder.append(paramBoolean);
     QLog.d("RIJNewBiuCardTransformManager", 1, localStringBuilder.toString());
-    localBiuInfo.jdField_a_of_type_Boolean = paramBoolean;
-    localBiuInfo.jdField_a_of_type_Long = paramRIJBiuAndCommentRespData.a();
-    localBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramRIJBiuAndCommentRespData.a();
-    localBiuInfo.jdField_a_of_type_JavaLangString = paramRIJBiuAndCommentRespData.c();
-    localBiuInfo.b = paramRIJBiuAndCommentRespData.d();
+    localBiuInfo.a = paramBoolean;
+    localBiuInfo.b = paramRIJBiuAndCommentRespData.e();
     localBiuInfo.e = paramRIJBiuAndCommentRespData.f();
     localBiuInfo.c = paramRIJBiuAndCommentRespData.g();
-    localBiuInfo.d = paramRIJBiuAndCommentRespData.b();
-    localBiuInfo.jdField_a_of_type_Int = paramRIJBiuAndCommentRespData.e();
+    localBiuInfo.j = paramRIJBiuAndCommentRespData.l();
+    localBiuInfo.i = paramRIJBiuAndCommentRespData.m();
+    localBiuInfo.g = paramRIJBiuAndCommentRespData.n();
+    localBiuInfo.h = paramRIJBiuAndCommentRespData.d();
+    localBiuInfo.f = paramRIJBiuAndCommentRespData.o();
     return localBiuInfo;
   }
   
@@ -80,9 +80,9 @@ public class RIJNewBiuCardTransformManager
       QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | is not pgcShortContent");
       return false;
     }
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a != null))
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.L != null))
     {
-      int i = paramAbsBaseArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Int;
+      int i = paramAbsBaseArticleInfo.mSocialFeedInfo.L.a;
       if ((i != 1) && (i != 3) && (i != 4) && (i != 2) && (i != 5))
       {
         QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | valid shortContent type");
@@ -95,7 +95,46 @@ public class RIJNewBiuCardTransformManager
     return true;
   }
   
-  public void a()
+  public void a(BiuInfo paramBiuInfo)
+  {
+    if (paramBiuInfo != null)
+    {
+      this.a = paramBiuInfo;
+      paramBiuInfo = new StringBuilder();
+      paramBiuInfo.append("updateBiuInfo | mBiuInfo  : ");
+      paramBiuInfo.append(this.a);
+      QLog.d("RIJNewBiuCardTransformManager", 2, paramBiuInfo.toString());
+      d();
+    }
+  }
+  
+  public boolean b()
+  {
+    Object localObject = this.a;
+    if (localObject == null)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | false, biuInfo is null");
+      return false;
+    }
+    if (((BiuInfo)localObject).e == null)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | false, articleInfo is null");
+      return false;
+    }
+    if (this.a.a)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | should refresh when out from related articles");
+      return true;
+    }
+    boolean bool = ReadInJoyLogicEngine.a().b(this.a.e) ^ true;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("shouldAutoRefresh | shouldRefresh: ");
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("RIJNewBiuCardTransformManager", 2, ((StringBuilder)localObject).toString());
+    return bool;
+  }
+  
+  public void c()
   {
     if (this.a == null)
     {
@@ -109,46 +148,7 @@ public class RIJNewBiuCardTransformManager
     QLog.d("RIJNewBiuCardTransformManager", 1, localStringBuilder.toString());
   }
   
-  public void a(BiuInfo paramBiuInfo)
-  {
-    if (paramBiuInfo != null)
-    {
-      this.a = paramBiuInfo;
-      paramBiuInfo = new StringBuilder();
-      paramBiuInfo.append("updateBiuInfo | mBiuInfo  : ");
-      paramBiuInfo.append(this.a);
-      QLog.d("RIJNewBiuCardTransformManager", 2, paramBiuInfo.toString());
-      b();
-    }
-  }
-  
-  public boolean a()
-  {
-    Object localObject = this.a;
-    if (localObject == null)
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | false, biuInfo is null");
-      return false;
-    }
-    if (((BiuInfo)localObject).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null)
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | false, articleInfo is null");
-      return false;
-    }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | should refresh when out from related articles");
-      return true;
-    }
-    boolean bool = ReadInJoyLogicEngine.a().a(this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo) ^ true;
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("shouldAutoRefresh | shouldRefresh: ");
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("RIJNewBiuCardTransformManager", 2, ((StringBuilder)localObject).toString());
-    return bool;
-  }
-  
-  public void b()
+  public void d()
   {
     QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
     if (localQQAppInterface != null)
@@ -156,7 +156,7 @@ public class RIJNewBiuCardTransformManager
       Object localObject = (ReadInJoyLogicManager)localQQAppInterface.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
       if (localObject != null)
       {
-        localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().a();
+        localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().n();
         if (localObject != null) {
           ((RIJUserApproveModule)localObject).a(localQQAppInterface.getLongAccountUin(), new RIJNewBiuCardTransformManager.1(this));
         }
@@ -164,7 +164,7 @@ public class RIJNewBiuCardTransformManager
     }
   }
   
-  public void c()
+  public void e()
   {
     BiuInfo localBiuInfo = this.a;
     if (localBiuInfo != null) {
@@ -174,7 +174,7 @@ public class RIJNewBiuCardTransformManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.biu.RIJNewBiuCardTransformManager
  * JD-Core Version:    0.7.0.1
  */

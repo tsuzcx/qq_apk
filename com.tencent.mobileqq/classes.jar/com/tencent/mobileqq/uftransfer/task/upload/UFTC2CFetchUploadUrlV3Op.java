@@ -25,8 +25,8 @@ public class UFTC2CFetchUploadUrlV3Op
   public UFTC2CFetchUploadUrlV3Op(AppRuntime paramAppRuntime, UFTC2CUploadTaskInfo paramUFTC2CUploadTaskInfo, UFTTransferKey paramUFTTransferKey, UFTBaseOp.UFTOpCallback paramUFTOpCallback)
   {
     super(paramAppRuntime, paramUFTC2CUploadTaskInfo, paramUFTTransferKey, paramUFTOpCallback);
-    if (this.d) {
-      this.f = paramUFTC2CUploadTaskInfo.a().a().f();
+    if (this.c) {
+      this.f = paramUFTC2CUploadTaskInfo.s().a().f();
     }
   }
   
@@ -36,64 +36,73 @@ public class UFTC2CFetchUploadUrlV3Op
     if (i != 0) {
       return i;
     }
-    UFTC2CUploadTaskInfo localUFTC2CUploadTaskInfo = (UFTC2CUploadTaskInfo)this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo;
-    paramUFTC2CUploadReq.e(localUFTC2CUploadTaskInfo.a().c());
-    paramUFTC2CUploadReq.d(localUFTC2CUploadTaskInfo.a().d());
-    paramUFTC2CUploadReq.c(localUFTC2CUploadTaskInfo.a().b());
+    UFTC2CUploadTaskInfo localUFTC2CUploadTaskInfo = (UFTC2CUploadTaskInfo)this.h;
+    paramUFTC2CUploadReq.e(localUFTC2CUploadTaskInfo.r().d());
+    paramUFTC2CUploadReq.d(localUFTC2CUploadTaskInfo.r().e());
+    paramUFTC2CUploadReq.c(localUFTC2CUploadTaskInfo.r().c());
     paramUFTC2CUploadReq.a(this.f);
     return i;
+  }
+  
+  protected String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.a());
+    localStringBuilder.append(" useMediaPat:");
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
   
   protected void a(UFTC2CUploadRsp paramUFTC2CUploadRsp)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(i());
     ((StringBuilder)localObject).append("] request c2c upload url v3 suc rsp:");
     ((StringBuilder)localObject).append(paramUFTC2CUploadRsp.toString());
     UFTLog.b("[UFTTransfer] UFTFetchC2CUploadUrlV3Op", 1, ((StringBuilder)localObject).toString());
     localObject = new UFTBaseOp.OpRetData();
     ((UFTBaseOp.OpRetData)localObject).a(0);
     UFTUploadSrvBusiProp.C2CUploadSrvBusiProp localC2CUploadSrvBusiProp = new UFTUploadSrvBusiProp.C2CUploadSrvBusiProp(paramUFTC2CUploadRsp);
-    if (paramUFTC2CUploadRsp.a())
+    if (paramUFTC2CUploadRsp.g())
     {
       localC2CUploadSrvBusiProp.d(true);
       a(localC2CUploadSrvBusiProp);
       ((UFTBaseOp.OpRetData)localObject).a(paramUFTC2CUploadRsp.a());
-      ((UFTBaseOp.OpRetData)localObject).a(paramUFTC2CUploadRsp.a());
+      ((UFTBaseOp.OpRetData)localObject).a(paramUFTC2CUploadRsp.b());
       a((UFTBaseOp.OpRetData)localObject);
       return;
     }
-    if (!this.d)
+    if (!this.c)
     {
-      UFTC2CFetchUploadUrlOp.UrlHostInfo localUrlHostInfo = a(paramUFTC2CUploadRsp);
-      String str = UFTDependFeatureApi.a(paramUFTC2CUploadRsp.b());
-      if (paramUFTC2CUploadRsp.b() == 1)
+      UFTC2CFetchUploadUrlOp.UrlHostInfo localUrlHostInfo = b(paramUFTC2CUploadRsp);
+      String str = UFTDependFeatureApi.a(paramUFTC2CUploadRsp.f());
+      if (paramUFTC2CUploadRsp.i() == 1)
       {
         paramUFTC2CUploadRsp = new StringBuilder();
         paramUFTC2CUploadRsp.append("/?ver=2&ukey=");
         paramUFTC2CUploadRsp.append(str);
         paramUFTC2CUploadRsp.append("&filekey=");
-        paramUFTC2CUploadRsp.append(this.jdField_a_of_type_JavaLangString);
+        paramUFTC2CUploadRsp.append(this.e);
         paramUFTC2CUploadRsp.append("&filesize=");
-        paramUFTC2CUploadRsp.append(this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.b());
+        paramUFTC2CUploadRsp.append(this.h.p());
         paramUFTC2CUploadRsp = paramUFTC2CUploadRsp.toString();
-        localC2CUploadSrvBusiProp.a(localUrlHostInfo.jdField_a_of_type_Boolean);
-        localC2CUploadSrvBusiProp.b(localUrlHostInfo.jdField_a_of_type_JavaLangString);
-        localC2CUploadSrvBusiProp.a(localUrlHostInfo.jdField_a_of_type_JavaUtilList);
+        localC2CUploadSrvBusiProp.a(localUrlHostInfo.b);
+        localC2CUploadSrvBusiProp.b(localUrlHostInfo.c);
+        localC2CUploadSrvBusiProp.a(localUrlHostInfo.a);
         localC2CUploadSrvBusiProp.a(paramUFTC2CUploadRsp);
-        localC2CUploadSrvBusiProp.b(localUrlHostInfo.b);
+        localC2CUploadSrvBusiProp.b(localUrlHostInfo.d);
       }
-      else if (paramUFTC2CUploadRsp.b() == 2)
+      else if (paramUFTC2CUploadRsp.i() == 2)
       {
-        localC2CUploadSrvBusiProp.a(localUrlHostInfo.jdField_a_of_type_Boolean);
-        localC2CUploadSrvBusiProp.b(localUrlHostInfo.jdField_a_of_type_JavaLangString);
-        localC2CUploadSrvBusiProp.a(localUrlHostInfo.jdField_a_of_type_JavaUtilList);
+        localC2CUploadSrvBusiProp.a(localUrlHostInfo.b);
+        localC2CUploadSrvBusiProp.b(localUrlHostInfo.c);
+        localC2CUploadSrvBusiProp.a(localUrlHostInfo.a);
         localC2CUploadSrvBusiProp.a("/ftn_handler");
-        localC2CUploadSrvBusiProp.b(localUrlHostInfo.b);
+        localC2CUploadSrvBusiProp.b(localUrlHostInfo.d);
         localC2CUploadSrvBusiProp.d(str);
-        if (TextUtils.isEmpty(localC2CUploadSrvBusiProp.c())) {
-          localC2CUploadSrvBusiProp.c(UFTDependFeatureApi.b(this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().d()));
+        if (TextUtils.isEmpty(localC2CUploadSrvBusiProp.j())) {
+          localC2CUploadSrvBusiProp.c(UFTDependFeatureApi.b(this.h.r().e()));
         }
       }
       else
@@ -106,28 +115,19 @@ public class UFTC2CFetchUploadUrlV3Op
     a((UFTBaseOp.OpRetData)localObject);
   }
   
-  protected boolean a(UFTC2CUploadReq paramUFTC2CUploadReq)
+  protected boolean b(UFTC2CUploadReq paramUFTC2CUploadReq)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TId[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(i());
     localStringBuilder.append("] request c2c upload url v3.");
     UFTLog.b("[UFTTransfer] UFTFetchC2CUploadUrlV3Op", 1, localStringBuilder.toString());
-    return UFTProtoRequestor.a().c(this.jdField_a_of_type_MqqAppAppRuntime, paramUFTC2CUploadReq, new UFTC2CFetchUploadUrlV3Op.1(this));
-  }
-  
-  protected String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.b());
-    localStringBuilder.append(" useMediaPat:");
-    localStringBuilder.append(this.f);
-    return localStringBuilder.toString();
+    return UFTProtoRequestor.a().c(this.g, paramUFTC2CUploadReq, new UFTC2CFetchUploadUrlV3Op.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTC2CFetchUploadUrlV3Op
  * JD-Core Version:    0.7.0.1
  */

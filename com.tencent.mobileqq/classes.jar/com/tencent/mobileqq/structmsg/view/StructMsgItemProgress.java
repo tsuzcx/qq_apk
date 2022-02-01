@@ -15,17 +15,17 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemProgress
   extends AbsStructMsgElement
 {
-  private int o = 0;
+  private int au = 0;
   
   public StructMsgItemProgress()
   {
-    this.a = "progress";
+    this.b = "progress";
   }
   
   public StructMsgItemProgress(int paramInt)
   {
-    this.o = paramInt;
-    this.a = "progress";
+    this.au = paramInt;
+    this.b = "progress";
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
@@ -37,40 +37,35 @@ public class StructMsgItemProgress
     else
     {
       paramView = new ProgressBar(paramContext, null, 16842872);
-      paramView.setId(2131377967);
+      paramView.setId(2131446454);
       paramView.setMax(100);
-      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837987));
+      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130838011));
       paramContext = paramView;
     }
     paramContext.setTag(this);
-    paramContext.setProgress(this.o);
-    if (this.o == paramContext.getMax()) {
+    paramContext.setProgress(this.au);
+    if (this.au == paramContext.getMax()) {
       paramContext.setVisibility(8);
     }
     return paramContext;
   }
   
-  public String a()
-  {
-    return "Progress";
-  }
-  
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.o = paramObjectInput.readInt();
+    this.au = paramObjectInput.readInt();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.o);
+    paramObjectOutput.writeInt(this.au);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "progress");
-    paramXmlSerializer.text(String.valueOf(this.o));
+    paramXmlSerializer.text(String.valueOf(this.au));
     paramXmlSerializer.endTag(null, "progress");
   }
   
@@ -79,30 +74,35 @@ public class StructMsgItemProgress
     paramStructMsgNode = StructMsgFactory.a(paramStructMsgNode);
     try
     {
-      this.o = Integer.valueOf(paramStructMsgNode).intValue();
+      this.au = Integer.valueOf(paramStructMsgNode).intValue();
     }
     catch (NumberFormatException paramStructMsgNode)
     {
       label19:
       break label19;
     }
-    this.o = 0;
+    this.au = 0;
     return true;
   }
   
-  public int b()
+  public String b()
   {
-    return this.o;
+    return "Progress";
   }
   
-  public void b(int paramInt)
+  public int c()
   {
-    this.o = paramInt;
+    return this.au;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.au = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemProgress
  * JD-Core Version:    0.7.0.1
  */

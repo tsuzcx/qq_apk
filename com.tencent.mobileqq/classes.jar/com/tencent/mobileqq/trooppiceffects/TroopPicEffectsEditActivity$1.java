@@ -16,15 +16,15 @@ class TroopPicEffectsEditActivity$1
   public void a(SparseArray<TroopGiftManager.ShowPicPrice> paramSparseArray)
   {
     Object localObject = this.a;
-    ((TroopPicEffectsEditActivity)localObject).jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
-    localObject = (TroopGiftManager.ShowPicPrice)((TroopPicEffectsEditActivity)localObject).jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
+    ((TroopPicEffectsEditActivity)localObject).m = paramSparseArray;
+    localObject = (TroopGiftManager.ShowPicPrice)((TroopPicEffectsEditActivity)localObject).m.get(this.a.l);
     if (localObject != null) {
-      paramSparseArray = ((TroopGiftManager.ShowPicPrice)localObject).a;
+      paramSparseArray = ((TroopGiftManager.ShowPicPrice)localObject).b;
     } else {
       paramSparseArray = "30金豆秀一下";
     }
     if (localObject != null) {
-      localObject = ((TroopGiftManager.ShowPicPrice)localObject).b;
+      localObject = ((TroopGiftManager.ShowPicPrice)localObject).c;
     } else {
       localObject = null;
     }
@@ -42,12 +42,12 @@ class TroopPicEffectsEditActivity$1
     }
     paramSparseArray = new SpannableString(paramSparseArray);
     paramSparseArray.setSpan(new StrikethroughSpan(), i, j, 18);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(paramSparseArray);
+    this.a.e.setText(paramSparseArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.1
  * JD-Core Version:    0.7.0.1
  */

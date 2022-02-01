@@ -11,11 +11,11 @@ class ShortVideoBusinessProcess
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("userCheckNeedDownload:APPID=");
-    ((StringBuilder)localObject).append(AppSetting.a());
+    ((StringBuilder)localObject).append(AppSetting.d());
     ((StringBuilder)localObject).append(" subVersion=");
-    ((StringBuilder)localObject).append("8.7.0");
+    ((StringBuilder)localObject).append("8.8.17");
     ((StringBuilder)localObject).append(" buildnum=");
-    ((StringBuilder)localObject).append("5295");
+    ((StringBuilder)localObject).append("5770");
     VideoEnvironment.LogDownLoad("ShortVideoResourceManager", ((StringBuilder)localObject).toString(), null);
     if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_video_"))
     {
@@ -178,16 +178,16 @@ class ShortVideoBusinessProcess
       return VideoEnvironment.checkAndLoadAVCodec();
     }
     if (paramString.startsWith("new_qq_android_native_art_filter_")) {
-      return ShortVideoArtResourceMgr.a();
+      return ShortVideoArtResourceMgr.c();
     }
     if (paramString.startsWith("new_qq_android_native_short_other_")) {
-      return ShortVideoOtherResourceMgr.a();
+      return ShortVideoOtherResourceMgr.c();
     }
     if (paramString.startsWith("msf_quic_lib")) {
       return QuicResProcess.a(paramQQAppInterface);
     }
     if (paramString.startsWith("new_qq_android_native_portrait_filter_")) {
-      return ShortVideoPortraitResourceManager.a();
+      return ShortVideoPortraitResourceManager.c();
     }
     return false;
   }
@@ -218,7 +218,7 @@ class ShortVideoBusinessProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoBusinessProcess
  * JD-Core Version:    0.7.0.1
  */

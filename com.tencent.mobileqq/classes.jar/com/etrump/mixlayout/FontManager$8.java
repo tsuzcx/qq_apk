@@ -11,12 +11,12 @@ class FontManager$8
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString) == null)
+    if (this.a.x(this.b) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("tag.vasFont.enlarge", 2, "enableEnlargeFontEffect --> extensionInfo is null.");
       }
-      AvatarPendantUtil.a(this.jdField_a_of_type_JavaLangString);
+      AvatarPendantUtil.a(this.b);
       AvatarPendantUtil.a(FontManager.a(this.this$0));
     }
   }

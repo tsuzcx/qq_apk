@@ -14,9 +14,9 @@ class GameRoomPresenterImp$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((IAVGameAppInterface)GameEngine.a().a()).a().a(0, null);
-    GameEngine.a().a().a();
-    ((IAVGameAppInterface)GameEngine.a().a()).b(1006);
+    ((IAVGameAppInterface)GameEngine.a().f()).a().b(0, null);
+    GameEngine.a().s().a();
+    ((IAVGameAppInterface)GameEngine.a().f()).b(1006);
   }
 }
 

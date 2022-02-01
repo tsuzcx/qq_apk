@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ-8.7.0-1718-3834.apk
+apkFileName: QQ-8.8.17-1938-3834.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -12,7 +12,12 @@ doNotCompress:
 - assets/classes15.dex.MD5
 - assets/classes16.dex.MD5
 - assets/classes17.dex.MD5
+- assets/classes18.dex.MD5
+- assets/classes19.dex.MD5
 - assets/classes2.dex.MD5
+- assets/classes20.dex.MD5
+- assets/classes21.dex.MD5
+- assets/classes22.dex.MD5
 - assets/classes3.dex.MD5
 - assets/classes4.dex.MD5
 - assets/classes5.dex.MD5
@@ -30,13 +35,14 @@ doNotCompress:
 - assets/revision.txt
 - jpg
 - assets/txlib
+- assets/xwalk-command-line
+- assets/TencentLocationComp_sapp/1
 - assets/benchmark/high/lenovo.json
 - assets/benchmark/high/nubia.json
 - assets/benchmark/mhigh/smartisan.json
 - assets/benchmark/middle/meitu.json
 - assets/benchmark/middle/meizu.json
 - assets/benchmark/middle/samsung.json
-- assets/camera/template/template.json
 - gif
 - assets/plugins/PluginManifest
 - assets/proteus/comment_feeds/manifest
@@ -51,6 +57,7 @@ doNotCompress:
 - assets/proteus/default_feeds/pages/daily_large_video_card/manifest
 - assets/proteus/default_feeds/pages/daily_triple_img_card/manifest
 - assets/proteus/default_feeds/pages/horizontal_avatars/manifest
+- assets/proteus/default_feeds/pages/hot_news_social/manifest
 - assets/proteus/default_feeds/pages/hot_news_sogou/manifest
 - assets/proteus/default_feeds/pages/social_attract_traffic_large/manifest
 - assets/proteus/default_feeds/pages/ugc_account_popup/manifest
@@ -60,8 +67,14 @@ doNotCompress:
 - assets/proteus/native_article/pages/search_image_column_card/manifest
 - assets/proteus/native_article/pages/search_image_video_card/manifest
 - assets/qfav_editor/qfav_richmedia_detail.css
-- assets/qqcircle/pluginInfo.xml
 - assets/qshadow-plugins/plugins
+- wav
+- assets/winkEdit/wink_editor_auto_template.json
+- assets/winkEdit/wink_editor_display_effects.json
+- assets/winkEdit/wink_editor_frame.json
+- assets/winkEdit/wink_editor_pic_template.json
+- assets/winkEdit/wink_editor_text.json
+- assets/winkEdit/wink_editor_text_stickers_default.json
 - webp
 - r/v/bl9.gif
 - r/v/bl_.gif
@@ -264,6 +277,18 @@ unknownFiles:
   com/tencent/qg/sdk/META-INF/MANIFEST.MF: '0'
   com/tencent/qqinterface/META-INF/MANIFEST.MF: '0'
   com/tracking/sdk/META-INF/MANIFEST.MF: '0'
+  google/protobuf/any.proto: '8'
+  google/protobuf/api.proto: '8'
+  google/protobuf/descriptor.proto: '8'
+  google/protobuf/duration.proto: '8'
+  google/protobuf/empty.proto: '8'
+  google/protobuf/field_mask.proto: '8'
+  google/protobuf/source_context.proto: '8'
+  google/protobuf/struct.proto: '8'
+  google/protobuf/timestamp.proto: '8'
+  google/protobuf/type.proto: '8'
+  google/protobuf/wrappers.proto: '8'
+  google/protobuf/compiler/plugin.proto: '8'
   junit/runner/logo.gif: '0'
   junit/runner/smalllogo.gif: '0'
   okhttp3/internal/publicsuffix/publicsuffixes.gz: '0'
@@ -273,5 +298,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1718'
-  versionName: 8.7.0
+  versionCode: '1938'
+  versionName: 8.8.17

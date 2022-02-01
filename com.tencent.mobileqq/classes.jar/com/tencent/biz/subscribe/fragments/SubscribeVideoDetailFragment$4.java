@@ -12,8 +12,8 @@ class SubscribeVideoDetailFragment$4
   public void a(String paramString1, String paramString2)
   {
     QLog.i("SubscribeVideoDetailFragment", 1, "sendUrlToUUIDRequest getUUID Success");
-    if (this.a.a != null) {
-      this.a.a.a(paramString2);
+    if (this.a.c != null) {
+      this.a.c.a(paramString2);
     }
   }
 }

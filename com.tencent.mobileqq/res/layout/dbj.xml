@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.module.feedcomponent.ui.common.SuperLikeView android:id="@id/c7p" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/j78" android:scaleType="fitXY" android:layout_centerVertical="true" />
+</LinearLayout>

@@ -56,42 +56,7 @@ public class RIJSPUtils
   
   public static SharedPreferences a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return a(RIJQQAppInterfaceUtil.a(), paramBoolean1, paramBoolean2);
-  }
-  
-  public static <T> T a(String paramString, T paramT)
-  {
-    return a(paramString, paramT, true);
-  }
-  
-  public static <T> T a(String paramString, T paramT, boolean paramBoolean)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getReadInJoySpValue: ");
-    ((StringBuilder)localObject).append(paramString);
-    QLog.d("RIJSPUtils", 2, ((StringBuilder)localObject).toString());
-    localObject = a(RIJQQAppInterfaceUtil.a(), paramBoolean, true);
-    if (localObject == null)
-    {
-      QLog.d("RIJSPUtils", 2, "getReadInJoySpValue: sp is null");
-      return paramT;
-    }
-    if ((paramT instanceof String)) {
-      return ((SharedPreferences)localObject).getString(paramString, (String)paramT);
-    }
-    if ((paramT instanceof Integer)) {
-      return Integer.valueOf(((SharedPreferences)localObject).getInt(paramString, ((Integer)paramT).intValue()));
-    }
-    if ((paramT instanceof Long)) {
-      return Long.valueOf(((SharedPreferences)localObject).getLong(paramString, ((Long)paramT).longValue()));
-    }
-    if ((paramT instanceof Boolean)) {
-      return Boolean.valueOf(((SharedPreferences)localObject).getBoolean(paramString, ((Boolean)paramT).booleanValue()));
-    }
-    if ((paramT instanceof Float)) {
-      return Float.valueOf(((SharedPreferences)localObject).getFloat(paramString, ((Float)paramT).floatValue()));
-    }
-    return paramT;
+    return a(RIJQQAppInterfaceUtil.e(), paramBoolean1, paramBoolean2);
   }
   
   public static Object a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
@@ -154,6 +119,11 @@ public class RIJSPUtils
     ThreadManager.executeOnFileThread(new RIJSPUtils.1(paramBoolean, paramString));
   }
   
+  public static <T> T b(String paramString, T paramT)
+  {
+    return d(paramString, paramT, true);
+  }
+  
   public static void b(String paramString, Object paramObject, boolean paramBoolean)
   {
     try
@@ -164,7 +134,7 @@ public class RIJSPUtils
       localObjectOutputStream.flush();
       localObjectOutputStream.close();
       paramObject = PkgTools.toHexStr(((ByteArrayOutputStream)localObject).toByteArray());
-      localObject = a(RIJQQAppInterfaceUtil.a(), true, paramBoolean);
+      localObject = a(RIJQQAppInterfaceUtil.e(), true, paramBoolean);
       if (localObject != null)
       {
         localObject = ((SharedPreferences)localObject).edit();
@@ -195,7 +165,7 @@ public class RIJSPUtils
     ((StringBuilder)localObject).append(" value - ");
     ((StringBuilder)localObject).append(paramT);
     QLog.d("RIJSPUtils", 2, ((StringBuilder)localObject).toString());
-    localObject = a(RIJQQAppInterfaceUtil.a(), paramBoolean, true);
+    localObject = a(RIJQQAppInterfaceUtil.e(), paramBoolean, true);
     if (localObject == null)
     {
       QLog.d("RIJSPUtils", 2, "updateReadInJoySpValue: sp is null");
@@ -236,10 +206,38 @@ public class RIJSPUtils
     }
     a((SharedPreferences.Editor)localObject, true);
   }
+  
+  public static <T> T d(String paramString, T paramT, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = a(RIJQQAppInterfaceUtil.e(), paramBoolean, true);
+    if (localSharedPreferences == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJSPUtils", 2, "getReadInJoySpValue: sp is null");
+      }
+      return paramT;
+    }
+    if ((paramT instanceof String)) {
+      return localSharedPreferences.getString(paramString, (String)paramT);
+    }
+    if ((paramT instanceof Integer)) {
+      return Integer.valueOf(localSharedPreferences.getInt(paramString, ((Integer)paramT).intValue()));
+    }
+    if ((paramT instanceof Long)) {
+      return Long.valueOf(localSharedPreferences.getLong(paramString, ((Long)paramT).longValue()));
+    }
+    if ((paramT instanceof Boolean)) {
+      return Boolean.valueOf(localSharedPreferences.getBoolean(paramString, ((Boolean)paramT).booleanValue()));
+    }
+    if ((paramT instanceof Float)) {
+      return Float.valueOf(localSharedPreferences.getFloat(paramString, ((Float)paramT).floatValue()));
+    }
+    return paramT;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.RIJSPUtils
  * JD-Core Version:    0.7.0.1
  */

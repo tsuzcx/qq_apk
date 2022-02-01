@@ -24,89 +24,89 @@ final class HotChatHelper$7
     Object localObject = paramView.getTag();
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-      int j = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).a.action;
-      int i = this.jdField_a_of_type_Int;
+      this.a.dismiss();
+      int n = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).c.action;
+      int m = this.b;
       localObject = "";
-      if (1 == i) {
+      if (1 == m) {
         localObject = "0X8005D50";
       }
       for (;;)
       {
         break;
-        if (2 == i) {
+        if (2 == m) {
           localObject = "0X8005D51";
         }
       }
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (j != 2)
+        if (n != 2)
         {
-          if (j != 3)
+          if (n != 3)
           {
-            if (j != 9)
+            if (n != 9)
             {
-              if (j == 10) {
-                ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "4", "", "", "");
+              if (n == 10) {
+                ReportController.b(this.c, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "4", "", "", "");
               }
             }
             else {
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "3", "", "", "");
+              ReportController.b(this.c, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "3", "", "", "");
             }
           }
           else {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "2", "", "", "");
+            ReportController.b(this.c, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "2", "", "", "");
           }
         }
         else {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "1", "", "", "");
+          ReportController.b(this.c, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "1", "", "", "");
         }
       }
-      if ((j == 9) || (j == 10))
+      if ((n == 9) || (n == 10))
       {
-        if (!WXShareHelper.a().a()) {
-          i = 2131720478;
-        } else if (!WXShareHelper.a().b()) {
-          i = 2131720479;
+        if (!WXShareHelper.a().b()) {
+          m = 2131918154;
+        } else if (!WXShareHelper.a().c()) {
+          m = 2131918155;
         } else {
-          i = -1;
+          m = -1;
         }
-        if (i != -1)
+        if (m != -1)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-          QQToast.a((Context)localObject, ((BaseActivity)localObject).getString(i), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131299168));
+          localObject = this.d;
+          QQToast.makeText((Context)localObject, ((BaseActivity)localObject).getString(m), 0).show(this.d.getResources().getDimensionPixelSize(2131299920));
           break label548;
         }
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("邀请加入QQ热聊：");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.e);
       localObject = ((StringBuilder)localObject).toString();
-      if (j != 2)
+      if (n != 2)
       {
-        if (j != 3)
+        if (n != 3)
         {
-          if (j != 9)
+          if (n != 9)
           {
-            if (j == 10) {
-              HotChatHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, (String)localObject, this.b, this.f, this.c, this.g);
+            if (n == 10) {
+              HotChatHelper.b(this.d, this.e, (String)localObject, this.f, this.j, this.g, this.k);
             }
           }
           else {
-            HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, (String)localObject, "立即加入，一起热聊！\nQQ热聊有上百个热门话题，与同兴趣的人一起群聊。", this.f, this.c, this.g);
+            HotChatHelper.a(this.d, this.e, (String)localObject, "立即加入，一起热聊！\nQQ热聊有上百个热门话题，与同兴趣的人一起群聊。", this.j, this.g, this.k);
           }
         }
         else {
-          HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, (String)localObject, this.b, this.c, this.e);
+          HotChatHelper.a(this.d, this.e, (String)localObject, this.f, this.g, this.i);
         }
       }
       else
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131705639));
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131705640));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131903525));
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131903526));
         localObject = ((StringBuilder)localObject).toString();
-        HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, (String)localObject, this.b, this.c, this.d, this.e, false);
+        HotChatHelper.a(this.d, this.e, (String)localObject, this.f, this.g, this.h, this.i, false);
       }
     }
     label548:
@@ -115,7 +115,7 @@ final class HotChatHelper$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatHelper.7
  * JD-Core Version:    0.7.0.1
  */

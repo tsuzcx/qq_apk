@@ -22,7 +22,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder
   public MiniAppDesktopAdapter$DesktopModuleListViewHolder(MiniAppDesktopAdapter paramMiniAppDesktopAdapter, View paramView, Context paramContext, DragRecyclerView.DragDeleteListener paramDragDeleteListener)
   {
     super(paramView);
-    this.mRecycleView = ((DragRecyclerView)paramView.findViewById(2131376308));
+    this.mRecycleView = ((DragRecyclerView)paramView.findViewById(2131444519));
     MiniAppDesktopAdapter.access$3100(paramMiniAppDesktopAdapter).addChildDragRecycleView(this.mRecycleView);
     this.mAdapter = new MiniAppDesktopAdapter.DesktopModuleListViewHolder.MiniAppAdapter(this, paramContext, this.mRecycleView);
     this.mAdapter.setParentRecyclerView(MiniAppDesktopAdapter.access$3200(paramMiniAppDesktopAdapter));
@@ -78,7 +78,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DesktopModuleListViewHolder
  * JD-Core Version:    0.7.0.1
  */

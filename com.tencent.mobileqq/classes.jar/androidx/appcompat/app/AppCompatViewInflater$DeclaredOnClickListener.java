@@ -25,8 +25,7 @@ class AppCompatViewInflater$DeclaredOnClickListener
     this.mMethodName = paramString;
   }
   
-  @NonNull
-  private void resolveMethod(@Nullable Context paramContext, @NonNull String paramString)
+  private void resolveMethod(@Nullable Context paramContext)
   {
     while (paramContext != null)
     {
@@ -34,17 +33,18 @@ class AppCompatViewInflater$DeclaredOnClickListener
       {
         if (!paramContext.isRestricted())
         {
-          paramString = paramContext.getClass().getMethod(this.mMethodName, new Class[] { View.class });
-          if (paramString != null)
+          localObject = paramContext.getClass().getMethod(this.mMethodName, new Class[] { View.class });
+          if (localObject != null)
           {
-            this.mResolvedMethod = paramString;
+            this.mResolvedMethod = ((Method)localObject);
             this.mResolvedContext = paramContext;
             return;
           }
         }
       }
-      catch (NoSuchMethodException paramString)
+      catch (NoSuchMethodException localNoSuchMethodException)
       {
+        Object localObject;
         label47:
         int i;
         break label47;
@@ -68,13 +68,13 @@ class AppCompatViewInflater$DeclaredOnClickListener
       paramContext.append("'");
       paramContext = paramContext.toString();
     }
-    paramString = new StringBuilder();
-    paramString.append("Could not find method ");
-    paramString.append(this.mMethodName);
-    paramString.append("(View) in a parent or ancestor Context for android:onClick attribute defined on view ");
-    paramString.append(this.mHostView.getClass());
-    paramString.append(paramContext);
-    paramContext = new IllegalStateException(paramString.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Could not find method ");
+    ((StringBuilder)localObject).append(this.mMethodName);
+    ((StringBuilder)localObject).append("(View) in a parent or ancestor Context for android:onClick attribute defined on view ");
+    ((StringBuilder)localObject).append(this.mHostView.getClass());
+    ((StringBuilder)localObject).append(paramContext);
+    paramContext = new IllegalStateException(((StringBuilder)localObject).toString());
     for (;;)
     {
       throw paramContext;
@@ -84,7 +84,7 @@ class AppCompatViewInflater$DeclaredOnClickListener
   public void onClick(@NonNull View paramView)
   {
     if (this.mResolvedMethod == null) {
-      resolveMethod(this.mHostView.getContext(), this.mMethodName);
+      resolveMethod(this.mHostView.getContext());
     }
     try
     {

@@ -22,7 +22,7 @@ public class WebviewApiImpl
   public List<String> getMenuHideNameList(Object paramObject)
   {
     if ((paramObject instanceof SwiftBrowserShareMenuHandler)) {
-      return ((SwiftBrowserShareMenuHandler)paramObject).a;
+      return ((SwiftBrowserShareMenuHandler)paramObject).i;
     }
     return null;
   }
@@ -30,21 +30,21 @@ public class WebviewApiImpl
   public Object getSharePd(Object paramObject)
   {
     if ((paramObject instanceof WebViewFragment)) {
-      return ((Share)((WebViewFragment)paramObject).getShare()).a();
+      return ((Share)((WebViewFragment)paramObject).getShare()).u();
     }
     return null;
   }
   
   public int getWebViewDialogMultiLineLayout()
   {
-    return 2131558979;
+    return 2131624612;
   }
   
   public boolean onQRFromX5(Object paramObject)
   {
     paramObject = (SwiftBrowserLongClickHandler)paramObject;
     if (paramObject != null) {
-      return paramObject.a();
+      return paramObject.b();
     }
     return false;
   }
@@ -70,7 +70,7 @@ public class WebviewApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.temp.api.impl.WebviewApiImpl
  * JD-Core Version:    0.7.0.1
  */

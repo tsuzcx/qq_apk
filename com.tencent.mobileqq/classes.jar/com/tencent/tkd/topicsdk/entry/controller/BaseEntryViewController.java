@@ -25,26 +25,40 @@ import org.jetbrains.annotations.Nullable;
 public class BaseEntryViewController
   implements IEntryViewController
 {
-  public static final BaseEntryViewController.Companion a;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final IEntryViewBridge jdField_a_of_type_ComTencentTkdTopicsdkEntryIEntryViewBridge;
-  private final IFloatViewManager jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIFloatViewManager;
-  private final HashMap<String, View> jdField_a_of_type_JavaUtilHashMap;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkEntryControllerBaseEntryViewController$Companion = new BaseEntryViewController.Companion(null);
-  }
+  public static final BaseEntryViewController.Companion b = new BaseEntryViewController.Companion(null);
+  private final HashMap<String, View> a;
+  private final Context d;
+  private final IEntryViewBridge e;
+  private final IFloatViewManager f;
   
   public BaseEntryViewController(@NotNull Context paramContext, @NotNull IEntryViewBridge paramIEntryViewBridge, @NotNull IFloatViewManager paramIFloatViewManager)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkEntryIEntryViewBridge = paramIEntryViewBridge;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIFloatViewManager = paramIFloatViewManager;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.d = paramContext;
+    this.e = paramIEntryViewBridge;
+    this.f = paramIFloatViewManager;
+    this.a = new HashMap();
   }
   
-  private final FrameLayout.LayoutParams a(int paramInt, Bundle paramBundle)
+  public int a(@Nullable Bundle paramBundle)
+  {
+    int i = 0;
+    if (paramBundle != null) {
+      i = paramBundle.getInt("entryStyle", 0);
+    }
+    return i;
+  }
+  
+  @NotNull
+  public View a(int paramInt, @Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2)
+  {
+    if (paramInt == 1) {
+      return (View)new SquareEntryView(this.d, this.e, paramBundle1, paramBundle2);
+    }
+    return (View)new CircleEntryView(this.d, this.e, paramBundle1, paramBundle2);
+  }
+  
+  @NotNull
+  public FrameLayout.LayoutParams a(int paramInt, @Nullable Bundle paramBundle)
   {
     int k = 0;
     int i;
@@ -65,7 +79,7 @@ public class BaseEntryViewController
     paramBundle = new FrameLayout.LayoutParams(-2, -2);
     paramBundle.topMargin = i;
     paramBundle.bottomMargin = k;
-    paramBundle.rightMargin = (j - DisplayUtils.a.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
+    paramBundle.rightMargin = (j - DisplayUtils.a.a(this.d, 8.0F));
     if (paramInt == 1) {
       paramInt = 8388661;
     } else {
@@ -73,24 +87,6 @@ public class BaseEntryViewController
     }
     paramBundle.gravity = paramInt;
     return paramBundle;
-  }
-  
-  public int a(@Nullable Bundle paramBundle)
-  {
-    int i = 0;
-    if (paramBundle != null) {
-      i = paramBundle.getInt("entryStyle", 0);
-    }
-    return i;
-  }
-  
-  @NotNull
-  public View a(int paramInt, @Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2)
-  {
-    if (paramInt == 1) {
-      return (View)new SquareEntryView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentTkdTopicsdkEntryIEntryViewBridge, paramBundle1, paramBundle2);
-    }
-    return (View)new CircleEntryView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentTkdTopicsdkEntryIEntryViewBridge, paramBundle1, paramBundle2);
   }
   
   public void a(@Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2, @Nullable Function1<? super String, Unit> paramFunction1)
@@ -105,7 +101,7 @@ public class BaseEntryViewController
     } else {
       i = -1;
     }
-    ((Map)this.jdField_a_of_type_JavaUtilHashMap).put(str, paramBundle2);
+    ((Map)this.a).put(str, paramBundle2);
     paramBundle2.setTag(Integer.valueOf(i));
     paramBundle2.setVisibility(0);
     ThreadManagerKt.a((Function0)new BaseEntryViewController.addEntryView.2(this, paramBundle2, a(j, paramBundle1), paramFunction1, str));
@@ -131,7 +127,7 @@ public class BaseEntryViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.entry.controller.BaseEntryViewController
  * JD-Core Version:    0.7.0.1
  */

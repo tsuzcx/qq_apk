@@ -8,22 +8,22 @@ import android.widget.RelativeLayout.LayoutParams;
 public class BubbleResizeAnimation
   extends Animation
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private int b;
+  private View a;
+  private RelativeLayout.LayoutParams b;
   private int c;
   private int d;
+  private int e;
+  private int f;
   
   public BubbleResizeAnimation(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     setDuration(paramInt1);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
-    this.b = paramView.getMeasuredHeight();
-    this.jdField_a_of_type_Int = paramView.getMeasuredWidth();
-    this.d = (this.b + paramInt3);
-    this.c = (this.jdField_a_of_type_Int + paramInt2);
+    this.a = paramView;
+    this.b = ((RelativeLayout.LayoutParams)paramView.getLayoutParams());
+    this.d = paramView.getMeasuredHeight();
+    this.c = paramView.getMeasuredWidth();
+    this.f = (this.d + paramInt3);
+    this.e = (this.c + paramInt2);
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
@@ -31,12 +31,12 @@ public class BubbleResizeAnimation
     super.applyTransformation(paramFloat, paramTransformation);
     if (paramFloat < 1.0F)
     {
-      paramTransformation = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-      int i = this.b;
-      paramTransformation.height = (i + (int)((this.d - i) * paramFloat));
-      i = this.jdField_a_of_type_Int;
-      paramTransformation.width = (i + (int)((this.c - i) * paramFloat));
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      paramTransformation = this.b;
+      int i = this.d;
+      paramTransformation.height = (i + (int)((this.f - i) * paramFloat));
+      i = this.c;
+      paramTransformation.width = (i + (int)((this.e - i) * paramFloat));
+      this.a.requestLayout();
     }
   }
 }

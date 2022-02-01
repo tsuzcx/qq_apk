@@ -19,16 +19,6 @@ import mqq.app.AppRuntime;
 
 public class ExpandSharePreUtils
 {
-  public static int a(String paramString)
-  {
-    return SharedPreUtils.a(paramString, "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", -1);
-  }
-  
-  public static long a(String paramString)
-  {
-    return SharedPreUtils.g(paramString).getLong("expand_greet_limit_time", 0L);
-  }
-  
   public static String a(String paramString)
   {
     return SharedPreUtils.g(paramString).getString("extend_friend_config_785_taskid", "");
@@ -58,26 +48,6 @@ public class ExpandSharePreUtils
   public static void a(String paramString, boolean paramBoolean)
   {
     SharedPreUtils.g(paramString).edit().putBoolean("extend_friend_is_pull_user_category", paramBoolean).apply();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    IExpandManager localIExpandManager = (IExpandManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-    boolean bool = localIExpandManager.o();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("check850SaveEmptyAIONode startLabSaveEmptyAIONode ： ");
-      localStringBuilder.append(bool);
-      QLog.i("ExpandSharePreUtils", 2, localStringBuilder.toString());
-    }
-    int i;
-    if (localIExpandManager.a(paramString) == 0) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    return (bool) && (i != 0);
   }
   
   public static boolean a(String paramString, ExtendFriendABTestConfig.GetTabTestInfoRsp paramGetTabTestInfoRsp, QQAppInterface paramQQAppInterface)
@@ -122,12 +92,7 @@ public class ExpandSharePreUtils
   
   public static int b(String paramString)
   {
-    return SharedPreUtils.g(paramString).getInt("expand_greet_limit_code", 0);
-  }
-  
-  public static String b(String paramString)
-  {
-    return SharedPreUtils.g(paramString).getString("extend_friend_ab_test_config", ExtendFriendABTestConfig.ExtendFriendABJson.getEmptyJson());
+    return SharedPreUtils.a(paramString, "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", -1);
   }
   
   public static void b(String paramString, long paramLong)
@@ -135,7 +100,32 @@ public class ExpandSharePreUtils
     SharedPreUtils.g(paramString).edit().putLong("extend_friend_pull_user_category_interval", paramLong).apply();
   }
   
-  public static boolean b(String paramString)
+  public static String c(String paramString)
+  {
+    return SharedPreUtils.g(paramString).getString("extend_friend_ab_test_config", ExtendFriendABTestConfig.ExtendFriendABJson.getEmptyJson());
+  }
+  
+  public static boolean d(String paramString)
+  {
+    IExpandManager localIExpandManager = (IExpandManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+    boolean bool = localIExpandManager.ac();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("check850SaveEmptyAIONode startLabSaveEmptyAIONode ： ");
+      localStringBuilder.append(bool);
+      QLog.i("ExpandSharePreUtils", 2, localStringBuilder.toString());
+    }
+    int i;
+    if (localIExpandManager.f(paramString) == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    return (bool) && (i != 0);
+  }
+  
+  public static boolean e(String paramString)
   {
     Object localObject = SharedPreUtils.g(paramString).getString("extend_friend_ab_test_start_date", "");
     if (TextUtils.isEmpty((CharSequence)localObject))
@@ -158,12 +148,7 @@ public class ExpandSharePreUtils
     return bool;
   }
   
-  public static String c(String paramString)
-  {
-    return SharedPreUtils.g(paramString).getString("expand_greet_limit_string", "");
-  }
-  
-  public static boolean c(String paramString)
+  public static boolean f(String paramString)
   {
     long l = SharedPreUtils.g(paramString).getLong("extend_friend_pull_user_category_interval", 0L);
     if (l == 0L) {
@@ -171,10 +156,25 @@ public class ExpandSharePreUtils
     }
     return System.currentTimeMillis() - l >= 7200000L;
   }
+  
+  public static int g(String paramString)
+  {
+    return SharedPreUtils.g(paramString).getInt("expand_greet_limit_code", 0);
+  }
+  
+  public static String h(String paramString)
+  {
+    return SharedPreUtils.g(paramString).getString("expand_greet_limit_string", "");
+  }
+  
+  public static long i(String paramString)
+  {
+    return SharedPreUtils.g(paramString).getLong("expand_greet_limit_time", 0L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ExpandSharePreUtils
  * JD-Core Version:    0.7.0.1
  */

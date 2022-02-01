@@ -26,7 +26,7 @@ public class TroopMemberLevelMapConfigProcessor
       QLog.d("TroopMemberLevelMapCofigProcessor", 2, "onParsed");
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return TroopMemberLevelMapConfig.a(paramArrayOfQConfItem[0].a);
+      return TroopMemberLevelMapConfig.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -68,7 +68,7 @@ public class TroopMemberLevelMapConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.memberlevel.TroopMemberLevelMapConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

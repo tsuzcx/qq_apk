@@ -40,19 +40,19 @@ public class SegmentViewFactoryImplement
         }
         catch (InvocationTargetException paramContext)
         {
-          throw new IllegalArgumentException(HardCodeUtil.a(2131713610), paramContext);
+          throw new IllegalArgumentException(HardCodeUtil.a(2131911155), paramContext);
         }
         catch (InstantiationException paramContext)
         {
-          throw new IllegalStateException(HardCodeUtil.a(2131713614), paramContext);
+          throw new IllegalStateException(HardCodeUtil.a(2131911159), paramContext);
         }
         catch (IllegalAccessException paramContext)
         {
-          throw new IllegalStateException(HardCodeUtil.a(2131713611), paramContext);
+          throw new IllegalStateException(HardCodeUtil.a(2131911156), paramContext);
         }
         catch (NoSuchMethodException paramContext)
         {
-          throw new IllegalStateException(HardCodeUtil.a(2131713608), paramContext);
+          throw new IllegalStateException(HardCodeUtil.a(2131911153), paramContext);
         }
       }
       try
@@ -62,19 +62,19 @@ public class SegmentViewFactoryImplement
       }
       catch (IllegalAccessException paramContext)
       {
-        throw new IllegalStateException(HardCodeUtil.a(2131713609), paramContext);
+        throw new IllegalStateException(HardCodeUtil.a(2131911154), paramContext);
       }
       catch (NoSuchFieldException paramContext)
       {
-        throw new IllegalStateException(HardCodeUtil.a(2131713615), paramContext);
+        throw new IllegalStateException(HardCodeUtil.a(2131911160), paramContext);
       }
     }
-    throw new IllegalArgumentException(HardCodeUtil.a(2131713612));
+    throw new IllegalArgumentException(HardCodeUtil.a(2131911157));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.implement.SegmentViewFactoryImplement
  * JD-Core Version:    0.7.0.1
  */

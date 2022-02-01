@@ -10,22 +10,20 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QQLSSensor
 {
-  private float jdField_a_of_type_Float;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  public SensorEventListener a;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new QQLSSensor.2(this, Looper.getMainLooper());
-  private QQLSSensor.ProximitySensorChangeListener jdField_a_of_type_ComTencentMobileqqUtilsQQLSSensor$ProximitySensorChangeListener;
-  public boolean a;
-  private boolean b;
+  public boolean a = false;
+  public SensorEventListener b = new QQLSSensor.1(this);
+  private SensorManager c;
+  private Sensor d;
+  private float e;
+  private QQLSSensor.ProximitySensorChangeListener f;
+  private boolean g;
+  private Context h;
+  private Handler i = new QQLSSensor.2(this, Looper.getMainLooper());
   
   public QQLSSensor(Context paramContext, QQLSSensor.ProximitySensorChangeListener paramProximitySensorChangeListener)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new QQLSSensor.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQLSSensor$ProximitySensorChangeListener = paramProximitySensorChangeListener;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.f = paramProximitySensorChangeListener;
+    this.h = paramContext;
   }
   
   public void a()
@@ -33,22 +31,22 @@ public class QQLSSensor
     if (QLog.isColorLevel()) {
       QLog.d("QQLSSensor", 2, "LSSensor open=====");
     }
-    this.b = false;
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
-    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
-    Sensor localSensor = this.jdField_a_of_type_AndroidHardwareSensor;
+    this.g = false;
+    this.c = ((SensorManager)this.h.getSystemService("sensor"));
+    this.d = this.c.getDefaultSensor(8);
+    Sensor localSensor = this.d;
     if (localSensor != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Float = localSensor.getMaximumRange();
-      if (this.jdField_a_of_type_Float > 10.0F) {
-        this.jdField_a_of_type_Float = 10.0F;
+      this.a = true;
+      this.e = localSensor.getMaximumRange();
+      if (this.e > 10.0F) {
+        this.e = 10.0F;
       }
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor, 2);
+      this.c.registerListener(this.b, this.d, 2);
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQLSSensor$ProximitySensorChangeListener.a(this.b);
+    this.a = false;
+    this.f.a(this.g);
   }
   
   public void b()
@@ -56,16 +54,16 @@ public class QQLSSensor
     if (QLog.isColorLevel()) {
       QLog.d("QQLSSensor", 2, "LSSensor shutdown=====");
     }
-    SensorManager localSensorManager = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    SensorManager localSensorManager = this.c;
     if (localSensorManager != null)
     {
-      localSensorManager.unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener);
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+      localSensorManager.unregisterListener(this.b);
+      this.c = null;
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQLSSensor$ProximitySensorChangeListener = null;
-      this.jdField_a_of_type_AndroidHardwareSensor = null;
+      this.f = null;
+      this.d = null;
       return;
     }
     finally {}
@@ -73,7 +71,7 @@ public class QQLSSensor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQLSSensor
  * JD-Core Version:    0.7.0.1
  */

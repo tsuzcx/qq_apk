@@ -49,21 +49,21 @@ class AddFriendVerifyActivity$17
     }
     if (paramBoolean)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if (this.a.a != null) {
+        this.a.a.dismiss();
       }
-      QQToast.a(this.a, 2, 2131718752, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 2, 2131916258, 0).show(this.a.getTitleBarHeight());
       localObject = new Intent();
       ((Intent)localObject).putExtra("result", paramArrayList);
       this.a.setResult(-1, (Intent)localObject);
       this.a.finish();
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
-    AddFriendVerifyActivity.b(this.a).clear();
-    QQToast.a(this.a, 1, 2131718220, 0).b(this.a.getTitleBarHeight());
+    AddFriendVerifyActivity.p(this.a).clear();
+    QQToast.makeText(this.a, 1, 2131915702, 0).show(this.a.getTitleBarHeight());
     this.a.setResult(0);
     this.a.finish();
   }
@@ -97,11 +97,11 @@ class AddFriendVerifyActivity$17
   
   protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    if (!TextUtils.equals(AddFriendVerifyActivity.a(this.a), paramString1)) {
+    if (!TextUtils.equals(AddFriendVerifyActivity.d(this.a), paramString1)) {
       return;
     }
     if (paramBoolean) {
-      if ((!((IAddFriendApi)QRoute.api(IAddFriendApi.class)).shouldUseLocalRemark(AddFriendVerifyActivity.b(this.a))) && (this.a.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo == null))
+      if ((!((IAddFriendApi)QRoute.api(IAddFriendApi.class)).shouldUseLocalRemark(AddFriendVerifyActivity.m(this.a))) && (this.a.v == null))
       {
         if (QLog.isColorLevel())
         {
@@ -110,12 +110,12 @@ class AddFriendVerifyActivity$17
           paramString1.append(paramString2);
           QLog.d("AddFriendVerifyActivity", 2, paramString1.toString());
         }
-        this.a.b.setText(paramString2);
+        this.a.f.setText(paramString2);
       }
     }
     try
     {
-      this.a.b.setSelection(this.a.b.getText().length());
+      this.a.f.setSelection(this.a.f.getText().length());
     }
     catch (IndexOutOfBoundsException paramString1)
     {
@@ -125,35 +125,35 @@ class AddFriendVerifyActivity$17
     if (QLog.isColorLevel()) {
       QLog.d("AddFriendVerifyActivity", 2, "onGetAutoInfo | IndexOutOfBoundsException");
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
-      paramString1 = AddFriendVerifyActivity.a(this.a);
+      paramString1 = AddFriendVerifyActivity.n(this.a);
       paramString2 = new StringBuilder();
-      paramString2.append(this.a.getResources().getString(2131693375));
-      paramString2.append(this.a.b.getText().toString());
+      paramString2.append(this.a.getResources().getString(2131890924));
+      paramString2.append(this.a.f.getText().toString());
       paramString1.setContentDescription(paramString2.toString());
     }
     AddFriendVerifyActivity.a(this.a, paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(this.a.app, AddFriendVerifyActivity.c(this.a)));
+    this.a.g.setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(this.a.app, AddFriendVerifyActivity.o(this.a)));
     return;
     AddFriendVerifyActivity.a(this.a, 0);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(this.a.app, AddFriendVerifyActivity.c(this.a)));
+    this.a.g.setText(((IAddFriendApi)QRoute.api(IAddFriendApi.class)).getGroupName(this.a.app, AddFriendVerifyActivity.o(this.a)));
   }
   
   protected void onGetInfoWithOpenId(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString1, AddFriendVerifyActivity.a(this.a))) && (!TextUtils.isEmpty(paramString2)))
+    if ((paramBoolean) && (TextUtils.equals(paramString1, AddFriendVerifyActivity.d(this.a))) && (!TextUtils.isEmpty(paramString2)))
     {
-      AddFriendVerifyActivity.a(this.a).setText(paramString2);
-      if (AppSetting.d) {
-        AddFriendVerifyActivity.a(this.a).setContentDescription(paramString2);
+      AddFriendVerifyActivity.f(this.a).setText(paramString2);
+      if (AppSetting.e) {
+        AddFriendVerifyActivity.f(this.a).setContentDescription(paramString2);
       }
     }
   }
   
   protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (!TextUtils.equals(paramString, AddFriendVerifyActivity.a(this.a))) {
+    if (!TextUtils.equals(paramString, AddFriendVerifyActivity.d(this.a))) {
       return;
     }
     if (paramBoolean1)
@@ -163,15 +163,15 @@ class AddFriendVerifyActivity$17
         if (paramBoolean2)
         {
           paramString = this.a;
-          paramString.a(paramString.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim(), paramBundle.getByteArray("sig"), paramBundle.getString("security_ticket", ""));
+          paramString.a(paramString.b.getText().toString().trim(), paramBundle.getByteArray("sig"), paramBundle.getString("security_ticket", ""));
           return;
         }
         if ((paramBundle.getString("ErrorString") != null) && (!paramBundle.getString("ErrorString").trim().equals(""))) {
           paramString = paramBundle.getString("ErrorString");
         } else {
-          paramString = this.a.getString(2131690016);
+          paramString = this.a.getString(2131886665);
         }
-        QQToast.a(this.a, 1, paramString, 1).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a, 1, paramString, 1).show(this.a.getTitleBarHeight());
         return;
       }
       if (paramBundle.getInt("resultCode") == 0)
@@ -183,37 +183,37 @@ class AddFriendVerifyActivity$17
           {
             if (i != 100)
             {
-              if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+              if (this.a.a != null)
               {
-                this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-                this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+                this.a.a.cancel();
+                this.a.a = null;
               }
-              QQToast.a(this.a, 2, 2131718219, 0).b(this.a.getTitleBarHeight());
+              QQToast.makeText(this.a, 2, 2131915701, 0).show(this.a.getTitleBarHeight());
               this.a.a();
             }
           }
           else
           {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+            if (this.a.a != null)
             {
-              this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-              this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+              this.a.a.cancel();
+              this.a.a = null;
             }
-            QQToast.a(this.a, 2, 2131718219, 0).b(this.a.getTitleBarHeight());
+            QQToast.makeText(this.a, 2, 2131915701, 0).show(this.a.getTitleBarHeight());
             this.a.a();
             return;
           }
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+        if (this.a.a != null)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+          this.a.a.cancel();
+          this.a.a = null;
         }
-        QQToast.a(this.a, 2, 2131689599, 0).b(this.a.getTitleBarHeight());
-        if (Utils.b(paramString))
+        QQToast.makeText(this.a, 2, 2131886209, 0).show(this.a.getTitleBarHeight());
+        if (Utils.c(paramString))
         {
-          Object localObject = this.a.b.getText().toString();
-          String str = AddFriendVerifyActivity.a(this.a).getText().toString();
+          Object localObject = this.a.f.getText().toString();
+          String str = AddFriendVerifyActivity.f(this.a).getText().toString();
           paramBundle = (Bundle)localObject;
           if (TextUtils.isEmpty((CharSequence)localObject)) {
             paramBundle = str;
@@ -229,10 +229,10 @@ class AddFriendVerifyActivity$17
         this.a.a();
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+      if (this.a.a != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+        this.a.a.cancel();
+        this.a.a = null;
       }
       int i = paramBundle.getInt("error_code", 0);
       paramBundle = paramBundle.getString("ErrorString");
@@ -250,18 +250,18 @@ class AddFriendVerifyActivity$17
       }
       paramString = paramBundle;
       if (TextUtils.isEmpty(paramBundle)) {
-        paramString = this.a.getString(2131718220);
+        paramString = this.a.getString(2131915702);
       }
       AddFriendVerifyActivity.b(this.a, paramString);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    if (this.a.a != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.a.a.cancel();
+      this.a.a = null;
     }
     paramString = this.a;
-    AddFriendVerifyActivity.b(paramString, paramString.getString(2131718220));
+    AddFriendVerifyActivity.b(paramString, paramString.getString(2131915702));
     if (QLog.isColorLevel()) {
       QLog.d("AddFriendVerifyActivity", 2, "add friend response error and isSuccuss = NO");
     }
@@ -269,7 +269,7 @@ class AddFriendVerifyActivity$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.17
  * JD-Core Version:    0.7.0.1
  */

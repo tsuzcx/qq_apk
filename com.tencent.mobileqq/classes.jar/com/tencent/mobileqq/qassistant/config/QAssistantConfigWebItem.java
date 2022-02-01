@@ -12,36 +12,36 @@ public class QAssistantConfigWebItem
 {
   protected String a(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    if (StringUtil.a(this.f)) {
+    if (StringUtil.isEmpty(this.g)) {
       return "";
     }
-    return ((IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class)).configWebItemJumpUrl(this.f);
-  }
-  
-  protected void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
-  {
-    paramBaseQQAppInterface = a(paramBaseQQAppInterface);
-    if (StringUtil.a(paramBaseQQAppInterface)) {
-      return;
-    }
-    this.b = paramBaseQQAppInterface;
+    return ((IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class)).configWebItemJumpUrl(this.g);
   }
   
   protected void a(JumpAction paramJumpAction, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
-    if (this.f.equalsIgnoreCase("qqgame")) {
-      paramJumpAction.e("platformId=qq_m");
+    if (this.g.equalsIgnoreCase("qqgame")) {
+      paramJumpAction.f("platformId=qq_m");
     }
   }
   
   protected boolean b(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
-    return StringUtil.a(this.b) ^ true;
+    return StringUtil.isEmpty(this.b) ^ true;
+  }
+  
+  protected void c(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
+  {
+    paramBaseQQAppInterface = a(paramBaseQQAppInterface);
+    if (StringUtil.isEmpty(paramBaseQQAppInterface)) {
+      return;
+    }
+    this.b = paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.config.QAssistantConfigWebItem
  * JD-Core Version:    0.7.0.1
  */

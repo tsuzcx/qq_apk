@@ -15,7 +15,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.dimen;
+import androidx.appcompat.R.id;
+import androidx.appcompat.R.layout;
+import androidx.appcompat.R.style;
 
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 class TooltipPopup
@@ -29,11 +34,11 @@ class TooltipPopup
   private final int[] mTmpAppPos = new int[2];
   private final Rect mTmpDisplayFrame = new Rect();
   
-  TooltipPopup(Context paramContext)
+  TooltipPopup(@NonNull Context paramContext)
   {
     this.mContext = paramContext;
-    this.mContentView = LayoutInflater.from(this.mContext).inflate(2131558427, null);
-    this.mMessageView = ((TextView)this.mContentView.findViewById(2131370825));
+    this.mContentView = LayoutInflater.from(this.mContext).inflate(R.layout.abc_tooltip, null);
+    this.mMessageView = ((TextView)this.mContentView.findViewById(R.id.message));
     this.mLayoutParams.setTitle(getClass().getSimpleName());
     this.mLayoutParams.packageName = this.mContext.getPackageName();
     paramContext = this.mLayoutParams;
@@ -41,20 +46,20 @@ class TooltipPopup
     paramContext.width = -2;
     paramContext.height = -2;
     paramContext.format = -3;
-    paramContext.windowAnimations = 2131755026;
-    paramContext.flags = 24;
+    paramContext.windowAnimations = R.style.Animation_AppCompat_Tooltip;
+    this.mLayoutParams.flags = 24;
   }
   
   private void computePosition(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, WindowManager.LayoutParams paramLayoutParams)
   {
     paramLayoutParams.token = paramView.getApplicationWindowToken();
-    int i = this.mContext.getResources().getDimensionPixelOffset(2131299199);
+    int i = this.mContext.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_threshold);
     if (paramView.getWidth() < i) {
       paramInt1 = paramView.getWidth() / 2;
     }
     if (paramView.getHeight() >= i)
     {
-      j = this.mContext.getResources().getDimensionPixelOffset(2131299198);
+      j = this.mContext.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_extra_offset);
       i = paramInt2 + j;
       j = paramInt2 - j;
       paramInt2 = i;
@@ -68,9 +73,9 @@ class TooltipPopup
     paramLayoutParams.gravity = 49;
     Object localObject1 = this.mContext.getResources();
     if (paramBoolean) {
-      j = 2131299202;
+      j = R.dimen.tooltip_y_offset_touch;
     } else {
-      j = 2131299201;
+      j = R.dimen.tooltip_y_offset_non_touch;
     }
     int k = ((Resources)localObject1).getDimensionPixelOffset(j);
     localObject1 = getAppRootView(paramView);

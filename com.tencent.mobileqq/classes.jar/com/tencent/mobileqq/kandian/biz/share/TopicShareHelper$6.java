@@ -23,10 +23,10 @@ class TopicShareHelper$6
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("shareMsgToSina download image:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.d("Q.readinjoy.video.TopicShareHelper", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = ImageUtil.a(TopicShareHelper.a(this.this$0), this.jdField_a_of_type_JavaLangString, null);
+    Object localObject1 = ImageUtil.a(TopicShareHelper.g(this.this$0), this.a, null);
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
@@ -44,17 +44,17 @@ class TopicShareHelper$6
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
       ((Intent)localObject2).putExtra("android.intent.extra.STREAM", Uri.fromFile(new File((String)localObject1)));
     }
-    ((Intent)localObject2).setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
+    ((Intent)localObject2).setPackage(this.d.packageName);
     int i;
-    if (TopicShareHelper.a(this.this$0) != null) {
-      i = TopicShareHelper.a(this.this$0).mChannelID;
+    if (TopicShareHelper.f(this.this$0) != null) {
+      i = TopicShareHelper.f(this.this$0).mChannelID;
     } else {
       i = 0;
     }
     ((Intent)localObject2).putExtra("big_brother_source_key", RIJJumpUtils.a(i));
-    FileProvider7Helper.intentCompatForN(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject2);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject2);
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new TopicShareHelper.6.1(this));
+    FileProvider7Helper.intentCompatForN(this.e, (Intent)localObject2);
+    this.e.startActivity((Intent)localObject2);
+    this.e.runOnUiThread(new TopicShareHelper.6.1(this));
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina start weibo!");
     }
@@ -62,7 +62,7 @@ class TopicShareHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.TopicShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

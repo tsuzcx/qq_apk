@@ -15,11 +15,11 @@ public class TransitionImageView
   extends FrameLayout
   implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
+  private URLImageView a;
+  private URLImageView b;
+  private int c;
+  private Animation d;
+  private Animation e;
   
   public TransitionImageView(Context paramContext)
   {
@@ -34,35 +34,51 @@ public class TransitionImageView
   public TransitionImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_b_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-    this.jdField_b_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    addView(this.jdField_a_of_type_ComTencentImageURLImageView, -1, -1);
-    addView(this.jdField_b_of_type_ComTencentImageURLImageView, -1, -1);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(1500L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(1500L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+    this.a = new URLImageView(paramContext);
+    this.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.b = new URLImageView(paramContext);
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    addView(this.a, -1, -1);
+    addView(this.b, -1, -1);
+    this.c = 0;
+    this.d = new AlphaAnimation(0.0F, 1.0F);
+    this.d.setDuration(1500L);
+    this.d.setFillAfter(true);
+    this.d.setAnimationListener(this);
+    this.e = new AlphaAnimation(1.0F, 0.0F);
+    this.e.setDuration(1500L);
+    this.e.setFillAfter(true);
+    this.e.setAnimationListener(this);
+  }
+  
+  public Drawable getDrawable()
+  {
+    int i = this.c;
+    Drawable localDrawable = null;
+    if (i == 0) {
+      return null;
+    }
+    if (i == 1) {
+      return this.a.getDrawable();
+    }
+    if (i == 2) {
+      localDrawable = this.b.getDrawable();
+    }
+    return localDrawable;
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_b_of_type_AndroidViewAnimationAnimation)
+    if (paramAnimation == this.e)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.c;
       if (i == 1)
       {
-        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+        this.b.setImageDrawable(null);
         return;
       }
       if (i == 2) {
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+        this.a.setImageDrawable(null);
       }
     }
   }
@@ -73,13 +89,13 @@ public class TransitionImageView
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentImageURLImageView.clearAnimation();
-    this.jdField_b_of_type_ComTencentImageURLImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramDrawable);
-    this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+    this.c = 0;
+    this.a.clearAnimation();
+    this.b.clearAnimation();
+    this.d.reset();
+    this.e.reset();
+    this.a.setImageDrawable(paramDrawable);
+    this.b.setImageDrawable(null);
   }
   
   public void setImageResource(int paramInt)
@@ -89,7 +105,7 @@ public class TransitionImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TransitionImageView
  * JD-Core Version:    0.7.0.1
  */

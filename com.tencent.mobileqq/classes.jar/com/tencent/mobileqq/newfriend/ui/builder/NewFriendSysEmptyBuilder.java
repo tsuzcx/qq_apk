@@ -27,7 +27,7 @@ public class NewFriendSysEmptyBuilder
     else
     {
       localNewFriendSysEmptyHolder = new NewFriendSysEmptyBuilder.NewFriendSysEmptyHolder();
-      paramView = LayoutInflater.from(this.a).inflate(2131561254, null);
+      paramView = LayoutInflater.from(this.c).inflate(2131627610, null);
       paramView.setTag(localNewFriendSysEmptyHolder);
     }
     paramView.setOnClickListener(this);
@@ -38,7 +38,7 @@ public class NewFriendSysEmptyBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendSysEmptyBuilder
  * JD-Core Version:    0.7.0.1
  */

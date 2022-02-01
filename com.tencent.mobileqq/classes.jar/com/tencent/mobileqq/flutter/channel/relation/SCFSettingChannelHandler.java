@@ -9,7 +9,7 @@ import io.flutter.plugin.common.StandardMethodCodec;
 public abstract class SCFSettingChannelHandler
   implements MethodChannel.MethodCallHandler
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  public static final MethodCodec b = StandardMethodCodec.INSTANCE;
   
   protected abstract void a(String paramString, MethodChannel.Result paramResult);
   
@@ -82,7 +82,7 @@ public abstract class SCFSettingChannelHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFSettingChannelHandler
  * JD-Core Version:    0.7.0.1
  */

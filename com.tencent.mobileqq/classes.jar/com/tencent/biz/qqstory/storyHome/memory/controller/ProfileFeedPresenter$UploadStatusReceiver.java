@@ -16,22 +16,22 @@ public class ProfileFeedPresenter$UploadStatusReceiver
   
   public void a(@NonNull ProfileFeedPresenter paramProfileFeedPresenter, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if (paramStoryVideoPublishStatusEvent.a.isSuccess())
+    if (paramStoryVideoPublishStatusEvent.g.isSuccess())
     {
-      if (paramStoryVideoPublishStatusEvent.a())
+      if (paramStoryVideoPublishStatusEvent.b())
       {
         SLog.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
         return;
       }
-      if (paramStoryVideoPublishStatusEvent.c())
+      if (paramStoryVideoPublishStatusEvent.d())
       {
         SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramStoryVideoPublishStatusEvent.toString());
         return;
       }
-      if (paramStoryVideoPublishStatusEvent.b())
+      if (paramStoryVideoPublishStatusEvent.c())
       {
         SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramStoryVideoPublishStatusEvent.toString());
-        if (paramStoryVideoPublishStatusEvent.b != null) {
+        if (paramStoryVideoPublishStatusEvent.d != null) {
           ProfileFeedPresenter.a(paramProfileFeedPresenter, true);
         }
       }

@@ -22,8 +22,8 @@ class ReadInJoyProteusFamilyUtil$4
       int i;
       try
       {
-        Object localObject2 = (String)RIJSPUtils.a(ReadInJoyProteusFamilyUtil.c(), "");
-        Object localObject1 = ReadInJoyProteusFamilyUtil.a();
+        Object localObject2 = (String)RIJSPUtils.b(ReadInJoyProteusFamilyUtil.i(), "");
+        Object localObject1 = ReadInJoyProteusFamilyUtil.g();
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("local card data str ");
         ((StringBuilder)localObject3).append((String)localObject2);
@@ -33,7 +33,7 @@ class ReadInJoyProteusFamilyUtil$4
         localObject1 = localObject2;
         if (bool)
         {
-          localObject3 = ReadInJoyProteusFamilyUtil.b(null);
+          localObject3 = ReadInJoyProteusFamilyUtil.c(null);
           localObject1 = localObject2;
           if (!TextUtils.isEmpty((CharSequence)localObject3))
           {
@@ -47,23 +47,23 @@ class ReadInJoyProteusFamilyUtil$4
               if (localObject3 == null) {
                 break label389;
               }
-              ((JSONObject)localObject1).put(((JSONObject)localObject3).optString(ReadInJoyProteusFamilyUtil.d()), ((JSONObject)localObject3).optString(ReadInJoyProteusFamilyUtil.e()));
+              ((JSONObject)localObject1).put(((JSONObject)localObject3).optString(ReadInJoyProteusFamilyUtil.j()), ((JSONObject)localObject3).optString(ReadInJoyProteusFamilyUtil.k()));
               break label389;
             }
             if (((JSONObject)localObject1).length() > 0)
             {
               localObject1 = ((JSONObject)localObject1).toString();
-              localObject2 = ReadInJoyProteusFamilyUtil.a();
+              localObject2 = ReadInJoyProteusFamilyUtil.g();
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("loadProteusFamilyData | update local cardDataStr ");
               ((StringBuilder)localObject3).append((String)localObject1);
               QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
-              RIJSPUtils.a(ReadInJoyProteusFamilyUtil.c(), localObject1);
+              RIJSPUtils.a(ReadInJoyProteusFamilyUtil.i(), localObject1);
             }
             else
             {
-              localObject1 = (String)RIJSPUtils.a(ReadInJoyProteusFamilyUtil.c(), "");
-              localObject2 = ReadInJoyProteusFamilyUtil.a();
+              localObject1 = (String)RIJSPUtils.b(ReadInJoyProteusFamilyUtil.i(), "");
+              localObject2 = ReadInJoyProteusFamilyUtil.g();
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("loadProteusFamilyData | no need to update just use local cardDataStr ");
               ((StringBuilder)localObject3).append((String)localObject1);
@@ -73,14 +73,14 @@ class ReadInJoyProteusFamilyUtil$4
         }
         ReadInJoyProteusFamilyUtil.a(this.this$0, ReadInJoyProteusFamilyUtil.a((String)localObject1));
         if (ReadInJoyProteusFamilyUtil.a(this.this$0) != null) {
-          ReadInJoyProteusFamilyUtil.a(this.this$0).a(true, ReadInJoyProteusFamilyUtil.a(this.this$0));
+          ReadInJoyProteusFamilyUtil.a(this.this$0).a(true, ReadInJoyProteusFamilyUtil.b(this.this$0));
         }
-        localObject1 = ReadInJoyProteusFamilyUtil.a();
+        localObject1 = ReadInJoyProteusFamilyUtil.g();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("loadProteusFamilyData | proteus family members updated ");
         i = j;
-        if (ReadInJoyProteusFamilyUtil.a() != null) {
-          i = ReadInJoyProteusFamilyUtil.a().size();
+        if (ReadInJoyProteusFamilyUtil.l() != null) {
+          i = ReadInJoyProteusFamilyUtil.l().size();
         }
         ((StringBuilder)localObject2).append(i);
         QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
@@ -97,7 +97,7 @@ class ReadInJoyProteusFamilyUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.pts.ReadInJoyProteusFamilyUtil.4
  * JD-Core Version:    0.7.0.1
  */

@@ -32,15 +32,15 @@ class ReadInJoyUploadAvatarFragment$3$1
         paramBundle.what = 1003;
         paramBundle.obj = paramJSONObject;
       }
-      this.a.a.sendMessage(paramBundle);
+      this.a.c.sendMessage(paramBundle);
       return;
     }
-    this.a.a.sendMessage(new Message());
+    this.a.c.sendMessage(new Message());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.activity.ReadInJoyUploadAvatarFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

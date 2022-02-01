@@ -11,17 +11,17 @@ class ForwardNewVersionDialog$8
   
   public void run()
   {
-    if (ForwardNewVersionDialog.b(this.this$0)) {
+    if (ForwardNewVersionDialog.i(this.this$0)) {
       return;
     }
-    ForwardNewVersionDialog.a(this.this$0).addView(ForwardNewVersionDialog.a(this.this$0).getView(), ForwardNewVersionDialog.a(this.this$0));
+    ForwardNewVersionDialog.g(this.this$0).addView(ForwardNewVersionDialog.f(this.this$0).getView(), ForwardNewVersionDialog.a(this.this$0));
     ForwardNewVersionDialog.a(this.this$0, true);
-    ForwardNewVersionDialog.a(this.this$0).getView().post(new ForwardNewVersionDialog.8.1(this));
+    ForwardNewVersionDialog.f(this.this$0).getView().post(new ForwardNewVersionDialog.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.8
  * JD-Core Version:    0.7.0.1
  */

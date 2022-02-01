@@ -13,15 +13,15 @@ public class MemoriesFeedEmptySegment
     super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
   }
   
-  protected void Q_()
+  protected void d()
   {
-    SegmentView localSegmentView = a().a("FeedSegment");
+    SegmentView localSegmentView = w().b("FeedSegment");
     if ((localSegmentView != null) && (localSegmentView.a() == 0))
     {
-      this.a = true;
+      this.m = true;
       return;
     }
-    this.a = false;
+    this.m = false;
   }
 }
 

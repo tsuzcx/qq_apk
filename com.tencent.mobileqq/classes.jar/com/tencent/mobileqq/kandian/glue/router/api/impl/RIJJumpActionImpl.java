@@ -9,28 +9,32 @@ import com.tencent.biz.pubaccount.api.IPublicAccountProxy;
 import com.tencent.biz.pubaccount.imagecollection.api.IPublicAccountImageCollectionMainActivity;
 import com.tencent.biz.pubaccount.imagecollection.api.IPublicAccountImageCollectionUtils;
 import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyFloatingWindowHelper;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.daily.api.IKandianDailyManager;
-import com.tencent.mobileqq.kandian.biz.fastweb.api.IFastWebActivityUtils;
-import com.tencent.mobileqq.kandian.biz.feeds.api.IReadInJoyBaseFragmentEntryPath;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
-import com.tencent.mobileqq.kandian.biz.video.api.IVideoVolumeControl;
-import com.tencent.mobileqq.kandian.biz.viola.api.IViolaAccessHelper;
+import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.common.ReadInjoyFloatingWindowHelper;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.daily.api.impl.KandianDailyManagerSingleton;
+import com.tencent.mobileqq.kandian.biz.fastweb.api.impl.FastWebActivityUtils;
+import com.tencent.mobileqq.kandian.biz.feeds.api.impl.ReadInJoyBaseFragmentEntryPath;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.glue.businesshandler.api.IKandianSubscribeManager;
 import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyManager;
 import com.tencent.mobileqq.kandian.glue.router.api.IRIJJumpAction;
+import com.tencent.mobileqq.kandian.glue.video.VideoVolumeControl;
+import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
+import com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJViolaPicDetailConfigSp;
+import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import mqq.app.Foreground;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -73,19 +77,19 @@ public class RIJJumpActionImpl
       }
       else if ("3".equals(str4))
       {
-        paramHashMap = ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getFastWebIntent(paramContext, paramHashMap);
-        ((IFastWebActivityUtils)QRoute.api(IFastWebActivityUtils.class)).openNewPage(paramContext, paramHashMap);
+        paramHashMap = ReadInJoyActivityHelper.INSTANCE.getFastWebIntent(paramContext, paramHashMap);
+        FastWebActivityUtils.INSTANCE.openNewPage(paramContext, paramHashMap);
       }
       else if ("4".equals(str4))
       {
         if (BaseActivity.sTopActivity != null) {
           paramContext = BaseActivity.sTopActivity;
         }
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).startApp(paramContext, paramHashMap);
+        ReadInJoyActivityHelper.INSTANCE.startApp(paramContext, paramHashMap);
       }
       else if ("5".equals(str4))
       {
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).openFullVideoPlay(paramContext, paramHashMap);
+        ReadInJoyActivityHelper.INSTANCE.openFullVideoPlay(paramContext, paramHashMap);
       }
       else if ("6".equals(str4))
       {
@@ -93,19 +97,19 @@ public class RIJJumpActionImpl
       }
       else if ("7".equals(str4))
       {
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).openDailyDynamicChildFeeds(paramContext, paramHashMap);
+        ReadInJoyActivityHelper.INSTANCE.openDailyDynamicChildFeeds(paramContext, paramHashMap);
       }
       else if ("8".equals(str4))
       {
         if ("webview".equals(paramString1)) {
           TroopMemberApiClient.a().f(paramString1);
         } else {
-          ((IKandianDailyManager)QRoute.api(IKandianDailyManager.class)).launchKandianDaily(paramContext);
+          KandianDailyManagerSingleton.INSTANCE.launchKandianDaily(paramContext);
         }
       }
       else if ("9".equals(str4))
       {
-        ((IReadInJoyFloatingWindowHelper)QRoute.api(IReadInJoyFloatingWindowHelper.class)).jump2FloatingWindow(paramContext, paramHashMap);
+        ReadInjoyFloatingWindowHelper.a(paramContext, paramHashMap);
       }
       else if ("10".equals(str4))
       {
@@ -113,18 +117,18 @@ public class RIJJumpActionImpl
       }
       else if ("11".equals(str4))
       {
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).openFlutterPage(paramContext, paramHashMap);
+        ReadInJoyActivityHelper.INSTANCE.openFlutterPage(paramContext, paramHashMap);
       }
       else
       {
         if (!"12".equals(str4)) {
-          break label416;
+          break label350;
         }
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).openMXFlutterPage(paramContext, paramHashMap);
+        ReadInJoyActivityHelper.INSTANCE.openMXFlutterPage(paramContext, paramHashMap);
       }
     }
     return true;
-    label416:
+    label350:
     return handleReadInJoyTargetFromQZone(paramContext, str1, str2);
   }
   
@@ -136,7 +140,7 @@ public class RIJJumpActionImpl
         paramHashMap = toBase64Decode((String)paramHashMap.get("v_url_base64"));
         if (!TextUtils.isEmpty(paramHashMap))
         {
-          ((IViolaAccessHelper)QRoute.api(IViolaAccessHelper.class)).startViolaPage(paramContext, "", paramHashMap, null);
+          ViolaAccessHelper.a(paramContext, "", paramHashMap, null);
           return;
         }
       }
@@ -155,11 +159,11 @@ public class RIJJumpActionImpl
   {
     if ("1".equals(paramHashMap.get("bizType")))
     {
-      paramContext.startActivity(new Intent(paramContext, ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getReadInJoySettingActivityClazz()));
+      paramContext.startActivity(new Intent(paramContext, ReadInJoyActivityHelper.INSTANCE.getReadInJoySettingActivityClazz()));
       return;
     }
     if ("2".equals(paramHashMap.get("bizType"))) {
-      PublicFragmentActivity.a(paramContext, ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getReadInJoyDraftboxFragmentClazz());
+      PublicFragmentActivity.a(paramContext, ReadInJoyActivityHelper.INSTANCE.getReadInJoyDraftboxFragmentClazz());
     }
   }
   
@@ -206,15 +210,20 @@ public class RIJJumpActionImpl
       return localBoolean;
     }
     if (TextUtils.isEmpty(paramString4)) {
-      paramString3 = paramContext.getString(2131699864);
+      paramString3 = paramContext.getString(2131897917);
     } else {
       paramString3 = paramString4;
+    }
+    if (TextUtils.equals("1", (CharSequence)paramHashMap.get("from_immersive")))
+    {
+      jumpToChannelFromImmersiveVideo(paramContext, j, paramString3);
+      return Boolean.valueOf(true);
     }
     bool = "1".equalsIgnoreCase((String)paramHashMap.get("ispush"));
     if ((!bool) && (j == 70))
     {
       if ("webview".equals(paramString1)) {
-        TroopMemberApiClient.a().k();
+        TroopMemberApiClient.a().o();
       } else {
         ((IKandianSubscribeManager)RIJQQAppInterfaceUtil.b().getRuntimeService(IKandianSubscribeManager.class, "")).lanuchKandianSubscribeActivity(paramContext, 3, 4);
       }
@@ -224,14 +233,14 @@ public class RIJJumpActionImpl
     {
       if (j == 56)
       {
-        if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab()) {
-          ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchChannelActivity(paramContext, j, paramString3, k, 4);
+        if (ReadInJoyHelper.w()) {
+          ReadInJoyActivityHelper.INSTANCE.launchChannelActivity(paramContext, j, paramString3, k, 4);
         } else {
-          ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchFeedsActivity(paramContext, 4, 1);
+          ReadInJoyActivityHelper.INSTANCE.launchFeedsActivity(paramContext, 4, 1);
         }
       }
       else {
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchVideoSubChannelActivity(paramContext, j, paramString3, k, 4);
+        ReadInJoyActivityHelper.INSTANCE.launchVideoSubChannelActivity(paramContext, j, paramString3, k, 4);
       }
     }
     else
@@ -263,7 +272,7 @@ public class RIJJumpActionImpl
         n = i;
         m = i1;
       }
-      ((IReadInJoyBaseFragmentEntryPath)QRoute.api(IReadInJoyBaseFragmentEntryPath.class)).put(j, 3);
+      ReadInJoyBaseFragmentEntryPath.INSTANCE.put(j, 3);
       if ((!paramHashMap.containsKey("v_url")) && (!paramHashMap.containsKey("v_url_base64")))
       {
         paramContext = new Bundle();
@@ -292,7 +301,7 @@ public class RIJJumpActionImpl
   {
     String str = (String)paramHashMap.get("from");
     if ("qzone".equals(str)) {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(RIJQQAppInterfaceUtil.b(), "CliOper", "", "", "0X80067C6", "0X80067C6", 0, 0, "", "1", RIJQQAppInterfaceUtil.b().getCurrentAccountUin(), "", false);
+      PublicAccountReportUtils.a(RIJQQAppInterfaceUtil.b(), "CliOper", "", "", "0X80067C6", "0X80067C6", 0, 0, "", "1", RIJQQAppInterfaceUtil.b().getCurrentAccountUin(), "", false);
     }
     if ("webview".equals(str))
     {
@@ -308,11 +317,11 @@ public class RIJJumpActionImpl
         i = Integer.valueOf(str).intValue();
       }
     }
-    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowKandianTabNew())
+    if (RIJShowKanDianTabSp.a())
     {
       try
       {
-        paramContext.startActivity(((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getJumpReadInJoyTabIntent(paramContext, i));
+        paramContext.startActivity(ReadInJoyActivityHelper.INSTANCE.getJumpReadInJoyTabIntent(paramContext, i));
         return;
       }
       catch (Exception paramContext)
@@ -325,12 +334,12 @@ public class RIJJumpActionImpl
     }
     else
     {
-      if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInReadinjoyFolderMergerStyle())
+      if (ReadInJoyHelper.a((AppInterface)RIJQQAppInterfaceUtil.e()))
       {
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchFeedsActivity(paramContext, 2, 0);
+        ReadInJoyActivityHelper.INSTANCE.launchFeedsActivity(paramContext, 2, 0);
         return;
       }
-      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchFeedsActivity(paramContext, null, -1L, 2);
+      ReadInJoyActivityHelper.INSTANCE.launchFeedsActivity(paramContext, null, -1L, 2);
     }
   }
   
@@ -358,19 +367,19 @@ public class RIJJumpActionImpl
     }
     paramString1 = paramString2;
     if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = paramContext.getString(2131699864);
+      paramString1 = paramContext.getString(2131897917);
     }
-    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab())
+    if (ReadInJoyHelper.w())
     {
       try
       {
-        paramContext.startActivity(((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getJumpReadInJoyTabIntent(paramContext, 12));
+        paramContext.startActivity(ReadInJoyActivityHelper.INSTANCE.getJumpReadInJoyTabIntent(paramContext, 12));
         return true;
       }
       catch (Exception paramContext)
       {
         if (!QLog.isColorLevel()) {
-          break label176;
+          break label153;
         }
       }
       QLog.e("JumpAction", 1, "jump activity error1 ", paramContext);
@@ -382,20 +391,20 @@ public class RIJJumpActionImpl
       paramString2.putExtra("channel_id", i);
       paramString2.putExtra("channel_name", paramString1);
       paramString2.putExtra("readinjoy_launch_source", 7);
-      ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).launchReadInJoyPlugin((Activity)paramContext, paramString2);
+      ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), (Activity)paramContext, paramString2);
     }
-    label176:
+    label153:
     return true;
   }
   
   private void handleReadInJoyTargetMainVideoTab(Context paramContext, HashMap<String, String> paramHashMap)
   {
     int i = Integer.valueOf((String)paramHashMap.get("from")).intValue();
-    if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowKandianTab())
+    if (RIJShowKanDianTabSp.c())
     {
       try
       {
-        paramContext.startActivity(((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getJumpReadInJoyTabIntent(paramContext, i));
+        paramContext.startActivity(ReadInJoyActivityHelper.INSTANCE.getJumpReadInJoyTabIntent(paramContext, i));
         return;
       }
       catch (Exception paramContext)
@@ -408,212 +417,221 @@ public class RIJJumpActionImpl
     }
     else
     {
-      if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInReadinjoyFolderMergerStyle())
+      if (ReadInJoyHelper.a((AppInterface)RIJQQAppInterfaceUtil.e()))
       {
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchFeedsActivity(paramContext, i, 0);
+        ReadInJoyActivityHelper.INSTANCE.launchFeedsActivity(paramContext, i, 0);
         return;
       }
-      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchFeedsActivity(paramContext, null, -1L, i);
+      ReadInJoyActivityHelper.INSTANCE.launchFeedsActivity(paramContext, null, -1L, i);
     }
+  }
+  
+  public static void jumpToChannelFromImmersiveVideo(Context paramContext, int paramInt, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[jumpToChannelFromImmersiveVideo] channelId = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", channelName = ");
+    localStringBuilder.append(paramString);
+    QLog.i("RIJJumpActionImpl", 1, localStringBuilder.toString());
+    ReadInJoyActivityHelper.INSTANCE.launchChannelActivity(paramContext, paramInt, paramString, 0, 4, null, false, true);
   }
   
   /* Error */
   private boolean jumpToDeliverFragment(Context paramContext, HashMap<String, String> paramHashMap)
   {
     // Byte code:
-    //   0: ldc 215
+    //   0: ldc 222
     //   2: astore 7
     //   4: new 43	android/content/Intent
     //   7: dup
     //   8: aload_1
-    //   9: ldc_w 466
-    //   12: invokestatic 51	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   15: checkcast 466	com/tencent/mobileqq/kandian/biz/ugc/api/IRIJDeliverUGCUtils
-    //   18: invokeinterface 469 1 0
-    //   23: invokespecial 60	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   26: astore 11
-    //   28: aload_2
-    //   29: ldc_w 471
-    //   32: invokevirtual 207	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   35: ifeq +28 -> 63
-    //   38: aload_2
-    //   39: ldc_w 471
-    //   42: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   45: ifnull +18 -> 63
-    //   48: aload_2
-    //   49: ldc_w 471
-    //   52: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   55: checkcast 27	java/lang/String
-    //   58: astore 4
-    //   60: goto +7 -> 67
-    //   63: ldc 215
-    //   65: astore 4
-    //   67: aload_2
-    //   68: ldc_w 473
-    //   71: invokevirtual 207	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   74: ifeq +39 -> 113
-    //   77: aload_2
-    //   78: ldc_w 473
-    //   81: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   84: ifnull +29 -> 113
-    //   87: new 27	java/lang/String
-    //   90: dup
-    //   91: aload_2
-    //   92: ldc_w 473
-    //   95: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   98: checkcast 27	java/lang/String
-    //   101: iconst_0
-    //   102: invokestatic 479	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
-    //   105: invokespecial 482	java/lang/String:<init>	([B)V
-    //   108: astore 5
-    //   110: goto +7 -> 117
-    //   113: ldc 215
-    //   115: astore 5
-    //   117: aload 7
-    //   119: astore 6
-    //   121: aload 7
-    //   123: astore 8
-    //   125: aload_2
-    //   126: ldc_w 484
-    //   129: invokevirtual 207	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   132: ifeq +37 -> 169
-    //   135: aload 7
-    //   137: astore 6
-    //   139: aload 7
-    //   141: astore 8
-    //   143: aload_2
-    //   144: ldc_w 484
-    //   147: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   150: ifnull +19 -> 169
-    //   153: aload 7
-    //   155: astore 8
-    //   157: aload_2
-    //   158: ldc_w 484
-    //   161: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   164: checkcast 27	java/lang/String
-    //   167: astore 6
+    //   9: getstatic 507	com/tencent/mobileqq/kandian/biz/ugc/api/impl/RIJDeliverUGCUtils:INSTANCE	Lcom/tencent/mobileqq/kandian/biz/ugc/api/impl/RIJDeliverUGCUtils;
+    //   12: invokevirtual 510	com/tencent/mobileqq/kandian/biz/ugc/api/impl/RIJDeliverUGCUtils:getReadInJoyDeliverUgcActivityClazz	()Ljava/lang/Class;
+    //   15: invokespecial 60	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   18: astore 11
+    //   20: aload_2
+    //   21: ldc_w 512
+    //   24: invokevirtual 216	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   27: ifeq +28 -> 55
+    //   30: aload_2
+    //   31: ldc_w 512
+    //   34: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   37: ifnull +18 -> 55
+    //   40: aload_2
+    //   41: ldc_w 512
+    //   44: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   47: checkcast 27	java/lang/String
+    //   50: astore 4
+    //   52: goto +7 -> 59
+    //   55: ldc 222
+    //   57: astore 4
+    //   59: aload_2
+    //   60: ldc_w 514
+    //   63: invokevirtual 216	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   66: ifeq +39 -> 105
+    //   69: aload_2
+    //   70: ldc_w 514
+    //   73: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   76: ifnull +29 -> 105
+    //   79: new 27	java/lang/String
+    //   82: dup
+    //   83: aload_2
+    //   84: ldc_w 514
+    //   87: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   90: checkcast 27	java/lang/String
+    //   93: iconst_0
+    //   94: invokestatic 520	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
+    //   97: invokespecial 523	java/lang/String:<init>	([B)V
+    //   100: astore 5
+    //   102: goto +7 -> 109
+    //   105: ldc 222
+    //   107: astore 5
+    //   109: aload 7
+    //   111: astore 6
+    //   113: aload 7
+    //   115: astore 8
+    //   117: aload_2
+    //   118: ldc_w 525
+    //   121: invokevirtual 216	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   124: ifeq +37 -> 161
+    //   127: aload 7
+    //   129: astore 6
+    //   131: aload 7
+    //   133: astore 8
+    //   135: aload_2
+    //   136: ldc_w 525
+    //   139: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   142: ifnull +19 -> 161
+    //   145: aload 7
+    //   147: astore 8
+    //   149: aload_2
+    //   150: ldc_w 525
+    //   153: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   156: checkcast 27	java/lang/String
+    //   159: astore 6
+    //   161: aload 6
+    //   163: astore 8
+    //   165: aload 4
+    //   167: astore 7
     //   169: aload 6
-    //   171: astore 8
-    //   173: aload 4
-    //   175: astore 7
-    //   177: aload 6
-    //   179: astore 9
-    //   181: aload 5
-    //   183: astore 10
-    //   185: aload_2
-    //   186: ldc_w 486
-    //   189: invokevirtual 207	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   192: ifeq +94 -> 286
+    //   171: astore 9
+    //   173: aload 5
+    //   175: astore 10
+    //   177: aload_2
+    //   178: ldc_w 527
+    //   181: invokevirtual 216	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   184: ifeq +94 -> 278
+    //   187: aload 6
+    //   189: astore 8
+    //   191: aload 4
+    //   193: astore 7
     //   195: aload 6
-    //   197: astore 8
-    //   199: aload 4
-    //   201: astore 7
-    //   203: aload 6
-    //   205: astore 9
-    //   207: aload 5
-    //   209: astore 10
-    //   211: aload_2
-    //   212: ldc_w 486
-    //   215: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   218: ifnull +68 -> 286
-    //   221: aload 6
-    //   223: astore 8
-    //   225: aload_2
-    //   226: ldc_w 486
-    //   229: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   232: checkcast 27	java/lang/String
-    //   235: invokestatic 332	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   238: invokevirtual 336	java/lang/Integer:intValue	()I
-    //   241: istore_3
-    //   242: goto +58 -> 300
+    //   197: astore 9
+    //   199: aload 5
+    //   201: astore 10
+    //   203: aload_2
+    //   204: ldc_w 527
+    //   207: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   210: ifnull +68 -> 278
+    //   213: aload 6
+    //   215: astore 8
+    //   217: aload_2
+    //   218: ldc_w 527
+    //   221: invokevirtual 25	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   224: checkcast 27	java/lang/String
+    //   227: invokestatic 350	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   230: invokevirtual 354	java/lang/Integer:intValue	()I
+    //   233: istore_3
+    //   234: goto +58 -> 292
+    //   237: astore_2
+    //   238: aload 8
+    //   240: astore 7
+    //   242: goto +20 -> 262
     //   245: astore_2
-    //   246: aload 8
-    //   248: astore 7
-    //   250: goto +20 -> 270
+    //   246: ldc 222
+    //   248: astore 5
+    //   250: goto +12 -> 262
     //   253: astore_2
-    //   254: ldc 215
-    //   256: astore 5
-    //   258: goto +12 -> 270
-    //   261: astore_2
-    //   262: ldc 215
-    //   264: astore 4
-    //   266: aload 4
-    //   268: astore 5
-    //   270: aload_2
-    //   271: invokevirtual 222	java/lang/Exception:printStackTrace	()V
-    //   274: aload 5
-    //   276: astore 10
-    //   278: aload 7
-    //   280: astore 9
-    //   282: aload 4
-    //   284: astore 7
-    //   286: iconst_0
-    //   287: istore_3
-    //   288: aload 10
-    //   290: astore 5
-    //   292: aload 9
-    //   294: astore 6
-    //   296: aload 7
-    //   298: astore 4
-    //   300: aload 11
-    //   302: ldc_w 488
-    //   305: aload 4
-    //   307: invokevirtual 454	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   310: pop
-    //   311: aload 11
-    //   313: ldc_w 490
-    //   316: iconst_1
-    //   317: invokevirtual 493	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   320: pop
-    //   321: aload 11
-    //   323: ldc_w 495
-    //   326: iconst_1
-    //   327: invokevirtual 493	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   330: pop
-    //   331: aload 11
-    //   333: ldc_w 497
-    //   336: aload 5
-    //   338: invokevirtual 454	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   341: pop
-    //   342: aload 11
-    //   344: ldc_w 499
-    //   347: iload_3
-    //   348: invokevirtual 66	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   351: pop
-    //   352: aload 11
-    //   354: ldc_w 501
-    //   357: aload 6
-    //   359: invokevirtual 454	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   362: pop
-    //   363: aload_1
-    //   364: aload 11
-    //   366: invokevirtual 257	android/content/Context:startActivity	(Landroid/content/Intent;)V
-    //   369: iconst_0
-    //   370: ireturn
+    //   254: ldc 222
+    //   256: astore 4
+    //   258: aload 4
+    //   260: astore 5
+    //   262: aload_2
+    //   263: invokevirtual 230	java/lang/Exception:printStackTrace	()V
+    //   266: aload 5
+    //   268: astore 10
+    //   270: aload 7
+    //   272: astore 9
+    //   274: aload 4
+    //   276: astore 7
+    //   278: iconst_0
+    //   279: istore_3
+    //   280: aload 10
+    //   282: astore 5
+    //   284: aload 9
+    //   286: astore 6
+    //   288: aload 7
+    //   290: astore 4
+    //   292: aload 11
+    //   294: ldc_w 529
+    //   297: aload 4
+    //   299: invokevirtual 480	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   302: pop
+    //   303: aload 11
+    //   305: ldc_w 531
+    //   308: iconst_1
+    //   309: invokevirtual 534	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   312: pop
+    //   313: aload 11
+    //   315: ldc_w 536
+    //   318: iconst_1
+    //   319: invokevirtual 534	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   322: pop
+    //   323: aload 11
+    //   325: ldc_w 538
+    //   328: aload 5
+    //   330: invokevirtual 480	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   333: pop
+    //   334: aload 11
+    //   336: ldc_w 540
+    //   339: iload_3
+    //   340: invokevirtual 66	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   343: pop
+    //   344: aload 11
+    //   346: ldc_w 542
+    //   349: aload 6
+    //   351: invokevirtual 480	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   354: pop
+    //   355: aload_1
+    //   356: aload 11
+    //   358: invokevirtual 265	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   361: iconst_0
+    //   362: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	371	0	this	RIJJumpActionImpl
-    //   0	371	1	paramContext	Context
-    //   0	371	2	paramHashMap	HashMap<String, String>
-    //   241	107	3	i	int
-    //   58	248	4	localObject1	Object
-    //   108	229	5	localObject2	Object
-    //   119	239	6	localObject3	Object
-    //   2	295	7	localObject4	Object
-    //   123	124	8	localObject5	Object
-    //   179	114	9	localObject6	Object
-    //   183	106	10	localObject7	Object
-    //   26	339	11	localIntent	Intent
+    //   0	363	0	this	RIJJumpActionImpl
+    //   0	363	1	paramContext	Context
+    //   0	363	2	paramHashMap	HashMap<String, String>
+    //   233	107	3	i	int
+    //   50	248	4	localObject1	Object
+    //   100	229	5	localObject2	Object
+    //   111	239	6	localObject3	Object
+    //   2	287	7	localObject4	Object
+    //   115	124	8	localObject5	Object
+    //   171	114	9	localObject6	Object
+    //   175	106	10	localObject7	Object
+    //   18	339	11	localIntent	Intent
     // Exception table:
     //   from	to	target	type
-    //   125	135	245	java/lang/Exception
-    //   143	153	245	java/lang/Exception
-    //   157	169	245	java/lang/Exception
-    //   185	195	245	java/lang/Exception
-    //   211	221	245	java/lang/Exception
-    //   225	242	245	java/lang/Exception
-    //   67	110	253	java/lang/Exception
-    //   28	60	261	java/lang/Exception
+    //   117	127	237	java/lang/Exception
+    //   135	145	237	java/lang/Exception
+    //   149	161	237	java/lang/Exception
+    //   177	187	237	java/lang/Exception
+    //   203	213	237	java/lang/Exception
+    //   217	234	237	java/lang/Exception
+    //   59	102	245	java/lang/Exception
+    //   20	52	253	java/lang/Exception
   }
   
   private boolean openAtlas(Context paramContext, HashMap<String, String> paramHashMap)
@@ -708,7 +726,7 @@ public class RIJJumpActionImpl
       QLog.e("RIJJumpActionImpl", 2, "Parameter error");
       j = i;
     }
-    if (Boolean.valueOf(((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getViolaPicDetailConfig()).booleanValue())
+    if (Boolean.valueOf(RIJViolaPicDetailConfigSp.a(RIJQQAppInterfaceUtil.e())).booleanValue())
     {
       paramHashMap = new StringBuilder();
       paramHashMap.append("https://viola.qq.com/js/kd_pic_detail.js?_rij_violaUrl=1&v_tid=15&v_bid=3811&v_bundleName=kd_pic_detail&hideNav=1&v_nav_immer=1&v_minVersion=8.0.8&v_from_native=1&rowkey=");
@@ -723,8 +741,7 @@ public class RIJJumpActionImpl
       paramHashMap.append(str6);
       paramHashMap.append("&jumpCommentType=");
       paramHashMap.append(str7);
-      paramHashMap = paramHashMap.toString();
-      ((IViolaAccessHelper)QRoute.api(IViolaAccessHelper.class)).startViolaPage(paramContext, null, paramHashMap, null);
+      ViolaAccessHelper.a(paramContext, null, paramHashMap.toString(), null);
       return false;
     }
     if (QLog.isColorLevel()) {
@@ -735,7 +752,7 @@ public class RIJJumpActionImpl
   
   private boolean openSelf(Context paramContext)
   {
-    ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchSelfFromIndependentTab(paramContext, false);
+    ReadInJoyActivityHelper.INSTANCE.launchSelfFromIndependentTab(paramContext, false);
     return false;
   }
   
@@ -789,12 +806,12 @@ public class RIJJumpActionImpl
         localStringBuilder.append("]");
         QLog.d("RIJJumpActionImpl", 2, localStringBuilder.toString());
       }
-      ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).reportArticleByWeb(i, l, j, k);
+      ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), i, l, j, k);
     }
     catch (Exception paramHashMap)
     {
-      label321:
-      break label321;
+      label316:
+      break label316;
     }
     QLog.d("RIJJumpActionImpl", 2, "webReportArticleRealTime error!");
     return true;
@@ -927,6 +944,9 @@ public class RIJJumpActionImpl
   
   public boolean handleServerReadInJoy(@NotNull Context paramContext, @Nullable String paramString1, @NotNull HashMap<String, String> paramHashMap, @Nullable String paramString2, @Nullable String paramString3)
   {
+    if (Foreground.getTopActivity() != null) {
+      paramContext = Foreground.getTopActivity();
+    }
     if ("open".equals(paramString1)) {
       return gotoReadInJoyFromSourceTarget(paramContext, paramHashMap, paramString2, paramString3);
     }
@@ -953,8 +973,8 @@ public class RIJJumpActionImpl
     }
     if ("openarticle".equals(paramString1))
     {
-      paramString1 = ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getOpenArticleSchemeIntent(paramContext, paramHashMap);
-      ((IFastWebActivityUtils)QRoute.api(IFastWebActivityUtils.class)).openNewPage(paramContext, paramString1);
+      paramString1 = ReadInJoyActivityHelper.INSTANCE.getOpenArticleSchemeIntent(paramContext, paramHashMap);
+      FastWebActivityUtils.INSTANCE.openNewPage(paramContext, paramString1);
     }
     return false;
   }
@@ -965,20 +985,20 @@ public class RIJJumpActionImpl
     {
       paramIntent.putExtra("readinjoy_launch_source", 4);
       paramIntent.putExtra("readinjoy_launch_style", 0x4 | paramIntent.getIntExtra("readinjoy_launch_style", 1));
-      ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).launchReadInJoyPlugin((Activity)paramContext, paramIntent);
+      ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), (Activity)paramContext, paramIntent);
       return;
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(RIJQQAppInterfaceUtil.b(), "CliOper", "", "", "0X800625F", "0X800625F", 0, 0, "", "", "", "", false);
-    ((IVideoVolumeControl)QRoute.api(IVideoVolumeControl.class)).setMute(((IVideoVolumeControl)QRoute.api(IVideoVolumeControl.class)).shouldMuteInReadInJoy(), "init", 1);
+    PublicAccountReportUtils.a(RIJQQAppInterfaceUtil.b(), "CliOper", "", "", "0X800625F", "0X800625F", 0, 0, "", "", "", "", false);
+    VideoVolumeControl.getInstance().setMute(VideoVolumeControl.getInstance().shouldMuteInReadInJoy(), "init", 1);
     paramIntent.putExtra("readinjoy_launch_source", 1);
     paramIntent.putExtra("readinjoy_launch_start_time", System.currentTimeMillis());
     ((IReadInJoyManager)RIJQQAppInterfaceUtil.b().getRuntimeService(IReadInJoyManager.class)).fillExtraPushInfo(paramIntent);
-    ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).launchReadInJoyPlugin((Activity)paramContext, paramIntent);
+    ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), (Activity)paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.api.impl.RIJJumpActionImpl
  * JD-Core Version:    0.7.0.1
  */

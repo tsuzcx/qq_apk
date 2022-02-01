@@ -22,30 +22,30 @@ class SendBottomBar$7$1
   
   protected Integer a(Object... paramVarArgs)
   {
-    paramVarArgs = FMDataCache.a();
+    paramVarArgs = FMDataCache.g();
     Iterator localIterator = paramVarArgs.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       FileInfo localFileInfo = (FileInfo)localIterator.next();
-      if (localFileInfo.c()) {
+      if (localFileInfo.j()) {
         break;
       }
-      if (!((IQQFileEngine)SendBottomBar.a(this.a.this$0).getRuntimeService(IQQFileEngine.class)).isFileInUploaderQueue(localFileInfo.c())) {
+      if (!((IQQFileEngine)SendBottomBar.q(this.a.this$0).getRuntimeService(IQQFileEngine.class)).isFileInUploaderQueue(localFileInfo.d())) {
         try
         {
-          localObject = new File(localFileInfo.c());
+          localObject = new File(localFileInfo.d());
           if (!((File)localObject).exists())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("local file can scan, is not existed? file:");
-            ((StringBuilder)localObject).append(localFileInfo.c());
+            ((StringBuilder)localObject).append(localFileInfo.d());
             QLog.e("delDownloadFiles<FileAssistant>", 1, ((StringBuilder)localObject).toString());
           }
           else
           {
             ((File)localObject).delete();
-            SendBottomBar.a(this.a.this$0, SendBottomBar.a(this.a.this$0) + localFileInfo.a());
+            SendBottomBar.a(this.a.this$0, SendBottomBar.r(this.a.this$0) + localFileInfo.f());
             i += 1;
           }
         }
@@ -58,7 +58,7 @@ class SendBottomBar$7$1
         }
       }
     }
-    SendBottomBar.a(this.a.this$0).a(paramVarArgs);
+    SendBottomBar.c(this.a.this$0).a(paramVarArgs);
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setStorageRptNeedScan(true);
     return Integer.valueOf(i);
   }
@@ -68,16 +68,16 @@ class SendBottomBar$7$1
     super.onPostExecute(paramInteger);
     this.a.this$0.e();
     paramInteger = new Intent();
-    paramInteger.putExtra("extra_delete_total_file_size", SendBottomBar.a(this.a.this$0));
-    SendBottomBar.a(this.a.this$0).setResult(-1, paramInteger);
-    FMDataCache.b();
+    paramInteger.putExtra("extra_delete_total_file_size", SendBottomBar.r(this.a.this$0));
+    SendBottomBar.c(this.a.this$0).setResult(-1, paramInteger);
+    FMDataCache.d();
     this.a.this$0.a();
-    SendBottomBar.a(this.a.this$0).n();
+    SendBottomBar.f(this.a.this$0).n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.7.1
  * JD-Core Version:    0.7.0.1
  */

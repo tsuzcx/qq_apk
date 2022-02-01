@@ -34,7 +34,7 @@ class ReadInJoyNewFeedsActivity$MyRunnable
       localObject = (IWebProcessManagerService)((ReadInJoyNewFeedsActivity)this.a.get()).app.getRuntimeService(IWebProcessManagerService.class, "");
       if (localObject != null)
       {
-        i = RIJWebSearchUtils.a();
+        i = RIJWebSearchUtils.b();
         if (!RIJWebSearchUtils.a()) {}
       }
     }
@@ -43,9 +43,9 @@ class ReadInJoyNewFeedsActivity$MyRunnable
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
       localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.a()));
-      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.e()));
-      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.b()));
+      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.r()));
+      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.h()));
+      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.k()));
       localHashMap.put("param_preloadLevel", String.valueOf(i));
       if (QLog.isColorLevel())
       {
@@ -73,7 +73,7 @@ class ReadInJoyNewFeedsActivity$MyRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.MyRunnable
  * JD-Core Version:    0.7.0.1
  */

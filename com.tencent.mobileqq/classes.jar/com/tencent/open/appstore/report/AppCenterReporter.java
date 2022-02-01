@@ -21,37 +21,6 @@ import java.util.Map;
 
 public class AppCenterReporter
 {
-  private static MonitorTask a(DownloadInfo paramDownloadInfo)
-  {
-    MonitorTask localMonitorTask = new MonitorTask();
-    localMonitorTask.appName = paramDownloadInfo.f;
-    localMonitorTask.packageName = paramDownloadInfo.e;
-    localMonitorTask.versionCode = paramDownloadInfo.jdField_b_of_type_Int;
-    localMonitorTask.fileMd5 = paramDownloadInfo.p;
-    try
-    {
-      localMonitorTask.yybApkId = Long.parseLong(paramDownloadInfo.k);
-      localMonitorTask.yybAppId = Long.parseLong(paramDownloadInfo.c);
-      label62:
-      localMonitorTask.downloadUrl = paramDownloadInfo.d;
-      localMonitorTask.additionalId = paramDownloadInfo.jdField_b_of_type_JavaLangString;
-      localMonitorTask.filePath = paramDownloadInfo.l;
-      localMonitorTask.traceId = paramDownloadInfo.x;
-      localMonitorTask.externalParams = new HashMap();
-      localMonitorTask.externalParams.put("via", paramDownloadInfo.h);
-      return localMonitorTask;
-    }
-    catch (Throwable localThrowable)
-    {
-      break label62;
-    }
-  }
-  
-  private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    return ReportDataBuilder.a().i(paramString5).k(paramString1).j(paramString2).l(paramString3).m(paramString4).b();
-  }
-  
   public static void a(int paramInt, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -65,7 +34,7 @@ public class AppCenterReporter
   
   public static void a(ReportDataBuilder paramReportDataBuilder)
   {
-    paramReportDataBuilder = paramReportDataBuilder.a();
+    paramReportDataBuilder = paramReportDataBuilder.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[reportExposure] type=3002\ndata=");
     localStringBuilder.append(paramReportDataBuilder);
@@ -90,7 +59,7 @@ public class AppCenterReporter
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5);
+    paramString1 = c(paramString1, paramString2, paramString3, paramString4, paramString5);
     paramString2 = new StringBuilder();
     paramString2.append("[reportNormalExposure] type=3001\ndata=");
     paramString2.append(paramString1);
@@ -111,7 +80,7 @@ public class AppCenterReporter
   
   private static long b(String paramString)
   {
-    if (ApkUtils.a(paramString, CommonDataAdapter.a().a())) {}
+    if (ApkUtils.a(paramString, CommonDataAdapter.a().b())) {}
     try
     {
       long l = new File(GlobalUtil.getInstance().getContext().getPackageManager().getPackageInfo(paramString, 0).applicationInfo.sourceDir).length();
@@ -120,20 +89,20 @@ public class AppCenterReporter
     catch (Throwable paramString)
     {
       StringBuilder localStringBuilder;
-      break label85;
+      break label83;
     }
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[getInstalledAppFileSize]");
     localStringBuilder.append(paramString);
     localStringBuilder.append(": NOT INSTALLED!");
     LogUtility.b("AppCenterReporter", localStringBuilder.toString());
-    label85:
+    label83:
     return 0L;
   }
   
   public static void b(ReportDataBuilder paramReportDataBuilder)
   {
-    paramReportDataBuilder = paramReportDataBuilder.a();
+    paramReportDataBuilder = paramReportDataBuilder.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[reportClick] type=3003\ndata=");
     localStringBuilder.append(paramReportDataBuilder);
@@ -149,9 +118,9 @@ public class AppCenterReporter
   public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramString1, paramString2, paramString3, paramString4, paramString5));
+    localStringBuilder.append(c(paramString1, paramString2, paramString3, paramString4, paramString5));
     localStringBuilder.append("|");
-    localStringBuilder.append(ReportDataBuilder.a().d());
+    localStringBuilder.append(ReportDataBuilder.c().f());
     localStringBuilder.append("|");
     localStringBuilder.append("200");
     paramString1 = localStringBuilder.toString();
@@ -162,26 +131,15 @@ public class AppCenterReporter
     SDKReportManager2.getInstance().postReport(3003, paramString1);
   }
   
-  private static String c(DownloadInfo paramDownloadInfo)
+  private static String c(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (paramDownloadInfo == null) {
-      return "";
-    }
-    return ReportDataBuilder.a().i(paramDownloadInfo.o).k(paramDownloadInfo.t).j(paramDownloadInfo.u).l(paramDownloadInfo.v).m(paramDownloadInfo.h).b();
+    return ReportDataBuilder.c().j(paramString5).l(paramString1).k(paramString2).m(paramString3).n(paramString4).d();
   }
   
   public static void c(DownloadInfo paramDownloadInfo)
   {
     g(paramDownloadInfo);
     ThreadManager.excute(new AppCenterReporter.4(paramDownloadInfo), 16, null, true);
-  }
-  
-  private static String d(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo == null) {
-      return "";
-    }
-    return ReportDataBuilder.a().a(paramDownloadInfo.f).b(paramDownloadInfo.e).a(paramDownloadInfo.jdField_b_of_type_Int).c(paramDownloadInfo.c).d(paramDownloadInfo.k).e(paramDownloadInfo.r).f(paramDownloadInfo.s).g(paramDownloadInfo.d).h(paramDownloadInfo.q).c();
   }
   
   public static void d(DownloadInfo paramDownloadInfo)
@@ -193,19 +151,19 @@ public class AppCenterReporter
     if (paramDownloadInfo == null) {
       return;
     }
-    localObject = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    localObject = ReplaceMonitor.get().getTask(paramDownloadInfo.b);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(">tryInitMonitorTask info=");
     localStringBuilder.append(paramDownloadInfo);
     LogUtility.b("AppCenterReporter", localStringBuilder.toString());
     if (localObject == null)
     {
-      paramDownloadInfo = a(paramDownloadInfo);
+      paramDownloadInfo = j(paramDownloadInfo);
     }
     else
     {
       if (TextUtils.isEmpty(((MonitorTask)localObject).filePath)) {
-        ((MonitorTask)localObject).filePath = paramDownloadInfo.l;
+        ((MonitorTask)localObject).filePath = paramDownloadInfo.q;
       }
       paramDownloadInfo = new StringBuilder();
       paramDownloadInfo.append(">tryInitMonitorTask 已有task2:");
@@ -225,10 +183,10 @@ public class AppCenterReporter
     if (paramDownloadInfo == null) {
       return;
     }
-    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.b);
     if (localMonitorTask == null)
     {
-      localObject = a(paramDownloadInfo);
+      localObject = j(paramDownloadInfo);
       ReplaceMonitor.get().addTask((MonitorTask)localObject);
     }
     else
@@ -236,7 +194,7 @@ public class AppCenterReporter
       localObject = localMonitorTask;
       if (TextUtils.isEmpty(localMonitorTask.filePath))
       {
-        localMonitorTask.filePath = paramDownloadInfo.l;
+        localMonitorTask.filePath = paramDownloadInfo.q;
         localObject = localMonitorTask;
       }
     }
@@ -258,7 +216,7 @@ public class AppCenterReporter
     if (paramDownloadInfo == null) {
       return;
     }
-    paramDownloadInfo = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    paramDownloadInfo = ReplaceMonitor.get().getTask(paramDownloadInfo.b);
     if (paramDownloadInfo != null) {
       ReplaceMonitor.get().deleteTask(paramDownloadInfo);
     }
@@ -273,10 +231,10 @@ public class AppCenterReporter
     if (paramDownloadInfo == null) {
       return;
     }
-    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.b);
     if (localMonitorTask == null)
     {
-      localObject = a(paramDownloadInfo);
+      localObject = j(paramDownloadInfo);
       ReplaceMonitor.get().addTask((MonitorTask)localObject);
     }
     else
@@ -284,7 +242,7 @@ public class AppCenterReporter
       localObject = localMonitorTask;
       if (TextUtils.isEmpty(localMonitorTask.filePath))
       {
-        localMonitorTask.filePath = paramDownloadInfo.l;
+        localMonitorTask.filePath = paramDownloadInfo.q;
         localObject = localMonitorTask;
       }
     }
@@ -296,10 +254,52 @@ public class AppCenterReporter
       ReplaceMonitor.get().execSync((MonitorTask)localObject, MonitorStep.BEFORE_INSTALL);
     }
   }
+  
+  private static MonitorTask j(DownloadInfo paramDownloadInfo)
+  {
+    MonitorTask localMonitorTask = new MonitorTask();
+    localMonitorTask.appName = paramDownloadInfo.f;
+    localMonitorTask.packageName = paramDownloadInfo.e;
+    localMonitorTask.versionCode = paramDownloadInfo.n;
+    localMonitorTask.fileMd5 = paramDownloadInfo.H;
+    try
+    {
+      localMonitorTask.yybApkId = Long.parseLong(paramDownloadInfo.m);
+      localMonitorTask.yybAppId = Long.parseLong(paramDownloadInfo.c);
+      label62:
+      localMonitorTask.downloadUrl = paramDownloadInfo.d;
+      localMonitorTask.additionalId = paramDownloadInfo.b;
+      localMonitorTask.filePath = paramDownloadInfo.q;
+      localMonitorTask.traceId = paramDownloadInfo.S;
+      localMonitorTask.externalParams = new HashMap();
+      localMonitorTask.externalParams.put("via", paramDownloadInfo.h);
+      return localMonitorTask;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label62;
+    }
+  }
+  
+  private static String k(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
+      return "";
+    }
+    return ReportDataBuilder.c().j(paramDownloadInfo.F).l(paramDownloadInfo.M).k(paramDownloadInfo.N).m(paramDownloadInfo.O).n(paramDownloadInfo.h).d();
+  }
+  
+  private static String l(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
+      return "";
+    }
+    return ReportDataBuilder.c().b(paramDownloadInfo.f).c(paramDownloadInfo.e).a(paramDownloadInfo.n).d(paramDownloadInfo.c).e(paramDownloadInfo.m).f(paramDownloadInfo.K).g(paramDownloadInfo.L).h(paramDownloadInfo.d).i(paramDownloadInfo.J).e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter
  * JD-Core Version:    0.7.0.1
  */

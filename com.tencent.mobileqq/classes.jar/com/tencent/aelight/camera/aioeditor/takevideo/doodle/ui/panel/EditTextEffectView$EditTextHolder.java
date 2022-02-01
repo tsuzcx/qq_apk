@@ -15,31 +15,31 @@ class EditTextEffectView$EditTextHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  DynamicTextConfigManager.DynamicTextConfigBean jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager$DynamicTextConfigBean;
-  QIMCommonLoadingView jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView;
-  OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  ImageView c;
+  OnHolderItemClickListener a;
+  DynamicTextConfigManager.DynamicTextConfigBean b;
+  View c;
   ImageView d;
+  ImageView e;
+  ImageView f;
+  View g;
+  ImageView h;
+  QIMCommonLoadingView i;
+  int j;
   
   public EditTextEffectView$EditTextHolder(View paramView, OnHolderItemClickListener paramOnHolderItemClickListener)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366089));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366090));
-    this.c = ((ImageView)paramView.findViewById(2131366092));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131366091);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView = ((QIMCommonLoadingView)paramView.findViewById(2131370387));
-    this.d = ((ImageView)paramView.findViewById(2131368743));
+    this.a = paramOnHolderItemClickListener;
+    this.c = paramView;
+    this.d = ((ImageView)paramView.findViewById(2131432369));
+    this.e = ((ImageView)paramView.findViewById(2131432370));
+    this.f = ((ImageView)paramView.findViewById(2131432372));
+    this.g = paramView.findViewById(2131432371);
+    this.i = ((QIMCommonLoadingView)paramView.findViewById(2131437654));
+    this.h = ((ImageView)paramView.findViewById(2131435656));
     paramView.setOnClickListener(this);
-    paramOnHolderItemClickListener = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+    paramOnHolderItemClickListener = (RelativeLayout.LayoutParams)this.i.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
     paramOnHolderItemClickListener.width = localMarginLayoutParams.width;
     paramOnHolderItemClickListener.height = localMarginLayoutParams.height;
@@ -47,59 +47,59 @@ class EditTextEffectView$EditTextHolder
     paramOnHolderItemClickListener.addRule(9);
     paramOnHolderItemClickListener.addRule(12);
     paramOnHolderItemClickListener.addRule(11);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.setLayoutParams(paramOnHolderItemClickListener);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.setBgCorner(QIMCommonLoadingView.a(7.0F, paramView.getContext()));
+    this.i.setLayoutParams(paramOnHolderItemClickListener);
+    this.i.setBgCorner(QIMCommonLoadingView.a(7.0F, paramView.getContext()));
     localLayoutParams.width = localMarginLayoutParams.width;
     localLayoutParams.height = localMarginLayoutParams.height;
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(12);
     localLayoutParams.addRule(11);
-    this.c.setLayoutParams(localLayoutParams);
+    this.f.setLayoutParams(localLayoutParams);
   }
   
   public void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.setVisibility(0);
+    if (this.i.getVisibility() != 0) {
+      this.i.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.setProgress((int)paramFloat);
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.getMeasuredWidth();
-    int j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.getMeasuredHeight();
+    this.i.setProgress((int)paramFloat);
+    int k = this.i.getMeasuredWidth();
+    int m = this.i.getMeasuredHeight();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateProgress progress is: ");
       localStringBuilder.append(paramFloat);
       localStringBuilder.append(" pos is: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.j);
       localStringBuilder.append(" width is: ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(k);
       localStringBuilder.append("height is: ");
-      localStringBuilder.append(j);
+      localStringBuilder.append(m);
       QLog.i("DText", 2, localStringBuilder.toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.getVisibility() != 8) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.setVisibility(8);
+    if (this.i.getVisibility() != 8) {
+      this.i.setVisibility(8);
     }
     if (paramBoolean)
     {
-      if (this.d.getVisibility() != 8) {
-        this.d.setVisibility(8);
+      if (this.h.getVisibility() != 8) {
+        this.h.setVisibility(8);
       }
     }
-    else if (this.d.getVisibility() != 0) {
-      this.d.setVisibility(0);
+    else if (this.h.getVisibility() != 0) {
+      this.h.setVisibility(0);
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("finish download pos is: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.j);
       QLog.i("DText", 2, localStringBuilder.toString());
     }
   }
@@ -108,20 +108,20 @@ class EditTextEffectView$EditTextHolder
   {
     if (paramBoolean)
     {
-      if (this.c.getVisibility() != 0) {
-        this.c.setVisibility(0);
+      if (this.f.getVisibility() != 0) {
+        this.f.setVisibility(0);
       }
     }
-    else if (this.c.getVisibility() != 8) {
-      this.c.setVisibility(8);
+    else if (this.f.getVisibility() != 8) {
+      this.f.setVisibility(8);
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidViewView)
+    if (paramView == this.c)
     {
-      OnHolderItemClickListener localOnHolderItemClickListener = this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
+      OnHolderItemClickListener localOnHolderItemClickListener = this.a;
       if (localOnHolderItemClickListener != null) {
         localOnHolderItemClickListener.a(paramView, getAdapterPosition(), -1);
       }
@@ -130,7 +130,7 @@ class EditTextEffectView$EditTextHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditTextEffectView.EditTextHolder
  * JD-Core Version:    0.7.0.1
  */

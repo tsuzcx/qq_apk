@@ -45,10 +45,10 @@ class MsgBackupQRFragment$2
           if (QLog.isColorLevel()) {
             QLog.d("MsgBackup.MsgBackupQRFragment", 2, "mMigrateQrNetStateRunnable startServerProxy is called!");
           }
-          MsgBackupManager.a().a().a(false);
+          MsgBackupManager.a().e().a(false);
         }
-        localObject = this.this$0.a.obtainMessage(10013);
-        this.this$0.a.sendMessage((Message)localObject);
+        localObject = this.this$0.I.obtainMessage(10013);
+        this.this$0.I.sendMessage((Message)localObject);
         MsgBackupQRFragment.b(this.this$0, true);
       }
       else
@@ -56,12 +56,12 @@ class MsgBackupQRFragment$2
         MsgBackupQRFragment.a(this.this$0, false, false);
       }
     }
-    this.this$0.b.postDelayed(this, 500L);
+    this.this$0.J.postDelayed(this, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.2
  * JD-Core Version:    0.7.0.1
  */

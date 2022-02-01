@@ -9,12 +9,12 @@ class ChooseInterestTagActivity$4$1
   
   public void run()
   {
-    ChooseInterestTagActivity.access$600(this.a.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity).removeView(this.a.jdField_a_of_type_AndroidViewView);
+    ChooseInterestTagActivity.access$600(this.a.b).removeView(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

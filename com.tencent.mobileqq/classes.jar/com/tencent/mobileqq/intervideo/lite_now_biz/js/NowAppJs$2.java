@@ -18,20 +18,20 @@ class NowAppJs$2
   
   public void a(List<String> paramList, int paramInt)
   {
-    DialogUtil.a(NowAppJs.access$100(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs), 230, "", HardCodeUtil.a(2131696373), HardCodeUtil.a(2131690728), HardCodeUtil.a(2131693521), new NowAppJs.2.1(this), new NowAppJs.2.2(this)).show();
+    DialogUtil.a(NowAppJs.access$100(this.b), 230, "", HardCodeUtil.a(2131894145), HardCodeUtil.a(2131887648), HardCodeUtil.a(2131891076), new NowAppJs.2.1(this), new NowAppJs.2.2(this)).show();
   }
   
   public void a(String[] paramArrayOfString, int paramInt)
   {
     try
     {
-      paramArrayOfString = (String)this.jdField_a_of_type_JavaUtilMap.get("callback");
+      paramArrayOfString = (String)this.a.get("callback");
       localObject = new JSONObject();
       ((JSONObject)localObject).put("code", "0");
       ((JSONObject)localObject).put("msg", "");
-      NowAppJs.access$200(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs).callJs(paramArrayOfString, new String[] { ((JSONObject)localObject).toString() });
-      NowAppJs.access$302(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs, true);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizJsNowAppJs.changeMicrophone(this.jdField_a_of_type_JavaUtilMap);
+      NowAppJs.access$200(this.b).callJs(paramArrayOfString, new String[] { ((JSONObject)localObject).toString() });
+      NowAppJs.access$302(this.b, true);
+      this.b.changeMicrophone(this.a);
       return;
     }
     catch (JSONException paramArrayOfString)
@@ -45,7 +45,7 @@ class NowAppJs$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowAppJs.2
  * JD-Core Version:    0.7.0.1
  */

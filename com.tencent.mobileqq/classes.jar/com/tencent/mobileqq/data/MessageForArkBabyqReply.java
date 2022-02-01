@@ -196,7 +196,7 @@ public class MessageForArkBabyqReply
     if (!TextUtils.isEmpty(this.babyqReplyText)) {
       return this.babyqReplyText;
     }
-    return BaseApplicationImpl.sApplication.getString(2131690162);
+    return BaseApplicationImpl.sApplication.getString(2131887061);
   }
   
   protected void postRead()
@@ -277,7 +277,7 @@ public class MessageForArkBabyqReply
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkBabyqReply
  * JD-Core Version:    0.7.0.1
  */

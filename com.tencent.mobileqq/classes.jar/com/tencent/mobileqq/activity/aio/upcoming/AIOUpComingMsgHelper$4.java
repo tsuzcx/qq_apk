@@ -11,13 +11,13 @@ class AIOUpComingMsgHelper$4
   
   public void a(long paramLong)
   {
-    AIOUpComingMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioUpcomingAIOUpComingMsgHelper, this.jdField_a_of_type_JavaUtilList, paramLong, 2);
-    AIOUpComingMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioUpcomingAIOUpComingMsgHelper).a(false, (ChatMessage)this.b.get(0), false);
+    AIOUpComingMsgHelper.a(this.c, this.a, paramLong, 2);
+    AIOUpComingMsgHelper.d(this.c).a(false, (ChatMessage)this.b.get(0), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.AIOUpComingMsgHelper.4
  * JD-Core Version:    0.7.0.1
  */

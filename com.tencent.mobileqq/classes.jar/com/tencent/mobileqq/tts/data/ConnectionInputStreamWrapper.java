@@ -7,30 +7,30 @@ import javax.net.ssl.HttpsURLConnection;
 public class ConnectionInputStreamWrapper
   extends InputStream
 {
-  private final InputStream jdField_a_of_type_JavaIoInputStream;
-  private final HttpsURLConnection jdField_a_of_type_JavaxNetSslHttpsURLConnection;
+  private final HttpsURLConnection a;
+  private final InputStream b;
   
   public ConnectionInputStreamWrapper(HttpsURLConnection paramHttpsURLConnection, InputStream paramInputStream)
   {
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection = paramHttpsURLConnection;
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    this.a = paramHttpsURLConnection;
+    this.b = paramInputStream;
   }
   
   public void close()
   {
     super.close();
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.disconnect();
-    QLog.d("ConnectionInputStream", 1, new Object[] { "[close] connection disconnect.", this.jdField_a_of_type_JavaxNetSslHttpsURLConnection });
+    this.a.disconnect();
+    QLog.d("ConnectionInputStream", 1, new Object[] { "[close] connection disconnect.", this.a });
   }
   
   public int read()
   {
-    return this.jdField_a_of_type_JavaIoInputStream.read();
+    return this.b.read();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.data.ConnectionInputStreamWrapper
  * JD-Core Version:    0.7.0.1
  */

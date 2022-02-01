@@ -13,21 +13,21 @@ import com.tencent.widget.QIMCircleProgress;
 class AEAnimationQIMCircleProgress
   extends AnimationQIMCircleProgress
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = new int[9];
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Paint b;
+  private static final int[] d = new int[9];
+  private RectF b;
+  private Paint c;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt[0] = Color.parseColor("#B380CF");
-    jdField_a_of_type_ArrayOfInt[1] = Color.parseColor("#FD86A2");
-    jdField_a_of_type_ArrayOfInt[2] = Color.parseColor("#F78A92");
-    jdField_a_of_type_ArrayOfInt[3] = Color.parseColor("#FB785A");
-    jdField_a_of_type_ArrayOfInt[4] = Color.parseColor("#FF904B");
-    jdField_a_of_type_ArrayOfInt[5] = Color.parseColor("#F8BF72");
-    jdField_a_of_type_ArrayOfInt[6] = Color.parseColor("#8190E0");
-    jdField_a_of_type_ArrayOfInt[7] = Color.parseColor("#5F7EFB");
-    jdField_a_of_type_ArrayOfInt[8] = Color.parseColor("#B380CF");
+    d[0] = Color.parseColor("#B380CF");
+    d[1] = Color.parseColor("#FD86A2");
+    d[2] = Color.parseColor("#F78A92");
+    d[3] = Color.parseColor("#FB785A");
+    d[4] = Color.parseColor("#FF904B");
+    d[5] = Color.parseColor("#F8BF72");
+    d[6] = Color.parseColor("#8190E0");
+    d[7] = Color.parseColor("#5F7EFB");
+    d[8] = Color.parseColor("#B380CF");
   }
   
   public AEAnimationQIMCircleProgress(Context paramContext)
@@ -42,15 +42,15 @@ class AEAnimationQIMCircleProgress
   
   private void a()
   {
-    if (this.b != null) {
+    if (this.c != null) {
       return;
     }
-    this.b = new Paint();
-    this.b.setAntiAlias(true);
-    this.b.setStyle(Paint.Style.STROKE);
-    this.b.setStrokeWidth(this.mStrokeWidth);
-    SweepGradient localSweepGradient = new SweepGradient(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), jdField_a_of_type_ArrayOfInt, null);
-    this.b.setShader(localSweepGradient);
+    this.c = new Paint();
+    this.c.setAntiAlias(true);
+    this.c.setStyle(Paint.Style.STROKE);
+    this.c.setStrokeWidth(this.mStrokeWidth);
+    SweepGradient localSweepGradient = new SweepGradient(this.b.centerX(), this.b.centerY(), d, null);
+    this.c.setShader(localSweepGradient);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -59,7 +59,7 @@ class AEAnimationQIMCircleProgress
     a();
     float f2 = (this.mProgress - f1) * 360.0F / QIMCircleProgress.MAX_PROGRESS - 4.0F;
     if (f2 > 0.0F) {
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, f1 * 360.0F / QIMCircleProgress.MAX_PROGRESS - 90.0F + 2.0F, f2, false, this.b);
+      paramCanvas.drawArc(this.b, f1 * 360.0F / QIMCircleProgress.MAX_PROGRESS - 90.0F + 2.0F, f2, false, this.c);
     }
     if (this.mMode != 2) {
       drawCenterCircle(paramCanvas);
@@ -69,7 +69,7 @@ class AEAnimationQIMCircleProgress
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(this.mStrokeWidth + this.mProgressOffset, this.mStrokeWidth + this.mProgressOffset, paramInt1 - this.mStrokeWidth - this.mProgressOffset, paramInt2 - this.mStrokeWidth - this.mProgressOffset);
+    this.b = new RectF(this.mStrokeWidth + this.mProgressOffset, this.mStrokeWidth + this.mProgressOffset, paramInt1 - this.mStrokeWidth - this.mProgressOffset, paramInt2 - this.mStrokeWidth - this.mProgressOffset);
     this.mWidth = getWidth();
     this.mHeight = getHeight();
   }
@@ -77,7 +77,7 @@ class AEAnimationQIMCircleProgress
   public void setStrokeWidth(float paramFloat)
   {
     super.setStrokeWidth(paramFloat);
-    Paint localPaint = this.b;
+    Paint localPaint = this.c;
     if (localPaint != null) {
       localPaint.setStrokeWidth(this.mStrokeWidth);
     }
@@ -85,7 +85,7 @@ class AEAnimationQIMCircleProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.view.AEAnimationQIMCircleProgress
  * JD-Core Version:    0.7.0.1
  */

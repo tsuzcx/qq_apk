@@ -14,30 +14,30 @@ class ReadInJoyCommentPBModule$6
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("handleNewCommentList | retCode ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" | hasNewNextPage ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$ResponseCommentInfo.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b.d);
     localStringBuilder.append(" | newPageCookie ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$ResponseCommentInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b.e);
     localStringBuilder.append("| newCommentCnt ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$ResponseExtraInfo.a);
+    localStringBuilder.append(this.c.a);
     localStringBuilder.append(" | newCommentListSize ");
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$ResponseCommentInfo.jdField_a_of_type_JavaUtilList != null) {
-      i = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$ResponseCommentInfo.jdField_a_of_type_JavaUtilList.size();
+    if (this.b.a != null) {
+      i = this.b.a.size();
     } else {
       i = 0;
     }
     localStringBuilder.append(i);
     QLog.d("ReadInJoyCommentPBModule", 1, localStringBuilder.toString());
     if (ReadInJoyCommentPBModule.a(this.this$0) != null) {
-      ReadInJoyCommentPBModule.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$ResponseCommentInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$ResponseExtraInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityCommentData);
+      ReadInJoyCommentPBModule.a(this.this$0).a(this.a, this.b, this.c, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentPBModule.6
  * JD-Core Version:    0.7.0.1
  */

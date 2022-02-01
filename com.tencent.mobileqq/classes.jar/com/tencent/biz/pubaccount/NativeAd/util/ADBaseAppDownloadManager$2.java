@@ -16,51 +16,51 @@ class ADBaseAppDownloadManager$2
   {
     try
     {
-      if (this.this$0.a.size() == 0) {
+      if (this.this$0.c.size() == 0) {
         ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ADBaseAppDownloadManager", "notifyState error : empty downloads");
       }
-      Object localObject1 = this.this$0.a.iterator();
+      Object localObject1 = this.this$0.c.iterator();
       Object localObject2;
       while (((Iterator)localObject1).hasNext())
       {
         ADVideoAppDownloadData localADVideoAppDownloadData = (ADVideoAppDownloadData)((Iterator)localObject1).next();
         localObject2 = localADVideoAppDownloadData.d;
-        if ((localObject2 != null) && (localADVideoAppDownloadData.jdField_a_of_type_JavaLangString != null))
+        if ((localObject2 != null) && (localADVideoAppDownloadData.a != null))
         {
-          if (localADVideoAppDownloadData.d.equals(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e))
+          if (localADVideoAppDownloadData.d.equals(this.a.e))
           {
-            localADVideoAppDownloadData.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localADVideoAppDownloadData.b = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+            localADVideoAppDownloadData.f = this.b;
+            localADVideoAppDownloadData.g = this.a.t;
             localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("notifyState success : progress = ");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
+            ((StringBuilder)localObject2).append(this.a.t);
             ((StringBuilder)localObject2).append(" packageName = ");
             ((StringBuilder)localObject2).append(localADVideoAppDownloadData.d);
             ((StringBuilder)localObject2).append(" appId = ");
-            ((StringBuilder)localObject2).append(localADVideoAppDownloadData.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(localADVideoAppDownloadData.a);
             ((IRIJAdLogService)localObject1).d("ADBaseAppDownloadManager", ((StringBuilder)localObject2).toString());
-            if (localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+            if (localADVideoAppDownloadData.k != null)
             {
-              localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = this.jdField_a_of_type_Int;
-              localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+              localADVideoAppDownloadData.k.downloadState = this.b;
+              localADVideoAppDownloadData.k.progress = this.a.t;
             }
-            if (localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData != null)
+            if (localADVideoAppDownloadData.p != null)
             {
-              localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData.b = this.jdField_a_of_type_Int;
-              localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData.c = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+              localADVideoAppDownloadData.p.G = this.b;
+              localADVideoAppDownloadData.p.H = this.a.t;
             }
-            if (localADVideoAppDownloadData.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData != null)
+            if (localADVideoAppDownloadData.o != null)
             {
-              localADVideoAppDownloadData.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData.l = this.jdField_a_of_type_Int;
-              localADVideoAppDownloadData.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData.k = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f;
+              localADVideoAppDownloadData.o.ap = this.b;
+              localADVideoAppDownloadData.o.ao = this.a.t;
             }
             localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("progress ");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
+            ((StringBuilder)localObject2).append(this.a.t);
             ((IRIJAdLogService)localObject1).d("ADBaseAppDownloadManager", ((StringBuilder)localObject2).toString());
-            this.this$0.a(localADVideoAppDownloadData, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f);
+            this.this$0.a(localADVideoAppDownloadData, this.b, this.a.t);
           }
         }
         else
@@ -70,7 +70,7 @@ class ADBaseAppDownloadManager$2
           localStringBuilder.append("notifyState error : packageName = ");
           localStringBuilder.append(localADVideoAppDownloadData.d);
           localStringBuilder.append(" appId = ");
-          localStringBuilder.append(localADVideoAppDownloadData.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localADVideoAppDownloadData.a);
           ((IRIJAdLogService)localObject2).d("ADBaseAppDownloadManager", localStringBuilder.toString());
         }
       }
@@ -88,7 +88,7 @@ class ADBaseAppDownloadManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

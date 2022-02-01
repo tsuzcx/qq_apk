@@ -121,8 +121,8 @@ public class HttpDownloader
   
   protected static boolean checkDownloadFileSize(IHttpEngineService paramIHttpEngineService, URLDrawableHandler paramURLDrawableHandler, NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    boolean bool = StructPicLimitConfigProcessor.a().jdField_a_of_type_Boolean;
-    long l = StructPicLimitConfigProcessor.a().jdField_a_of_type_Long;
+    boolean bool = StructPicLimitConfigProcessor.a().a;
+    long l = StructPicLimitConfigProcessor.a().b;
     if ((bool) && ((paramLong2 > l) || (paramLong1 > l)))
     {
       paramIHttpEngineService.cancelReq(paramNetReq);
@@ -233,7 +233,7 @@ public class HttpDownloader
         paramInt1 = 1;
         break label155;
       }
-      if (SystemUtil.a() < 8L)
+      if (SystemUtil.b() < 8L)
       {
         paramInt1 = 2;
         break label155;
@@ -531,7 +531,7 @@ public class HttpDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HttpDownloader
  * JD-Core Version:    0.7.0.1
  */

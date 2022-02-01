@@ -9,15 +9,9 @@ import org.json.JSONObject;
 public class QDatalineHttpsConfigBean
   implements IQStorageSafable<String>
 {
-  public String a;
-  public boolean a;
+  public boolean a = false;
   public boolean b = false;
-  
-  public QDatalineHttpsConfigBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public String c = "";
   
   public void a(String paramString)
   {
@@ -26,7 +20,7 @@ public class QDatalineHttpsConfigBean
       QLog.e("QDatalineHttpsConfigBean", 1, "receiveAllConfigs|type: 637configContent is empty");
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
     try
     {
       paramString = new JSONObject(paramString);
@@ -34,12 +28,12 @@ public class QDatalineHttpsConfigBean
       if (localObject != null) {
         try
         {
-          this.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("AQQ");
+          this.a = ((JSONObject)localObject).getBoolean("AQQ");
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("UseNewHttpClient = ");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+            ((StringBuilder)localObject).append(this.a);
             QLog.d("QDatalineHttpsConfigBean", 2, ((StringBuilder)localObject).toString());
           }
         }
@@ -78,7 +72,7 @@ public class QDatalineHttpsConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.dataline.QDatalineHttpsConfigBean
  * JD-Core Version:    0.7.0.1
  */

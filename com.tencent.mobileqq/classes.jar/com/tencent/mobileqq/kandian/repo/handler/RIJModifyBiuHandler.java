@@ -40,13 +40,13 @@ public class RIJModifyBiuHandler
     cmd0xc5b.ReqBody localReqBody = new cmd0xc5b.ReqBody();
     localReqBody.uint64_feeds_id.set(paramLong2);
     feeds_info.BiuMultiLevel localBiuMultiLevel = new feeds_info.BiuMultiLevel();
-    if (paramBiuInfo.jdField_a_of_type_JavaLangLong != null) {
-      localBiuMultiLevel.uint64_origin_feeds_id.set(paramBiuInfo.jdField_a_of_type_JavaLangLong.longValue());
-    }
     if (paramBiuInfo.b != null) {
-      localBiuMultiLevel.uint64_origin_feeds_type.set(paramBiuInfo.b.longValue());
+      localBiuMultiLevel.uint64_origin_feeds_id.set(paramBiuInfo.b.longValue());
     }
-    paramBiuInfo = paramBiuInfo.jdField_a_of_type_JavaUtilList.iterator();
+    if (paramBiuInfo.c != null) {
+      localBiuMultiLevel.uint64_origin_feeds_type.set(paramBiuInfo.c.longValue());
+    }
+    paramBiuInfo = paramBiuInfo.a.iterator();
     while (paramBiuInfo.hasNext())
     {
       BiuCommentInfo localBiuCommentInfo = (BiuCommentInfo)paramBiuInfo.next();
@@ -88,19 +88,19 @@ public class RIJModifyBiuHandler
     paramBiuInfo.msg_social_feeds_info.set(paramString);
     localReqBody.msg_feeds_info.set(paramBiuInfo);
     paramBiuInfo = ReadInJoyOidbHelper.a("OidbSvc.0xc5b_2", 3163, 2, localReqBody.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReqWithAutoRetry(paramBiuInfo);
+    this.a.sendPbReqWithAutoRetry(paramBiuInfo);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, new cmd0xc5b.RspBody());
-    paramToServiceMsg = BaseApplication.getContext().getString(2131695279);
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJModifyBiuHandler.1(this, i, paramToServiceMsg));
+    paramToServiceMsg = BaseApplication.getContext().getString(2131893014);
+    this.b.post(new RIJModifyBiuHandler.1(this, i, paramToServiceMsg));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJModifyBiuHandler
  * JD-Core Version:    0.7.0.1
  */

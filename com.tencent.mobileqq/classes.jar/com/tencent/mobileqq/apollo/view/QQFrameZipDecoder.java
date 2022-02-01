@@ -2,11 +2,10 @@ package com.tencent.mobileqq.apollo.view;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
+import com.tencent.mobileqq.apollo.utils.ApolloResDownloaderUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
 import java.io.File;
 
@@ -17,7 +16,7 @@ public class QQFrameZipDecoder
   public QQFrameZipDecoder(SimpleFrameZipDecoder.OnFrameDecodeListener paramOnFrameDecodeListener)
   {
     super(null, paramOnFrameDecodeListener);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewSimpleFrameZipDecoder$IDownloadable = this;
+    this.a = this;
   }
   
   public static String a(String paramString)
@@ -33,14 +32,14 @@ public class QQFrameZipDecoder
   public void a(SimpleFrameZipDecoder paramSimpleFrameZipDecoder, String paramString1, String paramString2, String paramString3)
   {
     int j = 1;
-    this.jdField_a_of_type_Int = 1;
+    this.c = 1;
     DownloadTask localDownloadTask = new DownloadTask(paramString1, new File(paramString2));
-    localDownloadTask.p = true;
-    localDownloadTask.n = true;
-    localDownloadTask.f = "apollo_gif";
-    localDownloadTask.b = 1;
-    localDownloadTask.q = true;
-    localDownloadTask.r = true;
+    localDownloadTask.N = true;
+    localDownloadTask.J = true;
+    localDownloadTask.L = "apollo_gif";
+    localDownloadTask.e = 1;
+    localDownloadTask.P = true;
+    localDownloadTask.Q = true;
     localDownloadTask.a(new QQFrameZipDecoder.1(this, paramString1, paramString2, paramString3));
     paramSimpleFrameZipDecoder = BaseApplicationImpl.getApplication();
     if (paramSimpleFrameZipDecoder != null)
@@ -57,17 +56,12 @@ public class QQFrameZipDecoder
     int i = j;
     if (paramSimpleFrameZipDecoder != null)
     {
-      paramSimpleFrameZipDecoder = (DownloaderFactory)paramSimpleFrameZipDecoder.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+      paramSimpleFrameZipDecoder = ApolloResDownloaderUtil.a(paramSimpleFrameZipDecoder);
       i = j;
       if (paramSimpleFrameZipDecoder != null)
       {
-        paramSimpleFrameZipDecoder = paramSimpleFrameZipDecoder.a(3);
-        i = j;
-        if (paramSimpleFrameZipDecoder != null)
-        {
-          paramSimpleFrameZipDecoder.startDownload(localDownloadTask, localDownloadTask.a(), null);
-          i = 0;
-        }
+        paramSimpleFrameZipDecoder.startDownload(localDownloadTask, localDownloadTask.a(), null);
+        i = 0;
       }
     }
     if (i != 0) {
@@ -77,7 +71,7 @@ public class QQFrameZipDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.QQFrameZipDecoder
  * JD-Core Version:    0.7.0.1
  */

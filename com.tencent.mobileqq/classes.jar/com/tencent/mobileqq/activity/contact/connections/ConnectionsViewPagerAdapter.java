@@ -12,30 +12,63 @@ import java.util.ArrayList;
 public class ConnectionsViewPagerAdapter
   extends FragmentStatePagerAdapter
 {
-  private SimpleArrayMap<Integer, ConnectionsExplorationClidFragment> jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap = new SimpleArrayMap(10);
   protected QQAppInterface a;
-  private ArrayList<ConnectionsTabInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ConnectionsTabInfo> b = new ArrayList();
+  private SimpleArrayMap<Integer, ConnectionsExplorationClidFragment> c = new SimpleArrayMap(10);
   
   public ConnectionsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, ArrayList<ConnectionsTabInfo> paramArrayList)
   {
     super(paramFragmentManager);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
     if (paramArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      this.b.addAll(paramArrayList);
     }
   }
   
-  private ConnectionsTabInfo a(int paramInt)
+  private ConnectionsTabInfo d(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (ConnectionsTabInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return (ConnectionsTabInfo)this.b.get(paramInt);
     }
     return null;
   }
   
-  public ConnectionsExplorationClidFragment a(int paramInt)
+  public BaseFragment a(int paramInt)
   {
-    ConnectionsTabInfo localConnectionsTabInfo = a(paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getItem:");
+      localStringBuilder.append(paramInt);
+      QLog.d("ConnectionsViewPagerAdapter", 2, localStringBuilder.toString());
+    }
+    return b(paramInt);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConnectionsViewPagerAdapter", 2, "doOnDestroy  mFragmentsCache.size() = ");
+    }
+  }
+  
+  public void a(ArrayList<ConnectionsTabInfo> paramArrayList)
+  {
+    this.b.clear();
+    this.b.addAll(paramArrayList);
+    if (QLog.isColorLevel())
+    {
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("tabDatasUpdated. size:");
+      paramArrayList.append(this.b.size());
+      QLog.i("ConnectionsViewPagerAdapter", 2, paramArrayList.toString());
+    }
+    notifyDataSetChanged();
+  }
+  
+  public ConnectionsExplorationClidFragment b(int paramInt)
+  {
+    ConnectionsTabInfo localConnectionsTabInfo = d(paramInt);
     ConnectionsExplorationClidFragment localConnectionsExplorationClidFragment = new ConnectionsExplorationClidFragment();
     if (localConnectionsTabInfo != null)
     {
@@ -49,54 +82,21 @@ public class ConnectionsViewPagerAdapter
       }
       localConnectionsExplorationClidFragment.a(bool);
     }
-    this.jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap.put(Integer.valueOf(paramInt), localConnectionsExplorationClidFragment);
+    this.c.put(Integer.valueOf(paramInt), localConnectionsExplorationClidFragment);
     return localConnectionsExplorationClidFragment;
   }
   
-  public BaseFragment a(int paramInt)
+  public void c(int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getItem:");
-      localStringBuilder.append(paramInt);
-      QLog.d("ConnectionsViewPagerAdapter", 2, localStringBuilder.toString());
+    if ((ConnectionsExplorationClidFragment)this.c.get(Integer.valueOf(paramInt)) != null) {
+      ((ConnectionsExplorationClidFragment)this.c.get(Integer.valueOf(paramInt))).a();
     }
-    return a(paramInt);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsViewPagerAdapter", 2, "doOnDestroy  mFragmentsCache.size() = ");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((ConnectionsExplorationClidFragment)this.jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap.get(Integer.valueOf(paramInt)) != null) {
-      ((ConnectionsExplorationClidFragment)this.jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap.get(Integer.valueOf(paramInt))).a();
-    }
-  }
-  
-  public void a(ArrayList<ConnectionsTabInfo> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (QLog.isColorLevel())
-    {
-      paramArrayList = new StringBuilder();
-      paramArrayList.append("tabDatasUpdated. size:");
-      paramArrayList.append(this.jdField_a_of_type_JavaUtilArrayList.size());
-      QLog.i("ConnectionsViewPagerAdapter", 2, paramArrayList.toString());
-    }
-    notifyDataSetChanged();
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     super.destroyItem(paramViewGroup, paramInt, paramObject);
-    this.jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap.remove(Integer.valueOf(paramInt));
+    this.c.remove(Integer.valueOf(paramInt));
   }
   
   public int getCount()
@@ -105,15 +105,15 @@ public class ConnectionsViewPagerAdapter
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getCount. size:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      localStringBuilder.append(this.b.size());
       QLog.i("ConnectionsViewPagerAdapter", 2, localStringBuilder.toString());
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

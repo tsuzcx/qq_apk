@@ -23,7 +23,6 @@ import cooperation.qzone.contentbox.model.MQMsgInteractData;
 import cooperation.qzone.contentbox.model.MQShareCell;
 import cooperation.qzone.contentbox.model.MsgOnClickListener;
 import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
 import java.util.ArrayList;
 import java.util.Map;
@@ -44,10 +43,7 @@ class QZoneMsgFragment$10
     if (paramMQMsg == null) {
       QLog.e("QZoneMsgManager.QZoneMsgFragment", 1, "MsgOnClickListener msg null");
     }
-    Object localObject1 = null;
-    Object localObject2 = null;
-    ArrayList localArrayList = null;
-    paramView = null;
+    Object localObject;
     switch (paramInt)
     {
     default: 
@@ -56,10 +52,10 @@ class QZoneMsgFragment$10
     case 7: 
       if ((paramMQMsg != null) && (paramMQMsg.postGuide != null) && (paramMQMsg.postGuide.bottom != null))
       {
-        localObject1 = paramMQMsg.postGuide.bottom.jumpUrl;
-        paramView = (View)localObject1;
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramView = ((String)localObject1).replaceFirst("mqzone", "mqqzone");
+        localObject = paramMQMsg.postGuide.bottom.jumpUrl;
+        paramView = (View)localObject;
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          paramView = ((String)localObject).replaceFirst("mqzone", "mqqzone");
         }
         paramView = JumpParser.a(this.this$0.app, this.this$0.getActivity(), paramView);
         if (paramView != null) {
@@ -93,34 +89,34 @@ class QZoneMsgFragment$10
       }
       break;
     case 4: 
-      if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null)) {
+      if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null))
+      {
         if ((paramMQMsg.msgInteractData.feed != null) && (paramMQMsg.msgInteractData.feed.singlefeed != null) && (paramMQMsg.msgInteractData.feed.singlefeed.size() > 0))
         {
-          localObject1 = new Intent();
-          QzonePluginProxyActivity.setActivityNameToIntent((Intent)localObject1, "com.qzone.misc.web.QZoneTranslucentActivity2");
-          ((Intent)localObject1).putExtra("feed", paramMQMsg.msgInteractData.feed);
-          ((Intent)localObject1).putExtra("action", 4);
-          QZoneHelper.forwardToQzoneTransluentActivity2(this.this$0.getBaseActivity(), QZoneHelper.UserInfo.getInstance(), (Intent)localObject1);
+          paramView = new Intent();
+          QzonePluginProxyActivity.setActivityNameToIntent(paramView, "com.qzone.misc.web.QZoneTranslucentActivity2");
+          paramView.putExtra("feed", paramMQMsg.msgInteractData.feed);
+          paramView.putExtra("action", 4);
+          QZoneHelper.forwardToQzoneTransluentActivity2(this.this$0.getBaseActivity(), QZoneHelper.UserInfo.getInstance(), paramView);
+          return;
         }
-        else if (paramMQMsg.msgInteractData.shareToQzone != null)
+        if (paramMQMsg.msgInteractData.shareToQzone != null)
         {
-          localObject1 = new QZoneShareData();
-          ((QZoneShareData)localObject1).mTitle = paramMQMsg.msgInteractData.shareToQzone.title;
-          ((QZoneShareData)localObject1).mSummary = paramMQMsg.msgInteractData.shareToQzone.content;
-          localArrayList = new ArrayList();
-          localArrayList.add(paramMQMsg.msgInteractData.shareToQzone.imgUrl);
-          ((QZoneShareData)localObject1).mImageUrls = localArrayList;
-          ((QZoneShareData)localObject1).targetUrl = paramMQMsg.msgInteractData.shareToQzone.jumpUrl;
-          QZoneShareManager.shareToQzone(this.this$0.getBaseActivity(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), (QZoneShareData)localObject1, null, 0);
+          paramView = new QZoneShareData();
+          paramView.mTitle = paramMQMsg.msgInteractData.shareToQzone.title;
+          paramView.mSummary = paramMQMsg.msgInteractData.shareToQzone.content;
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(paramMQMsg.msgInteractData.shareToQzone.imgUrl);
+          paramView.mImageUrls = ((ArrayList)localObject);
+          paramView.targetUrl = paramMQMsg.msgInteractData.shareToQzone.jumpUrl;
+          QZoneShareManager.shareToQzone(this.this$0.getBaseActivity(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView, null, 0);
+          return;
         }
       }
-      if (paramMQMsg != null) {
-        paramView = String.valueOf(paramMQMsg.msgType);
-      }
-      LpReportInfo_pf00064.allReport(133, 7, paramView);
-      return;
+      break;
     case 3: 
-      if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null)) {
+      if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null))
+      {
         if ((paramMQMsg.msgInteractData.feed != null) && (paramMQMsg.msgInteractData.feed.singlefeed != null) && (paramMQMsg.msgInteractData.feed.singlefeed.size() > 0))
         {
           paramView = new Intent();
@@ -128,8 +124,9 @@ class QZoneMsgFragment$10
           paramView.putExtra("feed", paramMQMsg.msgInteractData.feed);
           paramView.putExtra("action", 3);
           QZoneHelper.forwardToQzoneTransluentActivity2(this.this$0.getBaseActivity(), QZoneHelper.UserInfo.getInstance(), paramView);
+          return;
         }
-        else if (paramMQMsg.msgInteractData.shareToFriend != null)
+        if (paramMQMsg.msgInteractData.shareToFriend != null)
         {
           paramView = new Intent(this.this$0.getBaseActivity(), ForwardRecentActivity.class);
           paramView.putExtra("forward_type", 2);
@@ -140,42 +137,29 @@ class QZoneMsgFragment$10
           paramView.putExtra("title", paramMQMsg.msgInteractData.shareToFriend.title);
           paramView.putExtra("desc", paramMQMsg.msgInteractData.shareToFriend.content);
           this.this$0.startActivity(paramView);
+          return;
         }
       }
-      paramView = (View)localObject1;
-      if (paramMQMsg != null) {
-        paramView = String.valueOf(paramMQMsg.msgType);
-      }
-      LpReportInfo_pf00064.allReport(133, 8, paramView);
-      return;
+      break;
     case 2: 
       this.this$0.jumpToDetail(paramMQMsg);
-      paramView = localObject2;
-      if (paramMQMsg != null) {
-        paramView = String.valueOf(paramMQMsg.msgType);
-      }
-      LpReportInfo_pf00064.allReport(133, 6, paramView);
       return;
     case 1: 
       if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null))
       {
         paramView = paramMQMsg.msgInteractData.likeCell;
-        localObject1 = MobileQQ.sMobileQQ.peekAppRuntime();
-        if (localObject1 != null) {
-          ((IQzoneRuntimeService)((AppRuntime)localObject1).getRuntimeService(IQzoneRuntimeService.class, "")).likeFeed(paramView.likeKey, paramView.appid, paramView.liked, paramMQMsg.pushTime);
+        localObject = MobileQQ.sMobileQQ.peekAppRuntime();
+        if (localObject != null) {
+          ((IQzoneRuntimeService)((AppRuntime)localObject).getRuntimeService(IQzoneRuntimeService.class, "")).likeFeed(paramView.likeKey, paramView.appid, paramView.liked, paramMQMsg.pushTime);
         }
       }
-      paramView = localArrayList;
-      if (paramMQMsg != null) {
-        paramView = String.valueOf(paramMQMsg.msgType);
-      }
-      LpReportInfo_pf00064.allReport(133, 5, paramView);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.10
  * JD-Core Version:    0.7.0.1
  */

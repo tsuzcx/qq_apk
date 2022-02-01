@@ -26,7 +26,7 @@ public class TroopTouPiaoAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130842596;
+    return 2130843549;
   }
   
   public int getAppID()
@@ -39,29 +39,29 @@ public class TroopTouPiaoAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697782);
+    return BaseApplicationImpl.getContext().getString(2131895555);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     paramPlusPanelViewModel.a("chat_tool_toupiao", localQQAppInterface.getCurrentAccountUin());
     paramPlusPanelViewModel.b(paramBaseChatPie);
-    paramPlusPanelViewModel = new Intent(paramBaseChatPie.a(), QQBrowserActivity.class);
-    paramPlusPanelViewModel.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131708294));
+    paramPlusPanelViewModel = new Intent(paramBaseChatPie.aX(), QQBrowserActivity.class);
+    paramPlusPanelViewModel.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://client.qun.qq.com/qqweb/m/qun/vote/index.html?_wv=1031&_bid=2035&groupuin=");
-    localStringBuilder.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramSessionInfo.b);
     localStringBuilder.append("&src=3");
     paramPlusPanelViewModel.putExtra("url", localStringBuilder.toString());
-    paramBaseChatPie.a().startActivity(paramPlusPanelViewModel);
+    paramBaseChatPie.aX().startActivity(paramPlusPanelViewModel);
     ReportController.b(localQQAppInterface, "P_CliOper", "Grp_AIO", "", "add_page", "Clk_vote", 0, 0, "", "", "", "");
-    AIOPanelUtiles.a(localQQAppInterface, "0X8005CB9", paramSessionInfo.jdField_a_of_type_Int);
+    AIOPanelUtiles.a(localQQAppInterface, "0X8005CB9", paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TroopTouPiaoAppInfo
  * JD-Core Version:    0.7.0.1
  */

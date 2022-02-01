@@ -522,10 +522,10 @@ public class PathTraceManagerImpl
     if ((this.mPathTrace != null) && (Build.VERSION.SDK_INT >= 25))
     {
       paramTracePointsData = new Intent();
-      paramTracePointsData.setAction(PathTraceService.a);
-      paramTracePointsData.putExtra(PathTraceService.b, this.mWorkingMode);
-      paramTracePointsData.putExtra(PathTraceService.c, this.mPathTrace.totalTime);
-      paramTracePointsData.putExtra(PathTraceService.d, this.mPathTrace.distance);
+      paramTracePointsData.setAction(PathTraceService.b);
+      paramTracePointsData.putExtra(PathTraceService.c, this.mWorkingMode);
+      paramTracePointsData.putExtra(PathTraceService.d, this.mPathTrace.totalTime);
+      paramTracePointsData.putExtra(PathTraceService.e, this.mPathTrace.distance);
       this.mApp.getApp().getApplicationContext().sendBroadcast(paramTracePointsData);
     }
     paramTracePointsData = this.mPathTrace;
@@ -605,28 +605,28 @@ public class PathTraceManagerImpl
     //   10: astore_1
     //   11: aload 5
     //   13: astore_3
-    //   14: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   14: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
     //   17: ifnull +43 -> 60
     //   20: aload 4
     //   22: astore_1
     //   23: aload 5
     //   25: astore_3
-    //   26: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
-    //   29: invokevirtual 622	android/media/MediaPlayer:isPlaying	()Z
+    //   26: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   29: invokevirtual 621	android/media/MediaPlayer:isPlaying	()Z
     //   32: ifeq +4 -> 36
     //   35: return
     //   36: aload 4
     //   38: astore_1
     //   39: aload 5
     //   41: astore_3
-    //   42: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   42: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
     //   45: ifnull +15 -> 60
     //   48: aload 4
     //   50: astore_1
     //   51: aload 5
     //   53: astore_3
-    //   54: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
-    //   57: invokevirtual 625	android/media/MediaPlayer:release	()V
+    //   54: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   57: invokevirtual 624	android/media/MediaPlayer:release	()V
     //   60: aload 4
     //   62: astore_1
     //   63: aload 5
@@ -640,44 +640,44 @@ public class PathTraceManagerImpl
     //   76: aload_0
     //   77: getstatic 160	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mVoiceIndex	I
     //   80: invokevirtual 443	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   83: checkcast 627	android/net/Uri
+    //   83: checkcast 626	android/net/Uri
     //   86: astore 6
     //   88: aload 4
     //   90: astore_1
     //   91: aload 5
     //   93: astore_3
     //   94: aload 6
-    //   96: invokevirtual 630	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   99: ldc_w 632
-    //   102: invokevirtual 637	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   96: invokevirtual 629	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   99: ldc_w 631
+    //   102: invokevirtual 636	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   105: ifeq +76 -> 181
     //   108: aload 4
     //   110: astore_1
     //   111: aload 5
     //   113: astore_3
-    //   114: new 639	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
+    //   114: new 638	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
     //   117: dup
-    //   118: invokespecial 640	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
-    //   121: putstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   118: invokespecial 639	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
+    //   121: putstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
     //   124: aload 4
     //   126: astore_1
     //   127: aload 5
     //   129: astore_3
-    //   130: new 642	java/io/FileInputStream
+    //   130: new 641	java/io/FileInputStream
     //   133: dup
-    //   134: new 644	java/io/File
+    //   134: new 643	java/io/File
     //   137: dup
     //   138: aload 6
-    //   140: invokevirtual 647	android/net/Uri:getPath	()Ljava/lang/String;
-    //   143: invokespecial 648	java/io/File:<init>	(Ljava/lang/String;)V
-    //   146: invokespecial 651	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   140: invokevirtual 646	android/net/Uri:getPath	()Ljava/lang/String;
+    //   143: invokespecial 647	java/io/File:<init>	(Ljava/lang/String;)V
+    //   146: invokespecial 650	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   149: astore_2
-    //   150: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   150: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
     //   153: aload_2
-    //   154: invokevirtual 655	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   157: invokevirtual 659	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   160: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
-    //   163: invokevirtual 662	android/media/MediaPlayer:prepare	()V
+    //   154: invokevirtual 654	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   157: invokevirtual 658	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   160: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   163: invokevirtual 661	android/media/MediaPlayer:prepare	()V
     //   166: goto +15 -> 181
     //   169: astore_0
     //   170: aload_2
@@ -691,46 +691,46 @@ public class PathTraceManagerImpl
     //   182: astore_1
     //   183: aload_2
     //   184: astore_3
-    //   185: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   185: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
     //   188: astore 4
     //   190: aload 4
     //   192: ifnonnull +18 -> 210
     //   195: aload_2
     //   196: ifnull +13 -> 209
     //   199: aload_2
-    //   200: invokevirtual 663	java/io/FileInputStream:close	()V
+    //   200: invokevirtual 662	java/io/FileInputStream:close	()V
     //   203: return
     //   204: astore_0
     //   205: aload_0
-    //   206: invokevirtual 666	java/io/IOException:printStackTrace	()V
+    //   206: invokevirtual 665	java/io/IOException:printStackTrace	()V
     //   209: return
     //   210: aload_2
     //   211: astore_1
     //   212: aload_2
     //   213: astore_3
-    //   214: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
-    //   217: new 668	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl$4
+    //   214: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   217: new 667	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl$4
     //   220: dup
     //   221: aload_0
-    //   222: invokespecial 670	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl$4:<init>	(Ljava/util/ArrayList;)V
-    //   225: invokevirtual 674	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   222: invokespecial 669	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl$4:<init>	(Ljava/util/ArrayList;)V
+    //   225: invokevirtual 673	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
     //   228: aload_2
     //   229: astore_1
     //   230: aload_2
     //   231: astore_3
-    //   232: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
-    //   235: invokevirtual 677	android/media/MediaPlayer:start	()V
+    //   232: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   235: invokevirtual 676	android/media/MediaPlayer:start	()V
     //   238: aload_2
     //   239: astore_1
     //   240: aload_2
     //   241: astore_3
-    //   242: getstatic 616	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
+    //   242: getstatic 615	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mediaPalyer	Landroid/media/MediaPlayer;
     //   245: iconst_0
-    //   246: invokevirtual 681	android/media/MediaPlayer:setLooping	(Z)V
+    //   246: invokevirtual 680	android/media/MediaPlayer:setLooping	(Z)V
     //   249: aload_2
     //   250: ifnull +33 -> 283
     //   253: aload_2
-    //   254: invokevirtual 663	java/io/FileInputStream:close	()V
+    //   254: invokevirtual 662	java/io/FileInputStream:close	()V
     //   257: return
     //   258: astore_0
     //   259: goto +25 -> 284
@@ -738,24 +738,24 @@ public class PathTraceManagerImpl
     //   263: aload_3
     //   264: astore_1
     //   265: aload_0
-    //   266: invokevirtual 682	java/lang/Exception:printStackTrace	()V
+    //   266: invokevirtual 681	java/lang/Exception:printStackTrace	()V
     //   269: aload_3
     //   270: ifnull +13 -> 283
     //   273: aload_3
-    //   274: invokevirtual 663	java/io/FileInputStream:close	()V
+    //   274: invokevirtual 662	java/io/FileInputStream:close	()V
     //   277: return
     //   278: astore_0
     //   279: aload_0
-    //   280: invokevirtual 666	java/io/IOException:printStackTrace	()V
+    //   280: invokevirtual 665	java/io/IOException:printStackTrace	()V
     //   283: return
     //   284: aload_1
     //   285: ifnull +15 -> 300
     //   288: aload_1
-    //   289: invokevirtual 663	java/io/FileInputStream:close	()V
+    //   289: invokevirtual 662	java/io/FileInputStream:close	()V
     //   292: goto +8 -> 300
     //   295: astore_1
     //   296: aload_1
-    //   297: invokevirtual 666	java/io/IOException:printStackTrace	()V
+    //   297: invokevirtual 665	java/io/IOException:printStackTrace	()V
     //   300: aload_0
     //   301: athrow
     // Local variable table:
@@ -823,48 +823,48 @@ public class PathTraceManagerImpl
     //   25: aload_1
     //   26: iconst_0
     //   27: invokeinterface 212 2 0
-    //   32: checkcast 686	com/tencent/mobileqq/persistence/Entity
-    //   35: invokevirtual 690	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   32: checkcast 685	com/tencent/mobileqq/persistence/Entity
+    //   35: invokevirtual 689	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   38: pop
     //   39: return
     //   40: aload_0
-    //   41: getfield 692	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   44: invokevirtual 698	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   41: getfield 691	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   44: invokevirtual 697	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   47: astore_2
     //   48: aload_2
-    //   49: invokevirtual 703	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   49: invokevirtual 702	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   52: aload_1
-    //   53: invokeinterface 707 1 0
+    //   53: invokeinterface 706 1 0
     //   58: astore_1
     //   59: aload_1
-    //   60: invokeinterface 712 1 0
+    //   60: invokeinterface 711 1 0
     //   65: ifeq +20 -> 85
     //   68: aload_0
     //   69: aload_1
-    //   70: invokeinterface 715 1 0
-    //   75: checkcast 686	com/tencent/mobileqq/persistence/Entity
-    //   78: invokevirtual 690	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   70: invokeinterface 714 1 0
+    //   75: checkcast 685	com/tencent/mobileqq/persistence/Entity
+    //   78: invokevirtual 689	com/tencent/mobileqq/vashealth/api/impl/PathTraceManagerImpl:updateEntity	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   81: pop
     //   82: goto -23 -> 59
     //   85: aload_2
-    //   86: invokevirtual 718	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   86: invokevirtual 717	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   89: goto +49 -> 138
     //   92: astore_1
     //   93: goto +50 -> 143
     //   96: astore_1
-    //   97: invokestatic 721	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   97: invokestatic 720	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   100: ifeq +38 -> 138
     //   103: new 300	java/lang/StringBuilder
     //   106: dup
     //   107: invokespecial 301	java/lang/StringBuilder:<init>	()V
     //   110: astore_3
     //   111: aload_3
-    //   112: ldc_w 723
+    //   112: ldc_w 722
     //   115: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: pop
     //   119: aload_3
     //   120: aload_1
-    //   121: invokevirtual 726	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   121: invokevirtual 725	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   124: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: pop
     //   128: ldc 21
@@ -873,10 +873,10 @@ public class PathTraceManagerImpl
     //   132: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   135: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   138: aload_2
-    //   139: invokevirtual 729	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   139: invokevirtual 728	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   142: return
     //   143: aload_2
-    //   144: invokevirtual 729	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   144: invokevirtual 728	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   147: aload_1
     //   148: athrow
     //   149: return
@@ -916,8 +916,8 @@ public class PathTraceManagerImpl
       return;
     }
     localObject = new DownloadTask("https://imgcache.qq.com/ac/vasapp/webviewlib/2513/run_sd/audio715.zip", (File)localObject);
-    ((DownloadTask)localObject).r = false;
-    ((DownloadTask)localObject).q = true;
+    ((DownloadTask)localObject).Q = false;
+    ((DownloadTask)localObject).P = true;
     if (this.mDownloaderInterface == null) {
       this.mDownloaderInterface = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).getDownloader(1);
     }
@@ -1122,7 +1122,7 @@ public class PathTraceManagerImpl
     stopLocation(-1);
     stopPathTraceService();
     removeSportBar();
-    AudioUtil.a();
+    AudioUtil.b();
     QLog.i("PathTraceManager", 1, "onDestroy");
   }
   
@@ -1677,8 +1677,8 @@ public class PathTraceManagerImpl
         localObject = (WebViewPlugin)this.mPathTracePlug.get();
         if ((localObject != null) && (((WebViewPlugin)localObject).mRuntime != null))
         {
-          if (((WebViewPlugin)localObject).mRuntime.a() != null) {
-            localObject = ((WebViewPlugin)localObject).mRuntime.a().getCurrentUrl();
+          if (((WebViewPlugin)localObject).mRuntime.f() != null) {
+            localObject = ((WebViewPlugin)localObject).mRuntime.f().getCurrentUrl();
           } else {
             localObject = null;
           }
@@ -1958,8 +1958,8 @@ public class PathTraceManagerImpl
           localObject = (WebViewPlugin)this.mPathTracePlug.get();
           if ((localObject != null) && (((WebViewPlugin)localObject).mRuntime != null))
           {
-            if (((WebViewPlugin)localObject).mRuntime.a() != null) {
-              localObject = ((WebViewPlugin)localObject).mRuntime.a().getCurrentUrl();
+            if (((WebViewPlugin)localObject).mRuntime.f() != null) {
+              localObject = ((WebViewPlugin)localObject).mRuntime.f().getCurrentUrl();
             } else {
               localObject = null;
             }
@@ -2094,7 +2094,7 @@ public class PathTraceManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.PathTraceManagerImpl
  * JD-Core Version:    0.7.0.1
  */

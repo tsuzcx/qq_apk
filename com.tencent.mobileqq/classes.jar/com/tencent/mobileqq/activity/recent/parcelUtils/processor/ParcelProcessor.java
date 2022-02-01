@@ -56,8 +56,6 @@ public class ParcelProcessor
     b(paramObject, paramParcel, paramArrayList);
   }
   
-  void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
-  
   protected byte[] a(Object paramObject, Field paramField)
   {
     return null;
@@ -196,12 +194,14 @@ public class ParcelProcessor
   
   void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
   
-  final boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  final boolean c(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
-    return c(paramObject, paramArrayList, paramParcel);
+    return e(paramObject, paramArrayList, paramParcel);
   }
   
-  protected final boolean c(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  void d(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
+  
+  protected final boolean e(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
     Object localObject = null;
     for (;;)
@@ -305,7 +305,7 @@ public class ParcelProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.parcelUtils.processor.ParcelProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ class WriteTogetherEditorFragment$13
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0) {
-      WriteTogetherEditorFragment.a(this.a).setAlpha(0.5F);
+      WriteTogetherEditorFragment.p(this.a).setAlpha(0.5F);
     } else if (paramMotionEvent.getAction() == 1) {
-      WriteTogetherEditorFragment.a(this.a).setAlpha(1.0F);
+      WriteTogetherEditorFragment.p(this.a).setAlpha(1.0F);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.13
  * JD-Core Version:    0.7.0.1
  */

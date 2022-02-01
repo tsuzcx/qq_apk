@@ -4,21 +4,21 @@ import com.tencent.av.tips.data.AvTipsItemBase;
 
 public abstract interface IAvTipsView
 {
-  public abstract void a();
-  
   public abstract boolean a();
   
   public abstract boolean a(AvTipsItemBase paramAvTipsItemBase);
   
   public abstract void b();
   
-  public abstract boolean b();
-  
   public abstract boolean b(AvTipsItemBase paramAvTipsItemBase);
   
-  public abstract void c();
+  public abstract boolean c();
   
   public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

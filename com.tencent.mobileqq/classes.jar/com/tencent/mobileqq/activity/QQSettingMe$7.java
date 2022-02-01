@@ -18,23 +18,23 @@ class QQSettingMe$7
     {
       if ((i == 1) || (i == 3))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+        this.a.setAlpha(1.0F);
+        this.b.setAlpha(1.0F);
+        this.c.setAlpha(1.0F);
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
+      this.a.setAlpha(0.5F);
+      this.b.setAlpha(0.5F);
+      this.c.setAlpha(0.5F);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.7
  * JD-Core Version:    0.7.0.1
  */

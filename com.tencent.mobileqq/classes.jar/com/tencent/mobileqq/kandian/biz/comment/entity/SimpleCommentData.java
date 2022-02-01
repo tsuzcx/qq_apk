@@ -15,38 +15,33 @@ public class SimpleCommentData
   implements Parcelable
 {
   public static final SimpleCommentData.CREATOR CREATOR = new SimpleCommentData.CREATOR(null);
-  private int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  @NotNull
+  private String b;
+  private int c;
+  private final long d;
+  private final int e;
   @Nullable
-  private List<BaseCommentData.CommentLinkData> jdField_a_of_type_JavaUtilList;
-  private final int jdField_b_of_type_Int;
+  private List<BaseCommentData.CommentLinkData> f;
+  private int g;
   @NotNull
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  @NotNull
-  private String jdField_c_of_type_JavaLangString;
+  private String h;
   
   public SimpleCommentData(int paramInt, @NotNull String paramString)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
-    this.jdField_b_of_type_Int = 20;
+    this.g = paramInt;
+    this.h = paramString;
+    this.a = "";
+    this.b = "";
+    this.d = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+    this.e = 20;
   }
   
   public SimpleCommentData(@NotNull Parcel paramParcel)
   {
     this(i, str);
     a(paramParcel);
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
   }
   
   public void a(@NotNull Parcel paramParcel)
@@ -56,68 +51,41 @@ public class SimpleCommentData
     if (str == null) {
       str = "";
     }
-    this.jdField_a_of_type_JavaLangString = str;
+    this.a = str;
     str = paramParcel.readString();
     if (str == null) {
       str = "";
     }
-    this.jdField_b_of_type_JavaLangString = str;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-  }
-  
-  public final int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public final List<BaseCommentData.CommentLinkData> b()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    this.b = str;
+    this.c = paramParcel.readInt();
   }
   
   public final void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public final void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public final void b(@Nullable List<BaseCommentData.CommentLinkData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public final int c()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @NotNull
-  public final String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.f = paramList;
   }
   
   public final void c(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public final int d()
-  {
-    return this.jdField_c_of_type_Int;
+    this.b = paramString;
   }
   
   @NotNull
   public final String d()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.a;
   }
   
   public int describeContents()
@@ -128,7 +96,39 @@ public class SimpleCommentData
   @NotNull
   public final String e()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.b;
+  }
+  
+  public final int f()
+  {
+    return this.c;
+  }
+  
+  public final long g()
+  {
+    return this.d;
+  }
+  
+  public final int h()
+  {
+    return this.e;
+  }
+  
+  @Nullable
+  public final List<BaseCommentData.CommentLinkData> i()
+  {
+    return this.f;
+  }
+  
+  public final int j()
+  {
+    return this.g;
+  }
+  
+  @NotNull
+  public final String k()
+  {
+    return this.h;
   }
   
   @NotNull
@@ -136,35 +136,35 @@ public class SimpleCommentData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("rowKey: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ");
     localStringBuilder.append("articleId: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", ");
     localStringBuilder.append("authorId: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", ");
     localStringBuilder.append("contentSrc: ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", ");
     localStringBuilder.append("businessInfo: ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.g);
+    paramParcel.writeString(this.h);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeInt(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.entity.SimpleCommentData
  * JD-Core Version:    0.7.0.1
  */

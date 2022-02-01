@@ -18,19 +18,19 @@ class RedPacketManagerImpl$2
   {
     Object localObject = (GetSkinListRsp)paramBundle.getSerializable("rsp");
     paramBundle.putBoolean("isCache", false);
-    if (RedPacketManagerImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletHbImplRedPacketManagerImpl).isEmpty()) {
+    if (RedPacketManagerImpl.access$000(this.c).isEmpty()) {
       return;
     }
-    Iterator localIterator = RedPacketManagerImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletHbImplRedPacketManagerImpl).iterator();
+    Iterator localIterator = RedPacketManagerImpl.access$000(this.c).iterator();
     while (localIterator.hasNext()) {
       ((BusinessObserver)localIterator.next()).onReceive(paramInt, paramBoolean, paramBundle);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("100")) {
+    if (!this.a.equals("100")) {
       ThreadManager.post(new RedPacketManagerImpl.2.1(this, (GetSkinListRsp)localObject), 5, null, false);
     }
     if (QLog.isColorLevel())
     {
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqQwalletHbImplRedPacketManagerImpl.TAG;
+      paramBundle = this.c.TAG;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("requestRedPacketSkinList onReceive isSuccess:");
       ((StringBuilder)localObject).append(paramBoolean);
@@ -40,7 +40,7 @@ class RedPacketManagerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.RedPacketManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

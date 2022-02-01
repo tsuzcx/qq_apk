@@ -9,7 +9,7 @@ class GLVideoView$3
   
   public void run()
   {
-    ReportController.b(null, "CliOper", "", "", "0X8009FCB", "0X8009FCB", 0, 0, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangStringBuilder.toString(), "");
+    ReportController.b(null, "CliOper", "", "", "0X8009FCB", "0X8009FCB", 0, 0, this.a, "", this.b.toString(), "");
   }
 }
 

@@ -10,26 +10,21 @@ import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 public class AutoVideoItemBuilder$AutoVideoMsgViewHolder
   extends BaseBubbleBuilder.ViewHolder
 {
-  public ImageView a;
   public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  public String b;
-  private View jdField_c_of_type_AndroidViewView;
-  private String jdField_c_of_type_JavaLangString;
-  public int e = 544;
-  public int f = 960;
-  
-  public AutoVideoItemBuilder$AutoVideoMsgViewHolder()
-  {
-    this.jdField_b_of_type_JavaLangString = "https://v.qqstory.qq.com/shg_1206944563_50009_a1390c0bd23148e29d598d780ad1vid.f30.mp4";
-  }
+  public URLImageView b;
+  public ImageView c;
+  public TextView d;
+  public String e = "https://v.qqstory.qq.com/shg_1206944563_50009_a1390c0bd23148e29d598d780ad1vid.f30.mp4";
+  public int f = 544;
+  public int g = 960;
+  private View s;
+  private URLImageView t;
+  private TextView u;
+  private String v;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AutoVideoItemBuilder.AutoVideoMsgViewHolder
  * JD-Core Version:    0.7.0.1
  */

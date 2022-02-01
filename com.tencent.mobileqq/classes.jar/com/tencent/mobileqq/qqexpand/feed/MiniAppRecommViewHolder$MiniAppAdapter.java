@@ -14,27 +14,27 @@ import java.util.List;
 public class MiniAppRecommViewHolder$MiniAppAdapter
   extends RecyclerView.Adapter<MiniAppRecommViewHolder.MicroAppViewHolder>
 {
-  private final List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<MiniAppRecommInfo.MiniApp> b = new ArrayList();
   
   public MiniAppRecommViewHolder$MiniAppAdapter(MiniAppRecommViewHolder paramMiniAppRecommViewHolder) {}
   
   public MiniAppRecommViewHolder.MicroAppViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(MiniAppRecommViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFeedMiniAppRecommViewHolder)).inflate(2131559468, null, false);
-    return new MiniAppRecommViewHolder.MicroAppViewHolder(MiniAppRecommViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFeedMiniAppRecommViewHolder), paramViewGroup);
+    paramViewGroup = LayoutInflater.from(MiniAppRecommViewHolder.a(this.a)).inflate(2131625434, null, false);
+    return new MiniAppRecommViewHolder.MicroAppViewHolder(MiniAppRecommViewHolder.a(this.a), paramViewGroup);
   }
   
   public void a(MiniAppRecommViewHolder.MicroAppViewHolder paramMicroAppViewHolder, int paramInt)
   {
-    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.b.get(paramInt);
     paramMicroAppViewHolder.a(localMiniApp);
     paramMicroAppViewHolder.a(paramInt);
-    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StApiAppInfo != null))
+    if ((localMiniApp != null) && (localMiniApp.e != null))
     {
-      paramMicroAppViewHolder = new SimpleMiniAppConfig(SimpleMiniAppConfig.SimpleMiniAppInfo.from(localMiniApp.jdField_a_of_type_NS_MINI_INTERFACEINTERFACE$StApiAppInfo));
+      paramMicroAppViewHolder = new SimpleMiniAppConfig(SimpleMiniAppConfig.SimpleMiniAppInfo.from(localMiniApp.e));
       paramMicroAppViewHolder.launchParam.scene = 2065;
       ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportMiniAppExposureData(paramMicroAppViewHolder, paramInt);
-      MiniAppRecommViewHolder.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
+      MiniAppRecommViewHolder.a(101, paramInt, localMiniApp.f);
     }
   }
   
@@ -42,20 +42,20 @@ public class MiniAppRecommViewHolder$MiniAppAdapter
   {
     if (paramList != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.clear();
+      this.b.addAll(paramList);
       notifyDataSetChanged();
     }
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.feed.MiniAppRecommViewHolder.MiniAppAdapter
  * JD-Core Version:    0.7.0.1
  */

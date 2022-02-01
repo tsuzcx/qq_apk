@@ -17,7 +17,7 @@ class ReadInJoyVideoStrategy$1
     QLog.d("ReadInJoyVideoStrategy", 1, ((StringBuilder)localObject).toString());
     if (paramVideoUrlInfo != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoUtilsIStrategy$URLCallback;
+      localObject = this.a;
       if (localObject != null)
       {
         String str1 = paramVideoUrlInfo.b;
@@ -29,7 +29,7 @@ class ReadInJoyVideoStrategy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.utils.ReadInJoyVideoStrategy.1
  * JD-Core Version:    0.7.0.1
  */

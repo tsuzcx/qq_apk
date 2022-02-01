@@ -24,67 +24,67 @@ public abstract class WebShareModeBase
   public void a(ShareCopyLinkData paramShareCopyLinkData)
   {
     super.a(paramShareCopyLinkData);
-    paramShareCopyLinkData.a = this.jdField_c_of_type_JavaLangString;
+    paramShareCopyLinkData.a = this.c;
   }
   
   public void a(ShareQQData paramShareQQData)
   {
     super.a(paramShareQQData);
-    paramShareQQData.b = 2;
+    paramShareQQData.a = 2;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
     localStringBuilder.append(QQStoryConstant.a);
     localStringBuilder.append("] ");
     localStringBuilder.append(this.a);
-    paramShareQQData.d = localStringBuilder.toString();
-    paramShareQQData.a = this.d;
-    paramShareQQData.k = this.a;
-    paramShareQQData.l = this.b;
-    paramShareQQData.h = this.jdField_c_of_type_JavaLangString;
+    paramShareQQData.h = localStringBuilder.toString();
+    paramShareQQData.f = this.d;
+    paramShareQQData.r = this.a;
+    paramShareQQData.s = this.b;
+    paramShareQQData.m = this.c;
   }
   
   public void a(ShareQZoneData paramShareQZoneData)
   {
     super.a(paramShareQZoneData);
-    paramShareQZoneData.jdField_c_of_type_JavaLangString = this.a;
-    paramShareQZoneData.d = this.b;
+    paramShareQZoneData.f = this.a;
+    paramShareQZoneData.g = this.b;
     paramShareQZoneData.a = this.d;
-    paramShareQZoneData.e = this.jdField_c_of_type_JavaLangString;
+    paramShareQZoneData.h = this.c;
   }
   
   public void a(ShareSinaData paramShareSinaData)
   {
     super.a(paramShareSinaData);
-    paramShareSinaData.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    paramShareSinaData.f = this.c;
     String str = this.d;
-    paramShareSinaData.e = str;
+    paramShareSinaData.h = str;
     paramShareSinaData.a = this.a;
-    paramShareSinaData.d = ShareUtils.a(str);
+    paramShareSinaData.g = ShareUtils.a(str);
   }
   
   public void a(ShareWeChatData paramShareWeChatData)
   {
     super.a(paramShareWeChatData);
-    paramShareWeChatData.jdField_c_of_type_JavaLangString = this.b;
-    paramShareWeChatData.a = this.a;
-    paramShareWeChatData.d = this.jdField_c_of_type_JavaLangString;
-    paramShareWeChatData.e = this.d;
-    paramShareWeChatData.jdField_c_of_type_Boolean = true;
+    paramShareWeChatData.g = this.b;
+    paramShareWeChatData.f = this.a;
+    paramShareWeChatData.h = this.c;
+    paramShareWeChatData.i = this.d;
+    paramShareWeChatData.l = true;
   }
   
   public void b(ShareWeChatData paramShareWeChatData)
   {
     super.b(paramShareWeChatData);
-    paramShareWeChatData.jdField_c_of_type_JavaLangString = this.b;
-    paramShareWeChatData.a = this.a;
-    paramShareWeChatData.d = this.jdField_c_of_type_JavaLangString;
-    paramShareWeChatData.e = this.d;
-    paramShareWeChatData.jdField_c_of_type_Boolean = true;
+    paramShareWeChatData.g = this.b;
+    paramShareWeChatData.f = this.a;
+    paramShareWeChatData.h = this.c;
+    paramShareWeChatData.i = this.d;
+    paramShareWeChatData.l = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.WebShareModeBase
  * JD-Core Version:    0.7.0.1
  */

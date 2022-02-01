@@ -13,20 +13,20 @@ public class AEEditorQcircleBubbleView
   extends RelativePopupWindow
   implements View.OnClickListener
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  private LayoutInflater a;
+  private View b;
   private ImageView c;
   private ImageView d;
   private ImageView e;
+  private ImageView f;
+  private ImageView g;
+  private TextView h;
   
   public AEEditorQcircleBubbleView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    a(2064318554);
+    this.a = LayoutInflater.from(paramContext);
+    a(2064056426);
     setOutsideTouchable(true);
     setFocusable(true);
     setTouchable(true);
@@ -34,22 +34,22 @@ public class AEEditorQcircleBubbleView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2064121907));
-    this.c = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2064121911));
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2064121910));
-    this.d = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2064121908));
-    this.e = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2064121909));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064121871));
+    this.b = this.a.inflate(paramInt, null);
+    this.c = ((ImageView)this.b.findViewById(2063990841));
+    this.e = ((ImageView)this.b.findViewById(2063990845));
+    this.d = ((ImageView)this.b.findViewById(2063990844));
+    this.f = ((ImageView)this.b.findViewById(2063990842));
+    this.g = ((ImageView)this.b.findViewById(2063990843));
+    this.h = ((TextView)this.b.findViewById(2063990790));
     setBackgroundDrawable(new ColorDrawable(0));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    super.setContentView(this.jdField_a_of_type_AndroidViewView);
+    this.b.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+    this.b.setOnClickListener(this);
+    super.setContentView(this.b);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.h.setText(paramString);
   }
   
   public void b(int paramInt)
@@ -64,51 +64,51 @@ public class AEEditorQcircleBubbleView
           {
             if (paramInt != 4)
             {
-              this.b.setVisibility(8);
-              this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.c.setVisibility(8);
               this.d.setVisibility(8);
+              this.c.setVisibility(8);
               this.e.setVisibility(8);
+              this.f.setVisibility(8);
+              this.g.setVisibility(8);
               return;
             }
-            this.d.setVisibility(0);
-            this.b.setVisibility(8);
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+            this.f.setVisibility(0);
+            this.d.setVisibility(8);
             this.c.setVisibility(8);
             this.e.setVisibility(8);
+            this.g.setVisibility(8);
             return;
           }
-          this.e.setVisibility(0);
-          this.b.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.c.setVisibility(8);
+          this.g.setVisibility(0);
           this.d.setVisibility(8);
+          this.c.setVisibility(8);
+          this.e.setVisibility(8);
+          this.f.setVisibility(8);
           return;
         }
-        this.c.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.b.setVisibility(8);
+        this.e.setVisibility(0);
+        this.c.setVisibility(8);
         this.d.setVisibility(8);
-        this.e.setVisibility(8);
+        this.f.setVisibility(8);
+        this.g.setVisibility(8);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.b.setVisibility(8);
-      this.c.setVisibility(8);
+      this.c.setVisibility(0);
       this.d.setVisibility(8);
       this.e.setVisibility(8);
+      this.f.setVisibility(8);
+      this.g.setVisibility(8);
       return;
     }
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.d.setVisibility(0);
     this.c.setVisibility(8);
-    this.d.setVisibility(8);
     this.e.setVisibility(8);
+    this.f.setVisibility(8);
+    this.g.setVisibility(8);
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.h.setText(paramInt);
   }
   
   public void onClick(View paramView)
@@ -118,7 +118,7 @@ public class AEEditorQcircleBubbleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.AEEditorQcircleBubbleView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ import android.widget.TextView;
 public class KanDianRoundCornerTextView
   extends TextView
 {
-  private float jdField_a_of_type_Float = 0.4F;
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "#000000";
+  private int a = 0;
+  private String b = "#000000";
+  private float c = 0.4F;
   
   public KanDianRoundCornerTextView(Context paramContext)
   {
@@ -34,17 +34,17 @@ public class KanDianRoundCornerTextView
     if (paramInt < 0) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     PaintDrawable localPaintDrawable = new PaintDrawable();
-    localPaintDrawable.setCornerRadius(this.jdField_a_of_type_Int);
-    localPaintDrawable.setColorFilter(Color.parseColor(this.jdField_a_of_type_JavaLangString), PorterDuff.Mode.SRC_ATOP);
-    localPaintDrawable.setAlpha((int)(this.jdField_a_of_type_Float * 255.0F));
+    localPaintDrawable.setCornerRadius(this.a);
+    localPaintDrawable.setColorFilter(Color.parseColor(this.b), PorterDuff.Mode.SRC_ATOP);
+    localPaintDrawable.setAlpha((int)(this.c * 255.0F));
     setBackgroundDrawable(localPaintDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.KanDianRoundCornerTextView
  * JD-Core Version:    0.7.0.1
  */

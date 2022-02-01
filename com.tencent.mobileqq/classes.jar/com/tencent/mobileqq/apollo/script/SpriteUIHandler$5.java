@@ -17,11 +17,11 @@ class SpriteUIHandler$5
   {
     try
     {
-      MqqHandler localMqqHandler = SpriteUIHandler.a(this.this$0).a().a();
+      MqqHandler localMqqHandler = SpriteUIHandler.c(this.this$0).m().j();
       int i;
       if (1 == this.a)
       {
-        long l = DeviceInfoUtil.h();
+        long l = DeviceInfoUtil.C();
         double d = (float)l / 7.0F;
         Double.isNaN(d);
         i = (int)(d / 2.84D);
@@ -31,12 +31,12 @@ class SpriteUIHandler$5
       if (2 == this.a)
       {
         i = this.b;
-        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.h() / 7.0F) + (i + 40), 0).sendToTarget();
+        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.C() / 7.0F) + (i + 40), 0).sendToTarget();
         return;
       }
       if (3 == this.a)
       {
-        if ((((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(SpriteUIHandler.a(this.this$0).a())) && (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHiddenForBusiness(SpriteUIHandler.a(this.this$0).a(), "select_more_msg")))
+        if ((((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(SpriteUIHandler.c(this.this$0).l())) && (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHiddenForBusiness(SpriteUIHandler.c(this.this$0).l(), "select_more_msg")))
         {
           if (!QLog.isColorLevel()) {
             return;
@@ -57,7 +57,7 @@ class SpriteUIHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.5
  * JD-Core Version:    0.7.0.1
  */

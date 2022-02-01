@@ -33,39 +33,19 @@ public class PeakIpcController
     return null;
   }
   
-  public static String a(String paramString)
-  {
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("uin", paramString);
-    paramString = QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_get_name", (Bundle)localObject);
-    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null))
-    {
-      paramString = paramString.data.getString("uinname");
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getFriendName success name = ");
-        ((StringBuilder)localObject).append(paramString);
-        QLog.i("PeakIpcController", 2, ((StringBuilder)localObject).toString());
-      }
-      return paramString;
-    }
-    return null;
-  }
-  
   public static void a(SendPanelItemInfo paramSendPanelItemInfo)
   {
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("cancelSendVideoOrPhoto uinseq:");
-      ((StringBuilder)localObject).append(paramSendPanelItemInfo.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(paramSendPanelItemInfo.o);
       QLog.i("PeakIpcController", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new Bundle();
-    ((Bundle)localObject).putLong("key_uinsequence", paramSendPanelItemInfo.jdField_a_of_type_Long);
-    ((Bundle)localObject).putString("uin", paramSendPanelItemInfo.jdField_a_of_type_JavaLangString);
-    ((Bundle)localObject).putInt("uintype", paramSendPanelItemInfo.jdField_a_of_type_Int);
+    ((Bundle)localObject).putLong("key_uinsequence", paramSendPanelItemInfo.o);
+    ((Bundle)localObject).putString("uin", paramSendPanelItemInfo.a);
+    ((Bundle)localObject).putInt("uintype", paramSendPanelItemInfo.d);
     QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_cancel_send", (Bundle)localObject, new PeakIpcController.2(paramSendPanelItemInfo));
   }
   
@@ -136,18 +116,18 @@ public class PeakIpcController
       }
       return;
     }
-    paramSendPanelItemInfo.jdField_a_of_type_Long = 0L;
-    Object localObject = HexUtil.bytes2HexStr(FileManagerUtil.d(paramString1));
+    paramSendPanelItemInfo.o = 0L;
+    Object localObject = HexUtil.bytes2HexStr(FileManagerUtil.g(paramString1));
     if (localObject == null)
     {
       QLog.e("PeakIpcController", 1, "sendPic file md5 fail!");
       return;
     }
-    paramSendPanelItemInfo.g = ((String)localObject);
+    paramSendPanelItemInfo.n = ((String)localObject);
     localObject = new SessionInfo();
-    ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = paramSendPanelItemInfo.jdField_a_of_type_JavaLangString;
-    ((SessionInfo)localObject).jdField_a_of_type_Int = paramSendPanelItemInfo.jdField_a_of_type_Int;
-    ((SessionInfo)localObject).b = paramSendPanelItemInfo.b;
+    ((SessionInfo)localObject).b = paramSendPanelItemInfo.a;
+    ((SessionInfo)localObject).a = paramSendPanelItemInfo.d;
+    ((SessionInfo)localObject).c = paramSendPanelItemInfo.b;
     paramSendPanelItemInfo = new Bundle();
     paramSendPanelItemInfo.putParcelable("key_session", (Parcelable)localObject);
     paramSendPanelItemInfo.putString("key_file_path", paramString1);
@@ -173,11 +153,41 @@ public class PeakIpcController
     localStringBuilder.append("sendVideo---takeSameName=");
     localStringBuilder.append(paramString4);
     AEQLog.b("PeakIpcController", localStringBuilder.toString());
-    paramSendPanelItemInfo.jdField_a_of_type_Long = 0L;
+    paramSendPanelItemInfo.o = 0L;
     paramString1 = ShortVideoForwardManager.a(paramString1, paramString2, paramSendPanelItemInfo, paramString3, paramString4);
     paramString2 = new Bundle();
     paramString2.putParcelable("key_intent", paramString1);
     QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_start_send", paramString2, new PeakIpcController.1());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("qcircle_client_ext1", paramString2);
+    localBundle.putString("qcircle_client_ext2", paramString3);
+    localBundle.putString("qcircle_client_cost", String.valueOf(paramLong));
+    localBundle.putString("qcircle_client_resultcode", paramString4);
+    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", paramString1, localBundle);
+  }
+  
+  public static String b(String paramString)
+  {
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("uin", paramString);
+    paramString = QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_get_name", (Bundle)localObject);
+    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null))
+    {
+      paramString = paramString.data.getString("uinname");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getFriendName success name = ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("PeakIpcController", 2, ((StringBuilder)localObject).toString());
+      }
+      return paramString;
+    }
+    return null;
   }
   
   public static void b(SendPanelItemInfo paramSendPanelItemInfo)
@@ -189,15 +199,15 @@ public class PeakIpcController
       }
       return;
     }
-    if (paramSendPanelItemInfo.jdField_a_of_type_Long <= 0L)
+    if (paramSendPanelItemInfo.o <= 0L)
     {
       QLog.e("PeakIpcController", 1, "reSendMessage error!");
       return;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putLong("key_uinsequence", paramSendPanelItemInfo.jdField_a_of_type_Long);
-    localBundle.putString("uin", paramSendPanelItemInfo.jdField_a_of_type_JavaLangString);
-    localBundle.putInt("uintype", paramSendPanelItemInfo.jdField_a_of_type_Int);
+    localBundle.putLong("key_uinsequence", paramSendPanelItemInfo.o);
+    localBundle.putString("uin", paramSendPanelItemInfo.a);
+    localBundle.putInt("uintype", paramSendPanelItemInfo.d);
     QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_re_send", localBundle, new PeakIpcController.4());
   }
   
@@ -211,7 +221,7 @@ public class PeakIpcController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.editipc.PeakIpcController
  * JD-Core Version:    0.7.0.1
  */

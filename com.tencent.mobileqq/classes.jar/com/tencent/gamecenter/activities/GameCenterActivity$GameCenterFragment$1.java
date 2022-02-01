@@ -17,13 +17,13 @@ class GameCenterActivity$GameCenterFragment$1
     paramString.append(paramInt);
     QLog.i("GameCenterFragment", 1, paramString.toString());
     if (paramInt == 304) {
-      ScreenshotManager.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
+      ScreenshotManager.a().a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment.1
  * JD-Core Version:    0.7.0.1
  */

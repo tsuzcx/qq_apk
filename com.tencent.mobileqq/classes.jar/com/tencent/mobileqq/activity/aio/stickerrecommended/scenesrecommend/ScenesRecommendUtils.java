@@ -18,9 +18,9 @@ public class ScenesRecommendUtils
 {
   private static ScenesRecommendItem a(ScenesRecommendItem.ScenesRecConfigItem paramScenesRecConfigItem)
   {
-    if ((paramScenesRecConfigItem != null) && (paramScenesRecConfigItem.jdField_a_of_type_JavaLangString != null))
+    if ((paramScenesRecConfigItem != null) && (paramScenesRecConfigItem.b != null))
     {
-      if (paramScenesRecConfigItem.jdField_a_of_type_JavaLangString.equalsIgnoreCase("redpacket_id001")) {
+      if (paramScenesRecConfigItem.b.equalsIgnoreCase("redpacket_id001")) {
         return new HongBaoScenesRecommendItem(paramScenesRecConfigItem);
       }
       return new ScenesRecommendItem(paramScenesRecConfigItem);
@@ -42,18 +42,18 @@ public class ScenesRecommendUtils
     int i = paramJSONObject.optInt("switch");
     Object localObject1 = paramJSONObject.optJSONArray("keywords");
     ScenesRecommendItem.ScenesRecConfigItem localScenesRecConfigItem = new ScenesRecommendItem.ScenesRecConfigItem();
-    localScenesRecConfigItem.jdField_a_of_type_Int = i;
-    localScenesRecConfigItem.jdField_a_of_type_JavaLangString = str5;
-    localScenesRecConfigItem.c = ((String)localObject2);
-    localScenesRecConfigItem.jdField_b_of_type_JavaLangString = str4;
-    localScenesRecConfigItem.d = str6;
-    if ((!StringUtil.a(str1)) && (!StringUtil.a(str3)))
+    localScenesRecConfigItem.c = i;
+    localScenesRecConfigItem.b = str5;
+    localScenesRecConfigItem.e = ((String)localObject2);
+    localScenesRecConfigItem.d = str4;
+    localScenesRecConfigItem.f = str6;
+    if ((!StringUtil.isEmpty(str1)) && (!StringUtil.isEmpty(str3)))
     {
       localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
       try
       {
-        localScenesRecConfigItem.jdField_a_of_type_JavaUtilDate = ((SimpleDateFormat)localObject2).parse(str1);
-        localScenesRecConfigItem.jdField_b_of_type_JavaUtilDate = ((SimpleDateFormat)localObject2).parse(str3);
+        localScenesRecConfigItem.g = ((SimpleDateFormat)localObject2).parse(str1);
+        localScenesRecConfigItem.h = ((SimpleDateFormat)localObject2).parse(str3);
       }
       catch (Exception localException)
       {
@@ -62,13 +62,13 @@ public class ScenesRecommendUtils
     }
     if (localObject1 != null)
     {
-      localScenesRecConfigItem.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localScenesRecConfigItem.a = new ArrayList();
       i = 0;
       while (i < ((JSONArray)localObject1).length())
       {
         String str2 = ((JSONArray)localObject1).optString(i);
-        if (!StringUtil.a(str2)) {
-          localScenesRecConfigItem.jdField_a_of_type_JavaUtilList.add(str2);
+        if (!StringUtil.isEmpty(str2)) {
+          localScenesRecConfigItem.a.add(str2);
         }
         i += 1;
       }
@@ -101,7 +101,7 @@ public class ScenesRecommendUtils
   
   public static List<ScenesRecommendItem> a(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return null;
     }
     if (QLog.isColorLevel())
@@ -156,7 +156,7 @@ public class ScenesRecommendUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendUtils
  * JD-Core Version:    0.7.0.1
  */

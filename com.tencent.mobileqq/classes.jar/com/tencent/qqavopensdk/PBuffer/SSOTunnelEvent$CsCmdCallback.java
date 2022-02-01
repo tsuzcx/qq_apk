@@ -1,14 +1,9 @@
 package com.tencent.qqavopensdk.PBuffer;
 
-public abstract interface SSOTunnelEvent$CsCmdCallback
-{
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-}
+public abstract interface SSOTunnelEvent$CsCmdCallback {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent.CsCmdCallback
  * JD-Core Version:    0.7.0.1
  */

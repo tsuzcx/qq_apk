@@ -15,26 +15,26 @@ import com.tencent.qphone.base.util.QLog;
 
 public class TroopMemberListRefresher
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new TroopMemberListRefresher.1(this);
-  String jdField_a_of_type_JavaLangString = null;
+  QQAppInterface a;
+  String b = null;
+  Context c = null;
+  Handler d = null;
+  private TroopObserver e = new TroopMemberListRefresher.1(this);
   
   public TroopMemberListRefresher(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, Handler paramHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.a = paramQQAppInterface;
+    this.c = paramContext;
+    this.b = paramString;
+    this.d = paramHandler;
   }
   
   private String a(String paramString)
   {
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    TroopManager localTroopManager = (TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localTroopManager != null)
     {
-      paramString = localTroopManager.b(paramString);
+      paramString = localTroopManager.f(paramString);
       if (paramString != null) {
         return paramString.troopcode;
       }
@@ -44,20 +44,20 @@ public class TroopMemberListRefresher
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.a.addObserver(this.e);
   }
   
   public void a(boolean paramBoolean)
   {
     QLog.e("RefreshMemberList", 4, "Prepare refreshMemberListFromServer");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.b)) {
       return;
     }
-    String str = a(this.jdField_a_of_type_JavaLangString);
+    String str = a(this.b);
     if (TextUtils.isEmpty(str)) {
       return;
     }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4);
+    SharedPreferences localSharedPreferences = this.c.getSharedPreferences("last_update_time", 4);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_last_update_time");
     localStringBuilder.append(str);
@@ -68,7 +68,7 @@ public class TroopMemberListRefresher
       QLog.e("RefreshMemberList", 4, "< 5min, Will not refresh.");
       return;
     }
-    ((ITroopMemberListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER)).a(true, this.jdField_a_of_type_JavaLangString, str, 5);
+    ((ITroopMemberListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER)).a(true, this.b, str, 5);
     if (l1 == 0L)
     {
       QLog.e("RefreshMemberList", 4, "Not refresh now, will refresh.");
@@ -79,13 +79,13 @@ public class TroopMemberListRefresher
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.d = null;
+    this.a.removeObserver(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher
  * JD-Core Version:    0.7.0.1
  */

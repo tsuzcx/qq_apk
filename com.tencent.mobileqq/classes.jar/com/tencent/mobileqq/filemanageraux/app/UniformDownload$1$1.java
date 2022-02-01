@@ -12,47 +12,47 @@ class UniformDownload$1$1
   
   public void run()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a, UniformDownloadActivity.class);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getString("param_content_memo");
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getString("param_icon_path");
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getString("param_mime_type");
+    Intent localIntent = new Intent(this.c.e.b, UniformDownloadActivity.class);
+    Object localObject = this.c.a.getString("param_content_memo");
+    String str1 = this.c.a.getString("param_icon_path");
+    String str2 = this.c.a.getString("param_mime_type");
     if (localObject != null) {
       localIntent.putExtra(UniformDownloadActivity.h, (String)localObject);
     }
     if (str1 != null) {
       localIntent.putExtra(UniformDownloadActivity.g, str1);
     }
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getBoolean("param_isqbdownload", false);
+    boolean bool = this.c.a.getBoolean("param_isqbdownload", false);
     localIntent.putExtra(UniformDownloadActivity.i, bool);
-    localIntent.putExtra(UniformDownloadActivity.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra(UniformDownloadActivity.d, this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra(UniformDownloadActivity.b, this.c.b);
+    localIntent.putExtra(UniformDownloadActivity.d, this.a);
     localIntent.setFlags(536870912);
     long l;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_Long != 0L) {
-      l = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_Long;
+    if (this.c.c != 0L) {
+      l = this.c.c;
     } else {
-      l = this.jdField_a_of_type_Long;
+      l = this.b;
     }
     localIntent.putExtra(UniformDownloadActivity.e, l);
     localIntent.putExtra(UniformDownloadActivity.j, str2);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.b == 1L) {
-      localIntent.putExtra(UniformDownloadActivity.c, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.b);
+    if (this.c.d == 1L) {
+      localIntent.putExtra(UniformDownloadActivity.c, this.c.d);
     }
-    localIntent.putExtra("fromArkAppDownload", this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getBoolean("fromArkAppDownload", false));
-    localIntent.putExtra(UniformDownloadActivity.k, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getString("param_refer_url", ""));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.getIntent();
+    localIntent.putExtra("fromArkAppDownload", this.c.a.getBoolean("fromArkAppDownload", false));
+    localIntent.putExtra(UniformDownloadActivity.k, this.c.a.getString("param_refer_url", ""));
+    localObject = this.c.e.b.getIntent();
     if (localObject != null)
     {
       localIntent.putExtra("big_brother_source_key", ((Intent)localObject).getStringExtra("big_brother_source_key"));
       localIntent.putExtra("big_brother_ref_source_key", ((Intent)localObject).getStringExtra("big_brother_ref_source_key"));
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.startActivity(localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.overridePendingTransition(0, 0);
+    this.c.e.b.startActivity(localIntent);
+    this.c.e.b.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.app.UniformDownload.1.1
  * JD-Core Version:    0.7.0.1
  */

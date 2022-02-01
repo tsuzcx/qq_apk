@@ -21,17 +21,17 @@ class MemoryDumpHelper$6
   public void run()
   {
     Object localObject;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject = this.jdField_a_of_type_JavaLangString;
+    if (this.a) {
+      localObject = this.b;
     } else {
-      localObject = this.jdField_b_of_type_JavaLangString;
+      localObject = this.c;
     }
     StringBuilder localStringBuilder;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      localDumpResult = MagnifierSDK.a().a().a((String)localObject, new MemoryDumpHelper.6.1(this));
-      MagnifierSDK.a().a().a(localDumpResult);
-      MemoryDumpHelper.d(this.this$0);
+      localDumpResult = MagnifierSDK.b().d().a((String)localObject, new MemoryDumpHelper.6.1(this));
+      MagnifierSDK.b().d().a(localDumpResult);
+      MemoryDumpHelper.g(this.this$0);
       localFile = new File(localDumpResult.zipFilePath);
       if (QLog.isColorLevel())
       {
@@ -59,11 +59,11 @@ class MemoryDumpHelper$6
         ((HashMap)localObject).put("dumpFileSize", String.valueOf(localDumpResult.hprofFileSize));
         ((HashMap)localObject).put("zipFileSize", String.valueOf(localFile.length()));
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "MemoryPeakDump", true, 0L, 0L, (HashMap)localObject, "");
-        MemoryReporter.a().b();
+        MemoryReporter.a().c();
       }
       return;
     }
-    DumpResult localDumpResult = MagnifierSDK.a().a().a((String)localObject, new MemoryDumpHelper.6.2(this));
+    DumpResult localDumpResult = MagnifierSDK.b().c().a((String)localObject, new MemoryDumpHelper.6.2(this));
     File localFile = new File(localDumpResult.zipFilePath);
     if (QLog.isColorLevel())
     {
@@ -74,13 +74,13 @@ class MemoryDumpHelper$6
       localStringBuilder.append(localFile.getAbsolutePath());
       QLog.d("QAPM_MemoryDumpHelper", 2, localStringBuilder.toString());
     }
-    MagnifierSDK.a().a().a(System.currentTimeMillis(), localDumpResult.zipFilePath);
-    MemoryDumpHelper.d(this.this$0);
+    MagnifierSDK.b().c().a(System.currentTimeMillis(), localDumpResult.zipFilePath);
+    MemoryDumpHelper.g(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.MemoryDumpHelper.6
  * JD-Core Version:    0.7.0.1
  */

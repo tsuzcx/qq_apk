@@ -11,10 +11,10 @@ class BaseInviteFloatBarUICtr$2
   {
     if (QLog.isColorLevel())
     {
-      String str = this.this$0.a;
+      String str = this.this$0.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("timeout~ mPeerUin:");
-      localStringBuilder.append(this.this$0.c);
+      localStringBuilder.append(this.this$0.m);
       QLog.d(str, 2, localStringBuilder.toString());
     }
     this.this$0.c();

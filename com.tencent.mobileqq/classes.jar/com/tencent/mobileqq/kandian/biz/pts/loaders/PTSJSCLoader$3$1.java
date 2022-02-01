@@ -19,7 +19,7 @@ class PTSJSCLoader$3$1
     if ((paramInt == 0) && (paramString == null))
     {
       QLog.i("PTSJSCLoader", 1, "[updatePTSJSC], handleDownloadPTSJSC, download succeed.");
-      PTSJSCLoader.b(this.a.this$0);
+      PTSJSCLoader.c(this.a.this$0);
     }
   }
   
@@ -30,7 +30,7 @@ class PTSJSCLoader$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSJSCLoader.3.1
  * JD-Core Version:    0.7.0.1
  */

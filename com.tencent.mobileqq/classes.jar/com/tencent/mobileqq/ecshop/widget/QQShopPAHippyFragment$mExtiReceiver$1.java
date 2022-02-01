@@ -36,7 +36,7 @@ public final class QQShopPAHippyFragment$mExtiReceiver$1
         try
         {
           paramContext = new JSONObject(paramIntent.getStringExtra("extstr"));
-          paramIntent = QQShopPAHippyFragment.a(this.a);
+          paramIntent = QQShopPAHippyFragment.b(this.a);
           if (paramIntent != null)
           {
             if (paramContext.optInt("isShow") == 1) {
@@ -56,7 +56,7 @@ public final class QQShopPAHippyFragment$mExtiReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.widget.QQShopPAHippyFragment.mExtiReceiver.1
  * JD-Core Version:    0.7.0.1
  */

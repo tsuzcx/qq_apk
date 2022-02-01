@@ -22,13 +22,13 @@ class JsonConfig$1
     if (QLog.isColorLevel()) {
       QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
     }
-    this.a.a.clear();
+    this.a.c.clear();
     if ((paramMessage.obj instanceof ConcurrentHashMap))
     {
       if (QLog.isColorLevel()) {
         QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
       }
-      this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
+      this.a.c.putAll((ConcurrentHashMap)paramMessage.obj);
     }
   }
 }

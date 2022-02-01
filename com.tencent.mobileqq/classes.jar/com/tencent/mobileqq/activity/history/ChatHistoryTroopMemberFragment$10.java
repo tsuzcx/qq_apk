@@ -14,23 +14,23 @@ class ChatHistoryTroopMemberFragment$10
   public void onClick(View paramView)
   {
     ChatHistoryTroopMemberFragment localChatHistoryTroopMemberFragment = this.a;
-    localChatHistoryTroopMemberFragment.g = true;
-    localChatHistoryTroopMemberFragment.d.setVisibility(8);
+    localChatHistoryTroopMemberFragment.A = true;
+    localChatHistoryTroopMemberFragment.T.setVisibility(8);
     localChatHistoryTroopMemberFragment = this.a;
-    localChatHistoryTroopMemberFragment.d = ((TextView)ChatHistoryTroopMemberFragment.a(localChatHistoryTroopMemberFragment, 2131369204));
-    this.a.d.setVisibility(0);
-    this.a.d.setText(HardCodeUtil.a(2131701874));
-    this.a.d.setOnClickListener(new ChatHistoryTroopMemberFragment.10.1(this));
-    ChatHistoryTroopMemberFragment.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    localChatHistoryTroopMemberFragment.T = ((TextView)ChatHistoryTroopMemberFragment.b(localChatHistoryTroopMemberFragment, 2131436182));
+    this.a.T.setVisibility(0);
+    this.a.T.setText(HardCodeUtil.a(2131898212));
+    this.a.T.setOnClickListener(new ChatHistoryTroopMemberFragment.10.1(this));
+    ChatHistoryTroopMemberFragment.c(this.a);
+    if (this.a.K != null) {
+      this.a.K.c();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.10
  * JD-Core Version:    0.7.0.1
  */

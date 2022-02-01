@@ -10,22 +10,22 @@ public class StoryConfigManagerImpl
 {
   public int getHighBitrate()
   {
-    return StoryConfigManager.d();
+    return StoryConfigManager.p();
   }
   
   public int getMaxUploadFileSize()
   {
-    return StoryConfigManager.c();
+    return StoryConfigManager.o();
   }
   
   public <V> V getStoryValue(@NonNull String paramString, @NonNull V paramV)
   {
-    return ((StoryConfigManager)SuperManager.a(10)).b(paramString, paramV);
+    return ((StoryConfigManager)SuperManager.a(10)).c(paramString, paramV);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dov.story.api.impl.StoryConfigManagerImpl
  * JD-Core Version:    0.7.0.1
  */

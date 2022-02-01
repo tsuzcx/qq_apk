@@ -22,15 +22,15 @@ class DatalineRemoteManager$8
   {
     Intent localIntent = new Intent(this.this$0.a.getApplication().getApplicationContext(), FileBrowserActivity.class);
     localIntent.addFlags(268435456);
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 1))
+    if ((this.a.nFileType == 0) || (this.a.nFileType == 1))
     {
       Object localObject;
-      if (FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()))
+      if (FileManagerUtil.n(this.a.getFilePath()))
       {
         localObject = new FileInfo();
-        ((FileInfo)localObject).a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.d());
-        ((FileInfo)localObject).d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.d());
-        ((FileInfo)localObject).e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a());
+        ((FileInfo)localObject).a(this.b.j());
+        ((FileInfo)localObject).d(this.b.i());
+        ((FileInfo)localObject).f(this.b.d());
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(localObject);
         ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).addFileViewerLocalFiles(localArrayList);
@@ -39,17 +39,17 @@ class DatalineRemoteManager$8
       else
       {
         localObject = new ArrayList();
-        ((ArrayList)localObject).add(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId));
+        ((ArrayList)localObject).add(String.valueOf(this.a.nSessionId));
         localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", (ArrayList)localObject);
       }
     }
-    localIntent.putExtra("fileinfo", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo);
+    localIntent.putExtra("fileinfo", this.b);
     this.this$0.a.getApplication().getApplicationContext().startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.8
  * JD-Core Version:    0.7.0.1
  */

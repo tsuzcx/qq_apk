@@ -5,30 +5,30 @@ import com.tencent.qphone.base.util.QLog;
 public class Reference<T>
 {
   public static final String a;
-  private int jdField_a_of_type_Int;
-  private final Releaser<T> jdField_a_of_type_ComTencentMobileqqKandianBaseImageReleaser;
-  private T jdField_a_of_type_JavaLangObject;
+  private T b;
+  private int c;
+  private final Releaser<T> d;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("zimage.");
     localStringBuilder.append(Reference.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public Reference(T paramT, Releaser<T> paramReleaser)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageReleaser = paramReleaser;
-    this.jdField_a_of_type_Int = 1;
+    this.b = paramT;
+    this.d = paramReleaser;
+    this.c = 1;
   }
   
   public T a()
   {
     try
     {
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+      Object localObject1 = this.b;
       return localObject1;
     }
     finally
@@ -38,11 +38,11 @@ public class Reference<T>
     }
   }
   
-  public void a()
+  public void b()
   {
     try
     {
-      this.jdField_a_of_type_Int += 1;
+      this.c += 1;
       return;
     }
     finally
@@ -52,18 +52,18 @@ public class Reference<T>
     }
   }
   
-  public void b()
+  public void c()
   {
     try
     {
-      this.jdField_a_of_type_Int -= 1;
-      if (this.jdField_a_of_type_Int == 0)
+      this.c -= 1;
+      if (this.c == 0)
       {
         QLog.isColorLevel();
-        if (this.jdField_a_of_type_JavaLangObject != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageReleaser.a(this.jdField_a_of_type_JavaLangObject);
-          this.jdField_a_of_type_JavaLangObject = null;
+          this.d.a(this.b);
+          this.b = null;
         }
       }
       return;
@@ -77,7 +77,7 @@ public class Reference<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.Reference
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class StoryMessageListActivity$7
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.setSelected(false);
   }
 }
 

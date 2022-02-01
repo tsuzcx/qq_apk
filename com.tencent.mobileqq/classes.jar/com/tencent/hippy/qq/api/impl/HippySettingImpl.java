@@ -28,6 +28,15 @@ public class HippySettingImpl
     return HippyQQFileUtil.getModuleIndex(paramString, paramInt);
   }
   
+  public long getModuleIndexFileLength(String paramString, int paramInt)
+  {
+    paramString = getModuleIndex(paramString, paramInt);
+    if ((paramString != null) && (paramString.exists())) {
+      return paramString.length();
+    }
+    return -1L;
+  }
+  
   public int getModuleVersion(String paramString)
   {
     return UpdateSetting.getInstance().getModuleVersion(paramString);
@@ -40,7 +49,7 @@ public class HippySettingImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.api.impl.HippySettingImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -116,7 +116,7 @@ public class CameraEmoRoamingManagerServiceImpl
         this.isNeedShowGuide = "";
       }
     }
-    return ((StringUtil.a(this.isNeedShowGuide)) || (((Boolean)EmotionSharedPreUtils.a("camera_emo_guide_again_tag", Boolean.valueOf(true))).booleanValue())) && (isShowCameraEmoInApp());
+    return ((StringUtil.isEmpty(this.isNeedShowGuide)) || (((Boolean)EmotionSharedPreUtils.b("camera_emo_guide_again_tag", Boolean.valueOf(true))).booleanValue())) && (isShowCameraEmoInApp());
   }
   
   public String getListVersion()
@@ -261,7 +261,7 @@ public class CameraEmoRoamingManagerServiceImpl
   
   public void uploadCameraEmo(CameraEmotionData paramCameraEmotionData, ICameraEmoRoamingManagerService.ICameraEmoAddCallBack paramICameraEmoAddCallBack)
   {
-    if (StringUtil.a(paramCameraEmotionData.emoPath))
+    if (StringUtil.isEmpty(paramCameraEmotionData.emoPath))
     {
       QLog.d("CameraEmoRoamingManager", 1, "uploadCameraEmo error, path is null");
       paramICameraEmoAddCallBack.a(10, paramCameraEmotionData);
@@ -275,7 +275,7 @@ public class CameraEmoRoamingManagerServiceImpl
     }
     long l = getFileLength(paramCameraEmotionData.emoPath);
     Size localSize = getImageSize(paramCameraEmotionData.emoPath);
-    if ((!StringUtil.a(paramCameraEmotionData.md5)) && (l != 0L) && (localSize.b() != 0) && (localSize.a() != 0))
+    if ((!StringUtil.isEmpty(paramCameraEmotionData.md5)) && (l != 0L) && (localSize.b() != 0) && (localSize.a() != 0))
     {
       QLog.d("CameraEmoRoamingManager", 1, "uploadCameraEmo start");
       this.mAddCallBackMap.put(paramCameraEmotionData, paramICameraEmoAddCallBack);
@@ -288,7 +288,7 @@ public class CameraEmoRoamingManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.CameraEmoRoamingManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

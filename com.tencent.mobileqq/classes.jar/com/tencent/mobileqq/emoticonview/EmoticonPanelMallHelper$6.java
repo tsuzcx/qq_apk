@@ -49,7 +49,7 @@ class EmoticonPanelMallHelper$6
         ((EmoticonPanelController)this.this$0.mPanelController).getHelperProvider().dispatchLifeCycle(13, paramInt, false);
         BasePanelModel.sLastSelectedSecondTabIndex = paramInt;
         ((EmoticonPanelController)this.this$0.mPanelController).showPanelByTabIndex(paramInt);
-        if (AppSetting.d) {
+        if (AppSetting.e) {
           QQTextToSpeechHelper.a((String)localObject1);
         }
         StartupTracker.a("AIO_EmoticonPanel_TabClick", null);
@@ -68,7 +68,7 @@ class EmoticonPanelMallHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.6
  * JD-Core Version:    0.7.0.1
  */

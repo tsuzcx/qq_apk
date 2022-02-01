@@ -12,11 +12,11 @@ import com.tencent.mobileqq.troop.shortcutbar.ShortcutBarInfo;
 public class ShortcutBarMoreListHolder
   extends ViewHolder
 {
-  public ImageView a;
   public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public ShortcutBarInfo a;
+  public URLImageView b;
+  public ImageView c;
+  public TextView d;
+  public ShortcutBarInfo e;
   
   public ShortcutBarMoreListHolder(Context paramContext, View paramView)
   {
@@ -25,7 +25,7 @@ public class ShortcutBarMoreListHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ShortcutBarMoreListHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -18,19 +18,19 @@ import org.json.JSONObject;
 
 public class BaseSectionAdapter
 {
-  private int jdField_a_of_type_Int;
-  private BaseSectionAdapter.OnDataRefreshListener jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter$OnDataRefreshListener;
-  private List<ColorNote> jdField_a_of_type_JavaUtilList;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private List<ColorNote> a;
+  private BaseSectionAdapter.OnDataRefreshListener b;
+  private int c;
+  private AppRuntime d;
   
   public BaseSectionAdapter(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.d = paramAppRuntime;
   }
   
   private void a(ColorNote paramColorNote, int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X800AA80", "0X800AA80", ColorNoteUtils.b(this.jdField_a_of_type_Int), 0, String.valueOf(paramInt), "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800AA80", "0X800AA80", ColorNoteUtils.d(this.c), 0, String.valueOf(paramInt), "", "", "");
     int j = paramColorNote.getServiceType();
     boolean bool2 = false;
     int i = 0;
@@ -104,7 +104,7 @@ public class BaseSectionAdapter
           bool1 = bool2;
         }
       }
-      if (this.jdField_a_of_type_Int == 17104896)
+      if (this.c == 17104896)
       {
         if (bool1) {
           paramInt = 9;
@@ -120,7 +120,7 @@ public class BaseSectionAdapter
   {
     Object localObject = new DefaultFormItemBuilder();
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((DefaultFormItemBuilder)localObject).a(paramContext, (ColorNote)localIterator.next()));
     }
@@ -139,19 +139,19 @@ public class BaseSectionAdapter
   
   void a(BaseSectionAdapter.OnDataRefreshListener paramOnDataRefreshListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter$OnDataRefreshListener = paramOnDataRefreshListener;
+    this.b = paramOnDataRefreshListener;
   }
   
   public void a(List<ColorNote> paramList, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter$OnDataRefreshListener.a();
+    this.c = paramInt;
+    this.a = paramList;
+    this.b.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.BaseSectionAdapter
  * JD-Core Version:    0.7.0.1
  */

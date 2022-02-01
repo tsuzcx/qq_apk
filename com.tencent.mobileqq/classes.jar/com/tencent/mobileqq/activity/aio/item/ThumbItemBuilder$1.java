@@ -14,14 +14,14 @@ class ThumbItemBuilder$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == ThumbItemBuilder.a) {
-      this.a.b();
+    if (paramMessage.what == ThumbItemBuilder.f) {
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

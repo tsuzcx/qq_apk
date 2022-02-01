@@ -15,23 +15,23 @@ final class VideoMaskController$initSpeedRatioButton$speedRatioClickListener$1
   
   public final void onClick(View paramView)
   {
-    VideoMaskController.c(this.a);
+    VideoMaskController.e(this.a);
     paramView = VideoReportUtil.a;
-    AbsBaseArticleInfo localAbsBaseArticleInfo = VideoMaskController.a(this.a);
-    IPlayer localIPlayer = this.a.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = VideoMaskController.c(this.a);
+    IPlayer localIPlayer = this.a.f();
     long l;
     if (localIPlayer != null) {
-      l = localIPlayer.b();
+      l = localIPlayer.o();
     } else {
       l = 0L;
     }
-    paramView.a(localAbsBaseArticleInfo, l, VideoMaskController.a(this.a));
-    VideoMaskController.b(this.a);
+    paramView.a(localAbsBaseArticleInfo, l, VideoMaskController.f(this.a));
+    VideoMaskController.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoMaskController.initSpeedRatioButton.speedRatioClickListener.1
  * JD-Core Version:    0.7.0.1
  */

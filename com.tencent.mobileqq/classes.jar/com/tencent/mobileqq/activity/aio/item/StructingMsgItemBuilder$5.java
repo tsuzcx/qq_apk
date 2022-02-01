@@ -14,13 +14,13 @@ class StructingMsgItemBuilder$5
   
   public void onClick(View paramView)
   {
-    StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    StructingMsgItemBuilder.a(this.f, paramView, this.a, this.b, this.c, this.d, this.e);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

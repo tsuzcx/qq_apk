@@ -22,11 +22,6 @@ public class QuicEngineFactory
       QLog.e("quic", 4, "the phone cpu is x86");
       return null;
     }
-    if (!checkSoDownloaded())
-    {
-      QLog.e("quic", 4, "so not downloaded ！");
-      return null;
-    }
     if (sQuicEngine == null) {
       try
       {
@@ -41,7 +36,7 @@ public class QuicEngineFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.open.QuicEngineFactory
  * JD-Core Version:    0.7.0.1
  */

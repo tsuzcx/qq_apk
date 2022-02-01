@@ -17,7 +17,7 @@ class NativeReadInjoyImageView$BitmapRefListener
     localStringBuilder.append(paramURL);
     QLog.d("NativeReadInjoyImageView", 2, localStringBuilder.toString());
     if ((paramObject instanceof CloseableBitmap)) {
-      ((CloseableBitmap)paramObject).a();
+      ((CloseableBitmap)paramObject).d();
     }
   }
   
@@ -25,7 +25,7 @@ class NativeReadInjoyImageView$BitmapRefListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView.BitmapRefListener
  * JD-Core Version:    0.7.0.1
  */

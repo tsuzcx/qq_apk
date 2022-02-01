@@ -12,30 +12,30 @@ class MarketFaceItemBuilder$7$3
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder;
-    if ((localObject != null) && (((MarketFaceItemBuilder.Holder)localObject).f != null)) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.a.f) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$7.a.a.isDPCSupportH5Magic()))
+    Object localObject = this.a;
+    if ((localObject != null) && (((MarketFaceItemBuilder.Holder)localObject).t != null)) {
+      if ((this.c.a.E) && (this.c.a.D.isDPCSupportH5Magic()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.f.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.f.setImageResource(2130837974);
+        this.a.t.setVisibility(0);
+        this.a.t.setImageResource(2130837998);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("magicFaceIcon visible,h5source download sucess and doesnot needplay epId = ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+          ((StringBuilder)localObject).append(this.b.epId);
           QLog.d("MarketFaceItemBuilder", 2, ((StringBuilder)localObject).toString());
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.f.setVisibility(8);
+        this.a.t.setVisibility(8);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.7.3
  * JD-Core Version:    0.7.0.1
  */

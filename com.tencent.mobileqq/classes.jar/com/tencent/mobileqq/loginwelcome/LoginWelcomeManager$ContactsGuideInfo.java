@@ -2,40 +2,31 @@ package com.tencent.mobileqq.loginwelcome;
 
 public class LoginWelcomeManager$ContactsGuideInfo
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  
-  public LoginWelcomeManager$ContactsGuideInfo()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
+  public boolean a = false;
+  public boolean b = false;
+  public String c = "";
+  public int d = -1;
+  public int e = -1;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ContactsGuideInfo|showWelcomepage=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",showConvGuideEntrance=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",friends_recomm_flag=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(",groups_recomm_flag=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",url=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginWelcomeManager.ContactsGuideInfo
  * JD-Core Version:    0.7.0.1
  */

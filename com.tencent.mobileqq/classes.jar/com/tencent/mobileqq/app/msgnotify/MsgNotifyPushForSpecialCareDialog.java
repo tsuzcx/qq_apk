@@ -29,39 +29,39 @@ public class MsgNotifyPushForSpecialCareDialog
   extends ReportDialog
   implements DecodeTaskCompletionListener
 {
-  private static String jdField_a_of_type_JavaLangString = "MsgNotifyPushForSpecialCareDialog";
-  private static String b = HardCodeUtil.a(2131706988);
-  private static String c = HardCodeUtil.a(2131706985);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private FaceObserver jdField_a_of_type_ComTencentMobileqqArmapFaceObserver;
-  private INonMainProcAvatarLoader jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
-  private RoundImageView jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
-  private String d;
+  private static String a = "MsgNotifyPushForSpecialCareDialog";
+  private static String b = HardCodeUtil.a(2131904830);
+  private static String c = HardCodeUtil.a(2131904827);
+  private Context d;
+  private QQAppInterface e;
+  private RoundImageView f;
+  private String g;
+  private IFaceDecoder h;
+  private INonMainProcAvatarLoader i;
+  private FaceObserver j;
   
   @TargetApi(14)
   public MsgNotifyPushForSpecialCareDialog(Context paramContext, @Nullable QQAppInterface paramQQAppInterface, String paramString)
   {
-    super(paramContext, 2131756189);
-    super.getWindow().setWindowAnimations(2131755294);
+    super(paramContext, 2131953338);
+    super.getWindow().setWindowAnimations(2131951986);
     getWindow().setDimAmount(0.5F);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.d = paramString;
+    this.d = paramContext;
+    this.e = paramQQAppInterface;
+    this.g = paramString;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    Object localObject = this.h;
     if (localObject != null) {
       ((IFaceDecoder)localObject).destory();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+    localObject = this.i;
     if (localObject != null)
     {
-      ((INonMainProcAvatarLoader)localObject).b(this.jdField_a_of_type_ComTencentMobileqqArmapFaceObserver);
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.b();
+      ((INonMainProcAvatarLoader)localObject).b(this.j);
+      this.i.c();
     }
   }
   
@@ -71,41 +71,41 @@ public class MsgNotifyPushForSpecialCareDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131558989);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)findViewById(2131365637));
-    paramBundle = (TextView)findViewById(2131365648);
-    TextView localTextView = (TextView)findViewById(2131365613);
-    Button localButton = (Button)findViewById(2131365610);
-    ImageView localImageView = (ImageView)findViewById(2131364711);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    super.setContentView(2131624622);
+    this.f = ((RoundImageView)findViewById(2131431868));
+    paramBundle = (TextView)findViewById(2131431880);
+    TextView localTextView = (TextView)findViewById(2131431844);
+    Button localButton = (Button)findViewById(2131431841);
+    ImageView localImageView = (ImageView)findViewById(2131430817);
+    Object localObject = this.e;
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)((QQAppInterface)localObject).getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, this.d, 0);
+      this.h = ((IQQAvatarService)((QQAppInterface)localObject).getRuntimeService(IQQAvatarService.class, "")).getInstance(this.e);
+      this.h.setDecodeTaskCompletionListener(this);
+      localObject = this.h.getBitmapFromCache(1, this.g, 0);
       if (localObject == null)
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(this.d, 1, true);
+        if (!this.h.isPausing()) {
+          this.h.requestDecodeFace(this.g, 1, true);
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundDrawable(ImageUtil.f());
+        this.f.setBackgroundDrawable(ImageUtil.m());
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
+        this.f.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.jdField_a_of_type_AndroidContentContext, 1);
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
-      this.jdField_a_of_type_ComTencentMobileqqArmapFaceObserver = new MsgNotifyPushForSpecialCareDialog.1(this);
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(this.jdField_a_of_type_ComTencentMobileqqArmapFaceObserver);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(this.d, true));
+      this.i = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.d, 1);
+      this.i.a();
+      this.j = new MsgNotifyPushForSpecialCareDialog.1(this);
+      this.i.a(this.j);
+      this.f.setImageBitmap(this.i.a(this.g, true));
     }
     paramBundle.setText(b);
     localTextView.setText(c);
-    localButton.setText(HardCodeUtil.a(2131706987));
+    localButton.setText(HardCodeUtil.a(2131904829));
     localButton.setOnClickListener(new MsgNotifyPushForSpecialCareDialog.2(this));
     localImageView.setOnClickListener(new MsgNotifyPushForSpecialCareDialog.3(this));
     localImageView.setOnTouchListener(new MsgNotifyPushForSpecialCareDialog.4(this, localImageView));
@@ -115,7 +115,7 @@ public class MsgNotifyPushForSpecialCareDialog
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("uin=");
       localStringBuilder.append(paramString);
@@ -127,10 +127,10 @@ public class MsgNotifyPushForSpecialCareDialog
     }
     if (paramBitmap != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
+      if (this.h.isPausing()) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+      this.f.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
     }
   }
   
@@ -141,7 +141,7 @@ public class MsgNotifyPushForSpecialCareDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushForSpecialCareDialog
  * JD-Core Version:    0.7.0.1
  */

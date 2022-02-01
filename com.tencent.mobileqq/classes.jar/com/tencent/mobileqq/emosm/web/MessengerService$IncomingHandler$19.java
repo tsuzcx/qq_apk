@@ -25,13 +25,13 @@ class MessengerService$IncomingHandler$19
         {
           i = 1;
           ((Bundle)localObject).putInt("retCode", i);
-          this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+          this.a.putBundle("response", (Bundle)localObject);
+          this.b.a(this.a);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW success! isFollow: ");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+            ((StringBuilder)localObject).append(this.c);
             ((StringBuilder)localObject).append("  uin: ");
             ((StringBuilder)localObject).append(paramString);
             QLog.d("MessengerService$IncomingHandler", 2, ((StringBuilder)localObject).toString());
@@ -40,7 +40,7 @@ class MessengerService$IncomingHandler$19
           ((Intent)localObject).putExtra("action", "follow");
           ((Intent)localObject).putExtra("isSuccess", paramBoolean);
           ((Intent)localObject).putExtra("uin", paramString);
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+          this.b.getApplicationContext().sendBroadcast((Intent)localObject);
           SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(1, paramString));
           return;
         }
@@ -69,13 +69,13 @@ class MessengerService$IncomingHandler$19
         {
           i = 1;
           ((Bundle)localObject).putInt("retCode", i);
-          this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+          this.a.putBundle("response", (Bundle)localObject);
+          this.b.a(this.a);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! isFollow: ");
-            ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+            ((StringBuilder)localObject).append(this.c);
             ((StringBuilder)localObject).append("  uin: ");
             ((StringBuilder)localObject).append(paramString);
             QLog.d("MessengerService$IncomingHandler", 2, ((StringBuilder)localObject).toString());
@@ -84,7 +84,7 @@ class MessengerService$IncomingHandler$19
           ((Intent)localObject).putExtra("action", "unFollow");
           ((Intent)localObject).putExtra("isSuccess", paramBoolean);
           ((Intent)localObject).putExtra("uin", paramString);
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+          this.b.getApplicationContext().sendBroadcast((Intent)localObject);
           SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(0, paramString));
           return;
         }
@@ -103,7 +103,7 @@ class MessengerService$IncomingHandler$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.19
  * JD-Core Version:    0.7.0.1
  */

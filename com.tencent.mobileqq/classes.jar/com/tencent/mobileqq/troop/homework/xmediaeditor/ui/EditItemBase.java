@@ -11,19 +11,17 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public abstract class EditItemBase<VH extends RecyclerView.ViewHolder, D extends EditItemInfoBase>
   implements View.OnClickListener
 {
-  public XMediaEditor a;
-  protected EditItemBase.OnEditItemListener a;
+  public XMediaEditor b;
+  protected EditItemBase.OnEditItemListener c;
   
   public EditItemBase(XMediaEditor paramXMediaEditor)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor = paramXMediaEditor;
+    this.b = paramXMediaEditor;
   }
-  
-  public abstract VH a(ViewGroup paramViewGroup);
   
   public EditItemBase a(EditItemBase.OnEditItemListener paramOnEditItemListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener = paramOnEditItemListener;
+    this.c = paramOnEditItemListener;
     return this;
   }
   
@@ -34,6 +32,8 @@ public abstract class EditItemBase<VH extends RecyclerView.ViewHolder, D extends
   public abstract void a(VH paramVH, D paramD, int paramInt);
   
   public abstract void a(View paramView, VH paramVH);
+  
+  public abstract VH b(ViewGroup paramViewGroup);
   
   public void b(VH paramVH) {}
   
@@ -59,7 +59,7 @@ public abstract class EditItemBase<VH extends RecyclerView.ViewHolder, D extends
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase
  * JD-Core Version:    0.7.0.1
  */

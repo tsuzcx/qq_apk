@@ -1,64 +1,23 @@
 package com.tencent.mobileqq.activity.main;
 
-import android.content.res.Resources;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
-import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqperf.MagnifierSDK;
-import com.tencent.qqperf.monitor.backgroundcpu.BatteryStats;
-import com.tencent.qqperf.opt.clearmemory.MemoryConfigs;
+import android.os.Bundle;
+import com.tencent.mobileqq.observer.VipGifObserver;
 
 class MainAssistObserver$2
-  implements Runnable
+  extends VipGifObserver
 {
   MainAssistObserver$2(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = this.this$0.a;
-    QQAppInterface localQQAppInterface;
-    if (localObject != null) {
-      localQQAppInterface = ((SplashActivity)localObject).app;
-    } else {
-      localQQAppInterface = null;
-    }
-    if (localObject != null)
-    {
-      if (localQQAppInterface == null) {
-        return;
-      }
-      try
-      {
-        AIOPanelUtiles.a(localQQAppInterface);
-        MultiMsgManager.a().a(localQQAppInterface);
-        localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
-        int i = ((DisplayMetrics)localObject).widthPixels;
-        int j = ((DisplayMetrics)localObject).heightPixels;
-        GlobalImageCache.a.setLargeSize((int)(MagnifierSDK.a().a().a * (i * j * 4)));
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("notifyWindowShowed e=");
-        localStringBuilder.append(localException);
-        QLog.d("MainAssistObserver", 4, localStringBuilder.toString());
-      }
-      localQQAppInterface.setTalkbackSwitch();
-      QQToast.a();
-      QQAppInterface.getBatteryStats().a();
+    if ((paramInt == 0) && (paramBoolean == true)) {
+      MainAssistObserver.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.2
  * JD-Core Version:    0.7.0.1
  */

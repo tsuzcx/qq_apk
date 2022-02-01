@@ -28,7 +28,7 @@ public class GdtC2SJsCallHandler
         {
           paramString = paramGdtAdWebPlugin.a();
           if (paramGdtAdWebPlugin != null) {
-            paramVarArgs = paramGdtAdWebPlugin.a();
+            paramVarArgs = paramGdtAdWebPlugin.b();
           }
           AdAnalysisHelperForUtil.reportForJSBridgeInvoked(paramString, false, "c2sReport", paramVarArgs, new GdtAd(localAdInfo));
           return true;
@@ -45,7 +45,7 @@ public class GdtC2SJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtC2SJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

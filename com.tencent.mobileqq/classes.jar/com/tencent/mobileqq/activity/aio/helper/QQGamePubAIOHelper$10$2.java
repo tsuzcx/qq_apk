@@ -9,14 +9,14 @@ class QQGamePubAIOHelper$10$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQQGamePubAIOHelper$10.a.a(this.jdField_a_of_type_TencentImQqgameQQGameMakeTeamInfo$TeamInfo)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQQGamePubAIOHelper$10.a.a(QQGamePubAIOHelper.a() * 1000, 1);
+    if (this.b.a.a(this.a)) {
+      this.b.a.a(QQGamePubAIOHelper.f() * 1000, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.10.2
  * JD-Core Version:    0.7.0.1
  */

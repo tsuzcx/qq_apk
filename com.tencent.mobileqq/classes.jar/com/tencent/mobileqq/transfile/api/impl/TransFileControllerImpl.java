@@ -62,6 +62,8 @@ public class TransFileControllerImpl
     nearByFileType.add(Integer.valueOf(50));
     nearByFileType.add(Integer.valueOf(51));
     nearByFileType.add(Integer.valueOf(56));
+    nearByFileType.add(Integer.valueOf(67));
+    nearByFileType.add(Integer.valueOf(68));
   }
   
   public TransFileControllerImpl() {}
@@ -150,6 +152,43 @@ public class TransFileControllerImpl
     return ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).createPttTransProcessor(this, paramTransferRequest);
   }
   
+  public BaseTransProcessor getGuildProcess(TransferRequest paramTransferRequest)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getProcessor UIN_TYPE_GUILD isUp = ");
+      localStringBuilder.append(paramTransferRequest.mIsUp);
+      QLog.i("Q.richmedia.TransFileController", 2, localStringBuilder.toString());
+    }
+    if (paramTransferRequest.mIsUp)
+    {
+      if ((paramTransferRequest.mFileType != 6) && (paramTransferRequest.mFileType != 17) && (paramTransferRequest.mFileType != 9) && (paramTransferRequest.mFileType != 67) && (paramTransferRequest.mFileType != 20))
+      {
+        if (paramTransferRequest.mFileType != 2) {
+          return ((IPicFactory)QRoute.api(IPicFactory.class)).getProcessor(this, paramTransferRequest);
+        }
+      }
+      else {
+        return ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getProcessor(this, paramTransferRequest);
+      }
+    }
+    else
+    {
+      if ((paramTransferRequest.mFileType == 1) || (paramTransferRequest.mFileType == 65537) || (paramTransferRequest.mFileType == 131075)) {
+        break label251;
+      }
+      if ((paramTransferRequest.mFileType == 6) || (paramTransferRequest.mFileType == 7) || (paramTransferRequest.mFileType == 17) || (paramTransferRequest.mFileType == 18) || (paramTransferRequest.mFileType == 9) || (paramTransferRequest.mFileType == 16) || (paramTransferRequest.mFileType == 67) || (paramTransferRequest.mFileType == 68)) {
+        break label241;
+      }
+    }
+    return null;
+    label241:
+    return new ShortVideoDownloadProcessor(this, paramTransferRequest);
+    label251:
+    return ((IPicFactory)QRoute.api(IPicFactory.class)).getProcessor(this, paramTransferRequest);
+  }
+  
   public BaseTransProcessor getHotChatProcessor(TransferRequest paramTransferRequest)
   {
     if (QLog.isColorLevel())
@@ -196,7 +235,11 @@ public class TransFileControllerImpl
     if (paramTransferRequest.mUinType == 1026) {
       return getHotChatProcessor(paramTransferRequest);
     }
-    if ((paramTransferRequest.mUinType != 1) && (paramTransferRequest.mUinType != 3000)) {
+    if ((paramTransferRequest.mUinType != 1) && (paramTransferRequest.mUinType != 3000))
+    {
+      if (paramTransferRequest.mUinType == 10014) {
+        return getGuildProcess(paramTransferRequest);
+      }
       return getC2CProcessor(paramTransferRequest);
     }
     return getTroopProcessor(paramTransferRequest);
@@ -290,22 +333,22 @@ public class TransFileControllerImpl
     // Byte code:
     //   0: aload_0
     //   1: aload_0
-    //   2: getfield 322	com/tencent/mobileqq/transfile/api/impl/TransFileControllerImpl:processorMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   5: invokevirtual 326	com/tencent/mobileqq/transfile/api/impl/TransFileControllerImpl:getKeySetClone	(Ljava/util/concurrent/ConcurrentHashMap;)Ljava/util/Set;
-    //   8: invokeinterface 332 1 0
+    //   2: getfield 327	com/tencent/mobileqq/transfile/api/impl/TransFileControllerImpl:processorMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   5: invokevirtual 331	com/tencent/mobileqq/transfile/api/impl/TransFileControllerImpl:getKeySetClone	(Ljava/util/concurrent/ConcurrentHashMap;)Ljava/util/Set;
+    //   8: invokeinterface 337 1 0
     //   13: astore_3
     //   14: aload_3
-    //   15: invokeinterface 337 1 0
+    //   15: invokeinterface 342 1 0
     //   20: ifeq +87 -> 107
     //   23: aload_3
-    //   24: invokeinterface 341 1 0
-    //   29: checkcast 343	java/lang/String
+    //   24: invokeinterface 346 1 0
+    //   29: checkcast 348	java/lang/String
     //   32: astore 4
     //   34: aload_0
-    //   35: getfield 322	com/tencent/mobileqq/transfile/api/impl/TransFileControllerImpl:processorMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   35: getfield 327	com/tencent/mobileqq/transfile/api/impl/TransFileControllerImpl:processorMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   38: aload 4
-    //   40: invokevirtual 348	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   43: checkcast 350	com/tencent/mobileqq/utils/httputils/IHttpCommunicatorListener
+    //   40: invokevirtual 353	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   43: checkcast 355	com/tencent/mobileqq/utils/httputils/IHttpCommunicatorListener
     //   46: astore 5
     //   48: iload_2
     //   49: ifeq +11 -> 60
@@ -314,22 +357,22 @@ public class TransFileControllerImpl
     //   54: if_icmpeq -40 -> 14
     //   57: goto -43 -> 14
     //   60: aload 5
-    //   62: instanceof 352
+    //   62: instanceof 357
     //   65: ifeq -51 -> 14
     //   68: aload_1
     //   69: aload 5
-    //   71: checkcast 352	com/tencent/mobileqq/transfile/BuddyTransfileProcessor
-    //   74: getfield 356	com/tencent/mobileqq/transfile/BuddyTransfileProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
-    //   77: getfield 361	com/tencent/mobileqq/transfile/FileMsg:mUin	Ljava/lang/String;
-    //   80: invokevirtual 364	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   71: checkcast 357	com/tencent/mobileqq/transfile/BuddyTransfileProcessor
+    //   74: getfield 361	com/tencent/mobileqq/transfile/BuddyTransfileProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
+    //   77: getfield 366	com/tencent/mobileqq/transfile/FileMsg:mUin	Ljava/lang/String;
+    //   80: invokevirtual 369	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   83: ifeq -69 -> 14
     //   86: aload 5
     //   88: checkcast 55	com/tencent/mobileqq/transfile/BaseTransProcessor
-    //   91: invokevirtual 367	com/tencent/mobileqq/transfile/BaseTransProcessor:stop	()V
+    //   91: invokevirtual 372	com/tencent/mobileqq/transfile/BaseTransProcessor:stop	()V
     //   94: aload_0
-    //   95: getfield 322	com/tencent/mobileqq/transfile/api/impl/TransFileControllerImpl:processorMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   95: getfield 327	com/tencent/mobileqq/transfile/api/impl/TransFileControllerImpl:processorMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   98: aload 4
-    //   100: invokevirtual 370	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: invokevirtual 375	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   103: pop
     //   104: goto -90 -> 14
     //   107: return
@@ -345,7 +388,7 @@ public class TransFileControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 
 public class NetworkUtils
 {
@@ -151,7 +152,7 @@ public class NetworkUtils
     if (paramContext == null) {
       return null;
     }
-    return paramContext.getConnectionInfo();
+    return NetworkMonitor.getConnectionInfo(paramContext);
   }
   
   public static String getWifiMacAddress(Context paramContext)
@@ -194,7 +195,7 @@ public class NetworkUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.utils.NetworkUtils
  * JD-Core Version:    0.7.0.1
  */

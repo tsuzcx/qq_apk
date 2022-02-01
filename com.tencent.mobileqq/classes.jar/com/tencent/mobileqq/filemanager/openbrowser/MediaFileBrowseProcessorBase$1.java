@@ -14,28 +14,28 @@ class MediaFileBrowseProcessorBase$1
   
   public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerOpenbrowserMediaFileBrowseProcessorBase.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerOpenbrowserMediaFileBrowseProcessorBase.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1, null);
+    if (this.e.d != null) {
+      this.e.d.a(this.b, this.c, this.d, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1, null);
     }
   }
   
   public void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerOpenbrowserMediaFileBrowseProcessorBase.a != null)
+    if (this.e.d != null)
     {
       ArrayList localArrayList = paramSuperPlayerVideoInfo.getCookie();
       Bundle localBundle = new Bundle();
       localBundle.putString("savepath", paramSuperPlayerVideoInfo.getLocalSavePath());
       localBundle.putStringArrayList("cookies", localArrayList);
-      localBundle.putString("contextid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a());
+      localBundle.putString("contextid", this.a.a());
       localBundle.putString("fileid", paramSuperPlayerVideoInfo.getFileId());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerOpenbrowserMediaFileBrowseProcessorBase.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.b(), paramSuperPlayerVideoInfo.getPlayUrls(), null, null, -1, localBundle);
+      this.e.d.a(this.b, this.c, this.d, this.a.c(), paramSuperPlayerVideoInfo.getPlayUrls(), null, null, -1, localBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.MediaFileBrowseProcessorBase.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,43 +5,43 @@ import android.view.View.OnClickListener;
 
 public abstract class PollWidgetUtils$WidgetElement
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new PollWidgetUtils.WidgetElement.1(this);
-  View jdField_a_of_type_AndroidViewView;
-  PollWidgetUtils.OnSelectedChangedListener jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener;
-  PollWidgetUtils.OnWidgetElementClickListener jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener;
-  PollWidgetUtils.WidgetWrapper jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper;
-  boolean b = false;
+  private View.OnClickListener a = new PollWidgetUtils.WidgetElement.1(this);
+  PollWidgetUtils.WidgetWrapper i;
+  View j;
+  PollWidgetUtils.OnWidgetElementClickListener k;
+  PollWidgetUtils.OnSelectedChangedListener l;
+  boolean m = false;
   
   public PollWidgetUtils$WidgetElement(PollWidgetUtils.WidgetWrapper paramWidgetWrapper, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper = paramWidgetWrapper;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.i = paramWidgetWrapper;
+    this.j = paramView;
   }
   
   public void a(float paramFloat) {}
   
   void a(PollWidgetUtils.OnSelectedChangedListener paramOnSelectedChangedListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener = paramOnSelectedChangedListener;
+    this.l = paramOnSelectedChangedListener;
   }
   
   public void a(CharSequence paramCharSequence) {}
   
   public void a(boolean paramBoolean)
   {
-    if (this.b != paramBoolean)
+    if (this.m != paramBoolean)
     {
-      this.b = paramBoolean;
-      PollWidgetUtils.OnSelectedChangedListener localOnSelectedChangedListener = this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener;
+      this.m = paramBoolean;
+      PollWidgetUtils.OnSelectedChangedListener localOnSelectedChangedListener = this.l;
       if (localOnSelectedChangedListener != null) {
         localOnSelectedChangedListener.a(this, paramBoolean);
       }
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.b;
+    return this.m;
   }
   
   public void c(boolean paramBoolean) {}

@@ -10,7 +10,7 @@ class ArkAppQQModule$2
   
   public void a()
   {
-    ark.VariantWrapper localVariantWrapper = ArkAppQQModule.b(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppQQModule, this.jdField_a_of_type_Long);
+    ark.VariantWrapper localVariantWrapper = ArkAppQQModule.b(this.b, this.a);
     if (localVariantWrapper != null) {
       localVariantWrapper.Reset();
     }
@@ -18,12 +18,12 @@ class ArkAppQQModule$2
   
   public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppQQModule.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    this.b.a(this.a, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.2
  * JD-Core Version:    0.7.0.1
  */

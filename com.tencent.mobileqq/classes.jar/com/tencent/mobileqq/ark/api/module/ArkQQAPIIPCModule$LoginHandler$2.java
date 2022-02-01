@@ -27,20 +27,20 @@ class ArkQQAPIIPCModule$LoginHandler$2
       paramErrMsg.append(paramInt2);
       QLog.d("ArkApp.LoginHandler", 2, paramErrMsg.toString());
     }
-    ArkQQAPIIPCModule.LoginHandler.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkQQAPIIPCModule$LoginHandler, null);
+    ArkQQAPIIPCModule.LoginHandler.a(this.b, null);
     if (paramInt2 == 0)
     {
       paramArrayOfByte1 = util.buf_to_string(paramArrayOfByte1);
       paramArrayOfByte2 = util.buf_to_string(paramArrayOfByte2);
-      this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkQQAPIIPCModule$LoginHandler$OnLoginEventHandler.a(paramString, paramLong2, paramArrayOfByte1, paramArrayOfByte2);
+      this.a.a(paramString, paramLong2, paramArrayOfByte1, paramArrayOfByte2);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkQQAPIIPCModule$LoginHandler$OnLoginEventHandler.a(null, 0L, null, null);
+    this.a.a(null, 0L, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkQQAPIIPCModule.LoginHandler.2
  * JD-Core Version:    0.7.0.1
  */

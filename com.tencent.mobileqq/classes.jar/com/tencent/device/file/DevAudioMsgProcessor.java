@@ -19,7 +19,7 @@ public class DevAudioMsgProcessor
   {
     byte[] arrayOfByte = new byte[3];
     PkgTools.intToAscString(paramString1.length(), arrayOfByte, 0, 3, "utf-8");
-    paramString2 = (MessageForDevPtt)MessageRecordFactory.b(paramQQAppInterface, paramString2, paramString3, paramInt);
+    paramString2 = (MessageForDevPtt)MessageRecordFactory.f(paramQQAppInterface, paramString2, paramString3, paramInt);
     paramString2.url = paramString1;
     paramString2.fileSize = -3L;
     paramString2.itemType = 2;
@@ -103,7 +103,7 @@ public class DevAudioMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.file.DevAudioMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

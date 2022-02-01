@@ -8,14 +8,14 @@ import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 public class FMHelper
   implements ILifeCycleHelper
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver;
+  private QQAppInterface a;
+  private BaseChatPie b;
+  private FMObserver c;
   
   public FMHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.b = paramBaseChatPie;
+    this.a = paramBaseChatPie.d;
   }
   
   public String getTag()
@@ -37,20 +37,20 @@ public class FMHelper
         if (paramInt != 15) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+        this.a.getFileManagerNotifyCenter().deleteObserver(this.c);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+      this.a.getFileManagerNotifyCenter().addObserver(this.c);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new FMHelper.MyFMObserver(this, null);
+    if (this.c == null) {
+      this.c = new FMHelper.MyFMObserver(this, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FMHelper
  * JD-Core Version:    0.7.0.1
  */

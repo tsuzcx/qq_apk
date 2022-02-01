@@ -11,7 +11,7 @@ class EditARCakeButton$5
   
   public void run()
   {
-    Activity localActivity = this.this$0.a.getActivity();
+    Activity localActivity = this.this$0.u.getActivity();
     if (localActivity != null)
     {
       if (localActivity.isFinishing()) {
@@ -26,17 +26,17 @@ class EditARCakeButton$5
       Resources localResources = localActivity.getResources();
       int j;
       if (this.a) {
-        j = 2064515314;
+        j = 2064187657;
       } else {
-        j = 2064515313;
+        j = 2064187656;
       }
-      QQToast.a(localActivity, i, localResources.getString(j), 0).b(localActivity.getResources().getDimensionPixelSize(2063991155));
+      QQToast.makeText(localActivity, i, localResources.getString(j), 0).show(localActivity.getResources().getDimensionPixelSize(2063859817));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditARCakeButton.5
  * JD-Core Version:    0.7.0.1
  */

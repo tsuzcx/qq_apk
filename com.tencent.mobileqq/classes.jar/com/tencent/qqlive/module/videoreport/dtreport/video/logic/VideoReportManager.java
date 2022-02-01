@@ -12,6 +12,7 @@ import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoEntity.Bui
 import com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoSession;
 import com.tencent.qqlive.module.videoreport.dtreport.video.logic.oninfo.OnInfoTaskManager;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -21,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class VideoReportManager
 {
   private static final String TAG = "VideoReportManager";
-  private Map<Integer, VideoSession> bindVideoInfoMap = new LinkedHashMap();
+  private Map<Integer, VideoSession> bindVideoInfoMap = Collections.synchronizedMap(new LinkedHashMap());
   private VideoSession currentSession = null;
   private Map<String, VideoSession> historyPlayInfo = new HashMap();
   private VideoSession lastVideoSession = null;
@@ -128,6 +129,10 @@ public class VideoReportManager
       return;
     }
     Object localObject2 = getCurrentPlaySession(paramObject);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[VideoPlayReport] dealPlayStart getCurrentPlaySession, ");
+    ((StringBuilder)localObject1).append(VideoReportPlayerUtils.sessionLog((VideoSession)localObject2));
+    Log.i("VideoReportManager", ((StringBuilder)localObject1).toString());
     if (((VideoSession)localObject2).isIgnoreReport())
     {
       localObject1 = new StringBuilder();
@@ -139,14 +144,14 @@ public class VideoReportManager
     }
     int j = ((VideoSession)localObject2).getContentType();
     int i = 1;
-    Object localObject1 = localObject2;
+    localObject1 = localObject2;
     if (1 != j)
     {
       localObject1 = localObject2;
       if (isPlayAd(paramObject))
       {
         localObject1 = createAdSessionFromVideoSession(paramObject, (VideoSession)localObject2);
-        putVideoInfoMap(((VideoSession)localObject1).getVideoPlayerObject(), (VideoSession)localObject1);
+        this.bindVideoInfoMap.put(Integer.valueOf(((VideoSession)localObject1).getVideoPlayerObject()), localObject1);
       }
     }
     if (!isCurrentVideoSessionValid((VideoSession)localObject1))
@@ -159,7 +164,7 @@ public class VideoReportManager
       return;
     }
     j = playType((VideoSession)localObject1);
-    long l = startPosition(paramObject);
+    long l = startPosition(paramObject, paramBoolean);
     if (!paramBoolean) {
       i = startPlayReason((VideoSession)localObject1, l);
     }
@@ -173,7 +178,7 @@ public class VideoReportManager
     if (((VideoSession)localObject1).isBizReady()) {
       VideoPageUtils.reportOrSaveStartEvent(paramObject, (VideoSession)localObject1);
     } else {
-      VideoPageUtils.saveStartEvent((VideoSession)localObject1);
+      VideoPageUtils.saveStartEvent(paramObject, (VideoSession)localObject1);
     }
     this.playerMap.put(Integer.valueOf(((VideoSession)localObject1).getVideoPlayerObject()), paramObject);
     localObject2 = getValidReportFlowInfo(paramObject);
@@ -234,18 +239,25 @@ public class VideoReportManager
   {
     String str = VideoReportPlayerUtils.getVidByReportInfo(paramObject);
     boolean bool = TextUtils.isEmpty(str);
-    paramObject = null;
+    VideoSession localVideoSession = null;
     if (bool) {
       return null;
+    }
+    int i;
+    if (VideoReportPlayerUtils.isPlayAdByPlayer(paramObject)) {
+      i = 1;
+    } else {
+      i = 2;
     }
     synchronized (this.syncObject)
     {
       Iterator localIterator = this.bindVideoInfoMap.values().iterator();
-      while (localIterator.hasNext())
+      for (paramObject = localVideoSession; localIterator.hasNext(); paramObject = localVideoSession)
       {
-        VideoSession localVideoSession = (VideoSession)localIterator.next();
-        if (str.equals(localVideoSession.getIdentifier())) {
-          paramObject = localVideoSession;
+        label63:
+        localVideoSession = (VideoSession)localIterator.next();
+        if ((!str.equals(localVideoSession.getIdentifier())) || (i != localVideoSession.getContentType())) {
+          break label63;
         }
       }
       return paramObject;
@@ -276,11 +288,7 @@ public class VideoReportManager
   
   private boolean isCurrentVideoSessionValid(VideoSession paramVideoSession)
   {
-    synchronized (this.syncObject)
-    {
-      boolean bool = this.bindVideoInfoMap.containsValue(paramVideoSession);
-      return bool;
-    }
+    return this.bindVideoInfoMap.containsValue(paramVideoSession);
   }
   
   private boolean isPlayAd(Object paramObject)
@@ -296,30 +304,36 @@ public class VideoReportManager
   
   private int playType(VideoSession paramVideoSession)
   {
-    VideoSession localVideoSession = this.lastVideoSession;
+    int i;
+    if (DTConfigConstants.config.newPlayTypeSupport()) {
+      i = playTypeV2(paramVideoSession);
+    } else {
+      i = playTypeV1(paramVideoSession);
+    }
     this.lastVideoSession = paramVideoSession;
-    if ((localVideoSession != null) && (!TextUtils.isEmpty(localVideoSession.getContentId())) && (localVideoSession.getContentId().equals(paramVideoSession.getContentId()))) {
+    return i;
+  }
+  
+  private int playTypeV1(VideoSession paramVideoSession)
+  {
+    VideoSession localVideoSession = this.lastVideoSession;
+    if ((localVideoSession != null) && (TextUtils.equals(localVideoSession.getContentId(), paramVideoSession.getContentId()))) {
       return 2;
     }
     return 1;
   }
   
-  private void putVideoInfoMap(int paramInt, VideoSession paramVideoSession)
+  private int playTypeV2(VideoSession paramVideoSession)
   {
-    synchronized (this.syncObject)
+    Iterator localIterator = this.historyPlayInfo.values().iterator();
+    while (localIterator.hasNext())
     {
-      this.bindVideoInfoMap.put(Integer.valueOf(paramInt), paramVideoSession);
-      return;
+      VideoSession localVideoSession = (VideoSession)localIterator.next();
+      if (TextUtils.equals(paramVideoSession.getContentId(), localVideoSession.getContentId())) {
+        return 2;
+      }
     }
-  }
-  
-  private void removeVideoInfoMap(int paramInt)
-  {
-    synchronized (this.syncObject)
-    {
-      this.bindVideoInfoMap.remove(Integer.valueOf(paramInt));
-      return;
-    }
+    return 1;
   }
   
   private void reportStartEvent(Object paramObject, @NonNull VideoSession paramVideoSession)
@@ -341,6 +355,7 @@ public class VideoReportManager
   {
     paramObject = getValidReportFlowInfo(paramObject);
     paramObject.setStartPosition(0L);
+    paramObject.setLoopStartPositionMs(0L);
     paramObject.setVideoSession(null);
   }
   
@@ -370,15 +385,27 @@ public class VideoReportManager
     return i;
   }
   
-  private long startPosition(Object paramObject)
+  private long startPosition(Object paramObject, boolean paramBoolean)
   {
+    VideoReportFlowInfo localVideoReportFlowInfo = (VideoReportFlowInfo)this.playerInfoMap.get(Integer.valueOf(paramObject.hashCode()));
+    long l = 0L;
+    if (paramBoolean)
+    {
+      if (localVideoReportFlowInfo != null) {
+        l = localVideoReportFlowInfo.getLoopStartPositionMs();
+      }
+      return l;
+    }
     if (getPlayerState(paramObject) == 1)
     {
-      paramObject = (VideoReportFlowInfo)this.playerInfoMap.get(Integer.valueOf(paramObject.hashCode()));
-      if (paramObject != null) {
-        return paramObject.getStartPosition();
+      if (localVideoReportFlowInfo != null) {
+        l = localVideoReportFlowInfo.getStartPosition();
+      } else {
+        l = 0L;
       }
-      return 0L;
+      if (l > 0L) {
+        return l;
+      }
     }
     return VideoReportPlayerUtils.getCurrentPosition(paramObject);
   }
@@ -414,6 +441,18 @@ public class VideoReportManager
     finally {}
   }
   
+  private void updateBindVideoInfo(Object paramObject, VideoBaseEntity paramVideoBaseEntity)
+  {
+    paramObject = (VideoSession)this.bindVideoInfoMap.get(Integer.valueOf(paramObject.hashCode()));
+    if (paramObject == null) {
+      return;
+    }
+    paramObject.updateVideoEntity(paramVideoBaseEntity);
+    if (paramVideoBaseEntity.isBizReady()) {
+      paramObject.bizReady();
+    }
+  }
+  
   public void bindVideoInfo(@NonNull Object paramObject, @NonNull VideoEntity paramVideoEntity)
   {
     try
@@ -424,8 +463,8 @@ public class VideoReportManager
         return;
       }
       Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("bindVideoInfo, instance=");
-      ((StringBuilder)localObject1).append(paramObject);
+      ((StringBuilder)localObject1).append("[VideoPlayReport] bindVideoInfo, ");
+      ((StringBuilder)localObject1).append(VideoReportPlayerUtils.entityLog(paramVideoEntity));
       Log.i("VideoReportManager", ((StringBuilder)localObject1).toString());
       Object localObject3 = this.playerMap.get(Integer.valueOf(paramObject.hashCode()));
       Object localObject2 = null;
@@ -452,7 +491,7 @@ public class VideoReportManager
       } else {
         this.currentSession = ((VideoSession)localObject2);
       }
-      putVideoInfoMap(paramObject.hashCode(), this.currentSession);
+      this.bindVideoInfoMap.put(Integer.valueOf(paramObject.hashCode()), this.currentSession);
       return;
     }
     finally {}
@@ -573,7 +612,7 @@ public class VideoReportManager
     VideoReportFlowInfo localVideoReportFlowInfo = (VideoReportFlowInfo)this.playerInfoMap.get(Integer.valueOf(paramObject.hashCode()));
     if (localVideoReportFlowInfo != null)
     {
-      removeVideoInfoMap(localVideoReportFlowInfo.getPlayerObject());
+      this.bindVideoInfoMap.remove(Integer.valueOf(localVideoReportFlowInfo.getPlayerObject()));
       this.playerReportInfoMap.remove(Integer.valueOf(localVideoReportFlowInfo.getReportManager()));
       this.playerMap.remove(Integer.valueOf(localVideoReportFlowInfo.getPlayerObject()));
     }
@@ -589,6 +628,93 @@ public class VideoReportManager
     Log.i("VideoReportManager", localStringBuilder.toString());
     dealPlayEnd(paramObject, 2, 4, "reset");
     resetSession(paramObject);
+  }
+  
+  public void seekTo(Object paramObject, int paramInt)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("seekTo, ptr=");
+    ((StringBuilder)localObject1).append(paramObject);
+    ((StringBuilder)localObject1).append(", positionMs=");
+    ((StringBuilder)localObject1).append(paramInt);
+    Log.i("VideoReportManager", ((StringBuilder)localObject1).toString());
+    localObject1 = VideoReportPlayerUtils.debugStart();
+    if (getPlayerState(paramObject) != 2)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("state error，no need report! state=");
+      ((StringBuilder)localObject2).append(VideoReportPlayerUtils.stateToString(getPlayerState(paramObject)));
+      Log.w("VideoReportManager", ((StringBuilder)localObject2).toString());
+      VideoReportPlayerUtils.debugEnd("seekTo", (VideoReportPlayerUtils.DebugTime)localObject1);
+      return;
+    }
+    Object localObject2 = (VideoReportFlowInfo)this.playerInfoMap.get(Integer.valueOf(paramObject.hashCode()));
+    if (localObject2 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("seekTo playerInfo is null! ptr=");
+      ((StringBuilder)localObject1).append(paramObject);
+      Log.w("VideoReportManager", ((StringBuilder)localObject1).toString());
+      return;
+    }
+    localObject2 = ((VideoReportFlowInfo)localObject2).getVideoSession();
+    if (localObject2 == null)
+    {
+      Log.w("VideoReportManager", "seekTo session is null!");
+      VideoReportPlayerUtils.debugEnd("seekTo", (VideoReportPlayerUtils.DebugTime)localObject1);
+      return;
+    }
+    ((VideoSession)localObject2).seekTo(VideoReportPlayerUtils.getCurrentPosition(paramObject), paramInt);
+  }
+  
+  public void setLoopback(Object paramObject, boolean paramBoolean, long paramLong1, long paramLong2)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setLoopback,ptr=");
+    ((StringBuilder)localObject).append(paramObject);
+    Log.i("VideoReportManager", ((StringBuilder)localObject).toString());
+    localObject = VideoReportPlayerUtils.debugStart();
+    if ((paramBoolean) && (paramObject != null)) {
+      getValidReportFlowInfo(paramObject).setLoopStartPositionMs(paramLong1);
+    }
+    VideoReportPlayerUtils.debugEnd("setLoopback", (VideoReportPlayerUtils.DebugTime)localObject);
+  }
+  
+  public void setPlaySpeedRatio(Object paramObject, float paramFloat)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("setPlaySpeedRatio, ptr=");
+    ((StringBuilder)localObject1).append(paramObject);
+    ((StringBuilder)localObject1).append(", speedRatio=");
+    ((StringBuilder)localObject1).append(paramFloat);
+    Log.i("VideoReportManager", ((StringBuilder)localObject1).toString());
+    localObject1 = VideoReportPlayerUtils.debugStart();
+    if (getPlayerState(paramObject) != 2)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("state error，no need report! state=");
+      ((StringBuilder)localObject2).append(VideoReportPlayerUtils.stateToString(getPlayerState(paramObject)));
+      Log.w("VideoReportManager", ((StringBuilder)localObject2).toString());
+      VideoReportPlayerUtils.debugEnd("setPlaySpeedRatio", (VideoReportPlayerUtils.DebugTime)localObject1);
+      return;
+    }
+    Object localObject2 = (VideoReportFlowInfo)this.playerInfoMap.get(Integer.valueOf(paramObject.hashCode()));
+    if (localObject2 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setPlaySpeedRatio playerInfo is null! ptr=");
+      ((StringBuilder)localObject1).append(paramObject);
+      Log.w("VideoReportManager", ((StringBuilder)localObject1).toString());
+      return;
+    }
+    localObject2 = ((VideoReportFlowInfo)localObject2).getVideoSession();
+    if (localObject2 == null)
+    {
+      Log.w("VideoReportManager", "setPlaySpeedRatio session is null!");
+      VideoReportPlayerUtils.debugEnd("seekTo", (VideoReportPlayerUtils.DebugTime)localObject1);
+      return;
+    }
+    ((VideoSession)localObject2).speedRatioPlay(paramFloat, VideoReportPlayerUtils.getCurrentPosition(paramObject));
   }
   
   public void setReportInfo(Object paramObject1, Object paramObject2)
@@ -625,10 +751,14 @@ public class VideoReportManager
   public void start(Object paramObject)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("start, ptr=");
+    localStringBuilder.append("[VideoPlayReport] start -->, ptr=");
     localStringBuilder.append(paramObject);
     Log.i("VideoReportManager", localStringBuilder.toString());
     dealPlayStart(paramObject, false);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[VideoPlayReport] start <--, ptr=");
+    localStringBuilder.append(paramObject);
+    Log.i("VideoReportManager", localStringBuilder.toString());
   }
   
   public void stop(Object paramObject)
@@ -654,7 +784,7 @@ public class VideoReportManager
       localStringBuilder.append("unbindVideoInfo, instance=");
       localStringBuilder.append(paramObject);
       Log.i("VideoReportManager", localStringBuilder.toString());
-      removeVideoInfoMap(paramObject.hashCode());
+      this.bindVideoInfoMap.remove(Integer.valueOf(paramObject.hashCode()));
       return;
     }
     finally {}
@@ -669,18 +799,25 @@ public class VideoReportManager
         Log.w("VideoReportManager", "updateVideoInfo, videoReport not support!");
         return;
       }
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("updateVideoInfo, instance=");
-      ((StringBuilder)localObject).append(paramObject);
-      Log.i("VideoReportManager", ((StringBuilder)localObject).toString());
-      localObject = this.playerMap.get(Integer.valueOf(paramObject.hashCode()));
-      if (localObject == null)
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateVideoInfo, instance=");
+      ((StringBuilder)localObject1).append(paramObject);
+      Log.i("VideoReportManager", ((StringBuilder)localObject1).toString());
+      localObject1 = this.playerMap.get(Integer.valueOf(paramObject.hashCode()));
+      if (localObject1 == null)
       {
         Log.w("VideoReportManager", "updateVideoInfo, no bind player");
+        updateBindVideoInfo(paramObject, paramVideoBaseEntity);
         return;
       }
-      VideoSession localVideoSession = ((VideoReportFlowInfo)this.playerInfoMap.get(Integer.valueOf(localObject.hashCode()))).getVideoSession();
-      if (localVideoSession == null)
+      Object localObject2 = (VideoReportFlowInfo)this.playerInfoMap.get(Integer.valueOf(localObject1.hashCode()));
+      if (localObject2 == null)
+      {
+        Log.w("VideoReportManager", "updateVideoInfo, flowInfo is null");
+        return;
+      }
+      localObject2 = ((VideoReportFlowInfo)localObject2).getVideoSession();
+      if (localObject2 == null)
       {
         paramVideoBaseEntity = new StringBuilder();
         paramVideoBaseEntity.append("updateVideoInfo, session is null, instance=");
@@ -688,8 +825,8 @@ public class VideoReportManager
         Log.w("VideoReportManager", paramVideoBaseEntity.toString());
         return;
       }
-      localVideoSession.updateVideoEntity(paramVideoBaseEntity);
-      if (localVideoSession.isIgnoreReport())
+      ((VideoSession)localObject2).updateVideoEntity(paramVideoBaseEntity);
+      if (((VideoSession)localObject2).isIgnoreReport())
       {
         paramVideoBaseEntity = new StringBuilder();
         paramVideoBaseEntity.append("updateVideoInfo, ignore report, instance=");
@@ -697,7 +834,7 @@ public class VideoReportManager
         Log.w("VideoReportManager", paramVideoBaseEntity.toString());
         return;
       }
-      supplementReport(localObject, localVideoSession, paramVideoBaseEntity.isBizReady());
+      supplementReport(localObject1, (VideoSession)localObject2, paramVideoBaseEntity.isBizReady());
       return;
     }
     finally {}
@@ -705,7 +842,7 @@ public class VideoReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoReportManager
  * JD-Core Version:    0.7.0.1
  */

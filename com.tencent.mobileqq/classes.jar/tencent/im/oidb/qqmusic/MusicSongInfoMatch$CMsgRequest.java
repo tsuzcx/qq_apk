@@ -25,7 +25,7 @@ public final class MusicSongInfoMatch$CMsgRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.qqmusic.MusicSongInfoMatch.CMsgRequest
  * JD-Core Version:    0.7.0.1
  */

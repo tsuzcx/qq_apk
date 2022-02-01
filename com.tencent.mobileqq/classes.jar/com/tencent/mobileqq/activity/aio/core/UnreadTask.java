@@ -5,11 +5,13 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.msglist.BaseMsgLoader;
+import com.tencent.mobileqq.activity.aio.core.msglist.IMsgUpdateCallback;
 import com.tencent.mobileqq.activity.aio.core.msglist.IReadConfirmCallback;
 import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
 import com.tencent.mobileqq.activity.aio.rebuild.msglist.MsgListRegister;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.statistics.FightMsgReporter;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -20,22 +22,17 @@ import mqq.os.MqqHandler;
 public class UnreadTask
   implements Runnable
 {
-  private int jdField_a_of_type_Int = 0;
-  private final BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
   protected final AIOContext a;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
-  private boolean c = false;
+  protected final BaseSessionInfo b;
+  protected volatile boolean c = false;
+  protected boolean d = false;
+  protected int e = 0;
+  protected boolean f = false;
   
   public UnreadTask(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramAIOContext;
+    this.b = paramAIOContext.O();
   }
   
   public void a()
@@ -43,28 +40,69 @@ public class UnreadTask
     if (QLog.isColorLevel()) {
       QLog.d("UnreadTask", 2, "read confirm send readconfirm");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().sendEmptyMessageDelayed(16711689, 300000L);
+    this.a.g().sendEmptyMessageDelayed(16711689, 300000L);
     ThreadManager.post(new UnreadTask.1(this), 8, null, false);
   }
   
-  void a(QQAppInterface paramQQAppInterface)
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    ChatActivityFacade.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
+    ChatActivityFacade.a(paramQQAppInterface, this.b);
+  }
+  
+  public void a(ChatMessage paramChatMessage)
+  {
+    Object localObject1 = this.a.e().a().e();
+    Object localObject2 = ((List)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((IMsgUpdateCallback)((Iterator)localObject2).next()).b(this.a, paramChatMessage);
+    }
+    localObject2 = this.a.e().e();
+    ((UnreadTask)localObject2).c();
+    ((UnreadTask)localObject2).b(true);
+    ((UnreadTask)localObject2).a(true);
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((IMsgUpdateCallback)((Iterator)localObject1).next()).c(this.a, paramChatMessage);
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.c = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.c;
+    this.f = paramBoolean;
   }
   
   public int b()
   {
-    int i = c();
+    return this.e;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public void c()
+  {
+    int i = this.b.a;
+    if ((i != 1033) && (i != 1034))
+    {
+      i = e();
+      FightMsgReporter.a(1, 0, this.b.a, i);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("UnreadTask", 2, "setReaded");
+    }
+    this.a.a().getMessageFacade().a(this.b.b, this.b.a, true, true);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public int d()
+  {
+    int i = e();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -75,98 +113,79 @@ public class UnreadTask
     return i;
   }
   
-  public void b()
+  public int e()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int;
-    if ((i != 1033) && (i != 1034))
+    return this.a.a().getConversationFacade().a(this.b.b, this.b.a);
+  }
+  
+  public boolean f()
+  {
+    return this.f;
+  }
+  
+  public boolean g()
+  {
+    return this.d;
+  }
+  
+  public void h()
+  {
+    if (!this.c)
     {
-      i = c();
-      FightMsgReporter.a(1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, i);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UnreadTask", 2, "setReaded");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, true, true);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  int c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getConversationFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (!StringUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString))
+      if (!StringUtil.isEmpty(this.b.b))
       {
-        a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-        b();
+        a(this.a.a());
+        c();
         QLog.d("UnreadTask", 1, "setReaded() call");
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
     }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
+    Object localObject = this.a.a();
     if (localObject == null)
     {
       QLog.d("UnreadTask", 1, "UnReadTask mApp==null");
       return;
     }
-    List localList1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
-    this.jdField_a_of_type_Int = b();
+    List localList1 = this.a.e().c().a(this.a);
+    this.e = d();
     boolean bool;
-    if (this.jdField_a_of_type_Int > 0) {
+    if (this.e > 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.c = bool;
-    List localList2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().b();
+    this.f = bool;
+    List localList2 = this.a.e().a().b();
     Iterator localIterator = localList2.iterator();
     while (localIterator.hasNext()) {
-      ((IReadConfirmCallback)localIterator.next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, localList1, this.jdField_a_of_type_Int);
+      ((IReadConfirmCallback)localIterator.next()).a(this.a, localList1, this.e);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().sendEmptyMessageDelayed(16711689, 300000L);
-    if ((!this.c) && (!this.b))
+    this.a.g().sendEmptyMessageDelayed(16711689, 300000L);
+    if ((!this.f) && (!this.d))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Long == -1L) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Long = ((QQAppInterface)localObject).getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
+      if (this.b.h == -1L) {
+        this.b.h = ((QQAppInterface)localObject).getMessageFacade().i(this.b.b, this.b.a);
       }
     }
     else {
       a((QQAppInterface)localObject);
     }
-    ((QQAppInterface)localObject).getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, true, true);
+    ((QQAppInterface)localObject).getMessageFacade().a(this.b.b, this.b.a, true, true);
     localObject = localList2.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((IReadConfirmCallback)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
+      ((IReadConfirmCallback)((Iterator)localObject).next()).a(this.a);
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
+    this.c = true;
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.UnreadTask
  * JD-Core Version:    0.7.0.1
  */

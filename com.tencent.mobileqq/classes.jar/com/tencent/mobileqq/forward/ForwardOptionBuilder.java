@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.SparseArray;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.sharehelper.systemshare.SystemShareListener;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Constructor;
@@ -56,6 +58,8 @@ public class ForwardOptionBuilder
     a.put(45, ForwardReadInJoyOption.class);
     a.put(46, ForwardAskAnonymouslyMsgOption.class);
     a.put(47, EmotionBatchForwardOption.class);
+    a.put(48, ForwardAniStickerOption.class);
+    a.put(1002, ((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getForwardMobaTeamArkMsgOptionClass());
   }
   
   public static ForwardBaseOption a(Intent paramIntent)
@@ -92,7 +96,7 @@ public class ForwardOptionBuilder
     if (paramIntent != null)
     {
       paramIntent.a(paramQQAppInterface, paramActivity);
-      paramIntent.a();
+      paramIntent.e();
       a(paramIntent);
     }
     return paramIntent;
@@ -100,14 +104,14 @@ public class ForwardOptionBuilder
   
   public static void a(ForwardBaseOption paramForwardBaseOption)
   {
-    if (paramForwardBaseOption.g()) {
+    if (paramForwardBaseOption.t()) {
       paramForwardBaseOption.a(new SystemShareListener());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardOptionBuilder
  * JD-Core Version:    0.7.0.1
  */

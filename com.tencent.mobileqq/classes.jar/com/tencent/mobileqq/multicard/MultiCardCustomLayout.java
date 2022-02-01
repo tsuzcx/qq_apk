@@ -13,9 +13,9 @@ import android.widget.RelativeLayout;
 public class MultiCardCustomLayout
   extends RelativeLayout
 {
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private boolean jdField_a_of_type_Boolean = false;
+  private View.OnLongClickListener a;
+  private GestureDetector b;
+  private boolean c = false;
   
   public MultiCardCustomLayout(Context paramContext)
   {
@@ -29,9 +29,9 @@ public class MultiCardCustomLayout
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewGestureDetector == null)) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new MultiCardCustomLayout.1(this), new Handler(Looper.getMainLooper()));
+    this.c = paramBoolean;
+    if ((this.c) && (this.b == null)) {
+      this.b = new GestureDetector(getContext(), new MultiCardCustomLayout.1(this), new Handler(Looper.getMainLooper()));
     }
   }
   
@@ -39,12 +39,12 @@ public class MultiCardCustomLayout
   {
     boolean bool2 = super.dispatchTouchEvent(paramMotionEvent);
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_AndroidViewView$OnLongClickListener != null)
+      if (this.a != null)
       {
-        GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+        GestureDetector localGestureDetector = this.b;
         bool1 = bool2;
         if (localGestureDetector != null)
         {
@@ -63,12 +63,12 @@ public class MultiCardCustomLayout
   
   public void setDispatchTouchEventOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
+    this.a = paramOnLongClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardCustomLayout
  * JD-Core Version:    0.7.0.1
  */

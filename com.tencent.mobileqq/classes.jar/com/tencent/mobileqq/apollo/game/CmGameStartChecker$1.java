@@ -7,11 +7,9 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
 import com.tencent.mobileqq.apollo.game.process.data.CmGameInitParams;
 import com.tencent.mobileqq.apollo.game.utils.ApolloGameBasicEventUtil;
-import com.tencent.mobileqq.apollo.game.utils.ApolloGameRscVerify;
 import com.tencent.mobileqq.apollo.model.ApolloGameData;
 import com.tencent.mobileqq.apollo.model.StartCheckParam;
 import com.tencent.mobileqq.apollo.utils.RSAVerify;
-import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -27,9 +25,9 @@ class CmGameStartChecker$1
     if (CmGameStartChecker.a(this.this$0).game == null) {
       return;
     }
-    if (CmGameStartChecker.a(this.this$0) != null)
+    if (CmGameStartChecker.b(this.this$0) != null)
     {
-      localObject1 = (OnGameStartCheckListener)CmGameStartChecker.a(this.this$0).get();
+      localObject1 = (OnGameStartCheckListener)CmGameStartChecker.b(this.this$0).get();
       if (localObject1 != null)
       {
         localObject2 = new StringBuilder();
@@ -40,24 +38,22 @@ class CmGameStartChecker$1
       }
     }
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(ApolloUtilImpl.getApolloGameResPath(CmGameStartChecker.a(this.this$0).gameId));
+    ((StringBuilder)localObject1).append(ApolloGameTool.b(CmGameStartChecker.a(this.this$0).gameId));
     ((StringBuilder)localObject1).append("/");
     ((StringBuilder)localObject1).append("main.js.sig");
-    localObject1 = new RSAVerify(((StringBuilder)localObject1).toString(), ApolloUtilImpl.getApolloGameLuaPath(CmGameStartChecker.a(this.this$0).gameId));
-    if ((ApolloGameRscVerify.a(CmGameStartChecker.a(this.this$0).isWhiteUsr, CmGameStartChecker.a(this.this$0).gameId)) && (CmGameStartChecker.a(this.this$0).mGameType == 1) && (!((RSAVerify)localObject1).a(0)))
+    if (!new RSAVerify(((StringBuilder)localObject1).toString(), ApolloGameTool.a(CmGameStartChecker.a(this.this$0).gameId)).a(0))
     {
       QLog.e("cmgame_process.CmGameStartChecker", 1, new Object[] { "verify lua fail and delete local res startCheckParam=", CmGameStartChecker.a(this.this$0) });
       CmGameStartChecker.a(this.this$0, -13L);
-      FileUtils.deleteDirectory(ApolloUtilImpl.getApolloGameResPath(CmGameStartChecker.a(this.this$0).gameId));
-      CmGameUtil.a(ApolloUtilImpl.getApolloGameLuaPath(CmGameStartChecker.a(this.this$0).gameId));
+      FileUtils.deleteDirectory(ApolloGameTool.b(CmGameStartChecker.a(this.this$0).gameId));
+      CmGameUtil.b(ApolloGameTool.a(CmGameStartChecker.a(this.this$0).gameId));
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("cmgame_process.CmGameStartChecker", 2, new Object[] { "verify pass startCheckParam:", CmGameStartChecker.a(this.this$0) });
     }
     localObject1 = new CmGameInitParams();
-    ((CmGameInitParams)localObject1).mGamePath = ApolloUtilImpl.getApolloGameLuaPath(CmGameStartChecker.a(this.this$0).gameId);
-    ((CmGameInitParams)localObject1).mServerIp = ApolloGameBasicEventUtil.a();
+    ((CmGameInitParams)localObject1).mGamePath = ApolloGameTool.a(CmGameStartChecker.a(this.this$0).gameId);
     ((CmGameInitParams)localObject1).mPort = ApolloGameBasicEventUtil.a();
     ((CmGameInitParams)localObject1).mVersion = CmGameStartChecker.a(this.this$0).version;
     ((CmGameInitParams)localObject1).mIsMaster = CmGameStartChecker.a(this.this$0).isCreator;
@@ -74,8 +70,8 @@ class CmGameStartChecker$1
     }
     ((CmGameInitParams)localObject1).mRobotOpenId = CmGameStartChecker.a(this.this$0).mRobotOpenId;
     ((CmGameInitParams)localObject1).mSessionId = CmGameStartChecker.a(this.this$0).sessionUin;
-    if (CmGameStartChecker.b(this.this$0).get() != null) {
-      ((CmGameInitParams)localObject1).mSelfUin = ((AppInterface)CmGameStartChecker.b(this.this$0).get()).getCurrentAccountUin();
+    if (CmGameStartChecker.c(this.this$0).get() != null) {
+      ((CmGameInitParams)localObject1).mSelfUin = ((AppInterface)CmGameStartChecker.c(this.this$0).get()).getCurrentAccountUin();
     }
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
@@ -104,9 +100,9 @@ class CmGameStartChecker$1
     ((CmGameInitParams)localObject1).apolloGameSt = CmGameStartChecker.a(this.this$0).apolloGameSt;
     ((CmGameInitParams)localObject1).apolloGameStkey = CmGameStartChecker.a(this.this$0).apolloGameStkey;
     ((CmGameInitParams)localObject1).transInfo = CmGameStartChecker.a(this.this$0).transInfo;
-    if (CmGameStartChecker.a(this.this$0) != null)
+    if (CmGameStartChecker.b(this.this$0) != null)
     {
-      localObject2 = (OnGameStartCheckListener)CmGameStartChecker.a(this.this$0).get();
+      localObject2 = (OnGameStartCheckListener)CmGameStartChecker.b(this.this$0).get();
       if (localObject2 != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -119,7 +115,7 @@ class CmGameStartChecker$1
     ApolloGameStateMachine.a().a(2, "ApolloManager.startGame");
     try
     {
-      ApolloUtilImpl.getGameResSp().edit().putLong(String.valueOf(CmGameStartChecker.a(this.this$0).gameId), NetConnInfoCenter.getServerTimeMillis()).commit();
+      ApolloGameTool.c().edit().putLong(String.valueOf(CmGameStartChecker.a(this.this$0).gameId), NetConnInfoCenter.getServerTimeMillis()).commit();
       return;
     }
     catch (Exception localException)
@@ -130,7 +126,7 @@ class CmGameStartChecker$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.CmGameStartChecker.1
  * JD-Core Version:    0.7.0.1
  */

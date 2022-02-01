@@ -17,13 +17,13 @@ class TimerCheckMsgCount$1
   
   public void run()
   {
-    TimerCheckMsgCount.a(this.this$0).a(this.this$0.mAutomator.a);
-    ((HotChatManager)this.this$0.mAutomator.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b();
-    this.this$0.mAutomator.a.getConversationFacade().c();
+    TimerCheckMsgCount.a(this.this$0).a(this.this$0.mAutomator.k);
+    ((HotChatManager)this.this$0.mAutomator.k.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).k();
+    this.this$0.mAutomator.k.getConversationFacade().f();
     if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getKanDianReportTTSwitch()) {
       try
       {
-        TimerCheckMsgCount.a(this.this$0);
+        TimerCheckMsgCount.b(this.this$0);
         ((IReadInJoyDoingSomething)QRoute.api(IReadInJoyDoingSomething.class)).reportManyAppsData();
       }
       catch (Exception localException)
@@ -37,7 +37,7 @@ class TimerCheckMsgCount$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.TimerCheckMsgCount.1
  * JD-Core Version:    0.7.0.1
  */

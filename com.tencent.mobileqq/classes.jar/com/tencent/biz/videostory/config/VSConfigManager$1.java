@@ -14,7 +14,7 @@ class VSConfigManager$1
   
   public void run()
   {
-    Object localObject = (VSEntranceConfBean)QConfigManager.a().a(411);
+    Object localObject = (VSEntranceConfBean)QConfigManager.b().b(411);
     StringBuilder localStringBuilder;
     if (localObject != null)
     {
@@ -23,7 +23,7 @@ class VSConfigManager$1
       localStringBuilder.append(((VSEntranceConfBean)localObject).toString());
       QLog.i("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
     }
-    localObject = (VSSubscribeConfBean)QConfigManager.a().a(463);
+    localObject = (VSSubscribeConfBean)QConfigManager.b().b(463);
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -31,7 +31,7 @@ class VSConfigManager$1
       localStringBuilder.append(localObject);
       QLog.d("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
     }
-    localObject = (VSStickyNoteConfBean)QConfigManager.a().a(595);
+    localObject = (VSStickyNoteConfBean)QConfigManager.b().b(595);
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -39,12 +39,12 @@ class VSConfigManager$1
       localStringBuilder.append(localObject);
       QLog.d("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
     }
-    VSEntranceWidgetHelper.a().a();
+    VSEntranceWidgetHelper.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.config.VSConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

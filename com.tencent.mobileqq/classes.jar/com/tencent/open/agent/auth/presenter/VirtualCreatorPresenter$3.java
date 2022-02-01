@@ -14,7 +14,7 @@ class VirtualCreatorPresenter$3
   
   public boolean a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    SSOLog.a("VirtualCreatorPresenter", new Object[] { "OpenVirtual.uploadAvatarImage.result:", OpenSdkVirtualUtil.a(paramString1, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString) });
+    SSOLog.a("VirtualCreatorPresenter", new Object[] { "OpenVirtual.uploadAvatarImage.result:", OpenSdkVirtualUtil.a(paramString1, this.a.a) });
     Object localObject = null;
     paramString2 = null;
     int i = paramInt;
@@ -52,18 +52,18 @@ class VirtualCreatorPresenter$3
     {
       if (paramBoolean)
       {
-        VirtualCreatorPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterVirtualCreatorPresenter, paramBoolean, this.jdField_a_of_type_JavaLangString, paramString1, i);
+        VirtualCreatorPresenter.a(this.c, paramBoolean, this.b, paramString1, i);
         return false;
       }
-      VirtualCreatorPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterVirtualCreatorPresenter);
-      if (VirtualCreatorPresenter.b(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterVirtualCreatorPresenter) >= 2)
+      VirtualCreatorPresenter.b(this.c);
+      if (VirtualCreatorPresenter.c(this.c) >= 2)
       {
-        VirtualCreatorPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterVirtualCreatorPresenter, paramBoolean, this.jdField_a_of_type_JavaLangString, paramString1, i);
+        VirtualCreatorPresenter.a(this.c, paramBoolean, this.b, paramString1, i);
         return false;
       }
       paramString1 = new StringBuilder();
       paramString1.append("OpenVirtual.uploadAvatarImage need retry mUploadAvatarRetryCount=");
-      paramString1.append(VirtualCreatorPresenter.b(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterVirtualCreatorPresenter));
+      paramString1.append(VirtualCreatorPresenter.c(this.c));
       SSOLog.a("VirtualCreatorPresenter", new Object[] { paramString1.toString() });
       return true;
       label227:
@@ -73,7 +73,7 @@ class VirtualCreatorPresenter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.VirtualCreatorPresenter.3
  * JD-Core Version:    0.7.0.1
  */

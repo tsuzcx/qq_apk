@@ -14,15 +14,15 @@ class HbSkinLogic$3$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo.a.pop_dialog.right_url;
+    paramDialogInterface = this.a.f.pop_dialog.right_url;
     if (!TextUtils.isEmpty(paramDialogInterface)) {
-      QwUtils.a(HbSkinLogic.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinLogic$3.a), paramDialogInterface);
+      QwUtils.a(HbSkinLogic.e(this.b.a), paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinLogic.3.2
  * JD-Core Version:    0.7.0.1
  */

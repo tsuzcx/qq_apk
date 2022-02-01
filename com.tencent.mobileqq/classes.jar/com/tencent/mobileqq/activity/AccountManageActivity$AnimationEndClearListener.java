@@ -7,22 +7,22 @@ import android.view.animation.Animation.AnimationListener;
 class AccountManageActivity$AnimationEndClearListener
   implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int = -1;
-  View jdField_a_of_type_AndroidViewView;
+  View a;
+  int b = -1;
   
   public AccountManageActivity$AnimationEndClearListener(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramView;
+    this.b = paramInt;
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    paramAnimation = this.a;
     if (paramAnimation == null) {
       return;
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i != 1)
     {
       if (i == 2) {
@@ -32,11 +32,11 @@ class AccountManageActivity$AnimationEndClearListener
     else
     {
       paramAnimation.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131364592) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
+      if (this.a.getId() == 2131430661) {
+        this.c.c();
       }
     }
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.clearAnimation();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -45,7 +45,7 @@ class AccountManageActivity$AnimationEndClearListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.AnimationEndClearListener
  * JD-Core Version:    0.7.0.1
  */

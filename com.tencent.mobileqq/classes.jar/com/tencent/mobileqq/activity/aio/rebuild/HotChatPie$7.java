@@ -12,15 +12,15 @@ class HotChatPie$7
   
   public void run()
   {
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.state;
+    int i = this.this$0.bR.state;
     IHotChatApi localIHotChatApi = (IHotChatApi)QRoute.api(IHotChatApi.class);
-    localIHotChatApi.delHotChatRecentUserNotNotifyUi(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, i);
-    localIHotChatApi.invokeRecentUserChangedToConversation(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localIHotChatApi.delHotChatRecentUserNotNotifyUi(this.this$0.d, this.this$0.ah.b, i);
+    localIHotChatApi.invokeRecentUserChangedToConversation(this.this$0.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.7
  * JD-Core Version:    0.7.0.1
  */

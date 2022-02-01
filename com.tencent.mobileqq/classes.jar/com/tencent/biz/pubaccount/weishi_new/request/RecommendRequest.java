@@ -4,7 +4,6 @@ import UserGrowth.stSimpleGetFeedListReq;
 import UserGrowth.stSimpleGetFeedListRsp;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPreloadABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiRequest;
-import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import java.util.ArrayList;
@@ -27,25 +26,21 @@ public class RecommendRequest
     localstSimpleGetFeedListReq.session = paramString4;
     localstSimpleGetFeedListReq.push_info = paramString5;
     localstSimpleGetFeedListReq.linkStragetyArgs = WeishiLinkUtil.a();
-    localstSimpleGetFeedListReq.qqNum = WeishiUtils.a();
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localstSimpleGetFeedListReq;
-    paramString1 = new StringBuilder();
-    paramString1.append("stSimpleGetFeedListReq  = ");
-    paramString1.append(localstSimpleGetFeedListReq.toString());
-    WSLog.d("RecommendRequest", paramString1.toString());
+    localstSimpleGetFeedListReq.qqNum = WeishiUtils.c();
+    this.c = localstSimpleGetFeedListReq;
   }
   
   public String b()
   {
-    if (this.jdField_a_of_type_Int == 8) {
-      return WSExpPreloadABTestManager.a().a();
+    if (this.o == 8) {
+      return WSExpPreloadABTestManager.a().h();
     }
     return super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.RecommendRequest
  * JD-Core Version:    0.7.0.1
  */

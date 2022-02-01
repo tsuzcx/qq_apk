@@ -24,7 +24,7 @@ import java.util.List;
 public class EffectPendantTools
   extends EffectPendantBase
 {
-  public String b = null;
+  public String k = null;
   
   public EffectPendantTools(VideoAppInterface paramVideoAppInterface)
   {
@@ -71,30 +71,71 @@ public class EffectPendantTools
     return false;
   }
   
-  public int a()
-  {
-    return 106;
-  }
-  
   public EffectPendantBase.Pendant a(int paramInt1, int paramInt2)
   {
     EffectPendantBase.Pendant localPendant = super.a(paramInt1, paramInt2);
-    if ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl != null) && (localPendant != null) && (localPendant.a != null))
+    if ((this.q != null) && (localPendant != null) && (localPendant.a != null))
     {
-      boolean bool = PanoramaSensorManager.a().b();
+      boolean bool = PanoramaSensorManager.a().c();
       if ((!a(localPendant.a)) || (bool)) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTipsImpl.c(0);
+        this.q.c(0);
       }
     }
     return localPendant;
   }
   
-  public void a(int paramInt, String paramString)
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    long l = AudioHelper.b();
+    if ((paramInt != 2) && (paramInt != 3)) {
+      return;
+    }
+    paramString1 = (PendantItem)c();
+    if ((paramString1 != null) && (!TextUtils.isEmpty(paramString1.getId()))) {
+      a(paramLong, null);
+    }
+  }
+  
+  public boolean a(long paramLong, PendantItem paramPendantItem)
+  {
+    boolean bool = super.a(paramLong, paramPendantItem);
+    Object localObject1;
+    if ((bool) && (paramPendantItem != null) && (!TextUtils.equals("0", paramPendantItem.getId())))
+    {
+      localObject1 = (EffectMutexManager)this.c.c(12);
+      if (localObject1 != null) {
+        ((EffectMutexManager)localObject1).a(3002, paramPendantItem.getId());
+      }
+    }
+    Object localObject2 = this.a;
+    if (paramPendantItem == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = paramPendantItem.getId();
+    }
+    EffectPendantTools.DataReport.a((String)localObject2, (String)localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = this.a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("setCurrentItem, item[");
+      ((StringBuilder)localObject2).append(paramPendantItem);
+      ((StringBuilder)localObject2).append("]");
+      QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    return bool;
+  }
+  
+  public int b()
+  {
+    return 106;
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    long l = AudioHelper.c();
     if (QLog.isDevelopLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("MuteByOthers, seq[");
       localStringBuilder.append(l);
@@ -105,66 +146,20 @@ public class EffectPendantTools
       localStringBuilder.append("]");
       QLog.w(str, 4, localStringBuilder.toString());
     }
-    if (paramInt == b()) {
+    if (paramInt == k()) {
       return;
     }
     if (paramInt == 3003) {
       return;
     }
-    if ((paramInt == 3001) || (paramInt == 3004) || (paramInt == 3005)) {
+    if ((paramInt == 3001) || (paramInt == 3004) || (paramInt == 3005) || (paramInt == 3006)) {
       a(l, "0");
     }
   }
   
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  protected boolean d(PendantItem paramPendantItem)
   {
-    if ((paramInt != 2) && (paramInt != 3)) {
-      return;
-    }
-    paramString1 = (PendantItem)a();
-    if ((paramString1 != null) && (!TextUtils.isEmpty(paramString1.getId()))) {
-      a(paramLong, null);
-    }
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(long paramLong, PendantItem paramPendantItem)
-  {
-    boolean bool = super.a(paramLong, paramPendantItem);
-    Object localObject1;
-    if ((bool) && (paramPendantItem != null) && (!TextUtils.equals("0", paramPendantItem.getId())))
-    {
-      localObject1 = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-      if (localObject1 != null) {
-        ((EffectMutexManager)localObject1).a(3002, paramPendantItem.getId());
-      }
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if (paramPendantItem == null) {
-      localObject1 = null;
-    } else {
-      localObject1 = paramPendantItem.getId();
-    }
-    EffectPendantTools.DataReport.a((String)localObject2, (String)localObject1);
-    if (QLog.isColorLevel())
-    {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("setCurrentItem, item[");
-      ((StringBuilder)localObject2).append(paramPendantItem);
-      ((StringBuilder)localObject2).append("]");
-      QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-    }
-    return bool;
-  }
-  
-  protected boolean a(PendantItem paramPendantItem)
-  {
-    if ((a() > 0) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
+    if ((b() > 0) && (paramPendantItem != null) && (!TextUtils.isEmpty(paramPendantItem.getId())))
     {
       if (TextUtils.isEmpty(paramPendantItem.getResUrl())) {
         return true;
@@ -188,7 +183,7 @@ public class EffectPendantTools
           localObject1 = SecUtil.getFileMd5((String)localObject3);
           long l2 = System.currentTimeMillis();
           localObject3 = paramPendantItem.getMd5();
-          String str = this.jdField_a_of_type_JavaLangString;
+          String str = this.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("isTemplateUsable :");
           localStringBuilder.append((String)localObject1);
@@ -231,27 +226,32 @@ public class EffectPendantTools
       }
       return bool;
     }
-    paramPendantItem = this.jdField_a_of_type_JavaLangString;
+    paramPendantItem = this.a;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("isTemplateUsable:");
-    ((StringBuilder)localObject1).append(a());
+    ((StringBuilder)localObject1).append(b());
     ((StringBuilder)localObject1).append("|");
     AVLog.printErrorLog(paramPendantItem, ((StringBuilder)localObject1).toString());
     return false;
   }
   
-  public int b()
+  protected boolean e()
   {
-    return 3002;
+    return true;
   }
   
-  protected void b()
+  protected void f()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    if ((this.e == null) || (this.e.size() == 0))
     {
-      this.jdField_a_of_type_JavaUtilList = ((PendantConfigFileProcessor)((EffectMaterialManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(15)).a(1)).a(AVPathUtil.g(), "pendant_update_template.json", "pendant_default_template.json");
-      a(this.jdField_a_of_type_JavaUtilList);
+      this.e = ((PendantConfigFileProcessor)((EffectMaterialManager)this.c.c(15)).a(1)).a(AVPathUtil.i(), "pendant_update_template.json", "pendant_default_template.json");
+      a(this.e);
     }
+  }
+  
+  public int k()
+  {
+    return 3002;
   }
 }
 

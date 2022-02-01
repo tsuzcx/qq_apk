@@ -10,14 +10,14 @@ class LoginView$14
   
   public void run()
   {
-    if (!this.this$0.a.isFinishing()) {
-      LoginView.a(this.this$0).setClickable(true);
+    if (!this.this$0.b.isFinishing()) {
+      LoginView.e(this.this$0).setClickable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.14
  * JD-Core Version:    0.7.0.1
  */

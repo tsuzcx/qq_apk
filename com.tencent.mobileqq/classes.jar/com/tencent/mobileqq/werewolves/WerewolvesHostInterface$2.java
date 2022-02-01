@@ -8,16 +8,16 @@ class WerewolvesHostInterface$2
 {
   WerewolvesHostInterface$2(WerewolvesHostInterface paramWerewolvesHostInterface, boolean paramBoolean) {}
   
-  public void at()
+  public void bJ()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.gameRoomAVControllerDelegate.setSoundEnable(this.jdField_a_of_type_Boolean);
+    this.b.gameRoomAVControllerDelegate.setSoundEnable(this.a);
   }
   
-  public void au() {}
+  public void bK() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHostInterface.2
  * JD-Core Version:    0.7.0.1
  */

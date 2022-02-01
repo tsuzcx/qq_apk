@@ -14,11 +14,6 @@ class C2CRoamMsgFetcher$Signal
     finally {}
   }
   
-  boolean a()
-  {
-    return a(0L);
-  }
-  
   /* Error */
   boolean a(long paramLong)
   {
@@ -34,14 +29,14 @@ class C2CRoamMsgFetcher$Signal
     //   12: ireturn
     //   13: aload_0
     //   14: lload_1
-    //   15: invokevirtual 25	java/lang/Object:wait	(J)V
+    //   15: invokevirtual 22	java/lang/Object:wait	(J)V
     //   18: aload_0
     //   19: monitorexit
     //   20: iconst_1
     //   21: ireturn
     //   22: astore_3
     //   23: aload_3
-    //   24: invokevirtual 28	java/lang/InterruptedException:printStackTrace	()V
+    //   24: invokevirtual 25	java/lang/InterruptedException:printStackTrace	()V
     //   27: aload_0
     //   28: monitorexit
     //   29: iconst_0
@@ -67,7 +62,12 @@ class C2CRoamMsgFetcher$Signal
     //   32	34	31	finally
   }
   
-  void b()
+  boolean b()
+  {
+    return a(0L);
+  }
+  
+  void c()
   {
     try
     {
@@ -80,7 +80,7 @@ class C2CRoamMsgFetcher$Signal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher.Signal
  * JD-Core Version:    0.7.0.1
  */

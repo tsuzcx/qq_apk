@@ -9,9 +9,9 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
 import com.tencent.mobileqq.kandian.biz.biu.RIJBiuAndCommentMixDataManager;
-import com.tencent.mobileqq.kandian.biz.comment.biuAndCommentMix.api.IUiApiPlugin;
+import com.tencent.mobileqq.kandian.biz.comment.biuAndCommentMix.api.impl.UiApiPluginSingleton;
 import com.tencent.mobileqq.kandian.biz.common.ipc.constants.IReadInJoyIPCModuleConst;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
 import com.tencent.mobileqq.kandian.glue.router.ReadInJoyChannelGuidingJumpUtils;
@@ -67,7 +67,7 @@ public class ReadInJoyIPCModule
         localStringBuilder.append(", ");
       }
       QLog.i("ReadInJoyIPCModule", 1, localStringBuilder.toString());
-      ReadInJoyUserInfoModule.a(paramBundle);
+      ReadInJoyUserInfoModule.b(paramBundle);
       return;
     }
     QLog.i("ReadInJoyIPCModule", 1, "[updateUserInfo] uin list is empty.");
@@ -128,10 +128,10 @@ public class ReadInJoyIPCModule
     }
     if (ReadInJoyChannelGuidingJumpUtils.a((String)localObject, i))
     {
-      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchChannelActivity(paramBundle, i, str, k, 4);
+      ReadInJoyActivityHelper.INSTANCE.launchChannelActivity(paramBundle, i, str, k, 4);
       return;
     }
-    localObject = ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getJumpReadInJoyTabIntent(paramBundle, 0, i);
+    localObject = ReadInJoyActivityHelper.INSTANCE.getJumpReadInJoyTabIntent(paramBundle, 0, i);
     if (!(paramBundle instanceof BaseActivity)) {
       ((Intent)localObject).setFlags(268435456);
     }
@@ -174,7 +174,7 @@ public class ReadInJoyIPCModule
             try
             {
               if (str.contains("v_url_base64")) {
-                paramString = JumpAction.c(Uri.parse(str).getQueryParameter("v_url_base64"));
+                paramString = JumpAction.h(Uri.parse(str).getQueryParameter("v_url_base64"));
               } else {
                 paramString = URLDecoder.decode(Uri.parse(str).getQueryParameter("v_url"), "utf-8");
               }
@@ -226,7 +226,7 @@ public class ReadInJoyIPCModule
           }
           paramBundle = new RIJBiuAndCommentMixDataManager();
           str = paramString.getStringExtra("arg_callback");
-          ((IUiApiPlugin)QRoute.api(IUiApiPlugin.class)).handleInfoAndRequestForWeb(paramString, paramBundle, str, new ReadInJoyIPCModule.1(this, paramInt, paramBundle));
+          UiApiPluginSingleton.INSTANCE.handleInfoAndRequestForWeb(paramString, paramBundle, str, new ReadInJoyIPCModule.1(this, paramInt, paramBundle));
           return null;
         }
         if ("action_get_user_info_action".equals(paramString))
@@ -237,7 +237,7 @@ public class ReadInJoyIPCModule
         if ("action_get_app_type_action".equals(paramString))
         {
           paramString = new Bundle();
-          paramString.putInt("action_get_app_type", ReadinjoyReportUtils.c());
+          paramString.putInt("action_get_app_type", ReadinjoyReportUtils.h());
           callbackResult(paramInt, EIPCResult.createResult(0, paramString));
           return null;
         }
@@ -251,7 +251,7 @@ public class ReadInJoyIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyIPCModule
  * JD-Core Version:    0.7.0.1
  */

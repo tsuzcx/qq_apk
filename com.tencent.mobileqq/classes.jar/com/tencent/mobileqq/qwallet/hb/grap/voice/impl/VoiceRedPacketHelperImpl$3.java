@@ -24,43 +24,43 @@ class VoiceRedPacketHelperImpl$3
   {
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.onError("skey is null");
+      this.l.onError("skey is null");
       return;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.o;
-    long l1 = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getLongAccountUin();
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId;
-    int j = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.n;
-    int k = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.mIsHeadSetOn;
-    long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
-    long l3 = AppSetting.a();
-    int m = this.jdField_a_of_type_Int;
-    if (m == 0) {}
-    while (i != 1)
+    int m = this.a.mQQWalletRedPacketMsg.elem.C;
+    long l1 = this.b.getLongAccountUin();
+    String str = this.a.mQQWalletRedPacketMsg.redPacketId;
+    int n = this.a.mQQWalletRedPacketMsg.elem.B;
+    int i1 = this.l.mIsHeadSetOn;
+    long l2 = Long.parseLong(this.a.senderuin);
+    long l3 = AppSetting.d();
+    int i2 = this.c;
+    if (i2 == 0) {}
+    while (m != 1)
     {
       localObject = null;
       break;
     }
-    Object localObject = new GroupVoiceInfo(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin), this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$RecordMsgInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$RecordMsgInfo.jdField_a_of_type_ArrayOfByte);
+    Object localObject = new GroupVoiceInfo(Long.parseLong(this.a.frienduin), this.d.b, this.d.c);
     GroupVoiceInfo localGroupVoiceInfo;
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.c == 0) {
       localGroupVoiceInfo = null;
     } else {
-      localGroupVoiceInfo = new GroupVoiceInfo(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin), this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte);
+      localGroupVoiceInfo = new GroupVoiceInfo(Long.parseLong(this.a.frienduin), this.e, this.f);
     }
     C2CVoiceInfo localC2CVoiceInfo1;
-    if ((this.jdField_a_of_type_Int == 0) && (i == 1)) {
-      localC2CVoiceInfo1 = new C2CVoiceInfo(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl$RecordMsgInfo.jdField_a_of_type_JavaLangString);
+    if ((this.c == 0) && (m == 1)) {
+      localC2CVoiceInfo1 = new C2CVoiceInfo(this.d.d);
     } else {
       localC2CVoiceInfo1 = null;
     }
     C2CVoiceInfo localC2CVoiceInfo2;
-    if (this.jdField_a_of_type_Int == 0) {
-      localC2CVoiceInfo2 = new C2CVoiceInfo(this.jdField_a_of_type_JavaLangString);
+    if (this.c == 0) {
+      localC2CVoiceInfo2 = new C2CVoiceInfo(this.g);
     } else {
       localC2CVoiceInfo2 = null;
     }
-    paramString = new SongRedPackMatchReq(l1, str, j, i, k, l2, paramString, l3, m, 0, "8.7.0", (GroupVoiceInfo)localObject, localGroupVoiceInfo, localC2CVoiceInfo1, localC2CVoiceInfo2);
+    paramString = new SongRedPackMatchReq(l1, str, n, m, i1, l2, paramString, l3, i2, 0, "8.8.17", (GroupVoiceInfo)localObject, localGroupVoiceInfo, localC2CVoiceInfo1, localC2CVoiceInfo2);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -76,7 +76,7 @@ class VoiceRedPacketHelperImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.VoiceRedPacketHelperImpl.3
  * JD-Core Version:    0.7.0.1
  */

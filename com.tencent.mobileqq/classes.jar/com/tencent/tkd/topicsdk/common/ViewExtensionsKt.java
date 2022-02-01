@@ -5,14 +5,10 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.os.SystemClock;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
-import kotlin.jvm.functions.Function4;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -49,7 +45,7 @@ public final class ViewExtensionsKt
     return null;
   }
   
-  public static final void a(@NotNull View paramView)
+  public static final void b(@NotNull View paramView)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "$this$setStatusBarHeightPadding");
     SystemBarTintUtil localSystemBarTintUtil = SystemBarTintUtil.a;
@@ -58,34 +54,27 @@ public final class ViewExtensionsKt
     paramView.setPadding(0, localSystemBarTintUtil.a(localContext), 0, 0);
   }
   
-  public static final void a(@NotNull AbsListView paramAbsListView, @NotNull Function4<? super AdapterView<?>, ? super View, ? super Integer, ? super Long, Unit> paramFunction4)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAbsListView, "$this$setDebounceItemClickListener");
-    Intrinsics.checkParameterIsNotNull(paramFunction4, "listener");
-    paramAbsListView.setOnItemClickListener((AdapterView.OnItemClickListener)new ViewExtensionsKt.setDebounceItemClickListener.1(paramFunction4));
-  }
-  
   private static final void b(View paramView, Function1<? super View, Unit> paramFunction1)
   {
-    Long localLong = (Long)paramView.getTag(R.id.a);
+    Long localLong = (Long)paramView.getTag(R.id.e);
     if (localLong != null)
     {
       if (SystemClock.uptimeMillis() - localLong.longValue() > 500)
       {
-        paramView.setTag(R.id.a, Long.valueOf(SystemClock.uptimeMillis()));
+        paramView.setTag(R.id.e, Long.valueOf(SystemClock.uptimeMillis()));
         paramFunction1.invoke(paramView);
       }
     }
     else
     {
-      paramView.setTag(R.id.a, Long.valueOf(SystemClock.uptimeMillis()));
+      paramView.setTag(R.id.e, Long.valueOf(SystemClock.uptimeMillis()));
       paramFunction1.invoke(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.ViewExtensionsKt
  * JD-Core Version:    0.7.0.1
  */

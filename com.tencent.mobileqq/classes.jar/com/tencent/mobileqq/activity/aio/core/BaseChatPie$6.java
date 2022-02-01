@@ -10,12 +10,12 @@ class BaseChatPie$6
   
   public void run()
   {
-    ForwardUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a);
+    ForwardUtils.a(this.this$0.d, this.this$0.e, this.this$0.ah, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.6
  * JD-Core Version:    0.7.0.1
  */

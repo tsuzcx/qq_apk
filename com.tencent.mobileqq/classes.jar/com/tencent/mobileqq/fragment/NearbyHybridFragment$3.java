@@ -22,8 +22,8 @@ class NearbyHybridFragment$3
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.removeMessages(7);
+    long l = System.currentTimeMillis() - this.a;
+    this.b.l.removeMessages(7);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onLocationFinish, errCode=");
     localStringBuilder.append(paramInt);
@@ -38,37 +38,37 @@ class NearbyHybridFragment$3
     }
     localStringBuilder.append(bool);
     localStringBuilder.append(", isTimeOut=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.j);
+    localStringBuilder.append(this.b.L);
     QLog.d("nearby.NearbyHybridFragment.webloading", 1, localStringBuilder.toString());
     if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
-      NearbyHybridFragment.jdField_a_of_type_Long = System.currentTimeMillis();
-      NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo = paramSosoLbsInfo;
-      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setNearbyLastLocation(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin(), paramSosoLbsInfo);
-      if (!this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.j) {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.c();
+      NearbyHybridFragment.h = System.currentTimeMillis();
+      NearbyHybridFragment.g = paramSosoLbsInfo;
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setNearbyLastLocation(this.b.k.getCurrentAccountUin(), paramSosoLbsInfo);
+      if (!this.b.L) {
+        this.b.d();
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(paramSosoLbsInfo);
+        this.b.a(paramSosoLbsInfo);
       }
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(true, paramInt, l);
+      this.b.a(true, paramInt, l);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.a(false, paramInt, l);
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.j) {
+    this.b.a(false, paramInt, l);
+    if (this.b.L) {
       return;
     }
     if (NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 1, HardCodeUtil.a(2131707225), 1).a();
+      QQToast.makeText(this.b.ag, 1, HardCodeUtil.a(2131905056), 1).show();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
-    paramSosoLbsInfo.c = 1;
-    paramSosoLbsInfo.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+    this.b.l.removeMessages(3);
+    paramSosoLbsInfo = this.b;
+    paramSosoLbsInfo.I = 1;
+    paramSosoLbsInfo.l.sendEmptyMessage(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.3
  * JD-Core Version:    0.7.0.1
  */

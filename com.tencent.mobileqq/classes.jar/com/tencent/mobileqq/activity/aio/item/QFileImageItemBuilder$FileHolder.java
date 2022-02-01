@@ -9,24 +9,23 @@ import com.tencent.mobileqq.widget.BubbleImageView;
 public class QFileImageItemBuilder$FileHolder
   extends QFileItemBuilder.QFileBaseHolder
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public PicProgressView a;
   public BubbleImageView a;
-  public boolean a;
-  public View c;
-  public int e;
+  public PicProgressView b;
+  public RelativeLayout c;
+  public FrameLayout d;
+  public boolean e = true;
   public int f;
+  public int g;
+  public View s;
   
   public QFileImageItemBuilder$FileHolder(QFileImageItemBuilder paramQFileImageItemBuilder)
   {
     super(paramQFileImageItemBuilder);
-    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QFileImageItemBuilder.FileHolder
  * JD-Core Version:    0.7.0.1
  */

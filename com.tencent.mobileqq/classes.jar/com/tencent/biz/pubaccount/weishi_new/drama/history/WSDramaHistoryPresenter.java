@@ -9,47 +9,47 @@ import java.util.List;
 
 public class WSDramaHistoryPresenter
 {
-  private WSDramaHistoryConstract.View jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View;
-  private WSDramaHistoryData jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryData;
-  private WSDramaHistoryDataFetcher jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryDataFetcher;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private WSDramaHistoryConstract.View a;
+  private WSDramaHistoryDataFetcher b;
+  private WSDramaHistoryData c;
+  private boolean d;
+  private boolean e;
   
   public WSDramaHistoryPresenter(WSDramaHistoryConstract.View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View = paramView;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryDataFetcher = new WSDramaHistoryDataFetcher();
+    this.a = paramView;
+    this.b = new WSDramaHistoryDataFetcher();
   }
   
   private List<WSDramaHistoryData> a(List<WSDramaHistoryData> paramList)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((WSDramaHistoryConstract.View)localObject).a() == null) {
         return paramList;
       }
       ArrayList localArrayList = new ArrayList();
-      int i = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View.a().size();
+      int i = this.a.a().size();
       int j = 0;
       WSDramaHistoryData localWSDramaHistoryData = null;
       if (i > 0) {
-        localObject = (WSDramaHistoryData)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View.a().get(0);
+        localObject = (WSDramaHistoryData)this.a.a().get(0);
       } else {
         localObject = null;
       }
       i = j;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View.a().size() > 1)
+      if (this.a.a().size() > 1)
       {
-        localWSDramaHistoryData = (WSDramaHistoryData)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View.a().get(1);
+        localWSDramaHistoryData = (WSDramaHistoryData)this.a.a().get(1);
         i = j;
       }
       while (i < paramList.size())
       {
-        if ((localObject != null) && (TextUtils.equals(((WSDramaHistoryData)localObject).a(), ((WSDramaHistoryData)paramList.get(i)).a()))) {
+        if ((localObject != null) && (TextUtils.equals(((WSDramaHistoryData)localObject).b(), ((WSDramaHistoryData)paramList.get(i)).b()))) {
           localArrayList.add(paramList.get(i));
         }
-        if ((localWSDramaHistoryData != null) && (TextUtils.equals(localWSDramaHistoryData.a(), ((WSDramaHistoryData)paramList.get(i)).a()))) {
+        if ((localWSDramaHistoryData != null) && (TextUtils.equals(localWSDramaHistoryData.b(), ((WSDramaHistoryData)paramList.get(i)).b()))) {
           localArrayList.add(paramList.get(i));
         }
         i += 1;
@@ -59,9 +59,9 @@ public class WSDramaHistoryPresenter
     return paramList;
   }
   
-  private void a(stDrama paramstDrama)
+  private void b(stDrama paramstDrama)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((WSDramaHistoryConstract.View)localObject).a() == null) {
@@ -73,13 +73,13 @@ public class WSDramaHistoryPresenter
           return;
         }
         paramstDrama = new WSDramaHistoryData(paramstDrama);
-        ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View.a());
+        ArrayList localArrayList1 = new ArrayList(this.a.a());
         ArrayList localArrayList2 = new ArrayList();
         int i = 0;
         while (i < localArrayList1.size())
         {
           localObject = (WSDramaHistoryData)localArrayList1.get(i);
-          if (TextUtils.equals(paramstDrama.a(), ((WSDramaHistoryData)localObject).a()))
+          if (TextUtils.equals(paramstDrama.b(), ((WSDramaHistoryData)localObject).b()))
           {
             localArrayList2.add(localObject);
             if (((WSDramaHistoryData)localObject).a.dramaInfo.curWatchedFeedNum > paramstDrama.a.dramaInfo.curWatchedFeedNum) {
@@ -91,21 +91,21 @@ public class WSDramaHistoryPresenter
         localArrayList1.removeAll(localArrayList2);
         paramstDrama.a(true);
         localArrayList1.add(0, paramstDrama);
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View.a(localArrayList1, this.b);
+        this.a.a(localArrayList1, this.e);
       }
     }
   }
   
-  private void b(stDrama paramstDrama)
+  private void c(stDrama paramstDrama)
   {
     paramstDrama = new WSDramaHistoryData(paramstDrama);
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View.a());
+    ArrayList localArrayList = new ArrayList(this.a.a());
     int i = 0;
     int j = 0;
     while (i < localArrayList.size())
     {
       WSDramaHistoryData localWSDramaHistoryData = (WSDramaHistoryData)localArrayList.get(i);
-      if (TextUtils.equals(paramstDrama.a(), localWSDramaHistoryData.a())) {
+      if (TextUtils.equals(paramstDrama.b(), localWSDramaHistoryData.b())) {
         if (localWSDramaHistoryData.a.dramaInfo.curWatchedFeedNum <= paramstDrama.a.dramaInfo.curWatchedFeedNum)
         {
           j = i;
@@ -131,7 +131,7 @@ public class WSDramaHistoryPresenter
         localArrayList.add(1, paramstDrama);
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryConstract$View.a(localArrayList, this.b);
+    this.a.a(localArrayList, this.e);
   }
   
   public stDrama a(stDrama paramstDrama)
@@ -156,25 +156,25 @@ public class WSDramaHistoryPresenter
   
   public void a(stDrama paramstDrama, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryData = new WSDramaHistoryData(paramstDrama);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryData.a(paramBoolean);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = new WSDramaHistoryData(paramstDrama);
+    this.c.a(paramBoolean);
+    this.d = paramBoolean;
     if (paramBoolean)
     {
-      a(paramstDrama);
+      b(paramstDrama);
       return;
     }
-    b(paramstDrama);
+    c(paramstDrama);
   }
   
   public void a(FetcherParams paramFetcherParams)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHistoryWSDramaHistoryDataFetcher.a(paramFetcherParams, new WSDramaHistoryPresenter.1(this, paramFetcherParams));
+    this.b.a(paramFetcherParams, new WSDramaHistoryPresenter.1(this, paramFetcherParams));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryPresenter
  * JD-Core Version:    0.7.0.1
  */

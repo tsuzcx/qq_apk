@@ -9,8 +9,6 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class TofuMsgUpdateCallback
   implements IMsgUpdateCallback
 {
-  public void a(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
-  
   public boolean a(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     return false;
@@ -18,19 +16,21 @@ public class TofuMsgUpdateCallback
   
   public void b(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
   
-  public boolean b(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  
+  public boolean d(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     if (paramAIOContext.a() != null) {
-      ((ITofuManagerNew)paramAIOContext.a().getManager(QQManagerFactory.TOFU_NEW_MANAGER)).b(paramAIOContext.a());
+      ((ITofuManagerNew)paramAIOContext.a().getManager(QQManagerFactory.TOFU_NEW_MANAGER)).b(paramAIOContext.O());
     }
     return false;
   }
   
-  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  public void e(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuMsgUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

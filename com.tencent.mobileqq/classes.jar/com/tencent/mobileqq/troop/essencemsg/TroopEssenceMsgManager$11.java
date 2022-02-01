@@ -20,11 +20,11 @@ class TroopEssenceMsgManager$11
     if (paramHashMap == null) {
       return;
     }
-    TroopEssenceMsgItem.TroopEssenceMsgItemKey localTroopEssenceMsgItemKey = new TroopEssenceMsgItem.TroopEssenceMsgItemKey(this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.troopUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.msgSeq, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.msgRandom);
+    TroopEssenceMsgItem.TroopEssenceMsgItemKey localTroopEssenceMsgItemKey = new TroopEssenceMsgItem.TroopEssenceMsgItemKey(this.a.troopUin, this.a.msgSeq, this.a.msgRandom);
     TroopEssenceMsgItem.TroopEssenceMsgItemValue localTroopEssenceMsgItemValue = (TroopEssenceMsgItem.TroopEssenceMsgItemValue)paramHashMap.get(localTroopEssenceMsgItemKey);
     if (localTroopEssenceMsgItemValue != null)
     {
-      if (localTroopEssenceMsgItemValue.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opType)
+      if (localTroopEssenceMsgItemValue.a == this.a.opType)
       {
         QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosBySet 本地已经存在且状态一致 直接丢弃");
         paramHashMap = new StringBuilder();
@@ -35,12 +35,12 @@ class TroopEssenceMsgManager$11
         QLog.i("TroopEssenceMsgManager", 1, paramHashMap.toString());
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opTime == 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opTime = localTroopEssenceMsgItemValue.jdField_a_of_type_Long;
+      if (this.a.opTime == 0L) {
+        this.a.opTime = localTroopEssenceMsgItemValue.d;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.graytipuniseq = localTroopEssenceMsgItemValue.b;
+      this.a.graytipuniseq = localTroopEssenceMsgItemValue.e;
     }
-    localTroopEssenceMsgItemValue = new TroopEssenceMsgItem.TroopEssenceMsgItemValue(this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opType, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.msgSenderUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.opTime, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.graytipuniseq);
+    localTroopEssenceMsgItemValue = new TroopEssenceMsgItem.TroopEssenceMsgItemValue(this.a.opType, this.a.msgSenderUin, this.a.opUin, this.a.opTime, this.a.graytipuniseq);
     paramHashMap.put(localTroopEssenceMsgItemKey, localTroopEssenceMsgItemValue);
     paramHashMap = new StringBuilder();
     paramHashMap.append("updateEssenceMsgInfosBySet key:");
@@ -48,14 +48,14 @@ class TroopEssenceMsgManager$11
     paramHashMap.append(" value:");
     paramHashMap.append(localTroopEssenceMsgItemValue.toString());
     QLog.i("TroopEssenceMsgManager", 1, paramHashMap.toString());
-    TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, this.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem.troopUin);
-    this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager.a(new TroopEssenceMsgItem(localTroopEssenceMsgItemKey, localTroopEssenceMsgItemValue));
-    TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager).getBusinessHandler(BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER).notifyUI(TroopEssenceMsgObserver.f, true, Long.valueOf(paramLong));
+    TroopEssenceMsgManager.a(this.b, this.a.troopUin);
+    this.b.a(new TroopEssenceMsgItem(localTroopEssenceMsgItemKey, localTroopEssenceMsgItemValue));
+    TroopEssenceMsgManager.a(this.b).getBusinessHandler(BusinessHandlerFactory.TROOP_ESSENCE_MSG_HANDLER).notifyUI(TroopEssenceMsgObserver.g, true, Long.valueOf(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.11
  * JD-Core Version:    0.7.0.1
  */

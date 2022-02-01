@@ -1,22 +1,29 @@
 package com.tencent.aelight.camera.ae.view;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.aelight.camera.log.AEQLog;
 
 class AEPituCameraCaptureButtonLayout$2
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Animation.AnimationListener
 {
   AEPituCameraCaptureButtonLayout$2(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    AEQLog.a("CameraCaptureLayout", "makeForegroundBtnGoneAnimation onAnimationEnd");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    AEQLog.a("CameraCaptureLayout", "makeForegroundBtnGoneAnimation onAnimationStart");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AEPituCameraCaptureButtonLayout.2
  * JD-Core Version:    0.7.0.1
  */

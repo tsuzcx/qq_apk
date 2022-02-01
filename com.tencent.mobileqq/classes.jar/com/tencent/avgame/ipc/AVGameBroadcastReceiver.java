@@ -16,19 +16,14 @@ import mqq.util.WeakReference;
 public class AVGameBroadcastReceiver
   extends BroadcastReceiver
 {
-  public static final String[] a;
+  public static final String[] a = new String[0];
   public static final String[] b = { "tencent.avgame.g2q.preload", "action_notify_av_game_room_changed", "tencent.avgame.g2q.exit", "tencent.avgame.g2q.pkRestart" };
   public static final String[] c = { "tencent.video.v2g.exitAVGame", "tencent.avgame.q2g.entring" };
-  private final WeakReference<AppRuntime> a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-  }
+  private final WeakReference<AppRuntime> d;
   
   public AVGameBroadcastReceiver(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAppRuntime);
+    this.d = new WeakReference(paramAppRuntime);
   }
   
   private void a(BaseAVGameAppInterface paramBaseAVGameAppInterface, Context paramContext, Intent paramIntent)
@@ -44,7 +39,7 @@ public class AVGameBroadcastReceiver
     }
     if ("tencent.video.v2g.exitAVGame".equals(paramBaseAVGameAppInterface))
     {
-      GameEngine.a().a(8, null, GameEngine.a().a());
+      GameEngine.a().a(8, null, GameEngine.a().s());
       return;
     }
     if ("tencent.avgame.q2g.entring".equals(paramBaseAVGameAppInterface)) {
@@ -105,9 +100,9 @@ public class AVGameBroadcastReceiver
   
   public String[] a()
   {
-    AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    AppRuntime localAppRuntime = (AppRuntime)this.d.get();
     if ((localAppRuntime instanceof BaseVideoAppInterface)) {
-      return jdField_a_of_type_ArrayOfJavaLangString;
+      return a;
     }
     if ((localAppRuntime instanceof BaseQQAppInterface)) {
       return b;
@@ -120,7 +115,7 @@ public class AVGameBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    AppRuntime localAppRuntime = (AppRuntime)this.d.get();
     if (localAppRuntime == null) {
       return;
     }
@@ -140,7 +135,7 @@ public class AVGameBroadcastReceiver
     int i = 0;
     if (bool)
     {
-      localObject = jdField_a_of_type_ArrayOfJavaLangString;
+      localObject = a;
       j = localObject.length;
       while (i < j)
       {

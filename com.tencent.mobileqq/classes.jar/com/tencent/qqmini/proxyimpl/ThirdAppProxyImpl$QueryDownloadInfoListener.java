@@ -11,13 +11,13 @@ import org.json.JSONObject;
 class ThirdAppProxyImpl$QueryDownloadInfoListener
   implements WadlCmdListener
 {
-  private AsyncResult jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
-  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private AsyncResult c;
   
   public ThirdAppProxyImpl$QueryDownloadInfoListener(ThirdAppProxyImpl paramThirdAppProxyImpl, String paramString, AsyncResult paramAsyncResult)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult = paramAsyncResult;
+    this.b = paramString;
+    this.c = paramAsyncResult;
   }
   
   public HashSet<String> getFilterCmds()
@@ -43,13 +43,13 @@ class ThirdAppProxyImpl$QueryDownloadInfoListener
       boolean bool1;
       try
       {
-        localAsyncResult = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
+        localAsyncResult = this.c;
         if (localAsyncResult == null) {
           return;
         }
         paramIntent = null;
         Object localObject = null;
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult = null;
+        this.c = null;
         bool2 = false;
         if (paramLong != 0L)
         {
@@ -99,7 +99,7 @@ class ThirdAppProxyImpl$QueryDownloadInfoListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ThirdAppProxyImpl.QueryDownloadInfoListener
  * JD-Core Version:    0.7.0.1
  */

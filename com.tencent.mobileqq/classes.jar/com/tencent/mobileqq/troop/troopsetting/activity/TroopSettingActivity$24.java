@@ -12,7 +12,7 @@ class TroopSettingActivity$24
 {
   TroopSettingActivity$24(TroopSettingActivity paramTroopSettingActivity, int paramInt, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i;
     if (paramInt != 0)
@@ -41,13 +41,13 @@ class TroopSettingActivity$24
       i = 4;
       paramInt = 3;
     }
-    if (i != this.jdField_a_of_type_Int) {
-      TroopSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity, i);
+    if (i != this.a) {
+      TroopSettingActivity.b(this.c, i);
     }
     try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      TroopReportor.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity.a.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity.a), String.valueOf(paramInt) });
+      this.b.dismiss();
+      TroopReportor.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.c.i.troopUin, TroopReportor.a(this.c.i), String.valueOf(paramInt) });
       return;
     }
     catch (Exception paramView)
@@ -60,7 +60,7 @@ class TroopSettingActivity$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.24
  * JD-Core Version:    0.7.0.1
  */

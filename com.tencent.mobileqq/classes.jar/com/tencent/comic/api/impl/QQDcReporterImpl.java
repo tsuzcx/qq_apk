@@ -86,7 +86,7 @@ public class QQDcReporterImpl
   
   private static String getSystemImeiFromSP()
   {
-    AppRuntime localAppRuntime = AppHelper.a();
+    AppRuntime localAppRuntime = AppHelper.b();
     if (localAppRuntime != null)
     {
       Application localApplication = AppHelper.a();
@@ -107,12 +107,12 @@ public class QQDcReporterImpl
   {
     if ("3025".equals(paramString))
     {
-      paramString = VipComicDataHelper.jdField_a_of_type_ComTencentComicDataExtraParams.a();
+      paramString = VipComicDataHelper.l.b();
       paramString.a("is_new", 22, "302598765432001");
     }
     else
     {
-      paramString = VipComicDataHelper.jdField_a_of_type_ComTencentComicDataExtraParams;
+      paramString = VipComicDataHelper.l;
     }
     return paramString.a(paramList);
   }
@@ -161,7 +161,7 @@ public class QQDcReporterImpl
         i += 1;
       }
       paramContext[5] = getQimei();
-      paramContext = Arrays.asList(new String[] { "1", paramString1, getQimei(), "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", "", VipComicDataHelper.e, "", "", paramString2, VipComicDataHelper.jdField_a_of_type_JavaLangString, paramString3, paramString4, paramString5, paramString6, "", "", "8.7.0", "", "", "", "", "", "android", str, res, "", paramContext[0], paramContext[1], paramContext[2], paramContext[3], paramContext[4], paramContext[5], paramContext[6], paramContext[7], paramContext[8], "", VipComicDataHelper.f, "", "", "" });
+      paramContext = Arrays.asList(new String[] { "1", paramString1, getQimei(), "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", "", VipComicDataHelper.e, "", "", paramString2, VipComicDataHelper.a, paramString3, paramString4, paramString5, paramString6, "", "", "8.8.17", "", "", "", "", "", "android", str, res, "", paramContext[0], paramContext[1], paramContext[2], paramContext[3], paramContext[4], paramContext[5], paramContext[6], paramContext[7], paramContext[8], "", VipComicDataHelper.f, "", "", "" });
       paramString1 = null;
       if ((paramAppInterface instanceof BaseQQAppInterface)) {
         paramString1 = (BaseQQAppInterface)paramAppInterface;
@@ -183,7 +183,7 @@ public class QQDcReporterImpl
   
   private static void saveSystemImei(String paramString)
   {
-    AppRuntime localAppRuntime = AppHelper.a();
+    AppRuntime localAppRuntime = AppHelper.b();
     if (localAppRuntime != null)
     {
       Application localApplication = AppHelper.a();
@@ -212,7 +212,7 @@ public class QQDcReporterImpl
   
   public String getColdStartImei(Context paramContext)
   {
-    if (!StringUtil.a(systemImei)) {
+    if (!StringUtil.isEmpty(systemImei)) {
       return systemImei;
     }
     if ((Build.VERSION.SDK_INT <= 28) && ((Build.VERSION.SDK_INT < 23) || (AppHelper.a().checkSelfPermission("android.permission.READ_PHONE_STATE") == 0))) {
@@ -291,7 +291,7 @@ public class QQDcReporterImpl
         i += 1;
       }
       paramContext[5] = getQimei();
-      paramContext = Arrays.asList(new String[] { "1", paramString1, getQimei(), "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", "", VipComicDataHelper.e, "", "", paramString2, VipComicDataHelper.jdField_a_of_type_JavaLangString, "", paramString3, paramString4, paramString5, "", "", "8.7.0", "", "", "", "", "", "android", str, res, "", paramContext[0], paramContext[1], paramContext[2], paramContext[3], paramContext[4], paramContext[5], paramContext[6], paramContext[7], paramContext[8], "", VipComicDataHelper.f, "", "", "" });
+      paramContext = Arrays.asList(new String[] { "1", paramString1, getQimei(), "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", "", VipComicDataHelper.e, "", "", paramString2, VipComicDataHelper.a, "", paramString3, paramString4, paramString5, "", "", "8.8.17", "", "", "", "", "", "android", str, res, "", paramContext[0], paramContext[1], paramContext[2], paramContext[3], paramContext[4], paramContext[5], paramContext[6], paramContext[7], paramContext[8], "", VipComicDataHelper.f, "", "", "" });
       paramString1 = null;
       if ((paramAppInterface instanceof BaseQQAppInterface)) {
         paramString1 = (BaseQQAppInterface)paramAppInterface;
@@ -351,7 +351,7 @@ public class QQDcReporterImpl
       } else {
         paramVarArgs = VipComicDataHelper.b;
       }
-      paramString5 = Arrays.asList(new String[] { "1", str, getQimei(), "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", paramVarArgs, paramString9, "", "", paramString1, paramString5, "", paramString2, paramString3, paramString4, "", "", "8.7.0", "", "", paramString10, "", "", "android", localObject2, res, "", localObject1[0], localObject1[1], localObject1[2], localObject1[3], localObject1[4], localObject1[5], localObject1[6], localObject1[7], localObject1[8], paramString7, paramString8, paramString6, "", "" });
+      paramString5 = Arrays.asList(new String[] { "1", str, getQimei(), "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", paramVarArgs, paramString9, "", "", paramString1, paramString5, "", paramString2, paramString3, paramString4, "", "", "8.8.17", "", "", paramString10, "", "", "android", localObject2, res, "", localObject1[0], localObject1[1], localObject1[2], localObject1[3], localObject1[4], localObject1[5], localObject1[6], localObject1[7], localObject1[8], paramString7, paramString8, paramString6, "", "" });
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -447,9 +447,9 @@ public class QQDcReporterImpl
     }
     paramAppInterface = getNetType();
     updateRes((Context)localObject);
-    localObject = paramVipComicDC01327ReportData.a();
+    localObject = paramVipComicDC01327ReportData.m();
     localObject[6] = ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).getQimei();
-    reportDCEvent(null, "dc01327", Arrays.asList(new String[] { "", "android", "201", Build.VERSION.RELEASE, "", "8.7.0", "android", paramAppInterface, res, paramVipComicDC01327ReportData.o(), paramVipComicDC01327ReportData.r(), paramVipComicDC01327ReportData.a(), "", paramVipComicDC01327ReportData.b(), paramVipComicDC01327ReportData.c(), "", paramVipComicDC01327ReportData.e(), localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8], "", "", VipComicDataHelper.k, paramVipComicDC01327ReportData.j(), "", paramVipComicDC01327ReportData.m(), paramVipComicDC01327ReportData.d(), paramVipComicDC01327ReportData.f(), paramVipComicDC01327ReportData.g(), paramVipComicDC01327ReportData.k(), paramVipComicDC01327ReportData.h(), paramVipComicDC01327ReportData.l(), paramVipComicDC01327ReportData.i(), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", localObject[0], localObject[9], paramVipComicDC01327ReportData.n(), "", "", paramVipComicDC01327ReportData.p(), paramVipComicDC01327ReportData.q() }));
+    reportDCEvent(null, "dc01327", Arrays.asList(new String[] { "", "android", "201", Build.VERSION.RELEASE, "", "8.8.17", "android", paramAppInterface, res, paramVipComicDC01327ReportData.p(), paramVipComicDC01327ReportData.s(), paramVipComicDC01327ReportData.a(), "", paramVipComicDC01327ReportData.b(), paramVipComicDC01327ReportData.c(), "", paramVipComicDC01327ReportData.e(), localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8], "", "", VipComicDataHelper.k, paramVipComicDC01327ReportData.j(), "", paramVipComicDC01327ReportData.n(), paramVipComicDC01327ReportData.d(), paramVipComicDC01327ReportData.f(), paramVipComicDC01327ReportData.g(), paramVipComicDC01327ReportData.k(), paramVipComicDC01327ReportData.h(), paramVipComicDC01327ReportData.l(), paramVipComicDC01327ReportData.i(), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", localObject[0], localObject[9], paramVipComicDC01327ReportData.o(), "", "", paramVipComicDC01327ReportData.q(), paramVipComicDC01327ReportData.r() }));
     if (QLog.isColorLevel())
     {
       paramAppInterface = new StringBuilder();
@@ -500,7 +500,7 @@ public class QQDcReporterImpl
         paramContext[i] = paramVarArgs[i];
         i += 1;
       }
-      paramContext = Arrays.asList(new String[] { "1", paramString1, getQimei(), "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", "", "", "", "", paramString2, "", "", paramString3, paramString4, paramString5, "", "", "8.7.0", "", "", "", "", "", "android", str, res, "", paramContext[0], paramContext[1], paramContext[2], paramContext[3], paramContext[4], paramContext[5], paramContext[6], paramContext[7], paramContext[8], paramContext[9] });
+      paramContext = Arrays.asList(new String[] { "1", paramString1, getQimei(), "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", "", "", "", "", paramString2, "", "", paramString3, paramString4, paramString5, "", "", "8.8.17", "", "", "", "", "", "android", str, res, "", paramContext[0], paramContext[1], paramContext[2], paramContext[3], paramContext[4], paramContext[5], paramContext[6], paramContext[7], paramContext[8], paramContext[9] });
       paramString1 = null;
       if ((paramAppInterface instanceof BaseQQAppInterface)) {
         paramString1 = (BaseQQAppInterface)paramAppInterface;
@@ -562,7 +562,7 @@ public class QQDcReporterImpl
       }
       i += 1;
     }
-    paramString2 = Arrays.asList(new String[] { "1", String.valueOf(System.currentTimeMillis() / 1000L), "ANDROID", Build.VERSION.RELEASE, paramString1, "8.7.0", paramString2, paramString3, paramString4, paramString5, paramString6, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3], arrayOfString[4], arrayOfString[5], arrayOfString[6], arrayOfString[7], arrayOfString[8], arrayOfString[9] });
+    paramString2 = Arrays.asList(new String[] { "1", String.valueOf(System.currentTimeMillis() / 1000L), "ANDROID", Build.VERSION.RELEASE, paramString1, "8.8.17", paramString2, paramString3, paramString4, paramString5, paramString6, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3], arrayOfString[4], arrayOfString[5], arrayOfString[6], arrayOfString[7], arrayOfString[8], arrayOfString[9] });
     paramString1 = null;
     if ((paramAppInterface instanceof BaseQQAppInterface)) {
       paramString1 = (BaseQQAppInterface)paramAppInterface;
@@ -606,7 +606,7 @@ public class QQDcReporterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.api.impl.QQDcReporterImpl
  * JD-Core Version:    0.7.0.1
  */

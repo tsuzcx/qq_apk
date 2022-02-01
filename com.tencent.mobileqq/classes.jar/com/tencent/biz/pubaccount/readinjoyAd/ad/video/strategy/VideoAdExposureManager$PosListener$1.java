@@ -7,12 +7,12 @@ class VideoAdExposureManager$PosListener$1
   
   public void run()
   {
-    VideoAdExposureManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoStrategyVideoAdExposureManager, this.jdField_a_of_type_Int);
+    VideoAdExposureManager.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdExposureManager.PosListener.1
  * JD-Core Version:    0.7.0.1
  */

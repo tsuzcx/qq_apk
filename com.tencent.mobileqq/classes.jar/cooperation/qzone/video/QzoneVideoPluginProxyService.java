@@ -14,18 +14,18 @@ public class QzoneVideoPluginProxyService
   {
     paramIntent.putExtra("useSkinEngine", 1);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qzone_plugin.apk";
-    localPluginParams.e = "QZone";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-    localPluginParams.f = "com.qzone.video.service.QzoneVideoPluginService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    localPluginParams.d = "qzone_plugin.apk";
+    localPluginParams.g = "QZone";
+    localPluginParams.c = paramString;
+    localPluginParams.h = "com.qzone.video.service.QzoneVideoPluginService";
+    localPluginParams.j = paramIntent;
+    localPluginParams.o = paramServiceConnection;
     IPluginManager.c(paramContext, localPluginParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVideoPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

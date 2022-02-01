@@ -20,17 +20,12 @@ public class QQCircleMsgTmpRoutingType
     return 10008;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
     localCommTmp.c2c_type.set(1);
     localCommTmp.svr_type.set(165);
-    paramAppInterface = ((QQAppInterface)paramAppInterface).getMsgCache().e(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    paramAppInterface = ((QQAppInterface)paramAppInterface).getMsgCache().d(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
     if (paramAppInterface != null) {
       localCommTmp.sig.set(ByteStringMicro.copyFrom(paramAppInterface));
     }
@@ -39,14 +34,19 @@ public class QQCircleMsgTmpRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 8043;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.QQCircleMsgTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

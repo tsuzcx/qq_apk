@@ -13,14 +13,14 @@ public class MaterialContainerTransformSharedElementCallback$ShapeableViewShapeP
   public ShapeAppearanceModel a(@NonNull View paramView)
   {
     if ((paramView instanceof Shapeable)) {
-      return ((Shapeable)paramView).a();
+      return ((Shapeable)paramView).getShapeAppearanceModel();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback.ShapeableViewShapeProvider
  * JD-Core Version:    0.7.0.1
  */

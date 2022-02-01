@@ -14,16 +14,16 @@ public class TeamWorkFileImportJobForUrl2Doc
   
   public void a(AppInterface paramAppInterface)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo != null) && (paramAppInterface != null))
+    if ((this.b != null) && (paramAppInterface != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.addToFileImportingMap(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.fileImportFromUrl2Doc(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+      this.c.addToFileImportingMap(this.b);
+      this.c.fileImportFromUrl2Doc(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForUrl2Doc
  * JD-Core Version:    0.7.0.1
  */

@@ -17,31 +17,31 @@ import java.util.Locale;
 public class Interactive3DRenderable
   implements ARNativeBridge.ActionCallback, ARBaseRender
 {
-  private volatile int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long = 0L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
-  private ARMusicController jdField_a_of_type_ComTencentMobileqqArARMusicController;
-  private ARNativeBridge jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
-  private ARRenderMangerInnerCallback jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
-  private Interactive3DResourceInfo jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int b;
+  boolean a = false;
+  private Context b;
   private volatile int c = 1;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
+  private Interactive3DResourceInfo d;
+  private ARRenderMangerInnerCallback e;
+  private GLSurfaceView f;
+  private ARNativeBridge g;
+  private int h;
+  private volatile int i = 1;
+  private int j;
+  private int k;
+  private ARMusicController l;
+  private String[] m;
+  private String n;
+  private int o;
+  private int p;
+  private long q = 0L;
   
   public Interactive3DRenderable(ARRenderMangerInnerCallback paramARRenderMangerInnerCallback, Interactive3DResourceInfo paramInteractive3DResourceInfo, GLSurfaceView paramGLSurfaceView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback = paramARRenderMangerInnerCallback;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo = paramInteractive3DResourceInfo;
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a();
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge = ((ARNativeBridge)this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(0));
+    this.e = paramARRenderMangerInnerCallback;
+    this.d = paramInteractive3DResourceInfo;
+    this.f = paramGLSurfaceView;
+    this.b = this.e.a();
+    this.g = ((ARNativeBridge)this.e.a(0));
   }
   
   public void a(int paramInt)
@@ -51,63 +51,63 @@ public class Interactive3DRenderable
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setNativeState, mCurState=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append(", new State=");
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("AREngine_Interactive3DRenderable", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     if (paramInt != 2) {}
     switch (paramInt)
     {
     default: 
     case 10: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeDestroyCertainEngine(this.b);
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(null);
-      this.b = 0;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARMusicController;
+      this.g.nativeDestroyCertainEngine(this.h);
+      this.g.setupActionCallback(null);
+      this.h = 0;
+      localObject = this.l;
       if (localObject != null)
       {
         ((ARMusicController)localObject).b();
-        this.jdField_a_of_type_ComTencentMobileqqArARMusicController.c();
+        this.l.c();
       }
-      this.jdField_a_of_type_Int = 1;
+      this.c = 1;
       return;
     case 9: 
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new Interactive3DRenderable.1(this));
+      this.e.a(new Interactive3DRenderable.1(this));
       return;
     case 8: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.b);
+      this.g.nativePause(this.h);
       return;
     case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeResume(this.b);
-      this.c = 0;
+      this.g.nativeResume(this.h);
+      this.i = 0;
       a(11);
       return;
     case 6: 
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeonSurfaceChanged(this.b, this.d, this.e);
+      this.g.nativeonSurfaceChanged(this.h, this.j, this.k);
       return;
       ARGLSurfaceView.nativeSetLogLevel(QLog.getUIN_REPORTLOG_LEVEL());
-      this.b = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.getIndentification();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge;
-      long l = this.b;
-      String str = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.b;
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
-      ((ARNativeBridge)localObject).nativeCreateEngineBusiness(l, str, localContext, localContext.getAssets(), this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.c, this.d, this.e, 100);
-      this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.setupActionCallback(this);
+      this.h = this.g.getIndentification();
+      localObject = this.g;
+      long l1 = this.h;
+      String str = this.d.j;
+      Context localContext = this.b;
+      ((ARNativeBridge)localObject).nativeCreateEngineBusiness(l1, str, localContext, localContext.getAssets(), this.d.k, this.j, this.k, 100);
+      this.g.setupActionCallback(this);
       a(7);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.d = paramInt1;
-    this.e = paramInt2;
+    this.j = paramInt1;
+    this.k = paramInt2;
   }
   
   public void a(ARRenerArumentManager.DrawFrameParements paramDrawFrameParements)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativeOnDrawFrame(this.b, paramDrawFrameParements.a, (float[])paramDrawFrameParements.a("CAMERA_POSITION"));
+    this.g.nativeOnDrawFrame(this.h, paramDrawFrameParements.a, (float[])paramDrawFrameParements.a("CAMERA_POSITION"));
   }
   
   public void a(String paramString)
@@ -119,12 +119,7 @@ public class Interactive3DRenderable
       localStringBuilder.append(paramString);
       QLog.d("AREngine_Interactive3DRenderable", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.10(this, paramString));
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d;
+    this.f.queueEvent(new Interactive3DRenderable.10(this, paramString));
   }
   
   public void b(String paramString)
@@ -136,24 +131,7 @@ public class Interactive3DRenderable
       localStringBuilder.append(paramString);
       QLog.d("AREngine_Interactive3DRenderable", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new Interactive3DRenderable.11(this, paramString));
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "init");
-    }
+    this.f.queueEvent(new Interactive3DRenderable.11(this, paramString));
   }
   
   public void callback(int paramInt1, String paramString1, int paramInt2, String paramString2)
@@ -171,7 +149,7 @@ public class Interactive3DRenderable
       localStringBuilder.append(paramString2);
       QLog.d("AREngine_Interactive3DRenderable", 2, localStringBuilder.toString());
     }
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    paramString1 = this.e;
     if (paramString1 == null) {
       return;
     }
@@ -182,7 +160,7 @@ public class Interactive3DRenderable
       switch (paramInt1)
       {
       default: 
-        paramString1.a(this, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, paramInt1, 0, paramString2);
+        paramString1.a(this, this.d.i, paramInt1, 0, paramString2);
         return;
       case 64: 
         b("res/music/gameend_background.mp3");
@@ -200,105 +178,102 @@ public class Interactive3DRenderable
       a("res/music/fudai_explode.mp3");
       return;
     case 58: 
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 300L) {
+      if (System.currentTimeMillis() - this.q < 300L) {
         return;
       }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.q = System.currentTimeMillis();
       a("res/music/fudai_click.mp3");
       return;
     case 56: 
       a("res/music/fudai_appear.mp3");
       b("res/music/fudai_background.mp3");
       return;
-      this.g += 1;
-      this.f += paramInt2;
+      this.p += 1;
+      this.o += paramInt2;
     }
   }
   
-  public void d()
+  public void i()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "init");
+    }
+  }
+  
+  public void j()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_Interactive3DRenderable", 2, "start");
     }
-    if (1 == this.jdField_a_of_type_Int)
+    if (1 == this.c)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.c;
-      this.jdField_a_of_type_JavaLangString = ((String)localObject);
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[8];
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      localObject = this.d.k;
+      this.n = ((String)localObject);
+      this.m = new String[8];
+      String[] arrayOfString = this.m;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("res/music/loading.mp3");
       arrayOfString[0] = localStringBuilder.toString();
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      arrayOfString = this.m;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("res/music/321ready.mp3");
       arrayOfString[1] = localStringBuilder.toString();
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      arrayOfString = this.m;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("res/music/redpack_open.mp3");
       arrayOfString[2] = localStringBuilder.toString();
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      arrayOfString = this.m;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("res/music/fudai_click.mp3");
       arrayOfString[3] = localStringBuilder.toString();
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      arrayOfString = this.m;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("res/music/fudai_explode.mp3");
       arrayOfString[4] = localStringBuilder.toString();
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      arrayOfString = this.m;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("res/music/fudai_appear.mp3");
       arrayOfString[5] = localStringBuilder.toString();
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      arrayOfString = this.m;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("res/music/redpack_get.mp3");
       arrayOfString[6] = localStringBuilder.toString();
-      arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      arrayOfString = this.m;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("res/music/aimed.mp3");
       arrayOfString[7] = localStringBuilder.toString();
-      this.jdField_a_of_type_ComTencentMobileqqArARMusicController = new ARMusicController(1, this.jdField_a_of_type_ArrayOfJavaLangString);
+      this.l = new ARMusicController(1, this.m);
       a(2);
-      this.g = 0;
-      this.f = 0;
+      this.p = 0;
+      this.o = 0;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+    Object localObject = this.e;
     if (localObject != null) {
-      ((ARRenderMangerInnerCallback)localObject).a(this, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 100, 0, null);
+      ((ARRenderMangerInnerCallback)localObject).a(this, this.d.i, 100, 0, null);
     }
   }
   
-  public boolean d()
+  public void k()
   {
-    return (this.jdField_a_of_type_Int == 9) && (this.b != 0);
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Int == 11)
+    if (this.c == 11)
     {
-      int i = this.c + 1;
-      this.c = i;
-      if (i >= 2) {
+      int i1 = this.i + 1;
+      this.i = i1;
+      if (i1 >= 2) {
         a(9);
       }
     }
   }
   
-  public boolean e()
-  {
-    return true;
-  }
-  
-  public void f()
+  public void l()
   {
     Object localObject;
     if (QLog.isColorLevel())
@@ -308,7 +283,7 @@ public class Interactive3DRenderable
       ((StringBuilder)localObject).append(this);
       QLog.d("AREngine_Interactive3DRenderable", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_Int == 9)
+    if (this.c == 9)
     {
       if (QLog.isColorLevel())
       {
@@ -317,41 +292,66 @@ public class Interactive3DRenderable
         ((StringBuilder)localObject).append(this);
         QLog.d("AREngine_Interactive3DRenderable", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
-      if ((localObject != null) && (this.jdField_a_of_type_Boolean == true))
+      localObject = this.e;
+      if ((localObject != null) && (this.a == true))
       {
         ((ARRenderMangerInnerCallback)localObject).b(1, 0);
-        this.jdField_a_of_type_Boolean = false;
+        this.a = false;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
+      localObject = this.e;
       if (localObject != null)
       {
-        ((ARRenderMangerInnerCallback)localObject).a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_JavaLangString);
+        ((ARRenderMangerInnerCallback)localObject).a(this.d.a);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onDestroy, remove hsRender here, ");
         ((StringBuilder)localObject).append(this);
         QLog.d("AREngine_Interactive3DRenderable", 2, ((StringBuilder)localObject).toString());
-        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DResourceInfo.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 101, 0, null);
+        this.e.a(this, this.d.i, 101, 0, null);
       }
-      if (this.jdField_a_of_type_Int == 9) {
+      if (this.c == 9) {
         a(10);
       }
     }
-    int i = this.g;
-    if (i > 0)
+    int i1 = this.p;
+    if (i1 > 0)
     {
-      float f1 = this.f * 1.0F / i;
+      float f1 = this.o * 1.0F / i1;
       localObject = new HashMap();
-      ((HashMap)localObject).put("fps_total", String.valueOf(this.f));
-      ((HashMap)localObject).put("fps_count", String.valueOf(this.g));
+      ((HashMap)localObject).put("fps_total", String.valueOf(this.o));
+      ((HashMap)localObject).put("fps_count", String.valueOf(this.p));
       ((HashMap)localObject).put("fps_avg", String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(f1) }));
       StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(BaseActivity.sTopActivity.getCurrentAccountUin(), "binhai_fps", true, 0L, 0L, (HashMap)localObject, "", false);
     }
   }
+  
+  public int m()
+  {
+    return this.d.i.e;
+  }
+  
+  public String n()
+  {
+    return this.d.a;
+  }
+  
+  public boolean o()
+  {
+    return (this.c == 9) && (this.h != 0);
+  }
+  
+  public boolean p()
+  {
+    return true;
+  }
+  
+  public int q()
+  {
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable
  * JD-Core Version:    0.7.0.1
  */

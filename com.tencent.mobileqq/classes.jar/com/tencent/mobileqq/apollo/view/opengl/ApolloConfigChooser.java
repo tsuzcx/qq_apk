@@ -9,8 +9,8 @@ import javax.microedition.khronos.egl.EGLDisplay;
 public class ApolloConfigChooser
   implements EGLConfigChooser
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  private int a;
+  private boolean b;
   
   public ApolloConfigChooser(int paramInt)
   {
@@ -25,15 +25,15 @@ public class ApolloConfigChooser
     localStringBuilder.append(", isOffscreen:");
     localStringBuilder.append(paramBoolean);
     QLog.i("[cmshow]ApolloConfigChooser", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramInt;
+    this.b = paramBoolean;
   }
   
   public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
-    if ((this.jdField_a_of_type_Boolean) && (CmShowWnsUtils.u()))
+    if ((this.b) && (CmShowWnsUtils.B()))
     {
-      i = this.jdField_a_of_type_Int;
+      i = this.a;
       arrayOfEGLConfig = new EGLConfig[1];
       arrayOfInt = new int[1];
       paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12339, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
@@ -43,7 +43,7 @@ public class ApolloConfigChooser
         return arrayOfEGLConfig[0];
       }
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
     int[] arrayOfInt = new int[1];
     paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
@@ -57,7 +57,7 @@ public class ApolloConfigChooser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.ApolloConfigChooser
  * JD-Core Version:    0.7.0.1
  */

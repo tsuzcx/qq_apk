@@ -7,8 +7,8 @@ class VideoInviteUIFull$1
   
   public void run()
   {
-    if (this.this$0.a.a != null) {
-      this.this$0.a.a.setViewVisibility(2131373348, 4);
+    if (this.this$0.a.Q != null) {
+      this.this$0.a.Q.setViewVisibility(2131441020, 4);
     }
   }
 }

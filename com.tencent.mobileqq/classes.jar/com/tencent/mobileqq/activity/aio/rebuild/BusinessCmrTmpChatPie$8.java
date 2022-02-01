@@ -19,10 +19,10 @@ class BusinessCmrTmpChatPie$8
       if (paramString.length() == 0) {
         return;
       }
-      if (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+      if (paramString.equals(this.a.ah.b))
       {
         paramString = this.a;
-        paramString.m = true;
+        paramString.as = true;
         paramString.a(262144, null, paramLong);
       }
     }
@@ -30,12 +30,12 @@ class BusinessCmrTmpChatPie$8
   
   protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
   {
-    this.a.e(65536);
+    this.a.j(65536);
   }
   
   protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if ((paramString1 != null) && (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    if ((paramString1 != null) && (paramString1.equals(this.a.ah.b)) && (paramInt1 == this.a.ah.a))
     {
       if (QLog.isColorLevel())
       {
@@ -50,13 +50,13 @@ class BusinessCmrTmpChatPie$8
       }
       if ((QLog.isColorLevel()) && (paramInt1 == 1024))
       {
-        paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+        paramString1 = this.a.f;
         paramSendMessageHandler = new StringBuilder();
         paramSendMessageHandler.append("errorCode");
         paramSendMessageHandler.append(paramInt2);
-        QQToast.a(paramString1, paramSendMessageHandler.toString(), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        QQToast.makeText(paramString1, paramSendMessageHandler.toString(), 0).show(this.a.f.getTitleBarHeight());
       }
-      this.a.e(196608);
+      this.a.j(196608);
       return;
     }
     if (QLog.isColorLevel())
@@ -74,7 +74,7 @@ class BusinessCmrTmpChatPie$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.8
  * JD-Core Version:    0.7.0.1
  */

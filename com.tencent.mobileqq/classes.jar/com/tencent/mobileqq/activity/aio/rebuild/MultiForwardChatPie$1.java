@@ -28,14 +28,14 @@ class MultiForwardChatPie$1
     if ((paramMessage.obj != null) && ((paramMessage.obj instanceof List)))
     {
       this.a.b((List)paramMessage.obj);
-      if ((MultiForwardChatPie.a(this.a) != null) && (MultiForwardChatPie.a(this.a).size() != 0))
+      if ((MultiForwardChatPie.b(this.a) != null) && (MultiForwardChatPie.b(this.a).size() != 0))
       {
-        paramMessage = ChatActivityUtils.a(MultiForwardChatPie.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        paramMessage = ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramMessage, -1L);
-        MultiForwardChatPie.a(this.a).setVisibility(8);
+        paramMessage = ChatActivityUtils.a(MultiForwardChatPie.b(this.a), this.a.ah, this.a.d);
+        paramMessage = ChatActivityUtils.a(this.a.d, BaseApplicationImpl.getContext(), this.a.ah, paramMessage, -1L);
+        MultiForwardChatPie.d(this.a).setVisibility(8);
         MultiForwardChatPie.a(this.a).setVisibility(0);
-        MultiForwardChatPie.a(this.a).setVisibility(0);
-        MultiForwardChatPie.a(this.a).a(MultiForwardChatPie.a(this.a), paramMessage);
+        MultiForwardChatPie.e(this.a).setVisibility(0);
+        MultiForwardChatPie.f(this.a).a(MultiForwardChatPie.b(this.a), paramMessage);
         if (QLog.isColorLevel()) {
           QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, MultiMsg has been downloaded");
         }
@@ -46,27 +46,27 @@ class MultiForwardChatPie$1
         if (QLog.isColorLevel()) {
           QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.doOnCreate, start requestReceiveMultiMsg");
         }
-        this.a.t();
-        this.a.jdField_a_of_type_JavaLangRunnable = new MultiForwardChatPie.1.1(this);
-        MultiForwardChatPie.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 60000L);
+        this.a.a();
+        this.a.bn = new MultiForwardChatPie.1.1(this);
+        MultiForwardChatPie.a(this.a).postDelayed(this.a.bn, 60000L);
         ThreadRegulator.a().b(1);
         paramMessage = MultiMsgManager.a();
-        QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        String str1 = this.a.d;
-        String str2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        String str3 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        String str4 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-        long l = this.a.jdField_a_of_type_Long;
+        QQAppInterface localQQAppInterface = this.a.d;
+        String str1 = this.a.bl;
+        String str2 = this.a.d.getCurrentAccountUin();
+        String str3 = this.a.ah.b;
+        String str4 = this.a.ah.b;
+        int i = this.a.ah.a;
+        long l = this.a.bk;
         MultiForwardChatPie localMultiForwardChatPie = this.a;
-        paramMessage.a(localQQAppInterface, str1, str2, str3, str4, i, l, 1035, localMultiForwardChatPie.a(MultiForwardChatPie.a(localMultiForwardChatPie)));
+        paramMessage.a(localQQAppInterface, str1, str2, str3, str4, i, l, 1035, localMultiForwardChatPie.s(MultiForwardChatPie.i(localMultiForwardChatPie)));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.1
  * JD-Core Version:    0.7.0.1
  */

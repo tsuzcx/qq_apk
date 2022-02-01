@@ -23,8 +23,8 @@ class UnitedVerifyMsgEditFragment$1
     String str = "";
     Object localObject2 = ((Bundle)localObject1).getString("TROOP_UIN", "");
     TroopManager localTroopManager = (TroopManager)this.this$0.a.app.getManager(QQManagerFactory.TROOP_MANAGER);
-    localObject1 = localTroopManager.b((String)localObject2);
-    localObject2 = localTroopManager.c((String)localObject2, this.this$0.a.app.getAccount());
+    localObject1 = localTroopManager.f((String)localObject2);
+    localObject2 = localTroopManager.h((String)localObject2, this.this$0.a.app.getAccount());
     if (localObject1 != null) {
       str = ((TroopInfo)localObject1).getTroopDisplayName();
     }
@@ -42,16 +42,16 @@ class UnitedVerifyMsgEditFragment$1
       localObject1 = ContactUtils.a(this.this$0.a.app, this.this$0.a.app.getAccount());
     }
     if (TextUtils.isEmpty(str)) {
-      str = String.format(Locale.getDefault(), HardCodeUtil.a(2131715663), new Object[] { localObject1 });
+      str = String.format(Locale.getDefault(), HardCodeUtil.a(2131913131), new Object[] { localObject1 });
     } else {
-      str = String.format(Locale.getDefault(), HardCodeUtil.a(2131715664), new Object[] { str, localObject1 });
+      str = String.format(Locale.getDefault(), HardCodeUtil.a(2131913132), new Object[] { str, localObject1 });
     }
     this.this$0.a.runOnUiThread(new UnitedVerifyMsgEditFragment.1.1(this, str, (String)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

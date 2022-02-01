@@ -6,39 +6,25 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import androidx.annotation.VisibleForTesting;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.account.api.IRIJUserProtoUtils;
+import com.tencent.mobileqq.kandian.biz.account.api.impl.RIJUserProtoUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.pts.util.PTSLiteSwitchManager;
-import com.tencent.mobileqq.kandian.biz.publisher.api.IKanDianPublisher;
 import com.tencent.mobileqq.kandian.biz.tab.RIJTabFrameDeliverPopupUtil;
 import com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame;
 import com.tencent.mobileqq.kandian.biz.ugc.account.RIJUGCAddAccountFragment;
 import com.tencent.mobileqq.kandian.biz.ugc.entity.UgcEntryExtraInfo;
 import com.tencent.mobileqq.kandian.biz.ugc.entity.UgcVideo;
-import com.tencent.mobileqq.kandian.biz.ugc.selecttopic.SelectTopicFragment;
 import com.tencent.mobileqq.kandian.biz.ugc.selectvideo.SelectVideoFragment;
 import com.tencent.mobileqq.kandian.biz.ugc.selectvideotab.SelectVideoTabFragment;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
@@ -50,7 +36,6 @@ import com.tencent.mobileqq.kandian.repo.db.struct.ColumnInfo;
 import com.tencent.mobileqq.kandian.repo.handler.BiuCommentInfo;
 import com.tencent.mobileqq.kandian.repo.handler.JumpInfo;
 import com.tencent.mobileqq.kandian.repo.ugc.RIJUGCAccountCreateModule;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -70,11 +55,6 @@ import org.json.JSONObject;
 
 public class RIJUgcUtils
 {
-  public static int a()
-  {
-    return Aladdin.getConfig(277).getIntegerFromString("ugc_video_upload_main_switch", 0);
-  }
-  
   @VisibleForTesting
   static int a(UgcVideo paramUgcVideo)
   {
@@ -111,30 +91,6 @@ public class RIJUgcUtils
     return i;
   }
   
-  public static long a(@NotNull UgcVideo paramUgcVideo)
-  {
-    long l2 = paramUgcVideo.fileSize - paramUgcVideo.videoProgress * paramUgcVideo.fileSize / 100L;
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
-    }
-    return l1;
-  }
-  
-  public static long a(@NotNull List<UgcVideo> paramList)
-  {
-    boolean bool = paramList.isEmpty();
-    long l = 0L;
-    if (bool) {
-      return 0L;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      l += a((UgcVideo)paramList.next());
-    }
-    return l;
-  }
-  
   @NotNull
   public static RIJTransMergeKanDianReport.ReportR5Builder a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
@@ -150,40 +106,6 @@ public class RIJUgcUtils
       paramQQAppInterface = "";
     }
     return new RIJTransMergeKanDianReport.ReportR5Builder().addValueSafe("uin", paramQQAppInterface).addValueSafe("seqId", paramUgcVideo.seqId).addValueSafe("file_size", Long.valueOf(paramUgcVideo.fileSize)).addValueSafe("format", a(paramUgcVideo.filePath)).addValueSafe("bit_rate", Long.valueOf(paramUgcVideo.bitrate)).addValueSafe("heigth", Integer.valueOf(paramUgcVideo.height)).addValueSafe("width", Integer.valueOf(paramUgcVideo.width)).addValueSafe("video_duration", Integer.valueOf(paramUgcVideo.duration));
-  }
-  
-  public static String a()
-  {
-    String str = Aladdin.getConfig(284).getString("ugc_topic_detail_page_url", "");
-    if (!str.isEmpty()) {
-      try
-      {
-        str = URLDecoder.decode(str, "UTF-8");
-        return str;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getViolaColumnDetailPageUrl decode fail. e : ");
-        localStringBuilder.append(localUnsupportedEncodingException.toString());
-        QLog.e("RIJUGC.RIJUgcUtils", 1, localStringBuilder.toString());
-        return "https://viola.qq.com/js/columnDetail.js?_rij_violaUrl=1&v_tid=6&v_bundleName=columnDetail&hideNav=1&v_nav_immer=1&statusColor=1&v_bid=3740&from_page=4&topicId=";
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("RIJUGC.RIJUgcUtils", 2, "getViolaColumnDetailPageUrl from aladdin fail.");
-    }
-    return "https://viola.qq.com/js/columnDetail.js?_rij_violaUrl=1&v_tid=6&v_bundleName=columnDetail&hideNav=1&v_nav_immer=1&statusColor=1&v_bid=3740&from_page=4&topicId=";
-  }
-  
-  @NotNull
-  public static String a(int paramInt, Context paramContext)
-  {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(317);
-    if (paramInt == 0) {
-      return localAladdinConfig.getString("ugc_topic_forbid_submit_title", paramContext.getResources().getString(2131718323));
-    }
-    return localAladdinConfig.getString("ugc_topic_allow_submit_title", paramContext.getResources().getString(2131718321));
   }
   
   public static String a(long paramLong)
@@ -217,7 +139,7 @@ public class RIJUgcUtils
   
   public static String a(Context paramContext)
   {
-    return Aladdin.getConfig(277).getString("ugc_publish_create_text", paramContext.getResources().getString(2131717879));
+    return Aladdin.getConfig(277).getString("ugc_publish_create_text", paramContext.getResources().getString(2131915352));
   }
   
   @NotNull
@@ -283,22 +205,7 @@ public class RIJUgcUtils
   
   public static void a(Activity paramActivity, int paramInt)
   {
-    ((IRIJUserProtoUtils)QRoute.api(IRIJUserProtoUtils.class)).check(paramActivity, new RIJUgcUtils.8(paramActivity, paramInt));
-  }
-  
-  public static void a(Activity paramActivity, int paramInt1, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, int paramInt2, @Nullable String paramString4, int paramInt3)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    IKanDianPublisher localIKanDianPublisher = (IKanDianPublisher)QRoute.api(IKanDianPublisher.class);
-    boolean bool;
-    if (paramInt2 == 1) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    localIKanDianPublisher.buildOriginTopicInfo(localJSONObject, paramInt1, paramString1, paramString2, paramString3, bool);
-    localIKanDianPublisher.buildPublisherScene(localJSONObject, 3, paramString4);
-    ((IKanDianPublisher)QRoute.api(IKanDianPublisher.class)).openEditTopicPageForResult(paramActivity, paramInt3, localJSONObject);
+    RIJUserProtoUtils.INSTANCE.check(paramActivity, new RIJUgcUtils.8(paramActivity, paramInt));
   }
   
   private static void a(Activity paramActivity, int paramInt, String paramString, boolean paramBoolean)
@@ -306,19 +213,19 @@ public class RIJUgcUtils
     if (paramActivity == null) {
       return;
     }
-    paramString = DialogUtil.a(paramActivity, 0, paramActivity.getString(2131718280), paramActivity.getString(2131718279), paramActivity.getString(2131718307), paramActivity.getString(2131718324), new RIJUgcUtils.4(paramString, paramActivity), new RIJUgcUtils.5());
+    paramString = DialogUtil.a(paramActivity, 0, paramActivity.getString(2131915772), paramActivity.getString(2131915771), paramActivity.getString(2131915799), paramActivity.getString(2131915816), new RIJUgcUtils.4(paramString, paramActivity), new RIJUgcUtils.5());
     paramString.getBtnLeft().setTextColor(Color.parseColor("#03081A"));
     paramString.getBtnight().setTextColor(Color.parseColor("#00CAFC"));
     paramString.getMessageTextView().setTextColor(Color.parseColor("#878B99"));
     paramString.getTitleTextView().setTextColor(Color.parseColor("#03081A"));
     if (paramBoolean)
     {
-      paramActivity = paramActivity.getString(2131718279);
+      paramActivity = paramActivity.getString(2131915771);
       paramString.getMessageTextView().setText(String.format(paramActivity, new Object[] { Integer.valueOf(paramInt) }));
     }
     else
     {
-      paramActivity = paramActivity.getString(2131718278);
+      paramActivity = paramActivity.getString(2131915770);
       paramString.getMessageTextView().setText(String.format(paramActivity, new Object[] { Integer.valueOf(paramInt) }));
     }
     try
@@ -334,7 +241,7 @@ public class RIJUgcUtils
   
   public static void a(Activity paramActivity, RIJUgcUtils.RIJUGCAccountStatusCheckCallback paramRIJUGCAccountStatusCheckCallback)
   {
-    if (ReadInJoyHelper.B())
+    if (ReadInJoyHelper.X())
     {
       a(paramRIJUGCAccountStatusCheckCallback);
       QLog.e("showOrDelayShowUGCAccountGuide", 1, "try to set UGCAccountGuide but do Nothing");
@@ -373,8 +280,8 @@ public class RIJUgcUtils
       }
       if (bool1)
       {
-        boolean bool2 = ReadInJoyHelper.A();
-        boolean bool3 = PTSLiteSwitchManager.a().a();
+        boolean bool2 = ReadInJoyHelper.V();
+        boolean bool3 = PTSLiteSwitchManager.a().b();
         if ((!bool2) && (bool3)) {
           bool1 = true;
         } else {
@@ -452,23 +359,9 @@ public class RIJUgcUtils
     RIJTabFrameDeliverPopupUtil.a("0X800AC6D", paramInt1);
   }
   
-  public static void a(Activity paramActivity, @Nullable String paramString, int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    ((IKanDianPublisher)QRoute.api(IKanDianPublisher.class)).buildPublisherScene(localJSONObject, 1, paramString);
-    ((IKanDianPublisher)QRoute.api(IKanDianPublisher.class)).openCreateTopicPageForResult(paramActivity, paramInt, localJSONObject);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    ((IKanDianPublisher)QRoute.api(IKanDianPublisher.class)).buildPublisherScene(localJSONObject, paramInt, null);
-    ((IKanDianPublisher)QRoute.api(IKanDianPublisher.class)).openCreateTopicPage(paramContext, localJSONObject);
-  }
-  
   public static void a(@NotNull Context paramContext, long paramLong, @NotNull RIJUgcUtils.IUploadActionCallback paramIUploadActionCallback, @Nullable DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    paramContext = DialogUtil.a(paramContext, 230).setMessage(paramContext.getResources().getString(2131718080, new Object[] { a(paramLong) })).setNegativeButton(paramContext.getResources().getString(2131717827), new RIJUgcUtils.2(paramIUploadActionCallback)).setPositiveButton(paramContext.getResources().getString(2131717980), new RIJUgcUtils.1(paramIUploadActionCallback));
+    paramContext = DialogUtil.a(paramContext, 230).setMessage(paramContext.getResources().getString(2131915558, new Object[] { a(paramLong) })).setNegativeButton(paramContext.getResources().getString(2131915302), new RIJUgcUtils.2(paramIUploadActionCallback)).setPositiveButton(paramContext.getResources().getString(2131915460), new RIJUgcUtils.1(paramIUploadActionCallback));
     if (paramOnDismissListener != null) {
       paramContext.setOnDismissListener(new RIJUgcUtils.3(paramOnDismissListener));
     }
@@ -477,50 +370,11 @@ public class RIJUgcUtils
   
   private static void a(RIJUgcUtils.RIJUGCAccountStatusCheckCallback paramRIJUGCAccountStatusCheckCallback)
   {
-    RIJUGCAccountCreateModule localRIJUGCAccountCreateModule = ReadInJoyLogicEngine.a().a();
+    RIJUGCAccountCreateModule localRIJUGCAccountCreateModule = ReadInJoyLogicEngine.a().o();
     if (localRIJUGCAccountCreateModule == null) {
       return;
     }
-    localRIJUGCAccountCreateModule.a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin(), paramRIJUGCAccountStatusCheckCallback);
-  }
-  
-  public static void a(@NotNull UgcVideo paramUgcVideo)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("vid", paramUgcVideo.seqId);
-      localJSONObject.put("title", paramUgcVideo.title);
-      localJSONObject.put("coverUrl", paramUgcVideo.coverUrl);
-      localJSONObject.put("coverLocalPath", paramUgcVideo.coverPath);
-      localJSONObject.put("coverWidth", paramUgcVideo.width);
-      localJSONObject.put("coverHeight", paramUgcVideo.height);
-      localJSONObject.put("duration", paramUgcVideo.duration * 1000);
-      paramUgcVideo = paramUgcVideo.getMultiTitleStruct();
-      if (paramUgcVideo != null)
-      {
-        paramUgcVideo = paramUgcVideo.iterator();
-        while (paramUgcVideo.hasNext())
-        {
-          BiuCommentInfo localBiuCommentInfo = (BiuCommentInfo)paramUgcVideo.next();
-          if ((localBiuCommentInfo.mOpType == 4) && (localBiuCommentInfo.jumpInfo != null)) {
-            localJSONObject.put("kdCommunityId", localBiuCommentInfo.jumpInfo.getId());
-          }
-        }
-      }
-    }
-    catch (JSONException paramUgcVideo)
-    {
-      QLog.e("RIJUGC.RIJUgcUtils", 1, "sendAddOrUpdateUgcVideoInfo", paramUgcVideo);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramUgcVideo = new StringBuilder();
-      paramUgcVideo.append("sendAddOrUpdateUgcVideoInfo, params=");
-      paramUgcVideo.append(localJSONObject);
-      QLog.i("RIJUGC.RIJUgcUtils", 2, paramUgcVideo.toString());
-    }
-    SimpleEventBus.getInstance().dispatchEvent(new ViolaEvent("addOrUpdateUgcVideoInfo", localJSONObject));
+    localRIJUGCAccountCreateModule.a(RIJQQAppInterfaceUtil.c(), paramRIJUGCAccountStatusCheckCallback);
   }
   
   public static void a(String paramString, UgcVideo paramUgcVideo)
@@ -550,30 +404,34 @@ public class RIJUgcUtils
   
   public static boolean a()
   {
-    return (a() == 1) && (!ReadInJoyHelper.A());
+    if (u()) {
+      return true;
+    }
+    return (b() == 1) && (!ReadInJoyHelper.V());
   }
   
   public static boolean a(int paramInt)
   {
-    boolean bool2 = UgcPublishPermissionUtil.a.a();
-    boolean bool1 = false;
-    if (bool2) {
+    if (u()) {
+      return true;
+    }
+    if (UgcPublishPermissionUtil.a.a()) {
       return false;
     }
-    if ((paramInt & 0x2) != 0) {
-      bool1 = true;
-    }
-    return bool1;
+    return (paramInt & 0x2) != 0;
   }
   
   public static boolean a(@Nullable QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
+    if (u()) {
+      return true;
+    }
     boolean bool2 = false;
     if (paramQQAppInterface == null) {
       return false;
     }
     boolean bool1 = bool2;
-    if (l())
+    if (k())
     {
       bool1 = bool2;
       if (!paramBoolean) {
@@ -585,51 +443,39 @@ public class RIJUgcUtils
   
   public static int b()
   {
-    int i = Aladdin.getConfig(354).getIntegerFromString("ugc_publish_restriction_textLength", 100);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getUgcPublishTextMaxLength | length ");
-    localStringBuilder.append(i);
-    QLog.d("RIJUGC.RIJUgcUtils", 2, localStringBuilder.toString());
-    return i;
+    if (u()) {
+      return 2;
+    }
+    return Aladdin.getConfig(277).getIntegerFromString("ugc_video_upload_main_switch", 0);
   }
   
-  public static String b()
+  public static long b(@NotNull UgcVideo paramUgcVideo)
   {
-    String str = Aladdin.getConfig(284).getString("ugc_my_video_list_page_url", "");
-    if (!str.isEmpty()) {
-      try
-      {
-        str = URLDecoder.decode(str, "UTF-8");
-        return str;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getViolaMyVideoListPageUrl decode fail. e : ");
-        localStringBuilder.append(localUnsupportedEncodingException.toString());
-        QLog.e("RIJUGC.RIJUgcUtils", 1, localStringBuilder.toString());
-        return "https://viola.qq.com/js/columnAddVideo.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=2&v_bundleName=columnAddVideo&v_bid=3740&colid=";
-      }
+    long l2 = paramUgcVideo.fileSize - paramUgcVideo.videoProgress * paramUgcVideo.fileSize / 100L;
+    long l1 = l2;
+    if (l2 < 0L) {
+      l1 = 0L;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("RIJUGC.RIJUgcUtils", 2, "getViolaMyVideoListPageUrl from aladdin fail.");
-    }
-    return "https://viola.qq.com/js/columnAddVideo.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=2&v_bundleName=columnAddVideo&v_bid=3740&colid=";
+    return l1;
   }
   
-  @NotNull
-  public static String b(int paramInt, Context paramContext)
+  public static long b(@NotNull List<UgcVideo> paramList)
   {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(317);
-    if (paramInt == 0) {
-      return localAladdinConfig.getString("ugc_topic_forbid_submit_tips", paramContext.getResources().getString(2131718322));
+    boolean bool = paramList.isEmpty();
+    long l = 0L;
+    if (bool) {
+      return 0L;
     }
-    return localAladdinConfig.getString("ugc_topic_allow_submit_tips", paramContext.getResources().getString(2131718320));
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      l += b((UgcVideo)paramList.next());
+    }
+    return l;
   }
   
   public static String b(Context paramContext)
   {
-    return Aladdin.getConfig(277).getString("ugc_topic_create_text", paramContext.getResources().getString(2131717833));
+    return Aladdin.getConfig(277).getString("ugc_video_create_text", paramContext.getResources().getString(2131915478));
   }
   
   public static void b(Activity paramActivity)
@@ -673,8 +519,8 @@ public class RIJUgcUtils
       }
       if (bool1)
       {
-        boolean bool3 = ReadInJoyHelper.A();
-        boolean bool4 = PTSLiteSwitchManager.a().a();
+        boolean bool3 = ReadInJoyHelper.V();
+        boolean bool4 = PTSLiteSwitchManager.a().b();
         bool1 = bool2;
         if (!bool3)
         {
@@ -707,43 +553,9 @@ public class RIJUgcUtils
     }
   }
   
-  public static void b(@Nullable Activity paramActivity, String paramString, int paramInt)
-  {
-    if ((paramActivity instanceof BaseActivity))
-    {
-      Object localObject1 = (ViewGroup)paramActivity.getWindow().getDecorView().findViewById(16908290);
-      Object localObject2 = new FrameLayout(paramActivity);
-      ((FrameLayout)localObject2).setId(2131376076);
-      ((ViewGroup)localObject1).addView((View)localObject2, new ViewGroup.LayoutParams(-1, -1));
-      localObject1 = new SelectTopicFragment();
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("key_rowKey", paramString);
-      ((Bundle)localObject2).putInt("key_from", paramInt);
-      ((Bundle)localObject2).putInt("fragment_view_id", 2131376076);
-      ((BaseFragment)localObject1).setArguments((Bundle)localObject2);
-      ((BaseActivity)paramActivity).getSupportFragmentManager().beginTransaction().replace(2131376076, (Fragment)localObject1).commit();
-    }
-  }
-  
-  public static boolean b()
-  {
-    if (a() == 2) {
-      return true;
-    }
-    if (a() == 1) {
-      return ReadInJoyHelper.A();
-    }
-    return false;
-  }
-  
-  public static int c()
-  {
-    return Aladdin.getConfig(279).getIntegerFromString("ugc_topic_title_max_lengh", 12);
-  }
-  
   public static String c(Context paramContext)
   {
-    return Aladdin.getConfig(277).getString("ugc_video_create_text", paramContext.getResources().getString(2131717998));
+    return Aladdin.getConfig(295).getString("ugc_video_publish_public_and_remind_title", paramContext.getResources().getString(2131915472));
   }
   
   public static void c(Activity paramActivity)
@@ -753,7 +565,7 @@ public class RIJUgcUtils
     } else {
       a(paramActivity, null, 1);
     }
-    ReadinjoyTabFrame.t();
+    ReadinjoyTabFrame.E();
   }
   
   private static void c(Activity paramActivity, int paramInt)
@@ -769,121 +581,157 @@ public class RIJUgcUtils
     }
   }
   
-  public static boolean c()
+  public static void c(@NotNull UgcVideo paramUgcVideo)
   {
-    Object localObject = Aladdin.getConfig(358);
-    boolean bool = false;
-    if (((AladdinConfig)localObject).getIntegerFromString("upload_with_topic", 0) == 1) {
-      bool = true;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("vid", paramUgcVideo.seqId);
+      localJSONObject.put("title", paramUgcVideo.title);
+      localJSONObject.put("coverUrl", paramUgcVideo.coverUrl);
+      localJSONObject.put("coverLocalPath", paramUgcVideo.coverPath);
+      localJSONObject.put("coverWidth", paramUgcVideo.width);
+      localJSONObject.put("coverHeight", paramUgcVideo.height);
+      localJSONObject.put("duration", paramUgcVideo.duration * 1000);
+      paramUgcVideo = paramUgcVideo.getMultiTitleStruct();
+      if (paramUgcVideo != null)
+      {
+        paramUgcVideo = paramUgcVideo.iterator();
+        while (paramUgcVideo.hasNext())
+        {
+          BiuCommentInfo localBiuCommentInfo = (BiuCommentInfo)paramUgcVideo.next();
+          if ((localBiuCommentInfo.mOpType == 4) && (localBiuCommentInfo.jumpInfo != null)) {
+            localJSONObject.put("kdCommunityId", localBiuCommentInfo.jumpInfo.getId());
+          }
+        }
+      }
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("showDefaultSelectedColumn | show ");
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("RIJUGC.RIJUgcUtils", 2, ((StringBuilder)localObject).toString());
-    return bool;
+    catch (JSONException paramUgcVideo)
+    {
+      QLog.e("RIJUGC.RIJUgcUtils", 1, "sendAddOrUpdateUgcVideoInfo", paramUgcVideo);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramUgcVideo = new StringBuilder();
+      paramUgcVideo.append("sendAddOrUpdateUgcVideoInfo, params=");
+      paramUgcVideo.append(localJSONObject);
+      QLog.i("RIJUGC.RIJUgcUtils", 2, paramUgcVideo.toString());
+    }
+    SimpleEventBus.getInstance().dispatchEvent(new ViolaEvent("addOrUpdateUgcVideoInfo", localJSONObject));
   }
   
-  public static int d()
+  public static boolean c()
   {
-    return Aladdin.getConfig(279).getIntegerFromString("ugc_topic_brief_max_lengh", 60);
+    if (u()) {
+      return true;
+    }
+    if (b() == 2) {
+      return true;
+    }
+    if (b() == 1) {
+      return ReadInJoyHelper.V();
+    }
+    return false;
   }
   
   public static String d(Context paramContext)
   {
-    return Aladdin.getConfig(295).getString("ugc_video_publish_public_and_remind_title", paramContext.getResources().getString(2131717991));
+    return Aladdin.getConfig(295).getString("ugc_video_publish_public_and_remind_tips", paramContext.getResources().getString(2131915473));
   }
   
   public static boolean d()
   {
-    Object localObject = Aladdin.getConfig(354);
-    boolean bool = true;
-    if (((AladdinConfig)localObject).getIntegerFromString("ugc_publish_function_gif", 1) == 0) {
-      bool = false;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("showUgcPublishGifSwitch | show ");
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("RIJUGC.RIJUgcUtils", 2, ((StringBuilder)localObject).toString());
-    return bool;
-  }
-  
-  public static int e()
-  {
-    return Aladdin.getConfig(279).getIntegerFromString("ugc_video_title_max_length", 36);
-  }
-  
-  public static String e(Context paramContext)
-  {
-    return Aladdin.getConfig(295).getString("ugc_video_publish_public_and_remind_tips", paramContext.getResources().getString(2131717992));
-  }
-  
-  public static boolean e()
-  {
-    Object localObject = Aladdin.getConfig(354);
-    boolean bool = false;
-    if (((AladdinConfig)localObject).getIntegerFromString("ugc_publish_function_location", 0) != 0) {
-      bool = true;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("showUgcPublishLocationSwitch | show ");
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("RIJUGC.RIJUgcUtils", 2, ((StringBuilder)localObject).toString());
-    return bool;
-  }
-  
-  public static int f()
-  {
-    if (Aladdin.getConfig(295).getIntegerFromString("ugc_video_publish_show_public", 0) == 1) {
-      return 0;
-    }
-    return 8;
-  }
-  
-  public static String f(Context paramContext)
-  {
-    return Aladdin.getConfig(295).getString("ugc_video_publish_public_title", paramContext.getResources().getString(2131717990));
-  }
-  
-  public static boolean f()
-  {
-    Object localObject = Aladdin.getConfig(354);
-    boolean bool = false;
-    if (((AladdinConfig)localObject).getIntegerFromString("ugc_publish_entrance_topic", 0) != 0) {
-      bool = true;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("showUgcPublishTopicSwitch | show ");
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("RIJUGC.RIJUgcUtils", 2, ((StringBuilder)localObject).toString());
-    return bool;
-  }
-  
-  public static int g()
-  {
-    int i = Aladdin.getConfig(295).getIntegerFromString("ugc_video_publish_public_default", 2);
-    if (i == 1) {
-      return UgcVideo.TYPE_PUBLIC_AND_REMIND;
-    }
-    if (i == 3) {
-      return UgcVideo.TYPE_NO_PUBLIC;
-    }
-    return UgcVideo.TYPE_PUBLIC;
-  }
-  
-  public static String g(Context paramContext)
-  {
-    return Aladdin.getConfig(295).getString("ugc_video_publish_public_tips", paramContext.getResources().getString(2131717993));
-  }
-  
-  public static boolean g()
-  {
-    boolean bool2 = UgcPublishPermissionUtil.a.a();
+    boolean bool2 = u();
     boolean bool1 = true;
     if (bool2) {
       return true;
     }
+    if (Aladdin.getConfig(354).getIntegerFromString("ugc_publish_function_gif", 1) == 0) {
+      bool1 = false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showUgcPublishGifSwitch | show ");
+    localStringBuilder.append(bool1);
+    QLog.d("RIJUGC.RIJUgcUtils", 2, localStringBuilder.toString());
+    return bool1;
+  }
+  
+  public static String e(Context paramContext)
+  {
+    return Aladdin.getConfig(295).getString("ugc_video_publish_public_title", paramContext.getResources().getString(2131915471));
+  }
+  
+  public static boolean e()
+  {
+    boolean bool2 = u();
+    boolean bool1 = true;
+    if (bool2) {
+      return true;
+    }
+    if (Aladdin.getConfig(354).getIntegerFromString("ugc_publish_function_location", 0) == 0) {
+      bool1 = false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showUgcPublishLocationSwitch | show ");
+    localStringBuilder.append(bool1);
+    QLog.d("RIJUGC.RIJUgcUtils", 2, localStringBuilder.toString());
+    return bool1;
+  }
+  
+  public static String f(Context paramContext)
+  {
+    return Aladdin.getConfig(295).getString("ugc_video_publish_public_tips", paramContext.getResources().getString(2131915474));
+  }
+  
+  public static boolean f()
+  {
+    boolean bool2 = u();
+    boolean bool1 = true;
+    if (bool2) {
+      return true;
+    }
+    if (Aladdin.getConfig(354).getIntegerFromString("ugc_publish_entrance_topic", 0) == 0) {
+      bool1 = false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showUgcPublishTopicSwitch | show ");
+    localStringBuilder.append(bool1);
+    QLog.d("RIJUGC.RIJUgcUtils", 2, localStringBuilder.toString());
+    return bool1;
+  }
+  
+  public static int g()
+  {
+    int i = Aladdin.getConfig(354).getIntegerFromString("ugc_publish_restriction_textLength", 100);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getUgcPublishTextMaxLength | length ");
+    localStringBuilder.append(i);
+    QLog.d("RIJUGC.RIJUgcUtils", 2, localStringBuilder.toString());
+    return i;
+  }
+  
+  public static String g(Context paramContext)
+  {
+    return Aladdin.getConfig(295).getString("ugc_video_publish_private_title", paramContext.getResources().getString(2131915454));
+  }
+  
+  public static String h(Context paramContext)
+  {
+    return Aladdin.getConfig(295).getString("ugc_video_publish_private_tips", paramContext.getResources().getString(2131915455));
+  }
+  
+  public static boolean h()
+  {
+    boolean bool2 = u();
+    boolean bool1 = true;
+    if (bool2) {
+      return true;
+    }
+    if (UgcPublishPermissionUtil.a.a()) {
+      return true;
+    }
     Object localObject = Aladdin.getConfig(277);
-    if ((!b()) || (((AladdinConfig)localObject).getIntegerFromString("ugc_publish_create_entrance", 0) == 0)) {
+    if ((!c()) || (((AladdinConfig)localObject).getIntegerFromString("ugc_publish_create_entrance", 0) == 0)) {
       bool1 = false;
     }
     localObject = new StringBuilder();
@@ -893,75 +741,15 @@ public class RIJUgcUtils
     return bool1;
   }
   
-  public static int h()
-  {
-    return Aladdin.getConfig(283).getIntegerFromString("create_column_redirect", 2);
-  }
-  
-  public static String h(Context paramContext)
-  {
-    return Aladdin.getConfig(295).getString("ugc_video_publish_private_title", paramContext.getResources().getString(2131717974));
-  }
-  
-  public static boolean h()
-  {
-    if (UgcPublishPermissionUtil.a.a()) {
-      return UgcPublishPermissionUtil.a.c();
-    }
-    boolean bool3 = b();
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if (bool3)
-    {
-      Object localObject = Aladdin.getConfig(277);
-      int i;
-      if (((AladdinConfig)localObject).getIntegerFromString("ugc_upload_video_authority", 0) == 2) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      int j;
-      if (((AladdinConfig)localObject).getIntegerFromString("ugc_topic_create_entrance", 0) != 0) {
-        j = 1;
-      } else {
-        j = 0;
-      }
-      bool1 = bool2;
-      if (i())
-      {
-        bool1 = bool2;
-        if (i != 0)
-        {
-          bool1 = bool2;
-          if (j != 0) {
-            bool1 = true;
-          }
-        }
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("needShowCreateColumnEntry | showColumnCreateEntry ");
-      ((StringBuilder)localObject).append(bool1);
-      QLog.d("RIJUGC.RIJUgcUtils", 2, ((StringBuilder)localObject).toString());
-    }
-    return bool1;
-  }
-  
-  public static int i()
-  {
-    return Aladdin.getConfig(283).getIntegerFromString("upload_video_redirect", 2);
-  }
-  
-  public static String i(Context paramContext)
-  {
-    return Aladdin.getConfig(295).getString("ugc_video_publish_private_tips", paramContext.getResources().getString(2131717975));
-  }
-  
   public static boolean i()
   {
+    if (u()) {
+      return true;
+    }
     if (UgcPublishPermissionUtil.a.a()) {
       return true;
     }
-    if (b()) {
+    if (c()) {
       return j();
     }
     return false;
@@ -969,6 +757,9 @@ public class RIJUgcUtils
   
   public static boolean j()
   {
+    if (u()) {
+      return true;
+    }
     Object localObject = Aladdin.getConfig(277);
     boolean bool2 = false;
     int i = ((AladdinConfig)localObject).getIntegerFromString("ugc_video_upload_entrance", 0);
@@ -990,62 +781,142 @@ public class RIJUgcUtils
   
   public static boolean k()
   {
-    if (UgcPublishPermissionUtil.a.a()) {
-      return UgcPublishPermissionUtil.a.c();
+    if (u()) {
+      return true;
     }
-    Object localObject = Aladdin.getConfig(277);
-    boolean bool = false;
-    if (((AladdinConfig)localObject).getIntegerFromString("ugc_upload_video_authority", 0) == 2) {
-      bool = true;
+    if (c()) {
+      return Aladdin.getConfig(277).getIntegerFromString("add_to_column_entrance", 0) != 0;
     }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("showVideoColumnPanel | show ");
-    ((StringBuilder)localObject).append(bool);
-    QLog.d("RIJUGC.RIJUgcUtils", 1, ((StringBuilder)localObject).toString());
-    return bool;
+    return false;
   }
   
   public static boolean l()
   {
-    boolean bool3 = b();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bool3)
+    if (u()) {
+      return true;
+    }
+    if (UgcPublishPermissionUtil.a.a()) {
+      return UgcPublishPermissionUtil.a.b();
+    }
+    return (c()) && (n());
+  }
+  
+  public static boolean m()
+  {
+    if (u()) {
+      return true;
+    }
+    return (ReadInJoyHelper.K(RIJQQAppInterfaceUtil.e()) & 0x2) != 0;
+  }
+  
+  public static boolean n()
+  {
+    boolean bool1 = u();
+    boolean bool2 = true;
+    if (bool1) {
+      return true;
+    }
+    bool1 = bool2;
+    if (!h())
     {
       bool1 = bool2;
-      if (Aladdin.getConfig(277).getIntegerFromString("add_to_column_entrance", 0) != 0) {
-        bool1 = true;
+      if (!j())
+      {
+        if (m()) {
+          return true;
+        }
+        bool1 = false;
       }
     }
     return bool1;
   }
   
-  public static boolean m()
+  public static int o()
   {
-    if (UgcPublishPermissionUtil.a.a()) {
-      return UgcPublishPermissionUtil.a.b();
+    return Aladdin.getConfig(279).getIntegerFromString("ugc_video_title_max_length", 36);
+  }
+  
+  public static int p()
+  {
+    if (Aladdin.getConfig(295).getIntegerFromString("ugc_video_publish_show_public", 0) == 1) {
+      return 0;
     }
-    return (b()) && (o());
+    return 8;
   }
   
-  public static boolean n()
+  public static int q()
   {
-    return (ReadInJoyHelper.m(RIJQQAppInterfaceUtil.a()) & 0x2) != 0;
+    int i = Aladdin.getConfig(295).getIntegerFromString("ugc_video_publish_public_default", 2);
+    if (i == 1) {
+      return UgcVideo.TYPE_PUBLIC_AND_REMIND;
+    }
+    if (i == 3) {
+      return UgcVideo.TYPE_NO_PUBLIC;
+    }
+    return UgcVideo.TYPE_PUBLIC;
   }
   
-  public static boolean o()
+  public static int r()
   {
-    return (g()) || (h()) || (j()) || (n());
+    return Aladdin.getConfig(283).getIntegerFromString("upload_video_redirect", 2);
   }
   
-  public static boolean p()
+  public static String s()
   {
-    return i();
+    String str = Aladdin.getConfig(284).getString("ugc_topic_detail_page_url", "");
+    if (!str.isEmpty()) {
+      try
+      {
+        str = URLDecoder.decode(str, "UTF-8");
+        return str;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getViolaColumnDetailPageUrl decode fail. e : ");
+        localStringBuilder.append(localUnsupportedEncodingException.toString());
+        QLog.e("RIJUGC.RIJUgcUtils", 1, localStringBuilder.toString());
+        return "https://viola.qq.com/js/columnDetail.js?_rij_violaUrl=1&v_tid=6&v_bundleName=columnDetail&hideNav=1&v_nav_immer=1&statusColor=1&v_bid=3740&from_page=4&topicId=";
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("RIJUGC.RIJUgcUtils", 2, "getViolaColumnDetailPageUrl from aladdin fail.");
+    }
+    return "https://viola.qq.com/js/columnDetail.js?_rij_violaUrl=1&v_tid=6&v_bundleName=columnDetail&hideNav=1&v_nav_immer=1&statusColor=1&v_bid=3740&from_page=4&topicId=";
+  }
+  
+  public static String t()
+  {
+    String str = Aladdin.getConfig(284).getString("ugc_my_video_list_page_url", "");
+    if (!str.isEmpty()) {
+      try
+      {
+        str = URLDecoder.decode(str, "UTF-8");
+        return str;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getViolaMyVideoListPageUrl decode fail. e : ");
+        localStringBuilder.append(localUnsupportedEncodingException.toString());
+        QLog.e("RIJUGC.RIJUgcUtils", 1, localStringBuilder.toString());
+        return "https://viola.qq.com/js/columnAddVideo.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=2&v_bundleName=columnAddVideo&v_bid=3740&colid=";
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("RIJUGC.RIJUgcUtils", 2, "getViolaMyVideoListPageUrl from aladdin fail.");
+    }
+    return "https://viola.qq.com/js/columnAddVideo.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=2&v_bundleName=columnAddVideo&v_bid=3740&colid=";
+  }
+  
+  private static boolean u()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,9 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.kandian.biz.feeds.channelcover.ChannelCoverView;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelCoverInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -31,21 +30,38 @@ public class ReadInJoyNavigationAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  public final int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReadInJoyNavigationAdapter.ChannelButtonListener jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationAdapter$ChannelButtonListener;
-  private List<ChannelCoverInfo> jdField_a_of_type_JavaUtilList;
+  public final int a = -9387998;
   public int b = -13879999;
   public int c = -723466;
+  private Context d;
+  private List<ChannelCoverInfo> e;
+  private ReadInJoyNavigationAdapter.ChannelButtonListener f;
   
   public ReadInJoyNavigationAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_Int = -9387998;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.d = paramContext;
+    this.e = new ArrayList();
   }
   
-  private List<ChannelCoverInfo> a(List<ChannelCoverInfo> paramList)
+  private void a(View paramView, int paramInt)
+  {
+    GradientDrawable localGradientDrawable1 = new GradientDrawable();
+    localGradientDrawable1.setShape(0);
+    localGradientDrawable1.setCornerRadius(ViewUtils.dip2px(17.0F));
+    localGradientDrawable1.setColor(-723466);
+    localGradientDrawable1.setStroke(1, paramInt);
+    GradientDrawable localGradientDrawable2 = new GradientDrawable();
+    localGradientDrawable2.setShape(0);
+    localGradientDrawable2.setCornerRadius(ViewUtils.dip2px(17.0F));
+    localGradientDrawable2.setColor(-2697514);
+    localGradientDrawable2.setStroke(1, paramInt);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, localGradientDrawable2);
+    localStateListDrawable.addState(StateSet.WILD_CARD, localGradientDrawable1);
+    paramView.setBackgroundDrawable(localStateListDrawable);
+  }
+  
+  private List<ChannelCoverInfo> b(List<ChannelCoverInfo> paramList)
   {
     Object localObject = paramList;
     if (paramList != null)
@@ -58,42 +74,24 @@ public class ReadInJoyNavigationAdapter
     return localObject;
   }
   
-  private void a(View paramView, int paramInt)
-  {
-    GradientDrawable localGradientDrawable1 = new GradientDrawable();
-    localGradientDrawable1.setShape(0);
-    localGradientDrawable1.setCornerRadius(ViewUtils.a(17.0F));
-    localGradientDrawable1.setColor(-723466);
-    localGradientDrawable1.setStroke(1, paramInt);
-    GradientDrawable localGradientDrawable2 = new GradientDrawable();
-    localGradientDrawable2.setShape(0);
-    localGradientDrawable2.setCornerRadius(ViewUtils.a(17.0F));
-    localGradientDrawable2.setColor(-2697514);
-    localGradientDrawable2.setStroke(1, paramInt);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, localGradientDrawable2);
-    localStateListDrawable.addState(StateSet.WILD_CARD, localGradientDrawable1);
-    paramView.setBackgroundDrawable(localStateListDrawable);
-  }
-  
   public void a(ReadInJoyNavigationAdapter.ChannelButtonListener paramChannelButtonListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationAdapter$ChannelButtonListener = paramChannelButtonListener;
+    this.f = paramChannelButtonListener;
   }
   
   public void a(List<ChannelCoverInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(a(paramList));
+    this.e.clear();
+    this.e.addAll(b(paramList));
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNavigationAdapter", 2, new Object[] { "mChannels size: ", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+      QLog.d("ReadInJoyNavigationAdapter", 2, new Object[] { "mChannels size: ", Integer.valueOf(this.e.size()) });
     }
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.e;
     if (localList != null) {
       return localList.size();
     }
@@ -102,7 +100,7 @@ public class ReadInJoyNavigationAdapter
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.e.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -115,9 +113,9 @@ public class ReadInJoyNavigationAdapter
     if (paramView == null)
     {
       paramView = new ReadInJoyNavigationAdapter.ViewHolder(this, null);
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560242, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131365132);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131378259));
+      paramViewGroup = LayoutInflater.from(this.d).inflate(2131626289, paramViewGroup, false);
+      paramView.a = paramViewGroup.findViewById(2131431280);
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131446778));
       paramViewGroup.setTag(paramView);
     }
     else
@@ -126,45 +124,45 @@ public class ReadInJoyNavigationAdapter
       paramViewGroup = paramView;
       paramView = (View)localObject;
     }
-    Object localObject = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject = (ChannelCoverInfo)this.e.get(paramInt);
     if (localObject != null)
     {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((ChannelCoverInfo)localObject).mChannelCoverName);
+      paramView.b.setText(((ChannelCoverInfo)localObject).mChannelCoverName);
       int j = 14;
       int i = 5;
       paramInt = 12;
-      if (DeviceInfoUtil.m() < 1080L)
+      if (DeviceInfoUtil.H() < 1080L)
       {
         i = 4;
         paramInt = 11;
       }
-      if (paramView.jdField_a_of_type_AndroidWidgetTextView.length() >= i) {
+      if (paramView.b.length() >= i) {
         j = paramInt;
       }
-      float f = FontSettingManager.getFontLevel() / 16.0F;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextSize(j / f);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(((ChannelCoverInfo)localObject).mFontColor);
-      a(paramView.jdField_a_of_type_AndroidViewView, this.c);
+      float f1 = FontSettingManager.getFontLevel() / 16.0F;
+      paramView.b.setTextSize(j / f1);
+      paramView.b.setTextColor(((ChannelCoverInfo)localObject).mFontColor);
+      a(paramView.a, this.c);
       if (TextUtils.isEmpty(((ChannelCoverInfo)localObject).mIconUrl))
       {
-        paramView.jdField_a_of_type_AndroidViewView.setPadding(ViewUtils.a(8.0F), 0, ViewUtils.a(8.0F), 0);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+        paramView.a.setPadding(ViewUtils.dip2px(8.0F), 0, ViewUtils.dip2px(8.0F), 0);
+        paramView.b.setCompoundDrawables(null, null, null, null);
+        paramView.b.setGravity(17);
       }
       if (!((ChannelCoverInfo)localObject).isReport)
       {
         ((ChannelCoverInfo)localObject).isReport = true;
         ChannelCoverView.a("0X8007F01", (ChannelCoverInfo)localObject, ChannelCoverView.b);
       }
-      paramView.jdField_a_of_type_AndroidViewView.setTag(localObject);
-      paramView.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      paramView.a.setTag(localObject);
+      paramView.a.setOnClickListener(this);
     }
     return paramViewGroup;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131365132) {
+    if (paramView.getId() != 2131431280) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -179,7 +177,7 @@ public class ReadInJoyNavigationAdapter
         localObject = new HashMap();
         ((HashMap)localObject).put("param_key_ariticle_id", Long.valueOf(localChannelCoverInfo.mArticleId));
         ((HashMap)localObject).put("param_key_channel_cover_style", Integer.valueOf(localChannelCoverInfo.mChannelCoverStyle));
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchChannelActivity(this.jdField_a_of_type_AndroidContentContext, localChannelCoverInfo.mChannelCoverId, localChannelCoverInfo.mChannelCoverName, localChannelCoverInfo.mChannelType, 4, (Map)localObject);
+        ReadInJoyActivityHelper.INSTANCE.launchChannelActivity(this.d, localChannelCoverInfo.mChannelCoverId, localChannelCoverInfo.mChannelCoverName, localChannelCoverInfo.mChannelType, 4, (Map)localObject);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -198,15 +196,15 @@ public class ReadInJoyNavigationAdapter
       }
       else
       {
-        if (ViolaAccessHelper.c(localChannelCoverInfo.mChannelJumpUrl))
+        if (ViolaAccessHelper.e(localChannelCoverInfo.mChannelJumpUrl))
         {
-          ViolaAccessHelper.a(this.jdField_a_of_type_AndroidContentContext, "", localChannelCoverInfo.mChannelJumpUrl, null);
+          ViolaAccessHelper.a(this.d, "", localChannelCoverInfo.mChannelJumpUrl, null);
         }
         else
         {
-          localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          localObject = new Intent(this.d, QQBrowserActivity.class);
           ((Intent)localObject).putExtra("url", localChannelCoverInfo.mChannelJumpUrl);
-          this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+          this.d.startActivity((Intent)localObject);
         }
         if (QLog.isColorLevel())
         {
@@ -218,14 +216,14 @@ public class ReadInJoyNavigationAdapter
       }
       ChannelCoverView.a("0X8007F02", localChannelCoverInfo, ChannelCoverView.b);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationAdapter$ChannelButtonListener != null) && ((paramView.getTag() instanceof ChannelCoverInfo))) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationAdapter$ChannelButtonListener.a((ChannelCoverInfo)paramView.getTag());
+    if ((this.f != null) && ((paramView.getTag() instanceof ChannelCoverInfo))) {
+      this.f.a((ChannelCoverInfo)paramView.getTag());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyNavigationAdapter
  * JD-Core Version:    0.7.0.1
  */

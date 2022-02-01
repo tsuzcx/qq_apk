@@ -16,9 +16,9 @@ class QCallDetailActivity$4
       return;
     }
     Object localObject = this.this$0;
-    if (QCallDetailActivity.a((QCallDetailActivity)localObject, QCallDetailActivity.a((QCallDetailActivity)localObject)))
+    if (QCallDetailActivity.a((QCallDetailActivity)localObject, QCallDetailActivity.b((QCallDetailActivity)localObject)))
     {
-      localObject = UinTypeUtil.c;
+      localObject = UinTypeUtil.d;
       int m = localObject.length;
       int k = 0;
       int i = 0;
@@ -43,10 +43,10 @@ class QCallDetailActivity$4
         if (localObject == null) {
           localObject = null;
         } else {
-          localObject = ((IPhoneContactService)localObject).queryContactByCodeNumber(QCallDetailActivity.a(this.this$0));
+          localObject = ((IPhoneContactService)localObject).queryContactByCodeNumber(QCallDetailActivity.b(this.this$0));
         }
         if (localObject != null) {
-          QCallDetailActivity.a(this.this$0).a(((PhoneContact)localObject).mobileCode, 1006, QCallDetailActivity.a(this.this$0), QCallDetailActivity.a(this.this$0));
+          QCallDetailActivity.e(this.this$0).a(((PhoneContact)localObject).mobileCode, 1006, QCallDetailActivity.b(this.this$0), QCallDetailActivity.a(this.this$0));
         }
       }
     }
@@ -54,7 +54,7 @@ class QCallDetailActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.4
  * JD-Core Version:    0.7.0.1
  */

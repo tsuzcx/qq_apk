@@ -12,12 +12,12 @@ final class WSLiveAnimation$2
   
   public void a(LottieComposition paramLottieComposition)
   {
-    WSLiveAnimation.a(paramLottieComposition, this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, this.jdField_a_of_type_AndroidGraphicsBitmap, this.b);
+    WSLiveAnimation.a(paramLottieComposition, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.live.WSLiveAnimation.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class HongBaoPanel$7
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
     if (paramInt == 0) {
-      HongBaoPanel.b(this.a);
+      HongBaoPanel.g(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel.7
  * JD-Core Version:    0.7.0.1
  */

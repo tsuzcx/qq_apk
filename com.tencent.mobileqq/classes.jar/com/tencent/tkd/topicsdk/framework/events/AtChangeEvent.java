@@ -7,19 +7,13 @@ import kotlin.Metadata;
 public final class AtChangeEvent
   implements IEvent
 {
-  private static final int a = 1;
-  public static final AtChangeEvent.Companion a;
-  private static final int b = 2;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkEventsAtChangeEvent$Companion = new AtChangeEvent.Companion(null);
-    jdField_a_of_type_Int = 1;
-  }
+  public static final AtChangeEvent.Companion a = new AtChangeEvent.Companion(null);
+  private static final int b = 1;
+  private static final int c = 2;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.events.AtChangeEvent
  * JD-Core Version:    0.7.0.1
  */

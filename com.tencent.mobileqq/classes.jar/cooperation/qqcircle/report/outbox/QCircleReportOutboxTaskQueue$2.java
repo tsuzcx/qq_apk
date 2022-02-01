@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report.outbox;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
 
 class QCircleReportOutboxTaskQueue$2
@@ -18,12 +18,12 @@ class QCircleReportOutboxTaskQueue$2
       QCircleNetDetectHelper.detectQCircleNetConnection(new QCircleReportOutboxTaskQueue.2.1(this));
       return;
     }
-    RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "no outbox tasks left,direct return!");
+    QLog.d("QCircleReportOutboxTaskQueue", 1, "no outbox tasks left,direct return!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue.2
  * JD-Core Version:    0.7.0.1
  */

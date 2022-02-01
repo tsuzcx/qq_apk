@@ -13,13 +13,13 @@ class AIOImageListScene$6
   public void onClick(View paramView)
   {
     this.a.a(((TextView)paramView).getText().toString());
-    this.a.w();
+    this.a.A();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.6
  * JD-Core Version:    0.7.0.1
  */

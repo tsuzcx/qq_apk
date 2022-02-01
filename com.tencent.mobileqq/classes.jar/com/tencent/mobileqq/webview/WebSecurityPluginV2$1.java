@@ -15,10 +15,10 @@ class WebSecurityPluginV2$1
   
   public void callback(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.isDestroy) {
+    if (this.c.isDestroy) {
       return;
     }
-    if (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.b, this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.equals(this.c.b, this.a))
     {
       if (QLog.isColorLevel()) {
         QLog.i("WebSecurityPluginV2", 2, "receive check result but not current url");
@@ -35,19 +35,19 @@ class WebSecurityPluginV2$1
       int m = paramBundle.getInt("subLevel");
       int n = paramBundle.getInt("umrType");
       long l = paramBundle.getLong("operationBit");
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2;
-      int i1 = ((WebSecurityPluginV2)localObject2).jdField_a_of_type_Boolean;
+      localObject2 = this.c;
+      int i1 = ((WebSecurityPluginV2)localObject2).c;
       if (k == 15) {
         i = 1;
       } else {
         i = 0;
       }
-      ((WebSecurityPluginV2)localObject2).jdField_a_of_type_Boolean = (i1 & i);
+      ((WebSecurityPluginV2)localObject2).c = (i1 & i);
       if (j == 0)
       {
         paramBundle = (Bundle)localObject1;
-        if (!this.jdField_a_of_type_Boolean) {
-          paramBundle = this.jdField_a_of_type_JavaLangString;
+        if (!this.b) {
+          paramBundle = this.a;
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("check pass l=");
@@ -68,7 +68,7 @@ class WebSecurityPluginV2$1
         ((StringBuilder)localObject1).append(n);
         QLog.i("UrlCheckLog", 1, ((StringBuilder)localObject1).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.a(l);
+      this.c.a(l);
     }
     else
     {
@@ -77,20 +77,20 @@ class WebSecurityPluginV2$1
       paramBundle.append(i);
       QLog.i("UrlCheckLog", 1, paramBundle.toString());
       paramBundle = (Bundle)localObject2;
-      if (!this.jdField_a_of_type_Boolean) {
-        paramBundle = this.jdField_a_of_type_JavaLangString;
+      if (!this.b) {
+        paramBundle = this.a;
       }
     }
     if (!TextUtils.isEmpty(paramBundle))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.mRuntime.a();
+      localObject1 = this.c.mRuntime.a();
       if (localObject1 != null)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("now jump url=");
         ((StringBuilder)localObject2).append(Util.b(paramBundle, new String[0]));
         QLog.i("WebSecurityPluginV2", 1, ((StringBuilder)localObject2).toString());
-        this.jdField_a_of_type_ComTencentMobileqqWebviewWebSecurityPluginV2.jdField_a_of_type_JavaLangString = paramBundle;
+        this.c.a = paramBundle;
         ((CustomWebView)localObject1).loadUrl(paramBundle);
       }
     }
@@ -98,7 +98,7 @@ class WebSecurityPluginV2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebSecurityPluginV2.1
  * JD-Core Version:    0.7.0.1
  */

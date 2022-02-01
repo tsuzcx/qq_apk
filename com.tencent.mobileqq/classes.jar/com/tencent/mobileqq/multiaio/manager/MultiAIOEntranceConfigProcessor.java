@@ -28,10 +28,10 @@ public class MultiAIOEntranceConfigProcessor
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed : ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("MultiAIOEntranceConfigProcessor", 2, localStringBuilder.toString());
       }
-      return MultiAIOEntranceConfigData.a(paramArrayOfQConfItem[0].a);
+      return MultiAIOEntranceConfigData.a(paramArrayOfQConfItem[0].b);
     }
     return new MultiAIOEntranceConfigData();
   }
@@ -86,7 +86,7 @@ public class MultiAIOEntranceConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.manager.MultiAIOEntranceConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class CommentPresenter$OnFeedCommentElementClickListener$2
   
   public void onClick(View paramView)
   {
-    if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a) != null)
+    if (CommentPresenter.k(this.b.a) != null)
     {
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a, CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a).a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment));
-      CommentPresenter.c(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a, true);
+      CommentPresenter.a(this.b.a, CommentPresenter.i(this.b.a).b(CommentPresenter.k(this.b.a), this.a));
+      CommentPresenter.c(this.b.a, true);
     }
-    CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter$OnFeedCommentElementClickListener.a).dismiss();
+    CommentPresenter.r(this.b.a).dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

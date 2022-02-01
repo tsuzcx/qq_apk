@@ -12,15 +12,15 @@ class PhotoListPanelProvider$3
   
   public void a()
   {
-    if (((ReceiptHelper)PhotoListPanelProvider.a(this.a).a(118)).a) {
-      ((ReceiptHelper)PhotoListPanelProvider.a(this.a).a(118)).a();
+    if (((ReceiptHelper)PhotoListPanelProvider.a(this.a).q(118)).a) {
+      ((ReceiptHelper)PhotoListPanelProvider.a(this.a).q(118)).a();
     }
-    PhotoListPanelProvider.a(this.a).a(PhotoListPanelProvider.a(this.a).hashCode());
+    PhotoListPanelProvider.b(this.a).b(PhotoListPanelProvider.a(this.a).hashCode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PhotoListPanelProvider.3
  * JD-Core Version:    0.7.0.1
  */

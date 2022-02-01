@@ -38,9 +38,9 @@ public class PhotoListCustomizationFileAssistant
     if (QLog.isColorLevel()) {
       QLog.i("PhotoListCustomizationFileAssistant", 1, "...onActivityResult...");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.setResult(-1, paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.finish();
-    AlbumUtil.anim(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, false, false);
+    this.c.setResult(-1, paramIntent);
+    this.c.finish();
+    AlbumUtil.anim(this.c, false, false);
   }
   
   protected void a(Activity paramActivity, Intent paramIntent, ArrayList<String> paramArrayList)
@@ -63,11 +63,11 @@ public class PhotoListCustomizationFileAssistant
     boolean bool = false;
     int i = 0;
     int j = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size())
+    while (i < this.e.selectedPhotoList.size())
     {
-      if (!ImageManager.isNetworkUrl((String)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.get(i)))
+      if (!ImageManager.isNetworkUrl((String)this.e.selectedPhotoList.get(i)))
       {
-        LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.a(i);
+        LocalMediaInfo localLocalMediaInfo = this.h.t.a(i);
         if ((AlbumUtil.getMediaType(localLocalMediaInfo) == 1) && (localLocalMediaInfo != null))
         {
           SendVideoInfo localSendVideoInfo = new SendVideoInfo();
@@ -89,10 +89,10 @@ public class PhotoListCustomizationFileAssistant
       i = 0;
     }
     paramBoolean = bool;
-    if (SVBusiUtil.b != 0L)
+    if (SVBusiUtil.c != 0L)
     {
       paramBoolean = bool;
-      if (System.currentTimeMillis() - SVBusiUtil.b < 300000L) {
+      if (System.currentTimeMillis() - SVBusiUtil.c < 300000L) {
         paramBoolean = true;
       }
     }
@@ -102,32 +102,32 @@ public class PhotoListCustomizationFileAssistant
       paramArrayList.append("PhotoListCustomizationDataline isConfirmed=");
       paramArrayList.append(paramBoolean);
       paramArrayList.append(" allowUploadInXGTime=");
-      paramArrayList.append(SVBusiUtil.b);
+      paramArrayList.append(SVBusiUtil.c);
       QLog.d("QQAlbum", 2, paramArrayList.toString());
     }
     if ((NetworkUtil.isMobileNetWork(BaseApplicationImpl.getContext())) && (!paramBoolean) && (i != 0))
     {
-      paramArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getResources().getString(2131718735);
+      paramArrayList = this.c.getResources().getString(2131916238);
       paramIntent = new PhotoListCustomizationFileAssistant.1(this, paramIntent);
-      if (FreeWifiHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, 4, new PhotoListCustomizationFileAssistant.2(this, paramIntent))) {
-        DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, 232, null, paramArrayList, new PhotoListCustomizationFileAssistant.3(this, paramIntent), new PhotoListCustomizationFileAssistant.4(this)).show();
+      if (FreeWifiHelper.a(this.c, 4, new PhotoListCustomizationFileAssistant.2(this, paramIntent))) {
+        DialogUtil.a(this.c, 232, null, paramArrayList, new PhotoListCustomizationFileAssistant.3(this, paramIntent), new PhotoListCustomizationFileAssistant.4(this)).show();
       }
       if (QLog.isColorLevel()) {
         QLog.i("QQAlbum", 2, "show datalinephoto_mobile_send_confirm dialog");
       }
       return;
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, paramIntent, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList);
+    a(this.c, paramIntent, this.e.selectedPhotoList);
   }
   
   public void b(Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.startActivityForResult(paramIntent, 10010);
+    this.c.startActivityForResult(paramIntent, 10010);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationFileAssistant
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ class RMVideoIdleState
 {
   public void a()
   {
-    RMVideoStateMgr.a().a.c();
+    RMVideoStateMgr.a().v.cc_();
     if (QLog.isColorLevel()) {
       QLog.d("RMVideoIdleState", 2, "[@] initState end");
     }
@@ -19,13 +19,13 @@ class RMVideoIdleState
     if (QLog.isColorLevel()) {
       QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
     }
-    localRMVideoStateMgr.a.a(100);
+    localRMVideoStateMgr.v.a(100);
     localRMVideoStateMgr.a(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoIdleState
  * JD-Core Version:    0.7.0.1
  */

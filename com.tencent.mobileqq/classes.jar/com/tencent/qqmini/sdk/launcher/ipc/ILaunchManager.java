@@ -10,7 +10,7 @@ public abstract interface ILaunchManager
 {
   public abstract void onAppLifecycle(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle);
   
-  public abstract void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo);
+  public abstract void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver);
   
   public abstract Bundle requestAync(String paramString1, String paramString2, Bundle paramBundle);
   
@@ -24,7 +24,7 @@ public abstract interface ILaunchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager
  * JD-Core Version:    0.7.0.1
  */

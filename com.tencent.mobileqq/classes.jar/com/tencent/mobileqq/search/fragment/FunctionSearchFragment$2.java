@@ -21,7 +21,7 @@ class FunctionSearchFragment$2
   
   protected IPresenter<ISearchResultModel, ISearchResultView> a(int paramInt)
   {
-    return new ActiveEntitySearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, 268435456);
+    return new ActiveEntitySearchResultPresenter(this.b, 268435456);
   }
   
   protected IView a(int paramInt, ViewGroup paramViewGroup)
@@ -31,7 +31,7 @@ class FunctionSearchFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.FunctionSearchFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,27 +15,27 @@ final class ArNativeSoLoader$1
   public void run()
   {
     Object localObject1 = new HashMap();
-    ((HashMap)localObject1).put("param_soLoaderName", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject1).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Byte));
+    ((HashMap)localObject1).put("param_soLoaderName", this.a);
+    ((HashMap)localObject1).put("param_FailCode", String.valueOf(this.b));
     Object localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
     boolean bool;
-    if (this.jdField_a_of_type_Byte == 0) {
+    if (this.b == 0) {
       bool = true;
     } else {
       bool = false;
     }
     ((StatisticCollector)localObject2).collectPerformance(null, "AREnable", bool, 0L, 0L, (HashMap)localObject1, null);
-    localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localObject1 = this.c.edit();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("ar_native_so_load_result");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-    ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), this.jdField_a_of_type_Byte);
+    ((StringBuilder)localObject2).append(this.a);
+    ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), this.b);
     SharedPreUtils.a((SharedPreferences.Editor)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

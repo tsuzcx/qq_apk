@@ -10,13 +10,13 @@ class TogetherWatchingDelegate$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TogetherWatchingDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate, this.jdField_a_of_type_JavaLangString, "clk_unableframe_cancel");
+    TogetherWatchingDelegate.a(this.b, this.a, "clk_unableframe_cancel");
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherWatchingDelegate.4
  * JD-Core Version:    0.7.0.1
  */

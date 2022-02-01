@@ -10,8 +10,10 @@ import com.tencent.aelight.camera.ae.part.VideoStoryCapturePartManager;
 
 public class BeautyAndFilterPanelViewStubHolder
   extends BaseViewStubHolder
+  implements BeautyAndFilterPanel
 {
   private AEProviderContainerView a;
+  private AECaptureMode b;
   
   public BeautyAndFilterPanelViewStubHolder(ViewStub paramViewStub)
   {
@@ -20,7 +22,7 @@ public class BeautyAndFilterPanelViewStubHolder
   
   protected void a(View paramView)
   {
-    this.a = ((AEProviderContainerView)paramView.findViewById(2064121976));
+    this.a = ((AEProviderContainerView)paramView.findViewById(2063990904));
   }
   
   public void a(AECaptureController paramAECaptureController, VideoStoryCapturePartManager paramVideoStoryCapturePartManager)
@@ -35,62 +37,63 @@ public class BeautyAndFilterPanelViewStubHolder
   
   public void a(AECaptureMode paramAECaptureMode)
   {
-    if (!a()) {
+    this.b = paramAECaptureMode;
+    if (!ap_()) {
       return;
     }
     this.a.setCaptureMode(paramAECaptureMode);
   }
   
-  public void b()
+  public void an_()
   {
-    a();
+    c();
     this.a.setVisibility(0);
     this.a.b();
   }
   
-  public boolean b()
+  public boolean ao_()
   {
-    if (!a()) {
+    if (!ap_()) {
       return false;
     }
-    return this.a.c();
+    return this.a.l();
   }
   
-  public void c()
+  public void b()
   {
-    if (!a()) {
+    if (!ap_()) {
       return;
     }
-    this.a.a();
+    this.a.h();
   }
   
   public void d()
   {
-    if (!a()) {
+    if (!ap_()) {
       return;
     }
-    this.a.d();
+    this.a.i();
   }
   
   public void e()
   {
-    if (!a()) {
-      return;
-    }
-    this.a.f();
-  }
-  
-  public void f()
-  {
-    if (!a()) {
+    if (!ap_()) {
       return;
     }
     this.a.c();
   }
   
+  public void f()
+  {
+    if (!ap_()) {
+      return;
+    }
+    this.a.f();
+  }
+  
   public void g()
   {
-    if (!a()) {
+    if (!ap_()) {
       return;
     }
     this.a.g();
@@ -98,15 +101,15 @@ public class BeautyAndFilterPanelViewStubHolder
   
   public void h()
   {
-    if (!a()) {
+    if (!ap_()) {
       return;
     }
-    this.a.h();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.BeautyAndFilterPanelViewStubHolder
  * JD-Core Version:    0.7.0.1
  */

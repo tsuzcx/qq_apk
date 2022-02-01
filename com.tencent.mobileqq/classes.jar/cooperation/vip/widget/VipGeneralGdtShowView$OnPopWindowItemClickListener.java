@@ -14,53 +14,53 @@ import java.util.ArrayList;
 class VipGeneralGdtShowView$OnPopWindowItemClickListener
   implements AdapterView.OnItemClickListener
 {
-  private final VipGeneralAdvPopWindow jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow;
+  private final VipGeneralAdvPopWindow b;
   
   public VipGeneralGdtShowView$OnPopWindowItemClickListener(VipGeneralGdtShowView paramVipGeneralGdtShowView, VipGeneralAdvPopWindow paramVipGeneralAdvPopWindow)
   {
-    this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow = paramVipGeneralAdvPopWindow;
+    this.b = paramVipGeneralAdvPopWindow;
   }
   
   private void a()
   {
-    if (VipGeneralGdtShowView.a(this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView) != null)
+    if (VipGeneralGdtShowView.b(this.a) != null)
     {
       Object localObject;
-      if (!TextUtils.isEmpty(VipGeneralGdtShowView.a(this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView).negativeFeedbackUrl))
+      if (!TextUtils.isEmpty(VipGeneralGdtShowView.b(this.a).negativeFeedbackUrl))
       {
-        localObject = VipGeneralGdtShowView.a(this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView).negativeFeedbackUrl.replace("__ACT_TYPE__", "2001");
-        this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView.a((String)localObject);
+        localObject = VipGeneralGdtShowView.b(this.a).negativeFeedbackUrl.replace("__ACT_TYPE__", "2001");
+        this.a.a((String)localObject);
       }
-      if (VipGeneralGdtShowView.a(this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView) != null)
+      if (VipGeneralGdtShowView.e(this.a) != null)
       {
-        localObject = this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView;
-        ((VipGeneralGdtShowView)localObject).a(3, VipGeneralGdtShowView.a((VipGeneralGdtShowView)localObject).recCookie, VipGeneralGdtShowView.a(this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView) + 1);
+        localObject = this.a;
+        ((VipGeneralGdtShowView)localObject).a(3, VipGeneralGdtShowView.b((VipGeneralGdtShowView)localObject).recCookie, VipGeneralGdtShowView.c(this.a) + 1);
       }
     }
-    if (this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView.a != null) {
-      this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView.a.a();
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
   
   private void a(VipGeneralAdvPopWindow.MenuData paramMenuData)
   {
-    if ((!TextUtils.isEmpty(paramMenuData.c)) && (VipGeneralGdtShowView.a(this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView) != null))
+    if ((!TextUtils.isEmpty(paramMenuData.d)) && (VipGeneralGdtShowView.a(this.a) != null))
     {
-      Intent localIntent = new Intent(VipGeneralGdtShowView.a(this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView), QQBrowserActivity.class);
-      localIntent.putExtra("url", paramMenuData.c);
-      VipGeneralGdtShowView.a(this.jdField_a_of_type_CooperationVipWidgetVipGeneralGdtShowView).startActivity(localIntent);
+      Intent localIntent = new Intent(VipGeneralGdtShowView.a(this.a), QQBrowserActivity.class);
+      localIntent.putExtra("url", paramMenuData.d);
+      VipGeneralGdtShowView.a(this.a).startActivity(localIntent);
     }
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow;
+    Object localObject = this.b;
     if (localObject != null)
     {
       ((VipGeneralAdvPopWindow)localObject).dismiss();
-      if ((this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow.a != null) && (paramInt < this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow.a.size()))
+      if ((this.b.b != null) && (paramInt < this.b.b.size()))
       {
-        localObject = (VipGeneralAdvPopWindow.MenuData)this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow.a.get(paramInt);
+        localObject = (VipGeneralAdvPopWindow.MenuData)this.b.b.get(paramInt);
         if (((VipGeneralAdvPopWindow.MenuData)localObject).a == 1) {
           a((VipGeneralAdvPopWindow.MenuData)localObject);
         } else if (((VipGeneralAdvPopWindow.MenuData)localObject).a == 2) {
@@ -73,7 +73,7 @@ class VipGeneralGdtShowView$OnPopWindowItemClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.widget.VipGeneralGdtShowView.OnPopWindowItemClickListener
  * JD-Core Version:    0.7.0.1
  */

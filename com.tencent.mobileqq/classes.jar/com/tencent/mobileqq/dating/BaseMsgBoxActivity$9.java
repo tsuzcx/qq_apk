@@ -16,7 +16,7 @@ class BaseMsgBoxActivity$9
   
   public void run()
   {
-    oidb_0x791.RedDotInfo localRedDotInfo = ((TroopRedTouchManager)this.this$0.app.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(70);
+    oidb_0x791.RedDotInfo localRedDotInfo = ((TroopRedTouchManager)this.this$0.app.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).e(70);
     Object localObject;
     if (QLog.isColorLevel())
     {
@@ -54,7 +54,7 @@ class BaseMsgBoxActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.9
  * JD-Core Version:    0.7.0.1
  */

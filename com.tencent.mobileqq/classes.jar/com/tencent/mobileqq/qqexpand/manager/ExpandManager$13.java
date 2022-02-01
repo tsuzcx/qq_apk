@@ -1,29 +1,21 @@
 package com.tencent.mobileqq.qqexpand.manager;
 
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 
 class ExpandManager$13
-  implements DialogInterface.OnKeyListener
+  implements Runnable
 {
-  ExpandManager$13(ExpandManager paramExpandManager, Activity paramActivity) {}
+  ExpandManager$13(ExpandManager paramExpandManager) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 4)
-    {
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      return true;
-    }
-    return false;
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new ExpandManager.13.1(this, "extend_friend", false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExpandManager.13
  * JD-Core Version:    0.7.0.1
  */

@@ -16,38 +16,37 @@ import mqq.app.AppRuntime;
 
 class ReadinjoyFixPosArticleManager$ADArticleController
 {
-  public int a;
-  private FixPosArticleInterface.FixPosArticleAsyncListener jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiFixPosArticleInterface$FixPosArticleAsyncListener = new ReadinjoyFixPosArticleManager.ADArticleController.1(this);
-  HashMap<Integer, ArrayList<Integer>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public int a = 0;
   HashMap<Integer, ArrayList<Integer>> b = new HashMap();
-  HashMap<Integer, ArrayList<AbsBaseArticleInfo>> c = new HashMap();
+  HashMap<Integer, ArrayList<Integer>> c = new HashMap();
+  HashMap<Integer, ArrayList<AbsBaseArticleInfo>> d = new HashMap();
+  private FixPosArticleInterface.FixPosArticleAsyncListener f = new ReadinjoyFixPosArticleManager.ADArticleController.1(this);
   
   ReadinjoyFixPosArticleManager$ADArticleController(ReadinjoyFixPosArticleManager paramReadinjoyFixPosArticleManager, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   private FixPosArticleInterface a()
   {
-    AppRuntime localAppRuntime = ReadInJoyUtils.a();
+    AppRuntime localAppRuntime = ReadInJoyUtils.b();
     if (localAppRuntime != null) {
-      return ((ReadInJoyLogicManager)localAppRuntime.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().a();
+      return ((ReadInJoyLogicManager)localAppRuntime.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().M();
     }
     return null;
   }
   
   public AbsBaseArticleInfo a(int paramInt1, int paramInt2)
   {
-    Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    Object localObject = (ArrayList)this.b.get(Integer.valueOf(paramInt1));
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
       int i = ((ArrayList)localObject).indexOf(Integer.valueOf(paramInt2));
       if (i != -1)
       {
-        if ((this.c.containsKey(Integer.valueOf(paramInt1))) && (i < ((ArrayList)this.c.get(Integer.valueOf(paramInt1))).size()))
+        if ((this.d.containsKey(Integer.valueOf(paramInt1))) && (i < ((ArrayList)this.d.get(Integer.valueOf(paramInt1))).size()))
         {
-          localObject = (AbsBaseArticleInfo)((ArrayList)this.c.get(Integer.valueOf(paramInt1))).get(i);
+          localObject = (AbsBaseArticleInfo)((ArrayList)this.d.get(Integer.valueOf(paramInt1))).get(i);
           if (localObject != null) {
             ((AbsBaseArticleInfo)localObject).mRecommendSeq = ReadinjoyFixPosArticleManager.access$100(1, paramInt2);
           }
@@ -89,13 +88,13 @@ class ReadinjoyFixPosArticleManager$ADArticleController
         i += 1;
       }
       Collections.sort(localArrayList1, new ReadinjoyFixPosArticleManager.ADArticleController.2(this));
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localArrayList1);
-      this.b.put(Integer.valueOf(paramInt), localArrayList2);
-      localObject1 = ((FixPosArticleInterface)localObject1).a(paramInt);
+      this.b.put(Integer.valueOf(paramInt), localArrayList1);
+      this.c.put(Integer.valueOf(paramInt), localArrayList2);
+      localObject1 = ((FixPosArticleInterface)localObject1).b(paramInt);
       if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
       {
         localObject2 = new ArrayList((Collection)localObject1);
-        this.c.put(Integer.valueOf(paramInt), localObject2);
+        this.d.put(Integer.valueOf(paramInt), localObject2);
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("ad pos : ");
@@ -114,17 +113,29 @@ class ReadinjoyFixPosArticleManager$ADArticleController
     QLog.d("ReadinjoyFixPosArticleManager", 1, "get ad position fail ~ return data is null !");
   }
   
-  void a(int paramInt1, int paramInt2)
+  public void b(int paramInt)
   {
-    Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    try
+    {
+      this.b.remove(Integer.valueOf(paramInt));
+      this.d.remove(Integer.valueOf(paramInt));
+      this.c.remove(Integer.valueOf(paramInt));
+      return;
+    }
+    finally {}
+  }
+  
+  void b(int paramInt1, int paramInt2)
+  {
+    Object localObject = (ArrayList)this.b.get(Integer.valueOf(paramInt1));
     if (localObject != null)
     {
       int i = ((ArrayList)localObject).indexOf(Integer.valueOf(paramInt2));
       if (i != -1)
       {
-        ((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1))).remove(i);
         ((ArrayList)this.b.get(Integer.valueOf(paramInt1))).remove(i);
         ((ArrayList)this.c.get(Integer.valueOf(paramInt1))).remove(i);
+        ((ArrayList)this.d.get(Integer.valueOf(paramInt1))).remove(i);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("delete ad article , position : ");
         ((StringBuilder)localObject).append(paramInt2);
@@ -133,13 +144,29 @@ class ReadinjoyFixPosArticleManager$ADArticleController
     }
   }
   
-  boolean a(int paramInt)
+  void c(int paramInt)
+  {
+    FixPosArticleInterface localFixPosArticleInterface = a();
+    if (localFixPosArticleInterface != null) {
+      localFixPosArticleInterface.a(paramInt, this.f);
+    }
+  }
+  
+  void d(int paramInt)
+  {
+    FixPosArticleInterface localFixPosArticleInterface = a();
+    if (localFixPosArticleInterface != null) {
+      localFixPosArticleInterface.c(paramInt);
+    }
+  }
+  
+  boolean e(int paramInt)
   {
     for (;;)
     {
       try
       {
-        if ((this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)) != null) && (((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).size() > 0) && (this.c.get(Integer.valueOf(paramInt)) != null) && (((ArrayList)this.c.get(Integer.valueOf(paramInt))).size() > 0))
+        if ((this.b.get(Integer.valueOf(paramInt)) != null) && (((ArrayList)this.b.get(Integer.valueOf(paramInt))).size() > 0) && (this.d.get(Integer.valueOf(paramInt)) != null) && (((ArrayList)this.d.get(Integer.valueOf(paramInt))).size() > 0))
         {
           bool = true;
           return bool;
@@ -149,38 +176,10 @@ class ReadinjoyFixPosArticleManager$ADArticleController
       boolean bool = false;
     }
   }
-  
-  public void b(int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
-      this.c.remove(Integer.valueOf(paramInt));
-      this.b.remove(Integer.valueOf(paramInt));
-      return;
-    }
-    finally {}
-  }
-  
-  void c(int paramInt)
-  {
-    FixPosArticleInterface localFixPosArticleInterface = a();
-    if (localFixPosArticleInterface != null) {
-      localFixPosArticleInterface.a(paramInt, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiFixPosArticleInterface$FixPosArticleAsyncListener);
-    }
-  }
-  
-  void d(int paramInt)
-  {
-    FixPosArticleInterface localFixPosArticleInterface = a();
-    if (localFixPosArticleInterface != null) {
-      localFixPosArticleInterface.a(paramInt);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ReadinjoyFixPosArticleManager.ADArticleController
  * JD-Core Version:    0.7.0.1
  */

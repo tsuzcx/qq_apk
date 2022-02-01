@@ -3,12 +3,12 @@ package com.tencent.aelight.camera.aeeditor.module.text;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
-import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
 
 public class AEEditorStickerPart
 {
-  private AEEditorStickerPart.AEEditorTextDialogListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerPart$AEEditorTextDialogListener;
-  private AEEditorTextEditDialog jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog;
+  private AEEditorTextEditDialog a;
+  private AEEditorStickerPart.AEEditorTextDialogListener b;
   
   private TextEditorData a(TextEditorData paramTextEditorData, Integer paramInteger)
   {
@@ -20,7 +20,7 @@ public class AEEditorStickerPart
   
   private void b()
   {
-    AEEditorTextEditDialog localAEEditorTextEditDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog;
+    AEEditorTextEditDialog localAEEditorTextEditDialog = this.a;
     if (localAEEditorTextEditDialog != null) {
       localAEEditorTextEditDialog.setOnDismissListener(new AEEditorStickerPart.2(this));
     }
@@ -28,7 +28,7 @@ public class AEEditorStickerPart
   
   public void a()
   {
-    AEEditorTextEditDialog localAEEditorTextEditDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog;
+    AEEditorTextEditDialog localAEEditorTextEditDialog = this.a;
     if (localAEEditorTextEditDialog != null) {
       localAEEditorTextEditDialog.a();
     }
@@ -36,23 +36,23 @@ public class AEEditorStickerPart
   
   public void a(Context paramContext, @NonNull MetaMaterial paramMetaMaterial, TextEditorData paramTextEditorData)
   {
-    if (!"fixed_text".equals(TextMetaMaterialKt.a(paramMetaMaterial)))
+    if (!"fixed_text".equals(TextMetaMaterialKt.b(paramMetaMaterial)))
     {
-      if ("blur".equals(TextMetaMaterialKt.a(paramMetaMaterial))) {
+      if ("blur".equals(TextMetaMaterialKt.b(paramMetaMaterial))) {
         return;
       }
-      AEEditorTextEditDialog localAEEditorTextEditDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog;
+      AEEditorTextEditDialog localAEEditorTextEditDialog = this.a;
       if ((localAEEditorTextEditDialog != null) && (localAEEditorTextEditDialog.isShowing())) {
         return;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog = new AEEditorTextEditDialog(paramContext, 2131755011, new AEEditorStickerPart.1(this));
+      this.a = new AEEditorTextEditDialog(paramContext, 2131951619, new AEEditorStickerPart.1(this));
       b();
       int j = 0;
       int i;
       if (paramTextEditorData != null)
       {
         j = TextEditorDataExKt.a(paramTextEditorData);
-        if ("color_text".equals(TextMetaMaterialKt.a(paramMetaMaterial))) {
+        if ("color_text".equals(TextMetaMaterialKt.b(paramMetaMaterial))) {
           i = j;
         } else {
           i = paramTextEditorData.getTextColor();
@@ -63,19 +63,19 @@ public class AEEditorStickerPart
         i = 0;
       }
       paramContext = a(paramTextEditorData, Integer.valueOf(j));
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog.a(paramContext, i);
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog.show();
+      this.a.a(paramContext, i);
+      this.a.show();
     }
   }
   
   public void a(AEEditorStickerPart.AEEditorTextDialogListener paramAEEditorTextDialogListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerPart$AEEditorTextDialogListener = paramAEEditorTextDialogListener;
+    this.b = paramAEEditorTextDialogListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerPart
  * JD-Core Version:    0.7.0.1
  */

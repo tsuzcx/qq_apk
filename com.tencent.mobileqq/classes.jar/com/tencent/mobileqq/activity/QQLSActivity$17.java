@@ -11,8 +11,8 @@ class QQLSActivity$17
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QQLSActivity.a(this.a) != null) {
-      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
+    if (QQLSActivity.B(this.a) != null) {
+      QQLSActivity.f(this.a).post(new QQLSActivity.17.1(this));
     }
   }
   
@@ -22,7 +22,7 @@ class QQLSActivity$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.17
  * JD-Core Version:    0.7.0.1
  */

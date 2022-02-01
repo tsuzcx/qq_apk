@@ -22,11 +22,21 @@ public class LocalizedSQLiteOpenHelperImpl
     this.a = new SQLiteOpenHelperFacade(this, paramString1, paramEntityManagerFactory, paramString2);
   }
   
-  public SQLiteDatabase a()
+  public void close()
+  {
+    this.a.close();
+  }
+  
+  public void dropAllTable()
+  {
+    this.a.dropAllTable();
+  }
+  
+  public SQLiteDatabase getReadableDatabase()
   {
     try
     {
-      SQLiteDatabase localSQLiteDatabase = super.getWritableDatabase();
+      SQLiteDatabase localSQLiteDatabase = this.a.getReadableDatabase();
       return localSQLiteDatabase;
     }
     finally
@@ -36,12 +46,7 @@ public class LocalizedSQLiteOpenHelperImpl
     }
   }
   
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public SQLiteDatabase b()
+  public SQLiteDatabase getReadableDatabaseInner()
   {
     try
     {
@@ -55,16 +60,11 @@ public class LocalizedSQLiteOpenHelperImpl
     }
   }
   
-  public void close()
-  {
-    this.a.b();
-  }
-  
-  public SQLiteDatabase getReadableDatabase()
+  public SQLiteDatabase getWritableDatabase()
   {
     try
     {
-      SQLiteDatabase localSQLiteDatabase = this.a.b();
+      SQLiteDatabase localSQLiteDatabase = this.a.getWritableDatabase();
       return localSQLiteDatabase;
     }
     finally
@@ -74,11 +74,11 @@ public class LocalizedSQLiteOpenHelperImpl
     }
   }
   
-  public SQLiteDatabase getWritableDatabase()
+  public SQLiteDatabase getWritableDatabaseInner()
   {
     try
     {
-      SQLiteDatabase localSQLiteDatabase = this.a.a();
+      SQLiteDatabase localSQLiteDatabase = super.getWritableDatabase();
       return localSQLiteDatabase;
     }
     finally
@@ -90,28 +90,28 @@ public class LocalizedSQLiteOpenHelperImpl
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
-    this.a.a(paramSQLiteDatabase);
+    this.a.onCreate(paramSQLiteDatabase);
   }
   
   public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    this.a.b(paramSQLiteDatabase, paramInt1, paramInt2);
+    this.a.onDowngrade(paramSQLiteDatabase, paramInt1, paramInt2);
   }
   
   public void onOpen(SQLiteDatabase paramSQLiteDatabase)
   {
     super.onOpen(paramSQLiteDatabase);
-    this.a.b(paramSQLiteDatabase);
+    this.a.onOpen(paramSQLiteDatabase);
   }
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    this.a.a(paramSQLiteDatabase, paramInt1, paramInt2);
+    this.a.onUpgrade(paramSQLiteDatabase, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.localizeddb.LocalizedSQLiteOpenHelperImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -48,34 +48,28 @@ public class RedPacketPopFragment
   extends QPublicBaseFragment
   implements View.OnClickListener
 {
-  protected ImageButton a;
-  protected RelativeLayout a;
-  protected BaseSessionInfo a;
-  protected MessageForQQWalletMsg a;
-  protected RoundImageView a;
-  int c;
-  protected View c;
-  protected View d;
-  protected TextView d;
-  protected View e;
-  protected ImageView e;
-  protected boolean e;
-  protected ImageView f;
+  protected View A;
+  protected View B;
+  protected ImageView C;
+  protected ImageButton D;
+  protected ImageView E;
+  protected TextView F;
+  protected View G;
+  protected RoundImageView H;
+  protected BaseSessionInfo I;
+  protected MessageForQQWalletMsg J;
+  int K = 0;
+  protected boolean L = true;
+  protected RelativeLayout z;
   
-  public RedPacketPopFragment()
+  private void c()
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_e_of_type_Boolean = true;
+    this.A.post(new RedPacketPopFragment.1(this));
   }
   
-  private String a()
+  private String d()
   {
     return "{\"v\":\"5.3.1\",\"fr\":25,\"ip\":0,\"op\":35,\"w\":270,\"h\":270,\"nm\":\"预合成 3\",\"ddd\":0,\"assets\":[],\"layers\":[{\"ddd\":0,\"ind\":3,\"ty\":4,\"nm\":\"“图层 6”轮廓 4\",\"sr\":1,\"ks\":{\"o\":{\"a\":0,\"k\":100,\"ix\":11},\"r\":{\"a\":0,\"k\":0,\"ix\":10},\"p\":{\"a\":0,\"k\":[135,136,0],\"ix\":2},\"a\":{\"a\":0,\"k\":[135,135,0],\"ix\":1},\"s\":{\"a\":0,\"k\":[100,100,100],\"ix\":6}},\"ao\":0,\"shapes\":[{\"ty\":\"gr\",\"it\":[{\"ind\":0,\"ty\":\"sh\",\"ix\":1,\"ks\":{\"a\":0,\"k\":{\"i\":[[-71.797,0],[0,71.797],[71.797,0],[0,-71.797]],\"o\":[[71.797,0],[0,-71.797],[-71.797,0],[0,71.797]],\"v\":[[0,130],[130,0],[0,-130],[-130,0]],\"c\":true},\"ix\":2},\"nm\":\"路径 1\",\"mn\":\"ADBE Vector Shape - Group\",\"hd\":false},{\"ty\":\"fl\",\"c\":{\"a\":0,\"k\":[1,0.949019670486,0.701960802078,1],\"ix\":4},\"o\":{\"a\":0,\"k\":100,\"ix\":5},\"r\":1,\"nm\":\"填充 1\",\"mn\":\"ADBE Vector Graphic - Fill\",\"hd\":false},{\"ty\":\"tr\",\"p\":{\"a\":0,\"k\":[135,135],\"ix\":2},\"a\":{\"a\":0,\"k\":[0,0],\"ix\":1},\"s\":{\"a\":1,\"k\":[{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":17,\"s\":[69,69],\"e\":[75,75]},{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":20,\"s\":[75,75],\"e\":[100,100]},{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":41,\"s\":[100,100],\"e\":[104,104]},{\"t\":44}],\"ix\":3},\"r\":{\"a\":0,\"k\":0,\"ix\":6},\"o\":{\"a\":1,\"k\":[{\"i\":{\"x\":[0.833],\"y\":[0.833]},\"o\":{\"x\":[0.167],\"y\":[0.167]},\"n\":[\"0p833_0p833_0p167_0p167\"],\"t\":19,\"s\":[75],\"e\":[10]},{\"i\":{\"x\":[0.833],\"y\":[0.833]},\"o\":{\"x\":[0.167],\"y\":[0.167]},\"n\":[\"0p833_0p833_0p167_0p167\"],\"t\":39,\"s\":[10],\"e\":[0]},{\"t\":41}],\"ix\":7},\"sk\":{\"a\":0,\"k\":0,\"ix\":4},\"sa\":{\"a\":0,\"k\":0,\"ix\":5},\"nm\":\"变换\"}],\"nm\":\"组 1\",\"np\":2,\"cix\":2,\"ix\":1,\"mn\":\"ADBE Vector Group\",\"hd\":false}],\"ip\":17,\"op\":44,\"st\":19,\"bm\":0},{\"ddd\":0,\"ind\":4,\"ty\":4,\"nm\":\"“图层 6”轮廓 3\",\"sr\":1,\"ks\":{\"o\":{\"a\":0,\"k\":100,\"ix\":11},\"r\":{\"a\":0,\"k\":0,\"ix\":10},\"p\":{\"a\":0,\"k\":[135,136,0],\"ix\":2},\"a\":{\"a\":0,\"k\":[135,135,0],\"ix\":1},\"s\":{\"a\":0,\"k\":[100,100,100],\"ix\":6}},\"ao\":0,\"shapes\":[{\"ty\":\"gr\",\"it\":[{\"ind\":0,\"ty\":\"sh\",\"ix\":1,\"ks\":{\"a\":0,\"k\":{\"i\":[[-71.797,0],[0,71.797],[71.797,0],[0,-71.797]],\"o\":[[71.797,0],[0,-71.797],[-71.797,0],[0,71.797]],\"v\":[[0,130],[130,0],[0,-130],[-130,0]],\"c\":true},\"ix\":2},\"nm\":\"路径 1\",\"mn\":\"ADBE Vector Shape - Group\",\"hd\":false},{\"ty\":\"fl\",\"c\":{\"a\":0,\"k\":[1,0.949019670486,0.701960802078,1],\"ix\":4},\"o\":{\"a\":0,\"k\":100,\"ix\":5},\"r\":1,\"nm\":\"填充 1\",\"mn\":\"ADBE Vector Graphic - Fill\",\"hd\":false},{\"ty\":\"tr\",\"p\":{\"a\":0,\"k\":[135,135],\"ix\":2},\"a\":{\"a\":0,\"k\":[0,0],\"ix\":1},\"s\":{\"a\":1,\"k\":[{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":-20,\"s\":[69,69],\"e\":[75,75]},{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":-17,\"s\":[75,75],\"e\":[100,100]},{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":4,\"s\":[100,100],\"e\":[104,104]},{\"t\":7}],\"ix\":3},\"r\":{\"a\":0,\"k\":0,\"ix\":6},\"o\":{\"a\":1,\"k\":[{\"i\":{\"x\":[0.833],\"y\":[0.833]},\"o\":{\"x\":[0.167],\"y\":[0.167]},\"n\":[\"0p833_0p833_0p167_0p167\"],\"t\":-18,\"s\":[75],\"e\":[10]},{\"i\":{\"x\":[0.833],\"y\":[0.833]},\"o\":{\"x\":[0.167],\"y\":[0.167]},\"n\":[\"0p833_0p833_0p167_0p167\"],\"t\":2,\"s\":[10],\"e\":[0]},{\"t\":4}],\"ix\":7},\"sk\":{\"a\":0,\"k\":0,\"ix\":4},\"sa\":{\"a\":0,\"k\":0,\"ix\":5},\"nm\":\"变换\"}],\"nm\":\"组 1\",\"np\":2,\"cix\":2,\"ix\":1,\"mn\":\"ADBE Vector Group\",\"hd\":false}],\"ip\":-20,\"op\":7,\"st\":-18,\"bm\":0},{\"ddd\":0,\"ind\":5,\"ty\":4,\"nm\":\"“图层 6”轮廓 2\",\"sr\":1,\"ks\":{\"o\":{\"a\":0,\"k\":100,\"ix\":11},\"r\":{\"a\":0,\"k\":0,\"ix\":10},\"p\":{\"a\":0,\"k\":[135,136,0],\"ix\":2},\"a\":{\"a\":0,\"k\":[135,135,0],\"ix\":1},\"s\":{\"a\":0,\"k\":[100,100,100],\"ix\":6}},\"ao\":0,\"shapes\":[{\"ty\":\"gr\",\"it\":[{\"ind\":0,\"ty\":\"sh\",\"ix\":1,\"ks\":{\"a\":0,\"k\":{\"i\":[[-71.797,0],[0,71.797],[71.797,0],[0,-71.797]],\"o\":[[71.797,0],[0,-71.797],[-71.797,0],[0,71.797]],\"v\":[[0,130],[130,0],[0,-130],[-130,0]],\"c\":true},\"ix\":2},\"nm\":\"路径 1\",\"mn\":\"ADBE Vector Shape - Group\",\"hd\":false},{\"ty\":\"fl\",\"c\":{\"a\":0,\"k\":[1,0.949019670486,0.701960802078,1],\"ix\":4},\"o\":{\"a\":0,\"k\":100,\"ix\":5},\"r\":1,\"nm\":\"填充 1\",\"mn\":\"ADBE Vector Graphic - Fill\",\"hd\":false},{\"ty\":\"tr\",\"p\":{\"a\":0,\"k\":[135,135],\"ix\":2},\"a\":{\"a\":0,\"k\":[0,0],\"ix\":1},\"s\":{\"a\":1,\"k\":[{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":33,\"s\":[69,69],\"e\":[75,75]},{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":36,\"s\":[75,75],\"e\":[100,100]},{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":57,\"s\":[100,100],\"e\":[104,104]},{\"t\":60}],\"ix\":3},\"r\":{\"a\":0,\"k\":0,\"ix\":6},\"o\":{\"a\":1,\"k\":[{\"i\":{\"x\":[0.833],\"y\":[0.833]},\"o\":{\"x\":[0.167],\"y\":[0.167]},\"n\":[\"0p833_0p833_0p167_0p167\"],\"t\":35,\"s\":[75],\"e\":[10]},{\"i\":{\"x\":[0.833],\"y\":[0.833]},\"o\":{\"x\":[0.167],\"y\":[0.167]},\"n\":[\"0p833_0p833_0p167_0p167\"],\"t\":55,\"s\":[10],\"e\":[0]},{\"t\":57}],\"ix\":7},\"sk\":{\"a\":0,\"k\":0,\"ix\":4},\"sa\":{\"a\":0,\"k\":0,\"ix\":5},\"nm\":\"变换\"}],\"nm\":\"组 1\",\"np\":2,\"cix\":2,\"ix\":1,\"mn\":\"ADBE Vector Group\",\"hd\":false}],\"ip\":33,\"op\":60,\"st\":35,\"bm\":0},{\"ddd\":0,\"ind\":6,\"ty\":4,\"nm\":\"“图层 6”轮廓\",\"sr\":1,\"ks\":{\"o\":{\"a\":0,\"k\":100,\"ix\":11},\"r\":{\"a\":0,\"k\":0,\"ix\":10},\"p\":{\"a\":0,\"k\":[135,136,0],\"ix\":2},\"a\":{\"a\":0,\"k\":[135,135,0],\"ix\":1},\"s\":{\"a\":0,\"k\":[100,100,100],\"ix\":6}},\"ao\":0,\"shapes\":[{\"ty\":\"gr\",\"it\":[{\"ind\":0,\"ty\":\"sh\",\"ix\":1,\"ks\":{\"a\":0,\"k\":{\"i\":[[-71.797,0],[0,71.797],[71.797,0],[0,-71.797]],\"o\":[[71.797,0],[0,-71.797],[-71.797,0],[0,71.797]],\"v\":[[0,130],[130,0],[0,-130],[-130,0]],\"c\":true},\"ix\":2},\"nm\":\"路径 1\",\"mn\":\"ADBE Vector Shape - Group\",\"hd\":false},{\"ty\":\"fl\",\"c\":{\"a\":0,\"k\":[1,0.949019670486,0.701960802078,1],\"ix\":4},\"o\":{\"a\":0,\"k\":100,\"ix\":5},\"r\":1,\"nm\":\"填充 1\",\"mn\":\"ADBE Vector Graphic - Fill\",\"hd\":false},{\"ty\":\"tr\",\"p\":{\"a\":0,\"k\":[135,135],\"ix\":2},\"a\":{\"a\":0,\"k\":[0,0],\"ix\":1},\"s\":{\"a\":1,\"k\":[{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":-2,\"s\":[69,69],\"e\":[75,75]},{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":1,\"s\":[75,75],\"e\":[100,100]},{\"i\":{\"x\":[0.833,0.833],\"y\":[0.833,0.833]},\"o\":{\"x\":[0.167,0.167],\"y\":[0.167,0.167]},\"n\":[\"0p833_0p833_0p167_0p167\",\"0p833_0p833_0p167_0p167\"],\"t\":22,\"s\":[100,100],\"e\":[104,104]},{\"t\":25}],\"ix\":3},\"r\":{\"a\":0,\"k\":0,\"ix\":6},\"o\":{\"a\":1,\"k\":[{\"i\":{\"x\":[0.833],\"y\":[0.833]},\"o\":{\"x\":[0.167],\"y\":[0.167]},\"n\":[\"0p833_0p833_0p167_0p167\"],\"t\":0,\"s\":[75],\"e\":[10]},{\"i\":{\"x\":[0.833],\"y\":[0.833]},\"o\":{\"x\":[0.167],\"y\":[0.167]},\"n\":[\"0p833_0p833_0p167_0p167\"],\"t\":20,\"s\":[10],\"e\":[0]},{\"t\":22}],\"ix\":7},\"sk\":{\"a\":0,\"k\":0,\"ix\":4},\"sa\":{\"a\":0,\"k\":0,\"ix\":5},\"nm\":\"变换\"}],\"nm\":\"组 1\",\"np\":2,\"cix\":2,\"ix\":1,\"mn\":\"ADBE Vector Group\",\"hd\":false}],\"ip\":-2,\"op\":25,\"st\":0,\"bm\":0}],\"markers\":[]}";
-  }
-  
-  private void a()
-  {
-    this.jdField_c_of_type_AndroidViewView.post(new RedPacketPopFragment.1(this));
   }
   
   public void a(Context paramContext)
@@ -101,7 +95,7 @@ public class RedPacketPopFragment
     try
     {
       localObject = new SpannableString(paramContext.getString(i));
-      DialogUtil.a(paramContext, 230, HardCodeUtil.a(R.string.cA), ((SpannableString)localObject).toString(), HardCodeUtil.a(R.string.cb), "", null, new RedPacketPopFragment.2(this)).show();
+      DialogUtil.a(paramContext, 230, HardCodeUtil.a(R.string.cD), ((SpannableString)localObject).toString(), HardCodeUtil.a(R.string.ce), "", null, new RedPacketPopFragment.2(this)).show();
       return;
     }
     catch (Exception paramContext)
@@ -118,21 +112,21 @@ public class RedPacketPopFragment
   
   protected void a(View paramView)
   {
-    new ImmersionBar(getQBaseActivity(), 0, paramView.findViewById(R.id.bX));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(R.id.e);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(R.id.aU);
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(R.id.r));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(R.id.s));
-    this.f = ((ImageView)paramView.findViewById(R.id.ae));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(R.id.bb));
-    this.jdField_e_of_type_AndroidViewView = paramView.findViewById(R.id.bc);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(R.id.aL));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(R.id.aV));
+    new ImmersionBar(getQBaseActivity(), 0, paramView.findViewById(R.id.ck));
+    this.A = paramView.findViewById(R.id.j);
+    this.B = paramView.findViewById(R.id.bc);
+    this.C = ((ImageView)paramView.findViewById(R.id.w));
+    this.D = ((ImageButton)paramView.findViewById(R.id.x));
+    this.E = ((ImageView)paramView.findViewById(R.id.al));
+    this.F = ((TextView)paramView.findViewById(R.id.bk));
+    this.G = paramView.findViewById(R.id.bl);
+    this.z = ((RelativeLayout)paramView.findViewById(R.id.aT));
+    this.H = ((RoundImageView)paramView.findViewById(R.id.bd));
   }
   
   protected void a(ImageView paramImageView)
   {
-    String str = a();
+    String str = d();
     if ((!TextUtils.isEmpty(str)) && (paramImageView != null)) {
       LottieComposition.Factory.fromJsonString(str, new RedPacketPopFragment.3(this, paramImageView));
     }
@@ -142,7 +136,7 @@ public class RedPacketPopFragment
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(getResources().getDrawable(R.drawable.s));
+      this.H.setImageDrawable(getResources().getDrawable(R.drawable.s));
     }
     catch (Throwable localThrowable)
     {
@@ -151,37 +145,37 @@ public class RedPacketPopFragment
       Object localObject2;
       break label20;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setBackgroundColor(getResources().getColor(R.color.b));
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    AccessibilityUtil.a(this.jdField_e_of_type_AndroidWidgetImageView, getQBaseActivity().getResources().getString(R.string.o), null);
-    AccessibilityUtil.a(this.jdField_a_of_type_AndroidWidgetImageButton, getQBaseActivity().getResources().getString(R.string.o), null);
+    this.H.setBackgroundColor(getResources().getColor(R.color.b));
+    this.A.setOnClickListener(this);
+    this.C.setOnClickListener(this);
+    this.D.setOnClickListener(this);
+    AccessibilityUtil.a(this.C, getQBaseActivity().getResources().getString(R.string.o), null);
+    AccessibilityUtil.a(this.D, getQBaseActivity().getResources().getString(R.string.o), null);
     if (((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).isCanShowNewCloseBtn(getQBaseActivity()))
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.D.setVisibility(0);
+      this.C.setVisibility(4);
     }
     else
     {
-      this.jdField_e_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(4);
+      this.C.setVisibility(0);
+      this.D.setVisibility(4);
     }
     localObject1 = getArguments();
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = ((BaseSessionInfo)((Bundle)localObject1).getParcelable("session"));
+      this.I = ((BaseSessionInfo)((Bundle)localObject1).getParcelable("session"));
       long l = ((Bundle)localObject1).getLong("uniseq", 0L);
-      this.jdField_c_of_type_Int = ((Bundle)localObject1).getInt("fromHBList", 0);
-      if (this.jdField_c_of_type_Int == 1)
+      this.K = ((Bundle)localObject1).getInt("fromHBList", 0);
+      if (this.K == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = QQWalletHbItemApiImpl.getMessageForQQWalletMsg(((Bundle)localObject1).getString("redPacketId"));
+        this.J = QQWalletHbItemApiImpl.getMessageForQQWalletMsg(((Bundle)localObject1).getString("redPacketId"));
       }
       else
       {
-        localObject1 = ((IMessageFacade)QWalletHelperImpl.getAppRuntime().getRuntimeService(IMessageFacade.class, "all")).queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, l);
+        localObject1 = ((IMessageFacade)QWalletHelperImpl.getAppRuntime().getRuntimeService(IMessageFacade.class, "all")).queryMsgItemByUniseq(this.I.b, this.I.a, l);
         if ((localObject1 instanceof MessageForQQWalletMsg)) {
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = ((MessageForQQWalletMsg)localObject1);
+          this.J = ((MessageForQQWalletMsg)localObject1);
         }
       }
     }
@@ -189,14 +183,14 @@ public class RedPacketPopFragment
     {
       localException.printStackTrace();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg == null) {
+    if (this.J == null) {
       return false;
     }
     localObject2 = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getAppInterface();
     if (localObject2 != null)
     {
-      localObject2 = FaceDrawable.getUserFaceDrawable((AppInterface)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, (byte)4);
-      this.f.setImageDrawable((Drawable)localObject2);
+      localObject2 = FaceDrawable.getUserFaceDrawable((AppInterface)localObject2, this.J.senderuin, (byte)4);
+      this.E.setImageDrawable((Drawable)localObject2);
     }
     return true;
   }
@@ -217,11 +211,6 @@ public class RedPacketPopFragment
     return true;
   }
   
-  public boolean d()
-  {
-    return (getQBaseActivity() == null) || (getQBaseActivity().isFinishing());
-  }
-  
   public boolean isWrapContent()
   {
     return false;
@@ -232,28 +221,21 @@ public class RedPacketPopFragment
     return false;
   }
   
-  public void o()
-  {
-    if (getQBaseActivity() != null) {
-      getQBaseActivity().finish();
-    }
-  }
-  
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == R.id.e)
+    if (i == R.id.j)
     {
       if (!b()) {
         return;
       }
-      this.jdField_e_of_type_Boolean = false;
+      this.L = false;
       getQBaseActivity().doOnBackPressed();
       return;
     }
-    if ((i == R.id.r) || (i == R.id.s))
+    if ((i == R.id.w) || (i == R.id.x))
     {
-      this.jdField_e_of_type_Boolean = false;
+      this.L = false;
       getQBaseActivity().doOnBackPressed();
     }
   }
@@ -262,7 +244,7 @@ public class RedPacketPopFragment
   {
     try
     {
-      paramLayoutInflater = paramLayoutInflater.inflate(R.layout.u, paramViewGroup, false);
+      paramLayoutInflater = paramLayoutInflater.inflate(R.layout.x, paramViewGroup, false);
       return paramLayoutInflater;
     }
     catch (Throwable paramLayoutInflater)
@@ -287,7 +269,7 @@ public class RedPacketPopFragment
       if (!a()) {
         getQBaseActivity().finish();
       }
-      a();
+      c();
       return;
     }
     catch (Throwable paramView)
@@ -295,10 +277,22 @@ public class RedPacketPopFragment
       QLog.e("RedPacketPopFragment", 1, paramView, new Object[0]);
     }
   }
+  
+  public boolean p()
+  {
+    return (getQBaseActivity() == null) || (getQBaseActivity().isFinishing());
+  }
+  
+  public void u()
+  {
+    if (getQBaseActivity() != null) {
+      getQBaseActivity().finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketPopFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -39,9 +39,9 @@ public class MessageForTribeShortVideo
   public static String buildCompatibleText()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131706607));
+    localStringBuilder.append(HardCodeUtil.a(2131904458));
     localStringBuilder.append("QQ");
-    localStringBuilder.append(HardCodeUtil.a(2131706635));
+    localStringBuilder.append(HardCodeUtil.a(2131904486));
     return localStringBuilder.toString();
   }
   
@@ -102,18 +102,18 @@ public class MessageForTribeShortVideo
     if (!TextUtils.isEmpty(this.themeName))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131706626));
+      localStringBuilder.append(HardCodeUtil.a(2131904477));
       localStringBuilder.append(this.themeName);
       return localStringBuilder.toString();
     }
     if (!TextUtils.isEmpty(this.brief))
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131706602));
+      localStringBuilder.append(HardCodeUtil.a(2131904453));
       localStringBuilder.append(this.brief);
       return localStringBuilder.toString();
     }
-    return HardCodeUtil.a(2131706643);
+    return HardCodeUtil.a(2131904494);
   }
   
   public boolean isSupportReply()
@@ -147,7 +147,7 @@ public class MessageForTribeShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTribeShortVideo
  * JD-Core Version:    0.7.0.1
  */

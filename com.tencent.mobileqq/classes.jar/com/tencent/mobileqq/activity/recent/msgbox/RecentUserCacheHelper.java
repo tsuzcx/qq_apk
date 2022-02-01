@@ -17,7 +17,7 @@ public class RecentUserCacheHelper
 {
   private void a(RecentUserProxy paramRecentUserProxy, AppInterface paramAppInterface)
   {
-    RecentUser localRecentUser = paramRecentUserProxy.a(AppConstants.TEMP_MSG_BOX_UIN, 10011);
+    RecentUser localRecentUser = paramRecentUserProxy.b(AppConstants.TEMP_MSG_BOX_UIN, 10011);
     Object localObject = ((ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).getMsgBoxRecentUsers();
     if (((List)localObject).isEmpty())
     {
@@ -74,7 +74,7 @@ public class RecentUserCacheHelper
     Object localObject2;
     if (((ITempMsgBoxManager)localObject1).isBelongToFilterBox(paramRecentUser.uin, paramRecentUser.getType()))
     {
-      localObject2 = paramRecentUserProxy.a(AppConstants.FILTER_MSG_UIN, 10012);
+      localObject2 = paramRecentUserProxy.b(AppConstants.FILTER_MSG_UIN, 10012);
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("onSaveRecentUser: ToFilterBox ");
       ((StringBuilder)localObject3).append(paramRecentUser);
@@ -96,7 +96,7 @@ public class RecentUserCacheHelper
     }
     if (((ITempMsgBoxManager)localObject1).isBelongToMsgBox(paramRecentUser.uin, paramRecentUser.getType()))
     {
-      localObject1 = paramRecentUserProxy.a(AppConstants.TEMP_MSG_BOX_UIN, 10011);
+      localObject1 = paramRecentUserProxy.b(AppConstants.TEMP_MSG_BOX_UIN, 10011);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onSaveRecentUser: ToMsgBox ");
       ((StringBuilder)localObject2).append(paramRecentUser);
@@ -110,7 +110,7 @@ public class RecentUserCacheHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.RecentUserCacheHelper
  * JD-Core Version:    0.7.0.1
  */

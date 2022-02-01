@@ -25,12 +25,12 @@ import java.util.Locale;
 
 public class WebCookieManager
 {
-  private static WebCookieManager jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebCookieManager = new WebCookieManager();
-  private Context jdField_a_of_type_AndroidContentContext;
+  private static WebCookieManager a = new WebCookieManager();
+  private Context b;
   
   public static WebCookieManager a()
   {
-    return jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleWebCookieManager;
+    return a;
   }
   
   private List<String> a(String paramString)
@@ -43,8 +43,8 @@ public class WebCookieManager
     ((StringBuilder)localObject1).append(";Path=/;");
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = (AppGeneralInfoService)BizEngineMgr.getInstance().getLiveEngine().getService(AppGeneralInfoService.class);
-    int i = NetworkUtil.getNetworkType(this.jdField_a_of_type_AndroidContentContext);
-    paramString = BusinessManager.a.a();
+    int i = NetworkUtil.getNetworkType(this.b);
+    paramString = BusinessManager.a.f();
     Object localObject3 = ((AppGeneralInfoService)localObject2).getAppId();
     Object localObject4 = QUA.getQUA3();
     int j = ((AppGeneralInfoService)localObject2).getClientType();
@@ -58,7 +58,7 @@ public class WebCookieManager
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", localObject1 }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "guid", paramString, localObject1 }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "qbid", "", localObject1 }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", "8.7.0", localObject1 }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", "8.8.17", localObject1 }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%S", new Object[] { "appid", localObject3, localObject1 }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "__client_build", localObject4, localObject1 }));
     localObject3 = BizEngineMgr.getInstance().getUserEngine();
@@ -134,9 +134,9 @@ public class WebCookieManager
   
   public void a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.b = paramContext.getApplicationContext();
     Uri.parse(paramString);
-    CookieSyncManager.createInstance(this.jdField_a_of_type_AndroidContentContext);
+    CookieSyncManager.createInstance(this.b);
     paramContext = CookieManager.getInstance();
     paramContext.setAcceptCookie(true);
     Iterator localIterator = a(paramString).iterator();
@@ -149,7 +149,7 @@ public class WebCookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.WebCookieManager
  * JD-Core Version:    0.7.0.1
  */

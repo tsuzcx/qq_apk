@@ -11,50 +11,50 @@ import mqq.app.AppRuntime;
 
 public abstract class VoiceTextBaseViewHelpr
 {
-  protected Context a;
-  protected VoiceTextUserOpListener a;
-  protected VoiceTextStateModel a;
   protected AppRuntime a;
+  protected Context b;
+  protected VoiceTextStateModel c;
+  protected VoiceTextUserOpListener d;
   
   public VoiceTextBaseViewHelpr(AppRuntime paramAppRuntime, VoiceTextStateModel paramVoiceTextStateModel)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel = paramVoiceTextStateModel;
-  }
-  
-  public VoiceTextInfoState a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a();
-  }
-  
-  public VoiceTextSttState a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a();
-  }
-  
-  public VoiceTextUIState a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a();
+    this.a = paramAppRuntime;
+    this.c = paramVoiceTextStateModel;
   }
   
   public void a(VoiceTextUserOpListener paramVoiceTextUserOpListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextUserOpListener = paramVoiceTextUserOpListener;
+    this.d = paramVoiceTextUserOpListener;
   }
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramVoiceTextPanel.getContext();
+    this.b = paramVoiceTextPanel.getContext();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelListenersVoiceTextUserOpListener = null;
+    this.d = null;
+  }
+  
+  public VoiceTextInfoState c()
+  {
+    return this.c.d();
+  }
+  
+  public VoiceTextSttState d()
+  {
+    return this.c.c();
+  }
+  
+  public VoiceTextUIState e()
+  {
+    return this.c.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextBaseViewHelpr
  * JD-Core Version:    0.7.0.1
  */

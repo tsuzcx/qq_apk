@@ -106,10 +106,6 @@ public final class BeaconReport
     Object localObject = new HashMap();
     ((Map)localObject).put("u_c_a_e", Boolean.valueOf(this.f.isAuditEnable()));
     ((Map)localObject).put("u_c_b_e", Boolean.valueOf(this.f.isBidEnable()));
-    ((Map)localObject).put("u_c_m_e", Boolean.valueOf(this.f.isCollectMACEnable()));
-    ((Map)localObject).put("u_c_i_e", Boolean.valueOf(this.f.isCollectIMEIEnable()));
-    ((Map)localObject).put("u_c_a_i_e", Boolean.valueOf(this.f.isCollectAndroidIdEnable()));
-    ((Map)localObject).put("u_c_p_i_e", Boolean.valueOf(this.f.isCollectProcessInfoEnable()));
     ((Map)localObject).put("u_c_d_s", Integer.valueOf(this.f.getMaxDBCount()));
     ((Map)localObject).put("u_c_p_s", Boolean.valueOf(this.f.isPagePathEnable()));
     localObject = new com.tencent.beacon.a.a.c(8, (Map)localObject);
@@ -184,7 +180,7 @@ public final class BeaconReport
   
   public String getSDKVersion()
   {
-    return "4.1.22";
+    return "4.1.22.6";
   }
   
   public EventResult report(BeaconEvent paramBeaconEvent)
@@ -267,6 +263,14 @@ public final class BeaconReport
   {
     Object localObject = new HashMap();
     ((Map)localObject).put("u_c_m_e", Boolean.valueOf(paramBoolean));
+    localObject = new com.tencent.beacon.a.a.c(8, (Map)localObject);
+    com.tencent.beacon.a.a.b.a().b((com.tencent.beacon.a.a.c)localObject);
+  }
+  
+  public void setCollectOAID(boolean paramBoolean)
+  {
+    Object localObject = new HashMap();
+    ((Map)localObject).put("u_c_o_e", Boolean.valueOf(paramBoolean));
     localObject = new com.tencent.beacon.a.a.c(8, (Map)localObject);
     com.tencent.beacon.a.a.b.a().b((com.tencent.beacon.a.a.c)localObject);
   }

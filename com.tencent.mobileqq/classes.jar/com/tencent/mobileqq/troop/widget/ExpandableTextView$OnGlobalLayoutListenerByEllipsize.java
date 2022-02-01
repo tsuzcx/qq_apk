@@ -8,24 +8,24 @@ import android.widget.TextView;
 public class ExpandableTextView$OnGlobalLayoutListenerByEllipsize
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView a;
+  private int b;
   
   public ExpandableTextView$OnGlobalLayoutListenerByEllipsize(TextView paramTextView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(this.jdField_a_of_type_Int + 1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(false);
+    this.a = paramTextView;
+    this.b = paramInt;
+    this.a.setMaxLines(this.b + 1);
+    this.a.setSingleLine(false);
   }
   
   public void onGlobalLayout()
   {
     int i;
-    if (this.jdField_a_of_type_AndroidWidgetTextView.getLineCount() > this.jdField_a_of_type_Int)
+    if (this.a.getLineCount() > this.b)
     {
-      i = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
-      localCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+      i = this.a.getLayout().getLineEnd(this.b - 1);
+      localCharSequence = this.a.getText();
     }
     try
     {
@@ -38,16 +38,16 @@ public class ExpandableTextView$OnGlobalLayoutListenerByEllipsize
       label56:
       break label56;
     }
-    CharSequence localCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+    CharSequence localCharSequence = this.a.getText();
     str = "";
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence);
-    this.jdField_a_of_type_AndroidWidgetTextView.append(str);
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.setText(localCharSequence);
+    this.a.append(str);
+    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExpandableTextView.OnGlobalLayoutListenerByEllipsize
  * JD-Core Version:    0.7.0.1
  */

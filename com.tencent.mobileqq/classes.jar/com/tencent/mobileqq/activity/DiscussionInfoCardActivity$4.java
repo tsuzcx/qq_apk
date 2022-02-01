@@ -16,13 +16,13 @@ class DiscussionInfoCardActivity$4
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     String str;
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
-      str = this.a.getString(2131693069);
-      DiscussionInfoCardActivity.b(this.a).setContentDescription(str);
+      str = this.a.getString(2131890183);
+      DiscussionInfoCardActivity.f(this.a).setContentDescription(str);
     }
-    boolean bool = DiscussionInfoCardActivity.a(this.a).a(this.a.a);
-    DiscussionInfoCardActivity.a(this.a).a(this.a.a, bool ^ true);
+    boolean bool = DiscussionInfoCardActivity.e(this.a).a(this.a.h);
+    DiscussionInfoCardActivity.e(this.a).a(this.a.h, bool ^ true);
     ReportTask localReportTask = new ReportTask(this.a.app).a("dc00899").b("Grp_Dis_set").c("Dis_info");
     if (bool) {
       str = "Clk_unstick";
@@ -35,7 +35,7 @@ class DiscussionInfoCardActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.4
  * JD-Core Version:    0.7.0.1
  */

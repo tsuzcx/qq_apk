@@ -52,23 +52,23 @@ public class MedalNewsItemBuilder
   extends AbstractChatItemBuilder
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter;
-  int b = 0;
-  int d = -12541697;
-  int e;
+  int e = 0;
+  int f = 0;
+  int g = -12541697;
+  int h = -2143248129;
+  ColorStateList i;
+  private ColorFilter j;
   
   public MedalNewsItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_e_of_type_Int = -2143248129;
-    this.jdField_a_of_type_Int = ((int)paramContext.getResources().getDimension(2131298193));
-    this.b = ((int)paramContext.getResources().getDimension(2131298358));
-    paramBaseAdapter = new int[0];
-    int i = this.jdField_e_of_type_Int;
-    int j = this.d;
-    this.jdField_a_of_type_AndroidContentResColorStateList = new ColorStateList(new int[][] { { 16842919 }, paramBaseAdapter }, new int[] { i, j });
+    this.e = ((int)paramContext.getResources().getDimension(2131298892));
+    this.f = ((int)paramContext.getResources().getDimension(2131299072));
+    paramBaseAdapter = new int[] { 16842919 };
+    paramContext = new int[0];
+    int k = this.h;
+    int m = this.g;
+    this.i = new ColorStateList(new int[][] { paramBaseAdapter, paramContext }, new int[] { k, m });
     paramQQAppInterface = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.a(3, 4);
@@ -77,27 +77,27 @@ public class MedalNewsItemBuilder
   
   public static int a(String paramString)
   {
-    int j = 0;
-    int i = 0;
-    while (j < paramString.length())
+    int m = 0;
+    int k = 0;
+    while (m < paramString.length())
     {
-      int k = paramString.codePointAt(j);
-      if ((k >= 32) && (k <= 126))
+      int n = paramString.codePointAt(m);
+      if ((n >= 32) && (n <= 126))
       {
-        i += 1;
+        k += 1;
       }
-      else if (k >= 65535)
+      else if (n >= 65535)
       {
-        i += 2;
-        j += 1;
+        k += 2;
+        m += 1;
       }
       else
       {
-        i += 2;
+        k += 2;
       }
-      j += 1;
+      m += 1;
     }
-    return i;
+    return k;
   }
   
   private View a(View paramView, MedalNewsItemBuilder.Holder paramHolder)
@@ -105,18 +105,18 @@ public class MedalNewsItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558808, null);
-      paramHolder.c = ((TextView)paramView.findViewById(2131371697));
-      paramHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368343));
-      paramHolder.d = ((TextView)paramView.findViewById(2131365517));
-      paramHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378784));
-      paramHolder.e = ((TextView)paramView.findViewById(2131378745));
-      paramHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365257));
-      paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131365258));
+      paramView = LayoutInflater.from(this.c).inflate(2131624428, null);
+      paramHolder.g = ((TextView)paramView.findViewById(2131439121));
+      paramHolder.f = ((URLImageView)paramView.findViewById(2131435219));
+      paramHolder.i = ((TextView)paramView.findViewById(2131431733));
+      paramHolder.e = ((TextView)paramView.findViewById(2131447463));
+      paramHolder.j = ((TextView)paramView.findViewById(2131447419));
+      paramHolder.h = ((ImageView)paramView.findViewById(2131431428));
+      paramHolder.d = ((CornerImageView)paramView.findViewById(2131431429));
     }
     try
     {
-      paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130845563);
+      paramHolder.d.setImageResource(2130847027);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -128,83 +128,62 @@ public class MedalNewsItemBuilder
     try
     {
       System.gc();
-      paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130845563);
+      paramHolder.d.setImageResource(2130847027);
     }
     catch (Throwable localThrowable)
     {
       break label138;
     }
-    paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(AIOUtils.b(3.0F, paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getResources()));
-    paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
-    localObject = paramHolder.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
+    paramHolder.d.setRadius(AIOUtils.b(3.0F, paramHolder.d.getResources()));
+    paramHolder.d.setPressMask(true);
+    localObject = paramHolder.e.getCompoundDrawables();
     localView = localObject[0];
     localObject = localObject[2];
-    localView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
-    ((Drawable)localObject).setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
+    localView.setColorFilter(this.j);
+    ((Drawable)localObject).setColorFilter(this.j);
     localView = paramView;
-    if (jdField_e_of_type_Boolean)
+    if (v)
     {
-      paramHolder.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+      paramHolder.r = new StringBuilder();
       localView = paramView;
     }
-    if (jdField_e_of_type_Boolean)
+    if (v)
     {
       localView.setContentDescription(null);
-      paramHolder.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramHolder.jdField_b_of_type_JavaLangStringBuilder.length(), "");
-      paramHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setContentDescription(null);
+      paramHolder.r.replace(0, paramHolder.r.length(), "");
+      paramHolder.d.setContentDescription(null);
     }
     return localView;
-  }
-  
-  @Nullable
-  private URLDrawable a(String paramString)
-  {
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = this.b;
-      localURLDrawableOptions.mRequestHeight = this.b;
-      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
-      localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      label42:
-      break label42;
-    }
-    return null;
   }
   
   public static String a(String paramString, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = 0;
-    int i = 0;
-    while (j < paramString.length())
+    int m = 0;
+    int k = 0;
+    while (m < paramString.length())
     {
-      int k = paramString.codePointAt(j);
-      if ((k >= 32) && (k <= 126))
+      int n = paramString.codePointAt(m);
+      if ((n >= 32) && (n <= 126))
       {
-        i += 1;
+        k += 1;
       }
-      else if (k >= 65535)
+      else if (n >= 65535)
       {
-        i += 1;
-        j += 1;
+        k += 1;
+        m += 1;
       }
       else
       {
-        i += 2;
+        k += 2;
       }
-      if (i <= paramInt) {
-        localStringBuilder.appendCodePoint(k);
+      if (k <= paramInt) {
+        localStringBuilder.appendCodePoint(n);
       }
-      if (i >= paramInt) {
+      if (k >= paramInt) {
         break;
       }
-      j += 1;
+      m += 1;
     }
     if (localStringBuilder.length() < paramString.length()) {
       localStringBuilder.append("...");
@@ -214,67 +193,67 @@ public class MedalNewsItemBuilder
   
   private void a(MedalNewsItemBuilder.Holder paramHolder)
   {
-    int i;
-    if (paramHolder.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.myLevel == 0) {
-      i = 0;
+    int k;
+    if (paramHolder.m.myLevel == 0) {
+      k = 0;
     } else {
-      i = 8;
+      k = 8;
     }
-    if (paramHolder.e.getVisibility() != i) {
-      paramHolder.e.setVisibility(i);
+    if (paramHolder.j.getVisibility() != k) {
+      paramHolder.j.setVisibility(k);
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131699010);
-    if (!((String)localObject).equalsIgnoreCase(paramHolder.e.getText().toString()))
+    Object localObject = this.c.getResources().getString(2131897014);
+    if (!((String)localObject).equalsIgnoreCase(paramHolder.j.getText().toString()))
     {
       localObject = new SpannableString((CharSequence)localObject);
-      ((SpannableString)localObject).setSpan(new DatingCommentTextView.TouchableSpan(new MedalNewsItemBuilder.1(this), this.jdField_a_of_type_AndroidContentResColorStateList), 11, 14, 33);
-      paramHolder.e.setText((CharSequence)localObject);
-      paramHolder.e.setMovementMethod(LinkMovementMethod.getInstance());
+      ((SpannableString)localObject).setSpan(new DatingCommentTextView.TouchableSpan(new MedalNewsItemBuilder.1(this), this.i), 11, 14, 33);
+      paramHolder.j.setText((CharSequence)localObject);
+      paramHolder.j.setMovementMethod(LinkMovementMethod.getInstance());
     }
   }
   
   private void a(MedalNewsItemBuilder.Holder paramHolder, int paramInt)
   {
-    int i;
-    int j;
+    int k;
+    int m;
     if (paramInt != 1)
     {
       if (paramInt != 2)
       {
-        i = 2130845575;
-        j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166442);
+        k = 2130847039;
+        m = this.c.getResources().getColor(2131167284);
       }
       else
       {
-        i = 2130845574;
-        j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166444);
+        k = 2130847038;
+        m = this.c.getResources().getColor(2131167286);
       }
     }
     else
     {
-      i = 2130845573;
-      j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166440);
+      k = 2130847037;
+      m = this.c.getResources().getColor(2131167282);
     }
-    this.jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(j, PorterDuff.Mode.SRC_IN);
-    Object localObject2 = paramHolder.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
+    this.j = new PorterDuffColorFilter(m, PorterDuff.Mode.SRC_IN);
+    Object localObject2 = paramHolder.e.getCompoundDrawables();
     Object localObject1 = localObject2[0];
     localObject2 = localObject2[2];
-    localObject1.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
-    ((Drawable)localObject2).setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
-    paramHolder.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
-    paramHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(j);
-    paramHolder.c.setTextColor(j);
-    paramHolder.d.setTextColor(j);
+    localObject1.setColorFilter(this.j);
+    ((Drawable)localObject2).setColorFilter(this.j);
+    paramHolder.h.setColorFilter(this.j);
+    paramHolder.e.setTextColor(m);
+    paramHolder.g.setTextColor(m);
+    paramHolder.i.setTextColor(m);
     if (paramInt <= 3)
     {
-      paramHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
-      paramHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramHolder.h.setImageResource(k);
+      paramHolder.h.setVisibility(0);
     }
     else
     {
-      paramHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramHolder.h.setVisibility(8);
     }
-    paramHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(paramInt));
+    paramHolder.h.setTag(Integer.valueOf(paramInt));
   }
   
   private void a(String paramString1, String paramString2, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
@@ -285,7 +264,7 @@ public class MedalNewsItemBuilder
       if (TextUtils.isEmpty(paramString2)) {
         str = "";
       }
-      paramString1 = NearbyURLSafeUtil.a(paramString1);
+      paramString1 = NearbyURLSafeUtil.b(paramString1);
       paramString2 = new StringBuilder();
       paramString2.append(paramInt2);
       paramString2.append("");
@@ -294,11 +273,11 @@ public class MedalNewsItemBuilder
       ((StringBuilder)localObject).append(paramInt1);
       ((StringBuilder)localObject).append("");
       localObject = ShareHelper.a(new String[] { paramString2, ((StringBuilder)localObject).toString(), paramString1, str });
-      paramString2 = (MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MEDAL_WALL_MNG);
+      paramString2 = (MedalWallMng)this.a.getManager(QQManagerFactory.MEDAL_WALL_MNG);
       if (paramString2 == null) {
         return;
       }
-      paramString2 = new StringBuilder(paramString2.a());
+      paramString2 = new StringBuilder(paramString2.e());
       paramString2.append("&uincode=");
       paramString2.append(paramString1);
       paramString2.append("&id=");
@@ -341,29 +320,50 @@ public class MedalNewsItemBuilder
         paramString1.append(paramString2.toString());
         QLog.i("MedalNewsItemBuilder", 4, paramString1.toString());
       }
-      paramString1 = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramString1 = new Intent(this.c, QQBrowserActivity.class);
       paramString1.putExtra("url", paramString2.toString());
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString1);
+      this.c.startActivity(paramString1);
       return;
     }
-    a(Utils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1), paramString1);
+    a(Utils.a(this.a.getCurrentAccountUin(), paramString1), paramString1);
   }
   
   private void a(boolean paramBoolean, String paramString)
   {
-    MedalWallMng localMedalWallMng = (MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MEDAL_WALL_MNG);
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    int i;
+    MedalWallMng localMedalWallMng = (MedalWallMng)this.a.getManager(QQManagerFactory.MEDAL_WALL_MNG);
+    Intent localIntent = new Intent(this.c, QQBrowserActivity.class);
+    int k;
     if (paramBoolean) {
-      i = MedalWallMng.f;
+      k = MedalWallMng.h;
     } else {
-      i = MedalWallMng.jdField_e_of_type_Int;
+      k = MedalWallMng.g;
     }
-    localIntent.putExtra("url", localMedalWallMng.a(paramBoolean, paramString, i));
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    localIntent.putExtra("url", localMedalWallMng.a(paramBoolean, paramString, k));
+    this.c.startActivity(localIntent);
     if (paramBoolean) {
       ThreadManager.post(new MedalNewsItemBuilder.3(this), 0, null, false);
     }
+  }
+  
+  @Nullable
+  private URLDrawable b(String paramString)
+  {
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = this.f;
+      localURLDrawableOptions.mRequestHeight = this.f;
+      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+      localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      label42:
+      break label42;
+    }
+    return null;
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -371,90 +371,90 @@ public class MedalNewsItemBuilder
     paramOnLongClickAndTouchListener = (MessageForMedalNews)paramMessageRecord;
     paramLinearLayout = (MedalNewsItemBuilder.Holder)paramViewHolder;
     paramView = a(paramView, paramLinearLayout);
-    paramLinearLayout.jdField_a_of_type_Long = paramOnLongClickAndTouchListener.uniseq;
-    paramLinearLayout.jdField_a_of_type_JavaLangString = paramOnLongClickAndTouchListener.frienduin;
-    paramLinearLayout.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews = paramOnLongClickAndTouchListener;
-    int m = paramOnLongClickAndTouchListener.level;
+    paramLinearLayout.k = paramOnLongClickAndTouchListener.uniseq;
+    paramLinearLayout.l = paramOnLongClickAndTouchListener.frienduin;
+    paramLinearLayout.m = paramOnLongClickAndTouchListener;
+    int i1 = paramOnLongClickAndTouchListener.level;
     paramMessageRecord = paramOnLongClickAndTouchListener.name;
     paramViewHolder = paramOnLongClickAndTouchListener.desc;
     paramOnLongClickAndTouchListener = paramOnLongClickAndTouchListener.icon;
-    Object localObject = paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.getTag();
+    Object localObject = paramLinearLayout.e.getTag();
     if ((localObject != null) && ((localObject instanceof String)))
     {
       localObject = (String)localObject;
-      if (paramLinearLayout.jdField_a_of_type_JavaLangString.equalsIgnoreCase((String)localObject))
+      if (paramLinearLayout.l.equalsIgnoreCase((String)localObject))
       {
-        j = 0;
+        m = 0;
         break label125;
       }
     }
-    int j = 1;
+    int m = 1;
     label125:
-    localObject = paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView.getTag();
-    int i;
-    if ((localObject != null) && ((localObject instanceof Integer)) && (m == ((Integer)localObject).intValue())) {
-      i = 0;
-    } else {
-      i = 1;
-    }
-    localObject = paramLinearLayout.jdField_a_of_type_ComTencentImageURLImageView.getTag();
+    localObject = paramLinearLayout.h.getTag();
     int k;
-    if ((localObject != null) && ((localObject instanceof String)) && (paramOnLongClickAndTouchListener.equalsIgnoreCase((String)localObject))) {
+    if ((localObject != null) && ((localObject instanceof Integer)) && (i1 == ((Integer)localObject).intValue())) {
       k = 0;
     } else {
       k = 1;
     }
-    if (j != 0)
-    {
-      localObject = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, 6);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131699009, new Object[] { localObject });
-      if (!paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.getText().equals(localObject)) {
-        paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      }
-      paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.setTag(paramLinearLayout.jdField_a_of_type_JavaLangString);
+    localObject = paramLinearLayout.f.getTag();
+    int n;
+    if ((localObject != null) && ((localObject instanceof String)) && (paramOnLongClickAndTouchListener.equalsIgnoreCase((String)localObject))) {
+      n = 0;
+    } else {
+      n = 1;
     }
-    if (!paramLinearLayout.c.getText().equals(paramMessageRecord))
+    if (m != 0)
     {
-      paramLinearLayout.c.setText(paramMessageRecord);
-      j = a(paramMessageRecord);
-      if ((j & 0x1) == 0) {
-        j /= 2;
+      localObject = a(this.d.e, 6);
+      localObject = this.c.getResources().getString(2131897013, new Object[] { localObject });
+      if (!paramLinearLayout.e.getText().equals(localObject)) {
+        paramLinearLayout.e.setText((CharSequence)localObject);
+      }
+      paramLinearLayout.e.setTag(paramLinearLayout.l);
+    }
+    if (!paramLinearLayout.g.getText().equals(paramMessageRecord))
+    {
+      paramLinearLayout.g.setText(paramMessageRecord);
+      m = a(paramMessageRecord);
+      if ((m & 0x1) == 0) {
+        m /= 2;
       } else {
-        j = j / 2 + 1;
+        m = m / 2 + 1;
       }
-      if (j <= 5) {
-        paramLinearLayout.c.setTextSize(1, 20.0F);
+      if (m <= 5) {
+        paramLinearLayout.g.setTextSize(1, 20.0F);
       } else {
-        paramLinearLayout.c.setTextSize(1, 15.0F);
+        paramLinearLayout.g.setTextSize(1, 15.0F);
       }
     }
-    if (!paramLinearLayout.d.getText().equals(paramViewHolder)) {
-      paramLinearLayout.d.setText(paramViewHolder);
+    if (!paramLinearLayout.i.getText().equals(paramViewHolder)) {
+      paramLinearLayout.i.setText(paramViewHolder);
     }
-    if (k != 0)
+    if (n != 0)
     {
-      paramViewHolder = a(paramOnLongClickAndTouchListener);
-      localObject = paramLinearLayout.jdField_a_of_type_ComTencentImageURLImageView;
+      paramViewHolder = b(paramOnLongClickAndTouchListener);
+      localObject = paramLinearLayout.f;
       paramMessageRecord = paramViewHolder;
       if (paramViewHolder == null) {
         paramMessageRecord = URLDrawableHelperConstants.a;
       }
       ((URLImageView)localObject).setImageDrawable(paramMessageRecord);
-      paramLinearLayout.jdField_a_of_type_ComTencentImageURLImageView.setTag(paramOnLongClickAndTouchListener);
+      paramLinearLayout.f.setTag(paramOnLongClickAndTouchListener);
     }
-    if (i != 0) {
-      a(paramLinearLayout, m);
+    if (k != 0) {
+      a(paramLinearLayout, i1);
     }
-    paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(paramLinearLayout);
-    paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setOnClickListener(this);
+    paramLinearLayout.d.setTag(paramLinearLayout);
+    paramLinearLayout.d.setOnClickListener(this);
     a(paramLinearLayout);
-    if (jdField_e_of_type_Boolean)
+    if (v)
     {
-      paramMessageRecord = paramLinearLayout.jdField_b_of_type_JavaLangStringBuilder;
-      paramMessageRecord.append(paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.getText());
-      paramMessageRecord.append(paramLinearLayout.c.getText());
-      paramView.setContentDescription(paramLinearLayout.jdField_b_of_type_JavaLangStringBuilder.toString());
-      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setContentDescription(paramLinearLayout.jdField_b_of_type_JavaLangStringBuilder.toString());
+      paramMessageRecord = paramLinearLayout.r;
+      paramMessageRecord.append(paramLinearLayout.e.getText());
+      paramMessageRecord.append(paramLinearLayout.g.getText());
+      paramView.setContentDescription(paramLinearLayout.r.toString());
+      paramLinearLayout.d.setContentDescription(paramLinearLayout.r.toString());
     }
     return paramView;
   }
@@ -476,15 +476,15 @@ public class MedalNewsItemBuilder
     MedalNewsItemBuilder.Holder localHolder = (MedalNewsItemBuilder.Holder)paramView.getTag();
     if (localHolder != null)
     {
-      ThreadManager.postImmediately(new MedalNewsItemBuilder.2(this, localHolder.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews), null, true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "4", "", "");
+      ThreadManager.postImmediately(new MedalNewsItemBuilder.2(this, localHolder.m), null, true);
+      ReportController.b(this.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "4", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder
  * JD-Core Version:    0.7.0.1
  */

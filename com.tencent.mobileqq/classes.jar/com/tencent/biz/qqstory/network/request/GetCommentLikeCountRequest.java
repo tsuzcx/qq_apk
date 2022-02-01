@@ -15,9 +15,14 @@ import java.util.List;
 public class GetCommentLikeCountRequest
   extends NetworkRequest
 {
-  public List<String> a;
+  public List<String> e;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StoryGroupSvc.get_comment_like_count");
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_group.RspGetCommentLikeCount localRspGetCommentLikeCount = new qqstory_group.RspGetCommentLikeCount();
     try
@@ -33,15 +38,10 @@ public class GetCommentLikeCountRequest
     return null;
   }
   
-  public String a()
-  {
-    return StoryApi.a("StoryGroupSvc.get_comment_like_count");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_group.ReqGetCommentLikeCount localReqGetCommentLikeCount = new qqstory_group.ReqGetCommentLikeCount();
-    Iterator localIterator = this.a.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -52,7 +52,7 @@ public class GetCommentLikeCountRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetCommentLikeCountRequest
  * JD-Core Version:    0.7.0.1
  */

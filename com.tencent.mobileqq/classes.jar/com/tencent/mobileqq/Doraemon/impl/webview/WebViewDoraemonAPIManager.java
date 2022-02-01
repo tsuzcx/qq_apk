@@ -10,35 +10,35 @@ import java.util.Map;
 public class WebViewDoraemonAPIManager
   extends DefaultDoraemonAPIManager
 {
-  public boolean b;
-  protected String c;
-  public String d;
-  public String e;
+  protected String m;
+  public boolean n;
+  public String o;
+  public String p;
   
   public WebViewDoraemonAPIManager(Activity paramActivity, int paramInt, String paramString1, String paramString2)
   {
     super(paramActivity, paramInt, paramString1);
-    this.c = paramString2;
+    this.m = paramString2;
   }
   
-  protected Map<String, APIConfig> a()
+  protected Map<String, APIConfig> d()
   {
     return D.manifest.webview_apis.a();
   }
   
-  public boolean b()
+  protected void e()
   {
-    return this.jdField_b_of_type_Int == 2;
+    DefaultDoraemonAppInfoHelper.a().a(this.c, this.a, this.b, this.m, new WebViewDoraemonAPIManager.1(this));
   }
   
-  protected void c()
+  public boolean j()
   {
-    DefaultDoraemonAppInfoHelper.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new WebViewDoraemonAPIManager.1(this));
+    return this.f == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webview.WebViewDoraemonAPIManager
  * JD-Core Version:    0.7.0.1
  */

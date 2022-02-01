@@ -135,7 +135,7 @@ public class TroopAppHandler
     if (paramInt1 == 1)
     {
       if ((localITroopAppService.makeAppidsInOrder(paramList2, paramInt2)) && (paramList1.isEmpty())) {
-        notifyUI(TroopAppObserver.a, true, new Object[] { null });
+        notifyUI(TroopAppObserver.b, true, new Object[] { null });
       }
       if (!paramList1.isEmpty()) {
         a(2, paramInt2, paramList1, false);
@@ -144,7 +144,7 @@ public class TroopAppHandler
     else
     {
       localITroopAppService.addTroopAppInfos(paramArrayList, paramInt2);
-      notifyUI(TroopAppObserver.a, true, new Object[] { null });
+      notifyUI(TroopAppObserver.b, true, new Object[] { null });
     }
   }
   
@@ -198,7 +198,7 @@ public class TroopAppHandler
           ITroopAppService localITroopAppService = (ITroopAppService)this.appRuntime.getRuntimeService(ITroopAppService.class, "all");
           if (localITroopAppService == null)
           {
-            notifyUI(TroopAppObserver.a, false, new Object[] { null });
+            notifyUI(TroopAppObserver.b, false, new Object[] { null });
             if (!QLog.isColorLevel()) {
               break label601;
             }
@@ -258,19 +258,19 @@ public class TroopAppHandler
           a(i, j, localRspBody, localArrayList1, paramToServiceMsg, localArrayList2);
           return;
         }
-        notifyUI(TroopAppObserver.a, false, new Object[] { null });
+        notifyUI(TroopAppObserver.b, false, new Object[] { null });
         return;
       }
       catch (Exception paramToServiceMsg)
       {
         continue;
       }
-      notifyUI(TroopAppObserver.a, false, new Object[] { null });
+      notifyUI(TroopAppObserver.b, false, new Object[] { null });
       if (QLog.isColorLevel()) {
         QLog.d("TroopAppHandler.troop.troop_app", 2, "Exception, handleGetTroopAppList");
       }
       return;
-      notifyUI(TroopAppObserver.a, false, new Object[] { null });
+      notifyUI(TroopAppObserver.b, false, new Object[] { null });
       return;
       return;
       paramToServiceMsg = null;
@@ -301,7 +301,7 @@ public class TroopAppHandler
         paramObject = (ITroopAppService)this.appRuntime.getRuntimeService(ITroopAppService.class, "all");
         if (paramObject == null)
         {
-          notifyUI(TroopAppObserver.b, false, null);
+          notifyUI(TroopAppObserver.c, false, null);
           if (!QLog.isColorLevel()) {
             return;
           }
@@ -310,12 +310,12 @@ public class TroopAppHandler
         }
         paramObject.saveAppListTimestamp(localRspBody.uint32_timestamp.get(), 0);
         paramObject.makeAppidsInOrder(paramFromServiceMsg, 0);
-        notifyUI(TroopAppObserver.b, true, null);
+        notifyUI(TroopAppObserver.c, true, null);
         paramToServiceMsg = paramToServiceMsg.extraData.getIntegerArrayList("appidToAdd");
         ((TroopAppHandler)this.appRuntime.getBusinessHandler(TroopAppHandler.class.getName())).a(2, 0, paramToServiceMsg, false);
         return;
       }
-      notifyUI(TroopAppObserver.b, false, null);
+      notifyUI(TroopAppObserver.c, false, null);
       if (!QLog.isColorLevel()) {
         break label289;
       }
@@ -330,13 +330,13 @@ public class TroopAppHandler
       label264:
       break label264;
     }
-    notifyUI(TroopAppObserver.b, false, null);
+    notifyUI(TroopAppObserver.c, false, null);
     if (QLog.isColorLevel()) {
       QLog.d("TroopAppHandler.troop.troop_app", 2, "Exception, handleSortTroopAppList");
     }
     label289:
     return;
-    notifyUI(TroopAppObserver.b, false, null);
+    notifyUI(TroopAppObserver.c, false, null);
     return;
   }
   
@@ -374,10 +374,10 @@ public class TroopAppHandler
           localITroopAioAppService.clearRedDotInCacheAndDb(((Integer)localArrayList.get(i)).intValue());
           i += 1;
         }
-        notifyUI(TroopAppObserver.c, true, new Object[] { localArrayList, paramFromServiceMsg });
+        notifyUI(TroopAppObserver.d, true, new Object[] { localArrayList, paramFromServiceMsg });
         return;
       }
-      notifyUI(TroopAppObserver.c, false, null);
+      notifyUI(TroopAppObserver.d, false, null);
       return;
     }
     catch (Exception paramToServiceMsg)
@@ -385,13 +385,13 @@ public class TroopAppHandler
       label265:
       break label265;
     }
-    notifyUI(TroopAppObserver.c, false, new Object[] { localArrayList, null });
+    notifyUI(TroopAppObserver.d, false, new Object[] { localArrayList, null });
     if (QLog.isColorLevel()) {
       QLog.d("TroopAppHandler.troop.troop_app", 2, "Exception, handleClearTroopAppRedPoint");
     }
     label302:
     return;
-    notifyUI(TroopAppObserver.c, false, new Object[] { localArrayList, null });
+    notifyUI(TroopAppObserver.d, false, new Object[] { localArrayList, null });
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -428,7 +428,7 @@ public class TroopAppHandler
           ((ITroopAppService)this.appRuntime.getRuntimeService(ITroopAppService.class, "all")).setProfileAppListChangedFromWebOperate(false, str);
         }
         paramFromServiceMsg.mergeFrom(paramObject);
-        notifyUI(TroopAppObserver.d, true, new Object[] { paramFromServiceMsg, Integer.valueOf(i) });
+        notifyUI(TroopAppObserver.e, true, new Object[] { paramFromServiceMsg, Integer.valueOf(i) });
         return;
       }
     }
@@ -479,17 +479,17 @@ public class TroopAppHandler
       int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
       if (i == 0)
       {
-        notifyUI(TroopAppObserver.e, true, new Object[] { paramToServiceMsg.extraData, localRspBody, Integer.valueOf(i) });
+        notifyUI(TroopAppObserver.f, true, new Object[] { paramToServiceMsg.extraData, localRspBody, Integer.valueOf(i) });
         return;
       }
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("handleGetShortcutTroopApps failed result:");
       paramFromServiceMsg.append(i);
       QLog.i("TroopAppHandler", 2, paramFromServiceMsg.toString());
-      notifyUI(TroopAppObserver.e, false, new Object[] { paramToServiceMsg.extraData, localRspBody, Integer.valueOf(i) });
+      notifyUI(TroopAppObserver.f, false, new Object[] { paramToServiceMsg.extraData, localRspBody, Integer.valueOf(i) });
       return;
     }
-    notifyUI(TroopAppObserver.e, false, new Object[] { Integer.valueOf(0), null, Integer.valueOf(-1) });
+    notifyUI(TroopAppObserver.f, false, new Object[] { Integer.valueOf(0), null, Integer.valueOf(-1) });
   }
   
   private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -504,22 +504,17 @@ public class TroopAppHandler
       int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
       if (i == 0)
       {
-        notifyUI(TroopAppObserver.f, true, new Object[] { Long.valueOf(l), paramToServiceMsg, Integer.valueOf(i) });
+        notifyUI(TroopAppObserver.g, true, new Object[] { Long.valueOf(l), paramToServiceMsg, Integer.valueOf(i) });
         return;
       }
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("handleGetAddTroopAppRemindInfo failed result:");
       paramFromServiceMsg.append(i);
       QLog.i("TroopAppHandler", 2, paramFromServiceMsg.toString());
-      notifyUI(TroopAppObserver.f, false, new Object[] { Long.valueOf(l), paramToServiceMsg, Integer.valueOf(i) });
+      notifyUI(TroopAppObserver.g, false, new Object[] { Long.valueOf(l), paramToServiceMsg, Integer.valueOf(i) });
       return;
     }
-    notifyUI(TroopAppObserver.f, false, new Object[] { Integer.valueOf(0), null, Integer.valueOf(-1) });
-  }
-  
-  protected String a()
-  {
-    return "TroopAppHandler";
+    notifyUI(TroopAppObserver.g, false, new Object[] { Integer.valueOf(0), null, Integer.valueOf(-1) });
   }
   
   public void a(int paramInt1, int paramInt2, List<Integer> paramList, boolean paramBoolean)
@@ -531,7 +526,7 @@ public class TroopAppHandler
     localReqBody.uint32_type.set(paramInt1);
     Object localObject = new cmd0xca02.AppInfo();
     ((cmd0xca02.AppInfo)localObject).plat_type.set(2);
-    ((cmd0xca02.AppInfo)localObject).str_app_version.set("8.7.0");
+    ((cmd0xca02.AppInfo)localObject).str_app_version.set("8.8.17");
     localReqBody.msg_app_info.set((MessageMicro)localObject);
     if (paramInt2 != 0) {
       localReqBody.uint32_group_type.set(paramInt2);
@@ -584,7 +579,7 @@ public class TroopAppHandler
       ((cmd0xca04.ReqBody)localObject1).uint32_timestamp.set(paramInt);
       Object localObject2 = new cmd0xca04.AppInfo();
       ((cmd0xca04.AppInfo)localObject2).plat_type.set(2);
-      ((cmd0xca04.AppInfo)localObject2).str_app_version.set("8.7.0");
+      ((cmd0xca04.AppInfo)localObject2).str_app_version.set("8.8.17");
       ((cmd0xca04.ReqBody)localObject1).msg_app_info.set((MessageMicro)localObject2);
       localObject2 = paramArrayList1.iterator();
       while (((Iterator)localObject2).hasNext())
@@ -609,7 +604,7 @@ public class TroopAppHandler
     Object localObject1 = new oidb_0xece.ReqBody();
     Object localObject2 = new oidb_0xece.ClientInfo();
     ((oidb_0xece.ClientInfo)localObject2).platform.set(2);
-    ((oidb_0xece.ClientInfo)localObject2).version.set("8.7.0.5295");
+    ((oidb_0xece.ClientInfo)localObject2).version.set("8.8.17.5770");
     ((oidb_0xece.ReqBody)localObject1).client_info.set((MessageMicro)localObject2);
     ((oidb_0xece.ReqBody)localObject1).from.set(2);
     ((oidb_0xece.ReqBody)localObject1).group_id.set(paramLong);
@@ -630,7 +625,7 @@ public class TroopAppHandler
     Object localObject1 = new oidb_0xe2e.ReqBody();
     Object localObject2 = new oidb_0xe2e.ClientInfo();
     ((oidb_0xe2e.ClientInfo)localObject2).platform.set(2);
-    ((oidb_0xe2e.ClientInfo)localObject2).version.set("8.7.0.5295");
+    ((oidb_0xe2e.ClientInfo)localObject2).version.set("8.8.17.5770");
     ((oidb_0xe2e.ReqBody)localObject1).client.set((MessageMicro)localObject2);
     ((oidb_0xe2e.ReqBody)localObject1).group_id.set(paramLong);
     ((oidb_0xe2e.ReqBody)localObject1).group_type.set(paramInt1);
@@ -676,7 +671,7 @@ public class TroopAppHandler
     //   32: ifnull +52 -> 84
     //   35: aload_1
     //   36: getfield 470	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   39: invokevirtual 168	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   39: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   42: istore 4
     //   44: invokestatic 764	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   47: ifeq +37 -> 84
@@ -705,11 +700,11 @@ public class TroopAppHandler
     //   95: ifeq +174 -> 269
     //   98: aload_1
     //   99: getfield 481	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   102: invokevirtual 177	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   102: invokevirtual 178	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   105: ifnull +164 -> 269
     //   108: aload_1
     //   109: getfield 481	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   112: invokevirtual 177	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   112: invokevirtual 178	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   115: invokevirtual 485	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   118: astore_1
     //   119: new 773	tencent/im/oidb/cmd0x9ab/oidb_0x9ab$RspBody
@@ -731,7 +726,7 @@ public class TroopAppHandler
     //   151: astore_2
     //   152: aload_1
     //   153: getfield 788	tencent/im/oidb/cmd0x9ab/oidb_0x9ab$GroupTabList:uint32_curr_tab_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   156: invokevirtual 168	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   156: invokevirtual 169	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   159: i2l
     //   160: lstore 5
     //   162: lload 5
@@ -746,7 +741,7 @@ public class TroopAppHandler
     //   179: invokeinterface 791 2 0
     //   184: checkcast 793	tencent/im/oidb/cmd0x9ab/oidb_0x9ab$TabItem
     //   187: getfield 796	tencent/im/oidb/cmd0x9ab/oidb_0x9ab$TabItem:byt_tab_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   190: invokevirtual 177	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   190: invokevirtual 178	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   193: invokevirtual 485	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   196: invokespecial 798	java/lang/String:<init>	([B)V
     //   199: pop
@@ -835,7 +830,7 @@ public class TroopAppHandler
     }
     Object localObject1 = new oidb_0xe83.ClientInfo();
     ((oidb_0xe83.ClientInfo)localObject1).platform.set(2);
-    ((oidb_0xe83.ClientInfo)localObject1).version.set("8.7.0");
+    ((oidb_0xe83.ClientInfo)localObject1).version.set("8.8.17");
     Object localObject2 = new oidb_0xe83.ReqBody();
     ((oidb_0xe83.ReqBody)localObject2).group_id.set(l);
     ((oidb_0xe83.ReqBody)localObject2).client_info.set((MessageMicro)localObject1);
@@ -876,7 +871,7 @@ public class TroopAppHandler
       ((PBUInt32Field)localObject).set(0);
       localObject = new cmd0xca05.AppInfo();
       ((cmd0xca05.AppInfo)localObject).plat_type.set(2);
-      ((cmd0xca05.AppInfo)localObject).str_app_version.set("8.7.0");
+      ((cmd0xca05.AppInfo)localObject).str_app_version.set("8.8.17");
       while (i < paramArrayList.size())
       {
         localObject = (Integer)paramArrayList.get(i);
@@ -921,6 +916,11 @@ public class TroopAppHandler
     sendPbReq((ToServiceMsg)localObject2);
   }
   
+  protected String dv_()
+  {
+    return "TroopAppHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -959,7 +959,7 @@ public class TroopAppHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -1017,7 +1017,7 @@ public class TroopAppHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.impl.TroopAppHandler
  * JD-Core Version:    0.7.0.1
  */

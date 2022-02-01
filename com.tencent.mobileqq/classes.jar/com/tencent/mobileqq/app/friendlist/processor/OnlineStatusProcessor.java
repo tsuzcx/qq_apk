@@ -5,8 +5,10 @@ import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.mobileqq.friend.processor.BaseFriendProcessor;
 import com.tencent.mobileqq.onlinestatus.OnlineStatusUtil;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
 import com.tencent.mobileqq.onlinestatus.manager.OnlineMusicStatusManager;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
+import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.qphone.base.util.QLog;
 import friendlist.FriendInfo;
 import java.util.Iterator;
@@ -32,16 +34,23 @@ public class OnlineStatusProcessor
     }
     IFriendDataService localIFriendDataService = (IFriendDataService)this.mApp.getRuntimeService(IFriendDataService.class, "all");
     paramList = paramList.iterator();
-    while (paramList.hasNext())
+    for (int i = 0; paramList.hasNext(); i = 1)
     {
+      label42:
       Object localObject = (Pair)paramList.next();
       Friends localFriends1 = (Friends)((Pair)localObject).first;
       localObject = (FriendInfo)((Pair)localObject).second;
       localFriends1.uExtOnlineStatus = ((FriendInfo)localObject).uExtOnlineStatus;
       localFriends1.iBatteryStatus = ((FriendInfo)localObject).iBatteryStatus;
       OnlineMusicStatusManager.a(localFriends1, ((FriendInfo)localObject).vecMusicInfo, "GetFriendList");
-      Friends localFriends2 = localIFriendDataService.getFriend(localFriends1.uin, true, true);
+      Friends localFriends2 = localIFriendDataService.getFriend(localFriends1.uin);
       OnlineStatusUtil.a(localFriends1, ((FriendInfo)localObject).vecExtOnlineBusinessInfo, "GetFriendList", localFriends2);
+      if ((localFriends1.uExtOnlineStatus != 1080L) || (SimpleUIUtil.e())) {
+        break label42;
+      }
+    }
+    if (i != 0) {
+      ((IOnlineStatusService)this.mApp.getRuntimeService(IOnlineStatusService.class, "")).getOlympicMedalEventReq(false, false);
     }
   }
   
@@ -70,7 +79,7 @@ public class OnlineStatusProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.processor.OnlineStatusProcessor
  * JD-Core Version:    0.7.0.1
  */

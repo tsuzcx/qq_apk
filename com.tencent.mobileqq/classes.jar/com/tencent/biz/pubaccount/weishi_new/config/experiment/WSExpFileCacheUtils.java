@@ -18,15 +18,6 @@ public class WSExpFileCacheUtils
     }
   }
   
-  private static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
-    localStringBuilder.append("/file/weishi/ws_exp_data_");
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
   public static boolean a(WSExpPolicyEntities paramWSExpPolicyEntities)
   {
     synchronized (a)
@@ -38,7 +29,7 @@ public class WSExpFileCacheUtils
   
   public static WSExpPolicyEntities b(String paramString)
   {
-    stGetAllABTestPolicyRsp localstGetAllABTestPolicyRsp = (stGetAllABTestPolicyRsp)WSFileUtils.a(new stGetAllABTestPolicyRsp(), a(paramString));
+    stGetAllABTestPolicyRsp localstGetAllABTestPolicyRsp = (stGetAllABTestPolicyRsp)WSFileUtils.b(new stGetAllABTestPolicyRsp(), c(paramString));
     if (localstGetAllABTestPolicyRsp == null) {
       return null;
     }
@@ -47,15 +38,24 @@ public class WSExpFileCacheUtils
   
   public static boolean b(WSExpPolicyEntities paramWSExpPolicyEntities)
   {
-    if ((paramWSExpPolicyEntities != null) && (paramWSExpPolicyEntities.a() != null)) {
-      return WSFileUtils.a(paramWSExpPolicyEntities.a(), a(paramWSExpPolicyEntities.a()));
+    if ((paramWSExpPolicyEntities != null) && (paramWSExpPolicyEntities.c() != null)) {
+      return WSFileUtils.a(paramWSExpPolicyEntities.c(), c(paramWSExpPolicyEntities.a()));
     }
     return false;
+  }
+  
+  private static String c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
+    localStringBuilder.append("/file/weishi/ws_exp_data_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpFileCacheUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.graphics.Matrix;
 import android.graphics.PointF;
 import com.tencent.qqmini.proxyimpl.tavkitplugin.TavObjPool;
 import com.tencent.qqmini.proxyimpl.tavkitplugin.WeishiPlugin;
-import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import com.tencent.tav.coremedia.CGRect;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
@@ -44,107 +44,15 @@ class ObjConvector
     return paramJSONArray;
   }
   
-  static PointF a(JSONObject paramJSONObject)
-  {
-    double d1 = paramJSONObject.getDouble("x");
-    double d2 = paramJSONObject.getDouble("y");
-    return new PointF((float)d1, (float)d2);
-  }
-  
-  static TavColor a(JSONArray paramJSONArray)
-  {
-    return new TavColor(paramJSONArray.getInt(0), paramJSONArray.getInt(1), paramJSONArray.getInt(2), paramJSONArray.getInt(3));
-  }
-  
-  static CGRect a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = paramJSONObject.getJSONObject("position");
-    paramJSONObject = paramJSONObject.getJSONObject("size");
-    return new CGRect(a(localJSONObject), a(paramJSONObject));
-  }
-  
-  static CGSize a(JSONObject paramJSONObject)
-  {
-    double d1 = paramJSONObject.getDouble("width");
-    double d2 = paramJSONObject.getDouble("height");
-    return new CGSize((float)d1, (float)d2);
-  }
-  
-  static CMTime a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("value");
-    int j = paramJSONObject.getInt("timeScale");
-    return new CMTime(i, j);
-  }
-  
-  static CMTimeRange a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = paramJSONObject.getJSONObject("start");
-    paramJSONObject = paramJSONObject.getJSONObject("duration");
-    return new CMTimeRange(a(localJSONObject), a(paramJSONObject));
-  }
-  
-  static TAVStickerImageItem a(JSONObject paramJSONObject, ArrayList<TAVStickerImageItem> paramArrayList)
-  {
-    TAVStickerImageItem localTAVStickerImageItem = (TAVStickerImageItem)a(paramJSONObject, paramArrayList);
-    paramArrayList = localTAVStickerImageItem;
-    if (localTAVStickerImageItem == null) {
-      paramArrayList = new TAVStickerImageItem();
-    }
-    if (paramJSONObject.has("image"))
-    {
-      paramJSONObject = a(paramJSONObject.getJSONObject("image"));
-      if ((paramJSONObject instanceof Bitmap))
-      {
-        paramArrayList.setBitmap((Bitmap)paramJSONObject);
-        return paramArrayList;
-      }
-    }
-    else if (paramJSONObject.has("imagePath"))
-    {
-      paramJSONObject = paramJSONObject.getString("imagePath");
-      if (WeishiPlugin.a != null) {
-        paramArrayList.setBitmap(BitmapFactory.decodeFile(WeishiPlugin.a.getAbsolutePath(paramJSONObject)));
-      }
-    }
-    return paramArrayList;
-  }
-  
-  static TAVStickerLayerInfo.TAVStickerImageEffect a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = paramJSONObject.getJSONObject("timeRange");
-    String str = paramJSONObject.getString("name");
-    paramJSONObject = paramJSONObject.getString("effectID");
-    return new TAVStickerLayerInfo.TAVStickerImageEffect(a(localJSONObject), paramJSONObject, str);
-  }
-  
-  static TAVStickerLayerInfo.TAVStickerTimeEffect a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("reversed");
-    boolean bool = true;
-    if (i != 1) {
-      bool = false;
-    }
-    JSONObject localJSONObject = paramJSONObject.getJSONObject("timeRange");
-    return new TAVStickerLayerInfo.TAVStickerTimeEffect(a(paramJSONObject.getJSONObject("sourceRange")), a(localJSONObject), bool);
-  }
-  
-  static TAVStickerLayerInfo.TAVStickerUserData a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = paramJSONObject.getJSONObject("timeRange");
-    paramJSONObject = paramJSONObject.getString("data");
-    return new TAVStickerLayerInfo.TAVStickerUserData(a(localJSONObject), paramJSONObject);
-  }
-  
   static TAVStickerTextItem a(JSONObject paramJSONObject, ArrayList<TAVStickerTextItem> paramArrayList)
   {
-    TAVStickerTextItem localTAVStickerTextItem = (TAVStickerTextItem)a(paramJSONObject, paramArrayList);
+    TAVStickerTextItem localTAVStickerTextItem = (TAVStickerTextItem)c(paramJSONObject, paramArrayList);
     paramArrayList = localTAVStickerTextItem;
     if (localTAVStickerTextItem == null) {
       paramArrayList = new TAVStickerTextItem();
     }
     paramArrayList.setText(paramJSONObject.getString("text"));
-    paramArrayList.setTextColor(a(paramJSONObject.getJSONArray("textColor")).a());
+    paramArrayList.setTextColor(b(paramJSONObject.getJSONArray("textColor")).a());
     paramArrayList.setFontPath(paramJSONObject.getString("font"));
     return paramArrayList;
   }
@@ -155,55 +63,13 @@ class ObjConvector
     return TavObjPool.a().a(paramJSONObject);
   }
   
-  @Nullable
-  private static <E> E a(JSONObject paramJSONObject, ArrayList<E> paramArrayList)
-  {
-    if (paramArrayList != null)
-    {
-      if (!paramJSONObject.has("identifier")) {
-        return null;
-      }
-      long l = paramJSONObject.getLong("identifier");
-      paramJSONObject = paramArrayList.iterator();
-      while (paramJSONObject.hasNext())
-      {
-        paramArrayList = paramJSONObject.next();
-        if (l == System.identityHashCode(paramArrayList)) {
-          return paramArrayList;
-        }
-      }
-    }
-    return null;
-  }
-  
-  @NotNull
-  static List<List<TAVClip>> a(JSONArray paramJSONArray)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("toChannels() called with: jsonArray = [");
-    ((StringBuilder)localObject).append(paramJSONArray);
-    ((StringBuilder)localObject).append("]");
-    Logger.d("ObjConvector", ((StringBuilder)localObject).toString());
-    localObject = new ArrayList();
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      List localList = b(paramJSONArray.getJSONArray(i));
-      if (!localList.isEmpty()) {
-        ((List)localObject).add(localList);
-      }
-      i += 1;
-    }
-    return localObject;
-  }
-  
   static <E> List<E> a(JSONArray paramJSONArray, ObjConvector.JsonToObjConvector<E> paramJsonToObjConvector)
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramJSONArray.length())
     {
-      Object localObject = paramJsonToObjConvector.a(paramJSONArray.getJSONObject(i));
+      Object localObject = paramJsonToObjConvector.b(paramJSONArray.getJSONObject(i));
       if (localObject != null) {
         localArrayList.add(localObject);
       }
@@ -305,8 +171,8 @@ class ObjConvector
     }
     localJSONObject.put("identifier", System.identityHashCode(paramPagAudioItem));
     localJSONObject.put("filePath", paramPagAudioItem.a());
-    localJSONObject.put("startTime", a(paramPagAudioItem.a()));
-    localJSONObject.put("dataList", a(paramPagAudioItem.a(), new ObjConvector.1()));
+    localJSONObject.put("startTime", a(paramPagAudioItem.b()));
+    localJSONObject.put("dataList", a(paramPagAudioItem.c(), new ObjConvector.1()));
     return localJSONObject;
   }
   
@@ -423,7 +289,7 @@ class ObjConvector
     {
       TavStickerLayerInfoWrapper localTavStickerLayerInfoWrapper = (TavStickerLayerInfoWrapper)paramTAVStickerLayerInfo;
       localJSONObject.put("sourceDuration", a(localTavStickerLayerInfoWrapper.a()));
-      localJSONObject.put("layerSize", a(localTavStickerLayerInfoWrapper.a()));
+      localJSONObject.put("layerSize", a(localTavStickerLayerInfoWrapper.b()));
     }
     localJSONObject.put("timeEffects", a(paramTAVStickerLayerInfo.getTimeEffects(), new ObjConvector.2()));
     localJSONObject.put("imageEffects", a(paramTAVStickerLayerInfo.getImageEffects(), new ObjConvector.3()));
@@ -449,8 +315,11 @@ class ObjConvector
   static JSONObject a(Object paramObject, String paramString)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("identifier", paramString);
-    localJSONObject.put("className", paramObject.getClass().getSimpleName());
+    if (paramObject != null)
+    {
+      localJSONObject.put("identifier", paramString);
+      localJSONObject.put("className", paramObject.getClass().getSimpleName());
+    }
     return localJSONObject;
   }
   
@@ -463,15 +332,42 @@ class ObjConvector
     return localJSONObject;
   }
   
-  @NotNull
-  static List<TAVClip> b(JSONArray paramJSONArray)
+  static TavColor b(JSONArray paramJSONArray)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("toChannel() called with: channel = [");
-    localStringBuilder.append(paramJSONArray);
-    localStringBuilder.append("]");
-    Logger.d("ObjConvector", localStringBuilder.toString());
-    return a(paramJSONArray, TAVClip.class);
+    return new TavColor(paramJSONArray.getInt(0), paramJSONArray.getInt(1), paramJSONArray.getInt(2), paramJSONArray.getInt(3));
+  }
+  
+  static CMTime b(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.getInt("value");
+    int j = paramJSONObject.getInt("timeScale");
+    return new CMTime(i, j);
+  }
+  
+  static TAVStickerImageItem b(JSONObject paramJSONObject, ArrayList<TAVStickerImageItem> paramArrayList)
+  {
+    TAVStickerImageItem localTAVStickerImageItem = (TAVStickerImageItem)c(paramJSONObject, paramArrayList);
+    paramArrayList = localTAVStickerImageItem;
+    if (localTAVStickerImageItem == null) {
+      paramArrayList = new TAVStickerImageItem();
+    }
+    if (paramJSONObject.has("image"))
+    {
+      paramJSONObject = a(paramJSONObject.getJSONObject("image"));
+      if ((paramJSONObject instanceof Bitmap))
+      {
+        paramArrayList.setBitmap((Bitmap)paramJSONObject);
+        return paramArrayList;
+      }
+    }
+    else if (paramJSONObject.has("imagePath"))
+    {
+      paramJSONObject = paramJSONObject.getString("imagePath");
+      if (WeishiPlugin.a != null) {
+        paramArrayList.setBitmap(BitmapFactory.decodeFile(WeishiPlugin.a.getAbsolutePath(paramJSONObject)));
+      }
+    }
+    return paramArrayList;
   }
   
   @NotNull
@@ -485,6 +381,55 @@ class ObjConvector
     return c(paramList);
   }
   
+  static CMTimeRange c(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject.getJSONObject("start");
+    paramJSONObject = paramJSONObject.getJSONObject("duration");
+    return new CMTimeRange(b(localJSONObject), b(paramJSONObject));
+  }
+  
+  @Nullable
+  private static <E> E c(JSONObject paramJSONObject, ArrayList<E> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      if (!paramJSONObject.has("identifier")) {
+        return null;
+      }
+      long l = paramJSONObject.getLong("identifier");
+      paramJSONObject = paramArrayList.iterator();
+      while (paramJSONObject.hasNext())
+      {
+        paramArrayList = paramJSONObject.next();
+        if (l == System.identityHashCode(paramArrayList)) {
+          return paramArrayList;
+        }
+      }
+    }
+    return null;
+  }
+  
+  @NotNull
+  static List<List<TAVClip>> c(JSONArray paramJSONArray)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("toChannels() called with: jsonArray = [");
+    ((StringBuilder)localObject).append(paramJSONArray);
+    ((StringBuilder)localObject).append("]");
+    Logger.d("ObjConvector", ((StringBuilder)localObject).toString());
+    localObject = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      List localList = d(paramJSONArray.getJSONArray(i));
+      if (!localList.isEmpty()) {
+        ((List)localObject).add(localList);
+      }
+      i += 1;
+    }
+    return localObject;
+  }
+  
   @NotNull
   static JSONArray c(List paramList)
   {
@@ -495,10 +440,68 @@ class ObjConvector
     Logger.d("ObjConvector", localStringBuilder.toString());
     return a(paramList, new ObjConvector.8());
   }
+  
+  static CGSize d(JSONObject paramJSONObject)
+  {
+    double d1 = paramJSONObject.getDouble("width");
+    double d2 = paramJSONObject.getDouble("height");
+    return new CGSize((float)d1, (float)d2);
+  }
+  
+  @NotNull
+  static List<TAVClip> d(JSONArray paramJSONArray)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toChannel() called with: channel = [");
+    localStringBuilder.append(paramJSONArray);
+    localStringBuilder.append("]");
+    Logger.d("ObjConvector", localStringBuilder.toString());
+    return a(paramJSONArray, TAVClip.class);
+  }
+  
+  static PointF e(JSONObject paramJSONObject)
+  {
+    double d1 = paramJSONObject.getDouble("x");
+    double d2 = paramJSONObject.getDouble("y");
+    return new PointF((float)d1, (float)d2);
+  }
+  
+  static CGRect f(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject.getJSONObject("position");
+    paramJSONObject = paramJSONObject.getJSONObject("size");
+    return new CGRect(e(localJSONObject), d(paramJSONObject));
+  }
+  
+  static TAVStickerLayerInfo.TAVStickerTimeEffect g(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.getInt("reversed");
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
+    }
+    JSONObject localJSONObject = paramJSONObject.getJSONObject("timeRange");
+    return new TAVStickerLayerInfo.TAVStickerTimeEffect(c(paramJSONObject.getJSONObject("sourceRange")), c(localJSONObject), bool);
+  }
+  
+  static TAVStickerLayerInfo.TAVStickerImageEffect h(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject.getJSONObject("timeRange");
+    String str = paramJSONObject.getString("name");
+    paramJSONObject = paramJSONObject.getString("effectID");
+    return new TAVStickerLayerInfo.TAVStickerImageEffect(c(localJSONObject), paramJSONObject, str);
+  }
+  
+  static TAVStickerLayerInfo.TAVStickerUserData i(JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject.getJSONObject("timeRange");
+    paramJSONObject = paramJSONObject.getString("data");
+    return new TAVStickerLayerInfo.TAVStickerUserData(c(localJSONObject), paramJSONObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.ObjConvector
  * JD-Core Version:    0.7.0.1
  */

@@ -39,7 +39,7 @@ class TroopStoryForwardTask$2
         }
       }
     }
-    this.a.a.sendEmptyMessage(5);
+    this.d.b.sendEmptyMessage(5);
     return null;
   }
 }

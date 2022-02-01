@@ -22,13 +22,13 @@ class DoodleLayout$1
   public void b()
   {
     if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
+      DoodleLayout.a(this.a).a(this.a.b(true, false));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DoodleLayout.1
  * JD-Core Version:    0.7.0.1
  */

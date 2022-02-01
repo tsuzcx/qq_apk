@@ -37,7 +37,7 @@ class CustomCoverFragment$1
       {
         this.a.stopTitleProgress();
         paramObject = (readUserInfoRsp)paramObject;
-        if (CustomCoverFragment.a(this.a))
+        if (CustomCoverFragment.b(this.a))
         {
           localObject1 = this.a;
           if (paramObject.flag == 1) {
@@ -51,32 +51,32 @@ class CustomCoverFragment$1
         CustomCoverFragment.b(this.a, paramObject.index);
         CustomCoverFragment.c(this.a, paramObject.listend);
         if (!TextUtils.isEmpty(paramObject.urlprefix)) {
-          ProfileCardManager.a = paramObject.urlprefix;
+          ProfileCardManager.c = paramObject.urlprefix;
         }
         CustomCoverFragment.a(this.a, paramObject.itemlist);
-        if (CustomCoverFragment.a(this.a) != null) {
-          if (CustomCoverFragment.a(this.a).size() == 0)
+        if (CustomCoverFragment.c(this.a) != null) {
+          if (CustomCoverFragment.d(this.a).size() == 0)
           {
-            CustomCoverFragment.a(this.a).setVisibility(8);
+            CustomCoverFragment.c(this.a).setVisibility(8);
             CustomCoverFragment.c(this.a, 2);
           }
           else
           {
-            CustomCoverFragment.a(this.a).setVisibility(0);
+            CustomCoverFragment.c(this.a).setVisibility(0);
           }
         }
-        if (CustomCoverFragment.a(this.a) != null) {
-          CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+        if (CustomCoverFragment.e(this.a) != null) {
+          CustomCoverFragment.e(this.a).sendEmptyMessage(101);
         }
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("onDefaultCardRsp: [readUserInfoRsp] selId=");
-          ((StringBuilder)localObject1).append(CustomCoverFragment.a(this.a));
+          ((StringBuilder)localObject1).append(CustomCoverFragment.f(this.a));
           ((StringBuilder)localObject1).append(" reqIndex=");
-          ((StringBuilder)localObject1).append(CustomCoverFragment.b(this.a));
+          ((StringBuilder)localObject1).append(CustomCoverFragment.g(this.a));
           ((StringBuilder)localObject1).append(" footerState=");
-          ((StringBuilder)localObject1).append(CustomCoverFragment.c(this.a));
+          ((StringBuilder)localObject1).append(CustomCoverFragment.h(this.a));
           ((StringBuilder)localObject1).append(" flag=");
           if (paramObject.flag == 1) {
             paramBoolean = bool;
@@ -108,19 +108,19 @@ class CustomCoverFragment$1
           {
             paramObject = new StringBuilder();
             paramObject.append("onDefaultCardRsp: [setUserProfileRsp] selId=");
-            paramObject.append(CustomCoverFragment.a(this.a));
+            paramObject.append(CustomCoverFragment.f(this.a));
             QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, paramObject.toString());
           }
           paramObject = new Intent();
           paramObject.putExtra("req_code_key", 2002);
           localObject2 = this.a;
-          paramObject.putExtra("card_url_key", ((CustomCoverFragment)localObject2).a(CustomCoverFragment.d((CustomCoverFragment)localObject2)));
+          paramObject.putExtra("card_url_key", ((CustomCoverFragment)localObject2).a(CustomCoverFragment.i((CustomCoverFragment)localObject2)));
           ((BaseActivity)localObject1).setResult(-1, paramObject);
           ((BaseActivity)localObject1).finish();
           return;
         }
         if (this.a.getActivity() != null) {
-          QQToast.a(this.a.getActivity(), 1, 2131719970, 0).a();
+          QQToast.makeText(this.a.getActivity(), 1, 2131917575, 0).show();
         }
       }
       else if ((paramObject instanceof setUserFlagRsp))
@@ -139,26 +139,26 @@ class CustomCoverFragment$1
           {
             paramObject = new StringBuilder();
             paramObject.append("onDefaultCardRsp: [setUserFlagRsp] setFlag=");
-            paramObject.append(CustomCoverFragment.b(this.a));
+            paramObject.append(CustomCoverFragment.j(this.a));
             QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, paramObject.toString());
           }
-          CustomCoverFragment.a(this.a, true);
-          QQToast.a((Context)localObject1, 0, 2131719973, 0).a();
-          if (CustomCoverFragment.b(this.a))
+          CustomCoverFragment.b(this.a, true);
+          QQToast.makeText((Context)localObject1, 0, 2131917578, 0).show();
+          if (CustomCoverFragment.j(this.a))
           {
             paramObject = this.a;
-            CustomCoverFragment.a(paramObject, CustomCoverFragment.b(paramObject));
+            CustomCoverFragment.a(paramObject, CustomCoverFragment.j(paramObject));
             return;
           }
           paramObject = this.a;
-          CustomCoverFragment.a(paramObject, CustomCoverFragment.b(paramObject));
-          if (CustomCoverFragment.a(this.a) != null) {
-            CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+          CustomCoverFragment.a(paramObject, CustomCoverFragment.j(paramObject));
+          if (CustomCoverFragment.e(this.a) != null) {
+            CustomCoverFragment.e(this.a).sendEmptyMessage(101);
           }
         }
         else if (this.a.getActivity() != null)
         {
-          QQToast.a(this.a.getActivity(), 1, 2131719970, 0).a();
+          QQToast.makeText(this.a.getActivity(), 1, 2131917575, 0).show();
         }
       }
     }
@@ -175,16 +175,16 @@ class CustomCoverFragment$1
       {
         CustomCoverFragment.c(this.a, 1);
         this.a.stopTitleProgress();
-        QQToast.a((Context)localObject1, 1, 2131719628, 0).a();
+        QQToast.makeText((Context)localObject1, 1, 2131917225, 0).show();
         return;
       }
-      QQToast.a((Context)localObject1, 1, 2131719970, 0).a();
+      QQToast.makeText((Context)localObject1, 1, 2131917575, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CustomCoverFragment.1
  * JD-Core Version:    0.7.0.1
  */

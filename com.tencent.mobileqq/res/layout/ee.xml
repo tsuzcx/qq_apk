@@ -29,7 +29,7 @@
     </RelativeLayout>
     <RelativeLayout android:id="@id/jse" android:background="@color/bz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/rlCommenTitle">
         <ImageView android:id="@id/toast_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/common_alert_icon" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="18.0sp" android:textColor="@color/skin_tips" android:ellipsize="end" android:gravity="center" android:id="@id/toast_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/y3p" android:maxLines="1" android:singleLine="true" android:layout_toRightOf="@id/toast_icon" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/skin_tips" android:ellipsize="end" android:gravity="center" android:id="@id/toast_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/yw6" android:maxLines="1" android:singleLine="true" android:layout_toRightOf="@id/toast_icon" android:layout_centerVertical="true" />
         <View android:id="@id/jsa" android:background="@drawable/cqa" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
 </RelativeLayout>

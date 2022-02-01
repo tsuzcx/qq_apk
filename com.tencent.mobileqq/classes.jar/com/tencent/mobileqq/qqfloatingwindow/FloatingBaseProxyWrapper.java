@@ -28,13 +28,12 @@ public class FloatingBaseProxyWrapper
     a(paramContext);
   }
   
-  public int a()
+  public void A()
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getFloatingContainerVisibility();
+      localIFloatingWrapperManager.setRootLayoutVisible();
     }
-    return 4;
   }
   
   public int a(FloatingScreenParams paramFloatingScreenParams, View paramView)
@@ -44,33 +43,6 @@ public class FloatingBaseProxyWrapper
       return localIFloatingWrapperManager.enterWindowFloat(paramFloatingScreenParams, paramView, this, this);
     }
     return 3;
-  }
-  
-  public Context a()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getFloatingContext();
-    }
-    return null;
-  }
-  
-  public View a()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getRootLayout();
-    }
-    return null;
-  }
-  
-  public View a(int paramInt)
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getViewById(paramInt);
-    }
-    return null;
   }
   
   public IVideoOuterStatusListener a(IVideoInnerStatusListener paramIVideoInnerStatusListener)
@@ -94,7 +66,7 @@ public class FloatingBaseProxyWrapper
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.updateShapeType(paramInt);
+      localIFloatingWrapperManager.quitWindowFloat(paramInt);
     }
   }
   
@@ -103,6 +75,14 @@ public class FloatingBaseProxyWrapper
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
       localIFloatingWrapperManager.setRoundCorners(paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.setFloatingContainerPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -242,41 +222,6 @@ public class FloatingBaseProxyWrapper
     }
   }
   
-  public boolean a()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getFloatingContainerIsNull();
-    }
-    return true;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getIsInterceptWindowClick(paramInt1, paramInt2);
-    }
-    return false;
-  }
-  
-  public void aT_()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.updateFloatingView();
-    }
-  }
-  
-  public int b()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getFloatingContainerCenterX();
-    }
-    return 0;
-  }
-  
   public void b(float paramFloat)
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
@@ -289,7 +234,7 @@ public class FloatingBaseProxyWrapper
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.quitWindowFloat(paramInt);
+      localIFloatingWrapperManager.updateShapeType(paramInt);
     }
   }
   
@@ -297,7 +242,7 @@ public class FloatingBaseProxyWrapper
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.setVideoWrapperCorners(paramInt1, paramInt2);
+      localIFloatingWrapperManager.updateLocation(paramInt1, paramInt2);
     }
   }
   
@@ -341,37 +286,19 @@ public class FloatingBaseProxyWrapper
     }
   }
   
-  public boolean b()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getContainerIsSmallFloating();
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getFloatingContainerCenterY();
-    }
-    return 0;
-  }
-  
-  public void c()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.initStatusReceiver();
-    }
-  }
-  
   public void c(int paramInt)
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.setRootLayoutBackgroundColor(paramInt);
+      localIFloatingWrapperManager.setFloatingContainerBackgroundRes(paramInt);
+    }
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.updateSize(paramInt1, paramInt2);
     }
   }
   
@@ -383,29 +310,13 @@ public class FloatingBaseProxyWrapper
     }
   }
   
-  public boolean c()
+  public View d(int paramInt)
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getFloatingIsFullScreen();
+      return localIFloatingWrapperManager.getViewById(paramInt);
     }
-    return false;
-  }
-  
-  public void d()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.removeWidgetWrapperParent();
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.setRootLayoutBackgroundRes(paramInt);
-    }
+    return null;
   }
   
   public void d(boolean paramBoolean)
@@ -416,20 +327,28 @@ public class FloatingBaseProxyWrapper
     }
   }
   
-  public boolean d()
+  public boolean d(int paramInt1, int paramInt2)
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getContainerIsFloating();
+      return localIFloatingWrapperManager.getIsInterceptWindowClick(paramInt1, paramInt2);
     }
     return false;
   }
   
-  public void e()
+  public void dz_()
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.removeRootLayoutParent();
+      localIFloatingWrapperManager.updateFloatingView();
+    }
+  }
+  
+  public void e(int paramInt)
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.setRootLayoutBackgroundColor(paramInt);
     }
   }
   
@@ -441,20 +360,19 @@ public class FloatingBaseProxyWrapper
     }
   }
   
-  public boolean e()
-  {
-    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
-    if (localIFloatingWrapperManager != null) {
-      return localIFloatingWrapperManager.getIsWindowClickListenerNull();
-    }
-    return true;
-  }
-  
   public void f()
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.removeFloatingWidgetWrapperViews();
+      localIFloatingWrapperManager.resetWindowSize();
+    }
+  }
+  
+  public void f(int paramInt)
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.setRootLayoutBackgroundRes(paramInt);
     }
   }
   
@@ -462,32 +380,79 @@ public class FloatingBaseProxyWrapper
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.setVideoWrapperBackground();
+      localIFloatingWrapperManager.resetFloatWindowScale();
     }
   }
   
-  public void h()
+  public boolean h()
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.floatingContainerEnterFullScreen();
+      return localIFloatingWrapperManager.isFloatWindowHasZoomed();
     }
+    return false;
   }
   
-  public void i()
+  public int i()
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.floatingContainerQuitFullScreen();
+      return localIFloatingWrapperManager.getFloatWindowShapeType();
     }
+    return 1;
   }
   
   public void j()
   {
     IFloatingWrapperManager localIFloatingWrapperManager = this.a;
     if (localIFloatingWrapperManager != null) {
-      localIFloatingWrapperManager.setRootLayoutVisible();
+      localIFloatingWrapperManager.initStatusReceiver();
     }
+  }
+  
+  public int k()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getFloatingContainerVisibility();
+    }
+    return 4;
+  }
+  
+  public View l()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getRootLayout();
+    }
+    return null;
+  }
+  
+  public Context m()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getFloatingContext();
+    }
+    return null;
+  }
+  
+  public boolean n()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getFloatingContainerIsNull();
+    }
+    return true;
+  }
+  
+  public boolean o()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getContainerIsSmallFloating();
+    }
+    return false;
   }
   
   public void onClick(View paramView)
@@ -498,10 +463,103 @@ public class FloatingBaseProxyWrapper
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
+  
+  public boolean p()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getFloatingIsFullScreen();
+    }
+    return false;
+  }
+  
+  public int q()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getFloatingContainerCenterX();
+    }
+    return 0;
+  }
+  
+  public int r()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getFloatingContainerCenterY();
+    }
+    return 0;
+  }
+  
+  public void s()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.removeWidgetWrapperParent();
+    }
+  }
+  
+  public void t()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.removeRootLayoutParent();
+    }
+  }
+  
+  public void u()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.removeFloatingWidgetWrapperViews();
+    }
+  }
+  
+  public void v()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.setVideoWrapperBackground();
+    }
+  }
+  
+  public boolean w()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getContainerIsFloating();
+    }
+    return false;
+  }
+  
+  public boolean x()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      return localIFloatingWrapperManager.getIsWindowClickListenerNull();
+    }
+    return true;
+  }
+  
+  public void y()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.floatingContainerEnterFullScreen();
+    }
+  }
+  
+  public void z()
+  {
+    IFloatingWrapperManager localIFloatingWrapperManager = this.a;
+    if (localIFloatingWrapperManager != null) {
+      localIFloatingWrapperManager.floatingContainerQuitFullScreen();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.FloatingBaseProxyWrapper
  * JD-Core Version:    0.7.0.1
  */

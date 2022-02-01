@@ -18,40 +18,40 @@ import mqq.app.AppRuntime;
 public class GameResultHelper
   extends GameResultBaseHelper
 {
-  private static final String jdField_a_of_type_JavaLangString = "GameResultHelper";
-  private SimpleGameResultListener jdField_a_of_type_ComTencentAvgameGamelogicListenerSimpleGameResultListener = new GameResultHelper.1(this);
-  IAVGameRootContainer jdField_a_of_type_ComTencentAvgameUiIAVGameRootContainer;
+  private static final String b = "GameResultHelper";
+  IAVGameRootContainer a;
+  private SimpleGameResultListener c = new GameResultHelper.1(this);
   
   public GameResultHelper(IAVGameRootContainer paramIAVGameRootContainer)
   {
-    this.jdField_a_of_type_ComTencentAvgameUiIAVGameRootContainer = paramIAVGameRootContainer;
+    this.a = paramIAVGameRootContainer;
   }
   
   public void a()
   {
-    if (IGameEngine.k()) {
+    if (IGameEngine.J()) {
       return;
     }
-    EngineData localEngineData = IGameEngine.a().a();
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvgameUiIAVGameRootContainer;
+    EngineData localEngineData = IGameEngine.I().s();
+    Object localObject1 = this.a;
     if ((localObject1 instanceof Activity))
     {
       localObject1 = (Activity)localObject1;
-      FloatWindowController.a().c();
+      FloatWindowController.c().d();
       Intent localIntent = new Intent((Context)localObject1, QQBrowserActivity.class);
-      String str = URLUtil.a("https://ti.qq.com/vgame/result", "id", localEngineData.b());
+      String str = URLUtil.a("https://ti.qq.com/vgame/result", "id", localEngineData.n());
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(localEngineData.c());
+      ((StringBuilder)localObject2).append(localEngineData.o());
       ((StringBuilder)localObject2).append("");
       str = URLUtil.a(str, "type", ((StringBuilder)localObject2).toString());
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(localEngineData.a());
+      ((StringBuilder)localObject2).append(localEngineData.i());
       ((StringBuilder)localObject2).append("");
       str = URLUtil.a(URLUtil.a(str, "room", ((StringBuilder)localObject2).toString()), "_wv", "16777219");
       localIntent.putExtra("url", str);
       if (QLog.isColorLevel())
       {
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("jump result url[");
         localStringBuilder.append(str);
@@ -59,9 +59,9 @@ public class GameResultHelper
         QLog.i((String)localObject2, 2, localStringBuilder.toString());
       }
       ((Activity)localObject1).startActivityForResult(localIntent, 291);
-      int j = localEngineData.c();
+      int j = localEngineData.o();
       int i;
-      if (localEngineData.h() <= 2) {
+      if (localEngineData.I() <= 2) {
         i = 1;
       } else {
         i = 2;
@@ -72,25 +72,25 @@ public class GameResultHelper
   
   public void b()
   {
-    IGameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSimpleGameResultListener);
+    IGameEngine.I().a(this.c);
   }
   
   public void c()
   {
-    IGameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameGamelogicListenerSimpleGameResultListener);
+    IGameEngine.I().b(this.c);
   }
   
   public void d()
   {
-    EngineData localEngineData = IGameEngine.a().a();
-    IGameEngine.a().a(localEngineData.a(), IGameEngine.a().getCurrentAccountUin(), 1, 4);
-    IGameEngine.a().a(localEngineData.b());
-    IGameEngine.a().a().a(null, null, 0L);
-    IGameEngine.a().a().a(null);
-    if ((localEngineData.j()) && (localEngineData.e(IGameEngine.a().getCurrentAccountUin())) && (AVGameUtil.b() == 2))
+    EngineData localEngineData = IGameEngine.I().s();
+    IGameEngine.I().a(localEngineData.i(), IGameEngine.K().getCurrentAccountUin(), 1, 4);
+    IGameEngine.I().a(localEngineData.n());
+    IGameEngine.I().s().a(null, null, 0L);
+    IGameEngine.I().s().a(null);
+    if ((localEngineData.ab()) && (localEngineData.g(IGameEngine.K().getCurrentAccountUin())) && (AVGameUtil.b() == 2))
     {
-      IGameEngine.a().c(0);
-      localEngineData.e(true);
+      IGameEngine.I().c(0);
+      localEngineData.f(true);
     }
   }
 }

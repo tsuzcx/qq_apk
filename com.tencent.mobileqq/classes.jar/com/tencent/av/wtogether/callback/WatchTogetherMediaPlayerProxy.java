@@ -5,39 +5,39 @@ import com.tencent.av.wtogether.util.WatchTogetherDataReportHelper;
 
 public abstract interface WatchTogetherMediaPlayerProxy
 {
-  public abstract float a();
-  
-  public abstract long a();
-  
-  public abstract WTFileInfo a();
-  
-  public abstract WatchTogetherDataReportHelper a();
-  
-  public abstract String a();
-  
   public abstract void a();
   
   public abstract void a(float paramFloat);
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
-  
   public abstract void b();
-  
-  public abstract boolean b();
   
   public abstract void c();
   
-  public abstract boolean c();
-  
   public abstract boolean d();
   
-  public abstract boolean e();
+  public abstract long e();
   
   public abstract boolean f();
   
-  public abstract boolean g();
+  public abstract float g();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
+  
+  public abstract boolean j();
+  
+  public abstract String k();
+  
+  public abstract WTFileInfo l();
+  
+  public abstract WatchTogetherDataReportHelper m();
+  
+  public abstract boolean n();
+  
+  public abstract boolean o();
 }
 
 

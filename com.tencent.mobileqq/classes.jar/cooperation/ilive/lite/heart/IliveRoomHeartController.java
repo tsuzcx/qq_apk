@@ -9,36 +9,12 @@ import cooperation.ilive.lite.report.IliveLiteDataReport;
 
 public class IliveRoomHeartController
 {
-  private int jdField_a_of_type_Int = 1001;
-  private long jdField_a_of_type_Long;
-  private PlayerStateEvent.PlayerState jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new IliveRoomHeartController.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
   private long b;
-  
-  private int a()
-  {
-    if (this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState == null) {
-      return 0;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getReportPlayerState = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState.toString());
-    QLog.e("IliveRoomHeartController", 1, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState != PlayerStateEvent.PlayerState.PLAY_ERROR) && (this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState != PlayerStateEvent.PlayerState.PLAY_COMPLETED)) {
-      return 1;
-    }
-    return 3;
-  }
-  
-  private long a()
-  {
-    IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerConfProcessor.a();
-    if ((localIliveManagerCfgBean != null) && (localIliveManagerCfgBean.a() > 0L)) {
-      return localIliveManagerCfgBean.a();
-    }
-    return 5000L;
-  }
+  private long c;
+  private int d = 1001;
+  private PlayerStateEvent.PlayerState e;
+  private Runnable f = new IliveRoomHeartController.1(this);
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
@@ -46,14 +22,23 @@ public class IliveRoomHeartController
     localStringBuilder.append("handleReport currentRealTS = ");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(" mCurrentRoomId = ");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" intervalTime = ");
-    localStringBuilder.append(a());
+    localStringBuilder.append(b());
     QLog.e("IliveRoomHeartController", 1, localStringBuilder.toString());
-    IliveLiteDataReport.a().a(this.b, this.jdField_a_of_type_Int, a(), paramLong, paramBoolean1, paramBoolean2);
+    IliveLiteDataReport.a().a(this.c, this.d, d(), paramLong, paramBoolean1, paramBoolean2);
   }
   
-  private boolean a()
+  private long b()
+  {
+    IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerConfProcessor.a();
+    if ((localIliveManagerCfgBean != null) && (localIliveManagerCfgBean.b() > 0L)) {
+      return localIliveManagerCfgBean.b();
+    }
+    return 5000L;
+  }
+  
+  private boolean c()
   {
     IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerConfProcessor.a();
     if (localIliveManagerCfgBean != null) {
@@ -62,63 +47,78 @@ public class IliveRoomHeartController
     return true;
   }
   
+  private int d()
+  {
+    if (this.e == null) {
+      return 0;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getReportPlayerState = ");
+    localStringBuilder.append(this.e.toString());
+    QLog.e("IliveRoomHeartController", 1, localStringBuilder.toString());
+    if ((this.e != PlayerStateEvent.PlayerState.PLAY_ERROR) && (this.e != PlayerStateEvent.PlayerState.PLAY_COMPLETED)) {
+      return 1;
+    }
+    return 3;
+  }
+  
   public void a()
   {
     QLog.i("IliveRoomHeartController", 1, "stopReportHeartBeat");
-    ThreadCenter.removeDefaultUITask(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Long = 0L;
+    ThreadCenter.removeDefaultUITask(this.f);
+    this.b = 0L;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.b = paramLong;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = paramLong;
+    this.b = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("start reportHeartbeat roomId = ");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(" mEnterPageTime = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     QLog.e("IliveRoomHeartController", 1, localStringBuilder.toString());
-    if (!a())
+    if (!c())
     {
       QLog.e("IliveRoomHeartController", 1, " reportHeartbeat disable");
       return;
     }
-    ThreadCenter.removeDefaultUITask(this.jdField_a_of_type_JavaLangRunnable);
-    ThreadCenter.postDefaultUITask(this.jdField_a_of_type_JavaLangRunnable, a());
+    ThreadCenter.removeDefaultUITask(this.f);
+    ThreadCenter.postDefaultUITask(this.f, b());
   }
   
   public void a(PlayerStateEvent.PlayerState paramPlayerState)
   {
-    this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState = paramPlayerState;
+    this.e = paramPlayerState;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void a(boolean paramBoolean, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState;
-    if ((localObject != null) && ((localObject == PlayerStateEvent.PlayerState.PLAY_COMPLETED) || (this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState == PlayerStateEvent.PlayerState.PLAY_ERROR)))
+    Object localObject = this.e;
+    if ((localObject != null) && ((localObject == PlayerStateEvent.PlayerState.PLAY_COMPLETED) || (this.e == PlayerStateEvent.PlayerState.PLAY_ERROR)))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reportFinalHeartbeat cancel , current player state = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomEventsPlayerStateEvent$PlayerState);
+      ((StringBuilder)localObject).append(this.e);
       QLog.i("IliveRoomHeartController", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    this.b = paramLong;
-    if ((this.jdField_a_of_type_Long != 0L) && (a()))
+    this.c = paramLong;
+    if ((this.b != 0L) && (c()))
     {
-      ThreadCenter.removeDefaultUITask(this.jdField_a_of_type_JavaLangRunnable);
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      ThreadCenter.removeDefaultUITask(this.f);
+      long l = System.currentTimeMillis() - this.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reportFinalHeartbeat realTS = ");
       ((StringBuilder)localObject).append(l);
@@ -132,13 +132,13 @@ public class IliveRoomHeartController
     ((StringBuilder)localObject).append("reportFinalHeartbeat mEnterPageTime == 0 , roomId = ");
     ((StringBuilder)localObject).append(paramLong);
     ((StringBuilder)localObject).append(" enable = ");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(c());
     QLog.i("IliveRoomHeartController", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.heart.IliveRoomHeartController
  * JD-Core Version:    0.7.0.1
  */

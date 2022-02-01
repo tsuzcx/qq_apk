@@ -21,7 +21,7 @@ class TabPreloadManager$1
     localStringBuilder.append(" msg:");
     localStringBuilder.append(paramString);
     QLog.e("TabPreloadManager", 1, localStringBuilder.toString());
-    this.val$hippyQQEngine.destoryEngineImmediately();
+    this.val$hippyQQEngine.destroyEngineImmediately();
     TabPreloadManager.access$000(this.this$0);
   }
   
@@ -43,7 +43,7 @@ class TabPreloadManager$1
     if ((str != null) && (!str.equals(???)))
     {
       QLog.e("TabPreloadManager", 1, "doPreload onSuccess uin changed.");
-      this.val$hippyQQEngine.destoryEngineImmediately();
+      this.val$hippyQQEngine.destroyEngineImmediately("accountChanged");
       return;
     }
     synchronized (TabPreloadManager.access$100(this.this$0))
@@ -57,7 +57,7 @@ class TabPreloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.preload.TabPreloadManager.1
  * JD-Core Version:    0.7.0.1
  */

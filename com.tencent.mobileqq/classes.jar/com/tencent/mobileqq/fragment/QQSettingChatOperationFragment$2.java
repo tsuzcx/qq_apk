@@ -12,21 +12,21 @@ class QQSettingChatOperationFragment$2
 {
   QQSettingChatOperationFragment$2(QQSettingChatOperationFragment paramQQSettingChatOperationFragment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    ReportController.b(QQSettingChatOperationFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment), "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "0", "0", "", "");
-    ReportController.b(QQSettingChatOperationFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment), "dc00898", "", "", "0X800A0C3", "0X800A0C3", 0, 0, "", "", "", "");
-    if (!this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment.getBaseActivity().isFinishing())
+    ReportController.b(QQSettingChatOperationFragment.a(this.b), "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "0", "0", "", "");
+    ReportController.b(QQSettingChatOperationFragment.a(this.b), "dc00898", "", "", "0X800A0C3", "0X800A0C3", 0, 0, "", "", "", "");
+    if (!this.b.getBaseActivity().isFinishing())
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      QQSettingChatOperationFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment, true);
+      this.a.cancel();
+      QQSettingChatOperationFragment.a(this.b, true);
     }
     ThreadManagerV2.excute(new QQSettingChatOperationFragment.2.1(this), 64, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.2
  * JD-Core Version:    0.7.0.1
  */

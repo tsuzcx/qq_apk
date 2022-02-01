@@ -12,9 +12,9 @@ class ColorBandVideoEntranceButton$13
   {
     try
     {
-      if (ColorBandVideoEntranceButton.a(this.this$0, ColorBandVideoEntranceButton.a(this.this$0)))
+      if (ColorBandVideoEntranceButton.b(this.this$0, ColorBandVideoEntranceButton.f(this.this$0)))
       {
-        EntranceIconInfo localEntranceIconInfo = (EntranceIconInfo)ColorBandVideoEntranceButton.a(this.this$0);
+        EntranceIconInfo localEntranceIconInfo = (EntranceIconInfo)ColorBandVideoEntranceButton.f(this.this$0);
         ColorBandVideoEntranceButton.a(this.this$0, localEntranceIconInfo);
         return;
       }
@@ -30,7 +30,7 @@ class ColorBandVideoEntranceButton$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reddot.ColorBandVideoEntranceButton.13
  * JD-Core Version:    0.7.0.1
  */

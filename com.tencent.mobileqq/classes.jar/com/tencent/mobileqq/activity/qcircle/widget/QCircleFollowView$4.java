@@ -31,18 +31,18 @@ final class QCircleFollowView$4
     boolean bool = false;
     if ((paramBoolean) && (paramLong == 0L))
     {
-      if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser != null)
+      if (this.a != null)
       {
-        SimpleEventBus.getInstance().dispatchEvent(new QCircleFollowUpdateEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get()));
-        QCircleFollowView.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), this.jdField_a_of_type_Int);
-        ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).setUinFollowed(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), this.jdField_a_of_type_Int);
+        SimpleEventBus.getInstance().dispatchEvent(new QCircleFollowUpdateEvent(this.b, this.a.id.get()));
+        QCircleFollowView.a(BaseApplicationImpl.getContext(), this.a.id.get(), this.b);
+        ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).setUinFollowed(this.a.id.get(), this.b);
         if (paramStDoFollowRsp != null)
         {
           paramBoolean = bool;
-          if (this.jdField_a_of_type_Int == 1) {
+          if (this.b == 1) {
             paramBoolean = true;
           }
-          ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).updateFollowUser(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.nick.get(), paramBoolean);
+          ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).updateFollowUser(this.a.id.get(), this.a.nick.get(), paramBoolean);
         }
       }
     }
@@ -50,18 +50,18 @@ final class QCircleFollowView$4
     {
       paramBaseRequest = BaseApplicationImpl.getContext();
       int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = 2131697906;
+      if (this.c) {
+        i = 2131895730;
       } else {
-        i = 2131698039;
+        i = 2131895939;
       }
-      QQToast.a(paramBaseRequest, 1, i, 0).a();
+      QQToast.makeText(paramBaseRequest, 1, i, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.widget.QCircleFollowView.4
  * JD-Core Version:    0.7.0.1
  */

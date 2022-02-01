@@ -7,8 +7,8 @@ import java.util.Iterator;
 public class VideoBehaviorsSeqReportData
 {
   public int a;
-  public ArrayList<Integer> a;
-  public boolean a;
+  public boolean b;
+  public ArrayList<Integer> c;
   
   private String a(ArrayList<Integer> paramArrayList)
   {
@@ -30,29 +30,29 @@ public class VideoBehaviorsSeqReportData
     return localStringBuilder.toString();
   }
   
-  public HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_sceneType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_indexList", a(this.jdField_a_of_type_JavaUtilArrayList));
-    localHashMap.put("param_isAutoPlay", String.valueOf(this.jdField_a_of_type_Boolean));
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
   public boolean a()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.c;
     if (localArrayList != null) {
       return localArrayList.isEmpty();
     }
     return true;
+  }
+  
+  public void b()
+  {
+    this.a = -1;
+    this.b = false;
+    this.c.clear();
+  }
+  
+  public HashMap<String, String> c()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_sceneType", String.valueOf(this.a));
+    localHashMap.put("param_indexList", a(this.c));
+    localHashMap.put("param_isAutoPlay", String.valueOf(this.b));
+    return localHashMap;
   }
   
   public String toString()
@@ -60,18 +60,18 @@ public class VideoBehaviorsSeqReportData
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{");
     localStringBuilder.append("mSceneType: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mIsAutoPlay: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", mIndexList: ");
-    localStringBuilder.append(a(this.jdField_a_of_type_JavaUtilArrayList));
+    localStringBuilder.append(a(this.c));
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoBehaviorsSeqReportData
  * JD-Core Version:    0.7.0.1
  */

@@ -14,33 +14,33 @@ class LoginServiceImpl$1
   
   public void onFail(int paramInt, String paramString)
   {
-    LoginCallback localLoginCallback = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginCallback;
+    LoginCallback localLoginCallback = this.a;
     if (localLoginCallback != null) {
       localLoginCallback.onFail(paramInt, paramString);
     }
-    this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl.reportLoginResultEvent(0, paramInt, this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest.id);
-    if ((LoginServiceImpl.access$000(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl) != null) && (LoginServiceImpl.access$000(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl).getHostProxyInterface() != null) && (LoginServiceImpl.access$000(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl).getHostProxyInterface().getSdkEventInterface() != null)) {
-      LoginServiceImpl.access$000(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl).getHostProxyInterface().getSdkEventInterface().onLoginFail(this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest.id, paramInt);
+    this.c.reportLoginResultEvent(0, paramInt, this.b.id);
+    if ((LoginServiceImpl.access$000(this.c) != null) && (LoginServiceImpl.access$000(this.c).getHostProxyInterface() != null) && (LoginServiceImpl.access$000(this.c).getHostProxyInterface().getSdkEventInterface() != null)) {
+      LoginServiceImpl.access$000(this.c).getHostProxyInterface().getSdkEventInterface().onLoginFail(this.b.id, paramInt);
     }
-    LoginServiceImpl.access$200(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl, paramInt);
+    LoginServiceImpl.access$200(this.c, paramInt);
   }
   
   public void onSucceed(LoginInfo paramLoginInfo)
   {
-    LoginCallback localLoginCallback = this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginCallback;
+    LoginCallback localLoginCallback = this.a;
     if (localLoginCallback != null) {
       localLoginCallback.onSucceed(paramLoginInfo);
     }
-    this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl.reportLoginResultEvent(1, 0, this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest.id);
-    if ((LoginServiceImpl.access$000(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl) != null) && (LoginServiceImpl.access$000(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl).getHostProxyInterface() != null) && (LoginServiceImpl.access$000(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl).getHostProxyInterface().getSdkEventInterface() != null)) {
-      LoginServiceImpl.access$000(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl).getHostProxyInterface().getSdkEventInterface().onLoginSuccess(paramLoginInfo.uid, this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest.id);
+    this.c.reportLoginResultEvent(1, 0, this.b.id);
+    if ((LoginServiceImpl.access$000(this.c) != null) && (LoginServiceImpl.access$000(this.c).getHostProxyInterface() != null) && (LoginServiceImpl.access$000(this.c).getHostProxyInterface().getSdkEventInterface() != null)) {
+      LoginServiceImpl.access$000(this.c).getHostProxyInterface().getSdkEventInterface().onLoginSuccess(paramLoginInfo.uid, this.b.id);
     }
-    LoginServiceImpl.access$100(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceLoginServiceImpl);
+    LoginServiceImpl.access$100(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.LoginServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

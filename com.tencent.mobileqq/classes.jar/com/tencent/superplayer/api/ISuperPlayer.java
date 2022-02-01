@@ -130,13 +130,15 @@ public abstract interface ISuperPlayer
   
   public abstract void stop();
   
-  public abstract void switchDefinition(String paramString);
+  public abstract void switchDefinition(String paramString, int paramInt);
+  
+  public abstract void switchDefinitionForUrl(String paramString, int paramInt);
   
   public abstract void updatePlayerVideoView(ISPlayerVideoView paramISPlayerVideoView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.ISuperPlayer
  * JD-Core Version:    0.7.0.1
  */

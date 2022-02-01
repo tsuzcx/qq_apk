@@ -135,7 +135,7 @@ public class ShareProxyImpl
   
   private void a(MiniAppInfo paramMiniAppInfo, Activity paramActivity, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    a(paramMiniAppInfo, paramInt, paramString1, paramString2, ImageUtil.drawableToBitmap(paramActivity.getResources().getDrawable(2130848661)), paramString3);
+    a(paramMiniAppInfo, paramInt, paramString1, paramString2, ImageUtil.drawableToBitmap(paramActivity.getResources().getDrawable(2130850326)), paramString3);
   }
   
   private void a(String paramString, URLDrawable.URLDrawableListener paramURLDrawableListener)
@@ -235,7 +235,7 @@ public class ShareProxyImpl
     Activity localActivity = paramInnerShareData.fromActivity;
     Object localObject = paramInnerShareData.getMiniAppInfo();
     String str1;
-    if (StringUtil.a(paramInnerShareData.summary)) {
+    if (StringUtil.isEmpty(paramInnerShareData.summary)) {
       str1 = ((MiniAppInfo)localObject).desc;
     } else {
       str1 = paramInnerShareData.summary;
@@ -261,12 +261,12 @@ public class ShareProxyImpl
   public void c(InnerShareData paramInnerShareData)
   {
     Activity localActivity = paramInnerShareData.fromActivity;
-    if (!WXShareHelper.a().a())
+    if (!WXShareHelper.a().b())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareProxyImpl.2(this, localActivity));
       return;
     }
-    if (!WXShareHelper.a().b())
+    if (!WXShareHelper.a().c())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareProxyImpl.3(this, localActivity));
       return;
@@ -388,7 +388,7 @@ public class ShareProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl
  * JD-Core Version:    0.7.0.1
  */

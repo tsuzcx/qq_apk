@@ -47,7 +47,7 @@ public class AVGameUserInfo
     boolean bool3 = bool2;
     if (bool2)
     {
-      boolean bool4 = SecurityPolicyChecker.a().b();
+      boolean bool4 = SecurityPolicyChecker.a().c();
       boolean bool1 = bool2;
       if (bool4)
       {

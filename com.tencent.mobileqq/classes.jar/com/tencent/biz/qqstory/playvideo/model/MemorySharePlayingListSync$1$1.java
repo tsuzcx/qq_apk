@@ -16,17 +16,17 @@ class MemorySharePlayingListSync$1$1
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
+    this.a.a();
     DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent localPlayerVideoListEvent = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-    localPlayerVideoListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoModelMemorySharePlayingListSync$1.a.jdField_b_of_type_JavaLangString;
-    localPlayerVideoListEvent.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoModelMemorySharePlayingListSync$1.a.jdField_d_of_type_JavaLangString;
-    localPlayerVideoListEvent.jdField_a_of_type_Boolean = false;
-    localPlayerVideoListEvent.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetCollectionVideoListResponse.jdField_a_of_type_Boolean;
-    localPlayerVideoListEvent.c = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoModelMemorySharePlayingListSync$1.a.jdField_d_of_type_Boolean;
-    localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoModelMemorySharePlayingListSync$1.a.jdField_a_of_type_JavaUtilList;
-    localPlayerVideoListEvent.jdField_a_of_type_Int = localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size();
-    if (localPlayerVideoListEvent.jdField_a_of_type_Int < localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size()) {
-      localPlayerVideoListEvent.jdField_a_of_type_Int = localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size();
+    localPlayerVideoListEvent.a = this.c.a.h;
+    localPlayerVideoListEvent.b = this.c.a.k;
+    localPlayerVideoListEvent.i = false;
+    localPlayerVideoListEvent.j = this.b.e;
+    localPlayerVideoListEvent.k = this.c.a.g;
+    localPlayerVideoListEvent.e = this.c.a.b;
+    localPlayerVideoListEvent.h = localPlayerVideoListEvent.e.size();
+    if (localPlayerVideoListEvent.h < localPlayerVideoListEvent.e.size()) {
+      localPlayerVideoListEvent.h = localPlayerVideoListEvent.e.size();
     }
     StoryDispatcher.a().dispatch(localPlayerVideoListEvent);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -37,7 +37,7 @@ class MemorySharePlayingListSync$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.MemorySharePlayingListSync.1.1
  * JD-Core Version:    0.7.0.1
  */

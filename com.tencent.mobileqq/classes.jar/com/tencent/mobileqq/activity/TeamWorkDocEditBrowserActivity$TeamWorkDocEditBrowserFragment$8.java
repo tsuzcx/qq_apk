@@ -15,18 +15,18 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
   
   public void onClick(View paramView)
   {
-    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getIntExtra("key_team_work_edit_type", -1);
+    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.k(this.a).getIntExtra("key_team_work_edit_type", -1);
     if ((i != 1) && (i != 2)) {
       i = this.a.a;
     }
     String str1 = this.a.getShareUrl();
-    String str2 = ((Share)this.a.getShare()).a();
-    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a), TeamWorkAuthorizeSettingFragment.class);
+    String str2 = ((Share)this.a.getShare()).d();
+    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.l(this.a), TeamWorkAuthorizeSettingFragment.class);
     if (!TextUtils.isEmpty(str2)) {
       localIntent.putExtra("team_work_name", str2);
     }
     localIntent.putExtra("team_work_pad_url", str1);
-    localIntent.putExtra("team_work_pad_list_type", this.a.d);
+    localIntent.putExtra("team_work_pad_list_type", this.a.t);
     PublicFragmentActivity.a(this.a.getQBaseActivity(), localIntent, TeamWorkAuthorizeSettingFragment.class);
     this.a.a(14);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -34,7 +34,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.8
  * JD-Core Version:    0.7.0.1
  */

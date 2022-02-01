@@ -12,25 +12,25 @@ import java.util.List;
 public class HoriziotalVideoCoverListDataProvider
   implements VideoCoverListBar.VideoCoverListDataProvider
 {
-  private int jdField_a_of_type_Int = -1;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final boolean jdField_a_of_type_Boolean;
+  private List<String> a = new ArrayList();
   private int b = -1;
+  private final boolean c;
+  private int d = -1;
   
   public HoriziotalVideoCoverListDataProvider(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public List<String> a()
   {
-    SLog.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "getData , verticalPosition = %d , size = %d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-    return this.jdField_a_of_type_JavaUtilList;
+    SLog.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "getData , verticalPosition = %d , size = %d", Integer.valueOf(this.b), Integer.valueOf(this.a.size()));
+    return this.a;
   }
   
   public void a(int paramInt, ArrayList<StoryPlayerVideoData> paramArrayList, IDataProvider.GroupId paramGroupId)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
       SLog.b("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "close , set data invalidate");
       return;
@@ -40,48 +40,48 @@ public class HoriziotalVideoCoverListDataProvider
     while (paramArrayList.hasNext())
     {
       StoryPlayerVideoData localStoryPlayerVideoData = (StoryPlayerVideoData)paramArrayList.next();
-      if ((!localStoryPlayerVideoData.a()) && (!TextUtils.isEmpty(localStoryPlayerVideoData.a))) {
-        localArrayList.add(localStoryPlayerVideoData.a);
+      if ((!localStoryPlayerVideoData.a()) && (!TextUtils.isEmpty(localStoryPlayerVideoData.b))) {
+        localArrayList.add(localStoryPlayerVideoData.b);
       }
     }
-    this.jdField_a_of_type_JavaUtilList = localArrayList;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = localArrayList;
+    this.b = paramInt;
     boolean bool = paramGroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId;
     int i = -1;
     if (bool)
     {
       paramArrayList = (MsgTabPlayPageLoader.MsgTabGroupId)paramGroupId;
       if (paramArrayList.a != null) {
-        i = paramArrayList.a.jdField_a_of_type_Int;
+        i = paramArrayList.a.b;
       }
-      this.b = i;
+      this.d = i;
     }
     else
     {
-      this.b = -1;
+      this.d = -1;
     }
-    i = this.jdField_a_of_type_JavaUtilList.size();
+    i = this.a.size();
     if (paramGroupId == null) {
       paramArrayList = "";
     } else {
       paramArrayList = paramGroupId.toString();
     }
-    SLog.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.b));
-  }
-  
-  public boolean a()
-  {
-    return this.b == 12;
+    SLog.a("Q.qqstory.player:HoriziotalVideoCoverListDataProvider", "setDataList , verticalPosition = %d , size = %d, groupId= %s, msgTabNodeType=%d", Integer.valueOf(paramInt), Integer.valueOf(i), paramArrayList, Integer.valueOf(this.d));
   }
   
   public boolean b()
   {
-    return this.b == 13;
+    return this.d == 12;
+  }
+  
+  public boolean c()
+  {
+    return this.d == 13;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.HoriziotalVideoCoverListDataProvider
  * JD-Core Version:    0.7.0.1
  */

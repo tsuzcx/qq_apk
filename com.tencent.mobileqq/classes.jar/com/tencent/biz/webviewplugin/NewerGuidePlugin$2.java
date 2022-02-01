@@ -44,14 +44,14 @@ class NewerGuidePlugin$2
         localBundle.putString("PhotoConst.SOURCE_FROM", paramIntent);
         paramContext = DataFactory.a("ipc_newer_guide", null, NewerGuidePlugin.a(this.a).key, localBundle);
         ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramContext);
-        if (NewerGuidePlugin.a(this.a) == null)
+        if (NewerGuidePlugin.b(this.a) == null)
         {
-          paramContext = this.a.mRuntime.a();
-          int i = paramContext.getResources().getDimensionPixelSize(2131299168);
+          paramContext = this.a.mRuntime.d();
+          int i = paramContext.getResources().getDimensionPixelSize(2131299920);
           NewerGuidePlugin.a(this.a, new QQProgressDialog(paramContext, i));
-          NewerGuidePlugin.a(this.a).a(HardCodeUtil.a(2131707470));
+          NewerGuidePlugin.b(this.a).a(HardCodeUtil.a(2131905288));
         }
-        NewerGuidePlugin.a(this.a).show();
+        NewerGuidePlugin.b(this.a).show();
       }
     }
     else if ("ACTION_NEWER_GUIDE_CMSHOW_AVATAR_RESULT".equals(paramContext))
@@ -63,7 +63,7 @@ class NewerGuidePlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.2
  * JD-Core Version:    0.7.0.1
  */

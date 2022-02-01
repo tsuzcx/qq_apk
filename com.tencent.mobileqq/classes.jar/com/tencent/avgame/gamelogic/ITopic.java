@@ -8,14 +8,6 @@ public abstract interface ITopic
 {
   public abstract int a();
   
-  public abstract long a();
-  
-  public abstract ITopic a();
-  
-  public abstract String a();
-  
-  public abstract List<? extends ITopic> a();
-  
   public abstract void a(long paramLong);
   
   public abstract void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo);
@@ -24,15 +16,23 @@ public abstract interface ITopic
   
   public abstract boolean a(ITopic paramITopic);
   
-  public abstract String[] a();
-  
   public abstract int b();
   
-  public abstract String b();
-  
-  public abstract int c();
-  
   public abstract String c();
+  
+  public abstract String d();
+  
+  public abstract String e();
+  
+  public abstract int f();
+  
+  public abstract String[] g();
+  
+  public abstract long h();
+  
+  public abstract List<? extends ITopic> i();
+  
+  public abstract ITopic j();
 }
 
 

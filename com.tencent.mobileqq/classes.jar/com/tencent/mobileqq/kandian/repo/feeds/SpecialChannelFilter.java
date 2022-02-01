@@ -9,23 +9,23 @@ import java.util.List;
 
 public class SpecialChannelFilter
 {
-  private static SpecialChannelFilter jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsSpecialChannelFilter;
-  private SparseArray<ChannelInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = true;
+  private static SpecialChannelFilter a;
+  private SparseArray<ChannelInfo> b = new SparseArray();
+  private HashSet<Integer> c = new HashSet();
+  private boolean d = true;
   
   public static SpecialChannelFilter a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsSpecialChannelFilter == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsSpecialChannelFilter == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsSpecialChannelFilter = new SpecialChannelFilter();
+        if (a == null) {
+          a = new SpecialChannelFilter();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsSpecialChannelFilter;
+    return a;
   }
   
   private static boolean a(int paramInt)
@@ -44,8 +44,8 @@ public class SpecialChannelFilter
       while (paramList.hasNext())
       {
         int i = ((Integer)paramList.next()).intValue();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+        this.b.remove(i);
+        this.c.remove(Integer.valueOf(i));
       }
     }
   }
@@ -58,11 +58,11 @@ public class SpecialChannelFilter
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      int j = this.b.size();
       int i = 0;
       while (i < j)
       {
-        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+        int k = this.b.keyAt(i);
         if ((!a(k)) && (!paramList.contains(Integer.valueOf(k)))) {
           localArrayList.add(Integer.valueOf(k));
         }
@@ -72,15 +72,15 @@ public class SpecialChannelFilter
       while (paramList.hasNext())
       {
         i = ((Integer)paramList.next()).intValue();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+        this.b.remove(i);
+        this.c.remove(Integer.valueOf(i));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.SpecialChannelFilter
  * JD-Core Version:    0.7.0.1
  */

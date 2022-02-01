@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.pts.ui.vnode.PTSNodeScrollView;
 import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSTimeCostUtil;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,7 +14,6 @@ class PTSScrollView$1
   
   public void run()
   {
-    PTSTimeCostUtil.start("PTSScrollView-triggerItemViewExposureImp");
     if (PTSScrollView.access$000(this.this$0) == null)
     {
       PTSLog.e("PTSScrollView", "[triggerItemViewExposureImp] container is null.");
@@ -43,12 +41,11 @@ class PTSScrollView$1
     }
     PTSScrollView.access$300(this.this$0).clear();
     PTSScrollView.access$300(this.this$0).addAll(PTSScrollView.access$200(this.this$0));
-    PTSTimeCostUtil.end("PTSScrollView-triggerItemViewExposureImp");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSScrollView.1
  * JD-Core Version:    0.7.0.1
  */

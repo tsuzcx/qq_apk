@@ -25,16 +25,16 @@ class QRLoginMgrActivity$1
     }
     if (!NetworkUtil.isNetworkAvailable(this.a))
     {
-      QQToast.a(QRLoginMgrActivity.a(this.a), 1, 2131696114, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(QRLoginMgrActivity.a(this.a), 1, 2131893879, 0).show(this.a.getTitleBarHeight());
       paramCompoundButton.setChecked(paramBoolean ^ true);
     }
     else if (paramBoolean)
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(QRLoginMgrActivity.a(this.a), 230);
-      localQQCustomDialog.setTitle(2131716687);
-      localQQCustomDialog.setMessage(2131716686);
-      localQQCustomDialog.setPositiveButton(2131694583, new QRLoginMgrActivity.1.1(this));
-      localQQCustomDialog.setNegativeButton(2131690728, new QRLoginMgrActivity.1.2(this, paramCompoundButton));
+      localQQCustomDialog.setTitle(2131914151);
+      localQQCustomDialog.setMessage(2131914150);
+      localQQCustomDialog.setPositiveButton(2131892267, new QRLoginMgrActivity.1.1(this));
+      localQQCustomDialog.setNegativeButton(2131887648, new QRLoginMgrActivity.1.2(this, paramCompoundButton));
       localQQCustomDialog.show();
       ReportController.b(null, "dc00898", "", "", "0X800A475", "0X800A475", 0, 0, "", "", "", "");
     }

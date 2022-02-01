@@ -16,16 +16,16 @@ class RecentAdapter$10$2
   
   public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), 3000);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), 3000);
-    ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_confirm_del_msg");
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, 2, 2131691483, 0).a();
-    RecentAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter, this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    this.a.f.d.getMessageFacade().c(this.a.a.getRecentUserUin(), 3000);
+    this.a.f.d.getMessageFacade().g(this.a.a.getRecentUserUin(), 3000);
+    ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.f.d, "chat_history_confirm_del_msg");
+    QQToast.makeText(this.a.f.c, 2, 2131888442, 0).show();
+    RecentAdapter.a(this.a.f, this.a.a, this.a.b, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.10.2
  * JD-Core Version:    0.7.0.1
  */

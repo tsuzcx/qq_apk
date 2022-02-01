@@ -9,7 +9,7 @@ class StoryDetailFragment$4
   
   public void run()
   {
-    this.this$0.a.a(true);
+    this.this$0.b.a(true);
   }
 }
 

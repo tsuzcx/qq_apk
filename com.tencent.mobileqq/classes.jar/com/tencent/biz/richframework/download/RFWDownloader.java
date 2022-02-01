@@ -7,8 +7,8 @@ import android.os.HandlerThread;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.utils.SdCardUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
@@ -29,8 +29,8 @@ public class RFWDownloader
   private static final int MAX_FILE_NAME_LENGTH = 251;
   private static final String TAG = "RFWDownloader";
   private static final String TMP_FILE_SUFFIX = ".tmp";
-  private static Handler sDownLoadHandler;
-  private static OkHttpClient sOkHttpClient;
+  private static volatile Handler sDownLoadHandler;
+  private static volatile OkHttpClient sOkHttpClient;
   private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, WeakReference<RFWDownloader.RFWDownloadListener>>> mDownloadCenter;
   private ConcurrentHashMap<String, RFWDownloadInfo> mDownloadInfoMap;
   private RFWDownloadStrategy mDownloadStrategy;
@@ -47,17 +47,16 @@ public class RFWDownloader
   {
     if (paramRFWCheckResourceListener == null)
     {
-      RFLog.d("RFWDownloader", RFLog.USR, "checkResource listener is null");
+      QLog.d("RFWDownloader", 1, "checkResource listener is null");
       return;
     }
     if (getDownloadSP() == null)
     {
-      RFLog.d("RFWDownloader", RFLog.USR, "checkResource getSp is null");
+      QLog.d("RFWDownloader", 1, "checkResource getSp is null");
       return;
     }
     String str = getDownloadSP().getString(getResourceSPKey(paramString), "");
     boolean bool = isFileDownLoaded(paramString);
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkResource url:");
     localStringBuilder.append(paramString);
@@ -65,7 +64,7 @@ public class RFWDownloader
     localStringBuilder.append(bool);
     localStringBuilder.append("  preMd5");
     localStringBuilder.append(str);
-    RFLog.d("RFWDownloader", i, localStringBuilder.toString());
+    QLog.d("RFWDownloader", 1, localStringBuilder.toString());
     getOkHttpClient().newCall(getFileUpdateRequest(paramString)).enqueue(new RFWDownloader.4(this, paramString, paramRFWCheckResourceListener, bool, str));
   }
   
@@ -102,27 +101,24 @@ public class RFWDownloader
       if (localObject != null)
       {
         localObject = (RFWDownloader.RFWDownloadListener)((WeakReference)localObject).get();
-        int i;
         if (localObject != null)
         {
           ((RFWDownloader.RFWDownloadListener)localObject).onRspCallback(paramBoolean, paramString2);
           localConcurrentHashMap.remove(Integer.valueOf(localObject.hashCode()));
-          i = RFLog.USR;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("downloadUrl:");
           ((StringBuilder)localObject).append(paramString1);
           ((StringBuilder)localObject).append("finish ");
           ((StringBuilder)localObject).append(paramBoolean);
-          RFLog.e("RFWDownloader", i, ((StringBuilder)localObject).toString());
+          QLog.e("RFWDownloader", 1, ((StringBuilder)localObject).toString());
         }
         else
         {
-          i = RFLog.USR;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("downloadUrl:");
           ((StringBuilder)localObject).append(paramString1);
           ((StringBuilder)localObject).append("  getFileListener release");
-          RFLog.e("RFWDownloader", i, ((StringBuilder)localObject).toString());
+          QLog.e("RFWDownloader", 1, ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -154,7 +150,7 @@ public class RFWDownloader
     catch (Exception paramRFWDownloadInfo)
     {
       paramRFWDownloadInfo.printStackTrace();
-      RFLog.e("RFWDownloader", RFLog.USR, new Object[] { paramRFWDownloadInfo, paramRFWDownloadInfo.getMessage() });
+      QLog.e("RFWDownloader", 1, paramRFWDownloadInfo, new Object[] { paramRFWDownloadInfo.getMessage() });
     }
   }
   
@@ -250,11 +246,10 @@ public class RFWDownloader
       {
         localObject = getContentFilePath(str1);
         File localFile = new File(paramRFWDownloadInfo.getFilePath());
-        int i = RFLog.DEV;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("start unzip file to folderPath:");
         localStringBuilder.append((String)localObject);
-        RFLog.d("RFWDownloader", i, localStringBuilder.toString());
+        QLog.d("RFWDownloader", 4, localStringBuilder.toString());
         ZipUtils.unZipFile(localFile, (String)localObject);
         logDownloadInfo(paramRFWDownloadInfo, new Object[] { "unZip success" });
         updateFileMd5(str1, str2);
@@ -271,7 +266,7 @@ public class RFWDownloader
         return;
       }
     }
-    RFLog.i("RFWDownloader", RFLog.USR, "is not zip file, not need upzip");
+    QLog.i("RFWDownloader", 1, "is not zip file, not need upzip");
     updateFileMd5(str1, localException);
     dispatchGetFileResult(str1, true, paramRFWDownloadInfo.getFilePath());
   }
@@ -293,7 +288,7 @@ public class RFWDownloader
   
   private void logDownloadInfo(RFWDownloadInfo paramRFWDownloadInfo, Object... paramVarArgs)
   {
-    RFLog.d("RFWDownloader", RFLog.DEV, new Object[] { paramRFWDownloadInfo.getUrl(), paramVarArgs });
+    QLog.d("RFWDownloader", 4, new Object[] { paramRFWDownloadInfo.getUrl(), paramVarArgs });
   }
   
   private void registerEachListener(String paramString, RFWDownloader.RFWDownloadListener paramRFWDownloadListener)
@@ -322,300 +317,294 @@ public class RFWDownloader
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 249	com/tencent/biz/richframework/download/RFWDownloadInfo:getUrl	()Ljava/lang/String;
+    //   1: invokevirtual 246	com/tencent/biz/richframework/download/RFWDownloadInfo:getUrl	()Ljava/lang/String;
     //   4: astore 12
     //   6: aload_1
-    //   7: invokevirtual 387	com/tencent/biz/richframework/download/RFWDownloadInfo:getFilePath	()Ljava/lang/String;
-    //   10: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: invokevirtual 384	com/tencent/biz/richframework/download/RFWDownloadInfo:getFilePath	()Ljava/lang/String;
+    //   10: invokestatic 376	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   13: ifeq +4 -> 17
     //   16: return
-    //   17: new 266	java/io/File
+    //   17: new 263	java/io/File
     //   20: dup
     //   21: aload_1
-    //   22: invokevirtual 269	com/tencent/biz/richframework/download/RFWDownloadInfo:getTmpFilePath	()Ljava/lang/String;
-    //   25: invokespecial 272	java/io/File:<init>	(Ljava/lang/String;)V
+    //   22: invokevirtual 266	com/tencent/biz/richframework/download/RFWDownloadInfo:getTmpFilePath	()Ljava/lang/String;
+    //   25: invokespecial 269	java/io/File:<init>	(Ljava/lang/String;)V
     //   28: astore 13
     //   30: aload 13
-    //   32: invokevirtual 276	java/io/File:length	()J
+    //   32: invokevirtual 273	java/io/File:length	()J
     //   35: lstore 4
     //   37: aconst_null
-    //   38: astore 9
-    //   40: aconst_null
-    //   41: astore 8
-    //   43: aload 13
-    //   45: invokevirtual 462	java/io/File:getParentFile	()Ljava/io/File;
-    //   48: invokevirtual 465	java/io/File:exists	()Z
-    //   51: ifne +12 -> 63
-    //   54: aload 13
-    //   56: invokevirtual 462	java/io/File:getParentFile	()Ljava/io/File;
-    //   59: invokevirtual 468	java/io/File:mkdirs	()Z
-    //   62: pop
-    //   63: aload 13
-    //   65: invokevirtual 465	java/io/File:exists	()Z
-    //   68: ifne +9 -> 77
-    //   71: aload 13
-    //   73: invokevirtual 471	java/io/File:createNewFile	()Z
-    //   76: pop
-    //   77: aload_2
-    //   78: invokevirtual 477	okhttp3/Response:body	()Lokhttp3/ResponseBody;
-    //   81: invokevirtual 482	okhttp3/ResponseBody:contentLength	()J
-    //   84: lstore 6
-    //   86: aload_1
-    //   87: aload_2
-    //   88: invokevirtual 477	okhttp3/Response:body	()Lokhttp3/ResponseBody;
-    //   91: invokevirtual 482	okhttp3/ResponseBody:contentLength	()J
-    //   94: invokevirtual 486	com/tencent/biz/richframework/download/RFWDownloadInfo:setTotalContentLength	(J)V
-    //   97: aload_2
-    //   98: invokevirtual 477	okhttp3/Response:body	()Lokhttp3/ResponseBody;
-    //   101: invokevirtual 490	okhttp3/ResponseBody:byteStream	()Ljava/io/InputStream;
-    //   104: astore 10
-    //   106: new 492	java/io/FileOutputStream
-    //   109: dup
-    //   110: aload 13
-    //   112: aload_0
-    //   113: getfield 51	com/tencent/biz/richframework/download/RFWDownloader:mDownloadStrategy	Lcom/tencent/biz/richframework/download/RFWDownloadStrategy;
-    //   116: invokevirtual 264	com/tencent/biz/richframework/download/RFWDownloadStrategy:supportBreakPointDownload	()Z
-    //   119: invokespecial 495	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   122: astore_2
+    //   38: astore 8
+    //   40: aload 13
+    //   42: invokevirtual 457	java/io/File:getParentFile	()Ljava/io/File;
+    //   45: invokevirtual 460	java/io/File:exists	()Z
+    //   48: ifne +12 -> 60
+    //   51: aload 13
+    //   53: invokevirtual 457	java/io/File:getParentFile	()Ljava/io/File;
+    //   56: invokevirtual 463	java/io/File:mkdirs	()Z
+    //   59: pop
+    //   60: aload 13
+    //   62: invokevirtual 460	java/io/File:exists	()Z
+    //   65: ifne +9 -> 74
+    //   68: aload 13
+    //   70: invokevirtual 466	java/io/File:createNewFile	()Z
+    //   73: pop
+    //   74: aload_2
+    //   75: invokevirtual 472	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   78: invokevirtual 477	okhttp3/ResponseBody:contentLength	()J
+    //   81: lstore 6
+    //   83: aload_1
+    //   84: aload_2
+    //   85: invokevirtual 472	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   88: invokevirtual 477	okhttp3/ResponseBody:contentLength	()J
+    //   91: invokevirtual 481	com/tencent/biz/richframework/download/RFWDownloadInfo:setTotalContentLength	(J)V
+    //   94: aload_2
+    //   95: invokevirtual 472	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   98: invokevirtual 485	okhttp3/ResponseBody:byteStream	()Ljava/io/InputStream;
+    //   101: astore 10
+    //   103: new 487	java/io/FileOutputStream
+    //   106: dup
+    //   107: aload 13
+    //   109: aload_0
+    //   110: getfield 51	com/tencent/biz/richframework/download/RFWDownloader:mDownloadStrategy	Lcom/tencent/biz/richframework/download/RFWDownloadStrategy;
+    //   113: invokevirtual 261	com/tencent/biz/richframework/download/RFWDownloadStrategy:supportBreakPointDownload	()Z
+    //   116: invokespecial 490	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   119: astore_2
+    //   120: aload_2
+    //   121: astore 8
     //   123: aload_2
-    //   124: astore 8
-    //   126: aload_2
-    //   127: astore 9
-    //   129: sipush 4096
-    //   132: newarray byte
-    //   134: astore 11
+    //   124: astore 9
+    //   126: sipush 4096
+    //   129: newarray byte
+    //   131: astore 11
+    //   133: aload_2
+    //   134: astore 8
     //   136: aload_2
-    //   137: astore 8
-    //   139: aload_2
-    //   140: astore 9
-    //   142: aload 10
-    //   144: aload 11
-    //   146: invokevirtual 501	java/io/InputStream:read	([B)I
-    //   149: istore_3
-    //   150: iload_3
-    //   151: iconst_m1
-    //   152: if_icmpeq +56 -> 208
+    //   137: astore 9
+    //   139: aload 10
+    //   141: aload 11
+    //   143: invokevirtual 496	java/io/InputStream:read	([B)I
+    //   146: istore_3
+    //   147: iload_3
+    //   148: iconst_m1
+    //   149: if_icmpeq +56 -> 205
+    //   152: aload_2
+    //   153: astore 8
     //   155: aload_2
-    //   156: astore 8
+    //   156: astore 9
     //   158: aload_2
-    //   159: astore 9
-    //   161: aload_2
-    //   162: aload 11
-    //   164: iconst_0
-    //   165: iload_3
-    //   166: invokevirtual 507	java/io/OutputStream:write	([BII)V
-    //   169: iload_3
-    //   170: i2l
-    //   171: lload 4
-    //   173: ladd
-    //   174: lstore 4
+    //   159: aload 11
+    //   161: iconst_0
+    //   162: iload_3
+    //   163: invokevirtual 502	java/io/OutputStream:write	([BII)V
+    //   166: iload_3
+    //   167: i2l
+    //   168: lload 4
+    //   170: ladd
+    //   171: lstore 4
+    //   173: aload_2
+    //   174: astore 8
     //   176: aload_2
-    //   177: astore 8
-    //   179: aload_2
-    //   180: astore 9
-    //   182: aload_1
-    //   183: lload 4
-    //   185: invokevirtual 510	com/tencent/biz/richframework/download/RFWDownloadInfo:setDownloadedLength	(J)V
-    //   188: lload 6
-    //   190: lconst_0
-    //   191: lcmp
-    //   192: ifle +274 -> 466
-    //   195: aload_0
-    //   196: aload 12
-    //   198: lload 4
-    //   200: lload 6
-    //   202: invokespecial 512	com/tencent/biz/richframework/download/RFWDownloader:dispatchDownloadProgress	(Ljava/lang/String;JJ)V
-    //   205: goto +261 -> 466
-    //   208: aload_2
-    //   209: astore 8
-    //   211: aload_0
-    //   212: aload_1
-    //   213: iconst_1
-    //   214: anewarray 4	java/lang/Object
-    //   217: dup
-    //   218: iconst_0
-    //   219: ldc_w 514
-    //   222: aastore
-    //   223: invokespecial 84	com/tencent/biz/richframework/download/RFWDownloader:logDownloadInfo	(Lcom/tencent/biz/richframework/download/RFWDownloadInfo;[Ljava/lang/Object;)V
-    //   226: aload 8
-    //   228: invokevirtual 517	java/io/OutputStream:flush	()V
-    //   231: new 266	java/io/File
-    //   234: dup
-    //   235: aload_1
-    //   236: invokevirtual 387	com/tencent/biz/richframework/download/RFWDownloadInfo:getFilePath	()Ljava/lang/String;
-    //   239: invokespecial 272	java/io/File:<init>	(Ljava/lang/String;)V
-    //   242: astore 9
-    //   244: aload 9
-    //   246: invokevirtual 465	java/io/File:exists	()Z
-    //   249: ifeq +9 -> 258
-    //   252: aload 9
-    //   254: invokevirtual 520	java/io/File:delete	()Z
-    //   257: pop
-    //   258: aload 13
-    //   260: aload 9
-    //   262: invokevirtual 524	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   265: pop
-    //   266: aload_0
-    //   267: aload_1
-    //   268: invokespecial 526	com/tencent/biz/richframework/download/RFWDownloader:handleDownloadFile	(Lcom/tencent/biz/richframework/download/RFWDownloadInfo;)V
-    //   271: iconst_2
-    //   272: anewarray 528	java/io/Closeable
-    //   275: dup
-    //   276: iconst_0
-    //   277: aload 10
-    //   279: aastore
-    //   280: dup
-    //   281: iconst_1
-    //   282: aload 8
-    //   284: aastore
-    //   285: invokestatic 534	com/tencent/biz/richframework/download/RFWDownloadUtil:closeAll	([Ljava/io/Closeable;)V
-    //   288: goto +121 -> 409
-    //   291: aload_2
-    //   292: astore_1
-    //   293: astore_2
-    //   294: goto +26 -> 320
-    //   297: aload_2
-    //   298: astore_1
-    //   299: astore_2
-    //   300: goto +30 -> 330
-    //   303: astore_2
-    //   304: aload 8
-    //   306: astore_1
-    //   307: goto +13 -> 320
-    //   310: astore_2
-    //   311: aload 9
-    //   313: astore_1
-    //   314: goto +16 -> 330
-    //   317: astore_2
-    //   318: aconst_null
-    //   319: astore_1
-    //   320: aload 10
-    //   322: astore 8
-    //   324: goto +106 -> 430
-    //   327: astore_2
-    //   328: aconst_null
-    //   329: astore_1
-    //   330: aload_2
-    //   331: astore 8
-    //   333: aload 10
-    //   335: astore_2
-    //   336: goto +24 -> 360
-    //   339: astore_2
-    //   340: aconst_null
-    //   341: astore_1
-    //   342: aload 9
+    //   177: astore 9
+    //   179: aload_1
+    //   180: lload 4
+    //   182: invokevirtual 505	com/tencent/biz/richframework/download/RFWDownloadInfo:setDownloadedLength	(J)V
+    //   185: lload 6
+    //   187: lconst_0
+    //   188: lcmp
+    //   189: ifle +270 -> 459
+    //   192: aload_0
+    //   193: aload 12
+    //   195: lload 4
+    //   197: lload 6
+    //   199: invokespecial 507	com/tencent/biz/richframework/download/RFWDownloader:dispatchDownloadProgress	(Ljava/lang/String;JJ)V
+    //   202: goto +257 -> 459
+    //   205: aload_2
+    //   206: astore 8
+    //   208: aload_0
+    //   209: aload_1
+    //   210: iconst_1
+    //   211: anewarray 4	java/lang/Object
+    //   214: dup
+    //   215: iconst_0
+    //   216: ldc_w 509
+    //   219: aastore
+    //   220: invokespecial 84	com/tencent/biz/richframework/download/RFWDownloader:logDownloadInfo	(Lcom/tencent/biz/richframework/download/RFWDownloadInfo;[Ljava/lang/Object;)V
+    //   223: aload 8
+    //   225: invokevirtual 512	java/io/OutputStream:flush	()V
+    //   228: new 263	java/io/File
+    //   231: dup
+    //   232: aload_1
+    //   233: invokevirtual 384	com/tencent/biz/richframework/download/RFWDownloadInfo:getFilePath	()Ljava/lang/String;
+    //   236: invokespecial 269	java/io/File:<init>	(Ljava/lang/String;)V
+    //   239: astore 9
+    //   241: aload 9
+    //   243: invokevirtual 460	java/io/File:exists	()Z
+    //   246: ifeq +9 -> 255
+    //   249: aload 9
+    //   251: invokevirtual 515	java/io/File:delete	()Z
+    //   254: pop
+    //   255: aload 13
+    //   257: aload 9
+    //   259: invokevirtual 519	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   262: pop
+    //   263: aload_0
+    //   264: aload_1
+    //   265: invokespecial 521	com/tencent/biz/richframework/download/RFWDownloader:handleDownloadFile	(Lcom/tencent/biz/richframework/download/RFWDownloadInfo;)V
+    //   268: iconst_2
+    //   269: anewarray 523	java/io/Closeable
+    //   272: dup
+    //   273: iconst_0
+    //   274: aload 10
+    //   276: aastore
+    //   277: dup
+    //   278: iconst_1
+    //   279: aload 8
+    //   281: aastore
+    //   282: invokestatic 529	com/tencent/biz/richframework/download/RFWDownloadUtil:closeAll	([Ljava/io/Closeable;)V
+    //   285: goto +115 -> 400
+    //   288: astore_1
+    //   289: aload 10
+    //   291: astore 8
+    //   293: goto +130 -> 423
+    //   296: aload_2
+    //   297: astore_1
+    //   298: astore_2
+    //   299: goto +34 -> 333
+    //   302: astore_1
+    //   303: aload 8
+    //   305: astore_2
+    //   306: aload 10
+    //   308: astore 8
+    //   310: goto +113 -> 423
+    //   313: astore_2
+    //   314: aload 9
+    //   316: astore_1
+    //   317: goto +16 -> 333
+    //   320: astore_1
+    //   321: aconst_null
+    //   322: astore_2
+    //   323: aload 10
+    //   325: astore 8
+    //   327: goto +96 -> 423
+    //   330: astore_2
+    //   331: aconst_null
+    //   332: astore_1
+    //   333: aload_2
+    //   334: astore 8
+    //   336: aload 10
+    //   338: astore_2
+    //   339: goto +24 -> 363
+    //   342: astore_1
+    //   343: aconst_null
     //   344: astore 8
-    //   346: goto +84 -> 430
-    //   349: astore 9
-    //   351: aconst_null
-    //   352: astore_1
-    //   353: aload 8
-    //   355: astore_2
-    //   356: aload 9
-    //   358: astore 8
-    //   360: ldc 14
-    //   362: getstatic 107	com/tencent/biz/richframework/delegate/impl/RFLog:USR	I
-    //   365: iconst_2
-    //   366: anewarray 4	java/lang/Object
-    //   369: dup
-    //   370: iconst_0
+    //   346: aload 8
+    //   348: astore_2
+    //   349: goto +74 -> 423
+    //   352: astore 9
+    //   354: aconst_null
+    //   355: astore_1
+    //   356: aload 8
+    //   358: astore_2
+    //   359: aload 9
+    //   361: astore 8
+    //   363: ldc 14
+    //   365: iconst_1
+    //   366: aload 8
+    //   368: invokevirtual 530	java/io/IOException:getMessage	()Ljava/lang/String;
     //   371: aload 8
-    //   373: invokevirtual 535	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   376: aastore
-    //   377: dup
-    //   378: iconst_1
-    //   379: aload 8
-    //   381: aastore
-    //   382: invokestatic 440	com/tencent/biz/richframework/delegate/impl/RFLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   385: aload_0
-    //   386: aload 12
-    //   388: iconst_0
-    //   389: ldc 125
-    //   391: invokespecial 96	com/tencent/biz/richframework/download/RFWDownloader:dispatchGetFileResult	(Ljava/lang/String;ZLjava/lang/String;)V
-    //   394: iconst_2
-    //   395: anewarray 528	java/io/Closeable
-    //   398: dup
-    //   399: iconst_0
-    //   400: aload_2
-    //   401: aastore
-    //   402: dup
-    //   403: iconst_1
-    //   404: aload_1
-    //   405: aastore
-    //   406: invokestatic 534	com/tencent/biz/richframework/download/RFWDownloadUtil:closeAll	([Ljava/io/Closeable;)V
-    //   409: aload_0
-    //   410: getfield 49	com/tencent/biz/richframework/download/RFWDownloader:mDownloadingUrlSet	Ljava/util/Set;
-    //   413: aload 12
-    //   415: invokeinterface 537 2 0
-    //   420: pop
-    //   421: return
-    //   422: astore 9
-    //   424: aload_2
-    //   425: astore 8
-    //   427: aload 9
-    //   429: astore_2
-    //   430: iconst_2
-    //   431: anewarray 528	java/io/Closeable
-    //   434: dup
-    //   435: iconst_0
-    //   436: aload 8
-    //   438: aastore
-    //   439: dup
-    //   440: iconst_1
-    //   441: aload_1
-    //   442: aastore
-    //   443: invokestatic 534	com/tencent/biz/richframework/download/RFWDownloadUtil:closeAll	([Ljava/io/Closeable;)V
-    //   446: aload_0
-    //   447: getfield 49	com/tencent/biz/richframework/download/RFWDownloader:mDownloadingUrlSet	Ljava/util/Set;
-    //   450: aload 12
-    //   452: invokeinterface 537 2 0
-    //   457: pop
-    //   458: goto +5 -> 463
-    //   461: aload_2
-    //   462: athrow
-    //   463: goto -2 -> 461
-    //   466: goto -330 -> 136
+    //   373: invokestatic 533	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   376: aload_0
+    //   377: aload 12
+    //   379: iconst_0
+    //   380: ldc 122
+    //   382: invokespecial 96	com/tencent/biz/richframework/download/RFWDownloader:dispatchGetFileResult	(Ljava/lang/String;ZLjava/lang/String;)V
+    //   385: iconst_2
+    //   386: anewarray 523	java/io/Closeable
+    //   389: dup
+    //   390: iconst_0
+    //   391: aload_2
+    //   392: aastore
+    //   393: dup
+    //   394: iconst_1
+    //   395: aload_1
+    //   396: aastore
+    //   397: invokestatic 529	com/tencent/biz/richframework/download/RFWDownloadUtil:closeAll	([Ljava/io/Closeable;)V
+    //   400: aload_0
+    //   401: getfield 49	com/tencent/biz/richframework/download/RFWDownloader:mDownloadingUrlSet	Ljava/util/Set;
+    //   404: aload 12
+    //   406: invokeinterface 535 2 0
+    //   411: pop
+    //   412: return
+    //   413: astore 9
+    //   415: aload_2
+    //   416: astore 8
+    //   418: aload_1
+    //   419: astore_2
+    //   420: aload 9
+    //   422: astore_1
+    //   423: iconst_2
+    //   424: anewarray 523	java/io/Closeable
+    //   427: dup
+    //   428: iconst_0
+    //   429: aload 8
+    //   431: aastore
+    //   432: dup
+    //   433: iconst_1
+    //   434: aload_2
+    //   435: aastore
+    //   436: invokestatic 529	com/tencent/biz/richframework/download/RFWDownloadUtil:closeAll	([Ljava/io/Closeable;)V
+    //   439: aload_0
+    //   440: getfield 49	com/tencent/biz/richframework/download/RFWDownloader:mDownloadingUrlSet	Ljava/util/Set;
+    //   443: aload 12
+    //   445: invokeinterface 535 2 0
+    //   450: pop
+    //   451: goto +5 -> 456
+    //   454: aload_1
+    //   455: athrow
+    //   456: goto -2 -> 454
+    //   459: goto -326 -> 133
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	469	0	this	RFWDownloader
-    //   0	469	1	paramRFWDownloadInfo	RFWDownloadInfo
-    //   0	469	2	paramResponse	okhttp3.Response
-    //   149	21	3	i	int
-    //   35	164	4	l1	long
-    //   84	117	6	l2	long
-    //   41	396	8	localObject1	Object
-    //   38	305	9	localObject2	Object
-    //   349	8	9	localIOException	java.io.IOException
-    //   422	6	9	localObject3	Object
-    //   104	230	10	localInputStream	java.io.InputStream
-    //   134	29	11	arrayOfByte	byte[]
-    //   4	447	12	str	String
-    //   28	231	13	localFile	File
+    //   0	462	0	this	RFWDownloader
+    //   0	462	1	paramRFWDownloadInfo	RFWDownloadInfo
+    //   0	462	2	paramResponse	okhttp3.Response
+    //   146	21	3	i	int
+    //   35	161	4	l1	long
+    //   81	117	6	l2	long
+    //   38	392	8	localObject1	Object
+    //   124	191	9	localObject2	Object
+    //   352	8	9	localIOException	java.io.IOException
+    //   413	8	9	localObject3	Object
+    //   101	236	10	localInputStream	java.io.InputStream
+    //   131	29	11	arrayOfByte	byte[]
+    //   4	440	12	str	String
+    //   28	228	13	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   195	205	291	finally
-    //   211	258	291	finally
-    //   258	271	291	finally
-    //   195	205	297	java/io/IOException
-    //   211	258	297	java/io/IOException
-    //   258	271	297	java/io/IOException
-    //   129	136	303	finally
-    //   142	150	303	finally
-    //   161	169	303	finally
-    //   182	188	303	finally
-    //   129	136	310	java/io/IOException
-    //   142	150	310	java/io/IOException
-    //   161	169	310	java/io/IOException
-    //   182	188	310	java/io/IOException
-    //   106	123	317	finally
-    //   106	123	327	java/io/IOException
-    //   43	63	339	finally
-    //   63	77	339	finally
-    //   77	106	339	finally
-    //   43	63	349	java/io/IOException
-    //   63	77	349	java/io/IOException
-    //   77	106	349	java/io/IOException
-    //   360	394	422	finally
+    //   192	202	288	finally
+    //   208	255	288	finally
+    //   255	268	288	finally
+    //   192	202	296	java/io/IOException
+    //   208	255	296	java/io/IOException
+    //   255	268	296	java/io/IOException
+    //   126	133	302	finally
+    //   139	147	302	finally
+    //   158	166	302	finally
+    //   179	185	302	finally
+    //   126	133	313	java/io/IOException
+    //   139	147	313	java/io/IOException
+    //   158	166	313	java/io/IOException
+    //   179	185	313	java/io/IOException
+    //   103	120	320	finally
+    //   103	120	330	java/io/IOException
+    //   40	60	342	finally
+    //   60	74	342	finally
+    //   74	103	342	finally
+    //   40	60	352	java/io/IOException
+    //   60	74	352	java/io/IOException
+    //   74	103	352	java/io/IOException
+    //   363	385	413	finally
   }
   
   public void download(String paramString)

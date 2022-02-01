@@ -19,32 +19,32 @@ class QidianProfileCardActivity$13
     super.onUpdateCustomHead(paramBoolean, paramString);
     if (paramBoolean)
     {
-      if (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin))
+      if (paramString.equals(this.a.e.allInOne.uin))
       {
         QidianProfileCardActivity localQidianProfileCardActivity;
-        if (SimpleUIUtil.a())
+        if (SimpleUIUtil.e())
         {
           localQidianProfileCardActivity = this.a;
-          localQidianProfileCardActivity.jdField_a_of_type_AndroidGraphicsBitmap = localQidianProfileCardActivity.app.getFaceBitmap(paramString, (byte)2, false);
+          localQidianProfileCardActivity.f = localQidianProfileCardActivity.app.getFaceBitmap(paramString, (byte)2, false);
         }
         else
         {
           localQidianProfileCardActivity = this.a;
-          localQidianProfileCardActivity.jdField_a_of_type_AndroidGraphicsBitmap = localQidianProfileCardActivity.app.getFaceBitmap(paramString, false);
+          localQidianProfileCardActivity.f = localQidianProfileCardActivity.app.getFaceBitmap(paramString, false);
         }
-        this.a.c();
+        this.a.d();
         return;
       }
-      paramString = (QidianProfileCardActivity.PaGroupStruct)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      paramString = (QidianProfileCardActivity.PaGroupStruct)this.a.h.get(paramString);
       if (paramString != null) {
-        this.a.a(paramString.jdField_a_of_type_Int, (URLImageView)paramString.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString.jdField_a_of_type_JavaLangString, true);
+        this.a.a(paramString.b, (URLImageView)paramString.a.get(), paramString.c, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -22,17 +22,17 @@ import mqq.util.WeakReference;
 
 public class ReCheckInHelper
 {
-  int jdField_a_of_type_Int = 1800;
-  WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  WeakReference<QQAppInterface> a;
+  int b = 1800;
   
   public ReCheckInHelper(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
+    this.a = new WeakReference(paramQQAppInterface);
   }
   
   public long a(String paramString, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     long l = 0L;
     if (localQQAppInterface == null) {
       return 0L;
@@ -52,12 +52,12 @@ public class ReCheckInHelper
   
   public void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface == null) {
       return;
     }
     FriendsManager localFriendsManager = (FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    ExtensionInfo localExtensionInfo = localFriendsManager.a(paramString, true);
+    ExtensionInfo localExtensionInfo = localFriendsManager.d(paramString, true);
     if (!localFriendsManager.a(false))
     {
       if (localExtensionInfo == null) {
@@ -66,12 +66,12 @@ public class ReCheckInHelper
       MutualMarkForDisplayInfo localMutualMarkForDisplayInfo1 = MutualMarkDataCenter.a(localQQAppInterface, paramString, 4L, false);
       MutualMarkForDisplayInfo localMutualMarkForDisplayInfo2 = MutualMarkDataCenter.a(localQQAppInterface, paramString, 5L, false);
       if (localMutualMarkForDisplayInfo1 != null) {
-        l1 = localMutualMarkForDisplayInfo1.d * 1000L;
+        l1 = localMutualMarkForDisplayInfo1.e * 1000L;
       } else {
         l1 = 0L;
       }
       if (localMutualMarkForDisplayInfo2 != null) {
-        l2 = localMutualMarkForDisplayInfo2.d * 1000L;
+        l2 = localMutualMarkForDisplayInfo2.e * 1000L;
       } else {
         l2 = 0L;
       }
@@ -99,20 +99,20 @@ public class ReCheckInHelper
         QLog.i("FriendReactive.ReCheckInHelper", 2, String.format("startCheck bRemind=%b frdshipType=%s fire=%s uin=%s", new Object[] { Boolean.valueOf(bool1), localMutualMarkForDisplayInfo1, localMutualMarkForDisplayInfo2, paramString }));
       }
       long l2 = localExtensionInfo.lastHotReactiveReCheckInTs;
-      this.jdField_a_of_type_Int = BaseApplicationImpl.getContext().getSharedPreferences(localQQAppInterface.getCurrentAccountUin(), 0).getInt("hotreactive_recheckin_interval", 1800);
+      this.b = BaseApplicationImpl.getContext().getSharedPreferences(localQQAppInterface.getCurrentAccountUin(), 0).getInt("hotreactive_recheckin_interval", 1800);
       long l1 = SystemClock.elapsedRealtime();
-      if (l1 - l2 < this.jdField_a_of_type_Int * 1000) {
+      if (l1 - l2 < this.b * 1000) {
         return;
       }
       l2 = localExtensionInfo.localChatSendTs;
       long l3 = localExtensionInfo.localChatRecTs;
-      if (TimeFormatterUtils.c(l2) == 2131719716) {
+      if (TimeFormatterUtils.c(l2) == 2131917319) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       boolean bool2;
-      if (TimeFormatterUtils.c(l3) == 2131719716) {
+      if (TimeFormatterUtils.c(l3) == 2131917319) {
         bool2 = true;
       } else {
         bool2 = false;
@@ -125,7 +125,7 @@ public class ReCheckInHelper
       if (!bool1)
       {
         l2 = a(paramString, true);
-        if (TimeFormatterUtils.c(l2) == 2131719716) {
+        if (TimeFormatterUtils.c(l2) == 2131917319) {
           bool1 = true;
         } else {
           bool1 = false;
@@ -144,7 +144,7 @@ public class ReCheckInHelper
       if (!bool2)
       {
         l2 = a(paramString, false);
-        if (TimeFormatterUtils.c(l2) == 2131719716) {
+        if (TimeFormatterUtils.c(l2) == 2131917319) {
           bool1 = true;
         } else {
           bool1 = false;
@@ -174,20 +174,20 @@ public class ReCheckInHelper
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    if ((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+    if ((QQAppInterface)this.a.get() == null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("FriendReactive.ReCheckInHelper", 2, String.format("onRecheckInResp isSuc=%b selfUin=%s frdUin=%s interval=%d", new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2, Integer.valueOf(paramInt) }));
     }
-    if ((paramBoolean) && (paramInt > 0) && (paramInt != this.jdField_a_of_type_Int)) {
+    if ((paramBoolean) && (paramInt > 0) && (paramInt != this.b)) {
       BaseApplicationImpl.getContext().getSharedPreferences(paramString1, 0).edit().putInt("hotreactive_recheckin_interval", paramInt).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.ReCheckInHelper
  * JD-Core Version:    0.7.0.1
  */

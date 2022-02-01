@@ -19,11 +19,11 @@ final class VideoMaskController$expandTouchArea$$inlined$let$lambda$1
     try
     {
       Rect localRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-      this.jdField_a_of_type_AndroidViewView.getHitRect(localRect);
-      localRect.top -= AIOUtils.b(this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidViewView.getResources());
-      localRect.bottom += AIOUtils.b(this.b, this.jdField_a_of_type_AndroidViewView.getResources());
-      ((View)this.jdField_a_of_type_AndroidViewViewParent).setTouchDelegate(new TouchDelegate(localRect, this.jdField_a_of_type_AndroidViewView));
+      this.b.setEnabled(true);
+      this.b.getHitRect(localRect);
+      localRect.top -= AIOUtils.b(this.c, this.b.getResources());
+      localRect.bottom += AIOUtils.b(this.d, this.b.getResources());
+      ((View)this.a).setTouchDelegate(new TouchDelegate(localRect, this.b));
       str = this.this$0.a();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[expandTouchArea] after, top = ");
@@ -45,7 +45,7 @@ final class VideoMaskController$expandTouchArea$$inlined$let$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoMaskController.expandTouchArea..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

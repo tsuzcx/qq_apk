@@ -17,14 +17,13 @@ class NearbyMomentFragment$10
     paramString = NearbyMomentFragment.a(this.a, paramString);
     if (paramString != null)
     {
-      NearbyMomentFragment.a(this.a).a().remove(paramString);
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      NearbyMomentFragment.b(this.a, paramString.c);
+      NearbyMomentFragment.f(this.a).a().remove(paramString);
+      NearbyMomentFragment.f(this.a).notifyDataSetChanged();
+      NearbyMomentFragment.b(this.a, paramString.f);
     }
-    if (NearbyMomentFragment.a(this.a).a().size() == 0) {
+    if (NearbyMomentFragment.f(this.a).a().size() == 0) {
       this.a.a(1);
     }
-    NearbyMomentFragment.a(this.a).remove(paramString);
   }
   
   public void a(String paramString, long paramLong)
@@ -32,13 +31,13 @@ class NearbyMomentFragment$10
     MomentFeedInfo localMomentFeedInfo = NearbyMomentFragment.a(this.a, paramString);
     if (localMomentFeedInfo != null)
     {
-      if (localMomentFeedInfo.g > 0) {
-        localMomentFeedInfo.g -= 1;
+      if (localMomentFeedInfo.w > 0) {
+        localMomentFeedInfo.w -= 1;
       }
-      if ((localMomentFeedInfo.jdField_a_of_type_JavaUtilList != null) && (localMomentFeedInfo.jdField_a_of_type_JavaUtilList.size() > 0))
+      if ((localMomentFeedInfo.x != null) && (localMomentFeedInfo.x.size() > 0))
       {
         Object localObject = null;
-        Iterator localIterator = localMomentFeedInfo.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = localMomentFeedInfo.x.iterator();
         do
         {
           paramString = localObject;
@@ -48,10 +47,10 @@ class NearbyMomentFragment$10
           paramString = (CommentInfo)localIterator.next();
         } while (paramString.a != paramLong);
         if (paramString != null) {
-          localMomentFeedInfo.jdField_a_of_type_JavaUtilList.remove(paramString);
+          localMomentFeedInfo.x.remove(paramString);
         }
       }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+      NearbyMomentFragment.f(this.a).notifyDataSetChanged();
     }
   }
   
@@ -60,8 +59,8 @@ class NearbyMomentFragment$10
     paramString = NearbyMomentFragment.a(this.a, paramString);
     if (paramString != null)
     {
-      paramString.g += 1;
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+      paramString.w += 1;
+      NearbyMomentFragment.f(this.a).notifyDataSetChanged();
     }
   }
   
@@ -70,12 +69,12 @@ class NearbyMomentFragment$10
     paramString = NearbyMomentFragment.a(this.a, paramString);
     if (paramString != null)
     {
-      if (!paramString.jdField_a_of_type_Boolean)
+      if (!paramString.u)
       {
-        paramString.jdField_a_of_type_Boolean = true;
-        paramString.f += 1;
+        paramString.u = true;
+        paramString.v += 1;
       }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+      NearbyMomentFragment.f(this.a).notifyDataSetChanged();
     }
   }
   
@@ -85,32 +84,32 @@ class NearbyMomentFragment$10
     if ((paramString instanceof ShortVideoMomentFeedInfo))
     {
       paramString = (ShortVideoMomentFeedInfo)paramString;
-      paramString.e += 1;
+      paramString.t += 1;
     }
     else if ((paramString instanceof ChangMomentFeedInfo))
     {
       paramString = (ChangMomentFeedInfo)paramString;
-      paramString.e += 1;
+      paramString.t += 1;
     }
-    NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+    NearbyMomentFragment.f(this.a).notifyDataSetChanged();
   }
   
   public void c(String paramString, long paramLong)
   {
     paramString = NearbyMomentFragment.a(this.a, paramString);
-    if ((paramString != null) && (paramString.jdField_a_of_type_Boolean))
+    if ((paramString != null) && (paramString.u))
     {
-      paramString.jdField_a_of_type_Boolean = false;
-      if (paramString.f > 0) {
-        paramString.f -= 1;
+      paramString.u = false;
+      if (paramString.v > 0) {
+        paramString.v -= 1;
       }
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
+      NearbyMomentFragment.f(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment.10
  * JD-Core Version:    0.7.0.1
  */

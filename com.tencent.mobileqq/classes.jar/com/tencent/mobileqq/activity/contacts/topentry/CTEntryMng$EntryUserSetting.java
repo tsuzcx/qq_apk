@@ -5,8 +5,8 @@ import org.json.JSONObject;
 public class CTEntryMng$EntryUserSetting
 {
   public int a;
-  public short a;
   public short b;
+  public short c;
   
   public JSONObject a()
   {
@@ -16,9 +16,9 @@ public class CTEntryMng$EntryUserSetting
       localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("entryId", this.jdField_a_of_type_Int);
-        localJSONObject.put("flagId", this.jdField_a_of_type_Short);
-        localJSONObject.put("flagValue", this.b);
+        localJSONObject.put("entryId", this.a);
+        localJSONObject.put("flagId", this.b);
+        localJSONObject.put("flagValue", this.c);
         return localJSONObject;
       }
       catch (Exception localException1) {}
@@ -35,20 +35,20 @@ public class CTEntryMng$EntryUserSetting
   {
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryId");
-      this.jdField_a_of_type_Short = ((short)paramJSONObject.optInt("flagId"));
-      this.b = ((short)paramJSONObject.optInt("flagValue"));
+      this.a = paramJSONObject.optInt("entryId");
+      this.b = ((short)paramJSONObject.optInt("flagId"));
+      this.c = ((short)paramJSONObject.optInt("flagValue"));
     }
   }
   
-  boolean a()
+  boolean b()
   {
-    return (this.jdField_a_of_type_Short != 0) && (this.b == 1);
+    return (this.b != 0) && (this.c == 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.EntryUserSetting
  * JD-Core Version:    0.7.0.1
  */

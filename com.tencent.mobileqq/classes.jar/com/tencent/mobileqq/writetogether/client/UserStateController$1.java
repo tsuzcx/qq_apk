@@ -14,22 +14,22 @@ class UserStateController$1
     paramContext = paramIntent.getAction();
     if ("android.intent.action.TIME_TICK".equals(paramContext))
     {
-      this.a.b();
+      this.a.a();
       return;
     }
     if ("android.intent.action.TIME_SET".equals(paramContext))
     {
-      this.a.b();
+      this.a.a();
       return;
     }
     if ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) {
-      this.a.b();
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.client.UserStateController.1
  * JD-Core Version:    0.7.0.1
  */

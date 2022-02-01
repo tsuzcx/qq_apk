@@ -12,13 +12,13 @@ public class AnonymousView$HostShowTotalViewHolder
   public AnonymousView$HostShowTotalViewHolder(View paramView)
   {
     super(paramView);
-    this.viewTotal = paramView.findViewById(2131374143);
-    this.ll = paramView.findViewById(2131374143);
+    this.viewTotal = paramView.findViewById(2131442238);
+    this.ll = paramView.findViewById(2131442238);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView.HostShowTotalViewHolder
  * JD-Core Version:    0.7.0.1
  */

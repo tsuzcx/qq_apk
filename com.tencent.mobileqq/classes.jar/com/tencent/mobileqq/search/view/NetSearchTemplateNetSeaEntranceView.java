@@ -25,49 +25,48 @@ import java.util.List;
 public class NetSearchTemplateNetSeaEntranceView
   extends NetSearchTemplateBaseView
 {
-  public View a;
   public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public ArrayList<NetSearchTemplateNetSeaEntranceView.NetSearchSubView> a;
-  public LinearLayout b;
-  public TextView b;
   public URLImageView b;
   public TextView c;
+  public TextView d;
+  public TextView n;
+  public URLImageView o;
+  public View p;
+  public LinearLayout q;
+  public ArrayList<NetSearchTemplateNetSeaEntranceView.NetSearchSubView> y = new ArrayList();
   
   public NetSearchTemplateNetSeaEntranceView(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   protected void a()
   {
-    View localView = a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366276));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368461));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378784));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378039));
-    this.c = ((TextView)localView.findViewById(2131365536));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131376568));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368863);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131378029));
+    View localView = b(this.m);
+    this.a = ((LinearLayout)localView.findViewById(2131432578));
+    this.b = ((URLImageView)localView.findViewById(2131435357));
+    this.c = ((TextView)localView.findViewById(2131447463));
+    this.d = ((TextView)localView.findViewById(2131446539));
+    this.n = ((TextView)localView.findViewById(2131431757));
+    this.o = ((URLImageView)localView.findViewById(2131444823));
+    this.p = localView.findViewById(2131435797);
+    this.q = ((LinearLayout)localView.findViewById(2131446528));
   }
   
   public void a(NetSearchTemplateNetSeaEntranceItem paramNetSearchTemplateNetSeaEntranceItem)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    if ((paramNetSearchTemplateNetSeaEntranceItem.a != null) && (paramNetSearchTemplateNetSeaEntranceItem.a.size() != 0))
+    this.y.clear();
+    this.q.removeAllViews();
+    if ((paramNetSearchTemplateNetSeaEntranceItem.t != null) && (paramNetSearchTemplateNetSeaEntranceItem.t.size() != 0))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      Context localContext = this.jdField_b_of_type_AndroidWidgetLinearLayout.getContext();
+      this.p.setVisibility(0);
+      this.q.setVisibility(0);
+      Context localContext = this.q.getContext();
       ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
       int i = 0;
-      while (i < paramNetSearchTemplateNetSeaEntranceItem.a.size())
+      while (i < paramNetSearchTemplateNetSeaEntranceItem.t.size())
       {
-        NetSearchSubItem localNetSearchSubItem = (NetSearchSubItem)paramNetSearchTemplateNetSeaEntranceItem.a.get(i);
+        NetSearchSubItem localNetSearchSubItem = (NetSearchSubItem)paramNetSearchTemplateNetSeaEntranceItem.t.get(i);
         NetSearchTemplateNetSeaEntranceView.NetSearchSubView localNetSearchSubView = new NetSearchTemplateNetSeaEntranceView.NetSearchSubView(this, localContext);
         if (!TextUtils.isEmpty(localNetSearchSubItem.a))
         {
@@ -78,49 +77,49 @@ public class NetSearchTemplateNetSeaEntranceView
           ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(localContext, 18.0F);
           ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "leftIcon";
           localObject = URLDrawable.getDrawable(localNetSearchSubItem.a, (URLDrawable.URLDrawableOptions)localObject);
-          ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.a);
-          localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+          ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.b);
+          localNetSearchSubView.b.setImageDrawable((Drawable)localObject);
           if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
             ((URLDrawable)localObject).restartDownload();
           }
-          localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+          localNetSearchSubView.b.setVisibility(0);
         }
         else
         {
-          localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+          localNetSearchSubView.b.setVisibility(8);
         }
         if (!TextUtils.isEmpty(localNetSearchSubItem.b))
         {
-          localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setText(localNetSearchSubItem.b);
-          localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          localNetSearchSubView.c.setText(localNetSearchSubItem.b);
+          localNetSearchSubView.c.setVisibility(0);
         }
         else
         {
-          localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          localNetSearchSubView.c.setVisibility(8);
         }
         if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
         {
-          localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#737373"));
-          this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#112037"));
+          localNetSearchSubView.c.setTextColor(Color.parseColor("#737373"));
+          this.p.setBackgroundColor(Color.parseColor("#112037"));
         }
         else
         {
-          localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#262626"));
-          this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#E6E6E6"));
+          localNetSearchSubView.c.setTextColor(Color.parseColor("#262626"));
+          this.p.setBackgroundColor(Color.parseColor("#E6E6E6"));
         }
-        this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localNetSearchSubView.jdField_a_of_type_AndroidViewView);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localNetSearchSubView);
+        this.q.addView(localNetSearchSubView.a);
+        this.y.add(localNetSearchSubView);
         i += 1;
       }
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.p.setVisibility(8);
+    this.q.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateNetSeaEntranceView
  * JD-Core Version:    0.7.0.1
  */

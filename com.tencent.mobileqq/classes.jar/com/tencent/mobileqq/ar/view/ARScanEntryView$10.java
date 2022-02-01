@@ -10,7 +10,7 @@ class ARScanEntryView$10
   
   public void run()
   {
-    Object localObject = ARScanEntryView.a(this.this$0);
+    Object localObject = ARScanEntryView.o(this.this$0);
     boolean bool = this.a;
     int j = 8;
     int i;
@@ -20,12 +20,12 @@ class ARScanEntryView$10
       i = 8;
     }
     ((RelativeLayout)localObject).setVisibility(i);
-    if ((this.a) && (!ARScanEntryView.c(this.this$0)) && (!ARScanEntryView.d(this.this$0))) {
+    if ((this.a) && (!ARScanEntryView.p(this.this$0)) && (!ARScanEntryView.q(this.this$0))) {
       i = 1;
     } else {
       i = 0;
     }
-    localObject = this.this$0.d;
+    localObject = this.this$0.p;
     if (i != 0) {
       j = 0;
     }
@@ -34,7 +34,7 @@ class ARScanEntryView$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.10
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ import org.json.JSONObject;
 public class ReadInjoyProgressView
   extends NativeText
 {
-  private int jdField_a_of_type_Int = 0;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_a_of_type_JavaLangString;
-  RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_b_of_type_JavaLangString;
+  Paint a = new Paint();
+  RectF b = new RectF();
+  RectF c = new RectF();
+  private int d = 0;
+  private String e;
+  private String f;
   
   public ReadInjoyProgressView(VafContext paramVafContext)
   {
@@ -40,9 +40,9 @@ public class ReadInjoyProgressView
       paramObject = (JSONObject)paramObject;
       try
       {
-        this.jdField_a_of_type_Int = paramObject.getInt("progress");
-        this.jdField_a_of_type_JavaLangString = paramObject.getString("bgcolor");
-        this.jdField_b_of_type_JavaLangString = paramObject.getString("fgcolor");
+        this.d = paramObject.getInt("progress");
+        this.e = paramObject.getString("bgcolor");
+        this.f = paramObject.getString("fgcolor");
       }
       catch (JSONException paramObject)
       {
@@ -54,7 +54,7 @@ public class ReadInjoyProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyProgressView
  * JD-Core Version:    0.7.0.1
  */

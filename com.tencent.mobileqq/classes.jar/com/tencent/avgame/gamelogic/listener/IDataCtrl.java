@@ -2,7 +2,7 @@ package com.tencent.avgame.gamelogic.listener;
 
 public abstract interface IDataCtrl<T>
 {
-  public abstract T a();
+  public abstract T H();
 }
 
 

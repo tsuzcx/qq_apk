@@ -39,19 +39,19 @@ class ChatHistoryTroopMemberFragment$44
       localStringBuilder.append(localGroupFeeMember.uint64_uin.get());
       localStringBuilder.append("");
       localATroopMember.a = localStringBuilder.toString();
-      localATroopMember.b = localGroupFeeMember.string_nick_name.get();
-      if (this.a.a != null) {
-        this.a.a.a(localATroopMember);
+      localATroopMember.c = localGroupFeeMember.string_nick_name.get();
+      if (this.a.ba != null) {
+        this.a.ba.a(localATroopMember);
       }
       localArrayList.add(localATroopMember);
     }
-    this.a.c = paramList.size();
-    this.a.b.sendMessage(this.a.b.obtainMessage(1, new Object[] { localArrayList }));
+    this.a.aw = paramList.size();
+    this.a.bn.sendMessage(this.a.bn.obtainMessage(1, new Object[] { localArrayList }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.44
  * JD-Core Version:    0.7.0.1
  */

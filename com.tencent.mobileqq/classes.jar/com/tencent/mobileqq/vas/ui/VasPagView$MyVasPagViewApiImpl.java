@@ -22,16 +22,10 @@ final class VasPagView$MyVasPagViewApiImpl
     this.a = paramVasPagView;
   }
   
-  @Nullable
-  public View a()
-  {
-    return this.a.a();
-  }
-  
   @NotNull
   public IVasPagViewApi a()
   {
-    this.a.b();
+    this.a.c();
     return (IVasPagViewApi)this;
   }
   
@@ -40,14 +34,14 @@ final class VasPagView$MyVasPagViewApiImpl
   public IVasPagViewApi a(@NotNull Function1<? super PAGView, Unit> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction1, "block");
-    this.a.b(paramFunction1);
+    this.a.a(paramFunction1);
     return (IVasPagViewApi)this;
   }
   
   @NotNull
   public IVasPagViewApi b()
   {
-    this.a.c();
+    this.a.d();
     return (IVasPagViewApi)this;
   }
   
@@ -55,13 +49,19 @@ final class VasPagView$MyVasPagViewApiImpl
   public IVasPagViewApi b(@NotNull Function1<? super View, Unit> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction1, "block");
-    this.a.a(paramFunction1);
+    this.a.setStateChangeListener(paramFunction1);
     return (IVasPagViewApi)this;
+  }
+  
+  @Nullable
+  public View c()
+  {
+    return this.a.getCurrentView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.VasPagView.MyVasPagViewApiImpl
  * JD-Core Version:    0.7.0.1
  */

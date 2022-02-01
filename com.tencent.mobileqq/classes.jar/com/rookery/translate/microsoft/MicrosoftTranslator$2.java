@@ -26,7 +26,7 @@ class MicrosoftTranslator$2
   {
     try
     {
-      paramArrayOfHeader = this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator.a.parse(new InputSource(new StringReader(paramString)));
+      paramArrayOfHeader = this.d.b.parse(new InputSource(new StringReader(paramString)));
     }
     catch (IOException paramArrayOfHeader)
     {
@@ -49,8 +49,8 @@ class MicrosoftTranslator$2
         Node localNode = localNodeList.item(paramInt);
         if (localNode.getFirstChild() != null) {
           paramString.add(localNode.getFirstChild().getNodeValue());
-        } else if (this.jdField_a_of_type_JavaUtilList.get(paramInt) != null) {
-          paramString.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+        } else if (this.a.get(paramInt) != null) {
+          paramString.add(this.a.get(paramInt));
         } else {
           paramString.add("");
         }
@@ -63,7 +63,7 @@ class MicrosoftTranslator$2
         paramInt += 1;
       }
     }
-    this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(localArrayList, paramString, this.jdField_a_of_type_JavaLangLong);
+    this.b.a(localArrayList, paramString, this.c);
   }
   
   public void a(Throwable paramThrowable, String paramString)
@@ -75,7 +75,7 @@ class MicrosoftTranslator$2
       paramString.append(paramThrowable);
       QLog.e("Translator", 2, paramString.toString());
     }
-    this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    this.b.a(new TranslateError(paramThrowable), this.c);
   }
 }
 

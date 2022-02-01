@@ -17,19 +17,19 @@ class NearbyLikeLimitManager$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a;
-    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.b)))
+    paramDialogInterface = this.d.b;
+    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.d)))
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramDialogInterface.b);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramDialogInterface.d);
+      this.a.startActivity(localIntent);
     }
-    ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_up", this.jdField_a_of_type_JavaLangString);
+    ((INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class)).report(this.b, "clk_up", this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyLikeLimitManager.2
  * JD-Core Version:    0.7.0.1
  */

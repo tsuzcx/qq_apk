@@ -93,7 +93,7 @@ public class NativeUpdateBusiness
     localObject2 = ((QuickUpdateBusinessCallback)localObject2).getItemInfo(paramLong, paramString);
     if (localObject2 != null)
     {
-      ((BusinessItemInfo)localObject1).mSavePath = ((TagItemInfo)localObject2).a;
+      ((BusinessItemInfo)localObject1).mSavePath = ((TagItemInfo)localObject2).c;
       ((BusinessItemInfo)localObject1).mSaveInDir = ((TagItemInfo)localObject2).b;
       if (TextUtils.isEmpty(((BusinessItemInfo)localObject1).mSavePath))
       {
@@ -176,7 +176,7 @@ public class NativeUpdateBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.business.NativeUpdateBusiness
  * JD-Core Version:    0.7.0.1
  */

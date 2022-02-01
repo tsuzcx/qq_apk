@@ -24,12 +24,12 @@ public class QZoneZebraAlbumJsHandleLogic
       ((StringBuilder)localObject).append(paramVarArgs.getAction());
       QLog.d("QZoneZebraAlbumJsHandleLogicQZonePersonalizePlugin", 2, ((StringBuilder)localObject).toString());
     }
-    QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.a(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
+    QZoneHelper.forwardToQzoneTransluentActivity(paramPluginRuntime.d(), QZoneHelper.UserInfo.getInstance(), paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneZebraAlbumJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

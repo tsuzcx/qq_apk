@@ -4,7 +4,7 @@ import android.app.Activity;
 import com.tencent.tkd.topicsdk.framework.eventdispatch.report.ReportEventElement;
 import com.tencent.tkd.topicsdk.framework.eventdispatch.report.ReportEventKey;
 import com.tencent.tkd.topicsdk.framework.eventdispatch.report.ReportEventPage;
-import com.tencent.tkd.topicsdk.publisharticle.PublishManager;
+import com.tencent.tkd.topicsdk.publisharticle.publish.PublishManager;
 import com.tencent.tkd.topicsdk.widget.CommonDialogBuilder.ICommonDialogListener;
 import kotlin.Metadata;
 
@@ -16,14 +16,14 @@ public final class PublishArticlePage$showExitDialog$1
   
   public void a()
   {
-    PublishArticlePage.a(this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterPublisharticlePublishArticlePage, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_PUBLISH_EXIT_DIALOG, ReportEventElement.BUTTON_CONFIRM);
+    PublishArticlePage.a(this.a, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_PUBLISH_EXIT_DIALOG, ReportEventElement.BUTTON_CONFIRM);
     PublishManager.a.b();
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.showExitDialog.1
  * JD-Core Version:    0.7.0.1
  */

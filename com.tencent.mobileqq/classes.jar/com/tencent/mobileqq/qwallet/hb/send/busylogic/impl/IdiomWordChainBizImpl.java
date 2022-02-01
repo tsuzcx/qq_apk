@@ -35,17 +35,17 @@ public class IdiomWordChainBizImpl
       if (this.a == null)
       {
         this.a = new ArrayList();
-        this.a.add(HardCodeUtil.a(R.string.aV));
-        this.a.add(HardCodeUtil.a(R.string.ba));
-        this.a.add(HardCodeUtil.a(R.string.aW));
-        this.a.add(HardCodeUtil.a(R.string.bb));
-        this.a.add(HardCodeUtil.a(R.string.aX));
         this.a.add(HardCodeUtil.a(R.string.aZ));
-        this.a.add(HardCodeUtil.a(R.string.aT));
-        this.a.add(HardCodeUtil.a(R.string.bg));
-        this.a.add(HardCodeUtil.a(R.string.bd));
-        this.a.add(HardCodeUtil.a(R.string.bf));
         this.a.add(HardCodeUtil.a(R.string.be));
+        this.a.add(HardCodeUtil.a(R.string.ba));
+        this.a.add(HardCodeUtil.a(R.string.bf));
+        this.a.add(HardCodeUtil.a(R.string.bb));
+        this.a.add(HardCodeUtil.a(R.string.bd));
+        this.a.add(HardCodeUtil.a(R.string.aX));
+        this.a.add(HardCodeUtil.a(R.string.bk));
+        this.a.add(HardCodeUtil.a(R.string.bh));
+        this.a.add(HardCodeUtil.a(R.string.bj));
+        this.a.add(HardCodeUtil.a(R.string.bi));
       }
       i = new Random().nextInt(this.a.size());
       if (QLog.isColorLevel())
@@ -62,8 +62,6 @@ public class IdiomWordChainBizImpl
     return "";
   }
   
-  public void a(String paramString) {}
-  
   public boolean a(String paramString)
   {
     return (!TextUtils.isEmpty(paramString)) && (paramString.length() == 4) && (HbBusiUtils.a(paramString) >= 4);
@@ -72,7 +70,7 @@ public class IdiomWordChainBizImpl
   public InputFilter[] a(int paramInt)
   {
     int i;
-    if ((!SystemUtil.d()) && (!SystemUtil.e())) {
+    if ((!SystemUtil.g()) && (!SystemUtil.h())) {
       i = 0;
     } else {
       i = 1;
@@ -82,10 +80,12 @@ public class IdiomWordChainBizImpl
     }
     return new InputFilter[0];
   }
+  
+  public void b(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.IdiomWordChainBizImpl
  * JD-Core Version:    0.7.0.1
  */

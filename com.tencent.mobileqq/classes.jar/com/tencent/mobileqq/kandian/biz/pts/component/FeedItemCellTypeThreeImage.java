@@ -14,45 +14,45 @@ public class FeedItemCellTypeThreeImage
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return b();
+    this.h = true;
+    return c();
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      LinearLayout localLinearLayout = new LinearLayout(this.e);
       localLinearLayout.setOrientation(1);
       localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderSpecialTopic != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderSpecialTopic);
+      if (this.i != null) {
+        localLinearLayout.addView(this.i);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderFriendRecommend != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderFriendRecommend);
+      if (this.j != null) {
+        localLinearLayout.addView(this.j);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView instanceof ComponentContentThree))) {
-        localLinearLayout.addView((ComponentContentThree)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView);
+      if ((this.l != null) && ((this.l instanceof ComponentContentThree))) {
+        localLinearLayout.addView((ComponentContentThree)this.l);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentTitle != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentTitle);
+      if (this.m != null) {
+        localLinearLayout.addView(this.m);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentInfo != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentInfo);
+      if (this.n != null) {
+        localLinearLayout.addView(this.n);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentJump != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentJump);
+      if (this.q != null) {
+        localLinearLayout.addView(this.q);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentComment != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentComment);
+      if (this.p != null) {
+        localLinearLayout.addView(this.p);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider);
+      if (this.r != null) {
+        localLinearLayout.addView(this.r);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead);
+      if (this.t != null) {
+        localLinearLayout.addView(this.t);
       }
       a(localLinearLayout);
       return this;
@@ -60,20 +60,20 @@ public class FeedItemCellTypeThreeImage
     throw new Exception("buildComponent() must after buildComponent()!");
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return null;
   }
   
-  public FeedItemCell g()
+  public FeedItemCell i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView = new ComponentContentThree(this.jdField_a_of_type_AndroidContentContext);
+    this.l = new ComponentContentThree(this.e);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeThreeImage
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ class PlusPanelViewModel$2
   
   public void run()
   {
-    ITroopAppService localITroopAppService = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiITroopAppService;
+    ITroopAppService localITroopAppService = this.a;
     if (localITroopAppService != null) {
-      localITroopAppService.clearTroopAppRedPoint(this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelAppInfo.getAppID(), 0);
+      localITroopAppService.clearTroopAppRedPoint(this.b.getAppID(), 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel.2
  * JD-Core Version:    0.7.0.1
  */

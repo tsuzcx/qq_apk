@@ -12,24 +12,24 @@ class PokeEmoItemBuilder$2
 {
   PokeEmoItemBuilder$2(PokeEmoItemBuilder paramPokeEmoItemBuilder, MessageForPokeEmo paramMessageForPokeEmo, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
       long l = SystemClock.uptimeMillis();
-      if (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.c < 500L) {
+      if (l - this.c.a < 500L) {
         return;
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder;
-      paramView.c = l;
-      ChatActivityFacade.b(paramView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+      paramView = this.c;
+      paramView.a = l;
+      ChatActivityFacade.b(paramView.d, this.c.e, this.c.f, this.a.uniseq);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PokeEmoItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

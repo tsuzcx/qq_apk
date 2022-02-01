@@ -25,29 +25,29 @@ public class GlowCountRecyclerView
   extends RecyclerView
   implements Handler.Callback
 {
-  int jdField_a_of_type_Int = -1;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  int c;
+  int a = -1;
+  boolean b;
+  Paint c;
   int d;
-  int e;
+  String e = "";
   int f;
-  int g = -1;
+  int g;
+  int h;
+  int i;
+  int j = -1;
+  Drawable k;
+  Handler l = new Handler(this);
   
   public GlowCountRecyclerView(Context paramContext)
   {
     this(paramContext, null);
-    b();
+    c();
   }
   
   public GlowCountRecyclerView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    b();
+    c();
   }
   
   public GlowCountRecyclerView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
@@ -55,45 +55,45 @@ public class GlowCountRecyclerView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void b()
-  {
-    float f1 = getResources().getDisplayMetrics().density;
-    this.b = ((int)(8.0F * f1));
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * f1);
-    this.f = ((int)(f1 * 3.0F));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845828);
-  }
-  
   private void c()
   {
+    float f1 = getResources().getDisplayMetrics().density;
+    this.d = ((int)(8.0F * f1));
+    this.c = new Paint(1);
+    this.c.setTextAlign(Paint.Align.CENTER);
+    this.c.setColor(-1);
+    this.c.setTextSize(14.0F * f1);
+    this.i = ((int)(f1 * 3.0F));
+    this.k = getResources().getDrawable(2130847298);
+  }
+  
+  private void d()
+  {
     Object localObject = new Rect();
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    String str = this.jdField_a_of_type_JavaLangString;
+    Paint localPaint = this.c;
+    String str = this.e;
     localPaint.getTextBounds(str, 0, str.length(), (Rect)localObject);
-    this.d = ((Rect)localObject).width();
-    localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-    this.e = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top + 0.5F));
+    this.g = ((Rect)localObject).width();
+    localObject = this.c.getFontMetrics();
+    this.h = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top + 0.5F));
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 750L);
+      this.l.removeMessages(0);
+      this.l.sendEmptyMessageDelayed(0, 750L);
       invalidate();
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool2 = this.b;
     boolean bool1 = false;
-    if ((bool2) || (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0))) {
+    if ((bool2) || (this.l.hasMessages(0))) {
       bool1 = true;
     }
     return bool1;
@@ -103,31 +103,31 @@ public class GlowCountRecyclerView
   {
     super.draw(paramCanvas);
     Object localObject = getLayoutManager();
-    int i;
+    int m;
     if ((localObject instanceof LinearLayoutManager)) {
-      i = ((LinearLayoutManager)localObject).findFirstCompletelyVisibleItemPosition();
+      m = ((LinearLayoutManager)localObject).findFirstCompletelyVisibleItemPosition();
     } else if ((localObject instanceof StaggeredGridLayoutManager)) {
-      i = ((StaggeredGridLayoutManager)localObject).findFirstCompletelyVisibleItemPositions(null)[0];
+      m = ((StaggeredGridLayoutManager)localObject).findFirstCompletelyVisibleItemPositions(null)[0];
     } else {
-      i = -1;
+      m = -1;
     }
-    if ((a()) && (i == 0))
+    if ((b()) && (m == 0))
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      i = this.d;
-      int j = this.f;
-      ((Drawable)localObject).setBounds(0, 0, i + j * 2, this.e + j * 2);
-      i = (int)(getPaddingLeft() + getResources().getDisplayMetrics().density * 5.0F);
-      localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-      float f1 = (int)((getMeasuredHeight() - getPaddingTop() - getPaddingBottom()) * 0.5F - (this.e + this.f * 2) * 0.5F);
-      j = (int)(f1 - ((Paint.FontMetrics)localObject).top + this.f);
+      localObject = this.k;
+      m = this.g;
+      int n = this.i;
+      ((Drawable)localObject).setBounds(0, 0, m + n * 2, this.h + n * 2);
+      m = (int)(getPaddingLeft() + getResources().getDisplayMetrics().density * 5.0F);
+      localObject = this.c.getFontMetrics();
+      float f1 = (int)((getMeasuredHeight() - getPaddingTop() - getPaddingBottom()) * 0.5F - (this.h + this.i * 2) * 0.5F);
+      n = (int)(f1 - ((Paint.FontMetrics)localObject).top + this.i);
       paramCanvas.save();
-      paramCanvas.translate(i, f1);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.translate(m, f1);
+      this.k.draw(paramCanvas);
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.translate(i + this.f, 0.0F);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.d * 0.5F, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.translate(m + this.i, 0.0F);
+      paramCanvas.drawText(this.e, this.g * 0.5F, n, this.c);
       paramCanvas.restore();
     }
   }
@@ -143,53 +143,53 @@ public class GlowCountRecyclerView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.l.removeCallbacksAndMessages(null);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int m = paramMotionEvent.getAction();
+    if (m != 0)
     {
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 3) {
+        if (m != 3) {
           return bool;
         }
         a();
-        this.jdField_a_of_type_Int = -1;
+        this.a = -1;
         return bool;
       }
       a();
-      this.jdField_a_of_type_Int = -1;
+      this.a = -1;
       return bool;
     }
-    this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
+    this.a = ((int)paramMotionEvent.getX());
     return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int m = paramMotionEvent.getAction();
+    if (m != 0)
     {
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 2)
+        if (m != 2)
         {
-          if (i != 3) {
+          if (m != 3) {
             return bool;
           }
           a();
-          this.jdField_a_of_type_Int = -1;
+          this.a = -1;
           return bool;
         }
-        if ((this.jdField_a_of_type_Int >= 0) && (!this.jdField_a_of_type_Boolean))
+        if ((this.a >= 0) && (!this.b))
         {
-          if ((int)(paramMotionEvent.getX() - this.jdField_a_of_type_Int) > this.b) {
-            this.jdField_a_of_type_Boolean = true;
+          if ((int)(paramMotionEvent.getX() - this.a) > this.d) {
+            this.b = true;
           }
           if (QLog.isColorLevel()) {
             QLog.i("GlowCountRecyclerView", 2, "move show");
@@ -201,32 +201,32 @@ public class GlowCountRecyclerView
       else
       {
         a();
-        this.jdField_a_of_type_Int = -1;
+        this.a = -1;
         return bool;
       }
     }
     else {
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
+      this.a = ((int)paramMotionEvent.getX());
     }
     return bool;
   }
   
   public void setText(String paramString)
   {
-    if (!TextUtils.equals(paramString, this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.equals(paramString, this.e))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      c();
+      this.e = paramString;
+      d();
       invalidate();
     }
   }
   
   public void setTextColor(int paramInt)
   {
-    if (paramInt != this.g)
+    if (paramInt != this.j)
     {
-      this.g = paramInt;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+      this.j = paramInt;
+      this.c.setColor(paramInt);
       invalidate();
     }
   }
@@ -234,18 +234,18 @@ public class GlowCountRecyclerView
   public void setTextSizeDp(int paramInt)
   {
     paramInt = (int)(paramInt * getResources().getDisplayMetrics().density);
-    if (paramInt != this.c)
+    if (paramInt != this.f)
     {
-      this.c = paramInt;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
-      c();
+      this.f = paramInt;
+      this.c.setTextSize(paramInt);
+      d();
       invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView
  * JD-Core Version:    0.7.0.1
  */

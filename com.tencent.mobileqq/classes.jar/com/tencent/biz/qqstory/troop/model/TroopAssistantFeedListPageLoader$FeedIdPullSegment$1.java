@@ -19,21 +19,21 @@ class TroopAssistantFeedListPageLoader$FeedIdPullSegment$1
   
   public void a(@NonNull GetTroopAssistantFeedIdListRequest paramGetTroopAssistantFeedIdListRequest, @Nullable GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse paramGetTroopAssistantFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
       return;
     }
     if ((!paramErrorMessage.isFail()) && (paramGetTroopAssistantFeedIdListResponse != null))
     {
-      TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_Boolean);
-      ((FeedManager)SuperManager.a(11)).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList);
-      paramGetTroopAssistantFeedIdListRequest = TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-      TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment, paramGetTroopAssistantFeedIdListRequest);
+      TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.c).a(paramGetTroopAssistantFeedIdListResponse.e, paramGetTroopAssistantFeedIdListResponse.b, paramGetTroopAssistantFeedIdListResponse.a);
+      ((FeedManager)SuperManager.a(11)).c(paramGetTroopAssistantFeedIdListResponse.e);
+      paramGetTroopAssistantFeedIdListRequest = TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.c).a(this.b.intValue(), 5);
+      TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.c, paramGetTroopAssistantFeedIdListRequest);
       return;
     }
     SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-    TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment, paramErrorMessage);
+    TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.c, paramErrorMessage);
   }
 }
 

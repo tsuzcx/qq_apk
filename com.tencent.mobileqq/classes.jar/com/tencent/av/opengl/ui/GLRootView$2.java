@@ -7,7 +7,7 @@ class GLRootView$2
   
   public void run()
   {
-    ((GLViewGroup)this.this$0.a).k();
+    ((GLViewGroup)this.this$0.d).x();
   }
 }
 

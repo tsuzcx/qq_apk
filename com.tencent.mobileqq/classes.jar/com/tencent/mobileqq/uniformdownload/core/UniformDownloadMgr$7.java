@@ -16,7 +16,7 @@ class UniformDownloadMgr$7
   
   public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    UniformDownloadMgr.a(this.a).e();
+    UniformDownloadMgr.b(this.a).e();
   }
   
   public void a(String paramString, long paramLong, Bundle paramBundle)
@@ -24,20 +24,20 @@ class UniformDownloadMgr$7
     paramBundle.getInt("_CB_SID");
     Object localObject = paramBundle.getString("_CB_URL");
     paramBundle = paramBundle.getBundle("_CB_USERDATA");
-    UniformDownloadMgr.a(this.a).a((String)localObject);
+    UniformDownloadMgr.b(this.a).b((String)localObject);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[UniformDL] >>>insertFM and install. PH:");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" SZ:");
     ((StringBuilder)localObject).append(paramLong);
     QLog.i("UniformDownloadMgr_Impl", 1, ((StringBuilder)localObject).toString());
-    if (UniformDownloadMgr.a(this.a) == null) {
-      QQFileManagerUtil.d(paramString);
+    if (UniformDownloadMgr.c(this.a) == null) {
+      QQFileManagerUtil.s(paramString);
     }
     if (paramBundle != null) {
       UniformDownloadUtil.a(paramString, paramBundle.getString("big_brother_source_key"));
     }
-    UniformDownloadMgr.a(this.a).e();
+    UniformDownloadMgr.b(this.a).e();
   }
   
   public void b(int paramInt, Bundle paramBundle) {}
@@ -48,7 +48,7 @@ class UniformDownloadMgr$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadMgr.7
  * JD-Core Version:    0.7.0.1
  */

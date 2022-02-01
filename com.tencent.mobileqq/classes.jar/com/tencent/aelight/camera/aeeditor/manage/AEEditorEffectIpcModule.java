@@ -9,8 +9,8 @@ import eipc.EIPCResult;
 public class AEEditorEffectIpcModule
   extends QIPCModule
 {
-  private static volatile AEEditorEffectIpcModule jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectIpcModule;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
+  private static volatile AEEditorEffectIpcModule b;
   
   private AEEditorEffectIpcModule()
   {
@@ -19,32 +19,32 @@ public class AEEditorEffectIpcModule
   
   public static AEEditorEffectIpcModule a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectIpcModule == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectIpcModule == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectIpcModule = new AEEditorEffectIpcModule();
+        if (b == null) {
+          b = new AEEditorEffectIpcModule();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorEffectIpcModule;
-  }
-  
-  public static void a()
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = true;
-      QIPCClientHelper.getInstance().getClient().registerModule(a());
-    }
+    return b;
   }
   
   public static void b()
   {
-    if (jdField_a_of_type_Boolean)
+    if (!a)
     {
-      jdField_a_of_type_Boolean = false;
+      a = true;
+      QIPCClientHelper.getInstance().getClient().registerModule(a());
+    }
+  }
+  
+  public static void c()
+  {
+    if (a)
+    {
+      a = false;
       QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
     }
   }
@@ -59,7 +59,7 @@ public class AEEditorEffectIpcModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorEffectIpcModule
  * JD-Core Version:    0.7.0.1
  */

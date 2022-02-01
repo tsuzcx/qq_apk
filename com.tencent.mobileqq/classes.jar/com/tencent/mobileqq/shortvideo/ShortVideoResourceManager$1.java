@@ -9,7 +9,7 @@ class ShortVideoResourceManager$1
   
   public void onNetMobile2None()
   {
-    ShortVideoResourceManager.a(this.a);
+    ShortVideoResourceManager.b(this.a);
   }
   
   public void onNetMobile2Wifi(String paramString) {}
@@ -22,12 +22,12 @@ class ShortVideoResourceManager$1
   
   public void onNetWifi2None()
   {
-    ShortVideoResourceManager.a(this.a);
+    ShortVideoResourceManager.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.1
  * JD-Core Version:    0.7.0.1
  */

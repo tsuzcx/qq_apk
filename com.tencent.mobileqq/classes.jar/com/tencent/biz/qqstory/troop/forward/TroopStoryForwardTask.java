@@ -25,36 +25,36 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopStoryForwardTask
   implements Handler.Callback, TroopStoryForwardStep
 {
-  static final String jdField_a_of_type_JavaLangString = StoryApi.a("StoryGroupSvc.do_group_video_forward");
-  protected int a;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  ProtoUtils.StoryProtocolObserver jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new TroopStoryForwardTask.2(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new TroopStoryForwardTask.3(this);
-  protected QQAppInterface a;
-  protected MessageForTroopStory a;
-  protected boolean a;
-  protected int b;
-  protected String b;
-  protected int c;
-  protected String c;
-  protected int d;
-  protected String d;
+  static final String a = StoryApi.a("StoryGroupSvc.do_group_video_forward");
+  Handler b;
+  protected QQAppInterface c;
+  protected MessageForTroopStory d;
   protected String e;
   protected String f;
   protected String g;
   protected String h;
   protected String i;
-  protected String j;
-  protected String k;
+  protected int j;
+  protected int k;
   protected String l;
+  protected String m;
+  protected String n;
+  protected String o;
+  protected int p;
+  protected String q;
+  protected int r;
+  protected String s;
+  protected boolean t;
+  ProtoUtils.StoryProtocolObserver u = new TroopStoryForwardTask.2(this);
+  MessageObserver v = new TroopStoryForwardTask.3(this);
   
   private TroopStoryForwardTask(QQAppInterface paramQQAppInterface, Bundle paramBundle, SessionInfo paramSessionInfo)
   {
     if (a(paramBundle, paramSessionInfo))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-      this.jdField_a_of_type_Boolean = false;
+      this.c = paramQQAppInterface;
+      this.b = new Handler(Looper.getMainLooper(), this);
+      this.t = false;
       return;
     }
     throw new IllegalArgumentException("params in bundle is Illegal");
@@ -62,25 +62,25 @@ public class TroopStoryForwardTask
   
   private TroopStoryForwardTask(QQAppInterface paramQQAppInterface, MessageForTroopStory paramMessageForTroopStory)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = paramMessageForTroopStory;
-    this.jdField_b_of_type_JavaLangString = String.valueOf(paramMessageForTroopStory.uid);
-    this.jdField_c_of_type_JavaLangString = paramMessageForTroopStory.unionId;
-    this.jdField_d_of_type_JavaLangString = paramMessageForTroopStory.md5;
-    this.e = paramMessageForTroopStory.thumbUrl;
-    this.f = paramMessageForTroopStory.doodleUrl;
-    this.jdField_a_of_type_Int = paramMessageForTroopStory.videoWidth;
-    this.jdField_b_of_type_Int = paramMessageForTroopStory.videoHeight;
-    this.g = paramMessageForTroopStory.sourceName;
-    this.h = paramMessageForTroopStory.sourceActionType;
-    this.i = paramMessageForTroopStory.sourceActionData;
-    this.j = paramMessageForTroopStory.compatibleText;
-    this.jdField_c_of_type_Int = paramMessageForTroopStory.ctrVersion;
-    this.k = paramMessageForTroopStory.frienduin;
-    this.l = paramMessageForTroopStory.senderuin;
-    this.jdField_d_of_type_Int = paramMessageForTroopStory.istroop;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Boolean = true;
+    this.d = paramMessageForTroopStory;
+    this.e = String.valueOf(paramMessageForTroopStory.uid);
+    this.f = paramMessageForTroopStory.unionId;
+    this.g = paramMessageForTroopStory.md5;
+    this.h = paramMessageForTroopStory.thumbUrl;
+    this.i = paramMessageForTroopStory.doodleUrl;
+    this.j = paramMessageForTroopStory.videoWidth;
+    this.k = paramMessageForTroopStory.videoHeight;
+    this.l = paramMessageForTroopStory.sourceName;
+    this.m = paramMessageForTroopStory.sourceActionType;
+    this.n = paramMessageForTroopStory.sourceActionData;
+    this.o = paramMessageForTroopStory.compatibleText;
+    this.p = paramMessageForTroopStory.ctrVersion;
+    this.q = paramMessageForTroopStory.frienduin;
+    this.s = paramMessageForTroopStory.senderuin;
+    this.r = paramMessageForTroopStory.istroop;
+    this.c = paramQQAppInterface;
+    this.b = new Handler(Looper.getMainLooper(), this);
+    this.t = true;
   }
   
   public static TroopStoryForwardTask a(QQAppInterface paramQQAppInterface, Bundle paramBundle, SessionInfo paramSessionInfo)
@@ -106,71 +106,71 @@ public class TroopStoryForwardTask
   
   private boolean a(Bundle paramBundle, SessionInfo paramSessionInfo)
   {
-    this.jdField_b_of_type_JavaLangString = String.valueOf(paramBundle.getLong("key_uid"));
-    this.jdField_c_of_type_JavaLangString = paramBundle.getString("key_union_id");
-    this.jdField_d_of_type_JavaLangString = paramBundle.getString("key_md5");
-    this.e = paramBundle.getString("key_thumb_url");
-    this.f = paramBundle.getString("key_doodle_url");
-    this.jdField_a_of_type_Int = paramBundle.getInt("key_video_width");
-    this.jdField_b_of_type_Int = paramBundle.getInt("key_video_height");
-    this.g = paramBundle.getString("key_source_name");
-    this.h = paramBundle.getString("key_source_action_type");
-    this.i = paramBundle.getString("key_source_action_data");
-    this.j = paramBundle.getString("key_compatible_text");
-    this.jdField_c_of_type_Int = paramBundle.getInt("key_ctr_version");
-    this.k = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    this.l = paramSessionInfo.jdField_b_of_type_JavaLangString;
-    this.jdField_d_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
+    this.e = String.valueOf(paramBundle.getLong("key_uid"));
+    this.f = paramBundle.getString("key_union_id");
+    this.g = paramBundle.getString("key_md5");
+    this.h = paramBundle.getString("key_thumb_url");
+    this.i = paramBundle.getString("key_doodle_url");
+    this.j = paramBundle.getInt("key_video_width");
+    this.k = paramBundle.getInt("key_video_height");
+    this.l = paramBundle.getString("key_source_name");
+    this.m = paramBundle.getString("key_source_action_type");
+    this.n = paramBundle.getString("key_source_action_data");
+    this.o = paramBundle.getString("key_compatible_text");
+    this.p = paramBundle.getInt("key_ctr_version");
+    this.q = paramSessionInfo.b;
+    this.s = paramSessionInfo.c;
+    this.r = paramSessionInfo.a;
     return true;
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.t)
     {
       ThreadManager.executeOnSubThread(new TroopStoryForwardTask.1(this));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory, 0);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    this.c.getMsgCache().a(this.d, 0);
+    this.c.getMessageFacade().a(this.d);
+    this.b.sendEmptyMessage(2);
   }
   
   public void b()
   {
     Object localObject = new qqstory_group.ReqGroupVideoForward();
-    int n = this.jdField_d_of_type_Int;
-    int m = 1;
-    if (n != 0)
+    int i2 = this.r;
+    int i1 = 1;
+    if (i2 != 0)
     {
-      if (n != 1)
+      if (i2 != 1)
       {
-        if (n != 3000)
+        if (i2 != 3000)
         {
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("unsupport type:");
-            ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
+            ((StringBuilder)localObject).append(this.r);
             QLog.e("Q.qqstory.troopstory.share", 2, ((StringBuilder)localObject).toString());
           }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+          this.b.sendEmptyMessage(5);
           return;
         }
-        m = 3;
+        i1 = 3;
       }
     }
     else {
-      m = 2;
+      i1 = 2;
     }
-    ((qqstory_group.ReqGroupVideoForward)localObject).type.set(m);
+    ((qqstory_group.ReqGroupVideoForward)localObject).type.set(i1);
     try
     {
-      long l1 = Long.parseLong(this.k);
+      long l1 = Long.parseLong(this.q);
       ((qqstory_group.ReqGroupVideoForward)localObject).forward_to.set(l1);
-      ((qqstory_group.ReqGroupVideoForward)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
-      ((qqstory_group.ReqGroupVideoForward)localObject).time.set((int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.time);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver, ((qqstory_group.ReqGroupVideoForward)localObject).toByteArray(), jdField_a_of_type_JavaLangString);
+      ((qqstory_group.ReqGroupVideoForward)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.g));
+      ((qqstory_group.ReqGroupVideoForward)localObject).time.set((int)this.d.time);
+      ProtoUtils.a(this.c, this.u, ((qqstory_group.ReqGroupVideoForward)localObject).toByteArray(), a);
       return;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -182,31 +182,31 @@ public class TroopStoryForwardTask
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("uin parse error:");
-      ((StringBuilder)localObject).append(this.k);
+      ((StringBuilder)localObject).append(this.q);
       QLog.e("Q.qqstory.troopstory.share", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+    this.b.sendEmptyMessage(5);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    this.c.getMessageFacade().b(this.d, this.v);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq);
+    this.c.getMsgCache().b(this.d.frienduin, this.d.istroop, this.d.uniseq);
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory);
+    this.c.getMsgCache().b(this.d.frienduin, this.d.istroop, this.d.uniseq);
+    this.c.getMessageFacade().a(this.d);
   }
   
   public void f()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.b.sendEmptyMessage(1);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -220,16 +220,16 @@ public class TroopStoryForwardTask
       localStringBuilder.append(this);
       QLog.i("Q.qqstory.troopstory.share", 2, localStringBuilder.toString());
     }
-    int m = paramMessage.what;
-    if (m != 1)
+    int i1 = paramMessage.what;
+    if (i1 != 1)
     {
-      if (m != 2)
+      if (i1 != 2)
       {
-        if (m != 3)
+        if (i1 != 3)
         {
-          if (m != 4)
+          if (i1 != 4)
           {
-            if (m != 5) {
+            if (i1 != 5) {
               return true;
             }
             e();

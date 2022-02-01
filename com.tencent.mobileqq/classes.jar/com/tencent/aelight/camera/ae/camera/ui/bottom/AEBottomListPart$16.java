@@ -15,16 +15,16 @@ class AEBottomListPart$16
   
   public void run()
   {
-    Object localObject = AEWatermarkMaterialManager.a().a();
+    Object localObject = AEWatermarkMaterialManager.a().b();
     localObject = AEBottomListPart.a(this.this$0, this.a, (List)localObject);
     if (localObject != null)
     {
-      if (((AEMaterialMetaData)localObject).e)
+      if (((AEMaterialMetaData)localObject).A)
       {
         ThreadManager.getUIHandler().post(new AEBottomListPart.16.1(this, (AEMaterialMetaData)localObject));
         return;
       }
-      this.this$0.a.a(this.this$0.a.getApp(), (AEMaterialMetaData)localObject, new AEBottomListPart.16.2(this, (AEMaterialMetaData)localObject));
+      this.this$0.e.a(this.this$0.e.getApp(), (AEMaterialMetaData)localObject, new AEBottomListPart.16.2(this, (AEMaterialMetaData)localObject));
       return;
     }
     AEQLog.d("AEBottomListPart", "meta data is null =======");
@@ -32,7 +32,7 @@ class AEBottomListPart$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.16
  * JD-Core Version:    0.7.0.1
  */

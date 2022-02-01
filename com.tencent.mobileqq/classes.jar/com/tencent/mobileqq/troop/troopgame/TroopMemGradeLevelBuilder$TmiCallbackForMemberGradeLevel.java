@@ -10,13 +10,15 @@ class TroopMemGradeLevelBuilder$TmiCallbackForMemberGradeLevel
   implements ITroopGameCardService.CallbackInMainThread
 {
   public BaseChatItemLayout a;
-  public String a;
+  public String b;
+  public int c;
+  public int d;
   
   private TroopMemGradeLevelBuilder$TmiCallbackForMemberGradeLevel(TroopMemGradeLevelBuilder paramTroopMemGradeLevelBuilder) {}
   
   public void a(Object paramObject)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -24,8 +26,18 @@ class TroopMemGradeLevelBuilder$TmiCallbackForMemberGradeLevel
     if (localObject == null) {
       return;
     }
-    if (paramObject == null) {
+    if (paramObject == null)
+    {
+      if (this.c > 0)
+      {
+        paramObject = new MemberGradeLevelInfo();
+        paramObject.gameCardId = this.c;
+        paramObject.gameCardSwitch = this.d;
+        ((BaseChatItemLayoutViewBasicAbility)localObject).setData(new Object[] { paramObject });
+        return;
+      }
       ((BaseChatItemLayoutViewBasicAbility)localObject).setData(null);
+      return;
     }
     if (!(paramObject instanceof MemberGradeLevelInfo))
     {
@@ -39,7 +51,7 @@ class TroopMemGradeLevelBuilder$TmiCallbackForMemberGradeLevel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopMemGradeLevelBuilder.TmiCallbackForMemberGradeLevel
  * JD-Core Version:    0.7.0.1
  */

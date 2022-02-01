@@ -16,20 +16,20 @@ class StoryHaloManager$2$1
   
   public void run()
   {
-    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.a, 1, this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin(), "", ""), 111);
-    StoryPlayerLauncher.a((Activity)this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_AndroidViewView.getContext(), localOpenPlayerBuilder.a(), null);
+    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new MsgTabPlayInfo(this.a.d, 1, this.b.a.getRecentUserUin(), "", ""), 111);
+    StoryPlayerLauncher.a((Activity)this.b.b.getContext(), localOpenPlayerBuilder.f(), null);
     int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.haloState == -1) {
+    if (this.b.a.haloState == -1) {
       i = 1;
     } else {
       i = 0;
     }
-    StoryReportor.a("msg_tab", "circle_clk", 0, i, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager$2.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.getRecentUserUin() });
+    StoryReportor.a("msg_tab", "circle_clk", 0, i, new String[] { this.b.a.getRecentUserUin() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.StoryHaloManager.2.1
  * JD-Core Version:    0.7.0.1
  */

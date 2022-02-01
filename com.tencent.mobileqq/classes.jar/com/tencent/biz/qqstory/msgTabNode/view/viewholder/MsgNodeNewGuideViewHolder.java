@@ -15,63 +15,63 @@ public class MsgNodeNewGuideViewHolder
 {
   public MsgNodeNewGuideViewHolder(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561714);
+    super(paramViewGroup, 2131628093);
   }
   
   private void c(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    paramMsgTabNodeInfo.d = false;
-    MsgTabStoryManager.a(QQStoryContext.a()).a(paramMsgTabNodeInfo);
+    paramMsgTabNodeInfo.D = false;
+    MsgTabStoryManager.a(QQStoryContext.j()).a(paramMsgTabNodeInfo);
     MsgTabNodeWatchedRequest localMsgTabNodeWatchedRequest = new MsgTabNodeWatchedRequest();
-    localMsgTabNodeWatchedRequest.jdField_b_of_type_JavaLangString = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
-    localMsgTabNodeWatchedRequest.c = paramMsgTabNodeInfo.jdField_a_of_type_Int;
-    localMsgTabNodeWatchedRequest.d = 4;
-    localMsgTabNodeWatchedRequest.jdField_b_of_type_Long = paramMsgTabNodeInfo.e;
+    localMsgTabNodeWatchedRequest.f = paramMsgTabNodeInfo.d;
+    localMsgTabNodeWatchedRequest.g = paramMsgTabNodeInfo.b;
+    localMsgTabNodeWatchedRequest.h = 4;
+    localMsgTabNodeWatchedRequest.i = paramMsgTabNodeInfo.j;
     CmdTaskManger.a().a(localMsgTabNodeWatchedRequest, null);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
-    if (!TextUtils.isEmpty(paramMsgTabNodeInfo.g)) {
-      c(paramMsgTabNodeInfo.g);
+    if (!TextUtils.isEmpty(paramMsgTabNodeInfo.p)) {
+      c(paramMsgTabNodeInfo.p);
     }
     StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
     String str;
-    if (!TextUtils.isEmpty(paramMsgTabNodeInfo.j))
+    if (!TextUtils.isEmpty(paramMsgTabNodeInfo.y))
     {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
-        str = HardCodeUtil.a(2131706981);
+      localStoryMsgNodeFrameLayout = this.c;
+      if (TextUtils.isEmpty(paramMsgTabNodeInfo.l)) {
+        str = HardCodeUtil.a(2131904823);
       } else {
-        str = paramMsgTabNodeInfo.c;
+        str = paramMsgTabNodeInfo.l;
       }
-      localStoryMsgNodeFrameLayout.setNodeName(str, paramMsgTabNodeInfo.j);
+      localStoryMsgNodeFrameLayout.setNodeName(str, paramMsgTabNodeInfo.y);
     }
     else
     {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
-        str = HardCodeUtil.a(2131706980);
+      localStoryMsgNodeFrameLayout = this.c;
+      if (TextUtils.isEmpty(paramMsgTabNodeInfo.l)) {
+        str = HardCodeUtil.a(2131904822);
       } else {
-        str = paramMsgTabNodeInfo.c;
+        str = paramMsgTabNodeInfo.l;
       }
       localStoryMsgNodeFrameLayout.setNodeName(str, 0);
     }
-    if (paramMsgTabNodeInfo.d) {
+    if (paramMsgTabNodeInfo.D) {
       c(paramMsgTabNodeInfo);
     }
   }
   
   protected void b(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    this.a.setDisplayState(6);
-    this.a.a(paramMsgTabNodeInfo);
+    this.c.setDisplayState(6);
+    this.c.a(paramMsgTabNodeInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeNewGuideViewHolder
  * JD-Core Version:    0.7.0.1
  */

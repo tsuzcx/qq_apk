@@ -39,7 +39,7 @@ public class ReceiptBubbleLayerImageView
       if (paramBoolean) {
         paramView = null;
       } else {
-        paramView = BaseBubbleBuilder.a;
+        paramView = BaseBubbleBuilder.n;
       }
       localDrawable.setColorFilter(paramView);
       localDrawable.invalidateSelf();
@@ -48,7 +48,7 @@ public class ReceiptBubbleLayerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptBubbleLayerImageView
  * JD-Core Version:    0.7.0.1
  */

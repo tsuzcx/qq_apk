@@ -1,5 +1,6 @@
 package com.tencent.pts.ui.view;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
@@ -8,7 +9,6 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.pts.ui.PTSNodeInfo;
-import com.tencent.pts.ui.vnode.PTSNodeView;
 import com.tencent.pts.utils.PTSDeviceUtil;
 import com.tencent.pts.utils.PTSLog;
 import com.tencent.pts.utils.PTSViewDecorationUtil;
@@ -24,9 +24,9 @@ public class PTSBoringView
   private String nodeKey;
   private TextView textView;
   
-  public PTSBoringView(PTSNodeView paramPTSNodeView)
+  public PTSBoringView(Context paramContext)
   {
-    super(paramPTSNodeView.getContext());
+    super(paramContext);
     initUI();
   }
   
@@ -105,7 +105,7 @@ public class PTSBoringView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSBoringView
  * JD-Core Version:    0.7.0.1
  */

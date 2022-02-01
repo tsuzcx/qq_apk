@@ -137,7 +137,7 @@ public class RemoteConfigClient
       localHashMap.put("app_key", str1);
       localHashMap.put("guid", str2);
       localHashMap.put("platform", "ANDROID");
-      localHashMap.put("sdk_version", "3.0.14");
+      localHashMap.put("sdk_version", "3.1.1");
       if (!TextUtils.isEmpty(str3)) {
         localHashMap.put("config_version", str3);
       }
@@ -275,7 +275,7 @@ public class RemoteConfigClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.abtest.RemoteConfigClient
  * JD-Core Version:    0.7.0.1
  */

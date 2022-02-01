@@ -14,14 +14,14 @@ public final class BannerTrigger$monitor$1
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    BannerTrigger.access$computeTransformPage(this.jdField_a_of_type_ComTencentXactionTriggerBannerTrigger, this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager);
+    BannerTrigger.access$computeTransformPage(this.a, this.b);
   }
   
   public void onPageSelected(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.BannerTrigger.monitor.1
  * JD-Core Version:    0.7.0.1
  */

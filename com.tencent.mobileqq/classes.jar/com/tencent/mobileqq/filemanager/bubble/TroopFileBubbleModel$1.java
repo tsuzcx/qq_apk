@@ -19,15 +19,15 @@ class TroopFileBubbleModel$1
       if (paramInt != 1) {
         return;
       }
-      new TroopFileItemOperation(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
+      new TroopFileItemOperation(this.a, this.d.b, this.c).b(this.b);
       return;
     }
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleTroopFileBubbleModel.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+    TroopFileTransferManager.a(this.d.b, this.a).a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.TroopFileBubbleModel.1
  * JD-Core Version:    0.7.0.1
  */

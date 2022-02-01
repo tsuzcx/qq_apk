@@ -32,10 +32,8 @@ public final class TKDBiuModule
   extends QQBaseLifecycleModule
 {
   private static final String ARG_BIU_TIME = "biuTime";
-  private static final String ARG_COMMENT = "comment";
   private static final String ARG_NICK_NAME = "nick";
   private static final String ARG_ROW_KEY = "rowKey";
-  private static final String ARG_RPT_DATA = "rptDataList";
   private static final String ARG_UIN = "uin";
   public static final TKDBiuModule.Companion Companion = new TKDBiuModule.Companion(null);
   private static final int REQ_CODE_BIU_EDITOR_NATIVE = 113;
@@ -57,7 +55,7 @@ public final class TKDBiuModule
     {
       paramList = ((Iterable)paramList).iterator();
       while (paramList.hasNext()) {
-        paramString.append(((BaseCommentData.CommentRptData)paramList.next()).jdField_a_of_type_JavaLangString);
+        paramString.append(((BaseCommentData.CommentRptData)paramList.next()).b);
       }
     }
     paramString = paramString.toString();
@@ -121,7 +119,7 @@ public final class TKDBiuModule
           localObject1 = localObject2;
           int k = localJSONObject.optInt("data_type");
           localObject1 = localObject2;
-          localCommentRptData.jdField_a_of_type_Int = k;
+          localCommentRptData.a = k;
           if (k != 0)
           {
             if (k != 1)
@@ -133,11 +131,11 @@ public final class TKDBiuModule
                   localObject1 = localObject2;
                   paramString = localJSONObject.optJSONObject("herf_data");
                   localObject1 = localObject2;
-                  localCommentRptData.jdField_a_of_type_JavaLangString = paramString.optString("content");
+                  localCommentRptData.b = paramString.optString("content");
                   localObject1 = localObject2;
-                  localCommentRptData.d = paramString.optString("topic_id");
+                  localCommentRptData.e = paramString.optString("topic_id");
                   localObject1 = localObject2;
-                  localCommentRptData.c = paramString.optString("url");
+                  localCommentRptData.d = paramString.optString("url");
                 }
               }
               else
@@ -145,9 +143,9 @@ public final class TKDBiuModule
                 localObject1 = localObject2;
                 paramString = localJSONObject.optJSONObject("herf_data");
                 localObject1 = localObject2;
-                localCommentRptData.jdField_a_of_type_JavaLangString = paramString.optString("content");
+                localCommentRptData.b = paramString.optString("content");
                 localObject1 = localObject2;
-                localCommentRptData.c = paramString.optString("url");
+                localCommentRptData.d = paramString.optString("url");
               }
             }
             else
@@ -155,15 +153,15 @@ public final class TKDBiuModule
               localObject1 = localObject2;
               paramString = localJSONObject.optJSONObject("at_data");
               localObject1 = localObject2;
-              localCommentRptData.jdField_a_of_type_JavaLangString = paramString.optString("content");
+              localCommentRptData.b = paramString.optString("content");
               localObject1 = localObject2;
-              localCommentRptData.b = paramString.optString("uid");
+              localCommentRptData.c = paramString.optString("uid");
             }
           }
           else
           {
             localObject1 = localObject2;
-            localCommentRptData.jdField_a_of_type_JavaLangString = localJSONObject.optJSONObject("text_data").optString("content");
+            localCommentRptData.b = localJSONObject.optJSONObject("text_data").optString("content");
           }
           i += 1;
         }
@@ -200,7 +198,7 @@ public final class TKDBiuModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDBiuModule
  * JD-Core Version:    0.7.0.1
  */

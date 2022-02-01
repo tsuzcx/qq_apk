@@ -9,12 +9,12 @@ final class CmShowAioMatcherImpl$1
 {
   public boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    return Utils.b(paramString) ^ true;
+    return Utils.c(paramString) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl.1
  * JD-Core Version:    0.7.0.1
  */

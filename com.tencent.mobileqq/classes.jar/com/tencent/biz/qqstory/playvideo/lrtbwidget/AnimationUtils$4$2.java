@@ -14,16 +14,16 @@ class AnimationUtils$4$2
   {
     super.onAnimationEnd(paramAnimator);
     if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.setImageAlpha(255);
+      this.a.c.setImageAlpha(255);
     } else {
-      this.a.a.setImageResource(2130851078);
+      this.a.c.setImageResource(2130853309);
     }
-    this.a.a.setVisibility(8);
+    this.a.c.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationUtils.4.2
  * JD-Core Version:    0.7.0.1
  */

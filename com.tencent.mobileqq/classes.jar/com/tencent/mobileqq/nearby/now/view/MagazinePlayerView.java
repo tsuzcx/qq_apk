@@ -70,7 +70,7 @@ public class MagazinePlayerView
       this.mPlayTime = 0L;
       this.ivCover.setVisibility(0);
       hideDownloadProgress();
-      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(this.ivCover, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
+      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(this.ivCover, paramVideoData.e, new ColorDrawable(0), new ColorDrawable(0), null);
       this.mHandler.post(new MagazinePlayerView.1(this));
       return;
     }
@@ -88,7 +88,7 @@ public class MagazinePlayerView
     }
     localObject = this.callBack;
     if (localObject != null) {
-      ((ActCallBack)localObject).a();
+      ((ActCallBack)localObject).d();
     }
     super.resume();
   }
@@ -116,7 +116,7 @@ public class MagazinePlayerView
   public void start()
   {
     if (this.mPlayer != null) {
-      this.mPlayer.b();
+      this.mPlayer.c();
     }
   }
   
@@ -127,7 +127,7 @@ public class MagazinePlayerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.MagazinePlayerView
  * JD-Core Version:    0.7.0.1
  */

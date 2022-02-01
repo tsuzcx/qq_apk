@@ -10,18 +10,12 @@ import java.util.WeakHashMap;
 public class DrawableAlphaProperty
   extends Property<Drawable, Integer>
 {
-  public static final Property<Drawable, Integer> a;
-  private final WeakHashMap<Drawable, Integer> a;
-  
-  static
-  {
-    jdField_a_of_type_AndroidUtilProperty = new DrawableAlphaProperty();
-  }
+  public static final Property<Drawable, Integer> a = new DrawableAlphaProperty();
+  private final WeakHashMap<Drawable, Integer> b = new WeakHashMap();
   
   private DrawableAlphaProperty()
   {
     super(Integer.class, "drawableAlphaCompat");
-    this.jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
   }
   
   @Nullable
@@ -30,8 +24,8 @@ public class DrawableAlphaProperty
     if (Build.VERSION.SDK_INT >= 19) {
       return Integer.valueOf(paramDrawable.getAlpha());
     }
-    if (this.jdField_a_of_type_JavaUtilWeakHashMap.containsKey(paramDrawable)) {
-      return (Integer)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramDrawable);
+    if (this.b.containsKey(paramDrawable)) {
+      return (Integer)this.b.get(paramDrawable);
     }
     return Integer.valueOf(255);
   }
@@ -39,14 +33,14 @@ public class DrawableAlphaProperty
   public void a(@NonNull Drawable paramDrawable, @NonNull Integer paramInteger)
   {
     if (Build.VERSION.SDK_INT < 19) {
-      this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramDrawable, paramInteger);
+      this.b.put(paramDrawable, paramInteger);
     }
     paramDrawable.setAlpha(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.animation.DrawableAlphaProperty
  * JD-Core Version:    0.7.0.1
  */

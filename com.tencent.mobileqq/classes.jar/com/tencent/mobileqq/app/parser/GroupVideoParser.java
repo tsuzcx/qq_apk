@@ -11,12 +11,12 @@ public class GroupVideoParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new GroupVideoAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "groupvideo";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "groupvideo";
     if (paramString.contains("openroom")) {
-      paramBaseQQAppInterface.c = "openroom";
+      paramBaseQQAppInterface.e = "openroom";
     } else if (paramString.contains("preload")) {
-      paramBaseQQAppInterface.c = "preload";
+      paramBaseQQAppInterface.e = "preload";
     }
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
@@ -40,7 +40,7 @@ public class GroupVideoParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.GroupVideoParser
  * JD-Core Version:    0.7.0.1
  */

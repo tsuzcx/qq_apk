@@ -22,12 +22,12 @@ class FlutterMainQIPCModule$1
     localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
     localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
     localBundle.putString("KEY_QFLUTTER_VERSION", QFlutterInstaller.a());
-    QIPCServerHelper.getInstance().callClient(this.jdField_a_of_type_JavaLangString, "FlutterSubQIPCModule", this.b, localBundle, new FlutterMainQIPCModule.1.1(this));
+    QIPCServerHelper.getInstance().callClient(this.a, "FlutterSubQIPCModule", this.b, localBundle, new FlutterMainQIPCModule.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.ipc.FlutterMainQIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

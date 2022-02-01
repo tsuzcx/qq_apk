@@ -3,7 +3,11 @@ package com.qflutter.vistaimage;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Matrix.ScaleToFit;
+import android.graphics.Path;
+import android.graphics.Path.Direction;
 import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.Surface;
 
@@ -21,6 +25,8 @@ class DrawableRenderer
   private Drawable drawable;
   private int fitType;
   private boolean isClipped;
+  private double radius;
+  private RendererParams.ImageRepeat repeat = RendererParams.ImageRepeat.NO_REPEAT;
   private Surface surface;
   private int viewHeight;
   private int viewWidth;
@@ -132,7 +138,8 @@ class DrawableRenderer
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append(", scale=");
       ((StringBuilder)localObject).append(f1);
-      ((StringBuilder)localObject).append(", dx=0, dy=");
+      ((StringBuilder)localObject).append(", dx=0");
+      ((StringBuilder)localObject).append(", dy=");
       ((StringBuilder)localObject).append(f2);
       VistaImageLog.d("BitmapRenderer", ((StringBuilder)localObject).toString());
     }
@@ -163,7 +170,8 @@ class DrawableRenderer
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append(", scale=");
       ((StringBuilder)localObject).append(f1);
-      ((StringBuilder)localObject).append(", dx=0, dy=");
+      ((StringBuilder)localObject).append(", dx=0");
+      ((StringBuilder)localObject).append(", dy=");
       ((StringBuilder)localObject).append(f2);
       VistaImageLog.d("BitmapRenderer", ((StringBuilder)localObject).toString());
     }
@@ -192,7 +200,8 @@ class DrawableRenderer
       ((StringBuilder)localObject).append(paramInt1);
       ((StringBuilder)localObject).append(", viewHeight=");
       ((StringBuilder)localObject).append(paramInt2);
-      ((StringBuilder)localObject).append(", dx=0, dy=");
+      ((StringBuilder)localObject).append(", dx=0");
+      ((StringBuilder)localObject).append(", dy=");
       ((StringBuilder)localObject).append(f1);
       VistaImageLog.d("BitmapRenderer", ((StringBuilder)localObject).toString());
     }
@@ -201,6 +210,58 @@ class DrawableRenderer
     paramCanvas.concat((Matrix)localObject);
     paramDrawable.setBounds(0, 0, i, j);
     paramDrawable.draw(paramCanvas);
+  }
+  
+  private void renderRepeat(Canvas paramCanvas, Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    if (!(paramDrawable instanceof BitmapDrawable))
+    {
+      paramCanvas = new StringBuilder();
+      paramCanvas.append("[renderRepeat] only BitmapDrawable can draw repeat, ");
+      paramCanvas.append(paramDrawable.getClass().getSimpleName());
+      VistaImageLog.w("BitmapRenderer", paramCanvas.toString());
+      return;
+    }
+    paramCanvas.drawColor(-65536);
+    BitmapDrawable localBitmapDrawable = (BitmapDrawable)paramDrawable;
+    if (VistaImageLog.isColorLevel())
+    {
+      paramDrawable = new StringBuilder();
+      paramDrawable.append("[renderRepeat] , viewWidth=");
+      paramDrawable.append(paramInt1);
+      paramDrawable.append(", viewHeight=");
+      paramDrawable.append(paramInt2);
+      paramDrawable.append(", repeat=");
+      paramDrawable.append(this.repeat);
+      VistaImageLog.d("BitmapRenderer", paramDrawable.toString());
+    }
+    localBitmapDrawable.setBounds(0, 0, paramInt1, paramInt2);
+    localBitmapDrawable.setDither(true);
+    paramInt1 = DrawableRenderer.1.a[this.repeat.ordinal()];
+    if (paramInt1 != 1)
+    {
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3) {
+          break label204;
+        }
+        paramDrawable = Shader.TileMode.CLAMP;
+      }
+      else
+      {
+        paramDrawable = Shader.TileMode.REPEAT;
+        localTileMode = Shader.TileMode.CLAMP;
+        break label196;
+      }
+    }
+    else {
+      paramDrawable = Shader.TileMode.REPEAT;
+    }
+    Shader.TileMode localTileMode = Shader.TileMode.REPEAT;
+    label196:
+    localBitmapDrawable.setTileModeXY(paramDrawable, localTileMode);
+    label204:
+    localBitmapDrawable.draw(paramCanvas);
   }
   
   private void renderScaleDownType(Canvas paramCanvas, Drawable paramDrawable, int paramInt1, int paramInt2)
@@ -257,20 +318,27 @@ class DrawableRenderer
     }
   }
   
-  public void init(Surface paramSurface, Drawable paramDrawable, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
+  public void init(RendererParams paramRendererParams)
   {
-    this.surface = paramSurface;
-    this.drawable = paramDrawable;
-    this.isClipped = paramBoolean;
-    this.fitType = paramInt1;
-    this.viewWidth = paramInt2;
-    this.viewHeight = paramInt3;
+    this.surface = paramRendererParams.getSurface();
+    this.drawable = paramRendererParams.getDrawable();
+    this.isClipped = paramRendererParams.isClipped();
+    this.fitType = paramRendererParams.getFitType();
+    this.viewWidth = paramRendererParams.getViewWidth();
+    this.viewHeight = paramRendererParams.getViewHeight();
+    this.radius = paramRendererParams.getRadius();
+    this.repeat = paramRendererParams.getRepeat();
+  }
+  
+  boolean isGreaterThanZero(double paramDouble)
+  {
+    return paramDouble > 0.05D;
   }
   
   public void render()
   {
-    Object localObject = this.surface;
-    if (localObject == null)
+    Object localObject1 = this.surface;
+    if (localObject1 == null)
     {
       VistaImageLog.w("BitmapRenderer", "[render] invalid surface");
       return;
@@ -280,48 +348,64 @@ class DrawableRenderer
       VistaImageLog.w("BitmapRenderer", "[render] invalid drawable");
       return;
     }
-    localObject = ((Surface)localObject).lockCanvas(null);
-    if (this.isClipped) {}
-    int i;
-    do
+    localObject1 = ((Surface)localObject1).lockCanvas(null);
+    Object localObject2;
+    if (isGreaterThanZero(this.radius))
     {
-      renderFillType((Canvas)localObject, this.drawable, this.viewWidth, this.viewHeight);
-      break;
-      i = this.fitType;
-      if (2 == i)
-      {
-        renderCoverType((Canvas)localObject, this.drawable, this.viewWidth, this.viewHeight);
-        break;
-      }
-    } while (i == 0);
-    if (6 == i)
-    {
-      renderScaleDownType((Canvas)localObject, this.drawable, this.viewWidth, this.viewHeight);
+      localObject2 = new Path();
+      RectF localRectF = new RectF(0.0F, 0.0F, this.viewWidth, this.viewHeight);
+      double d = this.radius;
+      ((Path)localObject2).addRoundRect(localRectF, (float)d, (float)d, Path.Direction.CCW);
+      ((Canvas)localObject1).clipPath((Path)localObject2);
     }
-    else if (3 == i)
+    if (this.repeat != RendererParams.ImageRepeat.NO_REPEAT)
     {
-      renderFitWidthType((Canvas)localObject, this.drawable, this.viewWidth, this.viewHeight);
-    }
-    else if (1 == i)
-    {
-      renderContainType((Canvas)localObject, this.drawable, this.viewWidth, this.viewHeight);
-    }
-    else if (4 == i)
-    {
-      renderFitHeightType((Canvas)localObject, this.drawable, this.viewWidth, this.viewHeight);
-    }
-    else if (5 == i)
-    {
-      renderNoneType((Canvas)localObject, this.drawable, this.viewWidth, this.viewHeight);
+      renderRepeat((Canvas)localObject1, this.drawable, this.viewWidth, this.viewHeight);
     }
     else
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[render] not supported fitType: ");
-      localStringBuilder.append(this.fitType);
-      VistaImageLog.e("BitmapRenderer", localStringBuilder.toString());
+      if (this.isClipped) {}
+      int i;
+      do
+      {
+        renderFillType((Canvas)localObject1, this.drawable, this.viewWidth, this.viewHeight);
+        break;
+        i = this.fitType;
+        if (2 == i)
+        {
+          renderCoverType((Canvas)localObject1, this.drawable, this.viewWidth, this.viewHeight);
+          break;
+        }
+      } while (i == 0);
+      if (6 == i)
+      {
+        renderScaleDownType((Canvas)localObject1, this.drawable, this.viewWidth, this.viewHeight);
+      }
+      else if (3 == i)
+      {
+        renderFitWidthType((Canvas)localObject1, this.drawable, this.viewWidth, this.viewHeight);
+      }
+      else if (1 == i)
+      {
+        renderContainType((Canvas)localObject1, this.drawable, this.viewWidth, this.viewHeight);
+      }
+      else if (4 == i)
+      {
+        renderFitHeightType((Canvas)localObject1, this.drawable, this.viewWidth, this.viewHeight);
+      }
+      else if (5 == i)
+      {
+        renderNoneType((Canvas)localObject1, this.drawable, this.viewWidth, this.viewHeight);
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[render] not supported fitType: ");
+        ((StringBuilder)localObject2).append(this.fitType);
+        VistaImageLog.e("BitmapRenderer", ((StringBuilder)localObject2).toString());
+      }
     }
-    this.surface.unlockCanvasAndPost((Canvas)localObject);
+    this.surface.unlockCanvasAndPost((Canvas)localObject1);
     this.drawable = null;
   }
   
@@ -332,7 +416,7 @@ class DrawableRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.DrawableRenderer
  * JD-Core Version:    0.7.0.1
  */

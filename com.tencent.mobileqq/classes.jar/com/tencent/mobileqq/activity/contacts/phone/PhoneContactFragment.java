@@ -29,69 +29,56 @@ public class PhoneContactFragment
   extends ContactsBaseFragment
   implements INewFriendListener, IPhoneContactListener
 {
-  protected Handler a;
   protected View a;
-  protected FrameLayout a;
-  protected PhoneContactAdapter a;
-  protected PhoneContactFragment.MyContactObserver a;
-  protected PhoneContactStatusCheckView a;
-  protected XListView a;
-  private Runnable a;
-  private Runnable b;
-  protected boolean d = false;
-  
-  public PhoneContactFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactFragment$MyContactObserver = new PhoneContactFragment.MyContactObserver(this, null);
-    this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), null);
-    this.jdField_a_of_type_JavaLangRunnable = new PhoneContactFragment.2(this);
-    this.jdField_b_of_type_JavaLangRunnable = new PhoneContactFragment.3(this);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXListView;
-  }
+  protected XListView b;
+  protected PhoneContactAdapter c;
+  protected FrameLayout d;
+  protected PhoneContactFragment.MyContactObserver e = new PhoneContactFragment.MyContactObserver(this, null);
+  protected PhoneContactStatusCheckView f;
+  protected boolean g = false;
+  protected Handler h = new WeakReferenceHandler(Looper.getMainLooper(), null);
+  private Runnable i = new PhoneContactFragment.2(this);
+  private Runnable j = new PhoneContactFragment.3(this);
   
   protected View a(LayoutInflater paramLayoutInflater, Bundle paramBundle)
   {
-    paramBundle = this.jdField_a_of_type_AndroidViewView;
+    paramBundle = this.a;
     if (paramBundle == null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558928, null, false);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372513));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidViewView.getContext());
+      this.a = paramLayoutInflater.inflate(2131624558, null, false);
+      this.b = ((XListView)this.a.findViewById(2131440037));
+      this.d = new FrameLayout(this.a.getContext());
       paramLayoutInflater = new AbsListView.LayoutParams(-1, -2);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(paramLayoutInflater);
-      this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView = new PhoneContactStatusCheckView(this.jdField_a_of_type_AndroidViewView.getContext());
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.setOrientation(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.setGravity(17);
-      int i = getResources().getDimensionPixelSize(2131297527);
-      paramLayoutInflater = new FrameLayout.LayoutParams(-1, i);
+      this.d.setLayoutParams(paramLayoutInflater);
+      this.b.addHeaderView(this.d);
+      this.f = new PhoneContactStatusCheckView(this.a.getContext());
+      this.f.setOrientation(1);
+      this.f.setGravity(17);
+      int k = getResources().getDimensionPixelSize(2131298180);
+      paramLayoutInflater = new FrameLayout.LayoutParams(-1, k);
       paramLayoutInflater.gravity = 17;
-      if (jdField_a_of_type_AndroidGraphicsRect != null) {
-        paramLayoutInflater.height = Math.max(i, jdField_a_of_type_AndroidGraphicsRect.bottom - jdField_a_of_type_AndroidGraphicsRect.top);
+      if (p != null) {
+        paramLayoutInflater.height = Math.max(k, p.bottom - p.top);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.setLayoutParams(paramLayoutInflater);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView, paramLayoutInflater);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(new ColorDrawable(0));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(true);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(0);
-      this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.setPhoneContactFragment(this);
+      this.f.setLayoutParams(paramLayoutInflater);
+      this.d.addView(this.f, paramLayoutInflater);
+      this.b.setSelector(new ColorDrawable(0));
+      this.b.setNeedCheckSpringback(true);
+      this.b.setCacheColorHint(0);
+      this.b.setDivider(null);
+      this.b.setOverScrollMode(0);
+      this.b.mForContacts = true;
+      this.f.setVisibility(8);
+      this.f.setPhoneContactFragment(this);
     }
     else
     {
       paramLayoutInflater = paramBundle.getParent();
       if ((paramLayoutInflater instanceof ViewGroup)) {
-        ((ViewGroup)paramLayoutInflater).removeView(this.jdField_a_of_type_AndroidViewView);
+        ((ViewGroup)paramLayoutInflater).removeView(this.a);
       }
     }
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.a;
   }
   
   public void a()
@@ -135,18 +122,18 @@ public class PhoneContactFragment
       localStringBuilder.append(paramBoolean);
       QLog.d("PhoneContactFragment", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {
+    if (this.b == null) {
       return;
     }
     if (paramBoolean) {
       d();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter = new PhoneContactAdapter(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter);
+      this.c = new PhoneContactAdapter(this.w, this.s, this.b, 1, true, this);
+      this.b.setAdapter(this.c);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.a();
+    this.f.a();
     ThreadManager.excute(new PhoneContactFragment.1(this), 16, null, true);
   }
   
@@ -162,30 +149,6 @@ public class PhoneContactFragment
       QLog.d("PhoneContactFragment", 2, localStringBuilder.toString());
     }
     c();
-  }
-  
-  public boolean a()
-  {
-    PhoneContactStatusCheckView localPhoneContactStatusCheckView = this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView;
-    return (localPhoneContactStatusCheckView != null) && (localPhoneContactStatusCheckView.getVisibility() == 0);
-  }
-  
-  public void ac_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, "onMayKnowStatesChanged");
-    }
-    c();
-  }
-  
-  public void ae_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContactFragment", 2, "refresh");
-    }
-    c();
-    ((IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).checkUpdateBindStateAndListIgnoreBindState(true, false, 16);
-    this.d = true;
   }
   
   public void b()
@@ -215,10 +178,28 @@ public class PhoneContactFragment
   public void b(boolean paramBoolean, int paramInt)
   {
     super.b(paramBoolean, paramInt);
-    PhoneContactStatusCheckView localPhoneContactStatusCheckView = this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView;
+    PhoneContactStatusCheckView localPhoneContactStatusCheckView = this.f;
     if (localPhoneContactStatusCheckView != null) {
       localPhoneContactStatusCheckView.a(paramBoolean);
     }
+  }
+  
+  public void bR_()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, "onMayKnowStatesChanged");
+    }
+    c();
+  }
+  
+  public void bU_()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, "refresh");
+    }
+    c();
+    ((IPhoneContactService)this.s.getRuntimeService(IPhoneContactService.class, "")).checkUpdateBindStateAndListIgnoreBindState(true, false, 16);
+    this.g = true;
   }
   
   public void c()
@@ -227,18 +208,18 @@ public class PhoneContactFragment
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reset data  mIsTabSelected:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.v);
       QLog.d("PhoneContactFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.v)
     {
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 500L);
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.j);
+      ThreadManager.getSubThreadHandler().postDelayed(this.j, 500L);
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter;
+    Object localObject = this.c;
     if (localObject != null) {
-      ((PhoneContactAdapter)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ((PhoneContactAdapter)localObject).a(this.s);
     }
   }
   
@@ -256,40 +237,51 @@ public class PhoneContactFragment
   
   protected void d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_b_of_type_Boolean))
+    if ((this.s != null) && (this.v))
     {
-      ((IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).addListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactFragment$MyContactObserver);
-      ((INewFriendService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(INewFriendService.class, "")).addListener(this);
+      ((IPhoneContactService)this.s.getRuntimeService(IPhoneContactService.class, "")).addListener(this);
+      this.s.registObserver(this.e);
+      ((INewFriendService)this.s.getRuntimeService(INewFriendService.class, "")).addListener(this);
     }
   }
   
   protected void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.s != null)
     {
-      ((IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).removeListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactFragment$MyContactObserver);
-      ((INewFriendService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(INewFriendService.class, "")).removeListener(this);
+      ((IPhoneContactService)this.s.getRuntimeService(IPhoneContactService.class, "")).removeListener(this);
+      this.s.unRegistObserver(this.e);
+      ((INewFriendService)this.s.getRuntimeService(INewFriendService.class, "")).removeListener(this);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView;
+    Object localObject = this.b;
     if (localObject != null) {
       ((XListView)localObject).setAdapter(null);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter;
+    localObject = this.c;
     if (localObject != null)
     {
       ((PhoneContactAdapter)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter.c();
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter = null;
+      this.c.c();
+      this.c = null;
     }
   }
   
-  public void g_(int paramInt) {}
+  public View getScrollableView()
+  {
+    return this.b;
+  }
+  
+  public void i_(int paramInt) {}
+  
+  public boolean j()
+  {
+    PhoneContactStatusCheckView localPhoneContactStatusCheckView = this.f;
+    return (localPhoneContactStatusCheckView != null) && (localPhoneContactStatusCheckView.getVisibility() == 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment
  * JD-Core Version:    0.7.0.1
  */

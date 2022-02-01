@@ -23,7 +23,7 @@ public class MoreMsgHeaderView
   public void a(QQGameMsgInfo paramQQGameMsgInfo, Context paramContext, int paramInt, String paramString)
   {
     paramQQGameMsgInfo = new TextView(getContext());
-    paramQQGameMsgInfo.setText(HardCodeUtil.a(2131695207));
+    paramQQGameMsgInfo.setText(HardCodeUtil.a(2131892941));
     paramQQGameMsgInfo.setTextColor(-16777216);
     paramQQGameMsgInfo.setAlpha(0.5F);
     paramQQGameMsgInfo.setEms(1);
@@ -37,10 +37,15 @@ public class MoreMsgHeaderView
   public void b() {}
   
   public void c() {}
+  
+  public String getAppName()
+  {
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.MoreMsgHeaderView
  * JD-Core Version:    0.7.0.1
  */

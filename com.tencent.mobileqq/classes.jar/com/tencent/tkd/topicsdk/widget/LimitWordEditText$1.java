@@ -20,23 +20,23 @@ public final class LimitWordEditText$1
   {
     if (paramCharSequence == null)
     {
-      paramCharSequence = this.a.a();
+      paramCharSequence = this.a.getCountChangeListener();
       if (paramCharSequence != null) {
         paramCharSequence = (Unit)paramCharSequence.invoke(Integer.valueOf(0));
       }
-      this.a.a().setText((CharSequence)String.valueOf(this.a.a()));
+      this.a.getCountView().setText((CharSequence)String.valueOf(this.a.getCountLimit()));
       return;
     }
-    Object localObject = this.a.a();
+    Object localObject = this.a.getCountChangeListener();
     if (localObject != null) {
       localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(paramCharSequence.length()));
     }
-    this.a.a().setText((CharSequence)String.valueOf(this.a.a() - paramCharSequence.length()));
+    this.a.getCountView().setText((CharSequence)String.valueOf(this.a.getCountLimit() - paramCharSequence.length()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.LimitWordEditText.1
  * JD-Core Version:    0.7.0.1
  */

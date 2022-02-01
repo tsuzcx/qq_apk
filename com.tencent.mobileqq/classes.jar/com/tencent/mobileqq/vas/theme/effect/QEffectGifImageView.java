@@ -21,8 +21,8 @@ public class QEffectGifImageView
   extends ImageView
   implements IQEffect<QEffectData, Drawable>, GravitySensor.GravitySensorListener
 {
-  private QEffectData a;
   protected SensorParams a;
+  private QEffectData b;
   
   public QEffectGifImageView(Context paramContext)
   {
@@ -36,14 +36,14 @@ public class QEffectGifImageView
   
   public boolean isGravityEnable()
   {
-    QEffectData localQEffectData = this.jdField_a_of_type_ComTencentQqEffectEngineQEffectData;
+    QEffectData localQEffectData = this.b;
     return (localQEffectData != null) && (localQEffectData.gravity);
   }
   
   public void load(Context paramContext, QEffectView paramQEffectView, IQEffectLoad paramIQEffectLoad, QEffectData paramQEffectData)
   {
-    this.jdField_a_of_type_ComTencentQqEffectEngineQEffectData = paramQEffectData;
-    this.jdField_a_of_type_ComTencentQqEffectSensorSensorParams = new SensorParams(getContext(), this.jdField_a_of_type_ComTencentQqEffectEngineQEffectData);
+    this.b = paramQEffectData;
+    this.a = new SensorParams(getContext(), this.b);
     if (QEffectUtils.isEmpty(paramQEffectData.src))
     {
       Log.e("QEffectGifImageView", " load data.src is null");
@@ -65,12 +65,12 @@ public class QEffectGifImageView
   
   public void updateGravityData(float[] paramArrayOfFloat, boolean paramBoolean)
   {
-    QEffectUtils.updateGravityData(this, paramArrayOfFloat, this.jdField_a_of_type_ComTencentQqEffectSensorSensorParams, paramBoolean);
+    QEffectUtils.updateGravityData(this, paramArrayOfFloat, this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.effect.QEffectGifImageView
  * JD-Core Version:    0.7.0.1
  */

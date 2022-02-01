@@ -32,27 +32,27 @@ class MsgTabStoryNodeListManager$9
         str = "NO_SUCH_FEED_ID";
       }
     }
-    paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.a, 0, null, str, paramString2, paramArrayList, paramHashMap), 106);
-    paramString1.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a());
-    paramString1 = paramString1.a();
+    paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.a.d, 0, null, str, paramString2, paramArrayList, paramHashMap), 106);
+    paramString1.a(this.d.n());
+    paramString1 = paramString1.f();
     paramString1.mUIStyle.bottomWidgetShowFlag = 3;
-    paramString2 = this.jdField_a_of_type_AndroidViewView;
+    paramString2 = this.b;
     if ((paramString2 instanceof StoryMsgNodeFrameLayout))
     {
-      StoryPlayerLauncher.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)paramString2).a);
+      StoryPlayerLauncher.a(this.c, paramString1, ((StoryMsgNodeFrameLayout)paramString2).a);
       return;
     }
-    StoryPlayerLauncher.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, paramString2);
+    StoryPlayerLauncher.a(this.c, paramString1, paramString2);
   }
   
   public void a(List<MsgTabVideoData> paramList)
   {
-    Object localObject = MsgTabPlayPageLoader.a(paramList);
+    Object localObject = MsgTabPlayPageLoader.b(paramList);
     String str1 = null;
     if (localObject != null)
     {
-      str1 = ((MsgTabVideoData)localObject).a;
-      localObject = ((MsgTabVideoData)localObject).b;
+      str1 = ((MsgTabVideoData)localObject).b;
+      localObject = ((MsgTabVideoData)localObject).c;
     }
     else
     {
@@ -63,12 +63,12 @@ class MsgTabStoryNodeListManager$9
     int i = 0;
     while (i < paramList.size())
     {
-      String str2 = ((MsgTabVideoData)paramList.get(i)).b;
+      String str2 = ((MsgTabVideoData)paramList.get(i)).c;
       if (TextUtils.isEmpty(str2)) {
         break;
       }
       localArrayList.add(str2);
-      localHashMap.put(str2, ((MsgTabVideoData)paramList.get(i)).a);
+      localHashMap.put(str2, ((MsgTabVideoData)paramList.get(i)).b);
       i += 1;
     }
     a(str1, (String)localObject, localArrayList, localHashMap);
@@ -81,7 +81,7 @@ class MsgTabStoryNodeListManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.9
  * JD-Core Version:    0.7.0.1
  */

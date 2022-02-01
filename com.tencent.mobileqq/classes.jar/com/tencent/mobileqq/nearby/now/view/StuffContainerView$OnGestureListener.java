@@ -10,7 +10,7 @@ class StuffContainerView$OnGestureListener
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.a.a == null) {
+    if (this.a.f == null) {
       return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
@@ -24,19 +24,19 @@ class StuffContainerView$OnGestureListener
         Double.isNaN(d1);
         if (Math.abs(Math.asin(d1 / d2)) < 0.5235987755982988D) {
           if (f1 < 0.0F) {
-            this.a.a.onFlingUp();
+            this.a.f.onFlingUp();
           } else {
-            this.a.a.onFlingDown();
+            this.a.f.onFlingDown();
           }
         }
       }
       else if (f2 > 0.0F)
       {
-        this.a.a.onFlingRight();
+        this.a.f.onFlingRight();
       }
       else
       {
-        this.a.a.onFlingLeft();
+        this.a.f.onFlingLeft();
       }
     }
     return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
@@ -44,15 +44,15 @@ class StuffContainerView$OnGestureListener
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.onSingleTap();
+    if (this.a.f != null) {
+      this.a.f.onSingleTap();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.StuffContainerView.OnGestureListener
  * JD-Core Version:    0.7.0.1
  */

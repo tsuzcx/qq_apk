@@ -22,34 +22,34 @@ import java.util.Set;
 
 public class AVPreloadEngine
 {
-  private int jdField_a_of_type_Int = 1638400;
-  private long jdField_a_of_type_Long = 1200L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private AVPreloadDispatcher jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher;
-  private ITPDownloadProxy jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<AVPreloadEngine.PreloadResultListener> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
+  private ITPDownloadProxy a;
+  private Context b;
+  private AVPreloadDispatcher c;
+  private Handler d = new Handler(Looper.getMainLooper());
+  private List<Long> e = new ArrayList();
+  private int f = 1638400;
+  private long g = 1200L;
+  private int h = 0;
+  private boolean i = true;
+  private boolean j = false;
+  private String k = "";
+  private boolean l = false;
+  private String m = "";
+  private Set<AVPreloadEngine.PreloadResultListener> n = new HashSet();
   
   public AVPreloadEngine(Context paramContext, HttpInterface paramHttpInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher = new AVPreloadDispatcher(paramHttpInterface);
+    this.b = paramContext;
+    this.c = new AVPreloadDispatcher(paramHttpInterface);
   }
   
   private void a(AVPreloadTaskInterface paramAVPreloadTaskInterface, ArrayList<String> paramArrayList)
   {
     Object localObject1 = new HashMap();
-    ((Map)localObject1).put("dl_param_preload_size", Integer.valueOf(this.jdField_a_of_type_Int));
-    ((Map)localObject1).put("dl_param_preload_duration", Long.valueOf(this.jdField_a_of_type_Long));
+    ((Map)localObject1).put("dl_param_preload_size", Integer.valueOf(this.f));
+    ((Map)localObject1).put("dl_param_preload_duration", Long.valueOf(this.g));
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getExternalFilesDir(null));
+    ((StringBuilder)localObject2).append(this.b.getExternalFilesDir(null));
     ((StringBuilder)localObject2).append("/flvCache");
     String str = ((StringBuilder)localObject2).toString();
     localObject2 = new File(str);
@@ -66,7 +66,7 @@ public class AVPreloadEngine
         return;
       }
     }
-    localObject2 = AVPreloadUtils.a(paramAVPreloadTaskInterface.b());
+    localObject2 = AVPreloadUtils.a(paramAVPreloadTaskInterface.s());
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(str);
     ((StringBuilder)localObject3).append("/");
@@ -79,44 +79,44 @@ public class AVPreloadEngine
     }
     ((Map)localObject1).put("dl_param_save_path", str);
     paramArrayList = new TPDownloadParam(paramArrayList, 17, (Map)localObject1);
-    long l = this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy.startPlay((String)localObject2, paramArrayList, new AVPreloadEngine.AVPreloadPlayListener(this, paramAVPreloadTaskInterface));
-    this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(l));
-    paramAVPreloadTaskInterface.j(l);
+    long l1 = this.a.startPlay((String)localObject2, paramArrayList, new AVPreloadEngine.AVPreloadPlayListener(this, paramAVPreloadTaskInterface));
+    this.e.add(Long.valueOf(l1));
+    paramAVPreloadTaskInterface.j(l1);
     paramAVPreloadTaskInterface.a(AVPreloadTaskInterface.AVPreloadState.PRELOAD_START);
-    paramArrayList = this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy.getPlayUrl((int)l, 0);
+    paramArrayList = this.a.getPlayUrl((int)l1, 0);
     paramAVPreloadTaskInterface.c(paramArrayList);
-    paramAVPreloadTaskInterface.h(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidOsHandler.post(new AVPreloadEngine.2(this));
+    paramAVPreloadTaskInterface.h(this.h);
+    this.d.post(new AVPreloadEngine.2(this));
     localObject1 = new StringBuffer();
     ((StringBuffer)localObject1).append("start reload taskId #");
-    ((StringBuffer)localObject1).append(paramAVPreloadTaskInterface.j());
+    ((StringBuffer)localObject1).append(paramAVPreloadTaskInterface.r());
     ((StringBuffer)localObject1).append(" url = ");
-    ((StringBuffer)localObject1).append(paramAVPreloadTaskInterface.b());
+    ((StringBuffer)localObject1).append(paramAVPreloadTaskInterface.s());
     ((StringBuffer)localObject1).append("local url=");
     ((StringBuffer)localObject1).append(paramArrayList);
     ((StringBuffer)localObject1).append(" key id = ");
-    ((StringBuffer)localObject1).append(paramAVPreloadTaskInterface.a());
+    ((StringBuffer)localObject1).append(paramAVPreloadTaskInterface.q());
     AVPreloadLog.b("AVPreloadEngine", ((StringBuffer)localObject1).toString(), new Object[0]);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy == null) {
+    if (this.a == null) {
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
-      long l = ((Long)localIterator.next()).longValue();
-      this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy.stopPlay((int)l);
+      long l1 = ((Long)localIterator.next()).longValue();
+      this.a.stopPlay((int)l1);
     }
     b();
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.b = null;
   }
   
   public void a(int paramInt)
   {
-    ITPDownloadProxy localITPDownloadProxy = this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy;
+    ITPDownloadProxy localITPDownloadProxy = this.a;
     if (localITPDownloadProxy == null) {
       return;
     }
@@ -125,22 +125,22 @@ public class AVPreloadEngine
   
   public void a(Context paramContext, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy = TPDownloadProxyFactory.getTPDownloadProxy(paramInt);
-    if (this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy == null) {
+    this.a = TPDownloadProxyFactory.getTPDownloadProxy(paramInt);
+    if (this.a == null) {
       return;
     }
     paramString = new TPDLProxyInitParam(paramInt, "1.0", paramString);
-    this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy.init(paramContext, paramString);
+    this.a.init(paramContext, paramString);
   }
   
   public void a(AVPreloadEngine.PreloadResultListener paramPreloadResultListener)
   {
-    this.jdField_a_of_type_JavaUtilSet.add(paramPreloadResultListener);
+    this.n.add(paramPreloadResultListener);
   }
   
   public void a(AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy == null) {
+    if (this.a == null) {
       return;
     }
     if (paramAVPreloadTaskInterface == null)
@@ -148,47 +148,47 @@ public class AVPreloadEngine
       AVPreloadLog.c("AVPreloadEngine", "start task is null.", new Object[0]);
       return;
     }
-    if (paramAVPreloadTaskInterface.j() != 0L) {
+    if (paramAVPreloadTaskInterface.r() != 0L) {
       b(paramAVPreloadTaskInterface);
     }
-    Object localObject2 = paramAVPreloadTaskInterface.b();
+    Object localObject2 = paramAVPreloadTaskInterface.s();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("AVPreload start task! url: ");
     ((StringBuilder)localObject1).append((String)localObject2);
     AVPreloadLog.b("AVPreloadEngine", ((StringBuilder)localObject1).toString(), new Object[0]);
     localObject1 = localObject2;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.j)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.k;
       localObject1 = localObject2;
       if (str != null)
       {
         localObject1 = localObject2;
         if (!str.isEmpty())
         {
-          localObject1 = ((String)localObject2).replace(URI.create((String)localObject2).getHost(), this.jdField_a_of_type_JavaLangString);
+          localObject1 = ((String)localObject2).replace(URI.create((String)localObject2).getHost(), this.k);
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("AVPreload will frame seek! frameSeekDomain: ");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.k);
           ((StringBuilder)localObject2).append(" taskUrl:");
           ((StringBuilder)localObject2).append((String)localObject1);
           AVPreloadLog.b("AVPreloadEngine", ((StringBuilder)localObject2).toString(), new Object[0]);
         }
       }
     }
-    if (this.c)
+    if (this.l)
     {
-      localObject2 = this.jdField_b_of_type_JavaLangString;
+      localObject2 = this.m;
       if ((localObject2 != null) && (!((String)localObject2).isEmpty()))
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("AVPreload will use dispatch! dispatchDomain: ");
-        ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.m);
         ((StringBuilder)localObject2).append(" taskUrl:");
         ((StringBuilder)localObject2).append((String)localObject1);
         AVPreloadLog.b("AVPreloadEngine", ((StringBuilder)localObject2).toString(), new Object[0]);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher.a(this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadDispatcher.a((String)localObject1, new AVPreloadEngine.1(this, paramAVPreloadTaskInterface));
+        this.c.a(this.m);
+        this.c.a((String)localObject1, new AVPreloadEngine.1(this, paramAVPreloadTaskInterface));
         return;
       }
     }
@@ -203,22 +203,22 @@ public class AVPreloadEngine
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilSet.clear();
+    this.n.clear();
   }
   
   public void b(AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy == null) {
+    if (this.a == null) {
       return;
     }
     if (paramAVPreloadTaskInterface == null)
@@ -226,36 +226,36 @@ public class AVPreloadEngine
       AVPreloadLog.c("AVPreloadEngine", "stop task is null.", new Object[0]);
       return;
     }
-    if (paramAVPreloadTaskInterface.c()) {
+    if (paramAVPreloadTaskInterface.B()) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("stop reload taskId #");
-    localStringBuilder.append(paramAVPreloadTaskInterface.j());
+    localStringBuilder.append(paramAVPreloadTaskInterface.r());
     localStringBuilder.append(" key id =");
-    localStringBuilder.append(paramAVPreloadTaskInterface.a());
+    localStringBuilder.append(paramAVPreloadTaskInterface.q());
     AVPreloadLog.a("AVPreloadEngine", localStringBuilder.toString(), new Object[0]);
-    this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy.stopPlay((int)paramAVPreloadTaskInterface.j());
-    this.jdField_a_of_type_JavaUtilList.remove(Long.valueOf(paramAVPreloadTaskInterface.j()));
+    this.a.stopPlay((int)paramAVPreloadTaskInterface.r());
+    this.e.remove(Long.valueOf(paramAVPreloadTaskInterface.r()));
     paramAVPreloadTaskInterface.j(0L);
     paramAVPreloadTaskInterface.a(AVPreloadTaskInterface.AVPreloadState.PRELOAD_STOP);
     paramAVPreloadTaskInterface.a(false);
-    this.jdField_a_of_type_AndroidOsHandler.post(new AVPreloadEngine.3(this, paramAVPreloadTaskInterface));
+    this.d.post(new AVPreloadEngine.3(this, paramAVPreloadTaskInterface));
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.m = paramString;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void c(AVPreloadTaskInterface paramAVPreloadTaskInterface)
   {
-    if (this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy == null) {
+    if (this.a == null) {
       return;
     }
     if (paramAVPreloadTaskInterface == null)
@@ -265,24 +265,24 @@ public class AVPreloadEngine
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("pause reload taskId #");
-    localStringBuilder.append(paramAVPreloadTaskInterface.j());
+    localStringBuilder.append(paramAVPreloadTaskInterface.r());
     localStringBuilder.append(" key id =");
-    localStringBuilder.append(paramAVPreloadTaskInterface.a());
+    localStringBuilder.append(paramAVPreloadTaskInterface.q());
     AVPreloadLog.b("AVPreloadEngine", localStringBuilder.toString(), new Object[0]);
-    this.jdField_a_of_type_ComTencentThumbplayerCoreDownloadproxyApiITPDownloadProxy.pauseDownload((int)paramAVPreloadTaskInterface.j());
+    this.a.pauseDownload((int)paramAVPreloadTaskInterface.r());
     paramAVPreloadTaskInterface.j(0L);
     paramAVPreloadTaskInterface.a(AVPreloadTaskInterface.AVPreloadState.PRELOAD_STOP);
-    this.jdField_a_of_type_AndroidOsHandler.post(new AVPreloadEngine.4(this, paramAVPreloadTaskInterface));
+    this.d.post(new AVPreloadEngine.4(this, paramAVPreloadTaskInterface));
   }
   
   public void c(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.l = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine
  * JD-Core Version:    0.7.0.1
  */

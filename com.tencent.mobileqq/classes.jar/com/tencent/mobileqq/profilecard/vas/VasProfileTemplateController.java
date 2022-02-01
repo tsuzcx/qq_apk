@@ -75,7 +75,7 @@ public class VasProfileTemplateController
       return;
     }
     int i = paramCard.diyTextFontId;
-    if (!VipProfileCardDiyActivity.a(i))
+    if (!VipProfileCardDiyActivity.b(i))
     {
       paramCard = (IVasQuickUpdateService)this.mApp.getRuntimeService(IVasQuickUpdateService.class, "");
       paramCard.addCallBacker(new VasProfileTemplateController.1(this, i, paramCard));
@@ -122,7 +122,7 @@ public class VasProfileTemplateController
     }
     if ((paramLong != 160L) && (paramLong != 1600L))
     {
-      ProfileCardManager localProfileCardManager = ((VasExtensionManager)this.mApp.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+      ProfileCardManager localProfileCardManager = ((VasExtensionManager)this.mApp.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).e;
       QQAppInterface localQQAppInterface = this.mApp;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("card.");
@@ -160,7 +160,7 @@ public class VasProfileTemplateController
       }
     }
     else {
-      bool1 = ProfileCardUtil.a(str);
+      bool1 = ProfileCardUtil.b(str);
     }
     boolean bool2 = QLog.isColorLevel();
     boolean bool3 = false;
@@ -285,7 +285,7 @@ public class VasProfileTemplateController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.VasProfileTemplateController
  * JD-Core Version:    0.7.0.1
  */

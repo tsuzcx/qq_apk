@@ -17,9 +17,14 @@ final class QbSdk$2
     ((StringBuilder)localObject).append("QbSdk preinit ver is ");
     ((StringBuilder)localObject).append(i);
     TbsLog.i("QbSdk", ((StringBuilder)localObject).toString());
-    if (i == 0) {
-      p.a().b(this.a, true);
+    localObject = p.a();
+    Context localContext = this.a;
+    if (f.a == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    ((p)localObject).b(localContext, bool);
     TbsLog.i("QbSdk", "preInit -- prepare initAndLoadSo");
     f.a(true).a(this.a, false, false, null);
     localObject = x.a();
@@ -36,7 +41,7 @@ final class QbSdk$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk.2
  * JD-Core Version:    0.7.0.1
  */

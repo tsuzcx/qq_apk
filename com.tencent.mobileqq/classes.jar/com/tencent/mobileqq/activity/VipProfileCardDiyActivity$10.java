@@ -14,16 +14,16 @@ class VipProfileCardDiyActivity$10
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.n();
-    if (this.a.jdField_a_of_type_Boolean)
+    this.a.o();
+    if (this.a.K)
     {
       paramDialogInterface = this.a;
-      paramDialogInterface.jdField_a_of_type_Boolean = false;
+      paramDialogInterface.K = false;
       paramDialogInterface.e();
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
-      this.a.f();
+      this.a.l.setVisibility(0);
+      this.a.g();
     }
-    if (!TextUtils.isEmpty(this.a.a())) {
+    if (!TextUtils.isEmpty(this.a.f())) {
       paramDialogInterface = "1";
     } else {
       paramDialogInterface = "0";
@@ -33,7 +33,7 @@ class VipProfileCardDiyActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.10
  * JD-Core Version:    0.7.0.1
  */

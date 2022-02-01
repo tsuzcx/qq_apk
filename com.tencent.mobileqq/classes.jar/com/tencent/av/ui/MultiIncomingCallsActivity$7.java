@@ -11,8 +11,8 @@ class MultiIncomingCallsActivity$7
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickCancel", true, null, -1);
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickCancel");
+    this.b.a(this.a, "onClickCancel", true, null, -1);
+    this.b.b("onClickCancel");
     QAVGroupConfig.Report.a(false);
   }
 }

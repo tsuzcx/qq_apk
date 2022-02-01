@@ -15,18 +15,18 @@ class ForwardFileOption$4
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(25, 0, 0, 0));
+      this.a.setBackgroundColor(Color.argb(25, 0, 0, 0));
       return false;
     }
     if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(0, 0, 0, 0));
+      this.a.setBackgroundColor(Color.argb(0, 0, 0, 0));
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileOption.4
  * JD-Core Version:    0.7.0.1
  */

@@ -19,14 +19,14 @@ class SavingAnimView$2
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (SavingAnimView.a(this.a) != null) {
-      SavingAnimView.a(this.a).b();
+    if (SavingAnimView.b(this.a) != null) {
+      SavingAnimView.b(this.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView.2
  * JD-Core Version:    0.7.0.1
  */

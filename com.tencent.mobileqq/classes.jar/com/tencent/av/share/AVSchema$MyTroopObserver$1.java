@@ -11,20 +11,20 @@ class AVSchema$MyTroopObserver$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema$MyTroopObserver.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
+    if (this.b.b.a("checkQAVPermission.callback", this.a)) {
       return;
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentAvShareAVSchema$MyTroopObserver.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvShareAVSchema$MyTroopObserver.jdField_a_of_type_JavaLangString);
+      this.b.b.b(this.a, this.b.a);
       return;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema$MyTroopObserver.jdField_a_of_type_ComTencentAvShareAVSchema.getBaseActivity(), true, new AVSchema.MyTroopObserver.1.1(this));
+    ChatActivityUtils.a(this.b.b.getBaseActivity(), true, new AVSchema.MyTroopObserver.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.AVSchema.MyTroopObserver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,19 @@ import okhttp3.HttpUrl;
 
 public class NowRequest
 {
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final String jdField_a_of_type_JavaLangString;
-  private final HttpUrl jdField_a_of_type_Okhttp3HttpUrl;
+  private final HttpUrl a;
+  private final String b;
+  private final Object c;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Request{method=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", url=");
-    localStringBuilder.append(this.jdField_a_of_type_Okhttp3HttpUrl);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", tag=");
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.c;
     if (localObject == this) {
       localObject = null;
     }
@@ -27,7 +27,7 @@ public class NowRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.NowRequest
  * JD-Core Version:    0.7.0.1
  */

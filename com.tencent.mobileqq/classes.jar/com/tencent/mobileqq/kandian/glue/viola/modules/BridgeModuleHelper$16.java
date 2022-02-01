@@ -1,34 +1,27 @@
 package com.tencent.mobileqq.kandian.glue.viola.modules;
 
-import com.tencent.mobileqq.soso.location.LbsManagerServiceOnLocationChangeListener;
-import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.biz.common.offline.AsyncBack;
 
 final class BridgeModuleHelper$16
-  extends LbsManagerServiceOnLocationChangeListener
+  implements AsyncBack
 {
-  BridgeModuleHelper$16(String paramString1, BridgeModule paramBridgeModule, String paramString2)
-  {
-    super(paramString1);
-  }
+  BridgeModuleHelper$16(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
+  public void loaded(String paramString, int paramInt)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    if (paramInt == 0)
     {
-      BridgeModuleHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule, paramSosoLbsInfo, this.jdField_a_of_type_JavaLangString);
+      this.a.invokeCallJS(this.b, null);
       return;
     }
-    paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule;
-    String str = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("errorCode: ");
-    localStringBuilder.append(paramInt);
-    BridgeModuleHelper.a(paramSosoLbsInfo, str, localStringBuilder.toString());
+    this.a.invokeErrorCallJS(this.b, paramString);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModuleHelper.16
  * JD-Core Version:    0.7.0.1
  */

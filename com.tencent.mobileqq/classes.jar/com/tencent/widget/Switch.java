@@ -21,6 +21,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
 import com.tencent.mobileqq.qqui.R.styleable;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class Switch
   extends CompoundButton
@@ -29,6 +30,7 @@ public class Switch
   private static final int MONOSPACE = 3;
   private static final int SANS = 1;
   private static final int SERIF = 2;
+  private static final int THUMB_PADDING = ViewUtils.dpToPx(5.0F);
   private static final int TOUCH_MODE_DOWN = 1;
   private static final int TOUCH_MODE_DRAGGING = 2;
   private static final int TOUCH_MODE_IDLE = 0;
@@ -67,7 +69,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035264);
+    this(paramContext, paramAttributeSet, 2131036033);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -75,21 +77,21 @@ public class Switch
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = getResources();
     this.mTextPaint.density = localResources.getDisplayMetrics().density;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bv, paramInt, 2131756330);
-    this.mThumbDrawable = paramAttributeSet.getDrawable(R.styleable.bM);
-    this.mTrackDrawable = paramAttributeSet.getDrawable(R.styleable.bO);
-    this.mTextOn = paramAttributeSet.getText(R.styleable.bL);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ep, paramInt, 2131953493);
+    this.mThumbDrawable = paramAttributeSet.getDrawable(R.styleable.ev);
+    this.mTrackDrawable = paramAttributeSet.getDrawable(R.styleable.ex);
+    this.mTextOn = paramAttributeSet.getText(R.styleable.eu);
     if (this.mTextOn == null) {
       this.mTextOn = "";
     }
-    this.mTextOff = paramAttributeSet.getText(R.styleable.bK);
+    this.mTextOff = paramAttributeSet.getText(R.styleable.et);
     if (this.mTextOff == null) {
       this.mTextOff = "";
     }
-    this.mThumbTextPadding = paramAttributeSet.getDimensionPixelSize(R.styleable.bN, 0);
-    this.mSwitchMinWidth = paramAttributeSet.getDimensionPixelSize(R.styleable.bH, 0);
-    this.mSwitchPadding = paramAttributeSet.getDimensionPixelSize(R.styleable.bI, 0);
-    paramInt = paramAttributeSet.getResourceId(R.styleable.bJ, 0);
+    this.mThumbTextPadding = paramAttributeSet.getDimensionPixelSize(R.styleable.ew, 0);
+    this.mSwitchMinWidth = paramAttributeSet.getDimensionPixelSize(R.styleable.eq, 0);
+    this.mSwitchPadding = paramAttributeSet.getDimensionPixelSize(R.styleable.er, 0);
+    paramInt = paramAttributeSet.getResourceId(R.styleable.es, 0);
     if (paramInt != 0) {
       setSwitchTextAppearance(paramContext, paramInt);
     }
@@ -128,6 +130,15 @@ public class Switch
     }
     localDrawable.getPadding(this.mTempRect);
     return this.mSwitchWidth - this.mThumbWidth - this.mTempRect.left - this.mTempRect.right;
+  }
+  
+  private boolean hasTextInSwitch()
+  {
+    CharSequence localCharSequence = this.mTextOn;
+    if ((localCharSequence == null) || (localCharSequence.equals(""))) {
+      localCharSequence = this.mTextOff;
+    }
+    return (localCharSequence != null) && (!localCharSequence.equals(""));
   }
   
   private boolean hitThumb(float paramFloat1, float paramFloat2)
@@ -300,15 +311,24 @@ public class Switch
     paramCanvas.save();
     this.mTrackDrawable.getPadding(this.mTempRect);
     int n = k + this.mTempRect.left;
-    k = this.mTempRect.top;
+    k = this.mTempRect.top + i;
     int i2 = this.mTempRect.right;
-    int m = this.mTempRect.bottom;
+    int m = j - this.mTempRect.bottom;
     paramCanvas.clipRect(n, i, i1 - i2, j);
     this.mThumbDrawable.getPadding(this.mTempRect);
     i2 = (int)this.mThumbPosition;
     i1 = n - this.mTempRect.left + i2;
     n = n + i2 + this.mThumbWidth + this.mTempRect.right;
-    this.mThumbDrawable.setBounds(i1, i, n, j);
+    if (hasTextInSwitch())
+    {
+      this.mThumbDrawable.setBounds(i1, i, n, j);
+    }
+    else
+    {
+      localObject = this.mThumbDrawable;
+      i = THUMB_PADDING;
+      ((Drawable)localObject).setBounds(i1 + i, k + i, n - i, m - i);
+    }
     this.mThumbDrawable.draw(paramCanvas);
     Object localObject = this.mTextColors;
     if (localObject != null) {
@@ -322,7 +342,7 @@ public class Switch
     }
     if (localObject != null)
     {
-      paramCanvas.translate((i1 + n) / 2 - ((Layout)localObject).getWidth() / 2, (k + i + (j - m)) / 2 - ((Layout)localObject).getHeight() / 2);
+      paramCanvas.translate((i1 + n) / 2 - ((Layout)localObject).getWidth() / 2, (k + m) / 2 - ((Layout)localObject).getHeight() / 2);
       ((Layout)localObject).draw(paramCanvas);
     }
     paramCanvas.restore();
@@ -372,6 +392,9 @@ public class Switch
     int j = Math.max(Math.max(this.mSwitchMinWidth, this.mTrackDrawable.getIntrinsicWidth()), this.mThumbTextPadding * 4 + i + this.mTempRect.left + this.mTempRect.right);
     int k = this.mTrackDrawable.getIntrinsicHeight();
     this.mThumbWidth = (i + this.mThumbTextPadding * 2);
+    if (!hasTextInSwitch()) {
+      this.mThumbWidth = Math.min(this.mThumbWidth, k);
+    }
     this.mSwitchWidth = j;
     this.mSwitchHeight = k;
     super.onMeasure(paramInt1, paramInt2);
@@ -473,14 +496,14 @@ public class Switch
   
   public void setSwitchTextAppearance(Context paramContext, int paramInt)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramInt, R.styleable.bC);
-    ColorStateList localColorStateList = paramContext.getColorStateList(R.styleable.bW);
+    paramContext = paramContext.obtainStyledAttributes(paramInt, R.styleable.eK);
+    ColorStateList localColorStateList = paramContext.getColorStateList(R.styleable.eM);
     if (localColorStateList != null) {
       this.mTextColors = localColorStateList;
     } else {
       this.mTextColors = getTextColors();
     }
-    paramInt = paramContext.getDimensionPixelSize(R.styleable.bX, 0);
+    paramInt = paramContext.getDimensionPixelSize(R.styleable.eN, 0);
     if (paramInt != 0)
     {
       float f = paramInt;
@@ -490,8 +513,8 @@ public class Switch
         requestLayout();
       }
     }
-    setSwitchTypefaceByIndex(paramContext.getInt(R.styleable.bZ, -1), paramContext.getInt(R.styleable.bY, -1));
-    if (paramContext.getBoolean(R.styleable.bV, false))
+    setSwitchTypefaceByIndex(paramContext.getInt(R.styleable.eP, -1), paramContext.getInt(R.styleable.eO, -1));
+    if (paramContext.getBoolean(R.styleable.eL, false))
     {
       this.mSwitchTransformationMethod = new AllCapsTransformationMethod(getContext());
       this.mSwitchTransformationMethod.setLengthChangesAllowed(true);
@@ -596,7 +619,7 @@ public class Switch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.Switch
  * JD-Core Version:    0.7.0.1
  */

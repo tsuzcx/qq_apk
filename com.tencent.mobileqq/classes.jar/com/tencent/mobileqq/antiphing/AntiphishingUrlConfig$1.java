@@ -18,8 +18,8 @@ class AntiphishingUrlConfig$1
   {
     if (paramMessage.what == AntiphishingUrlConfig.a(this.a))
     {
-      QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
-      this.a.a();
+      QLog.d(AntiphishingUrlConfig.b(this.a), 4, "Receive Message!");
+      this.a.b();
     }
     try
     {
@@ -27,9 +27,9 @@ class AntiphishingUrlConfig$1
       return;
     }
     catch (Exception paramMessage) {}
-    if (paramMessage.what == AntiphishingUrlConfig.b(this.a))
+    if (paramMessage.what == AntiphishingUrlConfig.c(this.a))
     {
-      QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
+      QLog.d(AntiphishingUrlConfig.b(this.a), 4, "Receive Message!");
       ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
     }
     return;
@@ -37,7 +37,7 @@ class AntiphishingUrlConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.AntiphishingUrlConfig.1
  * JD-Core Version:    0.7.0.1
  */

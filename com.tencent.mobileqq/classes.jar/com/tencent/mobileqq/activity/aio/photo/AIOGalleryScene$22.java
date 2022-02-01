@@ -26,8 +26,8 @@ class AIOGalleryScene$22
     Object localObject = paramView.getTag();
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-      localObject = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).a;
+      this.d.aF.dismiss();
+      localObject = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).c;
       int i = ((ShareActionSheetBuilder.ActionSheetItem)localObject).action;
       localObject = ((ShareActionSheetBuilder.ActionSheetItem)localObject).argus;
       if (i != 64)
@@ -42,20 +42,20 @@ class AIOGalleryScene$22
             default: 
               break;
             case 59: 
-              AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
+              AIOGalleryScene.a(this.d, this.a);
               i = 1;
               break;
             case 58: 
-              if (this.jdField_a_of_type_Boolean) {
+              if (this.b) {
                 i = 6;
               } else {
                 i = 5;
               }
               j = i;
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.asBinder().pingBinder())
+              if (this.d.V.asBinder().pingBinder())
               {
-                this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.f);
-                QQToast.a(AIOGalleryScene.z(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), AIOGalleryScene.A(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getString(2131692690), 0).a();
+                this.d.V.e(this.a.L);
+                QQToast.makeText(AIOGalleryScene.G(this.d), AIOGalleryScene.H(this.d).getString(2131889761), 0).show();
                 j = i;
               }
             case 57: 
@@ -66,60 +66,60 @@ class AIOGalleryScene$22
               {
                 i = j;
                 break;
-                if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.asBinder().pingBinder()) {
-                  this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.f);
+                if (this.d.V.asBinder().pingBinder()) {
+                  this.d.V.h(this.a.L);
                 }
                 i = 3;
                 break;
-                AIOGalleryScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, (String)localObject);
+                AIOGalleryScene.b(this.d, this.a, (String)localObject);
                 i = 10;
                 break;
-                AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, (String)localObject);
+                AIOGalleryScene.a(this.d, this.a, (String)localObject);
                 i = 9;
                 break;
-                if (this.jdField_a_of_type_Boolean) {
+                if (this.b) {
                   j = 7;
                 } else {
                   j = 6;
                 }
-                String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.d;
+                String str = this.d.Z;
                 localObject = str;
                 if (TextUtils.isEmpty(str)) {
-                  localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.c;
+                  localObject = this.d.X;
                 }
-                AIOGalleryScene.a(AIOGalleryScene.D(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_g_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.c, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_g_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.i, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.jdField_g_of_type_Int, false);
+                AIOGalleryScene.a(AIOGalleryScene.K(this.d), this.d.ac, this.d.X, (String)localObject, this.a.N, this.a.P, this.a.Q, false);
               }
             case 53: 
-              AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_JavaIoFile);
+              AIOGalleryScene.a(this.d, this.a, this.c);
               i = 2;
               break;
             case 52: 
               i = 8;
               break;
             }
-            AIOGalleryScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
+            AIOGalleryScene.b(this.d, this.a);
             i = 5;
             break label637;
           }
-          PicShareToWX.a(this.jdField_a_of_type_JavaIoFile.getPath(), AIOGalleryScene.F(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), 1);
+          PicShareToWX.a(this.c.getPath(), AIOGalleryScene.M(this.d), 1);
           ReportController.b(null, "dc00898", "", "", "0X800A4FF", "0X800A4FF", 0, 0, "", "", "", "");
         }
-        else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.asBinder().pingBinder())
+        else if (this.d.V.asBinder().pingBinder())
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.f);
+          this.d.V.f(this.a.L);
           ReportController.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-          QQToast.a(AIOGalleryScene.B(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), 2, AIOGalleryScene.C(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getString(2131692645), 0).a();
+          QQToast.makeText(AIOGalleryScene.I(this.d), 2, AIOGalleryScene.J(this.d).getString(2131889669), 0).show();
         }
         i = -1;
       }
       else
       {
-        localObject = (AIOFileVideoData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-        FileManagerUtil.a(AIOGalleryScene.E(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), ((AIOFileVideoData)localObject).c);
+        localObject = (AIOFileVideoData)this.a;
+        FileManagerUtil.a(AIOGalleryScene.L(this.d), ((AIOFileVideoData)localObject).c);
         i = 11;
       }
       label637:
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         localObject = "0X8009EF7";
       } else {
         localObject = "0X8009EFA";
@@ -131,7 +131,7 @@ class AIOGalleryScene$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.22
  * JD-Core Version:    0.7.0.1
  */

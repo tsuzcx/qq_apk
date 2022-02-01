@@ -9,18 +9,18 @@ final class InterestGuide$1
 {
   public void run()
   {
-    if (((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.TRUE)).booleanValue())
+    if (((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a, "interest_guide_key", Boolean.TRUE)).booleanValue())
     {
-      InterestGuide.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(new InterestGuide(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int));
-      InterestGuide.jdField_a_of_type_JavaLangBoolean = Boolean.TRUE;
+      InterestGuide.c = new WeakReference(new InterestGuide(this.a, this.b, this.c));
+      InterestGuide.a = Boolean.TRUE;
       return;
     }
-    InterestGuide.jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
+    InterestGuide.a = Boolean.FALSE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.InterestGuide.1
  * JD-Core Version:    0.7.0.1
  */

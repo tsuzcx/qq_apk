@@ -50,15 +50,15 @@ public class AIOShareHelperImpl
     AEQLog.b("AIOShareHelperImpl", ((StringBuilder)localObject).toString());
     localObject = new Intent();
     paramString = new AIOShareHelperImpl.1(this, (Intent)localObject, paramActivity, paramString, paramInt, paramAIOShareObject);
-    if (paramAIOShareObject.a())
+    if (paramAIOShareObject.g())
     {
       ((Intent)localObject).putExtra("key_help_forward_pic", true);
       ((Intent)localObject).putExtra("forward_type", 1);
-      ((Intent)localObject).setData(Uri.parse(paramAIOShareObject.a()));
+      ((Intent)localObject).setData(Uri.parse(paramAIOShareObject.b()));
       ThreadManager.getUIHandler().post(paramString);
       return;
     }
-    if (paramAIOShareObject.b())
+    if (paramAIOShareObject.h())
     {
       showLoading(paramActivity);
       paramActivity = new AIOShareHelperImpl.2(this, paramAIOShareObject, (Intent)localObject, paramString);
@@ -85,16 +85,16 @@ public class AIOShareHelperImpl
     localStringBuilder.append(", shareObj = ");
     localStringBuilder.append(paramAIOShareObject);
     AEQLog.b("AIOShareHelperImpl", localStringBuilder.toString());
-    if (!WXShareHelper.a().a())
-    {
-      AEQLog.d("AIOShareHelperImpl", "shareToWeChat error: wechat not install");
-      QQToast.a(paramActivity, 1, 2131720478, 0).a();
-      return;
-    }
     if (!WXShareHelper.a().b())
     {
+      AEQLog.d("AIOShareHelperImpl", "shareToWeChat error: wechat not install");
+      QQToast.makeText(paramActivity, 1, 2131918154, 0).show();
+      return;
+    }
+    if (!WXShareHelper.a().c())
+    {
       AEQLog.d("AIOShareHelperImpl", "shareToWeChat error: wechat version not support");
-      QQToast.a(paramActivity, 1, 2131720479, 0).a();
+      QQToast.makeText(paramActivity, 1, 2131918155, 0).show();
       return;
     }
     if (paramAIOWXShareListener != null) {
@@ -118,7 +118,7 @@ public class AIOShareHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.share.impl.AIOShareHelperImpl
  * JD-Core Version:    0.7.0.1
  */

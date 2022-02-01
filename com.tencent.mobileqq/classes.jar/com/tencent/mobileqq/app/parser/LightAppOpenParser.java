@@ -15,9 +15,9 @@ public class LightAppOpenParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new LightAppOpenAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "lightapp";
-    paramBaseQQAppInterface.c = "open";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "lightapp";
+    paramBaseQQAppInterface.e = "open";
     paramContext = Uri.parse(paramString);
     paramString = paramContext.getQueryParameterNames().iterator();
     while (paramString.hasNext())
@@ -36,7 +36,7 @@ public class LightAppOpenParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.LightAppOpenParser
  * JD-Core Version:    0.7.0.1
  */

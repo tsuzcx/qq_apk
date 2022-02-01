@@ -7,16 +7,16 @@ import com.tencent.widget.GestureSelectGridView.OnSelectListener;
 class AIOImageListScene$5
   implements GestureSelectGridView.OnSelectListener
 {
-  int jdField_a_of_type_Int = -2147483648;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 2147483647;
-  boolean jdField_b_of_type_Boolean;
+  boolean a = false;
+  boolean b;
+  int c = -2147483648;
+  int d = 2147483647;
   
   AIOImageListScene$5(AIOImageListScene paramAIOImageListScene) {}
   
   public AIORichMediaInfo a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a.a(paramInt);
+    Object localObject = this.e.u.h(paramInt);
     if (AIORichMediaInfo.class.isInstance(localObject)) {
       return (AIORichMediaInfo)localObject;
     }
@@ -25,10 +25,10 @@ class AIOImageListScene$5
   
   public void onSelectBegin(int paramInt)
   {
-    if (!AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
+    if (!AIOImageListScene.w(this.e)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2) {
+    if (this.e.B() == 2) {
       return;
     }
     Object localObject = a(paramInt);
@@ -41,13 +41,13 @@ class AIOImageListScene$5
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a((AIORichMediaInfo)localObject, this.jdField_a_of_type_Boolean ^ true, true))
+    this.a = bool;
+    if (this.e.a((AIORichMediaInfo)localObject, this.a ^ true, true))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.w();
-      AIOImageListScene.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).invalidateViews();
+      this.e.A();
+      AIOImageListScene.x(this.e).invalidateViews();
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.b = true;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -59,13 +59,13 @@ class AIOImageListScene$5
   
   public void onSelectChanged(int paramInt1, int paramInt2)
   {
-    if (!AIOImageListScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
+    if (!AIOImageListScene.y(this.e)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2) {
+    if (this.e.B() == 2) {
       return;
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
     Object localObject;
@@ -82,8 +82,8 @@ class AIOImageListScene$5
     int j;
     if (paramInt2 < paramInt1)
     {
-      if (this.jdField_b_of_type_Int > paramInt2) {
-        this.jdField_b_of_type_Int = paramInt2;
+      if (this.d > paramInt2) {
+        this.d = paramInt2;
       }
       i = paramInt2;
       j = paramInt1;
@@ -92,9 +92,9 @@ class AIOImageListScene$5
     {
       i = paramInt1;
       j = paramInt2;
-      if (this.jdField_a_of_type_Int < paramInt2)
+      if (this.c < paramInt2)
       {
-        this.jdField_a_of_type_Int = paramInt2;
+        this.c = paramInt2;
         j = paramInt2;
         i = paramInt1;
       }
@@ -104,55 +104,55 @@ class AIOImageListScene$5
     {
       localObject = a(paramInt1);
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a((AIORichMediaInfo)localObject, this.jdField_a_of_type_Boolean ^ true, true);
+        this.e.a((AIORichMediaInfo)localObject, this.a ^ true, true);
       }
       paramInt1 += 1;
     }
     paramInt1 = j + 1;
-    while (paramInt1 <= this.jdField_a_of_type_Int)
+    while (paramInt1 <= this.c)
     {
       localObject = a(paramInt1);
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a((AIORichMediaInfo)localObject, this.jdField_a_of_type_Boolean, true);
+        this.e.a((AIORichMediaInfo)localObject, this.a, true);
       }
       paramInt1 += 1;
     }
-    paramInt1 = this.jdField_b_of_type_Int;
+    paramInt1 = this.d;
     while (paramInt1 < i)
     {
       localObject = a(paramInt1);
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a((AIORichMediaInfo)localObject, this.jdField_a_of_type_Boolean, true);
+        this.e.a((AIORichMediaInfo)localObject, this.a, true);
       }
       paramInt1 += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.w();
-    AIOImageListScene.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).invalidateViews();
+    this.e.A();
+    AIOImageListScene.z(this.e).invalidateViews();
   }
   
   public void onSelectEnd()
   {
-    if (!AIOImageListScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene)) {
+    if (!AIOImageListScene.A(this.e)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a() == 2) {
+    if (this.e.B() == 2) {
       return;
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.b = false;
     if (QLog.isColorLevel()) {
       QLog.d("AIOImageListScene", 2, "onSelectEnd");
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_b_of_type_Int = 2147483647;
+    this.a = false;
+    this.c = -2147483648;
+    this.d = 2147483647;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qcircle.api.helper;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class QCircleObserver
   implements BusinessObserver
@@ -14,7 +14,7 @@ public class QCircleObserver
       return;
     }
     paramInt = ((Integer)paramObject).intValue();
-    RFLog.d("QCircleObserver", RFLog.USR, "TYPE_UPDATE_RED_POINT_DISPLAY repointNum");
+    QLog.d("QCircleObserver", 1, "TYPE_UPDATE_RED_POINT_DISPLAY repointNum");
     onUpdateRedPoint(paramInt);
   }
   
@@ -22,7 +22,7 @@ public class QCircleObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.helper.QCircleObserver
  * JD-Core Version:    0.7.0.1
  */

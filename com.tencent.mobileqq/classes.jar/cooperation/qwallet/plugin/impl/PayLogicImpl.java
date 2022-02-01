@@ -386,11 +386,11 @@ public class PayLogicImpl
     //   529: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   532: pop
     //   533: aload_3
-    //   534: invokestatic 331	com/tencent/common/config/AppSetting:a	()I
-    //   537: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   534: invokestatic 332	com/tencent/common/config/AppSetting:d	()I
+    //   537: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   540: pop
     //   541: aload_3
-    //   542: ldc_w 336
+    //   542: ldc_w 337
     //   545: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   548: pop
     //   549: aload_3
@@ -405,8 +405,8 @@ public class PayLogicImpl
     //   565: aload 24
     //   567: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   570: aload 4
-    //   572: ldc_w 338
-    //   575: ldc_w 340
+    //   572: ldc_w 339
+    //   575: ldc_w 341
     //   578: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   581: aload 4
     //   583: ldc 232
@@ -417,17 +417,17 @@ public class PayLogicImpl
     //   595: aload_3
     //   596: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   599: aload 4
-    //   601: ldc_w 342
-    //   604: ldc_w 342
+    //   601: ldc_w 343
+    //   604: ldc_w 343
     //   607: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   610: aload 4
     //   612: ldc 230
     //   614: aload 23
     //   616: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   619: aload 4
-    //   621: ldc_w 344
+    //   621: ldc_w 345
     //   624: iconst_0
-    //   625: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   625: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   628: aload 4
     //   630: ldc 251
     //   632: aload 18
@@ -447,34 +447,34 @@ public class PayLogicImpl
     //   665: aload 4
     //   667: ldc_w 259
     //   670: iload 11
-    //   672: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   672: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   675: aload 4
-    //   677: ldc_w 350
+    //   677: ldc_w 351
     //   680: bipush 7
-    //   682: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   682: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   685: aload 4
-    //   687: ldc_w 352
+    //   687: ldc_w 353
     //   690: iload 5
-    //   692: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   692: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   695: aload 4
-    //   697: ldc_w 354
+    //   697: ldc_w 355
     //   700: lload 6
-    //   702: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   702: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   705: aload 4
-    //   707: ldc_w 360
+    //   707: ldc_w 361
     //   710: lload 8
-    //   712: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   712: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   715: aload_2
     //   716: aload 4
-    //   718: invokestatic 364	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
+    //   718: invokestatic 365	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
     //   721: lload 8
     //   723: aconst_null
-    //   724: ldc_w 366
+    //   724: ldc_w 367
     //   727: aconst_null
     //   728: iconst_0
     //   729: aconst_null
     //   730: invokestatic 290	com/tencent/mobileqq/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   733: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   733: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   736: istore 12
     //   738: iload 12
     //   740: ifeq +38 -> 778
@@ -483,14 +483,14 @@ public class PayLogicImpl
     //   747: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   750: astore_2
     //   751: aload_2
-    //   752: ldc_w 373
+    //   752: ldc_w 374
     //   755: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   758: pop
     //   759: aload_2
-    //   760: invokestatic 379	java/lang/System:currentTimeMillis	()J
-    //   763: invokevirtual 382	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   760: invokestatic 380	java/lang/System:currentTimeMillis	()J
+    //   763: invokevirtual 383	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   766: pop
-    //   767: ldc_w 384
+    //   767: ldc_w 385
     //   770: iconst_4
     //   771: aload_2
     //   772: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -504,7 +504,7 @@ public class PayLogicImpl
     //   788: aload_0
     //   789: ldc_w 396
     //   792: iconst_0
-    //   793: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   793: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   796: aload_0
     //   797: ldc 220
     //   799: aload 22
@@ -560,14 +560,14 @@ public class PayLogicImpl
     //   897: aload_1
     //   898: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   901: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   904: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   904: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   907: ifeq +7 -> 914
     //   910: aload_0
     //   911: invokevirtual 412	java/lang/Exception:printStackTrace	()V
     //   914: aload 14
     //   916: ldc_w 396
     //   919: iconst_m1
-    //   920: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   920: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   923: aload 14
     //   925: ldc_w 414
     //   928: ldc_w 416
@@ -597,14 +597,14 @@ public class PayLogicImpl
     //   974: aload_2
     //   975: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   978: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   981: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   981: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   984: ifeq +7 -> 991
     //   987: aload_0
     //   988: invokevirtual 420	org/json/JSONException:printStackTrace	()V
     //   991: aload 14
     //   993: ldc_w 396
     //   996: iconst_m1
-    //   997: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   997: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1000: aload 14
     //   1002: ldc_w 414
     //   1005: ldc_w 422
@@ -723,21 +723,21 @@ public class PayLogicImpl
   {
     Dialog localDialog = new Dialog(this.mActivity, R.style.b);
     localDialog.setContentView(R.layout.a);
-    TextView localTextView = (TextView)localDialog.findViewById(R.id.z);
+    TextView localTextView = (TextView)localDialog.findViewById(R.id.E);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = (TextView)localDialog.findViewById(R.id.y);
+    paramString1 = (TextView)localDialog.findViewById(R.id.D);
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(R.id.w);
+    paramString1 = (TextView)localDialog.findViewById(R.id.B);
     if (paramString1 != null) {
       paramString1.setText(17039360);
     }
-    paramString1 = (TextView)localDialog.findViewById(R.id.x);
+    paramString1 = (TextView)localDialog.findViewById(R.id.C);
     if (paramString1 != null) {
-      paramString1.setText(R.string.dk);
+      paramString1.setText(R.string.dn);
     }
     localDialog.setOnDismissListener(paramOnDismissListener);
     return localDialog;
@@ -1007,21 +1007,21 @@ public class PayLogicImpl
     //   14: invokespecial 218	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   17: astore 23
     //   19: aload 23
-    //   21: ldc_w 688
+    //   21: ldc_w 690
     //   24: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   27: astore 20
     //   29: aload 23
-    //   31: ldc_w 690
+    //   31: ldc_w 692
     //   34: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   37: astore 21
     //   39: ldc_w 414
     //   42: astore 4
     //   44: aload 23
-    //   46: ldc_w 692
+    //   46: ldc_w 694
     //   49: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   52: astore 22
     //   54: aload 23
-    //   56: ldc_w 694
+    //   56: ldc_w 696
     //   59: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   62: istore 11
     //   64: aconst_null
@@ -1029,7 +1029,7 @@ public class PayLogicImpl
     //   67: iload 11
     //   69: ifeq +41 -> 110
     //   72: aload 23
-    //   74: ldc_w 694
+    //   74: ldc_w 696
     //   77: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   80: astore 12
     //   82: goto +31 -> 113
@@ -1050,24 +1050,24 @@ public class PayLogicImpl
     //   110: aconst_null
     //   111: astore 12
     //   113: aload 23
-    //   115: ldc_w 696
+    //   115: ldc_w 698
     //   118: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   121: ifeq +16 -> 137
     //   124: aload 23
-    //   126: ldc_w 696
+    //   126: ldc_w 698
     //   129: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   132: astore 13
     //   134: goto +6 -> 140
     //   137: aconst_null
     //   138: astore 13
     //   140: aload 23
-    //   142: ldc_w 698
+    //   142: ldc_w 700
     //   145: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   148: istore 11
     //   150: iload 11
     //   152: ifeq +39 -> 191
     //   155: aload 23
-    //   157: ldc_w 698
+    //   157: ldc_w 700
     //   160: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   163: astore 14
     //   165: goto +29 -> 194
@@ -1088,13 +1088,13 @@ public class PayLogicImpl
     //   191: aconst_null
     //   192: astore 14
     //   194: aload 23
-    //   196: ldc_w 700
+    //   196: ldc_w 702
     //   199: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   202: istore 11
     //   204: iload 11
     //   206: ifeq +37 -> 243
     //   209: aload 23
-    //   211: ldc_w 700
+    //   211: ldc_w 702
     //   214: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   217: astore 15
     //   219: goto +27 -> 246
@@ -1113,52 +1113,52 @@ public class PayLogicImpl
     //   243: aconst_null
     //   244: astore 15
     //   246: aload 23
-    //   248: ldc_w 702
+    //   248: ldc_w 704
     //   251: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   254: istore 11
     //   256: iload 11
     //   258: ifeq +16 -> 274
     //   261: aload 23
-    //   263: ldc_w 702
+    //   263: ldc_w 704
     //   266: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   269: astore 16
     //   271: goto +6 -> 277
     //   274: aconst_null
     //   275: astore 16
     //   277: aload 23
-    //   279: ldc_w 704
+    //   279: ldc_w 706
     //   282: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   285: istore 11
     //   287: iload 11
     //   289: ifeq +16 -> 305
     //   292: aload 23
-    //   294: ldc_w 704
+    //   294: ldc_w 706
     //   297: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   300: astore 17
     //   302: goto +6 -> 308
     //   305: aconst_null
     //   306: astore 17
     //   308: aload 23
-    //   310: ldc_w 706
+    //   310: ldc_w 708
     //   313: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   316: istore 11
     //   318: iload 11
     //   320: ifeq +16 -> 336
     //   323: aload 23
-    //   325: ldc_w 706
+    //   325: ldc_w 708
     //   328: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   331: astore 18
     //   333: goto +6 -> 339
     //   336: aconst_null
     //   337: astore 18
     //   339: aload 23
-    //   341: ldc_w 708
+    //   341: ldc_w 710
     //   344: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   347: istore 11
     //   349: iload 11
     //   351: ifeq +13 -> 364
     //   354: aload 23
-    //   356: ldc_w 708
+    //   356: ldc_w 710
     //   359: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   362: astore 19
     //   364: new 265	java/lang/StringBuilder
@@ -1166,7 +1166,7 @@ public class PayLogicImpl
     //   368: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   371: astore 23
     //   373: aload 23
-    //   375: ldc_w 710
+    //   375: ldc_w 712
     //   378: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   381: pop
     //   382: aload 23
@@ -1174,7 +1174,7 @@ public class PayLogicImpl
     //   386: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: pop
     //   390: aload 23
-    //   392: ldc_w 712
+    //   392: ldc_w 714
     //   395: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   398: pop
     //   399: aload 23
@@ -1182,7 +1182,7 @@ public class PayLogicImpl
     //   403: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   406: pop
     //   407: aload 23
-    //   409: ldc_w 714
+    //   409: ldc_w 716
     //   412: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   415: pop
     //   416: aload 23
@@ -1190,7 +1190,7 @@ public class PayLogicImpl
     //   420: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   423: pop
     //   424: aload 23
-    //   426: ldc_w 716
+    //   426: ldc_w 718
     //   429: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   432: pop
     //   433: aload 23
@@ -1198,7 +1198,7 @@ public class PayLogicImpl
     //   437: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   440: pop
     //   441: aload 23
-    //   443: ldc_w 718
+    //   443: ldc_w 720
     //   446: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   449: pop
     //   450: aload 23
@@ -1206,7 +1206,7 @@ public class PayLogicImpl
     //   454: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   457: pop
     //   458: aload 23
-    //   460: ldc_w 720
+    //   460: ldc_w 722
     //   463: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   466: pop
     //   467: aload 23
@@ -1214,7 +1214,7 @@ public class PayLogicImpl
     //   471: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   474: pop
     //   475: aload 23
-    //   477: ldc_w 722
+    //   477: ldc_w 724
     //   480: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   483: pop
     //   484: aload 23
@@ -1222,7 +1222,7 @@ public class PayLogicImpl
     //   488: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   491: pop
     //   492: aload 23
-    //   494: ldc_w 724
+    //   494: ldc_w 726
     //   497: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   500: pop
     //   501: aload 23
@@ -1230,7 +1230,7 @@ public class PayLogicImpl
     //   505: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   508: pop
     //   509: aload 23
-    //   511: ldc_w 726
+    //   511: ldc_w 728
     //   514: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   517: pop
     //   518: aload 23
@@ -1238,7 +1238,7 @@ public class PayLogicImpl
     //   522: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   525: pop
     //   526: aload 23
-    //   528: ldc_w 728
+    //   528: ldc_w 730
     //   531: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   534: pop
     //   535: aload 23
@@ -1246,7 +1246,7 @@ public class PayLogicImpl
     //   539: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   542: pop
     //   543: aload 23
-    //   545: ldc_w 730
+    //   545: ldc_w 732
     //   548: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   551: pop
     //   552: aload 23
@@ -1279,47 +1279,47 @@ public class PayLogicImpl
     //   609: invokespecial 213	android/os/Bundle:<init>	()V
     //   612: astore 10
     //   614: aload 10
-    //   616: ldc_w 688
+    //   616: ldc_w 690
     //   619: aload 20
     //   621: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   624: aload 10
-    //   626: ldc_w 690
+    //   626: ldc_w 692
     //   629: aload 21
     //   631: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   634: aload 10
-    //   636: ldc_w 692
+    //   636: ldc_w 694
     //   639: aload 22
     //   641: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   644: aload 10
-    //   646: ldc_w 694
+    //   646: ldc_w 696
     //   649: aload 12
     //   651: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   654: aload 10
-    //   656: ldc_w 696
+    //   656: ldc_w 698
     //   659: aload 13
     //   661: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   664: aload 10
-    //   666: ldc_w 698
+    //   666: ldc_w 700
     //   669: aload 14
     //   671: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   674: aload 10
-    //   676: ldc_w 700
+    //   676: ldc_w 702
     //   679: aload 15
     //   681: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   684: aload 10
-    //   686: ldc_w 702
+    //   686: ldc_w 704
     //   689: aload 16
     //   691: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   694: aload 10
-    //   696: ldc_w 704
+    //   696: ldc_w 706
     //   699: aload 17
     //   701: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   704: aload 10
-    //   706: ldc_w 706
+    //   706: ldc_w 708
     //   709: aload 18
     //   711: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   714: aload 10
-    //   716: ldc_w 708
+    //   716: ldc_w 710
     //   719: aload 19
     //   721: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   724: aload 10
@@ -1327,32 +1327,32 @@ public class PayLogicImpl
     //   729: aload_3
     //   730: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   733: aload 10
-    //   735: ldc_w 350
+    //   735: ldc_w 351
     //   738: bipush 17
-    //   740: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   740: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   743: aload 10
-    //   745: ldc_w 352
+    //   745: ldc_w 353
     //   748: iload 5
-    //   750: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   750: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   753: aload 10
-    //   755: ldc_w 354
+    //   755: ldc_w 355
     //   758: lload 6
-    //   760: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   760: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   763: aload 10
-    //   765: ldc_w 360
+    //   765: ldc_w 361
     //   768: lload 8
-    //   770: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   770: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   773: aload_2
     //   774: aload 10
-    //   776: invokestatic 364	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
+    //   776: invokestatic 365	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
     //   779: lload 8
     //   781: aconst_null
-    //   782: ldc_w 366
+    //   782: ldc_w 367
     //   785: aconst_null
     //   786: iconst_0
     //   787: aconst_null
     //   788: invokestatic 290	com/tencent/mobileqq/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   791: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   791: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   794: istore 11
     //   796: iload 11
     //   798: ifeq +38 -> 836
@@ -1361,14 +1361,14 @@ public class PayLogicImpl
     //   805: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   808: astore_2
     //   809: aload_2
-    //   810: ldc_w 373
+    //   810: ldc_w 374
     //   813: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   816: pop
     //   817: aload_2
-    //   818: invokestatic 379	java/lang/System:currentTimeMillis	()J
-    //   821: invokevirtual 382	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   818: invokestatic 380	java/lang/System:currentTimeMillis	()J
+    //   821: invokevirtual 383	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   824: pop
-    //   825: ldc_w 384
+    //   825: ldc_w 385
     //   828: iconst_4
     //   829: aload_2
     //   830: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -1384,7 +1384,7 @@ public class PayLogicImpl
     //   849: aload_1
     //   850: aload_2
     //   851: iconst_0
-    //   852: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   852: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   855: aload_1
     //   856: areturn
     //   857: astore_0
@@ -1457,7 +1457,7 @@ public class PayLogicImpl
     //   968: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   971: astore_3
     //   972: aload_3
-    //   973: ldc_w 732
+    //   973: ldc_w 734
     //   976: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   979: pop
     //   980: aload_3
@@ -1470,17 +1470,17 @@ public class PayLogicImpl
     //   992: aload_3
     //   993: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   996: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   999: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   999: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1002: ifeq +7 -> 1009
     //   1005: aload_0
     //   1006: invokevirtual 412	java/lang/Exception:printStackTrace	()V
     //   1009: aload_1
     //   1010: aload_2
     //   1011: iconst_m1
-    //   1012: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1012: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1015: aload_1
     //   1016: ldc_w 414
-    //   1019: ldc_w 734
+    //   1019: ldc_w 736
     //   1022: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1025: aload_1
     //   1026: areturn
@@ -1500,7 +1500,7 @@ public class PayLogicImpl
     //   1052: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1055: astore 10
     //   1057: aload 10
-    //   1059: ldc_w 736
+    //   1059: ldc_w 738
     //   1062: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1065: pop
     //   1066: aload 10
@@ -1513,17 +1513,17 @@ public class PayLogicImpl
     //   1079: aload 10
     //   1081: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1084: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1087: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1087: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1090: ifeq +7 -> 1097
     //   1093: aload_0
     //   1094: invokevirtual 420	org/json/JSONException:printStackTrace	()V
     //   1097: aload_1
     //   1098: aload_2
     //   1099: iconst_m1
-    //   1100: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1100: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1103: aload_1
     //   1104: aload_3
-    //   1105: ldc_w 738
+    //   1105: ldc_w 740
     //   1108: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1111: aload_1
     //   1112: areturn
@@ -1987,39 +1987,39 @@ public class PayLogicImpl
     //   11: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   14: astore 5
     //   16: aload_1
-    //   17: ldc_w 1007
+    //   17: ldc_w 1009
     //   20: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   23: astore 6
     //   25: aload_1
-    //   26: ldc_w 571
+    //   26: ldc_w 573
     //   29: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   32: astore 7
     //   34: aload_1
-    //   35: ldc_w 575
+    //   35: ldc_w 577
     //   38: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   41: astore 8
     //   43: aload_1
-    //   44: ldc_w 812
+    //   44: ldc_w 814
     //   47: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   50: astore 9
     //   52: aload_1
-    //   53: ldc_w 1009
+    //   53: ldc_w 1011
     //   56: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   59: astore 10
     //   61: aload_1
-    //   62: ldc_w 1011
+    //   62: ldc_w 1013
     //   65: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   68: astore 11
     //   70: aload_1
     //   71: ldc_w 553
-    //   74: invokevirtual 1012	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   74: invokevirtual 1014	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
     //   77: istore_2
     //   78: aload_1
-    //   79: ldc_w 567
+    //   79: ldc_w 569
     //   82: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   85: astore 12
     //   87: aload_1
-    //   88: ldc_w 569
+    //   88: ldc_w 571
     //   91: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   94: astore 13
     //   96: aload_1
@@ -2035,7 +2035,7 @@ public class PayLogicImpl
     //   115: invokevirtual 549	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   118: astore 16
     //   120: aload_1
-    //   121: ldc_w 1014
+    //   121: ldc_w 1016
     //   124: iconst_1
     //   125: invokevirtual 556	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
     //   128: istore_3
@@ -2056,11 +2056,11 @@ public class PayLogicImpl
     //   159: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: pop
     //   163: aload 18
-    //   165: invokestatic 331	com/tencent/common/config/AppSetting:a	()I
-    //   168: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   165: invokestatic 332	com/tencent/common/config/AppSetting:d	()I
+    //   168: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   171: pop
     //   172: aload 18
-    //   174: ldc_w 336
+    //   174: ldc_w 337
     //   177: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: pop
     //   181: aload 18
@@ -2107,7 +2107,7 @@ public class PayLogicImpl
     //   273: invokevirtual 321	java/lang/String:length	()I
     //   276: ifle +13 -> 289
     //   279: aload 19
-    //   281: ldc_w 834
+    //   281: ldc_w 836
     //   284: aload 9
     //   286: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   289: aload 19
@@ -2119,37 +2119,37 @@ public class PayLogicImpl
     //   303: aload 6
     //   305: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   308: aload 19
-    //   310: ldc_w 338
-    //   313: ldc_w 340
+    //   310: ldc_w 339
+    //   313: ldc_w 341
     //   316: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   319: aload 19
     //   321: ldc_w 516
-    //   324: ldc_w 1007
+    //   324: ldc_w 1009
     //   327: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   330: aload 19
     //   332: ldc_w 325
     //   335: aload 18
     //   337: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   340: aload 19
-    //   342: ldc_w 342
-    //   345: ldc_w 342
+    //   342: ldc_w 343
+    //   345: ldc_w 343
     //   348: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   351: aload 19
-    //   353: ldc_w 571
+    //   353: ldc_w 573
     //   356: aload 7
     //   358: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   361: aload 19
-    //   363: ldc_w 575
+    //   363: ldc_w 577
     //   366: aload 8
     //   368: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   371: aload 19
-    //   373: ldc_w 1014
+    //   373: ldc_w 1016
     //   376: iload_3
     //   377: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   380: aload 19
-    //   382: ldc_w 344
+    //   382: ldc_w 345
     //   385: iconst_0
-    //   386: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   386: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   389: aload 11
     //   391: ifnull +36 -> 427
     //   394: aload 11
@@ -2166,15 +2166,15 @@ public class PayLogicImpl
     //   421: invokevirtual 316	java/lang/Boolean:booleanValue	()Z
     //   424: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   427: aload 19
-    //   429: ldc_w 581
+    //   429: ldc_w 583
     //   432: ldc 249
     //   434: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   437: aload 19
-    //   439: ldc_w 567
+    //   439: ldc_w 569
     //   442: aload 12
     //   444: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   447: aload 19
-    //   449: ldc_w 569
+    //   449: ldc_w 571
     //   452: aload 13
     //   454: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   457: aload 19
@@ -2194,16 +2194,16 @@ public class PayLogicImpl
     //   489: aload 17
     //   491: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   494: aload 19
-    //   496: ldc_w 350
+    //   496: ldc_w 351
     //   499: iconst_4
-    //   500: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   500: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   503: aload_0
     //   504: astore_1
     //   505: aload 19
-    //   507: ldc_w 352
+    //   507: ldc_w 353
     //   510: aload_1
     //   511: getfield 148	cooperation/qwallet/plugin/impl/PayLogicImpl:mPayType	I
-    //   514: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   514: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   517: aload_1
     //   518: aload 19
     //   520: invokespecial 545	cooperation/qwallet/plugin/impl/PayLogicImpl:putProxyReceiverToBundle	(Landroid/os/Bundle;)V
@@ -2225,7 +2225,7 @@ public class PayLogicImpl
     //   553: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   556: astore 4
     //   558: aload 4
-    //   560: ldc_w 1016
+    //   560: ldc_w 1018
     //   563: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   566: pop
     //   567: aload 4
@@ -2240,10 +2240,10 @@ public class PayLogicImpl
     //   585: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   588: aload_0
     //   589: bipush 251
-    //   591: ldc_w 1018
+    //   591: ldc_w 1020
     //   594: iconst_m1
     //   595: iconst_m1
-    //   596: invokespecial 1020	cooperation/qwallet/plugin/impl/PayLogicImpl:onOpenQzoneVipServiceCallBack	(ILjava/lang/String;II)V
+    //   596: invokespecial 1022	cooperation/qwallet/plugin/impl/PayLogicImpl:onOpenQzoneVipServiceCallBack	(ILjava/lang/String;II)V
     //   599: aload_1
     //   600: invokevirtual 412	java/lang/Exception:printStackTrace	()V
     //   603: return
@@ -2435,7 +2435,7 @@ public class PayLogicImpl
           paramBundle.putString("callbackSn", str18);
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("qq_m_qq-2013-android-");
-          ((StringBuilder)localObject1).append(AppSetting.a());
+          ((StringBuilder)localObject1).append(AppSetting.d());
           ((StringBuilder)localObject1).append("-");
           ((StringBuilder)localObject1).append(str4);
           localObject1 = ((StringBuilder)localObject1).toString();
@@ -2603,19 +2603,19 @@ public class PayLogicImpl
     //   32: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   35: astore 29
     //   37: aload 32
-    //   39: ldc_w 571
+    //   39: ldc_w 573
     //   42: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   45: astore 30
     //   47: aload 32
-    //   49: ldc_w 575
+    //   49: ldc_w 577
     //   52: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   55: astore 31
     //   57: aload 32
-    //   59: ldc_w 812
+    //   59: ldc_w 814
     //   62: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   65: ifeq +1134 -> 1199
     //   68: aload 32
-    //   70: ldc_w 812
+    //   70: ldc_w 814
     //   73: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   76: astore 13
     //   78: goto +3 -> 81
@@ -2631,11 +2631,11 @@ public class PayLogicImpl
     //   103: aload 13
     //   105: astore 27
     //   107: aload 32
-    //   109: ldc_w 1011
+    //   109: ldc_w 1013
     //   112: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   115: ifeq +1096 -> 1211
     //   118: aload 32
-    //   120: ldc_w 1011
+    //   120: ldc_w 1013
     //   123: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   126: astore 13
     //   128: goto +3 -> 131
@@ -2649,7 +2649,7 @@ public class PayLogicImpl
     //   150: istore 11
     //   152: goto +3 -> 155
     //   155: aload 32
-    //   157: ldc_w 581
+    //   157: ldc_w 583
     //   160: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   163: istore 12
     //   165: ldc 249
@@ -2657,25 +2657,25 @@ public class PayLogicImpl
     //   169: iload 12
     //   171: ifeq +1052 -> 1223
     //   174: aload 32
-    //   176: ldc_w 581
+    //   176: ldc_w 583
     //   179: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   182: astore 15
     //   184: goto +3 -> 187
     //   187: aload 32
-    //   189: ldc_w 567
+    //   189: ldc_w 569
     //   192: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   195: ifeq +1035 -> 1230
     //   198: aload 32
-    //   200: ldc_w 567
+    //   200: ldc_w 569
     //   203: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   206: astore 16
     //   208: goto +3 -> 211
     //   211: aload 32
-    //   213: ldc_w 569
+    //   213: ldc_w 571
     //   216: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   219: ifeq +1017 -> 1236
     //   222: aload 32
-    //   224: ldc_w 569
+    //   224: ldc_w 571
     //   227: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   230: astore 17
     //   232: goto +3 -> 235
@@ -2707,11 +2707,11 @@ public class PayLogicImpl
     //   296: astore 20
     //   298: goto +3 -> 301
     //   301: aload 32
-    //   303: ldc_w 1014
+    //   303: ldc_w 1016
     //   306: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   309: ifeq +954 -> 1263
     //   312: aload 32
-    //   314: ldc_w 1014
+    //   314: ldc_w 1016
     //   317: invokevirtual 243	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
     //   320: istore 12
     //   322: goto +3 -> 325
@@ -2725,28 +2725,28 @@ public class PayLogicImpl
     //   342: astore 21
     //   344: goto +3 -> 347
     //   347: aload 32
-    //   349: ldc_w 1057
+    //   349: ldc_w 1059
     //   352: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   355: ifeq +921 -> 1276
     //   358: aload 32
-    //   360: ldc_w 1057
+    //   360: ldc_w 1059
     //   363: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   366: astore 22
     //   368: goto +3 -> 371
     //   371: aload 32
-    //   373: ldc_w 1069
+    //   373: ldc_w 1071
     //   376: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   379: ifeq +904 -> 1283
     //   382: aload 32
-    //   384: ldc_w 1071
+    //   384: ldc_w 1073
     //   387: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   390: ifeq +893 -> 1283
     //   393: aload 32
-    //   395: ldc_w 1069
+    //   395: ldc_w 1071
     //   398: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   401: astore 24
     //   403: aload 32
-    //   405: ldc_w 1071
+    //   405: ldc_w 1073
     //   408: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   411: astore 23
     //   413: goto +3 -> 416
@@ -2768,11 +2768,11 @@ public class PayLogicImpl
     //   454: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   457: pop
     //   458: aload 25
-    //   460: invokestatic 331	com/tencent/common/config/AppSetting:a	()I
-    //   463: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   460: invokestatic 332	com/tencent/common/config/AppSetting:d	()I
+    //   463: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   466: pop
     //   467: aload 25
-    //   469: ldc_w 336
+    //   469: ldc_w 337
     //   472: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   475: pop
     //   476: aload 25
@@ -2852,7 +2852,7 @@ public class PayLogicImpl
     //   646: invokevirtual 321	java/lang/String:length	()I
     //   649: ifle +13 -> 662
     //   652: aload 4
-    //   654: ldc_w 834
+    //   654: ldc_w 836
     //   657: aload 27
     //   659: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   662: aload 4
@@ -2874,29 +2874,29 @@ public class PayLogicImpl
     //   700: aload 23
     //   702: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   705: aload 4
-    //   707: ldc_w 338
-    //   710: ldc_w 340
+    //   707: ldc_w 339
+    //   710: ldc_w 341
     //   713: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   716: aload 4
     //   718: ldc_w 325
     //   721: aload 25
     //   723: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   726: aload 4
-    //   728: ldc_w 342
-    //   731: ldc_w 342
+    //   728: ldc_w 343
+    //   731: ldc_w 343
     //   734: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   737: aload 4
-    //   739: ldc_w 571
+    //   739: ldc_w 573
     //   742: aload 30
     //   744: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   747: aload 4
-    //   749: ldc_w 575
+    //   749: ldc_w 577
     //   752: aload 31
     //   754: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   757: aload 4
-    //   759: ldc_w 344
+    //   759: ldc_w 345
     //   762: iconst_0
-    //   763: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   763: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   766: aload 13
     //   768: ifnull +37 -> 805
     //   771: aload 13
@@ -2913,15 +2913,15 @@ public class PayLogicImpl
     //   799: invokevirtual 316	java/lang/Boolean:booleanValue	()Z
     //   802: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   805: aload 4
-    //   807: ldc_w 581
+    //   807: ldc_w 583
     //   810: aload 15
     //   812: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   815: aload 4
-    //   817: ldc_w 567
+    //   817: ldc_w 569
     //   820: aload 16
     //   822: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   825: aload 4
-    //   827: ldc_w 569
+    //   827: ldc_w 571
     //   830: aload 17
     //   832: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   835: aload 4
@@ -2937,13 +2937,13 @@ public class PayLogicImpl
     //   857: aload 20
     //   859: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   862: aload 4
-    //   864: ldc_w 1014
+    //   864: ldc_w 1016
     //   867: iload 12
     //   869: invokestatic 312	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   872: invokevirtual 316	java/lang/Boolean:booleanValue	()Z
     //   875: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   878: aload 4
-    //   880: ldc_w 1057
+    //   880: ldc_w 1059
     //   883: aload 22
     //   885: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   888: aload 4
@@ -2951,46 +2951,46 @@ public class PayLogicImpl
     //   893: aload 26
     //   895: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   898: aload 4
-    //   900: ldc_w 350
+    //   900: ldc_w 351
     //   903: iconst_4
-    //   904: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   904: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   907: aload 4
-    //   909: ldc_w 352
+    //   909: ldc_w 353
     //   912: iload 5
-    //   914: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   914: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   917: aload 4
-    //   919: ldc_w 354
+    //   919: ldc_w 355
     //   922: lload 6
-    //   924: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   924: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   927: aload 4
-    //   929: ldc_w 360
+    //   929: ldc_w 361
     //   932: lload 8
-    //   934: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   934: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   937: aload_2
     //   938: aload 4
-    //   940: invokestatic 364	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
+    //   940: invokestatic 365	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
     //   943: lload 8
     //   945: aconst_null
-    //   946: ldc_w 366
+    //   946: ldc_w 367
     //   949: aconst_null
     //   950: iconst_0
     //   951: aconst_null
     //   952: invokestatic 290	com/tencent/mobileqq/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   955: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   955: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   958: ifeq +38 -> 996
     //   961: new 265	java/lang/StringBuilder
     //   964: dup
     //   965: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   968: astore_2
     //   969: aload_2
-    //   970: ldc_w 373
+    //   970: ldc_w 374
     //   973: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   976: pop
     //   977: aload_2
-    //   978: invokestatic 379	java/lang/System:currentTimeMillis	()J
-    //   981: invokevirtual 382	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   978: invokestatic 380	java/lang/System:currentTimeMillis	()J
+    //   981: invokevirtual 383	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   984: pop
-    //   985: ldc_w 384
+    //   985: ldc_w 385
     //   988: iconst_4
     //   989: aload_2
     //   990: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -3004,7 +3004,7 @@ public class PayLogicImpl
     //   1005: aload_1
     //   1006: ldc_w 396
     //   1009: iconst_0
-    //   1010: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1010: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1013: aload_1
     //   1014: ldc 220
     //   1016: aload 28
@@ -3035,7 +3035,7 @@ public class PayLogicImpl
     //   1066: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1069: astore_2
     //   1070: aload_2
-    //   1071: ldc_w 1016
+    //   1071: ldc_w 1018
     //   1074: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1077: pop
     //   1078: aload_2
@@ -3048,17 +3048,17 @@ public class PayLogicImpl
     //   1090: aload_2
     //   1091: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1094: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1097: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1097: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1100: ifeq +7 -> 1107
     //   1103: aload_1
     //   1104: invokevirtual 412	java/lang/Exception:printStackTrace	()V
     //   1107: aload_0
     //   1108: ldc_w 396
     //   1111: iconst_m1
-    //   1112: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1112: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1115: aload_0
     //   1116: ldc_w 414
-    //   1119: ldc_w 1073
+    //   1119: ldc_w 1075
     //   1122: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1125: aload_0
     //   1126: areturn
@@ -3070,7 +3070,7 @@ public class PayLogicImpl
     //   1138: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1141: astore_2
     //   1142: aload_2
-    //   1143: ldc_w 1075
+    //   1143: ldc_w 1077
     //   1146: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1149: pop
     //   1150: aload_2
@@ -3083,17 +3083,17 @@ public class PayLogicImpl
     //   1162: aload_2
     //   1163: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1166: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1169: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1169: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1172: ifeq +7 -> 1179
     //   1175: aload_1
     //   1176: invokevirtual 420	org/json/JSONException:printStackTrace	()V
     //   1179: aload_0
     //   1180: ldc_w 396
     //   1183: iconst_m1
-    //   1184: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1184: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1187: aload_0
     //   1188: ldc_w 414
-    //   1191: ldc_w 1077
+    //   1191: ldc_w 1079
     //   1194: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1197: aload_0
     //   1198: areturn
@@ -3325,7 +3325,7 @@ public class PayLogicImpl
                 ((Intent)localObject2).putExtra("come_from", 2);
                 ((Intent)localObject2).putExtra("is_H5", true);
                 if (!localJSONObject.has("appInfo")) {
-                  break label2213;
+                  break label2349;
                 }
                 paramBundle = localJSONObject.getString("appInfo");
                 ((Intent)localObject2).putExtra("app_info", paramBundle);
@@ -3362,7 +3362,7 @@ public class PayLogicImpl
                     ((Intent)localObject2).putExtra("come_from", 2);
                     ((Intent)localObject2).putExtra("is_H5", true);
                     if (!localJSONObject.has("appInfo")) {
-                      break label2219;
+                      break label2355;
                     }
                     paramBundle = localJSONObject.getString("appInfo");
                     label835:
@@ -3382,7 +3382,7 @@ public class PayLogicImpl
                     ((Intent)localObject2).putExtra("come_from", 2);
                     ((Intent)localObject2).putExtra("is_H5", true);
                     if (!localJSONObject.has("appInfo")) {
-                      break label2225;
+                      break label2361;
                     }
                     paramBundle = localJSONObject.getString("appInfo");
                     label983:
@@ -3413,7 +3413,7 @@ public class PayLogicImpl
             ((Intent)localObject2).putExtra("come_from", 2);
             ((Intent)localObject2).putExtra("is_H5", true);
             if (!localJSONObject.has("appInfo")) {
-              break label2231;
+              break label2367;
             }
             paramBundle = localJSONObject.getString("appInfo");
             label1207:
@@ -3432,13 +3432,13 @@ public class PayLogicImpl
             localObject2 = new Intent();
             ((Intent)localObject2).putExtra("callbackSn", str2);
             if (!localJSONObject.has("comeForm")) {
-              break label2237;
+              break label2373;
             }
             i = localJSONObject.getInt("comeForm");
             label1342:
             ((Intent)localObject2).putExtra("come_from", i);
             if (!localJSONObject.has("appInfo")) {
-              break label2242;
+              break label2378;
             }
             paramBundle = localJSONObject.getString("appInfo");
             label1375:
@@ -3470,12 +3470,16 @@ public class PayLogicImpl
       Object localObject4;
       label1501:
       label1652:
+      label1788:
       if (QLog.isColorLevel()) {
         QLog.e("Q.qwallet.pay.PayLogic", 2, "openTenpayView Exception", paramBundle);
       }
       label1585:
       label1618:
+      label1754:
       tenpayResult(str2, "{'resultCode':-1,'retmsg':'openTenpayView Exception'}");
+      label1686:
+      label1720:
       paramBundle.printStackTrace();
       return;
     }
@@ -3508,15 +3512,35 @@ public class PayLogicImpl
       i = localJSONObject.getInt("comeForm");
       ((Bundle)localObject4).putInt("come_from", i);
       if (!localJSONObject.has("appInfo")) {
-        break label2253;
+        break label2389;
       }
       localObject3 = localJSONObject.getString("appInfo");
       ((Bundle)localObject4).putString("app_info", (String)localObject3);
       if (!localJSONObject.has("extra_data")) {
-        break label2260;
+        break label2396;
       }
       localObject3 = localJSONObject.getString("extra_data");
       ((Bundle)localObject4).putString("extra_data", (String)localObject3);
+      if (!localJSONObject.has("grouptype")) {
+        break label2403;
+      }
+      localObject3 = localJSONObject.getString("grouptype");
+      ((Bundle)localObject4).putString("grouptype", (String)localObject3);
+      if (!localJSONObject.has("guildId")) {
+        break label2410;
+      }
+      localObject3 = localJSONObject.getString("guildId");
+      ((Bundle)localObject4).putString("guildId", (String)localObject3);
+      if (!localJSONObject.has("tinyId")) {
+        break label2417;
+      }
+      localObject3 = localJSONObject.getString("tinyId");
+      ((Bundle)localObject4).putString("tinyId", (String)localObject3);
+      if (!localJSONObject.has("subGuildId")) {
+        break label2424;
+      }
+      localObject3 = localJSONObject.getString("subGuildId");
+      ((Bundle)localObject4).putString("subGuildId", (String)localObject3);
       if (localJSONObject.has("senderuin")) {
         localObject1 = localJSONObject.getString("senderuin");
       }
@@ -3567,7 +3591,7 @@ public class PayLogicImpl
       ((Intent)localObject2).putExtra("isJumpToH5", false);
       ((Intent)localObject2).putExtra("tag", str3);
       if (!localJSONObject.has("appInfo")) {
-        break label2267;
+        break label2431;
       }
       paramBundle = localJSONObject.getString("appInfo");
     }
@@ -3586,33 +3610,45 @@ public class PayLogicImpl
       }
       tenpayResult(str2, "{'resultCode':-1,'retmsg':'openTenpayView param viewTag error'}");
       return;
-      label2213:
+      label2349:
       paramBundle = "";
       break;
-      label2219:
+      label2355:
       paramBundle = "";
       break label835;
-      label2225:
+      label2361:
       paramBundle = "";
       break label983;
-      label2231:
+      label2367:
       paramBundle = "";
       break label1207;
-      label2237:
+      label2373:
       i = 5;
       break label1342;
-      label2242:
+      label2378:
       paramBundle = "";
       break label1375;
       i = 1;
       break label1585;
-      label2253:
+      label2389:
       String str1 = "";
       break label1618;
-      label2260:
+      label2396:
       str1 = "";
       break label1652;
-      label2267:
+      label2403:
+      str1 = "";
+      break label1686;
+      label2410:
+      str1 = "";
+      break label1720;
+      label2417:
+      str1 = "";
+      break label1754;
+      label2424:
+      str1 = "";
+      break label1788;
+      label2431:
       paramBundle = "";
     }
   }
@@ -3629,14 +3665,14 @@ public class PayLogicImpl
     //   11: invokestatic 277	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   14: ifne +33 -> 47
     //   17: aload 5
-    //   19: ldc_w 1218
-    //   22: invokestatic 1223	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   19: ldc_w 1228
+    //   22: invokestatic 1233	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   25: astore 18
     //   27: goto +24 -> 51
     //   30: astore 18
     //   32: goto +3 -> 35
     //   35: aload 18
-    //   37: invokevirtual 1224	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   37: invokevirtual 1234	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   40: aload 5
     //   42: astore 18
     //   44: goto +7 -> 51
@@ -3644,7 +3680,7 @@ public class PayLogicImpl
     //   49: astore 18
     //   51: invokestatic 401	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   54: istore 15
-    //   56: ldc_w 1082
+    //   56: ldc_w 1084
     //   59: astore 5
     //   61: iload 15
     //   63: ifeq +59 -> 122
@@ -3653,7 +3689,7 @@ public class PayLogicImpl
     //   70: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   73: astore 19
     //   75: aload 19
-    //   77: ldc_w 1226
+    //   77: ldc_w 1236
     //   80: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: pop
     //   84: aload 19
@@ -3661,19 +3697,19 @@ public class PayLogicImpl
     //   88: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: pop
     //   92: aload 19
-    //   94: ldc_w 1026
+    //   94: ldc_w 1028
     //   97: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   100: pop
     //   101: aload 19
     //   103: aload_3
-    //   104: invokestatic 1029	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   104: invokestatic 1031	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   107: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: pop
     //   111: ldc 226
     //   113: iconst_2
     //   114: aload 19
     //   116: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: invokestatic 1031	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   119: invokestatic 1033	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   122: new 215	org/json/JSONObject
     //   125: dup
     //   126: aload 4
@@ -3682,10 +3718,10 @@ public class PayLogicImpl
     //   133: ldc_w 414
     //   136: astore 19
     //   138: aload_0
-    //   139: invokevirtual 1229	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   139: invokevirtual 1239	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   142: astore 24
     //   144: aload_0
-    //   145: invokevirtual 1233	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   145: invokevirtual 1243	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   148: astore_0
     //   149: ldc 226
     //   151: astore 19
@@ -3693,11 +3729,11 @@ public class PayLogicImpl
     //   156: dup
     //   157: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   160: astore 19
-    //   162: getstatic 1239	mqq/app/Constants$PropertiesKey:nickName	Lmqq/app/Constants$PropertiesKey;
+    //   162: getstatic 1249	mqq/app/Constants$PropertiesKey:nickName	Lmqq/app/Constants$PropertiesKey;
     //   165: astore 20
     //   167: aload 19
     //   169: aload 20
-    //   171: invokevirtual 1240	mqq/app/Constants$PropertiesKey:toString	()Ljava/lang/String;
+    //   171: invokevirtual 1250	mqq/app/Constants$PropertiesKey:toString	()Ljava/lang/String;
     //   174: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: pop
     //   178: aload 19
@@ -3707,10 +3743,10 @@ public class PayLogicImpl
     //   186: aload_0
     //   187: aload 19
     //   189: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   192: invokevirtual 1245	mqq/app/MobileQQ:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   192: invokevirtual 1255	mqq/app/MobileQQ:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   195: astore 26
     //   197: aload 23
-    //   199: ldc_w 700
+    //   199: ldc_w 702
     //   202: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   205: astore 25
     //   207: aload 23
@@ -3731,7 +3767,7 @@ public class PayLogicImpl
     //   243: iconst_1
     //   244: istore 12
     //   246: aload 23
-    //   248: ldc_w 1138
+    //   248: ldc_w 1140
     //   251: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   254: istore 15
     //   256: ldc 249
@@ -3739,47 +3775,47 @@ public class PayLogicImpl
     //   260: iload 15
     //   262: ifeq +16 -> 278
     //   265: aload 23
-    //   267: ldc_w 1138
+    //   267: ldc_w 1140
     //   270: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   273: astore 20
     //   275: goto +7 -> 282
     //   278: ldc 249
     //   280: astore 20
     //   282: aload 23
-    //   284: ldc_w 1247
+    //   284: ldc_w 1257
     //   287: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   290: istore 15
     //   292: iload 15
     //   294: ifeq +15 -> 309
     //   297: aload 23
-    //   299: ldc_w 1247
+    //   299: ldc_w 1257
     //   302: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   305: astore_0
     //   306: goto +6 -> 312
     //   309: ldc 249
     //   311: astore_0
     //   312: aload 23
-    //   314: ldc_w 1249
+    //   314: ldc_w 1259
     //   317: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   320: istore 15
     //   322: iload 15
     //   324: ifeq +16 -> 340
     //   327: aload 23
-    //   329: ldc_w 1249
+    //   329: ldc_w 1259
     //   332: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   335: astore 19
     //   337: goto +7 -> 344
     //   340: ldc 249
     //   342: astore 19
-    //   344: ldc_w 1251
-    //   347: invokestatic 649	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   350: checkcast 1251	cooperation/qwallet/plugin/IQWalletHelper
+    //   344: ldc_w 1261
+    //   347: invokestatic 651	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   350: checkcast 1261	cooperation/qwallet/plugin/IQWalletHelper
     //   353: aload 20
     //   355: aload 18
-    //   357: invokeinterface 1254 3 0
+    //   357: invokeinterface 1264 3 0
     //   362: astore 27
     //   364: aload 23
-    //   366: ldc_w 662
+    //   366: ldc_w 664
     //   369: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   372: istore 15
     //   374: aload 21
@@ -3787,22 +3823,22 @@ public class PayLogicImpl
     //   378: iload 15
     //   380: ifeq +13 -> 393
     //   383: aload 23
-    //   385: ldc_w 662
+    //   385: ldc_w 664
     //   388: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   391: astore 18
     //   393: iconst_1
     //   394: iload 6
     //   396: if_icmpne +53 -> 449
     //   399: aload 23
-    //   401: ldc_w 671
+    //   401: ldc_w 673
     //   404: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   407: ifne +14 -> 421
     //   410: aload 23
-    //   412: ldc_w 673
+    //   412: ldc_w 675
     //   415: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   418: ifeq +31 -> 449
     //   421: aload 23
-    //   423: ldc_w 675
+    //   423: ldc_w 677
     //   426: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   429: istore 15
     //   431: iload 15
@@ -3820,7 +3856,7 @@ public class PayLogicImpl
     //   456: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   459: astore 20
     //   461: aload 20
-    //   463: ldc_w 722
+    //   463: ldc_w 724
     //   466: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   469: pop
     //   470: aload 20
@@ -3828,15 +3864,15 @@ public class PayLogicImpl
     //   474: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   477: pop
     //   478: aload 20
-    //   480: ldc_w 1256
+    //   480: ldc_w 1266
     //   483: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   486: pop
     //   487: aload 20
     //   489: iload 12
-    //   491: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   491: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   494: pop
     //   495: aload 20
-    //   497: ldc_w 712
+    //   497: ldc_w 714
     //   500: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   503: pop
     //   504: aload 20
@@ -3844,7 +3880,7 @@ public class PayLogicImpl
     //   508: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   511: pop
     //   512: aload 20
-    //   514: ldc_w 1258
+    //   514: ldc_w 1268
     //   517: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   520: pop
     //   521: aload 20
@@ -3852,7 +3888,7 @@ public class PayLogicImpl
     //   524: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   527: pop
     //   528: aload 20
-    //   530: ldc_w 1260
+    //   530: ldc_w 1270
     //   533: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   536: pop
     //   537: aload 20
@@ -3860,14 +3896,14 @@ public class PayLogicImpl
     //   541: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   544: pop
     //   545: aload 20
-    //   547: ldc_w 1262
+    //   547: ldc_w 1272
     //   550: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   553: pop
     //   554: aload 20
     //   556: aload 23
-    //   558: ldc_w 1264
-    //   561: invokevirtual 1267	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   564: invokevirtual 1270	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   558: ldc_w 1274
+    //   561: invokevirtual 1277	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   564: invokevirtual 1280	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   567: pop
     //   568: aload 11
     //   570: invokestatic 277	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -3888,24 +3924,24 @@ public class PayLogicImpl
     //   603: invokespecial 218	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   606: astore_0
     //   607: aload_0
-    //   608: ldc_w 1272
-    //   611: invokevirtual 1118	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
+    //   608: ldc_w 1282
+    //   611: invokevirtual 1120	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
     //   614: pop
     //   615: aload 11
     //   617: invokestatic 277	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   620: ifne +13 -> 633
     //   623: aload_0
-    //   624: ldc_w 1272
+    //   624: ldc_w 1282
     //   627: aload 11
-    //   629: invokevirtual 1275	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   629: invokevirtual 1285	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   632: pop
     //   633: aload_0
-    //   634: invokevirtual 599	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   634: invokevirtual 601	org/json/JSONObject:toString	()Ljava/lang/String;
     //   637: astore 21
     //   639: goto +39 -> 678
     //   642: new 215	org/json/JSONObject
     //   645: dup
-    //   646: invokespecial 583	org/json/JSONObject:<init>	()V
+    //   646: invokespecial 585	org/json/JSONObject:<init>	()V
     //   649: astore_0
     //   650: aload 11
     //   652: invokestatic 277	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -3913,12 +3949,12 @@ public class PayLogicImpl
     //   657: iload 16
     //   659: ifne +13 -> 672
     //   662: aload_0
-    //   663: ldc_w 1272
+    //   663: ldc_w 1282
     //   666: aload 11
-    //   668: invokevirtual 1275	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   668: invokevirtual 1285	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   671: pop
     //   672: aload_0
-    //   673: invokevirtual 599	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   673: invokevirtual 601	org/json/JSONObject:toString	()Ljava/lang/String;
     //   676: astore 21
     //   678: lload 9
     //   680: aload 25
@@ -3932,8 +3968,8 @@ public class PayLogicImpl
     //   697: invokestatic 277	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   700: ifne +200 -> 900
     //   703: aload 27
-    //   705: ldc_w 1277
-    //   708: invokevirtual 1281	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   705: ldc_w 1287
+    //   708: invokevirtual 1291	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   711: astore 28
     //   713: aload 5
     //   715: astore 11
@@ -3966,7 +4002,7 @@ public class PayLogicImpl
     //   766: iload 13
     //   768: aaload
     //   769: bipush 35
-    //   771: invokevirtual 1284	java/lang/String:indexOf	(I)I
+    //   771: invokevirtual 1294	java/lang/String:indexOf	(I)I
     //   774: istore 14
     //   776: aload 11
     //   778: astore 19
@@ -3983,7 +4019,7 @@ public class PayLogicImpl
     //   798: iload 14
     //   800: iconst_1
     //   801: iadd
-    //   802: invokevirtual 614	java/lang/String:substring	(I)Ljava/lang/String;
+    //   802: invokevirtual 616	java/lang/String:substring	(I)Ljava/lang/String;
     //   805: astore 18
     //   807: iload 13
     //   809: ifne +17 -> 826
@@ -4072,7 +4108,7 @@ public class PayLogicImpl
     //   976: aload_3
     //   977: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   980: aload_0
-    //   981: ldc_w 700
+    //   981: ldc_w 702
     //   984: aload 25
     //   986: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   989: aload_0
@@ -4080,64 +4116,64 @@ public class PayLogicImpl
     //   992: aload 24
     //   994: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   997: aload_0
-    //   998: ldc_w 1286
+    //   998: ldc_w 1296
     //   1001: aload 26
     //   1003: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1006: aload_0
     //   1007: ldc_w 259
     //   1010: iload 12
-    //   1012: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1012: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1015: aload_0
-    //   1016: ldc_w 1138
+    //   1016: ldc_w 1140
     //   1019: aload 27
     //   1021: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1024: aload_0
-    //   1025: ldc_w 662
+    //   1025: ldc_w 664
     //   1028: aload 21
     //   1030: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1033: aload_0
-    //   1034: ldc_w 1264
+    //   1034: ldc_w 1274
     //   1037: aload 23
-    //   1039: ldc_w 1264
-    //   1042: invokevirtual 1267	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   1039: ldc_w 1274
+    //   1042: invokevirtual 1277	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
     //   1045: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   1048: aload_0
-    //   1049: ldc_w 350
+    //   1049: ldc_w 351
     //   1052: bipush 9
-    //   1054: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1054: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1057: aload_0
-    //   1058: ldc_w 352
+    //   1058: ldc_w 353
     //   1061: iload 6
-    //   1063: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1063: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1066: aload_0
-    //   1067: ldc_w 354
+    //   1067: ldc_w 355
     //   1070: lload 7
-    //   1072: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   1072: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   1075: aload_0
-    //   1076: ldc_w 360
+    //   1076: ldc_w 361
     //   1079: lload 9
-    //   1081: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   1081: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   1084: aload_0
-    //   1085: ldc_w 1191
+    //   1085: ldc_w 1201
     //   1088: iload 15
     //   1090: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   1093: iload 15
     //   1095: ifeq +12 -> 1107
     //   1098: aload_0
-    //   1099: ldc_w 1288
+    //   1099: ldc_w 1298
     //   1102: aload 4
     //   1104: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1107: aload_2
     //   1108: aload_0
-    //   1109: invokestatic 364	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
+    //   1109: invokestatic 365	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
     //   1112: lload 9
     //   1114: aconst_null
-    //   1115: ldc_w 366
+    //   1115: ldc_w 367
     //   1118: aconst_null
     //   1119: iconst_0
     //   1120: aconst_null
     //   1121: invokestatic 290	com/tencent/mobileqq/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   1124: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1124: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1127: istore 15
     //   1129: iload 15
     //   1131: ifeq +38 -> 1169
@@ -4146,14 +4182,14 @@ public class PayLogicImpl
     //   1138: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1141: astore_2
     //   1142: aload_2
-    //   1143: ldc_w 373
+    //   1143: ldc_w 374
     //   1146: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1149: pop
     //   1150: aload_2
-    //   1151: invokestatic 379	java/lang/System:currentTimeMillis	()J
-    //   1154: invokevirtual 382	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1151: invokestatic 380	java/lang/System:currentTimeMillis	()J
+    //   1154: invokevirtual 383	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1157: pop
-    //   1158: ldc_w 384
+    //   1158: ldc_w 385
     //   1161: iconst_4
     //   1162: aload_2
     //   1163: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -4167,21 +4203,21 @@ public class PayLogicImpl
     //   1178: aload_0
     //   1179: ldc_w 396
     //   1182: iconst_0
-    //   1183: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1183: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1186: aload_0
-    //   1187: ldc_w 804
+    //   1187: ldc_w 806
     //   1190: aload 25
     //   1192: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1195: aload_0
-    //   1196: ldc_w 808
+    //   1196: ldc_w 810
     //   1199: aload 18
     //   1201: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1204: aload_0
-    //   1205: ldc_w 812
+    //   1205: ldc_w 814
     //   1208: aload 20
     //   1210: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1213: aload_0
-    //   1214: ldc_w 816
+    //   1214: ldc_w 818
     //   1217: aload 19
     //   1219: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1222: aload_0
@@ -4214,7 +4250,7 @@ public class PayLogicImpl
     //   1275: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1278: astore_1
     //   1279: aload_1
-    //   1280: ldc_w 1290
+    //   1280: ldc_w 1300
     //   1283: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1286: pop
     //   1287: aload_1
@@ -4227,17 +4263,17 @@ public class PayLogicImpl
     //   1299: aload_1
     //   1300: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1303: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1306: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1306: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1309: ifeq +7 -> 1316
     //   1312: aload_0
     //   1313: invokevirtual 412	java/lang/Exception:printStackTrace	()V
     //   1316: aload 17
     //   1318: ldc_w 396
     //   1321: iconst_m1
-    //   1322: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1322: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1325: aload 17
     //   1327: ldc_w 414
-    //   1330: ldc_w 1292
+    //   1330: ldc_w 1302
     //   1333: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1336: aload 17
     //   1338: areturn
@@ -4249,7 +4285,7 @@ public class PayLogicImpl
     //   1350: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1353: astore_1
     //   1354: aload_1
-    //   1355: ldc_w 1294
+    //   1355: ldc_w 1304
     //   1358: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1361: pop
     //   1362: aload_1
@@ -4262,17 +4298,17 @@ public class PayLogicImpl
     //   1374: aload_1
     //   1375: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1378: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1381: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1381: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1384: ifeq +7 -> 1391
     //   1387: aload_0
     //   1388: invokevirtual 420	org/json/JSONException:printStackTrace	()V
     //   1391: aload 17
     //   1393: ldc_w 396
     //   1396: iconst_m1
-    //   1397: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1397: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1400: aload 17
     //   1402: ldc_w 414
-    //   1405: ldc_w 1296
+    //   1405: ldc_w 1306
     //   1408: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1411: aload 17
     //   1413: areturn
@@ -4606,11 +4642,11 @@ public class PayLogicImpl
     //   465: aload 23
     //   467: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   470: aload 25
-    //   472: invokestatic 1298	cooperation/qwallet/plugin/impl/PayLogicImpl:isEnterMidasTestEnv	(Lorg/json/JSONObject;)Z
+    //   472: invokestatic 1308	cooperation/qwallet/plugin/impl/PayLogicImpl:isEnterMidasTestEnv	(Lorg/json/JSONObject;)Z
     //   475: istore 14
     //   477: iload 14
     //   479: ifeq +11 -> 490
-    //   482: ldc_w 1300
+    //   482: ldc_w 1310
     //   485: astore 4
     //   487: goto +8 -> 495
     //   490: ldc_w 298
@@ -4639,23 +4675,23 @@ public class PayLogicImpl
     //   546: astore_3
     //   547: aload_3
     //   548: iload 11
-    //   550: invokestatic 1302	cooperation/qwallet/plugin/impl/PayLogicImpl:getPfPref	(I)Ljava/lang/String;
+    //   550: invokestatic 1312	cooperation/qwallet/plugin/impl/PayLogicImpl:getPfPref	(I)Ljava/lang/String;
     //   553: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   556: pop
     //   557: aload_3
-    //   558: ldc_w 1304
+    //   558: ldc_w 1314
     //   561: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   564: pop
     //   565: aload_3
-    //   566: ldc_w 1306
+    //   566: ldc_w 1316
     //   569: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   572: pop
     //   573: aload_3
-    //   574: invokestatic 331	com/tencent/common/config/AppSetting:a	()I
-    //   577: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   574: invokestatic 332	com/tencent/common/config/AppSetting:d	()I
+    //   577: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   580: pop
     //   581: aload_3
-    //   582: ldc_w 336
+    //   582: ldc_w 337
     //   585: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   588: pop
     //   589: aload_3
@@ -4670,8 +4706,8 @@ public class PayLogicImpl
     //   605: aload 24
     //   607: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   610: aload 10
-    //   612: ldc_w 338
-    //   615: ldc_w 340
+    //   612: ldc_w 339
+    //   615: ldc_w 341
     //   618: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   621: aload 10
     //   623: ldc 232
@@ -4682,8 +4718,8 @@ public class PayLogicImpl
     //   634: aload_3
     //   635: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   638: aload 10
-    //   640: ldc_w 342
-    //   643: ldc_w 342
+    //   640: ldc_w 343
+    //   643: ldc_w 343
     //   646: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   649: aload 10
     //   651: ldc_w 558
@@ -4721,40 +4757,40 @@ public class PayLogicImpl
     //   729: invokevirtual 316	java/lang/Boolean:booleanValue	()Z
     //   732: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   735: aload 10
-    //   737: ldc_w 344
+    //   737: ldc_w 345
     //   740: iconst_0
-    //   741: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   741: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   744: aload 10
-    //   746: ldc_w 350
+    //   746: ldc_w 351
     //   749: bipush 6
-    //   751: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   751: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   754: aload 10
-    //   756: ldc_w 352
+    //   756: ldc_w 353
     //   759: iload 5
-    //   761: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   761: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   764: aload 10
-    //   766: ldc_w 354
+    //   766: ldc_w 355
     //   769: lload 6
-    //   771: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   771: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   774: aload 10
-    //   776: ldc_w 360
+    //   776: ldc_w 361
     //   779: lload 8
-    //   781: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   781: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   784: aload 10
     //   786: ldc_w 259
     //   789: iload 11
-    //   791: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   791: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   794: aload_2
     //   795: aload 10
-    //   797: invokestatic 364	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
+    //   797: invokestatic 365	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
     //   800: lload 8
     //   802: aconst_null
-    //   803: ldc_w 366
+    //   803: ldc_w 367
     //   806: aconst_null
     //   807: iconst_0
     //   808: aconst_null
     //   809: invokestatic 290	com/tencent/mobileqq/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   812: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   812: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   815: istore 12
     //   817: iload 12
     //   819: ifeq +38 -> 857
@@ -4763,14 +4799,14 @@ public class PayLogicImpl
     //   826: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   829: astore_0
     //   830: aload_0
-    //   831: ldc_w 373
+    //   831: ldc_w 374
     //   834: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   837: pop
     //   838: aload_0
-    //   839: invokestatic 379	java/lang/System:currentTimeMillis	()J
-    //   842: invokevirtual 382	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   839: invokestatic 380	java/lang/System:currentTimeMillis	()J
+    //   842: invokevirtual 383	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   845: pop
-    //   846: ldc_w 384
+    //   846: ldc_w 385
     //   849: iconst_4
     //   850: aload_0
     //   851: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -4784,7 +4820,7 @@ public class PayLogicImpl
     //   867: aload_0
     //   868: ldc_w 396
     //   871: iconst_0
-    //   872: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   872: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   875: aload_0
     //   876: ldc 220
     //   878: aload 23
@@ -4821,7 +4857,7 @@ public class PayLogicImpl
     //   940: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   943: astore_1
     //   944: aload_1
-    //   945: ldc_w 1308
+    //   945: ldc_w 1318
     //   948: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   951: pop
     //   952: aload_1
@@ -4834,17 +4870,17 @@ public class PayLogicImpl
     //   964: aload_1
     //   965: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   968: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   971: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   971: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   974: ifeq +7 -> 981
     //   977: aload_0
     //   978: invokevirtual 412	java/lang/Exception:printStackTrace	()V
     //   981: aload 15
     //   983: ldc_w 396
     //   986: iconst_m1
-    //   987: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   987: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   990: aload 15
     //   992: ldc_w 414
-    //   995: ldc_w 1310
+    //   995: ldc_w 1320
     //   998: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1001: aload 15
     //   1003: areturn
@@ -4856,7 +4892,7 @@ public class PayLogicImpl
     //   1015: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1018: astore_1
     //   1019: aload_1
-    //   1020: ldc_w 1312
+    //   1020: ldc_w 1322
     //   1023: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1026: pop
     //   1027: aload_1
@@ -4869,17 +4905,17 @@ public class PayLogicImpl
     //   1039: aload_1
     //   1040: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1043: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1046: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1046: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1049: ifeq +7 -> 1056
     //   1052: aload_0
     //   1053: invokevirtual 420	org/json/JSONException:printStackTrace	()V
     //   1056: aload 15
     //   1058: ldc_w 396
     //   1061: iconst_m1
-    //   1062: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1062: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1065: aload 15
     //   1067: ldc_w 414
-    //   1070: ldc_w 1310
+    //   1070: ldc_w 1320
     //   1073: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1076: aload 15
     //   1078: areturn
@@ -5004,7 +5040,7 @@ public class PayLogicImpl
     //   37: ldc 226
     //   39: astore 12
     //   41: aload 24
-    //   43: ldc_w 812
+    //   43: ldc_w 814
     //   46: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   49: istore 11
     //   51: aconst_null
@@ -5012,7 +5048,7 @@ public class PayLogicImpl
     //   54: iload 11
     //   56: ifeq +965 -> 1021
     //   59: aload 24
-    //   61: ldc_w 812
+    //   61: ldc_w 814
     //   64: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   67: astore 13
     //   69: goto +3 -> 72
@@ -5078,26 +5114,26 @@ public class PayLogicImpl
     //   194: ldc 249
     //   196: astore 16
     //   198: aload 24
-    //   200: ldc_w 567
+    //   200: ldc_w 569
     //   203: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   206: istore 11
     //   208: iload 11
     //   210: ifeq +16 -> 226
     //   213: aload 24
-    //   215: ldc_w 567
+    //   215: ldc_w 569
     //   218: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   221: astore 17
     //   223: goto +6 -> 229
     //   226: aconst_null
     //   227: astore 17
     //   229: aload 24
-    //   231: ldc_w 569
+    //   231: ldc_w 571
     //   234: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   237: istore 11
     //   239: iload 11
     //   241: ifeq +13 -> 254
     //   244: aload 24
-    //   246: ldc_w 569
+    //   246: ldc_w 571
     //   249: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   252: astore 18
     //   254: aload 24
@@ -5200,7 +5236,7 @@ public class PayLogicImpl
     //   475: invokevirtual 321	java/lang/String:length	()I
     //   478: ifle +13 -> 491
     //   481: aload 4
-    //   483: ldc_w 834
+    //   483: ldc_w 836
     //   486: aload 13
     //   488: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   491: aload 4
@@ -5216,11 +5252,11 @@ public class PayLogicImpl
     //   512: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   515: pop
     //   516: aload_3
-    //   517: invokestatic 331	com/tencent/common/config/AppSetting:a	()I
-    //   520: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   517: invokestatic 332	com/tencent/common/config/AppSetting:d	()I
+    //   520: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   523: pop
     //   524: aload_3
-    //   525: ldc_w 336
+    //   525: ldc_w 337
     //   528: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   531: pop
     //   532: aload_3
@@ -5235,27 +5271,27 @@ public class PayLogicImpl
     //   548: aload 23
     //   550: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   553: aload 4
-    //   555: ldc_w 338
-    //   558: ldc_w 340
+    //   555: ldc_w 339
+    //   558: ldc_w 341
     //   561: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   564: aload 4
     //   566: ldc_w 325
     //   569: aload_3
     //   570: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   573: aload 4
-    //   575: ldc_w 342
-    //   578: ldc_w 342
+    //   575: ldc_w 343
+    //   578: ldc_w 343
     //   581: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   584: aload 4
     //   586: ldc_w 551
     //   589: aload 15
     //   591: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   594: aload 4
-    //   596: ldc_w 567
+    //   596: ldc_w 569
     //   599: aload 17
     //   601: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   604: aload 4
-    //   606: ldc_w 569
+    //   606: ldc_w 571
     //   609: aload 18
     //   611: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   614: aload 4
@@ -5271,32 +5307,32 @@ public class PayLogicImpl
     //   636: aload 21
     //   638: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   641: aload 4
-    //   643: ldc_w 350
+    //   643: ldc_w 351
     //   646: bipush 8
-    //   648: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   648: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   651: aload 4
-    //   653: ldc_w 352
+    //   653: ldc_w 353
     //   656: iload 5
-    //   658: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   658: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   661: aload 4
-    //   663: ldc_w 354
+    //   663: ldc_w 355
     //   666: lload 6
-    //   668: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   668: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   671: aload 4
-    //   673: ldc_w 360
+    //   673: ldc_w 361
     //   676: lload 8
-    //   678: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   678: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   681: aload_2
     //   682: aload 4
-    //   684: invokestatic 364	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
+    //   684: invokestatic 365	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
     //   687: lload 8
     //   689: aconst_null
-    //   690: ldc_w 366
+    //   690: ldc_w 367
     //   693: aconst_null
     //   694: iconst_0
     //   695: aconst_null
     //   696: invokestatic 290	com/tencent/mobileqq/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   699: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   699: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   702: istore 11
     //   704: iload 11
     //   706: ifeq +38 -> 744
@@ -5305,14 +5341,14 @@ public class PayLogicImpl
     //   713: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   716: astore_2
     //   717: aload_2
-    //   718: ldc_w 373
+    //   718: ldc_w 374
     //   721: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   724: pop
     //   725: aload_2
-    //   726: invokestatic 379	java/lang/System:currentTimeMillis	()J
-    //   729: invokevirtual 382	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   726: invokestatic 380	java/lang/System:currentTimeMillis	()J
+    //   729: invokevirtual 383	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   732: pop
-    //   733: ldc_w 384
+    //   733: ldc_w 385
     //   736: iconst_4
     //   737: aload_2
     //   738: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -5328,7 +5364,7 @@ public class PayLogicImpl
     //   757: aload_1
     //   758: aload_2
     //   759: iconst_0
-    //   760: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   760: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   763: aload_1
     //   764: ldc 220
     //   766: aload 22
@@ -5403,7 +5439,7 @@ public class PayLogicImpl
     //   879: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   882: astore_3
     //   883: aload_3
-    //   884: ldc_w 1314
+    //   884: ldc_w 1324
     //   887: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   890: pop
     //   891: aload_3
@@ -5416,17 +5452,17 @@ public class PayLogicImpl
     //   903: aload_3
     //   904: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   907: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   910: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   910: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   913: ifeq +7 -> 920
     //   916: aload_0
     //   917: invokevirtual 412	java/lang/Exception:printStackTrace	()V
     //   920: aload_1
     //   921: aload_2
     //   922: iconst_m1
-    //   923: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   923: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   926: aload_1
     //   927: ldc_w 414
-    //   930: ldc_w 1316
+    //   930: ldc_w 1326
     //   933: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   936: aload_1
     //   937: areturn
@@ -5444,7 +5480,7 @@ public class PayLogicImpl
     //   959: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   962: astore 4
     //   964: aload 4
-    //   966: ldc_w 1318
+    //   966: ldc_w 1328
     //   969: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   972: pop
     //   973: aload 4
@@ -5457,17 +5493,17 @@ public class PayLogicImpl
     //   985: aload 4
     //   987: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   990: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   993: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   993: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   996: ifeq +7 -> 1003
     //   999: aload_0
     //   1000: invokevirtual 420	org/json/JSONException:printStackTrace	()V
     //   1003: aload_1
     //   1004: aload_2
     //   1005: iconst_m1
-    //   1006: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1006: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1009: aload_1
     //   1010: ldc_w 414
-    //   1013: ldc_w 1316
+    //   1013: ldc_w 1326
     //   1016: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1019: aload_1
     //   1020: areturn
@@ -5646,19 +5682,19 @@ public class PayLogicImpl
     //   91: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   94: astore 29
     //   96: aload 27
-    //   98: ldc_w 571
+    //   98: ldc_w 573
     //   101: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   104: astore 30
     //   106: aload 27
-    //   108: ldc_w 575
+    //   108: ldc_w 577
     //   111: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   114: astore 31
     //   116: aload 27
-    //   118: ldc_w 812
+    //   118: ldc_w 814
     //   121: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   124: ifeq +1100 -> 1224
     //   127: aload 27
-    //   129: ldc_w 812
+    //   129: ldc_w 814
     //   132: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   135: astore 15
     //   137: goto +3 -> 140
@@ -5680,7 +5716,7 @@ public class PayLogicImpl
     //   180: istore 12
     //   182: goto +3 -> 185
     //   185: aload 27
-    //   187: ldc_w 581
+    //   187: ldc_w 583
     //   190: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   193: istore 13
     //   195: ldc 249
@@ -5688,16 +5724,16 @@ public class PayLogicImpl
     //   199: iload 13
     //   201: ifeq +1035 -> 1236
     //   204: aload 27
-    //   206: ldc_w 581
+    //   206: ldc_w 583
     //   209: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   212: astore 18
     //   214: goto +3 -> 217
     //   217: aload 27
-    //   219: ldc_w 1014
+    //   219: ldc_w 1016
     //   222: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   225: ifeq +1018 -> 1243
     //   228: aload 27
-    //   230: ldc_w 1014
+    //   230: ldc_w 1016
     //   233: invokevirtual 243	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
     //   236: istore 13
     //   238: goto +3 -> 241
@@ -5711,20 +5747,20 @@ public class PayLogicImpl
     //   258: astore 17
     //   260: goto +3 -> 263
     //   263: aload 27
-    //   265: ldc_w 1357
+    //   265: ldc_w 1367
     //   268: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   271: ifeq +985 -> 1256
     //   274: aload 27
-    //   276: ldc_w 1357
+    //   276: ldc_w 1367
     //   279: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   282: astore 19
     //   284: goto +3 -> 287
     //   287: aload 27
-    //   289: ldc_w 1057
+    //   289: ldc_w 1059
     //   292: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   295: ifeq +968 -> 1263
     //   298: aload 27
-    //   300: ldc_w 1057
+    //   300: ldc_w 1059
     //   303: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   306: astore 20
     //   308: goto +3 -> 311
@@ -5756,20 +5792,20 @@ public class PayLogicImpl
     //   374: astore 23
     //   376: goto +3 -> 379
     //   379: aload 27
-    //   381: ldc_w 567
+    //   381: ldc_w 569
     //   384: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   387: ifeq +904 -> 1291
     //   390: aload 27
-    //   392: ldc_w 567
+    //   392: ldc_w 569
     //   395: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   398: astore 24
     //   400: goto +3 -> 403
     //   403: aload 27
-    //   405: ldc_w 569
+    //   405: ldc_w 571
     //   408: invokevirtual 236	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   411: ifeq +887 -> 1298
     //   414: aload 27
-    //   416: ldc_w 569
+    //   416: ldc_w 571
     //   419: invokevirtual 224	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   422: astore 25
     //   424: goto +3 -> 427
@@ -5799,11 +5835,11 @@ public class PayLogicImpl
     //   484: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   487: pop
     //   488: aload 27
-    //   490: invokestatic 331	com/tencent/common/config/AppSetting:a	()I
-    //   493: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   490: invokestatic 332	com/tencent/common/config/AppSetting:d	()I
+    //   493: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   496: pop
     //   497: aload 27
-    //   499: ldc_w 336
+    //   499: ldc_w 337
     //   502: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   505: pop
     //   506: aload 27
@@ -5879,7 +5915,7 @@ public class PayLogicImpl
     //   665: invokevirtual 321	java/lang/String:length	()I
     //   668: ifle +13 -> 681
     //   671: aload 4
-    //   673: ldc_w 834
+    //   673: ldc_w 836
     //   676: aload 15
     //   678: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   681: aload 4
@@ -5891,16 +5927,16 @@ public class PayLogicImpl
     //   694: aload 29
     //   696: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   699: aload 4
-    //   701: ldc_w 338
-    //   704: ldc_w 340
+    //   701: ldc_w 339
+    //   704: ldc_w 341
     //   707: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   710: aload 4
     //   712: ldc_w 325
     //   715: aload 27
     //   717: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   720: aload 4
-    //   722: ldc_w 342
-    //   725: ldc_w 342
+    //   722: ldc_w 343
+    //   725: ldc_w 343
     //   728: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   731: aload 16
     //   733: ifnull +37 -> 770
@@ -5918,33 +5954,33 @@ public class PayLogicImpl
     //   764: invokevirtual 316	java/lang/Boolean:booleanValue	()Z
     //   767: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   770: aload 4
-    //   772: ldc_w 344
+    //   772: ldc_w 345
     //   775: iconst_0
-    //   776: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   776: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   779: aload 4
-    //   781: ldc_w 571
+    //   781: ldc_w 573
     //   784: aload 30
     //   786: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   789: aload 4
-    //   791: ldc_w 575
+    //   791: ldc_w 577
     //   794: aload 31
     //   796: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   799: aload 4
-    //   801: ldc_w 581
+    //   801: ldc_w 583
     //   804: aload 18
     //   806: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   809: aload 4
-    //   811: ldc_w 1014
+    //   811: ldc_w 1016
     //   814: iload 13
     //   816: invokestatic 312	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   819: invokevirtual 316	java/lang/Boolean:booleanValue	()Z
     //   822: invokevirtual 304	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   825: aload 4
-    //   827: ldc_w 1357
+    //   827: ldc_w 1367
     //   830: aload 19
     //   832: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   835: aload 4
-    //   837: ldc_w 1057
+    //   837: ldc_w 1059
     //   840: aload 20
     //   842: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   845: aload 4
@@ -5960,11 +5996,11 @@ public class PayLogicImpl
     //   868: aload 23
     //   870: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   873: aload 4
-    //   875: ldc_w 567
+    //   875: ldc_w 569
     //   878: aload 24
     //   880: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   883: aload 4
-    //   885: ldc_w 569
+    //   885: ldc_w 571
     //   888: aload 25
     //   890: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   893: aload 4
@@ -5972,46 +6008,46 @@ public class PayLogicImpl
     //   897: aload 26
     //   899: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   902: aload 4
-    //   904: ldc_w 350
+    //   904: ldc_w 351
     //   907: bipush 14
-    //   909: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   909: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   912: aload 4
-    //   914: ldc_w 352
+    //   914: ldc_w 353
     //   917: iload 5
-    //   919: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   919: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   922: aload 4
-    //   924: ldc_w 354
+    //   924: ldc_w 355
     //   927: lload 6
-    //   929: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   929: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   932: aload 4
-    //   934: ldc_w 360
+    //   934: ldc_w 361
     //   937: lload 8
-    //   939: invokevirtual 358	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   939: invokevirtual 359	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   942: aload_2
     //   943: aload 4
-    //   945: invokestatic 364	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
+    //   945: invokestatic 365	cooperation/qwallet/plugin/impl/PayLogicImpl:setIPCReceiver	(Landroid/os/ResultReceiver;Landroid/os/Bundle;)V
     //   948: lload 8
     //   950: aconst_null
-    //   951: ldc_w 366
+    //   951: ldc_w 367
     //   954: aconst_null
     //   955: iconst_0
     //   956: aconst_null
     //   957: invokestatic 290	com/tencent/mobileqq/qwallet/report/VACDReportUtil:a	(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   960: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   960: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   963: ifeq +38 -> 1001
     //   966: new 265	java/lang/StringBuilder
     //   969: dup
     //   970: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   973: astore_2
     //   974: aload_2
-    //   975: ldc_w 373
+    //   975: ldc_w 374
     //   978: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   981: pop
     //   982: aload_2
-    //   983: invokestatic 379	java/lang/System:currentTimeMillis	()J
-    //   986: invokevirtual 382	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   983: invokestatic 380	java/lang/System:currentTimeMillis	()J
+    //   986: invokevirtual 383	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   989: pop
-    //   990: ldc_w 384
+    //   990: ldc_w 385
     //   993: iconst_4
     //   994: aload_2
     //   995: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -6025,7 +6061,7 @@ public class PayLogicImpl
     //   1012: aload_0
     //   1013: aload_2
     //   1014: iconst_0
-    //   1015: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1015: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1018: aload_0
     //   1019: ldc 220
     //   1021: aload 28
@@ -6066,7 +6102,7 @@ public class PayLogicImpl
     //   1091: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1094: astore_3
     //   1095: aload_3
-    //   1096: ldc_w 1359
+    //   1096: ldc_w 1369
     //   1099: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1102: pop
     //   1103: aload_3
@@ -6079,17 +6115,17 @@ public class PayLogicImpl
     //   1115: aload_3
     //   1116: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1119: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1122: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1122: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1125: ifeq +7 -> 1132
     //   1128: aload_1
     //   1129: invokevirtual 412	java/lang/Exception:printStackTrace	()V
     //   1132: aload_0
     //   1133: aload_2
     //   1134: iconst_m1
-    //   1135: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1135: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1138: aload_0
     //   1139: ldc_w 414
-    //   1142: ldc_w 1361
+    //   1142: ldc_w 1371
     //   1145: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1148: aload_0
     //   1149: areturn
@@ -6103,7 +6139,7 @@ public class PayLogicImpl
     //   1165: invokespecial 266	java/lang/StringBuilder:<init>	()V
     //   1168: astore_3
     //   1169: aload_3
-    //   1170: ldc_w 1363
+    //   1170: ldc_w 1373
     //   1173: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1176: pop
     //   1177: aload_3
@@ -6116,17 +6152,17 @@ public class PayLogicImpl
     //   1189: aload_3
     //   1190: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1193: invokestatic 409	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1196: invokestatic 371	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1196: invokestatic 372	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1199: ifeq +7 -> 1206
     //   1202: aload_1
     //   1203: invokevirtual 420	org/json/JSONException:printStackTrace	()V
     //   1206: aload_0
     //   1207: aload_2
     //   1208: iconst_m1
-    //   1209: invokevirtual 348	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1209: invokevirtual 349	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1212: aload_0
     //   1213: ldc_w 414
-    //   1216: ldc_w 1365
+    //   1216: ldc_w 1375
     //   1219: invokevirtual 294	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1222: aload_0
     //   1223: areturn
@@ -6453,11 +6489,11 @@ public class PayLogicImpl
       Object localObject2 = new Intent();
       ((Intent)localObject2).addFlags(536870912);
       RouteUtils.a((Context)localObject1, (Intent)localObject2, "/base/payBridge");
-      localObject1 = createCustomDialog("我的钱包", String.format(((QBaseActivity)localObject1).getString(R.string.dl), new Object[] { Integer.valueOf(i) }), null);
+      localObject1 = createCustomDialog("我的钱包", String.format(((QBaseActivity)localObject1).getString(R.string.do), new Object[] { Integer.valueOf(i) }), null);
       ((Dialog)localObject1).setCancelable(false);
       localObject2 = new PayLogicImpl.3(this, (Dialog)localObject1);
-      ((Dialog)localObject1).findViewById(R.id.x).setOnClickListener((View.OnClickListener)localObject2);
-      ((Dialog)localObject1).findViewById(R.id.w).setOnClickListener((View.OnClickListener)localObject2);
+      ((Dialog)localObject1).findViewById(R.id.C).setOnClickListener((View.OnClickListener)localObject2);
+      ((Dialog)localObject1).findViewById(R.id.B).setOnClickListener((View.OnClickListener)localObject2);
       ((Dialog)localObject1).setOnDismissListener(new PayLogicImpl.4(this));
       try
       {
@@ -6851,11 +6887,11 @@ public class PayLogicImpl
       end();
       return;
     }
-    paramPCPayData.c = 1;
+    paramPCPayData.h = 1;
     Bundle localBundle = new Bundle();
-    localBundle.putString("json", paramPCPayData.a);
+    localBundle.putString("json", paramPCPayData.d);
     localBundle.putString("callbackSn", "0");
-    int i = ((IQWalletPayApi)QRoute.api(IQWalletPayApi.class)).getPayBridgeCode(paramPCPayData.b);
+    int i = ((IQWalletPayApi)QRoute.api(IQWalletPayApi.class)).getPayBridgeCode(paramPCPayData.c);
     if (i != 11)
     {
       if (i != 14) {
@@ -6866,7 +6902,7 @@ public class PayLogicImpl
           return;
         case 5: 
           localBundle = this.intent.getExtras();
-          localBundle.putString("json", paramPCPayData.a);
+          localBundle.putString("json", paramPCPayData.d);
           localBundle.putString("callbackSn", "0");
           openTenpayView(localBundle);
           return;
@@ -6902,7 +6938,7 @@ public class PayLogicImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.impl.PayLogicImpl
  * JD-Core Version:    0.7.0.1
  */

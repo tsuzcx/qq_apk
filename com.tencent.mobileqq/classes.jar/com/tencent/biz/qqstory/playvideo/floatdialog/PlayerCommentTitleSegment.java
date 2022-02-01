@@ -17,9 +17,9 @@ public class PlayerCommentTitleSegment
   implements View.OnClickListener
 {
   public static final String KEY = "PlayerCommentTitleSegment";
-  private PlayerCommentEventCallback jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentEventCallback;
-  private DetailFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
-  private BaseViewHolder jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
+  private BaseViewHolder a;
+  private DetailFeedItem b;
+  private PlayerCommentEventCallback c;
   
   public PlayerCommentTitleSegment(Context paramContext)
   {
@@ -28,7 +28,7 @@ public class PlayerCommentTitleSegment
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null) {
+    if (this.b != null) {
       return 1;
     }
     return 0;
@@ -36,31 +36,31 @@ public class PlayerCommentTitleSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131378784);
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131364711);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131447463);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131430817);
     return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561740, paramViewGroup, false));
-    paramViewGroup = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131364711);
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131378784);
+    this.a = new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628119, paramViewGroup, false));
+    paramViewGroup = (ImageView)this.a.a(2131430817);
+    TextView localTextView = (TextView)this.a.a(2131447463);
     paramViewGroup.setOnClickListener(this);
     localTextView.setOnClickListener(this);
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
+    return this.a;
   }
   
-  public String a()
+  public String b()
   {
     return "PlayerCommentTitleSegment";
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364711)
+    if (paramView.getId() == 2131430817)
     {
-      PlayerCommentEventCallback localPlayerCommentEventCallback = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentEventCallback;
+      PlayerCommentEventCallback localPlayerCommentEventCallback = this.c;
       if (localPlayerCommentEventCallback != null) {
         localPlayerCommentEventCallback.a();
       }
@@ -70,7 +70,7 @@ public class PlayerCommentTitleSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentTitleSegment
  * JD-Core Version:    0.7.0.1
  */

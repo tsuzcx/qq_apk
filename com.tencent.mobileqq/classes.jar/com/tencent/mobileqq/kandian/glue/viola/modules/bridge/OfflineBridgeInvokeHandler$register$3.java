@@ -20,12 +20,12 @@ final class OfflineBridgeInvokeHandler$register$3
   
   public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    this.this$0.a().isCached(paramJSONObject, paramString);
+    this.this$0.d().isCached(paramJSONObject, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.OfflineBridgeInvokeHandler.register.3
  * JD-Core Version:    0.7.0.1
  */

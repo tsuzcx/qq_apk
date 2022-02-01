@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
+import androidx.fragment.R.id;
 import androidx.lifecycle.ViewModelStoreOwner;
 
 class FragmentStateManager
@@ -293,7 +294,7 @@ class FragmentStateManager
       paramFragmentContainer = this.mFragment.mView;
       bool2 = false;
       paramFragmentContainer.setSaveFromParentEnabled(false);
-      this.mFragment.mView.setTag(2131367214, this.mFragment);
+      this.mFragment.mView.setTag(R.id.fragment_container_view_tag, this.mFragment);
       if (localObject != null) {
         ((ViewGroup)localObject).addView(this.mFragment.mView);
       }
@@ -415,7 +416,7 @@ class FragmentStateManager
       if (this.mFragment.mView != null)
       {
         this.mFragment.mView.setSaveFromParentEnabled(false);
-        this.mFragment.mView.setTag(2131367214, this.mFragment);
+        this.mFragment.mView.setTag(R.id.fragment_container_view_tag, this.mFragment);
         if (this.mFragment.mHidden) {
           this.mFragment.mView.setVisibility(8);
         }

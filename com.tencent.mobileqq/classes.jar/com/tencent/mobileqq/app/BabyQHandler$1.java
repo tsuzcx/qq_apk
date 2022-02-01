@@ -15,7 +15,7 @@ final class BabyQHandler$1
     paramAnimation = this.a;
     if ((paramAnimation != null) && (paramAnimation.getVisibility() == 0))
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772273);
+      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772359);
       paramAnimation.setAnimationListener(this);
       this.a.startAnimation(paramAnimation);
     }
@@ -27,7 +27,7 @@ final class BabyQHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BabyQHandler.1
  * JD-Core Version:    0.7.0.1
  */

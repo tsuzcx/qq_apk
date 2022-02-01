@@ -8,14 +8,14 @@ public final class SyncSteps
   extends BaseStep
   implements StepGroup
 {
-  private LinkedList jdField_a_of_type_JavaUtilLinkedList;
-  private final BaseStep[] jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep;
+  private LinkedList a;
+  private final BaseStep[] b;
   
   public SyncSteps(@NotNull Automator paramAutomator, @NotNull BaseStep[] paramArrayOfBaseStep)
   {
     super(paramAutomator, false, "SyncSteps");
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep = paramArrayOfBaseStep;
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    this.b = paramArrayOfBaseStep;
+    this.a = new LinkedList();
     int j = paramArrayOfBaseStep.length;
     j = paramArrayOfBaseStep.length;
     while (i < j)
@@ -23,44 +23,50 @@ public final class SyncSteps
       paramArrayOfBaseStep[i].a(this);
       i += 1;
     }
-    Collections.addAll(this.jdField_a_of_type_JavaUtilLinkedList, paramArrayOfBaseStep);
-  }
-  
-  public void a()
-  {
-    super.a();
-    BaseStep[] arrayOfBaseStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep;
-    int j = arrayOfBaseStep.length;
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfBaseStep[i].a();
-      i += 1;
-    }
+    Collections.addAll(this.a, paramArrayOfBaseStep);
   }
   
   public boolean a()
   {
     super.a();
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    Collections.addAll(this.jdField_a_of_type_JavaUtilLinkedList, this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep);
+    this.a.clear();
+    Collections.addAll(this.a, this.b);
     return true;
   }
   
-  public final void b()
+  public boolean b()
   {
-    if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+    d();
+    return false;
+  }
+  
+  public void c()
+  {
+    super.c();
+    BaseStep[] arrayOfBaseStep = this.b;
+    int j = arrayOfBaseStep.length;
+    int i = 0;
+    while (i < j)
     {
-      Object localObject = (BaseStep)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+      arrayOfBaseStep[i].c();
+      i += 1;
+    }
+  }
+  
+  public final void d()
+  {
+    if (!this.a.isEmpty())
+    {
+      Object localObject = (BaseStep)this.a.removeFirst();
       if (((BaseStep)localObject).a())
       {
         SyncSteps.1 local1 = new SyncSteps.1(this, (BaseStep)localObject);
-        if (((BaseStep)localObject).c())
+        if (((BaseStep)localObject).i())
         {
           local1.run();
           return;
         }
-        localObject = a().a();
+        localObject = h().b();
         if (localObject != null)
         {
           ((IThreadExecutor)localObject).a(local1);
@@ -69,21 +75,15 @@ public final class SyncSteps
         new Thread(local1).start();
         return;
       }
-      a().b(new SyncSteps.2(this, (BaseStep)localObject));
+      h().b(new SyncSteps.2(this, (BaseStep)localObject));
       return;
     }
-    d();
-  }
-  
-  public boolean b()
-  {
-    b();
-    return false;
+    g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.SyncSteps
  * JD-Core Version:    0.7.0.1
  */

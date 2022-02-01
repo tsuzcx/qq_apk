@@ -17,7 +17,7 @@ public class NearbyMsgBoxReadConfirmCallback
   
   public void a(AIOContext paramAIOContext, List<ChatMessage> paramList, int paramInt)
   {
-    if (paramAIOContext.a().a == 1001)
+    if (paramAIOContext.O().a == 1001)
     {
       if (paramInt <= 0) {
         return;
@@ -37,7 +37,7 @@ public class NearbyMsgBoxReadConfirmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NearbyMsgBoxReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

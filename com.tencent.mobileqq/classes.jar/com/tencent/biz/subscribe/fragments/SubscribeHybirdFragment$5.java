@@ -12,7 +12,7 @@ class SubscribeHybirdFragment$5
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribeHybirdFragment.a(this.jdField_a_of_type_ComTencentBizSubscribeBeansShareInfoBean);
+    this.b.a(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

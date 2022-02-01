@@ -4,6 +4,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.qwallet.temp.IQWalletMsgHolder;
 import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 import com.tencent.mobileqq.qqpay.ui.R.drawable;
@@ -15,53 +16,52 @@ import com.tencent.mobileqq.qwallet.hb.aio.passwd.PasswdRedBagInfo;
 public class LockRedPkgViewHolder
   extends BaseViewHolder
 {
-  IPasswdRedBagService a;
+  IPasswdRedBagService y;
   
-  public LockRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
+  public LockRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
   {
-    super(paramBaseQQAppInterface, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService = ((IPasswdRedBagService)paramBaseQQAppInterface.getRuntimeService(IPasswdRedBagService.class, ""));
-    if (a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.getPasswdRedBagInfoById(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {
-      this.i = 0;
+    super(paramBaseQQAppInterface, paramBaseSessionInfo, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
+    this.y = ((IPasswdRedBagService)paramBaseQQAppInterface.getRuntimeService(IPasswdRedBagService.class, ""));
+    if (a(this.y.getPasswdRedBagInfoById(this.b.mQQWalletRedPacketMsg.redPacketId))) {
+      this.o = 0;
     } else {
-      this.i = paramQQWalletBaseMsgElem.j;
+      this.o = paramQQWalletBaseMsgElem.w;
     }
-    this.j = R.drawable.L;
+    this.r = R.drawable.L;
   }
   
-  public boolean a()
+  public boolean g()
   {
-    boolean bool = super.a();
+    boolean bool = super.g();
     if (bool) {
       return bool;
     }
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setVisibility(0);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setTextColor(-8947849);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setText("文字口令红包");
+    this.a.c().setVisibility(0);
+    this.a.c().setText("文字口令红包");
     return false;
   }
   
-  public void h()
+  public void i()
   {
-    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-    PasswdRedBagInfo localPasswdRedBagInfo2 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.getPasswdRedBagInfoById(localQQWalletRedPacketMsg.redPacketId);
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.b.mQQWalletRedPacketMsg;
+    PasswdRedBagInfo localPasswdRedBagInfo2 = this.y.getPasswdRedBagInfoById(localQQWalletRedPacketMsg.redPacketId);
     PasswdRedBagInfo localPasswdRedBagInfo1 = localPasswdRedBagInfo2;
     if (localPasswdRedBagInfo2 == null)
     {
-      localPasswdRedBagInfo1 = new PasswdRedBagInfo(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioQQWalletBaseMsgElem.a, false, false, 0);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.savePasswdRedBag(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioQQWalletBaseMsgElem.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.transType(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 0);
+      localPasswdRedBagInfo1 = new PasswdRedBagInfo(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.b.senderuin, this.b.time + 90000L, this.d.c, false, false, 0);
+      this.y.savePasswdRedBag(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.d.c, this.b.senderuin, this.b.time + 90000L, String.valueOf(this.y.transType(this.b.istroop)), this.b.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 0);
     }
     if (!a(localPasswdRedBagInfo1))
     {
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setVisibility(8);
+      this.a.e().setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setVisibility(0);
+    this.a.e().setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.viewholder.impl.LockRedPkgViewHolder
  * JD-Core Version:    0.7.0.1
  */

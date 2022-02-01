@@ -11,18 +11,18 @@ class MultiCardFragment$13
   public void onAnimationCancel(Animator paramAnimator)
   {
     super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.c(this.a);
+    MultiCardFragment.j(this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.c(this.a);
+    MultiCardFragment.j(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.13
  * JD-Core Version:    0.7.0.1
  */

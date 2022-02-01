@@ -17,8 +17,8 @@ class Camera2Control$6
     Camera2Utils.a(1, "[Camera2]captureStillPicture completed!");
     Camera2Control.a(this.a, 0L);
     Camera2Control.e(this.a, false);
-    Camera2Control.a(this.a).a(0);
-    Camera2Control.b(this.a);
+    Camera2Control.e(this.a).a(0);
+    Camera2Control.n(this.a);
   }
   
   public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
@@ -29,7 +29,7 @@ class Camera2Control$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.6
  * JD-Core Version:    0.7.0.1
  */

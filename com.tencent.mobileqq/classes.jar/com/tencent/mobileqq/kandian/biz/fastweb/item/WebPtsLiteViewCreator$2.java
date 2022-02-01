@@ -52,7 +52,7 @@ class WebPtsLiteViewCreator$2
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      paramString = (BaseData)WebPtsLiteViewCreator.a(this.a).get(paramString);
+      paramString = (BaseData)WebPtsLiteViewCreator.c(this.a).get(paramString);
       if (!(paramString instanceof ProteusRecommendItemData)) {
         return;
       }
@@ -60,15 +60,15 @@ class WebPtsLiteViewCreator$2
       ReportUtil.a("id_native_recommend_small_container", paramString, null);
       if (!TextUtils.isEmpty((CharSequence)paramHashMap.get("jumpUrl")))
       {
-        paramString = RIJJumpUtils.a((String)paramHashMap.get("jumpUrl"), paramString.c);
-        RIJJumpUtils.a(WebPtsLiteViewCreator.a(this.a), paramString);
+        paramString = RIJJumpUtils.a((String)paramHashMap.get("jumpUrl"), paramString.bb);
+        RIJJumpUtils.c(WebPtsLiteViewCreator.d(this.a), paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebPtsLiteViewCreator.2
  * JD-Core Version:    0.7.0.1
  */

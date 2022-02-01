@@ -10,8 +10,8 @@ class ContactBannerProcessor$2
   
   public void a(int paramInt)
   {
-    ContactBannerProcessor.d(this.a).removeMessages(1000);
-    ContactBannerProcessor.e(this.a).sendEmptyMessageDelayed(1000, 1000L);
+    ContactBannerProcessor.j(this.a).removeMessages(1000);
+    ContactBannerProcessor.k(this.a).sendEmptyMessageDelayed(1000, 1000L);
   }
   
   public void a(long paramLong) {}
@@ -24,14 +24,14 @@ class ContactBannerProcessor$2
   {
     if ((paramInt & 0x1) != 0)
     {
-      ContactBannerProcessor.b(this.a).removeMessages(1000);
-      ContactBannerProcessor.c(this.a).sendEmptyMessageDelayed(1000, 1000L);
+      ContactBannerProcessor.h(this.a).removeMessages(1000);
+      ContactBannerProcessor.i(this.a).sendEmptyMessageDelayed(1000, 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ContactBannerProcessor.2
  * JD-Core Version:    0.7.0.1
  */

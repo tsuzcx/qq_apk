@@ -14,29 +14,29 @@ class QFileC2CTransferWrapper$C2CUploadWrapper$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean) {
+    if (this.this$0.b) {
       return;
     }
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    Object localObject = this.this$0.f;
     int i = 0;
     ((FileManagerEntity)localObject).isReaded = false;
-    localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 16) {
+    localObject = this.this$0.f;
+    if (this.this$0.f.status == 16) {
       i = 16;
     }
     ((FileManagerEntity)localObject).status = i;
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.this$0.a.getFileManagerDataCenter().c(this.this$0.f);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("=_= ! Id[");
-    ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((StringBuilder)localObject).append(this.this$0.f.nSessionId);
     ((StringBuilder)localObject).append("] frend in blacklist!");
     QLog.e("QFileC2CTransferWrapper<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, -1, HardCodeUtil.a(2131704639));
+    this.this$0.a.getFileManagerNotifyCenter().a(this.this$0.f.uniseq, this.this$0.f.nSessionId, this.this$0.f.peerUin, this.this$0.f.peerType, 15, null, -1, HardCodeUtil.a(2131902543));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileC2CTransferWrapper.C2CUploadWrapper.1
  * JD-Core Version:    0.7.0.1
  */

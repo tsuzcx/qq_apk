@@ -43,7 +43,7 @@ public class IdolAdapter
     if ((paramInt >= 0) && (paramInt < getItemCount()))
     {
       Object localObject = (TroopFansInfo.IdolItem)this.mIdolItems.get(paramInt);
-      FansTroopUtils.a(this.mContext, ((TroopFansInfo.IdolItem)localObject).jdField_a_of_type_Int, this.troopUin);
+      FansTroopUtils.a(this.mContext, ((TroopFansInfo.IdolItem)localObject).a, this.troopUin);
       ReportController.b(null, "dc00898", "", "", "0X800B598", "0X800B598", 0, 0, "", "", "", "");
       localObject = this.mIdolAdapterCb;
       if (localObject != null) {
@@ -82,21 +82,21 @@ public class IdolAdapter
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(this.mContext.getString(2131699481));
+      ((StringBuilder)localObject2).append(this.mContext.getString(2131897512));
       return ((StringBuilder)localObject2).toString();
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(String.valueOf(paramLong / 10000L));
-    ((StringBuilder)localObject1).append(this.mContext.getString(2131699481));
+    ((StringBuilder)localObject1).append(this.mContext.getString(2131897512));
     return ((StringBuilder)localObject1).toString();
   }
   
   protected String getRankText(long paramLong)
   {
     if (paramLong <= 0L) {
-      return this.mContext.getString(2131699561);
+      return this.mContext.getString(2131897592);
     }
-    return String.format(this.mContext.getString(2131699477), new Object[] { String.valueOf(paramLong) });
+    return String.format(this.mContext.getString(2131897508), new Object[] { String.valueOf(paramLong) });
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -105,7 +105,7 @@ public class IdolAdapter
     TroopFansInfo.IdolItem localIdolItem = (TroopFansInfo.IdolItem)this.mIdolItems.get(paramInt);
     if (localIdolItem != null)
     {
-      Object localObject = URLDrawable.getDrawable(localIdolItem.c, null);
+      Object localObject = URLDrawable.getDrawable(localIdolItem.d, null);
       if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
         ((URLDrawable)localObject).restartDownload();
       }
@@ -114,16 +114,16 @@ public class IdolAdapter
       if (localObject != null) {
         ((IdolAdapter.IdolAdapterCallBack)localObject).onUpdateItemTheme(localMyViewHolder.tvQscoretitle);
       }
-      localMyViewHolder.tvQscore.setText(getQScoreText(localIdolItem.b));
-      localMyViewHolder.tvRank.setText(getRankText(localIdolItem.jdField_a_of_type_Long));
-      localMyViewHolder.tvRank.setContentDescription(getRankText(localIdolItem.jdField_a_of_type_Long));
-      localMyViewHolder.tvName.setText(localIdolItem.jdField_a_of_type_JavaLangString);
-      localMyViewHolder.tvName.setContentDescription(localIdolItem.jdField_a_of_type_JavaLangString);
+      localMyViewHolder.tvQscore.setText(getQScoreText(localIdolItem.f));
+      localMyViewHolder.tvRank.setText(getRankText(localIdolItem.e));
+      localMyViewHolder.tvRank.setContentDescription(getRankText(localIdolItem.e));
+      localMyViewHolder.tvName.setText(localIdolItem.b);
+      localMyViewHolder.tvName.setContentDescription(localIdolItem.b);
       localMyViewHolder.itemView.setOnClickListener(new IdolAdapter.1(this, paramInt));
       if (this.mIsNight) {
-        localMyViewHolder.itemView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130841635));
+        localMyViewHolder.itemView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130842538));
       } else {
-        localMyViewHolder.itemView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130841634));
+        localMyViewHolder.itemView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130842537));
       }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -131,7 +131,7 @@ public class IdolAdapter
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new IdolAdapter.MyViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559577, paramViewGroup, false));
+    return new IdolAdapter.MyViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131625605, paramViewGroup, false));
   }
   
   public void setList(List<TroopFansInfo.IdolItem> paramList)
@@ -146,7 +146,7 @@ public class IdolAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.IdolAdapter
  * JD-Core Version:    0.7.0.1
  */

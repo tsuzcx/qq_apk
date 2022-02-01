@@ -2,24 +2,17 @@ package com.tencent.open.filedownload;
 
 public class TaskInfo
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
+  public String a = "6000";
+  public String b = "0";
   public String c = "0";
   public String d = "default_via";
   public String e;
   public String f;
   public String g;
-  public String h;
-  
-  public TaskInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "6000";
-    this.jdField_b_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_Int = 1;
-  }
+  public long h;
+  public String i;
+  public int j;
+  public int k = 1;
   
   public static TaskInfo a(TaskInfo paramTaskInfo)
   {
@@ -30,13 +23,13 @@ public class TaskInfo
     localTaskInfo.e = paramTaskInfo.e;
     localTaskInfo.f = paramTaskInfo.f;
     localTaskInfo.g = paramTaskInfo.g;
-    localTaskInfo.jdField_a_of_type_Long = paramTaskInfo.jdField_a_of_type_Long;
     localTaskInfo.h = paramTaskInfo.h;
-    localTaskInfo.jdField_a_of_type_Int = paramTaskInfo.jdField_a_of_type_Int;
-    localTaskInfo.jdField_b_of_type_Int = paramTaskInfo.jdField_b_of_type_Int;
+    localTaskInfo.i = paramTaskInfo.i;
+    localTaskInfo.j = paramTaskInfo.j;
+    localTaskInfo.k = paramTaskInfo.k;
     localTaskInfo.c = paramTaskInfo.c;
-    localTaskInfo.jdField_b_of_type_JavaLangString = paramTaskInfo.jdField_b_of_type_JavaLangString;
-    localTaskInfo.jdField_a_of_type_JavaLangString = paramTaskInfo.jdField_a_of_type_JavaLangString;
+    localTaskInfo.b = paramTaskInfo.b;
+    localTaskInfo.a = paramTaskInfo.a;
     localTaskInfo.d = paramTaskInfo.d;
     return localTaskInfo;
   }
@@ -46,11 +39,11 @@ public class TaskInfo
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("pageId=");
-    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder2.append(this.a);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("\nmoduleId=");
-    localStringBuilder2.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder2.append(this.b);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("\npositionId=");
@@ -74,26 +67,26 @@ public class TaskInfo
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("\nlength=");
-    localStringBuilder2.append(this.jdField_a_of_type_Long);
-    localStringBuilder1.append(localStringBuilder2.toString());
-    localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("\nname=");
     localStringBuilder2.append(this.h);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\nname=");
+    localStringBuilder2.append(this.i);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("\nprogress=");
-    localStringBuilder2.append(this.jdField_a_of_type_Int);
+    localStringBuilder2.append(this.j);
     localStringBuilder1.append(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("\nstate=");
-    localStringBuilder2.append(this.jdField_b_of_type_Int);
+    localStringBuilder2.append(this.k);
     localStringBuilder1.append(localStringBuilder2.toString());
     return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.filedownload.TaskInfo
  * JD-Core Version:    0.7.0.1
  */

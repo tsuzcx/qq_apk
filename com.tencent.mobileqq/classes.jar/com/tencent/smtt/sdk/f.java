@@ -278,7 +278,7 @@ class f
     {
       bool1 = true;
       ((p)localObject1).b(paramContext, bool1);
-      p.a().k(paramContext);
+      p.a().l(paramContext);
       if (paramo != null) {
         paramo.a("tbs_rename_task", (byte)2);
       }
@@ -330,7 +330,7 @@ class f
             if (paramBoolean1)
             {
               localFile = new File(TbsShareManager.c(paramContext));
-              localObject3 = p.a().q(paramContext);
+              localObject3 = p.a().r(paramContext);
               localObject1 = TbsShareManager.e(paramContext);
               localObject2 = localObject3;
               if (localObject3 == null)
@@ -348,7 +348,7 @@ class f
           else
           {
             TbsLog.addLog(996, null, new Object[0]);
-            localFile = p.a().q(paramContext);
+            localFile = p.a().r(paramContext);
             if (h == 25436) {
               break label968;
             }
@@ -425,8 +425,8 @@ class f
           TbsCoreLoadStat.getInstance().a(paramContext, 405, new Throwable(paramo));
         }
       }
-      c.a().a(paramContext);
-      this.j = p.s(paramContext);
+      d.a().a(paramContext);
+      this.j = p.t(paramContext);
       this.g = true;
     }
   }
@@ -492,7 +492,7 @@ class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.f
  * JD-Core Version:    0.7.0.1
  */

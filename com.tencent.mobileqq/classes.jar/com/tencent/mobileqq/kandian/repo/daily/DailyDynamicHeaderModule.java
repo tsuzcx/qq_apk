@@ -31,16 +31,25 @@ import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
 public class DailyDynamicHeaderModule
   extends ReadInJoyEngineModule
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = null;
+  private final Object a = new Object();
+  private JSONObject b = null;
   
   public DailyDynamicHeaderModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    c();
+    e();
   }
   
-  public static JSONObject a()
+  public static JSONObject a(boolean paramBoolean)
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = b();
+    localJSONObject2.put("req_type", paramBoolean ^ true);
+    localJSONObject1.put("dynamic_header_req_param", localJSONObject2);
+    return localJSONObject1;
+  }
+  
+  public static JSONObject b()
   {
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("ad_code", ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCityCode());
@@ -52,19 +61,10 @@ public class DailyDynamicHeaderModule
     return localJSONObject;
   }
   
-  public static JSONObject a(boolean paramBoolean)
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = a();
-    localJSONObject2.put("req_type", paramBoolean ^ true);
-    localJSONObject1.put("dynamic_header_req_param", localJSONObject2);
-    return localJSONObject1;
-  }
-  
-  private void b()
+  private void d()
   {
     oidb_cmd0x68b.ReqBody localReqBody = new oidb_cmd0x68b.ReqBody();
-    long l = Long.valueOf(RIJQQAppInterfaceUtil.a()).longValue();
+    long l = Long.valueOf(RIJQQAppInterfaceUtil.d()).longValue();
     localReqBody.uint64_uin.set(l);
     localReqBody.uint32_network_type.set(ArticleInfoModuleUtils.a());
     try
@@ -88,9 +88,9 @@ public class DailyDynamicHeaderModule
     sendPbReq(ReadInJoyOidbHelper.a("OidbSvc.0xcba", 3258, 0, localReqBody.toByteArray()));
   }
   
-  private void c()
+  private void e()
   {
-    String str = (String)RIJSPUtils.a("sp_key_daily_dynamic_header_data", "");
+    String str = (String)RIJSPUtils.b("sp_key_daily_dynamic_header_data", "");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[startLoadFromDisk] json=");
     localStringBuilder.append(str);
@@ -102,47 +102,47 @@ public class DailyDynamicHeaderModule
   
   public void a()
   {
-    b();
+    d();
   }
   
   /* Error */
   public void a(String paramString)
   {
     // Byte code:
-    //   0: new 48	java/lang/StringBuilder
+    //   0: new 59	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 49	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 60	java/lang/StringBuilder:<init>	()V
     //   7: astore_3
     //   8: aload_3
-    //   9: ldc 208
-    //   11: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: ldc 207
+    //   11: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   14: pop
     //   15: aload_3
     //   16: aload_1
-    //   17: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: pop
-    //   21: ldc 139
+    //   21: ldc 140
     //   23: iconst_1
     //   24: aload_3
-    //   25: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   25: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   28: invokestatic 194	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   31: aload_0
-    //   32: getfield 18	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   32: getfield 19	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule:a	Ljava/lang/Object;
     //   35: astore_3
     //   36: aload_3
     //   37: monitorenter
     //   38: iconst_0
     //   39: istore_2
     //   40: aload_0
-    //   41: new 27	org/json/JSONObject
+    //   41: new 28	org/json/JSONObject
     //   44: dup
     //   45: aload_1
-    //   46: invokespecial 210	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   49: ldc 212
-    //   51: invokevirtual 216	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   54: putfield 20	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   46: invokespecial 209	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   49: ldc 211
+    //   51: invokevirtual 215	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   54: putfield 21	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule:b	Lorg/json/JSONObject;
     //   57: aload_0
-    //   58: getfield 20	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   58: getfield 21	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule:b	Lorg/json/JSONObject;
     //   61: astore_1
     //   62: aload_1
     //   63: ifnull +27 -> 90
@@ -152,23 +152,23 @@ public class DailyDynamicHeaderModule
     //   71: astore_1
     //   72: goto +37 -> 109
     //   75: astore_1
-    //   76: ldc 139
+    //   76: ldc 140
     //   78: iconst_1
-    //   79: ldc 218
+    //   79: ldc 217
     //   81: aload_1
-    //   82: invokestatic 164	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   82: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   85: aload_0
     //   86: aconst_null
-    //   87: putfield 20	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   87: putfield 21	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule:b	Lorg/json/JSONObject;
     //   90: aload_3
     //   91: monitorexit
-    //   92: invokestatic 224	com/tencent/mobileqq/app/ThreadManagerV2:getUIHandlerV2	()Landroid/os/Handler;
-    //   95: new 226	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule$1
+    //   92: invokestatic 223	com/tencent/mobileqq/app/ThreadManagerV2:getUIHandlerV2	()Landroid/os/Handler;
+    //   95: new 225	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule$1
     //   98: dup
     //   99: aload_0
     //   100: iload_2
-    //   101: invokespecial 229	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule$1:<init>	(Lcom/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule;Z)V
-    //   104: invokevirtual 235	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   101: invokespecial 228	com/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule$1:<init>	(Lcom/tencent/mobileqq/kandian/repo/daily/DailyDynamicHeaderModule;Z)V
+    //   104: invokevirtual 234	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   107: pop
     //   108: return
     //   109: aload_3
@@ -190,11 +190,11 @@ public class DailyDynamicHeaderModule
     //   40	62	75	java/lang/Exception
   }
   
-  public JSONObject b()
+  public JSONObject c()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a)
     {
-      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      JSONObject localJSONObject = this.b;
       return localJSONObject;
     }
   }
@@ -231,7 +231,7 @@ public class DailyDynamicHeaderModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.daily.DailyDynamicHeaderModule
  * JD-Core Version:    0.7.0.1
  */

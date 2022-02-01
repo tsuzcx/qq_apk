@@ -13,37 +13,32 @@ import mqq.manager.Manager;
 public class MiniCardManager
   implements IMiniCardManager, Manager
 {
-  private static final QQLruCache<String, NowSummaryCard.MiniCard> a;
+  private static final QQLruCache<String, NowSummaryCard.MiniCard> b = new QQLruCache(101020, 50, 10);
   public QQAppInterface a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(101020, 50, 10);
-  }
   
   public MiniCardManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static NowSummaryCard.MiniCard a(String paramString)
-  {
-    return (NowSummaryCard.MiniCard)jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
+    this.a = paramQQAppInterface;
   }
   
   public static void a(String paramString, NowSummaryCard.MiniCard paramMiniCard)
   {
-    jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString, paramMiniCard);
+    b.put(paramString, paramMiniCard);
   }
   
   public static boolean a(String paramString)
   {
-    return jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.containsKey(paramString);
+    return b.containsKey(paramString);
+  }
+  
+  public static NowSummaryCard.MiniCard b(String paramString)
+  {
+    return (NowSummaryCard.MiniCard)b.get(paramString);
   }
   
   public void a()
   {
-    jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
+    b.evictAll();
   }
   
   public void a(List<Long> paramList, int paramInt, IGetMiniCardCallback paramIGetMiniCardCallback)
@@ -51,7 +46,7 @@ public class MiniCardManager
     NowSummaryCard.NearbyMiniCardReq localNearbyMiniCardReq = new NowSummaryCard.NearbyMiniCardReq();
     localNearbyMiniCardReq.target_id.set(paramList);
     localNearbyMiniCardReq.id_type.set(paramInt);
-    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new MiniCardManager.1(this, false, paramIGetMiniCardCallback, paramList), localNearbyMiniCardReq.toByteArray(), "NowSummaryCard.NearbyMiniCardReq");
+    ProtoUtils.a(this.a, new MiniCardManager.1(this, false, paramIGetMiniCardCallback, paramList), localNearbyMiniCardReq.toByteArray(), "NowSummaryCard.NearbyMiniCardReq");
   }
   
   public void onDestroy()
@@ -61,7 +56,7 @@ public class MiniCardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.MiniCardManager
  * JD-Core Version:    0.7.0.1
  */

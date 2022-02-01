@@ -17,18 +17,18 @@ class NearbyProfileDisplayPanel$10
   
   public void onClick(View paramView)
   {
-    ReportTask localReportTask = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("nonlive_clk").e(String.valueOf(NearbyProfileDisplayPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel).tinyId));
-    if (NearbyProfileDisplayPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel).gender == 0) {
+    ReportTask localReportTask = new ReportTask(this.b.e.app).b("grp_lbs").c("data_card").d("nonlive_clk").e(String.valueOf(this.b.f.tinyId));
+    if (this.b.f.gender == 0) {
       paramView = "1";
-    } else if (NearbyProfileDisplayPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel).gender == 1) {
+    } else if (this.b.f.gender == 1) {
       paramView = "2";
     } else {
       paramView = "0";
     }
     localReportTask.a(new String[] { paramView }).a();
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
+    if (this.a.startsWith("mqqapi:"))
     {
-      paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      paramView = JumpParser.a(this.b.e.app, this.b.b, this.a);
       if (paramView != null)
       {
         paramView.a();
@@ -36,18 +36,18 @@ class NearbyProfileDisplayPanel$10
       }
       paramView = new StringBuilder();
       paramView.append("ja==null, jumpUrl=");
-      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView.append(this.a);
       QLog.i("NearbyProfileDisplayPanel", 1, paramView.toString());
       return;
     }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity(paramView);
+    paramView = new Intent(this.b.e, QQBrowserActivity.class);
+    paramView.putExtra("url", this.a);
+    this.b.e.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.10
  * JD-Core Version:    0.7.0.1
  */

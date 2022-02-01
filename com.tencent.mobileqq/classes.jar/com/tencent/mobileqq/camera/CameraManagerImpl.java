@@ -10,13 +10,13 @@ import java.io.IOException;
 public class CameraManagerImpl
   implements CameraManager
 {
-  private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
-  private Camera jdField_a_of_type_AndroidHardwareCamera = null;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private CameraManagerImpl.CameraHandler jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl$CameraHandler = null;
-  private IOException jdField_a_of_type_JavaIoIOException;
-  private boolean jdField_a_of_type_Boolean;
-  private Camera.Parameters b = null;
+  HandlerThread a;
+  private Camera.Parameters b;
+  private boolean c;
+  private IOException d;
+  private CameraManagerImpl.CameraHandler e = null;
+  private Camera f = null;
+  private Camera.Parameters g = null;
   
   CameraManagerImpl()
   {
@@ -25,17 +25,17 @@ public class CameraManagerImpl
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl$CameraHandler == null)
+    if (this.e == null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("CameraThread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_ComTencentMobileqqCameraCameraManagerImpl$CameraHandler = new CameraManagerImpl.CameraHandler(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.a = new HandlerThread("CameraThread");
+      this.a.start();
+      this.e = new CameraManagerImpl.CameraHandler(this, this.a.getLooper());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl
  * JD-Core Version:    0.7.0.1
  */

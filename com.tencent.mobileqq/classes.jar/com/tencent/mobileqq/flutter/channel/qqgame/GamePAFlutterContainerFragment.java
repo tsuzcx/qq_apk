@@ -15,7 +15,7 @@ public class GamePAFlutterContainerFragment
   @Nullable
   public View a()
   {
-    if ((this.a != null) && (this.a.b()))
+    if ((this.b != null) && (this.b.l()))
     {
       View localView = new View(getContext());
       localView.setBackgroundColor(0);
@@ -48,7 +48,7 @@ public class GamePAFlutterContainerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.qqgame.GamePAFlutterContainerFragment
  * JD-Core Version:    0.7.0.1
  */

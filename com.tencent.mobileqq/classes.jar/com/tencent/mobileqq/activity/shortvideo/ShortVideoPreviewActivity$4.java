@@ -44,7 +44,7 @@ class ShortVideoPreviewActivity$4
       QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
     }
     if (this.a.mMediaPlayer != null) {
-      this.a.mMediaPlayer.c();
+      this.a.mMediaPlayer.f();
     }
     if (this.a.updateBarHandler != null) {
       this.a.updateBarHandler.removeCallbacks(this.a.updateSeekBarThread);
@@ -53,7 +53,7 @@ class ShortVideoPreviewActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -44,8 +44,8 @@ class MapWidget$4
       paramThrowable.append(paramString);
       QLog.d("MapWidget", 2, paramThrowable.toString());
     }
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget$RouteDetail);
+    if (MapWidget.a(this.c) != null) {
+      MapWidget.a(this.c).a(false, this.b);
     }
   }
   
@@ -57,12 +57,12 @@ class MapWidget$4
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[map][venue][route]getRoutePlan onSuccess invoked. routeType: ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(this.a);
       ((StringBuilder)localObject2).append(" result: ");
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.d("MapWidget", 2, ((StringBuilder)localObject2).toString());
     }
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.a;
     boolean bool = true;
     localObject1 = null;
     if (paramInt != 1)
@@ -79,8 +79,8 @@ class MapWidget$4
           if ((paramObject != null) && (paramObject.result != null) && (paramObject.result.routes != null) && (!paramObject.result.routes.isEmpty()))
           {
             paramObject = (WalkingResultObject.Route)paramObject.result.routes.get(0);
-            this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget$RouteDetail.a = paramObject.duration;
-            this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget$RouteDetail.b = paramObject.distance;
+            this.b.b = paramObject.duration;
+            this.b.c = paramObject.distance;
             paramObject = paramObject.polyline;
           }
           else
@@ -117,8 +117,8 @@ class MapWidget$4
               }
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget$RouteDetail.a = ((float)((TransitResultObject.Route)localObject2).duration);
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget$RouteDetail.b = ((TransitResultObject.Route)localObject2).distance;
+          this.b.b = ((float)((TransitResultObject.Route)localObject2).duration);
+          this.b.c = ((TransitResultObject.Route)localObject2).distance;
           if (paramObject.isEmpty()) {
             paramObject = localObject1;
           }
@@ -140,8 +140,8 @@ class MapWidget$4
       if ((paramObject.result != null) && (paramObject.result.routes != null) && (!paramObject.result.routes.isEmpty()))
       {
         paramObject = (DrivingResultObject.Route)paramObject.result.routes.get(0);
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget$RouteDetail.a = paramObject.duration;
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget$RouteDetail.b = paramObject.distance;
+        this.b.b = paramObject.duration;
+        this.b.c = paramObject.distance;
         paramObject = paramObject.polyline;
       }
       else
@@ -156,21 +156,21 @@ class MapWidget$4
     }
     if (paramObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.c(false);
+      if (this.c.c != null) {
+        this.c.c(false);
       }
-      if (QQUIDelegate.b()) {
+      if (QQUIDelegate.c()) {
         paramInt = Color.parseColor("#0071FF");
       } else {
         paramInt = Color.parseColor("#4D94FF");
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
-      ((MapWidget)localObject1).jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline = ((MapWidget)localObject1).jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.addPolyline(new PolylineOptions().addAll(paramObject).color(paramInt).width(DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getContext(), 5.0F)));
-      if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline != null)
+      localObject1 = this.c;
+      ((MapWidget)localObject1).c = ((MapWidget)localObject1).b.addPolyline(new PolylineOptions().addAll(paramObject).color(paramInt).width(DisplayUtil.a(this.c.getContext(), 5.0F)));
+      if (this.c.c != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
-        if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_Int == 0) {
-          MapWidget.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+        this.c.a();
+        if (this.c.e == 0) {
+          MapWidget.c(this.c);
         }
       }
     }
@@ -178,19 +178,19 @@ class MapWidget$4
     {
       QLog.d("MapWidget", 2, "[map][venue][route]getRoutePlan onSuccess invoked. error polyline: null");
     }
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)
+    if (MapWidget.a(this.c) != null)
     {
-      localObject1 = MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
-      if ((paramObject == null) || (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null)) {
+      localObject1 = MapWidget.a(this.c);
+      if ((paramObject == null) || (this.c.c == null)) {
         bool = false;
       }
-      ((MapWidget.EventListener)localObject1).a(bool, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget$RouteDetail);
+      ((MapWidget.EventListener)localObject1).a(bool, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapWidget.4
  * JD-Core Version:    0.7.0.1
  */

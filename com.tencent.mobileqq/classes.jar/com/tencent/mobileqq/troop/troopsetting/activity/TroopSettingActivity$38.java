@@ -13,18 +13,18 @@ class TroopSettingActivity$38
   
   protected void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin)) && (!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin)))
+    if ((this.b.i != null) && (!TextUtils.isEmpty(this.b.i.troopUin)) && (!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.b.i.troopUin)))
     {
-      if (this.a.jdField_a_of_type_ArrayOfAndroidViewView == null) {
+      if (this.b.h == null) {
         return;
       }
       if (!paramBoolean) {
         return;
       }
-      paramString1 = this.a.jdField_a_of_type_ArrayOfAndroidViewView[49];
+      paramString1 = this.b.h[49];
       if (paramString1 != null)
       {
-        paramString1 = (TextView)paramString1.findViewById(2131376541);
+        paramString1 = (TextView)paramString1.findViewById(2131444790);
         if ((paramString2 != null) && (paramString1 != null)) {
           paramString1.setText(paramString2);
         }
@@ -34,7 +34,7 @@ class TroopSettingActivity$38
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.38
  * JD-Core Version:    0.7.0.1
  */

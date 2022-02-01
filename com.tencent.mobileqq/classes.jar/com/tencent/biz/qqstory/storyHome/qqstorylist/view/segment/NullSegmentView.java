@@ -32,7 +32,7 @@ public class NullSegmentView
     return null;
   }
   
-  public String a()
+  public String b()
   {
     return this.a;
   }

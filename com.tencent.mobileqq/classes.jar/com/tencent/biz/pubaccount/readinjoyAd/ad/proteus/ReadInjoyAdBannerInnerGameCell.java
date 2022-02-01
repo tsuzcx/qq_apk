@@ -18,14 +18,14 @@ public class ReadInjoyAdBannerInnerGameCell
     {
       try
       {
-        if (paramAdData.a == null) {
+        if (paramAdData.as == null) {
           return paramJSONObject;
         }
-        JSONObject localJSONObject = paramAdData.b;
+        JSONObject localJSONObject = paramAdData.aE;
         int k = 0;
         if (localJSONObject != null)
         {
-          i = paramAdData.b.optInt("sourceId", 0);
+          i = paramAdData.aE.optInt("sourceId", 0);
           if (i == 8)
           {
             i = 1;
@@ -44,46 +44,46 @@ public class ReadInjoyAdBannerInnerGameCell
           localJSONObject.put("author_rec_image_url", "https://img.nfa.qq.com/gmaster_prod/16033248/gmaster_1762mtm0zag0_kd_detail_kol.png");
           paramJSONObject.put("id_inner_author_recommend", localJSONObject);
         }
-        if (!TextUtils.isEmpty(paramAdData.a.k)) {
+        if (!TextUtils.isEmpty(paramAdData.as.l)) {
           paramJSONObject.put("id_inner_small_img", new JSONObject());
         }
-        boolean bool = TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString);
+        boolean bool = TextUtils.isEmpty(paramAdData.as.b);
         if (!bool)
         {
           localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
+          localJSONObject.put("text", paramAdData.as.b);
           paramJSONObject.put("id_inner_title", localJSONObject);
         }
-        if ((!((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isGameComponentAndGetGiftType(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
+        if ((!((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isGameComponentAndGetGiftType(paramAdData)) && (!TextUtils.isEmpty(paramAdData.as.i)))
         {
           localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.h);
+          localJSONObject.put("text", paramAdData.as.i);
           paramJSONObject.put("id_inner_category", localJSONObject);
         }
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.d))
+        if (!TextUtils.isEmpty(paramAdData.as.B.e))
         {
           paramJSONObject.put("id_inner_game_img1", new JSONObject());
           paramJSONObject.put("id_game_img1_container1", new JSONObject());
           i = 1;
           j = 1;
-          if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.e))
+          if (!TextUtils.isEmpty(paramAdData.as.B.f))
           {
             paramJSONObject.put("id_inner_game_img2", new JSONObject());
             paramJSONObject.put("id_game_img2_container2", new JSONObject());
             i = 1;
             j = 1;
           }
-          if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.f)) {
+          if (TextUtils.isEmpty(paramAdData.as.B.g)) {
             break label574;
           }
           paramJSONObject.put("id_inner_game_img3", new JSONObject());
           paramJSONObject.put("id_game_img3_container3", new JSONObject());
           i = 1;
           j = k;
-          if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.g))
+          if (!TextUtils.isEmpty(paramAdData.as.B.h))
           {
             localJSONObject = new JSONObject();
-            localJSONObject.put("text", paramAdData.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.g);
+            localJSONObject.put("text", paramAdData.as.B.h);
             paramJSONObject.put("id_inner_ad_name", localJSONObject);
             i = 1;
           }
@@ -93,10 +93,10 @@ public class ReadInjoyAdBannerInnerGameCell
           if (j != 0) {
             paramJSONObject.put("id_game_img_right_space", new JSONObject());
           }
-          if (!TextUtils.isEmpty(paramAdData.a.z))
+          if (!TextUtils.isEmpty(paramAdData.as.A))
           {
             localJSONObject = new JSONObject();
-            localJSONObject.put("text", paramAdData.a.z);
+            localJSONObject.put("text", paramAdData.as.A);
             paramJSONObject.put("id_inner_sign", localJSONObject);
           }
           localJSONObject = new JSONObject();
@@ -117,7 +117,7 @@ public class ReadInjoyAdBannerInnerGameCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.ReadInjoyAdBannerInnerGameCell
  * JD-Core Version:    0.7.0.1
  */

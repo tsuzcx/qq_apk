@@ -17,18 +17,18 @@ class TroopSettingActivity$35
     if (paramBoolean1)
     {
       if ((paramBoolean2) && (TroopSettingActivity.a(this.a) != null)) {
-        ((ITroopOnlineMemberService)TroopSettingActivity.a(this.a).getRuntimeService(ITroopOnlineMemberService.class, "")).removeDetailOnlineData(this.a.a.troopUin);
+        ((ITroopOnlineMemberService)TroopSettingActivity.a(this.a).getRuntimeService(ITroopOnlineMemberService.class, "")).removeDetailOnlineData(this.a.i.troopUin);
       }
     }
     else {
-      QQToast.a(BaseApplication.getContext(), 2131696114, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(BaseApplication.getContext(), 2131893879, 0).show(this.a.getTitleBarHeight());
     }
-    TroopSettingActivity.r(this.a);
+    TroopSettingActivity.u(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.35
  * JD-Core Version:    0.7.0.1
  */

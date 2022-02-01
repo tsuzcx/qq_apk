@@ -9,7 +9,7 @@ import android.os.Build;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.minicode.Utils;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.qrscan.api.IQRScanTempApi;
+import com.tencent.mobileqq.qrscan.api.IQRScanAbilityApi;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -19,16 +19,16 @@ import mqq.app.MobileQQ;
 
 public class MiniCodeUtil
 {
-  private static Boolean a;
-  public static String a = "sp_file_minirecog";
   public static boolean a = false;
-  public static String b = "sp_key_detect_init_error_";
   public static volatile boolean b = false;
-  private static boolean c = false;
+  public static String c = "sp_file_minirecog";
+  public static String d = "sp_key_detect_init_error_";
+  private static Boolean e;
+  private static boolean f = false;
   
   static
   {
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
       String str1 = d();
       String str2 = e();
@@ -47,52 +47,6 @@ public class MiniCodeUtil
       a("qr_detection_model.txt", "model_debug/", str2);
       a("qr_anchor.bin", "model_debug/", str2);
     }
-  }
-  
-  public static int a()
-  {
-    if (a(false) >= 3) {
-      return -1;
-    }
-    int k = ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).getQmcfGpuSupportType();
-    int j = ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).getQmcfGpuSupportTypeWithoutGPURule();
-    boolean bool = c;
-    int i = 1;
-    if (!bool)
-    {
-      MiniScanReport.c(k, j);
-      c = true;
-    }
-    bool = ((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).isQmcfSupport(j);
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog", 2, String.format("getSupportDetectType supportType[loose,strict]=[%d,%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k) }));
-    }
-    if (bool)
-    {
-      if (((IQRScanTempApi)QRoute.api(IQRScanTempApi.class)).isQmcfSupportGLElseCL(j)) {
-        i = 2;
-      }
-      return i;
-    }
-    return 0;
-  }
-  
-  public static int a(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
-    if (paramBoolean) {
-      str = "qq.android.minidecode.so_v8.2.0";
-    } else {
-      str = "qq.android.minidetect.so_v8.6.0";
-    }
-    localStringBuilder.append(str);
-    String str = localStringBuilder.toString();
-    int i = MobileQQ.sMobileQQ.getSharedPreferences(jdField_a_of_type_JavaLangString, 4).getInt(str, 0);
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniRecog", 2, String.format("getMiniScanErrorCnt errorCnt=%d bDecodeElseDetect=%b", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramBoolean) }));
-    }
-    return i;
   }
   
   public static String a()
@@ -143,42 +97,7 @@ public class MiniCodeUtil
   
   public static void a(boolean paramBoolean)
   {
-    jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_a_of_type_JavaLangBoolean == null)
-    {
-      boolean bool2 = DeviceInfoUtil.e();
-      boolean bool1;
-      if (bool2) {
-        try
-        {
-          Class localClass = Class.forName("android.os.SystemProperties");
-          if (((Integer)localClass.getMethod("getInt", new Class[] { String.class, Integer.TYPE }).invoke(localClass, new Object[] { new String("ro.kernel.qemu"), new Integer(0) })).intValue() == 1) {
-            if (!"tencent".equals(Build.MANUFACTURER))
-            {
-              bool1 = "unknown".equals(Build.MANUFACTURER);
-              if (!bool1) {}
-            }
-            else
-            {
-              bool1 = true;
-            }
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.e("MiniRecog", 2, "RecogUtil.isX86()", localThrowable);
-        }
-      } else {
-        bool1 = false;
-      }
-      QLog.i("MiniRecog", 1, String.format("RecogUtil isX86 [%b,%b,%s]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Build.MANUFACTURER }));
-      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool1);
-    }
-    return jdField_a_of_type_JavaLangBoolean.booleanValue();
+    b = paramBoolean;
   }
   
   /* Error */
@@ -191,42 +110,42 @@ public class MiniCodeUtil
     //   4: astore_3
     //   5: aconst_null
     //   6: astore 6
-    //   8: new 28	java/io/File
+    //   8: new 29	java/io/File
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 32	java/io/File:<init>	(Ljava/lang/String;)V
+    //   13: invokespecial 33	java/io/File:<init>	(Ljava/lang/String;)V
     //   16: astore 5
-    //   18: new 28	java/io/File
+    //   18: new 29	java/io/File
     //   21: dup
     //   22: aload_1
-    //   23: invokespecial 32	java/io/File:<init>	(Ljava/lang/String;)V
+    //   23: invokespecial 33	java/io/File:<init>	(Ljava/lang/String;)V
     //   26: astore_0
     //   27: aload 5
-    //   29: invokevirtual 36	java/io/File:exists	()Z
+    //   29: invokevirtual 37	java/io/File:exists	()Z
     //   32: ifeq +9 -> 41
     //   35: aload 5
-    //   37: invokevirtual 276	java/io/File:delete	()Z
+    //   37: invokevirtual 153	java/io/File:delete	()Z
     //   40: pop
-    //   41: new 278	java/io/FileInputStream
+    //   41: new 155	java/io/FileInputStream
     //   44: dup
     //   45: aload_0
-    //   46: invokespecial 281	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   46: invokespecial 158	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   49: astore_0
     //   50: aload 4
     //   52: astore_1
     //   53: aload_0
     //   54: astore_3
-    //   55: new 283	java/io/FileOutputStream
+    //   55: new 160	java/io/FileOutputStream
     //   58: dup
     //   59: aload 5
-    //   61: invokespecial 284	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   61: invokespecial 161	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   64: astore 4
     //   66: sipush 2048
     //   69: newarray byte
     //   71: astore_1
     //   72: aload_0
     //   73: aload_1
-    //   74: invokevirtual 288	java/io/FileInputStream:read	([B)I
+    //   74: invokevirtual 165	java/io/FileInputStream:read	([B)I
     //   77: istore_2
     //   78: iload_2
     //   79: iconst_m1
@@ -235,23 +154,23 @@ public class MiniCodeUtil
     //   85: aload_1
     //   86: iconst_0
     //   87: iload_2
-    //   88: invokevirtual 292	java/io/FileOutputStream:write	([BII)V
+    //   88: invokevirtual 169	java/io/FileOutputStream:write	([BII)V
     //   91: goto -19 -> 72
     //   94: aload 4
-    //   96: invokevirtual 295	java/io/FileOutputStream:flush	()V
+    //   96: invokevirtual 172	java/io/FileOutputStream:flush	()V
     //   99: aload 4
-    //   101: invokevirtual 298	java/io/FileOutputStream:close	()V
+    //   101: invokevirtual 175	java/io/FileOutputStream:close	()V
     //   104: goto +8 -> 112
     //   107: astore_1
     //   108: aload_1
-    //   109: invokevirtual 301	java/lang/Exception:printStackTrace	()V
+    //   109: invokevirtual 178	java/lang/Exception:printStackTrace	()V
     //   112: aload_0
-    //   113: invokevirtual 302	java/io/FileInputStream:close	()V
+    //   113: invokevirtual 179	java/io/FileInputStream:close	()V
     //   116: iconst_1
     //   117: ireturn
     //   118: astore_0
     //   119: aload_0
-    //   120: invokevirtual 301	java/lang/Exception:printStackTrace	()V
+    //   120: invokevirtual 178	java/lang/Exception:printStackTrace	()V
     //   123: iconst_1
     //   124: ireturn
     //   125: astore_3
@@ -282,24 +201,24 @@ public class MiniCodeUtil
     //   169: aload_0
     //   170: astore_3
     //   171: aload 5
-    //   173: invokevirtual 301	java/lang/Exception:printStackTrace	()V
+    //   173: invokevirtual 178	java/lang/Exception:printStackTrace	()V
     //   176: aload 4
     //   178: ifnull +16 -> 194
     //   181: aload 4
-    //   183: invokevirtual 298	java/io/FileOutputStream:close	()V
+    //   183: invokevirtual 175	java/io/FileOutputStream:close	()V
     //   186: goto +8 -> 194
     //   189: astore_1
     //   190: aload_1
-    //   191: invokevirtual 301	java/lang/Exception:printStackTrace	()V
+    //   191: invokevirtual 178	java/lang/Exception:printStackTrace	()V
     //   194: aload_0
     //   195: ifnull +14 -> 209
     //   198: aload_0
-    //   199: invokevirtual 302	java/io/FileInputStream:close	()V
+    //   199: invokevirtual 179	java/io/FileInputStream:close	()V
     //   202: iconst_0
     //   203: ireturn
     //   204: astore_0
     //   205: aload_0
-    //   206: invokevirtual 301	java/lang/Exception:printStackTrace	()V
+    //   206: invokevirtual 178	java/lang/Exception:printStackTrace	()V
     //   209: iconst_0
     //   210: ireturn
     //   211: astore 4
@@ -310,19 +229,19 @@ public class MiniCodeUtil
     //   218: aload_1
     //   219: ifnull +15 -> 234
     //   222: aload_1
-    //   223: invokevirtual 298	java/io/FileOutputStream:close	()V
+    //   223: invokevirtual 175	java/io/FileOutputStream:close	()V
     //   226: goto +8 -> 234
     //   229: astore_1
     //   230: aload_1
-    //   231: invokevirtual 301	java/lang/Exception:printStackTrace	()V
+    //   231: invokevirtual 178	java/lang/Exception:printStackTrace	()V
     //   234: aload_0
     //   235: ifnull +15 -> 250
     //   238: aload_0
-    //   239: invokevirtual 302	java/io/FileInputStream:close	()V
+    //   239: invokevirtual 179	java/io/FileInputStream:close	()V
     //   242: goto +8 -> 250
     //   245: astore_0
     //   246: aload_0
-    //   247: invokevirtual 301	java/lang/Exception:printStackTrace	()V
+    //   247: invokevirtual 178	java/lang/Exception:printStackTrace	()V
     //   250: goto +5 -> 255
     //   253: aload_3
     //   254: athrow
@@ -380,15 +299,15 @@ public class MiniCodeUtil
   public static void b(boolean paramBoolean)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(d);
     if (paramBoolean) {
-      str = "qq.android.minidecode.so_v8.2.0";
+      str = "qq.android.minidecode.so_v8.8.5";
     } else {
       str = "qq.android.minidetect.so_v8.6.0";
     }
     ((StringBuilder)localObject).append(str);
     String str = ((StringBuilder)localObject).toString();
-    localObject = MobileQQ.sMobileQQ.getSharedPreferences(jdField_a_of_type_JavaLangString, 4);
+    localObject = MobileQQ.sMobileQQ.getSharedPreferences(c, 4);
     int i = ((SharedPreferences)localObject).getInt(str, 0);
     localObject = ((SharedPreferences)localObject).edit();
     int j = i + 1;
@@ -409,18 +328,36 @@ public class MiniCodeUtil
   public static void c(boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(d);
     if (paramBoolean) {
-      str = "qq.android.minidecode.so_v8.2.0";
+      str = "qq.android.minidecode.so_v8.8.5";
     } else {
       str = "qq.android.minidetect.so_v8.6.0";
     }
     localStringBuilder.append(str);
     String str = localStringBuilder.toString();
-    MobileQQ.sMobileQQ.getSharedPreferences(jdField_a_of_type_JavaLangString, 4).edit().remove(str).apply();
+    MobileQQ.sMobileQQ.getSharedPreferences(c, 4).edit().remove(str).apply();
     if (QLog.isColorLevel()) {
       QLog.i("MiniRecog", 2, String.format("clearMiniScanError bDecodeElseDetect=%b", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
+  }
+  
+  public static int d(boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d);
+    if (paramBoolean) {
+      str = "qq.android.minidecode.so_v8.8.5";
+    } else {
+      str = "qq.android.minidetect.so_v8.6.0";
+    }
+    localStringBuilder.append(str);
+    String str = localStringBuilder.toString();
+    int i = MobileQQ.sMobileQQ.getSharedPreferences(c, 4).getInt(str, 0);
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog", 2, String.format("getMiniScanErrorCnt errorCnt=%d bDecodeElseDetect=%b", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramBoolean) }));
+    }
+    return i;
   }
   
   public static final String d()
@@ -438,10 +375,73 @@ public class MiniCodeUtil
     localStringBuilder.append("model_debug/");
     return localStringBuilder.toString();
   }
+  
+  public static int f()
+  {
+    if (d(false) >= 3) {
+      return -1;
+    }
+    int k = ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).getQmcfGpuSupportType();
+    int j = ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).getQmcfGpuSupportTypeWithoutGPURule();
+    boolean bool = f;
+    int i = 1;
+    if (!bool)
+    {
+      MiniScanReport.c(k, j);
+      f = true;
+    }
+    bool = ((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).isQmcfSupport(j);
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniRecog", 2, String.format("getSupportDetectType supportType[loose,strict]=[%d,%d]", new Object[] { Integer.valueOf(j), Integer.valueOf(k) }));
+    }
+    if (bool)
+    {
+      if (((IQRScanAbilityApi)QRoute.api(IQRScanAbilityApi.class)).isQmcfSupportGLElseCL(j)) {
+        i = 2;
+      }
+      return i;
+    }
+    return 0;
+  }
+  
+  public static boolean g()
+  {
+    if (e == null)
+    {
+      boolean bool2 = DeviceInfoUtil.N();
+      boolean bool1;
+      if (bool2) {
+        try
+        {
+          Class localClass = Class.forName("android.os.SystemProperties");
+          if (((Integer)localClass.getMethod("getInt", new Class[] { String.class, Integer.TYPE }).invoke(localClass, new Object[] { new String("ro.kernel.qemu"), new Integer(0) })).intValue() == 1) {
+            if (!"tencent".equals(Build.MANUFACTURER))
+            {
+              bool1 = "unknown".equals(Build.MANUFACTURER);
+              if (!bool1) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("MiniRecog", 2, "RecogUtil.isX86()", localThrowable);
+        }
+      } else {
+        bool1 = false;
+      }
+      QLog.i("MiniRecog", 1, String.format("RecogUtil isX86 [%b,%b,%s]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Build.MANUFACTURER }));
+      e = Boolean.valueOf(bool1);
+    }
+    return e.booleanValue();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniCodeUtil
  * JD-Core Version:    0.7.0.1
  */

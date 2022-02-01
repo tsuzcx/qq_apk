@@ -30,9 +30,9 @@ public class ConnectApiPlugin
         if (this.a == null)
         {
           this.a = TroopMemberApiClient.a();
-          this.a.a();
+          this.a.e();
         }
-        this.a.b(paramJsBridgeListener, paramString1, paramString2, new ConnectApiPlugin.1(this, paramString3));
+        this.a.a(paramJsBridgeListener, paramString1, paramString2, new ConnectApiPlugin.1(this, paramString3));
       }
       catch (JSONException paramJsBridgeListener)
       {
@@ -54,13 +54,13 @@ public class ConnectApiPlugin
     super.onDestroy();
     TroopMemberApiClient localTroopMemberApiClient = this.a;
     if (localTroopMemberApiClient != null) {
-      localTroopMemberApiClient.b();
+      localTroopMemberApiClient.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.ConnectApiPlugin
  * JD-Core Version:    0.7.0.1
  */

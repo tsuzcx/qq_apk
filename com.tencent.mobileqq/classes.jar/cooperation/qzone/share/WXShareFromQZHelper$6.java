@@ -10,12 +10,12 @@ class WXShareFromQZHelper$6
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 2131717446, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 2131914919, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.WXShareFromQZHelper.6
  * JD-Core Version:    0.7.0.1
  */

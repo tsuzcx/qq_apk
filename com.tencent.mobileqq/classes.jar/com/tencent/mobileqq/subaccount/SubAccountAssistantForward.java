@@ -34,7 +34,7 @@ public class SubAccountAssistantForward
       }
       paramContext = paramContext.getApplicationContext();
       ((ISubAccountApi)QRoute.api(ISubAccountApi.class)).loginSuccessInit(paramAppInterface, paramAppInterface.getCurrentAccountUin());
-      ((ITroopInfoHandler)paramAppInterface.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopInfoHandlerName())).a();
+      ((ITroopInfoHandler)paramAppInterface.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopInfoHandlerName())).b();
       QvipSpecialCareUtil.a(true);
       OpenProxy.a().a(paramAppInterface.getCurrentAccountUin());
       PatternLockUtils.setFirstEnterAfterLoginState(paramContext, paramAppInterface.getCurrentAccountUin(), true);
@@ -90,7 +90,7 @@ public class SubAccountAssistantForward
         return;
       }
       paramContext = paramContext.getApplicationContext();
-      if (QQPlayerService.a())
+      if (QQPlayerService.b())
       {
         Intent localIntent = new Intent();
         localIntent.setAction("qqplayer_exit_action");
@@ -158,7 +158,7 @@ public class SubAccountAssistantForward
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.SubAccountAssistantForward
  * JD-Core Version:    0.7.0.1
  */

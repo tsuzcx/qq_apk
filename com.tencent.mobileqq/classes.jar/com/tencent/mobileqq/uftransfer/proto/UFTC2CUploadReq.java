@@ -3,99 +3,99 @@ package com.tencent.mobileqq.uftransfer.proto;
 public class UFTC2CUploadReq
   extends UFTC2CUploadBaseInfo
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private long jdField_b_of_type_Long = 0L;
-  private String jdField_b_of_type_JavaLangString;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private byte[] c;
+  private long a = 0L;
+  private String b;
+  private String c;
   private byte[] d;
+  private byte[] e;
+  private byte[] f;
+  private byte[] g;
+  private int h = 0;
+  private long i = 0L;
   
-  public int a()
+  public long a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.d = paramArrayOfByte;
   }
   
-  public byte[] a()
+  public String b()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public String c()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public void c(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public void c(byte[] paramArrayOfByte)
   {
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public byte[] c()
-  {
-    return this.jdField_b_of_type_ArrayOfByte;
-  }
-  
-  public long d()
-  {
-    return this.jdField_a_of_type_Long;
+    this.e = paramArrayOfByte;
   }
   
   public void d(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
   }
   
   public void d(byte[] paramArrayOfByte)
   {
-    this.c = paramArrayOfByte;
-  }
-  
-  public byte[] d()
-  {
-    return this.c;
-  }
-  
-  public long e()
-  {
-    return this.jdField_b_of_type_Long;
+    this.f = paramArrayOfByte;
   }
   
   public void e(byte[] paramArrayOfByte)
   {
-    this.d = paramArrayOfByte;
+    this.g = paramArrayOfByte;
   }
   
-  public byte[] e()
+  public byte[] i()
   {
     return this.d;
+  }
+  
+  public byte[] j()
+  {
+    return this.e;
+  }
+  
+  public byte[] k()
+  {
+    return this.f;
+  }
+  
+  public byte[] l()
+  {
+    return this.g;
+  }
+  
+  public String m()
+  {
+    return this.c;
+  }
+  
+  public int n()
+  {
+    return this.h;
+  }
+  
+  public long o()
+  {
+    return this.i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.proto.UFTC2CUploadReq
  * JD-Core Version:    0.7.0.1
  */

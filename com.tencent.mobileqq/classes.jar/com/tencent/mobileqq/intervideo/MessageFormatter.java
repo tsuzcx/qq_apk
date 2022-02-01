@@ -20,7 +20,7 @@ final class MessageFormatter
     Throwable localThrowable = a(paramArrayOfObject);
     Object[] arrayOfObject = paramArrayOfObject;
     if (localThrowable != null) {
-      arrayOfObject = a(paramArrayOfObject);
+      arrayOfObject = b(paramArrayOfObject);
     }
     return a(paramString, arrayOfObject, localThrowable);
   }
@@ -319,7 +319,12 @@ final class MessageFormatter
     return paramString.charAt(paramInt - 1) == '\\';
   }
   
-  private static Object[] a(Object[] paramArrayOfObject)
+  static final boolean b(String paramString, int paramInt)
+  {
+    return (paramInt >= 2) && (paramString.charAt(paramInt - 2) == '\\');
+  }
+  
+  private static Object[] b(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length != 0))
     {
@@ -330,15 +335,10 @@ final class MessageFormatter
     }
     throw new IllegalStateException("non-sensical empty or null argument array");
   }
-  
-  static final boolean b(String paramString, int paramInt)
-  {
-    return (paramInt >= 2) && (paramString.charAt(paramInt - 2) == '\\');
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.MessageFormatter
  * JD-Core Version:    0.7.0.1
  */

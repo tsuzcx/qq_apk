@@ -15,7 +15,7 @@ class PageGestureProxyImpl$2
   public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
     super.onAddColorNote(paramBundle, paramBoolean);
-    paramBundle = this.jdField_a_of_type_AndroidAppActivity;
+    paramBundle = this.a;
     if (paramBundle != null) {
       paramBundle.moveTaskToBack(true);
     }
@@ -24,8 +24,8 @@ class PageGestureProxyImpl$2
   public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
     super.onDeleteColorNote(paramInt, paramString, paramBoolean);
-    if (PageGestureProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplPageGestureProxyImpl) != null) {
-      paramString = new MiniAppConfig(MiniSdkLauncher.convert(PageGestureProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplPageGestureProxyImpl)));
+    if (PageGestureProxyImpl.a(this.b) != null) {
+      paramString = new MiniAppConfig(MiniSdkLauncher.convert(PageGestureProxyImpl.a(this.b)));
     } else {
       paramString = null;
     }
@@ -49,7 +49,7 @@ class PageGestureProxyImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PageGestureProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

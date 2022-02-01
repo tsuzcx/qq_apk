@@ -1,21 +1,27 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.nearby.INearbyLikeLimitManager.onDoVoteListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
 class NearbyProfileDisplayPanel$20
-  implements INearbyLikeLimitManager.onDoVoteListener
+  implements Runnable
 {
   NearbyProfileDisplayPanel$20(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
+    EntityManager localEntityManager = this.this$0.e.app.getEntityManagerFactory().createEntityManager();
+    if (localEntityManager != null)
+    {
+      localEntityManager.update(this.this$0.f);
+      localEntityManager.close();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.20
  * JD-Core Version:    0.7.0.1
  */

@@ -15,55 +15,46 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class CustomerLoadingDialog
   extends ReportDialog
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString;
+  private View a;
+  private String b;
   
   public CustomerLoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131755683);
+    super(paramContext, 2131952648);
   }
   
   public CustomerLoadingDialog(Context paramContext, String paramString)
   {
-    super(paramContext, 2131755683);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public View a(int paramInt)
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null) {
-      return localView.findViewById(paramInt);
-    }
-    return null;
+    super(paramContext, 2131952648);
+    this.b = paramString;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131561576, null);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131627937, null);
     Object localObject = getWindow();
     ((Window)localObject).setContentView(paramBundle);
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
     localLayoutParams.width = -2;
     localLayoutParams.height = -2;
     localLayoutParams.gravity = 48;
-    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299256);
+    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131300012);
     ((Window)localObject).setAttributes(localLayoutParams);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.b))
     {
-      localObject = (TextView)paramBundle.findViewById(2131371534);
+      localObject = (TextView)paramBundle.findViewById(2131438913);
       if (localObject != null) {
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
+        ((TextView)localObject).setText(this.b);
       }
     }
-    this.jdField_a_of_type_AndroidViewView = paramBundle;
+    this.a = paramBundle;
     setCanceledOnTouchOutside(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.CustomerLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

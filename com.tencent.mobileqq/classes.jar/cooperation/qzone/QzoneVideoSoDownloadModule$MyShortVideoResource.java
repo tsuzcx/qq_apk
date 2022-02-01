@@ -34,7 +34,7 @@ class QzoneVideoSoDownloadModule$MyShortVideoResource
         paramString1 = this.this$0;
         paramString2 = this.mReceiver;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131712429));
+        localStringBuilder.append(HardCodeUtil.a(2131910022));
         localStringBuilder.append(paramInt);
         localStringBuilder.append("]");
         QzoneVideoSoDownloadModule.access$000(paramString1, paramString2, -3, localStringBuilder.toString());
@@ -52,7 +52,7 @@ class QzoneVideoSoDownloadModule$MyShortVideoResource
   public void onNetWorkNone()
   {
     QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
-    QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -3, HardCodeUtil.a(2131712420));
+    QzoneVideoSoDownloadModule.access$000(this.this$0, this.mReceiver, -3, HardCodeUtil.a(2131910014));
   }
   
   public void onUpdateProgress(String paramString, long paramLong1, long paramLong2)
@@ -72,7 +72,7 @@ class QzoneVideoSoDownloadModule$MyShortVideoResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneVideoSoDownloadModule.MyShortVideoResource
  * JD-Core Version:    0.7.0.1
  */

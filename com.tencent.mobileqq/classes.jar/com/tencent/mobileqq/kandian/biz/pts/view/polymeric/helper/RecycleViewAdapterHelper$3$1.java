@@ -10,12 +10,12 @@ class RecycleViewAdapterHelper$3$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    RecycleViewAdapterHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper).a(this.a.jdField_a_of_type_Int, paramViewBase, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean);
+    RecycleViewAdapterHelper.b(this.a.c).a(this.a.a, paramViewBase, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.helper.RecycleViewAdapterHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

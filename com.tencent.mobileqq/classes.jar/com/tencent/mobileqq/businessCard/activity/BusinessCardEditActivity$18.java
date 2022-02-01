@@ -19,14 +19,14 @@ class BusinessCardEditActivity$18
     if (QLog.isColorLevel()) {
       QLog.d("BusinessCard_observer", 2, String.format("onDelCard isSuccess=%s cardId=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
     }
-    this.a.b();
+    this.a.c();
     if (paramBoolean)
     {
-      QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131701474), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131899498), 0).show(this.a.getTitleBarHeight());
       this.a.finish();
       return;
     }
-    QQToast.a(this.a.getActivity(), 1, HardCodeUtil.a(2131701469), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getActivity(), 1, HardCodeUtil.a(2131899493), 0).show(this.a.getTitleBarHeight());
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt)
@@ -34,19 +34,19 @@ class BusinessCardEditActivity$18
     if (QLog.isColorLevel()) {
       QLog.d("BusinessCard_observer", 2, String.format("onGetCardInfo isSuccess=%s cardId=%s queryType=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
     }
-    this.a.b();
-    if ((paramBoolean) && (paramString.equals(this.a.jdField_a_of_type_JavaLangString)))
+    this.a.c();
+    if ((paramBoolean) && (paramString.equals(this.a.B)))
     {
       Object localObject;
-      if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Int == 2) && (this.a.c == 1))
+      if ((this.a.w) && (this.a.v == 2) && (this.a.H == 1))
       {
         localObject = this.a;
-        ((BusinessCardEditActivity)localObject).c = 0;
-        ((BusinessCardEditActivity)localObject).jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a(false);
+        ((BusinessCardEditActivity)localObject).H = 0;
+        ((BusinessCardEditActivity)localObject).A.a(false);
       }
-      if ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
+      if ((this.a.w) && (this.a.x) && (!this.a.isFinishing()))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a(paramString);
+        this.a.A.a(paramString);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("after edit and require : cardId = ");
         ((StringBuilder)localObject).append(paramString);
@@ -54,11 +54,11 @@ class BusinessCardEditActivity$18
         this.a.finish();
         return;
       }
-      paramString = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a(paramString);
+      paramString = this.a.A.a(paramString);
       if (paramString != null)
       {
         localObject = this.a;
-        ((BusinessCardEditActivity)localObject).jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = paramString;
+        ((BusinessCardEditActivity)localObject).C = paramString;
         BusinessCardEditActivity.a((BusinessCardEditActivity)localObject, false, true, true);
       }
     }
@@ -69,14 +69,14 @@ class BusinessCardEditActivity$18
     if (QLog.isColorLevel()) {
       QLog.d("BusinessCard_observer", 2, String.format("onModifyCard isSuccess=%s cardId=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
     }
-    this.a.b();
+    this.a.c();
     if (paramBoolean)
     {
-      this.a.b(HardCodeUtil.a(2131701471));
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8007748", "0X8007748", this.a.d, 0, "", "", "", "");
+      this.a.b(HardCodeUtil.a(2131899495));
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8007748", "0X8007748", this.a.I, 0, "", "", "", "");
       return;
     }
-    QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131701479), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131899503), 0).show(this.a.getTitleBarHeight());
   }
   
   public void b(boolean paramBoolean, String paramString, int paramInt)
@@ -84,29 +84,29 @@ class BusinessCardEditActivity$18
     if (QLog.isColorLevel()) {
       QLog.d("BusinessCard_observer", 2, String.format("onAddCard isSuccess=%s cardId=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
     }
-    this.a.b();
+    this.a.c();
     Object localObject = this.a.getResources();
     if (paramBoolean)
     {
-      localObject = ((Resources)localObject).getString(2131698655);
+      localObject = ((Resources)localObject).getString(2131896604);
       this.a.b((String)localObject);
-      if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-        this.a.jdField_a_of_type_JavaLangString = paramString;
+      if (TextUtils.isEmpty(this.a.B)) {
+        this.a.B = paramString;
       }
     }
     else
     {
-      paramString = ((Resources)localObject).getString(2131698653);
+      paramString = ((Resources)localObject).getString(2131896602);
       if (paramInt == 66) {
-        paramString = ((Resources)localObject).getString(2131698654);
+        paramString = ((Resources)localObject).getString(2131896603);
       }
-      QQToast.a(this.a.getActivity(), 2, paramString, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getActivity(), 2, paramString, 0).show(this.a.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.18
  * JD-Core Version:    0.7.0.1
  */

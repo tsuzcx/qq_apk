@@ -19,23 +19,23 @@ class GameRoomChatPie$3
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+    paramView = this.a.bC.c();
     if (i == 0)
     {
-      this.a.i.setText(HardCodeUtil.a(2131705240));
-      this.a.i.setTextColor(this.a.h);
+      this.a.bv.setText(HardCodeUtil.a(2131903125));
+      this.a.bv.setTextColor(this.a.bH);
       ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).startSpeak();
       if (paramView != null) {
         paramView.a(true);
       }
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
+      ReportController.b(this.a.d, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
       return true;
     }
     if ((i != 3) && (i != 1)) {
       return false;
     }
-    this.a.i.setText(HardCodeUtil.a(2131705179));
-    this.a.i.setTextColor(this.a.g);
+    this.a.bv.setText(HardCodeUtil.a(2131903068));
+    this.a.bv.setTextColor(this.a.bG);
     ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).stopSpeak();
     if (paramView != null) {
       paramView.a(false);
@@ -45,7 +45,7 @@ class GameRoomChatPie$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.3
  * JD-Core Version:    0.7.0.1
  */

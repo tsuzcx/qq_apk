@@ -10,11 +10,11 @@ class VideoController$7
   
   public void run()
   {
-    SessionInfo localSessionInfo = this.this$0.a();
-    if ((localSessionInfo.e) && (localSessionInfo.n) && (localSessionInfo.d == 2))
+    SessionInfo localSessionInfo = this.this$0.k();
+    if ((localSessionInfo.B) && (localSessionInfo.M) && (localSessionInfo.g == 2))
     {
       localSessionInfo.b(this.a, false);
-      this.this$0.a.pauseVideo(localSessionInfo.c);
+      this.this$0.d.pauseVideo(localSessionInfo.s);
     }
   }
 }

@@ -52,16 +52,16 @@ public class MagicfaceNormalDecoder
     return null;
   }
   
-  public int a()
+  public int e()
   {
-    long l1 = 1000 / this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.fps;
-    int i = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.repeat_count;
-    String str2 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.b();
+    long l1 = 1000 / this.a.r.fps;
+    int i = this.a.r.repeat_count;
+    String str2 = this.a.i();
     Object localObject1;
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasbackground)
+    if (this.a.r.hasbackground)
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.e);
       ((StringBuilder)localObject1).append("background/background.png");
       localObject1 = a(((StringBuilder)localObject1).toString(), null);
     }
@@ -86,20 +86,20 @@ public class MagicfaceNormalDecoder
       int m = 0;
       l2 = l3;
       l3 = l5;
-      while ((m < this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.a()) && (this.jdField_a_of_type_Boolean))
+      while ((m < this.a.d()) && (this.d))
       {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.a(k, j);
+        this.a.a(k, j);
         Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.a(m));
+        ((StringBuilder)localObject2).append(this.e);
+        ((StringBuilder)localObject2).append(this.a.a(m));
         ((StringBuilder)localObject2).append(File.separator);
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.src_prefix);
+        ((StringBuilder)localObject2).append(this.a.r.src_prefix);
         ((StringBuilder)localObject2).append(m);
         ((StringBuilder)localObject2).append(".png");
         localObject2 = ((StringBuilder)localObject2).toString();
         StringBuilder localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("maigcfaceDecoder:");
-        localStringBuilder1.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.a());
+        localStringBuilder1.append(this.a.d());
         localStringBuilder1.append("|");
         localStringBuilder1.append((String)localObject2);
         AVLog.printColorLog(str1, localStringBuilder1.toString());
@@ -117,9 +117,9 @@ public class MagicfaceNormalDecoder
             localInterruptedException.printStackTrace();
           }
         }
-        if ((m == this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.frame_index) && (this.jdField_a_of_type_JavaLangRefWeakReference != null)) {
-          a(str2, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.is_repeat);
-        } else if ((m == this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.c) && (this.jdField_a_of_type_JavaLangRefWeakReference != null)) {
+        if ((m == this.a.s.frame_index) && (this.b != null)) {
+          a(str2, this.a.s.is_repeat);
+        } else if ((m == this.a.v) && (this.b != null)) {
           c(str2);
         }
         l3 = System.currentTimeMillis();
@@ -130,23 +130,23 @@ public class MagicfaceNormalDecoder
           localStringBuilder2.append((String)localObject2);
           AVLog.printColorLog(str1, localStringBuilder2.toString());
         }
-        else if ((this.b != null) && (this.b.get() != null))
+        else if ((this.c != null) && (this.c.get() != null))
         {
-          localObject2 = (MagicfaceBaseDecoder.MagicfaceRenderListener)this.b.get();
+          localObject2 = (MagicfaceBaseDecoder.MagicfaceRenderListener)this.c.get();
           long l7 = System.currentTimeMillis();
           boolean bool1;
-          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width == -1) {
+          if (this.a.r.width == -1) {
             bool1 = true;
           } else {
             bool1 = false;
           }
           boolean bool2;
-          if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height == -1) {
+          if (this.a.r.height == -1) {
             bool2 = true;
           } else {
             bool2 = false;
           }
-          ((MagicfaceBaseDecoder.MagicfaceRenderListener)localObject2).a(localBitmap, (Bitmap)localObject1, bool1, bool2, false, false, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.b);
+          ((MagicfaceBaseDecoder.MagicfaceRenderListener)localObject2).a(localBitmap, (Bitmap)localObject1, bool1, bool2, false, false, this.a.u);
           l2 += System.currentTimeMillis() - l7;
         }
         m += 1;
@@ -158,12 +158,12 @@ public class MagicfaceNormalDecoder
       l3 = l2;
       l2 = l5;
     }
-    AVLog.printColorLog("MagicfaceNormalDecoder", String.format("maigcfaceDecoder| readCost=%s(ms), renderCost=%s(ms), r=(%s), frame(%s)", new Object[] { Long.valueOf(l4), Long.valueOf(l3), Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.a()) }));
+    AVLog.printColorLog("MagicfaceNormalDecoder", String.format("maigcfaceDecoder| readCost=%s(ms), renderCost=%s(ms), r=(%s), frame(%s)", new Object[] { Long.valueOf(l4), Long.valueOf(l3), Integer.valueOf(i), Integer.valueOf(this.a.d()) }));
     if (localBitmap != null) {
       localBitmap.recycle();
     }
     j = n;
-    if (k == i * this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.a()) {
+    if (k == i * this.a.d()) {
       j = 1;
     }
     return j;

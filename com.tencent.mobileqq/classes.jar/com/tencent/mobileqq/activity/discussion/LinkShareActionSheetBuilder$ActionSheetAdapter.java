@@ -34,11 +34,11 @@ class LinkShareActionSheetBuilder$ActionSheetAdapter
   {
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2131562964, null);
+      localView = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2131629572, null);
     }
-    int i = 2130839063;
-    int j = 2131719020;
-    int k = 2131719459;
+    int i = 2130839217;
+    int j = 2131916556;
+    int k = 2131917020;
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -49,43 +49,43 @@ class LinkShareActionSheetBuilder$ActionSheetAdapter
           {
             if (paramInt == 5)
             {
-              i = 2130842548;
-              j = 2131716658;
-              k = 2131716658;
+              i = 2130843501;
+              j = 2131914121;
+              k = 2131914121;
             }
           }
           else
           {
-            j = 2131719032;
-            i = 2130839065;
-            k = 2131719466;
+            j = 2131916568;
+            i = 2130839219;
+            k = 2131917028;
           }
         }
         else
         {
-          j = 2131719041;
-          i = 2130839071;
-          k = 2131719484;
+          j = 2131916577;
+          i = 2130839225;
+          k = 2131917047;
         }
       }
       else
       {
-        j = 2131719036;
-        i = 2130839068;
-        k = 2131719477;
+        j = 2131916572;
+        i = 2130839222;
+        k = 2131917040;
       }
     }
     else
     {
-      j = 2131719034;
-      i = 2130839067;
-      k = 2131719476;
+      j = 2131916570;
+      i = 2130839221;
+      k = 2131917039;
     }
-    paramView = (ImageView)localView.findViewById(2131362839);
-    TextView localTextView = (TextView)localView.findViewById(2131362851);
+    paramView = (ImageView)localView.findViewById(2131428619);
+    TextView localTextView = (TextView)localView.findViewById(2131428632);
     paramView.setImageResource(i);
     localTextView.setText(j);
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       localView.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(k));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
@@ -94,7 +94,7 @@ class LinkShareActionSheetBuilder$ActionSheetAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder.ActionSheetAdapter
  * JD-Core Version:    0.7.0.1
  */

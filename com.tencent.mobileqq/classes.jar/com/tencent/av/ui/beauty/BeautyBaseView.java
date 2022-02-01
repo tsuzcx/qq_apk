@@ -8,14 +8,14 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVPanelBase;
-import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.effect.toolbar.BaseToolbar;
 
 public abstract class BeautyBaseView
   extends RelativeLayout
   implements View.OnClickListener, AVPanelBase, BeautySeekView.ActionListener
 {
-  long jdField_a_of_type_Long = 0L;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  VideoAppInterface a;
+  long b = 0L;
   
   public BeautyBaseView(Context paramContext)
   {
@@ -40,18 +40,18 @@ public abstract class BeautyBaseView
   {
     int i = paramMotionEvent.getAction();
     long l = SystemClock.elapsedRealtime();
-    if (((i & 0xFF) != 2) || (Math.abs(l - this.jdField_a_of_type_Long) > 200L))
+    if (((i & 0xFF) != 2) || (Math.abs(l - this.b) > 200L))
     {
-      this.jdField_a_of_type_Long = l;
-      EffectSettingUi.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1043L);
+      this.b = l;
+      BaseToolbar.keepInToolbar(this.a, -1043L);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void setAppInterface(VideoAppInterface paramVideoAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != paramVideoAppInterface) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    if (this.a != paramVideoAppInterface) {
+      this.a = paramVideoAppInterface;
     }
   }
 }

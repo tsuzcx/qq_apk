@@ -455,13 +455,13 @@ public class aa
     //   946: iadd
     //   947: istore_3
     //   948: goto +65 -> 1013
-    //   951: new 363	oicq/wlogin_sdk/report/event/a
+    //   951: new 363	oicq/wlogin_sdk/report/event/b
     //   954: dup
     //   955: ldc_w 365
     //   958: ldc_w 367
     //   961: ldc_w 358
-    //   964: invokespecial 370	oicq/wlogin_sdk/report/event/a:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   967: invokestatic 375	oicq/wlogin_sdk/report/event/b:a	(Loicq/wlogin_sdk/report/event/a;)V
+    //   964: invokespecial 370	oicq/wlogin_sdk/report/event/b:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   967: invokestatic 375	oicq/wlogin_sdk/report/event/c:a	(Loicq/wlogin_sdk/report/event/b;)V
     //   970: new 339	java/lang/StringBuilder
     //   973: dup
     //   974: invokespecial 340	java/lang/StringBuilder:<init>	()V
@@ -1975,7 +1975,7 @@ public class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.aa
  * JD-Core Version:    0.7.0.1
  */

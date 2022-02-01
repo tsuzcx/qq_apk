@@ -41,19 +41,19 @@ public class MutualMarkAlienationHelper
       if (i == 1)
       {
         if (paramLong2 == 1L) {
-          return 2130850541;
+          return 2130852337;
         }
         if (paramLong2 == 2L) {
-          return 2130850488;
+          return 2130852284;
         }
       }
       else if (i == 2)
       {
         if (paramLong2 == 1L) {
-          return 2130850542;
+          return 2130852338;
         }
         if (paramLong2 == 2L) {
-          return 2130850489;
+          return 2130852285;
         }
       }
       break;
@@ -62,25 +62,25 @@ public class MutualMarkAlienationHelper
       if (i == 1)
       {
         if (paramLong2 == 0L) {
-          return 2130840368;
+          return 2130841108;
         }
         if (paramLong2 == 1L) {
-          return 2130840369;
+          return 2130841109;
         }
         if (paramLong2 == 2L) {
-          return 2130840370;
+          return 2130841110;
         }
       }
       else if (i == 2)
       {
         if (paramLong2 == 0L) {
-          return 2130840371;
+          return 2130841111;
         }
         if (paramLong2 == 1L) {
-          return 2130840372;
+          return 2130841112;
         }
         if (paramLong2 == 2L) {
-          return 2130840373;
+          return 2130841113;
         }
       }
       break;
@@ -89,25 +89,25 @@ public class MutualMarkAlienationHelper
       if (i == 1)
       {
         if (paramLong2 == 0L) {
-          return 2130840362;
+          return 2130841102;
         }
         if (paramLong2 == 1L) {
-          return 2130840363;
+          return 2130841103;
         }
         if (paramLong2 == 2L) {
-          return 2130840364;
+          return 2130841104;
         }
       }
       else if (i == 2)
       {
         if (paramLong2 == 0L) {
-          return 2130840365;
+          return 2130841105;
         }
         if (paramLong2 == 1L) {
-          return 2130840366;
+          return 2130841106;
         }
         if (paramLong2 == 2L) {
-          return 2130840367;
+          return 2130841107;
         }
       }
       break;
@@ -115,44 +115,44 @@ public class MutualMarkAlienationHelper
       if (VipUtils.a(paramAppInterface, paramString, 2) > 0)
       {
         if (paramLong2 == 0L) {
-          return 2130850519;
+          return 2130852315;
         }
         if (paramLong2 == 1L) {
-          return 2130850520;
+          return 2130852316;
         }
         if (paramLong2 == 2L)
         {
-          return 2130850521;
+          return 2130852317;
           i = VipUtils.a(paramAppInterface, paramString, 5);
           if ((i == 1) && (paramLong2 == 1L)) {
-            return 2130850534;
+            return 2130852330;
           }
           if ((i == 2) && (paramLong2 == 1L)) {
-            return 2130850535;
+            return 2130852331;
           }
           if ((i == 3) && (paramLong2 == 1L)) {
-            return 2130850536;
+            return 2130852332;
           }
           if ((i == 4) && (paramLong2 == 1L))
           {
-            return 2130850533;
+            return 2130852329;
             i = VipUtils.a(paramAppInterface, paramString, 1);
             if (i == 1)
             {
               if (paramLong2 == 1L) {
-                return 2130850545;
+                return 2130852341;
               }
               if (paramLong2 == 2L) {
-                return 2130850492;
+                return 2130852288;
               }
             }
             else if (i == 2)
             {
               if (paramLong2 == 1L) {
-                return 2130850546;
+                return 2130852342;
               }
               if (paramLong2 == 2L) {
-                return 2130850493;
+                return 2130852289;
               }
             }
           }
@@ -179,7 +179,7 @@ public class MutualMarkAlienationHelper
       return paramString2;
     }
     localObject = paramString2;
-    if (localMutualMarkConfBean.a(str) > 0)
+    if (localMutualMarkConfBean.c(str) > 0)
     {
       int i = VipUtils.a(paramAppInterface, paramString1, 0);
       localObject = paramString2;
@@ -192,22 +192,31 @@ public class MutualMarkAlienationHelper
   
   public static String a(QQAppInterface paramQQAppInterface, String paramString1, long paramLong1, long paramLong2, long paramLong3, String paramString2)
   {
-    int i;
-    if ((paramLong2 == 6L) && (paramLong3 > 0L))
+    int i = VipUtils.a(paramQQAppInterface, paramString1, 0);
+    if (i <= 0) {
+      return paramString2;
+    }
+    if ((paramLong2 != 6L) || (paramLong3 <= 0L))
     {
-      i = VipUtils.a(paramQQAppInterface, paramString1, 0);
-      if (i > 0) {
-        return RelationVipHelper.a(paramString2, i, false);
+      paramQQAppInterface = paramString2;
+      if (paramLong1 != 5L) {}
+    }
+    else
+    {
+      paramQQAppInterface = RelationVipHelper.a(paramString2, i, false);
+    }
+    if (!TextUtils.isEmpty(paramQQAppInterface)) {
+      return paramQQAppInterface;
+    }
+    paramString1 = paramQQAppInterface;
+    if (paramLong2 > 0L)
+    {
+      paramString1 = paramQQAppInterface;
+      if (paramLong1 == 5L) {
+        paramString1 = RelationVipHelper.a(paramLong1, i, paramLong2, false);
       }
     }
-    else if ((paramLong2 > 0L) && (paramLong1 == 5L))
-    {
-      i = VipUtils.a(paramQQAppInterface, paramString1, 0);
-      if (i > 0) {
-        return RelationVipHelper.a(paramLong1, i, paramLong2, false);
-      }
-    }
-    return paramString2;
+    return paramString1;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, FriendsManager paramFriendsManager, Friends paramFriends, String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
@@ -228,7 +237,7 @@ public class MutualMarkAlienationHelper
       }
       if (paramBoolean)
       {
-        paramFriendsManager.a(paramFriends);
+        paramFriendsManager.b(paramFriends);
         paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, paramString);
       }
     }
@@ -240,7 +249,7 @@ public class MutualMarkAlienationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.alienation.MutualMarkAlienationHelper
  * JD-Core Version:    0.7.0.1
  */

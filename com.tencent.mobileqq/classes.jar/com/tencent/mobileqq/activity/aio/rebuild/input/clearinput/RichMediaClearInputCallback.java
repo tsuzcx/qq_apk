@@ -10,7 +10,7 @@ public class RichMediaClearInputCallback
 {
   public void a(AIOContext paramAIOContext)
   {
-    paramAIOContext = (PhotoListPanel)paramAIOContext.a().b(4);
+    paramAIOContext = (PhotoListPanel)paramAIOContext.q().d(4);
     if (paramAIOContext != null) {
       paramAIOContext.a(false);
     }
@@ -18,7 +18,7 @@ public class RichMediaClearInputCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.clearinput.RichMediaClearInputCallback
  * JD-Core Version:    0.7.0.1
  */

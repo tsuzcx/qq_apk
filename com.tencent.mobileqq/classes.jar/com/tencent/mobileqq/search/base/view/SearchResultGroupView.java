@@ -11,50 +11,50 @@ public class SearchResultGroupView
   implements ISearchResultGroupView
 {
   protected View a;
-  protected TextView a;
-  protected List<ISearchResultView> a;
-  private TextView b;
+  protected TextView b;
+  protected List<ISearchResultView> c;
+  private TextView d;
   
   public SearchResultGroupView() {}
   
   public SearchResultGroupView(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371472));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.jdField_a_of_type_AndroidViewView.findViewById(2131368969)));
-    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.jdField_a_of_type_AndroidViewView.findViewById(2131368975)));
-    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.jdField_a_of_type_AndroidViewView.findViewById(2131368981)));
-    if ((paramInt == 2131559627) || (paramInt == 2131562780))
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.a.findViewById(2131438844));
+    this.c = new ArrayList();
+    this.c.add(new SearchResultView(this.a.findViewById(2131435922)));
+    this.c.add(new SearchResultView(this.a.findViewById(2131435928)));
+    this.c.add(new SearchResultView(this.a.findViewById(2131435934)));
+    if ((paramInt == 2131625656) || (paramInt == 2131629225))
     {
-      this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.jdField_a_of_type_AndroidViewView.findViewById(2131368987)));
-      this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.jdField_a_of_type_AndroidViewView.findViewById(2131368988)));
+      this.c.add(new SearchResultView(this.a.findViewById(2131435940)));
+      this.c.add(new SearchResultView(this.a.findViewById(2131435941)));
     }
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public TextView a()
   {
-    return this.b;
-  }
-  
-  public List<ISearchResultView> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.d;
   }
   
   public TextView b()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.b;
+  }
+  
+  public List<ISearchResultView> c()
+  {
+    return this.c;
+  }
+  
+  public View h()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.view.SearchResultGroupView
  * JD-Core Version:    0.7.0.1
  */

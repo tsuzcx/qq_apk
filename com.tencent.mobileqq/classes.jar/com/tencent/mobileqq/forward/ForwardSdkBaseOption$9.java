@@ -7,12 +7,12 @@ class ForwardSdkBaseOption$9
   
   public void run()
   {
-    this.this$0.M();
+    this.this$0.aD();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.9
  * JD-Core Version:    0.7.0.1
  */

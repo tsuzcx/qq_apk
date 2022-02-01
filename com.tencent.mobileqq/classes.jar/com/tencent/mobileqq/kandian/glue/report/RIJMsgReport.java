@@ -19,15 +19,10 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/report/RIJMsgReport;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "msgNum", "", "getMsgNum", "()I", "setMsgNum", "(I)V", "addMessageNumToR5", "r5", "", "Lorg/json/JSONObject;", "addMessageReportToR5", "addReportToR5Common", "jsonFunCall", "Lkotlin/Function1;", "recodrMsgNum", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJMsgReport
 {
-  private static int jdField_a_of_type_Int = 0;
-  public static final RIJMsgReport a;
+  public static final RIJMsgReport a = new RIJMsgReport();
   @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "RIJMsgReport";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueReportRIJMsgReport = new RIJMsgReport();
-  }
+  private static final String b = "RIJMsgReport";
+  private static int c;
   
   private final String a(String paramString, Function1<? super JSONObject, Unit> paramFunction1)
   {
@@ -40,7 +35,7 @@ public final class RIJMsgReport
       }
       catch (JSONException localJSONException)
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, localJSONException.getMessage());
+        QLog.d(b, 1, localJSONException.getMessage());
       }
     } else {
       localObject = new JSONObject();
@@ -56,7 +51,7 @@ public final class RIJMsgReport
   @Nullable
   public final String a(@Nullable String paramString)
   {
-    return a(paramString, (Function1)new RIJMsgReport.addMessageReportToR5.1(jdField_a_of_type_ComTencentMobileqqKandianGlueReportRIJMsgReport));
+    return a(paramString, (Function1)new RIJMsgReport.addMessageReportToR5.1(a));
   }
   
   public final void a()
@@ -71,7 +66,7 @@ public final class RIJMsgReport
     {
       localObject = (KandianMergeManager)localObject;
       if (localObject != null) {
-        jdField_a_of_type_Int = ((KandianMergeManager)localObject).e();
+        c = ((KandianMergeManager)localObject).R();
       }
       return;
     }
@@ -90,7 +85,7 @@ public final class RIJMsgReport
     localObject = (KandianMergeManager)localObject;
     if (localObject != null)
     {
-      localObject = ((KandianMergeManager)localObject).a();
+      localObject = ((KandianMergeManager)localObject).Q();
       if (localObject != null)
       {
         paramJSONObject.put("message_type", ((KandianMsgBoxRedPntInfo)localObject).mMsgType);
@@ -103,13 +98,13 @@ public final class RIJMsgReport
   @Nullable
   public final String b(@Nullable String paramString)
   {
-    return a(paramString, (Function1)new RIJMsgReport.addMessageNumToR5.1(jdField_a_of_type_ComTencentMobileqqKandianGlueReportRIJMsgReport));
+    return a(paramString, (Function1)new RIJMsgReport.addMessageNumToR5.1(a));
   }
   
   public final void b(@NotNull JSONObject paramJSONObject)
   {
     Intrinsics.checkParameterIsNotNull(paramJSONObject, "r5");
-    int i = jdField_a_of_type_Int;
+    int i = c;
     if (i != 0) {
       paramJSONObject.put("tab_reddot_num", i);
     }
@@ -117,7 +112,7 @@ public final class RIJMsgReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJMsgReport
  * JD-Core Version:    0.7.0.1
  */

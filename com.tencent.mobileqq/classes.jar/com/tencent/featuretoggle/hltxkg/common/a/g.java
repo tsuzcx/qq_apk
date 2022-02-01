@@ -15,7 +15,7 @@ final class g
       if (com.tencent.featuretoggle.hltxkg.common.e.a.a) {
         com.tencent.featuretoggle.hltxkg.common.e.a.a(com.tencent.featuretoggle.hltxkg.common.a.a());
       }
-      if (e.a()) {
+      if (e.l()) {
         com.tencent.featuretoggle.hltxkg.common.a.i().postDelayed(new h(this), 2000L);
       }
       return;
@@ -25,7 +25,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.g
  * JD-Core Version:    0.7.0.1
  */

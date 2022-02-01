@@ -14,9 +14,9 @@ class FilePreviewActivity$6$1
   
   public void run()
   {
-    if ((this.a.a.g != null) && (this.a.a.g.length() != 0))
+    if ((this.a.a.p != null) && (this.a.a.p.length() != 0))
     {
-      boolean bool = this.a.a.jdField_a_of_type_Boolean;
+      boolean bool = this.a.a.l;
       String str = "javascript:qpreview.onClientResponse('showFileList', {})";
       if (bool)
       {
@@ -34,12 +34,12 @@ class FilePreviewActivity$6$1
       QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject).toString());
       localObject = new FileManagerReporter.FileAssistantReportData();
       ((FileManagerReporter.FileAssistantReportData)localObject).b = "sf_preview_again";
-      ((FileManagerReporter.FileAssistantReportData)localObject).c = FileUtil.a(this.a.a.b);
-      ((FileManagerReporter.FileAssistantReportData)localObject).jdField_a_of_type_Long = this.a.a.jdField_a_of_type_Long;
+      ((FileManagerReporter.FileAssistantReportData)localObject).d = FileUtil.a(this.a.a.f);
+      ((FileManagerReporter.FileAssistantReportData)localObject).e = this.a.a.s;
       FileManagerReporter.a(this.a.a.app.getCurrentAccountUin(), (FileManagerReporter.FileAssistantReportData)localObject);
       try
       {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(str);
+        this.a.a.d.loadUrl(str);
         return;
       }
       catch (Exception localException)
@@ -48,13 +48,13 @@ class FilePreviewActivity$6$1
         return;
       }
     }
-    this.a.a.d = false;
-    FilePreviewActivity.a(this.a.a);
+    this.a.a.H = false;
+    FilePreviewActivity.c(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,44 +18,44 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class JobSelectionActivity$Adapter
   extends BaseAdapter
 {
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private String[] b;
+  private String[] c;
+  private int[] d;
   
   private JobSelectionActivity$Adapter(JobSelectionActivity paramJobSelectionActivity)
   {
-    if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-      paramJobSelectionActivity = ConditionSearchManager.d;
-    } else {
-      paramJobSelectionActivity = NearbyProfileUtil.d;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramJobSelectionActivity;
-    if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-      paramJobSelectionActivity = ConditionSearchManager.e;
+    if (JobSelectionActivity.a(this.a)) {
+      paramJobSelectionActivity = ConditionSearchManager.l;
     } else {
       paramJobSelectionActivity = NearbyProfileUtil.e;
     }
     this.b = paramJobSelectionActivity;
-    if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-      paramJobSelectionActivity = ConditionSearchManager.jdField_a_of_type_ArrayOfInt;
+    if (JobSelectionActivity.a(this.a)) {
+      paramJobSelectionActivity = ConditionSearchManager.m;
     } else {
-      paramJobSelectionActivity = NearbyProfileUtil.b;
+      paramJobSelectionActivity = NearbyProfileUtil.f;
     }
-    this.jdField_a_of_type_ArrayOfInt = paramJobSelectionActivity;
+    this.c = paramJobSelectionActivity;
+    if (JobSelectionActivity.a(this.a)) {
+      paramJobSelectionActivity = ConditionSearchManager.n;
+    } else {
+      paramJobSelectionActivity = NearbyProfileUtil.g;
+    }
+    this.d = paramJobSelectionActivity;
   }
   
   public int getCount()
   {
-    if (JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString.length - 2;
+    if (JobSelectionActivity.b(this.a)) {
+      return this.b.length - 2;
     }
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length - 1;
+    return this.b.length - 1;
   }
   
   public Object getItem(int paramInt)
   {
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.a(paramInt);
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    paramInt = this.a.a(paramInt);
+    return this.b[paramInt];
   }
   
   public long getItemId(int paramInt)
@@ -68,34 +68,34 @@ class JobSelectionActivity$Adapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.getLayoutInflater().inflate(2131561124, paramViewGroup, false);
+      localView = this.a.getLayoutInflater().inflate(2131627474, paramViewGroup, false);
       paramView = new JobSelectionActivity.ViewHolder(null);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131378259));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371697));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364606));
+      paramView.a = ((InterestLabelTextView)localView.findViewById(2131446778));
+      paramView.b = ((TextView)localView.findViewById(2131439121));
+      paramView.c = ((ImageView)localView.findViewById(2131430678));
       localView.setTag(paramView);
     }
     paramView = (JobSelectionActivity.ViewHolder)localView.getTag();
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.a(paramInt);
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[i]);
-    ProfileCardUtils.setNightModeFilterForDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.app, localDrawable);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setText(this.b[i]);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setBackgroundDrawable(localDrawable);
-    int j = AIOUtils.b(4.0F, JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity).getResources());
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setPadding(j, 0, j, 0);
-    if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(0);
+    int i = this.a.a(paramInt);
+    Drawable localDrawable = this.a.getResources().getDrawable(this.d[i]);
+    ProfileCardUtils.setNightModeFilterForDrawable(this.a.app, localDrawable);
+    paramView.a.setText(this.c[i]);
+    paramView.a.setBackgroundDrawable(localDrawable);
+    int j = AIOUtils.b(4.0F, JobSelectionActivity.c(this.a).getResources());
+    paramView.a.setPadding(j, 0, j, 0);
+    if (i < this.b.length - 1) {
+      paramView.a.setVisibility(0);
     } else {
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(4);
+      paramView.a.setVisibility(4);
     }
-    if ((JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) && (i == 0)) {
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(4);
+    if ((JobSelectionActivity.b(this.a)) && (i == 0)) {
+      paramView.a.setVisibility(4);
     }
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-    if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity) == i) {
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    paramView.b.setText(this.b[i]);
+    if (JobSelectionActivity.d(this.a) == i) {
+      paramView.c.setVisibility(0);
     } else {
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      paramView.c.setVisibility(4);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -103,7 +103,7 @@ class JobSelectionActivity$Adapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JobSelectionActivity.Adapter
  * JD-Core Version:    0.7.0.1
  */

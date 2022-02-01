@@ -13,14 +13,9 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/aelight/camera/aeeditor/module/filter/AdapterUtil;", "", "()V", "SNAP_TO_CENTER", "", "currentIndex", "getCurrentIndex", "()Ljava/lang/Integer;", "setCurrentIndex", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "scroll", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "llm", "Landroid/support/v7/widget/LinearLayoutManager;", "scroller", "Landroid/support/v7/widget/LinearSmoothScroller;", "position", "scrollToPosition", "targetPosition", "smoothScroll", "", "fixScrollTime", "snapPosition", "scrollToPositionAndLayoutCenter", "scrollToPositionAndLayoutEnd", "scrollToPositionAndLayoutStart", "aelight_impl_release"}, k=1, mv={1, 1, 16})
 public final class AdapterUtil
 {
-  public static final AdapterUtil a;
+  public static final AdapterUtil a = new AdapterUtil();
   @Nullable
-  private static Integer a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAdapterUtil = new AdapterUtil();
-  }
+  private static Integer b;
   
   @JvmStatic
   public static final void a(@Nullable RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
@@ -47,7 +42,7 @@ public final class AdapterUtil
       Object localObject2 = (LinearSmoothScroller)new AdapterUtil.scrollToPosition.scroller.1((LinearLayoutManager)localObject1, paramInt3, paramBoolean2, paramRecyclerView, paramRecyclerView.getContext());
       if (paramBoolean1)
       {
-        jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt1);
+        b = Integer.valueOf(paramInt1);
         paramRecyclerView.post((Runnable)new AdapterUtil.scrollToPosition.1((LinearSmoothScroller)localObject2, paramInt2, paramRecyclerView, (LinearLayoutManager)localObject1));
         return;
       }
@@ -90,7 +85,7 @@ public final class AdapterUtil
   
   private final void a(RecyclerView paramRecyclerView, LinearLayoutManager paramLinearLayoutManager, LinearSmoothScroller paramLinearSmoothScroller, int paramInt)
   {
-    Integer localInteger = jdField_a_of_type_JavaLangInteger;
+    Integer localInteger = b;
     if ((localInteger != null) && (localInteger.intValue() == paramInt)) {
       return;
     }
@@ -116,7 +111,7 @@ public final class AdapterUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AdapterUtil
  * JD-Core Version:    0.7.0.1
  */

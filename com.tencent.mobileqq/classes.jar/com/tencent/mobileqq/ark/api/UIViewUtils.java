@@ -19,7 +19,7 @@ public class UIViewUtils
   
   public static View a(ChatMessage paramChatMessage, ChatXListView paramChatXListView)
   {
-    int i = ((ChatAdapter1)((HeaderViewListAdapter)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
+    int i = ((ChatAdapter1)((HeaderViewListAdapter)paramChatXListView.getAdapter()).getWrappedAdapter()).b(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
     if (QLog.isColorLevel())
     {
       paramChatMessage = new StringBuilder();
@@ -35,7 +35,7 @@ public class UIViewUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.UIViewUtils
  * JD-Core Version:    0.7.0.1
  */

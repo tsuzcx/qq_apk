@@ -10,19 +10,19 @@ class AEGIFTextEditFragment$13
   
   public void run()
   {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)AEGIFTextEditFragment.a(this.this$0).getLayoutParams();
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)AEGIFTextEditFragment.j(this.this$0).getLayoutParams();
     int i = localMarginLayoutParams.bottomMargin;
     int j = this.a;
     if (i != j)
     {
       localMarginLayoutParams.bottomMargin = j;
-      AEGIFTextEditFragment.a(this.this$0).setLayoutParams(localMarginLayoutParams);
+      AEGIFTextEditFragment.j(this.this$0).setLayoutParams(localMarginLayoutParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFTextEditFragment.13
  * JD-Core Version:    0.7.0.1
  */

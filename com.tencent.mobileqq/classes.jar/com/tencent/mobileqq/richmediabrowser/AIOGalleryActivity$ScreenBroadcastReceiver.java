@@ -9,12 +9,12 @@ import android.content.Intent;
 class AIOGalleryActivity$ScreenBroadcastReceiver
   extends BroadcastReceiver
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  boolean jdField_a_of_type_Boolean = true;
+  Activity a;
+  boolean b = true;
   
   AIOGalleryActivity$ScreenBroadcastReceiver(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   public boolean a(Context paramContext)
@@ -26,22 +26,22 @@ class AIOGalleryActivity$ScreenBroadcastReceiver
   {
     paramIntent = paramIntent.getAction();
     if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
-      this.jdField_a_of_type_Boolean = (a(paramContext) ^ true);
+      this.b = (a(paramContext) ^ true);
     } else if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
     } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.a.unregisterReceiver(this);
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

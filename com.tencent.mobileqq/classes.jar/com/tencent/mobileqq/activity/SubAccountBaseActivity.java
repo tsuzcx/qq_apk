@@ -98,7 +98,7 @@ public class SubAccountBaseActivity
   {
     boolean bool = isNetConn();
     if (!bool) {
-      showQQToast(getString(2131692183));
+      showQQToast(getString(2131889169));
     }
     return bool;
   }
@@ -135,7 +135,7 @@ public class SubAccountBaseActivity
     if (paramInt > 0) {
       this.mJuhua.c(paramInt);
     } else {
-      this.mJuhua.c(2131694668);
+      this.mJuhua.c(2131892360);
     }
     QQProgressDialog localQQProgressDialog = this.mJuhua;
     if ((localQQProgressDialog != null) && (!localQQProgressDialog.isShowing()) && (!isFinishing())) {
@@ -151,8 +151,8 @@ public class SubAccountBaseActivity
     }
     dimissDialog();
     this.mDialog = DialogUtil.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.mDialog.setPositiveButton(2131691064, (DialogInterface.OnClickListener)localObject);
-    this.mDialog.setNegativeButton(2131690728, (DialogInterface.OnClickListener)localObject);
+    this.mDialog.setPositiveButton(2131888010, (DialogInterface.OnClickListener)localObject);
+    this.mDialog.setNegativeButton(2131887648, (DialogInterface.OnClickListener)localObject);
     this.mDialog.setCancelable(false);
     this.mDialog.show();
   }
@@ -165,24 +165,24 @@ public class SubAccountBaseActivity
     }
     dimissDialog();
     this.mDialog = DialogUtil.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.mDialog.setPositiveButton(2131691064, (DialogInterface.OnClickListener)localObject);
+    this.mDialog.setPositiveButton(2131888010, (DialogInterface.OnClickListener)localObject);
     this.mDialog.setCancelable(false);
     this.mDialog.show();
   }
   
   public void showQQToast(String paramString)
   {
-    QQToast.a(this, paramString, 0).b(getTitleBarHeight());
+    QQToast.makeText(this, paramString, 0).show(getTitleBarHeight());
   }
   
   public void showQQToastSuccess(String paramString)
   {
-    QQToast.a(this, 2, paramString, 0).b(getTitleBarHeight());
+    QQToast.makeText(this, 2, paramString, 0).show(getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBaseActivity
  * JD-Core Version:    0.7.0.1
  */

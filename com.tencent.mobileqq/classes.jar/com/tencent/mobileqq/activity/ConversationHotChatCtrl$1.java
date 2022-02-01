@@ -13,24 +13,24 @@ class ConversationHotChatCtrl$1
   
   public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
+    this.a.removeObserver(this);
     if (paramBoolean)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.dismiss();
+      if ((this.b.b != null) && (this.b.b.isShowing())) {
+        this.b.b.dismiss();
       }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, HardCodeUtil.a(2131702768), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      QQToast.makeText(this.a, 0, HardCodeUtil.a(2131900759), 0).show(this.a.getTitleBarHeight());
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.dismiss();
+    if ((this.b.b != null) && (this.b.b.isShowing())) {
+      this.b.b.dismiss();
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, HardCodeUtil.a(2131702769), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    QQToast.makeText(this.a, 0, HardCodeUtil.a(2131900760), 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationHotChatCtrl.1
  * JD-Core Version:    0.7.0.1
  */

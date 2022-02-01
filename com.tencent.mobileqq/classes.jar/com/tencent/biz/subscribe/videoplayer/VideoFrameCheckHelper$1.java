@@ -27,8 +27,8 @@ class VideoFrameCheckHelper$1
         QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame again");
         return;
       }
-      VideoFrameCheckHelper.a(this.this$0).post(new VideoFrameCheckHelper.1.1(this, bool));
-      VideoFrameCheckHelper.b(this.this$0).removeCallbacksAndMessages(null);
+      VideoFrameCheckHelper.b(this.this$0).post(new VideoFrameCheckHelper.1.1(this, bool));
+      VideoFrameCheckHelper.c(this.this$0).removeCallbacksAndMessages(null);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("doCheckCurrentFrame stop isReachMaxTime:");
       localStringBuilder.append(bool);

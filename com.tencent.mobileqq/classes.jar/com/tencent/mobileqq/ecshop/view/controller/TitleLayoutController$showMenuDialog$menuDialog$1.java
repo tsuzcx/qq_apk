@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.ecshop.view.controller;
 
 import com.tencent.mobileqq.ecshop.conf.EcshopConfBean.MenuConfBean;
-import com.tencent.mobileqq.ecshop.conf.EcshopConfBean.TabConfBean;
 import com.tencent.mobileqq.ecshop.report.ReportUtil;
 import com.tencent.mobileqq.ecshop.view.EcshopMenuDialog.OnClickActionListener;
 import com.tencent.mobileqq.ecshop.view.EcshopMenuDialog.ViewTag;
@@ -21,25 +20,34 @@ final class TitleLayoutController$showMenuDialog$menuDialog$1
   {
     Intrinsics.checkParameterIsNotNull(paramViewTag, "viewTag");
     Object localObject1 = this.a;
-    Object localObject2 = paramViewTag.a;
+    Object localObject2 = paramViewTag.b;
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "viewTag.menuConfBean");
-    TitleLayoutController.a((TitleLayoutController)localObject1, (EcshopConfBean.TabConfBean)localObject2);
-    localObject1 = TitleLayoutController.a(this.a).get("pvsrc");
+    TitleLayoutController.a((TitleLayoutController)localObject1, (EcshopConfBean.MenuConfBean)localObject2);
+    localObject1 = TitleLayoutController.b(this.a).get("pvsrc");
     localObject2 = "";
     if (localObject1 != null) {
-      localObject1 = (String)TitleLayoutController.a(this.a).get("pvsrc");
+      localObject1 = (String)TitleLayoutController.b(this.a).get("pvsrc");
     } else {
       localObject1 = "";
     }
-    if (TitleLayoutController.a(this.a).get("ext10") != null) {
-      localObject2 = (String)TitleLayoutController.a(this.a).get("ext10");
+    if (TitleLayoutController.b(this.a).get("ext10") != null) {
+      localObject2 = (String)TitleLayoutController.b(this.a).get("ext10");
     }
-    ReportUtil.a("qgg_menu_click", String.valueOf(paramViewTag.a.a), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", (String)localObject1, (String)localObject2, "");
+    int j = paramViewTag.b.b;
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    int i;
+    if (paramViewTag.b.a != 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    ReportUtil.a("qgg_menu_click", String.valueOf(j), String.valueOf(l), String.valueOf(i), (String)localObject1, (String)localObject2, "");
+    paramViewTag.b.a = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TitleLayoutController.showMenuDialog.menuDialog.1
  * JD-Core Version:    0.7.0.1
  */

@@ -146,16 +146,15 @@ import org.json.JSONObject;
 public class GrayTipsItemBuilder
   extends AbstractChatItemBuilder
 {
-  private long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getString(2131718647);
-  private Map<Integer, HandleMsgType> jdField_a_of_type_JavaUtilMap;
-  protected boolean a;
+  protected boolean e = false;
+  String f = BaseApplication.getContext().getString(2131916148);
+  private Map<Integer, HandleMsgType> g;
+  private long h = 0L;
   
   public GrayTipsItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Boolean = false;
-    b();
+    c();
   }
   
   private int a(int paramInt, bankcode_info.BankcodeCtrlInfo paramBankcodeCtrlInfo)
@@ -287,23 +286,23 @@ public class GrayTipsItemBuilder
     if (paramBoolean)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131705419));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131903300));
       ((StringBuilder)localObject).append(paramString);
-      i = 2131705420;
+      i = 2131903301;
     }
     else
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131705430));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131903311));
       ((StringBuilder)localObject).append(paramString);
-      i = 2131705427;
+      i = 2131903308;
     }
     ((StringBuilder)localObject).append(HardCodeUtil.a(i));
     Object localObject = ((StringBuilder)localObject).toString();
     if (paramBoolean) {
-      i = 2131705424;
+      i = 2131903305;
     } else {
-      i = 2131705423;
+      i = 2131903304;
     }
     int i = HardCodeUtil.a(i).length();
     int j = paramString.length();
@@ -363,8 +362,8 @@ public class GrayTipsItemBuilder
     Object localObject1 = new JSONObject();
     try
     {
-      ((JSONObject)localObject1).put("recv_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject1).put("recv_nick", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+      ((JSONObject)localObject1).put("recv_uin", this.d.b);
+      ((JSONObject)localObject1).put("recv_nick", this.d.e);
       ((JSONObject)localObject1).put("recv_type", i);
     }
     catch (JSONException localJSONException)
@@ -386,7 +385,7 @@ public class GrayTipsItemBuilder
     ((StringBuilder)localObject1).append("groupType=");
     ((StringBuilder)localObject1).append(i);
     ((Intent)localObject2).putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "makeHongbao", "click", ((StringBuilder)localObject1).toString(), 0, null));
-    RouteUtils.a(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject2, "/qwallet/redpacket/sendhb");
+    RouteUtils.a(this.c, (Intent)localObject2, "/qwallet/redpacket/sendhb");
   }
   
   private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, String paramString3, String paramString4, int paramInt4, String paramString5, long paramLong, Bundle paramBundle, String paramString6, SpannableString paramSpannableString)
@@ -441,12 +440,12 @@ public class GrayTipsItemBuilder
         }
         paramBundle.contains("?");
       }
-      localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localObject = new Intent(this.c, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", paramBundle);
       ((Intent)localObject).putExtra("hide_left_button", true);
       ((Intent)localObject).putExtra("show_right_close_button", true);
       ((Intent)localObject).putExtra("finish_animation_up_down", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      this.c.startActivity((Intent)localObject);
     }
   }
   
@@ -460,10 +459,10 @@ public class GrayTipsItemBuilder
       localJSONObject.put("sens_msg_status", paramString2);
       localJSONObject.put("sens_msg_phoe", paramString1);
       localJSONObject.put("sens_msg_senderuin", paramMessageRecord.senderuin);
-      localJSONObject.put("sens_msg_sessiontype", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      localJSONObject.put("sens_msg_peeruin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("sens_msg_nickname", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-      localJSONObject.put("sens_msg_troopuin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+      localJSONObject.put("sens_msg_sessiontype", this.d.a);
+      localJSONObject.put("sens_msg_peeruin", this.d.b);
+      localJSONObject.put("sens_msg_nickname", this.d.e);
+      localJSONObject.put("sens_msg_troopuin", this.d.c);
       localJSONObject.put("sens_msg_istroop", paramMessageRecord.istroop);
       localJSONObject.put("sens_msg_uniseq", paramMessageRecord.uniseq);
       a(localJSONObject.toString(), paramTextView);
@@ -513,23 +512,10 @@ public class GrayTipsItemBuilder
     paramActionSheet.setOnButtonClickListener(new GrayTipsItemBuilder.20(this, paramActionSheet));
   }
   
-  private void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("isShowAd", false);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      return;
-    }
-    QLog.e("GrayTipsItemBuilder", 1, "MSG_TYPE_RENEWAL_TAIL_TIP, onClick, url null");
-  }
-  
   private void a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     if ((paramInt == 1) || (paramInt == 3000)) {
-      paramString1 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, paramString2);
+      paramString1 = ContactUtils.a(this.a, this.d, false, paramString2);
     }
     paramString2 = new Intent();
     paramString2.putExtra("come_from", 2);
@@ -546,12 +532,12 @@ public class GrayTipsItemBuilder
     }
     paramString2.putExtra("extra_data", localJSONObject.toString());
     paramString2.putExtra("app_info", "appid#20000001|bargainor_id#1000026901|channel#graytips");
-    RouteUtils.a(this.jdField_a_of_type_AndroidContentContext, paramString2, "/qwallet/transaction");
+    RouteUtils.a(this.c, paramString2, "/qwallet/transaction");
   }
   
   private void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    if ((this.c instanceof Activity))
     {
       int i;
       if ((paramInt != 1) && (paramInt != 3000))
@@ -560,12 +546,12 @@ public class GrayTipsItemBuilder
       }
       else
       {
-        paramString1 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, paramString2);
+        paramString1 = ContactUtils.a(this.a, this.d, false, paramString2);
         i = 0;
       }
       if ((i == 1006) && (paramString3 != null))
       {
-        paramString2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString3);
+        paramString2 = ContactUtils.b(this.a, paramString3);
         if (paramString2 != null)
         {
           paramString4 = null;
@@ -574,8 +560,8 @@ public class GrayTipsItemBuilder
       }
       paramString2 = paramString3;
       label84:
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      QQAppInterface localQQAppInterface = this.a;
+      Activity localActivity = (Activity)this.c;
       if (paramInt != 1006) {
         paramString3 = null;
       }
@@ -600,7 +586,7 @@ public class GrayTipsItemBuilder
       }
       int j = c(paramString, 0);
       Object localObject1 = null;
-      String str7 = b(g(paramString, null));
+      String str7 = c(g(paramString, null));
       String str1 = f(paramString, null);
       String str2 = e(paramString, null);
       String str3 = d(paramString, null);
@@ -679,7 +665,7 @@ public class GrayTipsItemBuilder
   
   private boolean a(TextView paramTextView, boolean paramBoolean)
   {
-    paramTextView = paramTextView.getTag(2131377252);
+    paramTextView = paramTextView.getTag(2131445639);
     if (paramTextView != null) {
       paramBoolean = ((Boolean)paramTextView).booleanValue();
     }
@@ -702,15 +688,6 @@ public class GrayTipsItemBuilder
     return paramInt;
   }
   
-  private String b(String paramString)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "0";
-    }
-    return str;
-  }
-  
   private String b(String paramString, bankcode_info.BankcodeCtrlInfo paramBankcodeCtrlInfo)
   {
     if (paramBankcodeCtrlInfo.msgtail_conf_file_url.has()) {
@@ -727,73 +704,22 @@ public class GrayTipsItemBuilder
     return paramString;
   }
   
-  private void b()
+  private void b(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1002), new TextSafe());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1001), new TextVideo());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1004), new DiscussPush());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2030), new NewFriendTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1013), new NewFriendTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1018), new NewFriendTipsGameAdder());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1019), new NewFriendTipsGameAddee());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1012), new TextGroupCreated());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1047), new TextGroupCreated());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2012), new ShieldMsg());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4001), new LocalUrl());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-3008), new FileReceipt());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4005), new AuthorizeFailed());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4020), new RenewalTailTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2019), new SingleWayFriendMsg());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-7006), new SingleWayFriendAddAllowAllMsg());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1026), new UncommonlyUsedContacts());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1027), new UncommonlyUsedContactsCancelSet());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1014), new C2CChatFreqCallTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1015), new C2CKeywordCallTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-3009), new QlinkFileTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-3010), new QlinkSendFileTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-3013), new BatProcessFile());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-3014), new TimGuide());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1016), new DiscCreateCallTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2041), new ApprovalGrayTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1050), new DiscussUpgradeToGroupTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1018), new HotChatToSeeTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1017), new DiscPttFreqCallTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1041), new OperateTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1043), new SougouInputTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1045), new HongbaoKeywordsTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-5007), new RecommandTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-5000), new NearbyFlowerTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-5001), new NearbyFlowerTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2037), new NearbyFlowerTip());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4010), new ShareLbsPush());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-5002), new IncompatibleGrayTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2024), new MasterUinNavigation());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2042), new MasterUinNavigation());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2043), new MasterUinNavigation());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2064), new MasterUinNavigation());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-5005), new SpecialcareTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-5006), new MeetingNotify());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1046), new SensitiveMsgMaskTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2027), new NearbyMarket());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4505), new DeviceOpengroupchat());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4506), new DeviceClosegroupchat());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4507), new DeviceDismissbind());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2029), new QQwalletTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2031), new RevokeGrayTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2034), new GamePartyGrayTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2049), new GamePartyGrayTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2033), new ShareHotChat());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2035), new TroopDeliverGift());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-1048), new PAPhoneMsgTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4021), new VipKeyword());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-4022), new VipAioSendTips());
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(-2063), new TeamWorkFileImportSuccessTips());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Intent localIntent = new Intent(this.c, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramString);
+      localIntent.putExtra("isShowAd", false);
+      this.c.startActivity(localIntent);
+      return;
+    }
+    QLog.e("GrayTipsItemBuilder", 1, "MSG_TYPE_RENEWAL_TAIL_TIP, onClick, url null");
   }
   
   private boolean b(TextView paramTextView, boolean paramBoolean)
   {
-    paramTextView = paramTextView.getTag(2131377253);
+    paramTextView = paramTextView.getTag(2131445640);
     if (paramTextView != null) {
       paramBoolean = ((Boolean)paramTextView).booleanValue();
     }
@@ -821,6 +747,15 @@ public class GrayTipsItemBuilder
     return paramInt;
   }
   
+  private String c(String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "0";
+    }
+    return str;
+  }
+  
   private String c(String paramString, bankcode_info.BankcodeCtrlInfo paramBankcodeCtrlInfo)
   {
     if (paramBankcodeCtrlInfo.fromuin_phonenum.has()) {
@@ -839,22 +774,66 @@ public class GrayTipsItemBuilder
   
   private void c()
   {
-    Intent localIntent;
-    if (!((IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFontManagerService.class, "")).getChatFontAbility())
-    {
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ChatTextSizeSettingActivity.class);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    }
-    else
-    {
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("hide_left_button", false);
-      localIntent.putExtra("show_right_close_button", false);
-      localIntent.putExtra("individuation_url_type", 40100);
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      VasWebviewUtil.b(this.jdField_a_of_type_AndroidContentContext, IndividuationUrlHelper.a(this.jdField_a_of_type_AndroidContentContext, "font", ""), 4096L, localIntent, false, -1);
-    }
-    VasWebviewUtil.a("", "aio_pay", "aio_font", "", 1, 0, 0, "", "", "");
+    this.g = new HashMap();
+    this.g.put(Integer.valueOf(-1002), new TextSafe());
+    this.g.put(Integer.valueOf(-1001), new TextVideo());
+    this.g.put(Integer.valueOf(-1004), new DiscussPush());
+    this.g.put(Integer.valueOf(-2030), new NewFriendTips());
+    this.g.put(Integer.valueOf(-1013), new NewFriendTips());
+    this.g.put(Integer.valueOf(-1018), new NewFriendTipsGameAdder());
+    this.g.put(Integer.valueOf(-1019), new NewFriendTipsGameAddee());
+    this.g.put(Integer.valueOf(-1012), new TextGroupCreated());
+    this.g.put(Integer.valueOf(-1047), new TextGroupCreated());
+    this.g.put(Integer.valueOf(-2012), new ShieldMsg());
+    this.g.put(Integer.valueOf(-4001), new LocalUrl());
+    this.g.put(Integer.valueOf(-3008), new FileReceipt());
+    this.g.put(Integer.valueOf(-4005), new AuthorizeFailed());
+    this.g.put(Integer.valueOf(-4020), new RenewalTailTip());
+    this.g.put(Integer.valueOf(-2019), new SingleWayFriendMsg());
+    this.g.put(Integer.valueOf(-7006), new SingleWayFriendAddAllowAllMsg());
+    this.g.put(Integer.valueOf(-1026), new UncommonlyUsedContacts());
+    this.g.put(Integer.valueOf(-1027), new UncommonlyUsedContactsCancelSet());
+    this.g.put(Integer.valueOf(-1014), new C2CChatFreqCallTip());
+    this.g.put(Integer.valueOf(-1015), new C2CKeywordCallTip());
+    this.g.put(Integer.valueOf(-3009), new QlinkFileTips());
+    this.g.put(Integer.valueOf(-3010), new QlinkSendFileTips());
+    this.g.put(Integer.valueOf(-3013), new BatProcessFile());
+    this.g.put(Integer.valueOf(-3014), new TimGuide());
+    this.g.put(Integer.valueOf(-1016), new DiscCreateCallTip());
+    this.g.put(Integer.valueOf(-2041), new ApprovalGrayTips());
+    this.g.put(Integer.valueOf(-1050), new DiscussUpgradeToGroupTips());
+    this.g.put(Integer.valueOf(1018), new HotChatToSeeTip());
+    this.g.put(Integer.valueOf(-1017), new DiscPttFreqCallTip());
+    this.g.put(Integer.valueOf(-1041), new OperateTips());
+    this.g.put(Integer.valueOf(-1043), new SougouInputTips());
+    this.g.put(Integer.valueOf(-1045), new HongbaoKeywordsTips());
+    this.g.put(Integer.valueOf(-5007), new RecommandTips());
+    this.g.put(Integer.valueOf(-5000), new NearbyFlowerTip());
+    this.g.put(Integer.valueOf(-5001), new NearbyFlowerTip());
+    this.g.put(Integer.valueOf(-2037), new NearbyFlowerTip());
+    this.g.put(Integer.valueOf(-4010), new ShareLbsPush());
+    this.g.put(Integer.valueOf(-5002), new IncompatibleGrayTips());
+    this.g.put(Integer.valueOf(2024), new MasterUinNavigation());
+    this.g.put(Integer.valueOf(-2042), new MasterUinNavigation());
+    this.g.put(Integer.valueOf(-2043), new MasterUinNavigation());
+    this.g.put(Integer.valueOf(-2064), new MasterUinNavigation());
+    this.g.put(Integer.valueOf(-5005), new SpecialcareTips());
+    this.g.put(Integer.valueOf(-5006), new MeetingNotify());
+    this.g.put(Integer.valueOf(-1046), new SensitiveMsgMaskTips());
+    this.g.put(Integer.valueOf(-2027), new NearbyMarket());
+    this.g.put(Integer.valueOf(-4505), new DeviceOpengroupchat());
+    this.g.put(Integer.valueOf(-4506), new DeviceClosegroupchat());
+    this.g.put(Integer.valueOf(-4507), new DeviceDismissbind());
+    this.g.put(Integer.valueOf(-2029), new QQwalletTips());
+    this.g.put(Integer.valueOf(-2031), new RevokeGrayTips());
+    this.g.put(Integer.valueOf(-2034), new GamePartyGrayTips());
+    this.g.put(Integer.valueOf(-2049), new GamePartyGrayTips());
+    this.g.put(Integer.valueOf(-2033), new ShareHotChat());
+    this.g.put(Integer.valueOf(-2035), new TroopDeliverGift());
+    this.g.put(Integer.valueOf(-1048), new PAPhoneMsgTips());
+    this.g.put(Integer.valueOf(-4021), new VipKeyword());
+    this.g.put(Integer.valueOf(-4022), new VipAioSendTips());
+    this.g.put(Integer.valueOf(-2063), new TeamWorkFileImportSuccessTips());
   }
   
   private int d(JSONObject paramJSONObject, int paramInt)
@@ -875,25 +854,22 @@ public class GrayTipsItemBuilder
   
   private void d()
   {
-    if (!Utils.a())
+    Intent localIntent;
+    if (!((IFontManagerService)this.a.getRuntimeService(IFontManagerService.class, "")).getChatFontAbility())
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131718574), 0).show();
+      localIntent = new Intent(this.c, ChatTextSizeSettingActivity.class);
+      this.c.startActivity(localIntent);
     }
     else
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("individuation_url_type", 40100);
-      localIntent.putExtra("vasUsePreWebview", true);
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      localIntent = new Intent(this.c, QQBrowserActivity.class);
       localIntent.putExtra("hide_left_button", false);
       localIntent.putExtra("show_right_close_button", false);
-      localIntent.putExtra("url", IndividuationUrlHelper.a(this.jdField_a_of_type_AndroidContentContext, "pendant", ""));
-      localIntent.putExtra("business", 512L);
-      VasWebviewUtil.a(512L, localIntent);
-      localIntent.putExtra("isShowAd", false);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      localIntent.putExtra("individuation_url_type", 40100);
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      VasWebviewUtil.b(this.c, IndividuationUrlHelper.a(this.c, "font", ""), 4096L, localIntent, false, -1);
     }
-    VasWebviewUtil.a("", "aio_pay", "aio_widget", "", 1, 0, 0, "", "", "");
+    VasWebviewUtil.a("", "aio_pay", "aio_font", "", 1, 0, 0, "", "", "");
   }
   
   private String e(JSONObject paramJSONObject, String paramString)
@@ -906,21 +882,25 @@ public class GrayTipsItemBuilder
   
   private void e()
   {
-    if (!BaseApplicationImpl.IS_SUPPORT_THEME)
+    if (!Utils.b())
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131719620), 0).show();
-    }
-    else if (Utils.a())
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("individuation_url_type", 40306);
-      VasWebviewUtil.b(this.jdField_a_of_type_AndroidContentContext, IndividuationUrlHelper.a(this.jdField_a_of_type_AndroidContentContext, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, localIntent, true, -1);
+      Toast.makeText(this.c.getApplicationContext(), this.c.getString(2131916075), 0).show();
     }
     else
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_AndroidContentContext.getString(2131718574), 0).show();
+      Intent localIntent = new Intent(this.c, QQBrowserActivity.class);
+      localIntent.putExtra("individuation_url_type", 40100);
+      localIntent.putExtra("vasUsePreWebview", true);
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      localIntent.putExtra("hide_left_button", false);
+      localIntent.putExtra("show_right_close_button", false);
+      localIntent.putExtra("url", IndividuationUrlHelper.a(this.c, "pendant", ""));
+      localIntent.putExtra("business", 512L);
+      VasWebviewUtil.a(512L, localIntent);
+      localIntent.putExtra("isShowAd", false);
+      this.c.startActivity(localIntent);
     }
-    VasWebviewUtil.a("", "aio_pay", "aio_theme", "", 1, 0, 0, "", "", "");
+    VasWebviewUtil.a("", "aio_pay", "aio_widget", "", 1, 0, 0, "", "", "");
   }
   
   private void e(TextView paramTextView, String paramString)
@@ -932,8 +912,8 @@ public class GrayTipsItemBuilder
   {
     if (paramString != null)
     {
-      boolean bool1 = paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131695709));
-      boolean bool2 = paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131720238));
+      boolean bool1 = paramString.equals(this.c.getString(2131893468));
+      boolean bool2 = paramString.equals(this.c.getString(2131917872));
       boolean bool3 = QLog.isColorLevel();
       int i = 2;
       if (bool3)
@@ -950,7 +930,7 @@ public class GrayTipsItemBuilder
         if (bool1) {
           i = 1;
         }
-        paramString = new SpannableStringBuilder(paramHolder.b.getText().toString());
+        paramString = new SpannableStringBuilder(paramHolder.d.getText().toString());
         ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-12541697);
         int j;
         if (bool1) {
@@ -965,10 +945,10 @@ public class GrayTipsItemBuilder
           k = 15;
         }
         paramString.setSpan(localForegroundColorSpan, j, k, 33);
-        paramHolder.b.setText(paramString);
+        paramHolder.d.setText(paramString);
         paramMessageRecord = new GrayTipsItemBuilder.14(this, paramMessageRecord, i);
-        paramHolder.b.setClickable(true);
-        paramHolder.b.setOnClickListener(paramMessageRecord);
+        paramHolder.d.setClickable(true);
+        paramHolder.d.setOnClickListener(paramMessageRecord);
       }
     }
   }
@@ -983,23 +963,36 @@ public class GrayTipsItemBuilder
   
   private void f()
   {
-    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 10, false, "");
-    VasWebviewUtil.a("", "aio_pay", "aio_emoji", "", 1, 0, 0, "", "", "");
+    if (!BaseApplicationImpl.IS_SUPPORT_THEME)
+    {
+      Toast.makeText(this.c.getApplicationContext(), this.c.getString(2131917216), 0).show();
+    }
+    else if (Utils.b())
+    {
+      Intent localIntent = new Intent(this.c, QQBrowserActivity.class);
+      localIntent.putExtra("individuation_url_type", 40306);
+      VasWebviewUtil.b(this.c, IndividuationUrlHelper.a(this.c, "theme", "mvip.gongneng.android.theme.index_dynamic_tab"), 32L, localIntent, true, -1);
+    }
+    else
+    {
+      Toast.makeText(this.c.getApplicationContext(), this.c.getString(2131916075), 0).show();
+    }
+    VasWebviewUtil.a("", "aio_pay", "aio_theme", "", 1, 0, 0, "", "", "");
   }
   
   private void f(MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_AndroidContentContext.getString(2131695840))))
+    if ((paramString != null) && (paramString.equals(this.c.getString(2131893599))))
     {
-      paramString = SharedPreUtils.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-      if (!paramString.getBoolean(VideoConstants.l, false))
+      paramString = SharedPreUtils.e(this.a.getCurrentUin());
+      if (!paramString.getBoolean(VideoConstants.t, false))
       {
-        Object localObject = new SpannableStringBuilder(paramHolder.b.getText().toString());
+        Object localObject = new SpannableStringBuilder(paramHolder.d.getText().toString());
         ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(-12541697), 0, 8, 33);
-        paramHolder.b.setText((CharSequence)localObject);
+        paramHolder.d.setText((CharSequence)localObject);
         localObject = new GrayTipsItemBuilder.15(this, paramMessageRecord.uniseq);
-        paramHolder.b.setClickable(true);
-        paramHolder.b.setOnClickListener((View.OnClickListener)localObject);
+        paramHolder.d.setClickable(true);
+        paramHolder.d.setOnClickListener((View.OnClickListener)localObject);
         paramString.edit().putLong("qav_score_msg_uniseq", paramMessageRecord.uniseq).commit();
       }
     }
@@ -1015,7 +1008,13 @@ public class GrayTipsItemBuilder
   
   private void g()
   {
-    VasWebviewUtil.a(this.jdField_a_of_type_AndroidContentContext);
+    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.c, this.a.getAccount(), 10, false, "");
+    VasWebviewUtil.a("", "aio_pay", "aio_emoji", "", 1, 0, 0, "", "", "");
+  }
+  
+  private void h()
+  {
+    VasWebviewUtil.a(this.c);
     VasWebviewUtil.a("", "aio_pay", "aio_personality", "", 1, 0, 0, "", "", "");
   }
   
@@ -1025,9 +1024,9 @@ public class GrayTipsItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558861, null);
-      localHolder.b = ((TextView)paramView.findViewById(2131367798));
-      localObject = localHolder.b.getLayoutParams();
+      paramView = LayoutInflater.from(this.c).inflate(2131624481, null);
+      localHolder.d = ((TextView)paramView.findViewById(2131434371));
+      localObject = localHolder.d.getLayoutParams();
       localView = paramView;
       if ((localObject instanceof ViewGroup.MarginLayoutParams))
       {
@@ -1040,28 +1039,28 @@ public class GrayTipsItemBuilder
         }
       }
     }
-    localHolder.b.setMovementMethod(null);
-    localHolder.b.setTextColor(localView.getResources().getColorStateList(2131167362));
+    localHolder.d.setMovementMethod(null);
+    localHolder.d.setTextColor(localView.getResources().getColorStateList(2131168417));
     String str = paramMessageRecord.msg;
-    Object localObject = (HandleMsgType)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramMessageRecord.msgtype));
+    Object localObject = (HandleMsgType)this.g.get(Integer.valueOf(paramMessageRecord.msgtype));
     paramView = (View)localObject;
     if (localObject == null) {
       paramView = new AuthorizeFailed();
     }
-    paramView.a(this, paramMessageRecord, localHolder, paramOnLongClickAndTouchListener, str, paramLinearLayout, this.jdField_a_of_type_AndroidContentContext);
+    paramView.a(this, paramMessageRecord, localHolder, paramOnLongClickAndTouchListener, str, paramLinearLayout, this.c);
     if ((paramMessageRecord instanceof MessageForGrayTips))
     {
       int i = ((MessageForGrayTips)paramMessageRecord).getTextGravity();
-      localHolder.b.setGravity(i);
+      localHolder.d.setGravity(i);
     }
     else
     {
-      localHolder.b.setGravity(19);
+      localHolder.d.setGravity(19);
     }
     a((ChatMessage)paramMessageRecord, paramViewHolder, localView);
-    localHolder.b.setOnTouchListener(paramOnLongClickAndTouchListener);
-    localHolder.b.setOnLongClickListener(paramOnLongClickAndTouchListener);
-    localHolder.b.setMovementMethod(ClickLinkMovementMethod.a());
+    localHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
+    localHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    localHolder.d.setMovementMethod(ClickLinkMovementMethod.a());
     return localView;
   }
   
@@ -1084,8 +1083,8 @@ public class GrayTipsItemBuilder
         {
           paramView = (GrayTipsItemBuilder.Holder)paramView;
           paramChatMessage = (MessageForQQWalletTips)paramChatMessage;
-          if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_AndroidContentContext != null) && (paramView.b != null)) {
-            paramChatMessage.buildQQWalletTips(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.b);
+          if ((this.a != null) && (this.c != null) && (paramView.d != null)) {
+            paramChatMessage.buildQQWalletTips(this.a, this.c, paramView.d);
           }
         }
       }
@@ -1096,8 +1095,8 @@ public class GrayTipsItemBuilder
   
   public void a(TextView paramTextView)
   {
-    paramTextView.setText(BaseApplicationImpl.getContext().getString(2131719161));
-    paramTextView.setContentDescription(BaseApplicationImpl.getContext().getString(2131719161));
+    paramTextView.setText(BaseApplicationImpl.getContext().getString(2131916697));
+    paramTextView.setContentDescription(BaseApplicationImpl.getContext().getString(2131916697));
   }
   
   /* Error */
@@ -1105,101 +1104,101 @@ public class GrayTipsItemBuilder
   {
     // Byte code:
     //   0: aload_2
-    //   1: getfield 1112	com/tencent/mobileqq/data/MessageRecord:msgtype	I
+    //   1: getfield 1114	com/tencent/mobileqq/data/MessageRecord:msgtype	I
     //   4: sipush -1046
     //   7: if_icmpeq +4 -> 11
     //   10: return
-    //   11: ldc2_w 1164
+    //   11: ldc2_w 1166
     //   14: lstore 5
     //   16: aload_2
-    //   17: ldc 122
-    //   19: invokevirtual 1168	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: invokestatic 1173	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   17: ldc 125
+    //   19: invokevirtual 1170	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   22: invokestatic 1175	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   25: lstore 7
     //   27: lload 7
     //   29: lstore 5
     //   31: goto +10 -> 41
     //   34: astore 12
     //   36: aload 12
-    //   38: invokevirtual 71	java/lang/Exception:printStackTrace	()V
+    //   38: invokevirtual 75	java/lang/Exception:printStackTrace	()V
     //   41: aload_0
-    //   42: getfield 582	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   45: invokevirtual 1177	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   42: getfield 579	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   45: invokevirtual 1179	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
     //   48: aload_2
-    //   49: getfield 1180	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   49: getfield 1182	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
     //   52: aload_2
-    //   53: getfield 491	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   53: getfield 496	com/tencent/mobileqq/data/MessageRecord:istroop	I
     //   56: lload 5
-    //   58: invokevirtual 1185	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   58: invokevirtual 1187	com/tencent/imcore/message/QQMessageFacade:a	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
     //   61: astore 16
     //   63: aload 16
     //   65: ifnonnull +4 -> 69
     //   68: return
     //   69: aload 16
-    //   71: ldc_w 1187
-    //   74: invokevirtual 1168	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   71: ldc_w 1189
+    //   74: invokevirtual 1170	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   77: astore_2
     //   78: iconst_0
     //   79: istore 10
     //   81: aload_0
     //   82: iconst_0
     //   83: aload_2
-    //   84: invokespecial 1189	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:b	(ZLjava/lang/String;)Z
+    //   84: invokespecial 1191	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:b	(ZLjava/lang/String;)Z
     //   87: istore 9
     //   89: iconst_m1
     //   90: istore_3
     //   91: aload 16
-    //   93: ldc_w 1191
-    //   96: invokevirtual 1168	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   93: ldc_w 1193
+    //   96: invokevirtual 1170	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
     //   99: astore_2
     //   100: aload_2
-    //   101: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   101: invokestatic 66	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   104: ifeq +4 -> 108
     //   107: return
     //   108: iload_3
     //   109: istore 4
-    //   111: new 39	com/tencent/ims/bankcode_info$BankcodeCtrlInfo
+    //   111: new 43	com/tencent/ims/bankcode_info$BankcodeCtrlInfo
     //   114: dup
-    //   115: invokespecial 1192	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:<init>	()V
+    //   115: invokespecial 1194	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:<init>	()V
     //   118: astore 12
     //   120: iload_3
     //   121: istore 4
     //   123: aload 12
     //   125: aload_2
-    //   126: invokestatic 1198	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
-    //   129: invokevirtual 1202	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   126: invokestatic 1200	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   129: invokevirtual 1204	com/tencent/ims/bankcode_info$BankcodeCtrlInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   132: pop
     //   133: iload_3
     //   134: istore 4
     //   136: aload_0
     //   137: iconst_m1
     //   138: aload 12
-    //   140: invokespecial 1204	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(ILcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;)I
+    //   140: invokespecial 1206	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(ILcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;)I
     //   143: istore_3
     //   144: iload_3
     //   145: istore 4
     //   147: aload_0
     //   148: aconst_null
     //   149: aload 12
-    //   151: invokespecial 1206	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:c	(Ljava/lang/String;Lcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;)Ljava/lang/String;
+    //   151: invokespecial 1208	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:c	(Ljava/lang/String;Lcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;)Ljava/lang/String;
     //   154: astore_2
     //   155: aload_0
     //   156: aconst_null
     //   157: aload 12
-    //   159: invokespecial 1208	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:b	(Ljava/lang/String;Lcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;)Ljava/lang/String;
+    //   159: invokespecial 1210	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:b	(Ljava/lang/String;Lcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;)Ljava/lang/String;
     //   162: astore 13
     //   164: aload_0
     //   165: aconst_null
     //   166: aload 12
-    //   168: invokespecial 1210	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(Ljava/lang/String;Lcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;)Ljava/lang/String;
+    //   168: invokespecial 1212	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(Ljava/lang/String;Lcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;)Ljava/lang/String;
     //   171: astore 15
     //   173: aload_0
     //   174: iconst_0
     //   175: aload 12
     //   177: aload 16
-    //   179: ldc_w 464
-    //   182: invokevirtual 1168	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   185: invokespecial 1212	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(ILcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;Ljava/lang/String;)I
+    //   179: ldc_w 469
+    //   182: invokevirtual 1170	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   185: invokespecial 1214	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(ILcom/tencent/ims/bankcode_info$BankcodeCtrlInfo;Ljava/lang/String;)I
     //   188: istore 4
     //   190: aload 15
     //   192: astore 14
@@ -1232,7 +1231,7 @@ public class GrayTipsItemBuilder
     //   241: aconst_null
     //   242: astore_2
     //   243: aload 14
-    //   245: invokevirtual 71	java/lang/Exception:printStackTrace	()V
+    //   245: invokevirtual 75	java/lang/Exception:printStackTrace	()V
     //   248: iconst_0
     //   249: istore 4
     //   251: aload_2
@@ -1245,28 +1244,28 @@ public class GrayTipsItemBuilder
     //   264: aload_0
     //   265: iconst_1
     //   266: aload 16
-    //   268: ldc_w 1214
-    //   271: invokevirtual 1168	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   274: invokespecial 1216	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(ZLjava/lang/String;)Z
+    //   268: ldc_w 1216
+    //   271: invokevirtual 1170	com/tencent/mobileqq/data/MessageRecord:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   274: invokespecial 1218	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(ZLjava/lang/String;)Z
     //   277: istore 11
     //   279: iload 9
     //   281: ifne +8 -> 289
     //   284: iload 11
     //   286: ifne +11 -> 297
-    //   289: ldc_w 659
+    //   289: ldc_w 654
     //   292: astore 12
     //   294: goto +8 -> 302
-    //   297: ldc_w 657
+    //   297: ldc_w 652
     //   300: astore 12
     //   302: aload_0
     //   303: aload_1
     //   304: iconst_0
-    //   305: invokespecial 1218	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:b	(Landroid/widget/TextView;Z)Z
+    //   305: invokespecial 1220	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:b	(Landroid/widget/TextView;Z)Z
     //   308: istore 9
     //   310: aload_0
     //   311: aload_1
     //   312: iconst_0
-    //   313: invokespecial 1220	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(Landroid/widget/TextView;Z)Z
+    //   313: invokespecial 1222	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(Landroid/widget/TextView;Z)Z
     //   316: istore 11
     //   318: iload 11
     //   320: istore 10
@@ -1277,74 +1276,74 @@ public class GrayTipsItemBuilder
     //   332: iconst_0
     //   333: istore 9
     //   335: aload 15
-    //   337: invokevirtual 71	java/lang/Exception:printStackTrace	()V
+    //   337: invokevirtual 75	java/lang/Exception:printStackTrace	()V
     //   340: iload 9
     //   342: ifne +75 -> 417
     //   345: aload 12
-    //   347: ldc_w 657
-    //   350: invokevirtual 420	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   347: ldc_w 652
+    //   350: invokevirtual 425	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   353: ifeq +64 -> 417
     //   356: aload_0
-    //   357: getfield 582	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   360: ldc_w 1222
-    //   363: ldc_w 1224
+    //   357: getfield 579	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   360: ldc_w 1224
+    //   363: ldc_w 1226
     //   366: aload 16
-    //   368: getfield 475	com/tencent/mobileqq/data/MessageRecord:senderuin	Ljava/lang/String;
-    //   371: ldc_w 1226
-    //   374: ldc_w 1228
+    //   368: getfield 480	com/tencent/mobileqq/data/MessageRecord:senderuin	Ljava/lang/String;
+    //   371: ldc_w 1228
+    //   374: ldc_w 1230
     //   377: iload_3
     //   378: iload 4
     //   380: aload 16
-    //   382: getfield 1231	com/tencent/mobileqq/data/MessageRecord:msgUid	J
-    //   385: invokestatic 1234	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   382: getfield 1233	com/tencent/mobileqq/data/MessageRecord:msgUid	J
+    //   385: invokestatic 1236	java/lang/Long:toString	(J)Ljava/lang/String;
     //   388: aload 16
-    //   390: getfield 494	com/tencent/mobileqq/data/MessageRecord:uniseq	J
-    //   393: invokestatic 1234	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   396: ldc 170
-    //   398: ldc 170
-    //   400: invokestatic 1239	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   390: getfield 499	com/tencent/mobileqq/data/MessageRecord:uniseq	J
+    //   393: invokestatic 1236	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   396: ldc 173
+    //   398: ldc 173
+    //   400: invokestatic 1241	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   403: aload_1
-    //   404: ldc_w 856
+    //   404: ldc_w 690
     //   407: iconst_1
-    //   408: invokestatic 1242	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   411: invokevirtual 1246	android/widget/TextView:setTag	(ILjava/lang/Object;)V
+    //   408: invokestatic 1244	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   411: invokevirtual 1248	android/widget/TextView:setTag	(ILjava/lang/Object;)V
     //   414: goto +3 -> 417
     //   417: iload 10
     //   419: ifne +72 -> 491
     //   422: aload 12
-    //   424: ldc_w 659
-    //   427: invokevirtual 420	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   424: ldc_w 654
+    //   427: invokevirtual 425	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   430: ifeq +61 -> 491
     //   433: aload_0
-    //   434: getfield 582	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   437: ldc_w 1222
-    //   440: ldc_w 1224
+    //   434: getfield 579	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   437: ldc_w 1224
+    //   440: ldc_w 1226
     //   443: aload 16
-    //   445: getfield 475	com/tencent/mobileqq/data/MessageRecord:senderuin	Ljava/lang/String;
-    //   448: ldc_w 1226
-    //   451: ldc_w 1248
+    //   445: getfield 480	com/tencent/mobileqq/data/MessageRecord:senderuin	Ljava/lang/String;
+    //   448: ldc_w 1228
+    //   451: ldc_w 1250
     //   454: iload_3
     //   455: iload 4
     //   457: aload 16
-    //   459: getfield 1231	com/tencent/mobileqq/data/MessageRecord:msgUid	J
-    //   462: invokestatic 1234	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   459: getfield 1233	com/tencent/mobileqq/data/MessageRecord:msgUid	J
+    //   462: invokestatic 1236	java/lang/Long:toString	(J)Ljava/lang/String;
     //   465: aload 16
-    //   467: getfield 494	com/tencent/mobileqq/data/MessageRecord:uniseq	J
-    //   470: invokestatic 1234	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   473: ldc 170
-    //   475: ldc 170
-    //   477: invokestatic 1239	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   467: getfield 499	com/tencent/mobileqq/data/MessageRecord:uniseq	J
+    //   470: invokestatic 1236	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   473: ldc 173
+    //   475: ldc 173
+    //   477: invokestatic 1241	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   480: aload_1
-    //   481: ldc_w 670
+    //   481: ldc_w 665
     //   484: iconst_1
-    //   485: invokestatic 1242	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   488: invokevirtual 1246	android/widget/TextView:setTag	(ILjava/lang/Object;)V
-    //   491: invokestatic 648	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	()Lcom/tencent/mobileqq/utils/AntiFraudConfigFileUtil;
+    //   485: invokestatic 1244	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   488: invokevirtual 1248	android/widget/TextView:setTag	(ILjava/lang/Object;)V
+    //   491: invokestatic 643	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	()Lcom/tencent/mobileqq/utils/AntiFraudConfigFileUtil;
     //   494: aconst_null
-    //   495: ldc_w 650
+    //   495: ldc_w 645
     //   498: aload 13
     //   500: aload 14
-    //   502: invokevirtual 1251	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   502: invokevirtual 1253	com/tencent/mobileqq/utils/AntiFraudConfigFileUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   505: aload_0
     //   506: aload_1
     //   507: aload 16
@@ -1352,7 +1351,7 @@ public class GrayTipsItemBuilder
     //   510: iload 4
     //   512: aload_2
     //   513: aload 12
-    //   515: invokespecial 1253	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(Landroid/widget/TextView;Lcom/tencent/mobileqq/data/MessageRecord;IILjava/lang/String;Ljava/lang/String;)V
+    //   515: invokespecial 1255	com/tencent/mobileqq/activity/aio/item/GrayTipsItemBuilder:a	(Landroid/widget/TextView;Lcom/tencent/mobileqq/data/MessageRecord;IILjava/lang/String;Ljava/lang/String;)V
     //   518: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1424,7 +1423,7 @@ public class GrayTipsItemBuilder
       if (bool)
       {
         paramString = localObject[0];
-        str1 = paramTextView.getResources().getString(2131719732);
+        str1 = paramTextView.getResources().getString(2131917335);
       }
       else if (str2.equals("2"))
       {
@@ -1455,7 +1454,7 @@ public class GrayTipsItemBuilder
       {
         i = j;
         if (j < 0) {
-          i = ((String)localObject).indexOf(paramTextView.getResources().getString(2131719732));
+          i = ((String)localObject).indexOf(paramTextView.getResources().getString(2131917335));
         }
       }
       a(paramTextView, (String)localObject, str1, i);
@@ -1465,16 +1464,16 @@ public class GrayTipsItemBuilder
   public void a(OnLongClickAndTouchListener paramOnLongClickAndTouchListener, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
     b(paramHolder, paramString);
-    paramHolder.b.setOnTouchListener(paramOnLongClickAndTouchListener);
-    paramHolder.b.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
   }
   
   public void a(GrayTipsItemBuilder.Holder paramHolder)
   {
-    SpannableString localSpannableString = FileManagerUtil.a(BaseApplicationImpl.getContext().getString(2131698382), BaseApplicationImpl.getContext().getString(2131698381), new GrayTipsItemBuilder.10(this));
-    paramHolder.b.setText(localSpannableString);
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setHighlightColor(17170445);
+    SpannableString localSpannableString = FileManagerUtil.a(BaseApplicationImpl.getContext().getString(2131896306), BaseApplicationImpl.getContext().getString(2131896305), new GrayTipsItemBuilder.10(this));
+    paramHolder.d.setText(localSpannableString);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setHighlightColor(17170445);
   }
   
   public void a(GrayTipsItemBuilder.Holder paramHolder, String paramString)
@@ -1483,23 +1482,23 @@ public class GrayTipsItemBuilder
     if (paramString.length != 5) {
       return;
     }
-    a(paramHolder.b, paramString[0], paramString[1], Integer.parseInt(paramString[2]), paramString[3], paramString[4]);
+    a(paramHolder.d, paramString[0], paramString[1], Integer.parseInt(paramString[2]), paramString[3], paramString[4]);
   }
   
   public void a(MessageForGrayTips paramMessageForGrayTips, GrayTipsItemBuilder.Holder paramHolder)
   {
     paramMessageForGrayTips = paramMessageForGrayTips.getExtInfoFromExtStr("approval_subtype");
-    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131690112);
+    String str = this.c.getString(2131887011);
     SpannableString localSpannableString = new SpannableString(str);
     localSpannableString.setSpan(new GrayTipsItemBuilder.6(this, paramMessageForGrayTips), 0, str.length(), 33);
-    paramHolder.b.setHighlightColor(17170445);
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setText(localSpannableString);
+    paramHolder.d.setHighlightColor(17170445);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setText(localSpannableString);
   }
   
   public void a(MessageForSafeGrayTips paramMessageForSafeGrayTips, TextView paramTextView)
   {
-    AntiFraudConfigFileUtil.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "SensMsgTipsCfg");
+    AntiFraudConfigFileUtil.a().a(this.a, "SensMsgTipsCfg");
     if (paramMessageForSafeGrayTips != null)
     {
       if (paramMessageForSafeGrayTips.safeInfo == null) {
@@ -1540,13 +1539,13 @@ public class GrayTipsItemBuilder
         localJSONObject.put("sens_msg_phoe", str1);
         localJSONObject.put("sens_msg_fromname", str2);
         localJSONObject.put("sens_msg_senderuin", paramMessageForSafeGrayTips.senderuin);
-        localJSONObject.put("sens_msg_sessiontype", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+        localJSONObject.put("sens_msg_sessiontype", this.d.a);
         localJSONObject.put("sens_msg_peeruin", paramMessageForSafeGrayTips.senderuin);
-        localJSONObject.put("sens_msg_nickname", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-        localJSONObject.put("sens_msg_troopuin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("sens_msg_nickname", this.d.e);
+        localJSONObject.put("sens_msg_troopuin", this.d.b);
         localJSONObject.put("sens_msg_istroop", paramMessageForSafeGrayTips.istroop);
         localJSONObject.put("sens_msg_uniseq", paramMessageForSafeGrayTips.uniseq);
-        localJSONObject.put("sens_msg_default_wording", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("sens_msg_default_wording", this.f);
         a(localJSONObject.toString(), paramTextView);
         return;
       }
@@ -1561,7 +1560,7 @@ public class GrayTipsItemBuilder
   {
     if (paramMessageRecord.istroop == 0)
     {
-      e(paramHolder.b, paramString);
+      e(paramHolder.d, paramString);
       return;
     }
     b(paramMessageRecord, paramLinearLayout, paramOnLongClickAndTouchListener, paramHolder, paramString);
@@ -1571,9 +1570,9 @@ public class GrayTipsItemBuilder
   {
     if ((paramMessageRecord instanceof MessageForNearbyMarketGrayTips))
     {
-      paramLinearLayout = ((MessageForNearbyMarketGrayTips)paramMessageRecord).getHightlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinearLayout.getContext());
-      paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-      paramHolder.b.setText(paramLinearLayout);
+      paramLinearLayout = ((MessageForNearbyMarketGrayTips)paramMessageRecord).getHightlightMsgText(this.a, paramLinearLayout.getContext());
+      paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+      paramHolder.d.setText(paramLinearLayout);
       paramLinearLayout = (IFaceScoreUtils)QRoute.api(IFaceScoreUtils.class);
       paramHolder = (IFaceScoreUtils)QRoute.api(IFaceScoreUtils.class);
       if (paramLinearLayout.getFaceScoreFlag(paramMessageRecord, "isFaceScoreGrayTips"))
@@ -1616,10 +1615,10 @@ public class GrayTipsItemBuilder
     }
     if (paramMessageRecord != null)
     {
-      paramHolder.b.setText(paramMessageRecord.getHightlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinearLayout.getContext(), false, paramHolder.b));
-      paramHolder.b.setClickable(true);
-      paramHolder.b.setFocusable(true);
-      paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
+      paramHolder.d.setText(paramMessageRecord.getHightlightMsgText(this.a, paramLinearLayout.getContext(), false, paramHolder.d));
+      paramHolder.d.setClickable(true);
+      paramHolder.d.setFocusable(true);
+      paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
       return;
     }
     b(paramHolder, paramString);
@@ -1631,7 +1630,7 @@ public class GrayTipsItemBuilder
     {
       paramMessageRecord = (MessageForGrayTips)paramMessageRecord;
       paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
-      paramTextView.setText(paramMessageRecord.getHightlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, false, paramTextView));
+      paramTextView.setText(paramMessageRecord.getHightlightMsgText(this.a, this.c, false, paramTextView));
       paramTextView.setGravity(3);
       return;
     }
@@ -1664,7 +1663,7 @@ public class GrayTipsItemBuilder
     if (!(paramMessageRecord instanceof MessageForQQWalletTips)) {
       return;
     }
-    ((MessageForQQWalletTips)paramMessageRecord).buildQQWalletTips(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.b);
+    ((MessageForQQWalletTips)paramMessageRecord).buildQQWalletTips(this.a, this.c, paramHolder.d);
   }
   
   public void a(MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder, String paramString)
@@ -1682,19 +1681,19 @@ public class GrayTipsItemBuilder
     {
       paramMessageRecord = (MessageForNewGrayTips)paramMessageRecord;
       if ((paramMessageRecord != null) && (paramMessageRecord.msg.length() > 0)) {
-        paramMessageRecord.buildTextView(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramHolder.b);
+        paramMessageRecord.buildTextView(this.a, paramHolder.d);
       }
     }
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
-    return new QQCustomMenu().a();
+    return new QQCustomMenu().d();
   }
   
   public void b(TextView paramTextView)
   {
-    SpannableString localSpannableString = FileManagerUtil.a(BaseApplicationImpl.getContext().getString(2131719159), BaseApplicationImpl.getContext().getString(2131719160), new GrayTipsItemBuilder.17(this));
+    SpannableString localSpannableString = FileManagerUtil.a(BaseApplicationImpl.getContext().getString(2131916695), BaseApplicationImpl.getContext().getString(2131916696), new GrayTipsItemBuilder.17(this));
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
     paramTextView.setText(localSpannableString);
     paramTextView.setContentDescription(localSpannableString);
@@ -1702,15 +1701,15 @@ public class GrayTipsItemBuilder
     {
       paramTextView = new StringBuilder();
       paramTextView.append("handleSingleWayFriendAddAllowTipsItem hasReportAddAllowShow：");
-      paramTextView.append(this.jdField_a_of_type_Boolean);
+      paramTextView.append(this.e);
       paramTextView.append("  this:");
       paramTextView.append(this);
       QLog.d("GrayTipsItemBuilder", 2, paramTextView.toString());
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800994B", "0X800994B", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Boolean = true;
+      ReportController.b(this.a, "dc00898", "", this.d.b, "0X800994B", "0X800994B", 0, 0, "", "", "", "");
+      this.e = true;
     }
   }
   
@@ -1724,12 +1723,12 @@ public class GrayTipsItemBuilder
       return;
     }
     paramMessageRecord = String.format("你当前所在WiFi：%s，%s人正在热聊，", new Object[] { paramMessageRecord[0], paramMessageRecord[1] });
-    String str = HardCodeUtil.a(2131705429);
+    String str = HardCodeUtil.a(2131903310);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramMessageRecord);
     ((StringBuilder)localObject).append(str);
     localObject = new SpannableString(((StringBuilder)localObject).toString());
-    GrayTipsItemBuilder.HotChatToSeeTipClickableSpan localHotChatToSeeTipClickableSpan = new GrayTipsItemBuilder.HotChatToSeeTipClickableSpan(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+    GrayTipsItemBuilder.HotChatToSeeTipClickableSpan localHotChatToSeeTipClickableSpan = new GrayTipsItemBuilder.HotChatToSeeTipClickableSpan(this.a, this.c);
     int i = paramMessageRecord.length();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramMessageRecord);
@@ -1743,17 +1742,17 @@ public class GrayTipsItemBuilder
   {
     if (TextUtils.isEmpty(paramString))
     {
-      paramString = HardCodeUtil.a(2131705421);
+      paramString = HardCodeUtil.a(2131903302);
     }
     else
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(paramString);
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131705418));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131903299));
       paramString = ((StringBuilder)localObject1).toString();
     }
-    Object localObject1 = HardCodeUtil.a(2131705409);
-    Object localObject2 = HardCodeUtil.a(2131705408);
+    Object localObject1 = HardCodeUtil.a(2131903290);
+    Object localObject2 = HardCodeUtil.a(2131903289);
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(paramString);
     ((StringBuilder)localObject3).append((String)localObject1);
@@ -1771,15 +1770,15 @@ public class GrayTipsItemBuilder
   
   public void b(OnLongClickAndTouchListener paramOnLongClickAndTouchListener, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    paramHolder.b.setText(a(paramString));
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setOnTouchListener(paramOnLongClickAndTouchListener);
-    paramHolder.b.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setText(a(paramString));
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
   }
   
   public void b(GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    paramHolder.b.setText(paramString);
+    paramHolder.d.setText(paramString);
   }
   
   public void b(MessageRecord paramMessageRecord, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, GrayTipsItemBuilder.Holder paramHolder, String paramString)
@@ -1797,10 +1796,10 @@ public class GrayTipsItemBuilder
     }
     if (paramMessageRecord != null)
     {
-      paramHolder.b.setText(paramMessageRecord.getHightlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinearLayout.getContext(), false, paramHolder.b));
-      paramHolder.b.setClickable(true);
-      paramHolder.b.setFocusable(true);
-      paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
+      paramHolder.d.setText(paramMessageRecord.getHightlightMsgText(this.a, paramLinearLayout.getContext(), false, paramHolder.d));
+      paramHolder.d.setClickable(true);
+      paramHolder.d.setFocusable(true);
+      paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
       return;
     }
     a(paramOnLongClickAndTouchListener, paramHolder, paramString);
@@ -1810,9 +1809,9 @@ public class GrayTipsItemBuilder
   {
     if ((paramMessageRecord instanceof IShareHotChatGrayTips))
     {
-      paramMessageRecord = ((IShareHotChatGrayTips)paramMessageRecord).getHighlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinearLayout.getContext());
-      paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-      paramHolder.b.setText(paramMessageRecord);
+      paramMessageRecord = ((IShareHotChatGrayTips)paramMessageRecord).getHighlightMsgText(this.a, paramLinearLayout.getContext());
+      paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+      paramHolder.d.setText(paramMessageRecord);
     }
   }
   
@@ -1823,14 +1822,14 @@ public class GrayTipsItemBuilder
       paramMessageRecord = (MessageForGrayTips)paramMessageRecord;
       if ((paramMessageRecord != null) && (paramMessageRecord.msg.length() > 0))
       {
-        String str = HardCodeUtil.a(2131705417);
+        String str = HardCodeUtil.a(2131903298);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramMessageRecord.msg);
         localStringBuilder.append(str);
-        localStringBuilder.append(HardCodeUtil.a(2131705407));
+        localStringBuilder.append(HardCodeUtil.a(2131903288));
         paramMessageRecord = FileManagerUtil.a(localStringBuilder.toString(), str, new GrayTipsItemBuilder.1(this));
-        paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-        paramHolder.b.setText(paramMessageRecord);
+        paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+        paramHolder.d.setText(paramMessageRecord);
       }
     }
   }
@@ -1841,14 +1840,14 @@ public class GrayTipsItemBuilder
     int j = paramString.indexOf(paramMessageRecord.extStr);
     paramString = new SpannableString(paramString);
     paramString.setSpan(new GrayTipsItemBuilder.5(this, i), j, paramMessageRecord.extStr.length() + j, 33);
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setText(paramString);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setText(paramString);
   }
   
   public void c(TextView paramTextView)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131698598);
-    String str = paramTextView.getResources().getString(2131719732);
+    Object localObject = this.c.getString(2131896545);
+    String str = paramTextView.getResources().getString(2131917335);
     int i = ((String)localObject).indexOf(str);
     if (i < 0)
     {
@@ -1868,16 +1867,16 @@ public class GrayTipsItemBuilder
       if (paramTextView == null) {
         return;
       }
-      int j = paramMessageRecord.msg.indexOf(HardCodeUtil.a(2131705426));
+      int j = paramMessageRecord.msg.indexOf(HardCodeUtil.a(2131903307));
       int i = j;
       if (j < 0) {
-        i = paramMessageRecord.msg.indexOf(HardCodeUtil.a(2131705410));
+        i = paramMessageRecord.msg.indexOf(HardCodeUtil.a(2131903291));
       }
       if (i < 0) {
         return;
       }
       SpannableString localSpannableString = new SpannableString(new SpannableString(paramMessageRecord.msg));
-      localSpannableString.setSpan(new GrayTipsItemBuilder.TeamWorkFileImportTipsClickableSpan(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramMessageRecord), i, i + 4, 33);
+      localSpannableString.setSpan(new GrayTipsItemBuilder.TeamWorkFileImportTipsClickableSpan(this.a, this.c, paramMessageRecord), i, i + 4, 33);
       paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
       paramTextView.setText(localSpannableString);
     }
@@ -1885,14 +1884,14 @@ public class GrayTipsItemBuilder
   
   public void c(TextView paramTextView, String paramString)
   {
-    int j = paramString.indexOf(HardCodeUtil.a(2131705413)) - 1;
-    int k = paramString.indexOf(HardCodeUtil.a(2131705428)) + 1;
+    int j = paramString.indexOf(HardCodeUtil.a(2131903294)) - 1;
+    int k = paramString.indexOf(HardCodeUtil.a(2131903309)) + 1;
     int i = j;
     if (j < 0) {
       i = 10;
     }
     paramString = new SpannableString(paramString);
-    paramString.setSpan(new GrayTipsItemBuilder.RecommandInputClickableSpan(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), i, k, 33);
+    paramString.setSpan(new GrayTipsItemBuilder.RecommandInputClickableSpan(this, this.a, this.c, this.d.b), i, k, 33);
     paramString.setSpan(new ForegroundColorSpan(-12541697), i, k, 17);
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
     paramTextView.setText(paramString);
@@ -1900,17 +1899,17 @@ public class GrayTipsItemBuilder
   
   public void c(OnLongClickAndTouchListener paramOnLongClickAndTouchListener, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    a(paramOnLongClickAndTouchListener, paramHolder, String.format(paramString, new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d }));
+    a(paramOnLongClickAndTouchListener, paramHolder, String.format(paramString, new Object[] { this.d.e }));
   }
   
   public void c(GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    SpannableString localSpannableString = FileManagerUtil.a(paramString, this.jdField_a_of_type_AndroidContentContext.getString(2131692596), new GrayTipsItemBuilder.7(this));
-    paramHolder.b.setText(localSpannableString);
+    SpannableString localSpannableString = FileManagerUtil.a(paramString, this.c.getString(2131889619), new GrayTipsItemBuilder.7(this));
+    paramHolder.d.setText(localSpannableString);
     paramString = paramString.replace("TIM", "t i m");
-    paramHolder.b.setContentDescription(paramString);
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setHighlightColor(17170445);
+    paramHolder.d.setContentDescription(paramString);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setHighlightColor(17170445);
   }
   
   public void c(MessageRecord paramMessageRecord, LinearLayout paramLinearLayout, GrayTipsItemBuilder.Holder paramHolder)
@@ -1918,10 +1917,10 @@ public class GrayTipsItemBuilder
     if ((paramMessageRecord instanceof MessageForGrayTips))
     {
       paramMessageRecord = (MessageForGrayTips)paramMessageRecord;
-      paramHolder.b.setText(paramMessageRecord.getHightlightMsgText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinearLayout.getContext(), false, paramHolder.b));
-      paramHolder.b.setClickable(true);
-      paramHolder.b.setFocusable(true);
-      paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
+      paramHolder.d.setText(paramMessageRecord.getHightlightMsgText(this.a, paramLinearLayout.getContext(), false, paramHolder.d));
+      paramHolder.d.setClickable(true);
+      paramHolder.d.setFocusable(true);
+      paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
     }
   }
   
@@ -1932,29 +1931,29 @@ public class GrayTipsItemBuilder
       paramMessageRecord = (MessageForGrayTips)paramMessageRecord;
       if ((paramMessageRecord != null) && (paramMessageRecord.msg.length() > 0))
       {
-        String str = HardCodeUtil.a(2131705414);
+        String str = HardCodeUtil.a(2131903295);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramMessageRecord.msg);
         localStringBuilder.append(str);
         paramMessageRecord = FileManagerUtil.a(localStringBuilder.toString(), str, new GrayTipsItemBuilder.2(this));
-        paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-        paramHolder.b.setText(paramMessageRecord);
+        paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+        paramHolder.d.setText(paramMessageRecord);
       }
     }
   }
   
   public void c(MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    paramMessageRecord = FileManagerUtil.a(paramString, this.jdField_a_of_type_AndroidContentContext.getString(2131690790), new GrayTipsItemBuilder.8(this, paramMessageRecord.getExtInfoFromExtStr("bat_process_tips_last_file_type")));
-    paramHolder.b.setText(paramMessageRecord);
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setHighlightColor(17170445);
+    paramMessageRecord = FileManagerUtil.a(paramString, this.c.getString(2131887720), new GrayTipsItemBuilder.8(this, paramMessageRecord.getExtInfoFromExtStr("bat_process_tips_last_file_type")));
+    paramHolder.d.setText(paramMessageRecord);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setHighlightColor(17170445);
   }
   
   public void d(TextView paramTextView)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131691768);
-    int i = ((String)localObject).indexOf(paramTextView.getResources().getString(2131719732));
+    Object localObject = this.c.getString(2131888730);
+    int i = ((String)localObject).indexOf(paramTextView.getResources().getString(2131917335));
     localObject = new SpannableString((CharSequence)localObject);
     ((SpannableString)localObject).setSpan(new GrayTipsItemBuilder.21(this), i, i + 4, 33);
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -1973,22 +1972,22 @@ public class GrayTipsItemBuilder
   
   public void d(OnLongClickAndTouchListener paramOnLongClickAndTouchListener, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    paramHolder.b.setText(a(paramString, false));
-    paramHolder.b.setOnTouchListener(paramOnLongClickAndTouchListener);
-    paramHolder.b.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setText(a(paramString, false));
+    paramHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
   }
   
   public void d(GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131698427);
+    String str2 = this.c.getString(2131896351);
     String str1 = str2;
     if (!paramString.contains(str2)) {
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131698390);
+      str1 = this.c.getString(2131896314);
     }
     paramString = FileManagerUtil.a(paramString, str1, new GrayTipsItemBuilder.9(this));
-    paramHolder.b.setText(paramString);
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setHighlightColor(17170445);
+    paramHolder.d.setText(paramString);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setHighlightColor(17170445);
   }
   
   public void d(MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder)
@@ -1998,13 +1997,13 @@ public class GrayTipsItemBuilder
       paramMessageRecord = (MessageForGrayTips)paramMessageRecord;
       if ((paramMessageRecord != null) && (paramMessageRecord.msg.length() > 0))
       {
-        String str = HardCodeUtil.a(2131705406);
+        String str = HardCodeUtil.a(2131903287);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramMessageRecord.msg);
         localStringBuilder.append(str);
         paramMessageRecord = FileManagerUtil.a(localStringBuilder.toString(), str, new GrayTipsItemBuilder.3(this));
-        paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-        paramHolder.b.setText(paramMessageRecord);
+        paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+        paramHolder.d.setText(paramMessageRecord);
       }
     }
   }
@@ -2012,7 +2011,7 @@ public class GrayTipsItemBuilder
   public void d(MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
     AioVipKeywordHelper localAioVipKeywordHelper = AioVipKeywordHelper.a();
-    String str2 = localAioVipKeywordHelper.a(paramMessageRecord.isSend(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    String str2 = localAioVipKeywordHelper.a(paramMessageRecord.isSend(), this.d.a);
     String str3 = paramMessageRecord.getExtInfoFromExtStr("aio_vip_tips_open_url");
     String str4 = paramMessageRecord.getExtInfoFromExtStr("aio_vip_keyword");
     String str1 = paramMessageRecord.getExtInfoFromExtStr("aio_vip_tips_highlight");
@@ -2022,38 +2021,38 @@ public class GrayTipsItemBuilder
       str1 = "";
     }
     paramMessageRecord = FileManagerUtil.a(paramString, str1, new GrayTipsItemBuilder.12(this, str3, str2, paramMessageRecord, str4, localAioVipKeywordHelper));
-    paramHolder.b.setText(paramMessageRecord);
-    if (e) {
-      paramHolder.b.setContentDescription(paramMessageRecord);
+    paramHolder.d.setText(paramMessageRecord);
+    if (v) {
+      paramHolder.d.setContentDescription(paramMessageRecord);
     }
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setHighlightColor(17170445);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setHighlightColor(17170445);
   }
   
   public void e(TextView paramTextView)
   {
-    Object localObject = HardCodeUtil.a(2131705425);
-    int j = ((String)localObject).indexOf(HardCodeUtil.a(2131705416));
+    Object localObject = HardCodeUtil.a(2131903306);
+    int j = ((String)localObject).indexOf(HardCodeUtil.a(2131903297));
     int i = j;
     if (j < 0) {
       i = 10;
     }
     localObject = new SpannableString((CharSequence)localObject);
-    ((SpannableString)localObject).setSpan(new GrayTipsItemBuilder.SougouInputTipClickableSpan(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext), i, j + 5, 33);
+    ((SpannableString)localObject).setSpan(new GrayTipsItemBuilder.SougouInputTipClickableSpan(this, this.a, this.c), i, j + 5, 33);
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
     paramTextView.setText((CharSequence)localObject);
   }
   
   public void e(OnLongClickAndTouchListener paramOnLongClickAndTouchListener, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    paramHolder.b.setText(a(paramString, true));
-    paramHolder.b.setOnTouchListener(paramOnLongClickAndTouchListener);
-    paramHolder.b.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setText(a(paramString, true));
+    paramHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
   }
   
   public void e(GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    Object localObject = this.c.getSharedPreferences(this.a.getCurrentAccountUin(), 0);
     String str1 = ((SharedPreferences)localObject).getString("renewal_tail_click_text", null);
     int i = ((SharedPreferences)localObject).getInt("renewal_tail_action", -1);
     int j = ((SharedPreferences)localObject).getInt("renewal_tail_tip_exit", -1);
@@ -2077,14 +2076,14 @@ public class GrayTipsItemBuilder
     if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(str1)))
     {
       paramString = FileManagerUtil.a(paramString, str1, new GrayTipsItemBuilder.11(this, i, k, str2, j));
-      paramHolder.b.setText(paramString);
+      paramHolder.d.setText(paramString);
     }
     else
     {
       QLog.e("GrayTipsItemBuilder", 1, "MSG_TYPE_RENEWAL_TAIL_TIP msg or clickText empty");
     }
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setHighlightColor(17170445);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setHighlightColor(17170445);
   }
   
   public void e(MessageRecord paramMessageRecord, GrayTipsItemBuilder.Holder paramHolder)
@@ -2098,17 +2097,17 @@ public class GrayTipsItemBuilder
       }
       SpannableString localSpannableString = new SpannableString(paramMessageRecord.msg);
       localObject = new GrayTipsItemBuilder.4(this, (String)localObject);
-      localSpannableString.setSpan(new ForegroundColorSpan(2131167280), paramMessageRecord.linkStart, paramMessageRecord.linkEnd, 33);
+      localSpannableString.setSpan(new ForegroundColorSpan(2131168283), paramMessageRecord.linkStart, paramMessageRecord.linkEnd, 33);
       localSpannableString.setSpan(localObject, paramMessageRecord.linkStart, paramMessageRecord.linkEnd, 33);
-      paramHolder.b.setText(localSpannableString);
-      paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-      paramHolder.b.setHighlightColor(17170445);
+      paramHolder.d.setText(localSpannableString);
+      paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+      paramHolder.d.setHighlightColor(17170445);
     }
   }
   
   public void f(TextView paramTextView)
   {
-    Object localObject1 = HardCodeUtil.a(2131705415);
+    Object localObject1 = HardCodeUtil.a(2131903296);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("为TA设置特别消息提示音,");
     ((StringBuilder)localObject2).append((String)localObject1);
@@ -2116,7 +2115,7 @@ public class GrayTipsItemBuilder
     int i = ((String)localObject1).length() + 13;
     localObject1 = new SpannableString((CharSequence)localObject2);
     ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(-15036176), 13, i, 33);
-    ((SpannableString)localObject1).setSpan(new GrayTipsItemBuilder.SpecialCareTipClickableSpan(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext), 0, i, 33);
+    ((SpannableString)localObject1).setSpan(new GrayTipsItemBuilder.SpecialCareTipClickableSpan(this, this.a, this.c), 0, i, 33);
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
     paramTextView.setText((CharSequence)localObject1);
   }
@@ -2124,23 +2123,23 @@ public class GrayTipsItemBuilder
   public void f(OnLongClickAndTouchListener paramOnLongClickAndTouchListener, GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
     paramString = new QQText(paramString, 1);
-    paramHolder.b.setText(paramString);
-    paramHolder.b.setOnTouchListener(paramOnLongClickAndTouchListener);
-    paramHolder.b.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setText(paramString);
+    paramHolder.d.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramHolder.d.setOnLongClickListener(paramOnLongClickAndTouchListener);
   }
   
   public void f(GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    String str = AioVipDonateHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String str = AioVipDonateHelper.a().f(this.a);
     paramString.indexOf(str);
     str.length();
     paramString = FileManagerUtil.a(paramString, str, new GrayTipsItemBuilder.13(this));
-    paramHolder.b.setText(paramString);
-    if (e) {
-      paramHolder.b.setContentDescription(paramString);
+    paramHolder.d.setText(paramString);
+    if (v) {
+      paramHolder.d.setContentDescription(paramString);
     }
-    paramHolder.b.setMovementMethod(LinkMovementMethod.getInstance());
-    paramHolder.b.setHighlightColor(17170445);
+    paramHolder.d.setMovementMethod(LinkMovementMethod.getInstance());
+    paramHolder.d.setHighlightColor(17170445);
     VasWebviewUtil.a("", "2", "", "", "", "", "", "", "", "");
   }
   
@@ -2148,15 +2147,15 @@ public class GrayTipsItemBuilder
   {
     paramMessageRecord = paramMessageRecord.msg;
     if (paramMessageRecord != null) {
-      c(paramHolder.b, paramMessageRecord);
+      c(paramHolder.d, paramMessageRecord);
     }
   }
   
   public void g(TextView paramTextView)
   {
-    Object localObject = BaseApplicationImpl.getContext().getString(2131720104);
-    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131720105);
-    int j = ((String)localObject).length() + str.indexOf(HardCodeUtil.a(2131705411));
+    Object localObject = BaseApplicationImpl.getContext().getString(2131917729);
+    String str = this.c.getString(2131917730);
+    int j = ((String)localObject).length() + str.indexOf(HardCodeUtil.a(2131903292));
     int i = j;
     if (j < 0) {
       i = 20;
@@ -2172,9 +2171,9 @@ public class GrayTipsItemBuilder
   
   public void g(GrayTipsItemBuilder.Holder paramHolder, String paramString)
   {
-    paramString = FileManagerUtil.c(paramString);
+    paramString = FileManagerUtil.j(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131692301));
+    localStringBuilder.append(BaseApplicationImpl.getContext().getString(2131889289));
     localStringBuilder.append("\"");
     localStringBuilder.append(paramString);
     localStringBuilder.append("\"");
@@ -2186,14 +2185,14 @@ public class GrayTipsItemBuilder
     if (!(paramMessageRecord instanceof MessageForDeliverGiftTips)) {
       return;
     }
-    ((MessageForDeliverGiftTips)paramMessageRecord).buildDeliverGiftTips(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramHolder.b);
+    ((MessageForDeliverGiftTips)paramMessageRecord).buildDeliverGiftTips(this.a, this.c, paramHolder.d);
   }
   
   public void h(TextView paramTextView) {}
   
   public void i(TextView paramTextView)
   {
-    Object localObject = HardCodeUtil.a(2131705412);
+    Object localObject = HardCodeUtil.a(2131903293);
     int j = ((String)localObject).indexOf("Q");
     int i = j;
     if (j < 0) {
@@ -2207,7 +2206,7 @@ public class GrayTipsItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder
  * JD-Core Version:    0.7.0.1
  */

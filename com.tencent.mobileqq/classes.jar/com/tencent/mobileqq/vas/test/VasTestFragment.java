@@ -23,20 +23,15 @@ import org.jetbrains.annotations.Nullable;
 public final class VasTestFragment
   extends PublicBaseFragment
 {
-  public static final VasTestFragment.Companion a;
+  public static final VasTestFragment.Companion a = new VasTestFragment.Companion(null);
   @Nullable
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private VasTestFragment.IVasTestFragment jdField_a_of_type_ComTencentMobileqqVasTestVasTestFragment$IVasTestFragment;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasTestVasTestFragment$Companion = new VasTestFragment.Companion(null);
-  }
+  private ViewGroup b;
+  private VasTestFragment.IVasTestFragment c;
+  private HashMap d;
   
   public void a()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.d;
     if (localHashMap != null) {
       localHashMap.clear();
     }
@@ -53,7 +48,7 @@ public final class VasTestFragment
       String str = paramBundle.getStringExtra("apk_path");
       paramBundle = Class.forName(paramBundle.getStringExtra("class_path"), true, (ClassLoader)new PathClassLoader(str, getClass().getClassLoader())).newInstance();
       if (paramBundle != null) {
-        this.jdField_a_of_type_ComTencentMobileqqVasTestVasTestFragment$IVasTestFragment = ((VasTestFragment.IVasTestFragment)paramBundle);
+        this.c = ((VasTestFragment.IVasTestFragment)paramBundle);
       } else {
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.vas.test.VasTestFragment.IVasTestFragment");
       }
@@ -61,7 +56,7 @@ public final class VasTestFragment
     catch (Exception paramBundle)
     {
       QLog.e("VasTestFragment", 1, (Throwable)paramBundle, new Object[0]);
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqVasTestVasTestFragment$IVasTestFragment;
+      paramBundle = this.c;
       if (paramBundle != null) {
         paramBundle.a(this);
       }
@@ -74,7 +69,7 @@ public final class VasTestFragment
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
     paramLayoutInflater = new RelativeLayout((Context)getActivity());
     paramLayoutInflater.setGravity(17);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater);
+    this.b = ((ViewGroup)paramLayoutInflater);
     paramLayoutInflater = (View)paramLayoutInflater;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -83,7 +78,7 @@ public final class VasTestFragment
   public void onDestroy()
   {
     super.onDestroy();
-    VasTestFragment.IVasTestFragment localIVasTestFragment = this.jdField_a_of_type_ComTencentMobileqqVasTestVasTestFragment$IVasTestFragment;
+    VasTestFragment.IVasTestFragment localIVasTestFragment = this.c;
     if (localIVasTestFragment != null) {
       localIVasTestFragment.a();
     }
@@ -91,7 +86,7 @@ public final class VasTestFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.test.VasTestFragment
  * JD-Core Version:    0.7.0.1
  */

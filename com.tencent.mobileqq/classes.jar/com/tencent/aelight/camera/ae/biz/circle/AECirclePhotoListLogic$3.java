@@ -15,15 +15,18 @@ class AECirclePhotoListLogic$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = new Intent();
+    if (this.a.getActivity().getIntent() != null) {
+      paramDialogInterface.putExtras(this.a.getActivity().getIntent());
+    }
     paramDialogInterface.putExtra("key_qcircle_pulish_use_draft", true);
-    this.jdField_a_of_type_AndroidAppFragment.getActivity().setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_AndroidAppFragment.getActivity().finish();
-    AEReportUtils.d(3);
+    this.a.getActivity().setResult(-1, paramDialogInterface);
+    this.a.getActivity().finish();
+    AEReportUtils.d(3, this.b.i());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.3
  * JD-Core Version:    0.7.0.1
  */

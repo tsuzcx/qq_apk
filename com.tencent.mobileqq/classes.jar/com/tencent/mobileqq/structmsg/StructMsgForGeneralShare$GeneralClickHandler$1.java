@@ -18,7 +18,7 @@ class StructMsgForGeneralShare$GeneralClickHandler$1
       long l = this.a.getLong("msgSeq");
       Object localObject = this.a.getString("uin");
       int i = this.a.getInt("sessionType");
-      QQMessageFacade localQQMessageFacade = this.this$0.a.getMessageFacade();
+      QQMessageFacade localQQMessageFacade = this.this$0.b.getMessageFacade();
       localObject = localQQMessageFacade.a((String)localObject, i, l);
       ((MessageRecord)localObject).saveExtInfoToExtStr("receipt_msg_is_read", "1");
       localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject).extLong));
@@ -32,7 +32,7 @@ class StructMsgForGeneralShare$GeneralClickHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler.1
  * JD-Core Version:    0.7.0.1
  */

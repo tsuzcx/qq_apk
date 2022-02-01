@@ -33,31 +33,31 @@ public class MiniProgramSearchResultGroupPresenter
   public void a(IModel paramIModel, ISearchResultGroupView paramISearchResultGroupView)
   {
     Object localObject = (ISearchResultGroupModel)paramIModel;
-    paramIModel = ((MiniProgramSearchResultGroupView)paramISearchResultGroupView).a();
+    paramIModel = ((MiniProgramSearchResultGroupView)paramISearchResultGroupView).d();
     if (paramIModel != null)
     {
-      List localList = ((ISearchResultGroupModel)localObject).a();
+      List localList = ((ISearchResultGroupModel)localObject).b();
       if (localList != null)
       {
         paramIModel.removeAllViews();
-        int k = Math.min(localList.size(), ((ISearchResultGroupModel)localObject).a());
+        int k = Math.min(localList.size(), ((ISearchResultGroupModel)localObject).d());
         int i = 0;
         while (i < k)
         {
           localObject = (ISearchResultModel)localList.get(i);
-          View localView = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2131562799, null);
+          View localView = LayoutInflater.from(paramISearchResultGroupView.h().getContext()).inflate(2131629244, null);
           MiniProgramSearchResultView localMiniProgramSearchResultView = new MiniProgramSearchResultView(localView);
-          localView.setTag(2131380884, localObject);
-          localView.setTag(2131380889, localMiniProgramSearchResultView);
-          localView.setTag(2131380885, Integer.valueOf(i));
-          localView.setTag(2131380883, Integer.valueOf(localList.size()));
-          localView.setTag(2131380886, this.a);
+          localView.setTag(2131449867, localObject);
+          localView.setTag(2131449873, localMiniProgramSearchResultView);
+          localView.setTag(2131449868, Integer.valueOf(i));
+          localView.setTag(2131449866, Integer.valueOf(localList.size()));
+          localView.setTag(2131449869, this.a);
           SearchViewUtils.a((ISearchResultModel)localObject, k, i);
-          int m = ((ISearchResultModel)localObject).b();
-          int n = ((ISearchResultModel)localObject).f_();
+          int m = ((ISearchResultModel)localObject).ck_();
+          int n = ((ISearchResultModel)localObject).cl_();
           int j;
           if ((localObject instanceof ISearchResultPositionModel)) {
-            j = ((ISearchResultPositionModel)localObject).u;
+            j = ((ISearchResultPositionModel)localObject).af;
           } else {
             j = 0;
           }
@@ -75,7 +75,7 @@ public class MiniProgramSearchResultGroupPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.MiniProgramSearchResultGroupPresenter
  * JD-Core Version:    0.7.0.1
  */

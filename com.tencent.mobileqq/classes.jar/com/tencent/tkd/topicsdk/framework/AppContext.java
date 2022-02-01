@@ -12,25 +12,19 @@ import org.jetbrains.annotations.NotNull;
 @SuppressLint({"StaticFieldLeak"})
 public final class AppContext
 {
+  public static final AppContext a = new AppContext();
   @NotNull
-  private static final Context a;
-  public static final AppContext a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkFrameworkAppContext = new AppContext();
-    jdField_a_of_type_AndroidContentContext = TopicSDK.a.a().a().a();
-  }
+  private static final Context b = TopicSDK.a.a().b().b();
   
   @NotNull
   public final Context a()
   {
-    return jdField_a_of_type_AndroidContentContext;
+    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.AppContext
  * JD-Core Version:    0.7.0.1
  */

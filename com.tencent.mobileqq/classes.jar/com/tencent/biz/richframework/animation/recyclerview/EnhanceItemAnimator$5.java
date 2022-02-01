@@ -1,10 +1,10 @@
 package com.tencent.biz.richframework.animation.recyclerview;
 
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewPropertyAnimatorCompat;
+import androidx.core.view.ViewPropertyAnimatorListener;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import java.util.ArrayList;
 
 class EnhanceItemAnimator$5
@@ -24,15 +24,15 @@ class EnhanceItemAnimator$5
   
   public void onAnimationEnd(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
-    this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator.dispatchAddFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    EnhanceItemAnimator.e(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-    EnhanceItemAnimator.a(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator);
+    this.b.setListener((ViewPropertyAnimatorListener)null);
+    this.c.dispatchAddFinished(this.a);
+    EnhanceItemAnimator.f(this.c).remove(this.a);
+    EnhanceItemAnimator.e(this.c);
   }
   
   public void onAnimationStart(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizRichframeworkAnimationRecyclerviewEnhanceItemAnimator.dispatchAddStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    this.c.dispatchAddStarting(this.a);
   }
 }
 

@@ -29,19 +29,19 @@ import tencent.im.login.GatewayVerify.RspTipsInfo;
 
 public class FrozenNotifyDlgHelper
 {
-  private static volatile FrozenNotifyDlgHelper jdField_a_of_type_ComTencentMobileqqAppSecurityFrozenNotifyDlgHelper;
-  private static ISecControllerInterface jdField_a_of_type_ComTencentMobileqqQqsecApiISecControllerInterface;
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("<TITLE=\"([^>]+)\",URL=\"([^<]+)\">");
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ISecControllerInterface a;
+  private static volatile FrozenNotifyDlgHelper b;
+  private static final String d;
+  private static final Pattern e = Pattern.compile("<TITLE=\"([^>]+)\",URL=\"([^<]+)\">");
+  private ArrayList<Integer> c = new ArrayList();
   
   static
   {
     try
     {
-      if (QQSecBlockInjectUtil.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (QQSecBlockInjectUtil.a.size() > 0)
       {
-        jdField_a_of_type_ComTencentMobileqqQqsecApiISecControllerInterface = (ISecControllerInterface)((Class)QQSecBlockInjectUtil.jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
+        a = (ISecControllerInterface)((Class)QQSecBlockInjectUtil.a.get(0)).newInstance();
         QLog.d("FrozenNotifyDlgHelper", 1, "FrozenNotifyDlgHelper newInstance");
       }
     }
@@ -53,28 +53,28 @@ public class FrozenNotifyDlgHelper
     localStringBuilder.append(Patterns.c.pattern());
     localStringBuilder.append("|");
     localStringBuilder.append(Patterns.d.pattern());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    d = localStringBuilder.toString();
   }
   
   private FrozenNotifyDlgHelper()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(2));
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(3));
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(4));
+    this.c.add(Integer.valueOf(2));
+    this.c.add(Integer.valueOf(3));
+    this.c.add(Integer.valueOf(4));
   }
   
   public static FrozenNotifyDlgHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppSecurityFrozenNotifyDlgHelper == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqAppSecurityFrozenNotifyDlgHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqAppSecurityFrozenNotifyDlgHelper = new FrozenNotifyDlgHelper();
+        if (b == null) {
+          b = new FrozenNotifyDlgHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqAppSecurityFrozenNotifyDlgHelper;
+    return b;
   }
   
   private void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt, boolean paramBoolean)
@@ -251,26 +251,6 @@ public class FrozenNotifyDlgHelper
     }
   }
   
-  public int a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getTipWithSceneId: ");
-    localStringBuilder.append(paramInt);
-    QLog.d("FrozenNotifyDlgHelper", 1, localStringBuilder.toString());
-    if (paramInt != 2)
-    {
-      if (paramInt != 3)
-      {
-        if (paramInt != 4) {
-          return 2131694583;
-        }
-        return 2131692638;
-      }
-      return 2131692637;
-    }
-    return 2131720134;
-  }
-  
   public int a(String paramString, int paramInt1, int paramInt2)
   {
     boolean bool = TextUtils.isEmpty(paramString);
@@ -322,27 +302,6 @@ public class FrozenNotifyDlgHelper
     return paramInt2;
   }
   
-  public int a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
-    {
-      QLog.e("FrozenNotifyDlgHelper", 1, "getForbidScene: tlvData == null");
-      return -1;
-    }
-    try
-    {
-      GatewayVerify.RspBody localRspBody = new GatewayVerify.RspBody();
-      localRspBody.mergeFrom(paramArrayOfByte);
-      int i = localRspBody.msg_rsp_tips_info.uint32_scene_id.get();
-      return i;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QLog.e("FrozenNotifyDlgHelper", 1, "getForbidScene error: ", paramArrayOfByte);
-    }
-    return -1;
-  }
-  
   public CharSequence a(String paramString, QBaseActivity paramQBaseActivity, int paramInt)
   {
     if ((paramString != null) && (paramQBaseActivity != null))
@@ -351,7 +310,7 @@ public class FrozenNotifyDlgHelper
         return paramString;
       }
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("");
-      Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
+      Matcher localMatcher = e.matcher(paramString);
       int m = 0;
       int i = 0;
       int j = 0;
@@ -371,7 +330,7 @@ public class FrozenNotifyDlgHelper
         }
         SpannableString localSpannableString = new SpannableString(str);
         localSpannableString.setSpan(new FrozenNotifyDlgHelper.ExpendClickableSpan((String)localObject, new WeakReference(paramQBaseActivity), paramInt), 0, str.length(), 33);
-        localSpannableString.setSpan(new ForegroundColorSpan(paramQBaseActivity.getResources().getColor(2131165795)), 0, str.length(), 33);
+        localSpannableString.setSpan(new ForegroundColorSpan(paramQBaseActivity.getResources().getColor(2131166411)), 0, str.length(), 33);
         localSpannableStringBuilder.append(localSpannableString);
         m = 1;
         i = k;
@@ -381,7 +340,7 @@ public class FrozenNotifyDlgHelper
         localSpannableStringBuilder.append(paramString.substring(j));
         return localSpannableStringBuilder;
       }
-      localMatcher = Pattern.compile(jdField_a_of_type_JavaLangString, 2).matcher(paramString);
+      localMatcher = Pattern.compile(d, 2).matcher(paramString);
       int k = 0;
       for (i = 0; localMatcher.find(); i = j)
       {
@@ -396,7 +355,7 @@ public class FrozenNotifyDlgHelper
         }
         localObject = new SpannableString(str);
         ((SpannableString)localObject).setSpan(new FrozenNotifyDlgHelper.ExpendClickableSpan(str, new WeakReference(paramQBaseActivity), paramInt), 0, str.length(), 33);
-        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramQBaseActivity.getResources().getColor(2131165795)), 0, str.length(), 33);
+        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramQBaseActivity.getResources().getColor(2131166411)), 0, str.length(), 33);
         localSpannableStringBuilder.append((CharSequence)localObject);
       }
       localSpannableStringBuilder.append(paramString.substring(k));
@@ -404,18 +363,6 @@ public class FrozenNotifyDlgHelper
     }
     QLog.e("FrozenNotifyDlgHelper", 1, "handleNotifyMsg error: params wrong");
     return paramString;
-  }
-  
-  public String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getAppendMsgWithSceneId: ");
-    localStringBuilder.append(paramInt);
-    QLog.d("FrozenNotifyDlgHelper", 1, localStringBuilder.toString());
-    if ((paramInt != 2) && (paramInt != 3) && (paramInt != 4)) {
-      return "";
-    }
-    return "你也可以对帐号进行<TITLE=\"资金管理\",URL=\"https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027\">。";
   }
   
   public String a(String paramString1, String paramString2, boolean paramBoolean)
@@ -609,7 +556,7 @@ public class FrozenNotifyDlgHelper
       bool1 = bool2;
       if (localRspBody.msg_rsp_lft_info.uint32_lft_forbid_area.get() == 0)
       {
-        boolean bool3 = this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(localRspBody.msg_rsp_tips_info.uint32_scene_id.get()));
+        boolean bool3 = this.c.contains(Integer.valueOf(localRspBody.msg_rsp_tips_info.uint32_scene_id.get()));
         bool1 = bool2;
         if (bool3) {
           bool1 = true;
@@ -626,6 +573,47 @@ public class FrozenNotifyDlgHelper
     paramArrayOfByte.append(bool1);
     QLog.d("FrozenNotifyDlgHelper", 1, paramArrayOfByte.toString());
     return bool1;
+  }
+  
+  public int b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getTipWithSceneId: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("FrozenNotifyDlgHelper", 1, localStringBuilder.toString());
+    if (paramInt != 2)
+    {
+      if (paramInt != 3)
+      {
+        if (paramInt != 4) {
+          return 2131892267;
+        }
+        return 2131889661;
+      }
+      return 2131889660;
+    }
+    return 2131917764;
+  }
+  
+  public int b(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null)
+    {
+      QLog.e("FrozenNotifyDlgHelper", 1, "getForbidScene: tlvData == null");
+      return -1;
+    }
+    try
+    {
+      GatewayVerify.RspBody localRspBody = new GatewayVerify.RspBody();
+      localRspBody.mergeFrom(paramArrayOfByte);
+      int i = localRspBody.msg_rsp_tips_info.uint32_scene_id.get();
+      return i;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QLog.e("FrozenNotifyDlgHelper", 1, "getForbidScene error: ", paramArrayOfByte);
+    }
+    return -1;
   }
   
   public boolean b(String paramString)
@@ -651,10 +639,22 @@ public class FrozenNotifyDlgHelper
     QLog.d("FrozenNotifyDlgHelper", 1, paramString.toString());
     return bool1;
   }
+  
+  public String c(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getAppendMsgWithSceneId: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("FrozenNotifyDlgHelper", 1, localStringBuilder.toString());
+    if ((paramInt != 2) && (paramInt != 3) && (paramInt != 4)) {
+      return "";
+    }
+    return "你也可以对帐号进行<TITLE=\"资金管理\",URL=\"https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027\">。";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.security.FrozenNotifyDlgHelper
  * JD-Core Version:    0.7.0.1
  */

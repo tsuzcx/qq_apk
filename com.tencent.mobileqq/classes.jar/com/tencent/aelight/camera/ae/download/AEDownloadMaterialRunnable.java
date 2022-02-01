@@ -15,18 +15,20 @@ public class AEDownloadMaterialRunnable
   public void run()
   {
     AEQLog.a(a, "download material");
-    CameraDataServiceHandler localCameraDataServiceHandler = (CameraDataServiceHandler)QQStoryContext.a().getBusinessHandler(PeakAppInterface.d);
+    CameraDataServiceHandler localCameraDataServiceHandler = (CameraDataServiceHandler)QQStoryContext.k().getBusinessHandler(PeakAppInterface.e);
     localCameraDataServiceHandler.a("MqStoryCamera");
     localCameraDataServiceHandler.a("MqEmoCamera");
+    localCameraDataServiceHandler.a("MqKuaishanCamera");
     localCameraDataServiceHandler.a("MqCircleWatermark");
+    localCameraDataServiceHandler.d();
     localCameraDataServiceHandler.c();
     localCameraDataServiceHandler.b();
-    VSConfigManager.a().a();
+    VSConfigManager.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.AEDownloadMaterialRunnable
  * JD-Core Version:    0.7.0.1
  */

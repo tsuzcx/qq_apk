@@ -1,5 +1,6 @@
 package com.tencent.qqmini.sdk.core.proxy.engine;
 
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -132,9 +133,9 @@ public class ProxyServiceEngine
     //   0	186	0	this	ProxyServiceEngine
     //   0	186	1	paramClass	Class
     //   25	142	2	localObject	Object
-    //   182	1	2	localException	java.lang.Exception
+    //   182	1	2	localException	Exception
     //   13	147	3	localClass	Class
-    //   91	26	4	localStringBuilder	java.lang.StringBuilder
+    //   91	26	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
     //   77	82	177	finally
@@ -153,10 +154,43 @@ public class ProxyServiceEngine
     //   114	124	182	java/lang/Exception
     //   126	138	182	java/lang/Exception
   }
+  
+  public Object newProxyService(Class paramClass)
+  {
+    Object localObject = (Class)this.mProxyServicesMap.get(paramClass);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Can NOT find service class: ");
+      ((StringBuilder)localObject).append(paramClass);
+      QMLog.w("ProxyServiceEngine", ((StringBuilder)localObject).toString());
+      return null;
+    }
+    try
+    {
+      paramClass = new StringBuilder();
+      paramClass.append("Create a new proxy cls:");
+      paramClass.append(localObject);
+      QMLog.i("ProxyServiceEngine", paramClass.toString());
+      paramClass = ((Class)localObject).newInstance();
+      return paramClass;
+    }
+    catch (Exception paramClass) {}finally
+    {
+      break label125;
+    }
+    paramClass = new StringBuilder();
+    paramClass.append("Failed to create cls:");
+    paramClass.append(localObject);
+    QMLog.e("ProxyServiceEngine", paramClass.toString());
+    return null;
+    label125:
+    throw paramClass;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.engine.ProxyServiceEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -17,63 +17,62 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AIOVideoPlayController
 {
-  private static AIOVideoPlayController jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController;
-  private AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
-  public boolean a;
+  private static AIOVideoPlayController c;
+  public boolean a = false;
   @Deprecated
   public boolean b = false;
-  private boolean c = false;
+  private AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean d;
+  private boolean e = false;
   
   private AIOVideoPlayController()
   {
-    this.jdField_a_of_type_Boolean = false;
     ThreadManager.executeOnSubThread(new AIOVideoPlayController.1(this));
   }
   
   public static AIOVideoPlayController a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController == null) {
-          jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController = new AIOVideoPlayController();
+        if (c == null) {
+          c = new AIOVideoPlayController();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController;
-  }
-  
-  private boolean b()
-  {
-    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
-    if (localAIOVideoPlayConfigBean != null) {
-      return localAIOVideoPlayConfigBean.jdField_a_of_type_Boolean;
-    }
-    return false;
+    return c;
   }
   
   private boolean c()
   {
-    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
+    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.d;
     if (localAIOVideoPlayConfigBean != null) {
-      return localAIOVideoPlayConfigBean.b;
+      return localAIOVideoPlayConfigBean.a;
     }
     return false;
   }
   
   private boolean d()
   {
-    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
+    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.d;
     if (localAIOVideoPlayConfigBean != null) {
-      return localAIOVideoPlayConfigBean.c;
+      return localAIOVideoPlayConfigBean.b;
     }
     return false;
   }
   
   private boolean e()
   {
-    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
+    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.d;
+    if (localAIOVideoPlayConfigBean != null) {
+      return localAIOVideoPlayConfigBean.c;
+    }
+    return false;
+  }
+  
+  private boolean f()
+  {
+    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.d;
     if (localAIOVideoPlayConfigBean != null) {
       return localAIOVideoPlayConfigBean.d;
     }
@@ -82,66 +81,15 @@ public class AIOVideoPlayController
   
   public void a(View paramView, StructMsgForGeneralShare paramStructMsgForGeneralShare)
   {
-    paramView = (PAVideoView)paramView.findViewById(2131377982);
+    paramView = (PAVideoView)paramView.findViewById(2131446469);
     if (paramView != null) {
-      paramView.c();
+      paramView.d();
     }
-  }
-  
-  public boolean a()
-  {
-    Object localObject;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name(), null);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("isAllowDPC(): parseConfig, aio_gifplay =");
-        localStringBuilder.append((String)localObject);
-        QLog.d("AIOVideoPlayController", 2, localStringBuilder.toString());
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length < 8) {}
-      }
-    }
-    try
-    {
-      if (Integer.parseInt(localObject[7]) == 0) {
-        this.c = false;
-      } else {
-        this.c = true;
-      }
-      if (Integer.parseInt(localObject[9]) == 0) {
-        this.b = false;
-      } else {
-        this.b = true;
-      }
-      this.jdField_a_of_type_Boolean = true;
-    }
-    catch (Exception localException)
-    {
-      label140:
-      break label140;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("isAllowDPC(): mDPCAllow =");
-      ((StringBuilder)localObject).append(this.c);
-      ((StringBuilder)localObject).append(", mEnbleAutoPlayInNotPAAIO = ");
-      ((StringBuilder)localObject).append(this.b);
-      QLog.d("AIOVideoPlayController", 2, ((StringBuilder)localObject).toString());
-    }
-    return this.c;
   }
   
   public boolean a(Context paramContext, int paramInt1, int paramInt2)
   {
-    boolean bool2 = a();
+    boolean bool2 = b();
     boolean bool1 = true;
     if (bool2)
     {
@@ -160,20 +108,20 @@ public class AIOVideoPlayController
         {
           if (paramInt2 == 1)
           {
-            bool1 = b();
+            bool1 = c();
             break label118;
           }
-          bool1 = c();
+          bool1 = d();
           break label118;
         }
         if (paramInt1 == 2)
         {
           if (paramInt2 == 1)
           {
-            bool1 = d();
+            bool1 = e();
             break label118;
           }
-          bool1 = e();
+          bool1 = f();
           break label118;
         }
       }
@@ -190,15 +138,66 @@ public class AIOVideoPlayController
       paramContext.append(", result = ");
       paramContext.append(bool1);
       paramContext.append(", mDPCAllow = ");
-      paramContext.append(this.c);
+      paramContext.append(this.e);
       QLog.d("AIOVideoPlayController", 2, paramContext.toString());
     }
     return bool1;
   }
+  
+  public boolean b()
+  {
+    Object localObject;
+    if (!this.a)
+    {
+      localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name(), null);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isAllowDPC(): parseConfig, aio_gifplay =");
+        localStringBuilder.append((String)localObject);
+        QLog.d("AIOVideoPlayController", 2, localStringBuilder.toString());
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length < 8) {}
+      }
+    }
+    try
+    {
+      if (Integer.parseInt(localObject[7]) == 0) {
+        this.e = false;
+      } else {
+        this.e = true;
+      }
+      if (Integer.parseInt(localObject[9]) == 0) {
+        this.b = false;
+      } else {
+        this.b = true;
+      }
+      this.a = true;
+    }
+    catch (Exception localException)
+    {
+      label140:
+      break label140;
+    }
+    this.a = false;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isAllowDPC(): mDPCAllow =");
+      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(", mEnbleAutoPlayInNotPAAIO = ");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.d("AIOVideoPlayController", 2, ((StringBuilder)localObject).toString());
+    }
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AIOVideoPlayController
  * JD-Core Version:    0.7.0.1
  */

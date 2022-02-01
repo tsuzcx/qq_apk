@@ -105,7 +105,7 @@ public class BaseLibManager
     if (paramBaseLibInfo == null) {
       return Boolean.valueOf(false);
     }
-    String str = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+    String str = StorageUtil.getPreference().getString("version", "1.29.0.00002");
     return Boolean.valueOf(BaseLibInfo.needUpdateVersion(paramBaseLibInfo.baseLibVersion, str));
   }
   
@@ -260,7 +260,7 @@ public class BaseLibManager
   {
     BaseLibInfo localBaseLibInfo = new BaseLibInfo();
     String str = StorageUtil.getPreference().getString("downloadUrl", null);
-    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.29.0.00002");
     localBaseLibInfo.baseLibUrl = str;
     return localBaseLibInfo;
   }
@@ -285,15 +285,15 @@ public class BaseLibManager
   {
     try
     {
-      String str = g().getBaseLibDir("mini", "1.22.0.00008");
+      String str = g().getBaseLibDir("mini", "1.29.0.00002");
       if (g().isBaseLibDirValid4MiniGame(str))
       {
-        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, inner baseLib already installed, version:1.22.0.00008");
+        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, inner baseLib already installed, version:1.29.0.00002");
         return str;
       }
       int k = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("installMiniGameInnerJsLib, version:1.22.0.00008, totalCount:");
+      ((StringBuilder)localObject2).append("installMiniGameInnerJsLib, version:1.29.0.00002, totalCount:");
       ((StringBuilder)localObject2).append(k);
       QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, ((StringBuilder)localObject2).toString());
       boolean bool2 = false;
@@ -452,7 +452,7 @@ public class BaseLibManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.BaseLibManager
  * JD-Core Version:    0.7.0.1
  */

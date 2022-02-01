@@ -110,13 +110,13 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xe5.Submsgtype0xe5.MsgBody.S2CUser
 public class QidianHandler
   extends BusinessHandler
 {
-  private static final String jdField_a_of_type_JavaLangString = "com.tencent.qidian.controller.QidianHandler";
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private static final String a = "com.tencent.qidian.controller.QidianHandler";
+  private QQAppInterface b;
   
   public QidianHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private mobileqq_qidian.CRMMsgHead a(String paramString1, int paramInt, String paramString2)
@@ -138,29 +138,18 @@ public class QidianHandler
       localCRMMsgHead.uint64_ext_uin.setHasFlag(true);
     }
     localCRMMsgHead.uint32_terminal_type.set(2);
-    localCRMMsgHead.uint32_terminal_version.set(QidianUtils.a("8.7.0"));
+    localCRMMsgHead.uint32_terminal_version.set(QidianUtils.a("8.8.17"));
     return localCRMMsgHead;
-  }
-  
-  private mobileqq_qidian.ReqBody a(String paramString1, int paramInt, String paramString2)
-  {
-    mobileqq_qidian.ReqBody localReqBody = new mobileqq_qidian.ReqBody();
-    paramString1 = a(paramString1, paramInt, paramString2);
-    localReqBody.msg_crm_common_head.set(paramString1);
-    localReqBody.msg_crm_common_head.setHasFlag(true);
-    localReqBody.uint32_sub_cmd.set(paramInt);
-    localReqBody.uint32_sub_cmd.setHasFlag(true);
-    return localReqBody;
   }
   
   private void a(QidianExternalInfo paramQidianExternalInfo, QidianInternalInfo paramQidianInternalInfo, QidianCorpInfo paramQidianCorpInfo, QidianProfileUiInfo paramQidianProfileUiInfo)
   {
-    ((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramQidianExternalInfo, paramQidianInternalInfo, paramQidianCorpInfo, paramQidianProfileUiInfo);
+    ((QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramQidianExternalInfo, paramQidianInternalInfo, paramQidianCorpInfo, paramQidianProfileUiInfo);
   }
   
   private void a(QidianExternalInfo paramQidianExternalInfo, QidianProfileUiInfo paramQidianProfileUiInfo)
   {
-    ((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramQidianExternalInfo, paramQidianProfileUiInfo);
+    ((QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramQidianExternalInfo, paramQidianProfileUiInfo);
   }
   
   private void a(mobileqq_qidian.ReqBody paramReqBody, String paramString, Map<String, String> paramMap)
@@ -178,13 +167,13 @@ public class QidianHandler
     }
     localToServiceMsg.putWupBuffer(paramReqBody.toByteArray());
     super.sendPbReq(localToServiceMsg);
-    paramReqBody = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Qidian", "", paramString, paramString, 0, 0, "", "", paramReqBody, "");
+    paramReqBody = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.b.getApp().getBaseContext())];
+    ReportController.b(this.b, "P_CliOper", "Qidian", "", paramString, paramString, 0, 0, "", "", paramReqBody, "");
   }
   
   private boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, String paramString)
   {
-    String str = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
+    String str = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.b.getApp().getBaseContext())];
     long l = paramToServiceMsg.extraData.getLong("startTime");
     l = System.currentTimeMillis() - l;
     boolean bool;
@@ -195,7 +184,7 @@ public class QidianHandler
     }
     if (bool)
     {
-      paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramToServiceMsg = this.b;
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append(paramString);
       paramFromServiceMsg.append("_success");
@@ -206,7 +195,7 @@ public class QidianHandler
       ReportController.b(paramToServiceMsg, "P_CliOper", "Qidian", "", paramFromServiceMsg, paramObject.toString(), 0, 0, String.valueOf((int)l), "", str, "");
       if (QLog.isColorLevel())
       {
-        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramToServiceMsg = a;
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("handleAssignExt success, delta is ");
         paramFromServiceMsg.append(l);
@@ -215,7 +204,7 @@ public class QidianHandler
       return bool;
     }
     paramToServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
-    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramFromServiceMsg = this.b;
     paramObject = new StringBuilder();
     paramObject.append(paramString);
     paramObject.append("_fail");
@@ -226,13 +215,24 @@ public class QidianHandler
     ReportController.b(paramFromServiceMsg, "P_CliOper", "Qidian", "", paramObject, localStringBuilder.toString(), 0, 0, String.valueOf((int)l), "", str, paramToServiceMsg);
     if (QLog.isColorLevel())
     {
-      paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+      paramFromServiceMsg = a;
       paramObject = new StringBuilder();
       paramObject.append("handleGetAccountType failed, fail message: ");
       paramObject.append(paramToServiceMsg);
       QLog.d(paramFromServiceMsg, 2, paramObject.toString());
     }
     return bool;
+  }
+  
+  private mobileqq_qidian.ReqBody b(String paramString1, int paramInt, String paramString2)
+  {
+    mobileqq_qidian.ReqBody localReqBody = new mobileqq_qidian.ReqBody();
+    paramString1 = a(paramString1, paramInt, paramString2);
+    localReqBody.msg_crm_common_head.set(paramString1);
+    localReqBody.msg_crm_common_head.setHasFlag(true);
+    localReqBody.uint32_sub_cmd.set(paramInt);
+    localReqBody.uint32_sub_cmd.setHasFlag(true);
+    return localReqBody;
   }
   
   private void b(SubMsgType0x92.MsgBody paramMsgBody)
@@ -244,7 +244,7 @@ public class QidianHandler
       if (paramMsgBody.str_xml.has())
       {
         paramMsgBody = paramMsgBody.str_xml.get();
-        ((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, paramMsgBody);
+        ((QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(this.b, l, paramMsgBody);
       }
     }
   }
@@ -281,7 +281,7 @@ public class QidianHandler
             {
               paramToServiceMsg = paramToServiceMsg.extraData.get("uin");
               if (paramToServiceMsg != null) {
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().c(String.valueOf(paramToServiceMsg), localRspBody.msg_req_corpuin_wpa_rsp.bytes_sigmsg.get().toByteArray());
+                this.b.getMsgCache().c(String.valueOf(paramToServiceMsg), localRspBody.msg_req_corpuin_wpa_rsp.bytes_sigmsg.get().toByteArray());
               }
             }
             paramFromServiceMsg.put("key_aio_type", Integer.valueOf(i));
@@ -297,7 +297,7 @@ public class QidianHandler
       catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCorpUinWpaReport ", paramToServiceMsg);
+          QLog.d(a, 2, "handleCorpUinWpaReport ", paramToServiceMsg);
         }
         notifyUI(1007, false, paramFromServiceMsg);
         return;
@@ -344,7 +344,7 @@ public class QidianHandler
       catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "handleBlockBulkMsg ", paramToServiceMsg);
+          QLog.e(a, 2, "handleBlockBulkMsg ", paramToServiceMsg);
         }
       }
       return;
@@ -400,7 +400,7 @@ public class QidianHandler
         if (!QLog.isColorLevel()) {
           break label304;
         }
-        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramToServiceMsg = a;
         paramObject = new StringBuilder();
         paramObject.append("handleGetSigmsgBySigt ");
         paramObject.append(paramFromServiceMsg.msg_wpa_sigt_to_sigmsg_rsp.str_err_msg.get());
@@ -410,7 +410,7 @@ public class QidianHandler
       catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetSigmsgBySigt ", paramToServiceMsg);
+          QLog.d(a, 2, "handleGetSigmsgBySigt ", paramToServiceMsg);
         }
         notifyUI(1010, false, null);
         return;
@@ -446,14 +446,14 @@ public class QidianHandler
           if (!QLog.isColorLevel()) {
             return;
           }
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend errorCode = 0");
+          QLog.d(a, 2, "handleGetWebImAddFriend errorCode = 0");
           return;
         }
         paramToServiceMsg = paramToServiceMsg.msg_close_session_rsp.msg_ret.str_error_msg.get();
         if (!QLog.isColorLevel()) {
           return;
         }
-        paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+        paramFromServiceMsg = a;
         paramObject = new StringBuilder();
         paramObject.append("handleGetWebImAddFriend errorCode: ");
         paramObject.append(i);
@@ -468,11 +468,11 @@ public class QidianHandler
           return;
         }
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend ", paramToServiceMsg);
+      QLog.d(a, 2, "handleGetWebImAddFriend ", paramToServiceMsg);
     }
     else if (QLog.isColorLevel())
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetWebImAddFriend is Success = false");
+      QLog.d(a, 2, "handleGetWebImAddFriend is Success = false");
     }
   }
   
@@ -503,7 +503,7 @@ public class QidianHandler
           paramToServiceMsg = paramObject.str_error_msg.get();
           if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramToServiceMsg)))
           {
-            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = a;
             paramObject = new StringBuilder();
             paramObject.append("handleQidianGroupInfo error is ");
             paramObject.append(paramToServiceMsg);
@@ -516,7 +516,7 @@ public class QidianHandler
         {
           if (QLog.isColorLevel())
           {
-            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = a;
             paramObject = new StringBuilder();
             paramObject.append("handleQidianGroupInfo throw exception is ");
             paramObject.append(paramToServiceMsg.toString());
@@ -529,7 +529,7 @@ public class QidianHandler
       else
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianGroupInfo data is null");
+          QLog.d(a, 2, "handleQidianGroupInfo data is null");
         }
         notifyUI(1018, false, null);
       }
@@ -537,7 +537,7 @@ public class QidianHandler
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianGroupInfo res is fail");
+        QLog.d(a, 2, "handleQidianGroupInfo res is fail");
       }
       notifyUI(1018, false, null);
     }
@@ -549,7 +549,7 @@ public class QidianHandler
     ((StringBuilder)localObject1).append("QidianSsoProto.getUserDetailInfo");
     ((StringBuilder)localObject1).append(paramLong);
     ((StringBuilder)localObject1).toString();
-    localObject1 = a("", 4, String.valueOf(paramLong));
+    localObject1 = b("", 4, String.valueOf(paramLong));
     ((mobileqq_qidian.ReqBody)localObject1).msg_crm_common_head.uint32_ver_no.set(1);
     Object localObject2 = new mobileqq_qidian.GetUserDetailInfoReqBody();
     ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint32_req_type.set(2);
@@ -565,12 +565,12 @@ public class QidianHandler
   
   public void a(long paramLong1, long paramLong2)
   {
-    mobileqq_qidian.ReqBody localReqBody = a("", 1005, String.valueOf(paramLong2));
+    mobileqq_qidian.ReqBody localReqBody = b("", 1005, String.valueOf(paramLong2));
     Object localObject = new mobileqq_qidian.GetCustomerTransferInfoReqBody();
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint64_qq_uin.set(paramLong1);
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint64_kfext_uin.set(paramLong2);
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_mobile_client.set(1);
-    ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_ver_no.set(CrmUtils.a("8.7.0"));
+    ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_ver_no.set(CrmUtils.a("8.8.17"));
     localReqBody.msg_get_customer_transfer_info_req.set((MessageMicro)localObject);
     localReqBody.msg_get_customer_transfer_info_req.setHasFlag(true);
     localObject = new HashMap(1);
@@ -611,7 +611,7 @@ public class QidianHandler
                 String str = HexUtil.bytes2HexStr(paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigT_ext.get().toByteArray());
                 i = paramFromServiceMsg.msg_wpa_assign_kfext_rsp.uint32_aio_type.get();
                 if ((paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigmsg.has()) && (paramObject != null)) {
-                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().c(paramObject, paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigmsg.get().toByteArray());
+                  this.b.getMsgCache().c(paramObject, paramFromServiceMsg.msg_wpa_assign_kfext_rsp.bytes_sigmsg.get().toByteArray());
                 }
                 localHashMap.put("key_ext_uin", paramObject);
                 localHashMap.put("key_sigt", str);
@@ -633,7 +633,7 @@ public class QidianHandler
       catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleAssignExt ", paramToServiceMsg);
+          QLog.d(a, 2, "handleAssignExt ", paramToServiceMsg);
         }
         notifyUI(1004, false, localHashMap);
         return;
@@ -663,7 +663,7 @@ public class QidianHandler
     PkgTools.copyData(paramString, 14, localStringBuilder.toString().getBytes(), s);
     sendPbReq(makeOIDBPkg("OidbSvc.0x782", 1922, 0, paramString));
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "decodeQidianPrivateTroopUin");
+      QLog.d(a, 2, "decodeQidianPrivateTroopUin");
     }
   }
   
@@ -681,7 +681,7 @@ public class QidianHandler
       } else {
         paramString = new JSONObject(paramString);
       }
-      paramString.put("qq_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramString.put("qq_uin", this.b.getCurrentAccountUin());
       ((Oidb_0x7e7.ReqBody)localObject).json_string.set(ByteStringMicro.copyFromUtf8(paramString.toString()));
       long l;
       if (paramString.has("kfuin"))
@@ -698,7 +698,7 @@ public class QidianHandler
     catch (Exception paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "reportWPA json error  ", paramString);
+        QLog.d(a, 2, "reportWPA json error  ", paramString);
       }
     }
     paramString = new oidb_sso.OIDBSSOPkg();
@@ -712,9 +712,9 @@ public class QidianHandler
   
   public void a(String paramString, int paramInt, long paramLong)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
-    Object localObject1 = ((MessageCache)localObject2).d(paramString);
-    localObject2 = ((MessageCache)localObject2).e(paramString);
+    Object localObject2 = this.b.getMsgCache();
+    Object localObject1 = ((MessageCache)localObject2).i(paramString);
+    localObject2 = ((MessageCache)localObject2).j(paramString);
     int i;
     if ((localObject1 != null) && (localObject2 != null)) {
       i = 3;
@@ -726,12 +726,12 @@ public class QidianHandler
       i = 0;
     }
     int j;
-    if (((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramString)) {
+    if (((QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER)).e(paramString)) {
       j = 4;
     } else {
       j = 0;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject1 = this.b;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
     ((StringBuilder)localObject2).append(paramInt);
@@ -746,13 +746,13 @@ public class QidianHandler
     localObject4 = ((StringBuilder)localObject4).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+    localStringBuilder.append(NetworkUtil.getSystemNetwork(this.b.getApp()));
     ReportController.b((AppRuntime)localObject1, "dc00899", "Qidian", paramString, "0X8006DEC", "SigCheck", j, 2, (String)localObject2, (String)localObject3, (String)localObject4, localStringBuilder.toString());
   }
   
   public void a(String paramString1, int paramInt1, boolean paramBoolean, double paramDouble1, double paramDouble2, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5)
   {
-    mobileqq_qidian.ReqBody localReqBody = a(paramString2, 3, "");
+    mobileqq_qidian.ReqBody localReqBody = b(paramString2, 3, "");
     mobileqq_qidian.ClickReplyCmdActionReqBody localClickReplyCmdActionReqBody = new mobileqq_qidian.ClickReplyCmdActionReqBody();
     localClickReplyCmdActionReqBody.str_key.set(paramString1);
     localClickReplyCmdActionReqBody.uint32_type.set(paramInt1);
@@ -765,22 +765,22 @@ public class QidianHandler
     localClickReplyCmdActionReqBody.uint32_src_type.set(paramInt2);
     localClickReplyCmdActionReqBody.str_menu_title.set(paramString5);
     localClickReplyCmdActionReqBody.uint32_terminal_type.set(1001);
-    localClickReplyCmdActionReqBody.uint32_pubno.set(AppSetting.a());
+    localClickReplyCmdActionReqBody.uint32_pubno.set(AppSetting.d());
     localReqBody.msg_click_reply_cmd_action_req.set(localClickReplyCmdActionReqBody);
     localReqBody.msg_click_reply_cmd_action_req.setHasFlag(true);
     paramString1 = new HashMap(1);
     paramString1.put("master_uin", paramString2);
     a(localReqBody, "QidianSsoProto.clickReplyCmd", paramString1);
     if (paramInt1 == 1) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", paramString4, "0X800849E", "ClickCard", paramInt2, 1, paramString3, "1", null, null);
+      ReportController.b(this.b, "dc00899", "Qidian", paramString4, "0X800849E", "ClickCard", paramInt2, 1, paramString3, "1", null, null);
     }
   }
   
   public void a(String paramString, long paramLong)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
-    Object localObject1 = ((MessageCache)localObject2).d(paramString);
-    localObject2 = ((MessageCache)localObject2).e(paramString);
+    Object localObject2 = this.b.getMsgCache();
+    Object localObject1 = ((MessageCache)localObject2).i(paramString);
+    localObject2 = ((MessageCache)localObject2).j(paramString);
     int i;
     if ((localObject1 != null) && (localObject2 != null)) {
       i = 3;
@@ -792,12 +792,12 @@ public class QidianHandler
       i = 0;
     }
     int j;
-    if (((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramString)) {
+    if (((QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER)).e(paramString)) {
       j = 4;
     } else {
       j = 0;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject1 = this.b;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
     ((StringBuilder)localObject2).append(i);
@@ -808,16 +808,16 @@ public class QidianHandler
     localObject3 = ((StringBuilder)localObject3).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+    localStringBuilder.append(NetworkUtil.getSystemNetwork(this.b.getApp()));
     ReportController.b((AppRuntime)localObject1, "dc00899", "Qidian", paramString, "0X8006DEC", "SigCheck", j, 1, "", (String)localObject2, (String)localObject3, localStringBuilder.toString());
   }
   
   public void a(String paramString1, String paramString2)
   {
-    paramString2 = a(paramString2, 1003, null);
+    paramString2 = b(paramString2, 1003, null);
     mobileqq_qidian.CheckMpqqRefuseFlagReq localCheckMpqqRefuseFlagReq = new mobileqq_qidian.CheckMpqqRefuseFlagReq();
     localCheckMpqqRefuseFlagReq.uint64_mpqq_uin.set(Long.parseLong(paramString1));
-    localCheckMpqqRefuseFlagReq.uint64_qq_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    localCheckMpqqRefuseFlagReq.uint64_qq_uin.set(this.b.getLongAccountUin());
     paramString2.msg_check_mpqq_refuse_flag_req.set(localCheckMpqqRefuseFlagReq);
     paramString2.msg_check_mpqq_refuse_flag_req.setHasFlag(true);
     a(paramString2, "QidianSsoProto.getShieldStatus", null);
@@ -825,7 +825,7 @@ public class QidianHandler
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    paramString3 = a(paramString2, 1010, paramString3);
+    paramString3 = b(paramString2, 1010, paramString3);
     mobileqq_qidian.ClickEManReqBody localClickEManReqBody = new mobileqq_qidian.ClickEManReqBody();
     localClickEManReqBody.str_key.set(paramString1);
     paramString3.msg_click_eman_req.set(localClickEManReqBody);
@@ -865,7 +865,7 @@ public class QidianHandler
     {
       if (QLog.isColorLevel())
       {
-        paramString2 = jdField_a_of_type_JavaLangString;
+        paramString2 = a;
         paramString3 = new StringBuilder();
         paramString3.append("qidianUnifiedReport ");
         paramString3.append(paramString1.getMessage());
@@ -883,7 +883,7 @@ public class QidianHandler
       }
       try
       {
-        mobileqq_qidian.ReqBody localReqBody = a(paramString2, 1004, paramString1);
+        mobileqq_qidian.ReqBody localReqBody = b(paramString2, 1004, paramString1);
         mobileqq_qidian.NotRecvQdGroupMsgReq localNotRecvQdGroupMsgReq = new mobileqq_qidian.NotRecvQdGroupMsgReq();
         localNotRecvQdGroupMsgReq.uint64_extuin.set(Long.parseLong(paramString1));
         localNotRecvQdGroupMsgReq.uint64_kfuin.set(Long.parseLong(paramString2));
@@ -902,7 +902,7 @@ public class QidianHandler
       catch (Exception paramString1)
       {
         if (QLog.isColorLevel()) {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "blockQdBulkMsg ", paramString1);
+          QLog.e(a, 2, "blockQdBulkMsg ", paramString1);
         }
       }
     }
@@ -910,7 +910,7 @@ public class QidianHandler
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    paramString2 = a(paramString2, 1002, null);
+    paramString2 = b(paramString2, 1002, null);
     mobileqq_qidian.VerifyWpaUinAndKeyReq localVerifyWpaUinAndKeyReq = new mobileqq_qidian.VerifyWpaUinAndKeyReq();
     localVerifyWpaUinAndKeyReq.str_key.set(paramString3);
     localVerifyWpaUinAndKeyReq.uint64_dst_uin.set(Long.parseLong(paramString1));
@@ -921,7 +921,7 @@ public class QidianHandler
       localVerifyWpaUinAndKeyReq.str_rkey.set(paramString4);
     }
     localVerifyWpaUinAndKeyReq.uint32_terminal_type.set(2);
-    localVerifyWpaUinAndKeyReq.uint32_terminal_version.set(ApkUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+    localVerifyWpaUinAndKeyReq.uint32_terminal_version.set(ApkUtils.a(this.b.getApp()));
     paramString2.msg_verify_wpa_uin_and_key_req.set(localVerifyWpaUinAndKeyReq);
     paramString2.msg_verify_wpa_uin_and_key_req.setHasFlag(true);
     a(paramString2, "QidianSsoProto.verifyWpaAndKey", null);
@@ -941,7 +941,7 @@ public class QidianHandler
         if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
           paramString1.bytes_sigt.set(ByteStringMicro.copyFrom(arrayOfByte));
         }
-        paramString1.uint64_qquin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+        paramString1.uint64_qquin.set(Long.parseLong(this.b.getCurrentAccountUin()));
         paramString1.uint64_touin.set(Long.parseLong(paramString3));
         paramString1.uint32_assign_type.set(Integer.parseInt(paramString4));
         paramString1.uint64_assign_id.set(Long.parseLong(paramString5));
@@ -956,7 +956,7 @@ public class QidianHandler
       catch (Exception paramString1)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "corpUinWpaReport ", paramString1);
+          QLog.d(a, 2, "corpUinWpaReport ", paramString1);
         }
       }
     }
@@ -976,7 +976,7 @@ public class QidianHandler
     paramString1.bytes_sigT_kf.setHasFlag(true);
     paramString1.uint64_assign_id.set(Long.valueOf(paramString4).longValue());
     paramString1.uint64_assign_id.setHasFlag(true);
-    paramString1.uint64_customer_uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
+    paramString1.uint64_customer_uin.set(Long.valueOf(this.b.getCurrentAccountUin()).longValue());
     paramString1.uint64_customer_uin.setHasFlag(true);
     if (!TextUtils.isEmpty(paramString5))
     {
@@ -991,13 +991,13 @@ public class QidianHandler
     paramString1.extraData.putInt("ranKey", paramInt);
     paramString1.putWupBuffer(localReqBody.toByteArray());
     super.sendPbReq(paramString1);
-    paramString1 = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext())];
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Qidian", "", "qidian_wpa_assign", "qidian_wpa_assign", 0, 0, "", "", paramString1, "");
+    paramString1 = com.tencent.mobileqq.app.AppConstants.NET_TYPE_NAME[NetworkUtil.getSystemNetwork(this.b.getApp().getBaseContext())];
+    ReportController.b(this.b, "P_CliOper", "Qidian", "", "qidian_wpa_assign", "qidian_wpa_assign", 0, 0, "", "", paramString1, "");
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    paramString3 = a(String.valueOf(paramString3), 1012, paramString4);
+    paramString3 = b(String.valueOf(paramString3), 1012, paramString4);
     if (paramBoolean) {
       paramString3.msg_crm_common_head.uint64_kfaccount.set(Long.valueOf(paramString5).longValue());
     }
@@ -1036,7 +1036,7 @@ public class QidianHandler
       catch (Exception paramString1)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "getSigmsgBySigt ", paramString1);
+          QLog.d(a, 2, "getSigmsgBySigt ", paramString1);
         }
       }
     }
@@ -1044,7 +1044,7 @@ public class QidianHandler
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    mobileqq_qidian.ReqBody localReqBody = a(paramString1, 1011, paramString2);
+    mobileqq_qidian.ReqBody localReqBody = b(paramString1, 1011, paramString2);
     mobileqq_qidian.CloseSessionReqBody localCloseSessionReqBody = new mobileqq_qidian.CloseSessionReqBody();
     long l;
     if (paramBoolean)
@@ -1069,7 +1069,7 @@ public class QidianHandler
     }
     int i = (int)NetConnInfoCenter.getServerTime();
     localCloseSessionReqBody.uint32_close_session_time.set(i);
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    paramString1 = this.b.getCurrentAccountUin();
     localCloseSessionReqBody.uint64_cqq_uin.set(Long.valueOf(paramString1).longValue());
     localReqBody.msg_close_session_req.set(localCloseSessionReqBody);
     a(localReqBody, "QidianSsoProto.closeAIOSessionReport", null);
@@ -1080,7 +1080,7 @@ public class QidianHandler
     int i = paramMsgBody.uint32_sub_cmd.get();
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleQidianSCPushMsg, subcmd =  ");
       localStringBuilder.append(i);
@@ -1099,7 +1099,7 @@ public class QidianHandler
     }
     long l = paramMsgBody.msg_s2c_user_get_coupon_for_c_event_push.uint64_kfext.get();
     paramMsgBody = paramMsgBody.msg_s2c_user_get_coupon_for_c_event_push.str_tips_content.get();
-    AddMessageHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l), paramMsgBody, 0, false, false);
+    AddMessageHelper.a(this.b, String.valueOf(l), paramMsgBody, 0, false, false);
   }
   
   public void b(long paramLong)
@@ -1108,7 +1108,7 @@ public class QidianHandler
     ((StringBuilder)localObject1).append("QidianSsoProto.getUserDetailInfo");
     ((StringBuilder)localObject1).append(paramLong);
     ((StringBuilder)localObject1).toString();
-    localObject1 = a("", 4, String.valueOf(paramLong));
+    localObject1 = b("", 4, String.valueOf(paramLong));
     Object localObject2 = new mobileqq_qidian.GetUserDetailInfoReqBody();
     ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint32_req_type.set(3);
     ((mobileqq_qidian.GetUserDetailInfoReqBody)localObject2).uint32_mobile_client.set(1);
@@ -1134,7 +1134,7 @@ public class QidianHandler
         {
           if (QLog.isColorLevel())
           {
-            paramToServiceMsg = jdField_a_of_type_JavaLangString;
+            paramToServiceMsg = a;
             paramFromServiceMsg = new StringBuilder();
             paramFromServiceMsg.append("handleCloseAIOSessionReport errorCode: ");
             paramFromServiceMsg.append(i);
@@ -1146,7 +1146,7 @@ public class QidianHandler
           paramToServiceMsg = paramToServiceMsg.msg_close_session_rsp.msg_ret.str_error_msg.get();
           if (QLog.isColorLevel())
           {
-            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = a;
             paramObject = new StringBuilder();
             paramObject.append("handleCloseAIOSessionReport errorCode: ");
             paramObject.append(i);
@@ -1158,7 +1158,7 @@ public class QidianHandler
       }
       else if (QLog.isColorLevel())
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCloseAIOSessionReport no response");
+        QLog.d(a, 2, "handleCloseAIOSessionReport no response");
         return;
       }
     }
@@ -1167,7 +1167,7 @@ public class QidianHandler
       paramToServiceMsg.printStackTrace();
       if (QLog.isColorLevel())
       {
-        paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+        paramFromServiceMsg = a;
         paramObject = new StringBuilder();
         paramObject.append("handleCloseAIOSessionReport exception: ");
         paramObject.append(paramToServiceMsg.getMessage());
@@ -1178,7 +1178,7 @@ public class QidianHandler
   
   public void b(String paramString1, String paramString2)
   {
-    mobileqq_qidian.ReqBody localReqBody = a("", 1018, paramString2);
+    mobileqq_qidian.ReqBody localReqBody = b("", 1018, paramString2);
     mobileqq_qidian.GetQiDianGroupInfoReq localGetQiDianGroupInfoReq = new mobileqq_qidian.GetQiDianGroupInfoReq();
     localGetQiDianGroupInfoReq.uint32_groupcode.set(Integer.valueOf(paramString1).intValue());
     localGetQiDianGroupInfoReq.uint64_groupowner.set(Long.valueOf(paramString2).longValue());
@@ -1188,7 +1188,7 @@ public class QidianHandler
     paramString2.put("uin", paramString1);
     a(localReqBody, "QidianSsoProto.getQidianGroupInfo", paramString2);
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getQidianGroupInfoReq");
+      QLog.d(a, 2, "getQidianGroupInfoReq");
     }
   }
   
@@ -1196,18 +1196,18 @@ public class QidianHandler
   {
     if (!TextUtils.isEmpty(paramString5))
     {
-      paramString4 = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+      paramString4 = (TicketManager)this.b.getManager(2);
       if (paramString4 == null) {
         paramString4 = null;
       } else {
-        paramString4 = paramString4.getStweb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        paramString4 = paramString4.getStweb(this.b.getCurrentAccountUin());
       }
       if ((paramString4 != null) && (paramString4.length() != 0))
       {
-        paramString4 = String.format(paramString5, new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString4 });
+        paramString4 = String.format(paramString5, new Object[] { this.b.getCurrentAccountUin(), paramString4 });
         break label149;
       }
-      new QQToastNotifier(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(2131693334, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDimensionPixelSize(2131299168), 0, 1);
+      new QQToastNotifier(this.b.getApp()).notifyUser(2131890882, this.b.getApp().getResources().getDimensionPixelSize(2131299920), 0, 1);
     }
     else
     {
@@ -1220,7 +1220,7 @@ public class QidianHandler
     paramString5 = new StringBuilder();
     paramString5.append(paramString2);
     paramString5.append(paramString3);
-    paramString5 = new UniteGrayTipParam(paramString1, paramString1, paramString5.toString(), 0, -5020, 1245187, MessageCache.a());
+    paramString5 = new UniteGrayTipParam(paramString1, paramString1, paramString5.toString(), 0, -5020, 1245187, MessageCache.c());
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_action", 1);
     localBundle.putString("key_action_DATA", paramString4);
@@ -1234,15 +1234,15 @@ public class QidianHandler
     }
     paramString2 = new MessageForUniteGrayTip();
     paramString2.hasRead = 0;
-    paramString2.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString5);
-    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2);
-    paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getBaseContext();
+    paramString2.initGrayTipMsg(this.b, paramString5);
+    UniteGrayTipMsgUtil.a(this.b, paramString2);
+    paramString2 = this.b.getApplication().getBaseContext();
     paramString3 = new StringBuilder();
-    paramString3.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    paramString3.append(this.b.getCurrentAccountUin());
     paramString3.append("_customer_transfer_sharepreference");
     paramString2 = paramString2.getSharedPreferences(paramString3.toString(), 0).edit();
     paramString3 = new StringBuilder();
-    paramString3.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    paramString3.append(this.b.getCurrentAccountUin());
     paramString3.append("_");
     paramString3.append(paramString1);
     paramString2.putBoolean(paramString3.toString(), true);
@@ -1253,13 +1253,13 @@ public class QidianHandler
   {
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("getQidianMasterDetailReq uin: ");
       ((StringBuilder)localObject2).append(paramLong);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = a(String.valueOf(paramLong), 1009, "");
+    Object localObject1 = b(String.valueOf(paramLong), 1009, "");
     Object localObject2 = new mobileqq_qidian.GetCorpUinDetailInfoReqBody();
     ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject2).uint64_uin.set(paramLong);
     ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject2).uint32_req_type.set(0);
@@ -1285,7 +1285,7 @@ public class QidianHandler
           int i = paramFromServiceMsg.msg_click_reply_cmd_action_rsp.msg_ret.uint32_ret_code.get();
           if (QLog.isColorLevel())
           {
-            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = a;
             paramObject = new StringBuilder();
             paramObject.append("handleClickReplyCmd errorCode: ");
             paramObject.append(i);
@@ -1298,7 +1298,7 @@ public class QidianHandler
           return;
         }
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleClickReplyCmd no msg_click_reply_cmd_action_rsp");
+          QLog.d(a, 2, "handleClickReplyCmd no msg_click_reply_cmd_action_rsp");
         }
         super.notifyUI(1008, bool, null);
         return;
@@ -1308,7 +1308,7 @@ public class QidianHandler
         paramToServiceMsg.printStackTrace();
         if (QLog.isColorLevel())
         {
-          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = a;
           paramObject = new StringBuilder();
           paramObject.append("handleClickReplyCmd exception: ");
           paramObject.append(paramToServiceMsg.getMessage());
@@ -1320,7 +1320,7 @@ public class QidianHandler
     }
     if (QLog.isColorLevel())
     {
-      paramToServiceMsg = jdField_a_of_type_JavaLangString;
+      paramToServiceMsg = a;
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("handleClickReplyCmd isSuccess: ");
       paramFromServiceMsg.append(bool);
@@ -1333,13 +1333,13 @@ public class QidianHandler
   {
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("getQidianMasterSimpleInfo uin: ");
       ((StringBuilder)localObject2).append(paramLong);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = a(String.valueOf(paramLong), 1009, "");
+    Object localObject1 = b(String.valueOf(paramLong), 1009, "");
     Object localObject2 = new mobileqq_qidian.GetCorpUinDetailInfoReqBody();
     ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject2).uint64_uin.set(paramLong);
     ((mobileqq_qidian.GetCorpUinDetailInfoReqBody)localObject2).uint32_req_type.set(2);
@@ -1369,7 +1369,7 @@ public class QidianHandler
             if (paramFromServiceMsg.getChatFragment() == null) {
               return;
             }
-            ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFromServiceMsg.getChatFragment().a.a, paramToServiceMsg);
+            ChatActivityFacade.a(this.b, paramFromServiceMsg.getChatFragment().c.ah, paramToServiceMsg);
           }
         }
         else
@@ -1377,7 +1377,7 @@ public class QidianHandler
           paramToServiceMsg = paramToServiceMsg.msg_click_eman_rsp.msg_ret.str_error_msg.get();
           if (QLog.isColorLevel())
           {
-            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = a;
             paramObject = new StringBuilder();
             paramObject.append("handleEmanClickReport errorCode: ");
             paramObject.append(i);
@@ -1389,7 +1389,7 @@ public class QidianHandler
       }
       else if (QLog.isColorLevel())
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleEmanClickReport no response");
+        QLog.d(a, 2, "handleEmanClickReport no response");
         return;
       }
     }
@@ -1398,7 +1398,7 @@ public class QidianHandler
       paramToServiceMsg.printStackTrace();
       if (QLog.isColorLevel())
       {
-        paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+        paramFromServiceMsg = a;
         paramObject = new StringBuilder();
         paramObject.append("handleEmanClickReport exception: ");
         paramObject.append(paramToServiceMsg.getMessage());
@@ -1437,7 +1437,7 @@ public class QidianHandler
           }
           if (QLog.isColorLevel())
           {
-            paramToServiceMsg = jdField_a_of_type_JavaLangString;
+            paramToServiceMsg = a;
             paramFromServiceMsg = new StringBuilder();
             paramFromServiceMsg.append("handleVerifyWpaAndKey uint32_ret_code: ");
             paramFromServiceMsg.append(bool1);
@@ -1447,7 +1447,7 @@ public class QidianHandler
           return;
         }
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleVerifyWpaAndKey no msg_verify_wpa_uin_and_key_rsp");
+          QLog.d(a, 2, "handleVerifyWpaAndKey no msg_verify_wpa_uin_and_key_rsp");
         }
         super.notifyUI(1002, bool2, null);
         return;
@@ -1457,7 +1457,7 @@ public class QidianHandler
         paramToServiceMsg.printStackTrace();
         if (QLog.isColorLevel())
         {
-          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = a;
           paramObject = new StringBuilder();
           paramObject.append("handleVerifyWpaAndKey exception: ");
           paramObject.append(paramToServiceMsg.getMessage());
@@ -1468,7 +1468,7 @@ public class QidianHandler
       }
       if (QLog.isColorLevel())
       {
-        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramToServiceMsg = a;
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("handleVerifyWpaAndKey isSuccess: ");
         paramFromServiceMsg.append(bool2);
@@ -1514,7 +1514,7 @@ public class QidianHandler
           }
           if (QLog.isColorLevel())
           {
-            paramToServiceMsg = jdField_a_of_type_JavaLangString;
+            paramToServiceMsg = a;
             paramFromServiceMsg = new StringBuilder();
             paramFromServiceMsg.append("handleGetShieldStatus uint32_ret_code: ");
             paramFromServiceMsg.append(bool1);
@@ -1524,7 +1524,7 @@ public class QidianHandler
           return;
         }
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetShieldStatus no msg_verify_wpa_uin_and_key_rsp");
+          QLog.d(a, 2, "handleGetShieldStatus no msg_verify_wpa_uin_and_key_rsp");
         }
         super.notifyUI(1003, bool3, null);
         return;
@@ -1534,7 +1534,7 @@ public class QidianHandler
         paramToServiceMsg.printStackTrace();
         if (QLog.isColorLevel())
         {
-          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = a;
           paramObject = new StringBuilder();
           paramObject.append("handleGetShieldStatus exception: ");
           paramObject.append(paramToServiceMsg.getMessage());
@@ -1545,7 +1545,7 @@ public class QidianHandler
       }
       if (QLog.isColorLevel())
       {
-        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramToServiceMsg = a;
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("handleGetShieldStatus isSuccess: ");
         paramFromServiceMsg.append(bool3);
@@ -1596,7 +1596,7 @@ public class QidianHandler
         paramToServiceMsg.printStackTrace();
         if (QLog.isColorLevel())
         {
-          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = a;
           paramObject = new StringBuilder();
           paramObject.append("handleGetUserDetailInfo exception: ");
           paramObject.append(paramToServiceMsg.getMessage());
@@ -1628,7 +1628,7 @@ public class QidianHandler
       if (TextUtils.isEmpty(paramToServiceMsg)) {
         break label786;
       }
-      ((QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(new BmqqAccountType(String.valueOf(paramToServiceMsg), 1));
+      ((QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(new BmqqAccountType(String.valueOf(paramToServiceMsg), 1));
       break label786;
       bool1 = ((mobileqq_qidian.GetUserDetailInfoRspBody)localObject2).msg_internal_info.has();
       if (!bool1) {
@@ -1656,21 +1656,21 @@ public class QidianHandler
     {
       if (i == 3)
       {
-        QidianManager localQidianManager = (QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
+        QidianManager localQidianManager = (QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER);
         localObject2 = localQidianManager.a(paramToServiceMsg);
         if (localObject2 != null) {
           ((QidianExternalInfo)localObject2).update(paramFromServiceMsg);
         }
-        QidianInternalInfo localQidianInternalInfo = localQidianManager.a(paramToServiceMsg);
+        QidianInternalInfo localQidianInternalInfo = localQidianManager.b(paramToServiceMsg);
         if (localQidianInternalInfo != null) {
           localQidianInternalInfo.update(paramObject);
         }
         ((QidianCorpInfo)localObject1).corpUin = paramFromServiceMsg.masterUin;
-        QidianCorpInfo localQidianCorpInfo = localQidianManager.a(((QidianCorpInfo)localObject1).corpUin);
+        QidianCorpInfo localQidianCorpInfo = localQidianManager.d(((QidianCorpInfo)localObject1).corpUin);
         if (localQidianCorpInfo != null) {
           localQidianCorpInfo.update((QidianCorpInfo)localObject1);
         }
-        paramToServiceMsg = localQidianManager.a(paramToServiceMsg);
+        paramToServiceMsg = localQidianManager.c(paramToServiceMsg);
         if ((localObject2 != null) && (localQidianInternalInfo != null) && (localQidianCorpInfo != null) && (paramToServiceMsg != null))
         {
           localHashMap.put("external", localObject2);
@@ -1688,7 +1688,7 @@ public class QidianHandler
         return;
         if (QLog.isColorLevel())
         {
-          paramToServiceMsg = jdField_a_of_type_JavaLangString;
+          paramToServiceMsg = a;
           paramFromServiceMsg = new StringBuilder();
           paramFromServiceMsg.append("handleGetUserDetailInfo uint32_ret_code: ");
           paramFromServiceMsg.append(bool1);
@@ -1697,13 +1697,13 @@ public class QidianHandler
         super.notifyUI(1001, bool2, null);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetUserDetailInfo no msg_subcmd_get_user_detail_info_rsp_body");
+          QLog.d(a, 2, "handleGetUserDetailInfo no msg_subcmd_get_user_detail_info_rsp_body");
         }
         super.notifyUI(1001, bool2, null);
         return;
         if (QLog.isColorLevel())
         {
-          paramToServiceMsg = jdField_a_of_type_JavaLangString;
+          paramToServiceMsg = a;
           paramFromServiceMsg = new StringBuilder();
           paramFromServiceMsg.append("handleGetUserDetailInfo isSuccess: ");
           paramFromServiceMsg.append(bool2);
@@ -1762,7 +1762,7 @@ public class QidianHandler
       catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleReportWPA ", paramToServiceMsg);
+          QLog.d(a, 2, "handleReportWPA ", paramToServiceMsg);
         }
       }
       return;
@@ -1794,7 +1794,7 @@ public class QidianHandler
       catch (Exception paramToServiceMsg)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetCustomerTransferInfo ", paramToServiceMsg);
+          QLog.d(a, 2, "handleGetCustomerTransferInfo ", paramToServiceMsg);
         }
       }
     }
@@ -1803,7 +1803,7 @@ public class QidianHandler
   public void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig");
+      QLog.e(a, 2, "handleGetNavigationConfig");
     }
     if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
@@ -1817,11 +1817,11 @@ public class QidianHandler
           if (paramToServiceMsg.msg_ret.uint32_ret_code.get() == 0)
           {
             paramFromServiceMsg = new QidianHandler.NavigationMenuConfig();
-            paramFromServiceMsg.jdField_a_of_type_Int = paramToServiceMsg.int32_is_show.get();
-            paramFromServiceMsg.jdField_b_of_type_Int = paramToServiceMsg.uint32_ver_no.get();
-            paramFromServiceMsg.jdField_a_of_type_Long = paramToServiceMsg.uint64_puin.get();
-            paramFromServiceMsg.jdField_b_of_type_Long = paramToServiceMsg.uint64_kf_uin.get();
-            paramFromServiceMsg.c = paramToServiceMsg.uint32_is_show_graytip.get();
+            paramFromServiceMsg.a = paramToServiceMsg.int32_is_show.get();
+            paramFromServiceMsg.b = paramToServiceMsg.uint32_ver_no.get();
+            paramFromServiceMsg.c = paramToServiceMsg.uint64_puin.get();
+            paramFromServiceMsg.d = paramToServiceMsg.uint64_kf_uin.get();
+            paramFromServiceMsg.e = paramToServiceMsg.uint32_is_show_graytip.get();
             notifyUI(1006, true, paramFromServiceMsg);
             return;
           }
@@ -1829,14 +1829,14 @@ public class QidianHandler
           if (!QLog.isColorLevel()) {
             return;
           }
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig error return");
+          QLog.d(a, 2, "handleGetNavigationConfig error return");
           return;
         }
         notifyUI(1006, false, null);
         if (!QLog.isColorLevel()) {
           return;
         }
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig without body");
+        QLog.d(a, 2, "handleGetNavigationConfig without body");
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -1846,13 +1846,13 @@ public class QidianHandler
           return;
         }
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig ", paramToServiceMsg);
+      QLog.d(a, 2, "handleGetNavigationConfig ", paramToServiceMsg);
     }
     else
     {
       notifyUI(1006, false, null);
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetNavigationConfig-false");
+        QLog.d(a, 2, "handleGetNavigationConfig-false");
       }
     }
   }
@@ -1893,7 +1893,7 @@ public class QidianHandler
         paramToServiceMsg.printStackTrace();
         if (QLog.isColorLevel())
         {
-          paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+          paramFromServiceMsg = a;
           paramObject = new StringBuilder();
           paramObject.append("handleGetQidianMasterDetailInfo exception: ");
           paramObject.append(paramToServiceMsg.getMessage());
@@ -1920,7 +1920,7 @@ public class QidianHandler
       localObject = new QidianExternalInfo();
       paramToServiceMsg = (mobileqq_qidian.ExternalInfo)localGetCorpUinDetailInfoRspBody.msg_external_info.get();
       ((QidianExternalInfo)localObject).from(paramToServiceMsg);
-      localQidianManager = (QidianManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER);
+      localQidianManager = (QidianManager)this.b.getManager(QQManagerFactory.QIDIAN_MANAGER);
       localQidianExternalInfo = localQidianManager.a(paramFromServiceMsg);
       if (localQidianExternalInfo != null)
       {
@@ -1975,7 +1975,7 @@ public class QidianHandler
       return;
       if (QLog.isColorLevel())
       {
-        paramToServiceMsg = jdField_a_of_type_JavaLangString;
+        paramToServiceMsg = a;
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("handleGetQidianMasterDetailInfo isSuccess: ");
         paramFromServiceMsg.append(bool);
@@ -2033,7 +2033,7 @@ public class QidianHandler
               notifyUI(1019, true, paramObject);
               return;
             }
-            paramToServiceMsg = jdField_a_of_type_JavaLangString;
+            paramToServiceMsg = a;
             paramFromServiceMsg = new StringBuilder();
             paramFromServiceMsg.append("handleQidianPrivateTroopUin result is ");
             paramFromServiceMsg.append(i);
@@ -2042,7 +2042,7 @@ public class QidianHandler
             return;
           }
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin pkg is null");
+            QLog.d(a, 2, "handleQidianPrivateTroopUin pkg is null");
           }
           notifyUI(1019, false, null);
           return;
@@ -2051,7 +2051,7 @@ public class QidianHandler
         {
           if (QLog.isColorLevel())
           {
-            paramFromServiceMsg = jdField_a_of_type_JavaLangString;
+            paramFromServiceMsg = a;
             paramObject = new StringBuilder();
             paramObject.append("handleQidianPrivateTroopUin throw exception is ");
             paramObject.append(paramToServiceMsg.toString());
@@ -2064,7 +2064,7 @@ public class QidianHandler
       else
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin data is null");
+          QLog.d(a, 2, "handleQidianPrivateTroopUin data is null");
         }
         notifyUI(1019, false, null);
       }
@@ -2072,7 +2072,7 @@ public class QidianHandler
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin res is fail");
+        QLog.d(a, 2, "handleQidianPrivateTroopUin res is fail");
       }
       notifyUI(1019, false, null);
     }
@@ -2088,7 +2088,7 @@ public class QidianHandler
     String str1 = paramFromServiceMsg.getServiceCmd();
     if (QLog.isColorLevel())
     {
-      String str2 = jdField_a_of_type_JavaLangString;
+      String str2 = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReceive cmd: ");
       localStringBuilder.append(str1);
@@ -2181,7 +2181,7 @@ public class QidianHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianHandler
  * JD-Core Version:    0.7.0.1
  */

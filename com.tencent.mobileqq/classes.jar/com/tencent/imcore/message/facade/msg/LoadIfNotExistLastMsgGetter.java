@@ -20,7 +20,7 @@ class LoadIfNotExistLastMsgGetter
       return null;
     }
     String str1 = UinTypeUtil.a(paramString, paramInt1);
-    Message localMessage = (Message)paramQQMessageFacade.jdField_a_of_type_JavaUtilMap.get(str1);
+    Message localMessage = (Message)paramQQMessageFacade.a.get(str1);
     Object localObject = localMessage;
     if (localMessage == null)
     {
@@ -34,7 +34,7 @@ class LoadIfNotExistLastMsgGetter
           paramQQAppInterface = new Message();
           paramQQAppInterface.frienduin = paramString;
           paramQQAppInterface.istroop = paramInt1;
-          paramQQMessageFacade.jdField_a_of_type_JavaUtilMap.put(str1, paramQQAppInterface);
+          paramQQMessageFacade.a.put(str1, paramQQAppInterface);
           paramQQMessageFacade = paramQQAppInterface;
         }
         else
@@ -44,20 +44,20 @@ class LoadIfNotExistLastMsgGetter
         }
       }
       else {
-        paramQQMessageFacade = paramQQMessageFacade.jdField_a_of_type_ComTencentImcoreMessageFacadeQQMessageFacadeRefresher.a(paramString, paramInt1, (EntityManager)localObject);
+        paramQQMessageFacade = paramQQMessageFacade.m.a(paramString, paramInt1, (EntityManager)localObject);
       }
       ((EntityManager)localObject).close();
       localObject = paramQQMessageFacade;
     }
-    if ((localObject != null) && (UinTypeUtil.a(((Message)localObject).frienduin, ((Message)localObject).istroop))) {
-      ((Message)localObject).istroop = UinTypeUtil.a(((Message)localObject).istroop);
+    if ((localObject != null) && (UinTypeUtil.c(((Message)localObject).frienduin, ((Message)localObject).istroop))) {
+      ((Message)localObject).istroop = UinTypeUtil.e(((Message)localObject).istroop);
     }
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.msg.LoadIfNotExistLastMsgGetter
  * JD-Core Version:    0.7.0.1
  */

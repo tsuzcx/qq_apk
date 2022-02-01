@@ -19,16 +19,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class MsgBackupUtil
 {
-  public static AtomicLong a;
   public static boolean a = true;
   public static boolean b = true;
   public static boolean c = true;
   public static boolean d = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(1L);
-  }
+  public static AtomicLong e = new AtomicLong(1L);
   
   public static int a(int paramInt)
   {
@@ -64,8 +59,8 @@ public class MsgBackupUtil
   
   public static long a()
   {
-    long l = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(1L + l);
+    long l = e.get();
+    e.set(1L + l);
     return l;
   }
   
@@ -214,20 +209,15 @@ public class MsgBackupUtil
   
   public static String a(MsgBackupSessionRequest paramMsgBackupSessionRequest)
   {
-    String str = String.format("%s_%d", new Object[] { paramMsgBackupSessionRequest.jdField_a_of_type_JavaLangString, Integer.valueOf(b(paramMsgBackupSessionRequest.jdField_a_of_type_Int)) });
-    if (!TextUtils.isEmpty(paramMsgBackupSessionRequest.b)) {
-      str = String.format("%s_%d_%s", new Object[] { paramMsgBackupSessionRequest.jdField_a_of_type_JavaLangString, Integer.valueOf(b(paramMsgBackupSessionRequest.jdField_a_of_type_Int)), paramMsgBackupSessionRequest.b });
+    String str = String.format("%s_%d", new Object[] { paramMsgBackupSessionRequest.a, Integer.valueOf(b(paramMsgBackupSessionRequest.b)) });
+    if (!TextUtils.isEmpty(paramMsgBackupSessionRequest.c)) {
+      str = String.format("%s_%d_%s", new Object[] { paramMsgBackupSessionRequest.a, Integer.valueOf(b(paramMsgBackupSessionRequest.b)), paramMsgBackupSessionRequest.c });
     }
     paramMsgBackupSessionRequest = new StringBuilder();
     paramMsgBackupSessionRequest.append(MsgBackupConstant.c);
     paramMsgBackupSessionRequest.append(str);
     paramMsgBackupSessionRequest.append(".db");
     return paramMsgBackupSessionRequest.toString();
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
   }
   
   public static String a(String paramString, int paramInt)
@@ -307,7 +297,7 @@ public class MsgBackupUtil
           str1 = str2;
           if (paramString1.length == 2)
           {
-            paramString2 = (String)a(MsgBackupJniProxy.decryptFromString(paramString1[1], paramString3)).get("filepath");
+            paramString2 = (String)c(MsgBackupJniProxy.decryptFromString(paramString1[1], paramString3)).get("filepath");
             if (TextUtils.isEmpty(paramString2)) {
               return "";
             }
@@ -315,43 +305,13 @@ public class MsgBackupUtil
             if (c) {
               paramString1 = Uri.decode(paramString2);
             }
-            str1 = a(paramString1);
+            str1 = b(paramString1);
             a("decrptUrlPathParams filepath = %s", str1, new Object[0]);
           }
         }
       }
     }
     return str1;
-  }
-  
-  public static Map<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = paramString.split("\\?");
-      if (paramString.length > 1)
-      {
-        paramString = paramString[1].split("&");
-        int j = paramString.length;
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject = paramString[i];
-          int k = localObject.indexOf("=");
-          if (k != -1) {
-            localHashMap.put(localObject.substring(0, k), localObject.substring(k + 1));
-          }
-          i += 1;
-        }
-      }
-    }
-    return localHashMap;
-  }
-  
-  public static void a()
-  {
-    FileUtil.c(MsgBackupConstant.jdField_a_of_type_JavaLangString);
   }
   
   public static void a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
@@ -371,37 +331,37 @@ public class MsgBackupUtil
     if ((b) && (paramMsgBackupMsgEntity != null))
     {
       if (!TextUtils.isEmpty(paramMsgBackupMsgEntity.chatUin)) {
-        paramMsgBackupMsgEntity.chatUin = MsgBackupJniProxy.decryptFromString(paramMsgBackupMsgEntity.chatUin, MsgBackupManager.c);
+        paramMsgBackupMsgEntity.chatUin = MsgBackupJniProxy.decryptFromString(paramMsgBackupMsgEntity.chatUin, MsgBackupManager.d);
       }
       if (paramMsgBackupMsgEntity.extraData != null) {
-        paramMsgBackupMsgEntity.extraData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupMsgEntity.extraData, MsgBackupManager.c);
+        paramMsgBackupMsgEntity.extraData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupMsgEntity.extraData, MsgBackupManager.d);
       }
       if (paramMsgBackupMsgEntity.extensionData != null) {
-        paramMsgBackupMsgEntity.extensionData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupMsgEntity.extensionData, MsgBackupManager.c);
+        paramMsgBackupMsgEntity.extensionData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupMsgEntity.extensionData, MsgBackupManager.d);
       }
     }
   }
   
   public static void a(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    if ((b) && (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.extraData != null) && (MsgBackupManager.b != null)) {
-      paramMsgBackupResEntity.extraData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupResEntity.extraData, MsgBackupManager.b);
+    if ((b) && (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.extraData != null) && (MsgBackupManager.c != null)) {
+      paramMsgBackupResEntity.extraData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupResEntity.extraData, MsgBackupManager.c);
     }
   }
   
   public static void a(String paramString, MsgBackupSessionRequest paramMsgBackupSessionRequest)
   {
     paramString = paramString.substring(0, paramString.indexOf(".")).split("_");
-    paramMsgBackupSessionRequest.jdField_a_of_type_JavaLangString = paramString[0];
-    paramMsgBackupSessionRequest.jdField_a_of_type_Int = c(Integer.parseInt(paramString[1]));
+    paramMsgBackupSessionRequest.a = paramString[0];
+    paramMsgBackupSessionRequest.b = c(Integer.parseInt(paramString[1]));
     if (paramString.length > 2) {
-      paramMsgBackupSessionRequest.b = paramString[2];
+      paramMsgBackupSessionRequest.c = paramString[2];
     }
   }
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       return;
     }
     String str = paramString1;
@@ -415,46 +375,12 @@ public class MsgBackupUtil
   
   public static void a(String paramString, Object... paramVarArgs)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       return;
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("MsgBackup", 4, String.format(paramString, paramVarArgs));
     }
-  }
-  
-  public static boolean a()
-  {
-    String str = MsgBackupConstant.c;
-    Object localObject = new File(str);
-    boolean bool1 = ((File)localObject).exists();
-    boolean bool2 = bool1;
-    if (!bool1) {
-      bool2 = ((File)localObject).mkdirs();
-    }
-    if (bool2)
-    {
-      File localFile = new File(MsgBackupConstant.b);
-      boolean bool3 = localFile.exists();
-      localObject = localFile;
-      bool1 = bool3;
-      if (!bool3)
-      {
-        bool1 = localFile.mkdirs();
-        localObject = localFile;
-      }
-    }
-    else
-    {
-      bool1 = false;
-    }
-    a("Manager.init.file mkdirs result = %b,dbDirExist = %b,filePath = %s,multimsgDirExist = %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(((File)localObject).exists()), str, Boolean.valueOf(bool1) });
-    return bool2;
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong <= 1048576L;
   }
   
   public static int b(int paramInt)
@@ -515,10 +441,7 @@ public class MsgBackupUtil
   
   public static String b(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(MsgBackupConstant.b);
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
+    return paramString;
   }
   
   public static String b(String paramString, int paramInt)
@@ -588,24 +511,24 @@ public class MsgBackupUtil
   
   public static void b(MsgBackupMsgEntity paramMsgBackupMsgEntity)
   {
-    if ((b) && (paramMsgBackupMsgEntity != null) && (MsgBackupManager.b != null))
+    if ((b) && (paramMsgBackupMsgEntity != null) && (MsgBackupManager.c != null))
     {
       if (!TextUtils.isEmpty(paramMsgBackupMsgEntity.chatUin)) {
-        paramMsgBackupMsgEntity.chatUin = MsgBackupJniProxy.encryptFromString(paramMsgBackupMsgEntity.chatUin, MsgBackupManager.b);
+        paramMsgBackupMsgEntity.chatUin = MsgBackupJniProxy.encryptFromString(paramMsgBackupMsgEntity.chatUin, MsgBackupManager.c);
       }
       if (paramMsgBackupMsgEntity.extraData != null) {
-        paramMsgBackupMsgEntity.extraData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupMsgEntity.extraData, MsgBackupManager.b);
+        paramMsgBackupMsgEntity.extraData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupMsgEntity.extraData, MsgBackupManager.c);
       }
       if (paramMsgBackupMsgEntity.extensionData != null) {
-        paramMsgBackupMsgEntity.extensionData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupMsgEntity.extensionData, MsgBackupManager.b);
+        paramMsgBackupMsgEntity.extensionData = MsgBackupJniProxy.encryptFromByteArray(paramMsgBackupMsgEntity.extensionData, MsgBackupManager.c);
       }
     }
   }
   
   public static void b(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    if ((b) && (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.extraData != null) && (MsgBackupManager.c != null)) {
-      paramMsgBackupResEntity.extraData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupResEntity.extraData, MsgBackupManager.c);
+    if ((b) && (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.extraData != null) && (MsgBackupManager.d != null)) {
+      paramMsgBackupResEntity.extraData = MsgBackupJniProxy.decryptFromByteArray(paramMsgBackupResEntity.extraData, MsgBackupManager.d);
     }
   }
   
@@ -623,6 +546,40 @@ public class MsgBackupUtil
     }
   }
   
+  public static boolean b()
+  {
+    String str = MsgBackupConstant.c;
+    Object localObject = new File(str);
+    boolean bool1 = ((File)localObject).exists();
+    boolean bool2 = bool1;
+    if (!bool1) {
+      bool2 = ((File)localObject).mkdirs();
+    }
+    if (bool2)
+    {
+      File localFile = new File(MsgBackupConstant.b);
+      boolean bool3 = localFile.exists();
+      localObject = localFile;
+      bool1 = bool3;
+      if (!bool3)
+      {
+        bool1 = localFile.mkdirs();
+        localObject = localFile;
+      }
+    }
+    else
+    {
+      bool1 = false;
+    }
+    a("Manager.init.file mkdirs result = %b,dbDirExist = %b,filePath = %s,multimsgDirExist = %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(((File)localObject).exists()), str, Boolean.valueOf(bool1) });
+    return bool2;
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    return paramLong <= 1048576L;
+  }
+  
   public static int c(int paramInt)
   {
     if (paramInt == 1) {
@@ -634,7 +591,45 @@ public class MsgBackupUtil
     return 0;
   }
   
-  public static String c(String paramString)
+  public static Map<String, String> c(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("\\?");
+      if (paramString.length > 1)
+      {
+        paramString = paramString[1].split("&");
+        int j = paramString.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject = paramString[i];
+          int k = localObject.indexOf("=");
+          if (k != -1) {
+            localHashMap.put(localObject.substring(0, k), localObject.substring(k + 1));
+          }
+          i += 1;
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  public static void c()
+  {
+    FileUtil.e(MsgBackupConstant.a);
+  }
+  
+  public static String d(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MsgBackupConstant.b);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public static String e(String paramString)
   {
     String str = paramString;
     if (c) {
@@ -645,7 +640,7 @@ public class MsgBackupUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.util.MsgBackupUtil
  * JD-Core Version:    0.7.0.1
  */

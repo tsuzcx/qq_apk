@@ -12,10 +12,10 @@ import android.widget.RelativeLayout;
 public class QQWalletTransferBubbleView
   extends RelativeLayout
 {
-  int jdField_a_of_type_Int;
-  LightingColorFilter jdField_a_of_type_AndroidGraphicsLightingColorFilter;
-  boolean jdField_a_of_type_Boolean;
-  int b = 255;
+  int a;
+  boolean b;
+  int c = 255;
+  LightingColorFilter d;
   
   public QQWalletTransferBubbleView(Context paramContext)
   {
@@ -38,14 +38,14 @@ public class QQWalletTransferBubbleView
   public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsLightingColorFilter == null) {
+    if (this.d == null) {
       return;
     }
-    Drawable localDrawable = getResources().getDrawable(this.jdField_a_of_type_Int);
+    Drawable localDrawable = getResources().getDrawable(this.a);
     localDrawable.setBounds(0, 0, getWidth(), getHeight());
-    localDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsLightingColorFilter);
-    localDrawable.setAlpha(this.b);
-    if (this.jdField_a_of_type_Boolean)
+    localDrawable.setColorFilter(this.d);
+    localDrawable.setAlpha(this.c);
+    if (this.b)
     {
       localDrawable.draw(paramCanvas);
       return;
@@ -58,23 +58,23 @@ public class QQWalletTransferBubbleView
   
   public void setBubbleBackground(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), paramInt2);
-    this.b = 255;
+    this.a = paramInt1;
+    this.b = paramBoolean;
+    this.d = new LightingColorFilter(Color.argb(255, 0, 0, 0), paramInt2);
+    this.c = 255;
   }
   
   public void setBubbleNightBackground(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), paramInt2);
-    this.b = 178;
+    this.a = paramInt1;
+    this.b = paramBoolean;
+    this.d = new LightingColorFilter(Color.argb(255, 0, 0, 0), paramInt2);
+    this.c = 178;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.widget.QQWalletTransferBubbleView
  * JD-Core Version:    0.7.0.1
  */

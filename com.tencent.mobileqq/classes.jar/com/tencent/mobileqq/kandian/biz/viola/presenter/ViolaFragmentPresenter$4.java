@@ -11,13 +11,13 @@ class ViolaFragmentPresenter$4
   
   public void onClick(View paramView)
   {
-    this.a.a.a();
-    this.a.h();
+    this.a.b.a();
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.presenter.ViolaFragmentPresenter.4
  * JD-Core Version:    0.7.0.1
  */

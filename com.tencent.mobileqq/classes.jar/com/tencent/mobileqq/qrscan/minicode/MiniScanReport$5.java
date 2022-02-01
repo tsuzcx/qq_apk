@@ -33,19 +33,19 @@ final class MiniScanReport$5
       }
       localHashMap.put("report_key_aio_detect_suc", str1);
       localHashMap.put("report_key_qq_version", "0");
-      localHashMap.put("report_key_qq_subversion", "5295");
+      localHashMap.put("report_key_qq_subversion", "5770");
       MiniScanReport.a(localHashMap);
       StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance("", "report_tag_aio_minicode_result", true, 0L, 0L, localHashMap, "");
       if (QLog.isColorLevel()) {
         QLog.i("MiniRecog.MiniScanReport", 2, String.format("onAIOMiniCodeResultReport [decodeSuc,detectSuc]=[%b,%b]", new Object[] { Boolean.valueOf(this.a), Boolean.valueOf(this.b) }));
       }
-      MiniScanReport.a("report_tag_aio_minicode_result", l2);
+      MiniScanReport.b("report_tag_aio_minicode_result", l2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniScanReport.5
  * JD-Core Version:    0.7.0.1
  */

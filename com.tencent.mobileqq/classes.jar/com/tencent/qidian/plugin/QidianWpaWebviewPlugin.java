@@ -73,7 +73,7 @@ public class QidianWpaWebviewPlugin
   
   protected void onCreate()
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if (localActivity != null)
     {
       IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qidian.openactionsheet");
@@ -85,7 +85,7 @@ public class QidianWpaWebviewPlugin
   protected void onDestroy()
   {
     super.onDestroy();
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if (localActivity != null) {
       localActivity.unregisterReceiver(this.a);
     }
@@ -93,7 +93,7 @@ public class QidianWpaWebviewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.plugin.QidianWpaWebviewPlugin
  * JD-Core Version:    0.7.0.1
  */

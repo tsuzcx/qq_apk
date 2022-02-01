@@ -28,7 +28,7 @@ class QidianProfileCardActivity$21
         if (paramHashMap.get("external") != null)
         {
           QidianExternalInfo localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
-          if (!this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin.equals(localQidianExternalInfo.uin))
+          if (!this.a.e.allInOne.uin.equals(localQidianExternalInfo.uin))
           {
             if (QLog.isColorLevel()) {
               QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not current uin");
@@ -36,9 +36,9 @@ class QidianProfileCardActivity$21
             return;
           }
           i = j;
-          if (!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo))
+          if (!localQidianExternalInfo.equals(this.a.g))
           {
-            this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
+            this.a.g = localQidianExternalInfo;
             i = 1;
           }
         }
@@ -51,7 +51,7 @@ class QidianProfileCardActivity$21
         {
           paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
           j = i;
-          if (!paramHashMap.equals(QidianProfileCardActivity.a(this.a)))
+          if (!paramHashMap.equals(QidianProfileCardActivity.g(this.a)))
           {
             QidianProfileCardActivity.a(this.a, paramHashMap);
             j = 1;
@@ -61,7 +61,7 @@ class QidianProfileCardActivity$21
       if (j != 0)
       {
         this.a.c(6);
-        this.a.b();
+        this.a.c();
         return;
       }
       if (QLog.isColorLevel()) {
@@ -83,10 +83,10 @@ class QidianProfileCardActivity$21
       QidianExternalInfo localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
       QidianCorpInfo localQidianCorpInfo = (QidianCorpInfo)paramHashMap.get("corp");
       paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin.equals(localQidianExternalInfo.uin))
+      if (this.a.e.allInOne.uin.equals(localQidianExternalInfo.uin))
       {
         int i;
-        if ((localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo)) && (localQidianCorpInfo.equals(QidianProfileCardActivity.a(this.a))) && (paramHashMap.equals(QidianProfileCardActivity.a(this.a)))) {
+        if ((localQidianExternalInfo.equals(this.a.g)) && (localQidianCorpInfo.equals(QidianProfileCardActivity.f(this.a))) && (paramHashMap.equals(QidianProfileCardActivity.g(this.a)))) {
           i = 0;
         } else {
           i = 1;
@@ -94,11 +94,11 @@ class QidianProfileCardActivity$21
         if (i != 0)
         {
           QidianProfileCardActivity localQidianProfileCardActivity = this.a;
-          localQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
+          localQidianProfileCardActivity.g = localQidianExternalInfo;
           QidianProfileCardActivity.a(localQidianProfileCardActivity, localQidianCorpInfo);
           QidianProfileCardActivity.a(this.a, paramHashMap);
           this.a.c(1);
-          this.a.b();
+          this.a.c();
           return;
         }
         if (QLog.isColorLevel()) {
@@ -118,7 +118,7 @@ class QidianProfileCardActivity$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.21
  * JD-Core Version:    0.7.0.1
  */

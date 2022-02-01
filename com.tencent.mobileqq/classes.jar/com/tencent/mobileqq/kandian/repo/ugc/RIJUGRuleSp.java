@@ -17,41 +17,6 @@ public class RIJUGRuleSp
   public static String b = "readinjoy_sp_update_one_day";
   public static String c = "readinjoy_sp_remain_times_one_day";
   
-  public static int a(BackOffGroup paramBackOffGroup, String paramString1, String paramString2)
-  {
-    try
-    {
-      Object localObject = (String)RIJSPUtils.a(a, "");
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return paramBackOffGroup.c;
-      }
-      localObject = new JSONObject((String)localObject);
-      String str = ((JSONObject)localObject).optString("time", "");
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("clickTimes");
-      localStringBuilder.append(paramString2);
-      localStringBuilder.append(paramString1);
-      int j = ((JSONObject)localObject).optInt(localStringBuilder.toString(), 0);
-      if (!str.equals(TimeSliceHelper.a())) {
-        return paramBackOffGroup.c;
-      }
-      int i = j;
-      if (j == 0) {
-        i = paramBackOffGroup.c;
-      }
-      paramString1 = new StringBuilder();
-      paramString1.append("getChannelClickTimes :");
-      paramString1.append(i);
-      QLog.d("RIJUGRuleSp", 1, paramString1.toString());
-      return i;
-    }
-    catch (JSONException paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return paramBackOffGroup.c;
-  }
-  
   public static long a(int paramInt)
   {
     if (paramInt != 0) {}
@@ -61,12 +26,12 @@ public class RIJUGRuleSp
       {
         if (DailyModeConfigHandler.b(paramInt))
         {
-          Object localObject = TimeSliceHelper.a(String.valueOf(paramInt));
+          Object localObject = TimeSliceHelper.b(String.valueOf(paramInt));
           if (localObject == null) {
             break label279;
           }
           l1 = ((TimeSliceHelper)localObject).a(false);
-          localObject = (String)RIJSPUtils.a(c, "");
+          localObject = (String)RIJSPUtils.b(c, "");
           boolean bool = TextUtils.isEmpty((CharSequence)localObject);
           if (bool)
           {
@@ -109,7 +74,138 @@ public class RIJUGRuleSp
     }
   }
   
-  public static void a(int paramInt)
+  public static void a(BackOffGroup paramBackOffGroup, String paramString1, String paramString2)
+  {
+    try
+    {
+      Object localObject1 = (String)RIJSPUtils.b(a, "");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("start saveChannelClickToSP :");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("RIJUGRuleSp", 1, ((StringBuilder)localObject2).toString());
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject1 = new JSONObject();
+      } else {
+        localObject1 = new JSONObject((String)localObject1);
+      }
+      localObject2 = ((JSONObject)localObject1).optString("time", "");
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("clickTimes");
+      ((StringBuilder)localObject3).append(paramString2);
+      ((StringBuilder)localObject3).append(paramString1);
+      int j = ((JSONObject)localObject1).optInt(((StringBuilder)localObject3).toString(), 0);
+      localObject3 = TimeSliceHelper.a();
+      int i = j;
+      if (j == 0) {
+        i = paramBackOffGroup.d;
+      }
+      if (!((String)localObject2).equals(localObject3))
+      {
+        localObject1 = new JSONObject();
+        i = 0;
+      }
+      i += 1;
+      paramBackOffGroup.d = i;
+      ((JSONObject)localObject1).put("time", localObject3);
+      paramBackOffGroup = new StringBuilder();
+      paramBackOffGroup.append("clickTimes");
+      paramBackOffGroup.append(paramString2);
+      paramBackOffGroup.append(paramString1);
+      ((JSONObject)localObject1).put(paramBackOffGroup.toString(), i);
+      paramBackOffGroup = new StringBuilder();
+      paramBackOffGroup.append("end saveChannelClickToSP :");
+      paramBackOffGroup.append(((JSONObject)localObject1).toString());
+      QLog.d("RIJUGRuleSp", 1, paramBackOffGroup.toString());
+      RIJSPUtils.a(a, ((JSONObject)localObject1).toString());
+      return;
+    }
+    catch (JSONException paramBackOffGroup)
+    {
+      paramBackOffGroup.printStackTrace();
+    }
+  }
+  
+  public static void a(oidb_cmd0x68b.ReqChannelPara paramReqChannelPara, String paramString)
+  {
+    try
+    {
+      Object localObject1 = (String)RIJSPUtils.b(b, "");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("start addFreshTimesToUGAndSaveToSp : ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("RIJUGRuleSp", 1, ((StringBuilder)localObject2).toString());
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        localObject1 = new JSONObject();
+      } else {
+        localObject1 = new JSONObject((String)localObject1);
+      }
+      localObject2 = ((JSONObject)localObject1).optString("time", "");
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("freshTimes");
+      ((StringBuilder)localObject3).append(paramString);
+      int i = ((JSONObject)localObject1).optInt(((StringBuilder)localObject3).toString(), 0);
+      localObject3 = TimeSliceHelper.a();
+      if (!((String)localObject2).equals(localObject3))
+      {
+        localObject1 = new JSONObject();
+        i = 0;
+      }
+      i += 1;
+      ((JSONObject)localObject1).put("time", localObject3);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("freshTimes");
+      ((StringBuilder)localObject2).append(paramString);
+      ((JSONObject)localObject1).put(((StringBuilder)localObject2).toString(), i);
+      paramString = new StringBuilder();
+      paramString.append("end addFreshTimesToUGAndSaveToSp : ");
+      paramString.append(((JSONObject)localObject1).toString());
+      QLog.d("RIJUGRuleSp", 1, paramString.toString());
+      RIJSPUtils.a(b, ((JSONObject)localObject1).toString());
+      paramReqChannelPara.uint32_update_times_one_day.set(i);
+      return;
+    }
+    catch (JSONException paramReqChannelPara)
+    {
+      paramReqChannelPara.printStackTrace();
+    }
+  }
+  
+  public static int b(BackOffGroup paramBackOffGroup, String paramString1, String paramString2)
+  {
+    try
+    {
+      Object localObject = (String)RIJSPUtils.b(a, "");
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return paramBackOffGroup.d;
+      }
+      localObject = new JSONObject((String)localObject);
+      String str = ((JSONObject)localObject).optString("time", "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clickTimes");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(paramString1);
+      int j = ((JSONObject)localObject).optInt(localStringBuilder.toString(), 0);
+      if (!str.equals(TimeSliceHelper.a())) {
+        return paramBackOffGroup.d;
+      }
+      int i = j;
+      if (j == 0) {
+        i = paramBackOffGroup.d;
+      }
+      paramString1 = new StringBuilder();
+      paramString1.append("getChannelClickTimes :");
+      paramString1.append(i);
+      QLog.d("RIJUGRuleSp", 1, paramString1.toString());
+      return i;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return paramBackOffGroup.d;
+  }
+  
+  public static void b(int paramInt)
   {
     if (paramInt != 0) {}
     for (;;)
@@ -119,13 +215,13 @@ public class RIJUGRuleSp
       {
         if (DailyModeConfigHandler.b(paramInt))
         {
-          Object localObject1 = TimeSliceHelper.a(String.valueOf(paramInt));
+          Object localObject1 = TimeSliceHelper.b(String.valueOf(paramInt));
           l2 = 0L;
           if (localObject1 == null) {
             break label299;
           }
           l1 = ((TimeSliceHelper)localObject1).a(false);
-          localObject1 = (String)RIJSPUtils.a(c, "");
+          localObject1 = (String)RIJSPUtils.b(c, "");
           Object localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("start saveRemainTimeToSP string is ");
           ((StringBuilder)localObject2).append((String)localObject1);
@@ -170,106 +266,10 @@ public class RIJUGRuleSp
       long l2 = l3;
     }
   }
-  
-  public static void a(BackOffGroup paramBackOffGroup, String paramString1, String paramString2)
-  {
-    try
-    {
-      Object localObject1 = (String)RIJSPUtils.a(a, "");
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("start saveChannelClickToSP :");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.d("RIJUGRuleSp", 1, ((StringBuilder)localObject2).toString());
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject1 = new JSONObject();
-      } else {
-        localObject1 = new JSONObject((String)localObject1);
-      }
-      localObject2 = ((JSONObject)localObject1).optString("time", "");
-      Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("clickTimes");
-      ((StringBuilder)localObject3).append(paramString2);
-      ((StringBuilder)localObject3).append(paramString1);
-      int j = ((JSONObject)localObject1).optInt(((StringBuilder)localObject3).toString(), 0);
-      localObject3 = TimeSliceHelper.a();
-      int i = j;
-      if (j == 0) {
-        i = paramBackOffGroup.c;
-      }
-      if (!((String)localObject2).equals(localObject3))
-      {
-        localObject1 = new JSONObject();
-        i = 0;
-      }
-      i += 1;
-      paramBackOffGroup.c = i;
-      ((JSONObject)localObject1).put("time", localObject3);
-      paramBackOffGroup = new StringBuilder();
-      paramBackOffGroup.append("clickTimes");
-      paramBackOffGroup.append(paramString2);
-      paramBackOffGroup.append(paramString1);
-      ((JSONObject)localObject1).put(paramBackOffGroup.toString(), i);
-      paramBackOffGroup = new StringBuilder();
-      paramBackOffGroup.append("end saveChannelClickToSP :");
-      paramBackOffGroup.append(((JSONObject)localObject1).toString());
-      QLog.d("RIJUGRuleSp", 1, paramBackOffGroup.toString());
-      RIJSPUtils.a(a, ((JSONObject)localObject1).toString());
-      return;
-    }
-    catch (JSONException paramBackOffGroup)
-    {
-      paramBackOffGroup.printStackTrace();
-    }
-  }
-  
-  public static void a(oidb_cmd0x68b.ReqChannelPara paramReqChannelPara, String paramString)
-  {
-    try
-    {
-      Object localObject1 = (String)RIJSPUtils.a(b, "");
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("start addFreshTimesToUGAndSaveToSp : ");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.d("RIJUGRuleSp", 1, ((StringBuilder)localObject2).toString());
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject1 = new JSONObject();
-      } else {
-        localObject1 = new JSONObject((String)localObject1);
-      }
-      localObject2 = ((JSONObject)localObject1).optString("time", "");
-      Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("freshTimes");
-      ((StringBuilder)localObject3).append(paramString);
-      int i = ((JSONObject)localObject1).optInt(((StringBuilder)localObject3).toString(), 0);
-      localObject3 = TimeSliceHelper.a();
-      if (!((String)localObject2).equals(localObject3))
-      {
-        localObject1 = new JSONObject();
-        i = 0;
-      }
-      i += 1;
-      ((JSONObject)localObject1).put("time", localObject3);
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("freshTimes");
-      ((StringBuilder)localObject2).append(paramString);
-      ((JSONObject)localObject1).put(((StringBuilder)localObject2).toString(), i);
-      paramString = new StringBuilder();
-      paramString.append("end addFreshTimesToUGAndSaveToSp : ");
-      paramString.append(((JSONObject)localObject1).toString());
-      QLog.d("RIJUGRuleSp", 1, paramString.toString());
-      RIJSPUtils.a(b, ((JSONObject)localObject1).toString());
-      paramReqChannelPara.uint32_update_times_one_day.set(i);
-      return;
-    }
-    catch (JSONException paramReqChannelPara)
-    {
-      paramReqChannelPara.printStackTrace();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.RIJUGRuleSp
  * JD-Core Version:    0.7.0.1
  */

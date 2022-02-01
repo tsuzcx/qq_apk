@@ -24,7 +24,7 @@ final class JumpAdUtils$1
   
   public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    ((IFastWebPTSUtils)QRoute.api(IFastWebPTSUtils.class)).disLikeAd(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData);
+    ((IFastWebPTSUtils)QRoute.api(IFastWebPTSUtils.class)).disLikeAd(this.a, this.b);
     if (((QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime() != null) && (paramArrayList != null))
     {
       Object localObject2 = "";
@@ -39,11 +39,11 @@ final class JumpAdUtils$1
         {
           paramView = new StringBuilder();
           paramView.append((String)localObject2);
-          paramView.append(localDislikeInfo.jdField_a_of_type_Long);
+          paramView.append(localDislikeInfo.e);
           localObject2 = paramView.toString();
           paramView = new StringBuilder();
           paramView.append((String)localObject1);
-          paramView.append(localDislikeInfo.jdField_a_of_type_JavaLangString);
+          paramView.append(localDislikeInfo.c);
           localObject1 = paramView.toString();
           paramObject = localObject1;
           paramView = (View)localObject2;
@@ -63,15 +63,15 @@ final class JumpAdUtils$1
         localObject1 = paramObject;
         localObject2 = paramView;
       }
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(3).b(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getNativeAdExposureOrigin(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData)).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData)).a((String)localObject2).b((String)localObject1).d(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData)));
-      paramView = this.jdField_a_of_type_AndroidContentContext;
-      QQToast.a(paramView, -1, paramView.getString(2131699886), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.a).a(3).b(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getNativeAdExposureOrigin(this.b)).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(this.b)).a((String)localObject2).b((String)localObject1).d(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(this.b)));
+      paramView = this.a;
+      QQToast.makeText(paramView, -1, paramView.getString(2131897939), 0).show(((BaseActivity)this.a).getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.JumpAdUtils.1
  * JD-Core Version:    0.7.0.1
  */

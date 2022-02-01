@@ -15,11 +15,11 @@ import mqq.app.MobileQQ;
 public final class SPStatInspector
   implements SharedPreferencesProxyManager.ISpLogCallback
 {
-  private static String jdField_a_of_type_JavaLangString;
   public static final boolean a = false;
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Map<String, String[]> b = new ConcurrentHashMap();
+  private static String b;
+  private List<String> c = new CopyOnWriteArrayList();
+  private Map<String, String[]> d = new ConcurrentHashMap();
+  private Map<String, String[]> e = new ConcurrentHashMap();
   
   private static int a(String paramString1, String paramString2, String paramString3)
   {
@@ -28,18 +28,6 @@ public final class SPStatInspector
     localStringBuilder.append(paramString2);
     localStringBuilder.append(paramString3);
     return localStringBuilder.toString().hashCode();
-  }
-  
-  private static SPStatInspector.StackInfo a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    paramString = paramString.split("\\|");
-    if (paramString.length != 3) {
-      return null;
-    }
-    return new SPStatInspector.StackInfo(paramString[0], paramString[1], paramString[2]);
   }
   
   public static SPStatInspector a()
@@ -58,15 +46,27 @@ public final class SPStatInspector
     return paramString.contains(".") ^ true;
   }
   
+  private static SPStatInspector.StackInfo b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = paramString.split("\\|");
+    if (paramString.length != 3) {
+      return null;
+    }
+    return new SPStatInspector.StackInfo(paramString[0], paramString[1], paramString[2]);
+  }
+  
   public void onIllegalModify(String paramString1, String paramString2, Object paramObject)
   {
-    if (jdField_a_of_type_Boolean)
+    if (a)
     {
       if (MobileQQ.sProcessId != 1) {
         return;
       }
-      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        jdField_a_of_type_JavaLangString = MobileQQ.getContext().getPackageName();
+      if (TextUtils.isEmpty(b)) {
+        b = MobileQQ.getContext().getPackageName();
       }
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && ((paramObject instanceof String)))
       {
@@ -74,15 +74,15 @@ public final class SPStatInspector
         if (TextUtils.isEmpty(paramObject)) {
           return;
         }
-        boolean bool = jdField_a_of_type_JavaLangString.equals(paramString2);
+        boolean bool = b.equals(paramString2);
         if (bool) {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString1, new String[] { paramString2, null });
+          this.d.put(paramString1, new String[] { paramString2, null });
         } else {
-          this.b.put(paramString1, new String[] { paramString2, paramObject });
+          this.e.put(paramString1, new String[] { paramString2, paramObject });
         }
         if (bool)
         {
-          paramObject = (String[])this.b.get(paramString1);
+          paramObject = (String[])this.e.get(paramString1);
           if (paramObject != null)
           {
             paramString2 = paramObject[0];
@@ -92,7 +92,7 @@ public final class SPStatInspector
         }
         else
         {
-          if ((String[])this.jdField_a_of_type_JavaUtilMap.get(paramString1) != null) {
+          if ((String[])this.d.get(paramString1) != null) {
             break label186;
           }
         }
@@ -102,22 +102,22 @@ public final class SPStatInspector
         if (!(TextUtils.isEmpty(paramString2) ^ true)) {
           return;
         }
-        Object localObject1 = a(paramObject);
+        Object localObject1 = b(paramObject);
         if (localObject1 == null) {
           return;
         }
         paramObject = ((SPStatInspector.StackInfo)localObject1).c;
-        String str = ((SPStatInspector.StackInfo)localObject1).jdField_a_of_type_JavaLangString;
+        String str = ((SPStatInspector.StackInfo)localObject1).a;
         Object localObject2 = ((SPStatInspector.StackInfo)localObject1).b;
         if ((!a(str)) && (!TextUtils.isEmpty(paramObject)))
         {
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
             return;
           }
-          if (this.jdField_a_of_type_JavaUtilList.contains(paramObject)) {
+          if (this.c.contains(paramObject)) {
             return;
           }
-          this.jdField_a_of_type_JavaUtilList.add(paramObject);
+          this.c.add(paramObject);
           localObject1 = SharedPreferencesProxyManager.getInstance().getProxy("sp_dm_report", 0).edit();
           int i = a(str, (String)localObject2, paramString2);
           localObject2 = new StringBuilder();
@@ -139,7 +139,7 @@ public final class SPStatInspector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.sp.SPStatInspector
  * JD-Core Version:    0.7.0.1
  */

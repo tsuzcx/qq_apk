@@ -102,7 +102,7 @@ public class QQAvatarCompatibleServiceImpl
   
   private boolean isGetFaceBitmapParamInValid(int paramInt, String paramString)
   {
-    return ((paramInt == 11) && (!StringUtil.d(paramString))) || (TextUtils.isEmpty(paramString));
+    return ((paramInt == 11) && (!StringUtil.isValidMobileNumForHead(paramString))) || (TextUtils.isEmpty(paramString));
   }
   
   private boolean isSpecialFaceType(int paramInt, String paramString)
@@ -156,7 +156,7 @@ public class QQAvatarCompatibleServiceImpl
       }
       String str2 = localQQAvatarDataServiceImpl.getCustomFaceFilePath(paramInt1, paramString, paramInt3, paramInt2);
       BitmapManager.BitmapDecodeResult localBitmapDecodeResult = decodeFace(str2);
-      if (localBitmapDecodeResult.jdField_a_of_type_Int != 0)
+      if (localBitmapDecodeResult.b != 0)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("getFaceBitmap decodeFile fail, faceType=");
@@ -164,21 +164,21 @@ public class QQAvatarCompatibleServiceImpl
         ((StringBuilder)localObject1).append(", uin=");
         ((StringBuilder)localObject1).append(paramString);
         ((StringBuilder)localObject1).append(", result=");
-        ((StringBuilder)localObject1).append(localBitmapDecodeResult.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(localBitmapDecodeResult.b);
         ((StringBuilder)localObject1).append(", facePath=");
         ((StringBuilder)localObject1).append(str2);
         QLog.i("Q.qqhead.qaif", 2, ((StringBuilder)localObject1).toString());
       }
-      if ((!bool1) && (localBitmapDecodeResult.jdField_a_of_type_Int == 1)) {
+      if ((!bool1) && (localBitmapDecodeResult.b == 1)) {
         return null;
       }
-      if (localBitmapDecodeResult.jdField_a_of_type_Int != 2) {
+      if (localBitmapDecodeResult.b != 2) {
         bool2 = true;
       } else {
         bool2 = false;
       }
-      Bitmap localBitmap = localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
-      if ((localBitmap == null) && (localBitmapDecodeResult.jdField_a_of_type_Int != 1) && (bool2))
+      Bitmap localBitmap = localBitmapDecodeResult.a;
+      if ((localBitmap == null) && (localBitmapDecodeResult.b != 1) && (bool2))
       {
         if (paramInt1 == 4)
         {
@@ -244,21 +244,21 @@ public class QQAvatarCompatibleServiceImpl
     do
     {
       BitmapManager.a(paramString, localOptions, localBitmapDecodeResult);
-      if (localBitmapDecodeResult.jdField_a_of_type_Int == 1) {
+      if (localBitmapDecodeResult.b == 1) {
         freePartBitmapCache();
       }
       i += 1;
-    } while ((i < 2) && (localBitmapDecodeResult.jdField_a_of_type_Int == 1));
+    } while ((i < 2) && (localBitmapDecodeResult.b == 1));
     return localBitmapDecodeResult;
   }
   
   public Bitmap getFaceBitmap(int paramInt1, String paramString, byte paramByte1, int paramInt2, boolean paramBoolean, byte paramByte2, int paramInt3)
   {
     if (isSpecialFaceType(paramInt1, paramString)) {
-      return BaseImageUtil.g();
+      return BaseImageUtil.l();
     }
     if ((paramInt1 == 32) && (AppConstants.LBS_HELLO_UIN.equals(paramString))) {
-      return SkinUtils.a(BaseApplication.getContext().getResources().getDrawable(2130840423));
+      return SkinUtils.a(BaseApplication.getContext().getResources().getDrawable(2130841179));
     }
     if (isGetFaceBitmapParamInValid(paramInt1, paramString)) {
       return null;
@@ -286,7 +286,7 @@ public class QQAvatarCompatibleServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarCompatibleServiceImpl
  * JD-Core Version:    0.7.0.1
  */

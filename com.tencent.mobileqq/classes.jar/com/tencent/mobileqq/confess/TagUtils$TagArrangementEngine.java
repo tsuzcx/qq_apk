@@ -11,247 +11,113 @@ import java.util.Set;
 
 public class TagUtils$TagArrangementEngine
 {
-  public Rect a;
-  public ArrayList<TagUtils.TagOriginal> a;
-  private boolean a;
-  private Rect b;
-  public ArrayList<Rect> b;
+  public ArrayList<TagUtils.TagOriginal> a = new ArrayList();
+  public Rect b = new Rect();
   public ArrayList<Rect> c = new ArrayList();
   public ArrayList<Rect> d = new ArrayList();
   public ArrayList<Rect> e = new ArrayList();
-  public ArrayList<TagUtils.Tag> f = new ArrayList();
-  public ArrayList<Rect> g = new ArrayList();
-  
-  public TagUtils$TagArrangementEngine()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private Rect a()
-  {
-    if (this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) {
-      return null;
-    }
-    Collections.sort(this.jdField_b_of_type_JavaUtilArrayList, new TagUtils.TagArrangementEngine.1(this));
-    Object localObject = (Rect)this.jdField_b_of_type_JavaUtilArrayList.get(TagUtils.jdField_a_of_type_JavaUtilRandom.nextInt(Math.min(this.jdField_b_of_type_JavaUtilArrayList.size(), 3)));
-    if (this.g.contains(localObject))
-    {
-      localObject = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Rect localRect = (Rect)((Iterator)localObject).next();
-        if (!this.g.contains(localRect)) {
-          return localRect;
-        }
-      }
-      return null;
-    }
-    return localObject;
-  }
-  
-  private Rect a(Rect paramRect)
-  {
-    boolean bool;
-    int i;
-    int j;
-    int k;
-    Object localObject2;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      bool = false;
-      i = 0;
-      j = 1;
-    }
-    else
-    {
-      bool = this.d.isEmpty();
-      j = -1;
-      if (!bool)
-      {
-        localObject1 = this.d.iterator();
-        i = -1;
-        k = j;
-        for (;;)
-        {
-          j = k;
-          m = i;
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = (Rect)((Iterator)localObject1).next();
-          if (((Rect)localObject2).left == paramRect.right) {
-            k = 1;
-          } else if (((Rect)localObject2).top == paramRect.bottom) {
-            i = 1;
-          }
-        }
-      }
-      m = -1;
-      i = m;
-      if (Math.abs(paramRect.top - this.jdField_a_of_type_AndroidGraphicsRect.top) > Math.abs(paramRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.bottom)) {
-        i = 1;
-      }
-      if (Math.abs(paramRect.left - this.jdField_a_of_type_AndroidGraphicsRect.left) > Math.abs(paramRect.right - this.jdField_a_of_type_AndroidGraphicsRect.right)) {
-        j = 1;
-      }
-      if (paramRect.width() < paramRect.height())
-      {
-        k = i;
-        bool = true;
-        i = j;
-        j = k;
-      }
-      else
-      {
-        k = j;
-        bool = false;
-        j = i;
-        i = k;
-      }
-    }
-    a(this.jdField_a_of_type_JavaUtilArrayList, bool);
-    int n = this.jdField_a_of_type_AndroidGraphicsRect.width();
-    int i1 = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 2)
-    {
-      k = n;
-      m = i1;
-      if (this.f.size() < 1) {}
-    }
-    else
-    {
-      double d1 = i1;
-      Double.isNaN(d1);
-      m = (int)(d1 * 0.85D);
-      d1 = n;
-      Double.isNaN(d1);
-      k = (int)(d1 * 0.85D);
-    }
-    int m = Math.min(paramRect.width(), m);
-    n = Math.min(paramRect.height(), k);
-    if (this.jdField_a_of_type_Boolean) {
-      k = TagUtils.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_JavaUtilArrayList.size());
-    } else {
-      k = TagUtils.jdField_a_of_type_JavaUtilRandom.nextInt(Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), 3));
-    }
-    if (k != 0)
-    {
-      localObject1 = (TagUtils.TagOriginal)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
-      ((ArrayList)localObject2).set(0, ((ArrayList)localObject2).get(k));
-      this.jdField_a_of_type_JavaUtilArrayList.set(k, localObject1);
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = a((TagUtils.TagOriginal)((Iterator)localObject1).next(), paramRect, m, n, i, j);
-      if (localObject2 != null) {
-        return localObject2;
-      }
-    }
-    return null;
-  }
+  public ArrayList<Rect> f = new ArrayList();
+  public ArrayList<TagUtils.Tag> g = new ArrayList();
+  public ArrayList<Rect> h = new ArrayList();
+  private Rect i = new Rect();
+  private boolean j = false;
   
   private Rect a(Rect paramRect, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
     if ((paramInt4 <= paramInt2) && (paramInt3 <= paramInt1))
     {
       Rect localRect;
-      if (paramRect.width() - paramInt3 < TagUtils.jdField_a_of_type_Int + 8)
+      if (paramRect.width() - paramInt3 < TagUtils.a + 8)
       {
         paramInt7 = paramInt1;
       }
       else
       {
-        this.jdField_b_of_type_AndroidGraphicsRect.set(paramRect);
+        this.i.set(paramRect);
         if (paramInt5 == -1)
         {
-          localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+          localRect = this.i;
           localRect.left += paramInt3;
         }
         else if (paramInt5 == 1)
         {
-          localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+          localRect = this.i;
           localRect.right -= paramInt3;
         }
         else
         {
-          localRect = this.jdField_b_of_type_AndroidGraphicsRect;
-          localRect.right = (localRect.left + (this.jdField_b_of_type_AndroidGraphicsRect.width() - paramInt3) / 2);
+          localRect = this.i;
+          localRect.right = (localRect.left + (this.i.width() - paramInt3) / 2);
         }
         paramInt7 = paramInt1;
-        if (a(this.jdField_b_of_type_AndroidGraphicsRect, paramRect, paramInt8))
+        if (a(this.i, paramRect, paramInt8))
         {
           paramInt1 = paramInt3;
-          if (this.jdField_b_of_type_AndroidGraphicsRect.width() > paramInt8 + 8)
+          if (this.i.width() > paramInt8 + 8)
           {
             if (paramInt5 == -1)
             {
-              localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+              localRect = this.i;
               localRect.left += 8;
             }
             else if (paramInt5 == 1)
             {
-              localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+              localRect = this.i;
               localRect.right -= 8;
             }
             else
             {
-              localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+              localRect = this.i;
               localRect.right -= 8;
             }
             paramInt1 = paramInt3;
-            if (a(this.jdField_b_of_type_AndroidGraphicsRect, paramRect, paramInt8)) {
+            if (a(this.i, paramRect, paramInt8)) {
               paramInt1 = paramInt3 + 8;
             }
           }
           paramInt7 = paramInt1;
         }
       }
-      if (paramRect.height() - paramInt4 >= TagUtils.jdField_a_of_type_Int + 8)
+      if (paramRect.height() - paramInt4 >= TagUtils.a + 8)
       {
-        this.jdField_b_of_type_AndroidGraphicsRect.set(paramRect);
+        this.i.set(paramRect);
         if (paramInt6 == -1)
         {
-          localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+          localRect = this.i;
           localRect.top += paramInt4;
         }
         else if (paramInt6 == 1)
         {
-          localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+          localRect = this.i;
           localRect.bottom -= paramInt4;
         }
         else
         {
-          localRect = this.jdField_b_of_type_AndroidGraphicsRect;
-          localRect.bottom = (localRect.top + (this.jdField_b_of_type_AndroidGraphicsRect.bottom - this.jdField_b_of_type_AndroidGraphicsRect.height()) / 2);
+          localRect = this.i;
+          localRect.bottom = (localRect.top + (this.i.bottom - this.i.height()) / 2);
         }
-        if (a(this.jdField_b_of_type_AndroidGraphicsRect, paramRect, paramInt8))
+        if (a(this.i, paramRect, paramInt8))
         {
           paramInt1 = paramInt4;
-          if (this.jdField_b_of_type_AndroidGraphicsRect.height() > paramInt8 + 8)
+          if (this.i.height() > paramInt8 + 8)
           {
             if (paramInt6 == -1)
             {
-              localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+              localRect = this.i;
               localRect.top += 8;
             }
             else if (paramInt6 == 1)
             {
-              localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+              localRect = this.i;
               localRect.bottom -= 8;
             }
             else
             {
-              localRect = this.jdField_b_of_type_AndroidGraphicsRect;
+              localRect = this.i;
               localRect.bottom -= 8;
             }
             paramInt1 = paramInt4;
-            if (a(this.jdField_b_of_type_AndroidGraphicsRect, paramRect, paramInt8)) {
+            if (a(this.i, paramRect, paramInt8)) {
               paramInt1 = paramInt4 + 8;
             }
           }
@@ -291,43 +157,43 @@ public class TagUtils$TagArrangementEngine
   
   private Rect a(Rect paramRect, boolean paramBoolean)
   {
-    int j = paramRect.width() * paramRect.height();
-    Iterator localIterator = this.f.iterator();
+    int m = paramRect.width() * paramRect.height();
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext())
     {
       TagUtils.Tag localTag = (TagUtils.Tag)localIterator.next();
-      int i = localTag.jdField_a_of_type_AndroidGraphicsRect.width();
-      int k = localTag.jdField_a_of_type_AndroidGraphicsRect.height();
-      if (((paramBoolean) || (j * 5 < i * k) || (j <= 576)) && (a(paramRect, localTag.jdField_a_of_type_AndroidGraphicsRect)))
+      int k = localTag.c.width();
+      int n = localTag.c.height();
+      if (((paramBoolean) || (m * 5 < k * n) || (m <= 576)) && (a(paramRect, localTag.c)))
       {
-        localTag.jdField_a_of_type_AndroidGraphicsRect.union(paramRect);
-        a(localTag, localTag.jdField_a_of_type_AndroidGraphicsRect);
+        localTag.c.union(paramRect);
+        a(localTag, localTag.c);
         return paramRect;
       }
       if (paramBoolean)
       {
         Rect localRect = new Rect(paramRect);
-        k = localRect.left;
-        int m = localTag.jdField_a_of_type_AndroidGraphicsRect.left;
-        i = 1;
-        if ((k <= m) && (localRect.right >= localTag.jdField_a_of_type_AndroidGraphicsRect.right))
+        n = localRect.left;
+        int i1 = localTag.c.left;
+        k = 1;
+        if ((n <= i1) && (localRect.right >= localTag.c.right))
         {
-          localRect.left = localTag.jdField_a_of_type_AndroidGraphicsRect.left;
-          localRect.right = localTag.jdField_a_of_type_AndroidGraphicsRect.right;
+          localRect.left = localTag.c.left;
+          localRect.right = localTag.c.right;
         }
-        else if ((paramRect.top <= localTag.jdField_a_of_type_AndroidGraphicsRect.top) && (paramRect.bottom >= localTag.jdField_a_of_type_AndroidGraphicsRect.bottom))
+        else if ((paramRect.top <= localTag.c.top) && (paramRect.bottom >= localTag.c.bottom))
         {
-          localRect.top = localTag.jdField_a_of_type_AndroidGraphicsRect.top;
-          localRect.bottom = localTag.jdField_a_of_type_AndroidGraphicsRect.bottom;
+          localRect.top = localTag.c.top;
+          localRect.bottom = localTag.c.bottom;
         }
         else
         {
-          i = 0;
+          k = 0;
         }
-        if ((i != 0) && (a(localRect, localTag.jdField_a_of_type_AndroidGraphicsRect)))
+        if ((k != 0) && (a(localRect, localTag.c)))
         {
-          localTag.jdField_a_of_type_AndroidGraphicsRect.union(localRect);
-          a(localTag, localTag.jdField_a_of_type_AndroidGraphicsRect);
+          localTag.c.union(localRect);
+          a(localTag, localTag.c);
           return localRect;
         }
       }
@@ -337,81 +203,81 @@ public class TagUtils$TagArrangementEngine
   
   private Rect a(TagUtils.TagOriginal paramTagOriginal, Rect paramRect, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int j = paramTagOriginal.c;
-    int m = paramTagOriginal.jdField_a_of_type_Int;
-    int k = 1;
-    int i = j;
-    if (m >= 1) {
-      i = Math.max(24, (int)(j * (0.95F - TagUtils.jdField_a_of_type_JavaUtilRandom.nextInt(10) / 100.0F))) / 4 * 4;
+    int m = paramTagOriginal.g;
+    int i1 = paramTagOriginal.b;
+    int n = 1;
+    int k = m;
+    if (i1 >= 1) {
+      k = Math.max(24, (int)(m * (0.95F - TagUtils.b.nextInt(10) / 100.0F))) / 4 * 4;
     }
-    int n = 0;
+    int i2 = 0;
     Object localObject1 = null;
-    j = i;
-    i = k;
-    while ((n < 10) && (j >= 24))
+    m = k;
+    k = n;
+    while ((i2 < 10) && (m >= 24))
     {
-      float f1 = j;
-      int i1 = (int)(paramTagOriginal.jdField_a_of_type_Float * f1);
+      float f1 = m;
+      int i3 = (int)(paramTagOriginal.e * f1);
       localObject2 = localObject1;
-      k = i;
+      n = k;
       float f2 = f1;
-      m = j;
-      if (paramInt1 * paramInt2 >= j * i1)
+      i1 = m;
+      if (paramInt1 * paramInt2 >= m * i3)
       {
-        Iterator localIterator = paramTagOriginal.jdField_a_of_type_JavaUtilSet.iterator();
+        Iterator localIterator = paramTagOriginal.h.iterator();
         for (;;)
         {
           localObject2 = localObject1;
-          k = i;
+          n = k;
           f2 = f1;
-          m = j;
+          i1 = m;
           if (!localIterator.hasNext()) {
             break;
           }
-          i = ((Integer)localIterator.next()).intValue();
-          m = i1 / i;
-          k = j;
-          localObject1 = a(paramRect, paramInt1, paramInt2, m, j * i, paramInt3, paramInt4, j, 24);
+          k = ((Integer)localIterator.next()).intValue();
+          i1 = i3 / k;
+          n = m;
+          localObject1 = a(paramRect, paramInt1, paramInt2, i1, m * k, paramInt3, paramInt4, m, 24);
           if (localObject1 != null)
           {
-            j = k;
+            m = n;
             break label250;
           }
-          j = k;
+          m = n;
         }
       }
-      j = m;
+      m = i1;
       f1 = f2;
-      i = k;
+      k = n;
       localObject1 = localObject2;
       label250:
       if (localObject1 != null)
       {
         localObject2 = localObject1;
-        k = i;
+        n = k;
         break label336;
       }
-      m = j;
+      i1 = m;
       localObject2 = localObject1;
-      k = i;
-      j = m;
-      if (m <= 24) {
+      n = k;
+      m = i1;
+      if (i1 <= 24) {
         break label336;
       }
-      j = Math.max(24, (int)(f1 * (0.95F - TagUtils.jdField_a_of_type_JavaUtilRandom.nextInt(6) / 100.0F))) / 4 * 4;
-      n += 1;
+      m = Math.max(24, (int)(f1 * (0.95F - TagUtils.b.nextInt(6) / 100.0F))) / 4 * 4;
+      i2 += 1;
     }
-    k = i;
+    n = k;
     Object localObject2 = localObject1;
     label336:
     if (localObject2 == null) {
       return null;
     }
-    if ((localObject2 != null) && (k > 0))
+    if ((localObject2 != null) && (n > 0))
     {
-      paramTagOriginal = new TagUtils.Tag(paramTagOriginal, -1, localObject2, j, true, k);
+      paramTagOriginal = new TagUtils.Tag(paramTagOriginal, -1, localObject2, m, true, n);
       a(paramTagOriginal, localObject2);
-      this.f.add(paramTagOriginal);
+      this.g.add(paramTagOriginal);
       return localObject2;
     }
     return null;
@@ -419,39 +285,39 @@ public class TagUtils$TagArrangementEngine
   
   private void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
+    this.b.setEmpty();
     this.c.clear();
     this.d.clear();
     this.e.clear();
     this.f.clear();
     this.g.clear();
-    this.jdField_b_of_type_AndroidGraphicsRect.setEmpty();
-    this.jdField_a_of_type_Boolean = false;
+    this.h.clear();
+    this.i.setEmpty();
+    this.j = false;
   }
   
   private void a(Rect paramRect)
   {
-    int i = this.jdField_b_of_type_JavaUtilArrayList.size();
+    int k = this.c.size();
     Rect localRect1 = new Rect();
-    i -= 1;
-    while (i >= 0)
+    k -= 1;
+    while (k >= 0)
     {
-      Rect localRect2 = (Rect)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+      Rect localRect2 = (Rect)this.c.get(k);
       localRect1.set(paramRect);
       if (localRect1.intersect(localRect2)) {
         a(localRect2, localRect1, false);
       }
-      i -= 1;
+      k -= 1;
     }
   }
   
   private void a(Rect paramRect1, Rect paramRect2, boolean paramBoolean)
   {
-    this.jdField_b_of_type_JavaUtilArrayList.remove(paramRect1);
+    this.c.remove(paramRect1);
     if (paramBoolean) {
-      this.e.add(paramRect2);
+      this.f.add(paramRect2);
     }
     if (paramRect2.equals(paramRect1)) {
       return;
@@ -466,336 +332,336 @@ public class TagUtils$TagArrangementEngine
     Point localPoint8 = new Point(paramRect2.right, paramRect2.bottom);
     if ((localPoint1.equals(localPoint5)) && (localPoint2.equals(localPoint6)))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.right, paramRect2.top, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect2.right, paramRect2.top, paramRect1.right, paramRect1.bottom));
       return;
     }
     if ((localPoint1.equals(localPoint5)) && (localPoint3.equals(localPoint7)))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect2.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
       return;
     }
     if ((localPoint4.equals(localPoint8)) && (localPoint3.equals(localPoint7)))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect2.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect2.bottom));
       return;
     }
     if ((localPoint2.equals(localPoint6)) && (localPoint4.equals(localPoint8)))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.right, paramRect2.top));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.right, paramRect2.top));
       return;
     }
     if (localPoint1.equals(localPoint5))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
       return;
     }
     if (localPoint3.equals(localPoint7))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
       return;
     }
     if (localPoint4.equals(localPoint8))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
       return;
     }
     if (localPoint2.equals(localPoint6))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
+      this.c.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
       return;
     }
     if ((paramRect1.left == paramRect2.left) && (paramRect1.right == paramRect2.right))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
+      this.c.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
       return;
     }
     if ((paramRect1.top == paramRect2.top) && (paramRect1.bottom == paramRect2.bottom))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
+      this.c.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
       return;
     }
     if (paramRect1.left == paramRect2.left)
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
+      this.c.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
       return;
     }
     if (paramRect1.top == paramRect2.top)
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
       return;
     }
     if (paramRect1.right == paramRect2.right)
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
       return;
     }
     if (paramRect1.bottom == paramRect2.bottom)
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
-      this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
+      this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
+      this.c.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
       return;
     }
-    this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
-    this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
-    this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
-    this.jdField_b_of_type_JavaUtilArrayList.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
+    this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect1.right, paramRect2.top));
+    this.c.add(new Rect(paramRect1.left, paramRect1.top, paramRect2.left, paramRect1.bottom));
+    this.c.add(new Rect(paramRect2.right, paramRect1.top, paramRect1.right, paramRect1.bottom));
+    this.c.add(new Rect(paramRect1.left, paramRect2.bottom, paramRect1.right, paramRect1.bottom));
   }
   
   private void a(TagUtils.Tag paramTag, Rect paramRect)
   {
     Object localObject1 = paramRect;
-    paramTag.jdField_a_of_type_JavaUtilArrayList.clear();
-    int i4 = paramTag.e;
-    int i5 = paramTag.b;
-    float f1 = paramTag.jdField_a_of_type_ComTencentMobileqqConfessTagUtils$TagOriginal.jdField_a_of_type_Float;
-    if (Math.abs(((Rect)localObject1).left - this.jdField_a_of_type_AndroidGraphicsRect.left) <= 1) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (Math.abs(((Rect)localObject1).right - this.jdField_a_of_type_AndroidGraphicsRect.right) <= 1) {
-      j = 1;
-    } else {
-      j = 0;
-    }
-    if (Math.abs(((Rect)localObject1).top - this.jdField_a_of_type_AndroidGraphicsRect.top) <= 1) {
+    paramTag.h.clear();
+    int i6 = paramTag.i;
+    int i7 = paramTag.d;
+    float f1 = paramTag.a.e;
+    if (Math.abs(((Rect)localObject1).left - this.b.left) <= 1) {
       k = 1;
     } else {
       k = 0;
     }
-    if (Math.abs(((Rect)localObject1).bottom - this.jdField_a_of_type_AndroidGraphicsRect.bottom) <= 1) {
+    if (Math.abs(((Rect)localObject1).right - this.b.right) <= 1) {
       m = 1;
     } else {
       m = 0;
     }
-    int n = i;
-    int i3 = j;
-    int i1 = k;
-    int i2 = m;
+    if (Math.abs(((Rect)localObject1).top - this.b.top) <= 1) {
+      n = 1;
+    } else {
+      n = 0;
+    }
+    if (Math.abs(((Rect)localObject1).bottom - this.b.bottom) <= 1) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    int i2 = k;
+    int i5 = m;
+    int i3 = n;
+    int i4 = i1;
     Object localObject2;
-    if (!this.d.isEmpty())
+    if (!this.e.isEmpty())
     {
-      localObject2 = this.d.iterator();
+      localObject2 = this.e.iterator();
       for (;;)
       {
-        n = i;
-        i3 = j;
-        i1 = k;
-        i2 = m;
+        i2 = k;
+        i5 = m;
+        i3 = n;
+        i4 = i1;
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
         Rect localRect = (Rect)((Iterator)localObject2).next();
-        n = j;
-        if (Math.abs(localRect.left - ((Rect)localObject1).right) <= 1) {
-          n = 1;
-        }
-        i1 = i;
-        if (Math.abs(localRect.right - ((Rect)localObject1).left) <= 1) {
-          i1 = 1;
-        }
         i2 = m;
-        if (Math.abs(localRect.top - ((Rect)localObject1).bottom) <= 1) {
+        if (Math.abs(localRect.left - ((Rect)localObject1).right) <= 1) {
           i2 = 1;
         }
-        i = i1;
-        j = n;
+        i3 = k;
+        if (Math.abs(localRect.right - ((Rect)localObject1).left) <= 1) {
+          i3 = 1;
+        }
+        i4 = i1;
+        if (Math.abs(localRect.top - ((Rect)localObject1).bottom) <= 1) {
+          i4 = 1;
+        }
+        k = i3;
         m = i2;
+        i1 = i4;
         if (Math.abs(localRect.bottom - ((Rect)localObject1).top) <= 1)
         {
-          k = 1;
-          i = i1;
-          j = n;
+          n = 1;
+          k = i3;
           m = i2;
+          i1 = i4;
         }
       }
     }
-    if ((n != 0) && (i3 != 0))
+    if ((i2 != 0) && (i5 != 0))
     {
-      i = 1;
+      k = 1;
     }
     else
     {
-      if ((n != 0) || (i3 != 0)) {
+      if ((i2 != 0) || (i5 != 0)) {
         break label384;
       }
-      i = 0;
+      k = 0;
     }
-    n = 0;
-    int j = i;
+    i2 = 0;
+    int m = k;
     break label416;
     label384:
-    if (n != 0) {
-      i = -1;
-    } else if (i3 != 0) {
-      i = 1;
+    if (i2 != 0) {
+      k = -1;
+    } else if (i5 != 0) {
+      k = 1;
     } else {
-      i = 0;
+      k = 0;
     }
-    j = 0;
-    n = i;
+    m = 0;
+    i2 = k;
     label416:
-    if ((i1 != 0) && (i2 != 0))
+    if ((i3 != 0) && (i4 != 0))
     {
-      i = 1;
+      k = 1;
     }
     else
     {
-      if ((i1 != 0) || (i2 != 0)) {
+      if ((i3 != 0) || (i4 != 0)) {
         break label458;
       }
-      i = 0;
+      k = 0;
     }
-    i1 = 0;
-    int k = i;
+    i3 = 0;
+    int n = k;
     break label490;
     label458:
-    if (i1 != 0) {
-      i = -1;
-    } else if (i2 != 0) {
-      i = 1;
+    if (i3 != 0) {
+      k = -1;
+    } else if (i4 != 0) {
+      k = 1;
     } else {
-      i = 0;
+      k = 0;
     }
-    k = 0;
-    i1 = i;
+    n = 0;
+    i3 = k;
     label490:
-    int i6 = paramTag.jdField_a_of_type_ComTencentMobileqqConfessTagUtils$TagOriginal.b / i4;
+    int i8 = paramTag.a.f / i6;
     float f4 = paramRect.width();
-    float f3 = i5;
-    float f2 = i4;
+    float f3 = i7;
+    float f2 = i6;
     f1 = f4 - f1 * f3 / f2;
-    if (i6 <= 1)
+    if (i8 <= 1)
     {
-      i = (int)(f1 / 2.0F);
-      j = i;
+      k = (int)(f1 / 2.0F);
+      m = k;
       f1 = 0.0F;
     }
     else
     {
-      if (j != 0)
+      if (m != 0)
       {
-        i = 0;
-        f1 = (f1 - 0) / (i6 - 1);
+        k = 0;
+        f1 = (f1 - 0) / (i8 - 1);
       }
       for (;;)
       {
-        j = 0;
+        m = 0;
         break label639;
-        i = 0;
-        if (n == -1)
+        k = 0;
+        if (i2 == -1)
         {
-          f1 = (f1 - 0) / i6;
-          j = (int)f1;
+          f1 = (f1 - 0) / i8;
+          m = (int)f1;
           break label639;
         }
-        if (n != 1) {
+        if (i2 != 1) {
           break;
         }
-        f1 = (f1 - 0) / i6;
-        i = (int)f1;
+        f1 = (f1 - 0) / i8;
+        k = (int)f1;
       }
-      f1 /= (i6 + 1);
-      i = (int)f1;
-      j = i;
+      f1 /= (i8 + 1);
+      k = (int)f1;
+      m = k;
     }
     label639:
-    f4 = paramRect.height() - i5 * i4;
-    if (i4 <= 1)
+    f4 = paramRect.height() - i7 * i6;
+    if (i6 <= 1)
     {
-      k = (int)(f4 / 2.0F);
-      m = k;
+      n = (int)(f4 / 2.0F);
+      i1 = n;
       f2 = 0.0F;
     }
     for (;;)
     {
       break;
-      if (k != 0)
+      if (n != 0)
       {
-        k = 0;
-        f2 = (f4 - 0) / (i4 - 1);
+        n = 0;
+        f2 = (f4 - 0) / (i6 - 1);
       }
       for (;;)
       {
-        m = 0;
+        i1 = 0;
         break;
-        k = 0;
-        if (i1 == -1)
+        n = 0;
+        if (i3 == -1)
         {
           f2 = (f4 - 0) / f2;
-          m = (int)f2;
+          i1 = (int)f2;
           break;
         }
-        if (i1 != 1) {
+        if (i3 != 1) {
           break label753;
         }
         f2 = (f4 - 0) / f2;
-        k = (int)f2;
+        n = (int)f2;
       }
       label753:
-      f2 = f4 / (i4 + 1);
-      k = (int)f2;
-      m = k;
+      f2 = f4 / (i6 + 1);
+      n = (int)f2;
+      i1 = n;
     }
     f4 = Math.max(f1, 0.0F);
-    int i = Math.max(i, 0);
-    Math.max(j, 0);
-    float f5 = Math.max(f2, 0.0F);
-    j = Math.max(k, 0);
+    int k = Math.max(k, 0);
     Math.max(m, 0);
-    boolean bool = TagUtils.jdField_a_of_type_JavaUtilRandom.nextBoolean();
-    f1 = ((Rect)localObject1).top + j;
-    j = 0;
-    k = i;
-    i = j;
-    int m = i4;
-    while (i < m)
+    float f5 = Math.max(f2, 0.0F);
+    m = Math.max(n, 0);
+    Math.max(i1, 0);
+    boolean bool = TagUtils.b.nextBoolean();
+    f1 = ((Rect)localObject1).top + m;
+    m = 0;
+    n = k;
+    k = m;
+    int i1 = i6;
+    while (k < i1)
     {
-      f2 = paramRect.left + k;
-      i2 = 0;
-      while (i2 < i6)
+      f2 = paramRect.left + n;
+      i4 = 0;
+      while (i4 < i8)
       {
-        i3 = i * i6 + i2;
-        j = i3;
+        i5 = k * i8 + i4;
+        m = i5;
         if (bool)
         {
-          j = i3;
-          if (i6 == 2)
+          m = i5;
+          if (i8 == 2)
           {
-            j = i3;
-            if (m > 2) {
-              if (i2 == 0) {
-                j = i;
+            m = i5;
+            if (i1 > 2) {
+              if (i4 == 0) {
+                m = k;
               } else {
-                j = m + i;
+                m = i1 + k;
               }
             }
           }
         }
-        localObject1 = (Pair)paramTag.jdField_a_of_type_ComTencentMobileqqConfessTagUtils$TagOriginal.jdField_a_of_type_JavaUtilArrayList.get(j);
+        localObject1 = (Pair)paramTag.a.d.get(m);
         localObject2 = new TagUtils.Tag.Child(new Rect(Math.round(f2), Math.round(f1), Math.round(f2 + ((Float)((Pair)localObject1).second).floatValue() * f3), Math.round(f1 + f3)), (String)((Pair)localObject1).first);
-        paramTag.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+        paramTag.h.add(localObject2);
         f2 = f2 + ((Float)((Pair)localObject1).second).floatValue() * f3 + f4;
-        i2 += 1;
+        i4 += 1;
       }
       f1 = f1 + f3 + f5;
-      i += 1;
+      k += 1;
     }
-    paramTag.c = n;
-    paramTag.d = i1;
+    paramTag.f = i2;
+    paramTag.g = i3;
   }
   
   private void a(ArrayList<TagUtils.TagOriginal> paramArrayList, boolean paramBoolean)
@@ -805,41 +671,41 @@ public class TagUtils$TagArrangementEngine
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) {
+    if (this.c.isEmpty()) {
       return;
     }
     new Rect();
-    int j;
-    for (int i = 0; (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) && (i < 100); i = j)
+    int m;
+    for (int k = 0; (this.c.size() > 0) && (k < 100); k = m)
     {
-      j = i + 1;
-      Collections.sort(this.jdField_b_of_type_JavaUtilArrayList, new TagUtils.TagArrangementEngine.2(this));
-      int k = this.jdField_b_of_type_JavaUtilArrayList.size();
+      m = k + 1;
+      Collections.sort(this.c, new TagUtils.TagArrangementEngine.2(this));
+      int n = this.c.size();
       Rect localRect1 = null;
       Rect localRect2 = localRect1;
-      i = 0;
-      while (i < k)
+      k = 0;
+      while (k < n)
       {
-        localRect1 = (Rect)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+        localRect1 = (Rect)this.c.get(k);
         localRect2 = a(localRect1, paramBoolean);
         if (localRect2 != null)
         {
-          i = 1;
+          k = 1;
           break label121;
         }
-        i += 1;
+        k += 1;
       }
-      i = 0;
+      k = 0;
       label121:
-      if ((i == 0) || (localRect1 == null) || (localRect2 == null)) {
+      if ((k == 0) || (localRect1 == null) || (localRect2 == null)) {
         break;
       }
       if (localRect2.equals(localRect1)) {
-        this.jdField_b_of_type_JavaUtilArrayList.remove(localRect1);
+        this.c.remove(localRect1);
       }
       a(localRect2);
       b();
-      this.c.add(localRect2);
+      this.d.add(localRect2);
     }
   }
   
@@ -860,13 +726,13 @@ public class TagUtils$TagArrangementEngine
   
   private boolean a(Rect paramRect1, Rect paramRect2, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       if (a((TagUtils.TagOriginal)localIterator.next(), paramRect1, paramInt)) {
         return true;
       }
     }
-    localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       Rect localRect = (Rect)localIterator.next();
@@ -879,155 +745,280 @@ public class TagUtils$TagArrangementEngine
   
   private boolean a(TagUtils.TagOriginal paramTagOriginal, Rect paramRect, int paramInt)
   {
-    Iterator localIterator = paramTagOriginal.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = paramTagOriginal.h.iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      if (((paramRect.width() + 8) * localInteger.intValue() >= paramTagOriginal.jdField_a_of_type_Float * paramInt) && (paramRect.height() + 8 >= localInteger.intValue() * paramInt)) {
+      if (((paramRect.width() + 8) * localInteger.intValue() >= paramTagOriginal.e * paramInt) && (paramRect.height() + 8 >= localInteger.intValue() * paramInt)) {
         return true;
       }
     }
     return false;
   }
   
+  private Rect b(Rect paramRect)
+  {
+    boolean bool;
+    int k;
+    int m;
+    int n;
+    Object localObject2;
+    if (this.j)
+    {
+      bool = false;
+      k = 0;
+      m = 1;
+    }
+    else
+    {
+      bool = this.e.isEmpty();
+      m = -1;
+      if (!bool)
+      {
+        localObject1 = this.e.iterator();
+        k = -1;
+        n = m;
+        for (;;)
+        {
+          m = n;
+          i1 = k;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          localObject2 = (Rect)((Iterator)localObject1).next();
+          if (((Rect)localObject2).left == paramRect.right) {
+            n = 1;
+          } else if (((Rect)localObject2).top == paramRect.bottom) {
+            k = 1;
+          }
+        }
+      }
+      i1 = -1;
+      k = i1;
+      if (Math.abs(paramRect.top - this.b.top) > Math.abs(paramRect.bottom - this.b.bottom)) {
+        k = 1;
+      }
+      if (Math.abs(paramRect.left - this.b.left) > Math.abs(paramRect.right - this.b.right)) {
+        m = 1;
+      }
+      if (paramRect.width() < paramRect.height())
+      {
+        n = k;
+        bool = true;
+        k = m;
+        m = n;
+      }
+      else
+      {
+        n = m;
+        bool = false;
+        m = k;
+        k = n;
+      }
+    }
+    a(this.a, bool);
+    int i2 = this.b.width();
+    int i3 = this.b.height();
+    if (this.a.size() <= 2)
+    {
+      n = i2;
+      i1 = i3;
+      if (this.g.size() < 1) {}
+    }
+    else
+    {
+      double d1 = i3;
+      Double.isNaN(d1);
+      i1 = (int)(d1 * 0.85D);
+      d1 = i2;
+      Double.isNaN(d1);
+      n = (int)(d1 * 0.85D);
+    }
+    int i1 = Math.min(paramRect.width(), i1);
+    i2 = Math.min(paramRect.height(), n);
+    if (this.j) {
+      n = TagUtils.b.nextInt(this.a.size());
+    } else {
+      n = TagUtils.b.nextInt(Math.min(this.a.size(), 3));
+    }
+    if (n != 0)
+    {
+      localObject1 = (TagUtils.TagOriginal)this.a.get(0);
+      localObject2 = this.a;
+      ((ArrayList)localObject2).set(0, ((ArrayList)localObject2).get(n));
+      this.a.set(n, localObject1);
+    }
+    Object localObject1 = this.a.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = a((TagUtils.TagOriginal)((Iterator)localObject1).next(), paramRect, i1, i2, k, m);
+      if (localObject2 != null) {
+        return localObject2;
+      }
+    }
+    return null;
+  }
+  
   private void b()
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() <= 1) {
+    if (this.c.size() <= 1) {
       return;
     }
-    int i = this.jdField_b_of_type_JavaUtilArrayList.size();
+    int k = this.c.size();
     Rect localRect1 = null;
-    i -= 1;
-    while (i >= 0)
+    k -= 1;
+    while (k >= 0)
     {
-      Rect localRect2 = (Rect)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-      int m = 0;
-      int j = i - 1;
-      int k;
+      Rect localRect2 = (Rect)this.c.get(k);
+      int i1 = 0;
+      int m = k - 1;
+      int n;
       for (;;)
       {
-        k = m;
-        if (j < 0) {
+        n = i1;
+        if (m < 0) {
           break;
         }
-        localRect1 = (Rect)this.jdField_b_of_type_JavaUtilArrayList.get(j);
+        localRect1 = (Rect)this.c.get(m);
         if (a(localRect2, localRect1))
         {
-          k = 1;
+          n = 1;
           break;
         }
-        j -= 1;
+        m -= 1;
       }
-      if (k != 0)
+      if (n != 0)
       {
         localRect1.union(localRect2);
-        this.jdField_b_of_type_JavaUtilArrayList.remove(localRect2);
+        this.c.remove(localRect2);
       }
       else if ((localRect2.width() <= 1) || (localRect2.height() <= 1))
       {
-        this.jdField_b_of_type_JavaUtilArrayList.remove(localRect2);
+        this.c.remove(localRect2);
       }
-      i -= 1;
+      k -= 1;
     }
   }
   
-  private void c()
+  private Rect c()
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) {
+    if (this.c.isEmpty()) {
+      return null;
+    }
+    Collections.sort(this.c, new TagUtils.TagArrangementEngine.1(this));
+    Object localObject = (Rect)this.c.get(TagUtils.b.nextInt(Math.min(this.c.size(), 3)));
+    if (this.h.contains(localObject))
+    {
+      localObject = this.c.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Rect localRect = (Rect)((Iterator)localObject).next();
+        if (!this.h.contains(localRect)) {
+          return localRect;
+        }
+      }
+      return null;
+    }
+    return localObject;
+  }
+  
+  private void d()
+  {
+    if (this.c.isEmpty()) {
       return;
     }
     new Rect();
-    int n = 0;
-    while ((this.jdField_b_of_type_JavaUtilArrayList.size() > 0) && (n < 200))
+    int i2 = 0;
+    while ((this.c.size() > 0) && (i2 < 200))
     {
-      Collections.sort(this.jdField_b_of_type_JavaUtilArrayList, new TagUtils.TagArrangementEngine.3(this));
-      int j = this.jdField_b_of_type_JavaUtilArrayList.size();
-      int m = TagUtils.jdField_a_of_type_Int;
+      Collections.sort(this.c, new TagUtils.TagArrangementEngine.3(this));
+      int m = this.c.size();
+      int i1 = TagUtils.a;
       Object localObject2 = null;
       Object localObject1 = null;
-      int i1 = 0;
-      int i = 0;
-      int k = -1;
+      int i3 = 0;
+      int k = 0;
+      int n = -1;
       Object localObject3;
-      int i2;
-      int i3;
       int i4;
+      int i5;
+      int i6;
       for (;;)
       {
         localObject3 = localObject1;
-        i2 = i;
-        i3 = k;
-        i4 = m;
-        if (i1 >= j) {
+        i4 = k;
+        i5 = n;
+        i6 = i1;
+        if (i3 >= m) {
           break;
         }
-        localObject2 = (Rect)this.jdField_b_of_type_JavaUtilArrayList.get(i1);
-        if ((((Rect)localObject2).width() >= TagUtils.jdField_a_of_type_Int) && (((Rect)localObject2).height() >= TagUtils.jdField_a_of_type_Int))
+        localObject2 = (Rect)this.c.get(i3);
+        if ((((Rect)localObject2).width() >= TagUtils.a) && (((Rect)localObject2).height() >= TagUtils.a))
         {
-          Iterator localIterator1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          Iterator localIterator1 = this.a.iterator();
           while (localIterator1.hasNext())
           {
             localObject3 = (TagUtils.TagOriginal)localIterator1.next();
-            Iterator localIterator2 = ((TagUtils.TagOriginal)localObject3).jdField_a_of_type_JavaUtilSet.iterator();
+            Iterator localIterator2 = ((TagUtils.TagOriginal)localObject3).h.iterator();
             while (localIterator2.hasNext())
             {
               Integer localInteger = (Integer)localIterator2.next();
-              if ((((Rect)localObject2).width() * localInteger.intValue() >= ((TagUtils.TagOriginal)localObject3).jdField_a_of_type_Float * TagUtils.jdField_a_of_type_Int) && (((Rect)localObject2).height() >= TagUtils.jdField_a_of_type_Int * localInteger.intValue()))
+              if ((((Rect)localObject2).width() * localInteger.intValue() >= ((TagUtils.TagOriginal)localObject3).e * TagUtils.a) && (((Rect)localObject2).height() >= TagUtils.a * localInteger.intValue()))
               {
-                float f1 = ((TagUtils.TagOriginal)localObject3).jdField_a_of_type_Float / localInteger.intValue();
+                float f1 = ((TagUtils.TagOriginal)localObject3).e / localInteger.intValue();
                 float f2 = localInteger.intValue();
                 float f3 = Math.min(((Rect)localObject2).width() / f1, ((Rect)localObject2).height() / f2) / 4.0F * 4.0F;
                 if (((Rect)localObject2).width() * (((Rect)localObject2).height() - f2 * f3) + ((Rect)localObject2).height() * (((Rect)localObject2).width() - f1 * f3) < 2.147484E+009F)
                 {
-                  m = (int)f3;
-                  k = localInteger.intValue();
+                  i1 = (int)f3;
+                  n = localInteger.intValue();
                   localObject1 = localObject3;
-                  i = 1;
+                  k = 1;
                 }
               }
             }
           }
           localObject3 = localObject1;
-          i4 = i;
-          i3 = k;
-          i2 = m;
-          if (i != 0)
+          i6 = k;
+          i5 = n;
+          i4 = i1;
+          if (k != 0)
           {
             localObject3 = localObject1;
-            i2 = i;
-            i3 = k;
-            i4 = m;
+            i4 = k;
+            i5 = n;
+            i6 = i1;
             break;
           }
         }
         else
         {
-          i2 = m;
-          i3 = k;
-          i4 = i;
+          i4 = i1;
+          i5 = n;
+          i6 = k;
           localObject3 = localObject1;
         }
-        i1 += 1;
+        i3 += 1;
         localObject1 = localObject3;
-        i = i4;
-        k = i3;
-        m = i2;
+        k = i6;
+        n = i5;
+        i1 = i4;
       }
-      if ((i2 == 0) || (localObject2 == null) || (i3 <= 0) || (localObject3 == null)) {
+      if ((i4 == 0) || (localObject2 == null) || (i5 <= 0) || (localObject3 == null)) {
         break;
       }
-      this.jdField_b_of_type_JavaUtilArrayList.remove(localObject2);
-      localObject1 = a((Rect)localObject2, ((Rect)localObject2).width(), ((Rect)localObject2).height(), (int)(i4 * ((TagUtils.TagOriginal)localObject3).jdField_a_of_type_Float / i3), i4 * i3, -1, -1, i4, TagUtils.jdField_a_of_type_Int);
+      this.c.remove(localObject2);
+      localObject1 = a((Rect)localObject2, ((Rect)localObject2).width(), ((Rect)localObject2).height(), (int)(i6 * ((TagUtils.TagOriginal)localObject3).e / i5), i6 * i5, -1, -1, i6, TagUtils.a);
       if (localObject1 == null) {
         return;
       }
       a((Rect)localObject2, (Rect)localObject1, true);
-      localObject2 = new TagUtils.Tag((TagUtils.TagOriginal)localObject3, -1, (Rect)localObject1, i4, false, i3);
+      localObject2 = new TagUtils.Tag((TagUtils.TagOriginal)localObject3, -1, (Rect)localObject1, i6, false, i5);
       a((TagUtils.Tag)localObject2, (Rect)localObject1);
-      this.f.add(localObject2);
+      this.g.add(localObject2);
       a((Rect)localObject1);
       b();
-      n += 1;
+      i2 += 1;
     }
   }
   
@@ -1037,87 +1028,87 @@ public class TagUtils$TagArrangementEngine
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()) && (paramRect != null))
     {
       System.currentTimeMillis();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+      this.a.addAll(paramArrayList);
+      this.b.set(paramRect);
       if ((paramArrayList1 != null) && (!paramArrayList1.isEmpty()))
       {
-        this.d.addAll(paramArrayList1);
-        i = 1;
+        this.e.addAll(paramArrayList1);
+        k = 1;
       }
       else
       {
-        i = 0;
+        k = 0;
       }
-      this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidGraphicsRect);
-      if (i != 0)
+      this.c.add(this.b);
+      if (k != 0)
       {
-        paramArrayList = this.d.iterator();
+        paramArrayList = this.e.iterator();
         while (paramArrayList.hasNext())
         {
           paramRect = (Rect)paramArrayList.next();
-          a(this.jdField_a_of_type_AndroidGraphicsRect, paramRect, true);
+          a(this.b, paramRect, true);
           a(paramRect);
           b();
         }
-        this.jdField_a_of_type_Boolean = true;
-        paramArrayList = (Rect)this.jdField_b_of_type_JavaUtilArrayList.get(0);
-        paramRect = a(paramArrayList);
+        this.j = true;
+        paramArrayList = (Rect)this.c.get(0);
+        paramRect = b(paramArrayList);
         if (paramRect != null)
         {
           a(paramArrayList, paramRect, true);
           a(paramRect);
           b();
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.j = false;
       }
-      int j = 0;
-      int i = 0;
-      while ((this.jdField_b_of_type_JavaUtilArrayList.size() > 0) && (j < 200) && (i < 100))
+      int m = 0;
+      int k = 0;
+      while ((this.c.size() > 0) && (m < 200) && (k < 100))
       {
-        j += 1;
-        paramArrayList = a();
+        m += 1;
+        paramArrayList = c();
         if (paramArrayList == null) {
           break;
         }
-        paramRect = a(paramArrayList);
+        paramRect = b(paramArrayList);
         if (paramRect == null)
         {
-          i += 1;
-          this.g.add(paramArrayList);
+          k += 1;
+          this.h.add(paramArrayList);
         }
         else
         {
-          this.g.clear();
+          this.h.clear();
           a(paramArrayList, paramRect, true);
           a(paramRect);
           b();
         }
       }
       a(false);
-      TagUtils.jdField_a_of_type_Int = 12;
-      paramArrayList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      i = 1;
+      TagUtils.a = 12;
+      paramArrayList = this.a.iterator();
+      k = 1;
       while (paramArrayList.hasNext())
       {
         paramRect = (TagUtils.TagOriginal)paramArrayList.next();
         paramRect.a();
-        if (paramRect.b != 13) {
-          i = 0;
+        if (paramRect.f != 13) {
+          k = 0;
         }
       }
-      if (i != 0) {
-        TagUtils.jdField_a_of_type_Int = 8;
+      if (k != 0) {
+        TagUtils.a = 8;
       }
-      c();
+      d();
       a(true);
-      return this.f;
+      return this.g;
     }
-    return this.f;
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TagUtils.TagArrangementEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ class FriendTipsHelper$1
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = this.this$0.a.getPreferences().edit();
+    SharedPreferences.Editor localEditor = this.this$0.d.getPreferences().edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LT_tip_show_times");
-    localStringBuilder.append(this.this$0.a.getCurrentAccountUin());
+    localStringBuilder.append(this.this$0.d.getCurrentAccountUin());
     localEditor.putInt(localStringBuilder.toString(), 1);
     localEditor.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FriendTipsHelper.1
  * JD-Core Version:    0.7.0.1
  */

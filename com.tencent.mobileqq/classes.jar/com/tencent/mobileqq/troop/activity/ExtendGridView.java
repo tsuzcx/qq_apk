@@ -15,13 +15,13 @@ import com.tencent.mobileqq.R.styleable;
 public class ExtendGridView
   extends GridView
 {
-  protected int a;
   protected boolean a;
-  protected int b;
   protected boolean b;
   protected int c;
   protected int d;
   protected int e;
+  protected int f;
+  protected int g;
   
   public ExtendGridView(Context paramContext)
   {
@@ -37,17 +37,17 @@ public class ExtendGridView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.GridView);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(1, false);
-    this.jdField_b_of_type_Boolean = paramContext.getBoolean(0, false);
+    this.a = paramContext.getBoolean(1, false);
+    this.b = paramContext.getBoolean(0, false);
     paramContext.recycle();
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
     Display localDisplay = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay();
-    this.d = localDisplay.getWidth();
-    this.e = localDisplay.getHeight();
+    this.f = localDisplay.getWidth();
+    this.g = localDisplay.getHeight();
   }
   
   public int a()
@@ -59,7 +59,7 @@ public class ExtendGridView
     }
     int j = i;
     if (i <= 0) {
-      j = this.d;
+      j = this.f;
     }
     int i = getHorizontalSpacing();
     int k = getPaddingLeft();
@@ -75,29 +75,29 @@ public class ExtendGridView
   
   public int getHorizontalSpacing()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
   public int getNumColumns()
   {
-    return this.c;
+    return this.e;
   }
   
   public int getVerticalSpacing()
   {
-    return this.jdField_b_of_type_Int;
+    return this.d;
   }
   
   @TargetApi(8)
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    a();
+    b();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       paramInt2 = View.MeasureSpec.makeMeasureSpec(536870911, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
@@ -106,7 +106,7 @@ public class ExtendGridView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-    if ((this.jdField_b_of_type_Boolean) && (i < 0)) {
+    if ((this.b) && (i < 0)) {
       return false;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -115,13 +115,13 @@ public class ExtendGridView
   public void setHorizontalSpacing(int paramInt)
   {
     super.setHorizontalSpacing(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void setNumColumns(int paramInt)
   {
     super.setNumColumns(paramInt);
-    this.c = paramInt;
+    this.e = paramInt;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -131,14 +131,14 @@ public class ExtendGridView
   
   public void setPenetrateTouch(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void setStretchable(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.a != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.a = paramBoolean;
       requestLayout();
     }
   }
@@ -146,12 +146,12 @@ public class ExtendGridView
   public void setVerticalSpacing(int paramInt)
   {
     super.setVerticalSpacing(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.ExtendGridView
  * JD-Core Version:    0.7.0.1
  */

@@ -92,35 +92,6 @@ public class RobotUtils
     return null;
   }
   
-  public static String a(String paramString)
-  {
-    if (paramString != null)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("gc=");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append("&");
-      paramString = localStringBuilder.toString();
-    }
-    else
-    {
-      paramString = "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("https://web.qun.qq.com/qunrobot/timingmessageedit?");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("r_uin=2854196310&f_id=41&type=2&slot=0&_wwv=128");
-    paramString = localStringBuilder.toString();
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("url ");
-      localStringBuilder.append(paramString);
-      QLog.d("RobotUtils", 2, localStringBuilder.toString());
-    }
-    return paramString;
-  }
-  
   public static String a(String paramString1, String paramString2)
   {
     String str = paramString1;
@@ -212,7 +183,7 @@ public class RobotUtils
     paramString1 = ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).getRobotProfileUrl(paramString1, paramString2);
     paramString2 = new Intent(paramContext, QQBrowserActivity.class);
     paramString2.putExtra("url", paramString1);
-    paramString2.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131713408));
+    paramString2.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
     if (WebViewPluginFactory.a.containsKey("robotsummary")) {
       paramString2.putExtra("insertPluginsArray", new String[] { "robotsummary" });
     }
@@ -283,10 +254,10 @@ public class RobotUtils
       QLog.e("RobotUtils", 2, "openGroupManagerBookCard with empty troopUin");
       return;
     }
-    paramString = a(paramString);
+    paramString = b(paramString);
     Intent localIntent = new Intent(paramQBaseActivity, QQBrowserActivity.class);
     localIntent.putExtra("url", paramString);
-    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131713410));
+    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
     if (WebViewPluginFactory.a.containsKey("robotsummary")) {
       localIntent.putExtra("insertPluginsArray", new String[] { "robotsummary" });
     }
@@ -311,19 +282,19 @@ public class RobotUtils
     Object localObject2 = paramQQAppInterface.toString();
     paramQQAppInterface = ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).getRobotProfileUrl(paramString1, paramString2);
     paramString1 = new StringBuilder();
-    paramString1.append(HardCodeUtil.a(2131713409));
+    paramString1.append(HardCodeUtil.a(2131910961));
     paramString1.append(paramString2);
     paramString1 = paramString1.toString();
     Object localObject3 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(14);
     Object localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append(HardCodeUtil.a(2131713412));
+    ((StringBuilder)localObject4).append(HardCodeUtil.a(2131910963));
     ((StringBuilder)localObject4).append(paramString3);
-    localObject2 = ((AbsShareMsg.Builder)localObject3).a(((StringBuilder)localObject4).toString()).a(2).a(1).a("web", paramQQAppInterface, (String)localObject2, (String)localObject1, (String)localObject1).d(paramActivity.getResources().getString(2131718146)).a();
+    localObject2 = ((AbsShareMsg.Builder)localObject3).a(((StringBuilder)localObject4).toString()).a(2).a(1).a("web", paramQQAppInterface, (String)localObject2, (String)localObject1, (String)localObject1).d(paramActivity.getResources().getString(2131915624)).a();
     localObject3 = new StructMsgItemLayoutDefault();
-    ((AbsStructMsgItem)localObject3).b(1);
-    ((AbsStructMsgItem)localObject3).a(HardCodeUtil.a(2131713411));
+    ((AbsStructMsgItem)localObject3).c(1);
+    ((AbsStructMsgItem)localObject3).b(HardCodeUtil.a(2131910962));
     localObject4 = new StructMsgItemLayout2();
-    ((AbsStructMsgItem)localObject4).b(1);
+    ((AbsStructMsgItem)localObject4).c(1);
     ((AbsStructMsgItem)localObject4).a(new StructMsgItemCover((String)localObject1));
     ((AbsStructMsgItem)localObject4).a(new StructMsgItemTitle(paramString3));
     ((AbsStructMsgItem)localObject4).a(new StructMsgItemSummary(paramString1));
@@ -364,8 +335,8 @@ public class RobotUtils
     }
     catch (Exception paramString2)
     {
-      label27:
-      break label27;
+      label31:
+      break label31;
     }
     ReportController.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, "0", "", paramString3, "");
   }
@@ -415,11 +386,31 @@ public class RobotUtils
   
   public static String b(String paramString)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return ContactUtils.a((QQAppInterface)localAppRuntime, paramString, false);
+    if (paramString != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gc=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("&");
+      paramString = localStringBuilder.toString();
     }
-    return null;
+    else
+    {
+      paramString = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://web.qun.qq.com/qunrobot/timingmessageedit?");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("r_uin=2854196310&f_id=41&type=2&slot=0&_wwv=128");
+    paramString = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url ");
+      localStringBuilder.append(paramString);
+      QLog.d("RobotUtils", 2, localStringBuilder.toString());
+    }
+    return paramString;
   }
   
   public static final String b(String paramString1, String paramString2)
@@ -458,10 +449,19 @@ public class RobotUtils
     }
     return null;
   }
+  
+  public static String c(String paramString)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return ContactUtils.a((QQAppInterface)localAppRuntime, paramString, false);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RobotUtils
  * JD-Core Version:    0.7.0.1
  */

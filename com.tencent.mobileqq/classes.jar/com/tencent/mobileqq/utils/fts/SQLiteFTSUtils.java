@@ -47,14 +47,14 @@ import mqq.app.MobileQQ;
 
 public class SQLiteFTSUtils
 {
-  private static int a = -1;
   public static boolean a = false;
-  private static int jdField_b_of_type_Int = -1;
-  private static boolean jdField_b_of_type_Boolean = false;
+  private static boolean b = false;
   private static int c = -1;
   private static int d = -1;
   private static int e = -1;
   private static int f = -1;
+  private static int g = -1;
+  private static int h = -1;
   
   private static int a(Context paramContext)
   {
@@ -70,46 +70,24 @@ public class SQLiteFTSUtils
   
   public static int a(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    if (jdField_d_of_type_Int == -1)
+    if (f == -1)
     {
       SharedPreferences localSharedPreferences = paramBaseApplicationImpl.getSharedPreferences("fts_sp_file", 0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("fts_notify_flag");
       localStringBuilder.append(paramBaseApplicationImpl.getRuntime().getAccount());
-      jdField_d_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+      f = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
     }
-    return jdField_d_of_type_Int;
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_a_of_type_Int == -1)
-    {
-      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("fts_compare_flag");
-      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      jdField_a_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  public static int a(AppRuntime paramAppRuntime)
-  {
-    SharedPreferences localSharedPreferences = paramAppRuntime.getApplication().getSharedPreferences("fts_sp_file", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("support_fts4_flag");
-    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-    return localSharedPreferences.getInt(localStringBuilder.toString(), -1);
+    return f;
   }
   
   public static Pair<CharSequence, CharSequence> a(IContactSearchModel paramIContactSearchModel)
   {
     if ((paramIContactSearchModel instanceof ContactSearchModelFriend)) {
-      return ((ContactSearchModelFriend)paramIContactSearchModel).a();
+      return ((ContactSearchModelFriend)paramIContactSearchModel).r();
     }
     if ((paramIContactSearchModel instanceof ContactSearchModelDiscussionMember)) {
-      return ((ContactSearchModelDiscussionMember)paramIContactSearchModel).a();
+      return ((ContactSearchModelDiscussionMember)paramIContactSearchModel).r();
     }
     return null;
   }
@@ -125,20 +103,20 @@ public class SQLiteFTSUtils
         return ContactUtils.a(paramQQAppInterface, paramString1, paramInt);
       }
       if (AppConstants.SYSTEM_MSG_UIN.equals(paramString1)) {
-        return paramContext.getString(2131719404);
+        return paramContext.getString(2131916963);
       }
       if (AppConstants.QQBROADCAST_MSG_UIN.equals(paramString1)) {
-        return paramContext.getString(2131719403);
+        return paramContext.getString(2131916962);
       }
       if (AppConstants.VOTE_MSG_UIN.equals(paramString1)) {
-        return paramContext.getString(2131719454);
+        return paramContext.getString(2131917014);
       }
       if (paramInt == 1000)
       {
         TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
         paramContext = paramString1;
         if (localTroopManager != null) {
-          paramContext = ContactUtils.a(paramQQAppInterface, paramString1, localTroopManager.b(paramString2), paramString2, true, null);
+          paramContext = ContactUtils.a(paramQQAppInterface, paramString1, localTroopManager.k(paramString2), paramString2, true, null);
         }
         return paramContext;
       }
@@ -188,7 +166,7 @@ public class SQLiteFTSUtils
       if (((String)localObject2).toLowerCase().startsWith(paramString.toLowerCase()))
       {
         localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
-        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131167203)), 0, paramString.length(), 17);
+        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131168189)), 0, paramString.length(), 17);
         localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo((String)localObject1, 0, new Pair(localObject2, null)));
       }
       for (;;)
@@ -203,7 +181,7 @@ public class SQLiteFTSUtils
           ((StringBuilder)localObject3).append((String)localObject1);
           ((StringBuilder)localObject3).append(")");
           localObject3 = new SpannableStringBuilder(((StringBuilder)localObject3).toString());
-          ((SpannableStringBuilder)localObject3).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131167203)), 1, paramString.length() + 1, 17);
+          ((SpannableStringBuilder)localObject3).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131168189)), 1, paramString.length() + 1, 17);
           localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo((String)localObject1, 0, new Pair(localObject2, localObject3)));
         }
         else
@@ -213,7 +191,7 @@ public class SQLiteFTSUtils
           {
             i = localObject3[1];
             localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
-            ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131167203)), 0, i, 17);
+            ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131168189)), 0, i, 17);
             localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo((String)localObject1, 0, new Pair(localObject2, null)));
           }
           else
@@ -225,7 +203,7 @@ public class SQLiteFTSUtils
             }
             i = localObject3[1];
             localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
-            ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131167203)), 0, i, 17);
+            ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131168189)), 0, i, 17);
             localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo((String)localObject1, 0, new Pair(localObject2, null)));
           }
         }
@@ -241,33 +219,33 @@ public class SQLiteFTSUtils
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (IContactSearchModel)((Iterator)localObject1).next();
-        if ((((IContactSearchModel)localObject2).b() & 0xFFFFFFFF & 0xFF000000) >> 24 != 2L)
+        if ((((IContactSearchModel)localObject2).u() & 0xFFFFFFFF & 0xFF000000) >> 24 != 2L)
         {
           i = localArrayList.size();
           paramQQAppInterface = "null";
           if (i < m)
           {
-            if ((((IContactSearchModel)localObject2).d() != 0) && (((IContactSearchModel)localObject2).d() != 1004))
+            if ((((IContactSearchModel)localObject2).j() != 0) && (((IContactSearchModel)localObject2).j() != 1004))
             {
-              localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo(((IContactSearchModel)localObject2).a(), ((IContactSearchModel)localObject2).d(), null));
+              localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo(((IContactSearchModel)localObject2).c(), ((IContactSearchModel)localObject2).j(), null));
             }
             else
             {
               j += 1;
               paramString = a((IContactSearchModel)localObject2);
-              localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo(((IContactSearchModel)localObject2).a(), ((IContactSearchModel)localObject2).d(), paramString));
+              localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo(((IContactSearchModel)localObject2).c(), ((IContactSearchModel)localObject2).j(), paramString));
             }
             i = j;
             if (QLog.isColorLevel())
             {
-              if (((IContactSearchModel)localObject2).a() == null) {
+              if (((IContactSearchModel)localObject2).c() == null) {
                 paramString = "null";
               } else {
-                paramString = ((IContactSearchModel)localObject2).a();
+                paramString = ((IContactSearchModel)localObject2).c();
               }
-              i = ((IContactSearchModel)localObject2).d();
-              if (((IContactSearchModel)localObject2).b() != null) {
-                paramQQAppInterface = ((IContactSearchModel)localObject2).b();
+              i = ((IContactSearchModel)localObject2).j();
+              if (((IContactSearchModel)localObject2).d() != null) {
+                paramQQAppInterface = ((IContactSearchModel)localObject2).d();
               }
               QLog.d("Q.fts.utils", 2, String.format("contactSearchForTopN, contact uin: %s, uinType: %d, matchTitle: %s", new Object[] { paramString, Integer.valueOf(i), paramQQAppInterface }));
               i = j;
@@ -278,11 +256,11 @@ public class SQLiteFTSUtils
             if (j >= k) {
               break;
             }
-            if (((IContactSearchModel)localObject2).d() == 0) {
+            if (((IContactSearchModel)localObject2).j() == 0) {
               break label823;
             }
             i = j;
-            if (((IContactSearchModel)localObject2).d() == 1004) {
+            if (((IContactSearchModel)localObject2).j() == 1004) {
               break label823;
             }
           }
@@ -292,18 +270,18 @@ public class SQLiteFTSUtils
             label823:
             j += 1;
             paramString = a((IContactSearchModel)localObject2);
-            localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo(((IContactSearchModel)localObject2).a(), ((IContactSearchModel)localObject2).d(), paramString));
+            localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo(((IContactSearchModel)localObject2).c(), ((IContactSearchModel)localObject2).j(), paramString));
             i = j;
             if (QLog.isColorLevel())
             {
-              if (((IContactSearchModel)localObject2).a() == null) {
+              if (((IContactSearchModel)localObject2).c() == null) {
                 paramString = "null";
               } else {
-                paramString = ((IContactSearchModel)localObject2).a();
+                paramString = ((IContactSearchModel)localObject2).c();
               }
-              i = ((IContactSearchModel)localObject2).d();
-              if (((IContactSearchModel)localObject2).b() != null) {
-                paramQQAppInterface = ((IContactSearchModel)localObject2).b();
+              i = ((IContactSearchModel)localObject2).j();
+              if (((IContactSearchModel)localObject2).d() != null) {
+                paramQQAppInterface = ((IContactSearchModel)localObject2).d();
               }
               QLog.d("Q.fts.utils", 2, String.format("contactSearchForTopN, contact uin: %s, uinType: %d, matchTitle: %s", new Object[] { paramString, Integer.valueOf(i), paramQQAppInterface }));
               i = j;
@@ -341,71 +319,52 @@ public class SQLiteFTSUtils
     return localArrayList;
   }
   
-  public static ArrayList<String> a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    paramString = paramString.replaceAll("[^A-Za-z0-9\\u4e00-\\u9fa5]", " ").split("\\s");
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      String str = paramString[i].trim();
-      if ((str != null) && (!TextUtils.isEmpty(str))) {
-        localArrayList.add(str);
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
   public static void a(View paramView)
   {
     HashMap localHashMap = new HashMap();
-    SQLiteFTSUtils.FtsItemClickEvent.jdField_c_of_type_Int = a(paramView.getContext());
-    paramView = (Integer)paramView.getTag(2131380885);
+    SQLiteFTSUtils.FtsItemClickEvent.c = a(paramView.getContext());
+    paramView = (Integer)paramView.getTag(2131449868);
     int i;
     if (paramView != null) {
       i = paramView.intValue();
     } else {
       i = -1;
     }
-    SQLiteFTSUtils.FtsItemClickEvent.jdField_e_of_type_Int = i + 1;
-    if (SQLiteFTSUtils.FtsItemClickEvent.jdField_f_of_type_Int == 1)
+    SQLiteFTSUtils.FtsItemClickEvent.e = i + 1;
+    if (SQLiteFTSUtils.FtsItemClickEvent.f == 1)
     {
-      SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Long = SQLiteFTSUtils.FtsItemClickEvent.jdField_d_of_type_Long + (System.nanoTime() - SQLiteFTSUtils.FtsItemClickEvent.jdField_c_of_type_Long) / 1000000L;
-      SQLiteFTSUtils.FtsItemClickEvent.jdField_b_of_type_Long = SQLiteFTSUtils.FtsItemClickEvent.jdField_f_of_type_Long + (System.nanoTime() - SQLiteFTSUtils.FtsItemClickEvent.jdField_e_of_type_Long) / 1000000L;
+      SQLiteFTSUtils.FtsItemClickEvent.h = SQLiteFTSUtils.FtsItemClickEvent.n + (System.nanoTime() - SQLiteFTSUtils.FtsItemClickEvent.m) / 1000000L;
+      SQLiteFTSUtils.FtsItemClickEvent.i = SQLiteFTSUtils.FtsItemClickEvent.p + (System.nanoTime() - SQLiteFTSUtils.FtsItemClickEvent.o) / 1000000L;
     }
-    if (SQLiteFTSUtils.FtsItemClickEvent.jdField_d_of_type_Int == 1)
+    if (SQLiteFTSUtils.FtsItemClickEvent.d == 1)
     {
-      SQLiteFTSUtils.FtsItemClickEvent.h = -1;
-      SQLiteFTSUtils.FtsItemClickEvent.i = -1;
       SQLiteFTSUtils.FtsItemClickEvent.j = -1;
+      SQLiteFTSUtils.FtsItemClickEvent.k = -1;
+      SQLiteFTSUtils.FtsItemClickEvent.l = -1;
     }
-    localHashMap.put("keyNum", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Int));
-    localHashMap.put("firstKeyLen", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.jdField_b_of_type_Int));
-    localHashMap.put("itemPage", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.jdField_c_of_type_Int));
-    localHashMap.put("itemSearchStrategy", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.jdField_d_of_type_Int));
-    localHashMap.put("itemPosition", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.jdField_e_of_type_Int));
-    localHashMap.put("itemType", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.jdField_f_of_type_Int));
+    localHashMap.put("keyNum", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.a));
+    localHashMap.put("firstKeyLen", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.b));
+    localHashMap.put("itemPage", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.c));
+    localHashMap.put("itemSearchStrategy", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.d));
+    localHashMap.put("itemPosition", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.e));
+    localHashMap.put("itemType", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.f));
     localHashMap.put("itemUinType", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.g));
-    if (SQLiteFTSUtils.FtsItemClickEvent.jdField_f_of_type_Int == 1)
+    if (SQLiteFTSUtils.FtsItemClickEvent.f == 1)
     {
-      localHashMap.put("totalCost", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Long));
-      localHashMap.put("searchCost", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.jdField_b_of_type_Long));
+      localHashMap.put("totalCost", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.h));
+      localHashMap.put("searchCost", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.i));
     }
-    localHashMap.put("senderNum", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.h));
-    localHashMap.put("friendNum", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.i));
-    localHashMap.put("friendIndex", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.j));
-    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actFtsItemClickEvent", true, SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Long, SQLiteFTSUtils.FtsItemClickEvent.jdField_b_of_type_Long, localHashMap, "", false);
-    if ((SQLiteFTSUtils.FtsItemClickEvent.jdField_f_of_type_Int == 1) && (QLog.isColorLevel()))
+    localHashMap.put("senderNum", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.j));
+    localHashMap.put("friendNum", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.k));
+    localHashMap.put("friendIndex", String.valueOf(SQLiteFTSUtils.FtsItemClickEvent.l));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actFtsItemClickEvent", true, SQLiteFTSUtils.FtsItemClickEvent.h, SQLiteFTSUtils.FtsItemClickEvent.i, localHashMap, "", false);
+    if ((SQLiteFTSUtils.FtsItemClickEvent.f == 1) && (QLog.isColorLevel()))
     {
       paramView = new StringBuilder();
       paramView.append("actFtsItemClickEvent: totalCost = ");
-      paramView.append(SQLiteFTSUtils.FtsItemClickEvent.jdField_a_of_type_Long);
+      paramView.append(SQLiteFTSUtils.FtsItemClickEvent.h);
       paramView.append(", searchCost = ");
-      paramView.append(SQLiteFTSUtils.FtsItemClickEvent.jdField_b_of_type_Long);
+      paramView.append(SQLiteFTSUtils.FtsItemClickEvent.i);
       QLog.d("Q.fts.utils", 2, paramView.toString());
     }
   }
@@ -467,16 +426,7 @@ public class SQLiteFTSUtils
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    return (b(paramQQAppInterface) == 1) && (!b());
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    SharedPreferences localSharedPreferences = paramAppRuntime.getApplication().getSharedPreferences("fts_sp_file", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("fts_upgrade_log_flag");
-    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
+    return (c(paramQQAppInterface) == 1) && (!b());
   }
   
   public static String[] a(String paramString)
@@ -526,34 +476,32 @@ public class SQLiteFTSUtils
     return localObject;
   }
   
-  public static int b(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_b_of_type_Int == -1)
-    {
-      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("fts_extension_flag");
-      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      jdField_b_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 1);
-    }
-    return jdField_b_of_type_Int;
-  }
-  
   public static int b(AppRuntime paramAppRuntime)
   {
-    int j = a(paramAppRuntime);
-    int i = j;
-    if (j == -1)
-    {
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        a(paramAppRuntime, 1);
-        return 1;
-      }
-      a(paramAppRuntime, 0);
-      i = 0;
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApplication().getSharedPreferences("fts_sp_file", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("support_fts4_flag");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    return localSharedPreferences.getInt(localStringBuilder.toString(), -1);
+  }
+  
+  public static ArrayList<String> b(String paramString)
+  {
+    if (paramString == null) {
+      return null;
     }
-    return i;
+    paramString = paramString.replaceAll("[^A-Za-z0-9\\u4e00-\\u9fa5]", " ").split("\\s");
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      String str = paramString[i].trim();
+      if ((str != null) && (!TextUtils.isEmpty(str))) {
+        localArrayList.add(str);
+      }
+      i += 1;
+    }
+    return localArrayList;
   }
   
   public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -568,10 +516,10 @@ public class SQLiteFTSUtils
   
   public static boolean b()
   {
-    if (jdField_a_of_type_Boolean) {
-      return jdField_b_of_type_Boolean;
+    if (a) {
+      return b;
     }
-    jdField_a_of_type_Boolean = true;
+    a = true;
     if (a())
     {
       if (QLog.isColorLevel()) {
@@ -580,12 +528,12 @@ public class SQLiteFTSUtils
       if (!b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))
       {
         localObject1 = new HashMap();
-        ((HashMap)localObject1).put("param_ROM", DeviceInfoUtil.j());
+        ((HashMap)localObject1).put("param_ROM", DeviceInfoUtil.v());
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actQQInstallExternal", true, -1L, 0L, (HashMap)localObject1, null, false);
         a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
       }
     }
-    Object localObject1 = DeviceInfoUtil.a();
+    Object localObject1 = DeviceInfoUtil.p();
     Object localObject2;
     if (QLog.isColorLevel())
     {
@@ -599,7 +547,7 @@ public class SQLiteFTSUtils
     }
     if (localObject1[0] == -1L)
     {
-      jdField_b_of_type_Boolean = true;
+      b = true;
       return true;
     }
     try
@@ -630,7 +578,7 @@ public class SQLiteFTSUtils
         if (QLog.isColorLevel()) {
           QLog.i("Q.fts.utils", 2, "NOT Low Rom For FTS");
         }
-        jdField_b_of_type_Boolean = false;
+        b = false;
         return false;
       }
       if (QLog.isColorLevel()) {
@@ -639,14 +587,14 @@ public class SQLiteFTSUtils
       if (!c((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))
       {
         localObject2 = new HashMap();
-        ((HashMap)localObject2).put("param_ROM", DeviceInfoUtil.j());
+        ((HashMap)localObject2).put("param_ROM", DeviceInfoUtil.v());
         ((HashMap)localObject2).put("param_totalrom", String.valueOf(localObject1[0]));
         ((HashMap)localObject2).put("param_availrom", String.valueOf(localObject1[1]));
         ((HashMap)localObject2).put("param_dbsize", String.valueOf(l));
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actLowRomForFTS", true, -1L, 0L, (HashMap)localObject2, null, false);
         b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
       }
-      jdField_b_of_type_Boolean = true;
+      b = true;
       return true;
     }
     catch (Exception localException)
@@ -655,7 +603,7 @@ public class SQLiteFTSUtils
       if (QLog.isColorLevel()) {
         QLog.e("Q.fts.utils", 2, "isLowRomForFTS: failure", localException);
       }
-      jdField_b_of_type_Boolean = true;
+      b = true;
     }
     return true;
   }
@@ -669,26 +617,21 @@ public class SQLiteFTSUtils
     return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
-  public static boolean b(AppRuntime paramAppRuntime)
+  public static int c(AppRuntime paramAppRuntime)
   {
-    SharedPreferences localSharedPreferences = paramAppRuntime.getApplication().getSharedPreferences("fts_sp_file", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("fts_upgrade_table_flag");
-    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
-  }
-  
-  public static int c(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_c_of_type_Int == -1)
+    int j = b(paramAppRuntime);
+    int i = j;
+    if (j == -1)
     {
-      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("fts_extension_conversation_flag");
-      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      jdField_c_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        a(paramAppRuntime, 1);
+        return 1;
+      }
+      a(paramAppRuntime, 0);
+      i = 0;
     }
-    return jdField_c_of_type_Int;
+    return i;
   }
   
   public static void c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -710,9 +653,17 @@ public class SQLiteFTSUtils
     return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
-  public static boolean c(AppRuntime paramAppRuntime)
+  public static int d(QQAppInterface paramQQAppInterface)
   {
-    return (a(paramAppRuntime)) && (b(paramAppRuntime));
+    if (c == -1)
+    {
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fts_compare_flag");
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      c = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+    }
+    return c;
   }
   
   public static void d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -724,10 +675,59 @@ public class SQLiteFTSUtils
     localEditor.putBoolean(localStringBuilder.toString(), paramBoolean);
     localEditor.commit();
   }
+  
+  public static boolean d(AppRuntime paramAppRuntime)
+  {
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApplication().getSharedPreferences("fts_sp_file", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fts_upgrade_log_flag");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
+  }
+  
+  public static int e(QQAppInterface paramQQAppInterface)
+  {
+    if (d == -1)
+    {
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fts_extension_flag");
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      d = localSharedPreferences.getInt(localStringBuilder.toString(), 1);
+    }
+    return d;
+  }
+  
+  public static boolean e(AppRuntime paramAppRuntime)
+  {
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApplication().getSharedPreferences("fts_sp_file", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fts_upgrade_table_flag");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
+  }
+  
+  public static int f(QQAppInterface paramQQAppInterface)
+  {
+    if (e == -1)
+    {
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fts_extension_conversation_flag");
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      e = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+    }
+    return e;
+  }
+  
+  public static boolean f(AppRuntime paramAppRuntime)
+  {
+    return (d(paramAppRuntime)) && (e(paramAppRuntime));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils
  * JD-Core Version:    0.7.0.1
  */

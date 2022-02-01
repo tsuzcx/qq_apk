@@ -27,11 +27,9 @@ import NS_MINI_INTERFACE.INTERFACE.UseUserInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.json.GdtJsonPbUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByIdEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppByLinkEntity;
 import com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManager;
@@ -63,7 +61,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Map<Ljava.lang.String;Ljava.lang.String;>;
 import java.util.Set;
-import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -114,6 +111,7 @@ public class MiniAppInfo
   public String ide_scene;
   public boolean isSupportBlueBar;
   public boolean isSupportOffline;
+  public int miniAppType;
   public MiniGamePluginInfo miniGamePluginInfo;
   public ArrayList<String> motionPics;
   public String name;
@@ -171,10 +169,10 @@ public class MiniAppInfo
   
   private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo)
   {
-    this(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramInt3, paramString5, paramString6, paramString7, paramLong, paramList, paramString8, paramStFirstPage, paramStApiRightController, paramStMDebugInfo, null, null, null, "", 0, null, 0, false, false, "", null, 0, null, null, null, null, null, null);
+    this(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramInt3, paramString5, paramString6, paramString7, paramLong, paramList, paramString8, paramStFirstPage, paramStApiRightController, paramStMDebugInfo, null, null, null, "", 0, null, 0, false, false, "", null, 0, null, null, null, null, null, null, 0);
   }
   
-  private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo, INTERFACE.StDomainConfig paramStDomainConfig, INTERFACE.StMainPageExtInfo paramStMainPageExtInfo, INTERFACE.StDeveloperInfo paramStDeveloperInfo, String paramString9, int paramInt4, INTERFACE.StAppMode paramStAppMode, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, String paramString10, String paramString11, int paramInt6, COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList1, INTERFACE.StAppBasicInfo paramStAppBasicInfo, INTERFACE.StOperationInfo paramStOperationInfo, INTERFACE.StIdeConfig paramStIdeConfig, String paramString12)
+  private MiniAppInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, long paramLong, List<INTERFACE.StSubPkgInfo> paramList, String paramString8, INTERFACE.StFirstPage paramStFirstPage, INTERFACE.StApiRightController paramStApiRightController, INTERFACE.StMDebugInfo paramStMDebugInfo, INTERFACE.StDomainConfig paramStDomainConfig, INTERFACE.StMainPageExtInfo paramStMainPageExtInfo, INTERFACE.StDeveloperInfo paramStDeveloperInfo, String paramString9, int paramInt4, INTERFACE.StAppMode paramStAppMode, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, String paramString10, String paramString11, int paramInt6, COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList1, INTERFACE.StAppBasicInfo paramStAppBasicInfo, INTERFACE.StOperationInfo paramStOperationInfo, INTERFACE.StIdeConfig paramStIdeConfig, String paramString12, int paramInt7)
   {
     this.appId = paramString1;
     this.name = paramString2;
@@ -408,6 +406,7 @@ public class MiniAppInfo
         this.showStatusBar = paramStIdeConfig.startExtInfo.showStatusBar.get();
       }
     }
+    this.miniAppType = paramInt7;
   }
   
   public static MiniAppInfo copy(MiniAppInfo paramMiniAppInfo)
@@ -501,6 +500,7 @@ public class MiniAppInfo
     localMiniAppInfo.userNum = paramMiniAppInfo.userNum;
     localMiniAppInfo.friendNum = paramMiniAppInfo.friendNum;
     localMiniAppInfo.users = paramMiniAppInfo.users;
+    localMiniAppInfo.miniAppType = paramMiniAppInfo.miniAppType;
     return localMiniAppInfo;
   }
   
@@ -567,9 +567,10 @@ public class MiniAppInfo
     } else {
       bool1 = false;
     }
-    return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localStAppMode, m, bool2, bool1, getRecommendIconUrl(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get(), (INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get(), (INTERFACE.StIdeConfig)paramStApiAppInfo.basicInfo.ideConfig.get(), paramStApiAppInfo.appNoCacheExt.prepayId.get());
+    return new MiniAppInfo(str1, str2, str3, str4, i, 0, j, str5, str6, str7, 0L, localList, str8, localStFirstPage, localStApiRightController, localStMDebugInfo, localStDomainConfig, localStMainPageExtInfo, localStDeveloperInfo, null, k, localStAppMode, m, bool2, bool1, getRecommendIconUrl(paramStApiAppInfo), paramStApiAppInfo.extendData.get(), paramStApiAppInfo.appNoCacheExt.clearAuths.get(), paramStApiAppInfo.extInfo, paramStApiAppInfo.extConfig.get(), (INTERFACE.StAppBasicInfo)paramStApiAppInfo.basicInfo.get(), (INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get(), (INTERFACE.StIdeConfig)paramStApiAppInfo.basicInfo.ideConfig.get(), paramStApiAppInfo.appNoCacheExt.prepayId.get(), paramStApiAppInfo.miniAppType.get());
   }
   
+  @NonNull
   public static MiniAppInfo from(INTERFACE.StUserAppInfo paramStUserAppInfo)
   {
     if (paramStUserAppInfo == null) {
@@ -646,6 +647,7 @@ public class MiniAppInfo
     return null;
   }
   
+  @Deprecated
   public static MiniAppInfo getMiniAppInfoByLinkFromDB(MiniAppByLinkEntity paramMiniAppByLinkEntity, MiniAppInfoEntity paramMiniAppInfoEntity)
   {
     try
@@ -1025,12 +1027,7 @@ public class MiniAppInfo
     localMiniAppInfoByLinkEntity.shareTicket = paramString2;
     localMiniAppInfoByLinkEntity.appInfo = ((INTERFACE.StApiAppInfo)paramStApiAppInfo.get()).toByteArray();
     localMiniAppInfoByLinkEntity.timeStamp = System.currentTimeMillis();
-    paramString1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramString1 instanceof QQAppInterface)) {
-      paramString1 = (MiniAppEntityManager)paramString1.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
-    } else {
-      paramString1 = new MiniAppEntityManager(paramString1.getAccount());
-    }
+    paramString1 = MiniAppEntityManager.get();
     if (paramString1 != null)
     {
       paramString1.insertOrReplaceEntity(localMiniAppInfoByLinkEntity);
@@ -1049,30 +1046,25 @@ public class MiniAppInfo
     if (paramString == null) {
       str = "";
     }
-    MiniAppByIdEntity localMiniAppByIdEntity = new MiniAppByIdEntity();
-    localMiniAppByIdEntity.appId = paramStApiAppInfo.appId.get();
-    localMiniAppByIdEntity.entryPath = str;
-    localMiniAppByIdEntity.shareTicket = null;
-    localMiniAppByIdEntity.first = ((INTERFACE.StFirstPage)paramStApiAppInfo.first.get()).toByteArray();
-    localMiniAppByIdEntity.mDebug = ((INTERFACE.StMDebugInfo)paramStApiAppInfo.mDebug.get()).toByteArray();
-    localMiniAppByIdEntity.extData = paramStApiAppInfo.extData.get();
-    localMiniAppByIdEntity.operInfo = ((INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get()).toByteArray();
-    localMiniAppByIdEntity.extInfo = ((COMM.StCommonExt)paramStApiAppInfo.extInfo.get()).toByteArray();
-    localMiniAppByIdEntity.extendData = paramStApiAppInfo.extendData.get();
-    localMiniAppByIdEntity.timeStamp = System.currentTimeMillis();
-    paramString = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramString instanceof QQAppInterface)) {
-      paramString = (MiniAppEntityManager)paramString.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
-    } else {
-      paramString = new MiniAppEntityManager(paramString.getAccount());
-    }
-    if (paramString != null)
+    paramString = new MiniAppByIdEntity();
+    paramString.appId = paramStApiAppInfo.appId.get();
+    paramString.entryPath = str;
+    paramString.shareTicket = null;
+    paramString.first = ((INTERFACE.StFirstPage)paramStApiAppInfo.first.get()).toByteArray();
+    paramString.mDebug = ((INTERFACE.StMDebugInfo)paramStApiAppInfo.mDebug.get()).toByteArray();
+    paramString.extData = paramStApiAppInfo.extData.get();
+    paramString.operInfo = ((INTERFACE.StOperationInfo)paramStApiAppInfo.operInfo.get()).toByteArray();
+    paramString.extInfo = ((COMM.StCommonExt)paramStApiAppInfo.extInfo.get()).toByteArray();
+    paramString.extendData = paramStApiAppInfo.extendData.get();
+    paramString.timeStamp = System.currentTimeMillis();
+    paramStApiAppInfo = MiniAppEntityManager.get();
+    if (paramStApiAppInfo != null)
     {
-      paramString.insertOrReplaceEntity(localMiniAppByIdEntity);
-      paramString = new StringBuilder();
-      paramString.append("saveMiniAppByIdEntity ok.");
-      paramString.append(localMiniAppByIdEntity.appId);
-      QLog.d("miniapp-db", 1, paramString.toString());
+      paramStApiAppInfo.insertOrReplaceEntity(paramString);
+      paramStApiAppInfo = new StringBuilder();
+      paramStApiAppInfo.append("saveMiniAppByIdEntity ok.");
+      paramStApiAppInfo.append(paramString.appId);
+      QLog.d("miniapp-db", 1, paramStApiAppInfo.toString());
     }
   }
   
@@ -1091,12 +1083,7 @@ public class MiniAppInfo
     localMiniAppByLinkEntity.extendData = paramStApiAppInfo.extendData.get();
     localMiniAppByLinkEntity.timeStamp = System.currentTimeMillis();
     localMiniAppByLinkEntity.prepayId = paramStApiAppInfo.appNoCacheExt.prepayId.get();
-    paramString1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramString1 instanceof QQAppInterface)) {
-      paramString1 = (MiniAppEntityManager)paramString1.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
-    } else {
-      paramString1 = new MiniAppEntityManager(paramString1.getAccount());
-    }
+    paramString1 = MiniAppEntityManager.get();
     if (paramString1 != null)
     {
       paramString1.insertOrReplaceEntity(localMiniAppByLinkEntity);
@@ -1113,26 +1100,21 @@ public class MiniAppInfo
     if (paramString == null) {
       str = "";
     }
-    MiniAppInfoByIdEntity localMiniAppInfoByIdEntity = new MiniAppInfoByIdEntity();
-    localMiniAppInfoByIdEntity.appId = paramStApiAppInfo.appId.get();
-    localMiniAppInfoByIdEntity.entryPath = str;
-    localMiniAppInfoByIdEntity.appInfo = ((INTERFACE.StApiAppInfo)paramStApiAppInfo.get()).toByteArray();
-    localMiniAppInfoByIdEntity.timeStamp = System.currentTimeMillis();
-    paramString = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramString instanceof QQAppInterface)) {
-      paramString = (MiniAppEntityManager)paramString.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
-    } else {
-      paramString = new MiniAppEntityManager(paramString.getAccount());
-    }
-    if (paramString != null)
+    paramString = new MiniAppInfoByIdEntity();
+    paramString.appId = paramStApiAppInfo.appId.get();
+    paramString.entryPath = str;
+    paramString.appInfo = ((INTERFACE.StApiAppInfo)paramStApiAppInfo.get()).toByteArray();
+    paramString.timeStamp = System.currentTimeMillis();
+    paramStApiAppInfo = MiniAppEntityManager.get();
+    if (paramStApiAppInfo != null)
     {
-      paramString.insertOrReplaceEntity(localMiniAppInfoByIdEntity);
-      paramString = new StringBuilder();
-      paramString.append("saveMiniAppInfoByIdEntity ok.");
-      paramString.append(localMiniAppInfoByIdEntity.appId);
-      paramString.append(" entryPath:");
-      paramString.append(str);
-      QLog.d("miniapp-db", 1, paramString.toString());
+      paramStApiAppInfo.insertOrReplaceEntity(paramString);
+      paramStApiAppInfo = new StringBuilder();
+      paramStApiAppInfo.append("saveMiniAppInfoByIdEntity ok.");
+      paramStApiAppInfo.append(paramString.appId);
+      paramStApiAppInfo.append(" entryPath:");
+      paramStApiAppInfo.append(str);
+      QLog.d("miniapp-db", 1, paramStApiAppInfo.toString());
     }
   }
   
@@ -1142,12 +1124,7 @@ public class MiniAppInfo
     localMiniAppInfoEntity.appId = paramStApiAppInfo.appId.get();
     localMiniAppInfoEntity.appInfo = ((INTERFACE.StApiAppInfo)paramStApiAppInfo.get()).toByteArray();
     localMiniAppInfoEntity.timeStamp = System.currentTimeMillis();
-    paramStApiAppInfo = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramStApiAppInfo instanceof QQAppInterface)) {
-      paramStApiAppInfo = (MiniAppEntityManager)paramStApiAppInfo.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
-    } else {
-      paramStApiAppInfo = new MiniAppEntityManager(paramStApiAppInfo.getAccount());
-    }
+    paramStApiAppInfo = MiniAppEntityManager.get();
     if (paramStApiAppInfo != null)
     {
       paramStApiAppInfo.insertOrReplaceEntity(localMiniAppInfoEntity);
@@ -1197,12 +1174,8 @@ public class MiniAppInfo
       localMiniAppShowInfoEntity.interMode = paramStApiAppInfo.appMode.interMode.get();
     }
     localMiniAppShowInfoEntity.timeStamp = System.currentTimeMillis();
-    paramStApiAppInfo = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramStApiAppInfo instanceof QQAppInterface)) {
-      paramStApiAppInfo = (MiniAppEntityManager)paramStApiAppInfo.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
-    } else {
-      paramStApiAppInfo = new MiniAppEntityManager(paramStApiAppInfo.getAccount());
-    }
+    localMiniAppShowInfoEntity.miniAppType = paramStApiAppInfo.miniAppType.get();
+    paramStApiAppInfo = MiniAppEntityManager.get();
     if (paramStApiAppInfo != null)
     {
       paramStApiAppInfo.insertOrReplaceEntity(localMiniAppShowInfoEntity);
@@ -1237,21 +1210,17 @@ public class MiniAppInfo
     ((MiniAppShowInfoEntity)localObject).gameOperatingCompany = paramMiniAppInfo.gameOperatingCompany;
     ((MiniAppShowInfoEntity)localObject).reportType = paramMiniAppInfo.reportType;
     ((MiniAppShowInfoEntity)localObject).engineType = paramMiniAppInfo.engineType;
-    paramMiniAppInfo = paramMiniAppInfo.appMode;
+    AppMode localAppMode = paramMiniAppInfo.appMode;
     boolean bool;
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.interMode)) {
+    if ((localAppMode != null) && (localAppMode.interMode)) {
       bool = true;
     } else {
       bool = false;
     }
     ((MiniAppShowInfoEntity)localObject).interMode = bool;
     ((MiniAppShowInfoEntity)localObject).timeStamp = System.currentTimeMillis();
-    paramMiniAppInfo = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramMiniAppInfo instanceof QQAppInterface)) {
-      paramMiniAppInfo = (MiniAppEntityManager)paramMiniAppInfo.getManager(QQManagerFactory.MINI_APP_ENTITY_MANAGER);
-    } else {
-      paramMiniAppInfo = new MiniAppEntityManager(paramMiniAppInfo.getAccount());
-    }
+    ((MiniAppShowInfoEntity)localObject).miniAppType = paramMiniAppInfo.miniAppType;
+    paramMiniAppInfo = MiniAppEntityManager.get();
     if (paramMiniAppInfo != null)
     {
       paramMiniAppInfo.insertOrReplaceEntity((Entity)localObject);
@@ -1361,7 +1330,10 @@ public class MiniAppInfo
       if (!TextUtils.equals(paramObject.ide_extraData, this.ide_extraData)) {
         return false;
       }
-      return paramObject.enableLoadingAd == this.enableLoadingAd;
+      if (paramObject.enableLoadingAd != this.enableLoadingAd) {
+        return false;
+      }
+      return paramObject.miniAppType == this.miniAppType;
     }
     return false;
   }
@@ -1426,6 +1398,11 @@ public class MiniAppInfo
     return (localAppMode != null) && (localAppMode.isLimitedAccess);
   }
   
+  public boolean isQQMiniApp()
+  {
+    return this.miniAppType == 0;
+  }
+  
   public boolean isReportTypeMiniApp()
   {
     return this.reportType == 0;
@@ -1444,6 +1421,11 @@ public class MiniAppInfo
   public boolean isSpecialMiniApp()
   {
     return isAppStoreMiniApp();
+  }
+  
+  public boolean isWxMiniApp()
+  {
+    return this.miniAppType == 1;
   }
   
   public MiniAppInfo mergeData(MiniAppInfo paramMiniAppInfo)
@@ -1607,6 +1589,8 @@ public class MiniAppInfo
     localStringBuilder.append(this.userNum);
     localStringBuilder.append(", friendNum=");
     localStringBuilder.append(this.friendNum);
+    localStringBuilder.append(", miniAppType=");
+    localStringBuilder.append(this.miniAppType);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
@@ -1628,7 +1612,7 @@ public class MiniAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppInfo
  * JD-Core Version:    0.7.0.1
  */

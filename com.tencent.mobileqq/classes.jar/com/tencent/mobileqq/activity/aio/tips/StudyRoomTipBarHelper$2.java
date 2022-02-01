@@ -26,12 +26,12 @@ class StudyRoomTipBarHelper$2
   
   public void a(String paramString, int paramInt)
   {
-    if (!TextUtils.equals(paramString, StudyRoomTipBarHelper.a(this.a).a.a)) {
+    if (!TextUtils.equals(paramString, StudyRoomTipBarHelper.a(this.a).ah.b)) {
       return;
     }
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
-      StudyRoomTipBarHelper.a(this.a).post(new StudyRoomTipBarHelper.2.1(this, paramInt));
+      StudyRoomTipBarHelper.b(this.a).post(new StudyRoomTipBarHelper.2.1(this, paramInt));
       return;
     }
     a(paramInt);
@@ -39,7 +39,7 @@ class StudyRoomTipBarHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper.2
  * JD-Core Version:    0.7.0.1
  */

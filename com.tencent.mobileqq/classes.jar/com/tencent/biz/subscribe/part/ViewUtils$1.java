@@ -10,7 +10,7 @@ final class ViewUtils$1
 {
   public void run()
   {
-    Bitmap localBitmap = ViewUtils.a(this.jdField_a_of_type_AndroidViewView.getResources(), this.jdField_a_of_type_Int, Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getWidth()), Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getHeight()));
+    Bitmap localBitmap = ViewUtils.a(this.a.getResources(), this.b, Integer.valueOf(this.a.getWidth()), Integer.valueOf(this.a.getHeight()));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" qrWhiteBitmap = ");
     localStringBuilder.append(localBitmap);
@@ -19,13 +19,13 @@ final class ViewUtils$1
     {
       try
       {
-        StackBlur.a(localBitmap, this.b);
+        StackBlur.a(localBitmap, this.c);
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         localOutOfMemoryError.printStackTrace();
       }
-      this.jdField_a_of_type_AndroidViewView.post(new ViewUtils.1.1(this, localBitmap));
+      this.a.post(new ViewUtils.1.1(this, localBitmap));
     }
   }
 }

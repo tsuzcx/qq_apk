@@ -45,16 +45,16 @@ class PAMultiItemBuilder$1
       localObject2 = (MessageForPubAccount)localObject1;
       if ((((MessageForPubAccount)localObject2).mPAMessage != null) && (((MessageForPubAccount)localObject2).mPAMessage.items != null) && (!((MessageForPubAccount)localObject2).mPAMessage.items.isEmpty()))
       {
-        PAMessage.Item localItem = (PAMessage.Item)((MessageForPubAccount)localObject2).mPAMessage.items.get(localHolder.d);
-        ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).reportPubAioItemClick(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, null);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+        PAMessage.Item localItem = (PAMessage.Item)((MessageForPubAccount)localObject2).mPAMessage.items.get(localHolder.j);
+        ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).reportPubAioItemClick(this.a.d.b, null);
+        if (this.a.a != null)
         {
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "mp_msg_msgpic_click", "aio_morpic_click", localHolder.d + 1, 0, "", "", Long.toString(((MessageForPubAccount)localObject2).mPAMessage.mMsgId), "");
+          ReportController.b(this.a.a, "P_CliOper", "Pb_account_lifeservice", this.a.d.b, "mp_msg_msgpic_click", "aio_morpic_click", localHolder.j + 1, 0, "", "", Long.toString(((MessageForPubAccount)localObject2).mPAMessage.mMsgId), "");
           if (((MessageForPubAccount)localObject2).istroop == 1)
           {
-            ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "Clk_all", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
-            if (((TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, ((MessageForPubAccount)localObject2).uniseq)) {
-              ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "top_one", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+            ReportController.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_all", 0, 0, this.a.d.b, "", "", "");
+            if (((TroopBindPublicAccountMgr)this.a.a.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).b(this.a.d.b, ((MessageForPubAccount)localObject2).uniseq)) {
+              ReportController.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "top_one", 0, 0, this.a.d.b, "", "", "");
             }
           }
         }
@@ -85,7 +85,7 @@ class PAMultiItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PAMultiItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

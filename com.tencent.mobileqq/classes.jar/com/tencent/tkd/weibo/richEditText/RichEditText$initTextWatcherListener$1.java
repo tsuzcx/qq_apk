@@ -44,7 +44,7 @@ public final class RichEditText$initTextWatcherListener$1
     } else {
       i = 0;
     }
-    Object localObject = this.a.a();
+    Object localObject = this.a.getCountChangeListener();
     if (localObject != null) {
       localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(i));
     }
@@ -70,7 +70,7 @@ public final class RichEditText$initTextWatcherListener$1
     }
     if (j != 0)
     {
-      paramCharSequence = this.a.a();
+      paramCharSequence = this.a.getAtInputListener();
       if (paramCharSequence != null) {
         paramCharSequence = (Unit)paramCharSequence.invoke();
       }
@@ -79,7 +79,7 @@ public final class RichEditText$initTextWatcherListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.richEditText.RichEditText.initTextWatcherListener.1
  * JD-Core Version:    0.7.0.1
  */

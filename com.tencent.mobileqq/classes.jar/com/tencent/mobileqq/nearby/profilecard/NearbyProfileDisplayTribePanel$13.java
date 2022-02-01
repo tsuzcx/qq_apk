@@ -12,18 +12,18 @@ class NearbyProfileDisplayTribePanel$13
   
   public void run()
   {
-    Object localObject = (FriendsManager)this.this$0.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject = (FriendsManager)this.this$0.e.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject == null) {
       localObject = null;
     } else {
-      localObject = ((FriendsManager)localObject).a(this.this$0.a.getCurrentAccountUin());
+      localObject = ((FriendsManager)localObject).f(this.this$0.e.getCurrentAccountUin());
     }
-    this.this$0.a.runOnUiThread(new NearbyProfileDisplayTribePanel.13.1(this, (Card)localObject));
+    this.this$0.e.runOnUiThread(new NearbyProfileDisplayTribePanel.13.1(this, (Card)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.13
  * JD-Core Version:    0.7.0.1
  */

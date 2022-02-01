@@ -26,13 +26,13 @@ class SensorModule$CityListener
       ((StringBuilder)localObject).append(", info=");
       ((StringBuilder)localObject).append(paramSosoLbsInfo);
       ((StringBuilder)localObject).append(", isActive=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("DoraemonOpenAPI.sensor.location", 2, ((StringBuilder)localObject).toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
     if (paramInt == 0)
     {
       localObject = new JSONObject();
@@ -49,10 +49,10 @@ class SensorModule$CityListener
           QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
         }
       }
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, (JSONObject)localObject);
+      DoraemonUtil.a(this.b, (JSONObject)localObject);
       return;
     }
-    paramSosoLbsInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback;
+    paramSosoLbsInfo = this.b;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("error ");
     ((StringBuilder)localObject).append(paramInt);
@@ -61,7 +61,7 @@ class SensorModule$CityListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.SensorModule.CityListener
  * JD-Core Version:    0.7.0.1
  */

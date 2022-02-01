@@ -16,19 +16,9 @@ public class QavVideoDownloadHandler
     super("qq.android.qav.video", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10049;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return QavVideoData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadVideoDuration";
   }
   
   public void a(String paramString)
@@ -53,7 +43,7 @@ public class QavVideoDownloadHandler
   
   public void a(boolean paramBoolean)
   {
-    QavVideoData localQavVideoData = (QavVideoData)a();
+    QavVideoData localQavVideoData = (QavVideoData)h();
     if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
     {
       localQavVideoData.autoDownload = true;
@@ -62,24 +52,34 @@ public class QavVideoDownloadHandler
     super.a(paramBoolean);
   }
   
-  public boolean a()
+  public String b()
   {
-    return true;
+    return "qavDownloadVideoDuration";
   }
   
-  public String b()
+  public int c()
+  {
+    return 10049;
+  }
+  
+  public String d()
   {
     return null;
   }
   
-  public boolean h()
+  public boolean e()
   {
-    return ((QavVideoData)a()).autoDownload;
+    return true;
+  }
+  
+  public boolean v()
+  {
+    return ((QavVideoData)h()).autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.QavVideoDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class EffectOperateManager$MyGoToZimuRunnable
   {
     EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.a.get();
     if (localEffectOperateManager != null) {
-      localEffectOperateManager.d();
+      localEffectOperateManager.f();
     }
   }
 }

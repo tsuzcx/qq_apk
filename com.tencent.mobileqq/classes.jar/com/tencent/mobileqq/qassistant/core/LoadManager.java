@@ -13,27 +13,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class LoadManager
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  public static final List<String> a;
-  public static volatile AtomicBoolean a;
-  private static volatile boolean jdField_a_of_type_Boolean = false;
-  private static String b;
-  public static volatile AtomicBoolean b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new String[] { "network_tip.mp3", "quit_voice_panel_tip.mp3", "voice_not_support_tip.mp3", "voice_not_understant_tip.mp3", "wake_default_tip.mp3" }));
-    jdField_b_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public static volatile AtomicBoolean a = new AtomicBoolean(false);
+  public static final List<String> b = new ArrayList(Arrays.asList(new String[] { "network_tip.mp3", "quit_voice_panel_tip.mp3", "voice_not_support_tip.mp3", "voice_not_understant_tip.mp3", "wake_default_tip.mp3" }));
+  public static volatile AtomicBoolean c = new AtomicBoolean(false);
+  private static volatile boolean d = false;
+  private static String e = "";
+  private static String f = "";
   
   public static String a()
   {
-    if ("".equals(jdField_b_of_type_JavaLangString)) {
-      jdField_b_of_type_JavaLangString = AssistantUtils.a().getSharedPreferences("qq_assistant_sp_key", 0).getString("resAnimation", "animation1");
+    if ("".equals(f)) {
+      f = AssistantUtils.d().getSharedPreferences("qq_assistant_sp_key", 0).getString("resAnimation", "animation1");
     }
-    return jdField_b_of_type_JavaLangString;
+    return f;
   }
   
   public static String a(String paramString)
@@ -68,42 +60,17 @@ public class LoadManager
       str = "HelloQQWake";
     }
     if (!a(paramList)) {
-      a("voice", b(), paramList, jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, str, paramLoadCallBack);
+      a("voice", b(), paramList, a, str, paramLoadCallBack);
     }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_a_of_type_Boolean) {
-      return true;
-    }
-    if (HelloQQHelper.a())
-    {
-      if (HelloQQHelper.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        return false;
-      }
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        return false;
-      }
-      if (a(a(), null))
-      {
-        if (jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          return false;
-        }
-        jdField_a_of_type_Boolean = true;
-        return true;
-      }
-    }
-    return false;
   }
   
   public static boolean a(LoadManager.LoadCallBack paramLoadCallBack)
   {
-    boolean bool = a();
+    boolean bool = c();
     if (!bool)
     {
-      a("wake", HelloQQHelper.a(), HelloQQHelper.jdField_a_of_type_JavaUtilList, HelloQQHelper.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, "HelloQQWake", paramLoadCallBack);
-      a(jdField_a_of_type_JavaUtilList, "HelloQQWake", paramLoadCallBack);
+      a("wake", HelloQQHelper.a(), HelloQQHelper.a, HelloQQHelper.b, "HelloQQWake", paramLoadCallBack);
+      a(b, "HelloQQWake", paramLoadCallBack);
     }
     return bool;
   }
@@ -188,15 +155,40 @@ public class LoadManager
   
   public static String b()
   {
-    if ("".equals(jdField_a_of_type_JavaLangString)) {
-      jdField_a_of_type_JavaLangString = AssistantUtils.a().getSharedPreferences("qq_assistant_sp_key", 0).getString("resVoice", "voice1");
+    if ("".equals(e)) {
+      e = AssistantUtils.d().getSharedPreferences("qq_assistant_sp_key", 0).getString("resVoice", "voice1");
     }
-    return jdField_a_of_type_JavaLangString;
+    return e;
+  }
+  
+  public static boolean c()
+  {
+    if (d) {
+      return true;
+    }
+    if (HelloQQHelper.c())
+    {
+      if (HelloQQHelper.b.get()) {
+        return false;
+      }
+      if (a.get()) {
+        return false;
+      }
+      if (a(a(), null))
+      {
+        if (c.get()) {
+          return false;
+        }
+        d = true;
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.LoadManager
  * JD-Core Version:    0.7.0.1
  */

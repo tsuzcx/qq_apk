@@ -11,11 +11,11 @@ import org.json.JSONObject;
 public class VipWZRYTemplateConfig
 {
   public static VipWZRYTemplateConfig a;
-  public SparseArray<VipWZRYTemplateConfig.WZRYHonorItem> a;
+  public SparseArray<VipWZRYTemplateConfig.WZRYHonorItem> b;
   
   public static boolean a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig == null)
+    if (a == null)
     {
       if (!VipWZRYTemplateHelper.a("cardWZ.zip"))
       {
@@ -62,7 +62,7 @@ public class VipWZRYTemplateConfig
         localObject = new JSONObject((String)localObject).optJSONArray("cardWZResourceGrade");
         if ((localObject != null) && (((JSONArray)localObject).length() > 0))
         {
-          paramString.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+          paramString.b = new SparseArray();
           i = 0;
           if (i < ((JSONArray)localObject).length())
           {
@@ -71,27 +71,27 @@ public class VipWZRYTemplateConfig
               break label359;
             }
             VipWZRYTemplateConfig.WZRYHonorItem localWZRYHonorItem = new VipWZRYTemplateConfig.WZRYHonorItem();
-            localWZRYHonorItem.jdField_a_of_type_Int = localJSONObject.optInt("wz_id");
-            localWZRYHonorItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("wz_name");
-            localWZRYHonorItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("wz_format");
-            localWZRYHonorItem.jdField_b_of_type_Int = localJSONObject.optInt("position_type", 1);
+            localWZRYHonorItem.a = localJSONObject.optInt("wz_id");
+            localWZRYHonorItem.b = localJSONObject.optString("wz_name");
+            localWZRYHonorItem.c = localJSONObject.optString("wz_format");
+            localWZRYHonorItem.d = localJSONObject.optInt("position_type", 1);
             if (localJSONObject.has("wz_icon"))
             {
               VipWZRYTemplateConfig.WZRYResourceItem localWZRYResourceItem = new VipWZRYTemplateConfig.WZRYResourceItem();
               localJSONObject = localJSONObject.getJSONObject("wz_icon");
-              localWZRYResourceItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("src");
-              localWZRYResourceItem.jdField_a_of_type_Int = localJSONObject.optInt("size");
-              localWZRYResourceItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("md5");
-              localWZRYResourceItem.jdField_b_of_type_Int = localJSONObject.optInt("width");
-              localWZRYResourceItem.jdField_c_of_type_Int = localJSONObject.optInt("height");
-              localWZRYResourceItem.jdField_c_of_type_JavaLangString = localJSONObject.optString("mainColor");
-              localWZRYHonorItem.jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig$WZRYResourceItem = localWZRYResourceItem;
+              localWZRYResourceItem.a = localJSONObject.optString("src");
+              localWZRYResourceItem.b = localJSONObject.optInt("size");
+              localWZRYResourceItem.c = localJSONObject.optString("md5");
+              localWZRYResourceItem.d = localJSONObject.optInt("width");
+              localWZRYResourceItem.e = localJSONObject.optInt("height");
+              localWZRYResourceItem.f = localJSONObject.optString("mainColor");
+              localWZRYHonorItem.e = localWZRYResourceItem;
             }
-            paramString.jdField_a_of_type_AndroidUtilSparseArray.put(localWZRYHonorItem.jdField_a_of_type_Int, localWZRYHonorItem);
+            paramString.b.put(localWZRYHonorItem.a, localWZRYHonorItem);
             break label359;
           }
         }
-        jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig = paramString;
+        a = paramString;
         return true;
       }
       catch (Exception paramString)
@@ -106,7 +106,7 @@ public class VipWZRYTemplateConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipWZRYTemplateConfig
  * JD-Core Version:    0.7.0.1
  */

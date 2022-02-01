@@ -15,14 +15,14 @@ final class NotifyMsgApiImpl$2
   
   public void run()
   {
-    if (QWalletTools.a() != null)
+    if (QWalletTools.b() != null)
     {
       Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         NotifyMsgApiImpl.WaitRecord localWaitRecord = (NotifyMsgApiImpl.WaitRecord)localIterator.next();
-        if ((localWaitRecord != null) && (localWaitRecord.a != null)) {
-          ((IMessageFacade)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IMessageFacade.class, "")).updateMsgFieldByUniseq(localWaitRecord.a.frienduin, localWaitRecord.a.istroop, localWaitRecord.a.uniseq, "extStr", localWaitRecord.a.extStr);
+        if ((localWaitRecord != null) && (localWaitRecord.c != null)) {
+          ((IMessageFacade)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IMessageFacade.class, "")).updateMsgFieldByUniseq(localWaitRecord.c.frienduin, localWaitRecord.c.istroop, localWaitRecord.c.uniseq, "extStr", localWaitRecord.c.extStr);
         }
       }
     }
@@ -30,7 +30,7 @@ final class NotifyMsgApiImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.NotifyMsgApiImpl.2
  * JD-Core Version:    0.7.0.1
  */

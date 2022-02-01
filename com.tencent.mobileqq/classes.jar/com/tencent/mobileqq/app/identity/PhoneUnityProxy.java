@@ -10,20 +10,19 @@ public class PhoneUnityProxy
   implements IPhoneUnityInterface
 {
   @ConfigInject(configPath="Business/qqsafeblock-api/src/main/resources/Inject_SecurityBlockConfig.yml", version=1)
-  protected static ArrayList<Class<? extends IPhoneUnityInterface>> a;
-  private IPhoneUnityInterface a;
+  protected static ArrayList<Class<? extends IPhoneUnityInterface>> a = new ArrayList();
+  private IPhoneUnityInterface b;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(PhoneUnityImpl.class);
+    a.add(PhoneUnityImpl.class);
   }
   
   public PhoneUnityProxy()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqApiIPhoneUnityInterface = ((IPhoneUnityInterface)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance());
+      this.b = ((IPhoneUnityInterface)((Class)a.get(0)).newInstance());
       return;
     }
     catch (Exception localException)
@@ -34,12 +33,12 @@ public class PhoneUnityProxy
   
   public boolean a(Activity paramActivity)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqApiIPhoneUnityInterface.a(paramActivity);
+    return this.b.a(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.PhoneUnityProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class AvatarPendantActivity$11$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$11.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setStaticAvatar(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$11.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.b.this$0.D.setStaticAvatar(this.a);
+    this.b.this$0.ah.set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.11.1
  * JD-Core Version:    0.7.0.1
  */

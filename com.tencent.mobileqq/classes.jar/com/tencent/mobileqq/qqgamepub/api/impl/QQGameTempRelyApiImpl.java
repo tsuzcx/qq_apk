@@ -85,7 +85,7 @@ public class QQGameTempRelyApiImpl
         return paramMessageRecord;
       }
       localObject2 = new JSONObject((String)localObject2);
-      paramMessageRecord = PublicAccountEventReport.a(((JSONObject)localObject2).optString("report_key_bytes_oac_msg_extend", ""));
+      paramMessageRecord = PublicAccountEventReport.b(((JSONObject)localObject2).optString("report_key_bytes_oac_msg_extend", ""));
       if (!TextUtils.isEmpty(paramMessageRecord)) {
         return paramMessageRecord;
       }
@@ -171,7 +171,7 @@ public class QQGameTempRelyApiImpl
         if (!(paramMessageRecord.get(k) instanceof AbsStructMsgItem)) {
           break label323;
         }
-        localArrayList = ((AbsStructMsgItem)paramMessageRecord.get(k)).a;
+        localArrayList = ((AbsStructMsgItem)paramMessageRecord.get(k)).ax;
         m = i;
         n = 0;
         i = j;
@@ -270,7 +270,7 @@ public class QQGameTempRelyApiImpl
   
   public void exitVideoFullScreen()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().b();
     if (localGameCenterVideoViewController != null) {
       localGameCenterVideoViewController.exitFullScreen();
     }
@@ -281,13 +281,13 @@ public class QQGameTempRelyApiImpl
     if (paramPluginRuntime == null) {
       return null;
     }
-    for (paramPluginRuntime = paramPluginRuntime.a(); (paramPluginRuntime instanceof BasePluginActivity); paramPluginRuntime = ((BasePluginActivity)paramPluginRuntime).getOutActivity()) {}
+    for (paramPluginRuntime = paramPluginRuntime.d(); (paramPluginRuntime instanceof BasePluginActivity); paramPluginRuntime = ((BasePluginActivity)paramPluginRuntime).getOutActivity()) {}
     return paramPluginRuntime;
   }
   
   public Map<String, String> getGameMsgInfoMap()
   {
-    return QQGameConstant.a;
+    return QQGameConstant.b;
   }
   
   public void handleGcArkDeleteMsg(String paramString)
@@ -300,28 +300,29 @@ public class QQGameTempRelyApiImpl
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      if ((Foreground.getTopActivity() instanceof BaseActivity))
+      Object localObject1 = Foreground.getTopActivity();
+      if ((localObject1 instanceof BaseActivity))
       {
         localIntent.putExtra("isAioDeletMsg", true);
-        BaseActivity localBaseActivity = (BaseActivity)Foreground.getTopActivity();
-        Object localObject = localBaseActivity.getChatFragment();
-        if (localObject == null) {
+        localObject1 = (BaseActivity)localObject1;
+        Object localObject2 = ((BaseActivity)localObject1).getChatFragment();
+        if (localObject2 == null) {
           return;
         }
-        if (((ChatFragment)localObject).a == null) {
+        if (((ChatFragment)localObject2).c == null) {
           return;
         }
-        localObject = ((ChatFragment)localObject).a.a.a();
-        if (localObject != null)
+        localObject2 = ((ChatFragment)localObject2).c.V.a();
+        if (localObject2 != null)
         {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject).next();
+            ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject2).next();
             if (paramString.equals(String.valueOf(localChatMessage.uniseq)))
             {
-              ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).startDelAnimAndDelMsg(localBaseActivity, localChatMessage);
-              QQToast.a(MobileQQ.getContext(), 2131699812, 1).a();
+              ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).startDelAnimAndDelMsg((Context)localObject1, localChatMessage);
+              QQToast.makeText(MobileQQ.getContext(), 2131897847, 1).show();
             }
           }
         }
@@ -371,7 +372,7 @@ public class QQGameTempRelyApiImpl
   
   public boolean isVideoFullScreenMode()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().b();
     return (localGameCenterVideoViewController != null) && (localGameCenterVideoViewController.isFullScreenMode());
   }
   
@@ -382,7 +383,7 @@ public class QQGameTempRelyApiImpl
   
   public void stopVideo()
   {
-    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().a();
+    GameCenterVideoViewController localGameCenterVideoViewController = GameCenterVideoManager.a().b();
     if (localGameCenterVideoViewController != null) {
       localGameCenterVideoViewController.stop();
     }
@@ -390,7 +391,7 @@ public class QQGameTempRelyApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameTempRelyApiImpl
  * JD-Core Version:    0.7.0.1
  */

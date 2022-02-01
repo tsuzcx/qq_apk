@@ -51,6 +51,7 @@ import com.tencent.mobileqq.friends.intimate.IntimateInfoManager;
 import com.tencent.mobileqq.gamecenter.util.QQGameTroopManager;
 import com.tencent.mobileqq.gameparty.GamePartyManager;
 import com.tencent.mobileqq.graytip.CustomizeGrayTipsManager;
+import com.tencent.mobileqq.guild.temp.api.GuildManagerProvider;
 import com.tencent.mobileqq.haoliyou.sso.CheckForwardManager;
 import com.tencent.mobileqq.hotchat.api.IHotChatApi;
 import com.tencent.mobileqq.hotpic.HotPicManager;
@@ -78,6 +79,7 @@ import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager;
 import com.tencent.mobileqq.microapp.apkg.UsedAppListManager;
 import com.tencent.mobileqq.mini.api.QQMiniManager;
 import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
+import com.tencent.mobileqq.model.GuildInfoManager;
 import com.tencent.mobileqq.model.TroopInfoManager;
 import com.tencent.mobileqq.multiaio.model.MultiAIOManager;
 import com.tencent.mobileqq.multicard.MultiCardManager;
@@ -124,7 +126,6 @@ import com.tencent.mobileqq.troop.groupclass.TroopClassControllerManager;
 import com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarManager;
 import com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgManager;
 import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutMgr;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.troop.utils.NearbyVideoChatManager;
 import com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager;
 import com.tencent.mobileqq.troop.utils.TroopAioADManager;
@@ -134,6 +135,8 @@ import com.tencent.mobileqq.troop.utils.TroopVideoManager;
 import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
 import com.tencent.mobileqq.upgrade.UpgradeManager;
 import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.util.TuringSdkManager;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.utils.BusinessCommonConfig;
 import com.tencent.mobileqq.vas.AvatarPendantManager;
 import com.tencent.mobileqq.vas.ColorRingManager;
@@ -239,6 +242,9 @@ public final class QQManagerFactory
   public static final int GAME_TROOP_MANAGER;
   public static final int GROUP_TEAM_WORK_MANAGER;
   public static final int GROUP_VIDEO_PLUGIN_MANAGER;
+  public static final int GUILDINFO_MANAGER;
+  public static final int GUILD_AIO_NAVIGATE_BAR;
+  public static final int GUILD_PNG_FRAME_DRAWABLE_MANAGER;
   public static final int HIBOOM_MANAGER;
   public static final int HIDDENCHAT_MANAGER;
   public static final int HOTCHAT_CENTER_MANAGER;
@@ -427,6 +433,7 @@ public final class QQManagerFactory
   public static final int TROOP_STORY_MANAGER;
   public static final int TROOP_TIPS_MSG_MANAGER;
   public static final int TROOP_VIDEO_MANAGER;
+  public static final int TURINGSDK_MANAGER;
   public static final int UPCOMING_MSG_PRE_MANAGER;
   public static final int UPGRADE_MANAGER;
   public static final int URL_INTECEPT_MANAGER;
@@ -518,6 +525,9 @@ public final class QQManagerFactory
     i = sManagerStart;
     sManagerStart = i + 1;
     TROOPINFO_MANAGER = i;
+    i = sManagerStart;
+    sManagerStart = i + 1;
+    GUILDINFO_MANAGER = i;
     i = sManagerStart;
     sManagerStart = i + 1;
     RECENT_CALL_FACADE = i;
@@ -1210,6 +1220,9 @@ public final class QQManagerFactory
     TROOP_AIO_NAVIGATE_BAR = i;
     i = sManagerStart;
     sManagerStart = i + 1;
+    GUILD_AIO_NAVIGATE_BAR = i;
+    i = sManagerStart;
+    sManagerStart = i + 1;
     UPCOMING_MSG_PRE_MANAGER = i;
     i = sManagerStart;
     sManagerStart = i + 1;
@@ -1283,6 +1296,12 @@ public final class QQManagerFactory
     i = sManagerStart;
     sManagerStart = i + 1;
     QZONE_MSGCARD_NEGATIVE_MANAGER = i;
+    i = sManagerStart;
+    sManagerStart = i + 1;
+    GUILD_PNG_FRAME_DRAWABLE_MANAGER = i;
+    i = sManagerStart;
+    sManagerStart = i + 1;
+    TURINGSDK_MANAGER = i;
     COUNT_MANAGER = sManagerStart;
     SMALL_LOCK = new Object();
     hasLazyLoad = new AtomicBoolean(false);
@@ -1394,6 +1413,7 @@ public final class QQManagerFactory
     sManagerArrays.put(RECENT_MANAGER_FOR_3RDPART, RecentManagerFor3rdPart.class);
     sManagerArrays.put(VIDEO_STORY_MANAGER, VSManager.class);
     sManagerArrays.put(TROOPINFO_MANAGER, TroopInfoManager.class);
+    sManagerArrays.put(GUILDINFO_MANAGER, GuildInfoManager.class);
     sManagerArrays.put(CHAT_FONT_MANAGER, FontManager.class);
     sManagerArrays.put(COLOR_RING_MANAGER, ColorRingManager.class);
     sManagerArrays.put(CHAT_AVATAR_PENDANT_MANAGER, AvatarPendantManager.class);
@@ -1411,6 +1431,7 @@ public final class QQManagerFactory
     sManagerArrays.put(ADDCONTACT_TROOP_SEARCH_POP_MANAGE, AddContactTroopManage.class);
     sManagerArrays.put(BUSINESS_WORD_MATCH_MANAGER, WordMatchManager.class);
     sManagerArrays.put(PNG_FRAME_DRAWABLE_MANAGER, PngFrameManager.class);
+    sManagerArrays.put(GUILD_PNG_FRAME_DRAWABLE_MANAGER, GuildManagerProvider.a());
     sManagerArrays.put(VIP_FUNCALL_MANAGER, VipFunCallManager.class);
     sManagerArrays.put(IMAGE_UPLOAD_MANAGER, VipImageUploadManager.class);
     sManagerArrays.put(QZONE_CONTACTS_FEED_MANAGER, QzoneContactsFeedManager.class);
@@ -1421,10 +1442,10 @@ public final class QQManagerFactory
     sManagerArrays.put(FULL_MESSAGE_SEARCH_MANAGER, FullMessageSearchManager.class);
     sManagerArrays.put(QZONE_ALBUM_RED_TOUCH, QzoneAlbumRedTouchManager.class);
     sManagerArrays.put(TROOP_AIO_AD_MANAGER, TroopAioADManager.class);
-    sManagerArrays.put(NEARBY_CARD_MANAGER, QQNearbyManager.i());
+    sManagerArrays.put(NEARBY_CARD_MANAGER, QQNearbyManager.j());
     sManagerArrays.put(ODPROXY_MGR, ODProxy.class);
     sManagerArrays.put(TROOP_GIFT_MANAGER, TroopGiftManager.class);
-    sManagerArrays.put(NEARBY_PROXY_MANAGER, QQNearbyManager.f());
+    sManagerArrays.put(NEARBY_PROXY_MANAGER, QQNearbyManager.g());
     sManagerArrays.put(PATCH_DOWNLOAD_MANAGER, PatchDownloadManager.class);
     sManagerArrays.put(TROOP_PLUGIN_MANAGER, TroopPluginManager.class);
     sManagerArrays.put(ARK_APP_CENTER_MANAGER, ArkAppCenter.class);
@@ -1441,7 +1462,7 @@ public final class QQManagerFactory
     sManagerArrays.put(QCALLCARD_MANAGER, QCallCardManager.class);
     sManagerArrays.put(TROOP_REWARD_MGR, TroopRewardMgr.class);
     sManagerArrays.put(PULL_ACTIVE_MANAGER, PullActiveManager.class);
-    sManagerArrays.put(NEARBY_GENERAL_MANAGER, QQNearbyManager.j());
+    sManagerArrays.put(NEARBY_GENERAL_MANAGER, QQNearbyManager.k());
     sManagerArrays.put(URL_INTECEPT_MANAGER, URLInterceptManager.class);
     sManagerArrays.put(GAME_PARTY_MANAGER, GamePartyManager.class);
     sManagerArrays.put(NOTIFICATION_BANNER_MANAGER, NotificationBannerManager.class);
@@ -1465,9 +1486,9 @@ public final class QQManagerFactory
     sManagerArrays.put(AR_CLOBAL_CONFIG_MANAGER, ARGlobalConfigManager.class);
     sManagerArrays.put(CLASSIC_HEAD_ACIVITY_MANAGER, ClassicHeadActivityManager.class);
     sManagerArrays.put(SLOW_TABLE_MANAGER, QSlowTableManager.class);
-    sManagerArrays.put(FACE_SCORE_MANAGER, QQNearbyManager.h());
+    sManagerArrays.put(FACE_SCORE_MANAGER, QQNearbyManager.i());
     sManagerArrays.put(HOT_PIC_MANAGER, HotPicManager.class);
-    sManagerArrays.put(NEARBY_LIKE_LIMIT_MANAGER, QQNearbyManager.l());
+    sManagerArrays.put(NEARBY_LIKE_LIMIT_MANAGER, QQNearbyManager.m());
     sManagerArrays.put(PERSONAL_PRAISE_MANAGER, PraiseManager.class);
     sManagerArrays.put(TROOP_STORY_MANAGER, TroopStoryManager.class);
     sManagerArrays.put(PHOTOLIST_CONFIG_MANAGER, PhotoListConfigManager.class);
@@ -1516,7 +1537,7 @@ public final class QQManagerFactory
     sManagerArrays.put(TEMP_MSG_SETTTING_MANAGER, TempMsgManager.class);
     sManagerArrays.put(ARPROMOTION_MANAGER, PromotionMgr.class);
     sManagerArrays.put(GROUP_TEAM_WORK_MANAGER, GroupTeamWorkManager.class);
-    sManagerArrays.put(NOW_DYNAMIC_MANAGER, QQNearbyManager.n());
+    sManagerArrays.put(NOW_DYNAMIC_MANAGER, QQNearbyManager.o());
     sManagerArrays.put(PUSH_NOTIFICATION_MANAGER, PushNotificationManager.class);
     sManagerArrays.put(KANDIAN_AD_EXPOSURE_MANAGER, ((IRIJAdService)QRoute.api(IRIJAdService.class)).getRIJADExposureManagerClz());
     sManagerArrays.put(MINI_APP_ITEM_MANAGER, QQMiniManager.getMiniAppUserAppInfoListManagerClass());
@@ -1556,18 +1577,19 @@ public final class QQManagerFactory
     sManagerArrays.put(NEWER_GUIDE_BANNER_MANAGER, NewerGuideBannerManager.class);
     sManagerArrays.put(FRIEND_CLUE_MANAGER, FriendClueManager.class);
     sManagerArrays.put(ILIVE_GROUP_TIPS_MANAGER, IliveGroupTipsManager.class);
-    sManagerArrays.put(MINI_CARD_MANAGER, QQNearbyManager.g());
+    sManagerArrays.put(MINI_CARD_MANAGER, QQNearbyManager.h());
     sManagerArrays.put(GAME_TROOP_MANAGER, QQGameTroopManager.class);
     sManagerArrays.put(SPRING_FESTIVAL_RED_PACKET_MANAGER, SpringFestivalRedpacketConfigManager.class);
     sManagerArrays.put(SPRING_FESTIVAL_ENTRY_MANAGER, SpringFestivalEntryManager.class);
     sManagerArrays.put(SPRING_HB_REPORT_MANAGER, SpringHbReportManager.class);
     sManagerArrays.put(AIO_TROOP_QZONE_REDDOT_MANAGER, AIOTroopQzoneRedDotManager.class);
     sManagerArrays.put(QZONE_MSGCARD_NEGATIVE_MANAGER, QZoneMsgNegativeManager.class);
+    sManagerArrays.put(TURINGSDK_MANAGER, TuringSdkManager.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQManagerFactory
  * JD-Core Version:    0.7.0.1
  */

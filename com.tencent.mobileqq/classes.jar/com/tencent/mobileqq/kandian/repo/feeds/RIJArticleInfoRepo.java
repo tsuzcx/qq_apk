@@ -70,54 +70,30 @@ import tencent.im.oidb.articlesummary.articlesummary.PackInfo;
 
 public class RIJArticleInfoRepo
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private final ArticleInfoModule jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule;
-  private RIJArticleInfoRepo.PreLoadDBListener jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo$PreLoadDBListener;
-  private final PackMsgProcessor jdField_a_of_type_ComTencentMobileqqKandianRepoMessagePackMsgProcessor;
-  private final EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private final LinkedHashMap<Integer, ConcurrentMap<Long, Boolean>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private final Map<Integer, ChannelTopCookie> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-  private final ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  private boolean jdField_a_of_type_Boolean = false;
-  private final LinkedHashMap<Integer, ConcurrentMap<String, ArticleExposureInfo>> jdField_b_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private final Map<Integer, CopyOnWriteArrayList<AbsBaseArticleInfo>> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean = false;
-  private final LinkedHashMap<Integer, ConcurrentMap<Long, AbsBaseArticleInfo>> c = new LinkedHashMap();
-  private final LinkedHashMap<Integer, ConcurrentHashMap<String, AbsBaseArticleInfo>> d = new LinkedHashMap();
+  private final ExecutorService a;
+  private final EntityManager b;
+  private final Handler c;
+  private final ArticleInfoModule d;
+  private final PackMsgProcessor e;
+  private final AppInterface f;
+  private RIJArticleInfoRepo.PreLoadDBListener g;
+  private boolean h = false;
+  private boolean i = false;
+  private final Map<Integer, ChannelTopCookie> j = new LinkedHashMap();
+  private final LinkedHashMap<Integer, ConcurrentMap<Long, Boolean>> k = new LinkedHashMap();
+  private final LinkedHashMap<Integer, ConcurrentMap<String, ArticleExposureInfo>> l = new LinkedHashMap();
+  private final LinkedHashMap<Integer, ConcurrentMap<Long, AbsBaseArticleInfo>> m = new LinkedHashMap();
+  private final Map<Integer, CopyOnWriteArrayList<AbsBaseArticleInfo>> n = new HashMap();
+  private final LinkedHashMap<Integer, ConcurrentHashMap<String, AbsBaseArticleInfo>> o = new LinkedHashMap();
   
   public RIJArticleInfoRepo(ExecutorService paramExecutorService, EntityManager paramEntityManager, Handler paramHandler, ArticleInfoModule paramArticleInfoModule, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule = paramArticleInfoModule;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoMessagePackMsgProcessor = new PackMsgProcessor(paramArticleInfoModule);
-  }
-  
-  private AbsBaseArticleInfo a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    Object localObject = paramAbsBaseArticleInfo;
-    if (ArticleInfoHelper.c(paramAbsBaseArticleInfo))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("过滤卡片: ");
-      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo);
-      ((StringBuilder)localObject).append("  social : ");
-      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mSocialFeedInfo);
-      QLog.d("RIJArticleInfoRepo", 1, ((StringBuilder)localObject).toString());
-      localObject = null;
-    }
-    return localObject;
-  }
-  
-  private List<AbsBaseArticleInfo> a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.tabbleIsExist("ArticleInfo")) {
-      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(BaseArticleInfo.class, true, "(mFeedType = ? OR mFeedType = ? OR mFeedType = ? OR mFeedType = ?) AND businessId = ?", new String[] { String.valueOf(17), String.valueOf(19), String.valueOf(0), String.valueOf(24), String.valueOf(paramInt) }, null, null, null, null);
-    }
-    return null;
+    this.a = paramExecutorService;
+    this.b = paramEntityManager;
+    this.c = paramHandler;
+    this.d = paramArticleInfoModule;
+    this.f = paramAppInterface;
+    this.e = new PackMsgProcessor(paramArticleInfoModule);
   }
   
   private void a(int paramInt, List<Long> paramList, boolean paramBoolean)
@@ -127,40 +103,40 @@ public class RIJArticleInfoRepo
       if (paramList.isEmpty()) {
         return;
       }
-      long l = NetConnInfoCenter.getServerTime();
+      long l1 = NetConnInfoCenter.getServerTime();
       paramList = a(Integer.valueOf(paramInt), (Long)paramList.get(0));
       Object localObject;
       if ((paramInt == 0) && (paramList != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        localObject = this.f;
         if ((localObject != null) && ((localObject instanceof QQAppInterface)))
         {
           localObject = FeedsStructMsg.a((QQAppInterface)localObject, paramList);
           String str = FeedsStructMsg.a(paramList);
-          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).createFakeStructingMsgWithFields((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, str, String.valueOf(l), (String)localObject, paramBoolean);
+          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).createFakeStructingMsgWithFields((QQAppInterface)this.f, str, String.valueOf(l1), (String)localObject, paramBoolean);
         }
       }
       if ((paramInt == 40677) && (paramList != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        localObject = this.f;
         if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
-          RIJWeiShiLegacyUtils.a.a(RIJWeiShiLegacyUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramList), l);
+          RIJWeiShiLegacyUtils.a.a(RIJWeiShiLegacyUtils.a((QQAppInterface)this.f, paramList), l1);
         }
       }
       if ((paramInt == 70) && (paramList != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        localObject = this.f;
         if ((localObject != null) && ((localObject instanceof QQAppInterface)))
         {
           localObject = (KandianSubscribeManager)((AppInterface)localObject).getManager(QQManagerFactory.KANDIAN_SUBSCRIBE_MANAGER);
           if (localObject != null) {
-            ((KandianSubscribeManager)localObject).a(paramList, l);
+            ((KandianSubscribeManager)localObject).a(paramList, l1);
           }
         }
       }
       if (DailyModeConfigHandler.c(paramInt))
       {
-        localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        localObject = this.f;
         if (((localObject instanceof QQAppInterface)) && (paramList != null)) {
           ((KandianDailyManager)((AppInterface)localObject).getManager(QQManagerFactory.KANDIAN_DAILY_MANAGER)).a(paramList);
         }
@@ -185,43 +161,21 @@ public class RIJArticleInfoRepo
         QLog.d("RIJArticleInfoRepo", 2, "save follow cookie is null");
       }
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramChannelTopCookie.mChannelID), paramChannelTopCookie);
-  }
-  
-  private void a(Integer paramInteger)
-  {
-    paramInteger = (ConcurrentMap)this.c.get(paramInteger);
-    ArrayList localArrayList = new ArrayList(paramInteger.keySet());
-    Collections.sort(localArrayList);
-    int j = localArrayList.size();
-    int i = 0;
-    while (i < j - 30)
-    {
-      paramInteger.remove(localArrayList.get(i));
-      i += 1;
-    }
+    this.j.put(Integer.valueOf(paramChannelTopCookie.mChannelID), paramChannelTopCookie);
   }
   
   private void a(List<ChannelTopCookie> paramList)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.c;
     if (localHandler == null) {
       return;
     }
     localHandler.post(new RIJArticleInfoRepo.3(this, paramList));
   }
   
-  private List<AbsBaseArticleInfo> b(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.tabbleIsExist("ArticleInfo")) {
-      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(BaseArticleInfo.class, true, "(mFeedType = ? OR mFeedType = ?) AND businessId = ?", new String[] { String.valueOf(0), String.valueOf(4), String.valueOf(paramInt) }, null, null, null, null);
-    }
-    return null;
-  }
-  
   private void b(Integer paramInteger, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    paramInteger = (CopyOnWriteArrayList)this.jdField_b_of_type_JavaUtilMap.get(paramInteger);
+    paramInteger = (CopyOnWriteArrayList)this.n.get(paramInteger);
     if (paramInteger == null) {
       return;
     }
@@ -244,7 +198,7 @@ public class RIJArticleInfoRepo
     while (paramList.hasNext())
     {
       AbsBaseArticleInfo localAbsBaseArticleInfo1 = (AbsBaseArticleInfo)paramList.next();
-      AbsBaseArticleInfo localAbsBaseArticleInfo2 = a(localAbsBaseArticleInfo1);
+      AbsBaseArticleInfo localAbsBaseArticleInfo2 = d(localAbsBaseArticleInfo1);
       if (localAbsBaseArticleInfo2 == null)
       {
         paramList.remove();
@@ -255,7 +209,7 @@ public class RIJArticleInfoRepo
           paramList.set(localAbsBaseArticleInfo2);
         }
         PackMsgProcessor.a(localAbsBaseArticleInfo2);
-        if (ProteusSupportUtil.a(RIJBaseItemViewType.a(localAbsBaseArticleInfo2))) {
+        if (ProteusSupportUtil.a(RIJBaseItemViewType.c(localAbsBaseArticleInfo2))) {
           if (Looper.getMainLooper() == Looper.myLooper()) {
             ThreadManager.getSubThreadHandler().post(new RIJArticleInfoRepo.14(this, localAbsBaseArticleInfo2));
           } else {
@@ -276,7 +230,7 @@ public class RIJArticleInfoRepo
       if ((paramList1 != null) && (paramList1.size() > 0))
       {
         localObject = new CopyOnWriteArrayList(paramList1);
-        this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
+        this.n.put(Integer.valueOf(paramInt), localObject);
       }
       if (paramList1 != null)
       {
@@ -291,7 +245,7 @@ public class RIJArticleInfoRepo
           localAbsBaseArticleInfo.mRefreshTime = localStringBuilder.toString();
         }
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.h = true;
       if ((paramInt != 70) && (paramInt != 41403) && (!DailyModeConfigHandler.a(paramInt)) && (!RIJShowKanDianTabSp.a(paramInt)))
       {
         if ((paramBoolean2) && (!RIJDeleteArticleAfterRefreshAladdinConfig.a(paramInt)))
@@ -309,11 +263,11 @@ public class RIJArticleInfoRepo
         }
         if ((paramList1 != null) && (paramList1.size() > 0))
         {
-          this.jdField_b_of_type_Boolean = false;
+          this.i = false;
           if (RIJFeedsRefreshUtil.a.a(paramInt, paramToServiceMsg)) {
-            c(paramInt);
+            f(paramInt);
           } else {
-            b(paramInt);
+            e(paramInt);
           }
           a(Integer.valueOf(paramInt), paramList1, true);
         }
@@ -322,7 +276,7 @@ public class RIJArticleInfoRepo
       {
         if ((paramList1 != null) && (paramList1.size() > 0))
         {
-          b(paramInt);
+          e(paramInt);
           a(Integer.valueOf(paramInt), paramList1, true);
           return;
         }
@@ -354,39 +308,58 @@ public class RIJArticleInfoRepo
     }
   }
   
-  private void e(int paramInt)
+  private AbsBaseArticleInfo d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    RIJArticleInfoRepo.PreLoadDBListener localPreLoadDBListener = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo$PreLoadDBListener;
+    Object localObject = paramAbsBaseArticleInfo;
+    if (ArticleInfoHelper.d(paramAbsBaseArticleInfo))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("过滤卡片: ");
+      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo);
+      ((StringBuilder)localObject).append("  social : ");
+      ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mSocialFeedInfo);
+      QLog.d("RIJArticleInfoRepo", 1, ((StringBuilder)localObject).toString());
+      localObject = null;
+    }
+    return localObject;
+  }
+  
+  private List<AbsBaseArticleInfo> h(int paramInt)
+  {
+    if (this.b.tabbleIsExist("ArticleInfo")) {
+      return this.b.query(BaseArticleInfo.class, true, "(mFeedType = ? OR mFeedType = ? OR mFeedType = ? OR mFeedType = ?) AND businessId = ?", new String[] { String.valueOf(17), String.valueOf(19), String.valueOf(0), String.valueOf(24), String.valueOf(paramInt) }, null, null, null, null);
+    }
+    return null;
+  }
+  
+  private List<AbsBaseArticleInfo> i(int paramInt)
+  {
+    if (this.b.tabbleIsExist("ArticleInfo")) {
+      return this.b.query(BaseArticleInfo.class, true, "(mFeedType = ? OR mFeedType = ?) AND businessId = ?", new String[] { String.valueOf(0), String.valueOf(4), String.valueOf(paramInt) }, null, null, null, null);
+    }
+    return null;
+  }
+  
+  private void i(Integer paramInteger)
+  {
+    paramInteger = (ConcurrentMap)this.m.get(paramInteger);
+    ArrayList localArrayList = new ArrayList(paramInteger.keySet());
+    Collections.sort(localArrayList);
+    int i2 = localArrayList.size();
+    int i1 = 0;
+    while (i1 < i2 - 30)
+    {
+      paramInteger.remove(localArrayList.get(i1));
+      i1 += 1;
+    }
+  }
+  
+  private void j(int paramInt)
+  {
+    RIJArticleInfoRepo.PreLoadDBListener localPreLoadDBListener = this.g;
     if (localPreLoadDBListener != null) {
       localPreLoadDBListener.a(paramInt);
     }
-  }
-  
-  public int a(Integer paramInteger)
-  {
-    paramInteger = (List)this.jdField_b_of_type_JavaUtilMap.get(paramInteger);
-    if (paramInteger == null) {
-      return 0;
-    }
-    return paramInteger.size();
-  }
-  
-  public long a(Integer paramInteger)
-  {
-    paramInteger = (ConcurrentMap)this.c.get(paramInteger);
-    long l = -1L;
-    if (paramInteger == null) {
-      return -1L;
-    }
-    paramInteger = paramInteger.keySet().iterator();
-    while (paramInteger.hasNext())
-    {
-      Long localLong = (Long)paramInteger.next();
-      if (localLong.longValue() > l) {
-        l = localLong.longValue();
-      }
-    }
-    return l;
   }
   
   public AbsBaseArticleInfo a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
@@ -396,7 +369,7 @@ public class RIJArticleInfoRepo
     Object localObject1 = localObject2;
     if (paramInt == 0)
     {
-      ConcurrentMap localConcurrentMap = (ConcurrentMap)this.c.get(Integer.valueOf(0));
+      ConcurrentMap localConcurrentMap = (ConcurrentMap)this.m.get(Integer.valueOf(0));
       localObject1 = localObject2;
       if (localConcurrentMap != null)
       {
@@ -442,7 +415,7 @@ public class RIJArticleInfoRepo
         }
       }
     }
-    localObject2 = (ConcurrentMap)this.c.get(Integer.valueOf(paramInt));
+    localObject2 = (ConcurrentMap)this.m.get(Integer.valueOf(paramInt));
     localObject3 = localObject1;
     if (localObject2 != null)
     {
@@ -487,43 +460,9 @@ public class RIJArticleInfoRepo
     return localObject3;
   }
   
-  public AbsBaseArticleInfo a(Integer paramInteger)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[getRefreshedArticleInfo] channelID = ");
-      ((StringBuilder)localObject).append(paramInteger);
-      ((StringBuilder)localObject).append(", isReservedCacheFlag = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
-      QLog.i("RIJArticleInfoRepo", 1, ((StringBuilder)localObject).toString());
-    }
-    if ((RIJDeleteArticleAfterRefreshAladdinConfig.a(paramInteger.intValue())) && (!this.jdField_b_of_type_Boolean)) {
-      return null;
-    }
-    Object localObject = (List)this.jdField_b_of_type_JavaUtilMap.get(paramInteger);
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      if (paramInteger.intValue() == 70)
-      {
-        int i = 0;
-        while (i < ((List)localObject).size())
-        {
-          paramInteger = (AbsBaseArticleInfo)((List)localObject).get(i);
-          if (paramInteger.hintFlag) {
-            return paramInteger;
-          }
-          i += 1;
-        }
-      }
-      return (AbsBaseArticleInfo)((List)localObject).get(((List)localObject).size() - 1);
-    }
-    return null;
-  }
-  
   public AbsBaseArticleInfo a(Integer paramInteger, Long paramLong)
   {
-    paramInteger = (ConcurrentMap)this.c.get(paramInteger);
+    paramInteger = (ConcurrentMap)this.m.get(paramInteger);
     if (paramInteger == null) {
       return null;
     }
@@ -573,217 +512,30 @@ public class RIJArticleInfoRepo
         localArrayList.add(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq));
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoMessagePackMsgProcessor.a(Integer.valueOf(paramInt1), localArrayList);
+    this.e.a(Integer.valueOf(paramInt1), localArrayList);
     return localArrayList;
-  }
-  
-  public List<Long> a(Integer paramInteger)
-  {
-    Object localObject = b(paramInteger);
-    if ((localObject != null) && (((List)localObject).size() != 0))
-    {
-      ArrayList localArrayList = new ArrayList(((List)localObject).size());
-      HashSet localHashSet1 = new HashSet();
-      HashSet localHashSet2 = new HashSet();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((Iterator)localObject).next();
-        if ((paramInteger.intValue() != 70) && (paramInteger.intValue() != 41403) && (!localHashSet1.add(Long.valueOf(localAbsBaseArticleInfo.mArticleID))))
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("getChannelArticleSeqList 有重复文章， channelID = ");
-          localStringBuilder.append(paramInteger);
-          localStringBuilder.append(", seq = ");
-          localStringBuilder.append(localAbsBaseArticleInfo.mRecommendSeq);
-          localStringBuilder.append("，articleID = ");
-          localStringBuilder.append(localAbsBaseArticleInfo.mArticleID);
-          QLog.d("RIJArticleInfoRepo", 2, localStringBuilder.toString());
-          a(paramInteger, localAbsBaseArticleInfo);
-        }
-        else if ((paramInteger.intValue() == 41403) && (!localHashSet2.add(Long.valueOf(localAbsBaseArticleInfo.mFeedId))))
-        {
-          QLog.d("RIJArticleInfoRepo", 1, new Object[] { "getChannelArticleSeqList 有重复feeds, channelID = ", paramInteger, ", seq = ", Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq), ", feedsId = ", Long.valueOf(localAbsBaseArticleInfo.mFeedId) });
-          a(paramInteger, localAbsBaseArticleInfo);
-        }
-        else
-        {
-          localArrayList.add(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq));
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoMessagePackMsgProcessor.a(paramInteger, localArrayList);
-      return localArrayList;
-    }
-    return null;
   }
   
   public ConcurrentMap<Long, Boolean> a(int paramInt)
   {
-    return (ConcurrentMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt));
+    return (ConcurrentMap)this.k.get(Integer.valueOf(paramInt));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.c.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_b_of_type_JavaUtilMap.clear();
-    this.d.clear();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (!RIJKanDianFeedsExposureSwitchAladdinConfig.a()) {
-      return;
-    }
-    if ((paramInt != 0) && (!DailyModeConfigHandler.c(paramInt))) {
-      return;
-    }
-    if ((ConcurrentMap)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt)) != null)
-    {
-      QLog.d("RIJArticleInfoRepo", 1, "loadArticleExposureInfoFromDB has loaded!");
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.5(this, paramInt));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Object localObject1 = (ArrayList)b(paramInt1);
-    if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      ReadInJoyMSFHandlerUtils.a((List)localObject1);
-      localArrayList.addAll((Collection)localObject1);
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        int j = (int)((AbsBaseArticleInfo)localArrayList.get(i)).mChannelID;
-        Object localObject2 = (ConcurrentMap)this.c.get(Integer.valueOf(j));
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject1 = new ConcurrentHashMap();
-          this.c.put(Integer.valueOf(j), localObject1);
-        }
-        if ((((AbsBaseArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo.a.size() > 0)) {
-          ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo.a.get(0)).c = paramInt2;
-        }
-        Object localObject3;
-        if (((AbsBaseArticleInfo)localArrayList.get(i)).mPolymericInfo != null)
-        {
-          int k = paramInt2 + 1;
-          ((AbsBaseArticleInfo)localArrayList.get(i)).mPolymericInfo.e = k;
-          localObject2 = new articlesummary.PackInfo();
-          try
-          {
-            ((articlesummary.PackInfo)localObject2).mergeFrom(((AbsBaseArticleInfo)localArrayList.get(i)).mPackInfoBytes);
-            ((articlesummary.PackInfo)localObject2).uint32_follow_status.set(k, true);
-            ((AbsBaseArticleInfo)localArrayList.get(i)).mPackInfoBytes = ((articlesummary.PackInfo)localObject2).toByteArray();
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-          {
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("first setSmallVideoTopicFollowTypeIntoDB article.mPackInfoBytes convert error article.topicID:");
-            ((StringBuilder)localObject3).append(paramInt1);
-            ((StringBuilder)localObject3).append(" e = ");
-            ((StringBuilder)localObject3).append(localInvalidProtocolBufferMicroException1);
-            QLog.e("RIJArticleInfoRepo", 1, ((StringBuilder)localObject3).toString());
-            localInvalidProtocolBufferMicroException1.printStackTrace();
-          }
-        }
-        AbsBaseArticleInfo localAbsBaseArticleInfo = ((AbsBaseArticleInfo)localArrayList.get(i)).clone();
-        if (((ConcurrentMap)localObject1).get(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq)) != null)
-        {
-          a(Integer.valueOf(j), localAbsBaseArticleInfo);
-          if (QLog.isColorLevel())
-          {
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("recordArticleInfo, article duplicated, article been channelID=");
-            ((StringBuilder)localObject3).append(j);
-            ((StringBuilder)localObject3).append(", articleID=");
-            ((StringBuilder)localObject3).append(localAbsBaseArticleInfo.mArticleID);
-            ((StringBuilder)localObject3).append("，seq=");
-            ((StringBuilder)localObject3).append(localAbsBaseArticleInfo.mRecommendSeq);
-            QLog.e("RIJArticleInfoRepo", 2, ((StringBuilder)localObject3).toString());
-          }
-        }
-        localObject1 = (AbsBaseArticleInfo)((ConcurrentMap)localObject1).get(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq));
-        if (localObject1 != null)
-        {
-          if ((((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a.size() > 0)) {
-            ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a.get(0)).c = paramInt2;
-          }
-          if (((AbsBaseArticleInfo)localObject1).mPolymericInfo != null)
-          {
-            j = paramInt2 + 1;
-            ((AbsBaseArticleInfo)localObject1).mPolymericInfo.e = j;
-            localObject3 = new articlesummary.PackInfo();
-            try
-            {
-              ((articlesummary.PackInfo)localObject3).mergeFrom(((AbsBaseArticleInfo)localObject1).mPackInfoBytes);
-              ((articlesummary.PackInfo)localObject3).uint32_follow_status.set(j, true);
-              ((AbsBaseArticleInfo)localObject1).mPackInfoBytes = ((articlesummary.PackInfo)localObject3).toByteArray();
-            }
-            catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-            {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append("first setSmallVideoTopicFollowTypeIntoDB article.mPackInfoBytes convert error article.topicID:");
-              localStringBuilder.append(paramInt1);
-              localStringBuilder.append(" e = ");
-              localStringBuilder.append(localInvalidProtocolBufferMicroException2);
-              QLog.e("RIJArticleInfoRepo", 1, localStringBuilder.toString());
-              localInvalidProtocolBufferMicroException2.printStackTrace();
-            }
-          }
-          ((AbsBaseArticleInfo)localObject1).invalidateProteusTemplateBean();
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.19(this, localAbsBaseArticleInfo));
-        i += 1;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.post(new RIJArticleInfoRepo.20(this, paramInt1, paramInt2));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJArticleInfoRepo", 2, "no recommend topic feeds");
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentExecutorService;
-    if ((localObject != null) && (!((ExecutorService)localObject).isShutdown()))
-    {
-      localObject = a(Integer.valueOf(paramInt1));
-      if (localObject != null)
-      {
-        if (((List)localObject).isEmpty()) {
-          return;
-        }
-        try
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.21(this, paramInt1, paramInt2, paramLong, paramBoolean));
-          return;
-        }
-        catch (RejectedExecutionException localRejectedExecutionException)
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[preloadFeedsFromDB], e = ");
-          localStringBuilder.append(localRejectedExecutionException);
-          QLog.e("RIJArticleInfoRepo", 1, localStringBuilder.toString());
-        }
-      }
-      return;
-    }
-    QLog.i("RIJArticleInfoRepo", 1, "[loadFeedsFromDB], mExecutorService is null or shutDown.");
+    this.j.clear();
+    this.m.clear();
+    this.k.clear();
+    this.n.clear();
+    this.o.clear();
   }
   
   public void a(int paramInt1, int paramInt2, long paramLong1, boolean paramBoolean1, long paramLong2, boolean paramBoolean2)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentExecutorService;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (!((ExecutorService)localObject1).isShutdown()))
     {
-      localObject1 = a(Integer.valueOf(paramInt1));
+      localObject1 = b(Integer.valueOf(paramInt1));
       Object localObject2;
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
@@ -793,7 +545,7 @@ public class RIJArticleInfoRepo
           PTSEventDispatcher.a().a(paramInt1, (List)localObject1, paramLong2);
           return;
         }
-        localObject2 = this.jdField_a_of_type_AndroidOsHandler;
+        localObject2 = this.c;
         if (localObject2 != null)
         {
           ((Handler)localObject2).post(new RIJArticleInfoRepo.22(this, paramInt1, (List)localObject1, paramLong2));
@@ -802,7 +554,7 @@ public class RIJArticleInfoRepo
       }
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.23(this, paramInt1, (List)localObject1, paramInt2, paramLong1, paramBoolean1, paramLong2));
+        this.a.execute(new RIJArticleInfoRepo.23(this, paramInt1, (List)localObject1, paramInt2, paramLong1, paramBoolean1, paramLong2));
         return;
       }
       catch (RejectedExecutionException localRejectedExecutionException)
@@ -819,13 +571,13 @@ public class RIJArticleInfoRepo
   
   public void a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentExecutorService;
+    Object localObject1 = this.a;
     if (localObject1 != null)
     {
       if (((ExecutorService)localObject1).isShutdown()) {
         return;
       }
-      localObject1 = a(Integer.valueOf(paramInt1));
+      localObject1 = b(Integer.valueOf(paramInt1));
       Object localObject2 = ReadInJoyLogicEngine.a().a(Integer.valueOf(paramInt1), (List)localObject1);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
@@ -836,7 +588,7 @@ public class RIJArticleInfoRepo
           ReadInJoyLogicEngineEventDispatcher.a().a(paramInt1, (List)localObject1);
           return;
         }
-        localObject2 = this.jdField_a_of_type_AndroidOsHandler;
+        localObject2 = this.c;
         if (localObject2 != null)
         {
           ((Handler)localObject2).post(new RIJArticleInfoRepo.24(this, paramInt1, (List)localObject1));
@@ -845,7 +597,7 @@ public class RIJArticleInfoRepo
       }
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.25(this, paramInt1, (List)localObject1, paramInt2, paramLong, paramBoolean1));
+        this.a.execute(new RIJArticleInfoRepo.25(this, paramInt1, (List)localObject1, paramInt2, paramLong, paramBoolean1));
         return;
       }
       catch (RejectedExecutionException localRejectedExecutionException)
@@ -870,7 +622,7 @@ public class RIJArticleInfoRepo
     }
     if ((paramLong != -2L) && (paramLong != -3L))
     {
-      localObject = (ConcurrentMap)this.c.get(Integer.valueOf(paramInt));
+      localObject = (ConcurrentMap)this.m.get(Integer.valueOf(paramInt));
       if (localObject == null) {
         return;
       }
@@ -890,7 +642,7 @@ public class RIJArticleInfoRepo
       }
       a(Integer.valueOf(paramInt), localAbsBaseArticleInfo);
       ((ConcurrentMap)localObject).remove(Long.valueOf(paramLong));
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.8(this, localAbsBaseArticleInfo));
+      this.a.execute(new RIJArticleInfoRepo.8(this, localAbsBaseArticleInfo));
       return;
     }
     if (QLog.isColorLevel()) {
@@ -900,7 +652,7 @@ public class RIJArticleInfoRepo
   
   public void a(int paramInt1, long paramLong, int paramInt2)
   {
-    Object localObject = (ConcurrentMap)this.c.get(Integer.valueOf(paramInt1));
+    Object localObject = (ConcurrentMap)this.m.get(Integer.valueOf(paramInt1));
     if (localObject == null) {
       return;
     }
@@ -914,18 +666,18 @@ public class RIJArticleInfoRepo
         localArrayList.add(localAbsBaseArticleInfo);
       }
     }
-    int j = ((ConcurrentMap)localObject).size() - localArrayList.size();
-    if (j < paramInt2)
+    int i2 = ((ConcurrentMap)localObject).size() - localArrayList.size();
+    if (i2 < paramInt2)
     {
       Collections.sort(localArrayList, new RIJArticleInfoRepo.11(this));
-      int i = 0;
-      while (i < paramInt2 - j)
+      int i1 = 0;
+      while (i1 < paramInt2 - i2)
       {
         if (localArrayList.size() <= 0) {
           return;
         }
         localArrayList.remove(0);
-        i += 1;
+        i1 += 1;
       }
     }
     localIterator = localArrayList.iterator();
@@ -935,14 +687,14 @@ public class RIJArticleInfoRepo
       ((ConcurrentMap)localObject).remove(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq));
       a(Integer.valueOf(paramInt1), localAbsBaseArticleInfo);
     }
-    localObject = a(Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJArticleInfoRepo.12(this, paramInt1, (List)localObject));
+    localObject = b(Integer.valueOf(paramInt1));
+    this.c.post(new RIJArticleInfoRepo.12(this, paramInt1, (List)localObject));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("delete outdated article cache , cnt ");
     ((StringBuilder)localObject).append(localArrayList.size());
     ((StringBuilder)localObject).append(", reservedCnt : ");
-    paramInt1 = j;
-    if (j < paramInt2) {
+    paramInt1 = i2;
+    if (i2 < paramInt2) {
       paramInt1 = paramInt2;
     }
     ((StringBuilder)localObject).append(paramInt1);
@@ -951,12 +703,12 @@ public class RIJArticleInfoRepo
   
   public void a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Object localObject2 = (ConcurrentMap)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt));
+    Object localObject2 = (ConcurrentMap)this.l.get(Integer.valueOf(paramInt));
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ConcurrentHashMap();
-      this.jdField_b_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(paramInt), localObject1);
+      this.l.put(Integer.valueOf(paramInt), localObject1);
     }
     if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID)))
     {
@@ -995,7 +747,7 @@ public class RIJArticleInfoRepo
       if ((paramInt != 0) && (!DailyModeConfigHandler.c(paramInt))) {
         return;
       }
-      Map localMap = (Map)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt));
+      Map localMap = (Map)this.l.get(Integer.valueOf(paramInt));
       if (localMap == null) {
         return;
       }
@@ -1034,12 +786,12 @@ public class RIJArticleInfoRepo
   
   public void a(int paramInt, ConcurrentMap<Long, Boolean> paramConcurrentMap)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(paramInt), paramConcurrentMap);
+    this.k.put(Integer.valueOf(paramInt), paramConcurrentMap);
   }
   
   public void a(long paramLong, int paramInt)
   {
-    List localList = b(Integer.valueOf(paramInt));
+    List localList = c(Integer.valueOf(paramInt));
     if (localList == null) {
       return;
     }
@@ -1059,52 +811,12 @@ public class RIJArticleInfoRepo
   
   public void a(RIJArticleInfoRepo.PreLoadDBListener paramPreLoadDBListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo$PreLoadDBListener = paramPreLoadDBListener;
-  }
-  
-  public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo != null)
-    {
-      if (!paramAbsBaseArticleInfo.showBreathAnimation) {
-        return;
-      }
-      Object localObject = (ConcurrentMap)this.c.get(Integer.valueOf(0));
-      if (localObject != null)
-      {
-        int i;
-        if (((ConcurrentMap)localObject).containsKey(Long.valueOf(paramAbsBaseArticleInfo.mRecommendSeq)))
-        {
-          ((AbsBaseArticleInfo)((ConcurrentMap)localObject).get(Long.valueOf(paramAbsBaseArticleInfo.mRecommendSeq))).showBreathAnimation = false;
-          a(Integer.valueOf(0), paramAbsBaseArticleInfo, true);
-          QLog.d("RIJArticleInfoRepo", 2, "resetBiuBreathAnimationFlag | reset breathAnim for fastweb type");
-          i = 1;
-        }
-        else
-        {
-          i = 0;
-        }
-        if (i == 0)
-        {
-          localObject = ((ConcurrentMap)localObject).values().iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((Iterator)localObject).next();
-            if ((localAbsBaseArticleInfo != null) && ((localAbsBaseArticleInfo.mArticleID == paramAbsBaseArticleInfo.mArticleID) || ((!TextUtils.isEmpty(localAbsBaseArticleInfo.innerUniqueID)) && (localAbsBaseArticleInfo.innerUniqueID.equalsIgnoreCase(paramAbsBaseArticleInfo.innerUniqueID)))))
-            {
-              localAbsBaseArticleInfo.showBreathAnimation = false;
-              a(Integer.valueOf(0), paramAbsBaseArticleInfo, true);
-              QLog.d("RIJArticleInfoRepo", 2, "resetBiuBreathAnimationFlag |  reset breathAnim for video or shortContent type");
-            }
-          }
-        }
-      }
-    }
+    this.g = paramPreLoadDBListener;
   }
   
   public void a(Integer paramInteger, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    paramInteger = (CopyOnWriteArrayList)this.jdField_b_of_type_JavaUtilMap.get(paramInteger);
+    paramInteger = (CopyOnWriteArrayList)this.n.get(paramInteger);
     if (paramInteger != null) {
       paramInteger.remove(paramAbsBaseArticleInfo);
     }
@@ -1112,7 +824,7 @@ public class RIJArticleInfoRepo
   
   public void a(Integer paramInteger, byte[] paramArrayOfByte)
   {
-    ChannelTopCookie localChannelTopCookie2 = (ChannelTopCookie)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
+    ChannelTopCookie localChannelTopCookie2 = (ChannelTopCookie)this.j.get(paramInteger);
     ChannelTopCookie localChannelTopCookie1;
     if (localChannelTopCookie2 == null)
     {
@@ -1145,7 +857,7 @@ public class RIJArticleInfoRepo
     a(localChannelTopCookie1);
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.1(this, localChannelTopCookie1));
+      this.a.execute(new RIJArticleInfoRepo.1(this, localChannelTopCookie1));
       return;
     }
     catch (Exception paramInteger)
@@ -1159,137 +871,137 @@ public class RIJArticleInfoRepo
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 55	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   4: invokevirtual 891	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   7: invokevirtual 896	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   1: getfield 66	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   4: invokevirtual 757	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   7: invokevirtual 762	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   10: aload_1
-    //   11: invokeinterface 404 1 0
+    //   11: invokeinterface 355 1 0
     //   16: astore_1
     //   17: aload_1
-    //   18: invokeinterface 319 1 0
-    //   23: ifeq +115 -> 138
+    //   18: invokeinterface 260 1 0
+    //   23: ifeq +116 -> 139
     //   26: aload_1
-    //   27: invokeinterface 323 1 0
-    //   32: checkcast 93	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo
+    //   27: invokeinterface 264 1 0
+    //   32: checkcast 266	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo
     //   35: astore_3
     //   36: aload_3
-    //   37: getfield 900	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mExtraBiuBriefInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo;
+    //   37: getfield 766	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mExtraBiuBriefInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo;
     //   40: ifnull -23 -> 17
     //   43: aload_3
-    //   44: getfield 900	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mExtraBiuBriefInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo;
-    //   47: getfield 903	com/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo:a	Ljava/util/ArrayList;
+    //   44: getfield 766	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mExtraBiuBriefInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo;
+    //   47: getfield 771	com/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo:a	Ljava/util/ArrayList;
     //   50: ifnull -33 -> 17
     //   53: aload_3
-    //   54: getfield 900	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mExtraBiuBriefInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo;
-    //   57: getfield 903	com/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo:a	Ljava/util/ArrayList;
-    //   60: invokevirtual 803	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   54: getfield 766	com/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo:mExtraBiuBriefInfo	Lcom/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo;
+    //   57: getfield 771	com/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo:a	Ljava/util/ArrayList;
+    //   60: invokevirtual 666	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   63: astore_3
     //   64: aload_3
-    //   65: invokeinterface 319 1 0
+    //   65: invokeinterface 260 1 0
     //   70: ifeq -53 -> 17
     //   73: aload_3
-    //   74: invokeinterface 323 1 0
-    //   79: checkcast 905	com/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo$BiuBriefInfoItem
+    //   74: invokeinterface 264 1 0
+    //   79: checkcast 773	com/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo$BiuBriefInfoItem
     //   82: astore 4
     //   84: aload_0
-    //   85: getfield 55	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   88: ldc 121
-    //   90: ldc_w 907
-    //   93: iconst_2
-    //   94: anewarray 125	java/lang/String
-    //   97: dup
-    //   98: iconst_0
-    //   99: iload_2
-    //   100: invokestatic 129	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   103: aastore
-    //   104: dup
-    //   105: iconst_1
-    //   106: aload 4
-    //   108: getfield 908	com/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo$BiuBriefInfoItem:a	J
-    //   111: invokestatic 183	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   114: aastore
-    //   115: invokevirtual 912	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   118: astore 4
-    //   120: aload 4
-    //   122: ifnull -58 -> 64
-    //   125: aload_0
-    //   126: getfield 55	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   129: aload 4
-    //   131: invokevirtual 915	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   134: pop
-    //   135: goto -71 -> 64
-    //   138: aload_0
-    //   139: getfield 55	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   142: invokevirtual 891	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   145: invokevirtual 918	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   148: aload_0
-    //   149: getfield 55	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   152: invokevirtual 891	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   155: invokevirtual 921	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   158: return
-    //   159: astore_1
-    //   160: goto +46 -> 206
-    //   163: astore_1
-    //   164: aload_1
-    //   165: invokevirtual 886	java/lang/Exception:printStackTrace	()V
-    //   168: new 79	java/lang/StringBuilder
-    //   171: dup
-    //   172: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   175: astore_3
-    //   176: aload_3
-    //   177: ldc_w 923
-    //   180: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: pop
-    //   184: aload_3
-    //   185: aload_1
-    //   186: invokevirtual 926	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   189: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: pop
-    //   193: ldc 99
-    //   195: iconst_2
-    //   196: aload_3
-    //   197: invokevirtual 103	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   200: invokestatic 929	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   203: goto -55 -> 148
-    //   206: aload_0
-    //   207: getfield 55	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   210: invokevirtual 891	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   213: invokevirtual 921	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   216: goto +5 -> 221
-    //   219: aload_1
-    //   220: athrow
-    //   221: goto -2 -> 219
+    //   85: getfield 66	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   88: ldc_w 446
+    //   91: ldc_w 775
+    //   94: iconst_2
+    //   95: anewarray 129	java/lang/String
+    //   98: dup
+    //   99: iconst_0
+    //   100: iload_2
+    //   101: invokestatic 451	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   104: aastore
+    //   105: dup
+    //   106: iconst_1
+    //   107: aload 4
+    //   109: getfield 776	com/tencent/mobileqq/kandian/repo/feeds/entity/ExtraBiuBriefInfo$BiuBriefInfoItem:a	J
+    //   112: invokestatic 132	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   115: aastore
+    //   116: invokevirtual 780	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   119: astore 4
+    //   121: aload 4
+    //   123: ifnull -59 -> 64
+    //   126: aload_0
+    //   127: getfield 66	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   130: aload 4
+    //   132: invokevirtual 783	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   135: pop
+    //   136: goto -72 -> 64
+    //   139: aload_0
+    //   140: getfield 66	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   143: invokevirtual 757	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   146: invokevirtual 786	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   149: aload_0
+    //   150: getfield 66	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   153: invokevirtual 757	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   156: invokevirtual 789	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   159: return
+    //   160: astore_1
+    //   161: goto +46 -> 207
+    //   164: astore_1
+    //   165: aload_1
+    //   166: invokevirtual 752	java/lang/Exception:printStackTrace	()V
+    //   169: new 195	java/lang/StringBuilder
+    //   172: dup
+    //   173: invokespecial 196	java/lang/StringBuilder:<init>	()V
+    //   176: astore_3
+    //   177: aload_3
+    //   178: ldc_w 791
+    //   181: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: aload_3
+    //   186: aload_1
+    //   187: invokevirtual 794	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   190: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: pop
+    //   194: ldc 207
+    //   196: iconst_2
+    //   197: aload_3
+    //   198: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: invokestatic 797	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   204: goto -55 -> 149
+    //   207: aload_0
+    //   208: getfield 66	com/tencent/mobileqq/kandian/repo/feeds/RIJArticleInfoRepo:b	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   211: invokevirtual 757	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   214: invokevirtual 789	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   217: goto +5 -> 222
+    //   220: aload_1
+    //   221: athrow
+    //   222: goto -2 -> 220
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	224	0	this	RIJArticleInfoRepo
-    //   0	224	1	paramList	List<AbsBaseArticleInfo>
-    //   0	224	2	paramInt	int
-    //   35	162	3	localObject1	Object
-    //   82	48	4	localObject2	Object
+    //   0	225	0	this	RIJArticleInfoRepo
+    //   0	225	1	paramList	List<AbsBaseArticleInfo>
+    //   0	225	2	paramInt	int
+    //   35	163	3	localObject1	Object
+    //   82	49	4	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   0	17	159	finally
-    //   17	64	159	finally
-    //   64	120	159	finally
-    //   125	135	159	finally
-    //   138	148	159	finally
-    //   164	203	159	finally
-    //   0	17	163	java/lang/Exception
-    //   17	64	163	java/lang/Exception
-    //   64	120	163	java/lang/Exception
-    //   125	135	163	java/lang/Exception
-    //   138	148	163	java/lang/Exception
+    //   0	17	160	finally
+    //   17	64	160	finally
+    //   64	121	160	finally
+    //   126	136	160	finally
+    //   139	149	160	finally
+    //   165	204	160	finally
+    //   0	17	164	java/lang/Exception
+    //   17	64	164	java/lang/Exception
+    //   64	121	164	java/lang/Exception
+    //   126	136	164	java/lang/Exception
+    //   139	149	164	java/lang/Exception
   }
   
   public void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List<AbsBaseArticleInfo> paramList1, long paramLong1, long paramLong2, List<AbsBaseArticleInfo> paramList2, ToServiceMsg paramToServiceMsg)
   {
     b(paramBoolean1, paramInt, paramBoolean2, paramList1, paramLong1, paramLong2, paramList2, paramToServiceMsg);
-    paramList2 = a(Integer.valueOf(paramInt));
-    if ((paramInt == 70) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((paramBoolean2) || ((paramList1 == null) && (paramBoolean1))) && (paramList2 != null)) {
-      ((KandianMergeManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(paramList2.size());
+    paramList2 = b(Integer.valueOf(paramInt));
+    if ((paramInt == 70) && (this.f != null) && ((paramBoolean2) || ((paramList1 == null) && (paramBoolean1))) && (paramList2 != null)) {
+      ((KandianMergeManager)this.f.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(paramList2.size());
     }
     Object localObject = paramToServiceMsg.getAttribute("isRedRefreshReq");
-    int i = 0;
+    int i1 = 0;
     boolean bool;
     if ((localObject != null) && ((localObject instanceof Boolean))) {
       bool = ((Boolean)localObject).booleanValue();
@@ -1314,9 +1026,9 @@ public class RIJArticleInfoRepo
     if (paramBoolean1)
     {
       if (paramList1 != null) {
-        i = paramList1.size();
+        i1 = paramList1.size();
       }
-      FeedsPreloadDataReport.a(paramToServiceMsg, i);
+      FeedsPreloadDataReport.a(paramToServiceMsg, i1);
     }
     a(paramInt, paramList2, paramBoolean1);
   }
@@ -1332,35 +1044,35 @@ public class RIJArticleInfoRepo
       ((StringBuilder)localObject1).append(paramInt2);
       QLog.d("RIJArticleInfoRepo", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = (ArrayList)a(paramInt1);
+    Object localObject1 = (ArrayList)h(paramInt1);
     if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
     {
       ArrayList localArrayList = new ArrayList();
-      ReadInJoyMSFHandlerUtils.a((List)localObject1);
+      ReadInJoyMSFHandlerUtils.d((List)localObject1);
       localArrayList.addAll((Collection)localObject1);
       paramInt1 = 0;
       while (paramInt1 < localArrayList.size())
       {
-        int i = (int)((AbsBaseArticleInfo)localArrayList.get(paramInt1)).mChannelID;
-        Object localObject2 = (ConcurrentMap)this.c.get(Integer.valueOf(i));
+        int i1 = (int)((AbsBaseArticleInfo)localArrayList.get(paramInt1)).mChannelID;
+        Object localObject2 = (ConcurrentMap)this.m.get(Integer.valueOf(i1));
         localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = new ConcurrentHashMap();
-          this.c.put(Integer.valueOf(i), localObject1);
+          this.m.put(Integer.valueOf(i1), localObject1);
         }
-        if ((((AbsBaseArticleInfo)localArrayList.get(paramInt1)).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localArrayList.get(paramInt1)).mTopicRecommendFeedsInfo.a.size() > 0)) {
-          ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localArrayList.get(paramInt1)).mTopicRecommendFeedsInfo.a.get(0)).c = paramInt2;
+        if ((((AbsBaseArticleInfo)localArrayList.get(paramInt1)).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localArrayList.get(paramInt1)).mTopicRecommendFeedsInfo.g.size() > 0)) {
+          ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localArrayList.get(paramInt1)).mTopicRecommendFeedsInfo.g.get(0)).g = paramInt2;
         }
         localObject2 = ((AbsBaseArticleInfo)localArrayList.get(paramInt1)).clone();
         if (((ConcurrentMap)localObject1).get(Long.valueOf(((AbsBaseArticleInfo)localObject2).mRecommendSeq)) != null) {
-          a(Integer.valueOf(i), (AbsBaseArticleInfo)localObject2);
+          a(Integer.valueOf(i1), (AbsBaseArticleInfo)localObject2);
         }
         localObject1 = (AbsBaseArticleInfo)((ConcurrentMap)localObject1).get(Long.valueOf(((AbsBaseArticleInfo)localObject2).mRecommendSeq));
         if (localObject1 != null)
         {
-          if ((((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a.size() > 0)) {
-            ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a.get(0)).c = paramInt2;
+          if ((((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g.size() > 0)) {
+            ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g.get(0)).g = paramInt2;
           }
           ((AbsBaseArticleInfo)localObject1).invalidateProteusTemplateBean();
           if (QLog.isColorLevel())
@@ -1375,10 +1087,10 @@ public class RIJArticleInfoRepo
             QLog.d("RIJArticleInfoRepo", 2, localStringBuilder.toString());
           }
         }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.17(this, (AbsBaseArticleInfo)localObject2));
+        this.a.execute(new RIJArticleInfoRepo.17(this, (AbsBaseArticleInfo)localObject2));
         paramInt1 += 1;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new RIJArticleInfoRepo.18(this));
+      this.c.post(new RIJArticleInfoRepo.18(this));
       return true;
     }
     if (QLog.isColorLevel()) {
@@ -1393,7 +1105,7 @@ public class RIJArticleInfoRepo
     boolean bool1 = bool2;
     if (paramAbsBaseArticleInfo != null)
     {
-      Object localObject = this.c;
+      Object localObject = this.m;
       bool1 = bool2;
       if (localObject != null)
       {
@@ -1429,26 +1141,26 @@ public class RIJArticleInfoRepo
   
   public boolean a(Integer paramInteger, AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
   {
+    boolean bool1 = false;
+    boolean bool2 = false;
     if (paramAbsBaseArticleInfo == null) {
       return false;
     }
     if (!WhiteListBidConfigHandler.a(paramAbsBaseArticleInfo)) {
       return false;
     }
-    Object localObject2 = (ConcurrentMap)this.c.get(paramInteger);
+    Object localObject2 = (ConcurrentMap)this.m.get(paramInteger);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ConcurrentHashMap();
-      this.c.put(paramInteger, localObject1);
+      this.m.put(paramInteger, localObject1);
     }
-    boolean bool;
     if (((ConcurrentMap)localObject1).get(Long.valueOf(paramAbsBaseArticleInfo.mRecommendSeq)) != null)
     {
+      bool1 = bool2;
       if (paramAbsBaseArticleInfo.mAbandonRepeatFlag == 0) {
-        bool = true;
-      } else {
-        bool = false;
+        bool1 = true;
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("saveArticleInfo, article duplicated, article been channelID=");
@@ -1460,23 +1172,19 @@ public class RIJArticleInfoRepo
       ((StringBuilder)localObject2).append(", toDb=");
       ((StringBuilder)localObject2).append(paramBoolean);
       ((StringBuilder)localObject2).append("，isDupArticle =");
-      ((StringBuilder)localObject2).append(bool);
+      ((StringBuilder)localObject2).append(bool1);
       ((StringBuilder)localObject2).append("，title = ");
       ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mTitle);
       QLog.e("RIJArticleInfoRepo", 1, ((StringBuilder)localObject2).toString());
     }
-    else
-    {
-      bool = false;
-    }
     if ((paramInteger.intValue() != 70) && (paramInteger.intValue() != 0) && (paramInteger.intValue() != 9999) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mVideoVid)))
     {
-      Object localObject3 = (ConcurrentHashMap)this.d.get(paramInteger);
+      Object localObject3 = (ConcurrentHashMap)this.o.get(paramInteger);
       localObject2 = localObject3;
       if (localObject3 == null)
       {
         localObject2 = new ConcurrentHashMap();
-        this.d.put(paramInteger, localObject2);
+        this.o.put(paramInteger, localObject2);
       }
       if (((ConcurrentHashMap)localObject2).get(paramAbsBaseArticleInfo.mVideoVid) != null)
       {
@@ -1511,18 +1219,15 @@ public class RIJArticleInfoRepo
       }
       ((ConcurrentHashMap)localObject2).put(paramAbsBaseArticleInfo.mVideoVid, paramAbsBaseArticleInfo);
     }
-    if (!bool)
+    if (!bool1)
     {
       ((ConcurrentMap)localObject1).put(Long.valueOf(paramAbsBaseArticleInfo.mRecommendSeq), paramAbsBaseArticleInfo);
-      if (paramAbsBaseArticleInfo.isWormhole()) {
-        return false;
-      }
       if (paramBoolean)
       {
-        paramInteger = this.jdField_a_of_type_JavaUtilConcurrentExecutorService;
-        if ((paramInteger != null) && (!paramInteger.isShutdown()) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isTerminated()))
+        paramInteger = this.a;
+        if ((paramInteger != null) && (!paramInteger.isShutdown()) && (!this.a.isTerminated()))
         {
-          this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.6(this, paramAbsBaseArticleInfo));
+          this.a.execute(new RIJArticleInfoRepo.6(this, paramAbsBaseArticleInfo));
           return true;
         }
         ThreadManager.executeOnSubThread(new RIJArticleInfoRepo.7(this, paramAbsBaseArticleInfo));
@@ -1536,49 +1241,31 @@ public class RIJArticleInfoRepo
     b(paramList);
     if ((paramInteger.intValue() != -1) && (paramList != null) && (paramList.size() != 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoMessagePackMsgProcessor.a(paramInteger, paramList, paramBoolean);
+      this.e.a(paramInteger, paramList, paramBoolean);
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         a(paramInteger, (AbsBaseArticleInfo)paramList.next(), paramBoolean);
       }
-      if ((paramInteger.intValue() == 0) && (this.jdField_a_of_type_Boolean))
+      if ((paramInteger.intValue() == 0) && (this.h))
       {
-        this.jdField_a_of_type_Boolean = false;
-        if (((ConcurrentMap)this.c.get(paramInteger)).size() > 30) {
-          a(paramInteger);
+        this.h = false;
+        if (((ConcurrentMap)this.m.get(paramInteger)).size() > 30) {
+          i(paramInteger);
         }
       }
       return true;
     }
-    this.jdField_b_of_type_JavaUtilMap.remove(paramInteger);
+    this.n.remove(paramInteger);
     return false;
   }
   
   public byte[] a(Integer paramInteger)
   {
-    paramInteger = (ChannelTopCookie)this.jdField_a_of_type_JavaUtilMap.get(paramInteger);
+    paramInteger = (ChannelTopCookie)this.j.get(paramInteger);
     if (paramInteger == null) {
       return null;
     }
     return paramInteger.mSetTopCookie;
-  }
-  
-  public long b(Integer paramInteger)
-  {
-    paramInteger = (ConcurrentMap)this.c.get(paramInteger);
-    if (paramInteger == null) {
-      return -1L;
-    }
-    paramInteger = paramInteger.keySet().iterator();
-    long l = 9223372036854775807L;
-    while (paramInteger.hasNext())
-    {
-      Long localLong = (Long)paramInteger.next();
-      if (localLong.longValue() < l) {
-        l = localLong.longValue();
-      }
-    }
-    return l;
   }
   
   public List<AbsBaseArticleInfo> b(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
@@ -1602,49 +1289,180 @@ public class RIJArticleInfoRepo
       QLog.e("RIJArticleInfoRepo", 2, ((StringBuilder)localObject2).toString());
     }
     Object localObject2 = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(BaseArticleInfo.class, true, (String)localObject1, new String[] { String.valueOf(paramInt1), String.valueOf(paramLong) }, null, null, "mRecommendSeq desc", String.valueOf(paramInt2));
+    Object localObject1 = this.b.query(BaseArticleInfo.class, true, (String)localObject1, new String[] { String.valueOf(paramInt1), String.valueOf(paramLong) }, null, null, "mRecommendSeq desc", String.valueOf(paramInt2));
     if (localObject1 != null)
     {
-      ReadInJoyMSFHandlerUtils.a((List)localObject1);
+      ReadInJoyMSFHandlerUtils.d((List)localObject1);
       ((List)localObject2).addAll((Collection)localObject1);
     }
     if ((((List)localObject2).isEmpty()) && (QLog.isColorLevel())) {
       QLog.e("RIJArticleInfoRepo", 2, "loadChannelArticleSeqList mEntityManager.query return empty");
     }
-    a(paramInt1);
+    b(paramInt1);
     return localObject2;
   }
   
-  public List<AbsBaseArticleInfo> b(Integer paramInteger)
+  public List<Long> b(Integer paramInteger)
   {
-    paramInteger = (ConcurrentMap)this.c.get(paramInteger);
-    if ((paramInteger != null) && (paramInteger.size() != 0))
+    Object localObject = c(paramInteger);
+    if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      ArrayList localArrayList = new ArrayList(paramInteger.size());
-      Iterator localIterator = paramInteger.keySet().iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add((AbsBaseArticleInfo)paramInteger.get((Long)localIterator.next()));
+      ArrayList localArrayList = new ArrayList(((List)localObject).size());
+      HashSet localHashSet1 = new HashSet();
+      HashSet localHashSet2 = new HashSet();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((Iterator)localObject).next();
+        if ((paramInteger.intValue() != 70) && (paramInteger.intValue() != 41403) && (!localHashSet1.add(Long.valueOf(localAbsBaseArticleInfo.mArticleID))))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getChannelArticleSeqList 有重复文章， channelID = ");
+          localStringBuilder.append(paramInteger);
+          localStringBuilder.append(", seq = ");
+          localStringBuilder.append(localAbsBaseArticleInfo.mRecommendSeq);
+          localStringBuilder.append("，articleID = ");
+          localStringBuilder.append(localAbsBaseArticleInfo.mArticleID);
+          QLog.d("RIJArticleInfoRepo", 2, localStringBuilder.toString());
+          a(paramInteger, localAbsBaseArticleInfo);
+        }
+        else if ((paramInteger.intValue() == 41403) && (!localHashSet2.add(Long.valueOf(localAbsBaseArticleInfo.mFeedId))))
+        {
+          QLog.d("RIJArticleInfoRepo", 1, new Object[] { "getChannelArticleSeqList 有重复feeds, channelID = ", paramInteger, ", seq = ", Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq), ", feedsId = ", Long.valueOf(localAbsBaseArticleInfo.mFeedId) });
+          a(paramInteger, localAbsBaseArticleInfo);
+        }
+        else
+        {
+          localArrayList.add(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq));
+        }
       }
-      Collections.sort(localArrayList, new RIJArticleInfoRepo.13(this));
+      this.e.a(paramInteger, localArrayList);
       return localArrayList;
     }
     return null;
   }
   
-  public ConcurrentMap<String, ArticleExposureInfo> b(int paramInt)
-  {
-    return (ConcurrentMap)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt));
-  }
-  
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.2(this));
+    this.a.execute(new RIJArticleInfoRepo.2(this));
   }
   
   public void b(int paramInt)
   {
-    this.c.remove(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.9(this, paramInt));
+    if (!RIJKanDianFeedsExposureSwitchAladdinConfig.a()) {
+      return;
+    }
+    if ((paramInt != 0) && (!DailyModeConfigHandler.c(paramInt))) {
+      return;
+    }
+    if ((ConcurrentMap)this.l.get(Integer.valueOf(paramInt)) != null)
+    {
+      QLog.d("RIJArticleInfoRepo", 1, "loadArticleExposureInfoFromDB has loaded!");
+      return;
+    }
+    this.a.execute(new RIJArticleInfoRepo.5(this, paramInt));
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Object localObject1 = (ArrayList)i(paramInt1);
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
+    {
+      ArrayList localArrayList = new ArrayList();
+      ReadInJoyMSFHandlerUtils.d((List)localObject1);
+      localArrayList.addAll((Collection)localObject1);
+      int i1 = 0;
+      while (i1 < localArrayList.size())
+      {
+        int i2 = (int)((AbsBaseArticleInfo)localArrayList.get(i1)).mChannelID;
+        Object localObject2 = (ConcurrentMap)this.m.get(Integer.valueOf(i2));
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = new ConcurrentHashMap();
+          this.m.put(Integer.valueOf(i2), localObject1);
+        }
+        if ((((AbsBaseArticleInfo)localArrayList.get(i1)).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localArrayList.get(i1)).mTopicRecommendFeedsInfo.g.size() > 0)) {
+          ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localArrayList.get(i1)).mTopicRecommendFeedsInfo.g.get(0)).g = paramInt2;
+        }
+        Object localObject3;
+        if (((AbsBaseArticleInfo)localArrayList.get(i1)).mPolymericInfo != null)
+        {
+          int i3 = paramInt2 + 1;
+          ((AbsBaseArticleInfo)localArrayList.get(i1)).mPolymericInfo.p = i3;
+          localObject2 = new articlesummary.PackInfo();
+          try
+          {
+            ((articlesummary.PackInfo)localObject2).mergeFrom(((AbsBaseArticleInfo)localArrayList.get(i1)).mPackInfoBytes);
+            ((articlesummary.PackInfo)localObject2).uint32_follow_status.set(i3, true);
+            ((AbsBaseArticleInfo)localArrayList.get(i1)).mPackInfoBytes = ((articlesummary.PackInfo)localObject2).toByteArray();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("first setSmallVideoTopicFollowTypeIntoDB article.mPackInfoBytes convert error article.topicID:");
+            ((StringBuilder)localObject3).append(paramInt1);
+            ((StringBuilder)localObject3).append(" e = ");
+            ((StringBuilder)localObject3).append(localInvalidProtocolBufferMicroException1);
+            QLog.e("RIJArticleInfoRepo", 1, ((StringBuilder)localObject3).toString());
+            localInvalidProtocolBufferMicroException1.printStackTrace();
+          }
+        }
+        AbsBaseArticleInfo localAbsBaseArticleInfo = ((AbsBaseArticleInfo)localArrayList.get(i1)).clone();
+        if (((ConcurrentMap)localObject1).get(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq)) != null)
+        {
+          a(Integer.valueOf(i2), localAbsBaseArticleInfo);
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("recordArticleInfo, article duplicated, article been channelID=");
+            ((StringBuilder)localObject3).append(i2);
+            ((StringBuilder)localObject3).append(", articleID=");
+            ((StringBuilder)localObject3).append(localAbsBaseArticleInfo.mArticleID);
+            ((StringBuilder)localObject3).append("，seq=");
+            ((StringBuilder)localObject3).append(localAbsBaseArticleInfo.mRecommendSeq);
+            QLog.e("RIJArticleInfoRepo", 2, ((StringBuilder)localObject3).toString());
+          }
+        }
+        localObject1 = (AbsBaseArticleInfo)((ConcurrentMap)localObject1).get(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq));
+        if (localObject1 != null)
+        {
+          if ((((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g.size() > 0)) {
+            ((TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g.get(0)).g = paramInt2;
+          }
+          if (((AbsBaseArticleInfo)localObject1).mPolymericInfo != null)
+          {
+            i2 = paramInt2 + 1;
+            ((AbsBaseArticleInfo)localObject1).mPolymericInfo.p = i2;
+            localObject3 = new articlesummary.PackInfo();
+            try
+            {
+              ((articlesummary.PackInfo)localObject3).mergeFrom(((AbsBaseArticleInfo)localObject1).mPackInfoBytes);
+              ((articlesummary.PackInfo)localObject3).uint32_follow_status.set(i2, true);
+              ((AbsBaseArticleInfo)localObject1).mPackInfoBytes = ((articlesummary.PackInfo)localObject3).toByteArray();
+            }
+            catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("first setSmallVideoTopicFollowTypeIntoDB article.mPackInfoBytes convert error article.topicID:");
+              localStringBuilder.append(paramInt1);
+              localStringBuilder.append(" e = ");
+              localStringBuilder.append(localInvalidProtocolBufferMicroException2);
+              QLog.e("RIJArticleInfoRepo", 1, localStringBuilder.toString());
+              localInvalidProtocolBufferMicroException2.printStackTrace();
+            }
+          }
+          ((AbsBaseArticleInfo)localObject1).invalidateProteusTemplateBean();
+        }
+        this.a.execute(new RIJArticleInfoRepo.19(this, localAbsBaseArticleInfo));
+        i1 += 1;
+      }
+      this.c.post(new RIJArticleInfoRepo.20(this, paramInt1, paramInt2));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJArticleInfoRepo", 2, "no recommend topic feeds");
+    }
   }
   
   public void b(int paramInt, List<AbsBaseArticleInfo> paramList)
@@ -1673,7 +1491,7 @@ public class RIJArticleInfoRepo
           QLog.d("RIJArticleInfoRepo", 2, ((StringBuilder)localObject3).toString());
         }
       }
-      ConcurrentMap localConcurrentMap = (ConcurrentMap)this.c.get(Integer.valueOf(paramInt));
+      ConcurrentMap localConcurrentMap = (ConcurrentMap)this.m.get(Integer.valueOf(paramInt));
       if (localConcurrentMap == null) {
         return;
       }
@@ -1689,15 +1507,15 @@ public class RIJArticleInfoRepo
           Map.Entry localEntry = (Map.Entry)localIterator2.next();
           if (((AbsBaseArticleInfo)localEntry.getValue()).mNewPolymericInfo != null)
           {
-            localObject2 = ((AbsBaseArticleInfo)localEntry.getValue()).mNewPolymericInfo.a.iterator();
+            localObject2 = ((AbsBaseArticleInfo)localEntry.getValue()).mNewPolymericInfo.p.iterator();
             while (((Iterator)localObject2).hasNext())
             {
               localObject3 = (NewPolymericInfo.PackArticleInfo)((Iterator)localObject2).next();
-              long l = ((NewPolymericInfo.PackArticleInfo)localObject3).a;
-              if (l == localAbsBaseArticleInfo.mArticleID)
+              long l1 = ((NewPolymericInfo.PackArticleInfo)localObject3).a;
+              if (l1 == localAbsBaseArticleInfo.mArticleID)
               {
                 localObject2 = (AbsBaseArticleInfo)localEntry.getValue();
-                ((AbsBaseArticleInfo)localObject2).mNewPolymericInfo.a.remove(localObject3);
+                ((AbsBaseArticleInfo)localObject2).mNewPolymericInfo.p.remove(localObject3);
                 localObject1 = paramList;
                 break label413;
               }
@@ -1736,18 +1554,18 @@ public class RIJArticleInfoRepo
         for (;;)
         {
           break;
-          if ((((AbsBaseArticleInfo)localObject1).mNewPolymericInfo != null) && (((RIJFeedsType.D((AbsBaseArticleInfo)localObject1)) && (((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.a.size() >= 3)) || ((!RIJFeedsType.D((AbsBaseArticleInfo)localObject1)) && (((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.a.size() >= 2))))
+          if ((((AbsBaseArticleInfo)localObject1).mNewPolymericInfo != null) && (((RIJFeedsType.J((AbsBaseArticleInfo)localObject1)) && (((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.p.size() >= 3)) || ((!RIJFeedsType.J((AbsBaseArticleInfo)localObject1)) && (((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.p.size() >= 2))))
           {
             ((AbsBaseArticleInfo)localObject1).mNewPackInfoBytes = ((AbsBaseArticleInfo)localObject1).mNewPolymericInfo.a();
             b(Integer.valueOf(paramInt), (AbsBaseArticleInfo)localObject1);
             localConcurrentMap.put(Long.valueOf(((AbsBaseArticleInfo)localObject1).mRecommendSeq), localObject1);
-            this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.15(this, (AbsBaseArticleInfo)localObject1));
+            this.a.execute(new RIJArticleInfoRepo.15(this, (AbsBaseArticleInfo)localObject1));
           }
           else
           {
             a(Integer.valueOf(paramInt), (AbsBaseArticleInfo)localObject1);
             localConcurrentMap.remove(Long.valueOf(((AbsBaseArticleInfo)localObject1).mRecommendSeq));
-            this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.16(this, (AbsBaseArticleInfo)localObject1));
+            this.a.execute(new RIJArticleInfoRepo.16(this, (AbsBaseArticleInfo)localObject1));
           }
         }
       }
@@ -1759,19 +1577,233 @@ public class RIJArticleInfoRepo
   
   public void b(int paramInt, ConcurrentMap<Long, AbsBaseArticleInfo> paramConcurrentMap)
   {
-    this.c.put(Integer.valueOf(paramInt), paramConcurrentMap);
+    this.m.put(Integer.valueOf(paramInt), paramConcurrentMap);
   }
   
   public void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (paramAbsBaseArticleInfo != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.26(this, paramAbsBaseArticleInfo));
+    if (paramAbsBaseArticleInfo != null)
+    {
+      if (!paramAbsBaseArticleInfo.showBreathAnimation) {
+        return;
+      }
+      Object localObject = (ConcurrentMap)this.m.get(Integer.valueOf(0));
+      if (localObject != null)
+      {
+        int i1;
+        if (((ConcurrentMap)localObject).containsKey(Long.valueOf(paramAbsBaseArticleInfo.mRecommendSeq)))
+        {
+          ((AbsBaseArticleInfo)((ConcurrentMap)localObject).get(Long.valueOf(paramAbsBaseArticleInfo.mRecommendSeq))).showBreathAnimation = false;
+          a(Integer.valueOf(0), paramAbsBaseArticleInfo, true);
+          QLog.d("RIJArticleInfoRepo", 2, "resetBiuBreathAnimationFlag | reset breathAnim for fastweb type");
+          i1 = 1;
+        }
+        else
+        {
+          i1 = 0;
+        }
+        if (i1 == 0)
+        {
+          localObject = ((ConcurrentMap)localObject).values().iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((Iterator)localObject).next();
+            if ((localAbsBaseArticleInfo != null) && ((localAbsBaseArticleInfo.mArticleID == paramAbsBaseArticleInfo.mArticleID) || ((!TextUtils.isEmpty(localAbsBaseArticleInfo.innerUniqueID)) && (localAbsBaseArticleInfo.innerUniqueID.equalsIgnoreCase(paramAbsBaseArticleInfo.innerUniqueID)))))
+            {
+              localAbsBaseArticleInfo.showBreathAnimation = false;
+              a(Integer.valueOf(0), paramAbsBaseArticleInfo, true);
+              QLog.d("RIJArticleInfoRepo", 2, "resetBiuBreathAnimationFlag |  reset breathAnim for video or shortContent type");
+            }
+          }
+        }
+      }
     }
   }
   
-  public List<Long> c(Integer paramInteger)
+  public List<AbsBaseArticleInfo> c(Integer paramInteger)
   {
-    Object localObject1 = b(paramInteger);
+    paramInteger = (ConcurrentMap)this.m.get(paramInteger);
+    if ((paramInteger != null) && (paramInteger.size() != 0))
+    {
+      ArrayList localArrayList = new ArrayList(paramInteger.size());
+      Iterator localIterator = paramInteger.keySet().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add((AbsBaseArticleInfo)paramInteger.get((Long)localIterator.next()));
+      }
+      Collections.sort(localArrayList, new RIJArticleInfoRepo.13(this));
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public ConcurrentMap<String, ArticleExposureInfo> c(int paramInt)
+  {
+    return (ConcurrentMap)this.l.get(Integer.valueOf(paramInt));
+  }
+  
+  public void c(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
+  {
+    Object localObject = this.a;
+    if ((localObject != null) && (!((ExecutorService)localObject).isShutdown()))
+    {
+      localObject = b(Integer.valueOf(paramInt1));
+      if (localObject != null)
+      {
+        if (((List)localObject).isEmpty()) {
+          return;
+        }
+        try
+        {
+          this.a.execute(new RIJArticleInfoRepo.21(this, paramInt1, paramInt2, paramLong, paramBoolean));
+          return;
+        }
+        catch (RejectedExecutionException localRejectedExecutionException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[preloadFeedsFromDB], e = ");
+          localStringBuilder.append(localRejectedExecutionException);
+          QLog.e("RIJArticleInfoRepo", 1, localStringBuilder.toString());
+        }
+      }
+      return;
+    }
+    QLog.i("RIJArticleInfoRepo", 1, "[loadFeedsFromDB], mExecutorService is null or shutDown.");
+  }
+  
+  public void c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo != null) {
+      this.a.execute(new RIJArticleInfoRepo.26(this, paramAbsBaseArticleInfo));
+    }
+  }
+  
+  public long d(Integer paramInteger)
+  {
+    paramInteger = (ConcurrentMap)this.m.get(paramInteger);
+    long l1 = -1L;
+    if (paramInteger == null) {
+      return -1L;
+    }
+    paramInteger = paramInteger.keySet().iterator();
+    while (paramInteger.hasNext())
+    {
+      Long localLong = (Long)paramInteger.next();
+      if (localLong.longValue() > l1) {
+        l1 = localLong.longValue();
+      }
+    }
+    return l1;
+  }
+  
+  public ConcurrentMap<Long, AbsBaseArticleInfo> d(int paramInt)
+  {
+    return (ConcurrentMap)this.m.get(Integer.valueOf(paramInt));
+  }
+  
+  public long e(Integer paramInteger)
+  {
+    paramInteger = (ConcurrentMap)this.m.get(paramInteger);
+    if (paramInteger == null) {
+      return -1L;
+    }
+    paramInteger = paramInteger.keySet().iterator();
+    long l1 = 9223372036854775807L;
+    while (paramInteger.hasNext())
+    {
+      Long localLong = (Long)paramInteger.next();
+      if (localLong.longValue() < l1) {
+        l1 = localLong.longValue();
+      }
+    }
+    return l1;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.m.remove(Integer.valueOf(paramInt));
+    this.a.execute(new RIJArticleInfoRepo.9(this, paramInt));
+  }
+  
+  public AbsBaseArticleInfo f(Integer paramInteger)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[getRefreshedArticleInfo] channelID = ");
+      ((StringBuilder)localObject).append(paramInteger);
+      ((StringBuilder)localObject).append(", isReservedCacheFlag = ");
+      ((StringBuilder)localObject).append(this.i);
+      QLog.i("RIJArticleInfoRepo", 1, ((StringBuilder)localObject).toString());
+    }
+    if ((RIJDeleteArticleAfterRefreshAladdinConfig.a(paramInteger.intValue())) && (!this.i)) {
+      return null;
+    }
+    Object localObject = (List)this.n.get(paramInteger);
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      if (paramInteger.intValue() == 70)
+      {
+        int i1 = 0;
+        while (i1 < ((List)localObject).size())
+        {
+          paramInteger = (AbsBaseArticleInfo)((List)localObject).get(i1);
+          if (paramInteger.hintFlag) {
+            return paramInteger;
+          }
+          i1 += 1;
+        }
+      }
+      return (AbsBaseArticleInfo)((List)localObject).get(((List)localObject).size() - 1);
+    }
+    return null;
+  }
+  
+  public void f(int paramInt)
+  {
+    int i1 = RIJFeedsRefreshUtil.a.a(paramInt);
+    if (i1 <= 0) {
+      return;
+    }
+    Object localObject1 = (ConcurrentMap)this.m.get(Integer.valueOf(paramInt));
+    Object localObject2 = RIJFeedsRefreshUtil.a.a((ConcurrentMap)localObject1, i1);
+    if (((List)localObject2).isEmpty()) {
+      return;
+    }
+    localObject2 = ((List)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((ConcurrentMap)localObject1).remove((Long)((Iterator)localObject2).next());
+      if (localAbsBaseArticleInfo != null) {
+        a(Integer.valueOf(paramInt), localAbsBaseArticleInfo);
+      }
+    }
+    localObject1 = RIJFeedsRefreshUtil.a.b((ConcurrentMap)localObject1, i1);
+    localObject1 = RIJFeedsRefreshUtil.a.a((List)localObject1, paramInt);
+    this.a.execute(new RIJArticleInfoRepo.10(this, (String)localObject1));
+    this.i = true;
+  }
+  
+  public int g(Integer paramInteger)
+  {
+    paramInteger = (List)this.n.get(paramInteger);
+    if (paramInteger == null) {
+      return 0;
+    }
+    return paramInteger.size();
+  }
+  
+  public void g(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      this.m.remove(Integer.valueOf(paramInt));
+      this.n.remove(Integer.valueOf(paramInt));
+    }
+  }
+  
+  public List<Long> h(Integer paramInteger)
+  {
+    Object localObject1 = c(paramInteger);
     if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
       ArrayList localArrayList = new ArrayList();
@@ -1783,7 +1815,7 @@ public class RIJArticleInfoRepo
         {
           if (((AbsBaseArticleInfo)localObject2).mNewPolymericInfo != null)
           {
-            localObject2 = ((AbsBaseArticleInfo)localObject2).mNewPolymericInfo.a;
+            localObject2 = ((AbsBaseArticleInfo)localObject2).mNewPolymericInfo.p;
             if (localObject2 != null)
             {
               localObject2 = ((List)localObject2).iterator();
@@ -1816,49 +1848,10 @@ public class RIJArticleInfoRepo
     }
     return null;
   }
-  
-  public ConcurrentMap<Long, AbsBaseArticleInfo> c(int paramInt)
-  {
-    return (ConcurrentMap)this.c.get(Integer.valueOf(paramInt));
-  }
-  
-  public void c(int paramInt)
-  {
-    int i = RIJFeedsRefreshUtil.a.a(paramInt);
-    if (i <= 0) {
-      return;
-    }
-    Object localObject1 = (ConcurrentMap)this.c.get(Integer.valueOf(paramInt));
-    Object localObject2 = RIJFeedsRefreshUtil.a.a((ConcurrentMap)localObject1, i);
-    if (((List)localObject2).isEmpty()) {
-      return;
-    }
-    localObject2 = ((List)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)((ConcurrentMap)localObject1).remove((Long)((Iterator)localObject2).next());
-      if (localAbsBaseArticleInfo != null) {
-        a(Integer.valueOf(paramInt), localAbsBaseArticleInfo);
-      }
-    }
-    localObject1 = RIJFeedsRefreshUtil.a.b((ConcurrentMap)localObject1, i);
-    localObject1 = RIJFeedsRefreshUtil.a.a((List)localObject1, paramInt);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new RIJArticleInfoRepo.10(this, (String)localObject1));
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void d(int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      this.c.remove(Integer.valueOf(paramInt));
-      this.jdField_b_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJArticleInfoRepo
  * JD-Core Version:    0.7.0.1
  */

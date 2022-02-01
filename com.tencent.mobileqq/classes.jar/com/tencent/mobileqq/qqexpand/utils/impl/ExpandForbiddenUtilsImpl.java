@@ -52,29 +52,29 @@ public class ExpandForbiddenUtilsImpl
     if (paramLong > 86400L)
     {
       localArrayList.add(String.valueOf((paramLong + 86400L - 1L) / 86400L));
-      localArrayList.add(paramActivity.getString(2131691451));
+      localArrayList.add(paramActivity.getString(2131888406));
       return localArrayList;
     }
     if (paramLong > 3600L)
     {
       localArrayList.add(String.valueOf((paramLong + 3600L - 1L) / 3600L));
-      localArrayList.add(paramActivity.getString(2131693231));
+      localArrayList.add(paramActivity.getString(2131890771));
       return localArrayList;
     }
     if (paramLong > 60L)
     {
       localArrayList.add(String.valueOf((paramLong + 60L - 1L) / 60L));
-      localArrayList.add(paramActivity.getString(2131694189));
+      localArrayList.add(paramActivity.getString(2131891826));
       return localArrayList;
     }
     if (paramLong > 0L)
     {
       localArrayList.add(String.valueOf(paramLong));
-      localArrayList.add(paramActivity.getString(2131718652));
+      localArrayList.add(paramActivity.getString(2131916153));
       return localArrayList;
     }
     localArrayList.add(String.valueOf(0));
-    localArrayList.add(paramActivity.getString(2131718652));
+    localArrayList.add(paramActivity.getString(2131916153));
     return localArrayList;
   }
   
@@ -152,7 +152,7 @@ public class ExpandForbiddenUtilsImpl
   {
     Object localObject1 = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      localObject1 = BaseApplicationImpl.getContext().getString(1913061379);
+      localObject1 = BaseApplicationImpl.getContext().getString(1913061382);
     }
     paramString = new SpannableStringBuilder((CharSequence)localObject1);
     if (!paramBoolean1)
@@ -162,13 +162,13 @@ public class ExpandForbiddenUtilsImpl
       }
       paramString.append("\n");
       localObject1 = new SpannableString("图");
-      int i = ViewUtils.a(20.0F);
-      Object localObject2 = paramActivity.getResources().getDrawable(2130841439);
+      int i = ViewUtils.dip2px(20.0F);
+      Object localObject2 = paramActivity.getResources().getDrawable(2130842279);
       ((Drawable)localObject2).setBounds(0, 0, i, i);
       ((SpannableString)localObject1).setSpan(new ImageSpan((Drawable)localObject2, 1), 0, ((SpannableString)localObject1).length(), 17);
       paramString.append((CharSequence)localObject1);
       paramString.append(" ");
-      localObject1 = paramActivity.getString(2131698820);
+      localObject1 = paramActivity.getString(2131896788);
       localObject2 = getRemainingForbidTimeText(paramActivity, paramLong);
       paramActivity = String.format(" %s ", new Object[] { ((ArrayList)localObject2).get(0) });
       localObject2 = (String)((ArrayList)localObject2).get(1);
@@ -192,11 +192,11 @@ public class ExpandForbiddenUtilsImpl
   public ExpandForbiddenInfo getForbiddenInfo()
   {
     Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    ((ExpandManager)((AppRuntime)localObject1).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a().c();
+    ((ExpandManager)((AppRuntime)localObject1).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).q().l();
     localObject1 = SharedPreUtils.a(((AppRuntime)localObject1).getCurrentAccountUin(), "extend_friend_config_785");
     Object localObject2 = ((SharedPreferences)localObject1).getString("sp_expand_forbidden_info", "");
     if ((TextUtils.isEmpty((CharSequence)localObject2)) && (((SharedPreferences)localObject1).getBoolean("sp_extend_friend_is_forbidden", false))) {
-      return new ExpandForbiddenInfo(true, ((SharedPreferences)localObject1).getLong("sp_extend_forbidden_end_time", 0L), 0L, 1, 1, BaseApplicationImpl.getContext().getString(1913061379));
+      return new ExpandForbiddenInfo(true, ((SharedPreferences)localObject1).getLong("sp_extend_forbidden_end_time", 0L), 0L, 1, 1, BaseApplicationImpl.getContext().getString(1913061382));
     }
     localObject2 = (ExpandForbiddenInfo)new Gson().fromJson((String)localObject2, ExpandForbiddenInfo.class);
     if ((((ExpandForbiddenInfo)localObject2).getForbiddenType() == 3) && (!isPassMinute(((SharedPreferences)localObject1).getLong("sp_extend_forbidden_update_time", System.currentTimeMillis()), 5))) {
@@ -207,7 +207,7 @@ public class ExpandForbiddenUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.impl.ExpandForbiddenUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

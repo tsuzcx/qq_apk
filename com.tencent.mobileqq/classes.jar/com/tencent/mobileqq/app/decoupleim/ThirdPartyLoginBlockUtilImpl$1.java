@@ -14,20 +14,20 @@ class ThirdPartyLoginBlockUtilImpl$1
   {
     if (paramEIPCResult.code != 0)
     {
-      ThirdPartyLoginBlockUtilImpl.a(this.jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl).a();
+      ThirdPartyLoginBlockUtilImpl.a(this.b).a();
       return;
     }
-    ThirdPartyLoginBlockUtilImpl.a(this.jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl).a(this.jdField_a_of_type_JavaLangString);
+    ThirdPartyLoginBlockUtilImpl.a(this.b).a(this.a);
   }
   
-  private boolean a(EIPCResult paramEIPCResult)
+  private boolean b(EIPCResult paramEIPCResult)
   {
-    return (paramEIPCResult == null) || (paramEIPCResult.data == null) || (ThirdPartyLoginBlockUtilImpl.a(this.jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl) == null);
+    return (paramEIPCResult == null) || (paramEIPCResult.data == null) || (ThirdPartyLoginBlockUtilImpl.a(this.b) == null);
   }
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (a(paramEIPCResult))
+    if (b(paramEIPCResult))
     {
       QLog.e("ThirdPartyLoginUtilImpl", 1, "toWtLoginOnOpenSdk callback params error");
       return;
@@ -43,7 +43,7 @@ class ThirdPartyLoginBlockUtilImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.decoupleim.ThirdPartyLoginBlockUtilImpl.1
  * JD-Core Version:    0.7.0.1
  */

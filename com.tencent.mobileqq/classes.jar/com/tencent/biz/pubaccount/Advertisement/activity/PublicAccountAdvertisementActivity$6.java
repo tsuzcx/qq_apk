@@ -14,7 +14,7 @@ class PublicAccountAdvertisementActivity$6
   
   public void run()
   {
-    if (!PublicAccountAdvertisementActivity.f(this.this$0))
+    if (!PublicAccountAdvertisementActivity.u(this.this$0))
     {
       if (QLog.isColorLevel())
       {
@@ -23,20 +23,20 @@ class PublicAccountAdvertisementActivity$6
         ((StringBuilder)localObject).append(this.this$0.a());
         QLog.d("PublicAccountAdvertisementActivity", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = PublicAccountAdvertisementActivity.a(this.this$0).a;
-      if ((localObject != null) && (((VideoDownloadItem)localObject).k == 1)) {
+      Object localObject = PublicAccountAdvertisementActivity.h(this.this$0).g;
+      if ((localObject != null) && (((VideoDownloadItem)localObject).F == 1)) {
         if (this.this$0.a())
         {
-          if ((PublicAccountAdvertisementActivity.c(this.this$0)) && (PublicAccountAdvertisementActivity.a(this.this$0) != null))
+          if ((PublicAccountAdvertisementActivity.f(this.this$0)) && (PublicAccountAdvertisementActivity.j(this.this$0) != null))
           {
             PublicAccountAdvertisementActivity.e(this.this$0, true);
-            PublicAccountAdvertisementActivity.a(this.this$0).setCurrentPage(1);
+            PublicAccountAdvertisementActivity.j(this.this$0).setCurrentPage(1);
             PublicAccountAdvertisementActivity.b(this.this$0, 1);
           }
         }
-        else if (PublicAccountAdvertisementActivity.a(this.this$0).b())
+        else if (PublicAccountAdvertisementActivity.l(this.this$0).d())
         {
-          localObject = PublicAccountAdvertisementActivity.a(this.this$0).a();
+          localObject = PublicAccountAdvertisementActivity.l(this.this$0).e();
           if ((localObject != null) && (((View)localObject).getVisibility() == 0) && (((View)localObject).isClickable()))
           {
             PublicAccountAdvertisementActivity.e(this.this$0, true);
@@ -49,7 +49,7 @@ class PublicAccountAdvertisementActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.6
  * JD-Core Version:    0.7.0.1
  */

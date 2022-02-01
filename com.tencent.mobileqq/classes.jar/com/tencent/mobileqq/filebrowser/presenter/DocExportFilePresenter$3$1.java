@@ -10,16 +10,16 @@ class DocExportFilePresenter$3$1
   
   public void run()
   {
-    if (this.a.a.a != null)
+    if (this.a.a.g != null)
     {
-      this.a.a.a.c();
+      this.a.a.g.c();
       ReportController.b(null, "dc00898", "", "", "0X800A3B7", "0X800A3B7", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.DocExportFilePresenter.3.1
  * JD-Core Version:    0.7.0.1
  */

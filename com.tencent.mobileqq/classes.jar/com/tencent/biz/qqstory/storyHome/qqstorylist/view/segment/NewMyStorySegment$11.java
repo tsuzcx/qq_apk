@@ -11,9 +11,9 @@ class NewMyStorySegment$11
   
   public void a(String paramString, int paramInt)
   {
-    paramString = this.jdField_a_of_type_AndroidWidgetTextView;
+    paramString = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131707544));
+    localStringBuilder.append(HardCodeUtil.a(2131905359));
     localStringBuilder.append(paramInt);
     localStringBuilder.append("%");
     paramString.setText(localStringBuilder.toString());

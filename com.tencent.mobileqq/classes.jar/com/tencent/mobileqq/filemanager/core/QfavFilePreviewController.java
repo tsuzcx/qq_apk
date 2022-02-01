@@ -11,55 +11,55 @@ import cooperation.qqfav.ipc.FavoritesRemoteCommand.IRemoteCommandHandler;
 public class QfavFilePreviewController
   extends FilePreViewControllerBase
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private FavoritesRemoteCommand.IRemoteCommandHandler jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler = new QfavFilePreviewController.1(this);
-  private String jdField_a_of_type_JavaLangString = null;
-  private int jdField_b_of_type_Int = 80;
-  private String jdField_b_of_type_JavaLangString = null;
-  private String c = null;
+  private int b = 0;
+  private int c = 80;
+  private long d = 0L;
+  private String e = null;
+  private String f = null;
+  private String g = null;
+  private Handler h = new Handler(Looper.getMainLooper());
+  private FavoritesRemoteCommand.IRemoteCommandHandler i = new QfavFilePreviewController.1(this);
   
   public QfavFilePreviewController(Bundle paramBundle)
   {
-    QfavPluginProxyService.a().a(3, this.jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler);
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.2(this), 300000L);
-  }
-  
-  public int a()
-  {
-    return 4;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    QfavPluginProxyService.a().b(3, this.jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler);
+    QfavPluginProxyService.b().a(3, this.i);
+    this.b = 2;
+    this.h.postDelayed(new QfavFilePreviewController.2(this), 300000L);
   }
   
   public boolean a()
   {
-    if (3 != this.jdField_a_of_type_Int)
+    if (3 != this.b)
     {
       if (QLog.isDevelopLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("sendCS: oldState = ");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(", newState = STATE_REQUESTING.");
         QLog.i("QfavFilePreviewController", 4, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Int = 1;
+      this.b = 1;
       return true;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.3(this), 2000L);
+    this.h.postDelayed(new QfavFilePreviewController.3(this), 2000L);
     return true;
+  }
+  
+  public void b()
+  {
+    this.h.removeCallbacksAndMessages(null);
+    QfavPluginProxyService.b().b(3, this.i);
+  }
+  
+  public int c()
+  {
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.QfavFilePreviewController
  * JD-Core Version:    0.7.0.1
  */

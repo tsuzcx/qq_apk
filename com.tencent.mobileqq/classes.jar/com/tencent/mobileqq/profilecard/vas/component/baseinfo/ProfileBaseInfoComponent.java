@@ -280,7 +280,7 @@ public final class ProfileBaseInfoComponent
       if (localObject2 == null) {
         localObject1 = new ViewGroup.MarginLayoutParams(-1, -1);
       }
-      ((ViewGroup.MarginLayoutParams)localObject1).setMargins(ViewUtils.a(11.0F), ViewUtils.a(11.0F), ViewUtils.a(11.0F), ViewUtils.a(11.0F));
+      ((ViewGroup.MarginLayoutParams)localObject1).setMargins(ViewUtils.dip2px(11.0F), ViewUtils.dip2px(11.0F), ViewUtils.dip2px(11.0F), ViewUtils.dip2px(11.0F));
       localObject2 = (View)getContainerView();
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "containerView");
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
@@ -314,7 +314,7 @@ public final class ProfileBaseInfoComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.baseinfo.ProfileBaseInfoComponent
  * JD-Core Version:    0.7.0.1
  */

@@ -15,18 +15,18 @@ final class PhoneNumQuickLoginManager$13
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.d("PhoneNumQuickLoginManager", 1, "showUnbindPhoneNumDialog okBtn click");
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, RegisterPhoneNumActivity.class);
+    paramDialogInterface = new Intent(this.a, RegisterPhoneNumActivity.class);
     paramDialogInterface.putExtra("key_register_from", 9);
     paramDialogInterface.putExtra("key_report_extra_from", 2);
-    paramDialogInterface.putExtra("key_phone_num", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("key_token", this.b);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    paramDialogInterface.putExtra("key_phone_num", this.b);
+    paramDialogInterface.putExtra("key_token", this.c);
+    this.a.startActivity(paramDialogInterface);
     PhoneNumQuickLoginManager.b("0X800B8D7");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.13
  * JD-Core Version:    0.7.0.1
  */

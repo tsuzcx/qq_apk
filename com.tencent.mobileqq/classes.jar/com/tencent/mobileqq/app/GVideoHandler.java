@@ -61,13 +61,13 @@ public class GVideoHandler
 {
   protected static int a = 1;
   protected static int b = 2;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private GVideoStateGetListener jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoStateGetListener;
+  private GVideoStateGetListener c;
+  private QQAppInterface d;
   
   GVideoHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.d = paramQQAppInterface;
   }
   
   private void a(String paramString, boolean paramBoolean, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg, oidb_0xa8d.RspBody paramRspBody)
@@ -77,7 +77,7 @@ public class GVideoHandler
       paramString = String.valueOf(paramRspBody.uint64_group_code.get());
     }
     if (paramRspBody.uint32_req_type.has()) {
-      if (paramRspBody.uint32_req_type.get() == jdField_a_of_type_Int) {
+      if (paramRspBody.uint32_req_type.get() == a) {
         paramBoolean = true;
       } else {
         paramBoolean = false;
@@ -157,19 +157,19 @@ public class GVideoHandler
       if (QLog.isColorLevel()) {
         QLog.d(".troop.inOrOutOpenTroop", 2, localStringBuilder.toString());
       }
-      notifyUI(GVideoObserver.c, true, new Object[] { paramString, Integer.valueOf(2131696151), Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j) });
+      notifyUI(GVideoObserver.d, true, new Object[] { paramString, Integer.valueOf(2131893916), Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j) });
     }
     else
     {
-      notifyUI(GVideoObserver.c, true, new Object[] { paramString, Integer.valueOf(2131696148), Boolean.valueOf(paramBoolean) });
+      notifyUI(GVideoObserver.d, true, new Object[] { paramString, Integer.valueOf(2131893913), Boolean.valueOf(paramBoolean) });
     }
-    paramOIDBSSOPkg = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    paramOIDBSSOPkg = (TroopManager)this.d.getManager(QQManagerFactory.TROOP_MANAGER);
     if (paramOIDBSSOPkg != null)
     {
       if (!paramBoolean) {
         paramString = null;
       }
-      paramOIDBSSOPkg.d(paramString);
+      paramOIDBSSOPkg.t(paramString);
     }
   }
   
@@ -203,13 +203,13 @@ public class GVideoHandler
           {
             paramObject = (cmd0x2323.BodyMsg)paramFromServiceMsg.next();
             VideoStateInfo localVideoStateInfo = new VideoStateInfo();
-            localVideoStateInfo.jdField_a_of_type_Long = paramObject.group_code.get();
-            localVideoStateInfo.b = paramObject.action.get();
-            localVideoStateInfo.jdField_a_of_type_Int = paramObject.user_num.get();
-            localVideoStateInfo.jdField_a_of_type_JavaUtilList = paramObject.video_user_list.get();
-            localVideoStateInfo.c = paramObject.stage_mode.get();
-            localVideoStateInfo.d = paramObject.game_id.get();
-            localVideoStateInfo.e = paramObject.live_extra_mode.get();
+            localVideoStateInfo.a = paramObject.group_code.get();
+            localVideoStateInfo.c = paramObject.action.get();
+            localVideoStateInfo.b = paramObject.user_num.get();
+            localVideoStateInfo.f = paramObject.video_user_list.get();
+            localVideoStateInfo.d = paramObject.stage_mode.get();
+            localVideoStateInfo.e = paramObject.game_id.get();
+            localVideoStateInfo.g = paramObject.live_extra_mode.get();
             paramToServiceMsg.add(localVideoStateInfo);
           }
           if (QLog.isColorLevel())
@@ -219,8 +219,8 @@ public class GVideoHandler
             paramFromServiceMsg.append(paramToServiceMsg.size());
             QLog.d("GVideoHandler", 2, paramFromServiceMsg.toString());
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoStateGetListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoStateGetListener.a(paramToServiceMsg);
+          if (this.c != null) {
+            this.c.a(paramToServiceMsg);
           }
         }
       }
@@ -235,7 +235,7 @@ public class GVideoHandler
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoStateGetListener = null;
+    this.c = null;
   }
   
   public long a(int paramInt, long paramLong)
@@ -245,7 +245,7 @@ public class GVideoHandler
     Object localObject2 = new cmd0x3fb.ReqBody();
     ((cmd0x3fb.ReqBody)localObject2).uint32_identity.set(paramInt);
     ((cmd0x3fb.ReqBody)localObject2).uint32_client_id.set(2);
-    ((cmd0x3fb.ReqBody)localObject2).str_version.set("8.7.0");
+    ((cmd0x3fb.ReqBody)localObject2).str_version.set("8.8.17");
     ((cmd0x3fb.ReqBody)localObject2).uint64_to_guin.set(paramLong);
     ((cmd0x3fb.GrayMsg)localObject1).msg_gray_req.set((MessageMicro)localObject2);
     localObject2 = createToServiceMsg("qunVideoGray.0x3fb_0");
@@ -264,7 +264,7 @@ public class GVideoHandler
       ((StringBuilder)localObject1).append(" requestVideoGrayWebConfig, identity:");
       ((StringBuilder)localObject1).append(paramInt);
       ((StringBuilder)localObject1).append(" client_id: 2 str_version:");
-      ((StringBuilder)localObject1).append("8.7.0");
+      ((StringBuilder)localObject1).append("8.8.17");
       ((StringBuilder)localObject1).append(" to_guin:");
       ((StringBuilder)localObject1).append(paramLong);
       ((StringBuilder)localObject1).append(" timeKey:");
@@ -328,7 +328,7 @@ public class GVideoHandler
           String str1 = paramObject.str_update_title.get();
           String str2 = paramObject.str_update_content.get();
           int m = paramObject.int32_pre_download_toggle.get();
-          notifyUI(GVideoObserver.jdField_a_of_type_Int, true, new Object[] { paramToServiceMsg, Integer.valueOf(i), localObject, Integer.valueOf(j), Integer.valueOf(k), str1, str2, Integer.valueOf(m), Integer.valueOf(paramFromServiceMsg.getResultCode()), Long.valueOf(l) });
+          notifyUI(GVideoObserver.b, true, new Object[] { paramToServiceMsg, Integer.valueOf(i), localObject, Integer.valueOf(j), Integer.valueOf(k), str1, str2, Integer.valueOf(m), Integer.valueOf(paramFromServiceMsg.getResultCode()), Long.valueOf(l) });
           if (QLog.isColorLevel())
           {
             paramFromServiceMsg = new StringBuilder();
@@ -351,21 +351,21 @@ public class GVideoHandler
             QLog.d(".troop.notify_feeds.data", 2, paramFromServiceMsg.toString());
           }
           ((IFactoryApi)QRoute.api(IFactoryApi.class)).monitorTrigger("2729127");
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Huayang_video", "", "group_video", "GetTroopHideWebConfig", 1, 0, "", "8.7.0", "", "");
+          ReportController.b(this.d, "dc00899", "Huayang_video", "", "group_video", "GetTroopHideWebConfig", 1, 0, "", "8.8.17", "", "");
           return;
         }
-        notifyUI(GVideoObserver.jdField_a_of_type_Int, false, new Object[] { paramToServiceMsg, Integer.valueOf(0), "", Integer.valueOf(-1), Integer.valueOf(-1), "", "", Integer.valueOf(-1), Integer.valueOf(-1), Long.valueOf(l) });
-        paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        notifyUI(GVideoObserver.b, false, new Object[] { paramToServiceMsg, Integer.valueOf(0), "", Integer.valueOf(-1), Integer.valueOf(-1), "", "", Integer.valueOf(-1), Integer.valueOf(-1), Long.valueOf(l) });
+        paramFromServiceMsg = this.d;
         if (!paramObject.int32_ret.has()) {
           break label948;
         }
         i = paramObject.int32_ret.get();
-        ReportController.b(paramFromServiceMsg, "dc00899", "Huayang_video", "", "group_video", "GetTroopHideWebConfig", 0, i, "", "8.7.0", "", "");
+        ReportController.b(paramFromServiceMsg, "dc00899", "Huayang_video", "", "group_video", "GetTroopHideWebConfig", 0, i, "", "8.8.17", "", "");
         return;
       }
       catch (Exception paramFromServiceMsg)
       {
-        notifyUI(GVideoObserver.jdField_a_of_type_Int, false, new Object[] { paramToServiceMsg, Integer.valueOf(0), "", Integer.valueOf(-1), Integer.valueOf(-1), "", "", Integer.valueOf(-1), Integer.valueOf(-1), Long.valueOf(l) });
+        notifyUI(GVideoObserver.b, false, new Object[] { paramToServiceMsg, Integer.valueOf(0), "", Integer.valueOf(-1), Integer.valueOf(-1), "", "", Integer.valueOf(-1), Integer.valueOf(-1), Long.valueOf(l) });
         if (QLog.isColorLevel())
         {
           paramToServiceMsg = new StringBuilder();
@@ -374,10 +374,10 @@ public class GVideoHandler
           paramToServiceMsg.append(" ---->");
           QLog.e(".troop.notify_feeds.data", 2, paramToServiceMsg.toString());
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Huayang_video", "", "group_video", "GetTroopHideWebConfig", 0, 0, paramFromServiceMsg.toString(), "8.7.0", "", "");
+        ReportController.b(this.d, "dc00899", "Huayang_video", "", "group_video", "GetTroopHideWebConfig", 0, 0, paramFromServiceMsg.toString(), "8.8.17", "", "");
         return;
       }
-      notifyUI(GVideoObserver.jdField_a_of_type_Int, false, new Object[] { paramToServiceMsg, Integer.valueOf(0), "", Integer.valueOf(-1), Integer.valueOf(-1), "", "", Integer.valueOf(-1), Integer.valueOf(paramFromServiceMsg.getResultCode()), Long.valueOf(l) });
+      notifyUI(GVideoObserver.b, false, new Object[] { paramToServiceMsg, Integer.valueOf(0), "", Integer.valueOf(-1), Integer.valueOf(-1), "", "", Integer.valueOf(-1), Integer.valueOf(paramFromServiceMsg.getResultCode()), Long.valueOf(l) });
       return;
       label948:
       int i = -1;
@@ -391,7 +391,7 @@ public class GVideoHandler
     try
     {
       ((List)localObject).add(Long.valueOf(Long.parseLong(paramString)));
-      localUserFollowStatusReq.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+      localUserFollowStatusReq.uin.set(Long.parseLong(this.d.getCurrentAccountUin()));
       localUserFollowStatusReq.dst_uin_list.set((List)localObject);
       localObject = createToServiceMsg("NearbyExt.query_user_follow_status");
       ((ToServiceMsg)localObject).extraData.putString("distUin", paramString);
@@ -464,7 +464,7 @@ public class GVideoHandler
     Object localObject1 = paramString;
     if (TextUtils.isEmpty(paramString))
     {
-      paramString = ((IBizTroopInfoService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IBizTroopInfoService.class, "")).getCurrentOpenTroop();
+      paramString = ((IBizTroopInfoService)this.d.getRuntimeService(IBizTroopInfoService.class, "")).getCurrentOpenTroop();
       localObject1 = paramString;
       if (TextUtils.isEmpty(paramString)) {
         return;
@@ -488,13 +488,13 @@ public class GVideoHandler
     try
     {
       long l1 = Long.parseLong((String)localObject1);
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      long l2 = Long.parseLong(this.d.getCurrentUin());
       paramString = new oidb_0xa8d.ReqBody();
       paramString.uint64_group_code.set(l1);
       localObject2 = paramString.uint32_req_type;
       int i;
       if (paramBoolean) {
-        i = jdField_a_of_type_Int;
+        i = a;
       } else {
         i = b;
       }
@@ -516,7 +516,7 @@ public class GVideoHandler
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2701);
       PBUInt32Field localPBUInt32Field = ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type;
       if (paramBoolean) {
-        i = jdField_a_of_type_Int;
+        i = a;
       } else {
         i = b;
       }
@@ -548,7 +548,7 @@ public class GVideoHandler
     ToServiceMsg localToServiceMsg = createToServiceMsg("videohub_group_notify_read.cmd0x2323");
     localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
     sendPbReq(localToServiceMsg);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoStateGetListener = paramGVideoStateGetListener;
+    this.c = paramGVideoStateGetListener;
     if (QLog.isColorLevel())
     {
       paramGVideoStateGetListener = new StringBuilder();
@@ -638,7 +638,7 @@ public class GVideoHandler
           i = j + 1;
           paramToServiceMsg = paramFromServiceMsg;
         }
-        i = GVideoObserver.b;
+        i = GVideoObserver.c;
         try
         {
           notifyUI(i, true, arrayOfObject);
@@ -708,7 +708,7 @@ public class GVideoHandler
     }
     if (!paramFromServiceMsg.isSuccess())
     {
-      notifyUI(GVideoObserver.c, false, new Object[] { str, Integer.valueOf(2131696150), Boolean.valueOf(bool) });
+      notifyUI(GVideoObserver.d, false, new Object[] { str, Integer.valueOf(2131893915), Boolean.valueOf(bool) });
       return;
     }
     paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -730,10 +730,10 @@ public class GVideoHandler
       {
         if (i != 197)
         {
-          notifyUI(GVideoObserver.c, false, new Object[] { str, Integer.valueOf(2131696150), Boolean.valueOf(bool) });
+          notifyUI(GVideoObserver.d, false, new Object[] { str, Integer.valueOf(2131893915), Boolean.valueOf(bool) });
           return;
         }
-        notifyUI(GVideoObserver.c, false, new Object[] { str, Integer.valueOf(2131696149), Boolean.valueOf(bool) });
+        notifyUI(GVideoObserver.d, false, new Object[] { str, Integer.valueOf(2131893914), Boolean.valueOf(bool) });
         return;
       }
       paramFromServiceMsg = new oidb_0xa8d.RspBody();
@@ -751,7 +751,7 @@ public class GVideoHandler
           paramFromServiceMsg.append(paramToServiceMsg.toString());
           QLog.d(".troop.inOrOutOpenTroop", 2, paramFromServiceMsg.toString());
         }
-        notifyUI(GVideoObserver.c, false, new Object[] { str, Integer.valueOf(2131696150), Boolean.valueOf(bool) });
+        notifyUI(GVideoObserver.d, false, new Object[] { str, Integer.valueOf(2131893915), Boolean.valueOf(bool) });
         return;
       }
       return;
@@ -765,7 +765,7 @@ public class GVideoHandler
         paramFromServiceMsg.append(paramToServiceMsg.toString());
         QLog.e(".troop.inOrOutOpenTroop", 2, paramFromServiceMsg.toString());
       }
-      notifyUI(GVideoObserver.c, false, new Object[] { str, Integer.valueOf(2131696150), Boolean.valueOf(bool) });
+      notifyUI(GVideoObserver.d, false, new Object[] { str, Integer.valueOf(2131893915), Boolean.valueOf(bool) });
     }
   }
   
@@ -778,7 +778,7 @@ public class GVideoHandler
       }
       if (!paramFromServiceMsg.isSuccess())
       {
-        notifyUI(GVideoObserver.d, false, new Object[] { paramToServiceMsg.extraData.getString("distUin"), Boolean.valueOf(false) });
+        notifyUI(GVideoObserver.e, false, new Object[] { paramToServiceMsg.extraData.getString("distUin"), Boolean.valueOf(false) });
         return;
       }
     }
@@ -802,7 +802,7 @@ public class GVideoHandler
             paramObject.append("");
             paramObject = paramObject.toString();
             int i = paramFromServiceMsg.follow_status.get();
-            int j = GVideoObserver.d;
+            int j = GVideoObserver.e;
             if (i != 1) {
               break label381;
             }
@@ -820,12 +820,12 @@ public class GVideoHandler
             return;
           }
         }
-        notifyUI(GVideoObserver.d, false, new Object[] { paramToServiceMsg.extraData.getString("distUin"), Boolean.valueOf(false) });
+        notifyUI(GVideoObserver.e, false, new Object[] { paramToServiceMsg.extraData.getString("distUin"), Boolean.valueOf(false) });
         return;
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
-        notifyUI(GVideoObserver.d, false, new Object[] { paramToServiceMsg.extraData.getString("distUin"), Boolean.valueOf(false) });
+        notifyUI(GVideoObserver.e, false, new Object[] { paramToServiceMsg.extraData.getString("distUin"), Boolean.valueOf(false) });
         if (QLog.isColorLevel())
         {
           paramToServiceMsg = new StringBuilder();
@@ -913,7 +913,7 @@ public class GVideoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.GVideoHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -22,22 +22,22 @@ class ReadinjoyTabFrame$19
     ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
   }
   
-  public void aF_()
+  public void cI_()
   {
-    super.aF_();
-    if (ReadinjoyTabFrame.a(this.a) != null) {
-      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.19.1(this));
+    super.cI_();
+    if (ReadinjoyTabFrame.m(this.a) != null) {
+      ReadinjoyTabFrame.m(this.a).post(new ReadinjoyTabFrame.19.1(this));
     }
   }
   
-  public void k()
+  public void cJ_()
   {
     QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.19
  * JD-Core Version:    0.7.0.1
  */

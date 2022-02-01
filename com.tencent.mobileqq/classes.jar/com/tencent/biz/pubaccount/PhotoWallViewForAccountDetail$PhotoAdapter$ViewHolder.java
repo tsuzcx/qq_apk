@@ -4,13 +4,13 @@ import com.tencent.image.URLImageView;
 
 class PhotoWallViewForAccountDetail$PhotoAdapter$ViewHolder
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  URLImageView a;
   
   PhotoWallViewForAccountDetail$PhotoAdapter$ViewHolder(PhotoWallViewForAccountDetail.PhotoAdapter paramPhotoAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail.PhotoAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

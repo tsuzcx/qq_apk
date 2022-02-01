@@ -21,7 +21,7 @@ public class StoryDetailPresenter$TroopNickNameUpdateEventReceiver
       return;
     }
     SLog.a(this.TAG, "receive troop nick name change event. %s.", paramTroopNickNameUpdateEvent.toString());
-    StoryDetailPresenter.a(paramStoryDetailPresenter).c();
+    StoryDetailPresenter.e(paramStoryDetailPresenter).c();
   }
   
   public Class acceptEventClass()

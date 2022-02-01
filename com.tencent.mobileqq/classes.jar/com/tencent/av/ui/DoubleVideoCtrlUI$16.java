@@ -12,13 +12,13 @@ class DoubleVideoCtrlUI$16
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
+    if ((this.this$0.am != null) && (this.this$0.al != null))
     {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c, 233);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(233);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c, 9);
-      QLog.d(this.this$0.d, 1, "exit when onBackPressed");
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a, 1008);
+      this.this$0.am.a(this.this$0.am.k().s, 233);
+      this.this$0.am.b(233);
+      this.this$0.am.b(this.this$0.am.k().s, 9);
+      QLog.d(this.this$0.X, 1, "exit when onBackPressed");
+      this.this$0.al.a(this.a, 1008);
     }
   }
 }

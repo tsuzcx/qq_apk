@@ -11,9 +11,9 @@ import org.json.JSONObject;
 public class QQFriendRelation2Processor
   extends BaseQVipConfigProcessor<QQFriendRelation2Config>
 {
-  public static QQFriendRelation2Config c()
+  public static QQFriendRelation2Config e()
   {
-    QQFriendRelation2Config localQQFriendRelation2Config2 = (QQFriendRelation2Config)QConfigManager.a().a(491);
+    QQFriendRelation2Config localQQFriendRelation2Config2 = (QQFriendRelation2Config)QConfigManager.b().b(491);
     QQFriendRelation2Config localQQFriendRelation2Config1 = localQQFriendRelation2Config2;
     if (localQQFriendRelation2Config2 == null) {
       localQQFriendRelation2Config1 = new QQFriendRelation2Config();
@@ -32,7 +32,7 @@ public class QQFriendRelation2Processor
   {
     QQFriendRelation2Config localQQFriendRelation2Config = new QQFriendRelation2Config();
     boolean bool = false;
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     try
     {
       if (!TextUtils.isEmpty(paramArrayOfQConfItem))
@@ -72,7 +72,7 @@ public class QQFriendRelation2Processor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QQFriendRelation2Processor
  * JD-Core Version:    0.7.0.1
  */

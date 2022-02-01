@@ -34,9 +34,7 @@ import com.tencent.open.business.base.MobileInfoUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.util.WeakReference;
@@ -49,13 +47,12 @@ public class EcshopAdHandler
   extends BusinessHandler
   implements IEcshopAdHandler
 {
-  public static int a = 300000;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  Set<Long> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private WeakReference<IEcshopChatPieDelegate> jdField_a_of_type_MqqUtilWeakReference;
-  public boolean a;
-  public long b;
+  public static int c = 300000;
+  long a;
+  String b;
+  public boolean d;
+  public long e;
+  private WeakReference<IEcshopChatPieDelegate> f;
   
   public EcshopAdHandler(AppInterface paramAppInterface)
   {
@@ -94,7 +91,7 @@ public class EcshopAdHandler
     }
     try
     {
-      paramReportInfo.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.senderuin.trim());
+      paramReportInfo.s = Long.parseLong(paramMessageRecord.senderuin.trim());
     }
     catch (Exception paramMessageRecord)
     {
@@ -102,11 +99,11 @@ public class EcshopAdHandler
         QLog.e("Ecshop_EcshopAdHandler", 2, "add puin error:", paramMessageRecord);
       }
     }
-    paramReportInfo.k = localObject2;
-    paramReportInfo.jdField_a_of_type_JavaLangString = str3;
-    paramReportInfo.l = str2;
-    paramReportInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
-    paramReportInfo.jdField_g_of_type_Int = 0;
+    paramReportInfo.u = localObject2;
+    paramReportInfo.b = str3;
+    paramReportInfo.v = str2;
+    paramReportInfo.c = ((String)localObject1);
+    paramReportInfo.w = 0;
     return paramReportInfo;
   }
   
@@ -127,8 +124,8 @@ public class EcshopAdHandler
       paramChatMessage = ((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).getAdInfoByChatMessage(paramChatMessage);
       if (paramChatMessage != null)
       {
-        paramView.setTag(2131380882, new GdtAd(paramChatMessage));
-        paramView.setTag(2131380881, new EcshopAdHandler.2(paramAppInterface));
+        paramView.setTag(2131449865, new GdtAd(paramChatMessage));
+        paramView.setTag(2131449864, new EcshopAdHandler.2(paramAppInterface));
         return;
       }
     }
@@ -148,18 +145,18 @@ public class EcshopAdHandler
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("On Running Foreground,login?");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(",current interval:");
-      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append(c);
       QLog.i("Ecshop_EcshopAdHandler", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
     long l = System.currentTimeMillis();
-    if (l - this.jdField_b_of_type_Long > jdField_a_of_type_Int)
+    if (l - this.e > c)
     {
-      this.jdField_b_of_type_Long = l;
+      this.e = l;
       a(null, null, false, null, 3);
     }
   }
@@ -170,7 +167,7 @@ public class EcshopAdHandler
       return;
     }
     IEcshopAdHandler.ReportInfo localReportInfo = new IEcshopAdHandler.ReportInfo();
-    localReportInfo.jdField_a_of_type_Int = paramInt;
+    localReportInfo.a = paramInt;
     a(localReportInfo, paramMessageRecord);
     a(localReportInfo, null);
   }
@@ -190,67 +187,67 @@ public class EcshopAdHandler
       Cmd2HandlerMapHelper.a(paramString, new String[] { EcshopAdHandler.class.getName() });
     }
     qq_ad.QQAdReport localQQAdReport = new qq_ad.QQAdReport();
-    localQQAdReport.type.set(paramReportInfo.jdField_a_of_type_Int);
+    localQQAdReport.type.set(paramReportInfo.a);
     Object localObject2 = localQQAdReport.view_id;
-    Object localObject1 = paramReportInfo.jdField_a_of_type_JavaLangString;
+    Object localObject1 = paramReportInfo.b;
     String str = "";
     if (localObject1 == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.jdField_a_of_type_JavaLangString;
+      localObject1 = paramReportInfo.b;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localObject2 = localQQAdReport.trace_id;
-    if (paramReportInfo.jdField_b_of_type_JavaLangString == null) {
+    if (paramReportInfo.c == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.jdField_b_of_type_JavaLangString;
+      localObject1 = paramReportInfo.c;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localQQAdReport.act_time.set((int)(System.currentTimeMillis() / 1000L));
     localObject2 = localQQAdReport.sns_uid;
-    if (paramReportInfo.jdField_c_of_type_JavaLangString == null) {
+    if (paramReportInfo.d == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.jdField_c_of_type_JavaLangString;
+      localObject1 = paramReportInfo.d;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localObject2 = localQQAdReport.resolution;
-    if (paramReportInfo.jdField_d_of_type_JavaLangString == null) {
+    if (paramReportInfo.e == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.jdField_d_of_type_JavaLangString;
+      localObject1 = paramReportInfo.e;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localObject2 = localQQAdReport.referer;
-    if (paramReportInfo.jdField_e_of_type_JavaLangString == null) {
+    if (paramReportInfo.f == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.jdField_e_of_type_JavaLangString;
+      localObject1 = paramReportInfo.f;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localObject2 = localQQAdReport.user_agent;
-    if (paramReportInfo.jdField_f_of_type_JavaLangString == null) {
+    if (paramReportInfo.g == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.jdField_f_of_type_JavaLangString;
+      localObject1 = paramReportInfo.g;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localObject2 = localQQAdReport.q_user_agent;
-    if (paramReportInfo.jdField_g_of_type_JavaLangString == null) {
-      localObject1 = "";
-    } else {
-      localObject1 = paramReportInfo.jdField_g_of_type_JavaLangString;
-    }
-    ((PBStringField)localObject2).set((String)localObject1);
-    localQQAdReport.feeds_index.set(paramReportInfo.jdField_b_of_type_Int);
-    localQQAdReport.is_impression.set(paramReportInfo.jdField_a_of_type_Boolean);
-    localQQAdReport.is_installed.set(paramReportInfo.jdField_b_of_type_Boolean);
-    localObject2 = localQQAdReport.feeds_video_attachment;
     if (paramReportInfo.h == null) {
       localObject1 = "";
     } else {
       localObject1 = paramReportInfo.h;
+    }
+    ((PBStringField)localObject2).set((String)localObject1);
+    localQQAdReport.feeds_index.set(paramReportInfo.i);
+    localQQAdReport.is_impression.set(paramReportInfo.j);
+    localQQAdReport.is_installed.set(paramReportInfo.k);
+    localObject2 = localQQAdReport.feeds_video_attachment;
+    if (paramReportInfo.l == null) {
+      localObject1 = "";
+    } else {
+      localObject1 = paramReportInfo.l;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localQQAdReport.platform_id.set(109);
@@ -262,50 +259,50 @@ public class EcshopAdHandler
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localObject2 = localQQAdReport.click_source;
-    if (paramReportInfo.i == null) {
+    if (paramReportInfo.m == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.i;
+      localObject1 = paramReportInfo.m;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localObject2 = localQQAdReport.antispam_info;
-    if (paramReportInfo.j == null) {
+    if (paramReportInfo.n == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.j;
+      localObject1 = paramReportInfo.n;
     }
     ((PBStringField)localObject2).set((String)localObject1);
-    localObject2 = DeviceInfoUtil.c(MobileQQ.getContext());
+    localObject2 = DeviceInfoUtil.d(MobileQQ.getContext());
     PBStringField localPBStringField = localQQAdReport.hardware_addr;
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
     localPBStringField.set((String)localObject1);
-    localQQAdReport.stay_time.set(paramReportInfo.jdField_c_of_type_Int);
+    localQQAdReport.stay_time.set(paramReportInfo.o);
     localQQAdReport.net_type.set(HttpUtil.getNetWorkType());
-    localQQAdReport.client_id.set(paramReportInfo.jdField_d_of_type_Int);
-    localQQAdReport.action_id.set(paramReportInfo.jdField_e_of_type_Int);
-    localQQAdReport.msg_floor.set(paramReportInfo.jdField_f_of_type_Int);
-    localQQAdReport.puin.set(paramReportInfo.jdField_a_of_type_Long);
-    localQQAdReport.ad_puin.set(paramReportInfo.jdField_b_of_type_Long);
-    localQQAdReport.version.set("8.7.0");
+    localQQAdReport.client_id.set(paramReportInfo.p);
+    localQQAdReport.action_id.set(paramReportInfo.q);
+    localQQAdReport.msg_floor.set(paramReportInfo.r);
+    localQQAdReport.puin.set(paramReportInfo.s);
+    localQQAdReport.ad_puin.set(paramReportInfo.t);
+    localQQAdReport.version.set("8.8.17");
     localObject2 = localQQAdReport.ad_id;
-    if (paramReportInfo.k == null) {
+    if (paramReportInfo.u == null) {
       localObject1 = "";
     } else {
-      localObject1 = paramReportInfo.k;
+      localObject1 = paramReportInfo.u;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localObject2 = localQQAdReport.msgid;
-    if (paramReportInfo.l == null) {
+    if (paramReportInfo.v == null) {
       localObject1 = str;
     } else {
-      localObject1 = paramReportInfo.l;
+      localObject1 = paramReportInfo.v;
     }
     ((PBStringField)localObject2).set((String)localObject1);
     localQQAdReport.get_back.set(false);
-    localQQAdReport.source.set(paramReportInfo.jdField_g_of_type_Int);
+    localQQAdReport.source.set(paramReportInfo.w);
     paramReportInfo = new ToServiceMsg("mobileqq.service", AppUtils.a().getCurrentUin(), paramString);
     paramReportInfo.putWupBuffer(localQQAdReport.toByteArray());
     super.sendPbReq(paramReportInfo);
@@ -313,7 +310,7 @@ public class EcshopAdHandler
   
   public void a(IEcshopChatPieDelegate paramIEcshopChatPieDelegate)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramIEcshopChatPieDelegate);
+    this.f = new WeakReference(paramIEcshopChatPieDelegate);
   }
   
   public void a(List<Long> paramList, List<Integer> paramList1, boolean paramBoolean, String paramString, int paramInt)
@@ -358,7 +355,7 @@ public class EcshopAdHandler
       if (TextUtils.isEmpty(paramString)) {
         paramString = "trpc.qqshop.adpush.PushService.GetAd";
       } else {
-        this.jdField_a_of_type_JavaLangString = paramString;
+        this.b = paramString;
       }
       ThreadManagerV2.excute(new EcshopAdHandler.3(this, paramInt, paramList, paramList1, paramBoolean, paramString), 16, null, false);
       return;
@@ -376,7 +373,7 @@ public class EcshopAdHandler
   {
     if ((paramQQAdGetRsp.del_aid.has()) && (paramQQAdGetRsp.del_aid.has()))
     {
-      Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+      Object localObject = this.f;
       if (localObject != null)
       {
         localObject = (IEcshopChatPieDelegate)((WeakReference)localObject).get();
@@ -389,8 +386,8 @@ public class EcshopAdHandler
   
   public void a(boolean paramBoolean, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_Long = paramLong;
+    this.d = paramBoolean;
+    this.e = paramLong;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -403,7 +400,7 @@ public class EcshopAdHandler
     if (paramObject == null) {
       return;
     }
-    if ((!"trpc.qqshop.adpush.PushService.GetAd".equals(paramToServiceMsg.getServiceCmd())) && ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equals(paramToServiceMsg.getServiceCmd()))))
+    if ((!"trpc.qqshop.adpush.PushService.GetAd".equals(paramToServiceMsg.getServiceCmd())) && ((TextUtils.isEmpty(this.b)) || (!this.b.equals(paramToServiceMsg.getServiceCmd()))))
     {
       paramToServiceMsg = new qq_ad.QQAdReportRsp();
       try
@@ -452,7 +449,7 @@ public class EcshopAdHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.ad.EcshopAdHandler
  * JD-Core Version:    0.7.0.1
  */

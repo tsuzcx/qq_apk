@@ -44,7 +44,7 @@ public class Camera2Utils
       {
         if (paramCamera2Info.a())
         {
-          paramCamera2Info = (StreamConfigurationMap)paramCamera2Info.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+          paramCamera2Info = (StreamConfigurationMap)paramCamera2Info.b.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
           if (paramCamera2Info == null)
           {
             a(2, "[Camera2]getPictureSize map null!");
@@ -84,7 +84,7 @@ public class Camera2Utils
               localStringBuilder.append(localCustomSize.a / localCustomSize.b);
               a(1, localStringBuilder.toString());
               float f4 = localCustomSize.a / localCustomSize.b - f3;
-              if (Math.abs(f4) <= CameraControl.a) {
+              if (Math.abs(f4) <= CameraControl.c) {
                 localArrayList.add(localCustomSize);
               }
               f2 = f1;
@@ -188,7 +188,7 @@ public class Camera2Utils
       {
         if (paramCamera2Info.a())
         {
-          localObject1 = (StreamConfigurationMap)paramCamera2Info.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+          localObject1 = (StreamConfigurationMap)paramCamera2Info.b.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
           paramCamera2Info = new ArrayList();
           localObject1 = ((StreamConfigurationMap)localObject1).getOutputSizes(SurfaceTexture.class);
           j = 0;
@@ -536,7 +536,7 @@ public class Camera2Utils
           paramInt1 = Math.max(localCustomSize.a, localCustomSize.b);
           paramInt2 = Math.min(localCustomSize.a, localCustomSize.b);
           f2 = f3 - paramInt1 / paramInt2;
-          if (Math.abs(f2) < CameraControl.a) {
+          if (Math.abs(f2) < CameraControl.c) {
             ((List)localObject1).add(localCustomSize);
           }
           if (Math.abs(f2) < f1) {
@@ -576,7 +576,7 @@ public class Camera2Utils
         {
           paramInt1 = Math.max(((CameraControl.CustomSize)localObject2).a, ((CameraControl.CustomSize)localObject2).b);
           paramInt2 = Math.min(((CameraControl.CustomSize)localObject2).a, ((CameraControl.CustomSize)localObject2).b);
-          if (Math.abs(Math.abs(f3 - paramInt1 / paramInt2) - f2) < CameraControl.a) {
+          if (Math.abs(Math.abs(f3 - paramInt1 / paramInt2) - f2) < CameraControl.c) {
             ((List)localObject1).add(localObject2);
           }
         }
@@ -676,7 +676,7 @@ public class Camera2Utils
       {
         if (paramCamera2Info.a())
         {
-          localObject1 = (StreamConfigurationMap)paramCamera2Info.a.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+          localObject1 = (StreamConfigurationMap)paramCamera2Info.b.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
           paramCamera2Info = new ArrayList();
           localObject1 = ((StreamConfigurationMap)localObject1).getOutputSizes(SurfaceTexture.class);
           if (localObject1 == null) {
@@ -838,7 +838,7 @@ public class Camera2Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Utils
  * JD-Core Version:    0.7.0.1
  */

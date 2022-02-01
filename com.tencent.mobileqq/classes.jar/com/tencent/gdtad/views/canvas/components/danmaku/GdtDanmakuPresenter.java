@@ -19,22 +19,22 @@ import com.tencent.ad.tangram.util.AdUIUtils;
 public class GdtDanmakuPresenter
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float = 0.1F;
-  private int jdField_a_of_type_Int = 2;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private Pools.SimplePool<GdtDanmakuItemView> jdField_a_of_type_AndroidSupportV4UtilPools$SimplePool;
-  private GdtDanmakuModel jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuModel = new GdtDanmakuModel();
-  private String jdField_a_of_type_JavaLangString = "#FFFFFFFF";
-  private boolean jdField_a_of_type_Boolean;
-  private GdtDanmakuPresenter.DanmakuRunnable[] jdField_a_of_type_ArrayOfComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuPresenter$DanmakuRunnable;
-  private int jdField_b_of_type_Int = 10;
-  private String jdField_b_of_type_JavaLangString = "#993C3C3C";
-  private int c = 20;
-  private int d = 14;
-  private int e = 10;
-  private int f = 10;
-  private int g = -1;
+  private final Handler a = new Handler(Looper.getMainLooper());
+  private int b = 2;
+  private int c = 10;
+  private int d = 20;
+  private float e = 0.1F;
+  private int f = 14;
+  private String g = "#FFFFFFFF";
+  private String h = "#993C3C3C";
+  private int i = 10;
+  private int j = 10;
+  private int k = -1;
+  private Context l;
+  private GdtDanmakuModel m = new GdtDanmakuModel();
+  private GdtDanmakuPresenter.DanmakuRunnable[] n;
+  private boolean o;
+  private Pools.SimplePool<GdtDanmakuItemView> p;
   
   public GdtDanmakuPresenter(Context paramContext)
   {
@@ -44,70 +44,70 @@ public class GdtDanmakuPresenter
   public GdtDanmakuPresenter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private GdtDanmakuItemView a()
-  {
-    Object localObject2 = (GdtDanmakuItemView)this.jdField_a_of_type_AndroidSupportV4UtilPools$SimplePool.acquire();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new GdtDanmakuItemView(this.jdField_a_of_type_AndroidContentContext);
-    }
-    ((GdtDanmakuItemView)localObject1).setTextSize(this.d);
-    ((GdtDanmakuItemView)localObject1).setClickable(false);
-    localObject2 = (GradientDrawable)((GdtDanmakuItemView)localObject1).getBackground();
-    ((GradientDrawable)localObject2).setColor(Color.parseColor(this.jdField_b_of_type_JavaLangString));
-    if (Build.VERSION.SDK_INT >= 16) {
-      ((GdtDanmakuItemView)localObject1).setBackground((Drawable)localObject2);
-    } else {
-      ((GdtDanmakuItemView)localObject1).setBackgroundDrawable((Drawable)localObject2);
-    }
-    ((GdtDanmakuItemView)localObject1).setTextColor(Color.parseColor(this.jdField_a_of_type_JavaLangString));
-    String str = this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuModel.a();
-    localObject2 = str;
-    if (str.length() > this.e)
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(str.substring(0, this.e));
-      ((StringBuilder)localObject2).append("...");
-      localObject2 = ((StringBuilder)localObject2).toString();
-    }
-    ((GdtDanmakuItemView)localObject1).setText((CharSequence)localObject2);
-    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
-    ((GdtDanmakuItemView)localObject1).measure(i, i);
-    i = ((GdtDanmakuItemView)localObject1).getMeasuredWidth();
-    int j = AdUIUtils.dp2px(this.g, getResources());
-    localObject2 = ObjectAnimator.ofFloat(localObject1, "translationX", new float[] { AdUIUtils.dp2px(this.g, getResources()), -i });
-    ((ObjectAnimator)localObject2).setInterpolator(new LinearInterpolator());
-    ((ObjectAnimator)localObject2).addListener(new GdtDanmakuPresenter.1(this, (GdtDanmakuItemView)localObject1));
-    ((ObjectAnimator)localObject2).setDuration((int)(AdUIUtils.px2dp(getContext(), j + i) / this.jdField_a_of_type_Float));
-    ((GdtDanmakuItemView)localObject1).a((ObjectAnimator)localObject2);
-    return localObject1;
+    this.l = paramContext;
   }
   
   private void a(GdtDanmakuItemView paramGdtDanmakuItemView)
   {
     try
     {
-      this.jdField_a_of_type_AndroidSupportV4UtilPools$SimplePool.release(paramGdtDanmakuItemView);
+      this.p.release(paramGdtDanmakuItemView);
       return;
     }
     catch (IllegalStateException paramGdtDanmakuItemView) {}
   }
   
-  private void b()
+  private GdtDanmakuItemView d()
   {
-    GdtDanmakuPresenter.DanmakuRunnable[] arrayOfDanmakuRunnable = this.jdField_a_of_type_ArrayOfComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuPresenter$DanmakuRunnable;
+    Object localObject2 = (GdtDanmakuItemView)this.p.acquire();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new GdtDanmakuItemView(this.l);
+    }
+    ((GdtDanmakuItemView)localObject1).setTextSize(this.f);
+    ((GdtDanmakuItemView)localObject1).setClickable(false);
+    localObject2 = (GradientDrawable)((GdtDanmakuItemView)localObject1).getBackground();
+    ((GradientDrawable)localObject2).setColor(Color.parseColor(this.h));
+    if (Build.VERSION.SDK_INT >= 16) {
+      ((GdtDanmakuItemView)localObject1).setBackground((Drawable)localObject2);
+    } else {
+      ((GdtDanmakuItemView)localObject1).setBackgroundDrawable((Drawable)localObject2);
+    }
+    ((GdtDanmakuItemView)localObject1).setTextColor(Color.parseColor(this.g));
+    String str = this.m.b();
+    localObject2 = str;
+    if (str.length() > this.i)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str.substring(0, this.i));
+      ((StringBuilder)localObject2).append("...");
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    ((GdtDanmakuItemView)localObject1).setText((CharSequence)localObject2);
+    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
+    ((GdtDanmakuItemView)localObject1).measure(i1, i1);
+    i1 = ((GdtDanmakuItemView)localObject1).getMeasuredWidth();
+    int i2 = AdUIUtils.dp2px(this.k, getResources());
+    localObject2 = ObjectAnimator.ofFloat(localObject1, "translationX", new float[] { AdUIUtils.dp2px(this.k, getResources()), -i1 });
+    ((ObjectAnimator)localObject2).setInterpolator(new LinearInterpolator());
+    ((ObjectAnimator)localObject2).addListener(new GdtDanmakuPresenter.1(this, (GdtDanmakuItemView)localObject1));
+    ((ObjectAnimator)localObject2).setDuration((int)(AdUIUtils.px2dp(getContext(), i2 + i1) / this.e));
+    ((GdtDanmakuItemView)localObject1).a((ObjectAnimator)localObject2);
+    return localObject1;
+  }
+  
+  private void e()
+  {
+    GdtDanmakuPresenter.DanmakuRunnable[] arrayOfDanmakuRunnable = this.n;
     if (arrayOfDanmakuRunnable != null)
     {
-      int j = arrayOfDanmakuRunnable.length;
-      int i = 0;
-      while (i < j)
+      int i2 = arrayOfDanmakuRunnable.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        GdtDanmakuPresenter.DanmakuRunnable localDanmakuRunnable = arrayOfDanmakuRunnable[i];
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localDanmakuRunnable);
-        i += 1;
+        GdtDanmakuPresenter.DanmakuRunnable localDanmakuRunnable = arrayOfDanmakuRunnable[i1];
+        this.a.removeCallbacks(localDanmakuRunnable);
+        i1 += 1;
       }
     }
     removeAllViews();
@@ -116,69 +116,104 @@ public class GdtDanmakuPresenter
   
   public GdtDanmakuPresenter a(int paramInt, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuModel.a(paramArrayOfString);
-    this.g = AdUIUtils.px2dp(getContext(), paramInt);
+    this.m.a(paramArrayOfString);
+    this.k = AdUIUtils.px2dp(getContext(), paramInt);
     return this;
-  }
-  
-  public void a()
-  {
-    b();
-    this.jdField_a_of_type_Boolean = false;
-    GdtDanmakuModel localGdtDanmakuModel = this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuModel;
-    if (localGdtDanmakuModel != null) {
-      localGdtDanmakuModel.a();
-    }
-    AdLog.i("GdtDanmakuPresenter", "danmaku is stopped");
   }
   
   public boolean a()
   {
-    b();
-    int j = 0;
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuModel.a()) {
+    e();
+    int i2 = 0;
+    this.o = false;
+    if (this.m.a()) {
       return false;
     }
-    if (this.g == -1) {
+    if (this.k == -1) {
       return false;
     }
-    if (this.jdField_a_of_type_AndroidSupportV4UtilPools$SimplePool == null) {
-      this.jdField_a_of_type_AndroidSupportV4UtilPools$SimplePool = new Pools.SimplePool(this.f);
+    if (this.p == null) {
+      this.p = new Pools.SimplePool(this.j);
     }
-    GdtDanmakuPresenter.DanmakuRunnable[] arrayOfDanmakuRunnable = this.jdField_a_of_type_ArrayOfComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuPresenter$DanmakuRunnable;
+    GdtDanmakuPresenter.DanmakuRunnable[] arrayOfDanmakuRunnable = this.n;
     if (arrayOfDanmakuRunnable != null)
     {
-      int k = arrayOfDanmakuRunnable.length;
-      i = 0;
-      while (i < k)
+      int i3 = arrayOfDanmakuRunnable.length;
+      i1 = 0;
+      while (i1 < i3)
       {
-        GdtDanmakuPresenter.DanmakuRunnable localDanmakuRunnable = arrayOfDanmakuRunnable[i];
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localDanmakuRunnable);
-        i += 1;
+        GdtDanmakuPresenter.DanmakuRunnable localDanmakuRunnable = arrayOfDanmakuRunnable[i1];
+        this.a.removeCallbacks(localDanmakuRunnable);
+        i1 += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuPresenter$DanmakuRunnable = new GdtDanmakuPresenter.DanmakuRunnable[this.jdField_a_of_type_Int];
-    int i = j;
-    while (i < this.jdField_a_of_type_Int)
+    this.n = new GdtDanmakuPresenter.DanmakuRunnable[this.b];
+    int i1 = i2;
+    while (i1 < this.b)
     {
-      this.jdField_a_of_type_ArrayOfComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuPresenter$DanmakuRunnable[i] = new GdtDanmakuPresenter.DanmakuRunnable(this, i);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ArrayOfComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuPresenter$DanmakuRunnable[i], i * 600);
-      i += 1;
+      this.n[i1] = new GdtDanmakuPresenter.DanmakuRunnable(this, i1);
+      this.a.postDelayed(this.n[i1], i1 * 600);
+      i1 += 1;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.o = true;
     AdLog.i("GdtDanmakuPresenter", "danmaku start");
     return true;
   }
   
-  public boolean b()
+  public void b()
   {
-    return this.jdField_a_of_type_Boolean;
+    e();
+    this.o = false;
+    GdtDanmakuModel localGdtDanmakuModel = this.m;
+    if (localGdtDanmakuModel != null) {
+      localGdtDanmakuModel.c();
+    }
+    AdLog.i("GdtDanmakuPresenter", "danmaku is stopped");
+  }
+  
+  public boolean c()
+  {
+    return this.o;
+  }
+  
+  public float getDanmakuInterval()
+  {
+    return this.d;
+  }
+  
+  public int getMaxCacheSize()
+  {
+    return this.j;
+  }
+  
+  public int getMaxShownTextNum()
+  {
+    return this.i;
+  }
+  
+  public float getSpeed()
+  {
+    return this.e;
+  }
+  
+  public int getTextSize()
+  {
+    return this.f;
+  }
+  
+  public int getTractInterval()
+  {
+    return this.c;
+  }
+  
+  public int getTractNum()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.danmaku.GdtDanmakuPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -19,19 +19,19 @@ class ReadInjoyIMAXAdFragment$4
   public void onAnimationEnd(Animator paramAnimator)
   {
     ReadInJoyLogicEngineEventDispatcher.a().a(null, 110, true, new String[0]);
-    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
+    if (ReadInjoyIMAXAdFragment.l(this.a) != null)
     {
-      ReadInjoyIMAXAdFragment.a(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
-      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
-      if (ReadInjoyIMAXAdFragment.e(this.a) == 1001)
+      ReadInjoyIMAXAdFragment.l(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.m(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.n(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.o(this.a).setVisibility(0);
+      if (ReadInjoyIMAXAdFragment.p(this.a) == 1001)
       {
-        ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
+        ReadInjoyIMAXAdFragment.q(this.a).setVisibility(0);
         return;
       }
-      if (ReadInjoyIMAXAdFragment.e(this.a) == 1002) {
-        ReadInjoyIMAXAdFragment.c(this.a).setVisibility(8);
+      if (ReadInjoyIMAXAdFragment.p(this.a) == 1002) {
+        ReadInjoyIMAXAdFragment.q(this.a).setVisibility(8);
       }
     }
   }
@@ -45,7 +45,7 @@ class ReadInjoyIMAXAdFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.4
  * JD-Core Version:    0.7.0.1
  */

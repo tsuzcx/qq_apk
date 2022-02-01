@@ -14,27 +14,27 @@ class OCRResultFragmentNew$7
   
   public void a()
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
+    OCRResultFragmentNew.e(this.a).post(new OCRResultFragmentNew.7.1(this));
   }
   
   public void a(int paramInt)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
+    OCRResultFragmentNew.e(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
   }
   
   public void a(String paramString1, String paramString2)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
+    OCRResultFragmentNew.e(this.a).post(new OCRResultFragmentNew.7.3(this));
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
+    OCRResultFragmentNew.e(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.7
  * JD-Core Version:    0.7.0.1
  */

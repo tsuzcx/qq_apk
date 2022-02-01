@@ -12,14 +12,14 @@ class TroopGagServiceImpl$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopTroopgagApiImplTroopGagServiceImpl$1.this$0.mApp instanceof AppInterface)) {
-      ((ITroopGagHandler)((AppInterface)this.jdField_a_of_type_ComTencentMobileqqTroopTroopgagApiImplTroopGagServiceImpl$1.this$0.mApp).getBusinessHandler(TroopGagHandler.class.getName())).a(new GagStatus(this.jdField_a_of_type_ComTencentMobileqqTroopTroopgagApiImplTroopGagServiceImpl$1.a, this.jdField_a_of_type_JavaUtilArrayList));
+    if ((this.b.this$0.mApp instanceof AppInterface)) {
+      ((ITroopGagHandler)((AppInterface)this.b.this$0.mApp).getBusinessHandler(TroopGagHandler.class.getName())).a(new GagStatus(this.b.b, this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgag.api.impl.TroopGagServiceImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,11 +15,11 @@ import org.json.JSONObject;
 
 public class DiyBubbleConfig
 {
-  static int b = -1;
-  public int a;
+  static int d = -1;
   public String a;
-  public int[] a;
-  public String b = "diy_chartlet";
+  public int[] b;
+  public int c;
+  public String e = "diy_chartlet";
   
   public static HashMap<String, DiyBubbleConfig> a(int paramInt, JSONObject paramJSONObject)
   {
@@ -49,15 +49,15 @@ public class DiyBubbleConfig
           }
           if (paramJSONObject != null)
           {
-            paramJSONObject.jdField_a_of_type_Int = paramInt;
-            localHashMap.put(paramJSONObject.jdField_a_of_type_JavaLangString, paramJSONObject);
+            paramJSONObject.c = paramInt;
+            localHashMap.put(paramJSONObject.a, paramJSONObject);
           }
         }
       }
     }
     paramJSONObject = null;
     if ((paramJSONObject != null) && (paramJSONObject.size() > 0)) {
-      BubbleDiyFetcher.a().a.put(Integer.valueOf(paramInt), paramJSONObject);
+      BubbleDiyFetcher.a().k.put(Integer.valueOf(paramInt), paramJSONObject);
     }
     return paramJSONObject;
   }
@@ -103,7 +103,7 @@ public class DiyBubbleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.DiyBubbleConfig
  * JD-Core Version:    0.7.0.1
  */

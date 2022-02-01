@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-vector android:drawable="@drawable/blf"
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <target android:name="icon_null" android:animation="@anim/ja" />
-    <target android:name="box_outer_merged" android:animation="@anim/j_" />
-    <target android:name="box_inner_merged" android:animation="@anim/j9" />
-</animated-vector>
+    <solid android:color="#fff2f3f4" />
+    <corners android:topLeftRadius="18.0dip" android:topRightRadius="0.0dip" android:bottomLeftRadius="18.0dip" android:bottomRightRadius="0.0dip" />
+</shape>

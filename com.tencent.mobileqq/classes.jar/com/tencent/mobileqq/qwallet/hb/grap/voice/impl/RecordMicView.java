@@ -28,63 +28,57 @@ import java.util.List;
 public class RecordMicView
   extends View
 {
-  float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 10000;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private RecordMicView.StatusListener jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplRecordMicView$StatusListener;
-  private List<RecordMicView.CircleHolder> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public boolean a;
-  private float jdField_b_of_type_Float = DisplayUtil.a(getContext(), 2.0F);
-  private int jdField_b_of_type_Int = 0;
-  private int c;
-  private int d;
-  private int e;
+  public boolean a = true;
+  float b = 0.0F;
+  private int c = 10000;
+  private Paint d = new Paint(5);
+  private RectF e = new RectF();
+  private float f = DisplayUtil.a(getContext(), 2.0F);
+  private Handler g = new Handler(ThreadManager.getSubThreadLooper());
+  private int h = 0;
+  private int i;
+  private int j;
+  private int k;
+  private List<RecordMicView.CircleHolder> l = new ArrayList();
+  private ValueAnimator m;
+  private RecordMicView.StatusListener n;
   
   public RecordMicView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
-    int i = DisplayUtil.a(getContext(), 120.0F);
-    this.d = i;
-    this.c = i;
-    this.e = DisplayUtil.a(getContext(), 33.0F);
+    int i1 = DisplayUtil.a(getContext(), 120.0F);
+    this.j = i1;
+    this.i = i1;
+    this.k = DisplayUtil.a(getContext(), 33.0F);
     ViewCompat.setImportantForAccessibility(this, 1);
-    setContentDescription(HardCodeUtil.a(R.string.bX));
+    setContentDescription(HardCodeUtil.a(R.string.ca));
     setClickable(true);
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
     RecordMicView.CircleHolder localCircleHolder = new RecordMicView.CircleHolder(DisplayUtil.a(getContext(), paramFloat1), DisplayUtil.a(getContext(), paramFloat2), paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
-    this.jdField_a_of_type_JavaUtilList.add(localCircleHolder);
+    this.l.add(localCircleHolder);
   }
   
   private void d()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.m;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new RecordMicView.1(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public int a()
-  {
-    return this.c;
+    this.m = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.m.setRepeatCount(-1);
+    this.m.setRepeatMode(2);
+    this.m.setDuration(400L);
+    this.m.addUpdateListener(new RecordMicView.1(this));
+    this.m.start();
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.h = 2;
+    this.l.clear();
     a(112.0F, 120.0F, 0.8F, 0.1F, 1.0F, 1.05F, 1.0F, 0.95F, 0, 30);
     a(124.0F, 117.0F, 0.5F, 0.1F, 1.0F, 0.95F, 1.0F, 0.95F, 0, -30);
     a(124.0F, 132.0F, 0.1F, 0.5F, 1.0F, 0.95F, 1.0F, 0.95F, 0, 30);
@@ -96,22 +90,17 @@ public class RecordMicView
     localObjectAnimator.start();
   }
   
-  public int b()
-  {
-    return this.d;
-  }
-  
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new RecordMicView.2(this), this.jdField_a_of_type_Int);
+    this.g.removeCallbacksAndMessages(null);
+    this.g.postDelayed(new RecordMicView.2(this), this.c);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_b_of_type_Int = 0;
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    this.g.removeCallbacksAndMessages(null);
+    this.h = 0;
+    ValueAnimator localValueAnimator = this.m;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
@@ -123,14 +112,24 @@ public class RecordMicView
     super.draw(paramCanvas);
   }
   
+  public int getShowHeight()
+  {
+    return this.j;
+  }
+  
+  public int getShowWidth()
+  {
+    return this.i;
+  }
+  
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.g;
     if (localObject != null) {
       ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    localObject = this.m;
     if (localObject != null) {
       ((ValueAnimator)localObject).cancel();
     }
@@ -139,143 +138,143 @@ public class RecordMicView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int j = this.jdField_b_of_type_Int;
-    int i = 127;
+    int i2 = this.h;
+    int i1 = 127;
     float f1 = 1.0F;
-    if (j == 2)
+    if (i2 == 2)
     {
-      this.jdField_b_of_type_Float = DisplayUtil.a(getContext(), 1.0F);
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      this.f = DisplayUtil.a(getContext(), 1.0F);
+      localObject = this.l.iterator();
       while (((Iterator)localObject).hasNext())
       {
         RecordMicView.CircleHolder localCircleHolder = (RecordMicView.CircleHolder)((Iterator)localObject).next();
         paramCanvas.save();
-        f1 = localCircleHolder.jdField_a_of_type_Float;
-        float f2 = localCircleHolder.jdField_b_of_type_Float;
+        f1 = localCircleHolder.a;
+        float f2 = localCircleHolder.b;
         f1 = (getWidth() - f1) / 2.0F;
         f2 = (getHeight() - f2) / 2.0F;
-        i = (int)(localCircleHolder.c * 255.0F);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3405);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
-        RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-        float f3 = this.jdField_b_of_type_Float;
-        localRectF.set(f3 * 0.5F + f1, f3 * 0.5F + f2, getWidth() - this.jdField_b_of_type_Float * 0.5F - f1, getHeight() - this.jdField_b_of_type_Float * 0.5F - f2);
+        i1 = (int)(localCircleHolder.c * 255.0F);
+        this.d.setStyle(Paint.Style.STROKE);
+        this.d.setColor(-3405);
+        this.d.setStrokeWidth(this.f);
+        this.d.setAlpha(i1);
+        RectF localRectF = this.e;
+        float f3 = this.f;
+        localRectF.set(f3 * 0.5F + f1, f3 * 0.5F + f2, getWidth() - this.f * 0.5F - f1, getHeight() - this.f * 0.5F - f2);
         paramCanvas.scale(localCircleHolder.d, localCircleHolder.e, getWidth() / 2, getHeight() / 2);
-        paramCanvas.rotate(localCircleHolder.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
-        paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.rotate(localCircleHolder.f, getWidth() / 2, getHeight() / 2);
+        paramCanvas.drawOval(this.e, this.d);
         paramCanvas.restore();
       }
       paramCanvas.save();
-      paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
-      localObject = getResources().getDrawable(R.drawable.af);
-      ((Drawable)localObject).setBounds(0, 0, a(), b());
+      paramCanvas.translate((getWidth() - getShowWidth()) / 2, (getHeight() - getShowHeight()) / 2);
+      localObject = getResources().getDrawable(R.drawable.ag);
+      ((Drawable)localObject).setBounds(0, 0, getShowWidth(), getShowHeight());
       ((Drawable)localObject).setAlpha(127);
       ((Drawable)localObject).draw(paramCanvas);
       paramCanvas.restore();
       return;
     }
-    this.jdField_b_of_type_Float = DisplayUtil.a(getContext(), 2.0F);
+    this.f = DisplayUtil.a(getContext(), 2.0F);
     paramCanvas.save();
-    paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
-    if (this.jdField_b_of_type_Int == 0) {
-      i = 255;
+    paramCanvas.translate((getWidth() - getShowWidth()) / 2, (getHeight() - getShowHeight()) / 2);
+    if (this.h == 0) {
+      i1 = 255;
     }
-    if (this.jdField_b_of_type_Int != 0) {
+    if (this.h != 0) {
       f1 = 0.95F;
     }
     paramCanvas.scale(f1, f1, getWidth() / 2, getHeight() / 2);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(16728412);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, a(), b());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
-    paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3405);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    f1 = this.jdField_b_of_type_Float;
-    ((RectF)localObject).set(f1 * 0.5F, f1 * 0.5F, a() - this.jdField_b_of_type_Float * 0.5F, b() - this.jdField_b_of_type_Float * 0.5F);
-    paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    localObject = getResources().getDrawable(R.drawable.af);
-    ((Drawable)localObject).setBounds(0, 0, a(), b());
-    ((Drawable)localObject).setAlpha(i);
+    this.d.setColor(16728412);
+    this.e.set(0.0F, 0.0F, getShowWidth(), getShowHeight());
+    this.d.setStyle(Paint.Style.FILL);
+    this.d.setAlpha(i1);
+    paramCanvas.drawOval(this.e, this.d);
+    this.d.setStyle(Paint.Style.STROKE);
+    this.d.setColor(-3405);
+    this.d.setStrokeWidth(this.f);
+    this.d.setStyle(Paint.Style.STROKE);
+    this.d.setAlpha(i1);
+    Object localObject = this.e;
+    f1 = this.f;
+    ((RectF)localObject).set(f1 * 0.5F, f1 * 0.5F, getShowWidth() - this.f * 0.5F, getShowHeight() - this.f * 0.5F);
+    paramCanvas.drawOval(this.e, this.d);
+    localObject = getResources().getDrawable(R.drawable.ag);
+    ((Drawable)localObject).setBounds(0, 0, getShowWidth(), getShowHeight());
+    ((Drawable)localObject).setAlpha(i1);
     ((Drawable)localObject).draw(paramCanvas);
     paramCanvas.restore();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
+    int i1 = paramMotionEvent.getAction();
     RecordMicView.StatusListener localStatusListener;
-    if (i != 0)
+    if (i1 != 0)
     {
-      if (((i == 1) || ((i != 2) && (i == 3))) && (this.jdField_b_of_type_Int == 1))
+      if (((i1 == 1) || ((i1 != 2) && (i1 == 3))) && (this.h == 1))
       {
-        float f1 = this.jdField_a_of_type_Float;
+        float f1 = this.b;
         float f2 = paramMotionEvent.getRawY();
-        i = 0;
-        if (f1 - f2 > this.e) {
-          i = 1;
+        i1 = 0;
+        if (f1 - f2 > this.k) {
+          i1 = 1;
         }
-        if (i != 0)
+        if (i1 != 0)
         {
-          localStatusListener = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplRecordMicView$StatusListener;
+          localStatusListener = this.n;
           if (localStatusListener != null) {
-            localStatusListener.d();
+            localStatusListener.g();
           }
           c();
         }
         else
         {
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          if (this.jdField_a_of_type_Boolean) {
+          this.g.removeCallbacksAndMessages(null);
+          if (this.a) {
             a();
           } else {
             c();
           }
-          localStatusListener = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplRecordMicView$StatusListener;
+          localStatusListener = this.n;
           if (localStatusListener != null) {
-            localStatusListener.b();
+            localStatusListener.e();
           }
         }
       }
       return super.onTouchEvent(paramMotionEvent);
     }
-    i = this.jdField_b_of_type_Int;
-    if (i == 2) {
+    i1 = this.h;
+    if (i1 == 2) {
       return true;
     }
-    if (i == 0)
+    if (i1 == 0)
     {
-      this.jdField_b_of_type_Int = 1;
+      this.h = 1;
       invalidate();
       b();
-      localStatusListener = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplRecordMicView$StatusListener;
+      localStatusListener = this.n;
       if (localStatusListener != null) {
-        localStatusListener.a();
+        localStatusListener.d();
       }
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
+      this.b = paramMotionEvent.getRawY();
     }
     return true;
   }
   
   public void setRecordTime(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void setStatusListener(RecordMicView.StatusListener paramStatusListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplRecordMicView$StatusListener = paramStatusListener;
+    this.n = paramStatusListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.RecordMicView
  * JD-Core Version:    0.7.0.1
  */

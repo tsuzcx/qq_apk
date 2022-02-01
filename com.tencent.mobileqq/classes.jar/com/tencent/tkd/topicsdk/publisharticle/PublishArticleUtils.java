@@ -27,25 +27,40 @@ public final class PublishArticleUtils
         case 0: 
         default: 
           return;
+        case 12: 
+          paramActivity = paramActivity.getString(R.string.ac);
+          Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.video_process_failed)");
+          TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
+          return;
+        case 11: 
+          paramActivity = paramActivity.getString(R.string.k);
+          Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.content_contains_emoji_tips)");
+          TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
+          return;
+        case 10: 
+          paramActivity = paramActivity.getString(R.string.l);
+          Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.content_not_reach_limit_tips)");
+          TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
+          return;
         case 9: 
-          paramActivity = paramActivity.getString(R.string.O);
+          paramActivity = paramActivity.getString(R.string.F);
           Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.pleas…lect_delivered_community)");
           TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
           return;
         case 8: 
-          paramActivity = paramActivity.getString(R.string.V);
+          paramActivity = paramActivity.getString(R.string.L);
           Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.pure_content_ask_for_video)");
           TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
           return;
         case 7: 
           if ((Intrinsics.areEqual(paramString, "rijugc") ^ true))
           {
-            paramActivity = paramActivity.getString(R.string.J);
+            paramActivity = paramActivity.getString(R.string.C);
             Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.no_content_with_video)");
             TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
             return;
           }
-          paramActivity = paramActivity.getString(R.string.af);
+          paramActivity = paramActivity.getString(R.string.T);
           Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.title_has_none_text)");
           TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
           return;
@@ -60,34 +75,34 @@ public final class PublishArticleUtils
           TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
           return;
         case 4: 
-          paramActivity = paramActivity.getString(R.string.M);
+          paramActivity = paramActivity.getString(R.string.D);
           Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.pleas…ciate_topic_or_community)");
           TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
           return;
         case 3: 
-          paramActivity = paramActivity.getString(R.string.N);
+          paramActivity = paramActivity.getString(R.string.E);
           Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.pleas…c_or_community_for_video)");
           TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
           return;
         case 2: 
           if ((Intrinsics.areEqual(paramString, "rijugc") ^ true))
           {
-            paramActivity = paramActivity.getString(R.string.w);
+            paramActivity = paramActivity.getString(R.string.p);
             Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.empty_content_publish_tips)");
             TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
             return;
           }
-          paramActivity = paramActivity.getString(R.string.af);
+          paramActivity = paramActivity.getString(R.string.T);
           Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.title_has_none_text)");
           TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
           return;
         case 1: 
-          paramActivity = paramActivity.getString(R.string.K);
-          Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.over_content_tips)");
+          paramActivity = paramActivity.getString(R.string.m);
+          Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.content_over_limit_tips)");
           TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
           return;
         }
-        paramActivity = paramActivity.getString(R.string.I);
+        paramActivity = paramActivity.getString(R.string.B);
         Intrinsics.checkExpressionValueIsNotNull(paramActivity, "getString(R.string.net_failed)");
         TopicSDKHelperKt.a(paramActivity, false, null, 6, null);
       }
@@ -96,7 +111,7 @@ public final class PublishArticleUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.PublishArticleUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -21,49 +21,49 @@ class KandianNegativeWindow$2
     default: 
       this.a.dismiss();
       break;
-    case 2131371757: 
+    case 2131439189: 
       this.a.c(paramView);
-      this.a.c();
+      this.a.e();
       localKandianNegativeWindow = this.a;
-      localKandianNegativeWindow.r = 3;
-      localKandianNegativeWindow.c = HardCodeUtil.a(2131706007);
+      localKandianNegativeWindow.M = 3;
+      localKandianNegativeWindow.N = HardCodeUtil.a(2131903881);
       KandianNegativeWindow.a(this.a, paramView.getTag(), true);
       break;
-    case 2131371755: 
-      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_a_of_type_JavaUtilArrayList, HardCodeUtil.a(2131706003), this.a.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow$iClickInterface);
+    case 2131439187: 
+      this.a.c.setData(this.a.i, HardCodeUtil.a(2131903877), this.a.R);
       this.a.a(true);
       localKandianNegativeWindow = this.a;
-      localKandianNegativeWindow.r = 1;
-      localKandianNegativeWindow.c = HardCodeUtil.a(2131706008);
+      localKandianNegativeWindow.M = 1;
+      localKandianNegativeWindow.N = HardCodeUtil.a(2131903882);
       KandianNegativeWindow.a(this.a, paramView.getTag(), false);
       break;
-    case 2131371754: 
+    case 2131439186: 
       this.a.c(paramView);
-      this.a.c();
+      this.a.e();
       localKandianNegativeWindow = this.a;
-      localKandianNegativeWindow.r = 4;
-      localKandianNegativeWindow.c = localKandianNegativeWindow.jdField_b_of_type_JavaLangString;
+      localKandianNegativeWindow.M = 4;
+      localKandianNegativeWindow.N = localKandianNegativeWindow.L;
       KandianNegativeWindow.a(this.a, paramView.getTag(), false);
       break;
-    case 2131371753: 
+    case 2131439185: 
       this.a.c(paramView);
-      this.a.c();
+      this.a.e();
       localKandianNegativeWindow = this.a;
-      localKandianNegativeWindow.r = 5;
-      localKandianNegativeWindow.c = BaseApplicationImpl.getContext().getString(2131717940);
+      localKandianNegativeWindow.M = 5;
+      localKandianNegativeWindow.N = BaseApplicationImpl.getContext().getString(2131915414);
       KandianNegativeWindow.a(this.a, paramView.getTag(), false);
       break;
-    case 2131371751: 
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
-      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_b_of_type_JavaUtilArrayList, HardCodeUtil.a(2131706002), this.a.jdField_a_of_type_ComTencentWidgetKandianNegativeWindow$iClickInterface);
+    case 2131439182: 
+      this.a.d.getLayoutParams();
+      this.a.d.getParent();
+      this.a.c.setData(this.a.j, HardCodeUtil.a(2131903876), this.a.R);
       this.a.a(true);
       localKandianNegativeWindow = this.a;
-      localKandianNegativeWindow.r = 2;
-      localKandianNegativeWindow.c = HardCodeUtil.a(2131706011);
+      localKandianNegativeWindow.M = 2;
+      localKandianNegativeWindow.N = HardCodeUtil.a(2131903885);
       KandianNegativeWindow.a(this.a, paramView.getTag(), false);
       break;
-    case 2131369933: 
+    case 2131437082: 
       this.a.a(false);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -71,7 +71,7 @@ class KandianNegativeWindow$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.KandianNegativeWindow.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ import java.util.List;
 abstract class MaterialVisibility<P extends VisibilityAnimatorProvider>
   extends Visibility
 {
-  private final P jdField_a_of_type_ComGoogleAndroidMaterialTransitionVisibilityAnimatorProvider;
-  private final List<VisibilityAnimatorProvider> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final P a;
   @Nullable
   private VisibilityAnimatorProvider b;
+  private final List<VisibilityAnimatorProvider> c = new ArrayList();
   
   protected MaterialVisibility(P paramP, @Nullable VisibilityAnimatorProvider paramVisibilityAnimatorProvider)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionVisibilityAnimatorProvider = paramP;
+    this.a = paramP;
     this.b = paramVisibilityAnimatorProvider;
     setInterpolator(AnimationUtils.b);
   }
@@ -32,9 +32,9 @@ abstract class MaterialVisibility<P extends VisibilityAnimatorProvider>
   {
     AnimatorSet localAnimatorSet = new AnimatorSet();
     ArrayList localArrayList = new ArrayList();
-    a(localArrayList, this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionVisibilityAnimatorProvider, paramViewGroup, paramView, paramBoolean);
+    a(localArrayList, this.a, paramViewGroup, paramView, paramBoolean);
     a(localArrayList, this.b, paramViewGroup, paramView, paramBoolean);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       a(localArrayList, (VisibilityAnimatorProvider)localIterator.next(), paramViewGroup, paramView, paramBoolean);
     }
@@ -69,7 +69,7 @@ abstract class MaterialVisibility<P extends VisibilityAnimatorProvider>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.MaterialVisibility
  * JD-Core Version:    0.7.0.1
  */

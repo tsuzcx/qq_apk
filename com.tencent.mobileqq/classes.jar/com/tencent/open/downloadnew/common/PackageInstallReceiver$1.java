@@ -21,16 +21,16 @@ class PackageInstallReceiver$1
     LogUtility.c((String)localObject, localStringBuilder.toString());
     if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.r)))
     {
-      DownloadManager.a().a(true);
-      MyAppApi.a().h();
+      DownloadManager.b().a(true);
+      MyAppApi.l().o();
     }
     localObject = new DownloadInfo("", this.b);
-    DownloadManager.a().a(9, (DownloadInfo)localObject);
+    DownloadManager.b().a(9, (DownloadInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver.1
  * JD-Core Version:    0.7.0.1
  */

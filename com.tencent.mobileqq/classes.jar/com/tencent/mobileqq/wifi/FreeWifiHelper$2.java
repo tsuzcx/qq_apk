@@ -11,11 +11,11 @@ final class FreeWifiHelper$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     paramInt = 2;
     if (i == 1)
     {
-      FreeWifiHelper.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
+      FreeWifiHelper.b(this.b, 398668);
       FreeWifiHelper.a("0X80094F5");
     }
     for (;;)
@@ -26,30 +26,30 @@ final class FreeWifiHelper$2
       {
         if (i == 3)
         {
-          FreeWifiHelper.b(this.jdField_a_of_type_AndroidAppActivity, 398671);
+          FreeWifiHelper.b(this.b, 398671);
           FreeWifiHelper.a("0X80094F6");
           break;
         }
         if (i == 4)
         {
-          FreeWifiHelper.b(this.jdField_a_of_type_AndroidAppActivity, 398690);
+          FreeWifiHelper.b(this.b, 398690);
           FreeWifiHelper.a("0X80094F4");
         }
       }
       else
       {
-        FreeWifiHelper.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
+        FreeWifiHelper.b(this.b, 398668);
         FreeWifiHelper.a("0X80094F4");
       }
     }
-    FreeWifiHelper.c(this.jdField_a_of_type_AndroidAppActivity, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWifiFreeWifiHelper$FreeWifiDialogListener.a(1);
+    FreeWifiHelper.c(this.b, paramInt);
+    this.c.a(1);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper.2
  * JD-Core Version:    0.7.0.1
  */

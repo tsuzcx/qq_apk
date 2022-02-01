@@ -18,7 +18,7 @@ class AVNotifyCenter$2
     {
       l = ((Long)localIterator.next()).longValue();
       localAVNotifyCenter = this.this$0;
-      localAVNotifyCenter.a(l, 2, localAVNotifyCenter.b(l), false);
+      localAVNotifyCenter.a(l, 2, localAVNotifyCenter.e(l), false);
       this.this$0.a(1, 2, l, null, 0L);
       this.this$0.a(21, 2, l, 0L);
       localIterator.remove();
@@ -28,7 +28,7 @@ class AVNotifyCenter$2
     {
       l = ((Long)localIterator.next()).longValue();
       localAVNotifyCenter = this.this$0;
-      localAVNotifyCenter.a(l, 1, localAVNotifyCenter.b(l), false);
+      localAVNotifyCenter.a(l, 1, localAVNotifyCenter.e(l), false);
       this.this$0.a(1, l, 10, 0, 0, 21, 0);
       this.this$0.a(2, 1, l, null, 0L);
       this.this$0.a(21, 1, l, 0L);

@@ -15,10 +15,10 @@ class ActionMenuPresenter$OpenOverflowRunnable
   
   public void run()
   {
-    if (ActionMenuPresenter.access$300(this.this$0) != null) {
-      ActionMenuPresenter.access$400(this.this$0).changeMenuMode();
+    if (ActionMenuPresenter.access$400(this.this$0) != null) {
+      ActionMenuPresenter.access$500(this.this$0).changeMenuMode();
     }
-    View localView = (View)ActionMenuPresenter.access$500(this.this$0);
+    View localView = (View)ActionMenuPresenter.access$600(this.this$0);
     if ((localView != null) && (localView.getWindowToken() != null) && (this.mPopup.tryShow())) {
       this.this$0.mOverflowPopup = this.mPopup;
     }

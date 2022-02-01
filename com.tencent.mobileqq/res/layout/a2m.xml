@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e4y" android:background="#fff8f8f8" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="15.0dip" android:paddingBottom="5.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/du1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/kc2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/dub" />
-    <TextView android:textSize="17.0sp" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/kc1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="@string/duc" android:singleLine="true" android:layout_weight="1.0" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/kc2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/dub" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/kc1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="@string/duc" android:singleLine="true" android:layout_weight="1.0" />
     <ImageView android:id="@id/dhx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/xc" />
 </LinearLayout>

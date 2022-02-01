@@ -10,7 +10,7 @@ class TimeAndCountHelper$1
   
   public void run()
   {
-    TimeAndCountHelper.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper$CountResult);
+    TimeAndCountHelper.a(this.this$0, this.a, this.b, this.c);
   }
 }
 

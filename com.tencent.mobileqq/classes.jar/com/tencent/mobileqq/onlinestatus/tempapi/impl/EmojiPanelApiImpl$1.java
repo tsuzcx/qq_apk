@@ -15,7 +15,7 @@ class EmojiPanelApiImpl$1
   
   public void delete()
   {
-    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
+    TextUtils.backspace(this.a);
   }
   
   public void emoticonMall() {}
@@ -36,7 +36,7 @@ class EmojiPanelApiImpl$1
     if (paramEmoticonInfo != null) {}
     try
     {
-      paramEmoticonInfo.send(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      paramEmoticonInfo.send(this.b, this.c, this.a, null);
       return;
     }
     catch (Throwable paramEmoticonInfo) {}
@@ -46,7 +46,7 @@ class EmojiPanelApiImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.tempapi.impl.EmojiPanelApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

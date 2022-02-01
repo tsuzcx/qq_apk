@@ -64,59 +64,6 @@ public class Base64
     return false;
   }
   
-  public static byte[] a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    String str = b(paramString);
-    if (str.charAt(str.length() - 2) == '=') {
-      paramString = new byte[(str.length() / 4 - 1) * 3 + 1];
-    } else if (str.charAt(str.length() - 1) == '=') {
-      paramString = new byte[(str.length() / 4 - 1) * 3 + 2];
-    } else {
-      paramString = new byte[str.length() / 4 * 3];
-    }
-    int j = 0;
-    int i = 0;
-    while (j < str.length() - 4)
-    {
-      k = b[str.charAt(j)];
-      m = b[str.charAt(j + 1)];
-      int n = b[str.charAt(j + 2)];
-      int i1 = b[str.charAt(j + 3)];
-      paramString[i] = ((byte)(k << 2 | m >> 4));
-      paramString[(i + 1)] = ((byte)(m << 4 | n >> 2));
-      paramString[(i + 2)] = ((byte)(n << 6 | i1));
-      j += 4;
-      i += 3;
-    }
-    if (str.charAt(str.length() - 2) == '=')
-    {
-      i = b[str.charAt(str.length() - 4)];
-      j = b[str.charAt(str.length() - 3)];
-      paramString[(paramString.length - 1)] = ((byte)(j >> 4 | i << 2));
-      return paramString;
-    }
-    if (str.charAt(str.length() - 1) == '=')
-    {
-      i = b[str.charAt(str.length() - 4)];
-      j = b[str.charAt(str.length() - 3)];
-      k = b[str.charAt(str.length() - 2)];
-      paramString[(paramString.length - 2)] = ((byte)(i << 2 | j >> 4));
-      paramString[(paramString.length - 1)] = ((byte)(k >> 2 | j << 4));
-      return paramString;
-    }
-    i = b[str.charAt(str.length() - 4)];
-    j = b[str.charAt(str.length() - 3)];
-    int k = b[str.charAt(str.length() - 2)];
-    int m = b[str.charAt(str.length() - 1)];
-    paramString[(paramString.length - 3)] = ((byte)(i << 2 | j >> 4));
-    paramString[(paramString.length - 2)] = ((byte)(j << 4 | k >> 2));
-    paramString[(paramString.length - 1)] = ((byte)(m | k << 6));
-    return paramString;
-  }
-  
   public static byte[] a(byte[] paramArrayOfByte)
   {
     int k = paramArrayOfByte.length % 3;
@@ -170,7 +117,60 @@ public class Base64
     return arrayOfByte1;
   }
   
-  private static String b(String paramString)
+  public static byte[] b(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    String str = c(paramString);
+    if (str.charAt(str.length() - 2) == '=') {
+      paramString = new byte[(str.length() / 4 - 1) * 3 + 1];
+    } else if (str.charAt(str.length() - 1) == '=') {
+      paramString = new byte[(str.length() / 4 - 1) * 3 + 2];
+    } else {
+      paramString = new byte[str.length() / 4 * 3];
+    }
+    int j = 0;
+    int i = 0;
+    while (j < str.length() - 4)
+    {
+      k = b[str.charAt(j)];
+      m = b[str.charAt(j + 1)];
+      int n = b[str.charAt(j + 2)];
+      int i1 = b[str.charAt(j + 3)];
+      paramString[i] = ((byte)(k << 2 | m >> 4));
+      paramString[(i + 1)] = ((byte)(m << 4 | n >> 2));
+      paramString[(i + 2)] = ((byte)(n << 6 | i1));
+      j += 4;
+      i += 3;
+    }
+    if (str.charAt(str.length() - 2) == '=')
+    {
+      i = b[str.charAt(str.length() - 4)];
+      j = b[str.charAt(str.length() - 3)];
+      paramString[(paramString.length - 1)] = ((byte)(j >> 4 | i << 2));
+      return paramString;
+    }
+    if (str.charAt(str.length() - 1) == '=')
+    {
+      i = b[str.charAt(str.length() - 4)];
+      j = b[str.charAt(str.length() - 3)];
+      k = b[str.charAt(str.length() - 2)];
+      paramString[(paramString.length - 2)] = ((byte)(i << 2 | j >> 4));
+      paramString[(paramString.length - 1)] = ((byte)(k >> 2 | j << 4));
+      return paramString;
+    }
+    i = b[str.charAt(str.length() - 4)];
+    j = b[str.charAt(str.length() - 3)];
+    int k = b[str.charAt(str.length() - 2)];
+    int m = b[str.charAt(str.length() - 1)];
+    paramString[(paramString.length - 3)] = ((byte)(i << 2 | j >> 4));
+    paramString[(paramString.length - 2)] = ((byte)(j << 4 | k >> 2));
+    paramString[(paramString.length - 1)] = ((byte)(m | k << 6));
+    return paramString;
+  }
+  
+  private static String c(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int j = paramString.length();
@@ -187,7 +187,7 @@ public class Base64
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicpendant.Base64
  * JD-Core Version:    0.7.0.1
  */

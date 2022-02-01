@@ -44,7 +44,7 @@ public class CombineBusinessProcessor
               paramRecentUser.setType(1024);
             }
             ArrayList localArrayList = new ArrayList();
-            paramBaseQQAppInterface = UinTypeUtil.c;
+            paramBaseQQAppInterface = UinTypeUtil.d;
             int j = paramBaseQQAppInterface.length;
             int i = 0;
             while (i < j)
@@ -52,8 +52,8 @@ public class CombineBusinessProcessor
               int k = paramBaseQQAppInterface[i];
               if (k != paramRecentUser.getType())
               {
-                String str = BaseRecentUserCache.a(paramRecentUser.uin, k);
-                if (localRecentUserProxy.b(str)) {
+                String str = BaseRecentUserCache.d(paramRecentUser.uin, k);
+                if (localRecentUserProxy.c(str)) {
                   localArrayList.add(str);
                 }
               }
@@ -111,7 +111,7 @@ public class CombineBusinessProcessor
     return "CombineBusinessProcessor";
   }
   
-  public boolean a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
+  public boolean b(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
     paramBaseQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
     if (TextUtils.equals(paramRecentUser.uin, AppConstants.TENCENT_DOCS_ASSISTANT_UIN))
@@ -152,7 +152,7 @@ public class CombineBusinessProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.CombineBusinessProcessor
  * JD-Core Version:    0.7.0.1
  */

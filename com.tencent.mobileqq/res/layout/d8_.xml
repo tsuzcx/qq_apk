@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="6.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/m_e" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="页面名字" android:layout_weight="3.0" />
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/q9a" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="关键key" android:layout_weight="2.0" />
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/q9c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="停留时长" android:layout_weight="1.0" />
+</LinearLayout>

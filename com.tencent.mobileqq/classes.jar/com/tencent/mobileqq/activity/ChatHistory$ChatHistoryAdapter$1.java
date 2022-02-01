@@ -11,16 +11,16 @@ class ChatHistory$ChatHistoryAdapter$1
   
   public void run()
   {
-    String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a, MessageRecordInfo.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$Holder.b.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$Holder.jdField_a_of_type_JavaLangString = str;
+    String str = ContactUtils.a(this.e.f.app, this.e.f.K, MessageRecordInfo.b(this.a), this.b);
+    if (this.c.d.equals(this.b)) {
+      this.c.c = str;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.runOnUiThread(new ChatHistory.ChatHistoryAdapter.1.1(this, str));
+    this.e.f.runOnUiThread(new ChatHistory.ChatHistoryAdapter.1.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

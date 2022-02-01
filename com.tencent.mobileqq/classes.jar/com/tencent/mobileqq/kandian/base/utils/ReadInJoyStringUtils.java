@@ -8,25 +8,14 @@ public class ReadInJoyStringUtils
   
   static
   {
-    String[] arrayOfString1 = { "&acirc;", "â" };
-    String[] arrayOfString2 = { "&auml;", "ä" };
-    String[] arrayOfString3 = { "&Auml;", "Ä" };
-    String[] arrayOfString4 = { "&Aring;", "Å" };
-    String[] arrayOfString5 = { "&AElig;", "Æ" };
-    String[] arrayOfString6 = { "&ccedil;", "ç" };
-    String[] arrayOfString7 = { "&eacute;", "é" };
-    String[] arrayOfString8 = { "&Eacute;", "É" };
-    String[] arrayOfString9 = { "&euml;", "ë" };
-    String[] arrayOfString10 = { "&Euml;", "Ë" };
-    String[] arrayOfString11 = { "&Iuml;", "Ï" };
-    String[] arrayOfString12 = { "&ouml;", "ö" };
-    String[] arrayOfString13 = { "&Ouml;", "Ö" };
-    String[] arrayOfString14 = { "&Oslash;", "Ø" };
-    String[] arrayOfString15 = { "&Ucirc;", "Û" };
-    String[] arrayOfString16 = { "&uuml;", "ü" };
-    String[] arrayOfString17 = { "&copy;", "©" };
-    String[] arrayOfString18 = { "&euro;", "₠" };
-    a = new String[][] { { "&lt;", "<" }, { "&gt;", ">" }, { "&amp;", "&" }, { "&quot;", "\"" }, { "&agrave;", "à" }, { "&Agrave;", "À" }, arrayOfString1, arrayOfString2, arrayOfString3, { "&Acirc;", "Â" }, { "&aring;", "å" }, arrayOfString4, { "&aelig;", "æ" }, arrayOfString5, arrayOfString6, { "&Ccedil;", "Ç" }, arrayOfString7, arrayOfString8, { "&egrave;", "è" }, { "&Egrave;", "È" }, { "&ecirc;", "ê" }, { "&Ecirc;", "Ê" }, arrayOfString9, arrayOfString10, { "&iuml;", "ï" }, arrayOfString11, { "&ocirc;", "ô" }, { "&Ocirc;", "Ô" }, arrayOfString12, arrayOfString13, { "&oslash;", "ø" }, arrayOfString14, { "&szlig;", "ß" }, { "&ugrave;", "ù" }, { "&Ugrave;", "Ù" }, { "&ucirc;", "û" }, arrayOfString15, arrayOfString16, { "&Uuml;", "Ü" }, { "&nbsp;", " " }, arrayOfString17, { "&reg;", "®" }, arrayOfString18 };
+    String[] arrayOfString1 = { "&lt;", "<" };
+    String[] arrayOfString2 = { "&aring;", "å" };
+    String[] arrayOfString3 = { "&ccedil;", "ç" };
+    String[] arrayOfString4 = { "&ocirc;", "ô" };
+    String[] arrayOfString5 = { "&Oslash;", "Ø" };
+    String[] arrayOfString6 = { "&szlig;", "ß" };
+    String[] arrayOfString7 = { "&Uuml;", "Ü" };
+    a = new String[][] { arrayOfString1, { "&gt;", ">" }, { "&amp;", "&" }, { "&quot;", "\"" }, { "&agrave;", "à" }, { "&Agrave;", "À" }, { "&acirc;", "â" }, { "&auml;", "ä" }, { "&Auml;", "Ä" }, { "&Acirc;", "Â" }, arrayOfString2, { "&Aring;", "Å" }, { "&aelig;", "æ" }, { "&AElig;", "Æ" }, arrayOfString3, { "&Ccedil;", "Ç" }, { "&eacute;", "é" }, { "&Eacute;", "É" }, { "&egrave;", "è" }, { "&Egrave;", "È" }, { "&ecirc;", "ê" }, { "&Ecirc;", "Ê" }, { "&euml;", "ë" }, { "&Euml;", "Ë" }, { "&iuml;", "ï" }, { "&Iuml;", "Ï" }, arrayOfString4, { "&Ocirc;", "Ô" }, { "&ouml;", "ö" }, { "&Ouml;", "Ö" }, { "&oslash;", "ø" }, arrayOfString5, arrayOfString6, { "&ugrave;", "ù" }, { "&Ugrave;", "Ù" }, { "&ucirc;", "û" }, { "&Ucirc;", "Û" }, { "&uuml;", "ü" }, arrayOfString7, { "&nbsp;", " " }, { "&copy;", "©" }, { "&reg;", "®" }, { "&euro;", "₠" } };
   }
   
   public static String a(String paramString)
@@ -152,7 +141,7 @@ public class ReadInJoyStringUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.ReadInJoyStringUtils
  * JD-Core Version:    0.7.0.1
  */

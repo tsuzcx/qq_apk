@@ -32,7 +32,7 @@ final class VideoNodeManager$1
       if (VideoNodeManager.a(i, true, bool)) {
         return false;
       }
-      if ((bool) && (VideoNodeManager.a(33, true)))
+      if ((bool) && (VideoNodeManager.b(33, true)))
       {
         paramMessage = new StringBuilder();
         paramMessage.append("--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = ");
@@ -61,7 +61,7 @@ final class VideoNodeManager$1
       AVLog.printInfoLog("VideoNodeManager", paramMessage.toString());
       return false;
     case 5: 
-      paramMessage = VideoNodeManager.b();
+      paramMessage = VideoNodeManager.q();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = ");
       ((StringBuilder)localObject).append(paramMessage);
@@ -70,10 +70,10 @@ final class VideoNodeManager$1
         break label720;
       }
       DcReportUtil.a(null, "dc03209", paramMessage);
-      VideoNodeManager.f();
+      VideoNodeManager.i();
       return false;
     case 3: 
-      paramMessage = VideoNodeManager.a();
+      paramMessage = VideoNodeManager.o();
       if (!TextUtils.isEmpty(paramMessage))
       {
         localObject = new StringBuilder();
@@ -81,16 +81,16 @@ final class VideoNodeManager$1
         ((StringBuilder)localObject).append(paramMessage);
         AVLog.printDebugLog("VideoNodeManager", ((StringBuilder)localObject).toString());
         DcReportUtil.a(null, "dc03209", paramMessage);
-        VideoNodeManager.e();
+        VideoNodeManager.h();
       }
-      if (VideoNodeManager.a() == null) {
+      if (VideoNodeManager.p() == null) {
         break label720;
       }
-      if (VideoNodeManager.a().size() == 0) {
+      if (VideoNodeManager.p().size() == 0) {
         return false;
       }
     case 4: 
-      VideoNodeManager.j();
+      VideoNodeManager.m();
       return false;
     case 2: 
       l1 = ((Bundle)localObject).getLong("roomId");
@@ -101,7 +101,7 @@ final class VideoNodeManager$1
       if (VideoNodeManager.a(i, false, bool)) {
         return false;
       }
-      if ((bool) && (VideoNodeManager.a(33, false)))
+      if ((bool) && (VideoNodeManager.b(33, false)))
       {
         paramMessage = new StringBuilder();
         paramMessage.append("--> THE node_session_close has write !!  this node  be rejected !!   node = ");
@@ -109,7 +109,7 @@ final class VideoNodeManager$1
         AVLog.printInfoLog("VideoNodeManager", paramMessage.toString());
         return false;
       }
-      if (VideoNodeManager.a(i))
+      if (VideoNodeManager.c(i))
       {
         paramMessage = new StringBuilder();
         paramMessage.append("reportToHandler  roomId = ");
@@ -133,14 +133,14 @@ final class VideoNodeManager$1
       VideoNodeManager.a(i, l2, false);
       return false;
     }
-    if (VideoNodeManager.a() == null) {
+    if (VideoNodeManager.n() == null) {
       return false;
     }
-    VideoNodeManager.c();
-    VideoNodeManager.a(24, VideoNodeManager.b());
+    VideoNodeManager.e();
+    VideoNodeManager.a(24, VideoNodeManager.d());
     try
     {
-      VideoNodeManager.a().sendEmptyMessageDelayed(1, 5000L);
+      VideoNodeManager.n().sendEmptyMessageDelayed(1, 5000L);
       return false;
     }
     catch (NullPointerException paramMessage)

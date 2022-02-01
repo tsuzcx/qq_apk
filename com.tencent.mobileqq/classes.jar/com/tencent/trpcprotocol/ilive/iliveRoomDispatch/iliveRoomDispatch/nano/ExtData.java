@@ -8,8 +8,8 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class ExtData
   extends MessageNano
 {
-  public long a;
   public ExtDataInfo[] a;
+  public long b;
   
   public ExtData()
   {
@@ -18,8 +18,8 @@ public final class ExtData
   
   public ExtData a()
   {
-    this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo = ExtDataInfo.a();
-    this.jdField_a_of_type_Long = 0L;
+    this.a = ExtDataInfo.a();
+    this.b = 0L;
     this.cachedSize = -1;
     return this;
   }
@@ -41,13 +41,13 @@ public final class ExtData
           }
         }
         else {
-          this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+          this.b = paramCodedInputByteBufferNano.readUInt64();
         }
       }
       else
       {
         int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
-        ExtDataInfo[] arrayOfExtDataInfo = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo;
+        ExtDataInfo[] arrayOfExtDataInfo = this.a;
         if (arrayOfExtDataInfo == null) {
           i = 0;
         } else {
@@ -57,7 +57,7 @@ public final class ExtData
         j = i;
         if (i != 0)
         {
-          System.arraycopy(this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo, 0, arrayOfExtDataInfo, 0, i);
+          System.arraycopy(this.a, 0, arrayOfExtDataInfo, 0, i);
           j = i;
         }
         while (j < arrayOfExtDataInfo.length - 1)
@@ -69,7 +69,7 @@ public final class ExtData
         }
         arrayOfExtDataInfo[j] = new ExtDataInfo();
         paramCodedInputByteBufferNano.readMessage(arrayOfExtDataInfo[j]);
-        this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo = arrayOfExtDataInfo;
+        this.a = arrayOfExtDataInfo;
       }
     }
     return this;
@@ -78,7 +78,7 @@ public final class ExtData
   protected int computeSerializedSize()
   {
     int i = super.computeSerializedSize();
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo;
+    Object localObject = this.a;
     int j = i;
     if (localObject != null)
     {
@@ -88,7 +88,7 @@ public final class ExtData
         int k = 0;
         for (;;)
         {
-          localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo;
+          localObject = this.a;
           j = i;
           if (k >= localObject.length) {
             break;
@@ -103,7 +103,7 @@ public final class ExtData
         }
       }
     }
-    long l = this.jdField_a_of_type_Long;
+    long l = this.b;
     i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeUInt64Size(2, l);
@@ -113,13 +113,13 @@ public final class ExtData
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo;
+    Object localObject = this.a;
     if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
       for (;;)
       {
-        localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo;
+        localObject = this.a;
         if (i >= localObject.length) {
           break;
         }
@@ -130,7 +130,7 @@ public final class ExtData
         i += 1;
       }
     }
-    long l = this.jdField_a_of_type_Long;
+    long l = this.b;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(2, l);
     }
@@ -139,7 +139,7 @@ public final class ExtData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.ExtData
  * JD-Core Version:    0.7.0.1
  */

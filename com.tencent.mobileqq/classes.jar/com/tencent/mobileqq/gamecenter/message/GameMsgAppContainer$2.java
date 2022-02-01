@@ -11,13 +11,13 @@ class GameMsgAppContainer$2
   
   public void onClick(View paramView)
   {
-    this.a.a();
+    this.a.e();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.GameMsgAppContainer.2
  * JD-Core Version:    0.7.0.1
  */

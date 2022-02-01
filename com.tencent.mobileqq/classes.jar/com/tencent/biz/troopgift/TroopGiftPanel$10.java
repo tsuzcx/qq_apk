@@ -10,7 +10,7 @@ class TroopGiftPanel$10
   
   public void onFileDownloadFailed(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    this.a.setCompoundDrawables(null, null, null, null);
   }
   
   public void onFileDownloadStarted() {}
@@ -19,7 +19,7 @@ class TroopGiftPanel$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.10
  * JD-Core Version:    0.7.0.1
  */

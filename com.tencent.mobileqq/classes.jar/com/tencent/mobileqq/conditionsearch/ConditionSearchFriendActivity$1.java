@@ -12,20 +12,20 @@ class ConditionSearchFriendActivity$1
   public void run()
   {
     Object localObject = this.this$0;
-    ((ConditionSearchFriendActivity)localObject).jdField_a_of_type_Int = ((ConditionSearchFriendActivity)localObject).jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.d();
-    localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a();
+    ((ConditionSearchFriendActivity)localObject).c = ((ConditionSearchFriendActivity)localObject).a.h();
+    localObject = this.this$0.a.i();
     ConditionSearchFriendActivity localConditionSearchFriendActivity = this.this$0;
-    localConditionSearchFriendActivity.b = localObject[0];
-    localConditionSearchFriendActivity.c = localObject[1];
-    localConditionSearchFriendActivity.f = ConditionSearchFriendActivity.a(localConditionSearchFriendActivity, localObject[0]);
+    localConditionSearchFriendActivity.d = localObject[0];
+    localConditionSearchFriendActivity.e = localObject[1];
+    localConditionSearchFriendActivity.h = ConditionSearchFriendActivity.a(localConditionSearchFriendActivity, localObject[0]);
     localConditionSearchFriendActivity = this.this$0;
-    localConditionSearchFriendActivity.g = ConditionSearchFriendActivity.a(localConditionSearchFriendActivity, localObject[1]);
+    localConditionSearchFriendActivity.i = ConditionSearchFriendActivity.a(localConditionSearchFriendActivity, localObject[1]);
     ThreadManager.getUIHandler().post(new ConditionSearchFriendActivity.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity.1
  * JD-Core Version:    0.7.0.1
  */

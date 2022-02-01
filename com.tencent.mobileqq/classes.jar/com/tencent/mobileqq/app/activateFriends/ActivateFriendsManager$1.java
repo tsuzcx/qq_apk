@@ -41,14 +41,14 @@ class ActivateFriendsManager$1
     if ((!bool1) && (!bool2)) {
       return;
     }
-    ActivateFriendServlet.a(ActivateFriendsManager.a(this.this$0), bool1, bool2);
+    ActivateFriendServlet.a(ActivateFriendsManager.e(this.this$0), bool1, bool2);
     Object localObject = this.this$0;
-    ((ActivateFriendsManager)localObject).a = ActivateFriendsManager.a((ActivateFriendsManager)localObject);
+    ((ActivateFriendsManager)localObject).a = ActivateFriendsManager.f((ActivateFriendsManager)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.1
  * JD-Core Version:    0.7.0.1
  */

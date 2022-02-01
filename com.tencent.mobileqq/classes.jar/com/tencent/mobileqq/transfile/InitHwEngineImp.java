@@ -9,18 +9,18 @@ public class InitHwEngineImp
 {
   public boolean getIpv6Switch()
   {
-    RichmediaIpv6ConifgBean localRichmediaIpv6ConifgBean = (RichmediaIpv6ConifgBean)QConfigManager.a().a(538);
+    RichmediaIpv6ConifgBean localRichmediaIpv6ConifgBean = (RichmediaIpv6ConifgBean)QConfigManager.b().b(538);
     return (localRichmediaIpv6ConifgBean != null) && (localRichmediaIpv6ConifgBean.a);
   }
   
   public int getLocaleId()
   {
-    return LocaleManager.a();
+    return LocaleManager.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.InitHwEngineImp
  * JD-Core Version:    0.7.0.1
  */

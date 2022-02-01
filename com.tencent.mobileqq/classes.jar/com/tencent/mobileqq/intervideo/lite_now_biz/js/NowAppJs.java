@@ -171,7 +171,7 @@ public class NowAppJs
   public void openUrl(Map<String, String> paramMap)
   {
     String str1 = (String)paramMap.get("url");
-    String str2 = BusinessManager.a.a().a;
+    String str2 = BusinessManager.a.b().a;
     if ((!TextUtils.isEmpty(str1)) && (str1.contains("https://now.qq.com/h5/pay.html?")) && ("live".equals(str2)))
     {
       this.floatWindowHelper.a(this.context, new NowAppJs.1(this, paramMap));
@@ -227,7 +227,7 @@ public class NowAppJs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowAppJs
  * JD-Core Version:    0.7.0.1
  */

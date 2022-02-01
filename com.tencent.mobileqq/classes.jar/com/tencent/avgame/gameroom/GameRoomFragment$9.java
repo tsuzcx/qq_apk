@@ -13,17 +13,17 @@ class GameRoomFragment$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (GameEngine.a().a())
+    if (GameEngine.a().d())
     {
-      if ((!GameEngine.a().e()) && (!GameRoomFragment.b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment)))
+      if ((!GameEngine.a().v()) && (!GameRoomFragment.e(this.b)))
       {
-        GameRoomFragment.b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment, this.jdField_a_of_type_AndroidViewView);
+        GameRoomFragment.b(this.b, this.a);
         return;
       }
-      GameRoomFragment.a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment).setVisibility(8);
+      GameRoomFragment.d(this.b).setVisibility(8);
       return;
     }
-    GameRoomFragment.a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment).setVisibility(8);
+    GameRoomFragment.d(this.b).setVisibility(8);
   }
 }
 

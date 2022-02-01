@@ -5,29 +5,29 @@ import android.graphics.drawable.AnimationDrawable;
 public class BlessActivity$AnimationDrawable2
   extends AnimationDrawable
 {
-  private BlessActivity.IAnimationFinishListener jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private BlessActivity.IAnimationFinishListener b;
   
   public BlessActivity$AnimationDrawable2(BlessActivity paramBlessActivity) {}
   
   public void a()
   {
     stop();
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public void a(BlessActivity.IAnimationFinishListener paramIAnimationFinishListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener = paramIAnimationFinishListener;
+    this.b = paramIAnimationFinishListener;
   }
   
   public boolean selectDrawable(int paramInt)
   {
     boolean bool = super.selectDrawable(paramInt);
-    if ((paramInt != 0) && (paramInt == getNumberOfFrames() - 1) && (!this.jdField_a_of_type_Boolean))
+    if ((paramInt != 0) && (paramInt == getNumberOfFrames() - 1) && (!this.a))
     {
-      this.jdField_a_of_type_Boolean = true;
-      BlessActivity.IAnimationFinishListener localIAnimationFinishListener = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener;
+      this.a = true;
+      BlessActivity.IAnimationFinishListener localIAnimationFinishListener = this.b;
       if (localIAnimationFinishListener != null) {
         localIAnimationFinishListener.a();
       }
@@ -37,7 +37,7 @@ public class BlessActivity$AnimationDrawable2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2
  * JD-Core Version:    0.7.0.1
  */

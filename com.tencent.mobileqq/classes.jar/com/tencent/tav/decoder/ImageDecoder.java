@@ -24,19 +24,33 @@ public class ImageDecoder
 {
   public static String EXTRA_INFO_KEY_DECODE_SIZE = "extra_info_key_decode_size";
   public static final CGSize IMAGE_DECODE_SIZE = new CGSize(720.0F, 1280.0F);
-  private static final String TAG = "ImageDecoder";
+  private final String TAG;
   private Bitmap bitmap;
-  private CMTime currentDecoderTime = CMTime.CMTimeInvalid;
+  private CMTime currentDecoderTime;
   private CGSize displaySize;
-  private CMTime frameDuration = new CMTime(1L, 30);
-  private int preferRotation = 0;
+  private CMTime frameDuration;
+  private int preferRotation;
   private String sourceImagePath;
   private TextureInfo textureInfo;
-  private long threadId = -1L;
+  private long threadId;
   private CMTimeRange timeRange;
   
   public ImageDecoder(IVideoDecoder.Params paramParams)
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ImageDecoder@");
+    ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
+    this.TAG = ((StringBuilder)localObject).toString();
+    this.preferRotation = 0;
+    this.currentDecoderTime = CMTime.CMTimeInvalid;
+    this.frameDuration = new CMTime(1L, 30);
+    this.threadId = -1L;
+    localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ImageDecoder() called with: params = [");
+    localStringBuilder.append(paramParams);
+    localStringBuilder.append("]");
+    Logger.i((String)localObject, localStringBuilder.toString());
     this.sourceImagePath = paramParams.filePath;
     readExtraDecodeSize(paramParams);
     this.displaySize = paramParams.outputSize;
@@ -47,12 +61,13 @@ public class ImageDecoder
     long l = this.threadId;
     if ((l != -1L) && (l != Thread.currentThread().getId()))
     {
+      String str = this.TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("线程不对，注意EGL相关的泄露问题！threadId = ");
       localStringBuilder.append(this.threadId);
       localStringBuilder.append(", Thread.currentThread() name = ");
       localStringBuilder.append(Thread.currentThread().getName());
-      Logger.e("ImageDecoder", localStringBuilder.toString(), new RuntimeException());
+      Logger.e(str, localStringBuilder.toString(), new RuntimeException());
     }
   }
   
@@ -82,10 +97,11 @@ public class ImageDecoder
         localObject1 = this.textureInfo;
         return localObject1;
       }
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("createTexture: bitmap is null! path = ");
-      ((StringBuilder)localObject1).append(this.sourceImagePath);
-      Logger.e("ImageDecoder", ((StringBuilder)localObject1).toString(), new RuntimeException("堆栈"));
+      Object localObject1 = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createTexture: bitmap is null! path = ");
+      localStringBuilder.append(this.sourceImagePath);
+      Logger.e((String)localObject1, localStringBuilder.toString(), new RuntimeException("堆栈"));
       return null;
     }
     finally {}
@@ -211,6 +227,12 @@ public class ImageDecoder
   {
     try
     {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release() start: disposeSource = [");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      Logger.i(str, localStringBuilder.toString());
       checkThread();
       if (this.textureInfo != null)
       {
@@ -222,6 +244,12 @@ public class ImageDecoder
         this.bitmap.recycle();
         this.bitmap = null;
       }
+      str = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release() end: disposeSource = [");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      Logger.i(str, localStringBuilder.toString());
       return;
     }
     finally {}
@@ -248,7 +276,7 @@ public class ImageDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.ImageDecoder
  * JD-Core Version:    0.7.0.1
  */

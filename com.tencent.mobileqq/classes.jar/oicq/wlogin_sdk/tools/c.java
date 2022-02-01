@@ -1,445 +1,298 @@
 package oicq.wlogin_sdk.tools;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.util.Base64;
-import android.util.Pair;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.net.ConnectException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.security.InvalidKeyException;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.X509EncodedKeySpec;
-import oicq.wlogin_sdk.report.event.a;
-import oicq.wlogin_sdk.report.event.b;
-import oicq.wlogin_sdk.request.t;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class c
 {
-  private t a;
-  
-  public static c a()
+  /* Error */
+  public static int a(java.lang.String paramString1, java.lang.String paramString2)
   {
-    return c.b.a;
-  }
-  
-  private void f()
-  {
-    try
-    {
-      Object localObject1 = this.a;
-      if (localObject1 == null)
-      {
-        util.LOGI("[pubkey]checkLocalPubKey g is null", "");
-        return;
-      }
-      Object localObject2 = e();
-      if (TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        util.LOGI("[pubkey]checkLocalPubKey local empty", "");
-        g();
-        return;
-      }
-      localObject1 = a((String)localObject2);
-      if (localObject1 == null)
-      {
-        b.a(new a("wtlogin_rotate_pub_key_error", "json_error", (String)localObject2));
-        util.LOGI("[pubkey]checkLocalPubKey value is null", "");
-        g();
-        return;
-      }
-      long l = d();
-      if (((c.c)localObject1).a * 1000 + l < System.currentTimeMillis())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[pubkey]checkLocalPubKey lastTime:");
-        ((StringBuilder)localObject2).append(l);
-        ((StringBuilder)localObject2).append(" span:");
-        ((StringBuilder)localObject2).append(((c.c)localObject1).a);
-        util.LOGI(((StringBuilder)localObject2).toString(), "");
-        g();
-        return;
-      }
-      util.LOGI("[pubkey]checkLocalPubKey span valid", "");
-      if (!a(((c.c)localObject1).b, ((c.c)localObject1).c, ((c.c)localObject1).d))
-      {
-        b.a(new a("wtlogin_rotate_pub_key_error", "key_error", ""));
-        util.LOGI("[pubkey]checkLocalPubKey wrong sign", "");
-        g();
-        return;
-      }
-      util.LOGI("[pubkey]checkLocalPubKey sign valid", "");
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      util.printThrowable(localThrowable, "checkLocalPubKey");
-    }
-  }
-  
-  private void g()
-  {
-    try
-    {
-      Object localObject1 = this.a;
-      if (localObject1 == null)
-      {
-        util.LOGI("[pubkey]fetchPubKey g null", "");
-        return;
-      }
-      if (this.a.f == 0L) {
-        localObject1 = "10000";
-      } else {
-        localObject1 = String.valueOf(this.a.f);
-      }
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[pubkey]fetchPubKey uin:");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      util.LOGI(((StringBuilder)localObject2).toString(), "");
-      try
-      {
-        localObject1 = (HttpURLConnection)new URL(String.format("https://keyrotate.qq.com/rotate_key?cipher_suite_ver=%s&uin=%s", new Object[] { String.valueOf(305), localObject1 })).openConnection();
-        ((HttpURLConnection)localObject1).setRequestMethod("GET");
-        ((HttpURLConnection)localObject1).setConnectTimeout(this.a.l);
-        ((HttpURLConnection)localObject1).setDoOutput(true);
-        ((HttpURLConnection)localObject1).setDoInput(true);
-        int i = ((HttpURLConnection)localObject1).getResponseCode();
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[pubkey]response code=");
-        ((StringBuilder)localObject2).append(i);
-        localObject2 = ((StringBuilder)localObject2).toString();
-        Object localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("");
-        ((StringBuilder)localObject3).append(this.a.f);
-        util.LOGI((String)localObject2, ((StringBuilder)localObject3).toString());
-        if (200 == i)
-        {
-          localObject1 = ((HttpURLConnection)localObject1).getInputStream();
-          localObject2 = new ByteArrayOutputStream();
-          localObject3 = new byte[1024];
-          for (;;)
-          {
-            i = ((InputStream)localObject1).read((byte[])localObject3);
-            if (i == -1) {
-              break;
-            }
-            ((ByteArrayOutputStream)localObject2).write((byte[])localObject3, 0, i);
-          }
-          ((ByteArrayOutputStream)localObject2).close();
-          ((InputStream)localObject1).close();
-          localObject1 = new String(((ByteArrayOutputStream)localObject2).toByteArray());
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("[pubkey]json:");
-          ((StringBuilder)localObject2).append((String)localObject1);
-          util.LOGI(((StringBuilder)localObject2).toString(), "");
-          localObject2 = a((String)localObject1);
-          if (a(((c.c)localObject2).b, ((c.c)localObject2).c, ((c.c)localObject2).d))
-          {
-            b((String)localObject1);
-            a(System.currentTimeMillis());
-            return;
-          }
-          util.LOGI("[pubkey]fetchPubKey not valid", "");
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[pubkey]connect exception");
-        ((StringBuilder)localObject2).append(localException.toString());
-        util.LOGI(((StringBuilder)localObject2).toString(), "");
-        return;
-      }
-      catch (ConnectException localConnectException)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[pubkey]connect exception");
-        ((StringBuilder)localObject2).append(localConnectException.toString());
-        util.LOGI(((StringBuilder)localObject2).toString(), "");
-        return;
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      util.printThrowable(localThrowable, "fetchPubKey");
-    }
-  }
-  
-  public c.c a(String paramString)
-  {
-    try
-    {
-      boolean bool = TextUtils.isEmpty(paramString);
-      if (bool)
-      {
-        util.LOGI("[pubkey]parseJsonResult empty json", "");
-        return null;
-      }
-      try
-      {
-        paramString = new JSONObject(paramString);
-        int i = paramString.optInt("QuerySpan", 0);
-        paramString = paramString.optJSONObject("PubKeyMeta");
-        if (paramString != null) {
-          return new c.c(i, paramString.optInt("KeyVer", 0), paramString.optString("PubKey"), paramString.optString("PubKeySign"));
-        }
-        util.LOGI("[pubkey]parseJsonResult empty keyMetaObj", "");
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[pubkey]parseJsonResult exception");
-        localStringBuilder.append(paramString.toString());
-        util.LOGI(localStringBuilder.toString(), "");
-        return null;
-      }
-      return null;
-    }
-    catch (Throwable paramString)
-    {
-      util.printThrowable(paramString, "parseJsonResult");
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    try
-    {
-      Object localObject = this.a;
-      localObject = t.u;
-      if (localObject != null)
-      {
-        localObject = ((Context)localObject).getSharedPreferences("WLOGIN_DEVICE_INFO", 4).edit();
-        ((SharedPreferences.Editor)localObject).putLong("pubKeyTime", paramLong);
-        ((SharedPreferences.Editor)localObject).commit();
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[pubkey]saveReqTimeToSp time:");
-        ((StringBuilder)localObject).append(paramLong);
-        util.LOGI(((StringBuilder)localObject).toString(), "");
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      util.printThrowable(localThrowable, "saveReqTimeToSp");
-    }
-  }
-  
-  public void a(t paramt)
-  {
-    this.a = paramt;
-  }
-  
-  public boolean a(int paramInt, String paramString1, String paramString2)
-  {
-    try
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(String.valueOf(305));
-      ((StringBuilder)localObject).append(String.valueOf(paramInt));
-      ((StringBuilder)localObject).append(paramString1);
-      paramString1 = ((StringBuilder)localObject).toString();
-      try
-      {
-        localObject = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(Base64.decode("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuJTW4abQJXeVdAODw1CamZH4QJZChyT08ribet1Gp0wpSabIgyKFZAOxeArcCbknKyBrRY3FFI9HgY1AyItH8DOUe6ajDEb6c+vrgjgeCiOiCVyum4lI5Fmp38iHKH14xap6xGaXcBccdOZNzGT82sPDM2Oc6QYSZpfs8EO7TYT7KSB2gaHz99RQ4A/Lel1Vw0krk+DescN6TgRCaXjSGn268jD7lOO23x5JS1mavsUJtOZpXkK9GqCGSTCTbCwZhI33CpwdQ2EHLhiP5RaXZCio6lksu+d8sKTWU1eEiEb3cQ7nuZXLYH7leeYFoPtbFV4RicIWp0/YG+RP7rLPCwIDAQAB", 0)));
-        Signature localSignature = Signature.getInstance("SHA256WithRSA");
-        localSignature.initVerify((PublicKey)localObject);
-        localSignature.update(paramString1.getBytes());
-        boolean bool = localSignature.verify(Base64.decode(paramString2, 0));
-        paramString1 = new StringBuilder();
-        paramString1.append("[pubkey]checkPubKeyValid result:");
-        paramString1.append(bool);
-        util.LOGI(paramString1.toString(), "");
-        return bool;
-      }
-      catch (SignatureException paramString1)
-      {
-        paramString2 = new StringBuilder();
-        paramString2.append("[pubkey]checkPubKeyValid ");
-        paramString2.append(paramString1.toString());
-        util.LOGI(paramString2.toString(), "");
-        return false;
-      }
-      catch (InvalidKeyException paramString1)
-      {
-        paramString2 = new StringBuilder();
-        paramString2.append("[pubkey]checkPubKeyValid ");
-        paramString2.append(paramString1.toString());
-        util.LOGI(paramString2.toString(), "");
-        return false;
-      }
-      catch (InvalidKeySpecException paramString1)
-      {
-        paramString2 = new StringBuilder();
-        paramString2.append("[pubkey]checkPubKeyValid ");
-        paramString2.append(paramString1.toString());
-        util.LOGI(paramString2.toString(), "");
-        return false;
-      }
-      catch (NoSuchAlgorithmException paramString1)
-      {
-        paramString2 = new StringBuilder();
-        paramString2.append("[pubkey]checkPubKeyValid ");
-        paramString2.append(paramString1.toString());
-        util.LOGI(paramString2.toString(), "");
-        return false;
-      }
-      return false;
-    }
-    catch (Throwable paramString1)
-    {
-      util.printThrowable(paramString1, "checkPubKeyValid");
-    }
-  }
-  
-  public void b()
-  {
-    new Thread(new c.a(), "PubKeyRotater").start();
-  }
-  
-  public void b(String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject = this.a;
-        localObject = t.u;
-        if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
-        {
-          localObject = ((Context)localObject).getSharedPreferences("WLOGIN_DEVICE_INFO", 4).edit();
-          ((SharedPreferences.Editor)localObject).putString("pubKey", paramString);
-          ((SharedPreferences.Editor)localObject).commit();
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[pubkey]savePubKeyToFile json:");
-          if (paramString == null) {
-            break label105;
-          }
-          i = paramString.length();
-          ((StringBuilder)localObject).append(i);
-          util.LOGI(((StringBuilder)localObject).toString(), "");
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        util.printThrowable(paramString, "savePubKeyToFile");
-      }
-      return;
-      label105:
-      int i = 0;
-    }
-  }
-  
-  public Pair<String, Integer> c()
-  {
-    try
-    {
-      Object localObject = e();
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        util.LOGI("[pubkey]syncGetPubKey json is empty");
-        return null;
-      }
-      localObject = a((String)localObject);
-      if (localObject == null)
-      {
-        util.LOGI("[pubkey]syncGetPubKey value is null");
-        return null;
-      }
-      if (!a(((c.c)localObject).b, ((c.c)localObject).c, ((c.c)localObject).d))
-      {
-        util.LOGI("[pubkey]syncGetPubKey key sign not right");
-        return null;
-      }
-      localObject = new Pair(((c.c)localObject).c, Integer.valueOf(((c.c)localObject).b));
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      util.printThrowable(localThrowable, "syncGetPubKey");
-    }
-    return null;
-  }
-  
-  public long d()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject = this.a;
-        localObject = t.u;
-        if (localObject != null)
-        {
-          l = ((Context)localObject).getSharedPreferences("WLOGIN_DEVICE_INFO", 4).getLong("pubKeyTime", 0L);
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[pubkey]getReqTimeFromSp ");
-          ((StringBuilder)localObject).append(l);
-          util.LOGI(((StringBuilder)localObject).toString(), "");
-          return l;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        util.printThrowable(localThrowable, "getReqTimeFromSp");
-        return 0L;
-      }
-      long l = 0L;
-    }
-  }
-  
-  public String e()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject = this.a;
-        localObject = t.u;
-        if (localObject != null)
-        {
-          localObject = ((Context)localObject).getSharedPreferences("WLOGIN_DEVICE_INFO", 4).getString("pubKey", "");
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("[pubkey]getPubKeyFromFile ");
-          if (localObject == null) {
-            break label97;
-          }
-          i = ((String)localObject).length();
-          localStringBuilder.append(i);
-          util.LOGI(localStringBuilder.toString(), "");
-          return localObject;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        util.printThrowable(localThrowable, "savePubKeyToFile");
-        return "";
-      }
-      String str = "";
-      continue;
-      label97:
-      int i = 0;
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 8
+    //   6: aconst_null
+    //   7: astore 4
+    //   9: aconst_null
+    //   10: astore 7
+    //   12: new 10	java/net/URL
+    //   15: dup
+    //   16: aload_0
+    //   17: invokespecial 14	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   20: invokevirtual 18	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   23: checkcast 20	javax/net/ssl/HttpsURLConnection
+    //   26: astore 6
+    //   28: aload 7
+    //   30: astore 5
+    //   32: aload 8
+    //   34: astore_0
+    //   35: aload 6
+    //   37: astore 4
+    //   39: aload 6
+    //   41: sipush 5000
+    //   44: invokevirtual 24	javax/net/ssl/HttpsURLConnection:setConnectTimeout	(I)V
+    //   47: aload 7
+    //   49: astore 5
+    //   51: aload 8
+    //   53: astore_0
+    //   54: aload 6
+    //   56: astore 4
+    //   58: aload 6
+    //   60: sipush 5000
+    //   63: invokevirtual 27	javax/net/ssl/HttpsURLConnection:setReadTimeout	(I)V
+    //   66: aload 7
+    //   68: astore 5
+    //   70: aload 8
+    //   72: astore_0
+    //   73: aload 6
+    //   75: astore 4
+    //   77: aload 6
+    //   79: iconst_1
+    //   80: invokevirtual 31	javax/net/ssl/HttpsURLConnection:setDoInput	(Z)V
+    //   83: aload 7
+    //   85: astore 5
+    //   87: aload 8
+    //   89: astore_0
+    //   90: aload 6
+    //   92: astore 4
+    //   94: aload 6
+    //   96: ldc 33
+    //   98: invokevirtual 36	javax/net/ssl/HttpsURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   101: aload 7
+    //   103: astore 5
+    //   105: aload 8
+    //   107: astore_0
+    //   108: aload 6
+    //   110: astore 4
+    //   112: aload 6
+    //   114: iconst_0
+    //   115: invokevirtual 39	javax/net/ssl/HttpsURLConnection:setUseCaches	(Z)V
+    //   118: aload 7
+    //   120: astore 5
+    //   122: aload 8
+    //   124: astore_0
+    //   125: aload 6
+    //   127: astore 4
+    //   129: aload 6
+    //   131: ldc 41
+    //   133: ldc 43
+    //   135: invokevirtual 47	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   138: aload 7
+    //   140: astore 5
+    //   142: aload 8
+    //   144: astore_0
+    //   145: aload 6
+    //   147: astore 4
+    //   149: aload 6
+    //   151: ldc 49
+    //   153: ldc 51
+    //   155: invokevirtual 47	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   158: aload 7
+    //   160: astore 5
+    //   162: aload 8
+    //   164: astore_0
+    //   165: aload 6
+    //   167: astore 4
+    //   169: aload 6
+    //   171: invokevirtual 55	javax/net/ssl/HttpsURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   174: astore 7
+    //   176: aload 7
+    //   178: astore 5
+    //   180: aload 7
+    //   182: astore_0
+    //   183: aload 6
+    //   185: astore 4
+    //   187: aload 7
+    //   189: aload_1
+    //   190: invokevirtual 61	java/lang/String:getBytes	()[B
+    //   193: invokevirtual 67	java/io/OutputStream:write	([B)V
+    //   196: aload 7
+    //   198: astore 5
+    //   200: aload 7
+    //   202: astore_0
+    //   203: aload 6
+    //   205: astore 4
+    //   207: aload 7
+    //   209: invokevirtual 71	java/io/OutputStream:flush	()V
+    //   212: aload 7
+    //   214: astore 5
+    //   216: aload 7
+    //   218: astore_0
+    //   219: aload 6
+    //   221: astore 4
+    //   223: aload 6
+    //   225: invokevirtual 74	javax/net/ssl/HttpsURLConnection:connect	()V
+    //   228: aload 7
+    //   230: astore 5
+    //   232: aload 7
+    //   234: astore_0
+    //   235: aload 6
+    //   237: astore 4
+    //   239: aload 6
+    //   241: invokevirtual 78	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
+    //   244: istore_3
+    //   245: aload 7
+    //   247: ifnull +18 -> 265
+    //   250: aload 7
+    //   252: invokevirtual 81	java/io/OutputStream:close	()V
+    //   255: goto +10 -> 265
+    //   258: astore_0
+    //   259: aload_0
+    //   260: ldc 83
+    //   262: invokestatic 89	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   265: iload_3
+    //   266: istore_2
+    //   267: aload 6
+    //   269: ifnull +106 -> 375
+    //   272: aload 6
+    //   274: invokevirtual 92	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   277: iload_3
+    //   278: istore_2
+    //   279: goto +96 -> 375
+    //   282: astore_0
+    //   283: aload_0
+    //   284: ldc 83
+    //   286: invokestatic 89	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   289: iload_3
+    //   290: istore_2
+    //   291: goto +84 -> 375
+    //   294: astore_0
+    //   295: aload 6
+    //   297: astore_1
+    //   298: aload_0
+    //   299: astore 6
+    //   301: goto +21 -> 322
+    //   304: astore_1
+    //   305: aconst_null
+    //   306: astore 5
+    //   308: aload 4
+    //   310: astore_0
+    //   311: aload 5
+    //   313: astore 4
+    //   315: goto +100 -> 415
+    //   318: astore 6
+    //   320: aconst_null
+    //   321: astore_1
+    //   322: aload 5
+    //   324: astore_0
+    //   325: aload_1
+    //   326: astore 4
+    //   328: aload 6
+    //   330: ldc 83
+    //   332: invokestatic 89	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   335: aload 5
+    //   337: ifnull +18 -> 355
+    //   340: aload 5
+    //   342: invokevirtual 81	java/io/OutputStream:close	()V
+    //   345: goto +10 -> 355
+    //   348: astore_0
+    //   349: aload_0
+    //   350: ldc 83
+    //   352: invokestatic 89	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   355: aload_1
+    //   356: ifnull +17 -> 373
+    //   359: aload_1
+    //   360: invokevirtual 92	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   363: goto +10 -> 373
+    //   366: astore_0
+    //   367: aload_0
+    //   368: ldc 83
+    //   370: invokestatic 89	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   373: iconst_m1
+    //   374: istore_2
+    //   375: iload_2
+    //   376: sipush 200
+    //   379: if_icmpeq +33 -> 412
+    //   382: new 94	java/lang/StringBuilder
+    //   385: dup
+    //   386: invokespecial 96	java/lang/StringBuilder:<init>	()V
+    //   389: astore_0
+    //   390: aload_0
+    //   391: ldc 98
+    //   393: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: pop
+    //   397: aload_0
+    //   398: iload_2
+    //   399: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   402: pop
+    //   403: aload_0
+    //   404: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   407: ldc 83
+    //   409: invokestatic 112	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   412: iload_2
+    //   413: ireturn
+    //   414: astore_1
+    //   415: aload_0
+    //   416: ifnull +17 -> 433
+    //   419: aload_0
+    //   420: invokevirtual 81	java/io/OutputStream:close	()V
+    //   423: goto +10 -> 433
+    //   426: astore_0
+    //   427: aload_0
+    //   428: ldc 83
+    //   430: invokestatic 89	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   433: aload 4
+    //   435: ifnull +18 -> 453
+    //   438: aload 4
+    //   440: invokevirtual 92	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   443: goto +10 -> 453
+    //   446: astore_0
+    //   447: aload_0
+    //   448: ldc 83
+    //   450: invokestatic 89	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   453: aload_1
+    //   454: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	455	0	paramString1	java.lang.String
+    //   0	455	1	paramString2	java.lang.String
+    //   266	147	2	i	int
+    //   244	46	3	j	int
+    //   7	432	4	localObject1	Object
+    //   1	340	5	localObject2	Object
+    //   26	274	6	localObject3	Object
+    //   318	11	6	localException	java.lang.Exception
+    //   10	241	7	localOutputStream	java.io.OutputStream
+    //   4	159	8	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   250	255	258	java/lang/Exception
+    //   272	277	282	java/lang/Exception
+    //   39	47	294	java/lang/Exception
+    //   58	66	294	java/lang/Exception
+    //   77	83	294	java/lang/Exception
+    //   94	101	294	java/lang/Exception
+    //   112	118	294	java/lang/Exception
+    //   129	138	294	java/lang/Exception
+    //   149	158	294	java/lang/Exception
+    //   169	176	294	java/lang/Exception
+    //   187	196	294	java/lang/Exception
+    //   207	212	294	java/lang/Exception
+    //   223	228	294	java/lang/Exception
+    //   239	245	294	java/lang/Exception
+    //   12	28	304	finally
+    //   12	28	318	java/lang/Exception
+    //   340	345	348	java/lang/Exception
+    //   359	363	366	java/lang/Exception
+    //   39	47	414	finally
+    //   58	66	414	finally
+    //   77	83	414	finally
+    //   94	101	414	finally
+    //   112	118	414	finally
+    //   129	138	414	finally
+    //   149	158	414	finally
+    //   169	176	414	finally
+    //   187	196	414	finally
+    //   207	212	414	finally
+    //   223	228	414	finally
+    //   239	245	414	finally
+    //   328	335	414	finally
+    //   419	423	426	java/lang/Exception
+    //   438	443	446	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tools.c
  * JD-Core Version:    0.7.0.1
  */

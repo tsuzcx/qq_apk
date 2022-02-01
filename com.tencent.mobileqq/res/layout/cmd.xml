@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/mw" android:layout_alignLeft="@id/ng0" android:layout_alignTop="@id/ng0" android:layout_alignRight="@id/ng0" android:layout_alignBottom="@id/ng0" />
-    <com.tencent.mobileqq.now.widget.NiceImageView android:id="@id/ng0" android:clickable="false" android:layout_width="fill_parent" android:layout_height="195.0dip" android:scaleType="fitXY" app:corner_radius_value="@dimen/mw" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:id="@id/on8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xgj" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:gravity="center_vertical" android:id="@id/on7" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/ied" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

@@ -11,8 +11,6 @@ import java.util.List;
 
 public abstract interface IChatPanelBarController
 {
-  public abstract List<int[]> a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie);
-  
   public abstract void a();
   
   public abstract void a(int paramInt, boolean paramBoolean);
@@ -31,13 +29,15 @@ public abstract interface IChatPanelBarController
   
   public abstract boolean a(View paramView);
   
+  public abstract List<int[]> b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie);
+  
   public abstract void b(boolean paramBoolean, BaseChatPie paramBaseChatPie);
   
   public abstract boolean b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.IChatPanelBarController
  * JD-Core Version:    0.7.0.1
  */

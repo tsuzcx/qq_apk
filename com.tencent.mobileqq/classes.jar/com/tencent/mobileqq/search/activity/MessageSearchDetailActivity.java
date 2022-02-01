@@ -30,13 +30,13 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class MessageSearchDetailActivity
   extends IphoneTitleBarActivity
 {
-  private static FullMessageSearchResult.SearchResultItem a;
+  private static FullMessageSearchResult.SearchResultItem b;
   protected MessageSearchDetailActivity.CancelReceiver a;
-  private FullMessageSearchResult.SearchResultItem b;
+  private FullMessageSearchResult.SearchResultItem c;
   
   public static void a(Context paramContext, String paramString, FullMessageSearchResult.SearchResultItem paramSearchResultItem)
   {
-    jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
+    b = paramSearchResultItem;
     paramSearchResultItem = new Intent(paramContext, MessageSearchDetailActivity.class);
     paramSearchResultItem.putExtra("keyword", paramString);
     paramContext.startActivity(paramSearchResultItem);
@@ -51,7 +51,7 @@ public class MessageSearchDetailActivity
       }
       return;
     }
-    int i = ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString2);
+    int i = ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -124,38 +124,38 @@ public class MessageSearchDetailActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.b = jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
-    if (this.b == null)
+    this.c = b;
+    if (this.c == null)
     {
       finish();
       return false;
     }
-    super.setContentView(2131558898);
-    if (this.b.user.getType() == 3000) {
-      a(ContactUtils.a(this.app, this.b.user.uin, this.b.user.getType()), this.b.user.uin, this.centerView);
+    super.setContentView(2131624520);
+    if (this.c.user.getType() == 3000) {
+      a(ContactUtils.a(this.app, this.c.user.uin, this.c.user.getType()), this.c.user.uin, this.centerView);
     } else {
-      super.setTitle(ContactUtils.a(this.app, this.b.user.uin, this.b.user.getType()));
+      super.setTitle(ContactUtils.a(this.app, this.c.user.uin, this.c.user.getType()));
     }
     Object localObject = super.getSupportFragmentManager();
-    paramBundle = MessageSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
+    paramBundle = MessageSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.c);
     localObject = ((FragmentManager)localObject).beginTransaction();
-    ((FragmentTransaction)localObject).replace(2131365183, paramBundle);
+    ((FragmentTransaction)localObject).replace(2131431345, paramBundle);
     ((FragmentTransaction)localObject).commit();
-    this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = new MessageSearchDetailActivity.CancelReceiver(this);
+    this.a = new MessageSearchDetailActivity.CancelReceiver(this);
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mobileqq.search.cancel");
-    super.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver, paramBundle);
+    super.registerReceiver(this.a, paramBundle);
     return true;
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    MessageSearchDetailActivity.CancelReceiver localCancelReceiver = this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver;
+    MessageSearchDetailActivity.CancelReceiver localCancelReceiver = this.a;
     if (localCancelReceiver != null)
     {
       super.unregisterReceiver(localCancelReceiver);
-      this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = null;
+      this.a = null;
     }
   }
   
@@ -168,7 +168,7 @@ public class MessageSearchDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MessageSearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class BusinessEggsAnimation$2
   {
     Point localPoint = new Point();
     float f1 = RandomUtils.a(-1.0F, 1.0F);
-    float f2 = ViewUtils.a(50.0F);
+    float f2 = ViewUtils.dip2px(50.0F);
     localPoint.x = ((int)(paramPoint.x / 2 + f1 * f2));
     localPoint.y = 0;
     return localPoint;
@@ -31,7 +31,7 @@ class BusinessEggsAnimation$2
       d1 = paramFloat;
       Double.isNaN(d1);
       d2 = Math.sin(d1 * 6.283185307179586D);
-      d1 = ViewUtils.a(60.0F);
+      d1 = ViewUtils.dip2px(60.0F);
       Double.isNaN(d1);
     }
     else
@@ -39,7 +39,7 @@ class BusinessEggsAnimation$2
       d1 = paramFloat;
       Double.isNaN(d1);
       d2 = Math.cos(d1 * 6.283185307179586D);
-      d1 = ViewUtils.a(60.0F);
+      d1 = ViewUtils.dip2px(60.0F);
       Double.isNaN(d1);
     }
     localPoint.x = ((int)((int)(d2 * d1) * 1.5F + paramPoint1.x));
@@ -56,7 +56,7 @@ class BusinessEggsAnimation$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation.2
  * JD-Core Version:    0.7.0.1
  */

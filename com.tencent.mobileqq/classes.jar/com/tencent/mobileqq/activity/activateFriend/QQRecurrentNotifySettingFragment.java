@@ -34,10 +34,10 @@ public class QQRecurrentNotifySettingFragment
   extends QQNotifySettingBaseFragment
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ScrollView jdField_a_of_type_AndroidWidgetScrollView;
-  private Button b;
-  private TextView c;
+  private ScrollView k;
+  private Button l;
+  private ImageView m;
+  private TextView n;
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
   {
@@ -67,27 +67,20 @@ public class QQRecurrentNotifySettingFragment
       if (paramString.getStatus() == 2) {
         paramString.restartDownload();
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+      this.m.setImageDrawable(paramString);
     }
   }
   
-  private void b()
+  private void c()
   {
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
     localTranslateAnimation.setDuration(300L);
-    this.jdField_a_of_type_AndroidWidgetScrollView.post(new QQRecurrentNotifySettingFragment.1(this, localTranslateAnimation));
+    this.k.post(new QQRecurrentNotifySettingFragment.1(this, localTranslateAnimation));
   }
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131560918, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    if (MobileQQ.sMobileQQ != null) {
-      QQToast.a(MobileQQ.sMobileQQ, HardCodeUtil.a(2131710532), 0).a();
-    }
+    return paramLayoutInflater.inflate(2131627259, paramViewGroup, false);
   }
   
   public void a(AcsGetMsgRsp paramAcsGetMsgRsp)
@@ -102,21 +95,28 @@ public class QQRecurrentNotifySettingFragment
         if (bool) {
           str1 = "";
         } else {
-          str1 = String.format(getResources().getString(2131699839), new Object[] { paramAcsGetMsgRsp.busi_name });
+          str1 = String.format(getResources().getString(2131897888), new Object[] { paramAcsGetMsgRsp.busi_name });
         }
         if (!TextUtils.isEmpty(paramAcsGetMsgRsp.sub_content)) {
           str2 = paramAcsGetMsgRsp.sub_content;
         }
-        this.c.setText(str1);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
-        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+        this.n.setText(str1);
+        this.c.setText(str2);
+        this.e.setEnabled(true);
         a(paramAcsGetMsgRsp.busi_logo);
-        b();
+        c();
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      a();
+      this.e.setEnabled(false);
+      b();
       b(paramAcsGetMsgRsp.ret_code, paramAcsGetMsgRsp.err_str);
+    }
+  }
+  
+  public void b()
+  {
+    if (MobileQQ.sMobileQQ != null) {
+      QQToast.makeText(MobileQQ.sMobileQQ, HardCodeUtil.a(2131908220), 0).show();
     }
   }
   
@@ -128,17 +128,17 @@ public class QQRecurrentNotifySettingFragment
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_Boolean)
+    this.g = bool;
+    this.i = paramInt;
+    this.j = paramString;
+    if (this.g)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setTag("1");
-      a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      this.e.setTag("1");
+      a(this.i, this.j);
       return;
     }
-    if (this.jdField_b_of_type_Int != 2) {
-      a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (this.i != 2) {
+      a(this.i, this.j);
     }
   }
   
@@ -170,21 +170,21 @@ public class QQRecurrentNotifySettingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362686));
-    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369378)).setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369379));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369380));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363890));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    this.k = ((ScrollView)this.b.findViewById(2131428355));
+    ((LinearLayout)this.b.findViewById(2131436409)).setVisibility(0);
+    this.m = ((ImageView)this.b.findViewById(2131436410));
+    this.m.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+    this.n = ((TextView)this.b.findViewById(2131436411));
+    this.l = ((Button)this.b.findViewById(2131429840));
+    this.l.setOnClickListener(this);
+    paramLayoutInflater = this.b;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQRecurrentNotifySettingFragment
  * JD-Core Version:    0.7.0.1
  */

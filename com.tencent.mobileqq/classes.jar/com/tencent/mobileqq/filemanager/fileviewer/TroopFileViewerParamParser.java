@@ -15,31 +15,25 @@ import java.util.List;
 
 public class TroopFileViewerParamParser
 {
-  protected int a;
   protected QQAppInterface a;
-  protected FileManagerEntity a;
-  protected List<IFileViewerAdapter> a;
-  private int b = 0;
+  protected FileManagerEntity b;
+  protected List<IFileViewerAdapter> c;
+  protected int d = 0;
+  private int e = 0;
   
   TroopFileViewerParamParser(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
   }
   
   public FileBrowserManager.IModelCreater a(BaseActivity paramBaseActivity)
   {
     return new TroopFileViewerParamParser.1(this, paramBaseActivity);
-  }
-  
-  public List<IFileViewerAdapter> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public boolean a(Intent paramIntent, Activity paramActivity)
@@ -50,34 +44,39 @@ public class TroopFileViewerParamParser
     }
     if (paramIntent.getBooleanExtra("from_webview", false))
     {
-      TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ForwardFileInfo)localObject).a(), ((ForwardFileInfo)localObject).b(), ((ForwardFileInfo)localObject).e(), ((ForwardFileInfo)localObject).d(), ((ForwardFileInfo)localObject).d(), paramIntent.getIntExtra("bisId", 0));
-      l1 = ((ForwardFileInfo)localObject).a();
+      TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.a, ((ForwardFileInfo)localObject).b(), ((ForwardFileInfo)localObject).g(), ((ForwardFileInfo)localObject).k(), ((ForwardFileInfo)localObject).i(), ((ForwardFileInfo)localObject).j(), paramIntent.getIntExtra("bisId", 0));
+      l1 = ((ForwardFileInfo)localObject).b();
       localObject = paramIntent.getStringExtra("sender_uin");
       long l2 = paramIntent.getLongExtra("last_time", 0L);
-      QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramActivity, null, null, l1, localTroopFileStatusInfo, (String)localObject, l2, -1, 0, null, false, false);
+      QFileUtils.a(this.a, paramActivity, null, null, l1, localTroopFileStatusInfo, (String)localObject, l2, -1, 0, null, false, false);
       paramActivity.finish();
       return false;
     }
-    long l1 = ((ForwardFileInfo)localObject).b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l1);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+    long l1 = ((ForwardFileInfo)localObject).e();
+    this.b = this.a.getFileManagerDataCenter().a(l1);
+    if (this.b == null) {
       return false;
     }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = paramIntent.getLongExtra("last_time", 0L);
-    this.jdField_a_of_type_JavaUtilList.add(FileViewerAdapterBase.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
+    this.c = new ArrayList();
+    this.b.lastTime = paramIntent.getLongExtra("last_time", 0L);
+    this.c.add(FileViewerAdapterBase.b(this.a, this.b));
+    if (this.b.nFileType == 0)
     {
-      this.jdField_a_of_type_Int = 1;
+      this.d = 1;
       return true;
     }
-    this.jdField_a_of_type_Int = 3;
+    this.d = 3;
     return true;
+  }
+  
+  public List<IFileViewerAdapter> b()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.TroopFileViewerParamParser
  * JD-Core Version:    0.7.0.1
  */

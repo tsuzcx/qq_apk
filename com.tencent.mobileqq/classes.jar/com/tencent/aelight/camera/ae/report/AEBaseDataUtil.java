@@ -42,24 +42,24 @@ public class AEBaseDataUtil
     return paramHashMap1;
   }
   
-  public static void a()
-  {
-    AECameraPrefsUtil.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 1, 0);
-  }
-  
-  public static boolean a()
+  public static boolean b()
   {
     AECameraPrefsUtil localAECameraPrefsUtil = AECameraPrefsUtil.a();
     boolean bool = false;
-    if (localAECameraPrefsUtil.a("AEKIT_CAMERA_FIRST_LAUNCH", 0, 0) == 0) {
+    if (localAECameraPrefsUtil.b("AEKIT_CAMERA_FIRST_LAUNCH", 0, 0) == 0) {
       bool = true;
     }
     return bool;
   }
   
-  public static boolean b()
+  public static void c()
   {
-    if (AECameraPrefsUtil.a().a("sp_key_ae_camera_launch_mark", 0)) {
+    AECameraPrefsUtil.a().a("AEKIT_CAMERA_FIRST_LAUNCH", 1, 0);
+  }
+  
+  public static boolean d()
+  {
+    if (AECameraPrefsUtil.a().b("sp_key_ae_camera_launch_mark", 0)) {
       return false;
     }
     AECameraPrefsUtil.a().a("sp_key_ae_camera_launch_mark", true, 0);
@@ -68,7 +68,7 @@ public class AEBaseDataUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.report.AEBaseDataUtil
  * JD-Core Version:    0.7.0.1
  */

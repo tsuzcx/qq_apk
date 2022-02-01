@@ -26,26 +26,80 @@ public class TintManager
   implements ISkinTint
 {
   public static volatile TintManager a;
-  private QuickUpdateListener jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQuickUpdateListener = new TintManager.1(this);
-  private String jdField_a_of_type_JavaLangString = "";
-  private HashMap<String, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private JSONArray jdField_a_of_type_OrgJsonJSONArray;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private String jdField_b_of_type_JavaLangString;
-  private JSONObject jdField_b_of_type_OrgJsonJSONObject;
+  private JSONObject b;
+  private JSONObject c;
+  private JSONArray d;
+  private HashMap<String, Boolean> e = new HashMap();
+  private String f = "";
+  private String g;
+  private QuickUpdateListener h = new TintManager.1(this);
   
   public static TintManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqVasThemeTintManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqVasThemeTintManager == null) {
-          jdField_a_of_type_ComTencentMobileqqVasThemeTintManager = new TintManager();
+        if (a == null) {
+          a = new TintManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqVasThemeTintManager;
+    return a;
+  }
+  
+  private void a(Paint paramPaint, String paramString, JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString(paramString);
+    if (!TextUtils.isEmpty(str))
+    {
+      boolean bool = paramString.contains(".");
+      int i = 0;
+      if (bool) {
+        paramJSONObject = paramString.split("\\.")[0];
+      } else {
+        paramJSONObject = paramString;
+      }
+      BaseApplication localBaseApplication = BaseApplication.getContext();
+      int j;
+      if (localBaseApplication != null)
+      {
+        j = BaseApplication.getContext().getResources().getIdentifier(paramJSONObject, "drawable", localBaseApplication.getPackageName());
+        if ((j > 0) && (SkinEngine.getInstances().checkResExist(j)))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramPaint = new StringBuilder();
+            paramPaint.append("checkResExist fileName:");
+            paramPaint.append(paramString);
+            QLog.i("TintManager", 2, paramPaint.toString());
+          }
+          return;
+        }
+      }
+      if (str.contains(","))
+      {
+        paramString = str.split("\\,");
+        j = paramString.length;
+        while (i < j)
+        {
+          if (a(paramPaint, paramString[i])) {
+            return;
+          }
+          i += 1;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("plateName:");
+        paramJSONObject.append(str);
+        paramJSONObject.append(" fileName:");
+        paramJSONObject.append(paramString);
+        QLog.i("TintManager", 2, paramJSONObject.toString());
+      }
+      a(paramPaint, str);
+    }
   }
   
   private void a(int[] paramArrayOfInt, int paramInt, Integer paramInteger)
@@ -60,7 +114,7 @@ public class TintManager
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    JSONObject localJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
+    JSONObject localJSONObject = this.c;
     if (localJSONObject == null) {
       return null;
     }
@@ -122,33 +176,33 @@ public class TintManager
       if (!bool)
       {
         paramString1 = new JSONObject(paramString1);
-        this.jdField_a_of_type_OrgJsonJSONObject = paramString1.optJSONObject("mapping");
-        this.jdField_b_of_type_OrgJsonJSONObject = paramString1.optJSONObject("plate");
+        this.b = paramString1.optJSONObject("mapping");
+        this.c = paramString1.optJSONObject("plate");
       }
       if (!TextUtils.isEmpty(paramString2))
       {
         paramString1 = new JSONObject(paramString2);
         paramString2 = paramString1.optJSONObject("mapping");
         JSONObject localJSONObject = paramString1.optJSONObject("plate");
-        this.jdField_a_of_type_OrgJsonJSONArray = paramString1.optJSONArray("forbidden");
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        if (this.jdField_a_of_type_OrgJsonJSONArray != null)
+        this.d = paramString1.optJSONArray("forbidden");
+        this.e.clear();
+        if (this.d != null)
         {
           int i = 0;
-          while (i < this.jdField_a_of_type_OrgJsonJSONArray.length())
+          while (i < this.d.length())
           {
-            this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_OrgJsonJSONArray.optString(i), Boolean.valueOf(true));
+            this.e.put(this.d.optString(i), Boolean.valueOf(true));
             i += 1;
           }
         }
-        if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-          this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+        if (this.b == null) {
+          this.b = new JSONObject();
         }
-        if (this.jdField_b_of_type_OrgJsonJSONObject == null) {
-          this.jdField_b_of_type_OrgJsonJSONObject = new JSONObject();
+        if (this.c == null) {
+          this.c = new JSONObject();
         }
-        a(this.jdField_a_of_type_OrgJsonJSONObject, paramString2);
-        a(this.jdField_b_of_type_OrgJsonJSONObject, localJSONObject);
+        a(this.b, paramString2);
+        a(this.c, localJSONObject);
         return;
       }
     }
@@ -160,7 +214,7 @@ public class TintManager
   
   protected boolean a(Paint paramPaint, String paramString)
   {
-    if (this.jdField_b_of_type_OrgJsonJSONObject != null)
+    if (this.c != null)
     {
       localObject = a(paramString);
       if ((localObject != null) && (paramPaint != null))
@@ -204,15 +258,15 @@ public class TintManager
   
   public void clear()
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = null;
-    this.jdField_b_of_type_OrgJsonJSONObject = null;
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.b = null;
+    this.c = null;
+    this.e.clear();
   }
   
   public boolean isTint(String paramString)
   {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
+    JSONObject localJSONObject = this.b;
+    if (this.e.get(paramString) != null) {
       return false;
     }
     if (localJSONObject == null) {
@@ -224,16 +278,17 @@ public class TintManager
   public void loadConfig(Resources paramResources, String paramString)
   {
     String str3 = "";
+    SimpleTintManager.instance().clear();
     long l = System.currentTimeMillis();
     clear();
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.g = paramString;
     for (;;)
     {
       Object localObject;
       try
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label347;
+        if (!TextUtils.isEmpty(this.f)) {
+          break label353;
         }
         String str1 = ThemeUpdateCallback.sInstance.getSavePath(MobileQQ.getContext(), "theme_mapping_config_android");
         paramResources = str1;
@@ -248,11 +303,11 @@ public class TintManager
               QLog.i("TintManager", 2, "download theme_mapping_config_android");
             }
             paramResources = str1;
-            TintConfigCallback.sInstance.downloadAtMostTwice(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackQuickUpdateListener);
+            TintConfigCallback.sInstance.downloadAtMostTwice(this.h);
             return;
           }
           paramResources = str1;
-          this.jdField_a_of_type_JavaLangString = FileUtils.readFileContent(new File(str1));
+          this.f = FileUtils.readFileContent(new File(str1));
           localObject = str3;
           paramResources = str1;
           if (!TextUtils.isEmpty(paramString))
@@ -276,7 +331,7 @@ public class TintManager
             }
           }
           paramResources = str1;
-          a(this.jdField_a_of_type_JavaLangString, (String)localObject);
+          a(this.f, (String)localObject);
           paramResources = str1;
           localObject = new StringBuilder();
           paramResources = str1;
@@ -300,94 +355,44 @@ public class TintManager
       ((StringBuilder)localObject).append(paramResources);
       QLog.e("TintManager", 1, ((StringBuilder)localObject).toString(), localException2);
       return;
-      label347:
+      label353:
       String str2 = "";
     }
   }
   
   public void tint(Paint paramPaint, String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
-    if ((localObject1 != null) && (paramPaint != null))
+    JSONObject localJSONObject = this.b;
+    if ((localJSONObject != null) && (paramPaint != null))
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
       if (QLog.isColorLevel())
       {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(" fileName:");
-        ((StringBuilder)localObject2).append(paramString);
-        QLog.i("TintManager", 2, ((StringBuilder)localObject2).toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" fileName:");
+        localStringBuilder.append(paramString);
+        QLog.i("TintManager", 2, localStringBuilder.toString());
       }
-      Object localObject2 = this.jdField_a_of_type_OrgJsonJSONArray;
-      int j = 0;
-      int i;
-      if (localObject2 != null)
+      if (this.d != null)
       {
-        i = 0;
-        while (i < this.jdField_a_of_type_OrgJsonJSONArray.length())
+        int i = 0;
+        while (i < this.d.length())
         {
-          if (paramString.equals(this.jdField_a_of_type_OrgJsonJSONArray.optString(i))) {
+          if (paramString.equals(this.d.optString(i))) {
             return;
           }
           i += 1;
         }
       }
-      localObject2 = ((JSONObject)localObject1).optString(paramString);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        if (paramString.contains(".")) {
-          localObject1 = paramString.split("\\.")[0];
-        } else {
-          localObject1 = paramString;
-        }
-        BaseApplication localBaseApplication = BaseApplication.getContext();
-        if (localBaseApplication != null)
-        {
-          i = BaseApplication.getContext().getResources().getIdentifier((String)localObject1, "drawable", localBaseApplication.getPackageName());
-          if ((i > 0) && (SkinEngine.getInstances().checkResExist(i)))
-          {
-            if (QLog.isColorLevel())
-            {
-              paramPaint = new StringBuilder();
-              paramPaint.append("checkResExist fileName:");
-              paramPaint.append(paramString);
-              QLog.i("TintManager", 2, paramPaint.toString());
-            }
-            return;
-          }
-        }
-        if (((String)localObject2).contains(","))
-        {
-          paramString = ((String)localObject2).split("\\,");
-          int k = paramString.length;
-          i = j;
-          while (i < k)
-          {
-            if (a(paramPaint, paramString[i])) {
-              return;
-            }
-            i += 1;
-          }
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("plateName:");
-          ((StringBuilder)localObject1).append((String)localObject2);
-          ((StringBuilder)localObject1).append(" fileName:");
-          ((StringBuilder)localObject1).append(paramString);
-          QLog.i("TintManager", 2, ((StringBuilder)localObject1).toString());
-        }
-        a(paramPaint, (String)localObject2);
-      }
+      a(paramPaint, paramString, localJSONObject);
     }
   }
   
   public void tintColorState(int[] paramArrayOfInt, int[][] paramArrayOfInt1, String paramString)
   {
-    paramArrayOfInt1 = this.jdField_a_of_type_OrgJsonJSONObject;
+    paramArrayOfInt1 = this.b;
     if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt1 != null) && (!TextUtils.isEmpty(paramString)))
     {
       paramArrayOfInt1 = paramArrayOfInt1.optString(paramString);
@@ -410,7 +415,7 @@ public class TintManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.TintManager
  * JD-Core Version:    0.7.0.1
  */

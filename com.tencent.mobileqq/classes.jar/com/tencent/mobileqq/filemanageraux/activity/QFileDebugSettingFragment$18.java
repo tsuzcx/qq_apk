@@ -17,21 +17,21 @@ class QFileDebugSettingFragment$18
     {
     default: 
       break;
-    case 2131377943: 
-      FileIPv6StrateyController.a().debugSetLocalConfigIPv6Strategy(2);
+    case 2131446429: 
+      FileIPv6StrateyController.b().debugSetLocalConfigIPv6Strategy(2);
       break;
-    case 2131377942: 
-      FileIPv6StrateyController.a().debugSetLocalConfigIPv6Strategy(1);
+    case 2131446428: 
+      FileIPv6StrateyController.b().debugSetLocalConfigIPv6Strategy(1);
       break;
-    case 2131377941: 
-      FileIPv6StrateyController.a().debugSetLocalConfigIPv6Strategy(0);
+    case 2131446427: 
+      FileIPv6StrateyController.b().debugSetLocalConfigIPv6Strategy(0);
     }
     EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment.18
  * JD-Core Version:    0.7.0.1
  */

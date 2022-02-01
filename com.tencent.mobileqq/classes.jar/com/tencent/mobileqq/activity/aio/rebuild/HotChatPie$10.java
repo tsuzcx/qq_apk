@@ -10,12 +10,12 @@ class HotChatPie$10
   
   public void run()
   {
-    ConfigServlet.a(this.this$0.a, this.this$0.a.getAccount(), -1);
+    ConfigServlet.a(this.this$0.d, this.this$0.d.getAccount(), -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.10
  * JD-Core Version:    0.7.0.1
  */

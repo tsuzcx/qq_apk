@@ -1,76 +1,64 @@
 package com.tencent.mobileqq.kandian.biz.comment;
 
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.kandian.biz.comment.emotion.util.RIJEmotionUtil;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicData;
+import com.tencent.mobileqq.kandian.biz.biu.BiuEditText;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 
 class ReadInJoyCommentComponentFragment$10
-  implements TextWatcher
+  implements Runnable
 {
-  ReadInJoyCommentComponentFragment$10(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  ReadInJoyCommentComponentFragment$10(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, ZhituPicData paramZhituPicData) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    int i = RIJEmotionUtil.a(paramEditable);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      if (this.a.c - i < -99) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("-99");
-      } else {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.c - i));
-      }
-    }
-    if (i - this.a.c > 0)
+    Object localObject = ReadInJoyCommentComponentFragment.i(this.this$0);
+    if ((localObject != null) && (ReadInJoyCommentComponentFragment.j(this.this$0)))
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4222"));
-      this.a.d = true;
+      ((ZhituManager)localObject).o();
+      ReadInJoyCommentComponentFragment.c(this.this$0, false);
     }
-    else
+    localObject = null;
+    try
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165600));
-      this.a.d = false;
-    }
-    ReadInJoyCommentComponentFragment.a(this.a);
-    ZhituManager localZhituManager = ReadInJoyCommentComponentFragment.a(this.a);
-    if (localZhituManager != null)
-    {
-      i = paramEditable.toString().trim().length();
-      if (i <= 0) {
-        this.a.f.setVisibility(8);
-      } else {
-        this.a.f.setVisibility(0);
-      }
-      if ((i > 0) && (paramEditable.length() <= 24) && (localZhituManager.a(paramEditable)))
+      try
       {
-        if (ReadInJoyCommentComponentFragment.a(this.a))
-        {
-          localZhituManager.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEditable, null, 7220, false);
-          this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
+        URL localURL = new File(this.a.b).toURI().toURL();
+        if (localURL != null) {
+          localObject = URLDrawable.getDrawable(localURL, true);
         }
-        this.a.f.setImageResource(2130842929);
-        return;
       }
-      localZhituManager.c();
-      ReadInJoyCommentComponentFragment.b(this.a, false);
-      this.a.f.setSelected(false);
-      this.a.f.setImageResource(2130843340);
+      finally {}
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      label74:
+      break label74;
+    }
+    if (localDrawable != null)
+    {
+      this.this$0.c.setImageDrawable(localDrawable);
+      this.this$0.a.setVisibility(0);
+    }
+    this.this$0.f.setText("");
+    ReadInJoyCommentComponentFragment.g(this.this$0);
+    if (this.this$0.D)
+    {
+      ReadInJoyCommentComponentFragment.b(this.this$0, true);
+      this.this$0.n.setImageResource(2130843903);
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentComponentFragment.10
  * JD-Core Version:    0.7.0.1
  */

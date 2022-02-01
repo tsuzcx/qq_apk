@@ -60,7 +60,7 @@ public class RIJEmotionTextWatcher
     {
       paramInt2 = paramCharSequence.start();
       int i = paramCharSequence.end();
-      RIJBaseEmotionInfo localRIJBaseEmotionInfo = RIJEmotionCacheManager.a(paramCharSequence.group());
+      RIJBaseEmotionInfo localRIJBaseEmotionInfo = RIJEmotionCacheManager.b(paramCharSequence.group());
       if (localRIJBaseEmotionInfo != null) {
         paramCollection.add(new RIJEmotionTextWatcher.EmotionBin(paramInt2 + paramInt1, i + paramInt1, localRIJBaseEmotionInfo));
       }
@@ -105,8 +105,8 @@ public class RIJEmotionTextWatcher
       while (((Iterator)localObject2).hasNext())
       {
         RIJEmotionTextWatcher.EmotionBin localEmotionBin = (RIJEmotionTextWatcher.EmotionBin)((Iterator)localObject2).next();
-        paramEditable.setSpan(new RIJEmotionTextSpan(localEmotionBin.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataRIJBaseEmotionInfo), localEmotionBin.jdField_a_of_type_Int, localEmotionBin.b, 33);
-        ((StringBuilder)localObject1).append(localEmotionBin.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataRIJBaseEmotionInfo.a);
+        paramEditable.setSpan(new RIJEmotionTextSpan(localEmotionBin.c), localEmotionBin.a, localEmotionBin.b, 33);
+        ((StringBuilder)localObject1).append(localEmotionBin.c.a);
         ((StringBuilder)localObject1).append(',');
       }
       RIJEmotionUtil.a(2, ((StringBuilder)localObject1).toString());
@@ -122,7 +122,7 @@ public class RIJEmotionTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.util.RIJEmotionTextWatcher
  * JD-Core Version:    0.7.0.1
  */

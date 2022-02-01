@@ -17,7 +17,7 @@ class HomeFeedAllInfoPullSegment$1
   
   public void a(@NonNull BatchGetFriendStoryFeedInfoRequest paramBatchGetFriendStoryFeedInfoRequest, @Nullable BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
       return;
@@ -29,11 +29,11 @@ class HomeFeedAllInfoPullSegment$1
     if (paramErrorMessage.isFail()) {
       SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    synchronized (this.c)
     {
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, localGetFriendStoryFeedInfoResp);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFriendStoryFeedInfoRequest);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
+      HomeFeedAllInfoPullSegment.a(this.c, localGetFriendStoryFeedInfoResp);
+      HomeFeedAllInfoPullSegment.a(this.c).remove(paramBatchGetFriendStoryFeedInfoRequest);
+      HomeFeedAllInfoPullSegment.a(this.c, this.b);
       return;
     }
   }

@@ -21,7 +21,7 @@ public final class QIDStatusFormSimpleItem
   public QIDStatusFormSimpleItem(@Nullable Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = a();
+    paramContext = getLeftTextView();
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "leftTextView");
     paramContext.getLayoutParams().width = -1;
   }
@@ -29,14 +29,14 @@ public final class QIDStatusFormSimpleItem
   protected void a()
   {
     super.a();
-    MultiImageTextView localMultiImageTextView = this.a;
+    MultiImageTextView localMultiImageTextView = this.D;
     Intrinsics.checkExpressionValueIsNotNull(localMultiImageTextView, "mRightTextView");
     localMultiImageTextView.setCompoundDrawablePadding(AIOUtils.b(12.0F, getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QIDStatusFormSimpleItem
  * JD-Core Version:    0.7.0.1
  */

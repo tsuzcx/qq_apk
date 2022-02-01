@@ -12,7 +12,7 @@ class PoiMapActivity$7
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

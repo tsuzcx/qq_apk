@@ -106,7 +106,7 @@ public class IndividualityRemoteCommandHandler
       return true;
     case 7: 
       paramBundle = (ConfigHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
-      paramBundle.a(null, new GetResourceReqInfo[] { paramBundle.d() });
+      paramBundle.a(null, new GetResourceReqInfo[] { paramBundle.j() });
       return true;
     case 6: 
       paramBundle = (UniPayHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.UNI_PAY_HANDLER);
@@ -121,7 +121,7 @@ public class IndividualityRemoteCommandHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler
  * JD-Core Version:    0.7.0.1
  */

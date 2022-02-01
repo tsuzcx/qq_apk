@@ -10,12 +10,12 @@ class MsgBackupPCAuthFragment$3
   public void a()
   {
     MsgBackupPCAuthFragment localMsgBackupPCAuthFragment = this.a;
-    localMsgBackupPCAuthFragment.a(localMsgBackupPCAuthFragment.g, this.a.getString(2131690614));
+    localMsgBackupPCAuthFragment.a(localMsgBackupPCAuthFragment.y, this.a.getString(2131887525));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment.3
  * JD-Core Version:    0.7.0.1
  */

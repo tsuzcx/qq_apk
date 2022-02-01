@@ -11,10 +11,10 @@ class QavDoubleVideoSharpnessMangaer$5
   
   public void onClick(View paramView)
   {
-    if (!QavDoubleVideoSharpnessMangaer.a(this.a))
+    if (!QavDoubleVideoSharpnessMangaer.h(this.a))
     {
       this.a.c();
-      QavDoubleVideoSharpnessMangaer.a(this.a).a.f(0L);
+      QavDoubleVideoSharpnessMangaer.d(this.a).L.g(0L);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

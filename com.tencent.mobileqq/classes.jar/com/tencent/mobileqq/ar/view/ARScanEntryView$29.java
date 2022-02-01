@@ -12,7 +12,7 @@ class ARScanEntryView$29
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Activity localActivity = (Activity)this.a.a;
+    Activity localActivity = (Activity)this.a.E;
     Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
     localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
     localActivity.startActivity(localIntent);
@@ -21,7 +21,7 @@ class ARScanEntryView$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.29
  * JD-Core Version:    0.7.0.1
  */

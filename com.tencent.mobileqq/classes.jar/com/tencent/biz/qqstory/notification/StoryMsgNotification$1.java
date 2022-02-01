@@ -24,8 +24,8 @@ class StoryMsgNotification$1
       localStringBuilder.append(QLog.getStackTraceString(paramThrowable));
       QLog.d("StoryMsgNotification", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryMsgNotification.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
-    StoryMsgNotification.a(this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryMsgNotification).remove(paramURLDrawable);
+    this.e.a(this.b, this.c, this.d, this.a);
+    StoryMsgNotification.a(this.e).remove(paramURLDrawable);
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
@@ -36,7 +36,7 @@ class StoryMsgNotification$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("thumbDrawable onLoadSuccessed start, mURLDrawableList.size():");
-      ((StringBuilder)localObject).append(StoryMsgNotification.a(this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryMsgNotification).size());
+      ((StringBuilder)localObject).append(StoryMsgNotification.a(this.e).size());
       QLog.d("StoryMsgNotification", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = com.tencent.mobileqq.utils.ImageUtil.a(paramURLDrawable.getCurrDrawable(), 200, 200);
@@ -53,22 +53,22 @@ class StoryMsgNotification$1
       localStringBuilder.append(localBitmap.getWidth());
       QLog.d("StoryMsgNotification", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(localBitmap);
-    this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryMsgNotification.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    this.a.setLargeIcon(localBitmap);
+    this.e.a(this.b, this.c, this.d, this.a);
     ((Bitmap)localObject).recycle();
-    StoryMsgNotification.a(this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryMsgNotification).remove(paramURLDrawable);
+    StoryMsgNotification.a(this.e).remove(paramURLDrawable);
     if (QLog.isColorLevel())
     {
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("thumbDrawable onLoadSuccessed, mURLDrawableList.size():");
-      paramURLDrawable.append(StoryMsgNotification.a(this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryMsgNotification).size());
+      paramURLDrawable.append(StoryMsgNotification.a(this.e).size());
       QLog.d("StoryMsgNotification", 2, paramURLDrawable.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryMsgNotification.1
  * JD-Core Version:    0.7.0.1
  */

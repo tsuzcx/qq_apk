@@ -19,7 +19,7 @@ final class WeishiShareUtil$1
     {
       try
       {
-        Object localObject1 = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+        Object localObject1 = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.a), "GET", null, null);
         if (localObject1 != null)
         {
           Object localObject2 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length);
@@ -46,7 +46,7 @@ final class WeishiShareUtil$1
               String str2 = this.c;
               String str3 = this.d;
               String str4 = this.e;
-              if (this.jdField_a_of_type_Int != 0) {
+              if (this.f != 0) {
                 break label202;
               }
               i = 0;
@@ -68,7 +68,7 @@ final class WeishiShareUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiShareUtil.1
  * JD-Core Version:    0.7.0.1
  */

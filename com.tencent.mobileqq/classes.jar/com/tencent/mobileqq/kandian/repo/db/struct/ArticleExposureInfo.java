@@ -28,7 +28,7 @@ public class ArticleExposureInfo
     localArticleExposureInfo.algorithmID = paramAbsBaseArticleInfo.mAlgorithmID;
     localArticleExposureInfo.articleID = paramAbsBaseArticleInfo.mArticleID;
     localArticleExposureInfo.exposureTime = NetConnInfoCenter.getServerTimeMillis();
-    localArticleExposureInfo.feedsType = RIJFeedsType.a(paramAbsBaseArticleInfo);
+    localArticleExposureInfo.feedsType = RIJFeedsType.g(paramAbsBaseArticleInfo);
     localArticleExposureInfo.channelID = paramAbsBaseArticleInfo.mChannelID;
     localArticleExposureInfo.title = paramAbsBaseArticleInfo.mTitle;
     return localArticleExposureInfo;
@@ -67,7 +67,7 @@ public class ArticleExposureInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.ArticleExposureInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ class GameRoomPresenterImp$3
     if (QLog.isColorLevel()) {
       QLog.i("GameRoomPresenterImp", 2, "mRefreshGameListRunnable run");
     }
-    GameEngine.a().e();
-    this.this$0.a.sendEmptyMessage(4);
-    long l = GameEngine.a().a();
+    GameEngine.a().t();
+    this.this$0.j.sendEmptyMessage(4);
+    long l = GameEngine.a().u();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -27,8 +27,8 @@ class GameRoomPresenterImp$3
     }
     if (l == 0L)
     {
-      GameRoomPresenterImp.a(this.this$0);
-      if (GameRoomPresenterImp.b(this.this$0) < 5) {}
+      GameRoomPresenterImp.b(this.this$0);
+      if (GameRoomPresenterImp.c(this.this$0) < 5) {}
     }
     else
     {

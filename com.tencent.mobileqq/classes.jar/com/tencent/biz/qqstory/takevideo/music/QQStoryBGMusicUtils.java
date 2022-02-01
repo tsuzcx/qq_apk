@@ -13,14 +13,14 @@ public class QQStoryBGMusicUtils
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = new File(QQStoryConstant.g);
+      Object localObject = new File(QQStoryConstant.h);
       if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) {
         ((File)localObject).mkdirs();
       }
-      localObject = new StringBuilder(QQStoryConstant.g);
-      ((StringBuilder)localObject).append(MD5.a(paramString));
+      localObject = new StringBuilder(QQStoryConstant.h);
+      ((StringBuilder)localObject).append(MD5.b(paramString));
       ((StringBuilder)localObject).append(".");
-      ((StringBuilder)localObject).append(FileUtils.c(paramString));
+      ((StringBuilder)localObject).append(FileUtils.m(paramString));
       paramString = ((StringBuilder)localObject).toString();
       if (QLog.isColorLevel())
       {

@@ -48,8 +48,8 @@ class UiApiPlugin$34
   
   public void onOpenMiniAIOCallback()
   {
-    WebViewProvider localWebViewProvider = this.a.mRuntime.a();
-    Object localObject2 = ((SwiftMiniAIOHandler)localWebViewProvider.getComponentProvider().a(256)).a();
+    WebViewProvider localWebViewProvider = this.a.mRuntime.f();
+    Object localObject2 = ((SwiftMiniAIOHandler)localWebViewProvider.getComponentProvider().a(256)).c();
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = localWebViewProvider.getWebView().getTitle();
@@ -61,11 +61,11 @@ class UiApiPlugin$34
     }
     else
     {
-      localObject2 = HardCodeUtil.a(2131715627);
+      localObject2 = HardCodeUtil.a(2131913099);
     }
     localObject1 = new Bundle();
     ((Bundle)localObject1).putString("banner_wording", (String)localObject2);
-    localObject2 = this.a.a.getParam();
+    localObject2 = this.a.U.getParam();
     ((MiniMsgUserParam)localObject2).backConversationIntent = WebViewJumpUtils.a((Bundle)localObject1, localWebViewProvider);
     WebViewJumpUtils.a(((MiniMsgUserParam)localObject2).backConversationIntent);
     try
@@ -82,7 +82,7 @@ class UiApiPlugin$34
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.34
  * JD-Core Version:    0.7.0.1
  */

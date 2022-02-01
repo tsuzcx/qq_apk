@@ -15,21 +15,9 @@ import mqq.app.AppRuntime;
 public class DefaultTraceStorage
   implements ITraceStorage
 {
-  public QQAppInterface a()
-  {
-    if (ProcessUtil.a())
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        return (QQAppInterface)localAppRuntime;
-      }
-    }
-    return null;
-  }
-  
   public List<TraceData> a()
   {
-    QQAppInterface localQQAppInterface = a();
+    QQAppInterface localQQAppInterface = b();
     if (localQQAppInterface == null) {
       return null;
     }
@@ -45,7 +33,7 @@ public class DefaultTraceStorage
       }
       try
       {
-        Object localObject = a();
+        Object localObject = b();
         if (localObject == null) {
           return false;
         }
@@ -76,6 +64,18 @@ public class DefaultTraceStorage
     return false;
   }
   
+  public QQAppInterface b()
+  {
+    if (ProcessUtil.a())
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+        return (QQAppInterface)localAppRuntime;
+      }
+    }
+    return null;
+  }
+  
   public boolean b(List<TraceData> paramList)
   {
     if (paramList != null)
@@ -85,7 +85,7 @@ public class DefaultTraceStorage
       }
       try
       {
-        Object localObject = a();
+        Object localObject = b();
         if (localObject == null) {
           return false;
         }
@@ -112,7 +112,7 @@ public class DefaultTraceStorage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.component.DefaultTraceStorage
  * JD-Core Version:    0.7.0.1
  */

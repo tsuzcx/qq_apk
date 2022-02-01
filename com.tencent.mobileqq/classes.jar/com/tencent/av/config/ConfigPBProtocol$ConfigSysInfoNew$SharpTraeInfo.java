@@ -2,7 +2,7 @@ package com.tencent.av.config;
 
 class ConfigPBProtocol$ConfigSysInfoNew$SharpTraeInfo
 {
-  int jdField_a_of_type_Int = 0;
+  int a = 0;
   int b = 0;
   int c = 0;
   int d = 0;

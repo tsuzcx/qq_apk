@@ -36,104 +36,24 @@ public class TroopNotificationHelper
   private static HashMap<String, TroopNotificationFlagMsg> c = new HashMap();
   private static HashMap<String, Boolean> d = new HashMap();
   
-  public static TroopNotificationFlagMsg a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramString == null)
-    {
-      QLog.e("TroopNotificationHelper", 1, "HasUnReadRepeatTroopNotification, troopUin is NULL!");
-    }
-    else if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("HasUnReadRepeatTroopNotification. troop = ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("TroopNotificationHelper", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = (TroopNotificationFlagMsg)c.get(paramString);
-    if (localObject != null)
-    {
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder();
-        paramString.append("HasUnReadRepeatTroopNotification. found in mTroopNotificationRepeatAIOFlag. type = ");
-        paramString.append(((TroopNotificationFlagMsg)localObject).jdField_a_of_type_Int);
-        paramString.append(", feedsId = ");
-        if (TextUtils.isEmpty(((TroopNotificationFlagMsg)localObject).jdField_a_of_type_JavaLangString)) {
-          paramQQAppInterface = "";
-        } else {
-          paramQQAppInterface = ((TroopNotificationFlagMsg)localObject).jdField_a_of_type_JavaLangString;
-        }
-        paramString.append(paramQQAppInterface);
-        QLog.d("TroopNotificationHelper", 2, paramString.toString());
-      }
-      return localObject;
-    }
-    localObject = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopNotificationHelper", 2, "HasUnReadRepeatTroopNotification. nothing in DB. return null");
-      }
-      return null;
-    }
-    if (((TroopInfo)localObject).feeds_id == null)
-    {
-      if (b.containsKey(paramString))
-      {
-        localObject = (Boolean)b.get(paramString);
-        if ((localObject != null) && (((Boolean)localObject).booleanValue() == true))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopNotificationHelper", 2, "HasUnReadRepeatTroopNotification = false, but mTroopNotificationAIOFlag is set. Checking old version DB.");
-          }
-          localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-          List localList = ((EntityManager)localObject).query(TroopNotificationCache.class, true, "troopUin=? and read=?", new String[] { paramString, "0" }, null, null, null, null);
-          ((EntityManager)localObject).close();
-          if ((localList != null) && (localList.size() > 0) && (localList.get(0) != null) && (((TroopNotificationCache)localList.get(0)).feedsId != null))
-          {
-            a(paramQQAppInterface, ((TroopNotificationCache)localList.get(0)).feedsId, paramString, 0);
-            paramQQAppInterface = (TroopNotificationFlagMsg)c.get(paramString);
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopNotificationHelper", 2, "HasUnReadRepeatTroopNotification(Old Flag). type = 0");
-            }
-            return paramQQAppInterface;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopNotificationHelper", 2, "HasUnReadRepeatTroopNotification. feedisId is empty. return null");
-      }
-      return null;
-    }
-    paramQQAppInterface = new TroopNotificationFlagMsg(((TroopInfo)localObject).feeds_id, ((TroopInfo)localObject).troopRepeatType);
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("HasUnReadRepeatTroopNotification. type = ");
-      paramString.append(paramQQAppInterface.jdField_a_of_type_Int);
-      QLog.d("TroopNotificationHelper", 2, paramString.toString());
-    }
-    return paramQQAppInterface;
-  }
-  
   /* Error */
   public static void a(QQAppInterface paramQQAppInterface)
   {
     // Byte code:
-    //   0: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +11 -> 14
-    //   6: ldc 31
+    //   6: ldc 39
     //   8: iconst_2
-    //   9: ldc 178
-    //   11: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   9: ldc 41
+    //   11: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   14: getstatic 22	com/tencent/mobileqq/troop/utils/TroopNotificationHelper:b	Ljava/util/HashMap;
-    //   17: invokevirtual 181	java/util/HashMap:clear	()V
+    //   17: invokevirtual 47	java/util/HashMap:clear	()V
     //   20: getstatic 20	com/tencent/mobileqq/troop/utils/TroopNotificationHelper:a	Ljava/util/HashMap;
-    //   23: invokevirtual 181	java/util/HashMap:clear	()V
+    //   23: invokevirtual 47	java/util/HashMap:clear	()V
     //   26: getstatic 26	com/tencent/mobileqq/troop/utils/TroopNotificationHelper:d	Ljava/util/HashMap;
-    //   29: invokevirtual 181	java/util/HashMap:clear	()V
+    //   29: invokevirtual 47	java/util/HashMap:clear	()V
     //   32: getstatic 24	com/tencent/mobileqq/troop/utils/TroopNotificationHelper:c	Ljava/util/HashMap;
-    //   35: invokevirtual 181	java/util/HashMap:clear	()V
+    //   35: invokevirtual 47	java/util/HashMap:clear	()V
     //   38: new 15	java/util/HashMap
     //   41: dup
     //   42: invokespecial 18	java/util/HashMap:<init>	()V
@@ -147,11 +67,11 @@ public class TroopNotificationHelper
     //   60: invokespecial 18	java/util/HashMap:<init>	()V
     //   63: astore 8
     //   65: aload_0
-    //   66: invokevirtual 123	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   69: invokevirtual 129	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   66: invokevirtual 53	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   69: invokevirtual 59	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   72: astore 9
-    //   74: ldc 131
-    //   76: invokevirtual 186	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   74: ldc 61
+    //   76: invokevirtual 67	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   79: astore 6
     //   81: aload 5
     //   83: astore_0
@@ -159,45 +79,45 @@ public class TroopNotificationHelper
     //   86: iconst_1
     //   87: aload 6
     //   89: iconst_3
-    //   90: anewarray 135	java/lang/String
+    //   90: anewarray 69	java/lang/String
     //   93: dup
     //   94: iconst_0
-    //   95: ldc 188
+    //   95: ldc 71
     //   97: aastore
     //   98: dup
     //   99: iconst_1
-    //   100: ldc 190
+    //   100: ldc 73
     //   102: aastore
     //   103: dup
     //   104: iconst_2
-    //   105: ldc 192
+    //   105: ldc 75
     //   107: aastore
-    //   108: ldc 194
+    //   108: ldc 77
     //   110: iconst_1
-    //   111: anewarray 135	java/lang/String
+    //   111: anewarray 69	java/lang/String
     //   114: dup
     //   115: iconst_0
     //   116: iconst_0
-    //   117: invokestatic 198	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   117: invokestatic 81	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   120: aastore
-    //   121: ldc 188
+    //   121: ldc 71
     //   123: aconst_null
     //   124: aconst_null
     //   125: aconst_null
-    //   126: invokevirtual 201	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   126: invokevirtual 87	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   129: astore 10
     //   131: aload 10
     //   133: ifnull +427 -> 560
     //   136: aload_0
     //   137: astore 5
     //   139: aload 10
-    //   141: invokeinterface 206 1 0
+    //   141: invokeinterface 92 1 0
     //   146: ifeq +361 -> 507
     //   149: aload_0
     //   150: astore 5
     //   152: aload 10
-    //   154: ldc 188
-    //   156: invokeinterface 210 2 0
+    //   154: ldc 71
+    //   156: invokeinterface 96 2 0
     //   161: istore_1
     //   162: iload_1
     //   163: iconst_m1
@@ -206,13 +126,13 @@ public class TroopNotificationHelper
     //   168: astore 5
     //   170: aload 10
     //   172: iload_1
-    //   173: invokeinterface 214 2 0
+    //   173: invokeinterface 100 2 0
     //   178: lstore_2
     //   179: aload_0
     //   180: astore 5
     //   182: aload 10
-    //   184: ldc 192
-    //   186: invokeinterface 210 2 0
+    //   184: ldc 75
+    //   186: invokeinterface 96 2 0
     //   191: istore_1
     //   192: iload_1
     //   193: iconst_m1
@@ -221,93 +141,93 @@ public class TroopNotificationHelper
     //   198: astore 5
     //   200: aload 10
     //   202: iload_1
-    //   203: invokeinterface 218 2 0
+    //   203: invokeinterface 104 2 0
     //   208: istore_1
     //   209: goto +3 -> 212
     //   212: aload_0
     //   213: astore 5
-    //   215: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   215: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   218: ifeq +50 -> 268
     //   221: aload_0
     //   222: astore 5
-    //   224: new 45	java/lang/StringBuilder
+    //   224: new 106	java/lang/StringBuilder
     //   227: dup
-    //   228: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   228: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   231: astore 6
     //   233: aload_0
     //   234: astore 5
     //   236: aload 6
-    //   238: ldc 220
-    //   240: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: ldc 109
+    //   240: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   243: pop
     //   244: aload_0
     //   245: astore 5
     //   247: aload 6
     //   249: lload_2
-    //   250: invokevirtual 223	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   250: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   253: pop
     //   254: aload_0
     //   255: astore 5
-    //   257: ldc 31
+    //   257: ldc 39
     //   259: iconst_2
     //   260: aload 6
-    //   262: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   265: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   262: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   265: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   268: aload_0
     //   269: astore 5
     //   271: aload 7
     //   273: lload_2
-    //   274: invokestatic 226	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   274: invokestatic 122	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   277: iconst_1
-    //   278: invokestatic 229	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   281: invokevirtual 233	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   278: invokestatic 127	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   281: invokevirtual 131	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   284: pop
     //   285: iload_1
     //   286: bipush 27
     //   288: if_icmpne +76 -> 364
     //   291: aload_0
     //   292: astore 5
-    //   294: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   294: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   297: ifeq +50 -> 347
     //   300: aload_0
     //   301: astore 5
-    //   303: new 45	java/lang/StringBuilder
+    //   303: new 106	java/lang/StringBuilder
     //   306: dup
-    //   307: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   307: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   310: astore 6
     //   312: aload_0
     //   313: astore 5
     //   315: aload 6
-    //   317: ldc 235
-    //   319: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   317: ldc 133
+    //   319: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: pop
     //   323: aload_0
     //   324: astore 5
     //   326: aload 6
     //   328: lload_2
-    //   329: invokevirtual 223	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   329: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   332: pop
     //   333: aload_0
     //   334: astore 5
-    //   336: ldc 31
+    //   336: ldc 39
     //   338: iconst_2
     //   339: aload 6
-    //   341: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   344: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   341: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   344: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   347: aload_0
     //   348: astore 5
     //   350: aload 8
     //   352: lload_2
-    //   353: invokestatic 226	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   353: invokestatic 122	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   356: iconst_1
-    //   357: invokestatic 229	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   360: invokevirtual 233	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   357: invokestatic 127	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   360: invokevirtual 131	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   363: pop
     //   364: aload_0
     //   365: astore 5
     //   367: aload 10
-    //   369: ldc 190
-    //   371: invokeinterface 210 2 0
+    //   369: ldc 73
+    //   371: invokeinterface 96 2 0
     //   376: istore_1
     //   377: iload_1
     //   378: iconst_m1
@@ -316,50 +236,50 @@ public class TroopNotificationHelper
     //   383: astore 5
     //   385: aload 10
     //   387: iload_1
-    //   388: invokeinterface 218 2 0
+    //   388: invokeinterface 104 2 0
     //   393: bipush 34
     //   395: if_icmpne +191 -> 586
     //   398: aload_0
     //   399: astore 5
-    //   401: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   401: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   404: ifeq +50 -> 454
     //   407: aload_0
     //   408: astore 5
-    //   410: new 45	java/lang/StringBuilder
+    //   410: new 106	java/lang/StringBuilder
     //   413: dup
-    //   414: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   414: invokespecial 107	java/lang/StringBuilder:<init>	()V
     //   417: astore 6
     //   419: aload_0
     //   420: astore 5
     //   422: aload 6
-    //   424: ldc 237
-    //   426: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   424: ldc 135
+    //   426: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   429: pop
     //   430: aload_0
     //   431: astore 5
     //   433: aload 6
     //   435: lload_2
-    //   436: invokevirtual 223	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   436: invokevirtual 116	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   439: pop
     //   440: aload_0
     //   441: astore 5
-    //   443: ldc 31
+    //   443: ldc 39
     //   445: iconst_2
     //   446: aload 6
-    //   448: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   451: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   448: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   451: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   454: aload_0
     //   455: lload_2
-    //   456: invokestatic 226	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   456: invokestatic 122	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   459: iconst_1
-    //   460: invokestatic 229	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   463: invokevirtual 233	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   460: invokestatic 127	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   463: invokevirtual 131	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   466: pop
     //   467: goto +3 -> 470
     //   470: aload_0
     //   471: astore 5
     //   473: aload 10
-    //   475: invokeinterface 240 1 0
+    //   475: invokeinterface 138 1 0
     //   480: istore 4
     //   482: iload 4
     //   484: ifne +9 -> 493
@@ -374,30 +294,30 @@ public class TroopNotificationHelper
     //   502: astore 5
     //   504: goto +19 -> 523
     //   507: aload 10
-    //   509: invokeinterface 241 1 0
+    //   509: invokeinterface 141 1 0
     //   514: goto +46 -> 560
     //   517: astore_0
     //   518: goto +33 -> 551
     //   521: astore 6
     //   523: aload 6
-    //   525: invokevirtual 244	java/lang/Exception:printStackTrace	()V
+    //   525: invokevirtual 144	java/lang/Exception:printStackTrace	()V
     //   528: aload 5
     //   530: astore_0
-    //   531: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   531: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   534: ifeq -27 -> 507
-    //   537: ldc 31
+    //   537: ldc 39
     //   539: iconst_2
-    //   540: ldc 246
-    //   542: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   540: ldc 146
+    //   542: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   545: aload 5
     //   547: astore_0
     //   548: goto -41 -> 507
     //   551: aload 10
-    //   553: invokeinterface 241 1 0
+    //   553: invokeinterface 141 1 0
     //   558: aload_0
     //   559: athrow
     //   560: aload 9
-    //   562: invokevirtual 146	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   562: invokevirtual 147	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   565: aload 7
     //   567: putstatic 22	com/tencent/mobileqq/troop/utils/TroopNotificationHelper:b	Ljava/util/HashMap;
     //   570: aload 8
@@ -529,7 +449,7 @@ public class TroopNotificationHelper
       QLog.d("TroopNotificationHelper", 2, ((StringBuilder)localObject).toString());
     }
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    Object localObject = paramQQAppInterface.b(paramString2);
+    Object localObject = paramQQAppInterface.f(paramString2);
     if (localObject == null)
     {
       QLog.e("TroopNotificationHelper", 2, "setUnReadRepeatTroopNotification, troopInfo not found!");
@@ -613,12 +533,12 @@ public class TroopNotificationHelper
     if (bool2)
     {
       paramList = AIOAssist.a();
-      if ((paramList != null) && (paramList.d() < 5) && (paramList.d().equals(paramString1)))
+      if ((paramList != null) && (paramList.bb() < 5) && (paramList.ag().equals(paramString1)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("TroopNotificationHelper", 2, "AIO is opened. Do not popout troop notification.");
         }
-        d(paramQQAppInterface, paramString1);
+        e(paramQQAppInterface, paramString1);
         return;
       }
     }
@@ -628,18 +548,18 @@ public class TroopNotificationHelper
     if ((paramList != null) && (bool2))
     {
       paramString2 = paramQQAppInterface.getProxyManager();
-      paramString1 = paramString2.a().a(paramString1, 1);
+      paramString1 = paramString2.g().b(paramString1, 1);
       if (paramQQAppInterface.getTroopMask(paramString1.uin) == 3) {
         return;
       }
-      if ((paramInt2 != 1) && ((paramString1.msg instanceof TroopNotificationMsg)) && (((TroopNotificationMsg)paramString1.msg).c == 1)) {
+      if ((paramInt2 != 1) && ((paramString1.msg instanceof TroopNotificationMsg)) && (((TroopNotificationMsg)paramString1.msg).i == 1)) {
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("TroopNotificationHelper", 2, "update recent user list with TroopNotification orange mark.");
       }
       paramQQAppInterface = RecentDataListManager.a(paramString1.uin, paramString1.getType());
-      RecentDataListManager.a().a(paramQQAppInterface);
+      RecentDataListManager.a().b(paramQQAppInterface);
       if (paramInt2 == 1) {
         i = 28;
       } else {
@@ -650,37 +570,21 @@ public class TroopNotificationHelper
       {
         localObject1 = (TroopNotificationMsg)paramString1.msg;
         if (bool1) {
-          paramQQAppInterface = BaseApplication.getContext().getString(2131719646);
+          paramQQAppInterface = BaseApplication.getContext().getString(2131917247);
         } else {
-          paramQQAppInterface = BaseApplication.getContext().getString(2131719645);
+          paramQQAppInterface = BaseApplication.getContext().getString(2131917246);
         }
-        ((TroopNotificationMsg)localObject1).jdField_a_of_type_JavaLangString = paramQQAppInterface;
+        ((TroopNotificationMsg)localObject1).c = paramQQAppInterface;
       }
       else
       {
         paramString1.msg = new TroopNotificationMsg(BaseApplication.getContext(), bool1);
       }
-      ((TroopNotificationMsg)paramString1.msg).c = paramInt2;
+      ((TroopNotificationMsg)paramString1.msg).i = paramInt2;
       paramString1.lastmsgtime = paramInt1;
-      paramString2.a().b(paramString1);
+      paramString2.g().b(paramString1);
       paramList.sendEmptyMessage(1009);
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (paramString == null)
-    {
-      QLog.e("TroopNotificationHelper", 1, "setReadNewTroopNotification, troopCode is NULL!");
-    }
-    else if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setReadNewTroopNotification, troop:");
-      localStringBuilder.append(paramString);
-      QLog.d("TroopNotificationHelper", 2, localStringBuilder.toString());
-    }
-    a.remove(paramString);
   }
   
   public static void a(String paramString, QQAppInterface paramQQAppInterface)
@@ -815,45 +719,43 @@ public class TroopNotificationHelper
     if (paramString1 != null)
     {
       paramQQAppInterface = paramQQAppInterface.getProxyManager();
-      paramString2 = paramQQAppInterface.a().a(paramString2, 1);
-      if (((paramString2.msg instanceof TroopNotificationMsg)) && (((TroopNotificationMsg)paramString2.msg).c == 1)) {
+      paramString2 = paramQQAppInterface.g().b(paramString2, 1);
+      if (((paramString2.msg instanceof TroopNotificationMsg)) && (((TroopNotificationMsg)paramString2.msg).i == 1)) {
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("TroopNotificationHelper", 2, "setUnReadRepeatTroopNotificationPre, update recent user list");
       }
       Object localObject = RecentDataListManager.a(paramString2.uin, paramString2.getType());
-      RecentDataListManager.a().a((String)localObject);
+      RecentDataListManager.a().b((String)localObject);
       paramString2.msgType = 11;
       localObject = new TroopNotificationMsg(BaseApplication.getContext(), true);
-      ((TroopNotificationMsg)localObject).c = 0;
+      ((TroopNotificationMsg)localObject).i = 0;
       paramString2.msg = localObject;
-      long l = MessageCache.a();
+      long l = MessageCache.c();
       if (l <= paramString2.lastmsgtime) {
         l = paramString2.lastmsgtime;
       }
       paramString2.lastmsgtime = l;
-      paramQQAppInterface.a().b(paramString2);
+      paramQQAppInterface.g().b(paramString2);
       paramString1.sendEmptyMessage(1009);
     }
   }
   
-  public static boolean b(String paramString)
+  public static void b(String paramString)
   {
-    boolean bool;
-    if (d.containsKey(paramString)) {
-      bool = ((Boolean)d.get(paramString)).booleanValue();
-    } else {
-      bool = false;
-    }
-    if (QLog.isColorLevel())
+    if (paramString == null)
     {
-      paramString = new StringBuilder();
-      paramString.append("hasNewGuide = ");
-      paramString.append(bool);
-      QLog.d("TroopNotificationHelper", 2, paramString.toString());
+      QLog.e("TroopNotificationHelper", 1, "setReadNewTroopNotification, troopCode is NULL!");
     }
-    return bool;
+    else if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setReadNewTroopNotification, troop:");
+      localStringBuilder.append(paramString);
+      QLog.d("TroopNotificationHelper", 2, localStringBuilder.toString());
+    }
+    a.remove(paramString);
   }
   
   public static void c(QQAppInterface paramQQAppInterface, String paramString)
@@ -870,7 +772,7 @@ public class TroopNotificationHelper
       QLog.d("TroopNotificationHelper", 2, ((StringBuilder)localObject).toString());
     }
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    Object localObject = paramQQAppInterface.b(paramString);
+    Object localObject = paramQQAppInterface.f(paramString);
     if (localObject != null)
     {
       if (QLog.isColorLevel())
@@ -889,7 +791,105 @@ public class TroopNotificationHelper
     }
   }
   
-  public static void d(QQAppInterface paramQQAppInterface, String paramString)
+  public static boolean c(String paramString)
+  {
+    boolean bool;
+    if (d.containsKey(paramString)) {
+      bool = ((Boolean)d.get(paramString)).booleanValue();
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("hasNewGuide = ");
+      paramString.append(bool);
+      QLog.d("TroopNotificationHelper", 2, paramString.toString());
+    }
+    return bool;
+  }
+  
+  public static TroopNotificationFlagMsg d(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramString == null)
+    {
+      QLog.e("TroopNotificationHelper", 1, "HasUnReadRepeatTroopNotification, troopUin is NULL!");
+    }
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("HasUnReadRepeatTroopNotification. troop = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("TroopNotificationHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (TroopNotificationFlagMsg)c.get(paramString);
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("HasUnReadRepeatTroopNotification. found in mTroopNotificationRepeatAIOFlag. type = ");
+        paramString.append(((TroopNotificationFlagMsg)localObject).b);
+        paramString.append(", feedsId = ");
+        if (TextUtils.isEmpty(((TroopNotificationFlagMsg)localObject).a)) {
+          paramQQAppInterface = "";
+        } else {
+          paramQQAppInterface = ((TroopNotificationFlagMsg)localObject).a;
+        }
+        paramString.append(paramQQAppInterface);
+        QLog.d("TroopNotificationHelper", 2, paramString.toString());
+      }
+      return localObject;
+    }
+    localObject = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramString);
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNotificationHelper", 2, "HasUnReadRepeatTroopNotification. nothing in DB. return null");
+      }
+      return null;
+    }
+    if (((TroopInfo)localObject).feeds_id == null)
+    {
+      if (b.containsKey(paramString))
+      {
+        localObject = (Boolean)b.get(paramString);
+        if ((localObject != null) && (((Boolean)localObject).booleanValue() == true))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopNotificationHelper", 2, "HasUnReadRepeatTroopNotification = false, but mTroopNotificationAIOFlag is set. Checking old version DB.");
+          }
+          localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+          List localList = ((EntityManager)localObject).query(TroopNotificationCache.class, true, "troopUin=? and read=?", new String[] { paramString, "0" }, null, null, null, null);
+          ((EntityManager)localObject).close();
+          if ((localList != null) && (localList.size() > 0) && (localList.get(0) != null) && (((TroopNotificationCache)localList.get(0)).feedsId != null))
+          {
+            a(paramQQAppInterface, ((TroopNotificationCache)localList.get(0)).feedsId, paramString, 0);
+            paramQQAppInterface = (TroopNotificationFlagMsg)c.get(paramString);
+            if (QLog.isColorLevel()) {
+              QLog.d("TroopNotificationHelper", 2, "HasUnReadRepeatTroopNotification(Old Flag). type = 0");
+            }
+            return paramQQAppInterface;
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNotificationHelper", 2, "HasUnReadRepeatTroopNotification. feedisId is empty. return null");
+      }
+      return null;
+    }
+    paramQQAppInterface = new TroopNotificationFlagMsg(((TroopInfo)localObject).feeds_id, ((TroopInfo)localObject).troopRepeatType);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("HasUnReadRepeatTroopNotification. type = ");
+      paramString.append(paramQQAppInterface.b);
+      QLog.d("TroopNotificationHelper", 2, paramString.toString());
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static void e(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (paramString == null)
     {
@@ -903,7 +903,7 @@ public class TroopNotificationHelper
       QLog.d("TroopNotificationHelper", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    List localList = ((TroopManager)localObject).a(paramString);
+    List localList = ((TroopManager)localObject).l(paramString);
     if ((localList != null) && (QLog.isColorLevel()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -911,15 +911,15 @@ public class TroopNotificationHelper
       localStringBuilder.append(localList.size());
       QLog.d("TroopNotificationHelper", 2, localStringBuilder.toString());
     }
-    ((TroopManager)localObject).c(paramString);
-    a(paramString);
+    ((TroopManager)localObject).m(paramString);
+    b(paramString);
     a(paramQQAppInterface, paramString);
     c(paramQQAppInterface, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNotificationHelper
  * JD-Core Version:    0.7.0.1
  */

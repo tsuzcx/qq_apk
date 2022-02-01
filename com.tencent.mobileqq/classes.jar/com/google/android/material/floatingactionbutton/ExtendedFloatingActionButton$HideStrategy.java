@@ -7,61 +7,61 @@ import com.google.android.material.R.animator;
 class ExtendedFloatingActionButton$HideStrategy
   extends BaseMotionStrategy
 {
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public ExtendedFloatingActionButton$HideStrategy(ExtendedFloatingActionButton paramExtendedFloatingActionButton, AnimatorTracker paramAnimatorTracker)
   {
     super(paramExtendedFloatingActionButton, paramAnimatorTracker);
   }
   
-  public int a()
-  {
-    return R.animator.i;
-  }
-  
-  public void a()
-  {
-    super.a();
-    ExtendedFloatingActionButton.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, 0);
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.setVisibility(8);
-    }
-  }
-  
   public void a(Animator paramAnimator)
   {
     super.a(paramAnimator);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.setVisibility(0);
-    ExtendedFloatingActionButton.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton, 1);
+    this.b = false;
+    this.a.setVisibility(0);
+    ExtendedFloatingActionButton.a(this.a, 1);
   }
   
   public void a(@Nullable ExtendedFloatingActionButton.OnChangedCallback paramOnChangedCallback)
   {
     if (paramOnChangedCallback != null) {
-      paramOnChangedCallback.b(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton);
+      paramOnChangedCallback.b(this.a);
     }
   }
   
-  public boolean a()
+  public void d()
   {
-    return ExtendedFloatingActionButton.c(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton);
+    super.d();
+    ExtendedFloatingActionButton.a(this.a, 0);
+    if (!this.b) {
+      this.a.setVisibility(8);
+    }
   }
   
-  public void b()
+  public void e()
   {
-    super.b();
-    this.jdField_a_of_type_Boolean = true;
+    super.e();
+    this.b = true;
   }
   
-  public void c()
+  public void g()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonExtendedFloatingActionButton.setVisibility(8);
+    this.a.setVisibility(8);
+  }
+  
+  public int h()
+  {
+    return R.animator.i;
+  }
+  
+  public boolean i()
+  {
+    return ExtendedFloatingActionButton.i(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton.HideStrategy
  * JD-Core Version:    0.7.0.1
  */

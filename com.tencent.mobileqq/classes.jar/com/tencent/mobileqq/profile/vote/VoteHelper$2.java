@@ -14,11 +14,11 @@ class VoteHelper$2
   
   public void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
+    this.c.a(this.a, this.b, paramBoolean);
     INearbyLikeLimitManagerUtil localINearbyLikeLimitManagerUtil = (INearbyLikeLimitManagerUtil)QRoute.api(INearbyLikeLimitManagerUtil.class);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a;
+    QQAppInterface localQQAppInterface = this.c.c;
     String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3) {
+    if (this.a.type == 3) {
       str1 = "1";
     } else {
       str1 = "2";
@@ -34,7 +34,7 @@ class VoteHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.vote.VoteHelper.2
  * JD-Core Version:    0.7.0.1
  */

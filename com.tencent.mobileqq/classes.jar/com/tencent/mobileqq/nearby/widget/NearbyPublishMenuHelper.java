@@ -38,14 +38,6 @@ import org.json.JSONObject;
 
 public class NearbyPublishMenuHelper
 {
-  public static SharedPreferences a(Context paramContext)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramContext.getPackageName());
-    localStringBuilder.append("_preferences");
-    return paramContext.getSharedPreferences(localStringBuilder.toString(), 4);
-  }
-  
   /* Error */
   public static String a(String paramString)
   {
@@ -60,23 +52,23 @@ public class NearbyPublishMenuHelper
     //   11: astore_3
     //   12: aload 6
     //   14: astore 4
-    //   16: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   16: invokestatic 19	java/lang/System:currentTimeMillis	()J
     //   19: lstore_1
     //   20: aload 5
     //   22: astore_3
     //   23: aload 6
     //   25: astore 4
-    //   27: new 13	java/lang/StringBuilder
+    //   27: new 21	java/lang/StringBuilder
     //   30: dup
-    //   31: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   31: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   34: astore 7
     //   36: aload 5
     //   38: astore_3
     //   39: aload 6
     //   41: astore 4
     //   43: aload 7
-    //   45: ldc 44
-    //   47: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: ldc 24
+    //   47: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
     //   51: aload 5
     //   53: astore_3
@@ -84,39 +76,39 @@ public class NearbyPublishMenuHelper
     //   56: astore 4
     //   58: aload 7
     //   60: aload_0
-    //   61: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: pop
     //   65: aload 5
     //   67: astore_3
     //   68: aload 6
     //   70: astore 4
     //   72: aload 7
-    //   74: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   77: astore_0
     //   78: aload 5
     //   80: astore_3
     //   81: aload 6
     //   83: astore 4
-    //   85: new 46	java/io/File
+    //   85: new 34	java/io/File
     //   88: dup
-    //   89: invokestatic 52	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   92: invokevirtual 56	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
+    //   89: invokestatic 40	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   92: invokevirtual 44	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
     //   95: aload_0
-    //   96: invokespecial 59	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   96: invokespecial 47	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   99: astore 7
     //   101: aload 5
     //   103: astore_3
     //   104: aload 6
     //   106: astore 4
     //   108: aload 7
-    //   110: invokevirtual 63	java/io/File:isFile	()Z
+    //   110: invokevirtual 51	java/io/File:isFile	()Z
     //   113: ifeq +181 -> 294
     //   116: aload 5
     //   118: astore_3
     //   119: aload 6
     //   121: astore 4
     //   123: aload 7
-    //   125: invokevirtual 66	java/io/File:length	()J
+    //   125: invokevirtual 54	java/io/File:length	()J
     //   128: lconst_0
     //   129: lcmp
     //   130: ifne +6 -> 136
@@ -125,16 +117,16 @@ public class NearbyPublishMenuHelper
     //   138: astore_3
     //   139: aload 6
     //   141: astore 4
-    //   143: invokestatic 52	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   143: invokestatic 40	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   146: aload_0
-    //   147: invokevirtual 70	com/tencent/common/app/BaseApplicationImpl:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   147: invokevirtual 58	com/tencent/common/app/BaseApplicationImpl:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
     //   150: astore_0
     //   151: aload_0
     //   152: astore_3
     //   153: aload_0
     //   154: astore 4
     //   156: aload 7
-    //   158: invokevirtual 66	java/io/File:length	()J
+    //   158: invokevirtual 54	java/io/File:length	()J
     //   161: l2i
     //   162: newarray byte
     //   164: astore 5
@@ -144,41 +136,41 @@ public class NearbyPublishMenuHelper
     //   169: astore 4
     //   171: aload_0
     //   172: aload 5
-    //   174: invokevirtual 76	java/io/FileInputStream:read	([B)I
+    //   174: invokevirtual 64	java/io/FileInputStream:read	([B)I
     //   177: pop
     //   178: aload_0
     //   179: astore_3
     //   180: aload_0
     //   181: astore 4
-    //   183: new 13	java/lang/StringBuilder
+    //   183: new 21	java/lang/StringBuilder
     //   186: dup
-    //   187: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   187: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   190: astore 6
     //   192: aload_0
     //   193: astore_3
     //   194: aload_0
     //   195: astore 4
     //   197: aload 6
-    //   199: ldc 78
-    //   201: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: ldc 66
+    //   201: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: pop
     //   205: aload_0
     //   206: astore_3
     //   207: aload_0
     //   208: astore 4
     //   210: aload 6
-    //   212: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   212: invokestatic 19	java/lang/System:currentTimeMillis	()J
     //   215: lload_1
     //   216: lsub
-    //   217: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 69	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   220: pop
     //   221: aload_0
     //   222: astore_3
     //   223: aload_0
     //   224: astore 4
     //   226: aload 6
-    //   228: ldc 83
-    //   230: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: ldc 71
+    //   230: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: pop
     //   234: aload_0
     //   235: astore_3
@@ -187,30 +179,30 @@ public class NearbyPublishMenuHelper
     //   239: aload 6
     //   241: aload 5
     //   243: arraylength
-    //   244: invokevirtual 86	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   244: invokevirtual 74	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   247: pop
     //   248: aload_0
     //   249: astore_3
     //   250: aload_0
     //   251: astore 4
-    //   253: ldc 88
+    //   253: ldc 76
     //   255: iconst_1
     //   256: aload 6
-    //   258: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   258: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   261: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   264: aload_0
     //   265: astore_3
     //   266: aload_0
     //   267: astore 4
-    //   269: new 96	java/lang/String
+    //   269: new 84	java/lang/String
     //   272: dup
     //   273: aload 5
-    //   275: invokespecial 99	java/lang/String:<init>	([B)V
+    //   275: invokespecial 87	java/lang/String:<init>	([B)V
     //   278: astore 5
     //   280: aload_0
     //   281: ifnull +7 -> 288
     //   284: aload_0
-    //   285: invokevirtual 102	java/io/FileInputStream:close	()V
+    //   285: invokevirtual 90	java/io/FileInputStream:close	()V
     //   288: ldc 2
     //   290: monitorexit
     //   291: aload 5
@@ -219,17 +211,17 @@ public class NearbyPublishMenuHelper
     //   296: astore_3
     //   297: aload 6
     //   299: astore 4
-    //   301: new 13	java/lang/StringBuilder
+    //   301: new 21	java/lang/StringBuilder
     //   304: dup
-    //   305: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   305: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   308: astore_0
     //   309: aload 5
     //   311: astore_3
     //   312: aload 6
     //   314: astore 4
     //   316: aload_0
-    //   317: ldc 104
-    //   319: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   317: ldc 92
+    //   319: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: pop
     //   323: aload 5
     //   325: astore_3
@@ -237,63 +229,63 @@ public class NearbyPublishMenuHelper
     //   328: astore 4
     //   330: aload_0
     //   331: aload 7
-    //   333: invokevirtual 107	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   336: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   333: invokevirtual 95	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   336: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   339: pop
     //   340: aload 5
     //   342: astore_3
     //   343: aload 6
     //   345: astore 4
-    //   347: ldc 88
+    //   347: ldc 76
     //   349: iconst_1
     //   350: aload_0
-    //   351: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   354: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   351: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   354: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   357: ldc 2
     //   359: monitorexit
-    //   360: ldc 109
+    //   360: ldc 97
     //   362: areturn
     //   363: astore_0
     //   364: goto +70 -> 434
     //   367: astore_0
     //   368: aload 4
     //   370: astore_3
-    //   371: new 13	java/lang/StringBuilder
+    //   371: new 21	java/lang/StringBuilder
     //   374: dup
-    //   375: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   375: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   378: astore 5
     //   380: aload 4
     //   382: astore_3
     //   383: aload 5
-    //   385: ldc 111
-    //   387: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   385: ldc 99
+    //   387: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   390: pop
     //   391: aload 4
     //   393: astore_3
     //   394: aload 5
     //   396: aload_0
-    //   397: invokevirtual 112	java/lang/Exception:toString	()Ljava/lang/String;
-    //   400: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   397: invokevirtual 100	java/lang/Exception:toString	()Ljava/lang/String;
+    //   400: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   403: pop
     //   404: aload 4
     //   406: astore_3
-    //   407: ldc 88
+    //   407: ldc 76
     //   409: iconst_1
     //   410: aload 5
-    //   412: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   415: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   412: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   415: invokestatic 103	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   418: aload 4
     //   420: ifnull +8 -> 428
     //   423: aload 4
-    //   425: invokevirtual 102	java/io/FileInputStream:close	()V
+    //   425: invokevirtual 90	java/io/FileInputStream:close	()V
     //   428: ldc 2
     //   430: monitorexit
-    //   431: ldc 109
+    //   431: ldc 97
     //   433: areturn
     //   434: aload_3
     //   435: ifnull +7 -> 442
     //   438: aload_3
-    //   439: invokevirtual 102	java/io/FileInputStream:close	()V
+    //   439: invokevirtual 90	java/io/FileInputStream:close	()V
     //   442: aload_0
     //   443: athrow
     //   444: astore_0
@@ -376,42 +368,6 @@ public class NearbyPublishMenuHelper
     //   438	442	458	java/lang/Exception
   }
   
-  protected static String a(String paramString1, String paramString2)
-  {
-    boolean bool = "pub_voice_clk".equals(paramString2);
-    int j = 0;
-    int i;
-    if (bool) {
-      i = 1;
-    } else if ("pub_txt_clk".equals(paramString2)) {
-      i = 2;
-    } else if ("pub_video_clk".equals(paramString2)) {
-      i = 3;
-    } else {
-      i = 0;
-    }
-    if ((i != 0) && (!"home".equals(paramString1)))
-    {
-      if ("data_card".equals(paramString1)) {
-        j = i + 3;
-      }
-    }
-    else {
-      j = i;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder();
-      paramString1.append("getReportD1=");
-      paramString1.append(j);
-      QLog.d("NearbyPublishMenuHelper", 2, paramString1.toString());
-    }
-    paramString1 = new StringBuilder();
-    paramString1.append(j);
-    paramString1.append("");
-    return paramString1.toString();
-  }
-  
   public static ArrayList<MenuItem> a()
   {
     localArrayList = new ArrayList();
@@ -435,13 +391,13 @@ public class NearbyPublishMenuHelper
       {
         localObject2 = ((JSONArray)localObject1).getJSONObject(i);
         MenuItem localMenuItem2 = new MenuItem();
-        localMenuItem2.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id");
-        if ((bool) || (localMenuItem2.jdField_a_of_type_Int == 1) || (localMenuItem2.jdField_a_of_type_Int == 2))
+        localMenuItem2.a = ((JSONObject)localObject2).optInt("id");
+        if ((bool) || (localMenuItem2.a == 1) || (localMenuItem2.a == 2))
         {
-          localMenuItem2.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("icon");
-          localMenuItem2.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("title");
-          localMenuItem2.c = ((JSONObject)localObject2).optString("subTitle");
-          localMenuItem2.d = ((JSONObject)localObject2).optString("jumpUrl");
+          localMenuItem2.c = ((JSONObject)localObject2).optString("icon");
+          localMenuItem2.d = ((JSONObject)localObject2).optString("title");
+          localMenuItem2.e = ((JSONObject)localObject2).optString("subTitle");
+          localMenuItem2.f = ((JSONObject)localObject2).optString("jumpUrl");
           localArrayList.add(localMenuItem2);
         }
         i += 1;
@@ -461,14 +417,14 @@ public class NearbyPublishMenuHelper
       if (localArrayList.size() == 0)
       {
         localMenuItem1 = new MenuItem();
-        localMenuItem1.jdField_a_of_type_Int = 1;
-        localMenuItem1.jdField_b_of_type_Int = 2130841401;
-        localMenuItem1.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131707412);
+        localMenuItem1.a = 1;
+        localMenuItem1.b = 2130842239;
+        localMenuItem1.d = HardCodeUtil.a(2131905230);
         localArrayList.add(localMenuItem1);
         localMenuItem1 = new MenuItem();
-        localMenuItem1.jdField_a_of_type_Int = 2;
-        localMenuItem1.jdField_b_of_type_Int = 2130841400;
-        localMenuItem1.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131707413);
+        localMenuItem1.a = 2;
+        localMenuItem1.b = 2130842238;
+        localMenuItem1.d = HardCodeUtil.a(2131905231);
         localArrayList.add(localMenuItem1);
       }
     }
@@ -497,7 +453,7 @@ public class NearbyPublishMenuHelper
     ((ActivityURIRequest)localObject).extra().putBoolean("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     ((ActivityURIRequest)localObject).extra().putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
     ((ActivityURIRequest)localObject).extra().putInt("enter_from", 30);
-    ((ActivityURIRequest)localObject).extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationNearby.jdField_a_of_type_JavaLangString);
+    ((ActivityURIRequest)localObject).extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationNearby.a);
     QRoute.startUri((URIRequest)localObject);
   }
   
@@ -517,7 +473,7 @@ public class NearbyPublishMenuHelper
     {
       if (paramInt1 == 1001)
       {
-        paramIntent = a(paramContext);
+        paramIntent = c(paramContext);
         localObject = paramIntent.getString("camera_photo_path", "");
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("camera result, path=");
@@ -559,10 +515,10 @@ public class NearbyPublishMenuHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleMenuItemClick：id=");
-      localStringBuilder.append(paramMenuItem.jdField_a_of_type_Int);
+      localStringBuilder.append(paramMenuItem.a);
       QLog.d("NearbyPublishMenuHelper", 2, localStringBuilder.toString());
     }
-    int i = paramMenuItem.jdField_a_of_type_Int;
+    int i = paramMenuItem.a;
     if (i != 1)
     {
       if (i != 2)
@@ -573,7 +529,7 @@ public class NearbyPublishMenuHelper
           {
             if (i != 5)
             {
-              a(paramContext, paramMenuItem.d);
+              a(paramContext, paramMenuItem.f);
               return;
             }
             a(paramString, "pub_video_clk");
@@ -647,7 +603,7 @@ public class NearbyPublishMenuHelper
         a(paramContext, localCikeConfigData.d);
         return;
       }
-      localCikeConfigData.f = a(paramString1, paramString2);
+      localCikeConfigData.f = b(paramString1, paramString2);
       paramContext = new NearbyAppDownloadDialog(paramContext);
       paramContext.a(localCikeConfigData);
       paramContext.show();
@@ -659,6 +615,42 @@ public class NearbyPublishMenuHelper
   protected static void a(String paramString1, String paramString2)
   {
     new ReportTask(null).a("dc00899").b("grp_lbs").c(paramString1).d(paramString2).a();
+  }
+  
+  protected static String b(String paramString1, String paramString2)
+  {
+    boolean bool = "pub_voice_clk".equals(paramString2);
+    int j = 0;
+    int i;
+    if (bool) {
+      i = 1;
+    } else if ("pub_txt_clk".equals(paramString2)) {
+      i = 2;
+    } else if ("pub_video_clk".equals(paramString2)) {
+      i = 3;
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (!"home".equals(paramString1)))
+    {
+      if ("data_card".equals(paramString1)) {
+        j = i + 3;
+      }
+    }
+    else {
+      j = i;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("getReportD1=");
+      paramString1.append(j);
+      QLog.d("NearbyPublishMenuHelper", 2, paramString1.toString());
+    }
+    paramString1 = new StringBuilder();
+    paramString1.append(j);
+    paramString1.append("");
+    return paramString1.toString();
   }
   
   protected static void b(Context paramContext)
@@ -676,7 +668,7 @@ public class NearbyPublishMenuHelper
     localObject = new File(VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject).toString()));
     if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
     {
-      QQToast.a(paramContext, 2131718574, 0).a();
+      QQToast.makeText(paramContext, 2131916075, 0).show();
       if (QLog.isColorLevel()) {
         QLog.d("NearbyPublishMenuHelper", 2, "sdcard not exist return");
       }
@@ -713,7 +705,7 @@ public class NearbyPublishMenuHelper
     if (i == 0) {
       try
       {
-        a(paramContext).edit().putString("camera_photo_path", str).commit();
+        c(paramContext).edit().putString("camera_photo_path", str).commit();
         ((AppActivity)localObject).startActivityForResult(localIntent, 1001);
         if (QLog.isColorLevel())
         {
@@ -724,20 +716,28 @@ public class NearbyPublishMenuHelper
       catch (Exception localException)
       {
         QLog.e("NearbyPublishMenuHelper", 1, localException, new Object[0]);
-        QQToast.a(paramContext, 2131690725, 0).a();
+        QQToast.makeText(paramContext, 2131887645, 0).show();
       }
     }
   }
   
   protected static void b(Context paramContext, String paramString1, String paramString2)
   {
-    QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramContext, paramContext.getResources().getDimensionPixelSize(2131299168));
-    localQQProgressDialog.c(2131693895);
+    QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramContext, paramContext.getResources().getDimensionPixelSize(2131299920));
+    localQQProgressDialog.c(2131891516);
     ThreadManager.post(new NearbyPublishMenuHelper.2(localQQProgressDialog, paramString2, paramContext, paramString1), 5, null, true);
   }
   
+  public static SharedPreferences c(Context paramContext)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append("_preferences");
+    return paramContext.getSharedPreferences(localStringBuilder.toString(), 4);
+  }
+  
   /* Error */
-  public static void b(String paramString1, String paramString2)
+  public static void c(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 2
@@ -750,17 +750,17 @@ public class NearbyPublishMenuHelper
     //   11: astore 5
     //   13: aload 7
     //   15: astore 4
-    //   17: new 13	java/lang/StringBuilder
+    //   17: new 21	java/lang/StringBuilder
     //   20: dup
-    //   21: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   21: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   24: astore 8
     //   26: aload 6
     //   28: astore 5
     //   30: aload 7
     //   32: astore 4
     //   34: aload 8
-    //   36: ldc 44
-    //   38: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: ldc 24
+    //   38: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: pop
     //   42: aload 6
     //   44: astore 5
@@ -768,29 +768,29 @@ public class NearbyPublishMenuHelper
     //   48: astore 4
     //   50: aload 8
     //   52: aload_0
-    //   53: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: aload 6
     //   59: astore 5
     //   61: aload 7
     //   63: astore 4
     //   65: aload 8
-    //   67: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: astore_0
     //   71: aload 6
     //   73: astore 5
     //   75: aload 7
     //   77: astore 4
     //   79: aload_1
-    //   80: invokestatic 170	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   80: invokestatic 138	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   83: ifeq +23 -> 106
     //   86: aload 6
     //   88: astore 5
     //   90: aload 7
     //   92: astore 4
-    //   94: invokestatic 52	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   94: invokestatic 40	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   97: aload_0
-    //   98: invokevirtual 592	com/tencent/common/app/BaseApplicationImpl:deleteFile	(Ljava/lang/String;)Z
+    //   98: invokevirtual 593	com/tencent/common/app/BaseApplicationImpl:deleteFile	(Ljava/lang/String;)Z
     //   101: pop
     //   102: ldc 2
     //   104: monitorexit
@@ -799,16 +799,16 @@ public class NearbyPublishMenuHelper
     //   108: astore 5
     //   110: aload 7
     //   112: astore 4
-    //   114: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   114: invokestatic 19	java/lang/System:currentTimeMillis	()J
     //   117: lstore_2
     //   118: aload 6
     //   120: astore 5
     //   122: aload 7
     //   124: astore 4
-    //   126: invokestatic 52	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   126: invokestatic 40	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   129: aload_0
     //   130: iconst_0
-    //   131: invokevirtual 596	com/tencent/common/app/BaseApplicationImpl:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   131: invokevirtual 597	com/tencent/common/app/BaseApplicationImpl:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
     //   134: astore_0
     //   135: aload_0
     //   136: astore 5
@@ -816,47 +816,47 @@ public class NearbyPublishMenuHelper
     //   139: astore 4
     //   141: aload_0
     //   142: aload_1
-    //   143: invokevirtual 600	java/lang/String:getBytes	()[B
-    //   146: invokevirtual 605	java/io/FileOutputStream:write	([B)V
+    //   143: invokevirtual 601	java/lang/String:getBytes	()[B
+    //   146: invokevirtual 606	java/io/FileOutputStream:write	([B)V
     //   149: aload_0
     //   150: astore 5
     //   152: aload_0
     //   153: astore 4
     //   155: aload_0
-    //   156: invokevirtual 608	java/io/FileOutputStream:flush	()V
+    //   156: invokevirtual 609	java/io/FileOutputStream:flush	()V
     //   159: aload_0
     //   160: astore 5
     //   162: aload_0
     //   163: astore 4
-    //   165: new 13	java/lang/StringBuilder
+    //   165: new 21	java/lang/StringBuilder
     //   168: dup
-    //   169: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   169: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   172: astore 6
     //   174: aload_0
     //   175: astore 5
     //   177: aload_0
     //   178: astore 4
     //   180: aload 6
-    //   182: ldc_w 610
-    //   185: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: ldc_w 611
+    //   185: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   188: pop
     //   189: aload_0
     //   190: astore 5
     //   192: aload_0
     //   193: astore 4
     //   195: aload 6
-    //   197: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   197: invokestatic 19	java/lang/System:currentTimeMillis	()J
     //   200: lload_2
     //   201: lsub
-    //   202: invokevirtual 81	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   202: invokevirtual 69	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   205: pop
     //   206: aload_0
     //   207: astore 5
     //   209: aload_0
     //   210: astore 4
     //   212: aload 6
-    //   214: ldc 83
-    //   216: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: ldc 71
+    //   216: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   219: pop
     //   220: aload_0
     //   221: astore 5
@@ -864,52 +864,52 @@ public class NearbyPublishMenuHelper
     //   224: astore 4
     //   226: aload 6
     //   228: aload_1
-    //   229: invokevirtual 611	java/lang/String:length	()I
-    //   232: invokevirtual 86	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 612	java/lang/String:length	()I
+    //   232: invokevirtual 74	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   235: pop
     //   236: aload_0
     //   237: astore 5
     //   239: aload_0
     //   240: astore 4
-    //   242: ldc 88
+    //   242: ldc 76
     //   244: iconst_1
     //   245: aload 6
-    //   247: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   250: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   247: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   250: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   253: aload_0
     //   254: ifnull +77 -> 331
     //   257: aload_0
-    //   258: invokevirtual 612	java/io/FileOutputStream:close	()V
+    //   258: invokevirtual 613	java/io/FileOutputStream:close	()V
     //   261: goto +70 -> 331
     //   264: astore_0
     //   265: goto +70 -> 335
     //   268: astore_0
     //   269: aload 4
     //   271: astore 5
-    //   273: new 13	java/lang/StringBuilder
+    //   273: new 21	java/lang/StringBuilder
     //   276: dup
-    //   277: invokespecial 14	java/lang/StringBuilder:<init>	()V
+    //   277: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   280: astore_1
     //   281: aload 4
     //   283: astore 5
     //   285: aload_1
-    //   286: ldc_w 614
-    //   289: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   286: ldc_w 615
+    //   289: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   292: pop
     //   293: aload 4
     //   295: astore 5
     //   297: aload_1
     //   298: aload_0
-    //   299: invokevirtual 112	java/lang/Exception:toString	()Ljava/lang/String;
-    //   302: invokevirtual 24	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: invokevirtual 100	java/lang/Exception:toString	()Ljava/lang/String;
+    //   302: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   305: pop
     //   306: aload 4
     //   308: astore 5
-    //   310: ldc 88
+    //   310: ldc 76
     //   312: iconst_1
     //   313: aload_1
-    //   314: invokevirtual 29	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   317: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   314: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   317: invokestatic 103	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   320: aload 4
     //   322: ifnull +9 -> 331
     //   325: aload 4
@@ -921,7 +921,7 @@ public class NearbyPublishMenuHelper
     //   335: aload 5
     //   337: ifnull +8 -> 345
     //   340: aload 5
-    //   342: invokevirtual 612	java/io/FileOutputStream:close	()V
+    //   342: invokevirtual 613	java/io/FileOutputStream:close	()V
     //   345: aload_0
     //   346: athrow
     //   347: astore_0
@@ -992,7 +992,7 @@ public class NearbyPublishMenuHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyPublishMenuHelper
  * JD-Core Version:    0.7.0.1
  */

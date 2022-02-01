@@ -12,14 +12,14 @@ class DownloadManagerV2$19$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(DownloadConstants.s, false);
-    DownloadProxy.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    this.a.a.putBoolean(DownloadConstants.s, false);
+    DownloadProxy.a().a(this.a.b, this.a.a, this.a.c, this.a.d, this.a.e);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.19.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,18 @@ class IdentificationApiPlugin$3
   
   public void run()
   {
-    IdentificationApiPlugin.a(this.this$0);
-    if (this.this$0.d())
+    IdentificationApiPlugin.b(this.this$0);
+    if (this.this$0.h())
     {
       IdentificationApiPlugin.a(this.this$0, this.a);
       return;
     }
-    this.this$0.d();
+    this.this$0.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.IdentificationApiPlugin.3
  * JD-Core Version:    0.7.0.1
  */

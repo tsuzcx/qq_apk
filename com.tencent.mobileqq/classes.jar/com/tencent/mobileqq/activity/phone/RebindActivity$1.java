@@ -15,13 +15,13 @@ class RebindActivity$1
     if (paramBoolean)
     {
       paramBundle = new Intent(this.a, BindVerifyActivity.class);
-      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
-      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+      paramBundle.putExtra("kSrouce", this.a.b);
+      paramBundle.putExtra("k_number", this.a.a);
       paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
       paramBundle.putExtra("keyReqBindMode", 1);
-      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
+      paramBundle.putExtra("k_country_code", RebindActivity.b(this.a));
+      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.c(this.a));
+      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.d(this.a));
       paramBundle.addFlags(67108864);
       paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
       paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
@@ -29,12 +29,12 @@ class RebindActivity$1
       this.a.startActivityForResult(paramBundle, 1);
       return;
     }
-    this.a.showToast(2131718218);
+    this.a.showToast(2131915700);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.RebindActivity.1
  * JD-Core Version:    0.7.0.1
  */

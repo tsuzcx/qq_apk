@@ -20,39 +20,39 @@ import java.util.List;
 public class AEWaterMarkProviderView
   extends FrameLayout
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private AEWaterMarkAdapter jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkAdapter;
-  private AEWaterMarkPanel.AEWaterMarkPanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener;
-  private AEVideoStoryTopBarViewModel.Ratio jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio;
-  private AEMaterialManager jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = AECaptureContext.a();
-  private View b;
+  private AppInterface a = AECaptureContext.a();
+  private RecyclerView b;
+  private View c;
+  private AEWaterMarkAdapter d;
+  private AEMaterialManager e;
+  private AEWaterMarkPanel.AEWaterMarkPanelListener f;
+  private AEVideoStoryTopBarViewModel.Ratio g;
+  private View h;
   
   public AEWaterMarkProviderView(@NonNull Context paramContext, AEWaterMarkPanel.AEWaterMarkPanelListener paramAEWaterMarkPanelListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener = paramAEWaterMarkPanelListener;
+    this.f = paramAEWaterMarkPanelListener;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
     AEQLog.a("AEWaterMarkProviderView", "watermark initView");
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2064318485, this);
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2064122849);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122195));
+    this.c = LayoutInflater.from(getContext()).inflate(2064056345, this);
+    this.h = this.c.findViewById(2063991622);
+    this.b = ((RecyclerView)this.c.findViewById(2063991076));
     LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(paramContext, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkAdapter = new AEWaterMarkAdapter(paramContext, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkAdapter);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager = ((AEMaterialManager)AEQIMManager.a(1));
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.b(false);
+    this.b.setLayoutManager(localLinearLayoutManager);
+    this.d = new AEWaterMarkAdapter(paramContext, this.f);
+    this.b.setAdapter(this.d);
+    this.e = ((AEMaterialManager)AEQIMManager.a(1));
+    this.e.b(false);
   }
   
   public void a()
   {
-    AEWaterMarkAdapter localAEWaterMarkAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkAdapter;
+    AEWaterMarkAdapter localAEWaterMarkAdapter = this.d;
     if (localAEWaterMarkAdapter != null) {
       localAEWaterMarkAdapter.a();
     }
@@ -61,7 +61,7 @@ public class AEWaterMarkProviderView
   public void a(List<AEMaterialCategory> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkAdapter.a(((AEMaterialCategory)paramList.get(0)).a);
+      this.d.a(((AEMaterialCategory)paramList.get(0)).a);
     }
   }
   
@@ -71,19 +71,19 @@ public class AEWaterMarkProviderView
     ((StringBuilder)localObject).append("pannel setCaptureRadio");
     ((StringBuilder)localObject).append(paramRatio);
     AEQLog.a("AEWaterMarkProviderView", ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio = paramRatio;
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkAdapter;
+    this.g = paramRatio;
+    localObject = this.d;
     if (localObject != null) {
       ((AEWaterMarkAdapter)localObject).a(paramRatio);
     }
     if (paramRatio == AEVideoStoryTopBarViewModel.Ratio.FULL) {
-      this.b.setBackgroundColor(getResources().getColor(2131165338));
+      this.h.setBackgroundColor(getResources().getColor(2131165580));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEWaterMarkProviderView
  * JD-Core Version:    0.7.0.1
  */

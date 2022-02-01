@@ -15,20 +15,15 @@ import java.net.URL;
 public class TroopBusinessMsgHeadIconController
   extends BaseBubbleBuilderHeadIconController
 {
-  private boolean b()
+  private boolean k()
   {
-    return TroopBusinessUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null;
-  }
-  
-  public boolean a()
-  {
-    return b();
+    return TroopBusinessUtil.a(this.a) != null;
   }
   
   protected void b()
   {
-    TroopBusinessUtil.TroopBusinessMessage localTroopBusinessMessage = TroopBusinessUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840321);
+    TroopBusinessUtil.TroopBusinessMessage localTroopBusinessMessage = TroopBusinessUtil.a(this.a);
+    Drawable localDrawable = this.c.getResources().getDrawable(2130841060);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     localURLDrawableOptions.mLoadingDrawable = localDrawable;
@@ -38,16 +33,16 @@ public class TroopBusinessMsgHeadIconController
     if (localTroopBusinessMessage != null)
     {
       localObject1 = localObject2;
-      if (localTroopBusinessMessage.a != null)
+      if (localTroopBusinessMessage.b != null)
       {
         localObject1 = localURLDrawable;
         try
         {
-          localURLDrawable = URLDrawable.getDrawable(new URL(localTroopBusinessMessage.a), localURLDrawableOptions);
+          localURLDrawable = URLDrawable.getDrawable(new URL(localTroopBusinessMessage.b), localURLDrawableOptions);
           localObject1 = localURLDrawable;
           localURLDrawable.setTag(URLDrawableDecodeHandler.b(100, 100, 6));
           localObject1 = localURLDrawable;
-          localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.a);
+          localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.b);
           localObject1 = localURLDrawable;
         }
         catch (MalformedURLException localMalformedURLException)
@@ -66,7 +61,7 @@ public class TroopBusinessMsgHeadIconController
   
   protected void c()
   {
-    a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    a(this.h);
   }
   
   protected void d()
@@ -75,10 +70,15 @@ public class TroopBusinessMsgHeadIconController
   }
   
   protected void g() {}
+  
+  public boolean h()
+  {
+    return k();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.aiobubbleheadicon.TroopBusinessMsgHeadIconController
  * JD-Core Version:    0.7.0.1
  */

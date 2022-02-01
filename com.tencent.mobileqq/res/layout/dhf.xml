@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/b8q" android:background="#fff7f6f4" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/q_o" android:background="#fff7f6f4" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="17.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="10.0dip">
+            <ImageView android:id="@id/oc5" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/jje" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/pu8" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/jiq" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff999999" android:id="@id/q_l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/pu8" android:layout_centerVertical="true" />
+            <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="14.0sp" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="开黑组队" android:layout_toRightOf="@id/oc5" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <FrameLayout android:id="@id/q_n" android:background="#fff7f6f4" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="137.0dip" android:layout_below="@id/q_o">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/q_m" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="125.0dip" android:overScrollMode="never" />
+            <RelativeLayout android:id="@id/q_5" android:background="@drawable/jjd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="125.0dip" android:layout_marginLeft="17.0dip" android:layout_marginRight="17.0dip">
+                <com.tencent.timi.game.ui.widget.rc.RCImageView android:id="@id/q_6" android:layout_width="fill_parent" android:layout_height="125.0dip" android:scaleType="fitXY" />
+                <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:gravity="start" android:id="@id/n1c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="25.0dip" android:text="现在的车都发走了哟，\n现在创建车队，发车超快" />
+                <TextView android:textSize="12.0sp" android:textColor="#ffbe6027" android:gravity="center" android:id="@id/q_4" android:background="@drawable/jfn" android:layout_width="84.0dip" android:layout_height="30.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="8.0dip" android:text="创建车队" android:layout_below="@id/n1c" />
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/q_7" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-10.0dip" android:layout_below="@id/b8q">
+        <View android:background="@drawable/jfz" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_marginTop="10.0dip" />
+        <CheckBox android:id="@id/q_8" android:background="@drawable/jj6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:button="@null" android:layout_centerHorizontal="true" />
+        <View android:id="@id/qdw" android:layout_width="fill_parent" android:layout_height="34.0dip" />
+    </RelativeLayout>
+</RelativeLayout>

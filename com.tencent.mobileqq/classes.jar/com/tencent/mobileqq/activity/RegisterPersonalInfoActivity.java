@@ -27,34 +27,11 @@ public class RegisterPersonalInfoActivity
   extends RegisterNewBaseActivity
   implements View.OnClickListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private RegisterWithNick jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick = null;
-  private RegisterLHAssistant jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant = null;
-  private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  private boolean jdField_a_of_type_Boolean = false;
-  
-  private void a()
-  {
-    this.phoneNum = getIntent().getStringExtra("phonenum");
-    this.inviteCode = getIntent().getStringExtra("invite_code");
-    this.countryCode = getIntent().getStringExtra("key");
-    this.mIsPhoneNumRegistered = getIntent().getBooleanExtra("key_register_is_phone_num_registered", false);
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("key_register_from_send_sms", false);
-    setTitleText(HardCodeUtil.a(2131713280));
-    setBackListener();
-    setBarProgress(80);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363935));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131371880));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new RegisterPersonalInfoActivity.1(this));
-    RegisterLHAssistant localRegisterLHAssistant = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant;
-    if (localRegisterLHAssistant != null)
-    {
-      localRegisterLHAssistant.a();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant = new RegisterLHAssistant(this, findViewById(2131369737), 2);
-  }
+  private ClearableEditText a;
+  private Button b;
+  private boolean c = false;
+  private RegisterWithNick d = null;
+  private RegisterLHAssistant e = null;
   
   public static void a(AppRuntime paramAppRuntime, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4, int paramInt)
   {
@@ -71,9 +48,32 @@ public class RegisterPersonalInfoActivity
     paramContext.startActivity(paramAppRuntime);
   }
   
+  private void b()
+  {
+    this.phoneNum = getIntent().getStringExtra("phonenum");
+    this.inviteCode = getIntent().getStringExtra("invite_code");
+    this.countryCode = getIntent().getStringExtra("key");
+    this.mIsPhoneNumRegistered = getIntent().getBooleanExtra("key_register_is_phone_num_registered", false);
+    this.c = getIntent().getBooleanExtra("key_register_from_send_sms", false);
+    setTitleText(HardCodeUtil.a(2131910833));
+    setBackListener();
+    setBarProgress(80);
+    this.b = ((Button)findViewById(2131429891));
+    this.b.setOnClickListener(this);
+    this.a = ((ClearableEditText)findViewById(2131439323));
+    this.a.addTextChangedListener(new RegisterPersonalInfoActivity.1(this));
+    RegisterLHAssistant localRegisterLHAssistant = this.e;
+    if (localRegisterLHAssistant != null)
+    {
+      localRegisterLHAssistant.a();
+      return;
+    }
+    this.e = new RegisterLHAssistant(this, findViewById(2131436855), 2);
+  }
+  
   public boolean a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
+    Object localObject = this.a;
     if (localObject == null) {
       return false;
     }
@@ -81,7 +81,7 @@ public class RegisterPersonalInfoActivity
     if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).trim().length() != 0)) {
       return true;
     }
-    notifyToast(2131716581, 1);
+    notifyToast(2131914044, 1);
     return false;
   }
   
@@ -99,9 +99,9 @@ public class RegisterPersonalInfoActivity
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 2) && (paramInt2 == -1))
     {
-      RegisterLHAssistant localRegisterLHAssistant = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant;
-      if ((localRegisterLHAssistant != null) && (localRegisterLHAssistant.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.jdField_a_of_type_ComTencentMobileqqRegisterQueryAccount.a(paramInt1, paramInt2, paramIntent);
+      RegisterLHAssistant localRegisterLHAssistant = this.e;
+      if ((localRegisterLHAssistant != null) && (localRegisterLHAssistant.e != null)) {
+        this.e.e.a(paramInt1, paramInt2, paramIntent);
       }
     }
   }
@@ -109,11 +109,11 @@ public class RegisterPersonalInfoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561855);
+    setContentView(2131628273);
     if (QLog.isDevelopLevel()) {
       RegisterLHAssistant.a(getClass().getSimpleName(), getIntent());
     }
-    a();
+    b();
     ReportController.b(this.mRuntime, "CliOper", "", "", "0X8007362", "0X8007362", 0, 0, "", "", "", "");
     ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007362", "0X8007362", 0, 0, "", "", "", "");
     if (!this.mIsPhoneNumRegistered) {
@@ -121,7 +121,7 @@ public class RegisterPersonalInfoActivity
     } else {
       ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007362", "0X8007362", 2, 0, "", "", "", "");
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007362", "0X8007362", 3, 0, "", "", "", "");
     }
     if (this.mFrom == 4) {
@@ -143,7 +143,7 @@ public class RegisterPersonalInfoActivity
     if (QLog.isDevelopLevel()) {
       RegisterLHAssistant.a("RegisterPersonalInfoActivity -- doOnNewIntent", getIntent());
     }
-    a();
+    b();
   }
   
   protected boolean isWrapContent()
@@ -154,28 +154,28 @@ public class RegisterPersonalInfoActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131363935)
+    if (i == 2131429891)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant;
-      if ((localObject != null) && (((RegisterLHAssistant)localObject).jdField_a_of_type_Boolean))
+      Object localObject = this.e;
+      if ((localObject != null) && (((RegisterLHAssistant)localObject).c))
       {
-        this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.a(true);
+        this.e.a(true);
       }
       else if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        notifyToast(2131692183, 0);
+        notifyToast(2131889169, 0);
       }
       else if (a())
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-        if (this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick == null) {
-          this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick = new RegisterWithNick(this);
+        localObject = this.a.getText().toString();
+        if (this.d == null) {
+          this.d = new RegisterWithNick(this);
         }
-        this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick.a((String)localObject);
+        this.d.a((String)localObject);
         ReportController.a(this.mRuntime, "new_reg", "setting_page_no", "reg_clk", "", 1, "");
       }
     }
-    else if (i == 2131369202)
+    else if (i == 2131436180)
     {
       InputMethodUtil.a(this);
       new Handler().postDelayed(new RegisterPersonalInfoActivity.2(this), 200L);
@@ -194,7 +194,7 @@ public class RegisterPersonalInfoActivity
   {
     super.onDestroy();
     closeDialog();
-    RegisterLHAssistant localRegisterLHAssistant = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant;
+    RegisterLHAssistant localRegisterLHAssistant = this.e;
     if (localRegisterLHAssistant != null) {
       localRegisterLHAssistant.b();
     }
@@ -202,7 +202,7 @@ public class RegisterPersonalInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterPersonalInfoActivity
  * JD-Core Version:    0.7.0.1
  */

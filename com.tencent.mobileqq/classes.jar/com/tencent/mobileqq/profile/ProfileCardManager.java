@@ -26,35 +26,27 @@ import tencent.im.oidb.cmd0x703.cmd0x703.UinPhotoListInfo;
 
 public class ProfileCardManager
 {
-  public static String a;
-  public static Map<Long, Boolean> a;
-  public static Map<Long, Boolean> b;
-  protected Context a;
-  public Handler a;
-  protected AppInterface a;
-  public Vector<Integer> a;
-  Map<Long, Integer> c = new ConcurrentHashMap();
-  Map<String, Boolean> d = new ConcurrentHashMap();
-  private Map<Integer, ProfileCardManager.DefaultCardItem> e = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    b = new ConcurrentHashMap();
-    jdField_a_of_type_JavaLangString = "https://gxh.vip.qq.com/xydata";
-  }
+  public static Map<Long, Boolean> a = new ConcurrentHashMap();
+  public static Map<Long, Boolean> b = new ConcurrentHashMap();
+  public static String c = "https://gxh.vip.qq.com/xydata";
+  Map<Long, Integer> d = new ConcurrentHashMap();
+  Map<String, Boolean> e = new ConcurrentHashMap();
+  protected AppInterface f;
+  protected Context g;
+  public Handler h;
+  public Vector<Integer> i = new Vector();
+  private Map<Integer, ProfileCardManager.DefaultCardItem> j = new ConcurrentHashMap();
   
   public ProfileCardManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramAppInterface.getApp().getApplicationContext();
+    this.f = paramAppInterface;
+    this.g = paramAppInterface.getApp().getApplicationContext();
   }
   
   public static String a(Context paramContext, long paramLong)
   {
     paramContext = new StringBuilder();
-    paramContext.append(ProfileCardTemplateUtil.a());
+    paramContext.append(ProfileCardTemplateUtil.b());
     paramContext.append(paramLong);
     paramContext.append(File.separator);
     return paramContext.toString();
@@ -93,17 +85,6 @@ public class ProfileCardManager
     return localStringBuilder.toString();
   }
   
-  public static boolean a(Context paramContext, long paramLong)
-  {
-    paramContext = a(paramContext, paramLong);
-    if (TextUtils.isEmpty(paramContext)) {
-      paramContext = null;
-    } else {
-      paramContext = new File(paramContext);
-    }
-    return (paramContext != null) && (paramContext.exists()) && (paramContext.isDirectory()) && (paramContext.list().length > 1);
-  }
-  
   public static boolean a(Context paramContext, long paramLong, String paramString)
   {
     paramContext = new File(a(paramContext, paramLong), paramString);
@@ -121,29 +102,6 @@ public class ProfileCardManager
     bool1 = false;
     label49:
     return bool1;
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    cmd0x703.UinPhotoListInfo localUinPhotoListInfo = new cmd0x703.UinPhotoListInfo();
-    cmd0x703.PhotoInfo localPhotoInfo = new cmd0x703.PhotoInfo();
-    localPhotoInfo.str_url.set(paramString);
-    localPhotoInfo.uint32_id.set(-1);
-    localPhotoInfo.uint32_timestamp.set(0);
-    localUinPhotoListInfo.rpt_msg_photo_info.add(localPhotoInfo);
-    return localUinPhotoListInfo.toByteArray();
-  }
-  
-  public static String b(Context paramContext, long paramLong)
-  {
-    paramContext = new StringBuilder();
-    paramContext.append(ProfileCardTemplateUtil.a());
-    paramContext.append(paramLong);
-    paramContext.append(".zip");
-    return paramContext.toString();
   }
   
   public static String b(Context paramContext, long paramLong1, long paramLong2)
@@ -168,10 +126,44 @@ public class ProfileCardManager
     return localStringBuilder.toString();
   }
   
+  public static boolean b(Context paramContext, long paramLong)
+  {
+    paramContext = a(paramContext, paramLong);
+    if (TextUtils.isEmpty(paramContext)) {
+      paramContext = null;
+    } else {
+      paramContext = new File(paramContext);
+    }
+    return (paramContext != null) && (paramContext.exists()) && (paramContext.isDirectory()) && (paramContext.list().length > 1);
+  }
+  
+  public static byte[] b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    cmd0x703.UinPhotoListInfo localUinPhotoListInfo = new cmd0x703.UinPhotoListInfo();
+    cmd0x703.PhotoInfo localPhotoInfo = new cmd0x703.PhotoInfo();
+    localPhotoInfo.str_url.set(paramString);
+    localPhotoInfo.uint32_id.set(-1);
+    localPhotoInfo.uint32_timestamp.set(0);
+    localUinPhotoListInfo.rpt_msg_photo_info.add(localPhotoInfo);
+    return localUinPhotoListInfo.toByteArray();
+  }
+  
+  public static String c(Context paramContext, long paramLong)
+  {
+    paramContext = new StringBuilder();
+    paramContext.append(ProfileCardTemplateUtil.b());
+    paramContext.append(paramLong);
+    paramContext.append(".zip");
+    return paramContext.toString();
+  }
+  
   public int a(long paramLong)
   {
-    if (this.c.containsKey(Long.valueOf(paramLong))) {
-      return ((Integer)this.c.get(Long.valueOf(paramLong))).intValue();
+    if (this.d.containsKey(Long.valueOf(paramLong))) {
+      return ((Integer)this.d.get(Long.valueOf(paramLong))).intValue();
     }
     return 0;
   }
@@ -180,24 +172,24 @@ public class ProfileCardManager
   {
     try
     {
-      Object localObject3 = (ProfileCardManager.DefaultCardItem)this.e.get(Integer.valueOf(paramInt));
+      Object localObject3 = (ProfileCardManager.DefaultCardItem)this.j.get(Integer.valueOf(paramInt));
       Object localObject1 = localObject3;
       if (localObject3 == null)
       {
         localObject1 = new ProfileCardManager.DefaultCardItem(this, paramInt);
-        this.e.put(Integer.valueOf(paramInt), localObject1);
+        this.j.put(Integer.valueOf(paramInt), localObject1);
       }
-      if (!((ProfileCardManager.DefaultCardItem)localObject1).a)
+      if (!((ProfileCardManager.DefaultCardItem)localObject1).f)
       {
         localObject3 = new File(a(Integer.toString(paramInt)));
         if (((File)localObject3).exists())
         {
           ThreadManager.excute(new ProfileCardManager.1(this, (File)localObject3, paramInt), 64, null, true);
         }
-        else if ((paramBoolean) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt))))
+        else if ((paramBoolean) && (this.f != null) && (!this.i.contains(Integer.valueOf(paramInt))))
         {
-          localObject3 = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-          this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
+          localObject3 = (IVasQuickUpdateService)this.f.getRuntimeService(IVasQuickUpdateService.class, "");
+          this.i.add(Integer.valueOf(paramInt));
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("profileitem.");
           localStringBuilder.append(paramInt);
@@ -209,18 +201,9 @@ public class ProfileCardManager
     finally {}
   }
   
-  public void a(long paramLong)
-  {
-    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("card.");
-    localStringBuilder.append(paramLong);
-    localIVasQuickUpdateService.cancelDwonloadItem(15L, localStringBuilder.toString());
-  }
-  
   public void a(long paramLong, int paramInt)
   {
-    this.c.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
+    this.d.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -232,23 +215,23 @@ public class ProfileCardManager
       localStringBuilder.append(paramString);
       QLog.d("ProfileCardManager", 2, localStringBuilder.toString());
     }
-    if ((this.d.containsKey(paramString)) && (((Boolean)this.d.get(paramString)).booleanValue())) {
+    if ((this.e.containsKey(paramString)) && (((Boolean)this.e.get(paramString)).booleanValue())) {
       return;
     }
-    this.d.put(paramString, Boolean.valueOf(true));
+    this.e.put(paramString, Boolean.valueOf(true));
     ((IVasQuickUpdateService)paramQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(15L, paramString, "ProfileCardRes");
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    this.d.put(paramString1, Boolean.valueOf(false));
+    this.e.put(paramString1, Boolean.valueOf(false));
     if (paramInt == 0)
     {
       long l = Long.parseLong(paramString1.substring(5, paramString1.length()));
-      jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), Boolean.valueOf(true));
+      a.put(Long.valueOf(l), Boolean.valueOf(true));
       b.put(Long.valueOf(l), Boolean.valueOf(true));
       paramString1 = a(paramQQAppInterface.getApp(), l);
-      paramQQAppInterface = new File(b(paramQQAppInterface.getApp(), l));
+      paramQQAppInterface = new File(c(paramQQAppInterface.getApp(), l));
       if (!paramQQAppInterface.exists())
       {
         paramString1 = new StringBuilder();
@@ -303,14 +286,23 @@ public class ProfileCardManager
     }
   }
   
-  public boolean b(Context paramContext, long paramLong)
+  public void b(long paramLong)
+  {
+    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.f.getRuntimeService(IVasQuickUpdateService.class, "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("card.");
+    localStringBuilder.append(paramLong);
+    localIVasQuickUpdateService.cancelDwonloadItem(15L, localStringBuilder.toString());
+  }
+  
+  public boolean d(Context paramContext, long paramLong)
   {
     return VasUpdateUtil.a(new File(a(paramContext, paramLong)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardManager
  * JD-Core Version:    0.7.0.1
  */

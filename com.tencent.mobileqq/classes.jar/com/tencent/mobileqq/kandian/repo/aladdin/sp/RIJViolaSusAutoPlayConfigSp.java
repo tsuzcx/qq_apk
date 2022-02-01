@@ -7,7 +7,7 @@ public class RIJViolaSusAutoPlayConfigSp
 {
   public static int a()
   {
-    int i = ((Integer)RIJSPUtils.a("viola_sus_video_auto_play", Integer.valueOf(0))).intValue();
+    int i = ((Integer)RIJSPUtils.b("viola_sus_video_auto_play", Integer.valueOf(0))).intValue();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -32,7 +32,7 @@ public class RIJViolaSusAutoPlayConfigSp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJViolaSusAutoPlayConfigSp
  * JD-Core Version:    0.7.0.1
  */

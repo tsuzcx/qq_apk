@@ -15,12 +15,15 @@ public class WebColorNoteInjectImpl$WebColorNoteFactory
     if (i == 2) {
       return new PublicAccountColorNoteController(paramQQBrowserActivity);
     }
+    if (i == 3) {
+      return new QCircleColorNoteController(paramQQBrowserActivity);
+    }
     return new WebColorNoteController(paramQQBrowserActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebColorNoteInjectImpl.WebColorNoteFactory
  * JD-Core Version:    0.7.0.1
  */

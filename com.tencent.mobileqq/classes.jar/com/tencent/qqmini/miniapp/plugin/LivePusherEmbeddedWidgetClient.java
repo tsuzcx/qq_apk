@@ -480,7 +480,10 @@ public class LivePusherEmbeddedWidgetClient
       this.livePusherJSAdapter.setBGMNotifyListener(new LivePusherEmbeddedWidgetClient.2(this));
       this.livePusherJSAdapter.setPushListener(new LivePusherEmbeddedWidgetClient.3(this));
     }
-    this.livePusherJSAdapter.updateHomeOrientation(this.mMiniAppContext);
+    paramJSONObject = this.livePusherJSAdapter;
+    if (paramJSONObject != null) {
+      paramJSONObject.updateHomeOrientation(this.mMiniAppContext);
+    }
   }
   
   public void handleOperateXWebLivePusher(JSONObject paramJSONObject, int paramInt)
@@ -715,7 +718,7 @@ public class LivePusherEmbeddedWidgetClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePusherEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

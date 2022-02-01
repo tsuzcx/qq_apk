@@ -9,11 +9,12 @@ import com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinHandler;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.model.RIJDanmakuHandler;
 import com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageHandler;
 import com.tencent.mobileqq.kandian.glue.businesshandler.api.IRIJHandlerNameApi;
+import com.tencent.mobileqq.kandian.repo.playfeeds.VideoPlayDianZanHandler;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/businesshandler/api/impl/RIJHandlerNameApiImpl;", "Lcom/tencent/mobileqq/kandian/glue/businesshandler/api/IRIJHandlerNameApi;", "()V", "getBarrageHandlerName", "", "getDanmakuHandlerName", "getReadInJoyHandlerName", "getReadInJoySkinHandlerName", "getVideoColumnSubscribeHandlerCmd", "getVideoColumnSubscribeHandlerName", "getVideoFeedsLikeAnimateHandlerName", "getVideoPlayCountHandlerCmd", "getVideoPlayCountHandlerName", "getVideoPlayRecommendHandlerCmd", "getVideoPlayRecommendHandlerName", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/businesshandler/api/impl/RIJHandlerNameApiImpl;", "Lcom/tencent/mobileqq/kandian/glue/businesshandler/api/IRIJHandlerNameApi;", "()V", "getBarrageHandlerName", "", "getDanmakuHandlerName", "getReadInJoyHandlerName", "getReadInJoySkinHandlerName", "getVideoColumnSubscribeHandlerCmd", "getVideoColumnSubscribeHandlerName", "getVideoFeedsLikeAnimateHandlerName", "getVideoPlayCountHandlerCmd", "getVideoPlayCountHandlerName", "getVideoPlayDianZanHandler", "getVideoPlayRecommendHandlerCmd", "getVideoPlayRecommendHandlerName", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJHandlerNameApiImpl
   implements IRIJHandlerNameApi
 {
@@ -86,6 +87,14 @@ public final class RIJHandlerNameApiImpl
   }
   
   @NotNull
+  public String getVideoPlayDianZanHandler()
+  {
+    String str = VideoPlayDianZanHandler.class.getName();
+    Intrinsics.checkExpressionValueIsNotNull(str, "VideoPlayDianZanHandler::class.java.name");
+    return str;
+  }
+  
+  @NotNull
   public String getVideoPlayRecommendHandlerCmd()
   {
     return "OidbSvc.0x6cf";
@@ -101,7 +110,7 @@ public final class RIJHandlerNameApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.api.impl.RIJHandlerNameApiImpl
  * JD-Core Version:    0.7.0.1
  */

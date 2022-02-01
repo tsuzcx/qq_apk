@@ -12,11 +12,11 @@ import java.nio.ByteBuffer;
 
 public class PtvFilterUtils
 {
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
   public static final boolean a;
-  private static int[] jdField_a_of_type_ArrayOfInt;
   private static boolean b;
   private static boolean c;
+  private static int[] d;
+  private static Method e;
   
   static
   {
@@ -26,14 +26,14 @@ public class PtvFilterUtils
     } else {
       bool = false;
     }
-    jdField_a_of_type_Boolean = bool;
+    a = bool;
     b = false;
     c = false;
-    jdField_a_of_type_ArrayOfInt = new int[2];
-    jdField_a_of_type_JavaLangReflectMethod = null;
+    d = new int[2];
+    e = null;
     try
     {
-      jdField_a_of_type_JavaLangReflectMethod = HandlerThread.class.getDeclaredMethod("quitSafely", new Class[0]);
+      e = HandlerThread.class.getDeclaredMethod("quitSafely", new Class[0]);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException) {}
@@ -137,7 +137,7 @@ public class PtvFilterUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.util.PtvFilterUtils
  * JD-Core Version:    0.7.0.1
  */

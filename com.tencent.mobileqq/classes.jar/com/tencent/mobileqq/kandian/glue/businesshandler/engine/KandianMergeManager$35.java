@@ -9,7 +9,7 @@ class KandianMergeManager$35
   
   public void run()
   {
-    if ((KandianMergeManager.a(this.this$0) != null) && (this.this$0.h()))
+    if ((KandianMergeManager.l(this.this$0) != null) && (this.this$0.O()))
     {
       KandianMergeManager.a(this.this$0, null);
       Kandian210Msg0xeeInfo.removeKandian210Msg0xeeInfoFromSp();
@@ -18,7 +18,7 @@ class KandianMergeManager$35
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.35
  * JD-Core Version:    0.7.0.1
  */

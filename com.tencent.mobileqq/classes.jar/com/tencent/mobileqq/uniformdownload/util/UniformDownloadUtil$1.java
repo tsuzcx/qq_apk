@@ -7,16 +7,16 @@ final class UniformDownloadUtil$1
   
   public void run()
   {
-    UniformDownloadUtil.FileInfo localFileInfo = UniformDownloadUtil.a(this.jdField_a_of_type_JavaLangString);
-    IGetFileInfoCallBack localIGetFileInfoCallBack = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIGetFileInfoCallBack;
+    UniformDownloadUtil.FileInfo localFileInfo = UniformDownloadUtil.b(this.a);
+    IGetFileInfoCallBack localIGetFileInfoCallBack = this.b;
     if ((localIGetFileInfoCallBack != null) && (localFileInfo != null)) {
-      localIGetFileInfoCallBack.a(localFileInfo.jdField_a_of_type_JavaLangString, localFileInfo.jdField_a_of_type_Long);
+      localIGetFileInfoCallBack.a(localFileInfo.a, localFileInfo.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.util.UniformDownloadUtil.1
  * JD-Core Version:    0.7.0.1
  */

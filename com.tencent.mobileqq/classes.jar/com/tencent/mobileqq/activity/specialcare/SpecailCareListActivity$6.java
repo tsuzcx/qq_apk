@@ -19,7 +19,7 @@ class SpecailCareListActivity$6
       localStringBuilder.append(paramBoolean2);
       QLog.i("SpecailCareListActivity", 2, localStringBuilder.toString());
     }
-    SpecailCareListActivity.a(this.a).setChecked(paramBoolean2);
+    SpecailCareListActivity.b(this.a).setChecked(paramBoolean2);
   }
   
   protected void onSetCareBarEnable(boolean paramBoolean1, boolean paramBoolean2)
@@ -29,7 +29,7 @@ class SpecailCareListActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.6
  * JD-Core Version:    0.7.0.1
  */

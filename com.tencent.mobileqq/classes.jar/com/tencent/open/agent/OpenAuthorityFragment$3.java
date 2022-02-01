@@ -12,20 +12,20 @@ class OpenAuthorityFragment$3
   
   public void run()
   {
-    if (OpenAuthorityFragment.a(this.this$0))
+    if (OpenAuthorityFragment.c(this.this$0))
     {
       SSOLog.b("OpenAuthorityFragment", new Object[] { " activity is isInvalid" });
       return;
     }
-    OpenAuthorityFragment.a(this.this$0).d();
+    OpenAuthorityFragment.d(this.this$0).d();
     this.this$0.b();
     this.this$0.a(true);
-    AuthUIUtil.a(this.this$0.getQBaseActivity(), this.this$0.getResources().getString(2131694647), new OpenAuthorityFragment.3.1(this));
+    AuthUIUtil.a(this.this$0.getQBaseActivity(), this.this$0.getResources().getString(2131892333), new OpenAuthorityFragment.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityFragment.3
  * JD-Core Version:    0.7.0.1
  */

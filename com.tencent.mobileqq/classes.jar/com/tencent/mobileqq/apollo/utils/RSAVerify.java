@@ -40,9 +40,7 @@ public class RSAVerify
       label81:
       break label81;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]RSAVerify", 2, "verify failed");
-    }
+    QLog.d("[cmshow]RSAVerify", 1, "verify failed");
     return false;
   }
   
@@ -81,7 +79,7 @@ public class RSAVerify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.RSAVerify
  * JD-Core Version:    0.7.0.1
  */

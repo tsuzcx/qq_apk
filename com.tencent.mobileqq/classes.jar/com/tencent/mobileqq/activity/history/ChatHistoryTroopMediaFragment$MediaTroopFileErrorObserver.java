@@ -17,14 +17,14 @@ class ChatHistoryTroopMediaFragment$MediaTroopFileErrorObserver
   protected void b(Object paramObject)
   {
     super.b(paramObject);
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(102);
+    if (this.a.w != null) {
+      this.a.w.sendEmptyMessage(102);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment.MediaTroopFileErrorObserver
  * JD-Core Version:    0.7.0.1
  */

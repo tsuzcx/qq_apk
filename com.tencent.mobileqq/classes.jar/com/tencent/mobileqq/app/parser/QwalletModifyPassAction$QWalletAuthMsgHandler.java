@@ -17,10 +17,10 @@ class QwalletModifyPassAction$QWalletAuthMsgHandler
     if (paramMessage.what != 1) {
       return;
     }
-    if (QwalletModifyPassAction.a(this.a) != null)
+    if (QwalletModifyPassAction.c(this.a) != null)
     {
-      QwalletModifyPassAction.a(this.a).a();
-      this.a.a.removeObserver(QwalletModifyPassAction.a(this.a));
+      QwalletModifyPassAction.c(this.a).a();
+      this.a.a.removeObserver(QwalletModifyPassAction.c(this.a));
     }
     if (paramMessage.arg1 != 1)
     {
@@ -35,7 +35,7 @@ class QwalletModifyPassAction$QWalletAuthMsgHandler
       paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
       if (paramMessage.retCode == 0)
       {
-        QwalletModifyPassAction.b(this.a);
+        QwalletModifyPassAction.d(this.a);
         return;
       }
       if (QLog.isColorLevel())
@@ -53,7 +53,7 @@ class QwalletModifyPassAction$QWalletAuthMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QwalletModifyPassAction.QWalletAuthMsgHandler
  * JD-Core Version:    0.7.0.1
  */

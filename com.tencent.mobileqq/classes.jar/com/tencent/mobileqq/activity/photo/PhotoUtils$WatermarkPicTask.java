@@ -50,7 +50,7 @@ public class PhotoUtils$WatermarkPicTask
         }
         i1 = localBitmap.getWidth();
         n = localBitmap.getHeight();
-        m = ImageUtil.e(this.mSrcPath);
+        m = ImageUtil.j(this.mSrcPath);
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
@@ -62,7 +62,7 @@ public class PhotoUtils$WatermarkPicTask
           ((StringBuilder)localObject1).append(m);
           QLog.d("PhotoUtils", 2, ((StringBuilder)localObject1).toString());
         }
-        localObject1 = ImageUtil.a(BaseApplication.getContext().getResources(), 2130846193);
+        localObject1 = ImageUtil.a(BaseApplication.getContext().getResources(), 2130847663);
         i = 1;
         localObject3 = localObject1;
         if (i1 != 576)
@@ -186,7 +186,7 @@ public class PhotoUtils$WatermarkPicTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoUtils.WatermarkPicTask
  * JD-Core Version:    0.7.0.1
  */

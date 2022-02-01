@@ -23,18 +23,38 @@ import java.util.List;
 public class PttAutoToTxtHelper
   implements Handler.Callback, ILifeCycleHelper
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private BaseChatPie a;
+  private Handler b;
   
   public PttAutoToTxtHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    this.a = paramBaseChatPie;
+    this.b = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
   
-  private ChatMessage a()
+  private void a(ChatMessage paramChatMessage, String paramString)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
+    paramString = new UniteGrayTipParam(paramChatMessage.frienduin, paramChatMessage.selfuin, paramString, this.a.ah.a, -5020, 655392, paramChatMessage.time);
+    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
+    if (paramChatMessage.istroop == 1) {
+      localMessageForUniteGrayTip.shmsgseq = paramChatMessage.shmsgseq;
+    }
+    localMessageForUniteGrayTip.initGrayTipMsg(this.a.d, paramString);
+    UniteGrayTipMsgUtil.a(this.a.d, localMessageForUniteGrayTip);
+    QLog.e("vip_ptt.helper", 1, "It is need add gray msg and insert success");
+  }
+  
+  private boolean a()
+  {
+    if ((QVipAutoPttProcessor.e().a <= 1) && (PttConstants.f)) {
+      return QVipConfigManager.a(this.a.d, "have_add_ptt_gray_msg", false) ^ true;
+    }
+    return false;
+  }
+  
+  private ChatMessage b()
+  {
+    List localList = this.a.V.a();
     Iterator localIterator = localList.iterator();
     int i = 0;
     while (localIterator.hasNext())
@@ -59,26 +79,6 @@ public class PttAutoToTxtHelper
     return null;
   }
   
-  private void a(ChatMessage paramChatMessage, String paramString)
-  {
-    paramString = new UniteGrayTipParam(paramChatMessage.frienduin, paramChatMessage.selfuin, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, -5020, 655392, paramChatMessage.time);
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    if (paramChatMessage.istroop == 1) {
-      localMessageForUniteGrayTip.shmsgseq = paramChatMessage.shmsgseq;
-    }
-    localMessageForUniteGrayTip.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForUniteGrayTip);
-    QLog.e("vip_ptt.helper", 1, "It is need add gray msg and insert success");
-  }
-  
-  private boolean a()
-  {
-    if ((QVipAutoPttProcessor.c().a <= 1) && (PttConstants.c)) {
-      return QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", false) ^ true;
-    }
-    return false;
-  }
-  
   public String getTag()
   {
     return "vip_ptt.helper";
@@ -87,10 +87,10 @@ public class PttAutoToTxtHelper
   public boolean handleMessage(Message paramMessage)
   {
     paramMessage = (ChatMessage)paramMessage.obj;
-    if (QVipAutoPttProcessor.c().a <= 1)
+    if (QVipAutoPttProcessor.e().a <= 1)
     {
-      a(paramMessage, HardCodeUtil.a(2131708700));
-      QVipConfigManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "have_add_ptt_gray_msg", true);
+      a(paramMessage, HardCodeUtil.a(2131906481));
+      QVipConfigManager.b(this.a.d, "have_add_ptt_gray_msg", true);
     }
     return true;
   }
@@ -109,19 +109,19 @@ public class PttAutoToTxtHelper
         if (paramInt != 12) {
           return;
         }
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(10102);
+        this.b.removeMessages(10102);
         return;
       }
       if (a())
       {
         QLog.e("vip_ptt.helper", 1, "It is need add gray msg");
-        ChatMessage localChatMessage = a();
+        ChatMessage localChatMessage = b();
         if (localChatMessage == null)
         {
           QLog.e("vip_ptt.helper", 1, "It is need add gray msg,but this aio not ptt msg");
           return;
         }
-        Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+        Handler localHandler = this.b;
         localHandler.sendMessage(localHandler.obtainMessage(10102, localChatMessage));
       }
     }
@@ -133,7 +133,7 @@ public class PttAutoToTxtHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PttAutoToTxtHelper
  * JD-Core Version:    0.7.0.1
  */

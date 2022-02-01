@@ -9,49 +9,44 @@ import java.util.TreeMap;
 
 public class PromotionConfigInfo$PromotionItem
 {
-  long jdField_a_of_type_Long;
-  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
-  public String a;
-  HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final TreeMap<Integer, PromotionConfigInfo.ZipItem> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
-  public boolean a;
+  long a;
   long b;
-  public String b;
-  public long c = 0L;
-  
-  public PromotionConfigInfo$PromotionItem()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public boolean c = false;
+  public long d = 0L;
+  public String e;
+  public String f;
+  HashMap<Integer, String> g = new HashMap();
+  private ArCloudConfigInfo h = null;
+  private final TreeMap<Integer, PromotionConfigInfo.ZipItem> i = new TreeMap();
   
   public ArCloudConfigInfo a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+    return this.h;
   }
   
   public String a(int paramInt)
   {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    return (String)this.g.get(Integer.valueOf(paramInt));
   }
   
-  public TreeMap<Integer, PromotionConfigInfo.ZipItem> a()
+  public TreeMap<Integer, PromotionConfigInfo.ZipItem> b()
   {
-    return this.jdField_a_of_type_JavaUtilTreeMap;
+    return this.i;
   }
   
   public String toString()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("id[");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.e);
     ((StringBuilder)localObject1).append("], recoglizeMask[");
-    ((StringBuilder)localObject1).append(this.c);
+    ((StringBuilder)localObject1).append(this.d);
     ((StringBuilder)localObject1).append("]");
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = localObject1;
     if (QLog.isDevelopLevel())
     {
-      localObject2 = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
+      localObject2 = this.i.values().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         PromotionConfigInfo.ZipItem localZipItem = (PromotionConfigInfo.ZipItem)((Iterator)localObject2).next();
@@ -64,13 +59,13 @@ public class PromotionConfigInfo$PromotionItem
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(", begin[");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(this.a);
       ((StringBuilder)localObject2).append("], end[");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append("], title[");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.f);
       ((StringBuilder)localObject2).append("], tips[");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+      ((StringBuilder)localObject2).append(this.g.size());
       ((StringBuilder)localObject2).append("]");
       localObject2 = ((StringBuilder)localObject2).toString();
     }
@@ -79,7 +74,7 @@ public class PromotionConfigInfo$PromotionItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo.PromotionItem
  * JD-Core Version:    0.7.0.1
  */

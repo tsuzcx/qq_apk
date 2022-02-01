@@ -19,13 +19,13 @@ class ArkAppQQModule$13
     }
     localObject = ArkAppContainer.a((ark.Container)localObject);
     if ((localObject != null) && ((ArkAppContainer)((WeakReference)localObject).get() != null)) {
-      ArkTipsManager.a().b();
+      ArkTipsManager.b().e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.13
  * JD-Core Version:    0.7.0.1
  */

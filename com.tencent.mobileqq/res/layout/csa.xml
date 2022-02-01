@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/e1r" android:background="@drawable/eef" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="20.0dip">
-        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/neg" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/hln" android:scaleType="centerCrop" android:layout_centerVertical="true" />
-        <TextView android:textSize="13.0dip" android:textStyle="bold" android:textColor="#ff989eb4" android:gravity="center" android:id="@id/neh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="腾讯俱乐部" android:layout_toRightOf="@id/neg" android:layout_centerVertical="true" />
+    <View android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/b8q" android:background="@drawable/4f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.MaxHeightRecyclerView android:id="@id/oid" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View android:id="@id/bw1" android:background="#ffefeff0" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_below="@id/oid" />
+        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/black" android:gravity="center" android:id="@id/close" android:layout_width="fill_parent" android:layout_height="57.5dip" android:text="取消" android:layout_below="@id/bw1" android:layout_centerInParent="true" />
     </RelativeLayout>
-</FrameLayout>
+</RelativeLayout>

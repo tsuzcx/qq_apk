@@ -7,14 +7,14 @@ class AccountDetailVideoManager$3$1
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.h();
+    if (this.a.a.k != null) {
+      this.a.a.k.o();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailVideoManager.3.1
  * JD-Core Version:    0.7.0.1
  */

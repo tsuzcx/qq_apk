@@ -16,7 +16,7 @@ public abstract class TroopFileDeleteFileObserver
   {
     if (paramInt != 0)
     {
-      a(false, paramInt, paramBundle, "", HardCodeUtil.a(2131715152));
+      a(false, paramInt, paramBundle, "", HardCodeUtil.a(2131912640));
       return;
     }
     oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
@@ -34,7 +34,7 @@ public abstract class TroopFileDeleteFileObserver
         a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
         return;
       }
-      a(false, -1, paramBundle, "", HardCodeUtil.a(2131715156));
+      a(false, -1, paramBundle, "", HardCodeUtil.a(2131912644));
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -42,7 +42,7 @@ public abstract class TroopFileDeleteFileObserver
       label132:
       break label132;
     }
-    a(false, -1, paramBundle, "", HardCodeUtil.a(2131715148));
+    a(false, -1, paramBundle, "", HardCodeUtil.a(2131912636));
   }
   
   protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
@@ -54,7 +54,7 @@ public abstract class TroopFileDeleteFileObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.file.protocol.TroopFileDeleteFileObserver
  * JD-Core Version:    0.7.0.1
  */

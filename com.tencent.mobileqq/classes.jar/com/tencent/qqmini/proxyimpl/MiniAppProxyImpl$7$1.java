@@ -13,15 +13,15 @@ class MiniAppProxyImpl$7$1
   {
     if (this.a.a.topType == 1)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2131718864, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 2131916397, 0).show();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), 2131718865, 0).a();
+    QQToast.makeText(BaseApplicationImpl.getApplication(), 2131916398, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.7.1
  * JD-Core Version:    0.7.0.1
  */

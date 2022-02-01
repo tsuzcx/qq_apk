@@ -1,20 +1,26 @@
 package com.tencent.biz;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
 
 class AuthorizeConfig$6
   implements Runnable
 {
-  AuthorizeConfig$6(AuthorizeConfig paramAuthorizeConfig) {}
+  AuthorizeConfig$6(AuthorizeConfig paramAuthorizeConfig, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
   
   public void run()
   {
-    this.this$0.j();
-    if (this.this$0.e == null) {
-      this.this$0.f();
+    try
+    {
+      if (this.a != null)
+      {
+        this.a.getPskey(this.b, 16L, this.c, this.this$0.B);
+        return;
+      }
     }
-    if (AuthorizeConfig.a.compareAndSet(false, true)) {
-      this.this$0.c();
+    catch (Exception localException)
+    {
+      QLog.e("AuthorizeConfig", 1, new Object[] { "[preload] preloadPskey exception ", localException.toString() });
     }
   }
 }

@@ -24,38 +24,23 @@ public final class PreviewImageAdapter
     super(paramContext);
   }
   
-  private final int a()
+  private final int c()
   {
-    return (DisplayUtils.a.a(a()) - DisplayUtils.a.a(a(), 22.5F) * 2) / 11;
+    return (DisplayUtils.a.a(b()) - DisplayUtils.a.a(b(), 22.5F) * 2) / 11;
   }
   
-  private final int b()
+  private final int d()
   {
-    return DisplayUtils.a.a(a(), 56.0F);
+    return DisplayUtils.a.a(b(), 56.0F);
   }
   
   @NotNull
   public View a(@NotNull Context paramContext, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.p, paramViewGroup, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.k, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…review, viewGroup, false)");
     return paramContext;
-  }
-  
-  @NotNull
-  public PreviewImageAdapter.PreviewHolder a(@NotNull Context paramContext, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
-    paramContext = (ImageView)paramView.findViewById(R.id.aa);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "imageView");
-    paramView = paramContext.getLayoutParams();
-    paramView.width = a();
-    paramView.height = b();
-    paramContext.setLayoutParams(paramView);
-    paramContext.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    return new PreviewImageAdapter.PreviewHolder(this, paramContext);
   }
   
   public void a(int paramInt, @NotNull CaptureTask paramCaptureTask, @NotNull PreviewImageAdapter.PreviewHolder paramPreviewHolder, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
@@ -63,13 +48,28 @@ public final class PreviewImageAdapter
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "bean");
     Intrinsics.checkParameterIsNotNull(paramPreviewHolder, "holder");
     Intrinsics.checkParameterIsNotNull(paramView, "itemView");
-    paramCaptureTask = paramCaptureTask.a();
+    paramCaptureTask = paramCaptureTask.b();
     paramPreviewHolder.a().setImageBitmap(paramCaptureTask);
+  }
+  
+  @NotNull
+  public PreviewImageAdapter.PreviewHolder b(@NotNull Context paramContext, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
+    paramContext = (ImageView)paramView.findViewById(R.id.F);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "imageView");
+    paramView = paramContext.getLayoutParams();
+    paramView.width = c();
+    paramView.height = d();
+    paramContext.setLayoutParams(paramView);
+    paramContext.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    return new PreviewImageAdapter.PreviewHolder(this, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.PreviewImageAdapter
  * JD-Core Version:    0.7.0.1
  */

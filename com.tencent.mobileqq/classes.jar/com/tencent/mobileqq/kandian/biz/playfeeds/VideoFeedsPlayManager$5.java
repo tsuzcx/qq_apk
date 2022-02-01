@@ -12,16 +12,16 @@ class VideoFeedsPlayManager$5
   
   public void run()
   {
-    if ((VideoFeedsPlayManager.a(this.this$0) != null) && (VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_AndroidViewView != null))
+    if ((VideoFeedsPlayManager.i(this.this$0) != null) && (VideoFeedsPlayManager.b(this.this$0).b != null))
     {
-      if (VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoUIDelegate != null) {
-        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoUIDelegate.c(VideoFeedsPlayManager.a(this.this$0));
+      if (VideoFeedsPlayManager.b(this.this$0).o != null) {
+        VideoFeedsPlayManager.b(this.this$0).o.c(VideoFeedsPlayManager.b(this.this$0));
       }
-      if (VideoFeedsPlayManager.a(this.this$0) != null)
+      if (VideoFeedsPlayManager.g(this.this$0) != null)
       {
-        Iterator localIterator = VideoFeedsPlayManager.a(this.this$0).iterator();
+        Iterator localIterator = VideoFeedsPlayManager.g(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).c(VideoFeedsPlayManager.a(this.this$0));
+          ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).c(VideoFeedsPlayManager.b(this.this$0));
         }
       }
     }
@@ -29,7 +29,7 @@ class VideoFeedsPlayManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager.5
  * JD-Core Version:    0.7.0.1
  */

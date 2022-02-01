@@ -10,13 +10,13 @@ class ScanEntranceReport$7
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("select_image_avg_time", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "scanner_ar_cloud_upload_count", true, this.jdField_a_of_type_Int, 0L, localHashMap, "");
+    localHashMap.put("select_image_avg_time", String.valueOf(this.a));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "scanner_ar_cloud_upload_count", true, this.b, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanEntranceReport.7
  * JD-Core Version:    0.7.0.1
  */

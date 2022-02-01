@@ -11,12 +11,12 @@ class NearbyProfileEditPanel$3
   
   public void onConfirmBtClicked()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    Object localObject = this.b;
     if ((localObject != null) && (((ActionSheet)localObject).isShowing()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel;
-      NearbyProfileEditPanel.a((NearbyProfileEditPanel)localObject, ((NearbyProfileEditPanel)localObject).c, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      localObject = this.c;
+      ((NearbyProfileEditPanel)localObject).a(((NearbyProfileEditPanel)localObject).p, false);
+      this.b.dismiss();
     }
   }
   
@@ -27,28 +27,28 @@ class NearbyProfileEditPanel$3
       if (paramInt1 != 1)
       {
         if (paramInt1 == 2) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h = paramInt2;
+          this.c.R = paramInt2;
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.g = paramInt2;
+        this.c.Q = paramInt2;
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.f = paramInt2;
+      this.c.P = paramInt2;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
+    if (this.a != null)
     {
       if ((paramInt1 == 0) || (paramInt1 == 1)) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+        this.a.a(2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
+      this.c.a(this.a.b(0), this.a.b(1), this.a.b(2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.3
  * JD-Core Version:    0.7.0.1
  */

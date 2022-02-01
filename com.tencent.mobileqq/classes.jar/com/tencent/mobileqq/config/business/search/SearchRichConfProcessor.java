@@ -53,7 +53,7 @@ public class SearchRichConfProcessor
       localStringBuilder.append(paramSearchRichConfBean);
       QLog.d("SearchRichConfProcessor", 2, localStringBuilder.toString());
     }
-    RichNodeFactory.a().a();
+    RichNodeFactory.a().b();
   }
   
   public Class<SearchRichConfBean> clazz()
@@ -94,7 +94,7 @@ public class SearchRichConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.SearchRichConfProcessor
  * JD-Core Version:    0.7.0.1
  */

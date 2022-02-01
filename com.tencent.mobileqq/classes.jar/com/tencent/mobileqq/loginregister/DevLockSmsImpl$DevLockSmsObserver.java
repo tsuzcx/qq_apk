@@ -95,10 +95,10 @@ class DevLockSmsImpl$DevLockSmsObserver
     }
     if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
-      QQToast.a(localQBaseActivity, 1, paramErrMsg.getMessage(), 0).a();
+      QQToast.makeText(localQBaseActivity, 1, paramErrMsg.getMessage(), 0).show();
       return;
     }
-    QQToast.a(localQBaseActivity, 1, localQBaseActivity.getString(2131716609), 0).a();
+    QQToast.makeText(localQBaseActivity, 1, localQBaseActivity.getString(2131914072), 0).show();
   }
   
   private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
@@ -156,10 +156,10 @@ class DevLockSmsImpl$DevLockSmsObserver
     localICommonSmsView.clearWrongCode();
     if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
-      QQToast.a(paramDevlockInfo, 1, paramErrMsg.getMessage(), 0).a();
+      QQToast.makeText(paramDevlockInfo, 1, paramErrMsg.getMessage(), 0).show();
       return;
     }
-    QQToast.a(paramDevlockInfo, 1, paramDevlockInfo.getString(2131716609), 0).a();
+    QQToast.makeText(paramDevlockInfo, 1, paramDevlockInfo.getString(2131914072), 0).show();
   }
   
   public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
@@ -220,7 +220,7 @@ class DevLockSmsImpl$DevLockSmsObserver
   
   public void onVerifySuccess(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool = GatewayLoginNewDevHelper.a();
+    boolean bool = GatewayLoginNewDevHelper.b();
     paramToServiceMsg = new StringBuilder();
     paramToServiceMsg.append("gateway_login_new_dev onVerifySuccess isGateWayFlow=");
     paramToServiceMsg.append(bool);
@@ -245,7 +245,7 @@ class DevLockSmsImpl$DevLockSmsObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.DevLockSmsImpl.DevLockSmsObserver
  * JD-Core Version:    0.7.0.1
  */

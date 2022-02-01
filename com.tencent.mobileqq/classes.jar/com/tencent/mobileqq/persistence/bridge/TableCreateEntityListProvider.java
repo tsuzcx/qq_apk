@@ -11,9 +11,9 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 public class TableCreateEntityListProvider
   implements Provider<Entity[]>
 {
-  private Entity[] a = { new DataLineMsgRecord(1), a() };
+  private Entity[] a = { new DataLineMsgRecord(1), b() };
   
-  private MessageRecord a()
+  private MessageRecord b()
   {
     MessageRecord localMessageRecord = MessageRecordFactory.a(-1000);
     localMessageRecord.frienduin = AppConstants.LBS_HELLO_UIN;
@@ -29,7 +29,7 @@ public class TableCreateEntityListProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.TableCreateEntityListProvider
  * JD-Core Version:    0.7.0.1
  */

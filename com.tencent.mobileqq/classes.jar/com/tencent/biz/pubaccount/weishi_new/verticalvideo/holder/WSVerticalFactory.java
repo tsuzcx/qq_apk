@@ -26,11 +26,11 @@ public class WSVerticalFactory
     }
     try
     {
-      Iterator localIterator = paramWSVerticalPageFragment.a().getDataList().iterator();
+      Iterator localIterator = paramWSVerticalPageFragment.b().getDataList().iterator();
       while (localIterator.hasNext())
       {
         WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)localIterator.next();
-        if ((localWSVerticalItemData.a() != null) && (GdtAdUtil.a(new GdtAd(GdtAdUtil.a(localWSVerticalItemData.a())), 105586)))
+        if ((localWSVerticalItemData.e() != null) && (GdtAdUtil.a(new GdtAd(GdtAdUtil.a(localWSVerticalItemData.b())), 105586)))
         {
           WSLog.e("WSVerticalFactory", "命中实验，走老逻辑");
           return new NewGdtAdWSVerticalCommonVideoHolder(paramViewGroup, paramInt, paramWSVerticalPageFragment);
@@ -51,7 +51,7 @@ public class WSVerticalFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalFactory
  * JD-Core Version:    0.7.0.1
  */

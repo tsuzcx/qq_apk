@@ -21,18 +21,6 @@ public class AVPathUtil
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
-  public static String a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return Environment.getExternalStorageDirectory().getPath();
-    }
-    File localFile = paramContext.getExternalFilesDir(null);
-    if ((localFile != null) && (!a(paramContext))) {
-      return localFile.getPath();
-    }
-    return Environment.getExternalStorageDirectory().getPath();
-  }
-  
   public static boolean a(Context paramContext)
   {
     boolean bool2 = a;
@@ -69,6 +57,18 @@ public class AVPathUtil
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
+  public static String b(Context paramContext)
+  {
+    if (paramContext == null) {
+      return Environment.getExternalStorageDirectory().getPath();
+    }
+    File localFile = paramContext.getExternalFilesDir(null);
+    if ((localFile != null) && (!a(paramContext))) {
+      return localFile.getPath();
+    }
+    return Environment.getExternalStorageDirectory().getPath();
+  }
+  
   public static String c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -91,11 +91,29 @@ public class AVPathUtil
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a());
+    localStringBuilder.append("avatar2d");
+    localStringBuilder.append(File.separator);
+    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+  }
+  
+  public static String f()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(e());
+    localStringBuilder.append("avatar2d_usable");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public static String g()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
     localStringBuilder.append("effect");
     return localStringBuilder.toString();
   }
   
-  public static String f()
+  public static String h()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a());
@@ -104,28 +122,11 @@ public class AVPathUtil
     return localStringBuilder.toString();
   }
   
-  public static String g()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(f());
-    localStringBuilder.append("pendant");
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
-  public static String h()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(g());
-    localStringBuilder.append("pendant_update_template.json");
-    return localStringBuilder.toString();
-  }
-  
   public static String i()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(f());
-    localStringBuilder.append("face");
+    localStringBuilder.append(h());
+    localStringBuilder.append("pendant");
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
@@ -134,11 +135,45 @@ public class AVPathUtil
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(i());
-    localStringBuilder.append("face_update_template.json");
+    localStringBuilder.append("pendant_update_template.json");
     return localStringBuilder.toString();
   }
   
   public static String k()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(h());
+    localStringBuilder.append("face");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public static String l()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(k());
+    localStringBuilder.append("face_update_template.json");
+    return localStringBuilder.toString();
+  }
+  
+  public static String m()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(h());
+    localStringBuilder.append("avatar2d");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public static String n()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(m());
+    localStringBuilder.append("avatar_2d_update_template.json");
+    return localStringBuilder.toString();
+  }
+  
+  public static String o()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
@@ -147,7 +182,7 @@ public class AVPathUtil
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
-  public static String l()
+  public static String p()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a());
@@ -156,7 +191,7 @@ public class AVPathUtil
     return localStringBuilder.toString();
   }
   
-  public static String m()
+  public static String q()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
@@ -165,7 +200,7 @@ public class AVPathUtil
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
-  public static String n()
+  public static String r()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
@@ -173,10 +208,10 @@ public class AVPathUtil
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
-  public static String o()
+  public static String s()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(BaseApplication.getContext()));
+    localStringBuilder.append(b(BaseApplication.getContext()));
     localStringBuilder.append("/tencent/msflogs/com/tencent/mobileqq/");
     return localStringBuilder.toString();
   }

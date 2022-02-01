@@ -9,18 +9,18 @@ class UFTFileUploaderCbWrapper$1
   
   public void run()
   {
-    if (this.this$0.b) {
+    if (this.this$0.n) {
       return;
     }
     this.this$0.a(true);
-    if (this.this$0.a != null) {
-      this.this$0.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+    if (this.this$0.l != null) {
+      this.this$0.l.a(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.upload.UFTFileUploaderCbWrapper.1
  * JD-Core Version:    0.7.0.1
  */

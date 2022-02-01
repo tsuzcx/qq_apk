@@ -665,7 +665,7 @@ public class SplashMiniGameUtil
             deleteConfig(paramString);
           }
         }
-        BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().putString("appVersion", "8.7.0.5295").commit();
+        BaseApplicationImpl.getApplication().getSharedPreferences("minigame_splash_setting", 0).edit().putString("appVersion", "8.8.17.5770").commit();
         SplashMiniGameStarter.refresh();
         return;
       }
@@ -676,7 +676,7 @@ public class SplashMiniGameUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.splash.SplashMiniGameUtil
  * JD-Core Version:    0.7.0.1
  */

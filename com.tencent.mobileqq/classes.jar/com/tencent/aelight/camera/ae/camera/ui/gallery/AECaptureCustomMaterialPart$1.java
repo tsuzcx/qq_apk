@@ -14,9 +14,9 @@ class AECaptureCustomMaterialPart$1
   
   public void onClick(View paramView)
   {
-    if ((AECaptureCustomMaterialPart.a(this.a) != null) && (AECaptureCustomMaterialPart.a(this.a).containsKey(AECaptureCustomMaterialPart.a(this.a).k)))
+    if ((AECaptureCustomMaterialPart.a(this.a) != null) && (AECaptureCustomMaterialPart.b(this.a).containsKey(AECaptureCustomMaterialPart.a(this.a).m)))
     {
-      paramView = ((AECaptureCustomMaterialPart.MaterialConfigWrapper)AECaptureCustomMaterialPart.a(this.a).get(AECaptureCustomMaterialPart.a(this.a).k)).a;
+      paramView = ((AECaptureCustomMaterialPart.MaterialConfigWrapper)AECaptureCustomMaterialPart.b(this.a).get(AECaptureCustomMaterialPart.a(this.a).m)).a;
       if (paramView != null)
       {
         boolean bool;
@@ -25,14 +25,14 @@ class AECaptureCustomMaterialPart$1
         } else {
           bool = false;
         }
-        PicChooseJumpUtil.a(AECaptureCustomMaterialPart.a(this.a), 1027, bool, paramView.minImageWidth, paramView.minImageHeight);
+        PicChooseJumpUtil.a(AECaptureCustomMaterialPart.c(this.a), 1027, bool, paramView.minImageWidth, paramView.minImageHeight);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.gallery.AECaptureCustomMaterialPart.1
  * JD-Core Version:    0.7.0.1
  */

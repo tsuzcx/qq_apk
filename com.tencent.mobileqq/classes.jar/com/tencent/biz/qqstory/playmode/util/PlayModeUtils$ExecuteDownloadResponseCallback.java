@@ -13,23 +13,23 @@ import java.io.File;
 public class PlayModeUtils$ExecuteDownloadResponseCallback
   implements FFmpegExecuteResponseCallback
 {
-  public long a;
-  public StoryVideoItem a;
   public String a;
-  public String b;
+  public StoryVideoItem b;
+  public long c;
+  public String d;
   
   public PlayModeUtils$ExecuteDownloadResponseCallback(String paramString1, StoryVideoItem paramStoryVideoItem, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.b = paramString2;
+    this.a = paramString1;
+    this.b = paramStoryVideoItem;
+    this.d = paramString2;
   }
   
   public void onFailure(String paramString)
   {
-    paramString = new PlayModeUtils.DownloadStatusChangeEvent(this.b, 3, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    paramString = new PlayModeUtils.DownloadStatusChangeEvent(this.d, 3, this.b);
     StoryDispatcher.a().dispatch(paramString);
-    StoryReportor.a("play_video", "down_fail", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    StoryReportor.a("play_video", "down_fail", 0, 0, new String[] { "", "", "", this.b.mVid });
     StoryReportor.a("play_video", "down_watermark", 0, 1, new String[0]);
   }
   
@@ -39,28 +39,28 @@ public class PlayModeUtils$ExecuteDownloadResponseCallback
   
   public void onStart()
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    PlayModeUtils.DownloadStatusChangeEvent localDownloadStatusChangeEvent = new PlayModeUtils.DownloadStatusChangeEvent(this.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    this.c = SystemClock.uptimeMillis();
+    PlayModeUtils.DownloadStatusChangeEvent localDownloadStatusChangeEvent = new PlayModeUtils.DownloadStatusChangeEvent(this.d, 0, this.b);
     StoryDispatcher.a().dispatch(localDownloadStatusChangeEvent);
   }
   
   public void onSuccess(String paramString)
   {
-    paramString = new PlayModeUtils.DownloadStatusChangeEvent(this.b, 2, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    paramString.b = this.jdField_a_of_type_JavaLangString;
+    paramString = new PlayModeUtils.DownloadStatusChangeEvent(this.d, 2, this.b);
+    paramString.d = this.a;
     StoryDispatcher.a().dispatch(paramString);
     long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    long l3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration;
-    StoryReportor.a("play_video", "down_suc", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    long l2 = this.c;
+    long l3 = this.b.mVideoDuration;
+    StoryReportor.a("play_video", "down_suc", 0, 0, new String[] { "", "", "", this.b.mVid });
     StoryReportor.a("play_video", "down_watermark_time", 0, 0, new String[] { String.valueOf(l1 - l2), String.valueOf(l3) });
     StoryReportor.a("play_video", "down_watermark", 0, 0, new String[0]);
-    FileUtils.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
+    FileUtils.a(BaseApplication.getContext(), new File(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.ExecuteDownloadResponseCallback
  * JD-Core Version:    0.7.0.1
  */

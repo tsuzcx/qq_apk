@@ -7,18 +7,18 @@ import com.tencent.mobileqq.activity.contacts.base.BuddyListItem.ViewTag;
 public class BuddyListTroop$TroopDisChildTag
   extends BuddyListItem.ViewTag
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public boolean a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
+  public int d;
+  public TextView e;
+  public TextView f;
+  public ImageView g;
+  public ImageView h;
+  public TextView i;
+  public ImageView j;
+  public boolean k;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.BuddyListTroop.TroopDisChildTag
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package androidx.appcompat.widget;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
-final class AppCompatSpinner$SavedState$1
+class AppCompatSpinner$SavedState$1
   implements Parcelable.Creator<AppCompatSpinner.SavedState>
 {
   public AppCompatSpinner.SavedState createFromParcel(Parcel paramParcel)

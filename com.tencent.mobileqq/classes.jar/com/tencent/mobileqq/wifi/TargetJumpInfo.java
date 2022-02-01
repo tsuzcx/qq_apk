@@ -7,50 +7,44 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class TargetJumpInfo
 {
-  public int a;
-  public String a;
-  
-  public TargetJumpInfo()
-  {
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public int a = 4;
+  public String b = "";
   
   public static TargetJumpInfo a(QQAppInterface paramQQAppInterface)
   {
     TargetJumpInfo localTargetJumpInfo = new TargetJumpInfo();
     BaseApplication localBaseApplication = paramQQAppInterface.getApp();
     paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    int i = WifiSdkSharedPreUtils.a(localBaseApplication, paramQQAppInterface);
+    int i = WifiSdkSharedPreUtils.b(localBaseApplication, paramQQAppInterface);
     if (i == 1)
     {
-      localTargetJumpInfo.jdField_a_of_type_Int = 1;
-      localTargetJumpInfo.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
+      localTargetJumpInfo.a = 1;
+      localTargetJumpInfo.b = a(localBaseApplication, paramQQAppInterface);
       return localTargetJumpInfo;
     }
     if (i == 2)
     {
-      localTargetJumpInfo.jdField_a_of_type_Int = 2;
+      localTargetJumpInfo.a = 2;
       return localTargetJumpInfo;
     }
-    if ((WifiSdkUtil.a(localBaseApplication)) && (WifiSdkUtil.b(localBaseApplication)) && (WifiSdkUtil.c(localBaseApplication)))
+    if ((WifiSdkUtil.c(localBaseApplication)) && (WifiSdkUtil.d(localBaseApplication)) && (WifiSdkUtil.e(localBaseApplication)))
     {
-      localTargetJumpInfo.jdField_a_of_type_Int = 4;
+      localTargetJumpInfo.a = 4;
       return localTargetJumpInfo;
     }
     if (i == 3)
     {
-      localTargetJumpInfo.jdField_a_of_type_Int = 3;
-      localTargetJumpInfo.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
+      localTargetJumpInfo.a = 3;
+      localTargetJumpInfo.b = a(localBaseApplication, paramQQAppInterface);
       return localTargetJumpInfo;
     }
-    localTargetJumpInfo.jdField_a_of_type_Int = 5;
+    localTargetJumpInfo.a = 5;
     return localTargetJumpInfo;
   }
   
   public static String a(Context paramContext, String paramString)
   {
-    paramString = WifiSdkSharedPreUtils.b(paramContext, paramString);
+    paramString = WifiSdkSharedPreUtils.c(paramContext, paramString);
     paramContext = paramString;
     if (TextUtils.isEmpty(paramString)) {
       paramContext = "https://sdi.3g.qq.com/v/2018082711463211194";
@@ -60,7 +54,7 @@ public class TargetJumpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.TargetJumpInfo
  * JD-Core Version:    0.7.0.1
  */

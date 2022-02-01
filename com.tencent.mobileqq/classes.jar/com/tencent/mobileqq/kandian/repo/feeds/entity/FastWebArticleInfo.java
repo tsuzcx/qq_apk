@@ -14,34 +14,28 @@ public class FastWebArticleInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FastWebArticleInfo> CREATOR = new FastWebArticleInfo.1();
-  public int a;
-  public long a;
-  public SparseArray<ModuleInfo> a;
-  public String a;
-  public List<ArticleTopicInfo> a;
-  protected final Map<String, JSONObject> a;
-  public boolean a;
-  public int b;
-  public long b;
+  public List<ArticleTopicInfo> A;
+  public int B = 0;
+  public String C = "";
+  public String D;
+  public String E;
+  public SparseArray<ModuleInfo> F = new SparseArray();
+  public String G;
+  public int H;
+  public List<ArticleTopicInfo> I;
+  public final List<String> J = new ArrayList();
+  public boolean K;
+  public String L;
+  public int M;
+  public boolean N;
+  protected final Map<String, JSONObject> a = new HashMap();
   public String b;
-  public List<ArticleTopicInfo> b;
-  public boolean b;
-  public int c;
   public long c;
-  public String c;
-  public final List<String> c;
-  public boolean c;
-  public int d;
   public long d;
-  public String d;
-  public boolean d;
-  public int e;
   public long e;
-  public String e;
-  public boolean e;
-  public String f;
-  public String g;
-  public String h;
+  public int f;
+  public long g = 0L;
+  public boolean h;
   public String i;
   public String j;
   public String k;
@@ -49,55 +43,52 @@ public class FastWebArticleInfo
   public String m;
   public String n;
   public String o;
-  public String p = "";
+  public String p;
   public String q;
   public String r;
-  public String s;
+  public int s;
   public String t;
-  
-  public FastWebArticleInfo()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-  }
+  public String u;
+  public String v;
+  public boolean w;
+  public String x;
+  public long y;
+  public boolean z;
   
   public JSONObject a(String paramString)
   {
-    return (JSONObject)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    return (JSONObject)this.a.get(paramString);
   }
   
   public void a(long paramLong1, long paramLong2)
   {
-    this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Long = paramLong2;
+    this.d = paramLong1;
+    this.c = paramLong2;
   }
   
   public void a(String paramString, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramJSONObject);
+    this.a.put(paramString, paramJSONObject);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.z = paramBoolean;
   }
   
   public boolean a()
   {
-    return (this.jdField_b_of_type_Int & 0x2) != 0;
+    return (this.s & 0x2) != 0;
   }
   
   public boolean b()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.z;
   }
   
   public boolean c()
   {
-    return (this.jdField_b_of_type_Int & 0x1) == 0;
+    return (this.s & 0x1) == 0;
   }
   
   public int describeContents()
@@ -109,94 +100,94 @@ public class FastWebArticleInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FastWebArticleInfo{articleContent='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", articleReadCnt=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", commentCnt=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", biuCnt=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", likeCnt=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", isLiked=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", commentJumpUrl='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", title='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", desc='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", accountName='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", publicTime='");
     localStringBuilder.append(this.f);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", accountIcon='");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", accountAuthor='");
+    localStringBuilder.append(", isLiked=");
     localStringBuilder.append(this.h);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", shareWord='");
+    localStringBuilder.append(", commentJumpUrl='");
     localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", rowKey='");
+    localStringBuilder.append(", title='");
     localStringBuilder.append(this.j);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", articleContentUrl='");
+    localStringBuilder.append(", desc='");
     localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", flag=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", tags='");
+    localStringBuilder.append(", accountName='");
     localStringBuilder.append(this.l);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", unionSentimentEntity='");
+    localStringBuilder.append(", publicTime='");
     localStringBuilder.append(this.m);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", unioChann='");
+    localStringBuilder.append(", accountIcon='");
     localStringBuilder.append(this.n);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", needUpdataDynamicData=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", articleId='");
+    localStringBuilder.append(", accountAuthor='");
     localStringBuilder.append(this.o);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", puin=");
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append(", isFavorite=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(", mTopicInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuilder.append(", mSourceIds=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaUtilList);
-    localStringBuilder.append(", mDynamicJsonData=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap);
-    localStringBuilder.append(", mBusinessCashFlag=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", mBusinessCashInfo='");
+    localStringBuilder.append(", shareWord='");
     localStringBuilder.append(this.p);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", mProteusJsonData='");
+    localStringBuilder.append(", rowKey='");
     localStringBuilder.append(this.q);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", mArticleCoverUrl='");
+    localStringBuilder.append(", articleContentUrl='");
     localStringBuilder.append(this.r);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", mUpdateModuleInfos=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidUtilSparseArray);
-    localStringBuilder.append(", articleUrl='");
+    localStringBuilder.append(", flag=");
     localStringBuilder.append(this.s);
+    localStringBuilder.append(", tags='");
+    localStringBuilder.append(this.t);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", unionSentimentEntity='");
+    localStringBuilder.append(this.u);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", unioChann='");
+    localStringBuilder.append(this.v);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", needUpdataDynamicData=");
+    localStringBuilder.append(this.w);
+    localStringBuilder.append(", articleId='");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", puin=");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", isFavorite=");
+    localStringBuilder.append(this.z);
+    localStringBuilder.append(", mTopicInfo=");
+    localStringBuilder.append(this.A);
+    localStringBuilder.append(", mSourceIds=");
+    localStringBuilder.append(this.J);
+    localStringBuilder.append(", mDynamicJsonData=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", mBusinessCashFlag=");
+    localStringBuilder.append(this.B);
+    localStringBuilder.append(", mBusinessCashInfo='");
+    localStringBuilder.append(this.C);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mProteusJsonData='");
+    localStringBuilder.append(this.D);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mArticleCoverUrl='");
+    localStringBuilder.append(this.E);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mUpdateModuleInfos=");
+    localStringBuilder.append(this.F);
+    localStringBuilder.append(", articleUrl='");
+    localStringBuilder.append(this.G);
     localStringBuilder.append('\'');
     localStringBuilder.append(", articleSource=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.H);
     localStringBuilder.append(", useWebview=");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(this.K);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
@@ -208,7 +199,7 @@ public class FastWebArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.FastWebArticleInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class AddFriendVerifyFragment$13
   
   public void onClick(View paramView)
   {
-    if ((AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment) != null) && (AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment).isShowing()) && (AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment).getWindow() != null)) {}
+    if ((AddFriendVerifyFragment.j(this.b) != null) && (AddFriendVerifyFragment.j(this.b).isShowing()) && (AddFriendVerifyFragment.j(this.b).getWindow() != null)) {}
     try
     {
-      AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment).dismiss();
-      AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment, -1, this.jdField_a_of_type_JavaLangString);
+      AddFriendVerifyFragment.j(this.b).dismiss();
+      AddFriendVerifyFragment.a(this.b, -1, this.a);
       label58:
-      AddFriendVerifyFragment.a(this.jdField_a_of_type_ComTencentMobileqqAddfriendUiAddFriendVerifyFragment, null);
+      AddFriendVerifyFragment.a(this.b, null);
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
@@ -30,7 +30,7 @@ class AddFriendVerifyFragment$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.13
  * JD-Core Version:    0.7.0.1
  */

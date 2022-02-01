@@ -12,7 +12,7 @@ class MatchChatSettingFragment$2$1
   {
     BaseActivity localBaseActivity = this.a.this$0.getBaseActivity();
     if (localBaseActivity != null) {
-      QQToast.a(localBaseActivity, 2131699000, 0).a();
+      QQToast.makeText(localBaseActivity, 2131897004, 0).show();
     }
   }
 }

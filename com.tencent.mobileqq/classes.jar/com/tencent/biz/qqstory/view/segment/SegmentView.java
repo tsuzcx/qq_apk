@@ -10,86 +10,83 @@ import com.tencent.biz.qqstory.utils.AssertUtils;
 
 public abstract class SegmentView<T>
 {
-  protected Context a;
-  private SegmentList jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-  private SegmentManager jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager;
-  protected boolean a;
+  private SegmentManager a;
+  private SegmentList b;
+  protected Context l;
+  protected boolean m = true;
   
   public SegmentView(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.l = paramContext;
   }
-  
-  protected void M_() {}
-  
-  public void P_() {}
-  
-  protected void R_() {}
   
   public abstract int a();
   
-  protected int a(int paramInt)
-  {
-    return 0;
-  }
-  
   public abstract View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup);
   
-  public BaseViewHolder a(int paramInt)
-  {
-    Object localObject = a();
-    int i = 0;
-    if (localObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("segment:");
-      ((StringBuilder)localObject).append(a());
-      ((StringBuilder)localObject).append(" have not attach to listView. It can not check isOnScreen.");
-      AssertUtils.fail(((StringBuilder)localObject).toString(), new Object[0]);
-      return null;
-    }
-    while (i < ((SegmentList)localObject).getChildCount())
-    {
-      BaseViewHolder localBaseViewHolder = (BaseViewHolder)((SegmentList)localObject).getChildAt(i).getTag();
-      if ((localBaseViewHolder != null) && (localBaseViewHolder.a.equals(a())) && (localBaseViewHolder.b == paramInt)) {
-        return localBaseViewHolder;
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
   public abstract BaseViewHolder a(int paramInt, ViewGroup paramViewGroup);
-  
-  protected SegmentList a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-  }
-  
-  public abstract String a();
   
   protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public void a(SegmentManager paramSegmentManager, SegmentList paramSegmentList)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager = paramSegmentManager;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList = paramSegmentList;
+    this.a = paramSegmentManager;
+    this.b = paramSegmentList;
   }
   
-  public boolean a()
+  public void a_(BaseViewHolder paramBaseViewHolder) {}
+  
+  public abstract String b();
+  
+  public void b(int paramInt) {}
+  
+  public void b_(BaseViewHolder paramBaseViewHolder) {}
+  
+  public void br_() {}
+  
+  protected void bs_() {}
+  
+  public boolean bt_()
   {
     return true;
   }
   
-  public boolean a(BaseViewHolder paramBaseViewHolder)
+  protected void bz_() {}
+  
+  public void c(BaseViewHolder paramBaseViewHolder) {}
+  
+  public void c(boolean paramBoolean)
   {
-    SegmentList localSegmentList = a();
+    if (paramBoolean != this.m) {
+      this.m = paramBoolean;
+    }
+  }
+  
+  protected boolean d(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public final void e(boolean paramBoolean)
+  {
+    AssertUtils.mainThreadCheck();
+    SegmentManager localSegmentManager = this.a;
+    if (localSegmentManager != null)
+    {
+      localSegmentManager.a(b(), paramBoolean);
+      this.a.notifyDataSetChanged();
+    }
+    InfoPrinter.b("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged ", Boolean.valueOf(paramBoolean) });
+  }
+  
+  public boolean e(BaseViewHolder paramBaseViewHolder)
+  {
+    SegmentList localSegmentList = w();
     if (localSegmentList == null)
     {
       paramBaseViewHolder = new StringBuilder();
       paramBaseViewHolder.append("segment:");
-      paramBaseViewHolder.append(a());
+      paramBaseViewHolder.append(b());
       paramBaseViewHolder.append(" have not attach to listView. It can not check isOnScreen.");
       AssertUtils.fail(paramBaseViewHolder.toString(), new Object[0]);
       return false;
@@ -99,96 +96,98 @@ public abstract class SegmentView<T>
     }
     int i = localSegmentList.getFirstVisiblePosition();
     int j = localSegmentList.getLastVisiblePosition();
-    int k = paramBaseViewHolder.c;
+    int k = paramBaseViewHolder.g;
     return (k >= i) && (k <= j);
   }
   
-  public void a_(BaseViewHolder paramBaseViewHolder) {}
-  
-  public void a_(boolean paramBoolean)
+  protected int f()
   {
-    if (paramBoolean != this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-    }
+    return 1;
   }
   
-  protected boolean a_(boolean paramBoolean)
+  public BaseViewHolder f(int paramInt)
   {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "";
-  }
-  
-  protected void b() {}
-  
-  public void b_(BaseViewHolder paramBaseViewHolder) {}
-  
-  protected void c() {}
-  
-  public void c(BaseViewHolder paramBaseViewHolder) {}
-  
-  public final void c(boolean paramBoolean)
-  {
-    AssertUtils.mainThreadCheck();
-    SegmentManager localSegmentManager = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager;
-    if (localSegmentManager != null)
+    Object localObject = w();
+    int i = 0;
+    if (localObject == null)
     {
-      localSegmentManager.a(a(), paramBoolean);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.notifyDataSetChanged();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("segment:");
+      ((StringBuilder)localObject).append(b());
+      ((StringBuilder)localObject).append(" have not attach to listView. It can not check isOnScreen.");
+      AssertUtils.fail(((StringBuilder)localObject).toString(), new Object[0]);
+      return null;
     }
-    InfoPrinter.b("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged ", Boolean.valueOf(paramBoolean) });
+    while (i < ((SegmentList)localObject).getChildCount())
+    {
+      BaseViewHolder localBaseViewHolder = (BaseViewHolder)((SegmentList)localObject).getChildAt(i).getTag();
+      if ((localBaseViewHolder != null) && (localBaseViewHolder.e.equals(b())) && (localBaseViewHolder.f == paramInt)) {
+        return localBaseViewHolder;
+      }
+      i += 1;
+    }
+    return null;
   }
   
-  public boolean c()
+  protected void g() {}
+  
+  public void g(int paramInt)
   {
-    return this.jdField_a_of_type_Boolean;
+    paramInt = this.a.a(this, paramInt);
+    w().setSelection(paramInt);
   }
   
-  public int d()
+  protected int g_(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    return 0;
+  }
+  
+  protected void h() {}
+  
+  protected void i() {}
+  
+  public void o() {}
+  
+  public int s()
+  {
+    if (this.m) {
       return a();
     }
     return 0;
   }
   
-  protected void d() {}
-  
-  public void d(int paramInt)
+  public boolean t()
   {
-    paramInt = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(this, paramInt);
-    a().setSelection(paramInt);
+    return this.m;
   }
   
-  protected boolean d()
+  protected void u()
   {
-    SegmentList localSegmentList = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
-    if (localSegmentList == null) {
-      return false;
-    }
-    localSegmentList.a(a());
-    return true;
-  }
-  
-  protected int d_()
-  {
-    return 1;
-  }
-  
-  public void f_(int paramInt) {}
-  
-  public void k() {}
-  
-  protected void m()
-  {
-    SegmentManager localSegmentManager = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager;
+    SegmentManager localSegmentManager = this.a;
     if (localSegmentManager == null) {
       return;
     }
     localSegmentManager.notifyDataSetChanged();
+  }
+  
+  protected boolean v()
+  {
+    SegmentList localSegmentList = this.b;
+    if (localSegmentList == null) {
+      return false;
+    }
+    localSegmentList.a(b());
+    return true;
+  }
+  
+  protected SegmentList w()
+  {
+    return this.b;
+  }
+  
+  public String x()
+  {
+    return "";
   }
 }
 

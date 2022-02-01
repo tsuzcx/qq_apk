@@ -10,34 +10,29 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public abstract class BusinessManager
 {
-  protected static final String[] a;
-  protected VideoAppInterface a;
+  protected static final String[] b = { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_MAKEUP", "MANAGER_VIRTUAL_BG", "MANAGER_EFFECT_MATERIAL", "MANAGER_AVAYAR_2D" };
   public final String a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_MAKEUP", "MANAGER_VIRTUAL_BG", "MANAGER_EFFECT_MATERIAL" };
-  }
+  protected VideoAppInterface c;
   
   protected BusinessManager(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.c = paramVideoAppInterface;
     paramVideoAppInterface = new StringBuilder();
     paramVideoAppInterface.append(getClass().getSimpleName());
     paramVideoAppInterface.append("_");
-    paramVideoAppInterface.append(AudioHelper.b());
-    this.jdField_a_of_type_JavaLangString = paramVideoAppInterface.toString();
+    paramVideoAppInterface.append(AudioHelper.c());
+    this.a = paramVideoAppInterface.toString();
   }
   
   public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if ((paramInt >= 0) && (paramInt < 18) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
+    if ((paramInt >= 0) && (paramInt < 19) && (paramInt < b.length))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Business_");
-      ((StringBuilder)localObject).append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      ((StringBuilder)localObject).append(b[paramInt]);
       localObject = ((StringBuilder)localObject).toString();
-      paramContext = SharedPreUtils.b(paramContext).edit();
+      paramContext = SharedPreUtils.C(paramContext).edit();
       paramContext.putBoolean((String)localObject, paramBoolean);
       paramContext.commit();
       paramContext = new StringBuilder();
@@ -54,13 +49,13 @@ public abstract class BusinessManager
   
   static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < 18) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
+    if ((paramInt >= 0) && (paramInt < 19) && (paramInt < b.length))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Business_");
-      ((StringBuilder)localObject).append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      ((StringBuilder)localObject).append(b[paramInt]);
       localObject = ((StringBuilder)localObject).toString();
-      boolean bool = SharedPreUtils.b(paramVideoAppInterface.getApplication()).getBoolean((String)localObject, false);
+      boolean bool = SharedPreUtils.C(paramVideoAppInterface.getApplication()).getBoolean((String)localObject, false);
       paramVideoAppInterface = new StringBuilder();
       paramVideoAppInterface.append("isPreloaded:");
       paramVideoAppInterface.append((String)localObject);

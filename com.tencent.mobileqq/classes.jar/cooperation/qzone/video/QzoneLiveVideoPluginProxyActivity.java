@@ -65,16 +65,16 @@ public class QzoneLiveVideoPluginProxyActivity
       if ("qzone_live_video_plugin.apk".equals(localObject))
       {
         localObject = new IPluginManager.PluginParams(0);
-        ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((IPluginManager.PluginParams)localObject).f = paramString2;
-        ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangClass = localClass;
-        ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-        ((IPluginManager.PluginParams)localObject).c = paramInt;
-        ((IPluginManager.PluginParams)localObject).d = 15000;
-        ((IPluginManager.PluginParams)localObject).g = null;
-        ((IPluginManager.PluginParams)localObject).jdField_b_of_type_Boolean = false;
-        ((IPluginManager.PluginParams)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
-        ((IPluginManager.PluginParams)localObject).e = "QZoneLiveVideo";
+        ((IPluginManager.PluginParams)localObject).c = paramString1;
+        ((IPluginManager.PluginParams)localObject).h = paramString2;
+        ((IPluginManager.PluginParams)localObject).i = localClass;
+        ((IPluginManager.PluginParams)localObject).j = paramIntent;
+        ((IPluginManager.PluginParams)localObject).k = paramInt;
+        ((IPluginManager.PluginParams)localObject).r = 15000;
+        ((IPluginManager.PluginParams)localObject).q = null;
+        ((IPluginManager.PluginParams)localObject).p = false;
+        ((IPluginManager.PluginParams)localObject).d = "qzone_live_video_plugin.apk";
+        ((IPluginManager.PluginParams)localObject).g = "QZoneLiveVideo";
         if (QLog.isColorLevel()) {
           QLog.d("PluginDebug", 2, "加载原始插件");
         }
@@ -132,7 +132,7 @@ public class QzoneLiveVideoPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ import com.tencent.qphone.base.util.QLog;
 class SelectMemberBuddyListAdapter$TroopMemberFaceUtil
   implements DecodeTaskCompletionListener
 {
-  protected IFaceDecoder a;
-  boolean jdField_a_of_type_Boolean = true;
+  boolean a = true;
+  protected IFaceDecoder b;
   
   public SelectMemberBuddyListAdapter$TroopMemberFaceUtil(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter, Context paramContext, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
+    this.b = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
+    this.b.setDecodeTaskCompletionListener(this);
   }
   
   private Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    Object localObject = this.b;
     if (localObject == null) {
       return null;
     }
@@ -37,8 +37,8 @@ class SelectMemberBuddyListAdapter$TroopMemberFaceUtil
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append("]");
     QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, paramInt1, true, paramByte);
-    return BaseImageUtil.f();
+    this.b.requestDecodeFace(paramString, paramInt1, true, paramByte);
+    return BaseImageUtil.k();
   }
   
   public Bitmap a(TroopMemberInfo paramTroopMemberInfo)
@@ -50,11 +50,11 @@ class SelectMemberBuddyListAdapter$TroopMemberFaceUtil
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null) {
+      if (this.b == null) {
         break label29;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
+      this.b.destory();
+      this.b = null;
     }
     catch (Exception localException)
     {
@@ -62,8 +62,8 @@ class SelectMemberBuddyListAdapter$TroopMemberFaceUtil
       label29:
       break label24;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
-    this.jdField_a_of_type_Boolean = true;
+    this.b = null;
+    this.a = true;
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -73,15 +73,15 @@ class SelectMemberBuddyListAdapter$TroopMemberFaceUtil
     localStringBuilder.append(paramString);
     localStringBuilder.append("]");
     QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
-    SelectMemberBuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberBuddyListAdapter, paramString, paramBitmap);
+    SelectMemberBuddyListAdapter.a(this.c, paramString, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberBuddyListAdapter.TroopMemberFaceUtil
  * JD-Core Version:    0.7.0.1
  */

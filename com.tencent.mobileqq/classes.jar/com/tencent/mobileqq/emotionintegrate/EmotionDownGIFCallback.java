@@ -14,40 +14,40 @@ import mqq.util.WeakReference;
 public class EmotionDownGIFCallback
   implements DownCallBack, UiCallBack
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  private WeakReference<EmotionDownGIFCallback.UiCallback> jdField_a_of_type_MqqUtilWeakReference;
+  private Handler a;
+  private MessageForPic b;
+  private WeakReference<EmotionDownGIFCallback.UiCallback> c;
   
   public EmotionDownGIFCallback(MessageForPic paramMessageForPic, Handler paramHandler, EmotionDownGIFCallback.UiCallback paramUiCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramUiCallback);
+    this.b = paramMessageForPic;
+    this.a = paramHandler;
+    this.c = new WeakReference(paramUiCallback);
   }
   
   public void a(int paramInt) {}
   
   public void a(int paramInt, PicResult paramPicResult)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)
+    if (this.c.get() == null)
     {
       QLog.d("EmotionDownGIFCallback", 1, "onDownload fail, callback is null");
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramPicResult.jdField_a_of_type_Int) });
+      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownload ", Integer.valueOf(paramPicResult.a) });
     }
-    if (paramPicResult.jdField_a_of_type_Int == 0)
+    if (paramPicResult.a == 0)
     {
-      ((EmotionDownGIFCallback.UiCallback)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      ((EmotionDownGIFCallback.UiCallback)this.c.get()).a(true, this.b);
       return;
     }
-    if (-1 == paramPicResult.jdField_a_of_type_Int)
+    if (-1 == paramPicResult.a)
     {
-      if (paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo != null) {
-        QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b });
+      if (paramPicResult.b != null) {
+        QLog.d("EmotionDownGIFCallback", 1, new Object[] { "onDownloadFail errDec:", paramPicResult.b.b });
       }
-      ((EmotionDownGIFCallback.UiCallback)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      ((EmotionDownGIFCallback.UiCallback)this.c.get()).a(false, this.b);
     }
   }
   
@@ -55,12 +55,12 @@ public class EmotionDownGIFCallback
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.2(this, paramInt));
+    this.a.post(new EmotionDownGIFCallback.2(this, paramInt));
   }
   
   public void a(DownCallBack.DownResult paramDownResult)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EmotionDownGIFCallback.1(this, paramDownResult));
+    this.a.post(new EmotionDownGIFCallback.1(this, paramDownResult));
   }
   
   public void a_(int paramInt, boolean paramBoolean)
@@ -71,10 +71,10 @@ public class EmotionDownGIFCallback
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" needRefresh:");
       localStringBuilder.append(paramBoolean);
-      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", localStringBuilder.toString(), " picMr:", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq) });
+      QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onUpdateProgress:", localStringBuilder.toString(), " picMr:", Long.valueOf(this.b.uniseq) });
     }
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      ((EmotionDownGIFCallback.UiCallback)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    if (this.c.get() != null) {
+      ((EmotionDownGIFCallback.UiCallback)this.c.get()).a(paramInt, this.b);
     }
   }
   
@@ -86,7 +86,7 @@ public class EmotionDownGIFCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback
  * JD-Core Version:    0.7.0.1
  */

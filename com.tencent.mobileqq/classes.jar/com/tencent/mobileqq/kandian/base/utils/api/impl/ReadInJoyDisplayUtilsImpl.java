@@ -32,13 +32,13 @@ public final class ReadInJoyDisplayUtilsImpl
   @Nullable
   public Pair<Integer, Integer> getReadinjoyFeedsBigPictureSize()
   {
-    return ReadInJoyDisplayUtils.e();
+    return ReadInJoyDisplayUtils.f();
   }
   
   @Nullable
   public Pair<Integer, Integer> getReadinjoyFeedsSmallPictureSize()
   {
-    return ReadInJoyDisplayUtils.a();
+    return ReadInJoyDisplayUtils.b();
   }
   
   public boolean shouldShowPlaceHolder(@Nullable Context paramContext, @Nullable URL paramURL)
@@ -48,7 +48,7 @@ public final class ReadInJoyDisplayUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.api.impl.ReadInJoyDisplayUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

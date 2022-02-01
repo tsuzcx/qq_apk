@@ -40,7 +40,7 @@ public class PluginAdapterImpl
   
   public void initSkinEngine(Context paramContext)
   {
-    SkinEngine.init(paramContext, 8191, 2130837504, 2130851335, 1264, 2131165184, 2131167446, null);
+    SkinEngine.init(paramContext, 8191, 2130837504, 2130853739, 1264, 2131165184, 2131168543, null);
   }
   
   public Object invoke(int paramInt, Object paramObject)
@@ -103,7 +103,7 @@ public class PluginAdapterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

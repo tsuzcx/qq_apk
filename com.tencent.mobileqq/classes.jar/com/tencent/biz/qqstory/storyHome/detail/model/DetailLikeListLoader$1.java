@@ -17,22 +17,22 @@ class DetailLikeListLoader$1
     Object localObject1 = (LikeManager)SuperManager.a(15);
     ??? = DetailLikeListLoader.a(this.this$0);
     boolean bool;
-    if (DetailLikeListLoader.a(this.this$0) == 1) {
+    if (DetailLikeListLoader.b(this.this$0) == 1) {
       bool = true;
     } else {
       bool = false;
     }
     ??? = ((LikeManager)localObject1).a((String)???, bool);
     localObject1 = new DetailLikeListLoader.GetLikeListEvent(new ErrorMessage(), DetailLikeListLoader.a(this.this$0));
-    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_b_of_type_Boolean = true;
-    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_Boolean = DetailLikeListLoader.a(this.this$0);
-    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_Int = DetailLikeListLoader.a(this.this$0);
-    ((DetailLikeListLoader.GetLikeListEvent)localObject1).c = -1;
-    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_b_of_type_Int = -1;
-    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_JavaUtilList = ((List)???);
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).h = true;
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).b = DetailLikeListLoader.c(this.this$0);
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).c = DetailLikeListLoader.b(this.this$0);
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).e = -1;
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).d = -1;
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).f = ((List)???);
     synchronized (this.this$0)
     {
-      if (!DetailLikeListLoader.b(this.this$0))
+      if (!DetailLikeListLoader.d(this.this$0))
       {
         StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject1);
         SLog.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from cache: %s", localObject1);

@@ -21,12 +21,12 @@ class DiscussionInfoCardActivity$3
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
-      localObject1 = this.a.getString(2131691791);
-      DiscussionInfoCardActivity.a(this.a).setContentDescription((CharSequence)localObject1);
+      localObject1 = this.a.getString(2131888753);
+      DiscussionInfoCardActivity.b(this.a).setContentDescription((CharSequence)localObject1);
     }
-    Object localObject1 = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
+    Object localObject1 = DiscussionInfoCardActivity.d(this.a).b(DiscussionInfoCardActivity.c(this.a), this.a.app.getCurrentAccountUin());
     if (localObject1 != null)
     {
       int i = ((DiscussionMemberInfo)localObject1).flag;
@@ -47,13 +47,13 @@ class DiscussionInfoCardActivity$3
           ((StringBuilder)localObject2).append(b);
           QLog.d("DiscussionInfoCardActivity", 4, ((StringBuilder)localObject2).toString());
         }
-        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, ((DiscussionMemberInfo)localObject1).flag);
+        DiscussionInfoCardActivity.e(this.a).a(Long.valueOf(DiscussionInfoCardActivity.c(this.a)).longValue(), b, ((DiscussionMemberInfo)localObject1).flag);
         if (paramBoolean) {
           localObject1 = "msg_open";
         } else {
           localObject1 = "msg_close";
         }
-        TroopReportor.a("Grp_Dis_set", "Dis_info", (String)localObject1, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), DiscussionInfoCardActivity.a(this.a.app, this.a.a) });
+        TroopReportor.a("Grp_Dis_set", "Dis_info", (String)localObject1, 0, 0, new String[] { DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.a(this.a.app, this.a.h) });
       }
       Object localObject2 = this.a.app;
       if (paramBoolean) {
@@ -76,7 +76,7 @@ class DiscussionInfoCardActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.3
  * JD-Core Version:    0.7.0.1
  */

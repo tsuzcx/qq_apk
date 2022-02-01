@@ -22,12 +22,12 @@ import com.tencent.mobileqq.kandian.repo.account.RIJUserLevelModule;
 public class ReadInJoyLikeButton
   extends ButtonBase
 {
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean;
-  private AnimatorSet b = new AnimatorSet();
+  private LinearLayout a;
+  private ImageView b;
+  private TextView c;
+  private boolean d;
+  private AnimatorSet e = new AnimatorSet();
+  private AnimatorSet f = new AnimatorSet();
   
   public ReadInJoyLikeButton(VafContext paramVafContext)
   {
@@ -37,29 +37,29 @@ public class ReadInJoyLikeButton
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.0F }).setDuration(200L), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.0F }).setDuration(200L) });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new ReadInJoyLikeButton.1(this));
-    this.b.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 0.0F, 1.1F, 1.0F }).setDuration(200L), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 0.0F, 1.1F, 1.0F }).setDuration(200L) });
-    this.b.addListener(new ReadInJoyLikeButton.2(this));
+    this.e.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.b, "scaleX", new float[] { 1.0F, 0.0F }).setDuration(200L), ObjectAnimator.ofFloat(this.b, "scaleY", new float[] { 1.0F, 0.0F }).setDuration(200L) });
+    this.e.addListener(new ReadInJoyLikeButton.1(this));
+    this.f.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.b, "scaleX", new float[] { 0.0F, 1.1F, 1.0F }).setDuration(200L), ObjectAnimator.ofFloat(this.b, "scaleY", new float[] { 0.0F, 1.1F, 1.0F }).setDuration(200L) });
+    this.f.addListener(new ReadInJoyLikeButton.2(this));
   }
   
   private void a(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramVafContext.getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramVafContext.getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
+    this.a = new LinearLayout(paramVafContext.getContext());
+    this.b = new ImageView(paramVafContext.getContext());
+    this.c = new TextView(paramVafContext.getContext());
     paramVafContext = new LinearLayout.LayoutParams(-2, -2);
     paramVafContext.gravity = 16;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramVafContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramVafContext);
+    this.a.setOrientation(0);
+    this.a.setGravity(1);
+    this.a.addView(this.b, paramVafContext);
+    this.a.addView(this.c, paramVafContext);
     a();
   }
   
   private void a(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    this.c.setText(paramCharSequence);
   }
   
   private void b()
@@ -68,29 +68,29 @@ public class ReadInJoyLikeButton
     super.onClick();
     boolean bool = isSelected() ^ true;
     super.setSelected(bool);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSelected(bool);
+    this.c.setSelected(bool);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetImageView.setSelected(isSelected());
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    this.d = true;
+    this.b.setSelected(isSelected());
+    this.e.start();
   }
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredHeight();
+    return this.a.getMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth();
+    return this.a.getMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    return this.a;
   }
   
   public boolean onClick()
@@ -101,23 +101,23 @@ public class ReadInJoyLikeButton
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.measure(paramInt1, paramInt2);
+    this.a.measure(paramInt1, paramInt2);
   }
   
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-    this.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.mTextSize);
-    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(this.mCompoundDrawablePadding, 0, 0, 0);
+    this.a.setClickable(true);
+    this.a.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+    this.c.setClickable(true);
+    this.c.setIncludeFontPadding(false);
+    this.c.setTextSize(0, this.mTextSize);
+    this.c.setPadding(this.mCompoundDrawablePadding, 0, 0, 0);
     a(this.mText);
   }
   
@@ -130,24 +130,24 @@ public class ReadInJoyLikeButton
   
   protected void setBackgroundForStates()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    Object localObject = this.a.getContext();
     localObject = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject, getStatus(0).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(1).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(4).background, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable((Drawable)localObject);
+    this.a.setBackgroundDrawable((Drawable)localObject);
   }
   
   protected void setCompoundDrawableForStates()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    Object localObject = this.a.getContext();
     localObject = DrawableUtil.getSelector(DrawableUtil.getDrawable((Context)localObject, getStatus(0).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(1).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER), DrawableUtil.getDrawable((Context)localObject, getStatus(4).img, this.TRANSPARENT_PLACE_HOLDER, this.GRAY_PLACEHOLDER));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    this.b.setImageDrawable((Drawable)localObject);
   }
   
   public void setSelected(boolean paramBoolean)
   {
     super.setSelected(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSelected(paramBoolean);
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(paramBoolean);
+    this.c.setSelected(paramBoolean);
+    if (!this.d) {
+      this.b.setSelected(paramBoolean);
     }
   }
   
@@ -156,19 +156,19 @@ public class ReadInJoyLikeButton
     if (!TextUtils.equals(paramCharSequence, this.mText))
     {
       this.mText = paramCharSequence;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.c.setText(paramCharSequence);
     }
   }
   
   protected void setTextColorForStates()
   {
     ColorStateList localColorStateList = ColorUtil.getColorStateList(getStatus(0).textColor, getStatus(1).textColor, getStatus(4).textColor);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
+    this.c.setTextColor(localColorStateList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyLikeButton
  * JD-Core Version:    0.7.0.1
  */

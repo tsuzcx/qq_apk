@@ -19,13 +19,13 @@ public class DefaultAnimManager
   
   public int getPullRefreshAreaHeight()
   {
-    return this.mContext.getResources().getDimensionPixelSize(2131298921);
+    return this.mContext.getResources().getDimensionPixelSize(2131299643);
   }
   
   public View getRefreshView(ViewGroup paramViewGroup)
   {
     if (this.mTopRefresh == null) {
-      this.mTopRefresh = ((PullRefreshHeader)LayoutInflater.from(this.mContext).inflate(2131559642, paramViewGroup, false));
+      this.mTopRefresh = ((PullRefreshHeader)LayoutInflater.from(this.mContext).inflate(2131625671, paramViewGroup, false));
     }
     return (View)this.mTopRefresh;
   }
@@ -91,7 +91,7 @@ public class DefaultAnimManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.anim.DefaultAnimManager
  * JD-Core Version:    0.7.0.1
  */

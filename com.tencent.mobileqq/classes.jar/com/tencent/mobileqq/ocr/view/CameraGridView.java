@@ -11,11 +11,11 @@ import com.tencent.mobileqq.util.DisplayUtil;
 public class CameraGridView
   extends View
 {
-  private int jdField_a_of_type_Int = 2;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = null;
+  private int a = 2;
   private int b = 2;
   private int c;
   private int d;
+  private Paint e = null;
   
   public CameraGridView(Context paramContext)
   {
@@ -35,17 +35,17 @@ public class CameraGridView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(DisplayUtil.a(getContext(), 0.5F));
+    this.e = new Paint();
+    this.e.setColor(-1);
+    this.e.setStyle(Paint.Style.FILL);
+    this.e.setStrokeWidth(DisplayUtil.a(getContext(), 0.5F));
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = this.c;
-    int j = this.jdField_a_of_type_Int;
+    int j = this.a;
     int k = 1;
     int n = i / (j + 1);
     int m = this.d / (this.b + 1);
@@ -54,17 +54,17 @@ public class CameraGridView
     for (;;)
     {
       j = k;
-      if (i > this.jdField_a_of_type_Int) {
+      if (i > this.a) {
         break;
       }
       f = n * i;
-      paramCanvas.drawLine(f, 0.0F, f, this.d, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawLine(f, 0.0F, f, this.d, this.e);
       i += 1;
     }
     while (j <= this.b)
     {
       f = m * j;
-      paramCanvas.drawLine(0.0F, f, this.c, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawLine(0.0F, f, this.c, f, this.e);
       j += 1;
     }
   }
@@ -78,7 +78,7 @@ public class CameraGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.CameraGridView
  * JD-Core Version:    0.7.0.1
  */

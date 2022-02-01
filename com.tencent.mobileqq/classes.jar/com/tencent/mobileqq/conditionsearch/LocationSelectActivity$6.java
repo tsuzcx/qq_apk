@@ -17,19 +17,19 @@ class LocationSelectActivity$6
     } else {
       paramLBSInfo = null;
     }
-    if (Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L)
+    if (Math.abs(System.currentTimeMillis() - this.a.l) > 1200L)
     {
       this.a.a(paramBoolean, paramLBSInfo);
       return;
     }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
+    Message localMessage = this.a.n.obtainMessage(1000);
     localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    this.a.n.sendMessageDelayed(localMessage, 1200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.LocationSelectActivity.6
  * JD-Core Version:    0.7.0.1
  */

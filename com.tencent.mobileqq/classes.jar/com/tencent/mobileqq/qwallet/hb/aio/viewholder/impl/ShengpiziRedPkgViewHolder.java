@@ -6,10 +6,13 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.qwallet.temp.IQWalletMsgHolder;
 import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 import com.tencent.mobileqq.qqpay.ui.R.drawable;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.config.IQWalletHtmlOfflineConfigService;
 import com.tencent.mobileqq.qwallet.hb.aio.QQWalletBaseMsgElem;
 import com.tencent.mobileqq.qwallet.hb.aio.elem.ICustomizeStrategyFactory.OnCustomizeListener;
 import com.tencent.mobileqq.qwallet.hb.aio.passwd.IPasswdRedBagService;
@@ -22,47 +25,32 @@ import org.json.JSONObject;
 public class ShengpiziRedPkgViewHolder
   extends BaseViewHolder
 {
-  IPasswdRedBagService a;
-  public String a;
-  public String b = "";
+  IPasswdRedBagService y;
   
-  public ShengpiziRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
+  public ShengpiziRedPkgViewHolder(BaseQQAppInterface paramBaseQQAppInterface, BaseSessionInfo paramBaseSessionInfo, IQWalletMsgHolder paramIQWalletMsgHolder, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
   {
-    super(paramBaseQQAppInterface, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService = ((IPasswdRedBagService)paramBaseQQAppInterface.getRuntimeService(IPasswdRedBagService.class, ""));
-    if (a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.getPasswdRedBagInfoById(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {
-      this.i = 0;
+    super(paramBaseQQAppInterface, paramBaseSessionInfo, paramIQWalletMsgHolder, paramQQWalletBaseMsgElem, paramInt, paramOnCustomizeListener);
+    this.y = ((IPasswdRedBagService)paramBaseQQAppInterface.getRuntimeService(IPasswdRedBagService.class, ""));
+    if (a(this.y.getPasswdRedBagInfoById(this.b.mQQWalletRedPacketMsg.redPacketId))) {
+      this.o = 0;
     } else {
-      this.i = paramQQWalletBaseMsgElem.j;
+      this.o = paramQQWalletBaseMsgElem.w;
     }
-    this.j = R.drawable.N;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = super.a();
-    if (bool) {
-      return bool;
-    }
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setVisibility(0);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setTextColor(-8947849);
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.a().setText("生僻字红包");
-    return true;
+    this.r = R.drawable.N;
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b() == null) {
+      if (this.a.g() == null) {
         return;
       }
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b().setVisibility(0);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b().setTextSize(15.0F);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b().setTextColor(-1);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg.body.shengpiziMask)) {
-        this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.b().setText(this.jdField_a_of_type_ComTencentMobileqqDataQQWalletRedPacketMsg.body.shengpiziMask);
+      this.a.g().setVisibility(0);
+      this.a.g().setTextSize(15.0F);
+      this.a.g().setTextColor(-1);
+      if (!TextUtils.isEmpty(this.c.body.shengpiziMask)) {
+        this.a.g().setText(this.c.body.shengpiziMask);
       }
     }
   }
@@ -72,16 +60,17 @@ public class ShengpiziRedPkgViewHolder
     super.e();
     try
     {
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setTextColor(-1);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setTextSize(48.0F);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setText(QWalletTools.a(this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().getContext(), this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioQQWalletBaseMsgElem.jdField_a_of_type_JavaLangString, 330, this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().getPaint()));
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().getLayoutParams();
+      this.a.h().setTextColor(-1);
+      this.a.h().setTextSize(48.0F);
+      this.a.h().setText(QWalletTools.a(this.a.h().getContext(), this.d.c, 330, this.a.h().getPaint()));
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.h().getLayoutParams();
       localLayoutParams.width = ScreenUtil.dip2px(64.0F);
       localLayoutParams.height = ScreenUtil.dip2px(64.0F);
       localLayoutParams.addRule(14);
       localLayoutParams.topMargin = ScreenUtil.dip2px(9.0F);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setBackgroundResource(R.drawable.i);
+      this.a.h().setLayoutParams(localLayoutParams);
+      this.a.h().setBackgroundResource(R.drawable.i);
+      ((IQWalletHtmlOfflineConfigService)QRoute.api(IQWalletHtmlOfflineConfigService.class)).setShengpiziTypeface(this.a.h());
       return;
     }
     catch (Throwable localThrowable)
@@ -90,10 +79,21 @@ public class ShengpiziRedPkgViewHolder
     }
   }
   
-  public void h()
+  public boolean g()
   {
-    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.getPasswdRedBagInfoById(localQQWalletRedPacketMsg.redPacketId);
+    boolean bool = super.g();
+    if (bool) {
+      return bool;
+    }
+    this.a.c().setVisibility(0);
+    this.a.c().setText("生僻字红包");
+    return true;
+  }
+  
+  public void i()
+  {
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.b.mQQWalletRedPacketMsg;
+    Object localObject2 = this.y.getPasswdRedBagInfoById(localQQWalletRedPacketMsg.redPacketId);
     Object localObject1 = localObject2;
     PasswdRedBagInfo localPasswdRedBagInfo;
     if (localObject2 == null)
@@ -101,26 +101,26 @@ public class ShengpiziRedPkgViewHolder
       localObject2 = new JSONObject();
       try
       {
-        ((JSONObject)localObject2).put("hb_from", localQQWalletRedPacketMsg.elem.m);
+        ((JSONObject)localObject2).put("hb_from", localQQWalletRedPacketMsg.elem.A);
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-      localPasswdRedBagInfo = new PasswdRedBagInfo(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, localQQWalletRedPacketMsg.body.shengpiziMD5, false, false, 8, ((JSONObject)localObject2).toString());
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.savePasswdRedBag(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, localQQWalletRedPacketMsg.body.shengpiziMask, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdIPasswdRedBagService.transType(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 8, "", ((JSONObject)localObject2).toString());
+      localPasswdRedBagInfo = new PasswdRedBagInfo(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.b.senderuin, this.b.time + 90000L, localQQWalletRedPacketMsg.body.shengpiziMD5, false, false, 8, ((JSONObject)localObject2).toString());
+      this.y.savePasswdRedBag(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, localQQWalletRedPacketMsg.body.shengpiziMask, this.b.senderuin, this.b.time + 90000L, String.valueOf(this.y.transType(this.b.istroop)), this.b.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 8, "", ((JSONObject)localObject2).toString());
     }
     if (!a(localPasswdRedBagInfo))
     {
-      this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setVisibility(8);
+      this.a.e().setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComQwalletTempIQWalletMsgHolder.c().setVisibility(0);
+    this.a.e().setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.viewholder.impl.ShengpiziRedPkgViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ class MiniAppDesktop$RedDotAppletsObserver
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("MiniAppDesktop", 2, ((StringBuilder)localObject).toString());
     }
-    if (MiniAppConfProcessor.h())
+    if (MiniAppConfProcessor.m())
     {
       localObject = this.layoutReference;
       if (localObject != null)
@@ -46,7 +46,7 @@ class MiniAppDesktop$RedDotAppletsObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.RedDotAppletsObserver
  * JD-Core Version:    0.7.0.1
  */

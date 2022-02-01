@@ -32,7 +32,7 @@ public class MsgTabStoryUtil
       if (a(localMsgTabNodeInfo)) {
         paramList2.add(localMsgTabNodeInfo);
       }
-      if ((paramList1 != null) || (!TextUtils.equals(paramString, localMsgTabNodeInfo.jdField_a_of_type_JavaLangString))) {
+      if ((paramList1 != null) || (!TextUtils.equals(paramString, localMsgTabNodeInfo.d))) {
         break label16;
       }
     }
@@ -46,12 +46,12 @@ public class MsgTabStoryUtil
   
   public static boolean a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    return (paramMsgTabNodeInfo.jdField_a_of_type_Int == 5) || (paramMsgTabNodeInfo.jdField_a_of_type_Int == 6) || (paramMsgTabNodeInfo.jdField_a_of_type_Int == 7) || (paramMsgTabNodeInfo.jdField_a_of_type_Int == 8) || (paramMsgTabNodeInfo.jdField_a_of_type_Int == 9) || (paramMsgTabNodeInfo.jdField_a_of_type_Int == 12) || (paramMsgTabNodeInfo.jdField_a_of_type_Int == 13);
+    return (paramMsgTabNodeInfo.b == 5) || (paramMsgTabNodeInfo.b == 6) || (paramMsgTabNodeInfo.b == 7) || (paramMsgTabNodeInfo.b == 8) || (paramMsgTabNodeInfo.b == 9) || (paramMsgTabNodeInfo.b == 12) || (paramMsgTabNodeInfo.b == 13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil
  * JD-Core Version:    0.7.0.1
  */

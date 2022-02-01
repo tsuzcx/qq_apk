@@ -65,15 +65,15 @@ public class VasProfileSimpleView
   
   private void initDiyTextView(View paramView)
   {
-    this.mDiyTextEdit = ((ImageView)paramView.findViewById(2131373102));
-    this.mDiyEditHint = ((TextView)paramView.findViewById(2131373103));
+    this.mDiyTextEdit = ((ImageView)paramView.findViewById(2131440704));
+    this.mDiyEditHint = ((TextView)paramView.findViewById(2131440705));
     this.mDiyTextEdit.setTag(new DataTag(73, this.mDiyEditHint));
     this.mDiyTextEdit.setOnClickListener(this.mOnClickListener);
   }
   
   private View initMainView(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131562030, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131628456, this, true);
   }
   
   private String jointPlaceStr(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
@@ -127,9 +127,9 @@ public class VasProfileSimpleView
   
   private void prepareForEnterAnimation(View paramView)
   {
-    this.mBottomBarHeight = getResources().getDimensionPixelSize(2131297080);
+    this.mBottomBarHeight = getResources().getDimensionPixelSize(2131297461);
     this.mStatusBarHeight = ProfileCardUtil.a(getResources());
-    this.mBlankView = paramView.findViewById(2131368778);
+    this.mBlankView = paramView.findViewById(2131435699);
     paramView = (RelativeLayout.LayoutParams)this.mBlankView.getLayoutParams();
     if (this.mActivity != null) {
       paramView.height = ((int)this.mScreenHeight - ProfileCardUtil.b(this.mActivity, 129) - ProfileCardUtil.b(this.mActivity, 18) - this.mBottomBarHeight - this.mStatusBarHeight);
@@ -162,11 +162,11 @@ public class VasProfileSimpleView
     } else {
       i = -1;
     }
-    if ((i > 0) && (!ProfileCardUtil.a()))
+    if ((i > 0) && (!ProfileCardUtil.c()))
     {
       paramCard = new StringBuilder();
       paramCard.append(i);
-      paramCard.append(this.mActivity.getString(2131719391));
+      paramCard.append(this.mActivity.getString(2131916946));
       paramCard = paramCard.toString();
     }
     else
@@ -198,9 +198,9 @@ public class VasProfileSimpleView
     Card localCard = paramProfileCardInfo.card;
     String str = "";
     if (localCard != null) {
-      str = jointPlaceStr("", localCard.strCountry, 2131716254, localCard.strProvince, localCard.strCity);
+      str = jointPlaceStr("", localCard.strCountry, 2131913696, localCard.strProvince, localCard.strCity);
     } else if (paramContactCard != null) {
-      str = jointPlaceStr("", paramContactCard.strCountry, 2131716253, paramContactCard.strProvince, paramContactCard.strCity);
+      str = jointPlaceStr("", paramContactCard.strCountry, 2131913695, paramContactCard.strProvince, paramContactCard.strCity);
     }
     if (QLog.isColorLevel())
     {
@@ -244,9 +244,9 @@ public class VasProfileSimpleView
   private void showSexTxt(ProfileCardInfo paramProfileCardInfo, String paramString, int paramInt)
   {
     if (paramInt == 0) {
-      paramString = this.mActivity.getString(2131693879);
+      paramString = this.mActivity.getString(2131891484);
     } else if (paramInt == 1) {
-      paramString = this.mActivity.getString(2131692259);
+      paramString = this.mActivity.getString(2131889246);
     }
     if (QLog.isColorLevel())
     {
@@ -283,24 +283,24 @@ public class VasProfileSimpleView
   
   private void updateAvatarArea(ProfileCardInfo paramProfileCardInfo, Context paramContext, View paramView)
   {
-    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131368780);
+    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131435701);
     localAvatarLayout.setVisibility(0);
-    Object localObject = (ImageView)paramView.findViewById(2131368781);
+    Object localObject = (ImageView)paramView.findViewById(2131435702);
     this.templateUtils.updateViewAttr((View)localObject, "src", paramProfileCardInfo.currentTemplate, "commonFaceBackground");
     localObject = new DataTag(1, null);
     localAvatarLayout.setTag(localObject);
     localAvatarLayout.setOnClickListener(this.mOnClickListener);
     if (paramProfileCardInfo.allInOne.pa == 0) {
-      paramContext = paramContext.getString(2131691197);
+      paramContext = paramContext.getString(2131888143);
     } else {
-      paramContext = paramContext.getString(2131691196);
+      paramContext = paramContext.getString(2131888142);
     }
     localAvatarLayout.setContentDescription(paramContext);
-    localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363438), false);
+    localAvatarLayout.a(0, localAvatarLayout.findViewById(2131429335), false);
     this.mHeaderChildMap.put("map_key_face", localAvatarLayout);
-    this.mHeaderChildMap.put("map_key_face_stoke", paramView.findViewById(2131368781));
+    this.mHeaderChildMap.put("map_key_face_stoke", paramView.findViewById(2131435702));
     super.updateAvatar(paramProfileCardInfo.allInOne);
-    paramContext = (ImageView)paramView.findViewById(2131368617);
+    paramContext = (ImageView)paramView.findViewById(2131435529);
     paramContext.setVisibility(4);
     paramContext.setOnClickListener(this.mOnClickListener);
     paramContext.setTag(localObject);
@@ -310,9 +310,9 @@ public class VasProfileSimpleView
   
   private void updateBaseInfoArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    this.mSexText = ((TextView)paramView.findViewById(2131368790));
-    this.mAgeText = ((TextView)paramView.findViewById(2131368788));
-    this.mAreaText = ((TextView)paramView.findViewById(2131368789));
+    this.mSexText = ((TextView)paramView.findViewById(2131435711));
+    this.mAgeText = ((TextView)paramView.findViewById(2131435709));
+    this.mAreaText = ((TextView)paramView.findViewById(2131435710));
     this.templateUtils.updateViewAttr(this.mSexText, "color", paramProfileCardInfo.currentTemplate, "simpleAddressColor");
     this.templateUtils.updateViewAttr(this.mAgeText, "color", paramProfileCardInfo.currentTemplate, "simpleAddressColor");
     this.templateUtils.updateViewAttr(this.mAreaText, "color", paramProfileCardInfo.currentTemplate, "simpleAddressColor");
@@ -324,7 +324,7 @@ public class VasProfileSimpleView
   
   private void updateHeadArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (ProfileNameView)paramView.findViewById(2131368795);
+    paramView = (ProfileNameView)paramView.findViewById(2131435716);
     this.templateUtils.updateViewAttr(paramView, "color", paramProfileCardInfo.currentTemplate, "simpleNickNameColor");
     paramView.setVisibility(0);
     paramView.setClickable(true);
@@ -335,8 +335,8 @@ public class VasProfileSimpleView
   
   private void updateLikeArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    VoteView localVoteView = (VoteView)paramView.findViewById(2131380996);
-    paramView = (HeartLayout)paramView.findViewById(2131368151);
+    VoteView localVoteView = (VoteView)paramView.findViewById(2131449991);
+    paramView = (HeartLayout)paramView.findViewById(2131435008);
     paramView.setEnabled(false);
     localVoteView.setHeartLayout(this.mApp, paramView);
     this.mHeaderChildMap.put("map_key_like", localVoteView);
@@ -345,7 +345,7 @@ public class VasProfileSimpleView
   
   private void updatePhotoWallArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (VipPhotoViewForSimple)paramView.findViewById(2131374935);
+    paramView = (VipPhotoViewForSimple)paramView.findViewById(2131443120);
     paramView.setTemplateUtils(this.templateUtils);
     paramView.a(this.mActivity, paramProfileCardInfo);
     this.mHeaderChildMap.put("map_key_qzonecover", paramView);
@@ -354,7 +354,7 @@ public class VasProfileSimpleView
   
   private void updateTipArea(View paramView)
   {
-    paramView = (LinearLayout)paramView.findViewById(2131368825);
+    paramView = (LinearLayout)paramView.findViewById(2131435746);
     this.mHeaderChildMap.put("map_key_tips", paramView);
   }
   
@@ -398,7 +398,7 @@ public class VasProfileSimpleView
       localObject = (VoteView)localObject;
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((VoteView)localObject).getLayoutParams();
       localLayoutParams.addRule(3, 0);
-      localLayoutParams.addRule(8, 2131368845);
+      localLayoutParams.addRule(8, 2131435776);
       localLayoutParams.bottomMargin = paramInt;
       ((VoteView)localObject).setLayoutParams(localLayoutParams);
       if (QLog.isColorLevel())
@@ -459,7 +459,7 @@ public class VasProfileSimpleView
       localObject = (VoteView)localObject;
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((VoteView)localObject).getLayoutParams();
       localLayoutParams.bottomMargin = 0;
-      localLayoutParams.addRule(3, 2131368151);
+      localLayoutParams.addRule(3, 2131435008);
       localLayoutParams.addRule(8, 0);
       ((VoteView)localObject).setLayoutParams(localLayoutParams);
     }
@@ -505,7 +505,7 @@ public class VasProfileSimpleView
   {
     if (paramProfileCardInfo.allInOne.pa == 33)
     {
-      paramProfileCardInfo = this.mActivity.getString(2131699155);
+      paramProfileCardInfo = this.mActivity.getString(2131897171);
       this.mAgeText.setVisibility(0);
       this.mSexText.setVisibility(8);
       this.mAreaText.setVisibility(8);
@@ -523,7 +523,7 @@ public class VasProfileSimpleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView
  * JD-Core Version:    0.7.0.1
  */

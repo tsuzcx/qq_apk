@@ -1,42 +1,43 @@
 package com.tencent.mobileqq.apollo.screenshot;
 
-import com.tencent.mobileqq.apollo.player.action.MODE;
-import com.tencent.mobileqq.apollo.player.model.BusinessConfig;
+import com.tencent.mobileqq.apollo.meme.action.MODE;
+import com.tencent.mobileqq.apollo.meme.model.BusinessConfig;
+import com.tencent.mobileqq.cmshow.engine.action.ActionStatus;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;", "", "encodeEnd", "", "success", "", "path", "", "encodeStart", "getActionId", "", "getBusinessConfig", "Lcom/tencent/mobileqq/apollo/player/model/BusinessConfig;", "getCurrentRecordKey", "getRecordMode", "Lcom/tencent/mobileqq/apollo/player/action/MODE;", "getTaskId", "onRecordDone", "errorCode", "recordKey", "onRecordFrameEnd", "onRecordFrameStart", "onRecordSingleFrame", "index", "pixels", "", "width", "height", "frameTime", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;", "", "encodeEnd", "", "result", "Lcom/tencent/mobileqq/cmshow/engine/action/ActionStatus;", "path", "", "encodeStart", "getActionId", "", "getBusinessConfig", "Lcom/tencent/mobileqq/apollo/meme/model/BusinessConfig;", "getCurrentRecordKey", "getRecordMode", "Lcom/tencent/mobileqq/apollo/meme/action/MODE;", "getTaskId", "onRecordDone", "status", "recordKey", "onRecordFrameEnd", "onRecordFrameStart", "onRecordSingleFrame", "index", "pixels", "", "width", "height", "frameTime", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public abstract interface IApolloActionRecordListener
 {
-  public abstract int a();
-  
-  @NotNull
-  public abstract MODE a();
-  
-  @NotNull
-  public abstract BusinessConfig a();
-  
   @NotNull
   public abstract String a();
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, @NotNull String paramString1, @Nullable String paramString2);
-  
   public abstract void a(int paramInt1, @NotNull byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract void a(boolean paramBoolean, @Nullable String paramString);
+  public abstract void a(@NotNull ActionStatus paramActionStatus);
   
-  public abstract int b();
+  public abstract void a(@NotNull ActionStatus paramActionStatus, @Nullable String paramString);
+  
+  public abstract void a(@NotNull ActionStatus paramActionStatus, @NotNull String paramString1, @Nullable String paramString2);
   
   public abstract void b();
+  
+  public abstract void c();
+  
+  @NotNull
+  public abstract MODE d();
+  
+  public abstract int e();
+  
+  public abstract int f();
+  
+  @NotNull
+  public abstract BusinessConfig g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.IApolloActionRecordListener
  * JD-Core Version:    0.7.0.1
  */

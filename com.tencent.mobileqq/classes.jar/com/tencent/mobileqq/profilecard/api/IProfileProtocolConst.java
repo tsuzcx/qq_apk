@@ -4,6 +4,7 @@ public abstract interface IProfileProtocolConst
 {
   public static final String CMD_GET_PROFILE_DETAIL = "OidbSvc.0x480_9_IMCore";
   public static final String CMD_SET_PROFILE_DETAIL = "OidbSvc.0x4ff_9_IMCore";
+  public static final String KET_INTERESTS = "interests";
   public static final String KEY_AGE = "age";
   public static final String KEY_BIRTHDAY = "birthday";
   public static final String KEY_COLLEGE = "college";
@@ -41,7 +42,7 @@ public abstract interface IProfileProtocolConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.api.IProfileProtocolConst
  * JD-Core Version:    0.7.0.1
  */

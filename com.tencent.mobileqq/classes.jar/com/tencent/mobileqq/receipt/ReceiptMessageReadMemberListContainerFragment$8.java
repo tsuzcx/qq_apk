@@ -15,18 +15,18 @@ class ReceiptMessageReadMemberListContainerFragment$8
   
   public void onPageSelected(int paramInt)
   {
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    ReceiptMessageReadMemberListContainerFragment.m(this.a).setSelectedTab(paramInt, true);
     if (paramInt == 0)
     {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).requestParentDisallowInterecptTouchEvent(false);
+      ReceiptMessageReadMemberListContainerFragment.l(this.a).requestParentDisallowInterecptTouchEvent(false);
       return;
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).requestParentDisallowInterecptTouchEvent(true);
+    ReceiptMessageReadMemberListContainerFragment.l(this.a).requestParentDisallowInterecptTouchEvent(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.8
  * JD-Core Version:    0.7.0.1
  */

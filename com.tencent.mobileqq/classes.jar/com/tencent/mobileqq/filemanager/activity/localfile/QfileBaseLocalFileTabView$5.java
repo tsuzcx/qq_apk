@@ -25,19 +25,19 @@ class QfileBaseLocalFileTabView$5
     if (bool2)
     {
       localObject1 = (QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag();
-      localFileInfo = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)localObject1).jdField_a_of_type_JavaLangObject;
-      localObject1 = ((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+      localFileInfo = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)localObject1).j;
+      localObject1 = ((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)localObject1).g;
     }
     else if ((localObject1 instanceof ImageHolder))
     {
       localObject2 = (ImageHolder)paramView.getTag();
-      localFileInfo = (FileInfo)((ImageHolder)localObject2).jdField_a_of_type_JavaLangObject;
-      localObject1 = ((ImageHolder)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-      if ((this.a.a.g()) || (this.a.a.h()))
+      localFileInfo = (FileInfo)((ImageHolder)localObject2).i;
+      localObject1 = ((ImageHolder)localObject2).a;
+      if ((this.a.C.F()) || (this.a.C.G()))
       {
-        SharedPreferences.Editor localEditor = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
-        localEditor.putInt("GROUP", ((ImageHolder)localObject2).b);
-        localEditor.putInt("CHILD", (((ImageHolder)localObject2).jdField_a_of_type_Int + 1) / 4);
+        SharedPreferences.Editor localEditor = this.a.C.getSharedPreferences("LAST_CHOOSE_", 0).edit();
+        localEditor.putInt("GROUP", ((ImageHolder)localObject2).h);
+        localEditor.putInt("CHILD", (((ImageHolder)localObject2).g + 1) / 4);
         localEditor.commit();
       }
     }
@@ -45,13 +45,13 @@ class QfileBaseLocalFileTabView$5
     {
       localObject1 = null;
     }
-    if ((paramView.getId() == 2131366781) && (QfileBaseLocalFileTabView.b(this.a))) {
-      ReportController.b(QfileBaseLocalFileTabView.a(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
+    if ((paramView.getId() == 2131433103) && (QfileBaseLocalFileTabView.c(this.a))) {
+      ReportController.b(QfileBaseLocalFileTabView.d(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
     }
     if (localFileInfo != null)
     {
       localObject2 = this.a;
-      if (paramView.getId() != 2131366781) {
+      if (paramView.getId() != 2131433103) {
         bool1 = false;
       }
       ((QfileBaseLocalFileTabView)localObject2).a(localFileInfo, (View)localObject1, bool1);
@@ -61,7 +61,7 @@ class QfileBaseLocalFileTabView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.5
  * JD-Core Version:    0.7.0.1
  */

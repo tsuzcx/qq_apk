@@ -31,42 +31,42 @@ class QFileMsgForwardManager$Disc2DiscTaskExcuter$1
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
-      paramString.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Disc2DiscTaskExcuter.jdField_a_of_type_JavaLangString);
+      paramString.append(this.c.a);
       paramString.append(" Disc2DiscTaskExcuter send faild:");
       paramString.append(paramInt);
       QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Disc2DiscTaskExcuter.jdField_a_of_type_Long, bool2), bool1);
+    this.b.a(QFileMsgForwardManager.a(this.c.g, bool2), bool1);
   }
   
   public void a(String paramString1, String paramString2)
   {
     paramString2 = new Bundle();
     paramString2.putString("_m_ForwardFileType", "2");
-    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Disc2DiscTaskExcuter.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardReceiverUin", this.a);
+    paramString2.putString("_m_ForwardFileName", this.c.a);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Disc2DiscTaskExcuter.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c.g);
     localStringBuilder.append("");
     paramString2.putString("_m_ForwardSize", localStringBuilder.toString());
-    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Disc2DiscTaskExcuter.c);
+    paramString2.putString("_m_ForwardMd5", this.c.c);
     paramString2.putString("_m_ForwardDeadTime", "0");
-    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Disc2DiscTaskExcuter.e);
-    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Disc2DiscTaskExcuter.f);
+    paramString2.putString("_m_ForwardImgWidth", this.c.e);
+    paramString2.putString("_m_ForwardImgHeight", this.c.f);
     paramString2.putString("_m_ForwardUuid", paramString1);
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$Disc2DiscTaskExcuter.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c.a);
       localStringBuilder.append(" Disc2DiscTaskExcuter send success");
       QLog.e("FileMultiMsgManager<FileAssistant>", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback.a(paramString1, paramString2);
+    this.b.a(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.Disc2DiscTaskExcuter.1
  * JD-Core Version:    0.7.0.1
  */

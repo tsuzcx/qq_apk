@@ -48,7 +48,7 @@ public final class QQMiniErrorListener
     localGameLog.e("MiniErrorListener", localStringBuilder.toString(), (Throwable)paramTritonException);
     if ((paramTritonException.getError().getSeverity().compareTo((Enum)ErrorSeverity.SEVER) >= 0) && (GameWnsUtils.getGameErrorDialogEnable()) && (!GameWnsUtils.getGameErrorDialogIsBlack()))
     {
-      paramString = DialogUtil.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), HardCodeUtil.a(2131710175), HardCodeUtil.a(2131710176), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
+      paramString = DialogUtil.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), HardCodeUtil.a(2131898212), HardCodeUtil.a(2131899883), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
       paramString.setCanceledOnTouchOutside(false);
       paramString.show();
       MiniReportManager.reportEventType(this.miniAppInfo, 1024, "1");
@@ -69,7 +69,7 @@ public final class QQMiniErrorListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.api.QQMiniErrorListener
  * JD-Core Version:    0.7.0.1
  */

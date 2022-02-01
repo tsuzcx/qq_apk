@@ -39,8 +39,8 @@ class WriteTogetherWebSocketEngine$1
     }
     if (((paramThrowable instanceof EOFException)) || ((paramThrowable instanceof SocketException)) || ((paramThrowable instanceof SSLException)))
     {
-      this.a.b();
-      WriteTogetherWebSocketEngine.a(this.a).a(new ConnClosedMsg());
+      this.a.c();
+      WriteTogetherWebSocketEngine.b(this.a).a(new ConnClosedMsg());
     }
   }
   
@@ -49,7 +49,7 @@ class WriteTogetherWebSocketEngine$1
     if (QLog.isColorLevel()) {
       QLog.d("WriteTogether.WriteTogetherWebSocketEngine", 2, new Object[] { "onMessage: ", paramString });
     }
-    WriteTogetherWebSocketEngine.a(this.a).a(paramString);
+    WriteTogetherWebSocketEngine.b(this.a).a(paramString);
     if (this.a.a != null) {
       this.a.a.onMessage(paramWebSocket, paramString);
     }
@@ -57,7 +57,7 @@ class WriteTogetherWebSocketEngine$1
   
   public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
   {
-    WriteTogetherWebSocketEngine.a(this.a).a(paramByteString);
+    WriteTogetherWebSocketEngine.b(this.a).a(paramByteString);
     if (this.a.a != null) {
       this.a.a.onMessage(paramWebSocket, paramByteString);
     }
@@ -78,7 +78,7 @@ class WriteTogetherWebSocketEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.WriteTogetherWebSocketEngine.1
  * JD-Core Version:    0.7.0.1
  */

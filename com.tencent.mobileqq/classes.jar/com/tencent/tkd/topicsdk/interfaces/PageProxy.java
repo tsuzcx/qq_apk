@@ -16,12 +16,6 @@ public abstract class PageProxy
   private IPage a;
   
   @Nullable
-  public Activity a()
-  {
-    return this.a.a();
-  }
-  
-  @Nullable
   public Bundle a()
   {
     return this.a.a();
@@ -29,8 +23,6 @@ public abstract class PageProxy
   
   @Nullable
   public abstract View a(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle);
-  
-  public void a() {}
   
   public void a(int paramInt1, int paramInt2, @Nullable Intent paramIntent) {}
   
@@ -40,26 +32,34 @@ public abstract class PageProxy
   public final void a(@NotNull IPage paramIPage)
   {
     this.a = paramIPage;
-    paramIPage = a();
+    paramIPage = b();
     if (paramIPage != null) {
       paramIPage.setRequestedOrientation(1);
     }
   }
   
-  public void b() {}
-  
-  public boolean c()
+  @Nullable
+  public Activity b()
   {
-    return false;
+    return this.a.b();
   }
   
   public void d() {}
   
-  public void e() {}
+  public boolean e()
+  {
+    return false;
+  }
+  
+  public void f() {}
+  
+  public void k() {}
+  
+  public void m() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.interfaces.PageProxy
  * JD-Core Version:    0.7.0.1
  */

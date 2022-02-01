@@ -19,7 +19,7 @@ class AccountDetailVideoManager$5$1
       localStringBuilder.append(paramInt);
       QLog.d("AccountDetailVideoManager", 2, localStringBuilder.toString());
     }
-    AccountDetailVideoManager.a = false;
+    AccountDetailVideoManager.c = false;
   }
   
   public void onInstalledSuccessed()
@@ -27,12 +27,12 @@ class AccountDetailVideoManager$5$1
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
     }
-    AccountDetailVideoManager.a = true;
+    AccountDetailVideoManager.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailVideoManager.5.1
  * JD-Core Version:    0.7.0.1
  */

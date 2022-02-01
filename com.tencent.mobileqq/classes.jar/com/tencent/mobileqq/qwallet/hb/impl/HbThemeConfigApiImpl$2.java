@@ -18,17 +18,17 @@ class HbThemeConfigApiImpl$2
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("update hbTheme config: ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.a);
         QLog.d("HbThemeConfigApi", 2, localStringBuilder.toString());
       }
-      FileUtils.writeFile(HbThemeConfigApiImpl.access$200(this.this$0, this.jdField_a_of_type_ComTencentCommonAppAppInterface), "hbThemeConfig.cfg", Base64.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 0));
+      FileUtils.writeFile(HbThemeConfigApiImpl.access$200(this.this$0, this.b), "hbThemeConfig.cfg", Base64.encodeToString(this.a.getBytes(), 0));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.HbThemeConfigApiImpl.2
  * JD-Core Version:    0.7.0.1
  */

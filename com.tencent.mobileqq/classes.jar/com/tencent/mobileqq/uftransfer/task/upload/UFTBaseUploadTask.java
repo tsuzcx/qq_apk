@@ -12,21 +12,18 @@ public abstract class UFTBaseUploadTask
   extends UFTBaseTask
   implements UFTUploadCbWrapper.IWrapperHost
 {
-  protected final UFTUploadTaskRunNotesInfo a;
-  protected final UFTUploadCbWrapper a;
+  protected final UFTUploadTaskRunNotesInfo j = new UFTUploadTaskRunNotesInfo();
+  protected final UFTUploadCbWrapper k;
   
   protected UFTBaseUploadTask(AppRuntime paramAppRuntime, UFTTransferKey paramUFTTransferKey, UFTBaseTaskInfo paramUFTBaseTaskInfo, IUFTTaskCallback paramIUFTTaskCallback, IUFTUploadCallback paramIUFTUploadCallback)
   {
     super(paramAppRuntime, paramUFTTransferKey, paramUFTBaseTaskInfo, paramIUFTTaskCallback);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadTaskRunNotesInfo = new UFTUploadTaskRunNotesInfo();
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTUploadCbWrapper = new UFTUploadCbWrapper(this, paramIUFTUploadCallback);
+    this.k = new UFTUploadCbWrapper(this, paramIUFTUploadCallback);
   }
-  
-  public abstract String a();
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.i;
   }
   
   public boolean a(UFTBaseTask paramUFTBaseTask)
@@ -37,16 +34,18 @@ public abstract class UFTBaseUploadTask
         return false;
       }
       paramUFTBaseTask = (UFTBaseUploadTask)paramUFTBaseTask;
-      if ((a() != null) && (a().equals(paramUFTBaseTask.a()))) {
+      if ((i() != null) && (i().equals(paramUFTBaseTask.i()))) {
         return true;
       }
     }
     return false;
   }
+  
+  public abstract String i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTBaseUploadTask
  * JD-Core Version:    0.7.0.1
  */

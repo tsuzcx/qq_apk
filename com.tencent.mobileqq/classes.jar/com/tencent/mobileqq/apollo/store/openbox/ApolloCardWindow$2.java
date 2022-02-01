@@ -19,13 +19,13 @@ class ApolloCardWindow$2
     }
     try
     {
-      ??? = paramDownloadTask.a().getString("path");
-      String str = paramDownloadTask.a().getString("url");
+      ??? = paramDownloadTask.b().getString("path");
+      String str = paramDownloadTask.b().getString("url");
       paramDownloadTask = this.a.a((String)???);
       str = MD5Utils.toMD5(str);
-      synchronized (ApolloCardWindow.a)
+      synchronized (ApolloCardWindow.f)
       {
-        ApolloCardWindow.a.put(str, paramDownloadTask);
+        ApolloCardWindow.f.put(str, paramDownloadTask);
         return;
       }
       return;
@@ -38,7 +38,7 @@ class ApolloCardWindow$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow.2
  * JD-Core Version:    0.7.0.1
  */

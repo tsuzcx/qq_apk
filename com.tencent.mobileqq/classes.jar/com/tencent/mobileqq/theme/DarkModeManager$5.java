@@ -10,7 +10,7 @@ final class DarkModeManager$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DarkModeManager.a("0X800A5CA");
+    DarkModeManager.b("0X800A5CA");
     paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
       paramDialogInterface.onCancel();
@@ -19,7 +19,7 @@ final class DarkModeManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.DarkModeManager.5
  * JD-Core Version:    0.7.0.1
  */

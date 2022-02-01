@@ -8,13 +8,7 @@ import java.util.List;
 
 public abstract interface RecentUserProxy
 {
-  public abstract RecentUser a(String paramString, int paramInt);
-  
   public abstract Entity a(@NonNull Object paramObject);
-  
-  public abstract RecentConvInfo a(String paramString, int paramInt);
-  
-  public abstract List<RecentUser> a();
   
   public abstract List<RecentUser> a(boolean paramBoolean);
   
@@ -30,11 +24,7 @@ public abstract interface RecentUserProxy
   
   public abstract void a(RecentUser paramRecentUser, boolean paramBoolean);
   
-  public abstract void a(String paramString);
-  
   public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract boolean a(@NonNull RecentUser paramRecentUser);
   
   public abstract boolean a(String paramString);
   
@@ -48,15 +38,25 @@ public abstract interface RecentUserProxy
   
   public abstract void b(RecentUser paramRecentUser, boolean paramBoolean);
   
-  public abstract boolean b(@NonNull String paramString);
+  public abstract void b(String paramString);
   
-  public abstract void c();
+  public abstract RecentUser c(String paramString, int paramInt);
   
-  public abstract boolean c(String paramString);
+  public abstract List<RecentUser> c();
+  
+  public abstract boolean c(@NonNull RecentUser paramRecentUser);
+  
+  public abstract boolean c(@NonNull String paramString);
+  
+  public abstract void d();
+  
+  public abstract RecentConvInfo e(String paramString, int paramInt);
+  
+  public abstract boolean e(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.RecentUserProxy
  * JD-Core Version:    0.7.0.1
  */

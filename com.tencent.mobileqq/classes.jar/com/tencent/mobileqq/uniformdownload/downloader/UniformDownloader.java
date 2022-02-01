@@ -16,52 +16,27 @@ import mqq.os.MqqHandler;
 public class UniformDownloader
 {
   public static String a = "UDownloader";
-  private int jdField_a_of_type_Int = 0;
-  final long jdField_a_of_type_Long;
-  private final Bundle jdField_a_of_type_AndroidOsBundle;
-  private IUniformDownloader jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader = null;
-  private IUniformDownloaderListener jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener = null;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<IUniformDownloaderListener> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private Bundle jdField_b_of_type_AndroidOsBundle;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private final String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  final long b;
+  private final String c;
+  private final Bundle d;
+  private boolean e = false;
+  private boolean f;
+  private int g = 0;
+  private Bundle h;
+  private int i = 0;
+  private IUniformDownloader j = null;
+  private IUniformDownloaderListener k = null;
+  private List<IUniformDownloaderListener> l = new ArrayList();
+  private Object m = new Object();
+  private Object n = new Object();
   
   public UniformDownloader(long paramLong, String paramString, Bundle paramBundle)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  private IUniformDownloaderListener a()
-  {
-    return new UniformDownloader.2(this);
-  }
-  
-  private List<IUniformDownloaderListener> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      int j = this.jdField_a_of_type_JavaUtilList.size();
-      int i = 0;
-      while (i < j)
-      {
-        localArrayList.add((IUniformDownloaderListener)this.jdField_a_of_type_JavaUtilList.get(i));
-        i += 1;
-      }
-      return localArrayList;
-    }
-    for (;;)
-    {
-      throw localObject2;
-    }
+    this.c = paramString;
+    this.d = paramBundle;
+    this.b = paramLong;
+    this.e = false;
+    this.f = false;
   }
   
   private void a(int paramInt, String paramString, Bundle paramBundle)
@@ -73,31 +48,31 @@ public class UniformDownloader
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader != null)
+      if (this.j != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.a(null);
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.b();
+        this.j.a(null);
+        this.j.b();
       }
       if (paramBoolean)
       {
-        this.jdField_b_of_type_Int = 1;
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader = new UniformDownloaderAppBaby(this.jdField_a_of_type_Long);
+        this.i = 1;
+        this.j = new UniformDownloaderAppBaby(this.b);
       }
       else
       {
-        this.jdField_b_of_type_Int = 2;
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader = new UniformDownloaderGen(this.jdField_a_of_type_Long);
+        this.i = 2;
+        this.j = new UniformDownloaderGen(this.b);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener = a();
+      if (this.k == null) {
+        this.k = l();
       }
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.a(this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener);
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.a(this.jdField_b_of_type_JavaLangString, paramBundle) != 0)
+      this.j.a(this.k);
+      if (this.j.a(this.c, paramBundle) != 0)
       {
-        paramBundle = jdField_a_of_type_JavaLangString;
+        paramBundle = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[UniformDL][");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.b);
         localStringBuilder.append("]. mDownloadler init error.");
         QLog.e(paramBundle, 1, localStringBuilder.toString());
         return false;
@@ -107,22 +82,42 @@ public class UniformDownloader
     finally {}
   }
   
-  public int a()
+  private IUniformDownloaderListener l()
   {
-    return this.jdField_b_of_type_Int;
+    return new UniformDownloader.2(this);
+  }
+  
+  private List<IUniformDownloaderListener> m()
+  {
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.n)
+    {
+      int i2 = this.l.size();
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        localArrayList.add((IUniformDownloaderListener)this.l.get(i1));
+        i1 += 1;
+      }
+      return localArrayList;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.c;
   }
   
   public void a(IUniformDownloaderListener paramIUniformDownloaderListener)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.n)
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramIUniformDownloaderListener)) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramIUniformDownloaderListener);
+      if (this.l.contains(paramIUniformDownloaderListener)) {
+        this.l.remove(paramIUniformDownloaderListener);
       }
       return;
     }
@@ -130,127 +125,118 @@ public class UniformDownloader
   
   public void a(IUniformDownloaderListener paramIUniformDownloaderListener, boolean paramBoolean)
   {
-    localObject1 = this.jdField_b_of_type_JavaLangObject;
-    int k = -1;
+    localObject1 = this.n;
+    int i3 = -1;
     try
     {
-      m = this.jdField_a_of_type_JavaUtilList.size();
-      i = 0;
+      i4 = this.l.size();
+      i1 = 0;
     }
     finally
     {
       for (;;)
       {
-        int m;
-        int i;
-        int j;
+        int i4;
+        int i1;
+        int i2;
         Object localObject2;
         for (;;)
         {
           throw paramIUniformDownloaderListener;
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    j = k;
-    if (i < m)
+    i2 = i3;
+    if (i1 < i4)
     {
-      if ((IUniformDownloaderListener)this.jdField_a_of_type_JavaUtilList.get(i) != paramIUniformDownloaderListener) {
+      if ((IUniformDownloaderListener)this.l.get(i1) != paramIUniformDownloaderListener) {
         break label275;
       }
       if (paramBoolean == true) {
-        j = i;
+        i2 = i1;
       } else {
         return;
       }
     }
-    if ((paramBoolean) && (j >= 0))
+    if ((paramBoolean) && (i2 >= 0))
     {
-      paramIUniformDownloaderListener = (IUniformDownloaderListener)this.jdField_a_of_type_JavaUtilList.remove(j);
-      this.jdField_a_of_type_JavaUtilList.add(paramIUniformDownloaderListener);
-      this.jdField_a_of_type_Boolean = true;
+      paramIUniformDownloaderListener = (IUniformDownloaderListener)this.l.remove(i2);
+      this.l.add(paramIUniformDownloaderListener);
+      this.e = true;
       return;
     }
     if (paramIUniformDownloaderListener != null)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.e)
       {
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        localObject2 = (IUniformDownloaderListener)this.jdField_a_of_type_JavaUtilList.remove(i - 1);
-        this.jdField_a_of_type_JavaUtilList.add(paramIUniformDownloaderListener);
-        this.jdField_a_of_type_JavaUtilList.add(localObject2);
+        i1 = this.l.size();
+        localObject2 = (IUniformDownloaderListener)this.l.remove(i1 - 1);
+        this.l.add(paramIUniformDownloaderListener);
+        this.l.add(localObject2);
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilList.add(paramIUniformDownloaderListener);
+        this.l.add(paramIUniformDownloaderListener);
       }
-      paramIUniformDownloaderListener = jdField_a_of_type_JavaLangString;
+      paramIUniformDownloaderListener = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[UniformDL][");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append("]. addListenser. size=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject2).append(this.l.size());
       QLog.i(paramIUniformDownloaderListener, 1, ((StringBuilder)localObject2).toString());
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_Boolean = true;
+      this.e = true;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.m)
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("]. setNotifyUserStarted.");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.f);
       localStringBuilder.append("->");
       localStringBuilder.append(paramBoolean);
       QLog.i(str, 1, localStringBuilder.toString());
-      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.f = paramBoolean;
       return;
-    }
-  }
-  
-  public boolean a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      boolean bool = this.jdField_b_of_type_Boolean;
-      return bool;
     }
   }
   
   public boolean a(Bundle paramBundle)
   {
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("[UniformDL][");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject2).append(this.b);
     ((StringBuilder)localObject2).append("]. >>>init UniformDownloader");
     QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     localObject2 = paramBundle.getString("_PARAM_FILENAME");
-    long l = paramBundle.getLong("_PARAM_FILESIZE");
+    long l1 = paramBundle.getLong("_PARAM_FILESIZE");
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[UniformDL][");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append("]. init err. filename=null");
       QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       localObject1 = "unnamefile";
     }
-    if (0L == l)
+    if (0L == l1)
     {
-      paramBundle = jdField_a_of_type_JavaLangString;
+      paramBundle = a;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("[UniformDL][");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append("]. init err. filesize=0");
       QLog.e(paramBundle, 1, ((StringBuilder)localObject1).toString());
       return false;
@@ -259,7 +245,7 @@ public class UniformDownloader
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(AppConstants.SDCARD_FILE_SAVE_TMP_PATH);
     ((StringBuilder)localObject3).append((String)localObject1);
-    localObject3 = QQFileManagerUtil.f(((StringBuilder)localObject3).toString());
+    localObject3 = QQFileManagerUtil.t(((StringBuilder)localObject3).toString());
     Object localObject4 = new StringBuilder();
     ((StringBuilder)localObject4).append(AppConstants.SDCARD_FILE_SAVE_PATH);
     ((StringBuilder)localObject4).append((String)localObject1);
@@ -267,7 +253,7 @@ public class UniformDownloader
     ((Bundle)localObject2).putString("_PARAM_FILENAME", (String)localObject1);
     ((Bundle)localObject2).putString("_PARAM_TMP_FILEPATH", (String)localObject3);
     ((Bundle)localObject2).putString("_PARAM_FILEPATH", (String)localObject4);
-    ((Bundle)localObject2).putLong("_PARAM_FILESIZE", l);
+    ((Bundle)localObject2).putLong("_PARAM_FILESIZE", l1);
     ((Bundle)localObject2).putLong("_PARAM_POS", 0L);
     paramBundle = paramBundle.getBundle("_PARAM_USER_DATA");
     if (paramBundle != null)
@@ -277,167 +263,181 @@ public class UniformDownloader
         ((Bundle)localObject2).putString("_PARAM_COOKIE", paramBundle);
       }
     }
-    this.jdField_b_of_type_AndroidOsBundle = ((Bundle)localObject2);
-    paramBundle = jdField_a_of_type_JavaLangString;
+    this.h = ((Bundle)localObject2);
+    paramBundle = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[UniformDL][");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]. >>>init UniformDownload info :: filename:[");
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append("] fileSize:[");
-    localStringBuilder.append(l);
+    localStringBuilder.append(l1);
     localStringBuilder.append("] tmpPath(maybe change):[");
     localStringBuilder.append((String)localObject3);
     localStringBuilder.append("] savePath(maybe change):[");
     localStringBuilder.append((String)localObject4);
     localStringBuilder.append("] url:[");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("]");
     QLog.i(paramBundle, 1, localStringBuilder.toString());
-    return a(UniformDownloadUtil.a((String)localObject1), (Bundle)localObject2);
+    return a(UniformDownloadUtil.f((String)localObject1), (Bundle)localObject2);
   }
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader != null)
-    {
-      str = jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("]. start. ");
-      QLog.i(str, 1, localStringBuilder.toString());
-      return this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.a();
-    }
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[UniformDL][");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("]. start. mDownloadler = null.");
-    QLog.e(str, 1, localStringBuilder.toString());
-    return -1;
-  }
-  
-  public boolean b()
-  {
-    return 2 == g();
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader != null)
-    {
-      str = jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("]. pause. ");
-      QLog.i(str, 1, localStringBuilder.toString());
-      return this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.c();
-    }
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[UniformDL][");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("]. pause. mDownloadler = null.");
-    QLog.e(str, 1, localStringBuilder.toString());
-    return -1;
+    return this.i;
   }
   
   public boolean c()
   {
-    int i = g();
-    if (1 != i)
+    synchronized (this.m)
     {
-      if (6 == i) {
-        return true;
-      }
-      return (2 == this.jdField_b_of_type_Int) && (8 == i);
+      boolean bool = this.f;
+      return bool;
     }
-    return true;
   }
   
   public int d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader != null)
+    if (this.j != null)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("]. resume. ");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("]. start. ");
       QLog.i(str, 1, localStringBuilder.toString());
-      return this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.d();
+      return this.j.a();
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[UniformDL][");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("]. resume. mDownloadler = null.");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]. start. mDownloadler = null.");
     QLog.e(str, 1, localStringBuilder.toString());
     return -1;
   }
   
   public int e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader != null)
+    if (this.j != null)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("]. stop. ");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("]. pause. ");
       QLog.i(str, 1, localStringBuilder.toString());
-      return this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.b();
+      return this.j.c();
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[UniformDL][");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("]. stop. mDownloadler = null.");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]. pause. mDownloadler = null.");
     QLog.e(str, 1, localStringBuilder.toString());
     return -1;
   }
   
   public int f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader != null)
+    if (this.j != null)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[UniformDL][");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("]. pauseSlience. ");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("]. resume. ");
       QLog.i(str, 1, localStringBuilder.toString());
-      return this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader.f();
+      return this.j.d();
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[UniformDL][");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("]. pauseSlience. mDownloadler = null.");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]. resume. mDownloadler = null.");
     QLog.e(str, 1, localStringBuilder.toString());
     return -1;
   }
   
   public int g()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloader;
+    if (this.j != null)
+    {
+      str = a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL][");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("]. stop. ");
+      QLog.i(str, 1, localStringBuilder.toString());
+      return this.j.b();
+    }
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL][");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]. stop. mDownloadler = null.");
+    QLog.e(str, 1, localStringBuilder.toString());
+    return -1;
+  }
+  
+  public int h()
+  {
+    if (this.j != null)
+    {
+      str = a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL][");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("]. pauseSlience. ");
+      QLog.i(str, 1, localStringBuilder.toString());
+      return this.j.f();
+    }
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL][");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]. pauseSlience. mDownloadler = null.");
+    QLog.e(str, 1, localStringBuilder.toString());
+    return -1;
+  }
+  
+  public int i()
+  {
+    Object localObject = this.j;
     if (localObject != null) {
       return ((IUniformDownloader)localObject).e();
     }
-    localObject = jdField_a_of_type_JavaLangString;
+    localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[UniformDL][");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]. getStatus. mDownloadler = null.");
     QLog.e((String)localObject, 1, localStringBuilder.toString());
     return 0;
   }
+  
+  public boolean j()
+  {
+    return 2 == i();
+  }
+  
+  public boolean k()
+  {
+    int i1 = i();
+    if (1 != i1)
+    {
+      if (6 == i1) {
+        return true;
+      }
+      return (2 == this.i) && (8 == i1);
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class VoiceRecogEngineFactoryImpl
   
   public boolean isEnableAINS()
   {
-    return VoiceRecogEngineFactory.a();
+    return VoiceRecogEngineFactory.c();
   }
 }
 

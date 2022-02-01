@@ -6,12 +6,14 @@ public class FilterItem
   extends ItemBase
 {
   private String desc;
+  private String displayName;
   private String filterid;
   private int filtertype;
   private String iconmd5;
   private String iconurl;
   private String md5;
   private String name = "";
+  private String newIcon;
   private int predownload;
   private String resurl;
   private boolean usable;
@@ -19,6 +21,11 @@ public class FilterItem
   public String getDesc()
   {
     return this.desc;
+  }
+  
+  public String getDisplayName()
+  {
+    return this.displayName;
   }
   
   public String getFilterId()
@@ -49,6 +56,11 @@ public class FilterItem
   public String getMd5()
   {
     return this.md5;
+  }
+  
+  public String getNewIcon()
+  {
+    return this.newIcon;
   }
   
   public int getPlatform()

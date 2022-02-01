@@ -50,15 +50,15 @@ public class GdtImpressionReporter
           ((JSONObject)localObject).put("ef", localStringBuilder.toString());
           ((JSONObject)localObject).put("pp", String.valueOf(a(paramInt)));
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramGdtVideoReportInfo.a());
+          localStringBuilder.append(paramGdtVideoReportInfo.f());
           localStringBuilder.append("");
           ((JSONObject)localObject).put("pa", localStringBuilder.toString());
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramGdtVideoReportInfo.b());
+          localStringBuilder.append(paramGdtVideoReportInfo.g());
           localStringBuilder.append("");
           ((JSONObject)localObject).put("ft", localStringBuilder.toString());
-          if (paramGdtVideoReportInfo.a()) {
-            ((JSONObject)localObject).put("ps", String.valueOf(paramGdtVideoReportInfo.c()));
+          if (paramGdtVideoReportInfo.e()) {
+            ((JSONObject)localObject).put("ps", String.valueOf(paramGdtVideoReportInfo.h()));
           }
           paramGdtVideoReportInfo = ((JSONObject)localObject).toString();
           return paramGdtVideoReportInfo;
@@ -117,7 +117,7 @@ public class GdtImpressionReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtImpressionReporter
  * JD-Core Version:    0.7.0.1
  */

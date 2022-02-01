@@ -97,10 +97,10 @@ public class ZImageView
   
   private void setBgDrawable()
   {
-    if ((!this.hasSetAlphaBgDrawable) && (this.mController.a != this.sColorDrawable))
+    if ((!this.hasSetAlphaBgDrawable) && (this.mController.c != this.sColorDrawable))
     {
       this.mBackgroundDrawableTemp = getBackground();
-      setBackgroundDrawable(this.mController.a);
+      setBackgroundDrawable(this.mController.c);
       this.hasSetAlphaBgDrawable = true;
       if (QLog.isColorLevel()) {
         Utils.a(this.tag, "set alpha bg drawable !");
@@ -112,6 +112,11 @@ public class ZImageView
   {
     this.startAplhaOnce = true;
     this.mAlphaAnimator.cancel();
+  }
+  
+  public URL getUrl()
+  {
+    return this.mUrl;
   }
   
   @Deprecated
@@ -158,8 +163,9 @@ public class ZImageView
       }
       ImageRequest localImageRequest = new ImageRequest();
       RIJImageTypeOptHelper.a.a(localImageRequest, this.mUrl.toString());
-      localImageRequest.jdField_a_of_type_Int = getWidth();
-      localImageRequest.b = getHeight();
+      localImageRequest.b = getWidth();
+      localImageRequest.c = getHeight();
+      RIJImageOptReport.a(1, localImageRequest);
       this.mController.a(localImageRequest);
       this.mUrl = null;
     }
@@ -229,8 +235,8 @@ public class ZImageView
       TraceUtils.traceBegin("ZImageView.newImageRequest");
       localObject = new ImageRequest();
       RIJImageTypeOptHelper.a.a((ImageRequest)localObject, paramURL.toString());
-      ((ImageRequest)localObject).jdField_a_of_type_Int = getWidth();
-      ((ImageRequest)localObject).b = getHeight();
+      ((ImageRequest)localObject).b = getWidth();
+      ((ImageRequest)localObject).c = getHeight();
       RIJImageOptReport.a(1, (ImageRequest)localObject);
       this.mController.a((ImageRequest)localObject);
       TraceUtils.traceEnd();
@@ -265,10 +271,10 @@ public class ZImageView
   {
     if (paramImageRequest != null)
     {
-      if (paramImageRequest.jdField_a_of_type_JavaNetURL == null) {
+      if (paramImageRequest.a == null) {
         return this;
       }
-      RIJImageTypeOptHelper.a.a(paramImageRequest, paramImageRequest.jdField_a_of_type_JavaNetURL.toString());
+      RIJImageTypeOptHelper.a.a(paramImageRequest, paramImageRequest.a.toString());
       if (paramIPublicAccountImageDownListener != null) {
         this.mController.a(paramIPublicAccountImageDownListener);
       }
@@ -278,11 +284,11 @@ public class ZImageView
         paramIPublicAccountImageDownListener = this.tag;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setImageForImageCollection url = ");
-        localStringBuilder.append(paramImageRequest.jdField_a_of_type_JavaNetURL);
+        localStringBuilder.append(paramImageRequest.a);
         localStringBuilder.append(" reqWidth = ");
-        localStringBuilder.append(paramImageRequest.jdField_a_of_type_Int);
-        localStringBuilder.append(" reqHeight = ");
         localStringBuilder.append(paramImageRequest.b);
+        localStringBuilder.append(" reqHeight = ");
+        localStringBuilder.append(paramImageRequest.c);
         QLog.d(paramIPublicAccountImageDownListener, 2, localStringBuilder.toString());
       }
       this.mController.a(paramImageRequest);
@@ -312,7 +318,7 @@ public class ZImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ZImageView
  * JD-Core Version:    0.7.0.1
  */

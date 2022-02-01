@@ -24,19 +24,19 @@ class PngsCreator$1
     GLES20.glTexParameterf(36197, 10241, 9729.0F);
     GLES20.glTexParameterf(36197, 10242, 33071.0F);
     GLES20.glTexParameterf(36197, 10243, 33071.0F);
-    PngsCreator.a(this.this$0).apply();
-    PngsCreator.a(this.this$0).a(320, 320);
-    PngsCreator.a(this.this$0).a();
+    PngsCreator.b(this.this$0).apply();
+    PngsCreator.c(this.this$0).a(320, 320);
+    PngsCreator.c(this.this$0).a();
     localObject = this.this$0;
     PngsCreator.a((PngsCreator)localObject, new SurfaceTexture(PngsCreator.a((PngsCreator)localObject)));
-    PngsCreator.a(this.this$0).setOnFrameAvailableListener(new PngsCreator.DecodeFrameListener(this.this$0));
+    PngsCreator.d(this.this$0).setOnFrameAvailableListener(new PngsCreator.DecodeFrameListener(this.this$0));
     PngsCreator.a(this.this$0, new RepeatVideoDecoder());
-    PngsCreator.a(this.this$0).a(this.a, new Surface(PngsCreator.a(this.this$0)));
+    PngsCreator.e(this.this$0).a(this.a, new Surface(PngsCreator.d(this.this$0)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsCreator.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,7 @@ import android.widget.BaseAdapter;
 
 public abstract class BaseDraggableGridViewAdapter
 {
-  DraggableGridView a;
-  
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
+  DraggableGridView b;
   
   public abstract View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup);
   
@@ -19,39 +15,43 @@ public abstract class BaseDraggableGridViewAdapter
   
   public abstract Object a(int paramInt);
   
-  public abstract Object a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
   public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public abstract void a(View paramView, int paramInt);
   
   public abstract void a(View paramView, int paramInt1, int paramInt2);
   
-  public int b()
-  {
-    return 1;
-  }
+  public abstract int b(int paramInt);
   
-  public int b(int paramInt)
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public int c(int paramInt)
   {
     return 0;
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public abstract Object c(int paramInt1, int paramInt2);
+  
+  public abstract int d();
+  
+  public void d(int paramInt1, int paramInt2)
   {
-    this.a.a(paramInt1, paramInt2);
+    this.b.a(paramInt1, paramInt2);
   }
   
-  public void c()
+  public int e()
   {
-    ((DraggableGridView.GridListViewAdapter)this.a.a()).notifyDataSetChanged();
+    return 1;
+  }
+  
+  public void f()
+  {
+    ((DraggableGridView.GridListViewAdapter)this.b.getInnerAdapter()).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BaseDraggableGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

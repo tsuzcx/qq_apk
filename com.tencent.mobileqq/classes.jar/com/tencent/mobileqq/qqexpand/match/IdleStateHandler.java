@@ -10,12 +10,11 @@ import com.tencent.qphone.base.util.QLog;
 public class IdleStateHandler
   extends BaseStateHandler
 {
-  public final String a;
+  public final String c = "ExtendFriendLimitChatIdleStateHandler";
   
   IdleStateHandler(LimitChatProtoStateMachine paramLimitChatProtoStateMachine, int paramInt)
   {
     super(paramLimitChatProtoStateMachine, paramInt);
-    this.jdField_a_of_type_JavaLangString = "ExtendFriendLimitChatIdleStateHandler";
   }
   
   public void a(int paramInt)
@@ -25,13 +24,13 @@ public class IdleStateHandler
     ((StringBuilder)localObject).append(paramInt);
     QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, ((StringBuilder)localObject).toString());
     localObject = new MatchInfo();
-    ((MatchInfo)localObject).jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine.a(101, (MatchInfo)localObject);
-    localObject = (IExpandHandler)this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine.a.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
+    ((MatchInfo)localObject).i = paramInt;
+    this.a.a(101, (MatchInfo)localObject);
+    localObject = (IExpandHandler)this.a.c.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
     if (localObject != null)
     {
-      int i = ExtendFriendLimitChatManager.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine.a);
-      ((IExpandHandler)localObject).a(this.jdField_a_of_type_ComTencentMobileqqQqexpandMatchLimitChatProtoStateMachine.a.getCurrentAccountUin(), i, paramInt);
+      int i = ExtendFriendLimitChatManager.a(this.a.c);
+      ((IExpandHandler)localObject).a(this.a.c.getCurrentAccountUin(), i, paramInt);
     }
   }
   
@@ -78,8 +77,8 @@ public class IdleStateHandler
     QLog.i("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
     if (paramBoolean)
     {
-      a(paramMatchInfo.jdField_b_of_type_JavaLangString, paramMatchInfo.jdField_a_of_type_JavaLangString, paramMatchInfo.jdField_a_of_type_ArrayOfByte);
-      a(paramMatchInfo.jdField_b_of_type_JavaLangString, paramMatchInfo.e);
+      a(paramMatchInfo.c, paramMatchInfo.a, paramMatchInfo.b);
+      a(paramMatchInfo.c, paramMatchInfo.h);
       return;
     }
     QLog.e("ExtendFriendLimitChatIdleStateHandler", 2, "onPushMsg ");
@@ -87,7 +86,7 @@ public class IdleStateHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.match.IdleStateHandler
  * JD-Core Version:    0.7.0.1
  */

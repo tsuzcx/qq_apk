@@ -20,48 +20,42 @@ import java.util.Map;
 
 public class IVPluginLoader
 {
-  private static Context jdField_a_of_type_AndroidContentContext;
-  private static Map<String, IVPluginLoader> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public static int[] a;
-  private static boolean d;
-  private static boolean e;
-  private long jdField_a_of_type_Long;
-  protected BroadcastReceiver a;
-  private IHuayangDowanloadHelper jdField_a_of_type_ComTencentMobileqqIntervideoHuayangIHuayangDowanloadHelper;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<PluginLoadListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private final String jdField_b_of_type_JavaLangString = "GroupVideoManager.IVPluginLoader";
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 3, 7, 9, 5, 10 };
-  }
+  public static int[] a = { 3, 7, 9, 5, 10 };
+  private static Context c;
+  private static Map<String, IVPluginLoader> e = new HashMap();
+  private static boolean m;
+  private static boolean n;
+  protected BroadcastReceiver b = new IVPluginLoader.2(this);
+  private String d;
+  private WeakReference<PluginLoadListener> f;
+  private boolean g;
+  private final String h = "GroupVideoManager.IVPluginLoader";
+  private boolean i;
+  private boolean j;
+  private long k;
+  private IHuayangDowanloadHelper l;
   
   private IVPluginLoader(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new IVPluginLoader.2(this);
-    jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    c = paramContext.getApplicationContext();
+    this.d = paramString;
   }
   
   public static IVPluginLoader a(Context paramContext, String paramString)
   {
-    IVPluginLoader localIVPluginLoader2 = (IVPluginLoader)jdField_a_of_type_JavaUtilMap.get(paramString);
+    IVPluginLoader localIVPluginLoader2 = (IVPluginLoader)e.get(paramString);
     IVPluginLoader localIVPluginLoader1 = localIVPluginLoader2;
     if (localIVPluginLoader2 == null)
     {
       localIVPluginLoader1 = new IVPluginLoader(paramContext, paramString);
-      jdField_a_of_type_JavaUtilMap.put(paramString, localIVPluginLoader1);
+      e.put(paramString, localIVPluginLoader1);
     }
     return localIVPluginLoader1;
   }
   
   private void a(int paramInt)
   {
-    StoryReportor.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), new String[] { "", "", "", "8.7.0" });
+    StoryReportor.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.k), new String[] { "", "", "", "8.8.17" });
     if (paramInt != 2)
     {
       if (paramInt != 3)
@@ -93,15 +87,15 @@ public class IVPluginLoader
     Monitor.b("2856626");
   }
   
-  public static boolean a()
+  public static boolean b()
   {
-    if (e) {
-      return d;
+    if (n) {
+      return m;
     }
     Object localObject = null;
     try
     {
-      File localFile = new File(jdField_a_of_type_AndroidContentContext.getExternalFilesDir(null).getPath(), "versionchecker.test");
+      File localFile = new File(c.getExternalFilesDir(null).getPath(), "versionchecker.test");
       localObject = localFile;
     }
     catch (Throwable localThrowable)
@@ -110,15 +104,15 @@ public class IVPluginLoader
     }
     if (localObject != null)
     {
-      d = localObject.exists();
-      e = true;
+      m = localObject.exists();
+      n = true;
     }
-    return d;
+    return m;
   }
   
   public void a()
   {
-    IHuayangDowanloadHelper localIHuayangDowanloadHelper = this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangIHuayangDowanloadHelper;
+    IHuayangDowanloadHelper localIHuayangDowanloadHelper = this.l;
     if (localIHuayangDowanloadHelper != null) {
       localIHuayangDowanloadHelper.canceLauncher();
     }
@@ -126,22 +120,22 @@ public class IVPluginLoader
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, PluginLoadListener paramPluginLoadListener)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.g)
     {
-      localObject = new IntentFilter(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction(this.jdField_a_of_type_JavaLangString));
-      ((IntentFilter)localObject).addAction(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getBackNotifyAction(this.jdField_a_of_type_JavaLangString));
-      jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      this.jdField_a_of_type_Boolean = true;
+      localObject = new IntentFilter(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction(this.d));
+      ((IntentFilter)localObject).addAction(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getBackNotifyAction(this.d));
+      c.registerReceiver(this.b, (IntentFilter)localObject);
+      this.g = true;
     }
-    this.jdField_b_of_type_Boolean = TextUtils.equals(paramString5, "slientDownload");
-    this.c = TextUtils.equals(paramString5, "download");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramPluginLoadListener);
+    this.i = TextUtils.equals(paramString5, "slientDownload");
+    this.j = TextUtils.equals(paramString5, "download");
+    this.f = new WeakReference(paramPluginLoadListener);
     paramPluginLoadListener = IVPluginInfo.a();
-    Object localObject = (IVPluginInfo)paramPluginLoadListener.get(this.jdField_a_of_type_JavaLangString);
+    Object localObject = (IVPluginInfo)paramPluginLoadListener.get(this.d);
     if (!TextUtils.isEmpty(paramString3)) {
       try
       {
-        ((IVPluginInfo)localObject).jdField_a_of_type_Long = Long.parseLong(paramString3);
+        ((IVPluginInfo)localObject).d = Long.parseLong(paramString3);
       }
       catch (NumberFormatException paramString3)
       {
@@ -149,29 +143,29 @@ public class IVPluginLoader
       }
     }
     if (!TextUtils.isEmpty(paramString6)) {
-      ((IVPluginInfo)localObject).e = paramString6;
+      ((IVPluginInfo)localObject).f = paramString6;
     }
-    ((IVPluginInfo)localObject).h = paramString7;
-    ((IVPluginInfo)localObject).c = paramInt;
-    ((IVPluginInfo)localObject).i = paramString8;
-    ((IVPluginInfo)localObject).j = paramString9;
-    if (this.jdField_b_of_type_Boolean)
+    ((IVPluginInfo)localObject).l = paramString7;
+    ((IVPluginInfo)localObject).m = paramInt;
+    ((IVPluginInfo)localObject).n = paramString8;
+    ((IVPluginInfo)localObject).o = paramString9;
+    if (this.i)
     {
       Monitor.b("2856624");
     }
-    else if (this.c)
+    else if (this.j)
     {
       Monitor.b("2856625");
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      StoryReportor.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "8.7.0" });
+      this.k = SystemClock.elapsedRealtime();
+      StoryReportor.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "8.8.17" });
     }
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangIHuayangDowanloadHelper = HuayangDowanloadHelperUtil.a(jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramString1);
+    this.l = HuayangDowanloadHelperUtil.a(c, this.d, paramString1);
     ThreadManagerV2.executeOnSubThread(new IVPluginLoader.1(this, paramString2, paramString1, paramString4, paramString5, paramPluginLoadListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader
  * JD-Core Version:    0.7.0.1
  */

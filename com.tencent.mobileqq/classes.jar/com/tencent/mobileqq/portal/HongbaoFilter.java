@@ -9,17 +9,10 @@ public class HongbaoFilter
   public static int d = 1;
   public static int e = 2;
   public static int f = 3;
-  public int a;
-  public HashMap<String, Integer> a;
-  private int[] a;
+  public int a = 0;
   public int b = 0;
-  
-  public HongbaoFilter()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfInt = new int[1];
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public HashMap<String, Integer> g = new HashMap();
+  private int[] h = new int[1];
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7)
   {
@@ -34,7 +27,7 @@ public class HongbaoFilter
   
   private void a(float paramFloat, String paramString)
   {
-    int i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+    int i = ((Integer)this.g.get(paramString)).intValue();
     if (i >= 0) {
       GLES20.glUniform1f(i, paramFloat);
     }
@@ -98,7 +91,7 @@ public class HongbaoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.HongbaoFilter
  * JD-Core Version:    0.7.0.1
  */

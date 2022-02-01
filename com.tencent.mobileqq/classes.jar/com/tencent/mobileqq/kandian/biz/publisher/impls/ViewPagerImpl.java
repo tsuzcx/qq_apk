@@ -18,43 +18,28 @@ import org.jetbrains.annotations.Nullable;
 public final class ViewPagerImpl
   implements IViewPager
 {
-  private ViewPagerImpl.SubViewPager jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager;
+  private ViewPagerImpl.SubViewPager a;
+  private final HashMap<OnPageChangeListenerProxy, ViewPager.OnPageChangeListener> b = new HashMap();
   @Nullable
-  private PagerAdapterProxy jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy;
-  private final HashMap<OnPageChangeListenerProxy, ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public int a()
-  {
-    ViewPagerImpl.SubViewPager localSubViewPager = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager;
-    if (localSubViewPager != null) {
-      return localSubViewPager.getCurrentItem();
-    }
-    return -1;
-  }
+  private PagerAdapterProxy c;
   
   @NotNull
   public View a(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     paramContext = new ViewPagerImpl.SubViewPager(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager = paramContext;
+    this.a = paramContext;
     return (View)paramContext;
-  }
-  
-  @Nullable
-  public PagerAdapterProxy a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager = ((ViewPagerImpl.SubViewPager)null);
+    this.a = ((ViewPagerImpl.SubViewPager)null);
   }
   
   public void a(int paramInt)
   {
-    ViewPagerImpl.SubViewPager localSubViewPager = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager;
+    ViewPagerImpl.SubViewPager localSubViewPager = this.a;
     if (localSubViewPager != null) {
       localSubViewPager.setCurrentItem(paramInt);
     }
@@ -62,7 +47,7 @@ public final class ViewPagerImpl
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    ViewPagerImpl.SubViewPager localSubViewPager = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager;
+    ViewPagerImpl.SubViewPager localSubViewPager = this.a;
     if (localSubViewPager != null) {
       localSubViewPager.setCurrentItem(paramInt, paramBoolean);
     }
@@ -70,12 +55,12 @@ public final class ViewPagerImpl
   
   public void a(@Nullable PagerAdapterProxy paramPagerAdapterProxy)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy = paramPagerAdapterProxy;
-    paramPagerAdapterProxy = a();
+    this.c = paramPagerAdapterProxy;
+    paramPagerAdapterProxy = b();
     if (paramPagerAdapterProxy != null)
     {
       paramPagerAdapterProxy = new ViewPagerImpl.RealPagerAdapter(paramPagerAdapterProxy);
-      ViewPagerImpl.SubViewPager localSubViewPager = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager;
+      ViewPagerImpl.SubViewPager localSubViewPager = this.a;
       if (localSubViewPager != null) {
         localSubViewPager.setAdapter((PagerAdapter)paramPagerAdapterProxy);
       }
@@ -86,8 +71,8 @@ public final class ViewPagerImpl
   {
     Intrinsics.checkParameterIsNotNull(paramOnPageChangeListenerProxy, "listener");
     ViewPagerImpl.addOnPageChangeListener.pageChangeListener.1 local1 = new ViewPagerImpl.addOnPageChangeListener.pageChangeListener.1(paramOnPageChangeListenerProxy);
-    ((Map)this.jdField_a_of_type_JavaUtilHashMap).put(paramOnPageChangeListenerProxy, local1);
-    paramOnPageChangeListenerProxy = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager;
+    ((Map)this.b).put(paramOnPageChangeListenerProxy, local1);
+    paramOnPageChangeListenerProxy = this.a;
     if (paramOnPageChangeListenerProxy != null) {
       paramOnPageChangeListenerProxy.addOnPageChangeListener((ViewPager.OnPageChangeListener)local1);
     }
@@ -95,15 +80,30 @@ public final class ViewPagerImpl
   
   public void a(boolean paramBoolean)
   {
-    ViewPagerImpl.SubViewPager localSubViewPager = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsViewPagerImpl$SubViewPager;
+    ViewPagerImpl.SubViewPager localSubViewPager = this.a;
     if (localSubViewPager != null) {
       localSubViewPager.a(paramBoolean);
     }
   }
+  
+  @Nullable
+  public PagerAdapterProxy b()
+  {
+    return this.c;
+  }
+  
+  public int c()
+  {
+    ViewPagerImpl.SubViewPager localSubViewPager = this.a;
+    if (localSubViewPager != null) {
+      return localSubViewPager.getCurrentItem();
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ViewPagerImpl
  * JD-Core Version:    0.7.0.1
  */

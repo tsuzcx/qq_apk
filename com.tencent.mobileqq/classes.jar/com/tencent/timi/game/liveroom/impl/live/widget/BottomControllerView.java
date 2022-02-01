@@ -1,0 +1,48 @@
+package com.tencent.timi.game.liveroom.impl.live.widget;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import kotlin.Metadata;
+import kotlin.jvm.JvmOverloads;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/timi/game/liveroom/impl/live/widget/BottomControllerView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isAnchor", "", "setIsAnchor", "", "timi-game-impl_release"}, k=1, mv={1, 1, 16})
+public final class BottomControllerView
+  extends FrameLayout
+{
+  private boolean a;
+  
+  @JvmOverloads
+  public BottomControllerView(@NotNull Context paramContext)
+  {
+    this(paramContext, null, 0, 6, null);
+  }
+  
+  @JvmOverloads
+  public BottomControllerView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
+  {
+    this(paramContext, paramAttributeSet, 0, 4, null);
+  }
+  
+  @JvmOverloads
+  public BottomControllerView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    LayoutInflater.from(getContext()).inflate(2131629441, (ViewGroup)this);
+  }
+  
+  public final void setIsAnchor(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+ * Qualified Name:     com.tencent.timi.game.liveroom.impl.live.widget.BottomControllerView
+ * JD-Core Version:    0.7.0.1
+ */

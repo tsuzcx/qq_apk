@@ -16,13 +16,13 @@ class OnlineStatusItemView$1
     }
     OnlineStatusItemView.a(this.a, paramLottieDrawable);
     OnlineStatusItemView.a(this.a).addAnimatorListener(this.a);
-    OnlineStatusItemView.a(this.a).setImageDrawable(OnlineStatusItemView.a(this.a));
-    OnlineStatusItemView.a(this.a);
+    OnlineStatusItemView.b(this.a).setImageDrawable(OnlineStatusItemView.a(this.a));
+    OnlineStatusItemView.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusItemView.1
  * JD-Core Version:    0.7.0.1
  */

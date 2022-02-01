@@ -13,23 +13,23 @@ class HomeFeedPresenter$GamePKCommentReceiver$1
   public void run()
   {
     CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
+    if (HomeFeedPresenter.a(this.a))
     {
-      CommentEntry localCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+      CommentEntry localCommentEntry = this.b;
       int i;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryCommentGamePKCommentEvent.b == 0) {
+      if (this.c.e == 0) {
         i = 3;
       } else {
         i = 4;
       }
       localCommentEntry.type = i;
-      localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localCommentManager.a(this.b);
     }
     else
     {
-      localCommentManager.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localCommentManager.b(this.b);
     }
-    ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    ((FeedManager)SuperManager.a(11)).a(this.a);
   }
 }
 

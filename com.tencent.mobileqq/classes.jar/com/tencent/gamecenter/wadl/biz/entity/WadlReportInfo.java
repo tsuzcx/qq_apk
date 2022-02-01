@@ -9,27 +9,27 @@ import org.json.JSONObject;
 public class WadlReportInfo
 {
   public static String a;
-  private static String i;
-  private static String j;
-  public int a;
-  public long a;
-  public WadlParams a;
-  public long b;
-  public String b;
-  public String c = "";
-  public String d;
-  public String e;
+  private static String m;
+  private static String n;
+  public WadlParams b;
+  public String c;
+  public int d;
+  public String e = "";
   public String f;
   public String g;
   public String h;
+  public String i;
+  public long j;
+  public String k;
+  public long l;
   
   static
   {
     try
     {
-      i = DeviceInfoUtil.f();
-      jdField_a_of_type_JavaLangString = QQDeviceInfo.getIMEI("b84cf5");
-      j = DeviceInfoUtil.b();
+      m = DeviceInfoUtil.j();
+      a = QQDeviceInfo.getIMEI("b84cf5");
+      n = DeviceInfoUtil.c();
       return;
     }
     catch (Exception localException) {}
@@ -40,10 +40,10 @@ public class WadlReportInfo
     WadlReportInfo localWadlReportInfo = new WadlReportInfo();
     try
     {
-      localWadlReportInfo.jdField_b_of_type_Long = (DeviceInfoUtil.e() / 1048576L);
-      localWadlReportInfo.h = String.valueOf(DeviceInfoUtil.b()[1]);
-      localWadlReportInfo.jdField_b_of_type_JavaLangString = "";
-      localWadlReportInfo.jdField_a_of_type_Int = 0;
+      localWadlReportInfo.l = (DeviceInfoUtil.r() / 1048576L);
+      localWadlReportInfo.k = String.valueOf(DeviceInfoUtil.q()[1]);
+      localWadlReportInfo.c = "";
+      localWadlReportInfo.d = 0;
       return localWadlReportInfo;
     }
     catch (Exception localException)
@@ -53,23 +53,23 @@ public class WadlReportInfo
     return localWadlReportInfo;
   }
   
-  public String a()
+  public String b()
   {
     for (;;)
     {
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        if (!TextUtils.isEmpty(i))
+        if (!TextUtils.isEmpty(m))
         {
-          String str1 = i;
+          String str1 = m;
           localJSONObject.put("androidId", str1);
-          if (TextUtils.isEmpty(j)) {
+          if (TextUtils.isEmpty(n)) {
             break label88;
           }
-          str1 = j;
+          str1 = n;
           localJSONObject.put("imsi", str1);
-          localJSONObject.put("leftMemorySize", this.jdField_b_of_type_Long);
+          localJSONObject.put("leftMemorySize", this.l);
           str1 = localJSONObject.toString();
           return str1;
         }
@@ -88,7 +88,7 @@ public class WadlReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.entity.WadlReportInfo
  * JD-Core Version:    0.7.0.1
  */

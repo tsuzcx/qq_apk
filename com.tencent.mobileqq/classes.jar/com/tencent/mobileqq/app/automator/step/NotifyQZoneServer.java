@@ -17,13 +17,13 @@ public class NotifyQZoneServer
 {
   protected int doStep()
   {
-    if (!this.mAutomator.a.isBackgroundPause)
+    if (!this.mAutomator.k.isBackgroundPause)
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("isBackground_Pause:");
-        ((StringBuilder)localObject1).append(this.mAutomator.a.isBackgroundPause);
+        ((StringBuilder)localObject1).append(this.mAutomator.k.isBackgroundPause);
         QLog.d("NotifyQZoneServer", 2, ((StringBuilder)localObject1).toString());
       }
       return super.doStep();
@@ -69,9 +69,9 @@ public class NotifyQZoneServer
       } else {
         ((SharedPreferences.Editor)localObject2).commit();
       }
-      localObject1 = (QZoneManager)this.mAutomator.a.getManager(QQManagerFactory.QZONE_MANAGER);
+      localObject1 = (QZoneManager)this.mAutomator.k.getManager(QQManagerFactory.QZONE_MANAGER);
       if (localObject1 != null) {
-        ((QZoneManager)localObject1).a();
+        ((QZoneManager)localObject1).c();
       }
     }
     return super.doStep();
@@ -79,7 +79,7 @@ public class NotifyQZoneServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.NotifyQZoneServer
  * JD-Core Version:    0.7.0.1
  */

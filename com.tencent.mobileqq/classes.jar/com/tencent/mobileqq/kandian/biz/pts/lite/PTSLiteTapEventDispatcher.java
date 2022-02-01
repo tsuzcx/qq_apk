@@ -3,7 +3,7 @@ package com.tencent.mobileqq.kandian.biz.pts.lite;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.kandian.base.utils.RIJStringUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.kandian.biz.pts.ReadInJoyModelImpl;
 import com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeProteus;
@@ -15,7 +15,6 @@ import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils.CoreReport;
 import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsType;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.pts.core.PTSComposer;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -26,17 +25,17 @@ import java.util.List;
 
 public class PTSLiteTapEventDispatcher
 {
-  private ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, AbsBaseArticleInfo> b;
-  private HashMap<String, AbsBaseArticleInfo> c = new HashMap();
+  private ReadInJoyBaseAdapter a;
+  private HashMap<String, Integer> b;
+  private HashMap<String, AbsBaseArticleInfo> c;
+  private HashMap<String, AbsBaseArticleInfo> d = new HashMap();
   
   private View a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-    if ((localObject != null) && (((ReadInJoyBaseAdapter)localObject).a() != null))
+    Object localObject = this.a;
+    if ((localObject != null) && (((ReadInJoyBaseAdapter)localObject).d() != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a();
+      localObject = this.a.d();
       return ((ListView)localObject).getChildAt(paramInt - ((ListView)localObject).getFirstVisiblePosition() + ((ListView)localObject).getHeaderViewsCount());
     }
     return null;
@@ -45,14 +44,14 @@ public class PTSLiteTapEventDispatcher
   private AbsBaseArticleInfo a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if ((paramAbsBaseArticleInfo != null) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID))) {
-      return (AbsBaseArticleInfo)this.c.get(paramAbsBaseArticleInfo.innerUniqueID);
+      return (AbsBaseArticleInfo)this.d.get(paramAbsBaseArticleInfo.innerUniqueID);
     }
     return null;
   }
   
   private AbsBaseArticleInfo a(String paramString)
   {
-    Object localObject = this.b;
+    Object localObject = this.c;
     if (localObject == null) {
       return null;
     }
@@ -64,7 +63,7 @@ public class PTSLiteTapEventDispatcher
     AbsBaseArticleInfo localAbsBaseArticleInfo2;
     do
     {
-      localObject = this.b.values().iterator();
+      localObject = this.c.values().iterator();
       Iterator localIterator;
       while (!localIterator.hasNext())
       {
@@ -79,20 +78,18 @@ public class PTSLiteTapEventDispatcher
       }
       localAbsBaseArticleInfo2 = (AbsBaseArticleInfo)localIterator.next();
     } while (!TextUtils.equals(paramString, localAbsBaseArticleInfo2.innerUniqueID));
-    this.c.put(localAbsBaseArticleInfo2.innerUniqueID, localAbsBaseArticleInfo1);
+    this.d.put(localAbsBaseArticleInfo2.innerUniqueID, localAbsBaseArticleInfo1);
     return localAbsBaseArticleInfo2;
     return null;
   }
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString, HashMap<String, String> paramHashMap)
   {
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), paramAbsBaseArticleInfo, paramString);
-    ReadinjoyReportUtils.CoreReport.a(paramAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a());
-    paramString = ReadinjoyReportUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a());
-    if (!TextUtils.isEmpty(paramString))
-    {
-      String str = RIJFeedsType.c(paramAbsBaseArticleInfo);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, str, paramString, paramString, 0, 0, RIJStringUtils.a(paramAbsBaseArticleInfo.mFeedId), String.valueOf(paramAbsBaseArticleInfo.mArticleID), String.valueOf(paramAbsBaseArticleInfo.mStrategyId), PTSRijReport.a(paramAbsBaseArticleInfo, paramHashMap), false);
+    RIJJumpUtils.a(this.a.a(), paramAbsBaseArticleInfo, paramString);
+    ReadinjoyReportUtils.CoreReport.a(paramAbsBaseArticleInfo, this.a.c());
+    paramString = ReadinjoyReportUtils.e(this.a.c());
+    if (!TextUtils.isEmpty(paramString)) {
+      PublicAccountReportUtils.a(null, RIJFeedsType.k(paramAbsBaseArticleInfo), paramString, paramString, 0, 0, RIJStringUtils.a(paramAbsBaseArticleInfo.mFeedId), String.valueOf(paramAbsBaseArticleInfo.mArticleID), String.valueOf(paramAbsBaseArticleInfo.mStrategyId), PTSRijReport.a(paramAbsBaseArticleInfo, paramHashMap), false);
     }
     PTSLiteDataParser.c(paramAbsBaseArticleInfo);
     PTSLiteDataParser.b(a(paramAbsBaseArticleInfo));
@@ -121,26 +118,26 @@ public class PTSLiteTapEventDispatcher
   
   private void a(String paramString, View paramView, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    paramString = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (Integer)this.b.get(paramString);
     int i;
     if (paramString != null) {
       i = paramString.intValue();
     } else {
       i = -1;
     }
-    paramString = (AbsBaseArticleInfo)this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.getItem(i + 1);
+    paramString = (AbsBaseArticleInfo)this.a.getItem(i + 1);
     int j = PTSLiteItemViewBuilder.a(paramAbsBaseArticleInfo);
     View localView = a(i);
     if ((i != -1) && (paramAbsBaseArticleInfo != null) && (localView != null))
     {
-      ReadInJoyModelImpl localReadInJoyModelImpl = new ReadInJoyModelImpl(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), paramAbsBaseArticleInfo, j, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.b(), i, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.getCount(), paramString, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter);
-      FeedItemCellTypeProteus localFeedItemCellTypeProteus = new FeedItemCellTypeProteus(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter);
+      ReadInJoyModelImpl localReadInJoyModelImpl = new ReadInJoyModelImpl(this.a.a(), paramAbsBaseArticleInfo, j, this.a.c(), this.a.i(), i, this.a.j(), this.a.getCount(), paramString, this.a);
+      FeedItemCellTypeProteus localFeedItemCellTypeProteus = new FeedItemCellTypeProteus(this.a.a(), this.a.l(), this.a);
       localFeedItemCellTypeProteus.a(localReadInJoyModelImpl);
       localFeedItemCellTypeProteus.a(localView);
-      localFeedItemCellTypeProteus.a(paramView);
+      localFeedItemCellTypeProteus.b(paramView);
       paramView = a(paramAbsBaseArticleInfo);
       if (paramView != null) {
-        localFeedItemCellTypeProteus.a(new ReadInJoyModelImpl(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), paramView, j, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.b(), i, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.getCount(), paramString, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter));
+        localFeedItemCellTypeProteus.a(new ReadInJoyModelImpl(this.a.a(), paramView, j, this.a.c(), this.a.i(), i, this.a.j(), this.a.getCount(), paramString, this.a));
       }
       return;
     }
@@ -196,7 +193,7 @@ public class PTSLiteTapEventDispatcher
   
   public void a(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramHashMap != null) && (paramView != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter != null) && (this.jdField_a_of_type_JavaUtilHashMap != null) && (this.b != null))
+    if ((!TextUtils.isEmpty(paramString)) && (paramHashMap != null) && (paramView != null) && (this.a != null) && (this.b != null) && (this.c != null))
     {
       AbsBaseArticleInfo localAbsBaseArticleInfo = a(paramString);
       if (localAbsBaseArticleInfo == null)
@@ -204,19 +201,17 @@ public class PTSLiteTapEventDispatcher
         QLog.i("PTSLiteTapEventDispatcher", 1, "[handleTapEvent] error, articleInfo is null.");
         return;
       }
-      String str2 = (String)paramHashMap.get("eventType");
-      String str3 = (String)paramHashMap.get("jumpUrl");
-      String str1 = (String)paramHashMap.get("clickReportName");
-      if (TextUtils.isEmpty(str2))
+      String str1 = (String)paramHashMap.get("eventType");
+      String str2 = (String)paramHashMap.get("jumpUrl");
+      String str3 = (String)paramHashMap.get("clickReportName");
+      if (TextUtils.isEmpty(str1))
       {
         QLog.e("PTSLiteTapEventDispatcher", 1, "[handleTapEvent] error, eventType is null or empty.");
         return;
       }
-      a(str2, localAbsBaseArticleInfo, str3, paramString, paramHashMap, paramView, paramPTSComposer);
-      if (!TextUtils.isEmpty(str1))
-      {
-        paramString = RIJFeedsType.c(localAbsBaseArticleInfo);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramString, str1, str1, 0, 0, RIJStringUtils.a(localAbsBaseArticleInfo.mFeedId), String.valueOf(localAbsBaseArticleInfo.mArticleID), String.valueOf(localAbsBaseArticleInfo.mStrategyId), PTSRijReport.a(localAbsBaseArticleInfo, paramHashMap), false);
+      a(str1, localAbsBaseArticleInfo, str2, paramString, paramHashMap, paramView, paramPTSComposer);
+      if (!TextUtils.isEmpty(str3)) {
+        PublicAccountReportUtils.a(null, RIJFeedsType.k(localAbsBaseArticleInfo), str3, str3, 0, 0, RIJStringUtils.a(localAbsBaseArticleInfo.mFeedId), String.valueOf(localAbsBaseArticleInfo.mArticleID), String.valueOf(localAbsBaseArticleInfo.mStrategyId), PTSRijReport.a(localAbsBaseArticleInfo, paramHashMap), false);
       }
       return;
     }
@@ -225,7 +220,7 @@ public class PTSLiteTapEventDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteTapEventDispatcher
  * JD-Core Version:    0.7.0.1
  */

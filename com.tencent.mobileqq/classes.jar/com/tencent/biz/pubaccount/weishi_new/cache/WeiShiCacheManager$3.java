@@ -18,7 +18,7 @@ class WeiShiCacheManager$3
     ((StringBuilder)localObject).append(", thread = ");
     ((StringBuilder)localObject).append(Thread.currentThread());
     WSLog.b("CacheResponseLog", ((StringBuilder)localObject).toString());
-    if (!this.this$0.a()) {
+    if (!this.this$0.c()) {
       return;
     }
     localObject = (stFollowFeedsRsp)WeiShiCacheManager.a(this.this$0, new stFollowFeedsRsp(), 3);
@@ -27,7 +27,7 @@ class WeiShiCacheManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.3
  * JD-Core Version:    0.7.0.1
  */

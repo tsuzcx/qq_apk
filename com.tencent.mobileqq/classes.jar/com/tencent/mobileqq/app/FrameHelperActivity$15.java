@@ -14,15 +14,15 @@ class FrameHelperActivity$15
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
     }
-    if (FrameHelperActivity.a(this.a) != null) {
-      FrameHelperActivity.a(this.a).a(paramInt);
+    if (FrameHelperActivity.i(this.a) != null) {
+      FrameHelperActivity.i(this.a).a(paramInt);
     }
-    this.a.a("OnBatteryChangeObserver");
+    this.a.b("OnBatteryChangeObserver");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.15
  * JD-Core Version:    0.7.0.1
  */

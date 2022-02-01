@@ -10,14 +10,14 @@ class CmShowMakeupFragment$3$1
   
   public void run()
   {
-    if ((CmShowMakeupFragment.a(this.a.a) != null) && (this.a.a.getUIStyleHandler() != null) && (this.a.a.getUIStyleHandler().c != null)) {
-      this.a.a.getUIStyleHandler().c.removeView(CmShowMakeupFragment.a(this.a.a));
+    if ((CmShowMakeupFragment.f(this.a.a) != null) && (this.a.a.getUIStyleHandler() != null) && (this.a.a.getUIStyleHandler().u != null)) {
+      this.a.a.getUIStyleHandler().u.removeView(CmShowMakeupFragment.f(this.a.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowMakeupFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

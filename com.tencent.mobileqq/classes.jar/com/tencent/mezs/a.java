@@ -11,15 +11,14 @@ import org.json.JSONObject;
 public class a
   implements MQPSigCheckService.ISigCheckResultListener
 {
-  private static boolean jdField_a_of_type_Boolean = true;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean b = false;
+  private static boolean a = true;
+  private QQAppInterface b = null;
   private boolean c = false;
+  private boolean d = false;
   
   public a(QQAppInterface paramQQAppInterface)
   {
-    this.a = null;
-    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private void a()
@@ -51,24 +50,24 @@ public class a
     //   5: aconst_null
     //   6: astore 7
     //   8: aload_1
-    //   9: ldc 93
-    //   11: invokevirtual 99	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: ldc 94
+    //   11: invokevirtual 100	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   14: astore_2
     //   15: aload_1
-    //   16: ldc 101
-    //   18: invokevirtual 99	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   16: ldc 102
+    //   18: invokevirtual 100	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   21: astore_3
     //   22: aload_1
-    //   23: ldc 103
-    //   25: invokevirtual 99	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   23: ldc 104
+    //   25: invokevirtual 100	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   28: astore 5
     //   30: aload_1
-    //   31: ldc 105
-    //   33: invokevirtual 99	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   31: ldc 106
+    //   33: invokevirtual 100	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   36: astore 4
     //   38: aload_1
-    //   39: ldc 107
-    //   41: invokevirtual 99	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   39: ldc 108
+    //   41: invokevirtual 100	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   44: astore_1
     //   45: goto +73 -> 118
     //   48: astore 6
@@ -109,7 +108,7 @@ public class a
     //   102: aload 4
     //   104: astore_1
     //   105: aload 6
-    //   107: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   107: invokevirtual 111	java/lang/Exception:printStackTrace	()V
     //   110: aload_2
     //   111: astore 4
     //   113: aload_1
@@ -117,59 +116,59 @@ public class a
     //   115: aload 7
     //   117: astore_1
     //   118: aload_2
-    //   119: invokestatic 116	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   119: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   122: ifne +111 -> 233
     //   125: aload_3
-    //   126: invokestatic 116	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   126: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   129: ifeq +4 -> 133
     //   132: return
-    //   133: getstatic 122	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   133: getstatic 123	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
     //   136: astore 6
-    //   138: new 124	android/content/Intent
+    //   138: new 125	android/content/Intent
     //   141: dup
-    //   142: invokespecial 125	android/content/Intent:<init>	()V
+    //   142: invokespecial 126	android/content/Intent:<init>	()V
     //   145: astore 7
     //   147: aload 7
-    //   149: ldc 127
+    //   149: ldc 128
     //   151: bipush 9
-    //   153: invokevirtual 131	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   153: invokevirtual 132	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   156: pop
-    //   157: new 133	android/os/Bundle
+    //   157: new 134	android/os/Bundle
     //   160: dup
-    //   161: invokespecial 134	android/os/Bundle:<init>	()V
+    //   161: invokespecial 135	android/os/Bundle:<init>	()V
     //   164: astore 8
     //   166: aload 8
-    //   168: ldc 136
+    //   168: ldc 137
     //   170: aload_2
-    //   171: invokevirtual 140	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   171: invokevirtual 141	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   174: aload 8
-    //   176: ldc 142
+    //   176: ldc 143
     //   178: aload_3
-    //   179: invokevirtual 140	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   179: invokevirtual 141	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   182: aload 8
-    //   184: ldc 144
+    //   184: ldc 145
     //   186: aload 5
-    //   188: invokevirtual 140	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   188: invokevirtual 141	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   191: aload 8
-    //   193: ldc 146
+    //   193: ldc 147
     //   195: aload 4
-    //   197: invokevirtual 140	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   197: invokevirtual 141	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   200: aload 8
-    //   202: ldc 148
+    //   202: ldc 149
     //   204: aload_1
-    //   205: invokevirtual 140	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   205: invokevirtual 141	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   208: aload 7
     //   210: aload 8
-    //   212: invokevirtual 152	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
+    //   212: invokevirtual 153	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
     //   215: pop
     //   216: aload 7
-    //   218: ldc 153
-    //   220: invokevirtual 157	android/content/Intent:setFlags	(I)Landroid/content/Intent;
+    //   218: ldc 154
+    //   220: invokevirtual 158	android/content/Intent:setFlags	(I)Landroid/content/Intent;
     //   223: pop
     //   224: aload 6
     //   226: aload 7
-    //   228: ldc 159
-    //   230: invokestatic 164	com/tencent/mobileqq/app/utils/RouteUtils:a	(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;)V
+    //   228: ldc 160
+    //   230: invokestatic 165	com/tencent/mobileqq/app/utils/RouteUtils:a	(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;)V
     //   233: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -249,22 +248,22 @@ public class a
   
   public void a(boolean paramBoolean)
   {
-    if (this.b) {
+    if (this.c) {
       return;
     }
-    this.b = true;
-    this.c = paramBoolean;
-    if (this.c) {
+    this.c = true;
+    this.d = paramBoolean;
+    if (this.d) {
       new a.1(this).start();
     } else {
       a();
     }
-    this.b = false;
+    this.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mezs.a
  * JD-Core Version:    0.7.0.1
  */

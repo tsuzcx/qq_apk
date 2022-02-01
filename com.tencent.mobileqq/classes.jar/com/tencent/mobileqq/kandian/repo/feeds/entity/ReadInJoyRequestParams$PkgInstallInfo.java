@@ -4,9 +4,9 @@ import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PkgInstallInfo;
 
 public class ReadInJoyRequestParams$PkgInstallInfo
 {
-  public int a = 1;
   public String a;
-  public boolean a;
+  public boolean b;
+  public int c = 1;
   
   public oidb_cmd0x68b.PkgInstallInfo a()
   {
@@ -15,7 +15,7 @@ public class ReadInJoyRequestParams$PkgInstallInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyRequestParams.PkgInstallInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ class TroopChatPie$InputOnGlobalLayoutListener$1
   
   public void run()
   {
-    String str = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((ITroopBatchAddFriendService)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopBatchAddFriendService.class, "")).getTroopBatchAddFriendMgr();
-    Object localObject1 = localTroopBatchAddFriendMgr.a(str);
+    String str = this.a.a.ah.b;
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((ITroopBatchAddFriendService)this.a.a.d.getRuntimeService(ITroopBatchAddFriendService.class, "")).getTroopBatchAddFriendMgr();
+    Object localObject1 = localTroopBatchAddFriendMgr.f(str);
     ArrayList localArrayList = new ArrayList();
     Object localObject2;
     if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
@@ -26,14 +26,14 @@ class TroopChatPie$InputOnGlobalLayoutListener$1
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        if (this.a.a.a((String)localObject2)) {
+        if (this.a.a.e((String)localObject2)) {
           localArrayList.add(localObject2);
         }
       }
     }
     if (QLog.isColorLevel())
     {
-      localObject1 = this.a.a.b;
+      localObject1 = this.a.a.c;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("CheckNewMemberDataWhenEnterAIO visibleUins size = ");
       ((StringBuilder)localObject2).append(localArrayList.size());
@@ -48,7 +48,7 @@ class TroopChatPie$InputOnGlobalLayoutListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.InputOnGlobalLayoutListener.1
  * JD-Core Version:    0.7.0.1
  */

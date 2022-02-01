@@ -15,16 +15,16 @@ import java.util.Date;
 
 public class ReceiptUtil
 {
-  private static LongSparseArray<Integer> jdField_a_of_type_ComTencentUtilLongSparseArray;
-  private static String jdField_a_of_type_JavaLangString = "ReceiptUtil";
-  private static boolean jdField_a_of_type_Boolean;
+  private static String a = "ReceiptUtil";
+  private static boolean b;
+  private static LongSparseArray<Integer> c;
   
   public static int a(QQAppInterface paramQQAppInterface)
   {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
+    if (!b) {
+      d(paramQQAppInterface);
     }
-    return AIOConfigManager.a;
+    return AIOConfigManager.d;
   }
   
   private static long a(String paramString)
@@ -37,46 +37,29 @@ public class ReceiptUtil
     catch (NumberFormatException paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+        QLog.d(a, 2, QLog.getStackTraceString(paramString));
       }
     }
     return -1L;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
-    }
-    int i = c(paramQQAppInterface) + 1;
-    a(paramQQAppInterface, i);
-    if (!QLog.isColorLevel()) {
-      return;
-    }
-    paramQQAppInterface = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("increaseSentNum with result:  ");
-    localStringBuilder.append(Integer.toString(i));
-    QLog.d(paramQQAppInterface, 2, localStringBuilder.toString());
   }
   
   private static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setSentNum: ");
       localStringBuilder.append(paramInt);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    jdField_a_of_type_ComTencentUtilLongSparseArray.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(paramInt));
+    c.b(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(paramInt));
     paramQQAppInterface.getPreferences().edit().putInt("receipt_msg_sent_num", paramInt).apply();
   }
   
   public static boolean a()
   {
-    return AIOConfigManager.b;
+    return AIOConfigManager.c;
   }
   
   private static boolean a(long paramLong1, long paramLong2)
@@ -97,7 +80,7 @@ public class ReceiptUtil
     }
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramLong1);
       ((StringBuilder)localObject2).append(" and ");
@@ -116,8 +99,8 @@ public class ReceiptUtil
   
   public static int b(QQAppInterface paramQQAppInterface)
   {
-    if (!jdField_a_of_type_Boolean) {
-      b(paramQQAppInterface);
+    if (!b) {
+      d(paramQQAppInterface);
     }
     Object localObject = paramQQAppInterface.getPreferences();
     long l1 = ((SharedPreferences)localObject).getLong("receipt_msg_store_time", 0L);
@@ -129,30 +112,47 @@ public class ReceiptUtil
     }
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getLeftNum max is ");
       localStringBuilder.append(a(paramQQAppInterface));
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    return a(paramQQAppInterface) - c(paramQQAppInterface);
+    return a(paramQQAppInterface) - e(paramQQAppInterface);
   }
   
-  private static void b(QQAppInterface paramQQAppInterface)
+  public static void c(QQAppInterface paramQQAppInterface)
+  {
+    if (!b) {
+      d(paramQQAppInterface);
+    }
+    int i = e(paramQQAppInterface) + 1;
+    a(paramQQAppInterface, i);
+    if (!QLog.isColorLevel()) {
+      return;
+    }
+    paramQQAppInterface = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("increaseSentNum with result:  ");
+    localStringBuilder.append(Integer.toString(i));
+    QLog.d(paramQQAppInterface, 2, localStringBuilder.toString());
+  }
+  
+  private static void d(QQAppInterface paramQQAppInterface)
   {
     SharedPreferences localSharedPreferences = paramQQAppInterface.getPreferences();
-    jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray(1);
+    c = new LongSparseArray(1);
     int i = localSharedPreferences.getInt("receipt_msg_sent_num", 0);
-    jdField_a_of_type_ComTencentUtilLongSparseArray.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(i));
-    jdField_a_of_type_Boolean = true;
+    c.b(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(i));
+    b = true;
   }
   
-  private static int c(QQAppInterface paramQQAppInterface)
+  private static int e(QQAppInterface paramQQAppInterface)
   {
-    int i = ((Integer)jdField_a_of_type_ComTencentUtilLongSparseArray.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(0))).intValue();
+    int i = ((Integer)c.a(a(paramQQAppInterface.getCurrentAccountUin()), Integer.valueOf(0))).intValue();
     if (QLog.isColorLevel())
     {
-      paramQQAppInterface = jdField_a_of_type_JavaLangString;
+      paramQQAppInterface = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getSentNum is ");
       localStringBuilder.append(i);
@@ -163,7 +163,7 @@ public class ReceiptUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptUtil
  * JD-Core Version:    0.7.0.1
  */

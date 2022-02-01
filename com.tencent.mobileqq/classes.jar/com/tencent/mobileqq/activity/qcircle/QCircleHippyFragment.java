@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
@@ -38,6 +37,7 @@ import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.HippyModuleManager;
 import com.tencent.mtt.hippy.modules.javascriptmodules.EventDispatcher;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -53,10 +53,10 @@ public class QCircleHippyFragment
   extends ViolaFragment
   implements SimpleEventReceiver
 {
-  private long jdField_a_of_type_Long = 0L;
-  private QCircleHippyBean jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private long c = 0L;
+  private QCircleHippyBean d;
   
   public static FeedCloudCommon.Entry a(String paramString1, String paramString2)
   {
@@ -81,47 +81,6 @@ public class QCircleHippyFragment
     localHashMap.put("bundle_is_splash_activity", localBoolean2);
     localHashMap.put("title_status_immersive", localBoolean1);
     return localHashMap;
-  }
-  
-  private JSONObject a()
-  {
-    if (getQBaseActivity() != null)
-    {
-      TicketManager localTicketManager = (TicketManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(2);
-      String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("uin", str);
-        localJSONObject.put("p_uin", str);
-        localJSONObject.put("skey", localTicketManager.getSkey(str));
-        localJSONObject.put("p_skey", localTicketManager.getPskey(str, "qzone.qq.com"));
-        if ((this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean.getPersonalUin()))) {
-          localJSONObject.put("host_uin", this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean.getPersonalUin());
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean.getTheme())))
-        {
-          localJSONObject.put("theme", this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean.getTheme());
-          return localJSONObject;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      return localJSONObject;
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("url", this.b);
-    QCircleUtils.a().enterBySchemeAction(BaseApplicationImpl.getContext(), "openwebview", localHashMap);
-    if (getQBaseActivity() != null) {
-      getQBaseActivity().finish();
-    }
   }
   
   public static void a(Activity paramActivity, int paramInt)
@@ -156,9 +115,9 @@ public class QCircleHippyFragment
     try
     {
       localJSONObject1 = new JSONObject(paramBundle.getString("param"));
-      this.mPresenter.a().a(paramViewGroup, new QCircleHippyFragment.1(this));
-      paramBundle = (ViewGroup)getContentView().findViewById(2131380915);
-      this.mHippyQQEngine.initHippyInContainer(paramBundle, localJSONObject1, this.mPresenter.a().a(), new QCircleHippyFragment.2(this));
+      this.mPresenter.i().a(paramViewGroup, new QCircleHippyFragment.1(this));
+      paramBundle = (ViewGroup)getContentView().findViewById(2131449905);
+      this.mHippyQQEngine.initHippyInContainer(paramBundle, localJSONObject1, this.mPresenter.i().d(), new QCircleHippyFragment.2(this));
       return;
     }
     catch (JSONException paramBundle)
@@ -173,9 +132,9 @@ public class QCircleHippyFragment
   private void a(View paramView)
   {
     String str;
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "WeZoneTask")) {
+    if (TextUtils.equals(this.a, "WeZoneTask")) {
       str = "pg_xsj_mission_centre";
-    } else if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "WeZoneGift")) {
+    } else if (TextUtils.equals(this.a, "WeZoneGift")) {
       str = "pg_xsj_gift_wall";
     } else {
       str = "small_world_base";
@@ -183,6 +142,47 @@ public class QCircleHippyFragment
     VideoReport.addToDetectionWhitelist(getActivity());
     VideoReport.setPageId(paramView, str);
     VideoReport.setPageParams(paramView, ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).buildPageParams("QCircleHippyFragment"));
+  }
+  
+  private JSONObject b()
+  {
+    if (getQBaseActivity() != null)
+    {
+      TicketManager localTicketManager = (TicketManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(2);
+      String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("uin", str);
+        localJSONObject.put("p_uin", str);
+        localJSONObject.put("skey", localTicketManager.getSkey(str));
+        localJSONObject.put("p_skey", localTicketManager.getPskey(str, "qzone.qq.com"));
+        if ((this.d != null) && (!TextUtils.isEmpty(this.d.getPersonalUin()))) {
+          localJSONObject.put("host_uin", this.d.getPersonalUin());
+        }
+        if ((this.d != null) && (!TextUtils.isEmpty(this.d.getTheme())))
+        {
+          localJSONObject.put("theme", this.d.getTheme());
+          return localJSONObject;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      return localJSONObject;
+    }
+    return null;
+  }
+  
+  private void c()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("url", this.b);
+    QCircleUtils.a().enterBySchemeAction(BaseApplicationImpl.getContext(), "openwebview", localHashMap);
+    if (getQBaseActivity() != null) {
+      getQBaseActivity().finish();
+    }
   }
   
   public ArrayList<Class> getEventClass()
@@ -198,12 +198,12 @@ public class QCircleHippyFragment
   {
     Object localObject = getResources();
     boolean bool = SubscribeUtils.a();
-    int j = 2131166281;
+    int j = 2131167018;
     int i;
     if (bool) {
-      i = 2131166281;
+      i = 2131167018;
     } else {
-      i = 2131166280;
+      i = 2131167017;
     }
     paramViewGroup.setBackgroundColor(((Resources)localObject).getColor(i));
     ImmersiveUtils.setStatusTextColor(SubscribeUtils.a() ^ true, getQBaseActivity().getWindow());
@@ -212,38 +212,37 @@ public class QCircleHippyFragment
     if (SubscribeUtils.a()) {
       i = j;
     } else {
-      i = 2131166280;
+      i = 2131167017;
     }
     a((Activity)localObject, localResources.getColor(i));
-    this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean = ((QCircleHippyBean)paramBundle.getSerializable("key_hippy_bean"));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean;
+    this.d = ((QCircleHippyBean)paramBundle.getSerializable("key_hippy_bean"));
+    localObject = this.d;
     if (localObject != null)
     {
-      this.jdField_a_of_type_JavaLangString = ((QCircleHippyBean)localObject).getModuleName();
-      this.b = this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean.getDefaultUrl();
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleHippyBean.getStartTime();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      this.a = ((QCircleHippyBean)localObject).getModuleName();
+      this.b = this.d.getDefaultUrl();
+      this.c = this.d.getStartTime();
+      if (!TextUtils.isEmpty(this.a))
       {
-        if (RFLog.isColorLevel())
+        if (QLog.isColorLevel())
         {
-          i = RFLog.CLR;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("Hippy: moduleName=");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-          RFLog.d("QCircleHippyFragment", i, ((StringBuilder)localObject).toString());
+          ((StringBuilder)localObject).append(this.a);
+          QLog.d("QCircleHippyFragment", 2, ((StringBuilder)localObject).toString());
         }
         if (this.mHippyQQEngine == null) {
-          this.mHippyQQEngine = new HippyQQEngine(this, this.jdField_a_of_type_JavaLangString, null);
+          this.mHippyQQEngine = new HippyQQEngine(this, this.a, null);
         }
-        this.mHippyQQEngine.setInitData(null, a());
+        this.mHippyQQEngine.setInitData(null, b());
         a(paramBundle, paramViewGroup);
       }
       else
       {
-        a();
+        c();
         ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportQualityEvent("key_open_hippy_page", Arrays.asList(new FeedCloudCommon.Entry[] { a("ret_code", "-2"), a("attach_info", "request module name is null!") }), false);
       }
-      this.mPresenter.a().a(a(), paramViewGroup);
+      this.mPresenter.i().a(a(), paramViewGroup);
     }
     initFPS();
     a(paramViewGroup);
@@ -273,7 +272,7 @@ public class QCircleHippyFragment
     if ((paramSimpleBaseEvent instanceof QCircleRefreshHippyPageEvent))
     {
       paramSimpleBaseEvent = (QCircleRefreshHippyPageEvent)paramSimpleBaseEvent;
-      if ((!this.jdField_a_of_type_JavaLangString.equals(paramSimpleBaseEvent.mModule)) || (this.mHippyQQEngine == null) || (this.mHippyQQEngine.getHippyEngine() == null)) {
+      if ((!this.a.equals(paramSimpleBaseEvent.mModule)) || (this.mHippyQQEngine == null) || (this.mHippyQQEngine.getHippyEngine() == null)) {
         return;
       }
       try
@@ -281,22 +280,20 @@ public class QCircleHippyFragment
         paramSimpleBaseEvent = new HippyMap();
         paramSimpleBaseEvent.pushString("result", "call refresh hippy from native");
         ((EventDispatcher)this.mHippyQQEngine.getHippyEngine().getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("refreshData", paramSimpleBaseEvent);
-        i = RFLog.USR;
         paramSimpleBaseEvent = new StringBuilder();
         paramSimpleBaseEvent.append("notify hippy refresh page data success,module:");
-        paramSimpleBaseEvent.append(this.jdField_a_of_type_JavaLangString);
-        RFLog.d("QCircleHippyFragment", i, paramSimpleBaseEvent.toString());
+        paramSimpleBaseEvent.append(this.a);
+        QLog.d("QCircleHippyFragment", 1, paramSimpleBaseEvent.toString());
         return;
       }
       catch (Exception paramSimpleBaseEvent)
       {
-        int i = RFLog.USR;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("refresh hippy page fail!exception: ");
         localStringBuilder.append(paramSimpleBaseEvent.getMessage());
         localStringBuilder.append(",module:");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        RFLog.e("QCircleHippyFragment", i, localStringBuilder.toString());
+        localStringBuilder.append(this.a);
+        QLog.e("QCircleHippyFragment", 1, localStringBuilder.toString());
         return;
       }
     }
@@ -312,7 +309,7 @@ public class QCircleHippyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.QCircleHippyFragment
  * JD-Core Version:    0.7.0.1
  */

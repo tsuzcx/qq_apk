@@ -11,7 +11,7 @@ class VideoFeedsShareController$SendToWeChatCircleShareAction
   
   public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    VideoFeedsShareController.b(3);
+    VideoFeedsShareController.e(3);
     VideoFeedsShareController.a(this.a, paramInt, paramVideoInfo, paramString, c(), a());
   }
   
@@ -27,7 +27,7 @@ class VideoFeedsShareController$SendToWeChatCircleShareAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.SendToWeChatCircleShareAction
  * JD-Core Version:    0.7.0.1
  */

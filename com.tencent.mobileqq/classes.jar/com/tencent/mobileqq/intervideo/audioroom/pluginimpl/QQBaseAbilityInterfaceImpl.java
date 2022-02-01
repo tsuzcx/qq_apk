@@ -18,7 +18,7 @@ public class QQBaseAbilityInterfaceImpl
   {
     QLog.d("QQBaseAbilityInterface", 4, "init");
     this.a = TroopMemberApiClient.a();
-    this.a.a();
+    this.a.e();
   }
   
   public void beaconReportData(Bundle paramBundle, int paramInt) {}
@@ -90,7 +90,7 @@ public class QQBaseAbilityInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.pluginimpl.QQBaseAbilityInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

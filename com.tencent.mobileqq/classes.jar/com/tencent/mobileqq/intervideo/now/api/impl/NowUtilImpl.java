@@ -39,7 +39,7 @@ public class NowUtilImpl
   
   public boolean isH5Test()
   {
-    return NowUtil.a();
+    return NowUtil.c();
   }
   
   public void pauseNowDownloadInQQ(Context paramContext)
@@ -54,7 +54,7 @@ public class NowUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.api.impl.NowUtilImpl
  * JD-Core Version:    0.7.0.1
  */

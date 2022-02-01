@@ -11,21 +11,21 @@ class GalleryPageView$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.a.a.clearAnimation();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.d()) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (!this.a.b.s()) {
+      this.a.a.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryPageView.1
  * JD-Core Version:    0.7.0.1
  */

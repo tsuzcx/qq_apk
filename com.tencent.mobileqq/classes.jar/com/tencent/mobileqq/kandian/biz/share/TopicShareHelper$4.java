@@ -9,22 +9,22 @@ class TopicShareHelper$4
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    if (this.a.getWidth() < this.b) {
+      this.a.setMove(true);
     } else {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+      this.a.setMove(false);
     }
-    if (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
+    if (this.c.getWidth() < this.d)
     {
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+      this.c.setMove(true);
       return;
     }
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    this.c.setMove(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.TopicShareHelper.4
  * JD-Core Version:    0.7.0.1
  */

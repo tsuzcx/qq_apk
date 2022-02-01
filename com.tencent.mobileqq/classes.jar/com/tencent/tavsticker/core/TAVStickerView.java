@@ -37,13 +37,13 @@ public class TAVStickerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.context = paramContext;
-    paramContext = this.context.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.TAVStickerView, paramInt, 0);
+    paramContext = this.context.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.N, paramInt, 0);
     if (paramContext != null)
     {
-      this.assetPath = paramContext.getString(R.styleable.TAVStickerView_stickerAssetPath);
-      this.path = paramContext.getString(R.styleable.TAVStickerView_stickerPath);
-      this.repeatCount = paramContext.getInt(R.styleable.TAVStickerView_repeatCount, 0);
-      this.isAutoPlay = paramContext.getBoolean(R.styleable.TAVStickerView_autoPlay, false);
+      this.assetPath = paramContext.getString(R.styleable.Q);
+      this.path = paramContext.getString(R.styleable.R);
+      this.repeatCount = paramContext.getInt(R.styleable.P, 0);
+      this.isAutoPlay = paramContext.getBoolean(R.styleable.O, false);
       paramContext.recycle();
     }
     init();
@@ -236,7 +236,7 @@ public class TAVStickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerView
  * JD-Core Version:    0.7.0.1
  */

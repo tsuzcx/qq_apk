@@ -29,12 +29,12 @@ public class EmotionUtils
   
   public static void a(Context paramContext, int paramInt)
   {
-    new QQToastNotifier(paramContext).a(paramInt, paramContext.getResources().getDimensionPixelSize(2131299168), 0, 0);
+    new QQToastNotifier(paramContext).notifyUser(paramInt, paramContext.getResources().getDimensionPixelSize(2131299920), 0, 0);
   }
   
   public static void a(Context paramContext, int paramInt1, int paramInt2)
   {
-    QQToast.a(paramContext, paramInt1, paramInt2).b(paramContext.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(paramContext, paramInt1, paramInt2).show(paramContext.getResources().getDimensionPixelSize(2131299920));
   }
   
   public static void a(View paramView)
@@ -160,7 +160,7 @@ public class EmotionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.EmotionUtils
  * JD-Core Version:    0.7.0.1
  */

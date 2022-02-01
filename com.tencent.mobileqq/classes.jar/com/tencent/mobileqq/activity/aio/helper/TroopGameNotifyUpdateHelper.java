@@ -24,14 +24,13 @@ public class TroopGameNotifyUpdateHelper
 {
   public static long a = 86400L;
   public static long b = 36000L;
-  private BaseChatPie a;
-  protected ITroopGameHandler a;
-  protected String a;
+  protected String c = "";
+  protected ITroopGameHandler d;
+  private BaseChatPie e;
   
   public TroopGameNotifyUpdateHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.e = paramBaseChatPie;
   }
   
   private static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
@@ -90,7 +89,7 @@ public class TroopGameNotifyUpdateHelper
     if (l1 > l2) {
       return false;
     }
-    long l4 = jdField_a_of_type_Long;
+    long l4 = a;
     if ((l2 - l3) / l4 == (l1 - l3) / l4) {
       bool = true;
     }
@@ -104,7 +103,7 @@ public class TroopGameNotifyUpdateHelper
     if (bool2) {
       return false;
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(paramString, 1);
+    paramString = this.e.d.getMessageFacade().getLastMessage(paramString, 1);
     if (paramString == null)
     {
       if (QLog.isColorLevel()) {
@@ -115,7 +114,7 @@ public class TroopGameNotifyUpdateHelper
     long l1 = paramString.time;
     long l4 = NetConnInfoCenter.getServerTime();
     long l2 = b;
-    long l3 = jdField_a_of_type_Long;
+    long l3 = a;
     l4 = (l4 - l2) / l3;
     l1 = (l1 - l2) / l3;
     if (QLog.isColorLevel())
@@ -135,15 +134,15 @@ public class TroopGameNotifyUpdateHelper
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameApiITroopGameHandler == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameApiITroopGameHandler = ((ITroopGameHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_GAME_HANDLER));
+    if (this.d == null) {
+      this.d = ((ITroopGameHandler)this.e.d.getBusinessHandler(BusinessHandlerFactory.TROOP_GAME_HANDLER));
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameApiITroopGameHandler;
+    Object localObject = this.d;
     if (localObject != null)
     {
-      ((ITroopGameHandler)localObject).b(this.jdField_a_of_type_JavaLangString);
+      ((ITroopGameHandler)localObject).b(this.c);
       long l = NetConnInfoCenter.getServerTime();
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, l);
+      a(this.e.d, this.c, l);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -156,27 +155,27 @@ public class TroopGameNotifyUpdateHelper
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.e;
     if (localObject == null) {
       return;
     }
-    if (((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    if (((BaseChatPie)localObject).ah == null) {
       return;
     }
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    this.c = this.e.ah.b;
+    if (TextUtils.isEmpty(this.c)) {
       return;
     }
-    localObject = (TroopGameCardConfig)QConfigManager.a().a(695);
+    localObject = (TroopGameCardConfig)QConfigManager.b().b(695);
     if (localObject != null)
     {
-      if (!((TroopGameCardConfig)localObject).a(this.jdField_a_of_type_JavaLangString)) {
+      if (!((TroopGameCardConfig)localObject).d(this.c)) {
         return;
       }
-      localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_JavaLangString);
+      localObject = ((TroopManager)this.e.d.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.c);
       if (localObject == null) {
         return;
       }
@@ -186,10 +185,10 @@ public class TroopGameNotifyUpdateHelper
       if (!((TroopInfo)localObject).isTroopGameCardEnabled()) {
         return;
       }
-      if (a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString)) {
+      if (a(this.e.d, this.c)) {
         return;
       }
-      if (a(this.jdField_a_of_type_JavaLangString)) {
+      if (a(this.c)) {
         return;
       }
       b();
@@ -216,7 +215,7 @@ public class TroopGameNotifyUpdateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopGameNotifyUpdateHelper
  * JD-Core Version:    0.7.0.1
  */

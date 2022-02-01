@@ -33,10 +33,9 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.share.api.IWxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.kandian.biz.share.api.IWxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -112,12 +111,12 @@ public class WxShareHelperFromReadInjoy
     if (paramBoolean2)
     {
       Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1, 0, 0, 100, 100);
-      localObject = ImageUtil.a(localBitmap2);
+      localObject = ImageUtil.b(localBitmap2);
       localBitmap2.recycle();
     }
     else
     {
-      localObject = ImageUtil.a(localBitmap1);
+      localObject = ImageUtil.b(localBitmap1);
     }
     localBitmap1.recycle();
     if (paramBoolean1) {
@@ -175,7 +174,7 @@ public class WxShareHelperFromReadInjoy
       {
         ((JSONObject)localObject2).put("from_source", paramString);
         ((JSONObject)localObject2).put("from_rowkey", localObject1);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", ((JSONObject)localObject2).toString(), false);
+        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", ((JSONObject)localObject2).toString(), false);
         return;
       }
       catch (JSONException paramString)
@@ -390,7 +389,7 @@ public class WxShareHelperFromReadInjoy
   {
     if (TextUtils.isEmpty(paramString))
     {
-      QRUtils.a(1, 2131696479);
+      QRUtils.a(1, 2131894251);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -411,7 +410,7 @@ public class WxShareHelperFromReadInjoy
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      QRUtils.a(1, 2131696479);
+      QRUtils.a(1, 2131894251);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -554,7 +553,7 @@ public class WxShareHelperFromReadInjoy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.WxShareHelperFromReadInjoy
  * JD-Core Version:    0.7.0.1
  */

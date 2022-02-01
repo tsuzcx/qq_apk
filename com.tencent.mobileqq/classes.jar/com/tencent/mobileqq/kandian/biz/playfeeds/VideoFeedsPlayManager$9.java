@@ -15,22 +15,22 @@ class VideoFeedsPlayManager$9
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("vid", this.a.a.a);
-    localHashMap.put("duration", Integer.valueOf(this.a.a.d));
-    localHashMap.put("title", this.a.a.c);
-    localHashMap.put("author", this.a.a.k);
+    localHashMap.put("vid", this.a.c.b);
+    localHashMap.put("duration", Integer.valueOf(this.a.c.e));
+    localHashMap.put("title", this.a.c.g);
+    localHashMap.put("author", this.a.c.r);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.a.a.a);
+    localStringBuilder.append(this.a.c.b);
     localStringBuilder.append(".mp4");
     localHashMap.put("local_file_name", localStringBuilder.toString());
-    localHashMap.put("rowKey", this.a.a.g);
+    localHashMap.put("rowKey", this.a.c.l);
     localHashMap.put("testId", VideoTestHelper.a.a());
     BeaconAdapter.onUserActionToTunnel("00000U7O8S3BLETM", "actVideoTest", true, -1L, -1L, localHashMap, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager.9
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ final class KeyBoardUtil$6
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender == null) {
+    if (this.a == null) {
       return;
     }
-    int i = (int)(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredWidth() - DeviceInfoUtil.a * 80.0F);
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloRender.mEditorPop.setWidth(i);
+    int i = (int)(this.b.getMeasuredWidth() - DeviceInfoUtil.a * 80.0F);
+    this.a.mEditorPop.setWidth(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.KeyBoardUtil.6
  * JD-Core Version:    0.7.0.1
  */

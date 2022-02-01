@@ -11,9 +11,9 @@ public final class VasExposureReference<R>
   extends WeakReference<R>
 {
   @Nullable
-  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<VasResultCallback<Boolean>> a;
   @Nullable
-  private WeakReference<VasResultCallback<Boolean>> jdField_a_of_type_JavaLangRefWeakReference;
+  private String b;
   
   public VasExposureReference(@NotNull R paramR)
   {
@@ -21,30 +21,30 @@ public final class VasExposureReference<R>
   }
   
   @Nullable
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @Nullable
   public final WeakReference<VasResultCallback<Boolean>> a()
   {
-    return this.jdField_a_of_type_JavaLangRefWeakReference;
+    return this.a;
   }
   
   public final void a(@Nullable String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public final void a(@Nullable WeakReference<VasResultCallback<Boolean>> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.a = paramWeakReference;
+  }
+  
+  @Nullable
+  public final String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.gdt.VasExposureReference
  * JD-Core Version:    0.7.0.1
  */

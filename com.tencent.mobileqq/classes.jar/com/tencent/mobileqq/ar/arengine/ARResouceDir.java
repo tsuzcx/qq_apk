@@ -22,7 +22,7 @@ public class ARResouceDir
   public static String a()
   {
     Object localObject;
-    if (a())
+    if (c())
     {
       localObject = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);
     }
@@ -54,8 +54,8 @@ public class ARResouceDir
   public static String a(ArCloudConfigInfo paramArCloudConfigInfo)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
-    localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d);
+    localStringBuilder.append(paramArCloudConfigInfo.j.e);
+    localStringBuilder.append(paramArCloudConfigInfo.k.e);
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
@@ -70,7 +70,40 @@ public class ARResouceDir
     return localStringBuilder.toString();
   }
   
-  public static void a(@NonNull String paramString)
+  public static String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append("ar_relationship/");
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    try
+    {
+      if (paramArCloudConfigInfo.k == null) {
+        return "";
+      }
+      localObject = paramArCloudConfigInfo.k.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArCloudConfigInfo.j.e);
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(File.separator);
+      paramArCloudConfigInfo = localStringBuilder.toString();
+      return paramArCloudConfigInfo;
+    }
+    catch (Exception paramArCloudConfigInfo)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get3DModelUnzipDir error ");
+      ((StringBuilder)localObject).append(paramArCloudConfigInfo.getMessage());
+      QLog.i("AREngine_ARResouceDir", 2, ((StringBuilder)localObject).toString());
+    }
+    return "";
+  }
+  
+  public static void b(@NonNull String paramString)
   {
     try
     {
@@ -92,66 +125,17 @@ public class ARResouceDir
     finally {}
   }
   
-  @TargetApi(18)
-  public static boolean a()
-  {
-    try
-    {
-      boolean bool = Environment.getExternalStorageState().equals("mounted");
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      label11:
-      break label11;
-    }
-    return false;
-  }
-  
-  public static String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append("ar_relationship/");
-    return localStringBuilder.toString();
-  }
-  
-  public static String b(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    try
-    {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
-        return "";
-      }
-      localObject = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append(File.separator);
-      paramArCloudConfigInfo = localStringBuilder.toString();
-      return paramArCloudConfigInfo;
-    }
-    catch (Exception paramArCloudConfigInfo)
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("get3DModelUnzipDir error ");
-      ((StringBuilder)localObject).append(paramArCloudConfigInfo.getMessage());
-      QLog.i("AREngine_ARResouceDir", 2, ((StringBuilder)localObject).toString());
-    }
-    return "";
-  }
-  
   public static String c(ArCloudConfigInfo paramArCloudConfigInfo)
   {
     try
     {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+      if (paramArCloudConfigInfo.k == null) {
         return "";
       }
-      localObject = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d;
+      localObject = paramArCloudConfigInfo.k.b;
+      String str = paramArCloudConfigInfo.k.e;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
+      localStringBuilder.append(paramArCloudConfigInfo.j.e);
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(File.separator);
       localStringBuilder.append(str);
@@ -168,22 +152,38 @@ public class ARResouceDir
     return "";
   }
   
+  @TargetApi(18)
+  public static boolean c()
+  {
+    try
+    {
+      boolean bool = Environment.getExternalStorageState().equals("mounted");
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      label11:
+      break label11;
+    }
+    return false;
+  }
+  
   public static String d(ArCloudConfigInfo paramArCloudConfigInfo)
   {
     try
     {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+      if (paramArCloudConfigInfo.k == null) {
         return "";
       }
-      localObject = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      if (TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c)) {
+      localObject = paramArCloudConfigInfo.k.b;
+      if (TextUtils.isEmpty(paramArCloudConfigInfo.k.d)) {
         return "";
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
+      localStringBuilder.append(paramArCloudConfigInfo.j.e);
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(File.separator);
-      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c);
+      localStringBuilder.append(paramArCloudConfigInfo.k.d);
       paramArCloudConfigInfo = localStringBuilder.toString();
       return paramArCloudConfigInfo;
     }
@@ -202,8 +202,8 @@ public class ARResouceDir
     try
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
-      localStringBuilder.append(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c);
+      localStringBuilder.append(paramArCloudConfigInfo.j.e);
+      localStringBuilder.append(((ArVideoResourceInfo)paramArCloudConfigInfo.i.get(0)).e);
       localStringBuilder.append("_model.zip");
       paramArCloudConfigInfo = localStringBuilder.toString();
       return paramArCloudConfigInfo;
@@ -220,7 +220,7 @@ public class ARResouceDir
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARResouceDir
  * JD-Core Version:    0.7.0.1
  */

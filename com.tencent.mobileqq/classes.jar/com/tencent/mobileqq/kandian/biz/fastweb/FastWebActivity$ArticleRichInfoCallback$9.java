@@ -17,22 +17,22 @@ class FastWebActivity$ArticleRichInfoCallback$9
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[handleTopicTag], rowKey = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     QLog.i("FastWebActivity", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
-    if ((localObject != null) && (((FastWebArticleInfo)localObject).b != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo.b.size() > 0))
+    localObject = this.b;
+    if ((localObject != null) && (((FastWebArticleInfo)localObject).I != null) && (this.b.I.size() > 0))
     {
-      if (!ReadInJoyHelper.f())
+      if (!ReadInJoyHelper.l())
       {
         QLog.i("FastWebActivity", 1, "[handleTopicTag] topic switch is off.");
         return;
       }
-      localObject = FastWebPTSDataConverter.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a.jdField_a_of_type_AndroidUtilSparseArray);
-      if ((FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a) != null) && (localObject != null))
+      localObject = FastWebPTSDataConverter.b(this.c.a.g, this.b, this.c.a.n);
+      if ((FastWebActivity.m(this.c.a) != null) && (localObject != null))
       {
-        ItemDatasListUtils.d(FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a));
-        ItemDatasListUtils.a(FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a), (BaseData)localObject);
-        FastWebActivity.e(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a);
+        ItemDatasListUtils.d(FastWebActivity.m(this.c.a));
+        ItemDatasListUtils.a(FastWebActivity.m(this.c.a), (BaseData)localObject);
+        FastWebActivity.n(this.c.a);
       }
       return;
     }
@@ -41,7 +41,7 @@ class FastWebActivity$ArticleRichInfoCallback$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.ArticleRichInfoCallback.9
  * JD-Core Version:    0.7.0.1
  */

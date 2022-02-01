@@ -25,13 +25,13 @@ class TroopGiftAnimationController$6
   public void run()
   {
     TroopGiftAnimationController.a(this.this$0, System.currentTimeMillis());
-    Object localObject1 = TroopGiftAnimationController.a(this.this$0);
+    Object localObject1 = TroopGiftAnimationController.g(this.this$0);
     Object localObject4 = null;
     if (localObject1 != null)
     {
       localObject1 = this.this$0;
-      ((TroopGiftAnimationController)localObject1).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((TroopGiftAnimationController)localObject1).a(String.valueOf(this.a.senderUin), new TroopGiftAnimationController.6.1(this));
-      localObject2 = TroopUtils.a(this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ((TroopGiftAnimationController)localObject1).g = ((TroopGiftAnimationController)localObject1).a(String.valueOf(this.a.senderUin), new TroopGiftAnimationController.6.1(this));
+      localObject2 = TroopUtils.a(this.this$0.g);
       if (!TextUtils.isEmpty(this.a.receiverHead))
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
@@ -46,19 +46,19 @@ class TroopGiftAnimationController$6
           ((URLDrawable)localObject1).startDownload();
         }
         ((URLDrawable)localObject1).setURLDrawableListener(new TroopGiftAnimationController.6.3(this, (URLDrawable)localObject1));
-        this.this$0.b = ((Drawable)localObject1);
+        this.this$0.h = ((Drawable)localObject1);
         localObject1 = TroopUtils.a((Drawable)localObject1);
       }
       else
       {
         localObject1 = this.this$0;
-        ((TroopGiftAnimationController)localObject1).b = ((TroopGiftAnimationController)localObject1).a(String.valueOf(this.a.receiverUin), new TroopGiftAnimationController.6.4(this));
-        localObject1 = TroopUtils.a(this.this$0.b);
+        ((TroopGiftAnimationController)localObject1).h = ((TroopGiftAnimationController)localObject1).a(String.valueOf(this.a.receiverUin), new TroopGiftAnimationController.6.4(this));
+        localObject1 = TroopUtils.a(this.this$0.h);
       }
     }
-    else if ((TroopGiftAnimationController.a(this.this$0) != null) && ((TroopGiftAnimationController.a(this.this$0) instanceof TroopGiftAnimationController.IFaceBitmaprGetter)))
+    else if ((TroopGiftAnimationController.d(this.this$0) != null) && ((TroopGiftAnimationController.d(this.this$0) instanceof TroopGiftAnimationController.IFaceBitmaprGetter)))
     {
-      localObject1 = (TroopGiftAnimationController.IFaceBitmaprGetter)TroopGiftAnimationController.a(this.this$0);
+      localObject1 = (TroopGiftAnimationController.IFaceBitmaprGetter)TroopGiftAnimationController.d(this.this$0);
       localObject2 = ((TroopGiftAnimationController.IFaceBitmaprGetter)localObject1).a(String.valueOf(this.a.senderUin), this.a.frienduin);
       localObject1 = ((TroopGiftAnimationController.IFaceBitmaprGetter)localObject1).a(String.valueOf(this.a.receiverUin), this.a.frienduin);
     }
@@ -73,7 +73,7 @@ class TroopGiftAnimationController$6
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
         localObject1 = URLDrawable.getDrawable(this.a.senderAvatarUrl, (URLDrawable.URLDrawableOptions)localObject1);
-        ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.a);
+        ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.b);
         if ((((URLDrawable)localObject1).getStatus() == 1) && (((URLDrawable)localObject1).getCurrDrawable() != null))
         {
           localObject1 = ImageUtil.a(((URLDrawable)localObject1).getCurrDrawable());
@@ -81,7 +81,7 @@ class TroopGiftAnimationController$6
         else
         {
           ((URLDrawable)localObject1).startDownload();
-          localObject1 = ImageUtil.f();
+          localObject1 = ImageUtil.k();
         }
       }
       else
@@ -92,7 +92,7 @@ class TroopGiftAnimationController$6
       {
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
         localObject2 = URLDrawable.getDrawable(this.a.receiveAvatarUrl, (URLDrawable.URLDrawableOptions)localObject2);
-        ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.a);
+        ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.b);
         if ((((URLDrawable)localObject2).getStatus() == 1) && (((URLDrawable)localObject2).getCurrDrawable() != null))
         {
           localObject2 = ImageUtil.a(((URLDrawable)localObject2).getCurrDrawable());
@@ -102,7 +102,7 @@ class TroopGiftAnimationController$6
         else
         {
           ((URLDrawable)localObject2).startDownload();
-          localObject2 = ImageUtil.f();
+          localObject2 = ImageUtil.k();
           localObject3 = localObject1;
           localObject1 = localObject2;
         }
@@ -117,12 +117,12 @@ class TroopGiftAnimationController$6
     {
       localObject3 = localObject2;
       if (localObject2 == null) {
-        localObject3 = ImageUtil.f();
+        localObject3 = ImageUtil.k();
       }
       if (localObject1 != null) {
         break label547;
       }
-      localObject1 = ImageUtil.f();
+      localObject1 = ImageUtil.k();
     }
     Object localObject2 = localObject1;
     localObject1 = localObject3;
@@ -150,12 +150,12 @@ class TroopGiftAnimationController$6
       QLog.d("TroopGiftAnimationController", 2, "decode avatarAnimRes failed");
       localObject3 = localObject4;
     }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopGiftAnimationController.6.5(this, str, (Bitmap)localObject1, (Bitmap)localObject2, (Bitmap)localObject3), 300L);
+    this.this$0.f.postDelayed(new TroopGiftAnimationController.6.5(this, str, (Bitmap)localObject1, (Bitmap)localObject2, (Bitmap)localObject3), 300L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.6
  * JD-Core Version:    0.7.0.1
  */

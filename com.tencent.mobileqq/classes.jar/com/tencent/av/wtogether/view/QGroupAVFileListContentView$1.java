@@ -11,12 +11,12 @@ class QGroupAVFileListContentView$1
   
   public int a(TroopFileSearchItemData paramTroopFileSearchItemData1, TroopFileSearchItemData paramTroopFileSearchItemData2)
   {
-    return Integer.valueOf(paramTroopFileSearchItemData1.a.b).compareTo(Integer.valueOf(paramTroopFileSearchItemData2.a.b));
+    return Integer.valueOf(paramTroopFileSearchItemData1.i.i).compareTo(Integer.valueOf(paramTroopFileSearchItemData2.i.i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QGroupAVFileListContentView.1
  * JD-Core Version:    0.7.0.1
  */

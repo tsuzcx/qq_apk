@@ -10,12 +10,12 @@ class MultiWindowAIOHelper$3
   
   public void run()
   {
-    MultiWindowAIOHelper.a(this.this$0).a.setSelectionFromBottom(this.a, this.b);
+    MultiWindowAIOHelper.a(this.this$0).U.setSelectionFromBottom(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.3
  * JD-Core Version:    0.7.0.1
  */

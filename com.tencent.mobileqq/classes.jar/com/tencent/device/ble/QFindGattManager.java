@@ -25,25 +25,25 @@ import mqq.os.MqqHandler;
 @TargetApi(18)
 public class QFindGattManager
 {
-  static int jdField_a_of_type_Int = 1000;
-  private static QFindGattManager jdField_a_of_type_ComTencentDeviceBleQFindGattManager;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new QFindGattManager.3(this);
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new QFindGattManager.2(this);
-  private BluetoothLeService jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService;
-  PeerInfo jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
-  private List<PeerInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<PeerInfo> jdField_a_of_type_JavaUtilSet = new HashSet();
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new QFindGattManager.1(this, Looper.getMainLooper());
-  private boolean jdField_a_of_type_Boolean = false;
-  private List<PeerInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = false;
-  private List<PeerInfo> c = new ArrayList();
+  static int b = 1000;
+  private static QFindGattManager l;
+  PeerInfo a;
+  MqqHandler c = new QFindGattManager.1(this, Looper.getMainLooper());
+  private BluetoothLeService d;
+  private Context e = BaseApplicationImpl.getContext();
+  private boolean f = false;
+  private List<PeerInfo> g = new ArrayList();
+  private Set<PeerInfo> h = new HashSet();
+  private List<PeerInfo> i = new ArrayList();
+  private List<PeerInfo> j = new ArrayList();
+  private boolean k = false;
+  private ServiceConnection m = new QFindGattManager.2(this);
+  private BroadcastReceiver n = new QFindGattManager.3(this);
   
   public QFindGattManager()
   {
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, BluetoothLeService.class);
-    this.jdField_a_of_type_AndroidContentContext.bindService((Intent)localObject, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    Object localObject = new Intent(this.e, BluetoothLeService.class);
+    this.e.bindService((Intent)localObject, this.m, 1);
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("com.tencent.device.ble.ACTION_GATT_CONNECTED");
     ((IntentFilter)localObject).addAction("com.tencent.device.ble.ACTION_GATT_DISCONNECTED");
@@ -53,19 +53,19 @@ public class QFindGattManager
     ((IntentFilter)localObject).addAction("com.tencent.device.ble.ACTION_DATA_AVAILABLE");
     ((IntentFilter)localObject).addAction("com.tencent.device.ble.ACTION_DATA_WRITE_RST");
     ((IntentFilter)localObject).addAction("onDeviceVerifyRsp");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-    this.jdField_b_of_type_Boolean = true;
+    this.e.registerReceiver(this.n, (IntentFilter)localObject);
+    this.k = true;
   }
   
   public static QFindGattManager a()
   {
-    if ((jdField_a_of_type_ComTencentDeviceBleQFindGattManager == null) && (BaseApplicationImpl.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le"))) {
-      jdField_a_of_type_ComTencentDeviceBleQFindGattManager = new QFindGattManager();
+    if ((l == null) && (BaseApplicationImpl.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le"))) {
+      l = new QFindGattManager();
     }
-    return jdField_a_of_type_ComTencentDeviceBleQFindGattManager;
+    return l;
   }
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
     Intent localIntent = new Intent("QFIND_BLE_CONNECT_ERROR");
     Bundle localBundle = new Bundle();
@@ -74,21 +74,21 @@ public class QFindGattManager
     BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
   }
   
-  public static void b()
+  public static void c()
   {
-    QFindGattManager localQFindGattManager = jdField_a_of_type_ComTencentDeviceBleQFindGattManager;
+    QFindGattManager localQFindGattManager = l;
     if (localQFindGattManager != null) {
-      localQFindGattManager.a();
+      localQFindGattManager.b();
     }
   }
   
   public PeerInfo a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
+    Object localObject = this.a;
     if ((localObject != null) && (((PeerInfo)localObject).a == paramInt)) {
-      return this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
+      return this.a;
     }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.g.iterator();
     PeerInfo localPeerInfo;
     while (((Iterator)localObject).hasNext())
     {
@@ -97,7 +97,7 @@ public class QFindGattManager
         return localPeerInfo;
       }
     }
-    localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+    localObject = this.h.iterator();
     while (((Iterator)localObject).hasNext())
     {
       localPeerInfo = (PeerInfo)((Iterator)localObject).next();
@@ -110,11 +110,11 @@ public class QFindGattManager
   
   public PeerInfo a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
+    Object localObject = this.a;
     if ((localObject != null) && (((PeerInfo)localObject).a().equals(paramString))) {
-      return this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
+      return this.a;
     }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.g.iterator();
     PeerInfo localPeerInfo;
     while (((Iterator)localObject).hasNext())
     {
@@ -123,7 +123,7 @@ public class QFindGattManager
         return localPeerInfo;
       }
     }
-    localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+    localObject = this.h.iterator();
     while (((Iterator)localObject).hasNext())
     {
       localPeerInfo = (PeerInfo)((Iterator)localObject).next();
@@ -131,7 +131,7 @@ public class QFindGattManager
         return localPeerInfo;
       }
     }
-    localObject = this.c.iterator();
+    localObject = this.j.iterator();
     while (((Iterator)localObject).hasNext())
     {
       localPeerInfo = (PeerInfo)((Iterator)localObject).next();
@@ -142,107 +142,107 @@ public class QFindGattManager
     return null;
   }
   
-  public void a()
-  {
-    if ((BaseApplicationImpl.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le")) && (this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentServiceConnection = null;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService = null;
-  }
-  
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService;
+    Object localObject = this.d;
     if (localObject != null) {
       ((BluetoothLeService)localObject).a(paramInt, paramArrayOfByte);
     }
     paramArrayOfByte = a(paramInt);
-    localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    localObject = this.c;
     if ((localObject != null) && (paramArrayOfByte != null))
     {
       localObject = ((MqqHandler)localObject).obtainMessage(100);
       ((Message)localObject).arg1 = paramInt;
       ((Message)localObject).obj = paramArrayOfByte.a();
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 100000L);
-    }
-  }
-  
-  public void a(PeerInfo paramPeerInfo)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("disConnectPeer ");
-    localStringBuilder.append(paramPeerInfo.a());
-    QLog.i("DeviceBLE2", 2, localStringBuilder.toString());
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramPeerInfo))
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(paramPeerInfo);
-      this.jdField_a_of_type_JavaUtilList.remove(paramPeerInfo);
-      this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService.a(paramPeerInfo.a);
-    }
-    else if (paramPeerInfo == this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo)
-    {
-      this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo = null;
-      this.jdField_a_of_type_JavaUtilSet.add(paramPeerInfo);
-      this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService.a(paramPeerInfo.a);
-    }
-    else if (this.c.contains(paramPeerInfo))
-    {
-      this.c.remove(paramPeerInfo);
-    }
-    paramPeerInfo = this.jdField_a_of_type_MqqOsMqqHandler;
-    if (paramPeerInfo != null) {
-      paramPeerInfo.removeMessages(100);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString != null) {
-      a(paramString);
+      this.c.sendMessageDelayed((Message)localObject, 100000L);
     }
   }
   
   public boolean a(PeerInfo paramPeerInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo;
-    if (((localObject != null) && (((PeerInfo)localObject).b.equals(paramPeerInfo.b))) || (this.jdField_a_of_type_JavaUtilList.contains(paramPeerInfo))) {
+    Object localObject = this.a;
+    if (((localObject != null) && (((PeerInfo)localObject).c.equals(paramPeerInfo.c))) || (this.g.contains(paramPeerInfo))) {
       return true;
     }
-    if (this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo != null)
+    if (this.a != null)
     {
-      if (!this.c.contains(paramPeerInfo))
+      if (!this.j.contains(paramPeerInfo))
       {
-        this.c.add(paramPeerInfo);
+        this.j.add(paramPeerInfo);
         return false;
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService;
+      localObject = this.d;
       if (localObject != null)
       {
-        if (((BluetoothLeService)localObject).a(paramPeerInfo.a, paramPeerInfo.b))
+        if (((BluetoothLeService)localObject).a(paramPeerInfo.a, paramPeerInfo.c))
         {
-          this.jdField_a_of_type_ComTencentDeviceQfindPeerInfo = paramPeerInfo;
+          this.a = paramPeerInfo;
           return true;
         }
       }
-      else if (!this.c.contains(paramPeerInfo)) {
-        this.c.add(paramPeerInfo);
+      else if (!this.j.contains(paramPeerInfo)) {
+        this.j.add(paramPeerInfo);
       }
     }
     return false;
   }
+  
+  public void b()
+  {
+    if ((BaseApplicationImpl.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le")) && (this.k))
+    {
+      this.e.unregisterReceiver(this.n);
+      this.e.unbindService(this.m);
+    }
+    this.k = false;
+    this.m = null;
+    this.n = null;
+    this.d = null;
+  }
+  
+  public void b(PeerInfo paramPeerInfo)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("disConnectPeer ");
+    localStringBuilder.append(paramPeerInfo.a());
+    QLog.i("DeviceBLE2", 2, localStringBuilder.toString());
+    if (this.g.contains(paramPeerInfo))
+    {
+      this.h.add(paramPeerInfo);
+      this.g.remove(paramPeerInfo);
+      this.d.a(paramPeerInfo.a);
+    }
+    else if (paramPeerInfo == this.a)
+    {
+      this.a = null;
+      this.h.add(paramPeerInfo);
+      this.d.a(paramPeerInfo.a);
+    }
+    else if (this.j.contains(paramPeerInfo))
+    {
+      this.j.remove(paramPeerInfo);
+    }
+    paramPeerInfo = this.c;
+    if (paramPeerInfo != null) {
+      paramPeerInfo.removeMessages(100);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString != null) {
+      b(paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.ble.QFindGattManager
  * JD-Core Version:    0.7.0.1
  */

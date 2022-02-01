@@ -85,9 +85,9 @@ public class LifeAchivementAdapter
   {
     paramTextView.setText(LifeAchivementHelper.formatPraiseNum(paramInt));
     if (paramBoolean) {
-      paramInt = 2130845982;
+      paramInt = 2130847452;
     } else {
-      paramInt = 2130845981;
+      paramInt = 2130847451;
     }
     Drawable localDrawable = paramTextView.getResources().getDrawable(paramInt);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
@@ -123,7 +123,7 @@ public class LifeAchivementAdapter
   
   public LifeAchivementAdapter.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new LifeAchivementAdapter.ViewHolder(LayoutInflater.from(this.context).inflate(2131561334, paramViewGroup, false));
+    return new LifeAchivementAdapter.ViewHolder(LayoutInflater.from(this.context).inflate(2131627690, paramViewGroup, false));
   }
   
   public void updateDatas(List<LifeAchivementData> paramList, int paramInt, boolean paramBoolean)
@@ -135,7 +135,7 @@ public class LifeAchivementAdapter
       {
         this.dataList.addAll(paramList.subList(0, 10));
         paramList = new LifeAchivementData();
-        paramList.title = this.context.getResources().getString(2131698980);
+        paramList.title = this.context.getResources().getString(2131896972);
         paramList.iconUrl = "https://downv6.qq.com/qq_relation/life_achivement/default_badge_v2.png";
         paramList.moreNum = (paramInt - 10);
         paramList.type = 2;
@@ -148,7 +148,7 @@ public class LifeAchivementAdapter
       if (paramBoolean)
       {
         paramList = new LifeAchivementData();
-        paramList.title = this.context.getResources().getString(2131698974);
+        paramList.title = this.context.getResources().getString(2131896966);
         paramList.iconUrl = "https://downv6.qq.com/qq_relation/life_achivement/add_badge_v2.png";
         paramList.type = 1;
         this.dataList.add(0, paramList);
@@ -159,7 +159,7 @@ public class LifeAchivementAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.achievement.view.LifeAchivementAdapter
  * JD-Core Version:    0.7.0.1
  */

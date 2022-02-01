@@ -99,7 +99,7 @@ public class BrowserBaseScene
   public AnimationView createAnimationView()
   {
     AnimationView localAnimationView = new AnimationView(this.mContext, null);
-    localAnimationView.setId(2131362696);
+    localAnimationView.setId(2131428368);
     localAnimationView.setVisibility(4);
     return localAnimationView;
   }
@@ -235,15 +235,15 @@ public class BrowserBaseScene
   
   public void onCreate()
   {
-    this.mRoot = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559324, null));
+    this.mRoot = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131625274, null));
     Object localObject = this.mContext;
     if ((localObject instanceof Activity)) {
       ((Activity)localObject).addContentView(this.mRoot, new ViewGroup.LayoutParams(-1, -1));
     }
-    this.rootView = ((RelativeLayout)this.mRoot.findViewById(2131376809));
-    this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376306));
-    this.bgView = this.mRoot.findViewById(2131363349);
-    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131365169));
+    this.rootView = ((RelativeLayout)this.mRoot.findViewById(2131445137));
+    this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131444517));
+    this.bgView = this.mRoot.findViewById(2131429234);
+    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131431322));
     this.progressView = createProgressBar();
     localObject = this.progressView;
     if (localObject != null) {
@@ -400,7 +400,7 @@ public class BrowserBaseScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.BrowserBaseScene
  * JD-Core Version:    0.7.0.1
  */

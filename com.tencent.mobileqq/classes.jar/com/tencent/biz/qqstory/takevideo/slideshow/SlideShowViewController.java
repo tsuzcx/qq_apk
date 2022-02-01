@@ -27,26 +27,26 @@ import java.util.List;
 public class SlideShowViewController
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 20999;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SlideProgressNotifier jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier;
-  private SlideShowActionListener jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowActionListener;
-  private SlideShowAdapter jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter;
-  private String jdField_a_of_type_JavaLangString = "SlideShowViewController";
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  private TextView d;
+  private String a = "SlideShowViewController";
+  private Activity b;
+  private SlideShowActionListener c;
+  private View d;
+  private RecyclerView e;
+  private SlideShowAdapter f;
+  private View g;
+  private TextView h;
+  private TextView i;
+  private TextView j;
+  private TextView k;
+  private SlideProgressNotifier l;
+  private LinearLayoutManager m;
+  private int n = 20999;
   
   public SlideShowViewController(Activity paramActivity, View paramView, SlideShowActionListener paramSlideShowActionListener)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowActionListener = paramSlideShowActionListener;
+    this.d = paramView;
+    this.b = paramActivity;
+    this.c = paramSlideShowActionListener;
     f();
     a();
   }
@@ -74,9 +74,56 @@ public class SlideShowViewController
     localAnimatorSet.start();
   }
   
-  private boolean a()
+  private void f()
   {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    if (this.d == null) {
+      this.d = this.b.findViewById(2131442767);
+    }
+    this.d.setVisibility(0);
+    this.g = this.d.findViewById(2131442764);
+    this.g.setVisibility(0);
+    int i1;
+    if ((this.b instanceof NewPhotoListActivity)) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0)
+    {
+      this.d.setBackgroundColor(-526087);
+      this.g.setBackgroundColor(-3026479);
+    }
+    else
+    {
+      this.d.setBackgroundColor(1996488704);
+      this.g.setBackgroundColor(-1728053248);
+    }
+    this.e = ((RecyclerView)this.d.findViewById(2131442769));
+    this.m = new LinearLayoutManager(this.b, 0, false);
+    this.e.setLayoutManager(this.m);
+    this.f = new SlideShowAdapter(this.d.getContext(), this, this.c);
+    this.f.a(SlideShowPhotoListManager.a().f());
+    this.e.setAdapter(this.f);
+    this.e.getRecycledViewPool().setMaxRecycledViews(this.f.getItemViewType(0), 10);
+    this.f.a(new SlideShowViewController.1(this));
+    new ItemTouchHelper(new SlideShowItemTouchCallback(this.f)).attachToRecyclerView(this.e);
+    this.i = ((TextView)this.d.findViewById(2131442770));
+    this.h = ((TextView)this.d.findViewById(2131442771));
+    this.j = ((TextView)this.d.findViewById(2131442763));
+    this.j.setOnClickListener(this);
+    this.k = ((TextView)this.d.findViewById(2131442762));
+    this.k.setOnClickListener(this);
+    this.l = new SlideProgressNotifier(this.b, 2131627752);
+    if (g())
+    {
+      this.n = 60000;
+      SlideShowPhotoListManager.a().a(this.n);
+    }
+  }
+  
+  private boolean g()
+  {
+    Activity localActivity = this.b;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localActivity != null)
@@ -85,7 +132,7 @@ public class SlideShowViewController
       if (localActivity.getIntent() != null)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("edit_video_type", 10002) == 10023) {
+        if (this.b.getIntent().getIntExtra("edit_video_type", 10002) == 10023) {
           bool1 = true;
         }
       }
@@ -93,86 +140,39 @@ public class SlideShowViewController
     return bool1;
   }
   
-  private void f()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131374597);
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374594);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    int i;
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof NewPhotoListActivity)) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i != 0)
-    {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-526087);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-3026479);
-    }
-    else
-    {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(1996488704);
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(-1728053248);
-    }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374599));
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter = new SlideShowAdapter(this.jdField_a_of_type_AndroidViewView.getContext(), this, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowActionListener);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter.a(SlideShowPhotoListManager.a().a());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getRecycledViewPool().setMaxRecycledViews(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter.getItemViewType(0), 10);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter.a(new SlideShowViewController.1(this));
-    new ItemTouchHelper(new SlideShowItemTouchCallback(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter)).attachToRecyclerView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374600));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374601));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374593));
-    this.c.setOnClickListener(this);
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374592));
-    this.d.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier = new SlideProgressNotifier(this.jdField_a_of_type_AndroidAppActivity, 2131561396);
-    if (a())
-    {
-      this.jdField_a_of_type_Int = 60000;
-      SlideShowPhotoListManager.a().a(this.jdField_a_of_type_Int);
-    }
-  }
-  
   public void a()
   {
-    int i = SlideShowPhotoListManager.a().b();
+    int i1 = SlideShowPhotoListManager.a().e();
     boolean bool2 = true;
     boolean bool3 = true;
     boolean bool4 = true;
     boolean bool1 = true;
-    if (i == 22) {
-      i = 1;
+    if (i1 == 22) {
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    int j;
-    if (SlideShowPhotoListManager.a().a() == 11) {
-      j = 1;
+    int i2;
+    if (SlideShowPhotoListManager.a().d() == 11) {
+      i2 = 1;
     } else {
-      j = 0;
+      i2 = 0;
     }
-    int k;
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof NewPhotoListActivity)) {
-      k = 1;
+    int i3;
+    if ((this.b instanceof NewPhotoListActivity)) {
+      i3 = 1;
     } else {
-      k = 0;
+      i3 = 0;
     }
-    List localList = SlideShowPhotoListManager.a().a();
-    int m;
+    List localList = SlideShowPhotoListManager.a().f();
+    int i4;
     if (localList != null) {
-      m = localList.size();
+      i4 = localList.size();
     } else {
-      m = 0;
+      i4 = 0;
     }
-    long l = 0L;
-    if (m > 0)
+    long l1 = 0L;
+    if (i4 > 0)
     {
       localObject1 = localList.iterator();
       Object localObject2;
@@ -180,141 +180,141 @@ public class SlideShowViewController
       {
         localObject2 = (SlideItemInfo)((Iterator)localObject1).next();
         if (localObject2 != null) {
-          l += ((SlideItemInfo)localObject2).a();
+          l1 += ((SlideItemInfo)localObject2).a();
         }
       }
-      if ((l > this.jdField_a_of_type_Int) && (i == 0))
+      if ((l1 > this.n) && (i1 == 0))
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167234));
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167234));
-        if (this.d.getVisibility() != 0)
+        this.i.setTextColor(this.b.getResources().getColor(2131168224));
+        this.h.setTextColor(this.b.getResources().getColor(2131168224));
+        if (this.k.getVisibility() != 0)
         {
-          localObject1 = SlideShowPhotoListManager.a().a().iterator();
-          int i1 = 0;
-          int i2 = 0;
-          int n = 0;
+          localObject1 = SlideShowPhotoListManager.a().f().iterator();
+          int i6 = 0;
+          int i7 = 0;
+          int i5 = 0;
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (SlideItemInfo)((Iterator)localObject1).next();
             if (localObject2 != null)
             {
-              int i3 = i1 + 1;
-              if (((SlideItemInfo)localObject2).jdField_b_of_type_Int == 1)
+              int i8 = i6 + 1;
+              if (((SlideItemInfo)localObject2).e == 1)
               {
-                i2 += 1;
-                i1 = i3;
+                i7 += 1;
+                i6 = i8;
               }
               else
               {
-                i1 = i3;
-                if (((SlideItemInfo)localObject2).jdField_b_of_type_Int == 0)
+                i6 = i8;
+                if (((SlideItemInfo)localObject2).e == 0)
                 {
-                  n += 1;
-                  i1 = i3;
+                  i5 += 1;
+                  i6 = i8;
                 }
               }
             }
           }
-          if (k != 0) {
+          if (i3 != 0) {
             localObject1 = "0";
           } else {
             localObject1 = "1";
           }
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(i1);
+          ((StringBuilder)localObject2).append(i6);
           ((StringBuilder)localObject2).append("");
           localObject2 = ((StringBuilder)localObject2).toString();
           Object localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(n);
+          ((StringBuilder)localObject3).append(i5);
           ((StringBuilder)localObject3).append("");
           localObject3 = ((StringBuilder)localObject3).toString();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(i2);
+          localStringBuilder.append(i7);
           localStringBuilder.append("");
-          StoryReportor.a("pic_choose", "exp_autoCut", j ^ 0x1, 0, new String[] { localObject1, localObject2, localObject3, localStringBuilder.toString() });
+          StoryReportor.a("pic_choose", "exp_autoCut", i2 ^ 0x1, 0, new String[] { localObject1, localObject2, localObject3, localStringBuilder.toString() });
         }
-        this.d.setVisibility(0);
+        this.k.setVisibility(0);
       }
       else
       {
-        if (k != 0)
+        if (i3 != 0)
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166955));
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167235));
+          this.i.setTextColor(this.b.getResources().getColor(2131167888));
+          this.h.setTextColor(this.b.getResources().getColor(2131168225));
         }
         else
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167394));
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167394));
+          this.i.setTextColor(this.b.getResources().getColor(2131168464));
+          this.h.setTextColor(this.b.getResources().getColor(2131168464));
         }
-        this.d.setVisibility(8);
+        this.k.setVisibility(8);
       }
-      if (i == 0) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131699373, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int / 1000) }));
+      if (i1 == 0) {
+        this.i.setText(this.b.getString(2131897390, new Object[] { Integer.valueOf(this.n / 1000) }));
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(SlideShowUtils.a(l));
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+      this.h.setText(SlideShowUtils.a(l1));
+      this.h.setVisibility(0);
+      this.e.setVisibility(0);
     }
     else
     {
-      if (k != 0) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166955));
+      if (i3 != 0) {
+        this.i.setTextColor(this.b.getResources().getColor(2131167888));
       } else {
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167394));
+        this.i.setTextColor(this.b.getResources().getColor(2131168464));
       }
-      if ((j == 0) && (i == 0)) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131699375));
+      if ((i2 == 0) && (i1 == 0)) {
+        this.i.setText(this.b.getString(2131897392));
       } else {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131699374));
+        this.i.setText(this.b.getString(2131897391));
       }
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.d.setVisibility(8);
+      this.e.setVisibility(8);
+      this.h.setVisibility(8);
+      this.k.setVisibility(8);
     }
-    if (i != 0)
+    if (i1 != 0)
     {
-      localObject1 = this.c;
-      if ((m < 2) || (m > 30)) {
+      localObject1 = this.j;
+      if ((i4 < 2) || (i4 > 30)) {
         bool1 = false;
       }
       ((TextView)localObject1).setEnabled(bool1);
     }
-    else if (j == 0)
+    else if (i2 == 0)
     {
-      localObject1 = this.c;
-      if ((m >= 2) && (m <= 10) && (l <= this.jdField_a_of_type_Int)) {
+      localObject1 = this.j;
+      if ((i4 >= 2) && (i4 <= 10) && (l1 <= this.n)) {
         bool1 = bool2;
       } else {
         bool1 = false;
       }
       ((TextView)localObject1).setEnabled(bool1);
     }
-    else if (k != 0)
+    else if (i3 != 0)
     {
-      localObject1 = this.c;
-      if ((m >= 1) && (m <= 10) && (l <= this.jdField_a_of_type_Int)) {
+      localObject1 = this.j;
+      if ((i4 >= 1) && (i4 <= 10) && (l1 <= this.n)) {
         bool1 = bool3;
       } else {
         bool1 = false;
       }
       ((TextView)localObject1).setEnabled(bool1);
     }
-    else if (m == 0)
+    else if (i4 == 0)
     {
-      this.c.setEnabled(true);
+      this.j.setEnabled(true);
     }
     else
     {
-      localObject1 = this.c;
-      if ((m >= 1) && (m <= 10) && (l <= this.jdField_a_of_type_Int)) {
+      localObject1 = this.j;
+      if ((i4 >= 1) && (i4 <= 10) && (l1 <= this.n)) {
         bool1 = bool4;
       } else {
         bool1 = false;
       }
       ((TextView)localObject1).setEnabled(bool1);
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter;
+    Object localObject1 = this.f;
     if (localObject1 != null) {
       ((SlideShowAdapter)localObject1).a(localList);
     }
@@ -322,7 +322,7 @@ public class SlideShowViewController
   
   public void a(int paramInt)
   {
-    SlideShowAdapter localSlideShowAdapter = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowAdapter;
+    SlideShowAdapter localSlideShowAdapter = this.f;
     if (localSlideShowAdapter != null) {
       localSlideShowAdapter.a(paramInt);
     }
@@ -330,18 +330,18 @@ public class SlideShowViewController
   
   public void b()
   {
-    List localList = SlideShowPhotoListManager.a().a();
-    Object localObject = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-    if ((localObject != null) && (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null))
+    List localList = SlideShowPhotoListManager.a().f();
+    Object localObject = this.m;
+    if ((localObject != null) && (this.e != null))
     {
-      int i = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
-      int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-      while (i <= j)
+      int i1 = ((LinearLayoutManager)localObject).findFirstVisibleItemPosition();
+      int i2 = this.m.findLastVisibleItemPosition();
+      while (i1 <= i2)
       {
-        localObject = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(i);
+        localObject = this.m.findViewByPosition(i1);
         if (localObject != null)
         {
-          localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
+          localObject = this.e.getChildViewHolder((View)localObject);
           if ((localObject instanceof SlideShowAdapter.SlideShowViewHolder))
           {
             localObject = (SlideShowAdapter.SlideShowViewHolder)localObject;
@@ -350,130 +350,130 @@ public class SlideShowViewController
             while (localIterator.hasNext())
             {
               SlideItemInfo localSlideItemInfo2 = (SlideItemInfo)localIterator.next();
-              if ((localSlideItemInfo1.jdField_b_of_type_JavaLangString.equals(localSlideItemInfo2.jdField_b_of_type_JavaLangString)) && (localSlideItemInfo2.c))
+              if ((localSlideItemInfo1.f.equals(localSlideItemInfo2.f)) && (localSlideItemInfo2.t))
               {
-                localSlideItemInfo2.c = false;
+                localSlideItemInfo2.t = false;
                 a(((SlideShowAdapter.SlideShowViewHolder)localObject).a);
               }
             }
           }
         }
-        i += 1;
+        i1 += 1;
       }
     }
   }
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier;
+    Object localObject = this.l;
     if (localObject != null)
     {
       ((SlideProgressNotifier)localObject).a();
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier.b();
-      localObject = SlideShowPhotoListManager.a().a();
+      this.l.b();
+      localObject = SlideShowPhotoListManager.a().f();
       Iterator localIterator = ((List)localObject).iterator();
-      int i = 0;
+      int i1 = 0;
       while (localIterator.hasNext())
       {
         SlideItemInfo localSlideItemInfo = (SlideItemInfo)localIterator.next();
         if (localSlideItemInfo != null) {
-          i += (int)localSlideItemInfo.a();
+          i1 += (int)localSlideItemInfo.a();
         }
       }
-      int j = i;
-      if (i == 0) {
-        j = 5000;
+      int i2 = i1;
+      if (i1 == 0) {
+        i2 = 5000;
       }
-      double d1 = j;
+      double d1 = i2;
       Double.isNaN(d1);
-      i = (int)(d1 * 1.5D);
+      i1 = (int)(d1 * 1.5D);
       d1 = ((List)localObject).size();
       Double.isNaN(d1);
       double d2 = ((List)localObject).size() + 1;
       Double.isNaN(d2);
-      j = (int)(d1 * 1.0D / d2 * 100.0D);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier.a(0, i, j, 0);
+      i2 = (int)(d1 * 1.0D / d2 * 100.0D);
+      this.l.a(0, i1, i2, 0);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier != null)
+    if (this.l != null)
     {
-      List localList = SlideShowPhotoListManager.a().a();
-      int j = localList.size();
-      int i = j;
-      if (j == 0) {
-        i = 1;
+      List localList = SlideShowPhotoListManager.a().f();
+      int i2 = localList.size();
+      int i1 = i2;
+      if (i2 == 0) {
+        i1 = 1;
       }
       double d1 = localList.size();
       Double.isNaN(d1);
       double d2 = localList.size() + 1;
       Double.isNaN(d2);
-      j = (int)(d1 * 1.0D / d2 * 100.0D);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier.a(i * 1000, 99, j);
+      i2 = (int)(d1 * 1.0D / d2 * 100.0D);
+      this.l.a(i1 * 1000, 99, i2);
     }
   }
   
   public void e()
   {
-    SlideProgressNotifier localSlideProgressNotifier = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier;
+    SlideProgressNotifier localSlideProgressNotifier = this.l;
     if (localSlideProgressNotifier != null)
     {
       localSlideProgressNotifier.a();
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier.b();
+      this.l.b();
     }
   }
   
   public void onClick(View paramView)
   {
     Object localObject1;
-    int i;
+    int i1;
     Object localObject3;
-    int j;
+    int i2;
     switch (paramView.getId())
     {
     default: 
       break;
-    case 2131377664: 
+    case 2131446088: 
       localObject1 = (SlideItemInfo)paramView.getTag();
-      i = SlideShowPhotoListManager.a().a().indexOf(localObject1);
-      localObject3 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowActionListener;
+      i1 = SlideShowPhotoListManager.a().f().indexOf(localObject1);
+      localObject3 = this.c;
       if ((localObject3 != null) && (localObject1 != null)) {
-        ((SlideShowActionListener)localObject3).a(((SlideItemInfo)localObject1).jdField_b_of_type_JavaLangString);
+        ((SlideShowActionListener)localObject3).a(((SlideItemInfo)localObject1).f);
       }
-      a(i);
+      a(i1);
       break;
-    case 2131374593: 
-      if ((this.jdField_a_of_type_AndroidAppActivity instanceof NewPhotoListActivity)) {
-        i = 0;
+    case 2131442763: 
+      if ((this.b instanceof NewPhotoListActivity)) {
+        i1 = 0;
       } else {
-        i = 1;
+        i1 = 1;
       }
-      if (SlideShowPhotoListManager.a().a() == 11) {
-        j = 1;
+      if (SlideShowPhotoListManager.a().d() == 11) {
+        i2 = 1;
       } else {
-        j = 0;
+        i2 = 0;
       }
-      localObject1 = SlideShowPhotoListManager.a().a();
-      if ((j != 0) && (i != 0) && (((List)localObject1).size() == 0))
+      localObject1 = SlideShowPhotoListManager.a().f();
+      if ((i2 != 0) && (i1 != 0) && (((List)localObject1).size() == 0))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowActionListener;
+        localObject1 = this.c;
         if (localObject1 != null) {
           ((SlideShowActionListener)localObject1).d();
         }
-        localObject1 = SlideShowPhotoListManager.a().a();
+        localObject1 = SlideShowPhotoListManager.a().f();
         if ((((List)localObject1).size() >= 1) && (((List)localObject1).size() <= 10) && (((SlideItemInfo)((List)localObject1).get(0)).a() <= 20999L)) {
-          SlideShowPhotoListManager.a().a(this.jdField_a_of_type_AndroidAppActivity, null, 2);
+          SlideShowPhotoListManager.a().a(this.b, null, 2);
         }
       }
       else
       {
-        SlideShowPhotoListManager.a().a(this.jdField_a_of_type_AndroidAppActivity, null, 2);
-        localObject1 = this.jdField_a_of_type_AndroidAppActivity;
+        SlideShowPhotoListManager.a().a(this.b, null, 2);
+        localObject1 = this.b;
         if ((localObject1 != null) && (((Activity)localObject1).getIntent().getBooleanExtra("from_qzone_slideshow", false)))
         {
-          localObject1 = this.jdField_a_of_type_AndroidAppActivity;
+          localObject1 = this.b;
           if ((localObject1 instanceof NewPhotoListActivity)) {
             SlideShowPhotoListManager.a().b(14);
           } else if ((localObject1 instanceof NewPhotoPreviewActivity)) {
@@ -483,16 +483,16 @@ public class SlideShowViewController
       }
       try
       {
-        if (SlideShowPhotoListManager.a().a() != 13) {
+        if (SlideShowPhotoListManager.a().d() != 13) {
           break;
         }
-        if (this.jdField_a_of_type_AndroidAppActivity != null) {
-          StoryReportor.a("pic_fictitious", "clk_next", this.jdField_a_of_type_AndroidAppActivity.getIntent(), new String[0]);
+        if (this.b != null) {
+          StoryReportor.a("pic_fictitious", "clk_next", this.b.getIntent(), new String[0]);
         }
-        if ((!SlideShowPhotoListManager.a().a()) || (this.jdField_a_of_type_AndroidAppActivity == null)) {
+        if ((!SlideShowPhotoListManager.a().b()) || (this.b == null)) {
           break;
         }
-        StoryReportor.a("video_edit_new", "change_pic", this.jdField_a_of_type_AndroidAppActivity.getIntent(), new String[0]);
+        StoryReportor.a("video_edit_new", "change_pic", this.b.getIntent(), new String[0]);
       }
       catch (Exception localException)
       {
@@ -500,41 +500,41 @@ public class SlideShowViewController
           break;
         }
       }
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, ThrowablesUtils.a(localException));
+      QLog.d(this.a, 2, ThrowablesUtils.a(localException));
       break;
-    case 2131374592: 
+    case 2131442762: 
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "qqstory_slideshow_auto_optimize");
+        QLog.d(this.a, 2, "qqstory_slideshow_auto_optimize");
       }
-      Object localObject2 = SlideShowPhotoListManager.a().a().iterator();
-      j = 0;
-      int k = 0;
-      i = 0;
-      int m;
+      Object localObject2 = SlideShowPhotoListManager.a().f().iterator();
+      i2 = 0;
+      int i3 = 0;
+      i1 = 0;
+      int i4;
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (SlideItemInfo)((Iterator)localObject2).next();
-        m = j + 1;
-        if (((SlideItemInfo)localObject3).jdField_b_of_type_Int == 1)
+        i4 = i2 + 1;
+        if (((SlideItemInfo)localObject3).e == 1)
         {
-          k += 1;
-          j = m;
+          i3 += 1;
+          i2 = i4;
         }
         else
         {
-          j = m;
-          if (((SlideItemInfo)localObject3).jdField_b_of_type_Int == 0)
+          i2 = i4;
+          if (((SlideItemInfo)localObject3).e == 0)
           {
-            i += 1;
-            j = m;
+            i1 += 1;
+            i2 = i4;
           }
         }
       }
-      boolean bool = this.jdField_a_of_type_AndroidAppActivity instanceof NewPhotoListActivity;
-      if (SlideShowPhotoListManager.a().a() == 11) {
-        m = 1;
+      boolean bool = this.b instanceof NewPhotoListActivity;
+      if (SlideShowPhotoListManager.a().d() == 11) {
+        i4 = 1;
       } else {
-        m = 0;
+        i4 = 0;
       }
       if (bool) {
         localObject2 = "0";
@@ -542,18 +542,18 @@ public class SlideShowViewController
         localObject2 = "1";
       }
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(j);
+      ((StringBuilder)localObject3).append(i2);
       ((StringBuilder)localObject3).append("");
       localObject3 = ((StringBuilder)localObject3).toString();
       Object localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append(i);
+      ((StringBuilder)localObject4).append(i1);
       ((StringBuilder)localObject4).append("");
       localObject4 = ((StringBuilder)localObject4).toString();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(k);
+      localStringBuilder.append(i3);
       localStringBuilder.append("");
-      StoryReportor.a("pic_choose", "clk_autoCut", m ^ 0x1, 0, new String[] { localObject2, localObject3, localObject4, localStringBuilder.toString() });
-      SlideShowPhotoListManager.a().f();
+      StoryReportor.a("pic_choose", "clk_autoCut", i4 ^ 0x1, 0, new String[] { localObject2, localObject3, localObject4, localStringBuilder.toString() });
+      SlideShowPhotoListManager.a().m();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

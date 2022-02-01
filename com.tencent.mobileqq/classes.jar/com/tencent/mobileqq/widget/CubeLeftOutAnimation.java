@@ -9,48 +9,48 @@ import android.view.animation.Transformation;
 class CubeLeftOutAnimation
   extends Animation
 {
-  private int jdField_a_of_type_Int;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private View jdField_a_of_type_AndroidViewView;
-  private int b;
+  private Camera a;
+  private Matrix b;
+  private int c;
+  private int d;
+  private View e;
   
   public CubeLeftOutAnimation(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.e = paramView;
   }
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
     paramFloat = 90.0F - paramFloat * 90.0F;
-    this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.rotateX(paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    this.a.save();
+    this.a.rotateX(paramFloat);
+    this.a.getMatrix(this.b);
+    this.a.restore();
+    View localView = this.e;
     if (localView != null)
     {
       localView.setAlpha(1.0F - paramFloat / 90.0F);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
+      this.e.invalidate();
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preTranslate(-this.jdField_a_of_type_Int / 2, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int / 2, 0.0F);
-    paramTransformation.getMatrix().postConcat(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.b.preTranslate(-this.c / 2, 0.0F);
+    this.b.postTranslate(this.c / 2, 0.0F);
+    paramTransformation.getMatrix().postConcat(this.b);
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = new Camera();
+    this.b = new Matrix();
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CubeLeftOutAnimation
  * JD-Core Version:    0.7.0.1
  */

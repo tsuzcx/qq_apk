@@ -84,8 +84,8 @@ public class FabTransformationSheetBehavior
       i = R.animator.k;
     }
     FabTransformationBehavior.FabTransformationSpec localFabTransformationSpec = new FabTransformationBehavior.FabTransformationSpec();
-    localFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec = MotionSpec.a(paramContext, i);
-    localFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationPositioning = new Positioning(17, 0.0F, 0.0F);
+    localFabTransformationSpec.a = MotionSpec.a(paramContext, i);
+    localFabTransformationSpec.b = new Positioning(17, 0.0F, 0.0F);
     return localFabTransformationSpec;
   }
   
@@ -98,7 +98,7 @@ public class FabTransformationSheetBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.FabTransformationSheetBehavior
  * JD-Core Version:    0.7.0.1
  */

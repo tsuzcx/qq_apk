@@ -11,25 +11,25 @@ class DoubleVideoCtrlUI$8$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a != null) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a() != null))
+    if ((this.c.this$0.am != null) && (this.c.this$0.am.k() != null))
     {
-      SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a();
-      String str = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.d;
+      SessionInfo localSessionInfo = this.c.this$0.am.k();
+      String str = this.c.this$0.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("StartGlassCheck, lCurrent[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("], lLastTickFinal[");
       localStringBuilder.append(this.b);
       localStringBuilder.append("], VideoGlassWaitTime[");
-      localStringBuilder.append(localSessionInfo.Q);
+      localStringBuilder.append(localSessionInfo.bT);
       localStringBuilder.append("], DefaultTimeOutRule[");
-      localStringBuilder.append(localSessionInfo.R);
+      localStringBuilder.append(localSessionInfo.bU);
       localStringBuilder.append("], GlassSwitch[");
-      localStringBuilder.append(localSessionInfo.P);
+      localStringBuilder.append(localSessionInfo.bS);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
-      if ((this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a(localSessionInfo.R)) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0.a.a().P != 0)) {
-        DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$8.this$0, false);
+      if ((this.c.this$0.g(localSessionInfo.bU)) && (this.c.this$0.am.k().bS != 0)) {
+        DoubleVideoCtrlUI.a(this.c.this$0, false);
       }
     }
   }

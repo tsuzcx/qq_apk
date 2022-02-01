@@ -16,14 +16,12 @@ import org.json.JSONObject;
 public class VipVideoApiPlugin
   extends WebViewPlugin
 {
-  protected OnRemoteRespObserver a;
-  public final String a;
+  public final String a = "VideoApiPlugin";
   public String b;
+  protected OnRemoteRespObserver c = new VipVideoApiPlugin.1(this);
   
   public VipVideoApiPlugin()
   {
-    this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
-    this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver = new VipVideoApiPlugin.1(this);
     this.mPluginNameSpace = "video";
   }
   
@@ -56,7 +54,7 @@ public class VipVideoApiPlugin
           if (((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
           {
             paramString1 = new Bundle();
-            paramJsBridgeListener = DataFactory.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString1);
+            paramJsBridgeListener = DataFactory.a("ipc_video_isinstalled", paramJsBridgeListener, this.c.key, paramString1);
             ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
             return true;
           }
@@ -66,7 +64,7 @@ public class VipVideoApiPlugin
           if (((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
           {
             paramString1 = new Bundle();
-            paramJsBridgeListener = DataFactory.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver.key, paramString1);
+            paramJsBridgeListener = DataFactory.a("ipc_video_install_plugin", paramJsBridgeListener, this.c.key, paramString1);
             ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramJsBridgeListener);
             return true;
           }
@@ -82,7 +80,7 @@ public class VipVideoApiPlugin
           }
           if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
           {
-            paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
+            paramJsBridgeListener = new Intent(this.mRuntime.d(), VipVideoPlayActivity.class);
             paramJsBridgeListener.putExtra("vid", paramString2);
             paramJsBridgeListener.putExtra("videoFormat", paramString3);
             paramJsBridgeListener.putExtra("vtype", i);
@@ -128,18 +126,18 @@ public class VipVideoApiPlugin
   protected void onCreate()
   {
     super.onCreate();
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.c);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.jdField_a_of_type_ComTencentMobileqqEmosmOnRemoteRespObserver);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoApiPlugin
  * JD-Core Version:    0.7.0.1
  */

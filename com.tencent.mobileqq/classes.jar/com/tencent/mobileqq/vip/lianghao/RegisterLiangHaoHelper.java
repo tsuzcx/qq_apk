@@ -20,27 +20,47 @@ import java.util.List;
 
 public class RegisterLiangHaoHelper
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RegisterLHAssistant jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant;
-  private RegisterLiangHaoHelper.CheckCallBack jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper$CheckCallBack;
-  private LiangHaoRsp jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
-  private CheckRegisterLiangHao.RequestCallBack jdField_a_of_type_ComTencentMobileqqVipLianghaoNetCheckRegisterLiangHao$RequestCallBack;
-  private GetRegisterLiangHaoList.RequestCallBack jdField_a_of_type_ComTencentMobileqqVipLianghaoNetGetRegisterLiangHaoList$RequestCallBack;
-  private RegisterLiangHaoChoiceLayoutView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView;
-  private RegisterLiangHaoPayFailLayoutView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView;
-  private String jdField_a_of_type_JavaLangString;
-  private GetRegisterLiangHaoList.RequestCallBack b;
+  private Context a;
+  private String b;
+  private int c = 0;
+  private LiangHaoRsp d;
+  private RegisterLiangHaoChoiceLayoutView e;
+  private RegisterLiangHaoPayFailLayoutView f;
+  private GetRegisterLiangHaoList.RequestCallBack g;
+  private GetRegisterLiangHaoList.RequestCallBack h;
+  private RegisterLiangHaoHelper.CheckCallBack i;
+  private CheckRegisterLiangHao.RequestCallBack j;
+  private RegisterLHAssistant k;
   
   public RegisterLiangHaoHelper(Context paramContext, RegisterLHAssistant paramRegisterLHAssistant)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant = paramRegisterLHAssistant;
+    this.a = paramContext;
+    this.k = paramRegisterLHAssistant;
   }
   
-  private boolean a()
+  private void d()
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    LiangHaoRsp localLiangHaoRsp = this.d;
+    if (localLiangHaoRsp != null)
+    {
+      if (localLiangHaoRsp.f == null) {
+        return;
+      }
+      b().a(this.d);
+      int m = this.d.f.size();
+      if (m > 4)
+      {
+        localLiangHaoRsp = this.d;
+        localLiangHaoRsp.f = localLiangHaoRsp.f.subList(4, m);
+        return;
+      }
+      this.d.f.clear();
+    }
+  }
+  
+  private boolean e()
+  {
+    Context localContext = this.a;
     if ((localContext instanceof RegisterByNicknameAndPwdActivity)) {
       return ((RegisterByNicknameAndPwdActivity)localContext).checkNickAndPwd();
     }
@@ -50,107 +70,96 @@ public class RegisterLiangHaoHelper
     return false;
   }
   
-  private void c()
-  {
-    LiangHaoRsp localLiangHaoRsp = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
-    if (localLiangHaoRsp != null)
-    {
-      if (localLiangHaoRsp.a == null) {
-        return;
-      }
-      a().a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp);
-      int i = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.size();
-      if (i > 4)
-      {
-        localLiangHaoRsp = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
-        localLiangHaoRsp.a = localLiangHaoRsp.a.subList(4, i);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.clear();
-    }
-  }
-  
-  public RegisterLiangHaoChoiceLayoutView a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView = new RegisterLiangHaoChoiceLayoutView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView.setLiangHaoHelper(this);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView;
-  }
-  
   public RegisterLiangHaoPayFailLayoutView a(LiangHaoPayFailData paramLiangHaoPayFailData)
   {
     if (paramLiangHaoPayFailData == null) {
       return null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView = new RegisterLiangHaoPayFailLayoutView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView.setUin(paramLiangHaoPayFailData.a);
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView.setLiangHaoHelper(this);
+      this.f = new RegisterLiangHaoPayFailLayoutView(this.a);
+      this.f.setUin(paramLiangHaoPayFailData.a);
+      this.f.setLiangHaoHelper(this);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView;
+    return this.f;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
-    if ((localObject != null) && (((LiangHaoRsp)localObject).a != null) && (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.a.size() >= 4))
+    Object localObject = this.d;
+    if ((localObject != null) && (((LiangHaoRsp)localObject).f != null) && (this.d.f.size() >= 4))
     {
-      c();
+      d();
       return;
     }
-    if (this.b == null) {
-      this.b = new RegisterLiangHaoHelper.2(this);
+    if (this.h == null) {
+      this.h = new RegisterLiangHaoHelper.2(this);
     }
-    localObject = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    new GetRegisterLiangHaoList((String)localObject, i, this.b).a();
+    localObject = this.b;
+    int m = this.c;
+    this.c = (m + 1);
+    new GetRegisterLiangHaoList((String)localObject, m, this.h).a();
   }
   
   public void a(LiangHaoUinData paramLiangHaoUinData)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant != null)
+    if (this.k != null)
     {
-      if (!a()) {
+      if (!e()) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.c();
-      LiangHaoBuyFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.a(), paramLiangHaoUinData);
+      this.k.d();
+      LiangHaoBuyFragment.a(this.a, this.k.c(), paramLiangHaoUinData);
     }
   }
   
   public void a(String paramString, RegisterLiangHaoHelper.CheckCallBack paramCheckCallBack)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper$CheckCallBack = paramCheckCallBack;
-    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetGetRegisterLiangHaoList$RequestCallBack == null) {
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetGetRegisterLiangHaoList$RequestCallBack = new RegisterLiangHaoHelper.1(this);
+    this.b = paramString;
+    this.i = paramCheckCallBack;
+    if (this.g == null) {
+      this.g = new RegisterLiangHaoHelper.1(this);
     }
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    new GetRegisterLiangHaoList(paramString, i, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetGetRegisterLiangHaoList$RequestCallBack).a();
+    int m = this.c;
+    this.c = (m + 1);
+    new GetRegisterLiangHaoList(paramString, m, this.g).a();
   }
   
   public void a(String paramString, CheckRegisterLiangHao.RequestCallBack paramRequestCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoNetCheckRegisterLiangHao$RequestCallBack = paramRequestCallBack;
+    this.j = paramRequestCallBack;
     new CheckRegisterLiangHao(paramString, paramRequestCallBack).a();
   }
   
-  public void b()
+  public RegisterLiangHaoChoiceLayoutView b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant != null)
+    if (this.e == null)
     {
-      if (!a()) {
+      this.e = new RegisterLiangHaoChoiceLayoutView(this.a);
+      this.e.setLiangHaoHelper(this);
+    }
+    return this.e;
+  }
+  
+  public void b(LiangHaoUinData paramLiangHaoUinData)
+  {
+    RegisterLHAssistant localRegisterLHAssistant = this.k;
+    if (localRegisterLHAssistant == null) {
+      return;
+    }
+    LiangHaoBuyFragment.b(this.a, localRegisterLHAssistant.c(), paramLiangHaoUinData);
+  }
+  
+  public void c()
+  {
+    if (this.k != null)
+    {
+      if (!e()) {
         return;
       }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp;
-      if ((localObject1 != null) && (!TextUtils.isEmpty(((LiangHaoRsp)localObject1).b))) {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoRsp.b;
+      Object localObject1 = this.d;
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((LiangHaoRsp)localObject1).d))) {
+        localObject1 = this.d.d;
       } else {
         localObject1 = "https://haoma.qq.com/m/clientReg/index.html";
       }
@@ -159,7 +168,7 @@ public class RegisterLiangHaoHelper
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append("?phone=");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.b);
         localObject1 = ((StringBuilder)localObject2).toString();
       }
       else
@@ -167,30 +176,21 @@ public class RegisterLiangHaoHelper
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append("&phone=");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.b);
         localObject1 = ((StringBuilder)localObject2).toString();
       }
       Object localObject2 = new Intent();
       ((Intent)localObject2).putExtra("url", (String)localObject1);
       ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
-      ((Intent)localObject2).putExtras(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant.a());
+      ((Intent)localObject2).putExtras(this.k.c());
       ((Intent)localObject2).putExtra("lh_reg_from", 1);
-      LoginUtils.a(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject2, "/base/browser");
+      LoginUtils.a(this.a, (Intent)localObject2, "/base/browser");
     }
-  }
-  
-  public void b(LiangHaoUinData paramLiangHaoUinData)
-  {
-    RegisterLHAssistant localRegisterLHAssistant = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLHAssistant;
-    if (localRegisterLHAssistant == null) {
-      return;
-    }
-    LiangHaoBuyFragment.b(this.jdField_a_of_type_AndroidContentContext, localRegisterLHAssistant.a(), paramLiangHaoUinData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.RegisterLiangHaoHelper
  * JD-Core Version:    0.7.0.1
  */

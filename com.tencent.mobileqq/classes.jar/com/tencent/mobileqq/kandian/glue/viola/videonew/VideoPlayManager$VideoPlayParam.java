@@ -8,74 +8,67 @@ import org.json.JSONObject;
 
 class VideoPlayManager$VideoPlayParam
 {
-  public int a;
   public ViewGroup a;
-  private VideoPlayerWrapper a;
-  public IVideoView a;
-  public VideoInfo a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
+  public IVideoView b;
+  public VideoInfo c;
   public int d;
-  public boolean d;
-  public int e;
   public boolean e;
-  int f;
   public boolean f;
+  public int g;
+  public int h;
+  public boolean i = true;
+  public int j = 1000;
+  public int k = -1;
+  public boolean l = false;
+  public boolean m = false;
+  int n = 0;
+  public boolean o = false;
+  private VideoPlayerWrapper p;
   
   public VideoPlayManager$VideoPlayParam(ViewGroup paramViewGroup, JSONObject paramJSONObject)
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = 1000;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo = new VideoInfo(paramJSONObject.getJSONObject("video_info"));
+    this.a = paramViewGroup;
+    this.f = true;
+    this.e = false;
+    this.d = 0;
+    this.g = -1;
+    this.h = -1;
+    this.c = new VideoInfo(paramJSONObject.getJSONObject("video_info"));
     if (paramJSONObject.has("autoplay")) {
-      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("autoplay");
+      this.f = paramJSONObject.getBoolean("autoplay");
     }
     if (paramJSONObject.has("muted")) {
-      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("muted");
+      this.e = paramJSONObject.getBoolean("muted");
     }
     if (paramJSONObject.has("start_position")) {
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("start_position");
+      this.d = paramJSONObject.getInt("start_position");
     }
     if (paramJSONObject.has("width")) {
-      this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
+      this.g = paramJSONObject.getInt("width");
     }
     if (paramJSONObject.has("height")) {
-      this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
+      this.h = paramJSONObject.getInt("height");
     }
     if (paramJSONObject.has("controls")) {
-      this.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("controls");
+      this.i = paramJSONObject.getBoolean("controls");
     }
     if (paramJSONObject.has("resize")) {
       a(paramJSONObject.getString("resize"));
     }
     if (paramJSONObject.has("timeupdateRate")) {
-      this.jdField_d_of_type_Int = paramJSONObject.getInt("timeupdateRate");
+      this.j = paramJSONObject.getInt("timeupdateRate");
     }
     if (paramJSONObject.has("barBottomMargin")) {
-      this.jdField_e_of_type_Int = paramJSONObject.getInt("barBottomMargin");
+      this.k = paramJSONObject.getInt("barBottomMargin");
     }
     if (paramJSONObject.has("disableFullScreen")) {
-      this.jdField_d_of_type_Boolean = paramJSONObject.getBoolean("disableFullScreen");
+      this.l = paramJSONObject.getBoolean("disableFullScreen");
     }
     if (paramJSONObject.has("disableSeek")) {
-      this.jdField_e_of_type_Boolean = paramJSONObject.getBoolean("disableSeek");
+      this.m = paramJSONObject.getBoolean("disableSeek");
     }
     if (paramJSONObject.has("endWithLastFrame")) {
-      this.jdField_f_of_type_Boolean = paramJSONObject.getBoolean("endWithLastFrame");
+      this.o = paramJSONObject.getBoolean("endWithLastFrame");
     }
   }
   
@@ -83,11 +76,11 @@ class VideoPlayManager$VideoPlayParam
   {
     if (paramString.equals("contain"))
     {
-      this.jdField_f_of_type_Int = 0;
+      this.n = 0;
       return;
     }
     if (paramString.equals("cover")) {
-      this.jdField_f_of_type_Int = 2;
+      this.n = 2;
     }
   }
   
@@ -95,34 +88,34 @@ class VideoPlayManager$VideoPlayParam
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VideoPlayParam{videoInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaVideoVideoInfo);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", startPosition=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", muted=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", autoPlay=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", width=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", height=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", controls=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", timeupdateRate=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", barBottomMargin=");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", disableFullScreen=");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", disableSeek=");
-    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    localStringBuilder.append(this.m);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.VideoPlayManager.VideoPlayParam
  * JD-Core Version:    0.7.0.1
  */

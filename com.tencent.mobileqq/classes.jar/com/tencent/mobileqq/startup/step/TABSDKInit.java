@@ -15,10 +15,10 @@ public class TABSDKInit
   protected int doStep()
   {
     Object localObject;
-    if (QConfigManager.a().a(742))
+    if (QConfigManager.b().c(742))
     {
       ABTestUtil.a("QQInitHandler", "start pull ExpList from TABSDKInitSTEP");
-      ABTestController.a().a();
+      ABTestController.a().c();
       localObject = new ArrayList();
       ((ArrayList)localObject).add(new QConReqExtraInfo(742, true));
       QConfigManager.a((ArrayList)localObject);
@@ -27,7 +27,7 @@ public class TABSDKInit
     {
       ABTestUtil.a("QQInitHandler", "ExpMgrListProcessor inject error, init from TABSDKInitSTEP");
       localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      ABTestController.a().a();
+      ABTestController.a().c();
       ABTestController.a().a(MobileQQ.sMobileQQ, ((AppRuntime)localObject).getAccount());
     }
     return super.doStep();
@@ -35,7 +35,7 @@ public class TABSDKInit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.TABSDKInit
  * JD-Core Version:    0.7.0.1
  */

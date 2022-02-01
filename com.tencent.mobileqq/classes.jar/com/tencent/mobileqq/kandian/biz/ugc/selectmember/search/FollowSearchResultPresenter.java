@@ -19,14 +19,14 @@ import java.util.Set;
 public class FollowSearchResultPresenter
   extends SearchResultPresenter
 {
-  private ContactSearchResultPresenter.OnActionListener jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private ContactSearchResultPresenter.OnActionListener a;
+  private Set<String> b = new HashSet();
   
   FollowSearchResultPresenter(IFaceDecoder paramIFaceDecoder, ContactSearchResultPresenter.OnActionListener paramOnActionListener, Set<String> paramSet)
   {
     super(paramIFaceDecoder);
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener = paramOnActionListener;
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
+    this.a = paramOnActionListener;
+    this.b = paramSet;
   }
   
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
@@ -38,15 +38,15 @@ public class FollowSearchResultPresenter
   {
     if ((paramISearchResultModel instanceof FollowingSearchResultModel))
     {
-      paramISearchResultModel = ((FollowingSearchResultModel)paramISearchResultModel).a().b();
-      paramISearchResultView = paramISearchResultView.b();
-      Drawable localDrawable = paramISearchResultView.getResources().getDrawable(2130840321);
+      paramISearchResultModel = ((FollowingSearchResultModel)paramISearchResultModel).i().c();
+      paramISearchResultView = paramISearchResultView.g();
+      Drawable localDrawable = paramISearchResultView.getResources().getDrawable(2130841060);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       paramISearchResultModel = URLDrawable.getDrawable(paramISearchResultModel, localURLDrawableOptions);
       paramISearchResultModel.setTag(URLDrawableDecodeHandler.a(140, 140));
-      paramISearchResultModel.setDecodeHandler(URLDrawableDecodeHandler.n);
+      paramISearchResultModel.setDecodeHandler(URLDrawableDecodeHandler.o);
       paramISearchResultView.setImageDrawable(paramISearchResultModel);
       return;
     }
@@ -56,14 +56,14 @@ public class FollowSearchResultPresenter
   protected void c(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.c(paramISearchResultModel, paramISearchResultView);
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactPresenterContactSearchResultPresenter$OnActionListener != null) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramISearchResultModel.a()))) {
-      paramISearchResultView.a().setOnClickListener(new FollowSearchResultPresenter.1(this));
+    if ((this.a != null) && (!this.b.contains(paramISearchResultModel.c()))) {
+      paramISearchResultView.h().setOnClickListener(new FollowSearchResultPresenter.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.search.FollowSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

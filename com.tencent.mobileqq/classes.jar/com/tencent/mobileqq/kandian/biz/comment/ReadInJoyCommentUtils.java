@@ -20,22 +20,26 @@ import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.biz.comment.base.ReadInJoyCommentEntrance;
+import com.tencent.mobileqq.kandian.biz.comment.bean.CommentComponentArgs;
 import com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager;
 import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData;
 import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData.MediaData;
 import com.tencent.mobileqq.kandian.biz.comment.entity.CommonCommentData;
+import com.tencent.mobileqq.kandian.biz.comment.entity.FirstCommentCreateData;
+import com.tencent.mobileqq.kandian.biz.comment.entity.SimpleCommentData;
+import com.tencent.mobileqq.kandian.biz.comment.entity.SubCommentCreateData;
 import com.tencent.mobileqq.kandian.biz.comment.entity.SubCommentData;
-import com.tencent.mobileqq.kandian.biz.comment.util.api.IRIJCommentEntranceUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeAvatarView;
 import com.tencent.mobileqq.kandian.biz.ugc.Utils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.glue.report.ReadinjoyReportUtils;
-import com.tencent.mobileqq.kandian.glue.router.api.IRIJJumpUtils;
+import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.mobileqq.kandian.repo.account.RIJUserLevelModule;
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.CommentGuideConfigHandler;
 import com.tencent.mobileqq.kandian.repo.comment.entity.CommentInfo;
@@ -52,7 +56,6 @@ import com.tencent.mobileqq.kandian.repo.follow.FollowListInfoModule;
 import com.tencent.mobileqq.kandian.repo.handler.BiuCommentInfo;
 import com.tencent.mobileqq.kandian.repo.handler.BiuInfo;
 import com.tencent.mobileqq.kandian.repo.report.UserOperationModule;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.EmotionCodecUtils;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.Base64Util;
@@ -78,6 +81,30 @@ import org.json.JSONObject;
 public class ReadInJoyCommentUtils
 {
   private static final Pattern a = Pattern.compile("\n|\r\n");
+  
+  private static int a(BaseCommentData paramBaseCommentData)
+  {
+    if (paramBaseCommentData != null)
+    {
+      if ((paramBaseCommentData.commentLinkDataList != null) && (!paramBaseCommentData.commentLinkDataList.isEmpty())) {
+        return 1;
+      }
+      return 0;
+    }
+    return 2;
+  }
+  
+  public static int a(boolean paramBoolean, SimpleCommentData paramSimpleCommentData, String paramString)
+  {
+    if ((!paramBoolean) && ((!(paramSimpleCommentData instanceof SubCommentCreateData)) || (((SubCommentCreateData)paramSimpleCommentData).m().isEmpty())))
+    {
+      if ((TextUtils.isEmpty(paramString)) && ((paramSimpleCommentData == null) || ((paramSimpleCommentData instanceof FirstCommentCreateData)))) {
+        return 0;
+      }
+      return 1;
+    }
+    return 2;
+  }
   
   private static SpannableString a(String paramString1, String paramString2, String paramString3)
   {
@@ -107,14 +134,14 @@ public class ReadInJoyCommentUtils
     {
       if (paramAbsBaseArticleInfo != null)
       {
-        if (((paramAbsBaseArticleInfo.mFeedType == 1) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int == 5)) || (RIJFeedsType.a(paramAbsBaseArticleInfo)))
+        if (((paramAbsBaseArticleInfo.mFeedType == 1) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.b == 5)) || (RIJFeedsType.a(paramAbsBaseArticleInfo)))
         {
           i = 2;
           break label137;
         }
-        if ((RIJItemViewTypeUtils.o(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null))
+        if ((RIJItemViewTypeUtils.o(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null))
         {
-          if (RIJItemViewTypeUtils.b(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.jdField_a_of_type_Int))
+          if (RIJItemViewTypeUtils.b(paramAbsBaseArticleInfo.mSocialFeedInfo.s.a))
           {
             i = 9;
             break label137;
@@ -140,7 +167,7 @@ public class ReadInJoyCommentUtils
       return "";
     }
     if (((RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.l(paramAbsBaseArticleInfo))) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null)) {
-      return String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long);
+      return String.valueOf(paramAbsBaseArticleInfo.mSocialFeedInfo.c.a);
     }
     return paramAbsBaseArticleInfo.mSubscribeID;
   }
@@ -204,21 +231,21 @@ public class ReadInJoyCommentUtils
       Object localObject2 = (String)localHashMap.get("uin");
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
       {
-        if (((QQAppInterface)ReadInJoyUtils.a()).getAccount().equals(localObject2))
+        if (((QQAppInterface)ReadInJoyUtils.b()).getAccount().equals(localObject2))
         {
-          b(paramContext, paramString);
+          d(paramContext, paramString);
           return null;
         }
         return localHashMap;
       }
-      b(paramContext, paramString);
+      d(paramContext, paramString);
     }
     return null;
   }
   
   private static void a()
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, String.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin()), "0X800B99A", "0X800B99A", 0, 0, "", "", "", "", false);
+    PublicAccountReportUtils.a(null, String.valueOf(RIJQQAppInterfaceUtil.c()), "0X800B99A", "0X800B99A", 0, 0, "", "", "", "", false);
   }
   
   public static void a(long paramLong, boolean paramBoolean)
@@ -230,15 +257,15 @@ public class ReadInJoyCommentUtils
       if (paramBoolean)
       {
         localSocializeFeedsInfo = localAbsBaseArticleInfo.mSocialFeedInfo;
-        localSocializeFeedsInfo.d += 1;
+        localSocializeFeedsInfo.j += 1;
       }
       else
       {
         localSocializeFeedsInfo = localAbsBaseArticleInfo.mSocialFeedInfo;
-        localSocializeFeedsInfo.d -= 1;
+        localSocializeFeedsInfo.j -= 1;
       }
       localAbsBaseArticleInfo.invalidateProteusTemplateBean();
-      ReadInJoyLogicEngine.a().c(localAbsBaseArticleInfo);
+      ReadInJoyLogicEngine.a().d(localAbsBaseArticleInfo);
       ThreadManager.getUIHandler().post(new ReadInJoyCommentUtils.3());
     }
   }
@@ -249,12 +276,12 @@ public class ReadInJoyCommentUtils
       return;
     }
     Object localObject2 = Aladdin.getConfig(430);
-    Object localObject1 = ((AladdinConfig)localObject2).getString("comment_dirty_word_content", paramActivity.getString(2131717800));
-    String str1 = ((AladdinConfig)localObject2).getString("comment_dirty_word_hyperlink_text", paramActivity.getString(2131717801));
+    Object localObject1 = ((AladdinConfig)localObject2).getString("comment_dirty_word_content", paramActivity.getString(2131915275));
+    String str1 = ((AladdinConfig)localObject2).getString("comment_dirty_word_hyperlink_text", paramActivity.getString(2131915276));
     String str4 = ((AladdinConfig)localObject2).getString("comment_dirty_word_hyperlink_url", "");
-    localObject2 = paramActivity.getString(2131717804);
-    String str2 = paramActivity.getString(2131717803);
-    String str3 = paramActivity.getString(2131717802);
+    localObject2 = paramActivity.getString(2131915279);
+    String str2 = paramActivity.getString(2131915278);
+    String str3 = paramActivity.getString(2131915277);
     localObject1 = a((String)localObject1, str1, str4);
     paramActivity = DialogUtil.a(paramActivity, 230).setTitle((String)localObject2).setMessageWithoutAutoLink((CharSequence)localObject1).setPositiveButton(str2, new ReadInJoyCommentUtils.10(paramCustomDialogClickListener)).setNegativeButton(str3, new ReadInJoyCommentUtils.9(paramCustomDialogClickListener));
     a(paramActivity);
@@ -262,78 +289,63 @@ public class ReadInJoyCommentUtils
     a();
   }
   
-  public static void a(Activity paramActivity, AbsBaseArticleInfo paramAbsBaseArticleInfo, BaseCommentData paramBaseCommentData, int paramInt1, String paramString1, String paramString2, boolean paramBoolean, ReadInJoyCommentUtils.CommentComponetEventListener paramCommentComponetEventListener, int paramInt2)
+  public static void a(Activity paramActivity, CommentComponentArgs paramCommentComponentArgs)
   {
-    a(paramActivity, paramAbsBaseArticleInfo, paramBaseCommentData, paramInt1, paramString1, paramString2, paramBoolean, paramCommentComponetEventListener, paramInt2, true);
-  }
-  
-  public static void a(Activity paramActivity, AbsBaseArticleInfo paramAbsBaseArticleInfo, BaseCommentData paramBaseCommentData, int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, ReadInJoyCommentUtils.CommentComponetEventListener paramCommentComponetEventListener, int paramInt2, boolean paramBoolean2)
-  {
-    int i = 1;
     if (paramActivity == null)
     {
       QLog.d("ReadInJoyCommentUtils", 1, "openCommentComponentNew | activity is null");
       return;
     }
+    BaseCommentData localBaseCommentData = paramCommentComponentArgs.b();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramCommentComponentArgs.a();
+    int i = paramCommentComponentArgs.c();
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("arg_comment_enable_anonymous", false);
-    localIntent.putExtra("arg_comment_placeholder", paramString1);
-    localIntent.putExtra("arg_comment_default_txt", paramString2);
-    localIntent.putExtra("arg_comment_max_length", -1);
+    localIntent.putExtra("placeholder", paramCommentComponentArgs.d());
+    localIntent.putExtra("defaultTxt", paramCommentComponentArgs.e());
+    localIntent.putExtra("maxLength", -1);
+    localIntent.putExtra("firstAction", paramCommentComponentArgs.j());
     localIntent.putExtra("arg_comment_open_at", false);
     localIntent.putExtra("arg_comment_gif_switch", false);
     localIntent.putExtra("arg_comment_zhitu_switch", false);
-    localIntent.putExtra("arg_comment_transparent_bg", paramBoolean1);
+    localIntent.putExtra("arg_comment_transparent_bg", paramCommentComponentArgs.f());
     localIntent.putExtra("comment_native", true);
-    paramBoolean1 = paramBaseCommentData instanceof SubCommentData;
-    localIntent.putExtra("comment_reply_second", paramBoolean1);
-    localIntent.putExtra("click_comment_edit_src", paramInt2);
-    localIntent.putExtra("comment_article_info", paramAbsBaseArticleInfo);
-    localIntent.putExtra("biu_src", paramInt1);
-    paramString2 = new StringBuilder();
-    paramString2.append("openCommentComponent | comment_placeholder after decode: ");
-    paramString2.append(paramString1);
-    QLog.d("ReadInJoyCommentUtils", 2, paramString2.toString());
-    if (paramBaseCommentData != null)
+    boolean bool = localBaseCommentData instanceof SubCommentData;
+    localIntent.putExtra("comment_reply_second", bool);
+    localIntent.putExtra("click_comment_edit_src", paramCommentComponentArgs.h());
+    localIntent.putExtra("comment_article_info", localAbsBaseArticleInfo);
+    localIntent.putExtra("biu_src", i);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("openCommentComponent | comment_placeholder after decode: ");
+    ((StringBuilder)localObject).append(paramCommentComponentArgs.d());
+    QLog.d("ReadInJoyCommentUtils", 2, ((StringBuilder)localObject).toString());
+    if (localBaseCommentData != null)
     {
-      localIntent.putExtra("comment_id", paramBaseCommentData.commentId);
-      localIntent.putExtra("first_comment_uin", paramBaseCommentData.uin);
-      paramString1 = paramBaseCommentData.getWholeStringContent();
-      paramString2 = paramBaseCommentData.uin;
-      localIntent.putExtra("comment_val", paramString1);
-      localIntent.putExtra("comment_author_uin", paramString2);
-      if ((paramBaseCommentData != null) && (paramBaseCommentData.mediaDataList != null) && (paramBaseCommentData.mediaDataList.size() > 0) && (((BaseCommentData.MediaData)paramBaseCommentData.mediaDataList.get(0)).e != 0)) {
+      localIntent.putExtra("comment_id", localBaseCommentData.commentId);
+      localIntent.putExtra("first_comment_uin", localBaseCommentData.uin);
+      localObject = localBaseCommentData.getWholeStringContent();
+      String str = localBaseCommentData.uin;
+      localIntent.putExtra("comment_val", (String)localObject);
+      localIntent.putExtra("comment_author_uin", str);
+      if ((localBaseCommentData != null) && (localBaseCommentData.mediaDataList != null) && (localBaseCommentData.mediaDataList.size() > 0) && (((BaseCommentData.MediaData)localBaseCommentData.mediaDataList.get(0)).i != 0)) {
         localIntent.putExtra("comment_can_biu", false);
       }
-      if (paramBaseCommentData.commentLinkDataList != null)
-      {
-        paramInt2 = i;
-        if (!paramBaseCommentData.commentLinkDataList.isEmpty()) {}
-      }
-      else
-      {
-        paramInt2 = 0;
-      }
     }
-    else
-    {
-      paramInt2 = 2;
+    localIntent.putExtra("comment_to_reply_contain_link", a(localBaseCommentData));
+    if (localAbsBaseArticleInfo != null) {
+      localIntent.putExtra("feedsType", localAbsBaseArticleInfo.mFeedType);
     }
-    localIntent.putExtra("comment_to_reply_contain_link", paramInt2);
-    if (paramAbsBaseArticleInfo != null) {
-      localIntent.putExtra("feedsType", paramAbsBaseArticleInfo.mFeedType);
+    if (bool) {
+      localIntent.putExtra("comment_reply_second_uin", localBaseCommentData.uin);
     }
-    if (paramBoolean1) {
-      localIntent.putExtra("comment_reply_second_uin", paramBaseCommentData.uin);
-    }
-    if (paramInt1 == 2) {
+    if (i == 2) {
       localIntent.putExtra("comment_is_show_pic", CommentGuideConfigHandler.a());
     }
-    localIntent.putExtra("arg_ad_show_biu", paramBoolean2);
-    ((IRIJCommentEntranceUtils)QRoute.api(IRIJCommentEntranceUtils.class)).startForResult(paramActivity, localIntent, 117);
-    if (paramCommentComponetEventListener != null) {
-      paramCommentComponetEventListener.a();
+    localIntent.putExtra("arg_ad_show_biu", paramCommentComponentArgs.i());
+    ReadInJoyCommentEntrance.a(paramActivity, localIntent, 117);
+    if (paramCommentComponentArgs.g() != null) {
+      paramCommentComponentArgs.g().a();
     }
   }
   
@@ -345,7 +357,7 @@ public class ReadInJoyCommentUtils
   public static void a(Context paramContext, ReadInJoyUserInfo paramReadInJoyUserInfo, String paramString1, String paramString2)
   {
     long l = Long.parseLong(paramReadInJoyUserInfo.uin);
-    paramReadInJoyUserInfo = DialogUtil.a(paramContext, 230).setTitle(paramReadInJoyUserInfo.nick).setMessage(2131717805).setNegativeButton(2131690728, new ReadInJoyCommentUtils.8()).setPositiveButton(2131717806, new ReadInJoyCommentUtils.7(l, paramReadInJoyUserInfo, paramString2, paramContext, paramString1));
+    paramReadInJoyUserInfo = DialogUtil.a(paramContext, 230).setTitle(paramReadInJoyUserInfo.nick).setMessage(2131915280).setNegativeButton(2131887648, new ReadInJoyCommentUtils.8()).setPositiveButton(2131915281, new ReadInJoyCommentUtils.7(l, paramReadInJoyUserInfo, paramString2, paramContext, paramString1));
     paramReadInJoyUserInfo.getBtnight().getPaint().setFakeBoldText(true);
     paramReadInJoyUserInfo.getBtnLeft().getPaint().setFakeBoldText(true);
     paramString1 = paramReadInJoyUserInfo.getTitleTextView();
@@ -355,14 +367,14 @@ public class ReadInJoyCommentUtils
     paramString2 = (RelativeLayout)paramString1.getParent();
     Resources localResources = paramContext.getResources();
     paramContext = new NativeAvatarView(paramContext);
-    paramContext.setId(2131376075);
+    paramContext.setId(2131444277);
     paramContext.setUin(l);
-    int i = localResources.getDimensionPixelSize(2131298813);
+    int i = localResources.getDimensionPixelSize(2131299530);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
-    localLayoutParams.bottomMargin = localResources.getDimensionPixelSize(2131298812);
+    localLayoutParams.bottomMargin = localResources.getDimensionPixelSize(2131299529);
     localLayoutParams.addRule(14);
     paramString2.addView(paramContext, localLayoutParams);
-    ((RelativeLayout.LayoutParams)paramString1.getLayoutParams()).addRule(3, 2131376075);
+    ((RelativeLayout.LayoutParams)paramString1.getLayoutParams()).addRule(3, 2131444277);
     paramReadInJoyUserInfo.show();
   }
   
@@ -379,14 +391,14 @@ public class ReadInJoyCommentUtils
       }
       if (((String)((Map)localObject).get("isOnlyFans")).equalsIgnoreCase("false"))
       {
-        b(paramContext, paramString1);
+        d(paramContext, paramString1);
         return;
       }
       long l = Long.parseLong((String)((Map)localObject).get("uin"));
-      ReadInJoyLogicEngine.a().a();
+      ReadInJoyLogicEngine.a().W();
       if (FollowListInfoModule.a(String.valueOf(l)))
       {
-        b(paramContext, paramString1);
+        d(paramContext, paramString1);
         return;
       }
       localObject = ReadInJoyUserInfoModule.a(l, null);
@@ -403,7 +415,7 @@ public class ReadInJoyCommentUtils
   {
     if (paramIntent == null)
     {
-      QQToast.a(BaseApplication.getContext(), 1, BaseApplication.getContext().getString(2131717821), 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, BaseApplication.getContext().getString(2131915296), 0).show();
       QLog.d("ReadInJoyCommentUtils", 2, "comment result intent data is null");
       return;
     }
@@ -414,8 +426,8 @@ public class ReadInJoyCommentUtils
     {
       if ((localAbsBaseArticleInfo != null) && (bool))
       {
-        ReadInJoyCommentDataManager.a(localAbsBaseArticleInfo, 0).c(paramQQAppInterface);
-        ReadInJoyCommentDataManager.a(localAbsBaseArticleInfo);
+        ReadInJoyCommentDataManager.a(localAbsBaseArticleInfo, 0).j(paramQQAppInterface);
+        ReadInJoyCommentDataManager.b(localAbsBaseArticleInfo);
         return;
       }
       ReadInJoyLogicEngine.a().a(localAbsBaseArticleInfo, paramQQAppInterface);
@@ -433,7 +445,7 @@ public class ReadInJoyCommentUtils
         if (!paramBoolean)
         {
           paramCommentInfo = paramAbsBaseArticleInfo.mSocialFeedInfo;
-          paramCommentInfo.d += 1;
+          paramCommentInfo.j += 1;
         }
         paramAbsBaseArticleInfo.invalidateProteusTemplateBean();
         ThreadManager.getUIHandler().post(new ReadInJoyCommentUtils.2());
@@ -462,7 +474,7 @@ public class ReadInJoyCommentUtils
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ReadInJoyConstants.g);
+    localStringBuilder.append(ReadInJoyConstants.h);
     localStringBuilder.append(Base64Util.encodeToString(paramString.getBytes(), 2));
     paramString = ReadinjoyReportUtils.a(paramAbsBaseArticleInfo, localStringBuilder.toString(), ReadinjoyReportUtils.g);
     ReadInJoyUtils.a(paramContext, paramString);
@@ -474,35 +486,7 @@ public class ReadInJoyCommentUtils
   
   public static void a(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJTransMergeKanDianReport.ReportR5Builder paramReportR5Builder)
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, a(paramAbsBaseArticleInfo), paramString, paramString, 0, 0, String.valueOf(paramAbsBaseArticleInfo.mArticleID), String.valueOf(paramAbsBaseArticleInfo.mStrategyId), paramAbsBaseArticleInfo.innerUniqueID, paramReportR5Builder.build(), false);
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    if (paramString != null)
-    {
-      if (paramContext == null) {
-        return false;
-      }
-      paramContext = (ClipboardManager)paramContext.getSystemService("clipboard");
-      if (paramContext.hasPrimaryClip())
-      {
-        paramContext = paramContext.getPrimaryClip();
-        if ((paramContext != null) && (paramContext.getItemCount() > 0))
-        {
-          paramContext = paramContext.getItemAt(0);
-          if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.getText())))
-          {
-            paramContext = String.valueOf(paramContext.getText());
-            paramString = new QQText(EmotionCodecUtils.b(paramString), 7, 18).toString();
-            if (!TextUtils.isEmpty(paramContext)) {
-              return paramContext.contains(paramString);
-            }
-          }
-        }
-      }
-    }
-    return false;
+    PublicAccountReportUtils.a(null, a(paramAbsBaseArticleInfo), paramString, paramString, 0, 0, String.valueOf(paramAbsBaseArticleInfo.mArticleID), String.valueOf(paramAbsBaseArticleInfo.mStrategyId), paramAbsBaseArticleInfo.innerUniqueID, paramReportR5Builder.build(), false);
   }
   
   public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
@@ -515,7 +499,7 @@ public class ReadInJoyCommentUtils
       return false;
     }
     SocializeFeedsInfo localSocializeFeedsInfo = new SocializeFeedsInfo();
-    localSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo = new BiuInfo();
+    localSocializeFeedsInfo.n = new BiuInfo();
     ArrayList localArrayList = new ArrayList();
     for (;;)
     {
@@ -524,10 +508,10 @@ public class ReadInJoyCommentUtils
         paramString = new JSONObject(paramString).getJSONObject("biu_info");
         j = paramString.optInt("biuSrc");
         k = paramString.optInt("feedtype");
-        if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null))
+        if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.n != null))
         {
-          localSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b;
-          localSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaLangLong = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaLangLong;
+          localSocializeFeedsInfo.n.c = paramAbsBaseArticleInfo.mSocialFeedInfo.n.c;
+          localSocializeFeedsInfo.n.b = paramAbsBaseArticleInfo.mSocialFeedInfo.n.b;
         }
         paramString = paramString.optJSONArray("biuinfo");
         i = 0;
@@ -542,8 +526,8 @@ public class ReadInJoyCommentUtils
             l = ((Long)paramString.getJSONObject(i).opt("biu_feedid")).longValue();
           }
           localObject = new ReadInJoyCommentUtils.UserBiuInfo((String)localObject, l, paramString.getJSONObject(i).optString("biu_info_comment"));
-          ((ReadInJoyCommentUtils.UserBiuInfo)localObject).jdField_a_of_type_Int = paramString.getJSONObject(i).optInt("biu_optype");
-          ((ReadInJoyCommentUtils.UserBiuInfo)localObject).jdField_a_of_type_JavaLangCharSequence = paramString.getJSONObject(i).optString("biu_nickname");
+          ((ReadInJoyCommentUtils.UserBiuInfo)localObject).e = paramString.getJSONObject(i).optInt("biu_optype");
+          ((ReadInJoyCommentUtils.UserBiuInfo)localObject).b = paramString.getJSONObject(i).optString("biu_nickname");
           localArrayList.add(localObject);
           i += 1;
           continue;
@@ -581,25 +565,25 @@ public class ReadInJoyCommentUtils
       }
       try
       {
-        localBiuCommentInfo.mUin = Long.valueOf(((ReadInJoyCommentUtils.UserBiuInfo)localObject).jdField_a_of_type_JavaLangString);
+        localBiuCommentInfo.mUin = Long.valueOf(((ReadInJoyCommentUtils.UserBiuInfo)localObject).a);
       }
       catch (Exception paramString)
       {
         continue;
       }
       localBiuCommentInfo.mUin = Long.valueOf(0L);
-      if (((ReadInJoyCommentUtils.UserBiuInfo)localObject).b == null) {
+      if (((ReadInJoyCommentUtils.UserBiuInfo)localObject).c == null) {
         paramString = "";
       } else {
-        paramString = ((ReadInJoyCommentUtils.UserBiuInfo)localObject).b.toString();
+        paramString = ((ReadInJoyCommentUtils.UserBiuInfo)localObject).c.toString();
       }
       localBiuCommentInfo.mBiuComment = paramString;
-      localBiuCommentInfo.mOpType = ((ReadInJoyCommentUtils.UserBiuInfo)localObject).jdField_a_of_type_Int;
-      localBiuCommentInfo.mFeedId = Long.valueOf(((ReadInJoyCommentUtils.UserBiuInfo)localObject).jdField_a_of_type_Long);
-      localSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.add(localBiuCommentInfo);
+      localBiuCommentInfo.mOpType = ((ReadInJoyCommentUtils.UserBiuInfo)localObject).e;
+      localBiuCommentInfo.mFeedId = Long.valueOf(((ReadInJoyCommentUtils.UserBiuInfo)localObject).d);
+      localSocializeFeedsInfo.n.a.add(localBiuCommentInfo);
       i += 1;
     }
-    ReadInJoyLogicEngine.a().a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin(), paramAbsBaseArticleInfo.mFeedId, localSocializeFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo, 0L, ((ReadInJoyCommentUtils.UserBiuInfo)localArrayList.get(0)).b.toString(), paramAbsBaseArticleInfo.mArticleID, paramAbsBaseArticleInfo.mRecommendSeq, j, paramAbsBaseArticleInfo.innerUniqueID, k, paramAbsBaseArticleInfo);
+    ReadInJoyLogicEngine.a().a(RIJQQAppInterfaceUtil.c(), paramAbsBaseArticleInfo.mFeedId, localSocializeFeedsInfo.n, 0L, ((ReadInJoyCommentUtils.UserBiuInfo)localArrayList.get(0)).c.toString(), paramAbsBaseArticleInfo.mArticleID, paramAbsBaseArticleInfo.mRecommendSeq, j, paramAbsBaseArticleInfo.innerUniqueID, k, paramAbsBaseArticleInfo);
     return true;
   }
   
@@ -610,7 +594,7 @@ public class ReadInJoyCommentUtils
     {
       Object localObject = new JSONObject();
       ((JSONObject)localObject).put("os", 1);
-      ((JSONObject)localObject).put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("version", VideoReporter.a);
       ((JSONObject)localObject).put("place", paramInt);
       localObject = ((JSONObject)localObject).toString();
     }
@@ -619,12 +603,12 @@ public class ReadInJoyCommentUtils
       QLog.d("ReadInJoyCommentUtils", 2, localJSONException.getMessage());
       str = "";
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, String.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin()), "0X800B99B", "0X800B99B", 0, 0, "", "", "", str, false);
+    PublicAccountReportUtils.a(null, String.valueOf(RIJQQAppInterfaceUtil.c()), "0X800B99B", "0X800B99B", 0, 0, "", "", "", str, false);
   }
   
   private static void b(long paramLong, String paramString1, String paramString2)
   {
-    UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().a();
+    UserOperationModule localUserOperationModule = ReadInJoyLogicEngine.a().c();
     if (localUserOperationModule == null) {
       return;
     }
@@ -639,7 +623,7 @@ public class ReadInJoyCommentUtils
     }
     int i = 1;
     label48:
-    localUserOperationModule.request0x978(((QQAppInterface)ReadInJoyUtils.a()).getAccount(), String.valueOf(paramLong), true, paramString1, new ReadInJoyCommentUtils.6(), i);
+    localUserOperationModule.request0x978(((QQAppInterface)ReadInJoyUtils.b()).getAccount(), String.valueOf(paramLong), true, paramString1, new ReadInJoyCommentUtils.6(), i);
   }
   
   public static void b(Activity paramActivity, AbsBaseArticleInfo paramAbsBaseArticleInfo, CommentInfo paramCommentInfo, int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, boolean paramBoolean2, ReadInJoyCommentUtils.CommentComponetEventListener paramCommentComponetEventListener, int paramInt2)
@@ -647,9 +631,9 @@ public class ReadInJoyCommentUtils
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("arg_comment_enable_anonymous", false);
-    localIntent.putExtra("arg_comment_placeholder", paramString1);
-    localIntent.putExtra("arg_comment_default_txt", paramString2);
-    localIntent.putExtra("arg_comment_max_length", -1);
+    localIntent.putExtra("placeholder", paramString1);
+    localIntent.putExtra("defaultTxt", paramString2);
+    localIntent.putExtra("maxLength", -1);
     localIntent.putExtra("arg_comment_open_at", false);
     localIntent.putExtra("arg_comment_gif_switch", false);
     localIntent.putExtra("arg_comment_zhitu_switch", false);
@@ -680,15 +664,10 @@ public class ReadInJoyCommentUtils
     if ((paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
       localIntent.putExtra("arg_ad_show_biu", false);
     }
-    ((IRIJCommentEntranceUtils)QRoute.api(IRIJCommentEntranceUtils.class)).startForResult(paramActivity, localIntent, 117);
+    ReadInJoyCommentEntrance.a(paramActivity, localIntent, 117);
     if (paramCommentComponetEventListener != null) {
       paramCommentComponetEventListener.a();
     }
-  }
-  
-  private static void b(Context paramContext, String paramString)
-  {
-    ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToUrl(paramContext, paramString);
   }
   
   public static void b(String paramString, Context paramContext)
@@ -708,10 +687,43 @@ public class ReadInJoyCommentUtils
       QLog.d("ReadInJoyCommentUtils", 2, paramContext.toString());
     }
   }
+  
+  public static boolean b(Context paramContext, String paramString)
+  {
+    if (paramString != null)
+    {
+      if (paramContext == null) {
+        return false;
+      }
+      paramContext = (ClipboardManager)paramContext.getSystemService("clipboard");
+      if (paramContext.hasPrimaryClip())
+      {
+        paramContext = paramContext.getPrimaryClip();
+        if ((paramContext != null) && (paramContext.getItemCount() > 0))
+        {
+          paramContext = paramContext.getItemAt(0);
+          if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.getText())))
+          {
+            paramContext = String.valueOf(paramContext.getText());
+            paramString = new QQText(EmotionCodecUtils.c(paramString), 7, 18).toString();
+            if (!TextUtils.isEmpty(paramContext)) {
+              return paramContext.contains(paramString);
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  private static void d(Context paramContext, String paramString)
+  {
+    RIJJumpUtils.c(paramContext, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils
  * JD-Core Version:    0.7.0.1
  */

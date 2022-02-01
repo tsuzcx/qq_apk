@@ -7,12 +7,12 @@ class ZhituManager$12
   
   public void run()
   {
-    ZhituManager.a(this.this$0);
+    ZhituManager.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.12
  * JD-Core Version:    0.7.0.1
  */

@@ -22,14 +22,9 @@ import org.jetbrains.annotations.Nullable;
 public final class ColdPalaceTipDialog
   extends DialogFromBottom
 {
-  public static final ColdPalaceTipDialog.Companion a;
+  public static final ColdPalaceTipDialog.Companion a = new ColdPalaceTipDialog.Companion(null);
   @Nullable
-  private TextView a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqQqexpandWidgetColdPalaceTipDialog$Companion = new ColdPalaceTipDialog.Companion(null);
-  }
+  private TextView b;
   
   public ColdPalaceTipDialog(@NotNull Context paramContext, @Nullable BaseQQAppInterface paramBaseQQAppInterface, @Nullable String paramString1, int paramInt, @NotNull String paramString2)
   {
@@ -43,15 +38,15 @@ public final class ColdPalaceTipDialog
     Intrinsics.checkParameterIsNotNull(paramString2, "from");
     if (paramBaseQQAppInterface != null)
     {
-      Object localObject = LayoutInflater.from(paramContext).inflate(2131561073, null);
+      Object localObject = LayoutInflater.from(paramContext).inflate(2131627416, null);
       if (localObject != null)
       {
         localObject = (LinearLayout)localObject;
-        ((ImageView)((LinearLayout)localObject).findViewById(2131369528)).setOnClickListener((View.OnClickListener)new ColdPalaceTipDialog.init..inlined.let.lambda.1(this, paramContext, paramString1, paramString2, paramBaseQQAppInterface, paramInt));
+        ((ImageView)((LinearLayout)localObject).findViewById(2131436626)).setOnClickListener((View.OnClickListener)new ColdPalaceTipDialog.init..inlined.let.lambda.1(this, paramContext, paramString1, paramString2, paramBaseQQAppInterface, paramInt));
         setOnCancelListener((DialogInterface.OnCancelListener)ColdPalaceTipDialog.init.1.2.a);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((LinearLayout)localObject).findViewById(2131379595));
-        ((Button)((LinearLayout)localObject).findViewById(2131363863)).setOnClickListener((View.OnClickListener)new ColdPalaceTipDialog.init..inlined.let.lambda.2(this, paramContext, paramString1, paramString2, paramBaseQQAppInterface, paramInt));
-        paramContext = ((LinearLayout)localObject).findViewById(2131364801);
+        this.b = ((TextView)((LinearLayout)localObject).findViewById(2131448353));
+        ((Button)((LinearLayout)localObject).findViewById(2131429811)).setOnClickListener((View.OnClickListener)new ColdPalaceTipDialog.init..inlined.let.lambda.2(this, paramContext, paramString1, paramString2, paramBaseQQAppInterface, paramInt));
+        paramContext = ((LinearLayout)localObject).findViewById(2131430921);
         Intrinsics.checkExpressionValueIsNotNull(paramContext, "contentView.findViewById(R.id.cold_palace)");
         ((URLImageView)paramContext).setImageURL("https://downv6.qq.com/qq_relation/cold_palace/aio_limit_chat_cold_palace.png");
         setContentView((View)localObject);
@@ -64,7 +59,7 @@ public final class ColdPalaceTipDialog
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "content");
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.b;
     if (localTextView != null) {
       localTextView.setText((CharSequence)paramString);
     }
@@ -73,7 +68,7 @@ public final class ColdPalaceTipDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ColdPalaceTipDialog
  * JD-Core Version:    0.7.0.1
  */

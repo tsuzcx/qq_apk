@@ -7,7 +7,7 @@ class PoiMapActivity$PoiMapNameTask$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiMapNameTask.a.a[0].a(this.jdField_a_of_type_JavaLangString);
+    this.b.d.d[0].a(this.a);
   }
 }
 

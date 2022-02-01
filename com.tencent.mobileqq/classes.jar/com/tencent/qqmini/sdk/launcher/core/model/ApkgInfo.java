@@ -137,6 +137,23 @@ public class ApkgInfo
     return this.mAppConfigInfo;
   }
   
+  public JSONObject getAppLaunchInfo()
+  {
+    if (TextUtils.isEmpty(this.mConfigStr)) {
+      return null;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.mConfigStr).getJSONObject("appLaunchInfo");
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      QMLog.e("ApkgInfo", "getAppLaunchInfo error:", localException);
+    }
+    return null;
+  }
+  
   public String getAppServiceJsContent()
   {
     try
@@ -638,10 +655,28 @@ public class ApkgInfo
       localThrowable.printStackTrace();
     }
   }
+  
+  public void updateAppLaunchInfo(JSONObject paramJSONObject)
+  {
+    if (TextUtils.isEmpty(this.mConfigStr)) {
+      return;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.mConfigStr);
+      localJSONObject.put("appLaunchInfo", paramJSONObject);
+      this.mConfigStr = localJSONObject.toString();
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QMLog.e("ApkgInfo", "updateAppLaunchInfo error:", paramJSONObject);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo
  * JD-Core Version:    0.7.0.1
  */

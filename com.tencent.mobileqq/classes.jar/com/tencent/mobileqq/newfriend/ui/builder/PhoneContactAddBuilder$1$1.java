@@ -9,12 +9,12 @@ class PhoneContactAddBuilder$1$1
   
   public void run()
   {
-    this.a.this$0.a.c();
+    this.a.this$0.e.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.PhoneContactAddBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

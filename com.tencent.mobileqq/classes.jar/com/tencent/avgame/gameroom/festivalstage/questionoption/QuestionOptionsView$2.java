@@ -7,10 +7,10 @@ class QuestionOptionsView$2
   
   public void run()
   {
-    if (QuestionOptionsView.a(this.this$0) != null)
+    if (QuestionOptionsView.b(this.this$0) != null)
     {
       QuestionOptionsView localQuestionOptionsView = this.this$0;
-      localQuestionOptionsView.setConfig(QuestionOptionsView.a(localQuestionOptionsView));
+      localQuestionOptionsView.setConfig(QuestionOptionsView.b(localQuestionOptionsView));
     }
   }
 }

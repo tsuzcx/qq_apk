@@ -395,7 +395,7 @@ public class TroopInfoData
         return "";
       }
       if ((paramTroopInfo.troopPrivilegeFlag & 0x6100000) == 0L) {
-        return paramResources.getString(2131696498);
+        return paramResources.getString(2131894272);
       }
       if (((paramTroopInfo.troopPrivilegeFlag & 0x2000000) != 33554432L) && ((paramTroopInfo.troopPrivilegeFlag & 0x4000000) != 67108864L))
       {
@@ -404,7 +404,7 @@ public class TroopInfoData
       }
       else
       {
-        str1 = paramResources.getString(2131696499);
+        str1 = paramResources.getString(2131894273);
       }
     }
     return str1;
@@ -805,12 +805,12 @@ public class TroopInfoData
       int j;
       if ((TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(paramTroopInfo.troopPrivilegeFlag, 512)))
       {
-        this.troopAuthen = paramResources.getString(2131719926);
+        this.troopAuthen = paramResources.getString(2131917531);
         i = 6;
       }
       else if (paramTroopInfo.isOnlyTroopMemberInviteOption())
       {
-        this.troopAuthen = paramResources.getString(2131719917);
+        this.troopAuthen = paramResources.getString(2131917522);
         this.dwGroupFlagExt |= 0x80;
         i = 0;
       }
@@ -827,23 +827,23 @@ public class TroopInfoData
               if (j != 4)
               {
                 if (j == 5) {
-                  this.troopAuthen = paramResources.getString(2131719919);
+                  this.troopAuthen = paramResources.getString(2131917524);
                 }
               }
               else {
-                this.troopAuthen = paramResources.getString(2131719920);
+                this.troopAuthen = paramResources.getString(2131917525);
               }
             }
             else {
-              this.troopAuthen = paramResources.getString(2131719925);
+              this.troopAuthen = paramResources.getString(2131917530);
             }
           }
           else {
-            this.troopAuthen = paramResources.getString(2131719923);
+            this.troopAuthen = paramResources.getString(2131917528);
           }
         }
         else {
-          this.troopAuthen = paramResources.getString(2131719918);
+          this.troopAuthen = paramResources.getString(2131917523);
         }
       }
       if (!Utils.a(this.troopowneruin, paramTroopInfo.troopowneruin))
@@ -873,19 +873,19 @@ public class TroopInfoData
       }
       if (i == 3)
       {
-        this.inviteModeDescription = paramResources.getString(2131696500);
+        this.inviteModeDescription = paramResources.getString(2131894274);
         this.inviteMode = 4;
       }
       else if (i == 1)
       {
-        this.inviteModeDescription = paramResources.getString(2131696497);
+        this.inviteModeDescription = paramResources.getString(2131894271);
         this.inviteMode = 5;
       }
       else if (j != 0)
       {
         if (i == 6)
         {
-          this.inviteModeDescription = paramResources.getString(2131696496);
+          this.inviteModeDescription = paramResources.getString(2131894270);
           this.inviteMode = 6;
         }
         else
@@ -910,13 +910,13 @@ public class TroopInfoData
           else if (this.isOnlyTroopMemberInvite)
           {
             this.inviteMode = 8;
-            this.inviteModeDescription = paramResources.getString(2131696499);
+            this.inviteModeDescription = paramResources.getString(2131894273);
           }
         }
       }
       else
       {
-        this.inviteModeDescription = paramResources.getString(2131696501);
+        this.inviteModeDescription = paramResources.getString(2131894275);
         this.inviteMode = 1;
       }
       if (paramTroopInfo.cAlbumResult == 33) {
@@ -1064,7 +1064,7 @@ public class TroopInfoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopInfoData
  * JD-Core Version:    0.7.0.1
  */

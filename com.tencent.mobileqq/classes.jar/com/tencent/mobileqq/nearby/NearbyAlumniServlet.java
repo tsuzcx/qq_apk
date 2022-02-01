@@ -52,16 +52,9 @@ import tencent.im.oidb.cmd0x6b2.oidb_cmd0x6b2.RspBody;
 public class NearbyAlumniServlet
   extends MSFServlet
 {
-  private static int jdField_a_of_type_Int = 0;
-  static final Object jdField_a_of_type_JavaLangObject = NearbyAlumniServletUtils.jdField_a_of_type_JavaLangObject;
-  static HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = NearbyAlumniServletUtils.jdField_a_of_type_JavaUtilHashMap;
-  
-  private static int a()
-  {
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    return i;
-  }
+  static final Object a = NearbyAlumniServletUtils.a;
+  static HashMap<String, Object> b = NearbyAlumniServletUtils.b;
+  private static int c = 0;
   
   public static String a(int paramInt1, int paramInt2)
   {
@@ -265,12 +258,12 @@ public class NearbyAlumniServlet
       }
       paramIntent = null;
       paramInt = i;
-      paramArrayOfByte2 = jdField_a_of_type_JavaLangObject;
+      paramArrayOfByte2 = a;
       paramArrayOfByte1 = localStringBuilder;
       try
       {
-        if (jdField_a_of_type_JavaUtilHashMap != null) {
-          paramArrayOfByte1 = jdField_a_of_type_JavaUtilHashMap.remove(str2);
+        if (b != null) {
+          paramArrayOfByte1 = b.remove(str2);
         }
         if (NearbyUtils.b()) {
           NearbyUtils.a("NearbyAlumniServlet", new Object[] { "respGetNearbyAlumni", Integer.valueOf(paramInt), paramArrayOfByte1 });
@@ -402,14 +395,21 @@ public class NearbyAlumniServlet
     return true;
   }
   
+  private static int b()
+  {
+    int i = c;
+    c = i + 1;
+    return i;
+  }
+  
   protected IOldBigDataChannelManager a()
   {
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime instanceof INearbyAppInterface)) {
-      return (IOldBigDataChannelManager)localAppRuntime.getManager(NearbyConstants.g);
+      return (IOldBigDataChannelManager)localAppRuntime.getManager(NearbyConstants.i);
     }
     if ((localAppRuntime instanceof BrowserAppInterface)) {
-      return ((BrowserAppInterface)localAppRuntime).a();
+      return ((BrowserAppInterface)localAppRuntime).b();
     }
     return null;
   }
@@ -464,7 +464,7 @@ public class NearbyAlumniServlet
         ((im_msg_head.HttpConnHead)localObject2).uint64_uin.set(l);
         ((im_msg_head.HttpConnHead)localObject2).uint32_command.set(1791);
         ((im_msg_head.HttpConnHead)localObject2).uint32_sub_command.set(3088);
-        ((im_msg_head.HttpConnHead)localObject2).uint32_seq.set(a());
+        ((im_msg_head.HttpConnHead)localObject2).uint32_seq.set(b());
         ((im_msg_head.HttpConnHead)localObject2).uint32_version.set(4643);
         ((im_msg_head.HttpConnHead)localObject2).uint32_flag.set(1);
         ((im_msg_head.HttpConnHead)localObject2).uint32_compress_type.set(0);
@@ -582,7 +582,7 @@ public class NearbyAlumniServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyAlumniServlet
  * JD-Core Version:    0.7.0.1
  */

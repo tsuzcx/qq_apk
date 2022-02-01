@@ -32,7 +32,7 @@ class ShortVideoRealItemBuilder$3
       ((StringBuilder)localObject).append(paramLong1);
       QLog.d("ShortVideoRealItemBuilder", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong1));
+    Object localObject = AIOSingleReporter.a().b(Long.valueOf(paramLong1));
     this.a.a((MessageForShortVideo)localObject, paramLong2);
   }
   
@@ -53,14 +53,14 @@ class ShortVideoRealItemBuilder$3
     }
     if (paramInt == 4)
     {
-      localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong));
+      localObject = AIOSingleReporter.a().b(Long.valueOf(paramLong));
       if ((localObject != null) && (!AIOSingleReporter.a().a(Long.valueOf(paramLong))))
       {
-        ShortVideoUtils.reportVideoPlay(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E51", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
-        if (!AIOSingleReporter.a().b(Long.valueOf(((MessageForShortVideo)localObject).uniseq)))
+        ShortVideoUtils.reportVideoPlay(this.a.d, "0X8008E51", this.a.f, (MessageRecord)localObject, this.a.e);
+        if (!AIOSingleReporter.a().c(Long.valueOf(((MessageForShortVideo)localObject).uniseq)))
         {
-          AIOSingleReporter.a().a(Long.valueOf(((MessageForShortVideo)localObject).uniseq));
-          ShortVideoUtils.reportVideoPlay(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E50", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+          AIOSingleReporter.a().d(Long.valueOf(((MessageForShortVideo)localObject).uniseq));
+          ShortVideoUtils.reportVideoPlay(this.a.d, "0X8008E50", this.a.f, (MessageRecord)localObject, this.a.e);
         }
         AIOSingleReporter.a().a(Long.valueOf(paramLong), true);
       }
@@ -86,17 +86,17 @@ class ShortVideoRealItemBuilder$3
       {
         ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
         this.a.b((ShortVideoRealItemBuilder.Holder)localObject);
-        localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong));
+        localObject = AIOSingleReporter.a().b(Long.valueOf(paramLong));
         if (localObject != null) {
           this.a.a((MessageForShortVideo)localObject, 0L);
         }
       }
       else if (paramInt == 1)
       {
-        MessageForShortVideo localMessageForShortVideo = AIOSingleReporter.a().a(Long.valueOf(paramLong));
+        MessageForShortVideo localMessageForShortVideo = AIOSingleReporter.a().b(Long.valueOf(paramLong));
         if (localMessageForShortVideo != null)
         {
-          ((ShortVideoRealItemBuilder.Holder)localObject).a.setVisibility(0);
+          ((ShortVideoRealItemBuilder.Holder)localObject).b.setVisibility(0);
           this.a.c(localMessageForShortVideo, (ShortVideoRealItemBuilder.Holder)localObject);
         }
       }
@@ -104,11 +104,11 @@ class ShortVideoRealItemBuilder$3
     else
     {
       ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
-      ((ShortVideoRealItemBuilder.Holder)localObject).a.setVisibility(0);
+      ((ShortVideoRealItemBuilder.Holder)localObject).b.setVisibility(0);
       this.a.a((ShortVideoRealItemBuilder.Holder)localObject);
       if (paramInt == 8)
       {
-        localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong));
+        localObject = AIOSingleReporter.a().b(Long.valueOf(paramLong));
         if (localObject != null) {
           this.a.a((MessageForShortVideo)localObject, ((MessageForShortVideo)localObject).videoFileTime * 1000);
         }
@@ -118,7 +118,7 @@ class ShortVideoRealItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

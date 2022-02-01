@@ -11,8 +11,8 @@ class QfavRemoteProxyForQQ$2
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface = IQfavRemoteProxyInterface.Stub.a(paramIBinder);
-    if (this.a.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface != null)
+    this.a.d = IQfavRemoteProxyInterface.Stub.a(paramIBinder);
+    if (this.a.d != null)
     {
       paramComponentName = new QfavRemoteProxyForQQ.2.1(this);
       paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
@@ -23,13 +23,13 @@ class QfavRemoteProxyForQQ$2
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
     paramComponentName = this.a;
-    paramComponentName.jdField_a_of_type_CooperationQqfavIpcIQfavRemoteProxyInterface = null;
-    paramComponentName.jdField_a_of_type_Boolean = false;
+    paramComponentName.d = null;
+    paramComponentName.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.ipc.QfavRemoteProxyForQQ.2
  * JD-Core Version:    0.7.0.1
  */

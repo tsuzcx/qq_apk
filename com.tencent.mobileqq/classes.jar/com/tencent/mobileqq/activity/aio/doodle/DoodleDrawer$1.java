@@ -9,12 +9,12 @@ class DoodleDrawer$1
   
   public void run()
   {
-    DoodleDrawer.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilList);
+    DoodleDrawer.a(this.this$0, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer.1
  * JD-Core Version:    0.7.0.1
  */

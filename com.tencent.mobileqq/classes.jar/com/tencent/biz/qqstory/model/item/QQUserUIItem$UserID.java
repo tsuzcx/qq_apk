@@ -20,7 +20,12 @@ public class QQUserUIItem$UserID
     this.b = paramString2;
   }
   
-  public qqstory_struct.UserId a()
+  public boolean a()
+  {
+    return (QQStoryContext.a().b(this.b)) || (QQStoryContext.a().c(this.a));
+  }
+  
+  public qqstory_struct.UserId b()
   {
     qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
     if (!TextUtils.isEmpty(this.a)) {
@@ -28,11 +33,6 @@ public class QQUserUIItem$UserID
     }
     localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
     return localUserId;
-  }
-  
-  public boolean a()
-  {
-    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
   }
   
   public void copy(Object paramObject)
@@ -59,7 +59,7 @@ public class QQUserUIItem$UserID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.QQUserUIItem.UserID
  * JD-Core Version:    0.7.0.1
  */

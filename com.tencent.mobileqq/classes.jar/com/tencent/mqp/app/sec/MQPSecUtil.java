@@ -12,7 +12,7 @@ import java.io.File;
 public class MQPSecUtil
 {
   public static int a = 1;
-  private static MQPSecUtil a;
+  private static MQPSecUtil b;
   
   static
   {
@@ -99,91 +99,91 @@ public class MQPSecUtil
   private static void a(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: new 24	java/lang/StringBuilder
+    //   0: new 25	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 28	java/lang/StringBuilder:<init>	()V
     //   7: astore_3
     //   8: aload_3
-    //   9: ldc 119
-    //   11: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: ldc 120
+    //   11: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   14: pop
     //   15: aload_3
     //   16: aload_1
-    //   17: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: pop
     //   21: aload_3
-    //   22: ldc 121
-    //   24: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: ldc 122
+    //   24: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: pop
     //   28: aload_3
-    //   29: ldc 123
-    //   31: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc 124
+    //   31: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: pop
     //   35: aload_3
-    //   36: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   39: astore_1
-    //   40: new 24	java/lang/StringBuilder
+    //   40: new 25	java/lang/StringBuilder
     //   43: dup
-    //   44: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   44: invokespecial 28	java/lang/StringBuilder:<init>	()V
     //   47: astore_3
     //   48: aload_3
     //   49: aload_0
-    //   50: invokevirtual 33	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   53: invokevirtual 39	java/io/File:getParent	()Ljava/lang/String;
-    //   56: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: invokevirtual 34	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   53: invokevirtual 40	java/io/File:getParent	()Ljava/lang/String;
+    //   56: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: pop
     //   60: aload_3
-    //   61: ldc 125
-    //   63: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: ldc 126
+    //   63: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: pop
     //   67: aload_3
-    //   68: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   71: astore_3
-    //   72: new 24	java/lang/StringBuilder
+    //   72: new 25	java/lang/StringBuilder
     //   75: dup
-    //   76: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   76: invokespecial 28	java/lang/StringBuilder:<init>	()V
     //   79: astore 4
     //   81: aload 4
     //   83: aload_3
-    //   84: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: pop
     //   88: aload 4
-    //   90: ldc 121
-    //   92: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: ldc 122
+    //   92: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   95: pop
     //   96: aload 4
-    //   98: ldc 123
-    //   100: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: ldc 124
+    //   100: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: pop
     //   104: aload 4
-    //   106: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   109: astore 5
-    //   111: new 35	java/io/File
+    //   111: new 36	java/io/File
     //   114: dup
     //   115: aload_3
-    //   116: invokespecial 55	java/io/File:<init>	(Ljava/lang/String;)V
-    //   119: invokevirtual 128	java/io/File:mkdirs	()Z
+    //   116: invokespecial 56	java/io/File:<init>	(Ljava/lang/String;)V
+    //   119: invokevirtual 129	java/io/File:mkdirs	()Z
     //   122: pop
     //   123: aconst_null
     //   124: astore_3
     //   125: aconst_null
     //   126: astore 4
     //   128: aload_0
-    //   129: invokevirtual 132	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   129: invokevirtual 133	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   132: aload_1
-    //   133: invokevirtual 138	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   133: invokevirtual 139	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   136: astore_0
-    //   137: new 140	java/io/FileOutputStream
+    //   137: new 141	java/io/FileOutputStream
     //   140: dup
     //   141: aload 5
-    //   143: invokespecial 141	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   143: invokespecial 142	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   146: astore_1
     //   147: sipush 4096
     //   150: newarray byte
     //   152: astore_3
     //   153: aload_0
     //   154: aload_3
-    //   155: invokevirtual 147	java/io/InputStream:read	([B)I
+    //   155: invokevirtual 148	java/io/InputStream:read	([B)I
     //   158: istore_2
     //   159: iload_2
     //   160: ifle +13 -> 173
@@ -191,14 +191,14 @@ public class MQPSecUtil
     //   164: aload_3
     //   165: iconst_0
     //   166: iload_2
-    //   167: invokevirtual 153	java/io/OutputStream:write	([BII)V
+    //   167: invokevirtual 154	java/io/OutputStream:write	([BII)V
     //   170: goto -17 -> 153
     //   173: aload_0
     //   174: ifnull +7 -> 181
     //   177: aload_0
-    //   178: invokevirtual 156	java/io/InputStream:close	()V
+    //   178: invokevirtual 157	java/io/InputStream:close	()V
     //   181: aload_1
-    //   182: invokevirtual 157	java/io/OutputStream:close	()V
+    //   182: invokevirtual 158	java/io/OutputStream:close	()V
     //   185: return
     //   186: astore 4
     //   188: aload_0
@@ -223,15 +223,15 @@ public class MQPSecUtil
     //   218: aload_3
     //   219: ifnull +10 -> 229
     //   222: aload_3
-    //   223: invokevirtual 156	java/io/InputStream:close	()V
+    //   223: invokevirtual 157	java/io/InputStream:close	()V
     //   226: goto +3 -> 229
     //   229: aload_1
     //   230: ifnull +14 -> 244
     //   233: aload_1
-    //   234: invokevirtual 157	java/io/OutputStream:close	()V
+    //   234: invokevirtual 158	java/io/OutputStream:close	()V
     //   237: goto +7 -> 244
     //   240: aload_1
-    //   241: invokevirtual 158	java/io/IOException:printStackTrace	()V
+    //   241: invokevirtual 159	java/io/IOException:printStackTrace	()V
     //   244: aload_0
     //   245: athrow
     //   246: aconst_null
@@ -241,15 +241,15 @@ public class MQPSecUtil
     //   250: aload_0
     //   251: ifnull +10 -> 261
     //   254: aload_0
-    //   255: invokevirtual 156	java/io/InputStream:close	()V
+    //   255: invokevirtual 157	java/io/InputStream:close	()V
     //   258: goto +3 -> 261
     //   261: aload_1
     //   262: ifnull +12 -> 274
     //   265: aload_1
-    //   266: invokevirtual 157	java/io/OutputStream:close	()V
+    //   266: invokevirtual 158	java/io/OutputStream:close	()V
     //   269: return
     //   270: aload_0
-    //   271: invokevirtual 158	java/io/IOException:printStackTrace	()V
+    //   271: invokevirtual 159	java/io/IOException:printStackTrace	()V
     //   274: return
     //   275: astore_0
     //   276: goto -30 -> 246
@@ -314,7 +314,7 @@ public class MQPSecUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSecUtil
  * JD-Core Version:    0.7.0.1
  */

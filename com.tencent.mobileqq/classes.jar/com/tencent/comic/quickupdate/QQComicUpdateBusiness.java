@@ -16,17 +16,17 @@ public class QQComicUpdateBusiness
   @NotNull
   private TagItemInfo getBidComicInfo(String paramString, TagItemInfo paramTagItemInfo)
   {
-    paramTagItemInfo.jdField_a_of_type_Boolean = false;
+    paramTagItemInfo.a = false;
     if (paramString.equals("vipComic_nav_config.json"))
     {
       paramTagItemInfo.b = false;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = VipComicNavConfigHelper.b().getAbsolutePath();
+      paramTagItemInfo.c = VipComicNavConfigHelper.d().getAbsolutePath();
       return paramTagItemInfo;
     }
     if (paramString.equals("vipComic_nav_tabIcon.zip"))
     {
       paramTagItemInfo.b = true;
-      paramTagItemInfo.jdField_a_of_type_JavaLangString = VipComicNavConfigHelper.c().getAbsolutePath();
+      paramTagItemInfo.c = VipComicNavConfigHelper.e().getAbsolutePath();
     }
     return paramTagItemInfo;
   }
@@ -34,10 +34,10 @@ public class QQComicUpdateBusiness
   private boolean isComicExist(String paramString)
   {
     if (paramString.equals("vipComic_nav_config.json")) {
-      return VipComicNavConfigHelper.a();
+      return VipComicNavConfigHelper.g();
     }
     if (paramString.equals("vipComic_nav_tabIcon.zip")) {
-      return VipComicNavConfigHelper.b();
+      return VipComicNavConfigHelper.h();
     }
     return false;
   }
@@ -48,11 +48,11 @@ public class QQComicUpdateBusiness
     {
       if (paramString.equals("vipComic_nav_config.json"))
       {
-        VipComicNavConfigHelper.a();
+        VipComicNavConfigHelper.i();
         return;
       }
       if (paramString.equals("vipComic_nav_tabIcon.zip")) {
-        VipComicNavConfigHelper.b();
+        VipComicNavConfigHelper.h();
       }
     }
   }
@@ -111,7 +111,7 @@ public class QQComicUpdateBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.quickupdate.QQComicUpdateBusiness
  * JD-Core Version:    0.7.0.1
  */

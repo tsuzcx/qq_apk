@@ -7,31 +7,31 @@ import com.tencent.mobileqq.app.QQAppInterface;
 
 public abstract interface IChatPanelBarData
 {
-  public abstract int a();
-  
-  public abstract Context a();
-  
-  public abstract SessionInfo a();
-  
-  public abstract RedBagShowData a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract String a();
-  
   public abstract boolean a();
   
-  public abstract boolean b();
+  public abstract String b();
   
   public abstract boolean c();
   
   public abstract boolean d();
   
-  public abstract boolean e();
+  public abstract QQAppInterface e();
+  
+  public abstract RedBagShowData f();
+  
+  public abstract int g();
+  
+  public abstract SessionInfo h();
+  
+  public abstract boolean i();
+  
+  public abstract Context j();
+  
+  public abstract boolean k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.IChatPanelBarData
  * JD-Core Version:    0.7.0.1
  */

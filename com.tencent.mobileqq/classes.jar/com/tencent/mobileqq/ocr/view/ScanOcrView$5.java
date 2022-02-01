@@ -12,10 +12,10 @@ class ScanOcrView$5
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int n = (int)(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam.a * f);
-    int k = (int)(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam.jdField_b_of_type_Int * f);
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam.a;
-    int m = this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam.jdField_b_of_type_Int;
+    int n = (int)(this.a.c * f);
+    int k = (int)(this.a.d * f);
+    int i1 = this.a.c;
+    int m = this.a.d;
     int j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
     int i = j;
     if (j > 255) {
@@ -25,21 +25,21 @@ class ScanOcrView$5
     if (i < 0) {
       j = 0;
     }
-    i = this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam.jdField_b_of_type_AndroidGraphicsRect.left;
+    i = this.a.b.left;
     n = (n - i1) / 2;
-    i1 = this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam.jdField_b_of_type_AndroidGraphicsRect.top;
+    i1 = this.a.b.top;
     k = (k - m) / 2;
-    m = this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam.jdField_b_of_type_AndroidGraphicsRect.right;
-    int i2 = this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView$ScanRectAniParam;
-    paramValueAnimator.e = j;
-    paramValueAnimator.c.set(i - n, i1 - k, m + n, i2 + k);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    m = this.a.b.right;
+    int i2 = this.a.b.bottom;
+    paramValueAnimator = this.a;
+    paramValueAnimator.h = j;
+    paramValueAnimator.g.set(i - n, i1 - k, m + n, i2 + k);
+    this.b.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.ScanOcrView.5
  * JD-Core Version:    0.7.0.1
  */

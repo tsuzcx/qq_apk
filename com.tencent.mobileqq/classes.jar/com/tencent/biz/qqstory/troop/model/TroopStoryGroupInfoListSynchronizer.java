@@ -8,31 +8,31 @@ import java.util.List;
 public class TroopStoryGroupInfoListSynchronizer
   extends BaseVidListPlayingListSync
 {
-  VidToGroupInfoPuller a;
-  public List<String> a;
-  String b;
-  public boolean b;
-  
-  protected VidToVideoInfoPuller a()
-  {
-    return null;
-  }
+  String d;
+  public List<String> e;
+  public boolean f;
+  VidToGroupInfoPuller g;
   
   protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopModelVidToGroupInfoPuller == null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopModelVidToGroupInfoPuller = new VidToGroupInfoPuller(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    if (this.g == null) {
+      this.g = new VidToGroupInfoPuller(this.d, this.e);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopModelVidToGroupInfoPuller.a()) {
+    if (this.g.c()) {
       return;
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.f)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTroopModelVidToGroupInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), false, false)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTroopModelVidToGroupInfoPuller.a();
+      if (this.g.a(this.e, new ErrorMessage(), false, false)) {
+        this.g.a();
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.f = true;
     }
+  }
+  
+  protected VidToVideoInfoPuller b()
+  {
+    return null;
   }
 }
 

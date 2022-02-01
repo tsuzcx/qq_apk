@@ -60,6 +60,7 @@ import java.util.Map;
 import java.util.Set;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
+import mqq.util.LogUtil;
 
 public class AudioHelperApiImpl
   implements IAudioHelperApi
@@ -154,7 +155,7 @@ public class AudioHelperApiImpl
   {
     if (getDebugValue(15) == 1)
     {
-      writeTestLog(HardCodeUtil.a(2131701014));
+      writeTestLog(HardCodeUtil.a(2131899035));
       return true;
     }
     return false;
@@ -185,20 +186,20 @@ public class AudioHelperApiImpl
   {
     if (paramBoolean)
     {
-      changButtonStyle(paramResources, paramTextView, paramInt, 2131166043, 2131166044);
+      changButtonStyle(paramResources, paramTextView, paramInt, 2131166770, 2131166771);
       return;
     }
-    changButtonStyle(paramResources, paramTextView, paramInt, 2131166006, 2131166007);
+    changButtonStyle(paramResources, paramTextView, paramInt, 2131166728, 2131166729);
   }
   
   public void changViewStyle(View paramView, boolean paramBoolean, int paramInt)
   {
     if (paramBoolean)
     {
-      changViewStyle(paramView, paramInt, 2131166043);
+      changViewStyle(paramView, paramInt, 2131166770);
       return;
     }
-    changViewStyle(paramView, paramInt, 2131166006);
+    changViewStyle(paramView, paramInt, 2131166728);
   }
   
   @TargetApi(17)
@@ -245,7 +246,7 @@ public class AudioHelperApiImpl
   
   public int getDebugValue(int paramInt)
   {
-    if (!com.tencent.av.utils.AudioHelper.a) {
+    if (!com.tencent.av.utils.AudioHelper.b) {
       return -1;
     }
     if (_debugValue[paramInt] == -1000)
@@ -391,15 +392,15 @@ public class AudioHelperApiImpl
     if (useLocalTime()) {
       return System.currentTimeMillis();
     }
-    return MessageCache.a() * 1000L;
+    return MessageCache.c() * 1000L;
   }
   
   public void initDebugValue()
   {
-    if (!com.tencent.av.utils.AudioHelper.a) {
-      com.tencent.av.utils.AudioHelper.a = isDev();
+    if (!com.tencent.av.utils.AudioHelper.b) {
+      com.tencent.av.utils.AudioHelper.b = isDev();
     }
-    if (!com.tencent.av.utils.AudioHelper.a) {
+    if (!com.tencent.av.utils.AudioHelper.b) {
       return;
     }
     int i = 0;
@@ -495,7 +496,7 @@ public class AudioHelperApiImpl
   
   public boolean isDev()
   {
-    return AudioHelperUtil.b();
+    return AudioHelperUtil.c();
   }
   
   public boolean isForbidByRubbishMeizu(int paramInt)
@@ -610,9 +611,9 @@ public class AudioHelperApiImpl
     ((StringBuilder)localObject1).append(";");
     ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
     String str = ((StringBuilder)localObject1).toString();
-    Object localObject2 = SharedPreUtils.d(BaseApplicationImpl.getContext());
+    Object localObject2 = SharedPreUtils.k(BaseApplicationImpl.getContext());
     localObject1 = localObject2;
-    if (StringUtil.a((String)localObject2)) {
+    if (StringUtil.isEmpty((String)localObject2)) {
       localObject1 = "HUAWEI;HUAWEI NXT-AL10;24|HUAWEI;FRD-AL00;24|HUAWEI;EVA-AL00;24|HUAWEI;KNT-AL10;24|HUAWEI;EDI-AL10;24";
     }
     if (QLog.isColorLevel())
@@ -705,7 +706,7 @@ public class AudioHelperApiImpl
   
   public boolean isLogColorOrGary()
   {
-    return AudioHelperUtil.a();
+    return AudioHelperUtil.b();
   }
   
   public void print(String paramString, Intent paramIntent)
@@ -982,11 +983,11 @@ public class AudioHelperApiImpl
         if ((paramAppInterface instanceof VideoAppInterface)) {
           l = VcSystemInfo.getMaxCpuFreq();
         } else {
-          l = DeviceInfoUtil.b();
+          l = DeviceInfoUtil.k();
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("BaseInfo, APPID[");
-        ((StringBuilder)localObject).append(AppSetting.a());
+        ((StringBuilder)localObject).append(AppSetting.d());
         ((StringBuilder)localObject).append("], \nisPublicVersion[");
         ((StringBuilder)localObject).append(true);
         ((StringBuilder)localObject).append("], \nisGrayVersion[");
@@ -994,11 +995,11 @@ public class AudioHelperApiImpl
         ((StringBuilder)localObject).append("], \nisDebugVersion[");
         ((StringBuilder)localObject).append(false);
         ((StringBuilder)localObject).append("], \nquaMainVersion[");
-        ((StringBuilder)localObject).append("2013 8.7.0");
+        ((StringBuilder)localObject).append("2013 8.8.17");
         ((StringBuilder)localObject).append("], \nversionCode[");
         ((StringBuilder)localObject).append(ApkUtils.a(paramAppInterface.getApp()));
         ((StringBuilder)localObject).append("], \nrevision[");
-        ((StringBuilder)localObject).append(AppSetting.g());
+        ((StringBuilder)localObject).append(AppSetting.i());
         ((StringBuilder)localObject).append("], \nisSupporImmersive[");
         ((StringBuilder)localObject).append(ImmersiveUtils.isSupporImmersive());
         ((StringBuilder)localObject).append("], \nStatusBarHeight[");
@@ -1006,9 +1007,9 @@ public class AudioHelperApiImpl
         ((StringBuilder)localObject).append("], \nhasSmartBar[");
         ((StringBuilder)localObject).append(UITools.a());
         ((StringBuilder)localObject).append("], \naboutSubVersionLog[");
-        ((StringBuilder)localObject).append(AppSetting.b());
+        ((StringBuilder)localObject).append(AppSetting.c());
         ((StringBuilder)localObject).append("], \ngetQUA[");
-        ((StringBuilder)localObject).append(getLogString(AppSetting.e()));
+        ((StringBuilder)localObject).append(getLogString(AppSetting.g()));
         ((StringBuilder)localObject).append("], \nTYPE[");
         ((StringBuilder)localObject).append(Build.TYPE);
         ((StringBuilder)localObject).append("], \nTAGS[");
@@ -1042,7 +1043,7 @@ public class AudioHelperApiImpl
         ((StringBuilder)localObject).append("], \nsdkVersion[");
         ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
         ((StringBuilder)localObject).append("], \ndevicesInfo[");
-        ((StringBuilder)localObject).append(AppSetting.c);
+        ((StringBuilder)localObject).append(AppSetting.u);
         ((StringBuilder)localObject).append("], \nVendorId[");
         ((StringBuilder)localObject).append(VcSystemInfo.getVendorId());
         ((StringBuilder)localObject).append("], \nIsMarvell[");
@@ -1060,7 +1061,7 @@ public class AudioHelperApiImpl
         ((StringBuilder)localObject).append("], \nSystemTotalMemory[");
         ((StringBuilder)localObject).append(DeviceInfoUtil.a());
         ((StringBuilder)localObject).append("], \nCpuNum[");
-        ((StringBuilder)localObject).append(DeviceInfoUtil.b());
+        ((StringBuilder)localObject).append(DeviceInfoUtil.h());
         ((StringBuilder)localObject).append("], \nuid[");
         ((StringBuilder)localObject).append(paramAppInterface.getApp().getApplicationInfo().uid);
         ((StringBuilder)localObject).append("], \nPermission_PackageName[");
@@ -1072,7 +1073,7 @@ public class AudioHelperApiImpl
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.mDeviceDetailInfo);
       localStringBuilder.append("UIN[");
-      localStringBuilder.append(paramAppInterface.getAccount());
+      localStringBuilder.append(LogUtil.getSafePrintUin(paramAppInterface.getAccount()));
       localStringBuilder.append("], \ndisplayMetrics[");
       localStringBuilder.append(localObject);
       localStringBuilder.append("], \ndensity[");
@@ -1131,8 +1132,8 @@ public class AudioHelperApiImpl
   
   public boolean registDebugReceiver(BaseApplication paramBaseApplication, long paramLong)
   {
-    if (!com.tencent.av.utils.AudioHelper.a) {
-      com.tencent.av.utils.AudioHelper.a = isDev();
+    if (!com.tencent.av.utils.AudioHelper.b) {
+      com.tencent.av.utils.AudioHelper.b = isDev();
     }
     setCurAccount(paramLong);
     if (paramBaseApplication != null)
@@ -1196,17 +1197,17 @@ public class AudioHelperApiImpl
   
   public void setBeaconDebug(Context paramContext)
   {
-    if (!com.tencent.av.utils.AudioHelper.a) {
-      com.tencent.av.utils.AudioHelper.a = isDev();
+    if (!com.tencent.av.utils.AudioHelper.b) {
+      com.tencent.av.utils.AudioHelper.b = isDev();
     }
     if (getDebugValue(2) == 1)
     {
       QLog.d("AudioHelper", 1, "setBeaconDebug begin");
-      UserAction.setLogAble(AppSetting.c() ^ true, true);
+      UserAction.setLogAble(AppSetting.k() ^ true, true);
       if (paramContext != null) {
         UserAction.initUserAction(paramContext);
       }
-      UserAction.setLogAble(AppSetting.c() ^ true, true);
+      UserAction.setLogAble(AppSetting.k() ^ true, true);
       QLog.d("AudioHelper", 1, "setBeaconDebug end");
     }
   }
@@ -1289,7 +1290,7 @@ public class AudioHelperApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.utils.api.impl.AudioHelperApiImpl
  * JD-Core Version:    0.7.0.1
  */

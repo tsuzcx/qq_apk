@@ -11,79 +11,79 @@ class MagicfaceXBigDecoder$2
     // Byte code:
     //   0: aload_0
     //   1: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   4: getfield 25	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:jdField_a_of_type_Boolean	Z
+    //   4: getfield 25	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:f	Z
     //   7: ifeq +205 -> 212
     //   10: aload_0
     //   11: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
     //   14: iconst_0
-    //   15: putfield 28	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:jdField_b_of_type_Boolean	Z
+    //   15: putfield 28	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:y	Z
     //   18: aload_0
     //   19: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
     //   22: aload_0
     //   23: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   26: getfield 32	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:d	[B
+    //   26: getfield 32	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:o	[B
     //   29: aload_0
     //   30: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   33: getfield 36	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:h	I
-    //   36: invokevirtual 39	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:a	([BI)I
+    //   33: getfield 36	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:s	I
+    //   36: invokevirtual 40	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:a	([BI)I
     //   39: istore_1
     //   40: aload_0
     //   41: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
     //   44: iload_1
     //   45: aload_0
     //   46: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   49: getfield 36	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:h	I
+    //   49: getfield 36	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:s	I
     //   52: isub
-    //   53: putfield 42	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:g	I
+    //   53: putfield 43	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:r	I
     //   56: aload_0
     //   57: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   60: getfield 42	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:g	I
+    //   60: getfield 43	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:r	I
     //   63: ifge +4 -> 67
     //   66: return
     //   67: aload_0
     //   68: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
     //   71: aload_0
     //   72: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   75: getfield 42	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:g	I
+    //   75: getfield 43	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:r	I
     //   78: aload_0
     //   79: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   82: getfield 36	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:h	I
+    //   82: getfield 36	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:s	I
     //   85: aload_0
     //   86: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   89: getfield 32	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:d	[B
-    //   92: invokevirtual 45	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:b	(II[B)V
+    //   89: getfield 32	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:o	[B
+    //   92: invokevirtual 47	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:b	(II[B)V
     //   95: aload_0
     //   96: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
     //   99: iload_1
-    //   100: putfield 36	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:h	I
+    //   100: putfield 36	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:s	I
     //   103: aload_0
     //   104: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   107: getfield 48	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil	Lcom/tencent/mobileqq/magicface/DecoderUtil;
+    //   107: getfield 51	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:g	Lcom/tencent/mobileqq/magicface/DecoderUtil;
     //   110: aload_0
     //   111: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   114: getfield 51	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:e	[B
+    //   114: getfield 54	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:p	[B
     //   117: aload_0
     //   118: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   121: getfield 42	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:g	I
+    //   121: getfield 43	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:r	I
     //   124: aload_0
     //   125: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   128: getfield 54	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:f	[B
-    //   131: invokevirtual 60	com/tencent/mobileqq/magicface/DecoderUtil:decodeAlphaDecoder	([BI[B)I
+    //   128: getfield 57	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:q	[B
+    //   131: invokevirtual 63	com/tencent/mobileqq/magicface/DecoderUtil:decodeAlphaDecoder	([BI[B)I
     //   134: pop
     //   135: aload_0
     //   136: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
     //   139: iconst_1
-    //   140: putfield 28	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:jdField_b_of_type_Boolean	Z
+    //   140: putfield 28	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:y	Z
     //   143: aload_0
     //   144: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   147: getfield 63	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   147: getfield 67	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:w	Ljava/lang/Object;
     //   150: astore_2
     //   151: aload_2
     //   152: monitorenter
     //   153: aload_0
     //   154: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   157: getfield 63	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   160: invokevirtual 66	java/lang/Object:notify	()V
+    //   157: getfield 67	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:w	Ljava/lang/Object;
+    //   160: invokevirtual 70	java/lang/Object:notify	()V
     //   163: aload_2
     //   164: monitorexit
     //   165: goto +8 -> 173
@@ -94,14 +94,14 @@ class MagicfaceXBigDecoder$2
     //   172: athrow
     //   173: aload_0
     //   174: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   177: getfield 68	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
+    //   177: getfield 73	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:x	Ljava/lang/Object;
     //   180: astore_2
     //   181: aload_2
     //   182: monitorenter
     //   183: aload_0
     //   184: getfield 12	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder$2:this$0	Lcom/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder;
-    //   187: getfield 68	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
-    //   190: invokevirtual 71	java/lang/Object:wait	()V
+    //   187: getfield 73	com/tencent/mobileqq/magicface/model/MagicfaceXBigDecoder:x	Ljava/lang/Object;
+    //   190: invokevirtual 76	java/lang/Object:wait	()V
     //   193: aload_2
     //   194: monitorexit
     //   195: goto -195 -> 0
@@ -114,7 +114,7 @@ class MagicfaceXBigDecoder$2
     //   204: goto +9 -> 213
     //   207: astore_2
     //   208: aload_2
-    //   209: invokevirtual 74	java/lang/Exception:printStackTrace	()V
+    //   209: invokevirtual 79	java/lang/Exception:printStackTrace	()V
     //   212: return
     //   213: goto +5 -> 218
     //   216: aload_2
@@ -157,7 +157,7 @@ class MagicfaceXBigDecoder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicfaceXBigDecoder.2
  * JD-Core Version:    0.7.0.1
  */

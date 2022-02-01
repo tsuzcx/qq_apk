@@ -23,24 +23,24 @@ public class ConfessRefresher
   
   public void a(String paramString, int paramInt1, int paramInt2, RefreshMessageContext paramRefreshMessageContext)
   {
-    paramRefreshMessageContext.c = true;
+    paramRefreshMessageContext.e = true;
     if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageManager", 2, String.format("doRefreshMessageListHead_Confess uin:%s type:%d topicId:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramRefreshMessageContext.f) }));
+      QLog.i("Q.msg.BaseMessageManager", 2, String.format("doRefreshMessageListHead_Confess uin:%s type:%d topicId:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramRefreshMessageContext.w) }));
     }
-    Object localObject = this.a.a(paramInt1).d(paramString, paramInt1);
+    Object localObject = this.a.a(paramInt1).g(paramString, paramInt1);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       int i = ((List)localObject).size() - 1;
       while (i >= 0)
       {
-        if (((MessageRecord)((List)localObject).get(i)).getConfessTopicId() != paramRefreshMessageContext.f) {
+        if (((MessageRecord)((List)localObject).get(i)).getConfessTopicId() != paramRefreshMessageContext.w) {
           ((List)localObject).remove(i);
         }
         i -= 1;
       }
     }
     if ((localObject != null) && (((List)localObject).size() > 0)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.dumpmsgs("current Aio", ((List)localObject).subList(0, Math.min(paramInt2, ((List)localObject).size())));
+      this.a.b.dumpmsgs("current Aio", ((List)localObject).subList(0, Math.min(paramInt2, ((List)localObject).size())));
     }
     long l;
     if ((localObject != null) && (((List)localObject).size() > 0)) {
@@ -51,23 +51,23 @@ public class ConfessRefresher
     localObject = new ArrayList();
     a(paramString, paramInt1, l, paramInt2, paramRefreshMessageContext, (ArrayList)localObject);
     this.a.a((List)localObject);
-    this.a.a(paramInt1).a(paramString, paramInt1, (List)localObject);
-    paramRefreshMessageContext.jdField_a_of_type_JavaUtilList = ((List)localObject);
-    this.a.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setChangeAndNotify(paramRefreshMessageContext);
+    this.a.a(paramInt1).b(paramString, paramInt1, (List)localObject);
+    paramRefreshMessageContext.b = ((List)localObject);
+    this.a.b.setChangeAndNotify(paramRefreshMessageContext);
   }
   
   public void a(String paramString, int paramInt1, long paramLong, int paramInt2, RefreshMessageContext paramRefreshMessageContext, ArrayList<MessageRecord> paramArrayList)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessRefresher", 2, String.format("loadFromLocalConfess uin:%s type:%d topicId:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramRefreshMessageContext.f) }));
+      QLog.i("ConfessRefresher", 2, String.format("loadFromLocalConfess uin:%s type:%d topicId:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramRefreshMessageContext.w) }));
     }
-    IMessageFacade localIMessageFacade = this.a.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade;
-    Object localObject3 = (QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime;
-    String str = UinTypeUtil.a(paramString, paramInt1, paramRefreshMessageContext.f);
+    IMessageFacade localIMessageFacade = this.a.b;
+    Object localObject3 = (QQAppInterface)this.a.a;
+    String str = UinTypeUtil.a(paramString, paramInt1, paramRefreshMessageContext.w);
     Object localObject2 = "";
     if (paramLong > 0L)
     {
-      localObject1 = ((QQAppInterface)localObject3).getMessageProxy(paramInt1).a(paramString, paramInt1, paramLong);
+      localObject1 = ((QQAppInterface)localObject3).getMessageProxy(paramInt1).b(paramString, paramInt1, paramLong);
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("loadFromLocal uniseq=");
       ((StringBuilder)localObject4).append(paramLong);
@@ -97,7 +97,7 @@ public class ConfessRefresher
     paramLong = l1;
     Object localObject4 = localObject1;
     label230:
-    Object localObject1 = ((QQAppInterface)localObject3).getMessageProxy(paramInt1).b(paramString, paramInt1);
+    Object localObject1 = ((QQAppInterface)localObject3).getMessageProxy(paramInt1).c(paramString, paramInt1);
     ArrayList localArrayList = new ArrayList();
     if (localObject1 != null)
     {
@@ -138,7 +138,7 @@ public class ConfessRefresher
     label520:
     if (paramArrayList.size() < paramInt2)
     {
-      int i = ConfessMsgUtil.a(paramInt1, paramRefreshMessageContext.f) << 3;
+      int i = ConfessMsgUtil.a(paramInt1, paramRefreshMessageContext.w) << 3;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(String.format(" and (extLong & 4194296)=%d", new Object[] { Integer.valueOf(i) }));
       ((StringBuilder)localObject2).append(String.format(" or (time=%d and _id<%d and (extLong & 4194296)=%d) ", new Object[] { Long.valueOf(paramLong), Long.valueOf(l2), Integer.valueOf(i) }));
@@ -151,26 +151,26 @@ public class ConfessRefresher
       localIMessageFacade.qLogColor(((StringBuilder)localObject3).toString(), (String)localObject1);
       if (((List)localObject2).isEmpty())
       {
-        paramRefreshMessageContext.jdField_a_of_type_Boolean = true;
+        paramRefreshMessageContext.c = true;
       }
       else
       {
         if (((List)localObject2).size() < paramInt2) {
-          paramRefreshMessageContext.jdField_a_of_type_Boolean = true;
+          paramRefreshMessageContext.c = true;
         }
         localIMessageFacade.dumpmsgs("loadFromLocal load from DB", (Collection)localObject2);
         paramArrayList.addAll(0, (Collection)localObject2);
       }
     }
-    paramRefreshMessageContext.c = true;
+    paramRefreshMessageContext.e = true;
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessRefresher", 2, String.format("loadFromLocalConfess uin:%s type:%d topicId:%d findCount:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramRefreshMessageContext.f), Integer.valueOf(paramArrayList.size()) }));
+      QLog.i("ConfessRefresher", 2, String.format("loadFromLocalConfess uin:%s type:%d topicId:%d findCount:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramRefreshMessageContext.w), Integer.valueOf(paramArrayList.size()) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ConfessRefresher
  * JD-Core Version:    0.7.0.1
  */

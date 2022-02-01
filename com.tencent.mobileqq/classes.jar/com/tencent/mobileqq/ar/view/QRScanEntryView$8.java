@@ -11,13 +11,13 @@ class QRScanEntryView$8
   
   public void run()
   {
-    QRScanEntryView.a(this.this$0).setChecked(false);
-    QQToast.a(this.this$0.getContext(), HardCodeUtil.a(2131711162), 1).a();
+    QRScanEntryView.e(this.this$0).setChecked(false);
+    QQToast.makeText(this.this$0.getContext(), HardCodeUtil.a(2131908827), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.8
  * JD-Core Version:    0.7.0.1
  */

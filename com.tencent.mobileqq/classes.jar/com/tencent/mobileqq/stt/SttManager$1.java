@@ -12,15 +12,15 @@ class SttManager$1
   {
     SttManager localSttManager = this.this$0;
     MessageForPtt localMessageForPtt = this.a;
-    SttManager.a(localSttManager, localMessageForPtt, localMessageForPtt.getSttResult().c());
-    if (this.this$0.a != null) {
-      this.this$0.a.a(this.a);
+    SttManager.a(localSttManager, localMessageForPtt, localMessageForPtt.getSttResult().h());
+    if (this.this$0.b != null) {
+      this.this$0.b.d(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.stt.SttManager.1
  * JD-Core Version:    0.7.0.1
  */

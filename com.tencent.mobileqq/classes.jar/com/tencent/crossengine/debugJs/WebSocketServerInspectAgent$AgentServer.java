@@ -60,7 +60,7 @@ class WebSocketServerInspectAgent$AgentServer
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("World ");
-    localStringBuilder.append(WebSocketServerInspectAgent.a(this.this$0));
+    localStringBuilder.append(WebSocketServerInspectAgent.b(this.this$0));
     localStringBuilder.append(" ScriptEngine Inspector Debugger server successfully started on port:");
     localStringBuilder.append(this.a);
     localStringBuilder.append("\nfollow the steps to start debug:\n1. adb forward tcp:");
@@ -75,7 +75,7 @@ class WebSocketServerInspectAgent$AgentServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.debugJs.WebSocketServerInspectAgent.AgentServer
  * JD-Core Version:    0.7.0.1
  */

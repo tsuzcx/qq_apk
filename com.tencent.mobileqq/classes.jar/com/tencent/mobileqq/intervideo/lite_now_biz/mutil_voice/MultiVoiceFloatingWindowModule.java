@@ -42,52 +42,23 @@ public final class MultiVoiceFloatingWindowModule
   extends RoomBizModule
   implements ThreadCenter.HandlerKeyable
 {
-  public static final MultiVoiceFloatingWindowModule.Companion a;
-  private static boolean f;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final Observer<MultiVoicePageEvent> jdField_a_of_type_AndroidxLifecycleObserver = (Observer)new MultiVoiceFloatingWindowModule.multiVoicePageObserver.1(this);
-  private NetworkStateInterface jdField_a_of_type_ComTencentFalcoBaseLibapiNetworkNetworkStateInterface;
-  private final OnNetworkListener jdField_a_of_type_ComTencentFalcoBaseLibapiNetworkOnNetworkListener = (OnNetworkListener)new MultiVoiceFloatingWindowModule.onNetworkListener.1(this);
-  private FloatWindowComponent jdField_a_of_type_ComTencentIliveUicomponentFloatwindowcomponent_interfaceFloatWindowComponent;
-  private SwitchRoomInfo jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceSwitchRoomInfo;
-  private FloatRoomManager.RoomEventInterceptor jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$RoomEventInterceptor;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = (Runnable)new MultiVoiceFloatingWindowModule.launchFailNoticeForXiaomi.1(this);
-  private final String jdField_a_of_type_JavaLangString = "MultiVoiceFloatingWindowModule";
-  private boolean jdField_a_of_type_Boolean;
-  private final Runnable jdField_b_of_type_JavaLangRunnable = (Runnable)new MultiVoiceFloatingWindowModule.launchFailNotice.1(this);
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c = true;
+  public static final MultiVoiceFloatingWindowModule.Companion a = new MultiVoiceFloatingWindowModule.Companion(null);
+  private static boolean q;
+  private final String b = "MultiVoiceFloatingWindowModule";
+  private FloatWindowComponent c;
   private boolean d;
-  private boolean e;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule$Companion = new MultiVoiceFloatingWindowModule.Companion(null);
-  }
-  
-  private final FloatRoomManager a()
-  {
-    Object localObject = BizEngineMgr.getInstance();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BizEngineMgr.getInstance()");
-    localObject = ((BizEngineMgr)localObject).getLiveEngine();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "BizEngineMgr.getInstance().liveEngine");
-    return ((LiveEngine)localObject).getFloatRoomManager();
-  }
-  
-  private final void a()
-  {
-    if ((this.jdField_b_of_type_Boolean) && (this.d))
-    {
-      if (!f) {
-        return;
-      }
-      RoomBizContext localRoomBizContext = getRoomBizContext();
-      Intrinsics.checkExpressionValueIsNotNull(localRoomBizContext, "getRoomBizContext()");
-      if ("true".equals(UrlUtil.a(localRoomBizContext.getEnterRoomInfo().extData.getString("mqqschema"), "showExitRoomNoticeDialog"))) {
-        getEvent().post((ModuleEventInterface)new MultiVoicePageEvent(3));
-      }
-    }
-  }
+  private SwitchRoomInfo e;
+  private FloatRoomManager.RoomEventInterceptor f;
+  private boolean g;
+  private boolean h = true;
+  private boolean i;
+  private TextView j;
+  private NetworkStateInterface k;
+  private boolean l;
+  private final OnNetworkListener m = (OnNetworkListener)new MultiVoiceFloatingWindowModule.onNetworkListener.1(this);
+  private final Runnable n = (Runnable)new MultiVoiceFloatingWindowModule.launchFailNoticeForXiaomi.1(this);
+  private final Runnable o = (Runnable)new MultiVoiceFloatingWindowModule.launchFailNotice.1(this);
+  private final Observer<MultiVoicePageEvent> p = (Observer)new MultiVoiceFloatingWindowModule.multiVoicePageObserver.1(this);
   
   private final boolean a()
   {
@@ -96,18 +67,6 @@ public final class MultiVoiceFloatingWindowModule
       return ((Activity)localContext).isFinishing();
     }
     return false;
-  }
-  
-  private final void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      FloatWindowComponent localFloatWindowComponent = this.jdField_a_of_type_ComTencentIliveUicomponentFloatwindowcomponent_interfaceFloatWindowComponent;
-      if (localFloatWindowComponent != null) {
-        localFloatWindowComponent.dismiss(1);
-      }
-      this.jdField_a_of_type_Boolean = false;
-    }
   }
   
   private final void b(boolean paramBoolean)
@@ -119,7 +78,7 @@ public final class MultiVoiceFloatingWindowModule
     localObject1 = UrlUtil.a(UrlUtil.b(UrlUtil.b(StringsKt.replace$default((String)localObject1, "&&", "&", false, 4, null), "toolProcessState"), "startEnterTime"), "showExitRoomNoticeDialog", String.valueOf(paramBoolean));
     if (QLog.isColorLevel())
     {
-      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("mqqschema = ");
       localStringBuilder.append((String)localObject1);
@@ -137,20 +96,56 @@ public final class MultiVoiceFloatingWindowModule
   
   private final void c()
   {
-    if (!c()) {
-      return;
-    }
-    FloatWindowComponent localFloatWindowComponent = this.jdField_a_of_type_ComTencentIliveUicomponentFloatwindowcomponent_interfaceFloatWindowComponent;
-    if (localFloatWindowComponent != null) {
-      localFloatWindowComponent.show(2131559522);
-    }
-    this.jdField_a_of_type_Boolean = true;
-    if (a()) {
-      a().c();
+    if ((this.g) && (this.i))
+    {
+      if (!q) {
+        return;
+      }
+      RoomBizContext localRoomBizContext = getRoomBizContext();
+      Intrinsics.checkExpressionValueIsNotNull(localRoomBizContext, "getRoomBizContext()");
+      if ("true".equals(UrlUtil.a(localRoomBizContext.getEnterRoomInfo().extData.getString("mqqschema"), "showExitRoomNoticeDialog"))) {
+        getEvent().post((ModuleEventInterface)new MultiVoicePageEvent(3));
+      }
     }
   }
   
-  private final boolean c()
+  private final void d()
+  {
+    if (this.d)
+    {
+      FloatWindowComponent localFloatWindowComponent = this.c;
+      if (localFloatWindowComponent != null) {
+        localFloatWindowComponent.dismiss(1);
+      }
+      this.d = false;
+    }
+  }
+  
+  private final void e()
+  {
+    if (!g()) {
+      return;
+    }
+    FloatWindowComponent localFloatWindowComponent = this.c;
+    if (localFloatWindowComponent != null) {
+      localFloatWindowComponent.show(2131625544);
+    }
+    this.d = true;
+    if (a()) {
+      f().d();
+    }
+  }
+  
+  private final FloatRoomManager f()
+  {
+    Object localObject = BizEngineMgr.getInstance();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BizEngineMgr.getInstance()");
+    localObject = ((BizEngineMgr)localObject).getLiveEngine();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BizEngineMgr.getInstance().liveEngine");
+    return ((LiveEngine)localObject).getFloatRoomManager();
+  }
+  
+  private final boolean g()
   {
     Context localContext = this.context;
     if (localContext != null) {
@@ -159,34 +154,34 @@ public final class MultiVoiceFloatingWindowModule
     return false;
   }
   
-  private final void d()
+  private final void h()
   {
     ThreadCenter.HandlerKeyable localHandlerKeyable = (ThreadCenter.HandlerKeyable)this;
-    ThreadCenter.removeUITask(localHandlerKeyable, this.jdField_a_of_type_JavaLangRunnable);
-    ThreadCenter.removeUITask(localHandlerKeyable, this.jdField_b_of_type_JavaLangRunnable);
+    ThreadCenter.removeUITask(localHandlerKeyable, this.n);
+    ThreadCenter.removeUITask(localHandlerKeyable, this.o);
   }
   
   public void onActivityDestroy(@Nullable LifecycleOwner paramLifecycleOwner)
   {
     super.onActivityDestroy(paramLifecycleOwner);
-    if (this.c) {
-      b();
+    if (this.h) {
+      d();
     }
   }
   
   public void onActivityStart(@Nullable LifecycleOwner paramLifecycleOwner)
   {
     super.onActivityStart(paramLifecycleOwner);
-    this.d = true;
-    a();
-    b();
+    this.i = true;
+    c();
+    d();
   }
   
   public void onActivityStop(@Nullable LifecycleOwner paramLifecycleOwner)
   {
     super.onActivityStop(paramLifecycleOwner);
-    this.d = false;
-    c();
+    this.i = false;
+    e();
   }
   
   public void onCreate(@NotNull Context paramContext)
@@ -195,25 +190,25 @@ public final class MultiVoiceFloatingWindowModule
     super.onCreate(paramContext);
     Object localObject = BizEngineMgr.getInstance();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BizEngineMgr.getInstance()");
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiNetworkNetworkStateInterface = ((NetworkStateInterface)((BizEngineMgr)localObject).getLiveEngine().getService(NetworkStateInterface.class));
-    getEvent().observe(MultiVoicePageEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
+    this.k = ((NetworkStateInterface)((BizEngineMgr)localObject).getLiveEngine().getService(NetworkStateInterface.class));
+    getEvent().observe(MultiVoicePageEvent.class, this.p);
     localObject = (FloatWindowComponent)getComponentFactory().getComponent(FloatWindowComponent.class).build();
     ((FloatWindowComponent)localObject).init(paramContext);
     ((FloatWindowComponent)localObject).setHandleCallback((FloatWindowHandleCallback)new MultiVoiceFloatingWindowModule.onCreate..inlined.apply.lambda.1((FloatWindowComponent)localObject, this, paramContext));
-    this.jdField_a_of_type_ComTencentIliveUicomponentFloatwindowcomponent_interfaceFloatWindowComponent = ((FloatWindowComponent)localObject);
+    this.c = ((FloatWindowComponent)localObject);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    getEvent().removeObserver(MultiVoicePageEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
-    this.e = true;
-    Object localObject = this.jdField_a_of_type_ComTencentFalcoBaseLibapiNetworkNetworkStateInterface;
+    getEvent().removeObserver(MultiVoicePageEvent.class, this.p);
+    this.l = true;
+    Object localObject = this.k;
     if (localObject != null) {
-      ((NetworkStateInterface)localObject).removeListener(this.jdField_a_of_type_ComTencentFalcoBaseLibapiNetworkOnNetworkListener);
+      ((NetworkStateInterface)localObject).removeListener(this.m);
     }
-    d();
-    localObject = this.jdField_a_of_type_ComTencentIliveUicomponentFloatwindowcomponent_interfaceFloatWindowComponent;
+    h();
+    localObject = this.c;
     if ((localObject != null) && (((FloatWindowComponent)localObject).isCalledShow())) {
       ((FloatWindowComponent)localObject).dismiss(2);
     }
@@ -222,9 +217,9 @@ public final class MultiVoiceFloatingWindowModule
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
-    NetworkStateInterface localNetworkStateInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiNetworkNetworkStateInterface;
+    NetworkStateInterface localNetworkStateInterface = this.k;
     if (localNetworkStateInterface != null) {
-      localNetworkStateInterface.addListener(this.jdField_a_of_type_ComTencentFalcoBaseLibapiNetworkOnNetworkListener);
+      localNetworkStateInterface.addListener(this.m);
     }
   }
   
@@ -242,7 +237,7 @@ public final class MultiVoiceFloatingWindowModule
   
   public void onSwitchRoom(@Nullable SwitchRoomInfo paramSwitchRoomInfo)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceSwitchRoomInfo = paramSwitchRoomInfo;
+    this.e = paramSwitchRoomInfo;
   }
   
   public void onVisibleToUser(boolean paramBoolean)
@@ -250,19 +245,19 @@ public final class MultiVoiceFloatingWindowModule
     super.onVisibleToUser(paramBoolean);
     if (!paramBoolean)
     {
-      d();
+      h();
       return;
     }
     Object localObject = new MultiVoiceFloatingWindowModule.onVisibleToUser.1(this);
-    FloatRoomManager localFloatRoomManager = a();
+    FloatRoomManager localFloatRoomManager = f();
     localObject = (FloatRoomManager.RoomEventInterceptor)localObject;
     localFloatRoomManager.a((FloatRoomManager.RoomEventInterceptor)localObject);
-    this.jdField_a_of_type_ComTencentLivesdkLiveengineFloatRoomManager$RoomEventInterceptor = ((FloatRoomManager.RoomEventInterceptor)localObject);
+    this.f = ((FloatRoomManager.RoomEventInterceptor)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceFloatingWindowModule
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class PAOfflineSearchManager$1$1
   
   public void run()
   {
-    String str = HtmlOffline.a("1011");
+    String str = HtmlOffline.d("1011");
     if (str != null)
     {
       if (TextUtils.equals(str, "")) {
@@ -23,20 +23,20 @@ class PAOfflineSearchManager$1$1
         localStringBuilder.append("callback get current ver:");
         localStringBuilder.append(str);
         localStringBuilder.append(", local ver:");
-        localStringBuilder.append(this.a.a.a);
+        localStringBuilder.append(this.a.a.e);
         QLog.d("PAOfflineSearchManager", 2, localStringBuilder.toString());
       }
-      if ((str.equals(this.a.a.a)) && (!str.equals("0"))) {
+      if ((str.equals(this.a.a.e)) && (!str.equals("0"))) {
         return;
       }
-      this.a.a.c = true;
-      this.a.a.a = str;
+      this.a.a.g = true;
+      this.a.a.e = str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.PAOfflineSearchManager.1.1
  * JD-Core Version:    0.7.0.1
  */

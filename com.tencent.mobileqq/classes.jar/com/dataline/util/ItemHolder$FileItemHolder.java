@@ -9,19 +9,19 @@ import com.tencent.image.URLImageView;
 
 public class ItemHolder$FileItemHolder
 {
-  public LinearLayout a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
   public AsyncImageView a;
-  public URLImageView a;
-  public TextView b;
   public AsyncImageView b;
-  public TextView c;
   public AsyncImageView c;
-  public TextView d;
   public AsyncImageView d;
   public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public LinearLayout i;
+  public URLImageView j;
+  public TextView k;
+  public ProgressBar l;
+  public RelativeLayout m;
   
   public ItemHolder$FileItemHolder(ItemHolder paramItemHolder) {}
 }

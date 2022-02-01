@@ -21,7 +21,7 @@ class PublicAccountChatPie$38
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = this.a.b;
+      localObject1 = this.a.c;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("success:");
       ((StringBuilder)localObject2).append(String.valueOf(paramBoolean));
@@ -58,7 +58,7 @@ class PublicAccountChatPie$38
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.38
  * JD-Core Version:    0.7.0.1
  */

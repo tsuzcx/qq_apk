@@ -18,16 +18,16 @@ class TroopMemberListActivity$40$2
   
   public void run()
   {
-    Object localObject1 = (ITroopInfoService)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40.a.app.getRuntimeService(ITroopInfoService.class, "");
-    TroopInfo localTroopInfo = ((ITroopInfoService)localObject1).findTroopInfo(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40.a.mTroopUin);
+    Object localObject1 = (ITroopInfoService)this.b.a.app.getRuntimeService(ITroopInfoService.class, "");
+    TroopInfo localTroopInfo = ((ITroopInfoService)localObject1).findTroopInfo(this.b.a.mTroopUin);
     if (localTroopInfo == null) {
       return;
     }
-    if (StringUtil.a(localTroopInfo.troopowneruin)) {
+    if (StringUtil.isEmpty(localTroopInfo.troopowneruin)) {
       return;
     }
     localTroopInfo.Administrator = "";
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject2 = this.a;
     int j = 0;
     int i;
     if (localObject2 == null) {
@@ -37,7 +37,7 @@ class TroopMemberListActivity$40$2
     }
     while (j < i)
     {
-      localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(j);
+      localObject2 = (oidb_0x899.memberlist)this.a.get(j);
       if ((localObject2 != null) && (((oidb_0x899.memberlist)localObject2).uint64_member_uin.has()))
       {
         localObject2 = String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get());
@@ -53,10 +53,10 @@ class TroopMemberListActivity$40$2
       j += 1;
     }
     ((ITroopInfoService)localObject1).saveTroopInfo(localTroopInfo);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40.a.mHandler.obtainMessage();
+    localObject1 = this.b.a.mHandler.obtainMessage();
     ((Message)localObject1).what = 11;
     ((Message)localObject1).obj = localTroopInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40.a.mHandler.sendMessage((Message)localObject1);
+    this.b.a.mHandler.sendMessage((Message)localObject1);
     if (QLog.isColorLevel()) {
       QLog.i("TroopMemberListActivityget_troop_member", 2, localTroopInfo.Administrator);
     }
@@ -64,7 +64,7 @@ class TroopMemberListActivity$40$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.40.2
  * JD-Core Version:    0.7.0.1
  */

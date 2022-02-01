@@ -130,28 +130,28 @@ public final class a
     //   65: ldc 93
     //   67: invokevirtual 106	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   70: checkcast 131	android/net/wifi/WifiManager
-    //   73: invokevirtual 135	android/net/wifi/WifiManager:getConnectionInfo	()Landroid/net/wifi/WifiInfo;
+    //   73: invokestatic 137	com/tencent/mobileqq/qmethodmonitor/monitor/NetworkMonitor:getConnectionInfo	(Landroid/net/wifi/WifiManager;)Landroid/net/wifi/WifiInfo;
     //   76: astore_2
     //   77: aload_2
-    //   78: invokevirtual 140	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
+    //   78: invokevirtual 142	android/net/wifi/WifiInfo:getSSID	()Ljava/lang/String;
     //   81: putstatic 83	com/tencent/hlyyb/common/a/a:c	Ljava/lang/String;
     //   84: aload_2
-    //   85: invokevirtual 143	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
+    //   85: invokevirtual 145	android/net/wifi/WifiInfo:getBSSID	()Ljava/lang/String;
     //   88: putstatic 85	com/tencent/hlyyb/common/a/a:d	Ljava/lang/String;
     //   91: goto +136 -> 227
     //   94: aload_2
-    //   95: invokevirtual 146	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   95: invokevirtual 148	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   98: astore_3
     //   99: aload_3
     //   100: ifnull +94 -> 194
     //   103: aload_3
-    //   104: invokevirtual 151	java/lang/String:trim	()Ljava/lang/String;
-    //   107: invokevirtual 154	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   104: invokevirtual 153	java/lang/String:trim	()Ljava/lang/String;
+    //   107: invokevirtual 156	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   110: putstatic 72	com/tencent/hlyyb/common/a/a:b	Ljava/lang/String;
     //   113: iload_1
     //   114: ifne +64 -> 178
     //   117: aload_2
-    //   118: invokevirtual 157	android/net/NetworkInfo:getSubtype	()I
+    //   118: invokevirtual 159	android/net/NetworkInfo:getSubtype	()I
     //   121: istore_1
     //   122: iload_1
     //   123: iconst_1
@@ -175,8 +175,8 @@ public final class a
     //   160: iconst_2
     //   161: putstatic 61	com/tencent/hlyyb/common/a/a:e	I
     //   164: getstatic 72	com/tencent/hlyyb/common/a/a:b	Ljava/lang/String;
-    //   167: ldc 159
-    //   169: invokevirtual 163	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   167: ldc 161
+    //   169: invokevirtual 165	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   172: putstatic 129	com/tencent/hlyyb/common/a/a:f	Z
     //   175: goto +52 -> 227
     //   178: ldc 63
@@ -209,22 +209,22 @@ public final class a
     //   238: aload_2
     //   239: monitorenter
     //   240: getstatic 31	com/tencent/hlyyb/common/a/a:g	Ljava/util/Map;
-    //   243: invokeinterface 167 1 0
-    //   248: invokeinterface 173 1 0
+    //   243: invokeinterface 169 1 0
+    //   248: invokeinterface 175 1 0
     //   253: astore_3
     //   254: aload_3
-    //   255: invokeinterface 178 1 0
+    //   255: invokeinterface 180 1 0
     //   260: ifeq +35 -> 295
     //   263: aload_3
-    //   264: invokeinterface 182 1 0
-    //   269: checkcast 184	com/tencent/hlyyb/common/a/b
+    //   264: invokeinterface 184 1 0
+    //   269: checkcast 186	com/tencent/hlyyb/common/a/b
     //   272: astore 4
     //   274: aload 4
     //   276: ifnull -22 -> 254
     //   279: aload 4
     //   281: getstatic 61	com/tencent/hlyyb/common/a/a:e	I
-    //   284: invokestatic 186	com/tencent/hlyyb/common/a/a:b	()Ljava/lang/String;
-    //   287: invokeinterface 189 3 0
+    //   284: invokestatic 188	com/tencent/hlyyb/common/a/a:b	()Ljava/lang/String;
+    //   287: invokeinterface 191 3 0
     //   292: goto -38 -> 254
     //   295: aload_2
     //   296: monitorexit
@@ -238,7 +238,7 @@ public final class a
     //   306: goto +90 -> 396
     //   309: astore_2
     //   310: aload_2
-    //   311: invokevirtual 192	java/lang/Throwable:printStackTrace	()V
+    //   311: invokevirtual 194	java/lang/Throwable:printStackTrace	()V
     //   314: iload_0
     //   315: getstatic 61	com/tencent/hlyyb/common/a/a:e	I
     //   318: if_icmpeq +74 -> 392
@@ -247,22 +247,22 @@ public final class a
     //   325: aload_2
     //   326: monitorenter
     //   327: getstatic 31	com/tencent/hlyyb/common/a/a:g	Ljava/util/Map;
-    //   330: invokeinterface 167 1 0
-    //   335: invokeinterface 173 1 0
+    //   330: invokeinterface 169 1 0
+    //   335: invokeinterface 175 1 0
     //   340: astore_3
     //   341: aload_3
-    //   342: invokeinterface 178 1 0
+    //   342: invokeinterface 180 1 0
     //   347: ifeq +35 -> 382
     //   350: aload_3
-    //   351: invokeinterface 182 1 0
-    //   356: checkcast 184	com/tencent/hlyyb/common/a/b
+    //   351: invokeinterface 184 1 0
+    //   356: checkcast 186	com/tencent/hlyyb/common/a/b
     //   359: astore 4
     //   361: aload 4
     //   363: ifnull -22 -> 341
     //   366: aload 4
     //   368: getstatic 61	com/tencent/hlyyb/common/a/a:e	I
-    //   371: invokestatic 186	com/tencent/hlyyb/common/a/a:b	()Ljava/lang/String;
-    //   374: invokeinterface 189 3 0
+    //   371: invokestatic 188	com/tencent/hlyyb/common/a/a:b	()Ljava/lang/String;
+    //   374: invokeinterface 191 3 0
     //   379: goto -38 -> 341
     //   382: aload_2
     //   383: monitorexit
@@ -283,22 +283,22 @@ public final class a
     //   407: aload_2
     //   408: monitorenter
     //   409: getstatic 31	com/tencent/hlyyb/common/a/a:g	Ljava/util/Map;
-    //   412: invokeinterface 167 1 0
-    //   417: invokeinterface 173 1 0
+    //   412: invokeinterface 169 1 0
+    //   417: invokeinterface 175 1 0
     //   422: astore 4
     //   424: aload 4
-    //   426: invokeinterface 178 1 0
+    //   426: invokeinterface 180 1 0
     //   431: ifeq +36 -> 467
     //   434: aload 4
-    //   436: invokeinterface 182 1 0
-    //   441: checkcast 184	com/tencent/hlyyb/common/a/b
+    //   436: invokeinterface 184 1 0
+    //   441: checkcast 186	com/tencent/hlyyb/common/a/b
     //   444: astore 5
     //   446: aload 5
     //   448: ifnull -24 -> 424
     //   451: aload 5
     //   453: getstatic 61	com/tencent/hlyyb/common/a/a:e	I
-    //   456: invokestatic 186	com/tencent/hlyyb/common/a/a:b	()Ljava/lang/String;
-    //   459: invokeinterface 189 3 0
+    //   456: invokestatic 188	com/tencent/hlyyb/common/a/a:b	()Ljava/lang/String;
+    //   459: invokeinterface 191 3 0
     //   464: goto -40 -> 424
     //   467: aload_2
     //   468: monitorexit
@@ -427,7 +427,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.common.a.a
  * JD-Core Version:    0.7.0.1
  */

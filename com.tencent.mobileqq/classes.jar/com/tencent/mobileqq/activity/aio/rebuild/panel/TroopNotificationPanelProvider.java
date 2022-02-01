@@ -27,7 +27,7 @@ public class TroopNotificationPanelProvider
   
   private void a()
   {
-    Intent localIntent = new Intent(this.a.a(), QQBrowserActivity.class);
+    Intent localIntent = new Intent(this.a.b(), QQBrowserActivity.class);
     localIntent.putExtra("finish_animation_up_down", true);
     ITroopLinkApi localITroopLinkApi = (ITroopLinkApi)QRoute.api(ITroopLinkApi.class);
     Object localObject2 = localITroopLinkApi.getUrl("troop_homework_create_notice");
@@ -36,13 +36,13 @@ public class TroopNotificationPanelProvider
       localObject1 = "https://web.qun.qq.com/mannounce/schooledit.html?_bid=148&_wv=1031&from=<$FROM>&content=<$CONTENT>&gc=<$GC>";
     }
     localObject2 = new ITroopLinkApi.LinkParams();
-    String str = this.a.a().a;
+    String str = this.a.O().b;
     ((ITroopLinkApi.LinkParams)localObject2).a = str;
     ((ITroopLinkApi.LinkParams)localObject2).c = "aio";
     ((ITroopLinkApi.LinkParams)localObject2).i = "";
     localIntent.putExtra("url", localITroopLinkApi.replaceParams((String)localObject1, (ITroopLinkApi.LinkParams)localObject2));
-    this.a.a().startActivity(localIntent);
-    this.a.a().overridePendingTransition(2130772342, 2130772004);
+    this.a.b().startActivity(localIntent);
+    this.a.b().overridePendingTransition(2130772434, 2130772007);
     TroopReportor.a(this.a.a(), str, "Grp_notice", "CreateNotice_Clk", 0, 0, new String[] { str, "", "", "" });
   }
   
@@ -81,7 +81,7 @@ public class TroopNotificationPanelProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.TroopNotificationPanelProvider
  * JD-Core Version:    0.7.0.1
  */

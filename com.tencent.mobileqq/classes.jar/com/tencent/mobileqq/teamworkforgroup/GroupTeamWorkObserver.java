@@ -7,7 +7,7 @@ import java.util.List;
 public class GroupTeamWorkObserver
   implements BusinessObserver
 {
-  public static String a = "GroupTeamWorkObserver";
+  public static String b = "GroupTeamWorkObserver";
   
   public void a(boolean paramBoolean, int paramInt, String paramString) {}
   
@@ -23,7 +23,7 @@ public class GroupTeamWorkObserver
   {
     if (QLog.isColorLevel())
     {
-      String str = a;
+      String str = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("GroupTeamWorkObserver type=");
       localStringBuilder.append(paramInt);
@@ -85,7 +85,7 @@ public class GroupTeamWorkObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkObserver
  * JD-Core Version:    0.7.0.1
  */

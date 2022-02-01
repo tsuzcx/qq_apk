@@ -2,18 +2,18 @@ package com.tencent.av.gaudio;
 
 class AVNotifyCenter$AvChatData
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  final String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = true;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = null;
-  boolean jdField_c_of_type_Boolean = false;
-  boolean d = false;
-  boolean e = false;
+  final String a;
+  boolean b = true;
+  int c = 0;
+  int d = 0;
+  String e = null;
+  String f = null;
+  boolean g = false;
+  long h = 0L;
+  int i = 0;
+  boolean j = false;
+  boolean k = false;
+  boolean l = false;
   
   AVNotifyCenter$AvChatData(AVNotifyCenter paramAVNotifyCenter, String paramString, long paramLong)
   {
@@ -22,25 +22,25 @@ class AVNotifyCenter$AvChatData
     paramAVNotifyCenter.append(paramString);
     paramAVNotifyCenter.append("_");
     paramAVNotifyCenter.append(paramLong);
-    this.jdField_a_of_type_JavaLangString = paramAVNotifyCenter.toString();
+    this.a = paramAVNotifyCenter.toString();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mRelationId[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("], mRelationType[");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("], mUinType[");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("], mPeerUin[");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("], mIsChating[");
     localStringBuilder.append(this.d);
+    localStringBuilder.append("], mPeerUin[");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("], mIsChating[");
+    localStringBuilder.append(this.k);
     localStringBuilder.append("], mIsWaitting[");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

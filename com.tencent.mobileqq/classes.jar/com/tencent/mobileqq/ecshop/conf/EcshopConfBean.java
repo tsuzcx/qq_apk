@@ -5,40 +5,25 @@ import java.util.ArrayList;
 
 public class EcshopConfBean
 {
-  public int a;
-  public EcshopConfBean.PromotionConfBean a;
-  public String a;
+  public int a = 1;
+  public String b = "";
+  public int c = 2;
+  public int d = 0;
+  public String e = "#FFFFFF";
+  public int f;
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public int j = 2;
   @NonNull
-  public ArrayList<EcshopConfBean.TabConfBean> a;
-  public int b;
-  public String b;
+  public ArrayList<EcshopConfBean.TabConfBean> k = new ArrayList();
   @NonNull
-  public ArrayList<EcshopConfBean.MenuConfBean> b;
-  public int c;
-  public String c;
-  public int d;
-  public String d = "";
-  public int e;
-  public String e;
-  
-  public EcshopConfBean()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "#FFFFFF";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_e_of_type_Int = 2;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$PromotionConfBean = new EcshopConfBean.PromotionConfBean();
-  }
+  public ArrayList<EcshopConfBean.MenuConfBean> l = new ArrayList();
+  public EcshopConfBean.PromotionConfBean m = new EcshopConfBean.PromotionConfBean();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.conf.EcshopConfBean
  * JD-Core Version:    0.7.0.1
  */

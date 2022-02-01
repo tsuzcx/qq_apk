@@ -12,11 +12,11 @@ class MedalGuideView$6
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     MedalGuideView.a(this.a, f);
-    if (this.a.a != null)
+    if (this.a.A != null)
     {
-      this.a.a.a(f);
+      this.a.A.a(f);
       if (f <= 0.05F) {
-        this.a.a.b();
+        this.a.A.b();
       }
     }
     if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {

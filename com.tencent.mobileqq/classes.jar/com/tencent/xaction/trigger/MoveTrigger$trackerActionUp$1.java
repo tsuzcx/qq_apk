@@ -17,23 +17,23 @@ public final class MoveTrigger$trackerActionUp$1
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.updateStatus(this.jdField_a_of_type_AndroidViewView, "moveup");
+      this.a.updateStatus(this.b, "moveup");
       return;
     }
-    MoveTrigger localMoveTrigger = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger;
-    View localView = this.b;
+    MoveTrigger localMoveTrigger = this.a;
+    View localView = this.c;
     float f1 = localMoveTrigger.getState().getLastX();
     float f2 = paramInt1;
-    float f3 = this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().getLastY();
+    float f3 = this.a.getState().getLastY();
     float f4 = paramInt2;
     MoveTrigger.access$actionMove(localMoveTrigger, localView, f1 - f2, f3 - f4);
-    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastX(f2);
-    this.jdField_a_of_type_ComTencentXactionTriggerMoveTrigger.getState().setLastY(f4);
+    this.a.getState().setLastX(f2);
+    this.a.getState().setLastY(f4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.MoveTrigger.trackerActionUp.1
  * JD-Core Version:    0.7.0.1
  */

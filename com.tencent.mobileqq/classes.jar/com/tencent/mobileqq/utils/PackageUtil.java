@@ -14,21 +14,6 @@ public class PackageUtil
 {
   private static String a = "PackageUtil";
   
-  public static String a(Context paramContext, String paramString)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
-      if (paramContext == null) {
-        return "0";
-      }
-      paramContext = paramContext.versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext) {}
-    return "0";
-  }
-  
   public static boolean a(Context paramContext, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -83,36 +68,17 @@ public class PackageUtil
   
   public static String b(Context paramContext, String paramString)
   {
-    if (paramString == null) {
-      return "0";
-    }
-    paramContext = paramContext.getPackageManager();
-    paramString = paramString.split("\\|");
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < paramString.length)
+    try
     {
-      if (i != 0) {
-        localStringBuffer.append("|");
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
+      if (paramContext == null) {
+        return "0";
       }
-      try
-      {
-        PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
-        if (localPackageInfo == null) {
-          localStringBuffer.append(0);
-        } else {
-          localStringBuffer.append(localPackageInfo.versionName);
-        }
-      }
-      catch (Exception localException)
-      {
-        label86:
-        break label86;
-      }
-      localStringBuffer.append(0);
-      i += 1;
+      paramContext = paramContext.versionName;
+      return paramContext;
     }
-    return localStringBuffer.toString();
+    catch (Exception paramContext) {}
+    return "0";
   }
   
   public static boolean b(Context paramContext, String paramString1, String paramString2)
@@ -162,6 +128,40 @@ public class PackageUtil
       }
       try
       {
+        PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
+        if (localPackageInfo == null) {
+          localStringBuffer.append(0);
+        } else {
+          localStringBuffer.append(localPackageInfo.versionName);
+        }
+      }
+      catch (Exception localException)
+      {
+        label86:
+        break label86;
+      }
+      localStringBuffer.append(0);
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String d(Context paramContext, String paramString)
+  {
+    if (paramString == null) {
+      return "0";
+    }
+    paramContext = paramContext.getPackageManager();
+    paramString = paramString.split("\\|");
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      if (i != 0) {
+        localStringBuffer.append("|");
+      }
+      try
+      {
         if (paramContext.getPackageInfo(paramString[i].trim(), 0) == null) {
           localStringBuffer.append(0);
         } else {
@@ -179,7 +179,7 @@ public class PackageUtil
     return localStringBuffer.toString();
   }
   
-  public static String d(Context paramContext, String paramString)
+  public static String e(Context paramContext, String paramString)
   {
     if (paramString == null) {
       return "0";
@@ -215,7 +215,7 @@ public class PackageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PackageUtil
  * JD-Core Version:    0.7.0.1
  */

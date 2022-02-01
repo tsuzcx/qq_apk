@@ -19,27 +19,20 @@ import mqq.app.MobileQQ;
 
 public class ThreadTraceHelper
 {
-  private static long jdField_a_of_type_Long;
-  private static ThreadTraceHelper.TraceFileObserver jdField_a_of_type_ComTencentQqperfToolsThreadTraceHelper$TraceFileObserver = new ThreadTraceHelper.TraceFileObserver("/data/anr/traces.txt", 8);
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static String jdField_a_of_type_JavaLangString;
-  private static HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap;
-  private static String b;
-  
-  static
-  {
-    jdField_a_of_type_Long = -1L;
-    b = null;
-    jdField_a_of_type_JavaUtilHashMap = new HashMap(30);
-  }
+  private static String a;
+  private static ThreadTraceHelper.TraceFileObserver b = new ThreadTraceHelper.TraceFileObserver("/data/anr/traces.txt", 8);
+  private static long c = -1L;
+  private static String d = null;
+  private static HashMap<Long, String> e = new HashMap(30);
+  private static Object f = new Object();
   
   public static int a(Context paramContext, String paramString1, String paramString2)
   {
     try
     {
-      a();
+      d();
       Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(a);
       ((StringBuilder)localObject1).append("msftrace/");
       localObject1 = new File(((StringBuilder)localObject1).toString());
       if (!((File)localObject1).exists()) {
@@ -68,15 +61,15 @@ public class ThreadTraceHelper
       if ((((File)localObject1).exists()) && (((File)localObject1).canRead()) && (l1 != 0L))
       {
         paramContext.edit().putBoolean("key_dumping", true).commit();
-        jdField_a_of_type_ComTencentQqperfToolsThreadTraceHelper$TraceFileObserver.startWatching();
+        b.startWatching();
         long l2 = SystemClock.uptimeMillis();
         QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces send signal");
         Process.sendSignal(Process.myPid(), 3);
         try
         {
-          synchronized (jdField_a_of_type_ComTencentQqperfToolsThreadTraceHelper$TraceFileObserver)
+          synchronized (b)
           {
-            jdField_a_of_type_ComTencentQqperfToolsThreadTraceHelper$TraceFileObserver.wait(20000L);
+            b.wait(20000L);
           }
           long l3;
           bool = ((File)localObject1).exists();
@@ -84,7 +77,7 @@ public class ThreadTraceHelper
         catch (InterruptedException localInterruptedException)
         {
           localInterruptedException.printStackTrace();
-          jdField_a_of_type_ComTencentQqperfToolsThreadTraceHelper$TraceFileObserver.stopWatching();
+          b.stopWatching();
           paramContext.edit().remove("key_dumping").putInt("key_crash_count", 0).commit();
           paramContext = new StringBuilder();
           paramContext.append("dumpTraces wait traces for ");
@@ -137,13 +130,13 @@ public class ThreadTraceHelper
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
     localStringBuilder.append("|transTid=");
-    localStringBuilder.append(jdField_a_of_type_Long);
+    localStringBuilder.append(c);
     localStringBuilder.append("|transTname=");
-    localStringBuilder.append(b);
+    localStringBuilder.append(d);
     localStringBuilder.append("|transWaiting=");
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (f)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      Iterator localIterator = e.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -162,9 +155,9 @@ public class ThreadTraceHelper
   
   public static String a(String paramString)
   {
-    a();
+    d();
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     if (4 == MobileQQ.sProcessId) {
       localStringBuilder.append("msftrace/");
     }
@@ -176,131 +169,25 @@ public class ThreadTraceHelper
     return localStringBuilder.toString();
   }
   
-  public static ArrayList<String> a(Context paramContext)
-  {
-    a();
-    ArrayList localArrayList = new ArrayList(10);
-    paramContext = paramContext.getSharedPreferences("unified_monitor", 0);
-    long l2 = paramContext.getLong("last_report_trace_file", 0L);
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
-    }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject1).append("msftrace/");
-    localObject1 = new File(((StringBuilder)localObject1).toString());
-    if (((File)localObject1).exists())
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      if (localObject1 != null)
-      {
-        int n = localObject1.length;
-        int j = 0;
-        for (int i = 0;; i = k)
-        {
-          k = i;
-          if (j >= n) {
-            break;
-          }
-          Object localObject2 = localObject1[j];
-          Object localObject3 = localObject2.getName();
-          int m;
-          if ((localObject2.isFile()) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject3).startsWith("traces_"))) {
-            m = 1;
-          } else {
-            m = 0;
-          }
-          k = i;
-          if (m != 0)
-          {
-            try
-            {
-              localObject3 = ((String)localObject3).split("_");
-              if ((localObject3 != null) && (localObject3.length > 2)) {
-                l2 = Long.valueOf(localObject3[1]).longValue();
-              }
-            }
-            catch (Exception localException)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("UnifiedMonitor.Trace", 2, "parse trace file time exception : ", localException);
-              }
-              l2 = 0L;
-            }
-            if ((l2 > 0L) && (l2 > l1))
-            {
-              localArrayList.add(localObject2.getAbsolutePath());
-              k = i + 1;
-            }
-            else
-            {
-              k = i;
-              if (Math.abs(l2 - System.currentTimeMillis()) > 172800000L)
-              {
-                localObject2.delete();
-                k = i;
-              }
-            }
-          }
-          j += 1;
-        }
-      }
-    }
-    int k = 0;
-    if (k > 0)
-    {
-      paramContext.edit().putLong("last_report_trace_file", System.currentTimeMillis()).commit();
-      QLog.e("UnifiedMonitor.Trace", 1, new Object[] { "report msf trace stack time = ", Long.valueOf(System.currentTimeMillis()), ",report file count=", Integer.valueOf(k) });
-    }
-    return localArrayList;
-  }
-  
-  private static void a()
-  {
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
-    try
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
-      localStringBuilder.append("/tencent/msflogs/");
-      localStringBuilder.append("com.tencent.mobileqq".replace(".", "/"));
-      localStringBuilder.append("/");
-      jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
-      return;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder;
-      label72:
-      break label72;
-    }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("/sdcard/tencent/msflogs/");
-    localStringBuilder.append("com.tencent.mobileqq".replace(".", "/"));
-    localStringBuilder.append("/");
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
-  }
-  
   public static void a(long paramLong)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (f)
     {
-      jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+      e.remove(Long.valueOf(paramLong));
       return;
     }
   }
   
   public static void a(long paramLong, String paramString)
   {
-    jdField_a_of_type_Long = paramLong;
-    b = paramString;
+    c = paramLong;
+    d = paramString;
   }
   
   public static void a(Context paramContext)
   {
-    a();
-    Object localObject1 = new File(jdField_a_of_type_JavaLangString);
+    d();
+    Object localObject1 = new File(a);
     int i;
     if (((File)localObject1).exists())
     {
@@ -341,42 +228,42 @@ public class ThreadTraceHelper
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 287	java/io/File:isFile	()Z
+    //   1: invokevirtual 283	java/io/File:isFile	()Z
     //   4: ifeq +256 -> 260
     //   7: aconst_null
     //   8: astore 9
     //   10: aload 5
-    //   12: invokevirtual 71	java/io/File:exists	()Z
+    //   12: invokevirtual 75	java/io/File:exists	()Z
     //   15: ifeq +9 -> 24
     //   18: aload 5
-    //   20: invokevirtual 334	java/io/File:delete	()Z
+    //   20: invokevirtual 309	java/io/File:delete	()Z
     //   23: pop
-    //   24: new 396	java/io/FileOutputStream
+    //   24: new 317	java/io/FileOutputStream
     //   27: dup
     //   28: aload 5
-    //   30: invokespecial 399	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   30: invokespecial 320	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   33: astore 8
-    //   35: new 401	java/io/FileInputStream
+    //   35: new 322	java/io/FileInputStream
     //   38: dup
     //   39: aload_0
-    //   40: invokespecial 402	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   40: invokespecial 323	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   43: astore_0
     //   44: aload_0
-    //   45: invokevirtual 405	java/io/FileInputStream:available	()I
+    //   45: invokevirtual 326	java/io/FileInputStream:available	()I
     //   48: i2l
     //   49: lload_1
     //   50: lcmp
     //   51: ifle +9 -> 60
     //   54: aload_0
     //   55: lload_1
-    //   56: invokevirtual 408	java/io/FileInputStream:skip	(J)J
+    //   56: invokevirtual 329	java/io/FileInputStream:skip	(J)J
     //   59: pop2
     //   60: sipush 4096
     //   63: newarray byte
     //   65: astore 9
     //   67: aload_0
     //   68: aload 9
-    //   70: invokevirtual 412	java/io/FileInputStream:read	([B)I
+    //   70: invokevirtual 333	java/io/FileInputStream:read	([B)I
     //   73: istore 7
     //   75: iload 7
     //   77: iconst_m1
@@ -385,24 +272,24 @@ public class ThreadTraceHelper
     //   83: aload 9
     //   85: iconst_0
     //   86: iload 7
-    //   88: invokevirtual 416	java/io/FileOutputStream:write	([BII)V
+    //   88: invokevirtual 337	java/io/FileOutputStream:write	([BII)V
     //   91: goto -24 -> 67
     //   94: aload 6
     //   96: ifnull +24 -> 120
     //   99: aload 8
-    //   101: ldc_w 418
-    //   104: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   107: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   101: ldc_w 339
+    //   104: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   107: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   110: aload 8
     //   112: aload 6
-    //   114: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   117: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   114: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   117: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   120: aload 8
-    //   122: invokevirtual 428	java/io/FileOutputStream:flush	()V
+    //   122: invokevirtual 349	java/io/FileOutputStream:flush	()V
     //   125: aload 8
-    //   127: invokevirtual 431	java/io/FileOutputStream:close	()V
+    //   127: invokevirtual 352	java/io/FileOutputStream:close	()V
     //   130: aload_0
-    //   131: invokevirtual 432	java/io/FileInputStream:close	()V
+    //   131: invokevirtual 353	java/io/FileInputStream:close	()V
     //   134: goto +126 -> 260
     //   137: astore 5
     //   139: aload 8
@@ -438,31 +325,31 @@ public class ThreadTraceHelper
     //   196: aload 8
     //   198: astore 9
     //   200: aload 9
-    //   202: invokevirtual 433	java/io/IOException:printStackTrace	()V
+    //   202: invokevirtual 354	java/io/IOException:printStackTrace	()V
     //   205: aload 5
-    //   207: invokevirtual 334	java/io/File:delete	()Z
+    //   207: invokevirtual 309	java/io/File:delete	()Z
     //   210: pop
     //   211: aload 6
     //   213: ifnull +11 -> 224
     //   216: aload 6
-    //   218: invokevirtual 431	java/io/FileOutputStream:close	()V
+    //   218: invokevirtual 352	java/io/FileOutputStream:close	()V
     //   221: goto +3 -> 224
     //   224: aload_0
     //   225: ifnull +7 -> 232
     //   228: aload_0
-    //   229: invokevirtual 432	java/io/FileInputStream:close	()V
+    //   229: invokevirtual 353	java/io/FileInputStream:close	()V
     //   232: iconst_0
     //   233: ireturn
     //   234: astore 5
     //   236: aload 6
     //   238: ifnull +11 -> 249
     //   241: aload 6
-    //   243: invokevirtual 431	java/io/FileOutputStream:close	()V
+    //   243: invokevirtual 352	java/io/FileOutputStream:close	()V
     //   246: goto +3 -> 249
     //   249: aload_0
     //   250: ifnull +7 -> 257
     //   253: aload_0
-    //   254: invokevirtual 432	java/io/FileInputStream:close	()V
+    //   254: invokevirtual 353	java/io/FileInputStream:close	()V
     //   257: aload 5
     //   259: athrow
     //   260: iconst_1
@@ -528,10 +415,10 @@ public class ThreadTraceHelper
   public static boolean a(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: new 60	java/io/File
+    //   0: new 64	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 7
     //   10: aconst_null
     //   11: astore 6
@@ -540,25 +427,25 @@ public class ThreadTraceHelper
     //   16: aload 5
     //   18: astore_0
     //   19: aload 7
-    //   21: invokevirtual 71	java/io/File:exists	()Z
+    //   21: invokevirtual 75	java/io/File:exists	()Z
     //   24: ifeq +12 -> 36
     //   27: aload 5
     //   29: astore_0
     //   30: aload 7
-    //   32: invokevirtual 334	java/io/File:delete	()Z
+    //   32: invokevirtual 309	java/io/File:delete	()Z
     //   35: pop
     //   36: aload 5
     //   38: astore_0
-    //   39: new 396	java/io/FileOutputStream
+    //   39: new 317	java/io/FileOutputStream
     //   42: dup
     //   43: aload 7
-    //   45: invokespecial 399	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   45: invokespecial 320	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   48: astore 5
-    //   50: invokestatic 439	java/lang/Thread:activeCount	()I
-    //   53: anewarray 436	java/lang/Thread
+    //   50: invokestatic 360	java/lang/Thread:activeCount	()I
+    //   53: anewarray 357	java/lang/Thread
     //   56: astore_0
     //   57: aload_0
-    //   58: invokestatic 443	java/lang/Thread:enumerate	([Ljava/lang/Thread;)I
+    //   58: invokestatic 364	java/lang/Thread:enumerate	([Ljava/lang/Thread;)I
     //   61: pop
     //   62: iconst_0
     //   63: istore_2
@@ -575,67 +462,67 @@ public class ThreadTraceHelper
     //   77: aload 6
     //   79: ifnull +351 -> 430
     //   82: aload 5
-    //   84: ldc_w 445
-    //   87: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   90: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   84: ldc_w 366
+    //   87: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   90: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   93: aload 5
     //   95: aload 6
-    //   97: invokevirtual 446	java/lang/Thread:getName	()Ljava/lang/String;
-    //   100: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   103: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   97: invokevirtual 367	java/lang/Thread:getName	()Ljava/lang/String;
+    //   100: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   103: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   106: aload 5
-    //   108: ldc_w 418
-    //   111: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   114: invokevirtual 425	java/io/FileOutputStream:write	([B)V
-    //   117: new 49	java/lang/StringBuilder
+    //   108: ldc_w 339
+    //   111: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   114: invokevirtual 346	java/io/FileOutputStream:write	([B)V
+    //   117: new 53	java/lang/StringBuilder
     //   120: dup
-    //   121: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   121: invokespecial 54	java/lang/StringBuilder:<init>	()V
     //   124: astore 8
     //   126: aload 8
-    //   128: ldc_w 448
-    //   131: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: ldc_w 369
+    //   131: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: pop
     //   135: aload 8
     //   137: aload 6
-    //   139: invokevirtual 452	java/lang/Thread:getState	()Ljava/lang/Thread$State;
-    //   142: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   139: invokevirtual 373	java/lang/Thread:getState	()Ljava/lang/Thread$State;
+    //   142: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   145: pop
     //   146: aload 5
     //   148: aload 8
-    //   150: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   156: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   150: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   156: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   159: aload 5
-    //   161: ldc_w 418
-    //   164: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   167: invokevirtual 425	java/io/FileOutputStream:write	([B)V
-    //   170: new 49	java/lang/StringBuilder
+    //   161: ldc_w 339
+    //   164: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   167: invokevirtual 346	java/io/FileOutputStream:write	([B)V
+    //   170: new 53	java/lang/StringBuilder
     //   173: dup
-    //   174: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   174: invokespecial 54	java/lang/StringBuilder:<init>	()V
     //   177: astore 8
     //   179: aload 8
-    //   181: ldc_w 454
-    //   184: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: ldc_w 375
+    //   184: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: pop
     //   188: aload 8
     //   190: aload 6
-    //   192: invokevirtual 457	java/lang/Thread:getId	()J
-    //   195: invokevirtual 171	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   192: invokevirtual 378	java/lang/Thread:getId	()J
+    //   195: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   198: pop
     //   199: aload 5
     //   201: aload 8
-    //   203: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   206: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   209: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   203: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   206: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   209: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   212: aload 5
-    //   214: ldc_w 418
-    //   217: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   220: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   214: ldc_w 339
+    //   217: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   220: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   223: aload 6
-    //   225: invokevirtual 460	java/lang/Thread:isAlive	()Z
+    //   225: invokevirtual 381	java/lang/Thread:isAlive	()Z
     //   228: ifeq +202 -> 430
     //   231: aload 6
-    //   233: invokevirtual 464	java/lang/Thread:getStackTrace	()[Ljava/lang/StackTraceElement;
+    //   233: invokevirtual 385	java/lang/Thread:getStackTrace	()[Ljava/lang/StackTraceElement;
     //   236: astore 6
     //   238: aload 6
     //   240: arraylength
@@ -649,35 +536,35 @@ public class ThreadTraceHelper
     //   253: aload 6
     //   255: iload_3
     //   256: aaload
-    //   257: invokevirtual 467	java/lang/StackTraceElement:toString	()Ljava/lang/String;
-    //   260: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   263: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   257: invokevirtual 388	java/lang/StackTraceElement:toString	()Ljava/lang/String;
+    //   260: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   263: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   266: aload 5
-    //   268: ldc_w 418
-    //   271: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   274: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   268: ldc_w 339
+    //   271: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   274: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   277: iload_3
     //   278: iconst_1
     //   279: iadd
     //   280: istore_3
     //   281: goto -36 -> 245
     //   284: aload 5
-    //   286: ldc_w 418
-    //   289: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   292: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   286: ldc_w 339
+    //   289: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   292: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   295: goto +135 -> 430
     //   298: aload 5
-    //   300: ldc_w 418
-    //   303: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   306: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   300: ldc_w 339
+    //   303: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   306: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   309: aload 5
     //   311: aload_1
-    //   312: invokevirtual 422	java/lang/String:getBytes	()[B
-    //   315: invokevirtual 425	java/io/FileOutputStream:write	([B)V
+    //   312: invokevirtual 343	java/lang/String:getBytes	()[B
+    //   315: invokevirtual 346	java/io/FileOutputStream:write	([B)V
     //   318: aload 5
-    //   320: invokevirtual 428	java/io/FileOutputStream:flush	()V
+    //   320: invokevirtual 349	java/io/FileOutputStream:flush	()V
     //   323: aload 5
-    //   325: invokevirtual 431	java/io/FileOutputStream:close	()V
+    //   325: invokevirtual 352	java/io/FileOutputStream:close	()V
     //   328: iconst_1
     //   329: ireturn
     //   330: astore_0
@@ -699,30 +586,30 @@ public class ThreadTraceHelper
     //   357: astore_1
     //   358: aload_1
     //   359: astore_0
-    //   360: invokestatic 311	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   360: invokestatic 391	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   363: ifeq +16 -> 379
     //   366: aload_1
     //   367: astore_0
-    //   368: ldc 115
+    //   368: ldc 119
     //   370: iconst_2
-    //   371: ldc_w 469
+    //   371: ldc_w 393
     //   374: aload 5
-    //   376: invokestatic 471	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   376: invokestatic 396	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   379: aload_1
     //   380: astore_0
     //   381: aload 7
-    //   383: invokevirtual 334	java/io/File:delete	()Z
+    //   383: invokevirtual 309	java/io/File:delete	()Z
     //   386: pop
     //   387: aload_1
     //   388: ifnull +7 -> 395
     //   391: aload_1
-    //   392: invokevirtual 431	java/io/FileOutputStream:close	()V
+    //   392: invokevirtual 352	java/io/FileOutputStream:close	()V
     //   395: iconst_0
     //   396: ireturn
     //   397: aload 5
     //   399: ifnull +8 -> 407
     //   402: aload 5
-    //   404: invokevirtual 431	java/io/FileOutputStream:close	()V
+    //   404: invokevirtual 352	java/io/FileOutputStream:close	()V
     //   407: goto +5 -> 412
     //   410: aload_0
     //   411: athrow
@@ -796,18 +683,124 @@ public class ThreadTraceHelper
     return "|process=other";
   }
   
+  public static ArrayList<String> b(Context paramContext)
+  {
+    d();
+    ArrayList localArrayList = new ArrayList(10);
+    paramContext = paramContext.getSharedPreferences("unified_monitor", 0);
+    long l2 = paramContext.getLong("last_report_trace_file", 0L);
+    long l1 = l2;
+    if (l2 < 0L) {
+      l1 = 0L;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(a);
+    ((StringBuilder)localObject1).append("msftrace/");
+    localObject1 = new File(((StringBuilder)localObject1).toString());
+    if (((File)localObject1).exists())
+    {
+      localObject1 = ((File)localObject1).listFiles();
+      if (localObject1 != null)
+      {
+        int n = localObject1.length;
+        int j = 0;
+        for (int i = 0;; i = k)
+        {
+          k = i;
+          if (j >= n) {
+            break;
+          }
+          Object localObject2 = localObject1[j];
+          Object localObject3 = localObject2.getName();
+          int m;
+          if ((localObject2.isFile()) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject3).startsWith("traces_"))) {
+            m = 1;
+          } else {
+            m = 0;
+          }
+          k = i;
+          if (m != 0)
+          {
+            try
+            {
+              localObject3 = ((String)localObject3).split("_");
+              if ((localObject3 != null) && (localObject3.length > 2)) {
+                l2 = Long.valueOf(localObject3[1]).longValue();
+              }
+            }
+            catch (Exception localException)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("UnifiedMonitor.Trace", 2, "parse trace file time exception : ", localException);
+              }
+              l2 = 0L;
+            }
+            if ((l2 > 0L) && (l2 > l1))
+            {
+              localArrayList.add(localObject2.getAbsolutePath());
+              k = i + 1;
+            }
+            else
+            {
+              k = i;
+              if (Math.abs(l2 - System.currentTimeMillis()) > 172800000L)
+              {
+                localObject2.delete();
+                k = i;
+              }
+            }
+          }
+          j += 1;
+        }
+      }
+    }
+    int k = 0;
+    if (k > 0)
+    {
+      paramContext.edit().putLong("last_report_trace_file", System.currentTimeMillis()).commit();
+      QLog.e("UnifiedMonitor.Trace", 1, new Object[] { "report msf trace stack time = ", Long.valueOf(System.currentTimeMillis()), ",report file count=", Integer.valueOf(k) });
+    }
+    return localArrayList;
+  }
+  
   public static void b(long paramLong, String paramString)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (f)
     {
-      jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramString);
+      e.put(Long.valueOf(paramLong), paramString);
       return;
     }
+  }
+  
+  private static void d()
+  {
+    if (TextUtils.isEmpty(a)) {}
+    try
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+      localStringBuilder.append("/tencent/msflogs/");
+      localStringBuilder.append("com.tencent.mobileqq".replace(".", "/"));
+      localStringBuilder.append("/");
+      a = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder;
+      label72:
+      break label72;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/sdcard/tencent/msflogs/");
+    localStringBuilder.append("com.tencent.mobileqq".replace(".", "/"));
+    localStringBuilder.append("/");
+    a = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.tools.ThreadTraceHelper
  * JD-Core Version:    0.7.0.1
  */

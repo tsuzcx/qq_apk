@@ -4,9 +4,9 @@ import org.json.JSONObject;
 
 public class VSEntranceStyleBean
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-  private String b = "";
+  private String a = "";
+  private JSONObject b = new JSONObject();
+  private String c = "";
   
   public static VSEntranceStyleBean a(String paramString)
   {
@@ -17,9 +17,9 @@ public class VSEntranceStyleBean
     {
       VSEntranceStyleBean localVSEntranceStyleBean = new VSEntranceStyleBean();
       paramString = new JSONObject(paramString);
-      localVSEntranceStyleBean.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
-      localVSEntranceStyleBean.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
-      localVSEntranceStyleBean.b = paramString.optString("md5", "");
+      localVSEntranceStyleBean.a = paramString.optString("icon_image_url", "");
+      localVSEntranceStyleBean.b = paramString.optJSONObject("config");
+      localVSEntranceStyleBean.c = paramString.optString("md5", "");
       return localVSEntranceStyleBean;
     }
     catch (Exception paramString)
@@ -31,34 +31,34 @@ public class VSEntranceStyleBean
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public String b()
+  public JSONObject b()
   {
     return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("k = icon_image_url, value = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n k = config, value = ");
-    localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    localStringBuilder.append(this.b.toString());
     localStringBuilder.append("\n k = md5, value = ");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSEntranceStyleBean
  * JD-Core Version:    0.7.0.1
  */

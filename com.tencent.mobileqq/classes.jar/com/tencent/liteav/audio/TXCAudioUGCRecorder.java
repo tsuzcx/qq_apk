@@ -5,7 +5,7 @@ import com.tencent.liteav.audio.impl.Record.TXCAudioSysRecord;
 import com.tencent.liteav.audio.impl.Record.a;
 import com.tencent.liteav.audio.impl.Record.c;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +38,11 @@ public class TXCAudioUGCRecorder
   private AtomicReference<Float> mSpeedRate = new AtomicReference(Float.valueOf(1.0F));
   protected int mVoiceChangerType = 0;
   private float mVolume = 1.0F;
-  private WeakReference<e> mWeakRecordListener;
+  private WeakReference<g> mWeakRecordListener;
   
   static
   {
-    f.f();
+    h.f();
   }
   
   private TXCAudioUGCRecorder()
@@ -164,11 +164,11 @@ public class TXCAudioUGCRecorder
     return this.mChannels;
   }
   
-  public e getListener()
+  public g getListener()
   {
     WeakReference localWeakReference = this.mWeakRecordListener;
     if (localWeakReference != null) {
-      return (e)localWeakReference.get();
+      return (g)localWeakReference.get();
     }
     return null;
   }
@@ -198,7 +198,7 @@ public class TXCAudioUGCRecorder
     TXCLog.e("AudioCenter:TXCAudioUGCRecorder", ((StringBuilder)localObject).toString());
     localObject = getListener();
     if (localObject != null) {
-      ((e)localObject).onRecordError(paramInt, paramString);
+      ((g)localObject).onRecordError(paramInt, paramString);
     }
   }
   
@@ -227,9 +227,9 @@ public class TXCAudioUGCRecorder
         if (paramArrayOfByte != null)
         {
           this.mLastPTS = l1;
-          e locale = getListener();
-          if (locale != null) {
-            locale.onRecordEncData(paramArrayOfByte, l1, this.mSampleRate.get(), this.mChannels, this.mBits);
+          g localg = getListener();
+          if (localg != null) {
+            localg.onRecordEncData(paramArrayOfByte, l1, this.mSampleRate.get(), this.mChannels, this.mBits);
           } else {
             TXCLog.e("AudioCenter:TXCAudioUGCRecorder", "onAudioRecordPCM listener is null");
           }
@@ -333,14 +333,14 @@ public class TXCAudioUGCRecorder
     this.mChannels = paramInt;
   }
   
-  public void setListener(e parame)
+  public void setListener(g paramg)
   {
-    if (parame == null) {}
+    if (paramg == null) {}
     try
     {
       this.mWeakRecordListener = null;
       break label26;
-      this.mWeakRecordListener = new WeakReference(parame);
+      this.mWeakRecordListener = new WeakReference(paramg);
       label26:
       return;
     }
@@ -469,7 +469,7 @@ public class TXCAudioUGCRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCAudioUGCRecorder
  * JD-Core Version:    0.7.0.1
  */

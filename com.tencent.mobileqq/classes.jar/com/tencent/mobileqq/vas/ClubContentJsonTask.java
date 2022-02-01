@@ -31,40 +31,21 @@ import org.json.JSONObject;
 
 public class ClubContentJsonTask
 {
-  public static ClubContentJsonTask.PersonalCardUrlInfo a;
-  public static ClubContentJsonTask.TaskInfo a;
-  static DownloadListener a;
-  public static String a;
-  public static HashMap<String, Boolean> a;
-  public static ClubContentJsonTask.TaskInfo[] a;
-  public static ClubContentJsonTask.TaskInfo b;
-  public static String b;
-  public static ClubContentJsonTask.TaskInfo c;
-  public static ClubContentJsonTask.TaskInfo d;
-  public static ClubContentJsonTask.TaskInfo e;
-  public static ClubContentJsonTask.TaskInfo f;
-  public static ClubContentJsonTask.TaskInfo g;
-  public static ClubContentJsonTask.TaskInfo h;
-  public static ClubContentJsonTask.TaskInfo i;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo = new ClubContentJsonTask.TaskInfo("recommendEmotion.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_emoji_aioPanal/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_emoji_aioPanal/xydata.json", "recommendEmotionVersion", "vipData_emoji_aio_recommend.json");
-    jdField_b_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo = new ClubContentJsonTask.TaskInfo("IndividuationUrls.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation_url/android.json", "individuationUrlJsonNewVersion", "vipData_individuation_url_json");
-    c = new ClubContentJsonTask.TaskInfo("Individuation.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation/xydata.json", "IndividuationVersion", "individ_json");
-    d = new ClubContentJsonTask.TaskInfo("EmoticonWording.json", "", "https://i.gtimg.cn/club/item/parcel/client_wording.json", "EmoticonWordingVersion", "wording_json");
-    e = new ClubContentJsonTask.TaskInfo("WebviewCrashReport.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vip_crash_report/WebviewCrashReport.json", "WebviewCrashJSONVersion", "WebviewCrashReport.json");
-    f = new ClubContentJsonTask.TaskInfo("Qutu_xydata.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vipQutu_release_zip/xydata.json", "QutuXYDataJsonVersion", "xydata.json");
-    g = new ClubContentJsonTask.TaskInfo("iRedPacket_v2.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipRedPacketDataV2/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipRedPacketDataV2/xydata.mobile.v1.json", "vipRedPacketData_json_v2", "vipRedPacketData_json_v2");
-    h = new ClubContentJsonTask.TaskInfo("UrlIntercept.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_url_to_api", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_url_to_api/android.json", "UrlIntercept_json", "UrlIntercept_json");
-    jdField_a_of_type_JavaLangString = "clubContentPendantMarketJsonUpdate";
-    i = new ClubContentJsonTask.TaskInfo("font_info.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipList_font_data", "https://i.gtimg.cn/qqshow/admindata/comdata/vipList_font_data/version.json", "FontInfoList_json", "FontInfoList_json");
-    jdField_a_of_type_ArrayOfComTencentMobileqqVasClubContentJsonTask$TaskInfo = new ClubContentJsonTask.TaskInfo[] { jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo, c, d };
-    jdField_b_of_type_JavaLangString = "https://i.gtimg.cn/xydata";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ClubContentJsonTask.1();
-    jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PersonalCardUrlInfo = null;
-  }
+  public static ClubContentJsonTask.TaskInfo a = new ClubContentJsonTask.TaskInfo("recommendEmotion.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_emoji_aioPanal/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_emoji_aioPanal/xydata.json", "recommendEmotionVersion", "vipData_emoji_aio_recommend.json");
+  public static ClubContentJsonTask.TaskInfo b = new ClubContentJsonTask.TaskInfo("IndividuationUrls.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation_url/android.json", "individuationUrlJsonNewVersion", "vipData_individuation_url_json");
+  public static ClubContentJsonTask.TaskInfo c = new ClubContentJsonTask.TaskInfo("Individuation.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_individuation/xydata.json", "IndividuationVersion", "individ_json");
+  public static ClubContentJsonTask.TaskInfo d = new ClubContentJsonTask.TaskInfo("EmoticonWording.json", "", "https://i.gtimg.cn/club/item/parcel/client_wording.json", "EmoticonWordingVersion", "wording_json");
+  public static ClubContentJsonTask.TaskInfo e = new ClubContentJsonTask.TaskInfo("WebviewCrashReport.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vip_crash_report/WebviewCrashReport.json", "WebviewCrashJSONVersion", "WebviewCrashReport.json");
+  public static ClubContentJsonTask.TaskInfo f = new ClubContentJsonTask.TaskInfo("Qutu_xydata.json", "", "https://i.gtimg.cn/qqshow/admindata/comdata/vipQutu_release_zip/xydata.json", "QutuXYDataJsonVersion", "xydata.json");
+  public static ClubContentJsonTask.TaskInfo g = new ClubContentJsonTask.TaskInfo("iRedPacket_v2.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipRedPacketDataV2/", "https://i.gtimg.cn/qqshow/admindata/comdata/vipRedPacketDataV2/xydata.mobile.v1.json", "vipRedPacketData_json_v2", "vipRedPacketData_json_v2");
+  public static ClubContentJsonTask.TaskInfo h = new ClubContentJsonTask.TaskInfo("UrlIntercept.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_url_to_api", "https://i.gtimg.cn/qqshow/admindata/comdata/vipData_url_to_api/android.json", "UrlIntercept_json", "UrlIntercept_json");
+  public static String i = "clubContentPendantMarketJsonUpdate";
+  public static ClubContentJsonTask.TaskInfo j = new ClubContentJsonTask.TaskInfo("font_info.json", "https://i.gtimg.cn/qqshow/admindata/comdata/vipList_font_data", "https://i.gtimg.cn/qqshow/admindata/comdata/vipList_font_data/version.json", "FontInfoList_json", "FontInfoList_json");
+  public static ClubContentJsonTask.TaskInfo[] k = { a, c, d };
+  public static String l = "https://i.gtimg.cn/xydata";
+  public static HashMap<String, Boolean> m = new HashMap();
+  static DownloadListener n = new ClubContentJsonTask.1();
+  public static ClubContentJsonTask.PersonalCardUrlInfo o = null;
   
   public static int a(Context paramContext, String paramString)
   {
@@ -84,7 +65,7 @@ public class ClubContentJsonTask
   public static JSONObject a(AppInterface paramAppInterface, ClubContentJsonTask.TaskInfo paramTaskInfo, boolean paramBoolean)
   {
     Object localObject = paramAppInterface.getApplicationContext();
-    String str = paramTaskInfo.jdField_a_of_type_JavaLangString;
+    String str = paramTaskInfo.a;
     localObject = new File(((Context)localObject).getFilesDir(), str);
     if (((File)localObject).exists())
     {
@@ -155,15 +136,15 @@ public class ClubContentJsonTask
   public static void a(AppInterface paramAppInterface)
   {
     paramAppInterface.getApplication().getApplicationContext();
-    int j = 0;
+    int i1 = 0;
     for (;;)
     {
-      ClubContentJsonTask.TaskInfo[] arrayOfTaskInfo = jdField_a_of_type_ArrayOfComTencentMobileqqVasClubContentJsonTask$TaskInfo;
-      if (j >= arrayOfTaskInfo.length) {
+      ClubContentJsonTask.TaskInfo[] arrayOfTaskInfo = k;
+      if (i1 >= arrayOfTaskInfo.length) {
         break;
       }
-      a(paramAppInterface, arrayOfTaskInfo[j]);
-      j += 1;
+      a(paramAppInterface, arrayOfTaskInfo[i1]);
+      i1 += 1;
     }
   }
   
@@ -174,7 +155,7 @@ public class ClubContentJsonTask
       if (paramTaskInfo == null) {
         return;
       }
-      File localFile = new File(paramAppInterface.getApplication().getApplicationContext().getFilesDir(), paramTaskInfo.jdField_a_of_type_JavaLangString);
+      File localFile = new File(paramAppInterface.getApplication().getApplicationContext().getFilesDir(), paramTaskInfo.a);
       if (!localFile.exists())
       {
         Object localObject;
@@ -182,23 +163,23 @@ public class ClubContentJsonTask
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("downloadIfNotExist, not exist: ");
-          ((StringBuilder)localObject).append(paramTaskInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramTaskInfo.a);
           QLog.d("ClubContentJsonTask", 2, ((StringBuilder)localObject).toString());
         }
-        int k = 0;
-        int j;
+        int i2 = 0;
+        int i1;
         try
         {
           localObject = String.valueOf(NetConnInfoCenter.getServerTime());
-          int m = ((String)localObject).length();
-          j = 10;
-          if (m <= 10) {
-            j = ((String)localObject).length();
+          int i3 = ((String)localObject).length();
+          i1 = 10;
+          if (i3 <= 10) {
+            i1 = ((String)localObject).length();
           }
-          localObject = ((String)localObject).substring(0, j);
-          j = k;
+          localObject = ((String)localObject).substring(0, i1);
+          i1 = i2;
           if (Long.parseLong((String)localObject) < 2147483647L) {
-            j = Integer.parseInt((String)localObject);
+            i1 = Integer.parseInt((String)localObject);
           }
         }
         catch (Exception localException)
@@ -207,14 +188,14 @@ public class ClubContentJsonTask
           localStringBuilder.append("downloadIfNotExist, Integer.parseInt Err:");
           localStringBuilder.append(localException.getMessage());
           QLog.e("ClubContentJsonTask", 1, localStringBuilder.toString());
-          j = k;
+          i1 = i2;
         }
         Bundle localBundle = new Bundle();
-        localBundle.putInt("version", j);
+        localBundle.putInt("version", i1);
         localBundle.putString("version_key", paramTaskInfo.d);
         localBundle.putString("method", "downloadIfNotExist");
         localBundle.putString("ifromet", "null1");
-        a(paramAppInterface, paramTaskInfo, ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).insertMtype("VIP_emosm", paramTaskInfo.jdField_b_of_type_JavaLangString), localFile, localBundle);
+        a(paramAppInterface, paramTaskInfo, ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).insertMtype("VIP_emosm", paramTaskInfo.b), localFile, localBundle);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -231,7 +212,7 @@ public class ClubContentJsonTask
     localBundle.putString("version_key", paramTaskInfo.d);
     localBundle.putString("method", "updateJson");
     localBundle.putString("ifromet", String.valueOf(paramBoolean));
-    a(paramAppInterface, paramTaskInfo, null, new File(localContext.getFilesDir(), paramTaskInfo.jdField_a_of_type_JavaLangString), localBundle);
+    a(paramAppInterface, paramTaskInfo, null, new File(localContext.getFilesDir(), paramTaskInfo.a), localBundle);
   }
   
   public static void a(AppInterface paramAppInterface, ClubContentJsonTask.TaskInfo paramTaskInfo, String paramString, File paramFile, Bundle paramBundle)
@@ -243,12 +224,12 @@ public class ClubContentJsonTask
     if ((paramString != null) || (paramTaskInfo != null)) {}
     try
     {
-      str1 = paramTaskInfo.jdField_b_of_type_JavaLangString;
+      str1 = paramTaskInfo.b;
       break label35;
       return;
       label35:
       if (paramTaskInfo != null) {
-        paramTaskInfo = paramTaskInfo.jdField_a_of_type_JavaLangString;
+        paramTaskInfo = paramTaskInfo.a;
       } else {
         paramTaskInfo = paramFile.getName();
       }
@@ -276,11 +257,11 @@ public class ClubContentJsonTask
     } else {
       bool = false;
     }
-    int j = paramBundle.getInt("version", 0);
+    int i1 = paramBundle.getInt("version", 0);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(paramString2);
     ((StringBuilder)localObject2).append("_");
-    ((StringBuilder)localObject2).append(j);
+    ((StringBuilder)localObject2).append(i1);
     localObject2 = ((StringBuilder)localObject2).toString();
     if (QLog.isColorLevel())
     {
@@ -290,18 +271,18 @@ public class ClubContentJsonTask
       localStringBuilder.append(",key:");
       localStringBuilder.append(paramString2);
       localStringBuilder.append(", server version:");
-      localStringBuilder.append(j);
+      localStringBuilder.append(i1);
       localStringBuilder.append(",ifromet:");
       localStringBuilder.append((String)localObject1);
       QLog.d("ClubContentJsonTask", 2, localStringBuilder.toString());
     }
-    if ((bool) || (!jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2)) || (!((Boolean)jdField_a_of_type_JavaUtilHashMap.get(localObject2)).booleanValue()))
+    if ((bool) || (!m.containsKey(localObject2)) || (!((Boolean)m.get(localObject2)).booleanValue()))
     {
-      jdField_a_of_type_JavaUtilHashMap.put(localObject2, Boolean.valueOf(true));
+      m.put(localObject2, Boolean.valueOf(true));
       paramFile = new DownloadTask(paramString1, paramFile);
-      paramFile.n = true;
-      paramFile.jdField_a_of_type_JavaLangString = paramString2;
-      ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).getDownloader(1).startDownload(paramFile, jdField_a_of_type_ComTencentMobileqqVipDownloadListener, paramBundle);
+      paramFile.J = true;
+      paramFile.b = paramString2;
+      ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).getDownloader(1).startDownload(paramFile, n, paramBundle);
       if (QLog.isColorLevel())
       {
         paramFile = new StringBuilder();
@@ -333,19 +314,19 @@ public class ClubContentJsonTask
   
   private static void a(JSONArray paramJSONArray)
   {
-    int j = 0;
-    while (j < paramJSONArray.length())
+    int i1 = 0;
+    while (i1 < paramJSONArray.length())
     {
-      Object localObject = (JSONObject)paramJSONArray.get(j);
-      int k;
+      Object localObject = (JSONObject)paramJSONArray.get(i1);
+      int i2;
       if (((JSONObject)localObject).has("platformid")) {
-        k = ((JSONObject)localObject).getInt("platformid");
+        i2 = ((JSONObject)localObject).getInt("platformid");
       } else {
-        k = -1;
+        i2 = -1;
       }
-      if ((k != 0) && (k != 2))
+      if ((i2 != 0) && (i2 != 2))
       {
-        j += 1;
+        i1 += 1;
       }
       else
       {
@@ -359,14 +340,14 @@ public class ClubContentJsonTask
         if (((JSONObject)localObject).has("guestUrl")) {
           str = ((JSONObject)localObject).getString("guestUrl");
         }
-        localObject = jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PersonalCardUrlInfo;
-        ((ClubContentJsonTask.PersonalCardUrlInfo)localObject).jdField_a_of_type_JavaLangString = paramJSONArray;
-        ((ClubContentJsonTask.PersonalCardUrlInfo)localObject).jdField_b_of_type_JavaLangString = str;
+        localObject = o;
+        ((ClubContentJsonTask.PersonalCardUrlInfo)localObject).a = paramJSONArray;
+        ((ClubContentJsonTask.PersonalCardUrlInfo)localObject).b = str;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("personalcardurlInfo : platformId = ");
-          ((StringBuilder)localObject).append(k);
+          ((StringBuilder)localObject).append(i2);
           ((StringBuilder)localObject).append(";masterUrl = ");
           ((StringBuilder)localObject).append(paramJSONArray);
           ((StringBuilder)localObject).append(";guestUrl = ");
@@ -388,12 +369,12 @@ public class ClubContentJsonTask
     boolean bool1;
     if (localObject != null)
     {
-      int j = ((JSONObject)localObject).optInt("maxIndex");
-      if (j > 0) {
-        FontReportUtils.jdField_a_of_type_Int = new Random().nextInt(j) + 1;
+      int i1 = ((JSONObject)localObject).optInt("maxIndex");
+      if (i1 > 0) {
+        FontReportUtils.c = new Random().nextInt(i1) + 1;
       }
-      FontReportUtils.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(((JSONObject)localObject).optInt("reportInteval"));
-      AtomicBoolean localAtomicBoolean = FontReportUtils.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+      FontReportUtils.b.set(((JSONObject)localObject).optInt("reportInteval"));
+      AtomicBoolean localAtomicBoolean = FontReportUtils.a;
       if (((JSONObject)localObject).optInt("reportEnable") == 1) {
         bool1 = true;
       } else {
@@ -426,10 +407,10 @@ public class ClubContentJsonTask
     {
       try
       {
-        jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PersonalCardUrlInfo = new ClubContentJsonTask.PersonalCardUrlInfo();
-        int j = localJSONObject.optInt("frequency");
-        if (j != 0) {
-          VasUserData.a(paramAppInterface, "ticketInterval", Integer.toString(j));
+        o = new ClubContentJsonTask.PersonalCardUrlInfo();
+        int i1 = localJSONObject.optInt("frequency");
+        if (i1 != 0) {
+          VasUserData.a(paramAppInterface, "ticketInterval", Integer.toString(i1));
         }
         if (localJSONObject.has("vipPersonalCard")) {
           localObject = localJSONObject.getJSONArray("vipPersonalCard");
@@ -511,36 +492,36 @@ public class ClubContentJsonTask
     if (str != null) {
       a(MobileQQ.sMobileQQ.getApplicationContext(), str, paramBundle.getInt("version", 0));
     }
-    if ((paramDownloadTask.jdField_a_of_type_JavaLangString != null) && (paramAppRuntime != null))
+    if ((paramDownloadTask.b != null) && (paramAppRuntime != null))
     {
-      if (c.jdField_a_of_type_JavaLangString.equals(paramDownloadTask.jdField_a_of_type_JavaLangString))
+      if (c.a.equals(paramDownloadTask.b))
       {
         paramDownloadTask = c;
-        paramDownloadTask.jdField_a_of_type_OrgJsonJSONObject = null;
+        paramDownloadTask.f = null;
         paramDownloadTask.a(paramAppRuntime.getApplication());
         return;
       }
-      if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(f.jdField_a_of_type_JavaLangString))
+      if (paramDownloadTask.b.equals(f.a))
       {
         ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).resolveFunnyPicJson(paramAppRuntime);
         return;
       }
-      if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(jdField_b_of_type_ComTencentMobileqqVasClubContentJsonTask$TaskInfo.jdField_a_of_type_JavaLangString)) {
+      if (paramDownloadTask.b.equals(b.a)) {
         return;
       }
-      if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(h.jdField_a_of_type_JavaLangString))
+      if (paramDownloadTask.b.equals(h.a))
       {
         ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).parseURLJson(paramAppRuntime);
         return;
       }
-      if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(d.jdField_a_of_type_JavaLangString))
+      if (paramDownloadTask.b.equals(d.a))
       {
         paramDownloadTask = d;
-        paramDownloadTask.jdField_a_of_type_OrgJsonJSONObject = null;
+        paramDownloadTask.f = null;
         paramDownloadTask.a(paramAppRuntime.getApplication());
         return;
       }
-      if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(i.jdField_a_of_type_JavaLangString)) {
+      if (paramDownloadTask.b.equals(j.a)) {
         paramDownloadTask = (IFontManagerService)paramAppRuntime.getRuntimeService(IFontManagerService.class, "");
       }
     }
@@ -556,7 +537,7 @@ public class ClubContentJsonTask
       paramBundle.append(bool1);
       paramBundle.append(",key == null:");
       boolean bool1 = bool2;
-      if (paramDownloadTask.jdField_a_of_type_JavaLangString == null) {
+      if (paramDownloadTask.b == null) {
         bool1 = true;
       }
       paramBundle.append(bool1);
@@ -591,7 +572,7 @@ public class ClubContentJsonTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ClubContentJsonTask
  * JD-Core Version:    0.7.0.1
  */

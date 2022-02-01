@@ -25,11 +25,11 @@ import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_8410;
 public class NewerGuideBannerViewModel
   extends BaseViewModel<NewerGuideBannerRepository>
 {
-  static ViewModelProvider.Factory jdField_a_of_type_AndroidxLifecycleViewModelProvider$Factory = new NewerGuideBannerViewModel.6();
-  private MutableLiveData<NewerGuideBannerData> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  NewerGuideBannerSharePreferenceHelper jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper = NewerGuideBannerSharePreferenceHelper.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper;
-  private NewerGuideWebLaunchSuccessReceiver jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideWebLaunchSuccessReceiver;
+  static ViewModelProvider.Factory b = new NewerGuideBannerViewModel.6();
+  NewerGuideBannerSharePreferenceHelper a = NewerGuideBannerSharePreferenceHelper.a;
+  private MutableLiveData<NewerGuideBannerData> c = new MutableLiveData();
+  private URLDrawable d;
+  private NewerGuideWebLaunchSuccessReceiver e;
   
   public NewerGuideBannerViewModel(NewerGuideBannerRepository paramNewerGuideBannerRepository)
   {
@@ -60,26 +60,26 @@ public class NewerGuideBannerViewModel
   
   private void a(AppRuntime paramAppRuntime, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    Object localObject = this.d;
     if (localObject != null) {
       ((URLDrawable)localObject).setURLDrawableListener(null);
     }
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
-    localObject = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    this.d = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
+    localObject = this.c;
+    URLDrawable localURLDrawable = this.d;
     int i = 0;
     ((MutableLiveData)localObject).setValue(NewerGuideBannerData.a(localURLDrawable, false));
-    int j = this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus();
+    int j = this.d.getStatus();
     if (j == 1) {
       i = 1;
     }
     if (i == 0)
     {
-      a(paramAppRuntime, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      a(paramAppRuntime, this.d);
     }
     else
     {
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(NewerGuideBannerData.a(this.jdField_a_of_type_ComTencentImageURLDrawable, true));
+      this.c.setValue(NewerGuideBannerData.a(this.d, true));
       d(paramAppRuntime);
     }
     if (QLog.isColorLevel())
@@ -93,17 +93,17 @@ public class NewerGuideBannerViewModel
     }
   }
   
-  private boolean a(String paramString)
+  private boolean b(String paramString)
   {
     return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://ti.qq.com/hybrid-h5/new_user_guide/index"));
   }
   
-  private void c()
+  private void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuideBannerViewModel", 2, "[onContactsWebJump] do not have permission");
     }
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(NewerGuideBannerData.a());
+    this.c.setValue(NewerGuideBannerData.a());
   }
   
   private void d(AppRuntime paramAppRuntime)
@@ -111,13 +111,13 @@ public class NewerGuideBannerViewModel
     if (!NewerGuideBannerPreloadWebProcessConfigProcessor.a.a()) {
       return;
     }
-    if (DeviceInfoUtils.b()) {
+    if (DeviceInfoUtils.isLowPerfDevice()) {
       return;
     }
-    if (((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a() != 0) {
+    if (((NewerGuideBannerRepository)this.z).d() != 0) {
       return;
     }
-    if (((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramAppRuntime)) {
+    if (((NewerGuideBannerRepository)this.z).a(paramAppRuntime)) {
       return;
     }
     e(paramAppRuntime);
@@ -141,23 +141,12 @@ public class NewerGuideBannerViewModel
   
   MutableLiveData<NewerGuideBannerData> a()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideWebLaunchSuccessReceiver == null)
-    {
-      IntentFilter localIntentFilter = new IntentFilter("ACTION_NEWER_GUIDE_WEB_LAUNCH_SUCCESS");
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideWebLaunchSuccessReceiver = new NewerGuideWebLaunchSuccessReceiver(this);
-      MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideWebLaunchSuccessReceiver, localIntentFilter);
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(NewerGuideBannerData.a(true));
-    }
+    return this.c;
   }
   
   void a(QBaseActivity paramQBaseActivity)
   {
-    String str = ((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    String str = ((NewerGuideBannerRepository)this.z).a();
     if (!TextUtils.isEmpty(str)) {
       a(paramQBaseActivity.getAppRuntime(), str);
     }
@@ -169,7 +158,7 @@ public class NewerGuideBannerViewModel
   
   void a(QBaseActivity paramQBaseActivity, String paramString)
   {
-    if (a(paramString))
+    if (b(paramString))
     {
       e(paramQBaseActivity, paramString);
       return;
@@ -179,13 +168,13 @@ public class NewerGuideBannerViewModel
   
   void a(QBaseActivity paramQBaseActivity, oidb_0x59f.Guidelines_8410 paramGuidelines_8410)
   {
-    ((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramGuidelines_8410);
+    ((NewerGuideBannerRepository)this.z).a(paramGuidelines_8410);
     paramQBaseActivity = paramQBaseActivity.getAppRuntime();
-    paramGuidelines_8410 = ((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    paramGuidelines_8410 = ((NewerGuideBannerRepository)this.z).a();
     if (!TextUtils.isEmpty(paramGuidelines_8410))
     {
       a(paramQBaseActivity, paramGuidelines_8410);
-      ReportController.b(paramQBaseActivity, "dc00898", "", "", "0X800B618", "0X800B618", ((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).b(), 0, "", "", "", "");
+      ReportController.b(paramQBaseActivity, "dc00898", "", "", "0X800B618", "0X800B618", ((NewerGuideBannerRepository)this.z).e(), 0, "", "", "", "");
       return;
     }
     c(paramQBaseActivity);
@@ -197,29 +186,27 @@ public class NewerGuideBannerViewModel
       QLog.d("NewerGuideBannerViewModel", 2, "onClickClose");
     }
     b(paramAppRuntime);
-    ReportController.b(paramAppRuntime, "dc00898", "", "", "0X800B4EA", "0X800B4EA", ((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).b(), 0, "", "", "", "");
+    ReportController.b(paramAppRuntime, "dc00898", "", "", "0X800B4EA", "0X800B4EA", ((NewerGuideBannerRepository)this.z).e(), 0, "", "", "", "");
   }
   
   void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuideBannerViewModel", 2, "unRegisterReceiver");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideWebLaunchSuccessReceiver != null)
+    if (this.e == null)
     {
-      MobileQQ.getContext().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideWebLaunchSuccessReceiver);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideWebLaunchSuccessReceiver = null;
+      IntentFilter localIntentFilter = new IntentFilter("ACTION_NEWER_GUIDE_WEB_LAUNCH_SUCCESS");
+      this.e = new NewerGuideWebLaunchSuccessReceiver(this);
+      MobileQQ.getContext().registerReceiver(this.e, localIntentFilter);
+      this.c.setValue(NewerGuideBannerData.a(true));
     }
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(NewerGuideBannerData.a(false));
   }
   
   void b(QBaseActivity paramQBaseActivity)
   {
     AppRuntime localAppRuntime = paramQBaseActivity.getAppRuntime();
-    String str = ((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).b();
+    String str = ((NewerGuideBannerRepository)this.z).c();
     if (!TextUtils.isEmpty(str))
     {
-      int i = ((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+      int i = ((NewerGuideBannerRepository)this.z).d();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -249,7 +236,7 @@ public class NewerGuideBannerViewModel
         a(paramQBaseActivity, str);
       }
     }
-    ReportController.b(localAppRuntime, "dc00898", "", "", "0X800B619", "0X800B619", ((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).b(), 0, "", "", "", "");
+    ReportController.b(localAppRuntime, "dc00898", "", "", "0X800B619", "0X800B619", ((NewerGuideBannerRepository)this.z).e(), 0, "", "", "", "");
   }
   
   void b(QBaseActivity paramQBaseActivity, String paramString)
@@ -263,7 +250,7 @@ public class NewerGuideBannerViewModel
     }
     if ((paramString.startsWith("http")) || (paramString.startsWith("https")))
     {
-      a();
+      b();
       ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).startBrowser(paramQBaseActivity, paramString, "NewerGuideBannerViewModel");
     }
   }
@@ -271,8 +258,21 @@ public class NewerGuideBannerViewModel
   public void b(AppRuntime paramAppRuntime)
   {
     ((INewerGuideHelper)QRoute.api(INewerGuideHelper.class)).getNewerGuideManager(paramAppRuntime).c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerSharePreferenceHelper.b(paramAppRuntime.getCurrentAccountUin());
+    this.a.b(paramAppRuntime.getCurrentAccountUin());
     c(paramAppRuntime);
+  }
+  
+  void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuideBannerViewModel", 2, "unRegisterReceiver");
+    }
+    if (this.e != null)
+    {
+      MobileQQ.getContext().unregisterReceiver(this.e);
+      this.e = null;
+    }
+    this.c.setValue(NewerGuideBannerData.a(false));
   }
   
   void c(QBaseActivity paramQBaseActivity)
@@ -280,7 +280,7 @@ public class NewerGuideBannerViewModel
     QLog.d("NewerGuideBannerViewModel", 1, "[showPermissionDeniedHint] confirm");
     ReportController.b(paramQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X800B4E8", "0X800B4E8", 2, 0, "", "", "", "");
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(((NewerGuideBannerRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).b());
+    localStringBuilder.append(((NewerGuideBannerRepository)this.z).c());
     localStringBuilder.append("&ab_auth=0");
     b(paramQBaseActivity, localStringBuilder.toString());
   }
@@ -325,18 +325,18 @@ public class NewerGuideBannerViewModel
   protected void onCleared()
   {
     super.onCleared();
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.d;
     if (localURLDrawable != null)
     {
       localURLDrawable.setURLDrawableListener(null);
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+      this.d = null;
     }
-    b();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerViewModel
  * JD-Core Version:    0.7.0.1
  */

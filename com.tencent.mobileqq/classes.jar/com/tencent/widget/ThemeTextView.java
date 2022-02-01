@@ -10,9 +10,9 @@ import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 public class ThemeTextView
   extends TextView
 {
-  public static String a = "1000";
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  boolean jdField_a_of_type_Boolean = true;
+  public static String c = "1000";
+  Paint a;
+  boolean b = true;
   
   public ThemeTextView(Context paramContext)
   {
@@ -34,21 +34,21 @@ public class ThemeTextView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    this.a.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
   }
   
   public static void setCurThemeId(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    c = paramString;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Boolean) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
+    if ((this.b) && (ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)))
     {
-      paramCanvas.saveLayer(null, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
+      paramCanvas.saveLayer(null, this.a, 31);
       super.onDraw(paramCanvas);
       paramCanvas.restore();
       return;
@@ -58,12 +58,12 @@ public class ThemeTextView
   
   public void setSupportMaskView(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ThemeTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ class AEGIFChunkPreviewFragment$1
     if (paramInt == 0) {
       AEGIFChunkPreviewFragment.a(this.a, paramString);
     }
-    ((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(paramInt)).c = paramString;
+    ((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(paramInt)).f = paramString;
     ((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(paramInt)).a = 13;
-    AEGIFChunkPreviewFragment.a(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
+    AEGIFChunkPreviewFragment.c(this.a).runOnUiThread(new AEGIFChunkPreviewFragment.1.1(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.1
  * JD-Core Version:    0.7.0.1
  */

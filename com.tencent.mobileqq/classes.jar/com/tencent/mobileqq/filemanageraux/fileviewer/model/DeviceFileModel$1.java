@@ -16,57 +16,57 @@ class DeviceFileModel$1
   
   public void a(Session paramSession, float paramFloat)
   {
-    FileManagerEntity localFileManagerEntity = DeviceFileModel.a(this.a).a();
+    FileManagerEntity localFileManagerEntity = DeviceFileModel.d(this.a).r();
     if (localFileManagerEntity == null) {
       return;
     }
-    if ((DeviceFileModel.c(this.a) != null) && (paramSession.uSessionID == DeviceFileModel.a(this.a)))
+    if ((DeviceFileModel.e(this.a) != null) && (paramSession.uSessionID == DeviceFileModel.b(this.a)))
     {
       localFileManagerEntity.fProgress = paramFloat;
-      DeviceFileModel.d(this.a).a(paramFloat);
+      DeviceFileModel.f(this.a).a(paramFloat);
     }
   }
   
   public void a(Session paramSession, boolean paramBoolean)
   {
-    FileManagerEntity localFileManagerEntity = DeviceFileModel.b(this.a).a();
+    FileManagerEntity localFileManagerEntity = DeviceFileModel.g(this.a).r();
     if (localFileManagerEntity == null) {
       return;
     }
-    if ((DeviceFileModel.a(this.a) != null) && (paramSession.uSessionID == DeviceFileModel.b(this.a)) && (paramBoolean))
+    if ((DeviceFileModel.h(this.a) != null) && (paramSession.uSessionID == DeviceFileModel.i(this.a)) && (paramBoolean))
     {
       localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
-      DeviceFileModel.b(this.a).a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
+      DeviceFileModel.j(this.a).a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
     }
-    if ((DeviceFileModel.e(this.a) != null) && (paramSession.uSessionID == DeviceFileModel.a(this.a)))
+    if ((DeviceFileModel.k(this.a) != null) && (paramSession.uSessionID == DeviceFileModel.b(this.a)))
     {
       if (paramBoolean)
       {
         localFileManagerEntity.fProgress = 1.0F;
         localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
-        DeviceFileModel.f(this.a).f();
-        if (this.a.e() == 2)
+        DeviceFileModel.l(this.a).f();
+        if (this.a.z() == 2)
         {
           new Handler(Looper.getMainLooper()).postDelayed(new DeviceFileModel.1.1(this), 1000L);
           return;
         }
-        DeviceFileModel.i(this.a).f();
+        DeviceFileModel.o(this.a).f();
         return;
       }
-      DeviceFileModel.j(this.a).g();
+      DeviceFileModel.p(this.a).g();
     }
   }
   
   public void b(Session paramSession)
   {
-    if ((DeviceFileModel.a(this.a) != null) && (paramSession.uSessionID == DeviceFileModel.a(this.a))) {
-      DeviceFileModel.b(this.a).d();
+    if ((DeviceFileModel.a(this.a) != null) && (paramSession.uSessionID == DeviceFileModel.b(this.a))) {
+      DeviceFileModel.c(this.a).d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.model.DeviceFileModel.1
  * JD-Core Version:    0.7.0.1
  */

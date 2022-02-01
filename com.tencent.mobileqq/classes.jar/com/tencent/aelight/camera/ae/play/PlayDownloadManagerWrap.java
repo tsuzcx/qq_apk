@@ -104,7 +104,7 @@ public class PlayDownloadManagerWrap
     }
     try
     {
-      String str = paramAEMaterialMetaData.k;
+      String str = paramAEMaterialMetaData.m;
       List localList = (List)this.observerMap.get(str);
       if ((this.finalDownloadId != null) && (this.finalDownloadId.equals(str)) && (paramBoolean) && (paramAEMaterialMetaData.equals(AEPlayShowGridAdapter.selectedMaterial))) {
         ThreadManager.getUIHandler().post(new PlayDownloadManagerWrap.2(this, paramAEMaterialMetaData));
@@ -179,7 +179,7 @@ public class PlayDownloadManagerWrap
   
   public void startDownload(VideoStoryCapturePartManager paramVideoStoryCapturePartManager, @NonNull AEMaterialManager paramAEMaterialManager, @NonNull AEMaterialMetaData paramAEMaterialMetaData)
   {
-    if (isListenerExits(paramAEMaterialMetaData.k)) {
+    if (isListenerExits(paramAEMaterialMetaData.m)) {
       return;
     }
     WeakReference localWeakReference = this.mPartManager;
@@ -187,14 +187,14 @@ public class PlayDownloadManagerWrap
       this.mPartManager = new WeakReference(paramVideoStoryCapturePartManager);
     }
     paramVideoStoryCapturePartManager = new PlayDownloadManagerWrap.DownloadProcessListener(null);
-    addDownloadListener(paramAEMaterialMetaData.k, paramVideoStoryCapturePartManager);
-    this.finalDownloadId = paramAEMaterialMetaData.k;
+    addDownloadListener(paramAEMaterialMetaData.m, paramVideoStoryCapturePartManager);
+    this.finalDownloadId = paramAEMaterialMetaData.m;
     ThreadManager.excute(new PlayDownloadManagerWrap.1(this, paramAEMaterialManager, paramAEMaterialMetaData, paramVideoStoryCapturePartManager), 128, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.PlayDownloadManagerWrap
  * JD-Core Version:    0.7.0.1
  */

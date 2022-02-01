@@ -7,38 +7,28 @@ import com.tencent.tkd.topicsdk.videoprocess.mediacodec.ttpic.GPUBaseFilter;
 
 public class HWVideoRecorderBuffer
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private GPUBaseFilter jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private Frame[] jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame = new Frame[3];
-  private volatile int b = 0;
-  private int c;
-  private int d;
-  
-  public int a()
-  {
-    if (Math.min(1, this.jdField_a_of_type_Int - this.b) == 1)
-    {
-      int i = this.b;
-      return this.jdField_a_of_type_ArrayOfInt[(i % 3)];
-    }
-    return -1;
-  }
+  private int[] a = new int[3];
+  private Frame[] b = new Frame[3];
+  private GPUBaseFilter c;
+  private volatile int d = 0;
+  private volatile int e = 0;
+  private int f;
+  private int g;
   
   public void a()
   {
     int i = 0;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter;
+    this.d = 0;
+    this.e = 0;
+    Object localObject = this.c;
     if (localObject != null) {
-      ((GPUBaseFilter)localObject).e();
+      ((GPUBaseFilter)localObject).f();
     }
-    localObject = this.jdField_a_of_type_ArrayOfInt;
+    localObject = this.a;
     GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
     while (i < 3)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame;
+      localObject = this.b;
       if (localObject[i] != null) {
         localObject[i].clear();
       }
@@ -51,9 +41,9 @@ public class HWVideoRecorderBuffer
     if (paramBoolean) {}
     try
     {
-      this.jdField_a_of_type_Int += paramInt;
+      this.d += paramInt;
       break label29;
-      this.b += paramInt;
+      this.e += paramInt;
       label29:
       return;
     }
@@ -62,12 +52,12 @@ public class HWVideoRecorderBuffer
   
   public boolean a(int paramInt)
   {
-    if (Math.min(1, 3 - (this.jdField_a_of_type_Int - this.b)) == 1)
+    if (Math.min(1, 3 - (this.d - this.e)) == 1)
     {
-      int i = this.jdField_a_of_type_Int % 3;
-      this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i].bindFrame(this.jdField_a_of_type_ArrayOfInt[i], this.c, this.d, 1.0D);
+      int i = this.d % 3;
+      this.b[i].bindFrame(this.a[i], this.f, this.g, 1.0D);
       GlUtil.a("bindFrame");
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter.a(paramInt, null, null);
+      this.c.a(paramInt, null, null);
       GLES20.glBindFramebuffer(36160, 0);
       GLES20.glFinish();
       a(true, 1);
@@ -75,10 +65,20 @@ public class HWVideoRecorderBuffer
     }
     return false;
   }
+  
+  public int b()
+  {
+    if (Math.min(1, this.d - this.e) == 1)
+    {
+      int i = this.e;
+      return this.a[(i % 3)];
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.recorder.HWVideoRecorderBuffer
  * JD-Core Version:    0.7.0.1
  */

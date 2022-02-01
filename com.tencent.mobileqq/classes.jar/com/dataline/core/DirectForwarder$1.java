@@ -24,7 +24,7 @@ class DirectForwarder$1
     int i = paramInt1;
     if (paramInt1 == 0)
     {
-      paramInt1 = FileManagerUtil.a(paramString);
+      paramInt1 = FileManagerUtil.c(paramString);
       if (paramInt1 != 1)
       {
         if (paramInt1 != 2) {
@@ -38,8 +38,8 @@ class DirectForwarder$1
       }
     }
     DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-    localDataLineMsgRecord.msgtype = DataLineHandler.a(i);
-    localDataLineMsgRecord.sessionid = paramDataLineHandler.a(0, this.jdField_a_of_type_Int).longValue();
+    localDataLineMsgRecord.msgtype = DataLineHandler.b(i);
+    localDataLineMsgRecord.sessionid = paramDataLineHandler.a(0, this.b).longValue();
     localDataLineMsgRecord.path = paramString;
     localDataLineMsgRecord.thumbPath = null;
     localDataLineMsgRecord.groupId = paramInt2;
@@ -51,7 +51,7 @@ class DirectForwarder$1
   protected String a(Integer... paramVarArgs)
   {
     int i = paramVarArgs[0].intValue();
-    a(this.jdField_a_of_type_JavaUtilArrayList, i);
+    a(this.a, i);
     return null;
   }
   
@@ -60,7 +60,7 @@ class DirectForwarder$1
     if (paramList == null) {
       return;
     }
-    DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComDatalineCoreDirectForwarder.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.c.b.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     for (;;)
     {
       int j = paramList.size();
@@ -81,7 +81,7 @@ class DirectForwarder$1
       if ((j > 3) && (j < 50))
       {
         localObject1 = new ArrayList();
-        int k = localDataLineHandler.a();
+        int k = localDataLineHandler.g();
         i = 0;
         while (i < j)
         {
@@ -112,7 +112,7 @@ class DirectForwarder$1
         return;
       }
       Object localObject1 = new ArrayList();
-      j = localDataLineHandler.a();
+      j = localDataLineHandler.g();
       int i = 0;
       while (i < 50)
       {

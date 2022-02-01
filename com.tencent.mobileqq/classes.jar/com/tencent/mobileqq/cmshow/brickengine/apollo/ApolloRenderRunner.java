@@ -2,7 +2,6 @@ package com.tencent.mobileqq.cmshow.brickengine.apollo;
 
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.apollo.render.IRenderRunner;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -248,62 +247,6 @@ public class ApolloRenderRunner
     }
   }
   
-  public void a()
-  {
-    try
-    {
-      this.a.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(IRenderRunner paramIRenderRunner)
-  {
-    if (paramIRenderRunner == null) {
-      return;
-    }
-    try
-    {
-      Object localObject = this.a.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if ((localWeakReference != null) && (paramIRenderRunner == localWeakReference.get()))
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("addRunner has add the same iRenderRunner:");
-            ((StringBuilder)localObject).append(paramIRenderRunner);
-            QLog.d("apollochannel_JsRenderRunner", 2, ((StringBuilder)localObject).toString());
-          }
-          return;
-        }
-      }
-      this.a.add(new WeakReference(paramIRenderRunner));
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("addRunner iRenderRunner:");
-        ((StringBuilder)localObject).append(paramIRenderRunner);
-        ((StringBuilder)localObject).append(", size: ");
-        ((StringBuilder)localObject).append(this.a);
-        QLog.d("apollochannel_JsRenderRunner", 2, ((StringBuilder)localObject).toString());
-      }
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw paramIRenderRunner;
-    }
-  }
-  
   public void a(ApolloCmdChannel paramApolloCmdChannel, long paramLong, int paramInt, String paramString1, String paramString2)
   {
     try
@@ -397,6 +340,48 @@ public class ApolloRenderRunner
     }
   }
   
+  public void a(IRenderRunner paramIRenderRunner)
+  {
+    if (paramIRenderRunner == null) {
+      return;
+    }
+    try
+    {
+      Object localObject = this.a.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if ((localWeakReference != null) && (paramIRenderRunner == localWeakReference.get()))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("addRunner has add the same iRenderRunner:");
+            ((StringBuilder)localObject).append(paramIRenderRunner);
+            QLog.d("apollochannel_JsRenderRunner", 2, ((StringBuilder)localObject).toString());
+          }
+          return;
+        }
+      }
+      this.a.add(new WeakReference(paramIRenderRunner));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addRunner iRenderRunner:");
+        ((StringBuilder)localObject).append(paramIRenderRunner);
+        ((StringBuilder)localObject).append(", size: ");
+        ((StringBuilder)localObject).append(this.a);
+        QLog.d("apollochannel_JsRenderRunner", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramIRenderRunner;
+    }
+  }
+  
   public IRenderRunner b(long paramLong)
   {
     try
@@ -481,6 +466,20 @@ public class ApolloRenderRunner
     }
   }
   
+  public void b()
+  {
+    try
+    {
+      this.a.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public void b(IRenderRunner paramIRenderRunner)
   {
     if (paramIRenderRunner == null) {
@@ -523,7 +522,7 @@ public class ApolloRenderRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRenderRunner
  * JD-Core Version:    0.7.0.1
  */

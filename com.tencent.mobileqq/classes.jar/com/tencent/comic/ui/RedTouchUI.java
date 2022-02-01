@@ -22,10 +22,10 @@ import org.json.JSONObject;
 public class RedTouchUI
   extends RedTouch
 {
-  public RedAppInfo a;
-  private List<RedTypeInfo> b;
-  private int x = -1;
-  private int y = -1;
+  private int Z = -1;
+  public RedAppInfo a = null;
+  private int aa = -1;
+  private List<RedTypeInfo> ab = new ArrayList();
   
   public RedTouchUI(Context paramContext)
   {
@@ -35,8 +35,6 @@ public class RedTouchUI
   public RedTouchUI(Context paramContext, View paramView)
   {
     super(paramContext, paramView);
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedAppInfo = null;
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
   private void a(RedTypeInfo paramRedTypeInfo)
@@ -44,7 +42,7 @@ public class RedTouchUI
     if (paramRedTypeInfo == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    Object localObject = this.h;
     int m = 0;
     int k = 0;
     ((LinearLayout)localObject).setVisibility(0);
@@ -82,16 +80,16 @@ public class RedTouchUI
                 {
                   if (paramRedTypeInfo.getRedType() == 4)
                   {
-                    i = this.c;
-                    this.c = (i + 1);
-                  }
-                  else
-                  {
                     i = this.d;
                     this.d = (i + 1);
                   }
+                  else
+                  {
+                    i = this.e;
+                    this.e = (i + 1);
+                  }
                   ((View)localObject).setId(i);
-                  this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
+                  this.h.addView((View)localObject);
                 }
               }
               else
@@ -104,21 +102,21 @@ public class RedTouchUI
                 if (((JSONObject)localObject).has("dot")) {
                   k = ((JSONObject)localObject).getInt("dot");
                 }
-                paramRedTypeInfo = a(paramRedTypeInfo.getRedContent(), j, k, i);
+                paramRedTypeInfo = b(paramRedTypeInfo.getRedContent(), j, k, i);
                 if (paramRedTypeInfo != null)
                 {
-                  i = this.jdField_b_of_type_Int;
-                  this.jdField_b_of_type_Int = (i + 1);
+                  i = this.c;
+                  this.c = (i + 1);
                   paramRedTypeInfo.setId(i);
-                  this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramRedTypeInfo);
+                  this.h.addView(paramRedTypeInfo);
                 }
               }
             }
             else
             {
-              paramRedTypeInfo = a(paramRedTypeInfo.getRedContent());
+              paramRedTypeInfo = b(paramRedTypeInfo.getRedContent());
               if (paramRedTypeInfo != null) {
-                this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramRedTypeInfo);
+                this.h.addView(paramRedTypeInfo);
               }
             }
           }
@@ -127,10 +125,10 @@ public class RedTouchUI
             paramRedTypeInfo = a(i);
             if (paramRedTypeInfo != null)
             {
-              i = this.jdField_a_of_type_Int;
-              this.jdField_a_of_type_Int = (i + 1);
+              i = this.b;
+              this.b = (i + 1);
               paramRedTypeInfo.setId(i);
-              this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramRedTypeInfo);
+              this.h.addView(paramRedTypeInfo);
             }
           }
           return;
@@ -163,16 +161,16 @@ public class RedTouchUI
   
   private boolean a(List<RedTypeInfo> paramList)
   {
-    if (this.jdField_b_of_type_JavaUtilList.size() == 0) {
+    if (this.ab.size() == 0) {
       return false;
     }
-    if (this.jdField_b_of_type_JavaUtilList.size() != paramList.size()) {
+    if (this.ab.size() != paramList.size()) {
       return false;
     }
     int i = 0;
-    while (i < this.jdField_b_of_type_JavaUtilList.size())
+    while (i < this.ab.size())
     {
-      if (!a((RedTypeInfo)this.jdField_b_of_type_JavaUtilList.get(i), (RedTypeInfo)paramList.get(i))) {
+      if (!a((RedTypeInfo)this.ab.get(i), (RedTypeInfo)paramList.get(i))) {
         return false;
       }
       i += 1;
@@ -180,47 +178,14 @@ public class RedTouchUI
     return true;
   }
   
-  public View a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Object localObject = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((URLImageView)localObject).setBackgroundColor(paramInt3);
-    a(paramString, (URLImageView)localObject, paramInt1);
-    if (paramInt2 == 1)
-    {
-      if (this.x != -1)
-      {
-        paramString = new FrameLayout(getContext());
-        ((URLImageView)localObject).setLayoutParams(new FrameLayout.LayoutParams(a(36), a(36)));
-        ((URLImageView)localObject).setPadding(a(3), a(3), a(3), a(3));
-        paramString.addView((View)localObject);
-        localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        ((ImageView)localObject).setImageResource(this.x);
-        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-        localLayoutParams.gravity = 53;
-        ((ImageView)localObject).setLayoutParams(localLayoutParams);
-        paramString.addView((View)localObject);
-        paramString.setLayoutParams(a());
-        return paramString;
-      }
-      throw new RuntimeException("must set the redpoint imageresource");
-    }
-    paramString = a();
-    paramString.width = a(36);
-    paramString.height = a(36);
-    ((URLImageView)localObject).setLayoutParams(paramString);
-    ((URLImageView)localObject).setPadding(a(3), a(3), a(3), a(3));
-    return localObject;
-  }
-  
   protected ImageView a(int paramInt)
   {
-    if (this.x != -1)
+    if (this.Z != -1)
     {
-      ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localImageView.setImageResource(this.x);
+      ImageView localImageView = new ImageView(this.f);
+      localImageView.setImageResource(this.Z);
       localImageView.setBackgroundColor(paramInt);
-      localImageView.setLayoutParams(a());
+      localImageView.setLayoutParams(getRedTouchLayoutParams());
       return localImageView;
     }
     throw new RuntimeException("must set the redpoint imageresource");
@@ -229,15 +194,15 @@ public class RedTouchUI
   protected TextView a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     TextView localTextView;
-    if (this.y != -1) {
-      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    if (this.aa != -1) {
+      localTextView = new TextView(this.f);
     }
     try
     {
-      if (Integer.parseInt(paramString) > this.p)
+      if (Integer.parseInt(paramString) > this.w)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.p);
+        localStringBuilder.append(this.w);
         localStringBuilder.append("+");
         localTextView.setText(localStringBuilder.toString());
       }
@@ -258,18 +223,18 @@ public class RedTouchUI
     if (paramInt2 != 0)
     {
       localTextView.setTextSize(11.0F);
-      localTextView.setBackgroundResource(this.y);
+      localTextView.setBackgroundResource(this.aa);
     }
     else
     {
       localTextView.setTextSize(13.0F);
     }
-    localTextView.setLayoutParams(a());
-    if (this.jdField_b_of_type_Boolean)
+    localTextView.setLayoutParams(getRedTouchLayoutParams());
+    if (this.v)
     {
       localTextView.measure(0, 0);
-      this.l = (localTextView.getMeasuredWidth() / 2);
-      c();
+      this.r = (localTextView.getMeasuredWidth() / 2);
+      f();
     }
     return localTextView;
     throw new RuntimeException("must set the redpoint imageresource");
@@ -277,44 +242,77 @@ public class RedTouchUI
   
   public void a(RedAppInfo paramRedAppInfo)
   {
-    d();
+    g();
     if (paramRedAppInfo == null) {
       return;
     }
-    this.jdField_b_of_type_JavaUtilList.clear();
+    this.ab.clear();
     if (paramRedAppInfo.b() == 0) {
       return;
     }
-    if (paramRedAppInfo.a() != null)
+    if (paramRedAppInfo.o() != null)
     {
-      if (paramRedAppInfo.a().a() == null) {
+      if (paramRedAppInfo.o().a() == null) {
         return;
       }
-      if (a(paramRedAppInfo.a().a())) {
+      if (a(paramRedAppInfo.o().a())) {
         return;
       }
-      this.jdField_b_of_type_JavaUtilList.addAll(paramRedAppInfo.a().a());
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      this.ab.addAll(paramRedAppInfo.o().a());
+      Iterator localIterator = this.ab.iterator();
       while (localIterator.hasNext()) {
         a((RedTypeInfo)localIterator.next());
       }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedAppInfo = paramRedAppInfo;
+      this.a = paramRedAppInfo;
     }
+  }
+  
+  public View b(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject = new URLImageView(this.f);
+    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
+    ((URLImageView)localObject).setBackgroundColor(paramInt3);
+    a(paramString, (URLImageView)localObject, paramInt1);
+    if (paramInt2 == 1)
+    {
+      if (this.Z != -1)
+      {
+        paramString = new FrameLayout(getContext());
+        ((URLImageView)localObject).setLayoutParams(new FrameLayout.LayoutParams(a(36.0F), a(36.0F)));
+        ((URLImageView)localObject).setPadding(a(3.0F), a(3.0F), a(3.0F), a(3.0F));
+        paramString.addView((View)localObject);
+        localObject = new ImageView(this.f);
+        ((ImageView)localObject).setImageResource(this.Z);
+        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+        localLayoutParams.gravity = 53;
+        ((ImageView)localObject).setLayoutParams(localLayoutParams);
+        paramString.addView((View)localObject);
+        paramString.setLayoutParams(getRedTouchLayoutParams());
+        return paramString;
+      }
+      throw new RuntimeException("must set the redpoint imageresource");
+    }
+    paramString = getRedTouchLayoutParams();
+    paramString.width = a(36.0F);
+    paramString.height = a(36.0F);
+    ((URLImageView)localObject).setLayoutParams(paramString);
+    ((URLImageView)localObject).setPadding(a(3.0F), a(3.0F), a(3.0F), a(3.0F));
+    return localObject;
   }
   
   public void setRedpointImgResID(int paramInt)
   {
-    this.x = paramInt;
+    this.Z = paramInt;
   }
   
   public void setTextOrNumImgRedID(int paramInt)
   {
-    this.y = paramInt;
+    this.aa = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.RedTouchUI
  * JD-Core Version:    0.7.0.1
  */

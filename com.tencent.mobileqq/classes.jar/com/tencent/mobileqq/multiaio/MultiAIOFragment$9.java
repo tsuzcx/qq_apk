@@ -20,16 +20,16 @@ class MultiAIOFragment$9
       localStringBuilder.append("]");
       QLog.d("MultiAioFragment", 2, localStringBuilder.toString());
     }
-    MultiAIOFragment.a(this.a).setViewPagerBusy(true);
-    MultiAIOFragment.a(this.a).c(paramInt);
-    if (MultiAIOFragment.a(this.a).c() == 0) {
-      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
+    MultiAIOFragment.c(this.a).setViewPagerBusy(true);
+    MultiAIOFragment.d(this.a).e(paramInt);
+    if (MultiAIOFragment.d(this.a).getScrollState() == 0) {
+      MultiAIOFragment.c(this.a).setViewPagerBusy(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.9
  * JD-Core Version:    0.7.0.1
  */

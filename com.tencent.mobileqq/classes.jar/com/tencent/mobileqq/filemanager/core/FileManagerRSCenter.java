@@ -14,6 +14,8 @@ import com.tencent.mobileqq.filemanager.excitingtransfer.downloader.c2cdownloade
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.filemanager.fileviewer.data.VideoForC2C;
 import com.tencent.mobileqq.filemanager.fileviewer.data.VideoForDisc;
+import com.tencent.mobileqq.filemanager.guild.GuildFileDownloader;
+import com.tencent.mobileqq.filemanager.guild.VideoForGuild;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.managers.ShieldMsgManger;
@@ -30,31 +32,31 @@ import java.util.Set;
 
 public class FileManagerRSCenter
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new FileManagerRSCenter.1(this);
-  private LinkedHashMap<Long, IFileHttpBase> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  QQAppInterface a;
+  private FMObserver b = new FileManagerRSCenter.1(this);
+  private LinkedHashMap<Long, IFileHttpBase> c = new LinkedHashMap();
   
   public FileManagerRSCenter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    this.a = paramQQAppInterface;
+    this.a.getFileManagerNotifyCenter().addObserver(this.b);
   }
   
   public int a(long paramLong1, String paramString, int paramInt, long paramLong2)
   {
     try
     {
-      IFileHttpBase localIFileHttpBase = (IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong2));
+      IFileHttpBase localIFileHttpBase = (IFileHttpBase)this.c.get(Long.valueOf(paramLong2));
       if (localIFileHttpBase != null)
       {
-        paramInt = localIFileHttpBase.b();
+        paramInt = localIFileHttpBase.h();
         return paramInt;
       }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong1, paramString, paramInt, paramLong2);
+      paramString = this.a.getFileManagerDataCenter().a(paramLong1, paramString, paramInt, paramLong2);
       if (paramString == null) {
         return -1;
       }
-      if ((IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramString.nSessionId)) != null)
+      if ((IFileHttpBase)this.c.get(Long.valueOf(paramString.nSessionId)) != null)
       {
         paramInt = paramString.status;
         return paramInt;
@@ -73,18 +75,18 @@ public class FileManagerRSCenter
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2, paramString, paramInt);
+      Object localObject = this.a.getFileManagerDataCenter().a(paramLong2, paramString, paramInt);
       if (localObject != null)
       {
-        localObject = (IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(((FileManagerEntity)localObject).nSessionId));
+        localObject = (IFileHttpBase)this.c.get(Long.valueOf(((FileManagerEntity)localObject).nSessionId));
         if (localObject != null)
         {
-          paramInt = ((IFileHttpBase)localObject).c();
+          paramInt = ((IFileHttpBase)localObject).i();
           paramLong1 = paramInt;
           return paramLong1;
         }
       }
-      paramLong1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString, paramLong1, paramLong2, paramInt);
+      paramLong1 = this.a.getFileManagerDataCenter().a(paramString, paramLong1, paramLong2, paramInt);
       return paramLong1;
     }
     finally {}
@@ -94,18 +96,18 @@ public class FileManagerRSCenter
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+      int i = this.c.size();
       if (i < 1) {
         return null;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      Iterator localIterator = this.c.keySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (Long)localIterator.next();
-        localObject = (IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-        if (paramString.equalsIgnoreCase(((IFileHttpBase)localObject).b()))
+        localObject = (IFileHttpBase)this.c.get(localObject);
+        if (paramString.equalsIgnoreCase(((IFileHttpBase)localObject).p()))
         {
-          paramString = ((IFileHttpBase)localObject).a();
+          paramString = ((IFileHttpBase)localObject).q();
           return paramString;
         }
       }
@@ -122,21 +124,21 @@ public class FileManagerRSCenter
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+      int i = this.c.size();
       if (i < 1) {
         return null;
       }
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+        Iterator localIterator = this.c.keySet().iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (Long)localIterator.next();
-          localObject = (IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-          FileManagerEntity localFileManagerEntity = ((IFileHttpBase)localObject).a();
+          localObject = (IFileHttpBase)this.c.get(localObject);
+          FileManagerEntity localFileManagerEntity = ((IFileHttpBase)localObject).q();
           if ((paramString1.equalsIgnoreCase((String)localFileManagerEntity.mContext)) && (paramString2.equals(localFileManagerEntity.zipInnerPath)))
           {
-            paramString1 = ((IFileHttpBase)localObject).a();
+            paramString1 = ((IFileHttpBase)localObject).q();
             return paramString1;
           }
         }
@@ -217,12 +219,12 @@ public class FileManagerRSCenter
     arrayOfLong = new long[4];
     str2 = "";
     str1 = "";
-    localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    localIterator = this.c.keySet().iterator();
     i = 0;
     while (localIterator.hasNext())
     {
       Object localObject3 = (Long)localIterator.next();
-      Object localObject4 = (IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject3);
+      Object localObject4 = (IFileHttpBase)this.c.get(localObject3);
       if (localObject4 == null)
       {
         localObject4 = new StringBuilder();
@@ -234,13 +236,13 @@ public class FileManagerRSCenter
       }
       else
       {
-        if ((((IFileHttpBase)localObject4).a() == 0) || (((IFileHttpBase)localObject4).a() == 6)) {
+        if ((((IFileHttpBase)localObject4).b() == 0) || (((IFileHttpBase)localObject4).b() == 6)) {
           break label682;
         }
-        if ((((IFileHttpBase)localObject4).a() == 1) || (((IFileHttpBase)localObject4).a() == 8) || (((IFileHttpBase)localObject4).a() == 5) || (((IFileHttpBase)localObject4).a() == 50)) {
+        if ((((IFileHttpBase)localObject4).b() == 1) || (((IFileHttpBase)localObject4).b() == 8) || (((IFileHttpBase)localObject4).b() == 5) || (((IFileHttpBase)localObject4).b() == 50)) {
           break label677;
         }
-        if (((IFileHttpBase)localObject4).a() == 41)
+        if (((IFileHttpBase)localObject4).b() == 41)
         {
           j = 2;
         }
@@ -249,7 +251,7 @@ public class FileManagerRSCenter
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append(str1);
           ((StringBuilder)localObject3).append("type[");
-          ((StringBuilder)localObject3).append(((IFileHttpBase)localObject4).a());
+          ((StringBuilder)localObject3).append(((IFileHttpBase)localObject4).b());
           ((StringBuilder)localObject3).append("] is not processed, maxtype is ");
           ((StringBuilder)localObject3).append(8);
           ((StringBuilder)localObject3).append("\n");
@@ -278,7 +280,7 @@ public class FileManagerRSCenter
           if (j >= arrayOfLong.length) {
             break label699;
           }
-          if (arrayOfLong[j] != ((IFileHttpBase)localObject4).a()) {
+          if (arrayOfLong[j] != ((IFileHttpBase)localObject4).c()) {
             break label692;
           }
           j = 1;
@@ -301,9 +303,9 @@ public class FileManagerRSCenter
         }
         else
         {
-          ((IFileHttpBase)localObject4).g();
+          ((IFileHttpBase)localObject4).m();
           break;
-          long l = ((IFileHttpBase)localObject4).a();
+          long l = ((IFileHttpBase)localObject4).c();
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("work[");
           ((StringBuilder)localObject4).append(localObject3);
@@ -326,49 +328,26 @@ public class FileManagerRSCenter
     }
   }
   
-  public void a(long paramLong)
-  {
-    try
-    {
-      Object localObject1 = (IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
-      if (localObject1 != null) {
-        ((IFileHttpBase)localObject1).c();
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("remove worker, sessionId[");
-        ((StringBuilder)localObject1).append(String.valueOf(paramLong));
-        ((StringBuilder)localObject1).append("]");
-        QLog.d("FileManagerRSCenter<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
-      }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
-      a();
-      return;
-    }
-    finally {}
-  }
-  
   public void a(long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2)
   {
-    FileManagerEntity localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong1);
+    FileManagerEntity localFileManagerEntity2 = this.a.getFileManagerDataCenter().a(paramLong1);
     FileManagerEntity localFileManagerEntity1 = localFileManagerEntity2;
     if (localFileManagerEntity2 == null) {
-      localFileManagerEntity1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2, paramString, paramInt1);
+      localFileManagerEntity1 = this.a.getFileManagerDataCenter().a(paramLong2, paramString, paramInt1);
     }
     if (localFileManagerEntity1 == null)
     {
       QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity is null ,why you can choose!!!");
       return;
     }
-    if ((localFileManagerEntity1.cloudType != 2) && (localFileManagerEntity1.cloudType != 0))
+    if ((localFileManagerEntity1.cloudType != 2) && (localFileManagerEntity1.cloudType != 0) && (localFileManagerEntity1.cloudType != 12))
     {
-      if (FileUtil.a(localFileManagerEntity1.getFilePath()))
+      if (FileUtil.b(localFileManagerEntity1.getFilePath()))
       {
         localFileManagerEntity1.status = 1;
         localFileManagerEntity1.cloudType = 3;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localFileManagerEntity1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
+        this.a.getFileManagerDataCenter().c(localFileManagerEntity1);
+        this.a.getFileManagerNotifyCenter().a(true, 3, null);
         paramString = new StringBuilder();
         paramString.append("=_= v! entity[");
         paramString.append(localFileManagerEntity1.nSessionId);
@@ -378,10 +357,10 @@ public class FileManagerRSCenter
       }
       if ((TextUtils.isEmpty(localFileManagerEntity1.Uuid)) && (!localFileManagerEntity1.isZipInnerFile))
       {
-        FileManagerUtil.a(BaseApplicationImpl.getContext().getString(2131692717));
+        FileManagerUtil.l(BaseApplicationImpl.getContext().getString(2131889788));
         localFileManagerEntity1.status = 16;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localFileManagerEntity1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
+        this.a.getFileManagerDataCenter().c(localFileManagerEntity1);
+        this.a.getFileManagerNotifyCenter().a(true, 3, null);
         paramString = new StringBuilder();
         paramString.append("=_= v! entity[");
         paramString.append(localFileManagerEntity1.nSessionId);
@@ -398,18 +377,19 @@ public class FileManagerRSCenter
       paramString.append(localFileManagerEntity1.nSessionId);
       paramString.append("] is video, start init video sdk");
       QLog.e("FileManagerRSCenter<FileAssistant>", 1, paramString.toString());
-      new VideoForC2C(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity1);
-      if (localFileManagerEntity1.peerType == 3000) {
-        paramString = new VideoForDisc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity1);
+      if (localFileManagerEntity1.getCloudType() == 12) {
+        paramString = new VideoForGuild(this.a, localFileManagerEntity1);
+      } else if (localFileManagerEntity1.peerType == 3000) {
+        paramString = new VideoForDisc(this.a, localFileManagerEntity1);
       } else {
-        paramString = new VideoForC2C(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity1);
+        paramString = new VideoForC2C(this.a, localFileManagerEntity1);
       }
-      FileVideoDownloadManager.a(paramString).a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
+      FileVideoDownloadManager.b(paramString).c();
+      this.a.getFileManagerNotifyCenter().a(true, 3, null);
       return;
     }
     localFileManagerEntity1.nOpType = paramInt2;
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(Long.valueOf(paramLong1)) == true)
+    if (this.c.containsKey(Long.valueOf(paramLong1)) == true)
     {
       paramString = new StringBuilder();
       paramString.append("=_= v! entity[");
@@ -426,28 +406,32 @@ public class FileManagerRSCenter
     if (paramFileManagerEntity.bDelInFM == true)
     {
       paramFileManagerEntity.bDelInFM = false;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(paramFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
+      this.a.getFileManagerDataCenter().b(paramFileManagerEntity);
+      this.a.getFileManagerNotifyCenter().a(true, 3, null);
     }
     if ((paramFileManagerEntity.nFileType == 2) && (!paramFileManagerEntity.isZipInnerFile) && (paramFileManagerEntity.cloudType != 2))
     {
-      if (paramFileManagerEntity.peerType == 3000) {
-        paramFileManagerEntity = new VideoForDisc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
+      if (paramFileManagerEntity.getCloudType() == 12) {
+        paramFileManagerEntity = new VideoForGuild(this.a, paramFileManagerEntity);
+      } else if (paramFileManagerEntity.peerType == 3000) {
+        paramFileManagerEntity = new VideoForDisc(this.a, paramFileManagerEntity);
       } else {
-        paramFileManagerEntity = new VideoForC2C(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
+        paramFileManagerEntity = new VideoForC2C(this.a, paramFileManagerEntity);
       }
-      FileVideoDownloadManager.a(paramFileManagerEntity).a();
+      FileVideoDownloadManager.b(paramFileManagerEntity).c();
       return;
     }
-    Object localObject = (IExcitingTransferAdapter)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IExcitingTransferAdapter.class, "");
-    if ((paramFileManagerEntity.peerType == 0) && (paramFileManagerEntity.nOpType != 5) && (paramFileManagerEntity.nOpType != 50) && (((IExcitingTransferAdapter)localObject).isEnableC2CDownload()) && (paramFileManagerEntity.fileSize > ((IExcitingTransferAdapter)localObject).getC2CDownloadLimitedSize()) && (!TextUtils.isEmpty(paramFileManagerEntity.Uuid))) {
-      localObject = new C2CFileDownloader(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
+    Object localObject = (IExcitingTransferAdapter)this.a.getRuntimeService(IExcitingTransferAdapter.class, "");
+    if (paramFileManagerEntity.peerType == 10014) {
+      localObject = new GuildFileDownloader(this.a, paramFileManagerEntity);
+    } else if ((paramFileManagerEntity.peerType == 0) && (paramFileManagerEntity.nOpType != 5) && (paramFileManagerEntity.nOpType != 50) && (((IExcitingTransferAdapter)localObject).isEnableC2CDownload()) && (paramFileManagerEntity.fileSize > ((IExcitingTransferAdapter)localObject).getC2CDownloadLimitedSize()) && (!TextUtils.isEmpty(paramFileManagerEntity.Uuid))) {
+      localObject = new C2CFileDownloader(this.a, paramFileManagerEntity);
     } else {
-      localObject = new FileManagerRSWorker(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
+      localObject = new FileManagerRSWorker(this.a, paramFileManagerEntity);
     }
     try
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramFileManagerEntity.nSessionId), localObject);
+      this.c.put(Long.valueOf(paramFileManagerEntity.nSessionId), localObject);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("=_= v> entity[");
       ((StringBuilder)localObject).append(paramFileManagerEntity.nSessionId);
@@ -484,8 +468,8 @@ public class FileManagerRSCenter
     if (bool == true)
     {
       paramFileManagerEntity.bDelInFM = false;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(paramFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
+      this.a.getFileManagerDataCenter().b(paramFileManagerEntity);
+      this.a.getFileManagerNotifyCenter().a(true, 3, null);
     }
     if (!FileUtils.fileExistsAndNotEmpty(paramFileManagerEntity.getFilePath()))
     {
@@ -496,9 +480,9 @@ public class FileManagerRSCenter
       ((StringBuilder)localObject1).append(paramFileManagerEntity.getFilePath());
       ((StringBuilder)localObject1).append("], please check file!");
       QLog.e("FileManagerRSCenter<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-      localObject1 = FileManagerUtil.a();
+      localObject1 = FileManagerUtil.d();
       if ((paramFileManagerEntity.getFilePath() != null) && (paramFileManagerEntity.getFilePath().length() != 0)) {
-        if (!FileManagerUtil.a(paramFileManagerEntity.getFilePath()))
+        if (!FileManagerUtil.n(paramFileManagerEntity.getFilePath()))
         {
           i = 9042;
           paramBundle = new StringBuilder();
@@ -510,7 +494,7 @@ public class FileManagerRSCenter
       for (;;)
       {
         break;
-        if (FileManagerUtil.a(paramFileManagerEntity.getFilePath()) == 0L)
+        if (FileManagerUtil.h(paramFileManagerEntity.getFilePath()) == 0L)
         {
           i = 9071;
           paramBundle = new StringBuilder();
@@ -548,17 +532,17 @@ public class FileManagerRSCenter
       {
         paramFileManagerEntity.status = 0;
         paramFileManagerEntity.isReaded = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramFileManagerEntity.uniseq, paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, 38, null, 1, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
-        FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, "actFileWyUp", 0L, "", paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, i, "", 0L, 0L, paramFileManagerEntity.fileSize, "", "", 0, paramBundle, null);
+        this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
+        this.a.getFileManagerNotifyCenter().a(paramFileManagerEntity.uniseq, paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, 38, null, 1, null);
+        this.a.getFileManagerDataCenter().a();
+        FileManagerUtil.a(this.a, paramFileManagerEntity.nSessionId, "actFileWyUp", 0L, "", paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, i, "", 0L, 0L, paramFileManagerEntity.fileSize, "", "", 0, paramBundle, null);
       }
       paramFileManagerEntity.status = 16;
       paramFileManagerEntity.fProgress = 1.0F;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
+      this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
       return;
     }
-    paramBundle = (ShieldMsgManger)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
+    paramBundle = (ShieldMsgManger)this.a.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
     if ((paramBundle != null) && (paramBundle.a(paramFileManagerEntity.peerUin)))
     {
       paramFileManagerEntity.isReaded = false;
@@ -566,19 +550,19 @@ public class FileManagerRSCenter
         i = 16;
       }
       paramFileManagerEntity.status = i;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
+      this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
       paramBundle = new StringBuilder();
       paramBundle.append("=_= ! Id[");
       paramBundle.append(paramFileManagerEntity.nSessionId);
       paramBundle.append("] frend in blacklist!");
       QLog.e("FileManagerRSCenter<FileAssistant>", 1, paramBundle.toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramFileManagerEntity.uniseq, paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, 15, null, -1, HardCodeUtil.a(2131704639));
+      this.a.getFileManagerNotifyCenter().a(paramFileManagerEntity.uniseq, paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, paramFileManagerEntity.peerType, 15, null, -1, HardCodeUtil.a(2131902543));
       return;
     }
-    paramBundle = new FileManagerRSWorker(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
+    paramBundle = new FileManagerRSWorker(this.a, paramFileManagerEntity);
     try
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Long.valueOf(paramFileManagerEntity.nSessionId), paramBundle);
+      this.c.put(Long.valueOf(paramFileManagerEntity.nSessionId), paramBundle);
       if (QLog.isColorLevel())
       {
         paramBundle = new StringBuilder();
@@ -601,25 +585,25 @@ public class FileManagerRSCenter
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+      int i = this.c.size();
       if (i < 1) {
         return;
       }
       Object localObject1 = new ArrayList();
-      Object localObject3 = this.jdField_a_of_type_JavaUtilLinkedHashMap.values().iterator();
+      Object localObject3 = this.c.values().iterator();
       while (((Iterator)localObject3).hasNext()) {
         ((List)localObject1).add(0, (IFileHttpBase)((Iterator)localObject3).next());
       }
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      this.c.clear();
       localObject1 = ((List)localObject1).iterator();
       i = 0;
       while (((Iterator)localObject1).hasNext())
       {
         localObject3 = (IFileHttpBase)((Iterator)localObject1).next();
-        ((IFileHttpBase)localObject3).d();
+        ((IFileHttpBase)localObject3).j();
         if (!paramBoolean)
         {
-          ((IFileHttpBase)localObject3).e();
+          ((IFileHttpBase)localObject3).k();
         }
         else
         {
@@ -628,9 +612,9 @@ public class FileManagerRSCenter
         }
       }
       if ((paramBoolean) && (i == 0)) {
-        FileManagerUtil.a(BaseApplicationImpl.getContext().getString(2131692747));
+        FileManagerUtil.l(BaseApplicationImpl.getContext().getString(2131889818));
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
+      this.a.getFileManagerNotifyCenter().a(true, 3, null);
       return;
     }
     finally {}
@@ -644,27 +628,27 @@ public class FileManagerRSCenter
   {
     try
     {
-      Object localObject1 = (IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramLong));
+      Object localObject1 = (IFileHttpBase)this.c.get(Long.valueOf(paramLong));
       if (localObject1 != null)
       {
-        ((IFileHttpBase)localObject1).f();
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Long.valueOf(paramLong));
+        ((IFileHttpBase)localObject1).l();
+        this.c.remove(Long.valueOf(paramLong));
         a();
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong);
+      localObject1 = this.a.getFileManagerDataCenter().a(paramLong);
       if ((localObject1 != null) && (((FileManagerEntity)localObject1).nFileType == 2))
       {
         FileVideoDownloadManager.a(String.valueOf(((FileManagerEntity)localObject1).nSessionId));
         if ((((FileManagerEntity)localObject1).status == 2) || (((FileManagerEntity)localObject1).status == -1)) {
           ((FileManagerEntity)localObject1).status = 3;
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 0, null);
+        this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject1);
+        this.a.getFileManagerNotifyCenter().a(true, 0, null);
       }
       if ((localObject1 != null) && (((FileManagerEntity)localObject1).status == 2))
       {
         ((FileManagerEntity)localObject1).status = 3;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject1);
+        this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject1);
         return true;
       }
       return false;
@@ -672,46 +656,39 @@ public class FileManagerRSCenter
     finally {}
   }
   
-  public boolean a(String paramString)
-  {
-    try
-    {
-      int i = this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-      if (i < 1) {
-        return false;
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (Long)localIterator.next();
-        localObject = ((IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject)).a();
-        if (((FileManagerEntity)localObject).getFilePath() != null)
-        {
-          boolean bool = ((FileManagerEntity)localObject).getFilePath().equalsIgnoreCase(paramString);
-          if (bool) {
-            return true;
-          }
-        }
-      }
-      return false;
-    }
-    finally {}
-    for (;;)
-    {
-      throw paramString;
-    }
-  }
-  
   public boolean a(String paramString, long paramLong, int paramInt)
   {
     try
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong, paramString, paramInt, -1L);
+      paramString = this.a.getFileManagerDataCenter().a(paramLong, paramString, paramInt, -1L);
       if (paramString == null) {
         return false;
       }
       boolean bool = a(paramString.nSessionId);
       return bool;
+    }
+    finally {}
+  }
+  
+  public void b(long paramLong)
+  {
+    try
+    {
+      Object localObject1 = (IFileHttpBase)this.c.get(Long.valueOf(paramLong));
+      if (localObject1 != null) {
+        ((IFileHttpBase)localObject1).f();
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("remove worker, sessionId[");
+        ((StringBuilder)localObject1).append(String.valueOf(paramLong));
+        ((StringBuilder)localObject1).append("]");
+        QLog.d("FileManagerRSCenter<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
+      }
+      this.c.remove(Long.valueOf(paramLong));
+      a();
+      return;
     }
     finally {}
   }
@@ -725,7 +702,7 @@ public class FileManagerRSCenter
       return;
     }
     finally {}
-    Object localObject = (IFileHttpBase)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Long.valueOf(paramFileManagerEntity.nSessionId));
+    Object localObject = (IFileHttpBase)this.c.get(Long.valueOf(paramFileManagerEntity.nSessionId));
     if ((localObject != null) && (!((IFileHttpBase)localObject).a()))
     {
       localObject = new StringBuilder();
@@ -738,7 +715,7 @@ public class FileManagerRSCenter
       return;
     }
     int i = paramFileManagerEntity.nOpType;
-    if ((i != 1) && (i != 8) && (i != 50) && (i != 5))
+    if ((i != 1) && (i != 8) && (i != 50) && (i != 53) && (i != 5))
     {
       if (i != 6)
       {
@@ -756,10 +733,40 @@ public class FileManagerRSCenter
       a(paramFileManagerEntity);
     }
   }
+  
+  public boolean b(String paramString)
+  {
+    try
+    {
+      int i = this.c.size();
+      if (i < 1) {
+        return false;
+      }
+      Iterator localIterator = this.c.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (Long)localIterator.next();
+        localObject = ((IFileHttpBase)this.c.get(localObject)).q();
+        if (((FileManagerEntity)localObject).getFilePath() != null)
+        {
+          boolean bool = ((FileManagerEntity)localObject).getFilePath().equalsIgnoreCase(paramString);
+          if (bool) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSCenter
  * JD-Core Version:    0.7.0.1
  */

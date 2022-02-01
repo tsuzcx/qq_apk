@@ -3,6 +3,7 @@ package com.tencent.mtt.hippy.bridge.bundleloader;
 import android.text.TextUtils;
 import com.tencent.mtt.hippy.bridge.HippyBridge;
 import com.tencent.mtt.hippy.bridge.NativeCallback;
+import com.tencent.mtt.hippy.utils.LogUtils;
 
 public class HippyRemoteBundleLoader
   implements HippyBundleLoader
@@ -10,7 +11,7 @@ public class HippyRemoteBundleLoader
   private boolean mCanUseCodeCache;
   private String mCodeCacheTag;
   boolean mIsDebugMode = false;
-  String mUrl;
+  final String mUrl;
   
   public HippyRemoteBundleLoader(String paramString)
   {
@@ -49,12 +50,16 @@ public class HippyRemoteBundleLoader
     return this.mUrl;
   }
   
-  public boolean load(HippyBridge paramHippyBridge, NativeCallback paramNativeCallback)
+  public void load(HippyBridge paramHippyBridge, NativeCallback paramNativeCallback)
   {
     if (TextUtils.isEmpty(this.mUrl)) {
-      return false;
+      return;
     }
-    return paramHippyBridge.runScriptFromUri(this.mUrl, null, this.mCanUseCodeCache, this.mCodeCacheTag, paramNativeCallback);
+    boolean bool = paramHippyBridge.runScriptFromUri(this.mUrl, null, this.mCanUseCodeCache, this.mCodeCacheTag, paramNativeCallback);
+    paramHippyBridge = new StringBuilder();
+    paramHippyBridge.append("load: ret");
+    paramHippyBridge.append(bool);
+    LogUtils.d("HippyRemoteBundleLoader", paramHippyBridge.toString());
   }
   
   public void setCodeCache(boolean paramBoolean, String paramString)
@@ -70,7 +75,7 @@ public class HippyRemoteBundleLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.bundleloader.HippyRemoteBundleLoader
  * JD-Core Version:    0.7.0.1
  */

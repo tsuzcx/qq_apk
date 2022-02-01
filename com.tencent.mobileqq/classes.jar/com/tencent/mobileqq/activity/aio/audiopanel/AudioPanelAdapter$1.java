@@ -13,12 +13,12 @@ class AudioPanelAdapter$1
   
   public void run()
   {
-    if (this.this$0.b == null) {
+    if (this.this$0.c == null) {
       try
       {
-        ListenChangeVoicePanel localListenChangeVoicePanel = (ListenChangeVoicePanel)LayoutInflater.from(AudioPanelAdapter.a(this.this$0).getApp()).inflate(2131560923, null);
-        if (this.this$0.b == null) {
-          this.this$0.b = localListenChangeVoicePanel;
+        ListenChangeVoicePanel localListenChangeVoicePanel = (ListenChangeVoicePanel)LayoutInflater.from(AudioPanelAdapter.a(this.this$0).getApp()).inflate(2131627264, null);
+        if (this.this$0.c == null) {
+          this.this$0.c = localListenChangeVoicePanel;
         }
       }
       catch (Exception localException)
@@ -40,7 +40,7 @@ class AudioPanelAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAdapter.1
  * JD-Core Version:    0.7.0.1
  */

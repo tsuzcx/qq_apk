@@ -10,6 +10,8 @@ import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
 import com.tencent.mobileqq.activity.aio.rebuild.RobotChatPie;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.studymode.StudyModeManager;
@@ -28,7 +30,13 @@ public class ShootAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839120;
+    if (isGuildLiveChannel()) {
+      return 2130840913;
+    }
+    if (isGuild()) {
+      return 2130840751;
+    }
+    return 2130839276;
   }
   
   public int getAppID()
@@ -37,6 +45,14 @@ public class ShootAppInfo
       return 218;
     }
     return 1200000003;
+  }
+  
+  public String getDTElementId()
+  {
+    if (isGuild()) {
+      return "em_sgrp_aio_plus_shoot";
+    }
+    return "";
   }
   
   public int getManageConfigID()
@@ -57,19 +73,19 @@ public class ShootAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690826);
+    return BaseApplicationImpl.getContext().getString(2131887761);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if ((!SimpleUIUtil.a()) && (!(paramBaseChatPie instanceof RobotChatPie)) && (!StudyModeManager.a()))
+    if ((!SimpleUIUtil.e()) && (!(paramBaseChatPie instanceof RobotChatPie)) && (!StudyModeManager.h()) && (!((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).judgeBaseChatPieIsGuildChatPie(paramBaseChatPie)))
     {
-      int j = paramSessionInfo.jdField_a_of_type_Int;
+      int j = paramSessionInfo.a;
       int i = 0;
       if (j == 9501) {
         try
         {
-          paramPlusPanelViewModel = SmartDeviceProxyMgr.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
+          paramPlusPanelViewModel = SmartDeviceProxyMgr.a(paramBaseChatPie.d, Long.parseLong(paramSessionInfo.b));
           if (paramPlusPanelViewModel != null) {
             i = paramPlusPanelViewModel.productId;
           }
@@ -81,11 +97,11 @@ public class ShootAppInfo
       } else {
         i = 0;
       }
-      paramPlusPanelViewModel = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      PlusPanelUtils.a(paramPlusPanelViewModel, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramBaseChatPie.a(), paramSessionInfo, i, 0);
+      paramPlusPanelViewModel = paramBaseChatPie.d;
+      PlusPanelUtils.a(paramPlusPanelViewModel, paramBaseChatPie.f, paramBaseChatPie.aX(), paramSessionInfo, i, 0);
       ReportController.b(paramPlusPanelViewModel, "CliOper", "", "", "0X800407A", "0X800407A", 0, 0, "", "", "", "");
-      if (AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-        ReportController.b(paramPlusPanelViewModel, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_shoot", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+      if (AnonymousChatHelper.a().a(paramSessionInfo.b)) {
+        ReportController.b(paramPlusPanelViewModel, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_shoot", 0, 0, paramSessionInfo.b, "", "", "");
       }
     }
     else
@@ -94,7 +110,7 @@ public class ShootAppInfo
       if (QLog.isColorLevel()) {
         QLog.d("ShootAppInfo", 2, "pluspanel onclick called with plus from simple!");
       }
-      if (SimpleUIUtil.a()) {
+      if (SimpleUIUtil.e()) {
         ReportController.b(null, "dc00898", "", "", "0X800A114", "0X800A114", 0, 0, "", "", "", "");
       }
       if ((paramBaseChatPie instanceof RobotChatPie)) {
@@ -105,7 +121,7 @@ public class ShootAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ShootAppInfo
  * JD-Core Version:    0.7.0.1
  */

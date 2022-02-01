@@ -11,7 +11,7 @@ public class KandianLiveConfProcessor
 {
   public static KandianLiveCfgBean a()
   {
-    return (KandianLiveCfgBean)QConfigManager.a().a(714);
+    return (KandianLiveCfgBean)QConfigManager.b().b(714);
   }
   
   @NonNull
@@ -33,9 +33,9 @@ public class KandianLiveConfProcessor
             {
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("=======onParsed content = ");
-              localStringBuilder.append(((QConfItem)localObject).a);
+              localStringBuilder.append(((QConfItem)localObject).b);
               QLog.e("KandianLiveConfProcessor", 1, localStringBuilder.toString());
-              localObject = KandianLiveCfgBean.a(((QConfItem)localObject).a);
+              localObject = KandianLiveCfgBean.a(((QConfItem)localObject).b);
               if (localObject != null) {
                 return localObject;
               }
@@ -62,15 +62,15 @@ public class KandianLiveConfProcessor
     return new KandianLiveCfgBean();
   }
   
-  @NonNull
-  public KandianLiveCfgBean c()
-  {
-    return new KandianLiveCfgBean();
-  }
-  
   public Class<KandianLiveCfgBean> clazz()
   {
     return KandianLiveCfgBean.class;
+  }
+  
+  @NonNull
+  public KandianLiveCfgBean e()
+  {
+    return new KandianLiveCfgBean();
   }
   
   public int type()
@@ -80,7 +80,7 @@ public class KandianLiveConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.config.KandianLiveConfProcessor
  * JD-Core Version:    0.7.0.1
  */

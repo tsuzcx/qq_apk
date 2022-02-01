@@ -30,7 +30,7 @@ public final class msg_svc$PbGetGroupMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbGetGroupMsgReq
  * JD-Core Version:    0.7.0.1
  */

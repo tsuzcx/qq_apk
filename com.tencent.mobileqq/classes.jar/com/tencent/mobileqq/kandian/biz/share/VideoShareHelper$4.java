@@ -30,29 +30,29 @@ class VideoShareHelper$4
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    if (!VideoShareHelper.a(this.a).contains(paramString1)) {
+    if (!VideoShareHelper.e(this.a).contains(paramString1)) {
       return;
     }
-    paramString2 = new QQToast(VideoShareHelper.a(this.a));
-    paramString2.d(2000);
+    paramString2 = new QQToast(VideoShareHelper.f(this.a));
+    paramString2.setDuration(2000);
     if (paramBoolean)
     {
-      paramString2.a(QQToast.a(2));
-      paramString2.c(2131692185);
-      paramString2.b(VideoShareHelper.a(this.a).getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(VideoShareHelper.a(this.a), 5.0F));
+      paramString2.setToastIcon(QQToast.getIconRes(2));
+      paramString2.setToastMsg(2131889172);
+      paramString2.show(VideoShareHelper.f(this.a).getResources().getDimensionPixelSize(2131299920) - (int)DisplayUtils.a(VideoShareHelper.f(this.a), 5.0F));
     }
     else
     {
-      paramString2.a(QQToast.a(1));
-      paramString2.c(2131692186);
-      paramString2.b(VideoShareHelper.a(this.a).getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(VideoShareHelper.a(this.a), 5.0F));
+      paramString2.setToastIcon(QQToast.getIconRes(1));
+      paramString2.setToastMsg(2131889173);
+      paramString2.show(VideoShareHelper.f(this.a).getResources().getDimensionPixelSize(2131299920) - (int)DisplayUtils.a(VideoShareHelper.f(this.a), 5.0F));
     }
-    VideoShareHelper.a(this.a).remove(paramString1);
+    VideoShareHelper.e(this.a).remove(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="48.0dip" android:width="48.0dip" android:viewportWidth="48.0" android:viewportHeight="48.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/common_favorite_gray_normal" />
-    <item android:state_enabled="false" android:drawable="@drawable/common_favorite_gray_press" />
-    <item android:drawable="@drawable/common_favorite_gray_normal" />
-</selector>
+    <path android:fillColor="#ff999999" android:pathData="M39.6,7C41.4778,7 43,8.5222 43,10.4L43,31.6C43,33.4778 41.4778,35 39.6,35L17.571,35L5,43L5,10.4C5,8.5222 6.5222,7 8.4,7L39.6,7ZM39,11L9,11L9,35.713L16.4062,31L39,31L39,11Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="nonZero" />
+</vector>

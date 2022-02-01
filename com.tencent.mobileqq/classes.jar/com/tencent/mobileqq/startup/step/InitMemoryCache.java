@@ -22,7 +22,7 @@ public class InitMemoryCache
       return true;
     }
     a = true;
-    Object localObject = MemoryClearManager.a();
+    Object localObject = MemoryClearManager.b();
     QQHashMap.setManager((IMemoryManager)localObject);
     QQConcurrentHashMap.setManager((IMemoryManager)localObject);
     QQLruCache.setManager((IMemoryManager)localObject);
@@ -33,19 +33,19 @@ public class InitMemoryCache
     ((StringBuilder)localObject).append("BaseApplicationImpl.processName=");
     ((StringBuilder)localObject).append(BaseApplicationImpl.processName);
     QLog.e("qiqili", 1, ((StringBuilder)localObject).toString());
-    com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    com.tencent.mobileqq.app.GlobalImageCache.b = new ConcurrentHashMap();
     if (BaseApplicationImpl.sProcessId == 1)
     {
-      i = (int)(MemoryManager.a() * 3L / 16L);
-      com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
-      com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_Int = i;
+      i = (int)(MemoryManager.d() * 3L / 16L);
+      com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+      com.tencent.mobileqq.app.GlobalImageCache.c = i;
       return true;
     }
     if (BaseApplicationImpl.sProcessId == 5)
     {
-      i = (int)(MemoryManager.a() * 3L / 16L);
-      com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
-      com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_Int = i;
+      i = (int)(MemoryManager.d() * 3L / 16L);
+      com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+      com.tencent.mobileqq.app.GlobalImageCache.c = i;
       return true;
     }
     boolean bool = BaseApplicationImpl.processName.endsWith(":peak");
@@ -57,31 +57,31 @@ public class InitMemoryCache
       {
         if (BaseApplicationImpl.processName.endsWith(":video"))
         {
-          j = (int)(MemoryManager.a() / 16L);
+          j = (int)(MemoryManager.d() / 16L);
           if (j > 4194304) {
             i = j;
           }
-          com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
-          com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_Int = j;
+          com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+          com.tencent.mobileqq.app.GlobalImageCache.c = j;
           return true;
         }
       }
       else
       {
-        i = (int)(MemoryManager.a() * 3L / 16L);
-        com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
-        com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_Int = i;
+        i = (int)(MemoryManager.d() * 3L / 16L);
+        com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+        com.tencent.mobileqq.app.GlobalImageCache.c = i;
         return true;
       }
     }
     else
     {
-      j = (int)(MemoryManager.a() * 3L / 16L);
+      j = (int)(MemoryManager.d() * 3L / 16L);
       if (j > 4194304) {
         i = j;
       }
-      com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
-      com.tencent.mobileqq.app.GlobalImageCache.jdField_a_of_type_Int = j;
+      com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+      com.tencent.mobileqq.app.GlobalImageCache.c = j;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -95,7 +95,7 @@ public class InitMemoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitMemoryCache
  * JD-Core Version:    0.7.0.1
  */

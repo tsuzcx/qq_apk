@@ -10,7 +10,7 @@ public final class QQNewsConfigProcessor$Companion
   @JvmStatic
   public final boolean a()
   {
-    QQNewsConfigProcessor.Config localConfig = (QQNewsConfigProcessor.Config)QConfigManager.a().a(729);
+    QQNewsConfigProcessor.Config localConfig = (QQNewsConfigProcessor.Config)QConfigManager.b().b(729);
     if (localConfig != null) {
       return localConfig.a();
     }
@@ -19,7 +19,7 @@ public final class QQNewsConfigProcessor$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.qqnews.QQNewsConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

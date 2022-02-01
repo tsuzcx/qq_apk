@@ -5,19 +5,19 @@ import com.tencent.mobileqq.activity.aio.core.AIOContext;
 public class AppletsContext
   extends AIOContext
 {
-  public void g()
+  public void P()
   {
-    ((AppletsChatPie)this.a).ao();
+    ((AppletsChatPie)this.c).bz();
   }
   
-  public void h()
+  public void Q()
   {
-    ((AppletsChatPie)this.a).a();
+    ((AppletsChatPie)this.c).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.AppletsContext
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public final class HealthConfigProcessor
   @NotNull
   public HealthConfigBean a(int paramInt)
   {
-    return new HealthConfigBean(false, null, 3, null);
+    return new HealthConfigBean(false, null, null, null, null, 31, null);
   }
   
   @Nullable
@@ -36,7 +36,7 @@ public final class HealthConfigProcessor
       paramArrayOfQConfItem = (QConfItem)ArraysKt.firstOrNull(paramArrayOfQConfItem);
       if (paramArrayOfQConfItem != null)
       {
-        paramArrayOfQConfItem = paramArrayOfQConfItem.a;
+        paramArrayOfQConfItem = paramArrayOfQConfItem.b;
         if (paramArrayOfQConfItem != null) {
           return HealthConfigBean.a.a(paramArrayOfQConfItem);
         }
@@ -102,7 +102,7 @@ public final class HealthConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.config.HealthConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

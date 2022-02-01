@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Handler;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.bridge.ViolaBridgeManager;
@@ -51,7 +50,7 @@ public class NavigationModule
   {
     Fragment localFragment = getViolaInstance().getFragment();
     if ((localFragment != null) && ((localFragment instanceof ViolaFragment))) {
-      new Handler(QBaseActivity.sTopActivity.getMainLooper()).postDelayed(new NavigationModule.1(this, localFragment, paramString), 0L);
+      new Handler(localFragment.getActivity().getMainLooper()).postDelayed(new NavigationModule.1(this, localFragment, paramString), 0L);
     }
   }
   
@@ -68,7 +67,7 @@ public class NavigationModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.NavigationModule
  * JD-Core Version:    0.7.0.1
  */

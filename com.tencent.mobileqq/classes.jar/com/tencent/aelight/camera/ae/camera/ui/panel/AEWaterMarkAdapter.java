@@ -41,52 +41,38 @@ public class AEWaterMarkAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   implements View.OnClickListener, AEMaterialDownloader.MaterialDownloadListener, Observer
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private AEWaterMarkPanel.AEWaterMarkPanelListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener;
-  private AEVideoStoryTopBarViewModel.Ratio jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio;
-  private AEMaterialManager jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
-  private AEMaterialMetaData jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = null;
-  private String jdField_a_of_type_JavaLangString;
-  public ArrayList<AEMaterialMetaData> a;
+  public ArrayList<AEMaterialMetaData> a = new ArrayList();
+  private LayoutInflater b;
+  private Context c;
+  private RecyclerView d;
+  private AEWaterMarkPanel.AEWaterMarkPanelListener e;
+  private AEMaterialManager f;
+  private String g;
+  private AEMaterialMetaData h = null;
+  private AEVideoStoryTopBarViewModel.Ratio i;
   
   AEWaterMarkAdapter(Context paramContext, AEWaterMarkPanel.AEWaterMarkPanelListener paramAEWaterMarkPanelListener)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener = paramAEWaterMarkPanelListener;
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager = ((AEMaterialManager)AEQIMManager.a(1));
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 114);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 115);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 1025);
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this, 113);
-  }
-  
-  private int a(AEMaterialMetaData paramAEMaterialMetaData)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).k.equals(paramAEMaterialMetaData.k)) {
-        return i;
-      }
-      i += 1;
-    }
-    return 0;
+    this.b = LayoutInflater.from(paramContext);
+    this.c = paramContext;
+    this.e = paramAEWaterMarkPanelListener;
+    this.f = ((AEMaterialManager)AEQIMManager.a(1));
+    this.f.a(this, 114);
+    this.f.a(this, 115);
+    this.f.a(this, 1025);
+    this.f.a(this, 113);
   }
   
   private void a(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    AEMaterialMetaData localAEMaterialMetaData = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
+    AEMaterialMetaData localAEMaterialMetaData = this.h;
     if ((localAEMaterialMetaData != null) && (!localAEMaterialMetaData.equals(paramAEMaterialMetaData)))
     {
-      localAEMaterialMetaData = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
-      localAEMaterialMetaData.b = false;
-      localAEMaterialMetaData.c = false;
+      localAEMaterialMetaData = this.h;
+      localAEMaterialMetaData.v = false;
+      localAEMaterialMetaData.w = false;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = paramAEMaterialMetaData;
+    this.h = paramAEMaterialMetaData;
   }
   
   private void a(boolean paramBoolean, Object paramObject)
@@ -95,16 +81,16 @@ public class AEWaterMarkAdapter
     if (paramObject == null) {
       return;
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int j = 0;
+    while (j < this.a.size())
     {
-      if ((paramObject.getId() != null) && (paramObject.getId().equals(((AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).k)))
+      if ((paramObject.getId() != null) && (paramObject.getId().equals(((AEMaterialMetaData)this.a.get(j)).m)))
       {
-        ((AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Boolean = paramBoolean;
-        notifyItemChanged(i, Integer.valueOf(1));
+        ((AEMaterialMetaData)this.a.get(j)).u = paramBoolean;
+        notifyItemChanged(j, Integer.valueOf(1));
         return;
       }
-      i += 1;
+      j += 1;
     }
   }
   
@@ -127,13 +113,13 @@ public class AEWaterMarkAdapter
     if (paramAEMaterialMetaData == null) {
       return;
     }
-    if (paramAEMaterialMetaData.f) {
+    if (paramAEMaterialMetaData.B) {
       return;
     }
-    if (TextUtils.isEmpty(paramAEMaterialMetaData.k)) {
+    if (TextUtils.isEmpty(paramAEMaterialMetaData.m)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager == null) {
+    if (this.f == null) {
       return;
     }
     c(paramAEMaterialMetaData);
@@ -141,35 +127,48 @@ public class AEWaterMarkAdapter
   
   private void c(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    AEMaterialManager localAEMaterialManager = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager;
+    AEMaterialManager localAEMaterialManager = this.f;
     localAEMaterialManager.a(localAEMaterialManager.getApp(), paramAEMaterialMetaData, this);
+  }
+  
+  private int d(AEMaterialMetaData paramAEMaterialMetaData)
+  {
+    int j = 0;
+    while (j < this.a.size())
+    {
+      if (((AEMaterialMetaData)this.a.get(j)).m.equals(paramAEMaterialMetaData.m)) {
+        return j;
+      }
+      j += 1;
+    }
+    return 0;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null)
+    if (this.a == null)
     {
       AEQLog.d("AEWaterMarkAdapter", "mTemplateList is null");
       notifyDataSetChanged();
       return;
     }
-    AEMaterialMetaData localAEMaterialMetaData1 = AEMaterialManager.b();
-    int i = 0;
-    int k;
-    for (int j = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); j = k)
+    AEMaterialMetaData localAEMaterialMetaData1 = AEMaterialManager.o();
+    int j = 0;
+    int m;
+    for (int k = 0; j < this.a.size(); k = m)
     {
-      AEMaterialMetaData localAEMaterialMetaData2 = (AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      k = j;
+      AEMaterialMetaData localAEMaterialMetaData2 = (AEMaterialMetaData)this.a.get(j);
+      m = k;
       if (localAEMaterialMetaData1 != null)
       {
-        k = j;
-        if (localAEMaterialMetaData1.k.equals(localAEMaterialMetaData2.k)) {
-          k = i;
+        m = k;
+        if (localAEMaterialMetaData1.m.equals(localAEMaterialMetaData2.m)) {
+          m = j;
         }
       }
-      i += 1;
+      j += 1;
     }
-    a(j);
+    a(k);
   }
   
   public void a(int paramInt)
@@ -179,7 +178,7 @@ public class AEWaterMarkAdapter
     ((StringBuilder)localObject).append(paramInt);
     AEQLog.a("AEWaterMarkAdapter", ((StringBuilder)localObject).toString());
     notifyDataSetChanged();
-    localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    localObject = this.d;
     if (localObject != null) {
       ((RecyclerView)localObject).post(new AEWaterMarkAdapter.3(this, paramInt));
     }
@@ -191,20 +190,20 @@ public class AEWaterMarkAdapter
     localStringBuilder.append("setCircleCaptureStyle:");
     localStringBuilder.append(paramRatio);
     AEQLog.a("AEWaterMarkAdapter", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio = paramRatio;
+    this.i = paramRatio;
   }
   
   public void a(List<AEMaterialMetaData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.add(AEMaterialMetaData.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.postDelayed(new AEWaterMarkAdapter.2(this), 200L);
+    this.a.clear();
+    this.a.add(AEMaterialMetaData.l);
+    this.a.addAll(paramList);
+    this.d.postDelayed(new AEWaterMarkAdapter.2(this), 200L);
   }
   
   public int getItemCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.a;
     if (localArrayList == null) {
       return 0;
     }
@@ -227,38 +226,38 @@ public class AEWaterMarkAdapter
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.d = paramRecyclerView;
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    Object localObject = (AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    Object localObject = (AEMaterialMetaData)this.a.get(paramInt);
     if (localObject == null) {
       return;
     }
-    AEMaterialMetaData localAEMaterialMetaData = AEMaterialManager.b();
+    AEMaterialMetaData localAEMaterialMetaData = AEMaterialManager.o();
     if ((paramViewHolder instanceof AEMaterialWaterMarkNoneViewHolder))
     {
       if (localAEMaterialMetaData == null)
       {
         localObject = (AEMaterialWaterMarkNoneViewHolder)paramViewHolder;
-        ((AEMaterialWaterMarkNoneViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        ((AEMaterialWaterMarkNoneViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        ((AEMaterialWaterMarkNoneViewHolder)localObject).b.setVisibility(0);
+        ((AEMaterialWaterMarkNoneViewHolder)localObject).a.setVisibility(8);
       }
       else
       {
         localObject = (AEMaterialWaterMarkNoneViewHolder)paramViewHolder;
-        ((AEMaterialWaterMarkNoneViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        ((AEMaterialWaterMarkNoneViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        ((AEMaterialWaterMarkNoneViewHolder)localObject).b.setVisibility(8);
+        ((AEMaterialWaterMarkNoneViewHolder)localObject).a.setVisibility(0);
       }
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio != AEVideoStoryTopBarViewModel.Ratio.FULL)
+      if (this.i != AEVideoStoryTopBarViewModel.Ratio.FULL)
       {
-        ((AEMaterialWaterMarkNoneViewHolder)paramViewHolder).jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2064056363));
+        ((AEMaterialWaterMarkNoneViewHolder)paramViewHolder).c.setBackgroundDrawable(this.c.getResources().getDrawable(2063925300));
         return;
       }
       paramViewHolder = (AEMaterialWaterMarkNoneViewHolder)paramViewHolder;
-      paramViewHolder.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167401));
+      paramViewHolder.d.setVisibility(0);
+      paramViewHolder.d.setBackgroundColor(this.c.getResources().getColor(2131168478));
       return;
     }
     if ((paramViewHolder instanceof AEMaterialWaterMarkViewHolder))
@@ -275,84 +274,84 @@ public class AEWaterMarkAdapter
         }
       }
       else {
-        bool = localAEMaterialMetaData.k.equals(((AEMaterialMetaData)localObject).k);
+        bool = localAEMaterialMetaData.m.equals(((AEMaterialMetaData)localObject).m);
       }
       if (bool)
       {
         if (localAEMaterialMetaData != null) {
-          ((AEMaterialMetaData)localObject).jdField_a_of_type_Boolean = localAEMaterialMetaData.jdField_a_of_type_Boolean;
+          ((AEMaterialMetaData)localObject).u = localAEMaterialMetaData.u;
         }
-        if (((AEMaterialMetaData)localObject).jdField_a_of_type_Boolean)
+        if (((AEMaterialMetaData)localObject).u)
         {
-          paramViewHolder.e.setVisibility(8);
-          paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          paramViewHolder.f.setVisibility(8);
+          paramViewHolder.g.setVisibility(0);
         }
         else
         {
-          paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          paramViewHolder.e.setVisibility(0);
+          paramViewHolder.g.setVisibility(8);
+          paramViewHolder.f.setVisibility(0);
         }
         paramViewHolder.a(8);
         paramViewHolder.b(8);
       }
       else
       {
-        paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        paramViewHolder.e.setVisibility(8);
+        paramViewHolder.g.setVisibility(8);
+        paramViewHolder.f.setVisibility(8);
         paramViewHolder.b((AEMaterialMetaData)localObject);
       }
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiTopbarAEVideoStoryTopBarViewModel$Ratio != AEVideoStoryTopBarViewModel.Ratio.FULL) {
-        paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2064056363));
+      if (this.i != AEVideoStoryTopBarViewModel.Ratio.FULL) {
+        paramViewHolder.h.setBackgroundDrawable(this.c.getResources().getDrawable(2063925300));
       }
     }
   }
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAdapterPosition(paramView);
-    if (i == -1) {
+    int j = this.d.getChildAdapterPosition(paramView);
+    if (j == -1) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener == null)
+    if (this.e == null)
     {
       AEQLog.d("AEWaterMarkAdapter", "water mark mlistener is null");
       return;
     }
-    AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-    if ((i != 0) && (localAEMaterialMetaData != null))
+    AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)this.a.get(j);
+    if ((j != 0) && (localAEMaterialMetaData != null))
     {
-      if ((!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext)) && (!localAEMaterialMetaData.e))
+      if ((!NetworkUtil.isNetworkAvailable(this.c)) && (!localAEMaterialMetaData.A))
       {
         AEQLog.d("AEWaterMarkAdapter", "net work not available");
-        ToastUtil.a().a(HardCodeUtil.a(2131716132));
+        ToastUtil.a().a(HardCodeUtil.a(2131913581));
         return;
       }
       a(localAEMaterialMetaData);
       AEBaseDataReporter localAEBaseDataReporter = AEBaseDataReporter.a();
-      if (localAEMaterialMetaData.k == null) {
+      if (localAEMaterialMetaData.m == null) {
         paramView = "none";
       } else {
-        paramView = localAEMaterialMetaData.k;
+        paramView = localAEMaterialMetaData.m;
       }
-      localAEBaseDataReporter.n(paramView);
-      if (localAEMaterialMetaData.b) {
-        localAEMaterialMetaData.c = true;
+      localAEBaseDataReporter.p(paramView);
+      if (localAEMaterialMetaData.v) {
+        localAEMaterialMetaData.w = true;
       } else {
-        localAEMaterialMetaData.b = true;
+        localAEMaterialMetaData.v = true;
       }
-      this.jdField_a_of_type_JavaLangString = localAEMaterialMetaData.k;
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.a(this.jdField_a_of_type_JavaLangString);
-      if (localAEMaterialMetaData.e)
+      this.g = localAEMaterialMetaData.m;
+      this.f.a(this.g);
+      if (localAEMaterialMetaData.A)
       {
-        if (!AEResUtil.a())
+        if (!AEResUtil.e())
         {
-          QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131709780), 0).a();
+          QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131907500), 0).show();
           ThreadManager.excute(new AEWaterMarkAdapter.1(this), 64, null, true);
           return;
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.b(localAEMaterialMetaData, true);
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener.a(localAEMaterialMetaData);
-        a(i);
+        this.f.b(localAEMaterialMetaData, true);
+        this.e.a(localAEMaterialMetaData);
+        a(j);
       }
       else
       {
@@ -361,16 +360,16 @@ public class AEWaterMarkAdapter
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEWaterMarkPanel$AEWaterMarkPanelListener.a();
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialManager.b(null, true);
+      this.e.a();
+      this.g = null;
+      this.f.b(null, true);
       a(0);
-      AEBaseDataReporter.a().ay();
+      AEBaseDataReporter.a().aD();
     }
-    if (AECameraEntryManager.k(((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent()))
+    if (AECameraEntryManager.o(((Activity)this.c).getIntent()))
     {
       paramView = new HashMap();
-      paramView.put("ext2", localAEMaterialMetaData.k);
+      paramView.put("ext2", localAEMaterialMetaData.m);
       AEReportUtils.b(9, paramView);
     }
   }
@@ -380,13 +379,13 @@ public class AEWaterMarkAdapter
     Object localObject;
     if (paramInt == 0)
     {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2064318484, paramViewGroup, false);
+      paramViewGroup = this.b.inflate(2064056344, paramViewGroup, false);
       localObject = new AEMaterialWaterMarkNoneViewHolder(paramViewGroup);
     }
     else
     {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2064318483, paramViewGroup, false);
-      localObject = new AEMaterialWaterMarkViewHolder(paramViewGroup, this.jdField_a_of_type_AndroidContentContext);
+      paramViewGroup = this.b.inflate(2064056343, paramViewGroup, false);
+      localObject = new AEMaterialWaterMarkViewHolder(paramViewGroup, this.c);
     }
     paramViewGroup.setOnClickListener(this);
     return localObject;
@@ -397,7 +396,7 @@ public class AEWaterMarkAdapter
     if (paramAEMaterialMetaData == null) {
       return;
     }
-    paramInt = a(paramAEMaterialMetaData);
+    paramInt = d(paramAEMaterialMetaData);
     if (paramInt <= 0) {
       return;
     }
@@ -409,13 +408,13 @@ public class AEWaterMarkAdapter
   
   public void onProgressUpdate(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
   {
-    paramInt = a(paramAEMaterialMetaData);
+    paramInt = d(paramAEMaterialMetaData);
     ThreadManager.getUIHandler().post(new AEWaterMarkAdapter.6(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEWaterMarkAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,12 @@ import UserGrowth.stReportItem;
 import UserGrowth.stWeishiReportReq;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.beacon.event.UserAction;
 import com.tencent.biz.pubaccount.weishi_new.WSQQConnectAuthManager;
 import com.tencent.biz.pubaccount.weishi_new.net.WSUniPacket;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiHeaderConst;
 import com.tencent.biz.pubaccount.weishi_new.report.UserActionReportPresenter;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.biz.pubaccount.weishi_new.util.WSDeviceUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -29,8 +31,117 @@ import org.jetbrains.annotations.NotNull;
 
 public class WSRequestEncoder
 {
+  private static <T extends JceStruct> void a(@NotNull WSRequest<T> paramWSRequest, stReqHeader paramstReqHeader, String paramString1, String paramString2)
+  {
+    if ("stWeishiReportReq".equals(paramWSRequest.getReqUniKey())) {
+      paramstReqHeader.mapExt = d(paramWSRequest);
+    } else {
+      paramstReqHeader.mapExt = new HashMap();
+    }
+    paramstReqHeader.mapExt.put("iAuthType", "2");
+    Map localMap = paramstReqHeader.mapExt;
+    Object localObject = paramString1;
+    if (paramString1 == null) {
+      localObject = "";
+    }
+    localMap.put("sUid", localObject);
+    localObject = paramstReqHeader.mapExt;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    ((Map)localObject).put("sSessionKey", paramString1);
+    paramString2 = UserActionReportPresenter.a(BaseApplicationImpl.getContext());
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = "000000000000000";
+    }
+    paramstReqHeader.mapExt.put("imei", paramString1);
+    paramString2 = UserActionReportPresenter.b(BaseApplicationImpl.getContext());
+    localObject = paramstReqHeader.mapExt;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    ((Map)localObject).put("qimei", paramString1);
+    paramString2 = UserAction.getQimeiNew();
+    localObject = paramstReqHeader.mapExt;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    ((Map)localObject).put("qimei36", paramString1);
+    paramString2 = UserActionReportPresenter.c(BaseApplicationImpl.getContext());
+    localObject = paramstReqHeader.mapExt;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    ((Map)localObject).put("ssid", paramString1);
+    paramString2 = WSDeviceUtils.a(UserActionReportPresenter.d(BaseApplicationImpl.getContext()));
+    localObject = paramstReqHeader.mapExt;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    ((Map)localObject).put("ssid_ip", paramString1);
+    paramstReqHeader.mapExt.put("ab_policy_info", paramWSRequest.getExpABTestDataStr());
+    paramstReqHeader.mapExt.put("teen_mode", String.valueOf(WSNetUtil.b()));
+    paramString2 = WSPublicAccReport.getInstance().getSessionId();
+    localObject = paramstReqHeader.mapExt;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    ((Map)localObject).put("session_id", paramString1);
+    paramString1 = new StringBuilder();
+    paramString1.append("[getHeader]mCmd:");
+    paramString1.append(paramWSRequest.getRequestCmd());
+    paramString1.append(", mReqScene:");
+    paramString1.append(paramWSRequest.getRequestScene());
+    paramString1.append(", header:");
+    paramString1.append(paramstReqHeader.mapExt.toString());
+    WSLog.e("[WSService][Encoder]", paramString1.toString());
+  }
+  
+  public static <T extends JceStruct> byte[] a(WSRequest<T> paramWSRequest)
+  {
+    Object localObject1 = WSDeviceUtils.h();
+    Object localObject2 = QUA.getQUA3();
+    long l = paramWSRequest.getLoginUserId();
+    RetryInfo localRetryInfo = (RetryInfo)paramWSRequest.getRetryInfo();
+    localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
+    localObject2 = b(paramWSRequest);
+    if (localObject2 != null) {
+      return WupUtil.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), paramWSRequest.getCmdString(), (byte[])localObject2, paramWSRequest.isNeedCompress()));
+    }
+    return null;
+  }
+  
+  private static <T extends JceStruct> byte[] b(WSRequest<T> paramWSRequest)
+  {
+    Object localObject = c(paramWSRequest);
+    WSUniPacket localWSUniPacket = new WSUniPacket();
+    localWSUniPacket.b(paramWSRequest.requestId);
+    paramWSRequest.requestId += 1;
+    localWSUniPacket.a("king");
+    localWSUniPacket.b(paramWSRequest.getOnlyCmd());
+    localWSUniPacket.setEncodeName("UTF-8");
+    localWSUniPacket.put("stReqHeader", localObject);
+    localWSUniPacket.a(9999);
+    if ((paramWSRequest.req != null) && (!TextUtils.isEmpty(paramWSRequest.getRequestCmd())))
+    {
+      localWSUniPacket.put(paramWSRequest.getReqUniKey(), paramWSRequest.req);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[getEncodedUniParameter]req名 :");
+      ((StringBuilder)localObject).append(paramWSRequest.getReqUniKey());
+      WSLog.a("[WSService][Encoder]", ((StringBuilder)localObject).toString());
+    }
+    return localWSUniPacket.encode();
+  }
+  
   @NotNull
-  private static <T extends JceStruct> stReqHeader a(WSRequest<T> paramWSRequest)
+  private static <T extends JceStruct> stReqHeader c(WSRequest<T> paramWSRequest)
   {
     stReqHeader localstReqHeader = new stReqHeader();
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
@@ -52,15 +163,15 @@ public class WSRequestEncoder
     localstReqHeader.iChid = 0;
     localstReqHeader.person_id = WeishiHeaderConst.a;
     localstReqHeader.platform = "Android";
-    localstReqHeader.appversion = WSDeviceUtils.a(BaseApplicationImpl.getContext());
-    localstReqHeader.user_ip = WSDeviceUtils.a();
+    localstReqHeader.appversion = WSDeviceUtils.b(BaseApplicationImpl.getContext());
+    localstReqHeader.user_ip = WSDeviceUtils.b();
     localstReqHeader.strQua = QUA.getQUA3();
-    localstReqHeader.device_info = WSDeviceUtils.b();
+    localstReqHeader.device_info = WSDeviceUtils.c();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("[getHeader]device_info:");
     ((StringBuilder)localObject2).append(localstReqHeader.device_info);
     WSLog.b("[WSService][Encoder]", ((StringBuilder)localObject2).toString());
-    localstReqHeader.h265key = WSDeviceUtils.d();
+    localstReqHeader.h265key = WSDeviceUtils.g();
     localstReqHeader.appid = 1101083114;
     a(paramWSRequest, localstReqHeader, str, (String)localObject1);
     localstReqHeader.iAppVersion = WSDeviceUtils.a();
@@ -68,7 +179,7 @@ public class WSRequestEncoder
   }
   
   @NotNull
-  private static <T extends JceStruct> Map<String, String> a(@NotNull WSRequest<T> paramWSRequest)
+  private static <T extends JceStruct> Map<String, String> d(@NotNull WSRequest<T> paramWSRequest)
   {
     Object localObject1 = paramWSRequest.req;
     if (!(localObject1 instanceof stWeishiReportReq)) {
@@ -113,110 +224,10 @@ public class WSRequestEncoder
     WSLog.a("[WSService][Encoder]", paramWSRequest.toString());
     return new HashMap();
   }
-  
-  private static <T extends JceStruct> void a(@NotNull WSRequest<T> paramWSRequest, stReqHeader paramstReqHeader, String paramString1, String paramString2)
-  {
-    if ("stWeishiReportReq".equals(paramWSRequest.getReqUniKey())) {
-      paramstReqHeader.mapExt = a(paramWSRequest);
-    } else {
-      paramstReqHeader.mapExt = new HashMap();
-    }
-    if (paramstReqHeader.mapExt != null)
-    {
-      paramstReqHeader.mapExt.put("iAuthType", "2");
-      Map localMap = paramstReqHeader.mapExt;
-      Object localObject = paramString1;
-      if (paramString1 == null) {
-        localObject = "";
-      }
-      localMap.put("sUid", localObject);
-      localObject = paramstReqHeader.mapExt;
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      ((Map)localObject).put("sSessionKey", paramString1);
-      paramString2 = UserActionReportPresenter.a(BaseApplicationImpl.getContext());
-      paramString1 = paramString2;
-      if (TextUtils.isEmpty(paramString2)) {
-        paramString1 = "000000000000000";
-      }
-      paramstReqHeader.mapExt.put("imei", paramString1);
-      paramString2 = UserActionReportPresenter.b(BaseApplicationImpl.getContext());
-      localObject = paramstReqHeader.mapExt;
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      ((Map)localObject).put("qimei", paramString1);
-      paramString2 = UserActionReportPresenter.c(BaseApplicationImpl.getContext());
-      localObject = paramstReqHeader.mapExt;
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      ((Map)localObject).put("ssid", paramString1);
-      paramString2 = WSDeviceUtils.a(UserActionReportPresenter.a(BaseApplicationImpl.getContext()));
-      localObject = paramstReqHeader.mapExt;
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      ((Map)localObject).put("ssid_ip", paramString1);
-      paramstReqHeader.mapExt.put("ab_policy_info", paramWSRequest.getExpABTestDataStr());
-      paramstReqHeader.mapExt.put("teen_mode", String.valueOf(WSNetUtil.a()));
-      paramString1 = new StringBuilder();
-      paramString1.append("[getHeader]mCmd:");
-      paramString1.append(paramWSRequest.getRequestCmd());
-      paramString1.append(", mReqScene:");
-      paramString1.append(paramWSRequest.getRequestScene());
-      paramString1.append(", header:");
-      paramString1.append(paramstReqHeader.mapExt.toString());
-      WSLog.e("[WSService][Encoder]", paramString1.toString());
-      return;
-    }
-    WSLog.a("[WSService][Encoder]", "[getHeader]header mapExt is null.");
-  }
-  
-  public static <T extends JceStruct> byte[] a(WSRequest<T> paramWSRequest)
-  {
-    Object localObject1 = WSDeviceUtils.e();
-    Object localObject2 = QUA.getQUA3();
-    long l = paramWSRequest.getLoginUserId();
-    RetryInfo localRetryInfo = (RetryInfo)paramWSRequest.getRetryInfo();
-    localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
-    localObject2 = b(paramWSRequest);
-    if (localObject2 != null) {
-      return WupUtil.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), paramWSRequest.getCmdString(), (byte[])localObject2, paramWSRequest.isNeedCompress()));
-    }
-    return null;
-  }
-  
-  private static <T extends JceStruct> byte[] b(WSRequest<T> paramWSRequest)
-  {
-    Object localObject = a(paramWSRequest);
-    WSUniPacket localWSUniPacket = new WSUniPacket();
-    localWSUniPacket.b(paramWSRequest.requestId);
-    paramWSRequest.requestId += 1;
-    localWSUniPacket.a("king");
-    localWSUniPacket.b(paramWSRequest.getOnlyCmd());
-    localWSUniPacket.setEncodeName("UTF-8");
-    localWSUniPacket.put("stReqHeader", localObject);
-    localWSUniPacket.a(9999);
-    if ((paramWSRequest.req != null) && (!TextUtils.isEmpty(paramWSRequest.getRequestCmd())))
-    {
-      localWSUniPacket.put(paramWSRequest.getReqUniKey(), paramWSRequest.req);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[getEncodedUniParameter]req名 :");
-      ((StringBuilder)localObject).append(paramWSRequest.getReqUniKey());
-      WSLog.a("[WSService][Encoder]", ((StringBuilder)localObject).toString());
-    }
-    return localWSUniPacket.encode();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSRequestEncoder
  * JD-Core Version:    0.7.0.1
  */

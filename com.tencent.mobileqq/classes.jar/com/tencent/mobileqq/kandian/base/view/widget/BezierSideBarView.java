@@ -18,18 +18,18 @@ import com.tencent.mobileqq.utils.DisplayUtils;
 public class BezierSideBarView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  protected Paint a;
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  protected Drawable a;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private int c;
-  private int d;
+  protected Paint a = new Paint();
+  ValueAnimator b;
+  protected Drawable c;
+  private Paint d = new Paint();
+  private int e;
+  private int f;
+  private Path g = new Path();
+  private int h;
+  private int i;
+  private float j;
+  private float k;
+  private Bitmap l;
   
   public BezierSideBarView(Context paramContext)
   {
@@ -44,111 +44,95 @@ public class BezierSideBarView
   public BezierSideBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     a(paramContext, paramAttributeSet);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_b_of_type_Float = ((int)DisplayUtils.a(paramContext, 18.0F));
-    this.jdField_a_of_type_Int = -16777216;
-    this.d = ((int)DisplayUtils.a(paramContext, 18.0F));
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2130843404);
+    this.k = ((int)DisplayUtils.a(paramContext, 18.0F));
+    this.e = -16777216;
+    this.i = ((int)DisplayUtils.a(paramContext, 18.0F));
+    this.d = new Paint();
+    this.d.setAntiAlias(true);
+    this.d.setStyle(Paint.Style.FILL);
+    this.d.setColor(-1);
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.FILL);
+    this.a.setColor(this.e);
+    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2130844358);
     if (paramAttributeSet != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramAttributeSet, (int)DisplayUtils.a(paramContext, 7.0F), (int)DisplayUtils.a(paramContext, 12.0F), true);
+      this.l = Bitmap.createScaledBitmap(paramAttributeSet, (int)DisplayUtils.a(paramContext, 7.0F), (int)DisplayUtils.a(paramContext, 12.0F), true);
     }
   }
   
   private void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_b_of_type_Int, a());
-    int i = this.c;
-    int j = this.d;
-    i -= j * 2;
-    double d1 = this.jdField_b_of_type_Int;
-    double d2 = j;
+    this.g.reset();
+    this.g.moveTo(this.f, getTopEndY());
+    int m = this.h;
+    int n = this.i;
+    m -= n * 2;
+    double d1 = this.f;
+    double d2 = n;
     double d3 = Math.cos(0.7853981633974483D);
     Double.isNaN(d2);
-    double d4 = this.jdField_a_of_type_Float;
+    double d4 = this.j;
     Double.isNaN(d4);
     Double.isNaN(d1);
-    j = (int)(d1 - d2 * d3 * d4);
-    d1 = i;
-    d2 = this.d;
+    n = (int)(d1 - d2 * d3 * d4);
+    d1 = m;
+    d2 = this.i;
     d3 = Math.sin(0.7853981633974483D);
     Double.isNaN(d2);
     Double.isNaN(d1);
-    int k = (int)(d1 + d2 * d3);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f1 = this.jdField_b_of_type_Int;
-    float f2 = i;
-    float f3 = j;
-    ((Path)localObject).quadTo(f1, f2, f3, k);
-    d1 = this.jdField_b_of_type_Int;
-    d2 = a();
+    int i1 = (int)(d1 + d2 * d3);
+    Object localObject = this.g;
+    float f1 = this.f;
+    float f2 = m;
+    float f3 = n;
+    ((Path)localObject).quadTo(f1, f2, f3, i1);
+    d1 = this.f;
+    d2 = getCenterX();
     Double.isNaN(d1);
-    i = (int)(d1 - d2);
-    j = this.c;
-    int m = this.d;
-    k = m * 2 + j;
-    d1 = k;
-    d2 = m;
+    m = (int)(d1 - d2);
+    n = this.h;
+    int i2 = this.i;
+    i1 = i2 * 2 + n;
+    d1 = i1;
+    d2 = i2;
     d3 = Math.cos(0.7853981633974483D);
     Double.isNaN(d2);
     Double.isNaN(d1);
-    m = (int)(d1 - d2 * d3);
-    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(i, j, f3, m);
-    localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-    m = this.jdField_b_of_type_Int;
-    ((Path)localObject).quadTo(m, k, m, b());
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((localObject != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+    i2 = (int)(d1 - d2 * d3);
+    this.g.quadTo(m, n, f3, i2);
+    localObject = this.g;
+    i2 = this.f;
+    ((Path)localObject).quadTo(i2, i1, i2, getBottomEndY());
+    this.g.close();
+    paramCanvas.drawPath(this.g, this.a);
+    localObject = this.l;
+    if ((localObject != null) && (this.c == null))
     {
-      k = ((Bitmap)localObject).getWidth();
-      m = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      int n = i + 50;
-      int i1 = j - m / 2;
-      localObject = new Rect(0, 0, k, m);
-      Rect localRect = new Rect(n, i1, k + n, m + i1);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * 255.0F));
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Rect)localObject, localRect, this.jdField_b_of_type_AndroidGraphicsPaint);
+      i1 = ((Bitmap)localObject).getWidth();
+      i2 = this.l.getHeight();
+      int i3 = m + 50;
+      int i4 = n - i2 / 2;
+      localObject = new Rect(0, 0, i1, i2);
+      Rect localRect = new Rect(i3, i4, i1 + i3, i2 + i4);
+      this.d.setAlpha((int)(this.j * 255.0F));
+      paramCanvas.drawBitmap(this.l, (Rect)localObject, localRect, this.d);
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localObject = this.c;
     if (localObject != null)
     {
       ((Drawable)localObject).getIntrinsicWidth();
-      k = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() / 2;
+      i1 = this.c.getIntrinsicHeight() / 2;
       paramCanvas.save();
-      paramCanvas.translate(i + 50, j - k);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.translate(m + 50, n - i1);
+      this.c.draw(paramCanvas);
       paramCanvas.restore();
     }
-  }
-  
-  public double a()
-  {
-    double d1 = this.d * 1.8F;
-    double d2 = Math.sin(1.570796326794897D);
-    Double.isNaN(d1);
-    double d3 = this.jdField_a_of_type_Float;
-    Double.isNaN(d3);
-    return d1 * d2 * d3;
-  }
-  
-  protected int a()
-  {
-    return this.c - this.d * 3;
   }
   
   public void a()
@@ -158,45 +142,65 @@ public class BezierSideBarView
   
   public void a(float paramFloat, int paramInt)
   {
-    this.c = paramInt;
+    this.h = paramInt;
     if (paramFloat < 0.0F) {
       return;
     }
-    float f2 = this.jdField_b_of_type_Float;
+    float f2 = this.k;
     float f1 = paramFloat;
     if (paramFloat > f2) {
       f1 = f2;
     }
-    this.jdField_a_of_type_Float = (f1 / this.jdField_b_of_type_Float);
+    this.j = (f1 / this.k);
     invalidate();
   }
   
   public void a(ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
+    if (this.b == null) {
+      this.b = new ValueAnimator();
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, 0.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new BezierSideBarView.1(this, paramAnimatorUpdateListener));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.b.cancel();
+    this.b.setFloatValues(new float[] { this.j, 0.0F });
+    this.b.addUpdateListener(new BezierSideBarView.1(this, paramAnimatorUpdateListener));
+    this.b.start();
   }
   
-  protected int b()
+  protected int getBottomEndY()
   {
-    int i = this.c;
-    int j = this.d;
-    return i + j * 2 + j;
+    int m = this.h;
+    int n = this.i;
+    return m + n * 2 + n;
   }
   
-  public int c()
+  public double getCenterX()
   {
-    return this.d;
+    double d1 = this.i * 1.8F;
+    double d2 = Math.sin(1.570796326794897D);
+    Double.isNaN(d1);
+    double d3 = this.j;
+    Double.isNaN(d3);
+    return d1 * d2 * d3;
   }
   
-  public int d()
+  public int getCenterY()
   {
-    return this.c;
+    return this.h;
+  }
+  
+  public int getRadius()
+  {
+    return this.i;
+  }
+  
+  public float getRatio()
+  {
+    return this.j;
+  }
+  
+  protected int getTopEndY()
+  {
+    return this.h - this.i * 3;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -208,13 +212,13 @@ public class BezierSideBarView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.jdField_b_of_type_Int = getMeasuredWidth();
-    this.c = (getMeasuredHeight() / 2);
+    this.f = getMeasuredWidth();
+    this.h = (getMeasuredHeight() / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.BezierSideBarView
  * JD-Core Version:    0.7.0.1
  */

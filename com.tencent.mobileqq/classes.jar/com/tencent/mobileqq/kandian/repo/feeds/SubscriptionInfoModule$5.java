@@ -15,15 +15,15 @@ class SubscriptionInfoModule$5
   
   public void run()
   {
-    TroopBarAssistantManager.a().a(this.jdField_a_of_type_JavaLangString, (QQAppInterface)SubscriptionInfoModule.f(this.this$0), this.jdField_a_of_type_AndroidContentContext, SubscriptionInfoModule.a(this.this$0));
-    int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType((QQAppInterface)SubscriptionInfoModule.g(this.this$0), this.jdField_a_of_type_JavaLangString);
-    RecentUtil.b((QQAppInterface)SubscriptionInfoModule.h(this.this$0), this.jdField_a_of_type_JavaLangString, i);
-    ((QQAppInterface)SubscriptionInfoModule.i(this.this$0)).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, 1008);
+    TroopBarAssistantManager.a().a(this.a, (QQAppInterface)SubscriptionInfoModule.h(this.this$0), this.b, SubscriptionInfoModule.i(this.this$0));
+    int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType((QQAppInterface)SubscriptionInfoModule.j(this.this$0), this.a);
+    RecentUtil.b((QQAppInterface)SubscriptionInfoModule.k(this.this$0), this.a, i);
+    ((QQAppInterface)SubscriptionInfoModule.l(this.this$0)).getMessageFacade().a(this.a, 1008);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.SubscriptionInfoModule.5
  * JD-Core Version:    0.7.0.1
  */

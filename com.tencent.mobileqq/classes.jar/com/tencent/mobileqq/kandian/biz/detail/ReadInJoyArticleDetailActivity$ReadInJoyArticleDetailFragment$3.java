@@ -14,24 +14,24 @@ class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$3
   
   public void run()
   {
-    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.getUIStyleHandler().c != null)) {
-      this.this$0.getUIStyleHandler().c.setBackgroundColor(-1);
+    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.getUIStyleHandler().u != null)) {
+      this.this$0.getUIStyleHandler().u.setBackgroundColor(-1);
     }
-    if (this.this$0.a != null)
+    if (this.this$0.c != null)
     {
       if (Build.VERSION.SDK_INT >= 14)
       {
-        this.this$0.a.animate().alpha(0.0F).setDuration(200L).setListener(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.3.1(this));
-        this.this$0.a.animate().start();
+        this.this$0.c.animate().alpha(0.0F).setDuration(200L).setListener(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.3.1(this));
+        this.this$0.c.animate().start();
         return;
       }
-      this.this$0.a.setVisibility(8);
+      this.this$0.c.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.detail.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.3
  * JD-Core Version:    0.7.0.1
  */

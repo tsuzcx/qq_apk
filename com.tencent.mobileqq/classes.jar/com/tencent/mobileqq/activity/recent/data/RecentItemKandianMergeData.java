@@ -28,7 +28,7 @@ public class RecentItemKandianMergeData
     } else {
       this.mUnreadFlag = 2;
     }
-    this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131167170);
+    this.mExtraInfoColor = BaseApplicationImpl.getApplication().getResources().getColor(2131168153);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -47,7 +47,7 @@ public class RecentItemKandianMergeData
     Object localObject = ((QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime()).getMessageFacade();
     if (localObject != null)
     {
-      localObject = ((QQMessageFacade)localObject).b(this.mUser.uin, this.mUser.getType());
+      localObject = ((QQMessageFacade)localObject).r(this.mUser.uin, this.mUser.getType());
       if (localObject == null) {
         return super.getFaceExtraFlag();
       }
@@ -65,7 +65,7 @@ public class RecentItemKandianMergeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemKandianMergeData
  * JD-Core Version:    0.7.0.1
  */

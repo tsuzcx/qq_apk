@@ -13,7 +13,7 @@ public class FreeTypeLib
 {
   private int[] a;
   
-  private int[] a()
+  private int[] b()
   {
     if (this.a == null)
     {
@@ -26,8 +26,8 @@ public class FreeTypeLib
   
   public void a()
   {
-    int[] arrayOfInt = a();
-    int j = (int)DeviceInfoUtil.c();
+    int[] arrayOfInt = b();
+    int j = (int)DeviceInfoUtil.l();
     int k = Runtime.getRuntime().availableProcessors();
     int m = (int)(DeviceInfoUtil.a() / 1024L);
     StringBuilder localStringBuilder = new StringBuilder();

@@ -11,14 +11,14 @@ class AVActivity$onWindowFocusChangedRunnable
   {
     if (QLog.isDevelopLevel())
     {
-      String str = this.this$0.b;
+      String str = this.this$0.i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onWindowFocusChangedRunnable, nfonWindowFocus[");
-      localStringBuilder.append(this.this$0.j);
+      localStringBuilder.append(this.this$0.an);
       localStringBuilder.append("->true]");
       QLog.d(str, 4, localStringBuilder.toString());
     }
-    this.this$0.j = true;
+    this.this$0.an = true;
   }
 }
 

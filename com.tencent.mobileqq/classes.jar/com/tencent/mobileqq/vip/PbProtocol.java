@@ -93,33 +93,6 @@ public class PbProtocol
     ((IApolloExtensionHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(paramString, paramArrayOfByte, paramBusinessObserver);
   }
   
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
-    {
-      paramArrayOfByte = a(paramArrayOfByte);
-      ((Long)paramArrayOfByte[0]).longValue();
-      String str = (String)paramArrayOfByte[1];
-      paramArrayOfByte = ((ByteStringMicro)paramArrayOfByte[2]).toByteArray();
-      return paramArrayOfByte;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static Object[] a(byte[] paramArrayOfByte)
-  {
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    localStQWebRsp.mergeFrom(paramArrayOfByte);
-    return new Object[] { Long.valueOf(localStQWebRsp.retCode.get()), localStQWebRsp.errMsg.get().toStringUtf8(), localStQWebRsp.busiBuff.get() };
-  }
-  
   public static String b()
   {
     String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
@@ -135,10 +108,37 @@ public class PbProtocol
     localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     return localStringBuilder.toString();
   }
+  
+  public static byte[] b(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      paramArrayOfByte = c(paramArrayOfByte);
+      ((Long)paramArrayOfByte[0]).longValue();
+      String str = (String)paramArrayOfByte[1];
+      paramArrayOfByte = ((ByteStringMicro)paramArrayOfByte[2]).toByteArray();
+      return paramArrayOfByte;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static Object[] c(byte[] paramArrayOfByte)
+  {
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    localStQWebRsp.mergeFrom(paramArrayOfByte);
+    return new Object[] { Long.valueOf(localStQWebRsp.retCode.get()), localStQWebRsp.errMsg.get().toStringUtf8(), localStQWebRsp.busiBuff.get() };
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.PbProtocol
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ class AVVoiceRecog$2
   public void run()
   {
     AVVoiceRecog localAVVoiceRecog = this.this$0;
-    AVVoiceRecog.b(localAVVoiceRecog, localAVVoiceRecog.c, this.this$0.d);
+    AVVoiceRecog.b(localAVVoiceRecog, localAVVoiceRecog.d, this.this$0.e);
   }
 }
 

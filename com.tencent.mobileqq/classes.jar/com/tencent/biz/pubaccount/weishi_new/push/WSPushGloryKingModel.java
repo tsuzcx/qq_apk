@@ -10,14 +10,14 @@ public class WSPushGloryKingModel
 {
   public static final Parcelable.Creator<WSPushGloryKingModel> CREATOR = new WSPushGloryKingModel.1();
   public int a;
-  public String a;
+  public String b;
   
   protected WSPushGloryKingModel() {}
   
   protected WSPushGloryKingModel(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
   }
   
   protected static WSPushGloryKingModel a(JSONObject paramJSONObject)
@@ -25,8 +25,8 @@ public class WSPushGloryKingModel
     if (paramJSONObject != null)
     {
       WSPushGloryKingModel localWSPushGloryKingModel = new WSPushGloryKingModel();
-      localWSPushGloryKingModel.jdField_a_of_type_Int = paramJSONObject.optInt("material_type");
-      localWSPushGloryKingModel.jdField_a_of_type_JavaLangString = paramJSONObject.optString("attach");
+      localWSPushGloryKingModel.a = paramJSONObject.optInt("material_type");
+      localWSPushGloryKingModel.b = paramJSONObject.optString("attach");
       return localWSPushGloryKingModel;
     }
     return null;
@@ -39,13 +39,13 @@ public class WSPushGloryKingModel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushGloryKingModel
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ class QQGameTroopManager$2
   
   public void onTrpcRsp(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp)
   {
-    QQGameTroopManager.b.clear();
+    QQGameTroopManager.c.clear();
     int i = 0;
     if ((paramLong == 0L) && (paramTrpcInovkeRsp != null) && (paramTrpcInovkeRsp.data.get() != null)) {
       try
@@ -31,7 +31,7 @@ class QQGameTroopManager$2
         paramIntent = new QQGameMemberSelectInfo.QueryOldFriendsRsp();
         paramIntent.mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
         if (paramIntent.uinList.get() != null) {
-          QQGameTroopManager.b.addAll(paramIntent.uinList.get());
+          QQGameTroopManager.c.addAll(paramIntent.uinList.get());
         }
       }
       catch (Exception paramIntent)
@@ -45,8 +45,8 @@ class QQGameTroopManager$2
     {
       paramIntent = new StringBuilder();
       paramIntent.append("onTrpcRsp,:gameFriendList size:");
-      if (QQGameTroopManager.b != null) {
-        i = QQGameTroopManager.b.size();
+      if (QQGameTroopManager.c != null) {
+        i = QQGameTroopManager.c.size();
       }
       paramIntent.append(i);
       paramIntent.append(",cost:");
@@ -57,7 +57,7 @@ class QQGameTroopManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameTroopManager.2
  * JD-Core Version:    0.7.0.1
  */

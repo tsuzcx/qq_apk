@@ -14,19 +14,19 @@ import mqq.app.QQPermissionGrant;
 
 public class ArkAppLocationManager
 {
-  private SosoInterfaceOnLocationListener jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener;
   protected String a;
-  private final ArrayList<ArkAppLocationManager.LocationCallback> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private final ArrayList<ArkAppLocationManager.LocationCallback> b = new ArrayList();
-  private final ArrayList<ArkAppLocationManager.AddressCallback> c = new ArrayList();
+  private final ArrayList<ArkAppLocationManager.LocationCallback> c = new ArrayList();
+  private final ArrayList<ArkAppLocationManager.AddressCallback> d = new ArrayList();
+  private SosoInterfaceOnLocationListener e;
   
   public ArkAppLocationManager(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener = new ArkAppLocationManager.1(this, 3, true, true, paramLong, true, true, "ArkAppLocationManager");
+    this.a = paramString;
+    this.e = new ArkAppLocationManager.1(this, 3, true, true, paramLong, true, true, "ArkAppLocationManager");
   }
   
-  public static boolean a()
+  public static boolean c()
   {
     Object localObject = QBaseActivity.sTopActivity;
     boolean bool;
@@ -44,13 +44,13 @@ public class ArkAppLocationManager
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      synchronized (this.b)
+      this.b.clear();
+      synchronized (this.c)
       {
-        this.b.clear();
-        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+        this.c.clear();
+        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.e);
         return;
       }
     }
@@ -61,15 +61,15 @@ public class ArkAppLocationManager
     if (paramAddressCallback == null) {
       return;
     }
-    synchronized (this.c)
+    synchronized (this.d)
     {
-      this.c.add(paramAddressCallback);
+      this.d.add(paramAddressCallback);
       if (paramBoolean)
       {
-        c();
+        d();
         return;
       }
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.e);
       return;
     }
   }
@@ -79,29 +79,29 @@ public class ArkAppLocationManager
     if (paramLocationCallback == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramLocationCallback);
-      c();
+      this.b.add(paramLocationCallback);
+      d();
       return;
     }
   }
   
   public void b()
   {
-    if ((this.b.size() == 0) && (this.c.size() == 0)) {
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+    if ((this.c.size() == 0) && (this.d.size() == 0)) {
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.e);
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.b)
     {
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
+      ArrayList localArrayList = new ArrayList(this.b);
       ??? = localArrayList.iterator();
       while (((Iterator)???).hasNext()) {
         ((ArkAppLocationManager.LocationCallback)((Iterator)???).next()).a();
       }
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.b.clear();
         return;
       }
     }
@@ -116,18 +116,18 @@ public class ArkAppLocationManager
     if (paramLocationCallback == null) {
       return;
     }
-    synchronized (this.b)
+    synchronized (this.c)
     {
-      this.b.add(paramLocationCallback);
-      c();
+      this.c.add(paramLocationCallback);
+      d();
       return;
     }
   }
   
-  protected void c()
+  protected void d()
   {
     QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (!a())
+    if (!c())
     {
       localQBaseActivity.requestPermissions(new ArkAppLocationManager.2(this, localQBaseActivity), 1, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" });
       return;
@@ -139,7 +139,7 @@ public class ArkAppLocationManager
   @TargetApi(23)
   public void denied()
   {
-    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.e);
     QLog.i("GetArkLocPermission", 1, "CheckPermission location is denied");
   }
   
@@ -147,13 +147,13 @@ public class ArkAppLocationManager
   @TargetApi(23)
   public void grant()
   {
-    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.e);
     QLog.i("GetArkLocPermission", 1, "CheckPermission location is granted ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.component.ArkAppLocationManager
  * JD-Core Version:    0.7.0.1
  */

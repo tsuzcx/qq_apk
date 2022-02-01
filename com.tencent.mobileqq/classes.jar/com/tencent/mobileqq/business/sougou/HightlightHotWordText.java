@@ -17,14 +17,14 @@ import mqq.app.AppRuntime;
 public class HightlightHotWordText
   extends ClickableSpan
 {
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  String a;
   String b = "https://m.sogou.com/web/searchList.jsp?pid=sogou-appi-4fc28b7093b135c2&keyword=";
+  WeakReference<QQAppInterface> c;
   
   HightlightHotWordText(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.a = paramString;
+    this.c = new WeakReference(paramQQAppInterface);
   }
   
   public static SpannableStringBuilder a(QQAppInterface paramQQAppInterface, String paramString, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
@@ -100,9 +100,9 @@ public class HightlightHotWordText
   
   private void a(Context paramContext)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
-    localActionSheet.addButton(2131697279, 5);
-    localActionSheet.addCancelButton(2131690728);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(paramContext, null);
+    localActionSheet.addButton(2131895052, 5);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new HightlightHotWordText.1(this, paramContext, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
@@ -147,9 +147,9 @@ public class HightlightHotWordText
       return;
     }
     a(paramView);
-    paramView = this.jdField_a_of_type_JavaLangRefWeakReference;
+    paramView = this.c;
     if ((paramView != null) && (paramView.get() != null)) {
-      ReportController.b((AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "click_hotword", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
+      ReportController.b((AppRuntime)this.c.get(), "P_CliOper", "aio_search", "", "aio_hotword", "click_hotword", 0, 0, "", "", this.a, "");
     }
   }
   
@@ -161,7 +161,7 @@ public class HightlightHotWordText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.HightlightHotWordText
  * JD-Core Version:    0.7.0.1
  */

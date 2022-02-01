@@ -29,7 +29,7 @@ public final class VasAdExtendFriendApiImpl
   
   private final qq_ad_get.QQAdGet.DeviceInfo getDeviceInfo()
   {
-    return VasAdvSupport.a.a().a("1018ec");
+    return VasAdvSupport.a.a().b("1018ec");
   }
   
   private final qq_ad_get.QQAdGet.DeviceInfo setParamsToDeviceInfo(qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
@@ -58,7 +58,7 @@ public final class VasAdExtendFriendApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.extfriend.api.impl.VasAdExtendFriendApiImpl
  * JD-Core Version:    0.7.0.1
  */

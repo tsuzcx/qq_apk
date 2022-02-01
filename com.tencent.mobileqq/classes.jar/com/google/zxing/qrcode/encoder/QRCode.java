@@ -6,45 +6,45 @@ import com.google.zxing.qrcode.decoder.Version;
 
 public final class QRCode
 {
-  private int jdField_a_of_type_Int = -1;
-  private ErrorCorrectionLevel jdField_a_of_type_ComGoogleZxingQrcodeDecoderErrorCorrectionLevel;
-  private Mode jdField_a_of_type_ComGoogleZxingQrcodeDecoderMode;
-  private Version jdField_a_of_type_ComGoogleZxingQrcodeDecoderVersion;
-  private ByteMatrix jdField_a_of_type_ComGoogleZxingQrcodeEncoderByteMatrix;
+  private Mode a;
+  private ErrorCorrectionLevel b;
+  private Version c;
+  private int d = -1;
+  private ByteMatrix e;
   
-  public static boolean a(int paramInt)
+  public static boolean b(int paramInt)
   {
     return (paramInt >= 0) && (paramInt < 8);
   }
   
   public ByteMatrix a()
   {
-    return this.jdField_a_of_type_ComGoogleZxingQrcodeEncoderByteMatrix;
+    return this.e;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(ErrorCorrectionLevel paramErrorCorrectionLevel)
   {
-    this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderErrorCorrectionLevel = paramErrorCorrectionLevel;
+    this.b = paramErrorCorrectionLevel;
   }
   
   public void a(Mode paramMode)
   {
-    this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderMode = paramMode;
+    this.a = paramMode;
   }
   
   public void a(Version paramVersion)
   {
-    this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderVersion = paramVersion;
+    this.c = paramVersion;
   }
   
   public void a(ByteMatrix paramByteMatrix)
   {
-    this.jdField_a_of_type_ComGoogleZxingQrcodeEncoderByteMatrix = paramByteMatrix;
+    this.e = paramByteMatrix;
   }
   
   public String toString()
@@ -52,21 +52,21 @@ public final class QRCode
     StringBuilder localStringBuilder = new StringBuilder(200);
     localStringBuilder.append("<<\n");
     localStringBuilder.append(" mode: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderMode);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n ecLevel: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderErrorCorrectionLevel);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n version: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComGoogleZxingQrcodeDecoderVersion);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n maskPattern: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComGoogleZxingQrcodeEncoderByteMatrix == null)
+    localStringBuilder.append(this.d);
+    if (this.e == null)
     {
       localStringBuilder.append("\n matrix: null\n");
     }
     else
     {
       localStringBuilder.append("\n matrix:\n");
-      localStringBuilder.append(this.jdField_a_of_type_ComGoogleZxingQrcodeEncoderByteMatrix.toString());
+      localStringBuilder.append(this.e.toString());
     }
     localStringBuilder.append(">>\n");
     return localStringBuilder.toString();
@@ -74,7 +74,7 @@ public final class QRCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.qrcode.encoder.QRCode
  * JD-Core Version:    0.7.0.1
  */

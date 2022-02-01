@@ -36,9 +36,9 @@ public class ShareActionHelperImpl
   {
     try
     {
-      if (ShareActionSheetInjectUtil.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (ShareActionSheetInjectUtil.b.size() > 0)
       {
-        sShareActionInjectInterface = (IShareActionInterface)((Class)ShareActionSheetInjectUtil.jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
+        sShareActionInjectInterface = (IShareActionInterface)((Class)ShareActionSheetInjectUtil.b.get(0)).newInstance();
         QLog.d("ShareActionHelperImpl", 1, "ShareActionSheetInjectUtil newInstance");
         return;
       }
@@ -55,7 +55,7 @@ public class ShareActionHelperImpl
     ((StringBuilder)localObject).append("createInjectShare type: ");
     ((StringBuilder)localObject).append(paramString);
     QLog.d("ShareActionHelperImpl", 1, ((StringBuilder)localObject).toString());
-    localObject = (Class)ShareActionSheetInjectUtil.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    localObject = (Class)ShareActionSheetInjectUtil.a.get(paramString);
     try
     {
       localObject = (IShareBusinessInterface)((Class)localObject).newInstance();
@@ -77,7 +77,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.f(paramInt);
+      paramString.h(paramInt);
     }
   }
   
@@ -85,7 +85,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.k(paramInt);
+      paramString.m(paramInt);
     }
   }
   
@@ -93,7 +93,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.e(paramInt);
+      paramString.g(paramInt);
     }
   }
   
@@ -101,7 +101,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.j(paramInt);
+      paramString.l(paramInt);
     }
   }
   
@@ -109,7 +109,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.c(paramInt);
+      paramString.e(paramInt);
     }
   }
   
@@ -117,7 +117,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.d(paramInt);
+      paramString.f(paramInt);
     }
   }
   
@@ -125,7 +125,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.b(paramInt);
+      paramString.d(paramInt);
     }
   }
   
@@ -133,7 +133,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.h(paramInt);
+      paramString.j(paramInt);
     }
   }
   
@@ -141,7 +141,7 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.i(paramInt);
+      paramString.k(paramInt);
     }
   }
   
@@ -149,28 +149,47 @@ public class ShareActionHelperImpl
   {
     paramString = createInjectShare(paramString);
     if (paramString != null) {
-      paramString.g(paramInt);
+      paramString.i(paramInt);
     }
+  }
+  
+  public void doSharTextToWeChat(String paramString1, int paramInt, Activity paramActivity, String paramString2, String paramString3)
+  {
+    paramActivity = new WXShareHelper.WXShareListener[1];
+    ShareActionHelperImpl.1 local1 = new ShareActionHelperImpl.1(this, paramString2, paramActivity, paramString1, paramInt);
+    int i = 0;
+    paramActivity[0] = local1;
+    WXShareHelper.a().a(paramActivity[0]);
+    dispatchBeforeShareLinkToWX(paramString1, paramInt);
+    if (paramInt != 9) {
+      i = 1;
+    }
+    WXShareHelper.a().a(paramString3, i, paramString2);
+    QLog.d("ShareActionHelperImpl", 1, "shareTextToWeChat success");
+    dispatchAfterShareLinkToWX(paramString1, paramInt);
   }
   
   public void doShareArkBySelect(String paramString, Activity paramActivity, ArkShareInfo paramArkShareInfo)
   {
-    paramString = new Intent();
-    paramString.putExtra("forward_type", 27);
-    paramString.putExtra("is_ark_display_share", true);
-    paramString.putExtra("forward_ark_app_name", paramArkShareInfo.a());
-    paramString.putExtra("forward_ark_app_view", paramArkShareInfo.b());
-    paramString.putExtra("forward_ark_app_ver", paramArkShareInfo.c());
-    paramString.putExtra("forward_ark_app_prompt", paramArkShareInfo.d());
-    paramString.putExtra("selection_mode", 2);
-    paramString.putExtra(paramArkShareInfo.f(), true);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("forward_type", 27);
+    localIntent.putExtra("is_ark_display_share", true);
+    localIntent.putExtra("forward_ark_app_name", paramArkShareInfo.a());
+    localIntent.putExtra("forward_ark_app_view", paramArkShareInfo.b());
+    localIntent.putExtra("forward_ark_app_ver", paramArkShareInfo.c());
+    localIntent.putExtra("forward_ark_app_prompt", paramArkShareInfo.d());
+    localIntent.putExtra("selection_mode", 2);
+    localIntent.putExtra(paramArkShareInfo.g(), true);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getShareArkIntent metaDataString: ");
     localStringBuilder.append(paramArkShareInfo.e());
     QLog.d("ShareActionHelperImpl", 1, localStringBuilder.toString());
-    paramString.putExtra("forward_ark_app_meta", paramArkShareInfo.e());
-    paramString.putExtras(paramArkShareInfo.a());
-    RouteUtils.a(paramActivity, paramString, "/base/forwardRecent", -1);
+    localIntent.putExtra("forward_ark_app_meta", paramArkShareInfo.e());
+    localIntent.putExtras(paramArkShareInfo.f());
+    if ("guildShare".equals(paramString)) {
+      localIntent.putExtra("req_type", 6);
+    }
+    RouteUtils.a(paramActivity, localIntent, "/base/forwardRecent", -1);
     QLog.d("ShareActionHelperImpl", 1, "shareToQQ success");
   }
   
@@ -184,14 +203,14 @@ public class ShareActionHelperImpl
     paramString1.putExtra("forward_ark_app_ver", paramArkShareInfo.c());
     paramString1.putExtra("forward_ark_app_prompt", paramArkShareInfo.d());
     paramString1.putExtra("selection_mode", 2);
-    paramString1.putExtra(paramArkShareInfo.f(), true);
+    paramString1.putExtra(paramArkShareInfo.g(), true);
     String str = paramArkShareInfo.e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getShareArkIntent metaDataString: ");
     localStringBuilder.append(str);
     QLog.d("ShareActionHelperImpl", 1, localStringBuilder.toString());
     paramString1.putExtra("forward_ark_app_meta", str);
-    paramString1.putExtras(paramArkShareInfo.a());
+    paramString1.putExtras(paramArkShareInfo.f());
     paramArkShareInfo = new Bundle();
     paramArkShareInfo.putInt("key_req", 1);
     paramArkShareInfo.putInt("key_direct_show_uin_type", paramInt);
@@ -241,54 +260,89 @@ public class ShareActionHelperImpl
     if (TextUtils.isEmpty(paramString2))
     {
       QLog.e("ShareActionHelperImpl", 1, "shareLinkToWeChat error: params wrong");
-      QQToast.a(paramActivity, 1, 2131690527, 0).a();
-      return;
-    }
-    if (!WXShareHelper.a().a())
-    {
-      QLog.e("ShareActionHelperImpl", 1, "shareLinkToWeChat error: wechat not install");
-      QQToast.a(paramActivity, 1, 2131720478, 0).a();
+      QQToast.makeText(paramActivity, 1, 2131887438, 0).show();
       return;
     }
     if (!WXShareHelper.a().b())
     {
+      QLog.e("ShareActionHelperImpl", 1, "shareLinkToWeChat error: wechat not install");
+      QQToast.makeText(paramActivity, 1, 2131918154, 0).show();
+      return;
+    }
+    if (!WXShareHelper.a().c())
+    {
       QLog.e("ShareActionHelperImpl", 1, "shareLinkToWeChat error: wechat version not support");
-      QQToast.a(paramActivity, 1, 2131720479, 0).a();
+      QQToast.makeText(paramActivity, 1, 2131918155, 0).show();
       return;
     }
     Object localObject = new WXShareHelper.WXShareListener[1];
-    localObject[0] = new ShareActionHelperImpl.1(this, paramString3, (WXShareHelper.WXShareListener[])localObject, paramString1, paramInt);
+    localObject[0] = new ShareActionHelperImpl.2(this, paramString3, (WXShareHelper.WXShareListener[])localObject, paramString1, paramInt);
     WXShareHelper.a().a(localObject[0]);
     localObject = new QQProgressDialog(paramActivity);
-    paramString1 = new ShareActionHelperImpl.2(this, paramString1, paramInt, (QQProgressDialog)localObject, localHashMap, paramString3, paramString5, paramString4, paramString2);
-    ((QQProgressDialog)localObject).c(2131693895);
+    paramString1 = new ShareActionHelperImpl.3(this, paramString1, paramInt, (QQProgressDialog)localObject, localHashMap, paramString3, paramString5, paramString4, paramString2);
+    ((QQProgressDialog)localObject).c(2131891516);
     ((QQProgressDialog)localObject).show();
-    ThreadManager.post(new ShareActionHelperImpl.3(this, paramActivity, paramString6, localHashMap, paramString1), 8, null, false);
+    ThreadManager.post(new ShareActionHelperImpl.4(this, paramActivity, paramString6, localHashMap, paramString1), 8, null, false);
   }
   
   public void doSharePicToWX(String paramString1, Activity paramActivity, String paramString2, String paramString3, int paramInt)
   {
     HashMap localHashMap = new HashMap(1);
-    if (!WXShareHelper.a().a())
-    {
-      QLog.e("ShareActionHelperImpl", 1, "shareToWeChat error: wechat not install");
-      QQToast.a(paramActivity, 1, 2131720478, 0).a();
-      return;
-    }
     if (!WXShareHelper.a().b())
     {
+      QLog.e("ShareActionHelperImpl", 1, "shareToWeChat error: wechat not install");
+      QQToast.makeText(paramActivity, 1, 2131918154, 0).show();
+      return;
+    }
+    if (!WXShareHelper.a().c())
+    {
       QLog.e("ShareActionHelperImpl", 1, "shareToWeChat error: wechat version not support");
-      QQToast.a(paramActivity, 1, 2131720479, 0).a();
+      QQToast.makeText(paramActivity, 1, 2131918155, 0).show();
       return;
     }
     Object localObject = new WXShareHelper.WXShareListener[1];
-    localObject[0] = new ShareActionHelperImpl.4(this, paramString2, (WXShareHelper.WXShareListener[])localObject, paramString1, paramInt);
+    localObject[0] = new ShareActionHelperImpl.5(this, paramString2, (WXShareHelper.WXShareListener[])localObject, paramString1, paramInt);
     WXShareHelper.a().a(localObject[0]);
     localObject = new QQProgressDialog(paramActivity);
-    paramString1 = new ShareActionHelperImpl.5(this, paramString1, paramInt, (QQProgressDialog)localObject, localHashMap, paramString3, paramString2);
-    ((QQProgressDialog)localObject).c(2131693895);
+    paramString1 = new ShareActionHelperImpl.6(this, paramString1, paramInt, (QQProgressDialog)localObject, localHashMap, paramString3, paramString2);
+    ((QQProgressDialog)localObject).c(2131891516);
     ((QQProgressDialog)localObject).show();
-    ThreadManager.post(new ShareActionHelperImpl.6(this, paramString3, localHashMap, paramActivity, paramString1), 8, null, false);
+    ThreadManager.post(new ShareActionHelperImpl.7(this, paramString3, localHashMap, paramActivity, paramString1), 8, null, false);
+  }
+  
+  public void doShareTextBySelect(String paramString1, Activity paramActivity, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2))
+    {
+      QLog.e("ShareActionHelperImpl", 1, "doShareTextDirectly: error, content is empty");
+      return;
+    }
+    paramString1 = new Bundle();
+    paramString1.putInt("forward_type", -1);
+    paramString1.putString("forward_text", paramString2);
+    paramString2 = new Intent();
+    paramString2.putExtra("isFromShare", true);
+    paramString2.putExtras(paramString1);
+    RouteUtils.a(paramActivity, paramString2, "/base/forwardRecent", -1);
+  }
+  
+  public void doShareTextDirectly(String paramString1, Activity paramActivity, String paramString2, int paramInt, String paramString3)
+  {
+    if (TextUtils.isEmpty(paramString2))
+    {
+      QLog.e("ShareActionHelperImpl", 1, "doShareTextDirectly: error, content is empty");
+      return;
+    }
+    paramString1 = new Bundle();
+    paramString1.putInt("forward_type", -1);
+    paramString1.putString("forward_text", paramString2);
+    paramString1.putInt("key_req", 1);
+    paramString1.putInt("key_direct_show_uin_type", paramInt);
+    paramString1.putString("key_direct_show_uin", paramString3);
+    paramString2 = new Intent();
+    paramString2.putExtra("isFromShare", true);
+    paramString2.putExtras(paramString1);
+    RouteUtils.a(paramActivity, paramString2, "/base/forwardRecentTrans", -1);
   }
   
   public void doShareToQZoneWithLink(String paramString, Context paramContext, QzoneLinkShareInfo paramQzoneLinkShareInfo)
@@ -303,7 +357,7 @@ public class ShareActionHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.sharehelper.impl.ShareActionHelperImpl
  * JD-Core Version:    0.7.0.1
  */

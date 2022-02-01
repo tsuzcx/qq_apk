@@ -18,12 +18,12 @@ class TroopMemberListActivity$40$1
   
   public void run()
   {
-    Object localObject1 = (ITroopInfoService)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40.a.app.getRuntimeService(ITroopInfoService.class, "");
-    TroopInfo localTroopInfo = ((ITroopInfoService)localObject1).findTroopInfo(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40.a.mTroopUin);
+    Object localObject1 = (ITroopInfoService)this.b.a.app.getRuntimeService(ITroopInfoService.class, "");
+    TroopInfo localTroopInfo = ((ITroopInfoService)localObject1).findTroopInfo(this.b.a.mTroopUin);
     if (localTroopInfo == null) {
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject2 = this.a;
     int i;
     if (localObject2 == null) {
       i = 0;
@@ -32,7 +32,7 @@ class TroopMemberListActivity$40$1
     }
     if (i == 1)
     {
-      localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(0);
+      localObject2 = (oidb_0x899.memberlist)this.a.get(0);
       if (localObject2 != null)
       {
         if (!((oidb_0x899.memberlist)localObject2).uint64_member_uin.has()) {
@@ -49,11 +49,11 @@ class TroopMemberListActivity$40$1
       }
     }
     ((ITroopInfoService)localObject1).saveTroopInfo(localTroopInfo);
-    localObject1 = (ITroopMemberListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40.a.app.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopMemberListHandlerName());
+    localObject1 = (ITroopMemberListHandler)this.b.a.app.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopMemberListHandlerName());
     if (localObject1 != null) {
       try
       {
-        ((ITroopMemberListHandler)localObject1).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$40.a.mTroopUin), 0L, 2, 0, 0);
+        ((ITroopMemberListHandler)localObject1).a(Long.parseLong(this.b.a.mTroopUin), 0L, 2, 0, 0);
         return;
       }
       catch (Exception localException)
@@ -67,7 +67,7 @@ class TroopMemberListActivity$40$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.40.1
  * JD-Core Version:    0.7.0.1
  */

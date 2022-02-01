@@ -25,33 +25,6 @@ public class ExcitingTransferAdapter
 {
   private AppRuntime a;
   
-  public long a()
-  {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingC2CUploadConfig() != null) {
-      return localIQFileConfigManager.getExcitingC2CUploadConfig().a();
-    }
-    return 20971520L;
-  }
-  
-  public ExcitingTransferDownloadConfig a()
-  {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
-      return localIQFileConfigManager.getExcitingC2CDownloadConfig().a();
-    }
-    return new ExcitingTransferDownloadConfig();
-  }
-  
-  public ExcitingTransferUploadChnConfigInfo a()
-  {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingC2CUploadConfig() != null) {
-      return localIQFileConfigManager.getExcitingC2CUploadConfig().a();
-    }
-    return new ExcitingTransferUploadChnConfigInfo();
-  }
-  
   public List<ExcitingTransferHostInfo> a(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
@@ -111,11 +84,6 @@ public class ExcitingTransferAdapter
     return localArrayList;
   }
   
-  public void a()
-  {
-    this.a = null;
-  }
-  
   public void a(AppRuntime paramAppRuntime)
   {
     this.a = paramAppRuntime;
@@ -125,7 +93,7 @@ public class ExcitingTransferAdapter
   {
     IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
     if (localIQFileConfigManager.getExcitingC2CUploadConfig() != null) {
-      return localIQFileConfigManager.getExcitingC2CUploadConfig().a();
+      return localIQFileConfigManager.getExcitingC2CUploadConfig().b();
     }
     return false;
   }
@@ -133,76 +101,114 @@ public class ExcitingTransferAdapter
   public long b()
   {
     IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
-      return localIQFileConfigManager.getExcitingC2CDownloadConfig().a();
+    if (localIQFileConfigManager.getExcitingC2CUploadConfig() != null) {
+      return localIQFileConfigManager.getExcitingC2CUploadConfig().a();
     }
     return 20971520L;
   }
   
-  public ExcitingTransferDownloadConfig b()
+  public ExcitingTransferUploadChnConfigInfo c()
   {
     IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
-      return localIQFileConfigManager.getExcitingGroupDownloadConfig().a();
-    }
-    return new ExcitingTransferDownloadConfig();
-  }
-  
-  public ExcitingTransferUploadChnConfigInfo b()
-  {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
-      return localIQFileConfigManager.getExcitingGroupUploadConfig().a();
+    if (localIQFileConfigManager.getExcitingC2CUploadConfig() != null) {
+      return localIQFileConfigManager.getExcitingC2CUploadConfig().c();
     }
     return new ExcitingTransferUploadChnConfigInfo();
-  }
-  
-  public boolean b()
-  {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
-      return localIQFileConfigManager.getExcitingC2CDownloadConfig().a();
-    }
-    return false;
-  }
-  
-  public long c()
-  {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
-      return localIQFileConfigManager.getExcitingGroupUploadConfig().a();
-    }
-    return 20971520L;
-  }
-  
-  public boolean c()
-  {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
-      return localIQFileConfigManager.getExcitingGroupUploadConfig().a();
-    }
-    return false;
-  }
-  
-  public long d()
-  {
-    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
-      return localIQFileConfigManager.getExcitingGroupDownloadConfig().a();
-    }
-    return 20971520L;
   }
   
   public boolean d()
   {
     IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
-    if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
-      return localIQFileConfigManager.getExcitingGroupDownloadConfig().a();
+    if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
+      return localIQFileConfigManager.getExcitingC2CDownloadConfig().b();
     }
     return false;
   }
   
   public long e()
+  {
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
+    if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
+      return localIQFileConfigManager.getExcitingC2CDownloadConfig().a();
+    }
+    return 20971520L;
+  }
+  
+  public ExcitingTransferDownloadConfig f()
+  {
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
+    if (localIQFileConfigManager.getExcitingC2CDownloadConfig() != null) {
+      return localIQFileConfigManager.getExcitingC2CDownloadConfig().c();
+    }
+    return new ExcitingTransferDownloadConfig();
+  }
+  
+  public boolean g()
+  {
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
+    if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
+      return localIQFileConfigManager.getExcitingGroupUploadConfig().b();
+    }
+    return false;
+  }
+  
+  public long h()
+  {
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
+    if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
+      return localIQFileConfigManager.getExcitingGroupUploadConfig().a();
+    }
+    return 20971520L;
+  }
+  
+  public ExcitingTransferUploadChnConfigInfo i()
+  {
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
+    if (localIQFileConfigManager.getExcitingGroupUploadConfig() != null) {
+      return localIQFileConfigManager.getExcitingGroupUploadConfig().c();
+    }
+    return new ExcitingTransferUploadChnConfigInfo();
+  }
+  
+  public boolean j()
+  {
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
+    if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
+      return localIQFileConfigManager.getExcitingGroupDownloadConfig().b();
+    }
+    return false;
+  }
+  
+  public long k()
+  {
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
+    if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
+      return localIQFileConfigManager.getExcitingGroupDownloadConfig().a();
+    }
+    return 20971520L;
+  }
+  
+  public ExcitingTransferDownloadConfig l()
+  {
+    IQFileConfigManager localIQFileConfigManager = (IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "");
+    if (localIQFileConfigManager.getExcitingGroupDownloadConfig() != null) {
+      return localIQFileConfigManager.getExcitingGroupDownloadConfig().c();
+    }
+    return new ExcitingTransferDownloadConfig();
+  }
+  
+  @Deprecated
+  public boolean m()
+  {
+    return false;
+  }
+  
+  public void n()
+  {
+    this.a = null;
+  }
+  
+  public long o()
   {
     AppRuntime localAppRuntime = this.a;
     if (localAppRuntime == null) {
@@ -210,16 +216,10 @@ public class ExcitingTransferAdapter
     }
     return localAppRuntime.getLongAccountUin();
   }
-  
-  @Deprecated
-  public boolean e()
-  {
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.ExcitingTransferAdapter
  * JD-Core Version:    0.7.0.1
  */

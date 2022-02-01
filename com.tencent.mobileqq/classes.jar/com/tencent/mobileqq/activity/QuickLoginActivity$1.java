@@ -17,8 +17,8 @@ class QuickLoginActivity$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    String str = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
-    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
+    String str = (String)((HashMap)this.a.b.get(paramInt)).get("qq");
+    libsafeedit.getLoginLegal((String)((HashMap)this.a.b.get(paramInt)).get("password"));
     byte[] arrayOfByte = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
     this.a.getAppRuntime().login(str, arrayOfByte, QuickLoginActivity.a(this.a));
     Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
@@ -27,7 +27,7 @@ class QuickLoginActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QuickLoginActivity.1
  * JD-Core Version:    0.7.0.1
  */

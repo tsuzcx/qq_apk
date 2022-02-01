@@ -9,12 +9,12 @@ final class b
   
   public final void run()
   {
-    a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.c);
+    a.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,27 +2,22 @@ package com.tencent.livesdk.livesdkplayer;
 
 public class AVCatonReportParams
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  private long a;
+  private long b;
   private long c;
   private long d;
   private long e;
   private long f;
   private long g;
   private long h;
-  private long i;
-  private long j;
+  private String i;
+  private String j;
+  private long k;
+  private long l;
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -32,43 +27,38 @@ public class AVCatonReportParams
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("x");
     localStringBuilder.append(paramInt2);
-    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    this.j = localStringBuilder.toString();
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
   }
   
   public void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
+    this.a = 0L;
+    this.b = 0L;
     this.c = 0L;
     this.e = 0L;
     this.d = 0L;
     this.f = 0L;
     this.g = 0L;
-    this.i = 0L;
-    this.j = 0L;
+    this.k = 0L;
+    this.l = 0L;
     this.h = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = null;
+    this.i = paramString;
+    this.j = null;
   }
   
   public long b()
   {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public long c()
@@ -103,7 +93,7 @@ public class AVCatonReportParams
   
   public long f()
   {
-    return this.j - this.f;
+    return this.l - this.f;
   }
   
   public void f(long paramLong)
@@ -118,32 +108,42 @@ public class AVCatonReportParams
   
   public void g(long paramLong)
   {
-    this.i = paramLong;
+    this.k = paramLong;
   }
   
-  public long h()
+  public String h()
   {
     return this.i;
   }
   
   public void h(long paramLong)
   {
-    this.j = paramLong;
+    this.l = paramLong;
   }
   
-  public long i()
+  public String i()
   {
-    return this.d;
+    return this.j;
   }
   
   public void i(long paramLong)
   {
     this.d = paramLong;
   }
+  
+  public long j()
+  {
+    return this.k;
+  }
+  
+  public long k()
+  {
+    return this.d;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.AVCatonReportParams
  * JD-Core Version:    0.7.0.1
  */

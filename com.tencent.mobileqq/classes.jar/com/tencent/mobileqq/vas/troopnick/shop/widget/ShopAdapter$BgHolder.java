@@ -11,31 +11,30 @@ import com.tencent.widget.RoundRelativeLayout;
 public class ShopAdapter$BgHolder
   extends RecyclerView.ViewHolder
 {
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
   public TextView a;
-  public RoundRelativeLayout a;
-  public boolean a;
-  public TextView b;
-  public TextView c;
+  public ImageView b;
+  public RoundRelativeLayout c;
+  public LinearLayout d;
+  public Button e;
+  public boolean f = false;
+  public TextView g;
+  public TextView h;
   
   public ShopAdapter$BgHolder(ShopAdapter paramShopAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368578));
-    this.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout = ((RoundRelativeLayout)paramView.findViewById(2131363507));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370040));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131369154));
-    this.b = ((TextView)paramView.findViewById(2131378035));
-    this.c = ((TextView)paramView.findViewById(2131379555));
+    this.a = ((TextView)paramView.findViewById(2131448598));
+    this.b = ((ImageView)paramView.findViewById(2131435490));
+    this.c = ((RoundRelativeLayout)paramView.findViewById(2131429409));
+    this.d = ((LinearLayout)paramView.findViewById(2131437196));
+    this.e = ((Button)paramView.findViewById(2131436125));
+    this.g = ((TextView)paramView.findViewById(2131446535));
+    this.h = ((TextView)paramView.findViewById(2131448307));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.widget.ShopAdapter.BgHolder
  * JD-Core Version:    0.7.0.1
  */

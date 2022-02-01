@@ -40,23 +40,23 @@ class LinkMessageSearchDialog$4
     {
     default: 
       break;
-    case 2131377047: 
-    case 2131377048: 
+    case 2131445413: 
+    case 2131445414: 
       if (QLog.isColorLevel()) {
         QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
       }
       localObject1 = this.a;
-      ((LinkMessageSearchDialog)localObject1).c = false;
+      ((LinkMessageSearchDialog)localObject1).x = false;
       LinkMessageSearchDialog.a((LinkMessageSearchDialog)localObject1).setVisibility(8);
       LinkMessageSearchDialog.a(this.a, 0, null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchLinkMessageResultAdapter.a(LinkMessageSearchDialog.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchLinkMessageResultAdapter.notifyDataSetChanged();
-      this.a.b = 1;
+      this.a.o.a(LinkMessageSearchDialog.b(this.a), this.a.z, this.a.B);
+      this.a.o.notifyDataSetChanged();
+      this.a.n = 1;
       break;
-    case 2131367180: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem != null)
+    case 2131433636: 
+      if (this.a.j != null)
       {
-        localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem.a;
+        localObject2 = this.a.j.b;
         if ((localObject2 instanceof MessageForText)) {
           localObject2 = (MessageForText)localObject2;
         }
@@ -82,14 +82,14 @@ class LinkMessageSearchDialog$4
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("forward_type", -3);
       ((Intent)localObject2).putExtra("stuctmsg_bytes", ((AbsStructMsg)localObject1).getBytes());
-      ForwardBaseOption.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject2, 21);
+      ForwardBaseOption.a((Activity)this.a.c, (Intent)localObject2, 21);
     }
     catch (Exception localException)
     {
       break label415;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem != null) {
-      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem.a.msg);
+    if (this.a.j != null) {
+      ((ClipboardManager)this.a.c.getSystemService("clipboard")).setText(this.a.j.b.msg);
     }
     label415:
     EventCollector.getInstance().onViewClicked(paramView);
@@ -97,7 +97,7 @@ class LinkMessageSearchDialog$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.LinkMessageSearchDialog.4
  * JD-Core Version:    0.7.0.1
  */

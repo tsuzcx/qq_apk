@@ -21,44 +21,33 @@ import java.util.Map;
 public class RIJCommonEmotionCache
   implements IRIJEmotionCache
 {
-  private final int jdField_a_of_type_Int;
-  private EmotionPanelInfo jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo;
-  private final IRIJEmotionSize jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataEmotionsizeIRIJEmotionSize;
-  private final String jdField_a_of_type_JavaLangString;
-  private List<RIJCommonEmotionInfo> jdField_a_of_type_JavaUtilList = Collections.emptyList();
-  private final Map<String, RIJCommonEmotionInfo> jdField_a_of_type_JavaUtilMap = new ArrayMap();
-  private final String b;
+  private EmotionPanelInfo a;
+  private List<RIJCommonEmotionInfo> b = Collections.emptyList();
+  private final Map<String, RIJCommonEmotionInfo> c = new ArrayMap();
+  private final String d;
+  private final String e;
+  private final int f;
+  private final IRIJEmotionSize g;
   
   public RIJCommonEmotionCache(String paramString1, String paramString2, int paramInt, IRIJEmotionSize paramIRIJEmotionSize)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataEmotionsizeIRIJEmotionSize = paramIRIJEmotionSize;
-  }
-  
-  public Point a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (TextUtils.equals(paramString, ((RIJCommonEmotionInfo)localIterator.next()).c)) {
-        return new Point(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataEmotionsizeIRIJEmotionSize.i(), this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataEmotionsizeIRIJEmotionSize.j());
-      }
-    }
-    return null;
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramInt;
+    this.g = paramIRIJEmotionSize;
   }
   
   @NonNull
   public EmotionInjectionInfo a(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
     paramIEmoticonMainPanelApp = new RIJCommonEmotionAdapterParams(paramIEmoticonMainPanelApp, paramContext, paramEmoticonCallback);
-    int i = this.jdField_a_of_type_Int;
-    paramIEmoticonMainPanelApp.b = i;
-    paramIEmoticonMainPanelApp.jdField_a_of_type_Int = i;
-    paramIEmoticonMainPanelApp.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataEmotionsizeIRIJEmotionSize);
-    paramIEmoticonMainPanelApp = new RIJEmotionPanelBuilder(paramIEmoticonMainPanelApp, this.b);
-    paramIEmoticonMainPanelApp.a(this.jdField_a_of_type_JavaUtilList);
-    paramContext = new EmotionInjectionInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataEmotionsizeIRIJEmotionSize.a(), 0, paramIEmoticonMainPanelApp);
+    int i = this.f;
+    paramIEmoticonMainPanelApp.e = i;
+    paramIEmoticonMainPanelApp.d = i;
+    paramIEmoticonMainPanelApp.a(this.g);
+    paramIEmoticonMainPanelApp = new RIJEmotionPanelBuilder(paramIEmoticonMainPanelApp, this.e);
+    paramIEmoticonMainPanelApp.a(this.b);
+    paramContext = new EmotionInjectionInfo(this.f, this.g.a(), 0, paramIEmoticonMainPanelApp);
     paramContext.setEmotionTabCreateListener(paramIEmoticonMainPanelApp);
     return paramContext;
   }
@@ -66,48 +55,59 @@ public class RIJCommonEmotionCache
   @NonNull
   public EmotionPanelInfo a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo;
-  }
-  
-  public RIJCommonEmotionInfo a(String paramString)
-  {
-    return (RIJCommonEmotionInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  @NonNull
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("tkd_comment_emotion_");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
-  }
-  
-  public List<RIJCommonEmotionInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo = new EmotionPanelInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEmotionDataEmotionsizeIRIJEmotionSize.a(), null);
+    return this.a;
   }
   
   public void a(@NonNull List<RIJCommonEmotionInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b = paramList;
+    this.c.clear();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       RIJCommonEmotionInfo localRIJCommonEmotionInfo = (RIJCommonEmotionInfo)paramList.next();
-      this.jdField_a_of_type_JavaUtilMap.put(localRIJCommonEmotionInfo.c, localRIJCommonEmotionInfo);
+      this.c.put(localRIJCommonEmotionInfo.c, localRIJCommonEmotionInfo);
     }
+  }
+  
+  public Point b(String paramString)
+  {
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      if (TextUtils.equals(paramString, ((RIJCommonEmotionInfo)localIterator.next()).c)) {
+        return new Point(this.g.i(), this.g.j());
+      }
+    }
+    return null;
+  }
+  
+  @NonNull
+  public String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tkd_comment_emotion_");
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
+  }
+  
+  public RIJCommonEmotionInfo c(String paramString)
+  {
+    return (RIJCommonEmotionInfo)this.c.get(paramString);
+  }
+  
+  public List<RIJCommonEmotionInfo> c()
+  {
+    return this.b;
+  }
+  
+  public void d()
+  {
+    this.a = new EmotionPanelInfo(this.f, this.g.a(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.cache.RIJCommonEmotionCache
  * JD-Core Version:    0.7.0.1
  */

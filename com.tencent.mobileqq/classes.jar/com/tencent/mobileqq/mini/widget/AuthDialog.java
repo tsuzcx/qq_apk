@@ -122,14 +122,14 @@ public class AuthDialog
   
   public AuthDialog(@NonNull Activity paramActivity)
   {
-    super(paramActivity, 2131755403);
+    super(paramActivity, 2131952171);
     this.mContext = paramActivity;
     initView(paramActivity);
   }
   
   public AuthDialog(Activity paramActivity, int paramInt)
   {
-    super(paramActivity, 2131755403);
+    super(paramActivity, 2131952171);
     this.mContext = paramActivity;
     this.mType = paramInt;
     if (paramInt != 1)
@@ -157,90 +157,90 @@ public class AuthDialog
   
   private void initOnceSubMsgView(Context paramContext, int paramInt)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559384, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131625350, null);
     this.mRootView = paramContext;
     setContentView(paramContext);
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371125));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371140));
-    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363069));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369942));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131376561));
-    this.onceSubLayout1 = ((RelativeLayout)paramContext.findViewById(2131376708));
-    this.onceSubLayout2 = ((RelativeLayout)paramContext.findViewById(2131376709));
-    this.onceSubLayout3 = ((RelativeLayout)paramContext.findViewById(2131376710));
-    this.onceSubCheckBox1 = ((CheckBox)paramContext.findViewById(2131364387));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131438466));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131438481));
+    this.mAuthTitle = ((TextView)paramContext.findViewById(2131428904));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131437091));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131444812));
+    this.onceSubLayout1 = ((RelativeLayout)paramContext.findViewById(2131444990));
+    this.onceSubLayout2 = ((RelativeLayout)paramContext.findViewById(2131444991));
+    this.onceSubLayout3 = ((RelativeLayout)paramContext.findViewById(2131444992));
+    this.onceSubCheckBox1 = ((CheckBox)paramContext.findViewById(2131430413));
     this.onceSubCheckBox1.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
-    this.onceSubCheckBox2 = ((CheckBox)paramContext.findViewById(2131364388));
+    this.onceSubCheckBox2 = ((CheckBox)paramContext.findViewById(2131430414));
     this.onceSubCheckBox2.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
-    this.onceSubCheckBox3 = ((CheckBox)paramContext.findViewById(2131364389));
+    this.onceSubCheckBox3 = ((CheckBox)paramContext.findViewById(2131430415));
     this.onceSubCheckBox3.setOnCheckedChangeListener(this.onceSubOnCheckedChangeListener);
-    this.onceSubMaintainCheckBox = ((CheckBox)paramContext.findViewById(2131364382));
-    this.onceSubTextView1 = ((TextView)paramContext.findViewById(2131379795));
-    this.onceSubTextView2 = ((TextView)paramContext.findViewById(2131379796));
-    this.onceSubTextView3 = ((TextView)paramContext.findViewById(2131379797));
-    this.onceSubTips1 = ((ImageView)paramContext.findViewById(2131369431));
-    this.onceSubTips2 = ((ImageView)paramContext.findViewById(2131369432));
-    this.onceSubTips3 = ((ImageView)paramContext.findViewById(2131369433));
+    this.onceSubMaintainCheckBox = ((CheckBox)paramContext.findViewById(2131430411));
+    this.onceSubTextView1 = ((TextView)paramContext.findViewById(2131448623));
+    this.onceSubTextView2 = ((TextView)paramContext.findViewById(2131448624));
+    this.onceSubTextView3 = ((TextView)paramContext.findViewById(2131448625));
+    this.onceSubTips1 = ((ImageView)paramContext.findViewById(2131436481));
+    this.onceSubTips2 = ((ImageView)paramContext.findViewById(2131436482));
+    this.onceSubTips3 = ((ImageView)paramContext.findViewById(2131436483));
     if (paramInt == 4) {
-      paramContext.findViewById(2131376700).setVisibility(8);
+      paramContext.findViewById(2131444980).setVisibility(8);
     }
   }
   
   private void initPhoneNumberView(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559388, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131625354, null);
     this.mRootView = paramContext;
     setContentView(paramContext);
-    this.mMiniAppInfoLayout = ((LinearLayout)paramContext.findViewById(2131371126));
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371125));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371140));
-    this.mAuthInfoImageView = ((ImageView)paramContext.findViewById(2131371069));
+    this.mMiniAppInfoLayout = ((LinearLayout)paramContext.findViewById(2131438467));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131438466));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131438481));
+    this.mAuthInfoImageView = ((ImageView)paramContext.findViewById(2131438410));
     this.mAuthInfoImageView.setOnClickListener(this);
-    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363069));
-    this.mPhoneNumberLayout = ((RelativeLayout)paramContext.findViewById(2131371076));
-    this.mPhoneNumberLayout1 = ((RelativeLayout)paramContext.findViewById(2131371147));
-    this.mPhoneNumber1 = ((TextView)paramContext.findViewById(2131371143));
-    this.mPhoneNumberSection1 = ((ImageView)paramContext.findViewById(2131371170));
+    this.mAuthTitle = ((TextView)paramContext.findViewById(2131428904));
+    this.mPhoneNumberLayout = ((RelativeLayout)paramContext.findViewById(2131438417));
+    this.mPhoneNumberLayout1 = ((RelativeLayout)paramContext.findViewById(2131438489));
+    this.mPhoneNumber1 = ((TextView)paramContext.findViewById(2131438485));
+    this.mPhoneNumberSection1 = ((ImageView)paramContext.findViewById(2131438512));
     this.mPhoneNumberLayout1.setOnClickListener(this);
-    this.mPhoneNumberLayout2 = ((RelativeLayout)paramContext.findViewById(2131371148));
-    this.mPhoneNumber2 = ((TextView)paramContext.findViewById(2131371144));
-    this.mPhoneNumberSection2 = ((ImageView)paramContext.findViewById(2131371171));
+    this.mPhoneNumberLayout2 = ((RelativeLayout)paramContext.findViewById(2131438490));
+    this.mPhoneNumber2 = ((TextView)paramContext.findViewById(2131438486));
+    this.mPhoneNumberSection2 = ((ImageView)paramContext.findViewById(2131438513));
     this.mPhoneNumberLayout2.setOnClickListener(this);
-    this.mPhoneNumberLayout3 = ((RelativeLayout)paramContext.findViewById(2131371149));
-    this.mPhoneNumber3 = ((TextView)paramContext.findViewById(2131371145));
-    this.mPhoneNumberSection3 = ((ImageView)paramContext.findViewById(2131371172));
+    this.mPhoneNumberLayout3 = ((RelativeLayout)paramContext.findViewById(2131438491));
+    this.mPhoneNumber3 = ((TextView)paramContext.findViewById(2131438487));
+    this.mPhoneNumberSection3 = ((ImageView)paramContext.findViewById(2131438514));
     this.mPhoneNumberLayout3.setOnClickListener(this);
-    this.mLineView1 = paramContext.findViewById(2131371071);
-    this.mLineView2 = paramContext.findViewById(2131371072);
-    this.mLineView3 = paramContext.findViewById(2131371073);
-    this.mLineView4 = paramContext.findViewById(2131371074);
-    this.mOperateNumberBtn = ((TextView)paramContext.findViewById(2131371075));
+    this.mLineView1 = paramContext.findViewById(2131438412);
+    this.mLineView2 = paramContext.findViewById(2131438413);
+    this.mLineView3 = paramContext.findViewById(2131438414);
+    this.mLineView4 = paramContext.findViewById(2131438415);
+    this.mOperateNumberBtn = ((TextView)paramContext.findViewById(2131438416));
     this.mOperateNumberBtn.setOnClickListener(this);
-    this.mConfirmLayout = ((LinearLayout)paramContext.findViewById(2131371064));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131371134));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131371200));
-    this.mAuthInfoLayout = ((RelativeLayout)paramContext.findViewById(2131371070));
-    this.mAuthInfoBackIcon = ((ImageView)paramContext.findViewById(2131371065));
-    this.mAuthInfoTitle = ((TextView)paramContext.findViewById(2131371068));
-    this.mAuthInfoDetailText1 = ((TextView)paramContext.findViewById(2131371066));
-    this.mAuthInfoDetailText2 = ((TextView)paramContext.findViewById(2131371067));
+    this.mConfirmLayout = ((LinearLayout)paramContext.findViewById(2131438405));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131438475));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131438542));
+    this.mAuthInfoLayout = ((RelativeLayout)paramContext.findViewById(2131438411));
+    this.mAuthInfoBackIcon = ((ImageView)paramContext.findViewById(2131438406));
+    this.mAuthInfoTitle = ((TextView)paramContext.findViewById(2131438409));
+    this.mAuthInfoDetailText1 = ((TextView)paramContext.findViewById(2131438407));
+    this.mAuthInfoDetailText2 = ((TextView)paramContext.findViewById(2131438408));
     this.mAuthInfoBackIcon.setOnClickListener(this);
     this.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
   }
   
   private void initView(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559372, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131625338, null);
     this.mRootView = paramContext;
     setContentView(paramContext);
-    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131371125));
-    this.mMiniAppName = ((TextView)paramContext.findViewById(2131371140));
-    this.mAuthTitle = ((TextView)paramContext.findViewById(2131363069));
-    this.mUserIcon = ((ImageView)paramContext.findViewById(2131380319));
-    this.mUserName = ((TextView)paramContext.findViewById(2131380347));
-    this.mAuthDesc = ((TextView)paramContext.findViewById(2131363057));
-    this.mLeftBtn = ((TextView)paramContext.findViewById(2131369942));
-    this.mRightBtn = ((TextView)paramContext.findViewById(2131376561));
+    this.mMiniAppIcon = ((ImageView)paramContext.findViewById(2131438466));
+    this.mMiniAppName = ((TextView)paramContext.findViewById(2131438481));
+    this.mAuthTitle = ((TextView)paramContext.findViewById(2131428904));
+    this.mUserIcon = ((ImageView)paramContext.findViewById(2131449249));
+    this.mUserName = ((TextView)paramContext.findViewById(2131449279));
+    this.mAuthDesc = ((TextView)paramContext.findViewById(2131428891));
+    this.mLeftBtn = ((TextView)paramContext.findViewById(2131437091));
+    this.mRightBtn = ((TextView)paramContext.findViewById(2131444812));
   }
   
   private void loadOnceSubItemView(List<INTERFACE.StSubscribeMessage> paramList, int paramInt)
@@ -269,14 +269,14 @@ public class AuthDialog
     TextView localTextView = this.mLeftBtn;
     if (localTextView != null)
     {
-      localTextView.setText(HardCodeUtil.a(2131701230));
+      localTextView.setText(HardCodeUtil.a(2131899240));
       this.mLeftBtn.setVisibility(0);
       this.mLeftBtn.setOnClickListener(new AuthDialog.3(this));
     }
     localTextView = this.mRightBtn;
     if (localTextView != null)
     {
-      localTextView.setText(HardCodeUtil.a(2131701229));
+      localTextView.setText(HardCodeUtil.a(2131899239));
       this.mRightBtn.setVisibility(0);
       this.mRightBtn.setOnClickListener(new AuthDialog.4(this));
     }
@@ -592,25 +592,25 @@ public class AuthDialog
     {
     default: 
       return;
-    case 2131371149: 
+    case 2131438491: 
       this.mPhoneNumberSection1.setVisibility(8);
       this.mPhoneNumberSection2.setVisibility(8);
       this.mPhoneNumberSection3.setVisibility(0);
       this.mSelectPhoneNumber = 3;
       return;
-    case 2131371148: 
+    case 2131438490: 
       this.mPhoneNumberSection1.setVisibility(8);
       this.mPhoneNumberSection2.setVisibility(0);
       this.mPhoneNumberSection3.setVisibility(8);
       this.mSelectPhoneNumber = 2;
       return;
-    case 2131371147: 
+    case 2131438489: 
       this.mPhoneNumberSection1.setVisibility(0);
       this.mPhoneNumberSection2.setVisibility(8);
       this.mPhoneNumberSection3.setVisibility(8);
       this.mSelectPhoneNumber = 1;
       return;
-    case 2131371075: 
+    case 2131438416: 
       paramView = new Intent();
       paramView.putExtra("appId", this.mAppId);
       if (this.mOperateNumberBtn.getText().equals("管理手机号码"))
@@ -624,7 +624,7 @@ public class AuthDialog
       }
       PublicFragmentActivity.Launcher.a(this.mContext, paramView, PublicFragmentActivityForMini.class, AddPhoneNumberFragment.class, 1088);
       return;
-    case 2131371069: 
+    case 2131438410: 
       this.mAuthInfoLayout.setVisibility(0);
       this.mAuthTitle.setVisibility(4);
       this.mMiniAppInfoLayout.setVisibility(4);
@@ -689,15 +689,15 @@ public class AuthDialog
     this.mResBuilder = paramAuthDialogResBuilder;
     this.mIsConfirm = false;
     this.mIsRefuse = false;
-    int i = ViewUtils.b(26.0F);
+    int i = ViewUtils.dpToPx(26.0F);
     URLDrawable localURLDrawable;
     if ((this.mMiniAppIcon != null) && (!TextUtils.isEmpty(paramAuthDialogResBuilder.getMiniAppIconUrl())))
     {
       localURLDrawable = getUrlDrawable(paramAuthDialogResBuilder.getMiniAppIconUrl(), i);
       if (localURLDrawable != null)
       {
-        localURLDrawable.setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.b(5.0F)));
-        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.i);
+        localURLDrawable.setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.dpToPx(5.0F)));
+        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.j);
         this.mMiniAppIcon.setImageDrawable(localURLDrawable);
       }
     }
@@ -710,12 +710,12 @@ public class AuthDialog
     if (this.mUserIcon != null) {
       if (!TextUtils.isEmpty(paramAuthDialogResBuilder.getUserIconUrl()))
       {
-        int j = ViewUtils.b(40.0F);
+        int j = ViewUtils.dpToPx(40.0F);
         localURLDrawable = getUrlDrawable(paramAuthDialogResBuilder.getUserIconUrl(), j);
         if (localURLDrawable != null)
         {
           localURLDrawable.setTag(URLDrawableDecodeHandler.a(i, i));
-          localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.a);
+          localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.b);
           this.mUserIcon.setImageDrawable(localURLDrawable);
         }
         this.mUserIcon.setVisibility(0);
@@ -795,7 +795,7 @@ public class AuthDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.AuthDialog
  * JD-Core Version:    0.7.0.1
  */

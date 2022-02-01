@@ -23,13 +23,13 @@ public class EmoticonGuideBubbleView
   extends LinearLayout
 {
   protected Context a;
-  protected Drawable a;
-  protected View a;
+  protected Drawable b;
+  protected View c;
   
   public EmoticonGuideBubbleView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     setOrientation(1);
     setGravity(8388613);
     setVisibility(8);
@@ -41,11 +41,11 @@ public class EmoticonGuideBubbleView
     if (paramInt > 0)
     {
       i = paramInt;
-      if (getMeasuredWidth() + paramInt < ViewUtils.a()) {}
+      if (getMeasuredWidth() + paramInt < ViewUtils.getScreenWidth()) {}
     }
     else
     {
-      i = ViewUtils.a(6.0F);
+      i = ViewUtils.dip2px(6.0F);
     }
     return i;
   }
@@ -54,14 +54,14 @@ public class EmoticonGuideBubbleView
   {
     int i = paramView.getRight();
     paramView = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramView);
-    int k = this.jdField_a_of_type_AndroidViewView.getWidth();
+    this.c.getLocationOnScreen(paramView);
+    int k = this.c.getWidth();
     measure(0, 0);
     int m = getMeasuredWidth();
     int j;
     if (paramBoolean)
     {
-      i -= paramView[0] - ViewUtils.a(20.0F);
+      i -= paramView[0] - ViewUtils.dip2px(20.0F);
       j = m / 2;
     }
     else
@@ -80,13 +80,13 @@ public class EmoticonGuideBubbleView
   {
     int i = paramLinearLayout.getRight();
     paramLinearLayout = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramLinearLayout);
-    int k = this.jdField_a_of_type_AndroidViewView.getWidth();
+    this.c.getLocationOnScreen(paramLinearLayout);
+    int k = this.c.getWidth();
     paramImageView.measure(0, 0);
     int j;
     if (paramBoolean)
     {
-      i -= paramLinearLayout[0] - ViewUtils.a(20.0F);
+      i -= paramLinearLayout[0] - ViewUtils.dip2px(20.0F);
       j = paramImageView.getMeasuredWidth() / 4;
     }
     else
@@ -106,10 +106,10 @@ public class EmoticonGuideBubbleView
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     if (paramDrawable == null)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
+      if (this.b == null) {
+        this.b = new ColorDrawable(0);
       }
-      paramDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      paramDrawable = this.b;
       localURLDrawableOptions.mLoadingDrawable = paramDrawable;
       localURLDrawableOptions.mFailedDrawable = paramDrawable;
     }
@@ -162,24 +162,24 @@ public class EmoticonGuideBubbleView
       }
       if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidViewView = paramRelativeLayout.findViewById(2131367418);
+        this.c = paramRelativeLayout.findViewById(2131433921);
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131374052);
-        if (this.jdField_a_of_type_AndroidViewView == null) {
-          this.jdField_a_of_type_AndroidViewView = paramLinearLayout.findViewById(2131374053);
+        this.c = paramLinearLayout.findViewById(2131442147);
+        if (this.c == null) {
+          this.c = paramLinearLayout.findViewById(2131442148);
         }
       }
-      if (this.jdField_a_of_type_AndroidViewView == null) {
+      if (this.c == null) {
         return false;
       }
-      View localView = paramRelativeLayout.findViewById(2131368875);
+      View localView = paramRelativeLayout.findViewById(2131435809);
       if (localView == null) {
         return false;
       }
       removeAllViews();
-      ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      ImageView localImageView = new ImageView(this.a);
       localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       paramString = a(paramString, null, true);
       Object localObject;
@@ -191,17 +191,17 @@ public class EmoticonGuideBubbleView
         QLog.d("EmoticonGuideBubbleView", 2, ((StringBuilder)localObject).toString());
       }
       localImageView.setImageDrawable(paramString);
-      int i = ViewUtils.a(paramInt1 / 2);
-      int j = ViewUtils.a(paramInt2 / 2);
+      int i = ViewUtils.dip2px(paramInt1 / 2);
+      int j = ViewUtils.dip2px(paramInt2 / 2);
       paramInt2 = i;
       paramInt1 = j;
-      if (i >= ViewUtils.a())
+      if (i >= ViewUtils.getScreenWidth())
       {
-        paramInt2 = ViewUtils.a() / 2;
+        paramInt2 = ViewUtils.getScreenWidth() / 2;
         paramInt1 = j * paramInt2 / i;
       }
       localImageView.setLayoutParams(new ViewGroup.LayoutParams(paramInt2, paramInt1));
-      localImageView.setBackgroundResource(2130837964);
+      localImageView.setBackgroundResource(2130837988);
       addView(localImageView);
       setVisibility(0);
       paramString = new AlphaAnimation(0.0F, 1.0F);
@@ -210,18 +210,18 @@ public class EmoticonGuideBubbleView
       paramString.setFillAfter(true);
       startAnimation(paramString);
       paramString = new RelativeLayout.LayoutParams(-2, -2);
-      paramString.addRule(2, 2131368875);
-      paramString.addRule(7, 2131368875);
+      paramString.addRule(2, 2131435809);
+      paramString.addRule(7, 2131435809);
       paramInt1 = a(paramLinearLayout, paramBoolean);
       if (paramInt1 > 0)
       {
         paramString.rightMargin = paramInt1;
-        localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        localImageView.setImageDrawable(getResources().getDrawable(2130839650));
-        localObject = new LinearLayout.LayoutParams(ViewUtils.a(13.0F), ViewUtils.a(8.0F));
+        localImageView = new ImageView(this.a);
+        localImageView.setImageDrawable(getResources().getDrawable(2130840119));
+        localObject = new LinearLayout.LayoutParams(ViewUtils.dip2px(13.0F), ViewUtils.dip2px(8.0F));
         ((LinearLayout.LayoutParams)localObject).gravity = 8388613;
         ((LinearLayout.LayoutParams)localObject).rightMargin = a(paramLinearLayout, localImageView, paramInt1, paramBoolean);
-        ((LinearLayout.LayoutParams)localObject).topMargin = (-ViewUtils.a(1.0F));
+        ((LinearLayout.LayoutParams)localObject).topMargin = (-ViewUtils.dip2px(1.0F));
         localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         addView(localImageView);
         paramString.bottomMargin = (-localView.getPaddingTop());
@@ -234,7 +234,7 @@ public class EmoticonGuideBubbleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.EmoticonGuideBubbleView
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class TroopSettingActivity$61
   
   public void run()
   {
-    TroopMemberInfo localTroopMemberInfo = this.a.getTroopMember(this.this$0.a.troopUin, TroopSettingActivity.a(this.this$0).getCurrentAccountUin());
+    TroopMemberInfo localTroopMemberInfo = this.a.getTroopMember(this.this$0.i.troopUin, TroopSettingActivity.a(this.this$0).getCurrentAccountUin());
     this.this$0.a(localTroopMemberInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.61
  * JD-Core Version:    0.7.0.1
  */

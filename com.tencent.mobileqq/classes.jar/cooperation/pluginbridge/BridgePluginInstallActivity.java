@@ -26,9 +26,9 @@ public class BridgePluginInstallActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback, OnPluginInstallListener, Runnable
 {
-  private Intent jdField_a_of_type_AndroidContentIntent = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(this);
-  private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager = null;
+  private Handler a = new WeakReferenceHandler(this);
+  private IPluginManager b = null;
+  private Intent c = null;
   
   public IBinder asBinder()
   {
@@ -55,14 +55,14 @@ public class BridgePluginInstallActivity
       paramBundle = new Intent();
       paramBundle.addFlags(262144);
       RouteUtils.a(this, paramBundle, "/base/login");
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 10000L);
+      this.a.sendEmptyMessageDelayed(3, 10000L);
       return false;
     }
-    this.jdField_a_of_type_AndroidContentIntent = getIntent();
-    this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
-    setContentView(2131558720);
-    setTitle(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("distPluginName"));
-    setContentBackgroundResource(2130838739);
+    this.c = getIntent();
+    this.b = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
+    setContentView(2131624340);
+    setTitle(this.c.getStringExtra("distPluginName"));
+    setContentBackgroundResource(2130838958);
     ThreadManager.post(this, 8, null, false);
     return true;
   }
@@ -77,7 +77,7 @@ public class BridgePluginInstallActivity
         if (i != 4) {
           return false;
         }
-        QQToast.a(getApplicationContext(), 2131694930, 0);
+        QQToast.makeText(getApplicationContext(), 2131892657, 0);
         ReportController.b(this.app, "P_CliOper", "BridgePlatform", "", "start_bridge_plugin", "BridgePlugin.apk", 0, -1, "", "", "", "");
         finish();
         return false;
@@ -87,7 +87,7 @@ public class BridgePluginInstallActivity
     }
     if (!isFinishing())
     {
-      boolean bool = this.jdField_a_of_type_CooperationPluginIPluginManager.isPlugininstalled("BridgePlugin.apk");
+      boolean bool = this.b.isPlugininstalled("BridgePlugin.apk");
       if (QLog.isColorLevel())
       {
         paramMessage = new StringBuilder();
@@ -97,13 +97,13 @@ public class BridgePluginInstallActivity
       }
       if (bool)
       {
-        paramMessage = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("distParamsString");
-        String str1 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("distPluginId");
-        String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("distPluginName");
+        paramMessage = this.c.getStringExtra("distParamsString");
+        String str1 = this.c.getStringExtra("distPluginId");
+        String str2 = this.c.getStringExtra("distPluginName");
         try
         {
-          BridgeHelper.a(this, this.app, this.jdField_a_of_type_AndroidContentIntent, paramMessage, str1, str2);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 10000L);
+          BridgeHelper.a(this, this.app, this.c, paramMessage, str1, str2);
+          this.a.sendEmptyMessageDelayed(3, 10000L);
           return false;
         }
         catch (Exception paramMessage)
@@ -111,11 +111,11 @@ public class BridgePluginInstallActivity
           if (QLog.isColorLevel()) {
             QLog.i("BridgePluginInstallActivity", 2, "launchBridgePlugin fail.", paramMessage);
           }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+          this.a.sendEmptyMessage(4);
           return false;
         }
       }
-      this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("BridgePlugin.apk", this);
+      this.b.installPlugin("BridgePlugin.apk", this);
     }
     return false;
   }
@@ -158,7 +158,7 @@ public class BridgePluginInstallActivity
       localStringBuilder.append(paramInt);
       QLog.i("BridgePluginInstallActivity", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    this.a.sendEmptyMessage(4);
   }
   
   public void onInstallFinish(String paramString)
@@ -166,7 +166,7 @@ public class BridgePluginInstallActivity
     if (QLog.isColorLevel()) {
       QLog.i("BridgePluginInstallActivity", 2, "onInstallFinish.");
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    this.a.sendEmptyMessage(2);
   }
   
   public void run()
@@ -175,8 +175,8 @@ public class BridgePluginInstallActivity
     int i = 0;
     while (i < 300)
     {
-      localPluginInfo = this.jdField_a_of_type_CooperationPluginIPluginManager.a("BridgePlugin.apk");
-      if ((localPluginInfo == null) && (!this.jdField_a_of_type_CooperationPluginIPluginManager.isReady())) {
+      localPluginInfo = this.b.d("BridgePlugin.apk");
+      if ((localPluginInfo == null) && (!this.b.isReady())) {
         try
         {
           Thread.sleep(100L);
@@ -197,22 +197,22 @@ public class BridgePluginInstallActivity
     }
     if (localPluginInfo == null)
     {
-      if (this.jdField_a_of_type_CooperationPluginIPluginManager.isReady())
+      if (this.b.isReady())
       {
         if (QLog.isColorLevel()) {
           QLog.i("BridgePluginInstallActivity", 2, "fail to load plugin.");
         }
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+        this.a.sendEmptyMessage(4);
       }
     }
     else {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      this.a.sendEmptyMessage(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.pluginbridge.BridgePluginInstallActivity
  * JD-Core Version:    0.7.0.1
  */

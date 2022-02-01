@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 public class JefsClassUtil
 {
-  private static JefsClassUtil.PolicyConfig jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClassUtil$PolicyConfig;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
+  private static JefsClassUtil.PolicyConfig b;
   
   public static JefsClassUtil.PolicyConfig a(JSONObject paramJSONObject)
   {
@@ -35,7 +35,7 @@ public class JefsClassUtil
             if (str == null) {
               break label199;
             }
-            localPolicyConfig.jdField_a_of_type_JavaUtilSet.add(str);
+            localPolicyConfig.a.add(str);
             break label199;
           }
         }
@@ -56,7 +56,7 @@ public class JefsClassUtil
               localPolicy.a = ((String)localObject1);
               localPolicy.b = str.toLowerCase();
               localPolicy.c = ((String)localObject2).toLowerCase();
-              localPolicyConfig.jdField_a_of_type_JavaUtilList.add(localPolicy);
+              localPolicyConfig.b.add(localPolicy);
             }
             i += 1;
             continue;
@@ -77,8 +77,8 @@ public class JefsClassUtil
   {
     try
     {
-      jdField_a_of_type_Boolean = paramBoolean;
-      jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClassUtil$PolicyConfig = a(paramJSONObject);
+      a = paramBoolean;
+      b = a(paramJSONObject);
       return;
     }
     finally
@@ -90,7 +90,7 @@ public class JefsClassUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClassUtil
  * JD-Core Version:    0.7.0.1
  */

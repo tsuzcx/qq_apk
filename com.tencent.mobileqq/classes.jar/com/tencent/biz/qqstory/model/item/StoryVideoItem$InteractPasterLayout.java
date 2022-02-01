@@ -10,8 +10,6 @@ import org.json.JSONObject;
 public class StoryVideoItem$InteractPasterLayout
 {
   public int a;
-  private final String a;
-  public final String[] a;
   public int b;
   public int c;
   public int d;
@@ -19,16 +17,18 @@ public class StoryVideoItem$InteractPasterLayout
   public int f;
   public int g;
   public final int h;
+  public final String[] i;
+  private final String j;
   
   private StoryVideoItem$InteractPasterLayout(JSONObject paramJSONObject)
   {
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("t");
+      this.j = paramJSONObject.toString();
+      this.a = paramJSONObject.getInt("t");
       this.h = paramJSONObject.getJSONObject("a").getInt("r");
       JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
-      int i = 0;
+      int k = 0;
       this.b = localJSONArray.getInt(0);
       this.c = localJSONArray.getInt(1);
       localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
@@ -38,14 +38,14 @@ public class StoryVideoItem$InteractPasterLayout
       this.f = localJSONArray.getInt(0);
       this.g = localJSONArray.getInt(1);
       paramJSONObject = paramJSONObject.getJSONArray("c");
-      int j = paramJSONObject.length();
-      if (j >= 1)
+      int m = paramJSONObject.length();
+      if (m >= 1)
       {
-        this.jdField_a_of_type_ArrayOfJavaLangString = new String[j];
-        while (i < j)
+        this.i = new String[m];
+        while (k < m)
         {
-          this.jdField_a_of_type_ArrayOfJavaLangString[i] = paramJSONObject.optString(i, "(NULL)");
-          i += 1;
+          this.i[k] = paramJSONObject.optString(k, "(NULL)");
+          k += 1;
         }
       }
       throw new IllegalArgumentException("content length should more than 1");
@@ -95,14 +95,14 @@ public class StoryVideoItem$InteractPasterLayout
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.j;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PollLayout{type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", screenWidth=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", screenHeight=");
@@ -118,14 +118,14 @@ public class StoryVideoItem$InteractPasterLayout
     localStringBuilder.append(", rotation=");
     localStringBuilder.append(this.h);
     localStringBuilder.append(", contents=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
+    localStringBuilder.append(Arrays.toString(this.i));
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.StoryVideoItem.InteractPasterLayout
  * JD-Core Version:    0.7.0.1
  */

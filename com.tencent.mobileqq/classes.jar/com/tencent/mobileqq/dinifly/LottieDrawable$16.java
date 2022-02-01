@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.dinifly;
 
-import com.tencent.mobileqq.dinifly.value.LottieFrameInfo;
+import com.tencent.mobileqq.dinifly.model.KeyPath;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
-import com.tencent.mobileqq.dinifly.value.SimpleLottieValueCallback;
 
 class LottieDrawable$16
-  extends LottieValueCallback<T>
+  implements LottieDrawable.LazyCompositionTask
 {
-  LottieDrawable$16(LottieDrawable paramLottieDrawable, SimpleLottieValueCallback paramSimpleLottieValueCallback) {}
+  LottieDrawable$16(LottieDrawable paramLottieDrawable, KeyPath paramKeyPath, Object paramObject, LottieValueCallback paramLottieValueCallback) {}
   
-  public T getValue(LottieFrameInfo<T> paramLottieFrameInfo)
+  public void run(LottieComposition paramLottieComposition)
   {
-    return this.val$callback.getValue(paramLottieFrameInfo);
+    this.this$0.addValueCallback(this.val$keyPath, this.val$property, this.val$callback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieDrawable.16
  * JD-Core Version:    0.7.0.1
  */

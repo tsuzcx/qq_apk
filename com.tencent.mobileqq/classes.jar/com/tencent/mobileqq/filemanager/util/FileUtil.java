@@ -10,19 +10,9 @@ import java.util.ArrayList;
 
 public class FileUtil
 {
-  public static long a(String paramString)
-  {
-    return a().getFileSize(paramString);
-  }
-  
   public static IFileUtil a()
   {
     return (IFileUtil)QRoute.api(IFileUtil.class);
-  }
-  
-  public static FileInfo a(File paramFile)
-  {
-    return a().getFileInfo(paramFile);
   }
   
   public static String a(long paramLong)
@@ -55,11 +45,6 @@ public class FileUtil
     return a().getFiles(paramString, paramBoolean, paramInt);
   }
   
-  public static void a(File paramFile)
-  {
-    a().deleteSubFile(paramFile);
-  }
-  
   public static boolean a(Bitmap paramBitmap, String paramString)
   {
     return a().writeBitmapToFile(paramBitmap, paramString);
@@ -75,34 +60,49 @@ public class FileUtil
     return a().copyFile(paramFile1, paramFile2);
   }
   
-  public static boolean a(String paramString)
+  public static void b(File paramFile)
   {
-    return a().fileExistsAndNotEmpty(paramString);
-  }
-  
-  public static String b(String paramString)
-  {
-    return a().getFileDirectoryOf(paramString);
+    a().deleteSubFile(paramFile);
   }
   
   public static boolean b(String paramString)
   {
-    return a().isFileExists(paramString);
+    return a().fileExistsAndNotEmpty(paramString);
+  }
+  
+  public static FileInfo c(File paramFile)
+  {
+    return a().getFileInfo(paramFile);
   }
   
   public static String c(String paramString)
   {
-    return a().getFileNameNoEx(paramString);
+    return a().getFileDirectoryOf(paramString);
   }
   
-  public static boolean c(String paramString)
+  public static boolean d(String paramString)
+  {
+    return a().isFileExists(paramString);
+  }
+  
+  public static boolean e(String paramString)
   {
     return a().deleteFile(paramString);
+  }
+  
+  public static long f(String paramString)
+  {
+    return a().getFileSize(paramString);
+  }
+  
+  public static String g(String paramString)
+  {
+    return a().getFileNameNoEx(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileUtil
  * JD-Core Version:    0.7.0.1
  */

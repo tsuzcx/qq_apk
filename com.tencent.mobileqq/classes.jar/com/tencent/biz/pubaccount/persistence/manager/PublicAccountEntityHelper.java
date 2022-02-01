@@ -12,15 +12,15 @@ import mqq.manager.Manager;
 public class PublicAccountEntityHelper
   implements Manager
 {
-  private PublicAccountEntityManagerFactory jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private QQAppInterface a;
+  private PublicAccountEntityManagerFactory b;
+  private EntityManager c;
   
   public PublicAccountEntityHelper(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory.createEntityManager();
+    this.a = paramQQAppInterface;
+    this.b = a(this.a);
+    this.c = this.b.createEntityManager();
   }
   
   private PublicAccountEntityManagerFactory a(QQAppInterface paramQQAppInterface)
@@ -28,19 +28,19 @@ public class PublicAccountEntityHelper
     paramQQAppInterface = paramQQAppInterface.getAccount();
     if (paramQQAppInterface != null)
     {
-      PublicAccountEntityManagerFactory localPublicAccountEntityManagerFactory = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory;
+      PublicAccountEntityManagerFactory localPublicAccountEntityManagerFactory = this.b;
       if (localPublicAccountEntityManagerFactory != null) {
         return localPublicAccountEntityManagerFactory;
       }
       try
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory == null)
+        if (this.b == null)
         {
           paramQQAppInterface = new PublicAccountEntityManagerFactory(paramQQAppInterface);
           ThreadManager.post(new PublicAccountEntityHelper.1(this, paramQQAppInterface), 8, null, false);
-          this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory = paramQQAppInterface;
+          this.b = paramQQAppInterface;
         }
-        return this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory;
+        return this.b;
       }
       finally {}
     }
@@ -51,42 +51,12 @@ public class PublicAccountEntityHelper
   {
     try
     {
-      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+      EntityManager localEntityManager = this.c;
       if (localEntityManager == null) {
         return null;
       }
-      paramClass = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(paramClass, paramBoolean, paramString1, paramArrayOfString, paramString2, paramString3, paramString4, paramString5);
+      paramClass = this.c.query(paramClass, paramBoolean, paramString1, paramArrayOfString, paramString2, paramString3, paramString4, paramString5);
       return paramClass;
-    }
-    finally {}
-  }
-  
-  public void a(Entity paramEntity)
-  {
-    try
-    {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-      if (localObject1 == null) {
-        return;
-      }
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      if ((paramEntity instanceof PAAdPreloadTask))
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.tabbleIsExist(PAAdPreloadTask.class.getSimpleName()))
-        {
-          paramEntity = (PAAdPreloadTask)paramEntity;
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(paramEntity.mVideoVid)) {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(PAAdPreloadTask.class, "mVideoVid = ?", new String[] { paramEntity.mVideoVid });
-          }
-        }
-      }
-      if (localObject1 != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject1);
-      }
-      return;
     }
     finally {}
   }
@@ -95,11 +65,11 @@ public class PublicAccountEntityHelper
   {
     try
     {
-      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+      EntityManager localEntityManager = this.c;
       if (localEntityManager == null) {
         return;
       }
-      localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+      localEntityManager = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("DELETE FROM ");
       localStringBuilder.append(paramString);
@@ -113,7 +83,7 @@ public class PublicAccountEntityHelper
   {
     try
     {
-      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+      EntityManager localEntityManager = this.c;
       boolean bool = false;
       if (localEntityManager == null) {
         return false;
@@ -121,8 +91,8 @@ public class PublicAccountEntityHelper
       int i;
       if (paramEntity.getStatus() == 1000)
       {
-        a(paramEntity);
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+        b(paramEntity);
+        this.c.persistOrReplace(paramEntity);
         i = paramEntity.getStatus();
         if (i == 1001) {
           bool = true;
@@ -136,28 +106,58 @@ public class PublicAccountEntityHelper
           return false;
         }
       }
-      bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+      bool = this.c.update(paramEntity);
       return bool;
+    }
+    finally {}
+  }
+  
+  public void b(Entity paramEntity)
+  {
+    try
+    {
+      Object localObject1 = this.c;
+      if (localObject1 == null) {
+        return;
+      }
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if ((paramEntity instanceof PAAdPreloadTask))
+      {
+        localObject1 = localObject2;
+        if (this.c.tabbleIsExist(PAAdPreloadTask.class.getSimpleName()))
+        {
+          paramEntity = (PAAdPreloadTask)paramEntity;
+          localObject1 = localObject2;
+          if (!TextUtils.isEmpty(paramEntity.mVideoVid)) {
+            localObject1 = this.c.find(PAAdPreloadTask.class, "mVideoVid = ?", new String[] { paramEntity.mVideoVid });
+          }
+        }
+      }
+      if (localObject1 != null) {
+        this.c.remove((Entity)localObject1);
+      }
+      return;
     }
     finally {}
   }
   
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    Object localObject = this.c;
     if (localObject != null) {
       ((EntityManager)localObject).close();
     }
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory;
+    localObject = this.b;
     if (localObject != null) {
       ((PublicAccountEntityManagerFactory)localObject).close();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper
  * JD-Core Version:    0.7.0.1
  */

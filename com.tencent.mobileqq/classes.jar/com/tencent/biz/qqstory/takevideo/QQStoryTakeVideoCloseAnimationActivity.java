@@ -31,31 +31,30 @@ public class QQStoryTakeVideoCloseAnimationActivity
   implements Handler.Callback
 {
   public static final String a;
-  public static boolean a;
-  private float jdField_a_of_type_Float;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  protected ImageView a;
-  protected QQStoryTakeVideoCloseAnimationActivity.FakeFeedUpdateCompletedReceiver a;
-  private float b;
-  private float c;
-  private float d;
+  public static boolean b = false;
+  protected ImageView c;
+  protected QQStoryTakeVideoCloseAnimationActivity.FakeFeedUpdateCompletedReceiver d;
+  private Handler e;
+  private float f;
+  private float g;
+  private float h;
+  private float i;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_TMP_PATH);
     localStringBuilder.append("qqstory/animation_cover.jpg");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Boolean = false;
+    a = localStringBuilder.toString();
   }
   
   @TargetApi(14)
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    InfoPrinter.b("Q.qqstory.home:FeedSegment_animation", new Object[] { HardCodeUtil.a(2131711003), Float.valueOf(paramFloat1), ",bottom:", Float.valueOf(paramFloat4) });
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    float f1 = UIUtils.d(this);
-    float f2 = UIUtils.a(this);
+    InfoPrinter.b("Q.qqstory.home:FeedSegment_animation", new Object[] { HardCodeUtil.a(2131908669), Float.valueOf(paramFloat1), ",bottom:", Float.valueOf(paramFloat4) });
+    this.e.removeMessages(1);
+    float f1 = UIUtils.e(this);
+    float f2 = UIUtils.b(this);
     float f3 = paramFloat4 - paramFloat1;
     paramFloat4 = f3 / f1;
     float f4 = paramFloat3 - paramFloat2;
@@ -64,7 +63,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
     f2 /= 2.0F;
     f3 /= 2.0F;
     f1 /= 2.0F;
-    ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidWidgetImageView.animate().setDuration(250L).scaleXBy(1.0F).scaleX(paramFloat3).scaleYBy(1.0F).scaleY(paramFloat4).x(f4 + paramFloat2 - f2).y(f3 + paramFloat1 - f1);
+    ViewPropertyAnimator localViewPropertyAnimator = this.c.animate().setDuration(250L).scaleXBy(1.0F).scaleX(paramFloat3).scaleYBy(1.0F).scaleY(paramFloat4).x(f4 + paramFloat2 - f2).y(f3 + paramFloat1 - f1);
     localViewPropertyAnimator.setListener(new QQStoryTakeVideoCloseAnimationActivity.1(this));
     localViewPropertyAnimator.start();
   }
@@ -80,24 +79,24 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    jdField_a_of_type_Boolean = true;
+    b = true;
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    this.e = new Handler(this);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = new AutoPlayImageView(this);
+    this.c = new AutoPlayImageView(this);
     super.getWindow().addFlags(1024);
-    super.setContentViewNoTitle(this.jdField_a_of_type_AndroidWidgetImageView);
+    super.setContentViewNoTitle(this.c);
     paramBundle = getIntent();
     String str = paramBundle.getStringExtra("path");
-    this.jdField_a_of_type_Float = paramBundle.getIntExtra("target_top", 0);
-    this.b = paramBundle.getIntExtra("target_right", 0);
-    this.c = paramBundle.getIntExtra("target_left", 0);
-    this.d = paramBundle.getIntExtra("target_bottom", 0);
+    this.f = paramBundle.getIntExtra("target_top", 0);
+    this.g = paramBundle.getIntExtra("target_right", 0);
+    this.h = paramBundle.getIntExtra("target_left", 0);
+    this.i = paramBundle.getIntExtra("target_bottom", 0);
     SLog.b("Q.qqstory.home:FeedSegment_animation", "动画activity终于 OnCreate 了！！！");
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoQQStoryTakeVideoCloseAnimationActivity$FakeFeedUpdateCompletedReceiver = new QQStoryTakeVideoCloseAnimationActivity.FakeFeedUpdateCompletedReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoQQStoryTakeVideoCloseAnimationActivity$FakeFeedUpdateCompletedReceiver);
+    this.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.d = new QQStoryTakeVideoCloseAnimationActivity.FakeFeedUpdateCompletedReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.d);
     try
     {
       paramBundle = BitmapFactory.decodeFile(str);
@@ -112,7 +111,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
         finish();
         return false;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBundle);
+      this.c.setImageBitmap(paramBundle);
     }
     catch (OutOfMemoryError paramBundle)
     {
@@ -120,16 +119,16 @@ public class QQStoryTakeVideoCloseAnimationActivity
       break label208;
     }
     finish();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+    this.e.sendEmptyMessageDelayed(1, 3000L);
     return false;
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoQQStoryTakeVideoCloseAnimationActivity$FakeFeedUpdateCompletedReceiver != null) {
-      StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoQQStoryTakeVideoCloseAnimationActivity$FakeFeedUpdateCompletedReceiver);
+    b = false;
+    if (this.d != null) {
+      StoryDispatcher.a().unRegisterSubscriber(this.d);
     }
   }
   
@@ -151,7 +150,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   protected void doOnStop()
   {
     super.doOnStop();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.e.removeMessages(1);
   }
   
   public boolean handleMessage(Message paramMessage)

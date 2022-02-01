@@ -1,55 +1,34 @@
 package com.tencent.mobileqq.activity;
 
-import android.view.View;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Message;
 import mqq.os.MqqHandler;
 
 class ChatSettingActivity$16
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  ChatSettingActivity$16(ChatSettingActivity paramChatSettingActivity, String paramString, ActionSheet paramActionSheet) {}
+  ChatSettingActivity$16(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt != 0)
-    {
-      if ((paramInt == 1) && (Utils.b(this.jdField_a_of_type_JavaLangString))) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
-      }
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((StringBuilder)localObject1).length() > 0)) {
+      localObject1 = this.a.toString();
+    } else {
+      localObject1 = null;
     }
-    else if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    Object localObject2 = this.this$0;
+    if (ChatSettingActivity.a((ChatSettingActivity)localObject2, ChatSettingActivity.a((ChatSettingActivity)localObject2), ChatSettingActivity.n(this.this$0), this.a) > 0)
     {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).delFriend(this.jdField_a_of_type_JavaLangString, (byte)2);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getHandler(ChatActivity.class);
-      if (paramView != null)
-      {
-        paramView.removeMessages(16711681);
-        paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
-      if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
+      localObject2 = this.this$0.G.obtainMessage();
+      ((Message)localObject2).what = 18;
+      ((Message)localObject2).obj = localObject1;
+      ((Message)localObject2).sendToTarget();
     }
-    else
-    {
-      ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131691464, 1);
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.16
  * JD-Core Version:    0.7.0.1
  */

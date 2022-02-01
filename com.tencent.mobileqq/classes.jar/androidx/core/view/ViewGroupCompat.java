@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 import androidx.annotation.NonNull;
+import androidx.core.R.id;
 
 public final class ViewGroupCompat
 {
@@ -35,7 +36,7 @@ public final class ViewGroupCompat
     if (Build.VERSION.SDK_INT >= 21) {
       return paramViewGroup.isTransitionGroup();
     }
-    Boolean localBoolean = (Boolean)paramViewGroup.getTag(2131378311);
+    Boolean localBoolean = (Boolean)paramViewGroup.getTag(R.id.tag_transition_group);
     return ((localBoolean != null) && (localBoolean.booleanValue())) || (paramViewGroup.getBackground() != null) || (ViewCompat.getTransitionName(paramViewGroup) != null);
   }
   
@@ -65,7 +66,7 @@ public final class ViewGroupCompat
       paramViewGroup.setTransitionGroup(paramBoolean);
       return;
     }
-    paramViewGroup.setTag(2131378311, Boolean.valueOf(paramBoolean));
+    paramViewGroup.setTag(R.id.tag_transition_group, Boolean.valueOf(paramBoolean));
   }
 }
 

@@ -94,16 +94,16 @@ class ContactSyncJumpActivity$2
           this.a.finish();
           return;
         }
-        paramString = String.format(this.a.getResources().getString(2131698719), new Object[] { ContactSyncJumpActivity.d(this.a) });
-        ContactSyncJumpActivity.a(this.a).deleteSyncContact(ContactSyncJumpActivity.e(this.a));
+        paramString = String.format(this.a.getResources().getString(2131896677), new Object[] { ContactSyncJumpActivity.d(this.a) });
+        ContactSyncJumpActivity.f(this.a).deleteSyncContact(ContactSyncJumpActivity.e(this.a));
         ContactSyncJumpActivity.a(this.a, 1, paramString);
         return;
       }
-      if ((this.a.jdField_a_of_type_AndroidAppDialog == null) && (this.a.jdField_a_of_type_Int != 2)) {
+      if ((this.a.a == null) && (this.a.b != 2)) {
         return;
       }
-      String str1 = ContactSyncJumpActivity.a(this.a).getStatusDescription(paramGetOnlineInfoResp);
-      String str2 = ContactSyncJumpActivity.a(this.a).getNetworkDescription(paramGetOnlineInfoResp);
+      String str1 = ContactSyncJumpActivity.f(this.a).getStatusDescription(paramGetOnlineInfoResp);
+      String str2 = ContactSyncJumpActivity.f(this.a).getNetworkDescription(paramGetOnlineInfoResp);
       if (!TextUtils.isEmpty(str1)) {
         paramString = str1;
       } else {
@@ -127,9 +127,9 @@ class ContactSyncJumpActivity$2
       }
       boolean bool1 = TextUtils.isEmpty((CharSequence)localObject) ^ true;
       if (!bool1) {
-        localObject = this.a.getResources().getString(2131698726);
+        localObject = this.a.getResources().getString(2131896684);
       }
-      paramString = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365678);
+      paramString = (TextView)this.a.a.findViewById(2131431912);
       paramString.setText((CharSequence)localObject);
       paramString.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       if ((bool1) && ((paramGetOnlineInfoResp.eNetworkType == 4) || (paramGetOnlineInfoResp.eNetworkType == 5) || (paramGetOnlineInfoResp.eNetworkType == 1)))
@@ -137,20 +137,20 @@ class ContactSyncJumpActivity$2
         paramString = new Message();
         paramString.what = 1000;
         paramString.arg1 = 4;
-        ContactSyncJumpActivity.a(this.a).sendMessage(paramString);
+        ContactSyncJumpActivity.g(this.a).sendMessage(paramString);
       }
     }
-    else if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
+    else if ((this.a.a != null) && (this.a.b == 2))
     {
-      paramString = (TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365678);
-      paramString.setText(2131698726);
+      paramString = (TextView)this.a.a.findViewById(2131431912);
+      paramString.setText(2131896684);
       paramString.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ContactSyncJumpActivity.2
  * JD-Core Version:    0.7.0.1
  */

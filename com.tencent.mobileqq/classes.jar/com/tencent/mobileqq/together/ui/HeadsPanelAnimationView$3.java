@@ -26,40 +26,40 @@ class HeadsPanelAnimationView$3
         return false;
       }
       paramMessage = (ArrayList)paramMessage.obj;
-      if (this.a.jdField_a_of_type_Boolean)
+      if (this.a.j)
       {
-        paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+        paramMessage = Message.obtain(this.a.f, 2, paramMessage);
+        this.a.f.sendMessageDelayed(paramMessage, 500L);
         return false;
       }
       HeadsPanelAnimationView.a(this.a, paramMessage);
       return false;
     }
-    if (this.a.b.size() == 0)
+    if (this.a.g.size() == 0)
     {
       QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
       return false;
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.a.c();
+    if (this.a.f.hasMessages(1)) {
+      this.a.f.removeMessages(1);
     }
-    if ((this.a.b != null) && (this.a.b.size() > 3))
+    if ((this.a.g != null) && (this.a.g.size() > 3))
     {
-      paramMessage = (String)this.a.b.get(3);
+      paramMessage = (String)this.a.g.get(3);
       Drawable localDrawable = ImageUtil.a(true);
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (localQQAppInterface != null) {
         FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
       }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+    this.a.f.sendEmptyMessageDelayed(1, 5000L);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.HeadsPanelAnimationView.3
  * JD-Core Version:    0.7.0.1
  */

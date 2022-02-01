@@ -10,29 +10,29 @@ import java.util.Iterator;
 
 public class TroopBatchInfoHandlerProcessorConfig
 {
-  private static TroopBatchInfoHandlerProcessorConfig jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopBatchInfoHandlerProcessorConfig;
-  private static ArrayList<AbsTroopBatchInfoHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<AbsTroopBatchInfoHandlerProcessor> a = new ArrayList();
+  private static TroopBatchInfoHandlerProcessorConfig b;
   
   private TroopBatchInfoHandlerProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static TroopBatchInfoHandlerProcessorConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopBatchInfoHandlerProcessorConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopBatchInfoHandlerProcessorConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopBatchInfoHandlerProcessorConfig = new TroopBatchInfoHandlerProcessorConfig();
+        if (b == null) {
+          b = new TroopBatchInfoHandlerProcessorConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopBatchInfoHandlerProcessorConfig;
+    return b;
   }
   
-  private static void a()
+  private static void b()
   {
     if (TroopCustomizedProcessorRegister.j != null)
     {
@@ -43,7 +43,7 @@ public class TroopBatchInfoHandlerProcessorConfig
         try
         {
           localObject = (AbsTroopBatchInfoHandlerProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          a.add(localObject);
         }
         catch (Throwable localThrowable)
         {
@@ -55,7 +55,7 @@ public class TroopBatchInfoHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, TroopInfo paramTroopInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopBatchInfoHandlerProcessor)localIterator.next()).a(paramAppInterface, paramTroopInfo);
     }
@@ -63,7 +63,7 @@ public class TroopBatchInfoHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopBatchInfoHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

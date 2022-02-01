@@ -15,7 +15,7 @@ public final class WTogetherCommon$RoomUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     trpc.qq_av_together.common.WTogetherCommon.RoomUserInfo
  * JD-Core Version:    0.7.0.1
  */

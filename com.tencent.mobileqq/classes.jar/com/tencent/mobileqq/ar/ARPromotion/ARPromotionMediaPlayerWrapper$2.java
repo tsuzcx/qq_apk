@@ -14,26 +14,26 @@ class ARPromotionMediaPlayerWrapper$2
     }
     try
     {
-      ARPromotionMediaPlayerWrapper.a(this.this$0);
-      ARPromotionMediaPlayerWrapper.a(this.this$0);
-      if (ARPromotionMediaPlayerWrapper.a(this.this$0) != null)
+      ARPromotionMediaPlayerWrapper.e(this.this$0);
+      ARPromotionMediaPlayerWrapper.d(this.this$0);
+      if (ARPromotionMediaPlayerWrapper.g(this.this$0) != null)
       {
-        if (ARPromotionMediaPlayerWrapper.a(this.this$0) == null) {
+        if (ARPromotionMediaPlayerWrapper.m(this.this$0) == null) {
           return;
         }
-        ARPromotionMediaPlayerWrapper.a(this.this$0).bind();
-        ARPromotionMediaPlayerWrapper.a(this.this$0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
-        if (!ARPromotionMediaPlayerWrapper.a(this.this$0).a())
+        ARPromotionMediaPlayerWrapper.g(this.this$0).bind();
+        ARPromotionMediaPlayerWrapper.a(this.this$0, this.a, this.b, this.c);
+        if (!ARPromotionMediaPlayerWrapper.m(this.this$0).a())
         {
-          ARPromotionMediaPlayerWrapper.a(this.this$0).a();
-          ARPromotionMediaPlayerWrapper.a(this.this$0).a(GreetingYUVProgram.g);
+          ARPromotionMediaPlayerWrapper.m(this.this$0).b();
+          ARPromotionMediaPlayerWrapper.m(this.this$0).a(GreetingYUVProgram.h);
         }
-        ARPromotionMediaPlayerWrapper.a(this.this$0).a(ARPromotionMediaPlayerWrapper.a(this.this$0)[0], ARPromotionMediaPlayerWrapper.a(this.this$0)[1], ARPromotionMediaPlayerWrapper.a(this.this$0)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        ARPromotionMediaPlayerWrapper.a(this.this$0).b();
-        ARPromotionMediaPlayerWrapper.a(this.this$0).unbind();
-        if ((ARPromotionMediaPlayerWrapper.b(this.this$0) == 2L) && (ARPromotionMediaPlayerWrapper.a(this.this$0) != null))
+        ARPromotionMediaPlayerWrapper.m(this.this$0).a(ARPromotionMediaPlayerWrapper.n(this.this$0)[0], ARPromotionMediaPlayerWrapper.n(this.this$0)[1], ARPromotionMediaPlayerWrapper.n(this.this$0)[2], this.d, this.e);
+        ARPromotionMediaPlayerWrapper.m(this.this$0).c();
+        ARPromotionMediaPlayerWrapper.g(this.this$0).unbind();
+        if ((ARPromotionMediaPlayerWrapper.j(this.this$0) == 2L) && (ARPromotionMediaPlayerWrapper.k(this.this$0) != null))
         {
-          ARPromotionMediaPlayerWrapper.a(this.this$0).a(ARPromotionMediaPlayerWrapper.b(this.this$0), 0, ARPromotionMediaPlayerWrapper.a(this.this$0).getTexId());
+          ARPromotionMediaPlayerWrapper.k(this.this$0).a(ARPromotionMediaPlayerWrapper.l(this.this$0), 0, ARPromotionMediaPlayerWrapper.g(this.this$0).getTexId());
           QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupGlobalSceneRenderable ARWorldCupMediaPlayerWrapper.drawFrame softWare");
         }
       }
@@ -48,7 +48,7 @@ class ARPromotionMediaPlayerWrapper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper.2
  * JD-Core Version:    0.7.0.1
  */

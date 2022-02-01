@@ -12,12 +12,12 @@ final class WeatherView$showCard$1$denied$1
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a.a(1030);
+    this.a.a.n.a(1030);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.WeatherView.showCard.1.denied.1
  * JD-Core Version:    0.7.0.1
  */

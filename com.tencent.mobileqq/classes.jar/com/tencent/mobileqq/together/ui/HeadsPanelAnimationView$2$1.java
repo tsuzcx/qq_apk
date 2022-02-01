@@ -11,8 +11,8 @@ class HeadsPanelAnimationView$2$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.d.setVisibility(8);
-    this.a.a.a = false;
+    this.a.b.i.setVisibility(8);
+    this.a.b.j = false;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -21,7 +21,7 @@ class HeadsPanelAnimationView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.HeadsPanelAnimationView.2.1
  * JD-Core Version:    0.7.0.1
  */

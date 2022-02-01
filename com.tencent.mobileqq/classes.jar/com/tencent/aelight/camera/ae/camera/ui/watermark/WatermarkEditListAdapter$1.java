@@ -12,17 +12,17 @@ class WatermarkEditListAdapter$1
   
   public void onClick(View paramView)
   {
-    if ("CHECK_IN".equals(this.jdField_a_of_type_OrgLightBeanWMElement.type))
+    if ("CHECK_IN".equals(this.a.type))
     {
-      WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder);
+      WatermarkEditListAdapter.a(this.c, this.b);
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder.a.setText("");
+    this.b.a.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

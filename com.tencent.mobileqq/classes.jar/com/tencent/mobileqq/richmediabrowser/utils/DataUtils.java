@@ -16,79 +16,79 @@ public class DataUtils
   public static AIOFilePicData a(AIOFilePictureData paramAIOFilePictureData)
   {
     AIOFilePicData localAIOFilePicData = new AIOFilePicData();
-    localAIOFilePicData.jdField_f_of_type_Long = paramAIOFilePictureData.jdField_a_of_type_Long;
-    localAIOFilePicData.jdField_f_of_type_Int = paramAIOFilePictureData.jdField_a_of_type_Int;
-    localAIOFilePicData.jdField_g_of_type_Long = paramAIOFilePictureData.jdField_b_of_type_Long;
-    localAIOFilePicData.jdField_h_of_type_Long = paramAIOFilePictureData.jdField_c_of_type_Long;
-    localAIOFilePicData.jdField_i_of_type_Long = paramAIOFilePictureData.jdField_d_of_type_Long;
-    localAIOFilePicData.jdField_g_of_type_Int = paramAIOFilePictureData.jdField_b_of_type_Int;
-    localAIOFilePicData.jdField_k_of_type_Boolean = paramAIOFilePictureData.jdField_a_of_type_Boolean;
-    localAIOFilePicData.jdField_a_of_type_Int = paramAIOFilePictureData.jdField_c_of_type_Int;
-    localAIOFilePicData.jdField_b_of_type_JavaLangString = paramAIOFilePictureData.jdField_a_of_type_JavaLangString;
-    localAIOFilePicData.jdField_c_of_type_JavaLangString = paramAIOFilePictureData.jdField_b_of_type_JavaLangString;
-    localAIOFilePicData.jdField_d_of_type_JavaLangString = paramAIOFilePictureData.jdField_c_of_type_JavaLangString;
-    localAIOFilePicData.jdField_e_of_type_JavaLangString = paramAIOFilePictureData.jdField_d_of_type_JavaLangString;
-    localAIOFilePicData.jdField_b_of_type_Int = paramAIOFilePictureData.jdField_d_of_type_Int;
-    localAIOFilePicData.jdField_d_of_type_Boolean = paramAIOFilePictureData.jdField_g_of_type_Boolean;
-    localAIOFilePicData.jdField_a_of_type_Long = paramAIOFilePictureData.jdField_e_of_type_Long;
-    localAIOFilePicData.jdField_e_of_type_Boolean = paramAIOFilePictureData.jdField_h_of_type_Boolean;
-    localAIOFilePicData.jdField_h_of_type_JavaLangString = paramAIOFilePictureData.jdField_e_of_type_JavaLangString;
-    localAIOFilePicData.jdField_i_of_type_JavaLangString = paramAIOFilePictureData.jdField_f_of_type_JavaLangString;
+    localAIOFilePicData.L = paramAIOFilePictureData.a;
+    localAIOFilePicData.M = paramAIOFilePictureData.b;
+    localAIOFilePicData.N = paramAIOFilePictureData.c;
+    localAIOFilePicData.O = paramAIOFilePictureData.d;
+    localAIOFilePicData.P = paramAIOFilePictureData.e;
+    localAIOFilePicData.Q = paramAIOFilePictureData.f;
+    localAIOFilePicData.R = paramAIOFilePictureData.g;
+    localAIOFilePicData.b = paramAIOFilePictureData.j;
+    localAIOFilePicData.c = paramAIOFilePictureData.k;
+    localAIOFilePicData.d = paramAIOFilePictureData.l;
+    localAIOFilePicData.e = paramAIOFilePictureData.m;
+    localAIOFilePicData.f = paramAIOFilePictureData.n;
+    localAIOFilePicData.p = paramAIOFilePictureData.u;
+    localAIOFilePicData.k = paramAIOFilePictureData.r;
+    localAIOFilePicData.l = paramAIOFilePictureData.s;
+    localAIOFilePicData.n = paramAIOFilePictureData.t;
+    localAIOFilePicData.r = paramAIOFilePictureData.v;
+    localAIOFilePicData.t = paramAIOFilePictureData.w;
     return localAIOFilePicData;
   }
   
   public static com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData a(com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData paramAIOFileVideoData)
   {
     com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData localAIOFileVideoData = new com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData();
-    localAIOFileVideoData.jdField_f_of_type_Long = paramAIOFileVideoData.jdField_a_of_type_Long;
-    localAIOFileVideoData.jdField_f_of_type_Int = paramAIOFileVideoData.jdField_a_of_type_Int;
-    localAIOFileVideoData.jdField_g_of_type_Long = paramAIOFileVideoData.jdField_b_of_type_Long;
-    localAIOFileVideoData.jdField_h_of_type_Long = paramAIOFileVideoData.jdField_c_of_type_Long;
-    localAIOFileVideoData.jdField_i_of_type_Long = paramAIOFileVideoData.jdField_d_of_type_Long;
-    localAIOFileVideoData.jdField_g_of_type_Int = paramAIOFileVideoData.jdField_b_of_type_Int;
-    localAIOFileVideoData.jdField_k_of_type_Boolean = paramAIOFileVideoData.jdField_a_of_type_Boolean;
-    localAIOFileVideoData.jdField_b_of_type_JavaLangString = paramAIOFileVideoData.jdField_b_of_type_JavaLangString;
-    localAIOFileVideoData.jdField_a_of_type_JavaLangString = paramAIOFileVideoData.jdField_a_of_type_JavaLangString;
-    localAIOFileVideoData.jdField_c_of_type_JavaLangString = paramAIOFileVideoData.jdField_c_of_type_JavaLangString;
-    localAIOFileVideoData.jdField_a_of_type_Long = paramAIOFileVideoData.jdField_e_of_type_Long;
-    localAIOFileVideoData.jdField_a_of_type_Int = paramAIOFileVideoData.jdField_c_of_type_Int;
-    localAIOFileVideoData.jdField_b_of_type_Int = paramAIOFileVideoData.jdField_d_of_type_Int;
+    localAIOFileVideoData.L = paramAIOFileVideoData.a;
+    localAIOFileVideoData.M = paramAIOFileVideoData.b;
+    localAIOFileVideoData.N = paramAIOFileVideoData.c;
+    localAIOFileVideoData.O = paramAIOFileVideoData.d;
+    localAIOFileVideoData.P = paramAIOFileVideoData.e;
+    localAIOFileVideoData.Q = paramAIOFileVideoData.f;
+    localAIOFileVideoData.R = paramAIOFileVideoData.g;
+    localAIOFileVideoData.b = paramAIOFileVideoData.k;
+    localAIOFileVideoData.a = paramAIOFileVideoData.j;
+    localAIOFileVideoData.c = paramAIOFileVideoData.l;
+    localAIOFileVideoData.d = paramAIOFileVideoData.m;
+    localAIOFileVideoData.e = paramAIOFileVideoData.n;
+    localAIOFileVideoData.f = paramAIOFileVideoData.o;
     return localAIOFileVideoData;
   }
   
   public static AIOImageData a(AIOPictureData paramAIOPictureData)
   {
     AIOImageData localAIOImageData = new AIOImageData();
-    localAIOImageData.jdField_f_of_type_Long = paramAIOPictureData.jdField_a_of_type_Long;
-    localAIOImageData.jdField_f_of_type_Int = paramAIOPictureData.jdField_a_of_type_Int;
-    localAIOImageData.jdField_g_of_type_Long = paramAIOPictureData.jdField_b_of_type_Long;
-    localAIOImageData.jdField_h_of_type_Long = paramAIOPictureData.jdField_c_of_type_Long;
-    localAIOImageData.jdField_i_of_type_Long = paramAIOPictureData.jdField_d_of_type_Long;
-    localAIOImageData.jdField_g_of_type_Int = paramAIOPictureData.jdField_b_of_type_Int;
-    localAIOImageData.jdField_k_of_type_Boolean = paramAIOPictureData.jdField_a_of_type_Boolean;
-    localAIOImageData.jdField_a_of_type_JavaLangString = paramAIOPictureData.jdField_a_of_type_JavaLangString;
-    localAIOImageData.jdField_b_of_type_JavaLangString = paramAIOPictureData.jdField_b_of_type_JavaLangString;
-    localAIOImageData.jdField_c_of_type_JavaLangString = paramAIOPictureData.jdField_c_of_type_JavaLangString;
-    localAIOImageData.jdField_d_of_type_JavaLangString = paramAIOPictureData.jdField_d_of_type_JavaLangString;
-    localAIOImageData.jdField_e_of_type_JavaLangString = paramAIOPictureData.jdField_e_of_type_JavaLangString;
-    localAIOImageData.jdField_c_of_type_Long = paramAIOPictureData.jdField_e_of_type_Long;
-    localAIOImageData.jdField_d_of_type_Long = paramAIOPictureData.jdField_f_of_type_Long;
-    localAIOImageData.jdField_d_of_type_Boolean = paramAIOPictureData.jdField_g_of_type_Boolean;
-    localAIOImageData.jdField_b_of_type_Int = paramAIOPictureData.jdField_c_of_type_Int;
-    localAIOImageData.jdField_g_of_type_Boolean = paramAIOPictureData.jdField_h_of_type_Boolean;
-    localAIOImageData.jdField_h_of_type_JavaLangString = paramAIOPictureData.jdField_g_of_type_JavaLangString;
-    localAIOImageData.jdField_f_of_type_JavaLangString = paramAIOPictureData.jdField_f_of_type_JavaLangString;
-    localAIOImageData.jdField_j_of_type_JavaLangString = paramAIOPictureData.jdField_h_of_type_JavaLangString;
-    localAIOImageData.jdField_k_of_type_JavaLangString = paramAIOPictureData.jdField_i_of_type_JavaLangString;
-    localAIOImageData.jdField_h_of_type_Boolean = paramAIOPictureData.jdField_i_of_type_Boolean;
-    localAIOImageData.jdField_e_of_type_Int = paramAIOPictureData.jdField_d_of_type_Int;
-    localAIOImageData.jdField_i_of_type_Boolean = paramAIOPictureData.jdField_j_of_type_Boolean;
-    localAIOImageData.jdField_l_of_type_JavaLangString = paramAIOPictureData.jdField_j_of_type_JavaLangString;
-    localAIOImageData.jdField_j_of_type_Boolean = paramAIOPictureData.jdField_k_of_type_Boolean;
-    localAIOImageData.jdField_m_of_type_JavaLangString = paramAIOPictureData.jdField_k_of_type_JavaLangString;
-    localAIOImageData.n = paramAIOPictureData.jdField_l_of_type_JavaLangString;
-    localAIOImageData.o = paramAIOPictureData.jdField_m_of_type_JavaLangString;
-    localAIOImageData.p = paramAIOPictureData.n;
+    localAIOImageData.L = paramAIOPictureData.a;
+    localAIOImageData.M = paramAIOPictureData.b;
+    localAIOImageData.N = paramAIOPictureData.c;
+    localAIOImageData.O = paramAIOPictureData.d;
+    localAIOImageData.P = paramAIOPictureData.e;
+    localAIOImageData.Q = paramAIOPictureData.f;
+    localAIOImageData.R = paramAIOPictureData.g;
+    localAIOImageData.a = paramAIOPictureData.j;
+    localAIOImageData.b = paramAIOPictureData.k;
+    localAIOImageData.c = paramAIOPictureData.l;
+    localAIOImageData.d = paramAIOPictureData.m;
+    localAIOImageData.n = paramAIOPictureData.r;
+    localAIOImageData.o = paramAIOPictureData.s;
+    localAIOImageData.p = paramAIOPictureData.t;
+    localAIOImageData.h = paramAIOPictureData.q;
+    localAIOImageData.r = paramAIOPictureData.v;
+    localAIOImageData.t = paramAIOPictureData.w;
+    localAIOImageData.w = paramAIOPictureData.x;
+    localAIOImageData.q = paramAIOPictureData.u;
+    localAIOImageData.A = paramAIOPictureData.y;
+    localAIOImageData.B = paramAIOPictureData.z;
+    localAIOImageData.C = paramAIOPictureData.A;
+    localAIOImageData.D = paramAIOPictureData.B;
+    localAIOImageData.E = paramAIOPictureData.C;
+    localAIOImageData.F = paramAIOPictureData.D;
+    localAIOImageData.G = paramAIOPictureData.E;
+    localAIOImageData.H = paramAIOPictureData.F;
+    localAIOImageData.I = paramAIOPictureData.G;
+    localAIOImageData.J = paramAIOPictureData.H;
+    localAIOImageData.K = paramAIOPictureData.I;
     return localAIOImageData;
   }
   
@@ -116,24 +116,24 @@ public class DataUtils
   public static AIOShortVideoData a(AIOVideoData paramAIOVideoData)
   {
     AIOShortVideoData localAIOShortVideoData = new AIOShortVideoData();
-    localAIOShortVideoData.jdField_f_of_type_Long = paramAIOVideoData.jdField_a_of_type_Long;
-    localAIOShortVideoData.jdField_f_of_type_Int = paramAIOVideoData.jdField_a_of_type_Int;
-    localAIOShortVideoData.jdField_g_of_type_Long = paramAIOVideoData.jdField_b_of_type_Long;
-    localAIOShortVideoData.jdField_h_of_type_Long = paramAIOVideoData.jdField_c_of_type_Long;
-    localAIOShortVideoData.jdField_i_of_type_Long = paramAIOVideoData.jdField_d_of_type_Long;
-    localAIOShortVideoData.jdField_g_of_type_Int = paramAIOVideoData.jdField_b_of_type_Int;
-    localAIOShortVideoData.jdField_k_of_type_Boolean = paramAIOVideoData.jdField_a_of_type_Boolean;
-    localAIOShortVideoData.jdField_a_of_type_JavaLangString = paramAIOVideoData.jdField_a_of_type_JavaLangString;
-    localAIOShortVideoData.jdField_b_of_type_JavaLangString = paramAIOVideoData.jdField_b_of_type_JavaLangString;
-    localAIOShortVideoData.jdField_a_of_type_Int = paramAIOVideoData.jdField_c_of_type_Int;
-    localAIOShortVideoData.jdField_b_of_type_Int = paramAIOVideoData.jdField_d_of_type_Int;
-    localAIOShortVideoData.jdField_c_of_type_Int = paramAIOVideoData.jdField_e_of_type_Int;
-    localAIOShortVideoData.jdField_d_of_type_Int = paramAIOVideoData.jdField_f_of_type_Int;
-    localAIOShortVideoData.jdField_a_of_type_Long = paramAIOVideoData.jdField_e_of_type_Long;
-    localAIOShortVideoData.jdField_d_of_type_JavaLangString = paramAIOVideoData.jdField_c_of_type_JavaLangString;
-    localAIOShortVideoData.j = paramAIOVideoData.jdField_g_of_type_Int;
-    localAIOShortVideoData.jdField_f_of_type_JavaLangString = paramAIOVideoData.jdField_e_of_type_JavaLangString;
-    localAIOShortVideoData.jdField_g_of_type_JavaLangString = paramAIOVideoData.jdField_f_of_type_JavaLangString;
+    localAIOShortVideoData.L = paramAIOVideoData.a;
+    localAIOShortVideoData.M = paramAIOVideoData.b;
+    localAIOShortVideoData.N = paramAIOVideoData.c;
+    localAIOShortVideoData.O = paramAIOVideoData.d;
+    localAIOShortVideoData.P = paramAIOVideoData.e;
+    localAIOShortVideoData.Q = paramAIOVideoData.f;
+    localAIOShortVideoData.R = paramAIOVideoData.g;
+    localAIOShortVideoData.a = paramAIOVideoData.j;
+    localAIOShortVideoData.b = paramAIOVideoData.k;
+    localAIOShortVideoData.c = paramAIOVideoData.l;
+    localAIOShortVideoData.d = paramAIOVideoData.m;
+    localAIOShortVideoData.g = paramAIOVideoData.p;
+    localAIOShortVideoData.h = paramAIOVideoData.q;
+    localAIOShortVideoData.i = paramAIOVideoData.r;
+    localAIOShortVideoData.l = paramAIOVideoData.s;
+    localAIOShortVideoData.p = paramAIOVideoData.t;
+    localAIOShortVideoData.r = paramAIOVideoData.z;
+    localAIOShortVideoData.s = paramAIOVideoData.A;
     return localAIOShortVideoData;
   }
   
@@ -161,120 +161,120 @@ public class DataUtils
   public static AIOFilePictureData a(AIOFilePicData paramAIOFilePicData)
   {
     AIOFilePictureData localAIOFilePictureData = new AIOFilePictureData();
-    localAIOFilePictureData.jdField_a_of_type_Long = paramAIOFilePicData.jdField_f_of_type_Long;
-    localAIOFilePictureData.jdField_a_of_type_Int = paramAIOFilePicData.jdField_f_of_type_Int;
-    localAIOFilePictureData.jdField_b_of_type_Long = paramAIOFilePicData.jdField_g_of_type_Long;
-    localAIOFilePictureData.jdField_c_of_type_Long = paramAIOFilePicData.jdField_h_of_type_Long;
-    localAIOFilePictureData.jdField_d_of_type_Long = paramAIOFilePicData.jdField_i_of_type_Long;
-    localAIOFilePictureData.jdField_b_of_type_Int = paramAIOFilePicData.jdField_g_of_type_Int;
-    localAIOFilePictureData.jdField_a_of_type_Boolean = paramAIOFilePicData.jdField_k_of_type_Boolean;
-    localAIOFilePictureData.jdField_b_of_type_Boolean = paramAIOFilePicData.jdField_l_of_type_Boolean;
-    localAIOFilePictureData.jdField_c_of_type_Boolean = paramAIOFilePicData.jdField_m_of_type_Boolean;
-    localAIOFilePictureData.jdField_c_of_type_Int = paramAIOFilePicData.jdField_a_of_type_Int;
-    localAIOFilePictureData.jdField_a_of_type_JavaLangString = paramAIOFilePicData.jdField_b_of_type_JavaLangString;
-    localAIOFilePictureData.jdField_b_of_type_JavaLangString = paramAIOFilePicData.jdField_c_of_type_JavaLangString;
-    localAIOFilePictureData.jdField_c_of_type_JavaLangString = paramAIOFilePicData.jdField_d_of_type_JavaLangString;
-    localAIOFilePictureData.jdField_d_of_type_JavaLangString = paramAIOFilePicData.jdField_e_of_type_JavaLangString;
-    localAIOFilePictureData.jdField_d_of_type_Int = paramAIOFilePicData.jdField_b_of_type_Int;
-    localAIOFilePictureData.jdField_g_of_type_Boolean = paramAIOFilePicData.jdField_d_of_type_Boolean;
-    localAIOFilePictureData.jdField_e_of_type_Long = paramAIOFilePicData.jdField_a_of_type_Long;
-    localAIOFilePictureData.jdField_h_of_type_Boolean = paramAIOFilePicData.jdField_e_of_type_Boolean;
-    localAIOFilePictureData.jdField_e_of_type_JavaLangString = paramAIOFilePicData.jdField_h_of_type_JavaLangString;
-    localAIOFilePictureData.jdField_f_of_type_JavaLangString = paramAIOFilePicData.jdField_i_of_type_JavaLangString;
-    localAIOFilePictureData.jdField_e_of_type_Int = paramAIOFilePicData.jdField_c_of_type_Int;
-    localAIOFilePictureData.jdField_f_of_type_Int = paramAIOFilePicData.jdField_d_of_type_Int;
-    localAIOFilePictureData.jdField_g_of_type_Int = paramAIOFilePicData.jdField_e_of_type_Int;
+    localAIOFilePictureData.a = paramAIOFilePicData.L;
+    localAIOFilePictureData.b = paramAIOFilePicData.M;
+    localAIOFilePictureData.c = paramAIOFilePicData.N;
+    localAIOFilePictureData.d = paramAIOFilePicData.O;
+    localAIOFilePictureData.e = paramAIOFilePicData.P;
+    localAIOFilePictureData.f = paramAIOFilePicData.Q;
+    localAIOFilePictureData.g = paramAIOFilePicData.R;
+    localAIOFilePictureData.h = paramAIOFilePicData.S;
+    localAIOFilePictureData.i = paramAIOFilePicData.T;
+    localAIOFilePictureData.j = paramAIOFilePicData.b;
+    localAIOFilePictureData.k = paramAIOFilePicData.c;
+    localAIOFilePictureData.l = paramAIOFilePicData.d;
+    localAIOFilePictureData.m = paramAIOFilePicData.e;
+    localAIOFilePictureData.n = paramAIOFilePicData.f;
+    localAIOFilePictureData.u = paramAIOFilePicData.p;
+    localAIOFilePictureData.r = paramAIOFilePicData.k;
+    localAIOFilePictureData.s = paramAIOFilePicData.l;
+    localAIOFilePictureData.t = paramAIOFilePicData.n;
+    localAIOFilePictureData.v = paramAIOFilePicData.r;
+    localAIOFilePictureData.w = paramAIOFilePicData.t;
+    localAIOFilePictureData.x = paramAIOFilePicData.u;
+    localAIOFilePictureData.y = paramAIOFilePicData.v;
+    localAIOFilePictureData.z = paramAIOFilePicData.w;
     return localAIOFilePictureData;
   }
   
   public static com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData a(com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData paramAIOFileVideoData)
   {
     com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData localAIOFileVideoData = new com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData();
-    localAIOFileVideoData.jdField_a_of_type_Long = paramAIOFileVideoData.jdField_f_of_type_Long;
-    localAIOFileVideoData.jdField_a_of_type_Int = paramAIOFileVideoData.jdField_f_of_type_Int;
-    localAIOFileVideoData.jdField_b_of_type_Long = paramAIOFileVideoData.jdField_g_of_type_Long;
-    localAIOFileVideoData.jdField_c_of_type_Long = paramAIOFileVideoData.jdField_h_of_type_Long;
-    localAIOFileVideoData.jdField_d_of_type_Long = paramAIOFileVideoData.jdField_i_of_type_Long;
-    localAIOFileVideoData.jdField_b_of_type_Int = paramAIOFileVideoData.jdField_g_of_type_Int;
-    localAIOFileVideoData.jdField_a_of_type_Boolean = paramAIOFileVideoData.jdField_k_of_type_Boolean;
-    localAIOFileVideoData.jdField_b_of_type_Boolean = paramAIOFileVideoData.jdField_l_of_type_Boolean;
-    localAIOFileVideoData.jdField_c_of_type_Boolean = paramAIOFileVideoData.jdField_m_of_type_Boolean;
-    localAIOFileVideoData.jdField_b_of_type_JavaLangString = paramAIOFileVideoData.jdField_b_of_type_JavaLangString;
-    localAIOFileVideoData.jdField_a_of_type_JavaLangString = paramAIOFileVideoData.jdField_a_of_type_JavaLangString;
-    localAIOFileVideoData.jdField_c_of_type_JavaLangString = paramAIOFileVideoData.jdField_c_of_type_JavaLangString;
-    localAIOFileVideoData.jdField_e_of_type_Long = paramAIOFileVideoData.jdField_a_of_type_Long;
-    localAIOFileVideoData.jdField_c_of_type_Int = paramAIOFileVideoData.jdField_a_of_type_Int;
-    localAIOFileVideoData.jdField_d_of_type_Int = paramAIOFileVideoData.jdField_b_of_type_Int;
-    localAIOFileVideoData.jdField_f_of_type_Boolean = paramAIOFileVideoData.jdField_c_of_type_Boolean;
-    localAIOFileVideoData.jdField_g_of_type_JavaLangString = paramAIOFileVideoData.jdField_h_of_type_JavaLangString;
-    localAIOFileVideoData.jdField_e_of_type_Int = paramAIOFileVideoData.jdField_c_of_type_Int;
-    localAIOFileVideoData.jdField_f_of_type_Int = paramAIOFileVideoData.jdField_d_of_type_Int;
-    localAIOFileVideoData.jdField_h_of_type_JavaLangString = paramAIOFileVideoData.jdField_i_of_type_JavaLangString;
-    localAIOFileVideoData.jdField_i_of_type_JavaLangString = paramAIOFileVideoData.jdField_j_of_type_JavaLangString;
+    localAIOFileVideoData.a = paramAIOFileVideoData.L;
+    localAIOFileVideoData.b = paramAIOFileVideoData.M;
+    localAIOFileVideoData.c = paramAIOFileVideoData.N;
+    localAIOFileVideoData.d = paramAIOFileVideoData.O;
+    localAIOFileVideoData.e = paramAIOFileVideoData.P;
+    localAIOFileVideoData.f = paramAIOFileVideoData.Q;
+    localAIOFileVideoData.g = paramAIOFileVideoData.R;
+    localAIOFileVideoData.h = paramAIOFileVideoData.S;
+    localAIOFileVideoData.i = paramAIOFileVideoData.T;
+    localAIOFileVideoData.k = paramAIOFileVideoData.b;
+    localAIOFileVideoData.j = paramAIOFileVideoData.a;
+    localAIOFileVideoData.l = paramAIOFileVideoData.c;
+    localAIOFileVideoData.m = paramAIOFileVideoData.d;
+    localAIOFileVideoData.n = paramAIOFileVideoData.e;
+    localAIOFileVideoData.o = paramAIOFileVideoData.f;
+    localAIOFileVideoData.v = paramAIOFileVideoData.o;
+    localAIOFileVideoData.B = paramAIOFileVideoData.r;
+    localAIOFileVideoData.C = paramAIOFileVideoData.s;
+    localAIOFileVideoData.D = paramAIOFileVideoData.t;
+    localAIOFileVideoData.E = paramAIOFileVideoData.u;
+    localAIOFileVideoData.F = paramAIOFileVideoData.v;
     return localAIOFileVideoData;
   }
   
   public static AIOPictureData a(AIOImageData paramAIOImageData)
   {
     AIOPictureData localAIOPictureData = new AIOPictureData();
-    localAIOPictureData.jdField_a_of_type_Long = paramAIOImageData.jdField_f_of_type_Long;
-    localAIOPictureData.jdField_a_of_type_Int = paramAIOImageData.jdField_f_of_type_Int;
-    localAIOPictureData.jdField_b_of_type_Long = paramAIOImageData.jdField_g_of_type_Long;
-    localAIOPictureData.jdField_c_of_type_Long = paramAIOImageData.jdField_h_of_type_Long;
-    localAIOPictureData.jdField_d_of_type_Long = paramAIOImageData.jdField_i_of_type_Long;
-    localAIOPictureData.jdField_b_of_type_Int = paramAIOImageData.jdField_g_of_type_Int;
-    localAIOPictureData.jdField_a_of_type_Boolean = paramAIOImageData.jdField_k_of_type_Boolean;
-    localAIOPictureData.jdField_b_of_type_Boolean = paramAIOImageData.jdField_l_of_type_Boolean;
-    localAIOPictureData.jdField_c_of_type_Boolean = paramAIOImageData.jdField_m_of_type_Boolean;
-    localAIOPictureData.jdField_a_of_type_JavaLangString = paramAIOImageData.jdField_a_of_type_JavaLangString;
-    localAIOPictureData.jdField_b_of_type_JavaLangString = paramAIOImageData.jdField_b_of_type_JavaLangString;
-    localAIOPictureData.jdField_c_of_type_JavaLangString = paramAIOImageData.jdField_c_of_type_JavaLangString;
-    localAIOPictureData.jdField_d_of_type_JavaLangString = paramAIOImageData.jdField_d_of_type_JavaLangString;
-    localAIOPictureData.jdField_e_of_type_JavaLangString = paramAIOImageData.jdField_e_of_type_JavaLangString;
-    localAIOPictureData.jdField_e_of_type_Long = paramAIOImageData.jdField_c_of_type_Long;
-    localAIOPictureData.jdField_f_of_type_Long = paramAIOImageData.jdField_d_of_type_Long;
-    localAIOPictureData.jdField_g_of_type_Boolean = paramAIOImageData.jdField_d_of_type_Boolean;
-    localAIOPictureData.jdField_c_of_type_Int = paramAIOImageData.jdField_b_of_type_Int;
-    localAIOPictureData.jdField_h_of_type_Boolean = paramAIOImageData.jdField_g_of_type_Boolean;
-    localAIOPictureData.jdField_g_of_type_JavaLangString = paramAIOImageData.jdField_h_of_type_JavaLangString;
-    localAIOPictureData.jdField_f_of_type_JavaLangString = paramAIOImageData.jdField_f_of_type_JavaLangString;
-    localAIOPictureData.jdField_h_of_type_JavaLangString = paramAIOImageData.jdField_j_of_type_JavaLangString;
-    localAIOPictureData.jdField_i_of_type_JavaLangString = paramAIOImageData.jdField_k_of_type_JavaLangString;
-    localAIOPictureData.jdField_i_of_type_Boolean = paramAIOImageData.jdField_h_of_type_Boolean;
-    localAIOPictureData.jdField_d_of_type_Int = paramAIOImageData.jdField_e_of_type_Int;
-    localAIOPictureData.jdField_j_of_type_Boolean = paramAIOImageData.jdField_i_of_type_Boolean;
-    localAIOPictureData.jdField_j_of_type_JavaLangString = paramAIOImageData.jdField_l_of_type_JavaLangString;
-    localAIOPictureData.jdField_k_of_type_Boolean = paramAIOImageData.jdField_j_of_type_Boolean;
-    localAIOPictureData.jdField_k_of_type_JavaLangString = paramAIOImageData.jdField_m_of_type_JavaLangString;
-    localAIOPictureData.jdField_l_of_type_JavaLangString = paramAIOImageData.n;
-    localAIOPictureData.jdField_m_of_type_JavaLangString = paramAIOImageData.o;
-    localAIOPictureData.n = paramAIOImageData.p;
+    localAIOPictureData.a = paramAIOImageData.L;
+    localAIOPictureData.b = paramAIOImageData.M;
+    localAIOPictureData.c = paramAIOImageData.N;
+    localAIOPictureData.d = paramAIOImageData.O;
+    localAIOPictureData.e = paramAIOImageData.P;
+    localAIOPictureData.f = paramAIOImageData.Q;
+    localAIOPictureData.g = paramAIOImageData.R;
+    localAIOPictureData.h = paramAIOImageData.S;
+    localAIOPictureData.i = paramAIOImageData.T;
+    localAIOPictureData.j = paramAIOImageData.a;
+    localAIOPictureData.k = paramAIOImageData.b;
+    localAIOPictureData.l = paramAIOImageData.c;
+    localAIOPictureData.m = paramAIOImageData.d;
+    localAIOPictureData.r = paramAIOImageData.n;
+    localAIOPictureData.s = paramAIOImageData.o;
+    localAIOPictureData.t = paramAIOImageData.p;
+    localAIOPictureData.q = paramAIOImageData.h;
+    localAIOPictureData.v = paramAIOImageData.r;
+    localAIOPictureData.w = paramAIOImageData.t;
+    localAIOPictureData.x = paramAIOImageData.w;
+    localAIOPictureData.u = paramAIOImageData.q;
+    localAIOPictureData.y = paramAIOImageData.A;
+    localAIOPictureData.z = paramAIOImageData.B;
+    localAIOPictureData.A = paramAIOImageData.C;
+    localAIOPictureData.B = paramAIOImageData.D;
+    localAIOPictureData.C = paramAIOImageData.E;
+    localAIOPictureData.D = paramAIOImageData.F;
+    localAIOPictureData.E = paramAIOImageData.G;
+    localAIOPictureData.F = paramAIOImageData.H;
+    localAIOPictureData.G = paramAIOImageData.I;
+    localAIOPictureData.H = paramAIOImageData.J;
+    localAIOPictureData.I = paramAIOImageData.K;
     return localAIOPictureData;
   }
   
   public static AIOVideoData a(AIOShortVideoData paramAIOShortVideoData)
   {
     AIOVideoData localAIOVideoData = new AIOVideoData();
-    localAIOVideoData.jdField_a_of_type_Long = paramAIOShortVideoData.jdField_f_of_type_Long;
-    localAIOVideoData.jdField_a_of_type_Int = paramAIOShortVideoData.jdField_f_of_type_Int;
-    localAIOVideoData.jdField_b_of_type_Long = paramAIOShortVideoData.jdField_g_of_type_Long;
-    localAIOVideoData.jdField_c_of_type_Long = paramAIOShortVideoData.jdField_h_of_type_Long;
-    localAIOVideoData.jdField_d_of_type_Long = paramAIOShortVideoData.jdField_i_of_type_Long;
-    localAIOVideoData.jdField_b_of_type_Int = paramAIOShortVideoData.jdField_g_of_type_Int;
-    localAIOVideoData.jdField_a_of_type_Boolean = paramAIOShortVideoData.jdField_k_of_type_Boolean;
-    localAIOVideoData.jdField_b_of_type_Boolean = paramAIOShortVideoData.jdField_l_of_type_Boolean;
-    localAIOVideoData.jdField_c_of_type_Boolean = paramAIOShortVideoData.jdField_m_of_type_Boolean;
-    localAIOVideoData.jdField_a_of_type_JavaLangString = paramAIOShortVideoData.jdField_a_of_type_JavaLangString;
-    localAIOVideoData.jdField_b_of_type_JavaLangString = paramAIOShortVideoData.jdField_b_of_type_JavaLangString;
-    localAIOVideoData.jdField_c_of_type_Int = paramAIOShortVideoData.jdField_a_of_type_Int;
-    localAIOVideoData.jdField_d_of_type_Int = paramAIOShortVideoData.jdField_b_of_type_Int;
-    localAIOVideoData.jdField_e_of_type_Int = paramAIOShortVideoData.jdField_c_of_type_Int;
-    localAIOVideoData.jdField_f_of_type_Int = paramAIOShortVideoData.jdField_d_of_type_Int;
-    localAIOVideoData.jdField_e_of_type_Long = paramAIOShortVideoData.jdField_a_of_type_Long;
-    localAIOVideoData.jdField_c_of_type_JavaLangString = paramAIOShortVideoData.jdField_d_of_type_JavaLangString;
-    localAIOVideoData.jdField_g_of_type_Int = paramAIOShortVideoData.j;
-    localAIOVideoData.jdField_e_of_type_JavaLangString = paramAIOShortVideoData.jdField_f_of_type_JavaLangString;
-    localAIOVideoData.jdField_f_of_type_JavaLangString = paramAIOShortVideoData.jdField_g_of_type_JavaLangString;
+    localAIOVideoData.a = paramAIOShortVideoData.L;
+    localAIOVideoData.b = paramAIOShortVideoData.M;
+    localAIOVideoData.c = paramAIOShortVideoData.N;
+    localAIOVideoData.d = paramAIOShortVideoData.O;
+    localAIOVideoData.e = paramAIOShortVideoData.P;
+    localAIOVideoData.f = paramAIOShortVideoData.Q;
+    localAIOVideoData.g = paramAIOShortVideoData.R;
+    localAIOVideoData.h = paramAIOShortVideoData.S;
+    localAIOVideoData.i = paramAIOShortVideoData.T;
+    localAIOVideoData.j = paramAIOShortVideoData.a;
+    localAIOVideoData.k = paramAIOShortVideoData.b;
+    localAIOVideoData.l = paramAIOShortVideoData.c;
+    localAIOVideoData.m = paramAIOShortVideoData.d;
+    localAIOVideoData.p = paramAIOShortVideoData.g;
+    localAIOVideoData.q = paramAIOShortVideoData.h;
+    localAIOVideoData.r = paramAIOShortVideoData.i;
+    localAIOVideoData.s = paramAIOShortVideoData.l;
+    localAIOVideoData.t = paramAIOShortVideoData.p;
+    localAIOVideoData.z = paramAIOShortVideoData.r;
+    localAIOVideoData.A = paramAIOShortVideoData.s;
     return localAIOVideoData;
   }
   
@@ -301,7 +301,7 @@ public class DataUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.utils.DataUtils
  * JD-Core Version:    0.7.0.1
  */

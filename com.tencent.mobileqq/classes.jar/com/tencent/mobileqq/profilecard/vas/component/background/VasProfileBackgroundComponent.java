@@ -59,8 +59,8 @@ public class VasProfileBackgroundComponent
     Object localObject = this.mCurBgDrawable;
     if ((localObject != null) && ((localObject instanceof FriendProfileCardBgDrawable)))
     {
-      paramFriendProfileCardBgDrawable = paramFriendProfileCardBgDrawable.a();
-      localObject = ((FriendProfileCardBgDrawable)this.mCurBgDrawable).a();
+      paramFriendProfileCardBgDrawable = paramFriendProfileCardBgDrawable.d();
+      localObject = ((FriendProfileCardBgDrawable)this.mCurBgDrawable).d();
       if ((localObject != null) && (localObject == paramFriendProfileCardBgDrawable))
       {
         if (QLog.isColorLevel()) {
@@ -85,7 +85,7 @@ public class VasProfileBackgroundComponent
         if ((paramVasCardData.getLCurrentBgId() != 160L) && (paramVasCardData.getLCurrentBgId() != 1600L)) {
           localObject1 = ProfileCardManager.a(this.mActivity, paramVasCardData.getLCurrentStyleId(), paramVasCardData.getLCurrentBgId());
         } else {
-          localObject1 = ProfileCardUtil.a(paramVasCardData.getBackgroundUrl());
+          localObject1 = ProfileCardUtil.c(paramVasCardData.getBackgroundUrl());
         }
         if (TextUtils.isEmpty(paramVasCardData.getStrZipUrl()))
         {
@@ -244,7 +244,7 @@ public class VasProfileBackgroundComponent
         }
       }
       else if ((paramVasProfileData instanceof FriendProfileCardBgDrawable)) {
-        if (((FriendProfileCardBgDrawable)paramVasProfileData).d) {
+        if (((FriendProfileCardBgDrawable)paramVasProfileData).m) {
           setAbFactor("card-dynamic");
         } else {
           setAbFactor("card-static");
@@ -261,7 +261,7 @@ public class VasProfileBackgroundComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileBackgroundComponent
  * JD-Core Version:    0.7.0.1
  */

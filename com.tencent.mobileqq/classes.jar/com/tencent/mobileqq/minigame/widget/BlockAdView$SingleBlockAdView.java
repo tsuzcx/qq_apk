@@ -43,10 +43,10 @@ class BlockAdView$SingleBlockAdView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131559401, this, true);
-    this.mIconView = ((ImageView)findViewById(2131371250));
-    this.mNameView = ((TextView)findViewById(2131371251));
-    this.mAdIconView = ((ImageView)findViewById(2131371249));
+    this.mLayoutInflater.inflate(2131625367, this, true);
+    this.mIconView = ((ImageView)findViewById(2131438594));
+    this.mNameView = ((TextView)findViewById(2131438595));
+    this.mAdIconView = ((ImageView)findViewById(2131438593));
   }
   
   public void setData(MiniAppInfo paramMiniAppInfo, GdtAd paramGdtAd, int paramInt)
@@ -88,7 +88,7 @@ class BlockAdView$SingleBlockAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.widget.BlockAdView.SingleBlockAdView
  * JD-Core Version:    0.7.0.1
  */

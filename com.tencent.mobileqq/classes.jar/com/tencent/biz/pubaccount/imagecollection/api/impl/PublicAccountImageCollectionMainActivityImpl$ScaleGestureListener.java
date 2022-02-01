@@ -58,7 +58,7 @@ class PublicAccountImageCollectionMainActivityImpl$ScaleGestureListener
       return true;
     }
     paramScaleGestureDetector = this.a;
-    paramScaleGestureDetector.centerView = PublicAccountImageCollectionMainActivityImpl.access$2500(paramScaleGestureDetector).a();
+    paramScaleGestureDetector.centerView = PublicAccountImageCollectionMainActivityImpl.access$2500(paramScaleGestureDetector).getCenterView();
     if ((this.a.centerView != null) && ((this.a.centerView.getTag() instanceof PublicAccountImageCollectionAdapter.ImageItemHolder)))
     {
       Object localObject = (ZImageView)this.a.centerView.getChildAt(0);
@@ -78,10 +78,10 @@ class PublicAccountImageCollectionMainActivityImpl$ScaleGestureListener
         PublicAccountImageCollectionMainActivityImpl.access$200(this.a).setImageMatrix(this.a.matrix);
         this.a.viewGroup.addView(PublicAccountImageCollectionMainActivityImpl.access$200(this.a), paramScaleGestureDetector);
         PublicAccountImageCollectionMainActivityImpl.access$102(this.a, true);
-        i = ((PublicAccountImageCollectionAdapter.ImageItemHolder)this.a.centerView.getTag()).a;
-        if (PublicAccountImageCollectionMainActivityImpl.access$700(this.a).a != null)
+        i = ((PublicAccountImageCollectionAdapter.ImageItemHolder)this.a.centerView.getTag()).f;
+        if (PublicAccountImageCollectionMainActivityImpl.access$700(this.a).d != null)
         {
-          paramScaleGestureDetector = ((IPublicAccountImageCollectionUtils.PhotoItemInfo)PublicAccountImageCollectionMainActivityImpl.access$700(this.a).a.get(i - 1)).a;
+          paramScaleGestureDetector = ((IPublicAccountImageCollectionUtils.PhotoItemInfo)PublicAccountImageCollectionMainActivityImpl.access$700(this.a).d.get(i - 1)).a;
           ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, this.a.puin, "0X8007B91", "0X8007B91", 0, 0, this.a.articleID, this.a.webUrl, paramScaleGestureDetector, "1", false);
         }
       }
@@ -99,7 +99,7 @@ class PublicAccountImageCollectionMainActivityImpl$ScaleGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.ScaleGestureListener
  * JD-Core Version:    0.7.0.1
  */

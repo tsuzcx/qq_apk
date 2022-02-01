@@ -13,10 +13,10 @@ class ArkAppQQModule$11
   
   public void run()
   {
-    Activity localActivity = ArkAppQQModuleBase.a();
+    Activity localActivity = ArkAppQQModuleBase.f();
     if (localActivity != null)
     {
-      Intent localIntent = ArkFullScreenAppActivity.a(localActivity, this.a, ArkAppQQModule.l(this.this$0), this.b, this.c, ArkAppCenterUtil.a());
+      Intent localIntent = ArkFullScreenAppActivity.a(localActivity, this.a, ArkAppQQModule.m(this.this$0), this.b, this.c, ArkAppCenterUtil.d());
       if (localIntent != null) {
         ForwardBaseOption.a(localActivity, localIntent);
       }
@@ -25,7 +25,7 @@ class ArkAppQQModule$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.11
  * JD-Core Version:    0.7.0.1
  */

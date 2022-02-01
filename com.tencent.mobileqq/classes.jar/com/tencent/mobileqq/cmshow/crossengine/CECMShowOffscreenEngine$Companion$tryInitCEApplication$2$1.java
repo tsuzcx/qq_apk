@@ -24,12 +24,12 @@ final class CECMShowOffscreenEngine$Companion$tryInitCEApplication$2$1
       return;
     }
     CECMShowOffscreenEngine.Companion.a(CECMShowOffscreenEngine.a);
-    this.this$0.a.invoke(Boolean.valueOf(true), CECMShowOffscreenEngine.a());
+    this.this$0.a.invoke(Boolean.valueOf(true), CECMShowOffscreenEngine.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CECMShowOffscreenEngine.Companion.tryInitCEApplication.2.1
  * JD-Core Version:    0.7.0.1
  */

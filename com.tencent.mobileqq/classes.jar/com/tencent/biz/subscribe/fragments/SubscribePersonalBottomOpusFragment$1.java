@@ -23,14 +23,14 @@ class SubscribePersonalBottomOpusFragment$1
     {
       if (paramStFeed.id.get().startsWith("fakeid_"))
       {
-        QQToast.a(this.a.getBaseActivity(), HardCodeUtil.a(2131714443), 0).a();
+        QQToast.makeText(this.a.getBaseActivity(), HardCodeUtil.a(2131911953), 0).show();
         return;
       }
       if ((paramView instanceof RelativeFeedItemView))
       {
         paramView = (RelativeFeedItemView)paramView;
-        if (paramView.a != null) {
-          SubscribeLaucher.a(this.a.getBaseActivity(), paramStFeed, 0, TransitionAnimHelper.a(paramView.a, paramStFeed.cover.width.get(), paramStFeed.cover.height.get()));
+        if (paramView.c != null) {
+          SubscribeLaucher.a(this.a.getBaseActivity(), paramStFeed, 0, TransitionAnimHelper.a(paramView.c, paramStFeed.cover.width.get(), paramStFeed.cover.height.get()));
         }
       }
     }

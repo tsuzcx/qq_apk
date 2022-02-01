@@ -7,7 +7,7 @@ class BaseVideoView$2
   
   public void run()
   {
-    this.this$0.d();
+    this.this$0.c();
   }
 }
 

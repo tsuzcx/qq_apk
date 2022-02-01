@@ -17,11 +17,11 @@ class SpecailCareListActivity$5
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton == SpecailCareListActivity.a(this.a).a())
+    if (paramCompoundButton == SpecailCareListActivity.b(this.a).getSwitch())
     {
       Object localObject = this.a;
-      SettingCloneUtil.writeValue((Context)localObject, SpecailCareListActivity.a((SpecailCareListActivity)localObject), this.a.getString(2131716892), "qqsetting_special_care_bar", paramBoolean);
-      SpecailCareListActivity.a(this.a).c(paramBoolean);
+      SettingCloneUtil.writeValue((Context)localObject, SpecailCareListActivity.c((SpecailCareListActivity)localObject), this.a.getString(2131914365), "qqsetting_special_care_bar", paramBoolean);
+      SpecailCareListActivity.d(this.a).c(paramBoolean);
       NotifyIdManager.a(paramBoolean);
       if (QLog.isColorLevel())
       {
@@ -36,7 +36,7 @@ class SpecailCareListActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.5
  * JD-Core Version:    0.7.0.1
  */

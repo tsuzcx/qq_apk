@@ -14,12 +14,12 @@ final class ShortVideoResourceManager$10
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(this.a);
-    QQToast.a(localContext, localStringBuilder.toString(), 1).a();
+    QQToast.makeText(localContext, localStringBuilder.toString(), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.10
  * JD-Core Version:    0.7.0.1
  */

@@ -20,16 +20,16 @@ import java.util.List;
 public class FeedLikeDataProvider$GetLikeListResponse
   extends LegoResponseBase
 {
-  qqstory_service.RspFeedLikeList jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList;
-  boolean jdField_a_of_type_Boolean;
+  qqstory_service.RspFeedLikeList a;
+  boolean b;
   
   public FeedLikeDataProvider$GetLikeListResponse(FeedLikeDataProvider paramFeedLikeDataProvider) {}
   
   public FeedLikeDataProvider$GetLikeListResponse(FeedLikeDataProvider paramFeedLikeDataProvider, qqstory_service.RspFeedLikeList paramRspFeedLikeList, boolean paramBoolean)
   {
     super(paramRspFeedLikeList.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList = paramRspFeedLikeList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramRspFeedLikeList;
+    this.b = paramBoolean;
   }
   
   public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
@@ -56,17 +56,17 @@ public class FeedLikeDataProvider$GetLikeListResponse
   
   public void a()
   {
-    qqstory_struct.FeedLikeInfo localFeedLikeInfo = (qqstory_struct.FeedLikeInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspFeedLikeList.feed_like_info.get();
+    qqstory_struct.FeedLikeInfo localFeedLikeInfo = (qqstory_struct.FeedLikeInfo)this.a.feed_like_info.get();
     List localList = a(localFeedLikeInfo);
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeDataProvider.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = localFeedLikeInfo.like_total_count.get();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeDataProvider.a.jdField_a_of_type_JavaUtilList = localList;
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeDataProvider.a.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager.a(localList, this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeDataProvider.c, this.jdField_a_of_type_Boolean, true);
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeDataProvider.a.a(localList);
+    this.c.c.b.mLikeCount = localFeedLikeInfo.like_total_count.get();
+    this.c.c.e = localList;
+    this.c.c.f.a(localList, this.c.d, this.b, true);
+    this.c.c.a(localList);
   }
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeDataProvider.a.c();
+    this.c.c.e();
     if (QLog.isColorLevel()) {
       QLog.e("Q.qqstory:FeedLikeDataProvider", 2, new Object[] { "GetLikeListResponse NetWork ErrorCode:", Integer.valueOf(paramInt) });
     }
@@ -74,7 +74,7 @@ public class FeedLikeDataProvider$GetLikeListResponse
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeDataProvider.a.c();
+    this.c.c.e();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -88,7 +88,7 @@ public class FeedLikeDataProvider$GetLikeListResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeDataProvider.GetLikeListResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public class TroopEffectPicMsg
 {
   public TroopEffectPicMsg(Context paramContext)
   {
-    this.a = "";
+    this.c = "";
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -21,7 +21,7 @@ public class TroopEffectPicMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopEffectPicMsg
  * JD-Core Version:    0.7.0.1
  */

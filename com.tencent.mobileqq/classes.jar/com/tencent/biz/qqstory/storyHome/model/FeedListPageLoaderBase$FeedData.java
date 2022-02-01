@@ -8,7 +8,7 @@ import java.util.List;
 public class FeedListPageLoaderBase$FeedData
   extends BasePageLoaderEvent
 {
-  public List<String> a = new ArrayList();
+  public List<String> e = new ArrayList();
   
   public FeedListPageLoaderBase$FeedData(ErrorMessage paramErrorMessage)
   {

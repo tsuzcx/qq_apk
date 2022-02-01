@@ -13,14 +13,14 @@ class VasADImmersionBannerManager$1
   {
     if (paramView.getHeight() > 0)
     {
-      this.a.a.removeOnLayoutChangeListener(this);
-      SetSplash.a(this.a.a);
+      this.a.b.removeOnLayoutChangeListener(this);
+      SetSplash.a(this.a.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADImmersionBannerManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ final class CommentProteusUtil$2
   {
     if (paramInt == 1)
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter;
+      paramDialogInterface = this.a;
       if (paramDialogInterface != null)
       {
-        paramDialogInterface = paramDialogInterface.a();
+        paramDialogInterface = paramDialogInterface.f();
         if (paramDialogInterface != null)
         {
-          paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.notifyDataSetChanged();
+          paramDialogInterface.a(this.b);
+          this.a.notifyDataSetChanged();
         }
       }
       RIJSPUtils.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
@@ -31,7 +31,7 @@ final class CommentProteusUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusUtil.2
  * JD-Core Version:    0.7.0.1
  */

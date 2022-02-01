@@ -120,7 +120,7 @@ public class TroopSysMsgDependApiServiceImpl
   {
     AppRuntime localAppRuntime = this.app;
     if ((localAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)localAppRuntime).getMsgCache().e(paramString);
+      return ((QQAppInterface)localAppRuntime).getMsgCache().y(paramString);
     }
     return 0L;
   }
@@ -156,7 +156,7 @@ public class TroopSysMsgDependApiServiceImpl
   
   public void openProfileCardForTroopSysMsg(Context paramContext, String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString)) {
+    if (((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString)) {
       paramString = new AllInOne(paramString, 1);
     }
     for (;;)
@@ -241,7 +241,7 @@ public class TroopSysMsgDependApiServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopSysMsgDependApiServiceImpl
  * JD-Core Version:    0.7.0.1
  */

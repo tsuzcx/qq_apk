@@ -11,10 +11,10 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdGameComponentInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdGiftInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
 import com.tencent.mobileqq.kandian.ad.api.IRIJFastWebAdService;
+import com.tencent.mobileqq.kandian.base.image.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
@@ -24,11 +24,11 @@ public class ReadInJoyBottomAdVideoUtil
 {
   public static int a(@NonNull AdData paramAdData, AdvertisementInfo paramAdvertisementInfo)
   {
-    if (paramAdData.jdField_u_of_type_Int != 10) {
+    if (paramAdData.aP != 10) {
       return 0;
     }
-    if (!TextUtils.isEmpty(paramAdData.l)) {
-      paramAdvertisementInfo.mSinglePicture = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramAdData.l, 4);
+    if (!TextUtils.isEmpty(paramAdData.n)) {
+      paramAdvertisementInfo.mSinglePicture = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramAdData.n, 4);
     }
     return 2;
   }
@@ -43,27 +43,27 @@ public class ReadInJoyBottomAdVideoUtil
     if (paramAdData == null) {
       return null;
     }
-    if (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
-      return paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+    if (paramAdData.j != null) {
+      return paramAdData.j;
     }
     localObject1 = new AdvertisementInfo();
-    b(paramAdData, (AdvertisementInfo)localObject1);
+    c(paramAdData, (AdvertisementInfo)localObject1);
     b((AdvertisementInfo)localObject1, paramAdData);
     c((AdvertisementInfo)localObject1, paramAdData);
     d((AdvertisementInfo)localObject1, paramAdData);
     e((AdvertisementInfo)localObject1, paramAdData);
     ((AdvertisementInfo)localObject1).mAdvertisementExtInfo = new AdvertisementExtInfo(((AdvertisementInfo)localObject1).mAdExtInfo);
-    if (paramAdData.jdField_b_of_type_OrgJsonJSONObject != null)
+    if (paramAdData.aE != null)
     {
-      a(paramAdData, (AdvertisementInfo)localObject1);
+      b(paramAdData, (AdvertisementInfo)localObject1);
       a((AdvertisementInfo)localObject1, paramAdData);
     }
-    ((AdvertisementInfo)localObject1).liujinReportUrl = paramAdData.W;
-    ((AdvertisementInfo)localObject1).ticket = paramAdData.X;
-    ((AdvertisementInfo)localObject1).amsNfbUrl = paramAdData.Y;
-    ((AdvertisementInfo)localObject1).packageName = paramAdData.a();
-    ((AdvertisementInfo)localObject1).mAdMaterialId = paramAdData.a();
-    ((AdvertisementInfo)localObject1).originalExposureUrl = paramAdData.ac;
+    ((AdvertisementInfo)localObject1).liujinReportUrl = paramAdData.aI;
+    ((AdvertisementInfo)localObject1).ticket = paramAdData.aJ;
+    ((AdvertisementInfo)localObject1).amsNfbUrl = paramAdData.aK;
+    ((AdvertisementInfo)localObject1).packageName = paramAdData.k();
+    ((AdvertisementInfo)localObject1).mAdMaterialId = paramAdData.l();
+    ((AdvertisementInfo)localObject1).originalExposureUrl = paramAdData.aO;
     localObject2 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("end : ");
@@ -72,14 +72,14 @@ public class ReadInJoyBottomAdVideoUtil
     if (((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).isBottomAd(paramAdData)) {
       ((AdvertisementInfo)localObject1).isBottomAd = true;
     }
-    paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)localObject1);
+    paramAdData.j = ((AdvertisementInfo)localObject1);
     return localObject1;
   }
   
   private static void a(AdvertisementInfo paramAdvertisementInfo, AdData paramAdData)
   {
-    if ((paramAdvertisementInfo != null) && (paramAdData != null) && (paramAdData.jdField_b_of_type_OrgJsonJSONObject != null) && (paramAdvertisementInfo.mBusiJson != null)) {
-      if (paramAdData.jdField_a_of_type_OrgJsonJSONObject == null) {
+    if ((paramAdvertisementInfo != null) && (paramAdData != null) && (paramAdData.aE != null) && (paramAdvertisementInfo.mBusiJson != null)) {
+      if (paramAdData.aC == null) {
         return;
       }
     }
@@ -87,19 +87,19 @@ public class ReadInJoyBottomAdVideoUtil
     {
       try
       {
-        localObject = paramAdData.jdField_b_of_type_OrgJsonJSONObject;
+        localObject = paramAdData.aE;
         boolean bool = false;
         if (((JSONObject)localObject).optInt("sourceId", 0) == 8) {
           bool = true;
         }
         paramAdvertisementInfo.isKolGame = bool;
-        JSONObject localJSONObject = paramAdData.jdField_a_of_type_OrgJsonJSONObject;
+        JSONObject localJSONObject = paramAdData.aC;
         if (!paramAdvertisementInfo.isKolGame) {
           break label123;
         }
         localObject = "2";
         localJSONObject.put("obj_type", localObject);
-        paramAdvertisementInfo.mBusiJson.put("article_ad_ext", paramAdData.jdField_a_of_type_OrgJsonJSONObject.toString());
+        paramAdvertisementInfo.mBusiJson.put("article_ad_ext", paramAdData.aC.toString());
         return;
       }
       catch (Exception paramAdvertisementInfo)
@@ -116,33 +116,33 @@ public class ReadInJoyBottomAdVideoUtil
   {
     if ((paramAdGameComponentInfo != null) && (paramGameAdComData != null))
     {
-      paramGameAdComData.b = String.valueOf(paramAdGameComponentInfo.jdField_a_of_type_Int);
-      paramGameAdComData.s = paramAdGameComponentInfo.x;
-      paramGameAdComData.d = paramAdGameComponentInfo.b;
-      paramGameAdComData.c = paramAdGameComponentInfo.jdField_a_of_type_JavaLangString;
+      paramGameAdComData.b = String.valueOf(paramAdGameComponentInfo.a);
+      paramGameAdComData.t = paramAdGameComponentInfo.y;
       paramGameAdComData.e = paramAdGameComponentInfo.c;
+      paramGameAdComData.d = paramAdGameComponentInfo.b;
       paramGameAdComData.f = paramAdGameComponentInfo.d;
       paramGameAdComData.g = paramAdGameComponentInfo.e;
-      paramGameAdComData.j = paramAdGameComponentInfo.k;
-      paramGameAdComData.k = paramAdGameComponentInfo.f;
-      paramGameAdComData.l = paramAdGameComponentInfo.r;
-      paramGameAdComData.jdField_m_of_type_JavaLangString = paramAdGameComponentInfo.jdField_q_of_type_JavaLangString;
-      paramGameAdComData.n = paramAdGameComponentInfo.h;
-      paramGameAdComData.o = paramAdGameComponentInfo.jdField_i_of_type_JavaLangString;
-      paramGameAdComData.p = paramAdGameComponentInfo.jdField_m_of_type_JavaLangString;
-      paramGameAdComData.jdField_q_of_type_JavaLangString = paramAdGameComponentInfo.n;
-      paramGameAdComData.r = paramAdGameComponentInfo.g;
-      paramGameAdComData.jdField_v_of_type_JavaLangString = paramAdGameComponentInfo.l;
-      paramGameAdComData.y = paramAdGameComponentInfo.s;
-      paramGameAdComData.x = paramAdGameComponentInfo.t;
-      paramGameAdComData.z = paramAdGameComponentInfo.jdField_u_of_type_JavaLangString;
-      paramGameAdComData.A = paramAdGameComponentInfo.jdField_v_of_type_JavaLangString;
-      paramGameAdComData.w = paramAdGameComponentInfo.w;
-      paramGameAdComData.B = paramAdGameComponentInfo.y;
+      paramGameAdComData.h = paramAdGameComponentInfo.f;
+      paramGameAdComData.k = paramAdGameComponentInfo.l;
+      paramGameAdComData.l = paramAdGameComponentInfo.g;
+      paramGameAdComData.m = paramAdGameComponentInfo.s;
+      paramGameAdComData.n = paramAdGameComponentInfo.r;
+      paramGameAdComData.o = paramAdGameComponentInfo.i;
+      paramGameAdComData.p = paramAdGameComponentInfo.j;
+      paramGameAdComData.q = paramAdGameComponentInfo.n;
+      paramGameAdComData.r = paramAdGameComponentInfo.o;
+      paramGameAdComData.s = paramAdGameComponentInfo.h;
+      paramGameAdComData.w = paramAdGameComponentInfo.m;
+      paramGameAdComData.z = paramAdGameComponentInfo.t;
+      paramGameAdComData.y = paramAdGameComponentInfo.u;
+      paramGameAdComData.A = paramAdGameComponentInfo.v;
+      paramGameAdComData.B = paramAdGameComponentInfo.w;
+      paramGameAdComData.x = paramAdGameComponentInfo.x;
+      paramGameAdComData.C = paramAdGameComponentInfo.z;
       String str;
-      if (paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo != null)
+      if (paramAdGameComponentInfo.B != null)
       {
-        str = paramGameAdComData.jdField_u_of_type_JavaLangString;
+        str = paramGameAdComData.v;
         Object localObject1 = str;
         if (str == null) {
           localObject1 = "";
@@ -150,16 +150,16 @@ public class ReadInJoyBottomAdVideoUtil
         try
         {
           localObject1 = new JSONObject((String)localObject1);
-          ((JSONObject)localObject1).put("sActivityId", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.b);
-          ((JSONObject)localObject1).put("sGiftName", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.jdField_a_of_type_JavaLangString);
-          ((JSONObject)localObject1).put("sNeedRole", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.h);
-          ((JSONObject)localObject1).put("iGiftId", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.jdField_a_of_type_Int);
-          ((JSONObject)localObject1).put("gift_icon", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.c);
-          ((JSONObject)localObject1).put("gift_desc", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.g);
-          ((JSONObject)localObject1).put("bag_item_icon_1", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.d);
-          ((JSONObject)localObject1).put("bag_item_icon_2", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.e);
-          ((JSONObject)localObject1).put("bag_item_icon_3", paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo.f);
-          paramGameAdComData.jdField_u_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+          ((JSONObject)localObject1).put("sActivityId", paramAdGameComponentInfo.B.c);
+          ((JSONObject)localObject1).put("sGiftName", paramAdGameComponentInfo.B.b);
+          ((JSONObject)localObject1).put("sNeedRole", paramAdGameComponentInfo.B.i);
+          ((JSONObject)localObject1).put("iGiftId", paramAdGameComponentInfo.B.a);
+          ((JSONObject)localObject1).put("gift_icon", paramAdGameComponentInfo.B.d);
+          ((JSONObject)localObject1).put("gift_desc", paramAdGameComponentInfo.B.h);
+          ((JSONObject)localObject1).put("bag_item_icon_1", paramAdGameComponentInfo.B.e);
+          ((JSONObject)localObject1).put("bag_item_icon_2", paramAdGameComponentInfo.B.f);
+          ((JSONObject)localObject1).put("bag_item_icon_3", paramAdGameComponentInfo.B.g);
+          paramGameAdComData.v = ((JSONObject)localObject1).toString();
         }
         catch (Exception localException)
         {
@@ -168,35 +168,20 @@ public class ReadInJoyBottomAdVideoUtil
       }
       try
       {
-        str = paramGameAdComData.t;
+        str = paramGameAdComData.u;
         Object localObject2 = str;
         if (str == null) {
           localObject2 = "";
         }
         localObject2 = new JSONObject((String)localObject2);
-        ((JSONObject)localObject2).put("sGameDownloadUrl", paramAdGameComponentInfo.p);
-        ((JSONObject)localObject2).put("lGameSize", paramAdGameComponentInfo.jdField_q_of_type_JavaLangString);
-        paramGameAdComData.t = ((JSONObject)localObject2).toString();
+        ((JSONObject)localObject2).put("sGameDownloadUrl", paramAdGameComponentInfo.q);
+        ((JSONObject)localObject2).put("lGameSize", paramAdGameComponentInfo.r);
+        paramGameAdComData.u = ((JSONObject)localObject2).toString();
         return;
       }
       catch (Exception paramGameAdComData)
       {
         ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("parse download info", paramGameAdComData.getMessage());
-      }
-    }
-  }
-  
-  private static void a(AdData paramAdData, AdvertisementInfo paramAdvertisementInfo)
-  {
-    paramAdvertisementInfo.processSoftDataInfo(paramAdData.jdField_b_of_type_OrgJsonJSONObject);
-    if ((paramAdvertisementInfo.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.jdField_a_of_type_JavaLangString)))
-    {
-      paramAdvertisementInfo.mSoftAdType = 2;
-      if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.M)) {
-        paramAdvertisementInfo.mAdBtnTxt = paramAdvertisementInfo.mAdvertisementSoftInfo.M;
-      }
-      if (paramAdvertisementInfo.mAdvertisementSoftInfo.jdField_e_of_type_Int == 1) {
-        paramAdvertisementInfo.mAdProductType = 12;
       }
     }
   }
@@ -242,23 +227,23 @@ public class ReadInJoyBottomAdVideoUtil
   {
     try
     {
-      localObject2 = paramAdData.T;
+      localObject2 = paramAdData.aw;
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       localObject1 = new JSONObject((String)localObject1);
-      if (!TextUtils.isEmpty(paramAdData.E)) {
-        ((JSONObject)localObject1).put("pkgurl", paramAdData.E);
+      if (!TextUtils.isEmpty(paramAdData.Q)) {
+        ((JSONObject)localObject1).put("pkgurl", paramAdData.Q);
       }
-      if (!TextUtils.isEmpty(paramAdData.jdField_q_of_type_JavaLangString)) {
-        ((JSONObject)localObject1).put("appname", paramAdData.jdField_q_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(paramAdData.u)) {
+        ((JSONObject)localObject1).put("appname", paramAdData.u);
       }
-      if (!TextUtils.isEmpty(paramAdData.D)) {
-        ((JSONObject)localObject1).put("pkg_name", paramAdData.D);
+      if (!TextUtils.isEmpty(paramAdData.P)) {
+        ((JSONObject)localObject1).put("pkg_name", paramAdData.P);
       }
-      if (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo != null) {
-        ((JSONObject)localObject1).put("appid", paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.c);
+      if (paramAdData.an != null) {
+        ((JSONObject)localObject1).put("appid", paramAdData.an.c);
       }
       paramAdvertisementInfo.mAdExt = ((JSONObject)localObject1).toString();
     }
@@ -273,94 +258,37 @@ public class ReadInJoyBottomAdVideoUtil
         QLog.e("ReadInJoyBottomAdVideoUtil", 2, ((StringBuilder)localObject2).toString());
       }
     }
-    if ((paramAdData != null) && (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo != null)) {
-      paramAdvertisementInfo.mAdDownloadApiUrl = paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.jdField_a_of_type_JavaLangString;
+    if ((paramAdData != null) && (paramAdData.an != null)) {
+      paramAdvertisementInfo.mAdDownloadApiUrl = paramAdData.an.a;
     }
   }
   
   private static void b(AdData paramAdData, AdvertisementInfo paramAdvertisementInfo)
   {
-    paramAdvertisementInfo.mAdAdvertiseId = paramAdData.jdField_e_of_type_Int;
-    paramAdvertisementInfo.ecpm = paramAdData.jdField_a_of_type_Double;
-    paramAdvertisementInfo.isContract = paramAdData.jdField_f_of_type_Int;
-    paramAdvertisementInfo.mAdVideoUrl = paramAdData.w;
-    paramAdvertisementInfo.adPosType = paramAdData.jdField_v_of_type_Int;
-    paramAdvertisementInfo.mAdAid = paramAdData.jdField_b_of_type_Long;
-    paramAdvertisementInfo.mAdTraceId = paramAdData.jdField_u_of_type_JavaLangString;
-    paramAdvertisementInfo.mAdViewId = paramAdData.t;
-    paramAdvertisementInfo.mAdProductId = paramAdData.z;
-    paramAdvertisementInfo.mAdVia = paramAdData.A;
-    paramAdvertisementInfo.mAdNocoId = paramAdData.jdField_d_of_type_Long;
-    paramAdvertisementInfo.mAdApurl = paramAdData.o;
-    paramAdvertisementInfo.mAdRl = paramAdData.jdField_m_of_type_JavaLangString;
-    paramAdvertisementInfo.mAdEffectUrl = paramAdData.x;
-    paramAdvertisementInfo.mAdLandingPageReportUrl = paramAdData.y;
-    paramAdvertisementInfo.mAdLandingPage = paramAdData.B;
-    paramAdvertisementInfo.mAdCanvasJson = paramAdData.C;
-    paramAdvertisementInfo.mAdDestType = paramAdData.g;
-    paramAdvertisementInfo.mOrigin = 1;
-    paramAdvertisementInfo.mAdAppDownLoadSchema = paramAdData.F;
-    paramAdvertisementInfo.mAdCustomizedInvokeUrl = paramAdData.G;
-    paramAdvertisementInfo.mChannelID = 2L;
-    paramAdvertisementInfo.mAdProductType = paramAdData.jdField_d_of_type_Int;
-    paramAdvertisementInfo.mADVideoAutoPlay = paramAdData.h;
-    paramAdvertisementInfo.mAlgorithmID = paramAdData.jdField_e_of_type_Long;
-    paramAdvertisementInfo.mAlgorithmGroup = paramAdData.jdField_f_of_type_Long;
-    paramAdvertisementInfo.mC2SSwitch = paramAdData.jdField_i_of_type_Int;
-    paramAdvertisementInfo.mC2SClickUrl = paramAdData.c;
-    paramAdvertisementInfo.mC2SExposureUrl = paramAdData.jdField_d_of_type_JavaUtilArrayList;
-    paramAdvertisementInfo.miniProgramType = paramAdData.jdField_m_of_type_Int;
-    paramAdvertisementInfo.mPhoneComponetId = paramAdData.n;
-    if (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo != null) {
-      paramAdvertisementInfo.mAdBtnTxt = paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.l;
-    }
-    try
+    paramAdvertisementInfo.processSoftDataInfo(paramAdData.aE);
+    if ((paramAdvertisementInfo.mAdvertisementSoftInfo != null) && (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.e)))
     {
-      paramAdvertisementInfo.mArticleID = Long.parseLong(paramAdData.M);
-    }
-    catch (Exception localException)
-    {
-      IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("parse article_id error :");
-      localStringBuilder.append(localException.getMessage());
-      localIRIJAdLogService.d("ReadInJoyBottomAdVideoUtil", localStringBuilder.toString());
-    }
-    if (!TextUtils.isEmpty(paramAdData.j)) {
-      paramAdvertisementInfo.mTitle = paramAdData.j;
-    }
-    paramAdvertisementInfo.mAdLocalSource = a(paramAdData, paramAdvertisementInfo);
-    if (!TextUtils.isEmpty(paramAdData.I)) {
-      paramAdvertisementInfo.mAdCorporateImageName = paramAdData.I;
-    } else {
-      paramAdvertisementInfo.mAdCorporateImageName = paramAdData.jdField_q_of_type_JavaLangString;
-    }
-    paramAdvertisementInfo.mAdCorporateLogo = paramAdData.J;
-    paramAdvertisementInfo.mSubordinateProductId = paramAdData.H;
-    paramAdvertisementInfo.mPopFormH5Url = paramAdData.K;
-    paramAdvertisementInfo.mShowAdButton = paramAdData.jdField_e_of_type_Boolean;
-    paramAdvertisementInfo.mAdJumpMode = paramAdData.p;
-    try
-    {
-      if (!TextUtils.isEmpty(paramAdData.jdField_i_of_type_JavaLangString)) {
-        paramAdvertisementInfo.mAdPosID = Long.valueOf(paramAdData.jdField_i_of_type_JavaLangString).longValue();
+      paramAdvertisementInfo.mSoftAdType = 2;
+      if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.W)) {
+        paramAdvertisementInfo.mAdBtnTxt = paramAdvertisementInfo.mAdvertisementSoftInfo.W;
       }
-      return;
+      if (paramAdvertisementInfo.mAdvertisementSoftInfo.q == 1) {
+        paramAdvertisementInfo.mAdProductType = 12;
+      }
     }
-    catch (Exception paramAdData) {}
   }
   
   private static void c(AdvertisementInfo paramAdvertisementInfo, AdData paramAdData)
   {
-    if (!TextUtils.isEmpty(paramAdData.U))
+    if (!TextUtils.isEmpty(paramAdData.ay))
     {
-      paramAdvertisementInfo.mAdExtInfo = paramAdData.U;
+      paramAdvertisementInfo.mAdExtInfo = paramAdData.ay;
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramAdData.U);
-        localJSONObject.put("AdSource", paramAdData.jdField_q_of_type_Int);
-        localJSONObject.put("ad_switchs", paramAdData.jdField_v_of_type_JavaLangString);
-        localJSONObject.put("jump_type", paramAdData.Z);
+        JSONObject localJSONObject = new JSONObject(paramAdData.ay);
+        localJSONObject.put("AdSource", paramAdData.aB);
+        localJSONObject.put("ad_switchs", paramAdData.F);
+        localJSONObject.put("jump_type", paramAdData.aL);
         boolean bool = FastWeqAdUtils.e(paramAdData);
         if (bool) {
           localJSONObject.put("game_button_type", 2);
@@ -373,13 +301,13 @@ public class ReadInJoyBottomAdVideoUtil
         } else if (FastWeqAdUtils.g(paramAdData)) {
           localJSONObject.put("game_button_type", 6);
         }
-        if (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo != null)
+        if (paramAdData.as != null)
         {
-          localJSONObject.put("game_pkg_name", paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.b);
-          localJSONObject.put("game_adtag", paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.o);
-          localJSONObject.put("game_app_id", paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.e);
-          localJSONObject.put("game_app_name", paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.jdField_a_of_type_JavaLangString);
-          localJSONObject.put("game_apk_url", paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.p);
+          localJSONObject.put("game_pkg_name", paramAdData.as.c);
+          localJSONObject.put("game_adtag", paramAdData.as.p);
+          localJSONObject.put("game_app_id", paramAdData.as.f);
+          localJSONObject.put("game_app_name", paramAdData.as.b);
+          localJSONObject.put("game_apk_url", paramAdData.as.q);
         }
         paramAdvertisementInfo.mAdExtInfo = localJSONObject.toString();
         return;
@@ -397,6 +325,78 @@ public class ReadInJoyBottomAdVideoUtil
     }
   }
   
+  private static void c(AdData paramAdData, AdvertisementInfo paramAdvertisementInfo)
+  {
+    paramAdvertisementInfo.mAdAdvertiseId = paramAdData.y;
+    paramAdvertisementInfo.ecpm = paramAdData.z;
+    paramAdvertisementInfo.isContract = paramAdData.A;
+    paramAdvertisementInfo.mAdVideoUrl = paramAdData.G;
+    paramAdvertisementInfo.adPosType = paramAdData.aT;
+    paramAdvertisementInfo.mAdAid = paramAdData.J;
+    paramAdvertisementInfo.mAdTraceId = paramAdData.D;
+    paramAdvertisementInfo.mAdViewId = paramAdData.C;
+    paramAdvertisementInfo.mAdProductId = paramAdData.K;
+    paramAdvertisementInfo.mAdVia = paramAdData.L;
+    paramAdvertisementInfo.mAdNocoId = paramAdData.V;
+    paramAdvertisementInfo.mAdApurl = paramAdData.r;
+    paramAdvertisementInfo.mAdRl = paramAdData.p;
+    paramAdvertisementInfo.mAdEffectUrl = paramAdData.H;
+    paramAdvertisementInfo.mAdLandingPageReportUrl = paramAdData.I;
+    paramAdvertisementInfo.mAdLandingPage = paramAdData.M;
+    paramAdvertisementInfo.mAdCanvasJson = paramAdData.N;
+    paramAdvertisementInfo.mAdDestType = paramAdData.O;
+    paramAdvertisementInfo.mOrigin = 1;
+    paramAdvertisementInfo.mAdAppDownLoadSchema = paramAdData.S;
+    paramAdvertisementInfo.mAdCustomizedInvokeUrl = paramAdData.T;
+    paramAdvertisementInfo.mChannelID = 2L;
+    paramAdvertisementInfo.mAdProductType = paramAdData.s;
+    paramAdvertisementInfo.mADVideoAutoPlay = paramAdData.W;
+    paramAdvertisementInfo.mAlgorithmID = paramAdData.Y;
+    paramAdvertisementInfo.mAlgorithmGroup = paramAdData.Z;
+    paramAdvertisementInfo.mCToSSwitch = paramAdData.ae;
+    paramAdvertisementInfo.mCToSClickUrl = paramAdData.af;
+    paramAdvertisementInfo.mCToSExposureUrl = paramAdData.ag;
+    paramAdvertisementInfo.miniProgramType = paramAdData.ar;
+    paramAdvertisementInfo.mPhoneComponetId = paramAdData.av;
+    if (paramAdData.as != null) {
+      paramAdvertisementInfo.mAdBtnTxt = paramAdData.as.m;
+    }
+    try
+    {
+      paramAdvertisementInfo.mArticleID = Long.parseLong(paramAdData.ai);
+    }
+    catch (Exception localException)
+    {
+      IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parse article_id error :");
+      localStringBuilder.append(localException.getMessage());
+      localIRIJAdLogService.d("ReadInJoyBottomAdVideoUtil", localStringBuilder.toString());
+    }
+    if (!TextUtils.isEmpty(paramAdData.l)) {
+      paramAdvertisementInfo.mTitle = paramAdData.l;
+    }
+    paramAdvertisementInfo.mAdLocalSource = a(paramAdData, paramAdvertisementInfo);
+    if (!TextUtils.isEmpty(paramAdData.X)) {
+      paramAdvertisementInfo.mAdCorporateImageName = paramAdData.X;
+    } else {
+      paramAdvertisementInfo.mAdCorporateImageName = paramAdData.u;
+    }
+    paramAdvertisementInfo.mAdCorporateLogo = paramAdData.aa;
+    paramAdvertisementInfo.mSubordinateProductId = paramAdData.U;
+    paramAdvertisementInfo.mPopFormH5Url = paramAdData.ac;
+    paramAdvertisementInfo.mShowAdButton = paramAdData.ad;
+    paramAdvertisementInfo.mAdJumpMode = paramAdData.aA;
+    try
+    {
+      if (!TextUtils.isEmpty(paramAdData.k)) {
+        paramAdvertisementInfo.mAdPosID = Long.valueOf(paramAdData.k).longValue();
+      }
+      return;
+    }
+    catch (Exception paramAdData) {}
+  }
+  
   private static void d(AdvertisementInfo paramAdvertisementInfo, AdData paramAdData)
   {
     Object localObject;
@@ -411,11 +411,11 @@ public class ReadInJoyBottomAdVideoUtil
     try
     {
       localObject = new JSONObject((String)localObject);
-      localObject = new GameAdComData(paramAdData.N, (JSONObject)localObject);
-      a((GameAdComData)localObject, paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo);
+      localObject = new GameAdComData(paramAdData.aj, (JSONObject)localObject);
+      a((GameAdComData)localObject, paramAdData.as);
       paramAdvertisementInfo.gameAdComData = ((GameAdComData)localObject);
       paramAdvertisementInfo.mSoftAdType = 1;
-      if (paramAdvertisementInfo.gameAdComData.s.equals("2")) {
+      if (paramAdvertisementInfo.gameAdComData.t.equals("2")) {
         paramAdvertisementInfo.mAdProductType = 12;
       }
       return;
@@ -428,19 +428,19 @@ public class ReadInJoyBottomAdVideoUtil
     paramAdvertisementInfo.mBusiJson = new JSONObject();
     try
     {
-      paramAdvertisementInfo.mBusiJson.put("article_id", paramAdData.M);
-      paramAdvertisementInfo.mBusiJson.put("rowkey", paramAdData.N);
-      if ((!TextUtils.isEmpty(paramAdData.O)) && (!paramAdData.O.contains("%"))) {
-        paramAdvertisementInfo.mBusiJson.put("tags", paramAdData.O);
+      paramAdvertisementInfo.mBusiJson.put("article_id", paramAdData.ai);
+      paramAdvertisementInfo.mBusiJson.put("rowkey", paramAdData.aj);
+      if ((!TextUtils.isEmpty(paramAdData.ak)) && (!paramAdData.ak.contains("%"))) {
+        paramAdvertisementInfo.mBusiJson.put("tags", paramAdData.ak);
       }
       if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameComponentType(paramAdData))
       {
-        paramAdvertisementInfo.mBusiJson.put("game_component_type", paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.x);
-        paramAdvertisementInfo.mBusiJson.put("game_pkg", paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.b);
+        paramAdvertisementInfo.mBusiJson.put("game_component_type", paramAdData.as.y);
+        paramAdvertisementInfo.mBusiJson.put("game_pkg", paramAdData.as.c);
       }
-      if (paramAdData.jdField_a_of_type_OrgJsonJSONObject != null)
+      if (paramAdData.aC != null)
       {
-        paramAdvertisementInfo.mBusiJson.put("article_ad_ext", paramAdData.jdField_a_of_type_OrgJsonJSONObject.toString());
+        paramAdvertisementInfo.mBusiJson.put("article_ad_ext", paramAdData.aC.toString());
         return;
       }
     }
@@ -452,7 +452,7 @@ public class ReadInJoyBottomAdVideoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyBottomAdVideoUtil
  * JD-Core Version:    0.7.0.1
  */

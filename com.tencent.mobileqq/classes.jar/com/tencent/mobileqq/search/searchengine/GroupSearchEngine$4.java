@@ -16,12 +16,12 @@ class GroupSearchEngine$4
   
   public ISearchResultGroupModel a(List<ISearchResultModel> paramList, String paramString)
   {
-    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.a(this.a));
+    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.d(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.4
  * JD-Core Version:    0.7.0.1
  */

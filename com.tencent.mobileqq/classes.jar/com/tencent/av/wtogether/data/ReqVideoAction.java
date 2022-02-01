@@ -8,51 +8,51 @@ public class ReqVideoAction
   implements Parcelable
 {
   public static final Parcelable.Creator<ReqVideoAction> CREATOR = new ReqVideoAction.1();
-  public float a;
-  public int a;
   public long a;
   public int b;
-  public long b;
+  public long c;
+  public float d;
+  public int e;
   
   public ReqVideoAction(long paramLong, int paramInt, WTSyncPlayInfo paramWTSyncPlayInfo)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramLong;
+    this.b = paramInt;
     if (paramWTSyncPlayInfo != null)
     {
-      this.jdField_b_of_type_Long = paramWTSyncPlayInfo.a();
-      this.jdField_a_of_type_Float = paramWTSyncPlayInfo.a();
-      this.jdField_b_of_type_Int = paramWTSyncPlayInfo.a();
+      this.c = paramWTSyncPlayInfo.b();
+      this.d = paramWTSyncPlayInfo.c();
+      this.e = paramWTSyncPlayInfo.a();
       return;
     }
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Int = 0;
+    this.c = 0L;
+    this.d = 1.0F;
+    this.e = 0;
   }
   
   public ReqVideoAction(long paramLong, int paramInt, WTogetherPlayInfo paramWTogetherPlayInfo)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramLong;
+    this.b = paramInt;
     if (paramWTogetherPlayInfo != null)
     {
-      this.jdField_b_of_type_Long = paramWTogetherPlayInfo.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Float = paramWTogetherPlayInfo.jdField_a_of_type_Float;
-      this.jdField_b_of_type_Int = paramWTogetherPlayInfo.jdField_a_of_type_Int;
+      this.c = paramWTogetherPlayInfo.d;
+      this.d = paramWTogetherPlayInfo.e;
+      this.e = paramWTogetherPlayInfo.c;
       return;
     }
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_b_of_type_Int = 0;
+    this.c = 0L;
+    this.d = 1.0F;
+    this.e = 0;
   }
   
   protected ReqVideoAction(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Float = paramParcel.readFloat();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readFloat();
+    this.e = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -64,26 +64,26 @@ public class ReqVideoAction
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VideoAction{seq: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", action: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", curPlayTimeMs: ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", curPlayRate: ");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", curPlayState: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeFloat(this.d);
+    paramParcel.writeInt(this.e);
   }
 }
 

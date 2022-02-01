@@ -27,7 +27,7 @@ public class EvilReportUtil
     localStringBuilder.append(paramEvilReportParams.h);
     localStringBuilder.append("_");
     localStringBuilder.append(a(paramString));
-    paramString = MD5.a(localStringBuilder.toString());
+    paramString = MD5.b(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramEvilReportParams.d);
     localStringBuilder.append("_");
@@ -46,7 +46,7 @@ public class EvilReportUtil
     localStringBuilder.append(paramEvilReportParams.q);
     localStringBuilder.append("_");
     localStringBuilder.append(paramString);
-    return MD5.a(localStringBuilder.toString());
+    return MD5.b(localStringBuilder.toString());
   }
   
   private static String a(String paramString)

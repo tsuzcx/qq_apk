@@ -104,21 +104,21 @@ public class DefaultMsgDecoder
         }
         else
         {
-          paramMessage.msg = paramAppRuntime.getApp().getString(2131691287);
+          paramMessage.msg = paramAppRuntime.getApp().getString(2131888237);
           paramMessage.pttUrl = paramString[0];
           return;
         }
       }
       if (paramMessage.msgtype == -3001)
       {
-        paramMessage.msg = paramAppRuntime.getApp().getString(2131694707);
+        paramMessage.msg = paramAppRuntime.getApp().getString(2131892404);
         return;
       }
-      paramMessage.msg = paramAppRuntime.getApp().getString(2131693245);
+      paramMessage.msg = paramAppRuntime.getApp().getString(2131890793);
     }
     else
     {
-      paramMessage.msg = paramAppRuntime.getApp().getString(2131692262);
+      paramMessage.msg = paramAppRuntime.getApp().getString(2131889249);
     }
   }
   
@@ -128,7 +128,7 @@ public class DefaultMsgDecoder
       QLog.e("Q.msg.BaseMessageManager", 2, "<0x7f_trace>  0x7f in MsgTab decodeMsg method !");
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramAppRuntime.getApp().getString(2131691287));
+    localStringBuilder.append(paramAppRuntime.getApp().getString(2131888237));
     localStringBuilder.append("(0x7f)");
     paramMessage.msg = localStringBuilder.toString();
   }
@@ -158,7 +158,7 @@ public class DefaultMsgDecoder
   private void b(Message paramMessage, AppRuntime paramAppRuntime)
   {
     MessageForQQWalletTips localMessageForQQWalletTips = new MessageForQQWalletTips();
-    localMessageForQQWalletTips.init(paramMessage.selfuin, paramMessage.frienduin, paramMessage.senderuin, "[QQWallet Tips]", MessageCache.a(), paramMessage.msgtype, paramMessage.istroop, MessageCache.a());
+    localMessageForQQWalletTips.init(paramMessage.selfuin, paramMessage.frienduin, paramMessage.senderuin, "[QQWallet Tips]", MessageCache.c(), paramMessage.msgtype, paramMessage.istroop, MessageCache.c());
     localMessageForQQWalletTips.msgData = paramMessage.msgData;
     localMessageForQQWalletTips.isread = true;
     localMessageForQQWalletTips.parse();
@@ -188,7 +188,7 @@ public class DefaultMsgDecoder
       }
       if (paramMessage.msgtype == -2008)
       {
-        paramMessage.msg = paramAppRuntime.getApp().getString(2131718655);
+        paramMessage.msg = paramAppRuntime.getApp().getString(2131916156);
         return;
       }
       if (paramMessage.msg.indexOf("http://maps.google.com/maps?q=") != -1)
@@ -205,7 +205,7 @@ public class DefaultMsgDecoder
         paramMessage.fileType = 65536;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[");
-        ((StringBuilder)localObject).append(paramAppRuntime.getApp().getString(2131719740));
+        ((StringBuilder)localObject).append(paramAppRuntime.getApp().getString(2131917343));
         ((StringBuilder)localObject).append("] ");
         ((StringBuilder)localObject).append(paramIMessageManager);
         paramMessage.msg = ((StringBuilder)localObject).toString();
@@ -235,7 +235,7 @@ public class DefaultMsgDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.decoder.DefaultMsgDecoder
  * JD-Core Version:    0.7.0.1
  */

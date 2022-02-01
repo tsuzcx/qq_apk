@@ -258,7 +258,7 @@ public class MiniDexConfig
       QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "", localThrowable);
       if (TextUtils.isEmpty(this.minBaselibVersion))
       {
-        String str2 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+        String str2 = StorageUtil.getPreference().getString("version", "1.29.0.00002");
         if (BaseLibInfo.needUpdateVersion(this.minBaselibVersion, str2))
         {
           localStringBuilder = new StringBuilder();
@@ -297,7 +297,7 @@ public class MiniDexConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.dynamic.MiniDexConfig
  * JD-Core Version:    0.7.0.1
  */

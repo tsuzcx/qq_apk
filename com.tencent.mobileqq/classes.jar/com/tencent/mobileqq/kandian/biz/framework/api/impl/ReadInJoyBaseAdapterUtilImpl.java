@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.kandian.biz.framework.api.impl;
 
-import com.tencent.mobileqq.kandian.biz.framework.RIJFeedsFluencyOptimizeUtil;
 import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapterUtil;
 import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyBaseAdapterUtil;
 import com.tencent.mobileqq.kandian.biz.video.feeds.entity.VideoPlayParam;
+import com.tencent.mobileqq.kandian.glue.utils.ReadInJoyBaseAdapterUtil;
+import com.tencent.mobileqq.kandian.repo.aladdin.RIJFeedsFluencyOptimizeUtil;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
@@ -28,7 +28,7 @@ public final class ReadInJoyBaseAdapterUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyBaseAdapterUtilImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -14,34 +14,34 @@ import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
 
 public class GdtAdLoader
 {
-  private GdtAdLoader.Session jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session;
-  private WeakReference<GdtAdLoader.Listener> jdField_a_of_type_JavaLangRefWeakReference;
+  private GdtAdLoader.Session a;
+  private WeakReference<GdtAdLoader.Listener> b;
   
   public GdtAdLoader(GdtAdLoader.Session paramSession, WeakReference<GdtAdLoader.Listener> paramWeakReference)
   {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session = paramSession;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.a = paramSession;
+    this.b = paramWeakReference;
   }
   
-  private void a()
+  private void b()
   {
     new Handler(Looper.getMainLooper()).post(new GdtAdLoader.2(this));
   }
   
   private void b(WeakReference<Context> paramWeakReference)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session;
+    Object localObject = this.a;
     if ((localObject != null) && (((GdtAdLoader.Session)localObject).a != null))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.position_info.size())
+      while (i < this.a.a.position_info.size())
       {
         if (paramWeakReference != null) {
           localObject = (Context)paramWeakReference.get();
         } else {
           localObject = null;
         }
-        AdAnalysisHelperForUtil.reportForLoadAd((Context)localObject, ((qq_ad_get.QQAdGet.PositionInfo)this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.position_info.get(i)).pos_id.get());
+        AdAnalysisHelperForUtil.reportForLoadAd((Context)localObject, ((qq_ad_get.QQAdGet.PositionInfo)this.a.a.position_info.get(i)).pos_id.get());
         i += 1;
       }
       return;
@@ -51,7 +51,7 @@ public class GdtAdLoader
   
   public GdtAdLoader.Session a()
   {
-    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session;
+    return this.a;
   }
   
   @Deprecated
@@ -63,7 +63,7 @@ public class GdtAdLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtAdLoader
  * JD-Core Version:    0.7.0.1
  */

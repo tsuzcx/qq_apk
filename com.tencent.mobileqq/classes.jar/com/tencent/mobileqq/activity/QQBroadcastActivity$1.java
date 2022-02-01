@@ -13,14 +13,14 @@ class QQBroadcastActivity$1
     if (paramMessage.what != 1010) {
       return;
     }
-    if (this.a.a != null) {
-      this.a.a.changeCursor(this.a.a());
+    if (this.a.d != null) {
+      this.a.d.changeCursor(this.a.d());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity.1
  * JD-Core Version:    0.7.0.1
  */

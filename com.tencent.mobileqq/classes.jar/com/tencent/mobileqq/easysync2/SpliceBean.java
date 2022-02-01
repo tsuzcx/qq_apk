@@ -5,15 +5,15 @@ import java.util.Arrays;
 
 class SpliceBean
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  int a;
   int b;
+  String c;
   
   public SpliceBean(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public boolean equals(Object paramObject)
@@ -27,19 +27,19 @@ class SpliceBean
         return false;
       }
       paramObject = (SpliceBean)paramObject;
-      return (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && (Utils.a(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString));
+      return (this.a == paramObject.a) && (this.b == paramObject.b) && (Utils.a(this.c, paramObject.c));
     }
     return false;
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b), this.c });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.SpliceBean
  * JD-Core Version:    0.7.0.1
  */

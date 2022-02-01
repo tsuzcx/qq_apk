@@ -11,18 +11,18 @@ import java.util.Calendar;
 public class ChatHistoryC2CDateFragment$ChatHistoryDatePickerController
   implements DatePickerController
 {
-  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+  CalendarDay a;
   CalendarDay b;
   
   public ChatHistoryC2CDateFragment$ChatHistoryDatePickerController(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
+    this.a = paramCalendarDay1;
     this.b = paramCalendarDay2;
   }
   
   public CalendarDay a()
   {
-    CalendarDay localCalendarDay2 = this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+    CalendarDay localCalendarDay2 = this.a;
     CalendarDay localCalendarDay1 = localCalendarDay2;
     if (localCalendarDay2 == null) {
       localCalendarDay1 = new CalendarDay(System.currentTimeMillis());
@@ -32,19 +32,19 @@ public class ChatHistoryC2CDateFragment$ChatHistoryDatePickerController
   
   public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
   {
-    if (ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment).a())
+    if (ChatHistoryC2CDateFragment.c(this.c).a())
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment;
-      ((ChatHistoryC2CDateFragment)localObject).a(((ChatHistoryC2CDateFragment)localObject).getString(2131719255), new ChatHistoryC2CDateFragment.CancelDialogListener(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment));
-      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment, paramCalendarDay);
+      localObject = this.c;
+      ((ChatHistoryC2CDateFragment)localObject).a(((ChatHistoryC2CDateFragment)localObject).getString(2131916807), new ChatHistoryC2CDateFragment.CancelDialogListener(this.c));
+      ChatHistoryC2CDateFragment.a(this.c, paramCalendarDay);
       localObject = Calendar.getInstance();
       ((Calendar)localObject).setTimeInMillis(paramCalendarDay.getTimeInMillis());
-      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment).d((Calendar)localObject);
+      ChatHistoryC2CDateFragment.c(this.c).d((Calendar)localObject);
     }
     else
     {
-      ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment);
-      ChatHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.getBaseActivity(), ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), ChatHistoryC2CDateFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment), paramMessageRecord.time, paramMessageRecord.shmsgseq, 0);
+      ChatHistoryC2CDateFragment.b(this.c);
+      ChatHistoryActivity.a(this.c.getBaseActivity(), ChatHistoryC2CDateFragment.b(this.c), ChatHistoryC2CDateFragment.d(this.c), ChatHistoryC2CDateFragment.e(this.c), paramMessageRecord.time, paramMessageRecord.shmsgseq, 0);
     }
     Object localObject = ChatHistoryC2CDateFragment.b();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -57,20 +57,20 @@ public class ChatHistoryC2CDateFragment$ChatHistoryDatePickerController
   
   public void a(CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
+    this.a = paramCalendarDay1;
     this.b = paramCalendarDay2;
   }
   
   public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
   {
-    if (!ChatHistoryC2CDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment, paramInt1, paramInt2))
+    if (!ChatHistoryC2CDateFragment.a(this.c, paramInt1, paramInt2))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.d)
+      if (this.c.z)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.a(paramInt1, paramInt2);
+        this.c.a(paramInt1, paramInt2);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment.b(paramInt1, paramInt2);
+      this.c.b(paramInt1, paramInt2);
     }
   }
   
@@ -87,7 +87,7 @@ public class ChatHistoryC2CDateFragment$ChatHistoryDatePickerController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.ChatHistoryDatePickerController
  * JD-Core Version:    0.7.0.1
  */

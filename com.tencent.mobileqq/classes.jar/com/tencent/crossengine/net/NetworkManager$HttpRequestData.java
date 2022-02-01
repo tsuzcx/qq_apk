@@ -37,16 +37,16 @@ public class NetworkManager$HttpRequestData
   private void addMultiPartData(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
     NetworkManager.MultiPartData localMultiPartData = new NetworkManager.MultiPartData();
-    localMultiPartData.jdField_a_of_type_JavaLangString = paramString1;
+    localMultiPartData.a = paramString1;
     localMultiPartData.b = paramString2;
-    localMultiPartData.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    localMultiPartData.c = paramArrayOfByte;
     this.multiParts.add(localMultiPartData);
   }
   
   private void addMultiPartFile(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     NetworkManager.MultiPartFile localMultiPartFile = new NetworkManager.MultiPartFile();
-    localMultiPartFile.jdField_a_of_type_JavaLangString = paramString1;
+    localMultiPartFile.a = paramString1;
     localMultiPartFile.b = paramString2;
     localMultiPartFile.c = paramString3;
     localMultiPartFile.d = paramString4;
@@ -56,7 +56,7 @@ public class NetworkManager$HttpRequestData
   private void addMultiPartString(String paramString1, String paramString2, String paramString3)
   {
     NetworkManager.MultiPartString localMultiPartString = new NetworkManager.MultiPartString();
-    localMultiPartString.jdField_a_of_type_JavaLangString = paramString1;
+    localMultiPartString.a = paramString1;
     localMultiPartString.b = paramString2;
     localMultiPartString.c = paramString3;
     this.multiParts.add(localMultiPartString);
@@ -74,7 +74,7 @@ public class NetworkManager$HttpRequestData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.net.NetworkManager.HttpRequestData
  * JD-Core Version:    0.7.0.1
  */

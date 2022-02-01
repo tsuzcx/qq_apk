@@ -11,7 +11,7 @@ final class SpannableStringUtils$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$ClickNickCallback.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.a.a(this.b, this.c);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)

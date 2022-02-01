@@ -15,6 +15,7 @@ import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.system.a;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.ad.tangram.util.e;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.Inet4Address;
@@ -70,7 +71,7 @@ public final class AdNet
     }
     try
     {
-      paramContext = paramContext.getConnectionInfo();
+      paramContext = NetworkMonitor.getConnectionInfo(paramContext);
       if (paramContext == null) {
         return null;
       }
@@ -81,7 +82,12 @@ public final class AdNet
       AdLog.e("AdNet", "getBSSID", paramContext);
       paramContext = null;
     }
-    if (!isValidBSSID(paramContext)) {
+    if (!isValidBSSID(paramContext))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getBSSID] not valid bssid ");
+      localStringBuilder.append(paramContext);
+      AdLog.i("AdNet", localStringBuilder.toString());
       return null;
     }
     return paramContext;

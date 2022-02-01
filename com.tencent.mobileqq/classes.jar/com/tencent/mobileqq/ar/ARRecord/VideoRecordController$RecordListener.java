@@ -8,11 +8,11 @@ public abstract interface VideoRecordController$RecordListener
   
   public abstract void c(int paramInt);
   
-  public abstract void h();
+  public abstract void l();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.VideoRecordController.RecordListener
  * JD-Core Version:    0.7.0.1
  */

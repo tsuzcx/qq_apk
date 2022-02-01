@@ -53,7 +53,7 @@ class EcshopMinusViewChatPie$1
             localObject2 = ((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).buildMessageForArkApp((String)localObject2);
             if (((IEcshopMessageApi)QRoute.api(IEcshopMessageApi.class)).isArkAppMessageValid((ChatMessage)localObject2))
             {
-              EcshopMinusViewChatPie.a(this.jdField_a_of_type_ComTencentMobileqqEcshopKeepEcshopMinusViewChatPie).add(localObject2);
+              EcshopMinusViewChatPie.a(this.b).add(localObject2);
               ((ChatMessage)localObject2).time = System.currentTimeMillis();
               if (paramInt == 0) {
                 ((ChatMessage)localObject2).saveExtInfoToExtStr("add_title", "minus_view_title_second");
@@ -72,8 +72,8 @@ class EcshopMinusViewChatPie$1
         }
         paramBundle.a((qq_ad.QQAdGetRsp)localObject1);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqEcshopAioIEcshopChatPieDelegate$IRefreshCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEcshopAioIEcshopChatPieDelegate$IRefreshCallback.a(EcshopMinusViewChatPie.a(this.jdField_a_of_type_ComTencentMobileqqEcshopKeepEcshopMinusViewChatPie));
+      if (this.a != null) {
+        this.a.a(EcshopMinusViewChatPie.a(this.b));
       }
       if ((((qq_ad.QQAdGetRsp)localObject1).qgg_prompt.has()) && (((qq_ad.QQAdGetRsp)localObject1).qgg_prompt_id.has()))
       {
@@ -89,7 +89,7 @@ class EcshopMinusViewChatPie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.keep.EcshopMinusViewChatPie.1
  * JD-Core Version:    0.7.0.1
  */

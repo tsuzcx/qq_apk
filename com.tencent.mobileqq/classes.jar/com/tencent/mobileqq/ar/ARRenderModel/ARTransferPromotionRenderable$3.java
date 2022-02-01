@@ -11,12 +11,12 @@ class ARTransferPromotionRenderable$3
   public void run()
   {
     Object localObject = this.this$0;
-    ARTransferPromotionRenderable.a((ARTransferPromotionRenderable)localObject, ARTransferDoorVideoInfo.a(ARTransferPromotionRenderable.a((ARTransferPromotionRenderable)localObject).c));
-    if (ARTransferPromotionRenderable.a(this.this$0) != null)
+    ARTransferPromotionRenderable.a((ARTransferPromotionRenderable)localObject, ARTransferDoorVideoInfo.a(ARTransferPromotionRenderable.e((ARTransferPromotionRenderable)localObject).o));
+    if (ARTransferPromotionRenderable.f(this.this$0) != null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("ARTransferPromotionRenderable finish parse ARTransferDoorVideoInfo ");
-      ((StringBuilder)localObject).append(ARTransferPromotionRenderable.a(this.this$0));
+      ((StringBuilder)localObject).append(ARTransferPromotionRenderable.f(this.this$0));
       QLog.d("ARTransferPromotionRenderable", 2, ((StringBuilder)localObject).toString());
       return;
     }
@@ -25,7 +25,7 @@ class ARTransferPromotionRenderable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.3
  * JD-Core Version:    0.7.0.1
  */

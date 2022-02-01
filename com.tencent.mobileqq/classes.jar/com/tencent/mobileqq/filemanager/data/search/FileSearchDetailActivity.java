@@ -45,12 +45,12 @@ public class FileSearchDetailActivity
     paramBundle = this.b;
     if ((paramBundle != null) && (paramBundle.a != null) && (this.b.a.size() != 0))
     {
-      super.setContentView(2131558898);
+      super.setContentView(2131624520);
       super.setTitle(((FileManagerEntity)this.b.a.get(0)).fileName);
       Object localObject = getSupportFragmentManager();
       paramBundle = FileSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131365183, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131431345, paramBundle);
       ((FragmentTransaction)localObject).commit();
       return true;
     }
@@ -75,7 +75,7 @@ public class FileSearchDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

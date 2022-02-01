@@ -12,7 +12,7 @@ class FriendTeamListInnerFrame$1
   
   public void onClickHeader(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
   {
-    if (!this.a.a)
+    if (!this.a.b)
     {
       int i = paramInt - 1;
       if (i >= 0)
@@ -27,7 +27,7 @@ class FriendTeamListInnerFrame$1
         QLog.d("FriendTeamListInnerFrameNew", 2, paramPinnedFooterExpandableListView.toString());
       }
       paramPinnedFooterExpandableListView = this.a;
-      paramPinnedFooterExpandableListView.a = true;
+      paramPinnedFooterExpandableListView.b = true;
       FriendTeamListInnerFrame.a(paramPinnedFooterExpandableListView).setFooterEnable(false);
       return;
     }
@@ -42,13 +42,13 @@ class FriendTeamListInnerFrame$1
   public void onHeaderDisable()
   {
     FriendTeamListInnerFrame localFriendTeamListInnerFrame = this.a;
-    localFriendTeamListInnerFrame.a = true;
+    localFriendTeamListInnerFrame.b = true;
     FriendTeamListInnerFrame.a(localFriendTeamListInnerFrame).setFooterEnable(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.FriendTeamListInnerFrame.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,18 +27,18 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
   
   protected void a(int paramInt1, long paramLong, int paramInt2)
   {
-    if (this.a.d != 1) {
+    if (this.b.d != 1) {
       return;
     }
     if (paramInt2 == 102)
     {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().O = true;
+      this.b.z.k().bc = true;
       return;
     }
     if (paramInt2 == 103)
     {
-      boolean bool = this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_j_of_type_Boolean;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().O = false;
+      boolean bool = this.b.z.k().H;
+      this.b.z.k().bc = false;
     }
   }
   
@@ -61,7 +61,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       QLog.d("SmallScreenMultiVideoControlUI", 2, "onDestroyUI");
     }
     super.a(paramLong);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new SmallScreenMultiVideoControlUI.MyGAudioUIObserver.1(this, paramLong), 1500L);
+    this.b.y.a().postDelayed(new SmallScreenMultiVideoControlUI.MyGAudioUIObserver.1(this, paramLong), 1500L);
   }
   
   protected void a(long paramLong1, int paramInt1, long paramLong2, long paramLong3, long paramLong4, int paramInt2)
@@ -75,7 +75,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       if (QLog.isColorLevel()) {
         QLog.d("SmallScreenMultiVideoControlUI", 2, "request video failed");
       }
-      this.a.a(paramLong2, paramInt1, false, -1);
+      this.b.a(paramLong2, paramInt1, false, -1);
       return;
     case 96: 
       if (QLog.isColorLevel())
@@ -90,10 +90,10 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       }
       if (paramLong3 == 1L)
       {
-        this.a.a("onGaOperationResult");
-        this.a.o();
-        localObject = this.a;
-        ((SmallScreenMultiVideoControlUI)localObject).a(paramLong1, ((SmallScreenMultiVideoControlUI)localObject).jdField_a_of_type_ComTencentAvVideoController.a().c);
+        this.b.a("onGaOperationResult");
+        this.b.q();
+        localObject = this.b;
+        ((SmallScreenMultiVideoControlUI)localObject).a(paramLong1, ((SmallScreenMultiVideoControlUI)localObject).z.k().bi);
         return;
       }
       return;
@@ -104,13 +104,13 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Go Off Stage-->roomMode=");
-        ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvVideoController.a().J);
+        ((StringBuilder)localObject).append(this.b.z.k().ba);
         ((StringBuilder)localObject).append(" isBeBan");
-        ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvVideoController.a().R);
+        ((StringBuilder)localObject).append(this.b.z.k().bf);
         ((StringBuilder)localObject).append(" isPressSpeaking=");
-        ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvVideoController.a().N);
+        ((StringBuilder)localObject).append(this.b.z.k().bb);
         ((StringBuilder)localObject).append(" isOnlyManagerCanOnStage=");
-        ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentAvVideoController.a().O);
+        ((StringBuilder)localObject).append(this.b.z.k().bc);
         QLog.d("SmallScreenMultiVideoControlUI", 2, ((StringBuilder)localObject).toString());
         return;
       }
@@ -120,7 +120,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       if (QLog.isColorLevel()) {
         QLog.d("SmallScreenMultiVideoControlUI", 2, "go on stage failed");
       }
-      if (this.a.d == 2)
+      if (this.b.d == 2)
       {
         ReportController.b(null, "CliOper", "", "", "0X800441E", "0X800441E", 0, 0, "", "", "", "");
         return;
@@ -129,22 +129,22 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
     case 90: 
       if (paramLong3 == 3L)
       {
-        localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a().c;
+        localObject = this.b.z.k().bi;
         paramInt1 = 0;
         while (paramInt1 < ((ArrayList)localObject).size())
         {
           VideoViewInfo localVideoViewInfo = (VideoViewInfo)((ArrayList)localObject).get(paramInt1);
-          if ((paramLong2 == localVideoViewInfo.jdField_a_of_type_Long) && (localVideoViewInfo.jdField_a_of_type_Int == 1))
+          if ((paramLong2 == localVideoViewInfo.a) && (localVideoViewInfo.b == 1))
           {
-            bool = localVideoViewInfo.jdField_a_of_type_Boolean;
+            bool = localVideoViewInfo.c;
             break label464;
           }
           paramInt1 += 1;
         }
         boolean bool = false;
         label464:
-        this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver.update(null, new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
-        this.a.o();
+        this.b.A.update(null, new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
+        this.b.q();
       }
       break;
     }
@@ -159,10 +159,10 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       localStringBuilder.append(paramLong2);
       QLog.d("SmallScreenMultiVideoControlUI", 2, localStringBuilder.toString());
     }
-    this.a.f();
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().ab = true;
-    if (this.a.c == 1) {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.a());
+    this.b.f();
+    this.b.z.k().bv = true;
+    if (this.b.c == 1) {
+      this.b.y.a(this.b.r());
     }
   }
   
@@ -172,7 +172,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onVideoSrcTypeChange-->mGroupId=");
-      localStringBuilder.append(this.a.a());
+      localStringBuilder.append(this.b.r());
       localStringBuilder.append(" userUin=");
       localStringBuilder.append(paramLong2);
       localStringBuilder.append(" groupUin=");
@@ -183,24 +183,24 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       localStringBuilder.append(paramInt2);
       QLog.d("SmallScreenMultiVideoControlUI", 2, localStringBuilder.toString());
     }
-    if (paramLong1 != this.a.a()) {
+    if (paramLong1 != this.b.r()) {
       return;
     }
     if (paramInt2 != 1) {
       return;
     }
-    this.a.a(paramLong2, 10, false, paramInt1);
-    if ((paramInt1 == 2) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().k))
+    this.b.a(paramLong2, 10, false, paramInt1);
+    if ((paramInt1 == 2) && (this.b.z.k().I))
     {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(111), Boolean.valueOf(true) });
+      this.b.y.a(new Object[] { Integer.valueOf(111), Boolean.valueOf(true) });
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(111), Boolean.valueOf(false) });
+    this.b.y.a(new Object[] { Integer.valueOf(111), Boolean.valueOf(false) });
   }
   
   protected void a(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -217,18 +217,18 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       localStringBuilder.append("]");
       QLog.w("SmallScreenMultiVideoControlUI", 1, localStringBuilder.toString());
     }
-    if ((this.a.a() == paramLong1) && (paramLong2 == this.a.jdField_a_of_type_Long))
+    if ((this.b.r() == paramLong1) && (paramLong2 == this.b.f))
     {
       if (paramInt != 1) {
         return;
       }
       if (paramBoolean)
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().R = true;
-        if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_j_of_type_Boolean)
+        this.b.z.k().bf = true;
+        if (this.b.z.k().H)
         {
-          this.a.b(l);
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, this.a.jdField_a_of_type_ComTencentAvVideoController.a().d, 1, false);
+          this.b.b(l);
+          this.b.z.a(this.b.f, this.b.z.k().bi, this.b.z.k().bk, 1, false);
         }
       }
     }
@@ -251,51 +251,51 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       ((StringBuilder)localObject).append("]");
       QLog.w("SmallScreenMultiVideoControlUI", 1, ((StringBuilder)localObject).toString());
     }
-    if (paramLong3 == this.a.jdField_a_of_type_Long)
+    if (paramLong3 == this.b.f)
     {
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_j_of_type_Boolean) {
-        this.a.b(paramLong1);
+      if (this.b.z.k().H) {
+        this.b.b(paramLong1);
       }
     }
     else
     {
       localObject = new VideoViewInfo();
-      ((VideoViewInfo)localObject).jdField_a_of_type_Long = paramLong3;
-      ((VideoViewInfo)localObject).jdField_a_of_type_Int = paramInt;
+      ((VideoViewInfo)localObject).a = paramLong3;
+      ((VideoViewInfo)localObject).b = paramInt;
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localObject);
-      this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver.update(null, new Object[] { Integer.valueOf(104), localArrayList });
+      this.b.A.update(null, new Object[] { Integer.valueOf(104), localArrayList });
     }
-    this.a.a(paramLong3, 6, false, 73);
+    this.b.a(paramLong3, 6, false, 73);
   }
   
   protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean)
   {
-    if (this.a.d != 1) {
+    if (this.b.d != 1) {
       return;
     }
     if (paramBoolean)
     {
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.size() == 0)
+      if (this.b.z.k().bi.size() == 0)
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong1, "onMemberPPTInOrOut", false, false);
-        this.a.o();
-        this.a.a(false, false, false);
+        this.b.z.k().a(paramLong1, "onMemberPPTInOrOut", false, false);
+        this.b.q();
+        this.b.a(false, false, false);
         return;
       }
-      if ((!NetworkUtil.isWifiConnected((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().c() == -1) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().ag))
+      if ((!NetworkUtil.isWifiConnected((Context)this.b.x.get())) && (this.b.z.k().B() == -1) && (!this.b.z.k().bA))
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong1, "onMemberPPTInOrOut", true, true);
-        this.a.o();
-        this.a.a(true, true, true);
+        this.b.z.k().a(paramLong1, "onMemberPPTInOrOut", true, true);
+        this.b.q();
+        this.b.a(true, true, true);
         return;
       }
-      if (this.a.e >= 4) {
+      if (this.b.r >= 4) {
         return;
       }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI$StartRecvVideoRunnable);
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI$StartRecvVideoRunnable.a = "onMemberPPTInOrOut";
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI$StartRecvVideoRunnable, 1000L);
+      this.b.y.a().removeCallbacks(this.b.p);
+      this.b.p.a = "onMemberPPTInOrOut";
+      this.b.y.a().postDelayed(this.b.p, 1000L);
     }
   }
   
@@ -312,25 +312,25 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       ((StringBuilder)localObject).append(paramString);
       QLog.d("SmallScreenMultiVideoControlUI", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a.d != 1) {
+    if (this.b.d != 1) {
       return;
     }
-    if (paramLong1 != this.a.a()) {
+    if (paramLong1 != this.b.r()) {
       return;
     }
     Object localObject = new Intent();
     ((Intent)localObject).setAction("tencent.av.v2q.MultiVideo");
     ((Intent)localObject).putExtra("type", 33);
     ((Intent)localObject).putExtra("relationId", paramLong1);
-    ((Intent)localObject).putExtra("uinType", this.a.c);
+    ((Intent)localObject).putExtra("uinType", this.b.c);
     ((Intent)localObject).putExtra("info", paramLong2);
     ((Intent)localObject).putExtra("strMsg", paramString);
-    ((Intent)localObject).putExtra("MultiAVType", this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_j_of_type_Int);
+    ((Intent)localObject).putExtra("MultiAVType", this.b.z.k().o);
     ((Intent)localObject).putExtra("from", "SmallScreenMultiVideoControlUI1");
-    paramString = (SmallScreenService)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString = (SmallScreenService)this.b.x.get();
     if (paramString != null)
     {
-      ((Intent)localObject).setPackage(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+      ((Intent)localObject).setPackage(this.b.y.getApplication().getPackageName());
       paramString.sendBroadcast((Intent)localObject);
       paramString.stopSelf();
       return;
@@ -342,9 +342,9 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
   
   protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().y)
+    if (!this.b.z.k().am)
     {
-      if (this.a.a() != paramLong1)
+      if (this.b.r() != paramLong1)
       {
         if (QLog.isColorLevel())
         {
@@ -352,7 +352,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
           localStringBuilder.append("onMemberLeave,wrong group uin.GroupUin = ");
           localStringBuilder.append(paramLong1);
           localStringBuilder.append(" ,mGroupId = ");
-          localStringBuilder.append(this.a.a());
+          localStringBuilder.append(this.b.r());
           localStringBuilder.append(" ,isQQUser = ");
           localStringBuilder.append(paramBoolean);
           QLog.e("SmallScreenMultiVideoControlUI", 2, localStringBuilder.toString());
@@ -360,18 +360,18 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
         return;
       }
       super.a(paramLong1, paramLong2, paramBoolean);
-      this.a.a(paramLong2, 1, true, 71);
+      this.b.a(paramLong2, 1, true, 71);
       return;
     }
-    if (paramLong2 != this.a.jdField_a_of_type_Long) {
-      this.a.u();
+    if (paramLong2 != this.b.f) {
+      this.b.x();
     }
   }
   
   protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
-    if (this.a.a() != paramLong1)
+    if (this.b.r() != paramLong1)
     {
       if (QLog.isColorLevel())
       {
@@ -379,24 +379,24 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
         localStringBuilder.append("onMemberJoin,wrong group uin.GroupUin = ");
         localStringBuilder.append(paramLong1);
         localStringBuilder.append(" ,mGroupId = ");
-        localStringBuilder.append(this.a.a());
+        localStringBuilder.append(this.b.r());
         localStringBuilder.append(" ,isQQUser = ");
         localStringBuilder.append(paramBoolean2);
         QLog.e("SmallScreenMultiVideoControlUI", 2, localStringBuilder.toString());
       }
       return;
     }
-    this.a.a(paramLong2, 0, paramBoolean1, 70);
+    this.b.a(paramLong2, 0, paramBoolean1, 70);
   }
   
   protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramLong != 0L)
     {
-      if (paramLong == this.a.jdField_a_of_type_Long) {
+      if (paramLong == this.b.f) {
         return;
       }
-      this.a.c(paramBoolean1);
+      this.b.c(paramBoolean1);
     }
   }
   
@@ -408,7 +408,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
     } else {
       paramInt = 43;
     }
-    this.a.a(paramLong, 2, paramBoolean2, paramInt);
+    this.b.a(paramLong, 2, paramBoolean2, paramInt);
   }
   
   protected void a(RecvMsg paramRecvMsg)
@@ -424,13 +424,13 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       return;
     }
     paramArrayOfString = paramArrayOfString[0];
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayOfString, String.valueOf(this.a.a()), this.a.d);
+    this.b.z.a(paramArrayOfString, String.valueOf(this.b.r()), this.b.d);
     if (i == 1) {
-      this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695514);
+      this.b.w.getString(2131893273);
     } else {
-      String.format(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695513), new Object[] { Integer.valueOf(i) });
+      String.format(this.b.w.getString(2131893272), new Object[] { Integer.valueOf(i) });
     }
-    this.a.a(Long.valueOf(paramString).longValue(), 82, true, -1);
+    this.b.a(Long.valueOf(paramString).longValue(), 82, true, -1);
   }
   
   protected void b()
@@ -439,18 +439,18 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       QLog.d("SmallScreenMultiVideoControlUI", 2, "onServiceConnected");
     }
     super.b();
-    if (this.a.a() != 0L)
+    if (this.b.r() != 0L)
     {
-      int i = this.a.c;
-      Object localObject = String.valueOf(this.a.a());
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(i, (String)localObject);
-      if ((this.a.jdField_a_of_type_ArrayOfLong != null) && (this.a.jdField_a_of_type_ArrayOfLong.length == 0) && (this.a.c == 3000) && (this.a.b == 0))
+      int i = this.b.c;
+      Object localObject = String.valueOf(this.b.r());
+      this.b.y.b(i, (String)localObject);
+      if ((this.b.e != null) && (this.b.e.length == 0) && (this.b.c == 3000) && (this.b.b == 0))
       {
-        localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a((String)localObject);
-        if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (localObject != null))
+        localObject = this.b.y.g((String)localObject);
+        if ((this.b.z != null) && (localObject != null))
         {
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a((long[])localObject);
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a((long[])localObject, false);
+          this.b.z.a((long[])localObject);
+          this.b.z.a((long[])localObject, false);
         }
       }
     }
@@ -458,7 +458,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
   
   protected void b(int paramInt1, long paramLong, int paramInt2)
   {
-    if (this.a.d != 1) {
+    if (this.b.d != 1) {
       return;
     }
     if (paramInt2 != 101)
@@ -470,17 +470,17 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
           if (paramInt2 != 108) {
             return;
           }
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a().J = 108;
+          this.b.z.k().ba = 108;
           return;
         }
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().J = 107;
+        this.b.z.k().ba = 107;
         return;
       }
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().J = 104;
+      this.b.z.k().ba = 104;
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a("SmallScreenMultiVideoControlUI.onSpeakModeChanged", this.a.a(), false);
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().N = true;
+    this.b.z.a("SmallScreenMultiVideoControlUI.onSpeakModeChanged", this.b.r(), false);
+    this.b.z.k().bb = true;
   }
   
   protected void b(long paramLong, int paramInt)
@@ -495,12 +495,12 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       QLog.d("SmallScreenMultiVideoControlUI", 2, localStringBuilder.toString());
     }
     super.b(paramLong, paramInt);
-    this.a.a(paramLong, 68, true, -1);
+    this.b.a(paramLong, 68, true, -1);
   }
   
   protected void b(long paramLong, int paramInt1, int paramInt2)
   {
-    long l = this.a.a();
+    long l = this.b.r();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -514,23 +514,23 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
     if (l != paramLong) {
       return;
     }
-    if (this.a.d != 1) {
+    if (this.b.d != 1) {
       return;
     }
     Object localObject = new Intent();
     ((Intent)localObject).setAction("tencent.av.v2q.MultiVideo");
     ((Intent)localObject).putExtra("type", 32);
     ((Intent)localObject).putExtra("relationId", paramLong);
-    ((Intent)localObject).putExtra("uinType", this.a.c);
+    ((Intent)localObject).putExtra("uinType", this.b.c);
     ((Intent)localObject).putExtra("closeType", paramInt1);
     ((Intent)localObject).putExtra("MultiAVType", paramInt2);
     ((Intent)localObject).putExtra("from", "SmallScreenMultiVideoControlUI2");
-    SmallScreenService localSmallScreenService = (SmallScreenService)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    SmallScreenService localSmallScreenService = (SmallScreenService)this.b.x.get();
     if (localSmallScreenService != null)
     {
-      ((Intent)localObject).setPackage(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+      ((Intent)localObject).setPackage(this.b.y.getApplication().getPackageName());
       localSmallScreenService.sendBroadcast((Intent)localObject);
-      this.a.d(true);
+      this.b.d(true);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -547,16 +547,16 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       localStringBuilder.append(paramLong2);
       QLog.d("SmallScreenMultiVideoControlUI", 2, localStringBuilder.toString());
     }
-    this.a.f();
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new SmallScreenMultiVideoControlUI.MyGAudioUIObserver.AutoCheckVideoRunnable(this), 500L);
+    this.b.f();
+    this.b.y.a().postDelayed(new SmallScreenMultiVideoControlUI.MyGAudioUIObserver.AutoCheckVideoRunnable(this), 500L);
   }
   
   protected void b(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (this.a.d != 1) {
+    if (this.b.d != 1) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().S = true;
+    this.b.z.k().bg = true;
   }
   
   protected void b(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
@@ -574,7 +574,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       i = 8;
       j = 79;
     }
-    this.a.a(paramLong2, i, false, j);
+    this.b.a(paramLong2, i, false, j);
   }
   
   @SuppressLint({"NewApi"})
@@ -583,33 +583,33 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenMultiVideoControlUI", 2, "onFirstFrameDataComeIn");
     }
-    paramInt = this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, paramInt);
+    paramInt = this.b.z.k().b(paramLong, paramInt);
     if (paramInt != -1) {
-      boolean bool = ((VideoViewInfo)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).jdField_a_of_type_Boolean;
+      boolean bool = ((VideoViewInfo)this.b.z.k().bi.get(paramInt)).c;
     }
-    this.a.b("onFirstFrameDataComeIn");
+    this.b.b("onFirstFrameDataComeIn");
   }
   
   protected void c(long paramLong1, long paramLong2)
   {
     super.c(paramLong1, paramLong2);
-    this.a.a(paramLong2, 5, false, 72);
+    this.b.a(paramLong2, 5, false, 72);
   }
   
   protected void c(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (this.a.d != 1) {
+    if (this.b.d != 1) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().S = false;
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_j_of_type_Boolean) {}
+    this.b.z.k().bg = false;
+    if (this.b.z.k().H) {}
   }
   
   protected void d() {}
   
   protected void d(long paramLong, int paramInt)
   {
-    if (paramLong == this.a.jdField_a_of_type_Long) {
+    if (paramLong == this.b.f) {
       return;
     }
     boolean bool = true;
@@ -620,7 +620,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
       }
     }
     else {
-      this.a.c(bool);
+      this.b.c(bool);
     }
   }
   
@@ -629,11 +629,11 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenMultiVideoControlUI", 2, "onUpdatePstnInfo --> Start");
     }
-    Object localObject = (SmallScreenService)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (SmallScreenService)this.b.x.get();
     if (localObject == null) {
       localObject = null;
     } else {
-      localObject = ((SmallScreenService)localObject).a(1);
+      localObject = ((SmallScreenService)localObject).b(1);
     }
     if (localObject != null)
     {
@@ -647,7 +647,7 @@ class SmallScreenMultiVideoControlUI$MyGAudioUIObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.MyGAudioUIObserver
  * JD-Core Version:    0.7.0.1
  */

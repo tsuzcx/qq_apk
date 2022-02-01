@@ -20,141 +20,141 @@ import java.util.List;
 final class WeiyunShareSettingController
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, ActionSheet.OnButtonClickListenerV2
 {
-  private final IShareRouter.ShareOptions jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions;
-  private final IShareRouter jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter;
-  private final FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-  private final FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private final List<String> jdField_a_of_type_JavaUtilList;
-  private final boolean jdField_a_of_type_Boolean;
-  private final FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-  private final FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private final IShareRouter a;
+  private final boolean b;
+  private final IShareRouter.ShareOptions c;
+  private final List<String> d;
+  private final FormSimpleItem e;
+  private final FormSwitchItem f;
+  private final FormSimpleItem g;
+  private final FormSwitchItem h;
+  private ActionSheet i;
   
   WeiyunShareSettingController(IShareRouter paramIShareRouter, View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter = paramIShareRouter;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions = new IShareRouter.ShareOptions();
+    this.a = paramIShareRouter;
+    this.b = paramBoolean;
+    this.c = new IShareRouter.ShareOptions();
     paramIShareRouter = BaseApplicationImpl.sApplication;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(paramIShareRouter.getString(2131698264));
-    this.jdField_a_of_type_JavaUtilList.add(paramIShareRouter.getString(2131698263));
-    this.jdField_a_of_type_JavaUtilList.add(paramIShareRouter.getString(2131698265));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131377330));
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2131698266;
+    this.d = new ArrayList();
+    this.d.add(paramIShareRouter.getString(2131896165));
+    this.d.add(paramIShareRouter.getString(2131896164));
+    this.d.add(paramIShareRouter.getString(2131896166));
+    this.e = ((FormSimpleItem)paramView.findViewById(2131445719));
+    Object localObject = this.e;
+    int j;
+    if (this.b) {
+      j = 2131896167;
     } else {
-      i = 2131698262;
+      j = 2131896163;
     }
-    ((FormSimpleItem)localObject).setLeftText(paramIShareRouter.getString(i));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(a()));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131377329));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)paramView.findViewById(2131377339));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+    ((FormSimpleItem)localObject).setLeftText(paramIShareRouter.getString(j));
+    this.e.setRightText((CharSequence)this.d.get(c()));
+    this.e.setOnClickListener(this);
+    this.f = ((FormSwitchItem)paramView.findViewById(2131445718));
+    this.g = ((FormSimpleItem)paramView.findViewById(2131445728));
+    this.f.setChecked(this.c.b);
+    this.f.setOnCheckedChangeListener(this);
     b(false);
-    localObject = (TextView)paramView.findViewById(2131377341);
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2131698269;
+    localObject = (TextView)paramView.findViewById(2131445730);
+    if (this.b) {
+      j = 2131896170;
     } else {
-      i = 2131698268;
+      j = 2131896169;
     }
-    ((TextView)localObject).setText(paramIShareRouter.getString(i));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramView.findViewById(2131377327));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.b);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-    paramView.findViewById(2131377328).setVisibility(8);
-    if (this.jdField_a_of_type_Boolean)
+    ((TextView)localObject).setText(paramIShareRouter.getString(j));
+    this.h = ((FormSwitchItem)paramView.findViewById(2131445716));
+    this.h.setChecked(this.c.d);
+    this.h.setOnCheckedChangeListener(this);
+    this.h.setVisibility(8);
+    paramView.findViewById(2131445717).setVisibility(8);
+    if (this.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setBgType(0);
-    }
-  }
-  
-  private int a()
-  {
-    int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Int;
-    int i = 2;
-    if (j == 1) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Int == 2) {
-      i = 1;
-    }
-    return i;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity(), null));
-      Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
-      int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = 2131698266;
-      } else {
-        i = 2131698262;
-      }
-      ((ActionSheet)localObject).setMainTitle(i);
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.addRadioButton(str, false);
-      }
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListenerV2(this);
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.clearAllRadioBtnCheckStatus();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setRadioButtonChecked(a());
-    if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+      this.f.setVisibility(8);
+      this.e.setBgType(0);
     }
   }
   
   private void b(boolean paramBoolean)
   {
-    FormSimpleItem localFormSimpleItem = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-    IShareRouter.ShareOptions localShareOptions = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions;
-    if (localShareOptions.jdField_a_of_type_Boolean) {
-      localObject = LinkUtils.a(6);
+    FormSimpleItem localFormSimpleItem = this.g;
+    IShareRouter.ShareOptions localShareOptions = this.c;
+    if (localShareOptions.b) {
+      localObject = LinkUtils.b(6);
     } else {
       localObject = "";
     }
-    localShareOptions.jdField_a_of_type_JavaLangString = ((String)localObject);
+    localShareOptions.c = ((String)localObject);
     localFormSimpleItem.setRightText((CharSequence)localObject);
-    Object localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Boolean) {
-      i = 0;
+    Object localObject = this.g;
+    int j;
+    if (this.c.b) {
+      j = 0;
     } else {
-      i = 8;
+      j = 8;
     }
-    ((FormSimpleItem)localObject).setVisibility(i);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Boolean) {
-      i = 2;
+    ((FormSimpleItem)localObject).setVisibility(j);
+    localObject = this.f;
+    if (this.c.b) {
+      j = 2;
     } else {
-      i = 3;
+      j = 3;
     }
-    ((FormSwitchItem)localObject).setBgType(i);
+    ((FormSwitchItem)localObject).setBgType(j);
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a();
+      this.a.b();
+    }
+  }
+  
+  private int c()
+  {
+    int k = this.c.a;
+    int j = 2;
+    if (k == 1) {
+      return 0;
+    }
+    if (this.c.a == 2) {
+      j = 1;
+    }
+    return j;
+  }
+  
+  private void d()
+  {
+    if (this.i == null)
+    {
+      this.i = ((ActionSheet)ActionSheetHelper.c(this.a.getBaseActivity(), null));
+      Object localObject = this.i;
+      int j;
+      if (this.b) {
+        j = 2131896167;
+      } else {
+        j = 2131896163;
+      }
+      ((ActionSheet)localObject).setMainTitle(j);
+      localObject = this.d.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        this.i.addRadioButton(str, false);
+      }
+      this.i.addCancelButton(2131887648);
+      this.i.setOnButtonClickListenerV2(this);
+    }
+    this.i.clearAllRadioBtnCheckStatus();
+    this.i.setRadioButtonChecked(c());
+    if (!this.i.isShowing()) {
+      this.i.show();
     }
   }
   
   public void OnClick(View paramView, int paramInt, String paramString)
   {
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    paramView = this.i;
     if ((paramView != null) && (paramView.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.i.dismiss();
     }
-    int i = 1;
+    int j = 1;
     if (paramInt == 0) {
       paramInt = 1;
     } else if (paramInt == 1) {
@@ -162,72 +162,72 @@ final class WeiyunShareSettingController
     } else {
       paramInt = 3;
     }
-    if (paramInt == this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Int) {
-      i = 0;
+    if (paramInt == this.c.a) {
+      j = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(paramString);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a();
+    this.c.a = paramInt;
+    this.e.setRightText(paramString);
+    if (j != 0) {
+      this.a.b();
     }
   }
   
   IShareRouter.ShareOptions a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions;
-  }
-  
-  void a()
-  {
-    ActionSheet localActionSheet = this.jdField_a_of_type_ComTencentWidgetActionSheet;
-    if (localActionSheet != null)
-    {
-      localActionSheet.superDismiss();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = null;
-    }
+    return this.c;
   }
   
   void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+    Object localObject = this.e;
     if (localObject != null) {
       ((FormSimpleItem)localObject).setEnabled(paramBoolean);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+    localObject = this.f;
     if (localObject != null) {
       ((FormSwitchItem)localObject).setEnabled(paramBoolean);
     }
-    localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+    localObject = this.g;
     if (localObject != null) {
       ((FormSimpleItem)localObject).setEnabled(paramBoolean);
     }
-    localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+    localObject = this.h;
     if (localObject != null) {
       ((FormSwitchItem)localObject).setEnabled(paramBoolean);
+    }
+  }
+  
+  void b()
+  {
+    ActionSheet localActionSheet = this.i;
+    if (localActionSheet != null)
+    {
+      localActionSheet.superDismiss();
+      this.i = null;
     }
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool2 = paramCompoundButton.equals(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a());
-    int i = 1;
+    boolean bool2 = paramCompoundButton.equals(this.f.getSwitch());
+    int j = 1;
     boolean bool1 = true;
     if (bool2)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Boolean == paramBoolean) {
+      if (this.c.b == paramBoolean) {
         bool1 = false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.jdField_a_of_type_Boolean = paramBoolean;
+      this.c.b = paramBoolean;
       b(bool1);
     }
-    else if (paramCompoundButton.equals(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()))
+    else if (paramCompoundButton.equals(this.h.getSwitch()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.b == paramBoolean) {
-        i = 0;
+      if (this.c.d == paramBoolean) {
+        j = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter$ShareOptions.b = paramBoolean;
-      if (i != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a();
+      this.c.d = paramBoolean;
+      if (j != 0) {
+        this.a.b();
       }
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -235,15 +235,15 @@ final class WeiyunShareSettingController
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131377330) {
-      b();
+    if (paramView.getId() == 2131445719) {
+      d();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.WeiyunShareSettingController
  * JD-Core Version:    0.7.0.1
  */

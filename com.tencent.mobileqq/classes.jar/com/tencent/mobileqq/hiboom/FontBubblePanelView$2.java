@@ -11,12 +11,12 @@ class FontBubblePanelView$2
   public void a(List<FontBubble> paramList)
   {
     FontBubblePanelView.a(this.a, paramList);
-    FontBubblePanelView.a(this.a).notifyDataSetChanged();
+    FontBubblePanelView.c(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubblePanelView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,36 +5,30 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MsgBackupSessionInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public ConcurrentHashMap<Long, MsgBackupSessionTask> a;
-  public AtomicBoolean a;
-  public boolean a;
-  public String b;
-  public ConcurrentHashMap<Long, MsgBackupSessionTask> b = new ConcurrentHashMap();
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  
-  public MsgBackupSessionInfo()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  public int b;
+  public String c;
+  public long d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public AtomicBoolean h = new AtomicBoolean();
+  public boolean i;
+  public ConcurrentHashMap<Long, MsgBackupSessionTask> j = new ConcurrentHashMap();
+  public ConcurrentHashMap<Long, MsgBackupSessionTask> k = new ConcurrentHashMap();
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("_");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupSessionInfo
  * JD-Core Version:    0.7.0.1
  */

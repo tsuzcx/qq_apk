@@ -14,29 +14,26 @@ import com.tencent.widget.TraceUtils;
 public class PresetWordFlowLayout
   extends RelativeLayout
 {
-  public int a;
-  private DataSetObserver a;
   protected BaseAdapter a;
   public int b = 0;
   public int c = 0;
   public int d = 0;
+  public int e = 0;
+  private DataSetObserver f;
   
   public PresetWordFlowLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public PresetWordFlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public PresetWordFlowLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 0;
   }
   
   protected void a()
@@ -44,19 +41,19 @@ public class PresetWordFlowLayout
     int j = getChildCount();
     int i = 0;
     View localView;
-    while ((i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) && (i < j))
+    while ((i < this.a.getCount()) && (i < j))
     {
       localView = getChildAt(i);
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, localView, this);
+      this.a.getView(i, localView, this);
       i += 1;
     }
-    if (j > this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) {
-      removeViews(i, j - this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount());
+    if (j > this.a.getCount()) {
+      removeViews(i, j - this.a.getCount());
     }
-    if (j < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) {
-      while (i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount())
+    if (j < this.a.getCount()) {
+      while (i < this.a.getCount())
       {
-        localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, null, this);
+        localView = this.a.getView(i, null, this);
         if (localView != null) {
           addView(localView, new ViewGroup.MarginLayoutParams(-2, -2));
         }
@@ -90,15 +87,15 @@ public class PresetWordFlowLayout
         int n = localView.getMeasuredHeight();
         paramInt1 = paramInt3;
         int i = paramInt2;
-        if (this.jdField_a_of_type_Int + paramInt2 + m + this.b > j)
+        if (this.b + paramInt2 + m + this.c > j)
         {
-          paramInt1 = paramInt3 + (this.c + n + this.d);
+          paramInt1 = paramInt3 + (this.d + n + this.e);
           i = 0;
         }
-        paramInt2 = this.jdField_a_of_type_Int + i;
-        paramInt3 = this.c + paramInt1;
+        paramInt2 = this.b + i;
+        paramInt3 = this.d + paramInt1;
         localView.layout(paramInt2, paramInt3, paramInt2 + m, n + paramInt3);
-        paramInt2 = i + (this.jdField_a_of_type_Int + m + this.b);
+        paramInt2 = i + (this.b + m + this.c);
       }
       paramInt4 += 1;
     }
@@ -130,8 +127,8 @@ public class PresetWordFlowLayout
         measureChild(localView, paramInt1, paramInt2);
         i1 = localView.getMeasuredWidth();
         int n = localView.getMeasuredHeight();
-        i1 = i1 + this.jdField_a_of_type_Int + this.b;
-        int i5 = n + this.c + this.d;
+        i1 = i1 + this.b + this.c;
+        int i5 = n + this.d + this.e;
         n = m + i1;
         if (n > i4)
         {
@@ -174,27 +171,27 @@ public class PresetWordFlowLayout
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
   {
-    BaseAdapter localBaseAdapter = this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    BaseAdapter localBaseAdapter = this.a;
     if (localBaseAdapter != null)
     {
-      DataSetObserver localDataSetObserver = this.jdField_a_of_type_AndroidDatabaseDataSetObserver;
+      DataSetObserver localDataSetObserver = this.f;
       if (localDataSetObserver != null) {
         localBaseAdapter.unregisterDataSetObserver(localDataSetObserver);
       }
     }
     removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-    if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null)
+    this.a = paramBaseAdapter;
+    if (this.a != null)
     {
-      this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new PresetWordFlowLayout.AdapterDataSetObserver(this);
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+      this.f = new PresetWordFlowLayout.AdapterDataSetObserver(this);
+      this.a.registerDataSetObserver(this.f);
+      this.a.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.PresetWordFlowLayout
  * JD-Core Version:    0.7.0.1
  */

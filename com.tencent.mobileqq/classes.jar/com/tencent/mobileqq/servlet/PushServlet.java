@@ -70,7 +70,7 @@ public class PushServlet
     a(paramFileStoragePushFSSvcList);
     a(paramQQAppInterface);
     if (PicIPManager.a(paramFileStoragePushFSSvcList)) {
-      NearbyManagerHelper.a(paramQQAppInterface).b();
+      NearbyManagerHelper.a(paramQQAppInterface).c();
     }
     if ((paramFileStoragePushFSSvcList.vGPicDownLoadList == null) && (QLog.isColorLevel())) {
       QLog.d("FMT_ADDR", 2, "RECEIVED PUSH: vGPicDownLoadList ==null");
@@ -110,7 +110,7 @@ public class PushServlet
       }
       ((SharedPreferences)localObject).edit().putString("SosoSrvAddrList_key", localStringBuilder.toString()).commit();
       paramArrayList = new Intent("com.tencent.receiver.soso");
-      paramArrayList.putExtra("com.tencent.receiver.soso.type", SosoSrvAddrProvider.a);
+      paramArrayList.putExtra("com.tencent.receiver.soso.type", SosoSrvAddrProvider.c);
       MobileQQ.sMobileQQ.sendBroadcast(paramArrayList);
     }
   }
@@ -126,7 +126,7 @@ public class PushServlet
     QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
     synchronized (FMTSrvAddrProvider.getInstance().saveSvcListLock)
     {
-      if (!localQQAppInterface.mAutomator.d()) {
+      if (!localQQAppInterface.mAutomator.i()) {
         FMTSrvAddrProvider.getInstance().setSvcListCache(paramArrayOfByte);
       } else {
         a(paramArrayOfByte, localQQAppInterface);
@@ -159,7 +159,7 @@ public class PushServlet
   
   public String[] getPreferSSOCommands()
   {
-    return new String[] { "cmd_connOpened", "RegPrxySvc.PullGroupMsgSeq", "RegPrxySvc.PullDisMsgSeq", "RegPrxySvc.infoNew", "RegPrxySvc.PullDisMsgProxy", "RegPrxySvc.PullGroupMsgProxy", "RegPrxySvc.GetMsgV2", "RegPrxySvc.PbGetMsg", "RegPrxySvc.PbSyncMsg", "RegPrxySvc.PbGetGroupMsg", "RegPrxySvc.PbGetDiscussMsg", "RegPrxySvc.PullDisGroupSeq", "RegPrxySvc.NoticeEnd", "RegPrxySvc.GetBoxFilter", "cmd_connClosed", "ConfigPushSvc.PushReq", "StatSvc.register", "cmd_connAllFailed", "cmd_recvFirstResp", "cmd_connWeakNet", "cmd_connWeakNet_New", "MultiVideo.s2c", "MultiVideo.c2sack", "ProfileService.CheckUpdateReq", "cmd_netNeedSignon", "qqwifi.notifyAvail", "RegPrxySvc.QueryIpwdStat", "ConfigPushSvc.PushDomain", "cmd_wake_from_deep_sleep" };
+    return new String[] { "cmd_connOpened", "RegPrxySvc.PullGroupMsgSeq", "RegPrxySvc.PullDisMsgSeq", "RegPrxySvc.infoNew", "RegPrxySvc.PullDisMsgProxy", "RegPrxySvc.PullGroupMsgProxy", "RegPrxySvc.GetMsgV2", "RegPrxySvc.PbGetMsg", "RegPrxySvc.PbSyncMsg", "RegPrxySvc.PbGetGroupMsg", "RegPrxySvc.PbGetDiscussMsg", "RegPrxySvc.PullDisGroupSeq", "RegPrxySvc.NoticeEnd", "RegPrxySvc.GetBoxFilter", "cmd_connClosed", "ConfigPushSvc.PushReq", "StatSvc.register", "cmd_connAllFailed", "cmd_recvFirstResp", "cmd_connWeakNet", "cmd_connWeakNet_New", "MultiVideo.s2c", "MultiVideo.c2sack", "ProfileService.CheckUpdateReq", "cmd_netNeedSignon", "qqwifi.notifyAvail", "RegPrxySvc.QueryIpwdStat", "ConfigPushSvc.PushDomain", "cmd_wake_from_deep_sleep", "trpc.group_pro.synclogic.SyncLogic.PushFirstView", "trpc.group_pro.synclogic.SyncLogic.PushChannelMsg", "MsgPush.PushGroupProMsg" };
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -347,95 +347,107 @@ public class PushServlet
       return;
       if (TextUtils.equals("cmd_wake_from_deep_sleep", (CharSequence)localObject))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PushServlet", 2, new Object[] { "onReceive: cmd = ", localObject, ", manager = ", Boolean.valueOf(MSFConfigProcessor.a()) });
-        }
+        QLog.d("PushServlet", 1, new Object[] { "onReceive: cmd = ", localObject, ", manager = ", Boolean.valueOf(MSFConfigProcessor.a()) });
         if ((Build.MANUFACTURER.equalsIgnoreCase("huawei")) && (MSFConfigProcessor.a()))
         {
           l1 = (int)(System.currentTimeMillis() / 1000L);
           long l2 = Math.abs(new Random().nextInt());
           localQQAppInterface.getMsgHandler().a(l1 << 32 | l2, false, true);
           QQBeaconReport.a("load_msg_from_deep_sleep");
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("dimontang", 2, String.format("RECEIVED PUSH: MULTI VIDEO S2C, SsoSeq[%s], AppSeq[%s]", new Object[] { Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()), Integer.valueOf(paramFromServiceMsg.getAppSeq()) }));
-          }
-          if (paramIntent != null)
+        }
+      }
+      else if (("trpc.group_pro.synclogic.SyncLogic.PushFirstView".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("trpc.group_pro.synclogic.SyncLogic.PushChannelMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("MsgPush.PushGroupProMsg".equals(paramFromServiceMsg.getServiceCmd())))
+      {
+        if (paramIntent != null)
+        {
+          paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+          paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+        }
+        else
+        {
+          paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+        }
+        paramIntent.extraData.putBoolean("req_pb_protocol_flag", true);
+        ((QQAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("dimontang", 2, String.format("RECEIVED PUSH: MULTI VIDEO S2C, SsoSeq[%s], AppSeq[%s]", new Object[] { Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()), Integer.valueOf(paramFromServiceMsg.getAppSeq()) }));
+        }
+        if (paramIntent != null)
+        {
+          paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+          paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+        }
+        else
+        {
+          paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+        }
+        ((QQAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
+        return;
+        if (paramIntent != null)
+        {
+          paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+          paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+        }
+        else
+        {
+          paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+        }
+        if ((!"RegPrxySvc.infoLogin".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.getOffMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
+          try
           {
-            paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-            paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-          }
-          else
-          {
-            paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-          }
-          ((QQAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
-          return;
-          if (paramIntent != null)
-          {
-            paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-            paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-          }
-          else
-          {
-            paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-          }
-          if ((!"RegPrxySvc.infoLogin".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.getOffMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
-            try
+            if (localQQAppInterface.getMsgHandler().e.x != 0L)
             {
-              if (localQQAppInterface.getMsgHandler().a.a != 0L)
+              if (!paramFromServiceMsg.getAttributes().containsKey("_attr_regprxy_random_code"))
               {
-                if (!paramFromServiceMsg.getAttributes().containsKey("_attr_regprxy_random_code"))
+                if (!QLog.isColorLevel()) {
+                  return;
+                }
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("[ReSendProxy]cmd=");
+                ((StringBuilder)localObject).append(paramFromServiceMsg.getServiceCmd());
+                ((StringBuilder)localObject).append(" app seq:");
+                ((StringBuilder)localObject).append(paramFromServiceMsg.getAppSeq());
+                ((StringBuilder)localObject).append(" No Random!");
+                QLog.d("Q.msg.register_proxy", 2, ((StringBuilder)localObject).toString());
+                return;
+              }
+              if (((Long)paramFromServiceMsg.getAttributes().get("_attr_regprxy_random_code")).longValue() != localQQAppInterface.getMsgHandler().e.x)
+              {
+                if (QLog.isColorLevel())
                 {
-                  if (!QLog.isColorLevel()) {
-                    return;
-                  }
                   localObject = new StringBuilder();
                   ((StringBuilder)localObject).append("[ReSendProxy]cmd=");
                   ((StringBuilder)localObject).append(paramFromServiceMsg.getServiceCmd());
                   ((StringBuilder)localObject).append(" app seq:");
                   ((StringBuilder)localObject).append(paramFromServiceMsg.getAppSeq());
-                  ((StringBuilder)localObject).append(" No Random!");
+                  ((StringBuilder)localObject).append(" Diff Random=");
+                  ((StringBuilder)localObject).append((Long)paramFromServiceMsg.getAttributes().get("_attr_regprxy_random_code"));
                   QLog.d("Q.msg.register_proxy", 2, ((StringBuilder)localObject).toString());
-                  return;
                 }
-                if (((Long)paramFromServiceMsg.getAttributes().get("_attr_regprxy_random_code")).longValue() != localQQAppInterface.getMsgHandler().a.a)
-                {
-                  if (QLog.isColorLevel())
-                  {
-                    localObject = new StringBuilder();
-                    ((StringBuilder)localObject).append("[ReSendProxy]cmd=");
-                    ((StringBuilder)localObject).append(paramFromServiceMsg.getServiceCmd());
-                    ((StringBuilder)localObject).append(" app seq:");
-                    ((StringBuilder)localObject).append(paramFromServiceMsg.getAppSeq());
-                    ((StringBuilder)localObject).append(" Diff Random=");
-                    ((StringBuilder)localObject).append((Long)paramFromServiceMsg.getAttributes().get("_attr_regprxy_random_code"));
-                    QLog.d("Q.msg.register_proxy", 2, ((StringBuilder)localObject).toString());
-                  }
-                  return;
-                }
-              }
-            }
-            catch (Exception localException)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.w("Q.msg.register_proxy", 2, "[ReSendProxy] PushServletException", localException);
+                return;
               }
             }
           }
-          if ((!"RegPrxySvc.PbGetMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.GetBoxFilter".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbGetDiscussMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbGetGroupMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbSyncMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
-            break label1841;
+          catch (Exception localException)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("Q.msg.register_proxy", 2, "[ReSendProxy] PushServletException", localException);
+            }
           }
-          paramIntent.extraData.putBoolean("req_pb_protocol_flag", true);
-          label1841:
-          if ("RegPrxySvc.PbSyncMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-            paramIntent.extraData.putBoolean("used_new_register_proxy", true);
-          } else {
-            paramIntent.extraData.putBoolean("used_register_proxy", true);
-          }
-          localQQAppInterface.mAutomator.d();
-          ((QQAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
         }
+        if ((!"RegPrxySvc.PbGetMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.GetBoxFilter".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbGetDiscussMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbGetGroupMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"RegPrxySvc.PbSyncMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
+          break label1953;
+        }
+        paramIntent.extraData.putBoolean("req_pb_protocol_flag", true);
+        label1953:
+        if ("RegPrxySvc.PbSyncMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+          paramIntent.extraData.putBoolean("used_new_register_proxy", true);
+        } else {
+          paramIntent.extraData.putBoolean("used_register_proxy", true);
+        }
+        localQQAppInterface.mAutomator.k();
+        ((QQAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
       }
       return;
     }
@@ -449,7 +461,7 @@ public class PushServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.PushServlet
  * JD-Core Version:    0.7.0.1
  */

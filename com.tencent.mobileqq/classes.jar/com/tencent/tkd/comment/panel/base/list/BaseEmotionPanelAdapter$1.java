@@ -11,14 +11,14 @@ class BaseEmotionPanelAdapter$1
   
   public void a(int paramInt)
   {
-    if (this.a.a.a() != null) {
-      this.a.a.a().a(this.a.a(paramInt));
+    if (this.a.a.getOnEmotionItemClickListener() != null) {
+      this.a.a.getOnEmotionItemClickListener().a(this.a.a(paramInt));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.base.list.BaseEmotionPanelAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class ChatHistoryTroopMemberFragment$26
   
   public void run()
   {
-    ((ITroopFeeHandler)this.this$0.b.getBusinessHandler(BusinessHandlerFactory.TROOP_FEE_HANDLER)).a(this.this$0.c, this.this$0.j, this.this$0.e);
+    ((ITroopFeeHandler)this.this$0.bc.getBusinessHandler(BusinessHandlerFactory.TROOP_FEE_HANDLER)).a(this.this$0.w, this.this$0.aA, this.this$0.aB);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.26
  * JD-Core Version:    0.7.0.1
  */

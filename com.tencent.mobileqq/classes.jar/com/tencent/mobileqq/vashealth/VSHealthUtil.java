@@ -13,7 +13,6 @@ import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.vashealth.config.HealthConfigBean;
 import com.tencent.mobileqq.vashealth.config.HealthConfigProcessor;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.URLUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,35 +57,43 @@ public class VSHealthUtil
     return null;
   }
   
-  public static boolean a(Context paramContext, BaseQQAppInterface paramBaseQQAppInterface, String paramString, int paramInt)
+  public static boolean a(Context paramContext, BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
   {
     if ((paramContext != null) && (paramBaseQQAppInterface != null))
     {
-      paramString = HealthConfigProcessor.a().a();
-      Object localObject = a(paramBaseQQAppInterface);
+      localObject1 = HealthConfigProcessor.a().b();
+      Object localObject2 = a(paramBaseQQAppInterface);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[redirectAIOToMainPage] healthMainPageJumpUrl: ");
-      localStringBuilder.append(paramString);
+      localStringBuilder.append((String)localObject1);
       localStringBuilder.append(", msgJumpUrl: ");
-      localStringBuilder.append((String)localObject);
+      localStringBuilder.append((String)localObject2);
       QLog.d("VSHealthUtil", 1, localStringBuilder.toString());
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramString = (String)localObject;
+      if (paramInt != 164)
+      {
+        if (paramInt != 165)
+        {
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            localObject1 = localObject2;
+          }
+        }
+        else {
+          localObject1 = HealthConfigProcessor.a().e();
+        }
       }
-      if (TextUtils.isEmpty(paramString))
+      else {
+        localObject1 = HealthConfigProcessor.a().c();
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         QLog.e("VSHealthUtil", 1, "[redirectAIOToMainPage] error! targetJumpUrl is null!");
         return false;
       }
-      localObject = JumpParser.a(paramBaseQQAppInterface, paramContext, paramString);
-      if (localObject != null)
-      {
-        ((JumpAction)localObject).a();
-      }
-      else
-      {
-        paramString = URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a(paramString, "uin", paramBaseQQAppInterface.getCurrentUin()), "puin", "3026775809"), "isHealthPublicAccountMainPage", "1"), "sourceFrom", String.valueOf(paramInt));
-        ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).handleUrlEvent(paramContext, paramBaseQQAppInterface, paramString, "3026775809", null);
+      localObject2 = JumpParser.a(paramBaseQQAppInterface, paramContext, (String)localObject1);
+      if (localObject2 != null) {
+        ((JumpAction)localObject2).a();
+      } else {
+        ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).handleUrlEvent(paramContext, paramBaseQQAppInterface, (String)localObject1, "3026775809", null);
       }
       paramContext = (IConversationFacade)paramBaseQQAppInterface.getRuntimeService(IConversationFacade.class, "multi");
       if (paramContext != null) {
@@ -94,23 +101,23 @@ public class VSHealthUtil
       }
       return true;
     }
-    paramBaseQQAppInterface = new StringBuilder();
-    paramBaseQQAppInterface.append("[redirectAIOToMainPage] error! context: ");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[redirectAIOToMainPage] error! context: ");
     boolean bool;
     if (paramContext == null) {
       bool = true;
     } else {
       bool = false;
     }
-    paramBaseQQAppInterface.append(bool);
-    paramBaseQQAppInterface.append(", app: ");
-    if (paramContext == null) {
+    ((StringBuilder)localObject1).append(bool);
+    ((StringBuilder)localObject1).append(", app: ");
+    if (paramBaseQQAppInterface == null) {
       bool = true;
     } else {
       bool = false;
     }
-    paramBaseQQAppInterface.append(bool);
-    QLog.e("VSHealthUtil", 1, paramBaseQQAppInterface.toString());
+    ((StringBuilder)localObject1).append(bool);
+    QLog.e("VSHealthUtil", 1, ((StringBuilder)localObject1).toString());
     return false;
   }
   
@@ -129,7 +136,7 @@ public class VSHealthUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.VSHealthUtil
  * JD-Core Version:    0.7.0.1
  */

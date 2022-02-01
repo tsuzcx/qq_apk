@@ -12,7 +12,7 @@ public class cookieUtils
 {
   public static void setCookie(Context paramContext, String paramString)
   {
-    Object localObject = SwiftBrowserCookieMonster.c(paramString).replace(" ", "");
+    Object localObject = SwiftBrowserCookieMonster.d(paramString).replace(" ", "");
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if (Build.VERSION.SDK_INT < 21) {
@@ -37,7 +37,7 @@ public class cookieUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.cookieUtils
  * JD-Core Version:    0.7.0.1
  */

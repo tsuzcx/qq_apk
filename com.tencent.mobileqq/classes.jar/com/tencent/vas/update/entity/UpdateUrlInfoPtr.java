@@ -1,6 +1,6 @@
 package com.tencent.vas.update.entity;
 
-import com.tencent.vas.update.callback.IVasLog;
+import com.tencent.vas.update.factory.api.IVasLog;
 import com.tencent.vas.update.util.CommonUtil;
 import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 import org.json.JSONObject;
@@ -52,14 +52,14 @@ public class UpdateUrlInfoPtr
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("parseJsonToUpdateUrlInfoPtr error data = ");
       localStringBuilder.append(paramJSONObject.toString());
-      localIVasLog.e("VasUpdate_UpdateUrlInfoPtr", localStringBuilder.toString());
+      localIVasLog.c("VasUpdate_UpdateUrlInfoPtr", localStringBuilder.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.entity.UpdateUrlInfoPtr
  * JD-Core Version:    0.7.0.1
  */

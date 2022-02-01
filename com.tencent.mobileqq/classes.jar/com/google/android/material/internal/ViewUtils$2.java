@@ -12,7 +12,7 @@ final class ViewUtils$2
   @NonNull
   public WindowInsetsCompat a(View paramView, @NonNull WindowInsetsCompat paramWindowInsetsCompat, @NonNull ViewUtils.RelativePadding paramRelativePadding)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       paramRelativePadding.d += paramWindowInsetsCompat.getSystemWindowInsetBottom();
     }
     boolean bool = ViewUtils.a(paramView);
@@ -31,7 +31,7 @@ final class ViewUtils$2
       }
     }
     paramRelativePadding.a(paramView);
-    ViewUtils.OnApplyWindowInsetsListener localOnApplyWindowInsetsListener = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalViewUtils$OnApplyWindowInsetsListener;
+    ViewUtils.OnApplyWindowInsetsListener localOnApplyWindowInsetsListener = this.d;
     WindowInsetsCompat localWindowInsetsCompat = paramWindowInsetsCompat;
     if (localOnApplyWindowInsetsListener != null) {
       localWindowInsetsCompat = localOnApplyWindowInsetsListener.a(paramView, paramWindowInsetsCompat, paramRelativePadding);
@@ -41,7 +41,7 @@ final class ViewUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.ViewUtils.2
  * JD-Core Version:    0.7.0.1
  */

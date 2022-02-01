@@ -22,69 +22,69 @@ import java.util.List;
 public class LangSettingFragment
   extends IphoneTitleBarFragment
 {
-  private static final List<Integer> jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(2052), Integer.valueOf(1033) });
-  private int jdField_a_of_type_Int;
-  private Dialog jdField_a_of_type_AndroidAppDialog = null;
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
+  private static final List<Integer> a = Arrays.asList(new Integer[] { Integer.valueOf(2052), Integer.valueOf(1033) });
+  private Dialog b = null;
+  private ActionSheet c;
+  private int d;
   
   private String a(int paramInt, boolean paramBoolean)
   {
-    int j = ((Integer)jdField_a_of_type_JavaUtilList.get(0)).intValue();
+    int j = ((Integer)a.get(0)).intValue();
     int i = j;
     if (paramInt >= 0)
     {
       i = j;
-      if (paramInt < jdField_a_of_type_JavaUtilList.size()) {
-        i = ((Integer)jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
+      if (paramInt < a.size()) {
+        i = ((Integer)a.get(paramInt)).intValue();
       }
     }
     return LocaleManager.a(i);
   }
   
-  private void a()
+  private void a(int paramInt)
   {
-    int j = LocaleManager.a();
+    if (this.c == null) {
+      this.c = ActionSheet.create(getBaseActivity());
+    }
+    this.c.setMainTitle(String.format(getResources().getString(2131891128), new Object[] { a(paramInt, true) }));
+    this.c.addButton(String.format(getResources().getString(2131891127), new Object[] { a(paramInt, true) }));
+    this.c.addCancelButton(getResources().getString(2131891126));
+    this.c.setOnButtonClickListener(new LangSettingFragment.1(this, paramInt));
+    this.c.show();
+  }
+  
+  private void b()
+  {
+    int j = LocaleManager.d();
     int i = 0;
     if (j == 0)
     {
-      this.jdField_a_of_type_Int = 0;
+      this.d = 0;
       return;
     }
-    while (i < jdField_a_of_type_JavaUtilList.size())
+    while (i < a.size())
     {
-      if (((Integer)jdField_a_of_type_JavaUtilList.get(i)).intValue() == j)
+      if (((Integer)a.get(i)).intValue() == j)
       {
-        this.jdField_a_of_type_Int = i;
+        this.d = i;
         return;
       }
       i += 1;
     }
   }
   
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.create(getBaseActivity());
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setMainTitle(String.format(getResources().getString(2131693564), new Object[] { a(paramInt, true) }));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(String.format(getResources().getString(2131693563), new Object[] { a(paramInt, true) }));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(getResources().getString(2131693562));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new LangSettingFragment.1(this, paramInt));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-  }
-  
   private void b(int paramInt)
   {
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    Dialog localDialog = this.b;
     if ((localDialog != null) && (localDialog.isShowing()))
     {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.jdField_a_of_type_AndroidAppDialog = null;
+      this.b.dismiss();
+      this.b = null;
     }
-    this.jdField_a_of_type_AndroidAppDialog = CustomDialogFactory.a(getBaseActivity(), 2131692628, 2131692626, 2131692625, 2131692627, new LangSettingFragment.2(this), new LangSettingFragment.3(this, paramInt));
+    this.b = CustomDialogFactory.a(getBaseActivity(), 2131889651, 2131889649, 2131889648, 2131889650, new LangSettingFragment.2(this), new LangSettingFragment.3(this, paramInt));
     if (!getBaseActivity().isFinishing())
     {
-      localDialog = this.jdField_a_of_type_AndroidAppDialog;
+      localDialog = this.b;
       if (localDialog != null) {
         localDialog.show();
       }
@@ -99,9 +99,9 @@ public class LangSettingFragment
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    a();
-    setTitle(getResources().getString(2131718797));
-    ((ListView)this.mContentView.findViewById(2131369726)).setAdapter(new LangSettingFragment.LocaleListAdapter(this));
+    b();
+    setTitle(getResources().getString(2131916303));
+    ((ListView)this.mContentView.findViewById(2131436842)).setAdapter(new LangSettingFragment.LocaleListAdapter(this));
     paramLayoutInflater = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (paramLayoutInflater != null) {
       ReportController.b(paramLayoutInflater, "dc00898", "", "", "0X800A611", "0X800A5A7", 0, 0, "", "", "", "");
@@ -110,12 +110,12 @@ public class LangSettingFragment
   
   protected int getContentLayoutId()
   {
-    return 2131561450;
+    return 2131627806;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment
  * JD-Core Version:    0.7.0.1
  */

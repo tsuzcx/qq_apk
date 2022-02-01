@@ -41,10 +41,10 @@ public class DailyDynamicHeaderBackgroundController
   
   private static boolean a()
   {
-    Object localObject = (ReadInJoyLogicManager)((QQAppInterface)ReadInJoyUtils.a()).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+    Object localObject = (ReadInJoyLogicManager)((QQAppInterface)ReadInJoyUtils.b()).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
     if (localObject != null)
     {
-      localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().a();
+      localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().ad();
       if (localObject != null)
       {
         localObject = ((JSONObject)localObject).optString("is_blur_background", "0");
@@ -60,10 +60,10 @@ public class DailyDynamicHeaderBackgroundController
   
   private static boolean b()
   {
-    Object localObject = (ReadInJoyLogicManager)((QQAppInterface)ReadInJoyUtils.a()).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+    Object localObject = (ReadInJoyLogicManager)((QQAppInterface)ReadInJoyUtils.b()).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
     if (localObject != null)
     {
-      localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().a();
+      localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine().ad();
       if (localObject != null)
       {
         localObject = ((JSONObject)localObject).optString("is_cover_background", "0");
@@ -79,7 +79,7 @@ public class DailyDynamicHeaderBackgroundController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyDynamicHeaderBackgroundController
  * JD-Core Version:    0.7.0.1
  */

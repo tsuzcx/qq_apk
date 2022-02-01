@@ -21,42 +21,22 @@ import java.util.Queue;
 class VideoFilterViewPager$VideoFilterPagerAdapter
   extends PagerAdapter
 {
-  public final SparseArray<View> a;
-  public ArrayList<QIMFilterCategoryItem> a;
-  public final Map<Class<? extends View>, Queue<View>> a;
+  public final Map<Class<? extends View>, Queue<View>> a = new HashMap();
+  public final SparseArray<View> b = new SparseArray();
+  public ArrayList<QIMFilterCategoryItem> c = new ArrayList();
   
-  public VideoFilterViewPager$VideoFilterPagerAdapter(VideoFilterViewPager paramVideoFilterViewPager)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public VideoFilterViewPager$VideoFilterPagerAdapter(VideoFilterViewPager paramVideoFilterViewPager) {}
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return this.c.size();
   }
   
   public QIMFilterCategoryItem a(int paramInt)
   {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramInt = b(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.c.size())) {
+      return (QIMFilterCategoryItem)this.c.get(paramInt);
     }
     return null;
   }
@@ -67,18 +47,18 @@ class VideoFilterViewPager$VideoFilterPagerAdapter
       return;
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.c.size())
     {
-      if (paramString.equals(((QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a))
+      if (paramString.equals(((QIMFilterCategoryItem)this.c.get(i)).a))
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterViewPager.a(i);
+        this.d.a(i);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onResourceDownload - selectFilterById() - set last selected item: (");
           localStringBuilder.append(i);
           localStringBuilder.append(", ");
-          localStringBuilder.append(((QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a);
+          localStringBuilder.append(((QIMFilterCategoryItem)this.c.get(i)).a);
           localStringBuilder.append(")");
           QLog.d("VideoFilterViewPager", 2, localStringBuilder.toString());
         }
@@ -89,20 +69,35 @@ class VideoFilterViewPager$VideoFilterPagerAdapter
   
   public void a(List<QIMFilterCategoryItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.c.clear();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)paramList.next();
-      if (!localQIMFilterCategoryItem.f()) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localQIMFilterCategoryItem);
+      if (!localQIMFilterCategoryItem.g()) {
+        this.c.add(localQIMFilterCategoryItem);
       }
     }
-    if (!VideoFilterTools.a().c()) {
-      VideoFilterTools.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (!VideoFilterTools.a().k()) {
+      VideoFilterTools.b(this.c);
     }
-    VideoFilterTools.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterViewPager.getContext(), this.jdField_a_of_type_JavaUtilArrayList);
+    VideoFilterTools.a(this.d.getContext(), this.c);
     notifyDataSetChanged();
+  }
+  
+  public int b(int paramInt)
+  {
+    int i = this.c.size();
+    if (i > 0) {
+      return paramInt % i;
+    }
+    return -1;
+  }
+  
+  @Nullable
+  public View c(int paramInt)
+  {
+    return (View)this.b.get(paramInt);
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -118,20 +113,20 @@ class VideoFilterViewPager$VideoFilterPagerAdapter
     ((View)localObject).removeCallbacks((Runnable)((View)localObject).getTag());
     ((View)localObject).clearAnimation();
     paramViewGroup.removeView((View)localObject);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject.getClass());
+    paramObject = (Queue)this.a.get(localObject.getClass());
     paramViewGroup = paramObject;
     if (paramObject == null)
     {
       paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localObject.getClass(), paramViewGroup);
+      this.a.put(localObject.getClass(), paramViewGroup);
     }
     paramViewGroup.offer(localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    this.b.remove(paramInt);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
+    return this.c.size() * 100;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
@@ -151,7 +146,7 @@ class VideoFilterViewPager$VideoFilterPagerAdapter
       }
       return null;
     }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
+    localObject1 = (Queue)this.a.get(localObject1.getClass());
     if (localObject1 != null) {
       localObject1 = (View)((Queue)localObject1).poll();
     } else {
@@ -160,11 +155,11 @@ class VideoFilterViewPager$VideoFilterPagerAdapter
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131559071, null);
+      localObject2 = ((LayoutInflater)this.d.getContext().getSystemService("layout_inflater")).inflate(2131624731, null);
       ((View)localObject2).setVisibility(8);
     }
     paramViewGroup.addView((View)localObject2);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+    this.b.put(paramInt, localObject2);
     return localObject2;
   }
   
@@ -175,7 +170,7 @@ class VideoFilterViewPager$VideoFilterPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.VideoFilterViewPager.VideoFilterPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

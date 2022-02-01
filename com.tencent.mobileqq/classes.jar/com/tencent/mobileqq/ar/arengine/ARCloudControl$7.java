@@ -18,8 +18,8 @@ class ARCloudControl$7
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
     ARCloudControl.f(this.a, false);
-    if (ARCloudControl.a(this.a) != null) {
-      ARCloudControl.a(this.a).removeMessages(2);
+    if (ARCloudControl.d(this.a) != null) {
+      ARCloudControl.d(this.a).removeMessages(2);
     }
     if (ARCloudControl.a(this.a)) {
       return;
@@ -47,7 +47,7 @@ class ARCloudControl$7
       localStringBuilder.append(", address = ");
       localStringBuilder.append(paramSosoLbsInfo.address);
       QLog.i("AREngine_ARCloudControl", 1, localStringBuilder.toString());
-      paramSosoLbsInfo = ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a));
+      paramSosoLbsInfo = ARCloudRecogResult.d(this.a.n.recognitions, ARCloudControl.h(this.a));
       ARCloudControl.a(this.a, paramSosoLbsInfo, paramInt, i);
       return;
     }
@@ -57,16 +57,16 @@ class ARCloudControl$7
     QLog.i("AREngine_ARCloudControl", 1, paramSosoLbsInfo.toString());
     paramSosoLbsInfo = new ARCloudLBSLocationCheckResult();
     paramSosoLbsInfo.a = 2;
-    ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a), paramSosoLbsInfo);
-    if (ARCloudControl.a(this.a) != null) {
-      ARCloudControl.a(this.a).a(0, ARCloudControl.a(this.a));
+    ARCloudRecogResult.a(this.a.n.recognitions, ARCloudControl.h(this.a), paramSosoLbsInfo);
+    if (ARCloudControl.b(this.a) != null) {
+      ARCloudControl.b(this.a).a(0, ARCloudControl.h(this.a));
     }
     ARCloudControl.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.7
  * JD-Core Version:    0.7.0.1
  */

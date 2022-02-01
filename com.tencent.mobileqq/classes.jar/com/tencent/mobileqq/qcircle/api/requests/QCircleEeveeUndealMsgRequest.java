@@ -30,8 +30,10 @@ public class QCircleEeveeUndealMsgRequest
     this.mReq.uid.set(String.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin()));
     this.mReq.clientInfo.set(paramClientInfo);
     this.mReq.visitScene.set(paramInt1);
-    if ((paramList != null) && (paramList.size() != 0)) {
-      this.mReq.attachInfo.set(paramList);
+    if ((paramList != null) && (paramList.size() != 0))
+    {
+      this.mReq.attachInfo.clear();
+      this.mReq.attachInfo.addAll(paramList);
     }
     this.mReq.visitPage.set(paramInt2);
     this.mReq.signalMsg.set(paramSignalMsg);
@@ -64,7 +66,7 @@ public class QCircleEeveeUndealMsgRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.requests.QCircleEeveeUndealMsgRequest
  * JD-Core Version:    0.7.0.1
  */

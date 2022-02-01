@@ -82,7 +82,7 @@ public class ProfilePersonalityLabelComponent
     }
     Object localObject1 = (ProfilePersonalityLabelInfo)((ProfileCardInfo)this.mData).getBusinessInfo(ProfilePersonalityLabelInfo.class);
     boolean bool8 = ProfilePAUtils.isPaTypeStrangerInContact(((ProfileCardInfo)this.mData).allInOne);
-    boolean bool9 = Utils.b(((ProfileCardInfo)this.mData).allInOne.uin);
+    boolean bool9 = Utils.c(((ProfileCardInfo)this.mData).allInOne.uin);
     Object localObject2 = this.mConfigHelper;
     boolean bool7 = true;
     boolean bool1;
@@ -130,7 +130,7 @@ public class ProfilePersonalityLabelComponent
       {
         paramCard = new PersonalityLabelBoard(this.mActivity, this.mQQAppInterface, ((ProfileCardInfo)this.mData).allInOne.uin);
         localObject2 = new ProfileContentTitleView(this.mActivity);
-        ((ProfileContentTitleView)localObject2).setTitle(HardCodeUtil.a(2131708419));
+        ((ProfileContentTitleView)localObject2).setTitle(HardCodeUtil.a(2131906205));
         ((ProfileContentTitleView)localObject2).addContentView(paramCard);
         this.mViewContainer = localObject2;
         bool1 = bool7;
@@ -201,12 +201,12 @@ public class ProfilePersonalityLabelComponent
         }
         else
         {
-          localObject = this.mActivity.getResources().getColorStateList(2131167056);
+          localObject = this.mActivity.getResources().getColorStateList(2131167993);
         }
         try
         {
-          if (paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView != null) {
-            i = paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.a();
+          if (paramPersonalityLabelBoard.h != null) {
+            i = paramPersonalityLabelBoard.h.getColor();
           }
         }
         catch (Exception localException1) {}
@@ -237,21 +237,21 @@ public class ProfilePersonalityLabelComponent
         bool1 = false;
       }
       paramPersonalityLabelBoard.setIsNormalTheme(bool1);
-      if (paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView != null)
+      if (paramPersonalityLabelBoard.h != null)
       {
         if (j != 0) {
-          paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setBackgroundDrawable(null);
+          paramPersonalityLabelBoard.h.setBackgroundDrawable(null);
         } else {
-          paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setBackgroundResource(2130839435);
+          paramPersonalityLabelBoard.h.setBackgroundResource(2130839624);
         }
         if (localObject != null) {
-          paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTextColor((ColorStateList)localObject);
+          paramPersonalityLabelBoard.h.setTextColor((ColorStateList)localObject);
         } else {
-          paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTextColor(i);
+          paramPersonalityLabelBoard.h.setTextColor(i);
         }
       }
       if ((bool2) && (j != 0)) {
-        updateItemTheme(null, paramPersonalityLabelBoard.jdField_a_of_type_AndroidWidgetTextView, paramPersonalityLabelBoard.jdField_a_of_type_AndroidWidgetButton, null, null, null, paramProfileContentTitleView.mContentContainer);
+        updateItemTheme(null, paramPersonalityLabelBoard.f, paramPersonalityLabelBoard.e, null, null, null, paramProfileContentTitleView.mContentContainer);
       }
       if (localObject != null)
       {
@@ -304,8 +304,8 @@ public class ProfilePersonalityLabelComponent
     if ((paramView.getTag() instanceof DataTag))
     {
       DataTag localDataTag = (DataTag)paramView.getTag();
-      if ((localDataTag.jdField_a_of_type_Int == 86) && ((localDataTag.jdField_a_of_type_JavaLangObject instanceof PersonalityLabelBoard))) {
-        ((PersonalityLabelBoard)localDataTag.jdField_a_of_type_JavaLangObject).a(false);
+      if ((localDataTag.a == 86) && ((localDataTag.b instanceof PersonalityLabelBoard))) {
+        ((PersonalityLabelBoard)localDataTag.b).a(false);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -358,7 +358,7 @@ public class ProfilePersonalityLabelComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitylabel.ProfilePersonalityLabelComponent
  * JD-Core Version:    0.7.0.1
  */

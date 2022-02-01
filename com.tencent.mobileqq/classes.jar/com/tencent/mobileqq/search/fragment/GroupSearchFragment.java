@@ -24,6 +24,7 @@ import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.mini.api.data.SimpleMiniAppConfig;
 import com.tencent.mobileqq.mini.api.data.SimpleMiniAppConfig.SimpleMiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
+import com.tencent.mobileqq.qqfeatureswitch.IFeatureRuntimeService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.LocationInterface;
 import com.tencent.mobileqq.search.SearchFragmentInfoInterface;
@@ -38,22 +39,13 @@ import com.tencent.mobileqq.search.base.model.SearchRespData;
 import com.tencent.mobileqq.search.base.model.SearchResultModelForEntrance;
 import com.tencent.mobileqq.search.base.util.ObjectTransfer;
 import com.tencent.mobileqq.search.base.util.VADHelper;
-import com.tencent.mobileqq.search.business.contact.model.GroupSearchModelLocalContactApproximate;
 import com.tencent.mobileqq.search.business.group.model.GroupSearchModelFooter;
-import com.tencent.mobileqq.search.business.group.model.GroupSearchModelFunction;
-import com.tencent.mobileqq.search.business.group.model.GroupSearchModelLocalContact;
-import com.tencent.mobileqq.search.business.group.model.GroupSearchModelMiniProgram;
-import com.tencent.mobileqq.search.business.group.model.GroupSearchModelMostUsed;
 import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBaseItem;
 import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateHorizontalBaseItem;
-import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateUniversalItem;
-import com.tencent.mobileqq.search.business.net.model.RichSearchModelNode;
 import com.tencent.mobileqq.search.config.SearchConfig;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModel;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
 import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
-import com.tencent.mobileqq.search.model.GroupSearchModelLocalTroop;
-import com.tencent.mobileqq.search.model.GroupSearchModelRichNode;
 import com.tencent.mobileqq.search.model.IModel;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.MiniProgramSearchResultModel;
@@ -67,6 +59,7 @@ import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
 import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import com.tencent.mobileqq.search.util.GroupSearchResultHandler;
 import com.tencent.mobileqq.search.util.SearchCostStat;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.search.util.SearchUtils.ObjectItemInfo;
@@ -91,54 +84,34 @@ public class GroupSearchFragment
   implements SearchFragmentInfoInterface, AbsListView.OnScrollListener
 {
   public static volatile String a;
-  public volatile int a;
-  public long a;
-  protected SearchResultModelForEntrance a;
-  public boolean a;
-  byte[] a;
-  public int b;
-  protected long b;
-  public Handler b;
-  protected SearchResultModelForEntrance b;
-  public String b;
-  public volatile int c;
-  private long c;
-  private long d;
-  public volatile int e;
-  private long e;
-  int f = 0;
-  int g;
-  public boolean g;
-  int h;
-  public boolean h;
-  private int i;
-  public boolean i;
-  private int j;
-  public boolean j;
-  private boolean k = true;
-  private volatile boolean l = false;
-  
-  public GroupSearchFragment()
-  {
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_j_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchResultModelForEntrance = new SearchResultModelForEntrance("", -1, 2130840429, true);
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_i_of_type_Int = -1;
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_b_of_type_AndroidOsHandler = new GroupSearchFragment.1(this, Looper.getMainLooper());
-    this.jdField_e_of_type_Long = 0L;
-  }
+  public boolean G = false;
+  public volatile int H = 0;
+  public volatile int I = 0;
+  protected SearchResultModelForEntrance J = new SearchResultModelForEntrance("", -1, 2130841185, true);
+  protected SearchResultModelForEntrance K;
+  protected long L = 0L;
+  byte[] M;
+  int N = 0;
+  int O = 0;
+  int P;
+  public Handler Q = new GroupSearchFragment.1(this, Looper.getMainLooper());
+  private int R = -1;
+  private int S = 0;
+  private boolean T;
+  private GroupSearchResultHandler U;
+  private long V = 0L;
+  private long W = 0L;
+  private long X = 0L;
+  private boolean Y = true;
+  private volatile boolean Z = false;
+  public volatile int b;
+  public boolean c;
+  public boolean d = false;
+  public boolean e = false;
+  public long f = 0L;
+  public int g = 0;
+  public String h = "";
+  public boolean i = false;
   
   private int a(int paramInt)
   {
@@ -156,183 +129,6 @@ public class GroupSearchFragment
       return 2;
     }
     return 1;
-  }
-  
-  private int a(List<IModel> paramList)
-  {
-    if (paramList == null) {
-      return -1;
-    }
-    if (paramList.size() == 0) {
-      return 0;
-    }
-    Object localObject2 = null;
-    int n = 0;
-    while (n < paramList.size())
-    {
-      Object localObject3 = (IModel)paramList.get(n);
-      Object localObject1;
-      if ((localObject3 instanceof GroupSearchModeTitle))
-      {
-        localObject1 = (GroupSearchModeTitle)localObject3;
-        ISearchResultGroupModel localISearchResultGroupModel = ((GroupSearchModeTitle)localObject1).a();
-        if (localISearchResultGroupModel == null)
-        {
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("getFuzzyPotision error, groupmodel is null:");
-            ((StringBuilder)localObject1).append(localObject3);
-            QLog.e("Q.uniteSearch.GroupSearchFragment", 2, ((StringBuilder)localObject1).toString());
-            localObject1 = localObject2;
-          }
-        }
-        else
-        {
-          localObject2 = localISearchResultGroupModel.a();
-          localObject3 = ((GroupSearchModeTitle)localObject1).a();
-          if (HardCodeUtil.a(2131705477).equals(localObject3))
-          {
-            localObject1 = localObject2;
-          }
-          else if (HardCodeUtil.a(2131705474).equals(localObject3))
-          {
-            localObject1 = localObject2;
-          }
-          else if (HardCodeUtil.a(2131705459).equals(localObject3))
-          {
-            localObject1 = localObject2;
-          }
-          else if (GroupSearchModelMostUsed.jdField_a_of_type_JavaLangString.equals(localObject3))
-          {
-            localObject1 = localObject2;
-          }
-          else if (HardCodeUtil.a(2131705455).equals(localObject3))
-          {
-            if (localObject2 != null)
-            {
-              localObject1 = localObject2;
-              if (((List)localObject2).size() != 0) {}
-            }
-            else
-            {
-              localObject1 = localObject2;
-              if (QLog.isColorLevel())
-              {
-                QLog.e("Q.uniteSearch.GroupSearchFragment", 2, "getFuzzyPotision error, only has title， miniprogram");
-                localObject1 = localObject2;
-              }
-            }
-          }
-          else if (((GroupSearchModeTitle)localObject1).b)
-          {
-            localObject1 = localObject2;
-          }
-          else
-          {
-            localObject3 = SearchEntryConfigManager.a();
-            int m;
-            if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (((String)localObject3).equals(((GroupSearchModeTitle)localObject1).a()))) {
-              m = 1;
-            } else {
-              m = 0;
-            }
-            if (m == 0) {
-              break;
-            }
-            localObject1 = localObject2;
-            if (localObject2 != null) {
-              if (((List)localObject2).size() == 0)
-              {
-                localObject1 = localObject2;
-              }
-              else
-              {
-                if ((((List)localObject2).get(0) instanceof GroupBaseNetSearchModelItem))
-                {
-                  localObject3 = (GroupBaseNetSearchModelItem)((List)localObject2).get(0);
-                  localObject1 = ((GroupBaseNetSearchModelItem)localObject3).jdField_c_of_type_JavaLangString;
-                  localObject3 = ((GroupBaseNetSearchModelItem)localObject3).b();
-                  if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(localObject3))) {
-                    m = 1;
-                  } else {
-                    m = 0;
-                  }
-                }
-                if (m == 0) {
-                  break;
-                }
-                localObject1 = localObject2;
-              }
-            }
-          }
-        }
-      }
-      else
-      {
-        if ((localObject3 instanceof GroupSearchModelFooter)) {}
-        for (;;)
-        {
-          localObject1 = null;
-          break label603;
-          if (!(localObject3 instanceof SearchResultModelForEntrance)) {
-            break;
-          }
-          if (!((SearchResultModelForEntrance)localObject3).b()) {
-            return n;
-          }
-        }
-        if ((localObject3 instanceof GroupSearchModelMostUsed))
-        {
-          localObject1 = localObject2;
-        }
-        else if ((localObject3 instanceof GroupSearchModelLocalContact))
-        {
-          localObject1 = localObject2;
-        }
-        else if ((localObject3 instanceof GroupSearchModelMiniProgram))
-        {
-          localObject1 = localObject2;
-        }
-        else if ((localObject3 instanceof GroupSearchModelFunction))
-        {
-          localObject1 = localObject2;
-        }
-        else if ((localObject3 instanceof GroupSearchModelLocalContactApproximate))
-        {
-          localObject1 = localObject2;
-        }
-        else if ((localObject3 instanceof GroupSearchModelLocalTroop))
-        {
-          localObject1 = localObject2;
-        }
-        else if (((localObject3 instanceof NetSearchTemplateUniversalItem)) && (((NetSearchTemplateUniversalItem)localObject3).jdField_c_of_type_Boolean))
-        {
-          localObject1 = localObject2;
-        }
-        else
-        {
-          if ((localObject2 == null) || (!((List)localObject2).contains(localObject3))) {
-            break label614;
-          }
-          localObject1 = localObject2;
-        }
-      }
-      label603:
-      n += 1;
-      localObject2 = localObject1;
-      continue;
-      label614:
-      if (QLog.isColorLevel())
-      {
-        paramList = new StringBuilder();
-        paramList.append("getFuzzyPotision, break:");
-        paramList.append(localObject3);
-        QLog.d("Q.uniteSearch.GroupSearchFragment", 2, paramList.toString());
-      }
-    }
-    return n;
   }
   
   public static GroupSearchFragment a(int paramInt1, int paramInt2)
@@ -356,44 +152,10 @@ public class GroupSearchFragment
     return localGroupSearchFragment;
   }
   
-  private List<Long> a()
-  {
-    List localList1 = new PublicAccountSearchEngine((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_i_of_type_Int).a(new SearchRequest(this.jdField_c_of_type_JavaLangString));
-    if ((localList1 != null) && (localList1.size() != 0))
-    {
-      List localList2 = ((IPublicAccountDataManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all")).getPublicAccountList();
-      ArrayList localArrayList = new ArrayList();
-      int m;
-      if ((localList2 != null) && (!localList2.isEmpty())) {
-        m = 0;
-      }
-      while (m < localList1.size())
-      {
-        PublicAccountSearchResultModel localPublicAccountSearchResultModel = (PublicAccountSearchResultModel)localList1.get(m);
-        int n = 0;
-        while (n < localList2.size())
-        {
-          PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localList2.get(n);
-          if (TextUtils.equals(String.valueOf(localPublicAccountInfo.uin), String.valueOf(localPublicAccountSearchResultModel.a.uin))) {
-            localArrayList.add(Long.valueOf(localPublicAccountInfo.uin));
-          }
-          n += 1;
-        }
-        m += 1;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.uniteSearch.GroupSearchFragment", 2, "all publicAccountInfoList is null or empty");
-        }
-      }
-      return localArrayList;
-    }
-    return null;
-  }
-  
   private void a(int paramInt, String paramString, List<IModel> paramList)
   {
     Object localObject1 = new HashMap();
-    int m = 1;
+    int j = 1;
     if (paramList != null) {}
     for (;;)
     {
@@ -409,52 +171,52 @@ public class GroupSearchFragment
               continue;
             }
             localObject2 = ((GroupSearchModeTitle)localObject2).a();
-            if (HardCodeUtil.a(2131705475).equals(localObject2))
+            if (HardCodeUtil.a(2131903363).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(1), Integer.valueOf(1));
               continue;
             }
-            if (HardCodeUtil.a(2131705462).equals(localObject2))
+            if (HardCodeUtil.a(2131903350).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(2), Integer.valueOf(2));
               continue;
             }
-            if (HardCodeUtil.a(2131705456).equals(localObject2))
+            if (HardCodeUtil.a(2131903344).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(3), Integer.valueOf(3));
               continue;
             }
-            if (HardCodeUtil.a(2131705454).equals(localObject2))
+            if (HardCodeUtil.a(2131903342).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(4), Integer.valueOf(4));
               continue;
             }
-            if (HardCodeUtil.a(2131705486).equals(localObject2))
+            if (HardCodeUtil.a(2131903374).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(5), Integer.valueOf(5));
               continue;
             }
-            if (HardCodeUtil.a(2131693524).equals(localObject2))
+            if (HardCodeUtil.a(2131891080).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(6), Integer.valueOf(6));
               continue;
             }
-            if (HardCodeUtil.a(2131705466).equals(localObject2))
+            if (HardCodeUtil.a(2131903354).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(7), Integer.valueOf(7));
               continue;
             }
-            if (HardCodeUtil.a(2131719439).equals(localObject2))
+            if (HardCodeUtil.a(2131916999).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(8), Integer.valueOf(8));
               continue;
             }
-            if (HardCodeUtil.a(2131705467).equals(localObject2))
+            if (HardCodeUtil.a(2131903355).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(9), Integer.valueOf(9));
               continue;
             }
-            if (HardCodeUtil.a(2131705471).equals(localObject2))
+            if (HardCodeUtil.a(2131903359).equals(localObject2))
             {
               ((HashMap)localObject1).put(Integer.valueOf(10), Integer.valueOf(10));
               continue;
@@ -470,8 +232,8 @@ public class GroupSearchFragment
           if (((Iterator)localObject1).hasNext())
           {
             localObject2 = (Integer)((Iterator)localObject1).next();
-            if (m != 0) {
-              break label551;
+            if (j != 0) {
+              break label537;
             }
             paramList.append("_");
             paramList.append(localObject2);
@@ -495,8 +257,8 @@ public class GroupSearchFragment
       {
         return;
       }
-      label551:
-      m = 0;
+      label537:
+      j = 0;
     }
   }
   
@@ -521,170 +283,57 @@ public class GroupSearchFragment
   private void b(List<IModel> paramList, int paramInt)
   {
     if ((paramList != null) && (paramInt == 1)) {
-      paramList.remove(this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchResultModelForEntrance);
+      paramList.remove(this.J);
     }
-  }
-  
-  private void e(List<IModel> paramList)
-  {
-    MostUsedFilterForMultiGroupResultLists.a(paramList, this.jdField_c_of_type_JavaLangString);
-    f(paramList);
   }
   
   private void f(List<IModel> paramList)
   {
-    if (paramList != null)
-    {
-      if (paramList.size() == 0) {
-        return;
-      }
-      ArrayList localArrayList3 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      ArrayList localArrayList1 = new ArrayList();
-      int i1 = 0;
-      Object localObject;
-      for (int m = 0; m < paramList.size(); m = n + 1)
-      {
-        IModel localIModel1 = (IModel)paramList.get(m);
-        if ((localIModel1 instanceof RichSearchModelNode))
-        {
-          if (((RichSearchModelNode)localIModel1).c()) {
-            localObject = localArrayList2;
-          } else {
-            localObject = localArrayList1;
-          }
-          if (m > 0)
-          {
-            IModel localIModel2 = (IModel)paramList.get(m - 1);
-            if ((localIModel2 instanceof GroupSearchModeTitle))
-            {
-              ((List)localObject).add(localIModel2);
-              localArrayList3.remove(localIModel2);
-            }
-          }
-          ((List)localObject).add(localIModel1);
-          int i2 = m + 1;
-          n = m;
-          if (i2 > paramList.size())
-          {
-            localIModel1 = (IModel)paramList.get(i2);
-            n = m;
-            if ((localIModel1 instanceof GroupSearchModelFooter))
-            {
-              ((List)localObject).add(localIModel1);
-              n = i2;
-            }
-          }
-        }
-        else
-        {
-          if (((localIModel1 instanceof GroupSearchModelRichNode)) && (QLog.isColorLevel())) {
-            QLog.e("Q.uniteSearch.GroupSearchFragment", 2, "adjustRichNodePosition, error, GroupSearchModelRichNode.");
-          }
-          localArrayList3.add(localIModel1);
-          n = m;
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("adjustRichNodePosition, total:");
-        ((StringBuilder)localObject).append(paramList.size());
-        ((StringBuilder)localObject).append(" exact:");
-        ((StringBuilder)localObject).append(localArrayList2.size());
-        ((StringBuilder)localObject).append(" fuzzy:");
-        ((StringBuilder)localObject).append(localArrayList1.size());
-        ((StringBuilder)localObject).append(" other:");
-        ((StringBuilder)localObject).append(localArrayList3.size());
-        QLog.d("Q.uniteSearch.GroupSearchFragment", 2, ((StringBuilder)localObject).toString());
-      }
-      if ((localArrayList2.size() == 0) && (localArrayList1.size() == 0)) {
-        return;
-      }
-      if (localArrayList1.size() == 0)
-      {
-        paramList.clear();
-        paramList.addAll(localArrayList2);
-        paramList.addAll(localArrayList3);
-        return;
-      }
-      paramList.clear();
-      paramList.addAll(localArrayList2);
-      if (localArrayList3.size() == 0)
-      {
-        paramList.addAll(localArrayList1);
-        return;
-      }
-      int n = a(localArrayList3);
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("adjustRichNodePosition, fuzzy pos:");
-        ((StringBuilder)localObject).append(n);
-        QLog.d("Q.uniteSearch.GroupSearchFragment", 2, ((StringBuilder)localObject).toString());
-      }
-      m = i1;
-      if (n <= 0)
-      {
-        paramList.addAll(localArrayList1);
-        paramList.addAll(localArrayList3);
-        return;
-      }
-      while (m < n)
-      {
-        paramList.add(localArrayList3.get(m));
-        m += 1;
-      }
-      paramList.addAll(localArrayList1);
-      m = n;
-      while (m < localArrayList3.size())
-      {
-        paramList.add(localArrayList3.get(m));
-        m += 1;
-      }
+    Object localObject = paramList;
+    if (this.T) {
+      localObject = this.U.b(paramList, this.R);
     }
+    this.r = ((List)localObject);
+    this.m.a(this.r);
   }
   
-  protected int a()
+  private boolean t()
   {
-    return 0;
+    return ((IFeatureRuntimeService)this.p.getRuntimeService(IFeatureRuntimeService.class, "all")).isFeatureSwitchEnable("Search_Manage749_864531067");
   }
   
-  protected BaseMvpAdapter a()
+  private List<Long> u()
   {
-    return new GroupSearchAdapter(this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder, this, this.jdField_i_of_type_Int);
-  }
-  
-  protected ISearchEngine a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine;
-    }
-    if (this.jdField_e_of_type_Long > 0L)
+    List localList1 = new PublicAccountSearchEngine((QQAppInterface)this.p, this.R).a(new SearchRequest(this.q));
+    if ((localList1 != null) && (localList1.size() != 0))
     {
-      Object localObject = ObjectTransfer.a().a(this.jdField_e_of_type_Long);
-      if ((localObject != null) && ((localObject instanceof GroupSearchEngine)))
+      List localList2 = ((IPublicAccountDataManager)this.p.getRuntimeService(IPublicAccountDataManager.class, "all")).getPublicAccountList();
+      ArrayList localArrayList = new ArrayList();
+      int j;
+      if ((localList2 != null) && (!localList2.isEmpty())) {
+        j = 0;
+      }
+      while (j < localList1.size())
       {
+        PublicAccountSearchResultModel localPublicAccountSearchResultModel = (PublicAccountSearchResultModel)localList1.get(j);
+        int k = 0;
+        while (k < localList2.size())
+        {
+          PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localList2.get(k);
+          if (TextUtils.equals(String.valueOf(localPublicAccountInfo.uin), String.valueOf(localPublicAccountSearchResultModel.a.uin))) {
+            localArrayList.add(Long.valueOf(localPublicAccountInfo.uin));
+          }
+          k += 1;
+        }
+        j += 1;
+        continue;
         if (QLog.isColorLevel()) {
-          QLog.i("GroupSearchFragment", 2, " use VADActivity cache engine...");
+          QLog.d("Q.uniteSearch.GroupSearchFragment", 2, "all publicAccountInfoList is null or empty");
         }
-        this.jdField_d_of_type_Boolean = true;
-        return (GroupSearchEngine)localObject;
       }
+      return localArrayList;
     }
-    return new GroupSearchEngine((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_i_of_type_Int);
-  }
-  
-  public ArrayList a(List paramList)
-  {
-    if (paramList == null) {
-      return null;
-    }
-    if (paramList.size() == 0) {
-      return new ArrayList(paramList);
-    }
-    ArrayList localArrayList = ((MostUsedSearchResultManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.MOST_USE_SEARCH_MANAGER)).a(jdField_a_of_type_JavaLangString);
-    return MostUsedFilterForMultiGroupResultLists.a(jdField_a_of_type_JavaLangString, localArrayList, paramList);
+    return null;
   }
   
   public void a(AppInterface paramAppInterface)
@@ -705,14 +354,14 @@ public class GroupSearchFragment
     paramString2.append("log for search onResultError, keyword = ");
     paramString2.append(paramString1);
     QLog.i("Q.uniteSearch.GroupSearchFragment", 2, paramString2.toString());
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    c();
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_j_of_type_Boolean = true;
-    if ((this.jdField_c_of_type_JavaUtilList.size() != 1) || (!(this.jdField_c_of_type_JavaUtilList.get(0) instanceof SearchResultModelForEntrance)) || (!((SearchResultModelForEntrance)this.jdField_c_of_type_JavaUtilList.get(0)).b()))
+    this.y.setVisibility(8);
+    i();
+    this.i = false;
+    this.G = true;
+    if ((this.r.size() != 1) || (!(this.r.get(0) instanceof SearchResultModelForEntrance)) || (!((SearchResultModelForEntrance)this.r.get(0)).i()))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new GroupSearchFragment.5(this));
+      this.z.setVisibility(0);
+      this.z.setOnClickListener(new GroupSearchFragment.5(this));
     }
   }
   
@@ -725,7 +374,6 @@ public class GroupSearchFragment
     paramList.append(", isFirstReq = ");
     paramList.append(paramBoolean1);
     QLog.i("Q.uniteSearch.GroupSearchFragment", 2, paramList.toString());
-    SearchCostStat.a();
     if (QLog.isColorLevel())
     {
       paramList = new StringBuilder();
@@ -745,25 +393,25 @@ public class GroupSearchFragment
     if (localObject == null) {
       paramList = new ArrayList();
     }
-    int n;
-    int i1;
+    int k;
+    int m;
     if (paramBoolean1)
     {
-      m = 0;
-      for (n = 0; m < paramList.size(); n = i1)
+      j = 0;
+      for (k = 0; j < paramList.size(); k = m)
       {
-        i1 = n;
-        if (!(paramList.get(m) instanceof GroupSearchModeTitle)) {
-          i1 = n + 1;
+        m = k;
+        if (!(paramList.get(j) instanceof GroupSearchModeTitle)) {
+          m = k + 1;
         }
-        m += 1;
+        j += 1;
       }
       localObject = new JSONObject();
       try
       {
         ((JSONObject)localObject).put("project", UniteSearchReportController.a());
         ((JSONObject)localObject).put("event_src", "client");
-        ((JSONObject)localObject).put("web_num", n);
+        ((JSONObject)localObject).put("web_num", k);
       }
       catch (JSONException localJSONException)
       {
@@ -773,74 +421,74 @@ public class GroupSearchFragment
         QLog.e("Q.uniteSearch.GroupSearchFragment", 2, localStringBuilder.toString());
       }
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = new ReportModelDC02528().module("all_result").action("exp_items").ver1(paramString).ver2(UniteSearchReportController.a(this.jdField_i_of_type_Int)).ver7(((JSONObject)localObject).toString());
+      localObject = new ReportModelDC02528().module("all_result").action("exp_items").ver1(paramString).ver2(UniteSearchReportController.a(this.R)).ver7(((JSONObject)localObject).toString());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(localQQAppInterface.getCurrentAccountUin());
-      localStringBuilder.append(SearchUtils.jdField_d_of_type_Long);
+      localStringBuilder.append(SearchUtils.j);
       UniteSearchReportController.a(localQQAppInterface, ((ReportModelDC02528)localObject).session_id(localStringBuilder.toString()));
     }
     if (paramBoolean1)
     {
-      i1 = 0;
       m = 0;
-      int i3;
-      for (n = 0; i1 < paramList.size(); n = i3)
+      j = 0;
+      int i1;
+      for (k = 0; m < paramList.size(); k = i1)
       {
-        int i2 = m;
-        i3 = n;
-        if ((paramList.get(i1) instanceof GroupBaseNetSearchModelItem))
+        int n = j;
+        i1 = k;
+        if ((paramList.get(m) instanceof GroupBaseNetSearchModelItem))
         {
-          if (((GroupBaseNetSearchModelItem)paramList.get(i1)).d() == 1001) {
-            m = 1;
+          if (((GroupBaseNetSearchModelItem)paramList.get(m)).j() == 1001) {
+            j = 1;
           }
-          i2 = m;
-          i3 = n;
-          if (((GroupBaseNetSearchModelItem)paramList.get(i1)).d() == 1001)
+          n = j;
+          i1 = k;
+          if (((GroupBaseNetSearchModelItem)paramList.get(m)).j() == 1001)
           {
-            i3 = 1;
-            i2 = m;
+            i1 = 1;
+            n = j;
           }
         }
-        i1 += 1;
-        m = i2;
+        m += 1;
+        j = n;
       }
-      if ((m != 0) && (n != 0)) {
-        m = 90;
-      } else if (m != 0) {
-        m = 70;
-      } else if (n != 0) {
-        m = 80;
+      if ((j != 0) && (k != 0)) {
+        j = 90;
+      } else if (j != 0) {
+        j = 70;
+      } else if (k != 0) {
+        j = 80;
       } else {
-        m = 0;
+        j = 0;
       }
-      if (m != 0) {
-        ReportController.b(null, "CliOper", "", "", "0X8005ECF", "0X8005ECF", m, 0, "", "", "", "");
+      if (j != 0) {
+        ReportController.b(null, "CliOper", "", "", "0X8005ECF", "0X8005ECF", j, 0, "", "", "", "");
       }
     }
-    this.jdField_i_of_type_Boolean = false;
+    this.i = false;
     a(paramArrayOfByte);
-    this.jdField_j_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.G = paramBoolean2;
+    this.y.setVisibility(8);
+    this.z.setVisibility(8);
     paramArrayOfByte = paramList.iterator();
-    int m = 0;
+    int j = 0;
     while (paramArrayOfByte.hasNext())
     {
       localObject = (IModel)paramArrayOfByte.next();
       if ((localObject instanceof ISearchResultGroupModel))
       {
         localObject = (ISearchResultGroupModel)localObject;
-        if (((ISearchResultGroupModel)localObject).a() != null) {
-          m += ((ISearchResultGroupModel)localObject).a().size();
+        if (((ISearchResultGroupModel)localObject).b() != null) {
+          j += ((ISearchResultGroupModel)localObject).b().size();
         }
       }
       else
       {
-        m += 1;
+        j += 1;
       }
     }
     if (paramBoolean1) {
-      if (m > 0)
+      if (j > 0)
       {
         paramArrayOfByte = new StringBuilder();
         paramArrayOfByte.append("");
@@ -861,70 +509,71 @@ public class GroupSearchFragment
       paramArrayOfByte.append("handleTabSearchResult isFirstReq==");
       paramArrayOfByte.append(paramBoolean1);
       paramArrayOfByte.append(" newSearchDataCount:");
-      paramArrayOfByte.append(this.jdField_g_of_type_Int);
+      paramArrayOfByte.append(this.O);
       paramArrayOfByte.append("   newSearchIndex:");
-      paramArrayOfByte.append(this.f);
+      paramArrayOfByte.append(this.N);
       paramArrayOfByte.append(" result.size():");
-      paramArrayOfByte.append(m);
+      paramArrayOfByte.append(j);
       QLog.i("Q.uniteSearch.GroupSearchFragment", 2, paramArrayOfByte.toString());
     }
-    if (!this.jdField_j_of_type_Boolean)
+    if (!this.G)
     {
-      this.jdField_g_of_type_Int += m;
-      this.f += 1;
-      m = 10;
-      if (UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int)) {
-        m = 20;
+      this.O += j;
+      this.N += 1;
+      j = 10;
+      if (UniteSearchActivity.a(this.S, this.R)) {
+        j = 20;
       }
-      if (this.jdField_g_of_type_Int > m)
+      if (this.O > j)
       {
-        this.f = 0;
-        this.jdField_g_of_type_Int = 0;
-        this.jdField_c_of_type_Boolean = paramBoolean1;
+        this.N = 0;
+        this.O = 0;
+        this.t = paramBoolean1;
       }
-      else if (this.f >= 3)
+      else if (this.N >= 3)
       {
         if (QLog.isColorLevel()) {
           QLog.i("Q.uniteSearch.GroupSearchFragment", 2, "handleTabSearchResult 触发限频逻辑");
         }
-        this.jdField_j_of_type_Boolean = true;
+        this.G = true;
       }
       else
       {
-        j();
-        m = 1;
-        break label1052;
+        r();
+        j = 1;
+        break label1050;
       }
     }
-    m = 0;
-    label1052:
-    if (m != 0)
+    j = 0;
+    label1050:
+    if (j != 0)
     {
-      if (this.jdField_d_of_type_JavaUtilList == null)
+      if (this.s == null)
       {
-        this.jdField_c_of_type_Boolean = paramBoolean1;
-        this.jdField_d_of_type_JavaUtilList = paramList;
+        this.t = paramBoolean1;
+        this.s = paramList;
       }
       else
       {
-        b(this.jdField_d_of_type_JavaUtilList, paramInt);
-        this.jdField_d_of_type_JavaUtilList.addAll(paramList);
+        b(this.s, paramInt);
+        this.s.addAll(paramList);
       }
     }
     else
     {
-      c_(true);
-      if ((this.jdField_d_of_type_JavaUtilList != null) && (this.jdField_d_of_type_JavaUtilList.size() > 0)) {
-        paramList.addAll(0, this.jdField_d_of_type_JavaUtilList);
+      h_(true);
+      if ((this.s != null) && (this.s.size() > 0)) {
+        paramList.addAll(0, this.s);
       } else {
-        this.jdField_c_of_type_Boolean = paramBoolean1;
+        this.t = paramBoolean1;
       }
-      a(paramList, this.jdField_c_of_type_Boolean, paramInt);
-      this.jdField_d_of_type_JavaUtilList = null;
-      this.jdField_c_of_type_Boolean = false;
+      a(this.U.a(paramList, this.R), this.t, paramInt);
+      this.s = null;
+      this.t = false;
     }
-    this.jdField_b_of_type_Int += 1;
-    a(this.jdField_i_of_type_Int, paramString, this.jdField_c_of_type_JavaUtilList);
+    this.g += 1;
+    SearchCostStat.a();
+    a(this.R, paramString, this.r);
   }
   
   public void a(List paramList)
@@ -939,9 +588,9 @@ public class GroupSearchFragment
       localStringBuilder.append(paramList);
       QLog.e("Q.uniteSearch.GroupSearchFragment", 2, localStringBuilder.toString());
     }
-    paramList = a(paramList);
-    paramList = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(13, paramList);
-    this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramList);
+    paramList = e(paramList);
+    paramList = this.Q.obtainMessage(13, paramList);
+    this.Q.sendMessage(paramList);
   }
   
   public void a(List paramList, int paramInt)
@@ -971,67 +620,67 @@ public class GroupSearchFragment
       }
     }
     else {
-      paramList = a((List)localObject);
+      paramList = e((List)localObject);
     }
-    paramList = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(14, paramList);
+    paramList = this.Q.obtainMessage(14, paramList);
     paramList.arg1 = paramInt;
-    this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramList);
+    this.Q.sendMessage(paramList);
   }
   
   public void a(List paramList, SearchRespData paramSearchRespData)
   {
-    if (paramSearchRespData.a(this.jdField_c_of_type_JavaLangString))
+    if (paramSearchRespData.a(this.q))
     {
-      a(paramList, paramSearchRespData.jdField_a_of_type_Int);
+      a(paramList, paramSearchRespData.b);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.GroupSearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramSearchRespData.jdField_a_of_type_JavaLangString, " keyword2:", this.jdField_c_of_type_JavaLangString });
+      QLog.d("Q.uniteSearch.GroupSearchFragment", 2, new Object[] { "onFinish not match keyword1:", paramSearchRespData.a, " keyword2:", this.q });
     }
   }
   
   public void a(List<IModel> paramList, boolean paramBoolean, int paramInt)
   {
-    c();
+    i();
     Object localObject1;
     Object localObject2;
-    int m;
+    int j;
     if (paramList.size() > 0)
     {
-      n = SearchUtils.b.size();
+      k = SearchUtils.l.size();
       long l2 = -1L;
-      int i2 = 0;
-      while (i2 < paramList.size())
+      int n = 0;
+      while (n < paramList.size())
       {
-        localObject1 = (IModel)paramList.get(i2);
+        localObject1 = (IModel)paramList.get(n);
         Object localObject3;
         long l1;
         SearchUtils.ObjectItemInfo localObjectItemInfo;
         if ((localObject1 instanceof GroupBaseNetSearchModel))
         {
           localObject2 = (GroupBaseNetSearchModel)localObject1;
-          int i1 = n;
-          if (((GroupBaseNetSearchModel)localObject2).a() != null)
+          int m = k;
+          if (((GroupBaseNetSearchModel)localObject2).b() != null)
           {
-            i1 = n;
-            if (((GroupBaseNetSearchModel)localObject2).a().size() > 0)
+            m = k;
+            if (((GroupBaseNetSearchModel)localObject2).b().size() > 0)
             {
-              m = n;
-              n = 0;
-              while (n < ((GroupBaseNetSearchModel)localObject2).a().size())
+              j = k;
+              k = 0;
+              while (k < ((GroupBaseNetSearchModel)localObject2).b().size())
               {
-                localObject3 = (IModel)((GroupBaseNetSearchModel)localObject2).a().get(i2);
+                localObject3 = (IModel)((GroupBaseNetSearchModel)localObject2).b().get(n);
                 if ((localObject3 instanceof NetSearchTemplateBaseItem))
                 {
                   localObject1 = (NetSearchTemplateBaseItem)localObject3;
-                  l1 = ((NetSearchTemplateBaseItem)localObject1).jdField_a_of_type_Long;
-                  localObject1 = ((NetSearchTemplateBaseItem)localObject1).d;
+                  l1 = ((NetSearchTemplateBaseItem)localObject1).i;
+                  localObject1 = ((NetSearchTemplateBaseItem)localObject1).h;
                 }
                 else if ((localObject3 instanceof GroupBaseNetSearchModelItem))
                 {
                   localObject1 = (GroupBaseNetSearchModelItem)localObject3;
-                  l1 = ((GroupBaseNetSearchModelItem)localObject1).d();
-                  localObject1 = ((GroupBaseNetSearchModelItem)localObject1).jdField_b_of_type_JavaLangString;
+                  l1 = ((GroupBaseNetSearchModelItem)localObject1).j();
+                  localObject1 = ((GroupBaseNetSearchModelItem)localObject1).b;
                 }
                 else
                 {
@@ -1039,97 +688,97 @@ public class GroupSearchFragment
                   l1 = 0L;
                 }
                 localObjectItemInfo = new SearchUtils.ObjectItemInfo();
-                m += 1;
-                localObjectItemInfo.jdField_a_of_type_Int = m;
-                localObjectItemInfo.jdField_a_of_type_Long = l1;
-                localObjectItemInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
-                localObjectItemInfo.jdField_a_of_type_JavaLangString = ((GroupBaseNetSearchModel)localObject2).b();
-                SearchUtils.b.put(localObject3, localObjectItemInfo);
-                n += 1;
+                j += 1;
+                localObjectItemInfo.c = j;
+                localObjectItemInfo.b = l1;
+                localObjectItemInfo.e = ((String)localObject1);
+                localObjectItemInfo.a = ((GroupBaseNetSearchModel)localObject2).c();
+                SearchUtils.l.put(localObject3, localObjectItemInfo);
+                k += 1;
               }
-              i1 = m;
+              m = j;
             }
           }
-          m = i1;
+          j = m;
           l1 = l2;
           if (l2 == -1L)
           {
-            l1 = ((GroupBaseNetSearchModel)localObject2).jdField_a_of_type_Long;
-            m = i1;
+            l1 = ((GroupBaseNetSearchModel)localObject2).a;
+            j = m;
           }
         }
         else if ((localObject1 instanceof NetSearchTemplateHorizontalContainerItem))
         {
-          n += 1;
-          localObject2 = ((NetSearchTemplateHorizontalContainerItem)localObject1).a;
-          m = n;
+          k += 1;
+          localObject2 = ((NetSearchTemplateHorizontalContainerItem)localObject1).c;
+          j = k;
           l1 = l2;
           if (localObject2 != null)
           {
             localObject2 = ((ArrayList)localObject2).iterator();
             for (;;)
             {
-              m = n;
+              j = k;
               l1 = l2;
               if (!((Iterator)localObject2).hasNext()) {
                 break;
               }
               localObject3 = (NetSearchTemplateHorizontalBaseItem)((Iterator)localObject2).next();
               localObjectItemInfo = new SearchUtils.ObjectItemInfo();
-              localObjectItemInfo.jdField_a_of_type_Int = n;
-              localObjectItemInfo.jdField_a_of_type_JavaLangString = ((NetSearchTemplateBaseItem)localObject1).b();
-              SearchUtils.b.put(localObject3, localObjectItemInfo);
+              localObjectItemInfo.c = k;
+              localObjectItemInfo.a = ((NetSearchTemplateBaseItem)localObject1).g();
+              SearchUtils.l.put(localObject3, localObjectItemInfo);
             }
           }
         }
         else if ((localObject1 instanceof NetSearchTemplateHorSlidingContainerItem))
         {
-          n += 1;
-          localObject2 = ((NetSearchTemplateHorSlidingContainerItem)localObject1).a;
-          m = n;
+          k += 1;
+          localObject2 = ((NetSearchTemplateHorSlidingContainerItem)localObject1).v;
+          j = k;
           l1 = l2;
           if (localObject2 != null)
           {
             localObject2 = ((ArrayList)localObject2).iterator();
             for (;;)
             {
-              m = n;
+              j = k;
               l1 = l2;
               if (!((Iterator)localObject2).hasNext()) {
                 break;
               }
               localObject3 = (NetSearchTemplateHorizontalBaseItem)((Iterator)localObject2).next();
               localObjectItemInfo = new SearchUtils.ObjectItemInfo();
-              localObjectItemInfo.jdField_a_of_type_Int = n;
-              localObjectItemInfo.jdField_a_of_type_JavaLangString = ((NetSearchTemplateBaseItem)localObject1).b();
-              SearchUtils.b.put(localObject3, localObjectItemInfo);
+              localObjectItemInfo.c = k;
+              localObjectItemInfo.a = ((NetSearchTemplateBaseItem)localObject1).g();
+              SearchUtils.l.put(localObject3, localObjectItemInfo);
             }
           }
         }
         else if ((localObject1 instanceof NetSearchTemplateBaseItem))
         {
           localObject2 = new SearchUtils.ObjectItemInfo();
-          m = n + 1;
-          ((SearchUtils.ObjectItemInfo)localObject2).jdField_a_of_type_Int = m;
+          j = k + 1;
+          ((SearchUtils.ObjectItemInfo)localObject2).c = j;
           localObject3 = (NetSearchTemplateBaseItem)localObject1;
-          ((SearchUtils.ObjectItemInfo)localObject2).jdField_a_of_type_Long = ((NetSearchTemplateBaseItem)localObject3).jdField_a_of_type_Long;
-          ((SearchUtils.ObjectItemInfo)localObject2).jdField_b_of_type_JavaLangString = ((NetSearchTemplateBaseItem)localObject3).d;
-          ((SearchUtils.ObjectItemInfo)localObject2).jdField_a_of_type_JavaLangString = ((NetSearchTemplateBaseItem)localObject3).b();
-          SearchUtils.b.put(localObject1, localObject2);
+          ((SearchUtils.ObjectItemInfo)localObject2).b = ((NetSearchTemplateBaseItem)localObject3).i;
+          ((SearchUtils.ObjectItemInfo)localObject2).e = ((NetSearchTemplateBaseItem)localObject3).h;
+          ((SearchUtils.ObjectItemInfo)localObject2).a = ((NetSearchTemplateBaseItem)localObject3).g();
+          SearchUtils.l.put(localObject1, localObject2);
           l1 = l2;
         }
         else if ((localObject1 instanceof GroupBaseNetSearchModelItem))
         {
           localObject2 = (GroupBaseNetSearchModelItem)localObject1;
-          l1 = ((GroupBaseNetSearchModelItem)localObject2).d();
-          localObject3 = ((GroupBaseNetSearchModelItem)localObject2).jdField_b_of_type_JavaLangString;
+          l1 = ((GroupBaseNetSearchModelItem)localObject2).j();
+          localObject3 = ((GroupBaseNetSearchModelItem)localObject2).b;
           localObjectItemInfo = new SearchUtils.ObjectItemInfo();
-          m = n + 1;
-          localObjectItemInfo.jdField_a_of_type_Int = m;
-          localObjectItemInfo.jdField_a_of_type_Long = l1;
-          localObjectItemInfo.jdField_b_of_type_JavaLangString = ((String)localObject3);
-          localObjectItemInfo.jdField_a_of_type_JavaLangString = ((GroupBaseNetSearchModelItem)localObject2).b();
-          SearchUtils.b.put(localObject1, localObjectItemInfo);
+          j = k + 1;
+          localObjectItemInfo.c = j;
+          localObjectItemInfo.b = l1;
+          localObjectItemInfo.e = ((String)localObject3);
+          localObjectItemInfo.a = ((GroupBaseNetSearchModelItem)localObject2).g();
+          SearchUtils.l.put(localObject1, localObjectItemInfo);
           l1 = l2;
         }
         else
@@ -1137,112 +786,111 @@ public class GroupSearchFragment
           if ((localObject1 instanceof SearchResultModelForEntrance))
           {
             localObject2 = (SearchResultModelForEntrance)localObject1;
-            if (((SearchResultModelForEntrance)localObject2).jdField_a_of_type_Int == -4)
+            if (((SearchResultModelForEntrance)localObject2).c == -4)
             {
               localObject3 = new SearchUtils.ObjectItemInfo();
-              m = n + 1;
-              ((SearchUtils.ObjectItemInfo)localObject3).jdField_a_of_type_Int = m;
-              ((SearchUtils.ObjectItemInfo)localObject3).jdField_a_of_type_Long = 2073745984L;
-              ((SearchUtils.ObjectItemInfo)localObject3).jdField_a_of_type_JavaLangString = ((SearchResultModelForEntrance)localObject2).c().toString();
-              SearchUtils.b.put(localObject1, localObject3);
+              j = k + 1;
+              ((SearchUtils.ObjectItemInfo)localObject3).c = j;
+              ((SearchUtils.ObjectItemInfo)localObject3).b = 2073745984L;
+              ((SearchUtils.ObjectItemInfo)localObject3).a = ((SearchResultModelForEntrance)localObject2).e().toString();
+              SearchUtils.l.put(localObject1, localObject3);
               l1 = l2;
               break label881;
             }
           }
-          m = n;
+          j = k;
           l1 = l2;
           if ((localObject1 instanceof GroupSearchModelFooter))
           {
             localObject2 = new SearchUtils.ObjectItemInfo();
             localObject3 = (GroupSearchModelFooter)localObject1;
-            ((SearchUtils.ObjectItemInfo)localObject2).jdField_a_of_type_Long = ((GroupSearchModelFooter)localObject3).jdField_a_of_type_Long;
-            ((SearchUtils.ObjectItemInfo)localObject2).jdField_b_of_type_JavaLangString = ((GroupSearchModelFooter)localObject3).jdField_c_of_type_JavaLangString;
-            SearchUtils.b.put(localObject1, localObject2);
+            ((SearchUtils.ObjectItemInfo)localObject2).b = ((GroupSearchModelFooter)localObject3).d;
+            ((SearchUtils.ObjectItemInfo)localObject2).e = ((GroupSearchModelFooter)localObject3).e;
+            SearchUtils.l.put(localObject1, localObject2);
             l1 = l2;
-            m = n;
+            j = k;
           }
         }
         label881:
-        i2 += 1;
-        n = m;
+        n += 1;
+        k = j;
         l2 = l1;
       }
     }
-    if ((paramBoolean) && (this.jdField_c_of_type_JavaUtilList.isEmpty())) {
-      m = 1;
+    if ((paramBoolean) && (this.r.isEmpty())) {
+      j = 1;
     } else {
-      m = 0;
+      j = 0;
     }
-    this.jdField_c_of_type_JavaUtilList.addAll(paramList);
-    e(this.jdField_c_of_type_JavaUtilList);
-    int n = 0;
-    while (n < this.jdField_c_of_type_JavaUtilList.size())
+    this.r.addAll(paramList);
+    this.U.a(this.r, this.q);
+    int k = 0;
+    while (k < this.r.size())
     {
-      if ((this.jdField_c_of_type_JavaUtilList.get(n) instanceof NetSearchTemplateMiniAppItem))
+      if ((this.r.get(k) instanceof NetSearchTemplateMiniAppItem))
       {
         localObject1 = new SimpleMiniAppConfig.SimpleMiniAppInfo();
-        ((SimpleMiniAppConfig.SimpleMiniAppInfo)localObject1).appId = ((NetSearchTemplateMiniAppItem)this.jdField_c_of_type_JavaUtilList.get(n)).a.a.appId;
+        ((SimpleMiniAppConfig.SimpleMiniAppInfo)localObject1).appId = ((NetSearchTemplateMiniAppItem)this.r.get(k)).a.a.appId;
         localObject2 = new SimpleMiniAppConfig((SimpleMiniAppConfig.SimpleMiniAppInfo)localObject1);
-        if (((NetSearchTemplateMiniAppItem)this.jdField_c_of_type_JavaUtilList.get(n)).a.a.showMask == 1) {
+        if (((NetSearchTemplateMiniAppItem)this.r.get(k)).a.a.showMask == 1) {
           localObject1 = "used";
         } else {
           localObject1 = "unused";
         }
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async((SimpleMiniAppConfig)localObject2, "search", "click_button", (String)localObject1, this.jdField_c_of_type_JavaLangString);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async((SimpleMiniAppConfig)localObject2, "search", "click_button", (String)localObject1, this.q);
       }
-      n += 1;
+      k += 1;
     }
-    if (!this.jdField_c_of_type_JavaUtilList.isEmpty())
+    if (!this.r.isEmpty())
     {
-      b(this.jdField_c_of_type_JavaUtilList, paramInt);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter.a(this.jdField_c_of_type_JavaUtilList, paramBoolean);
-      if (m != 0) {
-        this.jdField_a_of_type_ComTencentWidgetListView.setSelection(0);
+      b(this.r, paramInt);
+      this.x.setVisibility(8);
+      f(this.r);
+      if (j != 0) {
+        this.l.setSelection(0);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter.a(paramList);
-      this.jdField_c_of_type_JavaUtilList = paramList;
+      f(paramList);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.k = paramBoolean;
+    this.Y = paramBoolean;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.M = paramArrayOfByte;
   }
   
-  protected boolean a()
+  protected BaseMvpAdapter b()
   {
-    return false;
+    return new GroupSearchAdapter(this.l, this.n, this, this.R);
   }
   
   public void b(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    jdField_a_of_type_JavaLangString = paramString;
+    this.q = paramString;
+    a = paramString;
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("GroupSearchFragment isViewCreated ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append(" startSearch:");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("  forceRequestStatus=");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(this.H);
       QLog.i("Q.uniteSearch.GroupSearchFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    if ((this.c) && (this.p != null))
     {
-      SearchUtils.jdField_d_of_type_Long = System.currentTimeMillis();
-      SearchUtils.b.clear();
+      SearchUtils.j = System.currentTimeMillis();
+      SearchUtils.l.clear();
       localObject = new JSONObject();
       try
       {
@@ -1256,29 +904,29 @@ public class GroupSearchFragment
         localStringBuilder.append(localJSONException);
         QLog.e("Q.uniteSearch.GroupSearchFragment", 2, localStringBuilder.toString());
       }
-      SearchCostStat.a("preInitEngineCost", String.valueOf(this.jdField_c_of_type_Long));
-      SearchCostStat.a("preLoadFavCost", String.valueOf(this.jdField_d_of_type_Long));
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-      localObject = new ReportModelDC02528().module("all_result").action("search_request").ver1(paramString).ver2(UniteSearchReportController.a(this.jdField_i_of_type_Int)).ver7(((JSONObject)localObject).toString());
+      SearchCostStat.a("preInitEngineCost", String.valueOf(this.V));
+      SearchCostStat.a("preLoadFavCost", String.valueOf(this.W));
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.p;
+      localObject = new ReportModelDC02528().module("all_result").action("search_request").ver1(paramString).ver2(UniteSearchReportController.a(this.R)).ver7(((JSONObject)localObject).toString());
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      localStringBuilder.append(SearchUtils.jdField_d_of_type_Long);
+      localStringBuilder.append(this.p.getCurrentAccountUin());
+      localStringBuilder.append(SearchUtils.j);
       UniteSearchReportController.a(localQQAppInterface, ((ReportModelDC02528)localObject).session_id(localStringBuilder.toString()));
-      if ((this.jdField_i_of_type_Int == 21) && (SearchEntryConfigManager.a() == 0))
+      if ((this.R == 21) && (SearchEntryConfigManager.a() == 0))
       {
         SearchUtils.a("all_result", "exp_pure_net_result", new String[] { paramString });
-        this.jdField_c_of_type_Int = 6;
-        b();
+        this.H = 6;
+        h();
         a(new ArrayList(), 4);
         return;
       }
-      c();
-      SearchCostStat.a("isEngineInit", String.valueOf(this.jdField_d_of_type_Boolean));
+      i();
+      SearchCostStat.a("isEngineInit", String.valueOf(this.u));
       paramString = new GroupSearchFragment.2(this);
-      if (this.jdField_d_of_type_Boolean)
+      if (this.u)
       {
-        this.jdField_b_of_type_AndroidOsHandler.removeMessages(100);
-        this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(100);
+        this.Q.removeMessages(100);
+        this.Q.sendEmptyMessage(100);
         return;
       }
       ThreadManager.postImmediately(paramString, null, true);
@@ -1287,50 +935,92 @@ public class GroupSearchFragment
     QLog.w("Q.uniteSearch.GroupSearchFragment", 1, "startSearchForHotWord called  isViewCreated == false!! ");
   }
   
-  public boolean b()
+  protected ISearchEngine c()
   {
-    return this.k;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_j_of_type_Boolean = false;
-    a(false);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.o != null) {
+      return this.o;
+    }
+    if (this.X > 0L)
     {
-      c_(false);
-      b();
-      this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter.notifyDataSetChanged();
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      Object localObject = ObjectTransfer.a().a(this.X);
+      if ((localObject != null) && ((localObject instanceof GroupSearchEngine)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("GroupSearchFragment", 2, " use VADActivity cache engine...");
+        }
+        this.u = true;
+        return (GroupSearchEngine)localObject;
+      }
     }
-    this.jdField_b_of_type_Int = 0;
+    return new GroupSearchEngine((QQAppInterface)this.p, this.R);
   }
   
-  protected boolean d()
+  protected boolean cj_()
   {
-    return true;
+    return false;
   }
   
-  public void e()
+  public boolean dm_()
   {
-    if (this.jdField_c_of_type_JavaUtilList != null) {
-      this.jdField_c_of_type_JavaUtilList.clear();
+    return this.Y;
+  }
+  
+  public ArrayList e(List paramList)
+  {
+    if (paramList == null) {
+      return null;
     }
-    if (this.jdField_d_of_type_JavaUtilList != null) {
-      this.jdField_d_of_type_JavaUtilList.clear();
+    if (paramList.size() == 0) {
+      return new ArrayList(paramList);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter.a(this.jdField_c_of_type_JavaUtilList);
-    }
+    ArrayList localArrayList = ((MostUsedSearchResultManager)this.p.getManager(QQManagerFactory.MOST_USE_SEARCH_MANAGER)).a(a);
+    return MostUsedFilterForMultiGroupResultLists.a(a, localArrayList, paramList);
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine == null)
+    this.b = 0;
+    this.h = "";
+    this.i = false;
+    this.G = false;
+    a(false);
+    if (this.c)
+    {
+      h_(false);
+      h();
+      this.m.notifyDataSetChanged();
+      this.y.setVisibility(8);
+      this.z.setVisibility(8);
+    }
+    this.g = 0;
+  }
+  
+  protected boolean k()
+  {
+    return true;
+  }
+  
+  protected int l()
+  {
+    return 0;
+  }
+  
+  public void m()
+  {
+    if (this.r != null) {
+      this.r.clear();
+    }
+    if (this.s != null) {
+      this.s.clear();
+    }
+    if (this.m != null) {
+      f(this.r);
+    }
+  }
+  
+  public void n()
+  {
+    if (this.o == null)
     {
       QLog.i("Q.uniteSearch.GroupSearchFragment", 1, "preInitEngine searchEngine == null");
       return;
@@ -1338,14 +1028,14 @@ public class GroupSearchFragment
     ThreadManager.postImmediately(new GroupSearchFragment.3(this), null, true);
   }
   
-  public void g()
+  public void o()
   {
     try
     {
-      if (!this.jdField_d_of_type_Boolean)
+      if (!this.u)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine.a();
-        this.jdField_d_of_type_Boolean = true;
+        this.o.a();
+        this.u = true;
       }
       return;
     }
@@ -1356,18 +1046,173 @@ public class GroupSearchFragment
     }
   }
   
-  public void h()
+  public void onCreate(Bundle paramBundle)
   {
-    c();
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter.a(this.jdField_c_of_type_JavaUtilList);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    Bundle localBundle = getArguments();
+    if (localBundle != null)
+    {
+      this.R = localBundle.getInt("fromType", -1);
+      this.S = localBundle.getInt("source", 0);
+      this.X = localBundle.getLong("searchEngineKey", 0L);
+    }
+    super.onCreate(paramBundle);
+    this.T = t();
+    this.U = new GroupSearchResultHandler();
   }
   
-  public void i()
+  public void onDestroy()
+  {
+    if (this.n != null) {
+      this.n.destory();
+    }
+    ReportController.b(null, "CliOper", "", "", "0X8005ECE", "0X8005ECE", l(), 0, String.valueOf(this.D), "", this.q, "");
+    super.onDestroy();
+  }
+  
+  public void onDestroyView()
+  {
+    super.onDestroyView();
+    this.c = false;
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    this.m.notifyDataSetChanged();
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramAbsListView = new StringBuilder();
+    paramAbsListView.append(" onScroll");
+    paramAbsListView.append(paramInt1);
+    QLog.d("Q.uniteSearch.GroupSearchFragment arend ", 4, paramAbsListView.toString());
+    if (this.P == 0) {
+      return;
+    }
+    if ((getQBaseActivity() instanceof UniteSearchActivity)) {
+      paramAbsListView = (UniteSearchActivity)getQBaseActivity();
+    }
+    if (this.m != null)
+    {
+      if (this.m.getCount() == 0) {
+        return;
+      }
+      if (this.b == 0) {
+        return;
+      }
+      if ((paramInt3 - paramInt1 - paramInt2 < 10) && (!this.i) && (!this.G))
+      {
+        if (this.M == null)
+        {
+          this.H = 3;
+          if (UniteSearchActivity.a(this.S, this.R)) {
+            this.H = 3;
+          }
+          q();
+          h_(false);
+          this.z.setVisibility(8);
+        }
+        else
+        {
+          r();
+        }
+        this.y.setVisibility(0);
+      }
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    paramAbsListView = new StringBuilder();
+    paramAbsListView.append(" onScrollStateChanged");
+    paramAbsListView.append(paramInt);
+    QLog.d("Q.uniteSearch.GroupSearchFragment", 4, paramAbsListView.toString());
+    if ((getQBaseActivity() instanceof UniteSearchActivity)) {
+      paramAbsListView = (UniteSearchActivity)getQBaseActivity();
+    }
+    this.P = paramInt;
+    if (this.m != null)
+    {
+      if (this.m.getCount() == 0) {
+        return;
+      }
+      if (this.b == 0) {
+        return;
+      }
+      if ((this.P != 0) && (this.c) && (!this.i) && (!this.G) && ((this.r == null) || (this.r.size() < 20)))
+      {
+        if (this.M == null)
+        {
+          this.H = 3;
+          if (UniteSearchActivity.a(this.S, this.R)) {
+            this.H = 3;
+          }
+          q();
+          h_(false);
+          this.z.setVisibility(8);
+        }
+        else
+        {
+          r();
+        }
+        this.y.setVisibility(0);
+      }
+      if (paramInt == 0)
+      {
+        DropFrameMonitor.b().a("list_unite_search", false);
+        return;
+      }
+      DropFrameMonitor.b().a("list_unite_search");
+    }
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    ((GroupSearchEngine)this.o).f();
+  }
+  
+  public void onStop()
+  {
+    super.onStop();
+    ((GroupSearchEngine)this.o).g();
+  }
+  
+  public void onViewCreated(View paramView, Bundle paramBundle)
+  {
+    this.n = ((IQQAvatarService)super.getQBaseActivity().getAppRuntime().getRuntimeService(IQQAvatarService.class, "")).getInstance((AppInterface)getQBaseActivity().getAppRuntime());
+    this.m = b();
+    this.l.setAdapter(this.m);
+    h();
+    this.B.setText("");
+    p();
+    this.c = true;
+    if ((getQBaseActivity() instanceof UniteSearchActivity))
+    {
+      ((UniteSearchActivity)getQBaseActivity()).a(((UniteSearchActivity)getQBaseActivity()).p, this.d, this.e);
+      this.d = false;
+      this.e = false;
+    }
+    if (SearchConfig.isUseOptimize)
+    {
+      n();
+      a(this.p);
+    }
+  }
+  
+  public void p()
+  {
+    i();
+    f(this.r);
+    this.x.setVisibility(8);
+  }
+  
+  public void q()
   {
     Object localObject1;
-    if (this.jdField_c_of_type_JavaLangString != null) {
-      localObject1 = this.jdField_c_of_type_JavaLangString;
+    if (this.q != null) {
+      localObject1 = this.q;
     } else {
       localObject1 = "";
     }
@@ -1375,14 +1220,14 @@ public class GroupSearchFragment
     ((StringBuilder)localObject2).append("log for search startNetSearch ");
     ((StringBuilder)localObject2).append((String)localObject1);
     QLog.i("Q.uniteSearch.GroupSearchFragment", 2, ((StringBuilder)localObject2).toString());
-    if (!UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int))
+    if (!UniteSearchActivity.a(this.S, this.R))
     {
-      localObject1 = (UniteSearchHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.UNITE_SEARCH_HANDLER);
+      localObject1 = (UniteSearchHandler)this.p.getBusinessHandler(BusinessHandlerFactory.UNITE_SEARCH_HANDLER);
       localObject2 = null;
     }
     else
     {
-      localObject2 = (UnifySearchHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.UNIFY_SEARCH_UNITE_HANDLER);
+      localObject2 = (UnifySearchHandler)this.p.getBusinessHandler(BusinessHandlerFactory.UNIFY_SEARCH_UNITE_HANDLER);
       localObject1 = null;
     }
     double d1;
@@ -1397,79 +1242,79 @@ public class GroupSearchFragment
       d1 = 0.0D;
       d2 = d1;
     }
-    this.jdField_g_of_type_Int = 0;
-    this.f = 0;
+    this.O = 0;
+    this.N = 0;
     boolean bool = true;
-    this.jdField_i_of_type_Boolean = true;
-    this.jdField_j_of_type_Boolean = false;
+    this.i = true;
+    this.G = false;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(System.currentTimeMillis());
     ((StringBuilder)localObject3).append("");
-    this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject3).toString();
-    if (!UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int))
+    this.h = ((StringBuilder)localObject3).toString();
+    if (!UniteSearchActivity.a(this.S, this.R))
     {
-      if (this.jdField_c_of_type_Int == 0) {
-        this.jdField_c_of_type_Int = 4;
+      if (this.H == 0) {
+        this.H = 4;
       }
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
-      ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.q);
       localObject3 = ((StringBuilder)localObject3).toString();
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("");
-      ((StringBuilder)localObject4).append(a(this.jdField_c_of_type_Int));
+      ((StringBuilder)localObject4).append(a(this.H));
       SearchUtils.a("all_result", "active_net", new String[] { localObject3, ((StringBuilder)localObject4).toString() });
     }
     else
     {
-      if (this.jdField_c_of_type_Int == 0) {
-        this.jdField_c_of_type_Int = 4;
+      if (this.H == 0) {
+        this.H = 4;
       }
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
-      ((StringBuilder)localObject3).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(this.q);
       localObject3 = ((StringBuilder)localObject3).toString();
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("");
-      ((StringBuilder)localObject4).append(b(this.jdField_c_of_type_Int));
+      ((StringBuilder)localObject4).append(b(this.H));
       SearchUtils.a("all_result", "active_net", new String[] { localObject3, ((StringBuilder)localObject4).toString() });
     }
     localObject3 = new Bundle();
-    ((Bundle)localObject3).putInt("matchCount", this.jdField_e_of_type_Int);
-    ((Bundle)localObject3).putInt("source", this.jdField_j_of_type_Int);
-    Object localObject4 = a();
+    ((Bundle)localObject3).putInt("matchCount", this.I);
+    ((Bundle)localObject3).putInt("source", this.S);
+    Object localObject4 = u();
     String str;
     List localList;
-    int m;
+    int j;
     if (localObject1 != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.uniteSearch.GroupSearchFragment", 2, "log for search startNetSearch use old protocl");
       }
-      localObject2 = this.jdField_c_of_type_JavaLangString;
-      str = this.jdField_b_of_type_JavaLangString;
-      localList = SearchUtils.a(UniteSearchHandler.b);
-      m = this.jdField_c_of_type_Int;
-      if (this.jdField_a_of_type_Int != 2) {
+      localObject2 = this.q;
+      str = this.h;
+      localList = SearchUtils.b(UniteSearchHandler.b);
+      j = this.H;
+      if (this.b != 2) {
         bool = false;
       }
-      ((UniteSearchHandler)localObject1).a((String)localObject2, str, 20, localList, (List)localObject4, m, null, d1, d2, false, bool, this.jdField_i_of_type_Int, (Bundle)localObject3);
+      ((UniteSearchHandler)localObject1).a((String)localObject2, str, 20, localList, (List)localObject4, j, null, d1, d2, false, bool, this.R, (Bundle)localObject3);
     }
     else if (localObject2 != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.uniteSearch.GroupSearchFragment", 2, "log for search startNetSearch use new protocl");
       }
-      localObject1 = this.jdField_c_of_type_JavaLangString;
-      str = this.jdField_b_of_type_JavaLangString;
-      localList = SearchUtils.a(UnifySearchHandler.b);
-      m = this.jdField_c_of_type_Int;
-      if (this.jdField_a_of_type_Int == 2) {
+      localObject1 = this.q;
+      str = this.h;
+      localList = SearchUtils.b(UnifySearchHandler.b);
+      j = this.H;
+      if (this.b == 2) {
         bool = true;
       } else {
         bool = false;
       }
-      ((UnifySearchHandler)localObject2).a((String)localObject1, str, 20, localList, (List)localObject4, m, null, d1, d2, false, bool, this.jdField_i_of_type_Int, (Bundle)localObject3);
+      ((UnifySearchHandler)localObject2).a((String)localObject1, str, 20, localList, (List)localObject4, j, null, d1, d2, false, bool, this.R, (Bundle)localObject3);
     }
     else if (QLog.isColorLevel())
     {
@@ -1477,27 +1322,27 @@ public class GroupSearchFragment
     }
     SearchCostStat.a(8);
     SearchCostStat.a("NetSend");
-    this.jdField_c_of_type_Int = 0;
+    this.H = 0;
   }
   
-  public void j()
+  public void r()
   {
-    this.jdField_i_of_type_Boolean = true;
-    c_(false);
+    this.i = true;
+    h_(false);
     Object localObject2;
-    if (!UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int))
+    if (!UniteSearchActivity.a(this.S, this.R))
     {
-      localObject2 = (UniteSearchHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.UNITE_SEARCH_HANDLER);
+      localObject2 = (UniteSearchHandler)this.p.getBusinessHandler(BusinessHandlerFactory.UNITE_SEARCH_HANDLER);
       localObject1 = null;
     }
     else
     {
-      localObject1 = (UnifySearchHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.UNIFY_SEARCH_UNITE_HANDLER);
+      localObject1 = (UnifySearchHandler)this.p.getBusinessHandler(BusinessHandlerFactory.UNIFY_SEARCH_UNITE_HANDLER);
       localObject2 = null;
     }
-    c();
-    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    i();
+    this.y.setVisibility(0);
+    this.z.setVisibility(8);
     double d1;
     double d2;
     if ((getQBaseActivity() instanceof LocationInterface))
@@ -1513,32 +1358,32 @@ public class GroupSearchFragment
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(System.currentTimeMillis());
     ((StringBuilder)localObject3).append("");
-    this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject3).toString();
+    this.h = ((StringBuilder)localObject3).toString();
     if (QLog.isColorLevel())
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("start search index=");
-      ((StringBuilder)localObject3).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject3).append(this.g);
       QLog.i("Q.uniteSearch.GroupSearchFragmentGroupSearchFragment", 2, ((StringBuilder)localObject3).toString());
     }
-    if (!UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int))
+    if (!UniteSearchActivity.a(this.S, this.R))
     {
-      if (this.jdField_c_of_type_Int == 0) {
-        this.jdField_c_of_type_Int = 5;
+      if (this.H == 0) {
+        this.H = 5;
       }
     }
-    else if (this.jdField_c_of_type_Int == 0) {
-      this.jdField_c_of_type_Int = 5;
+    else if (this.H == 0) {
+      this.H = 5;
     }
     localObject3 = new Bundle();
-    ((Bundle)localObject3).putInt("matchCount", this.jdField_e_of_type_Int);
-    List localList = a();
+    ((Bundle)localObject3).putInt("matchCount", this.I);
+    List localList = u();
     if (localObject2 != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.uniteSearch.GroupSearchFragment", 2, "startNetNewSearch use old protocol");
       }
-      ((UniteSearchHandler)localObject2).a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, SearchUtils.a(UniteSearchHandler.b), localList, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfByte, d1, d2, true, this.jdField_i_of_type_Int, (Bundle)localObject3);
+      ((UniteSearchHandler)localObject2).a(this.q, this.h, 20, SearchUtils.b(UniteSearchHandler.b), localList, this.H, this.M, d1, d2, true, this.R, (Bundle)localObject3);
     }
     else
     {
@@ -1548,14 +1393,14 @@ public class GroupSearchFragment
         if (QLog.isColorLevel()) {
           QLog.d((String)localObject2, 2, "startNetNewSearch use new protocol");
         }
-        ((UnifySearchHandler)localObject1).a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 20, SearchUtils.a(UnifySearchHandler.b), localList, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfByte, d1, d2, true, this.jdField_i_of_type_Int, (Bundle)localObject3);
+        ((UnifySearchHandler)localObject1).a(this.q, this.h, 20, SearchUtils.b(UnifySearchHandler.b), localList, this.H, this.M, d1, d2, true, this.R, (Bundle)localObject3);
       }
       else if (QLog.isColorLevel())
       {
         QLog.d((String)localObject2, 2, "startNetNewSearch error");
       }
     }
-    this.jdField_c_of_type_Int = 0;
+    this.H = 0;
     Object localObject1 = new JSONObject();
     try
     {
@@ -1571,179 +1416,26 @@ public class GroupSearchFragment
       QLog.e("Q.uniteSearch.GroupSearchFragment", 2, ((StringBuilder)localObject3).toString());
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    localObject1 = new ReportModelDC02528().module("all_result").action("load_more").ver1(this.jdField_c_of_type_JavaLangString).ver2(UniteSearchReportController.a(UniteSearchActivity.jdField_d_of_type_Int)).ver7(((JSONObject)localObject1).toString());
+    localObject1 = new ReportModelDC02528().module("all_result").action("load_more").ver1(this.q).ver2(UniteSearchReportController.a(UniteSearchActivity.f)).ver7(((JSONObject)localObject1).toString());
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(localQQAppInterface.getCurrentAccountUin());
-    ((StringBuilder)localObject3).append(SearchUtils.jdField_d_of_type_Long);
+    ((StringBuilder)localObject3).append(SearchUtils.j);
     UniteSearchReportController.a(localQQAppInterface, ((ReportModelDC02528)localObject1).session_id(((StringBuilder)localObject3).toString()));
   }
   
-  public void k()
+  public void s()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine != null)
+    if (this.o != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine.b();
-      this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine.e();
+      this.o.b();
+      this.o.e();
     }
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    Bundle localBundle = getArguments();
-    if (localBundle != null)
-    {
-      this.jdField_i_of_type_Int = localBundle.getInt("fromType", -1);
-      this.jdField_j_of_type_Int = localBundle.getInt("source", 0);
-      this.jdField_e_of_type_Long = localBundle.getLong("searchEngineKey", 0L);
-    }
-    super.onCreate(paramBundle);
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
-    }
-    ReportController.b(null, "CliOper", "", "", "0X8005ECE", "0X8005ECE", a(), 0, String.valueOf(this.jdField_d_of_type_Int), "", this.jdField_c_of_type_JavaLangString, "");
-    super.onDestroy();
-  }
-  
-  public void onDestroyView()
-  {
-    super.onDestroyView();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onResume()
-  {
-    super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter.notifyDataSetChanged();
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramAbsListView = new StringBuilder();
-    paramAbsListView.append(" onScroll");
-    paramAbsListView.append(paramInt1);
-    QLog.d("Q.uniteSearch.GroupSearchFragment arend ", 4, paramAbsListView.toString());
-    if (this.jdField_h_of_type_Int == 0) {
-      return;
-    }
-    if ((getQBaseActivity() instanceof UniteSearchActivity)) {
-      paramAbsListView = (UniteSearchActivity)getQBaseActivity();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter.getCount() == 0) {
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 0) {
-        return;
-      }
-      if ((paramInt3 - paramInt1 - paramInt2 < 10) && (!this.jdField_i_of_type_Boolean) && (!this.jdField_j_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_ArrayOfByte == null)
-        {
-          this.jdField_c_of_type_Int = 3;
-          if (UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int)) {
-            this.jdField_c_of_type_Int = 3;
-          }
-          i();
-          c_(false);
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        }
-        else
-        {
-          j();
-        }
-        this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      }
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    paramAbsListView = new StringBuilder();
-    paramAbsListView.append(" onScrollStateChanged");
-    paramAbsListView.append(paramInt);
-    QLog.d("Q.uniteSearch.GroupSearchFragment", 4, paramAbsListView.toString());
-    if ((getQBaseActivity() instanceof UniteSearchActivity)) {
-      paramAbsListView = (UniteSearchActivity)getQBaseActivity();
-    }
-    this.jdField_h_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter.getCount() == 0) {
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 0) {
-        return;
-      }
-      if ((this.jdField_h_of_type_Int != 0) && (this.jdField_a_of_type_Boolean) && (!this.jdField_i_of_type_Boolean) && (!this.jdField_j_of_type_Boolean) && ((this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.size() < 20)))
-      {
-        if (this.jdField_a_of_type_ArrayOfByte == null)
-        {
-          this.jdField_c_of_type_Int = 3;
-          if (UniteSearchActivity.a(this.jdField_j_of_type_Int, this.jdField_i_of_type_Int)) {
-            this.jdField_c_of_type_Int = 3;
-          }
-          i();
-          c_(false);
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        }
-        else
-        {
-          j();
-        }
-        this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      }
-      if (paramInt == 0)
-      {
-        DropFrameMonitor.a().a("list_unite_search", false);
-        return;
-      }
-      DropFrameMonitor.a().a("list_unite_search");
-    }
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    ((GroupSearchEngine)this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine).f();
-  }
-  
-  public void onStop()
-  {
-    super.onStop();
-    ((GroupSearchEngine)this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine).g();
-  }
-  
-  public void onViewCreated(View paramView, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)super.getQBaseActivity().getAppRuntime().getRuntimeService(IQQAvatarService.class, "")).getInstance((AppInterface)getQBaseActivity().getAppRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter = a();
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSearchBaseAdapterBaseMvpAdapter);
-    b();
-    this.jdField_c_of_type_AndroidWidgetTextView.setText("");
-    h();
-    this.jdField_a_of_type_Boolean = true;
-    if ((getQBaseActivity() instanceof UniteSearchActivity))
-    {
-      ((UniteSearchActivity)getQBaseActivity()).a(((UniteSearchActivity)getQBaseActivity()).f, this.jdField_g_of_type_Boolean, this.jdField_h_of_type_Boolean);
-      this.jdField_g_of_type_Boolean = false;
-      this.jdField_h_of_type_Boolean = false;
-    }
-    if (SearchConfig.isUseOptimize)
-    {
-      f();
-      a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    }
+    this.u = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.GroupSearchFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ class DraggableGridView$DragEndAnimationListener
   public void onAnimationEnd(Animation paramAnimation)
   {
     int i = 0;
-    while (i < DraggableGridView.a(this.a).getChildCount())
+    while (i < DraggableGridView.m(this.a).getChildCount())
     {
-      paramAnimation = DraggableGridView.a(this.a).getChildAt(i);
+      paramAnimation = DraggableGridView.m(this.a).getChildAt(i);
       if ((paramAnimation instanceof GridView))
       {
         paramAnimation = (GridView)paramAnimation;
@@ -31,10 +31,10 @@ class DraggableGridView$DragEndAnimationListener
       }
       i += 1;
     }
-    this.a.a();
+    this.a.b();
     DraggableGridView.b(this.a, false);
     DraggableGridView.c(this.a, false);
-    DraggableGridView.a(this.a).notifyDataSetChanged();
+    DraggableGridView.b(this.a).notifyDataSetChanged();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -43,7 +43,7 @@ class DraggableGridView$DragEndAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.DragEndAnimationListener
  * JD-Core Version:    0.7.0.1
  */

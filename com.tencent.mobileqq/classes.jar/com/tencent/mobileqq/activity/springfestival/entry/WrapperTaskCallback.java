@@ -18,7 +18,7 @@ public class WrapperTaskCallback
     this.a = paramITaskCallback;
   }
   
-  private static String a(BaseActivityData paramBaseActivityData)
+  private static String g(BaseActivityData paramBaseActivityData)
   {
     if (paramBaseActivityData == null) {
       return "null";
@@ -26,7 +26,7 @@ public class WrapperTaskCallback
     return Const.a(paramBaseActivityData.type);
   }
   
-  private static String b(BaseActivityData paramBaseActivityData)
+  private static String h(BaseActivityData paramBaseActivityData)
   {
     if (paramBaseActivityData == null) {
       return "null";
@@ -38,7 +38,7 @@ public class WrapperTaskCallback
   {
     try
     {
-      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onActivityStart actData actType = %s id=%s taskTime=%s <————", new Object[] { a(paramBaseActivityData), b(paramBaseActivityData), TimeFormatterUtils.b(paramLong) }));
+      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onActivityStart actData actType = %s id=%s taskTime=%s <————", new Object[] { g(paramBaseActivityData), h(paramBaseActivityData), TimeFormatterUtils.f(paramLong) }));
       this.a.a(paramLong, paramBaseActivityData);
       return;
     }
@@ -56,7 +56,7 @@ public class WrapperTaskCallback
   {
     try
     {
-      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onActivityAboutToOver actData actType = %s id=%s <————", new Object[] { a(paramBaseActivityData), b(paramBaseActivityData) }));
+      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onActivityAboutToOver actData actType = %s id=%s <————", new Object[] { g(paramBaseActivityData), h(paramBaseActivityData) }));
       this.a.a(paramBaseActivityData);
       return;
     }
@@ -128,7 +128,7 @@ public class WrapperTaskCallback
   {
     try
     {
-      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onActivityRealStart actData actType = %s id=%s taskTime=%s <————", new Object[] { a(paramBaseActivityData), b(paramBaseActivityData), TimeFormatterUtils.b(paramLong) }));
+      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onActivityRealStart actData actType = %s id=%s taskTime=%s <————", new Object[] { g(paramBaseActivityData), h(paramBaseActivityData), TimeFormatterUtils.f(paramLong) }));
       this.a.b(paramLong, paramBaseActivityData);
       return;
     }
@@ -146,7 +146,7 @@ public class WrapperTaskCallback
   {
     try
     {
-      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onActivityOver actData actType = %s id=%s <————", new Object[] { a(paramBaseActivityData), b(paramBaseActivityData) }));
+      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onActivityOver actData actType = %s id=%s <————", new Object[] { g(paramBaseActivityData), h(paramBaseActivityData) }));
       this.a.b(paramBaseActivityData);
       return;
     }
@@ -218,7 +218,7 @@ public class WrapperTaskCallback
   {
     try
     {
-      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onPendantShow actData actType = %s id=%s <————", new Object[] { a(paramBaseActivityData), b(paramBaseActivityData) }));
+      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onPendantShow actData actType = %s id=%s <————", new Object[] { g(paramBaseActivityData), h(paramBaseActivityData) }));
       if ((paramBaseActivityData != null) && (paramBaseActivityData.getType() != 2))
       {
         this.a.c(paramBaseActivityData);
@@ -239,7 +239,7 @@ public class WrapperTaskCallback
   {
     try
     {
-      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onPendantHide actData actType = %s id=%s <————", new Object[] { a(paramBaseActivityData), b(paramBaseActivityData) }));
+      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onPendantHide actData actType = %s id=%s <————", new Object[] { g(paramBaseActivityData), h(paramBaseActivityData) }));
       if ((paramBaseActivityData != null) && (paramBaseActivityData.getType() != 2))
       {
         this.a.d(paramBaseActivityData);
@@ -260,7 +260,7 @@ public class WrapperTaskCallback
   {
     try
     {
-      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onBreathLightShow actData actType = %s id=%s <————", new Object[] { a(paramBaseActivityData), b(paramBaseActivityData) }));
+      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onBreathLightShow actData actType = %s id=%s <————", new Object[] { g(paramBaseActivityData), h(paramBaseActivityData) }));
       if ((paramBaseActivityData != null) && (paramBaseActivityData.getType() != 2))
       {
         this.a.e(paramBaseActivityData);
@@ -281,7 +281,7 @@ public class WrapperTaskCallback
   {
     try
     {
-      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onBreathLightHide actData actType = %s id=%s <————", new Object[] { a(paramBaseActivityData), b(paramBaseActivityData) }));
+      QLog.d("shua2021_WrapperTaskCallback", 1, String.format("————> onBreathLightHide actData actType = %s id=%s <————", new Object[] { g(paramBaseActivityData), h(paramBaseActivityData) }));
       if ((paramBaseActivityData != null) && (paramBaseActivityData.getType() != 2))
       {
         this.a.f(paramBaseActivityData);
@@ -300,7 +300,7 @@ public class WrapperTaskCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.WrapperTaskCallback
  * JD-Core Version:    0.7.0.1
  */

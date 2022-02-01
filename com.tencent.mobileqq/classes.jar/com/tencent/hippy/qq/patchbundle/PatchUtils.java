@@ -69,11 +69,11 @@ public class PatchUtils
         return;
       }
       localObject = new DownloadTask(paramString, (File)localObject);
-      ((DownloadTask)localObject).p = true;
-      ((DownloadTask)localObject).f = "hippy_patch";
-      ((DownloadTask)localObject).b = 1;
-      ((DownloadTask)localObject).n = false;
-      ((DownloadTask)localObject).r = true;
+      ((DownloadTask)localObject).N = true;
+      ((DownloadTask)localObject).L = "hippy_patch";
+      ((DownloadTask)localObject).e = 1;
+      ((DownloadTask)localObject).J = false;
+      ((DownloadTask)localObject).Q = true;
       localDownloaderInterface.startDownload((DownloadTask)localObject, new PatchUtils.1(paramString), null);
     }
   }
@@ -126,7 +126,7 @@ public class PatchUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.patchbundle.PatchUtils
  * JD-Core Version:    0.7.0.1
  */

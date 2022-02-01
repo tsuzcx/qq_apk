@@ -3,6 +3,8 @@ package androidx.constraintlayout.solver.widgets;
 import androidx.constraintlayout.solver.Cache;
 import androidx.constraintlayout.solver.SolverVariable;
 import androidx.constraintlayout.solver.SolverVariable.Type;
+import androidx.constraintlayout.solver.widgets.analyzer.Grouping;
+import androidx.constraintlayout.solver.widgets.analyzer.WidgetGroup;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,7 +15,9 @@ public class ConstraintAnchor
   private static final boolean ALLOW_BINARY = false;
   private static final int UNSET_GONE_MARGIN = -1;
   private HashSet<ConstraintAnchor> mDependents = null;
+  private int mFinalValue;
   int mGoneMargin = -1;
+  private boolean mHasFinalValue;
   public int mMargin = 0;
   public final ConstraintWidget mOwner;
   SolverVariable mSolverVariable;
@@ -69,7 +73,10 @@ public class ConstraintAnchor
     if (paramConstraintAnchor.mDependents == null) {
       paramConstraintAnchor.mDependents = new HashSet();
     }
-    this.mTarget.mDependents.add(this);
+    paramConstraintAnchor = this.mTarget.mDependents;
+    if (paramConstraintAnchor != null) {
+      paramConstraintAnchor.add(this);
+    }
     if (paramInt1 > 0) {
       this.mMargin = paramInt1;
     } else {
@@ -109,6 +116,31 @@ public class ConstraintAnchor
     }
     this.mMargin = paramConstraintAnchor.mMargin;
     this.mGoneMargin = paramConstraintAnchor.mGoneMargin;
+  }
+  
+  public void findDependents(int paramInt, ArrayList<WidgetGroup> paramArrayList, WidgetGroup paramWidgetGroup)
+  {
+    Object localObject = this.mDependents;
+    if (localObject != null)
+    {
+      localObject = ((HashSet)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        Grouping.findDependents(((ConstraintAnchor)((Iterator)localObject).next()).mOwner, paramInt, paramArrayList, paramWidgetGroup);
+      }
+    }
+  }
+  
+  public HashSet<ConstraintAnchor> getDependents()
+  {
+    return this.mDependents;
+  }
+  
+  public int getFinalValue()
+  {
+    if (!this.mHasFinalValue) {
+      return 0;
+    }
+    return this.mFinalValue;
   }
   
   public int getMargin()
@@ -190,6 +222,11 @@ public class ConstraintAnchor
       bool = true;
     }
     return bool;
+  }
+  
+  public boolean hasFinalValue()
+  {
+    return this.mHasFinalValue;
   }
   
   public boolean isConnected()
@@ -376,13 +413,26 @@ public class ConstraintAnchor
     if (localObject != null)
     {
       localObject = ((ConstraintAnchor)localObject).mDependents;
-      if (localObject != null) {
+      if (localObject != null)
+      {
         ((HashSet)localObject).remove(this);
+        if (this.mTarget.mDependents.size() == 0) {
+          this.mTarget.mDependents = null;
+        }
       }
     }
+    this.mDependents = null;
     this.mTarget = null;
     this.mMargin = 0;
     this.mGoneMargin = -1;
+    this.mHasFinalValue = false;
+    this.mFinalValue = 0;
+  }
+  
+  public void resetFinalResolution()
+  {
+    this.mHasFinalValue = false;
+    this.mFinalValue = 0;
   }
   
   public void resetSolverVariable(Cache paramCache)
@@ -394,6 +444,12 @@ public class ConstraintAnchor
       return;
     }
     paramCache.reset();
+  }
+  
+  public void setFinalValue(int paramInt)
+  {
+    this.mFinalValue = paramInt;
+    this.mHasFinalValue = true;
   }
   
   public void setGoneMargin(int paramInt)
@@ -421,7 +477,7 @@ public class ConstraintAnchor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.ConstraintAnchor
  * JD-Core Version:    0.7.0.1
  */

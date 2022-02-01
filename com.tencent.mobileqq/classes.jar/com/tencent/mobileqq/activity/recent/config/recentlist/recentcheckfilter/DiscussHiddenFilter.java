@@ -31,7 +31,7 @@ public class DiscussHiddenFilter
       bool1 = bool2;
       if (paramBaseQQAppInterface != null)
       {
-        paramBaseQQAppInterface = ((DiscussionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramRecentUser.uin);
+        paramBaseQQAppInterface = ((DiscussionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(paramRecentUser.uin);
         if ((paramBaseQQAppInterface != null) && (!paramBaseQQAppInterface.isUIControlFlag_Hidden_RecentUser()))
         {
           bool1 = bool2;
@@ -48,7 +48,7 @@ public class DiscussHiddenFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.DiscussHiddenFilter
  * JD-Core Version:    0.7.0.1
  */

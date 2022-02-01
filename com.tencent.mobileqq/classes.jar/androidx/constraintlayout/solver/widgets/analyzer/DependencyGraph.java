@@ -1088,10 +1088,12 @@ public class DependencyGraph
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (ConstraintWidget)((Iterator)localObject1).next();
+        ((ConstraintWidget)localObject2).ensureWidgetRuns();
         ((ConstraintWidget)localObject2).measured = false;
         ((ConstraintWidget)localObject2).horizontalRun.reset();
         ((ConstraintWidget)localObject2).verticalRun.reset();
       }
+      this.container.ensureWidgetRuns();
       localObject1 = this.container;
       ((ConstraintWidgetContainer)localObject1).measured = false;
       ((ConstraintWidgetContainer)localObject1).horizontalRun.reset();
@@ -1180,15 +1182,15 @@ public class DependencyGraph
       if ((i != 0) || (localWidgetRun.widget != this.container))
       {
         if ((!localWidgetRun.start.resolved) || ((!localWidgetRun.end.resolved) && (!(localWidgetRun instanceof GuidelineReference)))) {
-          break label753;
+          break label765;
         }
         if ((!localWidgetRun.dimension.resolved) && (!(localWidgetRun instanceof ChainRun)) && (!(localWidgetRun instanceof GuidelineReference))) {
-          break label753;
+          break label765;
         }
       }
     }
     paramBoolean = true;
-    label753:
+    label765:
     this.container.setHorizontalDimensionBehaviour((ConstraintWidget.DimensionBehaviour)localObject1);
     this.container.setVerticalDimensionBehaviour((ConstraintWidget.DimensionBehaviour)localObject2);
     return paramBoolean;
@@ -1202,6 +1204,7 @@ public class DependencyGraph
       while (((Iterator)localObject).hasNext())
       {
         ConstraintWidget localConstraintWidget = (ConstraintWidget)((Iterator)localObject).next();
+        localConstraintWidget.ensureWidgetRuns();
         localConstraintWidget.measured = false;
         localConstraintWidget.horizontalRun.dimension.resolved = false;
         localConstraintWidget.horizontalRun.resolved = false;
@@ -1210,6 +1213,7 @@ public class DependencyGraph
         localConstraintWidget.verticalRun.resolved = false;
         localConstraintWidget.verticalRun.reset();
       }
+      this.container.ensureWidgetRuns();
       localObject = this.container;
       ((ConstraintWidgetContainer)localObject).measured = false;
       ((ConstraintWidgetContainer)localObject).horizontalRun.dimension.resolved = false;
@@ -1414,7 +1418,7 @@ public class DependencyGraph
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.widgets.analyzer.DependencyGraph
  * JD-Core Version:    0.7.0.1
  */

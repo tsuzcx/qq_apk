@@ -56,7 +56,7 @@ public class NetUtil
     return i;
   }
   
-  public static String a(Context paramContext)
+  public static String b(Context paramContext)
   {
     paramContext = AppNetConnInfo.getCurrentAPN();
     if (!TextUtils.isEmpty(paramContext))
@@ -91,7 +91,7 @@ public class NetUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqpsdk.util.NetUtil
  * JD-Core Version:    0.7.0.1
  */

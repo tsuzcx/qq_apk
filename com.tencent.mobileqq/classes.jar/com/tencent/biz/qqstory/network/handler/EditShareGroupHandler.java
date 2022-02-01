@@ -20,18 +20,18 @@ public class EditShareGroupHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<EditShareGroupRequest, EditShareGroupResponse>
 {
-  public ShareGroupItem a;
+  public ShareGroupItem c;
   
   public void a()
   {
     Object localObject = new EditShareGroupRequest();
-    ((EditShareGroupRequest)localObject).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
+    ((EditShareGroupRequest)localObject).f = this.c;
     CmdTaskManger.a().a((NetworkRequest)localObject, this);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("ReqEditShareGroupHandler sendRequest shareGroupInfo = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      ((StringBuilder)localObject).append(this.c);
       QLog.e("Q.qqstory.shareGroup.ReqEditShareGroupHandler", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -39,26 +39,26 @@ public class EditShareGroupHandler
   public void a(@NonNull EditShareGroupRequest paramEditShareGroupRequest, @Nullable EditShareGroupResponse paramEditShareGroupResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     paramEditShareGroupRequest = (ShareGroupManager)SuperManager.a(7);
-    ShareGroupItem localShareGroupItem = paramEditShareGroupRequest.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId);
+    ShareGroupItem localShareGroupItem = paramEditShareGroupRequest.a(this.c.shareGroupId);
     EditShareGroupHandler.EditShareGroupEvent localEditShareGroupEvent = new EditShareGroupHandler.EditShareGroupEvent();
-    localEditShareGroupEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localEditShareGroupEvent.g = paramErrorMessage;
     if ((localShareGroupItem != null) && (paramErrorMessage.isSuccess()) && (paramEditShareGroupResponse != null))
     {
-      localShareGroupItem.name = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.name;
+      localShareGroupItem.name = this.c.name;
       paramEditShareGroupRequest.a(localShareGroupItem);
-      b();
+      c();
     }
     else
     {
-      c();
+      d();
     }
-    localEditShareGroupEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = localShareGroupItem;
+    localEditShareGroupEvent.a = localShareGroupItem;
     StoryDispatcher.a().dispatch(localEditShareGroupEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.EditShareGroupHandler
  * JD-Core Version:    0.7.0.1
  */

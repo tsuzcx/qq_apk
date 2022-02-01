@@ -13,10 +13,10 @@ class RIJPreloadImage$1
   
   public void run()
   {
-    if (RIJPreloadImage.a(this.this$0) != this.jdField_a_of_type_Long) {
+    if (RIJPreloadImage.a(this.this$0) != this.a) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b;
     int i;
     if (localObject == null) {
       i = 0;
@@ -24,30 +24,30 @@ class RIJPreloadImage$1
       i = ((List)localObject).size();
     }
     localObject = new LinkedList();
-    int j = this.jdField_a_of_type_Int;
-    while (j < this.jdField_a_of_type_Int + this.jdField_b_of_type_Int)
+    int j = this.c;
+    while (j < this.c + this.d)
     {
       if ((j < i) && (j >= 0))
       {
-        if (RIJPreloadImage.a(this.this$0) != this.jdField_a_of_type_Long) {
+        if (RIJPreloadImage.a(this.this$0) != this.a) {
           return;
         }
         try
         {
-          AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(j);
-          this.this$0.a((List)localObject, j, localAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager);
+          AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)this.b.get(j);
+          this.this$0.a((List)localObject, j, localAbsBaseArticleInfo, this.e);
         }
         catch (Exception localException)
         {
           localException.printStackTrace();
-          if (RIJPreloadImage.a(this.this$0) != this.jdField_a_of_type_Long) {
+          if (RIJPreloadImage.a(this.this$0) != this.a) {
             return;
           }
         }
       }
       j += 1;
     }
-    if (RIJPreloadImage.a(this.this$0) != this.jdField_a_of_type_Long) {
+    if (RIJPreloadImage.a(this.this$0) != this.a) {
       return;
     }
     RIJPreloadImage.a(this.this$0, (List)localObject);
@@ -57,14 +57,14 @@ class RIJPreloadImage$1
       localStringBuilder.append("preloadImg size:");
       localStringBuilder.append(((List)localObject).size());
       localStringBuilder.append(" cost:");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.f);
       QLog.d("RIJPreloadImage", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJPreloadImage.1
  * JD-Core Version:    0.7.0.1
  */

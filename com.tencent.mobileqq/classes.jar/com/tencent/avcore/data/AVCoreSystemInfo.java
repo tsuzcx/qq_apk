@@ -2604,115 +2604,163 @@ public class AVCoreSystemInfo
     return 2;
   }
   
+  public int getOSTypeFromSDKVersion()
+  {
+    int i = Build.VERSION.SDK_INT;
+    if ((i >= 21) && (i <= 22)) {
+      return 118;
+    }
+    if (i == 23) {
+      return 119;
+    }
+    if ((i != 24) && (i != 25))
+    {
+      if ((i != 26) && (i != 27))
+      {
+        if (i == 28) {
+          return 122;
+        }
+        return 200;
+      }
+      return 121;
+    }
+    return 120;
+  }
+  
   public int getOsType()
   {
-    int k = 200;
-    try
+    for (;;)
     {
-      String str = Build.VERSION.RELEASE;
-      if (str.equals("L")) {
-        return 118;
-      }
-      if (Build.VERSION.SDK_INT == 20) {
-        return 118;
-      }
-      if (Build.VERSION.SDK_INT > 20) {
-        return 200;
-      }
-      int i = 0;
-      int j = str.charAt(0);
-      int m = str.charAt(2);
-      if (str.length() >= 5) {
-        i = str.charAt(4);
-      }
-      switch (j)
+      int k;
+      try
       {
-      default: 
-        return 200;
-      case 53: 
-        j = k;
-        if (m == 48) {
+        String str = Build.VERSION.RELEASE;
+        if (str.equals("L")) {
           return 118;
         }
-        break;
-      case 52: 
-        if (m == 48) {
-          return 113;
+        i = 0;
+        j = str.charAt(0);
+        k = str.charAt(2);
+        if (str.length() < 5) {
+          break label76;
         }
-        if (m == 49) {
-          return 114;
-        }
-        if (m == 50) {
-          return 115;
-        }
-        if (m == 51) {
-          return 116;
-        }
-        j = k;
-        if (m == 52) {
-          return 117;
-        }
-        break;
-      case 51: 
-        if (m == 48) {
-          return 110;
-        }
-        if (m == 49) {
-          return 111;
-        }
-        j = k;
-        if (m == 50) {
-          return 112;
-        }
-        break;
-      case 50: 
-        if (m == 48)
-        {
-          if (i == 49) {
-            return 105;
-          }
-          return 104;
-        }
-        if (m == 49) {
-          return 106;
-        }
-        if (m == 50)
-        {
-          if (i == 49) {
-            return 108;
-          }
-          return 107;
-        }
-        j = k;
-        if (m == 51)
-        {
-          j = k;
-          if (i >= 48)
-          {
-            j = k;
-            if (i <= 57) {
-              return 109;
-            }
-          }
-        }
-        break;
-      case 49: 
-        if (m == 49) {
-          return 101;
-        }
-        if (m == 53) {
-          return 102;
-        }
-        j = k;
-        if (m == 54) {
-          j = 103;
-        }
-        break;
+        i = str.charAt(4);
+      }
+      catch (Exception localException)
+      {
+        return 200;
+      }
+      int j = i;
+      if (i == 200) {
+        j = getOSTypeFromSDKVersion();
       }
       return j;
+      label76:
+      switch (j)
+      {
+      }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    i = 200;
+                    break;
+                  } while (k != 48);
+                  i = 120;
+                  break;
+                } while (k != 48);
+                i = 119;
+                break;
+              } while (k != 48);
+              i = 118;
+              break;
+              if (k == 48)
+              {
+                i = 113;
+                break;
+              }
+              if (k == 49)
+              {
+                i = 114;
+                break;
+              }
+              if (k == 50)
+              {
+                i = 115;
+                break;
+              }
+              if (k == 51)
+              {
+                i = 116;
+                break;
+              }
+            } while (k != 52);
+            i = 117;
+            break;
+            if (k == 48)
+            {
+              i = 110;
+              break;
+            }
+            if (k == 49)
+            {
+              i = 111;
+              break;
+            }
+          } while (k != 50);
+          i = 112;
+          break;
+          if (k == 48)
+          {
+            if (i == 49)
+            {
+              i = 105;
+              break;
+            }
+            i = 104;
+            break;
+          }
+          if (k == 49)
+          {
+            i = 106;
+            break;
+          }
+          if (k == 50)
+          {
+            if (i == 49)
+            {
+              i = 108;
+              break;
+            }
+            i = 107;
+            break;
+          }
+        } while ((k != 51) || (i < 48) || (i > 57));
+        i = 109;
+        break;
+        if (k == 49)
+        {
+          i = 101;
+          break;
+        }
+        if (k == 53)
+        {
+          i = 102;
+          break;
+        }
+      } while (k != 54);
+      int i = 103;
     }
-    catch (Exception localException) {}
-    return 200;
   }
   
   public void setDispSize(int paramInt1, int paramInt2)

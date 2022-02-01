@@ -183,11 +183,13 @@ public class NetworkModule
         localHippyHttpRequest.setConnectTimeout(10000);
         localHippyHttpRequest.setReadTimeout(10000);
         String str = paramHippyMap.getString("redirect");
+        boolean bool;
         if ((!TextUtils.isEmpty(str)) && (TextUtils.equals("follow", str))) {
-          localHippyHttpRequest.setInstanceFollowRedirects(true);
+          bool = true;
         } else {
-          localHippyHttpRequest.setInstanceFollowRedirects(false);
+          bool = false;
         }
+        localHippyHttpRequest.setInstanceFollowRedirects(bool);
         localHippyHttpRequest.setUseCaches(false);
         localHippyHttpRequest.setMethod((String)localObject2);
         localHippyHttpRequest.setUrl((String)localObject1);
@@ -245,7 +247,7 @@ public class NetworkModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.network.NetworkModule
  * JD-Core Version:    0.7.0.1
  */

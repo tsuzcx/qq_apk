@@ -28,37 +28,28 @@ import mqq.manager.Manager;
 public class WatchTogetherManager
   implements Manager
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  IVPluginReportInterface jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPlugininterfaceIVPluginReportInterface;
-  TogetherObserver jdField_a_of_type_ComTencentMobileqqTogetherTogetherObserver = new WatchTogetherManager.1(this);
-  String jdField_a_of_type_JavaLangString = "mqqapi://miniapp/open?_atype=0&_mappid=1109894538&_mvid=&_path=pages%2Findex%2Findex&_vt=3&_sig=71cba9e2ab0f0e779a62ecf6705e0f5cf65a4f764d755e8fc07b537e655c70ad";
-  HashMap<Integer, IWatchTogetherRoomDelegate> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  Map<String, NewTogetherRoomMessageData> jdField_a_of_type_JavaUtilMap = new HashMap();
+  HashMap<Integer, IWatchTogetherRoomDelegate> a = new HashMap();
+  QQAppInterface b;
+  Map<String, NewTogetherRoomMessageData> c = new HashMap();
+  IVPluginReportInterface d;
+  String e = "mqqapi://miniapp/open?_atype=0&_mappid=1109894538&_mvid=&_path=pages%2Findex%2Findex&_vt=3&_sig=71cba9e2ab0f0e779a62ecf6705e0f5cf65a4f764d755e8fc07b537e655c70ad";
+  TogetherObserver f = new WatchTogetherManager.1(this);
   
   public WatchTogetherManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a(2, (IWatchTogetherRoomDelegate)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER));
-    a(1, (IWatchTogetherRoomDelegate)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPlugininterfaceIVPluginReportInterface = ((IFactoryApi)QRoute.api(IFactoryApi.class)).getIVPluginReportInterface();
+    this.b = paramQQAppInterface;
+    a(2, (IWatchTogetherRoomDelegate)this.b.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER));
+    a(1, (IWatchTogetherRoomDelegate)this.b.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER));
+    this.d = ((IFactoryApi)QRoute.api(IFactoryApi.class)).getIVPluginReportInterface();
   }
   
   private int a(String paramString)
   {
-    paramString = (NewTogetherRoomMessageData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (NewTogetherRoomMessageData)this.c.get(paramString);
     if (paramString != null) {
-      return paramString.jdField_a_of_type_Int;
+      return paramString.c;
     }
     return 0;
-  }
-  
-  private long a(String paramString)
-  {
-    paramString = (NewTogetherRoomMessageData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString != null) {
-      return paramString.jdField_a_of_type_Long;
-    }
-    return 0L;
   }
   
   private NewTogetherRoomMessageData a(WatchTogetherSession paramWatchTogetherSession)
@@ -67,25 +58,25 @@ public class WatchTogetherManager
       return null;
     }
     NewTogetherRoomMessageData localNewTogetherRoomMessageData = new NewTogetherRoomMessageData();
-    localNewTogetherRoomMessageData.jdField_a_of_type_Int = paramWatchTogetherSession.jdField_a_of_type_Int;
-    localNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString = paramWatchTogetherSession.e;
-    localNewTogetherRoomMessageData.f = paramWatchTogetherSession.jdField_c_of_type_JavaLangString;
-    localNewTogetherRoomMessageData.e = paramWatchTogetherSession.jdField_a_of_type_JavaLangString;
-    localNewTogetherRoomMessageData.jdField_a_of_type_Long = paramWatchTogetherSession.jdField_a_of_type_Long;
-    localNewTogetherRoomMessageData.d = paramWatchTogetherSession.jdField_b_of_type_JavaLangString;
-    Object localObject = Uri.parse(paramWatchTogetherSession.jdField_a_of_type_JavaLangString);
+    localNewTogetherRoomMessageData.c = paramWatchTogetherSession.a;
+    localNewTogetherRoomMessageData.a = paramWatchTogetherSession.n;
+    localNewTogetherRoomMessageData.k = paramWatchTogetherSession.e;
+    localNewTogetherRoomMessageData.j = paramWatchTogetherSession.b;
+    localNewTogetherRoomMessageData.d = paramWatchTogetherSession.c;
+    localNewTogetherRoomMessageData.i = paramWatchTogetherSession.d;
+    Object localObject = Uri.parse(paramWatchTogetherSession.b);
     paramWatchTogetherSession = ((Uri)localObject).getQueryParameter("roomid");
     String str1 = ((Uri)localObject).getQueryParameter("room_show_number");
     String str2 = ((Uri)localObject).getQueryParameter("fromid");
     localObject = ((Uri)localObject).getQueryParameter("room_group_code");
     if (!TextUtils.isEmpty(paramWatchTogetherSession)) {
-      localNewTogetherRoomMessageData.jdField_a_of_type_Long = Integer.parseInt(paramWatchTogetherSession);
+      localNewTogetherRoomMessageData.d = Integer.parseInt(paramWatchTogetherSession);
     }
     if (!TextUtils.isEmpty(str1)) {
-      localNewTogetherRoomMessageData.jdField_b_of_type_Int = Integer.parseInt(str1);
+      localNewTogetherRoomMessageData.e = Integer.parseInt(str1);
     }
-    localNewTogetherRoomMessageData.jdField_c_of_type_JavaLangString = ((String)localObject);
-    localNewTogetherRoomMessageData.g = str2;
+    localNewTogetherRoomMessageData.f = ((String)localObject);
+    localNewTogetherRoomMessageData.l = str2;
     return localNewTogetherRoomMessageData;
   }
   
@@ -109,11 +100,11 @@ public class WatchTogetherManager
     }
     else
     {
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      Object localObject3 = this.b;
       localObject1 = localObject2;
       if (localObject3 != null)
       {
-        localObject3 = ((TroopManager)((QQAppInterface)localObject3).getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+        localObject3 = ((TroopManager)((QQAppInterface)localObject3).getManager(QQManagerFactory.TROOP_MANAGER)).f(paramString);
         localObject1 = localObject2;
         if (localObject3 != null) {
           localObject1 = ((TroopInfo)localObject3).troopowneruin;
@@ -131,34 +122,43 @@ public class WatchTogetherManager
     return localObject1;
   }
   
+  private long b(String paramString)
+  {
+    paramString = (NewTogetherRoomMessageData)this.c.get(paramString);
+    if (paramString != null) {
+      return paramString.d;
+    }
+    return 0L;
+  }
+  
   private void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    if ((paramNewTogetherRoomMessageData.jdField_c_of_type_Int != paramNewTogetherRoomMessageData.jdField_a_of_type_Int) && (paramNewTogetherRoomMessageData.jdField_c_of_type_Int != 0))
+    if ((paramNewTogetherRoomMessageData.g != paramNewTogetherRoomMessageData.c) && (paramNewTogetherRoomMessageData.g != 0))
     {
-      b(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, paramNewTogetherRoomMessageData);
+      b(paramNewTogetherRoomMessageData.a, paramNewTogetherRoomMessageData);
       Bundle localBundle = new Bundle();
       localBundle.putString("close_reason", "switch_room");
-      localBundle.putInt("old_room_type", paramNewTogetherRoomMessageData.jdField_c_of_type_Int);
-      localBundle.putInt("new_room_type", paramNewTogetherRoomMessageData.jdField_a_of_type_Int);
-      IWatchTogetherRoomDelegate localIWatchTogetherRoomDelegate = (IWatchTogetherRoomDelegate)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramNewTogetherRoomMessageData.jdField_c_of_type_Int));
+      localBundle.putInt("old_room_type", paramNewTogetherRoomMessageData.g);
+      localBundle.putInt("new_room_type", paramNewTogetherRoomMessageData.c);
+      IWatchTogetherRoomDelegate localIWatchTogetherRoomDelegate = (IWatchTogetherRoomDelegate)this.a.get(Integer.valueOf(paramNewTogetherRoomMessageData.g));
       if (localIWatchTogetherRoomDelegate != null) {
         localIWatchTogetherRoomDelegate.b(paramNewTogetherRoomMessageData, localBundle, new WatchTogetherManager.3(this));
       }
     }
     else
     {
-      b(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, paramNewTogetherRoomMessageData);
+      b(paramNewTogetherRoomMessageData.a, paramNewTogetherRoomMessageData);
       c(paramNewTogetherRoomMessageData);
     }
   }
   
   private void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Iterator localIterator = this.a.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Integer)localIterator.next();
-      localObject = (IWatchTogetherRoomDelegate)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      localObject = (IWatchTogetherRoomDelegate)this.a.get(localObject);
       if (localObject != null)
       {
         localObject = ((IWatchTogetherRoomDelegate)localObject).a();
@@ -171,11 +171,11 @@ public class WatchTogetherManager
   
   private void d(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Iterator localIterator = this.a.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Integer)localIterator.next();
-      localObject = (IWatchTogetherRoomDelegate)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      localObject = (IWatchTogetherRoomDelegate)this.a.get(localObject);
       if (localObject != null)
       {
         localObject = ((IWatchTogetherRoomDelegate)localObject).a();
@@ -188,21 +188,21 @@ public class WatchTogetherManager
   
   private void e(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    b(paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, paramNewTogetherRoomMessageData);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    b(paramNewTogetherRoomMessageData.a, paramNewTogetherRoomMessageData);
+    Iterator localIterator = this.a.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (Integer)localIterator.next();
-      Object localObject1 = (IWatchTogetherRoomDelegate)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+      Object localObject1 = (IWatchTogetherRoomDelegate)this.a.get(localObject2);
       if (localObject1 != null)
       {
-        if (((Integer)localObject2).intValue() == paramNewTogetherRoomMessageData.jdField_a_of_type_Int)
+        if (((Integer)localObject2).intValue() == paramNewTogetherRoomMessageData.c)
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("preload roomtype =  ");
-          ((StringBuilder)localObject2).append(paramNewTogetherRoomMessageData.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(paramNewTogetherRoomMessageData.c);
           QLog.i("WatchTogetherManager", 1, ((StringBuilder)localObject2).toString());
-          paramNewTogetherRoomMessageData.g = "101";
+          paramNewTogetherRoomMessageData.l = "101";
           ((IWatchTogetherRoomDelegate)localObject1).a(paramNewTogetherRoomMessageData);
         }
         localObject1 = ((IWatchTogetherRoomDelegate)localObject1).a();
@@ -215,17 +215,17 @@ public class WatchTogetherManager
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherObserver);
+    this.b.addObserver(this.f);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    this.a.remove(Integer.valueOf(paramInt));
   }
   
   public void a(int paramInt, IWatchTogetherRoomDelegate paramIWatchTogetherRoomDelegate)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramIWatchTogetherRoomDelegate);
+    this.a.put(Integer.valueOf(paramInt), paramIWatchTogetherRoomDelegate);
   }
   
   public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
@@ -240,15 +240,15 @@ public class WatchTogetherManager
     ((StringBuilder)localObject).append(paramInt);
     QLog.i("WatchTogetherManager", 1, ((StringBuilder)localObject).toString());
     localObject = new NewTogetherRoomMessageData();
-    ((NewTogetherRoomMessageData)localObject).jdField_b_of_type_JavaLangString = paramWatchTogetherSession.f;
-    ((NewTogetherRoomMessageData)localObject).jdField_a_of_type_JavaLangString = paramWatchTogetherSession.e;
-    ((NewTogetherRoomMessageData)localObject).jdField_a_of_type_Int = paramWatchTogetherSession.jdField_a_of_type_Int;
-    ((NewTogetherRoomMessageData)localObject).jdField_a_of_type_Long = paramWatchTogetherSession.jdField_a_of_type_Long;
-    ((NewTogetherRoomMessageData)localObject).jdField_c_of_type_Int = a(paramWatchTogetherSession.e);
-    ((NewTogetherRoomMessageData)localObject).e = paramWatchTogetherSession.jdField_a_of_type_JavaLangString;
-    ((NewTogetherRoomMessageData)localObject).d = paramWatchTogetherSession.jdField_b_of_type_JavaLangString;
-    ((NewTogetherRoomMessageData)localObject).f = paramWatchTogetherSession.jdField_c_of_type_JavaLangString;
-    ((NewTogetherRoomMessageData)localObject).jdField_b_of_type_Long = a(paramWatchTogetherSession.e);
+    ((NewTogetherRoomMessageData)localObject).b = paramWatchTogetherSession.r;
+    ((NewTogetherRoomMessageData)localObject).a = paramWatchTogetherSession.n;
+    ((NewTogetherRoomMessageData)localObject).c = paramWatchTogetherSession.a;
+    ((NewTogetherRoomMessageData)localObject).d = paramWatchTogetherSession.c;
+    ((NewTogetherRoomMessageData)localObject).g = a(paramWatchTogetherSession.n);
+    ((NewTogetherRoomMessageData)localObject).j = paramWatchTogetherSession.b;
+    ((NewTogetherRoomMessageData)localObject).i = paramWatchTogetherSession.d;
+    ((NewTogetherRoomMessageData)localObject).k = paramWatchTogetherSession.e;
+    ((NewTogetherRoomMessageData)localObject).h = b(paramWatchTogetherSession.n);
     paramWatchTogetherSession = new StringBuilder();
     paramWatchTogetherSession.append("openWatchTogetherRoom  pushContent = ");
     paramWatchTogetherSession.append(((NewTogetherRoomMessageData)localObject).toString());
@@ -277,13 +277,13 @@ public class WatchTogetherManager
       return;
     }
     paramWatchTogetherSession = a(paramWatchTogetherSession);
-    paramWatchTogetherSession.jdField_b_of_type_JavaLangString = a(paramBundle, paramWatchTogetherSession.jdField_a_of_type_JavaLangString);
+    paramWatchTogetherSession.b = a(paramBundle, paramWatchTogetherSession.a);
     a(paramWatchTogetherSession);
   }
   
   public void a(String paramString, int paramInt, WatchTogetherSession paramWatchTogetherSession)
   {
-    IWatchTogetherRoomDelegate localIWatchTogetherRoomDelegate = (IWatchTogetherRoomDelegate)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    IWatchTogetherRoomDelegate localIWatchTogetherRoomDelegate = (IWatchTogetherRoomDelegate)this.a.get(Integer.valueOf(paramInt));
     if (localIWatchTogetherRoomDelegate == null)
     {
       QLog.i("WatchTogetherManager", 1, "preloadBizRoom  fail!  roomtype is not registered");
@@ -294,9 +294,9 @@ public class WatchTogetherManager
     if (localNewTogetherRoomMessageData == null)
     {
       paramWatchTogetherSession = new NewTogetherRoomMessageData();
-      paramWatchTogetherSession.g = paramString;
+      paramWatchTogetherSession.l = paramString;
     }
-    paramWatchTogetherSession.jdField_b_of_type_JavaLangString = a(null, paramWatchTogetherSession.jdField_a_of_type_JavaLangString);
+    paramWatchTogetherSession.b = a(null, paramWatchTogetherSession.a);
     paramString = new StringBuilder();
     paramString.append("preloadRoom  roomtype = ");
     paramString.append(paramInt);
@@ -306,9 +306,9 @@ public class WatchTogetherManager
   
   public void a(String paramString, NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString);
-    boolean bool2 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    a(paramString, paramNewTogetherRoomMessageData.jdField_a_of_type_JavaLangString, paramNewTogetherRoomMessageData.jdField_b_of_type_JavaLangString, Boolean.valueOf(bool1).booleanValue(), Boolean.valueOf(bool2).booleanValue());
+    boolean bool1 = this.b.getCurrentAccountUin().equals(paramNewTogetherRoomMessageData.b);
+    boolean bool2 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(this.b, paramNewTogetherRoomMessageData.a, this.b.getCurrentAccountUin());
+    a(paramString, paramNewTogetherRoomMessageData.a, paramNewTogetherRoomMessageData.b, Boolean.valueOf(bool1).booleanValue(), Boolean.valueOf(bool2).booleanValue());
   }
   
   public void a(String paramString, WatchTogetherSession paramWatchTogetherSession, Bundle paramBundle)
@@ -325,15 +325,15 @@ public class WatchTogetherManager
     }
     else
     {
-      bool1 = TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramWatchTogetherSession.e, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      bool2 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramWatchTogetherSession.e, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      bool1 = TroopUtils.a(this.b, paramWatchTogetherSession.n, this.b.getCurrentAccountUin());
+      bool2 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).isTroopAdmin(this.b, paramWatchTogetherSession.n, this.b.getCurrentAccountUin());
     }
-    paramBundle = a(paramBundle, paramWatchTogetherSession.e);
-    a(paramString, paramWatchTogetherSession.e, paramBundle, bool1, bool2);
-    IVPluginReportInterface localIVPluginReportInterface = this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPlugininterfaceIVPluginReportInterface;
+    paramBundle = a(paramBundle, paramWatchTogetherSession.n);
+    a(paramString, paramWatchTogetherSession.n, paramBundle, bool1, bool2);
+    IVPluginReportInterface localIVPluginReportInterface = this.d;
     if (localIVPluginReportInterface != null)
     {
-      paramString = localIVPluginReportInterface.opDepartment("intervideo").opName("open_together_miniapp").opType(String.valueOf(paramWatchTogetherSession.jdField_a_of_type_Int)).d1(paramWatchTogetherSession.e).d2(paramBundle).d3(paramString);
+      paramString = localIVPluginReportInterface.opDepartment("intervideo").opName("open_together_miniapp").opType(String.valueOf(paramWatchTogetherSession.a)).d1(paramWatchTogetherSession.n).d2(paramBundle).d3(paramString);
       int i;
       if (bool1) {
         i = 1;
@@ -349,19 +349,19 @@ public class WatchTogetherManager
     String str = paramString3;
     if (TextUtils.isEmpty(paramString3)) {
       if (paramBoolean1) {
-        str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+        str = this.b.getCurrentUin();
       } else {
         str = "0";
       }
     }
-    paramString3 = new StringBuilder(this.jdField_a_of_type_JavaLangString);
+    paramString3 = new StringBuilder(this.e);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("&group_uin=");
     localStringBuilder.append(paramString2);
     paramString3.append(localStringBuilder.toString());
     paramString2 = new StringBuilder();
     paramString2.append("&user_uin=");
-    paramString2.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    paramString2.append(this.b.getCurrentAccountUin());
     paramString3.append(paramString2.toString());
     paramString2 = new StringBuilder();
     paramString2.append("&source_id=");
@@ -388,12 +388,12 @@ public class WatchTogetherManager
     paramString3.append(paramString1);
     try
     {
-      paramBoolean1 = TextUtils.isEmpty("8.7.0");
+      paramBoolean1 = TextUtils.isEmpty("8.8.17");
       k = 0;
       if (paramBoolean1) {
         break label488;
       }
-      paramString1 = "8.7.0".split("\\.");
+      paramString1 = "8.8.17".split("\\.");
       if (paramString1.length <= 0) {
         break label488;
       }
@@ -455,17 +455,17 @@ public class WatchTogetherManager
   
   public void b(String paramString, NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramNewTogetherRoomMessageData);
+    this.c.put(paramString, paramNewTogetherRoomMessageData);
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ class DatalineFileBubbleModel$3
   
   public void run()
   {
-    QQFileManagerUtil.VideoThumbInfo localVideoThumbInfo = FileManagerUtil.a(this.a.path);
-    if (FileUtil.a(localVideoThumbInfo.a))
+    QQFileManagerUtil.VideoThumbInfo localVideoThumbInfo = FileManagerUtil.r(this.a.path);
+    if (FileUtil.b(localVideoThumbInfo.b))
     {
-      this.a.thumbPath = localVideoThumbInfo.a;
-      this.this$0.a.getFileManagerNotifyCenter().a(true, 0, null);
+      this.a.thumbPath = localVideoThumbInfo.b;
+      this.this$0.b.getFileManagerNotifyCenter().a(true, 0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.DatalineFileBubbleModel.3
  * JD-Core Version:    0.7.0.1
  */

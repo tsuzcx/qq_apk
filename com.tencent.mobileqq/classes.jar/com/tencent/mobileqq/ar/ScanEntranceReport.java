@@ -8,27 +8,21 @@ import java.util.HashMap;
 
 public class ScanEntranceReport
 {
-  private static ScanEntranceReport jdField_a_of_type_ComTencentMobileqqArScanEntranceReport;
-  private boolean jdField_a_of_type_Boolean;
+  private static ScanEntranceReport a;
   private boolean b;
+  private boolean c;
   
   public static ScanEntranceReport a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqArScanEntranceReport == null) {
-      jdField_a_of_type_ComTencentMobileqqArScanEntranceReport = new ScanEntranceReport();
+    if (a == null) {
+      a = new ScanEntranceReport();
     }
-    return jdField_a_of_type_ComTencentMobileqqArScanEntranceReport;
+    return a;
   }
   
   private boolean a(long paramLong)
   {
     return (paramLong >= 0L) && (paramLong <= 600000L);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
   }
   
   public void a(long paramLong, int paramInt)
@@ -53,7 +47,7 @@ public class ScanEntranceReport
       }
       long l = System.currentTimeMillis();
       boolean bool;
-      if ((this.jdField_a_of_type_Boolean) && (!this.b)) {
+      if ((this.b) && (!this.c)) {
         bool = false;
       } else {
         bool = true;
@@ -109,14 +103,14 @@ public class ScanEntranceReport
         if (!a(l)) {
           return;
         }
-        this.jdField_a_of_type_Boolean = paramBoolean;
+        this.b = paramBoolean;
         if ((paramBoolean) && (paramLong1 > 500L)) {
           paramBoolean = true;
         } else {
           paramBoolean = false;
         }
-        this.b = paramBoolean;
-        QLog.d("ScanEntranceReport", 2, String.format("reportActivityLaunchTime procExist=%s procRestart=%s procLoadTimeCost=%s activityLaunchTimeCost=%s totalTimeCost=%s source=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.b), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l), paramString }));
+        this.c = paramBoolean;
+        QLog.d("ScanEntranceReport", 2, String.format("reportActivityLaunchTime procExist=%s procRestart=%s procLoadTimeCost=%s activityLaunchTimeCost=%s totalTimeCost=%s source=%s", new Object[] { Boolean.valueOf(this.b), Boolean.valueOf(this.c), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l), paramString }));
         ThreadManager.post(new ScanEntranceReport.1(this, paramLong1, paramLong2, paramString, l), 5, null, false);
       }
     }
@@ -124,13 +118,19 @@ public class ScanEntranceReport
   
   public void b()
   {
+    this.b = false;
+    this.c = false;
+  }
+  
+  public void c()
+  {
     QLog.d("ScanEntranceReport", 2, "reportZoomCamera");
     ThreadManager.post(new ScanEntranceReport.9(this), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanEntranceReport
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,18 @@ class QQStoryShareGroupProfileActivity$2
 {
   QQStoryShareGroupProfileActivity$2(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (UIUtils.b()) {
+    if (UIUtils.d()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
-    if (HardCodeUtil.a(2131710990).equals(paramView))
+    this.a.superDismiss();
+    paramView = this.a.getContent(paramInt);
+    if (HardCodeUtil.a(2131908656).equals(paramView))
     {
-      paramView = TroopInfoUIUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
-      paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
-      TroopUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
+      paramView = TroopInfoUIUtil.a(this.b.v, 0);
+      paramView.putInt("extra_last_open_from", this.b.w);
+      TroopUtils.a(this.b, paramView, 2);
     }
   }
 }

@@ -6,25 +6,25 @@ import java.util.List;
 
 public class GifHeader
 {
-  int jdField_a_of_type_Int = 0;
-  GifFrame jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame;
-  final List<GifFrame> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean;
+  final List<GifFrame> a = new ArrayList();
   @ColorInt
-  int[] jdField_a_of_type_ArrayOfInt = null;
-  int b = 0;
-  int c;
-  int d;
-  int e;
+  int[] b = null;
+  int c = 0;
+  int d = 0;
+  GifFrame e;
   int f;
   int g;
+  boolean h;
+  int i;
+  int j;
+  int k;
   @ColorInt
-  int h;
-  int i = -1;
+  int l;
+  int m = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.GifHeader
  * JD-Core Version:    0.7.0.1
  */

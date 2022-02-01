@@ -11,7 +11,7 @@ class QRLoginMgrActivity$1$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
+    this.a.setChecked(false);
   }
 }
 

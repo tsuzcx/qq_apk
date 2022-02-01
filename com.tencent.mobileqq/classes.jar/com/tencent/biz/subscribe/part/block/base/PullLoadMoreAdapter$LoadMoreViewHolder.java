@@ -10,18 +10,18 @@ import android.widget.TextView;
 public class PullLoadMoreAdapter$LoadMoreViewHolder
   extends RecyclerView.ViewHolder
 {
-  private final FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final FrameLayout a;
+  private LinearLayout b;
+  private ProgressBar c;
+  private TextView d;
   
   public PullLoadMoreAdapter$LoadMoreViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372395));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369708));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379926));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366913));
+    this.c = ((ProgressBar)paramView.findViewById(2131439915));
+    this.b = ((LinearLayout)paramView.findViewById(2131436819));
+    this.d = ((TextView)paramView.findViewById(2131448810));
+    this.a = ((FrameLayout)paramView.findViewById(2131433252));
   }
 }
 

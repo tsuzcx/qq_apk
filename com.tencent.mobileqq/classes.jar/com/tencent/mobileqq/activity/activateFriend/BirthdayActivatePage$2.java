@@ -11,15 +11,15 @@ class BirthdayActivatePage$2
   {
     if (paramInt > 0)
     {
-      this.a.a.setEnabled(true);
+      this.a.f.setEnabled(true);
       return;
     }
-    this.a.a.setEnabled(false);
+    this.a.f.setEnabled(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage.2
  * JD-Core Version:    0.7.0.1
  */

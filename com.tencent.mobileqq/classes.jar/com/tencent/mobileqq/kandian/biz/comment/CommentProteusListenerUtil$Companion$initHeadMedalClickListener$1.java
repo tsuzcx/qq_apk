@@ -18,12 +18,12 @@ public final class CommentProteusListenerUtil$Companion$initHeadMedalClickListen
     Intrinsics.checkParameterIsNotNull(paramReadinjoyCommentListBaseAdapter, "adapter");
     Intrinsics.checkParameterIsNotNull(paramCommentViewItem, "commentViewItem");
     Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new CommentProteusListenerUtil.Companion.initHeadMedalClickListener.1.configClickListener.1(paramCommentViewItem, paramContainer));
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new CommentProteusListenerUtil.Companion.initHeadMedalClickListener.1.configClickListener.1(paramCommentViewItem, paramReadinjoyCommentListBaseAdapter, paramContainer));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initHeadMedalClickListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-rotate android:drawable="@drawable/i44" android:pivotX="50.0%" android:pivotY="50.0%"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<shape
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="#ff00dd8e" android:endColor="#ff0ec3e4" android:angle="45.0" />
+    <corners android:radius="2.0dip" />
+</shape>

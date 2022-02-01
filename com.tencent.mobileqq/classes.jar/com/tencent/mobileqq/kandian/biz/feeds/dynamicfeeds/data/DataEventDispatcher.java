@@ -8,28 +8,28 @@ import java.util.List;
 
 public class DataEventDispatcher
 {
-  private static volatile DataEventDispatcher jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDataEventDispatcher;
-  private final List<DataObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static volatile DataEventDispatcher a;
+  private final List<DataObserver> b = new ArrayList();
   
   public static DataEventDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDataEventDispatcher == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDataEventDispatcher == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDataEventDispatcher = new DataEventDispatcher();
+        if (a == null) {
+          a = new DataEventDispatcher();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataDataEventDispatcher;
+    return a;
   }
   
   public void a(int paramInt, List<DynamicChannelDataModel> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      Iterator localIterator = new ArrayList(this.b).iterator();
       while (localIterator.hasNext()) {
         ((DataObserver)localIterator.next()).a(paramInt, paramList);
       }
@@ -43,9 +43,9 @@ public class DataEventDispatcher
   
   public void a(int paramInt1, boolean paramBoolean, List<HeaderDataModel> paramList, int paramInt2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      Iterator localIterator = new ArrayList(this.b).iterator();
       while (localIterator.hasNext()) {
         ((DataObserver)localIterator.next()).a(paramInt1, paramBoolean, paramList, paramInt2);
       }
@@ -59,9 +59,9 @@ public class DataEventDispatcher
   
   public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      Iterator localIterator = new ArrayList(this.b).iterator();
       while (localIterator.hasNext()) {
         ((DataObserver)localIterator.next()).a(paramInt, paramBoolean1, paramBoolean2, paramList);
       }
@@ -78,10 +78,10 @@ public class DataEventDispatcher
     if (paramDataObserver == null) {
       return;
     }
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramDataObserver)) {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+    if (!this.b.contains(paramDataObserver)) {
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaUtilList.add(paramDataObserver);
+        this.b.add(paramDataObserver);
         return;
       }
     }
@@ -89,9 +89,9 @@ public class DataEventDispatcher
   
   public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      Iterator localIterator = new ArrayList(this.b).iterator();
       while (localIterator.hasNext()) {
         ((DataObserver)localIterator.next()).b(paramInt, paramBoolean1, paramBoolean2, paramList);
       }
@@ -105,16 +105,16 @@ public class DataEventDispatcher
   
   public void b(DataObserver paramDataObserver)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramDataObserver);
+      this.b.remove(paramDataObserver);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.DataEventDispatcher
  * JD-Core Version:    0.7.0.1
  */

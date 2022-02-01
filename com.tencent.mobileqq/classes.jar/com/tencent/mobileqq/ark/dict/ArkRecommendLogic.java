@@ -4,32 +4,32 @@ import android.os.Handler;
 
 public class ArkRecommendLogic
 {
-  private static final ArkRecommendLogic.ArkWordSegmentThread jdField_a_of_type_ComTencentMobileqqArkDictArkRecommendLogic$ArkWordSegmentThread = new ArkRecommendLogic.ArkWordSegmentThread();
-  private static volatile boolean jdField_a_of_type_Boolean = false;
+  private static final ArkRecommendLogic.ArkWordSegmentThread a = new ArkRecommendLogic.ArkWordSegmentThread();
+  private static volatile boolean b = false;
   
   public static Handler a()
   {
     try
     {
-      if (!jdField_a_of_type_Boolean)
+      if (!b)
       {
-        jdField_a_of_type_Boolean = true;
-        a().a().post(new ArkRecommendLogic.1());
+        b = true;
+        b().a().post(new ArkRecommendLogic.1());
       }
-      Handler localHandler = jdField_a_of_type_ComTencentMobileqqArkDictArkRecommendLogic$ArkWordSegmentThread.a();
+      Handler localHandler = a.a();
       return localHandler;
     }
     finally {}
   }
   
-  public static ArkRecommendLogic.ArkWordSegmentThread a()
+  public static ArkRecommendLogic.ArkWordSegmentThread b()
   {
-    return jdField_a_of_type_ComTencentMobileqqArkDictArkRecommendLogic$ArkWordSegmentThread;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkRecommendLogic
  * JD-Core Version:    0.7.0.1
  */

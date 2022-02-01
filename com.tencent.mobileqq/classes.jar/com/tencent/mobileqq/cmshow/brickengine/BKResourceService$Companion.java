@@ -10,10 +10,10 @@ final class BKResourceService$Companion
   private final String a(int paramInt)
   {
     Object localObject = new StringBuilder();
-    BKResourceService.a();
+    BKResourceService.c();
     ((StringBuilder)localObject).append("cmshow_script_");
     ((StringBuilder)localObject).append(paramInt);
-    BKResourceService.a();
+    BKResourceService.c();
     ((StringBuilder)localObject).append(".js");
     localObject = ((StringBuilder)localObject).toString();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder().apply(builderAction).toString()");
@@ -23,9 +23,9 @@ final class BKResourceService$Companion
   private final String b(int paramInt)
   {
     Object localObject = new StringBuilder();
-    String str = ApolloConstant.M;
-    ((StringBuilder)localObject).append(ApolloConstant.N);
-    ((StringBuilder)localObject).append(BKResourceService.a().a(paramInt));
+    String str = ApolloConstant.U;
+    ((StringBuilder)localObject).append(ApolloConstant.V);
+    ((StringBuilder)localObject).append(BKResourceService.c().a(paramInt));
     localObject = ((StringBuilder)localObject).toString();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder().apply(builderAction).toString()");
     return localObject;
@@ -33,7 +33,7 @@ final class BKResourceService$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKResourceService.Companion
  * JD-Core Version:    0.7.0.1
  */

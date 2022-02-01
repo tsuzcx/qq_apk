@@ -15,14 +15,14 @@ class VideoPlayerView$20
       }
       VideoPlayerView.a(this.this$0, 5);
       VideoPlayerView.a(this.this$0, false);
-      VideoPlayerView.b(this.this$0, false);
-      VideoPlayerView.j(this.this$0);
+      VideoPlayerView.f(this.this$0, false);
+      VideoPlayerView.H(this.this$0);
       return;
     }
     VideoPlayerView.a(this.this$0, 4);
     VideoPlayerView.a(this.this$0, true);
-    VideoPlayerView.b(this.this$0, true);
-    VideoPlayerView.e(this.this$0);
+    VideoPlayerView.f(this.this$0, true);
+    VideoPlayerView.i(this.this$0);
   }
 }
 

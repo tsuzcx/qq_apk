@@ -26,34 +26,34 @@ class AppLaucherHelper$3
       if (i != 1) {
         return;
       }
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper;
-      paramMessage.b = true;
-      if (paramMessage.jdField_a_of_type_MqqAppNewIntent != null)
+      paramMessage = this.g;
+      paramMessage.h = true;
+      if (paramMessage.b != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-        this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
+        this.g.b.setObserver(null);
+        this.g.b = null;
       }
-      AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.b, this.c, this.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_Int);
+      AppLaucherHelper.a(this.g, this.d, this.a, this.e, this.f, this.b, "", this.c);
       return;
     }
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper;
-    paramMessage.b = true;
-    if (paramMessage.jdField_a_of_type_MqqAppNewIntent != null)
+    paramMessage = this.g;
+    paramMessage.h = true;
+    if (paramMessage.b != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-      this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_MqqAppNewIntent = null;
+      this.g.b.setObserver(null);
+      this.g.b = null;
     }
     if (QLog.isColorLevel()) {
       QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
     }
-    paramMessage = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.jdField_a_of_type_JavaLangString);
-    AppUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramMessage, this.jdField_a_of_type_Int);
-    AppLaucherHelper.jdField_a_of_type_Boolean = false;
+    paramMessage = AppLaucherHelper.b(this.g.e);
+    AppUtil.a(this.a, this.b, paramMessage, this.c);
+    AppLaucherHelper.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.gamecenter.AppLaucherHelper.3
  * JD-Core Version:    0.7.0.1
  */

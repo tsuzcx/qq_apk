@@ -12,8 +12,8 @@ class CountDownClockView$1
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
     CountDownClockView.a(this.a, i);
-    if ((CountDownClockView.a(this.a) == 360) && (CountDownClockView.a(this.a) != null)) {
-      CountDownClockView.a(this.a).a();
+    if ((CountDownClockView.a(this.a) == 360) && (CountDownClockView.b(this.a) != null)) {
+      CountDownClockView.b(this.a).a();
     }
     this.a.invalidate();
   }

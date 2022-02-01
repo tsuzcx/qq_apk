@@ -12,9 +12,9 @@ class ClassificationSearchActivity$4
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    this.a.K.setText("");
+    if ((this.a.q != ClassificationSearchActivity.k) && (this.a.q != ClassificationSearchActivity.n)) {
+      this.a.M.e();
     } else {
       ClassificationSearchActivity.a(this.a);
     }
@@ -23,7 +23,7 @@ class ClassificationSearchActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.4
  * JD-Core Version:    0.7.0.1
  */

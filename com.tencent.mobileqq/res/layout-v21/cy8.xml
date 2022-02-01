@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/n02" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textSize="28.0dip" android:textColor="@color/fl" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/n01" android:background="@drawable/eu7" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="3.0dip" android:maxLength="1" android:textCursorDrawable="@drawable/es_" />
-    <TextView android:textSize="28.0dip" android:textColor="@color/fl" android:layout_gravity="center_vertical" android:id="@id/n03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="*华" android:letterSpacing="0.3" />
-</LinearLayout>

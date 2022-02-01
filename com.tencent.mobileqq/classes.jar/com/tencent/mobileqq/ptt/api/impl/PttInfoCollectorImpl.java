@@ -106,9 +106,9 @@ public class PttInfoCollectorImpl
   @NotNull
   protected HashMap<String, String> getSysReportInfo()
   {
-    int i = QQAudioSystemInfo.d();
-    int j = QQAudioSystemInfo.c();
-    long l1 = QQAudioSystemInfo.c();
+    int i = QQAudioSystemInfo.h();
+    int j = QQAudioSystemInfo.g();
+    long l1 = QQAudioSystemInfo.f();
     long l2 = DeviceInfoUtil.a() / 1048576L;
     HashMap localHashMap = getReportHashMap();
     localHashMap.put("cpuArch", String.valueOf(i));
@@ -285,7 +285,7 @@ public class PttInfoCollectorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.api.impl.PttInfoCollectorImpl
  * JD-Core Version:    0.7.0.1
  */

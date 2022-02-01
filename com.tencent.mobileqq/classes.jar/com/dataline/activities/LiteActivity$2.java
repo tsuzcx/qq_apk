@@ -7,13 +7,13 @@ import com.tencent.widget.XListView;
 class LiteActivity$2
   implements QQBlur.BackgroundViewDirtyListener
 {
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131373031);
+  private View b = this.a.findViewById(2131440610);
   
   LiteActivity$2(LiteActivity paramLiteActivity) {}
   
   public boolean isDirty()
   {
-    return (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
+    return (this.a.f.isDirty()) || (this.b.isDirty());
   }
 }
 

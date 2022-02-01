@@ -8,7 +8,7 @@ public class PrinterItemMsgRecordInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if (PrinterItemMsgRecord.tableName().equals(a(paramChain))) {
+    if (PrinterItemMsgRecord.tableName().equals(b(paramChain))) {
       return PrinterItemMsgRecord.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class PrinterItemMsgRecordInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.PrinterItemMsgRecordInterceptor
  * JD-Core Version:    0.7.0.1
  */

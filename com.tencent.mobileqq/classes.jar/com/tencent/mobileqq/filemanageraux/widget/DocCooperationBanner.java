@@ -30,29 +30,24 @@ import mqq.app.MobileQQ;
 public class DocCooperationBanner
   implements View.OnClickListener
 {
-  public static final DownloadParams.DecodeHandler a;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  public View a;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TencentDocLocalCooperationBean jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocLocalCooperationBean;
-  TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
-  String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private RelativeLayout b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentImageDownloadParams$DecodeHandler = new DocCooperationBanner.1();
-  }
+  public static final DownloadParams.DecodeHandler a = new DocCooperationBanner.1();
+  public View b;
+  TencentDocLocalCooperationBean c;
+  TeamWorkFileImportInfo d;
+  String e;
+  private final Activity f;
+  private RelativeLayout g;
+  private RelativeLayout h;
+  private ObjectAnimator i;
+  private boolean j;
   
   private void a(boolean paramBoolean, int paramInt)
   {
     Object localObject = TencentDocLocalCooperationProcessor.a();
     if (paramBoolean) {
-      localObject = ((TencentDocLocalCooperationBean)localObject).b;
-    } else {
       localObject = ((TencentDocLocalCooperationBean)localObject).d;
+    } else {
+      localObject = ((TencentDocLocalCooperationBean)localObject).f;
     }
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -93,23 +88,23 @@ public class DocCooperationBanner
       }
       if (paramBoolean)
       {
-        paramBoolean = TencentDocLocalCooperationProcessor.a().a(paramTeamWorkFileImportInfo.b);
-        localStringBuilder = new StringBuilder(this.jdField_a_of_type_AndroidAppActivity.getString(2131691815));
+        paramBoolean = TencentDocLocalCooperationProcessor.a().b(paramTeamWorkFileImportInfo.c);
+        localStringBuilder = new StringBuilder(this.f.getString(2131888778));
         if ((paramTeamWorkFileImportInfo.a != 1) && (paramTeamWorkFileImportInfo.a != 3000))
         {
           if (paramTeamWorkFileImportInfo.a == 0) {
-            localStringBuilder.append(this.jdField_a_of_type_AndroidAppActivity.getString(2131692458));
+            localStringBuilder.append(this.f.getString(2131889446));
           }
         }
         else {
-          localStringBuilder.append(this.jdField_a_of_type_AndroidAppActivity.getString(2131692462));
+          localStringBuilder.append(this.f.getString(2131889450));
         }
         if (paramBoolean) {
-          localStringBuilder.append(this.jdField_a_of_type_AndroidAppActivity.getString(2131692461));
+          localStringBuilder.append(this.f.getString(2131889449));
         } else {
-          localStringBuilder.append(this.jdField_a_of_type_AndroidAppActivity.getString(2131692467));
+          localStringBuilder.append(this.f.getString(2131889455));
         }
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, localStringBuilder.toString(), 1).a();
+        QQToast.makeText(this.f, 2, localStringBuilder.toString(), 1).show();
         ThreadManager.excute(new DocCooperationBanner.3(this, paramTeamWorkFileImportInfo, paramString1, paramBoolean, paramString2), 128, null, false);
       }
       TenDocLogReportHelper.a(null, "0X800A637");
@@ -117,33 +112,33 @@ public class DocCooperationBanner
       paramString2.putString("url", paramString1);
       paramString2.putBoolean("temp_preview_from_qq", true);
       paramString2.putParcelable("key_team_work_file_import_info", paramTeamWorkFileImportInfo);
-      ((ITeamWorkDocEditBrowserProxy)QRoute.api(ITeamWorkDocEditBrowserProxy.class)).openTeamWorkDocEditBrowserActivity(this.jdField_a_of_type_AndroidAppActivity, paramString2, false);
+      ((ITeamWorkDocEditBrowserProxy)QRoute.api(ITeamWorkDocEditBrowserProxy.class)).openTeamWorkDocEditBrowserActivity(this.f, paramString2, false);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocLocalCooperationBean != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo != null)) {
+    if ((this.c != null) && (this.d != null)) {
       if (paramBoolean)
       {
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.j)
         {
-          ObjectAnimator localObjectAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+          ObjectAnimator localObjectAnimator = this.i;
           if (localObjectAnimator != null) {
             localObjectAnimator.cancel();
           }
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-          this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+          this.j = true;
+          this.b.setVisibility(0);
+          this.i = ObjectAnimator.ofFloat(this.b, "translationY", new float[] { 0.0F });
+          this.i.setDuration(180L);
+          this.i.setInterpolator(new AccelerateDecelerateInterpolator());
+          this.i.start();
         }
       }
       else
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.j = true;
+        this.b.setVisibility(0);
       }
     }
   }
@@ -152,25 +147,25 @@ public class DocCooperationBanner
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.j)
       {
-        Object localObject = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+        Object localObject = this.i;
         if (localObject != null) {
           ((ObjectAnimator)localObject).cancel();
         }
-        this.jdField_a_of_type_Boolean = false;
-        localObject = this.jdField_a_of_type_AndroidViewView;
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(localObject, "translationY", new float[] { ((View)localObject).getHeight() });
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new DocCooperationBanner.2(this));
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
-        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+        this.j = false;
+        localObject = this.b;
+        this.i = ObjectAnimator.ofFloat(localObject, "translationY", new float[] { ((View)localObject).getHeight() });
+        this.i.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.i.addListener(new DocCooperationBanner.2(this));
+        this.i.setDuration(180L);
+        this.i.start();
       }
     }
     else
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.j = false;
+      this.b.setVisibility(8);
     }
   }
   
@@ -181,25 +176,25 @@ public class DocCooperationBanner
     Object localObject1;
     if (!bool1)
     {
-      localObject1 = this.jdField_a_of_type_AndroidAppActivity;
-      QQToast.a((Context)localObject1, ((Activity)localObject1).getString(2131691819), 0).a();
+      localObject1 = this.f;
+      QQToast.makeText((Context)localObject1, ((Activity)localObject1).getString(2131888782), 0).show();
     }
     else
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+      if (this.g.getVisibility() == 0)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo != null)
+        if (this.d != null)
         {
           localObject1 = (ITeamWorkFileImportHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getImportHandlerName());
-          if (!((ITeamWorkFileImportHandler)localObject1).isFileImporting(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo))
+          if (!((ITeamWorkFileImportHandler)localObject1).isFileImporting(this.d))
           {
             Object localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.k);
+            ((StringBuilder)localObject2).append(this.d.A);
             ((StringBuilder)localObject2).append("-");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.d);
-            TenDocLogReportHelper.a(((StringBuilder)localObject2).toString());
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
-            ((TeamWorkFileImportInfo)localObject2).g = 0;
+            ((StringBuilder)localObject2).append(this.d.n);
+            TenDocLogReportHelper.f(((StringBuilder)localObject2).toString());
+            localObject2 = this.d;
+            ((TeamWorkFileImportInfo)localObject2).B = 0;
             ((ITeamWorkFileImportHandler)localObject1).addFileImportJob((TeamWorkFileImportInfo)localObject2);
           }
         }
@@ -208,13 +203,13 @@ public class DocCooperationBanner
       else
       {
         bool1 = bool2;
-        if (this.b.getVisibility() == 0)
+        if (this.h.getVisibility() == 0)
         {
-          a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, false, "");
+          a(this.e, this.d, false, "");
           bool1 = bool2;
         }
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
+      localObject1 = this.d;
       if (localObject1 != null) {
         a(bool1, ((TeamWorkFileImportInfo)localObject1).a);
       }
@@ -224,7 +219,7 @@ public class DocCooperationBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.widget.DocCooperationBanner
  * JD-Core Version:    0.7.0.1
  */

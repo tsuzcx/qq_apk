@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.flashshow.widgets.common.FSAvatarView android:id="@id/du3" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/o_2" android:background="@drawable/7v" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" />
+</FrameLayout>

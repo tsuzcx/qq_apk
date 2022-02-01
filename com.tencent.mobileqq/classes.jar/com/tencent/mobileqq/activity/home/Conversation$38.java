@@ -1,38 +1,88 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.os.Message;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.data.AppShareID;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.api.observer.TroopCommonlyUsedObserver;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 class Conversation$38
-  extends ConfigObserver
+  extends TroopCommonlyUsedObserver
 {
   Conversation$38(Conversation paramConversation) {}
   
-  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt1, int paramInt2, Map<String, Integer> paramMap, String paramString)
   {
-    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    paramString = (BaseActivity)this.a.P();
+    String str1 = this.a.s().getCurrentAccountUin();
+    if ((paramMap != null) && (paramMap.size() > 0))
     {
-      ReportController.b(this.a.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
-      if (!this.a.g) {
-        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
+      paramInt1 = 0;
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str2 = (String)localIterator.next();
+        paramInt2 = ((Integer)paramMap.get(str2)).intValue();
+        if (paramInt2 == 4000) {
+          SharedPreUtils.k(paramString, str1, str2);
+        } else if (paramInt2 != 0) {
+          paramInt1 = 1;
+        }
+      }
+      if (paramInt1 == 0) {
+        SharedPreUtils.ar(this.a.P(), this.a.s().getCurrentAccountUin());
       }
     }
   }
   
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if (paramBoolean) {
-      this.a.a(0L);
+    if (paramInt2 != 0)
+    {
+      paramString1 = paramString2;
+      if (!this.a.P().isFinishing())
+      {
+        paramString1 = paramString2;
+        if (Conversation.t(this.a))
+        {
+          paramString1 = paramString2;
+          if (!"troop_delete_top_from_conversation".equals(paramString3))
+          {
+            paramString1 = paramString2;
+            if (TextUtils.isEmpty(paramString2)) {
+              paramString1 = this.a.Q().getString(2131892358);
+            }
+            QQToast.makeText(this.a.P(), 1, paramString1, 0).show();
+          }
+        }
+      }
+    }
+    else
+    {
+      this.a.a(9, paramString1, 1);
+      paramString1 = paramString2;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("onSetCommonUsedTroop, retCode = ");
+      paramString2.append(paramInt2);
+      paramString2.append(" , wording = ");
+      paramString2.append(paramString1);
+      QLog.d("Q.recent", 2, paramString2.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.38
  * JD-Core Version:    0.7.0.1
  */

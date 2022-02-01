@@ -10,14 +10,9 @@ import com.tencent.util.Pair;
 
 public class AttribPool
 {
-  int jdField_a_of_type_Int;
-  ArrayMap<String, Integer> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-  SparseArrayCompat<Pair<String, String>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  
-  public static JsonDeserializer<AttribPool> a()
-  {
-    return new AttribPool.2();
-  }
+  SparseArrayCompat<Pair<String, String>> a = new SparseArrayCompat();
+  ArrayMap<String, Integer> b = new ArrayMap();
+  int c;
   
   public static JsonSerializer<AttribPool> a()
   {
@@ -27,7 +22,7 @@ public class AttribPool
   public static AttribPool a(String paramString)
   {
     GsonBuilder localGsonBuilder = new GsonBuilder();
-    localGsonBuilder.registerTypeAdapter(AttribPool.class, a());
+    localGsonBuilder.registerTypeAdapter(AttribPool.class, c());
     return (AttribPool)localGsonBuilder.create().fromJson(paramString, AttribPool.class);
   }
   
@@ -38,6 +33,11 @@ public class AttribPool
     localStringBuilder.append(",");
     localStringBuilder.append(paramString2);
     return localStringBuilder.toString();
+  }
+  
+  public static JsonDeserializer<AttribPool> c()
+  {
+    return new AttribPool.2();
   }
   
   public int a(Pair<String, String> paramPair)
@@ -53,16 +53,16 @@ public class AttribPool
   public int a(String paramString1, String paramString2, boolean paramBoolean)
   {
     String str = b(paramString1, paramString2);
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(str)) {
-      return ((Integer)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(str)).intValue();
+    if (this.b.containsKey(str)) {
+      return ((Integer)this.b.get(str)).intValue();
     }
     if (paramBoolean) {
       return -1;
     }
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(str, Integer.valueOf(i));
-    SparseArrayCompat localSparseArrayCompat = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+    int i = this.c;
+    this.c = (i + 1);
+    this.b.put(str, Integer.valueOf(i));
+    SparseArrayCompat localSparseArrayCompat = this.a;
     str = paramString1;
     if (paramString1 == null) {
       str = "";
@@ -77,39 +77,39 @@ public class AttribPool
   
   public Pair<String, String> a(int paramInt)
   {
-    if (paramInt >= this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size()) {
+    if (paramInt >= this.a.size()) {
       return null;
     }
-    Pair localPair = (Pair)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
+    Pair localPair = (Pair)this.a.get(paramInt);
     return new Pair(localPair.first, localPair.second);
   }
   
-  public String a()
+  public String b()
   {
     GsonBuilder localGsonBuilder = new GsonBuilder();
     localGsonBuilder.registerTypeAdapter(AttribPool.class, a());
     return localGsonBuilder.create().toJson(this);
   }
   
-  public String a(int paramInt)
-  {
-    if (paramInt >= this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size()) {
-      return null;
-    }
-    return (String)((Pair)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt)).first;
-  }
-  
   public String b(int paramInt)
   {
-    if (paramInt >= this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size()) {
+    if (paramInt >= this.a.size()) {
       return null;
     }
-    return (String)((Pair)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt)).second;
+    return (String)((Pair)this.a.get(paramInt)).first;
+  }
+  
+  public String c(int paramInt)
+  {
+    if (paramInt >= this.a.size()) {
+      return null;
+    }
+    return (String)((Pair)this.a.get(paramInt)).second;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.AttribPool
  * JD-Core Version:    0.7.0.1
  */

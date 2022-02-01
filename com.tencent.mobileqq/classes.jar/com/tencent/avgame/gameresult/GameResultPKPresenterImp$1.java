@@ -15,7 +15,7 @@ class GameResultPKPresenterImp$1
       QLog.i("GameResultPKPresenterImp", 2, String.format("onUserHeadUpdated", new Object[0]));
     }
     if ((this.a.a instanceof GamePKResultFragment)) {
-      ((GamePKResultFragment)this.a.a).b();
+      ((GamePKResultFragment)this.a.a).aD_();
     }
   }
   
@@ -27,7 +27,7 @@ class GameResultPKPresenterImp$1
         QLog.i("GameResultPKPresenterImp", 2, String.format("onUserNickUpdated", new Object[0]));
       }
       if ((this.a.a instanceof GamePKResultFragment)) {
-        ((GamePKResultFragment)this.a.a).b();
+        ((GamePKResultFragment)this.a.a).aD_();
       }
     }
   }

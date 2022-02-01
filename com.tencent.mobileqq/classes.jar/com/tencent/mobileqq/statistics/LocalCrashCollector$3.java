@@ -18,31 +18,31 @@ class LocalCrashCollector$3
     {
       try
       {
-        BaseSessionInfo localBaseSessionInfo = LocalCrashCollector.a(this.this$0).a();
-        BaseActivity localBaseActivity = LocalCrashCollector.a(this.this$0).a();
-        if (LocalCrashCollector.a(this.this$0) <= 0) {
+        BaseSessionInfo localBaseSessionInfo = LocalCrashCollector.a(this.this$0).O();
+        BaseActivity localBaseActivity = LocalCrashCollector.a(this.this$0).b();
+        if (LocalCrashCollector.b(this.this$0) <= 0) {
           break label208;
         }
         Object localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706338));
-        ((StringBuilder)localObject1).append(localBaseSessionInfo.d);
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904197));
+        ((StringBuilder)localObject1).append(localBaseSessionInfo.e);
         localObject1 = ((StringBuilder)localObject1).toString();
-        if (LocalCrashCollector.a(this.this$0) <= 0) {
+        if (LocalCrashCollector.b(this.this$0) <= 0) {
           break label214;
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("Crash count: ");
-        ((StringBuilder)localObject2).append(LocalCrashCollector.a(this.this$0));
+        ((StringBuilder)localObject2).append(LocalCrashCollector.b(this.this$0));
         ((StringBuilder)localObject2).append("\n");
         ((StringBuilder)localObject2).append("CrashInfoSummary.txt");
         localObject2 = ((StringBuilder)localObject2).toString();
-        if (LocalCrashCollector.a(this.this$0) <= 0) {
+        if (LocalCrashCollector.b(this.this$0) <= 0) {
           break label219;
         }
-        i = 2131690820;
-        localObject1 = DialogUtil.a(localBaseActivity, 230, (String)localObject1, (String)localObject2, 2131690728, i, new LocalCrashCollector.3.1(this, localBaseSessionInfo), new LocalCrashCollector.3.2(this));
+        i = 2131887750;
+        localObject1 = DialogUtil.a(localBaseActivity, 230, (String)localObject1, (String)localObject2, 2131887648, i, new LocalCrashCollector.3.1(this, localBaseSessionInfo), new LocalCrashCollector.3.2(this));
         ((QQCustomDialog)localObject1).adjustTitle();
-        if (!LocalCrashCollector.a(this.this$0).a().isFinishing())
+        if (!LocalCrashCollector.a(this.this$0).b().isFinishing())
         {
           ((QQCustomDialog)localObject1).show();
           return;
@@ -60,13 +60,13 @@ class LocalCrashCollector$3
       Object localObject2 = null;
       continue;
       label219:
-      int i = 2131694583;
+      int i = 2131892267;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.LocalCrashCollector.3
  * JD-Core Version:    0.7.0.1
  */

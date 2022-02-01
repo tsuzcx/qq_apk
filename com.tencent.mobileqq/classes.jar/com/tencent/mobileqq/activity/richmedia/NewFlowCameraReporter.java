@@ -24,13 +24,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class NewFlowCameraReporter
 {
   public static long a = 0L;
-  public static String a = "";
-  public static Map<String, GapDataCollector> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
+  public static String b = "";
+  public static Map<String, GapDataCollector> c = new ConcurrentHashMap();
   
   public static void a()
   {
@@ -88,7 +83,7 @@ public class NewFlowCameraReporter
   
   public static void a(Intent paramIntent)
   {
-    paramIntent.putExtra("start_intent_time", jdField_a_of_type_Long);
+    paramIntent.putExtra("start_intent_time", a);
   }
   
   public static void a(Camera.Parameters paramParameters, String paramString)
@@ -173,7 +168,7 @@ public class NewFlowCameraReporter
   
   public static void a(String paramString)
   {
-    a(paramString, jdField_a_of_type_Long);
+    a(paramString, a);
   }
   
   public static void a(String paramString, long paramLong)
@@ -186,7 +181,7 @@ public class NewFlowCameraReporter
       localStringBuilder.append(";");
       localStringBuilder.append(l - paramLong);
       QLog.d("PTV.NewFlowCameraActivity.photo", 2, localStringBuilder.toString());
-      jdField_a_of_type_Long = l;
+      a = l;
     }
   }
   
@@ -201,7 +196,7 @@ public class NewFlowCameraReporter
     }
     paramString1.put("MANUFACTURER", Build.MANUFACTURER);
     paramString1.put("MODEL", Build.MODEL);
-    paramString1.put("DEVICE_TYPE_NAME", DeviceInstance.a().a());
+    paramString1.put("DEVICE_TYPE_NAME", DeviceInstance.a().b());
     a(paramString1, "open_custom_camera", paramString2);
     StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, paramString2, true, 0L, 0L, paramString1, null);
   }
@@ -385,7 +380,7 @@ public class NewFlowCameraReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter
  * JD-Core Version:    0.7.0.1
  */

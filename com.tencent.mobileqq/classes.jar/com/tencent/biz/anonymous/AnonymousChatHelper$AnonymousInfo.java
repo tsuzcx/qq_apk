@@ -2,17 +2,17 @@ package com.tencent.biz.anonymous;
 
 public class AnonymousChatHelper$AnonymousInfo
 {
-  public int a;
-  public long a;
-  public String a;
   public boolean a;
-  public int b;
-  public String b;
-  public String c;
+  public long b;
+  public int c;
+  public String d;
+  public int e;
+  public String f;
+  public String g;
   
   public AnonymousChatHelper$AnonymousInfo(AnonymousChatHelper paramAnonymousChatHelper, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
 }
 

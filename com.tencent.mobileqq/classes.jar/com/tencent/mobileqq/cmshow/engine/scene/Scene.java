@@ -9,7 +9,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/scene/Scene;", "", "(Ljava/lang/String;I)V", "assetsPath", "", "assetsPath$cmshow_impl_release", "debugConfigKey", "preloadScripts", "", "preloadScripts$cmshow_impl_release", "worldPath", "worldPath$cmshow_impl_release", "AIO", "AIO_BACKGROUND", "DRAWER", "FRIEND_CARD", "MEME_PLAYER", "MAKEUP_PAGE", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/scene/Scene;", "", "(Ljava/lang/String;I)V", "assetsPath", "", "assetsPath$cmshow_impl_release", "debugConfigKey", "preloadScripts", "", "preloadScripts$cmshow_impl_release", "worldPath", "worldPath$cmshow_impl_release", "AIO", "AIO_BACKGROUND", "DRAWER", "FRIEND_CARD", "MEME_PLAYER", "WEB_STORE_OR_GAME", "MAKE_UP_3D", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public enum Scene
 {
   static
@@ -24,9 +24,11 @@ public enum Scene
     FRIEND_CARD = localScene4;
     Scene localScene5 = new Scene("MEME_PLAYER", 4);
     MEME_PLAYER = localScene5;
-    Scene localScene6 = new Scene("MAKEUP_PAGE", 5);
-    MAKEUP_PAGE = localScene6;
-    $VALUES = new Scene[] { localScene1, localScene2, localScene3, localScene4, localScene5, localScene6 };
+    Scene localScene6 = new Scene("WEB_STORE_OR_GAME", 5);
+    WEB_STORE_OR_GAME = localScene6;
+    Scene localScene7 = new Scene("MAKE_UP_3D", 6);
+    MAKE_UP_3D = localScene7;
+    $VALUES = new Scene[] { localScene1, localScene2, localScene3, localScene4, localScene5, localScene6, localScene7 };
   }
   
   private Scene() {}
@@ -34,12 +36,12 @@ public enum Scene
   @NotNull
   public final String assetsPath$cmshow_impl_release()
   {
-    switch (Scene.WhenMappings.a[ordinal()])
+    switch (Scene.WhenMappings.$EnumSwitchMapping$0[ordinal()])
     {
     default: 
-      throw new NoWhenBranchMatchedException();
+      return "";
     }
-    String str = ApolloConstant.j;
+    String str = ApolloConstant.k;
     Intrinsics.checkExpressionValueIsNotNull(str, "ApolloConstant.CROSSENGINE_ASSETS_ROOT");
     return str;
   }
@@ -47,12 +49,14 @@ public enum Scene
   @NotNull
   public final String debugConfigKey()
   {
-    switch (Scene.WhenMappings.d[ordinal()])
+    switch (Scene.WhenMappings.$EnumSwitchMapping$3[ordinal()])
     {
     default: 
       throw new NoWhenBranchMatchedException();
+    case 7: 
+      return "test_cross_engine_makeup_3d";
     case 6: 
-      return "";
+      return "test_cross_engine_web_store";
     case 5: 
       return "test_cross_engine_player";
     case 4: 
@@ -68,12 +72,10 @@ public enum Scene
   @Nullable
   public final List<String> preloadScripts$cmshow_impl_release()
   {
-    switch (Scene.WhenMappings.c[ordinal()])
+    switch (Scene.WhenMappings.$EnumSwitchMapping$2[ordinal()])
     {
     default: 
-      throw new NoWhenBranchMatchedException();
-    case 6: 
-      return CollectionsKt.listOf(new String[] { "Contents/JS/engine.js", "Contents/JS/ce3d.js", "Contents/JS/cmshow_script_0_ce.js" });
+      return null;
     }
     return CollectionsKt.listOf(new String[] { "Contents/JS/engine.js", "Contents/JS/ce3d.js" });
   }
@@ -81,17 +83,17 @@ public enum Scene
   @NotNull
   public final String worldPath$cmshow_impl_release()
   {
-    switch (Scene.WhenMappings.b[ordinal()])
+    switch (Scene.WhenMappings.$EnumSwitchMapping$1[ordinal()])
     {
     default: 
-      throw new NoWhenBranchMatchedException();
+      return "";
     }
     return "Contents/World/EmptyScene.nda";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.scene.Scene
  * JD-Core Version:    0.7.0.1
  */

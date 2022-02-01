@@ -34,7 +34,7 @@ class PublicAccountDetailActivityImpl$4
     }
     if (!paramBoolean)
     {
-      this.a.displayToast(2131695217);
+      this.a.displayToast(2131892951);
     }
     else
     {
@@ -78,14 +78,14 @@ class PublicAccountDetailActivityImpl$4
       }
       else
       {
-        this.a.displayToast(2131695217);
+        this.a.displayToast(2131892951);
       }
     }
     catch (Exception paramBundle)
     {
       break label348;
     }
-    this.a.displayToast(2131695217);
+    this.a.displayToast(2131892951);
     label348:
     paramBundle = this.a;
     paramBundle.waitingCount -= 1;
@@ -96,7 +96,7 @@ class PublicAccountDetailActivityImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.4
  * JD-Core Version:    0.7.0.1
  */

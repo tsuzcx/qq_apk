@@ -18,28 +18,28 @@ class BusinessCardEditActivity$13
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    if ((this.a.r != null) && (this.a.r.isShowing()))
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
+      this.a.r.dismiss();
+      this.a.r = null;
     }
-    if (this.a.jdField_a_of_type_Int == 0) {
+    if (this.a.v == 0) {
       ReportController.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
     } else if (this.a.getIntent().getIntExtra("source_activity", 0) == 1) {
       ReportController.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
     }
-    if ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
+    if ((this.a.w) && (this.a.x) && (!this.a.isFinishing()))
     {
       this.a.finish();
     }
     else
     {
-      if (this.a.c)
+      if (this.a.y)
       {
         BusinessCardUtils.a(this.a.app.getCurrentAccountUin(), -1);
-        this.a.c = false;
+        this.a.y = false;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId))) {
+      if ((this.a.C != null) && (!TextUtils.isEmpty(this.a.C.cardId))) {
         BusinessCardEditActivity.a(this.a, false, true, true);
       } else {
         this.a.finish();
@@ -50,7 +50,7 @@ class BusinessCardEditActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.13
  * JD-Core Version:    0.7.0.1
  */

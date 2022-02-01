@@ -11,7 +11,12 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.id;
+import androidx.appcompat.R.layout;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.view.menu.MenuBuilder;
@@ -21,7 +26,6 @@ import androidx.core.view.ViewCompat;
 public class ActionBarContextView
   extends AbsActionBarView
 {
-  private static final String TAG = "ActionBarContextView";
   private View mClose;
   private int mCloseItemLayout;
   private View mCustomView;
@@ -34,17 +38,17 @@ public class ActionBarContextView
   private int mTitleStyleRes;
   private TextView mTitleView;
   
-  public ActionBarContextView(Context paramContext)
+  public ActionBarContextView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public ActionBarContextView(Context paramContext, AttributeSet paramAttributeSet)
+  public ActionBarContextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034144);
+    this(paramContext, paramAttributeSet, R.attr.actionModeStyle);
   }
   
-  public ActionBarContextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public ActionBarContextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.ActionMode, paramInt, 0);
@@ -52,7 +56,7 @@ public class ActionBarContextView
     this.mTitleStyleRes = paramContext.getResourceId(R.styleable.ActionMode_titleTextStyle, 0);
     this.mSubtitleStyleRes = paramContext.getResourceId(R.styleable.ActionMode_subtitleTextStyle, 0);
     this.mContentHeight = paramContext.getLayoutDimension(R.styleable.ActionMode_height, 0);
-    this.mCloseItemLayout = paramContext.getResourceId(R.styleable.ActionMode_closeItemLayout, 2131558405);
+    this.mCloseItemLayout = paramContext.getResourceId(R.styleable.ActionMode_closeItemLayout, R.layout.abc_action_mode_close_item_material);
     paramContext.recycle();
   }
   
@@ -60,10 +64,10 @@ public class ActionBarContextView
   {
     if (this.mTitleLayout == null)
     {
-      LayoutInflater.from(getContext()).inflate(2131558400, this);
+      LayoutInflater.from(getContext()).inflate(R.layout.abc_action_bar_title_item, this);
       this.mTitleLayout = ((LinearLayout)getChildAt(getChildCount() - 1));
-      this.mTitleView = ((TextView)this.mTitleLayout.findViewById(2131361960));
-      this.mSubtitleView = ((TextView)this.mTitleLayout.findViewById(2131361959));
+      this.mTitleView = ((TextView)this.mTitleLayout.findViewById(R.id.action_bar_title));
+      this.mSubtitleView = ((TextView)this.mTitleLayout.findViewById(R.id.action_bar_subtitle));
       if (this.mTitleStyleRes != 0) {
         this.mTitleView.setTextAppearance(getContext(), this.mTitleStyleRes);
       }
@@ -145,7 +149,7 @@ public class ActionBarContextView
     {
       addView(this.mClose);
     }
-    this.mClose.findViewById(2131361977).setOnClickListener(new ActionBarContextView.1(this, paramActionMode));
+    this.mClose.findViewById(R.id.action_mode_close_button).setOnClickListener(new ActionBarContextView.1(this, paramActionMode));
     paramActionMode = (MenuBuilder)paramActionMode.getMenu();
     if (this.mActionMenuPresenter != null) {
       this.mActionMenuPresenter.dismissPopupMenus();

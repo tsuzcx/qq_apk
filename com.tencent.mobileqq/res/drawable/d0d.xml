@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="10.0dip" android:topRightRadius="10.0dip" />
-    <gradient android:startColor="@color/al3" android:endColor="@color/al3" />
-</shape>
+    <item>
+        <shape android:shape="rectangle">
+            <padding android:left="@dimen/bdt" android:top="@dimen/bdr" android:right="@dimen/bdt" android:bottom="@dimen/bdr" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/api" />
+            <corners android:radius="@dimen/bdq" />
+        </shape>
+    </item>
+</layer-list>

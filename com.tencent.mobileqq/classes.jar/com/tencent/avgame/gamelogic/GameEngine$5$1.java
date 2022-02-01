@@ -12,12 +12,12 @@ class GameEngine$5$1
   {
     int i;
     if (NetworkUtil.isNetworkAvailable()) {
-      i = 2131690331;
+      i = 2131887242;
     } else {
-      i = 2131690403;
+      i = 2131887314;
     }
     String str = MobileQQ.sMobileQQ.getString(i);
-    this.a.a.a(10, str, this.a.a.a());
+    this.a.a.a(10, str, this.a.a.s());
   }
 }
 

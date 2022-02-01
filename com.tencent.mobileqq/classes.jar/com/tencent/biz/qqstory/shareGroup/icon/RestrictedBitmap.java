@@ -23,14 +23,14 @@ public class RestrictedBitmap
     return this.a.getWidth();
   }
   
-  public Bitmap a()
-  {
-    return Bitmap.createBitmap(this.a);
-  }
-  
   public int b()
   {
     return this.a.getHeight();
+  }
+  
+  public Bitmap c()
+  {
+    return Bitmap.createBitmap(this.a);
   }
 }
 

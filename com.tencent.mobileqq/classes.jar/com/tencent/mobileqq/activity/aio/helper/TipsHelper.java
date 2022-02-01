@@ -13,31 +13,30 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class TipsHelper
   implements ILifeCycleHelper
 {
-  protected BaseSessionInfo a;
-  protected final AIOContext a;
-  protected TipsManager a;
-  protected BaseActivity a;
-  protected QQAppInterface a;
-  private boolean a;
+  private boolean a = true;
+  protected final AIOContext c;
+  protected QQAppInterface d;
+  protected BaseActivity e;
+  protected TipsManager f;
+  protected BaseSessionInfo g;
   
   public TipsHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramAIOContext.a();
+    this.c = paramAIOContext;
+    this.d = paramAIOContext.a();
+    this.e = paramAIOContext.b();
+    this.g = paramAIOContext.O();
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    HongbaoKeywordGrayTips localHongbaoKeywordGrayTips = new HongbaoKeywordGrayTips(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
-    VipSpecialCareGrayTips localVipSpecialCareGrayTips = new VipSpecialCareGrayTips(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    ComicTipsBar localComicTipsBar = new ComicTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(localComicTipsBar);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(localHongbaoKeywordGrayTips);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(localVipSpecialCareGrayTips);
+    this.f = this.c.c();
+    HongbaoKeywordGrayTips localHongbaoKeywordGrayTips = new HongbaoKeywordGrayTips(this.c);
+    VipSpecialCareGrayTips localVipSpecialCareGrayTips = new VipSpecialCareGrayTips(this.d, this.f, this.e, this.g);
+    ComicTipsBar localComicTipsBar = new ComicTipsBar(this.d, this.f, this.e);
+    this.f.b(localComicTipsBar);
+    this.f.b(localHongbaoKeywordGrayTips);
+    this.f.b(localVipSpecialCareGrayTips);
   }
   
   @NonNull
@@ -55,20 +54,20 @@ public class TipsHelper
   {
     if (paramInt == 10)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
         a();
-        this.jdField_a_of_type_Boolean = false;
+        this.a = false;
       }
     }
     else if (paramInt == 15) {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TipsHelper
  * JD-Core Version:    0.7.0.1
  */

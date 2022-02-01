@@ -14,7 +14,7 @@ class DynamicNowManager$7
   public void a(int paramInt, IBizLoginObserver paramIBizLoginObserver)
   {
     QLog.i("DynamicNowManager", 1, "Recv Refresh Token Reqest");
-    DynamicNowManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicDynamicNowManager).a(null, new DynamicNowManager.7.1(this, paramIBizLoginObserver));
+    DynamicNowManager.d(this.b).a(null, new DynamicNowManager.7.1(this, paramIBizLoginObserver));
   }
   
   public void a(int paramInt, String paramString) {}
@@ -23,7 +23,7 @@ class DynamicNowManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.7
  * JD-Core Version:    0.7.0.1
  */

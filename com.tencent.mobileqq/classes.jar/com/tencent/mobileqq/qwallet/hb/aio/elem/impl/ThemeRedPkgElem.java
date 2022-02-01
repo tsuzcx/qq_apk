@@ -6,8 +6,8 @@ import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 public class ThemeRedPkgElem
   extends BaseRedPkgElem
 {
-  public AnimationView.AnimationInfo a;
   public String b;
+  public AnimationView.AnimationInfo c;
   
   public ThemeRedPkgElem(String paramString)
   {
@@ -19,18 +19,18 @@ public class ThemeRedPkgElem
     if (paramRedPacketInfo != null)
     {
       this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
+      this.c = paramRedPacketInfo.animInfo;
     }
   }
   
   public boolean a()
   {
-    return (this.b != null) || (this.a != null);
+    return (this.b != null) || (this.c != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.ThemeRedPkgElem
  * JD-Core Version:    0.7.0.1
  */

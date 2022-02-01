@@ -11,19 +11,19 @@ import mqq.os.MqqHandler;
 public class BatchImageAIFilterProxy
   extends AIFilterProxyBase
 {
-  private static final String jdField_a_of_type_JavaLangString = "BatchImageAIFilterProxy";
-  private AIFilterResult jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterResult;
-  private int b;
-  private List<String> c;
-  private List<AEEditorImageInfo> d;
+  private static final String d = "BatchImageAIFilterProxy";
+  private List<String> e;
+  private List<AEEditorImageInfo> f;
+  private int g;
+  private AIFilterResult h;
   
   public BatchImageAIFilterProxy(List<String> paramList, List<AEEditorImageInfo> paramList1, int paramInt, AIFilterResult paramAIFilterResult)
   {
-    this.c = paramList;
-    this.d = paramList1;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterResult = paramAIFilterResult;
-    this.jdField_a_of_type_Int = (paramList.size() - 1);
+    this.e = paramList;
+    this.f = paramList1;
+    this.g = paramInt;
+    this.h = paramAIFilterResult;
+    this.a = (paramList.size() - 1);
   }
   
   protected AIFilterResult a(List<AIFilterResponse> paramList)
@@ -32,9 +32,9 @@ public class BatchImageAIFilterProxy
     int j = 0;
     int k = 0;
     if ((paramList != null) && (paramList.size() != 0)) {
-      if (paramList.size() != this.jdField_b_of_type_JavaUtilList.size())
+      if (paramList.size() != this.c.size())
       {
-        AEQLog.d(jdField_a_of_type_JavaLangString, "batch image responseList size not match image size");
+        AEQLog.d(d, "batch image responseList size not match image size");
       }
       else
       {
@@ -47,35 +47,35 @@ public class BatchImageAIFilterProxy
     if (i != 0)
     {
       i = k;
-      while (i < this.jdField_a_of_type_Int)
+      while (i < this.a)
       {
         paramList = a(null);
-        paramList.jdField_a_of_type_Boolean = true;
-        localBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList.add(paramList);
+        paramList.a = true;
+        localBatchImageAIFilterResult.b.add(paramList);
         i += 1;
       }
-      localBatchImageAIFilterResult.jdField_a_of_type_Boolean = true;
+      localBatchImageAIFilterResult.a = true;
     }
     else
     {
-      while (j < this.jdField_a_of_type_Int)
+      while (j < this.a)
       {
         Object localObject = (AIFilterResponse)paramList.get(j);
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(j));
+        this.b.clear();
+        this.b.add(this.c.get(j));
         localObject = a((AIFilterResponse)localObject);
-        localBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList.add(localObject);
+        localBatchImageAIFilterResult.b.add(localObject);
         j += 1;
       }
     }
-    localBatchImageAIFilterResult.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_Int, (SingleImageAIFilterResult)this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterResult);
+    localBatchImageAIFilterResult.b.add(this.g, (SingleImageAIFilterResult)this.h);
     return localBatchImageAIFilterResult;
   }
   
   protected void a(Context paramContext, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback)
   {
-    ArrayList localArrayList = new ArrayList(this.c);
-    localArrayList.remove(this.jdField_b_of_type_Int);
+    ArrayList localArrayList = new ArrayList(this.e);
+    localArrayList.remove(this.g);
     ThreadManager.getSubThreadHandler().post(new BatchImageAIFilterProxy.1(this, localArrayList, paramContext, paramAIFilterProxyCallback));
   }
   
@@ -86,7 +86,7 @@ public class BatchImageAIFilterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.BatchImageAIFilterProxy
  * JD-Core Version:    0.7.0.1
  */

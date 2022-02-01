@@ -23,12 +23,12 @@ class ArkIPCService$3
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("call.async, method=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqArkIpcIPCMethod.a());
+      ((StringBuilder)localObject).append(this.a.a());
       ((StringBuilder)localObject).append(" result=");
       ((StringBuilder)localObject).append(paramEIPCResult);
       QLog.i("ArkApp.ArkIPCService", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArkIpcIPCMethod;
+    Object localObject = this.a;
     if (paramEIPCResult.data != null) {
       paramEIPCResult = paramEIPCResult.data;
     } else {
@@ -39,7 +39,7 @@ class ArkIPCService$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkIPCService.3
  * JD-Core Version:    0.7.0.1
  */

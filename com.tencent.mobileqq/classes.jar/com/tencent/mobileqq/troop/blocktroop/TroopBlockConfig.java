@@ -55,7 +55,7 @@ public class TroopBlockConfig
     }
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -110,7 +110,7 @@ public class TroopBlockConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.touch;
 
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IApolloRunnableTask;
 
 class LightGameTouchManager$2
   extends IApolloRunnableTask
@@ -12,12 +12,12 @@ class LightGameTouchManager$2
   
   public void run()
   {
-    ApolloSurfaceView.nativeTouchInput(LightGameTouchManager.a(this.this$0).getSavaWrapper().mDirector, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    ApolloSurfaceView.nativeTouchInput(LightGameTouchManager.a(this.this$0).getSavaWrapper().mDirector, this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.touch.LightGameTouchManager.2
  * JD-Core Version:    0.7.0.1
  */

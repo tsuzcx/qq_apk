@@ -13,14 +13,14 @@ class FileAssistantRecver$1$1
   public void run()
   {
     FileAssistantRecver.a(this.a.a).status = 1;
-    FileManagerUtil.c(FileAssistantRecver.a(this.a.a));
-    FileAssistantRecver.a(this.a.a).getFileManagerDataCenter().c(FileAssistantRecver.a(this.a.a));
-    FileAssistantRecver.a(this.a.a).getFileManagerNotifyCenter().a(true, 0, null);
+    FileManagerUtil.g(FileAssistantRecver.a(this.a.a));
+    FileAssistantRecver.c(this.a.a).getFileManagerDataCenter().c(FileAssistantRecver.a(this.a.a));
+    FileAssistantRecver.c(this.a.a).getFileManagerNotifyCenter().a(true, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.transfer.FileAssistantRecver.1.1
  * JD-Core Version:    0.7.0.1
  */

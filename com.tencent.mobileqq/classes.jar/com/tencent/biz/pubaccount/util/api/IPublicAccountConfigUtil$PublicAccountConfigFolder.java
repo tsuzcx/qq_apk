@@ -8,32 +8,24 @@ import com.tencent.mobileqq.app.AppConstants;
 
 public class IPublicAccountConfigUtil$PublicAccountConfigFolder
 {
-  public int a;
-  public Drawable a;
-  public String a;
+  public int a = 0;
   public String b = "";
   public String c = "";
+  public Drawable d = null;
+  public String e = "";
   
-  public IPublicAccountConfigUtil$PublicAccountConfigFolder()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  }
+  public IPublicAccountConfigUtil$PublicAccountConfigFolder() {}
   
   public IPublicAccountConfigUtil$PublicAccountConfigFolder(AppInterface paramAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(paramInt2);
-    this.b = "";
+    this.a = paramInt1;
+    this.b = paramContext.getString(paramInt2);
+    this.c = "";
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(paramInt3);
+      this.d = paramContext.getResources().getDrawable(paramInt3);
       label66:
-      this.c = a(paramInt1);
+      this.e = a(paramInt1);
       return;
     }
     catch (Exception paramAppInterface)
@@ -44,17 +36,7 @@ public class IPublicAccountConfigUtil$PublicAccountConfigFolder
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public String a(int paramInt)
@@ -75,12 +57,22 @@ public class IPublicAccountConfigUtil$PublicAccountConfigFolder
   
   public void a(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.d = paramDrawable;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public Drawable c()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil.PublicAccountConfigFolder
  * JD-Core Version:    0.7.0.1
  */

@@ -34,8 +34,8 @@ class MemoryDayView$MemoryDayItem$1
         {
           ReportController.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", MemoryDayView.MemoryDayItem.a(this.a).dateType, 0, "", "", "", "");
           QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
-          if (MemoryDayView.a(this.a.a) != null) {
-            MemoryDayView.a(this.a.a).a(MemoryDayView.MemoryDayItem.a(this.a));
+          if (MemoryDayView.b(this.a.a) != null) {
+            MemoryDayView.b(this.a.a).a(MemoryDayView.MemoryDayItem.a(this.a));
           }
         }
       }
@@ -71,7 +71,7 @@ class MemoryDayView$MemoryDayItem$1
     }
     try
     {
-      long l2 = Long.valueOf(MemoryDayView.a(this.a.a)).longValue();
+      long l2 = Long.valueOf(MemoryDayView.c(this.a.a)).longValue();
       l1 = l2;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -84,15 +84,15 @@ class MemoryDayView$MemoryDayItem$1
     break label442;
     QLog.e("intimate_relationship", 2, "click  mInfo is null");
     label442:
-    if (MemoryDayView.MemoryDayItem.a(this.a) != null) {
-      MemoryDayView.MemoryDayItem.a(this.a).a(paramView, MemoryDayView.MemoryDayItem.a(this.a));
+    if (MemoryDayView.MemoryDayItem.b(this.a) != null) {
+      MemoryDayView.MemoryDayItem.b(this.a).a(paramView, MemoryDayView.MemoryDayItem.a(this.a));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.MemoryDayView.MemoryDayItem.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import com.baseflow.permissionhandler.PermissionHandlerPlugin;
 import com.dartnative.dart_native.DartNativePlugin;
+import com.dnflutter.dn_flutter_plugin.DnFlutterPlugin;
 import com.mojitox.mxflutter.MXFlutterPlugin;
 import com.peterlmeng.animate_image.AnimateImagePlugin;
 import com.qflutter.audio.TencentQflutterAudioPlugin;
@@ -20,6 +21,7 @@ import com.qflutter.resource_loader.QFlutterResourceLoaderPlugin;
 import com.qflutter.superchannel.SuperChannelPlugin;
 import com.qflutter.video.QflutterVideoviewPlugin;
 import com.qflutter.vistaimage.VistaImagePlugin;
+import com.qflutter.vistaplayer.VistaPlayerPlugin;
 import com.tencent.kandianFlutter.KandianFlutterPlugin;
 import com.tencent.mqq.qflutter_qqgame.QflutterQqgamePlugin;
 import com.tencent.qq_mxflutter.QqMxflutterPlugin;
@@ -42,6 +44,7 @@ public final class GeneratedPluginRegistrant
   {
     ShimPluginRegistry localShimPluginRegistry = new ShimPluginRegistry(paramFlutterEngine);
     paramFlutterEngine.getPlugins().add(new MXFlutterPlugin());
+    paramFlutterEngine.getPlugins().add(new DnFlutterPlugin());
     paramFlutterEngine.getPlugins().add(new RainbowPlugin());
     paramFlutterEngine.getPlugins().add(new KandianFlutterPlugin());
     paramFlutterEngine.getPlugins().add(new AnimateImagePlugin());
@@ -54,16 +57,17 @@ public final class GeneratedPluginRegistrant
     QflutterVideoviewPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.video.QflutterVideoviewPlugin"));
     paramFlutterEngine.getPlugins().add(new QmaMessageChannelPlugin());
     paramFlutterEngine.getPlugins().add(new QqMxflutterPlugin());
-    paramFlutterEngine.getPlugins().add(new SuperChannelPlugin());
     paramFlutterEngine.getPlugins().add(new TencentQflutterAudioPlugin());
     paramFlutterEngine.getPlugins().add(new TencentQQCirclePlugin());
     paramFlutterEngine.getPlugins().add(new TencentRichtextLibraryPlugin());
-    paramFlutterEngine.getPlugins().add(new VistaImagePlugin());
+    paramFlutterEngine.getPlugins().add(new VistaPlayerPlugin());
     QflutterLogPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.log.qflutter_log.QflutterLogPlugin"));
     paramFlutterEngine.getPlugins().add(new QFlutterSkinEnginePlugin());
     QflutterNetworkImagePlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.qflutter_network_image.QflutterNetworkImagePlugin"));
     paramFlutterEngine.getPlugins().add(new QQFacePlugin());
     QFlutterResourceLoaderPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.resource_loader.QFlutterResourceLoaderPlugin"));
+    paramFlutterEngine.getPlugins().add(new SuperChannelPlugin());
+    paramFlutterEngine.getPlugins().add(new VistaImagePlugin());
     paramFlutterEngine.getPlugins().add(new DartNativePlugin());
     paramFlutterEngine.getPlugins().add(new DeviceInfoPlugin());
     paramFlutterEngine.getPlugins().add(new PackageInfoPlugin());
@@ -74,7 +78,7 @@ public final class GeneratedPluginRegistrant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugins.GeneratedPluginRegistrant
  * JD-Core Version:    0.7.0.1
  */

@@ -18,20 +18,20 @@ class QQStoryCmdHandler$5
   
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("storySeq");
-    paramJobContext = (NetworkRequest)QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).remove(Integer.valueOf(i));
+    int i = this.a.getInt("storySeq");
+    paramJobContext = (NetworkRequest)QQStoryCmdHandler.b(this.c).remove(Integer.valueOf(i));
     if (paramJobContext == null)
     {
       SLog.d("Q.qqstory.net:QQStoryCmdHandler", "can't find request");
       return null;
     }
-    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, paramJobContext, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
+    QQStoryCmdHandler.a(this.c, paramJobContext, this.b, this.a);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler.5
  * JD-Core Version:    0.7.0.1
  */

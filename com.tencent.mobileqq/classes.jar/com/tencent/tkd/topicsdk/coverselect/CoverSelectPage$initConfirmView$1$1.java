@@ -14,7 +14,7 @@ public final class CoverSelectPage$initConfirmView$1$1
   {
     Intrinsics.checkParameterIsNotNull(paramString, "path");
     CoverSelectPage.a(this.a.a, paramString);
-    paramString = this.a.a.a();
+    paramString = this.a.a.b();
     if (paramString != null) {
       paramString.finish();
     }
@@ -22,7 +22,7 @@ public final class CoverSelectPage$initConfirmView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.coverselect.CoverSelectPage.initConfirmView.1.1
  * JD-Core Version:    0.7.0.1
  */

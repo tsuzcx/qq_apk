@@ -17,9 +17,9 @@ public class CheckAuthCode
     if (this.a == null)
     {
       this.a = new CheckAuthCode.CheckAuthCodeObserver(this, null);
-      this.mAutomator.a.addDefaultObservers(this.a);
+      this.mAutomator.k.addDefaultObservers(this.a);
     }
-    if (((ConfigHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).a()) {
+    if (((ConfigHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER)).e()) {
       return 2;
     }
     return 7;
@@ -29,14 +29,14 @@ public class CheckAuthCode
   {
     if (this.a != null)
     {
-      this.mAutomator.a.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckAuthCode
  * JD-Core Version:    0.7.0.1
  */

@@ -62,8 +62,8 @@ public class EdgeEffect
   public EdgeEffect(Context paramContext)
   {
     paramContext = paramContext.getResources();
-    this.mEdge = paramContext.getDrawable(2130841542);
-    this.mGlow = paramContext.getDrawable(2130841543);
+    this.mEdge = paramContext.getDrawable(2130842386);
+    this.mGlow = paramContext.getDrawable(2130842387);
     this.mMinWidth = ((int)(paramContext.getDisplayMetrics().density * 300.0F + 0.5F));
     this.mInterpolator = new DecelerateInterpolator();
   }
@@ -282,7 +282,7 @@ public class EdgeEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.EdgeEffect
  * JD-Core Version:    0.7.0.1
  */

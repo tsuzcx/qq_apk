@@ -14,16 +14,16 @@ class TroopRelevantHandler$TmiCallBackForTroopHonor
   implements TroopManager.ITroopMemberInfoCallBack
 {
   public BaseChatItemLayout a;
-  public String a;
+  public String b;
   
   private TroopRelevantHandler$TmiCallBackForTroopHonor(TroopRelevantHandler paramTroopRelevantHandler) {}
   
   public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin)))
+    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(paramTroopMemberInfo.memberuin)))
     {
-      paramTroopMemberInfo = ((ITroopHonorService)TroopRelevantHandler.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler).getRuntimeService(ITroopHonorService.class, "")).convertToHonorList(paramTroopMemberInfo.honorList, Byte.valueOf(paramTroopMemberInfo.mHonorRichFlag));
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+      paramTroopMemberInfo = ((ITroopHonorService)TroopRelevantHandler.d(this.c).getRuntimeService(ITroopHonorService.class, "")).convertToHonorList(paramTroopMemberInfo.honorList, Byte.valueOf(paramTroopMemberInfo.mHonorRichFlag));
+      Object localObject = this.a;
       if (localObject != null)
       {
         localObject = ((BaseChatItemLayout)localObject).a(NickNameChatItemLayoutProcessor.c);
@@ -32,7 +32,7 @@ class TroopRelevantHandler$TmiCallBackForTroopHonor
           ((BaseChatItemLayoutViewBasicAbility)localObject).setData(new Object[] { paramTroopMemberInfo, Integer.valueOf(1) });
           if ((paramTroopMemberInfo != null) && (paramTroopMemberInfo.size() > 0))
           {
-            ((BaseChatItemLayoutViewBasicAbility)localObject).setOnClickListener(TroopRelevantHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler));
+            ((BaseChatItemLayoutViewBasicAbility)localObject).setOnClickListener(TroopRelevantHandler.e(this.c));
             return;
           }
           ((BaseChatItemLayoutViewBasicAbility)localObject).setOnClickListener(null);
@@ -43,7 +43,7 @@ class TroopRelevantHandler$TmiCallBackForTroopHonor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.TroopRelevantHandler.TmiCallBackForTroopHonor
  * JD-Core Version:    0.7.0.1
  */

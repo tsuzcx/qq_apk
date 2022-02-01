@@ -17,14 +17,14 @@ public final class BarrageFactory
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramBarrageInfo, "barrageParam");
     paramBarrageInfo = new BarrageItemView(paramContext, null, 0, 6, null);
-    paramBarrageInfo.setX(UIUtils.a(paramContext));
+    paramBarrageInfo.setX(UIUtils.b(paramContext));
     paramBarrageInfo.setY(0.0F);
     return paramBarrageInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageFactory
  * JD-Core Version:    0.7.0.1
  */

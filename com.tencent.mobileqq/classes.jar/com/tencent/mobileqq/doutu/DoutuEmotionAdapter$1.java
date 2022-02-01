@@ -25,21 +25,21 @@ class DoutuEmotionAdapter$1
     if ((paramView != null) && ((paramView instanceof DoutuEmotionAdapter.ViewHolder)))
     {
       paramView = (DoutuEmotionAdapter.ViewHolder)paramView;
-      if (paramView.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+      if (paramView.c != null) {
+        paramView.c.setVisibility(4);
       }
-      if (this.a.a == null) {
-        this.a.a = new HashMap();
+      if (this.a.j == null) {
+        this.a.j = new HashMap();
       }
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picMd5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picDownUrl != null)) {
-        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picMd5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picDownUrl);
+      if ((paramView.d != null) && (paramView.d.picMd5 != null) && (paramView.d.picDownUrl != null)) {
+        this.a.j.put(paramView.d.picMd5, paramView.d.picDownUrl);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuEmotionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,35 +20,35 @@ class QfileBaseLocalFileTabView$4$1
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
+    Object localObject = this.a.getTag();
     if ((localObject instanceof ImageHolder))
     {
-      localObject = (FileInfo)((ImageHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      localObject = (FileInfo)((ImageHolder)this.a.getTag()).i;
     }
     else
     {
       if (!(localObject instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)) {
         break label172;
       }
-      localObject = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      localObject = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)this.a.getTag()).j;
     }
-    if (paramView.getId() == 2131365474)
+    if (paramView.getId() == 2131431689)
     {
-      ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView$4.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
-      localActionSheet.setMainTitle(HardCodeUtil.a(2131698184));
-      localActionSheet.addButton(HardCodeUtil.a(2131698177), 3);
-      localActionSheet.addCancelButton(HardCodeUtil.a(2131692263));
+      ActionSheet localActionSheet = ActionSheet.create(this.b.a.C);
+      localActionSheet.setMainTitle(HardCodeUtil.a(2131896085));
+      localActionSheet.addButton(HardCodeUtil.a(2131896078), 3);
+      localActionSheet.addCancelButton(HardCodeUtil.a(2131889250));
       localActionSheet.setOnButtonClickListener(new QfileBaseLocalFileTabView.4.1.1(this, (FileInfo)localObject, localActionSheet));
       localActionSheet.show();
     }
-    else if (paramView.getId() == 2131367183)
+    else if (paramView.getId() == 2131433639)
     {
       localObject = QQFileManagerUtil.a((FileInfo)localObject);
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).forwardFile(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView$4.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, (FileManagerEntity)localObject);
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).forwardFile(this.b.a.C, (FileManagerEntity)localObject);
       break label187;
       label172:
       if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
+        QLog.e(QfileBaseLocalFileTabView.o, 2, "unknow Object");
       }
     }
     label187:
@@ -57,7 +57,7 @@ class QfileBaseLocalFileTabView$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.4.1
  * JD-Core Version:    0.7.0.1
  */

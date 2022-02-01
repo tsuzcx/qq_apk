@@ -19,7 +19,7 @@ public class FriendClueConfigHelper
   
   public static boolean a()
   {
-    FriendClueConfig localFriendClueConfig = (FriendClueConfig)QConfigManager.a().a(677);
+    FriendClueConfig localFriendClueConfig = (FriendClueConfig)QConfigManager.b().b(677);
     boolean bool;
     if (localFriendClueConfig != null) {
       bool = localFriendClueConfig.a;
@@ -53,7 +53,7 @@ public class FriendClueConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueConfigHelper
  * JD-Core Version:    0.7.0.1
  */

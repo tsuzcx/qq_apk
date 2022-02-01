@@ -12,27 +12,15 @@ import java.util.Map;
 public class LoadingMoreWidget
   extends AbsVideoInfoWidget
 {
-  private LoadingMoreWidget.ScrollListener a = new LoadingMoreWidget.ScrollListener(this);
-  private boolean f = false;
+  private LoadingMoreWidget.ScrollListener s = new LoadingMoreWidget.ScrollListener(this);
+  private boolean t = false;
   
   public LoadingMoreWidget(ViewGroup paramViewGroup)
   {
     super(paramViewGroup);
   }
   
-  public LoadingMoreWidget.ScrollListener a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    return "LoadingMoreWidget";
-  }
-  
   protected void a(View paramView) {}
-  
-  protected void a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem) {}
   
   protected void a(@NonNull Map<Subscriber, String> paramMap)
   {
@@ -41,35 +29,47 @@ public class LoadingMoreWidget
   
   protected boolean a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    return this.f;
+    return this.t;
   }
   
-  protected int b()
-  {
-    return 2131561814;
-  }
+  protected void b(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem) {}
   
-  public void d()
+  public void h()
   {
-    this.f = true;
-    i();
+    this.t = true;
+    x();
     SLog.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
   }
   
-  public void e()
+  public void p()
   {
-    this.f = false;
-    k();
+    this.t = false;
+    A();
     SLog.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
   }
   
-  protected void f() {}
+  protected void q() {}
   
-  protected void g() {}
+  protected void r() {}
+  
+  protected int s()
+  {
+    return 2131628193;
+  }
+  
+  public String t()
+  {
+    return "LoadingMoreWidget";
+  }
+  
+  public LoadingMoreWidget.ScrollListener u()
+  {
+    return this.s;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.LoadingMoreWidget
  * JD-Core Version:    0.7.0.1
  */

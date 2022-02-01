@@ -25,30 +25,30 @@ class TVKVideoController$3
         if (paramInt != 1) {
           return;
         }
-        ((AudioManager)((Context)TVKVideoController.a(this.a).get()).getSystemService("audio")).requestAudioFocus(null, 3, 2);
-        if (TVKVideoController.a(this.a) != null) {
-          TVKVideoController.a(this.a).play();
+        ((AudioManager)((Context)TVKVideoController.d(this.a).get()).getSystemService("audio")).requestAudioFocus(null, 3, 2);
+        if (TVKVideoController.c(this.a) != null) {
+          TVKVideoController.c(this.a).play();
         }
-        TVKVideoController.a(this.a, 4);
+        TVKVideoController.b(this.a, 4);
         return;
       }
-      if (TVKVideoController.a(this.a) != null) {
-        TVKVideoController.a(this.a).pause();
+      if (TVKVideoController.c(this.a) != null) {
+        TVKVideoController.c(this.a).pause();
       }
-      TVKVideoController.a(this.a, 6);
-      if (TVKVideoController.a(this.a) != null) {
-        TVKVideoController.a(this.a).onVideoStop();
+      TVKVideoController.b(this.a, 6);
+      if (TVKVideoController.e(this.a) != null) {
+        TVKVideoController.e(this.a).onVideoStop();
       }
     }
-    else if (TVKVideoController.a(this.a) != null)
+    else if (TVKVideoController.c(this.a) != null)
     {
-      TVKVideoController.a(this.a).setMute(true);
+      TVKVideoController.c(this.a).setMute(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.TVKVideoController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -24,47 +24,41 @@ public class SpriteGLView
   extends FrameLayout
   implements ISpriteView<Node>
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  protected View a;
-  private SpriteGLView.IVideoTimeGetter jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private final List<BaseNode> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  public boolean a;
-  private final Object jdField_b_of_type_JavaLangObject = new Object();
-  private List<Runnable> jdField_b_of_type_JavaUtilList = new LinkedList();
-  public boolean b;
-  int jdField_c_of_type_Int;
-  private List<Runnable> jdField_c_of_type_JavaUtilList = new ArrayList();
-  public volatile boolean c;
+  private int a = 0;
+  private final LinkedList<Integer> b = new LinkedList();
+  private final List<BaseNode> c = Collections.synchronizedList(new ArrayList());
+  private List<Runnable> d = new LinkedList();
+  private final Object e = new Object();
+  private List<Runnable> f = new ArrayList();
+  private final Object g = new Object();
+  private SpriteGLView.IVideoTimeGetter h;
+  private long i;
+  protected View t;
+  public boolean u = false;
+  public boolean v = false;
+  int w;
+  public volatile boolean x;
   
   public SpriteGLView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
     a();
   }
   
   public SpriteGLView(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     a();
   }
   
   public SpriteGLView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SpriteGLView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramContext.getInt(0, 0);
+      this.a = paramContext.getInt(0, 0);
       paramContext.recycle();
       a();
       return;
@@ -78,10 +72,10 @@ public class SpriteGLView
   private void a()
   {
     Object localObject;
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.a == 0)
     {
       localObject = new GLSurfaceView(getContext());
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject);
+      this.t = ((View)localObject);
       addView((View)localObject, -1, -1);
       ((GLSurfaceView)localObject).setEGLContextClientVersion(2);
       ((GLSurfaceView)localObject).getHolder().setFormat(-3);
@@ -92,7 +86,7 @@ public class SpriteGLView
     else
     {
       localObject = a(getContext());
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject);
+      this.t = ((View)localObject);
       addView((View)localObject, -1, -1);
       ((GLTextureView)localObject).setRenderer(new SpriteGLView.SimpleRenderer(this, null));
     }
@@ -104,31 +98,26 @@ public class SpriteGLView
     return new GLTextureView(paramContext);
   }
   
-  public List<BaseNode> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public void a(int paramInt)
   {
-    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
-    int k = -1;
-    int i = 0;
+    LinkedList localLinkedList = this.b;
+    int m = -1;
+    int j = 0;
     for (;;)
     {
-      int j = k;
+      int k = m;
       try
       {
-        if (i < this.jdField_a_of_type_JavaUtilLinkedList.size())
+        if (j < this.b.size())
         {
-          if (paramInt != ((Integer)this.jdField_a_of_type_JavaUtilLinkedList.get(i)).intValue()) {
+          if (paramInt != ((Integer)this.b.get(j)).intValue()) {
             break label94;
           }
-          j = i;
+          k = j;
         }
-        if (j > 0)
+        if (k > 0)
         {
-          this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
+          this.b.remove(k);
           GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
         }
         return;
@@ -140,17 +129,17 @@ public class SpriteGLView
           throw localObject;
         }
         label94:
-        i += 1;
+        j += 1;
       }
     }
   }
   
   public void a(int paramInt, Node paramNode)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramNode)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramInt, paramNode);
+      if (!this.c.contains(paramNode)) {
+        this.c.add(paramInt, paramNode);
       }
       return;
     }
@@ -158,7 +147,7 @@ public class SpriteGLView
   
   public void a(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.t;
     if ((localView instanceof GLTextureView)) {
       ((GLTextureView)localView).a(paramOnSurfaceChangedListener);
     }
@@ -166,10 +155,10 @@ public class SpriteGLView
   
   public void a(Node paramNode)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramNode)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramNode);
+      if (!this.c.contains(paramNode)) {
+        this.c.add(paramNode);
       }
       return;
     }
@@ -182,30 +171,25 @@ public class SpriteGLView
   
   public void a(Runnable paramRunnable)
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.g)
     {
-      this.jdField_c_of_type_JavaUtilList.add(paramRunnable);
+      this.f.add(paramRunnable);
       return;
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.isEmpty();
-  }
-  
   void b(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.add(Integer.valueOf(paramInt));
+      this.b.add(Integer.valueOf(paramInt));
       return;
     }
   }
   
   public void b(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.t;
     if ((localView instanceof GLTextureView)) {
       ((GLTextureView)localView).b(paramOnSurfaceChangedListener);
     }
@@ -213,98 +197,100 @@ public class SpriteGLView
   
   public void b(Node paramNode)
   {
-    if (paramNode.a()) {
-      paramNode.a();
+    if (paramNode.ds_()) {
+      paramNode.f();
     }
-    this.jdField_a_of_type_JavaUtilList.remove(paramNode);
+    this.c.remove(paramNode);
   }
   
   public void b(Runnable paramRunnable)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.e)
     {
-      this.jdField_b_of_type_JavaUtilList.add(paramRunnable);
+      this.d.add(paramRunnable);
       return;
     }
   }
   
-  public int c()
+  public int getCurrentVideoTime()
   {
-    SpriteGLView.IVideoTimeGetter localIVideoTimeGetter = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter;
+    SpriteGLView.IVideoTimeGetter localIVideoTimeGetter = this.h;
     if (localIVideoTimeGetter != null) {
-      return localIVideoTimeGetter.a();
+      return localIVideoTimeGetter.c();
     }
-    return (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    return (int)(System.currentTimeMillis() - this.i);
+  }
+  
+  public List<BaseNode> getNodeList()
+  {
+    return this.c;
   }
   
   public void k()
   {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.g)
     {
-      this.jdField_c_of_type_JavaUtilList.clear();
+      this.f.clear();
       return;
     }
   }
   
-  public void l()
+  public boolean l()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpriteGLView", 2, "pause");
-    }
-    Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
-    int j = arrayOfObject.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = arrayOfObject[i];
-      if ((localObject instanceof Node)) {
-        ((Node)localObject).b();
-      }
-      i += 1;
-    }
+    return this.c.isEmpty();
   }
   
   public void m()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SpriteGLView", 2, "resume");
+      QLog.d("SpriteGLView", 2, "pause");
     }
-    Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
-    int j = arrayOfObject.length;
-    int i = 0;
-    while (i < j)
+    Object[] arrayOfObject = this.c.toArray();
+    int k = arrayOfObject.length;
+    int j = 0;
+    while (j < k)
     {
-      Object localObject = arrayOfObject[i];
+      Object localObject = arrayOfObject[j];
       if ((localObject instanceof Node)) {
-        ((Node)localObject).c();
+        ((Node)localObject).g();
       }
-      i += 1;
+      j += 1;
     }
   }
   
   public void n()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SpriteGLView", 2, "stopDraw");
+      QLog.d("SpriteGLView", 2, "resume");
     }
-    SpriteGLView.1 local1 = new SpriteGLView.1(this);
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if ((localView instanceof GLSurfaceView))
+    Object[] arrayOfObject = this.c.toArray();
+    int k = arrayOfObject.length;
+    int j = 0;
+    while (j < k)
     {
-      ((GLSurfaceView)localView).onPause();
-      ((GLSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(local1);
-      return;
-    }
-    if ((localView instanceof GLTextureView)) {
-      ((GLTextureView)localView).a(local1);
+      Object localObject = arrayOfObject[j];
+      if ((localObject instanceof Node)) {
+        ((Node)localObject).h();
+      }
+      j += 1;
     }
   }
   
   public void o()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((Node)localIterator.next()).aP_();
+    if (QLog.isColorLevel()) {
+      QLog.d("SpriteGLView", 2, "stopDraw");
+    }
+    SpriteGLView.1 local1 = new SpriteGLView.1(this);
+    View localView = this.t;
+    if ((localView instanceof GLSurfaceView))
+    {
+      ((GLSurfaceView)localView).onPause();
+      ((GLSurfaceView)this.t).queueEvent(local1);
+      return;
+    }
+    if ((localView instanceof GLTextureView)) {
+      ((GLTextureView)localView).a(local1);
     }
   }
   
@@ -316,28 +302,36 @@ public class SpriteGLView
   @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
-    int i = arrayOfObject.length - 1;
-    while (i >= 0)
+    Object[] arrayOfObject = this.c.toArray();
+    int j = arrayOfObject.length - 1;
+    while (j >= 0)
     {
-      if (((arrayOfObject[i] instanceof Node.Clickable)) && (((Node.Clickable)arrayOfObject[i]).a(paramMotionEvent, getWidth(), getHeight()))) {
+      if (((arrayOfObject[j] instanceof Node.Clickable)) && (((Node.Clickable)arrayOfObject[j]).a(paramMotionEvent, getWidth(), getHeight()))) {
         return true;
       }
-      i -= 1;
+      j -= 1;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
   public void p()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext()) {
+      ((Node)localIterator.next()).k();
+    }
+  }
+  
+  public void q()
+  {
+    synchronized (this.b)
     {
-      int[] arrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedList.size()];
-      int i = 0;
-      while (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      int[] arrayOfInt = new int[this.b.size()];
+      int j = 0;
+      while (!this.b.isEmpty())
       {
-        arrayOfInt[i] = ((Integer)this.jdField_a_of_type_JavaUtilLinkedList.remove(0)).intValue();
-        i += 1;
+        arrayOfInt[j] = ((Integer)this.b.remove(0)).intValue();
+        j += 1;
       }
       GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
       return;
@@ -350,7 +344,7 @@ public class SpriteGLView
   
   public void setFps(int paramInt)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.t;
     if ((localView instanceof GLTextureView)) {
       ((GLTextureView)localView).setFps(paramInt);
     }
@@ -358,17 +352,17 @@ public class SpriteGLView
   
   public void setRetainBitmap(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.x = paramBoolean;
   }
   
   public void setVideoTimeGetter(SpriteGLView.IVideoTimeGetter paramIVideoTimeGetter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView$IVideoTimeGetter = paramIVideoTimeGetter;
+    this.h = paramIVideoTimeGetter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView
  * JD-Core Version:    0.7.0.1
  */

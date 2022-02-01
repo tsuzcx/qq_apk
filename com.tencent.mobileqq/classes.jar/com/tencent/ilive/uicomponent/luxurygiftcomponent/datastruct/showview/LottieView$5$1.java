@@ -12,36 +12,36 @@ class LottieView$5$1
   {
     try
     {
-      this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a.setComposition(this.jdField_a_of_type_ComTencentFalcoBaseLibapiLottieLottieCompositionInterface);
-      if (!this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a.isShown())
+      this.b.a.setComposition(this.a);
+      if (!this.b.a.isShown())
       {
-        LogInterface localLogInterface = LottieView.access$400(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a).getLogger();
-        String str = LottieView.access$200(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a);
+        LogInterface localLogInterface = LottieView.access$400(this.b.a).getLogger();
+        String str = LottieView.access$200(this.b.a);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("play LottieView.this.isShown() ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a.isShown());
+        localStringBuilder.append(this.b.a.isShown());
         localLogInterface.i(str, localStringBuilder.toString(), new Object[0]);
-        localLogInterface = LottieView.access$400(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a).getLogger();
-        str = LottieView.access$200(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a);
+        localLogInterface = LottieView.access$400(this.b.a).getLogger();
+        str = LottieView.access$200(this.b.a);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("play LottieView.this.getParent() ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a.getParent());
+        localStringBuilder.append(this.b.a.getParent());
         localLogInterface.i(str, localStringBuilder.toString(), new Object[0]);
-        this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a.setVisibility(0);
-        localLogInterface = LottieView.access$400(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a).getLogger();
-        str = LottieView.access$200(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a);
+        this.b.a.setVisibility(0);
+        localLogInterface = LottieView.access$400(this.b.a).getLogger();
+        str = LottieView.access$200(this.b.a);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("play after visible LottieView.this.isShown() ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a.isShown());
+        localStringBuilder.append(this.b.a.isShown());
         localLogInterface.i(str, localStringBuilder.toString(), new Object[0]);
-        localLogInterface = LottieView.access$400(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a).getLogger();
-        str = LottieView.access$200(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a);
+        localLogInterface = LottieView.access$400(this.b.a).getLogger();
+        str = LottieView.access$200(this.b.a);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("play LottieView.this.getParent() ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a.getParent());
+        localStringBuilder.append(this.b.a.getParent());
         localLogInterface.i(str, localStringBuilder.toString(), new Object[0]);
       }
-      LottieView.access$900(this.jdField_a_of_type_ComTencentIliveUicomponentLuxurygiftcomponentDatastructShowviewLottieView$5.a).playAnimation();
+      LottieView.access$900(this.b.a).playAnimation();
       return;
     }
     catch (Exception localException)
@@ -52,7 +52,7 @@ class LottieView$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.showview.LottieView.5.1
  * JD-Core Version:    0.7.0.1
  */

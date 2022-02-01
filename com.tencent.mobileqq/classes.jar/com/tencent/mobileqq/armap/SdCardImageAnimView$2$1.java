@@ -13,12 +13,12 @@ class SdCardImageAnimView$2$1
     if (QLog.isColorLevel()) {
       QLog.i("SdCardImageAnimView", 2, "defaultImgRunnable set image bitmap");
     }
-    this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView$2.this$0.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.this$0.setImageBitmap(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.SdCardImageAnimView.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -105,7 +105,7 @@ public class DateUtils
     Object localObject;
     if (paramString.length() >= 10)
     {
-      if (Pattern.compile(HardCodeUtil.a(2131702994)).matcher(paramString).matches()) {
+      if (Pattern.compile(HardCodeUtil.a(2131900969)).matcher(paramString).matches()) {
         localObject = new SimpleDateFormat("yyyy年MM月dd日");
       } else {
         localObject = new SimpleDateFormat("yyyy-MM-dd");
@@ -164,7 +164,7 @@ public class DateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.DateUtils
  * JD-Core Version:    0.7.0.1
  */

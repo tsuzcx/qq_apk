@@ -8,22 +8,22 @@ import java.util.Set;
 
 public class GetUserIconHandler
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  static boolean jdField_a_of_type_Boolean = false;
+  static boolean a = false;
+  private static final ArrayList<String> b = new ArrayList();
+  private static Set<String> c = new HashSet();
   
   public static void a(String paramString)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    synchronized (b)
     {
-      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
+      if (!c.contains(paramString))
       {
-        jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        jdField_a_of_type_JavaUtilSet.add(paramString);
+        b.add(paramString);
+        c.add(paramString);
       }
-      if (!jdField_a_of_type_Boolean)
+      if (!a)
       {
-        jdField_a_of_type_Boolean = true;
+        a = true;
         ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
       }
       return;
@@ -39,7 +39,7 @@ public class GetUserIconHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserIconHandler
  * JD-Core Version:    0.7.0.1
  */

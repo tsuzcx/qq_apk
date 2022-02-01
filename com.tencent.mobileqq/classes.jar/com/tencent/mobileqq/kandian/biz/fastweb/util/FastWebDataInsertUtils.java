@@ -45,8 +45,8 @@ public class FastWebDataInsertUtils
         {
           localObject = (ProteusItemData)localObject;
           i = m;
-          if (((ProteusItemData)localObject).A == 1) {
-            if (((ProteusItemData)localObject).z != paramInt2)
+          if (((ProteusItemData)localObject).bf == 1) {
+            if (((ProteusItemData)localObject).be != paramInt2)
             {
               i = m;
               if (paramInt2 != 0) {}
@@ -120,7 +120,7 @@ public class FastWebDataInsertUtils
           JSONObject localJSONObject = new JSONObject(((oidb_cmd0xe7e.TextCardInfo)localObject).bytes_card_json.get().toStringUtf8());
           if (FastWebPtsLiteDataUtil.a(localJSONObject))
           {
-            if (!PTSLiteSwitchManager.a().a())
+            if (!PTSLiteSwitchManager.a().b())
             {
               paramList1 = new StringBuilder();
               paramList1.append("insertTextCards give up for pts lite engine not ready ! data : ");
@@ -128,16 +128,16 @@ public class FastWebDataInsertUtils
               QLog.d("FastWeb0xc6dDataUtils", 1, paramList1.toString());
               continue;
             }
-            paramList1 = FastWebPtsLiteDataUtil.a(localJSONObject);
+            paramList1 = FastWebPtsLiteDataUtil.b(localJSONObject);
             break label265;
           }
           try
           {
             paramList1 = FastWebPTSDataConverter.a(localJSONObject, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
-            paramList1.A = 1;
-            paramList1.z = -1;
+            paramList1.bf = 1;
+            paramList1.be = -1;
             label265:
-            paramList1.b = FastWebPTSDataConverter.a(paramSparseArray);
+            paramList1.aV = FastWebPTSDataConverter.a(paramSparseArray);
             a(((oidb_cmd0xe7e.TextCardInfo)localObject).enum_indexing_type.get(), ((oidb_cmd0xe7e.TextCardInfo)localObject).bool_locate_forwards.get(), ((oidb_cmd0xe7e.TextCardInfo)localObject).uint32_location.get(), ((oidb_cmd0xe7e.TextCardInfo)localObject).bool_insert_forwards.get(), paramList, paramList1);
             localStringBuilder.append("\n[data : ");
             localStringBuilder.append(localJSONObject.toString());
@@ -206,8 +206,8 @@ public class FastWebDataInsertUtils
         try
         {
           localObject = FastWebPTSDataConverter.a(new JSONObject(paramSparseArray.bytes_json.get().toStringUtf8()), paramAbsBaseArticleInfo, paramFastWebArticleInfo);
-          ((ProteusItemData)localObject).A = -99;
-          ((ProteusItemData)localObject).b = paramSparseArray.bytes_weight.get();
+          ((ProteusItemData)localObject).bf = -99;
+          ((ProteusItemData)localObject).aV = paramSparseArray.bytes_weight.get();
           ItemDatasListUtils.a(paramList, (BaseData)localObject);
         }
         catch (Exception paramSparseArray)
@@ -227,7 +227,7 @@ public class FastWebDataInsertUtils
     while (paramList.hasNext())
     {
       BaseData localBaseData = (BaseData)paramList.next();
-      if (((localBaseData instanceof ProteusItemData)) && (((ProteusItemData)localBaseData).A == -99)) {
+      if (((localBaseData instanceof ProteusItemData)) && (((ProteusItemData)localBaseData).bf == -99)) {
         return true;
       }
     }
@@ -240,7 +240,7 @@ public class FastWebDataInsertUtils
     while (paramList.hasNext())
     {
       BaseData localBaseData = (BaseData)paramList.next();
-      if (((localBaseData instanceof ProteusItemData)) && (((ProteusItemData)localBaseData).z == -1)) {
+      if (((localBaseData instanceof ProteusItemData)) && (((ProteusItemData)localBaseData).be == -1)) {
         return true;
       }
     }
@@ -249,7 +249,7 @@ public class FastWebDataInsertUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebDataInsertUtils
  * JD-Core Version:    0.7.0.1
  */

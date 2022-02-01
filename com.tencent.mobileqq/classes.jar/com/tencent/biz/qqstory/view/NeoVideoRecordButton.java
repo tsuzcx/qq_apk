@@ -19,20 +19,20 @@ import android.view.animation.DecelerateInterpolator;
 public class NeoVideoRecordButton
   extends RingView
 {
-  public float a;
-  final int a;
-  public AnimatorSet a;
-  public ValueAnimator a;
-  public RingView.DrawInfo a;
-  final int b;
-  public ValueAnimator b;
+  public float a = 0.0F;
   public RingView.DrawInfo b;
-  final int c;
-  public ValueAnimator c;
   public RingView.DrawInfo c;
-  final int d;
-  final int e;
-  final int f;
+  public RingView.DrawInfo d;
+  public ValueAnimator e;
+  public ValueAnimator f;
+  public AnimatorSet g;
+  public ValueAnimator h;
+  final int i;
+  final int j;
+  final int k;
+  final int l;
+  final int m;
+  final int n;
   
   public NeoVideoRecordButton(Context paramContext)
   {
@@ -42,45 +42,44 @@ public class NeoVideoRecordButton
   public NeoVideoRecordButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Int = a(paramContext, 37.5F);
-    this.jdField_b_of_type_Int = a(paramContext, 6.0F);
-    this.jdField_c_of_type_Int = a(paramContext, 1.0F);
-    this.f = a(paramContext, 45.5F);
-    this.e = a(paramContext, 6.0F);
-    this.d = a(paramContext, 31.799999F);
-    paramContext = new RingView.DrawInfo(-90, 270, this.jdField_a_of_type_Int, 0.0F, this.jdField_b_of_type_Int, 0.0F, -15550475, -1, Paint.Style.STROKE);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewRingView$DrawInfo = paramContext;
+    this.i = a(paramContext, 37.5F);
+    this.j = a(paramContext, 6.0F);
+    this.k = a(paramContext, 1.0F);
+    this.n = a(paramContext, 45.5F);
+    this.m = a(paramContext, 6.0F);
+    this.l = a(paramContext, 31.799999F);
+    paramContext = new RingView.DrawInfo(-90, 270, this.i, 0.0F, this.j, 0.0F, -15550475, -1, Paint.Style.STROKE);
+    this.b = paramContext;
     super.a(paramContext);
     paramContext = new RingView.DrawInfo(-90, 270, 1, 0.0F, 1, 0.0F, 1090519039, 0, Paint.Style.FILL);
-    this.jdField_c_of_type_ComTencentBizQqstoryViewRingView$DrawInfo = paramContext;
+    this.d = paramContext;
     super.a(paramContext);
-    paramContext = new RingView.DrawInfo(-90, 270, this.jdField_c_of_type_Int, 0.0F, 1, 0.0F, -1, 0, Paint.Style.FILL);
-    this.jdField_b_of_type_ComTencentBizQqstoryViewRingView$DrawInfo = paramContext;
+    paramContext = new RingView.DrawInfo(-90, 270, this.k, 0.0F, 1, 0.0F, -1, 0, Paint.Style.FILL);
+    this.c = paramContext;
     super.a(paramContext);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("border", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.f) }), PropertyValuesHolder.ofObject("ring", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.e) }), PropertyValuesHolder.ofObject("center", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.d) }), PropertyValuesHolder.ofObject("color", new ArgbEvaluator(), new Object[] { Integer.valueOf(-1), Integer.valueOf(-15550475) }) });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new NeoVideoRecordButton.1(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-    paramContext = this.jdField_b_of_type_AndroidAnimationValueAnimator;
-    paramAttributeSet = PropertyValuesHolder.ofObject("radius", new IntEvaluator(), new Object[] { Integer.valueOf(1), Integer.valueOf(this.f - this.jdField_b_of_type_Int) });
+    this.e = new ValueAnimator();
+    this.e.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("border", new IntEvaluator(), new Object[] { Integer.valueOf(this.i), Integer.valueOf(this.n) }), PropertyValuesHolder.ofObject("ring", new IntEvaluator(), new Object[] { Integer.valueOf(this.j), Integer.valueOf(this.m) }), PropertyValuesHolder.ofObject("center", new IntEvaluator(), new Object[] { Integer.valueOf(this.k), Integer.valueOf(this.l) }), PropertyValuesHolder.ofObject("color", new ArgbEvaluator(), new Object[] { Integer.valueOf(-1), Integer.valueOf(-15550475) }) });
+    this.e.setDuration(400L);
+    this.e.addUpdateListener(new NeoVideoRecordButton.1(this));
+    this.f = new ValueAnimator();
+    paramContext = this.f;
+    paramAttributeSet = PropertyValuesHolder.ofObject("radius", new IntEvaluator(), new Object[] { Integer.valueOf(1), Integer.valueOf(this.n - this.j) });
     ArgbEvaluator localArgbEvaluator = new ArgbEvaluator();
     Integer localInteger = Integer.valueOf(16777215);
     paramContext.setValues(new PropertyValuesHolder[] { paramAttributeSet, PropertyValuesHolder.ofObject("color", localArgbEvaluator, new Object[] { localInteger, localInteger, localInteger, Integer.valueOf(2147483647), localInteger }) });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(1500L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new NeoVideoRecordButton.2(this));
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(this.jdField_a_of_type_AndroidAnimationValueAnimator).before(this.jdField_b_of_type_AndroidAnimationValueAnimator);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new NeoVideoRecordButton.3(this));
-    setProgress(this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_ComTencentBizQqstoryViewRingView$DrawInfo.a();
-    this.jdField_c_of_type_ComTencentBizQqstoryViewRingView$DrawInfo.a();
+    this.f.setInterpolator(new DecelerateInterpolator());
+    this.f.setDuration(1500L);
+    this.f.setRepeatCount(-1);
+    this.f.setRepeatMode(1);
+    this.f.addUpdateListener(new NeoVideoRecordButton.2(this));
+    this.g = new AnimatorSet();
+    this.g.play(this.e).before(this.f);
+    this.h = new ValueAnimator();
+    this.h.setDuration(400L);
+    this.h.addUpdateListener(new NeoVideoRecordButton.3(this));
+    setProgress(this.a);
+    this.c.a();
+    this.d.a();
   }
   
   public static float a(Context paramContext)
@@ -115,10 +114,15 @@ public class NeoVideoRecordButton
     super.postInvalidate();
   }
   
+  public float getProgress()
+  {
+    return this.a;
+  }
+  
   public void setProgress(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewRingView$DrawInfo.d = a(this.jdField_a_of_type_Float);
+    this.a = paramFloat;
+    this.b.g = a(this.a);
     b();
   }
 }

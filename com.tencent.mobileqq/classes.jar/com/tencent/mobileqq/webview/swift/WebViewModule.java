@@ -94,9 +94,9 @@ public class WebViewModule
   {
     if ((!this.isDestroyed) && (this.webView != null))
     {
-      Util.a("urlInterceptManager");
+      Util.f("urlInterceptManager");
       SwiftWebViewUtils.b(paramString);
-      Util.b("urlInterceptManager");
+      Util.g("urlInterceptManager");
       return false;
     }
     return true;
@@ -113,7 +113,7 @@ public class WebViewModule
       }
       if (this.redirectCookie)
       {
-        paramString1 = SwiftBrowserCookieMonster.a(paramString2);
+        paramString1 = SwiftBrowserCookieMonster.c(paramString2);
         if (paramString1 != null)
         {
           paramString1.a(paramString2, null, null, this.intent);
@@ -131,7 +131,7 @@ public class WebViewModule
   {
     this.webViewWrapper = new WebViewWrapper(this.mApp, this, this.intent, this.mContext, false);
     this.webViewWrapper.a(this.sonicClient);
-    TouchWebView localTouchWebView = this.webViewWrapper.a();
+    TouchWebView localTouchWebView = this.webViewWrapper.c();
     SonicClientImpl localSonicClientImpl = this.sonicClient;
     if (localSonicClientImpl != null) {
       localSonicClientImpl.bindWebView(localTouchWebView);
@@ -175,22 +175,22 @@ public class WebViewModule
   
   protected int doCreateLoopStep_Final(Bundle paramBundle)
   {
-    Util.a("Web_qqbrowser_state_machine_init_FINAL");
-    Util.a("Web_IPCSetup");
+    Util.f("Web_qqbrowser_state_machine_init_FINAL");
+    Util.f("Web_IPCSetup");
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded()) {
       ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(BaseApplicationImpl.getApplication());
     }
-    Util.b("Web_IPCSetup");
+    Util.g("Web_IPCSetup");
     SwiftBrowserIdleTaskHelper.a().a(new WebViewModule.4(this, 2));
-    Util.b("Web_qqbrowser_state_machine_init_FINAL");
-    Util.b("Web_qqbrowser_state_machine_all");
+    Util.g("Web_qqbrowser_state_machine_init_FINAL");
+    Util.g("Web_qqbrowser_state_machine_all");
     this.mCreateLoopNextStep = 1;
     return -1;
   }
   
   protected int doCreateLoopStep_InitAppAndWebVieEngine(Bundle paramBundle)
   {
-    Util.a("Web_qqbrowser_state_machine_init_app_and_webview_engine");
+    Util.f("Web_qqbrowser_state_machine_init_app_and_webview_engine");
     this.mApp = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
     if ((this.mApp instanceof BrowserAppInterface)) {
       this.browserApp = ((BrowserAppInterface)this.mApp);
@@ -206,7 +206,7 @@ public class WebViewModule
       this.mPluginEngine.a(this.mUrl, 1L, null);
     }
     this.mCreateLoopNextStep = 16;
-    Util.b("Web_qqbrowser_state_machine_init_app_and_webview_engine");
+    Util.g("Web_qqbrowser_state_machine_init_app_and_webview_engine");
     return 1;
   }
   
@@ -217,39 +217,39 @@ public class WebViewModule
   
   protected int doCreateLoopStep_InitWebView(Bundle paramBundle)
   {
-    Util.a("Web_qqbrowser_state_machine_init_webview");
+    Util.f("Web_qqbrowser_state_machine_init_webview");
     initWebView();
-    Util.b("Web_qqbrowser_state_machine_init_webview");
+    Util.g("Web_qqbrowser_state_machine_init_webview");
     this.mCreateLoopNextStep = 32;
     return 0;
   }
   
   protected int doCreateLoopStep_InitX5Environment(Bundle paramBundle)
   {
-    Util.a("Web_qqbrowser_state_machine_init_x5_environment");
+    Util.f("Web_qqbrowser_state_machine_init_x5_environment");
     this.mCreateLoopNextStep = 8;
     if (SwiftWebAccelerator.TbsAccelerator.a())
     {
-      Util.b("Web_qqbrowser_state_machine_init_x5_environment");
+      Util.g("Web_qqbrowser_state_machine_init_x5_environment");
       return 0;
     }
     if (SwiftWebAccelerator.TbsAccelerator.b())
     {
-      Util.b("Web_qqbrowser_state_machine_init_x5_environment");
+      Util.g("Web_qqbrowser_state_machine_init_x5_environment");
       return 0;
     }
-    Util.b("Web_qqbrowser_state_machine_init_x5_environment");
+    Util.g("Web_qqbrowser_state_machine_init_x5_environment");
     return 0;
   }
   
   protected int doCreateLoopStep_LoadUrl(Bundle paramBundle)
   {
-    Util.a("Web_qqbrowser_state_machine_load_url");
+    Util.f("Web_qqbrowser_state_machine_load_url");
     System.currentTimeMillis();
-    Util.a("Web_qqbrowser_init");
+    Util.f("Web_qqbrowser_init");
     startLoadUrl();
-    Util.b("Web_qqbrowser_init");
-    Util.b("Web_qqbrowser_state_machine_load_url");
+    Util.g("Web_qqbrowser_init");
+    Util.g("Web_qqbrowser_state_machine_load_url");
     this.mCreateLoopNextStep = 1024;
     return 0;
   }
@@ -278,19 +278,19 @@ public class WebViewModule
   
   protected void ensurePluginEngineCreated()
   {
-    synchronized (SwiftWebAccelerator.a)
+    synchronized (SwiftWebAccelerator.d)
     {
-      if (WebViewPluginEngine.a != null)
+      if (WebViewPluginEngine.f != null)
       {
-        this.mPluginEngine = WebViewPluginEngine.a;
-        WebViewPluginEngine.a = null;
+        this.mPluginEngine = WebViewPluginEngine.f;
+        WebViewPluginEngine.f = null;
       }
       if (this.mPluginEngine != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("WebViewModule", 2, "-->web engine and plugin initialized at process preload!");
         }
-        this.mPluginEngine.b();
+        this.mPluginEngine.d();
         if (WebViewModulePluginBuilder.a(this.intent) != null)
         {
           ??? = WebViewModulePluginBuilder.a(this.intent);
@@ -446,7 +446,7 @@ public class WebViewModule
   {
     if (this.webView == null)
     {
-      this.webView = createWebViewWrapper().a();
+      this.webView = createWebViewWrapper().c();
       System.currentTimeMillis();
       Object localObject = this.intent;
       int i = -1;
@@ -461,7 +461,7 @@ public class WebViewModule
       else {
         i = 2;
       }
-      if (AppSetting.g) {
+      if (AppSetting.h) {
         i = 2;
       }
       this.webView.getSettings().setCacheMode(i);
@@ -484,7 +484,7 @@ public class WebViewModule
       }
       if (i != 0)
       {
-        Bundle localBundle = SwiftWebViewUtils.a();
+        Bundle localBundle = SwiftWebViewUtils.c();
         if (localBundle != null) {
           ((IX5WebViewExtension)localObject).invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
         }
@@ -552,11 +552,11 @@ public class WebViewModule
     if (QQBrowserActivity.sQQBrowserActivityCounter == 0)
     {
       ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doUnbindService(BaseApplicationImpl.getApplication());
-      com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.CrashStepStatsEntry.d = -1;
+      com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.CrashStepStatsEntry.h = -1;
     }
     localObject = ViewExposeUtil.a(getClass(), hashCode());
     if (localObject != null) {
-      ReportController.b(null, "CliOper", "", "", ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_Int, 0, Long.toString(SystemClock.elapsedRealtime() - ((ViewExposeUtil.ViewExposeUnit)localObject).b), "", "", "");
+      ReportController.b(null, "CliOper", "", "", ((ViewExposeUtil.ViewExposeUnit)localObject).d, ((ViewExposeUtil.ViewExposeUnit)localObject).d, ((ViewExposeUtil.ViewExposeUnit)localObject).e, 0, Long.toString(SystemClock.elapsedRealtime() - ((ViewExposeUtil.ViewExposeUnit)localObject).c), "", "", "");
     }
     SwiftBrowserIdleTaskHelper.a().a(2);
   }
@@ -637,7 +637,7 @@ public class WebViewModule
       if ((Build.VERSION.SDK_INT >= 19) && (!this.isDestroyed))
       {
         paramString = this.webViewWrapper;
-        if ((paramString != null) && (paramString.a() != null)) {
+        if ((paramString != null) && (paramString.d() != null)) {
           onReceivedTitle(paramWebView, paramWebView.getTitle());
         }
       }
@@ -752,14 +752,14 @@ public class WebViewModule
   
   public void startLoadUrl()
   {
-    Util.a("Web_readyToLoadUrl");
+    Util.f("Web_readyToLoadUrl");
     if (this.webView == null) {
       return;
     }
     if (!TextUtils.isEmpty(this.mUrl)) {
       this.webView.loadUrl(this.mUrl);
     }
-    Util.b("Web_readyToLoadUrl");
+    Util.g("Web_readyToLoadUrl");
     if (this.webView.isPaused) {
       this.webView.onResume();
     }
@@ -767,7 +767,7 @@ public class WebViewModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewModule
  * JD-Core Version:    0.7.0.1
  */

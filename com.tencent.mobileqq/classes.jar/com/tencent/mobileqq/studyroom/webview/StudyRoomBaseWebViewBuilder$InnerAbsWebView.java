@@ -9,41 +9,41 @@ import java.util.ArrayList;
 class StudyRoomBaseWebViewBuilder$InnerAbsWebView
   extends AbsWebView
 {
-  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
   public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
     super.bindJavaScript(paramArrayList);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqStudyroomWebviewStudyRoomBaseWebViewBuilder.a(localArrayList);
+    this.a.a(localArrayList);
     paramArrayList.addAll(localArrayList);
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqStudyroomWebviewStudyRoomBaseWebViewBuilder.b((StudyRoomWebView)paramWebView, paramString);
+    this.a.b((StudyRoomWebView)paramWebView, paramString);
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqStudyroomWebviewStudyRoomBaseWebViewBuilder.a((StudyRoomWebView)paramWebView, paramString);
+    this.a.a((StudyRoomWebView)paramWebView, paramString);
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqStudyroomWebviewStudyRoomBaseWebViewBuilder.a((StudyRoomWebView)paramWebView, paramString2, paramInt, paramString1);
+    this.a.a((StudyRoomWebView)paramWebView, paramString2, paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.webview.StudyRoomBaseWebViewBuilder.InnerAbsWebView
  * JD-Core Version:    0.7.0.1
  */

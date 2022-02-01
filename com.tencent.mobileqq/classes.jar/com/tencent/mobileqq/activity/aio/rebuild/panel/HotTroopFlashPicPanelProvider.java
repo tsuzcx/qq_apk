@@ -22,46 +22,41 @@ import com.tencent.widget.XPanelContainer;
 public class HotTroopFlashPicPanelProvider
   implements PanelProvider<PhotoListPanel>
 {
-  private AIOContext a;
   protected PhotoListPanel a;
+  private AIOContext b;
   
   public HotTroopFlashPicPanelProvider(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.b = paramAIOContext;
   }
   
-  private boolean a()
+  private boolean c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
+    Object localObject = this.b;
     if ((localObject instanceof HotChatContext))
     {
       localObject = ((AIOContext)localObject).a().getHotChatMng(true);
-      boolean bool = ((HotChatManager)localObject).d();
-      if (!((HotChatManager)localObject).d())
+      boolean bool = ((HotChatManager)localObject).j();
+      if (!((HotChatManager)localObject).j())
       {
         a();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), "CliOper", "", "", "0X8005DD2", "0X8005DD2", 0, 0, "", "", "", "");
+        ReportController.b(this.b.a(), "CliOper", "", "", "0X8005DD2", "0X8005DD2", 0, 0, "", "", "", "");
       }
       return bool;
     }
     return false;
   }
   
-  public PhotoListPanel a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel;
-  }
-  
   public PhotoListPanel a(Context paramContext)
   {
-    if (!a()) {
+    if (!c()) {
       return null;
     }
     long l = System.currentTimeMillis();
-    paramContext = ((PhotoListHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(7)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.hashCode());
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    AIOContext localAIOContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel = AIOPanelUtiles.a(localQQAppInterface, localAIOContext, localAIOContext.a().a().a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), true, paramContext);
+    paramContext = ((PhotoListHelper)this.b.a(7)).a(this.b.hashCode());
+    QQAppInterface localQQAppInterface = this.b.a();
+    AIOContext localAIOContext = this.b;
+    this.a = AIOPanelUtiles.a(localQQAppInterface, localAIOContext, localAIOContext.p().d().e(), this.b.C(), true, paramContext);
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
@@ -69,17 +64,22 @@ public class HotTroopFlashPicPanelProvider
       paramContext.append(System.currentTimeMillis() - l);
       QLog.d("OpenPanel", 2, paramContext.toString());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel;
+    return this.a;
   }
   
   public void a()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), 230);
-    localQQCustomDialog.setMessage(String.format("需要等级LV%d才能使用闪照功能哦", new Object[] { Integer.valueOf(HotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a())) }));
-    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131705666), new HotTroopFlashPicPanelProvider.1(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131705659), new HotTroopFlashPicPanelProvider.2(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.b.b(), 230);
+    localQQCustomDialog.setMessage(String.format("需要等级LV%d才能使用闪照功能哦", new Object[] { Integer.valueOf(HotChatManager.d(this.b.a())) }));
+    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131903551), new HotTroopFlashPicPanelProvider.1(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131903545), new HotTroopFlashPicPanelProvider.2(this));
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.show();
+  }
+  
+  public PhotoListPanel b()
+  {
+    return this.a;
   }
   
   public int getPanelId()
@@ -99,7 +99,7 @@ public class HotTroopFlashPicPanelProvider
   public void onPanelIconClick(XPanelContainer paramXPanelContainer)
   {
     paramXPanelContainer.a(14);
-    AIOPanelUtiles.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), "0X8005977", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a);
+    AIOPanelUtiles.a(this.b.a(), "0X8005977", this.b.O().a);
   }
   
   public void onPanelIconClickBeforeCreate(int paramInt) {}
@@ -108,16 +108,16 @@ public class HotTroopFlashPicPanelProvider
   {
     if ((paramInt2 == 14) && (paramInt1 != 14))
     {
-      PhotoListPanel localPhotoListPanel = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel;
+      PhotoListPanel localPhotoListPanel = this.a;
       if (localPhotoListPanel != null) {
-        localPhotoListPanel.b();
+        localPhotoListPanel.c();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.HotTroopFlashPicPanelProvider
  * JD-Core Version:    0.7.0.1
  */

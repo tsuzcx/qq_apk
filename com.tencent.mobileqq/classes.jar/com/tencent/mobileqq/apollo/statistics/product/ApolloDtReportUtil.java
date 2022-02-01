@@ -31,44 +31,15 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/statistics/product/ApolloDtReportUtil;", "", "()V", "APOLLO_DEBUG_KEY", "", "APOLLO_KEY", "TAG", "sApolloTagSelectedMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "apolloCmEmojiSendReport", "", "apolloEmojiList", "Ljava/util/ArrayList;", "mAppInterface", "Lcom/tencent/common/app/AppInterface;", "mCurType", "getApolloMode", "app", "getFeeTypeByActionId", "actionId", "getFriendUin", "getPersonNum", "personNum", "actionType", "getReportModeByPackageId", "packageId", "getReportSessionType", "type", "getSessionType", "getUserStatus", "report", "pageCode", "modeCode", "eventCode", "params", "", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloDtReportUtil
 {
-  public static final ApolloDtReportUtil a;
   @JvmField
   @NotNull
   public static final HashMap<Integer, String> a;
+  public static final ApolloDtReportUtil b = new ApolloDtReportUtil();
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqApolloStatisticsProductApolloDtReportUtil = new ApolloDtReportUtil();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    UserAction.registerTunnel(new TunnelInfo("0AND0FB8I14UU93I", AppSetting.f(), "1000"));
-  }
-  
-  @JvmStatic
-  public static final int a()
-  {
-    if ((BaseActivity.sTopActivity instanceof BaseActivity))
-    {
-      Object localObject = BaseActivity.sTopActivity;
-      if (localObject != null)
-      {
-        if (((BaseActivity)localObject).getChatFragment() != null)
-        {
-          localObject = ((BaseActivity)localObject).getChatFragment();
-          if (localObject == null) {
-            Intrinsics.throwNpe();
-          }
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "activity.chatFragment!!");
-          localObject = ((ChatFragment)localObject).a();
-          if (localObject != null) {
-            return ((BaseChatPie)localObject).a.jdField_a_of_type_Int;
-          }
-        }
-      }
-      else {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.BaseActivity");
-      }
-    }
-    return -1;
+    a = new HashMap();
+    UserAction.registerTunnel(new TunnelInfo("0AND0FB8I14UU93I", AppSetting.h(), "1000"));
   }
   
   @JvmStatic
@@ -134,14 +105,14 @@ public final class ApolloDtReportUtil
             Intrinsics.throwNpe();
           }
           Intrinsics.checkExpressionValueIsNotNull(localObject1, "activity.chatFragment!!");
-          Object localObject3 = ((ChatFragment)localObject1).a();
+          Object localObject3 = ((ChatFragment)localObject1).k();
           localObject1 = localObject2;
           if (localObject3 != null)
           {
-            localObject3 = ((BaseChatPie)localObject3).a;
+            localObject3 = ((BaseChatPie)localObject3).ah;
             localObject1 = localObject2;
             if (localObject3 != null) {
-              localObject1 = ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString;
+              localObject1 = ((SessionInfo)localObject3).b;
             }
           }
           return localObject1;
@@ -152,50 +123,6 @@ public final class ApolloDtReportUtil
       }
     }
     return null;
-  }
-  
-  @JvmStatic
-  @NotNull
-  public static final String a(int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      if (paramInt != 1)
-      {
-        if (paramInt != 2)
-        {
-          if (paramInt != 3)
-          {
-            if (paramInt != 300)
-            {
-              if (paramInt != 301)
-              {
-                switch (paramInt)
-                {
-                default: 
-                  return "package_single";
-                case 10: 
-                  return "package_game";
-                case 9: 
-                  return "package_gif";
-                case 8: 
-                  return "package_recommend";
-                case 7: 
-                  return "package_vip";
-                }
-                return "package_slave";
-              }
-              return "package_double";
-            }
-            return "package_single";
-          }
-          return "package_collect";
-        }
-        return "package_text";
-      }
-      return "package_double";
-    }
-    return "package_single";
   }
   
   @JvmStatic
@@ -249,17 +176,103 @@ public final class ApolloDtReportUtil
         }
         i += 1;
       }
-      Object localObject2 = new DtReportParamsBuilder().a(a(paramAppInterface)).b(a(paramInt)).c(arrayOfString[0]).d(arrayOfString[1]).e(arrayOfString[2]).f(arrayOfString[3]).g(arrayOfString[4]);
+      Object localObject2 = new DtReportParamsBuilder().a(a(paramAppInterface)).b(a(paramInt)).f(arrayOfString[0]).g(arrayOfString[1]).h(arrayOfString[2]).i(arrayOfString[3]).j(arrayOfString[4]);
       paramArrayList = localObject3;
       if (localObject1 != null) {
         paramArrayList = ((StringBuilder)localObject1).toString();
       }
-      a("aio", "cm_emoji", "send", (Map)((DtReportParamsBuilder)localObject2).i(paramArrayList).f(b(paramAppInterface)).b(a()).a());
+      a("aio", "cm_emoji", "send", (Map)((DtReportParamsBuilder)localObject2).l(paramArrayList).f(b(paramAppInterface)).c(a()).a());
     }
   }
   
   @JvmStatic
-  public static final int b(int paramInt)
+  public static final int b()
+  {
+    if ((BaseActivity.sTopActivity instanceof BaseActivity))
+    {
+      Object localObject = BaseActivity.sTopActivity;
+      if (localObject != null)
+      {
+        if (((BaseActivity)localObject).getChatFragment() != null)
+        {
+          localObject = ((BaseActivity)localObject).getChatFragment();
+          if (localObject == null) {
+            Intrinsics.throwNpe();
+          }
+          Intrinsics.checkExpressionValueIsNotNull(localObject, "activity.chatFragment!!");
+          localObject = ((ChatFragment)localObject).k();
+          if (localObject != null) {
+            return ((BaseChatPie)localObject).ah.a;
+          }
+        }
+      }
+      else {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.BaseActivity");
+      }
+    }
+    return -1;
+  }
+  
+  @JvmStatic
+  public static final int b(@NotNull AppInterface paramAppInterface)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAppInterface, "app");
+    IRuntimeService localIRuntimeService = paramAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+    Intrinsics.checkExpressionValueIsNotNull(localIRuntimeService, "app.getRuntimeService(IA…ava, ProcessConstant.ALL)");
+    return ((IApolloManagerService)localIRuntimeService).getApolloStatus(paramAppInterface.getCurrentUin());
+  }
+  
+  @JvmStatic
+  @NotNull
+  public static final String b(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      String str = "package_double";
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 300)
+            {
+              if (paramInt != 301)
+              {
+                str = "package_gif";
+                if (paramInt != 303)
+                {
+                  switch (paramInt)
+                  {
+                  default: 
+                    return "package_single";
+                  case 10: 
+                    return "package_game";
+                  case 9: 
+                    return "package_gif";
+                  case 8: 
+                    return "package_recommend";
+                  case 7: 
+                    return "package_vip";
+                  }
+                  return "package_slave";
+                }
+              }
+              return str;
+            }
+            return "package_single";
+          }
+          return "package_collect";
+        }
+        return "package_text";
+      }
+      return "package_double";
+    }
+    return "package_single";
+  }
+  
+  @JvmStatic
+  public static final int c(int paramInt)
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if (localObject != null)
@@ -272,19 +285,10 @@ public final class ApolloDtReportUtil
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
-  
-  @JvmStatic
-  public static final int b(@NotNull AppInterface paramAppInterface)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAppInterface, "app");
-    IRuntimeService localIRuntimeService = paramAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-    Intrinsics.checkExpressionValueIsNotNull(localIRuntimeService, "app.getRuntimeService(IA…ava, ProcessConstant.ALL)");
-    return ((IApolloManagerService)localIRuntimeService).getApolloStatus(paramAppInterface.getCurrentUin());
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,8 @@ import org.jetbrains.annotations.Nullable;
 public abstract interface IVideoPlayManager
   extends IVideoPlay
 {
-  public abstract long a();
-  
-  @Nullable
-  public abstract Activity a();
-  
-  @Nullable
-  public abstract IVideoUIManager a();
-  
   @Nullable
   public abstract VideoPlayParam a();
-  
-  public abstract void a();
   
   public abstract void a(int paramInt);
   
@@ -30,17 +20,27 @@ public abstract interface IVideoPlayManager
   
   public abstract void a(@Nullable Object paramObject);
   
-  public abstract boolean a();
-  
-  public abstract long b();
+  @Nullable
+  public abstract Activity b();
   
   public abstract void b(int paramInt);
   
   public abstract void b(@Nullable OnPlayStateListener paramOnPlayStateListener);
+  
+  public abstract void c();
+  
+  @Nullable
+  public abstract IVideoUIManager d();
+  
+  public abstract long e();
+  
+  public abstract long f();
+  
+  public abstract boolean g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.feeds.api.IVideoPlayManager
  * JD-Core Version:    0.7.0.1
  */

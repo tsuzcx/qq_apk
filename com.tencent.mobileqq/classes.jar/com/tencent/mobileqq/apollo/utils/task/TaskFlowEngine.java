@@ -11,10 +11,10 @@ import java.util.List;
 public class TaskFlowEngine
   implements Handler.Callback, BaseTask.Callback
 {
-  private TaskThreadPool jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool;
-  private final List<TaskFlowEngine.DependFlow> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private BaseTask[] jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask;
-  private List<BaseTask> b = new ArrayList();
+  private TaskThreadPool a;
+  private BaseTask[] b;
+  private final List<TaskFlowEngine.DependFlow> c = new ArrayList();
+  private List<BaseTask> d = new ArrayList();
   
   public TaskFlowEngine()
   {
@@ -30,7 +30,7 @@ public class TaskFlowEngine
         if (i > 0)
         {
           i += 1;
-          this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool = new TaskThreadPool("TaskFlowEngine", 2, i);
+          this.a = new TaskThreadPool("TaskFlowEngine", 2, i);
           return;
         }
       }
@@ -49,10 +49,10 @@ public class TaskFlowEngine
       return;
     }
     paramBaseTask.a(this);
-    if (!this.b.contains(paramBaseTask)) {
-      this.b.add(paramBaseTask);
+    if (!this.d.contains(paramBaseTask)) {
+      this.d.add(paramBaseTask);
     }
-    paramBaseTask = paramBaseTask.a();
+    paramBaseTask = paramBaseTask.d();
     if ((paramBaseTask != null) && (paramBaseTask.size() > 0))
     {
       paramBaseTask = paramBaseTask.iterator();
@@ -67,11 +67,11 @@ public class TaskFlowEngine
     if (??? == null) {
       return;
     }
-    List localList = ???.a();
+    List localList = ???.d();
     if ((localList != null) && (localList.size() > 0))
     {
       int j = 0;
-      Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject2 = this.c.iterator();
       do
       {
         i = j;
@@ -83,9 +83,9 @@ public class TaskFlowEngine
       if (i == 0)
       {
         localObject2 = new TaskFlowEngine.DependFlow(this, ???, localList);
-        synchronized (this.jdField_a_of_type_JavaUtilList)
+        synchronized (this.c)
         {
-          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          this.c.add(localObject2);
         }
       }
       ??? = localObject1.iterator();
@@ -94,19 +94,7 @@ public class TaskFlowEngine
       }
       return;
     }
-    ???.c();
-  }
-  
-  public void a()
-  {
-    BaseTask[] arrayOfBaseTask = this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask;
-    if (arrayOfBaseTask != null)
-    {
-      if (arrayOfBaseTask.length <= 0) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool.a(new TaskFlowEngine.1(this));
-    }
+    ???.g();
   }
   
   public void a(BaseTask paramBaseTask)
@@ -114,17 +102,17 @@ public class TaskFlowEngine
     if (paramBaseTask == null) {
       return;
     }
-    if (paramBaseTask.b()) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsTaskTaskThreadPool.a(new TaskFlowEngine.2(this, paramBaseTask));
+    if (paramBaseTask.h()) {
+      this.a.a(new TaskFlowEngine.2(this, paramBaseTask));
     }
   }
   
   public final void a(BaseTask[] paramArrayOfBaseTask)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.b.clear();
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask = paramArrayOfBaseTask;
-    paramArrayOfBaseTask = this.jdField_a_of_type_ArrayOfComTencentMobileqqApolloUtilsTaskBaseTask;
+    this.c.clear();
+    this.d.clear();
+    this.b = paramArrayOfBaseTask;
+    paramArrayOfBaseTask = this.b;
     if (paramArrayOfBaseTask == null) {
       return;
     }
@@ -139,11 +127,23 @@ public class TaskFlowEngine
   
   public void b(BaseTask paramBaseTask) {}
   
+  public void c()
+  {
+    BaseTask[] arrayOfBaseTask = this.b;
+    if (arrayOfBaseTask != null)
+    {
+      if (arrayOfBaseTask.length <= 0) {
+        return;
+      }
+      this.a.a(new TaskFlowEngine.1(this));
+    }
+  }
+  
   protected void c(BaseTask paramBaseTask)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         TaskFlowEngine.DependFlow localDependFlow = (TaskFlowEngine.DependFlow)localIterator.next();
@@ -166,7 +166,7 @@ public class TaskFlowEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskFlowEngine
  * JD-Core Version:    0.7.0.1
  */

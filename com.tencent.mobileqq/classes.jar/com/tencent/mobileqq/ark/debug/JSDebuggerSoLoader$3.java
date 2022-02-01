@@ -7,21 +7,21 @@ final class JSDebuggerSoLoader$3
 {
   public void run()
   {
-    if (JSDebuggerSoLoader.a() == 0)
+    if (JSDebuggerSoLoader.c() == 0)
     {
       JSDebuggerSoLoader.a(JSDebuggerSoLoader.a());
-      JSDebuggerSoLoader.a();
-      JSDebuggerSoLoader.a();
+      JSDebuggerSoLoader.d();
+      JSDebuggerSoLoader.e();
       return;
     }
-    if (JSDebuggerSoLoader.a() == 1)
+    if (JSDebuggerSoLoader.c() == 1)
     {
-      JSDebuggerSoLoader.a();
+      JSDebuggerSoLoader.e();
       return;
     }
-    if (JSDebuggerSoLoader.a() == 2)
+    if (JSDebuggerSoLoader.c() == 2)
     {
-      JSDebuggerSoLoader.a();
+      JSDebuggerSoLoader.e();
       String str = JSDebuggerSoLoader.a();
       if (!TextUtils.isEmpty(str)) {
         JSDebuggerSoLoader.a(str, "libarkDebuggerJSImpl.so");
@@ -31,7 +31,7 @@ final class JSDebuggerSoLoader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.3
  * JD-Core Version:    0.7.0.1
  */

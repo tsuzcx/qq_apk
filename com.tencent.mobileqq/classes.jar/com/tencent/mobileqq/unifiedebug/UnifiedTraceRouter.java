@@ -11,28 +11,25 @@ import java.util.Map;
 
 public class UnifiedTraceRouter
 {
-  public float a;
-  public final int a;
-  public Handler a;
-  public QQAppInterface a;
-  public String a;
-  public List<UnifiedTraceRouter.TraceRouteInfo> a;
-  public int b;
-  public String b;
+  public final int a = 32;
+  public int b = 1;
+  public String c;
+  public float d;
+  public Handler e;
+  public List<UnifiedTraceRouter.TraceRouteInfo> f;
+  public QQAppInterface g;
+  public String h = "";
   
   public UnifiedTraceRouter(QQAppInterface paramQQAppInterface, Handler paramHandler)
   {
-    this.jdField_a_of_type_Int = 32;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.g = paramQQAppInterface;
+    this.e = paramHandler;
+    this.f = new ArrayList();
   }
   
   public String a(String paramString)
   {
-    Object localObject1 = String.format("/system/bin/ping -i 0.2 -c 1 -s 0 -t %d -W 4 %s", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), paramString });
+    Object localObject1 = String.format("/system/bin/ping -i 0.2 -c 1 -s 0 -t %d -W 4 %s", new Object[] { Integer.valueOf(this.b), paramString });
     long l = System.currentTimeMillis();
     Process localProcess = Runtime.getRuntime().exec((String)localObject1);
     BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localProcess.getInputStream()));
@@ -56,7 +53,7 @@ public class UnifiedTraceRouter
       }
       else
       {
-        this.jdField_a_of_type_Float = ((float)(System.currentTimeMillis() - l));
+        this.d = ((float)(System.currentTimeMillis() - l));
         localObject1 = localObject2;
       }
     }
@@ -75,14 +72,14 @@ public class UnifiedTraceRouter
       label219:
       if (!((String)localObject1).equals(""))
       {
-        if (this.jdField_b_of_type_Int == 1)
+        if (this.b == 1)
         {
-          this.jdField_a_of_type_JavaLangString = c((String)localObject1);
+          this.c = c((String)localObject1);
           if (QLog.isColorLevel())
           {
             paramString = new StringBuilder();
             paramString.append("final ip: ");
-            paramString.append(this.jdField_a_of_type_JavaLangString);
+            paramString.append(this.c);
             QLog.d("UnifiedTraceRouter", 2, paramString.toString());
           }
         }
@@ -102,7 +99,7 @@ public class UnifiedTraceRouter
   
   public void a(long paramLong, String paramString, Map<String, Object> paramMap)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new UnifiedTraceRouter.1(this, paramString, paramLong, paramMap));
+    this.e.post(new UnifiedTraceRouter.1(this, paramString, paramLong, paramMap));
   }
   
   public String b(String paramString)
@@ -171,7 +168,7 @@ public class UnifiedTraceRouter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedTraceRouter
  * JD-Core Version:    0.7.0.1
  */

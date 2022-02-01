@@ -92,9 +92,9 @@ public class TeamWorkUtilsImpl
   private static final Map<String, Integer> WX_SHARE_TYPE_MAP;
   private static long lastClickTime = 0L;
   private static volatile int mLastMsgSeq = -2147483648;
-  public final String THIS_WEEK = HardCodeUtil.a(2131714610);
-  public final String TODAY = HardCodeUtil.a(2131714584);
-  public final String YESTERDAY = HardCodeUtil.a(2131714569);
+  public final String THIS_WEEK = HardCodeUtil.a(2131912119);
+  public final String TODAY = HardCodeUtil.a(2131912093);
+  public final String YESTERDAY = HardCodeUtil.a(2131912078);
   
   static
   {
@@ -123,16 +123,16 @@ public class TeamWorkUtilsImpl
     WX_SHARE_TYPE_MAP.put("form", Integer.valueOf(3));
     WX_SHARE_TYPE_MAP.put("slide", Integer.valueOf(4));
     WX_SHARE_TYPE_MAP.put("pdf", Integer.valueOf(5));
-    WX_MINI_SHARE_TYPE_ICON_MAP.put(1, new Pair(Integer.valueOf(2130850048), "static://DefaultTeamWorkMiniShareDoc"));
-    WX_MINI_SHARE_TYPE_ICON_MAP.put(2, new Pair(Integer.valueOf(2130850055), "static://DefaultTeamWorkMiniShareSheet"));
-    WX_MINI_SHARE_TYPE_ICON_MAP.put(3, new Pair(Integer.valueOf(2130850051), "static://DefaultTeamWorkMiniShareForm"));
-    WX_MINI_SHARE_TYPE_ICON_MAP.put(4, new Pair(Integer.valueOf(2130850057), "static://DefaultTeamWorkMiniShareSlide"));
-    WX_MINI_SHARE_TYPE_ICON_MAP.put(5, new Pair(Integer.valueOf(2130850053), "static://DefaultTeamWorkMiniSharePdf"));
-    WX_H5_SHARE_TYPE_ICON_MAP.put(1, new Pair(Integer.valueOf(2130850047), "static://DefaultTeamWorkH5ShareDoc"));
-    WX_H5_SHARE_TYPE_ICON_MAP.put(2, new Pair(Integer.valueOf(2130850054), "static://DefaultTeamWorkH5ShareSheet"));
-    WX_H5_SHARE_TYPE_ICON_MAP.put(3, new Pair(Integer.valueOf(2130850050), "static://DefaultTeamWorkH5ShareForm"));
-    WX_H5_SHARE_TYPE_ICON_MAP.put(4, new Pair(Integer.valueOf(2130850056), "static://DefaultTeamWorkH5ShareSlide"));
-    WX_H5_SHARE_TYPE_ICON_MAP.put(5, new Pair(Integer.valueOf(2130850052), "static://DefaultTeamWorkH5SharePdf"));
+    WX_MINI_SHARE_TYPE_ICON_MAP.put(1, new Pair(Integer.valueOf(2130851816), "static://DefaultTeamWorkMiniShareDoc"));
+    WX_MINI_SHARE_TYPE_ICON_MAP.put(2, new Pair(Integer.valueOf(2130851823), "static://DefaultTeamWorkMiniShareSheet"));
+    WX_MINI_SHARE_TYPE_ICON_MAP.put(3, new Pair(Integer.valueOf(2130851819), "static://DefaultTeamWorkMiniShareForm"));
+    WX_MINI_SHARE_TYPE_ICON_MAP.put(4, new Pair(Integer.valueOf(2130851825), "static://DefaultTeamWorkMiniShareSlide"));
+    WX_MINI_SHARE_TYPE_ICON_MAP.put(5, new Pair(Integer.valueOf(2130851821), "static://DefaultTeamWorkMiniSharePdf"));
+    WX_H5_SHARE_TYPE_ICON_MAP.put(1, new Pair(Integer.valueOf(2130851815), "static://DefaultTeamWorkH5ShareDoc"));
+    WX_H5_SHARE_TYPE_ICON_MAP.put(2, new Pair(Integer.valueOf(2130851822), "static://DefaultTeamWorkH5ShareSheet"));
+    WX_H5_SHARE_TYPE_ICON_MAP.put(3, new Pair(Integer.valueOf(2130851818), "static://DefaultTeamWorkH5ShareForm"));
+    WX_H5_SHARE_TYPE_ICON_MAP.put(4, new Pair(Integer.valueOf(2130851824), "static://DefaultTeamWorkH5ShareSlide"));
+    WX_H5_SHARE_TYPE_ICON_MAP.put(5, new Pair(Integer.valueOf(2130851820), "static://DefaultTeamWorkH5SharePdf"));
   }
   
   private Bitmap obtainShareBitmap(SparseArray<Pair<Integer, String>> paramSparseArray, int paramInt1, String paramString, int paramInt2)
@@ -217,11 +217,11 @@ public class TeamWorkUtilsImpl
           Object localObject2 = paramIntent.getExtras();
           paramIntent = ((Bundle)localObject2).getString("uin");
           paramInt1 = ((Bundle)localObject2).getInt("uintype", 0);
-          if (paramTeamWorkFileImportInfo.m != null)
+          if (paramTeamWorkFileImportInfo.F != null)
           {
             localObject2 = new ArrayList(1);
             ((List)localObject2).add(paramIntent);
-            paramIntent = paramTeamWorkFileImportInfo.m;
+            paramIntent = paramTeamWorkFileImportInfo.F;
             if (!TextUtils.isEmpty(paramIntent)) {
               ThreadManager.excute(new TeamWorkUtilsImpl.2(this, paramIntent, ((AppInterface)localObject1).getCurrentAccountUin(), paramInt1, (List)localObject2), 128, null, false);
             }
@@ -325,25 +325,25 @@ public class TeamWorkUtilsImpl
       return null;
     }
     TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-    localTeamWorkFileImportInfo.jdField_e_of_type_Boolean = false;
-    localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = paramFileManagerEntity.fileName;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Long = paramFileManagerEntity.fileSize;
-    localTeamWorkFileImportInfo.c = paramFileManagerEntity.getFilePath();
-    localTeamWorkFileImportInfo.jdField_e_of_type_Int = paramFileManagerEntity.nFileType;
-    localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = paramBoolean;
-    localTeamWorkFileImportInfo.n = paramFileManagerEntity.WeiYunFileId;
-    localTeamWorkFileImportInfo.o = paramFileManagerEntity.Uuid;
-    localTeamWorkFileImportInfo.h = paramFileManagerEntity.bSend;
+    localTeamWorkFileImportInfo.r = false;
+    localTeamWorkFileImportInfo.c = paramFileManagerEntity.fileName;
+    localTeamWorkFileImportInfo.K = paramFileManagerEntity.fileSize;
+    localTeamWorkFileImportInfo.d = paramFileManagerEntity.getFilePath();
+    localTeamWorkFileImportInfo.u = paramFileManagerEntity.nFileType;
+    localTeamWorkFileImportInfo.o = paramBoolean;
+    localTeamWorkFileImportInfo.G = paramFileManagerEntity.WeiYunFileId;
+    localTeamWorkFileImportInfo.H = paramFileManagerEntity.Uuid;
+    localTeamWorkFileImportInfo.I = paramFileManagerEntity.bSend;
     if (!TextUtils.isEmpty(paramFileManagerEntity.peerUin))
     {
-      localTeamWorkFileImportInfo.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
-      localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
-      localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = String.valueOf(paramFileManagerEntity.TroopUin);
-      localTeamWorkFileImportInfo.jdField_b_of_type_Int = paramFileManagerEntity.busId;
-      localTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString = paramFileManagerEntity.strTroopFilePath;
-      localTeamWorkFileImportInfo.jdField_a_of_type_Long = paramFileManagerEntity.uniseq;
+      localTeamWorkFileImportInfo.a = paramFileManagerEntity.peerType;
+      localTeamWorkFileImportInfo.b = paramFileManagerEntity.peerUin;
+      localTeamWorkFileImportInfo.j = String.valueOf(paramFileManagerEntity.TroopUin);
+      localTeamWorkFileImportInfo.h = paramFileManagerEntity.busId;
+      localTeamWorkFileImportInfo.g = paramFileManagerEntity.strTroopFilePath;
+      localTeamWorkFileImportInfo.e = paramFileManagerEntity.uniseq;
       if (paramFileManagerEntity.status != 16) {
-        localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
+        localTeamWorkFileImportInfo.m = true;
       }
     }
     return localTeamWorkFileImportInfo;
@@ -581,12 +581,12 @@ public class TeamWorkUtilsImpl
   
   public Bitmap getTeamWorkForH5ShareBitMap(int paramInt)
   {
-    return obtainShareBitmap(WX_H5_SHARE_TYPE_ICON_MAP, 2130850047, "static://DefaultTeamWorkH5ShareDoc", paramInt);
+    return obtainShareBitmap(WX_H5_SHARE_TYPE_ICON_MAP, 2130851815, "static://DefaultTeamWorkH5ShareDoc", paramInt);
   }
   
   public Bitmap getTeamWorkForShareBitMap(int paramInt)
   {
-    return obtainShareBitmap(WX_MINI_SHARE_TYPE_ICON_MAP, 2130850048, "static://DefaultTeamWorkMiniShareDoc", paramInt);
+    return obtainShareBitmap(WX_MINI_SHARE_TYPE_ICON_MAP, 2130851816, "static://DefaultTeamWorkMiniShareDoc", paramInt);
   }
   
   /* Error */
@@ -605,30 +605,30 @@ public class TeamWorkUtilsImpl
     //   16: astore 4
     //   18: aload 6
     //   20: astore_3
-    //   21: new 747	java/io/File
+    //   21: new 754	java/io/File
     //   24: dup
     //   25: aload_1
-    //   26: invokevirtual 753	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   26: invokevirtual 760	android/content/Context:getCacheDir	()Ljava/io/File;
     //   29: aload_2
-    //   30: invokespecial 756	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   30: invokespecial 763	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   33: astore_1
     //   34: aload 6
     //   36: astore_3
     //   37: aload_1
-    //   38: invokevirtual 759	java/io/File:exists	()Z
+    //   38: invokevirtual 766	java/io/File:exists	()Z
     //   41: ifeq +55 -> 96
     //   44: aload 6
     //   46: astore_3
-    //   47: new 761	java/io/BufferedReader
+    //   47: new 768	java/io/BufferedReader
     //   50: dup
-    //   51: new 763	java/io/FileReader
+    //   51: new 770	java/io/FileReader
     //   54: dup
     //   55: aload_1
-    //   56: invokespecial 766	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   59: invokespecial 769	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   56: invokespecial 773	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   59: invokespecial 776	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   62: astore_1
     //   63: aload_1
-    //   64: invokevirtual 772	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   64: invokevirtual 779	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   67: astore_2
     //   68: aload_2
     //   69: ifnonnull +6 -> 75
@@ -648,11 +648,11 @@ public class TeamWorkUtilsImpl
     //   98: aload_1
     //   99: ifnull +15 -> 114
     //   102: aload_1
-    //   103: invokevirtual 775	java/io/BufferedReader:close	()V
+    //   103: invokevirtual 782	java/io/BufferedReader:close	()V
     //   106: goto +8 -> 114
     //   109: astore_1
     //   110: aload_1
-    //   111: invokevirtual 776	java/io/IOException:printStackTrace	()V
+    //   111: invokevirtual 783	java/io/IOException:printStackTrace	()V
     //   114: aload 7
     //   116: invokevirtual 410	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   119: areturn
@@ -665,15 +665,15 @@ public class TeamWorkUtilsImpl
     //   129: aload_1
     //   130: astore_3
     //   131: aload_2
-    //   132: invokevirtual 776	java/io/IOException:printStackTrace	()V
+    //   132: invokevirtual 783	java/io/IOException:printStackTrace	()V
     //   135: aload_1
     //   136: ifnull +15 -> 151
     //   139: aload_1
-    //   140: invokevirtual 775	java/io/BufferedReader:close	()V
+    //   140: invokevirtual 782	java/io/BufferedReader:close	()V
     //   143: goto +8 -> 151
     //   146: astore_1
     //   147: aload_1
-    //   148: invokevirtual 776	java/io/IOException:printStackTrace	()V
+    //   148: invokevirtual 783	java/io/IOException:printStackTrace	()V
     //   151: aload 7
     //   153: invokevirtual 410	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   156: areturn
@@ -683,26 +683,26 @@ public class TeamWorkUtilsImpl
     //   161: aload_1
     //   162: astore_3
     //   163: aload_2
-    //   164: invokevirtual 777	java/io/FileNotFoundException:printStackTrace	()V
+    //   164: invokevirtual 784	java/io/FileNotFoundException:printStackTrace	()V
     //   167: aload_1
     //   168: ifnull +15 -> 183
     //   171: aload_1
-    //   172: invokevirtual 775	java/io/BufferedReader:close	()V
+    //   172: invokevirtual 782	java/io/BufferedReader:close	()V
     //   175: goto +8 -> 183
     //   178: astore_1
     //   179: aload_1
-    //   180: invokevirtual 776	java/io/IOException:printStackTrace	()V
+    //   180: invokevirtual 783	java/io/IOException:printStackTrace	()V
     //   183: aload 7
     //   185: invokevirtual 410	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   188: areturn
     //   189: aload_1
     //   190: ifnull +15 -> 205
     //   193: aload_1
-    //   194: invokevirtual 775	java/io/BufferedReader:close	()V
+    //   194: invokevirtual 782	java/io/BufferedReader:close	()V
     //   197: goto +8 -> 205
     //   200: astore_1
     //   201: aload_1
-    //   202: invokevirtual 776	java/io/IOException:printStackTrace	()V
+    //   202: invokevirtual 783	java/io/IOException:printStackTrace	()V
     //   205: aload 7
     //   207: invokevirtual 410	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   210: areturn
@@ -764,7 +764,7 @@ public class TeamWorkUtilsImpl
       localStringBuilder.append(paramString1);
       localStringBuilder.append((String)localObject);
       localObject = localStringBuilder.toString();
-      TenDocLogReportHelper.a(null, TenDocLogReportHelper.c(paramString1), "0X8009EA0", paramString2, TenDocLogReportHelper.d(paramString1), "");
+      TenDocLogReportHelper.a(null, TenDocLogReportHelper.d(paramString1), "0X8009EA0", paramString2, TenDocLogReportHelper.e(paramString1), "");
       TenDocLogReportHelper.a("TeamWorkUtils", "tdsourcetag", paramString2);
       return localObject;
     }
@@ -836,7 +836,7 @@ public class TeamWorkUtilsImpl
     {
       try
       {
-        str2 = TencentDocAIOPlusPanelEntryConfigProcessor.a().a();
+        str2 = TencentDocAIOPlusPanelEntryConfigProcessor.a().b();
         String str1 = str2;
         if (str2 == null) {
           str1 = "https://docs.qq.com/desktop/m/send.html";
@@ -918,10 +918,10 @@ public class TeamWorkUtilsImpl
   {
     try
     {
-      if (TextUtils.isEmpty(TencentDocConvertConfigProcessor.a().h())) {
+      if (TextUtils.isEmpty(TencentDocConvertConfigProcessor.a().q())) {
         paramAppInterface = "https://docs.qq.com/desktop/m/index.html?_from=1";
       } else {
-        paramAppInterface = TencentDocConvertConfigProcessor.a().h();
+        paramAppInterface = TencentDocConvertConfigProcessor.a().q();
       }
       paramActivity = new ActivityURIRequest(paramActivity, "/base/browser");
       paramActivity.extra().putString("big_brother_source_key", "biz_src_jc_xiaolv");
@@ -1107,10 +1107,10 @@ public class TeamWorkUtilsImpl
   {
     try
     {
-      if (TextUtils.isEmpty(TencentDocConvertConfigProcessor.a().h())) {
+      if (TextUtils.isEmpty(TencentDocConvertConfigProcessor.a().q())) {
         str1 = "https://docs.qq.com/desktop/m/index.html?_from=1";
       } else {
-        str1 = TencentDocConvertConfigProcessor.a().h();
+        str1 = TencentDocConvertConfigProcessor.a().q();
       }
       String str2 = getTencentDocSourceAdtagStrUrl(str1, paramString);
       ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(paramActivity, "/base/browser");
@@ -1145,11 +1145,7 @@ public class TeamWorkUtilsImpl
     if (paramInt == 1)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append("https://");
-      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
-      localStringBuilder.append(".");
-      localStringBuilder.append("docs.qq.com/desktop/m/templates_list.html?padtype=0&_wv=2&_wwv=512");
-      localStringBuilder.append("&group_code=");
+      localStringBuilder.append("https://docs.qq.com/mall/m/index/doc?padtype=0&_wv=2&_wwv=512&from_page=s_qq_grpfile&group_code=");
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("&group_type=");
       localStringBuilder.append(paramLong2);
@@ -1157,43 +1153,31 @@ public class TeamWorkUtilsImpl
       localStringBuilder.append(paramString);
       paramString = localStringBuilder.toString();
     }
-    for (;;)
+    else if (paramInt == 2)
     {
-      break;
-      if (paramInt == 2)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("https://");
-        localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
-        localStringBuilder.append(".");
-        localStringBuilder.append("docs.qq.com/desktop/m/templates_list.html?padtype=1&_wv=2&_wwv=512");
-        localStringBuilder.append("&group_code=");
-        localStringBuilder.append((String)localObject);
-        localStringBuilder.append("&group_type=");
-        localStringBuilder.append(paramLong2);
-        localStringBuilder.append("&create_from=");
-        localStringBuilder.append(paramString);
-        paramString = localStringBuilder.toString();
-      }
-      else if (paramInt == 3)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("https://");
-        localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
-        localStringBuilder.append(".");
-        localStringBuilder.append("docs.qq.com/desktop/m/templates_list.html?padtype=2&_wv=2&_wwv=512");
-        localStringBuilder.append("&group_code=");
-        localStringBuilder.append((String)localObject);
-        localStringBuilder.append("&group_type=");
-        localStringBuilder.append(paramLong2);
-        localStringBuilder.append("&create_from=");
-        localStringBuilder.append(paramString);
-        paramString = localStringBuilder.toString();
-      }
-      else
-      {
-        paramString = "";
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://docs.qq.com/mall/m/index/sheet?padtype=1&_wv=2&_wwv=512&from_page=s_qq_grpfile&group_code=");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("&group_type=");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("&create_from=");
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
+    }
+    else if (paramInt == 3)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://docs.qq.com/mall/m/index/form/collect?padtype=2&_wv=2&_wwv=512&from_page=s_qq_grpfile&group_code=");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("&group_type=");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("&create_from=");
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
+    }
+    else
+    {
+      paramString = "";
     }
     if (paramInt == 1) {}
     do
@@ -1209,7 +1193,7 @@ public class TeamWorkUtilsImpl
     paramInt = i;
     localObject = new Bundle();
     ((Bundle)localObject).putString("url", paramString);
-    ((Bundle)localObject).putString("title", paramActivity.getString(2131719546));
+    ((Bundle)localObject).putString("title", paramActivity.getString(2131917109));
     ((Bundle)localObject).putInt("key_team_work_edit_type", paramInt);
     if ((paramAppInterface instanceof BaseQQAppInterface))
     {
@@ -1254,7 +1238,7 @@ public class TeamWorkUtilsImpl
       ((StringBuilder)localObject1).append("https:");
       ((StringBuilder)localObject1).append(paramGroupPadTemplateInfo);
       paramGroupPadTemplateInfo = ((StringBuilder)localObject1).toString();
-      if (!URLUtil.a(paramGroupPadTemplateInfo))
+      if (!URLUtil.e(paramGroupPadTemplateInfo))
       {
         localObject1 = paramGroupPadTemplateInfo;
       }
@@ -1474,195 +1458,195 @@ public class TeamWorkUtilsImpl
     //   18: invokevirtual 407	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: pop
     //   22: aload_1
-    //   23: getstatic 1143	com/tencent/mobileqq/teamwork/TeamWorkConstants:i	Ljava/lang/String;
+    //   23: getstatic 1149	com/tencent/mobileqq/teamwork/TeamWorkConstants:j	Ljava/lang/String;
     //   26: invokevirtual 407	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
     //   30: aload_1
     //   31: invokevirtual 410	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   34: iconst_2
-    //   35: ldc_w 1145
+    //   35: ldc_w 1151
     //   38: invokestatic 413	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   41: aconst_null
     //   42: areturn
-    //   43: new 1147	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo
+    //   43: new 1153	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo
     //   46: dup
-    //   47: invokespecial 1148	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:<init>	()V
+    //   47: invokespecial 1154	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:<init>	()V
     //   50: astore 4
     //   52: aload 4
     //   54: aload_2
-    //   55: putfield 1149	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   55: putfield 1156	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:a	Ljava/lang/String;
     //   58: aload 4
     //   60: aload_3
-    //   61: putfield 1150	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   61: putfield 1157	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:b	Ljava/lang/String;
     //   64: new 277	org/json/JSONObject
     //   67: dup
     //   68: aload_1
-    //   69: invokespecial 1117	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   69: invokespecial 1124	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   72: astore_1
     //   73: aload_1
-    //   74: ldc_w 674
-    //   77: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   74: ldc_w 681
+    //   77: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   80: ifeq +15 -> 95
     //   83: aload 4
     //   85: aload_1
-    //   86: ldc_w 674
-    //   89: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   92: putfield 1155	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:c	Ljava/lang/String;
+    //   86: ldc_w 681
+    //   89: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   92: putfield 1162	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:c	Ljava/lang/String;
     //   95: aload_1
-    //   96: ldc_w 1157
-    //   99: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   96: ldc_w 1164
+    //   99: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   102: ifeq +15 -> 117
     //   105: aload 4
     //   107: aload_1
-    //   108: ldc_w 1157
-    //   111: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   114: putfield 1158	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   108: ldc_w 1164
+    //   111: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   114: putfield 1165	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:d	Ljava/lang/String;
     //   117: aload_1
-    //   118: ldc_w 1160
-    //   121: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   118: ldc_w 1167
+    //   121: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   124: ifeq +15 -> 139
     //   127: aload 4
     //   129: aload_1
-    //   130: ldc_w 1160
-    //   133: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   136: putfield 1161	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   130: ldc_w 1167
+    //   133: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   136: putfield 1169	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:e	Ljava/lang/String;
     //   139: aload_1
-    //   140: ldc_w 1163
-    //   143: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   140: ldc_w 1171
+    //   143: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   146: ifeq +15 -> 161
     //   149: aload 4
     //   151: aload_1
-    //   152: ldc_w 1163
-    //   155: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   158: putfield 1165	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:f	Ljava/lang/String;
+    //   152: ldc_w 1171
+    //   155: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   158: putfield 1173	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:f	Ljava/lang/String;
     //   161: aload_1
-    //   162: ldc_w 1167
-    //   165: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   162: ldc_w 1175
+    //   165: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   168: ifeq +15 -> 183
     //   171: aload 4
     //   173: aload_1
-    //   174: ldc_w 1167
-    //   177: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   180: putfield 1169	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:h	Ljava/lang/String;
+    //   174: ldc_w 1175
+    //   177: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   180: putfield 1177	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:h	Ljava/lang/String;
     //   183: aload_1
-    //   184: ldc_w 1171
-    //   187: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   184: ldc_w 1179
+    //   187: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   190: ifeq +15 -> 205
     //   193: aload 4
     //   195: aload_1
-    //   196: ldc_w 1171
-    //   199: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   202: putfield 1174	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:g	Ljava/lang/String;
+    //   196: ldc_w 1179
+    //   199: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   202: putfield 1180	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:g	Ljava/lang/String;
     //   205: aload_1
-    //   206: ldc_w 1176
-    //   209: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   206: ldc_w 1182
+    //   209: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   212: ifeq +15 -> 227
     //   215: aload 4
     //   217: aload_1
-    //   218: ldc_w 1176
-    //   221: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   224: putfield 1177	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:i	Ljava/lang/String;
+    //   218: ldc_w 1182
+    //   221: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   224: putfield 1184	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:i	Ljava/lang/String;
     //   227: aload_1
-    //   228: ldc_w 1179
-    //   231: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   228: ldc_w 1186
+    //   231: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   234: ifeq +15 -> 249
     //   237: aload 4
     //   239: aload_1
-    //   240: ldc_w 1179
-    //   243: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   246: putfield 1182	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:j	Ljava/lang/String;
+    //   240: ldc_w 1186
+    //   243: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   246: putfield 1187	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:j	Ljava/lang/String;
     //   249: aload_1
-    //   250: ldc_w 1184
-    //   253: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   250: ldc_w 1189
+    //   253: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   256: ifeq +15 -> 271
     //   259: aload 4
     //   261: aload_1
-    //   262: ldc_w 1184
-    //   265: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   268: putfield 1187	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:k	Ljava/lang/String;
+    //   262: ldc_w 1189
+    //   265: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   268: putfield 1192	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:k	Ljava/lang/String;
     //   271: aload_1
-    //   272: ldc_w 1189
-    //   275: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   272: ldc_w 1194
+    //   275: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   278: ifeq +15 -> 293
     //   281: aload 4
     //   283: aload_1
-    //   284: ldc_w 1189
-    //   287: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   290: putfield 1192	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:l	Ljava/lang/String;
+    //   284: ldc_w 1194
+    //   287: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   290: putfield 1197	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:l	Ljava/lang/String;
     //   293: aload_1
-    //   294: ldc_w 1194
-    //   297: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   294: ldc_w 1199
+    //   297: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   300: ifeq +15 -> 315
     //   303: aload 4
     //   305: aload_1
-    //   306: ldc_w 1194
-    //   309: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   312: putfield 1195	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:m	Ljava/lang/String;
+    //   306: ldc_w 1199
+    //   309: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   312: putfield 1201	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:m	Ljava/lang/String;
     //   315: aload_1
-    //   316: ldc_w 1197
-    //   319: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   316: ldc_w 1203
+    //   319: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   322: ifeq +15 -> 337
     //   325: aload 4
     //   327: aload_1
-    //   328: ldc_w 1197
-    //   331: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   334: putfield 1198	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:n	Ljava/lang/String;
+    //   328: ldc_w 1203
+    //   331: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   334: putfield 1206	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:n	Ljava/lang/String;
     //   337: aload_1
-    //   338: ldc_w 1200
-    //   341: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   338: ldc_w 1208
+    //   341: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   344: ifeq +15 -> 359
     //   347: aload 4
     //   349: aload_1
-    //   350: ldc_w 1200
-    //   353: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   356: putfield 1201	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:o	Ljava/lang/String;
+    //   350: ldc_w 1208
+    //   353: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   356: putfield 1210	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:o	Ljava/lang/String;
     //   359: aload_1
-    //   360: ldc_w 1203
-    //   363: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   360: ldc_w 1212
+    //   363: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   366: ifeq +15 -> 381
     //   369: aload 4
     //   371: aload_1
-    //   372: ldc_w 1203
-    //   375: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   378: putfield 1206	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:p	Ljava/lang/String;
+    //   372: ldc_w 1212
+    //   375: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   378: putfield 1215	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:p	Ljava/lang/String;
     //   381: aload_1
-    //   382: ldc_w 1208
-    //   385: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   382: ldc_w 1217
+    //   385: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   388: ifeq +15 -> 403
     //   391: aload 4
     //   393: aload_1
-    //   394: ldc_w 1208
-    //   397: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   400: putfield 1211	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:q	Ljava/lang/String;
+    //   394: ldc_w 1217
+    //   397: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   400: putfield 1219	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:q	Ljava/lang/String;
     //   403: aload_1
-    //   404: ldc_w 1213
-    //   407: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   404: ldc_w 1221
+    //   407: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   410: ifeq +15 -> 425
     //   413: aload 4
     //   415: aload_1
-    //   416: ldc_w 1213
-    //   419: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   422: putfield 1216	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:r	Ljava/lang/String;
+    //   416: ldc_w 1221
+    //   419: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   422: putfield 1223	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:r	Ljava/lang/String;
     //   425: aload_1
-    //   426: ldc_w 1218
-    //   429: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   426: ldc_w 1225
+    //   429: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   432: ifeq +15 -> 447
     //   435: aload 4
     //   437: aload_1
-    //   438: ldc_w 1218
-    //   441: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   444: putfield 1221	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:s	Ljava/lang/String;
+    //   438: ldc_w 1225
+    //   441: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   444: putfield 1228	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:s	Ljava/lang/String;
     //   447: aload 4
     //   449: astore_2
     //   450: aload_1
-    //   451: ldc_w 1223
-    //   454: invokevirtual 1153	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   451: ldc_w 1230
+    //   454: invokevirtual 1160	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   457: ifeq +101 -> 558
     //   460: aload 4
     //   462: aload_1
-    //   463: ldc_w 1223
-    //   466: invokevirtual 1154	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   469: putfield 1226	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:t	Ljava/lang/String;
+    //   463: ldc_w 1230
+    //   466: invokevirtual 1161	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   469: putfield 1233	com/tencent/mobileqq/teamwork/DocsGrayTipsInfo:t	Ljava/lang/String;
     //   472: aload 4
     //   474: areturn
     //   475: astore_1
@@ -1685,7 +1669,7 @@ public class TeamWorkUtilsImpl
     //   503: invokevirtual 407	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   506: pop
     //   507: aload_3
-    //   508: getstatic 1143	com/tencent/mobileqq/teamwork/TeamWorkConstants:i	Ljava/lang/String;
+    //   508: getstatic 1149	com/tencent/mobileqq/teamwork/TeamWorkConstants:j	Ljava/lang/String;
     //   511: invokevirtual 407	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   514: pop
     //   515: aload_3
@@ -1696,19 +1680,19 @@ public class TeamWorkUtilsImpl
     //   524: invokespecial 401	java/lang/StringBuilder:<init>	()V
     //   527: astore 4
     //   529: aload 4
-    //   531: ldc_w 1228
+    //   531: ldc_w 1235
     //   534: invokevirtual 407	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   537: pop
     //   538: aload 4
     //   540: aload_1
-    //   541: invokevirtual 975	java/lang/Exception:toString	()Ljava/lang/String;
+    //   541: invokevirtual 983	java/lang/Exception:toString	()Ljava/lang/String;
     //   544: invokevirtual 407	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   547: pop
     //   548: aload_3
     //   549: iconst_1
     //   550: aload 4
     //   552: invokevirtual 410	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   555: invokestatic 696	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   555: invokestatic 703	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   558: aload_2
     //   559: areturn
     // Local variable table:
@@ -1794,9 +1778,9 @@ public class TeamWorkUtilsImpl
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      String str1 = paramTeamWorkFileImportInfo.k;
-      String str2 = getNoDotExtension(paramTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-      long l = paramTeamWorkFileImportInfo.jdField_d_of_type_Long;
+      String str1 = paramTeamWorkFileImportInfo.A;
+      String str2 = getNoDotExtension(paramTeamWorkFileImportInfo.c);
+      long l = paramTeamWorkFileImportInfo.K;
       boolean bool;
       if ((paramString1 != null) && (paramString1.contains("m_readonly"))) {
         bool = true;
@@ -1823,37 +1807,37 @@ public class TeamWorkUtilsImpl
     //   15: astore 7
     //   17: aload 7
     //   19: astore 4
-    //   21: new 747	java/io/File
+    //   21: new 754	java/io/File
     //   24: dup
     //   25: aload_1
-    //   26: invokevirtual 753	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   26: invokevirtual 760	android/content/Context:getCacheDir	()Ljava/io/File;
     //   29: aload_3
-    //   30: invokespecial 756	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   30: invokespecial 763	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   33: astore_1
     //   34: aload 7
     //   36: astore 4
     //   38: aload_1
-    //   39: invokevirtual 759	java/io/File:exists	()Z
+    //   39: invokevirtual 766	java/io/File:exists	()Z
     //   42: ifne +12 -> 54
     //   45: aload 7
     //   47: astore 4
     //   49: aload_1
-    //   50: invokevirtual 1275	java/io/File:createNewFile	()Z
+    //   50: invokevirtual 1284	java/io/File:createNewFile	()Z
     //   53: pop
     //   54: aload 7
     //   56: astore 4
-    //   58: new 1277	java/io/FileWriter
+    //   58: new 1286	java/io/FileWriter
     //   61: dup
     //   62: aload_1
-    //   63: invokespecial 1278	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   63: invokespecial 1287	java/io/FileWriter:<init>	(Ljava/io/File;)V
     //   66: astore_1
     //   67: aload_1
     //   68: aload_2
-    //   69: invokevirtual 1281	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   69: invokevirtual 1290	java/io/FileWriter:write	(Ljava/lang/String;)V
     //   72: aload_1
-    //   73: invokevirtual 1284	java/io/FileWriter:flush	()V
+    //   73: invokevirtual 1293	java/io/FileWriter:flush	()V
     //   76: aload_1
-    //   77: invokevirtual 1285	java/io/FileWriter:close	()V
+    //   77: invokevirtual 1294	java/io/FileWriter:close	()V
     //   80: return
     //   81: astore_2
     //   82: aload_1
@@ -1871,11 +1855,11 @@ public class TeamWorkUtilsImpl
     //   104: aload_1
     //   105: astore 4
     //   107: aload_2
-    //   108: invokevirtual 776	java/io/IOException:printStackTrace	()V
+    //   108: invokevirtual 783	java/io/IOException:printStackTrace	()V
     //   111: aload_1
     //   112: ifnull +33 -> 145
     //   115: aload_1
-    //   116: invokevirtual 1285	java/io/FileWriter:close	()V
+    //   116: invokevirtual 1294	java/io/FileWriter:close	()V
     //   119: return
     //   120: astore_2
     //   121: aload 6
@@ -1883,24 +1867,24 @@ public class TeamWorkUtilsImpl
     //   124: aload_1
     //   125: astore 4
     //   127: aload_2
-    //   128: invokevirtual 777	java/io/FileNotFoundException:printStackTrace	()V
+    //   128: invokevirtual 784	java/io/FileNotFoundException:printStackTrace	()V
     //   131: aload_1
     //   132: ifnull +13 -> 145
     //   135: aload_1
-    //   136: invokevirtual 1285	java/io/FileWriter:close	()V
+    //   136: invokevirtual 1294	java/io/FileWriter:close	()V
     //   139: return
     //   140: astore_1
     //   141: aload_1
-    //   142: invokevirtual 776	java/io/IOException:printStackTrace	()V
+    //   142: invokevirtual 783	java/io/IOException:printStackTrace	()V
     //   145: return
     //   146: aload 4
     //   148: ifnull +16 -> 164
     //   151: aload 4
-    //   153: invokevirtual 1285	java/io/FileWriter:close	()V
+    //   153: invokevirtual 1294	java/io/FileWriter:close	()V
     //   156: goto +8 -> 164
     //   159: astore_1
     //   160: aload_1
-    //   161: invokevirtual 776	java/io/IOException:printStackTrace	()V
+    //   161: invokevirtual 783	java/io/IOException:printStackTrace	()V
     //   164: aload_2
     //   165: athrow
     // Local variable table:
@@ -1978,12 +1962,12 @@ public class TeamWorkUtilsImpl
   
   public boolean supportTencentDocForEdit(String paramString1, String paramString2, long paramLong)
   {
-    return supportTencentDoc(TencentDocConvertConfigProcessor.a().a(), paramString1, paramString2, paramLong);
+    return supportTencentDoc(TencentDocConvertConfigProcessor.a().r(), paramString1, paramString2, paramLong);
   }
   
   public boolean supportTencentDocForLocalCooperation(String paramString1, String paramString2, long paramLong)
   {
-    return supportTencentDoc(TencentDocLocalCooperationProcessor.a().a, paramString1, paramString2, paramLong);
+    return supportTencentDoc(TencentDocLocalCooperationProcessor.a().b, paramString1, paramString2, paramLong);
   }
   
   public boolean supportTencentDocForPreview(String paramString1, String paramString2, long paramLong)
@@ -1996,7 +1980,7 @@ public class TeamWorkUtilsImpl
     TencentDocFormKeyWordsBean localTencentDocFormKeyWordsBean = TencentDocFormKeyWordsProcessor.a();
     if (localTencentDocFormKeyWordsBean != null)
     {
-      boolean bool2 = supportTencentDoc(localTencentDocFormKeyWordsBean.a, paramString1, paramString2, paramLong);
+      boolean bool2 = supportTencentDoc(localTencentDocFormKeyWordsBean.b, paramString1, paramString2, paramLong);
       boolean bool1 = bool2;
       if (bool2) {
         bool1 = localTencentDocFormKeyWordsBean.a(paramString2);
@@ -2026,9 +2010,9 @@ public class TeamWorkUtilsImpl
     paramString = paramString.substring(5, 7);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131714601));
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131912110));
     ((StringBuilder)localObject2).append(paramString);
-    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131714567));
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131912076));
     return ((StringBuilder)localObject2).toString();
   }
   
@@ -2036,7 +2020,7 @@ public class TeamWorkUtilsImpl
   {
     if ((paramAppInterface != null) && (paramTeamWorkFileImportInfo != null))
     {
-      paramTeamWorkFileImportInfo.jdField_d_of_type_Int = 7;
+      paramTeamWorkFileImportInfo.n = 7;
       TeamWorkConvertUtils.a(paramAppInterface, paramContext, paramString, paramTeamWorkFileImportInfo, null);
       return;
     }
@@ -2068,7 +2052,7 @@ public class TeamWorkUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

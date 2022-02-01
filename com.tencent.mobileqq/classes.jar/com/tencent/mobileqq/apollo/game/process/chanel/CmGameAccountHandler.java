@@ -24,39 +24,39 @@ import mqq.app.AppRuntime;
 public class CmGameAccountHandler
   implements DecodeTaskCompletionListener
 {
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new CmGameAccountHandler.1(this);
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, Integer> b = new HashMap();
+  WeakReference<AppInterface> a;
+  FriendListObserver b = new CmGameAccountHandler.1(this);
+  private IFaceDecoder c;
+  private Map<String, Integer> d = new HashMap();
+  private Map<String, Integer> e = new HashMap();
   
   public CmGameAccountHandler(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-    paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.a = new WeakReference(paramAppInterface);
+    this.c = ((IQQAvatarService)paramAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramAppInterface);
+    this.c.setDecodeTaskCompletionListener(this);
+    paramAppInterface.addObserver(this.b);
   }
   
   public void a()
   {
     QLog.i("apollochannel_CmGameAccountHandler", 1, "onDestroy");
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.b = null;
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    this.a = null;
+    this.d.clear();
+    this.e.clear();
+    this.d = null;
+    this.e = null;
+    IFaceDecoder localIFaceDecoder = this.c;
     if (localIFaceDecoder != null)
     {
       localIFaceDecoder.destory();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
+      this.c = null;
     }
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject1 = this.a;
     if (localObject1 != null)
     {
       if (((WeakReference)localObject1).get() == null) {
@@ -67,7 +67,7 @@ public class CmGameAccountHandler
         if (paramInt2 != 2) {
           return;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, String.valueOf(paramString), 0, (byte)1);
+        localObject1 = this.c.getBitmapFromCache(1, String.valueOf(paramString), 0, (byte)1);
         if (localObject1 != null)
         {
           if (QLog.isColorLevel())
@@ -83,10 +83,10 @@ public class CmGameAccountHandler
           ((Bundle)localObject2).putString("uin", paramString);
           ((Bundle)localObject2).putParcelable("head", (Parcelable)localObject1);
           paramString = EIPCResult.createResult(0, (Bundle)localObject2);
-          CmGameServerQIPCModule.a().callbackResult(paramInt1, paramString);
+          CmGameServerQIPCModule.b().callbackResult(paramInt1, paramString);
           return;
         }
-        localObject1 = this.b;
+        localObject1 = this.e;
         if (localObject1 != null)
         {
           localObject2 = new StringBuilder();
@@ -94,10 +94,10 @@ public class CmGameAccountHandler
           ((StringBuilder)localObject2).append("head");
           ((Map)localObject1).put(((StringBuilder)localObject2).toString(), Integer.valueOf(paramInt1));
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 1);
+        this.c.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 1);
         return;
       }
-      localObject1 = ContactUtils.b((AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString, true);
+      localObject1 = ContactUtils.b((AppRuntime)this.a.get(), paramString, true);
       if ((((ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class)).isNumeric((String)localObject1)) && (((String)localObject1).equals(paramString)))
       {
         if (QLog.isColorLevel())
@@ -107,7 +107,7 @@ public class CmGameAccountHandler
           ((StringBuilder)localObject1).append(paramString);
           QLog.d("apollochannel_CmGameAccountHandler", 2, ((StringBuilder)localObject1).toString());
         }
-        localObject1 = this.jdField_a_of_type_JavaUtilMap;
+        localObject1 = this.d;
         if (localObject1 != null)
         {
           localObject2 = new StringBuilder();
@@ -129,7 +129,7 @@ public class CmGameAccountHandler
       ((Bundle)localObject2).putString("uin", paramString);
       ((Bundle)localObject2).putString("nickName", (String)localObject1);
       paramString = EIPCResult.createResult(0, (Bundle)localObject2);
-      CmGameServerQIPCModule.a().callbackResult(paramInt1, paramString);
+      CmGameServerQIPCModule.b().callbackResult(paramInt1, paramString);
     }
   }
   
@@ -145,7 +145,7 @@ public class CmGameAccountHandler
         QLog.d("qwe", 2, ((StringBuilder)localObject).toString());
       }
       paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
-      Object localObject = this.b;
+      Object localObject = this.e;
       if (localObject != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -158,12 +158,12 @@ public class CmGameAccountHandler
           ((Bundle)localObject).putString("uin", paramString);
           ((Bundle)localObject).putParcelable("head", paramBitmap);
           paramBitmap = EIPCResult.createResult(0, (Bundle)localObject);
-          localObject = this.b;
+          localObject = this.e;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramString);
           localStringBuilder.append("head");
           paramInt1 = ((Integer)((Map)localObject).remove(localStringBuilder.toString())).intValue();
-          CmGameServerQIPCModule.a().callbackResult(paramInt1, paramBitmap);
+          CmGameServerQIPCModule.b().callbackResult(paramInt1, paramBitmap);
         }
       }
     }
@@ -171,7 +171,7 @@ public class CmGameAccountHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.chanel.CmGameAccountHandler
  * JD-Core Version:    0.7.0.1
  */

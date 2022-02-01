@@ -10,13 +10,13 @@ class EmoticonGroupStoreFragment$8
   
   public void run()
   {
-    EmoticonGroupStoreFragment.a(this.this$0).setVisibility(8);
-    EmoticonGroupStoreFragment.c(this.this$0).setVisibility(0);
+    EmoticonGroupStoreFragment.p(this.this$0).setVisibility(8);
+    EmoticonGroupStoreFragment.q(this.this$0).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.8
  * JD-Core Version:    0.7.0.1
  */

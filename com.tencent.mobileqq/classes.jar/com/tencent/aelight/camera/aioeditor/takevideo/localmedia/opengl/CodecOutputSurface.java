@@ -21,29 +21,29 @@ import javax.microedition.khronos.egl.EGLSurface;
 public class CodecOutputSurface
   implements SurfaceTexture.OnFrameAvailableListener
 {
-  int jdField_a_of_type_Int;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private STextureRender jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglSTextureRender;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = EGL10.EGL_NO_CONTEXT;
-  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
-  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
-  private boolean jdField_a_of_type_Boolean;
+  int a;
   int b;
+  private STextureRender c;
+  private SurfaceTexture d;
+  private Surface e;
+  private EGL10 f;
+  private EGLDisplay g = EGL10.EGL_NO_DISPLAY;
+  private EGLContext h = EGL10.EGL_NO_CONTEXT;
+  private EGLSurface i = EGL10.EGL_NO_SURFACE;
+  private Object j = new Object();
+  private boolean k;
+  private ByteBuffer l;
   
   public CodecOutputSurface(int paramInt1, int paramInt2)
   {
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
-      this.jdField_a_of_type_Int = paramInt1;
+      this.f = ((EGL10)EGLContext.getEGL());
+      this.a = paramInt1;
       this.b = paramInt2;
-      f();
+      h();
       b();
-      e();
+      g();
       return;
     }
     throw new IllegalArgumentException();
@@ -51,56 +51,56 @@ public class CodecOutputSurface
   
   private void a(String paramString)
   {
-    int i = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError();
-    if (i == 12288) {
+    int m = this.f.eglGetError();
+    if (m == 12288) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append(": EGL error: 0x");
-    localStringBuilder.append(Integer.toHexString(i));
+    localStringBuilder.append(Integer.toHexString(m));
     throw new RuntimeException(localStringBuilder.toString());
   }
   
-  private void e()
+  private void g()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglSTextureRender = new STextureRender();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglSTextureRender.a();
+    this.c = new STextureRender();
+    this.c.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("textureID=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglSTextureRender.a());
+    localStringBuilder.append(this.c.a());
     Log.d("CodecOutputSurface", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglSTextureRender.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_Int * this.b * 4);
-    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+    this.d = new SurfaceTexture(this.c.a());
+    this.d.setOnFrameAvailableListener(this);
+    this.e = new Surface(this.d);
+    this.l = ByteBuffer.allocateDirect(this.a * this.b * 4);
+    this.l.order(ByteOrder.LITTLE_ENDIAN);
   }
   
-  private void f()
+  private void h()
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != EGL10.EGL_NO_DISPLAY)
+    this.g = this.f.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    if (this.g != EGL10.EGL_NO_DISPLAY)
     {
       Object localObject = new int[2];
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject))
+      if (this.f.eglInitialize(this.g, (int[])localObject))
       {
         localObject = new EGLConfig[1];
         int[] arrayOfInt = new int[1];
-        EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-        EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-        int i = localObject.length;
-        if (localEGL10.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, (EGLConfig[])localObject, i, arrayOfInt))
+        EGL10 localEGL10 = this.f;
+        EGLDisplay localEGLDisplay = this.g;
+        int m = localObject.length;
+        if (localEGL10.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, (EGLConfig[])localObject, m, arrayOfInt))
         {
-          this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, localObject[0], EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+          this.h = this.f.eglCreateContext(this.g, localObject[0], EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
           a("eglCreateContext");
-          if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null)
+          if (this.h != null)
           {
-            i = this.jdField_a_of_type_Int;
-            int j = this.b;
-            this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, localObject[0], new int[] { 12375, i, 12374, j, 12344 });
+            m = this.a;
+            int n = this.b;
+            this.i = this.f.eglCreatePbufferSurface(this.g, localObject[0], new int[] { 12375, m, 12374, n, 12344 });
             a("eglCreatePbufferSurface");
-            if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) {
+            if (this.i != null) {
               return;
             }
             throw new RuntimeException("surface was null");
@@ -109,75 +109,64 @@ public class CodecOutputSurface
         }
         throw new RuntimeException("unable to find RGB888+recordable ES2 EGL config");
       }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
+      this.g = null;
       throw new RuntimeException("unable to initialize EGL14");
     }
     throw new RuntimeException("unable to get EGL14 display");
   }
   
-  public Bitmap a()
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
-    GLES20.glReadPixels(0, 0, this.jdField_a_of_type_Int, this.b, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
-    localBitmap.copyPixelsFromBuffer(this.jdField_a_of_type_JavaNioByteBuffer);
-    Log.d("CodecOutputSurface", "getFrameBitmap() finish...");
-    return localBitmap;
-  }
-  
-  public Surface a()
-  {
-    return this.jdField_a_of_type_AndroidViewSurface;
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != EGL10.EGL_NO_DISPLAY)
+    if (this.g != EGL10.EGL_NO_DISPLAY)
     {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+      this.f.eglDestroySurface(this.g, this.i);
+      this.f.eglDestroyContext(this.g, this.h);
+      this.f.eglMakeCurrent(this.g, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      this.f.eglTerminate(this.g);
     }
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = EGL10.EGL_NO_CONTEXT;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglSTextureRender = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+    this.g = EGL10.EGL_NO_DISPLAY;
+    this.h = EGL10.EGL_NO_CONTEXT;
+    this.i = EGL10.EGL_NO_SURFACE;
+    this.e.release();
+    this.c = null;
+    this.e = null;
+    this.d = null;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglSTextureRender.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, paramBoolean);
+    this.c.a(this.d, paramBoolean);
   }
   
   public void b()
   {
-    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-    EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-    EGLSurface localEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-    if (localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
+    EGL10 localEGL10 = this.f;
+    EGLDisplay localEGLDisplay = this.g;
+    EGLSurface localEGLSurface = this.i;
+    if (localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.h)) {
       return;
     }
     throw new RuntimeException("eglMakeCurrent failed");
   }
   
-  public void c()
+  public Surface c()
+  {
+    return this.e;
+  }
+  
+  public void d()
   {
     Log.e("CodecOutputSurface", "awaitNewImage");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.j)
     {
       for (;;)
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
+        boolean bool = this.k;
         if (!bool) {
           try
           {
-            this.jdField_a_of_type_JavaLangObject.wait(1L);
-            if (!this.jdField_a_of_type_Boolean) {
+            this.j.wait(1L);
+            if (!this.k) {
               throw new TimeoutException("frame wait timed out");
             }
           }
@@ -187,7 +176,7 @@ public class CodecOutputSurface
           }
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.k = false;
       return;
     }
     for (;;)
@@ -196,21 +185,32 @@ public class CodecOutputSurface
     }
   }
   
-  public void d()
+  public void e()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglSTextureRender.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+    this.c.a("before updateTexImage");
+    this.d.updateTexImage();
+  }
+  
+  public Bitmap f()
+  {
+    this.l.rewind();
+    GLES20.glReadPixels(0, 0, this.a, this.b, 6408, 5121, this.l);
+    Bitmap localBitmap = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
+    this.l.rewind();
+    localBitmap.copyPixelsFromBuffer(this.l);
+    Log.d("CodecOutputSurface", "getFrameBitmap() finish...");
+    return localBitmap;
   }
   
   public void onFrameAvailable(SurfaceTexture arg1)
   {
     Log.e("CodecOutputSurface", "onFrameAvailable new frame available");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.j)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.k)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        this.k = true;
+        this.j.notifyAll();
         return;
       }
       throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
@@ -219,7 +219,7 @@ public class CodecOutputSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.localmedia.opengl.CodecOutputSurface
  * JD-Core Version:    0.7.0.1
  */

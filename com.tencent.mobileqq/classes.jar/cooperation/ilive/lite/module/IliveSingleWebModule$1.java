@@ -15,7 +15,7 @@ class IliveSingleWebModule$1
   {
     if ((this.a.b()) && (paramBundle != null))
     {
-      if (BusinessManager.a.a().a) {
+      if (BusinessManager.a.b().k) {
         return false;
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -24,8 +24,8 @@ class IliveSingleWebModule$1
       QLog.e("IliveSingleWebModule", 1, localStringBuilder.toString());
       if (paramString.equals("ACTION_WEBVIEW_SET_SWITCH"))
       {
-        IliveSingleWebModule.b(paramBundle.getString("callback_id"));
-        IliveSingleWebModule.a(false);
+        IliveSingleWebModule.c(paramBundle.getString("callback_id"));
+        IliveSingleWebModule.b(false);
         IliveSingleWebModule.a(this.a);
         return true;
       }
@@ -44,13 +44,16 @@ class IliveSingleWebModule$1
         IliveSingleWebModule.c(this.a, paramBundle);
         return true;
       }
+      if (paramString.equals("ACTION_WEBVIEW_NEED_SHOW_GIFT_ICON")) {
+        IliveSingleWebModule.d(this.a, paramBundle);
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveSingleWebModule.1
  * JD-Core Version:    0.7.0.1
  */

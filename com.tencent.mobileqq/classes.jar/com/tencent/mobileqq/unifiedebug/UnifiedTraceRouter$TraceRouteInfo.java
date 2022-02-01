@@ -5,15 +5,15 @@ import org.json.JSONException;
 
 public class UnifiedTraceRouter$TraceRouteInfo
 {
-  public float a;
   public int a;
-  public String a;
   public String b;
+  public String c;
+  public float d;
   
   public UnifiedTraceRouter$TraceRouteInfo(UnifiedTraceRouter paramUnifiedTraceRouter, String paramString, float paramFloat)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramString;
+    this.d = paramFloat;
   }
   
   public JSONArray a()
@@ -21,8 +21,8 @@ public class UnifiedTraceRouter$TraceRouteInfo
     JSONArray localJSONArray = new JSONArray();
     try
     {
-      localJSONArray.put(this.b);
-      localJSONArray.put(this.jdField_a_of_type_Float);
+      localJSONArray.put(this.c);
+      localJSONArray.put(this.d);
       return localJSONArray;
     }
     catch (JSONException localJSONException) {}
@@ -31,7 +31,7 @@ public class UnifiedTraceRouter$TraceRouteInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedTraceRouter.TraceRouteInfo
  * JD-Core Version:    0.7.0.1
  */

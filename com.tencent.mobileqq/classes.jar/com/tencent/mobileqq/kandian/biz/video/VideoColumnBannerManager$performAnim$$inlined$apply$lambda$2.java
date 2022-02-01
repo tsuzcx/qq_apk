@@ -15,12 +15,12 @@ public final class VideoColumnBannerManager$performAnim$$inlined$apply$lambda$2
   
   public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    VideoColumnBannerManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoColumnBannerManager, false);
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsShortVideoItemHolder.a();
+    VideoColumnBannerManager.a(this.a, false);
+    paramAnimator = this.b.t();
     if (paramAnimator != null) {
       paramAnimator.setVisibility(0);
     }
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideofeedsShortVideoItemHolder.a();
+    paramAnimator = this.b.t();
     if (paramAnimator != null) {
       paramAnimator.post((Runnable)new VideoColumnBannerManager.performAnim..inlined.apply.lambda.2.1(this));
     }
@@ -28,7 +28,7 @@ public final class VideoColumnBannerManager$performAnim$$inlined$apply$lambda$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoColumnBannerManager.performAnim..inlined.apply.lambda.2
  * JD-Core Version:    0.7.0.1
  */

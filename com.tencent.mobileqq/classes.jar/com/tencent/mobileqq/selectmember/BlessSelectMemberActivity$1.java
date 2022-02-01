@@ -35,19 +35,19 @@ class BlessSelectMemberActivity$1
     else
     {
       if (paramInt == 1) {
-        BlessSelectMemberActivity.a(this.a, 2131690663, true);
+        BlessSelectMemberActivity.a(this.a, 2131887578, true);
       } else if (paramInt == 8) {
-        BlessSelectMemberActivity.a(this.a, 2131690687, true);
+        BlessSelectMemberActivity.a(this.a, 2131887602, true);
       }
       paramInt = 0;
     }
-    if ((paramInt != 0) && (!BlessSelectMemberActivity.b()))
+    if ((paramInt != 0) && (!BlessSelectMemberActivity.f()))
     {
       localObject = this.a;
       BlessSelectMemberActivity.a((BlessSelectMemberActivity)localObject, BlessSelectMemberActivity.a((BlessSelectMemberActivity)localObject));
       return;
     }
-    this.a.c();
+    this.a.d();
   }
   
   public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
@@ -65,17 +65,17 @@ class BlessSelectMemberActivity$1
       ((StringBuilder)localObject).append(this.a.mEntrance);
       QLog.d("BlessSelectMemberActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if (!this.a.a) {
+    if (!this.a.e) {
       return;
     }
     Object localObject = this.a;
-    ((BlessSelectMemberActivity)localObject).a = false;
+    ((BlessSelectMemberActivity)localObject).e = false;
     if (paramInt == 67L)
     {
-      BlessSelectMemberActivity.a(System.currentTimeMillis());
+      BlessSelectMemberActivity.b(System.currentTimeMillis());
       this.a.a(paramLong);
-      this.a.c();
-      BlessSelectMemberActivity.a(this.a, 2131690674, true);
+      this.a.d();
+      BlessSelectMemberActivity.a(this.a, 2131887589, true);
       return;
     }
     if (((BlessSelectMemberActivity)localObject).mEntrance == 15)
@@ -94,31 +94,31 @@ class BlessSelectMemberActivity$1
       paramString.append("onUpdateMsgContent, isSuc:");
       paramString.append(paramBoolean);
       paramString.append(" ,type:");
-      paramString.append(BlessSelectMemberActivity.a(this.a));
+      paramString.append(BlessSelectMemberActivity.b(this.a));
       QLog.d("BlessSelectMemberActivity", 2, paramString.toString());
     }
-    if (BlessSelectMemberActivity.a(this.a) == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PIC_Value())
+    if (BlessSelectMemberActivity.b(this.a) == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PIC_Value())
     {
       if (paramBoolean)
       {
-        BlessSelectMemberActivity.a(this.a);
+        BlessSelectMemberActivity.c(this.a);
         return;
       }
-      this.a.c();
-      BlessSelectMemberActivity.a(this.a, 2131690673, false);
+      this.a.d();
+      BlessSelectMemberActivity.a(this.a, 2131887588, false);
       return;
     }
-    if (BlessSelectMemberActivity.a(this.a) == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value()) {
+    if (BlessSelectMemberActivity.b(this.a) == ((IBlessApi)QRoute.api(IBlessApi.class)).getBlessManager_TYPE_PTV_Value()) {
       if (((MessageForShortVideo)((IBlessApi)QRoute.api(IBlessApi.class)).getPtvMessage(this.a.app) != null) && (paramBoolean))
       {
-        if (!BlessSelectMemberActivity.b()) {
-          BlessSelectMemberActivity.b(this.a);
+        if (!BlessSelectMemberActivity.f()) {
+          BlessSelectMemberActivity.d(this.a);
         }
       }
       else
       {
-        this.a.c();
-        BlessSelectMemberActivity.a(this.a, 2131690688, false);
+        this.a.d();
+        BlessSelectMemberActivity.a(this.a, 2131887603, false);
       }
     }
   }
@@ -164,7 +164,7 @@ class BlessSelectMemberActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.1
  * JD-Core Version:    0.7.0.1
  */

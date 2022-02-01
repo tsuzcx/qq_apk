@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="100" android:drawable="@drawable/gug" />
-    <item android:duration="100" android:drawable="@drawable/guh" />
-    <item android:duration="100" android:drawable="@drawable/gui" />
-    <item android:duration="100" android:drawable="@drawable/guj" />
-    <item android:duration="100" android:drawable="@drawable/guk" />
-    <item android:duration="100" android:drawable="@drawable/gul" />
-    <item android:duration="100" android:drawable="@drawable/gum" />
-    <item android:duration="100" android:drawable="@drawable/gun" />
-    <item android:duration="100" android:drawable="@drawable/gup" />
-    <item android:duration="100" android:drawable="@drawable/guq" />
-    <item android:duration="100" android:drawable="@drawable/gur" />
-    <item android:duration="100" android:drawable="@drawable/gus" />
-    <item android:duration="100" android:drawable="@drawable/guw" />
-    <item android:duration="100" android:drawable="@drawable/gux" />
-    <item android:duration="100" android:drawable="@drawable/guy" />
-</animation-list>
+    <corners android:radius="16.0px" />
+    <stroke android:width="1.0dip" android:color="#ff00cafc" />
+</shape>

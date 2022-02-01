@@ -18,25 +18,25 @@ class GameRoomChatPie$1
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    paramView = this.a.a.a();
+    paramView = this.a.bC.c();
     if (i == 0)
     {
-      if ((paramView != null) && (paramView.d()))
+      if ((paramView != null) && (paramView.f()))
       {
-        this.a.h.setText(HardCodeUtil.a(2131705194));
-        this.a.h.setPressed(true);
+        this.a.bu.setText(HardCodeUtil.a(2131903080));
+        this.a.bu.setPressed(true);
         ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).startSpeak();
         paramView.a(true);
         return true;
       }
-      this.a.m(false);
+      this.a.p(false);
       return true;
     }
     if ((i != 3) && (i != 1)) {
       return false;
     }
-    this.a.h.setText(HardCodeUtil.a(2131705190));
-    this.a.h.setPressed(false);
+    this.a.bu.setText(HardCodeUtil.a(2131903076));
+    this.a.bu.setPressed(false);
     ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).stopSpeak();
     if (paramView != null) {
       paramView.a(false);
@@ -46,7 +46,7 @@ class GameRoomChatPie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.1
  * JD-Core Version:    0.7.0.1
  */

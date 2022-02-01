@@ -12,9 +12,9 @@ class BaseMomentItemBuilder$6
 {
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a.startActivity(paramView);
+    paramView = new Intent(this.b.a, QQBrowserActivity.class);
+    paramView.putExtra("url", this.a);
+    this.b.a.startActivity(paramView);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -26,7 +26,7 @@ class BaseMomentItemBuilder$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

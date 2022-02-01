@@ -29,6 +29,11 @@ public final class CodecWrapperManager
     this.mKeepCodecPool.clear();
   }
   
+  public void clearAndReleaseKeepPool()
+  {
+    this.mKeepCodecPool.clear();
+  }
+  
   @NonNull
   public final String getDumpInfo()
   {
@@ -38,6 +43,11 @@ public final class CodecWrapperManager
     localStringBuilder.append(" keepPool:");
     localStringBuilder.append(this.mKeepCodecPool);
     return localStringBuilder.toString();
+  }
+  
+  public boolean isKeepPoolFull()
+  {
+    return this.mKeepCodecPool.isFull();
   }
   
   @Nullable
@@ -99,7 +109,7 @@ public final class CodecWrapperManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.pools.CodecWrapperManager
  * JD-Core Version:    0.7.0.1
  */

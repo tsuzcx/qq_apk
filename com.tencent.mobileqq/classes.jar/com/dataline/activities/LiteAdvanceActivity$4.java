@@ -17,21 +17,21 @@ class LiteAdvanceActivity$4
 {
   LiteAdvanceActivity$4(LiteAdvanceActivity paramLiteAdvanceActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      StatisticAssist.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getCurrentAccountUin(), "dl_ckclearmsg");
-      paramView = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      StatisticAssist.a(this.b.app.getApplication().getApplicationContext(), this.b.app.getCurrentAccountUin(), "dl_ckclearmsg");
+      paramView = (DataLineHandler)this.b.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       paramView.a(32, true);
-      paramView.e();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getMessageFacade().a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.a).a();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent().putExtra("clear_flag", true);
-      paramView = this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity;
+      paramView.l();
+      this.b.app.getMessageFacade().d(this.b.b).h();
+      this.b.getIntent().putExtra("clear_flag", true);
+      paramView = this.b;
       paramView.setResult(-1, paramView.getIntent());
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.finish();
+      this.b.finish();
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    this.a.cancel();
   }
 }
 

@@ -102,7 +102,7 @@ public class MsgType0x211Decoder
             ((StringBuilder)localObject).append("]");
             QLog.d("MsgType0x211Decoder", 2, ((StringBuilder)localObject).toString());
           }
-          paramMessageHandler.a.getFileTransferHandler().a(String.valueOf(paramDecodeProtoPkgContext.g), k, i, paramArrayOfByte);
+          paramMessageHandler.n.getFileTransferHandler().a(String.valueOf(paramDecodeProtoPkgContext.x), k, i, paramArrayOfByte);
           return;
         }
         if (QLog.isColorLevel()) {
@@ -160,7 +160,7 @@ public class MsgType0x211Decoder
             paramArrayOfByte.append("]");
             QLog.d("MsgType0x211Decoder", 2, paramArrayOfByte.toString());
           }
-          paramMessageHandler.a.getFileTransferHandler().a(String.valueOf(paramDecodeProtoPkgContext.g), m, i, j);
+          paramMessageHandler.n.getFileTransferHandler().a(String.valueOf(paramDecodeProtoPkgContext.x), m, i, j);
           return;
         }
         if (QLog.isColorLevel()) {
@@ -284,7 +284,7 @@ public class MsgType0x211Decoder
           localObject = (hummer_resv_21.FileImgInfo)localMsgBody.file_image_info.get();
           paramArrayOfByte.file_image_info.set((MessageMicro)localObject);
         }
-        if (paramDecodeProtoPkgContext.jdField_d_of_type_Boolean)
+        if (paramDecodeProtoPkgContext.j)
         {
           paramMessageHandler = new MessageRecord();
           long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
@@ -292,7 +292,7 @@ public class MsgType0x211Decoder
           paramMessageHandler.msg = localNotOnlineFile.bytes_file_name.get().toStringUtf8();
           paramMessageHandler.senderuin = Long.toString(l2);
           paramMessageHandler.msgtype = -2005;
-          paramMessageHandler.frienduin = Long.toString(paramDecodeProtoPkgContext.g);
+          paramMessageHandler.frienduin = Long.toString(paramDecodeProtoPkgContext.x);
           paramMessageHandler.time = l1;
           if (localObject != null)
           {
@@ -309,7 +309,7 @@ public class MsgType0x211Decoder
           paramList.add(paramMessageHandler);
           return;
         }
-        paramMessageHandler.a.getFileTransferHandler().a(paramMessageHandler, paramList, paramMsg, localNotOnlineFile, String.valueOf(paramDecodeProtoPkgContext.g), paramDecodeProtoPkgContext.jdField_a_of_type_Boolean, paramDecodeProtoPkgContext.b, paramDecodeProtoPkgContext.jdField_d_of_type_Long, paramDecodeProtoPkgContext.jdField_a_of_type_Int, paramArrayOfByte);
+        paramMessageHandler.n.getFileTransferHandler().a(paramMessageHandler, paramList, paramMsg, localNotOnlineFile, String.valueOf(paramDecodeProtoPkgContext.x), paramDecodeProtoPkgContext.g, paramDecodeProtoPkgContext.h, paramDecodeProtoPkgContext.d, paramDecodeProtoPkgContext.e, paramArrayOfByte);
         return;
       }
       if (localMsgBody.msg_wlan_recved_notify.has())
@@ -317,7 +317,7 @@ public class MsgType0x211Decoder
         if (QLog.isColorLevel()) {
           QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : MsgBody has  msg_wlan_recved_notify");
         }
-        paramMessageHandler.a.getFileTransferHandler().a((SubMsgType0x4.WlanRecvNotify)localMsgBody.msg_wlan_recved_notify.get());
+        paramMessageHandler.n.getFileTransferHandler().b((SubMsgType0x4.WlanRecvNotify)localMsgBody.msg_wlan_recved_notify.get());
       }
       return;
     }
@@ -338,8 +338,8 @@ public class MsgType0x211Decoder
     try
     {
       paramArrayOfByte = (SubMsgType0x7.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
-      if (!paramDecodeProtoPkgContext.jdField_d_of_type_Boolean) {
-        ((DataLineHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramMsg, paramArrayOfByte);
+      if (!paramDecodeProtoPkgContext.j) {
+        ((DataLineHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramMsg, paramArrayOfByte);
       }
       return;
     }
@@ -359,7 +359,7 @@ public class MsgType0x211Decoder
     long l3 = paramMsg.msg_head.msg_uid.get();
     int j = paramMsg.msg_head.msg_type.get();
     long l4 = paramMsg.msg_head.msg_time.get();
-    ((SmartDeviceProxyMgr)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(l1, l2, i, l3, j, "im_push.msg_push", paramArrayOfByte);
+    ((SmartDeviceProxyMgr)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(l1, l2, i, l3, j, "im_push.msg_push", paramArrayOfByte);
     if (QLog.isColorLevel())
     {
       paramMessageHandler = new StringBuilder();
@@ -392,15 +392,15 @@ public class MsgType0x211Decoder
     }
     if (!paramMsg.msg_head.c2c_tmp_msg_head.has())
     {
-      paramMessageHandler = (FriendsManager)paramMessageHandler.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      paramMessageHandler = (FriendsManager)paramMessageHandler.n.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get())))
       {
-        if (!paramMessageHandler.b(String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get()))) {
-          paramDecodeProtoPkgContext.c = 1025;
+        if (!paramMessageHandler.n(String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get()))) {
+          paramDecodeProtoPkgContext.p = 1025;
         }
       }
-      else if ((BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get()))) && (!paramMessageHandler.b(String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get())))) {
-        paramDecodeProtoPkgContext.c = 1025;
+      else if ((BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get()))) && (!paramMessageHandler.n(String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get())))) {
+        paramDecodeProtoPkgContext.p = 1025;
       }
     }
   }
@@ -414,7 +414,7 @@ public class MsgType0x211Decoder
     try
     {
       paramArrayOfByte = (C2CType0x211_SubC2CType0x9.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
-      ((DataLineHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramMsg, paramArrayOfByte);
+      ((DataLineHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramMsg, paramArrayOfByte);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramMessageHandler)
@@ -451,7 +451,7 @@ public class MsgType0x211Decoder
     break label177;
     paramMsg = null;
     label177:
-    paramMessageHandler.a.getQlinkServiceMgr().a(l1, i, l2, l3, paramMsg, paramArrayOfByte);
+    paramMessageHandler.n.getQlinkServiceMgr().a(l1, i, l2, l3, paramMsg, paramArrayOfByte);
   }
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
@@ -462,7 +462,7 @@ public class MsgType0x211Decoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.MsgType0x211Decoder
  * JD-Core Version:    0.7.0.1
  */

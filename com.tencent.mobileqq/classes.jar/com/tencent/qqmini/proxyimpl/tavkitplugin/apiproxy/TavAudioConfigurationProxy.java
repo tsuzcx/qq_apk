@@ -37,7 +37,7 @@ class TavAudioConfigurationProxy
       d(paramSendMsgTavEvent, paramTAVAudioConfiguration);
       return;
     }
-    paramTAVAudioConfiguration.setVolume((float)paramSendMsgTavEvent.a().getDouble("volume"));
+    paramTAVAudioConfiguration.setVolume((float)paramSendMsgTavEvent.c().getDouble("volume"));
     a();
   }
   
@@ -48,7 +48,7 @@ class TavAudioConfigurationProxy
       c();
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("effect");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("effect");
     if ((paramSendMsgTavEvent instanceof TAVAudioProcessorNode))
     {
       paramTAVAudioConfiguration.addAudioProcessorNode((TAVAudioProcessorNode)paramSendMsgTavEvent);
@@ -67,7 +67,7 @@ class TavAudioConfigurationProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TAVAudioConfiguration))
     {
       b();
@@ -78,7 +78,7 @@ class TavAudioConfigurationProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavAudioConfigurationProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ public class CommentFloatDialogTopGestureLayout
   extends LinearLayout
   implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float;
-  private View jdField_a_of_type_AndroidViewView;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private CommentFloatDialog jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialog;
-  private StoryPlayerCommentListView jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView;
+  float a;
   float b;
+  private CommentFloatDialog c;
+  private StoryPlayerCommentListView d;
+  private View e;
+  private Scroller f;
   
   public CommentFloatDialogTopGestureLayout(Context paramContext)
   {
@@ -47,53 +47,53 @@ public class CommentFloatDialogTopGestureLayout
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller == null) {
-      this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
+    if (this.f == null) {
+      this.f = new Scroller(getContext());
     }
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.e;
     if (localView == null) {
       return;
     }
     int i = localView.getScrollX();
-    int j = this.jdField_a_of_type_AndroidViewView.getScrollY();
-    this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, j, paramInt1 - i, paramInt2 - j, paramInt3);
+    int j = this.e.getScrollY();
+    this.f.startScroll(i, j, paramInt1 - i, paramInt2 - j, paramInt3);
     invalidate();
   }
   
-  private boolean a()
+  private boolean b()
   {
-    StoryPlayerCommentListView localStoryPlayerCommentListView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView;
+    StoryPlayerCommentListView localStoryPlayerCommentListView = this.d;
     boolean bool = false;
-    if ((localStoryPlayerCommentListView == null) || (localStoryPlayerCommentListView.getChildCount() == 0) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView.getChildAt(0).getTop() == 0)) {
+    if ((localStoryPlayerCommentListView == null) || (localStoryPlayerCommentListView.getChildCount() == 0) || (this.d.getChildAt(0).getTop() == 0)) {
       bool = true;
     }
     return bool;
   }
   
-  private void b()
+  private void c()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.e;
     if (localObject == null) {
       return;
     }
     int i = Math.abs(((View)localObject).getScrollY());
     if (i > 200)
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetScroller;
+      localObject = this.f;
       if (localObject != null) {
         ((Scroller)localObject).setFinalY(0);
       }
-      localObject = this.jdField_a_of_type_AndroidViewView;
+      localObject = this.e;
       ThreadManager.getUIHandler().postDelayed(new CommentFloatDialogTopGestureLayout.1(this, (View)localObject), 32L);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialog.a(i);
-      boolean bool = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialog.a();
+      this.c.a(i);
+      boolean bool = this.c.c();
       String str = "2";
       if (bool) {
         localObject = "2";
       } else {
         localObject = "1";
       }
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialog.b()) {
+      if (!this.c.d()) {
         str = "1";
       }
       StoryReportor.a("play_video", "close_reply", 0, 2, new String[] { localObject, str });
@@ -104,42 +104,42 @@ public class CommentFloatDialogTopGestureLayout
   
   public void a(CommentFloatDialog paramCommentFloatDialog, StoryPlayerCommentListView paramStoryPlayerCommentListView, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialog = paramCommentFloatDialog;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView = paramStoryPlayerCommentListView;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.c = paramCommentFloatDialog;
+    this.d = paramStoryPlayerCommentListView;
+    this.e = paramView;
   }
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller == null) {
-      this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
+    if (this.f == null) {
+      this.f = new Scroller(getContext());
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.e == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    if (this.f.computeScrollOffset())
     {
-      this.jdField_a_of_type_AndroidViewView.scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      this.e.scrollTo(this.f.getCurrX(), this.f.getCurrY());
       postInvalidate();
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    float f;
+    float f1;
     if (this.b != 0.0F) {
-      f = paramMotionEvent.getRawY() - this.b;
+      f1 = paramMotionEvent.getRawY() - this.b;
     } else {
-      f = 0.0F;
+      f1 = 0.0F;
     }
-    this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+    this.a = paramMotionEvent.getRawX();
     this.b = paramMotionEvent.getRawY();
-    return (a()) && (f > 0.0F) && (paramMotionEvent.getAction() != 0);
+    return (b()) && (f1 > 0.0F) && (paramMotionEvent.getAction() != 0);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.e == null) {
       return false;
     }
     float f2 = this.b;
@@ -147,14 +147,14 @@ public class CommentFloatDialogTopGestureLayout
     if (f2 != 0.0F) {
       f1 = paramMotionEvent.getRawY() - this.b;
     }
-    this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+    this.a = paramMotionEvent.getRawX();
     this.b = paramMotionEvent.getRawY();
     if (paramMotionEvent.getAction() != 2)
     {
-      b();
+      c();
       return true;
     }
-    int i = (int)(this.jdField_a_of_type_AndroidViewView.getScrollY() - f1);
+    int i = (int)(this.e.getScrollY() - f1);
     if (i <= 0) {
       a(0, i, 0);
     }
@@ -163,7 +163,7 @@ public class CommentFloatDialogTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

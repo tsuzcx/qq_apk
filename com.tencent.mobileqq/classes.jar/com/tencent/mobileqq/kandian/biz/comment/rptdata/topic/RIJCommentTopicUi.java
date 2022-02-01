@@ -17,20 +17,20 @@ import com.tencent.qphone.base.util.QLog;
 public class RIJCommentTopicUi
   implements TextWatcher, View.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131717824);
-  private final View jdField_a_of_type_AndroidViewView;
-  private final EditText jdField_a_of_type_AndroidWidgetEditText;
-  private final Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
+  private static String a = HardCodeUtil.a(2131915299);
+  private final View b;
+  private final EditText c;
+  private boolean d;
+  private final Runnable e;
   
   public RIJCommentTopicUi(View paramView, EditText paramEditText, Runnable paramRunnable)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    if (a())
+    this.b = paramView;
+    this.c = paramEditText;
+    this.e = paramRunnable;
+    if (b())
     {
-      b();
+      c();
       QLog.d("RIJCommentTopicUi", 1, "init topic switch on");
       return;
     }
@@ -40,18 +40,18 @@ public class RIJCommentTopicUi
   
   private void a(Spannable paramSpannable)
   {
-    boolean bool = a(paramSpannable);
+    boolean bool = b(paramSpannable);
     if ((RIJCommentTopicUtil.a(paramSpannable) | bool))
     {
-      this.jdField_a_of_type_Boolean = true;
-      int i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(i);
+      this.d = true;
+      int i = this.c.getSelectionStart();
+      this.c.setSelection(i);
     }
   }
   
-  private static boolean a()
+  private static boolean b()
   {
-    boolean bool1 = ReadInJoyHelper.f();
+    boolean bool1 = ReadInJoyHelper.l();
     boolean bool2 = RIJUserLevelModule.getInstance().getCurrentUserLevelInfo(11).isInLevelGrayList;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isCommentTopicPublishSwitchOn: topicSwitchOn=");
@@ -62,7 +62,7 @@ public class RIJCommentTopicUi
     return (bool1) && (bool2);
   }
   
-  private static boolean a(Spannable paramSpannable)
+  private static boolean b(Spannable paramSpannable)
   {
     int j = paramSpannable.length();
     int i = 0;
@@ -80,16 +80,26 @@ public class RIJCommentTopicUi
     return false;
   }
   
-  private void b()
+  private void c()
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    if (b()) {
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
+    this.b.setOnClickListener(this);
+    if (e()) {
+      this.c.addTextChangedListener(this);
     }
     RIJUserLevelModule.getInstance().requestUserLevel(11, new RIJCommentTopicUi.1(this));
   }
   
-  private static boolean b()
+  private void d()
+  {
+    if (!e())
+    {
+      QQToast.makeText(this.c.getContext(), 0, a, 0).show();
+      return;
+    }
+    this.c.getText().replace(this.c.getSelectionStart(), this.c.getSelectionEnd(), "#");
+  }
+  
+  private static boolean e()
   {
     boolean bool = RIJUserLevelModule.getInstance().getCacheUserLevelWithoutUgcSwitch(11);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -99,26 +109,16 @@ public class RIJCommentTopicUi
     return bool;
   }
   
-  private void c()
-  {
-    if (!b())
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidWidgetEditText.getContext(), 0, jdField_a_of_type_JavaLangString, 0).a();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.getText().replace(this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart(), this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd(), "#");
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this);
+    this.c.removeTextChangedListener(this);
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       return;
     }
     if (TextUtils.isEmpty(paramEditable)) {
@@ -131,8 +131,8 @@ public class RIJCommentTopicUi
   
   public void onClick(View paramView)
   {
-    c();
-    paramView = this.jdField_a_of_type_JavaLangRunnable;
+    d();
+    paramView = this.e;
     if (paramView != null) {
       paramView.run();
     }
@@ -142,7 +142,7 @@ public class RIJCommentTopicUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.rptdata.topic.RIJCommentTopicUi
  * JD-Core Version:    0.7.0.1
  */

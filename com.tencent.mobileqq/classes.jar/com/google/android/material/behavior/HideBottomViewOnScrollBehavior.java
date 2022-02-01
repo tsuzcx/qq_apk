@@ -16,11 +16,11 @@ import com.google.android.material.animation.AnimationUtils;
 public class HideBottomViewOnScrollBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
-  private int jdField_a_of_type_Int = 0;
-  @Nullable
-  private ViewPropertyAnimator jdField_a_of_type_AndroidViewViewPropertyAnimator;
+  private int a = 0;
   private int b = 2;
   private int c = 0;
+  @Nullable
+  private ViewPropertyAnimator d;
   
   public HideBottomViewOnScrollBehavior() {}
   
@@ -31,7 +31,7 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   
   private void a(@NonNull V paramV, int paramInt, long paramLong, TimeInterpolator paramTimeInterpolator)
   {
-    this.jdField_a_of_type_AndroidViewViewPropertyAnimator = paramV.animate().translationY(paramInt).setInterpolator(paramTimeInterpolator).setDuration(paramLong).setListener(new HideBottomViewOnScrollBehavior.1(this));
+    this.d = paramV.animate().translationY(paramInt).setInterpolator(paramTimeInterpolator).setDuration(paramLong).setListener(new HideBottomViewOnScrollBehavior.1(this));
   }
   
   public void a(@NonNull V paramV)
@@ -39,7 +39,7 @@ public class HideBottomViewOnScrollBehavior<V extends View>
     if (this.b == 2) {
       return;
     }
-    ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidViewViewPropertyAnimator;
+    ViewPropertyAnimator localViewPropertyAnimator = this.d;
     if (localViewPropertyAnimator != null)
     {
       localViewPropertyAnimator.cancel();
@@ -53,7 +53,7 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   {
     this.c = paramInt;
     if (this.b == 1) {
-      paramV.setTranslationY(this.jdField_a_of_type_Int + this.c);
+      paramV.setTranslationY(this.a + this.c);
     }
   }
   
@@ -62,20 +62,20 @@ public class HideBottomViewOnScrollBehavior<V extends View>
     if (this.b == 1) {
       return;
     }
-    ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_AndroidViewViewPropertyAnimator;
+    ViewPropertyAnimator localViewPropertyAnimator = this.d;
     if (localViewPropertyAnimator != null)
     {
       localViewPropertyAnimator.cancel();
       paramV.clearAnimation();
     }
     this.b = 1;
-    a(paramV, this.jdField_a_of_type_Int + this.c, 175L, AnimationUtils.c);
+    a(paramV, this.a + this.c, 175L, AnimationUtils.c);
   }
   
   public boolean onLayoutChild(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, int paramInt)
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramV.getLayoutParams();
-    this.jdField_a_of_type_Int = (paramV.getMeasuredHeight() + localMarginLayoutParams.bottomMargin);
+    this.a = (paramV.getMeasuredHeight() + localMarginLayoutParams.bottomMargin);
     return super.onLayoutChild(paramCoordinatorLayout, paramV, paramInt);
   }
   
@@ -98,7 +98,7 @@ public class HideBottomViewOnScrollBehavior<V extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.behavior.HideBottomViewOnScrollBehavior
  * JD-Core Version:    0.7.0.1
  */

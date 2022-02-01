@@ -7,88 +7,88 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class DynamicGridView$6
   implements AbsListView.OnScrollListener
 {
-  private int jdField_a_of_type_Int = -1;
   private int b = -1;
-  private int c;
+  private int c = -1;
   private int d;
   private int e;
+  private int f;
   
   DynamicGridView$6(DynamicGridView paramDynamicGridView) {}
   
   private void c()
   {
-    if ((this.d > 0) && (this.e == 0))
+    if ((this.e > 0) && (this.f == 0))
     {
-      if ((DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)))
+      if ((DynamicGridView.h(this.a)) && (DynamicGridView.i(this.a)))
       {
-        DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+        DynamicGridView.j(this.a);
         return;
       }
-      if (DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) {
-        DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+      if (DynamicGridView.k(this.a)) {
+        DynamicGridView.l(this.a);
       }
     }
   }
   
   public void a()
   {
-    if ((this.c != this.jdField_a_of_type_Int) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
+    if ((this.d != this.b) && (DynamicGridView.h(this.a)) && (DynamicGridView.f(this.a) != -1L))
     {
-      DynamicGridView localDynamicGridView = this.jdField_a_of_type_ComTencentWidgetDynamicGridView;
-      DynamicGridView.a(localDynamicGridView, DynamicGridView.a(localDynamicGridView));
-      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+      DynamicGridView localDynamicGridView = this.a;
+      DynamicGridView.a(localDynamicGridView, DynamicGridView.f(localDynamicGridView));
+      DynamicGridView.m(this.a);
     }
   }
   
   public void b()
   {
-    if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
+    if ((this.d + this.e != this.b + this.c) && (DynamicGridView.h(this.a)) && (DynamicGridView.f(this.a) != -1L))
     {
-      DynamicGridView localDynamicGridView = this.jdField_a_of_type_ComTencentWidgetDynamicGridView;
-      DynamicGridView.a(localDynamicGridView, DynamicGridView.a(localDynamicGridView));
-      DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+      DynamicGridView localDynamicGridView = this.a;
+      DynamicGridView.a(localDynamicGridView, DynamicGridView.f(localDynamicGridView));
+      DynamicGridView.m(this.a);
     }
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    int j = this.jdField_a_of_type_Int;
+    this.d = paramInt1;
+    this.e = paramInt2;
+    int j = this.b;
     int i = j;
-    if (j == -1) {
-      i = this.c;
-    }
-    this.jdField_a_of_type_Int = i;
-    j = this.b;
-    i = j;
     if (j == -1) {
       i = this.d;
     }
     this.b = i;
+    j = this.c;
+    i = j;
+    if (j == -1) {
+      i = this.e;
+    }
+    this.c = i;
     a();
     b();
-    this.jdField_a_of_type_Int = this.c;
     this.b = this.d;
-    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    this.c = this.e;
+    if (DynamicGridView.g(this.a) != null) {
+      DynamicGridView.g(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
-    this.e = paramInt;
-    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, paramInt);
+    this.f = paramInt;
+    DynamicGridView.c(this.a, paramInt);
     c();
-    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScrollStateChanged(paramAbsListView, paramInt);
+    if (DynamicGridView.g(this.a) != null) {
+      DynamicGridView.g(this.a).onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.DynamicGridView.6
  * JD-Core Version:    0.7.0.1
  */

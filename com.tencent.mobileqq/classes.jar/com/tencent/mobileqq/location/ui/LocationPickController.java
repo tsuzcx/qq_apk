@@ -29,166 +29,166 @@ import java.util.List;
 
 public class LocationPickController
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener;
   public final LocationPickViewModel a;
-  private LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
-  private LocationPickAdaptor jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor;
-  private MapWidget jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget;
-  private PoiSlideBottomPanel jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel;
-  private final LifeCycleAndViewModelStoreOwner jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner;
-  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  private final AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new LocationPickController.1(this);
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private boolean jdField_a_of_type_Boolean = true;
-  private View b;
-  private View c;
+  private boolean b = true;
+  private PoiSlideBottomPanel c;
+  private View d;
+  private View e;
+  private View f;
+  private XListView g;
+  private MapWidget h;
+  private ImageView i;
+  private LocationPickAdaptor j;
+  private LatLng k;
+  private QBaseActivity l;
+  private LocationRoom.RoomKey m;
+  private DecodeTaskCompletionListener n;
+  private final LifeCycleAndViewModelStoreOwner o;
+  private final AbsListView.OnScrollListener p = new LocationPickController.1(this);
   
   LocationPickController(LocationPickViewModel paramLocationPickViewModel, LifeCycleAndViewModelStoreOwner paramLifeCycleAndViewModelStoreOwner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel = paramLocationPickViewModel;
-    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner = paramLifeCycleAndViewModelStoreOwner;
+    this.a = paramLocationPickViewModel;
+    this.o = paramLifeCycleAndViewModelStoreOwner;
   }
   
   private void a(Activity paramActivity)
   {
-    EditText localEditText = (EditText)this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.findViewById(2131366333);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new LocationPickController.4(this, paramActivity, localEditText));
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setListener(new LocationPickController.5(this, paramActivity));
-  }
-  
-  LocationRoom.Venue a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor.a();
+    EditText localEditText = (EditText)this.c.findViewById(2131432634);
+    this.i.setOnClickListener(new LocationPickController.4(this, paramActivity, localEditText));
+    this.h.setListener(new LocationPickController.5(this, paramActivity));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.b();
-    this.jdField_a_of_type_Boolean = false;
+    this.a.b();
+    this.b = false;
   }
   
   void a(QBaseActivity paramQBaseActivity, LocationRoom.RoomKey paramRoomKey, CameraPosition paramCameraPosition, MapWidget paramMapWidget, ImageView paramImageView, View paramView1, PoiSlideBottomPanel paramPoiSlideBottomPanel, XListView paramXListView, View paramView2, View paramView3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView2;
-    this.b = paramView1;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel = paramPoiSlideBottomPanel;
-    this.c = paramView3;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = paramMapWidget;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = paramRoomKey;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor = new LocationPickAdaptor(paramQBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey, this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor);
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.d();
+    this.l = paramQBaseActivity;
+    this.d = paramView2;
+    this.e = paramView1;
+    this.c = paramPoiSlideBottomPanel;
+    this.f = paramView3;
+    this.g = paramXListView;
+    this.h = paramMapWidget;
+    this.i = paramImageView;
+    this.m = paramRoomKey;
+    this.j = new LocationPickAdaptor(paramQBaseActivity);
+    this.a.a(this.l, this.m, this.j);
+    this.a.d();
     paramXListView.setDividerHeight(0);
-    paramXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor);
+    paramXListView.setAdapter(this.j);
     paramXListView.setSelectionAfterHeaderView();
-    paramXListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
+    paramXListView.setOnScrollListener(this.p);
     paramXListView.setOnItemClickListener(new LocationPickController.2(this, paramPoiSlideBottomPanel));
-    LiuHaiUtils.a(paramQBaseActivity);
-    int i;
-    int j;
-    if (LiuHaiUtils.jdField_a_of_type_Boolean)
+    LiuHaiUtils.f(paramQBaseActivity);
+    int i1;
+    int i2;
+    if (LiuHaiUtils.b)
     {
-      i = DisplayUtil.a(paramQBaseActivity, 54.0F);
-      j = LiuHaiUtils.jdField_a_of_type_Int;
+      i1 = DisplayUtil.a(paramQBaseActivity, 54.0F);
+      i2 = LiuHaiUtils.d;
     }
     else
     {
-      i = DisplayUtil.a(paramQBaseActivity, 54.0F);
-      j = ImmersiveUtils.getStatusBarHeight(paramQBaseActivity);
+      i1 = DisplayUtil.a(paramQBaseActivity, 54.0F);
+      i2 = ImmersiveUtils.getStatusBarHeight(paramQBaseActivity);
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramQBaseActivity, LocationHandler.a().a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey), paramCameraPosition, i + j, paramPoiSlideBottomPanel);
+    this.h.a(paramQBaseActivity, LocationHandler.a().b(this.m), paramCameraPosition, i1 + i2, paramPoiSlideBottomPanel);
     a(paramQBaseActivity);
     LocationAvatarHelper.a().a(new LocationPickController.3(this));
-    if (QQUIDelegate.b()) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840626);
+    if (QQUIDelegate.c()) {
+      this.i.setBackgroundResource(2130841399);
     }
-    LocationShareViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel, this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, this);
+    LocationShareViewBinder.a(this.a, this.o, this);
   }
   
   public void a(UserLocationsUpdateBean paramUserLocationsUpdateBean)
   {
-    Iterator localIterator = paramUserLocationsUpdateBean.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramUserLocationsUpdateBean.c.iterator();
     while (localIterator.hasNext())
     {
       LocationItem localLocationItem = (LocationItem)localIterator.next();
-      Bitmap localBitmap = LocationAvatarHelper.a().a(localLocationItem.a());
+      Bitmap localBitmap = LocationAvatarHelper.a().a(localLocationItem.c());
       if (localBitmap != null)
       {
         localBitmap = BaseImageUtil.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(localLocationItem.a(), localBitmap);
+        this.h.a(localLocationItem.c(), localBitmap);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramUserLocationsUpdateBean.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
+    this.h.a(paramUserLocationsUpdateBean.a);
   }
   
   void a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getMap(), this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramString);
+    this.b = false;
+    this.a.a(this.h.getMap(), this.k, paramString);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.b();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-    this.b.setEnabled(false);
+    this.a.b();
+    this.d.setVisibility(0);
+    this.f.setVisibility(8);
+    this.g.setVisibility(8);
+    this.e.setEnabled(false);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.c();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.c.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-    this.b.setEnabled(false);
+    this.a.c();
+    this.d.setVisibility(8);
+    this.f.setVisibility(0);
+    this.g.setVisibility(8);
+    this.e.setEnabled(false);
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.c();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.b.setEnabled(false);
+    this.a.c();
+    this.d.setVisibility(8);
+    this.f.setVisibility(8);
+    this.g.setVisibility(0);
+    this.e.setEnabled(false);
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.c();
-    LocationRoom.Venue localVenue = this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor.a();
+    this.a.c();
+    LocationRoom.Venue localVenue = this.j.c();
     if (localVenue == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(localVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, true);
-    int i = this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor.a();
-    if (i >= 0) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
+    this.h.a(localVenue.e, true);
+    int i1 = this.j.b();
+    if (i1 >= 0) {
+      this.g.setSelection(i1);
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b())) {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.e();
+    if ((this.b) && (this.c.h())) {
+      this.c.f();
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.b.setEnabled(true);
+    this.d.setVisibility(8);
+    this.f.setVisibility(8);
+    this.g.setVisibility(0);
+    this.e.setEnabled(true);
   }
   
-  void f()
+  LocationRoom.Venue f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationPickViewModel.e();
+    return this.j.c();
+  }
+  
+  void g()
+  {
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickController
  * JD-Core Version:    0.7.0.1
  */

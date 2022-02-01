@@ -4,25 +4,25 @@ import java.util.List;
 
 public class PermissionParam
 {
-  public int a;
-  public Runnable a;
   public List<String> a;
-  public int b;
   public Runnable b;
+  public Runnable c;
+  public int d;
+  public int e;
   
   public void a(boolean paramBoolean)
   {
     Runnable localRunnable;
     if (a())
     {
-      localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+      localRunnable = this.b;
       if (localRunnable != null) {
         localRunnable.run();
       }
     }
     else
     {
-      localRunnable = this.jdField_b_of_type_JavaLangRunnable;
+      localRunnable = this.c;
       if (localRunnable != null) {
         localRunnable.run();
       }
@@ -31,14 +31,14 @@ public class PermissionParam
   
   public boolean a()
   {
-    int i = this.jdField_b_of_type_Int;
-    int j = this.jdField_a_of_type_Int;
+    int i = this.e;
+    int j = this.d;
     return (i & j) == j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.permission.PermissionParam
  * JD-Core Version:    0.7.0.1
  */

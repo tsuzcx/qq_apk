@@ -20,25 +20,25 @@ class PublicAccountChatPie$33
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if ((((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).isWeatherPA(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (paramInt1 == 0))
+    if ((((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).isWeatherPA(this.a.ah.b)) && (paramInt1 == 0))
     {
-      this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a();
+      this.a.bj.b();
     }
     else
     {
-      com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-      this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager.handleButtonEvent(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.b(), paramInt1, PublicAccountChatPie.a(this.a), PublicAccountChatPie.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      PublicAccountEventReport.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, PublicAccountChatPie.e(this.a), paramInt1);
+      com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+      this.a.bi.handleButtonEvent(paramString, this.a.f, this.a.d, this.a.ae(), paramInt1, PublicAccountChatPie.t(this.a), PublicAccountChatPie.u(this.a), paramInt2, this.a.ah);
+      PublicAccountEventReport.a(this.a.d, this.a.ah.b, PublicAccountChatPie.v(this.a), paramInt1);
     }
-    paramString = this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager.getButtonInfoByMenuId(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.b(), paramInt1);
+    paramString = this.a.bi.getButtonInfoByMenuId(this.a.d, this.a.ae(), paramInt1);
     if (paramString != null) {
-      OfficialAccountReporter.a.b(this.a.b(), paramString.id.get(), paramString.name.get());
+      OfficialAccountReporter.a.b(this.a.ae(), paramString.id.get(), paramString.name.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.33
  * JD-Core Version:    0.7.0.1
  */

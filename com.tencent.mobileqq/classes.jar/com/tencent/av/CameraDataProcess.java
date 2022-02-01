@@ -14,22 +14,15 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class CameraDataProcess
   implements CameraPreviewCallback
 {
-  protected int a;
-  private EffectController jdField_a_of_type_ComTencentAvOpenglEffectsEffectController = null;
-  protected FramePerfData a;
-  protected boolean a;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  
-  public CameraDataProcess()
-  {
-    this.jdField_a_of_type_ComTencentAvUtilsFramePerfData = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  protected FramePerfData a = null;
+  protected int b = 0;
+  protected boolean c = false;
+  private float[] d;
+  private EffectController e = null;
   
   private void a(byte[] paramArrayOfByte)
   {
-    if ((this.jdField_a_of_type_Int <= 30) && (!this.jdField_a_of_type_Boolean))
+    if ((this.b <= 30) && (!this.c))
     {
       int i = 0;
       while (i <= 10)
@@ -43,16 +36,14 @@ public abstract class CameraDataProcess
         i += 1;
       }
       if (i < 10) {
-        this.jdField_a_of_type_Boolean = true;
+        this.c = true;
       }
-      this.jdField_a_of_type_Int += 1;
+      this.b += 1;
     }
-    if ((this.jdField_a_of_type_Int == 30) && (!this.jdField_a_of_type_Boolean)) {
-      a();
+    if ((this.b == 30) && (!this.c)) {
+      b();
     }
   }
-  
-  public abstract void a();
   
   public void a(EffectController paramEffectController)
   {
@@ -64,52 +55,54 @@ public abstract class CameraDataProcess
       localStringBuilder.append("]");
       QLog.i("CameraDataProcess", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEffectController = paramEffectController;
+    this.e = paramEffectController;
   }
   
   public void a(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.d = paramArrayOfFloat;
   }
   
   public float[] a()
   {
-    return this.jdField_a_of_type_ArrayOfFloat;
+    return this.d;
   }
   
   public abstract void b();
+  
+  public abstract void c();
   
   public void onPreviewData(CameraFrame paramCameraFrame)
   {
     if (paramCameraFrame.a())
     {
-      paramCameraFrame.b();
+      paramCameraFrame.e();
       if (QLog.isColorLevel()) {
         QLog.e("OnPreviewData", 2, "onPreviewData data is null");
       }
       return;
     }
-    if (paramCameraFrame.jdField_a_of_type_ArrayOfByte != null) {
-      a(paramCameraFrame.jdField_a_of_type_ArrayOfByte);
+    if (paramCameraFrame.a != null) {
+      a(paramCameraFrame.a);
     }
-    if ((paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsEffectController == null)) {
-      b();
+    if ((paramCameraFrame.n != null) && (this.e == null)) {
+      c();
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsEffectController;
+    Object localObject = this.e;
     boolean bool2 = true;
     if (localObject != null)
     {
       bool1 = bool2;
-      if (((EffectController)localObject).a()) {
+      if (((EffectController)localObject).b()) {
         break label110;
       }
-      if (paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+      if (paramCameraFrame.n != null)
       {
         bool1 = bool2;
         break label110;
       }
     }
-    while (paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture == null)
+    while (paramCameraFrame.n == null)
     {
       bool1 = false;
       break;
@@ -119,30 +112,30 @@ public abstract class CameraDataProcess
     localObject = null;
     if (FramePerfData.a())
     {
-      localObject = new FramePerfData(this.jdField_a_of_type_ComTencentAvUtilsFramePerfData, paramCameraFrame.jdField_c_of_type_Long);
-      ((FramePerfData)localObject).a(paramCameraFrame.a(), paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.b, paramCameraFrame.jdField_c_of_type_Int, paramCameraFrame.d, paramCameraFrame.e, paramCameraFrame.jdField_a_of_type_Long, paramCameraFrame.jdField_a_of_type_Boolean, bool1);
-      ((FramePerfData)localObject).b();
+      localObject = new FramePerfData(this.a, paramCameraFrame.j);
+      ((FramePerfData)localObject).a(paramCameraFrame.b(), paramCameraFrame.b, paramCameraFrame.c, paramCameraFrame.d, paramCameraFrame.e, paramCameraFrame.f, paramCameraFrame.h, paramCameraFrame.g, bool1);
+      ((FramePerfData)localObject).d();
     }
-    this.jdField_a_of_type_ComTencentAvUtilsFramePerfData = ((FramePerfData)localObject);
+    this.a = ((FramePerfData)localObject);
     if (bool1)
     {
-      paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData = ((FramePerfData)localObject);
-      localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsEffectController;
+      paramCameraFrame.k = ((FramePerfData)localObject);
+      localObject = this.e;
       if (localObject != null)
       {
         ((EffectController)localObject).a(paramCameraFrame);
         return;
       }
-      paramCameraFrame.b();
+      paramCameraFrame.e();
       return;
     }
     if (localObject != null) {
-      ((FramePerfData)localObject).e();
+      ((FramePerfData)localObject).g();
     }
-    GraphicRenderMgr.getInstance().sendCameraFrame(paramCameraFrame.jdField_a_of_type_ArrayOfByte, AndroidCamera.jdField_c_of_type_Int, paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.b, paramCameraFrame.d, paramCameraFrame.e, System.currentTimeMillis(), paramCameraFrame.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfFloat, null, 0, 0);
-    FrameBufMgr.a().a(paramCameraFrame.jdField_a_of_type_ArrayOfByte, 0);
+    GraphicRenderMgr.getInstance().sendCameraFrame(paramCameraFrame.a, AndroidCamera.d, paramCameraFrame.b, paramCameraFrame.c, paramCameraFrame.e, paramCameraFrame.f, System.currentTimeMillis(), paramCameraFrame.g, this.d, null, 0, 0);
+    FrameBufMgr.a().a(paramCameraFrame.a, 0);
     MemoryPerfStat.a().a(0);
-    paramCameraFrame.b();
+    paramCameraFrame.e();
   }
 }
 

@@ -11,35 +11,35 @@ class DatalineChatPie$7
   
   protected void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(DatalineChatPie.a(this.a))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    if (this.a.ah.b.equals(DatalineChatPie.d(this.a))) {
+      this.a.V.notifyDataSetChanged();
     }
   }
   
   protected void a(long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(DatalineChatPie.a(this.a))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    if (this.a.ah.b.equals(DatalineChatPie.d(this.a))) {
+      this.a.V.notifyDataSetChanged();
     }
   }
   
   protected void a(long paramLong, float paramFloat)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(DatalineChatPie.a(this.a))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    if (this.a.ah.b.equals(DatalineChatPie.d(this.a))) {
+      this.a.V.notifyDataSetChanged();
     }
   }
   
   protected void a(boolean paramBoolean, long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(DatalineChatPie.a(this.a))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    if (this.a.ah.b.equals(DatalineChatPie.d(this.a))) {
+      this.a.V.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie.7
  * JD-Core Version:    0.7.0.1
  */

@@ -12,11 +12,11 @@ import org.json.JSONObject;
 public class AppReport$IncrementalReportCallback
   implements HttpCgiAsyncTask.Callback
 {
-  protected int a;
   protected Context a;
-  protected WebView a;
-  protected String a;
   protected String b;
+  protected int c;
+  protected String d;
+  protected WebView e;
   
   public void a(Exception paramException)
   {
@@ -24,14 +24,14 @@ public class AppReport$IncrementalReportCallback
     localStringBuilder.append("<AppReport> IncrementalReportCallback onException >>> ");
     localStringBuilder.append(paramException.toString());
     LogUtility.b("AppReport", localStringBuilder.toString());
-    if (this.b == null)
+    if (this.d == null)
     {
-      paramException = this.jdField_a_of_type_JavaLangString;
+      paramException = this.b;
       if (paramException != null) {
-        AppReport.a(this.jdField_a_of_type_AndroidContentContext, paramException, this.jdField_a_of_type_Int);
+        AppReport.a(this.a, paramException, this.c);
       }
     }
-    if ((this.b != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
+    if ((this.d != null) && (this.e != null))
     {
       LogUtility.c("AppReport", "<AppReport> onException get app update list after incremental report");
       paramException = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
@@ -40,7 +40,7 @@ public class AppReport$IncrementalReportCallback
       } else {
         paramException = "";
       }
-      AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.b, false, paramException);
+      AppUpdate.a(this.a, this.e, this.d, false, paramException);
     }
   }
   
@@ -64,14 +64,14 @@ public class AppReport$IncrementalReportCallback
     if (i == 0)
     {
       AppReport.a.lock();
-      this.jdField_a_of_type_AndroidContentContext.deleteFile("appcenter_app_report_storage_file.txt");
+      this.a.deleteFile("appcenter_app_report_storage_file.txt");
       AppReport.a.unlock();
       try
       {
         if (localJSONObject.optInt("report_all") != 1) {
           break label158;
         }
-        AppReport.a(this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView, paramJSONObject, true);
+        AppReport.a(this.a, this.d, this.e, paramJSONObject, true);
         return;
       }
       catch (Exception localException)
@@ -81,24 +81,24 @@ public class AppReport$IncrementalReportCallback
     }
     else
     {
-      AppReport.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      AppReport.a(this.a, this.b, this.c);
     }
     label158:
-    if ((this.b != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
+    if ((this.d != null) && (this.e != null))
     {
       LogUtility.c("AppReport", "<AppReport> onResult get app update list after incremental report");
       if (i == 0)
       {
-        AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.b, true, paramJSONObject);
+        AppUpdate.a(this.a, this.e, this.d, true, paramJSONObject);
         return;
       }
-      AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.b, false, paramJSONObject);
+      AppUpdate.a(this.a, this.e, this.d, false, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.appreport.AppReport.IncrementalReportCallback
  * JD-Core Version:    0.7.0.1
  */

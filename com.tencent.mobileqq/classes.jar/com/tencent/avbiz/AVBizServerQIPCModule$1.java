@@ -4,6 +4,8 @@ import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCConnection;
 import eipc.EIPCOnGetConnectionListener;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 class AVBizServerQIPCModule$1
   implements EIPCOnGetConnectionListener
@@ -30,17 +32,24 @@ class AVBizServerQIPCModule$1
     if (paramEIPCConnection == null) {
       return;
     }
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onConnectUnbind, [");
-      localStringBuilder.append(paramEIPCConnection.procName);
-      localStringBuilder.append("]");
-      QLog.i("AVBizServerQIPCModule", 2, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onConnectUnbind, [");
+      ((StringBuilder)localObject).append(paramEIPCConnection.procName);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVBizServerQIPCModule", 2, ((StringBuilder)localObject).toString());
     }
-    paramEIPCConnection = (String)Constants.b.get(paramEIPCConnection.procName);
-    if (paramEIPCConnection != null) {
-      AVBizPriorityManager.a().a(paramEIPCConnection);
+    paramEIPCConnection = (Set)Constants.PROCESS_BIZ_NAME_MAP.get(paramEIPCConnection.procName);
+    if (paramEIPCConnection != null)
+    {
+      paramEIPCConnection = paramEIPCConnection.iterator();
+      while (paramEIPCConnection.hasNext())
+      {
+        localObject = (String)paramEIPCConnection.next();
+        AVBizPriorityManager.getInstance().abandonAVFocus((String)localObject);
+      }
     }
   }
 }

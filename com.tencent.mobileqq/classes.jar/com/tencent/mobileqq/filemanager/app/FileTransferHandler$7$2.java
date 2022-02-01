@@ -9,12 +9,12 @@ class FileTransferHandler$7$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler$7.this$0.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler$7.a, 529, 4, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo);
+    this.c.this$0.a(this.c.f, 529, 4, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.7.2
  * JD-Core Version:    0.7.0.1
  */

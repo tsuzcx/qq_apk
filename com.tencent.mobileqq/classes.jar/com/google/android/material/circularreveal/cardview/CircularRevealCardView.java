@@ -29,17 +29,6 @@ public class CircularRevealCardView
     super(paramContext, paramAttributeSet);
   }
   
-  public int a()
-  {
-    return this.a.a();
-  }
-  
-  @Nullable
-  public CircularRevealWidget.RevealInfo a()
-  {
-    return this.a.a();
-  }
-  
   public void a()
   {
     this.a.a();
@@ -50,14 +39,14 @@ public class CircularRevealCardView
     super.draw(paramCanvas);
   }
   
-  public boolean a()
-  {
-    return super.isOpaque();
-  }
-  
   public void b()
   {
     this.a.b();
+  }
+  
+  public boolean c()
+  {
+    return super.isOpaque();
   }
   
   public void draw(Canvas paramCanvas)
@@ -71,11 +60,28 @@ public class CircularRevealCardView
     super.draw(paramCanvas);
   }
   
+  @Nullable
+  public Drawable getCircularRevealOverlayDrawable()
+  {
+    return this.a.e();
+  }
+  
+  public int getCircularRevealScrimColor()
+  {
+    return this.a.d();
+  }
+  
+  @Nullable
+  public CircularRevealWidget.RevealInfo getRevealInfo()
+  {
+    return this.a.c();
+  }
+  
   public boolean isOpaque()
   {
     CircularRevealHelper localCircularRevealHelper = this.a;
     if (localCircularRevealHelper != null) {
-      return localCircularRevealHelper.a();
+      return localCircularRevealHelper.f();
     }
     return super.isOpaque();
   }
@@ -97,7 +103,7 @@ public class CircularRevealCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.circularreveal.cardview.CircularRevealCardView
  * JD-Core Version:    0.7.0.1
  */

@@ -33,12 +33,11 @@ public class TroopAssociationHandler
   implements ITroopAssociationHandler
 {
   protected Set<String> a;
-  private AtomicLong a;
+  private AtomicLong b = new AtomicLong(0L);
   
   public TroopAssociationHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
   }
   
   public long a(String paramString1, int paramInt, String paramString2)
@@ -55,7 +54,7 @@ public class TroopAssociationHandler
       QLog.d("TroopAssociationHandler", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = paramString2;
-    long l2 = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
+    long l2 = this.b.getAndIncrement();
     Object localObject2 = new oidb_0xede.ReqBody();
     try
     {
@@ -82,15 +81,10 @@ public class TroopAssociationHandler
     }
     catch (Exception paramString2)
     {
-      notifyUI(TroopAssociationObserver.a, false, new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(l2), null });
+      notifyUI(TroopAssociationObserver.b, false, new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(l2), null });
       paramString2.printStackTrace();
     }
     return l2;
-  }
-  
-  protected String a()
-  {
-    return "TroopAssociationHandler";
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -119,7 +113,7 @@ public class TroopAssociationHandler
             paramToServiceMsg.append(i);
             QLog.d("TroopAssociationHandler", 2, paramToServiceMsg.toString());
           }
-          notifyUI(TroopAssociationObserver.a, false, new Object[] { str, Integer.valueOf(j), Long.valueOf(l1), null });
+          notifyUI(TroopAssociationObserver.b, false, new Object[] { str, Integer.valueOf(j), Long.valueOf(l1), null });
           return;
         }
         paramFromServiceMsg = new AllianceItem();
@@ -140,7 +134,7 @@ public class TroopAssociationHandler
             paramToServiceMsg.append(i);
             QLog.d("TroopAssociationHandler", 2, paramToServiceMsg.toString());
           }
-          notifyUI(TroopAssociationObserver.a, true, new Object[] { str, Integer.valueOf(j), Long.valueOf(l1), paramFromServiceMsg });
+          notifyUI(TroopAssociationObserver.b, true, new Object[] { str, Integer.valueOf(j), Long.valueOf(l1), paramFromServiceMsg });
           return;
         }
         long l2 = localRspBody.uint64_next_group_code.get();
@@ -196,12 +190,12 @@ public class TroopAssociationHandler
           paramToServiceMsg.append(paramFromServiceMsg.toString());
           QLog.d("TroopAssociationHandler", 2, paramToServiceMsg.toString());
         }
-        notifyUI(TroopAssociationObserver.a, true, new Object[] { str, Integer.valueOf(j), Long.valueOf(l1), paramFromServiceMsg });
+        notifyUI(TroopAssociationObserver.b, true, new Object[] { str, Integer.valueOf(j), Long.valueOf(l1), paramFromServiceMsg });
         return;
       }
       catch (Exception paramToServiceMsg)
       {
-        notifyUI(TroopAssociationObserver.a, false, new Object[] { str, Integer.valueOf(j), Long.valueOf(l1), null });
+        notifyUI(TroopAssociationObserver.b, false, new Object[] { str, Integer.valueOf(j), Long.valueOf(l1), null });
         if (QLog.isColorLevel())
         {
           paramFromServiceMsg = new StringBuilder();
@@ -215,7 +209,7 @@ public class TroopAssociationHandler
       if (QLog.isColorLevel()) {
         QLog.d("TroopAssociationHandler", 2, "handleGetRelatedTroopListResp resp == null || res == null");
       }
-      notifyUI(TroopAssociationObserver.a, false, new Object[] { "", Integer.valueOf(-1), Integer.valueOf(-1), null });
+      notifyUI(TroopAssociationObserver.b, false, new Object[] { "", Integer.valueOf(-1), Integer.valueOf(-1), null });
       return;
       label959:
       int i = 0;
@@ -227,14 +221,19 @@ public class TroopAssociationHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopAssociationHandler";
+  }
+  
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0xede_1");
+      this.a = new HashSet();
+      this.a.add("OidbSvc.0xede_1");
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.a;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -258,7 +257,7 @@ public class TroopAssociationHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -281,7 +280,7 @@ public class TroopAssociationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.association.handler.TroopAssociationHandler
  * JD-Core Version:    0.7.0.1
  */

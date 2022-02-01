@@ -17,18 +17,18 @@ public class UFTC2CSetUploadSucOp
     super(paramAppRuntime, paramUFTC2CUploadTaskInfo, paramUFTTransferKey, paramUFTOpCallback);
   }
   
-  protected int b()
+  protected int c()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(i());
     ((StringBuilder)localObject).append("] do set upload suc op");
     UFTLog.b("[UFTTransfer] UFTC2CSetUploadSucOp", 1, ((StringBuilder)localObject).toString());
-    localObject = (UFTC2CUploadTaskInfo)this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo;
+    localObject = (UFTC2CUploadTaskInfo)this.h;
     UFTC2CSetUploadSucReq localUFTC2CSetUploadSucReq = new UFTC2CSetUploadSucReq();
     try
     {
-      l = Long.parseLong(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      l = Long.parseLong(this.g.getCurrentAccountUin());
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -39,28 +39,28 @@ public class UFTC2CSetUploadSucOp
     }
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("TId[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(i());
     localStringBuilder.append("] send uin err.");
     UFTLog.d("[UFTTransfer] UFTC2CSetUploadSucOp", 1, localStringBuilder.toString());
     l = 0L;
     localUFTC2CSetUploadSucReq.a(l);
-    localUFTC2CSetUploadSucReq.b(Long.parseLong(((UFTC2CUploadTaskInfo)localObject).d().replace("+", "")));
-    localUFTC2CSetUploadSucReq.c(((UFTC2CUploadTaskInfo)localObject).c());
-    localUFTC2CSetUploadSucReq.b(((UFTC2CUploadTaskInfo)localObject).a());
+    localUFTC2CSetUploadSucReq.b(Long.parseLong(((UFTC2CUploadTaskInfo)localObject).c().replace("+", "")));
+    localUFTC2CSetUploadSucReq.c(((UFTC2CUploadTaskInfo)localObject).d());
     localUFTC2CSetUploadSucReq.b(((UFTC2CUploadTaskInfo)localObject).e());
-    if (((UFTC2CUploadTaskInfo)localObject).b() == null)
+    localUFTC2CSetUploadSucReq.b(((UFTC2CUploadTaskInfo)localObject).f());
+    if (((UFTC2CUploadTaskInfo)localObject).q() == null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("TId[");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append("] do set upload suc fail. file id is null");
       UFTLog.d("[UFTTransfer] UFTC2CSetUploadSucOp", 1, ((StringBuilder)localObject).toString());
       c("uuid is null");
       return 9005;
     }
-    localUFTC2CSetUploadSucReq.a(((UFTC2CUploadTaskInfo)localObject).b().getBytes());
-    localUFTC2CSetUploadSucReq.a(((UFTC2CUploadTaskInfo)localObject).f());
-    if (!UFTProtoRequestor.a().a(this.jdField_a_of_type_MqqAppAppRuntime, localUFTC2CSetUploadSucReq, new UFTC2CSetUploadSucOp.1(this)))
+    localUFTC2CSetUploadSucReq.a(((UFTC2CUploadTaskInfo)localObject).q().getBytes());
+    localUFTC2CSetUploadSucReq.a(((UFTC2CUploadTaskInfo)localObject).g());
+    if (!UFTProtoRequestor.a().a(this.g, localUFTC2CSetUploadSucReq, new UFTC2CSetUploadSucOp.1(this)))
     {
       c("request set upload suc fail");
       return 9001;
@@ -70,7 +70,7 @@ public class UFTC2CSetUploadSucOp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTC2CSetUploadSucOp
  * JD-Core Version:    0.7.0.1
  */

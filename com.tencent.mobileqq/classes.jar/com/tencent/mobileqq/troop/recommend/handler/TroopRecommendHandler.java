@@ -83,7 +83,7 @@ public class TroopRecommendHandler
     } else {
       bool2 = false;
     }
-    notifyUI(TroopRecommendObserver.e, bool2, new Object[] { paramToServiceMsg });
+    notifyUI(TroopRecommendObserver.f, bool2, new Object[] { paramToServiceMsg });
     if (QLog.isColorLevel())
     {
       paramFromServiceMsg = new StringBuilder();
@@ -100,27 +100,6 @@ public class TroopRecommendHandler
       paramFromServiceMsg.append(paramToServiceMsg);
       QLog.i("TroopRecommendHandler", 2, paramFromServiceMsg.toString());
     }
-  }
-  
-  protected String a()
-  {
-    return "TroopRecommendHandler";
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.TroopRecommendHandler", 2, "send_oidb_0xded_1");
-    }
-    Object localObject = new oidb_0xded.ReqBody();
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(3565);
-    localOIDBSSOPkg.uint32_result.set(0);
-    localOIDBSSOPkg.uint32_service_type.set(1);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xded.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0xded_1");
-    ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, oidb_0x935.GPS paramGPS)
@@ -323,7 +302,7 @@ public class TroopRecommendHandler
       bool1 = false;
       k = -1;
     }
-    notifyUI(TroopRecommendObserver.c, bool1, new Object[] { Long.valueOf(l), Integer.valueOf(j), Integer.valueOf(k), paramToServiceMsg });
+    notifyUI(TroopRecommendObserver.d, bool1, new Object[] { Long.valueOf(l), Integer.valueOf(j), Integer.valueOf(k), paramToServiceMsg });
     if (QLog.isColorLevel())
     {
       paramFromServiceMsg = new StringBuilder();
@@ -396,9 +375,9 @@ public class TroopRecommendHandler
     }
     else if (paramInt1 == 1)
     {
-      l1 = TroopRecommendUtils.a(this.appRuntime, paramString);
+      l1 = TroopRecommendUtils.b(this.appRuntime, paramString);
       l2 = ((TroopInfo)localObject1).dwLastInsertBAFTipTime;
-      l3 = TroopRecommendUtils.b(this.appRuntime, paramString);
+      l3 = TroopRecommendUtils.c(this.appRuntime, paramString);
       ((oidb_0xe3a.ReqBody)localObject2).uint64_last_graybar_insert_time.set(Math.max(Math.max(l3, l2), l1));
       if (QLog.isColorLevel())
       {
@@ -553,6 +532,22 @@ public class TroopRecommendHandler
     sendPbReq(paramArrayOfByte);
   }
   
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.TroopRecommendHandler", 2, "send_oidb_0xded_1");
+    }
+    Object localObject = new oidb_0xded.ReqBody();
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3565);
+    localOIDBSSOPkg.uint32_result.set(0);
+    localOIDBSSOPkg.uint32_service_type.set(1);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xded.ReqBody)localObject).toByteArray()));
+    localObject = createToServiceMsg("OidbSvc.0xded_1");
+    ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
   public void b(int paramInt1, String paramString, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     if (QLog.isColorLevel())
@@ -691,7 +686,7 @@ public class TroopRecommendHandler
     int m = paramToServiceMsg.extraData.getInt("add_contact_find_troop_item_type", -1);
     boolean bool1 = paramToServiceMsg.extraData.getBoolean("key_load_more", false);
     paramToServiceMsg = paramToServiceMsg.extraData.getString("add_contact_find_troop_item_key_word", "");
-    notifyUI(TroopRecommendObserver.b, bool2, new Object[] { Integer.valueOf(m), paramToServiceMsg, Integer.valueOf(j), Integer.valueOf(k), paramFromServiceMsg, Boolean.valueOf(bool1) });
+    notifyUI(TroopRecommendObserver.c, bool2, new Object[] { Integer.valueOf(m), paramToServiceMsg, Integer.valueOf(j), Integer.valueOf(k), paramFromServiceMsg, Boolean.valueOf(bool1) });
     if (QLog.isColorLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -803,7 +798,7 @@ public class TroopRecommendHandler
     int m = paramToServiceMsg.extraData.getInt("add_contact_find_troop_item_type", -1);
     boolean bool1 = paramToServiceMsg.extraData.getBoolean("key_load_more", false);
     paramToServiceMsg = paramToServiceMsg.extraData.getString("add_contact_find_troop_item_key_word", "");
-    notifyUI(TroopRecommendObserver.b, bool2, new Object[] { Integer.valueOf(m), paramToServiceMsg, Integer.valueOf(j), Integer.valueOf(k), paramObject, Boolean.valueOf(bool1) });
+    notifyUI(TroopRecommendObserver.c, bool2, new Object[] { Integer.valueOf(m), paramToServiceMsg, Integer.valueOf(j), Integer.valueOf(k), paramObject, Boolean.valueOf(bool1) });
     if (QLog.isColorLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -918,7 +913,7 @@ public class TroopRecommendHandler
     int j = -1;
     int m = paramToServiceMsg.extraData.getInt("add_contact_find_troop_item_type", -1);
     boolean bool1 = paramToServiceMsg.extraData.getBoolean("key_load_more", false);
-    notifyUI(TroopRecommendObserver.a, bool2, new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k), paramFromServiceMsg, Boolean.valueOf(bool1) });
+    notifyUI(TroopRecommendObserver.b, bool2, new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k), paramFromServiceMsg, Boolean.valueOf(bool1) });
     if (QLog.isColorLevel())
     {
       paramToServiceMsg = new StringBuilder();
@@ -934,6 +929,11 @@ public class TroopRecommendHandler
       paramToServiceMsg.append(paramFromServiceMsg.size());
       QLog.i("ac_ft.TroopRecommendHandler", 2, paramToServiceMsg.toString());
     }
+  }
+  
+  protected String dv_()
+  {
+    return "TroopRecommendHandler";
   }
   
   public void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1048,7 +1048,7 @@ public class TroopRecommendHandler
           if (localRspBody.bytes_wording_for_empty_data.has()) {
             paramObject = localRspBody.bytes_wording_for_empty_data.get().toStringUtf8();
           }
-          j = TroopRecommendObserver.d;
+          j = TroopRecommendObserver.e;
           if (paramToServiceMsg == null) {
             bool = true;
           }
@@ -1056,7 +1056,7 @@ public class TroopRecommendHandler
         }
       }
       else if (j == 2) {
-        notifyUI(TroopRecommendObserver.d, false, new Object[] { str, null, null, Boolean.valueOf(true), null });
+        notifyUI(TroopRecommendObserver.e, false, new Object[] { str, null, null, Boolean.valueOf(true), null });
       }
       if (QLog.isColorLevel())
       {
@@ -1105,7 +1105,7 @@ public class TroopRecommendHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -1158,7 +1158,7 @@ public class TroopRecommendHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.recommend.handler.TroopRecommendHandler
  * JD-Core Version:    0.7.0.1
  */

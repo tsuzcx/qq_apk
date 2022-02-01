@@ -40,6 +40,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 import com.tencent.av.smallscreen.SmallScreenUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
@@ -79,6 +81,11 @@ import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.NearbyImgDownloader;
 import com.tencent.mobileqq.troop.api.ITroopAvatarUtilApi;
 import com.tencent.mobileqq.troop.avatar.AvatarInfo;
+import com.tencent.mobileqq.troop.viewmodel.MainPictureShowActionNotifier;
+import com.tencent.mobileqq.troop.viewmodel.PictureShowViewModel;
+import com.tencent.mobileqq.troop.viewmodel.PictureShowViewModelFactory;
+import com.tencent.mobileqq.troop.viewmodel.SocialBottomBarData;
+import com.tencent.mobileqq.troop.viewmodel.ToolPictureShowActionNotifier;
 import com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
@@ -95,6 +102,7 @@ import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.Gallery;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.io.File;
@@ -105,6 +113,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 @RoutePage(desc="大图展示 TroopAvatarWallPreviewActivity", path="/base/troop/activity/TroopAvatarWallPreviewActivity")
@@ -117,16 +126,28 @@ public class TroopAvatarWallPreviewActivity
   public static final String ID_KEY = "_id";
   public static final String INDEX_KEY = "index";
   public static final String KANDIAN_IMAGE_SID = "4";
+  public static final String KEY_ACTICLE_INFO_ROWKEY = "acticle_info_rowkey";
   public static final String KEY_BTN_TEXT = "btntext";
   public static final String KEY_BUNDLE_DATA_EXTRA = "bundle_data_extra";
+  public static final String KEY_CALLBACK_SEQ = "callback_seq";
   public static final String KEY_DEFAULT_AVATOR_INDEX = "default_avator_index";
   public static final String KEY_DT_PG_ID = "dt_page_id";
   public static final String KEY_DT_PG_PARAMS = "dt_page_params";
+  public static final String KEY_EXTEND_FRIEND_DELETE_PATH_LIST = "extend_friend_delete_path_list";
+  public static final String KEY_FROM_EXTEND_FRIEND_EDIT = "from_extend_Friend_edit";
   public static final String KEY_FROM_PERSONALITY_LABEL = "from_personality_label";
   public static final String KEY_FROM_TYPE = "from_type";
+  public static final String KEY_IS_FROM_TOOL_PROCESS = "is_from_tool_process";
+  public static final String KEY_IS_NOT_SHOW_INDEX = "is_not_show_index";
+  public static final String KEY_NEED_TO_AIO = "is_need_to_aio";
   public static final String KEY_ORIGIN_LIST = "origin_list";
   public static final String KEY_ORIGIN_SIZE_LIST = "origin_size_list";
   public static final String KEY_SAVE_INTENT_TO_FILE = "save_intent_to_file";
+  public static final String KEY_SEQ_NUM = "seqNum";
+  public static final String KEY_SHOW_SOCIAL_BOTTOM_BAR = "show_social_bottom_bar";
+  public static final String KEY_SHOW_SOCIAL_BOTTOM_BAR_DATA = "show_social_bottom_bar_data";
+  public static final String KEY_SHOW_TITLE_BAR = "show_title_bar";
+  public static final String KEY_SRC_ID = "src_id";
   public static final String KEY_STR_DATA_EXTRA = "str_data_extra";
   public static final String KEY_THUMBNAL_BOUND = "KEY_THUMBNAL_BOUND";
   public static final String NEARBY_WEB = "5";
@@ -139,6 +160,7 @@ public class TroopAvatarWallPreviewActivity
   static boolean mIsOpen = false;
   static Object sLock = new Object();
   boolean animated = false;
+  private ArrayList<String> extendFriendDeletePathList = new ArrayList();
   protected ImageView imageView;
   protected boolean isFromPlugin = false;
   protected boolean isGridImageReport = false;
@@ -152,7 +174,7 @@ public class TroopAvatarWallPreviewActivity
   protected RelativeLayout mBottomBlock;
   private TranslateAnimation mBottomLayoutTranslateDownAnimation;
   private TranslateAnimation mBottomLayoutTranslateUpAnimation;
-  protected View.OnClickListener mClickLis = new TroopAvatarWallPreviewActivity.24(this);
+  protected View.OnClickListener mClickLis = new TroopAvatarWallPreviewActivity.32(this);
   protected ImageView mCommentBtn;
   protected View mContentUrlLayout;
   CookieManager mCookieMgr;
@@ -180,14 +202,14 @@ public class TroopAvatarWallPreviewActivity
   protected ArrayList<String> mOriginList;
   protected TextView mOriginPicBtn;
   protected ArrayList<String> mOriginSizeList;
-  PersonalityLabelObserver mPersonalityLabelObserver = new TroopAvatarWallPreviewActivity.27(this);
+  PersonalityLabelObserver mPersonalityLabelObserver = new TroopAvatarWallPreviewActivity.35(this);
   protected TextView mPhotoDesc;
   protected ArrayList<String> mPhotoIds;
   protected ArrayList<String> mPhotoTimes;
   protected ArrayList<Integer> mPreviewPhotoLocation;
   QQProgressDialog mProgressDialog;
   private PublicAccountShowPictureReport mPublicAccountShowPictureReport = new PublicAccountShowPictureReport();
-  private BroadcastReceiver mReceiver = new TroopAvatarWallPreviewActivity.23(this);
+  private BroadcastReceiver mReceiver = new TroopAvatarWallPreviewActivity.31(this);
   protected RelativeLayout mRoot;
   protected FrameLayout mRootParent;
   private TroopAvatarWallPreviewActivity.RotationObserver mRotationObserver;
@@ -197,9 +219,12 @@ public class TroopAvatarWallPreviewActivity
   protected TextView mTextView;
   protected ArrayList<Rect> mThumbRect;
   protected String mTroopUin;
-  private View.OnClickListener operateBarListener = new TroopAvatarWallPreviewActivity.9(this);
+  private View.OnClickListener operateBarListener = new TroopAvatarWallPreviewActivity.15(this);
+  private PictureShowViewModel pictureShowViewModel;
   Runnable setAnimateFlagRunnable = null;
+  private View socialBottomBar;
   String tempPath;
+  private TextView titleBarTitle;
   
   private boolean applyExitAnimation()
   {
@@ -207,7 +232,7 @@ public class TroopAvatarWallPreviewActivity
     if (localObject1 == null) {
       return false;
     }
-    Object localObject2 = ((ImageView)((View)localObject1).findViewById(2131368461)).getDrawable();
+    Object localObject2 = ((ImageView)((View)localObject1).findViewById(2131435357)).getDrawable();
     if ((localObject2 != null) && ((localObject2 instanceof URLDrawable)))
     {
       if (((URLDrawable)localObject2).getStatus() != 1) {
@@ -230,9 +255,9 @@ public class TroopAvatarWallPreviewActivity
     this.animated = true;
     this.mAnimationView.a((Bitmap)localObject2, localRect3, localRect2, localRect1, (Rect)localObject1, this.mEnterAnimationDuring);
     this.mAnimationView.setInterpolator(new DecelerateInterpolator());
-    this.mAnimationView.setAnimationListener(new TroopAvatarWallPreviewActivity.19(this));
+    this.mAnimationView.setAnimationListener(new TroopAvatarWallPreviewActivity.27(this));
     this.mAnimationView.a();
-    this.mRootParent.postDelayed(new TroopAvatarWallPreviewActivity.20(this), this.mEnterAnimationDuring);
+    this.mRootParent.postDelayed(new TroopAvatarWallPreviewActivity.28(this), this.mEnterAnimationDuring);
     localObject1 = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject1).setInterpolator(new DecelerateInterpolator());
     ((AlphaAnimation)localObject1).setDuration(500L);
@@ -259,6 +284,14 @@ public class TroopAvatarWallPreviewActivity
     }
   }
   
+  private void deleteExtendFriendPhotoWall(int paramInt)
+  {
+    if ((paramInt < 0) && (paramInt > this.mAdapter.getCount() - 1)) {
+      return;
+    }
+    DialogUtil.a(this, 230).setTitle(getString(2131896842)).setPositiveButton(getString(2131892267), new TroopAvatarWallPreviewActivity.26(this)).setNegativeButton(getString(2131887648), new TroopAvatarWallPreviewActivity.25(this)).show();
+  }
+  
   private void deletePernalityLabelPhoto(int paramInt, Bundle paramBundle)
   {
     if ((paramInt >= 0) && (paramInt <= this.mAdapter.getCount() - 1))
@@ -270,7 +303,7 @@ public class TroopAvatarWallPreviewActivity
           return;
         }
         ReportController.b(this.app, "dc00898", "", "", "0X8007FD5", "0X8007FD5", 0, 0, "0", "0", "", "");
-        DialogUtil.a(this, 230).setTitle(getString(2131699144)).setPositiveButton(getString(2131694583), new TroopAvatarWallPreviewActivity.26(this, paramBundle, paramInt)).setNegativeButton(getString(2131690728), new TroopAvatarWallPreviewActivity.25(this)).show();
+        DialogUtil.a(this, 230).setTitle(getString(2131897160)).setPositiveButton(getString(2131892267), new TroopAvatarWallPreviewActivity.34(this, paramBundle, paramInt)).setNegativeButton(getString(2131887648), new TroopAvatarWallPreviewActivity.33(this)).show();
       }
     }
   }
@@ -317,16 +350,16 @@ public class TroopAvatarWallPreviewActivity
     paramBundle = paramBundle.getString("btntext", "");
     if (!TextUtils.isEmpty(str1))
     {
-      this.mContentUrlLayout = ((ViewStub)findViewById(2131377999)).inflate();
+      this.mContentUrlLayout = ((ViewStub)findViewById(2131446486)).inflate();
       this.mContentUrlLayout.setVisibility(0);
       localObject = this.mContentUrlLayout;
       if ((localObject != null) && ((localObject instanceof LinearLayout)))
       {
-        localObject = (TextView)((View)localObject).findViewById(2131378784);
+        localObject = (TextView)((View)localObject).findViewById(2131447463);
         if (!TextUtils.isEmpty(str2)) {
           ((TextView)localObject).setText(str2);
         }
-        localObject = (Button)this.mContentUrlLayout.findViewById(2131376003);
+        localObject = (Button)this.mContentUrlLayout.findViewById(2131444203);
         if (!TextUtils.isEmpty(paramBundle)) {
           ((Button)localObject).setText(paramBundle);
         }
@@ -341,7 +374,7 @@ public class TroopAvatarWallPreviewActivity
         paramBundle = new GradientDrawable();
         paramBundle.setStroke(AIOUtils.b(1.0F, getResources()), -1996488705);
         ((Button)localObject).setBackgroundDrawable(paramBundle);
-        ((Button)localObject).setOnClickListener(new TroopAvatarWallPreviewActivity.6(this, localAbsBaseArticleInfo, str1));
+        ((Button)localObject).setOnClickListener(new TroopAvatarWallPreviewActivity.12(this, localAbsBaseArticleInfo, str1));
       }
     }
   }
@@ -351,7 +384,7 @@ public class TroopAvatarWallPreviewActivity
     if (isFinishing()) {
       return;
     }
-    this.imageView = ((ImageView)findViewById(2131368461));
+    this.imageView = ((ImageView)findViewById(2131435357));
     Bundle localBundle = getIntent().getExtras();
     if (localBundle == null) {
       return;
@@ -360,21 +393,21 @@ public class TroopAvatarWallPreviewActivity
     if (this.mPublicAccountShowPictureReport.isReport) {
       this.mPublicAccountShowPictureReport.showStart();
     }
-    this.mGallery = ((Gallery)findViewById(2131367431));
+    this.mGallery = ((Gallery)findViewById(2131433934));
     this.mGallery.setVisibility(0);
-    this.mTextView = ((TextView)findViewById(2131378460));
-    this.mRoot = ((RelativeLayout)findViewById(2131376809));
-    this.mBottomBlock = ((RelativeLayout)findViewById(2131363721));
-    this.mBgView = findViewById(2131363349);
-    this.mRootParent = ((FrameLayout)findViewById(2131376811));
-    this.mDelbtn = ((ImageButton)findViewById(2131365474));
+    this.mTextView = ((TextView)findViewById(2131447062));
+    this.mRoot = ((RelativeLayout)findViewById(2131445137));
+    this.mBottomBlock = ((RelativeLayout)findViewById(2131429644));
+    this.mBgView = findViewById(2131429234);
+    this.mRootParent = ((FrameLayout)findViewById(2131445141));
+    this.mDelbtn = ((ImageButton)findViewById(2131431689));
     this.mBgView.setBackgroundColor(-16777216);
-    this.mAnimationView = ((ImageAnimationView)findViewById(2131362696));
-    this.mMenuBtn = ((ImageView)findViewById(2131362366));
-    this.mBottomBarSwitch = findViewById(2131372188);
-    this.mOriginPicBtn = ((TextView)findViewById(2131372200));
+    this.mAnimationView = ((ImageAnimationView)findViewById(2131428368));
+    this.mMenuBtn = ((ImageView)findViewById(2131427966));
+    this.mBottomBarSwitch = findViewById(2131439675);
+    this.mOriginPicBtn = ((TextView)findViewById(2131439700));
     this.mOriginPicBtn.setOnClickListener(this.mClickLis);
-    this.mPhotoDesc = ((TextView)findViewById(2131372725));
+    this.mPhotoDesc = ((TextView)findViewById(2131440272));
     this.mRootParent.setVisibility(0);
     this.mIsEdit = localBundle.getBoolean("IS_EDIT");
     if (this.mIsEdit)
@@ -389,7 +422,7 @@ public class TroopAvatarWallPreviewActivity
     this.mIsShowMenu = localBundle.getBoolean("SHOW_MENU");
     if (this.mIsShowMenu)
     {
-      this.mMenuBtn.setImageResource(2130837996);
+      this.mMenuBtn.setImageResource(2130838020);
       this.mMenuBtn.setOnClickListener(this.mClickLis);
       this.mMenuBtn.setVisibility(0);
     }
@@ -405,18 +438,18 @@ public class TroopAvatarWallPreviewActivity
     this.mNeedBottomBar = localBundle.getBoolean("needBottomBar");
     if (this.mNeedBottomBar)
     {
-      localObject = ((ViewStub)findViewById(2131378002)).inflate();
-      this.mBottomBar = ((View)localObject).findViewById(2131372169);
-      this.mLikeBtn = ((ImageView)((View)localObject).findViewById(2131372170));
-      this.mCommentBtn = ((ImageView)((View)localObject).findViewById(2131372167));
-      this.mDetailBtn = ((TextView)((View)localObject).findViewById(2131372168));
-      this.mBottomBar.setBackgroundResource(2130841619);
+      localObject = ((ViewStub)findViewById(2131446489)).inflate();
+      this.mBottomBar = ((View)localObject).findViewById(2131439642);
+      this.mLikeBtn = ((ImageView)((View)localObject).findViewById(2131439643));
+      this.mCommentBtn = ((ImageView)((View)localObject).findViewById(2131439640));
+      this.mDetailBtn = ((TextView)((View)localObject).findViewById(2131439641));
+      this.mBottomBar.setBackgroundResource(2130842519);
       this.mLikeBtn.setOnClickListener(this.operateBarListener);
       this.mCommentBtn.setOnClickListener(this.operateBarListener);
       this.mDetailBtn.setOnClickListener(this.operateBarListener);
       this.mBottomBar.setVisibility(0);
       this.mBottomBarSwitch.setVisibility(0);
-      ((ImageView)this.mBottomBarSwitch).setImageResource(2130848868);
+      ((ImageView)this.mBottomBarSwitch).setImageResource(2130850535);
       localObject = new IntentFilter("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete");
       registerReceiver(this.mReceiver, (IntentFilter)localObject);
     }
@@ -504,6 +537,10 @@ public class TroopAvatarWallPreviewActivity
       }
     }
     configDtReportParam();
+    if (localBundle.getBoolean("show_title_bar")) {
+      initTitleBar(this.mIndex, this.mSeqListLength);
+    }
+    initSocialBottomBar(localBundle);
   }
   
   private void initFooterAnimation(boolean paramBoolean)
@@ -515,13 +552,78 @@ public class TroopAvatarWallPreviewActivity
       {
         this.mBottomLayoutTranslateDownAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, localView.getHeight());
         this.mBottomLayoutTranslateDownAnimation.setDuration(300L);
-        this.mBottomLayoutTranslateDownAnimation.setAnimationListener(new TroopAvatarWallPreviewActivity.7(this));
+        this.mBottomLayoutTranslateDownAnimation.setAnimationListener(new TroopAvatarWallPreviewActivity.13(this));
         return;
       }
       this.mBottomLayoutTranslateUpAnimation = new TranslateAnimation(0.0F, 0.0F, localView.getHeight(), 0.0F);
       this.mBottomLayoutTranslateUpAnimation.setDuration(300L);
-      this.mBottomLayoutTranslateUpAnimation.setAnimationListener(new TroopAvatarWallPreviewActivity.8(this));
+      this.mBottomLayoutTranslateUpAnimation.setAnimationListener(new TroopAvatarWallPreviewActivity.14(this));
     }
+  }
+  
+  private void initSocialBottomBar(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    boolean bool = paramBundle.getBoolean("show_social_bottom_bar");
+    Object localObject1 = paramBundle.getString("show_social_bottom_bar_data");
+    if ((bool) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
+      try
+      {
+        Object localObject2 = paramBundle.getString("acticle_info_rowkey", "");
+        String str1 = paramBundle.getString("callback_seq", "");
+        localObject1 = new JSONObject((String)localObject1);
+        String str2 = ((JSONObject)localObject1).optString("commentNum", "0");
+        String str3 = ((JSONObject)localObject1).optString("likeNum", "0");
+        String str4 = ((JSONObject)localObject1).optString("shareNum", "0");
+        bool = ((JSONObject)localObject1).optBoolean("liked", false);
+        this.socialBottomBar = ((ViewStub)findViewById(2131446132)).inflate();
+        localObject1 = this.socialBottomBar.findViewById(2131446133);
+        View localView1 = this.socialBottomBar.findViewById(2131446135);
+        View localView2 = this.socialBottomBar.findViewById(2131446138);
+        TextView localTextView1 = (TextView)this.socialBottomBar.findViewById(2131446134);
+        TextView localTextView2 = (TextView)this.socialBottomBar.findViewById(2131446137);
+        ImageView localImageView = (ImageView)this.socialBottomBar.findViewById(2131446136);
+        TextView localTextView3 = (TextView)this.socialBottomBar.findViewById(2131446139);
+        localObject2 = new SocialBottomBarData((String)localObject2, str1, str2, str3, str4, bool);
+        if (paramBundle.getBoolean("is_from_tool_process", false)) {
+          paramBundle = new ToolPictureShowActionNotifier(getAppRuntime());
+        } else {
+          paramBundle = new MainPictureShowActionNotifier();
+        }
+        this.pictureShowViewModel = ((PictureShowViewModel)new ViewModelProvider(this, new PictureShowViewModelFactory((SocialBottomBarData)localObject2, paramBundle)).get(PictureShowViewModel.class));
+        this.pictureShowViewModel.a().observe(this, new TroopAvatarWallPreviewActivity.4(this, localTextView1));
+        this.pictureShowViewModel.b().observe(this, new TroopAvatarWallPreviewActivity.5(this, localTextView2));
+        this.pictureShowViewModel.c().observe(this, new TroopAvatarWallPreviewActivity.6(this, localTextView3));
+        this.pictureShowViewModel.d().observe(this, new TroopAvatarWallPreviewActivity.7(this, localImageView));
+        paramBundle = new TroopAvatarWallPreviewActivity.8(this);
+        ((View)localObject1).setOnClickListener(paramBundle);
+        localView1.setOnClickListener(paramBundle);
+        localView2.setOnClickListener(paramBundle);
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        QLog.e("TroopAvatarWallPreviewActivity", 2, paramBundle, new Object[0]);
+      }
+    }
+  }
+  
+  private void initTitleBar(int paramInt1, int paramInt2)
+  {
+    int i = ImmersiveUtils.getStatusBarHeight(this);
+    Object localObject = ((ViewStub)findViewById(2131447484)).inflate();
+    ((RelativeLayout.LayoutParams)((View)localObject).getLayoutParams()).topMargin = i;
+    View localView = ((View)localObject).findViewById(2131447486);
+    this.titleBarTitle = ((TextView)((View)localObject).findViewById(2131447495));
+    localView.setOnClickListener(new TroopAvatarWallPreviewActivity.3(this));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1 + 1);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    this.titleBarTitle.setText((CharSequence)localObject);
   }
   
   private boolean isSrcIdSupportRotate()
@@ -645,7 +747,7 @@ public class TroopAvatarWallPreviewActivity
   {
     if (this.mBottomBar.getVisibility() == 0)
     {
-      ((ImageView)this.mBottomBarSwitch).setImageResource(2130848868);
+      ((ImageView)this.mBottomBarSwitch).setImageResource(2130850535);
       if (this.mBottomLayoutTranslateDownAnimation == null) {
         initFooterAnimation(true);
       }
@@ -653,7 +755,7 @@ public class TroopAvatarWallPreviewActivity
       this.mIsBottomBarUp = false;
       return;
     }
-    ((ImageView)this.mBottomBarSwitch).setImageResource(2130848869);
+    ((ImageView)this.mBottomBarSwitch).setImageResource(2130850536);
     if (this.mBottomLayoutTranslateUpAnimation == null) {
       initFooterAnimation(false);
     }
@@ -695,13 +797,13 @@ public class TroopAvatarWallPreviewActivity
       }
       if (localObject[j] == 0)
       {
-        this.mLikeBtn.setImageResource(2130848874);
-        localObject = android.view.animation.AnimationUtils.loadAnimation(this, 2130772338);
+        this.mLikeBtn.setImageResource(2130850541);
+        localObject = android.view.animation.AnimationUtils.loadAnimation(this, 2130772430);
         this.mLikeBtn.startAnimation((Animation)localObject);
       }
       else
       {
-        this.mLikeBtn.setImageResource(2130848877);
+        this.mLikeBtn.setImageResource(2130850544);
       }
       localObject = this.mLikes;
       i = this.mIndex;
@@ -796,7 +898,7 @@ public class TroopAvatarWallPreviewActivity
   
   private void savePhoto(URLDrawable paramURLDrawable, String paramString)
   {
-    new TroopAvatarWallPreviewActivity.16(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new TroopAvatarWallPreviewActivity.22(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private void savePic(URLDrawable paramURLDrawable)
@@ -810,7 +912,7 @@ public class TroopAvatarWallPreviewActivity
     {
       if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
       {
-        requestPermissions(new TroopAvatarWallPreviewActivity.13(this, paramURLDrawable), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
+        requestPermissions(new TroopAvatarWallPreviewActivity.19(this, paramURLDrawable), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
       savePicWithOverwrite(paramURLDrawable);
@@ -844,9 +946,9 @@ public class TroopAvatarWallPreviewActivity
         }
       }
       if (l1 > 0L) {
-        this.mOriginPicBtn.setText(String.format(Locale.CHINA, getResources().getString(2131694999), new Object[] { FileUtil.a(l1) }));
+        this.mOriginPicBtn.setText(String.format(Locale.CHINA, getResources().getString(2131892727), new Object[] { FileUtil.a(l1) }));
       } else {
-        this.mOriginPicBtn.setText(2131694996);
+        this.mOriginPicBtn.setText(2131892724);
       }
       this.mOriginPicBtn.setVisibility(0);
       LpReportInfo_pf00064.allReport(301, 34, 1);
@@ -860,23 +962,23 @@ public class TroopAvatarWallPreviewActivity
     Object localObject = this.mGallery;
     if (localObject == null)
     {
-      QQToast.a(this, getString(2131693100), 0).a();
+      QQToast.makeText(this, getString(2131890214), 0).show();
       return;
     }
     localObject = ((Gallery)localObject).getSelectedView();
     if (localObject == null)
     {
-      QQToast.a(this, getString(2131693100), 0).a();
+      QQToast.makeText(this, getString(2131890214), 0).show();
       return;
     }
-    localObject = ((ImageView)((View)localObject).findViewById(2131368461)).getDrawable();
+    localObject = ((ImageView)((View)localObject).findViewById(2131435357)).getDrawable();
     ActionSheet localActionSheet;
     if ((localObject != null) && ((localObject instanceof URLDrawable)))
     {
       localObject = (URLDrawable)localObject;
       if (((URLDrawable)localObject).getStatus() != 1)
       {
-        QQToast.a(this, getString(2131693100), 0).a();
+        QQToast.makeText(this, getString(2131890214), 0).show();
         return;
       }
       if ("5".equals(this.mSrcId))
@@ -884,25 +986,25 @@ public class TroopAvatarWallPreviewActivity
         showNearbyActionSheet((URLDrawable)localObject);
         return;
       }
-      localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
+      localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
       if (this.mIsShowAction)
       {
-        localActionSheet.addButton(2131693256, 1);
-        localActionSheet.addButton(2131693262, 1);
+        localActionSheet.addButton(2131890804, 1);
+        localActionSheet.addButton(2131890810, 1);
         if (!getIntent().getBooleanExtra("from_photo_wall", false)) {
-          ThreadManagerV2.excute(new TroopAvatarWallPreviewActivity.10(this, (URLDrawable)localObject, localActionSheet), 128, null, false);
+          ThreadManagerV2.excute(new TroopAvatarWallPreviewActivity.16(this, (URLDrawable)localObject, localActionSheet), 128, null, false);
         }
       }
       if ((this.mDeleteAbility) && (canDelete(this.mIndex))) {
-        localActionSheet.addButton(2131693253, 1);
+        localActionSheet.addButton(2131890801, 1);
       }
       if (this.mIsEdit)
       {
-        localActionSheet.addButton(2131697761, 5);
-        localActionSheet.addButton(2131693253, 3);
+        localActionSheet.addButton(2131895534, 5);
+        localActionSheet.addButton(2131890801, 3);
       }
-      localActionSheet.addCancelButton(2131690728);
-      localActionSheet.setOnButtonClickListener(new TroopAvatarWallPreviewActivity.11(this, localActionSheet, (URLDrawable)localObject));
+      localActionSheet.addCancelButton(2131887648);
+      localActionSheet.setOnButtonClickListener(new TroopAvatarWallPreviewActivity.17(this, localActionSheet, (URLDrawable)localObject));
     }
     try
     {
@@ -910,13 +1012,13 @@ public class TroopAvatarWallPreviewActivity
       return;
     }
     catch (Exception localException) {}
-    QQToast.a(this, getString(2131693100), 0).a();
+    QQToast.makeText(this, getString(2131890214), 0).show();
     return;
   }
   
   private void showToast(String paramString)
   {
-    QQToast.a(BaseApplication.getContext(), paramString, 0).b(getTitleBarHeight());
+    QQToast.makeText(BaseApplication.getContext(), paramString, 0).show(getTitleBarHeight());
   }
   
   private void showWaitingDialog(String paramString)
@@ -980,9 +1082,9 @@ public class TroopAvatarWallPreviewActivity
       }
       localObject2 = this.mLikeBtn;
       if (localObject1[paramInt] != 0) {
-        paramInt = 2130848874;
+        paramInt = 2130850541;
       } else {
-        paramInt = 2130848877;
+        paramInt = 2130850544;
       }
       ((ImageView)localObject2).setImageResource(paramInt);
       this.mIsBottomBarUp = LocalMultiProcConfig.getBool("BasePictureViewController#mIsBottomBarUp", true);
@@ -992,12 +1094,12 @@ public class TroopAvatarWallPreviewActivity
           this.mPhotoDesc.setVisibility(0);
         }
         this.mBottomBar.setVisibility(0);
-        ((ImageView)this.mBottomBarSwitch).setImageResource(2130848869);
+        ((ImageView)this.mBottomBarSwitch).setImageResource(2130850536);
         return;
       }
       this.mPhotoDesc.setVisibility(8);
       this.mBottomBar.setVisibility(8);
-      ((ImageView)this.mBottomBarSwitch).setImageResource(2130848868);
+      ((ImageView)this.mBottomBarSwitch).setImageResource(2130850535);
     }
   }
   
@@ -1031,6 +1133,10 @@ public class TroopAvatarWallPreviewActivity
         return true;
       }
     }
+    localObject = this.mExtras;
+    if ((localObject != null) && (((Bundle)localObject).getBoolean("from_extend_Friend_edit", false))) {
+      return true;
+    }
     localObject = this.mPhotoIds;
     if ((localObject != null) && (this.mPhotoTimes != null) && (paramInt <= ((ArrayList)localObject).size() - 1))
     {
@@ -1053,7 +1159,7 @@ public class TroopAvatarWallPreviewActivity
       if (paramInt > this.mPhotoTimes.size() - 1) {
         return;
       }
-      DialogUtil.a(this, 230).setTitle(getString(2131695144)).setPositiveButton(getString(2131694583), new TroopAvatarWallPreviewActivity.18(this, paramInt)).setNegativeButton(getString(2131690728), new TroopAvatarWallPreviewActivity.17(this)).show();
+      DialogUtil.a(this, 230).setTitle(getString(2131892872)).setPositiveButton(getString(2131892267), new TroopAvatarWallPreviewActivity.24(this, paramInt)).setNegativeButton(getString(2131887648), new TroopAvatarWallPreviewActivity.23(this)).show();
       reportPhotoWallAction("0X8006A83", "");
     }
   }
@@ -1086,7 +1192,7 @@ public class TroopAvatarWallPreviewActivity
       finish();
       return;
     }
-    QQToast.a(this, getString(2131696072), 1).b(getTitleBarHeight());
+    QQToast.makeText(this, getString(2131893837), 1).show(getTitleBarHeight());
   }
   
   @Override
@@ -1113,7 +1219,7 @@ public class TroopAvatarWallPreviewActivity
       if ((this.app != null) && (!TextUtils.isEmpty(this.app.getAccount()))) {
         try
         {
-          setContentView(2131559246);
+          setContentView(2131625166);
           ThreadManager.post(new TroopAvatarWallPreviewActivity.1(this), 8, null, true);
           return true;
         }
@@ -1152,6 +1258,10 @@ public class TroopAvatarWallPreviewActivity
     localObject = this.mRotationObserver;
     if (localObject != null) {
       ((TroopAvatarWallPreviewActivity.RotationObserver)localObject).b();
+    }
+    localObject = this.pictureShowViewModel;
+    if (localObject != null) {
+      ((PictureShowViewModel)localObject).h();
     }
   }
   
@@ -1283,11 +1393,11 @@ public class TroopAvatarWallPreviewActivity
     if (QLog.isColorLevel()) {
       QLog.d("TroopAvatarWallPreviewActivity", 2, " [updateAdapter] 传入adapter");
     }
-    this.mGallery.setSpacing(getResources().getDimensionPixelSize(2131297150));
+    this.mGallery.setSpacing(getResources().getDimensionPixelSize(2131297535));
     this.mGallery.setSelection(this.mIndex);
-    this.mGallery.setOnItemClickListener(new TroopAvatarWallPreviewActivity.3(this));
-    this.mGallery.setOnItemSelectedListener(new TroopAvatarWallPreviewActivity.4(this));
-    this.mGallery.setOnItemLongClickListener(new TroopAvatarWallPreviewActivity.5(this));
+    this.mGallery.setOnItemClickListener(new TroopAvatarWallPreviewActivity.9(this));
+    this.mGallery.setOnItemSelectedListener(new TroopAvatarWallPreviewActivity.10(this));
+    this.mGallery.setOnItemLongClickListener(new TroopAvatarWallPreviewActivity.11(this));
   }
   
   protected boolean isWrapContent()
@@ -1410,7 +1520,7 @@ public class TroopAvatarWallPreviewActivity
     if ((!((File)localObject2).exists()) && (!((File)localObject3).exists())) {
       savePhoto(paramURLDrawable, (String)localObject1);
     } else {
-      DialogUtil.a(this, 230).setTitle(getString(2131718393)).setMessage(getString(2131694907)).setPositiveButton(getString(2131718205), new TroopAvatarWallPreviewActivity.15(this, paramURLDrawable, (String)localObject1)).setNegativeButton(getString(2131694460), new TroopAvatarWallPreviewActivity.14(this)).show();
+      DialogUtil.a(this, 230).setTitle(getString(2131915885)).setMessage(getString(2131892633)).setPositiveButton(getString(2131915687), new TroopAvatarWallPreviewActivity.21(this, paramURLDrawable, (String)localObject1)).setNegativeButton(getString(2131892140), new TroopAvatarWallPreviewActivity.20(this)).show();
     }
     reportPhotoWallAction("0X8006A82", "0X8006A96");
   }
@@ -1438,6 +1548,10 @@ public class TroopAvatarWallPreviewActivity
     this.mTextView.setVisibility(4);
     this.mDelbtn.setVisibility(4);
     this.mMenuBtn.setVisibility(4);
+    localObject = this.socialBottomBar;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(4);
+    }
     this.animated = true;
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setInterpolator(new DecelerateInterpolator());
@@ -1461,9 +1575,9 @@ public class TroopAvatarWallPreviewActivity
       localAnimationSet.addAnimation((Animation)localObject);
     }
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new TroopAvatarWallPreviewActivity.21(this));
+    localAnimationSet.setAnimationListener(new TroopAvatarWallPreviewActivity.29(this));
     if (this.setAnimateFlagRunnable == null) {
-      this.setAnimateFlagRunnable = new TroopAvatarWallPreviewActivity.22(this);
+      this.setAnimateFlagRunnable = new TroopAvatarWallPreviewActivity.30(this);
     }
     this.mGallery.postDelayed(this.setAnimateFlagRunnable, 500L);
     if (this.mIsFromPhotoWall) {
@@ -1510,13 +1624,13 @@ public class TroopAvatarWallPreviewActivity
       localObject1 = ((JSONObject)localObject2).optString("tinyId");
       ((JSONObject)localObject2).optString("reason");
       localObject2 = ((JSONObject)localObject2).optString("uin");
-      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-      localActionSheet.addButton(2131693262, 1);
+      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
+      localActionSheet.addButton(2131890810, 1);
       if (!this.app.getCurrentAccountUin().equals(localObject2)) {
-        localActionSheet.addButton(HardCodeUtil.a(2131714991), 0);
+        localActionSheet.addButton(HardCodeUtil.a(2131912485), 0);
       }
-      localActionSheet.addCancelButton(2131690728);
-      localActionSheet.setOnButtonClickListener(new TroopAvatarWallPreviewActivity.12(this, localActionSheet, paramURLDrawable, (String)localObject1, (String)localObject2));
+      localActionSheet.addCancelButton(2131887648);
+      localActionSheet.setOnButtonClickListener(new TroopAvatarWallPreviewActivity.18(this, localActionSheet, paramURLDrawable, (String)localObject1, (String)localObject2));
       localActionSheet.show();
       return;
     }
@@ -1530,7 +1644,7 @@ public class TroopAvatarWallPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -67,28 +67,28 @@ class FontManager$3
           {
             if (i == 4)
             {
-              FastColorFontHelper.a().b.set(true);
-              HiBoomFont.a().a();
+              FastColorFontHelper.a().c.set(true);
+              HiBoomFont.a().b();
             }
           }
           else
           {
-            if ((!TextUtils.isEmpty(this.this$0.b)) && (FontManager.a(this.this$0) != null))
+            if ((!TextUtils.isEmpty(this.this$0.k)) && (FontManager.c(this.this$0) != null))
             {
               localObject1 = new Bundle();
-              ((Bundle)localObject1).putString("callbackId", this.this$0.b);
+              ((Bundle)localObject1).putString("callbackId", this.this$0.k);
               ((Bundle)localObject1).putInt("srcType", 9);
-              FontManager.a(this.this$0).a(0L, 0, (Bundle)localObject1);
-              this.this$0.b = null;
+              FontManager.c(this.this$0).a(0L, 0, (Bundle)localObject1);
+              this.this$0.k = null;
             }
             ETEngine.isSOLoaded.set(true);
             BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 0).edit().putBoolean("vip_font_so_downloaded", true).commit();
-            HiBoomFont.a().a();
+            HiBoomFont.a().b();
             ((IFontSoLoaderAdapter)QRoute.api(IFontSoLoaderAdapter.class)).setVipFontSoLoad(true);
             FontManager.a(this.this$0, false);
           }
           VasUtils.a(FontManager.a(this.this$0));
-          FontManager.a(this.this$0);
+          FontManager.b(this.this$0);
           return;
         }
         VasFontIPCModule.a().a(this.a, -102);

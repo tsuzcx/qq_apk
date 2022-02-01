@@ -12,7 +12,7 @@ class ArkAppView$1
   
   public void onClick(View paramView)
   {
-    ArkViewModel localArkViewModel = this.jdField_a_of_type_ComTencentArkArkViewModel;
+    ArkViewModel localArkViewModel = this.a;
     if (localArkViewModel != null) {
       localArkViewModel.reinitArkContainer();
     }
@@ -21,7 +21,7 @@ class ArkAppView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppView.1
  * JD-Core Version:    0.7.0.1
  */

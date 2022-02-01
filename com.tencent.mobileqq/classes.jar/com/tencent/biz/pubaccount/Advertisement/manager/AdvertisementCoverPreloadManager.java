@@ -10,39 +10,34 @@ import java.util.Iterator;
 
 public class AdvertisementCoverPreloadManager
 {
-  private static AdvertisementCoverPreloadManager jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementCoverPreloadManager;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new AdvertisementCoverPreloadManager.1(this);
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  public ImaxadThirdProcessorProxy a;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<String> b = new ArrayList();
-  
-  public AdvertisementCoverPreloadManager()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy = new ImaxadThirdProcessorProxy();
-  }
+  private static AdvertisementCoverPreloadManager b;
+  private static final Object c = new Object();
+  public ImaxadThirdProcessorProxy a = new ImaxadThirdProcessorProxy();
+  private ArrayList<String> d = new ArrayList();
+  private ArrayList<String> e = new ArrayList();
+  private URLDrawable.DownloadListener f = new AdvertisementCoverPreloadManager.1(this);
+  private URLDrawable g;
   
   public static AdvertisementCoverPreloadManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementCoverPreloadManager == null) {
-      jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementCoverPreloadManager = new AdvertisementCoverPreloadManager();
+    if (b == null) {
+      b = new AdvertisementCoverPreloadManager();
     }
-    return jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementCoverPreloadManager;
+    return b;
   }
   
-  private void a()
+  private void c()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((this.g == null) && (this.d != null) && (this.d.size() > 0))
       {
-        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy.a(str);
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
+        String str = (String)this.d.get(0);
+        this.g = this.a.a(str);
+        if (this.g != null)
         {
-          this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
-          this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+          this.g.setDownloadListener(this.f);
+          this.g.downloadImediatly();
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -58,17 +53,17 @@ public class AdvertisementCoverPreloadManager
   
   public void a(ArrayList<String> paramArrayList)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
+      if ((this.d != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
       {
         paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext())
         {
           String str = (String)paramArrayList.next();
-          if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+          if ((!TextUtils.isEmpty(str)) && (!this.d.contains(str)))
           {
-            this.jdField_a_of_type_JavaUtilArrayList.add(str);
+            this.d.add(str);
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
@@ -78,7 +73,7 @@ public class AdvertisementCoverPreloadManager
             }
           }
         }
-        a();
+        c();
       }
       return;
     }
@@ -90,7 +85,7 @@ public class AdvertisementCoverPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementCoverPreloadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -27,42 +27,42 @@ public class GifAnimationDrawable
   extends Drawable
   implements Animatable
 {
-  private static Set<SoftReference<Bitmap>> jdField_b_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private static Set<SoftReference<Bitmap>> q = Collections.synchronizedSet(new HashSet());
   protected Context a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private GifAnimationDrawable.Frame jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame;
-  private GifAnimationDrawable.InvalidationHandler jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$InvalidationHandler;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private Set<SoftReference<Bitmap>> jdField_a_of_type_JavaUtilSet;
-  protected volatile boolean a;
-  private long jdField_b_of_type_Long;
-  private ArrayList<GifAnimationDrawable.AnimationCallback> jdField_b_of_type_JavaUtilArrayList;
-  protected boolean b;
+  protected volatile boolean b;
   protected boolean c;
   protected boolean d;
-  private boolean e;
+  protected boolean e;
+  private final String f;
+  private int g;
+  private GifAnimationDrawable.Frame h;
+  private ArrayList<String> i;
+  private boolean j;
+  private long k;
+  private GifAnimationDrawable.InvalidationHandler l;
+  private ArrayList<GifAnimationDrawable.AnimationCallback> m;
+  private Set<SoftReference<Bitmap>> n;
+  private long o;
+  private Paint p;
   
   public GifAnimationDrawable(Context paramContext, ArrayList<String> paramArrayList, long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FastAnimationDrawable@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_Int = -1;
-    this.c = false;
-    this.e = false;
-    this.jdField_a_of_type_Long = 34L;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$InvalidationHandler = new GifAnimationDrawable.InvalidationHandler(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilSet = jdField_b_of_type_JavaUtilSet;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.f = localStringBuilder.toString();
+    this.g = -1;
+    this.d = false;
+    this.j = false;
+    this.k = 34L;
+    this.m = new ArrayList();
+    this.p = new Paint(1);
+    this.a = paramContext;
+    this.b = false;
+    this.l = new GifAnimationDrawable.InvalidationHandler(this);
+    this.k = paramLong;
+    this.n = q;
+    this.i = paramArrayList;
   }
   
   private void a(GifAnimationDrawable.Frame paramFrame)
@@ -70,35 +70,35 @@ public class GifAnimationDrawable
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.f;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("frameReady() called next=");
       localStringBuilder.append(paramFrame);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.d = false;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame != null)
+    this.e = false;
+    if (this.h != null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("android.resource://main_tab_animation_");
-      ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame.jdField_a_of_type_Int));
+      ((StringBuilder)localObject).append((String)this.i.get(this.h.a));
       if (CommonImageCacheHelper.a(((StringBuilder)localObject).toString()) == null) {
-        this.jdField_a_of_type_JavaUtilSet.add(new SoftReference(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap()));
+        this.n.add(new SoftReference(this.h.c.getBitmap()));
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame = paramFrame;
+    this.h = paramFrame;
     if (!isRunning())
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "frameReady() isRunning = false");
+        QLog.d(this.f, 2, "frameReady() isRunning = false");
       }
       return;
     }
     invalidateSelf();
     b(paramFrame);
-    if ((this.jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) && (this.c))
+    if ((this.g == this.i.size() - 1) && (this.d))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$InvalidationHandler.postDelayed(new GifAnimationDrawable.1(this), this.jdField_a_of_type_Long);
+      this.l.postDelayed(new GifAnimationDrawable.1(this), this.k);
       return;
     }
     a();
@@ -107,23 +107,23 @@ public class GifAnimationDrawable
   private void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "reset");
+      QLog.d(this.f, 2, "reset");
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   private void b(GifAnimationDrawable.Frame paramFrame)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext()) {
-      ((GifAnimationDrawable.AnimationCallback)localIterator.next()).a(paramFrame.jdField_a_of_type_Int);
+      ((GifAnimationDrawable.AnimationCallback)localIterator.next()).a(paramFrame.a);
     }
   }
   
   private void c()
   {
-    Log.i(this.jdField_a_of_type_JavaLangString, "dispatchAnimationStart: ");
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    Log.i(this.f, "dispatchAnimationStart: ");
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext()) {
       ((GifAnimationDrawable.AnimationCallback)localIterator.next()).a(this);
     }
@@ -131,8 +131,8 @@ public class GifAnimationDrawable
   
   private void d()
   {
-    Log.i(this.jdField_a_of_type_JavaLangString, "dispatchAnimationEnd: ");
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    Log.i(this.f, "dispatchAnimationEnd: ");
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext()) {
       ((GifAnimationDrawable.AnimationCallback)localIterator.next()).b(this);
     }
@@ -142,30 +142,30 @@ public class GifAnimationDrawable
   {
     if (isRunning())
     {
-      if (this.d) {
+      if (this.e) {
         return;
       }
-      this.d = true;
-      this.jdField_a_of_type_Int += 1;
-      this.jdField_a_of_type_Int %= this.jdField_a_of_type_JavaUtilArrayList.size();
+      this.e = true;
+      this.g += 1;
+      this.g %= this.i.size();
       long l2 = SystemClock.uptimeMillis();
       long l1 = l2;
-      if (!this.jdField_b_of_type_Boolean) {
-        l1 = l2 + this.jdField_a_of_type_Long;
+      if (!this.c) {
+        l1 = l2 + this.k;
       }
-      ThreadManagerV2.postImmediately(new GifAnimationDrawable.Decoder(this, new GifAnimationDrawable.Frame(this.jdField_a_of_type_Int, l1, null)), null, false);
+      ThreadManagerV2.postImmediately(new GifAnimationDrawable.Decoder(this, new GifAnimationDrawable.Frame(this.g, l1, null)), null, false);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
     long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_b_of_type_Long;
+    long l2 = this.o;
     l1 -= l2;
     if (l2 == 0L) {
       l1 = 0L;
@@ -174,27 +174,27 @@ public class GifAnimationDrawable
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.f;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("draw() called diff=[");
       ((StringBuilder)localObject2).append(l1);
       ((StringBuilder)localObject2).append("]");
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame != null)
+    if (this.h != null)
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.c)
       {
-        this.jdField_b_of_type_Boolean = false;
+        this.c = false;
         c();
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.setBounds(getBounds());
+      this.h.c.setBounds(getBounds());
       if (QLog.isColorLevel())
       {
-        localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.getBitmap();
+        localObject1 = this.h.c.getBitmap();
         if (localObject1 != null)
         {
-          localObject2 = this.jdField_a_of_type_JavaLangString;
+          localObject2 = this.f;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("draw() called with: w=");
           localStringBuilder.append(((Bitmap)localObject1).getWidth());
@@ -204,20 +204,20 @@ public class GifAnimationDrawable
         }
         else
         {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 2, "draw() called with: null bitmap");
+          QLog.e(this.f, 2, "draw() called with: null bitmap");
         }
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.setFilterBitmap(true);
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewGifAnimationDrawable$Frame.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.draw(paramCanvas);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711936);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
+      this.h.c.setFilterBitmap(true);
+      this.h.c.draw(paramCanvas);
+      this.p.setColor(-16711936);
+      this.p.setStyle(Paint.Style.STROKE);
+      this.p.setStrokeWidth(1.0F);
     }
     else if (QLog.isColorLevel())
     {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "draw() called null bitmap");
+      QLog.d(this.f, 2, "draw() called null bitmap");
     }
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    this.o = SystemClock.uptimeMillis();
   }
   
   public int getIntrinsicHeight()
@@ -237,7 +237,7 @@ public class GifAnimationDrawable
   
   public boolean isRunning()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public void setAlpha(int paramInt) {}
@@ -249,7 +249,7 @@ public class GifAnimationDrawable
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.f;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setVisible changed:");
       localStringBuilder.append(bool);
@@ -281,13 +281,13 @@ public class GifAnimationDrawable
   
   public void start()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "start");
+        QLog.d(this.f, 2, "start");
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = true;
+      this.b = true;
+      this.c = true;
       a();
     }
   }
@@ -295,16 +295,16 @@ public class GifAnimationDrawable
   public void stop()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "stop() called");
+      QLog.d(this.f, 2, "stop() called");
     }
     if (isRunning()) {
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.view.GifAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

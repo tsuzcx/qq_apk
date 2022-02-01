@@ -18,29 +18,29 @@ public class InitBeforeSyncMsg
     long l1 = System.currentTimeMillis();
     if (this.mStepId == 14)
     {
-      this.mAutomator.a.initConfig(this.mAutomator.a.getCurrentAccountUin());
-      this.mAutomator.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      this.mAutomator.a.getProxyManager().start();
-      this.mAutomator.a.getCacheManager().init();
+      this.mAutomator.k.initConfig(this.mAutomator.k.getCurrentAccountUin());
+      this.mAutomator.k.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      this.mAutomator.k.getProxyManager().start();
+      this.mAutomator.k.getCacheManager().init();
     }
     else if (this.mStepId == 15)
     {
-      this.mAutomator.a.getMsgHandler().m();
+      this.mAutomator.k.getMsgHandler().r();
     }
-    Object localObject2 = (EcshopReportHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
-    Object localObject1 = this.mAutomator.a;
-    localObject2 = ((EcshopReportHandler)localObject2).a;
+    Object localObject2 = (EcshopReportHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
+    Object localObject1 = this.mAutomator.k;
+    localObject2 = ((EcshopReportHandler)localObject2).c;
     int i = 1;
     ((QQAppInterface)localObject1).addObserver((BusinessObserver)localObject2, true);
-    localObject1 = this.mAutomator.a.getMsgHandler();
+    localObject1 = this.mAutomator.k.getMsgHandler();
     if (this.mStepId == 15) {
       i = 2;
     }
-    ((MessageHandler)localObject1).c(i);
+    ((MessageHandler)localObject1).h(i);
     if (this.mStepId != 15)
     {
-      this.mAutomator.a.getMsgHandler().h();
-      this.mAutomator.a.getMsgHandler().a.d = false;
+      this.mAutomator.k.getMsgHandler().m();
+      this.mAutomator.k.getMsgHandler().e.m = false;
     }
     long l2 = System.currentTimeMillis();
     localObject1 = new StringBuilder();
@@ -52,7 +52,7 @@ public class InitBeforeSyncMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.InitBeforeSyncMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -45,83 +45,115 @@ import mqq.manager.Manager;
 public class AdvertisementVideoPreloadManager
   implements Manager
 {
-  private static final Long jdField_a_of_type_JavaLangLong = Long.valueOf(86400000L);
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "mp4", "fhd", "shd", "hd", "sd", "msd" };
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AdvertisementVideoPreloadManager.NetInfoHandler jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager$NetInfoHandler;
-  private PAAdPreloadTask jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask;
-  private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
-  private TVK_UserInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ArrayList<PAAdPreloadTask> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private ArrayList<PAAdPreloadTask> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<PAAdPreloadTask> c = new ArrayList();
+  private static final Long a = Long.valueOf(86400000L);
+  private static final String b;
+  private static final String[] c = { "mp4", "fhd", "shd", "hd", "sd", "msd" };
+  private final Object d = new Object();
+  private WeakReference<QQAppInterface> e;
+  private Context f;
+  private ArrayList<PAAdPreloadTask> g = new ArrayList();
+  private ArrayList<PAAdPreloadTask> h = new ArrayList();
+  private ArrayList<PAAdPreloadTask> i = new ArrayList();
+  private PAAdPreloadTask j;
+  private int k = 0;
+  private int l = 0;
+  private boolean m = false;
+  private TVK_ICacheMgr n;
+  private TVK_UserInfo o;
+  private AdvertisementVideoPreloadManager.NetInfoHandler p;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
     localStringBuilder.append("/Android/data/com.tencent.mobileqq/cache/public_account_ad_download/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
   }
   
   public AdvertisementVideoPreloadManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidContentContext = paramQQAppInterface.getApplication().getApplicationContext();
+    this.e = new WeakReference(paramQQAppInterface);
+    this.f = paramQQAppInterface.getApplication().getApplicationContext();
   }
   
-  private static int a(String paramString)
+  public static String b()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
+    File localFile = new File(b);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
     }
-    File localFile = new File(a(paramString));
-    if ((localFile.exists()) && (localFile.length() > 0L)) {
-      return 2;
-    }
-    paramString = new File(b(paramString));
-    if ((paramString.exists()) && (paramString.length() > 0L)) {
-      return 1;
-    }
-    return 0;
+    return b;
   }
   
-  private PublicAccountEntityHelper a()
+  private void b(int paramInt)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("continueDownload queueType:");
+    ((StringBuilder)???).append(paramInt);
+    f(((StringBuilder)???).toString());
+    this.k = 0;
+    synchronized (this.d)
+    {
+      this.j = null;
+      ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.11(this, paramInt));
+      return;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return g(paramString) == 2;
+  }
+  
+  private String c()
+  {
+    WeakReference localWeakReference = this.e;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      return (PublicAccountEntityHelper)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getManager(QQManagerFactory.PUBLIC_ACCOUNT_ENTITY_HELPER);
+      return ((QQAppInterface)this.e.get()).getCurrentUin();
+    }
+    return "";
+  }
+  
+  public static void c(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("clearCacheVideo vid:");
+    ((StringBuilder)localObject).append(paramString);
+    f(((StringBuilder)localObject).toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject = new File(e(paramString));
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+      paramString = new File(d(paramString));
+      if (paramString.exists()) {
+        paramString.delete();
+      }
+    }
+  }
+  
+  private PublicAccountEntityHelper d()
+  {
+    WeakReference localWeakReference = this.e;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      return (PublicAccountEntityHelper)((QQAppInterface)this.e.get()).getManager(QQManagerFactory.PUBLIC_ACCOUNT_ENTITY_HELPER);
     }
     return null;
   }
   
-  public static String a()
-  {
-    File localFile = new File(jdField_a_of_type_JavaLangString);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static String a(String paramString)
+  public static String d(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = new File(jdField_a_of_type_JavaLangString);
+      Object localObject = new File(b);
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdirs();
       }
       if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(b);
         ((StringBuilder)localObject).append(String.valueOf(20170807));
         ((StringBuilder)localObject).append("_");
         ((StringBuilder)localObject).append(paramString);
@@ -131,23 +163,9 @@ public class AdvertisementVideoPreloadManager
     return "";
   }
   
-  public static boolean a(String paramString)
+  public static String e(String paramString)
   {
-    return a(paramString) == 2;
-  }
-  
-  private String b()
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      return ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentUin();
-    }
-    return "";
-  }
-  
-  public static String b(String paramString)
-  {
-    String str = a(paramString);
+    String str = d(paramString);
     paramString = str;
     if (!TextUtils.isEmpty(str))
     {
@@ -159,202 +177,184 @@ public class AdvertisementVideoPreloadManager
     return paramString;
   }
   
-  private void b()
+  private void e()
   {
-    c("initCacheManager");
+    f("initCacheManager");
     TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
     if (localTVK_IProxyFactory != null)
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = localTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new AdvertisementVideoPreloadManager.PreloadCallback(this, null));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(new AdvertisementVideoPreloadManager.PreloadCompleteCallback(this, null));
+      this.n = localTVK_IProxyFactory.getCacheMgr(this.f);
+      this.n.setPreloadCallback(new AdvertisementVideoPreloadManager.PreloadCallback(this, null));
+      this.n.setOnPreLoadCompleteCallback(new AdvertisementVideoPreloadManager.PreloadCompleteCallback(this, null));
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo(b(), "");
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager$NetInfoHandler = new AdvertisementVideoPreloadManager.NetInfoHandler(this, this);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager$NetInfoHandler);
+    this.o = new TVK_UserInfo(c(), "");
+    this.p = new AdvertisementVideoPreloadManager.NetInfoHandler(this, this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.f, this.p);
     ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.3(this));
-    this.jdField_a_of_type_Boolean = true;
+    this.m = true;
   }
   
-  private void b(int paramInt)
+  private void f()
   {
-    ??? = new StringBuilder();
-    ((StringBuilder)???).append("continueDownload queueType:");
-    ((StringBuilder)???).append(paramInt);
-    c(((StringBuilder)???).toString());
-    this.jdField_a_of_type_Int = 0;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    f("resetDownload");
+    this.k = 0;
+    synchronized (this.d)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = null;
-      ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.11(this, paramInt));
+      this.j = null;
+      this.l = 0;
       return;
     }
   }
   
-  public static void b(String paramString)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("clearCacheVideo vid:");
-    ((StringBuilder)localObject).append(paramString);
-    c(((StringBuilder)localObject).toString());
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject = new File(b(paramString));
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      paramString = new File(a(paramString));
-      if (paramString.exists()) {
-        paramString.delete();
-      }
-    }
-  }
-  
-  private void c()
-  {
-    c("resetDownload");
-    this.jdField_a_of_type_Int = 0;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = null;
-      this.jdField_b_of_type_Int = 0;
-      return;
-    }
-  }
-  
-  public static void c(String paramString)
+  public static void f(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AdvertisementVideoPreloadManager", 2, paramString);
     }
   }
   
-  private void d()
+  private static int g(String paramString)
   {
-    if (this.jdField_a_of_type_Int == 0)
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    File localFile = new File(d(paramString));
+    if ((localFile.exists()) && (localFile.length() > 0L)) {
+      return 2;
+    }
+    paramString = new File(e(paramString));
+    if ((paramString.exists()) && (paramString.length() > 0L)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  private void g()
+  {
+    if (this.k == 0)
     {
-      c("onNetworkChange, no queue is working");
+      f("onNetworkChange, no queue is working");
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask;
+    Object localObject = this.j;
     if (localObject == null)
     {
-      c("onNetworkChange, no valid task");
+      f("onNetworkChange, no valid task");
       return;
     }
     if (((PAAdPreloadTask)localObject).isNetworkValid())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onNetworkChange, vid:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid);
+      ((StringBuilder)localObject).append(this.j.mVideoVid);
       ((StringBuilder)localObject).append(", networkType:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType);
+      ((StringBuilder)localObject).append(this.j.mNetworkType);
       ((StringBuilder)localObject).append(", valid network, going on");
-      c(((StringBuilder)localObject).toString());
+      f(((StringBuilder)localObject).toString());
       return;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onNetworkChange, vid:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid);
+    ((StringBuilder)localObject).append(this.j.mVideoVid);
     ((StringBuilder)localObject).append(", networkType:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType);
+    ((StringBuilder)localObject).append(this.j.mNetworkType);
     ((StringBuilder)localObject).append(", invalid network, skip to next task");
-    c(((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    f(((StringBuilder)localObject).toString());
+    localObject = this.n;
     if (localObject != null)
     {
       ((TVK_ICacheMgr)localObject).stopCacheData(20170807);
-      b(this.jdField_a_of_type_Int);
+      b(this.k);
     }
   }
   
   public void a()
   {
-    c("installTVKSdk");
-    TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", b());
-    if (!TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext))
+    f("installTVKSdk");
+    TVK_SDKMgr.initSdk(this.f, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", c());
+    if (!TVK_SDKMgr.isInstalled(this.f))
     {
       ThreadManager.post(new AdvertisementVideoPreloadManager.2(this), 8, null, false);
       return;
     }
-    b();
+    e();
   }
   
   public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.m) {
       a();
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.d)
       {
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("startVideoDownload queueType:");
         ((StringBuilder)localObject2).append(paramInt);
-        c(((StringBuilder)localObject2).toString());
-        if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null)
+        f(((StringBuilder)localObject2).toString());
+        if (this.n == null)
         {
-          c("startVideoDownload cache manager not init!");
-          c();
+          f("startVideoDownload cache manager not init!");
+          f();
           return;
         }
-        if (paramInt <= this.jdField_a_of_type_Int)
+        if (paramInt <= this.k)
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("startVideoDownload queue(");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(this.k);
           ((StringBuilder)localObject2).append(") already run!");
-          c(((StringBuilder)localObject2).toString());
+          f(((StringBuilder)localObject2).toString());
           return;
         }
-        if (this.jdField_a_of_type_Int != 0)
+        if (this.k != 0)
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("startVideoDownload break current queue(");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(this.k);
           ((StringBuilder)localObject2).append(")!");
-          c(((StringBuilder)localObject2).toString());
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(20170807);
-          c();
+          f(((StringBuilder)localObject2).toString());
+          this.n.stopCacheData(20170807);
+          f();
           break label904;
-          if (this.c.size() > 0)
+          if (this.i.size() > 0)
           {
-            this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = ((PAAdPreloadTask)this.c.remove(0));
+            this.j = ((PAAdPreloadTask)this.i.remove(0));
             continue;
-            if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+            if (this.h.size() > 0)
             {
-              this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = ((PAAdPreloadTask)this.jdField_b_of_type_JavaUtilArrayList.remove(0));
+              this.j = ((PAAdPreloadTask)this.h.remove(0));
               continue;
-              if (this.jdField_b_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
+              if (this.l < this.g.size())
               {
-                this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = ((PAAdPreloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int));
-                this.jdField_b_of_type_Int += 1;
+                this.j = ((PAAdPreloadTask)this.g.get(this.l));
+                this.l += 1;
               }
             }
           }
-          if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask == null)
+          if (this.j == null)
           {
-            c("startVideoDownload no task to download");
-            c();
+            f("startVideoDownload no task to download");
+            f();
             return;
           }
-          this.jdField_a_of_type_Int = paramInt;
-          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid;
+          this.k = paramInt;
+          localObject2 = this.j.mVideoVid;
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mExpireTime > NetConnInfoCenter.getServerTimeMillis())
+            if (this.j.mExpireTime > NetConnInfoCenter.getServerTimeMillis())
             {
-              i = a((String)localObject2);
+              i1 = g((String)localObject2);
               localObject4 = new StringBuilder();
               ((StringBuilder)localObject4).append("startVideoDownload vid:");
               ((StringBuilder)localObject4).append((String)localObject2);
               ((StringBuilder)localObject4).append(", cacheState:");
-              ((StringBuilder)localObject4).append(i);
-              c(((StringBuilder)localObject4).toString());
-              if (i != 2) {
-                if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.isNetworkValid())
+              ((StringBuilder)localObject4).append(i1);
+              f(((StringBuilder)localObject4).toString());
+              if (i1 != 2) {
+                if (this.j.isNetworkValid())
                 {
-                  localObject4 = b((String)localObject2);
+                  localObject4 = e((String)localObject2);
                   localObject5 = new File((String)localObject4);
                   boolean bool = ((File)localObject5).exists();
                   if (bool) {}
@@ -374,7 +374,7 @@ public class AdvertisementVideoPreloadManager
           Object localObject5 = new StringBuilder();
           ((StringBuilder)localObject5).append("startVideoDownload create tmp file failed for vid:");
           ((StringBuilder)localObject5).append((String)localObject2);
-          c(((StringBuilder)localObject5).toString());
+          f(((StringBuilder)localObject5).toString());
           localObject5 = new TVK_PlayerVideoInfo(2, (String)localObject2, "");
           localHashMap = new HashMap();
           localHashMap.put("shouq_bus_type", "bus_type_pa_advertisement");
@@ -382,44 +382,44 @@ public class AdvertisementVideoPreloadManager
           ((TVK_PlayerVideoInfo)localObject5).setConfigMap("cache_duration", String.valueOf(-1));
           ((TVK_PlayerVideoInfo)localObject5).setConfigMap("cache_servers_type", String.valueOf(20170807));
           ((TVK_PlayerVideoInfo)localObject5).setConfigMap("file_dir", (String)localObject4);
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.preLoadVideoById(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, (TVK_PlayerVideoInfo)localObject5, "");
+          this.n.preLoadVideoById(this.f, this.o, (TVK_PlayerVideoInfo)localObject5, "");
           Object localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("startVideoDownload vid:");
           ((StringBuilder)localObject4).append((String)localObject2);
-          c(((StringBuilder)localObject4).toString());
+          f(((StringBuilder)localObject4).toString());
           continue;
-          int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+          int i1 = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("startVideoDownload vid:");
           ((StringBuilder)localObject4).append((String)localObject2);
           ((StringBuilder)localObject4).append(", networkType:");
-          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mNetworkType);
+          ((StringBuilder)localObject4).append(this.j.mNetworkType);
           ((StringBuilder)localObject4).append(", curNetType:");
-          ((StringBuilder)localObject4).append(i);
+          ((StringBuilder)localObject4).append(i1);
           ((StringBuilder)localObject4).append(", no valid network, skip to next task");
-          c(((StringBuilder)localObject4).toString());
+          f(((StringBuilder)localObject4).toString());
           b(paramInt);
           continue;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("startVideoDownload vid:");
           ((StringBuilder)localObject4).append((String)localObject2);
           ((StringBuilder)localObject4).append(", full cached, skip to next task");
-          c(((StringBuilder)localObject4).toString());
+          f(((StringBuilder)localObject4).toString());
           b(paramInt);
           continue;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("startVideoDownload vid:");
           ((StringBuilder)localObject4).append((String)localObject2);
           ((StringBuilder)localObject4).append(", expireTime:");
-          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mExpireTime);
+          ((StringBuilder)localObject4).append(this.j.mExpireTime);
           ((StringBuilder)localObject4).append(", task expired, clean cache and skip to next task");
-          c(((StringBuilder)localObject4).toString());
+          f(((StringBuilder)localObject4).toString());
           b(paramInt);
-          if (a((String)localObject2) != 0)
+          if (g((String)localObject2) != 0)
           {
             ThreadManager.executeOnFileThread(new AdvertisementVideoPreloadManager.10(this, (String)localObject2));
             continue;
-            c("startVideoDownload empty vid, skip to next task");
+            f("startVideoDownload empty vid, skip to next task");
             b(paramInt);
           }
           return;
@@ -436,63 +436,63 @@ public class AdvertisementVideoPreloadManager
   
   public void a(AdvertisementItem paramAdvertisementItem)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    Object localObject1 = this.d;
     if (paramAdvertisementItem != null) {}
     try
     {
-      if ((paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null) && (paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((paramAdvertisementItem.g != null) && (paramAdvertisementItem.c != null) && (paramAdvertisementItem.c.size() > 0))
       {
-        Object localObject2 = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem;
-        VideoCoverItem localVideoCoverItem = (VideoCoverItem)paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.get(0);
+        Object localObject2 = paramAdvertisementItem.g;
+        VideoCoverItem localVideoCoverItem = (VideoCoverItem)paramAdvertisementItem.c.get(0);
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("handlePreloadTaskFromMessage msgid:");
-        ((StringBuilder)localObject3).append(paramAdvertisementItem.c);
+        ((StringBuilder)localObject3).append(paramAdvertisementItem.d);
         ((StringBuilder)localObject3).append(", vid:");
-        ((StringBuilder)localObject3).append(localVideoCoverItem.b);
-        c(((StringBuilder)localObject3).toString());
-        if (!TextUtils.isEmpty(localVideoCoverItem.b))
+        ((StringBuilder)localObject3).append(localVideoCoverItem.c);
+        f(((StringBuilder)localObject3).toString());
+        if (!TextUtils.isEmpty(localVideoCoverItem.c))
         {
           localObject3 = new PAAdPreloadTask();
-          ((PAAdPreloadTask)localObject3).mUserUin = b();
-          ((PAAdPreloadTask)localObject3).mVideoVid = localVideoCoverItem.b;
-          if (!this.jdField_b_of_type_JavaUtilArrayList.contains(localObject3))
+          ((PAAdPreloadTask)localObject3).mUserUin = c();
+          ((PAAdPreloadTask)localObject3).mVideoVid = localVideoCoverItem.c;
+          if (!this.h.contains(localObject3))
           {
-            ((PAAdPreloadTask)localObject3).mMsgId = paramAdvertisementItem.c;
+            ((PAAdPreloadTask)localObject3).mMsgId = paramAdvertisementItem.d;
             ((PAAdPreloadTask)localObject3).mSource = 2;
-            long l;
-            if (paramAdvertisementItem.jdField_a_of_type_Long > 0L) {
-              l = paramAdvertisementItem.jdField_a_of_type_Long;
+            long l1;
+            if (paramAdvertisementItem.e > 0L) {
+              l1 = paramAdvertisementItem.e;
             } else {
-              l = NetConnInfoCenter.getServerTimeMillis();
+              l1 = NetConnInfoCenter.getServerTimeMillis();
             }
-            ((PAAdPreloadTask)localObject3).mReceiveTime = l;
-            ((PAAdPreloadTask)localObject3).mExpireTime = (((PAAdPreloadTask)localObject3).mReceiveTime + jdField_a_of_type_JavaLangLong.longValue());
+            ((PAAdPreloadTask)localObject3).mReceiveTime = l1;
+            ((PAAdPreloadTask)localObject3).mExpireTime = (((PAAdPreloadTask)localObject3).mReceiveTime + a.longValue());
             ((PAAdPreloadTask)localObject3).mPreloadState = 1;
-            ((PAAdPreloadTask)localObject3).mNetworkType = ((VideoDownloadItem)localObject2).e;
-            this.jdField_b_of_type_JavaUtilArrayList.add(localObject3);
+            ((PAAdPreloadTask)localObject3).mNetworkType = ((VideoDownloadItem)localObject2).u;
+            this.h.add(localObject3);
             ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.8(this));
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("handlePreloadTaskFromMessage msgid:");
-            ((StringBuilder)localObject2).append(paramAdvertisementItem.c);
+            ((StringBuilder)localObject2).append(paramAdvertisementItem.d);
             ((StringBuilder)localObject2).append(", vid:");
-            ((StringBuilder)localObject2).append(localVideoCoverItem.b);
+            ((StringBuilder)localObject2).append(localVideoCoverItem.c);
             ((StringBuilder)localObject2).append(", add to queue");
-            c(((StringBuilder)localObject2).toString());
+            f(((StringBuilder)localObject2).toString());
           }
           else
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("handlePreloadTaskFromMessage msgid:");
-            ((StringBuilder)localObject2).append(paramAdvertisementItem.c);
+            ((StringBuilder)localObject2).append(paramAdvertisementItem.d);
             ((StringBuilder)localObject2).append(", vid:");
-            ((StringBuilder)localObject2).append(localVideoCoverItem.b);
+            ((StringBuilder)localObject2).append(localVideoCoverItem.c);
             ((StringBuilder)localObject2).append(", exist in queue, ignore");
-            c(((StringBuilder)localObject2).toString());
+            f(((StringBuilder)localObject2).toString());
           }
         }
         return;
       }
-      c("handlePreloadTaskFromMessage invalid item");
+      f("handlePreloadTaskFromMessage invalid item");
       return;
     }
     finally {}
@@ -500,68 +500,68 @@ public class AdvertisementVideoPreloadManager
   
   public void a(AdvertisementItem paramAdvertisementItem, int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    Object localObject1 = this.d;
     if (paramAdvertisementItem != null) {}
     try
     {
-      if ((paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null) && (paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.size() > paramInt))
+      if ((paramAdvertisementItem.g != null) && (paramAdvertisementItem.c != null) && (paramAdvertisementItem.c.size() > paramInt))
       {
-        String str = ((VideoCoverItem)paramAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b;
+        String str = ((VideoCoverItem)paramAdvertisementItem.c.get(paramInt)).c;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("handlePreloadTaskFromPlay msgid:");
-        ((StringBuilder)localObject2).append(paramAdvertisementItem.c);
+        ((StringBuilder)localObject2).append(paramAdvertisementItem.d);
         ((StringBuilder)localObject2).append(", index:");
         ((StringBuilder)localObject2).append(paramInt);
         ((StringBuilder)localObject2).append(", vid:");
         ((StringBuilder)localObject2).append(str);
-        c(((StringBuilder)localObject2).toString());
+        f(((StringBuilder)localObject2).toString());
         if (!TextUtils.isEmpty(str))
         {
           localObject2 = new PAAdPreloadTask();
-          ((PAAdPreloadTask)localObject2).mUserUin = b();
+          ((PAAdPreloadTask)localObject2).mUserUin = c();
           ((PAAdPreloadTask)localObject2).mVideoVid = str;
-          if (!this.c.contains(localObject2))
+          if (!this.i.contains(localObject2))
           {
-            ((PAAdPreloadTask)localObject2).mMsgId = paramAdvertisementItem.c;
+            ((PAAdPreloadTask)localObject2).mMsgId = paramAdvertisementItem.d;
             ((PAAdPreloadTask)localObject2).mSource = 3;
-            long l;
-            if (paramAdvertisementItem.jdField_a_of_type_Long > 0L) {
-              l = paramAdvertisementItem.jdField_a_of_type_Long;
+            long l1;
+            if (paramAdvertisementItem.e > 0L) {
+              l1 = paramAdvertisementItem.e;
             } else {
-              l = NetConnInfoCenter.getServerTimeMillis();
+              l1 = NetConnInfoCenter.getServerTimeMillis();
             }
-            ((PAAdPreloadTask)localObject2).mReceiveTime = l;
-            ((PAAdPreloadTask)localObject2).mExpireTime = (((PAAdPreloadTask)localObject2).mReceiveTime + jdField_a_of_type_JavaLangLong.longValue());
+            ((PAAdPreloadTask)localObject2).mReceiveTime = l1;
+            ((PAAdPreloadTask)localObject2).mExpireTime = (((PAAdPreloadTask)localObject2).mReceiveTime + a.longValue());
             ((PAAdPreloadTask)localObject2).mPreloadState = 1;
-            ((PAAdPreloadTask)localObject2).mNetworkType = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.e;
-            this.c.add(localObject2);
+            ((PAAdPreloadTask)localObject2).mNetworkType = paramAdvertisementItem.g.u;
+            this.i.add(localObject2);
             ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.9(this));
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("handlePreloadTaskFromPlay msgid:");
-            ((StringBuilder)localObject2).append(paramAdvertisementItem.c);
+            ((StringBuilder)localObject2).append(paramAdvertisementItem.d);
             ((StringBuilder)localObject2).append(", index:");
             ((StringBuilder)localObject2).append(paramInt);
             ((StringBuilder)localObject2).append(", vid:");
             ((StringBuilder)localObject2).append(str);
             ((StringBuilder)localObject2).append(", add to queue");
-            c(((StringBuilder)localObject2).toString());
+            f(((StringBuilder)localObject2).toString());
           }
           else
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("handlePreloadTaskFromPlay msgid:");
-            ((StringBuilder)localObject2).append(paramAdvertisementItem.c);
+            ((StringBuilder)localObject2).append(paramAdvertisementItem.d);
             ((StringBuilder)localObject2).append(", index:");
             ((StringBuilder)localObject2).append(paramInt);
             ((StringBuilder)localObject2).append(", vid:");
             ((StringBuilder)localObject2).append(str);
             ((StringBuilder)localObject2).append(", exist in queue, ignore");
-            c(((StringBuilder)localObject2).toString());
+            f(((StringBuilder)localObject2).toString());
           }
         }
         return;
       }
-      c("handlePreloadTaskFromPlay invalid item");
+      f("handlePreloadTaskFromPlay invalid item");
       return;
     }
     finally {}
@@ -569,17 +569,17 @@ public class AdvertisementVideoPreloadManager
   
   public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      int i = paramQQAppInterface.getPreferences().getInt("public_account_ad_preload_task", 0);
-      int j = paramConfig.version.get();
+      int i1 = paramQQAppInterface.getPreferences().getInt("public_account_ad_preload_task", 0);
+      int i2 = paramConfig.version.get();
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("handlePreloadTaskFromConfig localVer:");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(i1);
       ((StringBuilder)localObject1).append(", serverVer:");
-      ((StringBuilder)localObject1).append(j);
-      c(((StringBuilder)localObject1).toString());
-      if (i != j)
+      ((StringBuilder)localObject1).append(i2);
+      f(((StringBuilder)localObject1).toString());
+      if (i1 != i2)
       {
         if (paramConfig.msg_content_list.size() > 0)
         {
@@ -620,44 +620,44 @@ public class AdvertisementVideoPreloadManager
             }
             else
             {
-              c("handlePreloadTaskFromConfig empty content");
+              f("handlePreloadTaskFromConfig empty content");
             }
           }
-          if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr != null))
+          if ((this.k == 1) && (this.n != null))
           {
-            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(20170807);
-            c();
+            this.n.stopCacheData(20170807);
+            f();
           }
-          long l = NetConnInfoCenter.getServerTimeMillis();
+          long l1 = NetConnInfoCenter.getServerTimeMillis();
           paramConfig = new ArrayList();
-          localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          localObject1 = this.g.iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject3 = (PAAdPreloadTask)((Iterator)localObject1).next();
-            if ((((PAAdPreloadTask)localObject3).mExpireTime <= l) || (!localArrayList.contains(localObject3))) {
+            if ((((PAAdPreloadTask)localObject3).mExpireTime <= l1) || (!localArrayList.contains(localObject3))) {
               paramConfig.add(localObject3);
             }
           }
           ThreadManager.executeOnFileThread(new AdvertisementVideoPreloadManager.4(this, paramConfig));
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+          this.g.clear();
+          this.g.addAll(localArrayList);
           paramConfig = new StringBuilder();
           paramConfig.append("handlePreloadTaskFromConfig new taskSize:");
           paramConfig.append(localArrayList.size());
-          c(paramConfig.toString());
+          f(paramConfig.toString());
           ThreadManager.executeOnSubThread(new AdvertisementVideoPreloadManager.5(this));
           paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-          paramQQAppInterface.putInt("public_account_ad_preload_task", j);
+          paramQQAppInterface.putInt("public_account_ad_preload_task", i2);
           paramQQAppInterface.apply();
           ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.6(this));
         }
         else
         {
-          c("handlePreloadTaskFromConfig empty config");
+          f("handlePreloadTaskFromConfig empty config");
         }
       }
       else {
-        c("handlePreloadTaskFromConfig same version, no need to update");
+        f("handlePreloadTaskFromConfig same version, no need to update");
       }
       return;
     }
@@ -674,29 +674,29 @@ public class AdvertisementVideoPreloadManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.c.clear();
-    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    this.g.clear();
+    this.h.clear();
+    this.i.clear();
+    Object localObject = this.n;
     if (localObject != null)
     {
       ((TVK_ICacheMgr)localObject).stopCacheData(20170807);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.removePreloadCallback();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(null);
+      this.n.removePreloadCallback();
+      this.n.setOnPreLoadCompleteCallback(null);
     }
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager$NetInfoHandler;
+    localObject = this.p;
     if (localObject != null)
     {
       ((AdvertisementVideoPreloadManager.NetInfoHandler)localObject).a();
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager$NetInfoHandler);
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager$NetInfoHandler = null;
+      AppNetConnInfo.unregisterNetInfoHandler(this.p);
+      this.p = null;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.m = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -20,10 +20,10 @@ class TroopQZoneUploadAlbumHandler$3
     if (QLog.isColorLevel()) {
       QLog.d("UploadPhoto", 2, "onServiceConnected()...");
     }
-    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
+    this.a.b = new Messenger(paramIBinder);
     paramComponentName = this.a;
-    paramComponentName.b = new Messenger(paramComponentName.jdField_a_of_type_AndroidOsHandler);
-    TroopQZoneUploadAlbumHandler.b(this.a);
+    paramComponentName.c = new Messenger(paramComponentName.a);
+    TroopQZoneUploadAlbumHandler.e(this.a);
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
@@ -32,20 +32,20 @@ class TroopQZoneUploadAlbumHandler$3
       QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
     }
     paramComponentName = this.a;
-    paramComponentName.jdField_a_of_type_AndroidOsMessenger = null;
-    TroopQZoneUploadAlbumHandler.a(paramComponentName, 4);
-    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    paramComponentName = this.a;
     paramComponentName.b = null;
+    TroopQZoneUploadAlbumHandler.a(paramComponentName, 4);
+    this.a.d.clear();
+    paramComponentName = this.a;
+    paramComponentName.c = null;
     TroopQZoneUploadAlbumHandler.a(paramComponentName, true);
-    if (TroopQZoneUploadAlbumHandler.a(this.a) != null) {
-      TroopQZoneUploadAlbumHandler.a(this.a).interrupt();
+    if (TroopQZoneUploadAlbumHandler.d(this.a) != null) {
+      TroopQZoneUploadAlbumHandler.d(this.a).interrupt();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.3
  * JD-Core Version:    0.7.0.1
  */

@@ -46,22 +46,22 @@ public class TroopAnnouncementProcessor
         {
           if (paramInt1 == 23)
           {
-            paramQQAppInterface = a(paramDataInputStream, paramDataInputStream.jdField_b_of_type_JavaLangString, i, paramInt2, paramLong);
+            paramQQAppInterface = a(paramDataInputStream, paramDataInputStream.c, i, paramInt2, paramLong);
             if ((paramQQAppInterface == null) || (!TextUtils.isEmpty(paramQQAppInterface.title))) {
               break;
             }
-            paramQQAppInterface.title = paramDataInputStream.jdField_c_of_type_JavaLangString;
+            paramQQAppInterface.title = paramDataInputStream.d;
             return paramQQAppInterface;
           }
-          if ((!TroopNotificationHelper.a(paramQQAppInterface, Long.toString(paramLong), paramDataInputStream.jdField_b_of_type_JavaLangString)) && (paramBoolean)) {
-            TroopNotificationHelper.a(paramQQAppInterface, paramDataInputStream.jdField_b_of_type_JavaLangString, Long.toString(paramLong), 2);
+          if ((!TroopNotificationHelper.a(paramQQAppInterface, Long.toString(paramLong), paramDataInputStream.c)) && (paramBoolean)) {
+            TroopNotificationHelper.a(paramQQAppInterface, paramDataInputStream.c, Long.toString(paramLong), 2);
           }
         }
       }
       catch (Exception paramQQAppInterface)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, paramQQAppInterface.getMessage());
+          QLog.d(a, 2, paramQQAppInterface.getMessage());
         }
       }
       return null;
@@ -75,9 +75,9 @@ public class TroopAnnouncementProcessor
   {
     if (paramFeedItem != null)
     {
-      if (paramFeedItem.jdField_a_of_type_Int == 1)
+      if (paramFeedItem.a == 1)
       {
-        String str2 = a(paramFeedItem.jdField_c_of_type_JavaLangString);
+        String str2 = a(paramFeedItem.d);
         int i = str2.lastIndexOf('&');
         String str1 = str2;
         if (i != -1)
@@ -87,10 +87,10 @@ public class TroopAnnouncementProcessor
             str1 = str2.substring(0, i - 1);
           }
         }
-        str2 = a(paramFeedItem.jdField_a_of_type_JavaLangString);
-        if (TextUtils.isEmpty(paramFeedItem.jdField_a_of_type_JavaLangString))
+        str2 = a(paramFeedItem.b);
+        if (TextUtils.isEmpty(paramFeedItem.b))
         {
-          str2 = new SimpleDateFormat("yyyy年M月d日").format(new Date(paramFeedItem.jdField_c_of_type_Int * 1000L));
+          str2 = new SimpleDateFormat("yyyy年M月d日").format(new Date(paramFeedItem.h * 1000L));
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(str2);
           ((StringBuilder)localObject).append(" 群公告");
@@ -98,37 +98,37 @@ public class TroopAnnouncementProcessor
         }
         paramString = String.format("https://web.qun.qq.com/mannounce/index.html?_wv=1031&amp;_bid=148#gc=%d&amp;feedType=%d&amp;gotoFid=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), paramString });
         Object localObject = new TroopNotificationCache();
-        ((TroopNotificationCache)localObject).title = paramFeedItem.jdField_a_of_type_JavaLangString;
+        ((TroopNotificationCache)localObject).title = paramFeedItem.b;
         ((TroopNotificationCache)localObject).feedType = paramInt1;
         ((TroopNotificationCache)localObject).appId = paramInt2;
-        ((TroopNotificationCache)localObject).userUin = paramFeedItem.jdField_a_of_type_Long;
+        ((TroopNotificationCache)localObject).userUin = paramFeedItem.g;
         ((TroopNotificationCache)localObject).troopUin = paramLong;
-        ((TroopNotificationCache)localObject).time = paramFeedItem.jdField_c_of_type_Int;
-        ((TroopNotificationCache)localObject).feedsId = paramFeedItem.jdField_b_of_type_JavaLangString;
+        ((TroopNotificationCache)localObject).time = paramFeedItem.h;
+        ((TroopNotificationCache)localObject).feedsId = paramFeedItem.c;
         ((TroopNotificationCache)localObject).serviceID = 27;
-        ((TroopNotificationCache)localObject).needConfirm = paramFeedItem.jdField_a_of_type_Boolean;
+        ((TroopNotificationCache)localObject).needConfirm = paramFeedItem.n;
         String str3 = new SimpleDateFormat("M-d HH:mm").format(new Date(((TroopNotificationCache)localObject).time * 1000L));
-        if (TextUtils.isEmpty(paramFeedItem.jdField_d_of_type_JavaLangString))
+        if (TextUtils.isEmpty(paramFeedItem.e))
         {
           ((TroopNotificationCache)localObject).xmlBytes = String.format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><msg action=\"web\" serviceID=\"27\" templateID=\"\" actionData=\"\" url=\"%s\" flag=\"5\" brief=\"%s\"><item layout=\"1\"><title size=\"30\" color=\"#000000\">[公告] %s</title><hr /><title size=\"22\" color=\"#000000\">%s</title><summary size=\"28\" color=\"#808080\">%s</summary></item></msg>", new Object[] { paramString, "", str2, str3, str1 }).getBytes();
           return localObject;
         }
-        ((TroopNotificationCache)localObject).xmlBytes = String.format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><msg action=\"web\" serviceID=\"27\" templateID=\"\" actionData=\"\" url=\"%s\" flag=\"5\" brief=\"%s\"><item layout=\"6\"><title size=\"30\" color=\"#000000\">[公告] %s</title><hr /></item><item layout=\"2\"><picture cover=\"%s\"/><title size=\"22\" color=\"#000000\">%s</title><summary size=\"28\" color=\"#808080\">%s</summary></item></msg>", new Object[] { paramString, "", str2, paramFeedItem.jdField_d_of_type_JavaLangString, str3, str1 }).getBytes();
+        ((TroopNotificationCache)localObject).xmlBytes = String.format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><msg action=\"web\" serviceID=\"27\" templateID=\"\" actionData=\"\" url=\"%s\" flag=\"5\" brief=\"%s\"><item layout=\"6\"><title size=\"30\" color=\"#000000\">[公告] %s</title><hr /></item><item layout=\"2\"><picture cover=\"%s\"/><title size=\"22\" color=\"#000000\">%s</title><summary size=\"28\" color=\"#808080\">%s</summary></item></msg>", new Object[] { paramString, "", str2, paramFeedItem.e, str3, str1 }).getBytes();
         return localObject;
       }
-      if (paramFeedItem.jdField_a_of_type_Int == 2)
+      if (paramFeedItem.a == 2)
       {
         paramString = new TroopNotificationCache();
         paramString.feedType = paramInt1;
         paramString.appId = paramInt2;
-        paramString.userUin = paramFeedItem.jdField_a_of_type_Long;
+        paramString.userUin = paramFeedItem.g;
         paramString.troopUin = paramLong;
-        paramString.time = paramFeedItem.jdField_c_of_type_Int;
-        paramString.feedsId = paramFeedItem.jdField_b_of_type_JavaLangString;
-        paramString.ctrlStr = paramFeedItem.jdField_e_of_type_JavaLangString;
-        paramString.xmlBytes = paramFeedItem.jdField_a_of_type_ArrayOfByte;
-        paramString.src = paramFeedItem.jdField_d_of_type_Int;
-        paramString.filterID = paramFeedItem.jdField_b_of_type_Long;
+        paramString.time = paramFeedItem.h;
+        paramString.feedsId = paramFeedItem.c;
+        paramString.ctrlStr = paramFeedItem.j;
+        paramString.xmlBytes = paramFeedItem.i;
+        paramString.src = paramFeedItem.k;
+        paramString.filterID = paramFeedItem.l;
         paramString.serviceID = 20;
         return paramString;
       }
@@ -177,7 +177,7 @@ public class TroopAnnouncementProcessor
     if (paramFeedItem != null)
     {
       TroopNotificationCache localTroopNotificationCache = null;
-      if ((paramFeedItem.jdField_a_of_type_Int == 1) || (paramFeedItem.jdField_a_of_type_Int == 2)) {
+      if ((paramFeedItem.a == 1) || (paramFeedItem.a == 2)) {
         localTroopNotificationCache = a(paramFeedItem, paramString, 23, paramInt, paramLong2);
       }
       if ((paramAppInterface instanceof QQAppInterface))
@@ -186,8 +186,8 @@ public class TroopAnnouncementProcessor
         paramString = paramAppInterface.getMessageFacade();
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(localTroopNotificationCache);
-        paramInt = (int)MessageCache.a();
-        paramString.a().a(paramAppInterface, String.valueOf(paramLong1), String.valueOf(paramLong2), localArrayList, 23, paramInt, paramFeedItem.jdField_e_of_type_Int, paramFeedItem.jdField_b_of_type_JavaLangString);
+        paramInt = (int)MessageCache.c();
+        paramString.p().a(paramAppInterface, String.valueOf(paramLong1), String.valueOf(paramLong2), localArrayList, 23, paramInt, paramFeedItem.m, paramFeedItem.c);
       }
     }
   }
@@ -208,8 +208,8 @@ public class TroopAnnouncementProcessor
         QQMessageFacade localQQMessageFacade = paramAppInterface.getMessageFacade();
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(paramDataInputStream);
-        paramInt1 = (int)MessageCache.a();
-        localQQMessageFacade.a().a(paramAppInterface, String.valueOf(paramLong1), String.valueOf(paramLong2), localArrayList, 34, paramInt1, 0, paramString);
+        paramInt1 = (int)MessageCache.c();
+        localQQMessageFacade.p().a(paramAppInterface, String.valueOf(paramLong1), String.valueOf(paramLong2), localArrayList, 34, paramInt1, 0, paramString);
         paramAppInterface = paramAppInterface.getHandler(Conversation.class);
         if (paramAppInterface != null) {
           paramAppInterface.sendEmptyMessage(1009);
@@ -220,7 +220,7 @@ public class TroopAnnouncementProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopAnnouncementProcessor
  * JD-Core Version:    0.7.0.1
  */

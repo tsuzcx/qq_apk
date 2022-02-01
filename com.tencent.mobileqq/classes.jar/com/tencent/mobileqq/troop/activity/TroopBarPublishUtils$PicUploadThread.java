@@ -28,17 +28,17 @@ import org.json.JSONObject;
 public class TroopBarPublishUtils$PicUploadThread
   implements Runnable
 {
-  private long a;
-  protected Handler a;
-  protected String a;
   protected final ArrayList<String> a;
-  protected WeakReference<BaseActivity> a;
-  protected boolean a;
-  protected String b;
+  protected Handler b;
+  protected WeakReference<BaseActivity> c;
+  protected String d;
+  protected String e;
+  protected boolean f;
+  private long g;
   
   private void a(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
@@ -48,20 +48,20 @@ public class TroopBarPublishUtils$PicUploadThread
     }
     ((Message)localObject).arg1 = paramInt2;
     ((Message)localObject).arg2 = paramInt3;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    this.b.sendMessage((Message)localObject);
   }
   
   public void run()
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    Object localObject1 = this.jdField_a_of_type_MqqUtilWeakReference;
+    this.g = SystemClock.elapsedRealtime();
+    Object localObject1 = this.c;
     BaseActivity localBaseActivity;
     if (localObject1 == null) {
       localBaseActivity = null;
     } else {
       localBaseActivity = (BaseActivity)((WeakReference)localObject1).get();
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    if (this.a.size() == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopBarPublishUtils", 2, "PicUploadThread path list is null!");
@@ -75,29 +75,29 @@ public class TroopBarPublishUtils$PicUploadThread
       String str2 = ((TicketManager)localBaseActivity.app.getManager(2)).getSkey(str1);
       if (TextUtils.isEmpty(str2))
       {
-        a(1001, this.jdField_a_of_type_JavaUtilArrayList.get(0), 1000, 0);
+        a(1001, this.a.get(0), 1000, 0);
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         String str3 = (String)localIterator.next();
         int i;
-        if ((!BaseImageUtil.b(str3)) && (TroopBarPublishUtils.a()) && (TroopBarPublishUtils.jdField_a_of_type_Boolean)) {
+        if ((!BaseImageUtil.c(str3)) && (TroopBarPublishUtils.a()) && (TroopBarPublishUtils.b)) {
           i = 1;
         } else {
           i = 0;
         }
-        localObject1 = (TroopBarPublishUtils.Pic_list)TroopBarUtils.a.get(str3);
+        localObject1 = (TroopBarPublishUtils.Pic_list)TroopBarUtils.f.get(str3);
         if (localObject1 != null)
         {
           if (!((TroopBarPublishUtils.Pic_list)localObject1).canReuse) {
-            TroopBarUtils.a.remove(str3);
+            TroopBarUtils.f.remove(str3);
           }
         }
-        else if ((!localBaseActivity.isFinishing()) && (!this.jdField_a_of_type_Boolean))
+        else if ((!localBaseActivity.isFinishing()) && (!this.f))
         {
-          Object localObject2 = MediaApiPlugin.a(str3, 0);
+          Object localObject2 = MediaApiPlugin.b(str3, 0);
           if (TextUtils.isEmpty((CharSequence)localObject2))
           {
             a(1001, str3, 1001, 0);
@@ -134,17 +134,17 @@ public class TroopBarPublishUtils$PicUploadThread
               }
             }
             localObject2 = new HashMap();
-            ((HashMap)localObject2).put("type", this.b);
+            ((HashMap)localObject2).put("type", this.e);
             if (QLog.isColorLevel())
             {
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("PicUploadThread type: ");
-              ((StringBuilder)localObject3).append(this.b);
+              ((StringBuilder)localObject3).append(this.e);
               ((StringBuilder)localObject3).append(" ,mUrl: ");
-              ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject3).append(this.d);
               QLog.d("TroopBarPublishUtils", 2, ((StringBuilder)localObject3).toString());
             }
-            localObject2 = TroopBarUtils.a(this.jdField_a_of_type_JavaLangString, localBaseActivity, (String)localObject1, str1, str2, (Map)localObject2);
+            localObject2 = TroopBarUtils.a(this.d, localBaseActivity, (String)localObject1, str1, str2, (Map)localObject2);
             if (i != 0) {
               new File((String)localObject1).delete();
             }
@@ -152,7 +152,7 @@ public class TroopBarPublishUtils$PicUploadThread
             {
               localObject1 = new TroopBarPublishUtils.Pic_list((JSONObject)localObject2);
               ((TroopBarPublishUtils.Pic_list)localObject1).canReuse = (i ^ 0x1);
-              TroopBarUtils.a.put(str3, localObject1);
+              TroopBarUtils.f.put(str3, localObject1);
             }
             else
             {
@@ -173,18 +173,18 @@ public class TroopBarPublishUtils$PicUploadThread
           return;
         }
       }
-      a(1003, this.jdField_a_of_type_JavaUtilArrayList.get(0), 0, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+      a(1003, this.a.get(0), 0, (int)(SystemClock.elapsedRealtime() - this.g));
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TroopBarPublishUtils", 2, "PicUploadThread activity is null!");
     }
-    a(1001, this.jdField_a_of_type_JavaUtilArrayList.get(0), -1, 0);
+    a(1001, this.a.get(0), -1, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.PicUploadThread
  * JD-Core Version:    0.7.0.1
  */

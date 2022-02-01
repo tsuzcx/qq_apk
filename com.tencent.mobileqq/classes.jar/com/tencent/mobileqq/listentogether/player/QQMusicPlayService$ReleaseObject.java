@@ -5,18 +5,18 @@ import com.tencent.mobileqq.listentogether.data.ISong;
 
 class QQMusicPlayService$ReleaseObject
 {
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  ISong jdField_a_of_type_ComTencentMobileqqListentogetherDataISong;
+  MediaPlayer a;
+  ISong b;
   
   QQMusicPlayService$ReleaseObject(QQMusicPlayService paramQQMusicPlayService, MediaPlayer paramMediaPlayer, ISong paramISong)
   {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
+    this.a = paramMediaPlayer;
+    this.b = paramISong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayService.ReleaseObject
  * JD-Core Version:    0.7.0.1
  */

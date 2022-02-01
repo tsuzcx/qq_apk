@@ -10,22 +10,22 @@ import java.util.List;
 public class EmojiFragment$TemplateListAdapter
   extends RecyclerView.Adapter<EmojiFragment.TemplateListAdapter.TemplateItemVH>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<EmojiFragment.TemplateInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Context b;
+  private List<EmojiFragment.TemplateInfo> c = new ArrayList();
   
   public EmojiFragment$TemplateListAdapter(EmojiFragment paramEmojiFragment, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   public EmojiFragment.TemplateListAdapter.TemplateItemVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new EmojiFragment.TemplateListAdapter.TemplateItemVH(this, new EmojiFragment.TempListItem(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment, this.jdField_a_of_type_AndroidContentContext));
+    return new EmojiFragment.TemplateListAdapter.TemplateItemVH(this, new EmojiFragment.TempListItem(this.a, this.b));
   }
   
   public void a(EmojiFragment.TemplateListAdapter.TemplateItemVH paramTemplateItemVH, int paramInt)
   {
-    EmojiFragment.TemplateInfo localTemplateInfo = (EmojiFragment.TemplateInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    EmojiFragment.TemplateInfo localTemplateInfo = (EmojiFragment.TemplateInfo)this.c.get(paramInt);
     if (localTemplateInfo == null) {
       return;
     }
@@ -33,7 +33,7 @@ public class EmojiFragment$TemplateListAdapter
     if (paramTemplateItemVH == null) {
       return;
     }
-    EmojiFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment).put(localTemplateInfo.b, EmojiFragment.TempListItem.a(paramTemplateItemVH));
+    EmojiFragment.a(this.a).put(localTemplateInfo.b, EmojiFragment.TempListItem.a(paramTemplateItemVH));
     paramTemplateItemVH.a(localTemplateInfo);
   }
   
@@ -44,23 +44,23 @@ public class EmojiFragment$TemplateListAdapter
       if (paramList.isEmpty()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.c.addAll(paramList);
       notifyDataSetChanged();
     }
   }
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if ((localList != null) && (!localList.isEmpty())) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+      return this.c.size();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.EmojiFragment.TemplateListAdapter
  * JD-Core Version:    0.7.0.1
  */

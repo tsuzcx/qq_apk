@@ -18,28 +18,28 @@ class OcrImageTextView$2
   {
     Object localObject1 = this.this$0;
     localObject1 = OcrImageTextView.a((OcrImageTextView)localObject1, this.a, OcrImageTextView.a((OcrImageTextView)localObject1));
-    Iterator localIterator = ((PicOcrRspResult)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = ((PicOcrRspResult)localObject1).f.iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (PicOcrResultBean)localIterator.next();
       OcrImageTextBean localOcrImageTextBean = new OcrImageTextBean((PicOcrResultBean)localObject2);
-      localOcrImageTextBean.f = ((PicOcrResultBean)localObject2).a(OcrImageTextView.a(this.this$0));
-      localOcrImageTextBean.g = ((PicOcrResultBean)localObject2).b(OcrImageTextView.b(this.this$0));
-      localObject2 = OcrImageTextView.a(this.this$0, (PicOcrResultBean)localObject2, localOcrImageTextBean.c, localOcrImageTextBean.jdField_a_of_type_Int, ((PicOcrRspResult)localObject1).jdField_a_of_type_JavaLangString, ((PicOcrRspResult)localObject1).jdField_a_of_type_Int, ((PicOcrRspResult)localObject1).b);
+      localOcrImageTextBean.j = ((PicOcrResultBean)localObject2).a(OcrImageTextView.b(this.this$0));
+      localOcrImageTextBean.k = ((PicOcrResultBean)localObject2).b(OcrImageTextView.c(this.this$0));
+      localObject2 = OcrImageTextView.a(this.this$0, (PicOcrResultBean)localObject2, localOcrImageTextBean.u, localOcrImageTextBean.c, ((PicOcrRspResult)localObject1).a, ((PicOcrRspResult)localObject1).b, ((PicOcrRspResult)localObject1).c);
       if (localObject2 != null)
       {
-        localOcrImageTextBean.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
-        localOcrImageTextBean.a(OcrImageTextView.a(this.this$0), OcrImageTextView.b(this.this$0));
+        localOcrImageTextBean.h = ((Bitmap)localObject2);
+        localOcrImageTextBean.a(OcrImageTextView.b(this.this$0), OcrImageTextView.c(this.this$0));
         OcrImageTextView.a(this.this$0, localOcrImageTextBean);
-        OcrImageTextView.a(this.this$0).add(localOcrImageTextBean);
+        OcrImageTextView.d(this.this$0).add(localOcrImageTextBean);
       }
     }
-    ThreadManager.getUIHandler().postDelayed(OcrImageTextView.a(this.this$0), 300L);
+    ThreadManager.getUIHandler().postDelayed(OcrImageTextView.e(this.this$0), 300L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.OcrImageTextView.2
  * JD-Core Version:    0.7.0.1
  */

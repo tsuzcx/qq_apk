@@ -99,7 +99,7 @@ public class GameDataJsPlugin
     return paramRequestEvent.fail();
   }
   
-  @JsEvent({"getOpenDataUserInfo"})
+  @JsEvent(isSync=false, value={"getOpenDataUserInfo"})
   public void getOpenDataUserInfo(RequestEvent paramRequestEvent)
   {
     try
@@ -188,7 +188,7 @@ public class GameDataJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.GameDataJsPlugin
  * JD-Core Version:    0.7.0.1
  */

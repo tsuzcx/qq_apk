@@ -1,21 +1,19 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-import java.util.Map;
-
 public class Casaba
-  implements Runnable
 {
-  public Casaba(Cascara paramCascara, Context paramContext, Map paramMap) {}
+  public int a = -999;
+  public String b = "";
   
-  public void run()
+  public Casaba(int paramInt, String paramString)
   {
-    Cascara.a(this.ah, this.bh);
+    this.a = paramInt;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Casaba
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ import io.flutter.plugin.common.MethodChannel.Result;
 public class ExpandAudioPlayer
   implements BasePlayer
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private IExpandAudioPlayer jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer;
+  private IExpandAudioPlayer a;
+  private Handler b;
   
   public ExpandAudioPlayer()
   {
     QLog.w("ExpandAudioPlayer", 1, "flutter version");
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer = ((IExpandAudioPlayer)QRoute.api(IExpandAudioPlayer.class));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a = ((IExpandAudioPlayer)QRoute.api(IExpandAudioPlayer.class));
+    this.b = new Handler(Looper.getMainLooper());
   }
   
   private void a(MethodChannel.Result paramResult, Object paramObject)
@@ -34,47 +34,47 @@ public class ExpandAudioPlayer
       paramResult.success(paramObject);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ExpandAudioPlayer.7(this, paramResult, paramObject));
+    this.b.post(new ExpandAudioPlayer.7(this, paramResult, paramObject));
   }
   
   public void audioPreDownLoad(String paramString, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer.audioPreDownLoad(paramString, new ExpandAudioPlayer.1(this, paramResult));
+    this.a.audioPreDownLoad(paramString, new ExpandAudioPlayer.1(this, paramResult));
   }
   
   public void continueAudioPlay(MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer.continueAudioPlay(new ExpandAudioPlayer.4(this, paramResult));
+    this.a.continueAudioPlay(new ExpandAudioPlayer.4(this, paramResult));
   }
   
   public void pauseAudioPlay(MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer.pauseAudioPlay(new ExpandAudioPlayer.5(this, paramResult));
+    this.a.pauseAudioPlay(new ExpandAudioPlayer.5(this, paramResult));
   }
   
   public void removeAudioPlayerListener()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer.removeAudioPlayerListener();
+    this.a.removeAudioPlayerListener();
   }
   
   public void setAudioPlayerListener(IPlayerStatusListener paramIPlayerStatusListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer.setAudioPlayerListener(new ExpandAudioPlayer.6(this, paramIPlayerStatusListener));
+    this.a.setAudioPlayerListener(new ExpandAudioPlayer.6(this, paramIPlayerStatusListener));
   }
   
   public void startAudioPlay(String paramString, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer.startAudioPlay(paramString, new ExpandAudioPlayer.2(this, paramResult));
+    this.a.startAudioPlay(paramString, new ExpandAudioPlayer.2(this, paramResult));
   }
   
   public void stopAudioPlay(MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandAudioIExpandAudioPlayer.stopAudioPlay(new ExpandAudioPlayer.3(this, paramResult));
+    this.a.stopAudioPlay(new ExpandAudioPlayer.3(this, paramResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.audio.ExpandAudioPlayer
  * JD-Core Version:    0.7.0.1
  */

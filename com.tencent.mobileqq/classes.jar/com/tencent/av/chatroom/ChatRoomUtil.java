@@ -60,14 +60,14 @@ public class ChatRoomUtil
         }
         i += 1;
       }
-      Collections.sort((List)localObject1, EmotionData.jdField_a_of_type_JavaUtilComparator);
+      Collections.sort((List)localObject1, EmotionData.e);
       localObject2 = ((ArrayList)localObject1).iterator();
       for (i = j; ((Iterator)localObject2).hasNext(); i = j)
       {
         localObject3 = (EmotionData)((Iterator)localObject2).next();
-        paramQQTextBuilder = ((EmotionData)localObject3).jdField_a_of_type_ComTencentMobileqqTextStyleEmoticonSpan;
-        int k = ((EmotionData)localObject3).jdField_a_of_type_Int;
-        j = ((EmotionData)localObject3).b;
+        paramQQTextBuilder = ((EmotionData)localObject3).a;
+        int k = ((EmotionData)localObject3).b;
+        j = ((EmotionData)localObject3).c;
         int m = paramQQTextBuilder.emojiType;
         if (m != 1)
         {
@@ -177,9 +177,9 @@ public class ChatRoomUtil
     }
   }
   
-  public static void a(String paramString)
+  public static void b(String paramString)
   {
-    int i = SessionMgr.a().a().d;
+    int i = SessionMgr.a().b().g;
     if (QLog.isColorLevel()) {
       QLog.i("ChatRoomUtil", 2, String.format("doReport, tag[%s], fromType[%s]", new Object[] { paramString, Integer.valueOf(i) }));
     }

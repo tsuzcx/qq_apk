@@ -12,22 +12,22 @@ public class QAPMCellingValueWrapper
     return "ceilingvalue";
   }
   
-  public void a()
+  public void d()
   {
-    super.a();
+    super.d();
     if (MobileQQ.sProcessId == 1)
     {
-      MemoryManager.a().b();
+      MemoryManager.a().c();
       return;
     }
-    MemoryClearManager.a().d();
+    MemoryClearManager.b().f();
   }
   
-  public void b() {}
+  public void j() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMCellingValueWrapper
  * JD-Core Version:    0.7.0.1
  */

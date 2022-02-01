@@ -7,13 +7,13 @@ public class TroopFileManager$UploadingFileFilter
 {
   public boolean a(TroopFileInfo paramTroopFileInfo)
   {
-    int i = paramTroopFileInfo.e;
+    int i = paramTroopFileInfo.p;
     return (i == 0) || (i == 1) || (i == 2) || (i == 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager.UploadingFileFilter
  * JD-Core Version:    0.7.0.1
  */

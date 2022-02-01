@@ -11,9 +11,9 @@ public class RecentSortTopDispatcher
 {
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, RecentUserBaseData paramRecentUserBaseData)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         IRecentSortTopProcessor localIRecentSortTopProcessor = (IRecentSortTopProcessor)localIterator.next();
@@ -31,7 +31,7 @@ public class RecentSortTopDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.RecentSortTopDispatcher
  * JD-Core Version:    0.7.0.1
  */

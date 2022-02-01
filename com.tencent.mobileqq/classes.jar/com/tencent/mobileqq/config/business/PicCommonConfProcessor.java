@@ -49,13 +49,13 @@ public class PicCommonConfProcessor
       localStringBuilder.append(paramPicCommonBean.toString());
       QLog.d("PicCommonConfProcessor", 2, localStringBuilder.toString());
     }
-    SafeBitmapFactory.setNeedRegionDecode(paramPicCommonBean.jdField_a_of_type_Boolean);
-    SafeBitmapFactory.setPxThreshoidToSp(paramPicCommonBean.jdField_a_of_type_Long);
-    SafeBitmapFactory.setRamThreshoidToSp(paramPicCommonBean.jdField_a_of_type_Int);
-    SafeBitmapFactory.setThreadCountToSp(paramPicCommonBean.jdField_b_of_type_Int);
-    PicUploadFileSizeLimit.setLimitC2C(paramPicCommonBean.jdField_b_of_type_Long);
-    PicUploadFileSizeLimit.setLimitGroup(paramPicCommonBean.jdField_c_of_type_Long);
-    PicUploadExifInfoSwitch.setSwitch(paramPicCommonBean.jdField_c_of_type_Int);
+    SafeBitmapFactory.setNeedRegionDecode(paramPicCommonBean.a);
+    SafeBitmapFactory.setPxThreshoidToSp(paramPicCommonBean.c);
+    SafeBitmapFactory.setRamThreshoidToSp(paramPicCommonBean.b);
+    SafeBitmapFactory.setThreadCountToSp(paramPicCommonBean.d);
+    PicUploadFileSizeLimit.setLimitC2C(paramPicCommonBean.e);
+    PicUploadFileSizeLimit.setLimitGroup(paramPicCommonBean.f);
+    PicUploadExifInfoSwitch.setSwitch(paramPicCommonBean.g);
   }
   
   public Class<PicCommonBean> clazz()
@@ -101,7 +101,7 @@ public class PicCommonConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PicCommonConfProcessor
  * JD-Core Version:    0.7.0.1
  */

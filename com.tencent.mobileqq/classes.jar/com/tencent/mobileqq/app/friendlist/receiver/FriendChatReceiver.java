@@ -33,7 +33,7 @@ public class FriendChatReceiver
   {
     boolean bool = paramFromServiceMsg.isSuccess();
     cmd0xc83.RspBody localRspBody = new cmd0xc83.RspBody();
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+    FriendListHandler localFriendListHandler = this.b;
     int k = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
     if (k != 0) {
       bool = false;
@@ -68,7 +68,7 @@ public class FriendChatReceiver
   {
     boolean bool = paramFromServiceMsg.isSuccess();
     cmd0xc85.RspBody localRspBody = new cmd0xc85.RspBody();
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+    FriendListHandler localFriendListHandler = this.b;
     int m = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
     if (m != 0) {
       bool = false;
@@ -121,7 +121,7 @@ public class FriendChatReceiver
       ((StringBuilder)localObject).append(paramObject);
       QLog.d("tag_msg_notification", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject = MessageNotificationSettingManager.a(this.a);
     int j = paramToServiceMsg.extraData.getInt("param_type");
     String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("param_uins");
     boolean[] arrayOfBoolean = paramToServiceMsg.extraData.getBooleanArray("param_switch_state");
@@ -221,7 +221,7 @@ public class FriendChatReceiver
             } else {
               paramToServiceMsg.a(null);
             }
-            FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg, null);
+            FriendsStatusUtil.a(this.a, paramToServiceMsg, null);
             i += 1;
           }
           k = 1;
@@ -292,7 +292,7 @@ public class FriendChatReceiver
         if (QLog.isColorLevel()) {
           QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage parse oidb_sso.OIDBSSOPkg failed.");
         }
-        FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+        FriendsStatusUtil.a(i, false, localArrayList, null, this.a, bool);
         paramFromServiceMsg.printStackTrace();
       }
       if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null))
@@ -314,13 +314,13 @@ public class FriendChatReceiver
             paramToServiceMsg = paramFromServiceMsg.rpt_msg_update_result.get();
             if ((paramToServiceMsg != null) && (!paramToServiceMsg.isEmpty()))
             {
-              FriendsStatusUtil.a(i, true, localArrayList, paramToServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+              FriendsStatusUtil.a(i, true, localArrayList, paramToServiceMsg, this.a, bool);
               return;
             }
             if (QLog.isColorLevel()) {
               QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage resultList null!");
             }
-            FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+            FriendsStatusUtil.a(i, false, localArrayList, null, this.a, bool);
             return;
           }
           catch (InvalidProtocolBufferMicroException paramToServiceMsg)
@@ -328,7 +328,7 @@ public class FriendChatReceiver
             if (QLog.isColorLevel()) {
               QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage res failed!");
             }
-            FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+            FriendsStatusUtil.a(i, false, localArrayList, null, this.a, bool);
             paramToServiceMsg.printStackTrace();
             return;
           }
@@ -336,24 +336,24 @@ public class FriendChatReceiver
         if (QLog.isColorLevel()) {
           QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage uint32_result failed!");
         }
-        FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+        FriendsStatusUtil.a(i, false, localArrayList, null, this.a, bool);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage res failed!");
       }
-      FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+      FriendsStatusUtil.a(i, false, localArrayList, null, this.a, bool);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage req failed!");
     }
-    FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+    FriendsStatusUtil.a(i, false, localArrayList, null, this.a, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.FriendChatReceiver
  * JD-Core Version:    0.7.0.1
  */

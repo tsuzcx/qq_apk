@@ -1,6 +1,6 @@
 package com.tencent.aelight.camera.ae.biz.circle.adapter;
 
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup;
 import com.tencent.util.ArrayUtils;
 
 class PhotoGridAdapter$1
@@ -10,7 +10,7 @@ class PhotoGridAdapter$1
   
   public int getSpanSize(int paramInt)
   {
-    if (ArrayUtils.a(paramInt, this.a.a)) {
+    if (ArrayUtils.isOutOfArrayIndex(paramInt, this.a.a)) {
       return 3;
     }
     return 1;
@@ -18,7 +18,7 @@ class PhotoGridAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.adapter.PhotoGridAdapter.1
  * JD-Core Version:    0.7.0.1
  */

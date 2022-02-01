@@ -21,7 +21,7 @@ class SlideProgressNotifier$1
     }
     Object localObject = SlideProgressNotifier.a(this.this$0);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.this$0.a.getString(2131699372));
+    localStringBuilder.append(this.this$0.a.getString(2131897389));
     localStringBuilder.append(" ");
     localStringBuilder.append(this.a);
     localStringBuilder.append("%");

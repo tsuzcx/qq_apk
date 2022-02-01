@@ -2,19 +2,19 @@ package com.tencent.mobileqq.comment;
 
 public class DanmuDataContext
 {
-  public int a;
   public long a;
-  public boolean a;
   public long b;
-  public long c;
-  public long d;
+  public int c;
+  public boolean d;
+  public long e;
+  public long f;
   
   public DanmuDataContext(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
     this.b = paramLong1;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramLong2;
+    this.c = paramInt;
+    this.d = paramBoolean;
   }
   
   public boolean equals(Object paramObject)
@@ -26,7 +26,7 @@ public class DanmuDataContext
     {
       paramObject = (DanmuDataContext)paramObject;
       bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
+      if (paramObject.a == this.a)
       {
         bool1 = bool2;
         if (paramObject.b == this.b) {
@@ -39,7 +39,7 @@ public class DanmuDataContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuDataContext
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ class AEFilterAVWrapperImpl$MyTipsListener
     if ((AEFilterAVWrapperImpl)this.a.get() == null) {
       return;
     }
-    TipsInfo.a().e();
+    TipsInfo.a().g();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();

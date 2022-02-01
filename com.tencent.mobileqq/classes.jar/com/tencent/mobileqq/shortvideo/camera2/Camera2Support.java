@@ -19,7 +19,7 @@ public class Camera2Support
       }
       try
       {
-        i = Camera2Control.a();
+        i = Camera2Control.c();
       }
       catch (Throwable localThrowable)
       {
@@ -78,7 +78,7 @@ public class Camera2Support
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Support
  * JD-Core Version:    0.7.0.1
  */

@@ -118,12 +118,12 @@ public class GroupVideoHelper
       paramClass.putExtra("useSkinEngine", 1);
       paramClass.putExtra("userQqResources", 2);
       IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-      localPluginParams.b = "group_video_plugin.apk";
-      localPluginParams.e = PluginInfo.k;
-      localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-      localPluginParams.f = paramString;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramClass;
-      localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      localPluginParams.d = "group_video_plugin.apk";
+      localPluginParams.g = PluginInfo.k;
+      localPluginParams.c = paramAppRuntime.getAccount();
+      localPluginParams.h = paramString;
+      localPluginParams.j = paramClass;
+      localPluginParams.o = paramServiceConnection;
       IPluginManager.c(paramAppRuntime.getApplication(), localPluginParams);
     }
   }
@@ -184,7 +184,7 @@ public class GroupVideoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.groupvideo.GroupVideoHelper
  * JD-Core Version:    0.7.0.1
  */

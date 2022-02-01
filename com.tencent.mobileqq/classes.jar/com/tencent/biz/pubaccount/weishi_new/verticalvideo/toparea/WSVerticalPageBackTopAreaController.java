@@ -9,35 +9,35 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalUtils
 public class WSVerticalPageBackTopAreaController
   extends AbsWsUIGroup<Object>
 {
-  private final WSVerticalPageFragment a;
+  private final WSVerticalPageFragment g;
   
   public WSVerticalPageBackTopAreaController(WSVerticalPageFragment paramWSVerticalPageFragment)
   {
     super(paramWSVerticalPageFragment.getContext());
-    this.a = paramWSVerticalPageFragment;
+    this.g = paramWSVerticalPageFragment;
   }
   
   protected void a() {}
   
-  protected int b()
-  {
-    return 2131560007;
-  }
-  
   protected void b() {}
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380469);
-    WSVerticalUtils.a(this.a.getBaseActivity(), localRelativeLayout);
-    a(2131380468).setOnClickListener(new WSVerticalPageBackTopAreaController.1(this));
+    return 2131626050;
+  }
+  
+  protected void j()
+  {
+    RelativeLayout localRelativeLayout = (RelativeLayout)c(2131449422);
+    WSVerticalUtils.a(this.g.getBaseActivity(), localRelativeLayout);
+    c(2131449421).setOnClickListener(new WSVerticalPageBackTopAreaController.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageBackTopAreaController
  * JD-Core Version:    0.7.0.1
  */

@@ -22,10 +22,10 @@ class SocialFriendChooser$1
       if (i != 10002) {
         return;
       }
-      if ((this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask != null) && (!this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.isCancelled())) {
-        this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.cancel(true);
+      if ((this.a.ah != null) && (!this.a.ah.isCancelled())) {
+        this.a.ah.cancel(true);
       }
-      this.a.l();
+      this.a.o();
       paramMessage = new Intent();
       paramMessage.putExtra("key_error_code", -7);
       paramMessage.putExtra("key_error_msg", Constants.e);
@@ -33,8 +33,8 @@ class SocialFriendChooser$1
       this.a.finish();
       return;
     }
-    paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-    paramMessage.putString("agentversion", CommonDataAdapter.a().e());
+    paramMessage = new Bundle(this.a.N);
+    paramMessage.putString("agentversion", CommonDataAdapter.a().k());
     paramMessage.putString("facetype", "mqqface");
     String str = ServerSetting.a().a("https://fusion.qq.com/cgi-bin/appstage/get_image_update");
     OpenSdkFriendService.a().a(str, paramMessage, new SocialFriendChooser.1.1(this));
@@ -42,7 +42,7 @@ class SocialFriendChooser$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.SocialFriendChooser.1
  * JD-Core Version:    0.7.0.1
  */

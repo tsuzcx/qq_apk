@@ -10,8 +10,8 @@ import com.tencent.qphone.base.util.QLog;
 
 public class FileResultWatchForObserver
 {
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = null;
+  private FMObserver a = null;
+  private MessageObserver b = null;
   
   public FileResultWatchForObserver(QQAppInterface paramQQAppInterface)
   {
@@ -58,44 +58,44 @@ public class FileResultWatchForObserver
   
   private void c(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver != null)
+    if (this.b != null)
     {
       QLog.w("FileResultWatchForObserver<FileAssistant>NDL", 1, "TextMsgSendResultObserver may be inited");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new FileResultWatchForObserver.1(this, paramQQAppInterface);
-    paramQQAppInterface.addDefaultObservers(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    this.b = new FileResultWatchForObserver.1(this, paramQQAppInterface);
+    paramQQAppInterface.addDefaultObservers(this.b);
   }
   
   private void d(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null)
+    if (this.a != null)
     {
       QLog.w("FileResultWatchForObserver<FileAssistant>NDL", 1, "FileResultWatchForObserver may be inited");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new FileResultWatchForObserver.2(this, paramQQAppInterface);
-    paramQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    this.a = new FileResultWatchForObserver.2(this, paramQQAppInterface);
+    paramQQAppInterface.getFileManagerNotifyCenter().addObserver(this.a);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null)
+    if (this.a != null)
     {
-      paramQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = null;
+      paramQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.a);
+      this.a = null;
     }
-    MessageObserver localMessageObserver = this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
+    MessageObserver localMessageObserver = this.b;
     if (localMessageObserver != null)
     {
       paramQQAppInterface.removeObserver(localMessageObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
+      this.b = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.FileResultWatchForObserver
  * JD-Core Version:    0.7.0.1
  */

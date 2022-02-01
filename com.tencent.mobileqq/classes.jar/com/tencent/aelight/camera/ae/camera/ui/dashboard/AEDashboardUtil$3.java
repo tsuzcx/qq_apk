@@ -9,12 +9,12 @@ final class AEDashboardUtil$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiDashboardAEVideoStoryDashboardPart$IDebugInfoCallback.a(this.jdField_a_of_type_JavaUtilList, this.b);
+    this.a.a(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.dashboard.AEDashboardUtil.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import java.lang.reflect.Array;
 
 public class LockPatternView$Cell
 {
-  static Cell[][] jdField_a_of_type_Array2dOfComTencentMobileqqGesturelockLockPatternView$Cell = (Cell[][])Array.newInstance(Cell.class, new int[] { 3, 3 });
-  int jdField_a_of_type_Int;
+  static Cell[][] c = (Cell[][])Array.newInstance(Cell.class, new int[] { 3, 3 });
+  int a;
   int b;
   
   static
@@ -16,7 +16,7 @@ public class LockPatternView$Cell
       int j = 0;
       while (j < 3)
       {
-        jdField_a_of_type_Array2dOfComTencentMobileqqGesturelockLockPatternView$Cell[i][j] = new Cell(i, j);
+        c[i][j] = new Cell(i, j);
         j += 1;
       }
       i += 1;
@@ -25,8 +25,8 @@ public class LockPatternView$Cell
   
   private LockPatternView$Cell(int paramInt1, int paramInt2)
   {
-    a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Int = paramInt1;
+    b(paramInt1, paramInt2);
+    this.a = paramInt1;
     this.b = paramInt2;
   }
   
@@ -34,8 +34,8 @@ public class LockPatternView$Cell
   {
     try
     {
-      a(paramInt1, paramInt2);
-      Cell localCell = jdField_a_of_type_Array2dOfComTencentMobileqqGesturelockLockPatternView$Cell[paramInt1][paramInt2];
+      b(paramInt1, paramInt2);
+      Cell localCell = c[paramInt1][paramInt2];
       return localCell;
     }
     finally
@@ -45,7 +45,7 @@ public class LockPatternView$Cell
     }
   }
   
-  private static void a(int paramInt1, int paramInt2)
+  private static void b(int paramInt1, int paramInt2)
   {
     if ((paramInt1 >= 0) && (paramInt1 <= 2))
     {
@@ -59,7 +59,7 @@ public class LockPatternView$Cell
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public int b()
@@ -71,7 +71,7 @@ public class LockPatternView$Cell
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("(row=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",clmn=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(")");
@@ -80,7 +80,7 @@ public class LockPatternView$Cell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gesturelock.LockPatternView.Cell
  * JD-Core Version:    0.7.0.1
  */

@@ -69,7 +69,7 @@ class LifeAchivementPanelView$5
     LifeAchivementHelper.setViewClickInterval(paramView);
     if ((!LifeAchivementPanelView.access$200(this.this$0)) && (!LifeAchivementPanelView.access$600(this.this$0)))
     {
-      QQToast.a(LifeAchivementPanelView.access$700(this.this$0), paramView.getResources().getString(2131698978), 0).a();
+      QQToast.makeText(LifeAchivementPanelView.access$700(this.this$0), paramView.getResources().getString(2131896970), 0).show();
       return;
     }
     paramView = this.this$0.achivementAdapter.getDataByPosition(paramInt);
@@ -100,7 +100,7 @@ class LifeAchivementPanelView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.achievement.view.LifeAchivementPanelView.5
  * JD-Core Version:    0.7.0.1
  */

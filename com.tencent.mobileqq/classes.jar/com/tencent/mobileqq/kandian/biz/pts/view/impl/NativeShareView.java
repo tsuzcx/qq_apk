@@ -26,29 +26,26 @@ public class NativeShareView
   extends LinearLayout
   implements IView
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected AdapterView.OnItemClickListener a;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
+  protected AdapterView.OnItemClickListener a = new NativeShareView.2(this);
+  private Context b;
+  private Runnable c;
   
   public NativeShareView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new NativeShareView.2(this);
-    a(paramContext);
+    b(paramContext);
   }
   
   public NativeShareView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new NativeShareView.2(this);
-    a(paramContext);
+    b(paramContext);
   }
   
   public NativeShareView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new NativeShareView.2(this);
-    a(paramContext);
+    b(paramContext);
   }
   
   protected static String a(String paramString, int paramInt)
@@ -69,15 +66,15 @@ public class NativeShareView
     return localObject;
   }
   
-  private void a(Context paramContext)
+  private void b(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    Object localObject1 = inflate(getContext(), 2131560170, this);
-    int j = ViewUtils.b(44.0F);
-    localObject1 = (GridView)((View)localObject1).findViewById(2131367811);
+    this.b = paramContext;
+    Object localObject1 = inflate(getContext(), 2131626217, this);
+    int j = ViewUtils.dpToPx(44.0F);
+    localObject1 = (GridView)((View)localObject1).findViewById(2131434386);
     List localList = a(paramContext)[0];
     Object localObject2 = new TextPaint();
-    ((TextPaint)localObject2).setTextSize(paramContext.getResources().getDimensionPixelSize(2131299101));
+    ((TextPaint)localObject2).setTextSize(paramContext.getResources().getDimensionPixelSize(2131299838));
     new StaticLayout(a(a(localList), 6), (TextPaint)localObject2, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0, true);
     localObject2 = localList.iterator();
     int i = 0;
@@ -86,7 +83,7 @@ public class NativeShareView
         i += 1;
       }
     }
-    int k = ViewUtils.b(14.0F);
+    int k = ViewUtils.dpToPx(14.0F);
     j = j + k + k;
     ((GridView)localObject1).setColumnWidth(j);
     ((GridView)localObject1).setNumColumns(i);
@@ -96,7 +93,7 @@ public class NativeShareView
     ((GridView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     ((GridView)localObject1).setAdapter(new NativeShareView.ActionSheetItemAdapter(paramContext, localList));
     ((GridView)localObject1).setSelector(new ColorDrawable(0));
-    ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
+    ((GridView)localObject1).setOnItemClickListener(this.a);
     ((GridView)localObject1).setOnTouchListener(new NativeShareView.1(this));
     ShareImageUtils.a();
   }
@@ -122,36 +119,36 @@ public class NativeShareView
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = HardCodeUtil.a(2131707109);
-    localActionSheetItem.icon = 2130842933;
+    localActionSheetItem.label = HardCodeUtil.a(2131904947);
+    localActionSheetItem.icon = 2130843889;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 47;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696399);
-    localActionSheetItem.icon = 2130842935;
+    localActionSheetItem.label = paramContext.getString(2131894171);
+    localActionSheetItem.icon = 2130843891;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696413);
-    localActionSheetItem.icon = 2130842936;
+    localActionSheetItem.label = paramContext.getString(2131894185);
+    localActionSheetItem.icon = 2130843892;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696420);
-    localActionSheetItem.icon = 2130842937;
+    localActionSheetItem.label = paramContext.getString(2131894192);
+    localActionSheetItem.icon = 2130843893;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696402);
-    localActionSheetItem.icon = 2130842934;
+    localActionSheetItem.label = paramContext.getString(2131894174);
+    localActionSheetItem.icon = 2130843890;
     localActionSheetItem.iconNeedBg = false;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
@@ -202,7 +199,7 @@ public class NativeShareView
   
   public void setInitRunnable(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.c = paramRunnable;
   }
   
   public void setScreenBitmap(Bitmap paramBitmap)
@@ -212,7 +209,7 @@ public class NativeShareView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeShareView
  * JD-Core Version:    0.7.0.1
  */

@@ -26,13 +26,9 @@ public class BaseDoodlePanel
     return 0;
   }
   
-  public void a() {}
-  
   public void a(Bitmap paramBitmap, DoodleItem paramDoodleItem, int paramInt) {}
   
   public void a(BaseAIOContext paramBaseAIOContext, DoodlePanelListener paramDoodlePanelListener) {}
-  
-  public void a(boolean paramBoolean) {}
   
   public boolean a()
   {
@@ -40,10 +36,14 @@ public class BaseDoodlePanel
   }
   
   public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.BaseDoodlePanel
  * JD-Core Version:    0.7.0.1
  */

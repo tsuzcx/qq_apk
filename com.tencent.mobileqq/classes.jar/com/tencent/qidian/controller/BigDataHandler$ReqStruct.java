@@ -4,42 +4,42 @@ import com.tencent.mobileqq.pb.MessageMicro;
 
 public class BigDataHandler$ReqStruct
 {
-  int jdField_a_of_type_Int = 0;
-  MessageMicro<?> jdField_a_of_type_ComTencentMobileqqPbMessageMicro = null;
-  Object jdField_a_of_type_JavaLangObject = null;
+  MessageMicro<?> a = null;
   int b = 0;
+  int c = 0;
+  Object d = null;
   
   public BigDataHandler$ReqStruct(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramInt1;
+    this.a = paramMessageMicro;
+    this.c = paramInt2;
+    this.d = paramObject;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MessageMicro<?> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
     return this.b;
+  }
+  
+  public MessageMicro<?> b()
+  {
+    return this.a;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public Object d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.BigDataHandler.ReqStruct
  * JD-Core Version:    0.7.0.1
  */

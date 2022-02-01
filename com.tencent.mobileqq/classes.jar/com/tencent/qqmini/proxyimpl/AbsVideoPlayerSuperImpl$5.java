@@ -11,12 +11,12 @@ class AbsVideoPlayerSuperImpl$5
   
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerSuperImpl, paramInt, 0);
+    return this.a.onInfo(this.b, paramInt, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AbsVideoPlayerSuperImpl.5
  * JD-Core Version:    0.7.0.1
  */

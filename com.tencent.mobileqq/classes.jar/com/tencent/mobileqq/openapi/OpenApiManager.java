@@ -117,13 +117,13 @@ public class OpenApiManager
   private boolean checkNeedPayAuth(QQResult.QQStringResult paramQQStringResult)
   {
     if (paramQQStringResult != null) {
-      if (paramQQStringResult.jdField_a_of_type_Int != 3) {
+      if (paramQQStringResult.a != 3) {
         return false;
       }
     }
     try
     {
-      int i = new JSONObject(paramQQStringResult.jdField_a_of_type_JavaLangString).optInt("retcode");
+      int i = new JSONObject(paramQQStringResult.c).optInt("retcode");
       if (i != 10001) {
         return false;
       }
@@ -231,82 +231,82 @@ public class OpenApiManager
     //   1: getfield 75	com/tencent/mobileqq/openapi/OpenApiManager:mLoginSucApp	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   4: astore 14
     //   6: iconst_0
-    //   7: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   7: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   10: astore 13
     //   12: aload 14
     //   14: ifnonnull +17 -> 31
-    //   17: new 341	android/util/Pair
+    //   17: new 342	android/util/Pair
     //   20: dup
     //   21: iconst_m1
-    //   22: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   22: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   25: aload 13
-    //   27: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   27: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   30: areturn
     //   31: aload_0
     //   32: getfield 49	com/tencent/mobileqq/openapi/OpenApiManager:mThirdAppMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   35: aload_1
-    //   36: invokevirtual 348	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   39: checkcast 279	com/tencent/mobileqq/openapi/entity/ThirdPartyApp
+    //   36: invokevirtual 349	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   39: checkcast 280	com/tencent/mobileqq/openapi/entity/ThirdPartyApp
     //   42: astore_1
     //   43: aload_1
     //   44: ifnonnull +18 -> 62
-    //   47: new 341	android/util/Pair
+    //   47: new 342	android/util/Pair
     //   50: dup
     //   51: bipush 254
-    //   53: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   53: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   56: aload 13
-    //   58: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   58: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   61: areturn
     //   62: aload_1
-    //   63: getfield 350	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   63: getfield 351	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:b	Ljava/lang/String;
     //   66: aload_2
-    //   67: invokevirtual 356	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   67: invokevirtual 357	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   70: ifne +18 -> 88
-    //   73: new 341	android/util/Pair
+    //   73: new 342	android/util/Pair
     //   76: dup
     //   77: bipush 249
-    //   79: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   79: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   82: aload 13
-    //   84: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   84: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   87: areturn
     //   88: aload_1
     //   89: sipush 256
-    //   92: invokevirtual 359	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:a	(I)Z
+    //   92: invokevirtual 360	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:a	(I)Z
     //   95: ifne +18 -> 113
-    //   98: new 341	android/util/Pair
+    //   98: new 342	android/util/Pair
     //   101: dup
     //   102: bipush 252
-    //   104: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   104: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   107: aload 13
-    //   109: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   109: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   112: areturn
     //   113: aload_1
     //   114: aload_3
-    //   115: invokevirtual 362	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   115: invokevirtual 363	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:b	(Ljava/lang/String;)Ljava/lang/String;
     //   118: astore_2
     //   119: aload_1
     //   120: aload 5
-    //   122: invokevirtual 362	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   122: invokevirtual 363	com/tencent/mobileqq/openapi/entity/ThirdPartyApp:b	(Ljava/lang/String;)Ljava/lang/String;
     //   125: astore_1
     //   126: aload_1
-    //   127: invokestatic 368	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   127: invokestatic 369	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   130: lstore 11
     //   132: goto +23 -> 155
     //   135: astore_3
-    //   136: invokestatic 287	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   136: invokestatic 288	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   139: ifeq +13 -> 152
     //   142: ldc 16
     //   144: iconst_2
-    //   145: ldc_w 370
+    //   145: ldc_w 371
     //   148: aload_3
-    //   149: invokestatic 373	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   149: invokestatic 374	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   152: lconst_0
     //   153: lstore 11
     //   155: aload_2
-    //   156: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   156: invokestatic 380	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   159: ifne +579 -> 738
     //   162: aload_1
-    //   163: invokestatic 379	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   163: invokestatic 380	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   166: ifne +572 -> 738
     //   169: lload 11
     //   171: lconst_0
@@ -317,66 +317,66 @@ public class OpenApiManager
     //   181: iconst_1
     //   182: if_icmpne +541 -> 723
     //   185: aload 6
-    //   187: getstatic 384	com/tencent/mobileqq/app/AppConstants:SDCARD_ROOT	Ljava/lang/String;
-    //   190: invokevirtual 388	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   187: getstatic 385	com/tencent/mobileqq/app/AppConstants:SDCARD_ROOT	Ljava/lang/String;
+    //   190: invokevirtual 389	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   193: ifne +29 -> 222
     //   196: aload 7
-    //   198: getstatic 384	com/tencent/mobileqq/app/AppConstants:SDCARD_ROOT	Ljava/lang/String;
-    //   201: invokevirtual 388	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   198: getstatic 385	com/tencent/mobileqq/app/AppConstants:SDCARD_ROOT	Ljava/lang/String;
+    //   201: invokevirtual 389	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   204: ifne +18 -> 222
-    //   207: new 341	android/util/Pair
+    //   207: new 342	android/util/Pair
     //   210: dup
     //   211: bipush 240
-    //   213: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   213: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   216: aload 13
-    //   218: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   218: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   221: areturn
     //   222: aload 6
-    //   224: invokestatic 393	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   224: invokestatic 394	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   227: ifne +18 -> 245
-    //   230: new 341	android/util/Pair
+    //   230: new 342	android/util/Pair
     //   233: dup
     //   234: bipush 246
-    //   236: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   236: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   239: aload 13
-    //   241: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   241: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   244: areturn
     //   245: aconst_null
     //   246: astore 5
-    //   248: new 395	java/io/FileInputStream
+    //   248: new 396	java/io/FileInputStream
     //   251: dup
     //   252: aload 6
-    //   254: invokespecial 396	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   254: invokespecial 397	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   257: astore_1
     //   258: aload_1
-    //   259: invokestatic 401	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Ljava/io/InputStream;)B
+    //   259: invokestatic 402	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(Ljava/io/InputStream;)B
     //   262: istore 8
     //   264: iload 8
     //   266: ifge +24 -> 290
-    //   269: new 341	android/util/Pair
+    //   269: new 342	android/util/Pair
     //   272: dup
     //   273: bipush 251
-    //   275: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   275: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   278: aload 13
-    //   280: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   280: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   283: astore_2
     //   284: aload_1
-    //   285: invokevirtual 404	java/io/FileInputStream:close	()V
+    //   285: invokevirtual 405	java/io/FileInputStream:close	()V
     //   288: aload_2
     //   289: areturn
     //   290: aload 7
-    //   292: invokestatic 408	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   292: invokestatic 409	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   295: pop
-    //   296: new 410	java/io/FileOutputStream
+    //   296: new 411	java/io/FileOutputStream
     //   299: dup
     //   300: aload 7
-    //   302: invokespecial 411	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   302: invokespecial 412	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   305: astore_3
     //   306: iload 8
-    //   308: invokestatic 414	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(B)I
+    //   308: invokestatic 415	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(B)I
     //   311: istore 4
     //   313: iload 4
-    //   315: invokestatic 417	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(I)I
+    //   315: invokestatic 418	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(I)I
     //   318: istore 9
     //   320: iload 9
     //   322: newarray byte
@@ -384,80 +384,80 @@ public class OpenApiManager
     //   325: iload 9
     //   327: newarray byte
     //   329: astore 5
-    //   331: new 419	com/tencent/mobileqq/utils/SilkCodecWrapper
+    //   331: new 420	com/tencent/mobileqq/utils/SilkCodecWrapper
     //   334: dup
     //   335: aload 14
-    //   337: invokevirtual 423	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   337: invokevirtual 424	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   340: iconst_0
-    //   341: invokespecial 426	com/tencent/mobileqq/utils/SilkCodecWrapper:<init>	(Landroid/content/Context;Z)V
+    //   341: invokespecial 427	com/tencent/mobileqq/utils/SilkCodecWrapper:<init>	(Landroid/content/Context;Z)V
     //   344: astore 6
     //   346: aload 6
     //   348: iload 4
     //   350: iconst_0
     //   351: iconst_1
-    //   352: invokevirtual 429	com/tencent/mobileqq/utils/SilkCodecWrapper:a	(III)V
+    //   352: invokevirtual 430	com/tencent/mobileqq/utils/SilkCodecWrapper:a	(III)V
     //   355: iconst_2
     //   356: newarray byte
     //   358: astore 7
     //   360: aload_1
     //   361: aload 7
-    //   363: invokevirtual 433	java/io/FileInputStream:read	([B)I
+    //   363: invokevirtual 434	java/io/FileInputStream:read	([B)I
     //   366: istore 10
     //   368: iload 10
     //   370: iconst_m1
     //   371: if_icmpne +31 -> 402
     //   374: aload_1
-    //   375: invokevirtual 404	java/io/FileInputStream:close	()V
+    //   375: invokevirtual 405	java/io/FileInputStream:close	()V
     //   378: aload_3
-    //   379: invokevirtual 434	java/io/FileOutputStream:close	()V
+    //   379: invokevirtual 435	java/io/FileOutputStream:close	()V
     //   382: aload 6
-    //   384: invokevirtual 436	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
-    //   387: new 341	android/util/Pair
+    //   384: invokevirtual 437	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
+    //   387: new 342	android/util/Pair
     //   390: dup
     //   391: aload 13
     //   393: iload 4
-    //   395: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   398: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   395: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   398: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   401: areturn
     //   402: aload 7
-    //   404: invokestatic 438	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	([B)I
+    //   404: invokestatic 439	com/tencent/mobileqq/qqaudio/QQAudioUtils:b	([B)I
     //   407: istore 10
     //   409: iload 10
     //   411: ifgt +33 -> 444
-    //   414: new 341	android/util/Pair
+    //   414: new 342	android/util/Pair
     //   417: dup
     //   418: bipush 241
-    //   420: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   420: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   423: aload 13
-    //   425: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   425: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   428: astore_2
     //   429: aload_1
-    //   430: invokevirtual 404	java/io/FileInputStream:close	()V
+    //   430: invokevirtual 405	java/io/FileInputStream:close	()V
     //   433: aload_3
-    //   434: invokevirtual 434	java/io/FileOutputStream:close	()V
+    //   434: invokevirtual 435	java/io/FileOutputStream:close	()V
     //   437: aload 6
-    //   439: invokevirtual 436	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
+    //   439: invokevirtual 437	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
     //   442: aload_2
     //   443: areturn
     //   444: aload_1
     //   445: aload_2
     //   446: iconst_0
     //   447: iload 10
-    //   449: invokevirtual 441	java/io/FileInputStream:read	([BII)I
+    //   449: invokevirtual 442	java/io/FileInputStream:read	([BII)I
     //   452: ifne +33 -> 485
-    //   455: new 341	android/util/Pair
+    //   455: new 342	android/util/Pair
     //   458: dup
     //   459: bipush 241
-    //   461: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   461: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   464: aload 13
-    //   466: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   466: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   469: astore_2
     //   470: aload_1
-    //   471: invokevirtual 404	java/io/FileInputStream:close	()V
+    //   471: invokevirtual 405	java/io/FileInputStream:close	()V
     //   474: aload_3
-    //   475: invokevirtual 434	java/io/FileOutputStream:close	()V
+    //   475: invokevirtual 435	java/io/FileOutputStream:close	()V
     //   478: aload 6
-    //   480: invokevirtual 436	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
+    //   480: invokevirtual 437	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
     //   483: aload_2
     //   484: areturn
     //   485: aload 6
@@ -465,26 +465,26 @@ public class OpenApiManager
     //   488: aload 5
     //   490: iload 10
     //   492: iload 9
-    //   494: invokevirtual 444	com/tencent/mobileqq/utils/SilkCodecWrapper:a	([B[BII)I
+    //   494: invokevirtual 445	com/tencent/mobileqq/utils/SilkCodecWrapper:a	([B[BII)I
     //   497: ifne +33 -> 530
-    //   500: new 341	android/util/Pair
+    //   500: new 342	android/util/Pair
     //   503: dup
     //   504: bipush 239
-    //   506: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   506: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   509: aload 13
-    //   511: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   511: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   514: astore_2
     //   515: aload_1
-    //   516: invokevirtual 404	java/io/FileInputStream:close	()V
+    //   516: invokevirtual 405	java/io/FileInputStream:close	()V
     //   519: aload_3
-    //   520: invokevirtual 434	java/io/FileOutputStream:close	()V
+    //   520: invokevirtual 435	java/io/FileOutputStream:close	()V
     //   523: aload 6
-    //   525: invokevirtual 436	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
+    //   525: invokevirtual 437	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
     //   528: aload_2
     //   529: areturn
     //   530: aload_3
     //   531: aload 5
-    //   533: invokevirtual 448	java/io/FileOutputStream:write	([B)V
+    //   533: invokevirtual 449	java/io/FileOutputStream:write	([B)V
     //   536: goto -176 -> 360
     //   539: astore_2
     //   540: aload_1
@@ -545,63 +545,63 @@ public class OpenApiManager
     //   626: istore 4
     //   628: aload_2
     //   629: astore 6
-    //   631: invokestatic 287	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   631: invokestatic 288	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   634: ifeq +14 -> 648
     //   637: ldc 16
     //   639: iconst_2
-    //   640: ldc_w 450
+    //   640: ldc_w 451
     //   643: aload 6
-    //   645: invokestatic 373	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   648: new 341	android/util/Pair
+    //   645: invokestatic 374	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   648: new 342	android/util/Pair
     //   651: dup
     //   652: bipush 244
-    //   654: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   654: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   657: iload 4
-    //   659: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   662: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   659: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   662: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   665: astore_2
     //   666: aload 5
     //   668: ifnull +8 -> 676
     //   671: aload 5
-    //   673: invokevirtual 404	java/io/FileInputStream:close	()V
+    //   673: invokevirtual 405	java/io/FileInputStream:close	()V
     //   676: aload_3
     //   677: ifnull +7 -> 684
     //   680: aload_3
-    //   681: invokevirtual 434	java/io/FileOutputStream:close	()V
+    //   681: invokevirtual 435	java/io/FileOutputStream:close	()V
     //   684: aload_1
     //   685: ifnull +7 -> 692
     //   688: aload_1
-    //   689: invokevirtual 436	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
+    //   689: invokevirtual 437	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
     //   692: aload_2
     //   693: areturn
     //   694: astore_2
     //   695: aload 5
     //   697: ifnull +8 -> 705
     //   700: aload 5
-    //   702: invokevirtual 404	java/io/FileInputStream:close	()V
+    //   702: invokevirtual 405	java/io/FileInputStream:close	()V
     //   705: aload_3
     //   706: ifnull +7 -> 713
     //   709: aload_3
-    //   710: invokevirtual 434	java/io/FileOutputStream:close	()V
+    //   710: invokevirtual 435	java/io/FileOutputStream:close	()V
     //   713: aload_1
     //   714: ifnull +7 -> 721
     //   717: aload_1
-    //   718: invokevirtual 436	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
+    //   718: invokevirtual 437	com/tencent/mobileqq/utils/SilkCodecWrapper:a	()V
     //   721: aload_2
     //   722: athrow
-    //   723: new 341	android/util/Pair
+    //   723: new 342	android/util/Pair
     //   726: dup
     //   727: bipush 251
-    //   729: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   729: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   732: aload 13
-    //   734: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   734: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   737: areturn
-    //   738: new 341	android/util/Pair
+    //   738: new 342	android/util/Pair
     //   741: dup
     //   742: bipush 250
-    //   744: invokestatic 339	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   744: invokestatic 340	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   747: aload 13
-    //   749: invokespecial 344	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   749: invokespecial 345	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   752: areturn
     //   753: astore_1
     //   754: aload_2
@@ -725,7 +725,7 @@ public class OpenApiManager
     if (paramString1 == null) {
       return new Pair(Integer.valueOf(-2), localInteger);
     }
-    if (!paramString1.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!paramString1.b.equals(paramString2)) {
       return new Pair(Integer.valueOf(-7), localInteger);
     }
     if (!paramString1.a(512)) {
@@ -739,7 +739,7 @@ public class OpenApiManager
         long l = Long.parseLong(paramString1);
         if (paramInt == 1)
         {
-          paramString1 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString2);
+          paramString1 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString2);
           if ((paramString1 == null) || (!paramString1.isFriend())) {
             return new Pair(Integer.valueOf(-11), localInteger);
           }
@@ -774,12 +774,12 @@ public class OpenApiManager
     if (paramString1 == null) {
       return paramString2;
     }
-    if (paramString1.d != paramLong2)
+    if (paramString1.l != paramLong2)
     {
       paramString2[0].b = -20;
       return paramString2;
     }
-    if (paramString1.jdField_b_of_type_Long != paramLong1)
+    if (paramString1.i != paramLong1)
     {
       paramString2[0].b = -19;
       return paramString2;
@@ -797,7 +797,7 @@ public class OpenApiManager
       paramString2[i] = new QQResult.QQStringResult(0, null);
       try
       {
-        paramString2[i].jdField_a_of_type_JavaLangString = paramString1.a(paramString1.c(paramArrayOfString[i]));
+        paramString2[i].c = paramString1.a(paramString1.c(paramArrayOfString[i]));
       }
       catch (Exception localException)
       {
@@ -807,7 +807,7 @@ public class OpenApiManager
       }
       Object localObject = paramString2[i];
       int j;
-      if (TextUtils.isEmpty(paramString2[i].jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramString2[i].c)) {
         j = -6;
       } else {
         j = 0;
@@ -828,7 +828,7 @@ public class OpenApiManager
     if (paramString1 == null) {
       return new QQResult.QQStringResult(-2, null);
     }
-    if (!paramString1.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!paramString1.b.equals(paramString2)) {
       return new QQResult.QQStringResult(-7, null);
     }
     int i = 4;
@@ -863,7 +863,7 @@ public class OpenApiManager
     if (localThirdPartyApp == null) {
       return -2;
     }
-    if (!localThirdPartyApp.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!localThirdPartyApp.b.equals(paramString2)) {
       return -7;
     }
     paramString1 = localThirdPartyApp.b(paramString3);
@@ -885,7 +885,7 @@ public class OpenApiManager
       }
       paramInt2 = ApiUtilsInner.a(localMessageRecord.msgtype);
       String str2 = localThirdPartyApp.a(String.valueOf(localMessageRecord.uniseq));
-      if ((paramInt2 == 1) && (localThirdPartyApp.a(paramInt1, 1))) {
+      if ((paramInt2 == 1) && (localThirdPartyApp.b(paramInt1, 1))) {
         paramString1 = new QQText(localMessageRecord.msg, 3).toPlainText();
       }
       int j;
@@ -894,7 +894,7 @@ public class OpenApiManager
         localObject = null;
         j = 1007;
         break label497;
-        if ((paramInt2 == 2) && ((localMessageRecord instanceof MessageForPtt)) && (localThirdPartyApp.a(paramInt1, 2)))
+        if ((paramInt2 == 2) && ((localMessageRecord instanceof MessageForPtt)) && (localThirdPartyApp.b(paramInt1, 2)))
         {
           checkDownloadPtt(localQQAppInterface, localMessageRecord, false);
           paramString1 = (MessageForPtt)localMessageRecord;
@@ -903,29 +903,29 @@ public class OpenApiManager
           paramString1 = null;
           break label497;
         }
-        if ((paramInt2 == 4) && (localThirdPartyApp.a(paramInt1, 4)))
+        if ((paramInt2 == 4) && (localThirdPartyApp.b(paramInt1, 4)))
         {
           paramString1 = new QQText(localMessageRecord.msg, 3).toPlainText();
         }
-        else if ((paramInt2 == 8) && (localThirdPartyApp.a(paramInt1, 8)))
+        else if ((paramInt2 == 8) && (localThirdPartyApp.b(paramInt1, 8)))
         {
-          paramString1 = MessageItem.jdField_b_of_type_JavaLangString;
+          paramString1 = MessageItem.b;
         }
-        else if ((paramInt2 == 16) && (localThirdPartyApp.a(paramInt1, 16)))
+        else if ((paramInt2 == 16) && (localThirdPartyApp.b(paramInt1, 16)))
         {
           paramString1 = MessageItem.c;
         }
-        else if ((paramInt2 == 32) && (localThirdPartyApp.a(paramInt1, 32)))
+        else if ((paramInt2 == 32) && (localThirdPartyApp.b(paramInt1, 32)))
         {
           paramString1 = MessageItem.d;
         }
-        else if ((paramInt2 == 64) && (localThirdPartyApp.a(paramInt1, 64)))
+        else if ((paramInt2 == 64) && (localThirdPartyApp.b(paramInt1, 64)))
         {
           paramString1 = MessageItem.e;
         }
         else
         {
-          if (!localThirdPartyApp.a(paramInt1, 1073741824)) {
+          if (!localThirdPartyApp.b(paramInt1, 1073741824)) {
             break;
           }
           paramString1 = MessageItem.f;
@@ -954,7 +954,7 @@ public class OpenApiManager
     if (paramString1 == null) {
       return new QQResult.QQStringResult(-2, null);
     }
-    if (!paramString1.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!paramString1.b.equals(paramString2)) {
       return new QQResult.QQStringResult(-7, null);
     }
     if (!paramString1.a(8)) {
@@ -983,10 +983,10 @@ public class OpenApiManager
       if (paramString1 == null) {
         return handlePayMsgRsp(new QQResult.QQStringResult(paramInt, -8, paramString4));
       }
-      if (!paramString1.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+      if (!paramString1.c.equals(paramString2)) {
         return handlePayMsgRsp(new QQResult.QQStringResult(paramInt, -7, paramString4));
       }
-      if (!ThirdAppConfigHelper.a(BaseApplicationImpl.sApplication, paramString2, paramString1.c)) {
+      if (!ThirdAppConfigHelper.a(BaseApplicationImpl.sApplication, paramString2, paramString1.d)) {
         return handlePayMsgRsp(new QQResult.QQStringResult(paramInt, -7, paramString4));
       }
       this.mLastGetPayCodePkgName = paramString2;
@@ -994,7 +994,7 @@ public class OpenApiManager
       paramString3 = new Bundle();
       paramString3.putInt("PayInvokerId", 15);
       HashMap localHashMap = new HashMap();
-      localHashMap.put("pkgName", paramString1.jdField_b_of_type_JavaLangString);
+      localHashMap.put("pkgName", paramString1.c);
       localHashMap.put("businessType", String.valueOf(paramInt));
       localHashMap.put("reqData", paramString4);
       paramString2 = localQQAppInterface.getCurrentAccountUin();
@@ -1099,7 +1099,7 @@ public class OpenApiManager
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED.");
-            ((StringBuilder)localObject2).append(((ThirdPartyApp)localObject1).jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(((ThirdPartyApp)localObject1).b);
             localObject2 = new Intent(((StringBuilder)localObject2).toString());
             ((Intent)localObject2).putExtra("msgid", ((ThirdPartyApp)localObject1).a(String.valueOf(paramFileMsg.uniseq)));
             if (paramInt1 == 1003) {
@@ -1108,7 +1108,7 @@ public class OpenApiManager
               paramInt2 = -9;
             }
             ((Intent)localObject2).putExtra("rs_code", paramInt2);
-            BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject2, ((ThirdPartyApp)localObject1).c);
+            BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject2, ((ThirdPartyApp)localObject1).f);
           }
         }
         if (paramFileMsg.uinType == 0) {}
@@ -1175,14 +1175,14 @@ public class OpenApiManager
               }
             }
             localObject2 = localObject1;
-            if (localThirdPartyApp.b(i, 2))
+            if (localThirdPartyApp.c(i, 2))
             {
               ((Intent)localObject1).putExtra("msgid", localThirdPartyApp.a(String.valueOf(paramFileMsg.uniseq)));
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("com.tencent.mobileqq.openapi.ACTION_MSG_STATUS_UPDATE.");
-              ((StringBuilder)localObject2).append(localThirdPartyApp.jdField_b_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(localThirdPartyApp.b);
               ((Intent)localObject1).setAction(((StringBuilder)localObject2).toString());
-              BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, localThirdPartyApp.c);
+              BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, localThirdPartyApp.f);
               localObject2 = localObject1;
             }
           }
@@ -1222,9 +1222,9 @@ public class OpenApiManager
               ((Intent)localObject1).putExtra("uin", localThirdPartyApp.a(paramString));
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("com.tencent.mobileqq.openapi.ACTION_MSG_READED.");
-              ((StringBuilder)localObject2).append(localThirdPartyApp.jdField_b_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(localThirdPartyApp.b);
               ((Intent)localObject1).setAction(((StringBuilder)localObject2).toString());
-              BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, localThirdPartyApp.c);
+              BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, localThirdPartyApp.f);
               localObject2 = localObject1;
             }
           }
@@ -1292,7 +1292,7 @@ public class OpenApiManager
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("new msg, uin = ");
-            ((StringBuilder)localObject1).append(StringUtil.e(str1));
+            ((StringBuilder)localObject1).append(StringUtil.getSimpleUinForPrint(str1));
             QLog.d("OpenApi.Manager", 2, ((StringBuilder)localObject1).toString());
           }
           Object localObject2 = null;
@@ -1308,7 +1308,7 @@ public class OpenApiManager
               ((Intent)localObject1).putExtra("uin_type", m);
               ((Intent)localObject1).putExtra("unreadCount", n);
             }
-            boolean bool = localThirdPartyApp.b(m, k);
+            boolean bool = localThirdPartyApp.c(m, k);
             if ((!bool) && (!localThirdPartyApp.b(m))) {}
             for (;;)
             {
@@ -1324,9 +1324,9 @@ public class OpenApiManager
               ((Intent)localObject1).putExtra("senderUin", localThirdPartyApp.a(str2));
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("com.tencent.mobileqq.openapi.ACTION_NEW_MSG.");
-              ((StringBuilder)localObject2).append(localThirdPartyApp.jdField_b_of_type_JavaLangString);
+              ((StringBuilder)localObject2).append(localThirdPartyApp.b);
               ((Intent)localObject1).setAction(((StringBuilder)localObject2).toString());
-              BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, localThirdPartyApp.c);
+              BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject1, localThirdPartyApp.f);
               if ((paramMessage.msgtype == -2002) && (i == 0))
               {
                 checkDownloadPtt(localQQAppInterface, paramMessage.frienduin, paramMessage.istroop, paramMessage.uniseq);
@@ -1365,7 +1365,7 @@ public class OpenApiManager
     if (paramString1 == null) {
       return -2;
     }
-    if (!paramString1.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!paramString1.b.equals(paramString2)) {
       return -7;
     }
     if (!paramString1.a(64)) {
@@ -1377,7 +1377,7 @@ public class OpenApiManager
     }
     if (paramInt == 1)
     {
-      paramString2 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString1);
+      paramString2 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString1);
       if ((paramString2 != null) && (paramString2.isFriend()))
       {
         paramString3 = AIOUtils.a(new Intent(BaseApplicationImpl.sApplication, SplashActivity.class), new int[] { 2 });
@@ -1413,37 +1413,37 @@ public class OpenApiManager
       if (localObject == null) {
         return new QQResult.QQRegResult(-8, 0L, null);
       }
-      if (!((ThirdAppConfigHelper.ThirdAppConfig)localObject).jdField_b_of_type_JavaLangString.equals(paramString2)) {
+      if (!((ThirdAppConfigHelper.ThirdAppConfig)localObject).c.equals(paramString2)) {
         return new QQResult.QQRegResult(-7, 0L, null);
       }
-      if (!ThirdAppConfigHelper.a(BaseApplicationImpl.sApplication, paramString2, ((ThirdAppConfigHelper.ThirdAppConfig)localObject).c)) {
+      if (!ThirdAppConfigHelper.a(BaseApplicationImpl.sApplication, paramString2, ((ThirdAppConfigHelper.ThirdAppConfig)localObject).d)) {
         return new QQResult.QQRegResult(-7, 0L, null);
       }
-      if ((((ThirdAppConfigHelper.ThirdAppConfig)localObject).jdField_b_of_type_Boolean) && (paramLong != ((ThirdAppConfigHelper.ThirdAppConfig)localObject).d)) {
-        return new QQResult.QQRegResult(-18, ((ThirdAppConfigHelper.ThirdAppConfig)localObject).d, null);
+      if ((((ThirdAppConfigHelper.ThirdAppConfig)localObject).j) && (paramLong != ((ThirdAppConfigHelper.ThirdAppConfig)localObject).l)) {
+        return new QQResult.QQRegResult(-18, ((ThirdAppConfigHelper.ThirdAppConfig)localObject).l, null);
       }
-      if ((!((ThirdAppConfigHelper.ThirdAppConfig)localObject).jdField_b_of_type_Boolean) && (paramLong != ((ThirdAppConfigHelper.ThirdAppConfig)localObject).jdField_b_of_type_Long)) {
-        return new QQResult.QQRegResult(-18, ((ThirdAppConfigHelper.ThirdAppConfig)localObject).jdField_b_of_type_Long, null);
+      if ((!((ThirdAppConfigHelper.ThirdAppConfig)localObject).j) && (paramLong != ((ThirdAppConfigHelper.ThirdAppConfig)localObject).i)) {
+        return new QQResult.QQRegResult(-18, ((ThirdAppConfigHelper.ThirdAppConfig)localObject).i, null);
       }
-      if (((ThirdAppConfigHelper.ThirdAppConfig)localObject).jdField_b_of_type_Boolean) {
+      if (((ThirdAppConfigHelper.ThirdAppConfig)localObject).j) {
         ThirdAppConfigHelper.a(BaseApplicationImpl.sApplication, (ThirdAppConfigHelper.ThirdAppConfig)localObject);
       }
       paramString2 = new ThirdPartyApp((ThirdAppConfigHelper.ThirdAppConfig)localObject);
-      paramString2.c = paramString3;
+      paramString2.f = paramString3;
       this.mThirdAppMap.put(paramString1, paramString2);
     }
     else
     {
-      if (!((ThirdPartyApp)localObject).jdField_b_of_type_JavaLangString.equals(paramString2)) {
+      if (!((ThirdPartyApp)localObject).b.equals(paramString2)) {
         return new QQResult.QQRegResult(-7, 0L, null);
       }
       paramString2 = (String)localObject;
     }
-    if (paramLong != paramString2.a)
+    if (paramLong != paramString2.c)
     {
       this.mThirdAppMap.remove(paramString1);
       resetFilters();
-      return new QQResult.QQRegResult(-18, paramString2.a, null);
+      return new QQResult.QQRegResult(-18, paramString2.c, null);
     }
     paramString2.a(paramInt1, paramInt2);
     resetFilters();
@@ -1460,7 +1460,7 @@ public class OpenApiManager
     if (localThirdPartyApp == null) {
       return new QQResult.QQStringResult(-2, null);
     }
-    if (!localThirdPartyApp.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!localThirdPartyApp.b.equals(paramString2)) {
       return new QQResult.QQStringResult(-7, null);
     }
     if (!localThirdPartyApp.a(8)) {
@@ -1473,13 +1473,13 @@ public class OpenApiManager
     long l2 = 0L;
     if (paramInt1 == 1)
     {
-      paramString2 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString3);
+      paramString2 = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString3);
       if ((paramString2 != null) && (paramString2.isFriend()))
       {
         paramString2 = new SessionInfo();
-        paramString2.jdField_a_of_type_JavaLangString = paramString3;
-        paramString2.jdField_a_of_type_Int = 0;
-        paramString2.d = ContactUtils.f(localQQAppInterface, paramString3);
+        paramString2.b = paramString3;
+        paramString2.a = 0;
+        paramString2.e = ContactUtils.g(localQQAppInterface, paramString3);
         long l1;
         if (paramInt2 == 1)
         {
@@ -1518,7 +1518,7 @@ public class OpenApiManager
                 l2 = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).getFilePlayTime(paramString3);
                 paramString5 = new Bundle();
                 paramString5.putInt("DiyTextId", paramString4.vipBubbleDiyTextId);
-                ChatActivityFacade.a(localQQAppInterface, paramString2.jdField_a_of_type_Int, paramString2.jdField_a_of_type_JavaLangString, paramString3, l1, true, (int)(l2 * 1000L), 0, true, 0, 0, true, paramString4.vipSubBubbleId, paramString5);
+                ChatActivityFacade.a(localQQAppInterface, paramString2.a, paramString2.b, paramString3, l1, true, (int)(l2 * 1000L), 0, true, 0, 0, true, paramString4.vipSubBubbleId, paramString5);
               }
             }
             else
@@ -1552,7 +1552,7 @@ public class OpenApiManager
     if (localThirdPartyApp == null) {
       return -2;
     }
-    if (!localThirdPartyApp.jdField_b_of_type_JavaLangString.equals(paramString2)) {
+    if (!localThirdPartyApp.b.equals(paramString2)) {
       return -7;
     }
     if (!localThirdPartyApp.a(16)) {
@@ -1585,7 +1585,7 @@ public class OpenApiManager
         if (paramString3 == null) {
           return -14;
         }
-        paramString2.a(paramString1, 0, paramString3.time);
+        paramString2.f(paramString1, 0, paramString3.time);
         return 0;
       }
       return -5;
@@ -1603,7 +1603,7 @@ public class OpenApiManager
       QLog.d("OpenApi.Manager", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = (ThirdPartyApp)this.mThirdAppMap.get(paramString1);
-    if ((localObject != null) && (!((ThirdPartyApp)localObject).jdField_b_of_type_JavaLangString.equals(paramString2))) {
+    if ((localObject != null) && (!((ThirdPartyApp)localObject).b.equals(paramString2))) {
       return -7;
     }
     this.mThirdAppMap.remove(paramString1);
@@ -1646,7 +1646,7 @@ public class OpenApiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.openapi.OpenApiManager
  * JD-Core Version:    0.7.0.1
  */

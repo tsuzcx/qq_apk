@@ -7,17 +7,17 @@ public class FeedIdListSeqInfo$HomeComp
 {
   public int a(FeedIdListSeqInfo paramFeedIdListSeqInfo1, FeedIdListSeqInfo paramFeedIdListSeqInfo2)
   {
-    if (paramFeedIdListSeqInfo1.a == paramFeedIdListSeqInfo2.a)
+    if (paramFeedIdListSeqInfo1.e == paramFeedIdListSeqInfo2.e)
     {
-      if (paramFeedIdListSeqInfo1.b) {
+      if (paramFeedIdListSeqInfo1.g) {
         return -1;
       }
-      if (paramFeedIdListSeqInfo2.b) {
+      if (paramFeedIdListSeqInfo2.g) {
         return 1;
       }
       return 0;
     }
-    if (paramFeedIdListSeqInfo1.a > paramFeedIdListSeqInfo2.a) {
+    if (paramFeedIdListSeqInfo1.e > paramFeedIdListSeqInfo2.e) {
       return -1;
     }
     return 1;

@@ -11,9 +11,9 @@ public class ScheduleShowDetailParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new ScheduleShowDetailAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "schedule";
-    paramBaseQQAppInterface.c = "showDetail";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "schedule";
+    paramBaseQQAppInterface.e = "showDetail";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class ScheduleShowDetailParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ScheduleShowDetailParser
  * JD-Core Version:    0.7.0.1
  */

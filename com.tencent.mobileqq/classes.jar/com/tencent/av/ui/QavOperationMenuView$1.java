@@ -18,14 +18,14 @@ class QavOperationMenuView$1
         if (paramInt1 != 3) {
           return;
         }
-        if (this.a.a != null) {
-          this.a.a.a(paramString, paramInt2, true);
+        if (this.a.h != null) {
+          this.a.h.a(paramString, paramInt2, true);
         }
-        DataReport.c(2131373526);
+        DataReport.c(2131441199);
         return;
       }
-      if (this.a.a != null) {
-        this.a.a.a(paramString, paramInt2, false);
+      if (this.a.h != null) {
+        this.a.h.a(paramString, paramInt2, false);
       }
     }
   }

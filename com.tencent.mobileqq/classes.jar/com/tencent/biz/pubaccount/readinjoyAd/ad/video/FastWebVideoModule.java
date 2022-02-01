@@ -11,66 +11,66 @@ import org.jetbrains.annotations.Nullable;
 public final class FastWebVideoModule
 {
   @Nullable
-  private AdModuleVideo jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleVideo;
+  private AdModuleVideo a;
   @Nullable
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+  private AdvertisementInfo b;
   @Nullable
-  private ProteusBannerVideoItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataProteusBannerVideoItemData;
+  private ProteusBannerVideoItemData c;
   @NotNull
-  private VideoAdReportData jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData = new VideoAdReportData();
+  private VideoAdReportData d = new VideoAdReportData();
   
   @Nullable
   public final AdvertisementInfo a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  }
-  
-  @Nullable
-  public final ProteusBannerVideoItemData a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataProteusBannerVideoItemData;
-  }
-  
-  @NotNull
-  public final VideoAdReportData a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData;
-  }
-  
-  public final void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleVideo = ((AdModuleVideo)null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataProteusBannerVideoItemData = ((ProteusBannerVideoItemData)null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.c(1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.d(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.a(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.b(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.g(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.e(1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.f(1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.h(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoVideoAdReportData.a(false);
+    return this.b;
   }
   
   public final void a(@Nullable AdModuleVideo paramAdModuleVideo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleVideo = paramAdModuleVideo;
+    this.a = paramAdModuleVideo;
   }
   
   public final void a(@Nullable AdvertisementInfo paramAdvertisementInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+    this.b = paramAdvertisementInfo;
   }
   
   public final void a(@Nullable ProteusBannerVideoItemData paramProteusBannerVideoItemData)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataProteusBannerVideoItemData = paramProteusBannerVideoItemData;
+    this.c = paramProteusBannerVideoItemData;
+  }
+  
+  @Nullable
+  public final ProteusBannerVideoItemData b()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final VideoAdReportData c()
+  {
+    return this.d;
+  }
+  
+  public final void d()
+  {
+    this.a = ((AdModuleVideo)null);
+    this.b = ((AdvertisementInfo)null);
+    this.c = ((ProteusBannerVideoItemData)null);
+    this.d.c(1);
+    this.d.d(0);
+    this.d.a(0);
+    this.d.b(0);
+    this.d.g(0);
+    this.d.e(1);
+    this.d.f(1);
+    this.d.h(0);
+    this.d.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.FastWebVideoModule
  * JD-Core Version:    0.7.0.1
  */

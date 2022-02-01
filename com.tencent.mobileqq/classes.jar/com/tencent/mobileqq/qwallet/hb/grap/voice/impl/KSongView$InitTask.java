@@ -18,9 +18,9 @@ public class KSongView$InitTask
       try
       {
         KSongView.a(this.a, KSongView.a(this.a, paramVarArgs));
-        if ((KSongView.a(this.a) != null) && (KSongView.a(this.a, str)))
+        if ((KSongView.c(this.a) != null) && (KSongView.b(this.a, str)))
         {
-          paramVarArgs = KSongView.a(this.a);
+          paramVarArgs = KSongView.c(this.a);
           return paramVarArgs;
         }
       }
@@ -34,19 +34,19 @@ public class KSongView$InitTask
     boolean bool = false;
     if (paramConfig != null)
     {
-      if (KSongView.a(this.a) != null) {
-        KSongView.a(this.a).a(paramConfig);
+      if (KSongView.d(this.a) != null) {
+        KSongView.d(this.a).a(paramConfig);
       }
-      KSongView.a(this.a).notifyDataSetChanged();
+      KSongView.e(this.a).notifyDataSetChanged();
       KSongView.a(this.a, 0);
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("InitTask config = ");
     ((StringBuilder)localObject).append(paramConfig);
     QLog.i("KSongView", 2, ((StringBuilder)localObject).toString());
-    if (KSongView.a(this.a) != null)
+    if (KSongView.b(this.a) != null)
     {
-      localObject = KSongView.a(this.a);
+      localObject = KSongView.b(this.a);
       if (paramConfig != null) {
         bool = true;
       }
@@ -56,7 +56,7 @@ public class KSongView$InitTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.KSongView.InitTask
  * JD-Core Version:    0.7.0.1
  */

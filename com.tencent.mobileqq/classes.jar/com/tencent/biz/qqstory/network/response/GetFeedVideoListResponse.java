@@ -21,22 +21,21 @@ public class GetFeedVideoListResponse
   extends BaseResponse
 {
   public String a;
-  public ArrayList<StoryVideoItem> a;
-  public boolean a;
-  public String c;
+  public boolean b;
+  public ArrayList<StoryVideoItem> e = new ArrayList();
+  public String f;
   
   public GetFeedVideoListResponse(qqstory_service.RspFriendStoryFeedVideoList paramRspFriendStoryFeedVideoList)
   {
     super(paramRspFriendStoryFeedVideoList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramRspFriendStoryFeedVideoList.next_cookie.get().toStringUtf8();
-    this.c = paramRspFriendStoryFeedVideoList.union_id.get().toStringUtf8();
+    this.a = paramRspFriendStoryFeedVideoList.next_cookie.get().toStringUtf8();
+    this.f = paramRspFriendStoryFeedVideoList.union_id.get().toStringUtf8();
     int i = paramRspFriendStoryFeedVideoList.is_end.get();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
     Object localObject1;
     Object localObject2;
     if (paramRspFriendStoryFeedVideoList.share_group_video_info_list.has())
@@ -47,7 +46,7 @@ public class GetFeedVideoListResponse
         localObject1 = (qqstory_struct.ShareGroupVideoInfo)paramRspFriendStoryFeedVideoList.next();
         localObject2 = new StoryVideoItem();
         ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.ShareGroupVideoInfo)localObject1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+        this.e.add(localObject2);
       }
     }
     if (paramRspFriendStoryFeedVideoList.multi_rcmd_feed_info_list.has())
@@ -67,7 +66,7 @@ public class GetFeedVideoListResponse
             StoryVideoItem localStoryVideoItem = new StoryVideoItem();
             localStoryVideoItem.convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject3);
             localStoryVideoItem.mAttachedFeedId = str;
-            this.jdField_a_of_type_JavaUtilArrayList.add(localStoryVideoItem);
+            this.e.add(localStoryVideoItem);
             localObject3 = new QQUserUIItem();
             ((QQUserUIItem)localObject3).convertFrom(((qqstory_struct.MultiRecommendItem)localObject2).user);
             localObject3 = ((UserManager)localObject1).a((QQUserUIItem)localObject3);
@@ -83,13 +82,13 @@ public class GetFeedVideoListResponse
       localObject1 = (qqstory_struct.FeedVideoInfo)paramRspFriendStoryFeedVideoList.next();
       localObject2 = new StoryVideoItem();
       ((StoryVideoItem)localObject2).convertFrom("Q.qqstory.net:GetFeedVideoListResponse", (qqstory_struct.FeedVideoInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+      this.e.add(localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetFeedVideoListResponse
  * JD-Core Version:    0.7.0.1
  */

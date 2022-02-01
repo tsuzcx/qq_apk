@@ -12,14 +12,14 @@ class VideoViewTextureImpl$2
   
   public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    paramIMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnErrorListener;
-    VideoViewTextureImpl localVideoViewTextureImpl = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTextureImpl;
-    return paramIMediaPlayer.a(localVideoViewTextureImpl, 0, paramInt1, localVideoViewTextureImpl.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    paramIMediaPlayer = this.a;
+    VideoViewTextureImpl localVideoViewTextureImpl = this.c;
+    return paramIMediaPlayer.a(localVideoViewTextureImpl, 0, paramInt1, localVideoViewTextureImpl.a.getCurrentPosition(), String.valueOf(paramInt2), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTextureImpl.2
  * JD-Core Version:    0.7.0.1
  */

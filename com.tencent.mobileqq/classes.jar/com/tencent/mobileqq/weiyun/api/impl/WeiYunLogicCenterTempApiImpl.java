@@ -35,12 +35,12 @@ public class WeiYunLogicCenterTempApiImpl
     if (localQQAppInterface == null) {
       return;
     }
-    localQQAppInterface.getFileManagerEngine().a().a(paramChatMessage, paramWeiyunCallback);
+    localQQAppInterface.getFileManagerEngine().d().a(paramChatMessage, paramWeiyunCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.api.impl.WeiYunLogicCenterTempApiImpl
  * JD-Core Version:    0.7.0.1
  */

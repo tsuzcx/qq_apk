@@ -17,7 +17,7 @@ final class QZoneUnreadServletLogic$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -29,19 +29,19 @@ final class QZoneUnreadServletLogic$1
       return;
     }
     localObject = (QZoneManagerImp)localObject;
-    if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList == null) {
-      ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (((QZoneManagerImp)localObject).b == null) {
+      ((QZoneManagerImp)localObject).b = new ArrayList();
     }
-    if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-      QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList);
+    if (((QZoneManagerImp)localObject).b.size() == 0) {
+      QZConfigProviderUtil.b(this.a.getCurrentAccountUin(), ((QZoneManagerImp)localObject).b);
     }
-    if (!QZoneUnreadServletLogic.a(this.jdField_a_of_type_JavaUtilArrayList, ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList))
+    if (!QZoneUnreadServletLogic.a(this.b, ((QZoneManagerImp)localObject).b))
     {
-      ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.clear();
-      ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      ((QZoneManagerImp)localObject).b.clear();
+      ((QZoneManagerImp)localObject).b.addAll(this.b);
       try
       {
-        BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.g, null, null);
+        BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.h, null, null);
       }
       catch (Exception localException)
       {
@@ -53,13 +53,13 @@ final class QZoneUnreadServletLogic$1
           QLog.e("UndealCount.QZoneUnreadServletLogic", 2, localStringBuilder.toString(), localException);
         }
       }
-      QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilArrayList);
+      QZConfigProviderUtil.a(this.a.getCurrentAccountUin(), this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic.1
  * JD-Core Version:    0.7.0.1
  */

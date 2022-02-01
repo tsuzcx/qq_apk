@@ -10,9 +10,9 @@ public class ScreenShareAskParser
 {
   private JumpAction a(JumpAction paramJumpAction, String paramString)
   {
-    paramJumpAction.a = paramString;
-    paramJumpAction.b = "avsharescreen";
-    paramJumpAction.c = "request";
+    paramJumpAction.c = paramString;
+    paramJumpAction.d = "avsharescreen";
+    paramJumpAction.e = "request";
     paramString = paramString.split("\\?");
     if (paramString.length != 2) {
       return paramJumpAction;
@@ -39,7 +39,7 @@ public class ScreenShareAskParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ScreenShareAskParser
  * JD-Core Version:    0.7.0.1
  */

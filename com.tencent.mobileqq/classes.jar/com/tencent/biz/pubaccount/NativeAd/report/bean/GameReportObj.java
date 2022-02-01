@@ -24,8 +24,13 @@ public final class GameReportObj
     return "soft";
   }
   
+  public void a(@NotNull AdReportData paramAdReportData)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
+  }
+  
   @Nullable
-  public JSONObject a()
+  public JSONObject b()
   {
     JSONObject localJSONObject = new JSONObject();
     ReportExKt.a(localJSONObject, "operModule", this.a);
@@ -35,19 +40,14 @@ public final class GameReportObj
     return localJSONObject;
   }
   
-  public void a(@NotNull AdReportData paramAdReportData)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
-  }
-  
-  public boolean a()
+  public boolean c()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.GameReportObj
  * JD-Core Version:    0.7.0.1
  */

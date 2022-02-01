@@ -10,12 +10,12 @@ class SpringFestivalEntryManager$15
   
   public int a(Party.PartyTask paramPartyTask1, Party.PartyTask paramPartyTask2)
   {
-    return Const.a(paramPartyTask1.a, paramPartyTask2.a);
+    return Const.a(paramPartyTask1.b, paramPartyTask2.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager.15
  * JD-Core Version:    0.7.0.1
  */

@@ -18,10 +18,10 @@ import org.json.JSONObject;
 public class AdModuleSinglePic
   extends AdModuleBase
 {
-  private IPublicAccountImageDownListener a;
-  public int d;
-  public String d;
-  public int e;
+  public String p;
+  public int q;
+  public int r;
+  private IPublicAccountImageDownListener s;
   
   public static AdModuleSinglePic a(JSONObject paramJSONObject)
   {
@@ -31,10 +31,10 @@ public class AdModuleSinglePic
     try
     {
       AdModuleSinglePic localAdModuleSinglePic = new AdModuleSinglePic();
-      localAdModuleSinglePic.jdField_d_of_type_JavaLangString = paramJSONObject.optString("imageUrl");
-      localAdModuleSinglePic.jdField_d_of_type_Int = paramJSONObject.optInt("imageWidth");
-      localAdModuleSinglePic.e = paramJSONObject.optInt("imageHeight");
-      boolean bool = TextUtils.isEmpty(localAdModuleSinglePic.jdField_d_of_type_JavaLangString);
+      localAdModuleSinglePic.p = paramJSONObject.optString("imageUrl");
+      localAdModuleSinglePic.q = paramJSONObject.optInt("imageWidth");
+      localAdModuleSinglePic.r = paramJSONObject.optInt("imageHeight");
+      boolean bool = TextUtils.isEmpty(localAdModuleSinglePic.p);
       if (bool) {
         return null;
       }
@@ -50,23 +50,23 @@ public class AdModuleSinglePic
   public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, BannerInfo paramBannerInfo, boolean paramBoolean)
   {
     super.a(paramContext, paramString1, paramString2, paramString3, paramInt, paramBannerInfo, paramBoolean);
-    paramString1 = LayoutInflater.from(paramContext).inflate(2131560239, null);
-    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131372717);
-    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+    paramString1 = LayoutInflater.from(paramContext).inflate(2131626286, null);
+    paramString2 = (ResizeURLImageView)paramString1.findViewById(2131440263);
+    if (!TextUtils.isEmpty(this.p)) {
       try
       {
-        paramString3 = new URL(this.jdField_d_of_type_JavaLangString);
+        paramString3 = new URL(this.p);
         paramString2.setImage(paramString3);
         if (((IImageManager)QRoute.api(IImageManager.class)).isLocalFileExist(paramString3))
         {
-          this.jdField_a_of_type_Int = 2;
+          this.b = 2;
         }
         else
         {
-          this.jdField_a_of_type_Int = 1;
-          this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiIPublicAccountImageDownListener = new AdModuleSinglePic.1(this, paramString1, paramString2);
-          paramString2.setPublicAccountImageDownListener(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiIPublicAccountImageDownListener);
-          paramString1.findViewById(2131370364).setVisibility(0);
+          this.b = 1;
+          this.s = new AdModuleSinglePic.1(this, paramString1, paramString2);
+          paramString2.setPublicAccountImageDownListener(this.s);
+          paramString1.findViewById(2131437626).setVisibility(0);
         }
       }
       catch (Exception paramString2)
@@ -81,18 +81,18 @@ public class AdModuleSinglePic
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_Int == 3) {
+    if (this.b == 3) {
       d();
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.c != null)
     {
-      NativeAdPreloadManager localNativeAdPreloadManager = (NativeAdPreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_NATIVE_AD_PRELOAD_MANAGER);
+      NativeAdPreloadManager localNativeAdPreloadManager = (NativeAdPreloadManager)this.c.getManager(QQManagerFactory.KANDIAN_NATIVE_AD_PRELOAD_MANAGER);
       if (localNativeAdPreloadManager != null) {
-        localNativeAdPreloadManager.a(this.jdField_d_of_type_JavaLangString);
+        localNativeAdPreloadManager.a(this.p);
       }
     }
   }
@@ -100,18 +100,18 @@ public class AdModuleSinglePic
   public void c()
   {
     super.c();
-    this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionApiIPublicAccountImageDownListener = null;
+    this.s = null;
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131370364).setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366458).setVisibility(8);
+    this.b = 1;
+    this.a.findViewById(2131437626).setVisibility(0);
+    this.a.findViewById(2131432776).setVisibility(8);
     try
     {
-      URL localURL = new URL(this.jdField_d_of_type_JavaLangString);
-      ((ResizeURLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372717)).setImage(localURL);
+      URL localURL = new URL(this.p);
+      ((ResizeURLImageView)this.a.findViewById(2131440263)).setImage(localURL);
       return;
     }
     catch (Exception localException)
@@ -122,7 +122,7 @@ public class AdModuleSinglePic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.module.AdModuleSinglePic
  * JD-Core Version:    0.7.0.1
  */

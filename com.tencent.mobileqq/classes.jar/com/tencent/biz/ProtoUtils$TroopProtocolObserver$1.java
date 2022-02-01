@@ -9,7 +9,7 @@ class ProtoUtils$TroopProtocolObserver$1
   
   public void run()
   {
-    ProtoUtils.TroopProtocolObserver.access$100(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    ProtoUtils.TroopProtocolObserver.access$100(this.this$0, this.a, this.b, this.c);
   }
 }
 

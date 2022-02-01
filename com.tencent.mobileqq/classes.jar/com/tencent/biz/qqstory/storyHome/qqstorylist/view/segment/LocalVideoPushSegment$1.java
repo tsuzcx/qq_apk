@@ -18,7 +18,7 @@ class LocalVideoPushSegment$1
       ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.1(this, (LocalVideoPushSegment.LoadAlbumResult)localObject));
       return;
     }
-    localObject = LocalVideoPushSegment.a(this.this$0);
+    localObject = LocalVideoPushSegment.b(this.this$0);
     if (localObject != null)
     {
       ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.2(this, (LocalVideoPushSegment.LoadPhotoResult)localObject));

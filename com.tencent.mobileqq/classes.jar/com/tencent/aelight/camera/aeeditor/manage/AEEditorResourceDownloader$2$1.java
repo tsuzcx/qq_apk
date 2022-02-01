@@ -13,19 +13,19 @@ class AEEditorResourceDownloader$2$1
   
   public void a(boolean paramBoolean)
   {
-    String str = this.jdField_a_of_type_ComTencentAelightCameraAeeditorManageAEEditorResourceDownloader$2.this$0.c;
+    String str = this.d.this$0.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preDownloadAllRes---[finish] ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", id=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeeditorDataAEEditorDownloadResBean.getId());
+    localStringBuilder.append(this.b.getId());
     AEQLog.b(str, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.c.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorResourceDownloader.2.1
  * JD-Core Version:    0.7.0.1
  */

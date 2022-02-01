@@ -6,7 +6,7 @@ public class NowQQLiveConstant
   
   public static final String a()
   {
-    if (NowQQLiveHelper.b()) {
+    if (NowQQLiveHelper.d()) {
       return "https://fastest.now.qq.com/qq/mp-v2/notify-manager.html?asyncMode=3&_wv=3&from=60014";
     }
     return "https://now.qq.com/qq/mp-v2/notify-manager.html?asyncMode=3&_wv=3&from=60014";
@@ -14,7 +14,7 @@ public class NowQQLiveConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.NowQQLiveConstant
  * JD-Core Version:    0.7.0.1
  */

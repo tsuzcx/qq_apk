@@ -58,6 +58,7 @@ public class MotionTelltales
         }
         i += 1;
       }
+      paramContext.recycle();
     }
     this.mPaintTelltales.setColor(this.mTailColor);
     this.mPaintTelltales.setStrokeWidth(5.0F);
@@ -132,7 +133,7 @@ public class MotionTelltales
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.utils.widget.MotionTelltales
  * JD-Core Version:    0.7.0.1
  */

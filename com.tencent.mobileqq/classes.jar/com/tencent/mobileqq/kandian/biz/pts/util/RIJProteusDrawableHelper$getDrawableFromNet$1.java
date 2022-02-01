@@ -19,7 +19,7 @@ public final class RIJProteusDrawableHelper$getDrawableFromNet$1
   {
     Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
     QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.a.onCallBack(true, (Drawable)this.b);
   }
   
   public void scheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable, long paramLong)
@@ -36,7 +36,7 @@ public final class RIJProteusDrawableHelper$getDrawableFromNet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.RIJProteusDrawableHelper.getDrawableFromNet.1
  * JD-Core Version:    0.7.0.1
  */

@@ -80,7 +80,7 @@ public class Report
     localObject = str;
     if (paramToServiceMsg.extraData.containsKey("msgSeq"))
     {
-      SendMessageHandler localSendMessageHandler = paramMessageHandler.a(paramToServiceMsg.extraData.getLong("msgSeq"));
+      SendMessageHandler localSendMessageHandler = paramMessageHandler.b(paramToServiceMsg.extraData.getLong("msgSeq"));
       l2 = l1;
       localObject = str;
       if (localSendMessageHandler != null)
@@ -129,13 +129,13 @@ public class Report
     localHashMap.put("isSentByXG", String.valueOf(bool3));
     localHashMap.put("isWeaknet", String.valueOf(bool4));
     l4 = paramFromServiceMsg.extraData.getLong(MessageConstants.b, 0L);
-    int i1 = paramFromServiceMsg.extraData.getInt(MessageConstants.jdField_a_of_type_JavaLangString, 0);
+    int i1 = paramFromServiceMsg.extraData.getInt(MessageConstants.a, 0);
     if (l4 != 0L) {
       l3 = System.currentTimeMillis() - l4;
     }
     localHashMap.put("pm_queueTime", String.valueOf(l3));
     localHashMap.put("pm_respLen", String.valueOf(i1));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramMessageHandler.a.getCurrentAccountUin(), paramString, paramBoolean, l2, paramLong, localHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramMessageHandler.n.getCurrentAccountUin(), paramString, paramBoolean, l2, paramLong, localHashMap, "");
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.MessageHandler", 2, String.format("Statistics TAG:%s, success:%s, duration:%dms, retryNum:%d, detail:%s, msgSignal [Sum:%d Count:%d, Open:%s msgType:%d netType:%d msfTime:%d reqSize:%d queueHandleTime:%d respWaitLen:%d]", new Object[] { paramString, Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l5), localObject, Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool1), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l1), Integer.valueOf(n), Long.valueOf(l3), Integer.valueOf(i1) }));
     }
@@ -148,45 +148,46 @@ public class Report
     {
       ((StringBuilder)localObject).append("msg send cost per phase--->>");
       ((StringBuilder)localObject).append("send_request:");
-      ((StringBuilder)localObject).append(paramMsgSendCostParams.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(paramMsgSendCostParams.a);
       ((StringBuilder)localObject).append(" ,request_reponse:");
-      ((StringBuilder)localObject).append(paramMsgSendCostParams.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append(paramMsgSendCostParams.b);
       ((StringBuilder)localObject).append(" ,netSend_netRecv:");
-      ((StringBuilder)localObject).append(paramMsgSendCostParams.jdField_c_of_type_Long);
+      ((StringBuilder)localObject).append(paramMsgSendCostParams.c);
       ((StringBuilder)localObject).append(" ,notifyUi_reflash:");
       ((StringBuilder)localObject).append(paramMsgSendCostParams.e);
       ((StringBuilder)localObject).append(" ,mUinType:");
-      ((StringBuilder)localObject).append(paramMsgSendCostParams.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramMsgSendCostParams.f);
       ((StringBuilder)localObject).append(" ,isCrossOper:");
-      ((StringBuilder)localObject).append(paramMsgSendCostParams.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(paramMsgSendCostParams.h);
       QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
-    long l = paramMsgSendCostParams.jdField_a_of_type_Long;
+    long l = paramMsgSendCostParams.a;
     ((HashMap)localObject).put("param_net", String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext())));
-    ((HashMap)localObject).put("param_send_req", String.valueOf(paramMsgSendCostParams.jdField_a_of_type_Long));
-    ((HashMap)localObject).put("param_req_resp", String.valueOf(paramMsgSendCostParams.jdField_b_of_type_Long));
-    ((HashMap)localObject).put("param_netSend_netRecv", String.valueOf(paramMsgSendCostParams.jdField_c_of_type_Long));
+    ((HashMap)localObject).put("param_send_req", String.valueOf(paramMsgSendCostParams.a));
+    ((HashMap)localObject).put("param_req_resp", String.valueOf(paramMsgSendCostParams.b));
+    ((HashMap)localObject).put("param_netSend_netRecv", String.valueOf(paramMsgSendCostParams.c));
     ((HashMap)localObject).put("param_notifyUi_reflash", String.valueOf(paramMsgSendCostParams.e));
-    ((HashMap)localObject).put("param_uin_type", String.valueOf(paramMsgSendCostParams.jdField_a_of_type_Int));
-    ((HashMap)localObject).put("param_msg_tag", paramMsgSendCostParams.jdField_a_of_type_JavaLangString);
-    if (paramMsgSendCostParams.jdField_a_of_type_Boolean) {
-      ((HashMap)localObject).put("param_cross_oper", String.valueOf(paramMsgSendCostParams.jdField_a_of_type_Boolean));
+    ((HashMap)localObject).put("param_uin_type", String.valueOf(paramMsgSendCostParams.f));
+    ((HashMap)localObject).put("param_msg_tag", paramMsgSendCostParams.k);
+    ((HashMap)localObject).put("param_msg_type", String.valueOf(paramMsgSendCostParams.g));
+    if (paramMsgSendCostParams.h) {
+      ((HashMap)localObject).put("param_cross_oper", String.valueOf(paramMsgSendCostParams.h));
     }
-    if (paramMsgSendCostParams.jdField_b_of_type_Boolean) {
-      ((HashMap)localObject).put("param_sent_by_xg", String.valueOf(paramMsgSendCostParams.jdField_b_of_type_Boolean));
+    if (paramMsgSendCostParams.i) {
+      ((HashMap)localObject).put("param_sent_by_xg", String.valueOf(paramMsgSendCostParams.i));
     }
-    if (paramMsgSendCostParams.jdField_c_of_type_Boolean) {
-      ((HashMap)localObject).put("param_weaknet", String.valueOf(paramMsgSendCostParams.jdField_c_of_type_Boolean));
+    if (paramMsgSendCostParams.j) {
+      ((HashMap)localObject).put("param_weaknet", String.valueOf(paramMsgSendCostParams.j));
     }
     int i = 0;
-    if (paramMsgSendCostParams.jdField_a_of_type_Boolean) {
+    if (paramMsgSendCostParams.h) {
       i = 2;
     }
-    if (paramMsgSendCostParams.jdField_b_of_type_Boolean) {
+    if (paramMsgSendCostParams.i) {
       i = 4;
     }
-    if (paramMsgSendCostParams.jdField_c_of_type_Boolean) {
+    if (paramMsgSendCostParams.j) {
       i = 8;
     }
     ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
@@ -369,11 +370,11 @@ public class Report
     if ((i != 3) && (i != 14) && (i != 22))
     {
       if (i == 6) {
-        b(paramMessageHandler.a, paramToServiceMsg, paramFromServiceMsg, paramBoolean);
+        b(paramMessageHandler.n, paramToServiceMsg, paramFromServiceMsg, paramBoolean);
       }
     }
     else {
-      a(paramMessageHandler.a, paramToServiceMsg, paramFromServiceMsg, paramBoolean);
+      a(paramMessageHandler.n, paramToServiceMsg, paramFromServiceMsg, paramBoolean);
     }
   }
   
@@ -393,7 +394,7 @@ public class Report
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.Report
  * JD-Core Version:    0.7.0.1
  */

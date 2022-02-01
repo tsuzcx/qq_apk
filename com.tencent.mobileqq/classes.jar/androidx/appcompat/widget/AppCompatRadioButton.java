@@ -9,6 +9,7 @@ import android.widget.RadioButton;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.TintableBackgroundView;
 import androidx.core.widget.TintableCompoundButton;
@@ -18,7 +19,7 @@ public class AppCompatRadioButton
   implements TintableBackgroundView, TintableCompoundButton
 {
   private final AppCompatBackgroundHelper mBackgroundTintHelper;
-  private final AppCompatCompoundButtonHelper mCompoundButtonHelper = new AppCompatCompoundButtonHelper(this);
+  private final AppCompatCompoundButtonHelper mCompoundButtonHelper;
   private final AppCompatTextHelper mTextHelper;
   
   public AppCompatRadioButton(Context paramContext)
@@ -26,14 +27,16 @@ public class AppCompatRadioButton
     this(paramContext, null);
   }
   
-  public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatRadioButton(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035053);
+    this(paramContext, paramAttributeSet, R.attr.radioButtonStyle);
   }
   
-  public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatRadioButton(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mCompoundButtonHelper = new AppCompatCompoundButtonHelper(this);
     this.mCompoundButtonHelper.loadFromAttributes(paramAttributeSet, paramInt);
     this.mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
     this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);

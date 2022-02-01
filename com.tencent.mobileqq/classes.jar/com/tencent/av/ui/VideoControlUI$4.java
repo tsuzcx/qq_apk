@@ -16,36 +16,36 @@ class VideoControlUI$4
   
   public void run()
   {
-    if (this.this$0.h)
+    if (this.this$0.af)
     {
       if (QLog.isDevelopLevel()) {
-        QLog.w(this.this$0.d, 1, "HideToolbarRunnable");
+        QLog.w(this.this$0.X, 1, "HideToolbarRunnable");
       }
       if (AudioHelper.a(1) == 1)
       {
-        AudioHelper.a(HardCodeUtil.a(2131715871));
+        AudioHelper.a(HardCodeUtil.a(2131913328));
         return;
       }
-      Object localObject1 = this.this$0.a();
+      Object localObject1 = this.this$0.U();
       if (localObject1 != null)
       {
-        localObject2 = ((AVActivity)localObject1).findViewById(2131373524);
+        localObject2 = ((AVActivity)localObject1).findViewById(2131441197);
         if ((localObject2 != null) && (((View)localObject2).getVisibility() == 0)) {
           return;
         }
       }
-      Object localObject2 = this.this$0.a.a();
-      if ((((SessionInfo)localObject2).r()) && (this.this$0.a.p()))
+      Object localObject2 = this.this$0.am.k();
+      if ((((SessionInfo)localObject2).r()) && (this.this$0.am.aD()))
       {
-        WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = this.this$0.a.a();
+        WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = this.this$0.am.aA();
         if (localWatchTogetherMediaPlayCtrl != null)
         {
-          localObject1 = ((AVActivity)localObject1).a(localWatchTogetherMediaPlayCtrl.i());
-          ((SessionInfo)localObject2).c(this.this$0.h);
-          ((WatchTogetherUIProxy)localObject1).setImmersiveStatus(this.this$0.h);
+          localObject1 = ((AVActivity)localObject1).d(localWatchTogetherMediaPlayCtrl.r());
+          ((SessionInfo)localObject2).c(this.this$0.af);
+          ((WatchTogetherUIProxy)localObject1).setImmersiveStatus(this.this$0.af);
         }
       }
-      this.this$0.e(0);
+      this.this$0.f(0);
     }
   }
 }

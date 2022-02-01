@@ -20,33 +20,33 @@ class BigImageVideoProteusItem$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    paramViewBase = this.a;
     if ((paramViewBase != null) && (paramViewBase.columnEntrances != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.columnEntrances.isEmpty()) {
+      if (this.a.columnEntrances.isEmpty()) {
         return;
       }
       paramViewBase = new StringBuilder();
       paramViewBase.append("");
-      paramViewBase.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.columnEntrances);
+      paramViewBase.append(this.a.columnEntrances);
       QLog.i("BigImageVideoProteusItem", 1, paramViewBase.toString());
-      paramViewBase = (VideoColumnInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.columnEntrances.get(0);
+      paramViewBase = (VideoColumnInfo)this.a.columnEntrances.get(0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
       localStringBuilder.append(paramViewBase);
       QLog.i("BigImageVideoProteusItem", 1, localStringBuilder.toString());
-      if ((paramViewBase.a != null) && (paramViewBase.a.a != 3)) {
-        VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().getContext(), paramViewBase.a);
+      if ((paramViewBase.n != null) && (paramViewBase.n.a != 3)) {
+        VideoFeedsHelper.a(this.b.t().getContext(), paramViewBase.n);
       }
-      paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-      ProteusSupportUtil.a(paramViewBase, paramViewBase.mProteusTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
-      RIJDtReportHelper.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      paramViewBase = this.a;
+      ProteusSupportUtil.a(paramViewBase, paramViewBase.mProteusTemplateBean, this.c);
+      RIJDtReportHelper.a.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BigImageVideoProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

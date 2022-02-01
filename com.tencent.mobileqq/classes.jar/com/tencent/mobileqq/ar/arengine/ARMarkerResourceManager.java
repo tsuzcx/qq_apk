@@ -27,118 +27,93 @@ import mqq.os.MqqHandler;
 
 public class ARMarkerResourceManager
 {
-  private static String jdField_b_of_type_JavaLangString = "";
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ARResourceManagerTools jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  String jdField_a_of_type_JavaLangString = null;
-  private ArrayList<ArCloudConfigInfo> jdField_a_of_type_JavaUtilArrayList = null;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int jdField_c_of_type_Int;
-  long jdField_c_of_type_Long;
-  int jdField_d_of_type_Int;
-  long jdField_d_of_type_Long;
-  long e;
+  private static String r = "";
+  Object a = new Object();
+  AppInterface b;
+  long c;
+  long d;
+  String e = null;
   long f;
   long g;
   long h;
-  long i;
+  int i;
   long j;
+  long k;
+  long l;
+  int m;
+  long n;
+  int o;
+  long p;
+  int q;
+  private ArrayList<ArCloudConfigInfo> s = null;
+  private ARResourceManagerTools t;
+  private Context u = null;
   
   public ARMarkerResourceManager(AppInterface paramAppInterface, Context paramContext)
   {
-    jdField_b_of_type_JavaLangString = ARResouceDir.a();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools = new ARResourceManagerTools(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private static String a()
-  {
-    a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("ar_cloud_marker_config/");
-    return localStringBuilder.toString();
+    r = ARResouceDir.a();
+    this.s = new ArrayList();
+    this.t = new ARResourceManagerTools(paramAppInterface);
+    this.b = paramAppInterface;
+    this.u = paramContext;
   }
   
   static void a()
   {
-    if (TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
-      jdField_b_of_type_JavaLangString = ARResouceDir.a();
+    if (TextUtils.isEmpty(r)) {
+      r = ARResouceDir.a();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_AR_MODEL);
     localStringBuilder.append(".nomedia");
-    ARResouceDir.a(localStringBuilder.toString());
+    ARResouceDir.b(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_AR_TRANSFER);
     localStringBuilder.append(".nomedia");
-    ARResouceDir.a(localStringBuilder.toString());
+    ARResouceDir.b(localStringBuilder.toString());
   }
   
   private void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    File[] arrayOfFile = new File(a()).listFiles();
+    this.s.clear();
+    File[] arrayOfFile = new File(g()).listFiles();
     if (arrayOfFile == null) {
       return;
     }
-    int k = 0;
-    while (k < arrayOfFile.length)
+    int i1 = 0;
+    while (i1 < arrayOfFile.length)
     {
-      Object localObject1 = arrayOfFile[k];
+      Object localObject1 = arrayOfFile[i1];
       if (((File)localObject1).getName().endsWith("_config.dat"))
       {
-        Object localObject2 = a();
+        Object localObject2 = g();
         Object localObject3 = ((File)localObject1).getName();
         if (((File)localObject1).lastModified() + paramLong >= System.currentTimeMillis())
         {
           localObject1 = ArResourceConfigUtils.a((String)localObject2, (String)localObject3);
           a((ArCloudConfigInfo)localObject1);
-          if (((localObject1 == null) || (((ArCloudConfigInfo)localObject1).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo == null) || (new File(((ArCloudConfigInfo)localObject1).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c).exists())) && ((localObject1 == null) || (((ArCloudConfigInfo)localObject1).jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) || (new File(((ArCloudConfigInfo)localObject1).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f).exists())))
+          if (((localObject1 == null) || (((ArCloudConfigInfo)localObject1).j == null) || (new File(((ArCloudConfigInfo)localObject1).j.d).exists())) && ((localObject1 == null) || (((ArCloudConfigInfo)localObject1).k == null) || (new File(((ArCloudConfigInfo)localObject1).k.h).exists())))
           {
-            if ((localObject1 != null) && (((ArCloudConfigInfo)localObject1).jdField_a_of_type_JavaUtilArrayList != null) && (((ArCloudConfigInfo)localObject1).jdField_a_of_type_JavaUtilArrayList.size() > 0) && (((ArCloudConfigInfo)localObject1).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null))
+            if ((localObject1 != null) && (((ArCloudConfigInfo)localObject1).i != null) && (((ArCloudConfigInfo)localObject1).i.size() > 0) && (((ArCloudConfigInfo)localObject1).j != null))
             {
-              localObject2 = ((ArCloudConfigInfo)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
+              localObject2 = ((ArCloudConfigInfo)localObject1).i.iterator();
               while (((Iterator)localObject2).hasNext())
               {
                 localObject3 = (ArVideoResourceInfo)((Iterator)localObject2).next();
                 StringBuilder localStringBuilder = new StringBuilder();
-                localStringBuilder.append(((ArCloudConfigInfo)localObject1).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_d_of_type_JavaLangString);
-                localStringBuilder.append(((ArVideoResourceInfo)localObject3).c);
+                localStringBuilder.append(((ArCloudConfigInfo)localObject1).j.e);
+                localStringBuilder.append(((ArVideoResourceInfo)localObject3).e);
                 localStringBuilder.append("_model.zip");
                 if (!new File(localStringBuilder.toString()).exists()) {
-                  int m = ((ArVideoResourceInfo)localObject3).jdField_d_of_type_Int;
+                  int i2 = ((ArVideoResourceInfo)localObject3).h;
                 }
               }
             }
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+            this.s.add(localObject1);
           }
         }
       }
-      k += 1;
-    }
-  }
-  
-  private void a(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    if (paramArCloudConfigInfo != null)
-    {
-      int k = 0;
-      while (k < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString.equals(((ArCloudConfigInfo)this.jdField_a_of_type_JavaUtilArrayList.get(k)).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString))) {
-          return;
-        }
-        k += 1;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramArCloudConfigInfo);
+      i1 += 1;
     }
   }
   
@@ -149,61 +124,61 @@ public class ARMarkerResourceManager
     }
     ArrayList localArrayList = new ArrayList();
     QLog.i("AREngine_ARMarkerResourceManager", 1, "downLoadMarkerModelResources");
-    Object localObject1 = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c);
-    d();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString;
+    Object localObject1 = new File(paramArCloudConfigInfo.j.d);
+    e();
+    this.c = System.currentTimeMillis();
+    this.e = paramArCloudConfigInfo.j.a;
     if ((!((File)localObject1).exists()) && (!paramArCloudConfigInfo.a()))
     {
       localObject1 = new ARResourceDownload.DownloadInfo();
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 2;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_b_of_type_JavaLangString;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString;
-      this.jdField_c_of_type_Long = (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_Long / 8192L);
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_Long;
-      ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = false;
-      this.jdField_c_of_type_Int = paramArCloudConfigInfo.jdField_d_of_type_Int;
-      this.j += this.jdField_c_of_type_Long;
+      ((ARResourceDownload.DownloadInfo)localObject1).a = 2;
+      ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.j.c;
+      ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.j.a;
+      this.f = (paramArCloudConfigInfo.j.b / 8192L);
+      ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.j.b;
+      ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.j.d;
+      ((ARResourceDownload.DownloadInfo)localObject1).e = false;
+      this.o = paramArCloudConfigInfo.e;
+      this.p += this.f;
       localArrayList.add(localObject1);
     }
     Object localObject2;
-    if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.a()))
+    if ((paramArCloudConfigInfo.m != null) && (paramArCloudConfigInfo.m.a()))
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(r);
       ((StringBuilder)localObject1).append("pddata/app/offline/html5/");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.m.d);
       ((StringBuilder)localObject1).append(File.separator);
       localObject1 = new File(((StringBuilder)localObject1).toString());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("offlie  ");
-      ((StringBuilder)localObject2).append(OfflineEnvHelper.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString));
+      ((StringBuilder)localObject2).append(OfflineEnvHelper.b(paramArCloudConfigInfo.m.d));
       QLog.i("AREngine_ARMarkerResourceManager", 1, ((StringBuilder)localObject2).toString());
-      if ((!((File)localObject1).exists()) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString)))
+      if ((!((File)localObject1).exists()) && (!TextUtils.isEmpty(paramArCloudConfigInfo.m.d)))
       {
         localObject1 = new ARResourceDownload.DownloadInfo();
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 4;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = String.valueOf(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString);
+        ((ARResourceDownload.DownloadInfo)localObject1).a = 4;
+        ((ARResourceDownload.DownloadInfo)localObject1).b = String.valueOf(paramArCloudConfigInfo.m.d);
         localArrayList.add(localObject1);
       }
     }
-    if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c))) {
-      if (!new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c).exists())
+    if ((paramArCloudConfigInfo.r != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.r.i))) {
+      if (!new File(paramArCloudConfigInfo.r.i).exists())
       {
         localObject1 = new ARResourceDownload.DownloadInfo();
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 7;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_JavaLangString;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_Long;
-        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+        ((ARResourceDownload.DownloadInfo)localObject1).a = 7;
+        ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.r.f;
+        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.r.h;
+        ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.r.g;
+        ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.r.i;
+        ((ARResourceDownload.DownloadInfo)localObject1).e = true;
         localArrayList.add(localObject1);
       }
     }
     try
     {
-      ArResourceConfigUtils.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c, ARResouceDir.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString));
+      ArResourceConfigUtils.b(paramArCloudConfigInfo.r.i, ARResouceDir.a(paramArCloudConfigInfo.r.h));
     }
     catch (Exception localException)
     {
@@ -212,55 +187,55 @@ public class ARMarkerResourceManager
       label1149:
       break label514;
     }
-    if ((paramArCloudConfigInfo.g == 1) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString)) && (!new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString).exists()))
+    if ((paramArCloudConfigInfo.n == 1) && (paramArCloudConfigInfo.o != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.o.d)) && (!new File(paramArCloudConfigInfo.o.d).exists()))
     {
       localObject1 = new ARResourceDownload.DownloadInfo();
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 6;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_b_of_type_JavaLangString;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_a_of_type_Long;
-      ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+      ((ARResourceDownload.DownloadInfo)localObject1).a = 6;
+      ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.o.b;
+      ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.o.c;
+      ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.o.h;
+      ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.o.d;
+      ((ARResourceDownload.DownloadInfo)localObject1).e = true;
       localArrayList.add(localObject1);
     }
-    if ((paramArCloudConfigInfo.jdField_d_of_type_Int != 0) && (paramArCloudConfigInfo.jdField_d_of_type_Int != 100) && (paramArCloudConfigInfo.jdField_d_of_type_Int != 7) && (paramArCloudConfigInfo.jdField_d_of_type_Int != 8))
+    if ((paramArCloudConfigInfo.e != 0) && (paramArCloudConfigInfo.e != 100) && (paramArCloudConfigInfo.e != 7) && (paramArCloudConfigInfo.e != 8))
     {
-      if ((paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((paramArCloudConfigInfo.i != null) && (paramArCloudConfigInfo.i.size() > 0))
       {
         localObject2 = new ArrayList();
-        localObject3 = paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject3 = paramArCloudConfigInfo.i.iterator();
       }
     }
     else {
       while (((Iterator)localObject3).hasNext())
       {
         ArVideoResourceInfo localArVideoResourceInfo = (ArVideoResourceInfo)((Iterator)localObject3).next();
-        if (localArVideoResourceInfo.jdField_d_of_type_Int != 4)
+        if (localArVideoResourceInfo.h != 4)
         {
-          File localFile = new File(localArVideoResourceInfo.e);
+          File localFile = new File(localArVideoResourceInfo.j);
           if (localFile.exists()) {
             localObject1 = PortalUtils.a(localFile.getAbsolutePath());
           } else {
             localObject1 = null;
           }
-          if (((!localFile.exists()) || (TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(localArVideoResourceInfo.c))) && (!((ArrayList)localObject2).contains(localArVideoResourceInfo.jdField_d_of_type_JavaLangString)))
+          if (((!localFile.exists()) || (TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(localArVideoResourceInfo.e))) && (!((ArrayList)localObject2).contains(localArVideoResourceInfo.i)))
           {
             localObject1 = new ARResourceDownload.DownloadInfo();
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = localArVideoResourceInfo.jdField_d_of_type_JavaLangString;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = localArVideoResourceInfo.c;
-            this.f = (localArVideoResourceInfo.jdField_a_of_type_Long / 8192L);
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = localArVideoResourceInfo.jdField_a_of_type_Long;
-            this.j += this.f;
-            this.h = System.currentTimeMillis();
+            ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+            ((ARResourceDownload.DownloadInfo)localObject1).b = localArVideoResourceInfo.i;
             ((ARResourceDownload.DownloadInfo)localObject1).c = localArVideoResourceInfo.e;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = false;
+            this.j = (localArVideoResourceInfo.b / 8192L);
+            ((ARResourceDownload.DownloadInfo)localObject1).g = localArVideoResourceInfo.b;
+            this.p += this.j;
+            this.l = System.currentTimeMillis();
+            ((ARResourceDownload.DownloadInfo)localObject1).d = localArVideoResourceInfo.j;
+            ((ARResourceDownload.DownloadInfo)localObject1).e = false;
             localArrayList.add(localObject1);
-            ((ArrayList)localObject2).add(localArVideoResourceInfo.jdField_d_of_type_JavaLangString);
+            ((ArrayList)localObject2).add(localArVideoResourceInfo.i);
           }
           continue;
-          if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) {
-            localObject1 = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
+          if (paramArCloudConfigInfo.k != null) {
+            localObject1 = new File(paramArCloudConfigInfo.k.h);
           } else {
             localObject1 = null;
           }
@@ -269,18 +244,18 @@ public class ARMarkerResourceManager
           } else {
             localObject2 = null;
           }
-          if ((localObject1 == null) || (!((File)localObject1).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString))) {}
+          if ((localObject1 == null) || (!((File)localObject1).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(paramArCloudConfigInfo.k.b))) {}
         }
         try
         {
-          localObject1 = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
-          localObject2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
+          localObject1 = new File(paramArCloudConfigInfo.k.h);
+          localObject2 = paramArCloudConfigInfo.k.h;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append(((File)localObject1).getParentFile().getAbsolutePath());
           ((StringBuilder)localObject3).append(File.separator);
-          ((StringBuilder)localObject3).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject3).append(paramArCloudConfigInfo.k.b);
           ((StringBuilder)localObject3).append(File.separator);
-          ArResourceConfigUtils.a((String)localObject2, ((StringBuilder)localObject3).toString());
+          ArResourceConfigUtils.b((String)localObject2, ((StringBuilder)localObject3).toString());
           paramARMarkerResourceCallback.a(true, 3, paramArCloudConfigInfo);
           QLog.i("AREngine_ARMarkerResourceManager", 1, "onARMarkerModelDownloadComplete  ");
         }
@@ -288,41 +263,41 @@ public class ARMarkerResourceManager
         {
           break label1149;
         }
-        new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f).delete();
+        new File(paramArCloudConfigInfo.k.h).delete();
         QLog.i("AREngine_ARMarkerResourceManager", 1, "Download end. uncompressZip error. url = ");
         paramARMarkerResourceCallback.a(false, 3, paramArCloudConfigInfo);
         QLog.i("AREngine_ARMarkerResourceManager", 1, "onARMarkerModelDownloadComplete  ");
         paramARMarkerResourceCallback.a(false, paramArCloudConfigInfo);
         return;
-        if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
+        if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.k != null))
         {
           localObject1 = new ARResourceDownload.DownloadInfo();
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-          this.f = (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long / 8192L);
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-          this.j += this.f;
-          this.h = System.currentTimeMillis();
-          ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+          ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+          ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.k.c;
+          ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.k.b;
+          this.j = (paramArCloudConfigInfo.k.a / 8192L);
+          ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.k.a;
+          this.p += this.j;
+          this.l = System.currentTimeMillis();
+          ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.k.h;
+          ((ARResourceDownload.DownloadInfo)localObject1).e = true;
           localArrayList.add(localObject1);
         }
       }
     }
     if ((paramARMarkerResourceCallback != null) && ((paramArCloudConfigInfo.a()) || (paramArCloudConfigInfo.b()))) {
-      paramARMarkerResourceCallback.d();
+      paramARMarkerResourceCallback.g();
     }
     if (localArrayList.size() > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a(localArrayList, new ARMarkerResourceManager.3(this, paramARMarkerResourceCallback, paramArCloudConfigInfo, paramARCloudMarkerRecogResult));
+      this.t.a(localArrayList, new ARMarkerResourceManager.3(this, paramARMarkerResourceCallback, paramArCloudConfigInfo, paramARCloudMarkerRecogResult));
       return;
     }
     paramARMarkerResourceCallback.a(true, paramArCloudConfigInfo);
-    if (paramArCloudConfigInfo.jdField_b_of_type_Int != 1) {
-      a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString, paramARCloudMarkerRecogResult);
+    if (paramArCloudConfigInfo.c != 1) {
+      a(paramArCloudConfigInfo.j.a, paramARCloudMarkerRecogResult);
     }
-    a(paramArCloudConfigInfo);
+    b(paramArCloudConfigInfo);
   }
   
   private void a(ARMarkerResourceManager.ARMarkerResourceCallback paramARMarkerResourceCallback, ArCloudConfigInfo paramArCloudConfigInfo)
@@ -332,50 +307,50 @@ public class ARMarkerResourceManager
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.a()))
+    if ((paramArCloudConfigInfo.m != null) && (paramArCloudConfigInfo.m.a()))
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(r);
       ((StringBuilder)localObject1).append("pddata/app/offline/html5/");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.m.d);
       ((StringBuilder)localObject1).append(File.separator);
-      if ((!new File(((StringBuilder)localObject1).toString()).exists()) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString)))
+      if ((!new File(((StringBuilder)localObject1).toString()).exists()) && (!TextUtils.isEmpty(paramArCloudConfigInfo.m.d)))
       {
         localObject1 = new ARResourceDownload.DownloadInfo();
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 4;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = String.valueOf(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString);
+        ((ARResourceDownload.DownloadInfo)localObject1).a = 4;
+        ((ARResourceDownload.DownloadInfo)localObject1).b = String.valueOf(paramArCloudConfigInfo.m.d);
         localArrayList.add(localObject1);
       }
     }
-    if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c))) {
-      if (!new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c).exists())
+    if ((paramArCloudConfigInfo.r != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.r.i))) {
+      if (!new File(paramArCloudConfigInfo.r.i).exists())
       {
         localObject1 = new ARResourceDownload.DownloadInfo();
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 7;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_JavaLangString;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_Long;
-        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+        ((ARResourceDownload.DownloadInfo)localObject1).a = 7;
+        ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.r.f;
+        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.r.h;
+        ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.r.g;
+        ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.r.i;
+        ((ARResourceDownload.DownloadInfo)localObject1).e = true;
         localArrayList.add(localObject1);
       }
     }
     try
     {
-      ArResourceConfigUtils.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c, ARResouceDir.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString));
+      ArResourceConfigUtils.b(paramArCloudConfigInfo.r.i, ARResouceDir.a(paramArCloudConfigInfo.r.h));
     }
     catch (Exception localException1)
     {
       label283:
       break label283;
     }
-    if ((paramArCloudConfigInfo.g == 1) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString))) {
-      if (!new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString).exists())
+    if ((paramArCloudConfigInfo.n == 1) && (paramArCloudConfigInfo.o != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.o.d))) {
+      if (!new File(paramArCloudConfigInfo.o.d).exists())
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(r);
         ((StringBuilder)localObject1).append("ar_model/0/");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.o.c);
         ((StringBuilder)localObject1).append("_model.zip");
         localObject1 = ((StringBuilder)localObject1).toString();
         if (!new File((String)localObject1).exists()) {}
@@ -383,7 +358,7 @@ public class ARMarkerResourceManager
     }
     try
     {
-      ArResourceConfigUtils.a((String)localObject1, ARResouceDir.b());
+      ArResourceConfigUtils.b((String)localObject1, ARResouceDir.b());
     }
     catch (Exception localException2)
     {
@@ -391,25 +366,25 @@ public class ARMarkerResourceManager
       break label403;
     }
     Object localObject1 = new ARResourceDownload.DownloadInfo();
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 6;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_b_of_type_JavaLangString;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_a_of_type_Long;
-    ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+    ((ARResourceDownload.DownloadInfo)localObject1).a = 6;
+    ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.o.b;
+    ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.o.c;
+    ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.o.h;
+    ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.o.d;
+    ((ARResourceDownload.DownloadInfo)localObject1).e = true;
     localArrayList.add(localObject1);
     break label565;
     localObject1 = new ARResourceDownload.DownloadInfo();
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 6;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_b_of_type_JavaLangString;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_a_of_type_Long;
-    ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+    ((ARResourceDownload.DownloadInfo)localObject1).a = 6;
+    ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.o.b;
+    ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.o.c;
+    ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.o.h;
+    ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.o.d;
+    ((ARResourceDownload.DownloadInfo)localObject1).e = true;
     localArrayList.add(localObject1);
     try
     {
-      ArResourceConfigUtils.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString, ARResouceDir.b());
+      ArResourceConfigUtils.b(paramArCloudConfigInfo.o.d, ARResouceDir.b());
     }
     catch (Exception localException3)
     {
@@ -417,10 +392,10 @@ public class ARMarkerResourceManager
       Object localObject2;
       break label565;
     }
-    if ((paramArCloudConfigInfo.jdField_d_of_type_Int == 0) || (paramArCloudConfigInfo.jdField_d_of_type_Int == 7) || (paramArCloudConfigInfo.jdField_d_of_type_Int == 8))
+    if ((paramArCloudConfigInfo.e == 0) || (paramArCloudConfigInfo.e == 7) || (paramArCloudConfigInfo.e == 8))
     {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) {
-        localObject1 = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
+      if (paramArCloudConfigInfo.k != null) {
+        localObject1 = new File(paramArCloudConfigInfo.k.h);
       } else {
         localObject1 = null;
       }
@@ -429,18 +404,18 @@ public class ARMarkerResourceManager
       } else {
         localObject2 = null;
       }
-      if ((localObject1 == null) || (!((File)localObject1).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString))) {}
+      if ((localObject1 == null) || (!((File)localObject1).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(paramArCloudConfigInfo.k.b))) {}
     }
     try
     {
-      localObject1 = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
-      localObject2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
+      localObject1 = new File(paramArCloudConfigInfo.k.h);
+      localObject2 = paramArCloudConfigInfo.k.h;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(((File)localObject1).getParentFile().getAbsolutePath());
       ((StringBuilder)localObject3).append(File.separator);
-      ((StringBuilder)localObject3).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(paramArCloudConfigInfo.k.b);
       ((StringBuilder)localObject3).append(File.separator);
-      ArResourceConfigUtils.a((String)localObject2, ((StringBuilder)localObject3).toString());
+      ArResourceConfigUtils.b((String)localObject2, ((StringBuilder)localObject3).toString());
       paramARMarkerResourceCallback.b(true, paramArCloudConfigInfo);
       QLog.i("AREngine_ARMarkerResourceManager", 1, "onARObjectClassifyDownloadComplete.");
     }
@@ -450,18 +425,18 @@ public class ARMarkerResourceManager
       label784:
       break label784;
     }
-    new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f).delete();
+    new File(paramArCloudConfigInfo.k.h).delete();
     QLog.i("AREngine_ARMarkerResourceManager", 1, "onARObjectClassifyDownloadComplete. uncompressZip error.");
     paramARMarkerResourceCallback.b(false, paramArCloudConfigInfo);
     return;
-    if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) && (paramArCloudConfigInfo.jdField_d_of_type_Int == 7))
+    if ((paramArCloudConfigInfo.k != null) && (paramArCloudConfigInfo.e == 7))
     {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString != null)
+      if (paramArCloudConfigInfo.k.b != null)
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(r);
         ((StringBuilder)localObject1).append("ar_model/0/");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.k.b);
         ((StringBuilder)localObject1).append("_model.zip");
         localObject1 = ((StringBuilder)localObject1).toString();
       }
@@ -470,108 +445,108 @@ public class ARMarkerResourceManager
         localObject1 = "";
       }
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_classfiy_model/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
       ((StringBuilder)localObject2).append(File.separator);
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.k.b);
       ((StringBuilder)localObject2).append(File.separator);
       localObject2 = ((StringBuilder)localObject2).toString();
       if (!new File((String)localObject1).exists()) {}
     }
     try
     {
-      ArResourceConfigUtils.a((String)localObject1, (String)localObject2);
+      ArResourceConfigUtils.b((String)localObject1, (String)localObject2);
     }
     catch (Exception localException5)
     {
       label998:
       break label998;
     }
-    if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
+    if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.k != null))
     {
       localObject1 = new ARResourceDownload.DownloadInfo();
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-      this.f = (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long / 8192L);
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-      this.j += this.f;
-      this.h = System.currentTimeMillis();
-      ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+      ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+      ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.k.c;
+      ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.k.b;
+      this.j = (paramArCloudConfigInfo.k.a / 8192L);
+      ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.k.a;
+      this.p += this.j;
+      this.l = System.currentTimeMillis();
+      ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.k.h;
+      ((ARResourceDownload.DownloadInfo)localObject1).e = true;
       localArrayList.add(localObject1);
       break label1349;
-      if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
+      if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.k != null))
       {
         localObject1 = new ARResourceDownload.DownloadInfo();
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-        this.f = (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long / 8192L);
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-        this.j += this.f;
-        this.h = System.currentTimeMillis();
-        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+        ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+        ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.k.c;
+        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.k.b;
+        this.j = (paramArCloudConfigInfo.k.a / 8192L);
+        ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.k.a;
+        this.p += this.j;
+        this.l = System.currentTimeMillis();
+        ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.k.h;
+        ((ARResourceDownload.DownloadInfo)localObject1).e = true;
         localArrayList.add(localObject1);
         break label1349;
-        if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
+        if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.k != null))
         {
           localObject1 = new ARResourceDownload.DownloadInfo();
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-          this.f = (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long / 8192L);
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-          this.j += this.f;
-          this.h = System.currentTimeMillis();
-          ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+          ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+          ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.k.c;
+          ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.k.b;
+          this.j = (paramArCloudConfigInfo.k.a / 8192L);
+          ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.k.a;
+          this.p += this.j;
+          this.l = System.currentTimeMillis();
+          ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.k.h;
+          ((ARResourceDownload.DownloadInfo)localObject1).e = true;
           localArrayList.add(localObject1);
         }
       }
     }
     label1349:
-    if ((paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((paramArCloudConfigInfo.i != null) && (paramArCloudConfigInfo.i.size() > 0))
     {
       localObject2 = new ArrayList();
-      localObject3 = paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject3 = paramArCloudConfigInfo.i.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         ArVideoResourceInfo localArVideoResourceInfo = (ArVideoResourceInfo)((Iterator)localObject3).next();
-        if (localArVideoResourceInfo.jdField_d_of_type_Int != 4)
+        if (localArVideoResourceInfo.h != 4)
         {
-          File localFile = new File(localArVideoResourceInfo.e);
+          File localFile = new File(localArVideoResourceInfo.j);
           if (localFile.exists()) {
             localObject1 = PortalUtils.a(localFile.getAbsolutePath());
           } else {
             localObject1 = null;
           }
-          if (((!localFile.exists()) || (TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(localArVideoResourceInfo.c))) && (!((ArrayList)localObject2).contains(localArVideoResourceInfo.jdField_d_of_type_JavaLangString)))
+          if (((!localFile.exists()) || (TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(localArVideoResourceInfo.e))) && (!((ArrayList)localObject2).contains(localArVideoResourceInfo.i)))
           {
             localObject1 = new ARResourceDownload.DownloadInfo();
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = localArVideoResourceInfo.jdField_d_of_type_JavaLangString;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = localArVideoResourceInfo.c;
-            this.f = (localArVideoResourceInfo.jdField_a_of_type_Long / 8192L);
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = localArVideoResourceInfo.jdField_a_of_type_Long;
-            this.j += this.f;
-            this.h = System.currentTimeMillis();
+            ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+            ((ARResourceDownload.DownloadInfo)localObject1).b = localArVideoResourceInfo.i;
             ((ARResourceDownload.DownloadInfo)localObject1).c = localArVideoResourceInfo.e;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = false;
+            this.j = (localArVideoResourceInfo.b / 8192L);
+            ((ARResourceDownload.DownloadInfo)localObject1).g = localArVideoResourceInfo.b;
+            this.p += this.j;
+            this.l = System.currentTimeMillis();
+            ((ARResourceDownload.DownloadInfo)localObject1).d = localArVideoResourceInfo.j;
+            ((ARResourceDownload.DownloadInfo)localObject1).e = false;
             localArrayList.add(localObject1);
-            ((ArrayList)localObject2).add(localArVideoResourceInfo.jdField_d_of_type_JavaLangString);
+            ((ArrayList)localObject2).add(localArVideoResourceInfo.i);
           }
         }
       }
     }
     if ((paramARMarkerResourceCallback != null) && (paramArCloudConfigInfo.b())) {
-      paramARMarkerResourceCallback.e();
+      paramARMarkerResourceCallback.h();
     }
     if (localArrayList.size() > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a(localArrayList, new ARMarkerResourceManager.4(this, paramARMarkerResourceCallback, paramArCloudConfigInfo));
+      this.t.a(localArrayList, new ARMarkerResourceManager.4(this, paramARMarkerResourceCallback, paramArCloudConfigInfo));
       return;
     }
     paramARMarkerResourceCallback.b(true, paramArCloudConfigInfo);
@@ -580,39 +555,39 @@ public class ARMarkerResourceManager
   private void a(boolean paramBoolean)
   {
     QLog.i("AREngine_ARMarkerResourceManager", 1, "checkAndDeleteExpiredResource  ");
-    long l = System.currentTimeMillis();
-    File[] arrayOfFile = new File(a()).listFiles();
+    long l1 = System.currentTimeMillis();
+    File[] arrayOfFile = new File(g()).listFiles();
     if (arrayOfFile == null) {
       return;
     }
-    int k = 0;
-    while (k < arrayOfFile.length)
+    int i1 = 0;
+    while (i1 < arrayOfFile.length)
     {
-      Object localObject1 = arrayOfFile[k];
-      if ((((int)((l - ((File)localObject1).lastModified()) / 86400000L) > 7) || (paramBoolean)) && (((File)localObject1).getName().endsWith("_config.dat")))
+      Object localObject1 = arrayOfFile[i1];
+      if ((((int)((l1 - ((File)localObject1).lastModified()) / 86400000L) > 7) || (paramBoolean)) && (((File)localObject1).getName().endsWith("_config.dat")))
       {
-        ArCloudConfigInfo localArCloudConfigInfo = ArResourceConfigUtils.a(a(), ((File)localObject1).getName());
+        ArCloudConfigInfo localArCloudConfigInfo = ArResourceConfigUtils.a(g(), ((File)localObject1).getName());
         if (localArCloudConfigInfo == null) {
           return;
         }
         a(localArCloudConfigInfo);
         ((File)localObject1).delete();
-        if (localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null)
+        if (localArCloudConfigInfo.j != null)
         {
-          localObject1 = new File(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c);
+          localObject1 = new File(localArCloudConfigInfo.j.d);
           if (((File)localObject1).exists()) {
             ((File)localObject1).delete();
           }
           Object localObject2;
-          if (localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null)
+          if (localArCloudConfigInfo.k != null)
           {
-            localObject1 = new File(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
+            localObject1 = new File(localArCloudConfigInfo.k.h);
             if (((File)localObject1).exists()) {
               ((File)localObject1).delete();
             }
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_d_of_type_JavaLangString);
-            ((StringBuilder)localObject1).append(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(localArCloudConfigInfo.j.e);
+            ((StringBuilder)localObject1).append(localArCloudConfigInfo.k.b);
             ((StringBuilder)localObject1).append(File.separator);
             localObject1 = new File(((StringBuilder)localObject1).toString());
             if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
@@ -620,25 +595,25 @@ public class ARMarkerResourceManager
               localObject2 = ((File)localObject1).listFiles();
               if (localObject2 != null)
               {
-                int m = 0;
-                while (m < localObject2.length)
+                int i2 = 0;
+                while (i2 < localObject2.length)
                 {
-                  localObject2[m].delete();
-                  m += 1;
+                  localObject2[i2].delete();
+                  i2 += 1;
                 }
               }
               ((File)localObject1).delete();
             }
           }
-          if ((localArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList != null) && (localArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+          if ((localArCloudConfigInfo.i != null) && (localArCloudConfigInfo.i.size() > 0))
           {
-            localObject1 = localArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+            localObject1 = localArCloudConfigInfo.i.iterator();
             while (((Iterator)localObject1).hasNext())
             {
               localObject2 = (ArVideoResourceInfo)((Iterator)localObject1).next();
               StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_d_of_type_JavaLangString);
-              localStringBuilder.append(((ArVideoResourceInfo)localObject2).c);
+              localStringBuilder.append(localArCloudConfigInfo.j.e);
+              localStringBuilder.append(((ArVideoResourceInfo)localObject2).e);
               localStringBuilder.append("_model.zip");
               localObject2 = new File(localStringBuilder.toString());
               if (((File)localObject2).exists()) {
@@ -648,7 +623,7 @@ public class ARMarkerResourceManager
           }
         }
       }
-      k += 1;
+      i1 += 1;
     }
   }
   
@@ -660,74 +635,74 @@ public class ARMarkerResourceManager
     a();
     Object localObject1;
     Object localObject2;
-    if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null)
+    if (paramArCloudConfigInfo.j != null)
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo;
+      localObject1 = paramArCloudConfigInfo.j;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_marker_feature/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
       ((StringBuilder)localObject2).append(File.separator);
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.j.a);
       ((StringBuilder)localObject2).append("_signature.db");
-      ((ArFeatureInfo)localObject1).c = ((StringBuilder)localObject2).toString();
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo;
+      ((ArFeatureInfo)localObject1).d = ((StringBuilder)localObject2).toString();
+      localObject1 = paramArCloudConfigInfo.j;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_marker_model/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
       ((StringBuilder)localObject2).append(File.separator);
-      ((ArFeatureInfo)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      ((ArFeatureInfo)localObject1).e = ((StringBuilder)localObject2).toString();
     }
-    if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null)
+    if (paramArCloudConfigInfo.k != null)
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource;
+      localObject1 = paramArCloudConfigInfo.k;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_marker_model/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
       ((StringBuilder)localObject2).append(File.separator);
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.k.b);
       ((StringBuilder)localObject2).append("_model.zip");
-      ((ArModelResource)localObject1).f = ((StringBuilder)localObject2).toString();
+      ((ArModelResource)localObject1).h = ((StringBuilder)localObject2).toString();
     }
-    if ((paramArCloudConfigInfo.g == 1) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c)))
+    if ((paramArCloudConfigInfo.n == 1) && (paramArCloudConfigInfo.o != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.o.c)))
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip;
+      localObject1 = paramArCloudConfigInfo.o;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_relationship/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.o.c);
       ((StringBuilder)localObject2).append("_relationship.zip");
-      ((ARRelationShip)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      ((ARRelationShip)localObject1).d = ((StringBuilder)localObject2).toString();
     }
-    if ((paramArCloudConfigInfo.c()) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null))
+    if ((paramArCloudConfigInfo.c()) && (paramArCloudConfigInfo.r != null))
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo;
+      localObject1 = paramArCloudConfigInfo.r;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_transfer/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.r.h);
       ((StringBuilder)localObject2).append(".zip");
-      ((ARTransferDoorConfigInfo)localObject1).c = ((StringBuilder)localObject2).toString();
+      ((ARTransferDoorConfigInfo)localObject1).i = ((StringBuilder)localObject2).toString();
     }
-    if ((paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((paramArCloudConfigInfo.i != null) && (paramArCloudConfigInfo.i.size() > 0))
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = paramArCloudConfigInfo.i.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (ArVideoResourceInfo)((Iterator)localObject1).next();
-        if (((ArVideoResourceInfo)localObject2).jdField_d_of_type_Int == 4)
+        if (((ArVideoResourceInfo)localObject2).h == 4)
         {
-          ((ArVideoResourceInfo)localObject2).e = AROnlineVideoUtil.a(((ArVideoResourceInfo)localObject2).jdField_d_of_type_JavaLangString);
+          ((ArVideoResourceInfo)localObject2).j = AROnlineVideoUtil.a(((ArVideoResourceInfo)localObject2).i);
         }
-        else if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null)
+        else if (paramArCloudConfigInfo.j != null)
         {
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_d_of_type_JavaLangString);
-          localStringBuilder.append(((ArVideoResourceInfo)localObject2).c);
+          localStringBuilder.append(paramArCloudConfigInfo.j.e);
+          localStringBuilder.append(((ArVideoResourceInfo)localObject2).e);
           localStringBuilder.append("_model.zip");
-          ((ArVideoResourceInfo)localObject2).e = localStringBuilder.toString();
+          ((ArVideoResourceInfo)localObject2).j = localStringBuilder.toString();
         }
       }
     }
@@ -741,12 +716,12 @@ public class ARMarkerResourceManager
     }
     try
     {
-      paramARCloudMarkerRecogResult = new String(paramARCloudMarkerRecogResult.a[0].a, "utf-8");
+      paramARCloudMarkerRecogResult = new String(paramARCloudMarkerRecogResult.g[0].g, "utf-8");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append("_config.dat");
       paramString = localStringBuilder.toString();
-      return ArResourceConfigUtils.a(paramARCloudMarkerRecogResult, a(), paramString);
+      return ArResourceConfigUtils.a(paramARCloudMarkerRecogResult, g(), paramString);
     }
     catch (UnsupportedEncodingException paramString)
     {
@@ -758,6 +733,22 @@ public class ARMarkerResourceManager
     return false;
   }
   
+  private void b(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    if (paramArCloudConfigInfo != null)
+    {
+      int i1 = 0;
+      while (i1 < this.s.size())
+      {
+        if ((paramArCloudConfigInfo.k != null) && (paramArCloudConfigInfo.j.a.equals(((ArCloudConfigInfo)this.s.get(i1)).j.a))) {
+          return;
+        }
+        i1 += 1;
+      }
+      this.s.add(paramArCloudConfigInfo);
+    }
+  }
+  
   private void b(ARMarkerResourceManager.ARMarkerResourceCallback paramARMarkerResourceCallback, ArCloudConfigInfo paramArCloudConfigInfo)
   {
     QLog.i("AREngine_ARMarkerResourceManager", 1, "downLoadSceneModelResources");
@@ -765,50 +756,50 @@ public class ARMarkerResourceManager
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.a()))
+    if ((paramArCloudConfigInfo.m != null) && (paramArCloudConfigInfo.m.a()))
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(r);
       ((StringBuilder)localObject1).append("pddata/app/offline/html5/");
-      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(paramArCloudConfigInfo.m.d);
       ((StringBuilder)localObject1).append(File.separator);
-      if ((!new File(((StringBuilder)localObject1).toString()).exists()) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString)))
+      if ((!new File(((StringBuilder)localObject1).toString()).exists()) && (!TextUtils.isEmpty(paramArCloudConfigInfo.m.d)))
       {
         localObject1 = new ARResourceDownload.DownloadInfo();
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 4;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = String.valueOf(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_JavaLangString);
+        ((ARResourceDownload.DownloadInfo)localObject1).a = 4;
+        ((ARResourceDownload.DownloadInfo)localObject1).b = String.valueOf(paramArCloudConfigInfo.m.d);
         localArrayList.add(localObject1);
       }
     }
-    if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c))) {
-      if (!new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c).exists())
+    if ((paramArCloudConfigInfo.r != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.r.i))) {
+      if (!new File(paramArCloudConfigInfo.r.i).exists())
       {
         localObject1 = new ARResourceDownload.DownloadInfo();
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 7;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_JavaLangString;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_a_of_type_Long;
-        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+        ((ARResourceDownload.DownloadInfo)localObject1).a = 7;
+        ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.r.f;
+        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.r.h;
+        ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.r.g;
+        ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.r.i;
+        ((ARResourceDownload.DownloadInfo)localObject1).e = true;
         localArrayList.add(localObject1);
       }
     }
     try
     {
-      ArResourceConfigUtils.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.c, ARResouceDir.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString));
+      ArResourceConfigUtils.b(paramArCloudConfigInfo.r.i, ARResouceDir.a(paramArCloudConfigInfo.r.h));
     }
     catch (Exception localException1)
     {
       label283:
       break label283;
     }
-    if ((paramArCloudConfigInfo.g == 1) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString))) {
-      if (!new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString).exists())
+    if ((paramArCloudConfigInfo.n == 1) && (paramArCloudConfigInfo.o != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.o.d))) {
+      if (!new File(paramArCloudConfigInfo.o.d).exists())
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(r);
         ((StringBuilder)localObject1).append("ar_model/0/");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.o.c);
         ((StringBuilder)localObject1).append("_model.zip");
         localObject1 = ((StringBuilder)localObject1).toString();
         if (!new File((String)localObject1).exists()) {}
@@ -816,7 +807,7 @@ public class ARMarkerResourceManager
     }
     try
     {
-      ArResourceConfigUtils.a((String)localObject1, ARResouceDir.b());
+      ArResourceConfigUtils.b((String)localObject1, ARResouceDir.b());
     }
     catch (Exception localException2)
     {
@@ -824,25 +815,25 @@ public class ARMarkerResourceManager
       break label403;
     }
     Object localObject1 = new ARResourceDownload.DownloadInfo();
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 6;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_b_of_type_JavaLangString;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_a_of_type_Long;
-    ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+    ((ARResourceDownload.DownloadInfo)localObject1).a = 6;
+    ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.o.b;
+    ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.o.c;
+    ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.o.h;
+    ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.o.d;
+    ((ARResourceDownload.DownloadInfo)localObject1).e = true;
     localArrayList.add(localObject1);
     break label565;
     localObject1 = new ARResourceDownload.DownloadInfo();
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 6;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_b_of_type_JavaLangString;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_a_of_type_Long;
-    ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString;
-    ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+    ((ARResourceDownload.DownloadInfo)localObject1).a = 6;
+    ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.o.b;
+    ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.o.c;
+    ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.o.h;
+    ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.o.d;
+    ((ARResourceDownload.DownloadInfo)localObject1).e = true;
     localArrayList.add(localObject1);
     try
     {
-      ArResourceConfigUtils.a(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_d_of_type_JavaLangString, ARResouceDir.b());
+      ArResourceConfigUtils.b(paramArCloudConfigInfo.o.d, ARResouceDir.b());
     }
     catch (Exception localException3)
     {
@@ -850,10 +841,10 @@ public class ARMarkerResourceManager
       Object localObject2;
       break label565;
     }
-    if ((paramArCloudConfigInfo.jdField_d_of_type_Int == 0) || (paramArCloudConfigInfo.jdField_d_of_type_Int == 7) || (paramArCloudConfigInfo.jdField_d_of_type_Int == 8))
+    if ((paramArCloudConfigInfo.e == 0) || (paramArCloudConfigInfo.e == 7) || (paramArCloudConfigInfo.e == 8))
     {
-      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) {
-        localObject1 = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
+      if (paramArCloudConfigInfo.k != null) {
+        localObject1 = new File(paramArCloudConfigInfo.k.h);
       } else {
         localObject1 = null;
       }
@@ -862,18 +853,18 @@ public class ARMarkerResourceManager
       } else {
         localObject2 = null;
       }
-      if ((localObject1 == null) || (!((File)localObject1).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString))) {}
+      if ((localObject1 == null) || (!((File)localObject1).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(paramArCloudConfigInfo.k.b))) {}
     }
     try
     {
-      localObject1 = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
-      localObject2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
+      localObject1 = new File(paramArCloudConfigInfo.k.h);
+      localObject2 = paramArCloudConfigInfo.k.h;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(((File)localObject1).getParentFile().getAbsolutePath());
       ((StringBuilder)localObject3).append(File.separator);
-      ((StringBuilder)localObject3).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject3).append(paramArCloudConfigInfo.k.b);
       ((StringBuilder)localObject3).append(File.separator);
-      ArResourceConfigUtils.a((String)localObject2, ((StringBuilder)localObject3).toString());
+      ArResourceConfigUtils.b((String)localObject2, ((StringBuilder)localObject3).toString());
       paramARMarkerResourceCallback.c(true, paramArCloudConfigInfo);
       QLog.i("AREngine_ARMarkerResourceManager", 1, "onARSceneRecogDownloadComplete.");
     }
@@ -883,18 +874,18 @@ public class ARMarkerResourceManager
       label784:
       break label784;
     }
-    new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f).delete();
+    new File(paramArCloudConfigInfo.k.h).delete();
     QLog.i("AREngine_ARMarkerResourceManager", 1, "onARSceneRecogDownloadComplete. uncompressZip error.");
     paramARMarkerResourceCallback.c(false, paramArCloudConfigInfo);
     return;
-    if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) && (paramArCloudConfigInfo.jdField_d_of_type_Int == 7))
+    if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.k != null) && (paramArCloudConfigInfo.e == 7))
     {
-      if ((paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString != null))
+      if ((paramArCloudConfigInfo.k != null) && (paramArCloudConfigInfo.k.b != null))
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(r);
         ((StringBuilder)localObject1).append("ar_model/0/");
-        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramArCloudConfigInfo.k.b);
         ((StringBuilder)localObject1).append("_model.zip");
         localObject1 = ((StringBuilder)localObject1).toString();
       }
@@ -903,187 +894,111 @@ public class ARMarkerResourceManager
         localObject1 = "";
       }
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_classfiy_model/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
       ((StringBuilder)localObject2).append(File.separator);
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.k.b);
       ((StringBuilder)localObject2).append(File.separator);
       localObject2 = ((StringBuilder)localObject2).toString();
       if (!new File((String)localObject1).exists()) {}
     }
     try
     {
-      ArResourceConfigUtils.a((String)localObject1, (String)localObject2);
+      ArResourceConfigUtils.b((String)localObject1, (String)localObject2);
     }
     catch (Exception localException5)
     {
       label1009:
       break label1009;
     }
-    if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
+    if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.k != null))
     {
       localObject1 = new ARResourceDownload.DownloadInfo();
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-      this.f = (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long / 8192L);
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-      this.j += this.f;
-      this.h = System.currentTimeMillis();
-      ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-      ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+      ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+      ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.k.c;
+      ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.k.b;
+      this.j = (paramArCloudConfigInfo.k.a / 8192L);
+      ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.k.a;
+      this.p += this.j;
+      this.l = System.currentTimeMillis();
+      ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.k.h;
+      ((ARResourceDownload.DownloadInfo)localObject1).e = true;
       localArrayList.add(localObject1);
       break label1360;
-      if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
+      if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.k != null))
       {
         localObject1 = new ARResourceDownload.DownloadInfo();
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-        this.f = (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long / 8192L);
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-        this.j += this.f;
-        this.h = System.currentTimeMillis();
-        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-        ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+        ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+        ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.k.c;
+        ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.k.b;
+        this.j = (paramArCloudConfigInfo.k.a / 8192L);
+        ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.k.a;
+        this.p += this.j;
+        this.l = System.currentTimeMillis();
+        ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.k.h;
+        ((ARResourceDownload.DownloadInfo)localObject1).e = true;
         localArrayList.add(localObject1);
         break label1360;
-        if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
+        if ((paramArCloudConfigInfo != null) && (paramArCloudConfigInfo.k != null))
         {
           localObject1 = new ARResourceDownload.DownloadInfo();
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
-          this.f = (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long / 8192L);
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
-          this.j += this.f;
-          this.h = System.currentTimeMillis();
-          ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
-          ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = true;
+          ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+          ((ARResourceDownload.DownloadInfo)localObject1).b = paramArCloudConfigInfo.k.c;
+          ((ARResourceDownload.DownloadInfo)localObject1).c = paramArCloudConfigInfo.k.b;
+          this.j = (paramArCloudConfigInfo.k.a / 8192L);
+          ((ARResourceDownload.DownloadInfo)localObject1).g = paramArCloudConfigInfo.k.a;
+          this.p += this.j;
+          this.l = System.currentTimeMillis();
+          ((ARResourceDownload.DownloadInfo)localObject1).d = paramArCloudConfigInfo.k.h;
+          ((ARResourceDownload.DownloadInfo)localObject1).e = true;
           localArrayList.add(localObject1);
         }
       }
     }
     label1360:
-    if ((paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((paramArCloudConfigInfo.i != null) && (paramArCloudConfigInfo.i.size() > 0))
     {
       localObject2 = new ArrayList();
-      localObject3 = paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject3 = paramArCloudConfigInfo.i.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         ArVideoResourceInfo localArVideoResourceInfo = (ArVideoResourceInfo)((Iterator)localObject3).next();
-        if (localArVideoResourceInfo.jdField_d_of_type_Int != 4)
+        if (localArVideoResourceInfo.h != 4)
         {
-          File localFile = new File(localArVideoResourceInfo.e);
+          File localFile = new File(localArVideoResourceInfo.j);
           if (localFile.exists()) {
             localObject1 = PortalUtils.a(localFile.getAbsolutePath());
           } else {
             localObject1 = null;
           }
-          if (((!localFile.exists()) || (TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(localArVideoResourceInfo.c))) && (!((ArrayList)localObject2).contains(localArVideoResourceInfo.jdField_d_of_type_JavaLangString)))
+          if (((!localFile.exists()) || (TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(localArVideoResourceInfo.e))) && (!((ArrayList)localObject2).contains(localArVideoResourceInfo.i)))
           {
             localObject1 = new ARResourceDownload.DownloadInfo();
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Int = 3;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_JavaLangString = localArVideoResourceInfo.jdField_d_of_type_JavaLangString;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_b_of_type_JavaLangString = localArVideoResourceInfo.c;
-            this.f = (localArVideoResourceInfo.jdField_a_of_type_Long / 8192L);
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Long = localArVideoResourceInfo.jdField_a_of_type_Long;
-            this.j += this.f;
-            this.h = System.currentTimeMillis();
+            ((ARResourceDownload.DownloadInfo)localObject1).a = 3;
+            ((ARResourceDownload.DownloadInfo)localObject1).b = localArVideoResourceInfo.i;
             ((ARResourceDownload.DownloadInfo)localObject1).c = localArVideoResourceInfo.e;
-            ((ARResourceDownload.DownloadInfo)localObject1).jdField_a_of_type_Boolean = false;
+            this.j = (localArVideoResourceInfo.b / 8192L);
+            ((ARResourceDownload.DownloadInfo)localObject1).g = localArVideoResourceInfo.b;
+            this.p += this.j;
+            this.l = System.currentTimeMillis();
+            ((ARResourceDownload.DownloadInfo)localObject1).d = localArVideoResourceInfo.j;
+            ((ARResourceDownload.DownloadInfo)localObject1).e = false;
             localArrayList.add(localObject1);
-            ((ArrayList)localObject2).add(localArVideoResourceInfo.jdField_d_of_type_JavaLangString);
+            ((ArrayList)localObject2).add(localArVideoResourceInfo.i);
           }
         }
       }
     }
     if ((paramARMarkerResourceCallback != null) && (paramArCloudConfigInfo.b())) {
-      paramARMarkerResourceCallback.f();
+      paramARMarkerResourceCallback.i();
     }
     if (localArrayList.size() > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a(localArrayList, new ARMarkerResourceManager.5(this, paramARMarkerResourceCallback, paramArCloudConfigInfo));
+      this.t.a(localArrayList, new ARMarkerResourceManager.5(this, paramARMarkerResourceCallback, paramArCloudConfigInfo));
       return;
     }
     paramARMarkerResourceCallback.c(true, paramArCloudConfigInfo);
-  }
-  
-  private static boolean b(ArCloudConfigInfo paramArCloudConfigInfo)
-  {
-    if (paramArCloudConfigInfo == null) {
-      return false;
-    }
-    a();
-    Object localObject1;
-    Object localObject2;
-    if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null)
-    {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append("ar_cloud_classfiy_model/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
-      ((StringBuilder)localObject2).append(File.separator);
-      ((ArFeatureInfo)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-    }
-    if ((paramArCloudConfigInfo.g == 1) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c)))
-    {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append("ar_cloud_relationship/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c);
-      ((StringBuilder)localObject2).append("_relationship.zip");
-      ((ARRelationShip)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-    }
-    if ((paramArCloudConfigInfo.c()) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null))
-    {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append("ar_cloud_transfer/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append(".zip");
-      ((ARTransferDoorConfigInfo)localObject1).c = ((StringBuilder)localObject2).toString();
-    }
-    if ((paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (ArVideoResourceInfo)((Iterator)localObject1).next();
-        if (((ArVideoResourceInfo)localObject2).jdField_d_of_type_Int == 4)
-        {
-          ((ArVideoResourceInfo)localObject2).e = AROnlineVideoUtil.a(((ArVideoResourceInfo)localObject2).jdField_d_of_type_JavaLangString);
-        }
-        else
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(jdField_b_of_type_JavaLangString);
-          localStringBuilder.append("ar_cloud_classfiy_model/");
-          localStringBuilder.append(paramArCloudConfigInfo.jdField_d_of_type_Int);
-          localStringBuilder.append(File.separator);
-          localStringBuilder.append(((ArVideoResourceInfo)localObject2).c);
-          localStringBuilder.append("_model.zip");
-          ((ArVideoResourceInfo)localObject2).e = localStringBuilder.toString();
-        }
-      }
-    }
-    if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null)
-    {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append("ar_cloud_classfiy_model/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
-      ((StringBuilder)localObject2).append(File.separator);
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append("_model.zip");
-      ((ArModelResource)localObject1).f = ((StringBuilder)localObject2).toString();
-    }
-    return true;
   }
   
   private static boolean c(ArCloudConfigInfo paramArCloudConfigInfo)
@@ -1094,92 +1009,172 @@ public class ARMarkerResourceManager
     a();
     Object localObject1;
     Object localObject2;
-    if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null)
+    if (paramArCloudConfigInfo.j != null)
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo;
+      localObject1 = paramArCloudConfigInfo.j;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append("ar_cloud_scene_model/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+      ((StringBuilder)localObject2).append(r);
+      ((StringBuilder)localObject2).append("ar_cloud_classfiy_model/");
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
       ((StringBuilder)localObject2).append(File.separator);
-      ((ArFeatureInfo)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      ((ArFeatureInfo)localObject1).e = ((StringBuilder)localObject2).toString();
     }
-    if ((paramArCloudConfigInfo.g == 1) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c)))
+    if ((paramArCloudConfigInfo.n == 1) && (paramArCloudConfigInfo.o != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.o.c)))
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip;
+      localObject1 = paramArCloudConfigInfo.o;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_relationship/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.c);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.o.c);
       ((StringBuilder)localObject2).append("_relationship.zip");
-      ((ARRelationShip)localObject1).jdField_d_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+      ((ARRelationShip)localObject1).d = ((StringBuilder)localObject2).toString();
     }
-    if ((paramArCloudConfigInfo.c()) && (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null))
+    if ((paramArCloudConfigInfo.c()) && (paramArCloudConfigInfo.r != null))
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo;
+      localObject1 = paramArCloudConfigInfo.r;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(r);
       ((StringBuilder)localObject2).append("ar_cloud_transfer/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.r.h);
       ((StringBuilder)localObject2).append(".zip");
-      ((ARTransferDoorConfigInfo)localObject1).c = ((StringBuilder)localObject2).toString();
+      ((ARTransferDoorConfigInfo)localObject1).i = ((StringBuilder)localObject2).toString();
     }
-    if ((paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((paramArCloudConfigInfo.i != null) && (paramArCloudConfigInfo.i.size() > 0))
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = paramArCloudConfigInfo.i.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (ArVideoResourceInfo)((Iterator)localObject1).next();
-        if (((ArVideoResourceInfo)localObject2).jdField_d_of_type_Int == 4)
+        if (((ArVideoResourceInfo)localObject2).h == 4)
         {
-          ((ArVideoResourceInfo)localObject2).e = AROnlineVideoUtil.a(((ArVideoResourceInfo)localObject2).jdField_d_of_type_JavaLangString);
+          ((ArVideoResourceInfo)localObject2).j = AROnlineVideoUtil.a(((ArVideoResourceInfo)localObject2).i);
         }
         else
         {
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(jdField_b_of_type_JavaLangString);
-          localStringBuilder.append("ar_cloud_scene_model/");
-          localStringBuilder.append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+          localStringBuilder.append(r);
+          localStringBuilder.append("ar_cloud_classfiy_model/");
+          localStringBuilder.append(paramArCloudConfigInfo.e);
           localStringBuilder.append(File.separator);
-          localStringBuilder.append(((ArVideoResourceInfo)localObject2).c);
+          localStringBuilder.append(((ArVideoResourceInfo)localObject2).e);
           localStringBuilder.append("_model.zip");
-          ((ArVideoResourceInfo)localObject2).e = localStringBuilder.toString();
+          ((ArVideoResourceInfo)localObject2).j = localStringBuilder.toString();
         }
       }
     }
-    if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null)
+    if (paramArCloudConfigInfo.k != null)
     {
-      localObject1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource;
+      localObject1 = paramArCloudConfigInfo.k;
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject2).append("ar_cloud_scene_model/");
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_d_of_type_Int);
+      ((StringBuilder)localObject2).append(r);
+      ((StringBuilder)localObject2).append("ar_cloud_classfiy_model/");
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
       ((StringBuilder)localObject2).append(File.separator);
-      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.k.b);
       ((StringBuilder)localObject2).append("_model.zip");
-      ((ArModelResource)localObject1).f = ((StringBuilder)localObject2).toString();
+      ((ArModelResource)localObject1).h = ((StringBuilder)localObject2).toString();
     }
     return true;
   }
   
-  public ArrayList<ArCloudConfigInfo> a()
+  private static boolean d(ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    if (paramArCloudConfigInfo == null) {
+      return false;
+    }
+    a();
+    Object localObject1;
+    Object localObject2;
+    if (paramArCloudConfigInfo.j != null)
+    {
+      localObject1 = paramArCloudConfigInfo.j;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(r);
+      ((StringBuilder)localObject2).append("ar_cloud_scene_model/");
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((ArFeatureInfo)localObject1).e = ((StringBuilder)localObject2).toString();
+    }
+    if ((paramArCloudConfigInfo.n == 1) && (paramArCloudConfigInfo.o != null) && (!TextUtils.isEmpty(paramArCloudConfigInfo.o.c)))
+    {
+      localObject1 = paramArCloudConfigInfo.o;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(r);
+      ((StringBuilder)localObject2).append("ar_cloud_relationship/");
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.o.c);
+      ((StringBuilder)localObject2).append("_relationship.zip");
+      ((ARRelationShip)localObject1).d = ((StringBuilder)localObject2).toString();
+    }
+    if ((paramArCloudConfigInfo.c()) && (paramArCloudConfigInfo.r != null))
+    {
+      localObject1 = paramArCloudConfigInfo.r;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(r);
+      ((StringBuilder)localObject2).append("ar_cloud_transfer/");
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.r.h);
+      ((StringBuilder)localObject2).append(".zip");
+      ((ARTransferDoorConfigInfo)localObject1).i = ((StringBuilder)localObject2).toString();
+    }
+    if ((paramArCloudConfigInfo.i != null) && (paramArCloudConfigInfo.i.size() > 0))
+    {
+      localObject1 = paramArCloudConfigInfo.i.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (ArVideoResourceInfo)((Iterator)localObject1).next();
+        if (((ArVideoResourceInfo)localObject2).h == 4)
+        {
+          ((ArVideoResourceInfo)localObject2).j = AROnlineVideoUtil.a(((ArVideoResourceInfo)localObject2).i);
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(r);
+          localStringBuilder.append("ar_cloud_scene_model/");
+          localStringBuilder.append(paramArCloudConfigInfo.e);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append(((ArVideoResourceInfo)localObject2).e);
+          localStringBuilder.append("_model.zip");
+          ((ArVideoResourceInfo)localObject2).j = localStringBuilder.toString();
+        }
+      }
+    }
+    if (paramArCloudConfigInfo.k != null)
+    {
+      localObject1 = paramArCloudConfigInfo.k;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(r);
+      ((StringBuilder)localObject2).append("ar_cloud_scene_model/");
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.e);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append(paramArCloudConfigInfo.k.b);
+      ((StringBuilder)localObject2).append("_model.zip");
+      ((ArModelResource)localObject1).h = ((StringBuilder)localObject2).toString();
+    }
+    return true;
+  }
+  
+  private static String g()
+  {
+    a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(r);
+    localStringBuilder.append("ar_cloud_marker_config/");
+    return localStringBuilder.toString();
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     a(paramLong);
     a(paramBoolean);
-    ARReport.a().b(System.currentTimeMillis() - l);
+    ARReport.a().b(System.currentTimeMillis() - l1);
   }
   
   public boolean a(ARCloudMarkerRecogResult paramARCloudMarkerRecogResult, ARMarkerResourceManager.ARMarkerResourceCallback paramARMarkerResourceCallback, boolean paramBoolean, String arg4)
   {
     try
     {
-      Object localObject = new String(paramARCloudMarkerRecogResult.a[0].a, "utf-8");
+      Object localObject = new String(paramARCloudMarkerRecogResult.g[0].g, "utf-8");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("downLoadMarkerConfig. jsonContent = ");
       localStringBuilder.append((String)localObject);
@@ -1189,13 +1184,13 @@ public class ARMarkerResourceManager
       localStringBuilder.append("downLoadMarkerConfig. config = ");
       localStringBuilder.append(localObject);
       QLog.i("AREngine_ARMarkerResourceManager", 1, localStringBuilder.toString());
-      if ((localObject != null) && (((ArCloudConfigInfo)localObject).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null))
+      if ((localObject != null) && (((ArCloudConfigInfo)localObject).j != null))
       {
-        if (((ArCloudConfigInfo)localObject).jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null) {
+        if (((ArCloudConfigInfo)localObject).r != null) {
           if ((!ARVideoUtil.a()) && (PromotionDevice.a()))
           {
-            if (((ArCloudConfigInfo)localObject).jdField_b_of_type_JavaLangString != null) {
-              ReportController.b(null, "CliOper", "", "", "0X80098CB", "0X80098CB", 0, 0, ((ArCloudConfigInfo)localObject).jdField_b_of_type_JavaLangString, "0", "0", "");
+            if (((ArCloudConfigInfo)localObject).f != null) {
+              ReportController.b(null, "CliOper", "", "", "0X80098CB", "0X80098CB", 0, 0, ((ArCloudConfigInfo)localObject).f, "0", "0", "");
             }
           }
           else
@@ -1204,17 +1199,17 @@ public class ARMarkerResourceManager
             return false;
           }
         }
-        if (((ArCloudConfigInfo)localObject).g == 1)
+        if (((ArCloudConfigInfo)localObject).n == 1)
         {
           ARVideoUtil.a();
           return false;
         }
-        if ((paramBoolean) && ((((ArCloudConfigInfo)localObject).g != 1) || (((ArCloudConfigInfo)localObject).jdField_a_of_type_ComTencentMobileqqArModelARRelationShip == null) || (TextUtils.isEmpty(((ArCloudConfigInfo)localObject).jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_a_of_type_JavaLangString)) || (!((ArCloudConfigInfo)localObject).jdField_a_of_type_ComTencentMobileqqArModelARRelationShip.jdField_a_of_type_JavaLangString.equals(???)))) {
+        if ((paramBoolean) && ((((ArCloudConfigInfo)localObject).n != 1) || (((ArCloudConfigInfo)localObject).o == null) || (TextUtils.isEmpty(((ArCloudConfigInfo)localObject).o.a)) || (!((ArCloudConfigInfo)localObject).o.a.equals(???)))) {
           return false;
         }
         QLog.i("AREngine_ARMarkerResourceManager", 1, "downLoadMarkerConfig");
         a((ArCloudConfigInfo)localObject);
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.a)
         {
           a(paramARCloudMarkerRecogResult, paramARMarkerResourceCallback, (ArCloudConfigInfo)localObject);
           return true;
@@ -1238,7 +1233,7 @@ public class ARMarkerResourceManager
     if (paramARCloudObjectClassifyCommonInterface == null) {
       return false;
     }
-    paramARCloudObjectClassifyCommonInterface = paramARCloudObjectClassifyCommonInterface.a();
+    paramARCloudObjectClassifyCommonInterface = paramARCloudObjectClassifyCommonInterface.c();
     if (paramARCloudObjectClassifyCommonInterface == null) {
       return false;
     }
@@ -1260,11 +1255,11 @@ public class ARMarkerResourceManager
       if (paramARCloudObjectClassifyCommonInterface == null) {
         return false;
       }
-      if (paramARCloudObjectClassifyCommonInterface.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null) {
+      if (paramARCloudObjectClassifyCommonInterface.r != null) {
         if ((!ARVideoUtil.a()) && (PromotionDevice.a()))
         {
-          if (paramARCloudObjectClassifyCommonInterface.jdField_b_of_type_JavaLangString != null) {
-            ReportController.b(null, "CliOper", "", "", "0X80098CC", "0X80098CC", 0, 0, paramARCloudObjectClassifyCommonInterface.jdField_b_of_type_JavaLangString, "0", "0", "");
+          if (paramARCloudObjectClassifyCommonInterface.f != null) {
+            ReportController.b(null, "CliOper", "", "", "0X80098CC", "0X80098CC", 0, 0, paramARCloudObjectClassifyCommonInterface.f, "0", "0", "");
           }
         }
         else
@@ -1273,14 +1268,14 @@ public class ARMarkerResourceManager
           return false;
         }
       }
-      if ((paramARCloudObjectClassifyCommonInterface.g != 1) && (paramARCloudObjectClassifyCommonInterface.jdField_d_of_type_Int != 7))
+      if ((paramARCloudObjectClassifyCommonInterface.n != 1) && (paramARCloudObjectClassifyCommonInterface.e != 7))
       {
-        b(paramARCloudObjectClassifyCommonInterface);
-        if ((QLog.isDebugVersion()) && (paramARCloudObjectClassifyCommonInterface.jdField_c_of_type_Int == 0)) {
+        c(paramARCloudObjectClassifyCommonInterface);
+        if ((QLog.isDebugVersion()) && (paramARCloudObjectClassifyCommonInterface.d == 0)) {
           ThreadManager.getUIHandler().post(new ARMarkerResourceManager.1(this));
         }
-        paramARCloudObjectClassifyCommonInterface.jdField_c_of_type_Int = Math.max(1, paramARCloudObjectClassifyCommonInterface.jdField_c_of_type_Int);
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        paramARCloudObjectClassifyCommonInterface.d = Math.max(1, paramARCloudObjectClassifyCommonInterface.d);
+        synchronized (this.a)
         {
           a(paramARMarkerResourceCallback, paramARCloudObjectClassifyCommonInterface);
           return true;
@@ -1326,11 +1321,11 @@ public class ARMarkerResourceManager
       if (paramARCloudSceneRecogResult == null) {
         return false;
       }
-      if (paramARCloudSceneRecogResult.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo != null) {
+      if (paramARCloudSceneRecogResult.r != null) {
         if ((!ARVideoUtil.a()) && (PromotionDevice.a()))
         {
-          if (paramARCloudSceneRecogResult.jdField_b_of_type_JavaLangString != null) {
-            ReportController.b(null, "CliOper", "", "", "0X80098CC", "0X80098CC", 0, 0, paramARCloudSceneRecogResult.jdField_b_of_type_JavaLangString, "0", "0", "");
+          if (paramARCloudSceneRecogResult.f != null) {
+            ReportController.b(null, "CliOper", "", "", "0X80098CC", "0X80098CC", 0, 0, paramARCloudSceneRecogResult.f, "0", "0", "");
           }
         }
         else
@@ -1339,7 +1334,7 @@ public class ARMarkerResourceManager
           return false;
         }
       }
-      if (paramARCloudSceneRecogResult.g == 1) {
+      if (paramARCloudSceneRecogResult.n == 1) {
         try
         {
           ARVideoUtil.a();
@@ -1353,15 +1348,15 @@ public class ARMarkerResourceManager
           QLog.i("AREngine_ARMarkerResourceManager", 1, localStringBuilder.toString());
         }
       }
-      if ((paramBoolean) && ((paramARCloudSceneRecogResult.g != 1) || (paramARCloudSceneRecogResult.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip == null) || (!paramARCloudSceneRecogResult.b()))) {
+      if ((paramBoolean) && ((paramARCloudSceneRecogResult.n != 1) || (paramARCloudSceneRecogResult.o == null) || (!paramARCloudSceneRecogResult.b()))) {
         return false;
       }
-      c(paramARCloudSceneRecogResult);
-      if ((QLog.isDebugVersion()) && (paramARCloudSceneRecogResult.jdField_c_of_type_Int == 0)) {
+      d(paramARCloudSceneRecogResult);
+      if ((QLog.isDebugVersion()) && (paramARCloudSceneRecogResult.d == 0)) {
         ThreadManager.getUIHandler().post(new ARMarkerResourceManager.2(this));
       }
-      paramARCloudSceneRecogResult.jdField_c_of_type_Int = Math.max(1, paramARCloudSceneRecogResult.jdField_c_of_type_Int);
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      paramARCloudSceneRecogResult.d = Math.max(1, paramARCloudSceneRecogResult.d);
+      synchronized (this.a)
       {
         b(paramARMarkerResourceCallback, paramARCloudSceneRecogResult);
         return true;
@@ -1377,53 +1372,58 @@ public class ARMarkerResourceManager
     }
   }
   
-  public void b()
+  public ArrayList<ArCloudConfigInfo> b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    return this.s;
+  }
+  
+  public void c()
+  {
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.b();
+      if (this.t != null) {
+        this.t.b();
       }
       return;
     }
   }
   
-  public void c()
+  public void d()
   {
-    ARResourceManagerTools localARResourceManagerTools = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools;
+    ARResourceManagerTools localARResourceManagerTools = this.t;
     if (localARResourceManagerTools != null) {
       localARResourceManagerTools.c();
     }
   }
   
-  public void d()
+  public void e()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.e = 0L;
-    this.jdField_a_of_type_Int = -1;
+    this.c = 0L;
+    this.d = 0L;
+    this.e = null;
     this.f = 0L;
     this.g = 0L;
     this.h = 0L;
-    this.jdField_b_of_type_Int = -1;
-    this.i = 0L;
-    this.jdField_c_of_type_Int = -1;
+    this.i = -1;
     this.j = 0L;
-    this.jdField_d_of_type_Int = -1;
+    this.k = 0L;
+    this.l = 0L;
+    this.m = -1;
+    this.n = 0L;
+    this.o = -1;
+    this.p = 0L;
+    this.q = -1;
   }
   
-  public void e()
+  public void f()
   {
     QLog.i("AREngine_ARMarkerResourceManager", 1, "arCloudDownloadReport start.");
-    ARReport.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Long, this.jdField_d_of_type_Long, this.jdField_a_of_type_Int, this.f, this.g, this.jdField_b_of_type_Int, this.i, this.jdField_c_of_type_Int, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, this.j, this.jdField_d_of_type_Int);
+    ARReport.a().a(this.e, this.f, this.g, this.i, this.j, this.k, this.m, this.n, this.o, this.d - this.c, this.p, this.q);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager
  * JD-Core Version:    0.7.0.1
  */

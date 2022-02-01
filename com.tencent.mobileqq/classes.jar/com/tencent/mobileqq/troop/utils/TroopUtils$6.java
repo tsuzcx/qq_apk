@@ -15,10 +15,10 @@ final class TroopUtils$6
   {
     paramXmlSerializer.startTag(null, "picture");
     String str;
-    if (this.ac == null) {
+    if (this.av == null) {
       str = "";
     } else {
-      str = this.ac;
+      str = this.av;
     }
     paramXmlSerializer.attribute(null, "cover", str);
     paramXmlSerializer.endTag(null, "picture");
@@ -26,7 +26,7 @@ final class TroopUtils$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUtils.6
  * JD-Core Version:    0.7.0.1
  */

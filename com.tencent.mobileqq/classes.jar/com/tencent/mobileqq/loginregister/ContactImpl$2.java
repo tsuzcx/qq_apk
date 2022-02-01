@@ -32,33 +32,33 @@ class ContactImpl$2
     {
       if (paramBoolean2)
       {
-        ContactImpl.a(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl, true);
-        this.jdField_a_of_type_ComTencentMobileqqLoginregisterIRegisterView.k();
+        ContactImpl.a(this.b, true);
+        this.a.m();
         return;
       }
       if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqLoginregisterIRegisterView.l();
-        if (ContactImpl.a(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl) != null)
+        this.a.n();
+        if (ContactImpl.a(this.b) != null)
         {
-          localObject = new Intent(ContactImpl.a(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl), VerifyPhoneNumActivity.class);
-          ((Intent)localObject).putExtra("phonenum", ContactImpl.a(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl));
-          ((Intent)localObject).putExtra("key", ContactImpl.b(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl));
-          ((Intent)localObject).putExtra("uin", ContactImpl.c(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl));
-          ((Intent)localObject).putExtra("key_register_sign", ContactImpl.a(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl));
+          localObject = new Intent(ContactImpl.a(this.b), VerifyPhoneNumActivity.class);
+          ((Intent)localObject).putExtra("phonenum", ContactImpl.b(this.b));
+          ((Intent)localObject).putExtra("key", ContactImpl.c(this.b));
+          ((Intent)localObject).putExtra("uin", ContactImpl.d(this.b));
+          ((Intent)localObject).putExtra("key_register_sign", ContactImpl.e(this.b));
           ((Intent)localObject).putExtra("key_register_binduin", paramString);
-          ContactImpl.a(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl).startActivity((Intent)localObject);
-          ContactImpl.a(this.jdField_a_of_type_ComTencentMobileqqLoginregisterContactImpl).finish();
+          ContactImpl.a(this.b).startActivity((Intent)localObject);
+          ContactImpl.a(this.b).finish();
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqLoginregisterIRegisterView.k();
+        this.a.m();
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqLoginregisterIRegisterView.k();
+      this.a.m();
     }
   }
   
@@ -75,7 +75,7 @@ class ContactImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.ContactImpl.2
  * JD-Core Version:    0.7.0.1
  */

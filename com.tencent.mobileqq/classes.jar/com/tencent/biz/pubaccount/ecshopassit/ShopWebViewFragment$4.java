@@ -23,38 +23,38 @@ class ShopWebViewFragment$4
     Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
     if ("action_decode_finish".equals(paramContext))
     {
-      if ((this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
-        this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a((String)localObject, localBitmap);
+      if ((this.a.g != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
+        this.a.g.a((String)localObject, localBitmap);
       }
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter != null) {
-        this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a((String)localObject);
+      if (this.a.k != null) {
+        this.a.k.a((String)localObject);
       }
     }
     else if ("action_on_shop_msg_receive".equals(paramContext))
     {
-      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
+      this.a.f = paramIntent.getParcelableArrayListExtra("datas");
       paramContext = this.a.getQBaseActivity();
       if ((paramContext instanceof EcshopWebActivity)) {
-        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+        ((EcshopWebActivity)paramContext).b = this.a.f;
       }
       paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      paramIntent = this.a.f.iterator();
       while (paramIntent.hasNext())
       {
         localObject = (RecentShopParcel)paramIntent.next();
         if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
-          ((RecentShopParcel)localObject).b += 1;
+          ((RecentShopParcel)localObject).g += 1;
         }
       }
-      if ((this.a.b == 1) && (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter != null)) {
-        this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
+      if ((this.a.l == 1) && (this.a.k != null)) {
+        this.a.k.a(this.a.f);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment.4
  * JD-Core Version:    0.7.0.1
  */

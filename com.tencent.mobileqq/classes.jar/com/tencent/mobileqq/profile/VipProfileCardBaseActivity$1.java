@@ -27,22 +27,22 @@ class VipProfileCardBaseActivity$1
             this.a.d();
             return;
           }
-          Toast.makeText(this.a.a.getApplicationContext(), 2131695079, 0).show();
+          Toast.makeText(this.a.b.getApplicationContext(), 2131892807, 0).show();
           return;
         }
         if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
         {
-          Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
+          Toast.makeText(this.a.b.getApplicationContext(), (String)paramMessage.obj, 0).show();
           return;
         }
-        Toast.makeText(this.a.a.getApplicationContext(), 2131695133, 0).show();
+        Toast.makeText(this.a.b.getApplicationContext(), 2131892861, 0).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,38 +17,15 @@ import java.util.List;
 public class FacePagerAdapter
   extends PagerAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IFaceSelectedListener jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener;
-  private FaceListPage.FacePackagePageEventListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener;
-  private FacePanelBaseAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter;
-  private List<FaceListPage> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private Context a;
+  private IFaceSelectedListener b;
+  private FaceListPage.FacePackagePageEventListener c;
+  private FacePanelBaseAdapter d;
+  private List<FaceListPage> e = new LinkedList();
   
   public FacePagerAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public FaceListPage a(int paramInt)
-  {
-    Object localObject3 = this.jdField_a_of_type_JavaUtilList;
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (localObject3 != null)
-    {
-      localObject3 = ((List)localObject3).iterator();
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (!((Iterator)localObject3).hasNext()) {
-          break;
-        }
-        localObject2 = (FaceListPage)((Iterator)localObject3).next();
-        if (((FaceListPage)localObject2).jdField_a_of_type_Int == paramInt) {
-          localObject1 = localObject2;
-        }
-      }
-    }
-    return localObject2;
+    this.a = paramContext;
   }
   
   public void a()
@@ -58,14 +35,14 @@ public class FacePagerAdapter
   
   public void a(int paramInt)
   {
-    FacePackage localFacePackage = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter.a(paramInt);
+    FacePackage localFacePackage = this.d.a(paramInt);
     if (localFacePackage != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.e.iterator();
       while (localIterator.hasNext())
       {
         FaceListPage localFaceListPage = (FaceListPage)localIterator.next();
-        if ((localFaceListPage.jdField_a_of_type_Int == paramInt) && (localFaceListPage.jdField_a_of_type_Boolean)) {
+        if ((localFaceListPage.a == paramInt) && (localFaceListPage.b)) {
           localFaceListPage.a(localFacePackage);
         }
       }
@@ -74,32 +51,32 @@ public class FacePagerAdapter
   
   public void a(IFaceSelectedListener paramIFaceSelectedListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener = paramIFaceSelectedListener;
+    this.b = paramIFaceSelectedListener;
   }
   
   public void a(FaceListPage.FacePackagePageEventListener paramFacePackagePageEventListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener = paramFacePackagePageEventListener;
+    this.c = paramFacePackagePageEventListener;
   }
   
   public void a(FacePanelBaseAdapter paramFacePanelBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter = paramFacePanelBaseAdapter;
+    this.d = paramFacePanelBaseAdapter;
     notifyDataSetChanged();
   }
   
   public void b(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       FaceListPage localFaceListPage = (FaceListPage)localIterator.next();
-      if (localFaceListPage.jdField_a_of_type_Int == paramInt)
+      if (localFaceListPage.a == paramInt)
       {
-        if (!localFaceListPage.jdField_a_of_type_Boolean)
+        if (!localFaceListPage.b)
         {
-          FacePackage localFacePackage = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter.a(paramInt);
-          localFaceListPage.jdField_a_of_type_Boolean = true;
+          FacePackage localFacePackage = this.d.a(paramInt);
+          localFaceListPage.b = true;
           localFaceListPage.a(localFacePackage);
         }
         localFaceListPage.a();
@@ -109,13 +86,13 @@ public class FacePagerAdapter
   
   public void c(int paramInt)
   {
-    FaceListPage localFaceListPage = a(paramInt);
+    FaceListPage localFaceListPage = e(paramInt);
     boolean bool = true;
     Object localObject;
-    if ((localFaceListPage != null) && (!localFaceListPage.jdField_a_of_type_Boolean))
+    if ((localFaceListPage != null) && (!localFaceListPage.b))
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter.a(paramInt);
-      localFaceListPage.jdField_a_of_type_Boolean = true;
+      localObject = this.d.a(paramInt);
+      localFaceListPage.b = true;
       localFaceListPage.a((FacePackage)localObject);
       return;
     }
@@ -135,22 +112,22 @@ public class FacePagerAdapter
   
   public void d(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.e;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.e.iterator();
       while (((Iterator)localObject).hasNext())
       {
         FaceListPage localFaceListPage = (FaceListPage)((Iterator)localObject).next();
-        if ((localFaceListPage.jdField_a_of_type_Int != paramInt) && (localFaceListPage.jdField_a_of_type_Boolean))
+        if ((localFaceListPage.a != paramInt) && (localFaceListPage.b))
         {
-          localFaceListPage.jdField_a_of_type_Boolean = false;
-          localFaceListPage.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter.a(localFaceListPage.jdField_a_of_type_Int));
+          localFaceListPage.b = false;
+          localFaceListPage.a(this.d.a(localFaceListPage.a));
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("clearOtherView position:");
-            localStringBuilder.append(localFaceListPage.jdField_a_of_type_Int);
+            localStringBuilder.append(localFaceListPage.a);
             localStringBuilder.append(", current:");
             localStringBuilder.append(paramInt);
             QLog.i("FacePagerAdapter", 2, localStringBuilder.toString());
@@ -164,14 +141,37 @@ public class FacePagerAdapter
   {
     paramObject = (FaceListPage)paramObject;
     paramViewGroup.removeView(paramObject);
-    paramObject.jdField_a_of_type_Int = -1;
+    paramObject.a = -1;
     paramObject.a(null);
-    this.jdField_a_of_type_JavaUtilList.remove(paramObject);
+    this.e.remove(paramObject);
+  }
+  
+  public FaceListPage e(int paramInt)
+  {
+    Object localObject3 = this.e;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (localObject3 != null)
+    {
+      localObject3 = ((List)localObject3).iterator();
+      for (;;)
+      {
+        localObject2 = localObject1;
+        if (!((Iterator)localObject3).hasNext()) {
+          break;
+        }
+        localObject2 = (FaceListPage)((Iterator)localObject3).next();
+        if (((FaceListPage)localObject2).a == paramInt) {
+          localObject1 = localObject2;
+        }
+      }
+    }
+    return localObject2;
   }
   
   public int getCount()
   {
-    FacePanelBaseAdapter localFacePanelBaseAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter;
+    FacePanelBaseAdapter localFacePanelBaseAdapter = this.d;
     if (localFacePanelBaseAdapter == null) {
       return 0;
     }
@@ -185,21 +185,21 @@ public class FacePagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter;
+    Object localObject = this.d;
     if (localObject == null) {
       return null;
     }
     localObject = ((FacePanelBaseAdapter)localObject).a(paramInt);
-    FaceListPage localFaceListPage = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceFaceListPage$FacePackagePageEventListener);
+    FaceListPage localFaceListPage = new FaceListPage(this.a, this.b, this.c);
     paramViewGroup.addView(localFaceListPage);
-    localFaceListPage.jdField_a_of_type_Int = paramInt;
+    localFaceListPage.a = paramInt;
     if (((ViewPager)paramViewGroup).getCurrentItem() == paramInt) {
-      localFaceListPage.jdField_a_of_type_Boolean = true;
+      localFaceListPage.b = true;
     } else {
-      localFaceListPage.jdField_a_of_type_Boolean = false;
+      localFaceListPage.b = false;
     }
     localFaceListPage.a((FacePackage)localObject);
-    this.jdField_a_of_type_JavaUtilList.add(localFaceListPage);
+    this.e.add(localFaceListPage);
     return localFaceListPage;
   }
   
@@ -210,7 +210,7 @@ public class FacePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.FacePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

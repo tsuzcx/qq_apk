@@ -11,9 +11,9 @@ import mqq.app.AppService;
 public class UtilsServiceForAV
   extends AppService
 {
-  final IBinder jdField_a_of_type_AndroidOsIBinder = new UtilsServiceForAV.LocalBinder(this);
-  PowerManager.WakeLock jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+  VideoAppInterface a = null;
+  final IBinder b = new UtilsServiceForAV.LocalBinder(this);
+  PowerManager.WakeLock c = null;
   
   void a(boolean paramBoolean)
   {
@@ -26,14 +26,14 @@ public class UtilsServiceForAV
     }
     try
     {
-      if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null)
+      if (this.c != null)
       {
-        if ((paramBoolean) && (!this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.isHeld()))
+        if ((paramBoolean) && (!this.c.isHeld()))
         {
-          this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.acquire();
+          this.c.acquire();
           return;
         }
-        this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
+        this.c.release();
         return;
       }
     }
@@ -48,9 +48,9 @@ public class UtilsServiceForAV
   public IBinder onBind(Intent paramIntent)
   {
     if ((this.app instanceof VideoAppInterface)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)this.app);
+      this.a = ((VideoAppInterface)this.app);
     }
-    return this.jdField_a_of_type_AndroidOsIBinder;
+    return this.b;
   }
   
   public void onCreate()
@@ -62,7 +62,7 @@ public class UtilsServiceForAV
     PowerManager localPowerManager = (PowerManager)getSystemService("power");
     try
     {
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = localPowerManager.newWakeLock(32, "mobileqq:serforav");
+      this.c = localPowerManager.newWakeLock(32, "mobileqq:serforav");
     }
     catch (Exception localException1)
     {
@@ -72,9 +72,9 @@ public class UtilsServiceForAV
     }
     try
     {
-      if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.setReferenceCounted(false);
+        this.c.setReferenceCounted(false);
         return;
       }
     }
@@ -92,7 +92,7 @@ public class UtilsServiceForAV
     if (QLog.isColorLevel()) {
       QLog.d("UtilsServiceForAV", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null) {
+    if (this.c != null) {
       a(false);
     }
   }
@@ -103,7 +103,7 @@ public class UtilsServiceForAV
       QLog.d("UtilsServiceForAV", 2, "onStartCommand");
     }
     if ((this.app instanceof VideoAppInterface)) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)this.app);
+      this.a = ((VideoAppInterface)this.app);
     }
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }

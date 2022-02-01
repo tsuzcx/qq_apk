@@ -8,7 +8,7 @@ import kotlin.jvm.functions.Function0;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/openapi/api/IXAEngine;", "", "destroy", "", "findById", "Lcom/tencent/xaction/openapi/api/IPublicView;", "id", "", "findDrawableById", "Lcom/tencent/xaction/openapi/api/IPublicDrawable;", "getAbsPath", "", "path", "root", "getLayout", "Landroid/view/ViewGroup;", "getRuleManager", "Lcom/tencent/xaction/openapi/api/IPublicRuleManager;", "init", "data", "initAsync", "callback", "Lkotlin/Function0;", "initFromFile", "filePath", "initFromFileAsync", "initFromUrlAsync", "url", "initRoot", "rootPath", "initRootAsync", "initZipAsync", "zipFilePath", "notifyMonitor", "", "rule", "value", "setContentLayout", "framelayout", "setProxy", "view", "Landroid/view/View;", "isStyle", "setProxyMore", "setTag", "tag", "start", "XAApi_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/openapi/api/IXAEngine;", "", "destroy", "", "findById", "Lcom/tencent/xaction/openapi/api/IPublicView;", "id", "", "findDrawableById", "Lcom/tencent/xaction/openapi/api/IPublicDrawable;", "getAbsPath", "", "path", "root", "getLayout", "Landroid/view/ViewGroup;", "getRuleManager", "Lcom/tencent/xaction/openapi/api/IPublicRuleManager;", "init", "data", "initAsync", "callback", "Lkotlin/Function0;", "initFromFile", "filePath", "initFromFileAsync", "initFromUrlAsync", "url", "initRoot", "rootPath", "initRootAsync", "initZipAsync", "zipFilePath", "notifyMonitor", "", "rule", "value", "setContentLayout", "framelayout", "setProxy", "view", "Landroid/view/View;", "isStyle", "setTag", "tag", "start", "XAApi_release"}, k=1, mv={1, 1, 16})
 public abstract interface IXAEngine
 {
   public abstract void destroy();
@@ -61,16 +61,13 @@ public abstract interface IXAEngine
   public abstract IXAEngine setProxy(int paramInt, @NotNull View paramView, boolean paramBoolean);
   
   @NotNull
-  public abstract IXAEngine setProxyMore(int paramInt, @NotNull View paramView, boolean paramBoolean);
-  
-  @NotNull
   public abstract IXAEngine setTag(@NotNull String paramString);
   
   public abstract void start();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.openapi.api.IXAEngine
  * JD-Core Version:    0.7.0.1
  */

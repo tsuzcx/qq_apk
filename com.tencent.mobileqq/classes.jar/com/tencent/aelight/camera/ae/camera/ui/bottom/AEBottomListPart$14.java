@@ -14,16 +14,16 @@ class AEBottomListPart$14
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if ((this.a.a != null) && (AEBottomListPart.b(this.a)))
+    if ((this.a.b != null) && (AEBottomListPart.j(this.a)))
     {
-      this.a.a.setAlpha(1.0F);
-      this.a.a.setVisibility(0);
+      this.a.b.setAlpha(1.0F);
+      this.a.b.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.14
  * JD-Core Version:    0.7.0.1
  */

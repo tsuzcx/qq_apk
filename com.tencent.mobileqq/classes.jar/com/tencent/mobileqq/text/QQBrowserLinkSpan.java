@@ -11,34 +11,34 @@ import java.lang.ref.WeakReference;
 public class QQBrowserLinkSpan
   extends ClickableSpan
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  private WeakReference<Context> a;
+  private String b;
+  private boolean c = false;
   
   public QQBrowserLinkSpan(Context paramContext, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = new WeakReference(paramContext);
+    this.b = paramString;
+    this.c = paramBoolean;
   }
   
   public void onClick(View paramView)
   {
-    paramView = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramView = (Context)this.a.get();
     if (paramView != null) {
-      paramView.startActivity(new Intent(paramView, QQBrowserActivity.class).putExtra("url", this.jdField_a_of_type_JavaLangString));
+      paramView.startActivity(new Intent(paramView, QQBrowserActivity.class).putExtra("url", this.b));
     }
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(this.jdField_a_of_type_Boolean);
+    paramTextPaint.setUnderlineText(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQBrowserLinkSpan
  * JD-Core Version:    0.7.0.1
  */

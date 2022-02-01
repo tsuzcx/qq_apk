@@ -26,54 +26,54 @@ import org.jetbrains.annotations.Nullable;
 public final class LimitWordEditText
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
+  private final String a = "LimitWordEditText";
+  private TextWatcher b;
   @NotNull
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private TextView c;
   @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final String jdField_a_of_type_JavaLangString = "LimitWordEditText";
+  private EditText d;
+  @NotNull
+  private TextView e;
   @Nullable
-  private Function1<? super Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private boolean jdField_a_of_type_Boolean;
+  private Function1<? super Integer, Unit> f;
   @NotNull
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private String g;
   @NotNull
-  private String jdField_b_of_type_JavaLangString;
+  private String h;
+  private int i;
   @NotNull
-  private String c;
-  @NotNull
-  private String d;
+  private String j;
+  private boolean k;
   
   public LimitWordEditText(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     Object localObject = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.c = "";
-    this.d = "";
-    float f = 18.0F;
+    this.g = "";
+    this.h = "";
+    this.j = "";
+    float f1 = 18.0F;
     if (paramAttributeSet != null)
     {
-      TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_c_of_type_ArrayOfInt);
+      TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.d);
       if (localTypedArray != null)
       {
-        if (localTypedArray.getBoolean(R.styleable.e, true)) {
-          LayoutInflater.from(paramContext).inflate(R.layout.B, (ViewGroup)this);
+        if (localTypedArray.getBoolean(R.styleable.h, true)) {
+          LayoutInflater.from(paramContext).inflate(R.layout.x, (ViewGroup)this);
         } else {
-          LayoutInflater.from(paramContext).inflate(R.layout.A, (ViewGroup)this);
+          LayoutInflater.from(paramContext).inflate(R.layout.w, (ViewGroup)this);
         }
-        i = localTypedArray.getInt(R.styleable.jdField_c_of_type_Int, 12);
-        paramContext = localTypedArray.getString(R.styleable.d);
+        m = localTypedArray.getInt(R.styleable.f, 12);
+        paramContext = localTypedArray.getString(R.styleable.g);
         if (paramContext == null) {
           paramContext = "";
         }
-        String str = localTypedArray.getString(R.styleable.f);
+        String str = localTypedArray.getString(R.styleable.i);
         paramAttributeSet = (AttributeSet)localObject;
         if (str != null) {
           paramAttributeSet = str;
         }
-        f = localTypedArray.getFloat(R.styleable.b, 18.0F);
+        f1 = localTypedArray.getFloat(R.styleable.e, 18.0F);
         localTypedArray.recycle();
         localObject = paramContext;
         paramContext = paramAttributeSet;
@@ -81,150 +81,173 @@ public final class LimitWordEditText
       }
     }
     paramContext = "";
-    int i = 0;
+    int m = 0;
     label189:
-    paramAttributeSet = findViewById(R.id.bi);
+    paramAttributeSet = findViewById(R.id.aH);
     Intrinsics.checkExpressionValueIsNotNull(paramAttributeSet, "findViewById(R.id.tv_title)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet);
-    paramAttributeSet = findViewById(R.id.aV);
+    this.c = ((TextView)paramAttributeSet);
+    paramAttributeSet = findViewById(R.id.aw);
     Intrinsics.checkExpressionValueIsNotNull(paramAttributeSet, "findViewById(R.id.tv_content)");
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramAttributeSet);
-    paramAttributeSet = findViewById(R.id.be);
+    this.d = ((EditText)paramAttributeSet);
+    paramAttributeSet = findViewById(R.id.aE);
     Intrinsics.checkExpressionValueIsNotNull(paramAttributeSet, "findViewById(R.id.tv_remaining_num)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramAttributeSet);
-    this.jdField_a_of_type_AndroidTextTextWatcher = ((TextWatcher)new LimitWordEditText.1(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { (InputFilter)new InputFilter.LengthFilter(this.jdField_a_of_type_Int) });
-    setCountLimit(i);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)String.valueOf(this.jdField_a_of_type_Int));
+    this.e = ((TextView)paramAttributeSet);
+    this.b = ((TextWatcher)new LimitWordEditText.1(this));
+    this.d.addTextChangedListener(this.b);
+    this.d.setFilters(new InputFilter[] { (InputFilter)new InputFilter.LengthFilter(this.i) });
+    setCountLimit(m);
+    this.e.setText((CharSequence)String.valueOf(this.i));
     setHint((String)localObject);
     setTitle(paramContext);
-    if (f > 0.0F) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(1, f);
+    if (f1 > 0.0F) {
+      this.d.setTextSize(1, f1);
     }
   }
   
-  public final int a()
+  @NotNull
+  public final String getContent()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d.getText().toString();
   }
   
   @NotNull
-  public final EditText a()
+  public final EditText getContentView()
   {
-    return this.jdField_a_of_type_AndroidWidgetEditText;
-  }
-  
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    return this.d;
   }
   
   @Nullable
-  public final Function1<Integer, Unit> a()
+  public final Function1<Integer, Unit> getCountChangeListener()
   {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    return this.f;
   }
   
-  public final int b()
+  public final int getCountLimit()
   {
-    return this.jdField_a_of_type_AndroidWidgetEditText.length();
+    return this.i;
+  }
+  
+  @NotNull
+  public final TextView getCountView()
+  {
+    return this.e;
+  }
+  
+  public final int getCurrentWordCount()
+  {
+    return this.d.length();
+  }
+  
+  public final boolean getDisableManualEnter()
+  {
+    return this.k;
+  }
+  
+  @NotNull
+  public final String getHint()
+  {
+    return this.g;
+  }
+  
+  @NotNull
+  public final String getTitle()
+  {
+    return this.h;
+  }
+  
+  @NotNull
+  public final TextView getTitleView()
+  {
+    return this.c;
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    this.d.removeTextChangedListener(this.b);
   }
   
   public final void setContent(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.d = paramString;
-    this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)paramString);
+    this.j = paramString;
+    this.d.setText((CharSequence)paramString);
   }
   
   public final void setContentView(@NotNull EditText paramEditText)
   {
     Intrinsics.checkParameterIsNotNull(paramEditText, "<set-?>");
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.d = paramEditText;
   }
   
   public final void setCountChangeListener(@Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.f = paramFunction1;
   }
   
   public final void setCountLimit(int paramInt)
   {
     if (paramInt > 0)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { (InputFilter)new InputFilter.LengthFilter(paramInt) });
-      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)String.valueOf(paramInt - a().length()));
+      this.i = paramInt;
+      this.d.setFilters(new InputFilter[] { (InputFilter)new InputFilter.LengthFilter(paramInt) });
+      this.e.setText((CharSequence)String.valueOf(paramInt - getContent().length()));
     }
   }
   
   public final void setCountView(@NotNull TextView paramTextView)
   {
     Intrinsics.checkParameterIsNotNull(paramTextView, "<set-?>");
-    this.jdField_b_of_type_AndroidWidgetTextView = paramTextView;
+    this.e = paramTextView;
   }
   
   public final void setDisableManualEnter(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener((TextView.OnEditorActionListener)new LimitWordEditText.disableManualEnter.1(paramBoolean));
+    this.k = paramBoolean;
+    this.d.setOnEditorActionListener((TextView.OnEditorActionListener)new LimitWordEditText.disableManualEnter.1(paramBoolean));
   }
   
   public final void setHint(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint((CharSequence)paramString);
+    this.g = paramString;
+    this.d.setHint((CharSequence)paramString);
   }
   
   public final void setSelectionEnd()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.post((Runnable)new LimitWordEditText.setSelectionEnd.1(this));
+    this.d.post((Runnable)new LimitWordEditText.setSelectionEnd.1(this));
   }
   
   public final void setTitle(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.c = paramString;
+    this.h = paramString;
     paramString = (CharSequence)paramString;
-    int i;
+    int m;
     if (paramString.length() == 0) {
-      i = 1;
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    if (i != 0)
+    if (m != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.c.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.c.setVisibility(0);
+    this.c.setText(paramString);
   }
   
   public final void setTitleView(@NotNull TextView paramTextView)
   {
     Intrinsics.checkParameterIsNotNull(paramTextView, "<set-?>");
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.c = paramTextView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.LimitWordEditText
  * JD-Core Version:    0.7.0.1
  */

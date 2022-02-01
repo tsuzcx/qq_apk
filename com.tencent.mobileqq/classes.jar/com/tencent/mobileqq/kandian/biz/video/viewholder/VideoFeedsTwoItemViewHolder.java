@@ -16,37 +16,37 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 public class VideoFeedsTwoItemViewHolder
   extends ViewHolder
 {
+  public ReadInJoyHeadImageView A;
+  public KandianUrlImageView B;
+  public ReadInJoyNickNameTextView C;
+  public AbsBaseArticleInfo D;
+  public AbsBaseArticleInfo E;
   public View a;
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public KandianUrlImageView a;
-  public RoundAngleFrameLayout a;
-  public ReadInJoyHeadImageView a;
-  public ReadInJoyNickNameTextView a;
-  public AbsBaseArticleInfo a;
   public View b;
-  public ViewGroup b;
-  public ImageView b;
-  public TextView b;
-  public KandianUrlImageView b;
-  public RoundAngleFrameLayout b;
-  public ReadInJoyHeadImageView b;
-  public ReadInJoyNickNameTextView b;
-  public AbsBaseArticleInfo b;
   public View c;
-  public TextView c;
-  public KandianUrlImageView c;
-  public View d;
   public TextView d;
-  public KandianUrlImageView d;
-  public View e;
   public TextView e;
-  public KandianUrlImageView e;
-  public TextView f;
   public KandianUrlImageView f;
-  public TextView g;
-  public TextView h;
+  public KandianUrlImageView g;
+  public RoundAngleFrameLayout h;
+  public KandianUrlImageView i;
+  public ImageView j;
+  public TextView k;
+  public TextView l;
+  public ViewGroup m;
+  public TextView n;
+  public View o;
+  public ReadInJoyHeadImageView p;
+  public KandianUrlImageView q;
+  public ReadInJoyNickNameTextView r;
+  public RoundAngleFrameLayout s;
+  public KandianUrlImageView t;
+  public ImageView u;
+  public TextView v;
+  public TextView w;
+  public ViewGroup x;
+  public TextView y;
+  public View z;
   
   public VideoFeedsTwoItemViewHolder(Context paramContext, VideoHandler paramVideoHandler)
   {
@@ -55,43 +55,43 @@ public class VideoFeedsTwoItemViewHolder
   
   public View a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560386, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131376809);
-    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131369957);
-    this.jdField_c_of_type_AndroidViewView = paramViewGroup.findViewById(2131376571);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369944));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376563));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRoundAngleFrameLayout = ((RoundAngleFrameLayout)paramViewGroup.findViewById(2131369949));
-    this.jdField_c_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131369963));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369965));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369969));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369967));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131369958));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369968));
-    this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131369930);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramViewGroup.findViewById(2131369931));
-    this.jdField_d_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131369978));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramViewGroup.findViewById(2131369932));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131369948));
-    this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetRoundAngleFrameLayout = ((RoundAngleFrameLayout)paramViewGroup.findViewById(2131376566));
-    this.jdField_e_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131376577));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131376579));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376583));
-    this.g = ((TextView)paramViewGroup.findViewById(2131376581));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewGroup.findViewById(2131376572));
-    this.h = ((TextView)paramViewGroup.findViewById(2131376582));
-    this.jdField_e_of_type_AndroidViewView = paramViewGroup.findViewById(2131376544);
-    this.jdField_b_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramViewGroup.findViewById(2131376545));
-    this.jdField_f_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131376593));
-    this.jdField_b_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramViewGroup.findViewById(2131376546));
-    this.jdField_b_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131376565));
+    paramViewGroup = LayoutInflater.from(this.N).inflate(2131626432, paramViewGroup, false);
+    this.a = paramViewGroup.findViewById(2131445137);
+    this.b = paramViewGroup.findViewById(2131437107);
+    this.c = paramViewGroup.findViewById(2131444826);
+    this.d = ((TextView)paramViewGroup.findViewById(2131437093));
+    this.e = ((TextView)paramViewGroup.findViewById(2131444816));
+    this.h = ((RoundAngleFrameLayout)paramViewGroup.findViewById(2131437098));
+    this.i = ((KandianUrlImageView)paramViewGroup.findViewById(2131437113));
+    this.j = ((ImageView)paramViewGroup.findViewById(2131437115));
+    this.k = ((TextView)paramViewGroup.findViewById(2131437119));
+    this.l = ((TextView)paramViewGroup.findViewById(2131437117));
+    this.m = ((ViewGroup)paramViewGroup.findViewById(2131437108));
+    this.n = ((TextView)paramViewGroup.findViewById(2131437118));
+    this.o = paramViewGroup.findViewById(2131437079);
+    this.p = ((ReadInJoyHeadImageView)paramViewGroup.findViewById(2131437080));
+    this.q = ((KandianUrlImageView)paramViewGroup.findViewById(2131437129));
+    this.r = ((ReadInJoyNickNameTextView)paramViewGroup.findViewById(2131437081));
+    this.f = ((KandianUrlImageView)paramViewGroup.findViewById(2131437097));
+    this.s = ((RoundAngleFrameLayout)paramViewGroup.findViewById(2131444821));
+    this.t = ((KandianUrlImageView)paramViewGroup.findViewById(2131444832));
+    this.u = ((ImageView)paramViewGroup.findViewById(2131444834));
+    this.v = ((TextView)paramViewGroup.findViewById(2131444838));
+    this.w = ((TextView)paramViewGroup.findViewById(2131444836));
+    this.x = ((ViewGroup)paramViewGroup.findViewById(2131444827));
+    this.y = ((TextView)paramViewGroup.findViewById(2131444837));
+    this.z = paramViewGroup.findViewById(2131444794);
+    this.A = ((ReadInJoyHeadImageView)paramViewGroup.findViewById(2131444795));
+    this.B = ((KandianUrlImageView)paramViewGroup.findViewById(2131444851));
+    this.C = ((ReadInJoyNickNameTextView)paramViewGroup.findViewById(2131444796));
+    this.g = ((KandianUrlImageView)paramViewGroup.findViewById(2131444820));
     paramViewGroup.setTag(this);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.viewholder.VideoFeedsTwoItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

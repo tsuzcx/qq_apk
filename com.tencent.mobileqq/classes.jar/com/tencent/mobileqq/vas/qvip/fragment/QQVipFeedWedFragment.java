@@ -35,6 +35,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.applets.PublicAccountEventReport;
 import com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.gamecenter.view.ArkHeaderView;
@@ -66,33 +67,33 @@ public class QQVipFeedWedFragment
   extends PublicBaseFragment
   implements View.OnClickListener, QQVipIndicator.IPageListener
 {
-  private int jdField_a_of_type_Int = Color.parseColor("#FF74430E");
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQGamePubViewpager jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager;
-  private QQVipFeedWedFragment.HeadPageAdapter jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter;
-  private QQVipHeadLayout jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout;
-  private QQVipIndicator jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator;
+  private int A = 0;
   public QQVipPubNavBar a;
-  private QQVipWebview jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview;
-  private QQVipWebViewBuilder jdField_a_of_type_ComTencentMobileqqVasQvipWebQQVipWebViewBuilder;
-  private ArrayList<QQVipMsgInfo> jdField_a_of_type_JavaUtilArrayList;
-  List<IHeaderView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long;
-  private View jdField_b_of_type_AndroidViewView;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private long jdField_c_of_type_Long;
-  private View jdField_c_of_type_AndroidViewView;
-  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  private long d;
-  private long e;
+  List<IHeaderView> b = new ArrayList();
+  private View c;
+  private TextView d;
+  private QQVipHeadLayout e;
+  private QQVipWebview f;
+  private QQVipWebViewBuilder g;
+  private QQGamePubViewpager h;
+  private QQVipIndicator i;
+  private QQVipFeedWedFragment.HeadPageAdapter j;
+  private RelativeLayout k;
+  private RelativeLayout l;
+  private RelativeLayout m;
+  private Button n;
+  private Button o;
+  private View p;
+  private View q;
+  private LinearLayout r;
+  private long s;
+  private long t;
+  private long u;
+  private long v;
+  private long w;
+  private List<String> x = new ArrayList();
+  private ArrayList<QQVipMsgInfo> y;
+  private int z = Color.parseColor("#FF74430E");
   
   static
   {
@@ -112,7 +113,7 @@ public class QQVipFeedWedFragment
       localTextView.setBackgroundColor(Color.parseColor("#FFD69D5A"));
       localTextView.setText(TimeFormatterUtils.a(getBaseActivity(), 3, paramQQVipMsgInfo.mMsgTime * 1000L));
       localTextView.setPadding(12, 0, 12, 0);
-      localTextView.setId(2131378695);
+      localTextView.setId(2131447353);
       RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
       localLayoutParams1 = localLayoutParams2;
       if (localLayoutParams2 == null) {
@@ -138,90 +139,90 @@ public class QQVipFeedWedFragment
     }
   }
   
-  private boolean a()
-  {
-    return this.jdField_a_of_type_AndroidViewView.getContext().getSharedPreferences("QQVipFeedWedFragment", 0).getBoolean(QQVipHelper.a().getCurrentAccountUin(), true);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout = ((QQVipHeadLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131374630));
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview = ((QQVipWebview)this.jdField_a_of_type_AndroidViewView.findViewById(2131374633));
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.attachToRootView();
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview.attachHeaderView(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout);
-    c();
-    e();
-    f();
-    g();
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370699));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    if (a())
-    {
-      d();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.getContext().getSharedPreferences("QQVipFeedWedFragment", 0).edit().putBoolean(QQVipHelper.a().getCurrentAccountUin(), false).commit();
-  }
-  
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager = ((QQGamePubViewpager)this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.findViewById(2131366759));
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator = ((QQVipIndicator)this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.findViewById(2131372285));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.findViewById(2131376673));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.findViewById(2131376674));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.findViewById(2131364172));
-    this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.findViewById(2131364173));
-    this.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.findViewById(2131368067));
-    Object localObject = getResources().getDrawable(2130847169);
+    this.e = ((QQVipHeadLayout)this.c.findViewById(2131442800));
+    this.f = ((QQVipWebview)this.c.findViewById(2131442803));
+    this.e.attachToRootView();
+    this.f.attachHeaderView(this.e);
+    f();
+    i();
+    j();
+    k();
+  }
+  
+  private void f()
+  {
+    this.k = ((RelativeLayout)this.c.findViewById(2131437976));
+    this.k.setClickable(true);
+    this.k.setOnClickListener(this);
+    if (g())
+    {
+      h();
+      return;
+    }
+    this.k.setVisibility(8);
+  }
+  
+  private boolean g()
+  {
+    return this.c.getContext().getSharedPreferences("QQVipFeedWedFragment", 0).getBoolean(QQVipHelper.a().getCurrentAccountUin(), true);
+  }
+  
+  private void h()
+  {
+    this.k.setVisibility(0);
+    this.c.getContext().getSharedPreferences("QQVipFeedWedFragment", 0).edit().putBoolean(QQVipHelper.a().getCurrentAccountUin(), false).commit();
+  }
+  
+  private void i()
+  {
+    this.h = ((QQGamePubViewpager)this.e.findViewById(2131433081));
+    this.i = ((QQVipIndicator)this.e.findViewById(2131439795));
+    this.l = ((RelativeLayout)this.e.findViewById(2131444942));
+    this.m = ((RelativeLayout)this.e.findViewById(2131444943));
+    this.n = ((Button)this.e.findViewById(2131430151));
+    this.n.setClickable(true);
+    this.n.setOnClickListener(this);
+    this.o = ((Button)this.e.findViewById(2131430152));
+    this.o.setClickable(true);
+    this.o.setOnClickListener(this);
+    this.r = ((LinearLayout)this.e.findViewById(2131434917));
+    Object localObject = getResources().getDrawable(2130848721);
     ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = this.y;
     if ((localObject != null) && (((ArrayList)localObject).size() >= 1))
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = this.y.iterator();
       while (((Iterator)localObject).hasNext())
       {
         QQVipMsgInfo localQQVipMsgInfo = (QQVipMsgInfo)((Iterator)localObject).next();
         if (!TextUtils.isEmpty(localQQVipMsgInfo.mArkAppName))
         {
           ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).addNotify(localQQVipMsgInfo.mArkAppName);
-          this.jdField_b_of_type_JavaUtilList.add(localQQVipMsgInfo.mArkAppName);
+          this.x.add(localQQVipMsgInfo.mArkAppName);
         }
       }
-      ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).registVolumnReceiver(this.jdField_b_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter = new QQVipFeedWedFragment.HeadPageAdapter(this);
-      this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter);
-      this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager.setOffscreenPageLimit(1);
-      this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator.setViewPager(this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager);
-      this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator.a();
-      this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator.setPageListener(this);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout.findViewById(2131374629);
+      ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).registVolumnReceiver(this.x);
+      this.r.setVisibility(0);
+      this.j = new QQVipFeedWedFragment.HeadPageAdapter(this);
+      this.h.setAdapter(this.j);
+      this.h.setOffscreenPageLimit(1);
+      this.i.setViewPager(this.h);
+      this.i.setPageListener(this);
+      this.i.a();
+      this.p = this.e.findViewById(2131442799);
       localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/welling-test/qqvip/backgroup_image@2x.png");
-      this.jdField_b_of_type_AndroidViewView.setBackground((Drawable)localObject);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.p.setBackground((Drawable)localObject);
+      this.m.setVisibility(8);
+      this.l.setVisibility(0);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      localObject = this.jdField_b_of_type_AndroidWidgetButton.getCompoundDrawables();
+      this.r.setVisibility(8);
+      this.m.setVisibility(0);
+      this.l.setVisibility(8);
+      localObject = this.o.getCompoundDrawables();
       if (localObject.length > 2)
       {
         localObject = localObject[2];
@@ -235,33 +236,33 @@ public class QQVipFeedWedFragment
     MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "1", "1", "", "1", 101, 1);
   }
   
-  private void f()
+  private void j()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview = new QQVipWebview(this.jdField_a_of_type_AndroidViewView.getContext());
-      this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview.attachHeaderView(this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipHeadLayout);
+      this.f = new QQVipWebview(this.c.getContext());
+      this.f.attachHeaderView(this.e);
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview.setAlpha(0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipWebQQVipWebViewBuilder = new QQVipFeedWedFragment.1(this, this.jdField_a_of_type_AndroidViewView.getContext(), getBaseActivity(), QQVipHelper.a(), this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipWebQQVipWebViewBuilder.setTimeBeforeLoadUrl(System.currentTimeMillis());
-    new WebViewDirector(this.jdField_a_of_type_ComTencentMobileqqVasQvipWebQQVipWebViewBuilder).a(null, ((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), null);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview = ((QQVipWebview)this.jdField_a_of_type_ComTencentMobileqqVasQvipWebQQVipWebViewBuilder.getWebView());
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview.setWillNotCacheDrawing(false);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview.setDrawingCacheEnabled(true);
+    this.f.setAlpha(0.0F);
+    this.g = new QQVipFeedWedFragment.1(this, this.c.getContext(), getBaseActivity(), QQVipHelper.a(), this.f);
+    this.g.setTimeBeforeLoadUrl(System.currentTimeMillis());
+    new WebViewDirector(this.g).a(null, ((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), null);
+    this.f = ((QQVipWebview)this.g.getWebView());
+    this.f.setWillNotCacheDrawing(false);
+    this.f.setDrawingCacheEnabled(true);
     a();
   }
   
-  private void g()
+  private void k()
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 400 });
     localValueAnimator.addUpdateListener(new QQVipFeedWedFragment.3(this));
     localValueAnimator.setDuration(300L);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator.a(1);
+    Object localObject1 = this.i.a(1);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     if (localObject1 != null)
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter;
+      Object localObject2 = this.j;
       if ((localObject2 != null) && (((QQVipFeedWedFragment.HeadPageAdapter)localObject2).getCount() > 2))
       {
         localObject2 = ObjectAnimator.ofFloat(localObject1, "scaleX", new float[] { 1.0F, 1.2F, 1.0F });
@@ -272,90 +273,65 @@ public class QQVipFeedWedFragment
       }
     }
     localValueAnimator.addListener(new QQVipFeedWedFragment.5(this));
-    int i = QVipPubAccountConfig.a();
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter;
-    if ((localObject1 != null) && (((QQVipFeedWedFragment.HeadPageAdapter)localObject1).getCount() > 2) && (i >= 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager.postDelayed(new QQVipFeedWedFragment.6(this, localValueAnimator, localAnimatorSet), i);
+    int i1 = QVipPubAccountConfig.d();
+    localObject1 = this.j;
+    if ((localObject1 != null) && (((QQVipFeedWedFragment.HeadPageAdapter)localObject1).getCount() > 2) && (i1 >= 0)) {
+      this.h.postDelayed(new QQVipFeedWedFragment.6(this, localValueAnimator, localAnimatorSet), i1);
     }
   }
   
-  private void h()
+  private void l()
   {
-    SpringAnimation localSpringAnimation = new SpringAnimation(this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager, SpringAnimation.SCROLL_X, 0.0F);
+    SpringAnimation localSpringAnimation = new SpringAnimation(this.h, SpringAnimation.SCROLL_X, 0.0F);
     localSpringAnimation.getSpring().setStiffness(50.0F);
     localSpringAnimation.getSpring().setDampingRatio(0.5F);
     localSpringAnimation.start();
   }
   
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public View a()
-  {
-    View localView = LayoutInflater.from(getBaseActivity()).inflate(2131559147, null, false);
-    ((ImageView)localView.findViewById(2131366220)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
-    return localView;
-  }
-  
-  public QQVipMsgInfo a()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null)
-    {
-      int i = localArrayList.size();
-      int j = this.jdField_b_of_type_Int;
-      if (i > j) {
-        return (QQVipMsgInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      }
-    }
-    return null;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.post(new QQVipFeedWedFragment.7(this));
+    this.c.post(new QQVipFeedWedFragment.7(this));
   }
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter;
+    Object localObject = this.j;
     if ((localObject != null) && (paramInt == ((QQVipFeedWedFragment.HeadPageAdapter)localObject).getCount() - 1)) {
       QQVipHelper.a(getBaseActivity());
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipIndicator;
+    localObject = this.i;
     if (localObject != null) {
       ((QQVipIndicator)localObject).setCurrentIndex(paramInt);
     }
-    this.jdField_b_of_type_Int = paramInt;
+    this.A = paramInt;
     localObject = MobileReportManager.getInstance();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt + 1);
     localStringBuilder.append("");
     ((MobileReportManager)localObject).reportAction("QQVipAccount", "1", "1", localStringBuilder.toString(), "", "1", 101, 1);
+    PublicAccountEventReport.a(103, null, paramInt, this.y);
   }
   
   public void a(int paramInt1, float paramFloat, int paramInt2) {}
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipPubNavBar = ((QQVipPubNavBar)paramView.findViewById(2131376636));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131369871);
-    paramView = getResources().getDrawable(2130850474);
-    paramView.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipPubNavBar.setRightImage(paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipPubNavBar.getLeftBackIcon().getBackground();
+    this.a = ((QQVipPubNavBar)paramView.findViewById(2131444897));
+    this.q = paramView.findViewById(2131437008);
+    paramView = getResources().getDrawable(2130852270);
+    paramView.setColorFilter(this.z, PorterDuff.Mode.SRC_ATOP);
+    this.a.setRightImage(paramView);
+    paramView = this.a.getLeftBackIcon().getBackground();
     if (paramView != null) {
-      paramView.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
+      paramView.setColorFilter(this.z, PorterDuff.Mode.SRC_ATOP);
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipPubNavBar.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipPubNavBar.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695227);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
+    this.a.setBackgroundColor(0);
+    this.d = this.a.getTitleTextView();
+    this.d.setText(2131892961);
+    this.d.setTextColor(this.z);
     String str = QVipPubAccountConfig.b();
-    paramView = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((paramView != null) && (paramView.size() > 0) && (this.jdField_a_of_type_JavaUtilArrayList.get(0) != null) && (((QQVipMsgInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).mIsGameArk))
+    paramView = this.y;
+    if ((paramView != null) && (paramView.size() > 0) && (this.y.get(0) != null) && (((QQVipMsgInfo)this.y.get(0)).mIsGameArk))
     {
       str = QVipPubAccountConfig.c();
       paramView = "game_icon";
@@ -364,11 +340,37 @@ public class QQVipFeedWedFragment
     {
       paramView = "vip_icon";
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipPubNavBar.a(str);
+    this.a.a(str);
     MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "4", "", paramView, "", 101, 1);
     paramView = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/welling-test/qqvip/navigationbar@2x.png");
-    this.jdField_c_of_type_AndroidViewView.setBackground(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipPubNavBar.setOnItemSelectListener(new QQVipFeedWedFragment.2(this));
+    this.q.setBackground(paramView);
+    this.a.setOnItemSelectListener(new QQVipFeedWedFragment.2(this));
+  }
+  
+  public View b()
+  {
+    View localView = LayoutInflater.from(getBaseActivity()).inflate(2131624902, null, false);
+    ((ImageView)localView.findViewById(2131432508)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
+    return localView;
+  }
+  
+  public int c()
+  {
+    return this.A;
+  }
+  
+  public QQVipMsgInfo d()
+  {
+    ArrayList localArrayList = this.y;
+    if (localArrayList != null)
+    {
+      int i1 = localArrayList.size();
+      int i2 = this.A;
+      if (i1 > i2) {
+        return (QQVipMsgInfo)this.y.get(i2);
+      }
+    }
+    return null;
   }
   
   public boolean isWrapContent()
@@ -382,11 +384,11 @@ public class QQVipFeedWedFragment
     {
     default: 
       break;
-    case 2131370699: 
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    case 2131437976: 
+      this.k.setVisibility(8);
       break;
-    case 2131364172: 
-    case 2131364173: 
+    case 2131430151: 
+    case 2131430152: 
       QQVipHelper.a(getBaseActivity());
       MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "1", "5", "", "4", 102, 1);
     }
@@ -395,18 +397,18 @@ public class QQVipFeedWedFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561907, paramViewGroup, false);
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)getBaseActivity().getIntent().getSerializableExtra("qqvip_pubaccount_msg_list"));
-    a(this.jdField_a_of_type_AndroidViewView);
-    if (!SimpleUIUtil.a())
+    this.c = paramLayoutInflater.inflate(2131628325, paramViewGroup, false);
+    this.y = ((ArrayList)getBaseActivity().getIntent().getSerializableExtra("qqvip_pubaccount_msg_list"));
+    a(this.c);
+    if (!SimpleUIUtil.e())
     {
       getBaseActivity().mSystemBarComp = null;
       getBaseActivity().setImmersiveStatus(0);
     }
-    b();
-    this.d = SystemClock.elapsedRealtime();
+    e();
+    this.v = SystemClock.elapsedRealtime();
     MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "", "", "", "", 100, 1);
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.c;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -414,24 +416,24 @@ public class QQVipFeedWedFragment
   public void onDestroy()
   {
     super.onDestroy();
-    int i;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      i = 0;
+    int i1;
+    if (this.b != null) {
+      i1 = 0;
     }
     for (;;)
     {
       Object localObject2;
       try
       {
-        if (i < this.jdField_a_of_type_JavaUtilList.size())
+        if (i1 < this.b.size())
         {
-          if (!(this.jdField_a_of_type_JavaUtilList.get(i) instanceof ArkHeaderView)) {
-            break label215;
+          if (!(this.b.get(i1) instanceof ArkHeaderView)) {
+            break label216;
           }
-          ((ArkHeaderView)this.jdField_a_of_type_JavaUtilList.get(i)).d();
-          break label215;
+          ((ArkHeaderView)this.b.get(i1)).d();
+          break label216;
         }
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.b.clear();
       }
       catch (Throwable localThrowable)
       {
@@ -440,7 +442,7 @@ public class QQVipFeedWedFragment
         ((StringBuilder)localObject2).append(localThrowable.toString());
         QLog.e("QQVipFeedWedFragment", 1, ((StringBuilder)localObject2).toString());
       }
-      Object localObject1 = this.jdField_b_of_type_JavaUtilList;
+      Object localObject1 = this.x;
       if (localObject1 != null)
       {
         localObject1 = ((List)localObject1).iterator();
@@ -450,27 +452,27 @@ public class QQVipFeedWedFragment
           ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).removeNotify((String)localObject2);
         }
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview;
+      localObject1 = this.f;
       if (localObject1 != null)
       {
         ((QQVipWebview)localObject1).setDrawingCacheEnabled(false);
-        this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQQVipWebview.destroy();
+        this.f.destroy();
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasQvipWebQQVipWebViewBuilder;
+      localObject1 = this.g;
       if (localObject1 != null) {
         ((QQVipWebViewBuilder)localObject1).a();
       }
       ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).unRegistVolumnReceiver(new String[0]);
       return;
-      label215:
-      i += 1;
+      label216:
+      i1 += 1;
     }
   }
   
   public void onDestroyView()
   {
-    if (this.jdField_b_of_type_JavaUtilList != null) {
-      ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).unRegistVolumnReceiver(this.jdField_b_of_type_JavaUtilList);
+    if (this.x != null) {
+      ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).unRegistVolumnReceiver(this.x);
     }
     super.onDestroyView();
   }
@@ -478,11 +480,11 @@ public class QQVipFeedWedFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter != null)
+    if (this.j != null)
     {
-      QQGamePubViewpager localQQGamePubViewpager = this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager;
-      if ((localQQGamePubViewpager != null) && (localQQGamePubViewpager.getCurrentItem() == this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter.getCount() - 1) && (this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter.getCount() >= 2)) {
-        this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGamePubViewpager.setCurrentItem(this.jdField_a_of_type_ComTencentMobileqqVasQvipFragmentQQVipFeedWedFragment$HeadPageAdapter.getCount() - 2);
+      QQGamePubViewpager localQQGamePubViewpager = this.h;
+      if ((localQQGamePubViewpager != null) && (localQQGamePubViewpager.getCurrentItem() == this.j.getCount() - 1) && (this.j.getCount() >= 2)) {
+        this.h.setCurrentItem(this.j.getCount() - 2);
       }
     }
   }
@@ -490,13 +492,13 @@ public class QQVipFeedWedFragment
   public void onStop()
   {
     super.onStop();
-    this.e = SystemClock.elapsedRealtime();
-    MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "", "", "", "", 102, (int)(this.e - this.d));
+    this.w = SystemClock.elapsedRealtime();
+    MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "", "", "", "", 102, (int)(this.w - this.v));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment
  * JD-Core Version:    0.7.0.1
  */

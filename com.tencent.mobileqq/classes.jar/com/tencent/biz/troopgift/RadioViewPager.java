@@ -12,12 +12,12 @@ import android.widget.TextView;
 public class RadioViewPager
   extends RelativeLayout
 {
-  protected View a;
-  protected TextView a;
   protected GridListViewPager a;
-  protected RadioButtonIndicator a;
-  protected TextView b;
-  protected TextView c;
+  protected RadioButtonIndicator b;
+  protected View c;
+  protected TextView d;
+  protected TextView e;
+  protected TextView f;
   
   public RadioViewPager(Context paramContext)
   {
@@ -27,44 +27,44 @@ public class RadioViewPager
   public RadioViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560659, this, false);
-    this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager = ((GridListViewPager)paramContext.findViewById(2131372284));
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)paramContext.findViewById(2131368768));
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setOrientation(0);
-    this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager.setOnPagerSizeChangeListener(this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator);
-    this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager.setOnPageChangeListener(this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131367700);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131367698));
-    this.c = ((TextView)paramContext.findViewById(2131367699));
-    this.b = ((TextView)paramContext.findViewById(2131367697));
-    this.c.getPaint().setFlags(8);
-    this.c.getPaint().setAntiAlias(true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131626704, this, false);
+    this.a = ((GridListViewPager)paramContext.findViewById(2131439794));
+    this.b = ((RadioButtonIndicator)paramContext.findViewById(2131435686));
+    this.b.setOrientation(0);
+    this.a.setOnPagerSizeChangeListener(this.b);
+    this.a.setOnPageChangeListener(this.b);
+    this.c = paramContext.findViewById(2131434252);
+    this.d = ((TextView)paramContext.findViewById(2131434250));
+    this.f = ((TextView)paramContext.findViewById(2131434251));
+    this.e = ((TextView)paramContext.findViewById(2131434249));
+    this.f.getPaint().setFlags(8);
+    this.f.getPaint().setAntiAlias(true);
     addView(paramContext);
   }
   
-  public absMultiViewPager a()
+  public absMultiViewPager getViewPager()
   {
-    return this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager;
+    return this.a;
   }
   
   public void setEmptyInfo(String paramString1, String paramString2)
   {
     if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
+      this.d.setText(paramString1);
     }
     if (!TextUtils.isEmpty(paramString2)) {
-      this.c.setText(paramString2);
+      this.f.setText(paramString2);
     }
   }
   
   public void setGiftPanel(TroopGiftPanel paramTroopGiftPanel)
   {
-    this.jdField_a_of_type_ComTencentBizTroopgiftGridListViewPager.a = paramTroopGiftPanel;
+    this.a.e = paramTroopGiftPanel;
   }
   
   public void setIsListEmpty(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.c;
     int i;
     if (paramBoolean) {
       i = 0;
@@ -76,7 +76,7 @@ public class RadioViewPager
   
   public void setIsShowJumpInfo(boolean paramBoolean, String paramString, Context paramContext)
   {
-    TextView localTextView = this.c;
+    TextView localTextView = this.f;
     int j = 0;
     int i;
     if (paramBoolean) {
@@ -85,7 +85,7 @@ public class RadioViewPager
       i = 8;
     }
     localTextView.setVisibility(i);
-    localTextView = this.b;
+    localTextView = this.e;
     if (paramBoolean) {
       i = j;
     } else {
@@ -93,13 +93,13 @@ public class RadioViewPager
     }
     localTextView.setVisibility(i);
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      this.c.setOnClickListener(new RadioViewPager.1(this, paramContext, paramString));
+      this.f.setOnClickListener(new RadioViewPager.1(this, paramContext, paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.RadioViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,6 @@ import java.util.List;
 
 public class ActionSheetHelper
 {
-  public static Dialog a(Context paramContext, View paramView)
-  {
-    return a(paramContext, paramView, -1, null);
-  }
-  
   public static Dialog a(Context paramContext, View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
     paramContext = ActionSheet.create(paramContext, paramInt, paramLayoutParams);
@@ -32,7 +27,7 @@ public class ActionSheetHelper
       }
       if (paramActionSheet == null)
       {
-        paramActionSheet = (ActionSheet)a(paramContext, null);
+        paramActionSheet = (ActionSheet)b(paramContext, null);
       }
       else
       {
@@ -56,11 +51,6 @@ public class ActionSheetHelper
       return paramActionSheet;
     }
     return null;
-  }
-  
-  public static ActionSheet a(Context paramContext, List<ActionMenuItem> paramList, ActionSheet.OnButtonClickListener paramOnButtonClickListener)
-  {
-    return a(paramContext, null, paramList, paramOnButtonClickListener);
   }
   
   public static String a(Context paramContext, int paramInt)
@@ -101,9 +91,12 @@ public class ActionSheetHelper
   
   public static Dialog b(Context paramContext, View paramView)
   {
-    paramContext = ActionSheet.createFullScreenDialog(paramContext);
-    paramContext.setActionContentView(paramView, new LinearLayout.LayoutParams(-1, -1));
-    return paramContext;
+    return a(paramContext, paramView, -1, null);
+  }
+  
+  public static ActionSheet b(Context paramContext, List<ActionMenuItem> paramList, ActionSheet.OnButtonClickListener paramOnButtonClickListener)
+  {
+    return a(paramContext, null, paramList, paramOnButtonClickListener);
   }
   
   public static void b(Activity paramActivity, ActionSheet paramActionSheet)
@@ -133,10 +126,17 @@ public class ActionSheetHelper
       }
     }
   }
+  
+  public static Dialog c(Context paramContext, View paramView)
+  {
+    paramContext = ActionSheet.createFullScreenDialog(paramContext);
+    paramContext.setActionContentView(paramView, new LinearLayout.LayoutParams(-1, -1));
+    return paramContext;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ActionSheetHelper
  * JD-Core Version:    0.7.0.1
  */

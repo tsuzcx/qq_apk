@@ -2,45 +2,32 @@ package com.tencent.mobileqq.surfaceviewaction.action;
 
 public abstract class Action
 {
-  public float a;
-  public int a;
-  protected long a;
-  private Action.OnActionEndListener a;
-  public boolean a;
-  public float b;
-  public int b;
-  protected long b;
-  public boolean b;
-  public float c;
-  public int c;
-  public int d;
+  public float a = 0.0F;
+  public float b = 0.0F;
+  public float c = 1.0F;
+  public int d = 255;
   public int e = 0;
+  public int f;
+  public int g;
+  public int h = 0;
+  public boolean i = false;
+  public boolean j = false;
+  protected long k;
+  protected long l;
+  private Action.OnActionEndListener m;
   
   public Action(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = 255;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.h = paramInt3;
   }
   
   protected void a(int paramInt, float paramFloat)
   {
-    if (paramInt >= this.jdField_c_of_type_Int)
+    if (paramInt >= this.f)
     {
-      Action.OnActionEndListener localOnActionEndListener = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionActionAction$OnActionEndListener;
+      Action.OnActionEndListener localOnActionEndListener = this.m;
       if (localOnActionEndListener != null) {
         localOnActionEndListener.a();
       }
@@ -49,53 +36,59 @@ public abstract class Action
   
   public void a(Action.OnActionEndListener paramOnActionEndListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionActionAction$OnActionEndListener = paramOnActionEndListener;
+    this.m = paramOnActionEndListener;
   }
   
   public boolean a()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.j) {
       return false;
     }
-    int i = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    float f2 = i;
-    int j = this.jdField_c_of_type_Int;
-    float f1 = f2 / j;
-    int k = this.e;
-    if (k == 1)
+    int n = (int)(System.currentTimeMillis() - this.k);
+    float f2 = n;
+    int i1 = this.f;
+    float f1 = f2 / i1;
+    int i2 = this.h;
+    if (i2 == 1)
     {
-      f1 = i * i / (j * j);
+      f1 = n * n / (i1 * i1);
     }
-    else if (k == 2)
+    else if (i2 == 2)
     {
-      f1 = f2 / j;
+      f1 = f2 / i1;
       f1 *= (2.0F - f1);
     }
-    a(i, f1);
-    if (i >= this.jdField_c_of_type_Int) {
-      b();
+    a(n, f1);
+    if (n >= this.f) {
+      c();
     }
     return true;
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.j = false;
+    this.k = System.currentTimeMillis();
   }
   
   public void c()
   {
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.j = true;
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Long += System.currentTimeMillis() - this.jdField_b_of_type_Long;
+    this.l = System.currentTimeMillis();
+  }
+  
+  public void e()
+  {
+    this.k += System.currentTimeMillis() - this.l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.Action
  * JD-Core Version:    0.7.0.1
  */

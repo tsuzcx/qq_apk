@@ -10,50 +10,50 @@ import java.util.Comparator;
 public class ContactSorter$NamePriorityComparator
   implements Comparator<DiscussionMemberInfo>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
+  private boolean b;
+  private QQAppInterface c;
   
   public ContactSorter$NamePriorityComparator(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramString2.equals(paramString1);
+    this.c = paramQQAppInterface;
+    this.a = paramString1;
+    this.b = paramString2.equals(paramString1);
   }
   
   public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
   {
-    boolean bool = paramDiscussionMemberInfo1.memberUin.equals(this.jdField_a_of_type_JavaLangString);
+    boolean bool = paramDiscussionMemberInfo1.memberUin.equals(this.a);
     int i = -1;
     if (bool)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         i = 1;
       }
       return i;
     }
-    if (paramDiscussionMemberInfo2.memberUin.equals(this.jdField_a_of_type_JavaLangString))
+    if (paramDiscussionMemberInfo2.memberUin.equals(this.a))
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         return -1;
       }
       return 1;
     }
-    paramDiscussionMemberInfo1 = ContactUtils.a(paramDiscussionMemberInfo1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramDiscussionMemberInfo2 = ContactUtils.a(paramDiscussionMemberInfo2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    paramDiscussionMemberInfo1 = ContactUtils.a(paramDiscussionMemberInfo1, this.c);
+    paramDiscussionMemberInfo2 = ContactUtils.a(paramDiscussionMemberInfo2, this.c);
     if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo1.length() != 0))
     {
       if ((paramDiscussionMemberInfo2 != null) && (paramDiscussionMemberInfo2.length() != 0))
       {
         if ((!Character.isDigit(paramDiscussionMemberInfo1.charAt(0))) && (!Character.isDigit(paramDiscussionMemberInfo2.charAt(0))))
         {
-          String str1 = ChnToSpell.a(paramDiscussionMemberInfo1, 1);
-          String str2 = ChnToSpell.a(paramDiscussionMemberInfo2, 1);
+          String str1 = ChnToSpell.b(paramDiscussionMemberInfo1, 1);
+          String str2 = ChnToSpell.b(paramDiscussionMemberInfo2, 1);
           if ((str1.length() != 0) && (str2.length() != 0))
           {
             if (str1.charAt(0) == str2.charAt(0))
             {
-              if ((StringUtil.b(paramDiscussionMemberInfo1.charAt(0))) && (StringUtil.b(paramDiscussionMemberInfo2.charAt(0)))) {
+              if ((StringUtil.isAsciiAlpha(paramDiscussionMemberInfo1.charAt(0))) && (StringUtil.isAsciiAlpha(paramDiscussionMemberInfo2.charAt(0)))) {
                 return paramDiscussionMemberInfo1.charAt(0) - paramDiscussionMemberInfo2.charAt(0);
               }
               if (Character.isLetter(paramDiscussionMemberInfo1.charAt(0))) {
@@ -89,7 +89,7 @@ public class ContactSorter$NamePriorityComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ContactSorter.NamePriorityComparator
  * JD-Core Version:    0.7.0.1
  */

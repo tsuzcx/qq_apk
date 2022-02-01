@@ -12,7 +12,7 @@ public class SysSuspiciousConfProcessor
 {
   public static SysSuspiciousConfBean a()
   {
-    SysSuspiciousConfBean localSysSuspiciousConfBean2 = (SysSuspiciousConfBean)QConfigManager.a().a(493);
+    SysSuspiciousConfBean localSysSuspiciousConfBean2 = (SysSuspiciousConfBean)QConfigManager.b().b(493);
     SysSuspiciousConfBean localSysSuspiciousConfBean1 = localSysSuspiciousConfBean2;
     if (localSysSuspiciousConfBean2 == null) {
       localSysSuspiciousConfBean1 = new SysSuspiciousConfBean();
@@ -103,7 +103,7 @@ public class SysSuspiciousConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.newfriend.SysSuspiciousConfProcessor
  * JD-Core Version:    0.7.0.1
  */

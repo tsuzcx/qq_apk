@@ -12,7 +12,7 @@ public abstract interface IBaseApplicationImplUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.IBaseApplicationImplUtil
  * JD-Core Version:    0.7.0.1
  */

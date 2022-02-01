@@ -8,24 +8,24 @@ import java.util.List;
 public class LebaRedDotUrlAppendRule
   extends BaseLebaUrlAppendRule
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private List<String> b;
   
   public LebaRedDotUrlAppendRule(boolean paramBoolean, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
     if ((paramAppInfo != null) && (paramAppInfo.missions != null)) {
-      this.jdField_a_of_type_JavaUtilList = paramAppInfo.missions.get();
+      this.b = paramAppInfo.missions.get();
     }
   }
   
   public String a()
   {
-    String str = String.format("&hasRedDot=%b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    String str = String.format("&hasRedDot=%b", new Object[] { Boolean.valueOf(this.a) });
     Object localObject1 = str;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+      Object localObject2 = this.b;
       localObject1 = str;
       if (localObject2 != null)
       {
@@ -33,7 +33,7 @@ public class LebaRedDotUrlAppendRule
         if (!((List)localObject2).isEmpty())
         {
           localObject1 = new StringBuilder();
-          localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+          localObject2 = this.b.iterator();
           while (((Iterator)localObject2).hasNext())
           {
             ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next());
@@ -50,14 +50,14 @@ public class LebaRedDotUrlAppendRule
     return localObject1;
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
     return (paramString != null) && (paramString.contains("need_fill_red_point_info=1"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.urlreport.LebaRedDotUrlAppendRule
  * JD-Core Version:    0.7.0.1
  */

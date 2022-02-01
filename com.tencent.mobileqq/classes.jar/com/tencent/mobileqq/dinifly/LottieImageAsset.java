@@ -3,11 +3,11 @@ package com.tencent.mobileqq.dinifly;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.Log;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +27,7 @@ public class LottieImageAsset
   public long size;
   private final int width;
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public LottieImageAsset(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
     this.width = paramInt1;
@@ -162,6 +162,11 @@ public class LottieImageAsset
     return this.width;
   }
   
+  public boolean hasBitmap()
+  {
+    return (this.bitmap != null) || ((this.fileName.startsWith("data:")) && (this.fileName.indexOf("base64,") > 0));
+  }
+  
   public boolean hasCache()
   {
     return TextUtils.isEmpty(this.id) ^ true;
@@ -179,7 +184,7 @@ public class LottieImageAsset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieImageAsset
  * JD-Core Version:    0.7.0.1
  */

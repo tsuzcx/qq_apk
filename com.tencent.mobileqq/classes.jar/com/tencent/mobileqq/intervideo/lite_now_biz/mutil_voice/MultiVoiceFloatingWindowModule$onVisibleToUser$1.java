@@ -20,9 +20,9 @@ public final class MultiVoiceFloatingWindowModule$onVisibleToUser$1
 {
   public int a()
   {
-    if (!MultiVoiceFloatingWindowModule.c(this.a))
+    if (!MultiVoiceFloatingWindowModule.l(this.a))
     {
-      Context localContext = MultiVoiceFloatingWindowModule.a(this.a);
+      Context localContext = MultiVoiceFloatingWindowModule.m(this.a);
       if ((localContext instanceof Activity))
       {
         ((Activity)localContext).finish();
@@ -34,33 +34,33 @@ public final class MultiVoiceFloatingWindowModule$onVisibleToUser$1
     return 0;
   }
   
-  @Nullable
-  public LifecycleOwner a()
-  {
-    return MultiVoiceFloatingWindowModule.a(this.a);
-  }
-  
   public void a(@NotNull FloatRoomManager paramFloatRoomManager)
   {
     Intrinsics.checkParameterIsNotNull(paramFloatRoomManager, "manager");
-    FloatWindowComponent localFloatWindowComponent = MultiVoiceFloatingWindowModule.a(this.a);
+    FloatWindowComponent localFloatWindowComponent = MultiVoiceFloatingWindowModule.k(this.a);
     if ((localFloatWindowComponent != null) && (localFloatWindowComponent.isReallyShow() == true)) {
-      paramFloatRoomManager.b();
+      paramFloatRoomManager.c();
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    FloatWindowComponent localFloatWindowComponent = MultiVoiceFloatingWindowModule.a(this.a);
+    FloatWindowComponent localFloatWindowComponent = MultiVoiceFloatingWindowModule.k(this.a);
     if (localFloatWindowComponent != null) {
       return localFloatWindowComponent.isCalledShow();
     }
     return false;
   }
+  
+  @Nullable
+  public LifecycleOwner c()
+  {
+    return MultiVoiceFloatingWindowModule.j(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceFloatingWindowModule.onVisibleToUser.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.quic.QuicWrapper.QuicBundle;
 import com.tencent.mobileqq.msf.core.quic.a;
+import com.tencent.mobileqq.msf.core.quicksend.g;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -115,14 +116,14 @@ public class f
     return true;
   }
   
-  public boolean a(String paramString1, int paramInt, String paramString2, com.tencent.mobileqq.msf.core.quicksend.f paramf)
+  public boolean a(String paramString1, int paramInt, String paramString2, g paramg)
   {
     this.g = paramString1;
     this.h = paramInt;
     long l = System.currentTimeMillis();
     this.f = this.e.a();
     this.b = this.e.a(this.f, this.g, this.h, this.i);
-    paramf.j = (System.currentTimeMillis() - l);
+    paramg.j = (System.currentTimeMillis() - l);
     paramString1 = new StringBuilder();
     paramString1.append("connect ");
     paramString1.append(this.g);
@@ -134,7 +135,7 @@ public class f
     return this.b;
   }
   
-  public byte[] a(ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, String paramString, com.tencent.mobileqq.msf.core.quicksend.f paramf)
+  public byte[] a(ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, String paramString, g paramg)
   {
     int i5 = paramToServiceMsg.getRequestSsoSeq();
     long l1 = SystemClock.elapsedRealtime();
@@ -144,10 +145,10 @@ public class f
     paramToServiceMsg.append(":");
     paramToServiceMsg.append(this.h);
     paramToServiceMsg = paramToServiceMsg.toString();
-    paramf = new StringBuilder();
-    paramf.append(paramToServiceMsg);
-    paramf.append(a(paramToServiceMsg, i5));
-    this.k = paramf.toString();
+    paramg = new StringBuilder();
+    paramg.append(paramToServiceMsg);
+    paramg.append(a(paramToServiceMsg, i5));
+    this.k = paramg.toString();
     this.k = MsfSdkUtils.insertMtype(paramString, this.k);
     paramToServiceMsg = new StringBuilder();
     paramToServiceMsg.append("try connect ");
@@ -163,30 +164,30 @@ public class f
     QLog.d("LightQuicEngine", 1, paramString);
     paramString = new StringBuilder();
     paramString.append("/");
-    paramf = this.k;
-    paramString.append(paramf.substring(paramf.indexOf("?")));
+    paramg = this.k;
+    paramString.append(paramg.substring(paramg.indexOf("?")));
     paramString = paramString.toString();
-    paramf = new StringBuffer();
-    paramf.append("POST ");
-    paramf.append(paramString);
-    paramf.append(" HTTP/1.1\r\n");
-    paramf.append("User-Agent: aqq\r\n");
-    paramf.append("content-type: oct\r\n");
-    paramf.append("Connection: Keep-Alive\r\n");
-    paramf.append("Accept-Encoding: \r\n");
-    paramf.append("Host: ");
-    paramf.append(this.g);
-    paramf.append("\r\n");
-    paramf.append("Content-Length: ");
-    paramf.append(paramArrayOfByte.length);
-    paramf.append("\r\n\r\n");
-    paramf = paramf.toString().getBytes();
+    paramg = new StringBuffer();
+    paramg.append("POST ");
+    paramg.append(paramString);
+    paramg.append(" HTTP/1.1\r\n");
+    paramg.append("User-Agent: aqq\r\n");
+    paramg.append("content-type: oct\r\n");
+    paramg.append("Connection: Keep-Alive\r\n");
+    paramg.append("Accept-Encoding: \r\n");
+    paramg.append("Host: ");
+    paramg.append(this.g);
+    paramg.append("\r\n");
+    paramg.append("Content-Length: ");
+    paramg.append(paramArrayOfByte.length);
+    paramg.append("\r\n\r\n");
+    paramg = paramg.toString().getBytes();
     paramString = paramToServiceMsg;
     for (;;)
     {
       try
       {
-        m = this.e.a(this.f, paramf, paramf.length, this.j);
+        m = this.e.a(this.f, paramg, paramg.length, this.j);
         paramString = paramToServiceMsg;
         n = this.e.a(this.f, paramArrayOfByte, paramArrayOfByte.length, this.j);
         paramString = paramToServiceMsg;
@@ -206,7 +207,7 @@ public class f
         paramString = paramToServiceMsg;
         QLog.d("LightQuicEngine", 1, paramArrayOfByte.toString());
         paramString = paramToServiceMsg;
-        paramf = new ByteArrayBuffer(512);
+        paramg = new ByteArrayBuffer(512);
         m = 0;
         i1 = 0;
         n = 0;
@@ -229,16 +230,16 @@ public class f
           paramString = paramToServiceMsg;
           m += paramArrayOfByte.data_len;
           paramString = paramToServiceMsg;
-          paramf.append(paramArrayOfByte.data, 0, paramArrayOfByte.data_len);
+          paramg.append(paramArrayOfByte.data, 0, paramArrayOfByte.data_len);
           paramString = paramToServiceMsg;
-          paramArrayOfByte = a(new String(paramf.toByteArray()));
+          paramArrayOfByte = a(new String(paramg.toByteArray()));
           n = paramArrayOfByte[0];
           i1 = paramArrayOfByte[1];
           if ((n <= 0) || (i1 <= 0)) {
             continue;
           }
           paramString = paramToServiceMsg;
-          i4 = n - (paramf.length() - i1);
+          i4 = n - (paramg.length() - i1);
           paramString = paramToServiceMsg;
           boolean bool = QLog.isColorLevel();
           if (!bool) {
@@ -302,7 +303,7 @@ public class f
           break label1054;
         }
         m += paramArrayOfByte.data_len;
-        paramf.append(paramArrayOfByte.data, 0, paramArrayOfByte.data_len);
+        paramg.append(paramArrayOfByte.data, 0, paramArrayOfByte.data_len);
         i2 = i4;
         if (paramArrayOfByte.data_len <= 0) {
           break label1061;
@@ -319,7 +320,7 @@ public class f
     if (QLog.isDevelopLevel())
     {
       paramString = new byte[i1];
-      System.arraycopy(paramf.toByteArray(), 0, paramString, 0, i1);
+      System.arraycopy(paramg.toByteArray(), 0, paramString, 0, i1);
       paramString = new String(paramString);
       try
       {
@@ -338,7 +339,7 @@ public class f
         paramToServiceMsg.append(m);
         QLog.d(paramArrayOfByte, 1, paramToServiceMsg.toString());
         paramToServiceMsg = new byte[n];
-        System.arraycopy(paramf.toByteArray(), i1, paramToServiceMsg, 0, n);
+        System.arraycopy(paramg.toByteArray(), i1, paramToServiceMsg, 0, n);
         return paramToServiceMsg;
       }
       catch (Exception paramToServiceMsg) {}
@@ -377,7 +378,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.f
  * JD-Core Version:    0.7.0.1
  */

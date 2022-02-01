@@ -16,11 +16,10 @@ final class VistaImageProcessor
   private float density = 1.0F;
   private Map<Long, TextureRecord> textureRecordMap = new ConcurrentHashMap();
   private TextureRegistry textureRegistry;
-  private IVistaImage vistaImageImpl;
   
-  private void processCreateTextureTask(VistaImageTask paramVistaImageTask)
+  private void processCreateTextureTask(VistaImageTask paramVistaImageTask, IVistaImage paramIVistaImage)
   {
-    Observable.just(paramVistaImageTask).flatMap(new VistaImageProcessor.3(this)).observeOn(AndroidSchedulers.mainThread()).subscribe(new VistaImageProcessor.1(this), new VistaImageProcessor.2(this));
+    Observable.just(paramVistaImageTask).flatMap(new VistaImageProcessor.3(this, paramIVistaImage)).observeOn(AndroidSchedulers.mainThread()).subscribe(new VistaImageProcessor.1(this, paramIVistaImage), new VistaImageProcessor.2(this));
   }
   
   private void processReleaseTextureTask(VistaImageTask paramVistaImageTask)
@@ -28,10 +27,10 @@ final class VistaImageProcessor
     Observable.just(paramVistaImageTask).observeOn(AndroidSchedulers.mainThread()).subscribe(new VistaImageProcessor.4(this), new VistaImageProcessor.5(this));
   }
   
-  private void processUpdateTextureTask(VistaImageTask paramVistaImageTask)
+  private void processUpdateTextureTask(VistaImageTask paramVistaImageTask, IVistaImage paramIVistaImage)
   {
     long l = paramVistaImageTask.getTextureId();
-    Observable.just(paramVistaImageTask).flatMap(new VistaImageProcessor.8(this)).observeOn(AndroidSchedulers.mainThread()).subscribe(new VistaImageProcessor.6(this, l), new VistaImageProcessor.7(this));
+    Observable.just(paramVistaImageTask).flatMap(new VistaImageProcessor.8(this, paramIVistaImage)).observeOn(AndroidSchedulers.mainThread()).subscribe(new VistaImageProcessor.6(this, l), new VistaImageProcessor.7(this));
   }
   
   void clear()
@@ -51,19 +50,20 @@ final class VistaImageProcessor
   {
     if (VistaImageLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[processTask] task=");
-      localStringBuilder.append(paramVistaImageTask.toString());
-      VistaImageLog.d("VistaImageProcessor", localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[processTask] task=");
+      ((StringBuilder)localObject).append(paramVistaImageTask.toString());
+      VistaImageLog.d("VistaImageProcessor", ((StringBuilder)localObject).toString());
     }
-    if (this.vistaImageImpl == null)
+    Object localObject = SchemeService.getInstance().getSchemeHandler(paramVistaImageTask.getScheme());
+    if (localObject == null)
     {
-      VistaImageLog.e("VistaImageProcessor", "[processTask] invalid vistaImageImpl");
+      paramVistaImageTask.notifyDartFail("-1", "no IVistaImage implementation");
       return;
     }
     if (paramVistaImageTask.getType() == 0)
     {
-      processCreateTextureTask(paramVistaImageTask);
+      processCreateTextureTask(paramVistaImageTask, (IVistaImage)localObject);
       return;
     }
     if (1 == paramVistaImageTask.getType())
@@ -73,13 +73,14 @@ final class VistaImageProcessor
     }
     if (2 == paramVistaImageTask.getType())
     {
-      processUpdateTextureTask(paramVistaImageTask);
+      processUpdateTextureTask(paramVistaImageTask, (IVistaImage)localObject);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[processTask] invalid task type, ");
-    localStringBuilder.append(paramVistaImageTask.getType());
-    VistaImageLog.e("VistaImageProcessor", localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[processTask] invalid task type, ");
+    ((StringBuilder)localObject).append(paramVistaImageTask.getType());
+    VistaImageLog.e("VistaImageProcessor", ((StringBuilder)localObject).toString());
+    paramVistaImageTask.notifyDartFail("-12", "invalid task type");
   }
   
   void setDensity(float paramFloat)
@@ -106,15 +107,10 @@ final class VistaImageProcessor
   {
     this.textureRegistry = paramTextureRegistry;
   }
-  
-  void setVistaImageImpl(IVistaImage paramIVistaImage)
-  {
-    this.vistaImageImpl = paramIVistaImage;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.VistaImageProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ class SpringFestivalTaskCallback$3
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onBrushHBActivityStart statusTitle.h = ");
-      localStringBuilder.append(SpringFestivalTaskCallback.a(this.a).a().getHeight());
+      localStringBuilder.append(SpringFestivalTaskCallback.a(this.a).B().getHeight());
       localStringBuilder.append(",mUICallBack = ");
       localStringBuilder.append(this.a.a);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
@@ -45,7 +45,7 @@ class SpringFestivalTaskCallback$3
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onShowSpringFestivalTopBanner statusTitle.h = ");
-      localStringBuilder.append(SpringFestivalTaskCallback.a(this.a).a().getHeight());
+      localStringBuilder.append(SpringFestivalTaskCallback.a(this.a).B().getHeight());
       localStringBuilder.append(",mUICallBack = ");
       localStringBuilder.append(this.a.a);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
@@ -62,7 +62,7 @@ class SpringFestivalTaskCallback$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalTaskCallback.3
  * JD-Core Version:    0.7.0.1
  */

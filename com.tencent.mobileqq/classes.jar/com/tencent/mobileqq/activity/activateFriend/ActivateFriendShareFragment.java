@@ -26,66 +26,66 @@ import com.tencent.mobileqq.utils.ContactUtils;
 public class ActivateFriendShareFragment
   extends PublicBaseFragment
 {
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  QQAppInterface a;
   private String b;
   private String c;
-  
-  private Intent a()
-  {
-    Intent localIntent = new Intent();
-    Object localObject1 = this.c;
-    Object localObject2 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(97);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131699989));
-    localStringBuilder.append(this.b);
-    localObject1 = ((AbsShareMsg.Builder)localObject2).a(localStringBuilder.toString()).a("web", (String)localObject1, (String)localObject1, (String)localObject1, (String)localObject1).a();
-    localObject2 = StructMsgElementFactory.a(27);
-    ((AbsStructMsgItem)localObject2).o = 1;
-    ((AbsStructMsgItem)localObject2).a(new StructMsgItemTitle(this.b));
-    ((AbsStructMsgItem)localObject2).a(new StructMsgItemSummary(String.valueOf(this.jdField_a_of_type_Long)));
-    ((AbsStructMsgItem)localObject2).a(new StructMsgItemAvatar(1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ""));
-    ((AbsStructMsgItem)localObject2).a(new StructMsgItemAvatar(1, this.jdField_a_of_type_JavaLangString, ""));
-    ((AbsShareMsg)localObject1).addItem((AbsStructMsgElement)localObject2);
-    ((AbsShareMsg)localObject1).mCompatibleText = HardCodeUtil.a(2131699988);
-    localIntent.putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject1).getBytes());
-    localIntent.putExtra("forward_type", -3);
-    localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("emoInputType", 2);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007AD9", "0X8007AD9", 1, 0, "", "", "", "");
-    return localIntent;
-  }
+  private long d;
+  private String e;
+  private Activity f;
   
   private void a()
   {
-    ForwardBaseOption localForwardBaseOption = ForwardOptionBuilder.a(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity);
-    localForwardBaseOption.d();
+    ForwardBaseOption localForwardBaseOption = ForwardOptionBuilder.a(b(), this.a, this.f);
+    localForwardBaseOption.m();
     Bundle localBundle = new Bundle();
     localBundle.putInt("uintype", 0);
-    localBundle.putString("uin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("uinname", ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
-    localForwardBaseOption.a(ForwardAbility.ForwardAbilityType.a.intValue(), localBundle);
+    localBundle.putString("uin", this.b);
+    localBundle.putString("uinname", ContactUtils.g(this.a, this.b));
+    localForwardBaseOption.a(ForwardAbility.ForwardAbilityType.b.intValue(), localBundle);
+  }
+  
+  private Intent b()
+  {
+    Intent localIntent = new Intent();
+    Object localObject1 = this.e;
+    Object localObject2 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(97);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131898035));
+    localStringBuilder.append(this.c);
+    localObject1 = ((AbsShareMsg.Builder)localObject2).a(localStringBuilder.toString()).a("web", (String)localObject1, (String)localObject1, (String)localObject1, (String)localObject1).a();
+    localObject2 = StructMsgElementFactory.a(27);
+    ((AbsStructMsgItem)localObject2).au = 1;
+    ((AbsStructMsgItem)localObject2).a(new StructMsgItemTitle(this.c));
+    ((AbsStructMsgItem)localObject2).a(new StructMsgItemSummary(String.valueOf(this.d)));
+    ((AbsStructMsgItem)localObject2).a(new StructMsgItemAvatar(1, this.a.getCurrentAccountUin(), ""));
+    ((AbsStructMsgItem)localObject2).a(new StructMsgItemAvatar(1, this.b, ""));
+    ((AbsShareMsg)localObject1).addItem((AbsStructMsgElement)localObject2);
+    ((AbsShareMsg)localObject1).mCompatibleText = HardCodeUtil.a(2131898034);
+    localIntent.putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject1).getBytes());
+    localIntent.putExtra("forward_type", -3);
+    localIntent.putExtra("uin", this.b);
+    localIntent.putExtra("emoInputType", 2);
+    ReportController.b(this.a, "dc00898", "", "", "0X8007AD9", "0X8007AD9", 1, 0, "", "", "", "");
+    return localIntent;
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    paramBundle = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("friend_uin");
-    this.b = paramBundle.getStringExtra("content");
-    this.jdField_a_of_type_Long = paramBundle.getLongExtra("timestamp", System.currentTimeMillis());
-    this.c = paramBundle.getStringExtra("jumpUrl");
+    paramBundle = this.f.getIntent();
+    this.b = paramBundle.getStringExtra("friend_uin");
+    this.c = paramBundle.getStringExtra("content");
+    this.d = paramBundle.getLongExtra("timestamp", System.currentTimeMillis());
+    this.e = paramBundle.getStringExtra("jumpUrl");
     a();
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = getBaseActivity();
+    this.f = getBaseActivity();
     if ((getBaseActivity().getAppInterface() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppInterface());
+      this.a = ((QQAppInterface)getBaseActivity().getAppInterface());
     }
   }
   
@@ -100,13 +100,13 @@ public class ActivateFriendShareFragment
       QLog.d("ActivateFriendShareFragment", 0, localStringBuilder.toString());
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.f.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendShareFragment
  * JD-Core Version:    0.7.0.1
  */

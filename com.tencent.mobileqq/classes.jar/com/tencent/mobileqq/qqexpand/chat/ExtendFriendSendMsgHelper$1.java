@@ -40,18 +40,18 @@ class ExtendFriendSendMsgHelper$1
       else if (i == 21)
       {
         if (ExtendFriendSendMsgHelper.a(this.a) != null) {
-          ExtendFriendSendMsgHelper.a(this.a).showToast(2131698914);
+          ExtendFriendSendMsgHelper.a(this.a).showToast(2131896888);
         }
       }
       else if (ExtendFriendSendMsgHelper.a(this.a) != null) {
-        ExtendFriendSendMsgHelper.a(this.a).showToast(2131719418);
+        ExtendFriendSendMsgHelper.a(this.a).showToast(2131916977);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.ExtendFriendSendMsgHelper.1
  * JD-Core Version:    0.7.0.1
  */

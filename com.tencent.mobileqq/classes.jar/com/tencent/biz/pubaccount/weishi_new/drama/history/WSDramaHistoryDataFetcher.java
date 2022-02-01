@@ -41,14 +41,14 @@ public class WSDramaHistoryDataFetcher
   private void a(boolean paramBoolean1, boolean paramBoolean2, WSDramaHistoryDataFetcher.ResponseModel paramResponseModel, IFetchDataRspListener<WSDramaHistoryData> paramIFetchDataRspListener)
   {
     if (paramIFetchDataRspListener != null) {
-      paramIFetchDataRspListener.a(paramResponseModel.jdField_a_of_type_JavaUtilArrayList, paramBoolean2, paramBoolean1, Boolean.valueOf(paramResponseModel.jdField_a_of_type_Boolean ^ true));
+      paramIFetchDataRspListener.a(paramResponseModel.a, paramBoolean2, paramBoolean1, Boolean.valueOf(paramResponseModel.b ^ true));
     }
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, WSServiceErrorInfo paramWSServiceErrorInfo, IFetchDataRspListener paramIFetchDataRspListener)
   {
     if (paramIFetchDataRspListener != null) {
-      paramIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), paramBoolean1, paramBoolean2);
+      paramIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.b(), paramBoolean1, paramBoolean2);
     }
   }
   
@@ -59,13 +59,13 @@ public class WSDramaHistoryDataFetcher
     if (bool1) {
       this.a = "";
     }
-    WSNetService.a(new WSHistoryDramaRequest(WeishiUtils.d(), this.a)).a(new WSDramaHistoryDataFetcher.1(this, bool1, bool2, paramIFetchDataRspListener));
+    WSNetService.a(new WSHistoryDramaRequest(WeishiUtils.n(), this.a)).a(new WSDramaHistoryDataFetcher.1(this, bool1, bool2, paramIFetchDataRspListener));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryDataFetcher
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o9x" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/j2m" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:id="@id/qqb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_toRightOf="@id/o9x" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/o9w" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="15.5dip" android:src="@drawable/qb_troop_info_qrcode" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

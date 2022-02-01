@@ -3,13 +3,12 @@ package com.tencent.mobileqq.kandian.biz.share;
 import android.app.Activity;
 import android.view.View;
 import android.view.Window;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.dislike.ReadInJoyDisLikeDialogView;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
@@ -29,17 +28,16 @@ class VideoShareHelper$ReportDislikeAction
   {
     try
     {
-      if (!VideoShareHelper.a(this.a).isShowing())
+      if (!VideoShareHelper.m(this.a).isShowing())
       {
         if ((VersionUtils.g()) && (!ShortVideoUtils.isInFullScreenBlackList()))
         {
-          VideoShareHelper.a(this.a).getWindow().setFlags(8, 8);
-          VideoShareHelper.a(this.a).getWindow().getDecorView().setSystemUiVisibility(VideoShareHelper.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
-          VideoShareHelper.a(this.a).setOnShowListener(new VideoShareHelper.ReportDislikeAction.3(this));
+          VideoShareHelper.m(this.a).getWindow().setFlags(8, 8);
+          VideoShareHelper.m(this.a).getWindow().getDecorView().setSystemUiVisibility(VideoShareHelper.f(this.a).getWindow().getDecorView().getSystemUiVisibility());
+          VideoShareHelper.m(this.a).setOnShowListener(new VideoShareHelper.ReportDislikeAction.3(this));
         }
-        VideoShareHelper.a(this.a).show();
-        paramAbsBaseArticleInfo = new VideoR5.Builder(VideoReporter.a(null, null, null, null, paramJSONObject)).j(paramAbsBaseArticleInfo.innerUniqueID).a().a();
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).videoDataReportWithFansInfoInR5(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, paramAbsBaseArticleInfo, false);
+        VideoShareHelper.m(this.a).show();
+        PublicAccountReportUtils.b(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, new VideoR5.Builder(VideoReporter.a(null, null, null, null, paramJSONObject)).k(paramAbsBaseArticleInfo.innerUniqueID).b().a(), false);
         return;
       }
     }
@@ -66,7 +64,7 @@ class VideoShareHelper$ReportDislikeAction
     paramString = new JSONObject();
     try
     {
-      paramString.put("channel_id", VideoShareHelper.a(this.a));
+      paramString.put("channel_id", VideoShareHelper.k(this.a));
       paramString.put("source", 1);
     }
     catch (JSONException paramActionSheetItem)
@@ -76,13 +74,13 @@ class VideoShareHelper$ReportDislikeAction
     if ((paramAbsBaseArticleInfo.mDislikeInfos != null) && (paramAbsBaseArticleInfo.mDislikeInfos.size() > 0))
     {
       paramActionSheetItem = this.a;
-      VideoShareHelper.a(paramActionSheetItem, (ActionSheet)ActionSheetHelper.a(VideoShareHelper.a(paramActionSheetItem), null));
+      VideoShareHelper.a(paramActionSheetItem, (ActionSheet)ActionSheetHelper.b(VideoShareHelper.f(paramActionSheetItem), null));
       paramActionSheetItem = new VideoShareHelper.ReportDislikeAction.1(this);
-      VideoShareHelper.a(this.a).registerWatchDisMissActionListener(paramActionSheetItem);
-      paramActionSheetItem = new ReadInJoyDisLikeDialogView(VideoShareHelper.a(this.a));
+      VideoShareHelper.m(this.a).registerWatchDisMissActionListener(paramActionSheetItem);
+      paramActionSheetItem = new ReadInJoyDisLikeDialogView(VideoShareHelper.g(this.a));
       paramActionSheetItem.setOnUninterestConfirmListener(new VideoShareHelper.ReportDislikeAction.2(this, paramAbsBaseArticleInfo, paramString));
       paramActionSheetItem.setUninterestData(paramAbsBaseArticleInfo.mDislikeInfos);
-      VideoShareHelper.a(this.a).setActionContentView(paramActionSheetItem, null);
+      VideoShareHelper.m(this.a).setActionContentView(paramActionSheetItem, null);
       a(paramAbsBaseArticleInfo, paramString);
       return;
     }
@@ -98,7 +96,7 @@ class VideoShareHelper$ReportDislikeAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.ReportDislikeAction
  * JD-Core Version:    0.7.0.1
  */

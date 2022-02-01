@@ -12,24 +12,36 @@ import mqq.app.AppRuntime;
 
 public class TimeAndCountHelper
 {
-  private static volatile TimeAndCountHelper jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper;
-  private Map<String, Timer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static volatile TimeAndCountHelper a;
+  private Map<String, Timer> b = new HashMap();
   
   public static TimeAndCountHelper a()
   {
-    if (jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper == null) {
-          jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper = new TimeAndCountHelper();
+        if (a == null) {
+          a = new TimeAndCountHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper;
+    return a;
   }
   
-  private String a(String paramString)
+  private void a(Context paramContext, String paramString, TimeAndCountHelper.CountResult paramCountResult)
+  {
+    paramContext = SubscribeSpUtil.a(paramContext);
+    if (paramContext != null)
+    {
+      int i = paramContext.getInt(b(paramString), 0);
+      if (paramCountResult != null) {
+        paramCountResult.a(i + 1);
+      }
+    }
+  }
+  
+  private String b(String paramString)
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -39,21 +51,9 @@ public class TimeAndCountHelper
     return localStringBuilder.toString();
   }
   
-  private void a(Context paramContext, String paramString, TimeAndCountHelper.CountResult paramCountResult)
-  {
-    paramContext = SubscribeSpUtil.a(paramContext);
-    if (paramContext != null)
-    {
-      int i = paramContext.getInt(a(paramString), 0);
-      if (paramCountResult != null) {
-        paramCountResult.a(i + 1);
-      }
-    }
-  }
-  
   public int a(Context paramContext, String paramString)
   {
-    return SubscribeSpUtil.a(paramContext).getInt(a(paramString), 0);
+    return SubscribeSpUtil.a(paramContext).getInt(b(paramString), 0);
   }
   
   @SuppressLint({"NewApi"})
@@ -61,7 +61,7 @@ public class TimeAndCountHelper
   {
     paramContext = SubscribeSpUtil.a(paramContext);
     SharedPreferences.Editor localEditor = paramContext.edit();
-    paramString = a(paramString);
+    paramString = b(paramString);
     localEditor.putInt(paramString, paramContext.getInt(paramString, 0) + paramInt);
     localEditor.apply();
   }
@@ -73,7 +73,7 @@ public class TimeAndCountHelper
       a(paramString);
       Timer localTimer = new Timer();
       localTimer.schedule(new TimeAndCountHelper.1(this, paramContext, paramString, paramCountResult), paramInt);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localTimer);
+      this.b.put(paramString, localTimer);
       return;
     }
     a(paramContext, paramString, paramCountResult);
@@ -81,12 +81,12 @@ public class TimeAndCountHelper
   
   public void a(String paramString)
   {
-    Timer localTimer = (Timer)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    Timer localTimer = (Timer)this.b.get(paramString);
     if (localTimer != null)
     {
       localTimer.cancel();
       localTimer.purge();
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      this.b.remove(paramString);
     }
   }
 }

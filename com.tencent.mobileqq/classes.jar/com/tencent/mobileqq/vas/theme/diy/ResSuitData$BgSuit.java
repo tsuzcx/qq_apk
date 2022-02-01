@@ -7,9 +7,9 @@ import org.json.JSONObject;
 public class ResSuitData$BgSuit
   extends ResSuitData
 {
-  public boolean a;
-  public String f;
-  public String g;
+  public String h;
+  public String i;
+  public boolean j;
   
   public ResSuitData$BgSuit(JSONObject paramJSONObject)
   {
@@ -18,7 +18,7 @@ public class ResSuitData$BgSuit
     {
       localJSONArray = paramJSONObject.getJSONObject("data").getJSONArray("diyThemeBg");
       localJSONObject = null;
-      i = 0;
+      k = 0;
     }
     catch (Exception paramJSONObject)
     {
@@ -29,18 +29,18 @@ public class ResSuitData$BgSuit
         {
           JSONArray localJSONArray;
           JSONObject localJSONObject;
-          int i;
-          int j;
+          int k;
+          int m;
           continue;
-          i += 1;
+          k += 1;
         }
       } while (localObject != null);
     }
-    j = localJSONArray.length();
+    m = localJSONArray.length();
     localObject = localJSONObject;
-    if (i < j)
+    if (k < m)
     {
-      localJSONObject = localJSONArray.getJSONObject(i);
+      localJSONObject = localJSONArray.getJSONObject(k);
       localObject = localJSONObject;
       if (localJSONObject.optInt("status", 1) != 1) {
         if (QLog.isColorLevel())
@@ -52,21 +52,21 @@ public class ResSuitData$BgSuit
           ((StringBuilder)localObject).append(paramJSONObject.getString("name"));
           QLog.d("ThemeDiy.ResSuitData", 2, ((StringBuilder)localObject).toString());
           break label280;
-          this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("id");
-          this.d = paramJSONObject.optString("app");
-          this.e = paramJSONObject.optString("type");
-          this.c = paramJSONObject.optString("name");
-          this.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("feeType");
-          this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("thumbnail");
-          this.f = ((JSONObject)localObject).optString("previewImg");
-          this.g = ((JSONObject)localObject).optString("aioImg");
-          this.jdField_a_of_type_Boolean = true;
+          this.b = paramJSONObject.optString("id");
+          this.f = paramJSONObject.optString("app");
+          this.g = paramJSONObject.optString("type");
+          this.d = paramJSONObject.optString("name");
+          this.e = ((JSONObject)localObject).optInt("feeType");
+          this.a = ((JSONObject)localObject).optString("thumbnail");
+          this.h = ((JSONObject)localObject).optString("previewImg");
+          this.i = ((JSONObject)localObject).optString("aioImg");
+          this.j = true;
           return;
           paramJSONObject = new StringBuilder();
           paramJSONObject.append("theme BgSuit JSONErr name:");
-          paramJSONObject.append(this.c);
+          paramJSONObject.append(this.d);
           paramJSONObject.append(", id:");
-          paramJSONObject.append(this.jdField_b_of_type_JavaLangString);
+          paramJSONObject.append(this.b);
           QLog.e("ThemeDiy.ResSuitData", 1, paramJSONObject.toString());
           return;
         }
@@ -77,7 +77,7 @@ public class ResSuitData$BgSuit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ResSuitData.BgSuit
  * JD-Core Version:    0.7.0.1
  */

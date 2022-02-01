@@ -17,8 +17,8 @@ class SoLoaderServiceImpl$3
   {
     synchronized ()
     {
-      Object localObject2 = (List)SoLoaderServiceImpl.access$400().get(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam);
-      SoLoaderServiceImpl.access$400().remove(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam);
+      Object localObject2 = (List)SoLoaderServiceImpl.access$300().get(this.a);
+      SoLoaderServiceImpl.access$300().remove(this.a);
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
@@ -27,7 +27,7 @@ class SoLoaderServiceImpl$3
         ((StringBuilder)???).append(", loadExtResult=");
         ((StringBuilder)???).append(paramLoadExtResult);
         ((StringBuilder)???).append(",loadParam=");
-        ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam);
+        ((StringBuilder)???).append(this.a);
         ((StringBuilder)???).append(",ls=");
         ((StringBuilder)???).append(localObject2);
         QLog.i("SoLoadWidget.SoloadServiceImpl", 2, ((StringBuilder)???).toString());
@@ -53,7 +53,7 @@ class SoLoaderServiceImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SoLoaderServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

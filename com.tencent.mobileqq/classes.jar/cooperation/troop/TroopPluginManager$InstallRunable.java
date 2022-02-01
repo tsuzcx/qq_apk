@@ -11,19 +11,19 @@ import java.lang.ref.WeakReference;
 class TroopPluginManager$InstallRunable
   implements Runnable
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new TroopPluginManager.InstallRunable.1(this, Looper.getMainLooper());
-  TroopPluginCallback jdField_a_of_type_ComTencentMobileqqTroopPluginTroopPluginCallback;
-  String jdField_a_of_type_JavaLangString;
+  TroopPluginCallback a;
+  String b;
+  Handler c = new TroopPluginManager.InstallRunable.1(this, Looper.getMainLooper());
   
   public TroopPluginManager$InstallRunable(TroopPluginManager paramTroopPluginManager, TroopPluginCallback paramTroopPluginCallback, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopPluginTroopPluginCallback = paramTroopPluginCallback;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramTroopPluginCallback;
+    this.b = paramString;
   }
   
   public void run()
   {
-    Object localObject = (QQAppInterface)this.this$0.a.get();
+    Object localObject = (QQAppInterface)this.this$0.b.get();
     if (localObject == null) {
       return;
     }
@@ -31,12 +31,12 @@ class TroopPluginManager$InstallRunable
     if (localObject == null) {
       return;
     }
-    ((IPluginManager)localObject).installPlugin(this.jdField_a_of_type_JavaLangString, new TroopPluginManager.InstallRunable.2(this));
+    ((IPluginManager)localObject).installPlugin(this.b, new TroopPluginManager.InstallRunable.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopPluginManager.InstallRunable
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,21 @@ import android.widget.RelativeLayout;
 public class InputMethodRelativeLayout
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new InputMethodRelativeLayout.1(this);
   protected InputMethodRelativeLayout.onSizeChangedListenner a;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int b;
+  private ViewTreeObserver.OnGlobalLayoutListener c = new InputMethodRelativeLayout.1(this);
+  private boolean d = false;
   
   public InputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    getViewTreeObserver().addOnGlobalLayoutListener(this.c);
   }
   
   public InputMethodRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    getViewTreeObserver().addOnGlobalLayoutListener(this.c);
   }
   
   private int a()
@@ -36,12 +36,12 @@ public class InputMethodRelativeLayout
   
   public void setOnSizeChangedListenner(InputMethodRelativeLayout.onSizeChangedListenner paramonSizeChangedListenner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout$onSizeChangedListenner = paramonSizeChangedListenner;
+    this.a = paramonSizeChangedListenner;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

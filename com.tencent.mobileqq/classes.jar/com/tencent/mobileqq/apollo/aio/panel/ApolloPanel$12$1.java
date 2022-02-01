@@ -7,12 +7,12 @@ class ApolloPanel$12$1
   
   public void run()
   {
-    this.a.this$0.setTabSelect(this.a.this$0.a(ApolloPanel.a));
+    this.a.this$0.setTabSelect(this.a.this$0.c(ApolloPanel.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.12.1
  * JD-Core Version:    0.7.0.1
  */

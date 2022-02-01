@@ -9,7 +9,7 @@ class GroupVideoManager$7$1
   
   public void run()
   {
-    IGroupVideoManager.CheckListener localCheckListener = this.this$0.a;
+    IGroupVideoManager.CheckListener localCheckListener = this.this$0.b;
     List localList = this.a;
     boolean bool;
     if ((localList != null) && (localList.size() > 0)) {
@@ -22,7 +22,7 @@ class GroupVideoManager$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.7.1
  * JD-Core Version:    0.7.0.1
  */

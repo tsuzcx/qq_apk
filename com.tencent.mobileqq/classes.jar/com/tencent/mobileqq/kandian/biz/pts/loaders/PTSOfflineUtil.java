@@ -284,7 +284,33 @@ public class PTSOfflineUtil
     //   333	337	340	java/io/IOException
   }
   
-  public static boolean a(String paramString)
+  public static boolean a(String paramString1, String paramString2)
+  {
+    boolean bool;
+    try
+    {
+      bool = OfflineSecurity.a(paramString1, paramString2);
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("[checkOfflineDirIsValid], t = ");
+      localStringBuilder2.append(localThrowable);
+      QLog.i("PTSOfflineUtil", 1, localStringBuilder2.toString());
+      bool = false;
+    }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("[checkOfflineDirIsValid], res = ");
+    localStringBuilder1.append(bool);
+    localStringBuilder1.append(", bid = ");
+    localStringBuilder1.append(paramString2);
+    localStringBuilder1.append(", dir = ");
+    localStringBuilder1.append(paramString1);
+    QLog.i("PTSOfflineUtil", 1, localStringBuilder1.toString());
+    return bool;
+  }
+  
+  public static boolean b(String paramString)
   {
     boolean bool;
     if (!TextUtils.isEmpty(paramString))
@@ -331,33 +357,7 @@ public class PTSOfflineUtil
     return bool;
   }
   
-  public static boolean a(String paramString1, String paramString2)
-  {
-    boolean bool;
-    try
-    {
-      bool = OfflineSecurity.a(paramString1, paramString2);
-    }
-    catch (Throwable localThrowable)
-    {
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append("[checkOfflineDirIsValid], t = ");
-      localStringBuilder2.append(localThrowable);
-      QLog.i("PTSOfflineUtil", 1, localStringBuilder2.toString());
-      bool = false;
-    }
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    localStringBuilder1.append("[checkOfflineDirIsValid], res = ");
-    localStringBuilder1.append(bool);
-    localStringBuilder1.append(", bid = ");
-    localStringBuilder1.append(paramString2);
-    localStringBuilder1.append(", dir = ");
-    localStringBuilder1.append(paramString1);
-    QLog.i("PTSOfflineUtil", 1, localStringBuilder1.toString());
-    return bool;
-  }
-  
-  public static String b(String paramString)
+  public static String c(String paramString)
   {
     boolean bool = TextUtils.isEmpty(paramString);
     Object localObject4 = "no version";
@@ -406,7 +406,7 @@ public class PTSOfflineUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSOfflineUtil
  * JD-Core Version:    0.7.0.1
  */

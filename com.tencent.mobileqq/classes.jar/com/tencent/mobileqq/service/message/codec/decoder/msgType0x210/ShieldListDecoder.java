@@ -21,8 +21,8 @@ public class ShieldListDecoder
 {
   private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, msg_comm.MsgType0x210 paramMsgType0x210)
   {
-    ((ShieldListHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.SHIELD_LIST_HANDLER)).a(paramMsgType0x210.msg_content.get().toByteArray());
-    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
+    ((ShieldListHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.SHIELD_LIST_HANDLER)).a(paramMsgType0x210.msg_content.get().toByteArray());
+    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.b());
   }
   
   public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageHandler paramMessageHandler)
@@ -32,7 +32,7 @@ public class ShieldListDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.ShieldListDecoder
  * JD-Core Version:    0.7.0.1
  */

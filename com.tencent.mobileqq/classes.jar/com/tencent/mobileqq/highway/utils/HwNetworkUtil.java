@@ -11,6 +11,8 @@ import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 
@@ -57,17 +59,17 @@ public class HwNetworkUtil
     }
     try
     {
-      localObject = paramContext.getCellLocation();
+      localObject = PhoneInfoMonitor.getCellLocation(paramContext);
       if ((localObject instanceof CdmaCellLocation))
       {
-        paramContext = (CdmaCellLocation)paramContext.getCellLocation();
+        paramContext = (CdmaCellLocation)PhoneInfoMonitor.getCellLocation(paramContext);
         if (paramContext != null) {
           return paramContext.getBaseStationId();
         }
       }
       else if ((localObject instanceof GsmCellLocation))
       {
-        paramContext = (GsmCellLocation)paramContext.getCellLocation();
+        paramContext = (GsmCellLocation)PhoneInfoMonitor.getCellLocation(paramContext);
         if (paramContext != null)
         {
           int i = paramContext.getCid();
@@ -105,7 +107,7 @@ public class HwNetworkUtil
   
   public static String getCurrentWifiBSSID(Context paramContext)
   {
-    paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+    paramContext = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi"));
     if (paramContext.getSSID() == null) {
       return null;
     }
@@ -122,7 +124,7 @@ public class HwNetworkUtil
   
   public static String getCurrentWifiSSID(Context paramContext)
   {
-    paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+    paramContext = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi"));
     if (paramContext != null)
     {
       if (paramContext.getSSID() == null) {
@@ -419,7 +421,7 @@ public class HwNetworkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.utils.HwNetworkUtil
  * JD-Core Version:    0.7.0.1
  */

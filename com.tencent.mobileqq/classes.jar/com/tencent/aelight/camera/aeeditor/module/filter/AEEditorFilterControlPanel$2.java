@@ -11,13 +11,13 @@ class AEEditorFilterControlPanel$2
   
   public void onClick(View paramView)
   {
-    AEQLog.b(AEEditorFilterControlPanel.a(), "select none filter");
+    AEQLog.b(AEEditorFilterControlPanel.f(), "select none filter");
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorFilterControlPanel.2
  * JD-Core Version:    0.7.0.1
  */

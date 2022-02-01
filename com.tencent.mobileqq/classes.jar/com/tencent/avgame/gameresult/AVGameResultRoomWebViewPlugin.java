@@ -34,8 +34,8 @@ public class AVGameResultRoomWebViewPlugin
       paramMap.append("]");
       QLog.d(paramString, 2, paramMap.toString());
     }
-    this.mRuntime.a().setResult(273);
-    this.mRuntime.a().finish();
+    this.mRuntime.d().setResult(273);
+    this.mRuntime.d().finish();
     return true;
   }
   
@@ -57,14 +57,14 @@ public class AVGameResultRoomWebViewPlugin
       {
         if ("closeGame".equalsIgnoreCase(paramString3))
         {
-          this.mRuntime.a().setResult(546);
-          this.mRuntime.a().finish();
+          this.mRuntime.d().setResult(546);
+          this.mRuntime.d().finish();
         }
       }
       else
       {
-        this.mRuntime.a().setResult(273);
-        this.mRuntime.a().finish();
+        this.mRuntime.d().setResult(273);
+        this.mRuntime.d().finish();
       }
       return true;
     }

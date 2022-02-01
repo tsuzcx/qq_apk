@@ -12,9 +12,9 @@ class TextItem$2
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getSelectionStart() == 0))
+    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.a.b.getSelectionStart() == 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
+      this.b.c.b(this.a);
       return true;
     }
     return false;
@@ -22,7 +22,7 @@ class TextItem$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.2
  * JD-Core Version:    0.7.0.1
  */

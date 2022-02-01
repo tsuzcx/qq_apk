@@ -42,34 +42,34 @@ class AdProxyImpl$SDKInterstitialAdView$1
           localObject1 = ((JSONArray)localObject1).getJSONObject(0);
           if (((JSONObject)localObject1).optInt("ret", -1) != 0)
           {
-            if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener == null) {
+            if (this.b.b == null) {
               break label415;
             }
-            this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
+            this.b.b.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
             return;
           }
           Object localObject2 = ((JSONObject)localObject1).getJSONArray("ads_info").getJSONObject(0);
           localObject1 = new GdtInterstitialParams();
           localObject2 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject2));
-          if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.c != 90) {
+          if (this.b.i != 90) {
             break label416;
           }
           i = 1;
           break label418;
-          ((GdtInterstitialParams)localObject1).jdField_a_of_type_Int = i;
-          ((GdtInterstitialParams)localObject1).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = AdProxyImpl.SDKInterstitialAdView.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView, (qq_ad_get.QQAdGetRsp.AdInfo)localObject2);
-          ((GdtInterstitialParams)localObject1).jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd = ((IGdtInterstitialAPI)QRoute.api(IGdtInterstitialAPI.class)).build(this.jdField_a_of_type_AndroidAppActivity, (GdtInterstitialParams)localObject1);
-          if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd != null)
+          ((GdtInterstitialParams)localObject1).e = i;
+          ((GdtInterstitialParams)localObject1).d = AdProxyImpl.SDKInterstitialAdView.a(this.b, (qq_ad_get.QQAdGetRsp.AdInfo)localObject2);
+          ((GdtInterstitialParams)localObject1).f = true;
+          this.b.c = ((IGdtInterstitialAPI)QRoute.api(IGdtInterstitialAPI.class)).build(this.a, (GdtInterstitialParams)localObject1);
+          if (this.b.c != null)
           {
-            if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
-              this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onLoad();
+            if (this.b.b != null) {
+              this.b.b.onLoad();
             }
-            AdProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, paramJSONObject, this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.b);
+            AdProxyImpl.a(this.b.q, paramJSONObject, this.b.h);
             return;
           }
-          if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
-            this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+          if (this.b.b != null) {
+            this.b.b.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
           }
         }
         else
@@ -79,9 +79,9 @@ class AdProxyImpl$SDKInterstitialAdView$1
             break label433;
           }
           i = j;
-          if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null)
+          if (this.b.b != null)
           {
-            this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(i, (String)localObject1);
+            this.b.b.onError(i, (String)localObject1);
             return;
           }
         }
@@ -89,13 +89,13 @@ class AdProxyImpl$SDKInterstitialAdView$1
       catch (JSONException paramJSONObject)
       {
         QLog.e("AdProxyImpl", 1, "loadAD, err", paramJSONObject);
-        if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
-          this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+        if (this.b.b != null) {
+          this.b.b.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
         }
       }
       return;
-      if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
-        this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKInterstitialAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
+      if (this.b.b != null) {
+        this.b.b.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
       }
       return;
       return;
@@ -110,7 +110,7 @@ class AdProxyImpl$SDKInterstitialAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKInterstitialAdView.1
  * JD-Core Version:    0.7.0.1
  */

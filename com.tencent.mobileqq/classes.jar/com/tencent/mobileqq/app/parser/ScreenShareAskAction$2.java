@@ -13,13 +13,13 @@ class ScreenShareAskAction$2
   
   public void a()
   {
-    PlusPanelUtils.a(ScreenShareAskAction.a(this.jdField_a_of_type_ComTencentMobileqqAppParserScreenShareAskAction), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a, true, "AIOShareScreen", null);
-    ReportController.b(null, "dc00898", "", "", "0X800B8A6", "0X800B8A6", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+    PlusPanelUtils.a(ScreenShareAskAction.a(this.d), this.a, this.b.ah, true, "AIOShareScreen", null);
+    ReportController.b(null, "dc00898", "", "", "0X800B8A6", "0X800B8A6", 0, 0, this.c, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ScreenShareAskAction.2
  * JD-Core Version:    0.7.0.1
  */

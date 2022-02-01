@@ -14,16 +14,16 @@ class TroopAssistantActivity$22
 {
   TroopAssistantActivity$22(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null)
+      if (this.d.K == null)
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity;
-        paramView.a = new QQProgressNotifier(paramView);
+        paramView = this.d;
+        paramView.K = new QQProgressNotifier(paramView);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131694424, 1500);
+      this.d.K.b(2, 2131892104, 1500);
     }
     else
     {
@@ -51,15 +51,15 @@ class TroopAssistantActivity$22
       else {
         paramInt = 1;
       }
-      if (paramInt != this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.setTroopMsgFilterToServer(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+      if (paramInt != this.a) {
+        this.d.app.setTroopMsgFilterToServer(this.b, Integer.valueOf(paramInt));
       }
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        this.c.dismiss();
         return;
       }
     }
@@ -73,7 +73,7 @@ class TroopAssistantActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.22
  * JD-Core Version:    0.7.0.1
  */

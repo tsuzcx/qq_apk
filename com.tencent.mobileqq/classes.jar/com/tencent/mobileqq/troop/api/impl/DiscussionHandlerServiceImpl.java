@@ -68,7 +68,7 @@ public class DiscussionHandlerServiceImpl
   {
     AppRuntime localAppRuntime = this.mApp;
     if ((localAppRuntime instanceof AppInterface)) {
-      return ((DiscussionHandler)((AppInterface)localAppRuntime).getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(paramString, paramBoolean);
+      return ((DiscussionHandler)((AppInterface)localAppRuntime).getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).b(paramString, paramBoolean);
     }
     return null;
   }
@@ -97,13 +97,13 @@ public class DiscussionHandlerServiceImpl
   {
     AppRuntime localAppRuntime = this.mApp;
     if ((localAppRuntime instanceof AppInterface)) {
-      ((DiscussionHandler)((AppInterface)localAppRuntime).getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(paramString, paramBoolean);
+      ((DiscussionHandler)((AppInterface)localAppRuntime).getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).c(paramString, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.DiscussionHandlerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

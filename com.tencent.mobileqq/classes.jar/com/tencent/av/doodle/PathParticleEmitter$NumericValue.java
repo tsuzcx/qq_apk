@@ -10,10 +10,10 @@ public class PathParticleEmitter$NumericValue
   public void a(BufferedReader paramBufferedReader)
   {
     super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    this.jdField_a_of_type_Float = PathParticleEmitter.a(paramBufferedReader, "value");
+    this.a = PathParticleEmitter.d(paramBufferedReader, "value");
   }
 }
 

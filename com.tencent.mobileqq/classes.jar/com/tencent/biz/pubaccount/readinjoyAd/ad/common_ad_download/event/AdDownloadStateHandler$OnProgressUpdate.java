@@ -28,7 +28,7 @@ final class AdDownloadStateHandler$OnProgressUpdate
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append(" progress = ");
     if (paramAdDownloadInfo != null) {
-      localObject1 = Integer.valueOf(paramAdDownloadInfo.b());
+      localObject1 = Integer.valueOf(paramAdDownloadInfo.c());
     } else {
       localObject1 = null;
     }
@@ -43,14 +43,14 @@ final class AdDownloadStateHandler$OnProgressUpdate
     localStringBuilder.append(" data = ");
     Object localObject1 = localObject2;
     if (paramRIJDownloadView != null) {
-      localObject1 = paramRIJDownloadView.a();
+      localObject1 = paramRIJDownloadView.getDownloadData();
     }
     localStringBuilder.append(localObject1);
     QLog.d("AD_DOWNLOAD_TAG", 1, localStringBuilder.toString());
     onProgressUpdateUI(paramRIJDownloadView, paramAdDownloadInfo);
     int i;
     if (paramAdDownloadInfo != null) {
-      i = paramAdDownloadInfo.b();
+      i = paramAdDownloadInfo.c();
     } else {
       i = 0;
     }
@@ -59,7 +59,7 @@ final class AdDownloadStateHandler$OnProgressUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler.OnProgressUpdate
  * JD-Core Version:    0.7.0.1
  */

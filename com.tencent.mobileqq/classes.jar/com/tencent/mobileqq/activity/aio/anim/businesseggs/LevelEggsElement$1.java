@@ -18,13 +18,13 @@ class LevelEggsElement$1
     LevelEggsElement.a(this.a, paramLottieDrawable);
     LevelEggsElement.a(this.a).addAnimatorListener(new LevelEggsElement.1.1(this));
     paramLottieDrawable = this.a;
-    LevelEggsElement.a(paramLottieDrawable, new DiniFlyAnimationView(LevelEggsElement.a(paramLottieDrawable).getContext()));
-    ((DiniFlyAnimationView)LevelEggsElement.a(this.a)).setImageDrawable(LevelEggsElement.a(this.a));
+    LevelEggsElement.a(paramLottieDrawable, new DiniFlyAnimationView(LevelEggsElement.b(paramLottieDrawable).getContext()));
+    ((DiniFlyAnimationView)LevelEggsElement.c(this.a)).setImageDrawable(LevelEggsElement.a(this.a));
     paramLottieDrawable = new ViewGroup.LayoutParams(-2, -2);
-    paramLottieDrawable.height = (LevelEggsElement.a(this.a).getBottom() - LevelEggsElement.a(this.a).getTop());
-    paramLottieDrawable.width = (LevelEggsElement.a(this.a).getRight() - LevelEggsElement.a(this.a).getLeft());
-    LevelEggsElement.a(this.a).addViewInLayout(LevelEggsElement.a(this.a), -1, paramLottieDrawable, false);
-    LevelEggsElement.a(this.a).layout(0, 0, paramLottieDrawable.width, paramLottieDrawable.height);
+    paramLottieDrawable.height = (LevelEggsElement.c(this.a).getBottom() - LevelEggsElement.c(this.a).getTop());
+    paramLottieDrawable.width = (LevelEggsElement.c(this.a).getRight() - LevelEggsElement.c(this.a).getLeft());
+    LevelEggsElement.d(this.a).addViewInLayout(LevelEggsElement.c(this.a), -1, paramLottieDrawable, false);
+    LevelEggsElement.c(this.a).layout(0, 0, paramLottieDrawable.width, paramLottieDrawable.height);
     LevelEggsElement.a(this.a).setRepeatCount(-1);
     if ((LevelEggsElement.a(this.a) != null) && (!LevelEggsElement.a(this.a).isAnimating())) {
       LevelEggsElement.a(this.a).playAnimation();
@@ -33,7 +33,7 @@ class LevelEggsElement$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.LevelEggsElement.1
  * JD-Core Version:    0.7.0.1
  */

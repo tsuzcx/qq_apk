@@ -11,20 +11,20 @@ final class FastWebArticleInfo$1
   public FastWebArticleInfo a(Parcel paramParcel)
   {
     FastWebArticleInfo localFastWebArticleInfo = new FastWebArticleInfo();
-    localFastWebArticleInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localFastWebArticleInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localFastWebArticleInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.f = paramParcel.readString();
-    localFastWebArticleInfo.h = paramParcel.readString();
-    localFastWebArticleInfo.g = paramParcel.readString();
-    localFastWebArticleInfo.j = paramParcel.readString();
+    localFastWebArticleInfo.b = paramParcel.readString();
+    localFastWebArticleInfo.c = paramParcel.readLong();
+    localFastWebArticleInfo.d = paramParcel.readLong();
     localFastWebArticleInfo.i = paramParcel.readString();
-    localFastWebArticleInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localFastWebArticleInfo.j = paramParcel.readString();
+    localFastWebArticleInfo.k = paramParcel.readString();
     localFastWebArticleInfo.l = paramParcel.readString();
+    localFastWebArticleInfo.m = paramParcel.readString();
+    localFastWebArticleInfo.o = paramParcel.readString();
+    localFastWebArticleInfo.n = paramParcel.readString();
+    localFastWebArticleInfo.q = paramParcel.readString();
+    localFastWebArticleInfo.p = paramParcel.readString();
+    localFastWebArticleInfo.s = paramParcel.readInt();
+    localFastWebArticleInfo.t = paramParcel.readString();
     int i = paramParcel.readInt();
     int j = 0;
     boolean bool2 = true;
@@ -34,16 +34,16 @@ final class FastWebArticleInfo$1
     } else {
       bool1 = false;
     }
-    localFastWebArticleInfo.jdField_b_of_type_Boolean = bool1;
-    localFastWebArticleInfo.o = paramParcel.readString();
-    localFastWebArticleInfo.jdField_e_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.w = bool1;
+    localFastWebArticleInfo.x = paramParcel.readString();
+    localFastWebArticleInfo.y = paramParcel.readLong();
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    localFastWebArticleInfo.jdField_c_of_type_Boolean = bool1;
-    localFastWebArticleInfo.q = paramParcel.readString();
+    localFastWebArticleInfo.z = bool1;
+    localFastWebArticleInfo.D = paramParcel.readString();
     int k = paramParcel.readInt();
     ArrayList localArrayList;
     ArticleTopicInfo localArticleTopicInfo;
@@ -54,38 +54,38 @@ final class FastWebArticleInfo$1
       while (i < k)
       {
         localArticleTopicInfo = new ArticleTopicInfo();
-        localArticleTopicInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-        localArticleTopicInfo.jdField_a_of_type_Long = paramParcel.readLong();
-        localArticleTopicInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+        localArticleTopicInfo.a = paramParcel.readString();
+        localArticleTopicInfo.c = paramParcel.readLong();
+        localArticleTopicInfo.b = paramParcel.readString();
         localArrayList.add(localArticleTopicInfo);
         i += 1;
       }
-      localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = localArrayList;
+      localFastWebArticleInfo.A = localArrayList;
     }
     else
     {
-      localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = null;
+      localFastWebArticleInfo.A = null;
     }
-    localFastWebArticleInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localFastWebArticleInfo.p = paramParcel.readString();
-    localFastWebArticleInfo.q = paramParcel.readString();
-    localFastWebArticleInfo.r = paramParcel.readString();
-    localFastWebArticleInfo.s = paramParcel.readString();
-    localFastWebArticleInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localFastWebArticleInfo.B = paramParcel.readInt();
+    localFastWebArticleInfo.C = paramParcel.readString();
+    localFastWebArticleInfo.D = paramParcel.readString();
+    localFastWebArticleInfo.E = paramParcel.readString();
+    localFastWebArticleInfo.G = paramParcel.readString();
+    localFastWebArticleInfo.H = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    localFastWebArticleInfo.jdField_d_of_type_Boolean = bool1;
-    localFastWebArticleInfo.t = paramParcel.readString();
-    localFastWebArticleInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localFastWebArticleInfo.K = bool1;
+    localFastWebArticleInfo.L = paramParcel.readString();
+    localFastWebArticleInfo.M = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    localFastWebArticleInfo.jdField_e_of_type_Boolean = bool1;
+    localFastWebArticleInfo.N = bool1;
     k = paramParcel.readInt();
     if (k > 0)
     {
@@ -94,16 +94,16 @@ final class FastWebArticleInfo$1
       while (i < k)
       {
         localArticleTopicInfo = new ArticleTopicInfo();
-        localArticleTopicInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-        localArticleTopicInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-        localArticleTopicInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+        localArticleTopicInfo.d = paramParcel.readString();
+        localArticleTopicInfo.a = paramParcel.readString();
+        localArticleTopicInfo.b = paramParcel.readString();
         localArrayList.add(localArticleTopicInfo);
         i += 1;
       }
-      localFastWebArticleInfo.jdField_b_of_type_JavaUtilList = localArrayList;
+      localFastWebArticleInfo.I = localArrayList;
       return localFastWebArticleInfo;
     }
-    localFastWebArticleInfo.jdField_b_of_type_JavaUtilList = null;
+    localFastWebArticleInfo.I = null;
     return localFastWebArticleInfo;
   }
   
@@ -114,7 +114,7 @@ final class FastWebArticleInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.FastWebArticleInfo.1
  * JD-Core Version:    0.7.0.1
  */

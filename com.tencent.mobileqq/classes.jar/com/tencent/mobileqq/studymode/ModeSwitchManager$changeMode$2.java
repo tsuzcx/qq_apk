@@ -13,15 +13,15 @@ final class ModeSwitchManager$changeMode$2
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = ((Iterable)ModeSwitchManager.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeSwitchManager)).iterator();
+    paramDialogInterface = ((Iterable)ModeSwitchManager.a(this.a)).iterator();
     while (paramDialogInterface.hasNext()) {
-      ((ModeSwitchManager.OnModeChangeResultCallback)paramDialogInterface.next()).c(this.jdField_a_of_type_Int, this.b);
+      ((ModeSwitchManager.OnModeChangeResultCallback)paramDialogInterface.next()).c(this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeSwitchManager.changeMode.2
  * JD-Core Version:    0.7.0.1
  */

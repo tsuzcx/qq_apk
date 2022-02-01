@@ -15,28 +15,28 @@ class WSGridCardPresenter$1
   
   public void a(String paramString, int paramInt)
   {
-    WSGridCardPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
-    WSReportDc00898.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSGridBeaconReport.a("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, WSGridCardPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter).a);
+    WSGridCardPresenter.a(this.d, this.a, this.b, paramString, this.c, 501);
+    WSReportDc00898.a(114, this.c.h5_op_info.type, this.b, this.c.h5_op_info.id);
+    WSGridBeaconReport.a("gzh_click", 1000003, this.c, WSGridCardPresenter.a(this.d).l);
   }
   
   public void b(String paramString, int paramInt)
   {
-    WSGridCardPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    WSGridCardPresenter.a(this.d, this.a, this.b, this.c);
   }
   
   public void c(String paramString, int paramInt)
   {
-    WSGridCardPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    WSReportDc00898.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
-    WSGridBeaconReport.a("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, WSGridCardPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter).a);
+    WSGridCardPresenter.a(this.d, this.a, this.c);
+    WSReportDc00898.a(115, this.c.h5_op_info.type, this.b, this.c.h5_op_info.id);
+    WSGridBeaconReport.a("gzh_click", 1000002, this.c, WSGridCardPresenter.a(this.d).l);
   }
   
   public void d(String paramString, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridCardPresenter.1
  * JD-Core Version:    0.7.0.1
  */

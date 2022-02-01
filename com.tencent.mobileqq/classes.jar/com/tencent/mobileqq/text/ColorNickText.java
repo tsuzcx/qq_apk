@@ -22,29 +22,29 @@ import java.util.ArrayList;
 public class ColorNickText
   implements GetChars, Spannable, CharSequence, Cloneable
 {
-  private int jdField_a_of_type_Int;
   public String a;
-  private ArrayList<Object> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<ColorNickText.SpanInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private int b;
+  private String c;
+  private ArrayList<Object> d = new ArrayList();
+  private ArrayList<ColorNickText.SpanInfo> e = new ArrayList();
   
   public ColorNickText(CharSequence paramCharSequence, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     if (paramCharSequence == null)
     {
-      this.jdField_b_of_type_JavaLangString = "";
-      this.jdField_a_of_type_JavaLangString = "";
+      this.c = "";
+      this.a = "";
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.a = paramCharSequence.toString();
+    this.c = this.a;
     paramInt = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
     Object localObject = new StringBuilder(paramCharSequence);
     a(0, ((StringBuilder)localObject).length(), paramInt, (StringBuilder)localObject);
-    this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    this.c = ((StringBuilder)localObject).toString();
     if (!QQText.IS_FXXKED_MTK) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      this.a = this.c;
     }
     if ((paramCharSequence instanceof Spanned))
     {
@@ -224,9 +224,9 @@ public class ColorNickText
   
   private void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    this.d.add(paramObject);
     paramObject = new ColorNickText.SpanInfo(paramInt1, paramInt2, paramInt3);
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramObject);
+    this.e.add(paramObject);
   }
   
   private void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -286,22 +286,22 @@ public class ColorNickText
     }
   }
   
-  public SpannableString a()
-  {
-    SpannableString localSpannableString = new SpannableString(this.jdField_b_of_type_JavaLangString);
-    TextUtils.copySpansFrom(this, 0, length(), Object.class, localSpannableString, 0);
-    return localSpannableString;
-  }
-  
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.c;
+  }
+  
+  public SpannableString b()
+  {
+    SpannableString localSpannableString = new SpannableString(this.c);
+    TextUtils.copySpansFrom(this, 0, length(), Object.class, localSpannableString, 0);
+    return localSpannableString;
   }
   
   public char charAt(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt <= length())) {
-      return this.jdField_b_of_type_JavaLangString.charAt(paramInt);
+      return this.c.charAt(paramInt);
     }
     return '\000';
   }
@@ -317,43 +317,43 @@ public class ColorNickText
     if (paramInt2 > j) {
       paramInt1 = j;
     }
-    this.jdField_b_of_type_JavaLangString.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
+    this.c.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
   }
   
   public int getSpanEnd(Object paramObject)
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {
+    int i = this.d.indexOf(paramObject);
+    if (this.e.size() < i) {
       return -1;
     }
     if (i < 0) {
       return -1;
     }
-    return ((ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(i)).b;
+    return ((ColorNickText.SpanInfo)this.e.get(i)).b;
   }
   
   public int getSpanFlags(Object paramObject)
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {
+    int i = this.d.indexOf(paramObject);
+    if (this.e.size() < i) {
       return 0;
     }
     if (i < 0) {
       return 0;
     }
-    return ((ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(i)).c;
+    return ((ColorNickText.SpanInfo)this.e.get(i)).c;
   }
   
   public int getSpanStart(Object paramObject)
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {
+    int i = this.d.indexOf(paramObject);
+    if (this.e.size() < i) {
       return -1;
     }
     if (i < 0) {
       return -1;
     }
-    return ((ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int;
+    return ((ColorNickText.SpanInfo)this.e.get(i)).a;
   }
   
   public <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
@@ -361,13 +361,13 @@ public class ColorNickText
     ArrayList localArrayList = new ArrayList();
     int j = 0;
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.d.size())
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      Object localObject = this.d.get(i);
       if (paramClass.isInstance(localObject))
       {
-        ColorNickText.SpanInfo localSpanInfo = (ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-        if ((localSpanInfo.jdField_a_of_type_Int >= paramInt1) && (localSpanInfo.b <= paramInt2)) {
+        ColorNickText.SpanInfo localSpanInfo = (ColorNickText.SpanInfo)this.e.get(i);
+        if ((localSpanInfo.a >= paramInt1) && (localSpanInfo.b <= paramInt2)) {
           localArrayList.add(localObject);
         }
       }
@@ -385,7 +385,7 @@ public class ColorNickText
   
   public int length()
   {
-    return this.jdField_b_of_type_JavaLangString.length();
+    return this.c.length();
   }
   
   public int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
@@ -395,19 +395,19 @@ public class ColorNickText
       localObject = Object.class;
     }
     int k = 0;
-    while (k < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (k < this.d.size())
     {
-      paramClass = this.jdField_a_of_type_JavaUtilArrayList.get(k);
-      ColorNickText.SpanInfo localSpanInfo = (ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(k);
+      paramClass = this.d.get(k);
+      ColorNickText.SpanInfo localSpanInfo = (ColorNickText.SpanInfo)this.e.get(k);
       int i = paramInt2;
       if (((Class)localObject).isInstance(paramClass))
       {
         int j = paramInt2;
-        if (localSpanInfo.jdField_a_of_type_Int > paramInt1)
+        if (localSpanInfo.a > paramInt1)
         {
           j = paramInt2;
-          if (localSpanInfo.jdField_a_of_type_Int < paramInt2) {
-            j = localSpanInfo.jdField_a_of_type_Int;
+          if (localSpanInfo.a < paramInt2) {
+            j = localSpanInfo.a;
           }
         }
         i = j;
@@ -427,12 +427,12 @@ public class ColorNickText
   
   public void removeSpan(Object paramObject)
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
+    int i = this.d.indexOf(paramObject);
     if (i >= 0)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      ColorNickText.SpanInfo localSpanInfo = (ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.remove(i);
-      b(paramObject, localSpanInfo.jdField_a_of_type_Int, localSpanInfo.b);
+      this.d.remove(i);
+      ColorNickText.SpanInfo localSpanInfo = (ColorNickText.SpanInfo)this.e.remove(i);
+      b(paramObject, localSpanInfo.a, localSpanInfo.b);
     }
   }
   
@@ -441,53 +441,53 @@ public class ColorNickText
     a("setSpan", paramInt1, paramInt2);
     if ((paramInt3 & 0x33) == 51)
     {
-      char c;
+      char c1;
       if ((paramInt1 != 0) && (paramInt1 != length()))
       {
-        c = charAt(paramInt1 - 1);
-        if (c != '\n')
+        c1 = charAt(paramInt1 - 1);
+        if (c1 != '\n')
         {
           paramObject = new StringBuilder();
           paramObject.append("PARAGRAPH span must start at paragraph boundary (");
           paramObject.append(paramInt1);
           paramObject.append(" follows ");
-          paramObject.append(c);
+          paramObject.append(c1);
           paramObject.append(")");
           throw new RuntimeException(paramObject.toString());
         }
       }
       if ((paramInt2 != 0) && (paramInt2 != length()))
       {
-        c = charAt(paramInt2 - 1);
-        if (c != '\n')
+        c1 = charAt(paramInt2 - 1);
+        if (c1 != '\n')
         {
           paramObject = new StringBuilder();
           paramObject.append("PARAGRAPH span must end at paragraph boundary (");
           paramObject.append(paramInt2);
           paramObject.append(" follows ");
-          paramObject.append(c);
+          paramObject.append(c1);
           paramObject.append(")");
           throw new RuntimeException(paramObject.toString());
         }
       }
     }
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
+    int i = this.d.indexOf(paramObject);
     ColorNickText.SpanInfo localSpanInfo;
-    if ((i > 0) && (this.jdField_b_of_type_JavaUtilArrayList.size() > i))
+    if ((i > 0) && (this.e.size() > i))
     {
-      localSpanInfo = (ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-      int j = localSpanInfo.jdField_a_of_type_Int;
+      localSpanInfo = (ColorNickText.SpanInfo)this.e.get(i);
+      int j = localSpanInfo.a;
       int k = localSpanInfo.b;
-      localSpanInfo.jdField_a_of_type_Int = paramInt1;
+      localSpanInfo.a = paramInt1;
       localSpanInfo.b = paramInt2;
       localSpanInfo.c = paramInt3;
       a(paramObject, j, k, paramInt1, paramInt2);
     }
     if (i < 0)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+      this.d.add(paramObject);
       localSpanInfo = new ColorNickText.SpanInfo(paramInt1, paramInt2, paramInt3);
-      this.jdField_b_of_type_JavaUtilArrayList.add(localSpanInfo);
+      this.e.add(localSpanInfo);
       a(paramObject, paramInt1, paramInt2);
     }
   }
@@ -506,12 +506,12 @@ public class ColorNickText
     if ((Build.VERSION.SDK_INT >= 26) && (i == 0) && (paramInt1 == length())) {
       return this;
     }
-    return this.jdField_b_of_type_JavaLangString.substring(i, paramInt1);
+    return this.c.substring(i, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.ColorNickText
  * JD-Core Version:    0.7.0.1
  */

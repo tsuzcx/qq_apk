@@ -100,7 +100,7 @@ public class TroopSuspiciousHelper
         long l2 = paramRspNextSystemMsg.following_group_seq.get();
         long l1 = l2;
         if (l2 <= 0L) {
-          l1 = ((MessageCache)paramAppInterface.getMsgCache()).e("following_group_suspicious_seq");
+          l1 = ((MessageCache)paramAppInterface.getMsgCache()).y("following_group_suspicious_seq");
         }
         if (QLog.isColorLevel())
         {
@@ -298,7 +298,7 @@ public class TroopSuspiciousHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.utils.TroopSuspiciousHelper
  * JD-Core Version:    0.7.0.1
  */

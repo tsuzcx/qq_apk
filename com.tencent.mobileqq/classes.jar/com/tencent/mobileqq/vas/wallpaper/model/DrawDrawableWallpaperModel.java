@@ -9,17 +9,17 @@ import com.tencent.mobileqq.vas.wallpaper.contract.DrawWallpaperContract.Model.D
 public class DrawDrawableWallpaperModel
   implements DrawWallpaperContract.Model
 {
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Drawable a;
+  private Drawable.Callback b;
   
   public DrawDrawableWallpaperModel(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.a = paramDrawable;
   }
   
   private void a(boolean paramBoolean)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.a;
     if ((localDrawable instanceof ApngDrawable))
     {
       if (paramBoolean)
@@ -33,35 +33,35 @@ public class DrawDrawableWallpaperModel
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.a != null)
     {
       a(true);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, false);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+      this.a.setVisible(true, false);
+      this.a.invalidateSelf();
     }
   }
   
   public void a(DrawWallpaperContract.Model.DrawCallback paramDrawCallback)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new DrawDrawableWallpaperModel.1(this, paramDrawCallback);
-    paramDrawCallback = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    this.b = new DrawDrawableWallpaperModel.1(this, paramDrawCallback);
+    paramDrawCallback = this.a;
     if (paramDrawCallback != null) {
-      paramDrawCallback.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+      paramDrawCallback.setCallback(this.b);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.a != null)
     {
       a(false);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
+      this.a.setVisible(false, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.model.DrawDrawableWallpaperModel
  * JD-Core Version:    0.7.0.1
  */

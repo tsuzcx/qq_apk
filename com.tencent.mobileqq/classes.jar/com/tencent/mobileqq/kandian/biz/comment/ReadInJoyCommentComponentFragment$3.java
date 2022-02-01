@@ -1,52 +1,26 @@
 package com.tencent.mobileqq.kandian.biz.comment;
 
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.transfile.api.ITransFileController;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 
 class ReadInJoyCommentComponentFragment$3
   implements Runnable
 {
-  ReadInJoyCommentComponentFragment$3(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString) {}
+  ReadInJoyCommentComponentFragment$3(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
   public void run()
   {
-    if (!new File(this.a).exists())
-    {
-      this.this$0.f();
-      localObject = this.this$0;
-      ((ReadInJoyCommentComponentFragment)localObject).a(1, ((ReadInJoyCommentComponentFragment)localObject).getString(2131717876));
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("startUploadPic file not exist, path=");
-        ((StringBuilder)localObject).append(this.a);
-        QLog.d("ReadInJoyCommentComponentFragment", 2, ((StringBuilder)localObject).toString());
-      }
-      return;
+    String str;
+    if (ReadInJoyCommentComponentFragment.a(this.this$0) == 1) {
+      str = "0X80094C4";
+    } else {
+      str = "";
     }
-    Object localObject = (ITransFileController)ReadInJoyCommentComponentFragment.a(this.this$0).app.getRuntimeService(ITransFileController.class);
-    this.this$0.a.addFilter(new Class[] { BDHCommonUploadProcessor.class });
-    ((ITransFileController)localObject).addHandle(this.this$0.a);
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mIsUp = true;
-    localTransferRequest.mCommandId = 10;
-    localTransferRequest.mLocalPath = this.a;
-    localTransferRequest.mUniseq = ((Math.random() * 1000000.0D));
-    localTransferRequest.mPeerUin = "0";
-    localTransferRequest.mFileType = 24;
-    localTransferRequest.mRichTag = "KandianUGCPicUpload";
-    ((ITransFileController)localObject).transferAsync(localTransferRequest);
+    PublicAccountReportUtils.a(null, "", "", str, 0, 0, String.valueOf(this.this$0.I), "", "", ReadInJoyCommentComponentFragment.a(this.this$0, true), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentComponentFragment.3
  * JD-Core Version:    0.7.0.1
  */

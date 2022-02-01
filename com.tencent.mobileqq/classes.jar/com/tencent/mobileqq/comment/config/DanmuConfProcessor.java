@@ -17,7 +17,7 @@ public class DanmuConfProcessor
   
   public static boolean a()
   {
-    DanmuConfProcessor.DanmuConfBean localDanmuConfBean = (DanmuConfProcessor.DanmuConfBean)QConfigManager.a().a(576);
+    DanmuConfProcessor.DanmuConfBean localDanmuConfBean = (DanmuConfProcessor.DanmuConfBean)QConfigManager.b().b(576);
     if ((localDanmuConfBean != null) && (!TextUtils.isEmpty(localDanmuConfBean.a))) {
       a = "1".equals(localDanmuConfBean.a);
     }
@@ -57,12 +57,12 @@ public class DanmuConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      DanmuConfProcessor.DanmuConfBean localDanmuConfBean = a(paramArrayOfQConfItem[0].a);
+      DanmuConfProcessor.DanmuConfBean localDanmuConfBean = a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("DanmuConfProcessor", 2, localStringBuilder.toString());
       }
       return localDanmuConfBean;
@@ -114,7 +114,7 @@ public class DanmuConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.config.DanmuConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -40,6 +42,7 @@ import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import com.dataline.activities.LiteActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -55,6 +58,7 @@ import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 import com.tencent.mobileqq.adapter.ForwardRecentListAdapter;
 import com.tencent.mobileqq.adapter.ForwardRecentListAdapter.DisplayData;
 import com.tencent.mobileqq.adapter.ForwardRecentListAdapter.IForwardRecentListAdapterCallback;
+import com.tencent.mobileqq.adapter.QQGuildForwardSelectionGuildListAdapter;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.AutomatorObserver;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
@@ -86,8 +90,11 @@ import com.tencent.mobileqq.forward.ForwardH5PTVOption;
 import com.tencent.mobileqq.forward.ForwardOptionBuilder;
 import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 import com.tencent.mobileqq.forward.ForwardStructingMsgOption;
+import com.tencent.mobileqq.guild.api.IQQGuildRouterApi;
+import com.tencent.mobileqq.guild.api.IQQGuildService;
 import com.tencent.mobileqq.multimsg.MultiMsgManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.qwallet.transaction.IToPayManager;
@@ -110,6 +117,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.ForwardSendPicUtil;
 import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
 import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.FormItemRelativeLayout;
 import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -144,6 +152,7 @@ public class ForwardRecentActivity
   protected static final String KEY_FILE = "forward_thumb";
   public static final String KEY_FORWARD_BUSINESS_ID = "key_forward_business_id";
   public static final String KEY_FORWARD_FROM_MSGTAB_CAMERA = "key_forward_from_msgtab_camera";
+  public static final String KEY_FORWARD_GUILD_SHARE_FROM_MINI = "key_forward_guild_share_from_mini";
   public static final String KEY_FORWARD_IMAGE_SHARE = "key_forward_image_share";
   public static final String KEY_FORWARD_IMAGE_SHARE_APPID = "key_forward_image_share_appid";
   public static final String KEY_FORWARD_IMAGE_SHARE_TITLE = "key_forward_image_share_title";
@@ -154,6 +163,8 @@ public class ForwardRecentActivity
   public static final String KEY_FORWARD_TITLE = "k_forward_title";
   public static final String KEY_JUMP_FROM_QZONE_FEED = "key_jump_from_qzone_feed";
   public static final String KEY_JUMP_FROM_QZONE_FEED_LEFT_TITLE = "key_jump_from_qzone_feed_left_title";
+  private static final String KEY_QCIRCLE_CLICK = "key_qcircle_click";
+  private static final String KEY_QCIRCLE_FORWARD = "key_qcircle_forward";
   public static final String KEY_SHOW_CANCEL_BUTTON = "k_cancel_button";
   protected static final String KEY_TEXT = "forward_text";
   protected static final String KEY_TYPE = "forward_type";
@@ -170,19 +181,22 @@ public class ForwardRecentActivity
   private static final int STATUS_DEFAULT = 0;
   private static final int STATUS_MULTI_SELECT = 1;
   static final String TAG = "ForwardOption.ForwardEntranceActivity";
+  public static final String TYPE_IS_MULTI_SELECTION = "is_multi_selection";
   public static final String TYPE_ONLY_SINGLE_SELECTION = "only_single_selection";
+  private static int k16dp = ViewUtils.dpToPx(16.0F);
   String appid = "";
   private BroadcastReceiver bindFinishReceiver;
   private String businessId;
   FormItemRelativeLayout contactLayout;
   Uri dataUri;
   TipsBar directShareTips;
-  private View.OnClickListener directShareTipsCloseListener = new ForwardRecentActivity.24(this);
+  private View.OnClickListener directShareTipsCloseListener = new ForwardRecentActivity.25(this);
   Bundle extra;
   protected List<RecentUser> forwardlist;
   FormItemRelativeLayout friendLayout;
-  private FriendListObserver friendListObserver = new ForwardRecentActivity.11(this);
+  private FriendListObserver friendListObserver = new ForwardRecentActivity.12(this);
   String fromPkgName;
+  FormItemRelativeLayout guildContactsLayout;
   boolean isForConfessDirectFriends = false;
   boolean isSdkShare = false;
   private boolean isShowInSare = false;
@@ -196,37 +210,41 @@ public class ForwardRecentActivity
   private View mEntryHeader;
   private IFaceDecoder mFaceDecoder;
   private Dialog mForwardCountLimitDialog;
+  private ForwardRecentItemView mForwardGuildItemView;
   private ForwardRecentItemView mForwardIpadItemView;
   ForwardBaseOption mForwardOption = null;
   private ForwardRecentItemView mForwardPcItemView;
-  private ForwardRecentListAdapter.IForwardRecentListAdapterCallback mForwardRecentListAdapterCallback = new ForwardRecentActivity.16(this);
+  private ForwardRecentListAdapter.IForwardRecentListAdapterCallback mForwardRecentListAdapterCallback = new ForwardRecentActivity.17(this);
   private Map<String, ResultRecord> mForwardTargetMap = new LinkedHashMap();
+  private IQQGuildService mGuildService;
   private InputMethodManager mImm;
-  private AutomatorObserver mInitObserver = new ForwardRecentActivity.14(this);
+  private AutomatorObserver mInitObserver = new ForwardRecentActivity.15(this);
   boolean mIsForConfess = false;
   boolean mIsFromAIO = false;
   boolean mIsFromDatalineAIO = false;
+  boolean mIsFromMini = false;
   boolean mIsFromShare = false;
   boolean mIsFromWeb = false;
+  private boolean mIsShowGuildEntrance;
   boolean mIsToPayList = false;
   private boolean mJumpQzoneShuoshuoDirect = false;
   private XListView mListView;
   LinearLayout mLlRoot;
   boolean mNeedShareCallback = false;
   boolean mNeedShowDirectShareTips = false;
-  private ContactSearchResultPresenter.OnActionListener mOnActionListener = new ForwardRecentActivity.21(this);
+  private ContactSearchResultPresenter.OnActionListener mOnActionListener = new ForwardRecentActivity.22(this);
   boolean mOnlySingleSelection = false;
   protected int mReq = -1;
   RelativeLayout mRlTitleBar;
   private ContactSearchFragment mSearchFragment;
   FrameLayout mSearchResultLayout;
   SelectedAndSearchBar mSelectedAndSearchBar;
-  private SelectedAndSearchBar.ISelectedAndSearchBarCallback mSelectedAndSearchBarCallback = new ForwardRecentActivity.20(this);
+  private SelectedAndSearchBar.ISelectedAndSearchBarCallback mSelectedAndSearchBarCallback = new ForwardRecentActivity.21(this);
   int miniAppShareFrom = -1;
   FormItemRelativeLayout multiChatLayout;
-  private View.OnClickListener onClick = new ForwardRecentActivity.10(this);
+  private View.OnClickListener onClick = new ForwardRecentActivity.11(this);
   private BroadcastReceiver qqBroadcastReceiver;
-  private View.OnClickListener qzoneEntryOnClickListener = new ForwardRecentActivity.25(this);
+  private View.OnClickListener qzoneEntryOnClickListener = new ForwardRecentActivity.26(this);
   FormItemRelativeLayout qzoneLayout;
   private ForwardRecentListAdapter recentAdapter;
   TextView recommendTv;
@@ -235,8 +253,8 @@ public class ForwardRecentActivity
   private TextView title;
   private IToPayManager topayManager;
   FormItemRelativeLayout troopDiscussionLayout;
-  private TroopMngObserver troopMngObserver = new ForwardRecentActivity.12(this);
-  private TroopObserver troopObserver = new ForwardRecentActivity.13(this);
+  private TroopMngObserver troopMngObserver = new ForwardRecentActivity.13(this);
+  private TroopObserver troopObserver = new ForwardRecentActivity.14(this);
   int uinType;
   
   private boolean add2ForwardTargetList(ResultRecord paramResultRecord)
@@ -279,26 +297,40 @@ public class ForwardRecentActivity
   private void addDatalineEntry()
   {
     this.mForwardPcItemView = new ForwardRecentItemView(this);
-    ResultRecord localResultRecord1 = new ResultRecord(AppConstants.DATALINE_PC_UIN, HardCodeUtil.a(2131694380), 6000, "", "");
-    this.mForwardPcItemView.a(HardCodeUtil.a(2131694380), "", getResources().getDrawable(2130844282), localResultRecord1, false, false);
-    this.mForwardPcItemView.setOnClickListener(new ForwardRecentActivity.4(this, localResultRecord1));
+    ResultRecord localResultRecord1 = new ResultRecord(AppConstants.DATALINE_PC_UIN, HardCodeUtil.a(2131892059), 6000, "", "");
+    this.mForwardPcItemView.a(HardCodeUtil.a(2131892059), "", getResources().getDrawable(2130845599), localResultRecord1, false, false);
+    this.mForwardPcItemView.setOnClickListener(new ForwardRecentActivity.5(this, localResultRecord1));
     this.mListView.addHeaderView(this.mForwardPcItemView);
-    if (((RegisterProxySvcPackHandler)this.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).c() != 0)
+    if (((RegisterProxySvcPackHandler)this.app.getBusinessHandler(BusinessHandlerFactory.REGPRXYSVCPACK_HANDLER)).f() != 0)
     {
       this.mForwardIpadItemView = new ForwardRecentItemView(this);
       ResultRecord localResultRecord2 = new ResultRecord(AppConstants.DATALINE_IPAD_UIN, "我的iPad", 6003, "", "");
-      this.mForwardIpadItemView.a("我的iPad", "", getResources().getDrawable(2130844277), localResultRecord2, false, false);
-      this.mForwardIpadItemView.setOnClickListener(new ForwardRecentActivity.5(this, localResultRecord1));
+      this.mForwardIpadItemView.a("我的iPad", "", getResources().getDrawable(2130845594), localResultRecord2, false, false);
+      this.mForwardIpadItemView.setOnClickListener(new ForwardRecentActivity.6(this, localResultRecord1));
       this.mListView.addHeaderView(this.mForwardIpadItemView);
     }
+  }
+  
+  private void addGuildEntry()
+  {
+    this.mForwardGuildItemView = new ForwardRecentItemView(this);
+    Object localObject = new ResultRecord(AppConstants.DATALINE_GUILD_UIN, HardCodeUtil.a(2131896942), 10014, "", "");
+    this.mForwardGuildItemView.a(HardCodeUtil.a(2131896942), "", getResources().getDrawable(2130841030), (ResultRecord)localObject, false, false);
+    localObject = getResources().getDrawable(2130839446);
+    ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
+    this.mForwardGuildItemView.b.setCompoundDrawables(null, null, (Drawable)localObject, null);
+    this.mForwardGuildItemView.b.getLayoutParams().width = -1;
+    changeMarginRight(this.mForwardGuildItemView.b, k16dp);
+    this.mForwardGuildItemView.setOnClickListener(new ForwardRecentActivity.4(this));
+    this.mListView.addHeaderView(this.mForwardGuildItemView);
   }
   
   private void addSmartDeviceEntry()
   {
     SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.app.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    if (localSmartDeviceProxyMgr.a())
+    if (localSmartDeviceProxyMgr.c())
     {
-      DeviceInfo[] arrayOfDeviceInfo = localSmartDeviceProxyMgr.a();
+      DeviceInfo[] arrayOfDeviceInfo = localSmartDeviceProxyMgr.e();
       if (arrayOfDeviceInfo != null)
       {
         if (arrayOfDeviceInfo.length <= 0) {
@@ -318,7 +350,7 @@ public class ForwardRecentActivity
               String str = SmartDeviceUtil.a(localDeviceInfo);
               ResultRecord localResultRecord = new ResultRecord(String.valueOf(localDeviceInfo.din), str, 9501, "", "");
               localForwardRecentItemView.a(str, "", new BitmapDrawable(DeviceHeadMgr.getInstance().getDeviceHeadByDin(String.valueOf(localDeviceInfo.din))), localResultRecord, false, false);
-              localForwardRecentItemView.setOnClickListener(new ForwardRecentActivity.6(this, localDeviceInfo, localForwardRecentItemView, localResultRecord, super.getResources(), str));
+              localForwardRecentItemView.setOnClickListener(new ForwardRecentActivity.7(this, localDeviceInfo, localForwardRecentItemView, localResultRecord, super.getResources(), str));
               this.mListView.addHeaderView(localForwardRecentItemView);
             }
             i += 1;
@@ -330,41 +362,41 @@ public class ForwardRecentActivity
   
   private void adjustEntryLayout()
   {
-    if ((!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b)) && (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c)) && (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.d)))
+    if ((!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c)) && (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.d)) && (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.e)))
     {
       if (QLog.isColorLevel()) {
         QLog.w("ForwardOption.ForwardEntranceActivity", 2, "-->adjustEntryLayout--don't support friends, troop and discuss forward, remove mEntryHeader");
       }
       localForwardBaseOption = this.mForwardOption;
-      if ((!(localForwardBaseOption instanceof ForwardChooseFriendOption)) || (localForwardBaseOption.a(ForwardAbility.ForwardAbilityType.l)))
+      if ((!(localForwardBaseOption instanceof ForwardChooseFriendOption)) || (localForwardBaseOption.a(ForwardAbility.ForwardAbilityType.m)))
       {
         this.mListView.removeHeaderView(this.mEntryHeader);
         return;
       }
     }
-    if (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b))
+    if (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c))
     {
       if (QLog.isColorLevel()) {
         QLog.w("ForwardOption.ForwardEntranceActivity", 2, "-->adjustEntryLayout--don't support friends forward, set friendBtn gone");
       }
       this.friendLayout.setVisibility(8);
     }
-    if (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.h))
+    if (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.i))
     {
       if (QLog.isColorLevel()) {
         QLog.w("ForwardOption.ForwardEntranceActivity", 2, "-->adjustEntryLayout--don't support phone contacts forward, set contactBtn gone");
       }
       this.contactLayout.setVisibility(8);
-      this.mEntryHeader.findViewById(2131369110).setVisibility(8);
+      this.mEntryHeader.findViewById(2131436080).setVisibility(8);
     }
-    if ((!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c)) || (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.l)))
+    if ((!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.d)) || (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.m)))
     {
       if (QLog.isColorLevel()) {
         QLog.w("ForwardOption.ForwardEntranceActivity", 2, "-->adjustEntryLayout--don't support discuss forward, set multiChatBtn gone");
       }
       this.multiChatLayout.setVisibility(8);
     }
-    if ((!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c)) && (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.d)))
+    if ((!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.d)) && (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.e)))
     {
       if (QLog.isColorLevel()) {
         QLog.w("ForwardOption.ForwardEntranceActivity", 2, "-->adjustEntryLayout--don't support troop and discuss forward, set troopDiscussionBtn gone");
@@ -374,7 +406,7 @@ public class ForwardRecentActivity
     ForwardBaseOption localForwardBaseOption = this.mForwardOption;
     if ((localForwardBaseOption instanceof ForwardH5PTVOption))
     {
-      if ((!localForwardBaseOption.a(ForwardAbility.ForwardAbilityType.b)) && (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c)))
+      if ((!localForwardBaseOption.a(ForwardAbility.ForwardAbilityType.c)) && (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.d)))
       {
         if (QLog.isColorLevel()) {
           QLog.w("ForwardOption.ForwardEntranceActivity", 2, "-->adjustEntryLayout--don't support friends and troop forward, set friendBtn gone");
@@ -382,7 +414,7 @@ public class ForwardRecentActivity
         this.friendLayout.setVisibility(8);
         this.multiChatLayout.setVisibility(8);
       }
-      if (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b))
+      if (!this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c))
       {
         if (QLog.isColorLevel()) {
           QLog.w("ForwardOption.ForwardEntranceActivity", 2, "-->adjustEntryLayout--don't support friends");
@@ -392,8 +424,31 @@ public class ForwardRecentActivity
       }
     }
     localForwardBaseOption = this.mForwardOption;
-    if (((localForwardBaseOption instanceof ForwardChooseFriendOption)) && (!localForwardBaseOption.a(ForwardAbility.ForwardAbilityType.l))) {
+    if (((localForwardBaseOption instanceof ForwardChooseFriendOption)) && (!localForwardBaseOption.a(ForwardAbility.ForwardAbilityType.m))) {
       this.multiChatLayout.setVisibility(0);
+    }
+  }
+  
+  private void attachQCircleReportParam(boolean paramBoolean)
+  {
+    if (isNotQCircleForwardFlow()) {
+      return;
+    }
+    Intent localIntent = getIntent();
+    Bundle localBundle = localIntent.getExtras();
+    Object localObject = this.mForwardOption;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((ForwardBaseOption)localObject).al();
+    }
+    if (localObject != null)
+    {
+      localBundle.putInt("uintype", ((Bundle)localObject).getInt("uintype"));
+      localBundle.putString("uin", ((Bundle)localObject).getString("uin"));
+      localBundle.putString("uinname", ((Bundle)localObject).getString("uinname"));
+      localBundle.putBoolean("key_qcircle_click", paramBoolean);
+      localIntent.putExtras(localBundle);
     }
   }
   
@@ -406,6 +461,27 @@ public class ForwardRecentActivity
     }
   }
   
+  private void bindSelectAndSearchBarData()
+  {
+    if (this.mFaceDecoder == null) {
+      this.mFaceDecoder = ((IQQAvatarService)this.app.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.app);
+    }
+    if (this.mGuildService == null) {
+      this.mGuildService = ((IQQGuildService)this.app.getRuntimeService(IQQGuildService.class, ""));
+    }
+    this.mSelectedAndSearchBar.a(null, this.mFaceDecoder, this.mSelectedAndSearchBarCallback, this.mGuildService);
+  }
+  
+  private static void changeMarginRight(@NonNull View paramView, int paramInt)
+  {
+    if ((paramView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
+    {
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      localMarginLayoutParams.setMargins(localMarginLayoutParams.leftMargin, localMarginLayoutParams.topMargin, paramInt, localMarginLayoutParams.bottomMargin);
+      paramView.requestLayout();
+    }
+  }
+  
   private void clearForwardTarget()
   {
     this.mForwardTargetMap.clear();
@@ -414,7 +490,7 @@ public class ForwardRecentActivity
   private RecentUser createNewVersionDatalineEntry()
   {
     RecentUser localRecentUser = new RecentUser("3636666661", 0);
-    localRecentUser.displayName = getString(2131698288);
+    localRecentUser.displayName = getString(2131896189);
     return localRecentUser;
   }
   
@@ -430,12 +506,12 @@ public class ForwardRecentActivity
     ArrayList localArrayList = new ArrayList(this.mForwardTargetMap.values());
     Collections.sort(localArrayList, new ResultRecord.DefaultComparator());
     Bundle localBundle = new Bundle();
-    localBundle.putInt("chooseFriendFrom", QQCustomDialogWtihInputAndChoose.a.intValue());
+    localBundle.putInt("chooseFriendFrom", QQCustomDialogWtihInputAndChoose.p.intValue());
     localBundle.putParcelableArrayList("forward_multi_target", localArrayList);
     localBundle.putBoolean("from_outside_share", this.mIsFromShare);
     localBundle.putBoolean("from_dataline_aio", this.mIsFromDatalineAIO);
-    this.mForwardOption.a(ForwardAbility.ForwardAbilityType.a.intValue(), localBundle);
-    this.mForwardOption.g();
+    this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b.intValue(), localBundle);
+    this.mForwardOption.v();
   }
   
   private String getBusinessId()
@@ -467,11 +543,11 @@ public class ForwardRecentActivity
     if ((localObject1 != null) && ((localObject1 instanceof ForwardFileOption)))
     {
       localObject1 = (ForwardFileOption)localObject1;
-      if (((ForwardFileOption)localObject1).g()) {
+      if (((ForwardFileOption)localObject1).t()) {
         return DatalineDeviceChooseModel.a((ForwardFileOption)localObject1);
       }
     }
-    localObject1 = MultiMsgManager.a().a();
+    localObject1 = MultiMsgManager.a().i();
     localObject2 = DatalineDeviceChooseModel.b((List)localObject1);
     if (((List)localObject1).size() > 1) {
       ((DatalineDeviceChooseModel)localObject2).a();
@@ -549,17 +625,17 @@ public class ForwardRecentActivity
       {
         localObject2 = (ForwardRecentListAdapter.DisplayData)localObject2;
         ResultRecord localResultRecord = new ResultRecord();
-        localResultRecord.uin = ((ForwardRecentListAdapter.DisplayData)localObject2).b;
-        if (((ForwardRecentListAdapter.DisplayData)localObject2).jdField_a_of_type_ComTencentMobileqqDataRecentUser != null) {
-          localResultRecord.type = ((ForwardRecentListAdapter.DisplayData)localObject2).jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType();
+        localResultRecord.uin = ((ForwardRecentListAdapter.DisplayData)localObject2).c;
+        if (((ForwardRecentListAdapter.DisplayData)localObject2).d != null) {
+          localResultRecord.type = ((ForwardRecentListAdapter.DisplayData)localObject2).d.getType();
         }
         int k = localResultRecord.type;
         boolean bool = true;
-        if ((k != 1) || (TroopUtils.a(localResultRecord.uin))) {
+        if ((k != 1) || (TroopUtils.b(localResultRecord.uin))) {
           bool = false;
         }
         localResultRecord.isNewTroop = bool;
-        localResultRecord.name = ((ForwardRecentListAdapter.DisplayData)localObject2).jdField_a_of_type_JavaLangString;
+        localResultRecord.name = ((ForwardRecentListAdapter.DisplayData)localObject2).a;
         ((ArrayList)localObject1).add(localResultRecord);
       }
       i += 1;
@@ -571,7 +647,7 @@ public class ForwardRecentActivity
   {
     if (this.bindFinishReceiver == null)
     {
-      this.bindFinishReceiver = new ForwardRecentActivity.8(this);
+      this.bindFinishReceiver = new ForwardRecentActivity.9(this);
       registerReceiver(this.bindFinishReceiver, new IntentFilter("ForwardEntranceActivity"));
     }
   }
@@ -580,7 +656,7 @@ public class ForwardRecentActivity
   {
     if (this.qqBroadcastReceiver == null)
     {
-      this.qqBroadcastReceiver = new ForwardRecentActivity.7(this);
+      this.qqBroadcastReceiver = new ForwardRecentActivity.8(this);
       IntentFilter localIntentFilter = new IntentFilter("ShareToQZoneAndFinishTheLastActivity");
       registerReceiver(this.qqBroadcastReceiver, localIntentFilter);
     }
@@ -590,44 +666,48 @@ public class ForwardRecentActivity
   
   private void initEntryHeaderView()
   {
-    this.mEntryHeader = LayoutInflater.from(this).inflate(2131559123, this.mListView, false);
+    this.mEntryHeader = LayoutInflater.from(this).inflate(2131624867, this.mListView, false);
     if (Build.VERSION.SDK_INT >= 9) {
       this.mEntryHeader.setOverScrollMode(2);
     }
     if (this.uinType != 9501) {
       this.mListView.addHeaderView(this.mEntryHeader);
     }
-    this.mEntryContentContainer = ((LinearLayout)this.mEntryHeader.findViewById(2131370252));
-    this.friendLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131367164));
-    this.contactLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131367167));
-    this.troopDiscussionLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131367171));
-    this.multiChatLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131367166));
-    this.qzoneLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131367168));
-    this.directShareTips = ((TipsBar)this.mEntryHeader.findViewById(2131378332));
+    this.mEntryContentContainer = ((LinearLayout)this.mEntryHeader.findViewById(2131437449));
+    this.friendLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131433619));
+    this.contactLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131433623));
+    this.troopDiscussionLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131433627));
+    this.guildContactsLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131433620));
+    this.multiChatLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131433622));
+    this.qzoneLayout = ((FormItemRelativeLayout)this.mEntryHeader.findViewById(2131433624));
+    this.directShareTips = ((TipsBar)this.mEntryHeader.findViewById(2131446855));
     this.friendLayout.setBGType(1);
     this.troopDiscussionLayout.setBGType(2);
     this.multiChatLayout.setBGType(3);
+    this.guildContactsLayout.setBGType(2);
     this.contactLayout.setBGType(2);
     this.qzoneLayout.setBGType(0);
-    this.friendLayout.setBackgroundResource(2130839388);
-    this.contactLayout.setBackgroundResource(2130839388);
-    this.troopDiscussionLayout.setBackgroundResource(2130839388);
-    this.multiChatLayout.setBackgroundResource(2130839388);
-    this.qzoneLayout.setBackgroundResource(2130839388);
-    this.directShareTips.setBackgroundResource(2130839388);
+    this.friendLayout.setBackgroundResource(2130839572);
+    this.contactLayout.setBackgroundResource(2130839572);
+    this.troopDiscussionLayout.setBackgroundResource(2130839572);
+    this.guildContactsLayout.setBackgroundResource(2130839572);
+    this.multiChatLayout.setBackgroundResource(2130839572);
+    this.qzoneLayout.setBackgroundResource(2130839572);
+    this.directShareTips.setBackgroundResource(2130839572);
     this.friendLayout.setOnClickListener(this.onClick);
     this.troopDiscussionLayout.setOnClickListener(this.onClick);
+    this.guildContactsLayout.setOnClickListener(this.onClick);
     this.contactLayout.setOnClickListener(this.onClick);
     this.multiChatLayout.setOnClickListener(this.onClick);
     this.qzoneLayout.setOnClickListener(this.qzoneEntryOnClickListener);
     this.directShareTips.setCloseListener(this.directShareTipsCloseListener);
-    View localView = LayoutInflater.from(this).inflate(2131558916, null);
+    View localView = LayoutInflater.from(this).inflate(2131624546, null);
     localView.setFocusable(true);
-    this.recommendTv = ((TextView)localView.findViewById(2131379627));
+    this.recommendTv = ((TextView)localView.findViewById(2131448393));
     if (this.mIsToPayList) {
-      this.recommendTv.setText(2131692652);
+      this.recommendTv.setText(2131889676);
     } else {
-      this.recommendTv.setText(2131692651);
+      this.recommendTv.setText(2131889675);
     }
     if (this.mOnlySingleSelection)
     {
@@ -635,6 +715,11 @@ public class ForwardRecentActivity
       this.contactLayout.setVisibility(0);
       this.troopDiscussionLayout.setVisibility(0);
       this.multiChatLayout.setVisibility(0);
+      if ((!this.mIsShowGuildEntrance) && (!this.mIsFromMini) && (!this.mIsFromWeb)) {
+        this.guildContactsLayout.setVisibility(8);
+      } else {
+        this.guildContactsLayout.setVisibility(0);
+      }
     }
     else
     {
@@ -642,6 +727,7 @@ public class ForwardRecentActivity
       this.contactLayout.setVisibility(8);
       this.troopDiscussionLayout.setVisibility(8);
       this.multiChatLayout.setVisibility(0);
+      this.guildContactsLayout.setVisibility(8);
     }
     this.mListView.addHeaderView(localView);
   }
@@ -665,7 +751,7 @@ public class ForwardRecentActivity
       this.mIsFromAIO = true;
     }
     boolean bool1;
-    if ((!paramIntent.getBooleanExtra("only_single_selection", false)) && (this.mForwardOption.b()))
+    if ((!paramIntent.getBooleanExtra("only_single_selection", false)) && (this.mForwardOption.l()))
     {
       bool1 = bool2;
       if (!this.mIsFromAIO)
@@ -674,7 +760,7 @@ public class ForwardRecentActivity
         if (!this.mIsFromWeb)
         {
           bool1 = bool2;
-          if (!this.mForwardOption.n()) {}
+          if (!this.mForwardOption.ac()) {}
         }
       }
     }
@@ -688,29 +774,29 @@ public class ForwardRecentActivity
   private void initSelectedAndSearchBar()
   {
     this.mImm = ((InputMethodManager)getSystemService("input_method"));
-    this.mSelectedAndSearchBar = ((SelectedAndSearchBar)super.findViewById(2131377172));
+    this.mSelectedAndSearchBar = ((SelectedAndSearchBar)super.findViewById(2131445550));
     this.mSelectedAndSearchBar.b(0L);
-    this.mSelectedAndSearchBar.a(new ForwardRecentActivity.22(this));
+    this.mSelectedAndSearchBar.a(new ForwardRecentActivity.23(this));
   }
   
   private void initTitleBtn()
   {
-    this.rightButton = ((TextView)super.findViewById(2131369233));
-    this.leftButton = ((TextView)super.findViewById(2131369204));
+    this.rightButton = ((TextView)super.findViewById(2131436211));
+    this.leftButton = ((TextView)super.findViewById(2131436182));
     if (!this.mOnlySingleSelection)
     {
       this.rightButton.setVisibility(0);
-      this.rightButton.setText(HardCodeUtil.a(2131704882));
+      this.rightButton.setText(HardCodeUtil.a(2131902775));
       this.rightButton.setOnClickListener(this.onClick);
       this.leftButton.setVisibility(0);
       this.leftButton.setOnClickListener(this.onClick);
-      this.leftButton.setText(HardCodeUtil.a(2131704888));
+      this.leftButton.setText(HardCodeUtil.a(2131902780));
     }
     else
     {
       this.leftButton.setVisibility(8);
       this.rightButton.setVisibility(0);
-      this.rightButton.setText(HardCodeUtil.a(2131704887));
+      this.rightButton.setText(HardCodeUtil.a(2131898212));
       this.rightButton.setOnClickListener(this.onClick);
     }
     Object localObject = (RelativeLayout.LayoutParams)this.rightButton.getLayoutParams();
@@ -720,7 +806,7 @@ public class ForwardRecentActivity
     }
     this.rightButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.rightButton.setPadding(AIOUtils.b(7.0F, getResources()), 0, AIOUtils.b(7.0F, getResources()), 0);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       localObject = this.rightButton;
       ((TextView)localObject).setContentDescription(((TextView)localObject).getText());
@@ -731,42 +817,45 @@ public class ForwardRecentActivity
   
   private void initViews()
   {
-    this.mLlRoot = ((LinearLayout)super.findViewById(2131376809));
+    this.mLlRoot = ((LinearLayout)super.findViewById(2131445137));
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       this.mLlRoot.setFitsSystemWindows(true);
       this.mLlRoot.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.mRlTitleBar = ((RelativeLayout)super.findViewById(2131376752));
-    super.findViewById(2131369202).setVisibility(8);
-    super.findViewById(2131369216).setVisibility(8);
-    this.title = ((TextView)super.findViewById(2131369249));
-    this.title.setText(this.mForwardOption.b());
+    this.mRlTitleBar = ((RelativeLayout)super.findViewById(2131445043));
+    super.findViewById(2131436180).setVisibility(8);
+    super.findViewById(2131436194).setVisibility(8);
+    this.title = ((TextView)super.findViewById(2131436227));
+    this.title.setText(this.mForwardOption.u());
     initTitleBtn();
     initSelectedAndSearchBar();
-    this.mSearchResultLayout = ((FrameLayout)super.findViewById(2131376483));
-    if (AppSetting.d) {
+    this.mSearchResultLayout = ((FrameLayout)super.findViewById(2131444724));
+    if (AppSetting.e) {
       AccessibilityUtil.b(this.rightButton, Button.class.getName());
     }
-    this.mListView = ((XListView)super.findViewById(2131370119));
-    if (AppSetting.d) {
+    this.mListView = ((XListView)super.findViewById(2131437281));
+    if (AppSetting.e) {
       ViewCompat.setImportantForAccessibility(this.mListView, 2);
     }
-    this.searchBox = LayoutInflater.from(this).inflate(2131562770, this.mListView, false);
-    this.searchBox.findViewById(2131363868).setVisibility(8);
-    Object localObject = (EditText)this.searchBox.findViewById(2131366333);
+    this.searchBox = LayoutInflater.from(this).inflate(2131629215, this.mListView, false);
+    this.searchBox.findViewById(2131429816).setVisibility(8);
+    Object localObject = (EditText)this.searchBox.findViewById(2131432634);
     ((EditText)localObject).setFocusable(false);
     ((EditText)localObject).setOnClickListener(this.onClick);
     ((EditText)localObject).setCursorVisible(false);
     this.mListView.addHeaderView(this.searchBox);
     initEntryHeaderView();
-    if ((this.mForwardOption.a(ForwardAbility.ForwardAbilityType.f)) && (!QFileAssistantUtils.a(this.app))) {
+    if ((this.mForwardOption.a(ForwardAbility.ForwardAbilityType.g)) && (!QFileAssistantUtils.a(this.app))) {
       addDatalineEntry();
     }
-    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.j)) {
+    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.k)) {
       addSmartDeviceEntry();
     }
-    if ((this.mForwardOption.a(ForwardAbility.ForwardAbilityType.e)) && (!this.isShowInSare))
+    if ((this.mIsShowGuildEntrance) && (!this.mOnlySingleSelection)) {
+      addGuildEntry();
+    }
+    if ((this.mForwardOption.a(ForwardAbility.ForwardAbilityType.f)) && (!this.isShowInSare))
     {
       this.qzoneLayout.setVisibility(0);
       ReportController.b(this.app, "CliOper", "", "", "friendchoose", "0X800A2D6", getReportFromType(), 0, "", "", "", getBusinessId());
@@ -776,7 +865,7 @@ public class ForwardRecentActivity
       this.qzoneLayout.setVisibility(8);
     }
     if (getSharedPreferences(this.app.getCurrentAccountUin(), 0).getBoolean("forward_share_card", true)) {
-      this.mEntryHeader.findViewById(2131369110).setVisibility(0);
+      this.mEntryHeader.findViewById(2131436080).setVisibility(0);
     }
     localObject = this.directShareTips;
     if (localObject != null) {
@@ -810,6 +899,30 @@ public class ForwardRecentActivity
   private boolean isMultiSelectStatus()
   {
     return this.mCurrentStatus == 1;
+  }
+  
+  private boolean isNotQCircleForwardFlow()
+  {
+    Object localObject = getIntent();
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((Intent)localObject).getExtras();
+    }
+    boolean bool = false;
+    if ((localObject == null) || (!((Bundle)localObject).getBoolean("key_qcircle_forward", false))) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private void notifyForwardRecentItemClick()
+  {
+    if (isNotQCircleForwardFlow()) {
+      return;
+    }
+    attachQCircleReportParam(true);
+    notifyResultReceiver(getIntent(), this);
   }
   
   public static void notifyResultReceiver(Intent paramIntent, Object paramObject)
@@ -863,18 +976,18 @@ public class ForwardRecentActivity
     if (paramBoolean) {
       localDatalineDeviceChooseModel.a();
     }
-    localDatalineDeviceChooseModel.a(this, paramResultRecord.uin, new ForwardRecentActivity.17(this, paramResultRecord, paramForwardRecentItemView, paramBoolean));
+    localDatalineDeviceChooseModel.a(this, paramResultRecord.uin, new ForwardRecentActivity.18(this, paramResultRecord, paramForwardRecentItemView, paramBoolean));
   }
   
   private void onFileAssistantItemClickedInDefaultStatus(ResultRecord paramResultRecord, ForwardRecentItemView paramForwardRecentItemView)
   {
-    getDeviceChooseModel().a(this, paramResultRecord.uin, new ForwardRecentActivity.15(this, paramResultRecord, paramForwardRecentItemView));
+    getDeviceChooseModel().a(this, paramResultRecord.uin, new ForwardRecentActivity.16(this, paramResultRecord, paramForwardRecentItemView));
   }
   
   private void onListViewItemClickedInMultiSelectStatus(View paramView)
   {
     paramView = (ForwardRecentItemView)paramView;
-    ResultRecord localResultRecord = paramView.jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord;
+    ResultRecord localResultRecord = paramView.k;
     boolean bool = isForwardTargetSelected(localResultRecord.uin, localResultRecord.getUinType());
     if (!QFileAssistantUtils.a(localResultRecord.uin))
     {
@@ -912,23 +1025,24 @@ public class ForwardRecentActivity
       localBundle.putInt("uintype", paramResultRecord.getUinType());
       localBundle.putString("uin", paramResultRecord.uin);
       localBundle.putString("troop_uin", paramResultRecord.groupUin);
+      localBundle.putString("guild_id", paramResultRecord.guildId);
       if (paramResultRecord.getUinType() == 3000)
       {
-        localBundle.putString("uinname", ForwardUtils.a(this.app, paramForwardRecentItemView.jdField_a_of_type_JavaLangString, paramResultRecord.uin));
+        localBundle.putString("uinname", ForwardUtils.a(this.app, paramForwardRecentItemView.h, paramResultRecord.uin));
       }
       else if (paramResultRecord.getUinType() == 1)
       {
         i = getIntent().getIntExtra("forward_type", -1);
-        localBundle.putString("uinname", ForwardUtils.a(this.app, paramResultRecord.uin, i, paramForwardRecentItemView.jdField_a_of_type_JavaLangString));
+        localBundle.putString("uinname", ForwardUtils.a(this.app, paramResultRecord.uin, i, paramForwardRecentItemView.h));
       }
       else
       {
-        localBundle.putString("uinname", paramForwardRecentItemView.jdField_a_of_type_JavaLangString);
+        localBundle.putString("uinname", paramForwardRecentItemView.h);
       }
       localBundle.putBoolean("forward_report_confirm", true);
       localBundle.putString("forward_report_confirm_action_name", "0X8005A13");
       localBundle.putString("forward_report_confirm_reverse2", "5");
-      localBundle.putInt("chooseFriendFrom", QQCustomDialogWtihInputAndChoose.a.intValue());
+      localBundle.putInt("chooseFriendFrom", QQCustomDialogWtihInputAndChoose.p.intValue());
       localBundle.putString("caller_name", this.mCallActivity);
       if ((getIntent() != null) && (getIntent().getExtras() != null))
       {
@@ -936,36 +1050,37 @@ public class ForwardRecentActivity
         localBundle.putInt("miniAppShareFrom", getIntent().getExtras().getInt("miniAppShareFrom"));
       }
       QFileAssistantUtils.a(this.app, getIntent(), localBundle);
-      this.mForwardOption.a(ForwardAbility.ForwardAbilityType.a.intValue(), localBundle);
-      this.mForwardOption.g();
+      this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b.intValue(), localBundle);
+      this.mForwardOption.v();
       if ((paramResultRecord.getUinType() == 3000) || (paramResultRecord.getUinType() == 1)) {
         new ReportTask(this.app).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "0" }).a();
       }
       ReportController.b(this.app, "CliOper", "", "", "friendchoose", "0X8009D90", getReportFromType(), 0, "", "", "", getBusinessId());
+      notifyForwardRecentItemClick();
     }
   }
   
   private void popupSearchDialog(int paramInt)
   {
-    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b)) {
+    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c)) {
       i = 33;
     } else {
       i = 32;
     }
     paramInt = i;
-    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.h)) {
+    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.i)) {
       paramInt = i | 0x100;
     }
     int i = paramInt;
-    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.i)) {
+    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.j)) {
       i = paramInt | 0x4;
     }
     paramInt = i;
-    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.d)) {
+    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.e)) {
       paramInt = i | 0x8;
     }
     i = paramInt;
-    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c)) {
+    if (this.mForwardOption.a(ForwardAbility.ForwardAbilityType.d)) {
       i = paramInt | 0x10 | 0x200000 | 0x400000;
     }
     long l = -1L;
@@ -979,8 +1094,8 @@ public class ForwardRecentActivity
   private void quitSearchState()
   {
     this.mImm.hideSoftInputFromWindow(getWindow().peekDecorView().getWindowToken(), 0);
-    this.mSelectedAndSearchBar.a();
     this.mSelectedAndSearchBar.b();
+    this.mSelectedAndSearchBar.c();
     this.mSearchResultLayout.setVisibility(8);
   }
   
@@ -988,7 +1103,7 @@ public class ForwardRecentActivity
   {
     if (this.app.isAccLoginSuccess())
     {
-      this.forwardlist = getForwardRecentList(this.app.getProxyManager().a().a(true));
+      this.forwardlist = getForwardRecentList(this.app.getProxyManager().g().a(true));
       boolean bool = QLog.isColorLevel();
       int j = 0;
       Object localObject2;
@@ -1022,15 +1137,15 @@ public class ForwardRecentActivity
           if ((this.mIsForConfess) && (TextUtils.equals(localRecentUser.uin, this.app.getCurrentAccountUin()))) {
             ((List)localObject1).add(localRecentUser);
           }
-          if (TextUtils.equals(localRecentUser.uin, QFileAssistantUtils.a(this.app))) {
+          if (TextUtils.equals(localRecentUser.uin, QFileAssistantUtils.b(this.app))) {
             ((List)localObject1).add(localRecentUser);
           }
-          if ((TextUtils.equals(AppConstants.CONVERSATION_MAY_KNOW_FRIEND_UIN, localRecentUser.uin)) || (localRecentUser.getType() == 8111) || (localRecentUser.getType() == 8112) || (localRecentUser.getType() == 8113)) {
+          if ((TextUtils.equals(AppConstants.CONVERSATION_MAY_KNOW_FRIEND_UIN, localRecentUser.uin)) || (localRecentUser.getType() == 8111) || (localRecentUser.getType() == 8112) || (localRecentUser.getType() == 8113) || (localRecentUser.getType() == 10007) || (localRecentUser.getType() == 10014) || (localRecentUser.getType() == 10015)) {
             ((List)localObject1).add(localRecentUser);
           }
           if (localRecentUser.getType() == 1)
           {
-            Object localObject3 = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).a(localRecentUser.uin, true);
+            Object localObject3 = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).b(localRecentUser.uin, true);
             if ((localObject3 != null) && ((((TroopInfo)localObject3).isKicked()) || (((TroopInfo)localObject3).isDisband())))
             {
               if (QLog.isColorLevel())
@@ -1087,17 +1202,17 @@ public class ForwardRecentActivity
     this.rightButton.setMaxWidth(2147483647);
     if (this.mForwardTargetMap.isEmpty())
     {
-      this.rightButton.setText(HardCodeUtil.a(2131704884));
+      this.rightButton.setText(HardCodeUtil.a(2131902777));
       this.rightButton.setClickable(false);
-      this.rightButton.setTextColor(getResources().getColor(2131167073));
+      this.rightButton.setTextColor(getResources().getColor(2131168014));
     }
     else
     {
-      this.rightButton.setText(String.format(HardCodeUtil.a(2131704874), new Object[] { Integer.valueOf(this.mForwardTargetMap.size()) }));
+      this.rightButton.setText(String.format(HardCodeUtil.a(2131902769), new Object[] { Integer.valueOf(this.mForwardTargetMap.size()) }));
       this.rightButton.setClickable(true);
-      this.rightButton.setTextColor(getResources().getColor(2131167072));
+      this.rightButton.setTextColor(getResources().getColor(2131168013));
     }
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       TextView localTextView = this.rightButton;
       localTextView.setContentDescription(localTextView.getText());
@@ -1206,7 +1321,7 @@ public class ForwardRecentActivity
   private void showForwardCountLimitDialog()
   {
     if (this.mForwardCountLimitDialog == null) {
-      this.mForwardCountLimitDialog = DialogUtil.a(this, getString(2131698940), 0, 2131694674, null, new ForwardRecentActivity.23(this));
+      this.mForwardCountLimitDialog = DialogUtil.a(this, getString(2131896914), 0, 2131892366, null, new ForwardRecentActivity.24(this));
     }
     if (!isFinishing()) {
       this.mForwardCountLimitDialog.show();
@@ -1216,7 +1331,7 @@ public class ForwardRecentActivity
   private void startChatAndSendMsg()
   {
     Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
-    Object localObject1 = new Bundle(this.mForwardOption.a());
+    Object localObject1 = new Bundle(this.mForwardOption.al());
     ((Bundle)localObject1).putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
     ((Bundle)localObject1).putBoolean("PhotoConst.IS_FORWARD", true);
     ((Bundle)localObject1).putInt("PhotoConst.SEND_BUSINESS_TYPE", 1031);
@@ -1260,10 +1375,10 @@ public class ForwardRecentActivity
   {
     this.mCurrentStatus = 0;
     quitSearchState();
-    this.leftButton.setText(HardCodeUtil.a(2131704888));
-    this.rightButton.setText(HardCodeUtil.a(2131704886));
-    this.rightButton.setTextColor(getResources().getColor(2131167053));
-    this.rightButton.setBackgroundResource(2130851075);
+    this.leftButton.setText(HardCodeUtil.a(2131902780));
+    this.rightButton.setText(HardCodeUtil.a(2131902779));
+    this.rightButton.setTextColor(getResources().getColor(2131167990));
+    this.rightButton.setBackgroundResource(2130853306);
     Object localObject = (RelativeLayout.LayoutParams)this.rightButton.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).height = AIOUtils.b(36.0F, getResources());
     this.rightButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
@@ -1273,7 +1388,8 @@ public class ForwardRecentActivity
     this.multiChatLayout.setVisibility(0);
     this.friendLayout.setVisibility(8);
     this.troopDiscussionLayout.setVisibility(8);
-    if ((this.mForwardOption.a(ForwardAbility.ForwardAbilityType.e)) && (!this.isShowInSare)) {
+    this.guildContactsLayout.setVisibility(8);
+    if ((this.mForwardOption.a(ForwardAbility.ForwardAbilityType.f)) && (!this.isShowInSare)) {
       this.qzoneLayout.setVisibility(0);
     } else {
       this.qzoneLayout.setVisibility(8);
@@ -1282,9 +1398,9 @@ public class ForwardRecentActivity
     ((FrameLayout.LayoutParams)localObject).topMargin = AIOUtils.b(0.0F, getResources());
     this.mEntryContentContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
     clearForwardTarget();
-    this.mForwardOption.a("forward_multi_target");
-    this.mListView.postDelayed(new ForwardRecentActivity.19(this), 1L);
-    if (AppSetting.d)
+    this.mForwardOption.b("forward_multi_target");
+    this.mListView.postDelayed(new ForwardRecentActivity.20(this), 1L);
+    if (AppSetting.e)
     {
       localObject = this.leftButton;
       ((TextView)localObject).setContentDescription(((TextView)localObject).getText());
@@ -1294,39 +1410,43 @@ public class ForwardRecentActivity
     if (this.isSdkShare) {
       togglePCViewStatus(true);
     }
+    this.mListView.addHeaderView(this.mForwardGuildItemView);
   }
   
   private void switch2MultiSelectStatus()
   {
     this.mCurrentStatus = 1;
-    this.leftButton.setText(HardCodeUtil.a(2131704888));
-    this.rightButton.setText(HardCodeUtil.a(2131704885));
+    this.leftButton.setText(HardCodeUtil.a(2131901576));
+    this.rightButton.setText(HardCodeUtil.a(2131902778));
     Object localObject = (RelativeLayout.LayoutParams)this.rightButton.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).height = AIOUtils.b(29.0F, getResources());
     this.rightButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.rightButton.setBackgroundResource(2130845212);
+    this.rightButton.setBackgroundResource(2130846654);
     this.rightButton.setTextSize(1, 14.0F);
-    this.rightButton.setTextColor(getResources().getColor(2131167073));
+    this.rightButton.setTextColor(getResources().getColor(2131168014));
     this.rightButton.setClickable(false);
     this.searchBox.setVisibility(4);
     this.multiChatLayout.setVisibility(8);
     this.friendLayout.setVisibility(0);
+    if (this.mIsShowGuildEntrance) {
+      this.guildContactsLayout.setVisibility(0);
+    } else {
+      this.guildContactsLayout.setVisibility(8);
+    }
     this.qzoneLayout.setVisibility(8);
     this.troopDiscussionLayout.setVisibility(0);
-    this.troopDiscussionLayout.setBGType(3);
-    this.troopDiscussionLayout.setBackgroundResource(2130839388);
+    this.guildContactsLayout.setBGType(3);
+    this.troopDiscussionLayout.setBackgroundResource(2130839572);
     localObject = (FrameLayout.LayoutParams)this.mEntryContentContainer.getLayoutParams();
     ((FrameLayout.LayoutParams)localObject).topMargin = AIOUtils.b(8.0F, getResources());
     this.mEntryContentContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.mListView.postDelayed(new ForwardRecentActivity.18(this), 50L);
-    if (this.mFaceDecoder == null)
-    {
-      this.mFaceDecoder = ((IQQAvatarService)this.app.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.app);
-      this.mSelectedAndSearchBar.a(null, this.mFaceDecoder, this.mSelectedAndSearchBarCallback);
+    this.mListView.postDelayed(new ForwardRecentActivity.19(this), 50L);
+    if ((this.mFaceDecoder == null) || (this.mGuildService == null)) {
+      bindSelectAndSearchBarData();
     }
     localObject = new ArrayList(this.mForwardTargetMap.values());
     this.mSelectedAndSearchBar.a((List)localObject, true);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       localObject = this.leftButton;
       ((TextView)localObject).setContentDescription(((TextView)localObject).getText());
@@ -1338,6 +1458,7 @@ public class ForwardRecentActivity
       togglePCViewStatus(false);
       ForwardUtils.a(this.app, "0X800A733", new String[0]);
     }
+    this.mListView.removeHeaderView(this.mForwardGuildItemView);
   }
   
   private void togglePCViewStatus(boolean paramBoolean)
@@ -1413,7 +1534,7 @@ public class ForwardRecentActivity
                 break;
               }
               paramIntent = paramIntent.getStringExtra("new_video_extra_info");
-              ((ForwardSdkShareOption)this.mForwardOption).d(paramIntent);
+              ((ForwardSdkShareOption)this.mForwardOption).a(paramIntent);
               finish();
               overridePendingTransition(0, 0);
               return;
@@ -1433,12 +1554,12 @@ public class ForwardRecentActivity
                 ((Bundle)localObject1).putBoolean("forward_report_confirm", true);
                 ((Bundle)localObject1).putString("forward_report_confirm_action_name", "0X8005A14");
                 ((Bundle)localObject1).putString("forward_report_confirm_reverse2", Integer.toString(paramInt2));
-                this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b.intValue(), (Bundle)localObject1);
+                this.mForwardOption.a(ForwardAbility.ForwardAbilityType.c.intValue(), (Bundle)localObject1);
                 ReportCenter.a().a(this.app.getAccount(), "", this.appid, "1000", "30", "0", false, this.isSdkShare);
                 return;
               }
               localObject1 = paramIntent.getStringExtra("roomId");
-              if (!StringUtil.a((String)localObject1))
+              if (!StringUtil.isEmpty((String)localObject1))
               {
                 refreshRecentList();
                 ReportController.b(this.app, "CliOper", "", "", "0X80056B0", "0X80056B0", 0, 0, "", "", "", "");
@@ -1471,7 +1592,7 @@ public class ForwardRecentActivity
           }
           else
           {
-            paramIntent.putExtra("chooseFriendFrom", QQCustomDialogWtihInputAndChoose.b);
+            paramIntent.putExtra("chooseFriendFrom", QQCustomDialogWtihInputAndChoose.q);
             if (getIntent() != null) {
               bool = getIntent().getBooleanExtra("choose_friend_needConfirm", false);
             }
@@ -1555,7 +1676,7 @@ public class ForwardRecentActivity
   {
     if (!isFinishing())
     {
-      this.mForwardOption.a(false);
+      this.mForwardOption.b(false);
       com.tencent.mobileqq.phonecontact.constant.PhoneContactFlags.a = false;
     }
     super.doOnBackPressed();
@@ -1565,7 +1686,7 @@ public class ForwardRecentActivity
   {
     int i = this.mReq;
     if ((1 != i) && (2 != i)) {
-      setTheme(2131755317);
+      setTheme(2131952010);
     }
     super.doOnCreate(paramBundle);
     this.topayManager = ((IToPayManager)QRoute.api(IToPayManager.class));
@@ -1573,23 +1694,40 @@ public class ForwardRecentActivity
     this.app.addObserver(this.troopMngObserver);
     this.app.addObserver(this.troopObserver);
     this.app.addObserver(this.mInitObserver);
-    setContentViewNoTitle(2131559126);
+    setContentViewNoTitle(2131624870);
     return doOnCreate_init(paramBundle);
   }
   
   protected boolean doOnCreate_init(Bundle paramBundle)
   {
+    paramBundle = ((IGPSService)this.app.getRuntimeService(IGPSService.class, "")).getGuildList();
+    Object localObject1;
+    if (((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).isShowGuildTab())
+    {
+      this.mIsShowGuildEntrance = true;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("doOnCreate_init isShowTab equls true and guildSize: ");
+        ((StringBuilder)localObject1).append(paramBundle.size());
+        QLog.i("ForwardOption.ForwardEntranceActivity", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (paramBundle.isEmpty()) {
+        ((IGPSService)this.app.getRuntimeService(IGPSService.class, "")).refreshGuildList(false);
+      }
+    }
     this.mForwardOption = ForwardOptionBuilder.a(getIntent(), this.app, this);
     paramBundle = this.mForwardOption;
+    boolean bool;
     if (paramBundle != null)
     {
-      paramBundle.a();
+      paramBundle.y();
       if (isFinishing())
       {
         QLog.d("ForwardOption.ForwardEntranceActivity", 1, "-->doOnCreate_init--isFinishing");
         return false;
       }
-      this.mForwardOption.D();
+      this.mForwardOption.an();
       paramBundle = getIntent();
       this.isShowInSare = paramBundle.getBooleanExtra("forward_ability_entrence_show_in_share", false);
       this.mIsFromWeb = paramBundle.getBooleanExtra("isWebCompShare", false);
@@ -1598,17 +1736,18 @@ public class ForwardRecentActivity
       this.miniAppShareFrom = paramBundle.getIntExtra("miniAppShareFrom", -1);
       this.mNeedShowDirectShareTips = paramBundle.getBooleanExtra("k_forward_show_direct_share_tips", false);
       this.mJumpQzoneShuoshuoDirect = paramBundle.getBooleanExtra("key_direct_jump_qzone_shuoshuo", false);
-      String str;
-      boolean bool;
       if (this.mJumpQzoneShuoshuoDirect)
       {
-        str = paramBundle.getStringExtra("key_forward_business_id");
+        localObject1 = paramBundle.getStringExtra("key_forward_business_id");
         bool = paramBundle.hasExtra("file_send_path");
-        ForwardToQzoneUtils.a(this.app, this, paramBundle, str, bool);
+        ForwardToQzoneUtils.a(this.app, this, paramBundle, (String)localObject1, bool);
         QLog.d("ForwardOption.ForwardEntranceActivity", 1, "-->doOnCreate_init--mJumpQzoneShuoshuoDirect==true");
         return true;
       }
-      Object localObject2;
+    }
+    for (;;)
+    {
+      Object localObject3;
       try
       {
         this.uinType = paramBundle.getIntExtra("forward_source_uin_type", 0);
@@ -1627,9 +1766,15 @@ public class ForwardRecentActivity
         if ((!this.mIsFromShare) && ((l > 0L) || (this.isSdkShare) || ((!TextUtils.isEmpty(this.fromPkgName)) && (!this.fromPkgName.equals("com.tencent.mobileqq"))))) {
           this.mIsFromShare = true;
         }
+        int i = paramBundle.getIntExtra("req_type", 5);
+        if (((!this.isSdkShare) && (i != 6)) || (!this.mIsShowGuildEntrance) || (i == 5)) {
+          break label1241;
+        }
+        bool = true;
+        this.mIsShowGuildEntrance = bool;
         bool = this.isSdkShare;
-        str = this.fromPkgName;
-        localObject2 = this.appid;
+        localObject1 = this.fromPkgName;
+        localObject3 = this.appid;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(", isFromWeb=");
         localStringBuilder.append(this.mIsFromWeb);
@@ -1637,7 +1782,7 @@ public class ForwardRecentActivity
         localStringBuilder.append(this.mIsFromShare);
         localStringBuilder.append(", isFromDatalineAIO=");
         localStringBuilder.append(this.mIsFromDatalineAIO);
-        QLog.d("ForwardOption.ForwardEntranceActivity", 1, new Object[] { "-->doOnCreate_init--isSdkShare=", Boolean.valueOf(bool), ", pkgName=", str, ", appid=", localObject2, localStringBuilder.toString() });
+        QLog.d("ForwardOption.ForwardEntranceActivity", 1, new Object[] { "-->doOnCreate_init--isSdkShare=", Boolean.valueOf(bool), ", pkgName=", localObject1, ", appid=", localObject3, localStringBuilder.toString() });
         initSelectMode(paramBundle);
         this.mBusinessType = paramBundle.getIntExtra("choose_friend_businessType", 0);
         this.mBusinessSubType = paramBundle.getIntExtra("choose_friend_businessSubType", 0);
@@ -1654,7 +1799,7 @@ public class ForwardRecentActivity
         } else {
           refreshRecentList();
         }
-        this.mForwardOption.d();
+        this.mForwardOption.m();
         adjustEntryLayout();
         l = paramBundle.getLongExtra("forward_send_to_uin", 0L);
         if (l != 0L) {
@@ -1664,7 +1809,7 @@ public class ForwardRecentActivity
           registerListViewDataSetChangedObserver();
         }
         if (3 == this.mReq) {
-          this.mForwardOption.r();
+          this.mForwardOption.T();
         }
       }
       catch (Exception localException)
@@ -1672,13 +1817,13 @@ public class ForwardRecentActivity
         QLog.d("ForwardOption.ForwardEntranceActivity", 1, "exception in ForwardRecentActivity", localException);
         finish();
       }
-      Object localObject1;
+      Object localObject2;
       if (QLog.isDevelopLevel())
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("zhuanfa end:");
-        ((StringBuilder)localObject1).append(System.currentTimeMillis());
-        QLog.d("StructingMsgItemBuildertime", 4, ((StringBuilder)localObject1).toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("zhuanfa end:");
+        ((StringBuilder)localObject2).append(System.currentTimeMillis());
+        QLog.d("StructingMsgItemBuildertime", 4, ((StringBuilder)localObject2).toString());
       }
       if (this.mIsToPayList) {
         if ((this.mBusinessType == 1) && (this.mBusinessSubType == 1)) {
@@ -1693,31 +1838,34 @@ public class ForwardRecentActivity
       if (this.mIsForConfess)
       {
         this.isForConfessDirectFriends = true;
-        localObject1 = new Intent();
-        ((Intent)localObject1).putExtra("call_by_forward", true);
-        localObject2 = this.dataUri;
-        if (localObject2 != null) {
-          ((Intent)localObject1).setData((Uri)localObject2);
+        localObject2 = new Intent();
+        ((Intent)localObject2).putExtra("call_by_forward", true);
+        localObject3 = this.dataUri;
+        if (localObject3 != null) {
+          ((Intent)localObject2).setData((Uri)localObject3);
         }
-        ((Intent)localObject1).putExtras(this.mForwardOption.a());
-        ((Intent)localObject1).putExtras(paramBundle.getExtras());
-        ((Intent)localObject1).putExtra("isForConfessDirectFriendsTitle", this.mForwardOption.b());
-        ((Intent)localObject1).setClass(this, ForwardFriendListActivity.class);
-        ((Intent)localObject1).putExtra("extra_choose_friend", 5);
-        startActivityForResult((Intent)localObject1, 20000);
+        ((Intent)localObject2).putExtras(this.mForwardOption.al());
+        ((Intent)localObject2).putExtras(paramBundle.getExtras());
+        ((Intent)localObject2).putExtra("isForConfessDirectFriendsTitle", this.mForwardOption.u());
+        ((Intent)localObject2).setClass(this, ForwardFriendListActivity.class);
+        ((Intent)localObject2).putExtra("extra_choose_friend", 5);
+        startActivityForResult((Intent)localObject2, 20000);
       }
       correctStatusBarHeight();
       ReportController.b(this.app, "CliOper", "", "", "friendchoose", "0X8009D8E", getReportFromType(), 0, "", "", "", "");
-      this.mForwardOption.f();
+      this.mForwardOption.s();
       return true;
+      QLog.d("ForwardOption.ForwardEntranceActivity", 1, "-->doOnCreate_init--mForwardOption == null");
+      finish();
+      return false;
+      label1241:
+      bool = false;
     }
-    QLog.d("ForwardOption.ForwardEntranceActivity", 1, "-->doOnCreate_init--mForwardOption == null");
-    finish();
-    return false;
   }
   
   protected void doOnDestroy()
   {
+    QQGuildForwardSelectionGuildListAdapter.b();
     this.app.removeObserver(this.friendListObserver);
     this.app.removeObserver(this.troopMngObserver);
     this.app.removeObserver(this.troopObserver);
@@ -1734,7 +1882,7 @@ public class ForwardRecentActivity
     }
     localObject = this.mForwardOption;
     if (localObject != null) {
-      ((ForwardBaseOption)localObject).z();
+      ((ForwardBaseOption)localObject).ad();
     }
     localObject = this.qqBroadcastReceiver;
     if (localObject != null) {
@@ -1767,7 +1915,7 @@ public class ForwardRecentActivity
           return;
         }
         paramIntent = (String)paramIntent.get(0);
-        Bundle localBundle = this.mForwardOption.a();
+        Bundle localBundle = this.mForwardOption.al();
         int j = localBundle.getInt("key_forward_ability_type", 0);
         String str1 = localBundle.getString("uin");
         int k = localBundle.getInt("uintype", -1);
@@ -1778,13 +1926,13 @@ public class ForwardRecentActivity
         localBundle.putBoolean("FORWARD_IS_EDITED", true);
         if (bool2)
         {
-          if ((j != ForwardAbility.ForwardAbilityType.f.intValue()) && (j != ForwardAbility.ForwardAbilityType.k.intValue()))
+          if ((j != ForwardAbility.ForwardAbilityType.g.intValue()) && (j != ForwardAbility.ForwardAbilityType.l.intValue()))
           {
-            if (j == ForwardAbility.ForwardAbilityType.g.intValue())
+            if (j == ForwardAbility.ForwardAbilityType.h.intValue())
             {
-              this.mForwardOption.a().putString("forward_filepath", paramIntent);
-              this.mForwardOption.a().putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
-              this.mForwardOption.x();
+              this.mForwardOption.al().putString("forward_filepath", paramIntent);
+              this.mForwardOption.al().putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
+              this.mForwardOption.aa();
               i = 1;
             }
             else
@@ -1806,21 +1954,21 @@ public class ForwardRecentActivity
         }
         else
         {
-          if ((j != ForwardAbility.ForwardAbilityType.f.intValue()) && (j != ForwardAbility.ForwardAbilityType.k.intValue()))
+          if ((j != ForwardAbility.ForwardAbilityType.g.intValue()) && (j != ForwardAbility.ForwardAbilityType.l.intValue()))
           {
-            if (j == ForwardAbility.ForwardAbilityType.g.intValue())
+            if (j == ForwardAbility.ForwardAbilityType.h.intValue())
             {
-              this.mForwardOption.a().putString("forward_filepath", paramIntent);
-              this.mForwardOption.a().putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
-              this.mForwardOption.x();
+              this.mForwardOption.al().putString("forward_filepath", paramIntent);
+              this.mForwardOption.al().putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
+              this.mForwardOption.aa();
               return;
             }
-            this.mForwardOption.a().putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
+            this.mForwardOption.al().putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
             startChatAndSendMsg();
             ReportController.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
             return;
           }
-          this.mForwardOption.a().putString("forward_extra", paramIntent);
+          this.mForwardOption.al().putString("forward_extra", paramIntent);
           this.mForwardOption.b(j);
         }
       }
@@ -1832,7 +1980,7 @@ public class ForwardRecentActivity
     super.doOnPause();
     ForwardBaseOption localForwardBaseOption = this.mForwardOption;
     if (localForwardBaseOption != null) {
-      localForwardBaseOption.l();
+      localForwardBaseOption.j();
     }
   }
   
@@ -1848,7 +1996,7 @@ public class ForwardRecentActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       this.rightButton.postDelayed(new ForwardRecentActivity.1(this), 1000L);
     }
     if (BaseApplicationImpl.appStartTime > 0L)
@@ -1860,7 +2008,7 @@ public class ForwardRecentActivity
     }
     Object localObject = this.mForwardOption;
     if (localObject != null) {
-      ((ForwardBaseOption)localObject).m();
+      ((ForwardBaseOption)localObject).i();
     }
   }
   
@@ -1875,9 +2023,10 @@ public class ForwardRecentActivity
   
   public void finish()
   {
+    attachQCircleReportParam(false);
     notifyResultReceiver(getIntent(), this);
     super.finish();
-    overridePendingTransition(0, 2130771992);
+    overridePendingTransition(0, 2130771995);
   }
   
   protected boolean isWrapContent()
@@ -1921,7 +2070,7 @@ public class ForwardRecentActivity
   {
     reportDataForBusiness("0X8007827");
     paramView = (ForwardRecentItemView)paramView;
-    ResultRecord localResultRecord = paramView.jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord;
+    ResultRecord localResultRecord = paramView.k;
     if (QFileAssistantUtils.a(localResultRecord.uin))
     {
       onFileAssistantItemClickedInDefaultStatus(localResultRecord, paramView);
@@ -1954,7 +2103,7 @@ public class ForwardRecentActivity
     if (localObject2 != null)
     {
       localObject2 = (ArrayList)localObject2;
-      this.mForwardOption.a().putStringArrayList("choose_friend_feedbacks", (ArrayList)localObject2);
+      this.mForwardOption.al().putStringArrayList("choose_friend_feedbacks", (ArrayList)localObject2);
     }
     this.forwardlist = new ArrayList();
     localObject2 = this.topayManager;
@@ -1973,7 +2122,7 @@ public class ForwardRecentActivity
         {
           localObject2 = new RecentUser(((PfaFriend)localObject2).uin, 0);
           this.forwardlist.add(localObject2);
-          Collections.sort(this.forwardlist, new ForwardRecentActivity.9(this));
+          Collections.sort(this.forwardlist, new ForwardRecentActivity.10(this));
         }
         i += 1;
       }
@@ -2016,13 +2165,13 @@ public class ForwardRecentActivity
     if (paramString != null) {
       ((Bundle)localObject).putString("uinname", paramString);
     }
-    this.mForwardOption.a(ForwardAbility.ForwardAbilityType.a.intValue(), (Bundle)localObject);
-    this.mForwardOption.g();
+    this.mForwardOption.a(ForwardAbility.ForwardAbilityType.b.intValue(), (Bundle)localObject);
+    this.mForwardOption.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity
  * JD-Core Version:    0.7.0.1
  */

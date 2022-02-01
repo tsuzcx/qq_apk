@@ -13,16 +13,16 @@ class MultiRichMediaSaveManager$4
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.a != null)
+    if (this.a.c != null)
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.a.a);
-      FileSaveResult localFileSaveResult = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(str);
+      String str = this.b.a(this.a.c.e);
+      FileSaveResult localFileSaveResult = this.b.a(str);
       if ((localFileSaveResult != null) && (!localFileSaveResult.a))
       {
         paramInt /= 100;
-        localFileSaveResult.c = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(str, localFileSaveResult);
-        MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, localFileSaveResult, paramInt);
+        localFileSaveResult.e = paramInt;
+        this.b.a(str, localFileSaveResult);
+        MultiRichMediaSaveManager.a(this.b, localFileSaveResult, paramInt);
       }
     }
   }
@@ -34,7 +34,7 @@ class MultiRichMediaSaveManager$4
     int i;
     if (paramDownResult != null)
     {
-      int k = paramDownResult.jdField_a_of_type_Int;
+      int k = paramDownResult.a;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -43,10 +43,10 @@ class MultiRichMediaSaveManager$4
         QLog.d("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
       }
       i = k;
-      if (paramDownResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo != null)
+      if (paramDownResult.d != null)
       {
-        j = paramDownResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_Int;
-        str = paramDownResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b;
+        j = paramDownResult.d.c;
+        str = paramDownResult.d.b;
         i = k;
       }
     }
@@ -54,12 +54,12 @@ class MultiRichMediaSaveManager$4
     {
       i = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq, i, j, str);
+    this.b.a(this.a, i, j, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.MultiRichMediaSaveManager.4
  * JD-Core Version:    0.7.0.1
  */

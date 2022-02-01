@@ -5,58 +5,58 @@ import com.tencent.mobileqq.data.MessageRecord;
 
 public class OrderMediaMsgItem
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  MediaMessageObserver jdField_a_of_type_ComTencentMobileqqAppMediaMessageObserver;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  IOrderMediaMsgService.IMsgSendingListener jdField_a_of_type_ComTencentMobileqqRichmediaOrdersendIOrderMediaMsgService$IMsgSendingListener;
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
+  int a;
+  int b;
   int c;
+  long d;
+  String e;
+  boolean f;
+  boolean g;
+  MessageRecord h;
+  MediaMessageObserver i;
+  IOrderMediaMsgService.IMsgSendingListener j;
+  Runnable k;
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.jdField_b_of_type_Int == 1);
+    return (this.h != null) && (this.b == 1);
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.jdField_b_of_type_Int >= 2);
+    return (this.h != null) && (this.b >= 2);
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.c == 3);
+    return (this.h != null) && (this.c == 3);
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.c >= 4);
+    return (this.h != null) && (this.c >= 4);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(90);
     localStringBuilder.append(" MsgItem{index=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", uniseq=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", addStatus=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", sendStatus=");
     localStringBuilder.append(this.c);
     localStringBuilder.append(", isInvalid=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgItem
  * JD-Core Version:    0.7.0.1
  */

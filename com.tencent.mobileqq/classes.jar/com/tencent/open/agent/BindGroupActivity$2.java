@@ -24,20 +24,20 @@ class BindGroupActivity$2
     }
     if (!this.a.isFinishing())
     {
-      if (this.a.jdField_c_of_type_Boolean) {
+      if (this.a.x) {
         return;
       }
-      this.a.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
-      if (this.a.a != null) {
-        this.a.a.removeCallbacksAndMessages(null);
+      this.a.v.hide();
+      if (this.a.w != null) {
+        this.a.w.removeCallbacksAndMessages(null);
       }
       if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
       {
         if (QLog.isColorLevel()) {
           QLog.d("BindGroupActivity", 2, "openIdObserver success");
         }
-        this.a.jdField_c_of_type_JavaLangString = paramOpenID.openID;
-        if (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))
+        this.a.p = paramOpenID.openID;
+        if (!paramOpenID.openID.equals(this.a.o))
         {
           this.a.b();
           return;
@@ -53,7 +53,7 @@ class BindGroupActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ class MultiIncomingCallsActivity$10$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$10.this$0.c()) {
+    if (this.b.this$0.e()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity$10.this$0.a.setDisPlayList(this.jdField_a_of_type_JavaUtilArrayList);
+    this.b.this$0.s.setDisPlayList(this.a);
   }
 }
 

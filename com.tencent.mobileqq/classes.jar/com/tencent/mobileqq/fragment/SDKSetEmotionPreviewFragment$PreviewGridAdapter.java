@@ -20,34 +20,33 @@ import java.util.List;
 class SDKSetEmotionPreviewFragment$PreviewGridAdapter
   extends BaseAdapter
 {
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  public List<String> a;
+  public List<String> a = new ArrayList();
+  LayoutInflater b;
   
   public SDKSetEmotionPreviewFragment$PreviewGridAdapter(SDKSetEmotionPreviewFragment paramSDKSetEmotionPreviewFragment)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSDKSetEmotionPreviewFragment.getBaseActivity().getLayoutInflater();
+    this.b = paramSDKSetEmotionPreviewFragment.getBaseActivity().getLayoutInflater();
   }
   
   public void a(List<String> paramList)
   {
     if (paramList == null)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0)
+      if (this.a.size() != 0)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.a.clear();
         notifyDataSetChanged();
       }
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.size();
     }
@@ -56,7 +55,7 @@ class SDKSetEmotionPreviewFragment$PreviewGridAdapter
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -69,10 +68,10 @@ class SDKSetEmotionPreviewFragment$PreviewGridAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561592, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment), SDKSetEmotionPreviewFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment)));
+      localView = this.b.inflate(2131627955, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(SDKSetEmotionPreviewFragment.a(this.c), SDKSetEmotionPreviewFragment.b(this.c)));
       paramView = new SDKSetEmotionPreviewFragment.PreviewGridAdapter.Holder(this);
-      paramView.a = ((URLImageView)localView.findViewById(2131366125));
+      paramView.a = ((URLImageView)localView.findViewById(2131432411));
       localView.setTag(paramView);
     }
     else
@@ -81,11 +80,11 @@ class SDKSetEmotionPreviewFragment$PreviewGridAdapter
       localView = paramView;
       paramView = (View)localObject1;
     }
-    Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject1 = (String)this.a.get(paramInt);
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = URLDrawableHelperConstants.a;
     ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelperConstants.a;
-    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = BaseImageUtil.b((String)localObject1);
+    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = BaseImageUtil.c((String)localObject1);
     ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = true;
     localObject2 = URLDrawable.getFileDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
     paramView.a.setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -98,7 +97,7 @@ class SDKSetEmotionPreviewFragment$PreviewGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment.PreviewGridAdapter
  * JD-Core Version:    0.7.0.1
  */

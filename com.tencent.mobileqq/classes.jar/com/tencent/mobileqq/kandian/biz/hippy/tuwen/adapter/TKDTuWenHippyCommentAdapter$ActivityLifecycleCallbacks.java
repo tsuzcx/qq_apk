@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.hippy.qq.fragment.HippyActivityLifecycleDispatcher;
 import com.tencent.mobileqq.app.lifecycle.BaseActivityLifecycleCallbacks;
+import com.tencent.mobileqq.kandian.biz.hippy.tuwen.app.TKDTuWenHippyEngine;
 
 class TKDTuWenHippyCommentAdapter$ActivityLifecycleCallbacks
   implements BaseActivityLifecycleCallbacks
@@ -28,7 +29,9 @@ class TKDTuWenHippyCommentAdapter$ActivityLifecycleCallbacks
       return;
     }
     this.state = 6;
-    TKDTuWenHippyCommentAdapter.access$1500(this.this$0).onActivityDestroyed(paramActivity);
+    if (TKDTuWenHippyCommentAdapter.access$1400(this.this$0) != null) {
+      TKDTuWenHippyCommentAdapter.access$1400(this.this$0).getActivityLifecycleDispatcher().onActivityDestroyed(paramActivity);
+    }
     this.this$0.destroy();
   }
   
@@ -42,7 +45,9 @@ class TKDTuWenHippyCommentAdapter$ActivityLifecycleCallbacks
       doOnActivityPostCreated(paramActivity, null);
     }
     this.state = 2;
-    TKDTuWenHippyCommentAdapter.access$1500(this.this$0).onActivityStarted(paramActivity);
+    if (TKDTuWenHippyCommentAdapter.access$1400(this.this$0) != null) {
+      TKDTuWenHippyCommentAdapter.access$1400(this.this$0).getActivityLifecycleDispatcher().onActivityStarted(paramActivity);
+    }
   }
   
   public void doOnActivityPause(Activity paramActivity)
@@ -51,7 +56,9 @@ class TKDTuWenHippyCommentAdapter$ActivityLifecycleCallbacks
       return;
     }
     this.state = 4;
-    TKDTuWenHippyCommentAdapter.access$1500(this.this$0).onActivityPaused(paramActivity);
+    if (TKDTuWenHippyCommentAdapter.access$1400(this.this$0) != null) {
+      TKDTuWenHippyCommentAdapter.access$1400(this.this$0).getActivityLifecycleDispatcher().onActivityPaused(paramActivity);
+    }
   }
   
   public void doOnActivityPostCreated(Activity paramActivity, Bundle paramBundle)
@@ -60,7 +67,9 @@ class TKDTuWenHippyCommentAdapter$ActivityLifecycleCallbacks
       return;
     }
     this.state = 1;
-    TKDTuWenHippyCommentAdapter.access$1500(this.this$0).onActivityCreated(paramActivity, paramBundle);
+    if (TKDTuWenHippyCommentAdapter.access$1400(this.this$0) != null) {
+      TKDTuWenHippyCommentAdapter.access$1400(this.this$0).getActivityLifecycleDispatcher().onActivityCreated(paramActivity, paramBundle);
+    }
   }
   
   public void doOnActivityPostPaused(Activity paramActivity) {}
@@ -75,7 +84,9 @@ class TKDTuWenHippyCommentAdapter$ActivityLifecycleCallbacks
       doOnActivityOnStart(paramActivity);
     }
     this.state = 3;
-    TKDTuWenHippyCommentAdapter.access$1500(this.this$0).onActivityResumed(paramActivity);
+    if (TKDTuWenHippyCommentAdapter.access$1400(this.this$0) != null) {
+      TKDTuWenHippyCommentAdapter.access$1400(this.this$0).getActivityLifecycleDispatcher().onActivityResumed(paramActivity);
+    }
   }
   
   public void doOnActivityPreCreated(Activity paramActivity, Bundle paramBundle) {}
@@ -92,7 +103,9 @@ class TKDTuWenHippyCommentAdapter$ActivityLifecycleCallbacks
       return;
     }
     this.state = 5;
-    TKDTuWenHippyCommentAdapter.access$1500(this.this$0).onActivityStopped(paramActivity);
+    if (TKDTuWenHippyCommentAdapter.access$1400(this.this$0) != null) {
+      TKDTuWenHippyCommentAdapter.access$1400(this.this$0).getActivityLifecycleDispatcher().onActivityStopped(paramActivity);
+    }
   }
   
   public void doOnNewIntent(Activity paramActivity, Intent paramIntent) {}
@@ -107,7 +120,7 @@ class TKDTuWenHippyCommentAdapter$ActivityLifecycleCallbacks
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.adapter.TKDTuWenHippyCommentAdapter.ActivityLifecycleCallbacks
  * JD-Core Version:    0.7.0.1
  */

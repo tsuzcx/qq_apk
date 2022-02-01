@@ -19,14 +19,14 @@ import java.util.ArrayList;
 public abstract class BasePicOperator
   extends AbstractPicOperator
 {
-  protected MessageRecord a;
+  protected MessageRecord i;
   
   protected AbstractPicOperator a(PicReq paramPicReq)
   {
-    AbstractPicOperator localAbstractPicOperator = PicBusiManager.a(paramPicReq.a, paramPicReq.b);
-    localAbstractPicOperator.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    AbstractPicOperator localAbstractPicOperator = PicBusiManager.b(paramPicReq.a, paramPicReq.b);
+    localAbstractPicOperator.a = this.a;
     localAbstractPicOperator.b = this.b;
-    localAbstractPicOperator.jdField_a_of_type_ComTencentMobileqqPicPicReq = paramPicReq;
+    localAbstractPicOperator.c = paramPicReq;
     return localAbstractPicOperator;
   }
   
@@ -37,7 +37,7 @@ public abstract class BasePicOperator
     paramMessageForPic.downloadImediatly();
     ThreadManagerV2.getUIHandlerV2().post(new BasePicOperator.1(this, paramMessageForPic));
     paramMessageForPic = this.b;
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cost:");
     localStringBuilder.append(System.currentTimeMillis() - l);
@@ -46,34 +46,34 @@ public abstract class BasePicOperator
   
   protected void a(MessageRecord paramMessageRecord, long paramLong)
   {
-    ((IOrderMediaMsgService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOrderMediaMsgService.class, "")).updateMediaMsgByUniseq(paramMessageRecord.frienduin, paramLong, paramMessageRecord.uniseq);
-    ((IOrderMediaMsgService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOrderMediaMsgService.class, "")).addOrderMsg(paramMessageRecord, ((MessageForPic)paramMessageRecord).path);
+    ((IOrderMediaMsgService)this.e.getRuntimeService(IOrderMediaMsgService.class, "")).updateMediaMsgByUniseq(paramMessageRecord.frienduin, paramLong, paramMessageRecord.uniseq);
+    ((IOrderMediaMsgService)this.e.getRuntimeService(IOrderMediaMsgService.class, "")).addOrderMsg(paramMessageRecord, ((MessageForPic)paramMessageRecord).path);
   }
   
   protected void b(PicUploadInfo paramPicUploadInfo, MessageForPic paramMessageForPic)
   {
-    paramPicUploadInfo = paramPicUploadInfo.a;
-    int i = paramPicUploadInfo.size();
-    int j;
-    if (i == 10)
+    paramPicUploadInfo = paramPicUploadInfo.r;
+    int j = paramPicUploadInfo.size();
+    int k;
+    if (j == 10)
     {
-      i = 9;
-      j = 4;
+      j = 9;
+      k = 4;
     }
-    else if (i == 6)
+    else if (j == 6)
     {
-      i = 5;
       j = 5;
+      k = 5;
     }
     else
     {
-      i = -1;
       j = -1;
+      k = -1;
     }
-    if (i != -1)
+    if (j != -1)
     {
-      paramMessageForPic.mDownloadLength = ((Integer)paramPicUploadInfo.get(i)).intValue();
-      paramMessageForPic.mShowLength = ((Integer)paramPicUploadInfo.get(j)).intValue();
+      paramMessageForPic.mDownloadLength = ((Integer)paramPicUploadInfo.get(j)).intValue();
+      paramMessageForPic.mShowLength = ((Integer)paramPicUploadInfo.get(k)).intValue();
     }
     if (QLog.isColorLevel())
     {
@@ -88,7 +88,7 @@ public abstract class BasePicOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.BasePicOperator
  * JD-Core Version:    0.7.0.1
  */

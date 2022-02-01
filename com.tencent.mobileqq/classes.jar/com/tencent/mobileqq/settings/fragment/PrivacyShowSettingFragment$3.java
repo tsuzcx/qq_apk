@@ -14,7 +14,7 @@ class PrivacyShowSettingFragment$3
   
   public void run()
   {
-    boolean bool = ((FriendsManager)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.this$0.a.getCurrentAccountUin()).medalSwitchDisable;
+    boolean bool = ((FriendsManager)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).g(this.this$0.a.getCurrentAccountUin()).medalSwitchDisable;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -27,7 +27,7 @@ class PrivacyShowSettingFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyShowSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <RelativeLayout android:id="@id/mak" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/jp7" android:background="@android:color/transparent" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/jq6">
+            <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/qi7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.5dip" android:layout_marginTop="20.0dip">
+        <TextView android:textSize="@dimen/az2" android:textColor="@color/skin_black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ymo" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/aym" android:textColor="#ff878b99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:text="@string/ymv" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="45.0dip" android:layout_marginRight="25.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/qi6" android:layout_width="32.0dip" android:layout_height="32.0dip" android:contentDescription="@null" />
+            <com.tencent.mobileqq.widget.ClearableEditText android:textSize="@dimen/aym" android:textColor="@color/skin_black" android:textColorHint="#ff878b99" android:layout_gravity="center_vertical" android:id="@id/qi5" android:background="@android:color/transparent" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:hint="@string/ymp" android:singleLine="true" android:includeFontPadding="false" mobileqq:clearBtnDrawable="@drawable/common_input_box_clear" mobileqq:clearBtnDrawableHeight="19.0dip" mobileqq:clearBtnDrawableWidth="19.0dip" />
+        </LinearLayout>
+        <View android:background="#80b0b3bf" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="13.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <TextView android:textSize="@dimen/aym" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/pme" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ym1" android:singleLine="true" android:layout_weight="1.0" />
+            <Button android:textSize="@dimen/aym" android:textColor="#ff4d94ff" android:id="@id/pmf" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ymr" />
+        </LinearLayout>
+        <Button android:textColor="@color/skin_color_button_blue" android:gravity="center" android:id="@id/pmg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="81.0dip" android:text="@string/yms" style="@style/b9" />
+    </LinearLayout>
+</LinearLayout>

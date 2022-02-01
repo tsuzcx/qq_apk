@@ -11,11 +11,11 @@ class ARTransferPromotionRenderable$14$2
   
   public void run()
   {
-    if ((this.a.this$0.a != null) && (ARTransferPromotionRenderable.a(this.a.this$0) != null) && (ARTransferPromotionRenderable.a(this.a.this$0).a()))
+    if ((this.a.this$0.c != null) && (ARTransferPromotionRenderable.a(this.a.this$0) != null) && (ARTransferPromotionRenderable.a(this.a.this$0).c()))
     {
-      long l = ARTransferPromotionRenderable.a(this.a.this$0).a();
-      if (ARTransferPromotionRenderable.a(this.a.this$0) != null) {
-        this.a.this$0.a.postDelayed(ARTransferPromotionRenderable.a(this.a.this$0), 4600L - l);
+      long l = ARTransferPromotionRenderable.a(this.a.this$0).e();
+      if (ARTransferPromotionRenderable.q(this.a.this$0) != null) {
+        this.a.this$0.c.postDelayed(ARTransferPromotionRenderable.x(this.a.this$0), 4600L - l);
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("start Post  mRepeatCheckRunnable ");
@@ -26,7 +26,7 @@ class ARTransferPromotionRenderable$14$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.14.2
  * JD-Core Version:    0.7.0.1
  */

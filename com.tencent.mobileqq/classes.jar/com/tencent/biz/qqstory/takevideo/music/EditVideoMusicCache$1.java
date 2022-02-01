@@ -46,10 +46,10 @@ class EditVideoMusicCache$1
           if ((paramContext != null) && (new File(paramContext).exists()))
           {
             localObject = new QQStoryMusicInfo();
-            ((QQStoryMusicInfo)localObject).jdField_b_of_type_JavaLangString = paramIntent.optString("title");
-            ((QQStoryMusicInfo)localObject).jdField_b_of_type_Int = 2;
-            ((QQStoryMusicInfo)localObject).a = String.valueOf(i);
-            ((QQStoryMusicInfo)localObject).g = paramContext;
+            ((QQStoryMusicInfo)localObject).e = paramIntent.optString("title");
+            ((QQStoryMusicInfo)localObject).k = 2;
+            ((QQStoryMusicInfo)localObject).d = String.valueOf(i);
+            ((QQStoryMusicInfo)localObject).m = paramContext;
             EditVideoMusicCache.a(this.a).a((QQStoryMusicInfo)localObject);
           }
           else
@@ -81,7 +81,7 @@ class EditVideoMusicCache$1
       return;
     }
     if ("action_music_refresh_list".equals(localObject)) {
-      EditVideoMusicCache.a(this.a).sendEmptyMessage(1);
+      EditVideoMusicCache.b(this.a).sendEmptyMessage(1);
     }
   }
 }

@@ -20,14 +20,6 @@ import org.json.JSONObject;
 
 public class QQNotifyUtils
 {
-  public static int a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return -1;
-    }
-    return paramBundle.getInt("callback_id", -1);
-  }
-  
   public static Bundle a(int paramInt)
   {
     Bundle localBundle = new Bundle();
@@ -98,7 +90,7 @@ public class QQNotifyUtils
       return;
     }
     paramCalendarEntity = (CalendarEntity)localObject1;
-    if (StringUtil.a((String)localObject1)) {
+    if (StringUtil.isEmpty((String)localObject1)) {
       paramCalendarEntity = "https://act.qzone.qq.com/vip/meteor/blockly/p/4403xdf3cc";
     }
     Object localObject2 = Uri.parse(paramCalendarEntity);
@@ -107,7 +99,7 @@ public class QQNotifyUtils
       localObject1 = new FakeUrl();
       ((FakeUrl)localObject1).init(paramActivity);
       localObject2 = ((Uri)localObject2).getScheme();
-      if (!StringUtil.a((String)localObject2))
+      if (!StringUtil.isEmpty((String)localObject2))
       {
         if ((((String)localObject2).startsWith("http")) || (((String)localObject2).startsWith("https"))) {
           ((FakeUrl)localObject1).gotoH5(paramActivity, paramCalendarEntity, true, true);
@@ -157,12 +149,20 @@ public class QQNotifyUtils
   
   private static boolean a(String paramString)
   {
-    return (!StringUtil.a(paramString)) && (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramString));
+    return (!StringUtil.isEmpty(paramString)) && (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramString));
+  }
+  
+  public static int b(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return -1;
+    }
+    return paramBundle.getInt("callback_id", -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifyUtils
  * JD-Core Version:    0.7.0.1
  */

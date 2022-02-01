@@ -48,7 +48,7 @@ public class TroopOnlinePushProcessor
         long l1;
         try
         {
-          l1 = Long.parseLong(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString);
+          l1 = Long.parseLong(paramTroopUnreadMsgInfo.b);
         }
         catch (NumberFormatException paramSubCmd0x1UpdateAppUnreadNum)
         {
@@ -70,7 +70,7 @@ public class TroopOnlinePushProcessor
             paramArrayOfLong.b(l1, true);
             paramArrayOfLong.a(21, 1, l1, 0L);
           }
-          VideoMsgTools.a(paramQQAppInterface, 1, 13, false, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, Long.toString(l2), TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), String.valueOf(l2)), null, TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), String.valueOf(l2)), 2, new Object[0]);
+          VideoMsgTools.a(paramQQAppInterface, 1, 13, false, paramTroopUnreadMsgInfo.b, Long.toString(l2), TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), String.valueOf(l2)), null, TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), String.valueOf(l2)), 2, new Object[0]);
         }
       }
     }
@@ -79,7 +79,7 @@ public class TroopOnlinePushProcessor
   public void a(@NonNull AppInterface paramAppInterface, TroopEnterEffectData paramTroopEnterEffectData)
   {
     if ((paramAppInterface instanceof QQAppInterface)) {
-      ContactUtils.a((QQAppInterface)paramAppInterface, paramTroopEnterEffectData.jdField_a_of_type_JavaLangString, paramTroopEnterEffectData.b, 1, 0);
+      ContactUtils.a((QQAppInterface)paramAppInterface, paramTroopEnterEffectData.b, paramTroopEnterEffectData.c, 1, 0);
     }
   }
   
@@ -88,22 +88,22 @@ public class TroopOnlinePushProcessor
     if ((paramAppInterface instanceof QQAppInterface))
     {
       paramAppInterface = (QQAppInterface)paramAppInterface;
-      if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 101509131L)
+      if (paramTroopUnreadMsgInfo.a == 101509131L)
       {
-        if (paramTroopUnreadMsgInfo.b > 0)
+        if (paramTroopUnreadMsgInfo.d > 0)
         {
           paramAppInterface = (ITroopBatchAddFriendService)paramAppInterface.getRuntimeService(ITroopBatchAddFriendService.class, "");
           if (paramAppInterface != null) {
-            paramAppInterface.getTroopBatchAddFriendMgr().d(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString);
+            paramAppInterface.getTroopBatchAddFriendMgr().p(paramTroopUnreadMsgInfo.b);
           }
         }
       }
-      else if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 101796525L)
+      else if (paramTroopUnreadMsgInfo.a == 101796525L)
       {
         if (QLog.isColorLevel()) {
           QLog.d("TroopOnlinePushProcessor", 2, "handleTroopNewsOnlinePush() for watching together.");
         }
-        ((TogetherControlManager)paramAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, paramTroopUnreadMsgInfo.b, paramTroopUnreadMsgInfo.jdField_a_of_type_Int, paramTroopUnreadMsgInfo);
+        ((TogetherControlManager)paramAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER)).a(paramTroopUnreadMsgInfo.b, paramTroopUnreadMsgInfo.d, paramTroopUnreadMsgInfo.c, paramTroopUnreadMsgInfo);
       }
     }
   }
@@ -113,25 +113,25 @@ public class TroopOnlinePushProcessor
     if ((paramAppInterface instanceof QQAppInterface))
     {
       paramAppInterface = (QQAppInterface)paramAppInterface;
-      if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 21L)
+      if (paramTroopUnreadMsgInfo.a == 21L)
       {
-        GVideoGrayConfig.a().a(paramAppInterface, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, new TroopOnlinePushProcessor.WeakGVideoGrayConfigListener(paramAppInterface, paramTroopUnreadMsgInfo, paramArrayOfLong));
+        GVideoGrayConfig.a().a(paramAppInterface, paramTroopUnreadMsgInfo.b, new TroopOnlinePushProcessor.WeakGVideoGrayConfigListener(paramAppInterface, paramTroopUnreadMsgInfo, paramArrayOfLong));
         return;
       }
-      if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 23L)
+      if (paramTroopUnreadMsgInfo.a == 23L)
       {
         a(paramAppInterface, paramArrayOfLong, paramInt1, paramInt2, paramInt3, paramSubCmd0x1UpdateAppUnreadNum, paramTroopUnreadMsgInfo);
-        ((IGroupVideoManager)paramAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER)).a(paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString);
-        paramAppInterface.getGAudioHandler().a(1, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, paramTroopUnreadMsgInfo.b, paramArrayOfLong, 14, paramInt1, paramInt2, paramInt3);
+        ((IGroupVideoManager)paramAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER)).a(paramTroopUnreadMsgInfo.b);
+        paramAppInterface.getGAudioHandler().a(1, paramTroopUnreadMsgInfo.b, paramTroopUnreadMsgInfo.d, paramArrayOfLong, 14, paramInt1, paramInt2, paramInt3);
         return;
       }
-      if (paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1104651886L)
+      if (paramTroopUnreadMsgInfo.a == 1104651886L)
       {
-        paramAppInterface.getGAudioHandler().a(1, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, paramTroopUnreadMsgInfo.b, paramArrayOfLong, 10, paramInt1, paramInt2, paramInt3);
+        paramAppInterface.getGAudioHandler().a(1, paramTroopUnreadMsgInfo.b, paramTroopUnreadMsgInfo.d, paramArrayOfLong, 10, paramInt1, paramInt2, paramInt3);
         return;
       }
-      if ((paramTroopUnreadMsgInfo.jdField_a_of_type_Long == 1102858908L) && ((paramTroopUnreadMsgInfo.b == -1) || (paramTroopUnreadMsgInfo.b > 0))) {
-        ChatActivityUtils.a(paramAppInterface, paramTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(-1));
+      if ((paramTroopUnreadMsgInfo.a == 1102858908L) && ((paramTroopUnreadMsgInfo.d == -1) || (paramTroopUnreadMsgInfo.d > 0))) {
+        ChatActivityUtils.a(paramAppInterface, paramTroopUnreadMsgInfo.b, Integer.valueOf(-1));
       }
     }
   }
@@ -141,11 +141,11 @@ public class TroopOnlinePushProcessor
     Object localObject = (HotChatManager)paramAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
     if (localObject != null)
     {
-      localObject = ((HotChatManager)localObject).a(paramString);
+      localObject = ((HotChatManager)localObject).c(paramString);
       if ((localObject != null) && (((HotChatInfo)localObject).isBuLuoHotChat()))
       {
         ((HotChatInfo)localObject).setHasRedPoint();
-        ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.b, true, new Object[] { paramString });
+        ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(TroopRedDotObserver.c, true, new Object[] { paramString });
       }
     }
   }
@@ -190,7 +190,7 @@ public class TroopOnlinePushProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopOnlinePushProcessor
  * JD-Core Version:    0.7.0.1
  */

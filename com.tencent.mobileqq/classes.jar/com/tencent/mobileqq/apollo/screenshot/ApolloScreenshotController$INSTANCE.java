@@ -17,7 +17,7 @@ public final class ApolloScreenshotController$INSTANCE
     // Byte code:
     //   0: invokestatic 56	android/os/SystemClock:elapsedRealtime	()J
     //   3: lstore 4
-    //   5: invokestatic 61	com/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController:a	()Lcom/jakewharton/disklrucache/DiskLruCache;
+    //   5: invokestatic 61	com/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController:b	()Lcom/jakewharton/disklrucache/DiskLruCache;
     //   8: ifnull +445 -> 453
     //   11: aload_1
     //   12: checkcast 63	java/lang/CharSequence
@@ -57,7 +57,7 @@ public final class ApolloScreenshotController$INSTANCE
     //   83: invokevirtual 85	java/io/File:delete	()Z
     //   86: pop
     //   87: return
-    //   88: invokestatic 61	com/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController:a	()Lcom/jakewharton/disklrucache/DiskLruCache;
+    //   88: invokestatic 61	com/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController:b	()Lcom/jakewharton/disklrucache/DiskLruCache;
     //   91: astore 11
     //   93: aload 11
     //   95: ifnonnull +6 -> 101
@@ -114,7 +114,7 @@ public final class ApolloScreenshotController$INSTANCE
     //   200: invokevirtual 139	java/io/BufferedOutputStream:flush	()V
     //   203: aload 11
     //   205: invokevirtual 142	com/jakewharton/disklrucache/DiskLruCache$Editor:commit	()V
-    //   208: invokestatic 61	com/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController:a	()Lcom/jakewharton/disklrucache/DiskLruCache;
+    //   208: invokestatic 61	com/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController:b	()Lcom/jakewharton/disklrucache/DiskLruCache;
     //   211: astore 9
     //   213: aload 9
     //   215: ifnonnull +6 -> 221
@@ -298,9 +298,9 @@ public final class ApolloScreenshotController$INSTANCE
   private final void b()
   {
     Object localObject;
-    if (ApolloScreenshotController.a() != null)
+    if (ApolloScreenshotController.b() != null)
     {
-      localObject = ApolloScreenshotController.a();
+      localObject = ApolloScreenshotController.b();
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
@@ -314,7 +314,7 @@ public final class ApolloScreenshotController$INSTANCE
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("initDiskLruCache ");
         localStringBuilder.append((String)localObject);
-        QLog.i("[ApolloScrshot]", 1, localStringBuilder.toString());
+        QLog.i("[cmshow][MemePlayer][ApolloScrshot]", 1, localStringBuilder.toString());
         if (localObject == null) {
           return;
         }
@@ -327,7 +327,7 @@ public final class ApolloScreenshotController$INSTANCE
       }
       catch (Throwable localThrowable)
       {
-        QLog.e("[ApolloScrshot]", 1, "initDiskLruCache", localThrowable);
+        QLog.e("[cmshow][MemePlayer][ApolloScrshot]", 1, "initDiskLruCache", localThrowable);
       }
     }
   }
@@ -338,9 +338,9 @@ public final class ApolloScreenshotController$INSTANCE
     Intrinsics.checkParameterIsNotNull(paramString, "recordKey");
     try
     {
-      if (ApolloScreenshotController.a() != null)
+      if (ApolloScreenshotController.b() != null)
       {
-        localObject = ApolloScreenshotController.a();
+        localObject = ApolloScreenshotController.b();
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
@@ -355,19 +355,19 @@ public final class ApolloScreenshotController$INSTANCE
         paramString = new StringBuilder();
         paramString.append("getRecord ");
         paramString.append(((File)localObject).getPath());
-        QLog.d("[ApolloScrshot]", 4, paramString.toString());
+        QLog.d("[cmshow][MemePlayer][ApolloScrshot]", 4, paramString.toString());
         return localObject;
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getRecord ");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(" empty");
-      QLog.d("[ApolloScrshot]", 4, ((StringBuilder)localObject).toString());
+      QLog.d("[cmshow][MemePlayer][ApolloScrshot]", 4, ((StringBuilder)localObject).toString());
       return null;
     }
     catch (Throwable paramString)
     {
-      QLog.e("[ApolloScrshot]", 1, "getRecord error", paramString);
+      QLog.e("[cmshow][MemePlayer][ApolloScrshot]", 1, "getRecord error", paramString);
       return null;
     }
     label160:
@@ -376,12 +376,12 @@ public final class ApolloScreenshotController$INSTANCE
   
   public final void a()
   {
-    ApolloApngEncoder.a.a();
+    ApolloApngEncoder.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController.INSTANCE
  * JD-Core Version:    0.7.0.1
  */

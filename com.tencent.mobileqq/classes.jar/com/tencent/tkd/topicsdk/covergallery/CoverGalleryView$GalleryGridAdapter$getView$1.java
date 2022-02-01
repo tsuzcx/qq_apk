@@ -23,27 +23,27 @@ final class CoverGalleryView$GalleryGridAdapter$getView$1
   
   public final void onClick(View paramView)
   {
-    paramView = BitmapUtils.a.a(((Media)CoverGalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a).get(this.jdField_a_of_type_Int)).getFilePath());
+    paramView = BitmapUtils.a.b(((Media)CoverGalleryView.a(this.a.a).get(this.b)).getFilePath());
     if (((Number)paramView.getFirst()).intValue() * ((Number)paramView.getSecond()).intValue() < 921600)
     {
-      paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a.getContext();
+      paramView = this.a.a.getContext();
       Intrinsics.checkExpressionValueIsNotNull(paramView, "context");
-      paramView = paramView.getResources().getString(R.string.k);
+      paramView = paramView.getResources().getString(R.string.n);
       Intrinsics.checkExpressionValueIsNotNull(paramView, "context.resources.getStr…ing.cover_size_too_small)");
       TopicSDKHelperKt.a(paramView, false, null, 6, null);
       return;
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a(this.jdField_a_of_type_Int);
-    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a();
+    this.a.a(this.b);
+    paramView = this.a.b();
     if (paramView != null) {
-      paramView = (Unit)paramView.invoke(Integer.valueOf(this.jdField_a_of_type_Int));
+      paramView = (Unit)paramView.invoke(Integer.valueOf(this.b));
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.notifyDataSetChanged();
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.GalleryGridAdapter.getView.1
  * JD-Core Version:    0.7.0.1
  */

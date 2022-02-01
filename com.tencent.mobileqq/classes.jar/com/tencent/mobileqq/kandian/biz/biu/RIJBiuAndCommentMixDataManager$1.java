@@ -16,22 +16,22 @@ class RIJBiuAndCommentMixDataManager$1
     if (RIJBiuAndCommentMixDataManager.a(this.this$0) != null)
     {
       QLog.d("RIJBiuAndCommentMixDataManager", 1, "onBiuAndCommentMixSend callBack to mBiuAndCommentListener");
-      RIJBiuAndCommentMixDataManager.a(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityRIJBiuAndCommentRespData);
+      RIJBiuAndCommentMixDataManager.a(this.this$0).a(this.a);
     }
     else
     {
       QLog.d("RIJBiuAndCommentMixDataManager", 1, "onBiuAndCommentMixSend dataManager is destory");
     }
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityRIJBiuAndCommentRespData.c() == 1))
+    if ((this.b == 0) && (this.a.h() == 1))
     {
-      BiuInfo localBiuInfo = RIJNewBiuCardTransformManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentEntityRIJBiuAndCommentRespData, false);
+      BiuInfo localBiuInfo = RIJNewBiuCardTransformManager.a(this.a, false);
       RIJNewBiuCardTransformManager.a().a(localBiuInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.RIJBiuAndCommentMixDataManager.1
  * JD-Core Version:    0.7.0.1
  */

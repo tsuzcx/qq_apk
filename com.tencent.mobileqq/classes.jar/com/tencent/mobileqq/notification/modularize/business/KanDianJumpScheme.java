@@ -42,17 +42,17 @@ public final class KanDianJumpScheme
       paramQQAppInterface = ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).getJumpReadInJoyTabIntent(paramContext, 6);
     }
     paramQQAppInterface.putExtra("is_from_push_component", true);
-    paramQQAppInterface.putExtra("push_main_business_id", paramPushComponent.jdField_a_of_type_Int);
+    paramQQAppInterface.putExtra("push_main_business_id", paramPushComponent.a);
     paramQQAppInterface.putExtra("push_sub_business_id", paramPushComponent.b);
     paramQQAppInterface.putExtra("push_id", paramPushComponent.c);
-    paramQQAppInterface.putExtra("push_trigger_info", paramPushComponent.e);
+    paramQQAppInterface.putExtra("push_trigger_info", paramPushComponent.i);
     paramQQAppInterface.addFlags(268435456);
     return paramQQAppInterface;
   }
   
   private final MessageRecord a(QQAppInterface paramQQAppInterface, PushComponent paramPushComponent)
   {
-    return ((IKanDianMergeManager)paramQQAppInterface.getRuntimeService(IKanDianMergeManager.class)).createFakeMsgFrom0x135PBBuffer(paramPushComponent.jdField_a_of_type_ArrayOfByte, paramPushComponent.jdField_a_of_type_JavaLangString);
+    return ((IKanDianMergeManager)paramQQAppInterface.getRuntimeService(IKanDianMergeManager.class)).createFakeMsgFrom0x135PBBuffer(paramPushComponent.n, paramPushComponent.e);
   }
   
   private final PendingIntent e(PushComponent paramPushComponent)
@@ -64,7 +64,7 @@ public final class KanDianJumpScheme
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("nativeJumpIntent bytesExtData: ");
-      ((StringBuilder)localObject1).append(new String(paramPushComponent.jdField_a_of_type_ArrayOfByte, Charsets.UTF_8));
+      ((StringBuilder)localObject1).append(new String(paramPushComponent.n, Charsets.UTF_8));
       QLog.d("KanDianJumpScheme", 1, ((StringBuilder)localObject1).toString());
       localObject1 = BaseApplicationImpl.getApplication();
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
@@ -111,7 +111,7 @@ public final class KanDianJumpScheme
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.business.KanDianJumpScheme
  * JD-Core Version:    0.7.0.1
  */

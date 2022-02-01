@@ -13,8 +13,8 @@ class MemoryPerfStat$1
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     MemoryPerfStat.a(this.this$0, localBaseApplicationImpl);
     MemoryPerfStat.a(this.this$0);
-    if (MemoryPerfStat.a(this.this$0) == 1) {
-      MemoryPerfStat.a(this.this$0).sendEmptyMessageDelayed(1, 30000L);
+    if (MemoryPerfStat.b(this.this$0) == 1) {
+      MemoryPerfStat.c(this.this$0).sendEmptyMessageDelayed(1, 30000L);
     }
   }
 }

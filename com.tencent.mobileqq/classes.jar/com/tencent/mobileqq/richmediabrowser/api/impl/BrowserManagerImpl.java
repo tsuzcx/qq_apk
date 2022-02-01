@@ -52,7 +52,7 @@ public class BrowserManagerImpl
     {
       paramString = (Rect)paramIntent.getExtras().getParcelable(paramString);
       ParamsManager.a().a(paramString);
-      localAIOBrowserAnimation.a = paramString;
+      localAIOBrowserAnimation.b = paramString;
     }
     localBrowserParamsBuilder.a(localAIOBrowserAnimation);
     localBrowserParamsBuilder.a(paramIProvider);
@@ -65,7 +65,7 @@ public class BrowserManagerImpl
   
   public void notifyImageListChanged(AIOBrowserBaseData[] paramArrayOfAIOBrowserBaseData, int paramInt)
   {
-    Object localObject = this.mainBrowserPresenter.a;
+    Object localObject = this.mainBrowserPresenter.b;
     if (paramArrayOfAIOBrowserBaseData == null) {}
     try
     {
@@ -121,7 +121,7 @@ public class BrowserManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.api.impl.BrowserManagerImpl
  * JD-Core Version:    0.7.0.1
  */

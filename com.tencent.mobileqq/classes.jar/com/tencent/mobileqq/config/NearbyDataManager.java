@@ -20,12 +20,12 @@ public class NearbyDataManager
   implements Manager
 {
   public static byte a = 30;
-  private int jdField_a_of_type_Int = 0;
-  private INearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface;
+  private INearbyAppInterface b;
+  private int c = 0;
   
   public NearbyDataManager(INearbyAppInterface paramINearbyAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface = paramINearbyAppInterface;
+    this.b = paramINearbyAppInterface;
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
@@ -33,22 +33,20 @@ public class NearbyDataManager
     return ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getCurrentAccountUin(), "nearby_usercard_tab_host", Integer.valueOf(0))).intValue();
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getCurrentAccountUin(), "face_score_switch", Integer.valueOf(0))).intValue() == 1;
-  }
-  
   public static int b(QQAppInterface paramQQAppInterface)
   {
     return ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getCurrentAccountUin(), "nearby_usercard_tab_guest", Integer.valueOf(-1))).intValue();
   }
   
-  public int a()
+  public static boolean c(QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_Int;
+    return ((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getCurrentAccountUin(), "face_score_switch", Integer.valueOf(0))).intValue() == 1;
   }
   
-  public void a() {}
+  public int a()
+  {
+    return this.c;
+  }
   
   public void a(INearbyAppInterface paramINearbyAppInterface, oidb_0x8dd.SelfInfo paramSelfInfo)
   {
@@ -98,7 +96,7 @@ public class NearbyDataManager
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      this.jdField_a_of_type_Int = Integer.valueOf(paramString).intValue();
+      this.c = Integer.valueOf(paramString).intValue();
       return;
     }
     catch (Exception paramString)
@@ -106,14 +104,16 @@ public class NearbyDataManager
       label19:
       break label19;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.c = 0;
   }
+  
+  public void b() {}
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.NearbyDataManager
  * JD-Core Version:    0.7.0.1
  */

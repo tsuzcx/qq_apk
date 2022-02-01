@@ -10,13 +10,13 @@ class QQGAudioMsgHandler$2
   
   public void a(IGroupVideoWrapper paramIGroupVideoWrapper)
   {
-    paramIGroupVideoWrapper.processS2C(this.a.a);
+    paramIGroupVideoWrapper.processS2C(this.a.c);
     paramIGroupVideoWrapper.uninitialize();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQGAudioMsgHandler.2
  * JD-Core Version:    0.7.0.1
  */

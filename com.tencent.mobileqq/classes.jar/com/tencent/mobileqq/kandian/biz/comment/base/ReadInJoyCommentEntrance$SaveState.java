@@ -6,13 +6,13 @@ import java.lang.ref.WeakReference;
 
 public class ReadInJoyCommentEntrance$SaveState
 {
-  public int a;
-  public Intent a;
   public WeakReference<Activity> a;
+  public Intent b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.base.ReadInJoyCommentEntrance.SaveState
  * JD-Core Version:    0.7.0.1
  */

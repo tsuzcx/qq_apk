@@ -13,8 +13,8 @@ class ArkFlashChatItemBubbleBuilder$2
   
   public void b()
   {
-    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
-    if ((localAutoStartProgressBar != null) && (localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat))
+    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.a.mSendingProgress.get();
+    if ((localAutoStartProgressBar != null) && (localAutoStartProgressBar.getTag() == this.a))
     {
       localAutoStartProgressBar.b();
       localAutoStartProgressBar.setVisibility(8);
@@ -23,7 +23,7 @@ class ArkFlashChatItemBubbleBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder.2
  * JD-Core Version:    0.7.0.1
  */

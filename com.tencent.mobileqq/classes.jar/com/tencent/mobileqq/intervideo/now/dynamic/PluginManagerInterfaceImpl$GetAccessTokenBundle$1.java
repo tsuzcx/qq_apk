@@ -16,29 +16,29 @@ class PluginManagerInterfaceImpl$GetAccessTokenBundle$1
     if (paramBoolean)
     {
       paramString = new Bundle();
-      paramString.putString("authid", this.jdField_a_of_type_ComTencentMobileqqIntervideoILoginKeyHelper.getAccountInfo().b);
-      paramString.putString("authKey", this.jdField_a_of_type_ComTencentMobileqqIntervideoILoginKeyHelper.getAccountInfo().jdField_a_of_type_JavaLangString);
-      paramString.putLong("accountUpdateTime", this.jdField_a_of_type_ComTencentMobileqqIntervideoILoginKeyHelper.getAccountInfo().jdField_a_of_type_Long);
-      paramString.putString("payToken", this.jdField_a_of_type_ComTencentMobileqqIntervideoILoginKeyHelper.getAccountInfo().c);
+      paramString.putString("authid", this.a.getAccountInfo().b);
+      paramString.putString("authKey", this.a.getAccountInfo().a);
+      paramString.putLong("accountUpdateTime", this.a.getAccountInfo().e);
+      paramString.putString("payToken", this.a.getAccountInfo().c);
       Bundle localBundle = new Bundle();
       localBundle.putBundle("data", paramString);
       localBundle.putBoolean("isSuccess", true);
       localBundle.putInt("code", paramInt);
-      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
+      this.b[0] = localBundle;
     }
     else
     {
       paramString = new Bundle();
       paramString.putBoolean("isSuccess", false);
       paramString.putInt("code", paramInt);
-      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = paramString;
+      this.b[0] = paramString;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.c.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl.GetAccessTokenBundle.1
  * JD-Core Version:    0.7.0.1
  */

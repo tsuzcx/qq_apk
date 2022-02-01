@@ -15,29 +15,29 @@ class AppletsFolderManager$2$2
 {
   AppletsFolderManager$2$2(AppletsFolderManager.2 param2, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (AppletsFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentAppletsFolderManager$2.this$0)) {
+    if (AppletsFolderManager.b(this.b.this$0)) {
       return;
     }
-    AppletsFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentAppletsFolderManager$2.this$0, true);
+    AppletsFolderManager.a(this.b.this$0, true);
     if (paramInt == 0)
     {
       paramView = new ArrayList();
       AppletItem.Builder localBuilder = new AppletItem.Builder();
-      localBuilder.a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityRecentAppletsFolderManager$2.a).intValue());
-      localBuilder.a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityRecentAppletsFolderManager$2.b).intValue());
+      localBuilder.a(Integer.valueOf(this.b.b).intValue());
+      localBuilder.a(Integer.valueOf(this.b.c).intValue());
       localBuilder.b(0);
       paramView.add(localBuilder.a());
-      AppletsFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentAppletsFolderManager$2.this$0).a(paramView);
-      QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131700838), 0).a();
+      AppletsFolderManager.c(this.b.this$0).a(paramView);
+      QQToast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131898862), 0).show();
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.AppletsFolderManager.2.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ public class FeedSegment$GetVideoBasicInfoListReceiver
   
   public void a(@NonNull FeedSegment paramFeedSegment, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if (!paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (!paramGetVideoBasicInfoListEvent.g.isFail())
     {
-      if (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null) {
+      if (paramGetVideoBasicInfoListEvent.a == null) {
         return;
       }
       paramFeedSegment.a(paramGetVideoBasicInfoListEvent);

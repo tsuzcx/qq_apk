@@ -18,16 +18,16 @@ class MusicProviderView$2
   public void a(String paramString, int paramInt)
   {
     long l = SystemClock.uptimeMillis();
-    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
+    if ((this.a.m == 0L) || (l - this.a.m > 16L))
     {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
-      this.a.jdField_a_of_type_Long = l;
+      this.a.f.sendEmptyMessage(2);
+      this.a.m = l;
     }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+    this.a.f.sendEmptyMessage(2);
   }
   
   public void a(String paramString, boolean paramBoolean, int paramInt)
@@ -35,18 +35,18 @@ class MusicProviderView$2
     if (QLog.isColorLevel()) {
       QLog.d("MusicProviderView", 2, new Object[] { "onFinish, succ:", Boolean.valueOf(paramBoolean), ", failcode:", Integer.valueOf(paramInt) });
     }
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
+    this.a.f.sendEmptyMessage(2);
+    if ((paramBoolean) && (this.a.g != null) && (this.a.g.getLocalPath().equals(paramString))) {
+      this.a.f.sendEmptyMessage(1);
     }
     if ((!paramBoolean) && (paramInt == -104)) {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(5);
+      this.a.f.sendEmptyMessage(5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.MusicProviderView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -37,17 +37,16 @@ import mqq.os.MqqHandler;
 public class UpComingMsgManager
   implements Manager
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IColorNoteListener jdField_a_of_type_ComTencentMobileqqColornoteDataIColorNoteListener = new UpComingMsgManager.2(this);
-  protected ConcurrentHashMap<String, ColorNote> a;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper(), new UpComingMsgManager.1(this));
-  private ConcurrentHashMap<String, Long> b = new ConcurrentHashMap();
+  protected ConcurrentHashMap<String, ColorNote> a = new ConcurrentHashMap();
+  private final QQAppInterface b;
+  private ConcurrentHashMap<String, Long> c = new ConcurrentHashMap();
+  private final MqqHandler d = new MqqHandler(ThreadManager.getSubThreadLooper(), new UpComingMsgManager.1(this));
+  private IColorNoteListener e = new UpComingMsgManager.2(this);
   
   public UpComingMsgManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ((IColorNoteDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IColorNoteDataService.class)).registerColorNoteListener(this.jdField_a_of_type_ComTencentMobileqqColornoteDataIColorNoteListener);
+    this.b = paramQQAppInterface;
+    ((IColorNoteDataService)this.b.getRuntimeService(IColorNoteDataService.class)).registerColorNoteListener(this.e);
   }
   
   private void a(Context paramContext, UpComingMsgModel paramUpComingMsgModel)
@@ -80,12 +79,12 @@ public class UpComingMsgManager
           return;
         }
         c(paramColorNote);
-        this.b.remove(paramColorNote.getSubType());
+        this.c.remove(paramColorNote.getSubType());
         return;
       }
       long l2 = System.currentTimeMillis();
       for (long l1 = UpComingMsgUtil.a(paramColorNote); a(l1); l1 += 1L) {}
-      this.b.put(paramColorNote.getSubType(), Long.valueOf(l1));
+      this.c.put(paramColorNote.getSubType(), Long.valueOf(l1));
       boolean bool = ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isNeedNowNotify(paramColorNote);
       Object localObject;
       if (QLog.isDevelopLevel())
@@ -106,8 +105,8 @@ public class UpComingMsgManager
         localObject = Message.obtain();
         ((Message)localObject).what = paramInt;
         ((Message)localObject).obj = paramColorNote;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramColorNote.getSubType(), paramColorNote);
-        paramColorNote = this.jdField_a_of_type_MqqOsMqqHandler;
+        this.a.put(paramColorNote.getSubType(), paramColorNote);
+        paramColorNote = this.d;
         if (l2 < l1) {
           l1 -= l2;
         } else {
@@ -129,7 +128,7 @@ public class UpComingMsgManager
   
   private boolean a(long paramLong)
   {
-    Iterator localIterator = this.b.entrySet().iterator();
+    Iterator localIterator = this.c.entrySet().iterator();
     while (localIterator.hasNext()) {
       if (((Long)((Map.Entry)localIterator.next()).getValue()).longValue() == paramLong) {
         return true;
@@ -172,16 +171,16 @@ public class UpComingMsgManager
   
   private void c(ColorNote paramColorNote)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramColorNote.getSubType()))
+    if (this.a.containsKey(paramColorNote.getSubType()))
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1001, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramColorNote.getSubType()));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramColorNote.getSubType());
+      this.d.removeMessages(1001, this.a.get(paramColorNote.getSubType()));
+      this.a.remove(paramColorNote.getSubType());
     }
   }
   
   private void d(ColorNote paramColorNote)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.b == null) {
       return;
     }
     Object localObject;
@@ -193,16 +192,16 @@ public class UpComingMsgManager
       QLog.e("UpComingMsgLogic.UpComingMsgManager", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    this.b.remove(paramColorNote.getSubType());
+    this.c.remove(paramColorNote.getSubType());
     if (a())
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[notifyComing] is called. isBackground_Pause = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause);
+        ((StringBuilder)localObject).append(this.b.isBackgroundPause);
         ((StringBuilder)localObject).append(", isBackground_Stop = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop);
+        ((StringBuilder)localObject).append(this.b.isBackgroundStop);
         QLog.d("UpComingMsgLogic.UpComingMsgManager", 2, ((StringBuilder)localObject).toString());
       }
       if (QLog.isColorLevel())
@@ -213,12 +212,12 @@ public class UpComingMsgManager
         QLog.d("UpComingMsgLogic.UpComingMsgManager", 2, ((StringBuilder)localObject).toString());
       }
       e(paramColorNote);
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop))
+      if ((this.b.isBackgroundPause) || (this.b.isBackgroundStop))
       {
         b(paramColorNote);
         ReportController.b(null, "dc00898", "", "", "0X800AE83", "0X800AE83", 0, 0, "", "", "", "");
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext();
+      localObject = this.b.getApp().getApplicationContext();
       ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).notifyUpcoming((Context)localObject, paramColorNote);
     }
     ReportController.b(null, "dc00898", "", "", "0X800AE82", "0X800AE82", 0, 0, "", "", "", "");
@@ -227,7 +226,7 @@ public class UpComingMsgManager
   private void e(ColorNote paramColorNote)
   {
     if (paramColorNote != null) {
-      ((IColorNoteDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IColorNoteDataService.class)).setUpcomingColorNoteExtLong(paramColorNote);
+      ((IColorNoteDataService)this.b.getRuntimeService(IColorNoteDataService.class)).setUpcomingColorNoteExtLong(paramColorNote);
     }
   }
   
@@ -263,7 +262,7 @@ public class UpComingMsgManager
   
   public void a(ColorNote paramColorNote)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramColorNote.getSubType()))
+    if (this.a.containsKey(paramColorNote.getSubType()))
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("UpComingMsgLogic.UpComingMsgManager", 4, "onColorNoteLoadFromLocal() CALLED.has marked.");
@@ -300,7 +299,7 @@ public class UpComingMsgManager
         QLog.d("UpComingMsgLogic.UpComingMsgManager", 2, ((StringBuilder)localObject2).toString());
       }
       localObject1 = PendingIntent.getActivity(BaseApplication.getContext(), 0, (Intent)localObject1, 134217728);
-      Object localObject2 = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130841470).setAutoCancel(true).setOngoing(false).setWhen(System.currentTimeMillis());
+      Object localObject2 = NotificationFactory.createNotificationCompatBuilder("CHANNEL_ID_OTHER").setSmallIcon(2130842312).setAutoCancel(true).setOngoing(false).setWhen(System.currentTimeMillis());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("收到待办提醒: ");
       localStringBuilder.append(paramColorNote.getMainTitle());
@@ -312,15 +311,15 @@ public class UpComingMsgManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.b.clear();
-    ((IColorNoteDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IColorNoteDataService.class)).unregisterColorNoteListener(this.jdField_a_of_type_ComTencentMobileqqColornoteDataIColorNoteListener);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.a.clear();
+    this.c.clear();
+    ((IColorNoteDataService)this.b.getRuntimeService(IColorNoteDataService.class)).unregisterColorNoteListener(this.e);
+    this.d.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgManager
  * JD-Core Version:    0.7.0.1
  */

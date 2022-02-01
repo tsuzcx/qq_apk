@@ -25,41 +25,35 @@ import org.json.JSONObject;
 public class DynamicTextConfigManager
   extends IQIMManager
 {
-  public static File a;
-  private static String jdField_a_of_type_JavaLangString;
-  public int a;
-  private DynamicTextConfigManager.DynamicTextResDownloader jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager$DynamicTextResDownloader = new DynamicTextConfigManager.DynamicTextResDownloader(this);
-  private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
-  private String d;
-  private String e;
+  public static File a = new File(QIMFileUtils.a(), "dynamic_text");
+  private static String d;
+  public int b = 120;
+  private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> c = new ArrayList();
+  private volatile boolean e = false;
+  private volatile boolean f = false;
+  private String g;
+  private String h;
+  private String i;
+  private String j;
+  private boolean k = false;
+  private DynamicTextConfigManager.DynamicTextResDownloader l = new DynamicTextConfigManager.DynamicTextResDownloader(this);
   
   static
   {
-    jdField_a_of_type_JavaIoFile = new File(QIMFileUtils.a(), "dynamic_text");
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaIoFile.getPath());
+    localStringBuilder.append(a.getPath());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("usable");
     localStringBuilder.append(File.separator);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public DynamicTextConfigManager()
-  {
-    this.jdField_a_of_type_Int = 120;
+    d = localStringBuilder.toString();
   }
   
   public static String a(@NonNull DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo paramDynamicTextFontInfo)
   {
-    return new File(jdField_a_of_type_JavaIoFile, paramDynamicTextFontInfo.a()).getPath();
+    return new File(a, paramDynamicTextFontInfo.a()).getPath();
   }
   
-  private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> a(String paramString)
+  private ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -68,17 +62,17 @@ public class DynamicTextConfigManager
     {
       ArrayList localArrayList = new ArrayList();
       paramString = new JSONObject(paramString).getJSONArray("texts");
-      int j = paramString.length();
-      int i = 0;
-      while (i < j)
+      int n = paramString.length();
+      int m = 0;
+      while (m < n)
       {
-        DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = DynamicTextConfigManager.DynamicTextConfigBean.convertFrom(paramString.getJSONObject(i));
+        DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = DynamicTextConfigManager.DynamicTextConfigBean.convertFrom(paramString.getJSONObject(m));
         if (localDynamicTextConfigBean != null)
         {
-          localDynamicTextConfigBean.iconDrawableId = DynamicTextBuilder.a(localDynamicTextConfigBean.text_id);
+          localDynamicTextConfigBean.iconDrawableId = DynamicTextBuilder.c(localDynamicTextConfigBean.text_id);
           localArrayList.add(localDynamicTextConfigBean);
         }
-        i += 1;
+        m += 1;
       }
       return localArrayList;
     }
@@ -89,7 +83,7 @@ public class DynamicTextConfigManager
     return null;
   }
   
-  private void b(String paramString)
+  private void d(String paramString)
   {
     for (;;)
     {
@@ -101,10 +95,10 @@ public class DynamicTextConfigManager
           if (QLog.isColorLevel()) {
             QLog.d("DText", 2, paramString.toString());
           }
-          this.jdField_b_of_type_JavaLangString = paramString.optString("default");
-          this.jdField_c_of_type_JavaLangString = paramString.optString("local_slides");
-          this.d = paramString.optString("local_singlePhoto");
-          this.e = paramString.optString("local_singleVideo");
+          this.g = paramString.optString("default");
+          this.h = paramString.optString("local_slides");
+          this.i = paramString.optString("local_singlePhoto");
+          this.j = paramString.optString("local_singleVideo");
           SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("dynamic_text_pre", 4);
           if (localSharedPreferences == null) {
             return;
@@ -113,12 +107,12 @@ public class DynamicTextConfigManager
             break label233;
           }
           bool = true;
-          this.jdField_c_of_type_Boolean = bool;
-          localSharedPreferences.edit().putBoolean("dynamic_text_key_is_hint_on", this.jdField_c_of_type_Boolean).apply();
-          localSharedPreferences.edit().putString("key_dynamic_text_hint_default", this.jdField_b_of_type_JavaLangString).apply();
-          localSharedPreferences.edit().putString("key_dynamic_text_hint_local_slides", this.jdField_c_of_type_JavaLangString).apply();
-          localSharedPreferences.edit().putString("key_dtext_hint_single_photo", this.d).apply();
-          localSharedPreferences.edit().putString("key_dtext_hint_single_video", this.e).apply();
+          this.k = bool;
+          localSharedPreferences.edit().putBoolean("dynamic_text_key_is_hint_on", this.k).apply();
+          localSharedPreferences.edit().putString("key_dynamic_text_hint_default", this.g).apply();
+          localSharedPreferences.edit().putString("key_dynamic_text_hint_local_slides", this.h).apply();
+          localSharedPreferences.edit().putString("key_dtext_hint_single_photo", this.i).apply();
+          localSharedPreferences.edit().putString("key_dtext_hint_single_video", this.j).apply();
           return;
         }
       }
@@ -132,10 +126,10 @@ public class DynamicTextConfigManager
     }
   }
   
-  public static boolean b()
+  public static boolean f()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaIoFile);
+    localStringBuilder.append(a);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("dynamic_text_config.cfg");
     boolean bool = new File(localStringBuilder.toString()).exists();
@@ -149,39 +143,10 @@ public class DynamicTextConfigManager
     return bool;
   }
   
-  public DynamicTextConfigManager.DynamicTextConfigBean a(String arg1)
-  {
-    try
-    {
-      i = Integer.valueOf(???).intValue();
-    }
-    catch (Exception ???)
-    {
-      int i;
-      label11:
-      break label11;
-    }
-    i = 0;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = (DynamicTextConfigManager.DynamicTextConfigBean)localIterator.next();
-        if ((localDynamicTextConfigBean != null) && (localDynamicTextConfigBean.text_id == i)) {
-          return localDynamicTextConfigBean;
-        }
-      }
-      return null;
-    }
-  }
-  
   public ArrayList<DynamicTextConfigManager.DynamicTextConfigBean> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.c;
   }
-  
-  public void a() {}
   
   public void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, DynamicTextConfigManager.IDynamicTextResDownloadCallback paramIDynamicTextResDownloadCallback)
   {
@@ -205,15 +170,15 @@ public class DynamicTextConfigManager
     }
     if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramString.trim())))
     {
-      Object localObject2 = a(paramString);
+      Object localObject2 = c(paramString);
       if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty())) {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+        synchronized (this.c)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject2);
-          b(paramString);
-          this.jdField_a_of_type_Boolean = true;
-          a().notifyObservers(CaptureConfigUpdateObserver.class, 3, false, null);
+          this.c.clear();
+          this.c.addAll((Collection)localObject2);
+          d(paramString);
+          this.e = true;
+          g().notifyObservers(CaptureConfigUpdateObserver.class, 3, false, null);
           ??? = ((ArrayList)localObject2).iterator();
           while (((Iterator)???).hasNext())
           {
@@ -222,39 +187,11 @@ public class DynamicTextConfigManager
               a((DynamicTextConfigManager.DynamicTextConfigBean)localObject2, null);
             }
           }
-          QIMFileUtils.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg", paramString);
+          QIMFileUtils.a(a, "dynamic_text_config.cfg", paramString);
           return;
         }
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean);
-  }
-  
-  public boolean a(DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo paramDynamicTextFontInfo)
-  {
-    if (paramDynamicTextFontInfo != null)
-    {
-      if (TextUtils.isEmpty(paramDynamicTextFontInfo.jdField_c_of_type_JavaLangString)) {
-        return false;
-      }
-      if (TextUtils.isEmpty(paramDynamicTextFontInfo.jdField_a_of_type_JavaLangString)) {
-        return true;
-      }
-      if (!new File(jdField_a_of_type_JavaIoFile, paramDynamicTextFontInfo.a()).exists()) {
-        return false;
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(paramDynamicTextFontInfo.jdField_c_of_type_JavaLangString);
-      if (new File(localStringBuilder.toString()).exists()) {
-        return true;
-      }
-    }
-    return false;
   }
   
   public boolean a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean)
@@ -267,60 +204,57 @@ public class DynamicTextConfigManager
     }
     paramDynamicTextConfigBean = paramDynamicTextConfigBean.fontInfos.iterator();
     while (paramDynamicTextConfigBean.hasNext()) {
-      if (!a((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)paramDynamicTextConfigBean.next())) {
+      if (!b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)paramDynamicTextConfigBean.next())) {
         return false;
       }
     }
     return true;
   }
   
-  public String b(DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo paramDynamicTextFontInfo)
-  {
-    if (paramDynamicTextFontInfo == null) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(paramDynamicTextFontInfo.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
-  public void b() {}
-  
-  public boolean b(DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo paramDynamicTextFontInfo)
+  public DynamicTextConfigManager.DynamicTextConfigBean b(String arg1)
   {
     try
     {
-      ZipUtils.unZipFile(new File(jdField_a_of_type_JavaIoFile, paramDynamicTextFontInfo.a()), jdField_a_of_type_JavaLangString);
-      return true;
+      m = Integer.valueOf(???).intValue();
     }
-    catch (Exception paramDynamicTextFontInfo)
+    catch (Exception ???)
     {
-      if (QLog.isColorLevel()) {
-        paramDynamicTextFontInfo.printStackTrace();
-      }
+      int m;
+      label11:
+      break label11;
     }
-    return false;
+    m = 0;
+    synchronized (this.c)
+    {
+      Iterator localIterator = this.c.iterator();
+      while (localIterator.hasNext())
+      {
+        DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = (DynamicTextConfigManager.DynamicTextConfigBean)localIterator.next();
+        if ((localDynamicTextConfigBean != null) && (localDynamicTextConfigBean.text_id == m)) {
+          return localDynamicTextConfigBean;
+        }
+      }
+      return null;
+    }
   }
   
-  public void c()
+  public void b()
   {
     if (QLog.isColorLevel()) {
       QLog.i("DText", 2, "initConfigListByFile start");
     }
-    if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+    if ((!this.f) && (!this.e))
     {
       Object localObject1;
-      if (b())
+      if (f())
       {
-        ??? = QIMFileUtils.a(jdField_a_of_type_JavaIoFile, "dynamic_text_config.cfg");
+        ??? = QIMFileUtils.a(a, "dynamic_text_config.cfg");
         localObject1 = ???;
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("initConfigListByFile dir=");
-          ((StringBuilder)localObject1).append(jdField_a_of_type_JavaIoFile);
+          ((StringBuilder)localObject1).append(a);
           ((StringBuilder)localObject1).append(" file=");
           ((StringBuilder)localObject1).append("dynamic_text_config.cfg");
           QLog.i("DText", 2, ((StringBuilder)localObject1).toString());
@@ -337,17 +271,17 @@ public class DynamicTextConfigManager
           localObject1 = ???;
         }
       }
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      synchronized (this.c)
       {
-        if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+        if ((!this.e) && (!this.f))
         {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          ArrayList localArrayList = a((String)localObject1);
+          this.c.clear();
+          ArrayList localArrayList = c((String)localObject1);
           if ((localArrayList != null) && (!localArrayList.isEmpty())) {
-            this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+            this.c.addAll(localArrayList);
           }
-          b((String)localObject1);
-          this.jdField_b_of_type_Boolean = true;
+          d((String)localObject1);
+          this.f = true;
           if ((localArrayList != null) && (!localArrayList.isEmpty()))
           {
             localObject1 = localArrayList.iterator();
@@ -368,10 +302,70 @@ public class DynamicTextConfigManager
       QLog.i("DText", 2, "initConfigListByFile return by mIsInitByCache");
     }
   }
+  
+  public boolean b(DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo paramDynamicTextFontInfo)
+  {
+    if (paramDynamicTextFontInfo != null)
+    {
+      if (TextUtils.isEmpty(paramDynamicTextFontInfo.c)) {
+        return false;
+      }
+      if (TextUtils.isEmpty(paramDynamicTextFontInfo.a)) {
+        return true;
+      }
+      if (!new File(a, paramDynamicTextFontInfo.a()).exists()) {
+        return false;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(d);
+      localStringBuilder.append(paramDynamicTextFontInfo.c);
+      if (new File(localStringBuilder.toString()).exists()) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void c() {}
+  
+  public boolean c(DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo paramDynamicTextFontInfo)
+  {
+    try
+    {
+      ZipUtils.unZipFile(new File(a, paramDynamicTextFontInfo.a()), d);
+      return true;
+    }
+    catch (Exception paramDynamicTextFontInfo)
+    {
+      if (QLog.isColorLevel()) {
+        paramDynamicTextFontInfo.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  public String d(DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo paramDynamicTextFontInfo)
+  {
+    if (paramDynamicTextFontInfo == null) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d);
+    localStringBuilder.append(paramDynamicTextFontInfo.c);
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public void d() {}
+  
+  public boolean e()
+  {
+    return (this.e) || (this.f);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.DynamicTextConfigManager
  * JD-Core Version:    0.7.0.1
  */

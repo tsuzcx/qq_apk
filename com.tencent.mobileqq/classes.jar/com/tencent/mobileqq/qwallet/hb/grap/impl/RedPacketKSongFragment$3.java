@@ -14,16 +14,16 @@ class RedPacketKSongFragment$3
   public void a()
   {
     super.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongMicView.a();
-    this.a.a(HardCodeUtil.a(R.string.cx));
-    if (this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRedPacketHelperImpl.stopRecord();
+    this.a.h.a();
+    this.a.a(HardCodeUtil.a(R.string.cA));
+    if (this.a.s != null) {
+      this.a.s.stopRecord();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.3
  * JD-Core Version:    0.7.0.1
  */

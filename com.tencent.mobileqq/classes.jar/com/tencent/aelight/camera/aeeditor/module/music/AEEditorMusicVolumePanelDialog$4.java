@@ -11,14 +11,14 @@ class AEEditorMusicVolumePanelDialog$4
   
   public void onClick(View paramView)
   {
-    if (!AEEditorMusicVolumePanelDialog.b(this.a).isEnabled()) {
-      AEEditorMusicVolumePanelDialog.a(this.a, 2064515172);
+    if (!AEEditorMusicVolumePanelDialog.e(this.a).isEnabled()) {
+      AEEditorMusicVolumePanelDialog.a(this.a, 2064187514);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicVolumePanelDialog.4
  * JD-Core Version:    0.7.0.1
  */

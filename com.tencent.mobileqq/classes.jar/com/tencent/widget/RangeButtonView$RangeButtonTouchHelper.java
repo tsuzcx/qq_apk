@@ -82,7 +82,7 @@ class RangeButtonView$RangeButtonTouchHelper
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131712650));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131910229));
         localObject = ((StringBuilder)localObject).toString();
       }
       paramAccessibilityNodeInfoCompat.setContentDescription((CharSequence)localObject);
@@ -93,7 +93,7 @@ class RangeButtonView$RangeButtonTouchHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.RangeButtonView.RangeButtonTouchHelper
  * JD-Core Version:    0.7.0.1
  */

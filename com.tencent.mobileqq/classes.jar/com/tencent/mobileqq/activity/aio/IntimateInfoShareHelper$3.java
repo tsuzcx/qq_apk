@@ -10,17 +10,17 @@ class IntimateInfoShareHelper$3
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
     {
-      localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      localObject1 = this.a;
     }
     else
     {
       localObject1 = this.this$0;
       localObject1 = ((IntimateInfoShareHelper)localObject1).a(IntimateInfoShareHelper.a((IntimateInfoShareHelper)localObject1));
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     Object localObject2;
     if (i != 3)
     {
@@ -31,9 +31,9 @@ class IntimateInfoShareHelper$3
     {
       localObject2 = this.this$0.a((Bitmap)localObject1);
     }
-    if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()) && (IntimateInfoShareHelper.a(this.this$0) != null) && (!IntimateInfoShareHelper.a(this.this$0).isFinishing()))
+    if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()) && (IntimateInfoShareHelper.e(this.this$0) != null) && (!IntimateInfoShareHelper.e(this.this$0).isFinishing()))
     {
-      i = this.jdField_a_of_type_Int;
+      i = this.b;
       if (i != 0)
       {
         if (i != 1)
@@ -45,7 +45,7 @@ class IntimateInfoShareHelper$3
               if (i != 4)
               {
                 if (i == 5) {
-                  IntimateInfoShareHelper.d(this.this$0, (Bitmap)localObject2);
+                  IntimateInfoShareHelper.e(this.this$0, (Bitmap)localObject2);
                 }
               }
               else {
@@ -57,25 +57,25 @@ class IntimateInfoShareHelper$3
             }
           }
           else {
-            IntimateInfoShareHelper.c(this.this$0, (Bitmap)localObject2);
+            IntimateInfoShareHelper.d(this.this$0, (Bitmap)localObject2);
           }
         }
         else {
-          IntimateInfoShareHelper.b(this.this$0, (Bitmap)localObject2);
+          IntimateInfoShareHelper.c(this.this$0, (Bitmap)localObject2);
         }
       }
       else {
-        IntimateInfoShareHelper.a(this.this$0, (Bitmap)localObject2);
+        IntimateInfoShareHelper.b(this.this$0, (Bitmap)localObject2);
       }
-      IntimateInfoShareHelper.a(this.this$0);
+      IntimateInfoShareHelper.f(this.this$0);
       return;
     }
-    IntimateInfoShareHelper.a(this.this$0, 1, 2131693458);
+    IntimateInfoShareHelper.a(this.this$0, 1, 2131891007);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

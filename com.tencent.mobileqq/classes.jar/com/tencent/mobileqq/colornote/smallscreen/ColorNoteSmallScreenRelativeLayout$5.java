@@ -17,19 +17,19 @@ class ColorNoteSmallScreenRelativeLayout$5
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
-    if (!this.a.a())
+    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.h(this.a).getLayoutParams();
+    if (!this.a.g())
     {
       paramAnimator.leftMargin = DisplayUtil.a(this.a.getContext(), 14.5F);
       paramAnimator.rightMargin = 0;
     }
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
-    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = DisplayUtil.a(this.a.getContext(), 13.5F);
-    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
+    ColorNoteSmallScreenRelativeLayout.h(this.a).setLayoutParams(paramAnimator);
+    ColorNoteSmallScreenRelativeLayout.i(this.a).setVisibility(0);
+    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.i(this.a).getLayoutParams()).leftMargin = DisplayUtil.a(this.a.getContext(), 13.5F);
+    ColorNoteSmallScreenRelativeLayout.j(this.a).x = this.a.getRealLeft();
     paramAnimator = this.a;
     int i;
-    if (ColorNoteSmallScreenRelativeLayout.a(paramAnimator).x < 0) {
+    if (ColorNoteSmallScreenRelativeLayout.j(paramAnimator).x < 0) {
       i = 0;
     } else {
       i = 1;
@@ -47,7 +47,7 @@ class ColorNoteSmallScreenRelativeLayout$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.5
  * JD-Core Version:    0.7.0.1
  */

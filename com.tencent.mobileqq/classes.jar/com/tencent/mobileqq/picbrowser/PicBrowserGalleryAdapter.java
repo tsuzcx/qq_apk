@@ -14,13 +14,13 @@ public class PicBrowserGalleryAdapter
   extends AbstractImageAdapter
   implements PicBrowserImage.OnLoadListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private PicBrowserImage.OnLoadListener jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserImage$OnLoadListener;
+  private Context a;
+  private Handler b = new Handler();
+  private PicBrowserImage.OnLoadListener c;
   
   public PicBrowserGalleryAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public void a(int paramInt)
@@ -41,12 +41,12 @@ public class PicBrowserGalleryAdapter
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
+    this.b.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
+    this.b.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
   }
   
   public void a(View paramView, int paramInt)
@@ -59,12 +59,12 @@ public class PicBrowserGalleryAdapter
   
   public void a(PicBrowserImage.OnLoadListener paramOnLoadListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserImage$OnLoadListener = paramOnLoadListener;
+    this.c = paramOnLoadListener;
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
+    this.b.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -83,12 +83,12 @@ public class PicBrowserGalleryAdapter
       }
       else
       {
-        PicInfo localPicInfo = ((PicBrowserImage)localObject).a;
-        Context localContext = this.jdField_a_of_type_AndroidContentContext;
+        PicInfo localPicInfo = ((PicBrowserImage)localObject).k;
+        Context localContext = this.a;
         if (((localContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)localContext).mNeedReportVisitedPic)) {
-          NearbyManagerHelper.a(((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app).a(localPicInfo.a);
+          NearbyManagerHelper.a(((PicBrowserActivity)this.a).app).b(localPicInfo.b);
         }
-        localObject = ((PicBrowserImage)localObject).a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
+        localObject = ((PicBrowserImage)localObject).a(paramInt, this.b, this);
         ((View)localObject).setTag(2131296390, Boolean.valueOf(true));
       }
     }
@@ -98,7 +98,7 @@ public class PicBrowserGalleryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserGalleryAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ class FilePreviewActivity$10
   
   public void b()
   {
-    if (!this.a.jdField_a_of_type_Boolean)
+    if (!this.a.l)
     {
-      if (this.a.g) {
+      if (this.a.M) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+      if (this.a.C != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.k = "3";
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
+        this.a.C.n = "3";
+        this.a.C.s = System.currentTimeMillis();
       }
       this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
     }
@@ -39,7 +39,7 @@ class FilePreviewActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10
  * JD-Core Version:    0.7.0.1
  */

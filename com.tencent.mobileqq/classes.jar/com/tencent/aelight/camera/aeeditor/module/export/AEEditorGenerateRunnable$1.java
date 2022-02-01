@@ -2,16 +2,16 @@ package com.tencent.aelight.camera.aeeditor.module.export;
 
 import com.tencent.aelight.camera.aeeditor.listener.AETavSessionStatusListener;
 import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.qcircle.tavcut.exporter.MovieExporter.ExportListener;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
 import com.tencent.tav.core.AssetExportSession;
-import com.tencent.tavcut.exporter.MovieExporter.ExportListener;
-import com.tencent.tavcut.session.TAVCutVideoSession;
 import com.tencent.tavkit.report.TAVReportUtils;
 
 class AEEditorGenerateRunnable$1
   implements MovieExporter.ExportListener
 {
-  private long jdField_a_of_type_Long;
-  private long b;
+  private long c;
+  private long d;
   
   AEEditorGenerateRunnable$1(AEEditorGenerateRunnable paramAEEditorGenerateRunnable, TAVCutVideoSession paramTAVCutVideoSession) {}
   
@@ -19,34 +19,34 @@ class AEEditorGenerateRunnable$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExportCancel:");
-    localStringBuilder.append(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable));
+    localStringBuilder.append(AEEditorGenerateRunnable.a(this.b));
     AEQLog.b("AEEditorGenerateRunnable", localStringBuilder.toString());
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable).c(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable));
+    if (AEEditorGenerateRunnable.b(this.b) != null) {
+      AEEditorGenerateRunnable.b(this.b).e(AEEditorGenerateRunnable.a(this.b));
     }
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
+    this.a.release();
   }
   
   public void onExportCompleted(String paramString)
   {
-    this.b = System.currentTimeMillis();
+    this.d = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("perf: video export cost = ");
-    localStringBuilder.append(this.b - this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d - this.c);
     localStringBuilder.append("ms");
     AEQLog.b("AEEditorGenerateRunnable", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExportCompleted mMissionID: ");
-    localStringBuilder.append(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable));
+    localStringBuilder.append(AEEditorGenerateRunnable.a(this.b));
     AEQLog.b("AEEditorGenerateRunnable", localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExportCompleted exportPath: ");
     localStringBuilder.append(paramString);
     AEQLog.b("AEEditorGenerateRunnable", localStringBuilder.toString());
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable).a(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable), paramString);
+    if (AEEditorGenerateRunnable.b(this.b) != null) {
+      AEEditorGenerateRunnable.b(this.b).a(AEEditorGenerateRunnable.a(this.b), paramString);
     }
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
+    this.a.release();
   }
   
   public void onExportError(AssetExportSession paramAssetExportSession)
@@ -59,7 +59,7 @@ class AEEditorGenerateRunnable$1
       localStringBuilder.append("[onExportError] errorcode ");
       localStringBuilder.append(i);
       AEQLog.d("AEEditorGenerateRunnable", localStringBuilder.toString());
-      paramAssetExportSession = TAVReportUtils.a("unknown", paramAssetExportSession);
+      paramAssetExportSession = TAVReportUtils.buildExportErrorMsg("unknown", paramAssetExportSession);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onExportError] msg ");
       localStringBuilder.append(paramAssetExportSession);
@@ -72,36 +72,36 @@ class AEEditorGenerateRunnable$1
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExportError:");
-    localStringBuilder.append(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable));
+    localStringBuilder.append(AEEditorGenerateRunnable.a(this.b));
     AEQLog.b("AEEditorGenerateRunnable", localStringBuilder.toString());
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable).a(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable), i, paramAssetExportSession);
+    if (AEEditorGenerateRunnable.b(this.b) != null) {
+      AEEditorGenerateRunnable.b(this.b).a(AEEditorGenerateRunnable.a(this.b), i, paramAssetExportSession);
     }
-    this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.release();
+    this.a.release();
   }
   
   public void onExportStart()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = System.currentTimeMillis();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExportStart :");
-    localStringBuilder.append(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable));
+    localStringBuilder.append(AEEditorGenerateRunnable.a(this.b));
     AEQLog.b("AEEditorGenerateRunnable", localStringBuilder.toString());
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable).b(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable));
+    if (AEEditorGenerateRunnable.b(this.b) != null) {
+      AEEditorGenerateRunnable.b(this.b).d(AEEditorGenerateRunnable.a(this.b));
     }
   }
   
   public void onExporting(float paramFloat)
   {
-    if (AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable) != null) {
-      AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable).a(AEEditorGenerateRunnable.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleExportAEEditorGenerateRunnable), paramFloat);
+    if (AEEditorGenerateRunnable.b(this.b) != null) {
+      AEEditorGenerateRunnable.b(this.b).a(AEEditorGenerateRunnable.a(this.b), paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.export.AEEditorGenerateRunnable.1
  * JD-Core Version:    0.7.0.1
  */

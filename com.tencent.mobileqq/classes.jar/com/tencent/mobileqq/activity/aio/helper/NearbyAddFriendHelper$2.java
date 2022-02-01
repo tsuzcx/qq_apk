@@ -18,24 +18,24 @@ class NearbyAddFriendHelper$2
     {
       paramString = String.valueOf(paramTencentLocation.getLongitude());
       paramTencentLocation = String.valueOf(paramTencentLocation.getLatitude());
-      NearbyAddFriendHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperNearbyAddFriendHelper, new Pair(paramString, paramTencentLocation));
-      this.jdField_a_of_type_NearbyNearbyLivebarSvrNearbyLivebarSvrGetLiveBarStatusRequest.longitude.set(paramString);
-      this.jdField_a_of_type_NearbyNearbyLivebarSvrNearbyLivebarSvrGetLiveBarStatusRequest.latitude.set(paramTencentLocation);
+      NearbyAddFriendHelper.a(this.c, new Pair(paramString, paramTencentLocation));
+      this.a.longitude.set(paramString);
+      this.a.latitude.set(paramTencentLocation);
     }
     else
     {
-      this.jdField_a_of_type_NearbyNearbyLivebarSvrNearbyLivebarSvrGetLiveBarStatusRequest.latitude.set("0");
-      this.jdField_a_of_type_NearbyNearbyLivebarSvrNearbyLivebarSvrGetLiveBarStatusRequest.longitude.set("0");
+      this.a.latitude.set("0");
+      this.a.longitude.set("0");
     }
-    NearbyAddFriendHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperNearbyAddFriendHelper, this.jdField_a_of_type_NearbyNearbyLivebarSvrNearbyLivebarSvrGetLiveBarStatusRequest);
-    this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(this);
+    NearbyAddFriendHelper.a(this.c, this.a);
+    this.b.removeUpdates(this);
   }
   
   public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.NearbyAddFriendHelper.2
  * JD-Core Version:    0.7.0.1
  */

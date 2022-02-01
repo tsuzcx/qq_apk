@@ -18,20 +18,20 @@ class PoiMapActivity$11
       if (QLog.isDevelopLevel()) {
         QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
       }
-      if ((!this.a.f) && (this.a.d))
+      if ((!this.a.J) && (this.a.G))
       {
         paramAbsListView = this.a;
-        paramAbsListView.f = true;
-        paramAbsListView.n += 1;
+        paramAbsListView.J = true;
+        paramAbsListView.H += 1;
         if (QLog.isDevelopLevel())
         {
           paramAbsListView = new StringBuilder();
           paramAbsListView.append("onScrollStateChanged mSearchPage:");
-          paramAbsListView.append(this.a.n);
+          paramAbsListView.append(this.a.H);
           QLog.i("PoiMapActivity", 4, paramAbsListView.toString());
         }
         paramAbsListView = this.a;
-        paramAbsListView.a(paramAbsListView.h, this.a.i, this.a.c, "", this.a.n, 20);
+        paramAbsListView.a(paramAbsListView.m, this.a.n, this.a.F, "", this.a.H, 20);
       }
     }
   }

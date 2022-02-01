@@ -43,10 +43,10 @@ class AlphabetFriendAdapter$5
       {
         paramAlphabetFriend1 = ChnToSpell.a(c1);
         paramAlphabetFriend2 = ChnToSpell.a(c2);
-        if (paramAlphabetFriend1.jdField_a_of_type_Int == paramAlphabetFriend2.jdField_a_of_type_Int) {
-          return paramAlphabetFriend1.jdField_a_of_type_JavaLangString.compareTo(paramAlphabetFriend2.jdField_a_of_type_JavaLangString);
+        if (paramAlphabetFriend1.a == paramAlphabetFriend2.a) {
+          return paramAlphabetFriend1.b.compareTo(paramAlphabetFriend2.b);
         }
-        return paramAlphabetFriend1.jdField_a_of_type_Int - paramAlphabetFriend2.jdField_a_of_type_Int;
+        return paramAlphabetFriend1.a - paramAlphabetFriend2.a;
       }
       i += 1;
     }
@@ -61,7 +61,7 @@ class AlphabetFriendAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendAdapter.5
  * JD-Core Version:    0.7.0.1
  */

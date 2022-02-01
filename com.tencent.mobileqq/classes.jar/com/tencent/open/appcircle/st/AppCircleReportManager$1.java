@@ -45,14 +45,14 @@ class AppCircleReportManager$1
         AppCircleReportManager.a(this.a).clear();
         if (paramMessage.size() > 0)
         {
-          i = AppCircleReportManager.a(this.a).a(paramMessage);
-          AppCircleReportManager.a(this.a).put(i, paramMessage);
+          i = AppCircleReportManager.b(this.a).a(paramMessage);
+          AppCircleReportManager.c(this.a).put(i, paramMessage);
         }
       }
     }
     else if (paramMessage.what == 2)
     {
-      localObject1 = ReportDatabaseHelper.a().a();
+      localObject1 = ReportDatabaseHelper.a().b();
       paramMessage = new ArrayList();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
@@ -82,16 +82,16 @@ class AppCircleReportManager$1
       }
       if (paramMessage.size() > 0)
       {
-        i = AppCircleReportManager.a(this.a).a(paramMessage);
-        AppCircleReportManager.b(this.a).put(i, paramMessage);
+        i = AppCircleReportManager.b(this.a).a(paramMessage);
+        AppCircleReportManager.d(this.a).put(i, paramMessage);
       }
-      AppCircleReportManager.a(this.a).sendEmptyMessageDelayed(2, AppCircleReportManager.a(this.a));
+      AppCircleReportManager.f(this.a).sendEmptyMessageDelayed(2, AppCircleReportManager.e(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcircle.st.AppCircleReportManager.1
  * JD-Core Version:    0.7.0.1
  */

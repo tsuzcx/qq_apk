@@ -20,24 +20,18 @@ import org.libpag.PAGView;
 public class PagViewProxy
   extends FrameLayout
 {
+  public static final PagViewProxy.Companion d = new PagViewProxy.Companion(null);
   @NotNull
-  private static final AbsAsyncLoadProxy.Loader jdField_a_of_type_ComTencentMobileqqVasUiAbsAsyncLoadProxy$Loader = (AbsAsyncLoadProxy.Loader)new PagLoaderImpl();
-  public static final PagViewProxy.Companion a;
+  private static final String g = "VasPagView";
   @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "VasPagView";
+  private static final AbsAsyncLoadProxy.Loader h = (AbsAsyncLoadProxy.Loader)new PagLoaderImpl();
   @Nullable
-  private View jdField_a_of_type_AndroidViewView;
-  private final PagViewProxy.MyViewProxy jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy$MyViewProxy = new PagViewProxy.MyViewProxy(this);
-  private final ArrayList<Function1<PAGView, Unit>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private View a;
   @NotNull
-  private Function1<? super View, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = (Function1)PagViewProxy.stateChangeListener.1.INSTANCE;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy$Companion = new PagViewProxy.Companion(null);
-    jdField_a_of_type_JavaLangString = "VasPagView";
-  }
+  private Function1<? super View, Unit> b = (Function1)PagViewProxy.stateChangeListener.1.INSTANCE;
+  private boolean c;
+  private final PagViewProxy.MyViewProxy e = new PagViewProxy.MyViewProxy(this);
+  private final ArrayList<Function1<PAGView, Unit>> f = new ArrayList();
   
   public PagViewProxy(@NotNull Context paramContext)
   {
@@ -54,78 +48,78 @@ public class PagViewProxy
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private final void b(View paramView)
+  private final void a(View paramView)
   {
     if ((paramView instanceof PAGView))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.f.iterator();
       while (localIterator.hasNext()) {
         ((Function1)localIterator.next()).invoke(paramView);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.f.clear();
     }
   }
   
-  @Nullable
-  protected final View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  @NotNull
-  protected final Function1<View, Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  }
-  
-  protected final void a(@Nullable View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  protected final void a(@NotNull Function1<? super View, Unit> paramFunction1)
-  {
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "<set-?>");
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected final void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqVasUiPagViewProxy$MyViewProxy.a(jdField_a_of_type_ComTencentMobileqqVasUiAbsAsyncLoadProxy$Loader);
-  }
-  
   @UiThread
-  protected final void b(@NotNull Function1<? super PAGView, Unit> paramFunction1)
+  protected final void a(@NotNull Function1<? super PAGView, Unit> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction1, "block");
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramFunction1);
-    b(this.jdField_a_of_type_AndroidViewView);
+    this.f.add(paramFunction1);
+    a(this.a);
+  }
+  
+  public final boolean b()
+  {
+    return this.c;
   }
   
   protected final void c()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    this.c = true;
+    this.e.a(h);
+  }
+  
+  protected final void d()
+  {
+    View localView = this.a;
     if (localView != null)
     {
       if (Intrinsics.areEqual(Looper.getMainLooper(), Looper.myLooper()))
       {
-        this.jdField_a_of_type_KotlinJvmFunctionsFunction1.invoke(localView);
-        b(localView);
+        this.b.invoke(localView);
+        a(localView);
         return;
       }
       localView.post((Runnable)new PagViewProxy.refresh..inlined.run.lambda.1(localView, this));
     }
   }
+  
+  @Nullable
+  protected final View getCurrentView()
+  {
+    return this.a;
+  }
+  
+  @NotNull
+  protected final Function1<View, Unit> getStateChangeListener()
+  {
+    return this.b;
+  }
+  
+  protected final void setCurrentView(@Nullable View paramView)
+  {
+    this.a = paramView;
+  }
+  
+  protected final void setStateChangeListener(@NotNull Function1<? super View, Unit> paramFunction1)
+  {
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "<set-?>");
+    this.b = paramFunction1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.PagViewProxy
  * JD-Core Version:    0.7.0.1
  */

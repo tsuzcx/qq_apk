@@ -14,7 +14,7 @@ class TagAdapter$1
     TagAdapter.a(this.a, false);
     this.a.notifyDataSetChanged();
     if (TagAdapter.a(this.a) != null) {
-      TagAdapter.a(this.a).e();
+      TagAdapter.a(this.a).bu_();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

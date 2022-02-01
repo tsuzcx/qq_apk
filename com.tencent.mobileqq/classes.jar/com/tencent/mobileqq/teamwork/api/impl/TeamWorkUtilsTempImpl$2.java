@@ -19,30 +19,30 @@ class TeamWorkUtilsTempImpl$2
   public void run()
   {
     Process.setThreadPriority(10);
-    if (this.jdField_a_of_type_JavaLangString.equals(this.b)) {
+    if (this.a.equals(this.b)) {
       localObject1 = this.c;
     } else {
       localObject1 = this.b;
     }
-    Object localObject2 = new UniteGrayTipParam((String)localObject1, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentUin(), this.d, 0, -5020, 3276804, MessageCache.a());
+    Object localObject2 = new UniteGrayTipParam((String)localObject1, this.d.getCurrentUin(), this.e, 0, -5020, 3276804, MessageCache.c());
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_action", 42);
-    localBundle.putString("key_a_action_DATA", this.e);
+    localBundle.putString("key_a_action_DATA", this.f);
     TeamWorkUtilsTempImpl localTeamWorkUtilsTempImpl = this.this$0;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_JavaLangString.equals(this.b)) {
+    QQAppInterface localQQAppInterface = this.g;
+    if (this.a.equals(this.b)) {
       localObject1 = this.c;
     } else {
       localObject1 = this.b;
     }
     localBundle.putString("key_action_DATA", localTeamWorkUtilsTempImpl.getTroopFormGrayParameter(localQQAppInterface, (String)localObject1, 0));
-    int i = this.jdField_a_of_type_Int;
-    ((UniteGrayTipParam)localObject2).a(i, this.f.length() + i, localBundle);
+    int j = this.h;
+    ((UniteGrayTipParam)localObject2).a(j, this.i.length() + j, localBundle);
     Object localObject1 = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (UniteGrayTipParam)localObject2);
-    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_JavaLangString.equals(this.b)) {
+    ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.g, (UniteGrayTipParam)localObject2);
+    UniteGrayTipMsgUtil.a(this.g, (MessageForUniteGrayTip)localObject1);
+    localObject2 = this.g;
+    if (this.a.equals(this.b)) {
       localObject1 = this.c;
     } else {
       localObject1 = this.b;
@@ -52,7 +52,7 @@ class TeamWorkUtilsTempImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkUtilsTempImpl.2
  * JD-Core Version:    0.7.0.1
  */

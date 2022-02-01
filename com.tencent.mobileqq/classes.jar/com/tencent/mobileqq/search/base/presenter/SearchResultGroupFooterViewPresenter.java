@@ -19,23 +19,23 @@ public class SearchResultGroupFooterViewPresenter
       paramIModel = (GroupSearchModelFooter)paramIModel;
       if (!TextUtils.isEmpty(paramIModel.a))
       {
-        paramISearchResultGroupView.a.setVisibility(0);
-        paramISearchResultGroupView.b.setText(paramIModel.a);
+        paramISearchResultGroupView.d.setVisibility(0);
+        paramISearchResultGroupView.e.setText(paramIModel.a);
       }
       else
       {
-        paramISearchResultGroupView.a.setVisibility(8);
+        paramISearchResultGroupView.d.setVisibility(8);
       }
-      paramISearchResultGroupView.a.setOnClickListener(new SearchResultGroupFooterViewPresenter.1(this, paramIModel));
+      paramISearchResultGroupView.d.setOnClickListener(new SearchResultGroupFooterViewPresenter.1(this, paramIModel));
       if (TextUtils.isEmpty(paramIModel.b)) {
-        paramISearchResultGroupView.a.setEnabled(false);
+        paramISearchResultGroupView.d.setEnabled(false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.presenter.SearchResultGroupFooterViewPresenter
  * JD-Core Version:    0.7.0.1
  */

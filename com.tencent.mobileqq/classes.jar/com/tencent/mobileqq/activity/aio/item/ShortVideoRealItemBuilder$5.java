@@ -16,58 +16,58 @@ class ShortVideoRealItemBuilder$5
 {
   ShortVideoRealItemBuilder$5(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoRealItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004)) {
-        ShortVideoUtils.reportCancelSendVideo("0X800A7F0", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if ((this.a.uiOperatorFlag == 1) && (this.a.videoFileStatus == 1004)) {
+        ShortVideoUtils.reportCancelSendVideo("0X800A7F0", this.d.f.a);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2)
+      if (this.a.uiOperatorFlag == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder);
+        this.d.b(this.a, this.b);
       }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5 == null))
+      else if ((this.a.uiOperatorFlag == 1) && (this.a.md5 == null))
       {
-        if (!ShortVideoRealItemBuilder.b())
+        if (!ShortVideoRealItemBuilder.l())
         {
-          ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder, true, true);
+          ShortVideoRealItemBuilder.a(this.d, this.a, this.b, true, true);
         }
-        else if (!ShortVideoRealItemBuilder.a().containsKey(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
+        else if (!ShortVideoRealItemBuilder.k().containsKey(Long.valueOf(this.a.uniseq)))
         {
-          ShortVideoRealItemBuilder.a().put(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+          ShortVideoRealItemBuilder.k().put(Long.valueOf(this.a.uniseq), this.a);
           if (QLog.isColorLevel())
           {
             paramView = new StringBuilder();
             paramView.append("messageMap size:");
-            paramView.append(ShortVideoRealItemBuilder.a().size());
+            paramView.append(ShortVideoRealItemBuilder.k().size());
             paramView.append(", [");
-            paramView.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+            paramView.append(this.a.uniseq);
             paramView.append("] added, mEncoding:");
-            paramView.append(ShortVideoRealItemBuilder.b());
+            paramView.append(ShortVideoRealItemBuilder.l());
             QLog.i("ShortVideoRealItemBuilder", 2, paramView.toString());
           }
         }
       }
-      else if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) && (AioVideoTransFileController.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
+      else if ((!TextUtils.isEmpty(this.a.md5)) && (this.a.videoFileStatus == 1004) && (AioVideoTransFileController.c(this.d.d, this.a.frienduin, this.a.uniseq)))
       {
-        ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder);
+        ShortVideoRealItemBuilder.b(this.d);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoRealItemBuilder", 2, "onErrorIconClick resumeSending!");
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder);
-        ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder);
+        this.d.a(this.a, this.b);
+        ShortVideoRealItemBuilder.b(this.d);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

@@ -19,74 +19,72 @@ import org.json.JSONObject;
 public class NearbyVideoChatManager
   implements Manager
 {
-  int jdField_a_of_type_Int;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  NearbyVideoChatManager.BannerConfig jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig;
-  NearbyVideoChatManager.DialogConfig jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig;
-  public String a;
-  @NonNull
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList(5);
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  public String b;
+  public String a = "banner_config";
+  public String b = "dialog_config";
   public String c = "banner_show_num";
   public String d = "dialog_show_num";
-  String e;
-  String f;
-  public String g = HardCodeUtil.a(2131707434);
-  public String h = HardCodeUtil.a(2131707428);
-  String i = "";
-  String j;
-  String k;
+  AppInterface e;
+  @NonNull
+  List<String> f = new ArrayList(5);
+  String g;
+  String h;
+  boolean i = false;
+  public String j = HardCodeUtil.a(2131905252);
+  public String k = HardCodeUtil.a(2131905246);
+  String l = "";
+  NearbyVideoChatManager.DialogConfig m;
+  NearbyVideoChatManager.BannerConfig n;
+  String o;
+  String p;
+  int q;
+  int r;
   
   public NearbyVideoChatManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "banner_config";
-    this.jdField_b_of_type_JavaLangString = "dialog_config";
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.e = paramAppInterface;
     paramAppInterface = paramAppInterface.getCurrentAccountUin();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(paramAppInterface);
-    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    this.a = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(this.c);
     ((StringBuilder)localObject).append(paramAppInterface);
     this.c = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append(paramAppInterface);
-    this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    this.b = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append(paramAppInterface);
     this.d = ((StringBuilder)localObject).toString();
     paramAppInterface = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 0);
-    this.i = paramAppInterface.getString("config", "");
-    if (!TextUtils.isEmpty(this.i)) {
-      a(this.i);
+    this.l = paramAppInterface.getString("config", "");
+    if (!TextUtils.isEmpty(this.l)) {
+      a(this.l);
     }
-    this.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("enter_guide", true);
-    localObject = paramAppInterface.getString(this.jdField_a_of_type_JavaLangString, "");
+    this.i = paramAppInterface.getBoolean("enter_guide", true);
+    localObject = paramAppInterface.getString(this.a, "");
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       a((String)localObject, true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig;
-      if ((localObject != null) && (!TextUtils.isEmpty(((NearbyVideoChatManager.BannerConfig)localObject).jdField_a_of_type_JavaLangString)))
+      localObject = this.n;
+      if ((localObject != null) && (!TextUtils.isEmpty(((NearbyVideoChatManager.BannerConfig)localObject).a)))
       {
-        this.jdField_b_of_type_Int = a(paramAppInterface.getString(this.c, ""), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString);
-        this.k = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString;
+        this.r = a(paramAppInterface.getString(this.c, ""), this.n.a);
+        this.p = this.n.a;
       }
     }
-    localObject = paramAppInterface.getString(this.jdField_b_of_type_JavaLangString, "");
+    localObject = paramAppInterface.getString(this.b, "");
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       b((String)localObject, true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig;
-      if ((localObject != null) && (!TextUtils.isEmpty(((NearbyVideoChatManager.DialogConfig)localObject).jdField_a_of_type_JavaLangString)))
+      localObject = this.m;
+      if ((localObject != null) && (!TextUtils.isEmpty(((NearbyVideoChatManager.DialogConfig)localObject).a)))
       {
-        this.jdField_a_of_type_Int = a(paramAppInterface.getString(this.d, ""), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString);
-        this.j = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString;
+        this.q = a(paramAppInterface.getString(this.d, ""), this.m.a);
+        this.o = this.m.a;
       }
     }
   }
@@ -101,27 +99,27 @@ public class NearbyVideoChatManager
         return;
       }
       paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig = new NearbyVideoChatManager.BannerConfig();
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString = paramString.optString("unique_key");
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_Int = paramString.optInt("display_times");
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_Long = paramString.optLong("start_timestamp", 0L);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_b_of_type_Long = paramString.optLong("end_timestamp", 0L);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_b_of_type_Int = paramString.optInt("target_group");
+      this.n = new NearbyVideoChatManager.BannerConfig();
+      this.n.a = paramString.optString("unique_key");
+      this.n.b = paramString.optInt("display_times");
+      this.n.c = paramString.optLong("start_timestamp", 0L);
+      this.n.d = paramString.optLong("end_timestamp", 0L);
+      this.n.e = paramString.optInt("target_group");
       Object localObject = paramString.optJSONObject("content");
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("image_url");
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.c = ((JSONObject)localObject).optString("jump_url");
+        this.n.f = ((JSONObject)localObject).optString("image_url");
+        this.n.g = ((JSONObject)localObject).optString("jump_url");
       }
       if (!paramBoolean)
       {
         localObject = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 0);
-        ((SharedPreferences)localObject).edit().putString(this.jdField_a_of_type_JavaLangString, paramString.toString()).commit();
-        if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString.equals(this.k)))
+        ((SharedPreferences)localObject).edit().putString(this.a, paramString.toString()).commit();
+        if ((this.n.a != null) && (!this.n.a.equals(this.p)))
         {
-          this.k = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$BannerConfig.jdField_a_of_type_JavaLangString;
+          this.p = this.n.a;
           paramString = new JSONObject();
-          paramString.put(this.k, 0);
+          paramString.put(this.p, 0);
           ((SharedPreferences)localObject).edit().putString(this.c, paramString.toString()).commit();
           return;
         }
@@ -145,32 +143,32 @@ public class NearbyVideoChatManager
         return;
       }
       paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig = new NearbyVideoChatManager.DialogConfig();
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString = paramString.optString("unique_key");
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_Int = paramString.optInt("display_times");
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_Long = paramString.optLong("start_timestamp", 0L);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_b_of_type_Long = paramString.optLong("end_timestamp", 0L);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_b_of_type_Int = paramString.optInt("target_group");
+      this.m = new NearbyVideoChatManager.DialogConfig();
+      this.m.a = paramString.optString("unique_key");
+      this.m.b = paramString.optInt("display_times");
+      this.m.c = paramString.optLong("start_timestamp", 0L);
+      this.m.d = paramString.optLong("end_timestamp", 0L);
+      this.m.e = paramString.optInt("target_group");
       Object localObject = paramString.optJSONObject("content");
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("header_url");
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.c = ((JSONObject)localObject).optString("title");
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.d = ((JSONObject)localObject).optString("content");
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.e = ((JSONObject)localObject).optString("button_text");
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.f = ((JSONObject)localObject).optString("jump_url");
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.g = ((JSONObject)localObject).optString("button_text_color");
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.h = ((JSONObject)localObject).optString("button_background_color");
+        this.m.f = ((JSONObject)localObject).optString("header_url");
+        this.m.g = ((JSONObject)localObject).optString("title");
+        this.m.h = ((JSONObject)localObject).optString("content");
+        this.m.i = ((JSONObject)localObject).optString("button_text");
+        this.m.j = ((JSONObject)localObject).optString("jump_url");
+        this.m.k = ((JSONObject)localObject).optString("button_text_color");
+        this.m.l = ((JSONObject)localObject).optString("button_background_color");
       }
       if (!paramBoolean)
       {
         localObject = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 0);
-        ((SharedPreferences)localObject).edit().putString(this.jdField_b_of_type_JavaLangString, paramString.toString()).commit();
-        if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString.equals(this.j)))
+        ((SharedPreferences)localObject).edit().putString(this.b, paramString.toString()).commit();
+        if ((this.m.a != null) && (!this.m.a.equals(this.o)))
         {
-          this.j = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsNearbyVideoChatManager$DialogConfig.jdField_a_of_type_JavaLangString;
+          this.o = this.m.a;
           paramString = new JSONObject();
-          paramString.put(this.j, 0);
+          paramString.put(this.o, 0);
           ((SharedPreferences)localObject).edit().putString(this.d, paramString.toString()).commit();
           return;
         }
@@ -191,8 +189,8 @@ public class NearbyVideoChatManager
       if (TextUtils.isEmpty(paramString1)) {
         return 0;
       }
-      int m = new JSONObject(paramString1).optInt(paramString2);
-      return m;
+      int i1 = new JSONObject(paramString1).optInt(paramString2);
+      return i1;
     }
     catch (JSONException paramString2)
     {
@@ -208,42 +206,42 @@ public class NearbyVideoChatManager
   
   public String a()
   {
-    return this.i;
+    return this.l;
   }
   
   public void a(String paramString)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.f.clear();
       boolean bool = TextUtils.isEmpty(paramString);
       if (bool)
       {
-        this.e = null;
-        this.f = null;
+        this.g = null;
+        this.h = null;
       }
       else
       {
-        this.i = paramString;
+        this.l = paramString;
         Object localObject = new JSONObject(paramString);
-        this.g = ((JSONObject)localObject).optString("detail_default");
-        this.h = ((JSONObject)localObject).optString("detail_num");
-        this.e = ((JSONObject)localObject).optString("guide");
-        this.f = ((JSONObject)localObject).optString("title");
+        this.j = ((JSONObject)localObject).optString("detail_default");
+        this.k = ((JSONObject)localObject).optString("detail_num");
+        this.g = ((JSONObject)localObject).optString("guide");
+        this.h = ((JSONObject)localObject).optString("title");
         SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 4);
-        localSharedPreferences.edit().putString("detail_default", this.g).commit();
-        localSharedPreferences.edit().putString("detail_num", this.h).commit();
-        if (TextUtils.isEmpty(this.f)) {
-          localSharedPreferences.edit().putString("title", HardCodeUtil.a(2131707433)).commit();
+        localSharedPreferences.edit().putString("detail_default", this.j).commit();
+        localSharedPreferences.edit().putString("detail_num", this.k).commit();
+        if (TextUtils.isEmpty(this.h)) {
+          localSharedPreferences.edit().putString("title", HardCodeUtil.a(2131905251)).commit();
         } else {
-          localSharedPreferences.edit().putString("title", this.f).commit();
+          localSharedPreferences.edit().putString("title", this.h).commit();
         }
         localObject = ((JSONObject)localObject).optJSONArray("tips");
-        int m = 0;
-        while (m < ((JSONArray)localObject).length())
+        int i1 = 0;
+        while (i1 < ((JSONArray)localObject).length())
         {
-          this.jdField_a_of_type_JavaUtilList.add(((JSONArray)localObject).optString(m));
-          m += 1;
+          this.f.add(((JSONArray)localObject).optString(i1));
+          i1 += 1;
         }
       }
       BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 4).edit().putString("config", paramString).commit();
@@ -259,7 +257,7 @@ public class NearbyVideoChatManager
   
   public String b()
   {
-    return this.f;
+    return this.h;
   }
   
   public void b(String paramString)
@@ -276,7 +274,7 @@ public class NearbyVideoChatManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.NearbyVideoChatManager
  * JD-Core Version:    0.7.0.1
  */

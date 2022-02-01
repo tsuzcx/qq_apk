@@ -1,26 +1,22 @@
 package com.tencent.liteav;
 
-import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
+import com.tencent.liteav.renderer.TXCGLSurfaceView;
+import com.tencent.rtmp.ui.TXCloudVideoView;
 
 class d$24
   implements Runnable
 {
-  d$24(d paramd) {}
+  d$24(d paramd, TXCGLSurfaceView[] paramArrayOfTXCGLSurfaceView, TXCloudVideoView paramTXCloudVideoView) {}
   
   public void run()
   {
-    if (d.f(this.a) != null) {
-      d.f(this.a).b(true);
-    }
-    d locald = this.a;
-    d.a(locald, d.c(locald).width, d.c(this.a).height);
-    locald = this.a;
-    locald.a(d.j(locald));
+    this.a[0] = new TXCGLSurfaceView(this.b.getContext());
+    this.b.addVideoView(this.a[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.d.24
  * JD-Core Version:    0.7.0.1
  */

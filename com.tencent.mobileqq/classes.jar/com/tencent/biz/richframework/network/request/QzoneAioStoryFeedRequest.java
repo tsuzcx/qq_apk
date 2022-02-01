@@ -4,9 +4,9 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryReq;
 import NS_QQ_STORY_CLIENT.CLIENT.StGetUserNewestStoryRsp;
 import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class QzoneAioStoryFeedRequest
@@ -39,13 +39,12 @@ public class QzoneAioStoryFeedRequest
     }
     catch (Exception paramArrayOfByte)
     {
-      if (RFLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        int i = RFLog.CLR;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onResponse fail.");
         ((StringBuilder)localObject).append(paramArrayOfByte);
-        RFLog.d("QzoneAioStoryFeedRequest", i, ((StringBuilder)localObject).toString());
+        QLog.d("QzoneAioStoryFeedRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;

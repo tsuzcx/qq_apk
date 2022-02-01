@@ -11,17 +11,17 @@ class AccountPanelBinder$4
   
   public void a(SubAccountMsg paramSubAccountMsg)
   {
-    if (paramSubAccountMsg.b)
+    if (paramSubAccountMsg.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelViewContainer.c(paramSubAccountMsg.a);
+      this.a.c(paramSubAccountMsg.b);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelViewContainer.h();
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountPanelBinder.4
  * JD-Core Version:    0.7.0.1
  */

@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ClientManager
 {
@@ -70,7 +71,7 @@ public class ClientManager
   
   private void initSPBuglySDK()
   {
-    this.mContext.getSharedPreferences("BuglySdkInfos", 0).edit().putString("4aeafa6143", "3.0.14").apply();
+    this.mContext.getSharedPreferences("BuglySdkInfos", 0).edit().putString("4aeafa6143", "3.1.1").apply();
     ABTestLog.debug("[SDKInit] the Bugly SDK init finished", new Object[0]);
   }
   
@@ -179,14 +180,14 @@ public class ClientManager
       ABTestLog.error("[SDK_EXP] the cacheMgr is null", new Object[0]);
       return localExpEntity;
     }
-    Map localMap = ((CacheManager)localObject).getExpEntityMap();
+    ConcurrentHashMap localConcurrentHashMap = ((CacheManager)localObject).getExpEntityMap();
     localObject = localExpEntity;
-    if (localMap != null)
+    if (localConcurrentHashMap != null)
     {
       localObject = localExpEntity;
-      if (!localMap.isEmpty())
+      if (!localConcurrentHashMap.isEmpty())
       {
-        paramString = (ExpEntity)localMap.get(paramString);
+        paramString = (ExpEntity)localConcurrentHashMap.get(paramString);
         localObject = paramString;
         if (paramString != null) {}
       }
@@ -510,7 +511,7 @@ public class ClientManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.manager.ClientManager
  * JD-Core Version:    0.7.0.1
  */

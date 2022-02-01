@@ -252,7 +252,7 @@ public class SystemInfoPlugin
       ((JSONObject)localObject2).put("SDKVersion", this.mMiniAppContext.getBaseLibVersion());
       ((JSONObject)localObject2).put("AppPlatform", this.mMiniAppProxy.getAppName());
       ((JSONObject)localObject2).put("safeArea", localObject1);
-      ((JSONObject)localObject2).put("runtimeVersion", "1.15.0.0");
+      ((JSONObject)localObject2).put("runtimeVersion", "1.19.0.0");
       if (this.mApkgInfo.getAppConfigInfo().darkmode) {
         ((JSONObject)localObject2).put("theme", ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserTheme());
       }
@@ -278,7 +278,7 @@ public class SystemInfoPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.SystemInfoPlugin
  * JD-Core Version:    0.7.0.1
  */

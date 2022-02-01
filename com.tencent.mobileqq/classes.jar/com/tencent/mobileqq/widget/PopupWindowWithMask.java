@@ -12,14 +12,14 @@ public class PopupWindowWithMask
   extends PopupWindow
 {
   protected Context a;
-  private View jdField_a_of_type_AndroidViewView;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private WindowManager b;
+  private View c;
   
   public PopupWindowWithMask(Context paramContext)
   {
-    super(paramContext, null, 2131756277);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    super(paramContext, null, 2131953435);
+    this.a = paramContext;
+    this.b = ((WindowManager)paramContext.getSystemService("window"));
     setOutsideTouchable(true);
     setFocusable(true);
     setTouchable(true);
@@ -27,7 +27,7 @@ public class PopupWindowWithMask
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.c != null)
     {
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
       localValueAnimator.setDuration(400L);
@@ -45,11 +45,11 @@ public class PopupWindowWithMask
     localLayoutParams.format = -3;
     localLayoutParams.type = 1000;
     localLayoutParams.token = paramIBinder;
-    this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(855638016);
-    this.jdField_a_of_type_AndroidViewView.setFitsSystemWindows(false);
-    this.jdField_a_of_type_AndroidViewView.setOnKeyListener(new PopupWindowWithMask.1(this));
-    this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+    this.c = new View(this.a);
+    this.c.setBackgroundColor(855638016);
+    this.c.setFitsSystemWindows(false);
+    this.c.setOnKeyListener(new PopupWindowWithMask.1(this));
+    this.b.addView(this.c, localLayoutParams);
     paramIBinder = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     paramIBinder.setDuration(400L);
     paramIBinder.addUpdateListener(new PopupWindowWithMask.2(this));
@@ -82,7 +82,7 @@ public class PopupWindowWithMask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PopupWindowWithMask
  * JD-Core Version:    0.7.0.1
  */

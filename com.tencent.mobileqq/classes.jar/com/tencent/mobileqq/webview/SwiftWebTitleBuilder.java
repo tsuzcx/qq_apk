@@ -2,6 +2,8 @@ package com.tencent.mobileqq.webview;
 
 import android.content.Intent;
 import com.tencent.comic.ui.QQComicTitleBarView;
+import com.tencent.mobileqq.flashshow.api.hybird.FSPublishTitleBarView;
+import com.tencent.mobileqq.flashshow.api.hybird.FSTitleBarView;
 import com.tencent.mobileqq.qcircle.api.hybird.QCircleTitleBarView;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.webview.swift.QzoneSwitchFragmentTitleBarUI;
@@ -20,6 +22,8 @@ public class SwiftWebTitleBuilder
   
   static
   {
+    a.put("6", FSPublishTitleBarView.class);
+    a.put("5", FSTitleBarView.class);
     a.put("4", QCircleTitleBarView.class);
     a.put("2", QzoneSwitchFragmentTitleBarUI.class);
     a.put("1", QQComicTitleBarView.class);
@@ -28,8 +32,8 @@ public class SwiftWebTitleBuilder
   public static SwiftIphoneTitleBarUI a(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
     int i;
-    if ((paramSwiftBrowserUIStyleHandler.a != null) && (paramSwiftBrowserUIStyleHandler.a.getIntent() != null)) {
-      i = paramSwiftBrowserUIStyleHandler.a.getIntent().getIntExtra("titleBarStyle", 0);
+    if ((paramSwiftBrowserUIStyleHandler.r != null) && (paramSwiftBrowserUIStyleHandler.r.getIntent() != null)) {
+      i = paramSwiftBrowserUIStyleHandler.r.getIntent().getIntExtra("titleBarStyle", 0);
     } else {
       i = 0;
     }
@@ -72,7 +76,7 @@ public class SwiftWebTitleBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.SwiftWebTitleBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -8,29 +8,29 @@ public class BizLoginRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<BizLoginRequest> CREATOR = new BizLoginRequest.1();
-  public int a;
   public String a;
-  public byte[] a;
-  public String b;
-  public String c = "";
+  public int b;
+  public String c;
   public String d = "";
-  public String e;
-  public String f;
+  public String e = "";
+  public byte[] f;
   public String g;
+  public String h;
+  public String i;
   
   public BizLoginRequest() {}
   
   protected BizLoginRequest(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.b = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readInt();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
-    this.jdField_a_of_type_ArrayOfByte = paramParcel.createByteArray();
     this.e = paramParcel.readString();
-    this.f = paramParcel.readString();
+    this.f = paramParcel.createByteArray();
     this.g = paramParcel.readString();
+    this.h = paramParcel.readString();
+    this.i = paramParcel.readString();
   }
   
   public int describeContents()
@@ -40,20 +40,20 @@ public class BizLoginRequest
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.a);
+    paramParcel.writeInt(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
-    paramParcel.writeByteArray(this.jdField_a_of_type_ArrayOfByte);
     paramParcel.writeString(this.e);
-    paramParcel.writeString(this.f);
+    paramParcel.writeByteArray(this.f);
     paramParcel.writeString(this.g);
+    paramParcel.writeString(this.h);
+    paramParcel.writeString(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.api.login.BizLoginRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class EditVideoButton$1
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoButton.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoButton.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams != null)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoButton.a.b(this.jdField_a_of_type_Int);
+    if ((this.b.t.H != null) && (this.b.t.I != null)) {
+      this.b.t.d(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoButton.1
  * JD-Core Version:    0.7.0.1
  */

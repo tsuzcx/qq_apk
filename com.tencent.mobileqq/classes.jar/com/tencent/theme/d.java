@@ -19,7 +19,7 @@ class d
     if (localObject == null) {
       return this.b.get(paramLong);
     }
-    localObject = this.c.b(((Integer)localObject).intValue());
+    localObject = this.c.loadColorStateList(((Integer)localObject).intValue());
     if (localObject != null) {
       return ((SkinnableColorStateList)localObject).a;
     }
@@ -28,7 +28,7 @@ class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.d
  * JD-Core Version:    0.7.0.1
  */

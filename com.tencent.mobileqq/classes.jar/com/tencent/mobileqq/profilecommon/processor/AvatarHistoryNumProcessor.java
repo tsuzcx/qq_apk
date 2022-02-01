@@ -46,13 +46,13 @@ public class AvatarHistoryNumProcessor
       if (QLog.isColorLevel()) {
         QLog.d("AvatarHistoryNumProcessor", 2, String.format("onGetProfileDetailResponse numFlag=%s", new Object[] { Integer.valueOf(i) }));
       }
-      SharedPreUtils.C(this.appRuntime.getApplication(), this.appRuntime.getCurrentAccountUin(), i);
+      SharedPreUtils.F(this.appRuntime.getApplication(), this.appRuntime.getCurrentAccountUin(), i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.AvatarHistoryNumProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -8,71 +8,71 @@ import android.widget.ImageView;
 
 public class RingAnimator
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public boolean a;
-  Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  Animation jdField_c_of_type_AndroidViewAnimationAnimation;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  ImageView a;
+  ImageView b;
+  ImageView c;
+  Animation d;
+  Animation e;
+  Animation f;
+  Animation.AnimationListener g;
+  Animation.AnimationListener h;
+  Handler i;
+  Context j;
+  public boolean k;
   
   public void a()
   {
     c();
     e();
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_AndroidWidgetImageView = null;
-    this.jdField_c_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.g = null;
+    this.h = null;
+    this.i = null;
+    this.j = null;
   }
   
   public void b()
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.a;
     if (localImageView != null) {
-      localImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      localImageView.startAnimation(this.d);
     }
   }
   
   public void c()
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.a;
     if (localImageView != null)
     {
       localImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+      this.a.clearAnimation();
     }
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+    this.k = true;
+    if ((this.b != null) && (this.c != null)) {
+      this.i.sendEmptyMessage(9);
     }
   }
   
   public void e()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
-    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
-    if ((localImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView != null))
+    this.k = false;
+    this.i.sendEmptyMessage(10);
+    ImageView localImageView = this.b;
+    if ((localImageView != null) && (this.c != null))
     {
       localImageView.clearAnimation();
-      this.jdField_c_of_type_AndroidWidgetImageView.clearAnimation();
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.c.clearAnimation();
+      this.b.setVisibility(8);
+      this.c.setVisibility(8);
     }
   }
 }

@@ -25,47 +25,47 @@ class ListenTogetherManager$3
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onPlayStateChanged: ");
     ((StringBuilder)localObject).append(Const.a(paramInt));
-    QLog.d("ListenTogether.Manager", 1, new Object[] { ((StringBuilder)localObject).toString(), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
+    QLog.d("ListenTogether.Manager", 1, new Object[] { ((StringBuilder)localObject).toString(), " songId:", paramString, " curSongID:", QQMusicPlayService.f().a() });
     localObject = new HashMap();
     if (paramInt == 8) {
-      ListenTogetherManager.a(this.a);
+      ListenTogetherManager.c(this.a);
     } else if ((paramInt == 5) || (paramInt == 7)) {
       ((HashMap)localObject).put("status", String.valueOf(paramInt));
     }
     if (paramInt == 2)
     {
-      if (ListenTogetherManager.a(this.a).c())
+      if (ListenTogetherManager.d(this.a).r())
       {
-        ListenTogetherManager.a(this.a).n();
-        ListenTogetherManager.a(this.a).p();
+        ListenTogetherManager.d(this.a).q();
+        ListenTogetherManager.d(this.a).t();
       }
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.f(this.a).removeCallbacks(ListenTogetherManager.e(this.a));
+      ListenTogetherManager.h(this.a).a(ListenTogetherManager.g(this.a));
+      ListenTogetherManager.f(this.a).postDelayed(ListenTogetherManager.h(this.a), ListenTogetherManager.i(this.a));
       ((HashMap)localObject).put("status", String.valueOf(paramInt));
     }
     else if ((paramInt == 4) || (paramInt == 5) || (paramInt == 7))
     {
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.f(this.a).removeCallbacks(ListenTogetherManager.h(this.a));
+      ListenTogetherManager.e(this.a).a(ListenTogetherManager.g(this.a));
+      ListenTogetherManager.f(this.a).postDelayed(ListenTogetherManager.e(this.a), ListenTogetherManager.i(this.a));
     }
     if (paramInt == 2)
     {
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, ListenTogetherDPC.a().a);
+      ListenTogetherManager.f(this.a).removeMessages(1001);
+      ListenTogetherManager.f(this.a).sendEmptyMessageDelayed(1001, ListenTogetherDPC.a().d);
     }
     else
     {
-      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.f(this.a).removeMessages(1001);
     }
     ListenTogetherManager.a(this.a, paramString, paramInt);
     if (!((HashMap)localObject).isEmpty()) {
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "listen_together_player_status", true, 0L, 0L, (HashMap)localObject, "");
     }
-    if (QQMusicPlayService.a() != null)
+    if (QQMusicPlayService.f() != null)
     {
-      paramString = (IOnlineMusicStatusManager)((IOnlineStatusManagerService)ListenTogetherManager.a(this.a).getRuntimeService(IOnlineStatusManagerService.class)).getManager(IOnlineMusicStatusManager.class);
+      paramString = (IOnlineMusicStatusManager)((IOnlineStatusManagerService)ListenTogetherManager.j(this.a).getRuntimeService(IOnlineStatusManagerService.class)).getManager(IOnlineMusicStatusManager.class);
       if (paramString != null) {
         paramString.b(paramInt);
       }
@@ -79,7 +79,7 @@ class ListenTogetherManager$3
     localStringBuilder.append(paramBoolean);
     QLog.i("ListenTogether.Manager", 1, localStringBuilder.toString());
     if (paramBoolean) {
-      ListenTogetherManager.b(this.a);
+      ListenTogetherManager.k(this.a);
     }
   }
   
@@ -94,17 +94,17 @@ class ListenTogetherManager$3
     ListenTogetherManager.a(this.a, paramBoolean1);
     if (paramBoolean1)
     {
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
+      ListenTogetherManager.f(this.a).removeCallbacks(ListenTogetherManager.e(this.a));
+      ListenTogetherManager.f(this.a).postDelayed(ListenTogetherManager.l(this.a), ListenTogetherManager.i(this.a));
+      ListenTogetherManager.h(this.a).a(ListenTogetherManager.g(this.a));
+      ListenTogetherManager.f(this.a).postDelayed(ListenTogetherManager.h(this.a), ListenTogetherManager.i(this.a));
       ListenTogetherManager.a(this.a, 0L);
       return;
     }
-    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
-    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
-    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
+    ListenTogetherManager.f(this.a).removeCallbacks(ListenTogetherManager.l(this.a));
+    ListenTogetherManager.f(this.a).removeCallbacks(ListenTogetherManager.h(this.a));
+    ListenTogetherManager.e(this.a).a(ListenTogetherManager.g(this.a));
+    ListenTogetherManager.f(this.a).postDelayed(ListenTogetherManager.e(this.a), ListenTogetherManager.i(this.a));
     if (paramBoolean2)
     {
       ListenTogetherManager.a(this.a, 0L);
@@ -115,7 +115,7 @@ class ListenTogetherManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.3
  * JD-Core Version:    0.7.0.1
  */

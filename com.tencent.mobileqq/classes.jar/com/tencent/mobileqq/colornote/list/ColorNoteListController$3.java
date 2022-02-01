@@ -12,12 +12,12 @@ class ColorNoteListController$3
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return ColorNoteListController.a(this.a).onTouchEvent(paramMotionEvent);
+    return ColorNoteListController.d(this.a).onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -46,21 +46,21 @@ public class MixedMsgLinearLayout
   extends LinearLayout
   implements SelectableComponent
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private SelectableComponent jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
-  private SelectableDelegate jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
   public AnimationTextView.OnDoubleClick a;
-  private MixedMsgLinearLayout.ImageScrapHeap jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout$ImageScrapHeap = new MixedMsgLinearLayout.ImageScrapHeap(this);
-  private MixedMsgLinearLayout.TextViewScrapHeap jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout$TextViewScrapHeap = new MixedMsgLinearLayout.TextViewScrapHeap(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private int jdField_b_of_type_Int;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
   public AnimationTextView.OnDoubleClick b;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = -5250572;
-  private boolean jdField_c_of_type_Boolean = true;
+  private MixedMsgLinearLayout.TextViewScrapHeap c = new MixedMsgLinearLayout.TextViewScrapHeap(this);
+  private MixedMsgLinearLayout.ImageScrapHeap d = new MixedMsgLinearLayout.ImageScrapHeap(this);
+  private SelectableDelegate e;
+  private int f;
+  private int g;
+  private int h = -5250572;
+  private boolean i = false;
+  private boolean j = false;
+  private boolean k = true;
+  private SelectableComponent l;
+  private final int[] m = new int[2];
+  private MotionEvent n;
+  private MotionEvent o;
   
   public MixedMsgLinearLayout(Context paramContext)
   {
@@ -80,95 +80,95 @@ public class MixedMsgLinearLayout
     localLayoutParams.rightMargin = 0;
     localChatThumbView.setLayoutParams(localLayoutParams);
     localChatThumbView.setAdjustViewBounds(true);
-    int k = CommonImgThumbHelper.getImgThumbMaxPx(false);
-    int j = CommonImgThumbHelper.getImgThumbMaxDp(false);
-    int i = CommonImgThumbHelper.getImgThumbMinDp(false);
-    localChatThumbView.setMaxHeight(k);
-    localChatThumbView.setMaxWidth(k);
-    k = paramMessageForPic.thumbWidth;
-    int n = paramMessageForPic.thumbHeight;
-    if ((k > 0) && (n > 0))
+    int i3 = CommonImgThumbHelper.getImgThumbMaxPx(false);
+    int i2 = CommonImgThumbHelper.getImgThumbMaxDp(false);
+    int i1 = CommonImgThumbHelper.getImgThumbMinDp(false);
+    localChatThumbView.setMaxHeight(i3);
+    localChatThumbView.setMaxWidth(i3);
+    i3 = paramMessageForPic.thumbWidth;
+    int i5 = paramMessageForPic.thumbHeight;
+    if ((i3 > 0) && (i5 > 0))
     {
       float f2;
-      if ((k >= i) && (n >= i))
+      if ((i3 >= i1) && (i5 >= i1))
       {
-        if ((k < j) && (n < j))
+        if ((i3 < i2) && (i5 < i2))
         {
-          i = k;
-          j = n;
+          i1 = i3;
+          i2 = i5;
           break label474;
         }
-        if (k > n)
+        if (i3 > i5)
         {
-          f1 = j;
-          f2 = k;
+          f1 = i2;
+          f2 = i3;
         }
         else
         {
-          f1 = j;
-          f2 = n;
+          f1 = i2;
+          f2 = i5;
         }
         float f3 = f1 / f2;
-        if (k > n)
+        if (i3 > i5)
         {
-          f1 = i;
-          f2 = n;
+          f1 = i1;
+          f2 = i5;
         }
         else
         {
-          f1 = i;
-          f2 = k;
+          f1 = i1;
+          f2 = i3;
         }
         f1 /= f2;
         Math.max(f3, f1);
         if (f3 < f1)
         {
-          if (k > n) {
-            k = j;
+          if (i3 > i5) {
+            i3 = i2;
           } else {
-            k = i;
+            i3 = i1;
           }
-          m = k;
-          if (n > k) {
-            i = j;
+          i4 = i3;
+          if (i5 > i3) {
+            i1 = i2;
           }
         }
       }
-      for (int m = k;; m = j)
+      for (int i4 = i3;; i4 = i2)
       {
-        j = i;
-        i = m;
+        i2 = i1;
+        i1 = i4;
         break;
-        if (k > n)
+        if (i3 > i5)
         {
-          f1 = j;
-          f2 = k;
+          f1 = i2;
+          f2 = i3;
         }
         else
         {
-          f1 = j;
-          f2 = n;
+          f1 = i2;
+          f2 = i5;
         }
         f1 /= f2;
-        i = (int)(k * f1 + 0.5F);
-        j = (int)(n * f1 + 0.5F);
+        i1 = (int)(i3 * f1 + 0.5F);
+        i2 = (int)(i5 * f1 + 0.5F);
         break;
-        if (k < n)
+        if (i3 < i5)
         {
-          f1 = i / k;
-          m = (int)(n * f1 + 0.5F);
-          k = m;
-          if (m > j) {
-            k = j;
+          f1 = i1 / i3;
+          i4 = (int)(i5 * f1 + 0.5F);
+          i3 = i4;
+          if (i4 > i2) {
+            i3 = i2;
           }
-          j = k;
+          i2 = i3;
           break;
         }
-        f1 = i / n;
-        k = (int)(k * f1 + 0.5F);
-        j = k;
-        if (k > i) {
-          j = i;
+        f1 = i1 / i5;
+        i3 = (int)(i3 * f1 + 0.5F);
+        i2 = i3;
+        if (i3 > i1) {
+          i2 = i1;
         }
       }
     }
@@ -178,46 +178,32 @@ public class MixedMsgLinearLayout
       {
         paramMessageForPic = new StringBuilder();
         paramMessageForPic.append("MessageForPic without width/height of thumb, width = ");
-        paramMessageForPic.append(k);
+        paramMessageForPic.append(i3);
         paramMessageForPic.append(", height = ");
-        paramMessageForPic.append(n);
+        paramMessageForPic.append(i5);
         QLog.d("MixedMsgLinearLayout", 2, paramMessageForPic.toString());
       }
-      j = 99;
-      i = 99;
+      i2 = 99;
+      i1 = 99;
     }
     label474:
     float f1 = getResources().getDisplayMetrics().densityDpi / 160.0F;
-    i = (int)(i * f1 + 0.5F);
-    j = (int)(j * f1 + 0.5F);
+    i1 = (int)(i1 * f1 + 0.5F);
+    i2 = (int)(i2 * f1 + 0.5F);
     if ((URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable))
     {
       paramMessageForPic = ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap();
-      localChatThumbView.setImageDrawable(new BitmapDrawableWithMargin(getResources(), paramMessageForPic, i, j, -921103));
+      localChatThumbView.setImageDrawable(new BitmapDrawableWithMargin(getResources(), paramMessageForPic, i1, i2, -921103));
       return localChatThumbView;
     }
     if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable))
     {
       paramMessageForPic = ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap();
-      localChatThumbView.setImageDrawable(new BitmapDrawableWithMargin(getResources(), paramMessageForPic, i, j, -921103));
+      localChatThumbView.setImageDrawable(new BitmapDrawableWithMargin(getResources(), paramMessageForPic, i1, i2, -921103));
       return localChatThumbView;
     }
     localChatThumbView.setImageDrawable(URLDrawableHelper.getLoadingDrawable());
     return localChatThumbView;
-  }
-  
-  private AnimationTextView a()
-  {
-    AnimationTextView localAnimationTextView = new AnimationTextView(getContext());
-    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131167075));
-    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131167068));
-    localAnimationTextView.setSpannableFactory(QQText.SPANNABLE_FACTORY);
-    localAnimationTextView.setMaxWidth(BaseChatItemLayout.f);
-    localAnimationTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    localAnimationTextView.setPadding(0, 0, 0, 0);
-    localAnimationTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    localAnimationTextView.onDoubleClick = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
-    return localAnimationTextView;
   }
   
   private boolean a(MessageRecord paramMessageRecord)
@@ -240,240 +226,254 @@ public class MixedMsgLinearLayout
     return bool1;
   }
   
+  private AnimationTextView b()
+  {
+    AnimationTextView localAnimationTextView = new AnimationTextView(getContext());
+    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131168016));
+    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131168008));
+    localAnimationTextView.setSpannableFactory(QQText.SPANNABLE_FACTORY);
+    localAnimationTextView.setMaxWidth(BaseChatItemLayout.f);
+    localAnimationTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    localAnimationTextView.setPadding(0, 0, 0, 0);
+    localAnimationTextView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+    localAnimationTextView.onDoubleClick = this.a;
+    return localAnimationTextView;
+  }
+  
   public CharSequence a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int i3 = getChildCount();
-    int i2 = this.jdField_a_of_type_Int;
-    int n = this.jdField_b_of_type_Int;
-    int m = 0;
-    int j = 0;
-    while (m < i3)
+    int i8 = getChildCount();
+    int i7 = this.f;
+    int i5 = this.g;
+    int i4 = 0;
+    int i2 = 0;
+    while (i4 < i8)
     {
-      Object localObject = getChildAt(m);
+      Object localObject = getChildAt(i4);
+      int i6;
       int i1;
-      int i;
-      int k;
+      int i3;
       if ((localObject instanceof SelectableComponent))
       {
         localObject = (SelectableComponent)localObject;
-        i1 = j;
-        i = i2;
-        k = n;
-        if (j == 0)
+        i6 = i2;
+        i1 = i7;
+        i3 = i5;
+        if (i2 == 0)
         {
-          int i4 = ((SelectableComponent)localObject).contentLength();
-          if (i2 >= i4)
+          int i9 = ((SelectableComponent)localObject).contentLength();
+          if (i7 >= i9)
           {
-            i = i2 - i4;
-            k = n - i4;
-            i1 = j;
+            i1 = i7 - i9;
+            i3 = i5 - i9;
+            i6 = i2;
           }
           else
           {
-            if (n <= i4) {
-              j = 1;
+            if (i5 <= i9) {
+              i2 = 1;
             }
             localObject = ((SelectableComponent)localObject).selectContent();
             if (localObject != null) {
               localStringBuilder.append((CharSequence)localObject);
             }
-            i1 = j;
-            i = i2;
-            k = n;
-            if (j == 0)
+            i6 = i2;
+            i1 = i7;
+            i3 = i5;
+            if (i2 == 0)
             {
-              k = n - i4;
-              i = 0;
-              i1 = j;
+              i3 = i5 - i9;
+              i1 = 0;
+              i6 = i2;
             }
           }
         }
       }
       else
       {
-        i1 = j;
-        i = i2;
-        k = n;
-        if (m != 0)
+        i6 = i2;
+        i1 = i7;
+        i3 = i5;
+        if (i4 != 0)
         {
           localStringBuilder.append(" ");
-          k = n;
-          i = i2;
-          i1 = j;
+          i3 = i5;
+          i1 = i7;
+          i6 = i2;
         }
       }
-      m += 1;
-      j = i1;
-      i2 = i;
-      n = k;
+      i4 += 1;
+      i2 = i6;
+      i7 = i1;
+      i5 = i3;
     }
     return localStringBuilder.toString();
   }
   
   public void a(ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
   {
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int i2 = getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      Object localObject = getChildAt(i);
+      Object localObject = getChildAt(i1);
       if ((localObject instanceof AnimationTextView))
       {
         localObject = (AnimationTextView)localObject;
         ((AnimationTextView)localObject).setTextColor(paramColorStateList1);
         ((AnimationTextView)localObject).setLinkTextColor(paramColorStateList2);
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
   public void a(Typeface paramTypeface)
   {
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int i2 = getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(i1);
       if ((localView instanceof TextView)) {
         ((TextView)localView).setTypeface(paramTypeface);
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
   public void a(List<MessageRecord> paramList, MixedMsgItemBuilder.MixedHolder paramMixedHolder)
   {
     Object localObject1 = new ArrayList();
-    int k = 0;
-    int i = 0;
-    while (i < paramList.size())
+    int i3 = 0;
+    int i1 = 0;
+    while (i1 < paramList.size())
     {
-      if (a((MessageRecord)paramList.get(i))) {
-        ((List)localObject1).add(paramList.get(i));
+      if (a((MessageRecord)paramList.get(i1))) {
+        ((List)localObject1).add(paramList.get(i1));
       }
-      i += 1;
+      i1 += 1;
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
       paramList.remove((MessageRecord)((Iterator)localObject1).next());
     }
-    int j = getChildCount();
+    int i2 = getChildCount();
     ArrayList localArrayList = new ArrayList();
-    i = 0;
-    while (i < j)
+    i1 = 0;
+    while (i1 < i2)
     {
-      localObject1 = getChildAt(i);
+      localObject1 = getChildAt(i1);
       if ((localObject1 instanceof AnimationTextView)) {
         localArrayList.add(localObject1);
       }
-      i += 1;
+      i1 += 1;
     }
-    i = 0;
-    while (i < localArrayList.size())
+    i1 = 0;
+    while (i1 < localArrayList.size())
     {
-      localObject1 = (View)localArrayList.get(i);
+      localObject1 = (View)localArrayList.get(i1);
       detachViewFromParent((View)localObject1);
       localObject1 = (AnimationTextView)localObject1;
       ((AnimationTextView)localObject1).setText("");
-      this.jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout$TextViewScrapHeap.a((AnimationTextView)localObject1);
-      i += 1;
+      this.c.a((AnimationTextView)localObject1);
+      i1 += 1;
     }
-    j = paramList.size();
-    i = 0;
-    while (i < j)
+    i2 = paramList.size();
+    i1 = 0;
+    while (i1 < i2)
     {
-      Object localObject3 = paramList.get(i);
+      Object localObject3 = paramList.get(i1);
       Object localObject2;
       if ((localObject3 instanceof MessageForReplyText))
       {
         localObject1 = new SelectableLinearLayout(getContext());
         ((LinearLayout)localObject1).setOrientation(1);
         localObject2 = ReplyTextItemBuilder.a(getContext());
-        paramMixedHolder.e = i;
-        paramMixedHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject2).findViewById(2131371697));
-        paramMixedHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)localObject2).findViewById(2131378696));
-        paramMixedHolder.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131371529));
-        paramMixedHolder.jdField_b_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)((ViewGroup)localObject2).findViewById(2131371543));
+        paramMixedHolder.b = i1;
+        paramMixedHolder.d = ((TextView)((ViewGroup)localObject2).findViewById(2131439121));
+        paramMixedHolder.c = ((TextView)((ViewGroup)localObject2).findViewById(2131447354));
+        paramMixedHolder.e = ((ETTextView)((ViewGroup)localObject2).findViewById(2131438908));
+        paramMixedHolder.f = ((ETTextView)((ViewGroup)localObject2).findViewById(2131438922));
         ((LinearLayout)localObject1).addView((View)localObject2);
         localObject2 = new ETTextView(getContext());
-        ((ETTextView)localObject2).setTextColor(getContext().getResources().getColorStateList(2131167075));
-        ((ETTextView)localObject2).setLinkTextColor(getContext().getResources().getColorStateList(2131167068));
+        ((ETTextView)localObject2).setTextColor(getContext().getResources().getColorStateList(2131168016));
+        ((ETTextView)localObject2).setLinkTextColor(getContext().getResources().getColorStateList(2131168008));
         ((ETTextView)localObject2).setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
         ((ETTextView)localObject2).setSpannableFactory(QQText.SPANNABLE_FACTORY);
         ((ETTextView)localObject2).setMaxWidth(BaseChatItemLayout.e);
         ((ETTextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
         ((LinearLayout)localObject1).addView((View)localObject2);
         ((LinearLayout)localObject1).setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-        addViewInLayout((View)localObject1, i, ((LinearLayout)localObject1).getLayoutParams(), true);
-        paramMixedHolder.c = ((TextView)localObject2);
+        addViewInLayout((View)localObject1, i1, ((LinearLayout)localObject1).getLayoutParams(), true);
+        paramMixedHolder.g = ((TextView)localObject2);
       }
       else if ((localObject3 instanceof MessageForText))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout$TextViewScrapHeap.a();
+        localObject2 = this.c.a();
         localObject1 = localObject2;
         if (localObject2 == null) {
-          localObject1 = a();
+          localObject1 = b();
         }
-        addViewInLayout((View)localObject1, i, ((AnimationTextView)localObject1).getLayoutParams(), true);
+        addViewInLayout((View)localObject1, i1, ((AnimationTextView)localObject1).getLayoutParams(), true);
       }
       else if ((localObject3 instanceof MessageForPic))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout$ImageScrapHeap.a();
+        localObject2 = this.d.a();
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = a((MessageForPic)localObject3);
         }
-        addViewInLayout((View)localObject1, i, ((ChatThumbView)localObject1).getLayoutParams(), true);
+        addViewInLayout((View)localObject1, i1, ((ChatThumbView)localObject1).getLayoutParams(), true);
       }
-      i += 1;
+      i1 += 1;
     }
     localArrayList.clear();
-    int m = getChildCount();
-    i = k;
-    if (m > j) {
+    int i4 = getChildCount();
+    i1 = i3;
+    if (i4 > i2) {
       for (;;)
       {
-        i = k;
-        if (j >= m) {
+        i1 = i3;
+        if (i2 >= i4) {
           break;
         }
-        localArrayList.add(getChildAt(j));
-        j += 1;
+        localArrayList.add(getChildAt(i2));
+        i2 += 1;
       }
     }
-    while (i < localArrayList.size())
+    while (i1 < localArrayList.size())
     {
-      paramList = (View)localArrayList.get(i);
+      paramList = (View)localArrayList.get(i1);
       detachViewFromParent(paramList);
       if ((paramList instanceof ChatThumbView))
       {
         paramList = (ChatThumbView)paramList;
         paramList.setImageDrawable(null);
         paramList.setURLDrawableDownListener(null);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout$ImageScrapHeap.a(paramList);
+        this.d.a(paramList);
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
   public void bind(@Nullable SelectableDelegate paramSelectableDelegate)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate = paramSelectableDelegate;
+    this.e = paramSelectableDelegate;
   }
   
   public void clearHighlightContent()
   {
-    int i = 0;
-    this.jdField_a_of_type_Boolean = false;
-    int j = getChildCount();
-    while (i < j)
+    int i1 = 0;
+    this.i = false;
+    int i2 = getChildCount();
+    while (i1 < i2)
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(i1);
       if ((localView instanceof SelectableComponent)) {
         ((SelectableComponent)localView).clearHighlightContent();
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
@@ -481,40 +481,40 @@ public class MixedMsgLinearLayout
   public CharSequence content()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int i2 = getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(i1);
       if ((localView instanceof SelectableComponent)) {
         localStringBuilder.append(((SelectableComponent)localView).content());
       }
-      i += 1;
+      i1 += 1;
     }
     return localStringBuilder.toString();
   }
   
   public int contentLength()
   {
-    int m = getChildCount();
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
+    int i4 = getChildCount();
+    int i1 = 0;
+    int i3;
+    for (int i2 = 0; i1 < i4; i2 = i3)
     {
-      View localView = getChildAt(i);
-      k = j;
+      View localView = getChildAt(i1);
+      i3 = i2;
       if ((localView instanceof SelectableComponent)) {
-        k = j + ((SelectableComponent)localView).contentLength();
+        i3 = i2 + ((SelectableComponent)localView).contentLength();
       }
-      i += 1;
+      i1 += 1;
     }
-    return j;
+    return i2;
   }
   
   @Nullable
   public SelectableDelegate delegate()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
+    return this.e;
   }
   
   public void doSelecting(ChatMessage paramChatMessage)
@@ -526,10 +526,10 @@ public class MixedMsgLinearLayout
       }
       return;
     }
-    SelectableDelegate localSelectableDelegate = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
+    SelectableDelegate localSelectableDelegate = this.e;
     if (localSelectableDelegate != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = null;
+      this.l = null;
       localSelectableDelegate.a(paramChatMessage);
       ReportController.b(null, "dc00898", "", "", "0X800AE7A", "0X800AE7A", 2, 0, "", "", "", "");
       return;
@@ -539,26 +539,26 @@ public class MixedMsgLinearLayout
   
   public boolean hasSelected()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.j;
   }
   
   public boolean hasTouchSelectableArea(int paramInt1, int paramInt2)
   {
-    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
-    int i = paramInt1 - localObject[0];
+    getLocationInWindow(this.m);
+    Object localObject = this.m;
+    int i1 = paramInt1 - localObject[0];
     paramInt2 = paramInt2 - localObject[1] - getPaddingTop();
-    int j = getChildCount();
+    int i2 = getChildCount();
     paramInt1 = 0;
-    while (paramInt1 < j)
+    while (paramInt1 < i2)
     {
       localObject = getChildAt(paramInt1);
       if ((localObject instanceof SelectableComponent))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MixedMsgLinearLayout", 2, new Object[] { "left=", Integer.valueOf(((View)localObject).getLeft()), " right=", Integer.valueOf(((View)localObject).getRight()), " top=", Integer.valueOf(((View)localObject).getTop()), " bottom=", Integer.valueOf(((View)localObject).getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
+          QLog.d("MixedMsgLinearLayout", 2, new Object[] { "left=", Integer.valueOf(((View)localObject).getLeft()), " right=", Integer.valueOf(((View)localObject).getRight()), " top=", Integer.valueOf(((View)localObject).getTop()), " bottom=", Integer.valueOf(((View)localObject).getBottom()), " relativeX=", Integer.valueOf(i1), " relativeY=", Integer.valueOf(paramInt2) });
         }
-        if ((i > ((View)localObject).getLeft()) && (i < ((View)localObject).getRight()) && (paramInt2 > ((View)localObject).getTop()) && (paramInt2 < ((View)localObject).getBottom())) {
+        if ((i1 > ((View)localObject).getLeft()) && (i1 < ((View)localObject).getRight()) && (paramInt2 > ((View)localObject).getTop()) && (paramInt2 < ((View)localObject).getBottom())) {
           return true;
         }
       }
@@ -569,7 +569,7 @@ public class MixedMsgLinearLayout
   
   public void highlightBackgroundColor(@ColorInt int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void highlightContent()
@@ -579,17 +579,17 @@ public class MixedMsgLinearLayout
       clearHighlightContent();
       return;
     }
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int i2 = getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      Object localObject = getChildAt(i);
+      Object localObject = getChildAt(i1);
       if ((localObject instanceof SelectableComponent))
       {
         localObject = (SelectableComponent)localObject;
         if (((SelectableComponent)localObject).hasSelected())
         {
-          ((SelectableComponent)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+          ((SelectableComponent)localObject).highlightBackgroundColor(this.h);
           ((SelectableComponent)localObject).highlightContent();
         }
         else
@@ -597,36 +597,36 @@ public class MixedMsgLinearLayout
           ((SelectableComponent)localObject).clearHighlightContent();
         }
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
   public void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean)
   {
-    int k = getChildCount();
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    while (paramInt < k)
+    int i3 = getChildCount();
+    int i2 = 0;
+    int i1 = paramInt;
+    paramInt = i2;
+    while (paramInt < i3)
     {
       Object localObject = getChildAt(paramInt);
-      j = i;
+      i2 = i1;
       if ((localObject instanceof SelectableComponent))
       {
         localObject = (SelectableComponent)localObject;
-        j = ((SelectableComponent)localObject).contentLength();
-        if (i > j)
+        i2 = ((SelectableComponent)localObject).contentLength();
+        if (i1 > i2)
         {
-          j = i - j;
+          i2 = i1 - i2;
         }
         else
         {
-          ((SelectableComponent)localObject).locationByIndex(i, paramArrayOfInt, paramBoolean);
+          ((SelectableComponent)localObject).locationByIndex(i1, paramArrayOfInt, paramBoolean);
           return;
         }
       }
       paramInt += 1;
-      i = j;
+      i1 = i2;
     }
   }
   
@@ -642,19 +642,19 @@ public class MixedMsgLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick != null) {
-      if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (paramMotionEvent.getAction() == 0))
+    if (this.b != null) {
+      if ((this.o != null) && (paramMotionEvent.getAction() == 0))
       {
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        Object localObject = this.jdField_b_of_type_AndroidViewMotionEvent;
+        this.n = MotionEvent.obtain(paramMotionEvent);
+        Object localObject = this.o;
         if (localObject != null)
         {
-          MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+          MotionEvent localMotionEvent = this.n;
           if ((localMotionEvent != null) && (AnimationTextView.isConsideredDoubleTap(localMotionEvent, (MotionEvent)localObject, paramMotionEvent)))
           {
-            this.jdField_a_of_type_AndroidViewMotionEvent = null;
-            this.jdField_b_of_type_AndroidViewMotionEvent = null;
-            localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick;
+            this.n = null;
+            this.o = null;
+            localObject = this.b;
             if (localObject != null)
             {
               ((AnimationTextView.OnDoubleClick)localObject).a(this);
@@ -665,7 +665,7 @@ public class MixedMsgLinearLayout
       }
       else if (paramMotionEvent.getAction() == 1)
       {
-        this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        this.o = MotionEvent.obtain(paramMotionEvent);
       }
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -676,7 +676,7 @@ public class MixedMsgLinearLayout
   {
     CharSequence localCharSequence = content();
     if (localCharSequence != null) {
-      return localCharSequence.subSequence(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      return localCharSequence.subSequence(this.f, this.g);
     }
     return null;
   }
@@ -687,133 +687,133 @@ public class MixedMsgLinearLayout
     {
       if (paramInt1 > paramInt2)
       {
-        this.jdField_a_of_type_Int = paramInt2;
-        this.jdField_b_of_type_Int = paramInt1;
+        this.f = paramInt2;
+        this.g = paramInt1;
       }
       else
       {
-        this.jdField_a_of_type_Int = paramInt1;
-        this.jdField_b_of_type_Int = paramInt2;
+        this.f = paramInt1;
+        this.g = paramInt2;
       }
-      if (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int > 0) {
-        this.jdField_b_of_type_Boolean = true;
+      if (this.g - this.f > 0) {
+        this.j = true;
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_b_of_type_Boolean = false;
+      this.f = -1;
+      this.g = -1;
+      this.j = false;
     }
-    int i = this.jdField_a_of_type_Int;
-    paramInt1 = this.jdField_b_of_type_Int;
-    int i1 = getChildCount();
-    int m = 0;
-    int j;
-    for (paramInt2 = 0; m < i1; paramInt2 = j)
+    int i1 = this.f;
+    paramInt1 = this.g;
+    int i6 = getChildCount();
+    int i4 = 0;
+    int i2;
+    for (paramInt2 = 0; i4 < i6; paramInt2 = i2)
     {
-      View localView = getChildAt(m);
-      int n = i;
-      int k = paramInt1;
-      j = paramInt2;
+      View localView = getChildAt(i4);
+      int i5 = i1;
+      int i3 = paramInt1;
+      i2 = paramInt2;
       if ((localView instanceof SelectableComponent))
       {
         SelectableComponent localSelectableComponent = (SelectableComponent)localView;
         if (paramInt2 == 0)
         {
-          n = localSelectableComponent.contentLength();
-          if (i >= n)
+          i5 = localSelectableComponent.contentLength();
+          if (i1 >= i5)
           {
-            i -= n;
-            paramInt1 -= n;
+            i1 -= i5;
+            paramInt1 -= i5;
             localSelectableComponent.selectContent(-1, -1);
-            k = paramInt2;
+            i3 = paramInt2;
             paramInt2 = paramInt1;
           }
           else
           {
-            if (paramInt1 > n)
+            if (paramInt1 > i5)
             {
-              j = paramInt2;
-              paramInt2 = n;
+              i2 = paramInt2;
+              paramInt2 = i5;
             }
             else
             {
               paramInt2 = paramInt1;
-              j = 1;
+              i2 = 1;
             }
-            localSelectableComponent.selectContent(i, paramInt2);
+            localSelectableComponent.selectContent(i1, paramInt2);
             paramInt2 = paramInt1;
-            k = j;
-            if (j == 0)
+            i3 = i2;
+            if (i2 == 0)
             {
-              paramInt2 = paramInt1 - n;
-              i = 0;
-              k = j;
+              paramInt2 = paramInt1 - i5;
+              i1 = 0;
+              i3 = i2;
             }
           }
           paramInt1 = paramInt2;
-          paramInt2 = k;
+          paramInt2 = i3;
         }
         else
         {
           localSelectableComponent.selectContent(-1, -1);
         }
         localView.invalidate();
-        j = paramInt2;
-        k = paramInt1;
-        n = i;
+        i2 = paramInt2;
+        i3 = paramInt1;
+        i5 = i1;
       }
-      m += 1;
-      i = n;
-      paramInt1 = k;
+      i4 += 1;
+      i1 = i5;
+      paramInt1 = i3;
     }
   }
   
   public int touchIndex(int paramInt1, int paramInt2)
   {
-    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
-    int m = 0;
-    int i1 = paramInt1 - localObject[0] - getPaddingLeft();
-    int i2 = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
-    int n = getChildCount();
-    int i = 0;
-    int k;
+    getLocationInWindow(this.m);
+    Object localObject = this.m;
+    int i4 = 0;
+    int i6 = paramInt1 - localObject[0] - getPaddingLeft();
+    int i7 = paramInt2 - this.m[1] - getPaddingTop();
+    int i5 = getChildCount();
+    int i1 = 0;
+    int i3;
     SelectableComponent localSelectableComponent;
-    for (int j = 0; i < n; j = k)
+    for (int i2 = 0; i1 < i5; i2 = i3)
     {
-      localObject = getChildAt(i);
-      k = j;
+      localObject = getChildAt(i1);
+      i3 = i2;
       if ((localObject instanceof SelectableComponent))
       {
         localSelectableComponent = (SelectableComponent)localObject;
-        if ((i1 > ((View)localObject).getLeft()) && (i1 < ((View)localObject).getRight()) && (i2 > ((View)localObject).getTop()) && (i2 < ((View)localObject).getBottom()))
+        if ((i6 > ((View)localObject).getLeft()) && (i6 < ((View)localObject).getRight()) && (i7 > ((View)localObject).getTop()) && (i7 < ((View)localObject).getBottom()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = localSelectableComponent;
-          return j + localSelectableComponent.touchIndex(paramInt1, paramInt2);
+          this.l = localSelectableComponent;
+          return i2 + localSelectableComponent.touchIndex(paramInt1, paramInt2);
         }
-        k = j + localSelectableComponent.contentLength();
+        i3 = i2 + localSelectableComponent.contentLength();
       }
-      i += 1;
+      i1 += 1;
     }
-    j = 0;
-    i = m;
-    while (i < n)
+    i2 = 0;
+    i1 = i4;
+    while (i1 < i5)
     {
-      localObject = getChildAt(i);
-      k = j;
+      localObject = getChildAt(i1);
+      i3 = i2;
       if ((localObject instanceof SelectableComponent))
       {
         localObject = (SelectableComponent)localObject;
-        localSelectableComponent = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+        localSelectableComponent = this.l;
         if (localSelectableComponent == localObject) {
-          return j + localSelectableComponent.touchIndex(paramInt1, paramInt2);
+          return i2 + localSelectableComponent.touchIndex(paramInt1, paramInt2);
         }
-        k = j + ((SelectableComponent)localObject).contentLength();
+        i3 = i2 + ((SelectableComponent)localObject).contentLength();
       }
-      i += 1;
-      j = k;
+      i1 += 1;
+      i2 = i3;
     }
     return -1;
   }
@@ -826,7 +826,7 @@ public class MixedMsgLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MixedMsgLinearLayout
  * JD-Core Version:    0.7.0.1
  */

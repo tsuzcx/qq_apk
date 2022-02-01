@@ -21,17 +21,17 @@ public class HeartBreakCombolEffectView
   extends View
   implements Runnable
 {
-  static boolean jdField_a_of_type_Boolean = false;
-  int jdField_a_of_type_Int = 0;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  Handler jdField_a_of_type_AndroidOsHandler;
-  HeartBreakCombolEffectView.DecodeRunnable jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable;
-  ArrayList<HeartBreakCombolEffectView.OneFrame> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Vector<Bitmap> jdField_a_of_type_JavaUtilVector = new Vector();
-  int jdField_b_of_type_Int = 0;
-  Handler jdField_b_of_type_AndroidOsHandler;
-  public ArrayList<Bitmap> b;
+  static boolean h = false;
+  Handler a;
+  Handler b;
+  HeartBreakCombolEffectView.DecodeRunnable c;
+  Bitmap d;
+  Paint e = new Paint(6);
+  int f = 0;
+  int g = 0;
+  ArrayList<HeartBreakCombolEffectView.OneFrame> i = new ArrayList();
+  public ArrayList<Bitmap> j = new ArrayList();
+  private Vector<Bitmap> k = new Vector();
   
   public HeartBreakCombolEffectView(Context paramContext)
   {
@@ -46,18 +46,17 @@ public class HeartBreakCombolEffectView
   public HeartBreakCombolEffectView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     d();
   }
   
   private void d()
   {
     setOnTouchListener(new HeartBreakCombolEffectView.1(this));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a = new Handler(Looper.getMainLooper());
     e();
     HandlerThread localHandlerThread = new HandlerThread("decode");
     localHandlerThread.start();
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.b = new Handler(localHandlerThread.getLooper());
   }
   
   private void e()
@@ -66,17 +65,17 @@ public class HeartBreakCombolEffectView
     ((StringBuilder)localObject).append(PokeBigResHandler.b);
     ((StringBuilder)localObject).append("/xinsui_caidan/xinsui_caidan_");
     localObject = ((StringBuilder)localObject).toString();
-    int i = 0;
-    while (i < 55)
+    int m = 0;
+    while (m < 55)
     {
-      i += 1;
+      m += 1;
       StringBuilder localStringBuilder;
-      if (i < 10)
+      if (m < 10)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("0");
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         localStringBuilder.append(".png");
         a(localStringBuilder.toString(), 30);
       }
@@ -84,130 +83,130 @@ public class HeartBreakCombolEffectView
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject);
-        localStringBuilder.append(i);
+        localStringBuilder.append(m);
         localStringBuilder.append(".png");
         a(localStringBuilder.toString(), 30);
       }
     }
   }
   
-  public Bitmap a()
-  {
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (localArrayList != null)
-    {
-      localObject1 = localObject2;
-      if (localArrayList.size() > 0) {
-        localObject1 = (Bitmap)this.jdField_b_of_type_JavaUtilArrayList.remove(0);
-      }
-    }
-    return localObject1;
-  }
-  
   public void a()
   {
-    if (jdField_a_of_type_Boolean == true) {
+    if (h == true) {
       return;
     }
     setVisibility(0);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(this);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(((HeartBreakCombolEffectView.OneFrame)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString, null);
-    jdField_a_of_type_Boolean = true;
+    this.a.removeCallbacks(this);
+    this.a.post(this);
+    this.d = ImageUtil.a(((HeartBreakCombolEffectView.OneFrame)this.i.get(this.f)).a, null);
+    h = true;
   }
   
   public void a(String paramString, int paramInt)
   {
     HeartBreakCombolEffectView.OneFrame localOneFrame = new HeartBreakCombolEffectView.OneFrame(this);
-    localOneFrame.jdField_a_of_type_JavaLangString = paramString;
-    localOneFrame.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList.add(localOneFrame);
+    localOneFrame.a = paramString;
+    localOneFrame.b = paramInt;
+    this.i.add(localOneFrame);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
-    this.jdField_b_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable = null;
+    this.f = 0;
+    this.g = 0;
+    h = false;
+    this.a.removeCallbacks(this);
+    this.b.post(this.c);
+    this.c = null;
     setVisibility(8);
   }
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.d;
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.d.recycle();
+      this.d = null;
     }
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+    if (this.j.size() > 0)
     {
-      localObject = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+      localObject = this.j.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((Bitmap)((Iterator)localObject).next()).recycle();
       }
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
+      this.j.clear();
     }
-    if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
+    if (this.k.size() > 0)
     {
-      localObject = this.jdField_a_of_type_JavaUtilVector.iterator();
+      localObject = this.k.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((Bitmap)((Iterator)localObject).next()).recycle();
       }
-      this.jdField_a_of_type_JavaUtilVector.clear();
+      this.k.clear();
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.d;
     if (localObject != null)
     {
-      int i = ((Bitmap)localObject).getWidth();
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      int k = getWidth();
-      int m = getHeight();
-      float f2 = k * 1.0F / i;
-      float f1 = m / 2;
-      f2 = j * f2;
+      int m = ((Bitmap)localObject).getWidth();
+      int n = this.d.getHeight();
+      int i1 = getWidth();
+      int i2 = getHeight();
+      float f2 = i1 * 1.0F / m;
+      float f1 = i2 / 2;
+      f2 = n * f2;
       paramCanvas.translate(0.0F, (int)(f1 - f2 / 2.0F) + 50);
-      localObject = new Rect(0, 0, i, j);
-      Rect localRect = new Rect(0, 0, k, (int)f2);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Rect)localObject, localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localObject = new Rect(0, 0, m, n);
+      Rect localRect = new Rect(0, 0, i1, (int)f2);
+      paramCanvas.drawBitmap(this.d, (Rect)localObject, localRect, this.e);
     }
+  }
+  
+  public Bitmap getCacheBitmap()
+  {
+    ArrayList localArrayList = this.j;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (localArrayList != null)
+    {
+      localObject1 = localObject2;
+      if (localArrayList.size() > 0) {
+        localObject1 = (Bitmap)this.j.remove(0);
+      }
+    }
+    return localObject1;
   }
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int + 1;
-    if (i < 55)
+    int m = this.f + 1;
+    if (m < 55)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable = new HeartBreakCombolEffectView.DecodeRunnable(this, this.jdField_b_of_type_JavaUtilArrayList);
+      if (this.c == null) {
+        this.c = new HeartBreakCombolEffectView.DecodeRunnable(this, this.j);
       }
-      HeartBreakCombolEffectView.OneFrame localOneFrame = (HeartBreakCombolEffectView.OneFrame)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      this.jdField_b_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable);
-      this.jdField_b_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable);
-      this.jdField_a_of_type_Int += 1;
-      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      HeartBreakCombolEffectView.OneFrame localOneFrame = (HeartBreakCombolEffectView.OneFrame)this.i.get(m);
+      this.b.removeCallbacks(this.c);
+      this.b.post(this.c);
+      this.f += 1;
+      Bitmap localBitmap = this.d;
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        if (this.jdField_a_of_type_JavaUtilVector.size() <= 2) {
-          this.jdField_a_of_type_JavaUtilVector.add(localBitmap);
+        localBitmap = this.d;
+        if (this.k.size() <= 2) {
+          this.k.add(localBitmap);
         } else {
           localBitmap.recycle();
         }
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
+      this.d = getCacheBitmap();
       invalidate();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, localOneFrame.jdField_a_of_type_Int);
+      this.a.postDelayed(this, localOneFrame.b);
       return;
     }
     b();
@@ -215,7 +214,7 @@ public class HeartBreakCombolEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView
  * JD-Core Version:    0.7.0.1
  */

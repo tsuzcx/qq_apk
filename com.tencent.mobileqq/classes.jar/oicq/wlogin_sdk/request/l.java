@@ -118,7 +118,7 @@ public class l
     localObject5 = ((tlv_t141)localObject5).get_tlv_141(t.D, t.E, t.G);
     localObject6 = ((tlv_t8)localObject6).get_tlv_8(0, t.v, 0);
     localObject4 = ((tlv_t147)localObject4).get_tlv_147(paramLong2, t.H, t.I);
-    byte[] arrayOfByte = ((tlv_t177)localObject3).get_tlv_177(1619061003L, "6.0.0.2473");
+    byte[] arrayOfByte = ((tlv_t177)localObject3).get_tlv_177(1623833936L, "6.0.0.2477");
     paramArrayOfByte1 = new byte[0];
     if ((paramArrayOfByte3 != null) && (paramArrayOfByte3.length > 0))
     {
@@ -215,7 +215,7 @@ public class l
     localObject13 = t.b(((l)localObject3).x.h)._tgtgt_key;
     paramArrayOfByte4 = localtlv_t144.get_tlv_144((byte[])localObject19, (byte[])localObject18, (byte[])localObject17, (byte[])localObject16, paramArrayOfByte4, new byte[0], paramArrayOfByte5, paramArrayOfByte6, (byte[])localObject13);
     paramInt3 = paramInt1 + 1;
-    paramArrayOfByte5 = "6.0.0.2473".getBytes();
+    paramArrayOfByte5 = "6.0.0.2477".getBytes();
     paramArrayOfByte6 = new byte[t.B.length + 10 + 2 + paramArrayOfByte5.length + 4];
     util.int64_to_buf(paramArrayOfByte6, 0, (int)paramLong1);
     util.int16_to_buf(paramArrayOfByte6, 4, t.B.length);
@@ -283,7 +283,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.l
  * JD-Core Version:    0.7.0.1
  */

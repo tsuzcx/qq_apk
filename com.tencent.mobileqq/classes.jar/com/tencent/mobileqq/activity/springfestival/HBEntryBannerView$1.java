@@ -18,7 +18,7 @@ class HBEntryBannerView$1
   
   public void a(boolean paramBoolean, String paramString, Object paramObject)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && ((paramObject instanceof String)))
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.a)) && ((paramObject instanceof String)))
     {
       paramString = (String)paramObject;
       paramBoolean = FileUtils.fileExists(paramString);
@@ -35,17 +35,17 @@ class HBEntryBannerView$1
       {
         paramObject = new ApngOptions();
         paramObject.a(URLDrawableHelper.TRANSPARENT);
-        paramObject.a(this.jdField_a_of_type_Int);
+        paramObject.a(this.b);
         paramString = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", paramObject, paramString);
-        HBEntryBannerView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalHBEntryBannerView).setImageDrawable(paramString);
+        HBEntryBannerView.a(this.d).setImageDrawable(paramString);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalEntryManager.b(this);
+      this.c.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.HBEntryBannerView.1
  * JD-Core Version:    0.7.0.1
  */

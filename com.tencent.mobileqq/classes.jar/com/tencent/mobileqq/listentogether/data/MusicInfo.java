@@ -25,47 +25,37 @@ public class MusicInfo
   implements ISong, IConst.Caller
 {
   public static final Parcelable.Creator<MusicInfo> CREATOR = new MusicInfo.1();
-  public int a;
-  public long a;
   public String a;
-  public List<String> a;
-  public long b;
   public String b;
-  public List<String> b;
-  public long c;
   public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
+  public List<String> d;
+  public List<String> e;
+  public String f;
+  public String g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
+  public int l;
+  public long m;
   
   public MusicInfo() {}
   
   private MusicInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    paramParcel.readStringList(this.jdField_b_of_type_JavaUtilList);
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramParcel.readStringList(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_d_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_Long = paramParcel.readLong();
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (paramInt != 1)
-    {
-      if (paramInt != 2) {}
-      return 0;
-    }
-    return 2130840608;
+    this.e = new ArrayList();
+    paramParcel.readStringList(this.e);
+    this.f = paramParcel.readString();
+    this.g = paramParcel.readString();
+    this.h = paramParcel.readLong();
+    this.d = new ArrayList();
+    paramParcel.readStringList(this.d);
+    this.k = paramParcel.readLong();
+    this.l = paramParcel.readInt();
+    this.m = paramParcel.readLong();
   }
   
   public static MusicInfo a(aio_media.Song paramSong)
@@ -74,7 +64,7 @@ public class MusicInfo
       return null;
     }
     MusicInfo localMusicInfo = new MusicInfo();
-    localMusicInfo.jdField_a_of_type_JavaLangString = paramSong.str_song_id.get();
+    localMusicInfo.a = paramSong.str_song_id.get();
     Object localObject1 = paramSong.bytes_name.get();
     String str = "";
     if (localObject1 != null) {
@@ -82,7 +72,7 @@ public class MusicInfo
     } else {
       localObject1 = "";
     }
-    localMusicInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
+    localMusicInfo.b = ((String)localObject1);
     if (paramSong.bytes_sub_title.get() != null) {
       localObject1 = paramSong.bytes_sub_title.get().toStringUtf8();
     } else {
@@ -90,17 +80,17 @@ public class MusicInfo
     }
     localMusicInfo.c = ((String)localObject1);
     localObject1 = paramSong.rpt_bytes_singer.get();
-    localMusicInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localMusicInfo.d = new ArrayList();
     if (localObject1 != null)
     {
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (ByteStringMicro)((Iterator)localObject1).next();
-        localMusicInfo.jdField_a_of_type_JavaUtilList.add(((ByteStringMicro)localObject2).toStringUtf8());
+        localMusicInfo.d.add(((ByteStringMicro)localObject2).toStringUtf8());
       }
     }
-    localMusicInfo.jdField_b_of_type_JavaUtilList = new ArrayList();
+    localMusicInfo.e = new ArrayList();
     if (paramSong.rpt_bytes_download_url.get() != null)
     {
       localObject1 = paramSong.rpt_bytes_download_url.get();
@@ -110,7 +100,7 @@ public class MusicInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (ByteStringMicro)((Iterator)localObject1).next();
-          localMusicInfo.jdField_b_of_type_JavaUtilList.add(((ByteStringMicro)localObject2).toStringUtf8());
+          localMusicInfo.e.add(((ByteStringMicro)localObject2).toStringUtf8());
         }
       }
     }
@@ -123,15 +113,15 @@ public class MusicInfo
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
       localObject2 = ((String)localObject1).replace("&apos;", "'").replace("&quot;", "\"").replace("&nbsp;", " ").replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&");
     }
-    localMusicInfo.jdField_d_of_type_JavaLangString = ((String)localObject2);
+    localMusicInfo.f = ((String)localObject2);
     localObject1 = str;
     if (paramSong.bytes_cover.get() != null) {
       localObject1 = paramSong.bytes_cover.get().toStringUtf8();
     }
-    localMusicInfo.jdField_e_of_type_JavaLangString = ((String)localObject1);
-    localMusicInfo.jdField_d_of_type_Long = paramSong.uint32_duration.get();
-    localMusicInfo.jdField_a_of_type_Int = paramSong.enum_song_source.get();
-    localMusicInfo.jdField_e_of_type_Long = paramSong.uint64_sharer_uin.get();
+    localMusicInfo.g = ((String)localObject1);
+    localMusicInfo.k = paramSong.uint32_duration.get();
+    localMusicInfo.l = paramSong.enum_song_source.get();
+    localMusicInfo.m = paramSong.uint64_sharer_uin.get();
     return localMusicInfo;
   }
   
@@ -142,7 +132,7 @@ public class MusicInfo
       if (paramInt != 2) {
         return "";
       }
-      return HardCodeUtil.a(2131707061);
+      return HardCodeUtil.a(2131904901);
     }
     return "QQ音乐";
   }
@@ -184,64 +174,48 @@ public class MusicInfo
     return "";
   }
   
-  public int a()
+  public static int b(int paramInt)
   {
-    long l = this.jdField_a_of_type_Long;
-    if (l < 0L) {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2) {}
       return 0;
     }
-    return (int)l;
-  }
-  
-  public long a()
-  {
-    return this.jdField_e_of_type_Long;
+    return 2130841381;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    List localList = this.jdField_b_of_type_JavaUtilList;
-    return (localList != null) && (!localList.isEmpty());
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
-  public int c()
+  public List<String> c()
   {
-    return 1;
-  }
-  
-  public String c()
-  {
-    return ListenTogetherResDownloader.a(this.jdField_a_of_type_JavaLangString);
+    return this.e;
   }
   
   public String d()
   {
-    return this.jdField_e_of_type_JavaLangString;
+    return ListenTogetherResDownloader.b(this.a);
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  public int e()
+  {
+    long l1 = this.h;
+    if (l1 < 0L) {
+      return 0;
+    }
+    return (int)l1;
   }
   
   public boolean equals(Object paramObject)
@@ -252,15 +226,15 @@ public class MusicInfo
       return false;
     }
     bool1 = bool2;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       paramObject = (MusicInfo)paramObject;
       bool1 = bool2;
       if (str.equals(paramObject.a()))
       {
         bool1 = bool2;
-        if (c() == paramObject.c()) {
+        if (i() == paramObject.i()) {
           bool1 = true;
         }
       }
@@ -268,54 +242,80 @@ public class MusicInfo
     return bool1;
   }
   
+  public String f()
+  {
+    return this.g;
+  }
+  
+  public int g()
+  {
+    return this.l;
+  }
+  
+  public long h()
+  {
+    return this.m;
+  }
+  
+  public int i()
+  {
+    return 1;
+  }
+  
+  public boolean j()
+  {
+    List localList = this.e;
+    return (localList != null) && (!localList.isEmpty());
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SongInfo{id='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", name='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", subTitle='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", singers=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", urls='");
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
-    int j = 0;
-    int i;
+    Object localObject = this.e;
+    int i1 = 0;
+    int n;
     if (localObject == null) {
-      i = 0;
+      n = 0;
     } else {
-      i = ((List)localObject).size();
+      n = ((List)localObject).size();
     }
-    localStringBuilder.append(i);
+    localStringBuilder.append(n);
     localStringBuilder.append('\'');
     localStringBuilder.append(", lyric='");
-    localObject = this.jdField_d_of_type_JavaLangString;
+    localObject = this.f;
     if (localObject == null) {
-      i = j;
+      n = i1;
     } else {
-      i = ((String)localObject).length();
+      n = ((String)localObject).length();
     }
-    localStringBuilder.append(i);
+    localStringBuilder.append(n);
     localStringBuilder.append('\'');
     localStringBuilder.append(", album='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", seek='");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append("ms, duration='");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append(", source='");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append('\'');
     localStringBuilder.append(", shareUin='");
-    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append(this.m);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -323,22 +323,22 @@ public class MusicInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeStringList(this.jdField_b_of_type_JavaUtilList);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeStringList(this.jdField_a_of_type_JavaUtilList);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_e_of_type_Long);
+    paramParcel.writeStringList(this.e);
+    paramParcel.writeString(this.f);
+    paramParcel.writeString(this.g);
+    paramParcel.writeLong(this.h);
+    paramParcel.writeStringList(this.d);
+    paramParcel.writeLong(this.k);
+    paramParcel.writeInt(this.l);
+    paramParcel.writeLong(this.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.data.MusicInfo
  * JD-Core Version:    0.7.0.1
  */

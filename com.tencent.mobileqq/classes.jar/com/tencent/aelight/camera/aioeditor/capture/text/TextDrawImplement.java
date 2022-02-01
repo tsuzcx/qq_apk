@@ -11,18 +11,18 @@ import java.util.Iterator;
 
 public class TextDrawImplement
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  private BaseBackgroundDrawer jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextBaseBackgroundDrawer;
-  private TextDrawer jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawer;
-  private ArrayList<PerLineModel> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float b = 0.0F;
+  private ArrayList<PerLineModel> a = new ArrayList();
+  private TextDrawer b;
+  private int c = 0;
+  private BaseBackgroundDrawer d;
+  private float e = 0.0F;
+  private float f = 0.0F;
   
   public TextDrawImplement(int paramInt)
   {
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawer = new PerLineDrawer();
+      this.b = new PerLineDrawer();
       return;
     }
     if (paramInt == 0) {
@@ -39,46 +39,36 @@ public class TextDrawImplement
     localRectF.right = 1.4E-45F;
     localRectF.bottom = 1.4E-45F;
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      PerLineModel localPerLineModel = (PerLineModel)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localRectF.left > localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.left) {
-        localRectF.left = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.left;
+      PerLineModel localPerLineModel = (PerLineModel)this.a.get(i);
+      if (localRectF.left > localPerLineModel.c.left) {
+        localRectF.left = localPerLineModel.c.left;
       }
-      if (localRectF.right < localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.right) {
-        localRectF.right = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.right;
+      if (localRectF.right < localPerLineModel.c.right) {
+        localRectF.right = localPerLineModel.c.right;
       }
-      if (localRectF.top > localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.top) {
-        localRectF.top = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.top;
+      if (localRectF.top > localPerLineModel.c.top) {
+        localRectF.top = localPerLineModel.c.top;
       }
-      if (localRectF.bottom < localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.bottom) {
-        localRectF.bottom = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.bottom;
+      if (localRectF.bottom < localPerLineModel.c.bottom) {
+        localRectF.bottom = localPerLineModel.c.bottom;
       }
       i += 1;
     }
     return localRectF.width();
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
   public int a(int paramInt)
   {
-    return ((PerLineModel)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString.length();
-  }
-  
-  public RectF a(int paramInt)
-  {
-    return ((PerLineModel)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_AndroidGraphicsRectF;
+    return ((PerLineModel)this.a.get(paramInt)).e.length();
   }
   
   public RectF a(int paramInt1, int paramInt2)
   {
     paramInt1 -= 1;
     paramInt2 -= 1;
-    if ((paramInt1 >= 0) && (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt2 >= 0) && (paramInt2 < this.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt2 >= paramInt1))
+    if ((paramInt1 >= 0) && (paramInt1 < this.a.size()) && (paramInt2 >= 0) && (paramInt2 < this.a.size()) && (paramInt2 >= paramInt1))
     {
       RectF localRectF = new RectF();
       localRectF.left = 3.4028235E+38F;
@@ -87,18 +77,18 @@ public class TextDrawImplement
       localRectF.bottom = 1.4E-45F;
       while (paramInt1 <= paramInt2)
       {
-        PerLineModel localPerLineModel = (PerLineModel)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-        if (localRectF.left > localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.left) {
-          localRectF.left = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.left;
+        PerLineModel localPerLineModel = (PerLineModel)this.a.get(paramInt1);
+        if (localRectF.left > localPerLineModel.c.left) {
+          localRectF.left = localPerLineModel.c.left;
         }
-        if (localRectF.right < localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.right) {
-          localRectF.right = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.right;
+        if (localRectF.right < localPerLineModel.c.right) {
+          localRectF.right = localPerLineModel.c.right;
         }
-        if (localRectF.top > localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.top) {
-          localRectF.top = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.top;
+        if (localRectF.top > localPerLineModel.c.top) {
+          localRectF.top = localPerLineModel.c.top;
         }
-        if (localRectF.bottom < localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.bottom) {
-          localRectF.bottom = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.bottom;
+        if (localRectF.bottom < localPerLineModel.c.bottom) {
+          localRectF.bottom = localPerLineModel.c.bottom;
         }
         paramInt1 += 1;
       }
@@ -109,20 +99,20 @@ public class TextDrawImplement
   
   public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.c == 2)
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextBaseBackgroundDrawer;
+      localObject = this.d;
       if (localObject != null) {
-        ((BaseBackgroundDrawer)localObject).a(paramCanvas, this.jdField_a_of_type_JavaUtilArrayList, paramInt1, paramInt2);
+        ((BaseBackgroundDrawer)localObject).a(paramCanvas, this.a, paramInt1, paramInt2);
       }
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext())
     {
       PerLineModel localPerLineModel = (PerLineModel)((Iterator)localObject).next();
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.c == 1)
       {
-        BaseBackgroundDrawer localBaseBackgroundDrawer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextBaseBackgroundDrawer;
+        BaseBackgroundDrawer localBaseBackgroundDrawer = this.d;
         if (localBaseBackgroundDrawer != null) {
           localPerLineModel.a(paramCanvas, localBaseBackgroundDrawer, paramInt1, paramInt2);
         }
@@ -133,16 +123,16 @@ public class TextDrawImplement
   
   public void a(BaseBackgroundDrawer paramBaseBackgroundDrawer)
   {
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextBaseBackgroundDrawer = paramBaseBackgroundDrawer;
+    this.c = 2;
+    this.d = paramBaseBackgroundDrawer;
   }
   
   public void a(BaseCovert paramBaseCovert)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      paramBaseCovert.a(i, (PerLineModel)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      paramBaseCovert.a(i, (PerLineModel)this.a.get(i));
       i += 1;
     }
   }
@@ -154,7 +144,7 @@ public class TextDrawImplement
     }
     paramTextPaint.setTextSize(paramInt2);
     StaticLayout localStaticLayout = new StaticLayout(paramCharSequence, paramTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
     float f1 = 0.0F;
     paramInt1 = 0;
     while (paramInt1 < localStaticLayout.getLineCount())
@@ -171,11 +161,11 @@ public class TextDrawImplement
       f1 += f3;
       ((RectF)localObject).bottom = f1;
       localObject = new PerLineModel(0, 0, paramTextPaint, str, (RectF)localObject, f4);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      if (this.jdField_a_of_type_Float < f2) {
-        this.jdField_a_of_type_Float = f2;
+      this.a.add(localObject);
+      if (this.e < f2) {
+        this.e = f2;
       }
-      this.b += f3;
+      this.f += f3;
       paramInt1 += 1;
     }
   }
@@ -188,35 +178,45 @@ public class TextDrawImplement
     localRectF.right = 1.4E-45F;
     localRectF.bottom = 1.4E-45F;
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      PerLineModel localPerLineModel = (PerLineModel)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localRectF.left > localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.left) {
-        localRectF.left = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.left;
+      PerLineModel localPerLineModel = (PerLineModel)this.a.get(i);
+      if (localRectF.left > localPerLineModel.c.left) {
+        localRectF.left = localPerLineModel.c.left;
       }
-      if (localRectF.right < localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.right) {
-        localRectF.right = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.right;
+      if (localRectF.right < localPerLineModel.c.right) {
+        localRectF.right = localPerLineModel.c.right;
       }
-      if (localRectF.top > localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.top) {
-        localRectF.top = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.top;
+      if (localRectF.top > localPerLineModel.c.top) {
+        localRectF.top = localPerLineModel.c.top;
       }
-      if (localRectF.bottom < localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.bottom) {
-        localRectF.bottom = localPerLineModel.jdField_a_of_type_AndroidGraphicsRectF.bottom;
+      if (localRectF.bottom < localPerLineModel.c.bottom) {
+        localRectF.bottom = localPerLineModel.c.bottom;
       }
       i += 1;
     }
     return localRectF.height();
   }
   
+  public RectF b(int paramInt)
+  {
+    return ((PerLineModel)this.a.get(paramInt)).c;
+  }
+  
   public void b(BaseBackgroundDrawer paramBaseBackgroundDrawer)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextBaseBackgroundDrawer = paramBaseBackgroundDrawer;
+    this.c = 1;
+    this.d = paramBaseBackgroundDrawer;
+  }
+  
+  public int c()
+  {
+    return this.a.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.TextDrawImplement
  * JD-Core Version:    0.7.0.1
  */

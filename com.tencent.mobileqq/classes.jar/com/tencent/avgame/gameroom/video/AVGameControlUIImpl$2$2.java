@@ -11,7 +11,7 @@ class AVGameControlUIImpl$2$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.a.a().a(this.jdField_a_of_type_ComTencentQavQavDef$MultiUserInfo.mUin, this.jdField_a_of_type_Boolean);
+    this.c.a.i.d().a(this.a.mUin, this.b);
   }
 }
 

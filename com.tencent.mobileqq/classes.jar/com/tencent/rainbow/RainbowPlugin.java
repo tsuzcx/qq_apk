@@ -12,6 +12,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 public class RainbowPlugin
   implements FlutterPlugin, MethodChannel.MethodCallHandler
 {
+  public static final String CURRENT_VERSION = "1.0.2";
   public static Context sContext;
   private static boolean sIsPublishVersion = true;
   private MethodChannel channel;
@@ -35,17 +36,21 @@ public class RainbowPlugin
   
   public void onMethodCall(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
   {
-    if (paramMethodCall.method.equals("isPublishVersion"))
+    if (paramMethodCall.method.equals("isPublishVersion")) {}
+    for (paramMethodCall = Boolean.valueOf(sIsPublishVersion);; paramMethodCall = "1.0.2")
     {
-      paramResult.success(Boolean.valueOf(sIsPublishVersion));
+      paramResult.success(paramMethodCall);
       return;
+      if (!paramMethodCall.method.equals("getCurrentVersion")) {
+        break;
+      }
     }
     paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rainbow.RainbowPlugin
  * JD-Core Version:    0.7.0.1
  */

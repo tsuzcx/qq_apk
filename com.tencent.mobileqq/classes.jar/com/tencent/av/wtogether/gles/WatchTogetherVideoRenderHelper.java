@@ -21,140 +21,116 @@ import javax.microedition.khronos.opengles.GL10;
 public class WatchTogetherVideoRenderHelper
   implements VideoSink, WatchTogetherSurfaceLifeCallback
 {
-  private final float jdField_a_of_type_Float = 64.0F;
-  private int jdField_a_of_type_Int;
-  private WatchTogetherSurfaceTextureHolder jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private final String jdField_a_of_type_JavaLangString;
-  private WeakReference<GLSurfaceView> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private float[] jdField_b_of_type_ArrayOfFloat;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int = -1;
-  private boolean jdField_e_of_type_Boolean = true;
-  private boolean f = false;
+  private final String a;
+  private boolean b = false;
+  private WatchTogetherSurfaceTextureHolder c;
+  private final float d = 64.0F;
+  private int e;
+  private int f;
+  private float[] g = new float[16];
+  private int h;
+  private int i = -1;
+  private int j = -1;
+  private float[] k;
+  private TextureRender l;
+  private boolean m = false;
+  private boolean n = false;
+  private boolean o = false;
+  private boolean p = true;
+  private boolean q = false;
+  private WeakReference<GLSurfaceView> r;
   
   public WatchTogetherVideoRenderHelper(boolean paramBoolean)
   {
-    this.f = paramBoolean;
+    this.q = paramBoolean;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WatchTogetherVideoRenderHelper");
     String str;
-    if (this.f) {
+    if (this.q) {
       str = "Floating-window";
     } else {
       str = "Full-screen";
     }
     localStringBuilder.append(str);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.a = localStringBuilder.toString();
   }
   
   private void a(Runnable paramRunnable)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.r;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).queueEvent(paramRunnable);
+      ((GLSurfaceView)this.r.get()).queueEvent(paramRunnable);
     }
   }
   
   private void c(int paramInt1, int paramInt2)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    int j = 1;
+    String str = this.a;
+    int i2 = 1;
     QLog.d(str, 1, "onSizeChanged");
-    int i;
-    if ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2)) {
-      i = 0;
+    int i1;
+    if ((this.e == paramInt1) && (this.f == paramInt2)) {
+      i1 = 0;
     } else {
-      i = 1;
+      i1 = 1;
     }
-    if ((i != 0) || (!this.jdField_b_of_type_Boolean))
+    if ((i1 != 0) || (!this.m))
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+      this.e = paramInt1;
+      this.f = paramInt2;
+      this.l = new TextureRender();
     }
-    paramInt1 = j;
-    if (i == 0) {
-      if (!this.jdField_b_of_type_Boolean) {
-        paramInt1 = j;
+    paramInt1 = i2;
+    if (i1 == 0) {
+      if (!this.m) {
+        paramInt1 = i2;
       } else {
         paramInt1 = 0;
       }
     }
     if (paramInt1 != 0) {
-      this.jdField_c_of_type_Int = -1;
+      this.h = -1;
     }
   }
   
-  private boolean c()
+  private void f()
   {
-    if (this.jdField_d_of_type_Boolean)
+    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.f().aA();
+    if (localWatchTogetherMediaPlayCtrl != null) {
+      localWatchTogetherMediaPlayCtrl.a("tryReleaseVideoSink", this);
+    }
+  }
+  
+  private boolean g()
+  {
+    if (this.o)
     {
-      WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      WeakReference localWeakReference = this.r;
       if ((localWeakReference != null) && (localWeakReference.get() != null))
       {
-        ((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).requestRender();
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "run requestGLRender");
+        ((GLSurfaceView)this.r.get()).requestRender();
+        QLog.d(this.a, 1, "run requestGLRender");
         return true;
       }
     }
     return false;
   }
   
-  private void d()
-  {
-    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-    if (localWatchTogetherMediaPlayCtrl != null) {
-      localWatchTogetherMediaPlayCtrl.a("tryReleaseVideoSink", this);
-    }
-  }
-  
-  public void a()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceDestroy");
-    if ((this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder != null) && (Build.VERSION.SDK_INT >= 16)) {
-      synchronized (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder)
-      {
-        if (this.jdField_b_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.c();
-          this.jdField_b_of_type_Boolean = false;
-        }
-        this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.d();
-        this.jdField_c_of_type_Int = -1;
-      }
-    }
-    d();
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceChange");
+    QLog.d(this.a, 1, "onSurfaceChange");
     c(paramInt1, paramInt2);
   }
   
   public void a(GLSurfaceView paramGLSurfaceView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGLSurfaceView);
+    this.r = new WeakReference(paramGLSurfaceView);
   }
   
   public boolean a()
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onVideoFrameResume");
-    this.jdField_c_of_type_Boolean = true;
+    QLog.d(this.a, 1, "onVideoFrameResume");
+    this.n = true;
     a(new WatchTogetherVideoRenderHelper.1(this));
     return false;
   }
@@ -163,94 +139,118 @@ public class WatchTogetherVideoRenderHelper
   {
     try
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder = paramWatchTogetherSurfaceTextureHolder;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_d_of_type_Int = paramInt1;
-      this.jdField_e_of_type_Int = paramInt2;
-      return c();
+      this.c = paramWatchTogetherSurfaceTextureHolder;
+      this.b = true;
+      this.i = paramInt1;
+      this.j = paramInt2;
+      return g();
     }
     finally {}
   }
   
-  public void b()
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceCreate");
-  }
-  
   public void b(int paramInt1, int paramInt2)
   {
-    ??? = this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder;
-    int i;
-    if ((??? != null) && (???.a())) {
-      i = 1;
+    ??? = this.c;
+    int i1;
+    if ((??? != null) && (???.c())) {
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    this.jdField_d_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder != null) && (this.jdField_c_of_type_Boolean))
+    this.o = true;
+    if ((this.c != null) && (this.n))
     {
-      if (i == 0) {
+      if (i1 == 0) {
         return;
       }
       c(paramInt1, paramInt2);
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder)
+      synchronized (this.c)
       {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.b)
         {
-          if (this.jdField_c_of_type_Int < 0) {
-            this.jdField_c_of_type_Int = GlUtil.createTexture(36197);
+          if (this.h < 0) {
+            this.h = GlUtil.createTexture(36197);
           }
-          this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.a(this.jdField_c_of_type_Int);
-          this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.a();
-          this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.a(this.jdField_a_of_type_ArrayOfFloat);
+          this.c.a(this.h);
+          this.c.a();
+          this.c.a(this.g);
         }
-        int j = AIOUtils.b(64.0F, ((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-        int k = WTogetherUtil.a(((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getContext());
-        int m = WTogetherUtil.a();
-        int n = WTogetherUtil.a();
+        int i2 = AIOUtils.b(64.0F, ((GLSurfaceView)this.r.get()).getResources());
+        int i3 = WTogetherUtil.a(((GLSurfaceView)this.r.get()).getContext());
+        int i4 = WTogetherUtil.b();
+        int i5 = WTogetherUtil.b();
         if (paramInt1 >= paramInt2) {
           break label301;
         }
-        i = 1;
-        if (i != 0)
+        i1 = 1;
+        if (i1 != 0)
         {
-          GLES20.glViewport(0, paramInt2 - (j + k + m), paramInt1, n);
-          this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateFitCenterMvpMatrix(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramInt1, n);
+          GLES20.glViewport(0, paramInt2 - (i2 + i3 + i4), paramInt1, i5);
+          this.k = GPUBaseFilter.caculateFitCenterMvpMatrix(this.i, this.j, paramInt1, i5);
         }
         else
         {
           GLES20.glViewport(0, 0, paramInt1, paramInt2);
-          this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateFitCenterMvpMatrix(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramInt1, paramInt2);
+          this.k = GPUBaseFilter.caculateFitCenterMvpMatrix(this.i, this.j, paramInt1, paramInt2);
         }
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
-        if (i != 0) {
+        this.l.drawTexture(36197, this.h, this.g, this.k);
+        if (i1 != 0) {
           GLES20.glViewport(0, 0, paramInt1, paramInt2);
         }
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_e_of_type_Boolean = false;
-        this.jdField_a_of_type_Boolean = false;
+        this.m = true;
+        this.p = false;
+        this.b = false;
         return;
       }
       return;
       label301:
-      i = 0;
+      i1 = 0;
     }
   }
   
   public boolean b()
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onVideoFramePause");
-    this.jdField_c_of_type_Boolean = false;
+    QLog.d(this.a, 1, "onVideoFramePause");
+    this.n = false;
     a(new WatchTogetherVideoRenderHelper.2(this));
     return false;
   }
   
   public void c()
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onActivityDestroy");
+    QLog.d(this.a, 1, "onSurfaceDestroy");
+    if ((this.c != null) && (Build.VERSION.SDK_INT >= 16)) {
+      synchronized (this.c)
+      {
+        if (this.m)
+        {
+          this.c.d();
+          this.m = false;
+        }
+        this.c.e();
+        this.h = -1;
+      }
+    }
+    f();
+    this.o = false;
+    this.p = true;
+    this.n = false;
+    this.l = null;
+    this.e = -1;
+    this.f = -1;
+  }
+  
+  public void d()
+  {
+    QLog.d(this.a, 1, "onSurfaceCreate");
+  }
+  
+  public void e()
+  {
+    QLog.d(this.a, 1, "onActivityDestroy");
   }
   
   public void onDrawFrame(GL10 paramGL10)
@@ -261,35 +261,35 @@ public class WatchTogetherVideoRenderHelper
       GLES20.glClear(16640);
       GLES20.glDisable(2929);
       GLES20.glDisable(3042);
-      b(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      b(this.e, this.f);
       return;
     }
     catch (Exception paramGL10)
     {
       if (QLog.isColorLevel())
       {
-        Object localObject = this.jdField_a_of_type_JavaLangString;
+        Object localObject = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("WL_DEBUG onDrawFrame e = ");
         localStringBuilder.append(paramGL10);
         QLog.e((String)localObject, 2, localStringBuilder.toString());
         localObject = paramGL10.getStackTrace();
-        int j = localObject.length;
-        int i = 0;
+        int i2 = localObject.length;
+        int i1 = 0;
         paramGL10 = "";
-        while (i < j)
+        while (i1 < i2)
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramGL10);
           localStringBuilder.append("WL_DEBUG onDrawFrame ste[");
-          localStringBuilder.append(i);
+          localStringBuilder.append(i1);
           localStringBuilder.append("]");
-          localStringBuilder.append(localObject[i].toString());
+          localStringBuilder.append(localObject[i1].toString());
           localStringBuilder.append("\n");
           paramGL10 = localStringBuilder.toString();
-          i += 1;
+          i1 += 1;
         }
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramGL10);
+        QLog.e(this.a, 2, paramGL10);
       }
     }
   }
@@ -302,7 +302,7 @@ public class WatchTogetherVideoRenderHelper
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    b();
+    d();
   }
 }
 

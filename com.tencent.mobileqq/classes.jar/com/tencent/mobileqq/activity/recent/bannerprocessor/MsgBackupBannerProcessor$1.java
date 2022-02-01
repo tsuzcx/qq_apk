@@ -15,17 +15,17 @@ class MsgBackupBannerProcessor$1
   public void onClick(View paramView)
   {
     if (BaseActivity.sTopActivity != null) {
-      MsgBackupManager.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
+      MsgBackupManager.a().a(BaseActivity.sTopActivity, this.a);
     } else if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "sTopActivity is null");
     }
-    MsgBackupManager.m();
+    MsgBackupManager.q();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MsgBackupBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

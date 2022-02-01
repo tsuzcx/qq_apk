@@ -28,17 +28,17 @@ public class BlessJsApiUtils
       localIntent.putExtra("param_entrance", 15);
       localIntent.putExtra("param_only_friends", true);
       localIntent.putExtra("param_donot_need_contacts", true);
-      localIntent.putExtra("param_title", paramActivity.getString(2131690668));
-      localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131691064));
+      localIntent.putExtra("param_title", paramActivity.getString(2131887583));
+      localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131888010));
       localIntent.putExtra("param_exit_animation", 1);
       localIntent.putExtra("param_blesstype", 1);
       localIntent.putExtra("param_blessword_content", paramString1);
       localIntent.putExtra("param_web_callback", paramString2);
       ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startBlessSelectMemberActivity(paramActivity, localIntent);
-      paramActivity.overridePendingTransition(2130772006, 2130772007);
+      paramActivity.overridePendingTransition(2130772009, 2130772010);
       return;
     }
-    QQToast.a(paramActivity, 2131690662, 1).a();
+    QQToast.makeText(paramActivity, 2131887577, 1).show();
   }
   
   public static boolean a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
@@ -77,7 +77,7 @@ public class BlessJsApiUtils
       if (QLog.isColorLevel()) {
         QLog.i(a, 2, "supportMediaCodec = false");
       }
-      QQToast.a(paramActivity, paramActivity.getString(2131690666), 0).a();
+      QQToast.makeText(paramActivity, paramActivity.getString(2131887581), 0).show();
       return false;
     }
     paramString1 = ((IQIMWebEffectUnit)QRoute.api(IQIMWebEffectUnit.class)).generateArgs(bool1, bool2, i, true, bool3, bool5, paramString6, bool4, 107);
@@ -133,7 +133,7 @@ public class BlessJsApiUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessJsApiUtils
  * JD-Core Version:    0.7.0.1
  */

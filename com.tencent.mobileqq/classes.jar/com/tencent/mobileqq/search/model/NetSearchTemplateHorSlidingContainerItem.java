@@ -18,33 +18,39 @@ public class NetSearchTemplateHorSlidingContainerItem
   extends NetSearchTemplateBaseItem
 {
   public static final String a = "NetSearchTemplateHorSlidingContainerItem";
-  public int a;
-  public CharSequence a;
-  public ArrayList<NetSearchTemplateHorizontalBaseItem> a;
-  public int b;
-  protected final String b;
-  protected final String j = "Type";
-  protected final String k = "moreText";
-  protected final String l = "moreUrl";
-  public String m;
+  protected final String b = "itemList";
+  protected final String c = "Type";
+  protected final String d = "moreText";
+  protected final String e = "moreUrl";
+  public int f;
+  public CharSequence t;
+  public String u;
+  public ArrayList<NetSearchTemplateHorizontalBaseItem> v;
+  public int w = 0;
   
   public NetSearchTemplateHorSlidingContainerItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_JavaLangString = "itemList";
-    this.jdField_b_of_type_Int = 0;
   }
   
   public NetSearchTemplateHorSlidingContainerItem(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_b_of_type_JavaLangString = "itemList";
-    this.jdField_b_of_type_Int = 0;
   }
   
   public void a(View paramView) {}
   
-  public void a(String paramString)
+  public int ck_()
+  {
+    return 2;
+  }
+  
+  public int cl_()
+  {
+    return 1;
+  }
+  
+  public void o_(String paramString)
   {
     for (;;)
     {
@@ -52,23 +58,23 @@ public class NetSearchTemplateHorSlidingContainerItem
       try
       {
         paramString = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = paramString.optInt("Type");
-        this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("moreText");
-        this.m = paramString.optString("moreUrl");
+        this.f = paramString.optInt("Type");
+        this.t = paramString.optString("moreText");
+        this.u = paramString.optString("moreUrl");
         localObject1 = paramString.optJSONArray("itemList");
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        if (this.v == null) {
+          this.v = new ArrayList();
         } else {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.v.clear();
         }
       }
       catch (JSONException paramString)
       {
-        int n;
+        int j;
         if (!QLog.isColorLevel()) {
           break label359;
         }
-        Object localObject1 = jdField_a_of_type_JavaLangString;
+        Object localObject1 = a;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("layout 13 parse layout error :");
         ((StringBuilder)localObject2).append(paramString.toString());
@@ -78,27 +84,27 @@ public class NetSearchTemplateHorSlidingContainerItem
       {
         localObject2 = ((JSONArray)localObject1).optJSONObject(i);
         paramString = null;
-        n = ((JSONObject)localObject2).optInt("type");
-        if (n == 0)
+        j = ((JSONObject)localObject2).optInt("type");
+        if (j == 0)
         {
-          n = 1;
-          if ((a() instanceof DynamicSearch.ResultItem)) {
-            paramString = new NetSearchTemplateHorizontalOneItem(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, (JSONObject)localObject2, n, (DynamicSearch.ResultItem)a(), i + 1);
-          } else if ((a() instanceof UnifySearchCommon.ResultItem)) {
-            paramString = new NetSearchTemplateHorizontalOneItem(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, (JSONObject)localObject2, n, (UnifySearchCommon.ResultItem)a(), i + 1);
+          j = 1;
+          if ((j() instanceof DynamicSearch.ResultItem)) {
+            paramString = new NetSearchTemplateHorizontalOneItem(this.m, this.i, this.k, this.p, (JSONObject)localObject2, j, (DynamicSearch.ResultItem)j(), i + 1);
+          } else if ((j() instanceof UnifySearchCommon.ResultItem)) {
+            paramString = new NetSearchTemplateHorizontalOneItem(this.m, this.i, this.k, this.p, (JSONObject)localObject2, j, (UnifySearchCommon.ResultItem)j(), i + 1);
           }
           if (paramString == null) {
             break label368;
           }
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+          this.v.add(paramString);
           break label368;
         }
       }
       else
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && ((this.jdField_a_of_type_JavaUtilArrayList.get(0) instanceof NetSearchTemplateHorizontalOneItem)) && (!TextUtils.isEmpty(((NetSearchTemplateHorizontalOneItem)this.jdField_a_of_type_JavaUtilArrayList.get(0)).n)) && (((NetSearchTemplateHorizontalOneItem)this.jdField_a_of_type_JavaUtilArrayList.get(0)).n.contains("qcircle")))
+        if ((this.v.size() > 0) && ((this.v.get(0) instanceof NetSearchTemplateHorizontalOneItem)) && (!TextUtils.isEmpty(((NetSearchTemplateHorizontalOneItem)this.v.get(0)).w)) && (((NetSearchTemplateHorizontalOneItem)this.v.get(0)).w.contains("qcircle")))
         {
-          UniteSearchReportController.a(null, 0, this.c, "0X800BA22", 0, 0, null, null);
+          UniteSearchReportController.a(null, 0, this.p, "0X800BA22", 0, 0, null, null);
           return;
         }
         label359:
@@ -111,20 +117,10 @@ public class NetSearchTemplateHorSlidingContainerItem
       i += 1;
     }
   }
-  
-  public int b()
-  {
-    return 2;
-  }
-  
-  public int f_()
-  {
-    return 1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.NetSearchTemplateHorSlidingContainerItem
  * JD-Core Version:    0.7.0.1
  */

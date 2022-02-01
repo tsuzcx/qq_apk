@@ -16,13 +16,13 @@ class GameRoomFragment$5
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      paramView = paramView.findViewById(2131363170);
+      paramView = paramView.findViewById(2131429044);
       Rect localRect = new Rect();
       paramView.getHitRect(localRect);
       if (localRect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
       {
-        GameRoomFragment.a(this.a).setVisibility(8);
-        this.a.a.a();
+        GameRoomFragment.d(this.a).setVisibility(8);
+        this.a.i.a();
       }
       return false;
     }

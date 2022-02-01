@@ -25,14 +25,14 @@ class ScannerMultiResultSelectView$1
     }
     try
     {
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.a.d))
       {
-        ScannerMultiResultSelectView.a(this.this$0, ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeBitmapFromFile(this.a.jdField_a_of_type_JavaLangString, ViewUtils.a(), ViewUtils.b()));
+        ScannerMultiResultSelectView.a(this.this$0, ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeBitmapFromFile(this.a.d, ViewUtils.getScreenWidth(), ViewUtils.getScreenHeight()));
       }
-      else if (this.a.jdField_a_of_type_ArrayOfByte != null)
+      else if (this.a.a != null)
       {
-        ScannerMultiResultSelectView.a(this.this$0, ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeBitmapFromYuv(this.a.jdField_a_of_type_ArrayOfByte, this.a.jdField_a_of_type_Int, this.a.b));
-        this.a.jdField_a_of_type_ArrayOfByte = null;
+        ScannerMultiResultSelectView.a(this.this$0, ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeBitmapFromYuv(this.a.a, this.a.b, this.a.c));
+        this.a.a = null;
       }
     }
     catch (Throwable localThrowable)
@@ -40,12 +40,12 @@ class ScannerMultiResultSelectView$1
       ScannerMultiResultSelectView.a(this.this$0, null);
       QLog.i("IQRScanConst_ScannerMultiResultSelectView", 2, "decodeBitmap error:", localThrowable);
     }
-    ScannerMultiResultSelectView.a(this.this$0);
+    ScannerMultiResultSelectView.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.view.ScannerMultiResultSelectView.1
  * JD-Core Version:    0.7.0.1
  */

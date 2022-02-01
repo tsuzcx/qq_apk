@@ -13,27 +13,27 @@ public class SmallScreenVideo
 {
   public SmallScreenVideo(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = "SmallScreenVideo";
-    this.i = 2013396992;
-    this.j = paramContext.getResources().getDimensionPixelSize(2131297974);
-    this.k = paramContext.getResources().getDimensionPixelSize(2131297966);
+    this.l = "SmallScreenVideo";
+    this.o = 2013396992;
+    this.p = paramContext.getResources().getDimensionPixelSize(2131298644);
+    this.q = paramContext.getResources().getDimensionPixelSize(2131298636);
   }
   
   private void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast.a;
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast.a();
+    Object localObject = this.n.a;
+    WindowManager.LayoutParams localLayoutParams = this.n.f();
     if (((WindowManager)localObject).getDefaultDisplay().getRotation() % 2 == 0)
     {
-      localLayoutParams.width = this.j;
-      localLayoutParams.height = this.k;
+      localLayoutParams.width = this.p;
+      localLayoutParams.height = this.q;
     }
     else
     {
-      localLayoutParams.width = this.k;
-      localLayoutParams.height = this.j;
+      localLayoutParams.width = this.q;
+      localLayoutParams.height = this.p;
     }
-    localObject = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a(paramInt);
+    localObject = this.m.a(paramInt);
     localLayoutParams.x = ((Point)localObject).x;
     localLayoutParams.y = ((Point)localObject).y;
   }
@@ -42,10 +42,10 @@ public class SmallScreenVideo
   {
     if ((paramBaseSmallScreenService instanceof SmallScreenService))
     {
-      paramBaseSmallScreenService = ((SmallScreenService)paramBaseSmallScreenService).a;
-      if ((paramBaseSmallScreenService != null) && (paramBaseSmallScreenService.a != null))
+      paramBaseSmallScreenService = ((SmallScreenService)paramBaseSmallScreenService).t;
+      if ((paramBaseSmallScreenService != null) && (paramBaseSmallScreenService.u != null))
       {
-        bool = paramBaseSmallScreenService.a.i();
+        bool = paramBaseSmallScreenService.u.V();
         break label39;
       }
     }
@@ -53,19 +53,19 @@ public class SmallScreenVideo
     label39:
     if (bool)
     {
-      int i = ScreenLayoutDoubleScreen.b(this.j);
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, i);
+      int i = ScreenLayoutDoubleScreen.c(this.p);
+      this.m.setSize(this.p, i);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
+      this.m.setSize(this.p, this.q);
     }
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.f();
+    this.m.f();
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    if ((paramBoolean) && (!this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast.b())) {
+    if ((paramBoolean) && (!this.n.e())) {
       a(paramInt);
     }
     super.a(paramBoolean, paramInt);
@@ -73,7 +73,7 @@ public class SmallScreenVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -18,48 +18,43 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemMore
   extends AbsStructMsgElement
 {
-  String ac = "";
+  String au = "";
   
   public StructMsgItemMore()
   {
-    this.a = "more";
+    this.b = "more";
   }
   
   public StructMsgItemMore(String paramString)
   {
     this();
-    this.ac = paramString;
+    this.au = paramString;
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
     paramBundle = paramView;
     if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2131562866, null);
+      paramBundle = LayoutInflater.from(paramContext).inflate(2131629317, null);
     }
-    paramContext = (TextView)paramBundle.findViewById(2131377984);
-    if (TextUtils.isEmpty(this.ac)) {
-      this.ac = HardCodeUtil.a(2131714414);
+    paramContext = (TextView)paramBundle.findViewById(2131446471);
+    if (TextUtils.isEmpty(this.au)) {
+      this.au = HardCodeUtil.a(2131911925);
     }
-    paramContext.setText(this.ac);
+    paramContext.setText(this.au);
     return paramBundle;
-  }
-  
-  public String a()
-  {
-    return "More";
   }
   
   public void a(ObjectInput paramObjectInput)
   {
     super.a(paramObjectInput);
-    this.ac = paramObjectInput.readUTF();
+    this.au = paramObjectInput.readUTF();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    String str = this.ac;
+    String str = this.au;
     if (str == null) {
       str = "";
     } else {
@@ -71,19 +66,24 @@ public class StructMsgItemMore
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "title");
-    paramXmlSerializer.text(this.ac);
+    paramXmlSerializer.text(this.au);
     paramXmlSerializer.endTag(null, "title");
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
   {
-    this.ac = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
+    this.au = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
     return true;
+  }
+  
+  public String b()
+  {
+    return "More";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemMore
  * JD-Core Version:    0.7.0.1
  */

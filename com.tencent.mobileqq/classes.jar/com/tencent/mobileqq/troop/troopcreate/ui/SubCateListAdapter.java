@@ -13,37 +13,35 @@ import java.util.ArrayList;
 public class SubCateListAdapter
   extends BaseAdapter
 {
-  protected int a;
-  protected Context a;
-  protected LayoutInflater a;
-  protected View.OnClickListener a;
-  protected TroopCateListProvider.TroopCateInfo a;
-  protected ArrayList<TroopCateListProvider.TroopCateInfo> a;
+  protected ArrayList<TroopCateListProvider.TroopCateInfo> a = new ArrayList();
+  protected Context b;
+  protected LayoutInflater c;
+  protected View.OnClickListener d;
+  protected TroopCateListProvider.TroopCateInfo e;
+  protected int f = -1;
   
   public SubCateListAdapter(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.b = paramContext;
+    this.c = LayoutInflater.from(this.b);
+    this.d = paramOnClickListener;
   }
   
   public void a(TroopCateListProvider.TroopCateInfo paramTroopCateInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiTroopCateListProvider$TroopCateInfo = paramTroopCateInfo;
-    this.jdField_a_of_type_JavaUtilArrayList = paramTroopCateInfo.jdField_a_of_type_JavaUtilArrayList;
+    this.e = paramTroopCateInfo;
+    this.a = paramTroopCateInfo.g;
     super.notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -53,7 +51,7 @@ public class SubCateListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    TroopCateListProvider.TroopCateInfo localTroopCateInfo = (TroopCateListProvider.TroopCateInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    TroopCateListProvider.TroopCateInfo localTroopCateInfo = (TroopCateListProvider.TroopCateInfo)this.a.get(paramInt);
     SubCateListAdapter.ViewHolder localViewHolder = new SubCateListAdapter.ViewHolder();
     if (paramView != null)
     {
@@ -61,14 +59,14 @@ public class SubCateListAdapter
     }
     else
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560635, null);
-      localViewHolder.a = ((TextView)paramView.findViewById(2131378460));
+      paramView = this.c.inflate(2131626680, null);
+      localViewHolder.a = ((TextView)paramView.findViewById(2131447062));
       paramView.setTag(localViewHolder);
     }
     localViewHolder.a.setText(localTroopCateInfo.b);
     localViewHolder.a.setTag(localTroopCateInfo);
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      localViewHolder.a.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (this.d != null) {
+      localViewHolder.a.setOnClickListener(this.d);
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -76,7 +74,7 @@ public class SubCateListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.SubCateListAdapter
  * JD-Core Version:    0.7.0.1
  */

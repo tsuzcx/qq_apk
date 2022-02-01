@@ -16,15 +16,15 @@ class DocxApiPlugin$2
   
   public void run()
   {
-    Object localObject1 = (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getCurrentWebViewFragment();
+    Object localObject1 = (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)((TeamWorkDocEditBrowserActivity)this.a).getCurrentWebViewFragment();
     if (localObject1 == null) {
       return;
     }
     Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(this.jdField_a_of_type_JavaLangString);
-    String str = new File(this.jdField_a_of_type_JavaLangString).getName();
-    Object localObject3 = ((TicketManager)((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a.getManager(2)).getSkey(((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a.getAccount());
-    localObject1 = ((TeamWorkDocEditBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).a((ArrayList)localObject2, ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).b, (String)localObject3, "1", ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).jdField_c_of_type_JavaLangString, ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).jdField_c_of_type_Int);
+    ((ArrayList)localObject2).add(this.b);
+    String str = new File(this.b).getName();
+    Object localObject3 = ((TicketManager)((TeamWorkDocEditBrowserActivity)this.a).a.getManager(2)).getSkey(((TeamWorkDocEditBrowserActivity)this.a).a.getAccount());
+    localObject1 = ((TeamWorkDocEditBrowserActivity)this.a).a((ArrayList)localObject2, ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).p, (String)localObject3, "1", ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).q, ((TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)localObject1).j);
     if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
     {
       localObject1 = (String)((ArrayList)localObject1).get(0);
@@ -42,7 +42,7 @@ class DocxApiPlugin$2
       ((StringBuilder)localObject3).append("insertImageForNativeJSBridge('");
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append("','");
-      ((StringBuilder)localObject3).append(this.b);
+      ((StringBuilder)localObject3).append(this.c);
       ((StringBuilder)localObject3).append("','");
       ((StringBuilder)localObject3).append(str);
       ((StringBuilder)localObject3).append("')");
@@ -54,7 +54,7 @@ class DocxApiPlugin$2
     ((StringBuilder)localObject2).append("insertImageForNativeJSBridge('");
     ((StringBuilder)localObject2).append(null);
     ((StringBuilder)localObject2).append("','");
-    ((StringBuilder)localObject2).append(this.b);
+    ((StringBuilder)localObject2).append(this.c);
     ((StringBuilder)localObject2).append("','");
     ((StringBuilder)localObject2).append(str);
     ((StringBuilder)localObject2).append("')");
@@ -66,7 +66,7 @@ class DocxApiPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

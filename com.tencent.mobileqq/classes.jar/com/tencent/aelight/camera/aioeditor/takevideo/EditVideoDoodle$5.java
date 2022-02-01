@@ -10,14 +10,14 @@ class EditVideoDoodle$5
   
   public void run()
   {
-    if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
+    if (!this.this$0.f) {
+      this.this$0.l.a(1, Collections.EMPTY_LIST);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoDoodle.5
  * JD-Core Version:    0.7.0.1
  */

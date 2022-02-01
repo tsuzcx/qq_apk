@@ -18,8 +18,8 @@ import org.json.JSONObject;
 public class NativeApiManagerImpl
   implements INativeApiMangerInjector
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private LruCache<String, WebViewDoraemonAPIManager> jdField_a_of_type_AndroidUtilLruCache;
+  private static boolean b = false;
+  private LruCache<String, WebViewDoraemonAPIManager> a;
   
   public DoraemonAPIManager a(String paramString)
   {
@@ -31,7 +31,7 @@ public class NativeApiManagerImpl
       }
       return null;
     }
-    LruCache localLruCache = this.jdField_a_of_type_AndroidUtilLruCache;
+    LruCache localLruCache = this.a;
     if (localLruCache == null) {
       return null;
     }
@@ -40,7 +40,7 @@ public class NativeApiManagerImpl
   
   public void a()
   {
-    LruCache localLruCache = this.jdField_a_of_type_AndroidUtilLruCache;
+    LruCache localLruCache = this.a;
     if (localLruCache != null) {
       localLruCache.evictAll();
     }
@@ -81,16 +81,16 @@ public class NativeApiManagerImpl
       }
       else
       {
-        if (this.jdField_a_of_type_AndroidUtilLruCache == null)
+        if (this.a == null)
         {
-          if (!jdField_a_of_type_Boolean)
+          if (!b)
           {
-            jdField_a_of_type_Boolean = true;
+            b = true;
             ((IDoraemonService)QRoute.api(IDoraemonService.class)).prepare();
           }
-          this.jdField_a_of_type_AndroidUtilLruCache = new NativeApiManagerImpl.1(this, 2);
+          this.a = new NativeApiManagerImpl.1(this, 2);
         }
-        paramString = (WebViewDoraemonAPIManager)this.jdField_a_of_type_AndroidUtilLruCache.get(str2);
+        paramString = (WebViewDoraemonAPIManager)this.a.get(str2);
         if ("config".equals(str1))
         {
           paramCustomWebView = paramString;
@@ -107,11 +107,11 @@ public class NativeApiManagerImpl
               paramActivity = localJSONObject.optString("redirect_uri");
               if ((!TextUtils.isEmpty(paramCustomWebView)) && (!TextUtils.isEmpty(paramActivity)))
               {
-                paramString.b = true;
-                paramString.d = paramCustomWebView;
-                paramString.e = paramActivity;
+                paramString.n = true;
+                paramString.o = paramCustomWebView;
+                paramString.p = paramActivity;
               }
-              this.jdField_a_of_type_AndroidUtilLruCache.put(str2, paramString);
+              this.a.put(str2, paramString);
               paramCustomWebView = paramString;
             }
           }
@@ -126,7 +126,7 @@ public class NativeApiManagerImpl
           DoraemonUtil.a(localWebViewNativeAPICallback, 11);
           return true;
         }
-        if ((paramString != null) && (paramString.b()))
+        if ((paramString != null) && (paramString.j()))
         {
           paramString.a(str1, localJSONObject, localWebViewNativeAPICallback);
           return true;
@@ -150,7 +150,7 @@ public class NativeApiManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.NativeApiManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,21 @@ class AddContactsView$13
     {
       if (this.this$0.i != null)
       {
-        if (this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+        if (this.this$0.D != null) {
           return;
         }
-        View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131558499, this.this$0.i, false);
+        View localView = ((LayoutInflater)this.this$0.F.getSystemService("layout_inflater")).inflate(2131624052, this.this$0.i, false);
         localView.measure(0, 0);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-        int i = ViewUtils.a(16.0F);
+        this.this$0.D = new PopupWindow(localView);
+        this.this$0.D.setHeight(-2);
+        this.this$0.D.setWidth(-2);
+        this.this$0.D.setOutsideTouchable(false);
+        this.this$0.D.setFocusable(false);
+        int i = ViewUtils.dip2px(16.0F);
         int j = -localView.getMeasuredHeight();
         int k = this.this$0.i.getMeasuredHeight();
-        int m = ViewUtils.a(24.0F);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.i, i, j - k + m);
+        int m = ViewUtils.dip2px(24.0F);
+        this.this$0.D.showAsDropDown(this.this$0.i, i, j - k + m);
         return;
       }
       return;
@@ -46,7 +46,7 @@ class AddContactsView$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.13
  * JD-Core Version:    0.7.0.1
  */

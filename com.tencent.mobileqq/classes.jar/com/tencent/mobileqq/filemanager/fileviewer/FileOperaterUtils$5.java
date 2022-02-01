@@ -24,16 +24,16 @@ final class FileOperaterUtils$5
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
     DataLineHandler localDataLineHandler = (DataLineHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    if ((FileUtil.a(this.jdField_a_of_type_JavaLangString)) && (localDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString))))
+    if ((FileUtil.b(this.a)) && (localDataLineHandler.h.c(FileManagerUtil.a(this.a))))
     {
-      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity();
-      if (!localDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a()) {
+      Activity localActivity = this.b.getActivity();
+      if (!localDataLineHandler.h.d()) {
         localActivity.startActivity(new Intent(localActivity, PrinterDefaultActivity.class));
       } else {
-        localDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a(localActivity, this.jdField_a_of_type_JavaLangString);
+        localDataLineHandler.e.a(localActivity, this.a);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.c()) {
-        FileManagerUtil.a(localQQAppInterface, this.jdField_a_of_type_Long);
+      if (this.b.g()) {
+        FileManagerUtil.a(localQQAppInterface, this.c);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -41,7 +41,7 @@ final class FileOperaterUtils$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileOperaterUtils.5
  * JD-Core Version:    0.7.0.1
  */

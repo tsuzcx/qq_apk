@@ -29,11 +29,11 @@ class NewerGuidePlugin$4
 {
   NewerGuidePlugin$4(NewerGuidePlugin paramNewerGuidePlugin, ArrayList paramArrayList, ActionSheet paramActionSheet, Activity paramActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    if ((paramInt >= 0) && (paramInt < this.a.size()))
     {
-      paramInt = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue();
+      paramInt = ((Integer)this.a.get(paramInt)).intValue();
       Object localObject;
       if (paramInt != 13)
       {
@@ -44,17 +44,17 @@ class NewerGuidePlugin$4
             if (paramInt == 33)
             {
               paramView = new Intent();
-              paramView.putExtra("url", NewerGuidePlugin.b());
-              RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, paramView, "/base/browser");
+              paramView.putExtra("url", NewerGuidePlugin.c());
+              RouteUtils.a(this.c, paramView, "/base/browser");
               ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("set_profile", "photo_settings", "click", null);
             }
           }
           else
           {
             paramView = FaceUtil.a();
-            paramInt = ProfileCardUtil.b(this.jdField_a_of_type_AndroidAppActivity);
+            paramInt = ProfileCardUtil.b(this.c);
             localObject = new Intent();
-            ((Intent)localObject).setClass(this.jdField_a_of_type_AndroidAppActivity, NewPhotoListActivity.class);
+            ((Intent)localObject).setClass(this.c, NewPhotoListActivity.class);
             ((Intent)localObject).putExtra("enter_from", 50);
             ((Intent)localObject).putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationCrop.a);
             ((Intent)localObject).putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT");
@@ -72,7 +72,7 @@ class NewerGuidePlugin$4
             ((Intent)localObject).putExtra("PhotoConst.TARGET_HEIGHT", 1080);
             ((Intent)localObject).putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", true);
             ((Intent)localObject).putExtra("PhotoConst.32_Bit_Config", true);
-            this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+            this.c.startActivity((Intent)localObject);
           }
         }
         else
@@ -81,10 +81,10 @@ class NewerGuidePlugin$4
           if (((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProduct(CameraCompatibleConstants.c)) {
             paramView = MX3DynamicAvatarRecordActivity.class;
           }
-          paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, paramView);
+          paramView = new Intent(this.c, paramView);
           paramView.putExtra("param_source", 1);
           paramView.putExtra("param_from_newer_guide", true);
-          this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.startActivityForResult(paramView, (byte)100);
+          this.d.startActivityForResult(paramView, (byte)100);
         }
       }
       else if (!QavCameraUsage.b(BaseApplicationImpl.getContext()))
@@ -103,23 +103,23 @@ class NewerGuidePlugin$4
         ((StringBuilder)localObject).append(".jpg");
         paramView = new File(((StringBuilder)localObject).toString());
         localObject = new Intent();
-        NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, FileProvider7Helper.setSystemCapture(this.jdField_a_of_type_AndroidAppActivity, paramView, (Intent)localObject));
-        this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.startActivityForResult((Intent)localObject, (byte)101);
+        NewerGuidePlugin.a(this.d, FileProvider7Helper.setSystemCapture(this.c, paramView, (Intent)localObject));
+        this.d.startActivityForResult((Intent)localObject, (byte)101);
       }
     }
     try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.b.dismiss();
       return;
     }
     catch (Exception paramView) {}
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.4
  * JD-Core Version:    0.7.0.1
  */

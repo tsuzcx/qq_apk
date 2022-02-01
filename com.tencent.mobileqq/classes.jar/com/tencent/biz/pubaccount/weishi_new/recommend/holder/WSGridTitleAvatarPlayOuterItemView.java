@@ -15,32 +15,32 @@ public class WSGridTitleAvatarPlayOuterItemView
     super(paramContext, paramView, paramWSRecommendAdapter);
   }
   
-  protected int a()
+  public void b()
   {
-    return 1;
+    super.b();
+    a(2131436000, new WSGridFeedOuterTitleController(this.b));
+    a(2131435998, new WSGridFeedOuterAvatarController(this.b));
+    a(2131435999, new WSGridFeedOuterPlayCountController(this.b));
   }
   
-  protected boolean a()
+  protected boolean e()
   {
     return false;
   }
   
-  public void b()
-  {
-    super.b();
-    a(2131369037, new WSGridFeedOuterTitleController(this.a));
-    a(2131369035, new WSGridFeedOuterAvatarController(this.a));
-    a(2131369036, new WSGridFeedOuterPlayCountController(this.a));
-  }
-  
-  protected boolean b()
+  protected boolean f()
   {
     return true;
+  }
+  
+  protected int g()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridTitleAvatarPlayOuterItemView
  * JD-Core Version:    0.7.0.1
  */

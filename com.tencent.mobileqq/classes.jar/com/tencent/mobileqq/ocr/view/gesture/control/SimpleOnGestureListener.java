@@ -13,22 +13,10 @@ public class SimpleOnGestureListener
   
   public void a(ScaleGestureDetector paramScaleGestureDetector) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
   public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     return false;
   }
-  
-  public boolean a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return false;
-  }
-  
-  public void b(MotionEvent paramMotionEvent) {}
   
   public boolean b(MotionEvent paramMotionEvent)
   {
@@ -45,16 +33,28 @@ public class SimpleOnGestureListener
     return false;
   }
   
-  public void c(MotionEvent paramMotionEvent) {}
-  
   public boolean c(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean c(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return false;
+  }
+  
+  public void d(MotionEvent paramMotionEvent) {}
+  
+  public void e(MotionEvent paramMotionEvent) {}
+  
+  public boolean f(MotionEvent paramMotionEvent)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.control.SimpleOnGestureListener
  * JD-Core Version:    0.7.0.1
  */

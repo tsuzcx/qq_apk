@@ -22,8 +22,8 @@ class ConfessPlugin$5
   
   public void run()
   {
-    Object localObject2 = this.this$0.mRuntime.a();
-    Object localObject4 = this.this$0.mRuntime.a();
+    Object localObject2 = this.this$0.mRuntime.d();
+    Object localObject4 = this.this$0.mRuntime.b();
     Object localObject1;
     if (QLog.isColorLevel())
     {
@@ -44,28 +44,28 @@ class ConfessPlugin$5
     }
     if ((localObject2 != null) && (localObject4 != null) && (!((Activity)localObject2).isFinishing()))
     {
-      Bitmap localBitmap = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject2, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
-      int i = this.jdField_b_of_type_Int;
-      if ((i == 0) && (localBitmap != null)) {
-        localObject1 = ConfessShareHelper.b((AppInterface)localObject4, (Context)localObject2, this.jdField_a_of_type_Int, i, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONArray, this.this$0.a);
+      Bitmap localBitmap = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject2, this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.this$0.d);
+      int m = this.b;
+      if ((m == 0) && (localBitmap != null)) {
+        localObject1 = ConfessShareHelper.b((AppInterface)localObject4, (Context)localObject2, this.a, m, this.c, this.d, this.e, this.f, this.g, this.this$0.d);
       } else {
         localObject1 = null;
       }
-      if ((localBitmap != null) && ((this.jdField_b_of_type_Int != 0) || (localObject1 != null)))
+      if ((localBitmap != null) && ((this.b != 0) || (localObject1 != null)))
       {
         String str2 = ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject2, localBitmap);
-        String str1 = this.jdField_c_of_type_JavaLangString;
+        String str1 = this.f;
         Object localObject3;
-        if (this.jdField_b_of_type_Int == 0)
+        if (this.b == 0)
         {
-          localObject3 = ConfessShareHelper.a(str2, this.this$0.mRuntime.a());
-          localObject4 = ConfessShareHelper.a(ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject2, (Bitmap)localObject1), this.this$0.mRuntime.a());
+          localObject3 = ConfessShareHelper.a(str2, this.this$0.mRuntime.b());
+          localObject4 = ConfessShareHelper.a(ConfessShareHelper.a((AppInterface)localObject4, (Context)localObject2, (Bitmap)localObject1), this.this$0.mRuntime.b());
           localObject2 = localObject4;
           localObject1 = localObject3;
           if (!TextUtils.isEmpty((CharSequence)localObject4))
           {
             localObject1 = ((String)localObject4).replace("http://qqadapt.qpic.cn/qqshare/", "");
-            str1 = Uri.parse(this.jdField_c_of_type_JavaLangString).buildUpon().appendQueryParameter("ct", (String)localObject1).build().toString();
+            str1 = Uri.parse(this.f).buildUpon().appendQueryParameter("ct", (String)localObject1).build().toString();
             localObject2 = localObject4;
             localObject1 = localObject3;
           }
@@ -75,10 +75,10 @@ class ConfessPlugin$5
           localObject2 = null;
           localObject1 = null;
         }
-        if ((!TextUtils.isEmpty(str2)) && ((this.jdField_b_of_type_Int != 0) || ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))))
+        if ((!TextUtils.isEmpty(str2)) && ((this.b != 0) || ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))))
         {
-          localObject2 = this.jdField_d_of_type_JavaLangString;
-          localObject3 = this.e;
+          localObject2 = this.h;
+          localObject3 = this.i;
           if (QLog.isColorLevel())
           {
             localObject4 = new StringBuilder();
@@ -87,12 +87,12 @@ class ConfessPlugin$5
             ((StringBuilder)localObject4).append(" remoteUrl:");
             ((StringBuilder)localObject4).append((String)localObject1);
             ((StringBuilder)localObject4).append(" srcUrl:");
-            ((StringBuilder)localObject4).append(this.jdField_d_of_type_JavaLangString);
+            ((StringBuilder)localObject4).append(this.h);
             ((StringBuilder)localObject4).append(" srcIconUrl:");
-            ((StringBuilder)localObject4).append(this.e);
+            ((StringBuilder)localObject4).append(this.i);
             QLog.d("ConfessPlugin", 2, ((StringBuilder)localObject4).toString());
           }
-          if (this.jdField_b_of_type_Int == 0)
+          if (this.b == 0)
           {
             localObject4 = new HashMap();
             if ((localObject2 != null) && (((String)localObject2).length() > 30)) {
@@ -124,23 +124,23 @@ class ConfessPlugin$5
           ThreadManager.getUIHandler().post(new ConfessPlugin.5.1(this, str1, (String)localObject1, (String)localObject2, (String)localObject3, str2, localBitmap));
           return;
         }
-        ConfessPlugin.a(this.this$0);
+        ConfessPlugin.b(this.this$0);
         ConfessPlugin.a(this.this$0, false);
-        ConfessPlugin.a(this.this$0, 1, 2131696479);
+        ConfessPlugin.a(this.this$0, 1, 2131894251);
         return;
       }
-      ConfessPlugin.a(this.this$0);
+      ConfessPlugin.b(this.this$0);
       ConfessPlugin.a(this.this$0, false);
-      ConfessPlugin.a(this.this$0, 0, 2131719009);
+      ConfessPlugin.a(this.this$0, 0, 2131916544);
       return;
     }
-    ConfessPlugin.a(this.this$0);
+    ConfessPlugin.b(this.this$0);
     ConfessPlugin.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.5
  * JD-Core Version:    0.7.0.1
  */

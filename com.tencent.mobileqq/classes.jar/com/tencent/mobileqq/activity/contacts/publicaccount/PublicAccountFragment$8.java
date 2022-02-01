@@ -10,13 +10,13 @@ class PublicAccountFragment$8
   protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean) {
-      this.a.i();
+      this.a.k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.8
  * JD-Core Version:    0.7.0.1
  */

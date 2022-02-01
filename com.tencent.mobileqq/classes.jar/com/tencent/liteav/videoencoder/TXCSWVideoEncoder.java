@@ -1,10 +1,10 @@
 package com.tencent.liteav.videoencoder;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.beauty.b.o;
 import java.lang.ref.WeakReference;
 
@@ -18,13 +18,13 @@ public class TXCSWVideoEncoder
   private long mPTS = 0L;
   private int mPopIdx = 0;
   private int mPushIdx = 0;
-  private h mRawFrameFilter;
+  private j mRawFrameFilter;
   private int mRendIdx = 0;
-  private h mResizeFilter;
+  private j mResizeFilter;
   
   static
   {
-    f.f();
+    h.f();
     nativeClassInit();
   }
   
@@ -107,7 +107,7 @@ public class TXCSWVideoEncoder
   private long pushVideoFrameInternal(int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean)
   {
     Object localObject2 = this.mResizeFilter;
-    h localh = this.mRawFrameFilter;
+    j localj = this.mRawFrameFilter;
     if (this.mGLContextExternal != null)
     {
       this.mInputWidth = paramInt2;
@@ -115,12 +115,12 @@ public class TXCSWVideoEncoder
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new h();
-        this.mResizeFilter = ((h)localObject1);
-        ((h)localObject1).a();
-        ((h)localObject1).a(true);
+        localObject1 = new j();
+        this.mResizeFilter = ((j)localObject1);
+        ((j)localObject1).a();
+        ((j)localObject1).a(true);
       }
-      ((h)localObject1).a(this.mOutputWidth, this.mOutputHeight);
+      ((j)localObject1).a(this.mOutputWidth, this.mOutputHeight);
       GLES20.glViewport(0, 0, this.mOutputWidth, this.mOutputHeight);
       if (localObject1 != null)
       {
@@ -137,35 +137,35 @@ public class TXCSWVideoEncoder
         } else {
           j = this.mOutputWidth;
         }
-        ((h)localObject1).a(paramInt2, paramInt3, k, null, i / j, this.mEnableXMirror, false);
-        ((h)localObject1).b(paramInt1);
+        ((j)localObject1).a(paramInt2, paramInt3, k, null, i / j, this.mEnableXMirror, false);
+        ((j)localObject1).b(paramInt1);
       }
       if (localObject1 != null) {
-        paramInt1 = ((h)localObject1).l();
+        paramInt1 = ((j)localObject1).l();
       }
       localObject2 = new int[1];
       this.mPTS = paramLong;
-      localObject1 = localh;
-      if (localh == null)
+      localObject1 = localj;
+      if (localj == null)
       {
         TXCLog.i(TAG, "pushVideoFrameInternal->create mRawFrameFilter");
         localObject1 = new o(1);
-        this.mRawFrameFilter = ((h)localObject1);
-        ((h)localObject1).a(true);
-        if (!((h)localObject1).a())
+        this.mRawFrameFilter = ((j)localObject1);
+        ((j)localObject1).a(true);
+        if (!((j)localObject1).a())
         {
           TXCLog.i(TAG, "pushVideoFrameInternal->destroy mRawFrameFilter, init failed!");
           this.mRawFrameFilter = null;
           return 10000004L;
         }
-        ((h)localObject1).a(this.mOutputWidth, this.mOutputHeight);
-        ((h)localObject1).a(new TXCSWVideoEncoder.1(this, paramBoolean, paramInt1));
+        ((j)localObject1).a(this.mOutputWidth, this.mOutputHeight);
+        ((j)localObject1).a(new TXCSWVideoEncoder.1(this, paramBoolean, paramInt1));
       }
       if (localObject1 == null) {
         return 10000004L;
       }
       GLES20.glViewport(0, 0, this.mOutputWidth, this.mOutputHeight);
-      ((h)localObject1).b(paramInt1);
+      ((j)localObject1).b(paramInt1);
       paramInt1 = localObject2[0];
       if (paramInt1 != 0) {
         callDelegate(paramInt1);
@@ -357,13 +357,13 @@ public class TXCSWVideoEncoder
       localObject1 = this.mRawFrameFilter;
       if (localObject1 != null)
       {
-        ((h)localObject1).d();
+        ((j)localObject1).d();
         this.mRawFrameFilter = null;
       }
       localObject1 = this.mResizeFilter;
       if (localObject1 != null)
       {
-        ((h)localObject1).d();
+        ((j)localObject1).d();
         this.mResizeFilter = null;
       }
       super.stop();
@@ -374,7 +374,7 @@ public class TXCSWVideoEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.TXCSWVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

@@ -35,13 +35,13 @@ import java.util.List;
 
 public class RIJFrameworkHeaderManager
 {
-  private ChannelTopBanner jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner;
-  private ChannelCoverView jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView;
-  private SlideActiveAnimController jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController;
-  private ChannelTopPositionView jdField_a_of_type_ComTencentMobileqqKandianBizTabChannelTopPositionView;
-  private IAnimManager.PullRefreshComplete jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$PullRefreshComplete;
-  private List<HeaderViewController> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ChannelTopPositionView b;
+  private ChannelCoverView a;
+  private ChannelTopBanner b;
+  private ChannelTopPositionView c;
+  private ChannelTopPositionView d;
+  private SlideActiveAnimController e;
+  private List<HeaderViewController> f = new ArrayList();
+  private IAnimManager.PullRefreshComplete g;
   
   private void a(View paramView, Context paramContext)
   {
@@ -72,29 +72,12 @@ public class RIJFrameworkHeaderManager
   
   public ChannelCoverView a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView;
-  }
-  
-  public List<HeaderViewController> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      HeaderViewController localHeaderViewController = (HeaderViewController)localIterator.next();
-      if ((localHeaderViewController instanceof ReadInJoyDiandianHeaderController)) {
-        localHeaderViewController.e();
-      }
-    }
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    ChannelTopPositionView localChannelTopPositionView = this.b;
+    ChannelTopPositionView localChannelTopPositionView = this.d;
     if (localChannelTopPositionView != null) {
       localChannelTopPositionView.setVisibility(paramInt);
     }
@@ -102,73 +85,73 @@ public class RIJFrameworkHeaderManager
   
   public void a(int paramInt1, ReadInJoyXListView paramReadInJoyXListView, Activity paramActivity, int paramInt2)
   {
-    if ((!ReadInJoyRefreshManager.b) && ((paramActivity instanceof SplashActivity))) {
+    if ((!ReadInJoyRefreshManager.j) && ((paramActivity instanceof SplashActivity))) {
       return;
     }
-    if (paramReadInJoyXListView.a()) {
+    if (paramReadInJoyXListView.c()) {
       return;
     }
     if (paramInt2 != 0)
     {
-      paramReadInJoyXListView.a(0);
+      paramReadInJoyXListView.b(0);
       return;
     }
     if (paramInt1 != -1)
     {
       if (paramInt1 == 0)
       {
-        paramReadInJoyXListView.a(0);
+        paramReadInJoyXListView.b(0);
         return;
       }
-      if (!paramReadInJoyXListView.a())
+      if (!paramReadInJoyXListView.c())
       {
-        paramActivity = (ReadInJoyAnimBaseManager)paramReadInJoyXListView.a(2);
+        paramActivity = (ReadInJoyAnimBaseManager)paramReadInJoyXListView.b(2);
         a(paramReadInJoyXListView);
-        paramActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController);
+        paramActivity.a(this.e);
       }
     }
   }
   
   public void a(int paramInt1, boolean paramBoolean, ReadInJoyXListView paramReadInJoyXListView, Activity paramActivity, int paramInt2)
   {
-    if ((!ReadInJoyRefreshManager.b) && ((paramActivity instanceof SplashActivity))) {
+    if ((!ReadInJoyRefreshManager.j) && ((paramActivity instanceof SplashActivity))) {
       return;
     }
-    if (paramReadInJoyXListView.a()) {
+    if (paramReadInJoyXListView.c()) {
       return;
     }
     if (paramInt2 != 0)
     {
-      paramReadInJoyXListView.a(0);
+      paramReadInJoyXListView.b(0);
       return;
     }
     if (paramInt1 == 0)
     {
       if (paramBoolean)
       {
-        if (!paramReadInJoyXListView.a())
+        if (!paramReadInJoyXListView.c())
         {
-          paramActivity = (ReadInJoyAnimBaseManager)paramReadInJoyXListView.a(2);
+          paramActivity = (ReadInJoyAnimBaseManager)paramReadInJoyXListView.b(2);
           a(paramReadInJoyXListView);
-          paramActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController);
+          paramActivity.a(this.e);
         }
       }
       else {
-        paramReadInJoyXListView.a(0);
+        paramReadInJoyXListView.b(0);
       }
     }
-    else if (!paramReadInJoyXListView.a())
+    else if (!paramReadInJoyXListView.c())
     {
-      paramActivity = (ReadInJoyAnimBaseManager)paramReadInJoyXListView.a(2);
+      paramActivity = (ReadInJoyAnimBaseManager)paramReadInJoyXListView.b(2);
       a(paramReadInJoyXListView);
-      paramActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController);
+      paramActivity.a(this.e);
     }
   }
   
   public void a(Activity paramActivity, ReadInJoyXListView paramReadInJoyXListView, View paramView, int paramInt)
   {
-    ReadInjoySlideAnimLayout localReadInjoySlideAnimLayout = (ReadInjoySlideAnimLayout)paramActivity.findViewById(2131362021);
-    View localView = paramActivity.findViewById(2131378810);
+    ReadInjoySlideAnimLayout localReadInjoySlideAnimLayout = (ReadInjoySlideAnimLayout)paramActivity.findViewById(2131427599);
+    View localView = paramActivity.findViewById(2131447492);
     int j = AIOUtils.b(50.0F, paramActivity.getResources());
     int i = j;
     if (ImmersiveUtils.isSupporImmersive() == 1) {
@@ -183,9 +166,9 @@ public class RIJFrameworkHeaderManager
       localStringBuilder.append(i);
       QLog.d("RIJFrameworkReportManager", 2, localStringBuilder.toString());
     }
-    paramView = paramView.findViewById(2131367155);
+    paramView = paramView.findViewById(2131433609);
     paramView.setPadding(0, i, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController = new SlideActiveAnimController(paramInt, paramActivity, localReadInjoySlideAnimLayout, paramReadInJoyXListView, localView, null, new RIJFrameworkHeaderManager.1(this, localView, i, paramView, paramReadInJoyXListView));
+    this.e = new SlideActiveAnimController(paramInt, paramActivity, localReadInjoySlideAnimLayout, paramReadInJoyXListView, localView, null, new RIJFrameworkHeaderManager.1(this, localView, i, paramView, paramReadInJoyXListView));
   }
   
   public void a(Activity paramActivity, ReadInJoyXListView paramReadInJoyXListView, View paramView, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -196,14 +179,14 @@ public class RIJFrameworkHeaderManager
     ((StringBuilder)localObject).append(" ,isOnCreate=");
     ((StringBuilder)localObject).append(paramBoolean2);
     QLog.d("RIJFrameworkReportManager", 1, ((StringBuilder)localObject).toString());
-    localObject = (ReadInjoySlideAnimLayout)paramActivity.findViewById(2131362020);
-    View localView = paramActivity.findViewById(2131377865);
-    paramView = paramView.findViewById(2131367155);
+    localObject = (ReadInjoySlideAnimLayout)paramActivity.findViewById(2131427598);
+    View localView = paramActivity.findViewById(2131446342);
+    paramView = paramView.findViewById(2131433609);
     int i;
     if (paramBoolean1) {
-      i = 2131298857;
+      i = 2131299574;
     } else {
-      i = 2131298861;
+      i = 2131299578;
     }
     int j = paramActivity.getResources().getDimensionPixelOffset(i);
     if (paramBoolean1) {
@@ -214,7 +197,7 @@ public class RIJFrameworkHeaderManager
     i += j;
     j = AIOUtils.b(50.0F, paramActivity.getResources());
     int k = ImmersiveUtils.getStatusBarHeight(paramActivity);
-    int m = paramActivity.getResources().getDimensionPixelOffset(2131298861);
+    int m = paramActivity.getResources().getDimensionPixelOffset(2131299578);
     paramView.setPadding(0, i, 0, 0);
     paramReadInJoyXListView.setPadding(0, i, 0, 0);
     paramReadInJoyXListView.initPaddingManual();
@@ -225,15 +208,15 @@ public class RIJFrameworkHeaderManager
       localStringBuilder.append(i);
       QLog.d("RIJFrameworkReportManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController = new SlideActiveAnimController(paramInt, paramActivity, (ReadInjoySlideAnimLayout)localObject, paramReadInJoyXListView, localView, paramActivity.findViewById(16908307), new RIJFrameworkHeaderManager.2(this, localView, i, j + k + m, paramView, paramReadInJoyXListView));
+    this.e = new SlideActiveAnimController(paramInt, paramActivity, (ReadInjoySlideAnimLayout)localObject, paramReadInJoyXListView, localView, paramActivity.findViewById(16908307), new RIJFrameworkHeaderManager.2(this, localView, i, j + k + m, paramView, paramReadInJoyXListView));
   }
   
   public void a(View paramView, int paramInt)
   {
     if (paramInt == 41695)
     {
-      if (this.b == null) {
-        this.b = ((ChannelTopPositionView)paramView.findViewById(2131376136));
+      if (this.d == null) {
+        this.d = ((ChannelTopPositionView)paramView.findViewById(2131444339));
       }
       a(0);
     }
@@ -242,16 +225,16 @@ public class RIJFrameworkHeaderManager
   public void a(ReadInJoyXListView paramReadInJoyXListView)
   {
     if (paramReadInJoyXListView != null) {
-      paramReadInJoyXListView.a(this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$PullRefreshComplete);
+      paramReadInJoyXListView.a(this.g);
     }
   }
   
   public void a(ReadInJoyXListView paramReadInJoyXListView, Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizTabChannelTopPositionView == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizTabChannelTopPositionView = new ChannelTopPositionView(paramContext);
-      paramReadInJoyXListView.addHeaderView(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabChannelTopPositionView, 2);
+      this.c = new ChannelTopPositionView(paramContext);
+      paramReadInJoyXListView.addHeaderView(this.c, 2);
     }
   }
   
@@ -259,29 +242,29 @@ public class RIJFrameworkHeaderManager
   {
     if (paramInt == 0)
     {
-      if (!ReadInJoyHelper.m()) {
-        this.jdField_a_of_type_JavaUtilList.add(new ReadInJoyFeedsHeaderViewController(paramContext));
+      if (!ReadInJoyHelper.w()) {
+        this.f.add(new ReadInJoyFeedsHeaderViewController(paramContext));
       }
     }
     else if (paramInt == 56)
     {
-      if (ReadInJoyHelper.q(ReadInJoyUtils.a()) != 2)
+      if (ReadInJoyHelper.O(ReadInJoyUtils.b()) != 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView = new ChannelCoverView(paramContext, paramInt, paramReadInJoyXListView);
-        a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView.a(), paramContext);
+        this.a = new ChannelCoverView(paramContext, paramInt, paramReadInJoyXListView);
+        a(this.a.b(), paramContext);
       }
     }
     else if (paramInt == 70)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new ReadInJoyDiandianHeaderController(paramContext));
+      this.f.add(new ReadInJoyDiandianHeaderController(paramContext));
     }
-    else if ((paramInt == 41523) && (ReadInJoyHelper.r(ReadInJoyUtils.a()) != 1))
+    else if ((paramInt == 41523) && (ReadInJoyHelper.P(ReadInJoyUtils.b()) != 1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView = new ChannelCoverView(paramContext, paramInt, paramReadInJoyXListView);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView.a().setBackgroundColor(-1);
-      a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView.a(), paramContext);
+      this.a = new ChannelCoverView(paramContext, paramInt, paramReadInJoyXListView);
+      this.a.b().setBackgroundColor(-1);
+      a(this.a.b(), paramContext);
     }
-    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    paramContext = this.f.iterator();
     while (paramContext.hasNext()) {
       ((HeaderViewController)paramContext.next()).a(paramReadInJoyXListView);
     }
@@ -299,19 +282,19 @@ public class RIJFrameworkHeaderManager
       }
       if (paramTopBannerInfo.isEmpty())
       {
-        paramTopBannerInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner;
+        paramTopBannerInfo = this.b;
         if (paramTopBannerInfo != null) {
           paramReadInJoyXListView.removeHeaderView(paramTopBannerInfo);
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner = null;
+        this.b = null;
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner = new ChannelTopBanner(paramActivity);
-        paramReadInJoyXListView.addHeaderView(this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner, 2);
+        this.b = new ChannelTopBanner(paramActivity);
+        paramReadInJoyXListView.addHeaderView(this.b, 2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner.a(paramReadInJoyBaseAdapter, paramTopBannerInfo);
+      this.b.a(paramReadInJoyBaseAdapter, paramTopBannerInfo);
     }
   }
   
@@ -320,77 +303,94 @@ public class RIJFrameworkHeaderManager
     if (paramReadInJoyXListView != null)
     {
       paramReadInJoyXListView.a(paramPullRefreshComplete);
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$PullRefreshComplete = paramPullRefreshComplete;
+      this.g = paramPullRefreshComplete;
     }
   }
   
-  public boolean a()
+  public List<HeaderViewController> b()
   {
-    SlideActiveAnimController localSlideActiveAnimController = this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController;
-    return (localSlideActiveAnimController != null) && (localSlideActiveAnimController.c());
-  }
-  
-  public void b()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((HeaderViewController)((Iterator)localObject).next()).c();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner;
-    if (localObject != null) {
-      ((ChannelTopBanner)localObject).b();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController;
-    if (localObject != null) {
-      ((SlideActiveAnimController)localObject).d();
-    }
+    return this.f;
   }
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((HeaderViewController)((Iterator)localObject).next()).d();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerChannelTopBanner;
-    if (localObject != null) {
-      ((ChannelTopBanner)localObject).c();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController;
-    if (localObject != null) {
-      ((SlideActiveAnimController)localObject).e();
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext())
+    {
+      HeaderViewController localHeaderViewController = (HeaderViewController)localIterator.next();
+      if ((localHeaderViewController instanceof ReadInJoyDiandianHeaderController)) {
+        localHeaderViewController.e();
+      }
     }
   }
   
   public void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView;
-    if (localObject != null)
-    {
-      ((ChannelCoverView)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelcoverChannelCoverView = null;
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.f.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((HeaderViewController)((Iterator)localObject).next()).b();
+      ((HeaderViewController)((Iterator)localObject).next()).c();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController;
+    localObject = this.b;
     if (localObject != null) {
-      ((SlideActiveAnimController)localObject).f();
+      ((ChannelTopBanner)localObject).c();
+    }
+    localObject = this.e;
+    if (localObject != null) {
+      ((SlideActiveAnimController)localObject).e();
     }
   }
   
   public void e()
   {
-    SlideActiveAnimController localSlideActiveAnimController = this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinSlideActiveAnimController;
-    if (localSlideActiveAnimController != null) {
-      localSlideActiveAnimController.g();
+    Object localObject = this.f.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((HeaderViewController)((Iterator)localObject).next()).d();
     }
+    localObject = this.b;
+    if (localObject != null) {
+      ((ChannelTopBanner)localObject).d();
+    }
+    localObject = this.e;
+    if (localObject != null) {
+      ((SlideActiveAnimController)localObject).f();
+    }
+  }
+  
+  public void f()
+  {
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      ((ChannelCoverView)localObject).a();
+      this.a = null;
+    }
+    localObject = this.f.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((HeaderViewController)((Iterator)localObject).next()).b();
+    }
+    localObject = this.e;
+    if (localObject != null) {
+      ((SlideActiveAnimController)localObject).g();
+    }
+  }
+  
+  public void g()
+  {
+    SlideActiveAnimController localSlideActiveAnimController = this.e;
+    if (localSlideActiveAnimController != null) {
+      localSlideActiveAnimController.i();
+    }
+  }
+  
+  public boolean h()
+  {
+    SlideActiveAnimController localSlideActiveAnimController = this.e;
+    return (localSlideActiveAnimController != null) && (localSlideActiveAnimController.l());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJFrameworkHeaderManager
  * JD-Core Version:    0.7.0.1
  */

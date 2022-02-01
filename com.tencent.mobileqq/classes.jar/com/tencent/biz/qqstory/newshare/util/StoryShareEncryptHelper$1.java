@@ -19,17 +19,17 @@ final class StoryShareEncryptHelper$1
 {
   public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramStoryShareTranslateTokenResponse != null) && (paramStoryShareTranslateTokenResponse.jdField_a_of_type_Int == 0))
+    if ((paramStoryShareTranslateTokenResponse != null) && (paramStoryShareTranslateTokenResponse.c == 0))
     {
-      if (((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {
-        paramStoryShareTranslateTokenRequest = StoryShareEncryptHelper.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], this.jdField_a_of_type_Boolean);
+      if (((Boolean)((StoryConfigManager)SuperManager.a(10)).c("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {
+        paramStoryShareTranslateTokenRequest = StoryShareEncryptHelper.a(this.c[1], this.d);
       } else {
-        paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ArrayOfJavaLangString[1];
+        paramStoryShareTranslateTokenRequest = this.c[1];
       }
       paramErrorMessage = new StringBuilder();
-      paramErrorMessage.append(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+      paramErrorMessage.append(this.c[0]);
       paramErrorMessage.append("?token=");
-      paramErrorMessage.append(paramStoryShareTranslateTokenResponse.jdField_a_of_type_JavaLangString);
+      paramErrorMessage.append(paramStoryShareTranslateTokenResponse.a);
       paramErrorMessage.append("&");
       paramErrorMessage.append(paramStoryShareTranslateTokenRequest);
       paramStoryShareTranslateTokenRequest = paramErrorMessage.toString();
@@ -40,22 +40,22 @@ final class StoryShareEncryptHelper$1
         paramErrorMessage.append(paramStoryShareTranslateTokenRequest);
         QLog.d("Q.qqstory.share.trans.helper", 2, paramErrorMessage.toString());
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$EncryptCallback.a(paramStoryShareTranslateTokenResponse, paramStoryShareTranslateTokenRequest, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+      this.e.a(paramStoryShareTranslateTokenResponse, paramStoryShareTranslateTokenRequest, this.b);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.share.trans.helper", 2, "encrypt failed");
     }
-    paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    paramStoryShareTranslateTokenRequest = this.b;
     if ((paramStoryShareTranslateTokenRequest != null) && (paramStoryShareTranslateTokenRequest.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.b.dismiss();
     }
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714356), 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, HardCodeUtil.a(2131911870), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.1
  * JD-Core Version:    0.7.0.1
  */

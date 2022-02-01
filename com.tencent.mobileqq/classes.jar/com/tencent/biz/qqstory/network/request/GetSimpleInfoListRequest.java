@@ -17,16 +17,15 @@ import java.util.List;
 public class GetSimpleInfoListRequest
   extends NetworkRequest
 {
-  public List<String> a;
-  public boolean a;
+  public List<String> e = new ArrayList();
+  public boolean f = false;
   
-  public GetSimpleInfoListRequest()
+  public String a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
+    return StoryApi.a("StorySvc.get_date_video_list");
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
     try
@@ -41,16 +40,11 @@ public class GetSimpleInfoListRequest
     return null;
   }
   
-  public String a()
-  {
-    return StoryApi.a("StorySvc.get_date_video_list");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.e;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -66,7 +60,7 @@ public class GetSimpleInfoListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetSimpleInfoListResponse{vidList='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -74,7 +68,7 @@ public class GetSimpleInfoListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetSimpleInfoListRequest
  * JD-Core Version:    0.7.0.1
  */

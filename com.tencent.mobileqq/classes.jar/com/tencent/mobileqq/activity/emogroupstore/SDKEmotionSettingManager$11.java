@@ -14,17 +14,17 @@ class SDKEmotionSettingManager$11
     QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
     if (paramInt == 1)
     {
-      SDKEmotionSettingManager.c(this.a);
+      SDKEmotionSettingManager.j(this.a);
       return;
     }
     if (paramInt == 0) {
-      SDKEmotionSettingManager.a(this.a);
+      SDKEmotionSettingManager.c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.11
  * JD-Core Version:    0.7.0.1
  */

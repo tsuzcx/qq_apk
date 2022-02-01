@@ -125,9 +125,31 @@ public class ReportHelper
     return paramDataEntity.longValue();
   }
   
-  private static boolean handleReportFirstPolicy(Object paramObject, String paramString, View paramView)
+  @NonNull
+  public static EndExposurePolicy getScrollEndExposePolicy(DataEntity paramDataEntity)
   {
-    paramObject = ExposurePolicyHelper.getEleExposeInfo(paramObject, paramView, paramString);
+    EndExposurePolicy localEndExposurePolicy = (EndExposurePolicy)DataEntityOperator.getInnerParam(paramDataEntity, "element_scroll_end_expose_policy");
+    paramDataEntity = localEndExposurePolicy;
+    if (localEndExposurePolicy == null) {
+      paramDataEntity = VideoReportInner.getInstance().getConfiguration().getElementScrollEndExposePolicy();
+    }
+    return paramDataEntity;
+  }
+  
+  @NonNull
+  public static ExposurePolicy getScrollExposePolicy(DataEntity paramDataEntity)
+  {
+    ExposurePolicy localExposurePolicy = (ExposurePolicy)DataEntityOperator.getInnerParam(paramDataEntity, "element_scroll_expose_policy");
+    paramDataEntity = localExposurePolicy;
+    if (localExposurePolicy == null) {
+      paramDataEntity = VideoReportInner.getInstance().getConfiguration().getElementScrollExposePolicy();
+    }
+    return paramDataEntity;
+  }
+  
+  private static boolean handleReportFirstPolicy(Object paramObject, String paramString, View paramView, boolean paramBoolean)
+  {
+    paramObject = ExposurePolicyHelper.getEleExposeInfo(paramObject, paramView, paramString, paramBoolean);
     if (paramObject == null) {
       return true;
     }
@@ -155,7 +177,7 @@ public class ReportHelper
     return bool1;
   }
   
-  static boolean reportClick(@Nullable DataEntity paramDataEntity)
+  public static boolean reportClick(@Nullable DataEntity paramDataEntity)
   {
     boolean bool2 = emptyElementId(paramDataEntity);
     boolean bool1 = false;
@@ -168,7 +190,7 @@ public class ReportHelper
     return bool1;
   }
   
-  static boolean reportEndExposure(@Nullable View paramView)
+  public static boolean reportEndExposure(@Nullable View paramView, boolean paramBoolean)
   {
     paramView = DataBinder.getDataEntity(paramView);
     boolean bool2 = emptyElementId(paramView);
@@ -176,19 +198,34 @@ public class ReportHelper
     if (bool2) {
       return false;
     }
-    if (EndExposurePolicy.REPORT_ALL == getEndExposePolicy(paramView)) {
-      bool1 = true;
+    if (paramBoolean) {
+      paramView = getScrollEndExposePolicy(paramView);
+    } else {
+      paramView = getEndExposePolicy(paramView);
     }
-    return bool1;
+    paramBoolean = bool1;
+    if (EndExposurePolicy.REPORT_ALL == paramView) {
+      paramBoolean = true;
+    }
+    return paramBoolean;
   }
   
   static boolean reportExposure(Object paramObject, String paramString, View paramView)
+  {
+    return reportExposure(paramObject, paramString, paramView, false);
+  }
+  
+  public static boolean reportExposure(Object paramObject, String paramString, View paramView, boolean paramBoolean)
   {
     Object localObject = DataBinder.getDataEntity(paramView);
     if (emptyElementId((DataEntity)localObject)) {
       return false;
     }
-    localObject = getExposePolicy((DataEntity)localObject);
+    if (paramBoolean) {
+      localObject = getScrollExposePolicy((DataEntity)localObject);
+    } else {
+      localObject = getExposePolicy((DataEntity)localObject);
+    }
     if (localObject == ExposurePolicy.REPORT_NONE) {
       return false;
     }
@@ -196,14 +233,14 @@ public class ReportHelper
       return true;
     }
     if (localObject == ExposurePolicy.REPORT_FIRST) {
-      return handleReportFirstPolicy(paramObject, paramString, paramView);
+      return handleReportFirstPolicy(paramObject, paramString, paramView, paramBoolean);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ReportHelper
  * JD-Core Version:    0.7.0.1
  */

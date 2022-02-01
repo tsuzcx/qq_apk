@@ -237,7 +237,7 @@ public class ReadInJoyRefreshOptimizeUtil
   public static long a()
   {
     long l = 0L;
-    Long localLong = (Long)RIJSPUtils.a("sp_key_readinjoy_refresh_optimize_id", Long.valueOf(0L));
+    Long localLong = (Long)RIJSPUtils.b("sp_key_readinjoy_refresh_optimize_id", Long.valueOf(0L));
     if (localLong != null) {
       l = localLong.longValue();
     }
@@ -250,7 +250,7 @@ public class ReadInJoyRefreshOptimizeUtil
     if (paramRequest0x68bParams != null)
     {
       QLog.d("ReadInJoyRefreshOptimizeUtil", 1, "addPackageCompressFlag.");
-      paramRequest0x68bParams.f |= 0x4000;
+      paramRequest0x68bParams.y |= 0x4000;
     }
   }
   
@@ -357,7 +357,7 @@ public class ReadInJoyRefreshOptimizeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.ReadInJoyRefreshOptimizeUtil
  * JD-Core Version:    0.7.0.1
  */

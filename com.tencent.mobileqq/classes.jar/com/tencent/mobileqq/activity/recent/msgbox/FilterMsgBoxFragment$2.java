@@ -11,14 +11,14 @@ class FilterMsgBoxFragment$2
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.a);
+    if ((this.this$0.c != null) && (this.this$0.c.getMode() == -1) && (this.this$0.b != null)) {
+      this.this$0.b.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.FilterMsgBoxFragment.2
  * JD-Core Version:    0.7.0.1
  */

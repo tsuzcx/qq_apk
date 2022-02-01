@@ -33,25 +33,25 @@ public class GameVideoManager
   implements Handler.Callback, SimpleEventReceiver, Observer
 {
   public static GameVideoManager a;
-  private int jdField_a_of_type_Int = -1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<GameArkView> jdField_a_of_type_MqqUtilWeakReference;
-  private WeakReference<QQGamePubWebView> b;
-  private WeakReference<HippyEngine> c;
+  private int b = -1;
+  private String c;
+  private WeakReference<GameArkView> d;
+  private WeakReference<QQGamePubWebView> e;
+  private WeakReference<HippyEngine> f;
+  private Handler g = new Handler(this);
   
   public static GameVideoManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsGameVideoManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsGameVideoManager == null) {
-          jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsGameVideoManager = new GameVideoManager();
+        if (a == null) {
+          a = new GameVideoManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsGameVideoManager;
+    return a;
   }
   
   public static void b(int paramInt)
@@ -59,15 +59,10 @@ public class GameVideoManager
     GamePubAccountHelper.a(paramInt);
   }
   
-  private void g()
+  private void h()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i == 1)
-    {
-      b();
-      return;
-    }
-    if (i == 2)
     {
       c();
       return;
@@ -77,34 +72,64 @@ public class GameVideoManager
       d();
       return;
     }
+    if (i == 2)
+    {
+      e();
+      return;
+    }
     QLog.e("QQGamePub_GameVideoManager", 2, "qgame_pub type no set");
   }
   
-  private void h()
+  private void i()
   {
     QLog.d("QQGamePub_GameVideoManager", 4, "------>resumeFeedVideo");
   }
   
-  public void a()
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+    SimpleEventBus.getInstance().registerReceiver(this);
+    ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).addNotify("com.tencent.gamecenter.newvideo");
+    ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).addObserver(this);
+  }
+  
+  public void a(GameArkView paramGameArkView)
+  {
+    if (paramGameArkView != null)
+    {
+      this.d = new WeakReference(paramGameArkView);
+      return;
+    }
+    this.d = null;
+  }
+  
+  public void a(QQGamePubWebView paramQQGamePubWebView)
+  {
+    if (paramQQGamePubWebView != null) {
+      this.e = new WeakReference(paramQQGamePubWebView);
+    }
+  }
+  
+  public void b()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("--->stopArkVideo viewId:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.c);
     QLog.d("QQGamePub_GameVideoManager", 4, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    localObject = this.d;
     if (localObject != null)
     {
       localObject = (GameArkView)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(this.c)) {
           return;
         }
-        if ((((GameArkView)localObject).a()) && (GamePubAccountHelper.a(((GameArkView)localObject).a()))) {
+        if ((((GameArkView)localObject).d()) && (GamePubAccountHelper.f(((GameArkView)localObject).getAppName()))) {
           try
           {
             localObject = new JSONObject();
-            ((JSONObject)localObject).put("viewId", this.jdField_a_of_type_JavaLangString);
+            ((JSONObject)localObject).put("viewId", this.c);
             ark.arkNotify("com.tencent.gamecenter.newvideo", "notift_ark_video_stop", ((JSONObject)localObject).toString(), "json");
             return;
           }
@@ -117,39 +142,14 @@ public class GameVideoManager
     }
   }
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    SimpleEventBus.getInstance().registerReceiver(this);
-    ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).addNotify("com.tencent.gamecenter.newvideo");
-    ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).addObserver(this);
-  }
-  
-  public void a(GameArkView paramGameArkView)
-  {
-    if (paramGameArkView != null)
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramGameArkView);
-      return;
-    }
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
-  }
-  
-  public void a(QQGamePubWebView paramQQGamePubWebView)
-  {
-    if (paramQQGamePubWebView != null) {
-      this.b = new WeakReference(paramQQGamePubWebView);
-    }
-  }
-  
-  public void b()
+  public void c()
   {
     ((IQQGameTempRelyApi)QRoute.api(IQQGameTempRelyApi.class)).stopVideo();
   }
   
-  public void c()
+  public void d()
   {
-    Object localObject = this.b;
+    Object localObject = this.e;
     if (localObject != null)
     {
       localObject = (QQGamePubWebView)((WeakReference)localObject).get();
@@ -157,34 +157,34 @@ public class GameVideoManager
     }
   }
   
-  public void d()
+  public void e()
   {
-    WeakReference localWeakReference = this.c;
+    WeakReference localWeakReference = this.f;
     if (localWeakReference != null) {
       ((EventDispatcher)((HippyEngine)localWeakReference.get()).getEngineContext().getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("onGameFeedsPause", null);
     }
   }
   
-  public void e()
+  public void f()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("--->playArkVideo viewId:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.c);
     QLog.d("QQGamePub_GameVideoManager", 4, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    localObject = this.d;
     if (localObject != null)
     {
       localObject = (GameArkView)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(this.c)) {
           return;
         }
-        if ((((GameArkView)localObject).a()) && (GamePubAccountHelper.a(((GameArkView)localObject).a()))) {
+        if ((((GameArkView)localObject).d()) && (GamePubAccountHelper.f(((GameArkView)localObject).getAppName()))) {
           try
           {
             localObject = new JSONObject();
-            ((JSONObject)localObject).put("viewId", this.jdField_a_of_type_JavaLangString);
+            ((JSONObject)localObject).put("viewId", this.c);
             ark.arkNotify("com.tencent.gamecenter.newvideo", "notift_ark_video_play", ((JSONObject)localObject).toString(), "json");
             return;
           }
@@ -197,15 +197,15 @@ public class GameVideoManager
     }
   }
   
-  public void f()
+  public void g()
   {
     SimpleEventBus.getInstance().unRegisterReceiver(this);
     ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).removeNotify("com.tencent.gamecenter.newvideo");
     ((IArkPubicEventWrap)QRoute.api(IArkPubicEventWrap.class)).deleteObserver(this);
-    this.b = null;
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
-    this.c = null;
-    jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsGameVideoManager = null;
+    this.e = null;
+    this.d = null;
+    this.f = null;
+    a = null;
   }
   
   public ArrayList<Class> getEventClass()
@@ -235,17 +235,17 @@ public class GameVideoManager
       default: 
         return;
       case 4: 
-        g();
+        h();
         return;
       case 3: 
-        h();
+        i();
         return;
       case 2: 
       case 6: 
-        a();
+        b();
         return;
       }
-      e();
+      f();
     }
   }
   
@@ -255,7 +255,7 @@ public class GameVideoManager
     {
       if ((paramObject instanceof IArkPubicEventWrap.ArkEvent))
       {
-        paramObservable = ((IArkPubicEventWrap.ArkEvent)paramObject).jdField_a_of_type_JavaLangString;
+        paramObservable = ((IArkPubicEventWrap.ArkEvent)paramObject).a;
         Object localObject = ((IArkPubicEventWrap.ArkEvent)paramObject).b;
         paramObject = ((IArkPubicEventWrap.ArkEvent)paramObject).c;
         if ((!TextUtils.isEmpty(paramObservable)) && ("com.tencent.gamecenter.newvideo".equals(paramObservable)))
@@ -276,8 +276,8 @@ public class GameVideoManager
             paramObservable.append("update viewId: ");
             paramObservable.append(paramObject);
             QLog.d("QQGamePub_GameVideoManager", 2, paramObservable.toString());
-            this.jdField_a_of_type_JavaLangString = paramObject;
-            g();
+            this.c = paramObject;
+            h();
             return;
           }
         }
@@ -291,7 +291,7 @@ public class GameVideoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.GameVideoManager
  * JD-Core Version:    0.7.0.1
  */

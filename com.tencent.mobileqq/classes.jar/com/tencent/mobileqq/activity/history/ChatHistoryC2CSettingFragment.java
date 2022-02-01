@@ -34,10 +34,10 @@ public class ChatHistoryC2CSettingFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  public int a;
-  public SessionInfo a;
   FormSimpleItem a;
   FormSimpleItem b;
+  public int c;
+  public SessionInfo d;
   
   private void a()
   {
@@ -57,27 +57,27 @@ public class ChatHistoryC2CSettingFragment
             if (i != 5) {
               localObject1 = null;
             } else {
-              localObject1 = getResources().getString(2131716751);
+              localObject1 = getResources().getString(2131914223);
             }
           }
           else {
-            localObject1 = getResources().getString(2131716749);
+            localObject1 = getResources().getString(2131914221);
           }
         }
         else {
-          localObject1 = getResources().getString(2131716750);
+          localObject1 = getResources().getString(2131914222);
         }
       }
       else {
-        localObject1 = getResources().getString(2131716752);
+        localObject1 = getResources().getString(2131914224);
       }
     }
     else {
-      localObject1 = getResources().getString(2131716759);
+      localObject1 = getResources().getString(2131914231);
     }
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+      localObject2 = this.a;
       if (localObject2 != null) {
         ((FormSimpleItem)localObject2).setRightText((CharSequence)localObject1);
       }
@@ -102,16 +102,16 @@ public class ChatHistoryC2CSettingFragment
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getString(2131690807));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.mContentView.findViewById(2131364042));
-    this.b = ((FormSimpleItem)this.mContentView.findViewById(2131363906));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
+    setTitle(getString(2131887737));
+    this.a = ((FormSimpleItem)this.mContentView.findViewById(2131430000));
+    this.b = ((FormSimpleItem)this.mContentView.findViewById(2131429858));
+    this.a.setOnClickListener(this);
     this.b.setOnClickListener(this);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131558858;
+    return 2131624478;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -125,18 +125,18 @@ public class ChatHistoryC2CSettingFragment
     localStringBuilder.append("message_roam_flag");
     localStringBuilder.append(getBaseActivity().app.getCurrentAccountUin());
     paramInt1 = paramIntent.getInt(localStringBuilder.toString(), -1);
-    if (paramInt1 == this.jdField_a_of_type_Int) {
+    if (paramInt1 == this.c) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt1;
+    this.c = paramInt1;
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131363906)
+    if (i != 2131429858)
     {
-      if (i == 2131364042) {
+      if (i == 2131430000) {
         if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
         {
           QQAppInterface localQQAppInterface = getBaseActivity().app;
@@ -144,7 +144,7 @@ public class ChatHistoryC2CSettingFragment
           Object localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("message_roam_flag");
           ((StringBuilder)localObject2).append(localQQAppInterface.getCurrentAccountUin());
-          this.jdField_a_of_type_Int = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), -1);
+          this.c = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), -1);
           VipUtils.a(localQQAppInterface, "chat_history", "ChatHistory", "Clk_RoamMsgSetting", 1, 0, new String[] { "0", "0", "msgHistory" });
           localObject2 = new Intent(getBaseActivity(), QQBrowserActivity.class);
           localObject1 = IndividuationUrlHelper.a("vipRoamChatCell");
@@ -172,14 +172,14 @@ public class ChatHistoryC2CSettingFragment
         }
         else
         {
-          QQToast.a(BaseApplication.getContext(), 1, 2131718354, 1).a();
+          QQToast.makeText(BaseApplication.getContext(), 1, 2131915846, 1).show();
         }
       }
     }
     else
     {
       ReportController.b(getBaseActivity().app, "dc00898", "", "", "0X800A17C", "0X800A17C", 2, 0, "", "", "", "");
-      ChatSettingActivity.a(getBaseActivity().app, getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, new ChatHistoryC2CSettingFragment.1(this), 3);
+      ChatSettingActivity.a(getBaseActivity().app, getBaseActivity(), this.d.b, this.d.a, new ChatHistoryC2CSettingFragment.1(this), 3);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -187,10 +187,10 @@ public class ChatHistoryC2CSettingFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
+    this.d = new SessionInfo();
     paramBundle = getBaseActivity().getIntent().getExtras();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = paramBundle.getInt("uintype");
+    this.d.b = paramBundle.getString("uin");
+    this.d.a = paramBundle.getInt("uintype");
   }
   
   public void onResume()
@@ -201,7 +201,7 @@ public class ChatHistoryC2CSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment
  * JD-Core Version:    0.7.0.1
  */

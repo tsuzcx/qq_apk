@@ -9,12 +9,12 @@ public class PhotoFunBtnEnabledCheck
 {
   public boolean a(AIOContext paramAIOContext)
   {
-    return ((PhotoListHelper)paramAIOContext.a(7)).a() > 0;
+    return ((PhotoListHelper)paramAIOContext.a(7)).f() > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.funbtn.PhotoFunBtnEnabledCheck
  * JD-Core Version:    0.7.0.1
  */

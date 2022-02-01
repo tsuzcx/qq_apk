@@ -12,8 +12,8 @@ class VideoController$40
     if (QLog.isColorLevel()) {
       QLog.i(VideoController.a, 2, "quitDoubleVideoMeeting, time out task run.");
     }
-    if (this.this$0.c != null) {
-      this.this$0.c.onCompletion(null);
+    if (this.this$0.J != null) {
+      this.this$0.J.onCompletion(null);
     }
   }
 }

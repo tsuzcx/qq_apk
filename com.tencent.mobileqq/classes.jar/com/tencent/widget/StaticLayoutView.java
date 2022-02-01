@@ -13,8 +13,8 @@ import com.tencent.mobileqq.dating.widget.DatingCommentTextView.TouchableSpan;
 public class StaticLayoutView
   extends View
 {
-  private Layout jdField_a_of_type_AndroidTextLayout = null;
-  DatingCommentTextView.TouchableSpan jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan;
+  DatingCommentTextView.TouchableSpan a;
+  private Layout b = null;
   
   public StaticLayoutView(Context paramContext)
   {
@@ -31,16 +31,16 @@ public class StaticLayoutView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public Layout a()
+  public Layout getLayout()
   {
-    return this.jdField_a_of_type_AndroidTextLayout;
+    return this.b;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
-    Layout localLayout = this.jdField_a_of_type_AndroidTextLayout;
+    Layout localLayout = this.b;
     if (localLayout != null) {
       localLayout.draw(paramCanvas, null, null, 0);
     }
@@ -49,10 +49,10 @@ public class StaticLayoutView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    Layout localLayout = this.jdField_a_of_type_AndroidTextLayout;
+    Layout localLayout = this.b;
     if (localLayout != null)
     {
-      setMeasuredDimension(localLayout.getWidth(), this.jdField_a_of_type_AndroidTextLayout.getHeight());
+      setMeasuredDimension(localLayout.getWidth(), this.b.getHeight());
       return;
     }
     super.onMeasure(paramInt1, paramInt2);
@@ -63,7 +63,7 @@ public class StaticLayoutView
     int i = paramMotionEvent.getAction();
     int j = (int)paramMotionEvent.getX();
     int k = (int)paramMotionEvent.getY();
-    Object localObject1 = a();
+    Object localObject1 = getLayout();
     Object localObject2 = ((Layout)localObject1).getText();
     if ((localObject2 instanceof Spannable))
     {
@@ -79,7 +79,7 @@ public class StaticLayoutView
             if ((localObject1[0] instanceof DatingCommentTextView.TouchableSpan))
             {
               ((DatingCommentTextView.TouchableSpan)localObject1[0]).a(true);
-              this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan = ((DatingCommentTextView.TouchableSpan)localObject1[0]);
+              this.a = ((DatingCommentTextView.TouchableSpan)localObject1[0]);
             }
             postInvalidate();
             return true;
@@ -93,18 +93,18 @@ public class StaticLayoutView
           if ((localObject1[0] instanceof DatingCommentTextView.TouchableSpan)) {
             ((DatingCommentTextView.TouchableSpan)localObject1[0]).a(false);
           }
-          this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan = null;
+          this.a = null;
           postInvalidate();
         }
         return true;
       }
       if ((i == 1) || (i == 3))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan;
+        localObject1 = this.a;
         if (localObject1 != null)
         {
           ((DatingCommentTextView.TouchableSpan)localObject1).a(false);
-          this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan = null;
+          this.a = null;
           postInvalidate();
         }
       }
@@ -114,13 +114,13 @@ public class StaticLayoutView
   
   public void setLayout(Layout paramLayout)
   {
-    this.jdField_a_of_type_AndroidTextLayout = paramLayout;
+    this.b = paramLayout;
     requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.StaticLayoutView
  * JD-Core Version:    0.7.0.1
  */

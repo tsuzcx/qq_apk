@@ -13,29 +13,29 @@ import org.json.JSONObject;
 public class ReadInJoyVideoView
   extends ViewBase
 {
-  private int jdField_a_of_type_Int;
-  private NativeVideoView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private NativeVideoView a;
+  private String b;
   private String c;
   private String d;
   private String e;
+  private int f;
+  private int g;
+  private String h;
   
   public ReadInJoyVideoView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView = new NativeVideoView(paramVafContext.getContext());
+    this.a = new NativeVideoView(paramVafContext.getContext());
   }
   
   public NativeVideoView a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView;
+    return this.a;
   }
   
-  public void a()
+  public void b()
   {
-    NativeVideoView localNativeVideoView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView;
+    NativeVideoView localNativeVideoView = this.a;
     if (localNativeVideoView != null) {
       localNativeVideoView.stop();
     }
@@ -43,38 +43,38 @@ public class ReadInJoyVideoView
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.getComMeasuredHeight();
+    return this.a.getComMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.getComMeasuredWidth();
+    return this.a.getComMeasuredWidth();
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.measureComponent(paramInt1, paramInt2);
+    this.a.measureComponent(paramInt1, paramInt2);
   }
   
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setBackgroundColor(this.mBackground);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setCoverUrl(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setPlayIconUrl(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setVideoVid(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setPlayIconSize(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    if (!TextUtils.isEmpty(this.d)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setVideoUrl(this.d);
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.setCoverUrl(this.b);
+    this.a.setPlayIconUrl(this.c);
+    this.a.setVideoVid(this.d);
+    this.a.setPlayIconSize(this.f, this.g);
+    if (!TextUtils.isEmpty(this.e)) {
+      this.a.setVideoUrl(this.e);
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setVideoBusiType(Integer.parseInt(this.e));
+      this.a.setVideoBusiType(Integer.parseInt(this.h));
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -101,8 +101,8 @@ public class ReadInJoyVideoView
           {
             localObject = ((JSONArray)paramObject).optString(0);
             paramObject = ((JSONArray)paramObject).optString(1);
-            this.c = ((String)localObject);
-            this.e = paramObject;
+            this.d = ((String)localObject);
+            this.h = paramObject;
             return true;
           }
           catch (NumberFormatException paramObject)
@@ -114,9 +114,9 @@ public class ReadInJoyVideoView
         if ((paramObject instanceof JSONObject)) {
           try
           {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setReportR5(paramObject.toString());
+            this.a.setReportR5(paramObject.toString());
             paramObject = (JSONObject)paramObject;
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setDtPgid(paramObject.optString("dt_pgid"));
+            this.a.setDtPgid(paramObject.optString("dt_pgid"));
             return true;
           }
           catch (Exception paramObject)
@@ -138,8 +138,8 @@ public class ReadInJoyVideoView
           {
             paramInt = Integer.parseInt(paramObject);
             int i = Integer.parseInt((String)localObject);
-            this.jdField_a_of_type_Int = paramInt;
-            this.jdField_b_of_type_Int = i;
+            this.f = paramInt;
+            this.g = i;
             return true;
           }
           catch (Exception paramObject)
@@ -151,7 +151,7 @@ public class ReadInJoyVideoView
       return true;
     }
     if ((paramObject instanceof BaseArticleInfo)) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setArticleInfo((AbsBaseArticleInfo)paramObject);
+      this.a.setArticleInfo((AbsBaseArticleInfo)paramObject);
     }
     return true;
   }
@@ -169,7 +169,7 @@ public class ReadInJoyVideoView
       if (!TextUtils.isEmpty(paramString)) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setAutoPlayMode(Integer.parseInt(paramString));
+          this.a.setAutoPlayMode(Integer.parseInt(paramString));
           return true;
         }
         catch (NumberFormatException paramString)
@@ -182,7 +182,7 @@ public class ReadInJoyVideoView
       if (!TextUtils.isEmpty(paramString)) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setPlayMode(Integer.parseInt(paramString));
+          this.a.setPlayMode(Integer.parseInt(paramString));
           return true;
         }
         catch (NumberFormatException paramString)
@@ -194,18 +194,18 @@ public class ReadInJoyVideoView
     case 1150: 
       if (!TextUtils.isEmpty(paramString))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setPlayIconVisible("yes".equals(paramString.toLowerCase()));
+        this.a.setPlayIconVisible("yes".equals(paramString.toLowerCase()));
         return true;
       }
       return false;
     case 1149: 
-      this.jdField_b_of_type_JavaLangString = paramString;
+      this.c = paramString;
       return true;
     case 1147: 
       if (!TextUtils.isEmpty(paramString)) {
         try
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setScaleType(Integer.parseInt(paramString));
+          this.a.setScaleType(Integer.parseInt(paramString));
           return true;
         }
         catch (NumberFormatException paramString)
@@ -217,31 +217,31 @@ public class ReadInJoyVideoView
     case 1146: 
       if (!TextUtils.isEmpty(paramString))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setMute("yes".equals(paramString.toLowerCase()));
+        this.a.setMute("yes".equals(paramString.toLowerCase()));
         return true;
       }
       return false;
     case 1145: 
       if (!TextUtils.isEmpty(paramString))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeVideoView.setLoop("yes".equals(paramString.toLowerCase()));
+        this.a.setLoop("yes".equals(paramString.toLowerCase()));
         return true;
       }
       return false;
     case 1144: 
-      this.c = paramString;
+      this.d = paramString;
       return true;
     case 1143: 
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.b = paramString;
       return true;
     }
-    this.d = paramString;
+    this.e = paramString;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyVideoView
  * JD-Core Version:    0.7.0.1
  */

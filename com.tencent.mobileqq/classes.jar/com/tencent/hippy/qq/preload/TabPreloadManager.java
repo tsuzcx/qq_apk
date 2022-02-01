@@ -1,22 +1,28 @@
 package com.tencent.hippy.qq.preload;
 
+import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.hippy.qq.api.IHippySetting;
-import com.tencent.hippy.qq.api.IHippyUtils;
 import com.tencent.hippy.qq.api.MainTabPreloadInterpolator;
 import com.tencent.hippy.qq.api.OpenHippyInfo;
 import com.tencent.hippy.qq.api.TabPreloadItem;
+import com.tencent.hippy.qq.api.TabPreloadItem.PreloadType;
 import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
 import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
+import com.tencent.hippy.qq.update.HippyPredownloadManager;
 import com.tencent.hippy.qq.update.HippyUpdateManager;
 import com.tencent.hippy.qq.update.config.TabPreloadConfigManager;
 import com.tencent.hippy.qq.utils.HippyAccessHelper;
+import com.tencent.hippy.qq.utils.HippyUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameConfigUtil;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.statemachine.api.IStateManager;
 import com.tencent.statemachine.api.StateObserver;
@@ -25,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import mqq.app.AppRuntime;
@@ -40,8 +47,10 @@ public class TabPreloadManager
   private static final String TAG = "TabPreloadManager";
   private static HashMap<String, MainTabPreloadInterpolator> sPreloadInterpolatorMap = new HashMap();
   private static volatile TabPreloadManager sTabPreloadManager;
+  private ComponentCallbacks2 mComponentCallbacks = new TabPreloadManager.2(this);
+  private boolean mHasPreloadInToolProcess;
   private boolean mIsPreloading = false;
-  private StateObserver mMainTabStateObserver = new TabPreloadManager.2(this);
+  private StateObserver mMainTabStateObserver = new TabPreloadManager.3(this);
   private Object mPreloadDataLock = new Object();
   private TabPreloadManager.PreloadHandler mPreloadHandler = new TabPreloadManager.PreloadHandler(this, ThreadManager.getSubThreadLooper());
   private ArrayList<TabPreloadManager.PreloadInfo> mPreloadWaitList = new ArrayList();
@@ -49,8 +58,15 @@ public class TabPreloadManager
   
   static
   {
+    sPreloadInterpolatorMap.put("QQNearby", new NearbyInterpolator());
     sPreloadInterpolatorMap.put("QQGameCenter", new GameCenterInterpolator());
     sPreloadInterpolatorMap.put("qqMiniGame", new MiniGameInterpolator());
+    sPreloadInterpolatorMap.put("qqWeather", new WeatherInterpolator());
+  }
+  
+  private TabPreloadManager()
+  {
+    MobileQQ.getContext().getApplicationContext().registerComponentCallbacks(this.mComponentCallbacks);
   }
   
   private String convertStateToTabName(String paramString)
@@ -76,44 +92,52 @@ public class TabPreloadManager
     return null;
   }
   
-  private boolean doPreload(TabPreloadManager.PreloadInfo paramPreloadInfo)
+  private void doPreLoad(String paramString)
   {
-    if ((paramPreloadInfo != null) && (paramPreloadInfo.mPreloadItem != null) && (paramPreloadInfo.mPreloadItem.checkData()))
+    int i;
+    label147:
+    synchronized (this.mPreloadDataLock)
     {
-      TabPreloadItem localTabPreloadItem = paramPreloadInfo.mPreloadItem;
-      String str = localTabPreloadItem.bundleName;
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("preloadHippyPage moduleName:");
-      ((StringBuilder)localObject1).append(str);
-      ((StringBuilder)localObject1).append(" preloadType:");
-      ((StringBuilder)localObject1).append(localTabPreloadItem.preloadType);
-      QLog.d("TabPreloadManager", 1, ((StringBuilder)localObject1).toString());
-      Object localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      Object localObject2 = HippyAccessHelper.getJSInitData((AppRuntime)localObject3, str, null, localTabPreloadItem.domain);
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new JSONObject();
-      }
-      HippyAccessHelper.addPreloadParameters((JSONObject)localObject1, localTabPreloadItem.isPredraw());
-      if (localObject3 == null) {
-        localObject2 = "";
-      } else {
-        localObject2 = ((AppRuntime)localObject3).getAccount();
-      }
-      localObject3 = new HippyQQPreloadEngine(null, str, null);
-      ((HippyQQPreloadEngine)localObject3).setInitData((JSONObject)localObject1, (JSONObject)localObject1);
-      localObject1 = new TabPreloadManager.1(this, (HippyQQPreloadEngine)localObject3, str, localTabPreloadItem, (String)localObject2, paramPreloadInfo);
-      if (localTabPreloadItem.isPredraw())
+      this.mPreloadWaitList.clear();
+      clearOtherTabPreloads(paramString);
+      List localList = getNeedPreloads(paramString, getCurrentProcessName());
+      if (localList.size() > 0)
       {
-        ((HippyQQPreloadEngine)localObject3).predrawHippy((HippyQQEngine.HippyQQEngineListener)localObject1, localTabPreloadItem.needCheckPreload, paramPreloadInfo.mPreloadScene);
-        return true;
+        i = 0;
+        if (i < localList.size())
+        {
+          if (isPreloaded(((TabPreloadItem)localList.get(i)).bundleName)) {
+            break label147;
+          }
+          this.mPreloadWaitList.add(new TabPreloadManager.PreloadInfo(paramString, (TabPreloadItem)localList.get(i)));
+          break label147;
+        }
+        if (!this.mIsPreloading)
+        {
+          this.mIsPreloading = true;
+          this.mPreloadHandler.removeMessages(2);
+          this.mPreloadHandler.sendEmptyMessage(2);
+        }
       }
-      ((HippyQQPreloadEngine)localObject3).preloadHippy((HippyQQEngine.HippyQQEngineListener)localObject1, localTabPreloadItem.needCheckPreload, paramPreloadInfo.mPreloadScene);
-      return true;
+      return;
     }
-    QLog.d("TabPreloadManager", 1, "doPreload parameters error");
-    onPreloadFinish();
-    return false;
+  }
+  
+  private void doPreUpdate(String paramString)
+  {
+    paramString = HippyPredownloadManager.getInstance().getTabPreloadConfigManager().getItemsOfTab(paramString, null, TabPreloadItem.PreloadType.PRE_UPDATE);
+    int i = 0;
+    while (i < paramString.size())
+    {
+      TabPreloadItem localTabPreloadItem = (TabPreloadItem)paramString.get(i);
+      if (HippyUpdateManager.getInstance().checkUpdateJsBundleInterval(localTabPreloadItem.bundleName, localTabPreloadItem.preUpdateInterval))
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putBoolean("isSkipInterval", true);
+        HippyUpdateManager.getInstance().updateJsBundle(localTabPreloadItem.bundleName, ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).isUpdateHippyJsBundleByHttp(), 4, localBundle, null);
+      }
+      i += 1;
+    }
   }
   
   public static TabPreloadManager getInstance()
@@ -143,33 +167,55 @@ public class TabPreloadManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    int i;
-    label143:
-    synchronized (this.mPreloadDataLock)
-    {
-      this.mPreloadWaitList.clear();
-      clearOtherTabPreloads(paramString);
-      ArrayList localArrayList = getNeedPreloads(paramString);
-      if (localArrayList.size() > 0)
-      {
-        i = 0;
-        if (i < localArrayList.size())
-        {
-          if (isPreloaded(((TabPreloadItem)localArrayList.get(i)).bundleName)) {
-            break label143;
-          }
-          this.mPreloadWaitList.add(new TabPreloadManager.PreloadInfo(paramString, (TabPreloadItem)localArrayList.get(i)));
-          break label143;
-        }
-        if (!this.mIsPreloading)
-        {
-          this.mIsPreloading = true;
-          this.mPreloadHandler.removeMessages(2);
-          this.mPreloadHandler.sendEmptyMessage(2);
-        }
-      }
-      return;
+    doPreLoad(paramString);
+    if (MobileQQ.sProcessId == 1) {
+      doPreUpdate(paramString);
     }
+  }
+  
+  private boolean preloadOneItem(TabPreloadManager.PreloadInfo paramPreloadInfo)
+  {
+    if ((paramPreloadInfo != null) && (paramPreloadInfo.mPreloadItem != null) && (paramPreloadInfo.mPreloadItem.checkData()))
+    {
+      TabPreloadItem localTabPreloadItem = paramPreloadInfo.mPreloadItem;
+      String str = localTabPreloadItem.bundleName;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("preloadHippyPage moduleName:");
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append(" preloadType:");
+      ((StringBuilder)localObject1).append(localTabPreloadItem.preloadType);
+      QLog.d("TabPreloadManager", 1, ((StringBuilder)localObject1).toString());
+      Object localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      Object localObject2 = HippyAccessHelper.getJSInitData((AppRuntime)localObject3, str, null, localTabPreloadItem.domain);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new JSONObject();
+      }
+      HippyAccessHelper.addPreloadParameters((JSONObject)localObject1, localTabPreloadItem.isPredraw());
+      if (localObject3 == null) {
+        localObject2 = "";
+      } else {
+        localObject2 = ((AppRuntime)localObject3).getAccount();
+      }
+      localObject3 = new HippyQQPreloadEngine(null, str, null);
+      ((HippyQQPreloadEngine)localObject3).setInitData((JSONObject)localObject1, (JSONObject)localObject1);
+      ((HippyQQPreloadEngine)localObject3).setJsBundleType(localTabPreloadItem.preloadFramework);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("tab_");
+      ((StringBuilder)localObject1).append(paramPreloadInfo.mPreloadTab);
+      ((HippyQQPreloadEngine)localObject3).setPreloadFrom(((StringBuilder)localObject1).toString());
+      localObject1 = new TabPreloadManager.1(this, (HippyQQPreloadEngine)localObject3, str, localTabPreloadItem, (String)localObject2, paramPreloadInfo);
+      if (localTabPreloadItem.isPredraw())
+      {
+        ((HippyQQPreloadEngine)localObject3).predrawHippy((HippyQQEngine.HippyQQEngineListener)localObject1, localTabPreloadItem.needCheckPreload, paramPreloadInfo.mPreloadScene);
+        return true;
+      }
+      ((HippyQQPreloadEngine)localObject3).preloadHippy((HippyQQEngine.HippyQQEngineListener)localObject1, localTabPreloadItem.needCheckPreload, paramPreloadInfo.mPreloadScene);
+      return true;
+    }
+    QLog.d("TabPreloadManager", 1, "doPreload parameters error");
+    onPreloadFinish();
+    return false;
   }
   
   protected void checkForToolProcess(String paramString)
@@ -177,22 +223,50 @@ public class TabPreloadManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (getNeedPreloads(paramString, "tool").size() <= 0) {
+    Object localObject = getNeedPreloads(paramString, "tool");
+    if ((((List)localObject).size() <= 0) && (!this.mHasPreloadInToolProcess)) {
       return;
     }
+    boolean bool;
+    if (((List)localObject).size() > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mHasPreloadInToolProcess = bool;
     try
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("show_tab_name", paramString);
-      ((IHippyUtils)QRoute.api(IHippyUtils.class)).preloadHippyInToolProcess((Intent)localObject);
+      HippyUtils.preloadHippyInToolProcess((Intent)localObject);
       return;
     }
     catch (Throwable paramString)
     {
-      Object localObject = new StringBuilder();
+      localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkAndPreloadHippyPage sendBroadcast:");
       ((StringBuilder)localObject).append(paramString);
       QLog.e("TabPreloadManager", 1, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  protected void clearAllPreloads(String paramString)
+  {
+    QLog.e("TabPreloadManager", 1, "clearAllPreloads");
+    synchronized (this.mPreloadDataLock)
+    {
+      int i = this.mPreloadedList.size() - 1;
+      while (i >= 0)
+      {
+        ((TabPreloadManager.PreloadInfo)this.mPreloadedList.remove(i)).destroyHippyEngine(paramString);
+        i -= 1;
+      }
+      HippyAccessHelper.clearAllPreloads();
+      return;
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -201,18 +275,23 @@ public class TabPreloadManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ArrayList localArrayList = getNeedPreloads(paramString);
+    List localList = getNeedPreloads(paramString, getCurrentProcessName());
     int i = this.mPreloadedList.size() - 1;
     while (i >= 0)
     {
       int j = 0;
-      while (j < localArrayList.size())
+      while (j < localList.size())
       {
-        ((TabPreloadManager.PreloadInfo)this.mPreloadedList.get(i)).mPreloadItem.bundleName.equals(((TabPreloadItem)localArrayList.get(j)).bundleName);
+        ((TabPreloadManager.PreloadInfo)this.mPreloadedList.get(i)).mPreloadItem.bundleName.equals(((TabPreloadItem)localList.get(j)).bundleName);
         j += 1;
       }
-      if (!((TabPreloadManager.PreloadInfo)this.mPreloadedList.get(i)).mPreloadTab.equals(paramString)) {
-        ((TabPreloadManager.PreloadInfo)this.mPreloadedList.remove(i)).destroyHippyEngine();
+      if (!((TabPreloadManager.PreloadInfo)this.mPreloadedList.get(i)).mPreloadTab.equals(paramString))
+      {
+        TabPreloadManager.PreloadInfo localPreloadInfo = (TabPreloadManager.PreloadInfo)this.mPreloadedList.remove(i);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("tab_");
+        localStringBuilder.append(paramString);
+        localPreloadInfo.destroyHippyEngine(localStringBuilder.toString());
       }
       i -= 1;
     }
@@ -231,7 +310,7 @@ public class TabPreloadManager
       this.mPreloadedList.clear();
       while (i < localArrayList.size())
       {
-        ((TabPreloadManager.PreloadInfo)localArrayList.get(i)).destroyHippyEngine();
+        ((TabPreloadManager.PreloadInfo)localArrayList.get(i)).destroyHippyEngine("logout");
         i += 1;
       }
       return;
@@ -248,44 +327,19 @@ public class TabPreloadManager
     if (i != 1)
     {
       if (i != 7) {
-        return null;
+        return "unknown";
       }
       return "tool";
     }
     return "main";
   }
   
-  protected ArrayList<TabPreloadItem> getNeedPreloads(String paramString)
-  {
-    return getNeedPreloads(paramString, getCurrentProcessName());
-  }
-  
-  protected ArrayList<TabPreloadItem> getNeedPreloads(String paramString1, String paramString2)
+  protected List<TabPreloadItem> getNeedPreloads(String paramString1, String paramString2)
   {
     ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      if (TextUtils.isEmpty(paramString2)) {
-        return localArrayList;
-      }
-      Map localMap = HippyUpdateManager.getInstance().getTabPreloadConfigManager().getTabPreloadConfig();
-      if (localMap == null) {
-        return localArrayList;
-      }
-      paramString1 = (ArrayList)localMap.get(paramString1);
-      if (paramString1 != null)
-      {
-        int i = 0;
-        while (i < paramString1.size())
-        {
-          if ((isCanPreload(((TabPreloadItem)paramString1.get(i)).bundleName)) && (!isPreloaded(((TabPreloadItem)paramString1.get(i)).bundleName)) && (paramString2.equals(((TabPreloadItem)paramString1.get(i)).preloadProcess))) {
-            localArrayList.add(paramString1.get(i));
-          }
-          i += 1;
-        }
-      }
-    }
-    return localArrayList;
+    localArrayList.add(TabPreloadItem.PreloadType.PRE_DRAW);
+    localArrayList.add(TabPreloadItem.PreloadType.PRE_LOAD);
+    return HippyPredownloadManager.getInstance().getTabPreloadConfigManager().getItemsOfTab(paramString1, paramString2, localArrayList);
   }
   
   public HippyQQPreloadEngine getPreloadedHippyQQEngine(String paramString)
@@ -308,7 +362,7 @@ public class TabPreloadManager
               paramString = localPreloadInfo.mHippyEngine;
               return paramString;
             }
-            localPreloadInfo.mHippyEngine.destoryEngineImmediately();
+            localPreloadInfo.mHippyEngine.destroyEngineImmediately("oldVersion");
           }
         }
         else
@@ -333,40 +387,58 @@ public class TabPreloadManager
   
   public boolean hasNewMessage(String paramString)
   {
-    boolean bool1 = TextUtils.isEmpty(paramString);
-    boolean bool2 = false;
-    if (bool1) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    paramString = (MainTabPreloadInterpolator)sPreloadInterpolatorMap.get(paramString);
-    bool1 = bool2;
-    if (paramString != null)
+    try
     {
-      bool1 = bool2;
-      if (paramString.hasNewMessage()) {
-        bool1 = true;
+      paramString = (MainTabPreloadInterpolator)sPreloadInterpolatorMap.get(paramString);
+      if (paramString != null)
+      {
+        boolean bool = paramString.hasNewMessage();
+        if (bool) {
+          return true;
+        }
       }
+      return false;
     }
-    return bool1;
+    catch (Throwable paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hasNewMessage error:");
+      localStringBuilder.append(paramString);
+      QLog.e("TabPreloadManager", 1, localStringBuilder.toString());
+    }
+    return false;
   }
   
   public boolean isCanPreload(String paramString)
   {
-    boolean bool1 = TextUtils.isEmpty(paramString);
-    boolean bool2 = false;
-    if (bool1) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    paramString = (MainTabPreloadInterpolator)sPreloadInterpolatorMap.get(paramString);
-    bool1 = bool2;
-    if (paramString != null)
+    boolean bool = true;
+    try
     {
-      bool1 = bool2;
-      if (paramString.isCanPreload()) {
-        bool1 = true;
+      paramString = (MainTabPreloadInterpolator)sPreloadInterpolatorMap.get(paramString);
+      if (paramString != null)
+      {
+        bool = paramString.isCanPreload();
+        if (bool) {
+          return true;
+        }
+        bool = false;
       }
+      return bool;
     }
-    return bool1;
+    catch (Throwable paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isCanPreload error:");
+      localStringBuilder.append(paramString);
+      QLog.e("TabPreloadManager", 1, localStringBuilder.toString());
+    }
+    return false;
   }
   
   public boolean isInTabPreload(String paramString)
@@ -376,7 +448,7 @@ public class TabPreloadManager
       if (!isCanPreload(paramString)) {
         return false;
       }
-      Object localObject = HippyUpdateManager.getInstance().getTabPreloadConfigManager().getTabPreloadConfig();
+      Object localObject = HippyPredownloadManager.getInstance().getTabPreloadConfigManager().getTabPreloadConfig();
       if (localObject == null) {
         return false;
       }
@@ -422,7 +494,7 @@ public class TabPreloadManager
     {
       synchronized (this.mPreloadDataLock)
       {
-        Object localObject1 = HippyUpdateManager.getInstance().getTabPreloadConfigManager();
+        Object localObject1 = HippyPredownloadManager.getInstance().getTabPreloadConfigManager();
         if (this.mPreloadedList.size() >= ((TabPreloadConfigManager)localObject1).getPreloadMaxCount())
         {
           this.mIsPreloading = false;
@@ -437,7 +509,7 @@ public class TabPreloadManager
             return;
           }
           this.mIsPreloading = true;
-          doPreload((TabPreloadManager.PreloadInfo)localObject1);
+          preloadOneItem((TabPreloadManager.PreloadInfo)localObject1);
           return;
         }
       }
@@ -476,7 +548,7 @@ public class TabPreloadManager
     int j = 0;
     if ((paramOpenHippyInfo != null) && (paramOpenHippyInfo.checkData()))
     {
-      Map localMap = HippyUpdateManager.getInstance().getTabPreloadConfigManager().getTabPreloadConfig();
+      Map localMap = HippyPredownloadManager.getInstance().getTabPreloadConfigManager().getTabPreloadConfig();
       if (localMap == null) {
         return false;
       }
@@ -525,11 +597,11 @@ public class TabPreloadManager
           return false;
         }
         if (paramOpenHippyInfo.isPredraw) {
-          ??? = "predraw";
+          ??? = TabPreloadItem.PreloadType.PRE_DRAW;
         } else {
-          ??? = "preload";
+          ??? = TabPreloadItem.PreloadType.PRE_LOAD;
         }
-        ((TabPreloadItem)localObject3).preloadType = ((String)???);
+        ((TabPreloadItem)localObject3).preloadType = ((TabPreloadItem.PreloadType)???);
         synchronized (this.mPreloadDataLock)
         {
           localObject2 = new TabPreloadManager.PreloadInfo(localObject4, (TabPreloadItem)localObject3);
@@ -556,7 +628,7 @@ public class TabPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.preload.TabPreloadManager
  * JD-Core Version:    0.7.0.1
  */

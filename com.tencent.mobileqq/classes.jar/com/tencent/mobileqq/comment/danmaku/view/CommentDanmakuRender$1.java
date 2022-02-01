@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.comment.danmaku.view;
 
 import android.graphics.Bitmap;
+import com.tencent.common.danmaku.data.ViewDanmaku;
 import com.tencent.mobileqq.armap.FaceObserver;
-import com.tencent.mobileqq.danmaku.data.ViewDanmaku;
 import com.tencent.mobileqq.widget.RoundImageView;
 import java.util.Iterator;
 import java.util.List;
@@ -22,10 +22,10 @@ class CommentDanmakuRender$1
       while (paramString2.hasNext())
       {
         CommentDanmakuRender.HeadRequestInfo localHeadRequestInfo = (CommentDanmakuRender.HeadRequestInfo)paramString2.next();
-        if ((localHeadRequestInfo != null) && (localHeadRequestInfo.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localHeadRequestInfo.jdField_a_of_type_ComTencentMobileqqDanmakuDataViewDanmaku != null))
+        if ((localHeadRequestInfo != null) && (localHeadRequestInfo.a != null) && (localHeadRequestInfo.b != null))
         {
-          localHeadRequestInfo.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
-          localHeadRequestInfo.jdField_a_of_type_ComTencentMobileqqDanmakuDataViewDanmaku.c(true);
+          localHeadRequestInfo.a.setImageBitmap(paramBitmap);
+          localHeadRequestInfo.b.c(true);
         }
       }
     }
@@ -34,7 +34,7 @@ class CommentDanmakuRender$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.danmaku.view.CommentDanmakuRender.1
  * JD-Core Version:    0.7.0.1
  */

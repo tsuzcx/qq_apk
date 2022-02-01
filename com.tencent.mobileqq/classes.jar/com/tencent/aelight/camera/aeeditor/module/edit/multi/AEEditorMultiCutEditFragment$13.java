@@ -23,21 +23,21 @@ class AEEditorMultiCutEditFragment$13
     if (AEFastClickThrottle.a(paramView)) {
       return;
     }
-    AEBaseDataReporter.a().E();
-    AEReportUtils.o();
-    int j = AEEditorMultiCutEditFragment.a(this.a).size();
+    AEBaseDataReporter.a().F();
+    AEReportUtils.n();
+    int j = AEEditorMultiCutEditFragment.f(this.a).size();
     int i = 0;
     if (j >= 30)
     {
-      QQToast.a(this.a.getActivity(), this.a.getResources().getString(2064515128, new Object[] { Integer.valueOf(30) }), 0).a();
+      QQToast.makeText(this.a.getActivity(), this.a.getResources().getString(2064187470, new Object[] { Integer.valueOf(30) }), 0).show();
       return;
     }
-    if (AEEditorMultiCutEditFragment.a(this.a).a()) {
-      AEEditorMultiCutEditFragment.a(this.a).b();
+    if (AEEditorMultiCutEditFragment.e(this.a).a()) {
+      AEEditorMultiCutEditFragment.e(this.a).c();
     }
     paramView = new AELaunchParamsBuilder().from(AECameraEntry.E).canSwitchSelectionMode(false).canMixPickPhotoAndVideo(true);
-    if (AEEditorMultiCutEditFragment.a(this.a) != null) {
-      i = AEEditorMultiCutEditFragment.a(this.a).size();
+    if (AEEditorMultiCutEditFragment.f(this.a) != null) {
+      i = AEEditorMultiCutEditFragment.f(this.a).size();
     }
     paramView = paramView.initialPickedNum(i).build();
     AECameraLauncher.a(this.a.getActivity(), paramView, 1024);
@@ -45,7 +45,7 @@ class AEEditorMultiCutEditFragment$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.13
  * JD-Core Version:    0.7.0.1
  */

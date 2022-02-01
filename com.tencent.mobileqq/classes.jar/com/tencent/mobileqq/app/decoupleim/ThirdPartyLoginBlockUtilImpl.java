@@ -13,21 +13,21 @@ import tencent.im.login.GatewayVerify.RspLftInfo;
 public class ThirdPartyLoginBlockUtilImpl
   implements ThirdPartyLoginBlockUtilInterface
 {
-  private static volatile ThirdPartyLoginBlockUtilImpl jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl;
-  private OpenSDKLoginCallback jdField_a_of_type_ComTencentMobileqqAppDecoupleimOpenSDKLoginCallback;
+  private static volatile ThirdPartyLoginBlockUtilImpl a;
+  private OpenSDKLoginCallback b;
   
   public static ThirdPartyLoginBlockUtilImpl a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl == null) {
-          jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl = new ThirdPartyLoginBlockUtilImpl();
+        if (a == null) {
+          a = new ThirdPartyLoginBlockUtilImpl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl;
+    return a;
   }
   
   private boolean b(byte[] paramArrayOfByte, QBaseActivity paramQBaseActivity)
@@ -45,14 +45,9 @@ public class ThirdPartyLoginBlockUtilImpl
     return true;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppDecoupleimOpenSDKLoginCallback = null;
-  }
-  
   public void a(OpenSDKLoginCallback paramOpenSDKLoginCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDecoupleimOpenSDKLoginCallback = paramOpenSDKLoginCallback;
+    this.b = paramOpenSDKLoginCallback;
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
@@ -99,10 +94,15 @@ public class ThirdPartyLoginBlockUtilImpl
     QLog.d("ThirdPartyLoginUtilImpl", 1, "handleByThirdPartyLoginUtil false");
     return false;
   }
+  
+  public void b()
+  {
+    this.b = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.decoupleim.ThirdPartyLoginBlockUtilImpl
  * JD-Core Version:    0.7.0.1
  */

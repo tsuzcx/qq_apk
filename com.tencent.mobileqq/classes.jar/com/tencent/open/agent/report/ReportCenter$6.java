@@ -28,7 +28,7 @@ class ReportCenter$6
     label392:
     try
     {
-      if (this.jdField_a_of_type_AndroidOsBundle == null)
+      if (this.a == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ReportCenter", 2, "-->httpRequest, params is null!");
@@ -36,7 +36,7 @@ class ReportCenter$6
       }
       else
       {
-        i = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_HttpRetryCount");
+        i = OpenConfig.a(CommonDataAdapter.a().b(), null).d("Common_HttpRetryCount");
         k = i;
         if (i == 0) {
           k = 3;
@@ -68,13 +68,13 @@ class ReportCenter$6
     {
       try
       {
-        localHttpClient = HttpBaseUtil.a(null, this.jdField_a_of_type_JavaLangString);
-        localObject2 = HttpBaseUtil.a(this.jdField_a_of_type_AndroidOsBundle);
+        localHttpClient = HttpBaseUtil.a(null, this.b);
+        localObject2 = HttpBaseUtil.a(this.a);
         localObject1 = localObject2;
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.c) {
           localObject1 = URLEncoder.encode((String)localObject2);
         }
-        localObject2 = new StringBuffer(this.jdField_a_of_type_JavaLangString);
+        localObject2 = new StringBuffer(this.b);
         ((StringBuffer)localObject2).append((String)localObject1);
         localObject1 = new HttpGet(((StringBuffer)localObject2).toString());
         ((HttpUriRequest)localObject1).addHeader("Accept-Encoding", "gzip");
@@ -176,7 +176,7 @@ class ReportCenter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.6
  * JD-Core Version:    0.7.0.1
  */

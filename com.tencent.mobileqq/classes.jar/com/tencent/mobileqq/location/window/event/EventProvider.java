@@ -5,33 +5,33 @@ import mqq.app.AppRuntime;
 
 public class EventProvider
 {
-  private static final LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = new LocationRoom.RoomKey(-1, "-1");
-  private final AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private LocationRoom.RoomKey b = jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
+  private static final LocationRoom.RoomKey b = new LocationRoom.RoomKey(-1, "-1");
+  private final AppRuntime a;
+  private LocationRoom.RoomKey c = b;
   
   public EventProvider(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-  }
-  
-  public LocationRoom.RoomKey a()
-  {
-    return this.b;
+    this.a = paramAppRuntime;
   }
   
   public void a()
   {
-    this.b = jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
+    this.c = b;
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey)
   {
-    this.b = paramRoomKey;
+    this.c = paramRoomKey;
+  }
+  
+  public LocationRoom.RoomKey b()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.event.EventProvider
  * JD-Core Version:    0.7.0.1
  */

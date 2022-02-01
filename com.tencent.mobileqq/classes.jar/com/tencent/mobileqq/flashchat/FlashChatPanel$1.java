@@ -13,12 +13,12 @@ class FlashChatPanel$1
   
   public void b()
   {
-    ArkDispatchTask.getInstance().post(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.appName, new FlashChatPanel.1.1(this));
+    ArkDispatchTask.getInstance().post(this.a.appName, new FlashChatPanel.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatPanel.1
  * JD-Core Version:    0.7.0.1
  */

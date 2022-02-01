@@ -8,8 +8,9 @@ import java.util.List;
 public class ExoPredictor
   extends AbstractPredictor
 {
+  public static final int DEFAULT_MAX_WEIGHT = 500;
   private int currentWeight;
-  private MoveAvgPredictor mAvgPredictor;
+  private final MoveAvgPredictor mAvgPredictor;
   private int maxWeight;
   private final ArrayList<Long> samples;
   private final float weightFactor;
@@ -113,7 +114,7 @@ public class ExoPredictor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.ExoPredictor
  * JD-Core Version:    0.7.0.1
  */

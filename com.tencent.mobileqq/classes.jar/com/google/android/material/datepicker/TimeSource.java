@@ -6,26 +6,21 @@ import java.util.TimeZone;
 
 class TimeSource
 {
-  private static final TimeSource jdField_a_of_type_ComGoogleAndroidMaterialDatepickerTimeSource = new TimeSource(null, null);
+  private static final TimeSource a = new TimeSource(null, null);
   @Nullable
-  private final Long jdField_a_of_type_JavaLangLong;
+  private final Long b;
   @Nullable
-  private final TimeZone jdField_a_of_type_JavaUtilTimeZone;
+  private final TimeZone c;
   
   private TimeSource(@Nullable Long paramLong, @Nullable TimeZone paramTimeZone)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_JavaUtilTimeZone = paramTimeZone;
+    this.b = paramLong;
+    this.c = paramTimeZone;
   }
   
   static TimeSource a()
   {
-    return jdField_a_of_type_ComGoogleAndroidMaterialDatepickerTimeSource;
-  }
-  
-  Calendar a()
-  {
-    return a(this.jdField_a_of_type_JavaUtilTimeZone);
+    return a;
   }
   
   Calendar a(@Nullable TimeZone paramTimeZone)
@@ -35,16 +30,21 @@ class TimeSource
     } else {
       paramTimeZone = Calendar.getInstance(paramTimeZone);
     }
-    Long localLong = this.jdField_a_of_type_JavaLangLong;
+    Long localLong = this.b;
     if (localLong != null) {
       paramTimeZone.setTimeInMillis(localLong.longValue());
     }
     return paramTimeZone;
   }
+  
+  Calendar b()
+  {
+    return a(this.c);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.TimeSource
  * JD-Core Version:    0.7.0.1
  */

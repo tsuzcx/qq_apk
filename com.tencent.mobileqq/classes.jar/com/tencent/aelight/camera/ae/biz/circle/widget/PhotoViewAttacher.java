@@ -22,58 +22,58 @@ import com.tencent.qphone.base.util.QLog;
 public class PhotoViewAttacher
   implements View.OnLayoutChangeListener, View.OnTouchListener
 {
-  private static float jdField_a_of_type_Float = 7.0F;
-  private static int jdField_a_of_type_Int = 200;
-  private static float jdField_b_of_type_Float = 3.5F;
-  private static int jdField_b_of_type_Int = 1;
-  private static float jdField_c_of_type_Float = 1.75F;
-  private static float jdField_d_of_type_Float = 1.0F;
-  private static float jdField_e_of_type_Float = 0.6F;
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateDecelerateInterpolator();
-  private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.FIT_CENTER;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private CustomGestureDetector jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector;
-  private OnGestureListener jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetOnGestureListener = new PhotoViewAttacher.1(this);
-  private PhotoViewAttacher.FlingRunnable jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher$FlingRunnable;
-  private boolean jdField_a_of_type_Boolean = true;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[9];
-  private final Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = jdField_a_of_type_Int;
-  private final Matrix jdField_c_of_type_AndroidGraphicsMatrix = new Matrix();
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int = 2;
-  private int jdField_e_of_type_Int = 2;
-  private float f = jdField_d_of_type_Float;
-  private float g = jdField_c_of_type_Float;
-  private float h = jdField_b_of_type_Float;
-  private float i;
-  private float j;
-  private float k;
+  private static float a = 7.0F;
+  private static float b = 3.5F;
+  private static float c = 1.75F;
+  private static float d = 1.0F;
+  private static float e = 0.6F;
+  private static int f = 200;
+  private static int g = 1;
+  private int A = 2;
+  private float B;
+  private float C;
+  private float D;
+  private boolean E = true;
+  private ImageView.ScaleType F = ImageView.ScaleType.FIT_CENTER;
+  private OnGestureListener G = new PhotoViewAttacher.1(this);
+  private Interpolator h = new AccelerateDecelerateInterpolator();
+  private int i = f;
+  private float j = d;
+  private float k = c;
+  private float l = b;
+  private boolean m = true;
+  private boolean n = false;
+  private ImageView o;
+  private GestureDetector p;
+  private CustomGestureDetector q;
+  private final Matrix r = new Matrix();
+  private final Matrix s = new Matrix();
+  private final Matrix t = new Matrix();
+  private final RectF u = new RectF();
+  private final float[] v = new float[9];
+  private View.OnClickListener w;
+  private View.OnLongClickListener x;
+  private PhotoViewAttacher.FlingRunnable y;
+  private int z = 2;
   
   public PhotoViewAttacher(ImageView paramImageView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.o = paramImageView;
     paramImageView.setOnTouchListener(this);
     paramImageView.addOnLayoutChangeListener(this);
     if (paramImageView.isInEditMode()) {
       return;
     }
-    this.i = 0.0F;
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector = new CustomGestureDetector(paramImageView.getContext(), this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetOnGestureListener);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramImageView.getContext(), new PhotoViewAttacher.2(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector.setOnDoubleTapListener(new PhotoViewAttacher.3(this));
+    this.B = 0.0F;
+    this.q = new CustomGestureDetector(paramImageView.getContext(), this.G);
+    this.p = new GestureDetector(paramImageView.getContext(), new PhotoViewAttacher.2(this));
+    this.p.setOnDoubleTapListener(new PhotoViewAttacher.3(this));
   }
   
   private float a(Matrix paramMatrix, int paramInt)
   {
-    paramMatrix.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    return this.jdField_a_of_type_ArrayOfFloat[paramInt];
+    paramMatrix.getValues(this.v);
+    return this.v[paramInt];
   }
   
   private int a(ImageView paramImageView)
@@ -81,21 +81,9 @@ public class PhotoViewAttacher
     return paramImageView.getWidth() - paramImageView.getPaddingLeft() - paramImageView.getPaddingRight();
   }
   
-  private RectF a(Matrix paramMatrix)
-  {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if (localDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      paramMatrix.mapRect(this.jdField_a_of_type_AndroidGraphicsRectF);
-      return this.jdField_a_of_type_AndroidGraphicsRectF;
-    }
-    return null;
-  }
-  
   private void a(Matrix paramMatrix)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageMatrix(paramMatrix);
+    this.o.setImageMatrix(paramMatrix);
   }
   
   private void a(Drawable paramDrawable)
@@ -103,93 +91,132 @@ public class PhotoViewAttacher
     if (paramDrawable == null) {
       return;
     }
-    float f1 = a(this.jdField_a_of_type_AndroidWidgetImageView);
-    float f2 = b(this.jdField_a_of_type_AndroidWidgetImageView);
-    int m = paramDrawable.getIntrinsicWidth();
-    int n = paramDrawable.getIntrinsicHeight();
+    float f1 = a(this.o);
+    float f2 = b(this.o);
+    int i1 = paramDrawable.getIntrinsicWidth();
+    int i2 = paramDrawable.getIntrinsicHeight();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateBaseMatrix viewWidth:");
     ((StringBuilder)localObject).append(f1);
     ((StringBuilder)localObject).append(" viewHeight:");
     ((StringBuilder)localObject).append(f2);
     ((StringBuilder)localObject).append(" drawableWidth:");
-    ((StringBuilder)localObject).append(m);
+    ((StringBuilder)localObject).append(i1);
     ((StringBuilder)localObject).append(" drawableHeight:");
-    ((StringBuilder)localObject).append(n);
+    ((StringBuilder)localObject).append(i2);
     ((StringBuilder)localObject).append(" drawableHash:");
     ((StringBuilder)localObject).append(paramDrawable.hashCode());
     QLog.d("PhotoViewAttacher", 4, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    float f3 = m;
+    this.r.reset();
+    float f3 = i1;
     float f5 = f1 / f3;
-    float f4 = n;
+    float f4 = i2;
     float f6 = f2 / f4;
-    if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType == ImageView.ScaleType.CENTER)
+    if (this.F == ImageView.ScaleType.CENTER)
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - f3) / 2.0F, (f2 - f4) / 2.0F);
+      this.r.postTranslate((f1 - f3) / 2.0F, (f2 - f4) / 2.0F);
     }
-    else if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType == ImageView.ScaleType.CENTER_CROP)
+    else if (this.F == ImageView.ScaleType.CENTER_CROP)
     {
       f5 = Math.max(f5, f6);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f5, f5);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
+      this.r.postScale(f5, f5);
+      this.r.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
     }
-    else if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType == ImageView.ScaleType.CENTER_INSIDE)
+    else if (this.F == ImageView.ScaleType.CENTER_INSIDE)
     {
       f5 = Math.min(1.0F, Math.min(f5, f6));
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f5, f5);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
+      this.r.postScale(f5, f5);
+      this.r.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
     }
     else
     {
       paramDrawable = new RectF(0.0F, 0.0F, f3, f4);
       localObject = new RectF(0.0F, 0.0F, f1, f2);
-      if ((int)this.i % 180 != 0) {
+      if ((int)this.B % 180 != 0) {
         paramDrawable = new RectF(0.0F, 0.0F, f4, f3);
       }
-      m = PhotoViewAttacher.4.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()];
-      if (m != 1)
+      i1 = PhotoViewAttacher.4.a[this.F.ordinal()];
+      if (i1 != 1)
       {
-        if (m != 2)
+        if (i1 != 2)
         {
-          if (m != 3)
+          if (i1 != 3)
           {
-            if (m == 4) {
-              this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(paramDrawable, (RectF)localObject, Matrix.ScaleToFit.FILL);
+            if (i1 == 4) {
+              this.r.setRectToRect(paramDrawable, (RectF)localObject, Matrix.ScaleToFit.FILL);
             }
           }
           else {
-            this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(paramDrawable, (RectF)localObject, Matrix.ScaleToFit.END);
+            this.r.setRectToRect(paramDrawable, (RectF)localObject, Matrix.ScaleToFit.END);
           }
         }
         else {
-          this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(paramDrawable, (RectF)localObject, Matrix.ScaleToFit.START);
+          this.r.setRectToRect(paramDrawable, (RectF)localObject, Matrix.ScaleToFit.START);
         }
       }
       else {
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setRectToRect(paramDrawable, (RectF)localObject, Matrix.ScaleToFit.CENTER);
+        this.r.setRectToRect(paramDrawable, (RectF)localObject, Matrix.ScaleToFit.CENTER);
       }
     }
-    b();
+    l();
   }
   
-  private boolean a()
+  private int b(ImageView paramImageView)
   {
-    RectF localRectF = a(b());
+    return paramImageView.getHeight() - paramImageView.getPaddingTop() - paramImageView.getPaddingBottom();
+  }
+  
+  private RectF b(Matrix paramMatrix)
+  {
+    Drawable localDrawable = this.o.getDrawable();
+    if (localDrawable != null)
+    {
+      this.u.set(0.0F, 0.0F, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+      paramMatrix.mapRect(this.u);
+      return this.u;
+    }
+    return null;
+  }
+  
+  private Matrix k()
+  {
+    this.s.set(this.r);
+    this.s.postConcat(this.t);
+    return this.s;
+  }
+  
+  private void l()
+  {
+    this.t.reset();
+    b(this.B);
+    a(k());
+    n();
+  }
+  
+  private void m()
+  {
+    if (n()) {
+      a(k());
+    }
+  }
+  
+  private boolean n()
+  {
+    RectF localRectF = b(k());
     if (localRectF == null) {
       return false;
     }
     float f1 = localRectF.height();
     float f4 = localRectF.width();
-    float f2 = b(this.jdField_a_of_type_AndroidWidgetImageView);
+    float f2 = b(this.o);
     float f3 = 0.0F;
-    int m;
+    int i1;
     if (f1 <= f2)
     {
-      m = PhotoViewAttacher.4.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()];
-      if (m != 2)
+      i1 = PhotoViewAttacher.4.a[this.F.ordinal()];
+      if (i1 != 2)
       {
-        if (m != 3) {
+        if (i1 != 3) {
           f2 = (f2 - f1) / 2.0F;
         }
         for (f1 = localRectF.top;; f1 = localRectF.top)
@@ -200,30 +227,30 @@ public class PhotoViewAttacher
         }
       }
       f1 = -localRectF.top;
-      this.jdField_e_of_type_Int = 2;
+      this.A = 2;
     }
     else if (localRectF.top > 0.0F)
     {
-      this.jdField_e_of_type_Int = 0;
+      this.A = 0;
       f1 = -localRectF.top;
     }
     else if (localRectF.bottom < f2)
     {
-      this.jdField_e_of_type_Int = 1;
+      this.A = 1;
       f1 = f2 - localRectF.bottom;
     }
     else
     {
-      this.jdField_e_of_type_Int = -1;
+      this.A = -1;
       f1 = 0.0F;
     }
-    f2 = a(this.jdField_a_of_type_AndroidWidgetImageView);
+    f2 = a(this.o);
     if (f4 <= f2)
     {
-      m = PhotoViewAttacher.4.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()];
-      if (m != 2)
+      i1 = PhotoViewAttacher.4.a[this.F.ordinal()];
+      if (i1 != 2)
       {
-        if (m != 3) {
+        if (i1 != 3) {
           f3 = (f2 - f4) / 2.0F;
         }
         for (f2 = localRectF.left;; f2 = localRectF.left)
@@ -234,120 +261,68 @@ public class PhotoViewAttacher
         }
       }
       f2 = -localRectF.left;
-      this.jdField_d_of_type_Int = 2;
+      this.z = 2;
     }
     else if (localRectF.left > 0.0F)
     {
-      this.jdField_d_of_type_Int = 0;
+      this.z = 0;
       f2 = -localRectF.left;
     }
     else if (localRectF.right < f2)
     {
       f2 -= localRectF.right;
-      this.jdField_d_of_type_Int = 1;
+      this.z = 1;
     }
     else
     {
-      this.jdField_d_of_type_Int = -1;
+      this.z = -1;
       f2 = f3;
     }
-    this.jdField_c_of_type_AndroidGraphicsMatrix.postTranslate(f2, f1);
+    this.t.postTranslate(f2, f1);
     return true;
   }
   
-  private int b(ImageView paramImageView)
+  private void o()
   {
-    return paramImageView.getHeight() - paramImageView.getPaddingTop() - paramImageView.getPaddingBottom();
-  }
-  
-  private Matrix b()
-  {
-    this.jdField_b_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_b_of_type_AndroidGraphicsMatrix.postConcat(this.jdField_c_of_type_AndroidGraphicsMatrix);
-    return this.jdField_b_of_type_AndroidGraphicsMatrix;
-  }
-  
-  private void b()
-  {
-    this.jdField_c_of_type_AndroidGraphicsMatrix.reset();
-    b(this.i);
-    a(b());
-    a();
-  }
-  
-  private void c()
-  {
-    if (a()) {
-      a(b());
-    }
-  }
-  
-  private void d()
-  {
-    PhotoViewAttacher.FlingRunnable localFlingRunnable = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher$FlingRunnable;
+    PhotoViewAttacher.FlingRunnable localFlingRunnable = this.y;
     if (localFlingRunnable != null)
     {
       localFlingRunnable.a();
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher$FlingRunnable = null;
+      this.y = null;
     }
-  }
-  
-  public float a()
-  {
-    return (float)Math.sqrt((float)Math.pow(a(this.jdField_c_of_type_AndroidGraphicsMatrix, 0), 2.0D) + (float)Math.pow(a(this.jdField_c_of_type_AndroidGraphicsMatrix, 3), 2.0D));
-  }
-  
-  public Matrix a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsMatrix;
   }
   
   public RectF a()
   {
-    a();
-    return a(b());
-  }
-  
-  public ImageView.ScaleType a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView$ScaleType;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_c_of_type_Boolean)
-    {
-      a(this.jdField_a_of_type_AndroidWidgetImageView.getDrawable());
-      return;
-    }
-    b();
+    n();
+    return b(k());
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_c_of_type_AndroidGraphicsMatrix.setRotate(paramFloat % 360.0F);
-    c();
+    this.t.setRotate(paramFloat % 360.0F);
+    m();
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     Util.a(paramFloat1, paramFloat2, paramFloat3);
-    this.f = paramFloat1;
-    this.g = paramFloat2;
-    this.h = paramFloat3;
+    this.j = paramFloat1;
+    this.k = paramFloat2;
+    this.l = paramFloat3;
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean)
   {
-    if ((paramFloat1 >= this.f) && (paramFloat1 <= this.h))
+    if ((paramFloat1 >= this.j) && (paramFloat1 <= this.l))
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.post(new PhotoViewAttacher.AnimatedZoomRunnable(this, a(), paramFloat1, paramFloat2, paramFloat3));
+        this.o.post(new PhotoViewAttacher.AnimatedZoomRunnable(this, e(), paramFloat1, paramFloat2, paramFloat3));
         return;
       }
-      this.jdField_c_of_type_AndroidGraphicsMatrix.setScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
-      c();
+      this.t.setScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
+      m();
       return;
     }
     throw new IllegalArgumentException("Scale must be within the range of minScale and maxScale");
@@ -355,77 +330,77 @@ public class PhotoViewAttacher
   
   public void a(float paramFloat, boolean paramBoolean)
   {
-    a(paramFloat, this.jdField_a_of_type_AndroidWidgetImageView.getRight() / 2, this.jdField_a_of_type_AndroidWidgetImageView.getBottom() / 2, paramBoolean);
+    a(paramFloat, this.o.getRight() / 2, this.o.getBottom() / 2, paramBoolean);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.setOnDoubleTapListener(paramOnDoubleTapListener);
+    this.p.setOnDoubleTapListener(paramOnDoubleTapListener);
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.w = paramOnClickListener;
   }
   
   public void a(View.OnLongClickListener paramOnLongClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
+    this.x = paramOnLongClickListener;
   }
   
   public void a(ImageView.ScaleType paramScaleType)
   {
-    if ((Util.a(paramScaleType)) && (paramScaleType != this.jdField_a_of_type_AndroidWidgetImageView$ScaleType))
+    if ((Util.a(paramScaleType)) && (paramScaleType != this.F))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
-      a();
+      this.F = paramScaleType;
+      g();
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
   }
   
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.a()) && (!this.jdField_b_of_type_Boolean))
+    if ((this.m) && (!this.q.a()) && (!this.n))
     {
-      int m;
+      int i1;
       if ((Math.abs(paramFloat2) > 8.0F) && (Math.abs(paramFloat2) > Math.abs(paramFloat1))) {
-        m = 1;
+        i1 = 1;
       } else {
-        m = 0;
+        i1 = 0;
       }
-      int n;
+      int i2;
       if ((Math.abs(paramFloat1) > 8.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2))) {
-        n = 1;
+        i2 = 1;
       } else {
-        n = 0;
+        i2 = 0;
       }
-      if ((m != 0) && (Math.abs(paramFloat2) * 0.6F > Math.abs(paramFloat1)))
+      if ((i1 != 0) && (Math.abs(paramFloat2) * 0.6F > Math.abs(paramFloat1)))
       {
-        m = this.jdField_e_of_type_Int;
-        if ((m == 2) || ((m == 0) && (paramFloat2 >= 8.0F)) || ((this.jdField_e_of_type_Int == 1) && (paramFloat2 <= -8.0F)))
+        i1 = this.A;
+        if ((i1 == 2) || ((i1 == 0) && (paramFloat2 >= 8.0F)) || ((this.A == 1) && (paramFloat2 <= -8.0F)))
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("isNeedToDisAllowInterceptEvent vertical solp false mAllowParentInterceptOnEdge:");
-          localStringBuilder.append(this.jdField_a_of_type_Boolean);
+          localStringBuilder.append(this.m);
           localStringBuilder.append(" isScaling:");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.a());
+          localStringBuilder.append(this.q.a());
           localStringBuilder.append(" mBlockParentIntercept:");
-          localStringBuilder.append(this.jdField_b_of_type_Boolean);
+          localStringBuilder.append(this.n);
           localStringBuilder.append(" getScale:");
-          localStringBuilder.append(a());
+          localStringBuilder.append(e());
           localStringBuilder.append(" mHorizontalScrollEdge:");
-          localStringBuilder.append(this.jdField_d_of_type_Int);
+          localStringBuilder.append(this.z);
           localStringBuilder.append(" mVerticalScrollEdge:");
-          localStringBuilder.append(this.jdField_e_of_type_Int);
+          localStringBuilder.append(this.A);
           localStringBuilder.append(" dx:");
           localStringBuilder.append(paramFloat1);
           localStringBuilder.append(" dy:");
@@ -434,24 +409,24 @@ public class PhotoViewAttacher
           return false;
         }
       }
-      if ((n != 0) && (0.6F * Math.abs(paramFloat1) > Math.abs(paramFloat2)))
+      if ((i2 != 0) && (0.6F * Math.abs(paramFloat1) > Math.abs(paramFloat2)))
       {
-        m = this.jdField_d_of_type_Int;
-        if ((m == 2) || ((m == 0) && (paramFloat1 >= 8.0F)) || ((this.jdField_d_of_type_Int == 1) && (paramFloat1 <= -8.0F)))
+        i1 = this.z;
+        if ((i1 == 2) || ((i1 == 0) && (paramFloat1 >= 8.0F)) || ((this.z == 1) && (paramFloat1 <= -8.0F)))
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("isNeedToDisAllowInterceptEvent horizontal solp false mAllowParentInterceptOnEdge:");
-          localStringBuilder.append(this.jdField_a_of_type_Boolean);
+          localStringBuilder.append(this.m);
           localStringBuilder.append(" isScaling:");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.a());
+          localStringBuilder.append(this.q.a());
           localStringBuilder.append(" mBlockParentIntercept:");
-          localStringBuilder.append(this.jdField_b_of_type_Boolean);
+          localStringBuilder.append(this.n);
           localStringBuilder.append(" getScale:");
-          localStringBuilder.append(a());
+          localStringBuilder.append(e());
           localStringBuilder.append(" mHorizontalScrollEdge:");
-          localStringBuilder.append(this.jdField_d_of_type_Int);
+          localStringBuilder.append(this.z);
           localStringBuilder.append(" mVerticalScrollEdge:");
-          localStringBuilder.append(this.jdField_e_of_type_Int);
+          localStringBuilder.append(this.A);
           localStringBuilder.append(" dx:");
           localStringBuilder.append(paramFloat1);
           localStringBuilder.append(" dy:");
@@ -460,21 +435,21 @@ public class PhotoViewAttacher
           return false;
         }
       }
-      if (((this.jdField_e_of_type_Int == 0) && (this.jdField_d_of_type_Int == 0) && (paramFloat2 >= 8.0F) && (paramFloat1 >= 8.0F)) || ((this.jdField_e_of_type_Int == 0) && (this.jdField_d_of_type_Int == 1) && (paramFloat2 >= 8.0F) && (paramFloat1 <= -8.0F)) || ((this.jdField_e_of_type_Int == 1) && (this.jdField_d_of_type_Int == 0) && (paramFloat2 <= -8.0F) && (paramFloat1 >= 8.0F)) || ((this.jdField_e_of_type_Int == 1) && (this.jdField_d_of_type_Int == 1) && (paramFloat2 <= -8.0F) && (paramFloat1 <= -8.0F)))
+      if (((this.A == 0) && (this.z == 0) && (paramFloat2 >= 8.0F) && (paramFloat1 >= 8.0F)) || ((this.A == 0) && (this.z == 1) && (paramFloat2 >= 8.0F) && (paramFloat1 <= -8.0F)) || ((this.A == 1) && (this.z == 0) && (paramFloat2 <= -8.0F) && (paramFloat1 >= 8.0F)) || ((this.A == 1) && (this.z == 1) && (paramFloat2 <= -8.0F) && (paramFloat1 <= -8.0F)))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("isNeedToDisAllowInterceptEvent corner slop false mAllowParentInterceptOnEdge:");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.m);
         localStringBuilder.append(" isScaling:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.a());
+        localStringBuilder.append(this.q.a());
         localStringBuilder.append(" mBlockParentIntercept:");
-        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        localStringBuilder.append(this.n);
         localStringBuilder.append(" getScale:");
-        localStringBuilder.append(a());
+        localStringBuilder.append(e());
         localStringBuilder.append(" mHorizontalScrollEdge:");
-        localStringBuilder.append(this.jdField_d_of_type_Int);
+        localStringBuilder.append(this.z);
         localStringBuilder.append(" mVerticalScrollEdge:");
-        localStringBuilder.append(this.jdField_e_of_type_Int);
+        localStringBuilder.append(this.A);
         localStringBuilder.append(" dx:");
         localStringBuilder.append(paramFloat1);
         localStringBuilder.append(" dy:");
@@ -484,17 +459,17 @@ public class PhotoViewAttacher
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isNeedToDisAllowInterceptEvent default:true mAllowParentInterceptOnEdge:");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.m);
       localStringBuilder.append(" isScaling:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.a());
+      localStringBuilder.append(this.q.a());
       localStringBuilder.append(" mBlockParentIntercept:");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.n);
       localStringBuilder.append(" getScale:");
-      localStringBuilder.append(a());
+      localStringBuilder.append(e());
       localStringBuilder.append(" mHorizontalScrollEdge:");
-      localStringBuilder.append(this.jdField_d_of_type_Int);
+      localStringBuilder.append(this.z);
       localStringBuilder.append(" mVerticalScrollEdge:");
-      localStringBuilder.append(this.jdField_e_of_type_Int);
+      localStringBuilder.append(this.A);
       localStringBuilder.append(" dx:");
       localStringBuilder.append(paramFloat1);
       localStringBuilder.append(" dy:");
@@ -504,17 +479,17 @@ public class PhotoViewAttacher
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isNeedToDisAllowInterceptEvent true mAllowParentInterceptOnEdge:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(" isScaling:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.a());
+    localStringBuilder.append(this.q.a());
     localStringBuilder.append(" mBlockParentIntercept:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.n);
     localStringBuilder.append(" getScale:");
-    localStringBuilder.append(a());
+    localStringBuilder.append(e());
     localStringBuilder.append(" mHorizontalScrollEdge:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.z);
     localStringBuilder.append(" mVerticalScrollEdge:");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.A);
     localStringBuilder.append(" dx:");
     localStringBuilder.append(paramFloat1);
     localStringBuilder.append(" dy:");
@@ -523,34 +498,59 @@ public class PhotoViewAttacher
     return true;
   }
   
+  public float b()
+  {
+    return this.j;
+  }
+  
   public void b(float paramFloat)
   {
-    this.jdField_c_of_type_AndroidGraphicsMatrix.postRotate(paramFloat % 360.0F);
-    c();
+    this.t.postRotate(paramFloat % 360.0F);
+    m();
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    a();
+    this.E = paramBoolean;
+    g();
+  }
+  
+  public float c()
+  {
+    return this.k;
   }
   
   public void c(float paramFloat)
   {
-    Util.a(paramFloat, this.g, this.h);
-    this.f = paramFloat;
+    Util.a(paramFloat, this.k, this.l);
+    this.j = paramFloat;
+  }
+  
+  public float d()
+  {
+    return this.l;
   }
   
   public void d(float paramFloat)
   {
-    Util.a(this.f, paramFloat, this.h);
-    this.g = paramFloat;
+    Util.a(this.j, paramFloat, this.l);
+    this.k = paramFloat;
+  }
+  
+  public float e()
+  {
+    return (float)Math.sqrt((float)Math.pow(a(this.t, 0), 2.0D) + (float)Math.pow(a(this.t, 3), 2.0D));
   }
   
   public void e(float paramFloat)
   {
-    Util.a(this.f, this.g, paramFloat);
-    this.h = paramFloat;
+    Util.a(this.j, this.k, paramFloat);
+    this.l = paramFloat;
+  }
+  
+  public ImageView.ScaleType f()
+  {
+    return this.F;
   }
   
   public void f(float paramFloat)
@@ -558,16 +558,31 @@ public class PhotoViewAttacher
     a(paramFloat, false);
   }
   
+  public void g()
+  {
+    if (this.E)
+    {
+      a(this.o.getDrawable());
+      return;
+    }
+    l();
+  }
+  
+  public Matrix h()
+  {
+    return this.s;
+  }
+  
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
     if ((paramInt1 != paramInt5) || (paramInt2 != paramInt6) || (paramInt3 != paramInt7) || (paramInt4 != paramInt8)) {
-      a(this.jdField_a_of_type_AndroidWidgetImageView.getDrawable());
+      a(this.o.getDrawable());
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool4 = this.jdField_c_of_type_Boolean;
+    boolean bool4 = this.E;
     boolean bool2 = false;
     boolean bool3 = false;
     boolean bool1 = bool2;
@@ -576,18 +591,18 @@ public class PhotoViewAttacher
       bool1 = bool2;
       if (Util.a((ImageView)paramView))
       {
-        int m = paramMotionEvent.getAction();
-        if (m != 0)
+        int i1 = paramMotionEvent.getAction();
+        if (i1 != 0)
         {
-          if ((m == 1) || (m == 3))
+          if ((i1 == 1) || (i1 == 3))
           {
             float f1;
             float f2;
             Object localObject;
-            if (a() < this.f)
+            if (e() < this.j)
             {
-              f1 = a();
-              f2 = jdField_e_of_type_Float;
+              f1 = e();
+              f2 = e;
               if (f1 < f2) {
                 f1 = f2;
               }
@@ -599,23 +614,23 @@ public class PhotoViewAttacher
               localStringBuilder.append("postAnimationZoom minscale event:");
               localStringBuilder.append(paramMotionEvent.getAction());
               localStringBuilder.append(" scale:");
-              localStringBuilder.append(a());
+              localStringBuilder.append(e());
               localStringBuilder.append(" startScale:");
               localStringBuilder.append(f1);
               localStringBuilder.append(" mMinScale:");
-              localStringBuilder.append(this.f);
+              localStringBuilder.append(this.j);
               localStringBuilder.append(" rect:");
               localStringBuilder.append(((RectF)localObject).toString());
               QLog.d("PhotoViewAttacher", 4, localStringBuilder.toString());
-              paramView.post(new PhotoViewAttacher.AnimatedZoomRunnable(this, f1, this.f, ((RectF)localObject).centerX(), ((RectF)localObject).centerY()));
+              paramView.post(new PhotoViewAttacher.AnimatedZoomRunnable(this, f1, this.j, ((RectF)localObject).centerX(), ((RectF)localObject).centerY()));
             }
             else
             {
-              if (a() <= this.h) {
+              if (e() <= this.l) {
                 break label469;
               }
-              f1 = a();
-              f2 = jdField_a_of_type_Float;
+              f1 = e();
+              f2 = a;
               if (f1 > f2) {
                 f1 = f2;
               }
@@ -623,17 +638,17 @@ public class PhotoViewAttacher
               ((StringBuilder)localObject).append("postAnimationZoom maxscale event:");
               ((StringBuilder)localObject).append(paramMotionEvent.getAction());
               ((StringBuilder)localObject).append(" scale:");
-              ((StringBuilder)localObject).append(a());
+              ((StringBuilder)localObject).append(e());
               ((StringBuilder)localObject).append(" startScale:");
               ((StringBuilder)localObject).append(f1);
               ((StringBuilder)localObject).append(" mMaxScale:");
-              ((StringBuilder)localObject).append(this.h);
+              ((StringBuilder)localObject).append(this.l);
               ((StringBuilder)localObject).append(" scaleX:");
-              ((StringBuilder)localObject).append(this.j);
+              ((StringBuilder)localObject).append(this.C);
               ((StringBuilder)localObject).append(" scaleY:");
-              ((StringBuilder)localObject).append(this.k);
+              ((StringBuilder)localObject).append(this.D);
               QLog.d("PhotoViewAttacher", 4, ((StringBuilder)localObject).toString());
-              paramView.post(new PhotoViewAttacher.AnimatedZoomRunnable(this, f1, this.h, this.j, this.k));
+              paramView.post(new PhotoViewAttacher.AnimatedZoomRunnable(this, f1, this.l, this.C, this.D));
             }
             bool1 = true;
             break label472;
@@ -645,32 +660,32 @@ public class PhotoViewAttacher
           if (paramView != null) {
             paramView.requestDisallowInterceptTouchEvent(true);
           }
-          d();
+          o();
         }
         label469:
         bool1 = false;
         label472:
-        paramView = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector;
+        paramView = this.q;
         if (paramView != null)
         {
           boolean bool5 = paramView.a();
-          boolean bool6 = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.b();
-          bool4 = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.a(paramMotionEvent);
-          if ((!bool5) && (!this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.a())) {
+          boolean bool6 = this.q.b();
+          bool4 = this.q.a(paramMotionEvent);
+          if ((!bool5) && (!this.q.a())) {
             bool1 = true;
           } else {
             bool1 = false;
           }
-          if ((!bool6) && (!this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetCustomGestureDetector.b())) {
+          if ((!bool6) && (!this.q.b())) {
             bool2 = true;
           } else {
             bool2 = false;
           }
-          m = paramMotionEvent.getPointerCount();
-          if (((bool1) && (bool2)) || (m > 1)) {
+          i1 = paramMotionEvent.getPointerCount();
+          if (((bool1) && (bool2)) || (i1 > 1)) {
             bool3 = true;
           }
-          this.jdField_b_of_type_Boolean = bool3;
+          this.n = bool3;
           paramView = new StringBuilder();
           paramView.append("onTouch scaleDragDetector wasScaling:");
           paramView.append(bool5);
@@ -681,7 +696,7 @@ public class PhotoViewAttacher
           paramView.append(" didntDrag:");
           paramView.append(bool2);
           paramView.append(" mBlockParentIntercept:");
-          paramView.append(this.jdField_b_of_type_Boolean);
+          paramView.append(this.n);
           QLog.d("PhotoViewAttacher", 4, paramView.toString());
           bool2 = bool4;
         }
@@ -689,7 +704,7 @@ public class PhotoViewAttacher
         {
           bool2 = bool1;
         }
-        paramView = this.jdField_a_of_type_AndroidViewGestureDetector;
+        paramView = this.p;
         bool1 = bool2;
         if (paramView != null)
         {
@@ -705,7 +720,7 @@ public class PhotoViewAttacher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.widget.PhotoViewAttacher
  * JD-Core Version:    0.7.0.1
  */

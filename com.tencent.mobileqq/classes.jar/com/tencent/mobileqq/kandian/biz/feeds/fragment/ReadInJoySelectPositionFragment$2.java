@@ -19,13 +19,13 @@ class ReadInJoySelectPositionFragment$2
     }
     paramAdapterView = (CityData)ReadInJoySelectPositionFragment.a(this.a).get(paramInt - 1);
     if (paramAdapterView.a == 2) {
-      this.a.a(new PositionData(paramAdapterView.d, paramAdapterView.c, paramAdapterView.b, paramAdapterView.e));
+      this.a.a(new PositionData(paramAdapterView.e, paramAdapterView.d, paramAdapterView.c, paramAdapterView.f));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoySelectPositionFragment.2
  * JD-Core Version:    0.7.0.1
  */

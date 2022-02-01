@@ -11,20 +11,20 @@ class HongBaoPendantHolder$1
   
   public void a(ValueAnimation<Float> paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this.a.b = paramFloat1.floatValue();
-    this.a.jdField_a_of_type_Float = (1.07F - (paramFloat1.floatValue() - 1.0F));
-    if (this.a.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnim != null)
+    this.a.D = paramFloat1.floatValue();
+    this.a.C = (1.07F - (paramFloat1.floatValue() - 1.0F));
+    if (this.a.l != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnim.b = paramFloat1.floatValue();
-      this.a.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnim.jdField_a_of_type_Float = this.a.jdField_a_of_type_Float;
+      this.a.l.j = paramFloat1.floatValue();
+      this.a.l.i = this.a.C;
     }
     paramValueAnimation = this.a;
-    paramValueAnimation.a((int)(paramValueAnimation.jdField_a_of_type_Int * paramFloat1.floatValue()));
+    paramValueAnimation.c((int)(paramValueAnimation.h * paramFloat1.floatValue()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.HongBaoPendantHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -39,24 +39,34 @@ public class ComponentContentUgcVideo
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public View a(Context paramContext)
+  public void a(View paramView)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560137, this, true);
+    super.a(paramView);
   }
   
-  public URL a(IReadInJoyModel paramIReadInJoyModel)
+  public void a(Object paramObject)
   {
-    Object localObject1 = paramIReadInJoyModel.a();
-    if ((((AbsBaseArticleInfo)localObject1).mSocialFeedInfo != null) && (((AbsBaseArticleInfo)localObject1).mSocialFeedInfo.a != null) && (((AbsBaseArticleInfo)localObject1).mSocialFeedInfo.a.b.size() > 0))
+    super.a(paramObject);
+  }
+  
+  public View b(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131626184, this, true);
+  }
+  
+  public URL b(IReadInJoyModel paramIReadInJoyModel)
+  {
+    Object localObject1 = paramIReadInJoyModel.k();
+    if ((((AbsBaseArticleInfo)localObject1).mSocialFeedInfo != null) && (((AbsBaseArticleInfo)localObject1).mSocialFeedInfo.s != null) && (((AbsBaseArticleInfo)localObject1).mSocialFeedInfo.s.c.size() > 0))
     {
-      Object localObject2 = ((AbsBaseArticleInfo)localObject1).mSocialFeedInfo.a.b;
+      Object localObject2 = ((AbsBaseArticleInfo)localObject1).mSocialFeedInfo.s.c;
       int i = 0;
       localObject2 = (UGCVideoInfo)((ArrayList)localObject2).get(0);
-      int j = ((UGCVideoInfo)localObject2).c;
-      int k = ((UGCVideoInfo)localObject2).d;
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.getLayoutParams() != null))
+      int j = ((UGCVideoInfo)localObject2).j;
+      int k = ((UGCVideoInfo)localObject2).k;
+      if ((this.b != null) && (this.b.getLayoutParams() != null))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.getLayoutParams();
+        localObject2 = this.b.getLayoutParams();
         int m = ((ViewGroup.LayoutParams)localObject2).width;
         int n = ((ViewGroup.LayoutParams)localObject2).height;
         if (m == n)
@@ -107,33 +117,23 @@ public class ComponentContentUgcVideo
         return localObject1;
       }
     }
-    return super.a(paramIReadInJoyModel);
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-  }
-  
-  public void a(Object paramObject)
-  {
-    super.a(paramObject);
+    return super.b(paramIReadInJoyModel);
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a() != null))
+    if ((this.a.a != null) && (this.a.a.k() != null))
     {
-      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a();
-      if ((((AbsBaseArticleInfo)localObject3).mSocialFeedInfo != null) && (((AbsBaseArticleInfo)localObject3).mSocialFeedInfo.a != null) && (((AbsBaseArticleInfo)localObject3).mSocialFeedInfo.a.b.size() > 0))
+      Object localObject3 = this.a.a.k();
+      if ((((AbsBaseArticleInfo)localObject3).mSocialFeedInfo != null) && (((AbsBaseArticleInfo)localObject3).mSocialFeedInfo.s != null) && (((AbsBaseArticleInfo)localObject3).mSocialFeedInfo.s.c.size() > 0))
       {
         Object localObject1 = getLayoutParams();
         Object localObject2 = getResources().getDisplayMetrics();
         int i = Math.min(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
         int j = AIOUtils.b(12.0F, getResources());
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.getLayoutParams();
-        Object localObject4 = (UGCVideoInfo)((AbsBaseArticleInfo)localObject3).mSocialFeedInfo.a.b.get(0);
-        boolean bool = RIJFeedsType.a(((UGCVideoInfo)localObject4).c, ((UGCVideoInfo)localObject4).d) ^ true;
+        localObject2 = this.b.getLayoutParams();
+        Object localObject4 = (UGCVideoInfo)((AbsBaseArticleInfo)localObject3).mSocialFeedInfo.s.c.get(0);
+        boolean bool = RIJFeedsType.a(((UGCVideoInfo)localObject4).j, ((UGCVideoInfo)localObject4).k) ^ true;
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("isHorizontalScreen ");
         ((StringBuilder)localObject4).append(bool);
@@ -165,8 +165,8 @@ public class ComponentContentUgcVideo
         ((ViewGroup.LayoutParams)localObject2).height = i;
         ((ViewGroup.LayoutParams)localObject1).width = j;
         ((ViewGroup.LayoutParams)localObject1).height = i;
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        this.b.setLayoutParams((ViewGroup.LayoutParams)localObject2);
         setLayoutParams((ViewGroup.LayoutParams)localObject1);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("imageParams.width is ");
@@ -180,7 +180,7 @@ public class ComponentContentUgcVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentUgcVideo
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class PublicAccountListActivity$13
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
+      PublicAccountListActivity.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.13
  * JD-Core Version:    0.7.0.1
  */

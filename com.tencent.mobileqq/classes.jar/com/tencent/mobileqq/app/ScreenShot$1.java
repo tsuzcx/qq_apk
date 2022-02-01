@@ -9,15 +9,15 @@ class ScreenShot$1
   
   public void run()
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
+    if (!this.a.m) {
+      this.a.d.setEmpty();
     }
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ScreenShot.1
  * JD-Core Version:    0.7.0.1
  */

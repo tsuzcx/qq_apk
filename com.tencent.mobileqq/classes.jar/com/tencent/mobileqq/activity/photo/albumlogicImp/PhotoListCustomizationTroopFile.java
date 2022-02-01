@@ -29,14 +29,14 @@ public class PhotoListCustomizationTroopFile
     paramIntent = new HashMap();
     int i = 0;
     int j = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size())
+    while (i < this.e.selectedPhotoList.size())
     {
-      paramArrayList = (String)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.get(i);
+      paramArrayList = (String)this.e.selectedPhotoList.get(i);
       if (!ImageManager.isNetworkUrl(paramArrayList))
       {
-        if (((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData, paramArrayList) == 1)
+        if (((PhotoOtherData)this.f).a(this.e, paramArrayList) == 1)
         {
-          paramArrayList = ((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData, paramArrayList);
+          paramArrayList = ((PhotoOtherData)this.f).b(this.e, paramArrayList);
           if (paramArrayList != null)
           {
             SendVideoInfo localSendVideoInfo = new SendVideoInfo();
@@ -49,12 +49,12 @@ public class PhotoListCustomizationTroopFile
       }
       i += 1;
     }
-    PhotoUtils.sendPhoto(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getIntent(), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList, ((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoListData.a);
+    PhotoUtils.sendPhoto(this.c, this.c.getIntent(), this.e.selectedPhotoList, ((PhotoOtherData)this.f).d, this.b.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationTroopFile
  * JD-Core Version:    0.7.0.1
  */

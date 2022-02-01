@@ -19,41 +19,41 @@ public class ConfessNotificationProcessor
     super(paramQQAppInterface, paramNotificationElement);
   }
   
-  public int a(Message paramMessage)
-  {
-    return -113;
-  }
-  
   public NotificationElement a(Message paramMessage)
   {
-    Object localObject1 = SkinUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130844994));
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.a((Bitmap)localObject1);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131698706);
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.c((String)localObject1);
+    Object localObject1 = SkinUtils.a(this.a.getApp().getResources().getDrawable(2130846430));
+    this.b.a((Bitmap)localObject1);
+    localObject1 = this.a.getApp().getString(2131896664);
+    this.b.c((String)localObject1);
     localObject1 = new ConfessInfo();
     ((ConfessInfo)localObject1).parseFromJsonStr(paramMessage.getExtInfoFromExtStr("ext_key_confess_info"));
-    localObject1 = ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ConfessInfo)localObject1, paramMessage.senderuin);
+    localObject1 = ConfessMsgUtil.a(this.a, (ConfessInfo)localObject1, paramMessage.senderuin);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append("(");
-    ((StringBuilder)localObject2).append(a());
+    ((StringBuilder)localObject2).append(b());
     ((StringBuilder)localObject2).append("):");
-    ((StringBuilder)localObject2).append(c());
+    ((StringBuilder)localObject2).append(d());
     localObject2 = ((StringBuilder)localObject2).toString();
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.b((String)localObject2);
+    this.b.b((String)localObject2);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append(":");
-    ((StringBuilder)localObject2).append(c());
+    ((StringBuilder)localObject2).append(d());
     localObject1 = ((StringBuilder)localObject2).toString();
-    this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement.d((String)localObject1);
-    b(paramMessage);
-    return this.jdField_a_of_type_ComTencentMobileqqAppNotificationStructNotificationElement;
+    this.b.d((String)localObject1);
+    c(paramMessage);
+    return this.b;
+  }
+  
+  public int b(Message paramMessage)
+  {
+    return -113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.business.ConfessNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

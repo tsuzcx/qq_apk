@@ -35,15 +35,15 @@ public class NewFriendVerifyBlockedBuilder
     }
     else
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561516, null);
+      paramView = LayoutInflater.from(this.c).inflate(2131627877, null);
       localNewFriendVerifyBlockedHolder = new NewFriendVerifyBlockedBuilder.NewFriendVerifyBlockedHolder();
-      localNewFriendVerifyBlockedHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368033));
+      localNewFriendVerifyBlockedHolder.w = ((ImageView)paramView.findViewById(2131434878));
       paramView.setOnClickListener(this);
       paramView.setTag(localNewFriendVerifyBlockedHolder);
     }
-    String str = ((NewFriendVerifyBlockedMsg)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).b;
-    localNewFriendVerifyBlockedHolder.jdField_f_of_type_JavaLangString = str;
-    localNewFriendVerifyBlockedHolder.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.a(1, str));
+    String str = ((NewFriendVerifyBlockedMsg)this.g).a;
+    localNewFriendVerifyBlockedHolder.D = str;
+    localNewFriendVerifyBlockedHolder.w.setImageBitmap(this.e.a(1, str));
     ((INewFriendApi)QRoute.api(INewFriendApi.class)).setUiBuilderExposeCnt(((INewFriendApi)QRoute.api(INewFriendApi.class)).getUiBuilderExposeCnt() + 1);
     return paramView;
   }
@@ -53,14 +53,14 @@ public class NewFriendVerifyBlockedBuilder
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendVerifyBlockedBuilder", 2, "start PhoneLaunchActivity");
     }
-    ((INewFriendApi)QRoute.api(INewFriendApi.class)).jumpToNewFriendVerifyListAct((Activity)this.jdField_a_of_type_AndroidContentContext);
+    ((INewFriendApi)QRoute.api(INewFriendApi.class)).jumpToNewFriendVerifyListAct((Activity)this.c);
     ReportController.b(null, "dc00898", "", "", "0X800A3A4", "0X800A3A4", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendVerifyBlockedBuilder
  * JD-Core Version:    0.7.0.1
  */

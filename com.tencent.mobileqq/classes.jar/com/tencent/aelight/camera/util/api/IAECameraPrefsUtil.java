@@ -22,12 +22,14 @@ public abstract interface IAECameraPrefsUtil
   public static final String KEY_ARCAKE_TOUIN = "key_ae_arcake_touin";
   public static final String KEY_ETAG_AEEDITOR_MATERIAL = "ShadowBackendSvc.GetCircleCatMatTreeMqCircleEditor";
   public static final String KEY_ETAG_EMOJI = "ShadowBackendSvc.GetCategoryMaterialMqEmoCamera";
+  public static final String KEY_ETAG_FLASH_SHOW = "ShadowBackendSvc.GetCategoryMaterialMqKuaishanCamera";
   public static final String KEY_ETAG_PLAY_SHOW = "ShadowBackendSvc.GetPlayShowCatMatTree";
   public static final String KEY_ETAG_STORY = "ShadowBackendSvc.GetCategoryMaterialMqStoryCamera";
   public static final String KEY_ETAG_WATERMARK = "ShadowBackendSvc.GetCategoryMaterialMqCircleWatermark";
   public static final String KEY_FIRST_CHANGE_FACE_CLICK = "key_first_change_face_click_flag";
   public static final String KEY_KUOLIE_SITCK_BUBBLE = "key_kuolie_sitck_bubble";
   public static final String KEY_KUOLIE_SITCK_BUBBLE_PANEL = "key_kuolie_sitck_bubble_panel";
+  public static final String KEY_PEAK_ACTIVITY_CRASH_ENTRYINFO = "key_peak_activity_crash_entryinfo";
   public static final String KEY_PEAK_ACTIVITY_CRASH_PATHINFO = "key_peak_activity_crash_pathinfo";
   public static final String KEY_WEB_SELECTED_PIC_PATH = "key_web_selected_pic_path";
   

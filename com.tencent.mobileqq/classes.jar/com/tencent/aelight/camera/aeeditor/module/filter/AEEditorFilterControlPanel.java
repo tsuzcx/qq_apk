@@ -37,20 +37,20 @@ public class AEEditorFilterControlPanel
   implements View.OnClickListener, ApplyMaterialTask
 {
   public static int a = 0;
-  private static final String jdField_a_of_type_JavaLangString = "AEEditorFilterControlPanel";
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private MetaMaterial jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = null;
-  private AEEditorFilterControlPanel.FilterControlListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener;
-  private FilterChangedComparator jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFilterChangedComparator;
-  private FiltersAdapterMaterial jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial;
-  private MaterialClassifierView jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView;
-  private final List<MetaCategory> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private final List<MetaMaterial> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private static final String b = "AEEditorFilterControlPanel";
+  private final List<MetaCategory> c = new ArrayList();
+  private final List<MetaMaterial> d = new ArrayList();
+  private MetaMaterial e = null;
+  private boolean f;
+  private View g;
+  private SeekBar h;
+  private TextView i;
+  private ImageView j;
+  private MaterialClassifierView k;
+  private FiltersAdapterMaterial l;
+  private AEEditorFilterControlPanel.FilterControlListener m;
+  private FilterChangedComparator n;
+  private int o = -1;
   
   public AEEditorFilterControlPanel(@NonNull Context paramContext)
   {
@@ -72,39 +72,47 @@ public class AEEditorFilterControlPanel
   
   private void a(Context paramContext)
   {
-    View localView = View.inflate(paramContext, 2064318567, this);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2064122572);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)localView.findViewById(2064122196));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new AEEditorFilterControlPanel.1(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2064121957));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView = ((MaterialClassifierView)localView.findViewById(2064122044));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setOnClearButtonClickListener(new AEEditorFilterControlPanel.2(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial = new FiltersAdapterMaterial(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial.a(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial.a(new AEEditorFilterControlPanel.3(this));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setup(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setCategoryItemListener(new AEEditorFilterControlPanel.4(this));
+    View localView = View.inflate(paramContext, 2064056439, this);
+    this.g = localView.findViewById(2063991390);
+    this.g.setVisibility(4);
+    this.h = ((SeekBar)localView.findViewById(2063991077));
+    this.h.setOnSeekBarChangeListener(new AEEditorFilterControlPanel.1(this));
+    this.j = ((ImageView)localView.findViewById(2063990888));
+    this.j.setOnClickListener(this);
+    this.k = ((MaterialClassifierView)localView.findViewById(2063990967));
+    this.k.setOnClearButtonClickListener(new AEEditorFilterControlPanel.2(this));
+    this.l = new FiltersAdapterMaterial(paramContext);
+    this.l.a(this);
+    this.l.a(new AEEditorFilterControlPanel.3(this));
+    this.k.setup(this.l, this.c, this.d);
+    this.k.setCategoryItemListener(new AEEditorFilterControlPanel.4(this));
   }
   
   private void a(@NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
   {
-    String str1 = FilterMetaMaterialKt.a(paramMetaMaterial);
-    if (TextUtils.isEmpty(str1))
+    String str = FilterMetaMaterialKt.m(paramMetaMaterial);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("lutId = ");
+    ((StringBuilder)localObject).append(str);
+    ApplyMaterialTaskHelper.a("downloadLutResource", paramMetaMaterial, ((StringBuilder)localObject).toString());
+    if (TextUtils.isEmpty(str))
     {
       FilterMetaMaterialKt.a(paramMetaMaterial, true);
       paramMaterialStatusCallback.a(ApplyMaterialTask.Status.SUCCEEDED, 100);
       return;
     }
-    String str2 = AEEditorResourceManager.a().b(paramMetaMaterial);
-    if ((!TextUtils.isEmpty(str2)) && (new File(str2).exists()))
+    localObject = AEEditorResourceManager.a().c(paramMetaMaterial);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lutPath = ");
+    localStringBuilder.append((String)localObject);
+    ApplyMaterialTaskHelper.a("downloadLutResource", paramMetaMaterial, localStringBuilder.toString());
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists()))
     {
       FilterMetaMaterialKt.a(paramMetaMaterial, true);
       paramMaterialStatusCallback.a(ApplyMaterialTask.Status.SUCCEEDED, 100);
       return;
     }
-    AEEditorResourceManager.a().a(str1, new AEEditorFilterControlPanel.7(this, paramMetaMaterial, paramMaterialStatusCallback));
+    AEEditorResourceManager.a().a(str, new AEEditorFilterControlPanel.7(this, paramMetaMaterial, paramMaterialStatusCallback));
   }
   
   private boolean a(MetaMaterial paramMetaMaterial, String paramString)
@@ -129,7 +137,7 @@ public class AEEditorFilterControlPanel
     }
     catch (JsonSyntaxException paramMetaMaterial)
     {
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("parse effect json exception: ");
       localStringBuilder.append(paramMetaMaterial.toString());
@@ -138,69 +146,54 @@ public class AEEditorFilterControlPanel
     return false;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial.a();
-  }
-  
   public int a(String paramString)
   {
-    List localList = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial.a();
-    int i = 0;
-    while (i < localList.size())
+    List localList = this.l.b();
+    int i1 = 0;
+    while (i1 < localList.size())
     {
-      if (paramString.equals(((MetaMaterial)localList.get(i)).id))
+      if (paramString.equals(((MetaMaterial)localList.get(i1)).id))
       {
-        setSelectedIndex(i);
-        return i;
+        setSelectedIndex(i1);
+        return i1;
       }
-      i += 1;
+      i1 += 1;
     }
     return -1;
   }
   
-  public MetaMaterial a()
-  {
-    return this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
-  }
-  
-  public List<MetaMaterial> a()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener;
+    Object localObject = this.m;
     if (localObject != null)
     {
-      ((AEEditorFilterControlPanel.FilterControlListener)localObject).A();
+      ((AEEditorFilterControlPanel.FilterControlListener)localObject).Q();
       setSelectedIndex(-1);
       AEBaseDataReporter.a().b(EffectType.NON.name());
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.f;
     if (bool) {
       localObject = "image_clear_button";
     } else {
       localObject = "video_clear_button";
     }
-    AEReportUtils.a(bool, (String)localObject);
+    AEReportUtils.b(bool, (String)localObject);
   }
   
   public void a(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
-    int i = AEEditorFilterControlPanel.8.a[FilterMetaMaterialKt.a(paramMetaMaterial).ordinal()];
+    int i1 = AEEditorFilterControlPanel.8.a[FilterMetaMaterialKt.c(paramMetaMaterial).ordinal()];
     boolean bool2 = true;
     AEEditorFilterControlPanel.FilterControlListener localFilterControlListener;
-    if (i != 1)
+    if (i1 != 1)
     {
-      if (i == 2)
+      if (i1 == 2)
       {
-        AEQLog.b(jdField_a_of_type_JavaLangString, "select comics filter");
-        localFilterControlListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener;
+        AEQLog.b(b, "select comics filter");
+        localFilterControlListener = this.m;
         if (localFilterControlListener != null)
         {
-          bool1 = localFilterControlListener.a(paramInt, paramMetaMaterial);
+          bool1 = localFilterControlListener.b(paramInt, paramMetaMaterial);
           AEBaseDataReporter.a().b(paramMetaMaterial.id);
           break label118;
         }
@@ -208,11 +201,11 @@ public class AEEditorFilterControlPanel
     }
     else
     {
-      AEQLog.b(jdField_a_of_type_JavaLangString, "select ai filter");
-      localFilterControlListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener;
+      AEQLog.b(b, "select ai filter");
+      localFilterControlListener = this.m;
       if (localFilterControlListener != null)
       {
-        bool1 = localFilterControlListener.b(paramInt);
+        bool1 = localFilterControlListener.c(paramInt);
         AEBaseDataReporter.a().b(paramMetaMaterial.id);
         break label118;
       }
@@ -221,32 +214,32 @@ public class AEEditorFilterControlPanel
     label118:
     if (bool1)
     {
-      paramMetaMaterial = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFilterChangedComparator;
+      paramMetaMaterial = this.n;
       bool1 = bool2;
       if (paramMetaMaterial != null) {
-        bool1 = paramMetaMaterial.a(this.jdField_b_of_type_Int, paramInt);
+        bool1 = paramMetaMaterial.a(this.o, paramInt);
       }
       if (bool1)
       {
-        paramMetaMaterial = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener;
+        paramMetaMaterial = this.m;
         if (paramMetaMaterial != null) {
-          paramMetaMaterial.D();
+          paramMetaMaterial.T();
         }
       }
-      this.jdField_b_of_type_Int = paramInt;
+      this.o = paramInt;
     }
   }
   
   public void a(int paramInt, @NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
   {
     ApplyMaterialTaskHelper.a(paramMaterialStatusCallback);
-    this.jdField_b_of_type_Int = paramInt;
-    AEReportUtils.c(this.jdField_a_of_type_Boolean, paramMetaMaterial.id);
+    this.o = paramInt;
+    AEReportUtils.d(this.f, paramMetaMaterial.id);
   }
   
   public void a(TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.i = paramTextView;
   }
   
   public void a(ApplyMaterialTask.Status paramStatus, int paramInt, @NonNull MetaMaterial paramMetaMaterial, @NonNull ApplyMaterialTask.MaterialStatusCallback paramMaterialStatusCallback)
@@ -266,84 +259,59 @@ public class AEEditorFilterControlPanel
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4))
+    if ((paramBoolean) && (this.g.getVisibility() == 4))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.g.setVisibility(0);
       return;
     }
-    if ((!paramBoolean) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    if ((!paramBoolean) && (this.g.getVisibility() == 0)) {
+      this.g.setVisibility(4);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0;
-  }
-  
-  public boolean a(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
-  {
-    return ApplyMaterialTaskHelper.a(paramMetaMaterial);
   }
   
   public boolean a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial != null)
+    if (this.l != null)
     {
       paramString = FilterMetaMaterialKt.a(paramString, paramBoolean);
-      return this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial.a(paramString);
+      return this.l.a(paramString);
     }
     return false;
   }
   
-  public void b(int paramInt, @NonNull MetaMaterial paramMetaMaterial) {}
-  
   public void b(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    int i;
+    ImageView localImageView = this.j;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 8;
+      i1 = 8;
     }
-    localImageView.setVisibility(i);
+    localImageView.setVisibility(i1);
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_AndroidWidgetSeekBar.getVisibility() == 0;
+    return this.j.getVisibility() == 0;
   }
   
   public boolean b(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
-    String str = AEEditorResourceManager.a().c(paramMetaMaterial);
-    return (ApplyMaterialTaskHelper.b(paramMetaMaterial)) && (!TextUtils.isEmpty(str)) && (new File(str).exists());
-  }
-  
-  public void c(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.setClearButtonEnable(true);
-    this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = paramMetaMaterial;
-    AEEditorFilterControlPanel.FilterControlListener localFilterControlListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener;
-    if (localFilterControlListener != null)
-    {
-      localFilterControlListener.b(paramInt, paramMetaMaterial);
-      AEBaseDataReporter.a().b(paramMetaMaterial.id);
-    }
+    return ApplyMaterialTaskHelper.a(paramMetaMaterial);
   }
   
   public void c(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetSeekBar;
-    int i;
+    Object localObject = this.h;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 4;
+      i1 = 4;
     }
-    ((SeekBar)localObject).setVisibility(i);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    ((SeekBar)localObject).setVisibility(i1);
+    localObject = this.i;
     if ((localObject != null) && (!paramBoolean)) {
       ((TextView)localObject).setVisibility(4);
     }
@@ -351,43 +319,83 @@ public class AEEditorFilterControlPanel
   
   public boolean c()
   {
-    return FilterMetaMaterialKt.a(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial) == EffectType.AI;
+    return this.h.getVisibility() == 0;
   }
+  
+  public boolean c(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
+  {
+    String str = AEEditorResourceManager.a().d(paramMetaMaterial);
+    return (ApplyMaterialTaskHelper.b(paramMetaMaterial)) && (!TextUtils.isEmpty(str)) && (new File(str).exists());
+  }
+  
+  public void d(int paramInt, @NonNull MetaMaterial paramMetaMaterial) {}
   
   public boolean d()
   {
-    return FilterMetaMaterialKt.a(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial) == EffectType.NON;
+    return FilterMetaMaterialKt.c(this.e) == EffectType.AI;
+  }
+  
+  public void e(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
+  {
+    this.k.setClearButtonEnable(true);
+    this.e = paramMetaMaterial;
+    AEEditorFilterControlPanel.FilterControlListener localFilterControlListener = this.m;
+    if (localFilterControlListener != null)
+    {
+      localFilterControlListener.c(paramInt, paramMetaMaterial);
+      AEBaseDataReporter.a().b(paramMetaMaterial.id);
+    }
+  }
+  
+  public boolean e()
+  {
+    return FilterMetaMaterialKt.c(this.e) == EffectType.NON;
+  }
+  
+  public MetaMaterial getCurrentFilterInstance()
+  {
+    return this.e;
+  }
+  
+  public List<MetaMaterial> getFilterMaterials()
+  {
+    return this.d;
+  }
+  
+  public int getSelectedIndex()
+  {
+    return this.l.c();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2064121957) {
+    if (paramView.getId() != 2063990888) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageView.isEnabled())
+    if (this.j.isEnabled())
     {
-      paramView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener;
+      paramView = this.m;
       if ((paramView != null) && ((paramView instanceof AEEditorFilterControlPanel.ImageFilterControlListener))) {
-        ((AEEditorFilterControlPanel.ImageFilterControlListener)paramView).z();
+        ((AEEditorFilterControlPanel.ImageFilterControlListener)paramView).P();
       }
     }
   }
   
   public void setFilterChangedComparator(FilterChangedComparator paramFilterChangedComparator)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFilterChangedComparator = paramFilterChangedComparator;
+    this.n = paramFilterChangedComparator;
   }
   
   public void setFilterControlListener(AEEditorFilterControlPanel.FilterControlListener paramFilterControlListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterControlPanel$FilterControlListener = paramFilterControlListener;
+    this.m = paramFilterControlListener;
   }
   
   public void setFiltersMaterials(List<MetaCategory> paramList, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_b_of_type_JavaUtilList.clear();
+    this.c.clear();
+    this.c.addAll(paramList);
+    this.d.clear();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -401,63 +409,63 @@ public class AEEditorFilterControlPanel
           MetaMaterialKt.a(localMetaMaterial, localMetaCategory.id);
           if (paramBoolean)
           {
-            if ((FilterMetaMaterialKt.e(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.a(localMetaMaterial))) {
+            if ((FilterMetaMaterialKt.f(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.h(localMetaMaterial))) {
               localIterator.remove();
             }
           }
-          else if ((FilterMetaMaterialKt.f(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.b(localMetaMaterial))) {
+          else if ((FilterMetaMaterialKt.g(localMetaMaterial)) || (paramInt < FilterMetaMaterialKt.i(localMetaMaterial))) {
             localIterator.remove();
           }
         }
-        int i = 0;
-        while (i < localMetaCategory.materials.size())
+        int i1 = 0;
+        while (i1 < localMetaCategory.materials.size())
         {
-          if (localMetaCategory.materials.get(i) != null)
+          if (localMetaCategory.materials.get(i1) != null)
           {
-            int j = AEEditorFilterControlPanel.8.a[FilterMetaMaterialKt.a((MetaMaterial)localMetaCategory.materials.get(i)).ordinal()];
-            if (j != 1)
+            int i2 = AEEditorFilterControlPanel.8.a[FilterMetaMaterialKt.c((MetaMaterial)localMetaCategory.materials.get(i1)).ordinal()];
+            if (i2 != 1)
             {
-              if (j != 2)
+              if (i2 != 2)
               {
-                if (j == 3)
+                if (i2 == 3)
                 {
-                  MetaMaterialKt.a((MetaMaterial)localMetaCategory.materials.get(i), true);
-                  MetaMaterialKt.b((MetaMaterial)localMetaCategory.materials.get(i), true);
+                  MetaMaterialKt.a((MetaMaterial)localMetaCategory.materials.get(i1), true);
+                  MetaMaterialKt.b((MetaMaterial)localMetaCategory.materials.get(i1), true);
                 }
               }
               else
               {
-                MetaMaterialKt.a((MetaMaterial)localMetaCategory.materials.get(i), false);
-                MetaMaterialKt.b((MetaMaterial)localMetaCategory.materials.get(i), false);
+                MetaMaterialKt.a((MetaMaterial)localMetaCategory.materials.get(i1), false);
+                MetaMaterialKt.b((MetaMaterial)localMetaCategory.materials.get(i1), false);
               }
             }
             else
             {
-              jdField_a_of_type_Int = i;
-              MetaMaterialKt.a((MetaMaterial)localMetaCategory.materials.get(i), false);
-              MetaMaterialKt.b((MetaMaterial)localMetaCategory.materials.get(i), false);
+              a = i1;
+              MetaMaterialKt.a((MetaMaterial)localMetaCategory.materials.get(i1), false);
+              MetaMaterialKt.b((MetaMaterial)localMetaCategory.materials.get(i1), false);
             }
-            if (FilterMetaMaterialKt.d((MetaMaterial)localMetaCategory.materials.get(i))) {
-              MetaMaterialKt.b((MetaMaterial)localMetaCategory.materials.get(i), 2064056453);
+            if (FilterMetaMaterialKt.e((MetaMaterial)localMetaCategory.materials.get(i1))) {
+              MetaMaterialKt.b((MetaMaterial)localMetaCategory.materials.get(i1), 2063925421);
             }
           }
-          i += 1;
+          i1 += 1;
         }
-        this.jdField_b_of_type_JavaUtilList.addAll(localMetaCategory.materials);
+        this.d.addAll(localMetaCategory.materials);
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView.a();
+    this.k.a();
   }
   
   public void setIsImageMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial.b(this.jdField_a_of_type_Boolean);
+    this.f = paramBoolean;
+    this.l.b(this.f);
   }
   
   public void setSeekBarValue(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)(paramFloat * 100.0F));
+    this.h.setProgress((int)(paramFloat * 100.0F));
   }
   
   public void setSelectedIndex(int paramInt)
@@ -467,8 +475,8 @@ public class AEEditorFilterControlPanel
   
   public void setSelectedIndex(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial.a(paramInt, paramBoolean);
-    MaterialClassifierView localMaterialClassifierView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialClassifierView;
+    this.l.a(paramInt, paramBoolean);
+    MaterialClassifierView localMaterialClassifierView = this.k;
     if (paramInt != -1) {
       paramBoolean = true;
     } else {
@@ -479,7 +487,7 @@ public class AEEditorFilterControlPanel
   
   public void setToastValidListener(QQToast.IToastValidListener paramIToastValidListener)
   {
-    FiltersAdapterMaterial localFiltersAdapterMaterial = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterFiltersAdapterMaterial;
+    FiltersAdapterMaterial localFiltersAdapterMaterial = this.l;
     if (localFiltersAdapterMaterial != null) {
       localFiltersAdapterMaterial.a(paramIToastValidListener);
     }
@@ -487,7 +495,7 @@ public class AEEditorFilterControlPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorFilterControlPanel
  * JD-Core Version:    0.7.0.1
  */

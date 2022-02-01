@@ -19,22 +19,22 @@ class NearbyProfileEditPanel$7
     if (localPicInfo == null) {
       return;
     }
-    ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_Int != 0) {
-      localActionSheet.addButton(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694413));
+    ActionSheet localActionSheet = ActionSheet.create(this.b.F);
+    if (this.a != 0) {
+      localActionSheet.addButton(this.b.F.getResources().getString(2131892092));
     }
-    localActionSheet.addButton(HardCodeUtil.a(2131707299));
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      localActionSheet.addButton(HardCodeUtil.a(2131707382), 3);
+    localActionSheet.addButton(HardCodeUtil.a(2131905124));
+    if (this.b.J.size() > 1) {
+      localActionSheet.addButton(HardCodeUtil.a(2131905201), 3);
     }
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new NearbyProfileEditPanel.7.1(this, paramView, localPicInfo, localActionSheet));
     localActionSheet.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.7
  * JD-Core Version:    0.7.0.1
  */

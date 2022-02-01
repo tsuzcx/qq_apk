@@ -12,8 +12,8 @@ import mqq.manager.Manager;
 public class TroopClassControllerManager
   implements Manager
 {
-  private long a;
   public TroopAioClassController a;
+  private long b;
   
   public TroopClassControllerManager(QQAppInterface paramQQAppInterface) {}
   
@@ -26,45 +26,45 @@ public class TroopClassControllerManager
       ((StringBuilder)localObject).append("updateTroopAioClassUI troopClassType");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(", currentTroopClassType");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("TroopClassControllerMan", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramLong != this.jdField_a_of_type_Long)
+    if (paramLong != this.b)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+      localObject = this.a;
       if (localObject != null) {
         ((TroopAioClassController)localObject).a(false, paramTroopChatPie, paramBoolean);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = a(paramTroopChatPie, paramString);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    this.a = a(paramTroopChatPie, paramString);
+    paramString = this.a;
     if (paramString != null) {
       paramString.a(true, paramTroopChatPie, paramBoolean);
     } else if (QLog.isColorLevel()) {
       QLog.d("TroopClassControllerMan", 2, "currenTroopClassController is null!!!");
     }
-    this.jdField_a_of_type_Long = paramLong;
-    return this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    this.b = paramLong;
+    return this.a;
   }
   
   public TroopAioClassController a(TroopChatPie paramTroopChatPie, String paramString)
   {
-    TroopManager localTroopManager = (TroopManager)paramTroopChatPie.a.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (localTroopManager.n(paramString))
+    TroopManager localTroopManager = (TroopManager)paramTroopChatPie.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    if (localTroopManager.aa(paramString))
     {
-      if (!(this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController instanceof HomeworkTroopController)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = new HomeworkTroopController(paramTroopChatPie.a, paramTroopChatPie.a(), paramTroopChatPie);
+      if (!(this.a instanceof HomeworkTroopController)) {
+        this.a = new HomeworkTroopController(paramTroopChatPie.d, paramTroopChatPie.aX(), paramTroopChatPie);
       }
-      this.jdField_a_of_type_Long = 32L;
+      this.b = 32L;
     }
-    else if (localTroopManager.o(paramString))
+    else if (localTroopManager.ab(paramString))
     {
-      this.jdField_a_of_type_Long = 27L;
+      this.b = 27L;
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = null;
-      this.jdField_a_of_type_Long = 0L;
+      this.a = null;
+      this.b = 0L;
       if (QLog.isColorLevel())
       {
         paramTroopChatPie = new StringBuilder();
@@ -73,12 +73,12 @@ public class TroopClassControllerManager
         QLog.d("TroopClassControllerMan", 2, paramTroopChatPie.toString());
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    return this.a;
   }
   
   public void a()
   {
-    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    TroopAioClassController localTroopAioClassController = this.a;
     if (localTroopAioClassController != null) {
       localTroopAioClassController.c();
     }
@@ -86,7 +86,7 @@ public class TroopClassControllerManager
   
   public void a(int paramInt)
   {
-    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    TroopAioClassController localTroopAioClassController = this.a;
     if ((localTroopAioClassController instanceof HomeworkTroopController)) {
       localTroopAioClassController.a(HWTroopUtils.a(paramInt));
     }
@@ -94,7 +94,7 @@ public class TroopClassControllerManager
   
   public void a(boolean paramBoolean)
   {
-    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    TroopAioClassController localTroopAioClassController = this.a;
     if (localTroopAioClassController != null) {
       localTroopAioClassController.b(paramBoolean);
     }
@@ -102,16 +102,16 @@ public class TroopClassControllerManager
   
   public void b()
   {
-    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    TroopAioClassController localTroopAioClassController = this.a;
     if (localTroopAioClassController != null) {
       localTroopAioClassController.b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController = null;
+    this.a = null;
   }
   
   public void c()
   {
-    TroopAioClassController localTroopAioClassController = this.jdField_a_of_type_ComTencentMobileqqTroopGroupclassTroopAioClassController;
+    TroopAioClassController localTroopAioClassController = this.a;
     if (localTroopAioClassController != null) {
       localTroopAioClassController.a();
     }
@@ -121,7 +121,7 @@ public class TroopClassControllerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.groupclass.TroopClassControllerManager
  * JD-Core Version:    0.7.0.1
  */

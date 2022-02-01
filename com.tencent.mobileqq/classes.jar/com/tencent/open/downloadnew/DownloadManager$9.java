@@ -12,12 +12,12 @@ class DownloadManager$9
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
-        this.this$0.a().deleteDownloadTask(this.jdField_a_of_type_JavaLangString);
+        this.this$0.f().deleteDownloadTask(this.b);
         return;
       }
-      this.this$0.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
+      this.this$0.f().cancelDownloadTask(this.b);
       return;
     }
     catch (Exception localException)
@@ -28,7 +28,7 @@ class DownloadManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.9
  * JD-Core Version:    0.7.0.1
  */

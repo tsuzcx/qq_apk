@@ -13,15 +13,15 @@ class SaveVideoActivity$SaveVideoTask$1
   {
     if (paramInt == 0)
     {
-      SaveVideoActivity.SaveVideoTask.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry);
+      SaveVideoActivity.SaveVideoTask.a(this.e, this.a, this.b, this.c, this.d);
       return;
     }
-    SaveVideoActivity.SaveVideoTask.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaSaveVideoActivity$SaveVideoTask, 1, this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry);
+    SaveVideoActivity.SaveVideoTask.a(this.e, 1, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.SaveVideoActivity.SaveVideoTask.1
  * JD-Core Version:    0.7.0.1
  */

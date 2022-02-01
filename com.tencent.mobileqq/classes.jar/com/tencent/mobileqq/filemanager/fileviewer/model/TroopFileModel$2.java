@@ -20,8 +20,8 @@ class TroopFileModel$2
   {
     if (paramFileInfo != null)
     {
-      Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      long l = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin;
+      Object localObject1 = this.a.a;
+      long l = this.a.c.r().TroopUin;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramFileInfo.uint64_uploader_uin.get());
       ((StringBuilder)localObject2).append("");
@@ -33,15 +33,15 @@ class TroopFileModel$2
       localStringBuilder.append(((SimpleDateFormat)localObject2).format(paramFileInfo));
       localStringBuilder.append("上传");
       paramFileInfo = localStringBuilder.toString();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.b((String)localObject1, paramFileInfo);
+      if (this.a.n != null) {
+        this.a.n.b((String)localObject1, paramFileInfo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.2
  * JD-Core Version:    0.7.0.1
  */

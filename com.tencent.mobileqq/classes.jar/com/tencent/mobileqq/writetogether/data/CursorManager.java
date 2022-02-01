@@ -13,15 +13,15 @@ import java.util.List;
 
 public class CursorManager
 {
-  private CursorManager.OnMyCursorIndexChangeListener jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager$OnMyCursorIndexChangeListener;
-  private UserEditInfo jdField_a_of_type_ComTencentMobileqqWritetogetherDataUserEditInfo;
-  private List<UserEditInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private List<UserEditInfo> a = new ArrayList();
+  private boolean b;
+  private UserEditInfo c;
+  private CursorManager.OnMyCursorIndexChangeListener d;
   
   public CursorManager(UserEditInfo paramUserEditInfo, List<UserEditInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataUserEditInfo = paramUserEditInfo;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramUserEditInfo;
+    this.a = paramList;
   }
   
   @NonNull
@@ -33,14 +33,14 @@ public class CursorManager
     {
       UserEditInfo localUserEditInfo = (UserEditInfo)paramList.get(i);
       if (localUserEditInfo != null) {
-        if (paramInt == localUserEditInfo.jdField_c_of_type_Int)
+        if (paramInt == localUserEditInfo.f)
         {
-          localUserEditInfo.jdField_a_of_type_Boolean = true;
+          localUserEditInfo.e = true;
           localArrayList.add(localUserEditInfo);
         }
-        else if (localUserEditInfo.jdField_c_of_type_Boolean)
+        else if (localUserEditInfo.j)
         {
-          localUserEditInfo.jdField_a_of_type_Boolean = false;
+          localUserEditInfo.e = false;
         }
       }
       i += 1;
@@ -50,9 +50,9 @@ public class CursorManager
   
   private void a(UserEditInfo paramUserEditInfo)
   {
-    if (!paramUserEditInfo.jdField_c_of_type_Boolean)
+    if (!paramUserEditInfo.j)
     {
-      paramUserEditInfo.jdField_a_of_type_Boolean = true;
+      paramUserEditInfo.e = true;
       ThreadManagerV2.getUIHandlerV2().postDelayed(new CursorManager.1(this, paramUserEditInfo), 2000L);
     }
   }
@@ -86,7 +86,7 @@ public class CursorManager
     {
       localUserEditInfo = (UserEditInfo)paramList2.get(i);
       if (localUserEditInfo != null) {
-        localUserEditInfo.jdField_a_of_type_Boolean = false;
+        localUserEditInfo.e = false;
       }
       i += 1;
     }
@@ -94,22 +94,22 @@ public class CursorManager
     if (paramList2 != null)
     {
       localUserEditInfo = new UserEditInfo(paramList2);
-      localUserEditInfo.jdField_b_of_type_Boolean = true;
-      localUserEditInfo.jdField_a_of_type_Boolean = true;
+      localUserEditInfo.h = true;
+      localUserEditInfo.e = true;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramList2.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramList2.b);
       localStringBuilder.append((String)localObject);
-      localUserEditInfo.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+      localUserEditInfo.b = localStringBuilder.toString();
       paramList1.add(localUserEditInfo);
     }
   }
   
   private void b(UserEditInfo paramUserEditInfo)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramUserEditInfo);
+    int i = this.a.indexOf(paramUserEditInfo);
     if (i != -1)
     {
-      paramUserEditInfo = this.jdField_a_of_type_JavaUtilList;
+      paramUserEditInfo = this.a;
       Collections.swap(paramUserEditInfo, paramUserEditInfo.size() - 1, i);
     }
   }
@@ -124,7 +124,7 @@ public class CursorManager
     while (i < paramList.size())
     {
       UserEditInfo localUserEditInfo = (UserEditInfo)paramList.get(i);
-      if ((localUserEditInfo != null) && (localUserEditInfo.jdField_b_of_type_Boolean)) {
+      if ((localUserEditInfo != null) && (localUserEditInfo.h)) {
         localArrayList.add(localUserEditInfo);
       }
       i += 1;
@@ -132,17 +132,12 @@ public class CursorManager
     paramList.removeAll(localArrayList);
   }
   
-  public UserEditInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataUserEditInfo;
-  }
-  
   protected UserEditInfo a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return new UserEditInfo();
     }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+    ArrayList localArrayList = new ArrayList(this.a);
     Object localObject2 = null;
     int i = 0;
     Object localObject1;
@@ -153,7 +148,7 @@ public class CursorManager
         break;
       }
       localObject1 = (UserEditInfo)localArrayList.get(i);
-      if ((localObject1 != null) && (paramString.equals(((UserEditInfo)localObject1).jdField_a_of_type_JavaLangString))) {
+      if ((localObject1 != null) && (paramString.equals(((UserEditInfo)localObject1).a))) {
         break;
       }
       i += 1;
@@ -165,21 +160,16 @@ public class CursorManager
     return paramString;
   }
   
-  public Pair<Integer, Integer> a()
-  {
-    return new Pair(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataUserEditInfo.jdField_c_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataUserEditInfo.d));
-  }
-  
   public List<UserEditInfo> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    UserEditInfo localUserEditInfo = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataUserEditInfo;
-    localUserEditInfo.jdField_c_of_type_Int = paramInt1;
-    localUserEditInfo.d = paramInt2;
+    UserEditInfo localUserEditInfo = this.c;
+    localUserEditInfo.f = paramInt1;
+    localUserEditInfo.g = paramInt2;
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
@@ -194,39 +184,25 @@ public class CursorManager
       a((List)localObject, localList, i);
     }
     a((List)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager$OnMyCursorIndexChangeListener;
+    localObject = this.d;
     if (localObject != null)
     {
-      ((CursorManager.OnMyCursorIndexChangeListener)localObject).c();
+      ((CursorManager.OnMyCursorIndexChangeListener)localObject).f();
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager$OnMyCursorIndexChangeListener.a(paramInt1, paramInt2);
+        this.d.a(paramInt1, paramInt2);
       }
     }
   }
   
   public void a(CursorManager.OnMyCursorIndexChangeListener paramOnMyCursorIndexChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager$OnMyCursorIndexChangeListener = paramOnMyCursorIndexChangeListener;
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = a(paramString);
-    if (TextUtils.isEmpty(paramString.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CursorManager", 2, "[removeEditInfo] editInfo not exists");
-      }
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-    a(a().jdField_c_of_type_Int, a().d, false);
+    this.d = paramOnMyCursorIndexChangeListener;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
     Object localObject = a(paramString);
-    if (TextUtils.isEmpty(((UserEditInfo)localObject).jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(((UserEditInfo)localObject).a))
     {
       if (QLog.isColorLevel())
       {
@@ -239,9 +215,9 @@ public class CursorManager
       return;
     }
     a((UserEditInfo)localObject);
-    ((UserEditInfo)localObject).jdField_c_of_type_Int = paramInt1;
-    ((UserEditInfo)localObject).d = paramInt2;
-    ((UserEditInfo)localObject).jdField_a_of_type_Float = -1.0F;
+    ((UserEditInfo)localObject).f = paramInt1;
+    ((UserEditInfo)localObject).g = paramInt2;
+    ((UserEditInfo)localObject).i = -1.0F;
     b((UserEditInfo)localObject);
     if (QLog.isColorLevel())
     {
@@ -254,19 +230,19 @@ public class CursorManager
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("CursorManager", 2, ((StringBuilder)localObject).toString());
     }
-    a(a().jdField_c_of_type_Int, a().d, false);
+    a(b().f, b().g, false);
   }
   
   public void a(String paramString, UserEditInfo paramUserEditInfo)
   {
-    if (!TextUtils.isEmpty(a(paramString).jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(a(paramString).a))
     {
       if (QLog.isColorLevel()) {
         QLog.d("CursorManager", 2, "[addUserEditInfo] editInfo exists");
       }
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramUserEditInfo);
+    this.a.add(paramUserEditInfo);
   }
   
   public void a(String paramString1, String paramString2)
@@ -276,12 +252,12 @@ public class CursorManager
     while (i < localList.size())
     {
       UserEditInfo localUserEditInfo = (UserEditInfo)localList.get(i);
-      int j = localUserEditInfo.jdField_c_of_type_Int;
-      int k = localUserEditInfo.d;
+      int j = localUserEditInfo.f;
+      int k = localUserEditInfo.g;
       Object localObject1 = null;
       try
       {
-        if (paramString1.equals(localUserEditInfo.jdField_a_of_type_JavaLangString)) {
+        if (paramString1.equals(localUserEditInfo.a)) {
           break label196;
         }
         bool = true;
@@ -309,8 +285,8 @@ public class CursorManager
       label153:
       if ((localObject1 != null) && (localObject1.length == 2))
       {
-        localUserEditInfo.jdField_c_of_type_Int = localObject1[0];
-        localUserEditInfo.d = localObject1[1];
+        localUserEditInfo.f = localObject1[0];
+        localUserEditInfo.g = localObject1[1];
       }
       i += 1;
     }
@@ -318,12 +294,36 @@ public class CursorManager
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
+  }
+  
+  public UserEditInfo b()
+  {
+    return this.c;
   }
   
   public void b(String paramString)
   {
-    paramString = Changeset.a(paramString, a().jdField_c_of_type_Int, a().d, true);
+    paramString = a(paramString);
+    if (TextUtils.isEmpty(paramString.a))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CursorManager", 2, "[removeEditInfo] editInfo not exists");
+      }
+      return;
+    }
+    this.a.remove(paramString);
+    a(b().f, b().g, false);
+  }
+  
+  public Pair<Integer, Integer> c()
+  {
+    return new Pair(Integer.valueOf(this.c.f), Integer.valueOf(this.c.g));
+  }
+  
+  public void c(String paramString)
+  {
+    paramString = Changeset.a(paramString, b().f, b().g, true);
     int i = paramString[0];
     int j = paramString[1];
     a(i, j, true);
@@ -340,7 +340,7 @@ public class CursorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.CursorManager
  * JD-Core Version:    0.7.0.1
  */

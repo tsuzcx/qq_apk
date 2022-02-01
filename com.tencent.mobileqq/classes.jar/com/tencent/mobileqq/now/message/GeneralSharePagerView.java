@@ -13,8 +13,8 @@ import androidx.annotation.Nullable;
 public class GeneralSharePagerView
   extends RelativeLayout
 {
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  FrameLayout a;
+  ImageView b;
   
   public GeneralSharePagerView(@NonNull Context paramContext)
   {
@@ -29,19 +29,19 @@ public class GeneralSharePagerView
   
   private void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559519, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131365203));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370183));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131625541, this);
+    this.a = ((FrameLayout)paramContext.findViewById(2131431368));
+    this.b = ((ImageView)paramContext.findViewById(2131437354));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramView);
+    this.a.addView(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.GeneralSharePagerView
  * JD-Core Version:    0.7.0.1
  */

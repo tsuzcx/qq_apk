@@ -34,9 +34,9 @@ class AVGameActivity$8
             if (AVGameActivity.access$600(this.a) == null) {
               return;
             }
-            paramContext = GameEngine.a().a();
+            paramContext = GameEngine.a().s();
             if (paramContext != null) {
-              GameActivityCenterCtrl.a().a(this.a, paramContext.b());
+              GameActivityCenterCtrl.a().a(this.a, paramContext.n());
             }
           }
           else

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.kandian.biz.feeds.controller;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import org.json.JSONException;
@@ -20,9 +19,9 @@ public abstract class HeaderViewController
     try
     {
       paramJSONObject.put("folder_status", RIJKanDianFolderStatus.reportFolderStatus);
-      paramJSONObject.put("kandian_mode", RIJAppSetting.a());
+      paramJSONObject.put("kandian_mode", RIJAppSetting.b());
       paramJSONObject = paramJSONObject.toString();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
+      PublicAccountReportUtils.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("report: T - ");
       localStringBuilder.append(paramString);
@@ -54,7 +53,7 @@ public abstract class HeaderViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.HeaderViewController
  * JD-Core Version:    0.7.0.1
  */

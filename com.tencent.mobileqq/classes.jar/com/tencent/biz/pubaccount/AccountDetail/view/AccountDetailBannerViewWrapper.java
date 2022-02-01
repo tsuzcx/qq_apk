@@ -60,44 +60,29 @@ public class AccountDetailBannerViewWrapper
     return paramView;
   }
   
-  private View a(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo)
-  {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    localURLImageView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    localURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(paramPaConfigInfo.e, null, null, true));
-    localURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
-    localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localRelativeLayout.addView(localURLImageView);
-    localRelativeLayout.setTag(paramPaConfigInfo);
-    localRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    return localRelativeLayout;
-  }
-  
   private RelativeLayout a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailBannerViewWrapper", 2, "buildView!");
     }
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    Resources localResources = this.b.getResources();
     int i = AIOUtils.b(160.0F, localResources);
     int j = AIOUtils.b(20.0F, localResources);
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.b);
     localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, i + j));
     localRelativeLayout.setPadding(0, j, 0, 0);
-    AccountDetailBannerViewPager localAccountDetailBannerViewPager = new AccountDetailBannerViewPager(this.jdField_a_of_type_AndroidContentContext);
+    AccountDetailBannerViewPager localAccountDetailBannerViewPager = new AccountDetailBannerViewPager(this.b);
     localAccountDetailBannerViewPager.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     localRelativeLayout.addView(localAccountDetailBannerViewPager);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(a((IPublicAccountConfigAttr.PaConfigInfo)((Iterator)localObject).next()));
+      localArrayList.add(b((IPublicAccountConfigAttr.PaConfigInfo)((Iterator)localObject).next()));
     }
     localObject = new AccountDetailBannerViewWrapper.ViewPagerAdapter();
     ((AccountDetailBannerViewWrapper.ViewPagerAdapter)localObject).a(localArrayList);
     localAccountDetailBannerViewPager.setAdapter((PagerAdapter)localObject);
-    localObject = new AccountDetailBannerIndicator(this.jdField_a_of_type_AndroidContentContext, localArrayList.size());
+    localObject = new AccountDetailBannerIndicator(this.b, localArrayList.size());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(14, -1);
     localLayoutParams.addRule(12, -1);
@@ -110,10 +95,25 @@ public class AccountDetailBannerViewWrapper
     localRelativeLayout.setOnClickListener(null);
     return localRelativeLayout;
   }
+  
+  private View b(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo)
+  {
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.b);
+    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+    URLImageView localURLImageView = new URLImageView(this.b);
+    localURLImageView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    localURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(paramPaConfigInfo.k, null, null, true));
+    localURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
+    localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localRelativeLayout.addView(localURLImageView);
+    localRelativeLayout.setTag(paramPaConfigInfo);
+    localRelativeLayout.setOnClickListener(this.f);
+    return localRelativeLayout;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailBannerViewWrapper
  * JD-Core Version:    0.7.0.1
  */

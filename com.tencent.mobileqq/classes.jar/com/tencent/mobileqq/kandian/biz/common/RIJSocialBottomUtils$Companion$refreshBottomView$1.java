@@ -13,15 +13,15 @@ final class RIJSocialBottomUtils$Companion$refreshBottomView$1
   
   public final void run()
   {
-    ReadInJoyFastWebBottomSocialViewNew localReadInJoyFastWebBottomSocialViewNew = RIJSocialBottomUtils.a();
+    ReadInJoyFastWebBottomSocialViewNew localReadInJoyFastWebBottomSocialViewNew = RIJSocialBottomUtils.c();
     if (localReadInJoyFastWebBottomSocialViewNew != null) {
-      localReadInJoyFastWebBottomSocialViewNew.setData(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      localReadInJoyFastWebBottomSocialViewNew.setData(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils.Companion.refreshBottomView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ import java.util.Vector;
 public abstract class Filter
   extends RenderObject
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<Pair<Filter, Integer>> jdField_a_of_type_JavaUtilList;
-  private Vector<RefFrame> jdField_a_of_type_JavaUtilVector;
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
+  private List<Pair<Filter, Integer>> b;
+  private Vector<RefFrame> c;
+  private boolean d;
   
   public Filter(int paramInt)
   {
@@ -19,11 +19,11 @@ public abstract class Filter
     localStringBuilder.append(getClass().getSimpleName());
     localStringBuilder.append("-");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilVector = new Vector(paramInt);
-    this.jdField_a_of_type_JavaUtilVector.setSize(paramInt);
+    this.a = localStringBuilder.toString();
+    this.b = new LinkedList();
+    this.d = false;
+    this.c = new Vector(paramInt);
+    this.c.setSize(paramInt);
   }
 }
 

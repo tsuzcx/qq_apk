@@ -16,10 +16,10 @@ final class ChatActivityUtils$18
     if (paramInt == 1)
     {
       localObject = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      ((Intent)localObject).setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+      ((Intent)localObject).setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity((Intent)localObject);
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    Object localObject = this.b;
     if (localObject != null) {
       ((DialogInterface.OnClickListener)localObject).onClick(paramDialogInterface, paramInt);
     }
@@ -27,7 +27,7 @@ final class ChatActivityUtils$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.18
  * JD-Core Version:    0.7.0.1
  */

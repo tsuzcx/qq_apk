@@ -63,7 +63,7 @@ public abstract class ProtoBufRequest
       if (paramIntent != null) {
         paramIntent.putExtra("traceid", paramString);
       }
-      if (StudyModeManager.a())
+      if (StudyModeManager.h())
       {
         paramIntent = new COMM.Entry();
         paramIntent.key.set("teenager");
@@ -81,7 +81,7 @@ public abstract class ProtoBufRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.ProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -21,6 +21,7 @@ import com.tencent.mobileqq.selectmember.api.ISelectMemberApi;
 import com.tencent.mobileqq.troop.activity.TroopTagViewActivity;
 import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import com.tencent.mobileqq.troop.createtroopblacklist.api.ICreateTroopBlackListUtilApi;
 import com.tencent.mobileqq.troop.data.TroopCreateInfo.TroopCreateResult;
 import com.tencent.mobileqq.troop.troopcard.api.ITroopInfoActivityApi;
 import com.tencent.mobileqq.troop.troopcreate.ui.TroopCreateLogicActivity;
@@ -49,61 +50,60 @@ public class TroopWebviewPlugin
   extends WebViewPlugin
   implements ITroopMemberApiClientApi.Callback
 {
-  public final byte a;
-  protected int a;
-  protected Dialog a;
-  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   protected QQProgressDialog a;
-  String jdField_a_of_type_JavaLangString;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  protected boolean a;
-  protected int b = -1;
+  protected int b;
+  String c;
+  protected int d = -1;
+  protected Dialog e;
+  protected boolean f;
+  public final byte g = 5;
+  AtomicBoolean h = new AtomicBoolean(false);
+  TroopMemberApiClient i = null;
+  QQCustomDialog j;
   
   public TroopWebviewPlugin()
   {
-    this.jdField_a_of_type_Byte = 5;
     this.mPluginNameSpace = "Troop";
   }
   
   private void c()
   {
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    Dialog localDialog = this.e;
     if (localDialog != null)
     {
       if (localDialog.isShowing()) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        this.e.dismiss();
       }
-      this.jdField_a_of_type_AndroidAppDialog = null;
+      this.e = null;
     }
   }
   
   private void d()
   {
-    this.mRuntime.a().finish();
+    this.mRuntime.d().finish();
   }
   
   private void g(String paramString)
   {
-    Object localObject = (QBaseActivity)this.mRuntime.a();
+    Object localObject = (QBaseActivity)this.mRuntime.d();
     a();
     localObject = new QQProgressDialog((Context)localObject, ((QBaseActivity)localObject).getTitleBarHeight());
     ((QQProgressDialog)localObject).a(paramString);
     ((QQProgressDialog)localObject).setCancelable(false);
     ((QQProgressDialog)localObject).setOnDismissListener(new TroopWebviewPlugin.3(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = ((QQProgressDialog)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.a = ((QQProgressDialog)localObject);
+    this.a.show();
   }
   
   private void h(String paramString)
   {
-    Object localObject = (QBaseActivity)this.mRuntime.a();
+    Object localObject = (QBaseActivity)this.mRuntime.d();
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      QQToast.a((Context)localObject, 2131694422, 0).b(((QBaseActivity)localObject).getTitleBarHeight());
+      QQToast.makeText((Context)localObject, 2131892102, 0).show(((QBaseActivity)localObject).getTitleBarHeight());
       return;
     }
-    g(((QBaseActivity)localObject).getString(2131720059));
+    g(((QBaseActivity)localObject).getString(2131917680));
     localObject = new Intent((Context)localObject, TroopCreateLogicActivity.class);
     ((Intent)localObject).putExtra("type", 1);
     ((Intent)localObject).putExtra("cfg", paramString);
@@ -112,7 +112,7 @@ public class TroopWebviewPlugin
   
   private void i(String paramString)
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     Intent localIntent = new Intent(localActivity, TroopCreateLogicActivity.class);
     localIntent.putExtra("type", 3);
     localIntent.putExtra("cfg", paramString);
@@ -121,7 +121,7 @@ public class TroopWebviewPlugin
   
   private void j(String paramString)
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if (localActivity == null) {
       return;
     }
@@ -143,25 +143,25 @@ public class TroopWebviewPlugin
     localIntent.putExtra("param_type", 1);
     localIntent.putExtra("param_subtype", 0);
     localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_title", this.mRuntime.a().getString(2131693488));
-    localIntent.putExtra("param_done_button_wording", this.mRuntime.a().getString(2131694583));
-    localIntent.putExtra("param_done_button_highlight_wording", this.mRuntime.a().getString(2131694585));
+    localIntent.putExtra("param_title", this.mRuntime.d().getString(2131891041));
+    localIntent.putExtra("param_done_button_wording", this.mRuntime.d().getString(2131892267));
+    localIntent.putExtra("param_done_button_highlight_wording", this.mRuntime.d().getString(2131892269));
     localIntent.putExtra("param_only_friends", true);
     localIntent.putExtra("param_exit_animation", 1);
     localIntent.putExtra("param_max", 100);
     localIntent.putExtra("param_donot_need_contacts", true);
     ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startSelectMemberActivity(localActivity, localIntent);
-    localActivity.overridePendingTransition(2130771993, 2130771994);
+    localActivity.overridePendingTransition(2130771996, 2130771997);
   }
   
   private void k(String paramString)
   {
     String str2 = "";
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if (localActivity == null) {
       return;
     }
-    int i = 0;
+    int k = 0;
     String str1 = str2;
     try
     {
@@ -170,7 +170,7 @@ public class TroopWebviewPlugin
       paramString = localJSONObject.optString("troopUin", "");
       str1 = paramString;
       boolean bool = localJSONObject.optBoolean("closeCurPage", false);
-      i = bool;
+      k = bool;
     }
     catch (JSONException paramString)
     {
@@ -180,19 +180,19 @@ public class TroopWebviewPlugin
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = TroopInfoUIUtil.a(paramString, 9);
-      paramString.putString("troop_info_title", localActivity.getString(2131696115));
+      paramString.putString("troop_info_title", localActivity.getString(2131893880));
       paramString.putInt("troop_info_report_from", 1);
       ((ITroopInfoActivityApi)QRoute.api(ITroopInfoActivityApi.class)).openTroopProfileForResult(localActivity, paramString, 45);
-      localActivity.overridePendingTransition(2130771993, 2130771994);
+      localActivity.overridePendingTransition(2130771996, 2130771997);
     }
-    if (i != 0) {
+    if (k != 0) {
       localActivity.finish();
     }
   }
   
   private void l(String paramString)
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     Object localObject = paramString.split("\\|");
     if (localObject.length >= 4) {
       localObject = localObject[3];
@@ -208,30 +208,30 @@ public class TroopWebviewPlugin
   
   private void m(String paramString)
   {
-    Object localObject = this.mRuntime.a();
-    g(((Activity)localObject).getString(2131720064));
+    Object localObject = this.mRuntime.d();
+    g(((Activity)localObject).getString(2131917685));
     localObject = new Intent((Context)localObject, TroopCreateLogicActivity.class);
     ((Intent)localObject).putExtra("type", 5);
     ((Intent)localObject).putExtra("troop_location", paramString);
-    ((Intent)localObject).putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
+    ((Intent)localObject).putExtra("troop_uin", this.c);
     startActivityForResult((Intent)localObject, (byte)5);
   }
   
   void a()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.a;
     if (localQQProgressDialog != null)
     {
       if (localQQProgressDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        this.a.dismiss();
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.a = null;
     }
   }
   
   public void a(String paramString)
   {
-    QLog.e(this.TAG, 1, "TroopCreateAvatarActivity 已在725下架");
+    QLog.e(this.mTAG, 1, "TroopCreateAvatarActivity 已在725下架");
   }
   
   protected void a(String paramString1, String paramString2)
@@ -283,34 +283,34 @@ public class TroopWebviewPlugin
     paramString1 = paramString1.toString();
     if (QLog.isColorLevel())
     {
-      paramString2 = this.TAG;
+      paramString2 = this.mTAG;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("jump: ");
       ((StringBuilder)localObject).append(paramString1);
       QLog.d(paramString2, 2, ((StringBuilder)localObject).toString());
     }
-    this.mRuntime.a().startActivity(new Intent().setData(Uri.parse(paramString1)));
+    this.mRuntime.d().startActivity(new Intent().setData(Uri.parse(paramString1)));
   }
   
   public void b()
   {
     c();
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.mRuntime.a(), null);
-    localActionSheet.setMainTitle(2131720057);
-    localActionSheet.addButton(2131720058, 3);
-    localActionSheet.addCancelButton(2131690728);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.mRuntime.d(), null);
+    localActionSheet.setMainTitle(2131917678);
+    localActionSheet.addButton(2131917679, 3);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnDismissListener(new TroopWebviewPlugin.4(this));
     localActionSheet.setOnButtonClickListener(new TroopWebviewPlugin.5(this));
-    this.jdField_a_of_type_AndroidAppDialog = localActionSheet;
-    this.jdField_a_of_type_AndroidAppDialog.show();
+    this.e = localActionSheet;
+    this.e.show();
   }
   
   public void b(String paramString)
   {
-    QBaseActivity localQBaseActivity = (QBaseActivity)this.mRuntime.a();
+    QBaseActivity localQBaseActivity = (QBaseActivity)this.mRuntime.d();
     if (!NetworkUtil.isNetSupport(localQBaseActivity))
     {
-      QQToast.a(localQBaseActivity, 2131694422, 0).b(localQBaseActivity.getTitleBarHeight());
+      QQToast.makeText(localQBaseActivity, 2131892102, 0).show(localQBaseActivity.getTitleBarHeight());
       return;
     }
     if (TextUtils.isEmpty(paramString)) {
@@ -321,18 +321,18 @@ public class TroopWebviewPlugin
   
   public void c(String paramString)
   {
-    QBaseActivity localQBaseActivity = (QBaseActivity)this.mRuntime.a();
+    QBaseActivity localQBaseActivity = (QBaseActivity)this.mRuntime.d();
     try
     {
       paramString = new JSONObject(paramString).optString("location", "");
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.f)
       {
         b(paramString);
         return;
       }
       if (!NetworkUtil.isNetSupport(localQBaseActivity))
       {
-        QQToast.a(localQBaseActivity, 2131694422, 0).b(localQBaseActivity.getTitleBarHeight());
+        QQToast.makeText(localQBaseActivity, 2131892102, 0).show(localQBaseActivity.getTitleBarHeight());
         return;
       }
       if (TextUtils.isEmpty(paramString))
@@ -351,12 +351,12 @@ public class TroopWebviewPlugin
     if (paramBundle == null) {
       return;
     }
-    int j = paramBundle.getInt("type");
-    int k = TroopObserver.TYPE_GET_UIN_BY_OPEN_ID;
-    int i = 2;
+    int m = paramBundle.getInt("type");
+    int n = TroopObserver.TYPE_GET_UIN_BY_OPEN_ID;
+    int k = 2;
     Object localObject1;
     Object localObject2;
-    if (j == k)
+    if (m == n)
     {
       paramBundle.getBoolean("isSuccess");
       paramBundle.getInt("appid");
@@ -366,7 +366,7 @@ public class TroopWebviewPlugin
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.TAG);
+        ((StringBuilder)localObject1).append(this.mTAG);
         ((StringBuilder)localObject1).append(".troopTAG_GET_UIN_BY_OPEN_ID");
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject2 = new StringBuilder();
@@ -381,20 +381,20 @@ public class TroopWebviewPlugin
       if (paramBundle.getInt("type") == TroopObserver.TYPE_NOTIFY_TROOP_OPEN_API_TOKEN_VERIFY)
       {
         bool = paramBundle.getBoolean("isSuccess");
-        k = paramBundle.getInt("appid");
+        n = paramBundle.getInt("appid");
         localObject1 = paramBundle.getString("openGroupId");
         localObject2 = paramBundle.getString("token");
-        int m = paramBundle.getInt("freq");
-        int n = paramBundle.getInt("expireTime");
+        int i1 = paramBundle.getInt("freq");
+        int i2 = paramBundle.getInt("expireTime");
         ArrayList localArrayList = paramBundle.getStringArrayList("apilist");
-        j = paramBundle.getInt("retCode");
+        m = paramBundle.getInt("retCode");
         if (!bool)
         {
-          if (j != 0) {}
-          switch (j)
+          if (m != 0) {}
+          switch (m)
           {
           default: 
-            i = -100;
+            k = -100;
             break;
           case 1000: 
           case 1001: 
@@ -402,20 +402,20 @@ public class TroopWebviewPlugin
           case 1003: 
           case 1005: 
           case 1006: 
-            i = 4;
+            k = 4;
             break;
-            i = 0;
+            k = 0;
           }
           paramBundle = new StringBuilder();
           paramBundle.append(" server retCode:");
-          paramBundle.append(j);
-          callJs4OpenApiIfNeeded("init", i, paramBundle.toString());
+          paramBundle.append(m);
+          callJs4OpenApiIfNeeded("init", k, paramBundle.toString());
           return;
         }
         CustomWebView localCustomWebView = this.mRuntime.a();
         if (localCustomWebView != null)
         {
-          localCustomWebView.saveToken(k, (String)localObject1, (String)localObject2, m, n, localArrayList);
+          localCustomWebView.saveToken(n, (String)localObject1, (String)localObject2, i1, i2, localArrayList);
           callJs4OpenApiIfNeeded("init", 0, localArrayList.toString());
           return;
         }
@@ -453,7 +453,7 @@ public class TroopWebviewPlugin
   
   public void d(String paramString)
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     try
     {
       paramString = new JSONObject(paramString);
@@ -477,7 +477,7 @@ public class TroopWebviewPlugin
       paramString = new JSONObject(paramString).getString("url");
       if (paramString != null)
       {
-        Activity localActivity = this.mRuntime.a();
+        Activity localActivity = this.mRuntime.d();
         TroopQQBrowserHelper.a(localActivity, localActivity.getIntent().getExtras(), paramString);
       }
       return;
@@ -490,10 +490,10 @@ public class TroopWebviewPlugin
     try
     {
       paramString = new JSONObject(paramString).getString("tags");
-      if (!(this.mRuntime.a() instanceof TroopTagViewActivity)) {
+      if (!(this.mRuntime.d() instanceof TroopTagViewActivity)) {
         return;
       }
-      ((TroopTagViewActivity)this.mRuntime.a()).a(paramString);
+      ((TroopTagViewActivity)this.mRuntime.d()).a(paramString);
       return;
     }
     catch (JSONException paramString) {}
@@ -506,19 +506,19 @@ public class TroopWebviewPlugin
   
   protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if ((paramLong != 8589934593L) && (paramLong != 8589934601L) && (paramLong == 2L) && (this.b != -1))
+    if ((paramLong != 8589934593L) && (paramLong != 8589934601L) && (paramLong == 2L) && (this.d != -1))
     {
       paramString = new JSONObject();
       try
       {
-        paramString.put("isBack", this.b);
+        paramString.put("isBack", this.d);
         a("onGetGroupHeadEditViewBack", paramString.toString());
       }
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
       }
-      this.b = -1;
+      this.d = -1;
     }
     return false;
   }
@@ -533,27 +533,27 @@ public class TroopWebviewPlugin
     paramString2 = null;
     paramString1 = null;
     if (bool) {}
-    int i;
+    int k;
     try
     {
       paramString2 = new JSONObject(paramVarArgs[0]);
-      i = paramString2.optInt("appid");
+      k = paramString2.optInt("appid");
       paramString1 = paramString2.optString("openGroupId");
       paramString2 = paramString2.optString("token");
       paramString3 = new StringBuilder();
-      paramString3.append(i);
+      paramString3.append(k);
       paramString3.append("");
       if ((!TextUtils.isEmpty(paramString3.toString())) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
       {
         paramJsBridgeListener = this.mRuntime.a().getUrl();
-        j = paramJsBridgeListener.indexOf("?");
-        paramString3 = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-        if (j == -1) {
+        m = paramJsBridgeListener.indexOf("?");
+        paramString3 = this.i;
+        if (m == -1) {
           paramJsBridgeListener = null;
         } else {
-          paramJsBridgeListener = paramJsBridgeListener.substring(0, j);
+          paramJsBridgeListener = paramJsBridgeListener.substring(0, m);
         }
-        paramString3.a(i, paramString1, paramString2, paramJsBridgeListener, "init", this);
+        paramString3.a(k, paramString1, paramString2, paramJsBridgeListener, "init", this);
         return true;
       }
       callJs4OpenApi(paramJsBridgeListener, 4, JsBridgeListener.a(4, null, null));
@@ -561,7 +561,7 @@ public class TroopWebviewPlugin
     }
     catch (JSONException paramJsBridgeListener)
     {
-      int j;
+      int m;
       long l;
       return true;
     }
@@ -604,9 +604,9 @@ public class TroopWebviewPlugin
         paramString2 = new JSONObject(paramVarArgs[0]);
         paramJsBridgeListener = paramString2.getString("troopUin");
         paramString1 = paramString2.getString("groupName");
-        i = paramString2.optInt("cateId");
+        k = paramString2.optInt("cateId");
         paramString2 = paramString2.optString("callback");
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, paramString1, i, paramString2, this);
+        this.i.a(paramJsBridgeListener, paramString1, k, paramString2, this);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -622,7 +622,7 @@ public class TroopWebviewPlugin
     }
     if (paramString3.equals("searchTroop"))
     {
-      QQToast.a(this.mRuntime.a(), 0, "该api功能已下架!", 0).a();
+      QQToast.makeText(this.mRuntime.d(), 0, "该api功能已下架!", 0).show();
       return true;
     }
     if (paramString3.equals("didModifyGroupTags"))
@@ -638,17 +638,17 @@ public class TroopWebviewPlugin
     }
     if (paramString3.equals("showTroopProfile"))
     {
-      QQToast.a(this.mRuntime.a(), 0, "该api功能已下架!", 0).a();
+      QQToast.makeText(this.mRuntime.d(), 0, "该api功能已下架!", 0).show();
       return true;
     }
     if (paramString3.equals("getVersion"))
     {
-      paramJsBridgeListener.a("8.7.0.5295");
+      paramJsBridgeListener.a("8.8.17.5770");
       return true;
     }
     if (paramString3.equals("isNetworkConnected"))
     {
-      paramJsBridgeListener.a(Boolean.valueOf(APNUtil.d(CommonDataAdapter.a().a())));
+      paramJsBridgeListener.a(Boolean.valueOf(APNUtil.k(CommonDataAdapter.a().b())));
       return true;
     }
     if (paramString3.equals("openUrl"))
@@ -667,12 +667,12 @@ public class TroopWebviewPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-        paramString1 = this.mRuntime.a();
+        paramString1 = this.mRuntime.d();
         paramString2 = new StringBuilder();
-        paramString2.append(this.mRuntime.a().getCurrentAccountUin());
+        paramString2.append(this.mRuntime.b().getCurrentAccountUin());
         paramString2.append("_troopManager");
         if ((paramString1.getSharedPreferences(paramString2.toString(), 0).getInt("uniqueTitleNewFlag", 0) & 0x2) != 0) {
-          break label2385;
+          break label2401;
         }
         bool = true;
         paramString1 = new StringBuilder();
@@ -692,13 +692,13 @@ public class TroopWebviewPlugin
     {
       if ("setUniqueTitleNewFlag".equals(paramString3))
       {
-        paramJsBridgeListener = this.mRuntime.a();
+        paramJsBridgeListener = this.mRuntime.d();
         paramString1 = new StringBuilder();
-        paramString1.append(this.mRuntime.a().getCurrentAccountUin());
+        paramString1.append(this.mRuntime.b().getCurrentAccountUin());
         paramString1.append("_troopManager");
         paramJsBridgeListener = paramJsBridgeListener.getSharedPreferences(paramString1.toString(), 0);
-        i = paramJsBridgeListener.getInt("uniqueTitleNewFlag", 0);
-        paramJsBridgeListener.edit().putInt("uniqueTitleNewFlag", i | 0x2).commit();
+        k = paramJsBridgeListener.getInt("uniqueTitleNewFlag", 0);
+        paramJsBridgeListener.edit().putInt("uniqueTitleNewFlag", k | 0x2).commit();
         return true;
       }
       if ("createDingdong".equals(paramString3))
@@ -723,20 +723,20 @@ public class TroopWebviewPlugin
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
           l = paramJsBridgeListener.getLong("troopPubAccountUin");
           paramJsBridgeListener = paramJsBridgeListener.getJSONArray("groupCodeList");
-          j = paramJsBridgeListener.length();
-          if (j > 0)
+          m = paramJsBridgeListener.length();
+          if (m > 0)
           {
-            paramString1 = new long[j];
-            i = 0;
-            while (i < j)
+            paramString1 = new long[m];
+            k = 0;
+            while (k < m)
             {
-              paramString1[i] = paramJsBridgeListener.getLong(i);
-              i += 1;
+              paramString1[k] = paramJsBridgeListener.getLong(k);
+              k += 1;
             }
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(l, paramString1);
+            this.i.a(l, paramString1);
           }
           if (!QLog.isColorLevel()) {
-            break label2378;
+            break label2394;
           }
           paramJsBridgeListener = new StringBuilder();
           paramJsBridgeListener.append("updateTroopBindedPubAccount:");
@@ -747,7 +747,7 @@ public class TroopWebviewPlugin
         catch (JSONException paramJsBridgeListener)
         {
           if (!QLog.isColorLevel()) {
-            break label2378;
+            break label2394;
           }
         }
         QLog.e("AccountDetailActivity.bindTroop", 2, paramJsBridgeListener.toString());
@@ -761,9 +761,9 @@ public class TroopWebviewPlugin
           paramJsBridgeListener = paramString2.optString("groupCode");
           paramString1 = paramString2.optString("groupMemberUin");
           paramString2 = paramString2.optString("callback");
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, paramString1, new TroopWebviewPlugin.1(this, paramString2));
+          this.i.a(paramJsBridgeListener, paramString1, new TroopWebviewPlugin.1(this, paramString2));
           if (!QLog.isColorLevel()) {
-            break label2378;
+            break label2394;
           }
           paramJsBridgeListener = new StringBuilder();
           paramJsBridgeListener.append("getLastSpeakMessage:");
@@ -801,22 +801,22 @@ public class TroopWebviewPlugin
             paramString1 = new ArrayList();
             if ((paramString3 != null) && (paramString3.length() > 0))
             {
-              i = 0;
+              k = 0;
               label1336:
-              if (i < paramString3.length())
+              if (k < paramString3.length())
               {
-                if (paramString3.optInt(i) <= 0) {
-                  break label2391;
+                if (paramString3.optInt(k) <= 0) {
+                  break label2407;
                 }
-                paramString1.add(Integer.valueOf(paramString3.optInt(i)));
-                break label2391;
+                paramString1.add(Integer.valueOf(paramString3.optInt(k)));
+                break label2407;
               }
             }
-            i = paramString2.optInt("effectId");
-            j = paramString2.optInt("svipLevel");
-            int k = paramString2.optInt("svipType");
+            k = paramString2.optInt("effectId");
+            m = paramString2.optInt("svipLevel");
+            int n = paramString2.optInt("svipType");
             paramString2 = paramString2.optString("effectName");
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString1, i, j, k, paramString2);
+            this.i.a(paramString1, k, m, n, paramString2);
             super.callJs(paramJsBridgeListener, new String[] { "{\"ret\":0}" });
             return true;
           }
@@ -861,7 +861,7 @@ public class TroopWebviewPlugin
               new Handler().postDelayed(new TroopWebviewPlugin.2(this, paramJsBridgeListener), 400L);
               return true;
             }
-            SensorAPIJavaScript.returnToAio(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.mRuntime.a(), paramJsBridgeListener, true);
+            SensorAPIJavaScript.returnToAio(this.i, this.mRuntime.d(), paramJsBridgeListener, true);
             return true;
           }
         }
@@ -869,28 +869,29 @@ public class TroopWebviewPlugin
         {
           try
           {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramJsBridgeListener = paramString2.optString("groupCode");
+            paramString3 = new JSONObject(paramVarArgs[0]);
+            paramJsBridgeListener = paramString3.optString("groupCode");
             if (TextUtils.isEmpty(paramJsBridgeListener))
             {
               if (!QLog.isColorLevel()) {
-                break label2400;
+                break label2416;
               }
-              QLog.e(this.TAG, 2, "METHOD_NOTIFY_TROOP_CREATE uin empty");
+              QLog.e(this.mTAG, 2, "METHOD_NOTIFY_TROOP_CREATE uin empty");
               return false;
             }
-            paramString1 = paramString2.optString("chat_type");
-            paramString2 = paramString2.optString("callback");
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, paramString1, paramString2, this);
+            paramString1 = paramString3.optString("chat_type");
+            paramString2 = paramString3.optString("callback");
+            paramString3 = paramString3.optString("package_id");
+            this.i.a(paramJsBridgeListener, paramString1, paramString3, paramString2, this);
             return true;
           }
           catch (JSONException paramJsBridgeListener)
           {
             if (!QLog.isColorLevel()) {
-              break label2378;
+              break label2394;
             }
           }
-          paramString1 = this.TAG;
+          paramString1 = this.mTAG;
           paramString2 = new StringBuilder();
           paramString2.append("METHOD_NOTIFY_TROOP_CREATE,");
           paramString2.append(paramJsBridgeListener.toString());
@@ -909,22 +910,22 @@ public class TroopWebviewPlugin
               if ((paramString2 != null) && (paramString2.length() > 0))
               {
                 paramString3 = new ArrayList();
-                i = 0;
-                while (i < paramString2.length())
+                k = 0;
+                while (k < paramString2.length())
                 {
-                  paramVarArgs = paramString2.getJSONObject(i);
+                  paramVarArgs = paramString2.getJSONObject(k);
                   StringBuilder localStringBuilder = new StringBuilder();
                   localStringBuilder.append(paramVarArgs.optString("groupCode"));
                   localStringBuilder.append(",");
                   localStringBuilder.append(paramVarArgs.optInt("status"));
                   paramString3.add(localStringBuilder.toString());
-                  i += 1;
+                  k += 1;
                 }
-                this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString3);
+                this.i.a(paramString3);
               }
               else
               {
-                QLog.e(this.TAG, 1, "notifySwitchStatus dataArray is empty");
+                QLog.e(this.mTAG, 1, "notifySwitchStatus dataArray is empty");
                 paramJsBridgeListener = "{\"ret\":-1}";
               }
               super.callJs(paramString1, new String[] { paramJsBridgeListener });
@@ -932,7 +933,7 @@ public class TroopWebviewPlugin
             }
             catch (Exception paramJsBridgeListener)
             {
-              paramString1 = this.TAG;
+              paramString1 = this.mTAG;
               paramString2 = new StringBuilder();
               paramString2.append("notifySwitchStatus error: ");
               paramString2.append(paramJsBridgeListener.toString());
@@ -944,9 +945,9 @@ public class TroopWebviewPlugin
             try
             {
               paramString1 = new JSONObject(paramVarArgs[0]);
-              paramString2 = this.mRuntime.a();
+              paramString2 = this.mRuntime.d();
               if ((paramString2 == null) || (!paramString1.has("lastAnnouncement")) || (!paramString1.has("groupCode"))) {
-                break label2402;
+                break label2418;
               }
               l = paramString1.optLong("groupCode");
               paramJsBridgeListener = paramString1.optString("lastAnnouncement");
@@ -955,11 +956,11 @@ public class TroopWebviewPlugin
               paramString3.putExtra("lastAnnouncement", paramJsBridgeListener);
               paramString3.putExtra("updateFromWeb", true);
               paramString2.setResult(-1, paramString3);
-              label2137:
+              label2153:
               if (!QLog.isColorLevel()) {
-                break label2378;
+                break label2394;
               }
-              QLog.i(this.TAG, 2, String.format("updateTroopAnnouncement [%s, %s, %s]", new Object[] { paramJsBridgeListener, Boolean.valueOf(paramString1.has("lastAnnouncement")), paramString2 }));
+              QLog.i(this.mTAG, 2, String.format("updateTroopAnnouncement [%s, %s, %s]", new Object[] { paramJsBridgeListener, Boolean.valueOf(paramString1.has("lastAnnouncement")), paramString2 }));
               return true;
             }
             catch (Throwable paramJsBridgeListener)
@@ -969,7 +970,7 @@ public class TroopWebviewPlugin
             }
           } else {
             if (!"updateTroopAutoApprovalSetting".equals(paramString3)) {
-              break label2380;
+              break label2396;
             }
           }
         }
@@ -980,16 +981,16 @@ public class TroopWebviewPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        paramString1 = this.mRuntime.a();
+        paramString1 = this.mRuntime.d();
         if ((paramString1 == null) || (!paramJsBridgeListener.has("autoApprovalSetting")) || (!paramJsBridgeListener.has("groupCode"))) {
-          break label2413;
+          break label2429;
         }
         l = paramJsBridgeListener.optLong("groupCode");
-        i = paramJsBridgeListener.optInt("autoApprovalSetting");
+        k = paramJsBridgeListener.optInt("autoApprovalSetting");
         paramString2 = new Intent();
         paramString2.putExtra("groupCode", l);
-        if (i != 1) {
-          break label2407;
+        if (k != 1) {
+          break label2423;
         }
         bool = true;
         paramString2.putExtra("autoApprovalSetting", bool);
@@ -997,7 +998,7 @@ public class TroopWebviewPlugin
         paramString1.setResult(-1, paramString2);
         if (QLog.isColorLevel())
         {
-          QLog.i(this.TAG, 2, String.format("updateAutoApprovalSetting [%s, %s, %s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramJsBridgeListener.has("autoApprovalSetting")), paramString1 }));
+          QLog.i(this.mTAG, 2, String.format("updateAutoApprovalSetting [%s, %s, %s]", new Object[] { Integer.valueOf(k), Boolean.valueOf(paramJsBridgeListener.has("autoApprovalSetting")), paramString1 }));
           return true;
         }
       }
@@ -1005,32 +1006,33 @@ public class TroopWebviewPlugin
       {
         paramJsBridgeListener.printStackTrace();
       }
-      label2378:
+      label2394:
       return true;
-      label2380:
+      label2396:
       return false;
-      label2385:
+      label2401:
       bool = false;
       break;
-      label2391:
-      i += 1;
-      break label1336;
-      label2400:
-      return false;
-      label2402:
-      paramJsBridgeListener = null;
-      break label2137;
       label2407:
+      k += 1;
+      break label1336;
+      label2416:
+      return false;
+      label2418:
+      paramJsBridgeListener = null;
+      break label2153;
+      label2423:
       bool = false;
       continue;
-      label2413:
-      i = -1;
+      label2429:
+      k = -1;
     }
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    Object localObject2 = (QBaseActivity)this.mRuntime.a();
+    Object localObject = (QBaseActivity)this.mRuntime.d();
+    String str1;
     boolean bool;
     if (paramByte != 5)
     {
@@ -1039,12 +1041,12 @@ public class TroopWebviewPlugin
       default: 
         return;
       case 45: 
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(this.c)) {
           return;
         }
-        paramIntent = new Intent(this.mRuntime.a(), TroopCreateLogicActivity.class);
+        paramIntent = new Intent(this.mRuntime.d(), TroopCreateLogicActivity.class);
         paramIntent.putExtra("type", 4);
-        paramIntent.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
+        paramIntent.putExtra("troop_uin", this.c);
         startActivityForResult(paramIntent, (byte)42);
         return;
       case 44: 
@@ -1056,7 +1058,7 @@ public class TroopWebviewPlugin
           if (paramInt != -1) {
             return;
           }
-          this.b = paramIntent.getIntExtra("isBack", -1);
+          this.d = paramIntent.getIntExtra("isBack", -1);
           return;
         }
         return;
@@ -1078,34 +1080,36 @@ public class TroopWebviewPlugin
           return;
         }
         paramByte = paramIntent.getIntExtra("retCode", -1);
-        paramIntent = paramIntent.getStringExtra("troopUin");
-        bool = TextUtils.isEmpty(paramIntent);
-        Object localObject1 = "";
+        str1 = paramIntent.getStringExtra("troopUin");
+        bool = TextUtils.isEmpty(str1);
+        String str2 = "";
         if (bool) {
-          paramIntent = "";
+          str1 = "";
         }
         paramInt = TroopCreateInfo.TroopCreateResult.a(paramByte);
-        if (paramInt != 0) {
-          QQToast.a(this.mRuntime.a(), paramInt, 0).b(((QBaseActivity)localObject2).getTitleBarHeight());
+        paramIntent = paramIntent.getStringExtra("errMsg");
+        if ((paramInt != 0) && (!((ICreateTroopBlackListUtilApi)QRoute.api(ICreateTroopBlackListUtilApi.class)).checkAndHandleCreateGroupBlackListResult(this.mRuntime.d(), (AppInterface)this.mRuntime.c(), paramIntent, paramByte))) {
+          QQToast.makeText(this.mRuntime.d(), paramInt, 0).show(((QBaseActivity)localObject).getTitleBarHeight());
         }
-        localObject2 = new JSONObject();
+        localObject = new JSONObject();
         try
         {
-          ((JSONObject)localObject2).put("result", paramByte);
-          if (!TextUtils.isEmpty(paramIntent)) {
-            localObject1 = paramIntent;
+          ((JSONObject)localObject).put("result", paramByte);
+          paramIntent = str2;
+          if (!TextUtils.isEmpty(str1)) {
+            paramIntent = str1;
           }
-          ((JSONObject)localObject2).put("troopUin", localObject1);
+          ((JSONObject)localObject).put("troopUin", paramIntent);
         }
-        catch (JSONException localJSONException)
+        catch (JSONException paramIntent)
         {
-          localJSONException.printStackTrace();
+          paramIntent.printStackTrace();
         }
-        a("onCreateGroupResult", ((JSONObject)localObject2).toString());
+        a("onCreateGroupResult", ((JSONObject)localObject).toString());
         if (paramByte != 0) {
           return;
         }
-        this.jdField_a_of_type_JavaLangString = paramIntent;
+        this.c = str1;
       }
     }
     else if (paramIntent != null)
@@ -1115,65 +1119,65 @@ public class TroopWebviewPlugin
       }
       paramByte = paramIntent.getIntExtra("errCode", -1);
       bool = paramIntent.getBooleanExtra("isClear", false);
-      String str = paramIntent.getStringExtra("location");
+      str1 = paramIntent.getStringExtra("location");
       paramInt = paramIntent.getIntExtra("lat", 0);
-      int i = paramIntent.getIntExtra("lon", 0);
+      int k = paramIntent.getIntExtra("lon", 0);
       if (paramByte == 0)
       {
         if (bool) {
-          QQToast.a((Context)localObject2, 2131720056, 0).b(((QBaseActivity)localObject2).getTitleBarHeight());
+          QQToast.makeText((Context)localObject, 2131917677, 0).show(((QBaseActivity)localObject).getTitleBarHeight());
         } else {
-          QQToast.a((Context)localObject2, 2131720061, 0).b(((QBaseActivity)localObject2).getTitleBarHeight());
+          QQToast.makeText((Context)localObject, 2131917682, 0).show(((QBaseActivity)localObject).getTitleBarHeight());
         }
         paramIntent = new Intent();
-        paramIntent.putExtra("location", str);
+        paramIntent.putExtra("location", str1);
         paramIntent.putExtra("lat", paramInt);
-        paramIntent.putExtra("lon", i);
-        ((QBaseActivity)localObject2).setResult(-1, paramIntent);
-        ((QBaseActivity)localObject2).finish();
+        paramIntent.putExtra("lon", k);
+        ((QBaseActivity)localObject).setResult(-1, paramIntent);
+        ((QBaseActivity)localObject).finish();
         return;
       }
       if (paramByte == 1002) {
-        paramIntent = ((QBaseActivity)localObject2).getString(2131720068);
+        paramIntent = ((QBaseActivity)localObject).getString(2131917689);
       } else if (bool) {
-        paramIntent = ((QBaseActivity)localObject2).getString(2131720055);
+        paramIntent = ((QBaseActivity)localObject).getString(2131917676);
       } else {
-        paramIntent = ((QBaseActivity)localObject2).getString(2131720060);
+        paramIntent = ((QBaseActivity)localObject).getString(2131917681);
       }
-      QQToast.a((Context)localObject2, paramIntent, 0).b(((QBaseActivity)localObject2).getTitleBarHeight());
+      QQToast.makeText((Context)localObject, paramIntent, 0).show(((QBaseActivity)localObject).getTitleBarHeight());
     }
   }
   
   public void onCreate()
   {
-    this.jdField_a_of_type_Int = this.mRuntime.a().getIntent().getIntExtra("troop_create_from", 0);
-    if (this.jdField_a_of_type_Int != 0) {
-      this.mRuntime.a().setResult(-1);
+    this.b = this.mRuntime.d().getIntent().getIntExtra("troop_create_from", 0);
+    if (this.b != 0) {
+      this.mRuntime.d().setResult(-1);
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    if (this.h.compareAndSet(false, true))
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
+      this.i = TroopMemberApiClient.a();
+      this.i.e();
     }
   }
   
   public void onDestroy()
   {
-    int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
+    int k = this.b;
+    if (this.h.get()) {
+      this.i.f();
     }
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.j;
     if (localQQCustomDialog != null)
     {
       localQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.j = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.browser.TroopWebviewPlugin
  * JD-Core Version:    0.7.0.1
  */

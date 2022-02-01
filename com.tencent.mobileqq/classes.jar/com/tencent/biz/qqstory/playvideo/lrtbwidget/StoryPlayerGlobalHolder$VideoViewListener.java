@@ -19,7 +19,7 @@ class StoryPlayerGlobalHolder$VideoViewListener
   
   public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, IVideoView paramIVideoView, boolean paramBoolean)
   {
-    return this.a.a.a(paramVideoViewVideoHolder, paramIVideoView, paramBoolean);
+    return this.a.c.a(paramVideoViewVideoHolder, paramIVideoView, paramBoolean);
   }
   
   public void b(VideoViewVideoHolder paramVideoViewVideoHolder, IVideoView paramIVideoView) {}
@@ -28,7 +28,7 @@ class StoryPlayerGlobalHolder$VideoViewListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGlobalHolder.VideoViewListener
  * JD-Core Version:    0.7.0.1
  */

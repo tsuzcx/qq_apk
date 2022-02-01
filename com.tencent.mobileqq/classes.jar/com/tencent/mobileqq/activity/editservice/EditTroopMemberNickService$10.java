@@ -14,23 +14,23 @@ class EditTroopMemberNickService$10
   
   public void a()
   {
-    if ((this.a.jdField_a_of_type_AndroidWidgetEditText instanceof ColorClearableEditText))
+    if ((this.a.a instanceof ColorClearableEditText))
     {
-      ColorClearableEditText localColorClearableEditText = (ColorClearableEditText)this.a.jdField_a_of_type_AndroidWidgetEditText;
+      ColorClearableEditText localColorClearableEditText = (ColorClearableEditText)this.a.a;
       localColorClearableEditText.setSpecialColor(0, null, null, 0, null);
       localColorClearableEditText.setCustomCloth(0, false);
     }
     else
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(EditTroopMemberNickService.a(this.a).getColor(2131167157));
+      this.a.a.setTextColor(EditTroopMemberNickService.i(this.a).getColor(2131168140));
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter.a(-1);
-    this.a.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter.a.a(-1);
+    this.a.z.a(-1);
+    this.a.z.a.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.10
  * JD-Core Version:    0.7.0.1
  */

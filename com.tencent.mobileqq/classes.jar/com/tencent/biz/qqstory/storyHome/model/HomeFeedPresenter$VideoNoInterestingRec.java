@@ -16,7 +16,7 @@ public class HomeFeedPresenter$VideoNoInterestingRec
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull ReportNoInterestingVideoHandler.ReportNoInterestingVideoEvent paramReportNoInterestingVideoEvent)
   {
     SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramReportNoInterestingVideoEvent);
-    HomeFeedPresenter.a(paramHomeFeedPresenter, paramReportNoInterestingVideoEvent.a);
+    HomeFeedPresenter.b(paramHomeFeedPresenter, paramReportNoInterestingVideoEvent.a);
   }
   
   public Class acceptEventClass()

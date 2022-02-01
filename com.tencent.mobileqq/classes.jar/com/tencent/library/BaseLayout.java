@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public abstract class BaseLayout
   extends FrameLayout
 {
-  protected View a = a(paramContext);
+  protected View a = b(paramContext);
   
   public BaseLayout(Context paramContext)
   {
@@ -21,12 +21,12 @@ public abstract class BaseLayout
     super(paramContext, paramAttributeSet);
   }
   
-  private View a(Context paramContext)
+  private View b(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(a(), null, false);
+    return LayoutInflater.from(paramContext).inflate(getLayoutId(), null, false);
   }
   
-  protected abstract int a();
+  protected abstract int getLayoutId();
 }
 
 

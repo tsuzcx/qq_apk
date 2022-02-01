@@ -18,8 +18,8 @@ class RecycleViewAdapterHelper$3$4
   
   public void onClick(ViewBase paramViewBase)
   {
-    ProteusSupportUtil.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    paramViewBase = RecycleViewAdapterHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getData());
+    ProteusSupportUtil.a(this.a.b, paramViewBase);
+    paramViewBase = RecycleViewAdapterHelper.a(this.a.c, this.a.b.getData());
     if (paramViewBase == null)
     {
       QLog.e("RecycleViewAdapterHelper", 1, "daily share info is null");
@@ -27,12 +27,12 @@ class RecycleViewAdapterHelper$3$4
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("share_info_intent", paramViewBase.toString());
-    PublicFragmentActivity.a(RecycleViewAdapterHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper).getContext(), localIntent, ReadInJoyDailyShareFragment.class);
+    PublicFragmentActivity.a(RecycleViewAdapterHelper.d(this.a.c).getContext(), localIntent, ReadInJoyDailyShareFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.helper.RecycleViewAdapterHelper.3.4
  * JD-Core Version:    0.7.0.1
  */

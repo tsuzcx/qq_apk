@@ -1,70 +1,59 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade;
-import com.tencent.mobileqq.activity.qqsettingme.QQSettingMeViewModel;
-import com.tencent.mobileqq.app.FrameHelperActivity.QQSettingMeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.UpSideDownDrawable;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class Conversation$19
-  implements FrameHelperActivity.QQSettingMeListener
+  implements Runnable
 {
-  Conversation$19(Conversation paramConversation) {}
+  Conversation$19(Conversation paramConversation, String paramString1, String paramString2) {}
   
-  public ViewGroup a()
+  public void run()
   {
-    return this.a.a.a;
-  }
-  
-  public UpSideDownDrawable a(String paramString)
-  {
-    return ((DrawerBizFacade)this.a.a.a().a()).a(paramString);
-  }
-  
-  public void a()
-  {
-    this.a.a.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Configuration paramConfiguration)
-  {
-    this.a.a.a(paramConfiguration);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.a.a.a(paramQQAppInterface);
-  }
-  
-  public void a(String paramString, UpSideDownDrawable paramUpSideDownDrawable)
-  {
-    ((DrawerBizFacade)this.a.a.a().a()).a(paramString, paramUpSideDownDrawable);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a.a(paramBoolean);
-  }
-  
-  public void b()
-  {
-    this.a.a.b();
-  }
-  
-  public void c()
-  {
-    this.a.a.c();
+    if (this.a.equals(Conversation.a(this.this$0)))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[status][mainTab] updateNickName() ignore from: ");
+        ((StringBuilder)localObject1).append(this.b);
+        ((StringBuilder)localObject1).append(" nickName: ");
+        ((StringBuilder)localObject1).append(this.a);
+        QLog.d("Q.recent", 2, ((StringBuilder)localObject1).toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[status][mainTab] updateNickName() from: ");
+      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(" nickName: ");
+      ((StringBuilder)localObject1).append(this.a);
+      QLog.d("Q.recent", 2, ((StringBuilder)localObject1).toString());
+    }
+    Conversation.b(this.this$0).setText(this.a);
+    Conversation.c(this.this$0, this.a);
+    Object localObject2 = null;
+    Object localObject3 = Conversation.b(this.this$0).getTag(2131432585);
+    Object localObject1 = localObject2;
+    if ((localObject3 instanceof WeakReference))
+    {
+      localObject3 = (WeakReference)localObject3;
+      localObject1 = localObject2;
+      if ((((WeakReference)localObject3).get() instanceof TextView)) {
+        localObject1 = (TextView)((WeakReference)localObject3).get();
+      }
+    }
+    if (localObject1 != null) {
+      ((TextView)localObject1).setText(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.19
  * JD-Core Version:    0.7.0.1
  */

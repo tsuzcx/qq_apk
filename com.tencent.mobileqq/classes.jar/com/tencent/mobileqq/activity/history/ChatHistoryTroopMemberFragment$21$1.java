@@ -29,7 +29,7 @@ class ChatHistoryTroopMemberFragment$21$1
         break label104;
       }
       ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
-      ChatHistoryTroopMemberFragment.c(this.a.this$0);
+      ChatHistoryTroopMemberFragment.h(this.a.this$0);
       ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
       return;
     }
@@ -46,7 +46,7 @@ class ChatHistoryTroopMemberFragment$21$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.21.1
  * JD-Core Version:    0.7.0.1
  */

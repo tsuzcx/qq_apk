@@ -129,7 +129,7 @@ public class TbsExtensionFunctionManager
       }
       else
       {
-        localObject1 = p.a().q(paramContext);
+        localObject1 = p.a().r(paramContext);
         if (localObject1 == null) {
           TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is null");
         }
@@ -143,7 +143,7 @@ public class TbsExtensionFunctionManager
         TbsLog.i("TbsExtensionFunMana", "bugly init ,corePath is null");
         return;
       }
-      Object localObject4 = p.a().q(paramContext);
+      Object localObject4 = p.a().r(paramContext);
       if (localObject4 == null)
       {
         TbsLog.i("TbsExtensionFunMana", "bugly init ,optDir is null");
@@ -230,7 +230,7 @@ public class TbsExtensionFunctionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsExtensionFunctionManager
  * JD-Core Version:    0.7.0.1
  */

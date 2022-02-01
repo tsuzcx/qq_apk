@@ -21,36 +21,24 @@ import com.tencent.widget.XEditTextEx;
 public class WriteTogetherHelper
   implements ILifeCycleHelper, OnActivityResultCallback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean = false;
+  private BaseChatPie a;
+  private QQAppInterface b;
+  private Context c;
+  private ActionMode.Callback d;
+  private boolean e = false;
   
   public WriteTogetherHelper(HelperProvider paramHelperProvider, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.a = paramBaseChatPie;
+    this.b = paramBaseChatPie.d;
+    this.c = paramBaseChatPie.e;
     paramHelperProvider.a(this);
-  }
-  
-  private String a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localObject == null) || (((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString == null)) {
-      localObject = "";
-    } else {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    }
-    TextUtils.isEmpty((CharSequence)localObject);
-    return localObject;
   }
   
   public static void a(Context paramContext, BaseChatPie paramBaseChatPie, String paramString1, String paramString2, int paramInt)
   {
     if (paramBaseChatPie != null) {
-      paramBaseChatPie = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      paramBaseChatPie = paramBaseChatPie.f;
     } else {
       paramBaseChatPie = null;
     }
@@ -62,61 +50,73 @@ public class WriteTogetherHelper
     a(paramContext, null, paramString1, paramString2, paramInt);
   }
   
-  private boolean b()
+  private String e()
   {
-    Object localObject = a();
-    localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a((String)localObject, true);
+    Object localObject = this.a;
+    if ((localObject == null) || (((BaseChatPie)localObject).ah == null) || (this.a.ah.b == null)) {
+      localObject = "";
+    } else {
+      localObject = this.a.ah.b;
+    }
+    TextUtils.isEmpty((CharSequence)localObject);
+    return localObject;
+  }
+  
+  private boolean f()
+  {
+    Object localObject = e();
+    localObject = ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER)).b((String)localObject, true);
     return (localObject != null) && (((TroopInfo)localObject).exitTroopReason == 0);
   }
   
-  private void c()
+  private void g()
   {
-    if (this.jdField_a_of_type_AndroidViewActionMode$Callback != null) {
+    if (this.d != null) {
       return;
     }
     if (Build.VERSION.SDK_INT >= 23) {
-      this.jdField_a_of_type_AndroidViewActionMode$Callback = new WriteTogetherHelper.1(this);
+      this.d = new WriteTogetherHelper.1(this);
     }
   }
   
-  private void d()
+  private void h()
   {
-    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    ChatXListView localChatXListView = this.a.U;
     localChatXListView.setSelectionFromBottom(localChatXListView.getCount() - 1, 0);
-  }
-  
-  public ActionMode.Callback a()
-  {
-    c();
-    return this.jdField_a_of_type_AndroidViewActionMode$Callback;
   }
   
   public void a()
   {
-    c();
+    g();
   }
   
   public void a(String paramString, int paramInt)
   {
-    a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, paramString, a(), paramInt);
-  }
-  
-  public boolean a()
-  {
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    boolean bool = ((IWriteTogetherConfig)QRoute.api(IWriteTogetherConfig.class)).isAllowShowEntrance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    if ((localSessionInfo != null) && (bool)) {
-      return (localSessionInfo.jdField_a_of_type_Int == 1) && (b());
-    }
-    return false;
+    a(this.c, this.a, paramString, e(), paramInt);
   }
   
   public void b() {}
   
   public void b(String paramString, int paramInt)
   {
-    String str = a();
-    ((IWTStartup)QRoute.api(IWTStartup.class)).launchWriteTogetherEditor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, paramInt, str, 18005);
+    String str = e();
+    ((IWTStartup)QRoute.api(IWTStartup.class)).launchWriteTogetherEditor(this.b, this.c, this.a.f, paramString, paramInt, str, 18005);
+  }
+  
+  public ActionMode.Callback c()
+  {
+    g();
+    return this.d;
+  }
+  
+  public boolean d()
+  {
+    SessionInfo localSessionInfo = this.a.ah;
+    boolean bool = ((IWriteTogetherConfig)QRoute.api(IWriteTogetherConfig.class)).isAllowShowEntrance(this.b, this.a.ah.b);
+    if ((localSessionInfo != null) && (bool)) {
+      return (localSessionInfo.a == 1) && (f());
+    }
+    return false;
   }
   
   public String getTag()
@@ -137,17 +137,17 @@ public class WriteTogetherHelper
     if ((paramInt2 & 0x1) != 0)
     {
       if ((paramInt2 & 0x2) != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+        this.a.Y.setText("");
       }
       if ((paramInt2 & 0x4) != 0)
       {
-        paramIntent = (FullScreenInputHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(24);
+        paramIntent = (FullScreenInputHelper)this.a.q(24);
         if (paramIntent != null) {
-          paramIntent.a(true);
+          paramIntent.b(true);
         }
       }
       if ((paramInt2 & 0x8) != 0) {
-        d();
+        h();
       }
     }
     else
@@ -173,7 +173,7 @@ public class WriteTogetherHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.WriteTogetherHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ class QIMProviderContainerView$7
   
   public void run()
   {
-    int j = this.this$0.a.getChildCount();
-    if (QIMProviderContainerView.b(this.this$0))
+    int j = this.this$0.b.getChildCount();
+    if (QIMProviderContainerView.g(this.this$0))
     {
       Drawable[] arrayOfDrawable = new Drawable[j];
       int i = 0;
       while (i < j)
       {
-        if (QIMProviderContainerView.a(this.this$0).a(i))
+        if (QIMProviderContainerView.f(this.this$0).c(i))
         {
-          int k = ((Integer)((ImageView)this.this$0.a.getChildAt(i)).getTag()).intValue();
-          arrayOfDrawable[i] = this.this$0.getResources().getDrawable(QIMProviderContainerView.a(this.this$0).b(k));
+          int k = ((Integer)((ImageView)this.this$0.b.getChildAt(i)).getTag()).intValue();
+          arrayOfDrawable[i] = this.this$0.getResources().getDrawable(QIMProviderContainerView.f(this.this$0).b(k));
         }
         i += 1;
       }
@@ -36,7 +36,7 @@ class QIMProviderContainerView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMProviderContainerView.7
  * JD-Core Version:    0.7.0.1
  */

@@ -15,36 +15,36 @@ import java.util.List;
 public class OverlapDrawable
   extends Drawable
 {
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<Drawable> jdField_a_of_type_JavaUtilList;
+  private int a;
   private int b;
+  private List<Drawable> c;
+  private QQAppInterface d;
   
   public OverlapDrawable(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.d = paramQQAppInterface;
   }
   
   public void a(List<Drawable> paramList, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramList;
+    this.a = paramInt;
     this.b = (paramInt * 2);
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       Drawable localDrawable = (Drawable)localIterator.next();
-      localDrawable = ((VasExtensionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(localDrawable, this.jdField_a_of_type_Int);
+      localDrawable = ((VasExtensionManager)this.d.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).d.a(localDrawable, this.a);
       if (localDrawable != null)
       {
         int i = this.b;
         localDrawable.setBounds(0, 0, i, i);
         localDrawable.draw(paramCanvas);
-        paramCanvas.translate(this.jdField_a_of_type_Int, 0.0F);
+        paramCanvas.translate(this.a, 0.0F);
       }
     }
   }
@@ -60,7 +60,7 @@ public class OverlapDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.OverlapDrawable
  * JD-Core Version:    0.7.0.1
  */

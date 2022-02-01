@@ -1,52 +1,49 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.audio.TXCAudioEngine;
+import com.tencent.liteav.audio.a;
+import java.lang.ref.WeakReference;
 
 class TRTCCloudImpl$151
   implements Runnable
 {
-  TRTCCloudImpl$151(TRTCCloudImpl paramTRTCCloudImpl, long paramLong) {}
+  TRTCCloudImpl$151(TRTCCloudImpl paramTRTCCloudImpl, WeakReference paramWeakReference, String paramString, long paramLong, int paramInt) {}
   
   public void run()
   {
-    int i = this.this$0.mRoomInfo.recvFirstIFrame(this.val$tinyId);
-    Object localObject3 = null;
-    Object localObject2;
-    try
+    if (this.this$0.mRoomState == 0)
     {
-      localObject4 = this.this$0.mRoomInfo.getUserIdByTinyId(this.val$tinyId);
-      Object localObject1 = localObject3;
-      if (localObject4 != null) {
-        localObject1 = this.this$0.mRoomInfo.getUser((String)localObject4);
-      }
+      this.this$0.apiLog("ignore onAVMemberExit when out room.");
+      return;
     }
-    catch (Exception localException)
+    if ((TRTCCloudImpl)this.val$weakSelf.get() == null) {
+      return;
+    }
+    Object localObject = this.this$0.mRoomInfo.getUser(this.val$userID);
+    if (localObject != null)
     {
-      TXCLog.e("TRTCCloudImpl", "get user info failed.", localException);
-      localObject2 = localObject3;
+      this.this$0.stopRemoteRender((TRTCRoomInfo.UserInfo)localObject);
+      this.this$0.mRoomInfo.removeRenderInfo(((TRTCRoomInfo.UserInfo)localObject).userID);
     }
-    localObject3 = this.this$0;
-    Object localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append("onRecvFirstVideo ");
-    ((StringBuilder)localObject4).append(this.val$tinyId);
-    ((StringBuilder)localObject4).append(", ");
-    ((StringBuilder)localObject4).append(i);
-    ((TRTCCloudImpl)localObject3).apiLog(((StringBuilder)localObject4).toString());
-    if (localObject2 != null)
+    else
     {
-      if (i > 1) {
-        return;
-      }
-      localObject3 = localObject2.userID;
-      if (((TRTCRoomInfo.hasMainVideo(localObject2.streamState)) || (TRTCRoomInfo.hasSmallVideo(localObject2.streamState))) && (!TRTCRoomInfo.isMuteMainVideo(localObject2.streamState))) {
-        this.this$0.runOnListenerThread(new TRTCCloudImpl.151.1(this, (String)localObject3));
-      }
+      localObject = this.this$0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("user ");
+      localStringBuilder.append(this.val$userID);
+      localStringBuilder.append(" exit room when user is not in room ");
+      localStringBuilder.append(this.val$tinyID);
+      ((TRTCCloudImpl)localObject).apiLog(localStringBuilder.toString());
     }
+    a.a().a(String.valueOf(this.val$tinyID), this.this$0.hashCode());
+    TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(String.valueOf(this.val$tinyID), null);
+    TXCAudioEngine.getInstance().setRemoteAudioStreamEventListener(String.valueOf(this.val$tinyID), null);
+    this.this$0.runOnListenerThread(new TRTCCloudImpl.151.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.151
  * JD-Core Version:    0.7.0.1
  */

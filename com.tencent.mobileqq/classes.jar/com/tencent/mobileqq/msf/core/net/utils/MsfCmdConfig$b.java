@@ -19,7 +19,7 @@ class MsfCmdConfig$b
   private static final String e = "file_del_time";
   private static final String f = "key_delete_version";
   private boolean d;
-  private final Set g = new b(this);
+  private final Set g = new c(this);
   
   MsfCmdConfig$b(String paramString, List paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -103,7 +103,7 @@ class MsfCmdConfig$b
         a(paramArrayList, localStringBuilder.toString(), paramInt + 1, paramString2);
         return;
       }
-      localObject = new File(paramString1).listFiles(new c(this, str));
+      localObject = new File(paramString1).listFiles(new d(this, str));
       if ((localObject != null) && (localObject.length > 0))
       {
         int j = localObject.length;
@@ -222,7 +222,7 @@ class MsfCmdConfig$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfCmdConfig.b
  * JD-Core Version:    0.7.0.1
  */

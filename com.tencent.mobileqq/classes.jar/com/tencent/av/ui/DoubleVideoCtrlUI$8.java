@@ -17,37 +17,37 @@ class DoubleVideoCtrlUI$8
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null)
+    if (this.this$0.am != null)
     {
-      if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      if (this.this$0.al == null) {
         return;
       }
-      SessionInfo localSessionInfo = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+      SessionInfo localSessionInfo = this.this$0.am.k();
       if (localSessionInfo == null) {
         return;
       }
-      if (localSessionInfo.Q <= 0)
+      if (localSessionInfo.bT <= 0)
       {
-        if (this.this$0.jdField_a_of_type_JavaUtilTimer != null)
+        if (this.this$0.l != null)
         {
-          this.this$0.jdField_a_of_type_JavaUtilTimer.cancel();
-          this.this$0.jdField_a_of_type_JavaUtilTimer = null;
+          this.this$0.l.cancel();
+          this.this$0.l = null;
         }
-        QLog.w(this.this$0.d, 1, "StartGlassCheck, cancel cur Timer");
+        QLog.w(this.this$0.X, 1, "StartGlassCheck, cancel cur Timer");
         return;
       }
       long l1;
       try
       {
-        if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null) {
-          l1 = ((AVActivity)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).a.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c);
+        if (this.this$0.ak != null) {
+          l1 = ((AVActivity)this.this$0.ak.get()).L.c(this.this$0.am.k().s);
         } else {
           l1 = 0L;
         }
       }
       catch (Exception localException)
       {
-        QLog.w(this.this$0.d, 1, "StartGlassCheck, Exception", localException);
+        QLog.w(this.this$0.X, 1, "StartGlassCheck, Exception", localException);
         l1 = 0L;
       }
       long l2 = System.currentTimeMillis();
@@ -55,23 +55,23 @@ class DoubleVideoCtrlUI$8
         return;
       }
       long l3 = l2 - l1;
-      String str = this.this$0.d;
+      String str = this.this$0.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("StartGlassCheck, interval[");
       localStringBuilder.append(l3);
       localStringBuilder.append("], mCheck[");
       localStringBuilder.append(this.a);
       localStringBuilder.append("], mCurrentDoubleVideoGlassSwitch[");
-      localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().P);
+      localStringBuilder.append(this.this$0.am.k().bS);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
-      if ((l3 > this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q * 1000) && (this.a))
+      if ((l3 > this.this$0.am.k().bT * 1000) && (this.a))
       {
-        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new DoubleVideoCtrlUI.8.1(this, l2, l1));
+        this.this$0.al.runOnUiThread(new DoubleVideoCtrlUI.8.1(this, l2, l1));
         return;
       }
-      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().P != 0) && (l3 < 1000L)) {
-        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new DoubleVideoCtrlUI.8.2(this));
+      if ((this.this$0.am.k().bS != 0) && (l3 < 1000L)) {
+        this.this$0.al.runOnUiThread(new DoubleVideoCtrlUI.8.2(this));
       }
     }
   }

@@ -13,10 +13,10 @@ import java.util.List;
 public class DownloadInfoDB
   extends SQLiteOpenHelper
 {
-  private static volatile DownloadInfoDB jdField_a_of_type_ComTencentOpenAppstoreDbDownloadInfoDB = null;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "ticket", "open_appid", "download_url", "package_name", "push_title", "send_time", "uin", "trigger_time", "via", "patch_url", "update_type", "appid", "apkid", "version", "download_type", "filepath", "source", "last_download_size", "is_apk", "yyb_download_from", "icon_url", "is_show_notification", "apk_write_code_state", "extra_info", "is_autoInstall_by_sdk", "download_file_md5", "download_file_size", "download_state", "download_progress", "total_length", "recommend_id", "source_from_server", "channel_id", "page_id", "module_id", "position_id", "process_flag_id", "unique_id", "ext_param_id" };
-  private long jdField_a_of_type_Long = 0L;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final String[] a = { "ticket", "open_appid", "download_url", "package_name", "push_title", "send_time", "uin", "trigger_time", "via", "patch_url", "update_type", "appid", "apkid", "version", "download_type", "filepath", "source", "last_download_size", "is_apk", "yyb_download_from", "icon_url", "is_show_notification", "apk_write_code_state", "extra_info", "is_autoInstall_by_sdk", "download_file_md5", "download_file_size", "download_state", "download_progress", "total_length", "recommend_id", "source_from_server", "channel_id", "page_id", "module_id", "position_id", "process_flag_id", "unique_id", "ext_param_id" };
+  private static volatile DownloadInfoDB b = null;
+  private final Object c = new Object();
+  private long d = 0L;
   
   private DownloadInfoDB(Context paramContext)
   {
@@ -33,40 +33,40 @@ public class DownloadInfoDB
   
   public static DownloadInfoDB a()
   {
-    if (jdField_a_of_type_ComTencentOpenAppstoreDbDownloadInfoDB == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentOpenAppstoreDbDownloadInfoDB == null)
+        if (b == null)
         {
-          jdField_a_of_type_ComTencentOpenAppstoreDbDownloadInfoDB = new DownloadInfoDB(CommonDataAdapter.a().a());
-          jdField_a_of_type_ComTencentOpenAppstoreDbDownloadInfoDB.a();
+          b = new DownloadInfoDB(CommonDataAdapter.a().b());
+          b.d();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentOpenAppstoreDbDownloadInfoDB;
+    return b;
   }
   
   private DownloadInfo a(Cursor paramCursor)
   {
     DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.jdField_b_of_type_JavaLangString = paramCursor.getString(a(paramCursor, "ticket"));
-    localDownloadInfo.jdField_c_of_type_JavaLangString = paramCursor.getString(a(paramCursor, "open_appid"));
-    localDownloadInfo.jdField_d_of_type_JavaLangString = paramCursor.getString(a(paramCursor, "download_url"));
+    localDownloadInfo.b = paramCursor.getString(a(paramCursor, "ticket"));
+    localDownloadInfo.c = paramCursor.getString(a(paramCursor, "open_appid"));
+    localDownloadInfo.d = paramCursor.getString(a(paramCursor, "download_url"));
     localDownloadInfo.e = paramCursor.getString(a(paramCursor, "package_name"));
-    localDownloadInfo.jdField_f_of_type_JavaLangString = paramCursor.getString(a(paramCursor, "push_title"));
+    localDownloadInfo.f = paramCursor.getString(a(paramCursor, "push_title"));
     localDownloadInfo.g = paramCursor.getString(a(paramCursor, "send_time"));
-    localDownloadInfo.jdField_a_of_type_Long = paramCursor.getLong(a(paramCursor, "trigger_time"));
-    localDownloadInfo.jdField_h_of_type_JavaLangString = paramCursor.getString(a(paramCursor, "via"));
-    localDownloadInfo.jdField_i_of_type_JavaLangString = paramCursor.getString(a(paramCursor, "patch_url"));
-    localDownloadInfo.jdField_a_of_type_Int = paramCursor.getInt(a(paramCursor, "update_type"));
-    localDownloadInfo.jdField_j_of_type_JavaLangString = paramCursor.getString(a(paramCursor, "appid"));
-    localDownloadInfo.k = paramCursor.getString(a(paramCursor, "apkid"));
-    localDownloadInfo.jdField_b_of_type_Int = paramCursor.getInt(a(paramCursor, "version"));
-    localDownloadInfo.jdField_c_of_type_Int = paramCursor.getInt(a(paramCursor, "download_type"));
-    localDownloadInfo.l = paramCursor.getString(a(paramCursor, "filepath"));
-    localDownloadInfo.m = paramCursor.getString(a(paramCursor, "source"));
-    localDownloadInfo.jdField_b_of_type_Long = paramCursor.getLong(a(paramCursor, "last_download_size"));
+    localDownloadInfo.i = paramCursor.getLong(a(paramCursor, "trigger_time"));
+    localDownloadInfo.h = paramCursor.getString(a(paramCursor, "via"));
+    localDownloadInfo.k = paramCursor.getString(a(paramCursor, "patch_url"));
+    localDownloadInfo.j = paramCursor.getInt(a(paramCursor, "update_type"));
+    localDownloadInfo.l = paramCursor.getString(a(paramCursor, "appid"));
+    localDownloadInfo.m = paramCursor.getString(a(paramCursor, "apkid"));
+    localDownloadInfo.n = paramCursor.getInt(a(paramCursor, "version"));
+    localDownloadInfo.o = paramCursor.getInt(a(paramCursor, "download_type"));
+    localDownloadInfo.q = paramCursor.getString(a(paramCursor, "filepath"));
+    localDownloadInfo.r = paramCursor.getString(a(paramCursor, "source"));
+    localDownloadInfo.y = paramCursor.getLong(a(paramCursor, "last_download_size"));
     int i = paramCursor.getInt(a(paramCursor, "is_apk"));
     boolean bool2 = false;
     if (i == 1) {
@@ -74,34 +74,34 @@ public class DownloadInfoDB
     } else {
       bool1 = false;
     }
-    localDownloadInfo.jdField_c_of_type_Boolean = bool1;
-    localDownloadInfo.jdField_h_of_type_Int = paramCursor.getInt(a(paramCursor, "yyb_download_from"));
-    localDownloadInfo.n = paramCursor.getString(a(paramCursor, "icon_url"));
-    localDownloadInfo.jdField_i_of_type_Int = paramCursor.getInt(a(paramCursor, "is_show_notification"));
-    localDownloadInfo.jdField_j_of_type_Int = paramCursor.getInt(a(paramCursor, "apk_write_code_state"));
-    if (localDownloadInfo.jdField_j_of_type_Int == 1) {
-      localDownloadInfo.jdField_j_of_type_Int = 0;
+    localDownloadInfo.A = bool1;
+    localDownloadInfo.z = paramCursor.getInt(a(paramCursor, "yyb_download_from"));
+    localDownloadInfo.B = paramCursor.getString(a(paramCursor, "icon_url"));
+    localDownloadInfo.C = paramCursor.getInt(a(paramCursor, "is_show_notification"));
+    localDownloadInfo.D = paramCursor.getInt(a(paramCursor, "apk_write_code_state"));
+    if (localDownloadInfo.D == 1) {
+      localDownloadInfo.D = 0;
     }
-    localDownloadInfo.o = paramCursor.getString(a(paramCursor, "extra_info"));
+    localDownloadInfo.F = paramCursor.getString(a(paramCursor, "extra_info"));
     boolean bool1 = bool2;
     if (paramCursor.getInt(a(paramCursor, "is_autoInstall_by_sdk")) == 1) {
       bool1 = true;
     }
-    localDownloadInfo.jdField_d_of_type_Boolean = bool1;
-    localDownloadInfo.p = paramCursor.getString(a(paramCursor, "download_file_md5"));
-    localDownloadInfo.jdField_d_of_type_Long = paramCursor.getLong(a(paramCursor, "download_file_size"));
+    localDownloadInfo.G = bool1;
+    localDownloadInfo.H = paramCursor.getString(a(paramCursor, "download_file_md5"));
+    localDownloadInfo.I = paramCursor.getLong(a(paramCursor, "download_file_size"));
     localDownloadInfo.a(paramCursor.getInt(a(paramCursor, "download_state")));
-    localDownloadInfo.jdField_f_of_type_Int = paramCursor.getInt(a(paramCursor, "download_progress"));
-    localDownloadInfo.jdField_c_of_type_Long = paramCursor.getLong(a(paramCursor, "total_length"));
-    localDownloadInfo.q = paramCursor.getString(a(paramCursor, "recommend_id"));
-    localDownloadInfo.r = paramCursor.getString(a(paramCursor, "source_from_server"));
-    localDownloadInfo.s = paramCursor.getString(a(paramCursor, "channel_id"));
-    localDownloadInfo.t = paramCursor.getString(a(paramCursor, "page_id"));
-    localDownloadInfo.u = paramCursor.getString(a(paramCursor, "module_id"));
-    localDownloadInfo.v = paramCursor.getString(a(paramCursor, "position_id"));
-    localDownloadInfo.w = paramCursor.getString(a(paramCursor, "process_flag_id"));
-    localDownloadInfo.x = paramCursor.getString(a(paramCursor, "unique_id"));
-    localDownloadInfo.y = paramCursor.getString(a(paramCursor, "ext_param_id"));
+    localDownloadInfo.t = paramCursor.getInt(a(paramCursor, "download_progress"));
+    localDownloadInfo.E = paramCursor.getLong(a(paramCursor, "total_length"));
+    localDownloadInfo.J = paramCursor.getString(a(paramCursor, "recommend_id"));
+    localDownloadInfo.K = paramCursor.getString(a(paramCursor, "source_from_server"));
+    localDownloadInfo.L = paramCursor.getString(a(paramCursor, "channel_id"));
+    localDownloadInfo.M = paramCursor.getString(a(paramCursor, "page_id"));
+    localDownloadInfo.N = paramCursor.getString(a(paramCursor, "module_id"));
+    localDownloadInfo.O = paramCursor.getString(a(paramCursor, "position_id"));
+    localDownloadInfo.R = paramCursor.getString(a(paramCursor, "process_flag_id"));
+    localDownloadInfo.S = paramCursor.getString(a(paramCursor, "unique_id"));
+    localDownloadInfo.T = paramCursor.getString(a(paramCursor, "ext_param_id"));
     return localDownloadInfo;
   }
   
@@ -110,7 +110,7 @@ public class DownloadInfoDB
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 109	com/tencent/open/appstore/db/DownloadInfoDB:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1: getfield 112	com/tencent/open/appstore/db/DownloadInfoDB:c	Ljava/lang/Object;
     //   4: astore 8
     //   6: aload 8
     //   8: monitorenter
@@ -121,17 +121,17 @@ public class DownloadInfoDB
     //   15: aconst_null
     //   16: astore 4
     //   18: aload_0
-    //   19: invokevirtual 265	com/tencent/open/appstore/db/DownloadInfoDB:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   19: invokevirtual 277	com/tencent/open/appstore/db/DownloadInfoDB:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   22: astore_3
     //   23: aload_3
-    //   24: ldc_w 267
-    //   27: getstatic 93	com/tencent/open/appstore/db/DownloadInfoDB:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   24: ldc_w 279
+    //   27: getstatic 96	com/tencent/open/appstore/db/DownloadInfoDB:a	[Ljava/lang/String;
     //   30: aload_1
     //   31: aload_2
     //   32: aconst_null
     //   33: aconst_null
     //   34: aconst_null
-    //   35: invokevirtual 273	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   35: invokevirtual 285	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   38: astore 5
     //   40: aload 4
     //   42: astore_1
@@ -140,14 +140,14 @@ public class DownloadInfoDB
     //   46: aload 5
     //   48: astore_2
     //   49: aload 5
-    //   51: invokeinterface 277 1 0
+    //   51: invokeinterface 289 1 0
     //   56: ifle +30 -> 86
     //   59: aload_3
     //   60: astore 4
     //   62: aload 5
     //   64: astore_2
     //   65: aload 5
-    //   67: invokeinterface 281 1 0
+    //   67: invokeinterface 293 1 0
     //   72: pop
     //   73: aload_3
     //   74: astore 4
@@ -155,15 +155,15 @@ public class DownloadInfoDB
     //   78: astore_2
     //   79: aload_0
     //   80: aload 5
-    //   82: invokespecial 283	com/tencent/open/appstore/db/DownloadInfoDB:a	(Landroid/database/Cursor;)Lcom/tencent/open/downloadnew/DownloadInfo;
+    //   82: invokespecial 295	com/tencent/open/appstore/db/DownloadInfoDB:a	(Landroid/database/Cursor;)Lcom/tencent/open/downloadnew/DownloadInfo;
     //   85: astore_1
     //   86: aload 5
     //   88: ifnull +127 -> 215
     //   91: aload 5
-    //   93: invokeinterface 286 1 0
+    //   93: invokeinterface 298 1 0
     //   98: goto +117 -> 215
     //   101: aload_3
-    //   102: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
+    //   102: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
     //   105: aload_1
     //   106: astore_2
     //   107: goto +69 -> 176
@@ -196,14 +196,14 @@ public class DownloadInfoDB
     //   148: astore 4
     //   150: aload_1
     //   151: astore_2
-    //   152: ldc_w 289
-    //   155: ldc_w 291
+    //   152: ldc_w 301
+    //   155: ldc_w 303
     //   158: aload 5
-    //   160: invokestatic 296	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   160: invokestatic 308	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   163: aload_1
     //   164: ifnull +60 -> 224
     //   167: aload_1
-    //   168: invokeinterface 286 1 0
+    //   168: invokeinterface 298 1 0
     //   173: goto +51 -> 224
     //   176: aload 8
     //   178: monitorexit
@@ -212,12 +212,12 @@ public class DownloadInfoDB
     //   181: aload_2
     //   182: ifnull +12 -> 194
     //   185: aload_2
-    //   186: invokeinterface 286 1 0
+    //   186: invokeinterface 298 1 0
     //   191: goto +3 -> 194
     //   194: aload_3
     //   195: ifnull +7 -> 202
     //   198: aload_3
-    //   199: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
+    //   199: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
     //   202: aload_1
     //   203: athrow
     //   204: aload 8
@@ -280,28 +280,28 @@ public class DownloadInfoDB
     //   204	207	244	finally
   }
   
-  private String a()
+  private void a(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Long == 0L)
+    if (paramInt1 != paramInt2)
     {
-      this.jdField_a_of_type_Long = CommonDataAdapter.a().a();
-      if (this.jdField_a_of_type_Long == 0L) {
-        LogUtility.e("DownloadInfoDB", "getUin() is empty!");
-      }
+      paramSQLiteDatabase.beginTransaction();
+      paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS download_info;");
+      paramSQLiteDatabase.setTransactionSuccessful();
+      paramSQLiteDatabase.endTransaction();
+      onCreate(paramSQLiteDatabase);
     }
-    return String.valueOf(this.jdField_a_of_type_Long);
   }
   
   /* Error */
-  private List<DownloadInfo> a(String paramString, String[] paramArrayOfString)
+  private List<DownloadInfo> b(String paramString, String[] paramArrayOfString)
   {
     // Byte code:
-    //   0: new 312	java/util/ArrayList
+    //   0: new 331	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 313	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 332	java/util/ArrayList:<init>	()V
     //   7: astore 10
     //   9: aload_0
-    //   10: getfield 109	com/tencent/open/appstore/db/DownloadInfoDB:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   10: getfield 112	com/tencent/open/appstore/db/DownloadInfoDB:c	Ljava/lang/Object;
     //   13: astore 9
     //   15: aload 9
     //   17: monitorenter
@@ -314,7 +314,7 @@ public class DownloadInfoDB
     //   27: aconst_null
     //   28: astore 6
     //   30: aload_0
-    //   31: invokevirtual 265	com/tencent/open/appstore/db/DownloadInfoDB:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   31: invokevirtual 277	com/tencent/open/appstore/db/DownloadInfoDB:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   34: astore 5
     //   36: aload 6
     //   38: astore 4
@@ -323,14 +323,14 @@ public class DownloadInfoDB
     //   44: aload 8
     //   46: astore 7
     //   48: aload 5
-    //   50: ldc_w 267
-    //   53: getstatic 93	com/tencent/open/appstore/db/DownloadInfoDB:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   50: ldc_w 279
+    //   53: getstatic 96	com/tencent/open/appstore/db/DownloadInfoDB:a	[Ljava/lang/String;
     //   56: aload_1
     //   57: aload_2
     //   58: aconst_null
     //   59: aconst_null
     //   60: aconst_null
-    //   61: invokevirtual 273	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   61: invokevirtual 285	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   64: astore_1
     //   65: aload_1
     //   66: astore 4
@@ -339,7 +339,7 @@ public class DownloadInfoDB
     //   72: aload_1
     //   73: astore 7
     //   75: aload_1
-    //   76: invokeinterface 277 1 0
+    //   76: invokeinterface 289 1 0
     //   81: ifle +64 -> 145
     //   84: aload_1
     //   85: astore 4
@@ -348,7 +348,7 @@ public class DownloadInfoDB
     //   91: aload_1
     //   92: astore 7
     //   94: aload_1
-    //   95: invokeinterface 281 1 0
+    //   95: invokeinterface 293 1 0
     //   100: pop
     //   101: aload_1
     //   102: astore 4
@@ -359,8 +359,8 @@ public class DownloadInfoDB
     //   111: aload 10
     //   113: aload_0
     //   114: aload_1
-    //   115: invokespecial 283	com/tencent/open/appstore/db/DownloadInfoDB:a	(Landroid/database/Cursor;)Lcom/tencent/open/downloadnew/DownloadInfo;
-    //   118: invokeinterface 319 2 0
+    //   115: invokespecial 295	com/tencent/open/appstore/db/DownloadInfoDB:a	(Landroid/database/Cursor;)Lcom/tencent/open/downloadnew/DownloadInfo;
+    //   118: invokeinterface 338 2 0
     //   123: pop
     //   124: aload_1
     //   125: astore 4
@@ -369,17 +369,17 @@ public class DownloadInfoDB
     //   131: aload_1
     //   132: astore 7
     //   134: aload_1
-    //   135: invokeinterface 322 1 0
+    //   135: invokeinterface 341 1 0
     //   140: istore_3
     //   141: iload_3
     //   142: ifne -41 -> 101
     //   145: aload_1
     //   146: ifnull +154 -> 300
     //   149: aload_1
-    //   150: invokeinterface 286 1 0
+    //   150: invokeinterface 298 1 0
     //   155: goto +145 -> 300
     //   158: aload_1
-    //   159: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
+    //   159: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
     //   162: goto +56 -> 218
     //   165: astore_1
     //   166: goto +96 -> 262
@@ -398,45 +398,45 @@ public class DownloadInfoDB
     //   188: astore 4
     //   190: aload_1
     //   191: astore 6
-    //   193: ldc_w 289
-    //   196: ldc_w 324
+    //   193: ldc_w 301
+    //   196: ldc_w 343
     //   199: aload_2
-    //   200: invokestatic 296	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   200: invokestatic 308	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   203: aload 7
     //   205: ifnull +106 -> 311
     //   208: aload 7
-    //   210: invokeinterface 286 1 0
+    //   210: invokeinterface 298 1 0
     //   215: goto +96 -> 311
     //   218: aload 9
     //   220: monitorexit
-    //   221: new 326	java/lang/StringBuilder
+    //   221: new 345	java/lang/StringBuilder
     //   224: dup
-    //   225: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   225: invokespecial 346	java/lang/StringBuilder:<init>	()V
     //   228: astore_1
     //   229: aload_1
-    //   230: ldc_w 329
-    //   233: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: ldc_w 348
+    //   233: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   236: pop
     //   237: aload_1
     //   238: aload 10
-    //   240: invokeinterface 336 1 0
-    //   245: invokevirtual 339	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   240: invokeinterface 355 1 0
+    //   245: invokevirtual 358	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   248: pop
-    //   249: ldc_w 289
+    //   249: ldc_w 301
     //   252: aload_1
-    //   253: invokevirtual 342	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   256: invokestatic 344	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   253: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   256: invokestatic 365	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   259: aload 10
     //   261: areturn
     //   262: aload 4
     //   264: ifnull +13 -> 277
     //   267: aload 4
-    //   269: invokeinterface 286 1 0
+    //   269: invokeinterface 298 1 0
     //   274: goto +3 -> 277
     //   277: aload 6
     //   279: ifnull +8 -> 287
     //   282: aload 6
-    //   284: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
+    //   284: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
     //   287: aload_1
     //   288: athrow
     //   289: aload 9
@@ -493,52 +493,488 @@ public class DownloadInfoDB
     //   289	292	318	finally
   }
   
-  private void a()
+  private String c()
   {
-    if (this.jdField_a_of_type_Long == 0L)
+    if (this.d == 0L)
     {
-      this.jdField_a_of_type_Long = CommonDataAdapter.a().a();
-      if (this.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Long = CommonDataAdapter.a().b();
+      this.d = CommonDataAdapter.a().c();
+      if (this.d == 0L) {
+        LogUtility.e("DownloadInfoDB", "getUin() is empty!");
+      }
+    }
+    return String.valueOf(this.d);
+  }
+  
+  private void d()
+  {
+    if (this.d == 0L)
+    {
+      this.d = CommonDataAdapter.a().c();
+      if (this.d == 0L) {
+        this.d = CommonDataAdapter.a().d();
       }
     }
   }
   
-  private void a(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  public List<DownloadInfo> a(String paramString)
   {
-    if (paramInt1 != paramInt2)
-    {
-      paramSQLiteDatabase.beginTransaction();
-      paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS download_info;");
-      paramSQLiteDatabase.setTransactionSuccessful();
-      paramSQLiteDatabase.endTransaction();
-      onCreate(paramSQLiteDatabase);
-    }
+    return b("package_name = ?", new String[] { paramString });
   }
   
-  public DownloadInfo a(String paramString)
+  /* Error */
+  public void a(DownloadInfo paramDownloadInfo, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 112	com/tencent/open/appstore/db/DownloadInfoDB:c	Ljava/lang/Object;
+    //   4: astore 9
+    //   6: aload 9
+    //   8: monitorenter
+    //   9: aconst_null
+    //   10: astore 8
+    //   12: aconst_null
+    //   13: astore 6
+    //   15: aload_0
+    //   16: invokevirtual 390	com/tencent/open/appstore/db/DownloadInfoDB:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   19: astore 7
+    //   21: aload 7
+    //   23: invokevirtual 312	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   26: new 392	android/content/ContentValues
+    //   29: dup
+    //   30: invokespecial 393	android/content/ContentValues:<init>	()V
+    //   33: astore 6
+    //   35: aload 6
+    //   37: ldc 18
+    //   39: aload_1
+    //   40: getfield 153	com/tencent/open/downloadnew/DownloadInfo:b	Ljava/lang/String;
+    //   43: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: aload 6
+    //   48: ldc 20
+    //   50: aload_1
+    //   51: getfield 155	com/tencent/open/downloadnew/DownloadInfo:c	Ljava/lang/String;
+    //   54: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: aload 6
+    //   59: ldc 22
+    //   61: aload_1
+    //   62: getfield 157	com/tencent/open/downloadnew/DownloadInfo:d	Ljava/lang/String;
+    //   65: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   68: aload 6
+    //   70: ldc 24
+    //   72: aload_1
+    //   73: getfield 160	com/tencent/open/downloadnew/DownloadInfo:e	Ljava/lang/String;
+    //   76: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: aload 6
+    //   81: ldc 26
+    //   83: aload_1
+    //   84: getfield 163	com/tencent/open/downloadnew/DownloadInfo:f	Ljava/lang/String;
+    //   87: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   90: aload 6
+    //   92: ldc 28
+    //   94: aload_1
+    //   95: getfield 166	com/tencent/open/downloadnew/DownloadInfo:g	Ljava/lang/String;
+    //   98: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: aload 6
+    //   103: ldc 30
+    //   105: aload_0
+    //   106: invokespecial 398	com/tencent/open/appstore/db/DownloadInfoDB:c	()Ljava/lang/String;
+    //   109: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   112: aload 6
+    //   114: ldc 32
+    //   116: aload_1
+    //   117: getfield 173	com/tencent/open/downloadnew/DownloadInfo:i	J
+    //   120: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   123: invokevirtual 406	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   126: aload 6
+    //   128: ldc 34
+    //   130: aload_1
+    //   131: getfield 176	com/tencent/open/downloadnew/DownloadInfo:h	Ljava/lang/String;
+    //   134: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: aload 6
+    //   139: ldc 36
+    //   141: aload_1
+    //   142: getfield 179	com/tencent/open/downloadnew/DownloadInfo:k	Ljava/lang/String;
+    //   145: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   148: aload 6
+    //   150: ldc 38
+    //   152: aload_1
+    //   153: getfield 187	com/tencent/open/downloadnew/DownloadInfo:j	I
+    //   156: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   159: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   162: aload 6
+    //   164: ldc 40
+    //   166: aload_1
+    //   167: getfield 190	com/tencent/open/downloadnew/DownloadInfo:l	Ljava/lang/String;
+    //   170: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   173: aload 6
+    //   175: ldc 42
+    //   177: aload_1
+    //   178: getfield 193	com/tencent/open/downloadnew/DownloadInfo:m	Ljava/lang/String;
+    //   181: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: aload 6
+    //   186: ldc 44
+    //   188: aload_1
+    //   189: getfield 196	com/tencent/open/downloadnew/DownloadInfo:n	I
+    //   192: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   195: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   198: aload 6
+    //   200: ldc 46
+    //   202: aload_1
+    //   203: getfield 199	com/tencent/open/downloadnew/DownloadInfo:o	I
+    //   206: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   209: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   212: aload 6
+    //   214: ldc 48
+    //   216: aload_1
+    //   217: getfield 202	com/tencent/open/downloadnew/DownloadInfo:q	Ljava/lang/String;
+    //   220: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   223: aload 6
+    //   225: ldc 50
+    //   227: aload_1
+    //   228: getfield 205	com/tencent/open/downloadnew/DownloadInfo:r	Ljava/lang/String;
+    //   231: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   234: aload 6
+    //   236: ldc 52
+    //   238: aload_1
+    //   239: getfield 208	com/tencent/open/downloadnew/DownloadInfo:y	J
+    //   242: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   245: invokevirtual 406	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   248: aload_1
+    //   249: getfield 212	com/tencent/open/downloadnew/DownloadInfo:A	Z
+    //   252: ifeq +563 -> 815
+    //   255: iconst_1
+    //   256: istore_3
+    //   257: goto +3 -> 260
+    //   260: aload 6
+    //   262: ldc 54
+    //   264: iload_3
+    //   265: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   268: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   271: aload 6
+    //   273: ldc 56
+    //   275: aload_1
+    //   276: getfield 215	com/tencent/open/downloadnew/DownloadInfo:z	I
+    //   279: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   282: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   285: aload 6
+    //   287: ldc 58
+    //   289: aload_1
+    //   290: getfield 218	com/tencent/open/downloadnew/DownloadInfo:B	Ljava/lang/String;
+    //   293: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   296: aload 6
+    //   298: ldc 60
+    //   300: aload_1
+    //   301: getfield 221	com/tencent/open/downloadnew/DownloadInfo:C	I
+    //   304: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   307: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   310: aload_1
+    //   311: getfield 224	com/tencent/open/downloadnew/DownloadInfo:D	I
+    //   314: ifne +8 -> 322
+    //   317: iconst_1
+    //   318: istore_3
+    //   319: goto +8 -> 327
+    //   322: aload_1
+    //   323: getfield 224	com/tencent/open/downloadnew/DownloadInfo:D	I
+    //   326: istore_3
+    //   327: aload 6
+    //   329: ldc 62
+    //   331: iload_3
+    //   332: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   335: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   338: aload 6
+    //   340: ldc 64
+    //   342: aload_1
+    //   343: getfield 227	com/tencent/open/downloadnew/DownloadInfo:F	Ljava/lang/String;
+    //   346: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   349: aload_1
+    //   350: getfield 230	com/tencent/open/downloadnew/DownloadInfo:G	Z
+    //   353: ifeq +467 -> 820
+    //   356: iconst_1
+    //   357: istore_3
+    //   358: goto +3 -> 361
+    //   361: aload 6
+    //   363: ldc 66
+    //   365: iload_3
+    //   366: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   369: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   372: aload 6
+    //   374: ldc 68
+    //   376: aload_1
+    //   377: getfield 233	com/tencent/open/downloadnew/DownloadInfo:H	Ljava/lang/String;
+    //   380: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   383: aload 6
+    //   385: ldc 70
+    //   387: aload_1
+    //   388: getfield 235	com/tencent/open/downloadnew/DownloadInfo:I	J
+    //   391: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   394: invokevirtual 406	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   397: aload 6
+    //   399: ldc 72
+    //   401: aload_1
+    //   402: invokevirtual 416	com/tencent/open/downloadnew/DownloadInfo:a	()I
+    //   405: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   408: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   411: aload 6
+    //   413: ldc 74
+    //   415: aload_1
+    //   416: getfield 241	com/tencent/open/downloadnew/DownloadInfo:t	I
+    //   419: invokestatic 411	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   422: invokevirtual 414	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   425: aload 6
+    //   427: ldc 76
+    //   429: aload_1
+    //   430: getfield 244	com/tencent/open/downloadnew/DownloadInfo:E	J
+    //   433: invokestatic 403	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   436: invokevirtual 406	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   439: aload 6
+    //   441: ldc 78
+    //   443: aload_1
+    //   444: getfield 246	com/tencent/open/downloadnew/DownloadInfo:J	Ljava/lang/String;
+    //   447: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   450: aload 6
+    //   452: ldc 80
+    //   454: aload_1
+    //   455: getfield 249	com/tencent/open/downloadnew/DownloadInfo:K	Ljava/lang/String;
+    //   458: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   461: aload 6
+    //   463: ldc 82
+    //   465: aload_1
+    //   466: getfield 252	com/tencent/open/downloadnew/DownloadInfo:L	Ljava/lang/String;
+    //   469: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   472: aload 6
+    //   474: ldc 84
+    //   476: aload_1
+    //   477: getfield 255	com/tencent/open/downloadnew/DownloadInfo:M	Ljava/lang/String;
+    //   480: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   483: aload 6
+    //   485: ldc 86
+    //   487: aload_1
+    //   488: getfield 258	com/tencent/open/downloadnew/DownloadInfo:N	Ljava/lang/String;
+    //   491: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   494: aload 6
+    //   496: ldc 88
+    //   498: aload_1
+    //   499: getfield 261	com/tencent/open/downloadnew/DownloadInfo:O	Ljava/lang/String;
+    //   502: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   505: iload_2
+    //   506: ifeq +14 -> 520
+    //   509: aload 6
+    //   511: ldc 90
+    //   513: aload_1
+    //   514: getfield 264	com/tencent/open/downloadnew/DownloadInfo:R	Ljava/lang/String;
+    //   517: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   520: aload 6
+    //   522: ldc 92
+    //   524: aload_1
+    //   525: getfield 267	com/tencent/open/downloadnew/DownloadInfo:S	Ljava/lang/String;
+    //   528: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   531: aload 6
+    //   533: ldc 94
+    //   535: aload_1
+    //   536: getfield 270	com/tencent/open/downloadnew/DownloadInfo:T	Ljava/lang/String;
+    //   539: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   542: aload 7
+    //   544: ldc_w 279
+    //   547: aload 6
+    //   549: ldc_w 418
+    //   552: iconst_1
+    //   553: anewarray 16	java/lang/String
+    //   556: dup
+    //   557: iconst_0
+    //   558: aload_1
+    //   559: getfield 153	com/tencent/open/downloadnew/DownloadInfo:b	Ljava/lang/String;
+    //   562: aastore
+    //   563: invokevirtual 422	android/database/sqlite/SQLiteDatabase:update	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   566: istore_3
+    //   567: new 345	java/lang/StringBuilder
+    //   570: dup
+    //   571: invokespecial 346	java/lang/StringBuilder:<init>	()V
+    //   574: astore 8
+    //   576: aload 8
+    //   578: ldc_w 424
+    //   581: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   584: pop
+    //   585: aload 8
+    //   587: iload_3
+    //   588: invokevirtual 358	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   591: pop
+    //   592: ldc_w 301
+    //   595: aload 8
+    //   597: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   600: invokestatic 426	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   603: iload_3
+    //   604: ifne +60 -> 664
+    //   607: aload 6
+    //   609: ldc 90
+    //   611: aload_1
+    //   612: getfield 264	com/tencent/open/downloadnew/DownloadInfo:R	Ljava/lang/String;
+    //   615: invokevirtual 396	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   618: aload 7
+    //   620: ldc_w 279
+    //   623: aconst_null
+    //   624: aload 6
+    //   626: invokevirtual 430	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   629: lstore 4
+    //   631: new 345	java/lang/StringBuilder
+    //   634: dup
+    //   635: invokespecial 346	java/lang/StringBuilder:<init>	()V
+    //   638: astore_1
+    //   639: aload_1
+    //   640: ldc_w 432
+    //   643: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   646: pop
+    //   647: aload_1
+    //   648: lload 4
+    //   650: invokevirtual 435	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   653: pop
+    //   654: ldc_w 301
+    //   657: aload_1
+    //   658: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   661: invokestatic 426	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   664: aload 7
+    //   666: invokevirtual 321	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   669: aload 7
+    //   671: ifnull +92 -> 763
+    //   674: aload 7
+    //   676: invokevirtual 324	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   679: aload 7
+    //   681: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
+    //   684: goto +79 -> 763
+    //   687: astore_1
+    //   688: ldc_w 301
+    //   691: ldc_w 437
+    //   694: aload_1
+    //   695: invokestatic 308	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   698: goto +65 -> 763
+    //   701: astore_1
+    //   702: goto +65 -> 767
+    //   705: astore 6
+    //   707: aload 7
+    //   709: astore_1
+    //   710: aload 6
+    //   712: astore 7
+    //   714: goto +16 -> 730
+    //   717: astore_1
+    //   718: aload 6
+    //   720: astore 7
+    //   722: goto +45 -> 767
+    //   725: astore 7
+    //   727: aload 8
+    //   729: astore_1
+    //   730: aload_1
+    //   731: astore 6
+    //   733: ldc_w 301
+    //   736: ldc_w 437
+    //   739: aload 7
+    //   741: invokestatic 308	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   744: aload_1
+    //   745: ifnull +18 -> 763
+    //   748: aload_1
+    //   749: invokevirtual 324	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   752: aload_1
+    //   753: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
+    //   756: goto +7 -> 763
+    //   759: astore_1
+    //   760: goto -72 -> 688
+    //   763: aload 9
+    //   765: monitorexit
+    //   766: return
+    //   767: aload 7
+    //   769: ifnull +33 -> 802
+    //   772: aload 7
+    //   774: invokevirtual 324	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   777: aload 7
+    //   779: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
+    //   782: goto +20 -> 802
+    //   785: astore_1
+    //   786: goto +18 -> 804
+    //   789: astore 6
+    //   791: ldc_w 301
+    //   794: ldc_w 437
+    //   797: aload 6
+    //   799: invokestatic 308	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   802: aload_1
+    //   803: athrow
+    //   804: aload 9
+    //   806: monitorexit
+    //   807: goto +5 -> 812
+    //   810: aload_1
+    //   811: athrow
+    //   812: goto -2 -> 810
+    //   815: iconst_0
+    //   816: istore_3
+    //   817: goto -557 -> 260
+    //   820: iconst_0
+    //   821: istore_3
+    //   822: goto -461 -> 361
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	825	0	this	DownloadInfoDB
+    //   0	825	1	paramDownloadInfo	DownloadInfo
+    //   0	825	2	paramBoolean	boolean
+    //   256	566	3	i	int
+    //   629	20	4	l	long
+    //   13	612	6	localContentValues	android.content.ContentValues
+    //   705	14	6	localException1	java.lang.Exception
+    //   731	1	6	localDownloadInfo	DownloadInfo
+    //   789	9	6	localException2	java.lang.Exception
+    //   19	702	7	localObject1	Object
+    //   725	53	7	localException3	java.lang.Exception
+    //   10	718	8	localStringBuilder	StringBuilder
+    //   4	801	9	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   674	684	687	java/lang/Exception
+    //   21	255	701	finally
+    //   260	317	701	finally
+    //   322	327	701	finally
+    //   327	356	701	finally
+    //   361	505	701	finally
+    //   509	520	701	finally
+    //   520	603	701	finally
+    //   607	664	701	finally
+    //   664	669	701	finally
+    //   21	255	705	java/lang/Exception
+    //   260	317	705	java/lang/Exception
+    //   322	327	705	java/lang/Exception
+    //   327	356	705	java/lang/Exception
+    //   361	505	705	java/lang/Exception
+    //   509	520	705	java/lang/Exception
+    //   520	603	705	java/lang/Exception
+    //   607	664	705	java/lang/Exception
+    //   664	669	705	java/lang/Exception
+    //   15	21	717	finally
+    //   733	744	717	finally
+    //   15	21	725	java/lang/Exception
+    //   748	756	759	java/lang/Exception
+    //   674	684	785	finally
+    //   688	698	785	finally
+    //   748	756	785	finally
+    //   763	766	785	finally
+    //   772	782	785	finally
+    //   791	802	785	finally
+    //   802	804	785	finally
+    //   804	807	785	finally
+    //   772	782	789	java/lang/Exception
+  }
+  
+  public DownloadInfo b(String paramString)
   {
     return a("ticket = ?", new String[] { paramString });
   }
   
-  public List<DownloadInfo> a(String paramString)
-  {
-    return a("package_name = ?", new String[] { paramString });
-  }
-  
   /* Error */
-  public java.util.concurrent.ConcurrentHashMap<String, DownloadInfo> a()
+  public java.util.concurrent.ConcurrentHashMap<String, DownloadInfo> b()
   {
     // Byte code:
-    //   0: ldc_w 289
-    //   3: ldc_w 382
-    //   6: invokestatic 384	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: new 386	java/util/concurrent/ConcurrentHashMap
+    //   0: ldc_w 301
+    //   3: ldc_w 443
+    //   6: invokestatic 445	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: new 447	java/util/concurrent/ConcurrentHashMap
     //   12: dup
-    //   13: invokespecial 387	java/util/concurrent/ConcurrentHashMap:<init>	()V
+    //   13: invokespecial 448	java/util/concurrent/ConcurrentHashMap:<init>	()V
     //   16: astore 8
     //   18: aload_0
-    //   19: getfield 109	com/tencent/open/appstore/db/DownloadInfoDB:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   19: getfield 112	com/tencent/open/appstore/db/DownloadInfoDB:c	Ljava/lang/Object;
     //   22: astore 7
     //   24: aload 7
     //   26: monitorenter
@@ -551,7 +987,7 @@ public class DownloadInfoDB
     //   35: aconst_null
     //   36: astore 4
     //   38: aload_0
-    //   39: invokevirtual 265	com/tencent/open/appstore/db/DownloadInfoDB:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   39: invokevirtual 277	com/tencent/open/appstore/db/DownloadInfoDB:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   42: astore_3
     //   43: aload 4
     //   45: astore_2
@@ -560,14 +996,14 @@ public class DownloadInfoDB
     //   49: aload 6
     //   51: astore 5
     //   53: aload_3
-    //   54: ldc_w 267
-    //   57: getstatic 93	com/tencent/open/appstore/db/DownloadInfoDB:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   54: ldc_w 279
+    //   57: getstatic 96	com/tencent/open/appstore/db/DownloadInfoDB:a	[Ljava/lang/String;
     //   60: aconst_null
     //   61: aconst_null
     //   62: aconst_null
     //   63: aconst_null
     //   64: aconst_null
-    //   65: invokevirtual 273	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   65: invokevirtual 285	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   68: astore 6
     //   70: aload 6
     //   72: astore_2
@@ -576,7 +1012,7 @@ public class DownloadInfoDB
     //   76: aload 6
     //   78: astore 5
     //   80: aload 6
-    //   82: invokeinterface 277 1 0
+    //   82: invokeinterface 289 1 0
     //   87: ifle +264 -> 351
     //   90: aload 6
     //   92: astore_2
@@ -585,7 +1021,7 @@ public class DownloadInfoDB
     //   96: aload 6
     //   98: astore 5
     //   100: aload 6
-    //   102: invokeinterface 281 1 0
+    //   102: invokeinterface 293 1 0
     //   107: pop
     //   108: aload 6
     //   110: astore_2
@@ -595,9 +1031,9 @@ public class DownloadInfoDB
     //   116: astore 5
     //   118: aload 6
     //   120: aload 6
-    //   122: ldc 15
-    //   124: invokestatic 143	com/tencent/open/appstore/db/DownloadInfoDB:a	(Landroid/database/Cursor;Ljava/lang/String;)I
-    //   127: invokeinterface 147 2 0
+    //   122: ldc 18
+    //   124: invokestatic 146	com/tencent/open/appstore/db/DownloadInfoDB:a	(Landroid/database/Cursor;Ljava/lang/String;)I
+    //   127: invokeinterface 150 2 0
     //   132: astore 9
     //   134: aload 6
     //   136: astore_2
@@ -605,9 +1041,9 @@ public class DownloadInfoDB
     //   138: astore 4
     //   140: aload 6
     //   142: astore 5
-    //   144: new 326	java/lang/StringBuilder
+    //   144: new 345	java/lang/StringBuilder
     //   147: dup
-    //   148: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   148: invokespecial 346	java/lang/StringBuilder:<init>	()V
     //   151: astore 10
     //   153: aload 6
     //   155: astore_2
@@ -616,8 +1052,8 @@ public class DownloadInfoDB
     //   159: aload 6
     //   161: astore 5
     //   163: aload 10
-    //   165: ldc_w 389
-    //   168: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: ldc_w 450
+    //   168: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: pop
     //   172: aload 6
     //   174: astore_2
@@ -627,7 +1063,7 @@ public class DownloadInfoDB
     //   180: astore 5
     //   182: aload 10
     //   184: aload 9
-    //   186: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   189: pop
     //   190: aload 6
     //   192: astore_2
@@ -635,10 +1071,10 @@ public class DownloadInfoDB
     //   194: astore 4
     //   196: aload 6
     //   198: astore 5
-    //   200: ldc_w 289
+    //   200: ldc_w 301
     //   203: aload 10
-    //   205: invokevirtual 342	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   208: invokestatic 384	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   205: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   208: invokestatic 445	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   211: aload 6
     //   213: astore_2
     //   214: aload_3
@@ -647,7 +1083,7 @@ public class DownloadInfoDB
     //   219: astore 5
     //   221: aload_0
     //   222: aload 6
-    //   224: invokespecial 283	com/tencent/open/appstore/db/DownloadInfoDB:a	(Landroid/database/Cursor;)Lcom/tencent/open/downloadnew/DownloadInfo;
+    //   224: invokespecial 295	com/tencent/open/appstore/db/DownloadInfoDB:a	(Landroid/database/Cursor;)Lcom/tencent/open/downloadnew/DownloadInfo;
     //   227: astore 10
     //   229: aload 6
     //   231: astore_2
@@ -655,9 +1091,9 @@ public class DownloadInfoDB
     //   233: astore 4
     //   235: aload 6
     //   237: astore 5
-    //   239: new 326	java/lang/StringBuilder
+    //   239: new 345	java/lang/StringBuilder
     //   242: dup
-    //   243: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   243: invokespecial 346	java/lang/StringBuilder:<init>	()V
     //   246: astore 11
     //   248: aload 6
     //   250: astore_2
@@ -666,8 +1102,8 @@ public class DownloadInfoDB
     //   254: aload 6
     //   256: astore 5
     //   258: aload 11
-    //   260: ldc_w 391
-    //   263: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   260: ldc_w 452
+    //   263: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   266: pop
     //   267: aload 6
     //   269: astore_2
@@ -677,8 +1113,8 @@ public class DownloadInfoDB
     //   275: astore 5
     //   277: aload 11
     //   279: aload 10
-    //   281: invokevirtual 392	com/tencent/open/downloadnew/DownloadInfo:toString	()Ljava/lang/String;
-    //   284: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: invokevirtual 453	com/tencent/open/downloadnew/DownloadInfo:toString	()Ljava/lang/String;
+    //   284: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: pop
     //   288: aload 6
     //   290: astore_2
@@ -686,10 +1122,10 @@ public class DownloadInfoDB
     //   292: astore 4
     //   294: aload 6
     //   296: astore 5
-    //   298: ldc_w 289
+    //   298: ldc_w 301
     //   301: aload 11
-    //   303: invokevirtual 342	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   306: invokestatic 384	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   303: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   306: invokestatic 445	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   309: aload 6
     //   311: astore_2
     //   312: aload_3
@@ -699,7 +1135,7 @@ public class DownloadInfoDB
     //   319: aload 8
     //   321: aload 9
     //   323: aload 10
-    //   325: invokevirtual 396	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   325: invokevirtual 456	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   328: pop
     //   329: aload 6
     //   331: astore_2
@@ -708,17 +1144,17 @@ public class DownloadInfoDB
     //   335: aload 6
     //   337: astore 5
     //   339: aload 6
-    //   341: invokeinterface 322 1 0
+    //   341: invokeinterface 341 1 0
     //   346: istore_1
     //   347: iload_1
     //   348: ifne -240 -> 108
     //   351: aload 6
     //   353: ifnull +114 -> 467
     //   356: aload 6
-    //   358: invokeinterface 286 1 0
+    //   358: invokeinterface 298 1 0
     //   363: goto +104 -> 467
     //   366: aload_3
-    //   367: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
+    //   367: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
     //   370: goto +55 -> 425
     //   373: astore_3
     //   374: goto +57 -> 431
@@ -735,14 +1171,14 @@ public class DownloadInfoDB
     //   395: astore_2
     //   396: aload_3
     //   397: astore 4
-    //   399: ldc_w 289
-    //   402: ldc_w 398
+    //   399: ldc_w 301
+    //   402: ldc_w 458
     //   405: aload 6
-    //   407: invokestatic 296	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   407: invokestatic 308	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   410: aload 5
     //   412: ifnull +62 -> 474
     //   415: aload 5
-    //   417: invokeinterface 286 1 0
+    //   417: invokeinterface 298 1 0
     //   422: goto +52 -> 474
     //   425: aload 7
     //   427: monitorexit
@@ -751,12 +1187,12 @@ public class DownloadInfoDB
     //   431: aload_2
     //   432: ifnull +12 -> 444
     //   435: aload_2
-    //   436: invokeinterface 286 1 0
+    //   436: invokeinterface 298 1 0
     //   441: goto +3 -> 444
     //   444: aload 4
     //   446: ifnull +8 -> 454
     //   449: aload 4
-    //   451: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
+    //   451: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
     //   454: aload_3
     //   455: athrow
     //   456: aload 7
@@ -839,454 +1275,18 @@ public class DownloadInfoDB
   }
   
   /* Error */
-  public void a(DownloadInfo paramDownloadInfo, boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 109	com/tencent/open/appstore/db/DownloadInfoDB:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   4: astore 9
-    //   6: aload 9
-    //   8: monitorenter
-    //   9: aconst_null
-    //   10: astore 8
-    //   12: aconst_null
-    //   13: astore 6
-    //   15: aload_0
-    //   16: invokevirtual 403	com/tencent/open/appstore/db/DownloadInfoDB:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   19: astore 7
-    //   21: aload 7
-    //   23: invokevirtual 352	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
-    //   26: new 405	android/content/ContentValues
-    //   29: dup
-    //   30: invokespecial 406	android/content/ContentValues:<init>	()V
-    //   33: astore 6
-    //   35: aload 6
-    //   37: ldc 15
-    //   39: aload_1
-    //   40: getfield 151	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   43: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   46: aload 6
-    //   48: ldc 17
-    //   50: aload_1
-    //   51: getfield 154	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   54: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   57: aload 6
-    //   59: ldc 19
-    //   61: aload_1
-    //   62: getfield 157	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   65: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   68: aload 6
-    //   70: ldc 21
-    //   72: aload_1
-    //   73: getfield 160	com/tencent/open/downloadnew/DownloadInfo:e	Ljava/lang/String;
-    //   76: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   79: aload 6
-    //   81: ldc 23
-    //   83: aload_1
-    //   84: getfield 163	com/tencent/open/downloadnew/DownloadInfo:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   87: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   90: aload 6
-    //   92: ldc 25
-    //   94: aload_1
-    //   95: getfield 166	com/tencent/open/downloadnew/DownloadInfo:g	Ljava/lang/String;
-    //   98: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   101: aload 6
-    //   103: ldc 27
-    //   105: aload_0
-    //   106: invokespecial 410	com/tencent/open/appstore/db/DownloadInfoDB:a	()Ljava/lang/String;
-    //   109: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   112: aload 6
-    //   114: ldc 29
-    //   116: aload_1
-    //   117: getfield 171	com/tencent/open/downloadnew/DownloadInfo:jdField_a_of_type_Long	J
-    //   120: invokestatic 415	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   123: invokevirtual 418	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   126: aload 6
-    //   128: ldc 31
-    //   130: aload_1
-    //   131: getfield 174	com/tencent/open/downloadnew/DownloadInfo:jdField_h_of_type_JavaLangString	Ljava/lang/String;
-    //   134: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   137: aload 6
-    //   139: ldc 33
-    //   141: aload_1
-    //   142: getfield 177	com/tencent/open/downloadnew/DownloadInfo:jdField_i_of_type_JavaLangString	Ljava/lang/String;
-    //   145: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   148: aload 6
-    //   150: ldc 35
-    //   152: aload_1
-    //   153: getfield 184	com/tencent/open/downloadnew/DownloadInfo:jdField_a_of_type_Int	I
-    //   156: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   159: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   162: aload 6
-    //   164: ldc 37
-    //   166: aload_1
-    //   167: getfield 187	com/tencent/open/downloadnew/DownloadInfo:jdField_j_of_type_JavaLangString	Ljava/lang/String;
-    //   170: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   173: aload 6
-    //   175: ldc 39
-    //   177: aload_1
-    //   178: getfield 190	com/tencent/open/downloadnew/DownloadInfo:k	Ljava/lang/String;
-    //   181: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   184: aload 6
-    //   186: ldc 41
-    //   188: aload_1
-    //   189: getfield 192	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_Int	I
-    //   192: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   195: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   198: aload 6
-    //   200: ldc 43
-    //   202: aload_1
-    //   203: getfield 194	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_Int	I
-    //   206: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   209: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   212: aload 6
-    //   214: ldc 45
-    //   216: aload_1
-    //   217: getfield 197	com/tencent/open/downloadnew/DownloadInfo:l	Ljava/lang/String;
-    //   220: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   223: aload 6
-    //   225: ldc 47
-    //   227: aload_1
-    //   228: getfield 200	com/tencent/open/downloadnew/DownloadInfo:m	Ljava/lang/String;
-    //   231: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   234: aload 6
-    //   236: ldc 49
-    //   238: aload_1
-    //   239: getfield 202	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_Long	J
-    //   242: invokestatic 415	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   245: invokevirtual 418	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   248: aload_1
-    //   249: getfield 205	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_Boolean	Z
-    //   252: ifeq +563 -> 815
-    //   255: iconst_1
-    //   256: istore_3
-    //   257: goto +3 -> 260
-    //   260: aload 6
-    //   262: ldc 51
-    //   264: iload_3
-    //   265: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   268: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   271: aload 6
-    //   273: ldc 53
-    //   275: aload_1
-    //   276: getfield 207	com/tencent/open/downloadnew/DownloadInfo:jdField_h_of_type_Int	I
-    //   279: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   282: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   285: aload 6
-    //   287: ldc 55
-    //   289: aload_1
-    //   290: getfield 210	com/tencent/open/downloadnew/DownloadInfo:n	Ljava/lang/String;
-    //   293: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   296: aload 6
-    //   298: ldc 57
-    //   300: aload_1
-    //   301: getfield 212	com/tencent/open/downloadnew/DownloadInfo:jdField_i_of_type_Int	I
-    //   304: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   307: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   310: aload_1
-    //   311: getfield 214	com/tencent/open/downloadnew/DownloadInfo:jdField_j_of_type_Int	I
-    //   314: ifne +8 -> 322
-    //   317: iconst_1
-    //   318: istore_3
-    //   319: goto +8 -> 327
-    //   322: aload_1
-    //   323: getfield 214	com/tencent/open/downloadnew/DownloadInfo:jdField_j_of_type_Int	I
-    //   326: istore_3
-    //   327: aload 6
-    //   329: ldc 59
-    //   331: iload_3
-    //   332: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   335: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   338: aload 6
-    //   340: ldc 61
-    //   342: aload_1
-    //   343: getfield 217	com/tencent/open/downloadnew/DownloadInfo:o	Ljava/lang/String;
-    //   346: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   349: aload_1
-    //   350: getfield 219	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_Boolean	Z
-    //   353: ifeq +467 -> 820
-    //   356: iconst_1
-    //   357: istore_3
-    //   358: goto +3 -> 361
-    //   361: aload 6
-    //   363: ldc 63
-    //   365: iload_3
-    //   366: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   369: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   372: aload 6
-    //   374: ldc 65
-    //   376: aload_1
-    //   377: getfield 222	com/tencent/open/downloadnew/DownloadInfo:p	Ljava/lang/String;
-    //   380: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   383: aload 6
-    //   385: ldc 67
-    //   387: aload_1
-    //   388: getfield 224	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_Long	J
-    //   391: invokestatic 415	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   394: invokevirtual 418	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   397: aload 6
-    //   399: ldc 69
-    //   401: aload_1
-    //   402: invokevirtual 428	com/tencent/open/downloadnew/DownloadInfo:a	()I
-    //   405: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   408: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   411: aload 6
-    //   413: ldc 71
-    //   415: aload_1
-    //   416: getfield 229	com/tencent/open/downloadnew/DownloadInfo:jdField_f_of_type_Int	I
-    //   419: invokestatic 423	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   422: invokevirtual 426	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   425: aload 6
-    //   427: ldc 73
-    //   429: aload_1
-    //   430: getfield 231	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_Long	J
-    //   433: invokestatic 415	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   436: invokevirtual 418	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   439: aload 6
-    //   441: ldc 75
-    //   443: aload_1
-    //   444: getfield 234	com/tencent/open/downloadnew/DownloadInfo:q	Ljava/lang/String;
-    //   447: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   450: aload 6
-    //   452: ldc 77
-    //   454: aload_1
-    //   455: getfield 237	com/tencent/open/downloadnew/DownloadInfo:r	Ljava/lang/String;
-    //   458: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   461: aload 6
-    //   463: ldc 79
-    //   465: aload_1
-    //   466: getfield 240	com/tencent/open/downloadnew/DownloadInfo:s	Ljava/lang/String;
-    //   469: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   472: aload 6
-    //   474: ldc 81
-    //   476: aload_1
-    //   477: getfield 243	com/tencent/open/downloadnew/DownloadInfo:t	Ljava/lang/String;
-    //   480: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   483: aload 6
-    //   485: ldc 83
-    //   487: aload_1
-    //   488: getfield 246	com/tencent/open/downloadnew/DownloadInfo:u	Ljava/lang/String;
-    //   491: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   494: aload 6
-    //   496: ldc 85
-    //   498: aload_1
-    //   499: getfield 249	com/tencent/open/downloadnew/DownloadInfo:v	Ljava/lang/String;
-    //   502: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   505: iload_2
-    //   506: ifeq +14 -> 520
-    //   509: aload 6
-    //   511: ldc 87
-    //   513: aload_1
-    //   514: getfield 252	com/tencent/open/downloadnew/DownloadInfo:w	Ljava/lang/String;
-    //   517: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   520: aload 6
-    //   522: ldc 89
-    //   524: aload_1
-    //   525: getfield 255	com/tencent/open/downloadnew/DownloadInfo:x	Ljava/lang/String;
-    //   528: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   531: aload 6
-    //   533: ldc 91
-    //   535: aload_1
-    //   536: getfield 258	com/tencent/open/downloadnew/DownloadInfo:y	Ljava/lang/String;
-    //   539: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   542: aload 7
-    //   544: ldc_w 267
-    //   547: aload 6
-    //   549: ldc_w 371
-    //   552: iconst_1
-    //   553: anewarray 13	java/lang/String
-    //   556: dup
-    //   557: iconst_0
-    //   558: aload_1
-    //   559: getfield 151	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   562: aastore
-    //   563: invokevirtual 432	android/database/sqlite/SQLiteDatabase:update	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   566: istore_3
-    //   567: new 326	java/lang/StringBuilder
-    //   570: dup
-    //   571: invokespecial 327	java/lang/StringBuilder:<init>	()V
-    //   574: astore 8
-    //   576: aload 8
-    //   578: ldc_w 434
-    //   581: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   584: pop
-    //   585: aload 8
-    //   587: iload_3
-    //   588: invokevirtual 339	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   591: pop
-    //   592: ldc_w 289
-    //   595: aload 8
-    //   597: invokevirtual 342	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   600: invokestatic 436	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   603: iload_3
-    //   604: ifne +60 -> 664
-    //   607: aload 6
-    //   609: ldc 87
-    //   611: aload_1
-    //   612: getfield 252	com/tencent/open/downloadnew/DownloadInfo:w	Ljava/lang/String;
-    //   615: invokevirtual 408	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   618: aload 7
-    //   620: ldc_w 267
-    //   623: aconst_null
-    //   624: aload 6
-    //   626: invokevirtual 440	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
-    //   629: lstore 4
-    //   631: new 326	java/lang/StringBuilder
-    //   634: dup
-    //   635: invokespecial 327	java/lang/StringBuilder:<init>	()V
-    //   638: astore_1
-    //   639: aload_1
-    //   640: ldc_w 442
-    //   643: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   646: pop
-    //   647: aload_1
-    //   648: lload 4
-    //   650: invokevirtual 445	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   653: pop
-    //   654: ldc_w 289
-    //   657: aload_1
-    //   658: invokevirtual 342	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   661: invokestatic 436	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   664: aload 7
-    //   666: invokevirtual 361	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   669: aload 7
-    //   671: ifnull +92 -> 763
-    //   674: aload 7
-    //   676: invokevirtual 364	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   679: aload 7
-    //   681: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
-    //   684: goto +79 -> 763
-    //   687: astore_1
-    //   688: ldc_w 289
-    //   691: ldc_w 447
-    //   694: aload_1
-    //   695: invokestatic 296	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   698: goto +65 -> 763
-    //   701: astore_1
-    //   702: goto +65 -> 767
-    //   705: astore 6
-    //   707: aload 7
-    //   709: astore_1
-    //   710: aload 6
-    //   712: astore 7
-    //   714: goto +16 -> 730
-    //   717: astore_1
-    //   718: aload 6
-    //   720: astore 7
-    //   722: goto +45 -> 767
-    //   725: astore 7
-    //   727: aload 8
-    //   729: astore_1
-    //   730: aload_1
-    //   731: astore 6
-    //   733: ldc_w 289
-    //   736: ldc_w 447
-    //   739: aload 7
-    //   741: invokestatic 296	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   744: aload_1
-    //   745: ifnull +18 -> 763
-    //   748: aload_1
-    //   749: invokevirtual 364	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   752: aload_1
-    //   753: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
-    //   756: goto +7 -> 763
-    //   759: astore_1
-    //   760: goto -72 -> 688
-    //   763: aload 9
-    //   765: monitorexit
-    //   766: return
-    //   767: aload 7
-    //   769: ifnull +33 -> 802
-    //   772: aload 7
-    //   774: invokevirtual 364	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   777: aload 7
-    //   779: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
-    //   782: goto +20 -> 802
-    //   785: astore_1
-    //   786: goto +18 -> 804
-    //   789: astore 6
-    //   791: ldc_w 289
-    //   794: ldc_w 447
-    //   797: aload 6
-    //   799: invokestatic 296	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   802: aload_1
-    //   803: athrow
-    //   804: aload 9
-    //   806: monitorexit
-    //   807: goto +5 -> 812
-    //   810: aload_1
-    //   811: athrow
-    //   812: goto -2 -> 810
-    //   815: iconst_0
-    //   816: istore_3
-    //   817: goto -557 -> 260
-    //   820: iconst_0
-    //   821: istore_3
-    //   822: goto -461 -> 361
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	825	0	this	DownloadInfoDB
-    //   0	825	1	paramDownloadInfo	DownloadInfo
-    //   0	825	2	paramBoolean	boolean
-    //   256	566	3	i	int
-    //   629	20	4	l	long
-    //   13	612	6	localContentValues	android.content.ContentValues
-    //   705	14	6	localException1	java.lang.Exception
-    //   731	1	6	localDownloadInfo	DownloadInfo
-    //   789	9	6	localException2	java.lang.Exception
-    //   19	702	7	localObject1	Object
-    //   725	53	7	localException3	java.lang.Exception
-    //   10	718	8	localStringBuilder	StringBuilder
-    //   4	801	9	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   674	684	687	java/lang/Exception
-    //   21	255	701	finally
-    //   260	317	701	finally
-    //   322	327	701	finally
-    //   327	356	701	finally
-    //   361	505	701	finally
-    //   509	520	701	finally
-    //   520	603	701	finally
-    //   607	664	701	finally
-    //   664	669	701	finally
-    //   21	255	705	java/lang/Exception
-    //   260	317	705	java/lang/Exception
-    //   322	327	705	java/lang/Exception
-    //   327	356	705	java/lang/Exception
-    //   361	505	705	java/lang/Exception
-    //   509	520	705	java/lang/Exception
-    //   520	603	705	java/lang/Exception
-    //   607	664	705	java/lang/Exception
-    //   664	669	705	java/lang/Exception
-    //   15	21	717	finally
-    //   733	744	717	finally
-    //   15	21	725	java/lang/Exception
-    //   748	756	759	java/lang/Exception
-    //   674	684	785	finally
-    //   688	698	785	finally
-    //   748	756	785	finally
-    //   763	766	785	finally
-    //   772	782	785	finally
-    //   791	802	785	finally
-    //   802	804	785	finally
-    //   804	807	785	finally
-    //   772	782	789	java/lang/Exception
-  }
-  
-  /* Error */
-  public void a(String paramString)
+  public void c(String paramString)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 118	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 121	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +13 -> 17
-    //   7: ldc_w 289
-    //   10: ldc_w 449
-    //   13: invokestatic 305	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7: ldc_w 301
+    //   10: ldc_w 461
+    //   13: invokestatic 374	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   16: return
     //   17: aload_0
-    //   18: getfield 109	com/tencent/open/appstore/db/DownloadInfoDB:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   18: getfield 112	com/tencent/open/appstore/db/DownloadInfoDB:c	Ljava/lang/Object;
     //   21: astore 5
     //   23: aload 5
     //   25: monitorenter
@@ -1295,23 +1295,23 @@ public class DownloadInfoDB
     //   28: aconst_null
     //   29: astore_3
     //   30: aload_0
-    //   31: invokevirtual 403	com/tencent/open/appstore/db/DownloadInfoDB:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   31: invokevirtual 390	com/tencent/open/appstore/db/DownloadInfoDB:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   34: astore 4
     //   36: aload 4
     //   38: astore_3
     //   39: aload 4
     //   41: astore_2
-    //   42: new 326	java/lang/StringBuilder
+    //   42: new 345	java/lang/StringBuilder
     //   45: dup
-    //   46: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   46: invokespecial 346	java/lang/StringBuilder:<init>	()V
     //   49: astore 6
     //   51: aload 4
     //   53: astore_3
     //   54: aload 4
     //   56: astore_2
     //   57: aload 6
-    //   59: ldc_w 451
-    //   62: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: ldc_w 463
+    //   62: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: pop
     //   66: aload 4
     //   68: astore_3
@@ -1319,53 +1319,53 @@ public class DownloadInfoDB
     //   71: astore_2
     //   72: aload 6
     //   74: iconst_1
-    //   75: anewarray 13	java/lang/String
+    //   75: anewarray 16	java/lang/String
     //   78: dup
     //   79: iconst_0
     //   80: aload_1
     //   81: aastore
-    //   82: invokestatic 456	java/util/Arrays:toString	([Ljava/lang/Object;)Ljava/lang/String;
-    //   85: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokestatic 468	java/util/Arrays:toString	([Ljava/lang/Object;)Ljava/lang/String;
+    //   85: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   88: pop
     //   89: aload 4
     //   91: astore_3
     //   92: aload 4
     //   94: astore_2
-    //   95: ldc_w 289
+    //   95: ldc_w 301
     //   98: aload 6
-    //   100: invokevirtual 342	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokestatic 384	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: invokestatic 445	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   106: aload 4
     //   108: astore_3
     //   109: aload 4
     //   111: astore_2
     //   112: aload 4
-    //   114: ldc_w 267
-    //   117: ldc_w 371
+    //   114: ldc_w 279
+    //   117: ldc_w 418
     //   120: iconst_1
-    //   121: anewarray 13	java/lang/String
+    //   121: anewarray 16	java/lang/String
     //   124: dup
     //   125: iconst_0
     //   126: aload_1
     //   127: aastore
-    //   128: invokevirtual 460	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   128: invokevirtual 472	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   131: pop
     //   132: aload 4
     //   134: ifnull +37 -> 171
     //   137: aload 4
     //   139: astore_2
     //   140: aload_2
-    //   141: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
+    //   141: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
     //   144: goto +27 -> 171
     //   147: astore_1
     //   148: goto +27 -> 175
     //   151: astore_1
     //   152: aload_2
     //   153: astore_3
-    //   154: ldc_w 289
-    //   157: ldc_w 462
+    //   154: ldc_w 301
+    //   157: ldc_w 474
     //   160: aload_1
-    //   161: invokestatic 296	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   161: invokestatic 308	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   164: aload_2
     //   165: ifnull +6 -> 171
     //   168: goto -28 -> 140
@@ -1375,7 +1375,7 @@ public class DownloadInfoDB
     //   175: aload_3
     //   176: ifnull +7 -> 183
     //   179: aload_3
-    //   180: invokevirtual 287	android/database/sqlite/SQLiteDatabase:close	()V
+    //   180: invokevirtual 299	android/database/sqlite/SQLiteDatabase:close	()V
     //   183: aload_1
     //   184: athrow
     //   185: astore_1
@@ -1445,7 +1445,7 @@ public class DownloadInfoDB
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.db.DownloadInfoDB
  * JD-Core Version:    0.7.0.1
  */

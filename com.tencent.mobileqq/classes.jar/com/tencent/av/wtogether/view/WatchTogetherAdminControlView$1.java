@@ -12,8 +12,8 @@ class WatchTogetherAdminControlView$1
   {
     if ((WatchTogetherAdminControlView.a(this.this$0) != 2) && ((WatchTogetherAdminControlView.a(this.this$0) != 1) || (WatchTogetherAdminControlView.b(this.this$0) != 2)) && (WatchTogetherAdminControlView.a(this.this$0) != 0))
     {
-      WatchTogetherAdminControlView.a(this.this$0).removeCallbacks(WatchTogetherAdminControlView.a(this.this$0));
-      WatchTogetherAdminControlView.a(this.this$0).postDelayed(WatchTogetherAdminControlView.a(this.this$0), WatchTogetherAdminControlView.c(this.this$0));
+      WatchTogetherAdminControlView.d(this.this$0).removeCallbacks(WatchTogetherAdminControlView.c(this.this$0));
+      WatchTogetherAdminControlView.d(this.this$0).postDelayed(WatchTogetherAdminControlView.c(this.this$0), WatchTogetherAdminControlView.e(this.this$0));
     }
     else
     {
@@ -27,7 +27,7 @@ class WatchTogetherAdminControlView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherAdminControlView.1
  * JD-Core Version:    0.7.0.1
  */

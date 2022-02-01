@@ -38,9 +38,9 @@ public class FastWebModuleUtils
     if ((paramJSONObject != null) && (paramModuleInfo != null)) {
       try
       {
-        paramModuleInfo.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("moduleType"));
-        paramModuleInfo.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-        int i = paramModuleInfo.jdField_a_of_type_Int;
+        paramModuleInfo.a = Integer.parseInt(paramJSONObject.getString("moduleType"));
+        paramModuleInfo.b = paramJSONObject;
+        int i = paramModuleInfo.a;
         return i;
       }
       catch (Exception paramJSONObject)
@@ -111,8 +111,8 @@ public class FastWebModuleUtils
       paramRspBody = paramRspBody.bytes_proteus_json_data.get().toStringUtf8();
       if (!TextUtils.isEmpty(paramRspBody))
       {
-        paramFastWebArticleInfo.jdField_a_of_type_AndroidUtilSparseArray.clear();
-        a(paramRspBody, paramFastWebArticleInfo.jdField_a_of_type_AndroidUtilSparseArray);
+        paramFastWebArticleInfo.F.clear();
+        a(paramRspBody, paramFastWebArticleInfo.F);
       }
     }
   }
@@ -146,7 +146,7 @@ public class FastWebModuleUtils
         }
       }
       if (paramFastWebArticleRichReqCallback != null) {
-        paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo.j);
+        paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo.q);
       }
     }
   }
@@ -155,13 +155,13 @@ public class FastWebModuleUtils
   {
     if (paramRspBody.msg_rsp_biu_count.has())
     {
-      paramFastWebArticleInfo.c = ((oidb_cmd0xb54.RspBiuCount)paramRspBody.msg_rsp_biu_count.get()).uint64_biu_count.get();
+      paramFastWebArticleInfo.e = ((oidb_cmd0xb54.RspBiuCount)paramRspBody.msg_rsp_biu_count.get()).uint64_biu_count.get();
       paramRspBody = new StringBuilder();
       paramRspBody.append("0xb54 resp biu count is : ");
-      paramRspBody.append(paramFastWebArticleInfo.c);
+      paramRspBody.append(paramFastWebArticleInfo.e);
       QLog.d("FastWebModuleUtils", 2, paramRspBody.toString());
       if (paramFastWebArticleRichReqCallback != null) {
-        paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo.c, paramString);
+        paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo.e, paramString);
       }
     }
   }
@@ -178,13 +178,13 @@ public class FastWebModuleUtils
         paramRspBody = (oidb_cmd0xb54.CoinInfo)paramRspBody.msg_coin_info.get();
         if (paramRspBody != null)
         {
-          paramFastWebArticleInfo.jdField_e_of_type_Int = RIJPBFieldUtils.a(paramRspBody.content_coin_num, 0);
-          paramFastWebArticleInfo.jdField_e_of_type_Boolean = RIJPBFieldUtils.a(paramRspBody.content_has_coin);
+          paramFastWebArticleInfo.M = RIJPBFieldUtils.a(paramRspBody.content_coin_num, 0);
+          paramFastWebArticleInfo.N = RIJPBFieldUtils.a(paramRspBody.content_has_coin);
           paramRspBody = new StringBuilder();
           paramRspBody.append("updateCoinInfo, coinNumber= ");
-          paramRspBody.append(paramFastWebArticleInfo.jdField_e_of_type_Int);
+          paramRspBody.append(paramFastWebArticleInfo.M);
           paramRspBody.append(" ,hasCoined=");
-          paramRspBody.append(paramFastWebArticleInfo.jdField_e_of_type_Boolean);
+          paramRspBody.append(paramFastWebArticleInfo.N);
           QLog.d("FastWebModuleUtils", 1, paramRspBody.toString());
         }
       }
@@ -211,14 +211,14 @@ public class FastWebModuleUtils
       {
         localObject = (oidb_cmd0xb54.SentimentEntityData)localArticleBusiness.msg_sentiment_entity_data.get();
         if ((((oidb_cmd0xb54.SentimentEntityData)localObject).bytes_data.has()) && (((oidb_cmd0xb54.SentimentEntityData)localObject).bytes_data.get() != null)) {
-          paramFastWebArticleInfo.m = ((oidb_cmd0xb54.SentimentEntityData)localObject).bytes_data.get().toStringUtf8();
+          paramFastWebArticleInfo.u = ((oidb_cmd0xb54.SentimentEntityData)localObject).bytes_data.get().toStringUtf8();
         }
       }
       if ((localArticleBusiness.msg_union_nlp_info.has()) && (localArticleBusiness.msg_union_nlp_info.get() != null))
       {
         localObject = (oidb_cmd0xb54.UnionNlpInfo)localArticleBusiness.msg_union_nlp_info.get();
         if ((((oidb_cmd0xb54.UnionNlpInfo)localObject).bytes_union_chann.has()) && (((oidb_cmd0xb54.UnionNlpInfo)localObject).bytes_union_chann.get() != null)) {
-          paramFastWebArticleInfo.n = ((oidb_cmd0xb54.UnionNlpInfo)localObject).bytes_union_chann.get().toStringUtf8();
+          paramFastWebArticleInfo.v = ((oidb_cmd0xb54.UnionNlpInfo)localObject).bytes_union_chann.get().toStringUtf8();
         }
       }
       if (paramFastWebArticleRichReqCallback != null) {
@@ -238,13 +238,13 @@ public class FastWebModuleUtils
   {
     if (paramRspBody.uint32_like_count.has())
     {
-      paramFastWebArticleInfo.jdField_a_of_type_Int = paramRspBody.uint32_like_count.get();
+      paramFastWebArticleInfo.f = paramRspBody.uint32_like_count.get();
       if (paramFastWebArticleRichReqCallback != null) {
-        paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo.jdField_a_of_type_Int, paramString);
+        paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo.f, paramString);
       }
       paramRspBody = new StringBuilder();
       paramRspBody.append("0xb54 resp like count is : ");
-      paramRspBody.append(paramFastWebArticleInfo.jdField_a_of_type_Int);
+      paramRspBody.append(paramFastWebArticleInfo.f);
       QLog.d("FastWebModuleUtils", 2, paramRspBody.toString());
     }
   }
@@ -258,9 +258,9 @@ public class FastWebModuleUtils
       if (i != 1) {
         bool = false;
       }
-      paramFastWebArticleInfo.jdField_a_of_type_Boolean = bool;
+      paramFastWebArticleInfo.h = bool;
       if (paramFastWebArticleRichReqCallback != null) {
-        paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo.jdField_a_of_type_Boolean, paramString);
+        paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo.h, paramString);
       }
       paramFastWebArticleInfo = new StringBuilder();
       paramFastWebArticleInfo.append("0xb54 resp isLiked : ");
@@ -283,7 +283,7 @@ public class FastWebModuleUtils
         {
           Object localObject = (oidb_cmd0xb54.Topic)paramRspBody.rpt_msg_topic.get(i);
           ArticleTopicInfo localArticleTopicInfo = new ArticleTopicInfo();
-          localArticleTopicInfo.c = ((oidb_cmd0xb54.Topic)localObject).str_rowkey.get();
+          localArticleTopicInfo.d = ((oidb_cmd0xb54.Topic)localObject).str_rowkey.get();
           localArticleTopicInfo.a = ((oidb_cmd0xb54.Topic)localObject).bytes_title.get().toStringUtf8();
           localArticleTopicInfo.b = ((oidb_cmd0xb54.Topic)localObject).bytes_url.get().toStringUtf8();
           localArrayList.add(localArticleTopicInfo);
@@ -291,7 +291,7 @@ public class FastWebModuleUtils
           ((StringBuilder)localObject).append("[handleTopicTag] topic[");
           ((StringBuilder)localObject).append(i);
           ((StringBuilder)localObject).append("], rowKey = ");
-          ((StringBuilder)localObject).append(localArticleTopicInfo.c);
+          ((StringBuilder)localObject).append(localArticleTopicInfo.d);
           ((StringBuilder)localObject).append(", title = ");
           ((StringBuilder)localObject).append(localArticleTopicInfo.a);
           ((StringBuilder)localObject).append(", jumpUrl = ");
@@ -299,7 +299,7 @@ public class FastWebModuleUtils
           QLog.i("FastWebModuleUtils", 1, ((StringBuilder)localObject).toString());
           i += 1;
         }
-        paramFastWebArticleInfo.b = localArrayList;
+        paramFastWebArticleInfo.I = localArrayList;
         if (paramFastWebArticleRichReqCallback != null) {
           paramFastWebArticleRichReqCallback.a(paramFastWebArticleInfo, paramString);
         }
@@ -313,16 +313,16 @@ public class FastWebModuleUtils
     {
       paramRspBody = (oidb_cmd0xb54.ShareNumItem)paramRspBody.msg_share_num.get();
       if (paramRspBody != null) {
-        paramFastWebArticleInfo.d = paramRspBody.uint64_num.get();
+        paramFastWebArticleInfo.g = paramRspBody.uint64_num.get();
       }
       if (paramFastWebArticleRichReqCallback != null) {
-        paramFastWebArticleRichReqCallback.b(paramFastWebArticleInfo.d, paramString);
+        paramFastWebArticleRichReqCallback.b(paramFastWebArticleInfo.g, paramString);
       }
       if (QLog.isColorLevel())
       {
         paramRspBody = new StringBuilder();
         paramRspBody.append("handleShareCount, shareCount= ");
-        paramRspBody.append(paramFastWebArticleInfo.d);
+        paramRspBody.append(paramFastWebArticleInfo.g);
         QLog.d("FastWebModuleUtils", 2, paramRspBody.toString());
       }
     }
@@ -330,7 +330,7 @@ public class FastWebModuleUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.fastweb.FastWebModuleUtils
  * JD-Core Version:    0.7.0.1
  */

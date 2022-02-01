@@ -9,7 +9,7 @@ class AEOldShortVideoResManager$1
   
   public void onNetMobile2None()
   {
-    AEOldShortVideoResManager.a(this.a);
+    AEOldShortVideoResManager.b(this.a);
   }
   
   public void onNetMobile2Wifi(String paramString) {}
@@ -22,12 +22,12 @@ class AEOldShortVideoResManager$1
   
   public void onNetWifi2None()
   {
-    AEOldShortVideoResManager.a(this.a);
+    AEOldShortVideoResManager.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResManager.1
  * JD-Core Version:    0.7.0.1
  */

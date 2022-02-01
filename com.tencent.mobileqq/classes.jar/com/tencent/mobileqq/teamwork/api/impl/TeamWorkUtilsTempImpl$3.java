@@ -10,12 +10,12 @@ class TeamWorkUtilsTempImpl$3
   
   public void run()
   {
-    this.this$0.tryProcessTDDocMessageRecord(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    this.this$0.tryProcessTDDocMessageRecord(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkUtilsTempImpl.3
  * JD-Core Version:    0.7.0.1
  */

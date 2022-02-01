@@ -25,7 +25,7 @@ public final class Base0xd1eHandler
     paramRptData.data_type.set(0);
     paramRptData = paramRptData.text_data;
     oidb_0xd1e.TextData localTextData = new oidb_0xd1e.TextData();
-    localTextData.content.set(paramCommentRptData.jdField_a_of_type_JavaLangString);
+    localTextData.content.set(paramCommentRptData.b);
     paramRptData.set((MessageMicro)localTextData);
   }
   
@@ -34,7 +34,7 @@ public final class Base0xd1eHandler
     paramRptData.data_type.set(3);
     paramRptData = paramRptData.herf_data;
     oidb_0xd1e.HerfData localHerfData = new oidb_0xd1e.HerfData();
-    localHerfData.content.set(paramCommentRptData.jdField_a_of_type_JavaLangString);
+    localHerfData.content.set(paramCommentRptData.b);
     paramRptData.set((MessageMicro)localHerfData);
   }
   
@@ -43,8 +43,8 @@ public final class Base0xd1eHandler
     paramRptData.data_type.set(1);
     paramRptData = paramRptData.at_data;
     oidb_0xd1e.AtData localAtData = new oidb_0xd1e.AtData();
-    localAtData.content.set(paramCommentRptData.jdField_a_of_type_JavaLangString);
-    localAtData.uid.set(paramCommentRptData.b);
+    localAtData.content.set(paramCommentRptData.b);
+    localAtData.uid.set(paramCommentRptData.c);
     paramRptData.set((MessageMicro)localAtData);
   }
   
@@ -70,7 +70,7 @@ public final class Base0xd1eHandler
   {
     Intrinsics.checkParameterIsNotNull(paramCommentRptData, "commentRptData");
     oidb_0xd1e.RptData localRptData = new oidb_0xd1e.RptData();
-    int i = paramCommentRptData.jdField_a_of_type_Int;
+    int i = paramCommentRptData.a;
     if (i != 0)
     {
       if (i != 1)
@@ -90,7 +90,7 @@ public final class Base0xd1eHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.handler.Base0xd1eHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -2,77 +2,82 @@ package com.tencent.qqmini.sdk.plugins;
 
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
-import com.tencent.qqmini.sdk.core.utils.FileUtils;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class FileJsPlugin$11
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$11(FileJsPlugin paramFileJsPlugin, String paramString1, RequestEvent paramRequestEvent, long paramLong, String paramString2) {}
+  FileJsPlugin$11(FileJsPlugin paramFileJsPlugin, String paramString, JSONObject paramJSONObject, RequestEvent paramRequestEvent, long paramLong) {}
   
   public String run()
   {
-    long l1 = System.currentTimeMillis();
-    if (TextUtils.isEmpty(this.val$oldPath))
+    long l = System.currentTimeMillis();
+    Object localObject1;
+    Object localObject2;
+    JSONArray localJSONArray;
+    if ((!TextUtils.isEmpty(this.val$dirPath)) && (!this.val$reqParamObj.isNull("dirPath")))
     {
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$oldPath);
+      localObject1 = ((MiniAppFileManager)FileJsPlugin.access$4600(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$dirPath);
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
+        localObject1 = this.this$0;
+        localObject2 = this.val$req;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("no such file or directory, open ");
+        ((StringBuilder)localObject3).append(this.val$dirPath);
+        return FileJsPlugin.access$1000((FileJsPlugin)localObject1, (RequestEvent)localObject2, null, ((StringBuilder)localObject3).toString());
+      }
+      if (!new File((String)localObject1).isDirectory())
+      {
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, (String)localObject1);
+        localObject1 = this.this$0;
+        localObject2 = this.val$req;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("not a directory ");
+        ((StringBuilder)localObject3).append(this.val$dirPath);
+        return FileJsPlugin.access$1000((FileJsPlugin)localObject1, (RequestEvent)localObject2, null, ((StringBuilder)localObject3).toString());
+      }
+      Object localObject3 = new File((String)localObject1).listFiles();
+      localObject2 = new JSONObject();
+      localJSONArray = new JSONArray();
+      if (localObject3 != null)
+      {
+        int j = localObject3.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject4 = localObject3[i];
+          if (localObject4 != null) {
+            localJSONArray.put(localObject4.getName());
+          }
+          i += 1;
+        }
+      }
+    }
+    try
+    {
+      ((JSONObject)localObject2).put("files", localJSONArray);
+      label317:
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l, (String)localObject1);
+      return FileJsPlugin.access$1100(this.this$0, this.val$req, (JSONObject)localObject2);
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
       return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "invalid path");
     }
-    int i = ((MiniAppFileManager)FileJsPlugin.access$4700(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$oldPath);
-    int j = ((MiniAppFileManager)FileJsPlugin.access$4800(this.this$0).getManager(MiniAppFileManager.class)).getWxFileType(this.val$newPath);
-    StringBuilder localStringBuilder;
-    if (i != 2)
+    catch (JSONException localJSONException)
     {
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$oldPath);
-      localObject1 = this.this$0;
-      localObject2 = this.val$req;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("permission denied, open ");
-      localStringBuilder.append(this.val$oldPath);
-      return FileJsPlugin.access$1000((FileJsPlugin)localObject1, (RequestEvent)localObject2, null, localStringBuilder.toString());
+      break label317;
     }
-    if (j != 2)
-    {
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$newPath);
-      localObject1 = this.this$0;
-      localObject2 = this.val$req;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("permission denied, open ");
-      localStringBuilder.append(this.val$newPath);
-      return FileJsPlugin.access$1000((FileJsPlugin)localObject1, (RequestEvent)localObject2, null, localStringBuilder.toString());
-    }
-    Object localObject1 = ((MiniAppFileManager)FileJsPlugin.access$4900(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$oldPath);
-    Object localObject2 = ((MiniAppFileManager)FileJsPlugin.access$5000(this.this$0).getManager(MiniAppFileManager.class)).getUsrPath(this.val$newPath);
-    if (!new File((String)localObject1).exists())
-    {
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l1, (String)localObject1);
-      localObject1 = this.this$0;
-      localObject2 = this.val$req;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("no such file or directory, open ");
-      localStringBuilder.append(this.val$oldPath);
-      return FileJsPlugin.access$1000((FileJsPlugin)localObject1, (RequestEvent)localObject2, null, localStringBuilder.toString());
-    }
-    if (FileUtils.renameFile((String)localObject1, (String)localObject2))
-    {
-      if (i != 2)
-      {
-        long l2 = FileUtils.getFileSizes((String)localObject2);
-        FileJsPlugin.access$2400(this.this$0).updateFolderSize(i, -l2);
-        FileJsPlugin.access$2400(this.this$0).updateFolderSize(j, l2);
-      }
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l1, (String)localObject1);
-      return FileJsPlugin.access$1100(this.this$0, this.val$req, null);
-    }
-    FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l1, this.val$oldPath);
-    return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "no such file or directory, open ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.11
  * JD-Core Version:    0.7.0.1
  */

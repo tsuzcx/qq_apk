@@ -21,12 +21,12 @@ public final class PublishArticleModel
     Intrinsics.checkParameterIsNotNull(paramGlobalPublisherConfig, "globalPublisherConfig");
     Intrinsics.checkParameterIsNotNull(paramPublishArticleInfo, "articleInfo");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "callback");
-    TopicSDK.a.a().a().a().a(paramGlobalPublisherConfig, paramPublishArticleInfo);
+    TopicSDK.a.a().b().u().a(paramGlobalPublisherConfig, paramPublishArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticleModel
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 import com.tencent.aelight.camera.ae.util.AEThemeUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +21,17 @@ import java.util.List;
 public class TabLayout
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView = new View(getContext());
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  private TabLayout.OnTabSelectedCallback jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout$OnTabSelectedCallback;
-  private List<TabLayout.TabView> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = AEThemeUtil.a();
+  private List<TabLayout.TabView> a = new ArrayList();
+  private View b = new View(getContext());
+  private LinearLayout c = new LinearLayout(getContext());
+  private int d;
+  private ViewPager e;
+  private ViewPager2 f;
+  private TabLayout.OnTabSelectedCallback g;
+  private boolean h = AEThemeUtil.b();
+  private boolean i = false;
   @DrawableRes
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
+  private int j;
   
   public TabLayout(Context paramContext)
   {
@@ -45,7 +47,7 @@ public class TabLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = new RelativeLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramContext);
+    addView(this.c, paramContext);
   }
   
   public static int a(Context paramContext, float paramFloat)
@@ -58,132 +60,136 @@ public class TabLayout
   
   private void a()
   {
-    this.jdField_b_of_type_Int = 2064056404;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_b_of_type_Int);
+    this.j = 2063925373;
+    this.b.setBackgroundResource(this.j);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(a(getContext(), 7.0F), a(getContext(), 7.0F));
     localLayoutParams.addRule(12);
-    addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+    addView(this.b, localLayoutParams);
   }
   
   private void b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout$OnTabSelectedCallback;
+    Object localObject = this.g;
     if (localObject != null) {
       ((TabLayout.OnTabSelectedCallback)localObject).a(paramInt);
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    int k = 0;
+    while (k < this.a.size())
     {
-      localObject = (TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(i);
+      localObject = (TabLayout.TabView)this.a.get(k);
       boolean bool2 = true;
       boolean bool1 = true;
       if (paramInt == 0)
       {
-        if (paramInt != i) {
+        if (paramInt != k) {
           bool1 = false;
         }
         ((TabLayout.TabView)localObject).a(bool1, false);
       }
       else
       {
-        if (paramInt == i) {
+        if (paramInt == k) {
           bool1 = bool2;
         } else {
           bool1 = false;
         }
-        ((TabLayout.TabView)localObject).a(bool1, this.jdField_b_of_type_Boolean);
+        ((TabLayout.TabView)localObject).a(bool1, this.i);
       }
-      i += 1;
+      k += 1;
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      i = this.jdField_b_of_type_Int;
-    } else if (this.jdField_b_of_type_Boolean) {
-      i = 2064056403;
+    if (this.d == 0) {
+      k = this.j;
+    } else if (this.i) {
+      k = 2063925372;
     } else {
-      i = this.jdField_b_of_type_Int;
+      k = this.j;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
-    localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+    this.b.setBackgroundResource(k);
+    localObject = this.e;
     if (localObject != null) {
       ((ViewPager)localObject).setCurrentItem(paramInt);
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      ((ViewPager2)localObject).setCurrentItem(paramInt);
     }
   }
   
   private void c(int paramInt)
   {
-    float f1 = this.jdField_a_of_type_AndroidViewView.getX();
-    float f2 = ((TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getX();
-    float f3 = ((TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(paramInt)).getWidth() / 2.0F;
-    float f4 = this.jdField_a_of_type_AndroidViewView.getWidth() / 2.0F;
-    ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "x", new float[] { f1, f2 + f3 - f4 }).setDuration(250L).start();
+    float f1 = this.b.getX();
+    float f2 = ((TabLayout.TabView)this.a.get(paramInt)).getX();
+    float f3 = ((TabLayout.TabView)this.a.get(paramInt)).getWidth() / 2.0F;
+    float f4 = this.b.getWidth() / 2.0F;
+    ObjectAnimator.ofFloat(this.b, "x", new float[] { f1, f2 + f3 - f4 }).setDuration(250L).start();
   }
   
   public void a(int paramInt)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
+    if (paramInt >= this.a.size()) {
       return;
     }
-    if (paramInt == this.jdField_a_of_type_Int) {
+    if (paramInt == this.d) {
       return;
     }
-    TabLayout.OnTabSelectedCallback localOnTabSelectedCallback = this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout$OnTabSelectedCallback;
-    if ((localOnTabSelectedCallback != null) && (!localOnTabSelectedCallback.a(paramInt)))
+    TabLayout.OnTabSelectedCallback localOnTabSelectedCallback = this.g;
+    if ((localOnTabSelectedCallback != null) && (!localOnTabSelectedCallback.b(paramInt)))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout$OnTabSelectedCallback.a(paramInt);
+      this.g.a(paramInt);
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
     c(paramInt);
     b(paramInt);
   }
   
   public void a(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
+    this.e = paramViewPager;
     paramViewPager.setOnPageChangeListener(new TabLayout.3(this));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    this.i = paramBoolean;
+    int k = 0;
+    while (k < this.a.size())
     {
-      TabLayout.TabView localTabView = (TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(i);
-      int j = this.jdField_a_of_type_Int;
+      TabLayout.TabView localTabView = (TabLayout.TabView)this.a.get(k);
+      int m = this.d;
       boolean bool = true;
       paramBoolean = true;
-      if (j == 0)
+      if (m == 0)
       {
-        if (j != i) {
+        if (m != k) {
           paramBoolean = false;
         }
         localTabView.a(paramBoolean, false);
       }
       else
       {
-        if (j == i) {
+        if (m == k) {
           paramBoolean = bool;
         } else {
           paramBoolean = false;
         }
-        localTabView.a(paramBoolean, this.jdField_b_of_type_Boolean);
+        localTabView.a(paramBoolean, this.i);
       }
-      i += 1;
+      k += 1;
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      i = this.jdField_b_of_type_Int;
-    } else if (this.jdField_b_of_type_Boolean) {
-      i = 2064056403;
+    if (this.d == 0) {
+      k = this.j;
+    } else if (this.i) {
+      k = 2063925372;
     } else {
-      i = this.jdField_b_of_type_Int;
+      k = this.j;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
+    this.b.setBackgroundResource(k);
   }
   
   public void setTabSelectedCallback(TabLayout.OnTabSelectedCallback paramOnTabSelectedCallback)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout$OnTabSelectedCallback = paramOnTabSelectedCallback;
+    this.g = paramOnTabSelectedCallback;
   }
   
   public void setTabs(List<String> paramList, int paramInt)
@@ -193,33 +199,33 @@ public class TabLayout
       if (paramList.size() < 1) {
         return;
       }
-      int j = paramList.size();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setWeightSum(j);
-      int i = 0;
-      while (i < j)
+      int m = paramList.size();
+      this.c.setWeightSum(m);
+      int k = 0;
+      while (k < m)
       {
-        TabLayout.TabView localTabView = new TabLayout.TabView(getContext(), this.jdField_a_of_type_Boolean);
-        localTabView.a().setText((CharSequence)paramList.get(i));
+        TabLayout.TabView localTabView = new TabLayout.TabView(getContext(), this.h);
+        localTabView.a().setText((CharSequence)paramList.get(k));
         boolean bool;
-        if (paramInt == i) {
+        if (paramInt == k) {
           bool = true;
         } else {
           bool = false;
         }
-        localTabView.a(bool, this.jdField_b_of_type_Boolean);
+        localTabView.a(bool, this.i);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
         localLayoutParams.weight = 1.0F;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localTabView, localLayoutParams);
-        this.jdField_a_of_type_JavaUtilList.add(localTabView);
-        localTabView.setOnClickListener(new TabLayout.1(this, i));
-        i += 1;
+        this.c.addView(localTabView, localLayoutParams);
+        this.a.add(localTabView);
+        localTabView.setOnClickListener(new TabLayout.1(this, k));
+        k += 1;
       }
       a();
       if (paramList.size() > 1) {
-        ((TabLayout.TabView)this.jdField_a_of_type_JavaUtilList.get(0)).post(new TabLayout.2(this, paramInt));
+        ((TabLayout.TabView)this.a.get(0)).post(new TabLayout.2(this, paramInt));
       }
-      this.jdField_a_of_type_Int = paramInt;
-      paramInt = this.jdField_a_of_type_Int;
+      this.d = paramInt;
+      paramInt = this.d;
       if (paramInt != 0) {
         b(paramInt);
       }
@@ -228,7 +234,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.TabLayout
  * JD-Core Version:    0.7.0.1
  */

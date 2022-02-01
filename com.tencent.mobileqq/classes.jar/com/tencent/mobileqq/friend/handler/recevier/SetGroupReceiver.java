@@ -58,16 +58,16 @@ public final class SetGroupReceiver
             QLog.e("IMCore.friend.SetGroupReceiver", 1, localStringBuilder.toString());
             return;
           }
-          ((FriendHandler)a()).notifyUI(22, false, null);
+          ((FriendHandler)c()).notifyUI(22, false, null);
           return;
         }
-        ((FriendHandler)a()).notifyUI(21, false, null);
+        ((FriendHandler)c()).notifyUI(21, false, null);
         return;
       }
-      ((FriendHandler)a()).notifyUI(19, false, null);
+      ((FriendHandler)c()).notifyUI(19, false, null);
       return;
     }
-    ((FriendHandler)a()).notifyUI(18, false, null);
+    ((FriendHandler)c()).notifyUI(18, false, null);
   }
   
   private final void a(int paramInt, String paramString, ByteBuffer paramByteBuffer, GroupRequestData paramGroupRequestData)
@@ -76,7 +76,7 @@ public final class SetGroupReceiver
     boolean bool = true;
     if (paramInt == 0)
     {
-      FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
+      FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)b());
       localAddGroupResp.dwToUin = paramByteBuffer.getInt();
       localAddGroupResp.dwSequence = paramByteBuffer.getInt();
       localAddGroupResp.cGroupId = paramByteBuffer.get();
@@ -92,7 +92,7 @@ public final class SetGroupReceiver
       localFriendDataServiceImpl.saveGroup(paramByteBuffer);
     }
     paramByteBuffer = new GroupActionResp(paramInt, paramString, localAddGroupResp);
-    paramGroupRequestData = (FriendHandler)a();
+    paramGroupRequestData = (FriendHandler)c();
     if (paramInt != 0) {
       bool = false;
     }
@@ -114,7 +114,7 @@ public final class SetGroupReceiver
     boolean bool = true;
     if (paramInt == 0)
     {
-      FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
+      FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)b());
       localRenameGroupResp.dwToUin = paramByteBuffer.getInt();
       localRenameGroupResp.dwSequence = paramByteBuffer.getInt();
       int i = paramByteBuffer.get();
@@ -133,7 +133,7 @@ public final class SetGroupReceiver
       localFriendDataServiceImpl.saveGroup(paramByteBuffer);
     }
     paramByteBuffer = new GroupActionResp(paramInt, paramString, localRenameGroupResp);
-    paramGroupRequestData = (FriendHandler)a();
+    paramGroupRequestData = (FriendHandler)c();
     if (paramInt != 0) {
       bool = false;
     }
@@ -155,14 +155,14 @@ public final class SetGroupReceiver
     boolean bool = false;
     if (paramInt == 0)
     {
-      FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
+      FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)b());
       paramGroupRequestData.dwToUin = paramByteBuffer.getInt();
       paramGroupRequestData.dwSequence = paramByteBuffer.getInt();
       paramGroupRequestData.cGroupid = paramByteBuffer.get();
       localFriendDataServiceImpl.moveGroup(paramGroupRequestData.cGroupid, 0);
     }
     paramByteBuffer = new GroupActionResp(paramInt, paramString, paramGroupRequestData);
-    paramGroupRequestData = (FriendHandler)a();
+    paramGroupRequestData = (FriendHandler)c();
     if (paramInt == 0) {
       bool = true;
     }
@@ -183,13 +183,13 @@ public final class SetGroupReceiver
     ReSortGroupResp localReSortGroupResp = new ReSortGroupResp();
     if (paramInt == 0)
     {
-      FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
+      FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)b());
       localReSortGroupResp.dwToUin = paramByteBuffer.getInt();
       localReSortGroupResp.dwSequence = paramByteBuffer.getInt();
       localFriendDataServiceImpl.updateGroupSortIds(paramGroupRequestData.getGroupIdList(), paramGroupRequestData.getSortIdList());
     }
     paramByteBuffer = new GroupActionResp(paramInt, paramString, localReSortGroupResp);
-    paramGroupRequestData = (FriendHandler)a();
+    paramGroupRequestData = (FriendHandler)c();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
@@ -281,7 +281,7 @@ public final class SetGroupReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.SetGroupReceiver
  * JD-Core Version:    0.7.0.1
  */

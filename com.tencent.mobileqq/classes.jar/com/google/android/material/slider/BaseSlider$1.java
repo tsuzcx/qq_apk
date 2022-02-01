@@ -13,15 +13,15 @@ class BaseSlider$1
   
   public TooltipDrawable a()
   {
-    TypedArray localTypedArray = ThemeEnforcement.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.getContext(), this.jdField_a_of_type_AndroidUtilAttributeSet, R.styleable.ar, this.jdField_a_of_type_Int, BaseSlider.jdField_a_of_type_Int, new int[0]);
-    TooltipDrawable localTooltipDrawable = BaseSlider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider.getContext(), localTypedArray);
+    TypedArray localTypedArray = ThemeEnforcement.a(this.c.getContext(), this.a, R.styleable.gs, this.b, BaseSlider.a, new int[0]);
+    TooltipDrawable localTooltipDrawable = BaseSlider.a(this.c.getContext(), localTypedArray);
     localTypedArray.recycle();
     return localTooltipDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.slider.BaseSlider.1
  * JD-Core Version:    0.7.0.1
  */

@@ -32,30 +32,11 @@ import tencent.im.oidb.cmd0xf34.oidb_cmd0xf34.RspBody;
 public final class RIJShareConfigHandler
   extends RIJBaseArticleInfoHandler
 {
-  public static final RIJShareConfigHandler.Companion a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoShareRIJShareConfigHandler$Companion = new RIJShareConfigHandler.Companion(null);
-  }
+  public static final RIJShareConfigHandler.Companion g = new RIJShareConfigHandler.Companion(null);
   
   public RIJShareConfigHandler(@Nullable ArticleInfoModule paramArticleInfoModule, @Nullable Handler paramHandler, @Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ReadInJoyMSFService paramReadInJoyMSFService, @Nullable ExecutorService paramExecutorService)
   {
     super(paramArticleInfoModule, paramHandler, paramAppInterface, paramEntityManager, paramReadInJoyMSFService, paramExecutorService);
-  }
-  
-  @VisibleForTesting
-  @Nullable
-  public final AbsBaseArticleInfo a()
-  {
-    return ShareReport.a.a();
-  }
-  
-  @VisibleForTesting
-  @NotNull
-  public final ArrayList<String> a()
-  {
-    return ShareReport.a.a();
   }
   
   @VisibleForTesting
@@ -76,7 +57,7 @@ public final class RIJShareConfigHandler
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0xf34", 3892, 0, ((oidb_cmd0xf34.ReqBody)localObject).toByteArray());
     ((ToServiceMsg)localObject).addAttribute("articleId", paramString);
     ((ToServiceMsg)localObject).addAttribute("uin", Long.valueOf(paramLong));
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReqWithAutoRetry((ToServiceMsg)localObject);
+    this.a.sendPbReqWithAutoRetry((ToServiceMsg)localObject);
   }
   
   @VisibleForTesting
@@ -100,7 +81,7 @@ public final class RIJShareConfigHandler
       paramFromServiceMsg.append(i);
       QLog.d("ReadInJoyShareConfigUtil", 1, paramFromServiceMsg.toString());
     }
-    paramObject = a();
+    paramObject = b();
     paramFromServiceMsg = paramToServiceMsg.getAttribute("articleId");
     paramToServiceMsg = paramFromServiceMsg;
     if (!(paramFromServiceMsg instanceof String)) {
@@ -120,7 +101,7 @@ public final class RIJShareConfigHandler
         j = (int)localRspBody.uint64_num.get();
       }
       if ((i == 1) && (paramToServiceMsg != null)) {
-        a().add(paramToServiceMsg);
+        c().add(paramToServiceMsg);
       } else if ((i == 2) && (QLog.isColorLevel())) {
         QLog.d("ReadInJoyShareConfigUtil", 2, "allow share but don't calculate!");
       }
@@ -140,10 +121,24 @@ public final class RIJShareConfigHandler
       }
     }
   }
+  
+  @VisibleForTesting
+  @Nullable
+  public final AbsBaseArticleInfo b()
+  {
+    return ShareReport.a.b();
+  }
+  
+  @VisibleForTesting
+  @NotNull
+  public final ArrayList<String> c()
+  {
+    return ShareReport.a.d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.share.RIJShareConfigHandler
  * JD-Core Version:    0.7.0.1
  */

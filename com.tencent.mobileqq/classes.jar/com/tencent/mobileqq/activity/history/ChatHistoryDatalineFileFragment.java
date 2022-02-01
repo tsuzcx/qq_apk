@@ -28,13 +28,18 @@ import java.util.List;
 public class ChatHistoryDatalineFileFragment
   extends ChatHistoryC2CFileFragment
 {
-  private DataLineObserver a;
+  private DataLineObserver v;
   
-  private DataLineMsgRecord a(FileManagerEntity paramFileManagerEntity)
+  private boolean h(FileManagerEntity paramFileManagerEntity)
+  {
+    return paramFileManagerEntity.peerType == 6000;
+  }
+  
+  private DataLineMsgRecord i(FileManagerEntity paramFileManagerEntity)
   {
     long l = paramFileManagerEntity.datalineEntitySessionId;
     int i = DataLineMsgRecord.getDevTypeBySeId(l);
-    paramFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
+    paramFileManagerEntity = this.a.getMessageFacade().d(i).a(l);
     if (paramFileManagerEntity == null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -46,13 +51,13 @@ public class ChatHistoryDatalineFileFragment
     return paramFileManagerEntity;
   }
   
-  private List<FileManagerEntity> a()
+  private List<FileManagerEntity> x()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(0);
+    Object localObject1 = this.a.getMessageFacade().d(0);
     if (localObject1 == null) {
       return null;
     }
-    Object localObject2 = ((DatalineMessageManager)localObject1).a();
+    Object localObject2 = ((DatalineMessageManager)localObject1).d();
     localObject1 = new ArrayList();
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
@@ -61,82 +66,46 @@ public class ChatHistoryDatalineFileFragment
     return localObject1;
   }
   
-  private boolean b(FileManagerEntity paramFileManagerEntity)
-  {
-    return paramFileManagerEntity.peerType == 6000;
-  }
-  
   protected ChatHistoryC2CFileAdapter a()
   {
-    return new ChatHistoryDatalineFileAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaUtilLinkedHashMap);
-  }
-  
-  protected IQFileMultiOperate a()
-  {
-    return new DatalineFileMultiOperate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  protected LinkedHashMap<String, List<Object>> a()
-  {
-    ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().a(a()));
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.addAll(localArrayList1);
-    if (TextUtils.equals(a(), QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-      localArrayList2.addAll(a());
-    }
-    Collections.sort(localArrayList2, new ChatHistoryDatalineFileFragment.2(this));
-    return a(localArrayList2);
+    return new ChatHistoryDatalineFileAdapter(this.a, this.d, this.t);
   }
   
   protected void a(FileManagerEntity paramFileManagerEntity)
   {
-    if (b(paramFileManagerEntity))
+    if (h(paramFileManagerEntity))
     {
-      paramFileManagerEntity = a(paramFileManagerEntity);
+      paramFileManagerEntity = i(paramFileManagerEntity);
       if (paramFileManagerEntity == null)
       {
         QLog.e("ChatHistoryDatalineFileFragment", 1, "onActionResume. can not find a DataLineMsgRecord");
         return;
       }
-      DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      DataLineHandler localDataLineHandler = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(Long.valueOf(paramFileManagerEntity.sessionid));
-      localDataLineHandler.a(localArrayList);
+      localDataLineHandler.b(localArrayList);
       return;
     }
     super.a(paramFileManagerEntity);
   }
   
-  protected LinkedHashMap<String, List<Object>> b()
+  protected IQFileMultiOperate b()
   {
-    ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().b(a()));
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.addAll(localArrayList1);
-    if (TextUtils.equals(a(), QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-      localArrayList2.addAll(a());
-    }
-    Collections.sort(localArrayList2, new ChatHistoryDatalineFileFragment.3(this));
-    return a(localArrayList2);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new ChatHistoryDatalineFileFragment.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+    return new DatalineFileMultiOperate(this.a, this.d);
   }
   
   protected void b(FileManagerEntity paramFileManagerEntity)
   {
-    if (b(paramFileManagerEntity))
+    if (h(paramFileManagerEntity))
     {
-      paramFileManagerEntity = a(paramFileManagerEntity);
+      paramFileManagerEntity = i(paramFileManagerEntity);
       if (paramFileManagerEntity == null)
       {
         QLog.e("ChatHistoryDatalineFileFragment", 1, "onActionPause. can not find a DataLineMsgRecord");
         return;
       }
-      ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramFileManagerEntity.groupId, paramFileManagerEntity.sessionid, false);
+      ((DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramFileManagerEntity.groupId, paramFileManagerEntity.sessionid, false);
       return;
     }
     super.b(paramFileManagerEntity);
@@ -145,41 +114,48 @@ public class ChatHistoryDatalineFileFragment
   protected void c()
   {
     super.c();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+    this.v = new ChatHistoryDatalineFileFragment.1(this);
+    this.a.addObserver(this.v);
   }
   
   protected void c(FileManagerEntity paramFileManagerEntity)
   {
-    if (b(paramFileManagerEntity))
+    if (h(paramFileManagerEntity))
     {
-      paramFileManagerEntity = a(paramFileManagerEntity);
+      paramFileManagerEntity = i(paramFileManagerEntity);
       if (paramFileManagerEntity == null)
       {
         QLog.e("ChatHistoryDatalineFileFragment", 1, "onActionDownload. can not find a DataLineMsgRecord");
         return;
       }
-      DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      DataLineHandler localDataLineHandler = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(Long.valueOf(paramFileManagerEntity.sessionid));
-      localDataLineHandler.a(localArrayList);
+      localDataLineHandler.b(localArrayList);
       return;
     }
     super.c(paramFileManagerEntity);
   }
   
+  protected void d()
+  {
+    super.d();
+    this.a.removeObserver(this.v);
+  }
+  
   protected void e(FileManagerEntity paramFileManagerEntity)
   {
-    if (b(paramFileManagerEntity))
+    if (h(paramFileManagerEntity))
     {
-      int i = FileManagerUtil.a(paramFileManagerEntity.fileName);
-      DatalineFileBrowserParams localDatalineFileBrowserParams = new DatalineFileBrowserParams(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramFileManagerEntity);
+      int i = FileManagerUtil.c(paramFileManagerEntity.fileName);
+      DatalineFileBrowserParams localDatalineFileBrowserParams = new DatalineFileBrowserParams(this.a, this.d, paramFileManagerEntity);
       if (i == 0)
       {
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(String.valueOf(paramFileManagerEntity.nSessionId));
         localDatalineFileBrowserParams.a(localArrayList);
       }
-      paramFileManagerEntity = new FileBrowserCreator(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localDatalineFileBrowserParams);
+      paramFileManagerEntity = new FileBrowserCreator(this.d, localDatalineFileBrowserParams);
       paramFileManagerEntity.a(11);
       paramFileManagerEntity.a();
       return;
@@ -187,34 +163,58 @@ public class ChatHistoryDatalineFileFragment
     super.e(paramFileManagerEntity);
   }
   
-  protected void k()
+  protected void p()
   {
-    super.k();
+    super.p();
   }
   
-  protected void l()
+  protected void q()
   {
-    super.l();
+    super.q();
   }
   
-  protected void m()
+  protected void r()
   {
-    super.m();
+    super.r();
   }
   
-  protected void n()
+  protected void s()
   {
-    super.n();
+    super.s();
   }
   
-  protected void o()
+  protected void t()
   {
-    super.o();
+    super.t();
+  }
+  
+  protected LinkedHashMap<String, List<Object>> v()
+  {
+    ArrayList localArrayList1 = new ArrayList(this.a.getFileManagerProxy().a(g()));
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.addAll(localArrayList1);
+    if (TextUtils.equals(g(), QFileAssistantUtils.b(this.a))) {
+      localArrayList2.addAll(x());
+    }
+    Collections.sort(localArrayList2, new ChatHistoryDatalineFileFragment.2(this));
+    return a(localArrayList2);
+  }
+  
+  protected LinkedHashMap<String, List<Object>> w()
+  {
+    ArrayList localArrayList1 = new ArrayList(this.a.getFileManagerProxy().b(g()));
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList2.addAll(localArrayList1);
+    if (TextUtils.equals(g(), QFileAssistantUtils.b(this.a))) {
+      localArrayList2.addAll(x());
+    }
+    Collections.sort(localArrayList2, new ChatHistoryDatalineFileFragment.3(this));
+    return a(localArrayList2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryDatalineFileFragment
  * JD-Core Version:    0.7.0.1
  */

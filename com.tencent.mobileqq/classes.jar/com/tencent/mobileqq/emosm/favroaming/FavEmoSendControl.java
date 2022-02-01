@@ -34,20 +34,6 @@ public class FavEmoSendControl
     return (BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
   }
   
-  public static String a(String paramString)
-  {
-    CompressInfo localCompressInfo = new CompressInfo(paramString, 0, -1);
-    localCompressInfo.g = true;
-    boolean bool = ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(localCompressInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("FavEmoSendControl", 2, new Object[] { "compressBeforeUpload, success: ", Boolean.valueOf(bool) });
-    }
-    if (bool) {
-      paramString = localCompressInfo.e;
-    }
-    return paramString;
-  }
-  
   public static void a(List<String> paramList)
   {
     QLog.i("FavEmoSendControl", 1, "uploadCameraEmoList");
@@ -92,8 +78,8 @@ public class FavEmoSendControl
       else
       {
         localObject2 = localCustomEmotionData.emoOriginalPath;
-        if (a()) {
-          localObject2 = a(localCustomEmotionData.emoOriginalPath);
+        if (b()) {
+          localObject2 = b(localCustomEmotionData.emoOriginalPath);
         }
         String str2 = SecUtil.getFileMd5((String)localObject2);
         i = ((String)localObject2).lastIndexOf(".");
@@ -166,20 +152,15 @@ public class FavEmoSendControl
     new CameraEmoAllSend().a(paramList.size(), 0, 0, k, j);
   }
   
-  public static boolean a()
-  {
-    return true;
-  }
-  
   public static boolean a(String paramString)
   {
     try
     {
-      FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig localFavLocalEmoticonsConfig = (FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig)QConfigManager.a().a(561);
+      FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig localFavLocalEmoticonsConfig = (FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig)QConfigManager.b().b(561);
       if (new File(paramString).length() >= localFavLocalEmoticonsConfig.a) {
         return false;
       }
-      if (!BaseImageUtil.b(paramString))
+      if (!BaseImageUtil.c(paramString))
       {
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
         localOptions.inJustDecodeBounds = true;
@@ -202,10 +183,29 @@ public class FavEmoSendControl
     }
     return true;
   }
+  
+  public static String b(String paramString)
+  {
+    CompressInfo localCompressInfo = new CompressInfo(paramString, 0, -1);
+    localCompressInfo.w = true;
+    boolean bool = ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(localCompressInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("FavEmoSendControl", 2, new Object[] { "compressBeforeUpload, success: ", Boolean.valueOf(bool) });
+    }
+    if (bool) {
+      paramString = localCompressInfo.l;
+    }
+    return paramString;
+  }
+  
+  public static boolean b()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.FavEmoSendControl
  * JD-Core Version:    0.7.0.1
  */

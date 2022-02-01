@@ -9,24 +9,24 @@ final class AVEffectPendantReport$1
 {
   public void run()
   {
-    if ((AVEffectPendantReport.a() != null) && (!AVEffectPendantReport.a().isEmpty()))
+    if ((AVEffectPendantReport.f() != null) && (!AVEffectPendantReport.f().isEmpty()))
     {
       AVEffectPendantReport.a(0);
       AVEffectPendantReport.b(0);
-      Object localObject = AVEffectPendantReport.a().iterator();
+      Object localObject = AVEffectPendantReport.f().iterator();
       while (((Iterator)localObject).hasNext())
       {
         PendantItem localPendantItem = (PendantItem)((Iterator)localObject).next();
-        AVEffectPendantReport.a();
+        AVEffectPendantReport.g();
         if (AVEffectPendantReport.a(localPendantItem)) {
-          AVEffectPendantReport.b();
+          AVEffectPendantReport.h();
         }
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("refleshAndSetDownloadInfo()  mTotalCount = ");
-      ((StringBuilder)localObject).append(AVEffectPendantReport.c());
+      ((StringBuilder)localObject).append(AVEffectPendantReport.i());
       ((StringBuilder)localObject).append("  mDownloadCount = ");
-      ((StringBuilder)localObject).append(AVEffectPendantReport.d());
+      ((StringBuilder)localObject).append(AVEffectPendantReport.j());
       AVLog.printColorLog("AVEffectPendantReport", ((StringBuilder)localObject).toString());
       AVEffectPendantReport.a();
       return;

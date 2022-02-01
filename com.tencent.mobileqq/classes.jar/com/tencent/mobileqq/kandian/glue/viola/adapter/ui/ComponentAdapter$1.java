@@ -1,57 +1,31 @@
 package com.tencent.mobileqq.kandian.glue.viola.adapter.ui;
 
-import com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.RefreshAnimView;
-import com.tencent.viola.ui.view.VRefreshLayout;
-import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.kandian.glue.viola.ViolaResLoader;
+import com.tencent.mobileqq.kandian.glue.viola.ViolaResLoader.Companion;
+import com.tencent.viola.commons.ImageAdapterHolder.ImgSpanListener;
+import java.io.File;
 
 class ComponentAdapter$1
-  implements VRefreshLayout.onRefreshStateChangeListener
+  implements Runnable
 {
-  ComponentAdapter$1(ComponentAdapter paramComponentAdapter, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
+  ComponentAdapter$1(ComponentAdapter paramComponentAdapter, ImageAdapterHolder.ImgSpanListener paramImgSpanListener, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onRefreshMove(int paramInt)
+  public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
-    if ((paramInt <= i) && (!ComponentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter)))
+    ComponentAdapter.ImageSpanAction localImageSpanAction = new ComponentAdapter.ImageSpanAction(this.a, this.b);
+    String str = ViolaResLoader.a.a().a(this.b);
+    if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.a();
-      RefreshAnimView localRefreshAnimView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView;
-      double d1 = paramInt;
-      double d2 = i;
-      Double.isNaN(d1);
-      Double.isNaN(d2);
-      localRefreshAnimView.a(d1 / d2);
+      ComponentAdapter.a(this.this$0, localImageSpanAction, str, this.b, false, false, this.c, this.d);
+      return;
     }
-  }
-  
-  public void onStateEnd()
-  {
-    ComponentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter, false);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.a(1000L);
-  }
-  
-  public void onStateFinish(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.a(paramBoolean, paramString);
-  }
-  
-  public void onStateIdel()
-  {
-    ComponentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter, false);
-  }
-  
-  public void onStatePulling() {}
-  
-  public void onStateRefreshing()
-  {
-    ComponentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterUiComponentAdapter, true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.b();
+    ComponentAdapter.a(this.this$0, localImageSpanAction, this.b, this.c, this.d, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.adapter.ui.ComponentAdapter.1
  * JD-Core Version:    0.7.0.1
  */

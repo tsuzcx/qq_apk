@@ -13,15 +13,15 @@ class QQCustomDialogWtihEmoticonInput$3
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.w))
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
+      this.a.u.removeView(this.a.r.getView());
       paramKeyEvent = this.a;
-      paramKeyEvent.c = false;
+      paramKeyEvent.w = false;
       paramKeyEvent = paramKeyEvent.getWindow().getAttributes();
       paramKeyEvent.y = 0;
       this.a.getWindow().setAttributes(paramKeyEvent);
-      QQCustomDialogWtihEmoticonInput.a(this.a);
+      QQCustomDialogWtihEmoticonInput.b(this.a);
       return true;
     }
     return false;
@@ -29,7 +29,7 @@ class QQCustomDialogWtihEmoticonInput$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.3
  * JD-Core Version:    0.7.0.1
  */

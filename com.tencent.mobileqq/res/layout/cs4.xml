@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/ee7" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:id="@id/n0w" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mobileqq.activity.qcircle.widget.QCircleAvatarView android:id="@id/du3" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="18.0dip" />
-            <LinearLayout android:orientation="vertical" android:paddingLeft="10.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip">
-                    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/mdg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:lines="1" android:layout_weight="1.0" />
-                    <TextView android:textSize="15.0dip" android:textColor="#ff7a7a8d" android:id="@id/ohv" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/xcq" />
-                </LinearLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ngp" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="4.0dip" />
-            </LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.view.WSViewPager android:id="@id/r30" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/r2f" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <ImageView android:id="@id/r1y" android:paddingLeft="@dimen/mp" android:paddingTop="@dimen/mp" android:paddingRight="@dimen/mp" android:paddingBottom="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dtr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
+            <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/r27" android:visibility="gone" android:layout_width="@dimen/n7" android:layout_height="@dimen/n7" android:layout_marginLeft="@dimen/mw" android:layout_marginRight="@dimen/mw" />
+            <com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabLayout android:id="@id/r2i" android:layout_width="120.0dip" android:layout_height="fill_parent" />
         </LinearLayout>
-    </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/n0v" android:layout_width="fill_parent" android:layout_height="40.0dip">
-        <View android:background="#ffefefef" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-        <com.tencent.mobileqq.activity.qcircle.widget.QCircleFollowView android:textSize="16.0dip" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/mco" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="39.5dip" app:qcircle_follow_res="@drawable/trans" app:qcircle_follow_text_color="@color/by" app:qcircle_un_follow_res="@drawable/trans" app:qcircle_un_follow_text_color="@color/bp" />
-    </LinearLayout>
-</LinearLayout>
+        <ImageView android:id="@id/r21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/crg" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/r2d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/r2b" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/com" />
+            <ImageView android:id="@id/r25" android:background="@drawable/ev_" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignRight="@id/r2b" />
+        </RelativeLayout>
+        <View android:id="@id/r2k" android:background="#33979797" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/r32" android:layout="@layout/csc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mw" android:layout_marginRight="@dimen/mw" android:layout_marginBottom="@dimen/n5" />
+    <ViewStub android:id="@id/r2_" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

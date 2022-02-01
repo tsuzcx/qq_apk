@@ -27,13 +27,13 @@ class AEGIFChunkPreviewFragment$3
   public void onClick(View paramView)
   {
     AEGIFChunkPreviewFragment.a(this.a, true);
-    Set localSet = AEGIFChunkPreviewFragment.a(this.a).a();
+    Set localSet = AEGIFChunkPreviewFragment.b(this.a).a();
     paramView = new StringBuilder();
     paramView.append("save button click, selectedItems = ");
     paramView.append(localSet);
     QLog.d("AEGIFChunkPreviewFragment", 4, paramView.toString());
     Object localObject = AEBaseReportParam.a();
-    ((AEBaseReportParam)localObject).l();
+    ((AEBaseReportParam)localObject).R();
     paramView = new LinkedList();
     int j = 0;
     int i = 0;
@@ -41,28 +41,28 @@ class AEGIFChunkPreviewFragment$3
     {
       if (localSet.contains(Integer.valueOf(i)))
       {
-        if (((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
+        if (((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).c != null)
         {
-          ((AEBaseReportParam)localObject).r(((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
-          ((AEBaseReportParam)localObject).p("none");
-          ((AEBaseReportParam)localObject).q("none");
-          paramView.add(((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
+          ((AEBaseReportParam)localObject).C(((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).c.id);
+          ((AEBaseReportParam)localObject).A("none");
+          ((AEBaseReportParam)localObject).B("none");
+          paramView.add(((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).c.id);
         }
-        else if (!((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).jdField_a_of_type_JavaLangString.equals(""))
+        else if (!((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).d.equals(""))
         {
-          ((AEBaseReportParam)localObject).r("none");
-          ((AEBaseReportParam)localObject).p(((AEGIFTextColorConfig.SmartTextColor)AEGIFTextColorConfig.jdField_a_of_type_JavaUtilList.get(AEGIFTextColorConfig.jdField_a_of_type_ArrayOfInt[(i % AEGIFTextColorConfig.jdField_a_of_type_ArrayOfInt.length)])).jdField_a_of_type_JavaLangString);
-          ((AEBaseReportParam)localObject).q(((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).jdField_a_of_type_JavaLangString);
+          ((AEBaseReportParam)localObject).C("none");
+          ((AEBaseReportParam)localObject).A(((AEGIFTextColorConfig.SmartTextColor)AEGIFTextColorConfig.b.get(AEGIFTextColorConfig.a[(i % AEGIFTextColorConfig.a.length)])).a);
+          ((AEBaseReportParam)localObject).B(((AEGIFPreviewWrapper)AEGIFChunkPreviewFragment.a(this.a).get(i)).d);
           paramView.add("none");
         }
         else
         {
-          ((AEBaseReportParam)localObject).r("none");
-          ((AEBaseReportParam)localObject).p("none");
-          ((AEBaseReportParam)localObject).q("none");
+          ((AEBaseReportParam)localObject).C("none");
+          ((AEBaseReportParam)localObject).A("none");
+          ((AEBaseReportParam)localObject).B("none");
           paramView.add("none");
         }
-        AEBaseDataReporter.a().ar();
+        AEBaseDataReporter.a().aw();
       }
       i += 1;
     }
@@ -77,8 +77,8 @@ class AEGIFChunkPreviewFragment$3
       i += 1;
     }
     AEBaseDataReporter.a().a(localSet.size(), ((StringBuilder)localObject).toString());
-    AEGIFChunkPreviewFragment.a(this.a).a(false);
-    PngCreateResult localPngCreateResult = AEGIFChunkPreviewFragment.a(this.a).a();
+    AEGIFChunkPreviewFragment.d(this.a).a(false);
+    PngCreateResult localPngCreateResult = AEGIFChunkPreviewFragment.d(this.a).a();
     paramView = new StringBuilder();
     paramView.append("save button click, pngDirs = ");
     paramView.append(localPngCreateResult.a);
@@ -95,11 +95,11 @@ class AEGIFChunkPreviewFragment$3
       Integer localInteger = (Integer)localPngCreateResult.d.get(i);
       if (localSet.contains(localInteger))
       {
-        if ((i == 0) && (AEGIFChunkPreviewFragment.a(this.a) != null))
+        if ((i == 0) && (AEGIFChunkPreviewFragment.e(this.a) != null))
         {
-          localArrayList1.add(AEGIFChunkPreviewFragment.a(this.a).jdField_a_of_type_JavaLangString);
-          localArrayList2.add(AEGIFChunkPreviewFragment.a(this.a).b);
-          localArrayList3.add(AEGIFChunkPreviewFragment.a(this.a).c);
+          localArrayList1.add(AEGIFChunkPreviewFragment.e(this.a).a);
+          localArrayList2.add(AEGIFChunkPreviewFragment.e(this.a).b);
+          localArrayList3.add(AEGIFChunkPreviewFragment.e(this.a).c);
         }
         else
         {
@@ -133,7 +133,7 @@ class AEGIFChunkPreviewFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFChunkPreviewFragment.3
  * JD-Core Version:    0.7.0.1
  */

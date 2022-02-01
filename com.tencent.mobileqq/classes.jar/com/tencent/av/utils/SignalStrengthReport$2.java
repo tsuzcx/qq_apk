@@ -11,10 +11,10 @@ class SignalStrengthReport$2
   public void run()
   {
     Object localObject1 = this.this$0;
-    ((SignalStrengthReport)localObject1).b = 0;
-    if (((SignalStrengthReport)localObject1).jdField_a_of_type_Int != -1)
+    ((SignalStrengthReport)localObject1).i = 0;
+    if (((SignalStrengthReport)localObject1).f != -1)
     {
-      if (SignalStrengthReport.e() == 1) {
+      if (SignalStrengthReport.h() == 1) {
         try
         {
           localObject1 = SignalStrengthReport.a(this.this$0);
@@ -22,15 +22,15 @@ class SignalStrengthReport$2
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("http://");
           localStringBuilder.append((String)localObject1);
-          ((SignalStrengthReport)localObject2).b = SignalStrengthReport.PingUtil.a(localStringBuilder.toString());
-          if (this.this$0.b < 0) {
-            this.this$0.b = 0;
+          ((SignalStrengthReport)localObject2).i = SignalStrengthReport.PingUtil.a(localStringBuilder.toString());
+          if (this.this$0.i < 0) {
+            this.this$0.i = 0;
           }
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("mPingTask gatewayIP:");
           ((StringBuilder)localObject2).append((String)localObject1);
           ((StringBuilder)localObject2).append(" | avgRtt:");
-          ((StringBuilder)localObject2).append(this.this$0.b);
+          ((StringBuilder)localObject2).append(this.this$0.i);
           AVLog.printColorLog("SignalStrengthReport", ((StringBuilder)localObject2).toString());
         }
         catch (Exception localException)
@@ -41,8 +41,8 @@ class SignalStrengthReport$2
           AVLog.printColorLog("SignalStrengthReport", ((StringBuilder)localObject2).toString());
         }
       }
-      if (this.this$0.jdField_a_of_type_AndroidOsHandler != null) {
-        this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.this$0.jdField_a_of_type_Int);
+      if (this.this$0.h != null) {
+        this.this$0.h.postDelayed(this, this.this$0.f);
       }
     }
   }

@@ -11,7 +11,7 @@ class FeedSegment$16
   public void run()
   {
     SLog.b("Q.qqstory.home:FeedSegment", "doScrollHorizal, findViewHolder, null, waiting done");
-    FeedSegment.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed, this.jdField_a_of_type_JavaLangString, true);
+    FeedSegment.a(this.this$0, this.a, this.b, this.c, true);
   }
 }
 

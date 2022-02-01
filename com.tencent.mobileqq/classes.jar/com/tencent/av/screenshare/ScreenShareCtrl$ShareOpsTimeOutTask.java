@@ -8,32 +8,32 @@ import mqq.util.WeakReference;
 class ScreenShareCtrl$ShareOpsTimeOutTask
   implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final SessionInfo jdField_a_of_type_ComTencentAvAppSessionInfo;
-  private final WeakReference<VideoController> jdField_a_of_type_MqqUtilWeakReference;
-  private final int b;
+  private final WeakReference<VideoController> a;
+  private final SessionInfo b;
+  private final int c;
+  private final int d;
   
   public ScreenShareCtrl$ShareOpsTimeOutTask(VideoController paramVideoController, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramVideoController);
-    this.jdField_a_of_type_ComTencentAvAppSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = new WeakReference(paramVideoController);
+    this.b = paramSessionInfo;
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
   
   public void run()
   {
-    VideoController localVideoController = (VideoController)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localVideoController != null) && (this.jdField_a_of_type_ComTencentAvAppSessionInfo != null))
+    VideoController localVideoController = (VideoController)this.a.get();
+    if ((localVideoController != null) && (this.b != null))
     {
       int i;
-      if (this.jdField_a_of_type_Int == 1) {
+      if (this.c == 1) {
         i = 86;
       } else {
         i = 89;
       }
       int j;
-      if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_j_of_type_Boolean) {
+      if (this.b.H) {
         j = 2;
       } else {
         j = 1;
@@ -44,13 +44,13 @@ class ScreenShareCtrl$ShareOpsTimeOutTask
         localStringBuilder.append("ShareOpsTimeOutTask, actionResult[");
         localStringBuilder.append(i);
         localStringBuilder.append("], session[");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentAvAppSessionInfo);
+        localStringBuilder.append(this.b);
         localStringBuilder.append("], multiAVSubType[");
         localStringBuilder.append(j);
         localStringBuilder.append("]");
         QLog.i("AVShare", 2, localStringBuilder.toString());
       }
-      localVideoController.onShareOpsCallback(i, this.b, this.jdField_a_of_type_ComTencentAvAppSessionInfo.E, this.jdField_a_of_type_ComTencentAvAppSessionInfo.f, this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_j_of_type_Int, j);
+      localVideoController.onShareOpsCallback(i, this.d, this.b.aQ, this.b.aN, this.b.o, j);
     }
   }
 }

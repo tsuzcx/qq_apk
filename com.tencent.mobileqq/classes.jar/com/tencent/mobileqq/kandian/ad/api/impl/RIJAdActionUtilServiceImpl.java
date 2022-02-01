@@ -52,7 +52,7 @@ public class RIJAdActionUtilServiceImpl
   
   public void doAppADJump(Context paramContext, AdvertisementInfo paramAdvertisementInfo, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ReadinJoyActionUtil.a(paramContext, paramAdvertisementInfo, paramIReadInJoyBaseAdapter, paramInt, paramBoolean1, paramBoolean2);
+    ReadinJoyActionUtil.b(paramContext, paramAdvertisementInfo, paramIReadInJoyBaseAdapter, paramInt, paramBoolean1, paramBoolean2);
   }
   
   public String getAdExtParam(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
@@ -62,12 +62,17 @@ public class RIJAdActionUtilServiceImpl
   
   public Object getAdInfoParams(Context paramContext, AdvertisementInfo paramAdvertisementInfo, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, int paramInt, boolean paramBoolean, AdJumpParams paramAdJumpParams)
   {
-    return ReadinJoyActionUtil.a(paramContext, paramAdvertisementInfo, paramIReadInJoyBaseAdapter, paramInt, paramBoolean, paramAdJumpParams);
+    return ReadinJoyActionUtil.c(paramContext, paramAdvertisementInfo, paramIReadInJoyBaseAdapter, paramInt, paramBoolean, paramAdJumpParams);
   }
   
   public Object getAdInfoParams(AdvertisementInfo paramAdvertisementInfo)
   {
     return ReadinJoyActionUtil.a(paramAdvertisementInfo);
+  }
+  
+  public Object getAdInfoParams(AdvertisementInfo paramAdvertisementInfo, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter)
+  {
+    return ReadinJoyActionUtil.a(paramAdvertisementInfo, paramIReadInJoyBaseAdapter);
   }
   
   public Integer gotoAdvVideoCellPage(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, Object paramObject, int paramInt, boolean paramBoolean, AdJumpParams paramAdJumpParams)
@@ -100,14 +105,19 @@ public class RIJAdActionUtilServiceImpl
     return ReadinJoyActionUtil.a(paramAdvertisementInfo, paramActivity, (ReadInJoyGdtAdParams)paramObject);
   }
   
+  public Object obtainGdtParams(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, Object paramObject, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter)
+  {
+    return ReadinJoyActionUtil.a(paramAdvertisementInfo, paramActivity, (ReadInJoyGdtAdParams)paramObject, paramIReadInJoyBaseAdapter);
+  }
+  
   public Integer openAppFromGdtApi(Context paramContext, AdvertisementInfo paramAdvertisementInfo, Object paramObject, int paramInt, boolean paramBoolean, AdJumpParams paramAdJumpParams)
   {
-    return ReadinJoyActionUtil.d(paramContext, paramAdvertisementInfo, (IReadInJoyBaseAdapter)paramObject, paramInt, paramBoolean, paramAdJumpParams);
+    return ReadinJoyActionUtil.e(paramContext, paramAdvertisementInfo, (IReadInJoyBaseAdapter)paramObject, paramInt, paramBoolean, paramAdJumpParams);
   }
   
   public boolean openAppFromGdtApi(Context paramContext, AdvertisementInfo paramAdvertisementInfo, IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter, int paramInt, boolean paramBoolean)
   {
-    return ReadinJoyActionUtil.a(paramContext, paramAdvertisementInfo, paramIReadInJoyBaseAdapter, paramInt, paramBoolean);
+    return ReadinJoyActionUtil.b(paramContext, paramAdvertisementInfo, paramIReadInJoyBaseAdapter, paramInt, paramBoolean);
   }
   
   public void processAdClickWithPos(ViewBase paramViewBase1, ViewBase paramViewBase2, Activity paramActivity, AbsBaseArticleInfo paramAbsBaseArticleInfo, Object paramObject, int paramInt1, int paramInt2)
@@ -154,7 +164,7 @@ public class RIJAdActionUtilServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdActionUtilServiceImpl
  * JD-Core Version:    0.7.0.1
  */

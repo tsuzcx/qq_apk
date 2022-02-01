@@ -17,7 +17,7 @@
     <com.tencent.mobileqq.widget.QQBlurView android:id="@id/ac8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="68.0dip" android:layout_alignParentBottom="true" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/agk" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="68.0dip" android:layout_alignParentBottom="true">
         <Button android:id="@id/m8q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/qt" android:layout_marginRight="10.0dip" android:text="@string/iqy" android:layout_weight="1.0" style="@style/e2" />
-        <Button android:id="@id/my3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/qt" android:layout_marginRight="10.0dip" android:text="@string/buf" android:layout_weight="1.0" style="@style/e2" />
+        <Button android:id="@id/n8c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/qt" android:layout_marginRight="10.0dip" android:text="@string/buf" android:layout_weight="1.0" style="@style/e2" />
         <Button android:id="@id/aek" android:layout_width="fill_parent" android:layout_height="@dimen/qt" android:text="@string/btl" android:layout_weight="1.0" style="@style/e0" />
     </LinearLayout>
 </RelativeLayout>

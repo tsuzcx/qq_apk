@@ -6,37 +6,23 @@ import com.tencent.mobileqq.pic.Logger;
 
 public class ClipStrategy
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = false;
+  float a;
+  int b;
+  int c;
+  boolean d;
+  int e;
+  boolean f = false;
+  boolean g = false;
   
   public ClipStrategy(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / this.jdField_b_of_type_Int);
-    this.jdField_c_of_type_Int = paramInt3;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.a = (this.b / this.c);
+    this.e = paramInt3;
     if ((paramInt3 != 0) && (paramInt3 % 90 == 0)) {
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
     }
-  }
-  
-  private boolean a(Bitmap paramBitmap)
-  {
-    if (b(paramBitmap))
-    {
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      int k = this.jdField_a_of_type_Int;
-      if ((i > k) || (j > k)) {
-        return true;
-      }
-    }
-    return false;
   }
   
   private Bitmap b(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -45,8 +31,8 @@ public class ClipStrategy
     int m = paramBitmap.getHeight();
     Matrix localMatrix = new Matrix();
     Bitmap localBitmap = paramBitmap;
-    if (this.jdField_a_of_type_Boolean) {
-      localMatrix.postRotate(this.jdField_c_of_type_Int, k >> 1, m >> 1);
+    if (this.d) {
+      localMatrix.postRotate(this.e, k >> 1, m >> 1);
     }
     for (;;)
     {
@@ -69,8 +55,8 @@ public class ClipStrategy
         a("keepShortSideAndClipLongSide rotate", "cut createBitmap OutOfMemoryError");
         return null;
       }
-      this.jdField_b_of_type_Boolean = true;
-      int j = (int)(paramInt2 * this.jdField_a_of_type_Float);
+      this.f = true;
+      int j = (int)(paramInt2 * this.a);
       paramInt1 = j;
       int i = paramInt2;
       if (k > m)
@@ -82,7 +68,7 @@ public class ClipStrategy
       j = i;
       try
       {
-        if (this.jdField_c_of_type_Int / 90 % 2 != 0)
+        if (this.e / 90 % 2 != 0)
         {
           paramInt2 = i;
           j = paramInt1;
@@ -115,26 +101,40 @@ public class ClipStrategy
     }
   }
   
-  private boolean b(Bitmap paramBitmap)
+  private boolean c(Bitmap paramBitmap)
+  {
+    if (d(paramBitmap))
+    {
+      int i = paramBitmap.getWidth();
+      int j = paramBitmap.getHeight();
+      int k = this.b;
+      if ((i > k) || (j > k)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private boolean d(Bitmap paramBitmap)
   {
     int i = paramBitmap.getWidth();
     int j = paramBitmap.getHeight();
     float f1 = i;
     float f2 = j;
-    float f3 = this.jdField_a_of_type_Float;
+    float f3 = this.a;
     return (f1 > f2 * f3) || (f2 > f1 * f3);
   }
   
-  private Bitmap c(Bitmap paramBitmap)
+  private Bitmap e(Bitmap paramBitmap)
   {
     int j = paramBitmap.getWidth();
     int k = paramBitmap.getHeight();
     Matrix localMatrix = new Matrix();
     Bitmap localBitmap1 = paramBitmap;
     Bitmap localBitmap2;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      localMatrix.postRotate(this.jdField_c_of_type_Int, j >> 1, k >> 1);
+      localMatrix.postRotate(this.e, j >> 1, k >> 1);
       int i = j;
       try
       {
@@ -162,7 +162,7 @@ public class ClipStrategy
   public Bitmap a(Bitmap paramBitmap)
   {
     Bitmap localBitmap = paramBitmap;
-    if (a(paramBitmap)) {
+    if (c(paramBitmap)) {
       localBitmap = b(paramBitmap);
     }
     if (localBitmap == null) {
@@ -180,13 +180,13 @@ public class ClipStrategy
       k = j;
       j = i;
     }
-    if (b(localBitmap)) {
+    if (d(localBitmap)) {
       return b(localBitmap, j, k);
     }
-    if (j > this.jdField_a_of_type_Int) {
+    if (j > this.b) {
       return a(localBitmap, j, k);
     }
-    return c(localBitmap);
+    return e(localBitmap);
   }
   
   Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -194,12 +194,12 @@ public class ClipStrategy
     paramInt2 = paramBitmap.getWidth();
     int i = paramBitmap.getHeight();
     Object localObject = new Matrix();
-    this.jdField_c_of_type_Boolean = true;
-    float f = this.jdField_a_of_type_Int / (paramInt1 * 1.0F);
-    if (this.jdField_a_of_type_Boolean) {
-      ((Matrix)localObject).postRotate(this.jdField_c_of_type_Int, paramInt2 >> 1, i >> 1);
+    this.g = true;
+    float f1 = this.b / (paramInt1 * 1.0F);
+    if (this.d) {
+      ((Matrix)localObject).postRotate(this.e, paramInt2 >> 1, i >> 1);
     }
-    ((Matrix)localObject).postScale(f, f);
+    ((Matrix)localObject).postScale(f1, f1);
     paramInt1 = paramInt2;
     try
     {
@@ -236,7 +236,7 @@ public class ClipStrategy
     } else {
       i = n;
     }
-    int m = (int)(i * this.jdField_a_of_type_Float);
+    int m = (int)(i * this.a);
     int k = i;
     int j = m;
     if (n > i1)
@@ -268,7 +268,7 @@ public class ClipStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.ClipStrategy
  * JD-Core Version:    0.7.0.1
  */

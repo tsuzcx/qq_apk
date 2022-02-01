@@ -22,16 +22,16 @@ public final class AssociateModuleLayout$refreshTipsView$clickableSpan$1
     Intrinsics.checkParameterIsNotNull(paramView, "widget");
     paramView = new StringBuilder();
     paramView.append("click user protocal url=");
-    paramView.append(this.a.a());
+    paramView.append(this.a.getUserProtocolUrl());
     TLog.a("AssociateModuleLayout", paramView.toString());
-    paramView = this.a.a();
+    paramView = this.a.getUserProtocolUrl();
     if (paramView != null)
     {
       Context localContext = this.a.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
       Object localObject = this.a.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      localObject = ((Context)localObject).getResources().getString(R.string.P);
+      localObject = ((Context)localObject).getResources().getString(R.string.G);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getStr…(R.string.protocol_title)");
       TopicSDKHelperKt.a(localContext, (String)localObject, paramView);
     }
@@ -46,7 +46,7 @@ public final class AssociateModuleLayout$refreshTipsView$clickableSpan$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.AssociateModuleLayout.refreshTipsView.clickableSpan.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import android.graphics.Bitmap;
 
 public class PaWeatherPaticle
 {
-  float jdField_a_of_type_Float;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Bitmap a;
   float b;
   float c;
   float d;
+  float e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PaWeatherPaticle
  * JD-Core Version:    0.7.0.1
  */

@@ -13,34 +13,34 @@ import java.util.List;
 public class TopicShareHelper$ActionSheetItemAdapter
   extends ArrayAdapter<IPublicAccountBrowser.ActionSheetItem>
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<IPublicAccountBrowser.ActionSheetItem> jdField_a_of_type_JavaUtilList;
+  private List<IPublicAccountBrowser.ActionSheetItem> a;
+  private LayoutInflater b;
   
   public TopicShareHelper$ActionSheetItemAdapter(Context paramContext, int paramInt, List<IPublicAccountBrowser.ActionSheetItem> paramList)
   {
     super(paramContext, paramInt, paramList);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.a = paramList;
+    this.b = LayoutInflater.from(paramContext);
   }
   
   public IPublicAccountBrowser.ActionSheetItem a(int paramInt)
   {
-    return (IPublicAccountBrowser.ActionSheetItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (IPublicAccountBrowser.ActionSheetItem)this.a.get(paramInt);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559099, null);
+      paramView = this.b.inflate(2131624760, null);
       paramViewGroup = new TopicShareHelper.ActionSheetItemViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373198));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373199));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131440807));
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131440808));
       paramView.setTag(paramViewGroup);
     }
     else
@@ -48,15 +48,15 @@ public class TopicShareHelper$ActionSheetItemAdapter
       paramViewGroup = (TopicShareHelper.ActionSheetItemViewHolder)paramView.getTag();
     }
     IPublicAccountBrowser.ActionSheetItem localActionSheetItem = a(paramInt);
-    paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountBrowser$ActionSheetItem = localActionSheetItem;
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localActionSheetItem.jdField_a_of_type_JavaLangString);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(localActionSheetItem.jdField_a_of_type_Int);
+    paramViewGroup.c = localActionSheetItem;
+    paramViewGroup.a.setText(localActionSheetItem.c);
+    paramViewGroup.b.setBackgroundResource(localActionSheetItem.a);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.TopicShareHelper.ActionSheetItemAdapter
  * JD-Core Version:    0.7.0.1
  */

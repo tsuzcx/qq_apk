@@ -17,7 +17,7 @@ class FaceUIController$1
       if (paramInt != 1) {
         return;
       }
-      QQToast.a(this.a.a, 2, 2131690117, 0).a();
+      QQToast.makeText(this.a.c, 2, 2131887016, 0).show();
       paramDialogInterface.dismiss();
       ReportController.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
       return;
@@ -27,7 +27,7 @@ class FaceUIController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FaceUIController.1
  * JD-Core Version:    0.7.0.1
  */

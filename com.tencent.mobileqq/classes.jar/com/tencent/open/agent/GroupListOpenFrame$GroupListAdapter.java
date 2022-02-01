@@ -16,7 +16,7 @@ public class GroupListOpenFrame$GroupListAdapter
   
   public int getCount()
   {
-    return this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.b();
+    return this.a.i.c();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -25,36 +25,36 @@ public class GroupListOpenFrame$GroupListAdapter
     if (paramView == null)
     {
       localViewHolder = new GroupListOpenFrame.GroupListAdapter.ViewHolder(this);
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559675, this.a.jdField_a_of_type_ComTencentWidgetXListView, false);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363819));
-      localViewHolder.b = ((TextView)paramView.findViewById(2131367832));
-      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367831));
+      paramView = this.a.m.inflate(2131625706, this.a.a, false);
+      localViewHolder.a = ((TextView)paramView.findViewById(2131429754));
+      localViewHolder.b = ((TextView)paramView.findViewById(2131434411));
+      localViewHolder.c = ((RelativeLayout)paramView.findViewById(2131434410));
       paramView.setTag(localViewHolder);
     }
     else
     {
       localViewHolder = (GroupListOpenFrame.GroupListAdapter.ViewHolder)paramView.getTag();
     }
-    String str = this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramInt);
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-    localViewHolder.b.setText(String.valueOf(this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramInt)));
-    int i = (int)(this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a * 10.0F);
+    String str = this.a.i.c(paramInt);
+    localViewHolder.a.setText(str);
+    localViewHolder.b.setText(String.valueOf(this.a.i.b(paramInt)));
+    int i = (int)(this.a.j.D * 10.0F);
     if (paramInt == 0) {
-      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839449);
+      localViewHolder.c.setBackgroundResource(2130839638);
     } else if (paramInt == getCount() - 1) {
-      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839440);
+      localViewHolder.c.setBackgroundResource(2130839629);
     } else {
-      localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130839443);
+      localViewHolder.c.setBackgroundResource(2130839632);
     }
-    localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, 0, i, 0);
-    localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new GroupListOpenFrame.GroupListAdapter.1(this, paramInt, str));
+    localViewHolder.c.setPadding(i, 0, i, 0);
+    localViewHolder.c.setOnClickListener(new GroupListOpenFrame.GroupListAdapter.1(this, paramInt, str));
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.GroupListOpenFrame.GroupListAdapter
  * JD-Core Version:    0.7.0.1
  */

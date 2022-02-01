@@ -9,7 +9,7 @@ class AvTipsView$1
   
   public void onGlobalLayout()
   {
-    if (this.a.a == null) {
+    if (this.a.b == null) {
       return;
     }
     this.a.a(false);

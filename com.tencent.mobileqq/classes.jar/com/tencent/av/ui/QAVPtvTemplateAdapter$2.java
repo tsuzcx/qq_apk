@@ -1,5 +1,6 @@
 package com.tencent.av.ui;
 
+import com.tencent.av.ui.effect.interfaces.IEffectCallback;
 import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 class QAVPtvTemplateAdapter$2
@@ -9,8 +10,8 @@ class QAVPtvTemplateAdapter$2
   
   public void onScrollStateChanged(int paramInt)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(0L);
+    if ((paramInt == 4097) && (this.a.l != null)) {
+      this.a.l.a(0L);
     }
   }
 }

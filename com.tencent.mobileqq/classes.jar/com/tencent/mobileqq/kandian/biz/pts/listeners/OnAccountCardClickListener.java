@@ -22,7 +22,7 @@ public class OnAccountCardClickListener
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.a.mSocialFeedInfo.a.a.d;
+    paramViewBase = this.a.mSocialFeedInfo.s.k.f;
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     AbsBaseArticleInfo localAbsBaseArticleInfo = this.a;
     RIJFrameworkReportManager.b(localAbsBaseArticleInfo, (int)localAbsBaseArticleInfo.mChannelID);
@@ -31,7 +31,7 @@ public class OnAccountCardClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnAccountCardClickListener
  * JD-Core Version:    0.7.0.1
  */

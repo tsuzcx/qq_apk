@@ -9,7 +9,7 @@ public class g
   private static final int c = ;
   private static final int d = ViewConfiguration.getTouchSlop();
   boolean a = false;
-  g.a b;
+  final g.a b;
   private Handler e;
   private float f = 0.0F;
   private float g = 0.0F;
@@ -17,11 +17,6 @@ public class g
   public g(g.a parama)
   {
     this.b = parama;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
   }
   
   private g.a b()
@@ -195,7 +190,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.g
  * JD-Core Version:    0.7.0.1
  */

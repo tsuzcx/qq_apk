@@ -20,70 +20,56 @@ import mqq.os.MqqHandler;
 public class StudyRoomTipBarHelper
   implements ILifeCycleHelper
 {
-  private long jdField_a_of_type_Long = 0L;
-  private TroopChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
-  private StudyRoomTipsBar jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar;
-  private StudyRoomManager.TroopStudyMemberChangeObserver jdField_a_of_type_ComTencentMobileqqStudyroomStudyRoomManager$TroopStudyMemberChangeObserver = new StudyRoomTipBarHelper.2(this);
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), new StudyRoomTipBarHelper.1(this));
+  private TroopChatPie a;
+  private StudyRoomTipsBar b;
+  private long c = 0L;
+  private final MqqHandler d = new MqqWeakReferenceHandler(Looper.getMainLooper(), new StudyRoomTipBarHelper.1(this));
+  private StudyRoomManager.TroopStudyMemberChangeObserver e = new StudyRoomTipBarHelper.2(this);
   
   public StudyRoomTipBarHelper(TroopChatPie paramTroopChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie = paramTroopChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar = new StudyRoomTipsBar(paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    this.a = paramTroopChatPie;
+    this.b = new StudyRoomTipsBar(paramTroopChatPie.d, paramTroopChatPie.f);
   }
   
-  private StudyRoomTipsBar a()
+  private void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar == null)
+    if ((this.b == null) && (this.a.bx().a(28)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar = new StudyRoomTipsBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar);
+      g();
+      this.b.a(this.a.ah.b);
+    }
+  }
+  
+  private StudyRoomTipsBar g()
+  {
+    if (this.b == null)
+    {
+      this.b = new StudyRoomTipsBar(this.a.d, this.a.f);
+      if (this.a.J() != null) {
+        this.a.J().b(this.b);
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar;
+    return this.b;
   }
   
-  private void b()
+  private void h()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar == null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b().a(28)))
-    {
-      a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.aF();
+    this.a.cc();
   }
   
   public String a(boolean paramBoolean)
   {
-    int i = ((StudyRoomManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+    int i = ((StudyRoomManager)this.a.d.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).b(this.a.ah.b);
+    Object localObject = this.a.f.getResources();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(i);
     localStringBuilder.append("");
-    localObject = ((Resources)localObject).getString(2131719278, new Object[] { localStringBuilder.toString() });
+    localObject = ((Resources)localObject).getString(2131916830, new Object[] { localStringBuilder.toString() });
     if (paramBoolean) {
-      localObject = HardCodeUtil.a(2131693685);
+      localObject = HardCodeUtil.a(2131891260);
     }
     return localObject;
-  }
-  
-  public void a()
-  {
-    if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < 500L) {
-      return;
-    }
-    if (a()) {
-      c();
-    } else {
-      b();
-    }
-    c();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
   public void a(TipsBarTask paramTipsBarTask)
@@ -95,27 +81,27 @@ public class StudyRoomTipBarHelper
       ((StringBuilder)localObject).append(paramTipsBarTask);
       QLog.d("StudyRoomTipBarHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar;
+    Object localObject = this.b;
     if ((localObject != null) && (localObject != paramTipsBarTask))
     {
       if (QLog.isColorLevel()) {
         QLog.d("StudyRoomTipBarHelper", 2, "onOtherTipsHide tip not equal StudyRoomTip");
       }
       b();
-      c();
+      h();
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() == null)
+    if (this.a.J() == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StudyRoomTipBarHelper", 2, "tipManager is null or together is null");
       }
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a() == this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar)
+    if (this.a.J().a() == this.b)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StudyRoomTipBarHelper", 2, "curTip is studyRoomTip");
@@ -130,18 +116,18 @@ public class StudyRoomTipBarHelper
     if (QLog.isColorLevel()) {
       QLog.d("StudyRoomTipBarHelper", 2, "showStudyRoomTip");
     }
-    if (!d()) {
+    if (!e()) {
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() == null)
+    if (this.a.J() == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StudyRoomTipBarHelper", 2, "tipManager is null");
       }
       return false;
     }
-    TipsBarTask localTipsBarTask = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
-    if ((localTipsBarTask != null) && (localTipsBarTask != this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar))
+    TipsBarTask localTipsBarTask = this.a.J().a();
+    if ((localTipsBarTask != null) && (localTipsBarTask != this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("StudyRoomTipBarHelper", 2, "currTip is other");
@@ -149,11 +135,11 @@ public class StudyRoomTipBarHelper
       return false;
     }
     if (localTipsBarTask != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar.a();
+      this.b.d();
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar, new Object[0]);
+      this.a.J().a(this.b, new Object[0]);
     }
-    c();
+    h();
     return true;
   }
   
@@ -162,16 +148,16 @@ public class StudyRoomTipBarHelper
     if (QLog.isColorLevel()) {
       QLog.d("StudyRoomTipBarHelper", 2, "dismissTogetherTip");
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a() != null))
+    if ((this.b != null) && (this.a.J() != null))
     {
-      TipsBarTask localTipsBarTask = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
-      if ((localTipsBarTask != null) && (localTipsBarTask == this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar))
+      TipsBarTask localTipsBarTask = this.a.J().a();
+      if ((localTipsBarTask != null) && (localTipsBarTask == this.b))
       {
         if (QLog.isColorLevel()) {
           QLog.d("StudyRoomTipBarHelper", 2, "currTip is studyRoomTips");
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().a();
-        c();
+        this.a.J().c();
+        h();
         return true;
       }
       return false;
@@ -182,9 +168,23 @@ public class StudyRoomTipBarHelper
     return false;
   }
   
-  public boolean d()
+  public void d()
   {
-    return ((StudyRoomManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) > 0;
+    if (Math.abs(System.currentTimeMillis() - this.c) < 500L) {
+      return;
+    }
+    if (a()) {
+      c();
+    } else {
+      b();
+    }
+    h();
+    this.c = System.currentTimeMillis();
+  }
+  
+  public boolean e()
+  {
+    return ((StudyRoomManager)this.a.d.getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).b(this.a.ah.b) > 0;
   }
   
   public String getTag()
@@ -199,7 +199,7 @@ public class StudyRoomTipBarHelper
   
   public void onMoveToState(int paramInt)
   {
-    StudyRoomManager localStudyRoomManager = (StudyRoomManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a().getManager(QQManagerFactory.STUDY_ROOM_MANAGER);
+    StudyRoomManager localStudyRoomManager = (StudyRoomManager)this.a.i().getManager(QQManagerFactory.STUDY_ROOM_MANAGER);
     if (paramInt != 3)
     {
       if (paramInt != 4)
@@ -209,26 +209,26 @@ public class StudyRoomTipBarHelper
           if (paramInt != 15) {
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipsBar = null;
-          localStudyRoomManager.b(this.jdField_a_of_type_ComTencentMobileqqStudyroomStudyRoomManager$TroopStudyMemberChangeObserver);
+          this.b = null;
+          localStudyRoomManager.b(this.e);
           return;
         }
-        b();
+        f();
         return;
       }
-      localStudyRoomManager.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomStudyRoomManager$TroopStudyMemberChangeObserver);
+      localStudyRoomManager.a(this.e);
       return;
     }
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    if (localTroopManager.b(str) != null) {
+    TroopManager localTroopManager = (TroopManager)this.a.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    String str = this.a.ah.b;
+    if (localTroopManager.f(str) != null) {
       localStudyRoomManager.a(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper
  * JD-Core Version:    0.7.0.1
  */

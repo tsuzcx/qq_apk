@@ -20,7 +20,7 @@ class WebProcessReceiver$2
     QMLog.d("TBS_update", ((StringBuilder)localObject).toString());
     if ((paramInt != 100) && (paramInt != 120) && (paramInt != 122))
     {
-      if (WebProcessReceiver.sTBSDownloading.compareAndSet(true, false))
+      if (WebProcessReceiver.S_TBS_DOWNLOADING.compareAndSet(true, false))
       {
         QbSdk.setTbsListener(null);
         int i = this.val$sp.getInt("tbs_download_count", 0);
@@ -67,7 +67,7 @@ class WebProcessReceiver$2
     if (paramInt == 200) {
       return;
     }
-    if (WebProcessReceiver.sTBSDownloading.compareAndSet(true, false))
+    if (WebProcessReceiver.S_TBS_DOWNLOADING.compareAndSet(true, false))
     {
       QbSdk.setTbsListener(null);
       long l1;
@@ -111,7 +111,7 @@ class WebProcessReceiver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.receiver.WebProcessReceiver.2
  * JD-Core Version:    0.7.0.1
  */

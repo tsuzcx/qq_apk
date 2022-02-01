@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import oicq.wlogin_sdk.report.c;
+import oicq.wlogin_sdk.report.a;
 import oicq.wlogin_sdk.report.event.b;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 import oicq.wlogin_sdk.tlv_type.tlv_t;
@@ -267,7 +267,7 @@ public class k
     ArrayList localArrayList = new ArrayList();
     String str = "";
     util.LOGI("tgtgt getRequestBody start", "");
-    c.a(Thread.currentThread());
+    oicq.wlogin_sdk.report.c.a(Thread.currentThread());
     long l8 = System.currentTimeMillis();
     Object localObject3 = new StringBuilder("tgtgt getRequestBody");
     ((StringBuilder)localObject3).append(util.LOG_TAG_GATEWAY_LOGIN_NEW_DOV);
@@ -380,7 +380,7 @@ public class k
             localObject6 = localObject7;
             break label3637;
           }
-          b.a(new oicq.wlogin_sdk.report.event.a("wtlogin_qimei_error", "tgtgt_error", str).a(String.valueOf(paramLong3)));
+          oicq.wlogin_sdk.report.event.c.a(new b("wtlogin_qimei_error", "tgtgt_error", str).a(String.valueOf(paramLong3)));
           localObject6 = new StringBuilder();
           ((StringBuilder)localObject6).append(util.LOG_TAG_QIMEI);
           ((StringBuilder)localObject6).append("tgtgt qimei = null ");
@@ -391,7 +391,7 @@ public class k
           util.LOGI((String)localObject6, ((StringBuilder)localObject7).toString());
           break;
           l4 = System.currentTimeMillis();
-          localObject1 = "6.0.0.2473".getBytes();
+          localObject1 = "6.0.0.2477".getBytes();
           localObject6 = new byte[t.B.length + 10 + 2 + localObject1.length + 4];
           util.int64_to_buf((byte[])localObject6, 0, (int)l1);
           util.int16_to_buf((byte[])localObject6, 4, t.B.length);
@@ -679,7 +679,7 @@ public class k
             }
             localObject2 = new tlv_t185().get_tlv_185(1);
             break label3187;
-            localObject2 = new tlv_t177().get_tlv_177(1619061003L, "6.0.0.2473");
+            localObject2 = new tlv_t177().get_tlv_177(1623833936L, "6.0.0.2477");
             break label3187;
             if ((this.x.s == null) || (this.x.s.length == 0)) {
               break label3286;
@@ -868,14 +868,14 @@ public class k
       paramInt1 += 1;
     }
     paramLong1 = System.currentTimeMillis();
-    oicq.wlogin_sdk.report.a.a().a(1, paramLong1 - l8, l5 - l4, l2 - l3);
-    c.b(Thread.currentThread());
+    a.a().a(1, paramLong1 - l8, l5 - l4, l2 - l3);
+    oicq.wlogin_sdk.report.c.b(Thread.currentThread());
     return b(paramArrayOfByte1, this.u, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.k
  * JD-Core Version:    0.7.0.1
  */

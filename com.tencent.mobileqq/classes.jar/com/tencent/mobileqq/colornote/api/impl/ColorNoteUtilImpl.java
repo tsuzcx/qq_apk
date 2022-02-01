@@ -23,7 +23,7 @@ public class ColorNoteUtilImpl
   
   public ColorNote createRecentColorNote(ColorNote paramColorNote)
   {
-    return ColorNoteUtils.a(paramColorNote);
+    return ColorNoteUtils.c(paramColorNote);
   }
   
   public void decorateColorNote(ColorNote paramColorNote)
@@ -38,7 +38,7 @@ public class ColorNoteUtilImpl
   
   public int getHistoryType(int paramInt)
   {
-    return ColorNoteUtils.b(paramInt);
+    return ColorNoteUtils.d(paramInt);
   }
   
   public int getOriginType(int paramInt)
@@ -63,37 +63,37 @@ public class ColorNoteUtilImpl
   
   public boolean isDisableSwipeByUrl(String paramString)
   {
-    return ColorNoteUtils.d(paramString);
+    return ColorNoteUtils.e(paramString);
   }
   
   public boolean isNeedNowNotify(ColorNote paramColorNote)
   {
-    return ColorNoteUtils.c(paramColorNote);
+    return ColorNoteUtils.h(paramColorNote);
   }
   
   public boolean isRecentColorNote(ColorNote paramColorNote)
   {
-    return ColorNoteUtils.b(paramColorNote);
+    return ColorNoteUtils.d(paramColorNote);
   }
   
   public boolean isUpcomingColorNote(ColorNote paramColorNote)
   {
-    return ColorNoteUtils.d(paramColorNote);
+    return ColorNoteUtils.i(paramColorNote);
   }
   
   public boolean isUrlBlocked(String paramString)
   {
-    return ColorNoteUtils.a(paramString);
+    return ColorNoteUtils.b(paramString);
   }
   
   public boolean isUrlShareEntranceBlocked(String paramString)
   {
-    return ColorNoteUtils.c(paramString);
+    return ColorNoteUtils.d(paramString);
   }
   
   public boolean isUrlSmallScreenBlocked(String paramString)
   {
-    return ColorNoteUtils.b(paramString);
+    return ColorNoteUtils.c(paramString);
   }
   
   public ColorNoteRecentConfBean loadConfig()
@@ -158,7 +158,7 @@ public class ColorNoteUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.api.impl.ColorNoteUtilImpl
  * JD-Core Version:    0.7.0.1
  */

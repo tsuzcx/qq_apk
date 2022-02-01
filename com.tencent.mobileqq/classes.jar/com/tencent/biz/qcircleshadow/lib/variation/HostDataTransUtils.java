@@ -50,8 +50,8 @@ public class HostDataTransUtils
   
   public static void clearRedDotInfo()
   {
-    if (QCircleHandler.a() != null) {
-      QCircleHandler.a().c();
+    if (QCircleHandler.d() != null) {
+      QCircleHandler.d().c();
     }
   }
   
@@ -136,7 +136,7 @@ public class HostDataTransUtils
   
   public static void initVideoSdk(QCircleVideoSdkInitListener paramQCircleVideoSdkInitListener)
   {
-    QQVideoPlaySDKManager.a(MobileQQ.context, new HostDataTransUtils.2(paramQCircleVideoSdkInitListener));
+    QQVideoPlaySDKManager.initSDKAsync(MobileQQ.context, new HostDataTransUtils.2(paramQCircleVideoSdkInitListener));
   }
   
   public static boolean isStudyMode()
@@ -196,7 +196,7 @@ public class HostDataTransUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostDataTransUtils
  * JD-Core Version:    0.7.0.1
  */

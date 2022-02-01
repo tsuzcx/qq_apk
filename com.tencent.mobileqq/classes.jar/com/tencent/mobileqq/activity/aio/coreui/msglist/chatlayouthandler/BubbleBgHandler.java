@@ -25,23 +25,23 @@ public class BubbleBgHandler
   
   public void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor = new ChatLayoutBubbleBgExecutorImpl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramContext);
+    if (this.a == null) {
+      this.a = new ChatLayoutBubbleBgExecutorImpl(this.b, this.c, paramContext);
     }
     if (paramBundle != null)
     {
       boolean bool = paramBundle.getBoolean("shouldDownload", false);
       int i = paramBundle.getInt("bubbleType", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor.a(paramChatMessage, paramViewHolder, paramInt1, paramInt2, bool, i);
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor.a();
-      paramChatMessage = new BubbleBgHandler.BubbleBgHandlerListenerInfo(paramInt1, paramInt2, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramChatMessage, paramBaseChatItemLayout, paramViewHolder, i);
+      this.a.a(paramChatMessage, paramViewHolder, paramInt1, paramInt2, bool, i);
+      i = this.a.a();
+      paramChatMessage = new BubbleBgHandler.BubbleBgHandlerListenerInfo(paramInt1, paramInt2, this.c, paramChatMessage, paramBaseChatItemLayout, paramViewHolder, i);
       a(ChatLayoutListenerController.c, paramChatMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.BubbleBgHandler
  * JD-Core Version:    0.7.0.1
  */

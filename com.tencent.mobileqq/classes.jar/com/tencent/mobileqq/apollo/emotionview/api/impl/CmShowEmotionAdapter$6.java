@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.apollo.emotionview.api.impl;
 
-import com.tencent.mobileqq.apollo.model.ApolloInfo;
-import com.tencent.mobileqq.apollo.player.GetFrameCallback;
-import com.tencent.mobileqq.apollo.player.action.CMSAction;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.OnSendListener;
+import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel;
 
 class CmShowEmotionAdapter$6
-  implements GetFrameCallback
+  implements ApolloLinearLayout.OnSendListener
 {
-  CmShowEmotionAdapter$6(CmShowEmotionAdapter paramCmShowEmotionAdapter, ApolloLinearLayout.ViewHolder paramViewHolder, ApolloInfo paramApolloInfo) {}
+  CmShowEmotionAdapter$6(CmShowEmotionAdapter paramCmShowEmotionAdapter) {}
   
-  public void a(boolean paramBoolean, String paramString, @NotNull CMSAction paramCMSAction)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder != null) {
-      ThreadManager.getUIHandler().post(new CmShowEmotionAdapter.6.1(this));
+    AIOEmoticonUIHelper localAIOEmoticonUIHelper = (AIOEmoticonUIHelper)CmShowEmotionAdapter.f(this.a).q(105);
+    if (localAIOEmoticonUIHelper != null) {
+      localAIOEmoticonUIHelper.j().onPullDown();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.emotionview.api.impl.CmShowEmotionAdapter.6
  * JD-Core Version:    0.7.0.1
  */

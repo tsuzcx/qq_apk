@@ -3,6 +3,7 @@ package com.tencent.av.ManageConfig;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.av.business.manager.BusinessManager;
+import com.tencent.av.qavperf.QAVPUtils;
 import com.tencent.av.ui.AIOTopRightButtonConfig;
 import com.tencent.av.utils.QAVConfigUtils;
 import com.tencent.av.utils.QAVPerfTestConfig;
@@ -29,15 +30,15 @@ public class QAVConfig
     super(paramInt);
   }
   
-  public static int a(int paramInt)
-  {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return QConfigManager.a().a(paramInt, localAppInterface.getCurrentAccountUin());
-  }
-  
   public static QAVConfItem b(int paramInt)
   {
-    return (QAVConfItem)QConfigManager.a().a(paramInt);
+    return (QAVConfItem)QConfigManager.b().b(paramInt);
+  }
+  
+  public static int c(int paramInt)
+  {
+    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    return QConfigManager.b().a(paramInt, localAppInterface.getCurrentAccountUin());
   }
   
   @NonNull
@@ -45,7 +46,7 @@ public class QAVConfig
   {
     if (QLog.isDevelopLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("migrateOldOrDefaultContent, type[");
       localStringBuilder.append(paramInt);
@@ -59,9 +60,9 @@ public class QAVConfig
   protected QAVConfItem a(QConfItem[] paramArrayOfQConfItem)
   {
     QAVConfItem localQAVConfItem = new QAVConfItem();
-    paramArrayOfQConfItem = a(this.jdField_a_of_type_JavaLangString, type(), paramArrayOfQConfItem);
+    paramArrayOfQConfItem = a(this.a, type(), paramArrayOfQConfItem);
     if (paramArrayOfQConfItem != null) {
-      localQAVConfItem.a(paramArrayOfQConfItem.jdField_a_of_type_Int, paramArrayOfQConfItem.jdField_a_of_type_JavaLangString);
+      localQAVConfItem.a(paramArrayOfQConfItem.a, paramArrayOfQConfItem.b);
     }
     return localQAVConfItem;
   }
@@ -90,28 +91,33 @@ public class QAVConfig
             {
               if ((i != 367) && (i != 382))
               {
-                if (i != 735) {
+                if (i != 735)
+                {
+                  if (i != 759) {
+                    return;
+                  }
+                  QAVPUtils.a(localQQAppInterface.getApp(), paramQAVConfItem.b);
                   return;
                 }
-                QAVPerfTestConfig.a(paramQAVConfItem.jdField_a_of_type_JavaLangString, localAppInterface.getCurrentAccountUin());
+                QAVPerfTestConfig.a(paramQAVConfItem.b, localAppInterface.getCurrentAccountUin());
                 return;
               }
-              BusinessCommonConfig.getInstance(localQQAppInterface).decodeConfig(localQQAppInterface, type(), paramQAVConfItem.jdField_a_of_type_JavaLangString);
+              BusinessCommonConfig.getInstance(localQQAppInterface).decodeConfig(localQQAppInterface, type(), paramQAVConfItem.b);
               return;
             }
-            QAVConfigUtils.a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
+            QAVConfigUtils.a(paramQAVConfItem.b);
             return;
           }
-          QAVGroupConfig.a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
+          QAVGroupConfig.a(paramQAVConfItem.b);
           return;
         }
-        ScoreManager.a(localQQAppInterface, paramQAVConfItem.jdField_a_of_type_JavaLangString, localAppInterface.getCurrentAccountUin());
+        ScoreManager.a(localQQAppInterface, paramQAVConfItem.b, localAppInterface.getCurrentAccountUin());
         return;
       }
-      AIOTopRightButtonConfig.a().a(paramQAVConfItem.jdField_a_of_type_JavaLangString);
+      AIOTopRightButtonConfig.a().a(paramQAVConfItem.b);
       return;
     }
-    BusinessManager.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface.getApp(), 1, false);
+    BusinessManager.a(this.a, localQQAppInterface.getApp(), 1, false);
   }
   
   public Class<QAVConfItem> clazz()
@@ -127,11 +133,11 @@ public class QAVConfig
   
   public void onProcessorConstructed(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QAVConfig_");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append(this.b);
+    this.a = localStringBuilder.toString();
   }
   
   public void onReqFailed(int paramInt)

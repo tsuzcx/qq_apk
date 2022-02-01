@@ -11,7 +11,7 @@ class VideoPlayControllerForFile$1
   public void a(long paramLong, float paramFloat, String paramString)
   {
     VideoPlayControllerForFile.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    VideoPlayControllerForFile.a(this.a).a(paramLong, paramFloat, paramString);
+    VideoPlayControllerForFile.b(this.a).a(paramLong, paramFloat, paramString);
   }
   
   public void b(long paramLong)
@@ -20,12 +20,12 @@ class VideoPlayControllerForFile$1
     localStringBuilder.append("onDownloadSuccess:");
     localStringBuilder.append(paramLong);
     QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, localStringBuilder.toString());
-    VideoPlayControllerForFile.a(this.a).b(paramLong);
+    VideoPlayControllerForFile.b(this.a).b(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayControllerForFile.1
  * JD-Core Version:    0.7.0.1
  */

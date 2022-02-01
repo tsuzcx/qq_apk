@@ -16,12 +16,12 @@ public class GetRichOpInfoRequest
     localstGetFeedIconOpReq.opInfo = paramstFeedOpInfo;
     localstGetFeedIconOpReq.preOpInfos = paramArrayList1;
     localstGetFeedIconOpReq.postOpInfos = paramArrayList2;
-    this.a = localstGetFeedIconOpReq;
+    this.c = localstGetFeedIconOpReq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.GetRichOpInfoRequest
  * JD-Core Version:    0.7.0.1
  */

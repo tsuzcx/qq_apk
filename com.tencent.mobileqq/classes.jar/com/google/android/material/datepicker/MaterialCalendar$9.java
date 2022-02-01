@@ -3,6 +3,7 @@ package com.google.android.material.datepicker;
 import android.view.View;
 import android.view.View.OnClickListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MaterialCalendar$9
   implements View.OnClickListener
@@ -11,15 +12,16 @@ class MaterialCalendar$9
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendar.a().findLastVisibleItemPosition() - 1;
+    int i = this.b.f().findLastVisibleItemPosition() - 1;
     if (i >= 0) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMaterialCalendar.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonthsPagerAdapter.a(i));
+      this.b.a(this.a.b(i));
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.MaterialCalendar.9
  * JD-Core Version:    0.7.0.1
  */

@@ -23,25 +23,20 @@ public final class BarragePlugin
   implements IEventPlugin
 {
   @Deprecated
-  public static final BarragePlugin.Companion a;
+  public static final BarragePlugin.Companion a = new BarragePlugin.Companion(null);
   @NotNull
-  private static final List<String> jdField_a_of_type_JavaUtilList = CollectionsKt.listOf("cs.script_show_barrage.local");
-  private final BarrageUI jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageUI;
+  private static final List<String> e = CollectionsKt.listOf("cs.script_show_barrage.local");
   @NotNull
-  private final PluginCmdConstant.PlugPriority jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBarragePlugin$Companion = new BarragePlugin.Companion(null);
-  }
+  private final PluginCmdConstant.PlugPriority c;
+  private final BarrageUI d;
   
   public BarragePlugin(@NotNull BarrageUI paramBarrageUI)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageUI = paramBarrageUI;
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.UI;
+    this.d = paramBarrageUI;
+    this.c = PluginCmdConstant.PlugPriority.UI;
   }
   
-  private final String a(String paramString)
+  private final String b(String paramString)
   {
     try
     {
@@ -57,7 +52,7 @@ public final class BarragePlugin
           paramString = paramString.getBytes((Charset)localObject);
           Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
           paramString = Base64Util.decode(paramString, 0);
-          localObject = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageUI;
+          localObject = this.d;
           Context localContext = (Context)BaseApplicationImpl.getContext();
           Intrinsics.checkExpressionValueIsNotNull(paramString, "textBytes");
           ApolloBarrageUtil.a((BarrageUI)localObject, localContext, "", new String(paramString, Charsets.UTF_8), true);
@@ -69,7 +64,7 @@ public final class BarragePlugin
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloBarrageBarrageUI.a(true);
+        this.d.a(true);
       }
     }
     catch (Throwable paramString)
@@ -82,29 +77,18 @@ public final class BarragePlugin
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
+    return this.c;
   }
   
   @Nullable
   public String a(@NotNull Argument paramArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramArgument, "argument");
-    String str = paramArgument.c();
+    String str = paramArgument.f();
     if ((str.hashCode() == 2120721) && (str.equals("cs.script_show_barrage.local"))) {
-      return a(paramArgument.b());
+      return b(paramArgument.e());
     }
     return null;
-  }
-  
-  @NotNull
-  public List<String> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return IEventPlugin.DefaultImpls.a(this);
   }
   
   public boolean a(@NotNull String paramString)
@@ -112,10 +96,21 @@ public final class BarragePlugin
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IEventPlugin.DefaultImpls.a(this, paramString);
   }
+  
+  @NotNull
+  public List<String> c()
+  {
+    return e;
+  }
+  
+  public boolean d()
+  {
+    return IEventPlugin.DefaultImpls.a(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.BarragePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -10,24 +10,11 @@ import java.nio.charset.CoderResult;
 
 public class Table
 {
-  public static final ThreadLocal<Charset> a;
-  private static final ThreadLocal<CharsetDecoder> b = new Table.1();
-  private static final ThreadLocal<CharBuffer> c = new ThreadLocal();
-  protected ByteBuffer a;
-  protected int c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangThreadLocal = new Table.2();
-  }
-  
-  protected int a(int paramInt)
-  {
-    if (a(paramInt, 4)) {
-      return paramInt + this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt);
-    }
-    return -1;
-  }
+  private static final ThreadLocal<CharsetDecoder> a = new Table.1();
+  private static final ThreadLocal<CharBuffer> b = new ThreadLocal();
+  public static final ThreadLocal<Charset> c = new Table.2();
+  protected int d;
+  protected ByteBuffer e;
   
   protected int a(Integer paramInteger1, Integer paramInteger2, ByteBuffer paramByteBuffer)
   {
@@ -36,7 +23,7 @@ public class Table
   
   protected String a(int paramInt, boolean paramBoolean)
   {
-    CharsetDecoder localCharsetDecoder = (CharsetDecoder)b.get();
+    CharsetDecoder localCharsetDecoder = (CharsetDecoder)a.get();
     localCharsetDecoder.reset();
     int i = paramInt;
     if (!paramBoolean)
@@ -44,12 +31,12 @@ public class Table
       if (!a(paramInt, 4)) {
         return null;
       }
-      i = paramInt + this.jdField_a_of_type_JavaNioByteBuffer.getInt(paramInt);
+      i = paramInt + this.e.getInt(paramInt);
     }
     if (!a(i, 4)) {
       return null;
     }
-    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer.duplicate().order(ByteOrder.LITTLE_ENDIAN);
+    ByteBuffer localByteBuffer = this.e.duplicate().order(ByteOrder.LITTLE_ENDIAN);
     paramInt = localByteBuffer.getInt(i);
     if (!a(i, paramInt + 4)) {
       return null;
@@ -58,7 +45,7 @@ public class Table
     localByteBuffer.position(i);
     localByteBuffer.limit(i + paramInt);
     paramInt = (int)(paramInt * localCharsetDecoder.maxCharsPerByte());
-    Object localObject2 = (CharBuffer)c.get();
+    Object localObject2 = (CharBuffer)b.get();
     Object localObject1;
     if (localObject2 != null)
     {
@@ -68,7 +55,7 @@ public class Table
     else
     {
       localObject1 = CharBuffer.allocate(paramInt);
-      c.set(localObject1);
+      b.set(localObject1);
     }
     ((CharBuffer)localObject1).clear();
     try
@@ -88,17 +75,25 @@ public class Table
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    return (paramInt1 >= 0) && (paramInt1 + paramInt2 <= this.jdField_a_of_type_JavaNioByteBuffer.capacity());
+    return (paramInt1 >= 0) && (paramInt1 + paramInt2 <= this.e.capacity());
   }
   
-  protected String b(int paramInt)
+  protected int d(int paramInt)
+  {
+    if (a(paramInt, 4)) {
+      return paramInt + this.e.getInt(paramInt);
+    }
+    return -1;
+  }
+  
+  protected String e(int paramInt)
   {
     return a(paramInt, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.flatbuffers.Table
  * JD-Core Version:    0.7.0.1
  */

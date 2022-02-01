@@ -62,28 +62,23 @@ public class DevicePicItemBuilder
   extends BaseBubbleBuilder
   implements BaseBubbleBuilder.TouchDelegate, MessageForDeviceFile.DeviceFileItemCallback
 {
-  protected final float b;
+  protected final float a;
   
   public DevicePicItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.b = paramContext.getResources().getDisplayMetrics().density;
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
+    this.a = paramContext.getResources().getDisplayMetrics().density;
   }
   
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramView = (BaseChatItemLayout)super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
     paramChatMessage = (MessageForDeviceFile)paramChatMessage;
-    if (("device_groupchat".equals(paramChatMessage.extStr)) && (paramView != null) && ((TextUtils.isEmpty(paramChatMessage.filePath)) || (FileManagerUtil.a(paramChatMessage.filePath) == 0L)))
+    if (("device_groupchat".equals(paramChatMessage.extStr)) && (paramView != null) && ((TextUtils.isEmpty(paramChatMessage.filePath)) || (FileManagerUtil.h(paramChatMessage.filePath) == 0L)))
     {
-      paramViewGroup = (DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+      paramViewGroup = (DeviceMsgHandle)this.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
       if (!TextUtils.isEmpty(paramChatMessage.strMediaKey)) {
-        paramViewGroup.a().a(paramChatMessage, paramView, this);
+        paramViewGroup.d().a(paramChatMessage, paramView, this);
       }
     }
     return paramView;
@@ -95,39 +90,39 @@ public class DevicePicItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramView = new AsyncImageView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setId(2131372696);
-      if (!jdField_a_of_type_Boolean) {
+      paramViewHolder = new RelativeLayout(this.e);
+      paramView = new AsyncImageView(this.e);
+      paramView.setId(2131440242);
+      if (!m) {
         paramView.setAdjustViewBounds(true);
       }
-      paramView.setMaxWidth((int)(this.b * 100.0F + 0.5F));
-      paramView.setMaxHeight((int)(this.b * 100.0F + 0.5F));
-      float f = this.b;
+      paramView.setMaxWidth((int)(this.a * 100.0F + 0.5F));
+      paramView.setMaxHeight((int)(this.a * 100.0F + 0.5F));
+      float f = this.a;
       paramView.setAsyncClipSize((int)(f * 100.0F + 0.5F), (int)(f * 100.0F + 0.5F));
       paramView.setDefaultImageByMargin();
       paramView.setIsDrawRound(true);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(13);
       paramViewHolder.addView(paramView, localLayoutParams);
-      localHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = paramView;
-      paramView = new MessageProgressTextView(this.jdField_a_of_type_AndroidContentContext);
+      localHolder.a = paramView;
+      paramView = new MessageProgressTextView(this.e);
       paramView.setTextColor(-1);
-      int i = (int)TypedValue.applyDimension(2, 15.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
+      int i = (int)TypedValue.applyDimension(2, 15.0F, this.e.getResources().getDisplayMetrics());
       paramView.setTextSize(2, 15.0F);
       paramView.setGravity(17);
-      if (jdField_a_of_type_Boolean) {
+      if (m) {
         paramView.setDisplayInTextView(false, i, -1);
       }
-      paramView.setBackgroundDrawable(new AIOSendMask(2130706432, this.b * 12.0F));
+      paramView.setBackgroundDrawable(new AIOSendMask(2130706432, this.a * 12.0F));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(6, 2131372696);
-      localLayoutParams.addRule(8, 2131372696);
-      localLayoutParams.addRule(5, 2131372696);
-      localLayoutParams.addRule(7, 2131372696);
+      localLayoutParams.addRule(6, 2131440242);
+      localLayoutParams.addRule(8, 2131440242);
+      localLayoutParams.addRule(5, 2131440242);
+      localLayoutParams.addRule(7, 2131440242);
       paramViewHolder.addView(paramView, localLayoutParams);
       paramView.setVisibility(8);
-      localHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView = paramView;
+      localHolder.b = paramView;
       paramViewHolder.setOnClickListener(this);
       paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
@@ -150,23 +145,8 @@ public class DevicePicItemBuilder
       }
     }
     a(paramBaseChatItemLayout, paramChatMessage, localHolder);
-    ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(paramViewHolder, this);
+    ((DeviceMsgHandle)this.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).b().a(paramViewHolder, this);
     return paramViewHolder;
-  }
-  
-  public BaseBubbleBuilder.TouchDelegate a(View paramView)
-  {
-    ChatMessage localChatMessage = AIOUtils.a(paramView);
-    Object localObject = null;
-    paramView = localObject;
-    if (localChatMessage != null)
-    {
-      paramView = localObject;
-      if (localChatMessage.vipBubbleID == 0L) {
-        paramView = this;
-      }
-    }
-    return paramView;
   }
   
   protected BaseBubbleBuilder.ViewHolder a()
@@ -174,32 +154,27 @@ public class DevicePicItemBuilder
     return new DevicePicItemBuilder.Holder(this);
   }
   
-  protected String a(ChatMessage paramChatMessage)
-  {
-    return HardCodeUtil.a(2131703364);
-  }
-  
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
     if ((paramChatMessage != null) && ((paramChatMessage instanceof MessageForDeviceFile)))
     {
       paramContext = (MessageForDeviceFile)paramChatMessage;
-      if (paramInt == 2131365480)
+      if (paramInt == 2131431695)
       {
-        ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+        ChatActivityFacade.b(this.e, this.d, paramChatMessage);
         return;
       }
-      if (paramInt == 2131371603)
+      if (paramInt == 2131439015)
       {
-        super.a(paramInt, this.jdField_a_of_type_AndroidContentContext, paramChatMessage);
+        super.a(paramInt, this.e, paramChatMessage);
         return;
       }
-      if (paramInt == 2131367180)
+      if (paramInt == 2131433636)
       {
         paramChatMessage = new Bundle();
         paramChatMessage.putInt("forward_type", 1);
-        paramChatMessage.putInt("forward_source_uin_type", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        paramChatMessage.putInt("selection_mode", this.c);
+        paramChatMessage.putInt("forward_source_uin_type", this.f.a);
+        paramChatMessage.putInt("selection_mode", this.u);
         Intent localIntent = new Intent();
         localIntent.putExtra("forward_filepath", paramContext.filePath);
         localIntent.putExtra("BUSI_TYPE", 1009);
@@ -207,33 +182,9 @@ public class DevicePicItemBuilder
         localIntent.putExtra("forward_download_image_org_uin_type", paramContext.istroop);
         localIntent.putExtra("forward_photo_isSend", paramContext.issend);
         localIntent.putExtras(paramChatMessage);
-        ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, 21);
+        ForwardBaseOption.a((Activity)this.e, localIntent, 21);
       }
     }
-  }
-  
-  protected void a(View paramView)
-  {
-    super.a(paramView);
-    if (AIOUtils.a(paramView).isMultiMsg) {
-      return;
-    }
-    paramView = (MessageForDeviceFile)((DevicePicItemBuilder.Holder)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    if (paramView.isSendFromLocal())
-    {
-      localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-      localActionSheet.addButton(2131689933, 5);
-      localActionSheet.addCancelButton(2131690728);
-      localActionSheet.setOnButtonClickListener(new DevicePicItemBuilder.1(this, paramView, localActionSheet));
-      localActionSheet.show();
-      return;
-    }
-    ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
-    localActionSheet.setMainTitle(2131691549);
-    localActionSheet.addButton(2131691548);
-    localActionSheet.addCancelButton(2131690728);
-    localActionSheet.setOnButtonClickListener(new DevicePicItemBuilder.2(this, paramView, localActionSheet));
-    localActionSheet.show();
   }
   
   public void a(View paramView, MotionEvent paramMotionEvent)
@@ -252,7 +203,7 @@ public class DevicePicItemBuilder
   
   public void a(View paramView, MessageForDeviceFile paramMessageForDeviceFile)
   {
-    paramView = (DevicePicItemBuilder.Holder)AIOUtils.a(paramView);
+    paramView = (DevicePicItemBuilder.Holder)AIOUtils.b(paramView);
     if (paramView == null)
     {
       if (QLog.isColorLevel()) {
@@ -260,14 +211,14 @@ public class DevicePicItemBuilder
       }
       return;
     }
-    MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    MessageForDeviceFile localMessageForDeviceFile = (MessageForDeviceFile)paramView.q;
     if (localMessageForDeviceFile.uniseq == paramMessageForDeviceFile.uniseq)
     {
       localMessageForDeviceFile.msgStatus = paramMessageForDeviceFile.msgStatus;
       localMessageForDeviceFile.nFileStatus = paramMessageForDeviceFile.nFileStatus;
       localMessageForDeviceFile.progress = paramMessageForDeviceFile.progress;
       localMessageForDeviceFile.msg = paramMessageForDeviceFile.msg;
-      a(paramView.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, localMessageForDeviceFile, paramView);
+      a(paramView.j, localMessageForDeviceFile, paramView);
     }
   }
   
@@ -279,7 +230,7 @@ public class DevicePicItemBuilder
       if (paramBoolean) {
         paramView = null;
       } else {
-        paramView = jdField_a_of_type_AndroidGraphicsColorFilter;
+        paramView = n;
       }
       localDrawable.setColorFilter(paramView);
       localDrawable.invalidateSelf();
@@ -296,66 +247,105 @@ public class DevicePicItemBuilder
     default: 
       break;
     case 6: 
-      paramHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.setVisibility(4);
+      paramHolder.b.setVisibility(4);
       bool = true;
       break;
     case 5: 
-      paramHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.setVisibility(4);
+      paramHolder.b.setVisibility(4);
       break;
     case 4: 
-      paramHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.setVisibility(4);
+      paramHolder.b.setVisibility(4);
       break;
     case 3: 
-      paramHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.setVisibility(0);
-      paramHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.setProgress((int)(paramMessageForDeviceFile.progress * 100.0F));
+      paramHolder.b.setVisibility(0);
+      paramHolder.b.setProgress((int)(paramMessageForDeviceFile.progress * 100.0F));
       break;
     case 1: 
     case 2: 
       if (paramMessageForDeviceFile.issend == 0)
       {
-        paramHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.setVisibility(4);
+        paramHolder.b.setVisibility(4);
       }
       else
       {
-        paramHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.setVisibility(0);
-        paramHolder.jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView.setProgress(0);
+        paramHolder.b.setVisibility(0);
+        paramHolder.b.setProgress(0);
       }
       break;
     }
     if (!TextUtils.isEmpty(str)) {
-      paramHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(str);
+      paramHolder.a.setAsyncImage(str);
     } else {
-      paramHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageDrawableDefault();
+      paramHolder.a.setImageDrawableDefault();
     }
     paramBaseChatItemLayout.setFailedIconVisable(bool, this);
   }
   
   void a(MessageForDeviceFile paramMessageForDeviceFile)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetSupport(this.e))
     {
-      FMToastUtil.a(2131692554);
+      FMToastUtil.a(2131889577);
       return;
     }
     if (FileUtils.fileExistsAndNotEmpty(paramMessageForDeviceFile.filePath)) {
-      ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(DeviceMsgHandle.d, paramMessageForDeviceFile);
+      ((DeviceMsgHandle)this.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).b().a(DeviceMsgHandle.d, paramMessageForDeviceFile);
     }
-    b();
+    d();
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (!TextUtils.isEmpty(((MessageForDeviceFile)((DevicePicItemBuilder.Holder)AIOUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataChatMessage).filePath)) {
-      localQQCustomMenu.a(2131367180, this.jdField_a_of_type_AndroidContentContext.getString(2131692644), 2130838912);
+    ChatActivityFacade.a(localQQCustomMenu, this.e, this.f.a);
+    if (!TextUtils.isEmpty(((MessageForDeviceFile)((DevicePicItemBuilder.Holder)AIOUtils.b(paramView)).q).filePath)) {
+      localQQCustomMenu.a(2131433636, this.e.getString(2131889668), 2130839066);
     }
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371603, null, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
-    return localQQCustomMenu.a();
+    super.a(localQQCustomMenu, this.e, 2131439015, null, null);
+    super.a(localQQCustomMenu, this.e, 2131428089, null, null);
+    return localQQCustomMenu.d();
   }
   
   protected void b(View paramView)
+  {
+    super.b(paramView);
+    if (AIOUtils.a(paramView).isMultiMsg) {
+      return;
+    }
+    paramView = (MessageForDeviceFile)((DevicePicItemBuilder.Holder)AIOUtils.b(paramView)).q;
+    if (paramView.isSendFromLocal())
+    {
+      localActionSheet = (ActionSheet)ActionSheetHelper.b(this.e, null);
+      localActionSheet.addButton(2131886574, 5);
+      localActionSheet.addCancelButton(2131887648);
+      localActionSheet.setOnButtonClickListener(new DevicePicItemBuilder.1(this, paramView, localActionSheet));
+      localActionSheet.show();
+      return;
+    }
+    ActionSheet localActionSheet = ActionSheet.create(this.e);
+    localActionSheet.setMainTitle(2131888511);
+    localActionSheet.addButton(2131888510);
+    localActionSheet.addCancelButton(2131887648);
+    localActionSheet.setOnButtonClickListener(new DevicePicItemBuilder.2(this, paramView, localActionSheet));
+    localActionSheet.show();
+  }
+  
+  public void b(MessageForDeviceFile paramMessageForDeviceFile)
+  {
+    if (!NetworkUtil.isNetSupport(this.e))
+    {
+      FMToastUtil.a(2131889577);
+      return;
+    }
+    ((DeviceMsgHandle)this.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).b().a(paramMessageForDeviceFile);
+  }
+  
+  public int c(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  protected void c(View paramView)
   {
     ChatMessage localChatMessage = AIOUtils.a(paramView);
     if (localChatMessage == null) {
@@ -365,35 +355,45 @@ public class DevicePicItemBuilder
     {
       if (localChatMessage.isSendFromLocal())
       {
-        super.b(paramView);
+        super.c(paramView);
         return;
       }
       if ("device_groupchat".equals(localChatMessage.extStr)) {
-        super.b(paramView);
+        super.c(paramView);
       }
     }
   }
   
-  public void b(MessageForDeviceFile paramMessageForDeviceFile)
+  public BaseBubbleBuilder.TouchDelegate d(View paramView)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    ChatMessage localChatMessage = AIOUtils.a(paramView);
+    Object localObject = null;
+    paramView = localObject;
+    if (localChatMessage != null)
     {
-      FMToastUtil.a(2131692554);
-      return;
+      paramView = localObject;
+      if (localChatMessage.vipBubbleID == 0L) {
+        paramView = this;
+      }
     }
-    ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(paramMessageForDeviceFile);
+    return paramView;
   }
   
-  public void d()
+  protected String d(ChatMessage paramChatMessage)
   {
-    super.d();
+    return HardCodeUtil.a(2131901324);
+  }
+  
+  public void f()
+  {
+    super.f();
   }
   
   public void onClick(View paramView)
   {
-    if (!super.a())
+    if (!super.c())
     {
-      if (paramView.getId() == 2131364521) {
+      if (paramView.getId() == 2131430578) {
         try
         {
           Object localObject2 = (MessageForDeviceFile)AIOUtils.a(paramView);
@@ -406,13 +406,13 @@ public class DevicePicItemBuilder
           ((ForwardFileInfo)localObject1).c(localFileManagerEntity.uniseq);
           ((ForwardFileInfo)localObject1).d(localFileManagerEntity.fileSize);
           ((ForwardFileInfo)localObject1).a(localFileManagerEntity.getFilePath());
-          Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, FileBrowserActivity.class);
+          Intent localIntent = new Intent(this.e, FileBrowserActivity.class);
           localIntent.putExtra("fileinfo", (Parcelable)localObject1);
           localObject1 = new ArrayList();
           ((ArrayList)localObject1).add(String.valueOf(localFileManagerEntity.nSessionId));
           if (localFileManagerEntity.nFileType == 0)
           {
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(((MessageForDeviceFile)localObject2).frienduin, ((MessageForDeviceFile)localObject2).istroop);
+            localObject2 = this.d.getMessageFacade().o(((MessageForDeviceFile)localObject2).frienduin, ((MessageForDeviceFile)localObject2).istroop);
             if ((localObject2 != null) && (((List)localObject2).size() != 0))
             {
               localObject2 = ((List)localObject2).iterator();
@@ -422,7 +422,7 @@ public class DevicePicItemBuilder
                 if (((ChatMessage)localObject3).msgtype == -4500)
                 {
                   localObject3 = (MessageForDeviceFile)localObject3;
-                  if (FileManagerUtil.a(((MessageForDeviceFile)localObject3).filePath) == localFileManagerEntity.nFileType)
+                  if (FileManagerUtil.c(((MessageForDeviceFile)localObject3).filePath) == localFileManagerEntity.nFileType)
                   {
                     localObject3 = FileManagerUtil.a((MessageForDeviceFile)localObject3);
                     if (!((ArrayList)localObject1).contains(String.valueOf(((FileManagerEntity)localObject3).nSessionId))) {
@@ -434,7 +434,7 @@ public class DevicePicItemBuilder
             }
           }
           localIntent.putStringArrayListExtra("Aio_SessionId_ImageList", (ArrayList)localObject1);
-          ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 102);
+          ((Activity)this.e).startActivityForResult(localIntent, 102);
         }
         catch (Exception localException)
         {
@@ -448,7 +448,7 @@ public class DevicePicItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DevicePicItemBuilder
  * JD-Core Version:    0.7.0.1
  */

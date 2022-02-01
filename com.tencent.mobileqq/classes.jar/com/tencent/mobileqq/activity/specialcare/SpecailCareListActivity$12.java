@@ -12,11 +12,11 @@ class SpecailCareListActivity$12
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = new RelativeLayout.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$ViewHolder.a.getLayoutParams());
+    paramAnimation = new RelativeLayout.LayoutParams(this.a.b.getLayoutParams());
     paramAnimation.addRule(15);
-    paramAnimation.setMargins((int)(SpecailCareListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity) * 46.0F), 0, (int)(SpecailCareListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity) * 10.0F), 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$ViewHolder.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$ViewHolder.a.clearAnimation();
+    paramAnimation.setMargins((int)(SpecailCareListActivity.e(this.b) * 46.0F), 0, (int)(SpecailCareListActivity.f(this.b) * 10.0F), 0);
+    this.a.b.setLayoutParams(paramAnimation);
+    this.a.b.clearAnimation();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -25,7 +25,7 @@ class SpecailCareListActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.12
  * JD-Core Version:    0.7.0.1
  */

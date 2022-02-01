@@ -27,18 +27,18 @@ final class VasAdvApiImpl$requestPublicAccountAd$1
     localUserInfo.uin.set(VasAdvSupport.a.a().a());
     localUserInfo.app.set("app");
     localUserInfo.os.set("and");
-    localUserInfo.version.set("8.7.0");
+    localUserInfo.version.set("8.8.17");
     localUserInfo.qua.set(QUA.getQUA3());
     ((AdvPush.UserInfo)localObject).set((MessageMicro)localUserInfo);
     localObject = new JSONObject();
-    ((JSONObject)localObject).put("device_info", VasAdvSupport.a.a().a("1018ec"));
+    ((JSONObject)localObject).put("device_info", VasAdvSupport.a.a().c("1018ec"));
     localAdvPushReq.gdt_args.set(((JSONObject)localObject).toString());
     VasAdvService.a.a(localAdvPushReq, (VasAdvBizCallback)new VasAdvApiImpl.requestPublicAccountAd.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.api.impl.VasAdvApiImpl.requestPublicAccountAd.1
  * JD-Core Version:    0.7.0.1
  */

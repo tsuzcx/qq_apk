@@ -56,13 +56,13 @@ public class BaseMessageManagerForTroopAndDiscCallback
       if (RecentUserAppearLogic.a(localQQAppInterface, paramRecentUser.msgType))
       {
         Object localObject = paramRecentUser.msg;
-        if (((localObject instanceof AbstructRecentUserMsg)) && (((AbstructRecentUserMsg)localObject).a.a <= paramLong))
+        if (((localObject instanceof AbstructRecentUserMsg)) && (((AbstructRecentUserMsg)localObject).h.b <= paramLong))
         {
           if ((paramInt == 1) && ((localObject instanceof TroopNotificationMsg)))
           {
-            localObject = TroopNotificationHelper.a(localQQAppInterface, paramString);
+            localObject = TroopNotificationHelper.d(localQQAppInterface, paramString);
             int i;
-            if ((localObject != null) && (((TroopNotificationFlagMsg)localObject).a == 1)) {
+            if ((localObject != null) && (((TroopNotificationFlagMsg)localObject).b == 1)) {
               i = 1;
             } else {
               i = 0;
@@ -110,7 +110,7 @@ public class BaseMessageManagerForTroopAndDiscCallback
               paramIConversationFacade.append(paramRecentUser.uin);
               paramIConversationFacade.append("-");
               paramIConversationFacade.append(paramRecentUser.getType());
-              paramAppRuntime.a(paramIConversationFacade.toString());
+              paramAppRuntime.b(paramIConversationFacade.toString());
               paramIMessageFacade.removeRecentUser(paramRecentUser);
             }
           }
@@ -138,7 +138,7 @@ public class BaseMessageManagerForTroopAndDiscCallback
   
   public boolean a(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
   {
-    return (!AnonymousChatHelper.a(paramMessageRecord)) && (TroopUtils.a((QQAppInterface)paramAppRuntime, "atMeOrReplyMe"));
+    return (!AnonymousChatHelper.c(paramMessageRecord)) && (TroopUtils.b((QQAppInterface)paramAppRuntime, "atMeOrReplyMe"));
   }
   
   public boolean a(AppRuntime paramAppRuntime, String paramString, int paramInt, long paramLong, RecentUserProxy paramRecentUserProxy, RecentUser paramRecentUser)
@@ -148,7 +148,7 @@ public class BaseMessageManagerForTroopAndDiscCallback
       paramAppRuntime = (TroopAioNavigateBarManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_AIO_NAVIGATE_BAR);
       Object localObject = paramRecentUser.msg;
       int i;
-      if (((localObject instanceof AbstructRecentUserMsg)) && (((AbstructRecentUserMsg)localObject).a.a == paramLong)) {
+      if (((localObject instanceof AbstructRecentUserMsg)) && (((AbstructRecentUserMsg)localObject).h.b == paramLong)) {
         i = NavConstants.b(paramRecentUser.msgType);
       } else {
         i = -1;
@@ -176,7 +176,7 @@ public class BaseMessageManagerForTroopAndDiscCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerForTroopAndDiscCallback
  * JD-Core Version:    0.7.0.1
  */

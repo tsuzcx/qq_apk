@@ -11,12 +11,12 @@ class VideoFeedsGameAdComManager$3$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, HardCodeUtil.a(2131715981), 0).a();
+    QQToast.makeText(BaseApplicationImpl.getApplication(), 1, HardCodeUtil.a(2131913434), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.3.2
  * JD-Core Version:    0.7.0.1
  */

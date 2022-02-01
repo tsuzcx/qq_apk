@@ -1,41 +1,36 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.mobileqq.qqexpand.network.ExpandReqInfo;
-import com.tencent.mobileqq.qqexpand.network.ExpandResponse;
-import com.tencent.mobileqq.qqexpand.network.IExpandCmdCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 class LimitChatPie$32
-  implements IExpandCmdCallback
+  extends BroadcastReceiver
 {
   LimitChatPie$32(LimitChatPie paramLimitChatPie) {}
   
-  public void a(@Nullable ExpandReqInfo paramExpandReqInfo, @NotNull ExpandResponse paramExpandResponse)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramExpandResponse.a() != 0)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      paramExpandReqInfo = new StringBuilder();
-      paramExpandReqInfo.append(this.a.b);
-      paramExpandReqInfo.append("expand.chat.");
-      paramExpandReqInfo = paramExpandReqInfo.toString();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("reportGreet. error ");
-      localStringBuilder.append(paramExpandResponse.a());
-      QLog.w(paramExpandReqInfo, 1, localStringBuilder.toString());
-      return;
+      int i = paramIntent.getIntExtra("uinType", 0);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("receiver action_recv_video_request. uinType = ");
+        paramContext.append(i);
+        QLog.i("LimitChatPie", 2, paramContext.toString());
+      }
+      if (i == 1044) {
+        LimitChatPie.d(this.a, 2);
+      }
     }
-    paramExpandReqInfo = new StringBuilder();
-    paramExpandReqInfo.append(this.a.b);
-    paramExpandReqInfo.append("expand.chat.");
-    QLog.d(paramExpandReqInfo.toString(), 1, "reportGreet. succ ");
-    LimitChatPie.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.32
  * JD-Core Version:    0.7.0.1
  */

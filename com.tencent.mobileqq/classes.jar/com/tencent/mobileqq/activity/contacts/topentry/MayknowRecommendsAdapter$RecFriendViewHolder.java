@@ -10,16 +10,16 @@ import com.tencent.widget.SingleLineTextView;
 class MayknowRecommendsAdapter$RecFriendViewHolder
   extends FacePreloadHolder.ViewHolder
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public MayKnowRecommend a;
   public SingleLineTextView a;
   public SingleLineTextView b;
+  public Button c;
+  public TextView d;
+  public MayKnowRecommend e;
+  public ImageView f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.MayknowRecommendsAdapter.RecFriendViewHolder
  * JD-Core Version:    0.7.0.1
  */

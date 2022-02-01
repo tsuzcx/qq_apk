@@ -17,20 +17,13 @@ import mqq.observer.BusinessObserver;
 public abstract class ProtoUtils$StoryProtocolObserver
   implements BusinessObserver
 {
-  public final long a;
-  public WeakReference<AppRuntime> a;
-  public boolean a;
-  
-  public ProtoUtils$StoryProtocolObserver()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
+  public boolean a = true;
+  public final long b = System.currentTimeMillis();
+  public WeakReference<AppRuntime> c = new WeakReference(null);
   
   private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    long l = System.currentTimeMillis() - this.b;
     String str = paramBundle.getString("cmd");
     Integer localInteger = Integer.valueOf(-1);
     if (paramBoolean)
@@ -103,7 +96,7 @@ public abstract class ProtoUtils$StoryProtocolObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       a(paramInt, paramBoolean, paramBundle);
       return;

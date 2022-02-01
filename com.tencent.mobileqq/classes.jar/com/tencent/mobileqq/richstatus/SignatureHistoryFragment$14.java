@@ -14,19 +14,19 @@ class SignatureHistoryFragment$14
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      if (paramMotionEvent.getY() < paramView.findViewById(2131379883).getHeight() + AIOUtils.b(30.0F, paramView.getResources()))
+      if (paramMotionEvent.getY() < paramView.findViewById(2131448752).getHeight() + AIOUtils.b(30.0F, paramView.getResources()))
       {
-        SignatureHistoryFragment.a(this.a, true);
+        SignatureHistoryFragment.b(this.a, true);
         return false;
       }
-      SignatureHistoryFragment.a(this.a, false);
+      SignatureHistoryFragment.b(this.a, false);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.14
  * JD-Core Version:    0.7.0.1
  */

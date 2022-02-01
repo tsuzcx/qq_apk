@@ -236,7 +236,7 @@ public class AuthReporter
   
   public static void a(String paramString1, String paramString2)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(SharedPrefs.a()))) {
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(SharedPrefs.c()))) {
       ReportController.b(null, "dc00898", "", paramString1, paramString2, paramString2, 0, 0, "", "", "", "");
     }
   }
@@ -307,7 +307,7 @@ public class AuthReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.util.AuthReporter
  * JD-Core Version:    0.7.0.1
  */

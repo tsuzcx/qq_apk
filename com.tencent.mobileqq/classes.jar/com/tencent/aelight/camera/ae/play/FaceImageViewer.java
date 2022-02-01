@@ -83,8 +83,8 @@ public class FaceImageViewer
     this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
     clearSeclected();
-    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2064056377));
-    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2064122261);
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2063925336));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2063991136);
   }
   
   private float calcRotation(MotionEvent paramMotionEvent)
@@ -220,7 +220,7 @@ public class FaceImageViewer
       return;
     }
     activeSelected();
-    AEBaseDataReporter.a().o();
+    AEBaseDataReporter.a().p();
     ((IPicChooseJumpUtil)QRoute.api(IPicChooseJumpUtil.class)).jumpWithSinglePicResult(this.mActivity, this.mNodeItem.nodeID);
   }
   
@@ -488,7 +488,7 @@ public class FaceImageViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.FaceImageViewer
  * JD-Core Version:    0.7.0.1
  */

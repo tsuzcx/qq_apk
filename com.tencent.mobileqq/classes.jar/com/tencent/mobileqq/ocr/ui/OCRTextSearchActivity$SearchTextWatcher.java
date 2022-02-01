@@ -11,7 +11,7 @@ class OCRTextSearchActivity$SearchTextWatcher
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.a.a.getText().toString();
+    paramEditable = this.a.c.getText().toString();
     this.a.b(paramEditable);
   }
   
@@ -21,7 +21,7 @@ class OCRTextSearchActivity$SearchTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity.SearchTextWatcher
  * JD-Core Version:    0.7.0.1
  */

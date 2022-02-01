@@ -4,7 +4,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.kingkong.DataReport;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
@@ -34,55 +33,13 @@ import org.jetbrains.annotations.Nullable;
 public class VasMonitorHandler
   extends BusinessHandler
 {
-  public CopyOnWriteArrayList<String> a;
-  public AtomicBoolean a;
+  public CopyOnWriteArrayList<String> a = new CopyOnWriteArrayList();
   public AtomicBoolean b = new AtomicBoolean(false);
+  public AtomicBoolean c = new AtomicBoolean(false);
   
   public VasMonitorHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  @Nullable
-  private static QQAppInterface a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, float paramFloat1, float paramFloat2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return null;
-    }
-    if ((paramAppRuntime != null) && ((paramAppRuntime instanceof QQAppInterface))) {
-      paramAppRuntime = (QQAppInterface)paramAppRuntime;
-    } else {
-      paramAppRuntime = null;
-    }
-    Object localObject = paramAppRuntime;
-    if (paramAppRuntime == null)
-    {
-      localObject = paramAppRuntime;
-      if (BaseApplicationImpl.getApplication() != null)
-      {
-        localObject = paramAppRuntime;
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        }
-      }
-    }
-    if (localObject == null)
-    {
-      paramAppRuntime = new Bundle();
-      paramAppRuntime.putString("key_appid", paramString1);
-      paramAppRuntime.putString("key_err_code", paramString2);
-      paramAppRuntime.putString("key_log", paramString3);
-      paramAppRuntime.putString("key_key4", paramString4);
-      paramAppRuntime.putString("key_key5", paramString5);
-      paramAppRuntime.putString("key_key6", paramString6);
-      paramAppRuntime.putFloat("key_value2", paramFloat1);
-      paramAppRuntime.putFloat("key_value3", paramFloat2);
-      QIPCClientHelper.getInstance().getClient().callServer("VasMonitorIPCModule", "action_vas_monitor", paramAppRuntime);
-      return null;
-    }
-    return localObject;
   }
   
   public static <T> ArrayList<T> a(T... paramVarArgs)
@@ -103,9 +60,7 @@ public class VasMonitorHandler
     try
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("uip:");
-      ((StringBuilder)localObject).append(DataReport.k());
-      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append("uip:, ");
       ((StringBuilder)localObject).append(paramString2);
       paramString2 = ((StringBuilder)localObject).toString();
       boolean bool = QLog.isColorLevel();
@@ -150,7 +105,7 @@ public class VasMonitorHandler
         paramArrayList = new VasReporter.ReqBody();
         paramArrayList.cmd.set(1);
         paramArrayList.plat.set(109);
-        paramArrayList.qqversion.set("8.7.0.5295");
+        paramArrayList.qqversion.set("8.8.17.5770");
         paramArrayList.osversion.set(Build.VERSION.RELEASE);
         paramArrayList.statis_list.set(a(new VasReporter.StatisInfo[] { localObject }));
         paramArrayList.setHasFlag(true);
@@ -199,15 +154,15 @@ public class VasMonitorHandler
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, float paramFloat1, float paramFloat2)
   {
-    QQAppInterface localQQAppInterface = a(paramAppRuntime, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramFloat1, paramFloat2);
+    QQAppInterface localQQAppInterface = b(paramAppRuntime, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramFloat1, paramFloat2);
     if (localQQAppInterface == null) {
       return;
     }
     paramAppRuntime = (VasMonitorHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VAS_MONITOR_HANDLER);
-    if (!paramAppRuntime.b.get()) {
+    if (!paramAppRuntime.c.get()) {
       paramAppRuntime.a(localQQAppInterface, false);
     }
-    if (paramAppRuntime.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (paramAppRuntime.b.get())
     {
       if (QLog.isColorLevel())
       {
@@ -226,7 +181,7 @@ public class VasMonitorHandler
       }
       return;
     }
-    if (paramAppRuntime.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramString1))
+    if (paramAppRuntime.a.contains(paramString1))
     {
       if (QLog.isColorLevel())
       {
@@ -260,7 +215,7 @@ public class VasMonitorHandler
     if (paramString6 == null) {
       paramString6 = str;
     }
-    ThreadManager.post(new VasMonitorHandler.1(localQQAppInterface, paramString1, a(new String[] { "109", "8.7.0", paramString2, paramAppRuntime, paramString4, paramString6 }), a(new Float[] { Float.valueOf(1.0F), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) }), paramString3), 5, null, false);
+    ThreadManager.post(new VasMonitorHandler.1(localQQAppInterface, paramString1, a(new String[] { "109", "8.8.17", paramString2, paramAppRuntime, paramString4, paramString6 }), a(new Float[] { Float.valueOf(1.0F), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) }), paramString3), 5, null, false);
     paramString4 = new StringBuilder();
     paramString4.append("report err appid=");
     paramString4.append(paramString1);
@@ -275,9 +230,49 @@ public class VasMonitorHandler
     QLog.e("VasMonitorHandler", 1, paramString4.toString());
   }
   
+  @Nullable
+  private static QQAppInterface b(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, float paramFloat1, float paramFloat2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return null;
+    }
+    if ((paramAppRuntime != null) && ((paramAppRuntime instanceof QQAppInterface))) {
+      paramAppRuntime = (QQAppInterface)paramAppRuntime;
+    } else {
+      paramAppRuntime = null;
+    }
+    Object localObject = paramAppRuntime;
+    if (paramAppRuntime == null)
+    {
+      localObject = paramAppRuntime;
+      if (BaseApplicationImpl.getApplication() != null)
+      {
+        localObject = paramAppRuntime;
+        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        }
+      }
+    }
+    if (localObject == null)
+    {
+      paramAppRuntime = new Bundle();
+      paramAppRuntime.putString("key_appid", paramString1);
+      paramAppRuntime.putString("key_err_code", paramString2);
+      paramAppRuntime.putString("key_log", paramString3);
+      paramAppRuntime.putString("key_key4", paramString4);
+      paramAppRuntime.putString("key_key5", paramString5);
+      paramAppRuntime.putString("key_key6", paramString6);
+      paramAppRuntime.putFloat("key_value2", paramFloat1);
+      paramAppRuntime.putFloat("key_value3", paramFloat2);
+      QIPCClientHelper.getInstance().getClient().callServer("VasMonitorIPCModule", "action_vas_monitor", paramAppRuntime);
+      return null;
+    }
+    return localObject;
+  }
+  
   public void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    this.b.set(true);
+    this.c.set(true);
     ThreadManager.post(new VasMonitorHandler.2(this, paramAppRuntime, paramBoolean), 8, null, true);
   }
   
@@ -304,7 +299,7 @@ public class VasMonitorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasMonitorHandler
  * JD-Core Version:    0.7.0.1
  */

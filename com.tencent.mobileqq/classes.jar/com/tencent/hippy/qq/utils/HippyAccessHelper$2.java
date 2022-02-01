@@ -20,7 +20,7 @@ final class HippyAccessHelper$2
     synchronized (HippyAccessHelper.access$100())
     {
       HippyAccessHelper.access$200().remove(this.val$moduleName);
-      this.val$hippyQQEngine.destoryEngineImmediately();
+      this.val$hippyQQEngine.destroyEngineImmediately();
       ??? = new StringBuilder();
       ((StringBuilder)???).append("preloadHippyPage onError statusCode:");
       ((StringBuilder)???).append(paramInt);
@@ -44,7 +44,7 @@ final class HippyAccessHelper$2
     if ((localObject2 != null) && (!((String)localObject2).equals(???)))
     {
       QLog.e("HippyAccessHelper", 1, "preloadHippyPage onSuccess uin changed.");
-      this.val$hippyQQEngine.destoryEngineImmediately();
+      this.val$hippyQQEngine.destroyEngineImmediately("accountChanged");
       return;
     }
     synchronized (HippyAccessHelper.access$100())
@@ -73,7 +73,7 @@ final class HippyAccessHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.HippyAccessHelper.2
  * JD-Core Version:    0.7.0.1
  */

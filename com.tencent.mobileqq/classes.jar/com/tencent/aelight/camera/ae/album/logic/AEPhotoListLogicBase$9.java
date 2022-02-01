@@ -11,12 +11,12 @@ class AEPhotoListLogicBase$9
   
   public void run()
   {
-    ((AEAbstractPhotoListFragment)this.this$0.a.get()).a.notifyDataSetChanged();
+    ((AEAbstractPhotoListFragment)this.this$0.b.get()).d.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.9
  * JD-Core Version:    0.7.0.1
  */

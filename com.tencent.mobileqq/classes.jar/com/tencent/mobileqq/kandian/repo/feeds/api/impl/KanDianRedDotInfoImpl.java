@@ -29,7 +29,7 @@ public final class KanDianRedDotInfoImpl
   public Object getKanDianRedDotFromDisk(@NotNull String paramString, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "type");
-    return RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), paramString, paramBoolean);
+    return RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), paramString, paramBoolean);
   }
   
   @NotNull
@@ -37,7 +37,7 @@ public final class KanDianRedDotInfoImpl
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "msgData");
     Intrinsics.checkParameterIsNotNull(paramString, "type");
-    paramArrayOfByte = RIJKanDianRedDotUtils.a(paramArrayOfByte, paramString);
+    paramArrayOfByte = RIJKanDianRedDotUtils.b(paramArrayOfByte, paramString);
     Intrinsics.checkExpressionValueIsNotNull(paramArrayOfByte, "RIJKanDianRedDotUtils.pa…rdFromData(msgData, type)");
     return paramArrayOfByte;
   }
@@ -67,7 +67,7 @@ public final class KanDianRedDotInfoImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.api.impl.KanDianRedDotInfoImpl
  * JD-Core Version:    0.7.0.1
  */

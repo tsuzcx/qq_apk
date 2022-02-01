@@ -14,25 +14,25 @@ class VideoController$37
   
   public void run()
   {
-    long l = this.this$0.a();
+    long l = this.this$0.z();
     if (l > 0L)
     {
       l %= 60L;
       if (l % 30L == 0L)
       {
-        String str = UITools.a(this.this$0.a());
-        QAVNotification.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(this.this$0.a().b, this.this$0.a().d, str);
-        if ((this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.isBackgroundStop) && (l % 10L == 0L))
+        String str = UITools.a(this.this$0.z());
+        QAVNotification.a(this.this$0.e).a(this.this$0.k().f, this.this$0.k().g, str);
+        if ((this.this$0.e.isBackgroundStop) && (l % 10L == 0L))
         {
-          str = VideoController.jdField_a_of_type_JavaLangString;
+          str = VideoController.a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("chattingTimerRunnale -->updateNotification() sessionId = ");
-          localStringBuilder.append(this.this$0.a().b);
+          localStringBuilder.append(this.this$0.k().f);
           QLog.w(str, 1, localStringBuilder.toString());
         }
       }
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+    this.this$0.e.a().postDelayed(this, 1000L);
   }
 }
 

@@ -138,7 +138,7 @@ public class JSONUtils
               while (((Iterator)localObject1).hasNext())
               {
                 Object localObject3 = ((Iterator)localObject1).next();
-                if (a(localObject3)) {
+                if (b(localObject3)) {
                   ((JSONArray)localObject2).put(localObject3);
                 } else if (localObject3 != null) {
                   ((JSONArray)localObject2).put(a(localObject3));
@@ -146,7 +146,7 @@ public class JSONUtils
               }
               localJSONObject.put(arrayOfField[i].getName(), localObject2);
             }
-            else if (a(localObject1))
+            else if (b(localObject1))
             {
               localJSONObject.put(arrayOfField[i].getName(), localObject1);
             }
@@ -176,11 +176,6 @@ public class JSONUtils
   static boolean a(Class paramClass)
   {
     return (paramClass.isPrimitive()) || (paramClass.equals(Integer.class)) || (paramClass.equals(Long.class)) || (paramClass.equals(String.class)) || (paramClass.equals(Boolean.class)) || (paramClass.equals(Double.class));
-  }
-  
-  static boolean a(Object paramObject)
-  {
-    return ((paramObject instanceof Integer)) || ((paramObject instanceof Long)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double));
   }
   
   public static <T> T b(JSONObject paramJSONObject, Class<T> paramClass)
@@ -270,10 +265,15 @@ public class JSONUtils
       int j = 0;
     }
   }
+  
+  static boolean b(Object paramObject)
+  {
+    return ((paramObject instanceof Integer)) || ((paramObject instanceof Long)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.JSONUtils
  * JD-Core Version:    0.7.0.1
  */

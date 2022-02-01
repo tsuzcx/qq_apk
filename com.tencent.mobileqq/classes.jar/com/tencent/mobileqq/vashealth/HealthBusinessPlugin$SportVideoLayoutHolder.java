@@ -6,17 +6,17 @@ import android.widget.TextView;
 
 class HealthBusinessPlugin$SportVideoLayoutHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView a;
+  ImageView b;
+  TextView c;
+  TextView d;
+  SeekBar e;
+  TextView f;
+  ImageView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.SportVideoLayoutHolder
  * JD-Core Version:    0.7.0.1
  */

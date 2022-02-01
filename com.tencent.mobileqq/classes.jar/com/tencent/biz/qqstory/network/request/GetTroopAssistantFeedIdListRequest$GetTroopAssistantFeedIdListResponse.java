@@ -12,7 +12,7 @@ import java.util.List;
 public class GetTroopAssistantFeedIdListRequest$GetTroopAssistantFeedIdListResponse
   extends BasePageResponse
 {
-  public List<FeedIdListSeqInfo> a = new ArrayList();
+  public List<FeedIdListSeqInfo> e = new ArrayList();
   
   public GetTroopAssistantFeedIdListRequest$GetTroopAssistantFeedIdListResponse(qqstory_group.RspGroupStoryFeedIdList paramRspGroupStoryFeedIdList)
   {
@@ -21,13 +21,13 @@ public class GetTroopAssistantFeedIdListRequest$GetTroopAssistantFeedIdListRespo
     while (paramRspGroupStoryFeedIdList.hasNext())
     {
       qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspGroupStoryFeedIdList.next();
-      this.a.add(new FeedIdListSeqInfo(localFeedSeqInfo));
+      this.e.add(new FeedIdListSeqInfo(localFeedSeqInfo));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse
  * JD-Core Version:    0.7.0.1
  */

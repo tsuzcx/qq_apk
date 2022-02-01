@@ -72,7 +72,28 @@ public class QVipConfigManager
     return paramString1;
   }
   
-  public static boolean a(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString, int paramInt)
+  public static boolean a(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("qq_vip_configs", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    paramAppRuntime = localStringBuilder.toString();
+    paramBoolean = localSharedPreferences.getBoolean(paramAppRuntime, paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("get sp key:");
+      paramString.append(paramAppRuntime);
+      paramString.append(" value=");
+      paramString.append(paramBoolean);
+      QLog.d("QVip.ConfigManager", 1, paramString.toString());
+    }
+    return paramBoolean;
+  }
+  
+  public static boolean b(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString, int paramInt)
   {
     SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("qq_vip_configs", 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -93,7 +114,7 @@ public class QVipConfigManager
     return bool;
   }
   
-  public static boolean a(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString, long paramLong)
+  public static boolean b(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString, long paramLong)
   {
     SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("qq_vip_configs", 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -114,7 +135,7 @@ public class QVipConfigManager
     return bool;
   }
   
-  public static boolean a(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString1, String paramString2)
+  public static boolean b(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString1, String paramString2)
   {
     SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("qq_vip_configs", 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -133,27 +154,6 @@ public class QVipConfigManager
       QLog.d("QVip.ConfigManager", 1, paramString1.toString());
     }
     return bool;
-  }
-  
-  public static boolean a(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("qq_vip_configs", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-    paramAppRuntime = localStringBuilder.toString();
-    paramBoolean = localSharedPreferences.getBoolean(paramAppRuntime, paramBoolean);
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("get sp key:");
-      paramString.append(paramAppRuntime);
-      paramString.append(" value=");
-      paramString.append(paramBoolean);
-      QLog.d("QVip.ConfigManager", 1, paramString.toString());
-    }
-    return paramBoolean;
   }
   
   public static boolean b(@NonNull AppRuntime paramAppRuntime, @NonNull String paramString, boolean paramBoolean)
@@ -179,7 +179,7 @@ public class QVipConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.vip.QVipConfigManager
  * JD-Core Version:    0.7.0.1
  */

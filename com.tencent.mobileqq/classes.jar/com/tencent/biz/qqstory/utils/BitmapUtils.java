@@ -19,16 +19,6 @@ import com.tencent.qphone.base.util.QLog;
 
 public class BitmapUtils
 {
-  private static Bitmap.Config a(Bitmap paramBitmap)
-  {
-    Bitmap.Config localConfig = paramBitmap.getConfig();
-    paramBitmap = localConfig;
-    if (localConfig == null) {
-      paramBitmap = Bitmap.Config.ARGB_8888;
-    }
-    return paramBitmap;
-  }
-  
   public static Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig, boolean paramBoolean)
   {
     if ((paramInt1 > 0) && (paramInt2 > 0)) {
@@ -55,7 +45,7 @@ public class BitmapUtils
     if ((i == paramBitmap.getWidth()) && (j == paramBitmap.getHeight())) {
       return paramBitmap;
     }
-    Bitmap localBitmap = a(i, j, a(paramBitmap), false);
+    Bitmap localBitmap = a(i, j, b(paramBitmap), false);
     if (localBitmap == null) {
       return null;
     }
@@ -110,7 +100,7 @@ public class BitmapUtils
       return paramBitmap;
     }
     float f = Math.max(paramInt1 / i, paramInt2 / j);
-    Bitmap localBitmap = a(paramInt1, paramInt2, a(paramBitmap), false);
+    Bitmap localBitmap = a(paramInt1, paramInt2, b(paramBitmap), false);
     if (localBitmap == null) {
       return null;
     }
@@ -204,7 +194,7 @@ public class BitmapUtils
     if (paramBitmap == null) {
       return null;
     }
-    Bitmap localBitmap = a(paramRect.width(), paramRect.height(), a(paramBitmap), false);
+    Bitmap localBitmap = a(paramRect.width(), paramRect.height(), b(paramBitmap), false);
     if (localBitmap == null) {
       return null;
     }
@@ -283,7 +273,7 @@ public class BitmapUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 263	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 264	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: istore_1
     //   5: aconst_null
     //   6: astore_2
@@ -295,30 +285,30 @@ public class BitmapUtils
     //   14: ifeq +5 -> 19
     //   17: aconst_null
     //   18: areturn
-    //   19: new 265	java/io/BufferedInputStream
+    //   19: new 266	java/io/BufferedInputStream
     //   22: dup
-    //   23: new 267	java/io/FileInputStream
+    //   23: new 268	java/io/FileInputStream
     //   26: dup
     //   27: aload_0
-    //   28: invokespecial 270	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   31: invokespecial 273	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   28: invokespecial 271	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   31: invokespecial 274	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   34: astore_0
     //   35: aload_0
     //   36: astore_2
     //   37: aload_0
-    //   38: invokestatic 279	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   38: invokestatic 280	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   41: astore_3
     //   42: aload_3
     //   43: astore_2
     //   44: aload_0
-    //   45: invokevirtual 282	java/io/BufferedInputStream:close	()V
+    //   45: invokevirtual 283	java/io/BufferedInputStream:close	()V
     //   48: aload_3
     //   49: areturn
     //   50: astore_0
-    //   51: ldc 32
-    //   53: ldc_w 284
+    //   51: ldc 21
+    //   53: ldc_w 285
     //   56: aload_0
-    //   57: invokestatic 40	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   57: invokestatic 29	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   60: aload_2
     //   61: areturn
     //   62: astore_3
@@ -332,16 +322,16 @@ public class BitmapUtils
     //   76: astore_0
     //   77: aload_0
     //   78: astore_2
-    //   79: ldc 32
-    //   81: ldc_w 286
+    //   79: ldc 21
+    //   81: ldc_w 287
     //   84: aload_3
-    //   85: invokestatic 40	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   85: invokestatic 29	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   88: aload_0
     //   89: ifnull +10 -> 99
     //   92: aload 4
     //   94: astore_2
     //   95: aload_0
-    //   96: invokevirtual 282	java/io/BufferedInputStream:close	()V
+    //   96: invokevirtual 283	java/io/BufferedInputStream:close	()V
     //   99: aconst_null
     //   100: areturn
     //   101: astore_0
@@ -351,10 +341,10 @@ public class BitmapUtils
     //   108: astore_0
     //   109: aload_0
     //   110: astore_2
-    //   111: ldc 32
-    //   113: ldc_w 288
+    //   111: ldc 21
+    //   113: ldc_w 289
     //   116: aload_3
-    //   117: invokestatic 40	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   117: invokestatic 29	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   120: aload_0
     //   121: astore_2
     //   122: aload_3
@@ -362,13 +352,13 @@ public class BitmapUtils
     //   124: aload_2
     //   125: ifnull +20 -> 145
     //   128: aload_2
-    //   129: invokevirtual 282	java/io/BufferedInputStream:close	()V
+    //   129: invokevirtual 283	java/io/BufferedInputStream:close	()V
     //   132: goto +13 -> 145
     //   135: astore_2
-    //   136: ldc 32
-    //   138: ldc_w 284
+    //   136: ldc 21
+    //   138: ldc_w 285
     //   141: aload_2
-    //   142: invokestatic 40	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   142: invokestatic 29	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   145: aload_0
     //   146: athrow
     // Local variable table:
@@ -414,30 +404,30 @@ public class BitmapUtils
     //   11: astore 6
     //   13: aconst_null
     //   14: astore 8
-    //   16: new 291	java/io/DataInputStream
+    //   16: new 292	java/io/DataInputStream
     //   19: dup
-    //   20: new 267	java/io/FileInputStream
+    //   20: new 268	java/io/FileInputStream
     //   23: dup
-    //   24: new 293	java/io/File
+    //   24: new 294	java/io/File
     //   27: dup
     //   28: aload_0
-    //   29: invokespecial 294	java/io/File:<init>	(Ljava/lang/String;)V
-    //   32: invokespecial 297	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   35: invokespecial 298	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   29: invokespecial 295	java/io/File:<init>	(Ljava/lang/String;)V
+    //   32: invokespecial 298	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   35: invokespecial 299	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   38: astore 7
     //   40: aload 8
     //   42: astore 6
     //   44: aload 9
     //   46: astore 5
     //   48: aload 7
-    //   50: invokevirtual 301	java/io/DataInputStream:readInt	()I
+    //   50: invokevirtual 302	java/io/DataInputStream:readInt	()I
     //   53: istore_2
     //   54: aload 8
     //   56: astore 6
     //   58: aload 9
     //   60: astore 5
     //   62: aload 7
-    //   64: invokevirtual 301	java/io/DataInputStream:readInt	()I
+    //   64: invokevirtual 302	java/io/DataInputStream:readInt	()I
     //   67: pop
     //   68: iload_2
     //   69: sipush 187
@@ -447,15 +437,15 @@ public class BitmapUtils
     //   79: aload 9
     //   81: astore 5
     //   83: aload 7
-    //   85: invokevirtual 304	java/io/DataInputStream:readBoolean	()Z
+    //   85: invokevirtual 305	java/io/DataInputStream:readBoolean	()Z
     //   88: pop
     //   89: aload 8
     //   91: astore 6
     //   93: aload 9
     //   95: astore 5
-    //   97: invokestatic 308	android/graphics/Bitmap$Config:values	()[Landroid/graphics/Bitmap$Config;
+    //   97: invokestatic 309	android/graphics/Bitmap$Config:values	()[Landroid/graphics/Bitmap$Config;
     //   100: aload 7
-    //   102: invokevirtual 301	java/io/DataInputStream:readInt	()I
+    //   102: invokevirtual 302	java/io/DataInputStream:readInt	()I
     //   105: aaload
     //   106: astore 10
     //   108: aload 8
@@ -463,35 +453,35 @@ public class BitmapUtils
     //   112: aload 9
     //   114: astore 5
     //   116: aload 7
-    //   118: invokevirtual 301	java/io/DataInputStream:readInt	()I
+    //   118: invokevirtual 302	java/io/DataInputStream:readInt	()I
     //   121: istore_2
     //   122: aload 8
     //   124: astore 6
     //   126: aload 9
     //   128: astore 5
     //   130: aload 7
-    //   132: invokevirtual 301	java/io/DataInputStream:readInt	()I
+    //   132: invokevirtual 302	java/io/DataInputStream:readInt	()I
     //   135: istore_3
     //   136: aload 8
     //   138: astore 6
     //   140: aload 9
     //   142: astore 5
     //   144: aload 7
-    //   146: invokevirtual 301	java/io/DataInputStream:readInt	()I
+    //   146: invokevirtual 302	java/io/DataInputStream:readInt	()I
     //   149: pop
     //   150: aload 8
     //   152: astore 6
     //   154: aload 9
     //   156: astore 5
     //   158: aload 7
-    //   160: invokevirtual 301	java/io/DataInputStream:readInt	()I
+    //   160: invokevirtual 302	java/io/DataInputStream:readInt	()I
     //   163: pop
     //   164: aload 8
     //   166: astore 6
     //   168: aload 9
     //   170: astore 5
     //   172: aload 7
-    //   174: invokevirtual 301	java/io/DataInputStream:readInt	()I
+    //   174: invokevirtual 302	java/io/DataInputStream:readInt	()I
     //   177: istore 4
     //   179: aload_1
     //   180: ifnull +21 -> 201
@@ -501,7 +491,7 @@ public class BitmapUtils
     //   189: astore 5
     //   191: aload_1
     //   192: iload 4
-    //   194: invokevirtual 313	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	(I)[B
+    //   194: invokevirtual 314	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	(I)[B
     //   197: astore_0
     //   198: goto +16 -> 214
     //   201: aload 8
@@ -517,7 +507,7 @@ public class BitmapUtils
     //   218: astore 5
     //   220: aload 7
     //   222: aload_0
-    //   223: invokevirtual 317	java/io/DataInputStream:read	([B)I
+    //   223: invokevirtual 318	java/io/DataInputStream:read	([B)I
     //   226: pop
     //   227: aload_0
     //   228: astore 6
@@ -526,7 +516,7 @@ public class BitmapUtils
     //   233: iload_2
     //   234: iload_3
     //   235: aload 10
-    //   237: invokestatic 30	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   237: invokestatic 19	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   240: astore 8
     //   242: aload_0
     //   243: astore 6
@@ -534,34 +524,34 @@ public class BitmapUtils
     //   246: astore 5
     //   248: aload 8
     //   250: aload_0
-    //   251: invokestatic 323	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   254: invokevirtual 327	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
+    //   251: invokestatic 324	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   254: invokevirtual 328	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
     //   257: aload_1
     //   258: ifnull +12 -> 270
     //   261: aload_0
     //   262: ifnull +8 -> 270
     //   265: aload_1
     //   266: aload_0
-    //   267: invokevirtual 330	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	([B)V
+    //   267: invokevirtual 331	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	([B)V
     //   270: aload 7
-    //   272: invokevirtual 331	java/io/DataInputStream:close	()V
+    //   272: invokevirtual 332	java/io/DataInputStream:close	()V
     //   275: aload 8
     //   277: areturn
     //   278: aload 8
     //   280: astore 6
     //   282: aload 9
     //   284: astore 5
-    //   286: new 106	java/lang/StringBuilder
+    //   286: new 97	java/lang/StringBuilder
     //   289: dup
-    //   290: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   290: invokespecial 98	java/lang/StringBuilder:<init>	()V
     //   293: astore_0
     //   294: aload 8
     //   296: astore 6
     //   298: aload 9
     //   300: astore 5
     //   302: aload_0
-    //   303: ldc_w 333
-    //   306: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   303: ldc_w 334
+    //   306: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: pop
     //   310: aload 8
     //   312: astore 6
@@ -569,17 +559,17 @@ public class BitmapUtils
     //   316: astore 5
     //   318: aload_0
     //   319: iload_2
-    //   320: invokevirtual 336	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   320: invokevirtual 337	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   323: pop
     //   324: aload 8
     //   326: astore 6
     //   328: aload 9
     //   330: astore 5
-    //   332: new 257	java/io/IOException
+    //   332: new 258	java/io/IOException
     //   335: dup
     //   336: aload_0
-    //   337: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   340: invokespecial 337	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   337: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   340: invokespecial 338	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   343: athrow
     //   344: astore_0
     //   345: aload 7
@@ -598,11 +588,11 @@ public class BitmapUtils
     //   370: astore 5
     //   372: aload 10
     //   374: astore_0
-    //   375: new 257	java/io/IOException
+    //   375: new 258	java/io/IOException
     //   378: dup
-    //   379: ldc_w 339
+    //   379: ldc_w 340
     //   382: aload 6
-    //   384: invokespecial 342	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   384: invokespecial 343	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   387: athrow
     //   388: astore 7
     //   390: aload 5
@@ -617,17 +607,17 @@ public class BitmapUtils
     //   406: ifnull +9 -> 415
     //   409: aload_1
     //   410: aload 6
-    //   412: invokevirtual 330	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	([B)V
+    //   412: invokevirtual 331	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	([B)V
     //   415: aload 5
     //   417: ifnull +8 -> 425
     //   420: aload 5
-    //   422: invokevirtual 331	java/io/DataInputStream:close	()V
+    //   422: invokevirtual 332	java/io/DataInputStream:close	()V
     //   425: aload_0
     //   426: athrow
-    //   427: new 344	java/lang/IllegalArgumentException
+    //   427: new 345	java/lang/IllegalArgumentException
     //   430: dup
-    //   431: ldc_w 346
-    //   434: invokespecial 347	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   431: ldc_w 347
+    //   434: invokespecial 348	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   437: athrow
     // Local variable table:
     //   start	length	slot	name	signature
@@ -689,131 +679,6 @@ public class BitmapUtils
     //   375	388	388	finally
   }
   
-  /* Error */
-  public static String a(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: aload_2
-    //   5: astore_1
-    //   6: new 350	android/graphics/BitmapFactory$Options
-    //   9: dup
-    //   10: invokespecial 351	android/graphics/BitmapFactory$Options:<init>	()V
-    //   13: astore 4
-    //   15: aload_2
-    //   16: astore_1
-    //   17: aload 4
-    //   19: iconst_1
-    //   20: putfield 355	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   23: aload_2
-    //   24: astore_1
-    //   25: new 265	java/io/BufferedInputStream
-    //   28: dup
-    //   29: new 267	java/io/FileInputStream
-    //   32: dup
-    //   33: aload_0
-    //   34: invokespecial 270	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   37: invokespecial 273	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   40: astore_0
-    //   41: aload_0
-    //   42: aconst_null
-    //   43: aload 4
-    //   45: invokestatic 360	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   48: pop
-    //   49: ldc_w 362
-    //   52: iconst_2
-    //   53: anewarray 4	java/lang/Object
-    //   56: dup
-    //   57: iconst_0
-    //   58: aload 4
-    //   60: getfield 366	android/graphics/BitmapFactory$Options:outWidth	I
-    //   63: invokestatic 372	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   66: aastore
-    //   67: dup
-    //   68: iconst_1
-    //   69: aload 4
-    //   71: getfield 375	android/graphics/BitmapFactory$Options:outHeight	I
-    //   74: invokestatic 372	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   77: aastore
-    //   78: invokestatic 381	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   81: astore_1
-    //   82: aload_0
-    //   83: invokevirtual 384	java/io/InputStream:close	()V
-    //   86: aload_1
-    //   87: areturn
-    //   88: astore_0
-    //   89: aload_0
-    //   90: invokevirtual 387	java/lang/Exception:printStackTrace	()V
-    //   93: aload_1
-    //   94: areturn
-    //   95: astore_1
-    //   96: goto +44 -> 140
-    //   99: astore_2
-    //   100: goto +14 -> 114
-    //   103: astore_2
-    //   104: aload_1
-    //   105: astore_0
-    //   106: aload_2
-    //   107: astore_1
-    //   108: goto +32 -> 140
-    //   111: astore_2
-    //   112: aload_3
-    //   113: astore_0
-    //   114: aload_0
-    //   115: astore_1
-    //   116: aload_2
-    //   117: invokevirtual 387	java/lang/Exception:printStackTrace	()V
-    //   120: aload_0
-    //   121: ifnull +15 -> 136
-    //   124: aload_0
-    //   125: invokevirtual 384	java/io/InputStream:close	()V
-    //   128: goto +8 -> 136
-    //   131: astore_0
-    //   132: aload_0
-    //   133: invokevirtual 387	java/lang/Exception:printStackTrace	()V
-    //   136: ldc_w 389
-    //   139: areturn
-    //   140: aload_0
-    //   141: ifnull +15 -> 156
-    //   144: aload_0
-    //   145: invokevirtual 384	java/io/InputStream:close	()V
-    //   148: goto +8 -> 156
-    //   151: astore_0
-    //   152: aload_0
-    //   153: invokevirtual 387	java/lang/Exception:printStackTrace	()V
-    //   156: aload_1
-    //   157: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	158	0	paramString	String
-    //   5	89	1	localObject1	Object
-    //   95	10	1	localObject2	Object
-    //   107	50	1	localObject3	Object
-    //   3	21	2	localObject4	Object
-    //   99	1	2	localException1	Exception
-    //   103	4	2	localObject5	Object
-    //   111	6	2	localException2	Exception
-    //   1	112	3	localObject6	Object
-    //   13	57	4	localOptions	android.graphics.BitmapFactory.Options
-    // Exception table:
-    //   from	to	target	type
-    //   82	86	88	java/lang/Exception
-    //   41	82	95	finally
-    //   41	82	99	java/lang/Exception
-    //   6	15	103	finally
-    //   17	23	103	finally
-    //   25	41	103	finally
-    //   116	120	103	finally
-    //   6	15	111	java/lang/Exception
-    //   17	23	111	java/lang/Exception
-    //   25	41	111	java/lang/Exception
-    //   124	128	131	java/lang/Exception
-    //   144	148	151	java/lang/Exception
-  }
-  
   public static void a(Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
@@ -871,11 +736,11 @@ public class BitmapUtils
     //   0: aload_0
     //   1: ifnull +268 -> 269
     //   4: aload_0
-    //   5: invokevirtual 433	android/graphics/Bitmap:isRecycled	()Z
+    //   5: invokevirtual 391	android/graphics/Bitmap:isRecycled	()Z
     //   8: ifeq +5 -> 13
     //   11: iconst_0
     //   12: ireturn
-    //   13: invokestatic 438	android/os/SystemClock:uptimeMillis	()J
+    //   13: invokestatic 396	android/os/SystemClock:uptimeMillis	()J
     //   16: pop2
     //   17: aconst_null
     //   18: astore 6
@@ -885,63 +750,63 @@ public class BitmapUtils
     //   24: astore 8
     //   26: aconst_null
     //   27: astore 5
-    //   29: new 293	java/io/File
+    //   29: new 294	java/io/File
     //   32: dup
     //   33: aload_3
-    //   34: invokespecial 294	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: invokespecial 295	java/io/File:<init>	(Ljava/lang/String;)V
     //   37: astore 9
     //   39: aload 5
     //   41: astore_3
     //   42: aload 9
-    //   44: invokevirtual 441	java/io/File:exists	()Z
+    //   44: invokevirtual 399	java/io/File:exists	()Z
     //   47: ifne +27 -> 74
     //   50: aload 5
     //   52: astore_3
     //   53: aload 9
-    //   55: invokevirtual 444	java/io/File:createNewFile	()Z
+    //   55: invokevirtual 402	java/io/File:createNewFile	()Z
     //   58: ifne +16 -> 74
     //   61: aload 5
     //   63: astore_3
-    //   64: ldc 32
-    //   66: ldc_w 446
-    //   69: invokestatic 449	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   64: ldc 21
+    //   66: ldc_w 404
+    //   69: invokestatic 407	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   72: iconst_0
     //   73: ireturn
     //   74: aload 5
     //   76: astore_3
-    //   77: new 451	java/io/BufferedOutputStream
+    //   77: new 409	java/io/BufferedOutputStream
     //   80: dup
-    //   81: new 453	java/io/FileOutputStream
+    //   81: new 411	java/io/FileOutputStream
     //   84: dup
     //   85: aload 9
-    //   87: invokespecial 454	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   87: invokespecial 412	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   90: sipush 8192
-    //   93: invokespecial 457	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
+    //   93: invokespecial 415	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
     //   96: astore 5
     //   98: aload_0
-    //   99: invokevirtual 433	android/graphics/Bitmap:isRecycled	()Z
+    //   99: invokevirtual 391	android/graphics/Bitmap:isRecycled	()Z
     //   102: istore 4
     //   104: iload 4
     //   106: ifeq +10 -> 116
     //   109: aload 5
-    //   111: invokevirtual 458	java/io/BufferedOutputStream:close	()V
+    //   111: invokevirtual 416	java/io/BufferedOutputStream:close	()V
     //   114: iconst_0
     //   115: ireturn
     //   116: aload_0
     //   117: aload_1
     //   118: iload_2
     //   119: aload 5
-    //   121: invokevirtual 462	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   121: invokevirtual 420	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   124: ifne +18 -> 142
-    //   127: ldc 32
-    //   129: ldc_w 464
-    //   132: invokestatic 449	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   127: ldc 21
+    //   129: ldc_w 422
+    //   132: invokestatic 407	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   135: aload 5
-    //   137: invokevirtual 458	java/io/BufferedOutputStream:close	()V
+    //   137: invokevirtual 416	java/io/BufferedOutputStream:close	()V
     //   140: iconst_0
     //   141: ireturn
     //   142: aload 5
-    //   144: invokevirtual 458	java/io/BufferedOutputStream:close	()V
+    //   144: invokevirtual 416	java/io/BufferedOutputStream:close	()V
     //   147: iconst_1
     //   148: ireturn
     //   149: astore_0
@@ -967,15 +832,15 @@ public class BitmapUtils
     //   184: astore_0
     //   185: aload_0
     //   186: astore_3
-    //   187: ldc 32
+    //   187: ldc 21
     //   189: aload_1
-    //   190: invokevirtual 465	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
+    //   190: invokevirtual 423	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
     //   193: aload_1
-    //   194: invokestatic 40	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   194: invokestatic 29	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   197: aload_0
     //   198: ifnull +7 -> 205
     //   201: aload_0
-    //   202: invokevirtual 458	java/io/BufferedOutputStream:close	()V
+    //   202: invokevirtual 416	java/io/BufferedOutputStream:close	()V
     //   205: iconst_0
     //   206: ireturn
     //   207: astore_1
@@ -983,15 +848,15 @@ public class BitmapUtils
     //   210: astore_0
     //   211: aload_0
     //   212: astore_3
-    //   213: ldc 32
+    //   213: ldc 21
     //   215: aload_1
-    //   216: invokevirtual 466	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   216: invokevirtual 424	java/io/IOException:getMessage	()Ljava/lang/String;
     //   219: aload_1
-    //   220: invokestatic 40	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   220: invokestatic 29	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   223: aload_0
     //   224: ifnull +7 -> 231
     //   227: aload_0
-    //   228: invokevirtual 458	java/io/BufferedOutputStream:close	()V
+    //   228: invokevirtual 416	java/io/BufferedOutputStream:close	()V
     //   231: iconst_0
     //   232: ireturn
     //   233: astore_1
@@ -999,21 +864,21 @@ public class BitmapUtils
     //   236: astore_0
     //   237: aload_0
     //   238: astore_3
-    //   239: ldc 32
+    //   239: ldc 21
     //   241: aload_1
-    //   242: invokevirtual 467	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   242: invokevirtual 425	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
     //   245: aload_1
-    //   246: invokestatic 40	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   246: invokestatic 29	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   249: aload_0
     //   250: ifnull +7 -> 257
     //   253: aload_0
-    //   254: invokevirtual 458	java/io/BufferedOutputStream:close	()V
+    //   254: invokevirtual 416	java/io/BufferedOutputStream:close	()V
     //   257: iconst_0
     //   258: ireturn
     //   259: aload_3
     //   260: ifnull +7 -> 267
     //   263: aload_3
-    //   264: invokevirtual 458	java/io/BufferedOutputStream:close	()V
+    //   264: invokevirtual 416	java/io/BufferedOutputStream:close	()V
     //   267: aload_0
     //   268: athrow
     //   269: iconst_0
@@ -1117,22 +982,14 @@ public class BitmapUtils
     return bool1;
   }
   
-  public static boolean a(String paramString)
+  private static Bitmap.Config b(Bitmap paramBitmap)
   {
-    if (paramString != null) {
-      try
-      {
-        Bitmap localBitmap = a(paramString, null);
-        FileUtils.deleteDirectory(paramString);
-        boolean bool = a(localBitmap, Bitmap.CompressFormat.PNG, 100, paramString);
-        return bool;
-      }
-      catch (Throwable paramString)
-      {
-        SLog.c("BitmapUtils", "convertBitmapBinFileToPng failed", paramString);
-      }
+    Bitmap.Config localConfig = paramBitmap.getConfig();
+    paramBitmap = localConfig;
+    if (localConfig == null) {
+      paramBitmap = Bitmap.Config.ARGB_8888;
     }
-    return false;
+    return paramBitmap;
   }
   
   public static Bitmap b(Bitmap paramBitmap, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
@@ -1211,7 +1068,7 @@ public class BitmapUtils
     //   0: aload_0
     //   1: ifnull +260 -> 261
     //   4: aload_0
-    //   5: invokevirtual 433	android/graphics/Bitmap:isRecycled	()Z
+    //   5: invokevirtual 391	android/graphics/Bitmap:isRecycled	()Z
     //   8: ifne +253 -> 261
     //   11: aload_1
     //   12: ifnull +238 -> 250
@@ -1219,92 +1076,92 @@ public class BitmapUtils
     //   16: astore 5
     //   18: aconst_null
     //   19: astore_3
-    //   20: new 518	java/io/DataOutputStream
+    //   20: new 469	java/io/DataOutputStream
     //   23: dup
-    //   24: new 453	java/io/FileOutputStream
+    //   24: new 411	java/io/FileOutputStream
     //   27: dup
-    //   28: new 293	java/io/File
+    //   28: new 294	java/io/File
     //   31: dup
     //   32: aload_1
-    //   33: invokespecial 294	java/io/File:<init>	(Ljava/lang/String;)V
-    //   36: invokespecial 454	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   39: invokespecial 521	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   33: invokespecial 295	java/io/File:<init>	(Ljava/lang/String;)V
+    //   36: invokespecial 412	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   39: invokespecial 472	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   42: astore 4
     //   44: aload_3
     //   45: astore_1
     //   46: aload 4
     //   48: sipush 187
-    //   51: invokevirtual 524	java/io/DataOutputStream:writeInt	(I)V
+    //   51: invokevirtual 475	java/io/DataOutputStream:writeInt	(I)V
     //   54: aload_3
     //   55: astore_1
     //   56: aload 4
     //   58: iconst_1
-    //   59: invokevirtual 524	java/io/DataOutputStream:writeInt	(I)V
+    //   59: invokevirtual 475	java/io/DataOutputStream:writeInt	(I)V
     //   62: aload_3
     //   63: astore_1
     //   64: aload 4
     //   66: aload_0
-    //   67: invokevirtual 159	android/graphics/Bitmap:isMutable	()Z
-    //   70: invokevirtual 528	java/io/DataOutputStream:writeBoolean	(Z)V
+    //   67: invokevirtual 150	android/graphics/Bitmap:isMutable	()Z
+    //   70: invokevirtual 479	java/io/DataOutputStream:writeBoolean	(Z)V
     //   73: aload_3
     //   74: astore_1
     //   75: aload 4
     //   77: aload_0
-    //   78: invokevirtual 17	android/graphics/Bitmap:getConfig	()Landroid/graphics/Bitmap$Config;
-    //   81: invokevirtual 531	android/graphics/Bitmap$Config:ordinal	()I
-    //   84: invokevirtual 524	java/io/DataOutputStream:writeInt	(I)V
+    //   78: invokevirtual 154	android/graphics/Bitmap:getConfig	()Landroid/graphics/Bitmap$Config;
+    //   81: invokevirtual 482	android/graphics/Bitmap$Config:ordinal	()I
+    //   84: invokevirtual 475	java/io/DataOutputStream:writeInt	(I)V
     //   87: aload_3
     //   88: astore_1
     //   89: aload 4
     //   91: aload_0
-    //   92: invokevirtual 45	android/graphics/Bitmap:getWidth	()I
-    //   95: invokevirtual 524	java/io/DataOutputStream:writeInt	(I)V
+    //   92: invokevirtual 34	android/graphics/Bitmap:getWidth	()I
+    //   95: invokevirtual 475	java/io/DataOutputStream:writeInt	(I)V
     //   98: aload_3
     //   99: astore_1
     //   100: aload 4
     //   102: aload_0
-    //   103: invokevirtual 54	android/graphics/Bitmap:getHeight	()I
-    //   106: invokevirtual 524	java/io/DataOutputStream:writeInt	(I)V
+    //   103: invokevirtual 43	android/graphics/Bitmap:getHeight	()I
+    //   106: invokevirtual 475	java/io/DataOutputStream:writeInt	(I)V
     //   109: aload_3
     //   110: astore_1
     //   111: aload 4
     //   113: aload_0
-    //   114: invokevirtual 534	android/graphics/Bitmap:getRowBytes	()I
-    //   117: invokevirtual 524	java/io/DataOutputStream:writeInt	(I)V
+    //   114: invokevirtual 485	android/graphics/Bitmap:getRowBytes	()I
+    //   117: invokevirtual 475	java/io/DataOutputStream:writeInt	(I)V
     //   120: aload_3
     //   121: astore_1
     //   122: aload 4
     //   124: aload_0
-    //   125: invokevirtual 142	android/graphics/Bitmap:getDensity	()I
-    //   128: invokevirtual 524	java/io/DataOutputStream:writeInt	(I)V
+    //   125: invokevirtual 133	android/graphics/Bitmap:getDensity	()I
+    //   128: invokevirtual 475	java/io/DataOutputStream:writeInt	(I)V
     //   131: aload_2
     //   132: ifnull +17 -> 149
     //   135: aload_3
     //   136: astore_1
     //   137: aload_2
     //   138: aload_0
-    //   139: invokevirtual 537	android/graphics/Bitmap:getByteCount	()I
-    //   142: invokevirtual 313	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	(I)[B
+    //   139: invokevirtual 488	android/graphics/Bitmap:getByteCount	()I
+    //   142: invokevirtual 314	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	(I)[B
     //   145: astore_3
     //   146: goto +12 -> 158
     //   149: aload_3
     //   150: astore_1
     //   151: aload_0
-    //   152: invokevirtual 537	android/graphics/Bitmap:getByteCount	()I
+    //   152: invokevirtual 488	android/graphics/Bitmap:getByteCount	()I
     //   155: newarray byte
     //   157: astore_3
     //   158: aload_3
     //   159: astore_1
     //   160: aload_0
     //   161: aload_3
-    //   162: invokestatic 323	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   165: invokevirtual 540	android/graphics/Bitmap:copyPixelsToBuffer	(Ljava/nio/Buffer;)V
+    //   162: invokestatic 324	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   165: invokevirtual 491	android/graphics/Bitmap:copyPixelsToBuffer	(Ljava/nio/Buffer;)V
     //   168: aload_3
     //   169: astore_1
     //   170: aload 4
     //   172: aload_3
     //   173: arraylength
-    //   174: invokevirtual 524	java/io/DataOutputStream:writeInt	(I)V
+    //   174: invokevirtual 475	java/io/DataOutputStream:writeInt	(I)V
     //   177: aload_3
     //   178: astore_1
     //   179: aload 4
@@ -1312,20 +1169,20 @@ public class BitmapUtils
     //   182: iconst_0
     //   183: aload_3
     //   184: arraylength
-    //   185: invokevirtual 544	java/io/DataOutputStream:write	([BII)V
+    //   185: invokevirtual 495	java/io/DataOutputStream:write	([BII)V
     //   188: aload_3
     //   189: astore_1
     //   190: aload 4
-    //   192: invokevirtual 547	java/io/DataOutputStream:flush	()V
+    //   192: invokevirtual 498	java/io/DataOutputStream:flush	()V
     //   195: aload_2
     //   196: ifnull +12 -> 208
     //   199: aload_3
     //   200: ifnull +8 -> 208
     //   203: aload_2
     //   204: aload_3
-    //   205: invokevirtual 330	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	([B)V
+    //   205: invokevirtual 331	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	([B)V
     //   208: aload 4
-    //   210: invokevirtual 548	java/io/DataOutputStream:close	()V
+    //   210: invokevirtual 499	java/io/DataOutputStream:close	()V
     //   213: return
     //   214: astore_0
     //   215: aload 4
@@ -1342,22 +1199,22 @@ public class BitmapUtils
     //   232: ifnull +8 -> 240
     //   235: aload_2
     //   236: aload_1
-    //   237: invokevirtual 330	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	([B)V
+    //   237: invokevirtual 331	com/tencent/biz/qqstory/utils/BitmapUtils$ByteArrayRecycler:a	([B)V
     //   240: aload_3
     //   241: ifnull +7 -> 248
     //   244: aload_3
-    //   245: invokevirtual 548	java/io/DataOutputStream:close	()V
+    //   245: invokevirtual 499	java/io/DataOutputStream:close	()V
     //   248: aload_0
     //   249: athrow
-    //   250: new 344	java/lang/IllegalArgumentException
+    //   250: new 345	java/lang/IllegalArgumentException
     //   253: dup
-    //   254: ldc_w 550
-    //   257: invokespecial 347	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   254: ldc_w 501
+    //   257: invokespecial 348	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   260: athrow
-    //   261: new 344	java/lang/IllegalArgumentException
+    //   261: new 345	java/lang/IllegalArgumentException
     //   264: dup
-    //   265: ldc_w 552
-    //   268: invokespecial 347	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   265: ldc_w 503
+    //   268: invokespecial 348	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   271: athrow
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1384,6 +1241,24 @@ public class BitmapUtils
     //   179	188	214	finally
     //   190	195	214	finally
     //   20	44	221	finally
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (paramString != null) {
+      try
+      {
+        Bitmap localBitmap = a(paramString, null);
+        FileUtils.deleteDirectory(paramString);
+        boolean bool = a(localBitmap, Bitmap.CompressFormat.PNG, 100, paramString);
+        return bool;
+      }
+      catch (Throwable paramString)
+      {
+        SLog.c("BitmapUtils", "convertBitmapBinFileToPng failed", paramString);
+      }
+    }
+    return false;
   }
   
   public static Bitmap c(Bitmap paramBitmap, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
@@ -1432,6 +1307,131 @@ public class BitmapUtils
   public static Bitmap c(Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
     return a(paramBitmap1, paramBitmap2, false);
+  }
+  
+  /* Error */
+  public static String c(String paramString)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_2
+    //   4: aload_2
+    //   5: astore_1
+    //   6: new 525	android/graphics/BitmapFactory$Options
+    //   9: dup
+    //   10: invokespecial 526	android/graphics/BitmapFactory$Options:<init>	()V
+    //   13: astore 4
+    //   15: aload_2
+    //   16: astore_1
+    //   17: aload 4
+    //   19: iconst_1
+    //   20: putfield 530	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   23: aload_2
+    //   24: astore_1
+    //   25: new 266	java/io/BufferedInputStream
+    //   28: dup
+    //   29: new 268	java/io/FileInputStream
+    //   32: dup
+    //   33: aload_0
+    //   34: invokespecial 271	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   37: invokespecial 274	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   40: astore_0
+    //   41: aload_0
+    //   42: aconst_null
+    //   43: aload 4
+    //   45: invokestatic 535	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   48: pop
+    //   49: ldc_w 537
+    //   52: iconst_2
+    //   53: anewarray 4	java/lang/Object
+    //   56: dup
+    //   57: iconst_0
+    //   58: aload 4
+    //   60: getfield 541	android/graphics/BitmapFactory$Options:outWidth	I
+    //   63: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   66: aastore
+    //   67: dup
+    //   68: iconst_1
+    //   69: aload 4
+    //   71: getfield 544	android/graphics/BitmapFactory$Options:outHeight	I
+    //   74: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   77: aastore
+    //   78: invokestatic 550	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   81: astore_1
+    //   82: aload_0
+    //   83: invokevirtual 553	java/io/InputStream:close	()V
+    //   86: aload_1
+    //   87: areturn
+    //   88: astore_0
+    //   89: aload_0
+    //   90: invokevirtual 556	java/lang/Exception:printStackTrace	()V
+    //   93: aload_1
+    //   94: areturn
+    //   95: astore_1
+    //   96: goto +44 -> 140
+    //   99: astore_2
+    //   100: goto +14 -> 114
+    //   103: astore_2
+    //   104: aload_1
+    //   105: astore_0
+    //   106: aload_2
+    //   107: astore_1
+    //   108: goto +32 -> 140
+    //   111: astore_2
+    //   112: aload_3
+    //   113: astore_0
+    //   114: aload_0
+    //   115: astore_1
+    //   116: aload_2
+    //   117: invokevirtual 556	java/lang/Exception:printStackTrace	()V
+    //   120: aload_0
+    //   121: ifnull +15 -> 136
+    //   124: aload_0
+    //   125: invokevirtual 553	java/io/InputStream:close	()V
+    //   128: goto +8 -> 136
+    //   131: astore_0
+    //   132: aload_0
+    //   133: invokevirtual 556	java/lang/Exception:printStackTrace	()V
+    //   136: ldc_w 558
+    //   139: areturn
+    //   140: aload_0
+    //   141: ifnull +15 -> 156
+    //   144: aload_0
+    //   145: invokevirtual 553	java/io/InputStream:close	()V
+    //   148: goto +8 -> 156
+    //   151: astore_0
+    //   152: aload_0
+    //   153: invokevirtual 556	java/lang/Exception:printStackTrace	()V
+    //   156: aload_1
+    //   157: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	158	0	paramString	String
+    //   5	89	1	localObject1	Object
+    //   95	10	1	localObject2	Object
+    //   107	50	1	localObject3	Object
+    //   3	21	2	localObject4	Object
+    //   99	1	2	localException1	Exception
+    //   103	4	2	localObject5	Object
+    //   111	6	2	localException2	Exception
+    //   1	112	3	localObject6	Object
+    //   13	57	4	localOptions	android.graphics.BitmapFactory.Options
+    // Exception table:
+    //   from	to	target	type
+    //   82	86	88	java/lang/Exception
+    //   41	82	95	finally
+    //   41	82	99	java/lang/Exception
+    //   6	15	103	finally
+    //   17	23	103	finally
+    //   25	41	103	finally
+    //   116	120	103	finally
+    //   6	15	111	java/lang/Exception
+    //   17	23	111	java/lang/Exception
+    //   25	41	111	java/lang/Exception
+    //   124	128	131	java/lang/Exception
+    //   144	148	151	java/lang/Exception
   }
 }
 

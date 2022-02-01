@@ -29,25 +29,25 @@ class ComponentHeaderUgc$3
     QLog.d("ComponentHeaderUgc", 2, localStringBuilder.toString());
     if ((paramBoolean) && (paramInt == 2))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.h = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.a.setEnabled(false);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.a.setText(HardCodeUtil.a(2131702453));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.a.getPaint().setFakeBoldText(false);
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.h = 2;
-      ReadInJoyLogicEngine.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-      ReadInJoyLogicEngine.a().c(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSocialFeedInfo.a.a, paramInt);
+      this.a.mSocialFeedInfo.o = paramInt;
+      this.b.g.setEnabled(false);
+      this.b.g.setText(HardCodeUtil.a(2131900455));
+      this.b.g.getPaint().setFakeBoldText(false);
+      this.a.mSocialFeedInfo.o = 2;
+      ReadInJoyLogicEngine.a().c(this.a);
+      ReadInJoyLogicEngine.a().c(this.a.mSocialFeedInfo.c.a, paramInt);
       ReadInJoyLogicEngineEventDispatcher.a().c();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.a.setEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.a.setText(HardCodeUtil.a(2131702450));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.a.getPaint().setFakeBoldText(true);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderUgc.getContext(), HardCodeUtil.a(2131702483), 0).a();
+    this.b.g.setEnabled(true);
+    this.b.g.setText(HardCodeUtil.a(2131899712));
+    this.b.g.getPaint().setFakeBoldText(true);
+    QQToast.makeText(this.b.getContext(), HardCodeUtil.a(2131900484), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderUgc.3
  * JD-Core Version:    0.7.0.1
  */

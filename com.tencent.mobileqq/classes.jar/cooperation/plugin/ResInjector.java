@@ -13,118 +13,118 @@ import java.util.List;
 
 public class ResInjector
 {
-  private static Class<AssetManager> jdField_a_of_type_JavaLangClass;
-  private static Field jdField_a_of_type_JavaLangReflectField;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Collection<WeakReference<Resources>> jdField_a_of_type_JavaUtilCollection;
-  private static Class jdField_b_of_type_JavaLangClass = Class.forName("android.content.res.Resources");
-  private static Field jdField_b_of_type_JavaLangReflectField;
-  private static Class c;
+  private static Class<AssetManager> a;
+  private static Method b;
+  private static Class c = Class.forName("android.content.res.Resources");
   private static Class d;
+  private static Class e;
+  private static Field f;
+  private static Field g;
+  private static Collection<WeakReference<Resources>> h;
   
   /* Error */
   static
   {
     // Byte code:
-    //   0: ldc 22
-    //   2: invokestatic 28	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   5: putstatic 30	cooperation/plugin/ResInjector:jdField_b_of_type_JavaLangClass	Ljava/lang/Class;
-    //   8: ldc 32
-    //   10: putstatic 34	cooperation/plugin/ResInjector:jdField_a_of_type_JavaLangClass	Ljava/lang/Class;
-    //   13: getstatic 34	cooperation/plugin/ResInjector:jdField_a_of_type_JavaLangClass	Ljava/lang/Class;
-    //   16: ldc 36
+    //   0: ldc 26
+    //   2: invokestatic 32	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   5: putstatic 34	cooperation/plugin/ResInjector:c	Ljava/lang/Class;
+    //   8: ldc 36
+    //   10: putstatic 38	cooperation/plugin/ResInjector:a	Ljava/lang/Class;
+    //   13: getstatic 38	cooperation/plugin/ResInjector:a	Ljava/lang/Class;
+    //   16: ldc 40
     //   18: iconst_1
-    //   19: anewarray 24	java/lang/Class
+    //   19: anewarray 28	java/lang/Class
     //   22: dup
     //   23: iconst_0
-    //   24: ldc 38
+    //   24: ldc 42
     //   26: aastore
-    //   27: invokevirtual 42	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   30: putstatic 44	cooperation/plugin/ResInjector:jdField_a_of_type_JavaLangReflectMethod	Ljava/lang/reflect/Method;
-    //   33: getstatic 44	cooperation/plugin/ResInjector:jdField_a_of_type_JavaLangReflectMethod	Ljava/lang/reflect/Method;
+    //   27: invokevirtual 46	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   30: putstatic 48	cooperation/plugin/ResInjector:b	Ljava/lang/reflect/Method;
+    //   33: getstatic 48	cooperation/plugin/ResInjector:b	Ljava/lang/reflect/Method;
     //   36: iconst_1
-    //   37: invokevirtual 50	java/lang/reflect/Method:setAccessible	(Z)V
-    //   40: invokestatic 53	cooperation/plugin/ResInjector:b	()Z
+    //   37: invokevirtual 54	java/lang/reflect/Method:setAccessible	(Z)V
+    //   40: invokestatic 57	cooperation/plugin/ResInjector:b	()Z
     //   43: istore_0
     //   44: iload_0
     //   45: ifeq +43 -> 88
-    //   48: ldc 55
-    //   50: invokestatic 28	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   53: putstatic 57	cooperation/plugin/ResInjector:c	Ljava/lang/Class;
-    //   56: getstatic 30	cooperation/plugin/ResInjector:jdField_b_of_type_JavaLangClass	Ljava/lang/Class;
-    //   59: ldc 59
-    //   61: invokevirtual 63	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   64: putstatic 65	cooperation/plugin/ResInjector:jdField_b_of_type_JavaLangReflectField	Ljava/lang/reflect/Field;
-    //   67: getstatic 65	cooperation/plugin/ResInjector:jdField_b_of_type_JavaLangReflectField	Ljava/lang/reflect/Field;
+    //   48: ldc 59
+    //   50: invokestatic 32	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   53: putstatic 61	cooperation/plugin/ResInjector:d	Ljava/lang/Class;
+    //   56: getstatic 34	cooperation/plugin/ResInjector:c	Ljava/lang/Class;
+    //   59: ldc 63
+    //   61: invokevirtual 67	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   64: putstatic 69	cooperation/plugin/ResInjector:g	Ljava/lang/reflect/Field;
+    //   67: getstatic 69	cooperation/plugin/ResInjector:g	Ljava/lang/reflect/Field;
     //   70: iconst_1
-    //   71: invokevirtual 68	java/lang/reflect/Field:setAccessible	(Z)V
-    //   74: getstatic 57	cooperation/plugin/ResInjector:c	Ljava/lang/Class;
-    //   77: ldc 70
-    //   79: invokevirtual 63	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   82: putstatic 72	cooperation/plugin/ResInjector:jdField_a_of_type_JavaLangReflectField	Ljava/lang/reflect/Field;
+    //   71: invokevirtual 72	java/lang/reflect/Field:setAccessible	(Z)V
+    //   74: getstatic 61	cooperation/plugin/ResInjector:d	Ljava/lang/Class;
+    //   77: ldc 74
+    //   79: invokevirtual 67	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   82: putstatic 76	cooperation/plugin/ResInjector:f	Ljava/lang/reflect/Field;
     //   85: goto +14 -> 99
-    //   88: getstatic 30	cooperation/plugin/ResInjector:jdField_b_of_type_JavaLangClass	Ljava/lang/Class;
-    //   91: ldc 70
-    //   93: invokevirtual 63	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   96: putstatic 72	cooperation/plugin/ResInjector:jdField_a_of_type_JavaLangReflectField	Ljava/lang/reflect/Field;
-    //   99: getstatic 72	cooperation/plugin/ResInjector:jdField_a_of_type_JavaLangReflectField	Ljava/lang/reflect/Field;
+    //   88: getstatic 34	cooperation/plugin/ResInjector:c	Ljava/lang/Class;
+    //   91: ldc 74
+    //   93: invokevirtual 67	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   96: putstatic 76	cooperation/plugin/ResInjector:f	Ljava/lang/reflect/Field;
+    //   99: getstatic 76	cooperation/plugin/ResInjector:f	Ljava/lang/reflect/Field;
     //   102: iconst_1
-    //   103: invokevirtual 68	java/lang/reflect/Field:setAccessible	(Z)V
+    //   103: invokevirtual 72	java/lang/reflect/Field:setAccessible	(Z)V
     //   106: goto +13 -> 119
     //   109: astore_1
-    //   110: ldc 74
+    //   110: ldc 78
     //   112: iconst_1
-    //   113: ldc 76
+    //   113: ldc 80
     //   115: aload_1
-    //   116: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   119: invokestatic 84	cooperation/plugin/ResInjector:a	()Z
+    //   116: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   119: invokestatic 87	cooperation/plugin/ResInjector:a	()Z
     //   122: ifeq +97 -> 219
-    //   125: ldc 86
-    //   127: invokestatic 28	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   130: putstatic 88	cooperation/plugin/ResInjector:d	Ljava/lang/Class;
-    //   133: getstatic 88	cooperation/plugin/ResInjector:d	Ljava/lang/Class;
-    //   136: ldc 90
+    //   125: ldc 89
+    //   127: invokestatic 32	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   130: putstatic 91	cooperation/plugin/ResInjector:e	Ljava/lang/Class;
+    //   133: getstatic 91	cooperation/plugin/ResInjector:e	Ljava/lang/Class;
+    //   136: ldc 93
     //   138: iconst_0
-    //   139: anewarray 24	java/lang/Class
-    //   142: invokevirtual 93	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   139: anewarray 28	java/lang/Class
+    //   142: invokevirtual 96	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   145: aconst_null
     //   146: iconst_0
     //   147: anewarray 4	java/lang/Object
-    //   150: invokevirtual 97	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   150: invokevirtual 100	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   153: astore_1
-    //   154: getstatic 88	cooperation/plugin/ResInjector:d	Ljava/lang/Class;
-    //   157: ldc 99
-    //   159: invokevirtual 63	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   154: getstatic 91	cooperation/plugin/ResInjector:e	Ljava/lang/Class;
+    //   157: ldc 102
+    //   159: invokevirtual 67	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   162: astore_2
     //   163: aload_2
     //   164: iconst_1
-    //   165: invokevirtual 68	java/lang/reflect/Field:setAccessible	(Z)V
+    //   165: invokevirtual 72	java/lang/reflect/Field:setAccessible	(Z)V
     //   168: aload_2
     //   169: aload_1
-    //   170: invokevirtual 103	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   173: checkcast 105	android/util/ArrayMap
-    //   176: invokevirtual 109	android/util/ArrayMap:values	()Ljava/util/Collection;
-    //   179: putstatic 111	cooperation/plugin/ResInjector:jdField_a_of_type_JavaUtilCollection	Ljava/util/Collection;
+    //   170: invokevirtual 106	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   173: checkcast 108	android/util/ArrayMap
+    //   176: invokevirtual 112	android/util/ArrayMap:values	()Ljava/util/Collection;
+    //   179: putstatic 114	cooperation/plugin/ResInjector:h	Ljava/util/Collection;
     //   182: return
-    //   183: getstatic 88	cooperation/plugin/ResInjector:d	Ljava/lang/Class;
-    //   186: ldc 113
-    //   188: invokevirtual 63	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   183: getstatic 91	cooperation/plugin/ResInjector:e	Ljava/lang/Class;
+    //   186: ldc 116
+    //   188: invokevirtual 67	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   191: astore_2
     //   192: aload_2
     //   193: iconst_1
-    //   194: invokevirtual 68	java/lang/reflect/Field:setAccessible	(Z)V
+    //   194: invokevirtual 72	java/lang/reflect/Field:setAccessible	(Z)V
     //   197: aload_2
     //   198: aload_1
-    //   199: invokevirtual 103	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   202: checkcast 115	java/util/Collection
-    //   205: putstatic 111	cooperation/plugin/ResInjector:jdField_a_of_type_JavaUtilCollection	Ljava/util/Collection;
+    //   199: invokevirtual 106	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   202: checkcast 118	java/util/Collection
+    //   205: putstatic 114	cooperation/plugin/ResInjector:h	Ljava/util/Collection;
     //   208: return
     //   209: astore_1
-    //   210: ldc 74
+    //   210: ldc 78
     //   212: iconst_1
-    //   213: ldc 76
+    //   213: ldc 80
     //   215: aload_1
-    //   216: invokestatic 82	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   216: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   219: return
     //   220: astore_2
     //   221: goto -38 -> 183
@@ -158,7 +158,7 @@ public class ResInjector
       if (paramList.isEmpty()) {
         return null;
       }
-      if (jdField_a_of_type_JavaLangReflectMethod != null) {
+      if (b != null) {
         for (;;)
         {
           try
@@ -168,20 +168,20 @@ public class ResInjector
             if (paramList.hasNext())
             {
               localObject1 = (String)paramList.next();
-              jdField_a_of_type_JavaLangReflectMethod.invoke(paramContext, new Object[] { localObject1 });
+              b.invoke(paramContext, new Object[] { localObject1 });
               continue;
             }
             new Resources(paramContext, paramResources.getDisplayMetrics(), paramResources.getConfiguration());
             if (b())
             {
-              paramList = jdField_b_of_type_JavaLangReflectField.get(paramResources);
-              jdField_a_of_type_JavaLangReflectField.set(paramList, paramContext);
+              paramList = g.get(paramResources);
+              f.set(paramList, paramContext);
             }
             else
             {
-              jdField_a_of_type_JavaLangReflectField.set(paramResources, paramContext);
+              f.set(paramResources, paramContext);
             }
-            paramList = jdField_a_of_type_JavaUtilCollection.iterator();
+            paramList = h.iterator();
             if (paramList.hasNext())
             {
               localObject1 = (Resources)((WeakReference)paramList.next()).get();
@@ -199,14 +199,14 @@ public class ResInjector
           }
           try
           {
-            jdField_a_of_type_JavaLangReflectField.set(localObject1, paramContext);
+            f.set(localObject1, paramContext);
           }
           catch (Throwable localThrowable)
           {
             continue;
           }
-          localObject2 = jdField_b_of_type_JavaLangReflectField.get(localObject1);
-          localField = c.getDeclaredField("mAssets");
+          localObject2 = g.get(localObject1);
+          localField = d.getDeclaredField("mAssets");
           localField.setAccessible(true);
           localField.set(localObject2, paramContext);
           ((Resources)localObject1).updateConfiguration(((Resources)localObject1).getConfiguration(), ((Resources)localObject1).getDisplayMetrics());
@@ -236,7 +236,7 @@ public class ResInjector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.ResInjector
  * JD-Core Version:    0.7.0.1
  */

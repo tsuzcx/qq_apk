@@ -14,13 +14,13 @@ class AVActivity$VideoOrientationEventListener
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    long l = AudioHelper.b();
-    if (this.a.h != paramInt)
+    long l = AudioHelper.c();
+    if (this.a.V != paramInt)
     {
-      String str = this.a.b;
+      String str = this.a.i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onVideoOrientationChanged, mRotationAngle[");
-      localStringBuilder.append(this.a.h);
+      localStringBuilder.append(this.a.V);
       localStringBuilder.append("->");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("], seq[");

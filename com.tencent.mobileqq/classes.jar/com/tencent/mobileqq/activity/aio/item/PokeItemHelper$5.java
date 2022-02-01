@@ -62,12 +62,12 @@ final class PokeItemHelper$5
     label138:
     if (bool)
     {
-      SharedPreUtils.a(true);
-      PokeItemHelper.b = true;
+      SharedPreUtils.d(true);
+      PokeItemHelper.I = true;
     }
     else
     {
-      PokeItemHelper.o += 1;
+      PokeItemHelper.K += 1;
     }
     if (QLog.isColorLevel())
     {
@@ -76,14 +76,14 @@ final class PokeItemHelper$5
       paramNetResp.append(bool);
       QLog.d("PokeEmo", 2, paramNetResp.toString());
     }
-    PokeItemHelper.c = false;
+    PokeItemHelper.J = false;
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PokeItemHelper.5
  * JD-Core Version:    0.7.0.1
  */

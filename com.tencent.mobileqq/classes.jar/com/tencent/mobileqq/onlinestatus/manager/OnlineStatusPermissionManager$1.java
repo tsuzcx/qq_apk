@@ -44,12 +44,12 @@ class OnlineStatusPermissionManager$1
       OnlineStatusPermissionManager.a(this.this$0, new OnlineStatusFriendsPermissionItem(true, null));
     }
     OnlineStatusPermissionManager.a(this.this$0, 1);
-    OnlineStatusPermissionManager.a(this.this$0).runOnUiThread(new OnlineStatusPermissionManager.1.1(this));
+    OnlineStatusPermissionManager.c(this.this$0).runOnUiThread(new OnlineStatusPermissionManager.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.OnlineStatusPermissionManager.1
  * JD-Core Version:    0.7.0.1
  */

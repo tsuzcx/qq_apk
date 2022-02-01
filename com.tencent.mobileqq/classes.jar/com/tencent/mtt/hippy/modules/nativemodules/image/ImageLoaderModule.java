@@ -12,7 +12,7 @@ import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
 public class ImageLoaderModule
   extends HippyNativeModuleBase
 {
-  HippyImageLoader a;
+  final HippyImageLoader a;
   
   public ImageLoaderModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -37,7 +37,7 @@ public class ImageLoaderModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.image.ImageLoaderModule
  * JD-Core Version:    0.7.0.1
  */

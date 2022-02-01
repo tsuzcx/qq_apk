@@ -28,7 +28,7 @@ class UpComingMsgManager$2
         QLog.d("UpComingMsgLogic.UpComingMsgManager", 4, localStringBuilder.toString());
       }
       UpComingMsgManager.a(this.a, paramColorNote, 1001);
-      ReportController.b(null, "dc00898", "", "", "0X800AE81", "0X800AE81", UpComingMsgUtil.a(paramColorNote).reportType, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800AE81", "0X800AE81", UpComingMsgUtil.b(paramColorNote).reportType, 0, "", "", "", "");
     }
   }
   
@@ -52,7 +52,7 @@ class UpComingMsgManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

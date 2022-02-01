@@ -26,20 +26,20 @@ public class GetCommentLikeCountRespone
     {
       Object localObject = (qqstory_group.CommentLikeCount)paramRspGetCommentLikeCount.next();
       GetCommentLikeCountRespone.CommentLikeCount localCommentLikeCount = new GetCommentLikeCountRespone.CommentLikeCount(this);
-      localCommentLikeCount.jdField_a_of_type_JavaLangString = ((qqstory_group.CommentLikeCount)localObject).story_id.get().toStringUtf8();
-      localCommentLikeCount.jdField_a_of_type_Int = ((qqstory_group.CommentLikeCount)localObject).like_count.get();
-      localCommentLikeCount.b = ((qqstory_group.CommentLikeCount)localObject).comment_count.get();
+      localCommentLikeCount.a = ((qqstory_group.CommentLikeCount)localObject).story_id.get().toStringUtf8();
+      localCommentLikeCount.b = ((qqstory_group.CommentLikeCount)localObject).like_count.get();
+      localCommentLikeCount.c = ((qqstory_group.CommentLikeCount)localObject).comment_count.get();
       int i = ((qqstory_group.CommentLikeCount)localObject).is_has_like.get();
       boolean bool = true;
       if (i != 1) {
         bool = false;
       }
-      localCommentLikeCount.jdField_a_of_type_Boolean = bool;
+      localCommentLikeCount.d = bool;
       localObject = ((qqstory_group.CommentLikeCount)localObject).newly_three_like.get().iterator();
       while (((Iterator)localObject).hasNext())
       {
         qqstory_group.NewlyLikeInfo localNewlyLikeInfo = (qqstory_group.NewlyLikeInfo)((Iterator)localObject).next();
-        localCommentLikeCount.jdField_a_of_type_JavaUtilList.add(Long.valueOf(localNewlyLikeInfo.uin.get()));
+        localCommentLikeCount.e.add(Long.valueOf(localNewlyLikeInfo.uin.get()));
       }
       this.a.add(localCommentLikeCount);
     }
@@ -47,7 +47,7 @@ public class GetCommentLikeCountRespone
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetCommentLikeCountRespone
  * JD-Core Version:    0.7.0.1
  */

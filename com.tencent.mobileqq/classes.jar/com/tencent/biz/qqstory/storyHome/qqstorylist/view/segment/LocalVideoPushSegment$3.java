@@ -11,7 +11,7 @@ class LocalVideoPushSegment$3
   public void a(Drawable paramDrawable)
   {
     if (paramDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+      this.a.setImageDrawable(paramDrawable);
     }
   }
 }

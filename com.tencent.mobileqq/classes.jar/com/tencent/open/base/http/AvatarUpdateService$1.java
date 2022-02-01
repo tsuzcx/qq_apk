@@ -25,7 +25,7 @@ class AvatarUpdateService$1
     Object localObject1 = new DefaultHttpClient();
     try
     {
-      ??? = new HttpGet(MsfSdkUtils.insertMtype("yingyongbao", this.jdField_a_of_type_JavaLangString));
+      ??? = new HttpGet(MsfSdkUtils.insertMtype("yingyongbao", this.a));
       ((HttpGet)???).addHeader("Cookie", this.b);
       localObject1 = EntityUtils.toString(((HttpClient)localObject1).execute((HttpUriRequest)???).getEntity(), "utf-8");
       if (TextUtils.isEmpty((CharSequence)localObject1))
@@ -43,15 +43,15 @@ class AvatarUpdateService$1
           QLog.e("AvatarUpdateService", 1, "-->updateAvatar--image url is empty");
           return;
         }
-        ??? = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.c, "");
+        ??? = this.this$0.b.getString(this.c, "");
         if ((!FileUtils.fileExists(this.d)) || (!((String)localObject1).equals(???)))
         {
           QLog.d("AvatarUpdateService", 1, "-->updateAvatar--avatar not exist or need update, will download new avatar");
-          synchronized (this.this$0.jdField_a_of_type_JavaUtilHashMap)
+          synchronized (this.this$0.a)
           {
-            if (!this.this$0.jdField_a_of_type_JavaUtilHashMap.containsKey(this.c))
+            if (!this.this$0.a.containsKey(this.c))
             {
-              this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, new AvatarUpdateService.AvatarUpdateTask(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.c, this.d, (String)localObject1, this.jdField_a_of_type_ComTencentOpenBaseHttpHttpImageDownloadAsyncTask$TaskCompleteCallback));
+              this.this$0.a.put(this.c, new AvatarUpdateService.AvatarUpdateTask(this.this$0, this.e, this.c, this.d, (String)localObject1, this.f));
               new HttpImageDownloadAsyncTask(this.c, (String)localObject1, null, "GET", this.this$0).execute(new Void[0]);
             }
             return;
@@ -72,7 +72,7 @@ class AvatarUpdateService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.http.AvatarUpdateService.1
  * JD-Core Version:    0.7.0.1
  */

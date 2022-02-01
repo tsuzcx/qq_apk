@@ -43,16 +43,16 @@ class TroopApiPlugin$1
       localObject = new JSONObject();
       if (bool)
       {
-        MediaApiPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspTroopApiPlugin.mRuntime.a(), paramBundle, this.jdField_a_of_type_Long, this.b);
+        MediaApiPlugin.a(this.d.mRuntime.d(), paramBundle, this.a, this.b);
         ((JSONObject)localObject).put("ret", 0);
         ((JSONObject)localObject).put("errMsg", "");
       }
       else
       {
         ((JSONObject)localObject).put("ret", -2);
-        ((JSONObject)localObject).put("errMsg", HardCodeUtil.a(2131714966));
+        ((JSONObject)localObject).put("errMsg", HardCodeUtil.a(2131912462));
       }
-      this.jdField_a_of_type_ComTencentMobileqqJspTroopApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+      this.d.callJs(this.c, new String[] { ((JSONObject)localObject).toString() });
       return;
     }
     catch (Exception paramBundle)
@@ -65,7 +65,7 @@ class TroopApiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.TroopApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

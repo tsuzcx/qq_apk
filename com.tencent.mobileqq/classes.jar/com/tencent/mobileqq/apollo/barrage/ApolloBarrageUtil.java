@@ -16,7 +16,7 @@ public class ApolloBarrageUtil
 {
   public static int a(Paint paramPaint)
   {
-    return (int)(paramPaint.measureText(HardCodeUtil.a(2131700523)) + 1.0F);
+    return (int)(paramPaint.measureText(HardCodeUtil.a(2131898554)) + 1.0F);
   }
   
   public static void a(int paramInt1, int paramInt2, BarrageUI paramBarrageUI, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
@@ -27,7 +27,7 @@ public class ApolloBarrageUtil
   public static void a(BarrageUI paramBarrageUI, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
   {
     if (paramBarrageUI != null) {
-      a(paramBarrageUI.a(), paramBarrageUI.b(), paramBarrageUI, paramContext, paramString1, paramString2, paramBoolean);
+      a(paramBarrageUI.getUIWidth(), paramBarrageUI.getUIHeight(), paramBarrageUI, paramContext, paramString1, paramString2, paramBoolean);
     }
   }
   
@@ -46,29 +46,29 @@ public class ApolloBarrageUtil
         paramString3 = ((StringBuilder)localObject1).toString();
       }
       if (paramInt1 == 0) {
-        paramInt1 = paramBarrageUI.a();
+        paramInt1 = paramBarrageUI.getUIWidth();
       }
       if (paramInt2 == 0) {
-        paramInt2 = paramBarrageUI.b();
+        paramInt2 = paramBarrageUI.getUIHeight();
       }
       long l = System.currentTimeMillis();
       Object localObject1 = new ArrayList();
-      Object localObject2 = paramBarrageUI.a();
-      float f1 = DeviceInfoUtil.a();
+      Object localObject2 = paramBarrageUI.getBarrageCache();
+      float f1 = DeviceInfoUtil.A();
       float f2 = paramInt1;
       float f3 = paramInt2;
       Barrage localBarrage1 = new Barrage((AbsBarrageCache)localObject2, f1, f2, f3, paramString2, paramString3);
-      localBarrage1.a = f2;
       localBarrage1.e = f2;
-      localBarrage1.jdField_b_of_type_Float = 0.0F;
+      localBarrage1.i = f2;
       localBarrage1.f = 0.0F;
+      localBarrage1.j = 0.0F;
       f1 = -paramInt1;
-      localBarrage1.c = (f1 / 4000.0F);
-      localBarrage1.jdField_d_of_type_Float = 0.0F;
-      localBarrage1.jdField_h_of_type_Float = 1.0F;
-      localBarrage1.g = (paramContext.getResources().getDisplayMetrics().scaledDensity * 17.0F);
-      localBarrage1.jdField_b_of_type_Boolean = true;
-      localBarrage1.jdField_b_of_type_JavaLangString = paramString1;
+      localBarrage1.g = (f1 / 4000.0F);
+      localBarrage1.h = 0.0F;
+      localBarrage1.u = 1.0F;
+      localBarrage1.l = (paramContext.getResources().getDisplayMetrics().scaledDensity * 17.0F);
+      localBarrage1.v = true;
+      localBarrage1.x = paramString1;
       int[] arrayOfInt = new int[5];
       int[] tmp244_242 = arrayOfInt;
       tmp244_242[0] = 14;
@@ -93,20 +93,20 @@ public class ApolloBarrageUtil
       paramInt2 = 0;
       while (paramInt2 < 5)
       {
-        Barrage localBarrage2 = new Barrage(paramBarrageUI.a(), DeviceInfoUtil.a(), f2, f3, paramString2, paramString3);
-        localBarrage2.c = (f1 / (3000.0F - paramInt2 * 500));
-        localBarrage2.jdField_d_of_type_Float = 0.0F;
-        localBarrage2.jdField_d_of_type_Int = ((int)(localObject2[localRandom.nextInt(3)] * 255.0F));
-        localBarrage2.g = (arrayOfInt[paramInt2] * paramContext.getResources().getDisplayMetrics().scaledDensity);
-        localBarrage2.jdField_h_of_type_Float = AbsBarrageCache.a(localBarrage1, localBarrage2);
+        Barrage localBarrage2 = new Barrage(paramBarrageUI.getBarrageCache(), DeviceInfoUtil.A(), f2, f3, paramString2, paramString3);
+        localBarrage2.g = (f1 / (3000.0F - paramInt2 * 500));
+        localBarrage2.h = 0.0F;
+        localBarrage2.p = ((int)(localObject2[localRandom.nextInt(3)] * 255.0F));
+        localBarrage2.l = (arrayOfInt[paramInt2] * paramContext.getResources().getDisplayMetrics().scaledDensity);
+        localBarrage2.u = AbsBarrageCache.a(localBarrage1, localBarrage2);
         float f4 = f2 * localRandom.nextFloat() + paramInt1 / 2;
-        localBarrage2.a = f4;
         localBarrage2.e = f4;
-        f4 = (f3 - (f3 * 0.28F + AbsBarrageCache.a(localBarrage2.g) + localBarrage2.jdField_h_of_type_Int * 2)) * localRandom.nextFloat();
-        localBarrage2.jdField_b_of_type_Float = f4;
+        localBarrage2.i = f4;
+        f4 = (f3 - (f3 * 0.28F + AbsBarrageCache.a(localBarrage2.l) + localBarrage2.t * 2)) * localRandom.nextFloat();
         localBarrage2.f = f4;
-        localBarrage2.jdField_b_of_type_Boolean = true;
-        localBarrage2.jdField_b_of_type_JavaLangString = paramString1;
+        localBarrage2.j = f4;
+        localBarrage2.v = true;
+        localBarrage2.x = paramString1;
         ((List)localObject1).add(localBarrage2);
         paramInt2 += 1;
       }
@@ -124,7 +124,7 @@ public class ApolloBarrageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.ApolloBarrageUtil
  * JD-Core Version:    0.7.0.1
  */

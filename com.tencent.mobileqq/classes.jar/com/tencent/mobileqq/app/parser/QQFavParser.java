@@ -13,15 +13,15 @@ public class QQFavParser
   {
     paramJumpParserResult = Uri.parse(paramString).getLastPathSegment();
     paramBaseQQAppInterface = new QQFavAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "com.qqfav";
-    paramBaseQQAppInterface.c = paramJumpParserResult;
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "com.qqfav";
+    paramBaseQQAppInterface.e = paramJumpParserResult;
     return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQFavParser
  * JD-Core Version:    0.7.0.1
  */

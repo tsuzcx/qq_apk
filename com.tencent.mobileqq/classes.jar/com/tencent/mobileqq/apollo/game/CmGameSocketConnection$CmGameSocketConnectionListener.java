@@ -8,15 +8,15 @@ public abstract interface CmGameSocketConnection$CmGameSocketConnectionListener
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract byte[] a();
-  
   public abstract void c();
   
   public abstract void d();
+  
+  public abstract byte[] e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.CmGameSocketConnection.CmGameSocketConnectionListener
  * JD-Core Version:    0.7.0.1
  */

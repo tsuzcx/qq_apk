@@ -11,19 +11,14 @@ import unify.search.UnifySearchCommon.ResultItem;
 public class NetSearchTemplateNewEntranceItem
   extends NetSearchTemplateBaseItem
 {
-  public static final String a;
-  public List<RelativeWord> a;
+  public static final String a = NetSearchTemplateNetSeaEntranceItem.class.getSimpleName();
   public String b;
-  public boolean b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = NetSearchTemplateNetSeaEntranceItem.class.getSimpleName();
-  }
+  public String c;
+  public String d;
+  public boolean e;
+  public String f;
+  public List<RelativeWord> t;
+  public String u;
   
   public NetSearchTemplateNewEntranceItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
@@ -49,36 +44,48 @@ public class NetSearchTemplateNewEntranceItem
     return localArrayList;
   }
   
-  public void a(String paramString)
+  public CharSequence d()
   {
-    this.g = false;
+    if (this.i == 1101L)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.m);
+      return localStringBuilder.toString();
+    }
+    return super.d();
+  }
+  
+  public void o_(String paramString)
+  {
+    this.ag = false;
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("leftIconUrl");
-      this.j = paramString.optString("title");
-      this.k = paramString.optString("summary");
-      this.jdField_b_of_type_Boolean = paramString.optBoolean("isShowArrow");
-      this.l = paramString.optString("jumpUrl");
-      this.m = paramString.optString("subItemLeftIconUrl");
+      this.b = paramString.optString("leftIconUrl");
+      this.c = paramString.optString("title");
+      this.d = paramString.optString("summary");
+      this.e = paramString.optBoolean("isShowArrow");
+      this.f = paramString.optString("jumpUrl");
+      this.u = paramString.optString("subItemLeftIconUrl");
       paramString = paramString.optJSONArray("itemList");
       if (paramString != null)
       {
-        this.jdField_a_of_type_JavaUtilList = a(paramString);
+        this.t = a(paramString);
         return;
       }
     }
     catch (JSONException paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+        QLog.d(a, 2, QLog.getStackTraceString(paramString));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateNewEntranceItem
  * JD-Core Version:    0.7.0.1
  */

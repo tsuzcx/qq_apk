@@ -28,7 +28,7 @@ public class TransferAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839154;
+    return 2130839310;
   }
   
   public int getAppID()
@@ -57,17 +57,17 @@ public class TransferAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131716793);
+    return BaseApplicationImpl.getContext().getString(2131914265);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     paramPlusPanelViewModel.a("chat_tool_qwallettransfer", localQQAppInterface.getCurrentAccountUin());
     paramPlusPanelViewModel.b(paramBaseChatPie);
     Intent localIntent = new Intent();
     localIntent.putExtra("come_from", 2);
-    int i = paramSessionInfo.jdField_a_of_type_Int;
+    int i = paramSessionInfo.a;
     int j = 5;
     if (i != 1000)
     {
@@ -80,19 +80,19 @@ public class TransferAppInfo
       else
       {
         i = 4;
-        paramPlusPanelViewModel = paramSessionInfo.b;
+        paramPlusPanelViewModel = paramSessionInfo.c;
       }
     }
     else
     {
       i = 3;
-      paramPlusPanelViewModel = paramSessionInfo.b;
+      paramPlusPanelViewModel = paramSessionInfo.c;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("targetUin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("targetNickname", paramSessionInfo.d);
+      localJSONObject.put("targetUin", paramSessionInfo.b);
+      localJSONObject.put("targetNickname", paramSessionInfo.e);
       localJSONObject.put("sign", "");
       if (j != 0) {
         localJSONObject.put("source", j);
@@ -111,16 +111,16 @@ public class TransferAppInfo
     localIntent.putExtra("isJumpToH5", false);
     paramPlusPanelViewModel = new StringBuilder();
     paramPlusPanelViewModel.append("sessionType=");
-    paramPlusPanelViewModel.append(paramSessionInfo.jdField_a_of_type_Int);
+    paramPlusPanelViewModel.append(paramSessionInfo.a);
     localIntent.putExtra("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "transfer", "click", paramPlusPanelViewModel.toString(), 0, null));
-    RouteUtils.a(paramBaseChatPie.a(), localIntent, "/qwallet/transaction");
+    RouteUtils.a(paramBaseChatPie.aX(), localIntent, "/qwallet/transaction");
     ReportController.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOclick", 0, 0, "", "", "", "");
-    AIOPanelUtiles.a(localQQAppInterface, "0X8005CB0", paramSessionInfo.jdField_a_of_type_Int);
+    AIOPanelUtiles.a(localQQAppInterface, "0X8005CB0", paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TransferAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class StoryListPresenter$4$1$3
   public void onClick(View paramView)
   {
     StoryReportor.a("home_page", "clk_up_close", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
+    this.a.b.this$0.h.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

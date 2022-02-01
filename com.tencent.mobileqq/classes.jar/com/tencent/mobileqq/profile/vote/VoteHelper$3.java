@@ -21,8 +21,8 @@ class VoteHelper$3
   
   public void run()
   {
-    long l = Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue();
-    EntityManager localEntityManager = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    long l = Long.valueOf(this.a).longValue();
+    EntityManager localEntityManager = this.this$0.c.getEntityManagerFactory().createEntityManager();
     Object localObject1 = Long.toString(l);
     int j = 0;
     CardProfile localCardProfile = (CardProfile)localEntityManager.find(CardProfile.class, "lEctID=? and type=?", new String[] { localObject1, Integer.toString(3) });
@@ -36,25 +36,25 @@ class VoteHelper$3
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onVoteOk, uin:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append(" voteNum:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append("dbHas:");
       ((StringBuilder)localObject1).append(bool);
       QLog.i("VisitorsActivity.VoteHelper", 2, ((StringBuilder)localObject1).toString());
     }
-    Pair localPair = (Pair)this.this$0.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l));
-    Object localObject6 = VoteHelper.jdField_a_of_type_JavaLangObject;
+    Pair localPair = (Pair)this.this$0.o.get(Long.valueOf(l));
+    Object localObject6 = VoteHelper.m;
     int i = 0;
     for (;;)
     {
       try
       {
-        int k = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.size();
+        int k = this.this$0.a.l.size();
         Object localObject5 = null;
         if (i < k)
         {
-          localObject1 = (CardProfile)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.jdField_b_of_type_JavaUtilArrayList.get(i);
+          localObject1 = (CardProfile)this.this$0.a.l.get(i);
           if ((localObject1 != null) && (((CardProfile)localObject1).lEctID == l))
           {
             if (localObject1 != null)
@@ -74,12 +74,12 @@ class VoteHelper$3
                 localEntityManager.update((Entity)localObject5);
               }
             }
-            if (this.jdField_a_of_type_Boolean) {
-              localObject1 = this.this$0.jdField_a_of_type_JavaUtilArrayList;
+            if (this.c) {
+              localObject1 = this.this$0.k;
             } else {
-              localObject1 = this.this$0.jdField_b_of_type_JavaUtilArrayList;
+              localObject1 = this.this$0.l;
             }
-            localObject5 = VoteHelper.jdField_b_of_type_JavaLangObject;
+            localObject5 = VoteHelper.n;
             i = 0;
             try
             {
@@ -96,9 +96,9 @@ class VoteHelper$3
               if (i != 0)
               {
                 localObject1 = new ArrayList();
-                ((List)localObject1).addAll(this.this$0.jdField_a_of_type_JavaUtilArrayList);
-                ((List)localObject1).addAll(this.this$0.jdField_b_of_type_JavaUtilArrayList);
-                this.this$0.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.b((List)localObject1);
+                ((List)localObject1).addAll(this.this$0.k);
+                ((List)localObject1).addAll(this.this$0.l);
+                this.this$0.a.ah.b((List)localObject1);
               }
               return;
             }
@@ -126,7 +126,7 @@ class VoteHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.vote.VoteHelper.3
  * JD-Core Version:    0.7.0.1
  */

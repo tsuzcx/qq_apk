@@ -43,23 +43,23 @@ class MultiMsgManager$3
   {
     im_msg_body.RichText localRichText = new im_msg_body.RichText();
     im_msg_body.Elem localElem = new im_msg_body.Elem();
-    Object localObject1 = paramPicResult.jdField_a_of_type_JavaLangObject;
+    Object localObject1 = paramPicResult.d;
     boolean bool2 = false;
     boolean bool1;
     if (localObject1 != null)
     {
-      bool1 = paramPicResult.jdField_a_of_type_JavaLangObject instanceof im_msg_body.NotOnlineImage;
+      bool1 = paramPicResult.d instanceof im_msg_body.NotOnlineImage;
       localObject1 = "";
       Object localObject2;
       if (bool1)
       {
-        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramPicResult.jdField_a_of_type_JavaLangObject);
+        localElem.not_online_image.set((im_msg_body.NotOnlineImage)paramPicResult.d);
         if (paramMessageForPic.picExtraData != null)
         {
           localObject2 = paramMessageForPic.picExtraData.getOfflineImageResvAttr();
           localElem.not_online_image.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((NotOnlineImageExtPb.ResvAttr)((NotOnlineImageExtPb.ResvAttr)localObject2).get()).toByteArray()), true);
         }
-        if ((paramPicResult.b) || (this.jdField_a_of_type_Int == 5))
+        if ((paramPicResult.f) || (this.a == 5))
         {
           if (localElem.not_online_image.res_id.has()) {
             localObject1 = localElem.not_online_image.res_id.get().toStringUtf8();
@@ -67,10 +67,10 @@ class MultiMsgManager$3
             localObject1 = localElem.not_online_image.download_path.get().toStringUtf8();
           }
           paramMessageForPic.uuid = ((String)localObject1);
-          if (this.jdField_a_of_type_Int != 5)
+          if (this.a != 5)
           {
             paramMessageForPic.path = ((String)localObject1);
-            paramMessageForPic.md5 = FileUtils.calcMd5(MultiMsgManager.jdField_a_of_type_JavaLangString);
+            paramMessageForPic.md5 = FileUtils.calcMd5(MultiMsgManager.a);
           }
           paramMessageForPic.thumbMsgUrl = localElem.not_online_image.str_thumb_url.get();
           paramMessageForPic.thumbHeight = localElem.not_online_image.uint32_thumb_height.get();
@@ -93,29 +93,29 @@ class MultiMsgManager$3
       {
         i = 1;
         break label605;
-        if (!(paramPicResult.jdField_a_of_type_JavaLangObject instanceof im_msg_body.CustomFace)) {
+        if (!(paramPicResult.d instanceof im_msg_body.CustomFace)) {
           break;
         }
-        localElem.custom_face.set((im_msg_body.CustomFace)paramPicResult.jdField_a_of_type_JavaLangObject);
+        localElem.custom_face.set((im_msg_body.CustomFace)paramPicResult.d);
         if (paramMessageForPic.picExtraData != null)
         {
           localObject2 = paramMessageForPic.picExtraData.getCustomFaceResvAttr();
           localElem.custom_face.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((CustomFaceExtPb.ResvAttr)((CustomFaceExtPb.ResvAttr)localObject2).get()).toByteArray()), true);
         }
-        if ((paramPicResult.b) || (this.jdField_a_of_type_Int == 5))
+        if ((paramPicResult.f) || (this.a == 5))
         {
           if (localElem.custom_face.str_file_path.has()) {
             localObject1 = localElem.custom_face.str_file_path.get();
           }
           paramMessageForPic.uuid = ((String)localObject1);
-          if (this.jdField_a_of_type_Int != 5)
+          if (this.a != 5)
           {
             paramMessageForPic.path = ((String)localObject1);
-            paramMessageForPic.md5 = FileUtils.calcMd5(MultiMsgManager.jdField_a_of_type_JavaLangString);
+            paramMessageForPic.md5 = FileUtils.calcMd5(MultiMsgManager.a);
           }
           paramMessageForPic.msgData = paramMessageForPic.getSerialPB().toByteArray();
         }
-      } while ((localElem.custom_face.uint32_file_id.get() != 0) || (this.jdField_a_of_type_Int != 5) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 0));
+      } while ((localElem.custom_face.uint32_file_id.get() != 0) || (this.a != 5) || (this.b.istroop == 0));
       if (QLog.isColorLevel())
       {
         QLog.d("MultiMsg_TAG", 2, "updateMessageForPic but custom_face's file id is 0");
@@ -124,7 +124,7 @@ class MultiMsgManager$3
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("WTF, picResult.mExtraObj is ");
-          ((StringBuilder)localObject1).append(paramPicResult.jdField_a_of_type_JavaLangObject.getClass().getSimpleName());
+          ((StringBuilder)localObject1).append(paramPicResult.d.getClass().getSimpleName());
           QLog.e("MultiMsg_TAG", 2, ((StringBuilder)localObject1).toString());
         }
       }
@@ -138,7 +138,7 @@ class MultiMsgManager$3
         QLog.d("MultiMsg_TAG", 2, "updateMessageForPic success");
       }
       localRichText.elems.add(localElem);
-      if (paramPicResult.jdField_a_of_type_Int == 0)
+      if (paramPicResult.a == 0)
       {
         bool1 = true;
       }
@@ -171,15 +171,15 @@ class MultiMsgManager$3
     int k = 0;
     int i = 0;
     boolean bool2;
-    for (boolean bool1 = true; m < this.jdField_a_of_type_JavaUtilArrayList.size(); bool1 = bool2)
+    for (boolean bool1 = true; m < this.c.size(); bool1 = bool2)
     {
-      Object localObject2 = (MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(m);
+      Object localObject2 = (MessageRecord)this.c.get(m);
       int j = k;
       if (i < paramArrayList.size()) {
-        if (!((PicResult)paramArrayList.get(i)).b)
+        if (!((PicResult)paramArrayList.get(i)).f)
         {
           j = k;
-          if (this.jdField_a_of_type_Int != 5) {}
+          if (this.a != 5) {}
         }
         else
         {
@@ -337,9 +337,9 @@ class MultiMsgManager$3
               j = i;
               bool2 = bool1;
               k = n;
-              if (((StructMsgItemImage)localObject3).a != null)
+              if (((StructMsgItemImage)localObject3).aF != null)
               {
-                localObject4 = ((StructMsgItemImage)localObject3).a;
+                localObject4 = ((StructMsgItemImage)localObject3).aF;
                 if (QLog.isColorLevel())
                 {
                   StringBuilder localStringBuilder = new StringBuilder();
@@ -362,9 +362,9 @@ class MultiMsgManager$3
                 }
                 else
                 {
-                  ((StructMsgItemImage)localObject3).ad = ((MessageForPic)localObject4).uuid;
-                  ((StructMsgItemImage)localObject3).ae = ((MessageForPic)localObject4).md5;
-                  ((StructMsgItemImage)localObject3).ac = ((MessageForPic)localObject4).path;
+                  ((StructMsgItemImage)localObject3).av = ((MessageForPic)localObject4).uuid;
+                  ((StructMsgItemImage)localObject3).aw = ((MessageForPic)localObject4).md5;
+                  ((StructMsgItemImage)localObject3).au = ((MessageForPic)localObject4).path;
                   ((MessageRecord)localObject2).msgData = ((AbsStructMsg)localObject1).getBytes();
                 }
                 j = i + 1;
@@ -381,16 +381,16 @@ class MultiMsgManager$3
     }
     if (k != 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isReMultiMsg) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800662B", "0X800662B", 0, 1, 0, "", "", "", "");
+      if (this.b.isReMultiMsg) {
+        ReportController.b(this.d, "CliOper", "", "", "0X800662B", "0X800662B", 0, 1, 0, "", "", "", "");
       }
       if (QLog.isColorLevel()) {
         QLog.e("MultiMsg_TAG", 2, "requestUploadPics isPicMsgModify");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.jdField_a_of_type_JavaUtilArrayList, null);
+      this.d.getProxyManager().b().a(this.c, null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isReMultiMsg) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800662A", "0X800662A", 0, 1, 0, "", "", "", "");
+    if (this.b.isReMultiMsg) {
+      ReportController.b(this.d, "CliOper", "", "", "0X800662A", "0X800662A", 0, 1, 0, "", "", "", "");
     }
     return bool1;
   }
@@ -422,30 +422,30 @@ class MultiMsgManager$3
       }
       bool = false;
     }
-    if (this.jdField_a_of_type_Int == 5) {
-      MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, 1);
+    if (this.a == 5) {
+      MultiMsgManager.a(this.h, this.b.uniseq, 1);
     } else {
-      MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, 1);
+      MultiMsgManager.b(this.h, 1);
     }
-    if ((this.jdField_a_of_type_Int != 5) && (MultiMsgManager.c(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager) == 0))
+    if ((this.a != 5) && (MultiMsgManager.d(this.h) == 0))
     {
-      MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, bool, this.jdField_a_of_type_Int);
+      MultiMsgManager.a(this.h, this.d, this.e, this.f, this.g, this.b, null, this.c, bool, this.a);
       return;
     }
-    if ((this.jdField_a_of_type_Int == 5) && (MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq)))
+    if ((this.a == 5) && (MultiMsgManager.a(this.h, this.b.uniseq)))
     {
       if (bool)
       {
-        MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_JavaUtilArrayList, true, this.jdField_a_of_type_Int);
+        MultiMsgManager.a(this.h, this.d, this.e, this.f, this.g, this.b, null, this.c, true, this.a);
         return;
       }
-      MultiMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgMultiMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+      MultiMsgManager.a(this.h, this.b, this.d, this.e, this.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.3
  * JD-Core Version:    0.7.0.1
  */

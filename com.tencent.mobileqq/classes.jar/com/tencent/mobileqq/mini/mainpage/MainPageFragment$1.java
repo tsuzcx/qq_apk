@@ -16,13 +16,13 @@ class MainPageFragment$1
   {
     MiniCacheFreeManager.freeCache(MainPageFragment.getUin(), MainPageFragment.access$000(this.this$0));
     this.this$0.getBaseActivity().finish();
-    Toast.makeText(paramView.getContext(), HardCodeUtil.a(2131706483), 1).show();
+    Toast.makeText(paramView.getContext(), HardCodeUtil.a(2131904342), 1).show();
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MainPageFragment.1
  * JD-Core Version:    0.7.0.1
  */

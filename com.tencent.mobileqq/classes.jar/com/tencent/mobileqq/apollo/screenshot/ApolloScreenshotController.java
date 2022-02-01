@@ -5,11 +5,14 @@ import android.os.HandlerThread;
 import android.text.TextUtils;
 import com.jakewharton.disklrucache.DiskLruCache;
 import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
-import com.tencent.mobileqq.apollo.player.CMSHelper.TF;
-import com.tencent.mobileqq.apollo.player.model.BusinessConfig;
+import com.tencent.mobileqq.apollo.meme.ERROR_RECORD_FRAME_EXCEED;
+import com.tencent.mobileqq.apollo.meme.ERROR_RECORD_FRAME_OOM;
+import com.tencent.mobileqq.apollo.meme.MemeHelper.TF;
+import com.tencent.mobileqq.apollo.meme.model.BusinessConfig;
+import com.tencent.mobileqq.cmshow.engine.action.ActionStatus;
 import com.tencent.mobileqq.cmshow.engine.script.IScriptService;
 import com.tencent.mobileqq.cmshow.engine.script.Script;
-import com.tencent.mobileqq.cmshow.engine.script.ScriptUtil;
+import com.tencent.mobileqq.cmshow.engine.script.ScriptUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
@@ -25,41 +28,43 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController;", "", "scriptService", "Lcom/tencent/mobileqq/cmshow/engine/script/IScriptService;", "(Lcom/tencent/mobileqq/cmshow/engine/script/IScriptService;)V", "TAG", "", "mRecordHandler", "Landroid/os/Handler;", "mRecordListener", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;", "mResource", "Lcom/tencent/mobileqq/apollo/screenshot/ApolloCoderResource;", "initThreadPool", "", "onRecordFrame", "", "pixels", "", "width", "", "height", "onRecordFrameEnd", "actionCompleted", "onRecordFrameStart", "frameTimeInSec", "", "setRecordListener", "listener", "stopRecord", "taskId", "normally", "INSTANCE", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloScreenshotController
 {
-  private static DiskLruCache jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache;
-  public static final ApolloScreenshotController.INSTANCE a;
-  private static Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private ApolloCoderResource jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource;
-  private volatile IApolloActionRecordListener jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
-  private final IScriptService jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService;
-  private final String jdField_a_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloScreenshotController$INSTANCE = new ApolloScreenshotController.INSTANCE(null);
-  }
+  public static final ApolloScreenshotController.INSTANCE a = new ApolloScreenshotController.INSTANCE(null);
+  private static DiskLruCache g;
+  private static Executor h;
+  private final String b;
+  private final Handler c;
+  private volatile IApolloActionRecordListener d;
+  private volatile ApolloCoderResource e;
+  private final IScriptService f;
   
   public ApolloScreenshotController(@NotNull IScriptService paramIScriptService)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService = paramIScriptService;
+    this.f = paramIScriptService;
     paramIScriptService = new StringBuilder();
-    paramIScriptService.append("[ApolloScrshot] ");
-    paramIScriptService.append(this);
-    paramIScriptService.append(' ');
-    this.jdField_a_of_type_JavaLangString = paramIScriptService.toString();
-    QLog.i(this.jdField_a_of_type_JavaLangString, 1, "new ApolloScreenshotController");
-    paramIScriptService = new HandlerThread(this.jdField_a_of_type_JavaLangString);
+    paramIScriptService.append("[cmshow][MemePlayer][ApolloScrshot][@");
+    paramIScriptService.append(Integer.toHexString(hashCode()));
+    paramIScriptService.append(']');
+    this.b = paramIScriptService.toString();
+    QLog.i(this.b, 1, "new ApolloScreenshotController");
+    paramIScriptService = new HandlerThread(this.b);
     paramIScriptService.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramIScriptService.getLooper());
-    jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloScreenshotController$INSTANCE.a();
-    ApolloScreenshotController.INSTANCE.a(jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloScreenshotController$INSTANCE);
-    a();
+    this.c = new Handler(paramIScriptService.getLooper());
+    a.a();
+    ApolloScreenshotController.INSTANCE.a(a);
+    c();
   }
   
-  private final void a()
+  private final void a(@NotNull IScriptService paramIScriptService, int paramInt, boolean paramBoolean)
   {
-    int i = CmShowWnsUtils.a();
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    String str = ScriptUtils.a(paramInt, paramBoolean);
+    Intrinsics.checkExpressionValueIsNotNull(str, "content");
+    paramIScriptService.a(new Script(str));
+  }
+  
+  private final void c()
+  {
+    int i = CmShowWnsUtils.u();
+    Object localObject1 = this.b;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("initThreadPool size:");
     ((StringBuilder)localObject2).append(i);
@@ -67,46 +72,39 @@ public final class ApolloScreenshotController
     localObject1 = TimeUnit.MINUTES;
     localObject2 = (BlockingQueue)new LinkedBlockingQueue();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("_AsyncThread");
-    localObject1 = new ThreadPoolExecutor(i, i, 1L, (TimeUnit)localObject1, (BlockingQueue)localObject2, (ThreadFactory)new CMSHelper.TF(localStringBuilder.toString(), 9));
+    localObject1 = new ThreadPoolExecutor(i, i, 1L, (TimeUnit)localObject1, (BlockingQueue)localObject2, (ThreadFactory)new MemeHelper.TF(localStringBuilder.toString(), 9));
     ((ThreadPoolExecutor)localObject1).allowCoreThreadTimeOut(true);
-    jdField_a_of_type_JavaUtilConcurrentExecutor = (Executor)localObject1;
-  }
-  
-  private final void a(@NotNull IScriptService paramIScriptService, int paramInt, boolean paramBoolean)
-  {
-    String str = ScriptUtil.a(paramInt, paramBoolean);
-    Intrinsics.checkExpressionValueIsNotNull(str, "content");
-    paramIScriptService.a(new Script(str));
+    h = (Executor)localObject1;
   }
   
   public final void a(@NotNull IApolloActionRecordListener paramIApolloActionRecordListener)
   {
     Intrinsics.checkParameterIsNotNull(paramIApolloActionRecordListener, "listener");
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setRecordListener to: ");
     localStringBuilder.append(paramIApolloActionRecordListener);
     QLog.i(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener = paramIApolloActionRecordListener;
+    this.d = paramIApolloActionRecordListener;
   }
   
   public final boolean a(float paramFloat)
   {
-    if (!ApolloApngEncoder.a.b())
+    if (!ApolloApngEncoder.a.d())
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onRecordFrameStart so not preloaded");
+      QLog.w(this.b, 1, "onRecordFrameStart so not preloaded");
       return false;
     }
-    IApolloActionRecordListener localIApolloActionRecordListener = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
+    IApolloActionRecordListener localIApolloActionRecordListener = this.d;
     if ((paramFloat > 0) && (localIApolloActionRecordListener != null))
     {
       String str1 = localIApolloActionRecordListener.a();
-      Object localObject = localIApolloActionRecordListener.a();
-      int i = localIApolloActionRecordListener.a();
-      BusinessConfig localBusinessConfig = localIApolloActionRecordListener.a();
-      String str2 = this.jdField_a_of_type_JavaLangString;
+      Object localObject = localIApolloActionRecordListener.d();
+      int i = localIApolloActionRecordListener.e();
+      BusinessConfig localBusinessConfig = localIApolloActionRecordListener.g();
+      String str2 = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onRecordFrameStart");
       localStringBuilder.append(", frameTimeInSec:");
@@ -122,7 +120,7 @@ public final class ApolloScreenshotController
         return false;
       }
       int j = (int)(paramFloat * 1000);
-      int k = ApolloScreenshotController.WhenMappings.a[localObject.ordinal()];
+      int k = ApolloScreenshotController.WhenMappings.$EnumSwitchMapping$0[localObject.ordinal()];
       if (k != 1) {
         if (k != 2) {
           localObject = EncodeType.APNG;
@@ -135,27 +133,27 @@ public final class ApolloScreenshotController
         continue;
         localObject = EncodeType.FRAME;
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource = new ApolloCoderResource(i, str1, j, (EncodeType)localObject, localBusinessConfig, this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService, 0, 64, null);
-      localIApolloActionRecordListener.a();
+      this.e = new ApolloCoderResource(i, str1, j, (EncodeType)localObject, localBusinessConfig, this.f, 0, 64, null);
+      localIApolloActionRecordListener.b();
       return true;
     }
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onRecordFrameStart return false");
+    QLog.w(this.b, 1, "onRecordFrameStart return false");
     return false;
   }
   
   public final boolean a(boolean paramBoolean)
   {
-    ApolloCoderResource localApolloCoderResource = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource;
-    if (localApolloCoderResource != null)
+    if (this.e != null)
     {
-      IApolloActionRecordListener localIApolloActionRecordListener = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
+      ApolloCoderResource localApolloCoderResource = this.e;
+      IApolloActionRecordListener localIApolloActionRecordListener = this.d;
       Object localObject2 = null;
-      this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource = ((ApolloCoderResource)null);
-      String str = this.jdField_a_of_type_JavaLangString;
+      this.e = ((ApolloCoderResource)null);
+      String str = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onRecordFrameEnd, key:");
       if (localApolloCoderResource != null) {
-        localObject1 = localApolloCoderResource.c();
+        localObject1 = localApolloCoderResource.i();
       } else {
         localObject1 = null;
       }
@@ -163,16 +161,16 @@ public final class ApolloScreenshotController
       localStringBuilder.append(", taskId:");
       Object localObject1 = localObject2;
       if (localApolloCoderResource != null) {
-        localObject1 = Integer.valueOf(localApolloCoderResource.c());
+        localObject1 = Integer.valueOf(localApolloCoderResource.h());
       }
       localStringBuilder.append(localObject1);
       localStringBuilder.append(", complete:");
       localStringBuilder.append(paramBoolean);
       QLog.i(str, 1, localStringBuilder.toString());
       if ((localApolloCoderResource != null) && (localIApolloActionRecordListener != null)) {
-        localIApolloActionRecordListener.a(localApolloCoderResource.a());
+        localIApolloActionRecordListener.a(localApolloCoderResource.c());
       }
-      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)new ApolloScreenshotController.onRecordFrameEnd.2(this, localApolloCoderResource, paramBoolean, localIApolloActionRecordListener));
+      this.c.post((Runnable)new ApolloScreenshotController.onRecordFrameEnd.2(this, localApolloCoderResource, paramBoolean, localIApolloActionRecordListener));
       return true;
     }
     return false;
@@ -190,10 +188,10 @@ public final class ApolloScreenshotController
       }
       if ((i == 0) && (paramInt1 > 0) && (paramInt2 > 0))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource;
+        localObject1 = this.e;
         if (localObject1 == null)
         {
-          paramArrayOfByte = this.jdField_a_of_type_JavaLangString;
+          paramArrayOfByte = this.b;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("onRecordFrame fail, width:");
           ((StringBuilder)localObject1).append(paramInt1);
@@ -203,31 +201,31 @@ public final class ApolloScreenshotController
           QLog.e(paramArrayOfByte, 1, ((StringBuilder)localObject1).toString());
           return false;
         }
-        if (((ApolloCoderResource)localObject1).a())
+        if (((ApolloCoderResource)localObject1).g())
         {
-          ((ApolloCoderResource)localObject1).a(-13408);
-          paramArrayOfByte = this.jdField_a_of_type_JavaLangString;
+          ((ApolloCoderResource)localObject1).a((ActionStatus)ERROR_RECORD_FRAME_EXCEED.a);
+          paramArrayOfByte = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("onRecordFrame forceStopRecord, key:");
-          ((StringBuilder)localObject2).append(((ApolloCoderResource)localObject1).c());
+          ((StringBuilder)localObject2).append(((ApolloCoderResource)localObject1).i());
           ((StringBuilder)localObject2).append(" taskId:");
-          ((StringBuilder)localObject2).append(((ApolloCoderResource)localObject1).c());
+          ((StringBuilder)localObject2).append(((ApolloCoderResource)localObject1).h());
           ((StringBuilder)localObject2).append(" currentFrameCount:");
-          ((StringBuilder)localObject2).append(((ApolloCoderResource)localObject1).b());
+          ((StringBuilder)localObject2).append(((ApolloCoderResource)localObject1).e());
           QLog.e(paramArrayOfByte, 1, ((StringBuilder)localObject2).toString());
-          a(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService, ((ApolloCoderResource)localObject1).c(), false);
+          a(this.f, ((ApolloCoderResource)localObject1).h(), false);
           return false;
         }
-        ((ApolloCoderResource)localObject1).a();
+        ((ApolloCoderResource)localObject1).f();
         try
         {
           paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-          localObject2 = this.jdField_a_of_type_JavaLangString;
+          localObject2 = this.b;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onRecordFrame key:");
-          localStringBuilder.append(((ApolloCoderResource)localObject1).c());
+          localStringBuilder.append(((ApolloCoderResource)localObject1).i());
           localStringBuilder.append(" taskId:");
-          localStringBuilder.append(((ApolloCoderResource)localObject1).c());
+          localStringBuilder.append(((ApolloCoderResource)localObject1).h());
           localStringBuilder.append(", pixelSize:");
           localStringBuilder.append(paramArrayOfByte.length);
           localStringBuilder.append(", width:");
@@ -235,21 +233,21 @@ public final class ApolloScreenshotController
           localStringBuilder.append(", height:");
           localStringBuilder.append(paramInt2);
           QLog.i((String)localObject2, 1, localStringBuilder.toString());
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
-          this.jdField_a_of_type_AndroidOsHandler.post((Runnable)new ApolloScreenshotController.onRecordFrame.1(this, paramInt1, paramInt2, paramArrayOfByte, (ApolloCoderResource)localObject1, (IApolloActionRecordListener)localObject2));
+          localObject2 = this.d;
+          this.c.post((Runnable)new ApolloScreenshotController.onRecordFrame.1(this, paramInt1, paramInt2, paramArrayOfByte, (ApolloCoderResource)localObject1, (IApolloActionRecordListener)localObject2));
           return true;
         }
         catch (OutOfMemoryError paramArrayOfByte)
         {
-          ((ApolloCoderResource)localObject1).a(-13409);
-          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "onRecordFrame OOM", (Throwable)paramArrayOfByte);
+          ((ApolloCoderResource)localObject1).a((ActionStatus)ERROR_RECORD_FRAME_OOM.a);
+          QLog.e(this.b, 1, "onRecordFrame OOM", (Throwable)paramArrayOfByte);
           System.gc();
-          a(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService, ((ApolloCoderResource)localObject1).c(), false);
+          a(this.f, ((ApolloCoderResource)localObject1).h(), false);
           return false;
         }
       }
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.b;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("onRecordFrame fail, width:");
     ((StringBuilder)localObject2).append(paramInt1);
@@ -268,7 +266,7 @@ public final class ApolloScreenshotController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController
  * JD-Core Version:    0.7.0.1
  */

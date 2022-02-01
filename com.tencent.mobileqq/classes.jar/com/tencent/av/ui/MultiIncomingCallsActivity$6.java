@@ -11,9 +11,9 @@ class MultiIncomingCallsActivity$6
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b(2);
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickIgnore", true, null, -1);
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickIgnore");
+    this.b.c(2);
+    this.b.a(this.a, "onClickIgnore", true, null, -1);
+    this.b.b("onClickIgnore");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

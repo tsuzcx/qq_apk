@@ -174,8 +174,8 @@ public class BusinessCardServlet
     if (localBusinessCard.OCRInfo != null)
     {
       localObject1 = new Oidb_0x43c.OCRInfo();
-      ((Oidb_0x43c.OCRInfo)localObject1).name.set(localBusinessCard.OCRInfo.jdField_a_of_type_JavaLangString);
-      localObject2 = localBusinessCard.OCRInfo.jdField_a_of_type_JavaUtilList.iterator();
+      ((Oidb_0x43c.OCRInfo)localObject1).name.set(localBusinessCard.OCRInfo.a);
+      localObject2 = localBusinessCard.OCRInfo.c.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         str = (String)((Iterator)localObject2).next();
@@ -183,7 +183,7 @@ public class BusinessCardServlet
           ((Oidb_0x43c.OCRInfo)localObject1).uins.add(Long.valueOf(Long.parseLong(str)));
         }
       }
-      localObject2 = localBusinessCard.OCRInfo.jdField_b_of_type_JavaUtilList.iterator();
+      localObject2 = localBusinessCard.OCRInfo.d.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         str = (String)((Iterator)localObject2).next();
@@ -191,9 +191,9 @@ public class BusinessCardServlet
           ((Oidb_0x43c.OCRInfo)localObject1).mobiles.add(str);
         }
       }
-      ((Oidb_0x43c.OCRInfo)localObject1).name_dependLevel.set(localBusinessCard.OCRInfo.jdField_a_of_type_Float);
-      ((Oidb_0x43c.OCRInfo)localObject1).uins_dependLevel.set(localBusinessCard.OCRInfo.jdField_b_of_type_Float);
-      ((Oidb_0x43c.OCRInfo)localObject1).mobiles_dependLevel.set(localBusinessCard.OCRInfo.c);
+      ((Oidb_0x43c.OCRInfo)localObject1).name_dependLevel.set(localBusinessCard.OCRInfo.e);
+      ((Oidb_0x43c.OCRInfo)localObject1).uins_dependLevel.set(localBusinessCard.OCRInfo.f);
+      ((Oidb_0x43c.OCRInfo)localObject1).mobiles_dependLevel.set(localBusinessCard.OCRInfo.g);
       localCardInfo.ocr_info.set((MessageMicro)localObject1);
     }
     localObject1 = new Oidb_0x43c.RequestAdd();
@@ -315,19 +315,19 @@ public class BusinessCardServlet
       {
         localObject3 = (Oidb_0x43c.UinInfo)((Iterator)localObject1).next();
         localObject4 = new CardUinInfo();
-        ((CardUinInfo)localObject4).jdField_a_of_type_JavaLangString = String.valueOf(((Oidb_0x43c.UinInfo)localObject3).uin.get());
+        ((CardUinInfo)localObject4).a = String.valueOf(((Oidb_0x43c.UinInfo)localObject3).uin.get());
         if ((((Oidb_0x43c.UinInfo)localObject3).isFriend.has()) && (((Oidb_0x43c.UinInfo)localObject3).isFriend.get())) {
           bool = true;
         } else {
           bool = false;
         }
-        ((CardUinInfo)localObject4).jdField_a_of_type_Boolean = bool;
+        ((CardUinInfo)localObject4).b = bool;
         if ((((Oidb_0x43c.UinInfo)localObject3).isSearchable.has()) && (((Oidb_0x43c.UinInfo)localObject3).isSearchable.get())) {
           bool = true;
         } else {
           bool = false;
         }
-        ((CardUinInfo)localObject4).b = bool;
+        ((CardUinInfo)localObject4).c = bool;
         paramBusinessCard.uinInfos.add(localObject4);
       }
     }
@@ -364,30 +364,30 @@ public class BusinessCardServlet
         } else {
           localObject1 = "";
         }
-        ((CardMobileInfo)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject1);
+        ((CardMobileInfo)localObject5).a = ((String)localObject1);
         if ((localMobileInfo.isFriend.has()) && (localMobileInfo.isFriend.get())) {
           bool = true;
         } else {
           bool = false;
         }
-        ((CardMobileInfo)localObject5).jdField_a_of_type_Boolean = bool;
-        if (((CardMobileInfo)localObject5).jdField_a_of_type_Boolean) {
-          ((CardMobileInfo)localObject5).jdField_b_of_type_JavaLangString = String.valueOf(localMobileInfo.bind_uin.get());
+        ((CardMobileInfo)localObject5).c = bool;
+        if (((CardMobileInfo)localObject5).c) {
+          ((CardMobileInfo)localObject5).b = String.valueOf(localMobileInfo.bind_uin.get());
         } else {
-          ((CardMobileInfo)localObject5).jdField_b_of_type_JavaLangString = "";
+          ((CardMobileInfo)localObject5).b = "";
         }
         if (localMobileInfo.nick_name.has()) {
           localObject1 = localMobileInfo.nick_name.get();
         } else {
           localObject1 = "";
         }
-        ((CardMobileInfo)localObject5).c = ((String)localObject1);
+        ((CardMobileInfo)localObject5).d = ((String)localObject1);
         if (localMobileInfo.format_mobile.has()) {
           localObject1 = localMobileInfo.format_mobile.get();
         } else {
           localObject1 = "";
         }
-        ((CardMobileInfo)localObject5).d = ((String)localObject1);
+        ((CardMobileInfo)localObject5).e = ((String)localObject1);
         paramBusinessCard.mobileInfos.add(localObject5);
       }
     }
@@ -399,27 +399,27 @@ public class BusinessCardServlet
       if (((Oidb_0x43c.OCRInfo)localObject4).name.has()) {
         localObject1 = ((Oidb_0x43c.OCRInfo)localObject4).name.get();
       }
-      ((CardOCRInfo)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject1);
+      ((CardOCRInfo)localObject5).a = ((String)localObject1);
       localObject1 = localObject2;
       if (paramCardInfo.pic_url.has()) {
         localObject1 = paramCardInfo.pic_url.get();
       }
-      ((CardOCRInfo)localObject5).jdField_b_of_type_JavaLangString = ((String)localObject1);
+      ((CardOCRInfo)localObject5).b = ((String)localObject1);
       paramCardInfo = ((Oidb_0x43c.OCRInfo)localObject4).uins.get().iterator();
       while (paramCardInfo.hasNext())
       {
         l = ((Long)paramCardInfo.next()).longValue();
-        ((CardOCRInfo)localObject5).jdField_a_of_type_JavaUtilList.add(String.valueOf(l));
+        ((CardOCRInfo)localObject5).c.add(String.valueOf(l));
       }
       paramCardInfo = ((Oidb_0x43c.OCRInfo)localObject4).mobiles.get().iterator();
       while (paramCardInfo.hasNext())
       {
         localObject1 = (String)paramCardInfo.next();
-        ((CardOCRInfo)localObject5).jdField_b_of_type_JavaUtilList.add(localObject1);
+        ((CardOCRInfo)localObject5).d.add(localObject1);
       }
-      ((CardOCRInfo)localObject5).jdField_a_of_type_Float = ((Oidb_0x43c.OCRInfo)localObject4).name_dependLevel.get();
-      ((CardOCRInfo)localObject5).jdField_b_of_type_Float = ((Oidb_0x43c.OCRInfo)localObject4).uins_dependLevel.get();
-      ((CardOCRInfo)localObject5).c = ((Oidb_0x43c.OCRInfo)localObject4).mobiles_dependLevel.get();
+      ((CardOCRInfo)localObject5).e = ((Oidb_0x43c.OCRInfo)localObject4).name_dependLevel.get();
+      ((CardOCRInfo)localObject5).f = ((Oidb_0x43c.OCRInfo)localObject4).uins_dependLevel.get();
+      ((CardOCRInfo)localObject5).g = ((Oidb_0x43c.OCRInfo)localObject4).mobiles_dependLevel.get();
       paramBusinessCard.OCRInfo = ((CardOCRInfo)localObject5);
     }
     else
@@ -479,9 +479,9 @@ public class BusinessCardServlet
           paramFromServiceMsg = (BusinessCardManager)((QQAppInterface)getAppRuntime()).getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
           localObject = paramFromServiceMsg.a(str);
           if ((localObject != null) && (!TextUtils.isEmpty(((BusinessCard)localObject).bindUin))) {
-            paramFromServiceMsg.b(((BusinessCard)localObject).bindUin);
+            paramFromServiceMsg.d(((BusinessCard)localObject).bindUin);
           }
-          paramFromServiceMsg.a(str);
+          paramFromServiceMsg.b(str);
           bool1 = bool2;
         }
         else
@@ -621,8 +621,8 @@ public class BusinessCardServlet
     if (paramIntent.OCRInfo != null)
     {
       localObject2 = new Oidb_0x43c.OCRInfo();
-      ((Oidb_0x43c.OCRInfo)localObject2).name.set(paramIntent.OCRInfo.jdField_a_of_type_JavaLangString);
-      localObject3 = paramIntent.OCRInfo.jdField_a_of_type_JavaUtilList.iterator();
+      ((Oidb_0x43c.OCRInfo)localObject2).name.set(paramIntent.OCRInfo.a);
+      localObject3 = paramIntent.OCRInfo.c.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         str = (String)((Iterator)localObject3).next();
@@ -630,7 +630,7 @@ public class BusinessCardServlet
           ((Oidb_0x43c.OCRInfo)localObject2).uins.add(Long.valueOf(Long.parseLong(str)));
         }
       }
-      localObject3 = paramIntent.OCRInfo.jdField_b_of_type_JavaUtilList.iterator();
+      localObject3 = paramIntent.OCRInfo.d.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         str = (String)((Iterator)localObject3).next();
@@ -638,9 +638,9 @@ public class BusinessCardServlet
           ((Oidb_0x43c.OCRInfo)localObject2).mobiles.add(str);
         }
       }
-      ((Oidb_0x43c.OCRInfo)localObject2).name_dependLevel.set(paramIntent.OCRInfo.jdField_a_of_type_Float);
-      ((Oidb_0x43c.OCRInfo)localObject2).uins_dependLevel.set(paramIntent.OCRInfo.jdField_b_of_type_Float);
-      ((Oidb_0x43c.OCRInfo)localObject2).mobiles_dependLevel.set(paramIntent.OCRInfo.c);
+      ((Oidb_0x43c.OCRInfo)localObject2).name_dependLevel.set(paramIntent.OCRInfo.e);
+      ((Oidb_0x43c.OCRInfo)localObject2).uins_dependLevel.set(paramIntent.OCRInfo.f);
+      ((Oidb_0x43c.OCRInfo)localObject2).mobiles_dependLevel.set(paramIntent.OCRInfo.g);
       ((Oidb_0x43c.CardInfo)localObject1).ocr_info.set((MessageMicro)localObject2);
     }
     localObject2 = new Oidb_0x43c.RequestModify();
@@ -707,10 +707,10 @@ public class BusinessCardServlet
               }
               if (!TextUtils.isEmpty(((BusinessCard)localObject3).bindUin))
               {
-                if (((FriendsManager)paramFromServiceMsg.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(((BusinessCard)localObject3).bindUin)) {
+                if (((FriendsManager)paramFromServiceMsg.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(((BusinessCard)localObject3).bindUin)) {
                   ((BusinessCardManager)localObject1).a(((BusinessCard)localObject3).bindUin, (BusinessCard)localObject3);
                 } else {
-                  ((BusinessCardManager)localObject1).b(((BusinessCard)localObject3).bindUin);
+                  ((BusinessCardManager)localObject1).d(((BusinessCard)localObject3).bindUin);
                 }
                 if (paramIntent.getIntExtra("key_get_detail_type", 3) == 1) {
                   ((BusinessCardManager)localObject1).a(1, true);
@@ -807,7 +807,7 @@ public class BusinessCardServlet
           localObject3 = new ArrayList();
           if (bool)
           {
-            ((BusinessCardManager)localObject1).b();
+            ((BusinessCardManager)localObject1).e();
             if (((Oidb_0x43c.ResponseCardList)localObject2).mine.has())
             {
               BusinessCard localBusinessCard = new BusinessCard();
@@ -940,7 +940,7 @@ public class BusinessCardServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.BusinessCardServlet
  * JD-Core Version:    0.7.0.1
  */

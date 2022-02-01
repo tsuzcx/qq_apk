@@ -44,7 +44,7 @@ class RichmediaClient$IncomingHandler
       if (paramMessage != null)
       {
         paramMessage = paramMessage.getString("vidoe_record_uniseq");
-        ((RichmediaClient)localObject).a().a(paramMessage);
+        ((RichmediaClient)localObject).b().a(paramMessage);
         return;
       }
       break;
@@ -58,7 +58,7 @@ class RichmediaClient$IncomingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichmediaClient.IncomingHandler
  * JD-Core Version:    0.7.0.1
  */

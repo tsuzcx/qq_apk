@@ -31,7 +31,7 @@ public abstract class RMVideoState
       if (paramInt != 9) {
         return;
       }
-      ((RMVideoStateMgr)localObject).i();
+      ((RMVideoStateMgr)localObject).p();
       return;
     }
     if ((paramObject instanceof CameraProxy.CameraPreviewObservable))
@@ -53,21 +53,21 @@ public abstract class RMVideoState
           {
             paramObject = new StringBuilder();
             paramObject.append("RMVideoState viewST:");
-            paramObject.append(((RMVideoStateMgr)localObject).a);
+            paramObject.append(((RMVideoStateMgr)localObject).v);
             QLog.d("faceuu", 2, paramObject.toString());
           }
-          if (((RMVideoStateMgr)localObject).a != null) {
-            ((RMVideoStateMgr)localObject).a.i();
+          if (((RMVideoStateMgr)localObject).v != null) {
+            ((RMVideoStateMgr)localObject).v.i();
           }
         }
-        else if ((paramVarArgs != null) && (((RMVideoStateMgr)localObject).a != null))
+        else if ((paramVarArgs != null) && (((RMVideoStateMgr)localObject).v != null))
         {
           if ((paramVarArgs[0] instanceof CameraControl.CustomSize))
           {
             paramObject = (CameraControl.CustomSize)paramVarArgs[0];
             try
             {
-              ((RMVideoStateMgr)localObject).a.a(paramObject.a, paramObject.b);
+              ((RMVideoStateMgr)localObject).v.a(paramObject.a, paramObject.b);
               QLog.d("RMVideoState", 2, "[@] EVENT_SET_CAMERA_PARAM[success]");
               return;
             }
@@ -82,7 +82,7 @@ public abstract class RMVideoState
             paramObject.append("[@] EVENT_SET_CAMERA_PARAM:rmStateMgr=");
             paramObject.append(localObject);
             paramObject.append(" viewST=");
-            paramObject.append(((RMVideoStateMgr)localObject).a);
+            paramObject.append(((RMVideoStateMgr)localObject).v);
             QLog.d("RMVideoState", 2, paramObject.toString());
           }
           else
@@ -103,7 +103,7 @@ public abstract class RMVideoState
           {
             paramObject = new StringBuilder();
             paramObject.append("[@] EVENT_SET_CAMERA_PARAM[2]:viewST=");
-            paramObject.append(((RMVideoStateMgr)localObject).a);
+            paramObject.append(((RMVideoStateMgr)localObject).v);
             QLog.d("RMVideoState", 2, paramObject.toString());
           }
         }
@@ -118,13 +118,13 @@ public abstract class RMVideoState
   
   public abstract void b();
   
-  public void f() {}
-  
   public void g() {}
+  
+  public void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoState
  * JD-Core Version:    0.7.0.1
  */

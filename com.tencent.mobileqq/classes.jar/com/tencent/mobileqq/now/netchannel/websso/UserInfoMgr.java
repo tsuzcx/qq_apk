@@ -10,20 +10,24 @@ import mqq.manager.TicketManager;
 public class UserInfoMgr
 {
   public static UserInfoMgr a;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
   private long b;
+  private long c;
+  private String d;
   
-  public static long a()
+  public static UserInfoMgr a()
   {
-    AppInterface localAppInterface = a();
-    if (localAppInterface == null) {
-      return 0L;
+    if (a == null) {
+      a = new UserInfoMgr();
     }
-    return localAppInterface.getLongAccountUin();
+    return a;
   }
   
-  public static AppInterface a()
+  public static void b()
+  {
+    a = null;
+  }
+  
+  public static AppInterface c()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
@@ -32,26 +36,9 @@ public class UserInfoMgr
     return null;
   }
   
-  public static UserInfoMgr a()
+  public static TicketManager d()
   {
-    if (jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoUserInfoMgr == null) {
-      jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoUserInfoMgr = new UserInfoMgr();
-    }
-    return jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoUserInfoMgr;
-  }
-  
-  public static String a()
-  {
-    AppInterface localAppInterface = a();
-    if (localAppInterface == null) {
-      return "";
-    }
-    return localAppInterface.getCurrentAccountUin();
-  }
-  
-  public static TicketManager a()
-  {
-    AppInterface localAppInterface = a();
+    AppInterface localAppInterface = c();
     if (localAppInterface == null) {
       return null;
     }
@@ -61,31 +48,44 @@ public class UserInfoMgr
     return (TicketManager)localAppInterface.getManager(2);
   }
   
-  public static void a()
+  public static long e()
   {
-    jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoUserInfoMgr = null;
+    AppInterface localAppInterface = c();
+    if (localAppInterface == null) {
+      return 0L;
+    }
+    return localAppInterface.getLongAccountUin();
   }
   
-  public static String b()
+  public static String f()
   {
-    Object localObject = a();
+    AppInterface localAppInterface = c();
+    if (localAppInterface == null) {
+      return "";
+    }
+    return localAppInterface.getCurrentAccountUin();
+  }
+  
+  public static String g()
+  {
+    Object localObject = d();
     if (localObject == null) {
       return "";
     }
-    localObject = ((TicketManager)localObject).getSkey(a());
+    localObject = ((TicketManager)localObject).getSkey(f());
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return "";
     }
     return localObject;
   }
   
-  public static String c()
+  public static String h()
   {
-    Object localObject = a();
+    Object localObject = d();
     if (localObject == null) {
       return "";
     }
-    localObject = ((TicketManager)localObject).getA2(a());
+    localObject = ((TicketManager)localObject).getA2(f());
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return "";
     }
@@ -94,32 +94,32 @@ public class UserInfoMgr
   
   void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
+    this.d = paramString;
   }
   
   void b(long paramLong)
   {
-    this.b = paramLong;
+    this.c = paramLong;
   }
   
-  public long c()
+  public long i()
   {
     return this.b;
   }
   
-  public String d()
+  public long j()
   {
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    return this.c;
+  }
+  
+  public String k()
+  {
+    String str2 = this.d;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -129,7 +129,7 @@ public class UserInfoMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.UserInfoMgr
  * JD-Core Version:    0.7.0.1
  */

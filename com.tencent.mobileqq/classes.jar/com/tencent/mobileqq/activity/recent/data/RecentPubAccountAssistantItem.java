@@ -38,7 +38,7 @@ public class RecentPubAccountAssistantItem
   
   private void a()
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       StringBuilder localStringBuilder1 = new StringBuilder(24);
       localStringBuilder1.append(this.mTitleName);
@@ -203,7 +203,7 @@ public class RecentPubAccountAssistantItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentPubAccountAssistantItem
  * JD-Core Version:    0.7.0.1
  */

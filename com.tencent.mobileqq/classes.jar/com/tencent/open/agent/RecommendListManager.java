@@ -25,21 +25,19 @@ public class RecommendListManager
   extends LinearLayout
   implements View.OnClickListener, ViewStub.OnInflateListener, ImageLoader.ImageLoadListener
 {
-  protected Handler a;
-  protected FriendChooser a;
-  protected FriendDataManager a;
-  protected HashMap<String, View> a;
+  protected FriendDataManager a = FriendDataManager.a();
+  protected FriendChooser b;
+  protected HashMap<String, View> c = new HashMap();
+  protected Handler d;
   
   public RecommendListManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager = FriendDataManager.a();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.d = new Handler();
     int j = super.getChildCount();
     int i = 0;
     while (i < j)
@@ -54,12 +52,12 @@ public class RecommendListManager
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new RecommendListManager.1(this, paramString1, paramBitmap));
+    this.d.post(new RecommendListManager.1(this, paramString1, paramBitmap));
   }
   
   public void b()
   {
-    int j = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a();
+    int j = this.a.b();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("-->notifyDataSetChanged() count = ");
     ((StringBuilder)localObject).append(j);
@@ -78,9 +76,9 @@ public class RecommendListManager
       }
       else
       {
-        localObject = (CheckBox)((View)localObject).findViewById(2131364613);
-        Friend localFriend = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(j);
-        if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(localFriend.a)) {
+        localObject = (CheckBox)((View)localObject).findViewById(2131430688);
+        Friend localFriend = this.a.a(j);
+        if (this.a.b(localFriend.a)) {
           ((CheckBox)localObject).setChecked(true);
         } else {
           ((CheckBox)localObject).setChecked(false);
@@ -93,15 +91,15 @@ public class RecommendListManager
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131376243) {
+    if (i == 2131444451) {
       i = 0;
-    } else if (i == 2131376244) {
+    } else if (i == 2131444452) {
       i = 1;
-    } else if (i == 2131376245) {
+    } else if (i == 2131444453) {
       i = 2;
-    } else if (i == 2131376246) {
+    } else if (i == 2131444454) {
       i = 3;
-    } else if (i == 2131376247) {
+    } else if (i == 2131444455) {
       i = 4;
     } else {
       i = -1;
@@ -112,12 +110,12 @@ public class RecommendListManager
     ((StringBuilder)localObject).append(" v.getId() = ");
     ((StringBuilder)localObject).append(paramView.getId());
     LogUtility.c("RecommendListManager", ((StringBuilder)localObject).toString());
-    if ((i != -1) && (i < this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a()))
+    if ((i != -1) && (i < this.a.b()))
     {
-      localObject = (CheckBox)paramView.findViewById(2131364613);
-      Friend localFriend = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i);
-      this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(localFriend);
-      if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(localFriend.a)) {
+      localObject = (CheckBox)paramView.findViewById(2131430688);
+      Friend localFriend = this.a.a(i);
+      this.b.a(localFriend);
+      if (this.a.b(localFriend.a)) {
         ((CheckBox)localObject).setChecked(true);
       } else {
         ((CheckBox)localObject).setChecked(false);
@@ -129,15 +127,15 @@ public class RecommendListManager
   public void onInflate(ViewStub paramViewStub, View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131376243) {
+    if (i == 2131444451) {
       i = 0;
-    } else if (i == 2131376244) {
+    } else if (i == 2131444452) {
       i = 1;
-    } else if (i == 2131376245) {
+    } else if (i == 2131444453) {
       i = 2;
-    } else if (i == 2131376246) {
+    } else if (i == 2131444454) {
       i = 3;
-    } else if (i == 2131376247) {
+    } else if (i == 2131444455) {
       i = 4;
     } else {
       i = -1;
@@ -147,15 +145,15 @@ public class RecommendListManager
     paramViewStub.append(i);
     LogUtility.c("RecommendListManager", paramViewStub.toString());
     paramView.setOnClickListener(this);
-    paramViewStub = this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(i);
+    paramViewStub = this.a.a(i);
     if ((paramViewStub.d == null) || ("".equals(paramViewStub.d))) {
-      paramViewStub.d = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), paramViewStub.a);
+      paramViewStub.d = QZonePortraitData.a(this.b.i(), paramViewStub.a);
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramViewStub.d, paramView);
-    Object localObject = (CheckBox)paramView.findViewById(2131364613);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368343);
-    paramView = (TextView)paramView.findViewById(2131371697);
-    if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramViewStub.a)) {
+    this.c.put(paramViewStub.d, paramView);
+    Object localObject = (CheckBox)paramView.findViewById(2131430688);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131435219);
+    paramView = (TextView)paramView.findViewById(2131439121);
+    if (this.a.b(paramViewStub.a)) {
       ((CheckBox)localObject).setChecked(true);
     } else {
       ((CheckBox)localObject).setChecked(false);
@@ -163,7 +161,7 @@ public class RecommendListManager
     localObject = ImageLoader.a().a(paramViewStub.d);
     if (localObject == null)
     {
-      localImageView.setImageResource(2130840321);
+      localImageView.setImageResource(2130841060);
       ImageLoader.a().a(paramViewStub.d, this);
     }
     else
@@ -180,12 +178,12 @@ public class RecommendListManager
   
   public void setActivity(FriendChooser paramFriendChooser)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser = paramFriendChooser;
+    this.b = paramFriendChooser;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.RecommendListManager
  * JD-Core Version:    0.7.0.1
  */

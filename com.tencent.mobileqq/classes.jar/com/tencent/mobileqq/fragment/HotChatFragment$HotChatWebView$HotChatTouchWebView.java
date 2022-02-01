@@ -23,8 +23,8 @@ public class HotChatFragment$HotChatWebView$HotChatTouchWebView
     boolean bool = super.onTouchEvent(paramMotionEvent, paramView);
     int j = paramMotionEvent.getAction();
     float f = paramMotionEvent.getY();
-    f = this.a.jdField_a_of_type_Int + f;
-    paramMotionEvent = this.a.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.a.iterator();
+    f = this.b.a + f;
+    paramMotionEvent = this.b.e.e.iterator();
     while (paramMotionEvent.hasNext())
     {
       paramView = (Rect)paramMotionEvent.next();
@@ -67,7 +67,7 @@ public class HotChatFragment$HotChatWebView$HotChatTouchWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView.HotChatTouchWebView
  * JD-Core Version:    0.7.0.1
  */

@@ -21,9 +21,9 @@ public final class TypeToken$Companion
     while (i < j)
     {
       Object localObject = paramClass[i];
-      Map localMap = (Map)localTypeToken.a();
+      Map localMap = (Map)localTypeToken.b();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "it");
-      localMap.put(localObject, MethodToken.a.a(localObject));
+      localMap.put(localObject, MethodToken.f.a(localObject));
       i += 1;
     }
     return localTypeToken;
@@ -31,7 +31,7 @@ public final class TypeToken$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ipc.TypeToken.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class TroopStoryAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130842590;
+    return 2130843543;
   }
   
   public int getAppID()
@@ -31,21 +31,21 @@ public class TroopStoryAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697774);
+    return BaseApplicationImpl.getContext().getString(2131895547);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramPlusPanelViewModel = TroopStoryUtil.a(null, this.url, paramSessionInfo.a);
-    paramSessionInfo = new Intent(paramBaseChatPie.a(), JumpActivity.class);
+    paramPlusPanelViewModel = TroopStoryUtil.a(null, this.url, paramSessionInfo.b);
+    paramSessionInfo = new Intent(paramBaseChatPie.aX(), JumpActivity.class);
     paramSessionInfo.setData(Uri.parse(paramPlusPanelViewModel));
-    paramBaseChatPie.a().startActivity(paramSessionInfo);
+    paramBaseChatPie.aX().startActivity(paramSessionInfo);
     StoryReportor.a("story_grp", "clk_entry", 0, 0, new String[] { "", "", "", "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TroopStoryAppInfo
  * JD-Core Version:    0.7.0.1
  */

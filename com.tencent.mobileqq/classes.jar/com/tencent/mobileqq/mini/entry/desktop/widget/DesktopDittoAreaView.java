@@ -24,6 +24,7 @@ import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CardModuleExposure
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.TianShuExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.desktop.GetAppListV2Scene;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDittoInfo;
@@ -247,7 +248,7 @@ public class DesktopDittoAreaView
               str4 = localJSONObject.optString("reserves4");
               localObject8 = localObject1;
               localObject6 = localObject3;
-              if (StringUtil.a((String)localObject10))
+              if (StringUtil.isEmpty((String)localObject10))
               {
                 localObject8 = localObject1;
                 localObject6 = localObject3;
@@ -432,13 +433,13 @@ public class DesktopDittoAreaView
           ((StringBuilder)localObject4).append("_");
           ((StringBuilder)localObject4).append(l);
           ((TianShuReportData)localObject3).b = ((StringBuilder)localObject4).toString();
-          ((TianShuReportData)localObject3).jdField_a_of_type_Int = 1;
-          ((TianShuReportData)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
-          ((TianShuReportData)localObject3).f = ((String)localObject2);
-          ((TianShuReportData)localObject3).g = paramString;
-          ((TianShuReportData)localObject3).d = 102;
-          ((TianShuReportData)localObject3).jdField_e_of_type_Int = 1;
-          ((TianShuReportData)localObject3).jdField_a_of_type_Long = l;
+          ((TianShuReportData)localObject3).c = 1;
+          ((TianShuReportData)localObject3).f = ((String)localObject1);
+          ((TianShuReportData)localObject3).g = ((String)localObject2);
+          ((TianShuReportData)localObject3).h = paramString;
+          ((TianShuReportData)localObject3).p = 102;
+          ((TianShuReportData)localObject3).q = 1;
+          ((TianShuReportData)localObject3).o = l;
           TianShuManager.getInstance().report((TianShuReportData)localObject3);
         }
         bool = paramMotionEvent.has("appId");
@@ -448,7 +449,7 @@ public class DesktopDittoAreaView
           paramDittoArea = paramMotionEvent.optString("appId");
           localObject1 = paramMotionEvent.optString("refer");
           if (this.dittoInfo == null) {
-            break label1387;
+            break label1390;
           }
           localObject2 = paramMotionEvent.optString("report");
           if ("jump_app_store".equals(paramDittoArea))
@@ -457,7 +458,7 @@ public class DesktopDittoAreaView
             {
               MiniAppDesktopAdapter.startMiniApp((Activity)this.activityWeakReference.get(), this.dittoInfo.jumpMoreInfo, Integer.valueOf((String)localObject1).intValue());
               if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                break label1388;
+                break label1391;
               }
               if ("yes".equals(localObject2)) {}
             }
@@ -541,7 +542,7 @@ public class DesktopDittoAreaView
           paramString = paramMotionEvent.optString("refer");
           j = this.dittoInfo.appInfoMap.size();
           if (j <= 0) {
-            break label1389;
+            break label1392;
           }
           i = j;
           i = this.dittoInfo.currentIndex.get() % i;
@@ -578,7 +579,7 @@ public class DesktopDittoAreaView
           return;
         }
         if (!paramMotionEvent.has("refresh")) {
-          break label1387;
+          break label1390;
         }
         i = paramMotionEvent.optInt("refresh");
         paramDittoArea = (DesktopDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
@@ -596,13 +597,13 @@ public class DesktopDittoAreaView
           {
             localObject4 = ((JSONArray)localObject3).optString(i);
             if (TextUtils.isEmpty((CharSequence)localObject4)) {
-              break label1395;
+              break label1398;
             }
             paramString.add(localObject4);
-            break label1395;
+            break label1398;
           }
         }
-        paramDittoArea.sendModuleRequest((ArrayList)localObject1, (ArrayList)localObject2, paramString);
+        paramDittoArea.sendModuleRequest((ArrayList)localObject1, (ArrayList)localObject2, paramString, GetAppListV2Scene.DITTO);
         MiniProgramLpReportDC04239.reportAsync(paramMotionEvent.optString("actionType"), paramMotionEvent.optString("subAction"), paramMotionEvent.optString("reservesAction"), null);
         paramDittoArea = new StringBuilder();
         paramDittoArea.append("refresh, itemIds: ");
@@ -619,14 +620,14 @@ public class DesktopDittoAreaView
         return;
       }
       QLog.e("DesktopDittoAreaView", 1, "handleUri, uri is null.");
-      label1387:
+      label1390:
       return;
-      label1388:
+      label1391:
       return;
-      label1389:
+      label1392:
       int i = 1;
       continue;
-      label1395:
+      label1398:
       i += 1;
     }
   }
@@ -638,7 +639,7 @@ public class DesktopDittoAreaView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DesktopDittoAreaView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.av.ui;
 
 public abstract interface QavPanel$onReciveQavPanelStatusChangeListener
 {
-  public abstract long a();
-  
-  public abstract void a();
-  
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
   public abstract boolean a();
   
   public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract long d();
 }
 
 

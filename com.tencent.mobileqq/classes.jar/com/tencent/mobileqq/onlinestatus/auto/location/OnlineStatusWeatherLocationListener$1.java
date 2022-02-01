@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.lbssearch.httpresponse.AdInfo;
 import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
 import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiLoader.OnPoiLoadListener;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import mqq.util.WeakReference;
@@ -11,11 +12,11 @@ import mqq.util.WeakReference;
 class OnlineStatusWeatherLocationListener$1
   implements PoiLoader.OnPoiLoadListener
 {
-  OnlineStatusWeatherLocationListener$1(OnlineStatusWeatherLocationListener paramOnlineStatusWeatherLocationListener, LatLng paramLatLng, int paramInt) {}
+  OnlineStatusWeatherLocationListener$1(OnlineStatusWeatherLocationListener paramOnlineStatusWeatherLocationListener, LatLng paramLatLng, SosoLbsInfo paramSosoLbsInfo, int paramInt) {}
   
   public void a(PoiBean paramPoiBean)
   {
-    OnlineStatusWeatherLocationListener.WeatherLocationCallback localWeatherLocationCallback = (OnlineStatusWeatherLocationListener.WeatherLocationCallback)OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener).get();
+    OnlineStatusWeatherLocationListener.WeatherLocationCallback localWeatherLocationCallback = (OnlineStatusWeatherLocationListener.WeatherLocationCallback)OnlineStatusWeatherLocationListener.a(this.d).get();
     if (localWeatherLocationCallback == null)
     {
       if (QLog.isColorLevel()) {
@@ -39,18 +40,19 @@ class OnlineStatusWeatherLocationListener$1
       localStringBuilder.append(str1);
       localStringBuilder.append(str2);
       String str1 = localStringBuilder.toString();
-      localWeatherLocationCallback.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, paramPoiBean.adInfo.adcode, str1, OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener), OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener));
+      LocationUtil.a(this.b, paramPoiBean.adInfo.adcode, str1);
+      localWeatherLocationCallback.a(this.c, this.a.latitude, this.a.longitude, paramPoiBean.adInfo.adcode, str1, OnlineStatusWeatherLocationListener.b(this.d), OnlineStatusWeatherLocationListener.c(this.d));
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] getPoiWithLatLng error. adInfo is null ");
     }
-    localWeatherLocationCallback.a(404, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.latitude, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng.longitude, "", "", OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener), OnlineStatusWeatherLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationOnlineStatusWeatherLocationListener));
+    localWeatherLocationCallback.a(404, this.a.latitude, this.a.longitude, "", "", OnlineStatusWeatherLocationListener.b(this.d), OnlineStatusWeatherLocationListener.c(this.d));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.OnlineStatusWeatherLocationListener.1
  * JD-Core Version:    0.7.0.1
  */

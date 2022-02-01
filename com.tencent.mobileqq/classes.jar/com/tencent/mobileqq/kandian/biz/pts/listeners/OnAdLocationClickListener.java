@@ -15,18 +15,18 @@ import com.tencent.mobileqq.qroute.QRoute;
 public class OnAdLocationClickListener
   implements ViewBase.OnClickListener
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private final AbsBaseArticleInfo a;
+  private final Context b;
   
   public OnAdLocationClickListener(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramAbsBaseArticleInfo;
+    this.b = paramContext;
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    paramViewBase = this.a;
     if ((paramViewBase instanceof AdvertisementInfo))
     {
       paramViewBase = (AdvertisementInfo)paramViewBase;
@@ -35,8 +35,8 @@ public class OnAdLocationClickListener
         Object localObject = paramViewBase.mLocalInfo.b;
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          localObject = RIJJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject);
-          ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(1).b(22).b((Integer)localObject).a(paramViewBase).c(33));
+          localObject = RIJJumpUtils.c(this.b, (String)localObject);
+          ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.b).a(1).b(22).b((Integer)localObject).a(paramViewBase).c(33));
         }
       }
     }
@@ -44,7 +44,7 @@ public class OnAdLocationClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnAdLocationClickListener
  * JD-Core Version:    0.7.0.1
  */

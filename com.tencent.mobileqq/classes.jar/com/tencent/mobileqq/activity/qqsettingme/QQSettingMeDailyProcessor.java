@@ -30,24 +30,18 @@ import org.json.JSONObject;
 public class QQSettingMeDailyProcessor
   extends QQSettingMeBaseProcessor
 {
-  private int a;
-  public MutableLiveData<QQSettingMeDailyBean> a;
-  private String jdField_b_of_type_JavaLangString = null;
-  private boolean jdField_b_of_type_Boolean;
-  
-  public QQSettingMeDailyProcessor()
-  {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_a_of_type_Int = -1;
-  }
+  public MutableLiveData<QQSettingMeDailyBean> a = new MutableLiveData();
+  private int b = -1;
+  private String i = null;
+  private boolean j;
   
   @NonNull
   private QQSettingMeDailyBean a()
   {
-    if (this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue() == null) {
+    if (this.a.getValue() == null) {
       return new QQSettingMeDailyBean();
     }
-    return (QQSettingMeDailyBean)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue();
+    return (QQSettingMeDailyBean)this.a.getValue();
   }
   
   private boolean a(long paramLong)
@@ -64,12 +58,12 @@ public class QQSettingMeDailyProcessor
   
   private void b(boolean paramBoolean)
   {
-    if (a().jdField_a_of_type_Int != 1) {
+    if (a().a != 1) {
       return;
     }
-    if (this.jdField_a_of_type_Int != -1)
+    if (this.b != -1)
     {
-      if (this.jdField_b_of_type_JavaLangString == null) {
+      if (this.i == null) {
         return;
       }
       TianShuReportData localTianShuReportData = new TianShuReportData();
@@ -84,65 +78,65 @@ public class QQSettingMeDailyProcessor
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("_");
       localStringBuilder.append(l);
-      localTianShuReportData.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-      localTianShuReportData.jdField_a_of_type_Int = 1;
-      int i;
+      localTianShuReportData.b = localStringBuilder.toString();
+      localTianShuReportData.c = 1;
+      int k;
       if (paramBoolean) {
-        i = 102;
+        k = 102;
       } else {
-        i = 101;
+        k = 101;
       }
-      localTianShuReportData.d = i;
-      localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.103";
+      localTianShuReportData.p = k;
       localTianShuReportData.f = "tianshu.103";
-      localTianShuReportData.g = String.valueOf(this.jdField_a_of_type_Int);
-      localTianShuReportData.jdField_e_of_type_Int = 1;
-      localTianShuReportData.l = this.jdField_b_of_type_JavaLangString;
-      localTianShuReportData.jdField_a_of_type_Long = l;
+      localTianShuReportData.g = "tianshu.103";
+      localTianShuReportData.h = String.valueOf(this.b);
+      localTianShuReportData.q = 1;
+      localTianShuReportData.s = this.i;
+      localTianShuReportData.o = l;
       TianShuManager.getInstance().report(localTianShuReportData);
     }
   }
   
-  public String a()
+  public void a(QQSettingMe paramQQSettingMe)
+  {
+    this.a.observe(this.e, new QQSettingMeDailyProcessor.1(this, paramQQSettingMe));
+  }
+  
+  public String b()
   {
     return "d_daily";
   }
   
-  public void a(QQSettingMe paramQQSettingMe)
+  public void d()
   {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeDailyProcessor.1(this, paramQQSettingMe));
-  }
-  
-  public void b()
-  {
-    super.b();
-    g();
+    super.d();
+    i();
     TianShuManager.setLastClickAdTraceInfo("", "");
     b(false);
   }
   
-  public void f()
+  public void h()
   {
-    g();
+    i();
   }
   
-  public void g()
+  public void i()
   {
     Object localObject1 = this;
     QQSettingMeDailyBean localQQSettingMeDailyBean = a();
-    localQQSettingMeDailyBean.c = HardCodeUtil.a(2131710712);
-    localQQSettingMeDailyBean.jdField_b_of_type_Int = 0;
-    SharedPreferences localSharedPreferences = ((QQSettingMeDailyProcessor)localObject1).jdField_a_of_type_MqqAppAppRuntime.getPreferences();
+    localQQSettingMeDailyBean.e = HardCodeUtil.a(2131908395);
+    localQQSettingMeDailyBean.f = 0;
+    SharedPreferences localSharedPreferences = ((QQSettingMeDailyProcessor)localObject1).c.getPreferences();
     long l1 = localSharedPreferences.getLong("sign_in_time_stamp", 0L);
     Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append(((QQSettingMeDailyProcessor)localObject1).jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    ((StringBuilder)localObject3).append(((QQSettingMeDailyProcessor)localObject1).c.getCurrentUin());
     ((StringBuilder)localObject3).append("sign_in_info");
     String str = localSharedPreferences.getString(((StringBuilder)localObject3).toString(), "");
     try
     {
       localObject3 = new JSONObject(str);
-      localQQSettingMeDailyBean.jdField_a_of_type_Int = ((JSONObject)localObject3).optInt("type");
-      localQQSettingMeDailyBean.jdField_b_of_type_Int = ((JSONObject)localObject3).optInt("day");
+      localQQSettingMeDailyBean.a = ((JSONObject)localObject3).optInt("type");
+      localQQSettingMeDailyBean.f = ((JSONObject)localObject3).optInt("day");
     }
     catch (JSONException localJSONException4)
     {
@@ -157,33 +151,33 @@ public class QQSettingMeDailyProcessor
     }
     if (!((QQSettingMeDailyProcessor)localObject1).a(l1 * 1000L))
     {
-      localQQSettingMeDailyBean.jdField_a_of_type_Int = 1;
-      localQQSettingMeDailyBean.jdField_b_of_type_Int = 0;
+      localQQSettingMeDailyBean.a = 1;
+      localQQSettingMeDailyBean.f = 0;
     }
     Object localObject4;
-    int i;
-    if (LocaleManager.a() != 1033)
+    int k;
+    if (LocaleManager.d() != 1033)
     {
       long l2;
-      int j;
+      int m;
       try
       {
-        ((QQSettingMeDailyProcessor)localObject1).jdField_a_of_type_Int = -1;
+        ((QQSettingMeDailyProcessor)localObject1).b = -1;
         localObject4 = null;
-        ((QQSettingMeDailyProcessor)localObject1).jdField_b_of_type_JavaLangString = null;
-        i = localQQSettingMeDailyBean.jdField_a_of_type_Int;
-        if (i == 1)
+        ((QQSettingMeDailyProcessor)localObject1).i = null;
+        k = localQQSettingMeDailyBean.a;
+        if (k == 1)
         {
           localObject5 = new StringBuilder();
-          ((StringBuilder)localObject5).append(((QQSettingMeDailyProcessor)localObject1).jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+          ((StringBuilder)localObject5).append(((QQSettingMeDailyProcessor)localObject1).c.getCurrentUin());
           ((StringBuilder)localObject5).append("sign_in_operation");
           ((StringBuilder)localObject5).append("11");
           localObject5 = localSharedPreferences.getString(((StringBuilder)localObject5).toString(), "");
           if (!TextUtils.isEmpty((CharSequence)localObject5))
           {
             localObject1 = new JSONObject((String)localObject5);
-            i = ((JSONObject)localObject1).optInt("start_time");
-            l1 = i;
+            k = ((JSONObject)localObject1).optInt("start_time");
+            l1 = k;
           }
         }
       }
@@ -194,33 +188,33 @@ public class QQSettingMeDailyProcessor
       l2 = ((JSONObject)localObject1).optInt("end_time");
       if ((System.currentTimeMillis() > l1 * 1000L) && (System.currentTimeMillis() < l2 * 1000L))
       {
-        i = ((JSONObject)localObject1).optInt("id", -1);
+        k = ((JSONObject)localObject1).optInt("id", -1);
         localObject4 = this;
-        ((QQSettingMeDailyProcessor)localObject4).jdField_a_of_type_Int = i;
-        ((QQSettingMeDailyProcessor)localObject4).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("trace_info", null);
-        break label1539;
+        ((QQSettingMeDailyProcessor)localObject4).b = k;
+        ((QQSettingMeDailyProcessor)localObject4).i = ((JSONObject)localObject1).optString("trace_info", null);
+        break label1540;
       }
       localObject1 = null;
       localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+      ((StringBuilder)localObject4).append(this.c.getCurrentUin());
       ((StringBuilder)localObject4).append("sign_in_operation");
       ((StringBuilder)localObject4).append("10");
       localObject4 = localSharedPreferences.getString(((StringBuilder)localObject4).toString(), "");
       if (TextUtils.isEmpty((CharSequence)localObject4)) {
-        break label1509;
+        break label1510;
       }
       localObject1 = new JSONObject((String)localObject4);
     }
     catch (JSONException localJSONException3)
     {
       QQSettingMeDailyProcessor localQQSettingMeDailyProcessor;
-      break label1051;
+      break label1052;
       localObject5 = "end_time";
       localObject4 = localJSONException3;
       localObject2 = localObject5;
     }
     Object localObject5 = new StringBuilder();
-    ((StringBuilder)localObject5).append(((QQSettingMeDailyProcessor)localObject1).jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+    ((StringBuilder)localObject5).append(((QQSettingMeDailyProcessor)localObject1).c.getCurrentUin());
     ((StringBuilder)localObject5).append("sign_in_operation");
     ((StringBuilder)localObject5).append("10");
     localObject5 = localSharedPreferences.getString(((StringBuilder)localObject5).toString(), "");
@@ -228,10 +222,10 @@ public class QQSettingMeDailyProcessor
     if (!TextUtils.isEmpty((CharSequence)localObject5))
     {
       localObject1 = new JSONObject((String)localObject5);
-      break label1509;
-      localQQSettingMeDailyBean.c = HardCodeUtil.a(2131710705);
+      break label1510;
+      localQQSettingMeDailyBean.e = HardCodeUtil.a(2131908386);
       localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append(((QQSettingMeDailyProcessor)localObject1).jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+      ((StringBuilder)localObject4).append(((QQSettingMeDailyProcessor)localObject1).c.getCurrentUin());
       ((StringBuilder)localObject4).append("sign_in_operation");
       ((StringBuilder)localObject4).append("41");
       localObject4 = localSharedPreferences.getString(((StringBuilder)localObject4).toString(), "");
@@ -242,63 +236,63 @@ public class QQSettingMeDailyProcessor
         l2 = ((JSONObject)localObject4).optInt("end_time");
         if (System.currentTimeMillis() > l1 * 1000L) {
           if (System.currentTimeMillis() < l2 * 1000L) {
-            break label1535;
+            break label1536;
           }
         }
         localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(((QQSettingMeDailyProcessor)localObject1).jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+        ((StringBuilder)localObject4).append(((QQSettingMeDailyProcessor)localObject1).c.getCurrentUin());
         ((StringBuilder)localObject4).append("sign_in_operation");
         ((StringBuilder)localObject4).append("40");
         localObject1 = localSharedPreferences.getString(((StringBuilder)localObject4).toString(), "");
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label1565;
+          break label1566;
         }
         localObject1 = new JSONObject((String)localObject1);
-        break label1549;
+        break label1550;
       }
       localObject4 = new StringBuilder();
-      ((StringBuilder)localObject4).append(((QQSettingMeDailyProcessor)localObject1).jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+      ((StringBuilder)localObject4).append(((QQSettingMeDailyProcessor)localObject1).c.getCurrentUin());
       ((StringBuilder)localObject4).append("sign_in_operation");
       ((StringBuilder)localObject4).append("40");
       localObject1 = localSharedPreferences.getString(((StringBuilder)localObject4).toString(), "");
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label1565;
+        break label1566;
       }
       localObject1 = new JSONObject((String)localObject1);
-      break label1549;
+      break label1550;
       if (localObject1 != null)
       {
         l1 = ((JSONObject)localObject1).optInt("start_time");
-        j = ((JSONObject)localObject1).optInt((String)localObject5);
-        l2 = j;
+        m = ((JSONObject)localObject1).optInt((String)localObject5);
+        l2 = m;
         try
         {
           if ((System.currentTimeMillis() <= l1 * 1000L) || (System.currentTimeMillis() >= l2 * 1000L)) {
-            break label1143;
+            break label1144;
           }
-          localQQSettingMeDailyBean.c = ((JSONObject)localObject1).optString("template_text");
+          localQQSettingMeDailyBean.e = ((JSONObject)localObject1).optString("template_text");
           localObject4 = ((JSONObject)localObject1).optString("bytes_url");
-          if (i != 0)
+          if (k != 0)
           {
-            localQQSettingMeDailyBean.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("bytes_icon_url");
-            localQQSettingMeDailyBean.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("bytes_icon_custom_url");
+            localQQSettingMeDailyBean.c = ((JSONObject)localObject1).optString("bytes_icon_url");
+            localQQSettingMeDailyBean.d = ((JSONObject)localObject1).optString("bytes_icon_custom_url");
           }
           else
           {
-            localQQSettingMeDailyBean.jdField_a_of_type_JavaLangString = "";
-            localQQSettingMeDailyBean.jdField_b_of_type_JavaLangString = "";
+            localQQSettingMeDailyBean.c = "";
+            localQQSettingMeDailyBean.d = "";
           }
           if (TextUtils.isEmpty((CharSequence)localObject4)) {
-            break label1143;
+            break label1144;
           }
           localObject1 = localSharedPreferences.edit();
           localObject5 = new StringBuilder();
-          ((StringBuilder)localObject5).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+          ((StringBuilder)localObject5).append(this.c.getCurrentUin());
           ((StringBuilder)localObject5).append("sign_in_jump_url");
           ((SharedPreferences.Editor)localObject1).putString(((StringBuilder)localObject5).toString(), (String)localObject4).commit();
         }
         catch (JSONException localJSONException1) {}
-        label1051:
+        label1052:
         if (QLog.isColorLevel())
         {
           localObject4 = new StringBuilder();
@@ -307,47 +301,47 @@ public class QQSettingMeDailyProcessor
           QLog.i("DailySignIn", 2, ((StringBuilder)localObject4).toString());
         }
         localJSONException2.printStackTrace();
-        break label1143;
-        if (localQQSettingMeDailyBean.jdField_a_of_type_Int == 1) {
-          localQQSettingMeDailyBean.c = HardCodeUtil.a(2131710712);
-        } else if (localQQSettingMeDailyBean.jdField_a_of_type_Int == 4) {
-          localQQSettingMeDailyBean.c = HardCodeUtil.a(2131710705);
+        break label1144;
+        if (localQQSettingMeDailyBean.a == 1) {
+          localQQSettingMeDailyBean.e = HardCodeUtil.a(2131908395);
+        } else if (localQQSettingMeDailyBean.a == 4) {
+          localQQSettingMeDailyBean.e = HardCodeUtil.a(2131908386);
         }
       }
-      label1143:
+      label1144:
       localQQSettingMeDailyProcessor = this;
       if (QLog.isColorLevel())
       {
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("doUpdateDailySignInItemView type=");
-        ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.jdField_a_of_type_Int);
+        ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.a);
         ((StringBuilder)localObject4).append(" iconUrl=");
-        ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject4).append(" wording=");
         ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.c);
+        ((StringBuilder)localObject4).append(" wording=");
+        ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.e);
         ((StringBuilder)localObject4).append(" day=");
-        ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.jdField_b_of_type_Int);
+        ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.f);
         ((StringBuilder)localObject4).append("coverIconUrl");
-        ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.d);
         QLog.i("DailySignIn", 2, ((StringBuilder)localObject4).toString());
       }
-      localQQSettingMeDailyBean.jdField_a_of_type_Boolean = true;
-      if (localQQSettingMeDailyBean.jdField_a_of_type_Int == 4)
+      localQQSettingMeDailyBean.b = true;
+      if (localQQSettingMeDailyBean.a == 4)
       {
         if (QLog.isColorLevel())
         {
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("use signed wording:");
-          ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.c);
+          ((StringBuilder)localObject4).append(localQQSettingMeDailyBean.e);
           QLog.i("DailySignIn", 2, ((StringBuilder)localObject4).toString());
         }
-        if (localQQSettingMeDailyBean.jdField_b_of_type_Int > 0) {
-          localQQSettingMeDailyBean.c = String.format(localQQSettingMeDailyBean.c, new Object[] { Integer.valueOf(localQQSettingMeDailyBean.jdField_b_of_type_Int) });
+        if (localQQSettingMeDailyBean.f > 0) {
+          localQQSettingMeDailyBean.e = String.format(localQQSettingMeDailyBean.e, new Object[] { Integer.valueOf(localQQSettingMeDailyBean.f) });
         }
-        if ((localQQSettingMeDailyProcessor.jdField_a_of_type_Boolean) && (!localQQSettingMeDailyProcessor.jdField_b_of_type_Boolean))
+        if ((localQQSettingMeDailyProcessor.g) && (!localQQSettingMeDailyProcessor.j))
         {
-          localQQSettingMeDailyProcessor.jdField_b_of_type_Boolean = true;
-          ReportController.b(localQQSettingMeDailyProcessor.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800ACFC", "0X800ACFC", 0, 0, "", "", "", "");
+          localQQSettingMeDailyProcessor.j = true;
+          ReportController.b(localQQSettingMeDailyProcessor.c, "dc00898", "", "", "0X800ACFC", "0X800ACFC", 0, 0, "", "", "", "");
         }
       }
       else
@@ -355,98 +349,98 @@ public class QQSettingMeDailyProcessor
         if (QLog.isColorLevel()) {
           QLog.i("DailySignIn", 2, "use unsigned wording");
         }
-        if ((localQQSettingMeDailyProcessor.jdField_a_of_type_Boolean) && (!localQQSettingMeDailyProcessor.jdField_b_of_type_Boolean))
+        if ((localQQSettingMeDailyProcessor.g) && (!localQQSettingMeDailyProcessor.j))
         {
-          localQQSettingMeDailyProcessor.jdField_b_of_type_Boolean = true;
-          ReportController.b(localQQSettingMeDailyProcessor.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800ACFB", "0X800ACFB", 0, 0, "", "", "", "");
+          localQQSettingMeDailyProcessor.j = true;
+          ReportController.b(localQQSettingMeDailyProcessor.c, "dc00898", "", "", "0X800ACFB", "0X800ACFB", 0, 0, "", "", "", "");
         }
       }
-      localQQSettingMeDailyProcessor.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(localQQSettingMeDailyBean);
+      localQQSettingMeDailyProcessor.a.setValue(localQQSettingMeDailyBean);
       return;
     }
     for (;;)
     {
-      label1509:
-      i = 0;
+      label1510:
+      k = 0;
       localObject5 = localObject2;
       Object localObject2 = localObject4;
       break;
-      label1535:
+      label1536:
       localObject2 = localObject4;
-      label1539:
+      label1540:
       localObject5 = "end_time";
-      i = 1;
+      k = 1;
       break;
-      label1549:
+      label1550:
       localObject5 = "end_time";
       localObject4 = localObject2;
       localObject2 = localObject5;
       continue;
-      label1565:
+      label1566:
       localObject2 = "end_time";
       localObject4 = null;
     }
   }
   
-  public void h()
+  public void j()
   {
-    ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getSignInInfo(0);
+    ((QQAppInterface)this.c).getSignInInfo(0);
   }
   
   public void onClick(View paramView)
   {
     Object localObject;
-    if (a().jdField_a_of_type_Boolean)
+    if (a().b)
     {
-      paramView = this.jdField_a_of_type_MqqAppAppRuntime.getPreferences();
+      paramView = this.c.getPreferences();
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
+      ((StringBuilder)localObject).append(this.c.getCurrentUin());
       ((StringBuilder)localObject).append("sign_in_jump_url");
       paramView = paramView.getString(((StringBuilder)localObject).toString(), "https://ti.qq.com/signin/public/index.html?_wv=1090528161&_wwv=13");
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, QQBrowserActivity.class);
+      localObject = new Intent(this.d, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("portraitOnly", true);
-      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      ((Intent)localObject).putExtra("uin", this.c.getCurrentAccountUin());
       ((Intent)localObject).putExtra("hide_operation_bar", true);
       ((Intent)localObject).putExtra("hide_more_button", true);
       ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_ad_daka");
       ((Intent)localObject).putExtra("url", paramView);
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity((Intent)localObject);
-      if (a().jdField_a_of_type_Int == 1) {
-        ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800ACFD", "0X800ACFD", 0, 0, "", "", "", "");
-      } else if (a().jdField_a_of_type_Int == 4) {
-        ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800ACFE", "0X800ACFE", 0, 0, "", "", "", "");
+      this.d.startActivity((Intent)localObject);
+      if (a().a == 1) {
+        ReportController.b(this.c, "dc00898", "", "", "0X800ACFD", "0X800ACFD", 0, 0, "", "", "", "");
+      } else if (a().a == 4) {
+        ReportController.b(this.c, "dc00898", "", "", "0X800ACFE", "0X800ACFE", 0, 0, "", "", "", "");
       }
       b(true);
     }
     else
     {
-      paramView = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      paramView = this.c.getApp();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("task_entry_config");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      ((StringBuilder)localObject).append(this.c.getCurrentAccountUin());
       paramView = paramView.getSharedPreferences(((StringBuilder)localObject).toString(), 0).getString("jump_url", "");
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, QQBrowserActivity.class);
+      localObject = new Intent(this.d, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("portraitOnly", true);
-      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      ((Intent)localObject).putExtra("uin", this.c.getCurrentAccountUin());
       ((Intent)localObject).putExtra("hide_operation_bar", true);
       ((Intent)localObject).putExtra("hide_more_button", true);
       ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_ad_daka");
       ((Intent)localObject).putExtra("url", paramView);
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity((Intent)localObject);
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00899", "Grp_duty", "", "locker", "clk", 0, 0, "", "", "", "");
+      this.d.startActivity((Intent)localObject);
+      ReportController.b(this.c, "dc00899", "Grp_duty", "", "locker", "clk", 0, 0, "", "", "", "");
     }
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
       paramView.append("myDaily onClick mDailySignMode = ");
-      paramView.append(a().jdField_a_of_type_Boolean);
+      paramView.append(a().b);
       QLog.i("DailySignIn", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeDailyProcessor
  * JD-Core Version:    0.7.0.1
  */

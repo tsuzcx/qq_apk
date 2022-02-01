@@ -15,15 +15,15 @@ class MoveToGroupActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = MoveToGroupActivity.a(this.a).getInputValue();
+    Object localObject = MoveToGroupActivity.e(this.a).getInputValue();
     paramDialogInterface = (DialogInterface)localObject;
     if (((String)localObject).equals("")) {
-      paramDialogInterface = this.a.getResources().getString(2131693060);
+      paramDialogInterface = this.a.getResources().getString(2131890174);
     }
-    paramInt = MoveToGroupActivity.a(this.a).size();
+    paramInt = MoveToGroupActivity.c(this.a).size();
     byte b = 1;
     if (paramInt > 0) {
-      b = (byte)(((Groups)MoveToGroupActivity.a(this.a).get(MoveToGroupActivity.a(this.a).size() - 1)).seqid + 1);
+      b = (byte)(((Groups)MoveToGroupActivity.c(this.a).get(MoveToGroupActivity.c(this.a).size() - 1)).seqid + 1);
     }
     localObject = this.a;
     MoveToGroupActivity.b((MoveToGroupActivity)localObject, ((MoveToGroupActivity)localObject).a(b, paramDialogInterface));
@@ -31,17 +31,17 @@ class MoveToGroupActivity$4
     {
       paramDialogInterface = new StringBuilder();
       paramDialogInterface.append("AddFriendGroup needShowDialog = ");
-      paramDialogInterface.append(MoveToGroupActivity.a(this.a));
+      paramDialogInterface.append(MoveToGroupActivity.f(this.a));
       QLog.d("MoveToGroupActivity", 2, paramDialogInterface.toString());
     }
-    if (MoveToGroupActivity.a(this.a)) {
-      this.a.a(2131693094);
+    if (MoveToGroupActivity.f(this.a)) {
+      this.a.a(2131890208);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MoveToGroupActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -21,17 +21,17 @@ class QWalletPicDownloader$1
       localStringBuilder.append(???);
       QLog.e("QWalletPicDownloader", 2, localStringBuilder.toString());
     }
-    synchronized (this.jdField_a_of_type_JavaIoFile)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaIoFile.notify();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.a.notify();
+      this.b.set(true);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletPicDownloader.1
  * JD-Core Version:    0.7.0.1
  */

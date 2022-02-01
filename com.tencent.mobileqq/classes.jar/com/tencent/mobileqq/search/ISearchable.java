@@ -6,13 +6,13 @@ public abstract interface ISearchable
   
   public abstract void a(String paramString);
   
-  public abstract long b();
+  public abstract long n();
   
-  public abstract long c();
+  public abstract long o();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ISearchable
  * JD-Core Version:    0.7.0.1
  */

@@ -8,19 +8,18 @@ import org.json.JSONObject;
 
 public class WebViewTopTabHelper
 {
-  private final SwiftBrowserUIStyleHandler a;
-  public String a;
+  public String a = null;
+  private final SwiftBrowserUIStyleHandler b;
   
   public WebViewTopTabHelper(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler = paramSwiftBrowserUIStyleHandler;
+    this.b = paramSwiftBrowserUIStyleHandler;
   }
   
   public void a(int paramInt)
   {
-    TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a();
-    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    TouchWebView localTouchWebView = this.b.l();
+    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.a)))
     {
       JSONObject localJSONObject1 = new JSONObject();
       JSONObject localJSONObject2 = new JSONObject();
@@ -35,7 +34,7 @@ public class WebViewTopTabHelper
       {
         localException.printStackTrace();
       }
-      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
+      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.a, localJSONObject1, null));
     }
   }
   
@@ -44,17 +43,17 @@ public class WebViewTopTabHelper
     if (paramBoolean)
     {
       if (!TextUtils.isEmpty(paramString)) {
-        this.jdField_a_of_type_JavaLangString = paramString;
+        this.a = paramString;
       }
     }
     else {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.a = paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTopTabHelper
  * JD-Core Version:    0.7.0.1
  */

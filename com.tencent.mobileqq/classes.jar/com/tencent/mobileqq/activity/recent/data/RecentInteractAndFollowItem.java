@@ -36,7 +36,7 @@ public class RecentInteractAndFollowItem
       if (paramContext == null) {
         return;
       }
-      Object localObject = paramQQAppInterface.getMessageFacade().b(this.mData.senderuin, this.mData.istroop);
+      Object localObject = paramQQAppInterface.getMessageFacade().r(this.mData.senderuin, this.mData.istroop);
       MessageForInteractAndFollow localMessageForInteractAndFollow = null;
       if ((localObject instanceof MessageForInteractAndFollow)) {
         localMessageForInteractAndFollow = (MessageForInteractAndFollow)localObject;
@@ -52,18 +52,18 @@ public class RecentInteractAndFollowItem
       this.messageType = localMessageForInteractAndFollow.type;
       if (localMessageForInteractAndFollow.type == 1)
       {
-        this.mTitleName = paramContext.getString(2131694299);
+        this.mTitleName = paramContext.getString(2131891937);
       }
       else if (localMessageForInteractAndFollow.type == 2)
       {
-        this.mTitleName = paramContext.getString(2131694298);
+        this.mTitleName = paramContext.getString(2131891936);
       }
       else
       {
         if (localMessageForInteractAndFollow.type != 3) {
           break label386;
         }
-        this.mTitleName = paramContext.getString(2131694300);
+        this.mTitleName = paramContext.getString(2131891938);
       }
       this.mUnreadFlag = 3;
       this.mDisplayTime = localMessageForInteractAndFollow.timeStamp;
@@ -76,7 +76,7 @@ public class RecentInteractAndFollowItem
       localObject = getMsgSummaryTemp();
       ((MsgSummary)localObject).strContent = localMessageForInteractAndFollow.context;
       extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject);
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
@@ -122,7 +122,7 @@ public class RecentInteractAndFollowItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentInteractAndFollowItem
  * JD-Core Version:    0.7.0.1
  */

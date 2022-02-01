@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.colornote.data;
 
 import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.ColorNoteConstants;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -16,8 +17,8 @@ public class ColorNoteConfBean
     try
     {
       localObject = new ColorNoteConfBean();
-      ((ColorNoteConfBean)localObject).a = new JSONObject(paramString).getInt("maxcount");
-      com.tencent.mobileqq.colornote.ColorNoteConstants.a = ((ColorNoteConfBean)localObject).a;
+      ((ColorNoteConfBean)localObject).a = new JSONObject(paramString).optInt("maxcount", ColorNoteConstants.a);
+      ColorNoteConstants.a = ((ColorNoteConfBean)localObject).a;
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
@@ -48,7 +49,7 @@ public class ColorNoteConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNoteConfBean
  * JD-Core Version:    0.7.0.1
  */

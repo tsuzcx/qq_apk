@@ -15,14 +15,11 @@ import com.tencent.mobileqq.statistics.ReportController;
 class QQEmoticonPanelLinearLayoutHelper$CheckForLongPress
   implements Runnable
 {
-  private MotionEvent event;
   int mOriginalWindowAttachCount;
-  SparseIntArray mReportSparseArray;
+  SparseIntArray mReportSparseArray = new SparseIntArray(10);
   
   public QQEmoticonPanelLinearLayoutHelper$CheckForLongPress(QQEmoticonPanelLinearLayoutHelper paramQQEmoticonPanelLinearLayoutHelper, MotionEvent paramMotionEvent)
   {
-    this.event = paramMotionEvent;
-    this.mReportSparseArray = new SparseIntArray(10);
     this.mReportSparseArray.put(7, 1);
     this.mReportSparseArray.put(1, 1);
     this.mReportSparseArray.put(2, 1);
@@ -71,32 +68,40 @@ class QQEmoticonPanelLinearLayoutHelper$CheckForLongPress
         QQEmoticonPanelLinearLayoutHelper.access$500(this.this$0).sendAccessibilityEvent(2);
         localObject = this.this$0;
         QQEmoticonPanelLinearLayoutHelper.access$600((QQEmoticonPanelLinearLayoutHelper)localObject, ((QQEmoticonPanelLinearLayoutHelper)localObject).mPointView, localEmoticonInfo);
-        if (QQEmoticonPanelLinearLayoutHelper.access$700(this.this$0, localEmoticonInfo))
+        if (!QQEmoticonPanelLinearLayoutHelper.access$700(this.this$0, localEmoticonInfo)) {
+          return;
+        }
+        localObject = this.this$0;
+        ((QQEmoticonPanelLinearLayoutHelper)localObject).showPopupEmo(((QQEmoticonPanelLinearLayoutHelper)localObject).mPointView, localEmoticonInfo);
+        reportShowPopupEmoEvent(localEmoticonInfo);
+        if (QQEmoticonPanelLinearLayoutHelper.access$800(this.this$0) == null)
         {
-          localObject = this.this$0;
-          ((QQEmoticonPanelLinearLayoutHelper)localObject).showPopupEmo(((QQEmoticonPanelLinearLayoutHelper)localObject).mPointView, localEmoticonInfo);
-          reportShowPopupEmoEvent(localEmoticonInfo);
-          if (QQEmoticonPanelLinearLayoutHelper.access$800(this.this$0) != null)
+          this.this$0.popOutEmoAnimMode = false;
+          return;
+        }
+        int i = QQEmoticonPanelLinearLayoutHelper.access$800(this.this$0).getCurType();
+        localObject = this.this$0;
+        ((QQEmoticonPanelLinearLayoutHelper)localObject).popOutEmoAnimMode = PopOutEmoticonUtil.a(QQEmoticonPanelLinearLayoutHelper.access$900((QQEmoticonPanelLinearLayoutHelper)localObject), QQEmoticonPanelLinearLayoutHelper.access$1000(this.this$0), i);
+        if (this.this$0.popOutEmoAnimMode)
+        {
+          if (this.this$0.mPopOutEmoticonGesture == null)
           {
-            if (PopOutEmoticonUtil.a(QQEmoticonPanelLinearLayoutHelper.access$900(this.this$0), QQEmoticonPanelLinearLayoutHelper.access$1000(this.this$0), QQEmoticonPanelLinearLayoutHelper.access$800(this.this$0).getCurType()))
-            {
-              if (this.this$0.mPopOutEmoticonGesture == null)
-              {
-                this.this$0.mPopOutEmoticonGesture = new PopOutEmoticonGesture();
-                localObject = this.this$0.mPopOutEmoticonGesture;
-                ViewGroup localViewGroup = QQEmoticonPanelLinearLayoutHelper.access$000(this.this$0);
-                EmoticonPanelLinearLayout localEmoticonPanelLinearLayout = QQEmoticonPanelLinearLayoutHelper.access$500(this.this$0);
-                QQEmoticonPanelLinearLayoutHelper localQQEmoticonPanelLinearLayoutHelper = this.this$0;
-                ((PopOutEmoticonGesture)localObject).a(localViewGroup, localEmoticonPanelLinearLayout, localQQEmoticonPanelLinearLayoutHelper, QQEmoticonPanelLinearLayoutHelper.access$800(localQQEmoticonPanelLinearLayoutHelper));
-              }
-              this.this$0.mPopOutEmoticonGesture.a(localEmoticonInfo);
-            }
-            if (PopOutEmoticonUtil.a(QQEmoticonPanelLinearLayoutHelper.access$900(this.this$0), localEmoticonInfo))
-            {
-              QQEmoticonPanelLinearLayoutHelper.access$1102(this.this$0, false);
-              PopOutAnimViewHelper.a("0X800BB9E", localEmoticonInfo);
-            }
+            this.this$0.mPopOutEmoticonGesture = new PopOutEmoticonGesture();
+            localObject = this.this$0.mPopOutEmoticonGesture;
+            ViewGroup localViewGroup = QQEmoticonPanelLinearLayoutHelper.access$000(this.this$0);
+            EmoticonPanelLinearLayout localEmoticonPanelLinearLayout = QQEmoticonPanelLinearLayoutHelper.access$500(this.this$0);
+            QQEmoticonPanelLinearLayoutHelper localQQEmoticonPanelLinearLayoutHelper = this.this$0;
+            ((PopOutEmoticonGesture)localObject).a(localViewGroup, localEmoticonPanelLinearLayout, localQQEmoticonPanelLinearLayoutHelper, QQEmoticonPanelLinearLayoutHelper.access$800(localQQEmoticonPanelLinearLayoutHelper));
           }
+          this.this$0.mPopOutEmoticonGesture.a(localEmoticonInfo);
+          QQEmoticonPanelLinearLayoutHelper.access$1102(this.this$0, false);
+          boolean bool = PopOutEmoticonUtil.a(localEmoticonInfo);
+          if (bool) {
+            localObject = "0X800BC21";
+          } else {
+            localObject = "0X800BB9E";
+          }
+          PopOutAnimViewHelper.a((String)localObject, localEmoticonInfo, bool);
         }
       }
     }
@@ -104,7 +109,7 @@ class QQEmoticonPanelLinearLayoutHelper$CheckForLongPress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.QQEmoticonPanelLinearLayoutHelper.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

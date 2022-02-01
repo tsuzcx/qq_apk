@@ -76,7 +76,7 @@ public class BoodoHippyBirdge
       return;
     }
     Object localObject2 = null;
-    AppRuntime localAppRuntime = AppHelper.a();
+    AppRuntime localAppRuntime = AppHelper.b();
     Object localObject1 = localObject2;
     if (localAppRuntime != null)
     {
@@ -155,19 +155,19 @@ public class BoodoHippyBirdge
     if ("QQBoodoComic".equals(paramString)) {
       return true;
     }
-    if (!QQComicConfBean.a().mAllModules.isEmpty())
+    if (!QQComicConfBean.b().mAllModules.isEmpty())
     {
       if (QLog.isColorLevel()) {
         QLog.d("BoodoHippyBirdge", 2, new Object[] { "isBoodoModule moduleName:", paramString });
       }
-      return QQComicConfBean.a().mAllModules.contains(paramString);
+      return QQComicConfBean.b().mAllModules.contains(paramString);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.hippy.BoodoHippyBirdge
  * JD-Core Version:    0.7.0.1
  */

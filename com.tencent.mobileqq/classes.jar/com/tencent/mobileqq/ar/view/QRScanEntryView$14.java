@@ -19,24 +19,24 @@ class QRScanEntryView$14
     {
       paramBundle = new Intent();
       paramBundle.putExtra("detectType", 2);
-      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
+      paramBundle.putExtra("scannerResult", this.a.trim());
       if (!TextUtils.isEmpty(this.b)) {
         paramBundle.putExtra("filePath", this.b);
       }
-      this.jdField_a_of_type_AndroidAppActivity.setResult(13, paramBundle);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+      this.c.setResult(13, paramBundle);
+      this.c.finish();
+      this.c.overridePendingTransition(0, 0);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
     }
-    this.jdField_a_of_type_ComTencentMobileqqArModelQRSession.b(false);
+    this.d.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.14
  * JD-Core Version:    0.7.0.1
  */

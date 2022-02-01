@@ -9,56 +9,56 @@ import java.util.ArrayList;
 public abstract class FTSEntitySearchResultDetailModel
   extends ISearchResultPositionModel
 {
-  protected QQAppInterface a;
   protected FTSEntity a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected CharSequence b;
-  protected CharSequence c;
-  private CharSequence d;
+  protected String b;
+  protected ArrayList<String> c;
+  protected CharSequence d;
+  protected QQAppInterface e;
+  protected CharSequence f;
+  protected CharSequence g;
+  private CharSequence h;
   
   public FTSEntitySearchResultDetailModel(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqFtsV1FTSEntity = paramFTSEntity;
+    this.e = paramQQAppInterface;
+    this.b = paramString;
+    this.c = paramArrayList;
+    this.a = paramFTSEntity;
   }
   
-  public int a()
+  public int b()
   {
     return 1;
   }
   
-  public boolean a()
+  public CharSequence e()
   {
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public CharSequence c()
-  {
-    if (this.d == null) {
-      this.d = SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqFtsV1FTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqFtsV1FTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.h == null) {
+      this.h = SearchUtils.a(this.a.mContent, this.a.mProximityStart, this.c);
     }
-    return this.d;
+    return this.h;
   }
   
-  public CharSequence d()
+  public CharSequence f()
   {
     return null;
   }
   
-  public abstract CharSequence e();
+  public String g()
+  {
+    return this.b;
+  }
+  
+  public boolean h()
+  {
+    return false;
+  }
+  
+  public abstract CharSequence i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.FTSEntitySearchResultDetailModel
  * JD-Core Version:    0.7.0.1
  */

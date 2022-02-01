@@ -18,7 +18,7 @@ import java.util.List;
 class LocationPickController$5
   implements MapWidget.EventListener
 {
-  private long jdField_a_of_type_Long = 0L;
+  private long c = 0L;
   
   LocationPickController$5(LocationPickController paramLocationPickController, Activity paramActivity) {}
   
@@ -26,10 +26,10 @@ class LocationPickController$5
   
   public void a(LatLng paramLatLng)
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
+    if (System.currentTimeMillis() - this.c < 1000L) {
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -37,8 +37,8 @@ class LocationPickController$5
       localStringBuilder.append(paramLatLng);
       QLog.d("LocationShareController", 2, localStringBuilder.toString());
     }
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController, paramLatLng);
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).a(LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).getMap(), paramLatLng, "");
+    LocationPickController.a(this.b, paramLatLng);
+    LocationPickController.b(this.b).a(LocationPickController.c(this.b).getMap(), paramLatLng, "");
     ReportController.b(null, "CliOper", "", "", "0X800A95D", "0X800A95D", 0, 0, "", "0", "0", "");
   }
   
@@ -54,7 +54,7 @@ class LocationPickController$5
         if (localBitmap != null)
         {
           localBitmap = BaseImageUtil.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-          LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).a(paramList, localBitmap);
+          LocationPickController.c(this.b).a(paramList, localBitmap);
         }
       }
     }
@@ -64,32 +64,32 @@ class LocationPickController$5
   {
     if (paramBoolean)
     {
-      LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).setClickable(false);
-      if (QQUIDelegate.b())
+      LocationPickController.e(this.b).setClickable(false);
+      if (QQUIDelegate.c())
       {
-        LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840631));
+        LocationPickController.e(this.b).setImageDrawable(this.a.getResources().getDrawable(2130841404));
         return;
       }
-      LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840630));
+      LocationPickController.e(this.b).setImageDrawable(this.a.getResources().getDrawable(2130841403));
       return;
     }
     if (paramPoint != null)
     {
       Rect localRect = new Rect();
-      LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).getGlobalVisibleRect(localRect);
+      LocationPickController.e(this.b).getGlobalVisibleRect(localRect);
       if (localRect.contains(paramPoint.x, paramPoint.y)) {
         return;
       }
     }
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).setClickable(true);
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840632));
+    LocationPickController.e(this.b).setClickable(true);
+    LocationPickController.e(this.b).setImageDrawable(this.a.getResources().getDrawable(2130841405));
   }
   
   public void a(boolean paramBoolean, MapWidget.RouteDetail paramRouteDetail) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickController.5
  * JD-Core Version:    0.7.0.1
  */

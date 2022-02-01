@@ -76,7 +76,7 @@ class DeviceMsgHandle$2
       paramContext = paramIntent.getExtras();
       l1 = paramContext.getLong("deviceopdin", 0L);
       if (paramContext.getInt("deviceoprstcode", 0) == 0) {
-        DeviceMsgHandle.a(this.a).getMessageFacade().a(Long.valueOf(l1).toString(), 9501);
+        DeviceMsgHandle.a(this.a).getMessageFacade().c(Long.valueOf(l1).toString(), 9501);
       }
     }
     else if (paramIntent.getAction().equalsIgnoreCase("tencent.av.v2q.StartVideoChat"))
@@ -88,19 +88,19 @@ class DeviceMsgHandle$2
       }
       paramContext = Long.valueOf(l1);
       if (paramContext.longValue() != 0L) {
-        DeviceMsgHandle.a(this.a).add(paramContext);
+        DeviceMsgHandle.b(this.a).add(paramContext);
       }
     }
     else if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_DeviceAdminUnbind"))
     {
       paramContext = Long.valueOf(paramIntent.getExtras().getLong("deviceopdin", 0L));
-      if (DeviceMsgHandle.a(this.a).contains(paramContext) != true)
+      if (DeviceMsgHandle.b(this.a).contains(paramContext) != true)
       {
-        DeviceMsgHandle.a(this.a).getMessageFacade().a(paramContext.toString(), 9501);
+        DeviceMsgHandle.a(this.a).getMessageFacade().c(paramContext.toString(), 9501);
         return;
       }
       if (paramContext.longValue() != 0L) {
-        DeviceMsgHandle.b(this.a).add(paramContext);
+        DeviceMsgHandle.c(this.a).add(paramContext);
       }
     }
     else if (paramIntent.getAction().equalsIgnoreCase("tencent.av.v2q.StopVideoChat"))
@@ -113,14 +113,14 @@ class DeviceMsgHandle$2
         l1 = 0L;
       }
       paramIntent = Long.valueOf(l1);
-      if ((i == 0) && (paramContext == null) && (paramIntent.longValue() != 0L) && (DeviceMsgHandle.b(this.a).contains(paramIntent)))
+      if ((i == 0) && (paramContext == null) && (paramIntent.longValue() != 0L) && (DeviceMsgHandle.c(this.a).contains(paramIntent)))
       {
-        DeviceMsgHandle.a(this.a).getMessageFacade().a(paramIntent.toString(), 9501);
-        DeviceMsgHandle.b(this.a).remove(paramIntent);
+        DeviceMsgHandle.a(this.a).getMessageFacade().c(paramIntent.toString(), 9501);
+        DeviceMsgHandle.c(this.a).remove(paramIntent);
         return;
       }
       if (paramIntent.longValue() != 0L) {
-        DeviceMsgHandle.a(this.a).remove(paramIntent);
+        DeviceMsgHandle.b(this.a).remove(paramIntent);
       }
     }
     else
@@ -133,11 +133,11 @@ class DeviceMsgHandle$2
         if (localObject2 == null)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 2, "dp is null in DeviceMsgHandler::onreceive");
+            QLog.d(DeviceMsgHandle.a, 2, "dp is null in DeviceMsgHandler::onreceive");
           }
           return;
         }
-        paramIntent = ((SmartDeviceProxyMgr)DeviceMsgHandle.a(this.a).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(((DataPoint)localObject2).mDin);
+        paramIntent = ((SmartDeviceProxyMgr)DeviceMsgHandle.a(this.a).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(((DataPoint)localObject2).mDin);
         if (paramIntent != null) {
           i = paramIntent.productId;
         } else {
@@ -148,7 +148,7 @@ class DeviceMsgHandle$2
           if ((i == 0) && (((DataPoint)localObject2).mDin > 4294967295L)) {
             if (QLog.isColorLevel())
             {
-              paramContext = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+              paramContext = DeviceMsgHandle.a;
               paramIntent = new StringBuilder();
               paramIntent.append("device info pid is 0; dp.mDin = ");
               paramIntent.append(((DataPoint)localObject2).mDin);
@@ -158,7 +158,7 @@ class DeviceMsgHandle$2
         }
         else if (QLog.isColorLevel())
         {
-          paramIntent = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+          paramIntent = DeviceMsgHandle.a;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("device info pid is 0; dp.mDin = ");
           ((StringBuilder)localObject3).append(((DataPoint)localObject2).mDin);
@@ -166,11 +166,11 @@ class DeviceMsgHandle$2
         }
         if (10004 == ((DataPoint)localObject2).mProperityId)
         {
-          this.a.jdField_a_of_type_ComTencentDeviceMsgDataDevSingleStructMsgProcessor.a((DataPoint)localObject2);
+          this.a.j.a((DataPoint)localObject2);
           if (DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue)) {
             break label6704;
           }
-          DeviceMsgHandle.a(this.a);
+          DeviceMsgHandle.d(this.a);
           return;
         }
         if ((10012 != ((DataPoint)localObject2).mProperityId) && (11015 != ((DataPoint)localObject2).mProperityId))
@@ -185,7 +185,7 @@ class DeviceMsgHandle$2
                 paramContext = Message.obtain();
                 paramContext.what = 3001;
                 paramContext.obj = Long.valueOf(l1);
-                BannerManager.a().a(MsgProxyBannerProcessor.jdField_a_of_type_Int, 0, paramContext);
+                BannerManager.a().a(MsgProxyBannerProcessor.a, 0, paramContext);
               }
               else
               {
@@ -193,9 +193,9 @@ class DeviceMsgHandle$2
                 paramIntent = Message.obtain();
                 paramIntent.what = 3000;
                 paramIntent.obj = new Pair(Long.valueOf(l1), paramContext);
-                BannerManager.a().a(MsgProxyBannerProcessor.jdField_a_of_type_Int, 2, paramIntent);
+                BannerManager.a().a(MsgProxyBannerProcessor.a, 2, paramIntent);
               }
-              paramContext = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+              paramContext = DeviceMsgHandle.a;
               paramIntent = new StringBuilder();
               paramIntent.append("PID_MSG_PROXY JSON :");
               paramIntent.append(((DataPoint)localObject2).mValue);
@@ -244,9 +244,9 @@ class DeviceMsgHandle$2
                   try
                   {
                     paramContext = new JSONObject(((DataPoint)localObject2).mValue);
-                    paramContext.optLong("msg_time", MessageCache.a());
+                    paramContext.optLong("msg_time", MessageCache.c());
                     paramContext = paramContext.optString("text", " ");
-                    this.a.a(String.valueOf(((DataPoint)localObject2).mDin), paramContext, MessageCache.a(), true, false, true);
+                    this.a.a(String.valueOf(((DataPoint)localObject2).mDin), paramContext, MessageCache.c(), true, false, true);
                     return;
                   }
                   catch (Exception paramContext)
@@ -255,7 +255,7 @@ class DeviceMsgHandle$2
                       break label6704;
                     }
                   }
-                  paramIntent = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+                  paramIntent = DeviceMsgHandle.a;
                   localObject1 = new StringBuilder();
                   ((StringBuilder)localObject1).append("onRecvRawTextMsg parse from json error:");
                   ((StringBuilder)localObject1).append(paramContext.getMessage());
@@ -268,7 +268,7 @@ class DeviceMsgHandle$2
                   break label6704;
                 }
               }
-              DeviceMsgHandle.a(this.a);
+              DeviceMsgHandle.d(this.a);
               return;
             }
             if ((10011 != ((DataPoint)localObject2).mProperityId) && (10010 != ((DataPoint)localObject2).mProperityId))
@@ -298,10 +298,10 @@ class DeviceMsgHandle$2
                   ((MessageForDevLittleVideo)localObject4).senderuin = Long.toString(l1);
                   ((MessageForDevLittleVideo)localObject4).frienduin = Long.toString(l2);
                   ((MessageForDevLittleVideo)localObject4).videoFileStatus = 2001;
-                  ((MessageForDevLittleVideo)localObject4).time = MessageCache.a();
+                  ((MessageForDevLittleVideo)localObject4).time = MessageCache.c();
                   localObject5 = new StringBuilder();
                   ((StringBuilder)localObject5).append(ContactUtils.a(DeviceMsgHandle.a(this.a), ((MessageForDevLittleVideo)localObject4).senderuin, true));
-                  ((StringBuilder)localObject5).append(HardCodeUtil.a(2131703341));
+                  ((StringBuilder)localObject5).append(HardCodeUtil.a(2131901301));
                   ((MessageForDevLittleVideo)localObject4).msg = ((StringBuilder)localObject5).toString();
                   ((MessageForDevLittleVideo)localObject4).extStr = "device_groupchat";
                   ((MessageForDevLittleVideo)localObject4).thumbFileKey = paramIntent;
@@ -317,7 +317,7 @@ class DeviceMsgHandle$2
                   if (DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue)) {
                     break label6704;
                   }
-                  DeviceMsgHandle.a(this.a);
+                  DeviceMsgHandle.d(this.a);
                   return;
                 }
                 catch (JSONException paramContext)
@@ -326,7 +326,7 @@ class DeviceMsgHandle$2
                     break label6704;
                   }
                 }
-                paramIntent = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+                paramIntent = DeviceMsgHandle.a;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append("getString from json error:");
                 ((StringBuilder)localObject1).append(paramContext.getMessage());
@@ -342,14 +342,14 @@ class DeviceMsgHandle$2
                   }
                   paramIntent = new JSONObject(((DataPoint)localObject2).mValue);
                   paramContext = paramIntent.optString("senderDin", " ");
-                  l1 = paramIntent.optLong("msg_time", MessageCache.a());
+                  l1 = paramIntent.optLong("msg_time", MessageCache.c());
                   paramIntent = paramIntent.optString("text", " ");
                   l2 = ((DataPoint)localObject2).mDin;
                   DeviceMsgHandle.a(this.a, l2, paramContext, paramIntent, l1, true);
                   if (DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue)) {
                     break label6704;
                   }
-                  DeviceMsgHandle.a(this.a);
+                  DeviceMsgHandle.d(this.a);
                   return;
                 }
                 catch (Exception paramContext)
@@ -358,7 +358,7 @@ class DeviceMsgHandle$2
                     break label6704;
                   }
                 }
-                paramIntent = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+                paramIntent = DeviceMsgHandle.a;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append("onRecvRawTextMsg parse from json error:");
                 ((StringBuilder)localObject1).append(paramContext.getMessage());
@@ -375,12 +375,12 @@ class DeviceMsgHandle$2
     {
       try
       {
-        if (!DeviceTipActivity.a)
+        if (!DeviceTipActivity.b)
         {
           localObject1 = new JSONObject(((DataPoint)localObject2).mValue);
           paramContext = String.valueOf(((DataPoint)localObject2).mDin);
           paramIntent = ((JSONObject)localObject1).optString("digest", "");
-          l2 = ((JSONObject)localObject1).optLong("appear_time", MessageCache.a());
+          l2 = ((JSONObject)localObject1).optLong("appear_time", MessageCache.c());
           localObject1 = SettingCloneUtil.readValue(DeviceMsgHandle.a(this.a).getApp(), DeviceMsgHandle.a(this.a).getCurrentAccountUin(), null, "account_login_success_time", "");
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             break label6707;
@@ -388,22 +388,22 @@ class DeviceMsgHandle$2
           l1 = Long.valueOf((String)localObject1).longValue();
           if (QLog.isColorLevel())
           {
-            localObject3 = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+            localObject3 = DeviceMsgHandle.a;
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append("ReceiveDoorTip appear_time= ");
             ((StringBuilder)localObject4).append(l2);
             ((StringBuilder)localObject4).append(" : serverTime = ");
-            ((StringBuilder)localObject4).append(MessageCache.a());
+            ((StringBuilder)localObject4).append(MessageCache.c());
             ((StringBuilder)localObject4).append(" loginTimeStr= ");
             ((StringBuilder)localObject4).append((String)localObject1);
             QLog.d((String)localObject3, 2, ((StringBuilder)localObject4).toString());
-            i = (int)(MessageCache.a() - l2);
+            i = (int)(MessageCache.c() - l2);
             localObject1 = DeviceMsgHandle.a(this.a).getApp();
             localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131703338));
+            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131901298));
             ((StringBuilder)localObject3).append(i);
-            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131703340));
-            QQToast.a((Context)localObject1, ((StringBuilder)localObject3).toString(), 1).a();
+            ((StringBuilder)localObject3).append(HardCodeUtil.a(2131901300));
+            QQToast.makeText((Context)localObject1, ((StringBuilder)localObject3).toString(), 1).show();
           }
           l1 -= l2;
           if (l1 > 1L)
@@ -414,13 +414,13 @@ class DeviceMsgHandle$2
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("该消息是手Q登录前");
               ((StringBuilder)localObject1).append(l1);
-              ((StringBuilder)localObject1).append(HardCodeUtil.a(2131703349));
-              QQToast.a(paramIntent, ((StringBuilder)localObject1).toString(), 1).a();
+              ((StringBuilder)localObject1).append(HardCodeUtil.a(2131901309));
+              QQToast.makeText(paramIntent, ((StringBuilder)localObject1).toString(), 1).show();
             }
-            this.a.a(paramContext, HardCodeUtil.a(2131703343), l2, "");
+            this.a.a(paramContext, HardCodeUtil.a(2131901303), l2, "");
             return;
           }
-          if (MessageCache.a() - l2 <= 30L)
+          if (MessageCache.c() - l2 <= 30L)
           {
             localObject1 = new Intent(DeviceMsgHandle.a(this.a).getApp(), DeviceTipActivity.class);
             ((Intent)localObject1).setFlags(268435456);
@@ -431,7 +431,7 @@ class DeviceMsgHandle$2
         }
         if (!DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue))
         {
-          DeviceMsgHandle.a(this.a);
+          DeviceMsgHandle.d(this.a);
           return;
           if (((DataPoint)localObject2).mProperityId == 1600006)
           {
@@ -439,7 +439,7 @@ class DeviceMsgHandle$2
             {
               paramContext = new JSONObject(((DataPoint)localObject2).mValue);
               paramIntent = paramContext.optString("digest", "");
-              l1 = paramContext.optLong("msg_time", MessageCache.a());
+              l1 = paramContext.optLong("msg_time", MessageCache.c());
               if ((paramIntent != null) && (!TextUtils.isEmpty(paramIntent.trim()))) {
                 this.a.a(Long.toString(((DataPoint)localObject2).mDin), paramIntent, l1, null);
               }
@@ -448,7 +448,7 @@ class DeviceMsgHandle$2
             {
               if (QLog.isColorLevel())
               {
-                paramIntent = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+                paramIntent = DeviceMsgHandle.a;
                 localObject1 = new StringBuilder();
                 ((StringBuilder)localObject1).append("onRecvRawTextMsg parse from json error:");
                 ((StringBuilder)localObject1).append(paramContext.getMessage());
@@ -456,7 +456,7 @@ class DeviceMsgHandle$2
               }
             }
             if (!DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue)) {
-              DeviceMsgHandle.a(this.a);
+              DeviceMsgHandle.d(this.a);
             }
           }
           else
@@ -473,12 +473,12 @@ class DeviceMsgHandle$2
                 localObject4 = paramIntent.optString("title");
                 localObject5 = paramIntent.optString("summary");
                 str1 = paramIntent.optString("dianpingId");
-                l1 = paramIntent.optLong("msg_time", MessageCache.a());
+                l1 = paramIntent.optLong("msg_time", MessageCache.c());
                 DeviceMsgHandle.a(this.a, paramContext, Long.toString(((DataPoint)localObject2).mDin), (String)localObject1, (String)localObject3, (String)localObject4, (String)localObject5, str1, l1);
                 if (DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue)) {
                   continue;
                 }
-                DeviceMsgHandle.a(this.a);
+                DeviceMsgHandle.d(this.a);
                 return;
               }
               catch (Exception paramContext)
@@ -487,7 +487,7 @@ class DeviceMsgHandle$2
                   continue;
                 }
               }
-              paramIntent = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+              paramIntent = DeviceMsgHandle.a;
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("onRecvRawTextMsg parse from json error:");
               ((StringBuilder)localObject1).append(paramContext.getMessage());
@@ -505,11 +505,11 @@ class DeviceMsgHandle$2
               str1 = ((JSONObject)localObject6).optString("config", "");
               String str2 = ((JSONObject)localObject6).optString("compatibleText", "");
               localObject6 = new SessionInfo();
-              ((SessionInfo)localObject6).jdField_a_of_type_JavaLangString = Long.toString(((DataPoint)localObject2).mDin);
-              ((SessionInfo)localObject6).b = "";
-              ((SessionInfo)localObject6).jdField_a_of_type_Int = 9501;
+              ((SessionInfo)localObject6).b = Long.toString(((DataPoint)localObject2).mDin);
+              ((SessionInfo)localObject6).c = "";
+              ((SessionInfo)localObject6).a = 9501;
               paramContext = new ArkAppMessage(paramContext, paramIntent, (String)localObject3, (String)localObject1, (String)localObject4, (String)localObject5, str1, str2);
-              paramContext = MessageRecordFactory.a(DeviceMsgHandle.a(this.a), ((SessionInfo)localObject6).jdField_a_of_type_JavaLangString, ((SessionInfo)localObject6).b, ((SessionInfo)localObject6).jdField_a_of_type_Int, paramContext);
+              paramContext = MessageRecordFactory.a(DeviceMsgHandle.a(this.a), ((SessionInfo)localObject6).b, ((SessionInfo)localObject6).c, ((SessionInfo)localObject6).a, paramContext);
               paramContext.istroop = 9501;
               paramContext.issend = 0;
               paramContext.isread = false;
@@ -518,7 +518,7 @@ class DeviceMsgHandle$2
               paramContext.frienduin = Long.toString(((DataPoint)localObject2).mDin);
               DeviceMsgHandle.a(this.a).getMessageFacade().a(paramContext, DeviceMsgHandle.a(this.a).getCurrentAccountUin());
               if (!DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue)) {
-                DeviceMsgHandle.a(this.a);
+                DeviceMsgHandle.d(this.a);
               }
             }
             else if ((((DataPoint)localObject2).mProperityId != 11008) && (((DataPoint)localObject2).mProperityId != 11012))
@@ -533,7 +533,7 @@ class DeviceMsgHandle$2
                   int k = paramIntent.optInt("cmd");
                   if (QLog.isColorLevel())
                   {
-                    paramIntent = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+                    paramIntent = DeviceMsgHandle.a;
                     localObject1 = new StringBuilder();
                     ((StringBuilder)localObject1).append("openav roomId:");
                     ((StringBuilder)localObject1).append(i);
@@ -574,7 +574,7 @@ class DeviceMsgHandle$2
                 if (DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue)) {
                   continue;
                 }
-                DeviceMsgHandle.a(this.a);
+                DeviceMsgHandle.d(this.a);
                 return;
               }
               catch (Exception paramContext)
@@ -584,27 +584,27 @@ class DeviceMsgHandle$2
                   continue;
                 }
               }
-              paramIntent = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+              paramIntent = DeviceMsgHandle.a;
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("auth_request_structmsg:");
               ((StringBuilder)localObject1).append(paramContext.getMessage());
               QLog.d(paramIntent, 2, ((StringBuilder)localObject1).toString());
               return;
-              this.a.jdField_a_of_type_ComTencentDeviceMsgDataDeviceGroupChatMsgProcessor.a((DataPoint)localObject2);
+              this.a.l.a((DataPoint)localObject2);
               if (!DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue))
               {
-                DeviceMsgHandle.a(this.a);
+                DeviceMsgHandle.d(this.a);
                 return;
-                this.a.jdField_a_of_type_ComTencentDeviceFileDeviceAVFileMsgObserver.a((DataPoint)localObject2);
+                this.a.k.a((DataPoint)localObject2);
                 SmartDeviceReport.a(DeviceMsgHandle.a(this.a), ((DataPoint)localObject2).mDin, "Usr_AIO_ReceiveMsg", 2, 0, i);
                 if (!DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue))
                 {
-                  DeviceMsgHandle.a(this.a);
+                  DeviceMsgHandle.d(this.a);
                   return;
-                  this.a.jdField_a_of_type_ComTencentDeviceMsgDataDevSingleStructMsgProcessor.a((DataPoint)localObject2);
+                  this.a.j.a((DataPoint)localObject2);
                   if (!DeviceMsgHandle.a(this.a, ((DataPoint)localObject2).mValue))
                   {
-                    DeviceMsgHandle.a(this.a);
+                    DeviceMsgHandle.d(this.a);
                     return;
                     if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_sendCCDataPointMsgResult"))
                     {
@@ -626,17 +626,17 @@ class DeviceMsgHandle$2
                       l1 = paramContext.getLong("cookie", 0L);
                       l2 = paramContext.getLong("progress", 0L);
                       long l3 = paramContext.getLong("total", 0L);
-                      if ((l1 != 0L) && (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(l1))))
+                      if ((l1 != 0L) && (this.a.m.containsKey(Long.valueOf(l1))))
                       {
-                        paramContext = (MessageRecord)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(l1));
+                        paramContext = (MessageRecord)this.a.m.get(Long.valueOf(l1));
                         i = 0;
                       }
                       else
                       {
-                        if ((l1 == 0L) || (!this.a.b.containsKey(Long.valueOf(l1)))) {
+                        if ((l1 == 0L) || (!this.a.n.containsKey(Long.valueOf(l1)))) {
                           continue;
                         }
-                        paramContext = (MessageRecord)this.a.b.get(Long.valueOf(l1));
+                        paramContext = (MessageRecord)this.a.n.get(Long.valueOf(l1));
                         i = 1;
                       }
                       if (((paramContext instanceof MessageForDevLittleVideo)) && (i != 0))
@@ -662,17 +662,17 @@ class DeviceMsgHandle$2
                         paramIntent = paramIntent.getExtras();
                         j = paramIntent.getInt("err_code", -1);
                         l1 = paramIntent.getLong("cookie", 0L);
-                        if ((l1 != 0L) && (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(l1))))
+                        if ((l1 != 0L) && (this.a.m.containsKey(Long.valueOf(l1))))
                         {
-                          paramContext = (MessageRecord)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(l1));
+                          paramContext = (MessageRecord)this.a.m.get(Long.valueOf(l1));
                           i = 0;
                         }
                         else
                         {
-                          if ((l1 == 0L) || (!this.a.b.containsKey(Long.valueOf(l1)))) {
+                          if ((l1 == 0L) || (!this.a.n.containsKey(Long.valueOf(l1)))) {
                             continue;
                           }
-                          paramContext = (MessageRecord)this.a.b.get(Long.valueOf(l1));
+                          paramContext = (MessageRecord)this.a.n.get(Long.valueOf(l1));
                           i = 1;
                         }
                         if (j == 0)
@@ -690,15 +690,15 @@ class DeviceMsgHandle$2
                             paramContext = (MessageForDeviceFile)paramContext;
                             paramContext.filePath = paramIntent;
                             paramContext.srcFileName = FileManagerUtil.a(paramIntent);
-                            paramContext.fileSize = FileManagerUtil.a(paramIntent);
+                            paramContext.fileSize = FileManagerUtil.h(paramIntent);
                             paramIntent = new StringBuilder();
                             paramIntent.append(ContactUtils.a(DeviceMsgHandle.a(this.a), paramContext.senderuin, true));
                             paramIntent.append(": ");
-                            paramIntent.append(DeviceMsgHandle.a(this.a).getApp().getString(2131691563));
+                            paramIntent.append(DeviceMsgHandle.a(this.a).getApp().getString(2131888525));
                             paramContext.msg = paramIntent.toString();
                             paramContext.serial();
                             DeviceMsgHandle.a(this.a).getMessageFacade().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
-                            this.a.a().a(paramContext, Boolean.valueOf(true));
+                            this.a.b().a(paramContext, Boolean.valueOf(true));
                           }
                           else if ((paramContext instanceof MessageForDevLittleVideo))
                           {
@@ -735,7 +735,7 @@ class DeviceMsgHandle$2
                         else if ((paramContext instanceof MessageForDeviceFile))
                         {
                           paramContext = (MessageForDeviceFile)paramContext;
-                          this.a.a().a(paramContext, (Boolean)localObject2);
+                          this.a.b().a(paramContext, (Boolean)localObject2);
                         }
                         else if (((paramContext instanceof MessageForDevLittleVideo)) && (i != 0))
                         {
@@ -746,8 +746,8 @@ class DeviceMsgHandle$2
                           DeviceMsgHandle.a(this.a).getMessageFacade().a(paramContext.frienduin, paramContext.istroop, paramContext.uniseq, paramContext.msgData);
                           this.a.a().b(paramContext, (Boolean)localObject2);
                         }
-                        this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(l1));
-                        this.a.b.remove(Long.valueOf(l1));
+                        this.a.m.remove(Long.valueOf(l1));
+                        this.a.n.remove(Long.valueOf(l1));
                         return;
                         return;
                       }
@@ -760,7 +760,7 @@ class DeviceMsgHandle$2
                         i = paramIntent.getInt("Flag", 0);
                         l1 = paramIntent.getLong("Din", 0L);
                         localObject1 = (SmartDeviceProxyMgr)DeviceMsgHandle.a(this.a).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-                        localObject2 = ((SmartDeviceProxyMgr)localObject1).a(l1);
+                        localObject2 = ((SmartDeviceProxyMgr)localObject1).g(l1);
                         if (localObject2 == null) {
                           return;
                         }
@@ -770,14 +770,14 @@ class DeviceMsgHandle$2
                           paramIntent = "";
                         }
                         paramIntent = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramIntent, "");
-                        if (!StringUtil.a(paramIntent))
+                        if (!StringUtil.isEmpty(paramIntent))
                         {
                           paramContext = paramIntent;
                           if (!paramIntent.equals("0")) {}
                         }
                         else
                         {
-                          paramIntent = DeviceMsgHandle.a(this.a).getApp().getString(2131694657).split(":")[0];
+                          paramIntent = DeviceMsgHandle.a(this.a).getApp().getString(2131892349).split(":")[0];
                           paramContext = paramIntent;
                           if (((DeviceInfo)localObject2).isAdmin != 1)
                           {
@@ -787,30 +787,30 @@ class DeviceMsgHandle$2
                         }
                         if ((i == 1) && (((DeviceInfo)localObject2).isAdmin != 1))
                         {
-                          com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie.H = true;
+                          com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie.br = true;
                           paramIntent = new StringBuilder();
                           paramIntent.append(paramContext);
-                          paramIntent.append(DeviceMsgHandle.a(this.a).getApp().getString(2131691536));
+                          paramIntent.append(DeviceMsgHandle.a(this.a).getApp().getString(2131888498));
                           paramContext = paramIntent.toString();
                           paramIntent = this.a;
                           localObject1 = new StringBuilder();
                           ((StringBuilder)localObject1).append(l1);
                           ((StringBuilder)localObject1).append("");
-                          paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.a(), true, false, 1);
+                          paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.c(), true, false, 1);
                           return;
                         }
                         if ((i == 0) && (((DeviceInfo)localObject2).isAdmin != 1))
                         {
-                          com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie.H = false;
+                          com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie.br = false;
                           paramIntent = new StringBuilder();
                           paramIntent.append(paramContext);
-                          paramIntent.append(DeviceMsgHandle.a(this.a).getApp().getString(2131691535));
+                          paramIntent.append(DeviceMsgHandle.a(this.a).getApp().getString(2131888497));
                           paramContext = paramIntent.toString();
                           paramIntent = this.a;
                           localObject1 = new StringBuilder();
                           ((StringBuilder)localObject1).append(l1);
                           ((StringBuilder)localObject1).append("");
-                          paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.a(), true, false, true);
+                          paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.c(), true, false, true);
                         }
                       }
                       else if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_QueryIsDeviceBinded"))
@@ -834,22 +834,22 @@ class DeviceMsgHandle$2
                         localObject2 = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
                         localObject3 = Long.valueOf(paramContext.getLong("deviceopuin", 0L));
                         paramIntent = (SmartDeviceProxyMgr)DeviceMsgHandle.a(this.a).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-                        localObject1 = paramIntent.a(((Long)localObject2).longValue());
+                        localObject1 = paramIntent.g(((Long)localObject2).longValue());
                         if (localObject1 == null) {
                           return;
                         }
-                        paramContext = paramIntent.a(((DeviceInfo)localObject1).productId);
+                        paramContext = paramIntent.b(((DeviceInfo)localObject1).productId);
                         if (paramContext == null) {
                           return;
                         }
-                        if (paramIntent.a(((Long)localObject2).longValue()).booleanValue())
+                        if (paramIntent.f(((Long)localObject2).longValue()).booleanValue())
                         {
-                          paramContext = HardCodeUtil.a(2131703351);
+                          paramContext = HardCodeUtil.a(2131901311);
                         }
                         else if (((DeviceInfo)localObject1).isAdmin == 1)
                         {
                           paramIntent = new StringBuilder();
-                          paramIntent.append(HardCodeUtil.a(2131703348));
+                          paramIntent.append(HardCodeUtil.a(2131901308));
                           paramIntent.append(paramContext.deviceName);
                           paramContext = paramIntent.toString();
                         }
@@ -872,7 +872,7 @@ class DeviceMsgHandle$2
                           localObject1 = new StringBuilder();
                           ((StringBuilder)localObject1).append(localObject2);
                           ((StringBuilder)localObject1).append("");
-                          paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.a(), true, false, true);
+                          paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.c(), true, false, true);
                         }
                       }
                       else if ((!paramIntent.getAction().equalsIgnoreCase("DeviceSomebodyQuit")) && (!paramIntent.getAction().equalsIgnoreCase("DeviceSomebodyReject")))
@@ -892,26 +892,26 @@ class DeviceMsgHandle$2
                               localObject2 = new StringBuilder();
                               ((StringBuilder)localObject2).append(l1);
                               ((StringBuilder)localObject2).append("");
-                              paramIntent.a(((StringBuilder)localObject2).toString(), "【重要！设备安全提醒】\n\n为防止QQ号被盗/丢失手机，导致设备被人恶意控制\n请点这里开启QQ设备锁\n\n\n查看QQ设备锁介绍", MessageCache.a(), "device_lock_msg");
+                              paramIntent.a(((StringBuilder)localObject2).toString(), "【重要！设备安全提醒】\n\n为防止QQ号被盗/丢失手机，导致设备被人恶意控制\n请点这里开启QQ设备锁\n\n\n查看QQ设备锁介绍", MessageCache.c(), "device_lock_msg");
                             }
                             if (localObject1 == null) {
                               return;
                             }
-                            localObject2 = ((SmartDeviceProxyMgr)localObject1).a(l1);
+                            localObject2 = ((SmartDeviceProxyMgr)localObject1).g(l1);
                             if (localObject2 != null) {
                               paramIntent = ((DeviceInfo)localObject2).serialNum;
                             } else {
                               paramIntent = "";
                             }
                             paramIntent = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramIntent, "");
-                            if (!StringUtil.a(paramIntent))
+                            if (!StringUtil.isEmpty(paramIntent))
                             {
                               paramContext = paramIntent;
                               if (!paramIntent.equals("0")) {}
                             }
                             else
                             {
-                              paramIntent = DeviceMsgHandle.a(this.a).getApp().getString(2131694657).split(":")[0];
+                              paramIntent = DeviceMsgHandle.a(this.a).getApp().getString(2131892349).split(":")[0];
                               paramContext = paramIntent;
                               if (localObject2 != null)
                               {
@@ -923,17 +923,17 @@ class DeviceMsgHandle$2
                                 }
                               }
                             }
-                            if ((localObject2 != null) && (((DeviceInfo)localObject2).isAdmin != 1) && (((SmartDeviceProxyMgr)localObject1).a(l1).booleanValue()))
+                            if ((localObject2 != null) && (((DeviceInfo)localObject2).isAdmin != 1) && (((SmartDeviceProxyMgr)localObject1).f(l1).booleanValue()))
                             {
                               paramIntent = new StringBuilder();
                               paramIntent.append(paramContext);
-                              paramIntent.append(DeviceMsgHandle.a(this.a).getApp().getString(2131691536));
+                              paramIntent.append(DeviceMsgHandle.a(this.a).getApp().getString(2131888498));
                               paramContext = paramIntent.toString();
                               paramIntent = this.a;
                               localObject1 = new StringBuilder();
                               ((StringBuilder)localObject1).append(l1);
                               ((StringBuilder)localObject1).append("");
-                              paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.a(), true, false, 1);
+                              paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.c(), true, false, 1);
                             }
                           }
                         }
@@ -941,7 +941,7 @@ class DeviceMsgHandle$2
                         {
                           if (QLog.isColorLevel())
                           {
-                            paramContext = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+                            paramContext = DeviceMsgHandle.a;
                             localObject1 = new StringBuilder();
                             ((StringBuilder)localObject1).append("DeviceMsghandle intent.getExtras() : ");
                             ((StringBuilder)localObject1).append(paramIntent.getExtras());
@@ -957,15 +957,15 @@ class DeviceMsgHandle$2
                             {
                               localObject1 = new StringBuilder();
                               ((StringBuilder)localObject1).append(paramContext);
-                              ((StringBuilder)localObject1).append(HardCodeUtil.a(2131703347));
+                              ((StringBuilder)localObject1).append(HardCodeUtil.a(2131901307));
                               paramContext = ((StringBuilder)localObject1).toString();
                             }
                             else
                             {
-                              paramContext = HardCodeUtil.a(2131703358);
+                              paramContext = HardCodeUtil.a(2131901318);
                             }
-                            this.a.a(String.valueOf(paramIntent), paramContext, MessageCache.a(), "");
-                            DeviceMsgHandle.a(this.a);
+                            this.a.a(String.valueOf(paramIntent), paramContext, MessageCache.c(), "");
+                            DeviceMsgHandle.d(this.a);
                           }
                         }
                         else
@@ -976,11 +976,11 @@ class DeviceMsgHandle$2
                             paramContext = paramIntent.getString("uin");
                             localObject1 = paramIntent.getString("path");
                             localObject2 = new JSONObject();
-                            ((JSONObject)localObject2).put("msg_time", MessageCache.a());
-                            ((JSONObject)localObject2).put("guidewords", HardCodeUtil.a(2131703345));
-                            ((JSONObject)localObject2).put("appear_time", MessageCache.a());
-                            ((JSONObject)localObject2).put("digest", HardCodeUtil.a(2131703354));
-                            ((JSONObject)localObject2).put("title", HardCodeUtil.a(2131703357));
+                            ((JSONObject)localObject2).put("msg_time", MessageCache.c());
+                            ((JSONObject)localObject2).put("guidewords", HardCodeUtil.a(2131901305));
+                            ((JSONObject)localObject2).put("appear_time", MessageCache.c());
+                            ((JSONObject)localObject2).put("digest", HardCodeUtil.a(2131901314));
+                            ((JSONObject)localObject2).put("title", HardCodeUtil.a(2131901317));
                             paramIntent = (MessageForDeviceSingleStruct)MessageRecordFactory.a(-4502);
                             paramIntent.msgtype = -4502;
                             paramIntent.istroop = 9501;
@@ -1010,9 +1010,9 @@ class DeviceMsgHandle$2
                             localObject2 = ((Bundle)localObject3).getString("digest");
                             localObject4 = ((Bundle)localObject3).getString("title");
                             localObject3 = new JSONObject();
-                            ((JSONObject)localObject3).put("msg_time", MessageCache.a());
-                            ((JSONObject)localObject3).put("guidewords", HardCodeUtil.a(2131703356));
-                            ((JSONObject)localObject3).put("appear_time", MessageCache.a());
+                            ((JSONObject)localObject3).put("msg_time", MessageCache.c());
+                            ((JSONObject)localObject3).put("guidewords", HardCodeUtil.a(2131901316));
+                            ((JSONObject)localObject3).put("appear_time", MessageCache.c());
                             ((JSONObject)localObject3).put("digest", localObject2);
                             ((JSONObject)localObject3).put("title", localObject4);
                             ((JSONObject)localObject3).put("data_type", "VIDEO");
@@ -1045,15 +1045,15 @@ class DeviceMsgHandle$2
                         localObject2 = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
                         localObject3 = Long.valueOf(paramContext.getLong("deviceopuin", 0L));
                         paramContext = (SmartDeviceProxyMgr)DeviceMsgHandle.a(this.a).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-                        paramIntent = paramContext.a(((Long)localObject2).longValue());
+                        paramIntent = paramContext.g(((Long)localObject2).longValue());
                         if (paramIntent == null) {
                           return;
                         }
-                        if (paramContext.a(paramIntent.productId) == null) {
+                        if (paramContext.b(paramIntent.productId) == null) {
                           return;
                         }
-                        if (paramContext.a(((Long)localObject2).longValue()).booleanValue()) {
-                          paramContext = HardCodeUtil.a(2131703339);
+                        if (paramContext.f(((Long)localObject2).longValue()).booleanValue()) {
+                          paramContext = HardCodeUtil.a(2131901299);
                         } else {
                           paramContext = "";
                         }
@@ -1072,7 +1072,7 @@ class DeviceMsgHandle$2
                           localObject1 = new StringBuilder();
                           ((StringBuilder)localObject1).append(localObject2);
                           ((StringBuilder)localObject1).append("");
-                          paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.a(), true, false, true);
+                          paramIntent.a(((StringBuilder)localObject1).toString(), paramContext, MessageCache.c(), true, false, true);
                         }
                       }
                     }
@@ -1096,7 +1096,7 @@ class DeviceMsgHandle$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceMsgHandle.2
  * JD-Core Version:    0.7.0.1
  */

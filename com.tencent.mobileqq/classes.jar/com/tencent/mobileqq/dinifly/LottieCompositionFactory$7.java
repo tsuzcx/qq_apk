@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.util.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
 import java.util.concurrent.Callable;
 
 final class LottieCompositionFactory$7
@@ -15,7 +15,7 @@ final class LottieCompositionFactory$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieCompositionFactory.7
  * JD-Core Version:    0.7.0.1
  */

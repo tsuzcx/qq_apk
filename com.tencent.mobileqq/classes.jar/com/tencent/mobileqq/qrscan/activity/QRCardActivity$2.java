@@ -29,7 +29,7 @@ class QRCardActivity$2
     int j;
     try
     {
-      localObject1 = HttpUtil.openUrlForByte(this.this$0, this.this$0.l, "GET", null, null);
+      localObject1 = HttpUtil.openUrlForByte(this.this$0, this.this$0.v, "GET", null, null);
       if (localObject1 == null) {
         return;
       }
@@ -76,8 +76,8 @@ class QRCardActivity$2
     for (int k = (m - k) / 2;; k = 0)
     {
       float f = 75;
-      m = (int)(this.this$0.jdField_a_of_type_Float * f);
-      int n = (int)(f * this.this$0.jdField_a_of_type_Float);
+      m = (int)(this.this$0.j * f);
+      int n = (int)(f * this.this$0.j);
       Object localObject2 = new Rect(0, 0, i, i);
       localObject1 = new Rect(0, 0, m, n);
       RectF localRectF = new RectF((Rect)localObject1);
@@ -85,7 +85,7 @@ class QRCardActivity$2
       ((Matrix)localObject3).setRectToRect(new RectF((Rect)localObject2), new RectF((Rect)localObject1), Matrix.ScaleToFit.FILL);
       localObject2 = Bitmap.createBitmap(localBitmap, j, k, i, i, (Matrix)localObject3, false);
       localBitmap.recycle();
-      f = this.this$0.jdField_a_of_type_Float;
+      f = this.this$0.j;
       double d = f;
       Double.isNaN(d);
       i = (int)(d * 6.0D);
@@ -103,7 +103,7 @@ class QRCardActivity$2
       localObject1 = new Message();
       ((Message)localObject1).what = 0;
       ((Message)localObject1).obj = localBitmap;
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+      this.this$0.F.sendMessage((Message)localObject1);
       return;
       return;
       i = k;
@@ -118,7 +118,7 @@ class QRCardActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRCardActivity.2
  * JD-Core Version:    0.7.0.1
  */

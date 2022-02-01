@@ -53,21 +53,21 @@ class QQServiceProxy$IQQServiceCallbackStub
     QLog.i("QQServiceProxy", 2, "onReceivePushMsg");
     if (TextUtils.equals(paramString, "avChatRoom"))
     {
-      localObject = this.a.a.a();
+      localObject = this.a.a.A();
       if (localObject != null) {
         ((ChatRoomMng)localObject).a(paramInt, paramArrayOfByte);
       }
     }
     else if (TextUtils.equals(paramString, "avWatchTogether"))
     {
-      localObject = (WTogetherMng)this.a.a.a(16);
+      localObject = (WTogetherMng)this.a.a.c(17);
       if (localObject != null) {
         ((WTogetherMng)localObject).a(paramInt, paramArrayOfByte);
       }
     }
     else if ((TextUtils.equals(paramString, "avScreenShareAsk")) || (TextUtils.equals(paramString, "avScreenShareAnswer")))
     {
-      localObject = (ScreenShareManager)this.a.a.a(17);
+      localObject = (ScreenShareManager)this.a.a.c(18);
       if (localObject != null) {
         ((ScreenShareManager)localObject).a(paramInt, paramArrayOfByte);
       }

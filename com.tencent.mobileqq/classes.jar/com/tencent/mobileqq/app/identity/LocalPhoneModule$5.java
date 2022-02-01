@@ -14,21 +14,21 @@ class LocalPhoneModule$5
   
   public void a(int paramInt, Exception paramException)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule$UrlTokenCallback.a(paramInt, paramException);
+    this.a.a(paramInt, paramException);
   }
   
   public void a(List<GetLocalPhone.LocalPhoneCodeData> paramList)
   {
-    LocalPhoneModule localLocalPhoneModule = this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule;
-    LocalPhoneModule.a(localLocalPhoneModule, paramList, LocalPhoneModule.a(localLocalPhoneModule));
-    LocalPhoneModule.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule).clear();
-    LocalPhoneModule.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule).addAll(paramList);
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityLocalPhoneModule$UrlTokenCallback.a(paramList);
+    LocalPhoneModule localLocalPhoneModule = this.b;
+    LocalPhoneModule.a(localLocalPhoneModule, paramList, LocalPhoneModule.f(localLocalPhoneModule));
+    LocalPhoneModule.f(this.b).clear();
+    LocalPhoneModule.f(this.b).addAll(paramList);
+    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.LocalPhoneModule.5
  * JD-Core Version:    0.7.0.1
  */

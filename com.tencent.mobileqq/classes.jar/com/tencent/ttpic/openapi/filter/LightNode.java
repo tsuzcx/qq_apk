@@ -14,6 +14,9 @@ import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.TransformUtils;
 import com.tencent.ttpic.openapi.listener.LightNodeAppliedListener;
+import com.tencent.ttpic.openapi.manager.FeatureManager;
+import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
+import com.tencent.ttpic.params.QQBeautyController;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -41,9 +44,11 @@ import org.light.MaterialConfig;
 import org.light.PhotoClip;
 import org.light.RendererConfig;
 import org.light.VideoOutput;
+import org.light.bean.LightAIDataWrapper;
 import org.light.bean.WMElement;
 import org.light.callback.ExternalRenderCallback;
 import org.light.listener.IOnClickWatermarkListener;
+import org.light.listener.LightAIDataListener;
 import org.light.listener.LightAssetListener;
 import org.light.listener.WatermarkDelegate;
 
@@ -51,25 +56,29 @@ public class LightNode
   extends AEChainI
   implements ICMShowHandle
 {
+  private static String BODY_SEGMENT_MODEL_PATH = "assets/models/LightSegmentBody.bundle/";
   private static final int FRAME_INTERN_TIME = 80000;
   public static final int LIGHT_TIP_TYPE_NORMAL = 0;
   public static final int LIGHT_TIP_TYPE_PAG = 1;
   public static final String TAG = "LightNode";
   private static String assetsDir;
   private static String emptyMaterialPath;
+  private Map<String, String> aiSwitchMap;
   LightNodeAppliedListener appliedListener;
   private LightAsset asset;
   private String assetPath = "";
   private AudioFrame audioFrame;
   private AudioOutput audioReader;
+  private QQBeautyController beautyController;
   private HashMap<String, String> bundlePathMap = new HashMap();
   private CameraConfig cameraConfig;
   private CameraController cameraController;
   final String defaultSmoothVersion;
   private DeviceCameraConfig deviceCameraConfig;
   private CameraConfig.ImageOrigin inputOrigin = CameraConfig.ImageOrigin.BottomLeft;
-  private boolean isAiAbilityPreLoad = false;
+  private boolean isBgmHidden = false;
   private boolean isPicNeedFlip = false;
+  private boolean isRealtime = true;
   private LightEngine lightEngine;
   private LightSurface lightSurface;
   private boolean mAutoTest = false;
@@ -80,6 +89,9 @@ public class LightNode
   private boolean mNeedSetBundle = false;
   private LightNode.ILightNodeTipsListener mTipsListener;
   private IOnClickWatermarkListener mWatermarkClickListener;
+  private boolean needDowngrade = false;
+  private boolean needInitBodySegment = true;
+  private boolean needLowEndDownGrade = false;
   private boolean orientationChanged = false;
   int[] outTexs = new int[2];
   private int previewHeight = 1;
@@ -91,14 +103,25 @@ public class LightNode
   
   public LightNode()
   {
-    this("defaultBeautyV6.json", false);
+    this("defaultBeautyV6.json", false, true, null, false);
   }
   
-  public LightNode(String paramString, boolean paramBoolean)
+  public LightNode(String paramString, boolean paramBoolean1, boolean paramBoolean2, Map<String, String> paramMap, boolean paramBoolean3)
   {
-    this.isAiAbilityPreLoad = paramBoolean;
     this.defaultSmoothVersion = paramString;
+    this.isBgmHidden = paramBoolean1;
+    this.isRealtime = paramBoolean2;
+    this.aiSwitchMap = paramMap;
+    this.needLowEndDownGrade = paramBoolean3;
     VideoDecoder.SetMaxHardwareDecoderCount(CommonUtils.getPAGSupportedDecoderInstanceCount());
+  }
+  
+  private void addSwitchMap(Map<String, String> paramMap)
+  {
+    Map localMap = this.aiSwitchMap;
+    if (localMap != null) {
+      paramMap.putAll(localMap);
+    }
   }
   
   public static String getEmptyMaterialPath()
@@ -118,6 +141,11 @@ public class LightNode
     emptyMaterialPath = paramString2;
   }
   
+  public static void setBodySegmentModelPath(String paramString)
+  {
+    BODY_SEGMENT_MODEL_PATH = paramString;
+  }
+  
   private void setBundleToLightEngine(String paramString1, String paramString2)
   {
     if ((paramString1 != null) && (paramString2 != null))
@@ -128,6 +156,24 @@ public class LightNode
       LogUtils.i("LightNode", localStringBuilder.toString());
       this.cameraConfig.setLightAIModelPath(paramString1, paramString2);
     }
+  }
+  
+  private void setEditorSegmentModel()
+  {
+    if (this.isRealtime)
+    {
+      localCameraConfig = this.cameraConfig;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FeatureManager.getResourceDir());
+      localStringBuilder.append(BODY_SEGMENT_MODEL_PATH);
+      localCameraConfig.setLightAIModelPath(localStringBuilder.toString(), "BG_SEG_AGENT");
+      return;
+    }
+    CameraConfig localCameraConfig = this.cameraConfig;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FeatureManager.getResourceDir());
+    localStringBuilder.append(BODY_SEGMENT_MODEL_PATH);
+    localCameraConfig.setLightAIModelPath(localStringBuilder.toString(), "veryhigh", "BG_SEG_AGENT");
   }
   
   private void setListenersForConfig()
@@ -164,60 +210,79 @@ public class LightNode
     }
     if ((!TextUtils.isEmpty(assetsDir)) && (!TextUtils.isEmpty(emptyMaterialPath)))
     {
-      localObject = this.outTexs;
-      GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
-      localObject = new RendererConfig(assetsDir);
-      if (this.isAiAbilityPreLoad) {
-        ((RendererConfig)localObject).initMode = 1;
-      }
-      this.lightEngine = LightEngine.Make(null, null, (RendererConfig)localObject);
+      localObject1 = this.outTexs;
+      GLES20.glGenTextures(localObject1.length, (int[])localObject1, 0);
+      localObject1 = new RendererConfig(assetsDir);
+      ((RendererConfig)localObject1).bundlePath = assetsDir;
+      this.lightEngine = LightEngine.Make(null, null, (RendererConfig)localObject1);
       this.lightSurface = LightSurface.FromTexture(this.outTexs[0], this.previewWidth, this.previewHeight, false);
       this.lightEngine.setSurface(this.lightSurface);
       this.videoOutput = this.lightEngine.videoOutput();
       this.audioReader = this.lightEngine.audioOutput();
-      this.lightEngine.setBGMusicHidden(false);
+      this.lightEngine.setBGMusicHidden(this.isBgmHidden);
       this.cameraConfig = CameraConfig.make();
+      this.beautyController = new QQBeautyController(new HashMap());
+      this.beautyController.setCameraConfig(this.cameraConfig);
       this.cameraConfig.setLightBenchEnable(false);
       this.lightEngine.setConfig(this.cameraConfig);
       this.lightEngine.setDefaultBeautyVersion(this.defaultSmoothVersion);
       if (this.mNeedSetBundle)
       {
-        localObject = this.bundlePathMap.entrySet().iterator();
-        while (((Iterator)localObject).hasNext())
+        localObject1 = this.bundlePathMap.entrySet().iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-          if (localEntry != null) {
-            setBundleToLightEngine((String)localEntry.getKey(), (String)localEntry.getValue());
+          localObject2 = (Map.Entry)((Iterator)localObject1).next();
+          if (localObject2 != null) {
+            setBundleToLightEngine((String)((Map.Entry)localObject2).getKey(), (String)((Map.Entry)localObject2).getValue());
           }
         }
         this.mNeedSetBundle = false;
       }
-      localObject = new HashMap();
-      ((Map)localObject).put(Config.ConfigKeys.ResourceDir.value(), assetsDir);
-      this.cameraConfig.setConfigData((Map)localObject);
+      Object localObject2 = new HashMap();
+      ((Map)localObject2).put(Config.ConfigKeys.ResourceDir.value(), assetsDir);
+      addSwitchMap((Map)localObject2);
+      int i;
+      if ((this.needLowEndDownGrade) && (AEOfflineConfig.getPhonePerfLevel() < 3)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
+        localObject1 = "true";
+      } else {
+        localObject1 = "false";
+      }
+      ((Map)localObject2).put("device_fallback_smooth", localObject1);
+      this.cameraConfig.setConfigData((Map)localObject2);
       this.cameraConfig.setRenderSize(this.previewWidth, this.previewHeight);
       setListenersForConfig();
       this.asset = LightAsset.Load(emptyMaterialPath, 0);
       this.cameraController = this.lightEngine.setAssetForCamera(this.asset);
       this.cameraConfig.setDetectShorterEdgeLength(180, "");
+      this.cameraConfig.setDetectShorterEdgeLength(480, "VIEW_POINT_AGENT");
+      if (this.needInitBodySegment)
+      {
+        setEditorSegmentModel();
+        this.needInitBodySegment = false;
+      }
       if (this.orientationChanged) {
         this.cameraConfig.onSensorOrientationChanged((int)this.sensorEvent.values[0], (int)this.sensorEvent.values[1]);
       }
       this.startTime = System.nanoTime();
       this.mCopyFilter.applyFilterChain(true, this.previewWidth, this.previewHeight);
       this.mIsApplied = true;
-      localObject = this.appliedListener;
-      if (localObject != null) {
-        ((LightNodeAppliedListener)localObject).onLightNodeApplied();
+      localObject1 = this.appliedListener;
+      if (localObject1 != null) {
+        ((LightNodeAppliedListener)localObject1).onLightNodeApplied();
       }
       return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("apply LightNode terminated with exception: path null ! --> assetsDir=");
-    ((StringBuilder)localObject).append(assetsDir);
-    ((StringBuilder)localObject).append(" ,emptyMaterialPath=");
-    ((StringBuilder)localObject).append(emptyMaterialPath);
-    LogUtils.e("LightNode", ((StringBuilder)localObject).toString());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("apply LightNode terminated with exception: path null ! --> assetsDir=");
+    ((StringBuilder)localObject1).append(assetsDir);
+    ((StringBuilder)localObject1).append(" ,emptyMaterialPath=");
+    ((StringBuilder)localObject1).append(emptyMaterialPath);
+    LogUtils.e("LightNode", ((StringBuilder)localObject1).toString());
   }
   
   public void clear()
@@ -361,6 +426,11 @@ public class LightNode
     return this.audioReader;
   }
   
+  public QQBeautyController getBeautyController()
+  {
+    return this.beautyController;
+  }
+  
   public List<WMElement> getEditableWMElement()
   {
     CameraController localCameraController = this.cameraController;
@@ -368,6 +438,15 @@ public class LightNode
       return localCameraController.getEditableWMElement();
     }
     return null;
+  }
+  
+  public LightAIDataWrapper getLightAIDataWrapper(String[] paramArrayOfString, int paramInt)
+  {
+    CameraConfig localCameraConfig = this.cameraConfig;
+    if (localCameraConfig == null) {
+      return null;
+    }
+    return localCameraConfig.nativeGetAIData(paramArrayOfString, paramInt);
   }
   
   public PTFaceAttr getPtFaceAttr()
@@ -522,6 +601,22 @@ public class LightNode
   public void setInputOrigin(CameraConfig.ImageOrigin paramImageOrigin)
   {
     this.inputOrigin = paramImageOrigin;
+  }
+  
+  public void setLightAIDataListener(LightAIDataListener paramLightAIDataListener)
+  {
+    CameraConfig localCameraConfig = this.cameraConfig;
+    if (localCameraConfig != null) {
+      localCameraConfig.setLightAIDataListener(paramLightAIDataListener);
+    }
+  }
+  
+  public void setLightAIDataWrapper(LightAIDataWrapper paramLightAIDataWrapper)
+  {
+    CameraConfig localCameraConfig = this.cameraConfig;
+    if (localCameraConfig != null) {
+      localCameraConfig.nativeSetAIData(paramLightAIDataWrapper);
+    }
   }
   
   public void setLightBundle(String paramString1, String paramString2)
@@ -713,18 +808,30 @@ public class LightNode
     }
     int i = j;
     CameraConfig localCameraConfig;
-    if (paramDeviceCameraConfig.cameraHorizontalFov != this.deviceCameraConfig.cameraHorizontalFov)
+    if (paramDeviceCameraConfig.cameraIndex != this.deviceCameraConfig.cameraIndex)
     {
       localCameraConfig = this.cameraConfig;
       i = j;
       if (localCameraConfig != null)
       {
-        localCameraConfig.setHorizontalFov(paramDeviceCameraConfig.cameraHorizontalFov);
+        localCameraConfig.onCameraChanged(paramDeviceCameraConfig.cameraIndex);
+        this.deviceCameraConfig.cameraIndex = paramDeviceCameraConfig.cameraIndex;
         i = 1;
-        this.deviceCameraConfig.cameraHorizontalFov = paramDeviceCameraConfig.cameraHorizontalFov;
       }
     }
-    if (i != 0)
+    j = i;
+    if (paramDeviceCameraConfig.cameraHorizontalFov != this.deviceCameraConfig.cameraHorizontalFov)
+    {
+      localCameraConfig = this.cameraConfig;
+      j = i;
+      if (localCameraConfig != null)
+      {
+        localCameraConfig.setHorizontalFov(paramDeviceCameraConfig.cameraHorizontalFov);
+        this.deviceCameraConfig.cameraHorizontalFov = paramDeviceCameraConfig.cameraHorizontalFov;
+        j = 1;
+      }
+    }
+    if (j != 0)
     {
       paramDeviceCameraConfig = this.lightEngine;
       if (paramDeviceCameraConfig != null)
@@ -768,7 +875,7 @@ public class LightNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.LightNode
  * JD-Core Version:    0.7.0.1
  */

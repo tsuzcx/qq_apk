@@ -13,12 +13,12 @@ class ReadInJoySecondCommentListFragment$MyHippyCommentEventListener
   public void onCommentViewLayout()
   {
     RecyclerView localRecyclerView = (RecyclerView)TKDTuWenCommentUtil.rFindView(this.a.getView(), HippyTKDListView.class);
-    ReadInJoySecondCommentListFragment.a(this.a).setRecyclerView(localRecyclerView);
+    ReadInJoySecondCommentListFragment.c(this.a).setRecyclerView(localRecyclerView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoySecondCommentListFragment.MyHippyCommentEventListener
  * JD-Core Version:    0.7.0.1
  */

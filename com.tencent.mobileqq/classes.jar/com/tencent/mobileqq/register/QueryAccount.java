@@ -16,6 +16,7 @@ import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.utils.PropertiesUtils;
 import com.tencent.mobileqq.loginregister.LoginUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -34,62 +35,59 @@ import mqq.observer.AccountObserver;
 public class QueryAccount
   extends RegisterStepBase
 {
-  public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Intent jdField_a_of_type_AndroidContentIntent = null;
-  private RegisterWithNick jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick = null;
-  public String a;
-  private HashMap<String, QueryAccount.UserRegTimeInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new QueryAccount.2(this);
-  private boolean jdField_a_of_type_Boolean = false;
+  protected HashMap<String, QueryAccount.UserRegTimeInfo> a = new HashMap();
   public String b;
-  private HashMap<String, Boolean> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean = false;
   public String c;
-  private String d = null;
+  public int d;
+  public String e;
+  protected AccountObserver f = new QueryAccount.2(this);
+  private String i = null;
+  private Intent j = null;
+  private RegisterWithNick k = null;
+  private HashMap<String, Boolean> l = new HashMap();
+  private BroadcastReceiver m;
+  private boolean n = false;
+  private boolean o = false;
   
   public QueryAccount(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
     super(paramRegisterNewBaseActivity);
-    this.jdField_a_of_type_MqqAppAppRuntime.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-  }
-  
-  private Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("wifi_mac", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("os_language", this.jdField_b_of_type_JavaLangString);
-    localBundle.putInt("qq_language", this.jdField_a_of_type_Int);
-    localBundle.putString("gps_location", this.c);
-    return localBundle;
+    this.g.registObserver(this.f);
   }
   
   private void a(int paramInt, long paramLong)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterVerifyCodeActivity.class);
-    localIntent.putExtra("phonenum", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum);
-    localIntent.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode);
-    localIntent.putExtra("key", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
-    localIntent.putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered);
-    localIntent.putExtra("key_register_has_pwd", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mHasPwd);
-    localIntent.putExtra("key_register_binded_qq", this.d);
+    Intent localIntent = new Intent(this.h, RegisterVerifyCodeActivity.class);
+    localIntent.putExtra("phonenum", this.h.phoneNum);
+    localIntent.putExtra("invite_code", this.h.inviteCode);
+    localIntent.putExtra("key", this.h.countryCode);
+    localIntent.putExtra("key_register_is_phone_num_registered", this.h.mIsPhoneNumRegistered);
+    localIntent.putExtra("key_register_has_pwd", this.h.mHasPwd);
+    localIntent.putExtra("key_register_binded_qq", this.i);
     localIntent.putExtra("key_register_left_time", paramInt);
     localIntent.putExtra("key_register_exit_time", paramLong);
     localIntent.putExtra("register_verify_code_start_time", System.currentTimeMillis());
-    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131711171));
+    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
     localIntent.putExtra("key_register_from", 7);
-    Object localObject = this.jdField_b_of_type_JavaUtilHashMap;
+    Object localObject = this.l;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum);
+    localStringBuilder.append(this.h.countryCode);
+    localStringBuilder.append(this.h.phoneNum);
     localIntent.putExtra("key_register_from_friend_verify", (Serializable)((HashMap)localObject).get(localStringBuilder.toString()));
+    boolean bool;
+    if ((!this.o) && (!this.n)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    localIntent.putExtra("key_register_from_face_verify", bool);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("go2next countryCode=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
+      ((StringBuilder)localObject).append(this.h.countryCode);
       ((StringBuilder)localObject).append(", phoneNum=");
-      ((StringBuilder)localObject).append(PhoneCodeUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum));
+      ((StringBuilder)localObject).append(PhoneCodeUtils.a(this.h.phoneNum));
       ((StringBuilder)localObject).append(", leftTime=");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(", exitTime=");
@@ -97,7 +95,7 @@ public class QueryAccount
       QLog.d("QueryAccount", 2, ((StringBuilder)localObject).toString());
     }
     b(localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivityForResult(localIntent, 2);
+    this.h.startActivityForResult(localIntent, 2);
   }
   
   private boolean a(String paramString1, String paramString2)
@@ -108,53 +106,53 @@ public class QueryAccount
     return paramString1.equals(paramString2);
   }
   
-  private void c()
+  private Bundle c()
   {
-    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-    if ((localIntent != null) && (localIntent.getBooleanExtra("key_register_from_fail_pay_lh", false)))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick == null) {
-        this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick = new RegisterWithNick(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
-    RegisterPersonalInfoActivity.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode, "", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered, false, null, 7);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("wifi_mac", this.b);
+    localBundle.putString("os_language", this.c);
+    localBundle.putInt("qq_language", this.d);
+    localBundle.putString("gps_location", this.e);
+    return localBundle;
   }
   
   private void c(String paramString)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterSendUpSms.class);
-    localIntent.putExtra("phonenum", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum);
-    localIntent.putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode);
-    localIntent.putExtra("key", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
+    Intent localIntent = new Intent(this.h, RegisterSendUpSms.class);
+    localIntent.putExtra("phonenum", this.h.phoneNum);
+    localIntent.putExtra("invite_code", this.h.inviteCode);
+    localIntent.putExtra("key", this.h.countryCode);
     localIntent.putExtra("key_register_prompt_info", paramString);
-    localIntent.putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered);
-    localIntent.putExtra("key_register_has_pwd", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mHasPwd);
-    localIntent.putExtra("key_register_binded_qq", this.d);
-    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131711171));
+    localIntent.putExtra("key_register_is_phone_num_registered", this.h.mIsPhoneNumRegistered);
+    localIntent.putExtra("key_register_has_pwd", this.h.mHasPwd);
+    localIntent.putExtra("key_register_binded_qq", this.i);
+    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
     localIntent.putExtra("key_register_from", 7);
     b(localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(localIntent);
+    this.h.startActivity(localIntent);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+    Intent localIntent = this.j;
+    if ((localIntent != null) && (localIntent.getBooleanExtra("key_register_from_fail_pay_lh", false)))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QueryAccount.4(this);
-      IntentFilter localIntentFilter = new IntentFilter("action_qq_register_face_recognize_assist");
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      if (this.k == null) {
+        this.k = new RegisterWithNick(this.h);
+      }
+      this.k.a(this.h.getIntent());
+      return;
     }
+    this.h.closeDialog();
+    RegisterPersonalInfoActivity.a(this.g, this.h, this.h.phoneNum, this.h.countryCode, "", this.h.mIsPhoneNumRegistered, false, null, 7);
+    this.h.finish();
   }
   
   private void d(String paramString)
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.handler.post(new QueryAccount.1(this, paramString));
+      this.h.handler.post(new QueryAccount.1(this, paramString));
       return;
     }
     catch (Exception paramString)
@@ -163,30 +161,40 @@ public class QueryAccount
     }
   }
   
+  private void e()
+  {
+    if (this.m == null)
+    {
+      this.m = new QueryAccount.4(this);
+      IntentFilter localIntentFilter = new IntentFilter("action_qq_register_face_recognize_assist");
+      this.h.registerReceiver(this.m, localIntentFilter);
+    }
+  }
+  
   private void e(String paramString)
   {
     QLog.i("QueryAccount", 1, "gotoFaceRecognize");
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    d();
+    this.n = false;
+    this.o = false;
+    e();
     paramString = String.format("https://graph.qq.com/safe/face/identification?authType=regist&regsig=%s&uin=1854000000", new Object[] { paramString });
     Intent localIntent = new Intent();
     localIntent.putExtra("url", paramString);
-    LoginUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, localIntent, "/base/browser", 2020);
-    RegisterManager.a().a(5);
-    RegisterManager.a().a(null);
+    LoginUtils.a(this.h, localIntent, "/base/browser", 2020);
+    RegisterManager.b().a(5);
+    RegisterManager.b().a(null);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
-    this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-    RegisterWithNick localRegisterWithNick = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick;
+    this.h.closeDialog();
+    this.g.unRegistObserver(this.f);
+    RegisterWithNick localRegisterWithNick = this.k;
     if (localRegisterWithNick != null) {
       localRegisterWithNick.a();
     }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    if (this.m != null) {
+      this.h.unregisterReceiver(this.m);
     }
   }
   
@@ -201,11 +209,11 @@ public class QueryAccount
       ((StringBuilder)localObject).append(str3);
       ((StringBuilder)localObject).append(str2);
       localObject = ((StringBuilder)localObject).toString();
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
+      if (this.a.containsKey(localObject)) {
+        this.a.remove(localObject);
       }
       paramInt1 = paramIntent.getIntExtra("key_register_left_time", 0);
-      long l = paramIntent.getLongExtra("key_register_exit_time", 0L);
+      long l1 = paramIntent.getLongExtra("key_register_exit_time", 0L);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -216,7 +224,7 @@ public class QueryAccount
         localStringBuilder.append(", leftTime=");
         localStringBuilder.append(paramInt1);
         localStringBuilder.append(", exitTime=");
-        localStringBuilder.append(l);
+        localStringBuilder.append(l1);
         localStringBuilder.append(", inviteCode=");
         if (str1 == null) {
           paramIntent = "";
@@ -226,51 +234,51 @@ public class QueryAccount
         localStringBuilder.append(paramIntent);
         QLog.d("QueryAccount", 2, localStringBuilder.toString());
       }
-      if ((paramInt1 > 0) && (l > 0L))
+      if ((paramInt1 > 0) && (l1 > 0L))
       {
         paramIntent = new QueryAccount.UserRegTimeInfo(this);
-        paramIntent.jdField_a_of_type_Int = paramInt1;
-        paramIntent.jdField_a_of_type_Long = l;
-        paramIntent.jdField_a_of_type_JavaLangString = str1;
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject, paramIntent);
+        paramIntent.a = paramInt1;
+        paramIntent.b = l1;
+        paramIntent.c = str1;
+        this.a.put(localObject, paramIntent);
       }
     }
     else if (paramInt1 == 2020)
     {
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_b_of_type_Boolean)
+      this.n = true;
+      if (this.o)
       {
-        paramIntent = RegisterManager.a().a();
+        paramIntent = RegisterManager.b().c();
         if (paramIntent != null)
         {
           a(null, paramIntent.a());
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
+        this.h.closeDialog();
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
+      this.h.closeDialog();
     }
   }
   
   public void a(Context paramContext)
   {
     String str4 = Locale.getDefault().getLanguage();
-    String str1 = PropertiesUtils.a(BaseApplication.getContext(), "key_local_cache", "0");
+    String str1 = PropertiesUtils.b(BaseApplication.getContext(), "key_local_cache", "0");
     if ("0".equals(str1))
     {
       QLog.e("QueryAccount", 1, "addLocaleIdCookie, localeIdStr = 0");
       return;
     }
-    int i;
+    int i1;
     try
     {
-      i = Integer.parseInt(str1);
+      i1 = Integer.parseInt(str1);
     }
     catch (Exception localException)
     {
       QLog.e("QueryAccount", 1, localException.toString());
-      i = 0;
+      i1 = 0;
     }
     String str2 = "02:00:00:00:00:00";
     try
@@ -280,7 +288,7 @@ public class QueryAccount
       if (localWifiManager != null)
       {
         paramContext = str2;
-        if (localWifiManager.getConnectionInfo() != null) {
+        if (NetworkMonitor.getConnectionInfo(localWifiManager) != null) {
           paramContext = QQDeviceInfo.getMAC("641d5d");
         }
       }
@@ -300,18 +308,18 @@ public class QueryAccount
       QLog.e("QueryAccount", 1, localThrowable, new Object[0]);
       str3 = "";
     }
-    this.jdField_a_of_type_JavaLangString = paramContext;
-    this.jdField_b_of_type_JavaLangString = str4;
-    this.jdField_a_of_type_Int = i;
-    this.c = str3;
+    this.b = paramContext;
+    this.c = str4;
+    this.d = i1;
+    this.e = str3;
     if (QLog.isColorLevel()) {
-      QLog.d("QueryAccount", 2, new Object[] { "regMacAddr:", this.jdField_a_of_type_JavaLangString, " regOS:", this.jdField_b_of_type_JavaLangString, " regQQLang:", Integer.valueOf(this.jdField_a_of_type_Int), " regLocation:", this.c });
+      QLog.d("QueryAccount", 2, new Object[] { "regMacAddr:", this.b, " regOS:", this.c, " regQQLang:", Integer.valueOf(this.d), " regLocation:", this.e });
     }
   }
   
   public void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.j = paramIntent;
     if (QLog.isDevelopLevel()) {
       QLog.i("QueryAccount", 4, "setExtraInfo");
     }
@@ -321,14 +329,14 @@ public class QueryAccount
   {
     try
     {
-      localObject = a();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mCountryEnglishName))
+      localObject = c();
+      if (!TextUtils.isEmpty(this.h.mCountryEnglishName))
       {
         HashMap localHashMap = new HashMap();
-        localHashMap.put("country_english_name", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mCountryEnglishName.getBytes());
+        localHashMap.put("country_english_name", this.h.mCountryEnglishName.getBytes());
         ((Bundle)localObject).putSerializable("mapSt", localHashMap);
       }
-      ((AccountManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode, Long.valueOf(AppSetting.a()), "8.7.0", (Bundle)localObject, null);
+      ((AccountManager)this.g.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.h.countryCode, this.h.phoneNum, this.h.inviteCode, Long.valueOf(AppSetting.d()), "8.8.17", (Bundle)localObject, null);
       return;
     }
     catch (Exception paramString)
@@ -347,63 +355,63 @@ public class QueryAccount
       QLog.e("QueryAccount", 1, "sendRegistByPhone error: extrasMap is null");
       return;
     }
-    Bundle localBundle = a();
+    Bundle localBundle = c();
     localBundle.putSerializable("mapSt", paramHashMap);
-    ((AccountManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode, Long.valueOf(AppSetting.a()), "8.7.0", localBundle, null);
+    ((AccountManager)this.g.getManager(0)).sendRegistByPhoneNumber(paramString, (byte)2, this.h.countryCode, this.h.phoneNum, this.h.inviteCode, Long.valueOf(AppSetting.d()), "8.8.17", localBundle, null);
   }
   
   public void b()
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum);
+    ((StringBuilder)localObject).append(this.h.countryCode);
+    ((StringBuilder)localObject).append(this.h.phoneNum);
     String str = ((StringBuilder)localObject).toString();
-    if (!this.jdField_b_of_type_JavaUtilHashMap.containsKey(str)) {
-      this.jdField_b_of_type_JavaUtilHashMap.put(str, Boolean.valueOf(false));
+    if (!this.l.containsKey(str)) {
+      this.l.put(str, Boolean.valueOf(false));
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+    if (this.a.containsKey(str))
     {
-      localObject = this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      localObject = this.a.get(str);
       if ((localObject != null) && ((localObject instanceof QueryAccount.UserRegTimeInfo)))
       {
         QueryAccount.UserRegTimeInfo localUserRegTimeInfo = (QueryAccount.UserRegTimeInfo)localObject;
-        if ((localUserRegTimeInfo.jdField_a_of_type_Int > 0) && (localUserRegTimeInfo.jdField_a_of_type_Long > 0L) && (a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode, localUserRegTimeInfo.jdField_a_of_type_JavaLangString)))
+        if ((localUserRegTimeInfo.a > 0) && (localUserRegTimeInfo.b > 0L) && (a(this.h.inviteCode, localUserRegTimeInfo.c)))
         {
-          long l = System.currentTimeMillis() - localUserRegTimeInfo.jdField_a_of_type_Long;
+          long l1 = System.currentTimeMillis() - localUserRegTimeInfo.b;
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("startQueryAccount countryCode=");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
+            localStringBuilder.append(this.h.countryCode);
             localStringBuilder.append(", phoneNum=");
-            localStringBuilder.append(PhoneCodeUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum));
+            localStringBuilder.append(PhoneCodeUtils.a(this.h.phoneNum));
             localStringBuilder.append(", leftTime=");
-            localStringBuilder.append(localUserRegTimeInfo.jdField_a_of_type_Int);
+            localStringBuilder.append(localUserRegTimeInfo.a);
             localStringBuilder.append(", exitTime=");
-            localStringBuilder.append(localUserRegTimeInfo.jdField_a_of_type_Long);
+            localStringBuilder.append(localUserRegTimeInfo.b);
             localStringBuilder.append(", interval=");
-            localStringBuilder.append(l);
+            localStringBuilder.append(l1);
             localStringBuilder.append(", inviteCode=");
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode == null) {
+            if (this.h.inviteCode == null) {
               localObject = "";
             } else {
-              localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode;
+              localObject = this.h.inviteCode;
             }
             localStringBuilder.append((String)localObject);
             QLog.d("QueryAccount", 2, localStringBuilder.toString());
           }
-          if ((l > 0L) && (l < localUserRegTimeInfo.jdField_a_of_type_Int * 1000L))
+          if ((l1 > 0L) && (l1 < localUserRegTimeInfo.a * 1000L))
           {
-            a(localUserRegTimeInfo.jdField_a_of_type_Int, localUserRegTimeInfo.jdField_a_of_type_Long);
+            a(localUserRegTimeInfo.a, localUserRegTimeInfo.b);
             return;
           }
         }
       }
-      this.jdField_a_of_type_JavaUtilHashMap.remove(str);
+      this.a.remove(str);
     }
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131692183, 0);
+      this.h.notifyToast(2131889169, 0);
       return;
     }
     try
@@ -412,13 +420,13 @@ public class QueryAccount
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("startQueryAccount countryCode=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
+        ((StringBuilder)localObject).append(this.h.countryCode);
         ((StringBuilder)localObject).append(" phoneNum=");
-        ((StringBuilder)localObject).append(PhoneCodeUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum));
+        ((StringBuilder)localObject).append(PhoneCodeUtils.a(this.h.phoneNum));
         QLog.d("queryMobile", 2, ((StringBuilder)localObject).toString());
       }
-      ((AccountManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(0)).sendRegisterQueryMobile(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum, null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.createWaitingDialog(2131716612);
+      ((AccountManager)this.g.getManager(0)).sendRegisterQueryMobile(this.h.countryCode, this.h.phoneNum, null);
+      this.h.createWaitingDialog(2131914075);
       return;
     }
     catch (Exception localException)
@@ -431,7 +439,7 @@ public class QueryAccount
   {
     if (paramIntent != null)
     {
-      Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+      Intent localIntent = this.j;
       if (localIntent != null) {
         paramIntent.putExtras(localIntent);
       }
@@ -443,25 +451,25 @@ public class QueryAccount
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("QueryAccount", 1, "onRegisterCommitMobileResp, url is empty");
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.runOnUiThread(new QueryAccount.3(this));
+      this.h.runOnUiThread(new QueryAccount.3(this));
       return;
     }
     Object localObject = new Intent();
-    ((Intent)localObject).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131711171));
+    ((Intent)localObject).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131901576));
     ((Intent)localObject).putExtra("url", paramString);
-    LoginUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, (Intent)localObject, "/base/browser");
-    RegisterManager.a().a(4);
-    paramString = this.jdField_b_of_type_JavaUtilHashMap;
+    LoginUtils.a(this.h, (Intent)localObject, "/base/browser");
+    RegisterManager.b().a(4);
+    paramString = this.l;
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum);
+    ((StringBuilder)localObject).append(this.h.countryCode);
+    ((StringBuilder)localObject).append(this.h.phoneNum);
     paramString.put(((StringBuilder)localObject).toString(), Boolean.valueOf(true));
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X8009C5D", "0X8009C5D", 0, 0, "", "", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum, "");
+    ReportController.b(this.g, "dc00898", "", "", "0X8009C5D", "0X8009C5D", 0, 0, "", "", this.h.phoneNum, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.register.QueryAccount
  * JD-Core Version:    0.7.0.1
  */

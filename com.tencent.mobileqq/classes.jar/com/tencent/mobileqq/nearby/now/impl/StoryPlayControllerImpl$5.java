@@ -17,7 +17,7 @@ class StoryPlayControllerImpl$5
     int i = 1;
     if (paramInt1 != 100)
     {
-      paramString1 = this.a.mVideoPlayer.getVideoData().a;
+      paramString1 = this.a.mVideoPlayer.getVideoData().c;
       if (!((IVideoPlayerView)this.a.mVideoPlayer).isVideoCached()) {
         i = 2;
       }
@@ -36,7 +36,7 @@ class StoryPlayControllerImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.impl.StoryPlayControllerImpl.5
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class BottomVideoInfoWidget$8
   
   public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget.b().runOnUiThread(new BottomVideoInfoWidget.8.1(this));
+    this.h.y().runOnUiThread(new BottomVideoInfoWidget.8.1(this));
   }
 }
 

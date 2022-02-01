@@ -78,7 +78,7 @@ public class MiniLogWriter
     this.encoder = paramCharsetEncoder;
   }
   
-  private boolean CharBufferInnerLogic(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  private boolean charBufferInnerLogic(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     Object localObject;
     if ((sCharBufferClass == null) || (sBackingArrayField == null) || (sCapacityField == null))
@@ -220,7 +220,7 @@ public class MiniLogWriter
       this.mRecycleBuffer.clear();
       try
       {
-        if (CharBufferInnerLogic(paramArrayOfChar, paramInt1, paramInt2))
+        if (charBufferInnerLogic(paramArrayOfChar, paramInt1, paramInt2))
         {
           CharBuffer localCharBuffer = this.mRecycleBuffer;
           return localCharBuffer;
@@ -329,7 +329,7 @@ public class MiniLogWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniLogWriter
  * JD-Core Version:    0.7.0.1
  */

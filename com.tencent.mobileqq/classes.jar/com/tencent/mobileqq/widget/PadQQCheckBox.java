@@ -20,10 +20,10 @@ public class PadQQCheckBox
   extends LinearLayout
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private boolean jdField_a_of_type_Boolean;
+  private ImageView a;
+  private TextView b;
+  private boolean c;
+  private CharSequence d;
   
   public PadQQCheckBox(Context paramContext)
   {
@@ -33,26 +33,26 @@ public class PadQQCheckBox
   public PadQQCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ay);
-    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.ap, true);
-    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getString(R.styleable.aq);
-    LayoutInflater.from(paramContext).inflate(2131559534, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364600));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364610));
-    setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bY);
+    this.c = paramAttributeSet.getBoolean(R.styleable.bZ, true);
+    this.d = paramAttributeSet.getString(R.styleable.ca);
+    LayoutInflater.from(paramContext).inflate(2131625556, this, true);
+    this.a = ((ImageView)findViewById(2131430670));
+    this.b = ((TextView)findViewById(2131430683));
+    setChecked(this.c);
+    this.b.setText(this.d);
     paramAttributeSet.recycle();
     setOnClickListener(this);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   public void onClick(View paramView)
   {
-    setChecked(this.jdField_a_of_type_Boolean ^ true);
+    setChecked(this.c ^ true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -61,41 +61,41 @@ public class PadQQCheckBox
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2131707873;
+    if (this.c) {
+      i = 2131905687;
     } else {
-      i = 2131707872;
+      i = 2131905686;
     }
     String str = HardCodeUtil.a(i);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(str);
     paramAccessibilityNodeInfo.setContentDescription(localStringBuilder.toString());
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840665);
+    this.c = paramBoolean;
+    if (this.c) {
+      this.a.setImageResource(2130841442);
     } else {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840663);
+      this.a.setImageResource(2130841440);
     }
     refreshDrawableState();
   }
   
   public void setText(CharSequence paramCharSequence)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramCharSequence)))
+    if ((this.b != null) && (!TextUtils.isEmpty(paramCharSequence)))
     {
-      this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.d = paramCharSequence;
+      this.b.setText(paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PadQQCheckBox
  * JD-Core Version:    0.7.0.1
  */

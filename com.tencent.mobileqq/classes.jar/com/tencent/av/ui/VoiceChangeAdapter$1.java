@@ -8,17 +8,17 @@ class VoiceChangeAdapter$1
     VoiceChangeData.VoiceInfo localVoiceInfo = (VoiceChangeData.VoiceInfo)this.a.getItem(paramInt);
     if (localVoiceInfo != null)
     {
-      if (localVoiceInfo.a == VoiceChangeAdapter.a(this.a)) {
+      if (localVoiceInfo.d == VoiceChangeAdapter.a(this.a)) {
         return;
       }
-      if (VoiceChangeAdapter.a(this.a) != null) {
-        VoiceChangeAdapter.a(this.a).setHighlight(false);
+      if (VoiceChangeAdapter.b(this.a) != null) {
+        VoiceChangeAdapter.b(this.a).setHighlight(false);
       }
-      VoiceChangeAdapter.a(this.a, localVoiceInfo.a);
+      VoiceChangeAdapter.a(this.a, localVoiceInfo.d);
       VoiceChangeAdapter.a(this.a, paramVoiceChangeItemView1);
-      VoiceChangeAdapter.a(this.a).setHighlight(true);
-      if (VoiceChangeAdapter.a(this.a) != null) {
-        VoiceChangeAdapter.a(this.a).a(VoiceChangeAdapter.a(this.a));
+      VoiceChangeAdapter.b(this.a).setHighlight(true);
+      if (VoiceChangeAdapter.c(this.a) != null) {
+        VoiceChangeAdapter.c(this.a).a(VoiceChangeAdapter.a(this.a));
       }
     }
   }

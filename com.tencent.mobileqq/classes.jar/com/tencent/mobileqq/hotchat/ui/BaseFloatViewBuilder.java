@@ -9,36 +9,36 @@ import com.tencent.mobileqq.hotchat.anim.HeartAnimator.Config;
 
 public abstract class BaseFloatViewBuilder
 {
-  protected int a;
-  protected Context a;
   protected Bitmap a;
-  protected HeartAnimator a;
+  protected int b;
+  protected Context c;
+  protected HeartAnimator d;
   
   public BaseFloatViewBuilder(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramContext;
+    this.b = paramInt;
   }
   
   public BaseFloatViewBuilder(Context paramContext, int paramInt, HeartAnimator paramHeartAnimator)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator = paramHeartAnimator;
+    this.c = paramContext;
+    this.b = paramInt;
+    this.d = paramHeartAnimator;
   }
   
   public Bitmap a()
   {
-    HeartAnimator localHeartAnimator = this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator;
+    HeartAnimator localHeartAnimator = this.d;
     if (localHeartAnimator != null) {
-      a(localHeartAnimator.a());
+      a(localHeartAnimator.b());
     }
     return null;
   }
   
   public void a(HeartAnimator.Config paramConfig)
   {
-    paramConfig.c = 1.0F;
+    paramConfig.p = 1.0F;
   }
   
   public Drawable[] a(QQAppInterface paramQQAppInterface)
@@ -48,7 +48,7 @@ public abstract class BaseFloatViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.BaseFloatViewBuilder
  * JD-Core Version:    0.7.0.1
  */

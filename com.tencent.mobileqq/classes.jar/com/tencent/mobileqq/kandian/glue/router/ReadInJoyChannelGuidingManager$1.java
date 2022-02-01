@@ -12,11 +12,11 @@ final class ReadInJoyChannelGuidingManager$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView;
+    Object localObject = this.a;
     localObject = ((ReadInJoyXListView)localObject).getChildAt(((ReadInJoyXListView)localObject).getHeaderViewsCount());
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.performItemClick((View)localObject, 0, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.getItemId(0));
+      this.a.performItemClick((View)localObject, 0, this.b.getItemId(0));
       return;
     }
     QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle] view is null, open failed.");
@@ -24,7 +24,7 @@ final class ReadInJoyChannelGuidingManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.ReadInJoyChannelGuidingManager.1
  * JD-Core Version:    0.7.0.1
  */

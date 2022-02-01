@@ -18,7 +18,7 @@ import com.tencent.open.base.BspatchUtil;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.IHttpDownloader;
+import com.tencent.vas.update.factory.api.IHttpDownloader;
 import common.config.service.QzoneConfig;
 import java.io.File;
 import java.util.Collection;
@@ -139,7 +139,7 @@ public class VasQuickUpdateAdapterImpl
   
   public void onMusicThemeCleanCache()
   {
-    AIOMusicSkin.a().b();
+    AIOMusicSkin.a().e();
   }
   
   public void onThemeComplete(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
@@ -181,7 +181,7 @@ public class VasQuickUpdateAdapterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.api.impl.VasQuickUpdateAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -18,19 +18,19 @@ class QQStoryShareGroupProfileActivity$GetGroupInfoEventReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetShareGroupInfoHandler.GetShareGroupInfoEvent paramGetShareGroupInfoEvent)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetShareGroupInfoEvent.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.s, paramGetShareGroupInfoEvent.a)) {
       return;
     }
-    if ((paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    if ((paramGetShareGroupInfoEvent.g.isSuccess()) && (paramGetShareGroupInfoEvent.b != null))
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("update sharegroup info: ");
-        localStringBuilder.append(paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+        localStringBuilder.append(paramGetShareGroupInfoEvent.b.toString());
         QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, localStringBuilder.toString());
       }
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent.b);
       return;
     }
     QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent);

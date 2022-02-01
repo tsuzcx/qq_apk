@@ -10,10 +10,10 @@ import com.tencent.mobileqq.search.business.net.view.NetSearchTemplateBaseView;
 public class NetSearchTemplateSubItemView
   extends NetSearchTemplateBaseView
 {
-  public LinearLayout a;
-  public RelativeLayout a;
   public TextView a;
   public TextView b;
+  public RelativeLayout c;
+  public LinearLayout d;
   
   public NetSearchTemplateSubItemView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -22,15 +22,15 @@ public class NetSearchTemplateSubItemView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131377081));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369980));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131376597));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131369009));
+    this.d = ((LinearLayout)this.e.findViewById(2131445450));
+    this.a = ((TextView)this.e.findViewById(2131437131));
+    this.b = ((TextView)this.e.findViewById(2131444855));
+    this.c = ((RelativeLayout)this.e.findViewById(2131435969));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateSubItemView
  * JD-Core Version:    0.7.0.1
  */

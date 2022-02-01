@@ -67,33 +67,30 @@ import org.json.JSONObject;
 public class VideoFeedsHardAdBarManager
   implements IVideoFeedsHardAdBarManager
 {
-  public long a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  public Handler a;
-  private ADVideoFeedsGuideManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoFeedsGuideManager;
-  public GdtHandler.Params a;
-  private IADVideoAppDownloadManager jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIADVideoAppDownloadManager;
-  private IVideoFeedsAdapter jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  public boolean a;
+  public boolean a = false;
   public boolean b = false;
   public boolean c = false;
   public boolean d = false;
-  public boolean e = false;
-  public boolean f = false;
+  public GdtHandler.Params e;
+  public long f = -2147483648L;
   public boolean g = false;
-  private boolean h = false;
+  public boolean h = false;
+  public boolean i = false;
+  public Handler j = new VideoFeedsHardAdBarManager.1(this, Looper.getMainLooper());
+  private Context k;
+  private Activity l;
+  private boolean m = false;
+  private ADVideoFeedsGuideManager n;
+  private IADVideoAppDownloadManager o;
+  private IVideoFeedsAdapter p;
+  private Set<String> q = new HashSet();
   
   public VideoFeedsHardAdBarManager(Context paramContext, boolean paramBoolean, Activity paramActivity, IVideoFeedsAdapter paramIVideoFeedsAdapter)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -2147483648L;
-    this.jdField_a_of_type_AndroidOsHandler = new VideoFeedsHardAdBarManager.1(this, Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.h = paramBoolean;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter = paramIVideoFeedsAdapter;
+    this.k = paramContext;
+    this.m = paramBoolean;
+    this.l = paramActivity;
+    this.p = paramIVideoFeedsAdapter;
   }
   
   private VideoAdInfo a(VideoItemHolder paramVideoItemHolder)
@@ -101,27 +98,27 @@ public class VideoFeedsHardAdBarManager
     if (paramVideoItemHolder == null) {
       return null;
     }
-    if (paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam == null) {
+    if (paramVideoItemHolder.az == null) {
       return null;
     }
-    if (paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a == null) {
+    if (paramVideoItemHolder.az.c == null) {
       return null;
     }
-    return paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo;
+    return paramVideoItemHolder.az.c.as;
   }
   
   private void a(View paramView, int paramInt, VideoInfo paramVideoInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
-    if ((paramIVideoFeedsPlayManager != null) && (paramIVideoFeedsPlayManager.d())) {
-      paramIVideoFeedsPlayManager.b();
+    if ((paramIVideoFeedsPlayManager != null) && (paramIVideoFeedsPlayManager.k())) {
+      paramIVideoFeedsPlayManager.g();
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a(paramView, paramInt, paramVideoInfo);
+    this.p.a(paramView, paramInt, paramVideoInfo);
   }
   
   private void a(View paramView, VideoInfo paramVideoInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
-    if ((paramVideoInfo.r) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() instanceof ADVideoItemHolder))) {
-      a(paramView, (int)paramIVideoFeedsPlayManager.a(), paramVideoInfo, paramIVideoFeedsPlayManager);
+    if ((paramVideoInfo.aq) && ((this.p.o() instanceof ADVideoItemHolder))) {
+      a(paramView, (int)paramIVideoFeedsPlayManager.b(), paramVideoInfo, paramIVideoFeedsPlayManager);
     }
   }
   
@@ -131,88 +128,88 @@ public class VideoFeedsHardAdBarManager
     {
     default: 
       return;
-    case 2131367919: 
+    case 2131434507: 
       h(paramVideoInfo, paramAdvertisementInfo, paramIVideoFeedsPlayManager);
       return;
-    case 2131367910: 
+    case 2131434498: 
       i(paramVideoInfo, paramAdvertisementInfo, paramIVideoFeedsPlayManager);
       return;
-    case 2131367907: 
+    case 2131434495: 
       g(paramVideoInfo, paramAdvertisementInfo, paramIVideoFeedsPlayManager);
       return;
-    case 2131367900: 
-      paramView = this.jdField_a_of_type_AndroidOsHandler;
+    case 2131434487: 
+      paramView = this.j;
       paramView.sendMessage(paramView.obtainMessage(7, Boolean.valueOf(false)));
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return;
-    case 2131367897: 
+    case 2131434484: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 37, paramIVideoFeedsPlayManager);
       a(paramBaseItemHolder, paramVideoInfo, paramAdvertisementInfo, 37);
       return;
-    case 2131367895: 
+    case 2131434482: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 34, paramIVideoFeedsPlayManager);
       a(paramBaseItemHolder, paramVideoInfo, paramAdvertisementInfo, 34);
       return;
-    case 2131367894: 
+    case 2131434481: 
       a(paramBaseItemHolder, paramVideoInfo, paramAdvertisementInfo, 18);
       return;
-    case 2131365869: 
+    case 2131432128: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 2003, paramIVideoFeedsPlayManager);
       a(paramBaseItemHolder, paramVideoInfo, paramAdvertisementInfo, 2003);
       return;
-    case 2131365865: 
-    case 2131367896: 
+    case 2131432124: 
+    case 2131434483: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 35, paramIVideoFeedsPlayManager);
       a(paramBaseItemHolder, paramVideoInfo, paramAdvertisementInfo, 35);
       return;
     }
     ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 18, paramIVideoFeedsPlayManager);
-    paramView = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, null);
-    paramBaseItemHolder = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(1).b(21).b(paramView).a(paramBaseItemHolder).a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo).c(1000));
+    paramView = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, null);
+    paramBaseItemHolder = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.as);
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(1).b(21).b(paramView).a(paramBaseItemHolder).a(paramVideoInfo.as).c(1000));
   }
   
   private void a(ADVideoItemHolder paramADVideoItemHolder, VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, int paramInt, View paramView, View... paramVarArgs)
   {
-    if (paramVideoInfo.r)
+    if (paramVideoInfo.aq)
     {
-      int i;
+      int i1;
       if (paramAdvertisementInfo != null) {
-        i = paramAdvertisementInfo.clickPos;
+        i1 = paramAdvertisementInfo.clickPos;
       } else {
-        i = 1000;
+        i1 = 1000;
       }
-      if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(paramAdvertisementInfo)) && (ReadInJoyAdSwitchUtil.d(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo)))
+      if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(paramAdvertisementInfo)) && (ReadInJoyAdSwitchUtil.d(paramVideoInfo.as)))
       {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIADVideoAppDownloadManager.a(paramVideoInfo);
-        int j = 0;
+        boolean bool = this.o.a(paramVideoInfo);
+        int i2 = 0;
         if (bool)
         {
-          paramADVideoItemHolder = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, null);
+          paramADVideoItemHolder = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, null);
           if (paramInt == 21)
           {
-            ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(1).b(21).b(paramADVideoItemHolder).a(paramAdvertisementInfo).a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo).c(i));
+            ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(1).b(21).b(paramADVideoItemHolder).a(paramAdvertisementInfo).a(paramVideoInfo.as).c(i1));
             return;
           }
-          a(paramVideoInfo, i, paramADVideoItemHolder, false);
+          a(paramVideoInfo, i1, paramADVideoItemHolder, false);
           return;
         }
         paramView.setVisibility(0);
-        paramADVideoItemHolder.jdField_a_of_type_Boolean = true;
+        paramADVideoItemHolder.g = true;
         if (paramVarArgs != null)
         {
-          paramInt = j;
+          paramInt = i2;
           while (paramInt < paramVarArgs.length)
           {
             paramVarArgs[paramInt].setVisibility(8);
             paramInt += 1;
           }
         }
-        if (paramADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView != null) {
-          paramADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a(i);
+        if (paramADVideoItemHolder.V != null) {
+          paramADVideoItemHolder.V.a(i1);
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIADVideoAppDownloadManager.d();
-        paramADVideoItemHolder.jdField_a_of_type_Boolean = true;
+        this.o.d();
+        paramADVideoItemHolder.g = true;
         AdVideoButtonUIUtils.a(paramADVideoItemHolder);
       }
     }
@@ -220,7 +217,7 @@ public class VideoFeedsHardAdBarManager
   
   private void a(ADVideoItemHolder paramADVideoItemHolder, VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, int paramInt, View[] paramArrayOfView1, View[] paramArrayOfView2)
   {
-    if (paramVideoInfo.r)
+    if (paramVideoInfo.aq)
     {
       ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("Q.pubaccount.video.feeds.VideoFeedsHardAdBarManager", "clickDownloadBtn click");
       if (paramInt == 21)
@@ -230,9 +227,9 @@ public class VideoFeedsHardAdBarManager
         }
         paramADVideoItemHolder = new AdJumpParams();
         paramADVideoItemHolder.c = true;
-        paramADVideoItemHolder = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, paramADVideoItemHolder);
-        paramAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
-        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(1).b(21).b(paramADVideoItemHolder).a(paramAdvertisementInfo).a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo).a(ActionEntity.VIDEO_NORMAL_AD_GUIDE_BIG).c(38));
+        paramADVideoItemHolder = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, paramADVideoItemHolder);
+        paramAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.as);
+        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(1).b(21).b(paramADVideoItemHolder).a(paramAdvertisementInfo).a(paramVideoInfo.as).a(ActionEntity.VIDEO_NORMAL_AD_GUIDE_BIG).c(38));
         return;
       }
       paramInt = 8;
@@ -244,31 +241,23 @@ public class VideoFeedsHardAdBarManager
       }
       paramADVideoItemHolder = new AdJumpParams();
       paramADVideoItemHolder.c = true;
-      a(paramVideoInfo, paramInt, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, paramADVideoItemHolder), false);
-    }
-  }
-  
-  private void a(VideoAdInfo paramVideoAdInfo)
-  {
-    paramVideoAdInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoAdInfo);
-    if (paramVideoAdInfo != null) {
-      ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).showPopSheetDialog(this.jdField_a_of_type_AndroidAppActivity, paramVideoAdInfo.mPopFormH5Url, paramVideoAdInfo.mAdRl, paramVideoAdInfo.mAdTraceId);
+      a(paramVideoInfo, paramInt, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, paramADVideoItemHolder), false);
     }
   }
   
   private void a(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo)
   {
-    if (paramVideoInfo.r) {
-      a(paramVideoInfo, 0, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, null), false);
+    if (paramVideoInfo.aq) {
+      a(paramVideoInfo, 0, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, null), false);
     }
   }
   
   private void a(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
-    if (paramVideoInfo.r)
+    if (paramVideoInfo.aq)
     {
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 10, paramIVideoFeedsPlayManager);
-      a(paramVideoInfo, 10, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, false, null), true);
+      a(paramVideoInfo, 10, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, false, null), true);
     }
   }
   
@@ -277,8 +266,8 @@ public class VideoFeedsHardAdBarManager
     if ((paramBaseItemHolder instanceof ADVideoItemHolder))
     {
       paramBaseItemHolder = (ADVideoItemHolder)paramBaseItemHolder;
-      AdVideoButtonUIUtils.c(paramBaseItemHolder.jdField_b_of_type_AndroidWidgetSeekBar);
-      a(paramBaseItemHolder, paramVideoInfo, paramAdvertisementInfo, -1, paramBaseItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, new View[0]);
+      AdVideoButtonUIUtils.c(paramBaseItemHolder.aj);
+      a(paramBaseItemHolder, paramVideoInfo, paramAdvertisementInfo, -1, paramBaseItemHolder.U, new View[0]);
     }
   }
   
@@ -286,43 +275,38 @@ public class VideoFeedsHardAdBarManager
   {
     if ((paramBaseItemHolder instanceof ADVideoItemHolder))
     {
-      boolean bool = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAmsSubscribeAd(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
-      int i = 13;
+      boolean bool = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAmsSubscribeAd(paramVideoInfo.as);
+      int i1 = 13;
       if (bool)
       {
-        a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
+        b(paramVideoInfo.as);
         if (!this.d) {
-          i = 8;
+          i1 = 8;
         }
         if (paramAdvertisementInfo != null) {
-          paramAdvertisementInfo.setClickPos(i);
+          paramAdvertisementInfo.setClickPos(i1);
         }
-        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(42).b(5).b(Integer.valueOf(21)).a(paramAdvertisementInfo));
+        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(42).b(5).b(Integer.valueOf(21)).a(paramAdvertisementInfo));
         return;
       }
       ADVideoItemHolder localADVideoItemHolder = (ADVideoItemHolder)paramBaseItemHolder;
       if (!this.d) {
-        i = 8;
+        i1 = 8;
       }
-      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, i, paramIVideoFeedsPlayManager);
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, i1, paramIVideoFeedsPlayManager);
       paramBaseItemHolder = new View[1];
-      paramBaseItemHolder[0] = localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-      if (a(paramVideoInfo)) {
+      paramBaseItemHolder[0] = localADVideoItemHolder.U;
+      if (b(paramVideoInfo)) {
         paramBaseItemHolder = new View[0];
       }
-      AdVideoButtonUIUtils.c(localADVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar);
+      AdVideoButtonUIUtils.c(localADVideoItemHolder.aj);
       a(localADVideoItemHolder, paramVideoInfo, paramAdvertisementInfo, -1, paramBaseItemHolder, new View[0]);
     }
   }
   
   private void a(VideoItemHolder paramVideoItemHolder, AdvertisementInfo paramAdvertisementInfo, int paramInt, JSONObject paramJSONObject)
   {
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(2).b(paramInt).a(paramAdvertisementInfo).a(a(paramVideoItemHolder)).e(paramJSONObject).a(Integer.valueOf(1)));
-  }
-  
-  private boolean a(ADVideoItemHolder paramADVideoItemHolder)
-  {
-    return ((paramADVideoItemHolder.jdField_a_of_type_Int == 5) || (paramADVideoItemHolder.jdField_a_of_type_Int == 7)) && (!this.f) && (!this.jdField_a_of_type_Boolean) && (ReadInJoyAdSwitchUtil.b(paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo)) && (this.jdField_a_of_type_AndroidOsHandler != null) && ((!paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.e()) || (ReadInJoyAdUtils.b(paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a))) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo.b);
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(2).b(paramInt).a(paramAdvertisementInfo).a(a(paramVideoItemHolder)).e(paramJSONObject).a(Integer.valueOf(1)));
   }
   
   public static boolean a(VideoAdInfo paramVideoAdInfo)
@@ -336,67 +320,34 @@ public class VideoFeedsHardAdBarManager
     if (!TextUtils.isEmpty(paramVideoAdInfo.mPopFormH5Url))
     {
       bool1 = bool2;
-      if (ReadInJoyAdSwitchUtil.d(paramVideoAdInfo)) {
+      if (ReadInJoyAdSwitchUtil.h(paramVideoAdInfo)) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  private static boolean a(VideoInfo paramVideoInfo)
+  private void b(VideoAdInfo paramVideoAdInfo)
   {
-    return ReadInJoyAdUtils.a(paramVideoInfo);
-  }
-  
-  private void b(ADVideoItemHolder paramADVideoItemHolder)
-  {
-    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo != null))
-    {
-      Object localObject = paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo;
-      int i = ReadInJoyAdSwitchUtil.d(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo((VideoAdInfo)localObject));
-      if (i == 1)
-      {
-        paramADVideoItemHolder = paramADVideoItemHolder.jdField_a_of_type_AndroidViewView;
-        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.getLayoutParams();
-        if (localObject != null)
-        {
-          ((LinearLayout.LayoutParams)localObject).weight = 2.0F;
-          paramADVideoItemHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-      }
-      else if (i == 2)
-      {
-        localObject = paramADVideoItemHolder.jdField_b_of_type_AndroidViewView;
-        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((View)localObject).getLayoutParams();
-        if (localLayoutParams != null)
-        {
-          localLayoutParams.weight = 0.0F;
-          ((View)localObject).setLayoutParams(localLayoutParams);
-        }
-        paramADVideoItemHolder = paramADVideoItemHolder.jdField_c_of_type_AndroidViewView;
-        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.getLayoutParams();
-        if (localObject != null)
-        {
-          ((LinearLayout.LayoutParams)localObject).weight = 0.0F;
-          paramADVideoItemHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-      }
+    paramVideoAdInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoAdInfo);
+    if (paramVideoAdInfo != null) {
+      ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).showPopSheetDialog(this.l, paramVideoAdInfo.mPopFormH5Url, paramVideoAdInfo.mAdRl, paramVideoAdInfo.mAdTraceId);
     }
   }
   
   private void b(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
-    if (paramVideoInfo.r)
+    if (paramVideoInfo.aq)
     {
-      if (this.g)
+      if (this.i)
       {
-        this.g = false;
+        this.i = false;
         ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 1, paramIVideoFeedsPlayManager);
-        a(paramVideoInfo, 1, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, false, null), false);
+        a(paramVideoInfo, 1, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, false, null), false);
         return;
       }
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 4, paramIVideoFeedsPlayManager);
-      a(paramVideoInfo, 4, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, false, null), false);
+      a(paramVideoInfo, 4, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, false, null), false);
     }
   }
   
@@ -404,30 +355,30 @@ public class VideoFeedsHardAdBarManager
   {
     if ((paramBaseItemHolder instanceof ADVideoItemHolder))
     {
-      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAmsSubscribeAd(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo))
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAmsSubscribeAd(paramVideoInfo.as))
       {
-        a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
+        b(paramVideoInfo.as);
         if (paramAdvertisementInfo != null) {
           paramAdvertisementInfo.setClickPos(38);
         }
-        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(42).b(5).b(Integer.valueOf(21)).a(paramAdvertisementInfo));
+        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(42).b(5).b(Integer.valueOf(21)).a(paramAdvertisementInfo));
       }
       else
       {
         ADVideoItemHolder localADVideoItemHolder = (ADVideoItemHolder)paramBaseItemHolder;
         paramBaseItemHolder = new View[2];
-        paramBaseItemHolder[0] = localADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-        paramBaseItemHolder[1] = localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-        if (a(paramVideoInfo))
+        paramBaseItemHolder[0] = localADVideoItemHolder.V;
+        paramBaseItemHolder[1] = localADVideoItemHolder.U;
+        if (b(paramVideoInfo))
         {
           paramBaseItemHolder = new View[1];
-          paramBaseItemHolder[0] = localADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+          paramBaseItemHolder[0] = localADVideoItemHolder.V;
         }
-        AdVideoButtonUIUtils.c(localADVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar);
+        AdVideoButtonUIUtils.c(localADVideoItemHolder.aj);
         a(localADVideoItemHolder, paramVideoInfo, paramAdvertisementInfo, 21, paramBaseItemHolder, new View[0]);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a().jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null)) {
-        ReadInJoyAdUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a().jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam, true);
+      if ((this.p.o() != null) && (this.p.o().az != null)) {
+        ReadInJoyAdUtils.a(this.p.o().az, true);
       }
     }
   }
@@ -440,13 +391,32 @@ public class VideoFeedsHardAdBarManager
         return;
       }
       paramAdvertisementInfo.setClickPos(paramInt);
-      paramBaseItemHolder = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, null);
-      paramAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(1).b(21).b(paramBaseItemHolder).a(paramAdvertisementInfo).a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo).c(paramInt));
+      paramBaseItemHolder = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, null);
+      paramAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.as);
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(1).b(21).b(paramBaseItemHolder).a(paramAdvertisementInfo).a(paramVideoInfo.as).c(paramInt));
     }
   }
   
   private boolean b(ADVideoItemHolder paramADVideoItemHolder)
+  {
+    return ((paramADVideoItemHolder.X == 5) || (paramADVideoItemHolder.X == 7)) && (!this.h) && (!this.a) && (ReadInJoyAdSwitchUtil.b(paramADVideoItemHolder.az.c.as)) && (this.j != null) && ((!paramADVideoItemHolder.U.f()) || (ReadInJoyAdUtils.b(paramADVideoItemHolder.az.c))) && (paramADVideoItemHolder.az.c.as.aj);
+  }
+  
+  private static boolean b(VideoInfo paramVideoInfo)
+  {
+    return ReadInJoyAdUtils.a(paramVideoInfo);
+  }
+  
+  private void c(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
+  {
+    if (paramVideoInfo.aq)
+    {
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 3, paramIVideoFeedsPlayManager);
+      a(paramVideoInfo, 3, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, false, null), false);
+    }
+  }
+  
+  private boolean c(ADVideoItemHolder paramADVideoItemHolder)
   {
     boolean bool1 = true;
     boolean bool3 = true;
@@ -454,16 +424,16 @@ public class VideoFeedsHardAdBarManager
     if (paramADVideoItemHolder != null)
     {
       bool2 = bool1;
-      if (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null)
+      if (paramADVideoItemHolder.az != null)
       {
-        if (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a == null) {
+        if (paramADVideoItemHolder.az.c == null) {
           return true;
         }
-        paramADVideoItemHolder = paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a;
+        paramADVideoItemHolder = paramADVideoItemHolder.az.c;
         bool1 = bool3;
-        if (paramADVideoItemHolder.r)
+        if (paramADVideoItemHolder.aq)
         {
-          paramADVideoItemHolder = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
+          paramADVideoItemHolder = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramADVideoItemHolder.as);
           bool1 = bool3;
           if (paramADVideoItemHolder != null)
           {
@@ -487,58 +457,85 @@ public class VideoFeedsHardAdBarManager
     return bool2;
   }
   
-  private void c(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
+  private void d(ADVideoItemHolder paramADVideoItemHolder)
   {
-    if (paramVideoInfo.r)
+    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.az != null) && (paramADVideoItemHolder.az.c != null) && (paramADVideoItemHolder.az.c.as != null))
     {
-      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 3, paramIVideoFeedsPlayManager);
-      a(paramVideoInfo, 3, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, false, null), false);
+      Object localObject = paramADVideoItemHolder.az.c.as;
+      int i1 = ReadInJoyAdSwitchUtil.g(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo((VideoAdInfo)localObject));
+      if (i1 == 1)
+      {
+        paramADVideoItemHolder = paramADVideoItemHolder.h;
+        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.getLayoutParams();
+        if (localObject != null)
+        {
+          ((LinearLayout.LayoutParams)localObject).weight = 2.0F;
+          paramADVideoItemHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+      }
+      else if (i1 == 2)
+      {
+        localObject = paramADVideoItemHolder.i;
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((View)localObject).getLayoutParams();
+        if (localLayoutParams != null)
+        {
+          localLayoutParams.weight = 0.0F;
+          ((View)localObject).setLayoutParams(localLayoutParams);
+        }
+        paramADVideoItemHolder = paramADVideoItemHolder.j;
+        localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.getLayoutParams();
+        if (localObject != null)
+        {
+          ((LinearLayout.LayoutParams)localObject).weight = 0.0F;
+          paramADVideoItemHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+      }
     }
   }
   
   private void d(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
-    if (paramVideoInfo.r)
+    if (paramVideoInfo.aq)
     {
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 2, paramIVideoFeedsPlayManager);
-      a(paramVideoInfo, 2, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, false, null), false);
+      a(paramVideoInfo, 2, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, false, null), false);
     }
   }
   
   private void e(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
-    if (paramVideoInfo.r)
+    if (paramVideoInfo.aq)
     {
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 2, paramIVideoFeedsPlayManager);
-      a(paramVideoInfo, 2, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, false, null), false);
+      a(paramVideoInfo, 2, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, false, null), false);
     }
   }
   
   private void f(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
-    if (paramVideoInfo.r)
+    if (paramVideoInfo.aq)
     {
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 1000, paramIVideoFeedsPlayManager);
-      a(paramVideoInfo, 1000, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, false, null), false);
+      a(paramVideoInfo, 1000, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, false, null), false);
     }
   }
   
   private void g(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
     ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 17, paramIVideoFeedsPlayManager);
-    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAmsSubscribeAd(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo))
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAmsSubscribeAd(paramVideoInfo.as))
     {
-      a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
+      b(paramVideoInfo.as);
       if (paramAdvertisementInfo != null) {
         paramAdvertisementInfo.setClickPos(17);
       }
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(42).b(5).b(Integer.valueOf(21)).a(paramAdvertisementInfo).a(ActionEntity.VIDEO_NORMAL_AD_GUIDE_BIG));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(42).b(5).b(Integer.valueOf(21)).a(paramAdvertisementInfo).a(ActionEntity.VIDEO_NORMAL_AD_GUIDE_BIG));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoFeedsGuideManager.f();
+    this.n.g();
     paramIVideoFeedsPlayManager = null;
     if (paramAdvertisementInfo != null) {
-      paramIVideoFeedsPlayManager = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, null);
+      paramIVideoFeedsPlayManager = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, null);
     }
     a(paramVideoInfo, 17, paramIVideoFeedsPlayManager, true);
   }
@@ -546,31 +543,31 @@ public class VideoFeedsHardAdBarManager
   private void h(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
     ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 16, paramIVideoFeedsPlayManager);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoFeedsGuideManager.f();
-    a(paramVideoInfo, 16, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, null), true);
+    this.n.g();
+    a(paramVideoInfo, 16, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, null), true);
   }
   
   private void i(VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
     ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramAdvertisementInfo, 15, paramIVideoFeedsPlayManager);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoFeedsGuideManager.f();
-    a(paramVideoInfo, 15, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, null), true);
+    this.n.g();
+    a(paramVideoInfo, 15, ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, null), true);
   }
   
   @Nullable
   public AdvertisementInfo a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
-    if (paramVideoInfo.r)
+    if (paramVideoInfo.aq)
     {
-      paramVideoInfo = ReadInJoyVideoFeedsAdUtils.a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = ((GdtHandler.Params)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(this.jdField_a_of_type_AndroidAppActivity, paramVideoInfo, null, 3, paramBoolean, null));
-      long l;
-      if (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params != null) {
-        l = SystemClock.elapsedRealtime();
+      paramVideoInfo = ReadInJoyVideoFeedsAdUtils.a(paramVideoInfo.as);
+      this.e = ((GdtHandler.Params)((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).getAdInfoParams(this.l, paramVideoInfo, null, 3, paramBoolean, null));
+      long l1;
+      if (this.e != null) {
+        l1 = SystemClock.elapsedRealtime();
       } else {
-        l = -2147483648L;
+        l1 = -2147483648L;
       }
-      this.jdField_a_of_type_Long = l;
+      this.f = l1;
       return paramVideoInfo;
     }
     return null;
@@ -583,67 +580,67 @@ public class VideoFeedsHardAdBarManager
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() == null) {
+    if (this.p.o() == null) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a().d()) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() instanceof ADVideoItemHolder))) {
-      a(true, (ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a());
+    if ((this.p.p() != null) && (this.p.p().k()) && ((this.p.o() instanceof ADVideoItemHolder))) {
+      a(true, (ADVideoItemHolder)this.p.o());
     }
   }
   
   public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() instanceof ADVideoItemHolder))
+    if ((this.p.o() instanceof ADVideoItemHolder))
     {
-      ADVideoItemHolder localADVideoItemHolder = (ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a();
-      int i = ReadInJoyAdUtils.a(localADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo.v, false);
+      ADVideoItemHolder localADVideoItemHolder = (ADVideoItemHolder)this.p.o();
+      int i1 = ReadInJoyAdUtils.a(localADVideoItemHolder.az.c.as.R, false);
       Object localObject;
-      if (((localADVideoItemHolder.jdField_a_of_type_Int == 5) || (localADVideoItemHolder.jdField_a_of_type_Int == 7)) && (paramLong >= i) && (!this.d))
+      if (((localADVideoItemHolder.X == 5) || (localADVideoItemHolder.X == 7)) && (paramLong >= i1) && (!this.d))
       {
-        localObject = this.jdField_a_of_type_AndroidOsHandler;
+        localObject = this.j;
         if (localObject != null)
         {
           ((Handler)localObject).sendEmptyMessage(6);
           this.d = true;
-          if (AdVideoPendantUIUtils.a(localADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a)) {
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+          if (AdVideoPendantUIUtils.a(localADVideoItemHolder.az.c)) {
+            this.j.sendEmptyMessage(8);
           }
         }
       }
-      if (a(localADVideoItemHolder))
+      if (b(localADVideoItemHolder))
       {
-        int j = ReadInJoyAdUtils.a(localADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo.v, true);
-        i = j;
-        if (j < 0) {
-          i = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).readInJoyADGuideCardShowTime() * 1000;
+        int i2 = ReadInJoyAdUtils.a(localADVideoItemHolder.az.c.as.R, true);
+        i1 = i2;
+        if (i2 < 0) {
+          i1 = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).readInJoyADGuideCardShowTime() * 1000;
         }
-        j = i;
-        if (a(localADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a))
+        i2 = i1;
+        if (b(localADVideoItemHolder.az.c))
         {
-          j = i;
-          if (localADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo != null) {
-            j = 3000;
+          i2 = i1;
+          if (localADVideoItemHolder.az.c.as != null) {
+            i2 = 3000;
           }
         }
-        if ((paramLong >= j) || (a(localADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a)))
+        if ((paramLong >= i2) || (b(localADVideoItemHolder.az.c)))
         {
-          if (localADVideoItemHolder.d.getVisibility() == 0) {
-            localADVideoItemHolder.d.setVisibility(8);
+          if (localADVideoItemHolder.af.getVisibility() == 0) {
+            localADVideoItemHolder.af.setVisibility(8);
           }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
-          if ((localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView != null) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a() != null))
+          this.j.sendEmptyMessage(7);
+          if ((localADVideoItemHolder.U != null) && (localADVideoItemHolder.U.getDownloadData() != null))
           {
             localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("show card with currentState = ");
-            localStringBuilder.append(localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a().jdField_a_of_type_Int);
+            localStringBuilder.append(localADVideoItemHolder.U.getDownloadData().f);
             ((IRIJAdLogService)localObject).d("AD_DOWNLOAD_TAG", localStringBuilder.toString());
           }
-          this.jdField_a_of_type_Boolean = true;
+          this.a = true;
         }
       }
     }
-    else if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() instanceof BaseVideoItemHolder))
+    else if ((this.p.o() instanceof BaseVideoItemHolder))
     {
       this.d = false;
     }
@@ -651,63 +648,63 @@ public class VideoFeedsHardAdBarManager
   
   public void a(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() instanceof ADVideoItemHolder))
+    if ((this.p.o() instanceof ADVideoItemHolder))
     {
-      ADVideoItemHolder localADVideoItemHolder = (ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a();
-      Object localObject1 = localADVideoItemHolder.jdField_a_of_type_AndroidViewView;
+      ADVideoItemHolder localADVideoItemHolder = (ADVideoItemHolder)this.p.o();
+      Object localObject1 = localADVideoItemHolder.h;
       if (localObject1 == null) {
         return;
       }
       Object localObject2 = paramMessage.obj;
-      paramMessage = localADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo;
+      paramMessage = localADVideoItemHolder.az.c.as;
       AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramMessage);
       if (localObject2 != null)
       {
-        this.f = true;
-        if (localADVideoItemHolder.h != null) {
-          localADVideoItemHolder.h.setVisibility(8);
+        this.h = true;
+        if (localADVideoItemHolder.u != null) {
+          localADVideoItemHolder.u.setVisibility(8);
         }
         if (ReadInJoyAdSwitchUtil.d(paramMessage))
         {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIADVideoAppDownloadManager;
+          localObject2 = this.o;
           if (localObject2 != null) {
             ((IADVideoAppDownloadManager)localObject2).a();
           }
         }
-        ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).performViewSlideDownAnimator(localADVideoItemHolder.l, 250, 8, Utils.dp2px(200.0D));
+        ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).performViewSlideDownAnimator(localADVideoItemHolder.y, 250, 8, Utils.dp2px(200.0D));
         ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).performViewSlideDownAnimator((View)localObject1, 250, 0, 250, ((View)localObject1).getMeasuredHeight());
-        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(ReportAction.CLOSE).a(1).b(21).b(Integer.valueOf(0)).a(localAdvertisementInfo).a(paramMessage).c(39));
+        ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(ReportAction.CLOSE).a(1).b(21).b(Integer.valueOf(0)).a(localAdvertisementInfo).a(paramMessage).c(39));
         return;
       }
       if (this.b) {
         return;
       }
-      localADVideoItemHolder = (ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a();
+      localADVideoItemHolder = (ADVideoItemHolder)this.p.o();
       ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).performViewSlideDownAnimator((View)localObject1, 250, 8, ((View)localObject1).getMeasuredHeight());
-      if (!this.h) {
-        AdVideoButtonUIUtils.b(localADVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar);
+      if (!this.m) {
+        AdVideoButtonUIUtils.b(localADVideoItemHolder.aj);
       }
-      if (((ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a()).h != null)
+      if (((ADVideoItemHolder)this.p.o()).u != null)
       {
-        a((ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a());
-        ((ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a()).h.setVisibility(0);
+        a((ADVideoItemHolder)this.p.o());
+        ((ADVideoItemHolder)this.p.o()).u.setVisibility(0);
       }
-      ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).performViewSlideDownAnimator(((ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a()).l, 250, 0, 250, Utils.dp2px(200.0D));
+      ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).performViewSlideDownAnimator(((ADVideoItemHolder)this.p.o()).y, 250, 0, 250, Utils.dp2px(200.0D));
       if (ReadInJoyAdSwitchUtil.d(paramMessage))
       {
-        localObject1 = ((ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a()).jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+        localObject1 = ((ADVideoItemHolder)this.p.o()).V;
         if (localObject1 != null) {
           ((RIJDownloadView)localObject1).a(true);
         }
       }
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(2).b(21).a(ActionEntity.VIDEO_NORMAL_AD_GUIDE_BIG).a(localAdvertisementInfo).a(paramMessage));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(2).b(21).a(ActionEntity.VIDEO_NORMAL_AD_GUIDE_BIG).a(localAdvertisementInfo).a(paramMessage));
     }
   }
   
   public void a(View paramView, BaseItemHolder paramBaseItemHolder, VideoInfo paramVideoInfo, IVideoFeedsPlayManager paramIVideoFeedsPlayManager)
   {
     boolean bool;
-    if ((paramView.getId() != 2131362106) && (paramView.getId() != 2131362108)) {
+    if ((paramView.getId() != 2131427686) && (paramView.getId() != 2131427688)) {
       bool = false;
     } else {
       bool = true;
@@ -718,87 +715,87 @@ public class VideoFeedsHardAdBarManager
     {
     default: 
       break;
-    case 2131368096: 
+    case 2131434950: 
       e(paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
       break;
-    case 2131365870: 
+    case 2131432129: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(localAdvertisementInfo, 2004, paramIVideoFeedsPlayManager);
       a(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, 2004);
       break;
-    case 2131365869: 
+    case 2131432128: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(localAdvertisementInfo, 2003, paramIVideoFeedsPlayManager);
       a(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, 2003);
       break;
-    case 2131365867: 
+    case 2131432126: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(localAdvertisementInfo, 4002, paramIVideoFeedsPlayManager);
       b(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, 4002);
       break;
-    case 2131365866: 
+    case 2131432125: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(localAdvertisementInfo, 4001, paramIVideoFeedsPlayManager);
       b(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, 4001);
       break;
-    case 2131365864: 
+    case 2131432123: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(localAdvertisementInfo, 4000, paramIVideoFeedsPlayManager);
       b(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, 4000);
       break;
-    case 2131365862: 
+    case 2131432121: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(localAdvertisementInfo, 4007, paramIVideoFeedsPlayManager);
       b(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, 4007);
       break;
-    case 2131362142: 
+    case 2131427721: 
       f(paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
       break;
-    case 2131362139: 
+    case 2131427718: 
       b(paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
       break;
-    case 2131362137: 
+    case 2131427716: 
       a(paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
       break;
-    case 2131362135: 
+    case 2131427714: 
       c(paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
       break;
-    case 2131362133: 
+    case 2131427712: 
       d(paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
       break;
-    case 2131362126: 
+    case 2131427705: 
       a(paramView, paramVideoInfo, paramIVideoFeedsPlayManager);
       break;
-    case 2131362114: 
+    case 2131427693: 
       ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(localAdvertisementInfo, 13, paramIVideoFeedsPlayManager);
       a(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo);
       break;
-    case 2131362111: 
+    case 2131427690: 
       a(paramVideoInfo, localAdvertisementInfo);
       break;
-    case 2131362108: 
+    case 2131427688: 
       if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(localAdvertisementInfo)) && (RIJAdDownloadExKt.a(localAdvertisementInfo)))
       {
         localADVideoItemHolder = (ADVideoItemHolder)paramBaseItemHolder;
-        localADVideoItemHolder.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a(38);
-        localADVideoItemHolder.jdField_a_of_type_Boolean = true;
+        localADVideoItemHolder.V.a(38);
+        localADVideoItemHolder.g = true;
       }
       else
       {
         b(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo);
       }
       break;
-    case 2131362106: 
-      if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(localAdvertisementInfo)) && (!a(paramVideoInfo)) && (RIJAdDownloadExKt.a(localAdvertisementInfo)))
+    case 2131427686: 
+      if ((((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo(localAdvertisementInfo)) && (!b(paramVideoInfo)) && (RIJAdDownloadExKt.a(localAdvertisementInfo)))
       {
-        int i = 8;
+        int i1 = 8;
         if (this.d) {
-          i = 13;
+          i1 = 13;
         }
         localADVideoItemHolder = (ADVideoItemHolder)paramBaseItemHolder;
-        localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a(i);
-        localADVideoItemHolder.jdField_a_of_type_Boolean = true;
+        localADVideoItemHolder.U.a(i1);
+        localADVideoItemHolder.g = true;
       }
       else
       {
         a(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
       }
       break;
-    case 2131362103: 
+    case 2131427683: 
       a(paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
     }
     a(paramView, paramBaseItemHolder, paramVideoInfo, localAdvertisementInfo, paramIVideoFeedsPlayManager);
@@ -811,13 +808,13 @@ public class VideoFeedsHardAdBarManager
   
   public void a(ADVideoItemHolder paramADVideoItemHolder)
   {
-    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a != null) && (paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo != null))
+    if ((paramADVideoItemHolder != null) && (paramADVideoItemHolder.az != null) && (paramADVideoItemHolder.az.c != null) && (paramADVideoItemHolder.az.c.as != null))
     {
-      Object localObject = paramADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo;
-      int i = ReadInJoyAdSwitchUtil.d(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo((VideoAdInfo)localObject));
-      if (i == 1)
+      Object localObject = paramADVideoItemHolder.az.c.as;
+      int i1 = ReadInJoyAdSwitchUtil.g(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo((VideoAdInfo)localObject));
+      if (i1 == 1)
       {
-        paramADVideoItemHolder = paramADVideoItemHolder.i;
+        paramADVideoItemHolder = paramADVideoItemHolder.v;
         if (paramADVideoItemHolder != null)
         {
           localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.getLayoutParams();
@@ -828,9 +825,9 @@ public class VideoFeedsHardAdBarManager
           }
         }
       }
-      else if (i == 2)
+      else if (i1 == 2)
       {
-        localObject = paramADVideoItemHolder.j;
+        localObject = paramADVideoItemHolder.w;
         if (localObject != null)
         {
           LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((View)localObject).getLayoutParams();
@@ -840,7 +837,7 @@ public class VideoFeedsHardAdBarManager
             ((View)localObject).setLayoutParams(localLayoutParams);
           }
         }
-        paramADVideoItemHolder = paramADVideoItemHolder.k;
+        paramADVideoItemHolder = paramADVideoItemHolder.x;
         if (paramADVideoItemHolder != null)
         {
           localObject = (LinearLayout.LayoutParams)paramADVideoItemHolder.getLayoutParams();
@@ -856,14 +853,14 @@ public class VideoFeedsHardAdBarManager
   
   public void a(IADVideoAppDownloadManager paramIADVideoAppDownloadManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIADVideoAppDownloadManager = paramIADVideoAppDownloadManager;
+    this.o = paramIADVideoAppDownloadManager;
   }
   
   public void a(VideoInfo paramVideoInfo)
   {
     if (paramVideoInfo != null)
     {
-      if (paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo == null) {
+      if (paramVideoInfo.as == null) {
         return;
       }
       Object localObject1 = Aladdin.getConfig(447).getString("fling_right_to_left", "0");
@@ -880,7 +877,7 @@ public class VideoFeedsHardAdBarManager
         ((AdvertisementInfo)localObject1).setClickPos(49);
         localObject2 = new AdJumpParams();
         ((AdJumpParams)localObject2).c = true;
-        a(paramVideoInfo, 49, ReadinJoyActionUtil.b(this.jdField_a_of_type_AndroidAppActivity, (AdvertisementInfo)localObject1, null, 3, true, (AdJumpParams)localObject2), false);
+        a(paramVideoInfo, 49, ReadinJoyActionUtil.b(this.l, (AdvertisementInfo)localObject1, null, 3, true, (AdJumpParams)localObject2), false);
       }
     }
   }
@@ -890,8 +887,8 @@ public class VideoFeedsHardAdBarManager
     if (paramVideoInfo == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a().a(ReportConstants.VideoEndType.AD_AREA_CLICK);
+    if (this.p.p() != null) {
+      this.p.p().a(ReportConstants.VideoEndType.AD_AREA_CLICK);
     }
     ActionEntity localActionEntity;
     if (paramBoolean) {
@@ -899,14 +896,14 @@ public class VideoFeedsHardAdBarManager
     } else {
       localActionEntity = ActionEntity.Default;
     }
-    AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
-    int i;
-    if (paramVideoInfo.b(this.jdField_a_of_type_AndroidAppActivity)) {
-      i = 10;
+    AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.as);
+    int i1;
+    if (paramVideoInfo.e(this.l)) {
+      i1 = 10;
     } else {
-      i = 5;
+      i1 = 5;
     }
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(1).b(i).b(paramInteger).a(localAdvertisementInfo).a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo).c(paramInt).a(localActionEntity));
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(1).b(i1).b(paramInteger).a(localAdvertisementInfo).a(paramVideoInfo.as).c(paramInt).a(localActionEntity));
   }
   
   public void a(BaseItemHolder paramBaseItemHolder, VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, int paramInt)
@@ -917,15 +914,15 @@ public class VideoFeedsHardAdBarManager
         return;
       }
       paramAdvertisementInfo.setClickPos(paramInt);
-      paramBaseItemHolder = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.jdField_a_of_type_AndroidAppActivity, paramAdvertisementInfo, null, 3, true, null);
-      paramAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.jdField_a_of_type_AndroidContentContext).a(1).b(21).b(paramBaseItemHolder).a(paramAdvertisementInfo).a(paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo).c(paramInt).a(ActionEntity.VIDEO_NORMAL_AD_GUIDE_BIG));
+      paramBaseItemHolder = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).JumpToGdtAdPageOrNotQqbPage(this.l, paramAdvertisementInfo, null, 3, true, null);
+      paramAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo.as);
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(this.k).a(1).b(21).b(paramBaseItemHolder).a(paramAdvertisementInfo).a(paramVideoInfo.as).c(paramInt).a(ActionEntity.VIDEO_NORMAL_AD_GUIDE_BIG));
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void a(boolean paramBoolean, VideoItemHolder paramVideoItemHolder)
@@ -935,80 +932,75 @@ public class VideoFeedsHardAdBarManager
       return;
     }
     paramVideoItemHolder = (ADVideoItemHolder)paramVideoItemHolder;
-    if ((paramBoolean) && (paramVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView != null)) {
-      paramVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.c();
+    if ((paramBoolean) && (paramVideoItemHolder.U != null)) {
+      paramVideoItemHolder.U.e();
     }
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null)
+    if (paramVideoItemHolder.az != null)
     {
       bool1 = bool2;
-      if (paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a != null)
+      if (paramVideoItemHolder.az.c != null)
       {
         bool1 = bool2;
-        if (paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo != null) {
-          bool1 = ReadInJoyAdSwitchUtil.d(paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
+        if (paramVideoItemHolder.az.c.as != null) {
+          bool1 = ReadInJoyAdSwitchUtil.d(paramVideoItemHolder.az.c.as);
         }
       }
     }
-    if ((paramVideoItemHolder.jdField_a_of_type_Boolean) && (bool1))
+    if ((paramVideoItemHolder.g) && (bool1))
     {
-      AdVideoButtonUIUtils.b(paramVideoItemHolder.jdField_c_of_type_AndroidWidgetRelativeLayout);
-      if (!this.h) {
-        AdVideoButtonUIUtils.c(paramVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar);
+      AdVideoButtonUIUtils.b(paramVideoItemHolder.K);
+      if (!this.m) {
+        AdVideoButtonUIUtils.c(paramVideoItemHolder.aj);
       }
-      if (a(paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a))
+      if (b(paramVideoItemHolder.az.c))
       {
-        AdVideoButtonUIUtils.a(paramVideoItemHolder.jdField_c_of_type_AndroidWidgetRelativeLayout);
+        AdVideoButtonUIUtils.a(paramVideoItemHolder.K);
         return;
       }
-      AdVideoButtonUIUtils.a(paramVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView);
+      AdVideoButtonUIUtils.a(paramVideoItemHolder.U);
       return;
     }
-    if (paramVideoItemHolder.d.getVisibility() == 8) {
-      AdVideoButtonUIUtils.a(paramVideoItemHolder.jdField_b_of_type_AndroidWidgetSeekBar);
+    if (paramVideoItemHolder.af.getVisibility() == 8) {
+      AdVideoButtonUIUtils.a(paramVideoItemHolder.aj);
     }
-    if ((paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null) && (paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a != null) && (paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo != null)) {
-      if (a(paramVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a))
+    if ((paramVideoItemHolder.az != null) && (paramVideoItemHolder.az.c != null) && (paramVideoItemHolder.az.c.as != null)) {
+      if (b(paramVideoItemHolder.az.c))
       {
-        AdVideoButtonUIUtils.b(paramVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView);
-        AdVideoButtonUIUtils.a(paramVideoItemHolder.jdField_c_of_type_AndroidWidgetRelativeLayout);
+        AdVideoButtonUIUtils.b(paramVideoItemHolder.U);
+        AdVideoButtonUIUtils.a(paramVideoItemHolder.K);
       }
-      else if (b(paramVideoItemHolder))
+      else if (c(paramVideoItemHolder))
       {
-        AdVideoButtonUIUtils.b(paramVideoItemHolder.jdField_c_of_type_AndroidWidgetRelativeLayout);
-        AdVideoButtonUIUtils.a(paramVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView);
+        AdVideoButtonUIUtils.b(paramVideoItemHolder.K);
+        AdVideoButtonUIUtils.a(paramVideoItemHolder.U);
         if (bool3) {
-          AdVideoButtonUIUtils.a(this.jdField_a_of_type_AndroidAppActivity, paramVideoItemHolder);
+          AdVideoButtonUIUtils.a(this.l, paramVideoItemHolder);
         }
         AdVideoButtonUIUtils.a(paramBoolean, paramVideoItemHolder);
       }
       else
       {
-        AdVideoButtonUIUtils.b(paramVideoItemHolder.jdField_c_of_type_AndroidWidgetRelativeLayout);
-        AdVideoButtonUIUtils.b(paramVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView);
+        AdVideoButtonUIUtils.b(paramVideoItemHolder.K);
+        AdVideoButtonUIUtils.b(paramVideoItemHolder.U);
       }
     }
-    b(paramVideoItemHolder);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    d(paramVideoItemHolder);
   }
   
   public boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
+    return this.q.contains(paramString);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() == null) {
+    if (this.p.o() == null) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a().d()) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() instanceof ADVideoItemHolder))) {
-      AdVideoPendantUIUtils.a(true, (ADVideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a(), this.h, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter);
+    if ((this.p.p() != null) && (this.p.p().k()) && ((this.p.o() instanceof ADVideoItemHolder))) {
+      AdVideoPendantUIUtils.a(true, (ADVideoItemHolder)this.p.o(), this.m, this.p);
     }
   }
   
@@ -1017,21 +1009,16 @@ public class VideoFeedsHardAdBarManager
     this.b = paramBoolean;
   }
   
-  public boolean b()
-  {
-    return this.b;
-  }
-  
   public void c()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (!this.e))
+    if ((this.j != null) && (!this.g))
     {
       if (QLog.isColorLevel()) {
         QLog.d("NativeAdUtils", 2, "rePostMsgForAd");
       }
-      this.e = true;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(4, null);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
+      this.g = true;
+      this.j.removeMessages(4, null);
+      this.j.sendEmptyMessageDelayed(4, 1000L);
     }
   }
   
@@ -1040,37 +1027,32 @@ public class VideoFeedsHardAdBarManager
     this.c = paramBoolean;
   }
   
-  public boolean c()
-  {
-    return this.f;
-  }
-  
   public void d()
   {
-    int j = 0;
-    this.e = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() instanceof VideoItemHolder))
+    int i2 = 0;
+    this.g = false;
+    if ((this.p.o() instanceof VideoItemHolder))
     {
-      VideoItemHolder localVideoItemHolder = (VideoItemHolder)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a();
-      if ((localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null) && (localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a != null) && (localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.r) && (localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo != null))
+      VideoItemHolder localVideoItemHolder = (VideoItemHolder)this.p.o();
+      if ((localVideoItemHolder.az != null) && (localVideoItemHolder.az.c != null) && (localVideoItemHolder.az.c.aq) && (localVideoItemHolder.az.c.as != null))
       {
-        Object localObject = localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo.h;
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(localObject))
+        Object localObject = localVideoItemHolder.az.c.as.m;
+        if (!this.q.contains(localObject))
         {
-          this.jdField_a_of_type_JavaUtilSet.add(localObject);
-          localObject = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo);
-          int i = 5;
-          if (localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.b(this.jdField_a_of_type_AndroidAppActivity)) {
-            i = 10;
+          this.q.add(localObject);
+          localObject = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(localVideoItemHolder.az.c.as);
+          int i1 = 5;
+          if (localVideoItemHolder.az.c.e(this.l)) {
+            i1 = 10;
           }
           JSONObject localJSONObject1 = new JSONObject();
           JSONObject localJSONObject2 = new JSONObject();
-          VideoAdTimeReportData localVideoAdTimeReportData = localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdReportVideoAdTimeReportData;
-          if ((VideoAdStrategyManager.jdField_a_of_type_Int == 1) && (localVideoAdTimeReportData != null)) {
+          VideoAdTimeReportData localVideoAdTimeReportData = localVideoItemHolder.az.c.at;
+          if ((VideoAdStrategyManager.b == 1) && (localVideoAdTimeReportData != null)) {
             try
             {
-              localJSONObject2.put("slot", localVideoAdTimeReportData.jdField_a_of_type_Int);
-              localJSONObject2.put("stratege_time_b", localVideoAdTimeReportData.c);
+              localJSONObject2.put("slot", localVideoAdTimeReportData.a);
+              localJSONObject2.put("stratege_time_b", localVideoAdTimeReportData.d);
             }
             catch (Exception localException1)
             {
@@ -1079,10 +1061,10 @@ public class VideoFeedsHardAdBarManager
           } else {
             try
             {
-              if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() != null) {
-                j = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a().getHeaderViewsCount();
+              if (this.p.q() != null) {
+                i2 = this.p.q().getHeaderViewsCount();
               }
-              localJSONObject2.put("slot", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a().getAdapterPosition() - j);
+              localJSONObject2.put("slot", this.p.o().getAdapterPosition() - i2);
             }
             catch (JSONException localJSONException)
             {
@@ -1091,9 +1073,9 @@ public class VideoFeedsHardAdBarManager
           }
           try
           {
-            VideoAdStrategyReportData localVideoAdStrategyReportData = localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdStrategyReportData;
-            localJSONObject2.put("last_ad_time", localVideoAdStrategyReportData.jdField_a_of_type_Long);
-            localJSONObject2.put("last_ad_distance", localVideoAdStrategyReportData.jdField_a_of_type_Int);
+            VideoAdStrategyReportData localVideoAdStrategyReportData = localVideoItemHolder.az.c.au;
+            localJSONObject2.put("last_ad_time", localVideoAdStrategyReportData.c);
+            localJSONObject2.put("last_ad_distance", localVideoAdStrategyReportData.a);
             localJSONObject2.put("last_ad_distance_vv", localVideoAdStrategyReportData.b);
             localJSONObject1.put("exposure_info_report", localJSONObject2.toString());
           }
@@ -1106,9 +1088,9 @@ public class VideoFeedsHardAdBarManager
           localStringBuilder.append("exposure_info_report = ");
           localStringBuilder.append(localJSONObject2.toString());
           localIRIJAdLogService.d("Q.pubaccount.video.feeds.VideoFeedsHardAdBarManager", localStringBuilder.toString());
-          a(localVideoItemHolder, (AdvertisementInfo)localObject, i, localJSONObject1);
-          AdReqFreshManager.a().a(Long.valueOf(localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo.e));
-          AdExposeFreshManager.a().a("RIJAdRefreshSceneFloatVideo", localVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a);
+          a(localVideoItemHolder, (AdvertisementInfo)localObject, i1, localJSONObject1);
+          AdReqFreshManager.a().a(Long.valueOf(localVideoItemHolder.az.c.as.G));
+          AdExposeFreshManager.a().b("RIJAdRefreshSceneFloatVideo", localVideoItemHolder.az.c);
         }
       }
     }
@@ -1116,17 +1098,32 @@ public class VideoFeedsHardAdBarManager
   
   public void d(boolean paramBoolean)
   {
-    this.f = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void e(boolean paramBoolean)
   {
-    this.g = paramBoolean;
+    this.i = paramBoolean;
+  }
+  
+  public boolean e()
+  {
+    return this.a;
+  }
+  
+  public boolean f()
+  {
+    return this.b;
+  }
+  
+  public boolean g()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHardAdBarManager
  * JD-Core Version:    0.7.0.1
  */

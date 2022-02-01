@@ -15,12 +15,12 @@ final class SubType0xef$1
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Linkstar Push!ChooserAc!! msgType = ");
     localStringBuilder.append(this.a);
-    QQToast.a(localBaseApplication, localStringBuilder.toString(), 0).a();
+    QQToast.makeText(localBaseApplication, localStringBuilder.toString(), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xef.1
  * JD-Core Version:    0.7.0.1
  */

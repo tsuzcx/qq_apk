@@ -9,14 +9,14 @@ class LottieHelper$1$2
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.a(this.a);
+    if (this.this$0.d != null) {
+      this.this$0.d.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.utils.LottieHelper.1.2
  * JD-Core Version:    0.7.0.1
  */

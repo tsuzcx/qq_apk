@@ -92,20 +92,20 @@ public class ReportPlugin
   
   private boolean a()
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null))
     {
-      if (this.mRuntime.a().getIntent() == null) {
+      if (this.mRuntime.d().getIntent() == null) {
         return false;
       }
-      return this.mRuntime.a().getIntent().getBooleanExtra("BSafeReportPost", false);
+      return this.mRuntime.d().getIntent().getBooleanExtra("BSafeReportPost", false);
     }
     return false;
   }
   
-  private byte[] a()
+  private byte[] b()
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().getIntent() != null)) {
-      return this.mRuntime.a().getIntent().getByteArrayExtra("SafeReportData");
+    if ((this.mRuntime != null) && (this.mRuntime.d() != null) && (this.mRuntime.d().getIntent() != null)) {
+      return this.mRuntime.d().getIntent().getByteArrayExtra("SafeReportData");
     }
     return null;
   }
@@ -137,7 +137,7 @@ public class ReportPlugin
   {
     if ((paramLong == 32L) && (a()))
     {
-      a(paramString, a());
+      a(paramString, b());
       this.mRuntime.a().readyForLoadJs();
       return true;
     }
@@ -151,7 +151,7 @@ public class ReportPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.ReportPlugin
  * JD-Core Version:    0.7.0.1
  */

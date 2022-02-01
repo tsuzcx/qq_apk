@@ -16,7 +16,7 @@ final class PatchUtils$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("task.getStatus():");
-      localStringBuilder.append(paramDownloadTask.a());
+      localStringBuilder.append(paramDownloadTask.e());
       localStringBuilder.append(" url:");
       localStringBuilder.append(this.val$url);
       QLog.i("PatchUtils", 1, localStringBuilder.toString());
@@ -25,7 +25,7 @@ final class PatchUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.patchbundle.PatchUtils.1
  * JD-Core Version:    0.7.0.1
  */

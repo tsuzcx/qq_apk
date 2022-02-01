@@ -19,9 +19,9 @@ class ZipResDownloadManager$3
     while (paramString.hasNext())
     {
       paramDownloadResult = (ZipResEntry)paramString.next();
-      ZipResLoadListener localZipResLoadListener = (ZipResLoadListener)paramDownloadResult.jdField_a_of_type_JavaLangRefWeakReference.get();
+      ZipResLoadListener localZipResLoadListener = (ZipResLoadListener)paramDownloadResult.f.get();
       if (localZipResLoadListener != null) {
-        localZipResLoadListener.onFailed(paramDownloadResult.b, paramDownloadResult.jdField_a_of_type_Int, paramDownloadResult.d);
+        localZipResLoadListener.onFailed(paramDownloadResult.b, paramDownloadResult.c, paramDownloadResult.e);
       }
       paramDownloadResult.a();
     }
@@ -34,10 +34,10 @@ class ZipResDownloadManager$3
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 79	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1: invokestatic 82	cooperation/vip/vipcomponent/util/ZipResDownloadManager:d	(Ljava/lang/String;)Ljava/lang/String;
     //   4: astore 4
     //   6: aload 4
-    //   8: invokestatic 81	cooperation/vip/vipcomponent/util/ZipResDownloadManager:b	(Ljava/lang/String;)V
+    //   8: invokestatic 84	cooperation/vip/vipcomponent/util/ZipResDownloadManager:e	(Ljava/lang/String;)V
     //   11: aload_0
     //   12: getfield 12	cooperation/vip/vipcomponent/util/ZipResDownloadManager$3:a	Lcooperation/vip/vipcomponent/util/ZipResDownloadManager;
     //   15: aload_1
@@ -53,53 +53,53 @@ class ZipResDownloadManager$3
     //   44: checkcast 43	cooperation/vip/vipcomponent/util/ZipResEntry
     //   47: astore 7
     //   49: aload 7
-    //   51: getfield 46	cooperation/vip/vipcomponent/util/ZipResEntry:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   54: invokevirtual 51	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   57: checkcast 53	cooperation/vip/vipcomponent/util/ZipResLoadListener
+    //   51: getfield 47	cooperation/vip/vipcomponent/util/ZipResEntry:f	Ljava/lang/ref/WeakReference;
+    //   54: invokevirtual 52	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   57: checkcast 54	cooperation/vip/vipcomponent/util/ZipResLoadListener
     //   60: astore 5
     //   62: aload 5
     //   64: ifnull +295 -> 359
     //   67: aload 7
-    //   69: getfield 60	cooperation/vip/vipcomponent/util/ZipResEntry:jdField_a_of_type_Int	I
+    //   69: getfield 62	cooperation/vip/vipcomponent/util/ZipResEntry:c	I
     //   72: sipush 999
     //   75: if_icmpne +27 -> 102
     //   78: aload 5
     //   80: aload 7
-    //   82: getfield 57	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
+    //   82: getfield 58	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
     //   85: aload 7
-    //   87: getfield 60	cooperation/vip/vipcomponent/util/ZipResEntry:jdField_a_of_type_Int	I
+    //   87: getfield 62	cooperation/vip/vipcomponent/util/ZipResEntry:c	I
     //   90: aload 4
-    //   92: invokestatic 83	cooperation/vip/vipcomponent/util/ZipResDownloadManager:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   92: invokestatic 86	cooperation/vip/vipcomponent/util/ZipResDownloadManager:f	(Ljava/lang/String;)Ljava/lang/String;
     //   95: aconst_null
-    //   96: invokevirtual 87	cooperation/vip/vipcomponent/util/ZipResLoadListener:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
+    //   96: invokevirtual 90	cooperation/vip/vipcomponent/util/ZipResLoadListener:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
     //   99: goto -72 -> 27
     //   102: aload 7
-    //   104: getfield 57	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
+    //   104: getfield 58	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
     //   107: aload 7
-    //   109: getfield 63	cooperation/vip/vipcomponent/util/ZipResEntry:d	Ljava/lang/String;
-    //   112: invokestatic 90	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   109: getfield 65	cooperation/vip/vipcomponent/util/ZipResEntry:e	Ljava/lang/String;
+    //   112: invokestatic 93	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   115: astore_3
     //   116: aload_3
-    //   117: invokestatic 93	cooperation/vip/vipcomponent/util/ZipResDownloadManager:b	(Ljava/io/File;)Z
+    //   117: invokestatic 96	cooperation/vip/vipcomponent/util/ZipResDownloadManager:b	(Ljava/io/File;)Z
     //   120: ifeq +214 -> 334
     //   123: aload_0
     //   124: monitorenter
     //   125: aload_0
     //   126: getfield 12	cooperation/vip/vipcomponent/util/ZipResDownloadManager$3:a	Lcooperation/vip/vipcomponent/util/ZipResDownloadManager;
-    //   129: invokestatic 96	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Lcooperation/vip/vipcomponent/util/ZipResDownloadManager;)Landroid/support/v4/util/LruCache;
+    //   129: invokestatic 99	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Lcooperation/vip/vipcomponent/util/ZipResDownloadManager;)Landroid/support/v4/util/LruCache;
     //   132: aload 7
-    //   134: getfield 98	cooperation/vip/vipcomponent/util/ZipResEntry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   137: invokevirtual 103	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   140: checkcast 105	android/graphics/Bitmap
+    //   134: getfield 101	cooperation/vip/vipcomponent/util/ZipResEntry:a	Ljava/lang/String;
+    //   137: invokevirtual 106	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   140: checkcast 108	android/graphics/Bitmap
     //   143: astore_2
     //   144: aload_2
     //   145: astore_1
     //   146: aload_2
     //   147: ifnonnull +55 -> 202
     //   150: aload_3
-    //   151: invokevirtual 111	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   151: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   154: aconst_null
-    //   155: invokestatic 116	cooperation/vip/vipcomponent/VipUtils:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   155: invokestatic 119	cooperation/vip/vipcomponent/VipUtils:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   158: astore_1
     //   159: goto +43 -> 202
     //   162: astore_3
@@ -115,26 +115,26 @@ class ZipResDownloadManager$3
     //   178: astore_3
     //   179: aconst_null
     //   180: astore_1
-    //   181: ldc 118
+    //   181: ldc 121
     //   183: aload_3
-    //   184: invokevirtual 121	java/lang/Exception:toString	()Ljava/lang/String;
-    //   187: invokestatic 127	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: invokevirtual 124	java/lang/Exception:toString	()Ljava/lang/String;
+    //   187: invokestatic 129	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   190: goto +12 -> 202
-    //   193: ldc 118
+    //   193: ldc 121
     //   195: aload_3
-    //   196: invokevirtual 128	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   199: invokestatic 127	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   196: invokevirtual 130	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
+    //   199: invokestatic 129	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   202: aload_0
     //   203: monitorexit
     //   204: aload_1
     //   205: ifnull +97 -> 302
     //   208: aload_0
     //   209: getfield 12	cooperation/vip/vipcomponent/util/ZipResDownloadManager$3:a	Lcooperation/vip/vipcomponent/util/ZipResDownloadManager;
-    //   212: invokestatic 96	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Lcooperation/vip/vipcomponent/util/ZipResDownloadManager;)Landroid/support/v4/util/LruCache;
+    //   212: invokestatic 99	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Lcooperation/vip/vipcomponent/util/ZipResDownloadManager;)Landroid/support/v4/util/LruCache;
     //   215: aload 7
-    //   217: getfield 98	cooperation/vip/vipcomponent/util/ZipResEntry:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   217: getfield 101	cooperation/vip/vipcomponent/util/ZipResEntry:a	Ljava/lang/String;
     //   220: aload_1
-    //   221: invokevirtual 132	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   221: invokevirtual 134	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   224: pop
     //   225: aload 5
     //   227: ifnull +132 -> 359
@@ -142,33 +142,33 @@ class ZipResDownloadManager$3
     //   232: monitorenter
     //   233: aload 5
     //   235: aload 5
-    //   237: getfield 135	cooperation/vip/vipcomponent/util/ZipResLoadListener:mCount	I
+    //   237: getfield 137	cooperation/vip/vipcomponent/util/ZipResLoadListener:mCount	I
     //   240: iconst_1
     //   241: isub
-    //   242: putfield 135	cooperation/vip/vipcomponent/util/ZipResLoadListener:mCount	I
+    //   242: putfield 137	cooperation/vip/vipcomponent/util/ZipResLoadListener:mCount	I
     //   245: aload 5
     //   247: monitorexit
     //   248: aload_1
     //   249: sipush 320
-    //   252: invokevirtual 139	android/graphics/Bitmap:setDensity	(I)V
-    //   255: new 141	android/graphics/drawable/BitmapDrawable
+    //   252: invokevirtual 141	android/graphics/Bitmap:setDensity	(I)V
+    //   255: new 143	android/graphics/drawable/BitmapDrawable
     //   258: dup
     //   259: aload_1
-    //   260: invokespecial 144	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
+    //   260: invokespecial 146	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
     //   263: astore_1
     //   264: aload_1
-    //   265: invokestatic 150	com/tencent/mobileqq/utils/ViewUtils:c	()F
+    //   265: invokestatic 152	com/tencent/mobileqq/utils/ViewUtils:getDensityDpi	()F
     //   268: f2i
-    //   269: invokevirtual 153	android/graphics/drawable/BitmapDrawable:setTargetDensity	(I)V
+    //   269: invokevirtual 155	android/graphics/drawable/BitmapDrawable:setTargetDensity	(I)V
     //   272: aload 5
     //   274: aload 7
-    //   276: getfield 57	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
+    //   276: getfield 58	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
     //   279: aload 7
-    //   281: getfield 60	cooperation/vip/vipcomponent/util/ZipResEntry:jdField_a_of_type_Int	I
+    //   281: getfield 62	cooperation/vip/vipcomponent/util/ZipResEntry:c	I
     //   284: aload 7
-    //   286: getfield 63	cooperation/vip/vipcomponent/util/ZipResEntry:d	Ljava/lang/String;
+    //   286: getfield 65	cooperation/vip/vipcomponent/util/ZipResEntry:e	Ljava/lang/String;
     //   289: aload_1
-    //   290: invokevirtual 87	cooperation/vip/vipcomponent/util/ZipResLoadListener:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
+    //   290: invokevirtual 90	cooperation/vip/vipcomponent/util/ZipResLoadListener:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
     //   293: goto +66 -> 359
     //   296: astore_1
     //   297: aload 5
@@ -179,12 +179,12 @@ class ZipResDownloadManager$3
     //   304: ifnull +55 -> 359
     //   307: aload 5
     //   309: aload 7
-    //   311: getfield 57	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
+    //   311: getfield 58	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
     //   314: aload 7
-    //   316: getfield 60	cooperation/vip/vipcomponent/util/ZipResEntry:jdField_a_of_type_Int	I
+    //   316: getfield 62	cooperation/vip/vipcomponent/util/ZipResEntry:c	I
     //   319: aload 7
-    //   321: getfield 63	cooperation/vip/vipcomponent/util/ZipResEntry:d	Ljava/lang/String;
-    //   324: invokevirtual 67	cooperation/vip/vipcomponent/util/ZipResLoadListener:onFailed	(Ljava/lang/String;ILjava/lang/String;)V
+    //   321: getfield 65	cooperation/vip/vipcomponent/util/ZipResEntry:e	Ljava/lang/String;
+    //   324: invokevirtual 69	cooperation/vip/vipcomponent/util/ZipResLoadListener:onFailed	(Ljava/lang/String;ILjava/lang/String;)V
     //   327: goto +32 -> 359
     //   330: aload_0
     //   331: monitorexit
@@ -194,14 +194,14 @@ class ZipResDownloadManager$3
     //   336: ifnull +23 -> 359
     //   339: aload 5
     //   341: aload 7
-    //   343: getfield 57	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
+    //   343: getfield 58	cooperation/vip/vipcomponent/util/ZipResEntry:b	Ljava/lang/String;
     //   346: aload 7
-    //   348: getfield 60	cooperation/vip/vipcomponent/util/ZipResEntry:jdField_a_of_type_Int	I
+    //   348: getfield 62	cooperation/vip/vipcomponent/util/ZipResEntry:c	I
     //   351: aload 7
-    //   353: getfield 63	cooperation/vip/vipcomponent/util/ZipResEntry:d	Ljava/lang/String;
-    //   356: invokevirtual 67	cooperation/vip/vipcomponent/util/ZipResLoadListener:onFailed	(Ljava/lang/String;ILjava/lang/String;)V
+    //   353: getfield 65	cooperation/vip/vipcomponent/util/ZipResEntry:e	Ljava/lang/String;
+    //   356: invokevirtual 69	cooperation/vip/vipcomponent/util/ZipResLoadListener:onFailed	(Ljava/lang/String;ILjava/lang/String;)V
     //   359: aload 7
-    //   361: invokevirtual 69	cooperation/vip/vipcomponent/util/ZipResEntry:a	()V
+    //   361: invokevirtual 71	cooperation/vip/vipcomponent/util/ZipResEntry:a	()V
     //   364: goto -337 -> 27
     //   367: return
     //   368: astore_3
@@ -240,7 +240,7 @@ class ZipResDownloadManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.vipcomponent.util.ZipResDownloadManager.3
  * JD-Core Version:    0.7.0.1
  */

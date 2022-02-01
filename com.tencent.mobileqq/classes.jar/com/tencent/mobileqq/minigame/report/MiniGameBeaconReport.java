@@ -31,7 +31,7 @@ public final class MiniGameBeaconReport
   @JvmStatic
   public static final void init()
   {
-    UserAction.registerTunnel(new TunnelInfo("00000ARN3S3S9UE8", AppSetting.f(), "1000"));
+    UserAction.registerTunnel(new TunnelInfo("00000ARN3S3S9UE8", AppSetting.h(), "1000"));
   }
   
   @JvmStatic
@@ -59,7 +59,7 @@ public final class MiniGameBeaconReport
           paramMap = "";
         }
         localMap.put("uid", paramMap);
-        localMap.put("perfLevel", String.valueOf(DeviceInfoUtils.a()));
+        localMap.put("perfLevel", String.valueOf(DeviceInfoUtils.getPerfLevel()));
         paramMap = localMap;
         break label105;
       }
@@ -71,7 +71,7 @@ public final class MiniGameBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.report.MiniGameBeaconReport
  * JD-Core Version:    0.7.0.1
  */

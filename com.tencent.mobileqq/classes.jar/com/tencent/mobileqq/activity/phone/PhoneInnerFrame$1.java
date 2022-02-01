@@ -12,14 +12,14 @@ class PhoneInnerFrame$1
   {
     if (this.a.a)
     {
-      this.a.b().a().unRegistObserver(this);
-      this.a.g();
+      this.a.getPhoneContext().a().unRegistObserver(this);
+      this.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneInnerFrame.1
  * JD-Core Version:    0.7.0.1
  */

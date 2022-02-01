@@ -52,7 +52,7 @@ public final class PublicAccountNewBridgeInvokeHandler
       }
       try
       {
-        paramJSONObject = new JSONObject().put("app_type", ReadinjoyReportUtils.c()).toString();
+        paramJSONObject = new JSONObject().put("app_type", ReadinjoyReportUtils.h()).toString();
         Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "JSONObject().put(\"app_ty…portAppType()).toString()");
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("callback: ");
@@ -94,12 +94,6 @@ public final class PublicAccountNewBridgeInvokeHandler
     }
   }
   
-  @NotNull
-  public String a()
-  {
-    return "publicAccountNew";
-  }
-  
   public void a()
   {
     PublicAccountNewBridgeInvokeHandler localPublicAccountNewBridgeInvokeHandler = (PublicAccountNewBridgeInvokeHandler)this;
@@ -107,10 +101,16 @@ public final class PublicAccountNewBridgeInvokeHandler
     a("getRIJAppType", (Function2)new PublicAccountNewBridgeInvokeHandler.register.2(localPublicAccountNewBridgeInvokeHandler));
     a("getUserInfo", (Function2)new PublicAccountNewBridgeInvokeHandler.register.3(localPublicAccountNewBridgeInvokeHandler));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "publicAccountNew";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.PublicAccountNewBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

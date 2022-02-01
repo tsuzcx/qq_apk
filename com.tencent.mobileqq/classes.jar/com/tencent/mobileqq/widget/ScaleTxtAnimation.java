@@ -8,10 +8,10 @@ import android.view.animation.Transformation;
 public class ScaleTxtAnimation
   extends Animation
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private float a;
   private float b;
   private float c;
+  private Camera d;
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
@@ -25,25 +25,25 @@ public class ScaleTxtAnimation
     }
     else
     {
-      f1 = this.jdField_a_of_type_Float;
+      f1 = this.a;
       paramFloat = f1 - paramFloat / 0.5F * (f1 - this.b);
     }
     paramTransformation = paramTransformation.getMatrix();
-    this.jdField_a_of_type_AndroidGraphicsCamera.save();
-    this.jdField_a_of_type_AndroidGraphicsCamera.getMatrix(paramTransformation);
+    this.d.save();
+    this.d.getMatrix(paramTransformation);
     paramTransformation.postScale(paramFloat, paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsCamera.restore();
+    this.d.restore();
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.d = new Camera();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScaleTxtAnimation
  * JD-Core Version:    0.7.0.1
  */

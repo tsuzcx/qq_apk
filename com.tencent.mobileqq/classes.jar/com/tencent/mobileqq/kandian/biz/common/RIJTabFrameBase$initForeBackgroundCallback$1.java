@@ -14,11 +14,11 @@ public final class RIJTabFrameBase$initForeBackgroundCallback$1
     RIJTabFrameBase.a(this.a).a(this.a);
   }
   
-  public void ax_() {}
+  public void cU_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase.initForeBackgroundCallback.1
  * JD-Core Version:    0.7.0.1
  */

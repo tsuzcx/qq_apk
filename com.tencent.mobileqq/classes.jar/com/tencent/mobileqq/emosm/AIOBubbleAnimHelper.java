@@ -31,16 +31,16 @@ public class AIOBubbleAnimHelper
         return;
       case 16: 
       case 17: 
-        XAApi.c().pauseAll();
+        XAApi.e().pauseAll();
         return;
       }
     }
-    XAApi.c().resumeAll();
+    XAApi.e().resumeAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.AIOBubbleAnimHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@
     <ViewStub android:id="@id/h__" android:layout="@layout/brl" android:layout_width="fill_parent" android:layout_height="@dimen/apz" />
     <ViewStub android:id="@id/h9d" android:layout="@layout/brl" android:layout_width="fill_parent" android:layout_height="119.0dip" />
     <ViewStub android:id="@id/h_n" android:layout="@layout/brp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/o17" android:layout="@layout/cys" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/ppo" android:layout="@layout/dbr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <ViewStub android:id="@id/h_c" android:layout="@layout/brj" android:layout_width="fill_parent" android:layout_height="wrap_content" />//这个banner已经移到feed里面  好友短视频 <ViewStub android:id="@id/h_o" android:layout="@layout/brq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <ViewStub android:id="@id/hgx" android:layout="@layout/brq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <ViewStub android:id="@id/ha5" android:layout="@layout/bu2" android:layout_width="fill_parent" android:layout_height="wrap_content" />

@@ -1,60 +1,60 @@
 package com.tencent.mobileqq.qqexpand.fragment;
 
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+import android.os.Message;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class ExpandEditFragment$2
-  implements GestureDetector.OnGestureListener
+  extends TransProcessorHandler
 {
   ExpandEditFragment$2(ExpandEditFragment paramExpandEditFragment) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null))
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    int i = paramMessage.what;
+    if (i != 1003)
     {
-      int i;
-      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 50.0F) {
-        i = 1;
-      } else {
-        i = 0;
+      if (i != 1005) {
+        return;
       }
-      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
-        i = 1;
+      if ((localFileMsg.fileType == 23) && (QLog.isColorLevel())) {
+        QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
       }
-      if ((i != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment != null))
+      ExpandEditFragment.c(this.a).dismiss();
+      QQToast.makeText(ExpandEditFragment.d(this.a), HardCodeUtil.a(2131902302), 0).show();
+      ExtendFriendReport.a().d(false, 0);
+      return;
+    }
+    if (localFileMsg.fileType == 23)
+    {
+      ExpandEditFragment.a(this.a, ((NearbyPeoplePhotoUploadProcessor)localFileMsg.processor).mUrl);
+      if (QLog.isColorLevel())
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.a();
-        ExpandEditFragment.a(this.a).setVisibility(8);
-        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        paramMessage = new StringBuilder();
+        paramMessage.append("mFileUploadHandler.handleMessage(), upload success. url = ");
+        paramMessage.append(ExpandEditFragment.b(this.a));
+        QLog.i("ExtendFriendProfileEdit", 2, paramMessage.toString());
+      }
+      if (this.a.f != null)
+      {
+        this.a.f.b(ExpandEditFragment.b(this.a));
+        paramMessage = this.a;
+        ExpandEditFragment.a(paramMessage, paramMessage.f.b());
       }
     }
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    ExtendFriendReport.a().d(true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandEditFragment.2
  * JD-Core Version:    0.7.0.1
  */

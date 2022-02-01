@@ -13,19 +13,18 @@ import com.tencent.mobileqq.scribble.ScribbleResMgr;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.teamwork.TeamWorkManager;
-import java.util.List;
 
 public class NewDataLinePlusPanelAppLoader
   extends C2CPlusPanelAppLoader
 {
   public void a(int paramInt1, int paramInt2)
   {
-    if (a())
+    if (d())
     {
       PlusPanelAppInfo localPlusPanelAppInfo = C2CPlusPanelAppConfigHelper.INSTANCE.getAppInfoByAppID(paramInt2);
       if (localPlusPanelAppInfo != null)
       {
-        this.a.add(localPlusPanelAppInfo);
+        b(localPlusPanelAppInfo);
         return;
       }
     }
@@ -34,33 +33,33 @@ public class NewDataLinePlusPanelAppLoader
   
   public void b(BaseChatPie paramBaseChatPie)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     ReportController.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOshow", 0, 0, "", "", "", "");
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 217);
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 218);
+      a(paramBaseChatPie.ah.a, 217);
+      a(paramBaseChatPie.ah.a, 218);
     }
-    if (HotPicManager.a(localQQAppInterface).b()) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 204);
+    if (HotPicManager.a(localQQAppInterface).j()) {
+      a(paramBaseChatPie.ah.a, 204);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 205);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 206);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 208);
-    if (ScribbleResMgr.c(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, localQQAppInterface.getCurrentAccountUin())) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 210);
+    a(paramBaseChatPie.ah.a, 205);
+    a(paramBaseChatPie.ah.a, 206);
+    a(paramBaseChatPie.ah.a, 208);
+    if (ScribbleResMgr.e(paramBaseChatPie.e, localQQAppInterface.getCurrentAccountUin())) {
+      a(paramBaseChatPie.ah.a, 210);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 212);
+    a(paramBaseChatPie.ah.a, 212);
     if (((TeamWorkManager)localQQAppInterface.getManager(QQManagerFactory.TEAMWORK_MANAGER)).a().booleanValue())
     {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 214);
-      AIOPanelUtiles.a(localQQAppInterface, "0X80093F3", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      a(paramBaseChatPie.ah.a, 214);
+      AIOPanelUtiles.a(localQQAppInterface, "0X80093F3", paramBaseChatPie.ah.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.aio.NewDataLinePlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

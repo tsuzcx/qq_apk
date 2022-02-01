@@ -10,22 +10,22 @@ public class GroupOrDiscussionStrangerPlusPanelAppLoader
 {
   public void b(BaseChatPie paramBaseChatPie)
   {
-    if (!BmqqSegmentUtil.c(paramBaseChatPie.a.jdField_a_of_type_JavaLangString)) {
-      a(paramBaseChatPie.a.jdField_a_of_type_Int, 219);
+    if (!BmqqSegmentUtil.c(paramBaseChatPie.ah.b)) {
+      a(paramBaseChatPie.ah.a, 219);
     }
-    a(paramBaseChatPie.a.jdField_a_of_type_Int, 205);
-    a(paramBaseChatPie.a.jdField_a_of_type_Int, 206);
-    a(paramBaseChatPie.a.jdField_a_of_type_Int, 208);
-    if (!BmqqSegmentUtil.c(paramBaseChatPie.a.jdField_a_of_type_JavaLangString)) {
-      a(paramBaseChatPie.a.jdField_a_of_type_Int, 211);
+    a(paramBaseChatPie.ah.a, 205);
+    a(paramBaseChatPie.ah.a, 206);
+    a(paramBaseChatPie.ah.a, 208);
+    if (!BmqqSegmentUtil.c(paramBaseChatPie.ah.b)) {
+      a(paramBaseChatPie.ah.a, 211);
     }
-    a(paramBaseChatPie.a.jdField_a_of_type_Int, 212);
-    a(paramBaseChatPie.a.jdField_a_of_type_Int, 213);
+    a(paramBaseChatPie.ah.a, 212);
+    a(paramBaseChatPie.ah.a, 213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.temp.GroupOrDiscussionStrangerPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

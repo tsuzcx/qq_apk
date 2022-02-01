@@ -15,7 +15,7 @@ class StickyNoteShopLayout$3
   {
     if (paramInt == 0)
     {
-      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
+      paramRecyclerView = StickyNoteShopLayout.c(this.a).getLayoutManager();
       int i = 0;
       if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
       {
@@ -38,7 +38,7 @@ class StickyNoteShopLayout$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.3
  * JD-Core Version:    0.7.0.1
  */

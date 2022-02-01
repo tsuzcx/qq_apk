@@ -8,7 +8,7 @@ public class HippyPageScrollEvent
   extends HippyViewEvent
 {
   public static final String EVENT_NAME = "onPageScroll";
-  private View mTarget;
+  private final View mTarget;
   
   public HippyPageScrollEvent(View paramView)
   {
@@ -26,7 +26,7 @@ public class HippyPageScrollEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.event.HippyPageScrollEvent
  * JD-Core Version:    0.7.0.1
  */

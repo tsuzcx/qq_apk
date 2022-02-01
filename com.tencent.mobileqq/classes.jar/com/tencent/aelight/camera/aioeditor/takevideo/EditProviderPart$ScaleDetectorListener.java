@@ -10,7 +10,7 @@ class EditProviderPart$ScaleDetectorListener
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    EditPicRawImage localEditPicRawImage = this.a.a.a;
+    EditPicRawImage localEditPicRawImage = this.a.t.R;
     if (localEditPicRawImage != null) {
       localEditPicRawImage.a(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
     }
@@ -19,7 +19,7 @@ class EditProviderPart$ScaleDetectorListener
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    EditPicRawImage localEditPicRawImage = this.a.a.a;
+    EditPicRawImage localEditPicRawImage = this.a.t.R;
     if (localEditPicRawImage != null) {
       localEditPicRawImage.a(paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
     }
@@ -28,15 +28,15 @@ class EditProviderPart$ScaleDetectorListener
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    paramScaleGestureDetector = this.a.a.a;
+    paramScaleGestureDetector = this.a.t.R;
     if (paramScaleGestureDetector != null) {
-      paramScaleGestureDetector.b();
+      paramScaleGestureDetector.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditProviderPart.ScaleDetectorListener
  * JD-Core Version:    0.7.0.1
  */

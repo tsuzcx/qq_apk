@@ -8,13 +8,13 @@ public abstract interface TroopMemberDataProvider$DataNotifyCallBack
   
   public abstract void a(HashMap<String, Long> paramHashMap);
   
-  public abstract void c();
-  
   public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.TroopMemberDataProvider.DataNotifyCallBack
  * JD-Core Version:    0.7.0.1
  */

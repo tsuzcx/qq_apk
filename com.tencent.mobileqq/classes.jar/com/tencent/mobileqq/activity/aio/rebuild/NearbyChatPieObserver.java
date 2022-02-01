@@ -33,7 +33,7 @@ class NearbyChatPieObserver
         return;
       }
     }
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131718364), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    QQToast.makeText(this.a.f, this.a.f.getString(2131915856), 0).show(this.a.f.getTitleBarHeight());
   }
   
   protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
@@ -43,36 +43,36 @@ class NearbyChatPieObserver
       if (paramString.length() == 0) {
         return;
       }
-      if (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+      if (paramString.equals(this.a.ah.b))
       {
         paramString = this.a;
-        paramString.m = true;
+        paramString.as = true;
         paramString.a(262144, null, paramLong);
-        if (this.a.E)
+        if (this.a.bo)
         {
           paramString = new Message();
           paramString.what = 39;
-          paramString.obj = this.a.f;
-          this.a.a().removeMessages(39);
-          this.a.a().sendMessage(paramString);
+          paramString.obj = this.a.br;
+          this.a.j().removeMessages(39);
+          this.a.j().sendMessage(paramString);
         }
-        ThreadManagerV2.excute(new NearbyChatPieObserver.1(this, paramBoolean, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("NEARBY_MSG_REPORT_SOURCE"), (INearbyCardManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 16, null, false);
+        ThreadManagerV2.excute(new NearbyChatPieObserver.1(this, paramBoolean, this.a.f.getIntent().getStringExtra("NEARBY_MSG_REPORT_SOURCE"), (INearbyCardManager)this.a.d.getManager(QQManagerFactory.NEARBY_CARD_MANAGER)), 16, null, false);
       }
     }
   }
   
   protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
   {
-    this.a.e(65536);
+    this.a.j(65536);
   }
   
   protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if ((paramString1 != null) && (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    if ((paramString1 != null) && (paramString1.equals(this.a.ah.b)) && (paramInt1 == this.a.ah.a))
     {
       if (QLog.isColorLevel())
       {
-        paramSendMessageHandler = this.a.b;
+        paramSendMessageHandler = this.a.c;
         paramString2 = new StringBuilder();
         paramString2.append("onUpdateSendMsgError uin ");
         paramString2.append(paramString1);
@@ -87,12 +87,12 @@ class NearbyChatPieObserver
       if (paramInt1 == 1009) {
         a(paramInt2);
       }
-      this.a.e(196608);
+      this.a.j(196608);
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramSendMessageHandler = this.a.b;
+      paramSendMessageHandler = this.a.c;
       paramString2 = new StringBuilder();
       paramString2.append("onUpdateSendMsgError exception uin ");
       paramString2.append(paramString1);
@@ -106,7 +106,7 @@ class NearbyChatPieObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPieObserver
  * JD-Core Version:    0.7.0.1
  */

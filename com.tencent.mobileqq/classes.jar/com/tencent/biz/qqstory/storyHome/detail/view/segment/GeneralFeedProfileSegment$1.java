@@ -18,16 +18,16 @@ class GeneralFeedProfileSegment$1
   {
     if (paramInt == 4097)
     {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getFirstVisiblePosition();
+      int i = this.a.getFirstVisiblePosition();
       paramInt = i;
       if (i < 0) {
         paramInt = 0;
       }
-      Map localMap = GeneralFeedProfileSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment).a;
+      Map localMap = GeneralFeedProfileSegment.a(this.c).g;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("2_");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentGeneralFeedProfileSegment.a.a.feedId);
-      localMap.put(localStringBuilder.toString(), ((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentFeedItemThumbAdapter.a.get(paramInt)).mVid);
+      localStringBuilder.append(this.c.a.a.feedId);
+      localMap.put(localStringBuilder.toString(), ((StoryVideoItem)this.b.b.get(paramInt)).mVid);
     }
   }
 }

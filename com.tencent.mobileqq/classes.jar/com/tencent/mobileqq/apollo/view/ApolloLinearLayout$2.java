@@ -29,11 +29,11 @@ class ApolloLinearLayout$2
 {
   ApolloLinearLayout$2(ApolloLinearLayout paramApolloLinearLayout) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    if ((ApolloLinearLayout.a(this.a) != null) && (ApolloLinearLayout.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((ApolloLinearLayout.d(this.a) != null) && (ApolloLinearLayout.d(this.a).d != null))
     {
-      if (ApolloLinearLayout.a(this.a) == null) {
+      if (ApolloLinearLayout.e(this.a) == null) {
         return;
       }
       Object localObject1 = new ApolloActionData();
@@ -46,17 +46,17 @@ class ApolloLinearLayout$2
         }
         int i = Integer.parseInt((String)paramObject.get("id"));
         ((ApolloActionData)localObject1).actionId = i;
-        localObject1 = this.a.a((ApolloActionData)localObject1);
+        localObject1 = this.a.d((ApolloActionData)localObject1);
         if (localObject1 == null) {
           return;
         }
-        ((ImageView)((View)localObject1).findViewById(2131378780)).setVisibility(8);
+        ((ImageView)((View)localObject1).findViewById(2131447459)).setVisibility(8);
         ((View)localObject1).setClickable(true);
-        if (ApolloLinearLayout.a(this.a).incrementAndGet() == ApolloLinearLayout.b(this.a).get())
+        if (ApolloLinearLayout.g(this.a).incrementAndGet() == ApolloLinearLayout.h(this.a).get())
         {
-          ApolloLinearLayout.b(this.a).set(0);
-          ApolloLinearLayout.a(this.a).set(0);
-          ApolloLinearLayout.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.a);
+          ApolloLinearLayout.h(this.a).set(0);
+          ApolloLinearLayout.g(this.a).set(0);
+          ApolloLinearLayout.d(this.a).d.removeObserver(this.a.j);
         }
         if (paramBoolean)
         {
@@ -68,8 +68,8 @@ class ApolloLinearLayout$2
             QLog.d("[cmshow]ApolloLinearLayout", 2, ((StringBuilder)localObject1).toString());
           }
           paramObject.put("APOLLO_POP_TYPE", "toast");
-          paramObject.put("tips", ApolloLinearLayout.a(this.a).jdField_a_of_type_AndroidContentContext.getString(2131690033));
-          ((ApolloExtensionHandler)ApolloLinearLayout.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(ApolloLinearLayout.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 128L, "obtained action");
+          paramObject.put("tips", ApolloLinearLayout.d(this.a).e.getString(2131886683));
+          ((ApolloExtensionHandler)ApolloLinearLayout.d(this.a).d.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(ApolloLinearLayout.d(this.a).d.getCurrentUin(), 128L, "obtained action");
         }
         else
         {
@@ -82,24 +82,24 @@ class ApolloLinearLayout$2
           }
           paramObject.put("APOLLO_POP_TYPE", "dialog");
           paramObject.put("feeType", String.valueOf(6));
-          paramObject.put("title", HardCodeUtil.a(2131700680));
+          paramObject.put("title", HardCodeUtil.a(2131898707));
           if (TextUtils.isEmpty((String)paramObject.get("content"))) {
-            paramObject.put("content", HardCodeUtil.a(2131700679));
+            paramObject.put("content", HardCodeUtil.a(2131898706));
           }
-          paramObject.put("rightString", HardCodeUtil.a(2131700681));
+          paramObject.put("rightString", HardCodeUtil.a(2131898708));
           paramObject.put("isActionBack", "true");
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("");
           ((StringBuilder)localObject1).append(i);
           paramObject.put("actionId", ((StringBuilder)localObject1).toString());
         }
-        if ((ApolloLinearLayout.a(this.a) != null) && (ApolloLinearLayout.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+        if ((ApolloLinearLayout.d(this.a) != null) && (ApolloLinearLayout.d(this.a).d != null))
         {
-          localObject1 = ApolloLinearLayout.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+          localObject1 = ApolloLinearLayout.d(this.a).d.getHandler(ChatActivity.class);
           if (localObject1 != null)
           {
-            localObject2 = ApolloLinearLayout.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            int j = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(ApolloLinearLayout.a(this.a).a);
+            localObject2 = ApolloLinearLayout.d(this.a).d;
+            int j = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(ApolloLinearLayout.e(this.a).a);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("");
             localStringBuilder.append(i);
@@ -115,7 +115,7 @@ class ApolloLinearLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloLinearLayout.2
  * JD-Core Version:    0.7.0.1
  */

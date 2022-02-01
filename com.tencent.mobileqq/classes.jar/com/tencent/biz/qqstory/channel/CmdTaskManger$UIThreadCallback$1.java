@@ -9,12 +9,12 @@ class CmdTaskManger$UIThreadCallback$1
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, this.jdField_a_of_type_ComTencentBizQqstoryChannelBaseResponse, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    this.this$0.b(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class WSTabBeaconReport
 {
   private static WSStatisticsReporter.Builder a(String paramString)
   {
-    return new WSStatisticsReporter.Builder().setSopName(paramString).setTestId(WeishiUtils.a(1)).setPushId(WSInitializeHelper.a().a()).setFlush(true);
+    return new WSStatisticsReporter.Builder().setSopName(paramString).setTestId(WeishiUtils.a(1)).setPushId(WSInitializeHelper.a().f()).setFlush(true);
   }
   
   public static void a(int paramInt, String paramString)
@@ -69,7 +69,7 @@ public class WSTabBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabBeaconReport
  * JD-Core Version:    0.7.0.1
  */

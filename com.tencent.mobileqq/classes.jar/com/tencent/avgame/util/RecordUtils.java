@@ -15,7 +15,7 @@ public class RecordUtils
   
   public static AvGameConfBean.RecordParam a(int paramInt)
   {
-    Object localObject = AvGameConfigUtil.a().a();
+    Object localObject = AvGameConfigUtil.a().j();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();

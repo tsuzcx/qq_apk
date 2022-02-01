@@ -20,15 +20,15 @@ class TraeHelper$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (TraeHelper.a(this.jdField_a_of_type_ComTencentAvUtilsTraeHelper) != null)
+    if (TraeHelper.a(this.d) != null)
     {
-      paramAdapterView = (TraeHelper.SoundOutputRes.IconAndName)TraeHelper.a(this.jdField_a_of_type_ComTencentAvUtilsTraeHelper).getItem(paramInt);
-      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.jdField_a_of_type_ComTencentAvUtilsTraeHelper.a != null))
+      paramAdapterView = (TraeHelper.SoundOutputRes.IconAndName)TraeHelper.a(this.d).getItem(paramInt);
+      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.d.b != null))
       {
         if ("DEVICE_BLUETOOTH_HEADSET".equals(paramAdapterView.a))
         {
           TipsUtil.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
-          paramView = this.jdField_a_of_type_AndroidWidgetButton;
+          paramView = this.a;
           if (paramView != null) {
             paramView.setClickable(false);
           }
@@ -74,11 +74,11 @@ class TraeHelper$1
           }
           ReportController.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
         }
-        TraeHelper.a(this.jdField_a_of_type_ComTencentAvUtilsTraeHelper, true);
-        this.jdField_a_of_type_ComTencentAvUtilsTraeHelper.a.connectDevice(this.jdField_a_of_type_Long, paramAdapterView.a);
+        TraeHelper.a(this.d, true);
+        this.d.b.connectDevice(this.b, paramAdapterView.a);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 

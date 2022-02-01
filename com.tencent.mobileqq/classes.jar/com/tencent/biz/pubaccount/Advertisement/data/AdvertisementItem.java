@@ -27,44 +27,32 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xf9.submsgtype0xf9.Video;
 
 public class AdvertisementItem
 {
-  public int a;
-  public long a;
-  public VideoDownloadItem a;
   public String a;
-  public ArrayList<VideoCoverItem> a;
-  public short a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public int c;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public String e = "";
-  public String f = "";
+  public ArrayList<VideoCoverItem> c;
+  public String d = "";
+  public long e;
+  public boolean f;
+  public VideoDownloadItem g;
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public int k = 0;
+  public long l;
+  public long m;
+  public short n;
+  public long o;
+  public int p = 0;
+  public int q = 0;
   
-  public AdvertisementItem()
-  {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-  }
+  public AdvertisementItem() {}
   
   public AdvertisementItem(String paramString1, String paramString2, ArrayList<VideoCoverItem> paramArrayList, String paramString3)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem = new VideoDownloadItem(paramString3);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramArrayList;
+    this.g = new VideoDownloadItem(paramString3);
     if (QLog.isColorLevel())
     {
       paramString1 = new StringBuilder();
@@ -95,32 +83,32 @@ public class AdvertisementItem
     }
     for (;;)
     {
-      int i;
+      int i1;
       try
       {
         AdvertisementItem localAdvertisementItem = new AdvertisementItem();
-        localAdvertisementItem.jdField_a_of_type_JavaLangString = paramJSONObject.getString("uint64_from_uin");
-        localAdvertisementItem.jdField_d_of_type_JavaLangString = paramJSONObject.optString("str_nick");
-        localAdvertisementItem.e = paramJSONObject.optString("str_head_url");
-        localAdvertisementItem.f = paramJSONObject.optString("str_brief");
-        localAdvertisementItem.jdField_b_of_type_JavaLangString = paramJSONObject.getString("str_url");
-        localAdvertisementItem.jdField_a_of_type_Long = (paramJSONObject.optLong("uint32_pushTime") * 1000L);
-        localAdvertisementItem.jdField_b_of_type_Long = (paramJSONObject.optLong("uint32_invalidTime") * 1000L);
-        localAdvertisementItem.jdField_b_of_type_Int = paramJSONObject.optInt("uint32_maxExposureTime");
+        localAdvertisementItem.a = paramJSONObject.getString("uint64_from_uin");
+        localAdvertisementItem.h = paramJSONObject.optString("str_nick");
+        localAdvertisementItem.i = paramJSONObject.optString("str_head_url");
+        localAdvertisementItem.j = paramJSONObject.optString("str_brief");
+        localAdvertisementItem.b = paramJSONObject.getString("str_url");
+        localAdvertisementItem.e = (paramJSONObject.optLong("uint32_pushTime") * 1000L);
+        localAdvertisementItem.l = (paramJSONObject.optLong("uint32_invalidTime") * 1000L);
+        localAdvertisementItem.p = paramJSONObject.optInt("uint32_maxExposureTime");
         JSONArray localJSONArray = paramJSONObject.getJSONArray("rpt_msg_video");
-        localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        i = 0;
-        if (i < localJSONArray.length())
+        localAdvertisementItem.c = new ArrayList();
+        i1 = 0;
+        if (i1 < localJSONArray.length())
         {
-          VideoCoverItem localVideoCoverItem = VideoCoverItem.a(i, localJSONArray.getJSONObject(i));
+          VideoCoverItem localVideoCoverItem = VideoCoverItem.a(i1, localJSONArray.getJSONObject(i1));
           if (localVideoCoverItem != null) {
-            localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.add(localVideoCoverItem);
+            localAdvertisementItem.c.add(localVideoCoverItem);
           }
         }
         else
         {
-          localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem = VideoDownloadItem.a(paramJSONObject.optString("msg_msgCommonData"), localAdvertisementItem.jdField_a_of_type_JavaLangString, localAdvertisementItem.jdField_d_of_type_JavaLangString);
-          paramJSONObject = localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem;
+          localAdvertisementItem.g = VideoDownloadItem.a(paramJSONObject.optString("msg_msgCommonData"), localAdvertisementItem.a, localAdvertisementItem.h);
+          paramJSONObject = localAdvertisementItem.g;
           if (paramJSONObject == null) {
             return null;
           }
@@ -132,7 +120,7 @@ public class AdvertisementItem
         paramJSONObject.printStackTrace();
         return null;
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
@@ -142,48 +130,48 @@ public class AdvertisementItem
     try
     {
       if (paramAdInfo.uint64_from_uin.has()) {
-        localAdvertisementItem.jdField_a_of_type_JavaLangString = String.valueOf(paramAdInfo.uint64_from_uin.get());
+        localAdvertisementItem.a = String.valueOf(paramAdInfo.uint64_from_uin.get());
       }
       if (paramAdInfo.str_nick.has()) {
-        localAdvertisementItem.jdField_d_of_type_JavaLangString = paramAdInfo.str_nick.get();
+        localAdvertisementItem.h = paramAdInfo.str_nick.get();
       }
       if (paramAdInfo.str_head_url.has()) {
-        localAdvertisementItem.e = paramAdInfo.str_head_url.get();
+        localAdvertisementItem.i = paramAdInfo.str_head_url.get();
       }
       if (paramAdInfo.str_brief.has()) {
-        localAdvertisementItem.f = paramAdInfo.str_brief.get();
+        localAdvertisementItem.j = paramAdInfo.str_brief.get();
       }
       if (paramAdInfo.str_url.has()) {
-        localAdvertisementItem.jdField_b_of_type_JavaLangString = paramAdInfo.str_url.get();
+        localAdvertisementItem.b = paramAdInfo.str_url.get();
       }
       if (paramAdInfo.rpt_msg_video.has())
       {
-        localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        int i = 0;
+        localAdvertisementItem.c = new ArrayList();
+        int i1 = 0;
         Iterator localIterator = paramAdInfo.rpt_msg_video.get().iterator();
         while (localIterator.hasNext())
         {
-          VideoCoverItem localVideoCoverItem = VideoCoverItem.a(i, (submsgtype0xf9.Video)localIterator.next());
+          VideoCoverItem localVideoCoverItem = VideoCoverItem.a(i1, (submsgtype0xf9.Video)localIterator.next());
           if (localVideoCoverItem != null)
           {
-            localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.add(localVideoCoverItem);
-            i += 1;
+            localAdvertisementItem.c.add(localVideoCoverItem);
+            i1 += 1;
           }
         }
       }
       if (paramAdInfo.msg_msgCommonData.has()) {
-        localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem = VideoDownloadItem.a(paramAdInfo.msg_msgCommonData, localAdvertisementItem.jdField_a_of_type_JavaLangString, localAdvertisementItem.jdField_d_of_type_JavaLangString);
+        localAdvertisementItem.g = VideoDownloadItem.a(paramAdInfo.msg_msgCommonData, localAdvertisementItem.a, localAdvertisementItem.h);
       }
       if (paramAdInfo.uint32_pushTime.has()) {
-        localAdvertisementItem.jdField_a_of_type_Long = (paramAdInfo.uint32_pushTime.get() * 1000L);
+        localAdvertisementItem.e = (paramAdInfo.uint32_pushTime.get() * 1000L);
       }
       if (paramAdInfo.uint32_invalidTime.has()) {
-        localAdvertisementItem.jdField_b_of_type_Long = (paramAdInfo.uint32_invalidTime.get() * 1000L);
+        localAdvertisementItem.l = (paramAdInfo.uint32_invalidTime.get() * 1000L);
       }
-      localAdvertisementItem.jdField_b_of_type_Int = paramAdInfo.uint32_maxExposureTime.get();
-      localAdvertisementItem.jdField_c_of_type_JavaLangString = String.valueOf(paramMsgInfo.lMsgUid);
-      localAdvertisementItem.jdField_a_of_type_Short = paramMsgInfo.shMsgSeq;
-      localAdvertisementItem.jdField_d_of_type_Long = paramMsgInfo.lMsgUid;
+      localAdvertisementItem.p = paramAdInfo.uint32_maxExposureTime.get();
+      localAdvertisementItem.d = String.valueOf(paramMsgInfo.lMsgUid);
+      localAdvertisementItem.n = paramMsgInfo.shMsgSeq;
+      localAdvertisementItem.o = paramMsgInfo.lMsgUid;
       if (QLog.isColorLevel())
       {
         paramAdInfo = new StringBuilder();
@@ -191,7 +179,7 @@ public class AdvertisementItem
         paramAdInfo.append(localAdvertisementItem.toString());
         QLog.w("AdvertisementItem", 2, paramAdInfo.toString());
       }
-      ReportController.a(null, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8008F5C", "0X8008F5C", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_c_of_type_JavaLangString, "", b(), localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_b_of_type_JavaLangString);
+      ReportController.a(null, "dc00898", "", localAdvertisementItem.g.a, "0X8008F5C", "0X8008F5C", 0, 0, localAdvertisementItem.g.c, "", d(), localAdvertisementItem.g.b);
       return localAdvertisementItem;
     }
     catch (Exception paramAdInfo)
@@ -208,33 +196,33 @@ public class AdvertisementItem
     }
     for (;;)
     {
-      int i;
+      int i1;
       try
       {
         AdvertisementItem localAdvertisementItem = new AdvertisementItem();
-        localAdvertisementItem.jdField_a_of_type_JavaLangString = paramJSONObject.getString("senderUin");
-        localAdvertisementItem.jdField_b_of_type_JavaLangString = paramJSONObject.getString("pageUrl");
-        localAdvertisementItem.jdField_c_of_type_JavaLangString = paramJSONObject.optString("adMsgId");
-        localAdvertisementItem.jdField_a_of_type_Long = paramJSONObject.optLong("pushTime");
-        localAdvertisementItem.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("hasReport");
-        localAdvertisementItem.jdField_d_of_type_JavaLangString = paramJSONObject.optString("str_nick");
-        localAdvertisementItem.e = paramJSONObject.optString("str_head_url");
-        localAdvertisementItem.f = paramJSONObject.optString("str_brief");
-        localAdvertisementItem.jdField_a_of_type_Int = paramJSONObject.optInt("video_preload_state");
-        localAdvertisementItem.jdField_b_of_type_Long = paramJSONObject.optLong("invalidTime");
-        localAdvertisementItem.jdField_c_of_type_Long = paramJSONObject.optLong("msgTime");
-        localAdvertisementItem.jdField_a_of_type_Short = ((short)paramJSONObject.optInt("shMsgSeq"));
-        localAdvertisementItem.jdField_d_of_type_Long = paramJSONObject.optLong("msgUid");
-        localAdvertisementItem.jdField_b_of_type_Int = ((short)paramJSONObject.optInt("maxExposureTime"));
-        localAdvertisementItem.jdField_c_of_type_Int = ((short)paramJSONObject.optInt("realExposureTime"));
-        localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localAdvertisementItem.a = paramJSONObject.getString("senderUin");
+        localAdvertisementItem.b = paramJSONObject.getString("pageUrl");
+        localAdvertisementItem.d = paramJSONObject.optString("adMsgId");
+        localAdvertisementItem.e = paramJSONObject.optLong("pushTime");
+        localAdvertisementItem.f = paramJSONObject.optBoolean("hasReport");
+        localAdvertisementItem.h = paramJSONObject.optString("str_nick");
+        localAdvertisementItem.i = paramJSONObject.optString("str_head_url");
+        localAdvertisementItem.j = paramJSONObject.optString("str_brief");
+        localAdvertisementItem.k = paramJSONObject.optInt("video_preload_state");
+        localAdvertisementItem.l = paramJSONObject.optLong("invalidTime");
+        localAdvertisementItem.m = paramJSONObject.optLong("msgTime");
+        localAdvertisementItem.n = ((short)paramJSONObject.optInt("shMsgSeq"));
+        localAdvertisementItem.o = paramJSONObject.optLong("msgUid");
+        localAdvertisementItem.p = ((short)paramJSONObject.optInt("maxExposureTime"));
+        localAdvertisementItem.q = ((short)paramJSONObject.optInt("realExposureTime"));
+        localAdvertisementItem.c = new ArrayList();
         Object localObject = paramJSONObject.getJSONArray("videoList");
-        i = 0;
-        if (i < ((JSONArray)localObject).length())
+        i1 = 0;
+        if (i1 < ((JSONArray)localObject).length())
         {
-          VideoCoverItem localVideoCoverItem = VideoCoverItem.a(((JSONArray)localObject).getJSONObject(i));
+          VideoCoverItem localVideoCoverItem = VideoCoverItem.a(((JSONArray)localObject).getJSONObject(i1));
           if (localVideoCoverItem != null) {
-            localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.add(localVideoCoverItem);
+            localAdvertisementItem.c.add(localVideoCoverItem);
           }
         }
         else
@@ -247,7 +235,7 @@ public class AdvertisementItem
             ((StringBuilder)localObject).append(paramJSONObject.optString("msgCommonData"));
             QLog.w("AdvertisementItem", 2, ((StringBuilder)localObject).toString());
           }
-          localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem = new VideoDownloadItem(paramJSONObject.optString("msgCommonData"));
+          localAdvertisementItem.g = new VideoDownloadItem(paramJSONObject.optString("msgCommonData"));
           return localAdvertisementItem;
         }
       }
@@ -256,73 +244,25 @@ public class AdvertisementItem
         paramJSONObject.printStackTrace();
         return null;
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
-  public static String b()
+  public static String d()
   {
     return new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date(System.currentTimeMillis()));
-  }
-  
-  public String a()
-  {
-    try
-    {
-      Object localObject1 = new JSONArray();
-      Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        JSONObject localJSONObject = ((VideoCoverItem)((Iterator)localObject2).next()).a();
-        if (localJSONObject != null) {
-          ((JSONArray)localObject1).put(localJSONObject);
-        }
-      }
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("senderUin", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject2).put("pageUrl", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject2).put("adMsgId", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject2).put("pushTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject2).put("hasReport", this.jdField_a_of_type_Boolean);
-      ((JSONObject)localObject2).put("videoList", localObject1);
-      ((JSONObject)localObject2).put("str_nick", this.jdField_d_of_type_JavaLangString);
-      ((JSONObject)localObject2).put("str_head_url", this.e);
-      ((JSONObject)localObject2).put("str_brief", this.f);
-      ((JSONObject)localObject2).put("video_preload_state", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject2).put("invalidTime", this.jdField_b_of_type_Long);
-      ((JSONObject)localObject2).put("msgTime", this.jdField_c_of_type_Long);
-      ((JSONObject)localObject2).put("shMsgSeq", this.jdField_a_of_type_Short);
-      ((JSONObject)localObject2).put("msgUid", this.jdField_d_of_type_Long);
-      ((JSONObject)localObject2).put("maxExposureTime", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject2).put("realExposureTime", this.jdField_c_of_type_Int);
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("convertToJson msgCommonData");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a().toString());
-        QLog.w("AdvertisementItem", 2, ((StringBuilder)localObject1).toString());
-      }
-      ((JSONObject)localObject2).put("msgCommonData", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a().toString());
-      localObject1 = ((JSONObject)localObject2).toString();
-      return localObject1;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return null;
   }
   
   public oidb_cmd0x886.AdInfo a(int paramInt)
   {
     oidb_cmd0x886.AdInfo localAdInfo = new oidb_cmd0x886.AdInfo();
-    localAdInfo.bytes_trace_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    localAdInfo.uint64_pull_time.set(this.jdField_a_of_type_Long);
+    localAdInfo.bytes_trace_id.set(ByteStringMicro.copyFromUtf8(this.d));
+    localAdInfo.uint64_pull_time.set(this.e);
     localAdInfo.enum_report_type.set(paramInt);
     long l2 = 0L;
     try
     {
-      l1 = Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_d_of_type_JavaLangString);
+      l1 = Long.parseLong(this.g.d);
     }
     catch (Exception localException1)
     {
@@ -334,7 +274,7 @@ public class AdvertisementItem
     l1 = 0L;
     try
     {
-      long l3 = Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_c_of_type_JavaLangString);
+      long l3 = Long.parseLong(this.g.c);
       l2 = l3;
     }
     catch (Exception localException2)
@@ -348,27 +288,75 @@ public class AdvertisementItem
   
   public boolean a()
   {
-    int i = this.jdField_b_of_type_Int;
-    if (i == 0) {
+    int i1 = this.p;
+    if (i1 == 0) {
       return true;
     }
-    int j = this.jdField_c_of_type_Int;
-    if (j >= i) {
+    int i2 = this.q;
+    if (i2 >= i1) {
       return false;
     }
-    this.jdField_c_of_type_Int = (j + 1);
+    this.q = (i2 + 1);
     return true;
   }
   
   public boolean b()
   {
-    VideoDownloadItem localVideoDownloadItem = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem;
-    return (localVideoDownloadItem != null) && (!TextUtils.isEmpty(localVideoDownloadItem.jdField_a_of_type_JavaLangString));
+    VideoDownloadItem localVideoDownloadItem = this.g;
+    return (localVideoDownloadItem != null) && (!TextUtils.isEmpty(localVideoDownloadItem.a));
   }
   
-  public boolean c()
+  public String c()
   {
-    return this.jdField_b_of_type_Long < NetConnInfoCenter.getServerTimeMillis();
+    try
+    {
+      Object localObject1 = new JSONArray();
+      Object localObject2 = this.c.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        JSONObject localJSONObject = ((VideoCoverItem)((Iterator)localObject2).next()).a();
+        if (localJSONObject != null) {
+          ((JSONArray)localObject1).put(localJSONObject);
+        }
+      }
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("senderUin", this.a);
+      ((JSONObject)localObject2).put("pageUrl", this.b);
+      ((JSONObject)localObject2).put("adMsgId", this.d);
+      ((JSONObject)localObject2).put("pushTime", this.e);
+      ((JSONObject)localObject2).put("hasReport", this.f);
+      ((JSONObject)localObject2).put("videoList", localObject1);
+      ((JSONObject)localObject2).put("str_nick", this.h);
+      ((JSONObject)localObject2).put("str_head_url", this.i);
+      ((JSONObject)localObject2).put("str_brief", this.j);
+      ((JSONObject)localObject2).put("video_preload_state", this.k);
+      ((JSONObject)localObject2).put("invalidTime", this.l);
+      ((JSONObject)localObject2).put("msgTime", this.m);
+      ((JSONObject)localObject2).put("shMsgSeq", this.n);
+      ((JSONObject)localObject2).put("msgUid", this.o);
+      ((JSONObject)localObject2).put("maxExposureTime", this.p);
+      ((JSONObject)localObject2).put("realExposureTime", this.q);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("convertToJson msgCommonData");
+        ((StringBuilder)localObject1).append(this.g.a().toString());
+        QLog.w("AdvertisementItem", 2, ((StringBuilder)localObject1).toString());
+      }
+      ((JSONObject)localObject2).put("msgCommonData", this.g.a().toString());
+      localObject1 = ((JSONObject)localObject2).toString();
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public boolean e()
+  {
+    return this.l < NetConnInfoCenter.getServerTimeMillis();
   }
   
   public boolean equals(Object paramObject)
@@ -379,14 +367,14 @@ public class AdvertisementItem
     if ((paramObject != null) && (getClass() == paramObject.getClass()))
     {
       paramObject = (AdvertisementItem)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      return this.a.equals(paramObject.a);
     }
     return false;
   }
   
   public int hashCode()
   {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
+    return this.a.hashCode();
   }
   
   public String toString()
@@ -394,29 +382,29 @@ public class AdvertisementItem
     StringBuilder localStringBuilder1 = new StringBuilder();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("====mSenderUin ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("\n");
     localStringBuilder1.append(((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("====mContentPageUrl ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append("\n");
     localStringBuilder1.append(((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("====invalidTime ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+    ((StringBuilder)localObject).append(this.l);
     localStringBuilder1.append(((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("====shMsgSeq ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Short);
+    ((StringBuilder)localObject).append(this.n);
     localStringBuilder1.append(((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("====maxExposureTime ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.p);
     localStringBuilder1.append(((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = this.c;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = this.c.iterator();
     }
     while (((Iterator)localObject).hasNext())
     {
@@ -429,11 +417,11 @@ public class AdvertisementItem
       continue;
       localStringBuilder1.append("====VideoCoverItem NULL ~ \n");
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null)
+    if (this.g != null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("====VideoDownloadItem ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.toString());
+      ((StringBuilder)localObject).append(this.g.toString());
       ((StringBuilder)localObject).append("\n");
       localStringBuilder1.append(((StringBuilder)localObject).toString());
     }
@@ -442,7 +430,7 @@ public class AdvertisementItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem
  * JD-Core Version:    0.7.0.1
  */

@@ -18,42 +18,42 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 public class ComboProviderGridAdapter$LockAnimationDrawable
   extends DetectableAnimationDrawable
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow = null;
-  QIMFilterCategoryItem jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem = null;
+  ImageView a = null;
   ImageView b = null;
+  PopupWindow c = null;
+  QIMFilterCategoryItem d = null;
   
   public ComboProviderGridAdapter$LockAnimationDrawable(AnimationDrawable paramAnimationDrawable, ImageView paramImageView1, PopupWindow paramPopupWindow, ImageView paramImageView2, QIMFilterCategoryItem paramQIMFilterCategoryItem)
   {
     super(paramAnimationDrawable);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = paramPopupWindow;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
+    this.c = paramPopupWindow;
+    this.a = paramImageView1;
     this.b = paramImageView2;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem = paramQIMFilterCategoryItem;
+    this.d = paramQIMFilterCategoryItem;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+    this.c.dismiss();
+    this.a.setImageDrawable(null);
+    this.a = null;
+    this.c = null;
     Object localObject = (CaptureComboManager)QIMManager.a(5);
-    ((CaptureComboManager)localObject).a().a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    SharedPreUtils.m(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, false);
-    VideoFilterTools.a().a(3, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
+    ((CaptureComboManager)localObject).i().b(this.d.a);
+    SharedPreUtils.l(BaseApplicationImpl.getApplication(), this.d.a, false);
+    VideoFilterTools.a().b(3, this.d.e, this.d.a);
     Bundle localBundle = new Bundle();
     localBundle.putInt("apply_source", 1);
     localBundle.putInt("capture_scene", 0);
-    ((CaptureComboManager)localObject).a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem, (Activity)this.b.getContext(), localBundle);
+    ((CaptureComboManager)localObject).b(this.d, (Activity)this.b.getContext(), localBundle);
     this.b.setVisibility(8);
-    localObject = ((CaptureComboManager)localObject).a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem);
-    ComboProviderGridAdapter.a(this.b, (CaptureComboBase)localObject, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem);
+    localObject = ((CaptureComboManager)localObject).c(this.d);
+    ComboProviderGridAdapter.a(this.b, (CaptureComboBase)localObject, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.adapter.ComboProviderGridAdapter.LockAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

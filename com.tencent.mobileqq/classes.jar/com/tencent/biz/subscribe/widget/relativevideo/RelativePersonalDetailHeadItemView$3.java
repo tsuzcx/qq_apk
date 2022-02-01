@@ -12,10 +12,10 @@ class RelativePersonalDetailHeadItemView$3
   
   public void run()
   {
-    if ((RelativePersonalDetailHeadItemView.a(this.this$0)) && (this.a.taskCount > 0))
+    if ((RelativePersonalDetailHeadItemView.c(this.this$0)) && (this.a.taskCount > 0))
     {
-      RelativePersonalDetailHeadItemView.a(this.this$0).setVisibility(0);
-      RelativePersonalDetailHeadItemView.b(this.this$0).setVisibility(0);
+      RelativePersonalDetailHeadItemView.d(this.this$0).setVisibility(0);
+      RelativePersonalDetailHeadItemView.e(this.this$0).setVisibility(0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateUploadBoxStatus  PublishBoxStatusEvent  VISIBLE  taskCount = ");
       localStringBuilder.append(this.a.taskCount);
@@ -26,31 +26,31 @@ class RelativePersonalDetailHeadItemView$3
       SLog.c("RelativePersonalDetailH", localStringBuilder.toString());
       if (this.a.hasRunningTask)
       {
-        RelativePersonalDetailHeadItemView.a(this.this$0);
-        RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130850770);
-        RelativePersonalDetailHeadItemView.b(this.this$0).setText(String.valueOf(this.a.taskCount));
+        RelativePersonalDetailHeadItemView.f(this.this$0);
+        RelativePersonalDetailHeadItemView.e(this.this$0).setBackgroundResource(2130852592);
+        RelativePersonalDetailHeadItemView.e(this.this$0).setText(String.valueOf(this.a.taskCount));
         return;
       }
       if (this.a.hasOfflineWaitingTask)
       {
-        RelativePersonalDetailHeadItemView.b(this.this$0);
-        RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130848921);
-        RelativePersonalDetailHeadItemView.b(this.this$0).setText("");
+        RelativePersonalDetailHeadItemView.g(this.this$0);
+        RelativePersonalDetailHeadItemView.e(this.this$0).setBackgroundResource(2130850604);
+        RelativePersonalDetailHeadItemView.e(this.this$0).setText("");
         return;
       }
-      RelativePersonalDetailHeadItemView.b(this.this$0);
-      RelativePersonalDetailHeadItemView.b(this.this$0).setBackgroundResource(2130848920);
-      RelativePersonalDetailHeadItemView.b(this.this$0).setText("");
+      RelativePersonalDetailHeadItemView.g(this.this$0);
+      RelativePersonalDetailHeadItemView.e(this.this$0).setBackgroundResource(2130850603);
+      RelativePersonalDetailHeadItemView.e(this.this$0).setText("");
       return;
     }
-    RelativePersonalDetailHeadItemView.a(this.this$0).setVisibility(8);
-    RelativePersonalDetailHeadItemView.b(this.this$0).setVisibility(8);
+    RelativePersonalDetailHeadItemView.d(this.this$0).setVisibility(8);
+    RelativePersonalDetailHeadItemView.e(this.this$0).setVisibility(8);
     SLog.c("RelativePersonalDetailH", "updateUploadBoxStatus  PublishBoxStatusEvent  GONE");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView.3
  * JD-Core Version:    0.7.0.1
  */

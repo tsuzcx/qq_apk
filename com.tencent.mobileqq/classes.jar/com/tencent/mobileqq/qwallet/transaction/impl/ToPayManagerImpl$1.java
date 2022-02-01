@@ -16,7 +16,7 @@ class ToPayManagerImpl$1
   
   public void run()
   {
-    Object localObject1 = QWalletTools.a();
+    Object localObject1 = QWalletTools.b();
     Object localObject4 = null;
     Object localObject3 = null;
     if (localObject1 != null) {}
@@ -31,7 +31,7 @@ class ToPayManagerImpl$1
       ((StringBuilder)localObject2).append((String)localObject1);
       localObject1 = ((StringBuilder)localObject2).toString();
       localObject2 = localObject1;
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.a == 1)
       {
         localObject2 = localObject1;
         if (this.b > 0)
@@ -42,7 +42,7 @@ class ToPayManagerImpl$1
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append((String)localObject1);
             ((StringBuilder)localObject2).append("_");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+            ((StringBuilder)localObject2).append(this.a);
             ((StringBuilder)localObject2).append("_");
             ((StringBuilder)localObject2).append(this.b);
             localObject2 = ((StringBuilder)localObject2).toString();
@@ -82,7 +82,7 @@ class ToPayManagerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.ToPayManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

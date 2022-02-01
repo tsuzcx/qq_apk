@@ -20,13 +20,13 @@ class Face2FaceAddFriendActivity$11
       localStringBuilder.append(paramBoolean);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if (this.a.l) {
+    if (this.a.am) {
       return;
     }
-    if (this.a.b != 1) {
+    if (this.a.e != 1) {
       i = 1;
     }
-    Object localObject = Face2FaceAddFriendActivity.a(this.a, paramString, i);
+    Object localObject = Face2FaceAddFriendActivity.b(this.a, paramString, i);
     if (localObject != null) {
       ((Face2FaceFriendBubbleView)localObject).a(this.a.app, paramString, 1);
     }
@@ -42,7 +42,7 @@ class Face2FaceAddFriendActivity$11
       localStringBuilder.append(paramBoolean);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    Object localObject = Face2FaceAddFriendActivity.a(this.a, paramString, 2);
+    Object localObject = Face2FaceAddFriendActivity.b(this.a, paramString, 2);
     if (localObject != null) {
       ((Face2FaceFriendBubbleView)localObject).a(this.a.app, paramString, 2);
     }
@@ -50,7 +50,7 @@ class Face2FaceAddFriendActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.11
  * JD-Core Version:    0.7.0.1
  */

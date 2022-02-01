@@ -7,7 +7,7 @@ import android.util.Pair;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.stepcount.c;
 import com.tencent.mobileqq.msf.core.stepcount.g;
-import com.tencent.mobileqq.msf.core.u;
+import com.tencent.mobileqq.msf.core.v;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -172,16 +172,18 @@ public class a
     paramLong = e(paramLong);
     this.m.put(Long.valueOf(paramLong), Integer.valueOf(0));
     this.n.put(Long.valueOf(paramLong), Integer.valueOf(this.k));
+    this.p = false;
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject1 = this.q.getSharedPreferences("health_step_count_data", 4);
+    Object localObject1 = this.q.getSharedPreferences("health_step_count_data", 0);
     boolean bool = ((SharedPreferences)localObject1).getBoolean("migration_completed", false);
     long l1 = NetConnInfoCenter.getServerTime();
     if (bool)
     {
       this.p = ((SharedPreferences)localObject1).getBoolean("device_shutdown", false);
+      ((SharedPreferences)localObject1).edit().remove("device_shutdown").apply();
       if ((!paramBoolean) && (!this.p))
       {
         this.k = ((SharedPreferences)localObject1).getInt("last_sensor_value", 0);
@@ -214,10 +216,10 @@ public class a
       return;
     }
     QLog.d("StepDataStoreImpl", 1, "migrate old step data to refactored logic");
-    this.k = u.X;
-    this.l = (u.ab / 1000L);
-    this.m.put(Long.valueOf(e(l1)), Integer.valueOf(u.f()));
-    g.a().a(u.M);
+    this.k = v.X;
+    this.l = (v.ab / 1000L);
+    this.m.put(Long.valueOf(e(l1)), Integer.valueOf(v.f()));
+    g.a().a(v.M);
     ((SharedPreferences)localObject1).edit().putBoolean("migration_completed", true).apply();
   }
   
@@ -334,10 +336,15 @@ public class a
     localHashMap.put("ext2", String.valueOf(i1));
     return localHashMap;
   }
+  
+  public void d()
+  {
+    this.p = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.stepcount.a.a
  * JD-Core Version:    0.7.0.1
  */

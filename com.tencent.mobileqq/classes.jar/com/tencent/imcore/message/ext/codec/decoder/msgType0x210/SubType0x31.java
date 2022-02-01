@@ -35,10 +35,10 @@ public class SubType0x31
     Object localObject2 = (ISubAccountControlService)((QQAppInterface)localObject1).getRuntimeService(ISubAccountControlService.class, null);
     if (paramInt == 1)
     {
-      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).setBindUinStatus((AppInterface)localObject1, (byte)0, paramSubAccountBackProtocData.c);
-      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).clearAllData((AppInterface)localObject1, paramSubAccountBackProtocData.c);
+      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).setBindUinStatus((AppInterface)localObject1, (byte)0, paramSubAccountBackProtocData.d);
+      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).clearAllData((AppInterface)localObject1, paramSubAccountBackProtocData.d);
       paramSubAccountBackProtocData.a = 1;
-      ((ISubAccountControlService)localObject2).addHintPair(paramSubAccountBackProtocData.c, 1);
+      ((ISubAccountControlService)localObject2).addHintPair(paramSubAccountBackProtocData.d, 1);
       paramOnLinePushMessageProcessor.a(8004, true, paramSubAccountBackProtocData);
       return;
     }
@@ -48,7 +48,7 @@ public class SubType0x31
       ISubAccountService localISubAccountService = (ISubAccountService)((QQAppInterface)localObject1).getRuntimeService(ISubAccountService.class, null);
       paramSubAccountBackProtocData.a((String)localObject2);
       localISubAccountService.updateSubAccountInfo(paramSubAccountBackProtocData);
-      Object localObject3 = paramSubAccountBackProtocData.a();
+      Object localObject3 = paramSubAccountBackProtocData.b();
       if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
       {
         localObject3 = ((ArrayList)localObject3).iterator();
@@ -64,7 +64,7 @@ public class SubType0x31
           }
           paramInt = 1 - ((QQAppInterface)localObject1).getConversationFacade().a(str, 7000);
           if (paramInt != 0) {
-            ((QQAppInterface)localObject1).getConversationFacade().d(str, 7000, paramInt);
+            ((QQAppInterface)localObject1).getConversationFacade().e(str, 7000, paramInt);
           }
         }
       }
@@ -85,7 +85,7 @@ public class SubType0x31
         paramInt = 1 - ((QQAppInterface)localObject1).getConversationFacade().a((String)localObject2, 7000);
         if (paramInt != 0)
         {
-          ((QQAppInterface)localObject1).getConversationFacade().d((String)localObject2, 7000, paramInt);
+          ((QQAppInterface)localObject1).getConversationFacade().e((String)localObject2, 7000, paramInt);
           ((QQAppInterface)localObject1).getMessageFacade().a(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, localObject2 });
         }
         if (QLog.isColorLevel())
@@ -136,8 +136,8 @@ public class SubType0x31
           return;
         }
         paramArrayOfByte = new SubAccountBackProtocData();
-        paramArrayOfByte.c = String.valueOf(l1);
-        paramArrayOfByte.b = String.valueOf(l2);
+        paramArrayOfByte.d = String.valueOf(l1);
+        paramArrayOfByte.c = String.valueOf(l2);
         localObject = new HashMap();
         ((HashMap)localObject).put("param_FailCode", "12018");
         StringBuilder localStringBuilder = new StringBuilder();
@@ -171,7 +171,7 @@ public class SubType0x31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x31
  * JD-Core Version:    0.7.0.1
  */

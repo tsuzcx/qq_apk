@@ -6,15 +6,15 @@ public abstract interface MemoryCache<T>
   
   public abstract void a();
   
-  public abstract void a(String paramString);
-  
   public abstract boolean a(String paramString, T paramT);
   
   public abstract boolean a(String paramString, T paramT, byte paramByte);
+  
+  public abstract void b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.cache.memory.MemoryCache
  * JD-Core Version:    0.7.0.1
  */

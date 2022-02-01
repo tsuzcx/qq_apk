@@ -17,20 +17,20 @@ class GdtVideoImaxFragment$1
   
   public void a(View paramView)
   {
-    GdtVideoImaxFragment.a(this.a).a().b(2);
-    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 1)
+    GdtVideoImaxFragment.d(this.a).getVideoReportInfo().b(2);
+    if (GdtVideoImaxFragment.f(this.a).getVideoSplicePageStyle() == 1)
     {
       boolean bool = this.a.a(paramView);
-      GdtVideoImaxFragment.a(this.a, bool);
-      GdtVideoImaxFragment.a(this.a);
+      GdtVideoImaxFragment.b(this.a, bool);
+      GdtVideoImaxFragment.g(this.a);
       return;
     }
-    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 0)
+    if (GdtVideoImaxFragment.f(this.a).getVideoSplicePageStyle() == 0)
     {
-      GdtVideoImaxFragment.a(this.a).e();
+      GdtVideoImaxFragment.d(this.a).e();
       paramView = GdtUIUtils.a(this.a.getBaseActivity());
       GdtVideoImaxFragment localGdtVideoImaxFragment = this.a;
-      GdtVideoImaxFragment.a(localGdtVideoImaxFragment, paramView[1], GdtVideoImaxFragment.a(localGdtVideoImaxFragment).getLayoutParams().height, paramView[1]);
+      GdtVideoImaxFragment.a(localGdtVideoImaxFragment, paramView[1], GdtVideoImaxFragment.h(localGdtVideoImaxFragment).getLayoutParams().height, paramView[1]);
     }
   }
   
@@ -48,8 +48,8 @@ class GdtVideoImaxFragment$1
     GdtLog.a("GdtVideoImaxFragment", "onStart() called with: ");
     if (GdtVideoImaxFragment.a(this.a))
     {
-      GdtVideoImaxFragment.a(this.a).removeCallbacks(GdtVideoImaxFragment.a(this.a));
-      GdtVideoImaxFragment.a(this.a).postDelayed(new GdtVideoImaxFragment.1.1(this), 75L);
+      GdtVideoImaxFragment.c(this.a).removeCallbacks(GdtVideoImaxFragment.b(this.a));
+      GdtVideoImaxFragment.c(this.a).postDelayed(new GdtVideoImaxFragment.1.1(this), 75L);
       GdtVideoImaxFragment.a(this.a, false);
     }
   }
@@ -74,7 +74,7 @@ class GdtVideoImaxFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1
  * JD-Core Version:    0.7.0.1
  */

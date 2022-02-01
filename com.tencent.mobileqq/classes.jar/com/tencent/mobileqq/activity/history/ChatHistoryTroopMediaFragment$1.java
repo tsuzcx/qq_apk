@@ -15,42 +15,42 @@ class ChatHistoryTroopMediaFragment$1
 {
   ChatHistoryTroopMediaFragment$1(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, ActionSheet paramActionSheet, ArrayList paramArrayList) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramView != null)
     {
-      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
+      paramView = this.a.getContent(paramInt);
       if (paramView == null) {
         return;
       }
       if (!TextUtils.isEmpty(paramView)) {
-        if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getBaseActivity().getResources().getString(2131689887)))
+        if (paramView.equals(this.c.getBaseActivity().getResources().getString(2131886528)))
         {
-          paramView = this.jdField_a_of_type_JavaUtilArrayList;
-          if ((paramView != null) && (paramView.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a.h();
+          paramView = this.b;
+          if ((paramView != null) && (paramView.size() > 0) && (this.c.s != null)) {
+            this.c.s.l();
           }
         }
-        else if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getBaseActivity().getResources().getString(2131693257)))
+        else if (paramView.equals(this.c.getBaseActivity().getResources().getString(2131890805)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a(this.jdField_a_of_type_JavaUtilArrayList);
+          this.c.a(this.b);
         }
-        else if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getBaseActivity().getResources().getString(2131693263)))
+        else if (paramView.equals(this.c.getBaseActivity().getResources().getString(2131890811)))
         {
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() > 20) {
-            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getBaseActivity(), 2131692653, 0).a();
+          if (this.b.size() > 20) {
+            QQToast.makeText(this.c.getBaseActivity(), 2131889677, 0).show();
           } else {
-            this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.b(this.jdField_a_of_type_JavaUtilArrayList);
+            this.c.b(this.b);
           }
         }
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment.1
  * JD-Core Version:    0.7.0.1
  */

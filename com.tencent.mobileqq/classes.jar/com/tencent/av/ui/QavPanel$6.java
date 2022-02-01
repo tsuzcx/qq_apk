@@ -15,31 +15,31 @@ class QavPanel$6
     int j;
     if (i >= 0)
     {
-      paramValueAnimator = this.jdField_a_of_type_ArrayOfInt;
+      paramValueAnimator = this.a;
       if (i <= paramValueAnimator[0])
       {
         j = paramValueAnimator[0];
         i = (int)(i * 255 * 1.0F / j);
-        QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(i);
-        QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
+        QavPanel.c(this.b).setAlpha(i);
+        QavPanel.c(this.b).a(true);
         return;
       }
     }
-    paramValueAnimator = this.jdField_a_of_type_ArrayOfInt;
+    paramValueAnimator = this.a;
     if ((i > paramValueAnimator[0]) && (i <= paramValueAnimator[1]))
     {
-      QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
-      QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(255);
+      QavPanel.c(this.b).a(true);
+      QavPanel.c(this.b).setAlpha(255);
       return;
     }
-    paramValueAnimator = this.jdField_a_of_type_ArrayOfInt;
+    paramValueAnimator = this.a;
     if ((i > paramValueAnimator[1]) && (i <= paramValueAnimator[2]))
     {
       j = paramValueAnimator[2];
       int k = paramValueAnimator[1];
       i = (int)((paramValueAnimator[2] - i) * 255 * 1.0F / (j - k));
-      QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).setAlpha(i);
-      QavPanel.a(this.jdField_a_of_type_ComTencentAvUiQavPanel).a(true);
+      QavPanel.c(this.b).setAlpha(i);
+      QavPanel.c(this.b).a(true);
     }
   }
 }

@@ -15,10 +15,11 @@ public abstract interface HippyReporter$EventCode
   public static final String OPEN_HIPPY = "hippy_open";
   public static final String PREDOWNLOAD_HIPPY = "hippy_predownload";
   public static final String PRELOAD_HIPPY = "hippy_preload";
+  public static final String REMOVE_PRELOAD = "hippy_remove_preLoad";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.HippyReporter.EventCode
  * JD-Core Version:    0.7.0.1
  */

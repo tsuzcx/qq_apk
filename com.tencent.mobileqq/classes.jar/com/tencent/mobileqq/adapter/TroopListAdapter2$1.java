@@ -17,13 +17,13 @@ class TroopListAdapter2$1
   {
     if (!paramBoolean)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity;
-      QQToast.a((Context)localObject, ((TroopActivity)localObject).getString(2131696194), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.getTitleBarHeight());
-      if ((this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
+      Object localObject = this.a;
+      QQToast.makeText((Context)localObject, ((TroopActivity)localObject).getString(2131893960), 0).show(this.a.getTitleBarHeight());
+      if ((this.b.t != null) && (this.b.t.containsKey(paramString)))
       {
-        localObject = (Switch)this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null) {
-          ((Switch)localObject).setChecked(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramString));
+        localObject = (Switch)this.b.t.get(paramString);
+        if (this.b.s != null) {
+          ((Switch)localObject).setChecked(this.b.s.q(paramString));
         }
       }
     }
@@ -31,7 +31,7 @@ class TroopListAdapter2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.1
  * JD-Core Version:    0.7.0.1
  */

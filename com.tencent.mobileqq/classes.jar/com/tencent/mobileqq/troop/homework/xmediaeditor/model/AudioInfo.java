@@ -8,42 +8,41 @@ import org.json.JSONObject;
 public class AudioInfo
   extends UploadEditItemInfo
 {
-  public int a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public String c;
+  public int c;
+  public int d;
+  public String e;
+  public boolean f = false;
   
   public AudioInfo(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramString3;
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.f = 0;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramString3;
+    if (TextUtils.isEmpty(this.b)) {
+      this.o = 0;
     } else {
-      this.f = 3;
+      this.o = 3;
     }
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    this.h = new JSONObject();
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("type", "voice");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("path", this.jdField_a_of_type_JavaLangString);
+      this.h.put("type", "voice");
+      if (!TextUtils.isEmpty(this.a)) {
+        this.h.put("path", this.a);
       }
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(this.b)) {
+        this.h.put("url", this.b);
       }
-      if (this.jdField_a_of_type_Int > 0) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("time", this.jdField_a_of_type_Int);
+      if (this.c > 0) {
+        this.h.put("time", this.c);
       }
-      if (this.jdField_b_of_type_Int > 0)
+      if (this.d > 0)
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("size", this.jdField_b_of_type_Int);
+        this.h.put("size", this.d);
         return;
       }
     }
@@ -55,7 +54,6 @@ public class AudioInfo
   
   public AudioInfo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Boolean = false;
     a(paramJSONObject);
   }
   
@@ -66,10 +64,10 @@ public class AudioInfo
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("path", paramString);
+      this.h.put("path", paramString);
       return;
     }
     catch (JSONException paramString)
@@ -80,22 +78,17 @@ public class AudioInfo
   
   public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("path");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("url");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("time");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("size");
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    this.h = paramJSONObject;
+    this.a = paramJSONObject.optString("path");
+    this.b = paramJSONObject.optString("url");
+    this.c = paramJSONObject.optInt("time");
+    this.d = paramJSONObject.optInt("size");
+    if (TextUtils.isEmpty(this.b))
     {
-      this.f = 0;
+      this.o = 0;
       return;
     }
-    this.f = 3;
-  }
-  
-  public boolean a()
-  {
-    return HttpUtil.isValidUrl(this.jdField_b_of_type_JavaLangString);
+    this.o = 3;
   }
   
   public int b()
@@ -105,26 +98,31 @@ public class AudioInfo
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("url", paramString);
+      this.h.put("url", paramString);
     }
     catch (JSONException paramString)
     {
       paramString.printStackTrace();
     }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.b))
     {
-      this.f = 0;
+      this.o = 0;
       return;
     }
-    this.f = 3;
+    this.o = 3;
+  }
+  
+  public boolean c()
+  {
+    return HttpUtil.isValidUrl(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo
  * JD-Core Version:    0.7.0.1
  */

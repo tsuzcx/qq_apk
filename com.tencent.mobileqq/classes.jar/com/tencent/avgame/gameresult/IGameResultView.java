@@ -6,8 +6,6 @@ import com.tencent.common.app.business.BaseAVGameAppInterface;
 
 public abstract interface IGameResultView
 {
-  public abstract Activity a();
-  
   public abstract void a(int paramInt, String paramString1, String paramString2);
   
   public abstract void a(EngineData paramEngineData);
@@ -21,6 +19,8 @@ public abstract interface IGameResultView
   public abstract void b(EngineData paramEngineData);
   
   public abstract void b(String paramString1, String paramString2, String paramString3);
+  
+  public abstract Activity d();
 }
 
 

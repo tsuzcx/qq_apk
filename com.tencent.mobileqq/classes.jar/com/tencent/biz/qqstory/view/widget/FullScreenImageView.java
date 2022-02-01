@@ -39,7 +39,7 @@ public class FullScreenImageView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(UIUtils.a(super.getContext()), UIUtils.d(super.getContext()));
+    setMeasuredDimension(UIUtils.b(super.getContext()), UIUtils.e(super.getContext()));
   }
 }
 

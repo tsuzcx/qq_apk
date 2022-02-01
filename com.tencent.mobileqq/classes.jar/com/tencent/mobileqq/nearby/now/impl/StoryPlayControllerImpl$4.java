@@ -18,7 +18,7 @@ class StoryPlayControllerImpl$4
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    IVideoInfoListener localIVideoInfoListener = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicIVideoInfoListener;
+    IVideoInfoListener localIVideoInfoListener = this.a;
     if (localIVideoInfoListener != null) {
       ((IVideoPlayerView.VideoInfoListener)localIVideoInfoListener).onCoverComplete(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
     }
@@ -26,7 +26,7 @@ class StoryPlayControllerImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.impl.StoryPlayControllerImpl.4
  * JD-Core Version:    0.7.0.1
  */

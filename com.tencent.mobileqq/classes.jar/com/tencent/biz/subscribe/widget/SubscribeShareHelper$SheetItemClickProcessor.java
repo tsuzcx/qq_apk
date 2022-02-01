@@ -21,23 +21,23 @@ import common.config.service.QzoneConfig;
 class SubscribeShareHelper$SheetItemClickProcessor
   implements ShareActionSheet.OnItemClickListener
 {
-  private final SubscribeShareHelper.ShareActionItemClickListenr jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper$ShareActionItemClickListenr;
+  private final SubscribeShareHelper.ShareActionItemClickListenr b;
   
   public SubscribeShareHelper$SheetItemClickProcessor(SubscribeShareHelper paramSubscribeShareHelper, SubscribeShareHelper.ShareActionItemClickListenr paramShareActionItemClickListenr)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper$ShareActionItemClickListenr = paramShareActionItemClickListenr;
+    this.b = paramShareActionItemClickListenr;
   }
   
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper.b();
-    if (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper) != null)
+    this.a.b();
+    if (SubscribeShareHelper.a(this.a) != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper.a == null) {
+      if (this.a.a == null) {
         return;
       }
       int i = paramActionSheetItem.action;
-      paramActionSheetItem = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper$ShareActionItemClickListenr;
+      paramActionSheetItem = this.b;
       if (paramActionSheetItem != null) {
         paramActionSheetItem.a(i);
       }
@@ -64,92 +64,92 @@ class SubscribeShareHelper$SheetItemClickProcessor
                         default: 
                           break;
                         case 155: 
-                          if ((SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper) == null) || (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null)) {
+                          if ((SubscribeShareHelper.a(this.a) == null) || (SubscribeShareHelper.a(this.a).b == null)) {
                             break;
                           }
-                          SubscribeLaucher.a(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.yzOrderPage.get());
-                          VSReporter.b(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_shoplist", 0, 0, new String[0]);
+                          SubscribeLaucher.a(SubscribeShareHelper.a(this.a).b.poster.yzOrderPage.get());
+                          VSReporter.b(SubscribeShareHelper.a(this.a).b.poster.id.get(), "auth_share", "clk_shoplist", 0, 0, new String[0]);
                           break;
                         case 154: 
-                          SubscribeLaucher.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
-                          VSReporter.b(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "sync_qzone", 0, 0, new String[0]);
+                          SubscribeLaucher.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", SubscribeShareHelper.a(this.a).b.poster.id.get()));
+                          VSReporter.b(SubscribeShareHelper.a(this.a).b.poster.id.get(), "auth_share", "sync_qzone", 0, 0, new String[0]);
                           break;
                         case 153: 
-                          SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).a(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper));
-                          if ((SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper) == null) || (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null)) {
+                          SubscribeShareHelper.g(this.a).a(SubscribeShareHelper.a(this.a));
+                          if ((SubscribeShareHelper.a(this.a) == null) || (SubscribeShareHelper.a(this.a).b == null)) {
                             break;
                           }
-                          VSReporter.a(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_pic", 0, 0, new String[] { null, null, SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).f(), SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).c() });
+                          VSReporter.a(SubscribeShareHelper.a(this.a).b.poster.id.get(), "auth_share", "clk_pic", 0, 0, new String[] { null, null, SubscribeShareHelper.a(this.a).g(), SubscribeShareHelper.a(this.a).d() });
                           break;
                         case 152: 
-                          if ((SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper) == null) || (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null)) {
+                          if ((SubscribeShareHelper.a(this.a) == null) || (SubscribeShareHelper.a(this.a).b == null)) {
                             break;
                           }
-                          SubscribeLaucher.a(QzoneConfig.getInstance().getConfig("qqsubscribe", "showFansGroupConfigEntranceUrl", "https://h5.qzone.qq.com/subscription/fansqun/{uin}?_proxy=1&_wv=3").replace("{uin}", SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
-                          VSReporter.a(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_fan", 0, 0, new String[0]);
+                          SubscribeLaucher.a(QzoneConfig.getInstance().getConfig("qqsubscribe", "showFansGroupConfigEntranceUrl", "https://h5.qzone.qq.com/subscription/fansqun/{uin}?_proxy=1&_wv=3").replace("{uin}", SubscribeShareHelper.a(this.a).b.poster.id.get()));
+                          VSReporter.a(SubscribeShareHelper.a(this.a).b.poster.id.get(), "auth_share", "clk_fan", 0, 0, new String[0]);
                         }
                         break;
                       case 11: 
-                        SubscribeShareHelper.c(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper);
+                        SubscribeShareHelper.d(this.a);
                         break;
                       case 9: 
                       case 10: 
-                        SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper, i);
+                        SubscribeShareHelper.a(this.a, i);
                         break;
                       }
                     }
-                    else if ((SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper) != null) && (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
+                    else if ((SubscribeShareHelper.a(this.a) != null) && (SubscribeShareHelper.a(this.a).b != null))
                     {
-                      VSReporter.a(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "clk_shop", 0, 0, new String[0]);
-                      SubscribeLaucher.a(SubscribeConstants.a(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()));
+                      VSReporter.a(SubscribeShareHelper.a(this.a).b.poster.id.get(), "auth_share", "clk_shop", 0, 0, new String[0]);
+                      SubscribeLaucher.a(SubscribeConstants.a(SubscribeShareHelper.a(this.a).b.poster.id.get()));
                     }
                   }
                 }
-                else if ((SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper) != null) && (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).isColorNoteExist()))
+                else if ((SubscribeShareHelper.h(this.a) != null) && (SubscribeShareHelper.h(this.a).isColorNoteExist()))
                 {
-                  QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690896), 5000).a();
-                  SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).deleteColorNote();
+                  QQToast.makeText(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131887835), 5000).show();
+                  SubscribeShareHelper.h(this.a).deleteColorNote();
                   QLog.d("SubscribeShareHelper", 2, "mColorNoteController ： delete colorNote");
                 }
               }
-              else if (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper) != null) {
-                if (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).canAddColorNote())
+              else if (SubscribeShareHelper.h(this.a) != null) {
+                if (SubscribeShareHelper.h(this.a).canAddColorNote())
                 {
                   QLog.d("SubscribeShareHelper", 2, "mColorNoteController ：add colorNote");
-                  SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).insertColorNote();
+                  SubscribeShareHelper.h(this.a).insertColorNote();
                 }
                 else
                 {
-                  SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).onCannotAdd();
+                  SubscribeShareHelper.h(this.a).onCannotAdd();
                 }
               }
             }
             else {
-              SubscribeShareHelper.e(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper);
+              SubscribeShareHelper.f(this.a);
             }
           }
           else {
-            SubscribeShareHelper.d(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper);
+            SubscribeShareHelper.e(this.a);
           }
         }
         else {
-          SubscribeShareHelper.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper);
+          SubscribeShareHelper.c(this.a);
         }
       }
       else {
-        SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper);
+        SubscribeShareHelper.b(this.a);
       }
-      if ((i != 11) && (i != 40) && (SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper) != null))
+      if ((i != 11) && (i != 40) && (SubscribeShareHelper.a(this.a) != null))
       {
-        paramActionSheetItem = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper;
-        SubscribeShareHelper.a(paramActionSheetItem, SubscribeShareHelper.a(paramActionSheetItem).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, i - 1, SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeShareHelper).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+        paramActionSheetItem = this.a;
+        SubscribeShareHelper.a(paramActionSheetItem, SubscribeShareHelper.a(paramActionSheetItem).b, i - 1, SubscribeShareHelper.a(this.a).e);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.SheetItemClickProcessor
  * JD-Core Version:    0.7.0.1
  */

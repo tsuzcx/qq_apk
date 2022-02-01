@@ -9,27 +9,27 @@ import java.util.List;
 public class NearbyProfileDisplayPanel$NearbyProfilePagerAdapter
   extends FragmentPagerAdapter
 {
-  private List<BaseFragment> jdField_a_of_type_JavaUtilList;
+  private List<BaseFragment> b;
   
   NearbyProfileDisplayPanel$NearbyProfilePagerAdapter(FragmentManager paramFragmentManager, List<BaseFragment> paramList)
   {
     super(paramList);
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public BaseFragment a(int paramInt)
-  {
-    return (BaseFragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.b = localObject;
   }
   
   public QBaseFragment a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (localList.size() > paramInt)) {
-      return (QBaseFragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (QBaseFragment)this.b.get(paramInt);
     }
     return null;
+  }
+  
+  public BaseFragment b(int paramInt)
+  {
+    return (BaseFragment)this.b.get(paramInt);
   }
   
   public int getCount()
@@ -39,7 +39,7 @@ public class NearbyProfileDisplayPanel$NearbyProfilePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.NearbyProfilePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,21 +11,21 @@ import mqq.app.MSFServlet;
 public class OlympicToolService
   extends MobileQQServiceBase
 {
-  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  OlympicToolAppInterface a;
+  Random b = new Random();
   
   OlympicToolService(OlympicToolAppInterface paramOlympicToolAppInterface)
   {
     if (QLog.isColorLevel()) {
       QLog.i("OlympicToolService", 2, "new OlympicToolService");
     }
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
-    seq = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+    this.a = paramOlympicToolAppInterface;
+    seq = Math.abs(this.b.nextInt());
   }
   
   public AppInterface getAppInterface()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+    return this.a;
   }
   
   protected Map<String, String[]> getCompatibleCmd2HandlerMap()
@@ -40,7 +40,7 @@ public class OlympicToolService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicToolService
  * JD-Core Version:    0.7.0.1
  */

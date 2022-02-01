@@ -11,18 +11,18 @@ import org.jetbrains.annotations.NotNull;
 public class RIJDailyFloatingPopupStep
   extends BasePopupStep
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Activity a;
+  private boolean b = false;
   
   public RIJDailyFloatingPopupStep(@NotNull RIJPopupAutomator paramRIJPopupAutomator, Activity paramActivity)
   {
     super(paramRIJPopupAutomator, "RIJDailyPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
-  private boolean b()
+  private boolean l()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+    Object localObject = this.a.getIntent();
     int j = 5;
     int i = j;
     if (localObject != null)
@@ -46,19 +46,19 @@ public class RIJDailyFloatingPopupStep
     return bool;
   }
   
-  protected void g() {}
-  
   protected void h() {}
   
-  public void i()
+  protected void i() {}
+  
+  public void j()
   {
-    this.jdField_a_of_type_Boolean = b();
-    a(this.jdField_a_of_type_Boolean);
+    this.b = l();
+    a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJDailyFloatingPopupStep
  * JD-Core Version:    0.7.0.1
  */

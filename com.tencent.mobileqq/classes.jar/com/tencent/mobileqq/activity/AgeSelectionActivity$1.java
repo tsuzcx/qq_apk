@@ -14,7 +14,7 @@ class AgeSelectionActivity$1
   {
     AgeSelectionActivity.a(this.a);
     this.a.finish();
-    if ("VAL_FROM_STATUS_MSG_TAB".equals(AgeSelectionActivity.a(this.a))) {
+    if ("VAL_FROM_STATUS_MSG_TAB".equals(AgeSelectionActivity.b(this.a))) {
       ReportHelperKt.a("0X800AF47");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -22,7 +22,7 @@ class AgeSelectionActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AgeSelectionActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -41,16 +41,16 @@ class ReceiptMessageDetailFragment$TroopFetchReadStatusCallback
     {
       break label125;
     }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    ReceiptMessageDetailFragment.r((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
     return;
     label125:
     QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    ReceiptMessageDetailFragment.r((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.TroopFetchReadStatusCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.view.View.OnTouchListener;
 class LebaSearchPluginManagerActivity$3
   implements View.OnTouchListener
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new LebaSearchPluginManagerActivity.3.1(this);
+  int a = 0;
+  Handler b = new LebaSearchPluginManagerActivity.3.1(this);
   
   LebaSearchPluginManagerActivity$3(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
@@ -17,7 +17,7 @@ class LebaSearchPluginManagerActivity$3
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      paramView = this.jdField_a_of_type_AndroidOsHandler;
+      paramView = this.b;
       paramView.sendMessageDelayed(paramView.obtainMessage(), 5L);
     }
     return false;
@@ -25,7 +25,7 @@ class LebaSearchPluginManagerActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity.3
  * JD-Core Version:    0.7.0.1
  */

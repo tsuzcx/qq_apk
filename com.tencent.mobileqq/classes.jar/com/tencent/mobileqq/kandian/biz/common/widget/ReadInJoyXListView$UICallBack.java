@@ -21,14 +21,14 @@ public class ReadInJoyXListView$UICallBack
     }
     paramMessage = this.a;
     if ((paramMessage != null) && (paramMessage.get() != null)) {
-      ((ReadInJoyXListView)this.a.get()).h();
+      ((ReadInJoyXListView)this.a.get()).i();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyXListView.UICallBack
  * JD-Core Version:    0.7.0.1
  */

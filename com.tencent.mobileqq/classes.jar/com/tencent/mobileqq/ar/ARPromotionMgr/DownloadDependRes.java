@@ -12,30 +12,30 @@ import com.tencent.qphone.base.util.QLog;
 
 public class DownloadDependRes
 {
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = null;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  IArConfigManager jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager = null;
-  private IArSoCallback jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = null;
+  AppInterface a;
+  ServiceConnection b = null;
+  IArConfigManager c = null;
+  private IArSoCallback d = null;
   
   void a()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null)
+      if (this.c != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback != null)
+        if (this.d != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b(this.jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback);
-          this.jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = null;
+          this.c.b(this.d);
+          this.d = null;
         }
-        if (this.jdField_a_of_type_AndroidContentServiceConnection != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-          this.jdField_a_of_type_AndroidContentServiceConnection = null;
+          this.a.getApp().unbindService(this.b);
+          this.b = null;
         }
-        this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager = null;
+        this.c = null;
       }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+      this.a = null;
       return;
     }
     catch (Exception localException)
@@ -46,7 +46,7 @@ public class DownloadDependRes
   
   void a(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = paramAppInterface;
     if (!ArConfigService.e(BaseApplicationImpl.getApplication().getRuntime()))
     {
       if (QLog.isDevelopLevel()) {
@@ -58,11 +58,11 @@ public class DownloadDependRes
   
   void b()
   {
-    IArConfigManager localIArConfigManager = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
+    IArConfigManager localIArConfigManager = this.c;
     if (localIArConfigManager != null) {
       try
       {
-        localIArConfigManager.c();
+        localIArConfigManager.h();
         return;
       }
       catch (Exception localException)
@@ -73,14 +73,14 @@ public class DownloadDependRes
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new DownloadDependRes.1(this);
-    this.jdField_a_of_type_AndroidContentServiceConnection = new DownloadDependRes.2(this);
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    this.d = new DownloadDependRes.1(this);
+    this.b = new DownloadDependRes.2(this);
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
     localObject = new Intent(((AppInterface)localObject).getApp(), ArConfigService.class);
-    boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService((Intent)localObject, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    boolean bool = this.a.getApp().bindService((Intent)localObject, this.b, 1);
     localObject = PromotionUtil.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("bindServer, ret[");
@@ -91,7 +91,7 @@ public class DownloadDependRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.DownloadDependRes
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ class MagicfaceContainerView$1
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.a(5);
+    if (this.a.b != null) {
+      this.a.b.a(5);
     }
     return false;
   }
@@ -20,45 +20,45 @@ class MagicfaceContainerView$1
   {
     if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F)
     {
-      if (this.a.a != null)
+      if (this.a.b != null)
       {
-        this.a.a.a(0);
+        this.a.b.a(0);
         return false;
       }
     }
     else if (paramMotionEvent1.getX() - paramMotionEvent2.getX() < -150.0F)
     {
-      if (this.a.a != null)
+      if (this.a.b != null)
       {
-        this.a.a.a(1);
+        this.a.b.a(1);
         return false;
       }
     }
     else if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 150.0F)
     {
-      if (this.a.a != null)
+      if (this.a.b != null)
       {
-        this.a.a.a(2);
+        this.a.b.a(2);
         return false;
       }
     }
-    else if ((paramMotionEvent1.getY() - paramMotionEvent2.getY() < -150.0F) && (this.a.a != null)) {
-      this.a.a.a(3);
+    else if ((paramMotionEvent1.getY() - paramMotionEvent2.getY() < -150.0F) && (this.a.b != null)) {
+      this.a.b.a(3);
     }
     return false;
   }
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.a(4);
+    if (this.a.b != null) {
+      this.a.b.a(4);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceContainerView.1
  * JD-Core Version:    0.7.0.1
  */

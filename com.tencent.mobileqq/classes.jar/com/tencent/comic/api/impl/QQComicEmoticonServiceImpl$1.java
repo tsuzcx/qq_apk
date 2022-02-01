@@ -27,18 +27,18 @@ class QQComicEmoticonServiceImpl$1
       if (this.a.mOnInvokeFinishListener == null) {
         return;
       }
-      if (paramSendResult.jdField_a_of_type_Int == 0)
+      if (paramSendResult.a == 0)
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("Upload finish, id=");
-          ((StringBuilder)localObject).append(paramSendResult.c);
+          ((StringBuilder)localObject).append(paramSendResult.f);
           QLog.d("VipComicEmoticonUploader", 2, ((StringBuilder)localObject).toString());
         }
         localObject = new Bundle();
         ((Bundle)localObject).putInt("result", 0);
-        ((Bundle)localObject).putString("id", paramSendResult.c);
+        ((Bundle)localObject).putString("id", paramSendResult.f);
         this.a.mOnInvokeFinishListener.a((Bundle)localObject);
         return;
       }
@@ -48,14 +48,14 @@ class QQComicEmoticonServiceImpl$1
       Object localObject = new Bundle();
       ((Bundle)localObject).putInt("result", 1);
       ((Bundle)localObject).putInt("errCode", paramSendResult.b);
-      ((Bundle)localObject).putString("errMsg", paramSendResult.jdField_a_of_type_JavaLangString);
+      ((Bundle)localObject).putString("errMsg", paramSendResult.c);
       this.a.mOnInvokeFinishListener.a((Bundle)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.api.impl.QQComicEmoticonServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

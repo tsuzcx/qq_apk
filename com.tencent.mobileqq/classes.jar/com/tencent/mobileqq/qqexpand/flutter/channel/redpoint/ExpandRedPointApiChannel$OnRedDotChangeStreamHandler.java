@@ -23,30 +23,24 @@ public final class ExpandRedPointApiChannel$OnRedDotChangeStreamHandler
   extends IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener
   implements EventChannel.StreamHandler
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ExpandFlutterIPCClient jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient = ExpandFlutterIPCClient.a();
+  private ExpandFlutterIPCClient a = ExpandFlutterIPCClient.a();
   @NotNull
-  private HashMap<Object, EventChannel.EventSink> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<Object, EventChannel.EventSink> b = new HashMap();
   @NotNull
-  private CopyOnWriteArrayList<EventChannel.EventSink> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private CopyOnWriteArrayList<EventChannel.EventSink> c = new CopyOnWriteArrayList();
+  private final Handler d = new Handler(Looper.getMainLooper());
   
   public ExpandRedPointApiChannel$OnRedDotChangeStreamHandler()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient.a((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)this);
+    this.a.a((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)this);
   }
   
   private final void a(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) {
+    if (this.c.isEmpty()) {
       ExpandChannelReportUtil.a("com.tencent.qflutter/expand/event.expand_red_dot.onRedDotChange", "OnRedDotChange", "event");
     }
-    this.jdField_a_of_type_AndroidOsHandler.post((Runnable)new ExpandRedPointApiChannel.OnRedDotChangeStreamHandler.dispatchRedPoint.1(this, paramLong));
-  }
-  
-  @NotNull
-  public final CopyOnWriteArrayList<EventChannel.EventSink> a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    this.d.post((Runnable)new ExpandRedPointApiChannel.OnRedDotChangeStreamHandler.dispatchRedPoint.1(this, paramLong));
   }
   
   public void a(int paramInt)
@@ -54,16 +48,22 @@ public final class ExpandRedPointApiChannel$OnRedDotChangeStreamHandler
     a(paramInt);
   }
   
-  public final void b()
+  @NotNull
+  public final CopyOnWriteArrayList<EventChannel.EventSink> b()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient.b((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)this);
+    return this.c;
+  }
+  
+  public final void c()
+  {
+    this.c.clear();
+    this.b.clear();
+    this.a.b((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)this);
   }
   
   protected final void finalize()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandIpcExpandFlutterIPCClient.b((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)this);
+    this.a.b((IExpandIpcFlutterNotifyListener.ExpandIpcFlutterNotifyListener)this);
   }
   
   public void onCancel(@NotNull Object paramObject)
@@ -78,11 +78,11 @@ public final class ExpandRedPointApiChannel$OnRedDotChangeStreamHandler
       localStringBuilder.append(paramObject);
       ((ILog)localObject).a("ExpandRedPointApiChannel", 2, localStringBuilder.toString());
     }
-    paramObject = (EventChannel.EventSink)this.jdField_a_of_type_JavaUtilHashMap.remove(paramObject);
+    paramObject = (EventChannel.EventSink)this.b.remove(paramObject);
     if (paramObject != null)
     {
       paramObject.endOfStream();
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramObject);
+      this.c.remove(paramObject);
     }
   }
   
@@ -98,10 +98,10 @@ public final class ExpandRedPointApiChannel$OnRedDotChangeStreamHandler
       localStringBuilder.append(paramObject);
       ((ILog)localObject).a("ExpandRedPointApiChannel", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramObject))
+    if (!this.b.containsKey(paramObject))
     {
-      ((Map)this.jdField_a_of_type_JavaUtilHashMap).put(paramObject, paramEventSink);
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addIfAbsent(paramEventSink);
+      ((Map)this.b).put(paramObject, paramEventSink);
+      this.c.addIfAbsent(paramEventSink);
       return;
     }
     paramEventSink = LogUtils.a;
@@ -118,7 +118,7 @@ public final class ExpandRedPointApiChannel$OnRedDotChangeStreamHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.redpoint.ExpandRedPointApiChannel.OnRedDotChangeStreamHandler
  * JD-Core Version:    0.7.0.1
  */

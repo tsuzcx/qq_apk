@@ -41,19 +41,19 @@ public abstract class IPresendPicMgr$Stub
         return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
       case 7: 
         paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-        paramParcel1 = a();
+        paramParcel1 = d();
         paramParcel2.writeNoException();
         paramParcel2.writeIntArray(paramParcel1);
         return true;
       case 6: 
         paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-        paramParcel1 = a();
+        paramParcel1 = c();
         paramParcel2.writeNoException();
         paramParcel2.writeBooleanArray(paramParcel1);
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mobileqq.pic.IPresendPicMgr");
-        paramInt1 = a();
+        paramInt1 = b();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -92,7 +92,7 @@ public abstract class IPresendPicMgr$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.IPresendPicMgr.Stub
  * JD-Core Version:    0.7.0.1
  */

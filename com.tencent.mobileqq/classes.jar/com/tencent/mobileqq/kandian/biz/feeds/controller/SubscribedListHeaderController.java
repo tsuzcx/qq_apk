@@ -16,29 +16,29 @@ import org.json.JSONObject;
 
 public class SubscribedListHeaderController
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TemplateBean jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new VafContext();
-  private TemplateFactory jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactory;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private VafContext a = new VafContext();
+  private TemplateFactory b;
+  private FrameLayout c;
+  private JSONObject d;
+  private TemplateBean e;
+  private Container f;
   
   public SubscribedListHeaderController(Activity paramActivity, FrameLayout paramFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactory = TemplateFactory.a("default_feeds", true);
-    ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setTemplateFactory(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactory);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    a();
+    this.a.setContext(paramActivity);
+    this.a.setCurActivity(paramActivity);
+    this.b = TemplateFactory.a("default_feeds", true);
+    ProteusSupportUtil.a(this.a, "default_feeds");
+    this.a.setTemplateFactory(this.b);
+    this.c = paramFrameLayout;
+    b();
   }
   
-  private void a()
+  private void b()
   {
     try
     {
-      String str = (String)RIJSPUtils.a("readinjoy_follow_subscribed_list_data_key", "");
+      String str = (String)RIJSPUtils.b("readinjoy_follow_subscribed_list_data_key", "");
       if (!TextUtils.isEmpty(str))
       {
         a(new JSONObject(str));
@@ -54,15 +54,15 @@ public class SubscribedListHeaderController
   public void a(JSONObject paramJSONObject)
   {
     if (paramJSONObject != null) {
-      if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
+      if (this.c == null) {
         return;
       }
     }
     try
     {
       TemplateBean localTemplateBean;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactory != null) {
-        localTemplateBean = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactory.getTemplateBean(paramJSONObject);
+      if (this.b != null) {
+        localTemplateBean = this.b.getTemplateBean(paramJSONObject);
       } else {
         localTemplateBean = null;
       }
@@ -71,26 +71,26 @@ public class SubscribedListHeaderController
         QLog.d("SubscribedListHeaderController", 1, "templateBean is null");
         return;
       }
-      if (this.jdField_a_of_type_OrgJsonJSONObject == null)
+      if (this.d == null)
       {
-        Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
+        Container localContainer = this.a.getViewFactory().inflate(this.a, localTemplateBean);
         if (localContainer == null) {
           return;
         }
-        localContainer.setBackgroundResource(2130841773);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localContainer, -1, -1);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = localContainer;
+        localContainer.setBackgroundResource(2130842690);
+        this.c.addView(localContainer, -1, -1);
+        this.c.setVisibility(0);
+        this.f = localContainer;
       }
-      ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
-      ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new SubscribedListHeaderController.1(this, localTemplateBean));
-      ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, localTemplateBean);
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = localTemplateBean;
-      ProteusSupportUtil.a(localTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), "expose_T");
+      ProteusSupportUtil.a(this.f, this.a, localTemplateBean);
+      ViewFactory.findClickableViewListener(this.f.getVirtualView(), new SubscribedListHeaderController.1(this, localTemplateBean));
+      ProteusSupportUtil.a(this.f, this.e, localTemplateBean);
+      this.d = paramJSONObject;
+      this.e = localTemplateBean;
+      ProteusSupportUtil.a(localTemplateBean, this.f.getVirtualView(), "expose_T");
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("update subscribed list data : ");
-      paramJSONObject.append(this.jdField_a_of_type_OrgJsonJSONObject);
+      paramJSONObject.append(this.d);
       QLog.d("SubscribedListHeaderController", 1, paramJSONObject.toString());
       return;
     }
@@ -99,12 +99,12 @@ public class SubscribedListHeaderController
   
   public boolean a()
   {
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() == 0;
+    return this.c.getVisibility() == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.SubscribedListHeaderController
  * JD-Core Version:    0.7.0.1
  */

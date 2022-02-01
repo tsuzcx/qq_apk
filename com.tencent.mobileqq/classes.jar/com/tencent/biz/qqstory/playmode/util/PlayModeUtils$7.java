@@ -13,7 +13,7 @@ final class PlayModeUtils$7
 {
   PlayModeUtils$7(QQUserUIItem paramQQUserUIItem, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
@@ -32,18 +32,18 @@ final class PlayModeUtils$7
     else {
       paramView = "2";
     }
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+    QQUserUIItem localQQUserUIItem = this.a;
     if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
-      new ReportEvilToXinanHandler().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      new ReportEvilToXinanHandler().a(this.a.qq, this.a.isFriend(), paramView);
     } else {
       SLog.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.7
  * JD-Core Version:    0.7.0.1
  */

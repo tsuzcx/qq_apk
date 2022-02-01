@@ -10,7 +10,7 @@ class MultiCardPageIndicator$4
   
   public void run()
   {
-    int i = this.a.getLeft() - MultiCardPageIndicator.a(this.this$0);
+    int i = this.a.getLeft() - MultiCardPageIndicator.f(this.this$0);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -26,7 +26,7 @@ class MultiCardPageIndicator$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardPageIndicator.4
  * JD-Core Version:    0.7.0.1
  */

@@ -29,22 +29,22 @@ import org.jetbrains.annotations.Nullable;
 public final class HorizontalListView
   extends AdapterView<ListAdapter>
 {
-  private int jdField_a_of_type_Int;
-  private final DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = (DataSetObserver)new HorizontalListView.mDataObserver.1(this);
-  private final GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = (GestureDetector.OnGestureListener)new HorizontalListView.mOnGesture.1(this);
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
-  private AdapterView.OnItemLongClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemLongClickListener;
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemSelectedListener;
-  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private final Queue<View> jdField_a_of_type_JavaUtilQueue = (Queue)new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
+  private ListAdapter a;
   private int b;
-  private int c = -1;
-  private int d;
-  private int e = 2147483647;
-  private int f;
+  private int c;
+  private int d = -1;
+  private int e;
+  private int f = 2147483647;
+  private int g;
+  private GestureDetector h;
+  private Scroller i;
+  private final Queue<View> j = (Queue)new LinkedList();
+  private AdapterView.OnItemSelectedListener k;
+  private AdapterView.OnItemClickListener l;
+  private AdapterView.OnItemLongClickListener m;
+  private final GestureDetector.OnGestureListener n = (GestureDetector.OnGestureListener)new HorizontalListView.mOnGesture.1(this);
+  private boolean o;
+  private final DataSetObserver p = (DataSetObserver)new HorizontalListView.mDataObserver.1(this);
   
   public HorizontalListView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -56,14 +56,14 @@ public final class HorizontalListView
   {
     try
     {
-      this.c = -1;
-      this.d = 0;
-      this.f = 0;
-      this.jdField_a_of_type_Int = 0;
+      this.d = -1;
+      this.e = 0;
+      this.g = 0;
       this.b = 0;
-      this.e = 2147483647;
-      this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener);
+      this.c = 0;
+      this.f = 2147483647;
+      this.i = new Scroller(getContext());
+      this.h = new GestureDetector(getContext(), this.n);
       return;
     }
     finally
@@ -77,38 +77,38 @@ public final class HorizontalListView
   {
     for (View localView = getChildAt(0); (localView != null) && (localView.getRight() + paramInt <= 0); localView = getChildAt(0))
     {
-      this.f += localView.getMeasuredWidth();
-      this.jdField_a_of_type_JavaUtilQueue.offer(localView);
+      this.g += localView.getMeasuredWidth();
+      this.j.offer(localView);
       removeViewInLayout(localView);
-      this.c += 1;
+      this.d += 1;
     }
     for (localView = getChildAt(getChildCount() - 1); (localView != null) && (localView.getLeft() + paramInt >= getWidth()); localView = getChildAt(getChildCount() - 1))
     {
-      this.jdField_a_of_type_JavaUtilQueue.offer(localView);
+      this.j.offer(localView);
       removeViewInLayout(localView);
-      this.d -= 1;
+      this.e -= 1;
     }
   }
   
   private final void a(int paramInt1, int paramInt2)
   {
-    ListAdapter localListAdapter = this.jdField_a_of_type_AndroidWidgetListAdapter;
+    ListAdapter localListAdapter = this.a;
     if (localListAdapter != null)
     {
-      int i = paramInt1;
-      while ((paramInt1 + paramInt2 < getWidth()) && (this.d < localListAdapter.getCount()))
+      int i1 = paramInt1;
+      while ((paramInt1 + paramInt2 < getWidth()) && (this.e < localListAdapter.getCount()))
       {
-        View localView = localListAdapter.getView(this.d, (View)this.jdField_a_of_type_JavaUtilQueue.poll(), (ViewGroup)this);
+        View localView = localListAdapter.getView(this.e, (View)this.j.poll(), (ViewGroup)this);
         Intrinsics.checkExpressionValueIsNotNull(localView, "child");
         a(localView, -1);
-        i += localView.getMeasuredWidth();
-        if (this.d == localListAdapter.getCount() - 1) {
-          this.e = (this.jdField_a_of_type_Int + i - getWidth());
+        i1 += localView.getMeasuredWidth();
+        if (this.e == localListAdapter.getCount() - 1) {
+          this.f = (this.b + i1 - getWidth());
         }
-        if (this.e < 0) {
-          this.e = 0;
+        if (this.f < 0) {
+          this.f = 0;
         }
-        this.d += 1;
+        this.e += 1;
       }
     }
   }
@@ -124,25 +124,15 @@ public final class HorizontalListView
     paramView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(getHeight(), -2147483648));
   }
   
-  private final boolean a()
-  {
-    Scroller localScroller = this.jdField_a_of_type_AndroidWidgetScroller;
-    if (localScroller == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("mScroller");
-    }
-    localScroller.forceFinished(true);
-    return true;
-  }
-  
   private final boolean a(float paramFloat)
   {
     try
     {
-      Object localObject1 = this.jdField_a_of_type_AndroidWidgetScroller;
+      Object localObject1 = this.i;
       if (localObject1 == null) {
         Intrinsics.throwUninitializedPropertyAccessException("mScroller");
       }
-      ((Scroller)localObject1).fling(this.b, 0, (int)-paramFloat, 0, 0, this.e, 0, 0);
+      ((Scroller)localObject1).fling(this.c, 0, (int)-paramFloat, 0, 0, this.f, 0, 0);
       localObject1 = Unit.INSTANCE;
       requestLayout();
       return true;
@@ -169,37 +159,37 @@ public final class HorizontalListView
   private final void b(int paramInt)
   {
     View localView = getChildAt(getChildCount() - 1);
-    int j = 0;
+    int i2 = 0;
     if (localView != null) {
-      i = localView.getRight();
+      i1 = localView.getRight();
     } else {
-      i = 0;
+      i1 = 0;
     }
-    a(i, paramInt);
+    a(i1, paramInt);
     localView = getChildAt(0);
-    int i = j;
+    int i1 = i2;
     if (localView != null) {
-      i = localView.getLeft();
+      i1 = localView.getLeft();
     }
-    b(i, paramInt);
+    b(i1, paramInt);
   }
   
   private final void b(int paramInt1, int paramInt2)
   {
-    ListAdapter localListAdapter = this.jdField_a_of_type_AndroidWidgetListAdapter;
+    ListAdapter localListAdapter = this.a;
     if (localListAdapter != null) {
       while (paramInt1 + paramInt2 > 0)
       {
-        int i = this.c;
-        if (i < 0) {
+        int i1 = this.d;
+        if (i1 < 0) {
           break;
         }
-        View localView = localListAdapter.getView(i, (View)this.jdField_a_of_type_JavaUtilQueue.poll(), (ViewGroup)this);
+        View localView = localListAdapter.getView(i1, (View)this.j.poll(), (ViewGroup)this);
         Intrinsics.checkExpressionValueIsNotNull(localView, "child");
         a(localView, 0);
         paramInt1 -= localView.getMeasuredWidth();
-        this.c -= 1;
-        this.f -= localView.getMeasuredWidth();
+        this.d -= 1;
+        this.g -= localView.getMeasuredWidth();
       }
     }
   }
@@ -208,36 +198,46 @@ public final class HorizontalListView
   {
     if (getChildCount() > 0)
     {
-      this.f += paramInt;
-      int i = this.f;
-      int j = getChildCount();
+      this.g += paramInt;
+      int i1 = this.g;
+      int i2 = getChildCount();
       paramInt = 0;
-      while (paramInt < j)
+      while (paramInt < i2)
       {
         View localView = getChildAt(paramInt);
         Intrinsics.checkExpressionValueIsNotNull(localView, "child");
-        int k = localView.getMeasuredWidth();
-        localView.layout(i, 0, i + k, localView.getMeasuredHeight());
-        i += k + localView.getPaddingRight();
+        int i3 = localView.getMeasuredWidth();
+        localView.layout(i1, 0, i1 + i3, localView.getMeasuredHeight());
+        i1 += i3 + localView.getPaddingRight();
         paramInt += 1;
       }
     }
   }
   
-  @Nullable
-  public ListAdapter a()
+  private final boolean c()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter;
+    Scroller localScroller = this.i;
+    if (localScroller == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("mScroller");
+    }
+    localScroller.forceFinished(true);
+    return true;
   }
   
   public boolean dispatchTouchEvent(@Nullable MotionEvent paramMotionEvent)
   {
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+    GestureDetector localGestureDetector = this.h;
     if (localGestureDetector == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mGesture");
     }
     return localGestureDetector.onTouchEvent(paramMotionEvent) | bool;
+  }
+  
+  @Nullable
+  public ListAdapter getAdapter()
+  {
+    return this.a;
   }
   
   @NotNull
@@ -250,10 +250,10 @@ public final class HorizontalListView
   {
     if (paramMotionEvent != null)
     {
-      int i = paramMotionEvent.getAction() & 0xFF;
-      if (i == 0) {
+      int i1 = paramMotionEvent.getAction() & 0xFF;
+      if (i1 == 0) {
         getParent().requestDisallowInterceptTouchEvent(true);
-      } else if ((i == 1) || (i == 3)) {
+      } else if ((i1 == 1) || (i1 == 3)) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
@@ -266,54 +266,54 @@ public final class HorizontalListView
     try
     {
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      Object localObject1 = this.jdField_a_of_type_AndroidWidgetListAdapter;
+      Object localObject1 = this.a;
       if (localObject1 == null) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.o)
       {
-        paramInt1 = this.jdField_a_of_type_Int;
+        paramInt1 = this.b;
         a();
         removeAllViewsInLayout();
-        this.b = paramInt1;
-        this.jdField_a_of_type_Boolean = false;
+        this.c = paramInt1;
+        this.o = false;
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetScroller;
+      localObject1 = this.i;
       if (localObject1 == null) {
         Intrinsics.throwUninitializedPropertyAccessException("mScroller");
       }
       if (((Scroller)localObject1).computeScrollOffset())
       {
-        localObject1 = this.jdField_a_of_type_AndroidWidgetScroller;
+        localObject1 = this.i;
         if (localObject1 == null) {
           Intrinsics.throwUninitializedPropertyAccessException("mScroller");
         }
-        this.b = ((Scroller)localObject1).getCurrX();
+        this.c = ((Scroller)localObject1).getCurrX();
       }
-      if (this.b <= 0)
+      if (this.c <= 0)
       {
-        this.b = 0;
-        localObject1 = this.jdField_a_of_type_AndroidWidgetScroller;
+        this.c = 0;
+        localObject1 = this.i;
         if (localObject1 == null) {
           Intrinsics.throwUninitializedPropertyAccessException("mScroller");
         }
         ((Scroller)localObject1).forceFinished(true);
       }
-      if (this.b >= this.e)
+      if (this.c >= this.f)
       {
-        this.b = this.e;
-        localObject1 = this.jdField_a_of_type_AndroidWidgetScroller;
+        this.c = this.f;
+        localObject1 = this.i;
         if (localObject1 == null) {
           Intrinsics.throwUninitializedPropertyAccessException("mScroller");
         }
         ((Scroller)localObject1).forceFinished(true);
       }
-      paramInt1 = this.jdField_a_of_type_Int - this.b;
+      paramInt1 = this.b - this.c;
       a(paramInt1);
       b(paramInt1);
       c(paramInt1);
-      this.jdField_a_of_type_Int = this.b;
-      localObject1 = this.jdField_a_of_type_AndroidWidgetScroller;
+      this.b = this.c;
+      localObject1 = this.i;
       if (localObject1 == null) {
         Intrinsics.throwUninitializedPropertyAccessException("mScroller");
       }
@@ -327,38 +327,38 @@ public final class HorizontalListView
   
   public void setAdapter(@Nullable ListAdapter paramListAdapter)
   {
-    ListAdapter localListAdapter = this.jdField_a_of_type_AndroidWidgetListAdapter;
+    ListAdapter localListAdapter = this.a;
     if ((localListAdapter != null) && (localListAdapter != null)) {
-      localListAdapter.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+      localListAdapter.unregisterDataSetObserver(this.p);
     }
-    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
-    paramListAdapter = this.jdField_a_of_type_AndroidWidgetListAdapter;
+    this.a = paramListAdapter;
+    paramListAdapter = this.a;
     if (paramListAdapter != null) {
-      paramListAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+      paramListAdapter.registerDataSetObserver(this.p);
     }
     b();
   }
   
   public void setOnItemClickListener(@Nullable AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
+    this.l = paramOnItemClickListener;
   }
   
   public void setOnItemLongClickListener(@Nullable AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemLongClickListener = paramOnItemLongClickListener;
+    this.m = paramOnItemLongClickListener;
   }
   
   public void setOnItemSelectedListener(@Nullable AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemSelectedListener = paramOnItemSelectedListener;
+    this.k = paramOnItemSelectedListener;
   }
   
   public void setSelection(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.HorizontalListView
  * JD-Core Version:    0.7.0.1
  */

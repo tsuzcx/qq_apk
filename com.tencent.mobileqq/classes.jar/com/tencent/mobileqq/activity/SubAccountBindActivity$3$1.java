@@ -24,21 +24,21 @@ class SubAccountBindActivity$3$1
       paramString1.put("param_FailCode", "12005");
       paramString1.put("fail_step", "getKeyEmpty");
       paramString1.put("fail_location", "SubBind");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", false, 0L, 0L, paramString1, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.b.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", false, 0L, 0L, paramString1, "");
       if (QLog.isColorLevel()) {
         QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack: key is empty");
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.runOnUiThread(new SubAccountBindActivity.3.1.1(this));
+      this.b.a.runOnUiThread(new SubAccountBindActivity.3.1.1(this));
       return;
     }
     paramString1 = new HashMap();
     paramString1.put("param_FailCode", "12006");
     paramString1.put("fail_step", "getKeyNotEmpty");
     paramString1.put("fail_location", "SubBind");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", true, 0L, 0L, paramString1, "");
-    paramString1 = (SubAccountProtocServiceImpl)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.app.getRuntimeService(ISubAccountProtocService.class, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.b.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", true, 0L, 0L, paramString1, "");
+    paramString1 = (SubAccountProtocServiceImpl)this.b.a.app.getRuntimeService(ISubAccountProtocService.class, "");
     if (paramString1 != null) {
-      paramString1.bindAccount(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), paramString3, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$3.a.fromWhere);
+      paramString1.bindAccount(this.a.getUin(), paramString3, this.b.a.fromWhere);
     }
     if (QLog.isColorLevel())
     {
@@ -53,7 +53,7 @@ class SubAccountBindActivity$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

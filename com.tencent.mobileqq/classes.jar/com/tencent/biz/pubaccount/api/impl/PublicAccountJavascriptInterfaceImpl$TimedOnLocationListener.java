@@ -19,28 +19,28 @@ import com.tencent.util.ThreeDes;
 public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
   extends SosoInterfaceOnLocationListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  long jdField_b_of_type_Long;
-  boolean jdField_b_of_type_Boolean;
-  long jdField_c_of_type_Long;
-  boolean jdField_c_of_type_Boolean;
+  boolean a;
+  String b;
+  boolean c;
   boolean d;
+  boolean e;
+  int f;
+  long g;
+  long h;
+  long i;
   
   private PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener(PublicAccountJavascriptInterfaceImpl paramPublicAccountJavascriptInterfaceImpl, int paramInt1, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, boolean paramBoolean3, String paramString)
   {
     super(paramInt1, paramBoolean1 ^ true, true, paramLong2, true, false, "webview");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean3;
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    this.d = paramBoolean2;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Long = paramLong2;
+    this.b = paramString;
+    this.c = paramBoolean3;
+    this.d = paramBoolean1;
+    this.e = paramBoolean2;
+    this.f = paramInt2;
+    this.h = paramLong1;
+    this.g = System.currentTimeMillis();
+    this.a = true;
+    this.i = paramLong2;
   }
   
   public PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener(PublicAccountJavascriptInterfaceImpl paramPublicAccountJavascriptInterfaceImpl, int paramInt, String paramString, long paramLong)
@@ -65,15 +65,15 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("PAjs.location", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramInt2 * 2000 >= this.jdField_b_of_type_Long)
+    if (paramInt2 * 2000 >= this.h)
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.a) {
         return;
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-2", "{type:1, data:null}" });
-      localObject = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 3, this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.getNetworkType(), (String)localObject, "", "");
+      this.a = false;
+      this.j.callJs(this.b, new String[] { "-2", "{type:1, data:null}" });
+      localObject = Long.toString(System.currentTimeMillis() - this.g);
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 3, this.j.getNetworkType(), (String)localObject, "", "");
       ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this);
     }
   }
@@ -89,24 +89,24 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
       ((StringBuilder)localObject1).append(", info=");
       ((StringBuilder)localObject1).append(paramSosoLbsInfo);
       ((StringBuilder)localObject1).append(", isActive=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append(", reqRawData=");
-      ((StringBuilder)localObject1).append(this.jdField_c_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.d);
       QLog.d("PAjs.location", 2, ((StringBuilder)localObject1).toString());
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return;
     }
-    if (!this.jdField_c_of_type_Boolean)
+    if (!this.d)
     {
       if (paramInt == 0)
       {
         double d1 = paramSosoLbsInfo.mLocation.mLat02;
         double d2 = paramSosoLbsInfo.mLocation.mLon02;
-        if (this.jdField_b_of_type_Boolean)
+        if (this.c)
         {
-          paramSosoLbsInfo = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl;
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          paramSosoLbsInfo = this.j;
+          localObject1 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("{type:2, lat:");
           ((StringBuilder)localObject2).append(d1);
@@ -117,15 +117,15 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
         }
         else
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.format("'%1$f,%2$f'", new Object[] { Double.valueOf(d2), Double.valueOf(d1) }) });
+          this.j.callJs(this.b, new String[] { String.format("'%1$f,%2$f'", new Object[] { Double.valueOf(d2), Double.valueOf(d1) }) });
         }
-        paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getloc", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.getNetworkType(), paramSosoLbsInfo, "", "");
+        paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.g);
+        ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getloc", 0, 0, this.j.getNetworkType(), paramSosoLbsInfo, "", "");
         return;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-1", "{}" });
-      paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getloc", 0, 1, this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.getNetworkType(), paramSosoLbsInfo, "", "");
+      this.j.callJs(this.b, new String[] { "-1", "{}" });
+      paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.g);
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getloc", 0, 1, this.j.getNetworkType(), paramSosoLbsInfo, "", "");
       return;
     }
     Object localObject2 = null;
@@ -135,10 +135,10 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
       localObject1 = null;
     }
     if (localObject1 != null) {
-      if (this.d) {
+      if (this.e) {
         try
         {
-          paramSosoLbsInfo = ThreeDes.a(PublicAccountJavascriptInterfaceImpl.access$400(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl, (byte[])localObject1), "nbyvie");
+          paramSosoLbsInfo = ThreeDes.a(PublicAccountJavascriptInterfaceImpl.access$400(this.j, (byte[])localObject1), "nbyvie");
         }
         catch (Exception paramSosoLbsInfo)
         {
@@ -150,7 +150,7 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
     {
       try
       {
-        if (this.jdField_a_of_type_Int != 1) {
+        if (this.f != 1) {
           break label1045;
         }
         bool = true;
@@ -159,8 +159,8 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
       catch (Exception localException)
       {
         paramSosoLbsInfo = (SosoLbsInfo)localObject2;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.mRuntime != null) {
-          paramSosoLbsInfo = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.mRuntime.a();
+        if (this.j.mRuntime != null) {
+          paramSosoLbsInfo = this.j.mRuntime.b();
         }
         if (paramSosoLbsInfo != null) {
           ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 0, paramSosoLbsInfo.getAccount(), localException.getMessage(), "", "");
@@ -174,26 +174,26 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
         ((StringBuilder)localObject2).append("onLocationFinish: success=");
         ((StringBuilder)localObject2).append(bool);
         ((StringBuilder)localObject2).append(", mUseFallback=");
-        ((StringBuilder)localObject2).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject2).append(this.c);
         QLog.d("PAjs.location", 2, ((StringBuilder)localObject2).toString());
       }
       if (bool)
       {
-        this.jdField_a_of_type_Boolean = false;
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl;
-        String str = this.jdField_a_of_type_JavaLangString;
+        this.a = false;
+        localObject2 = this.j;
+        String str = this.b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("{type:1, decrypt_padding:");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.f);
         localStringBuilder.append(",data:\"");
         localStringBuilder.append(paramSosoLbsInfo);
         localStringBuilder.append("\"}");
         ((PublicAccountJavascriptInterfaceImpl)localObject2).callJs(str, new String[] { "0", localStringBuilder.toString() });
-        paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.getNetworkType(), paramSosoLbsInfo, "", "");
+        paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.g);
+        ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 0, this.j.getNetworkType(), paramSosoLbsInfo, "", "");
         if (localObject1 != null)
         {
-          paramSosoLbsInfo = this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.mRuntime.a();
+          paramSosoLbsInfo = this.j.mRuntime.a();
           if (paramSosoLbsInfo != null)
           {
             paramSosoLbsInfo = paramSosoLbsInfo.getUrl();
@@ -205,31 +205,31 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
       }
       else
       {
-        if ((this.jdField_b_of_type_Boolean) && (paramInt != -10000) && (paramInt != 2))
+        if ((this.c) && (paramInt != -10000) && (paramInt != 2))
         {
-          this.jdField_a_of_type_Boolean = false;
-          long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-          long l2 = this.jdField_b_of_type_Long - l1;
+          this.a = false;
+          long l1 = System.currentTimeMillis() - this.g;
+          long l2 = this.h - l1;
           if (l2 > 0L)
           {
-            l1 = this.jdField_c_of_type_Long - l1;
+            l1 = this.i - l1;
             if (l1 < 0L) {
               l1 = 0L;
             }
-            ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new TimedOnLocationListener(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl, 0, l2, l1, false, false, 0, true, this.jdField_a_of_type_JavaLangString));
+            ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new TimedOnLocationListener(this.j, 0, l2, l1, false, false, 0, true, this.b));
           }
           else
           {
-            this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-1", "{}" });
+            this.j.callJs(this.b, new String[] { "-1", "{}" });
           }
-          paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-          ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 2, this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.getNetworkType(), paramSosoLbsInfo, "", "");
+          paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.g);
+          ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 2, this.j.getNetworkType(), paramSosoLbsInfo, "", "");
           return;
         }
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-1", "{}" });
-        paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 1, this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountJavascriptInterfaceImpl.getNetworkType(), paramSosoLbsInfo, "", "");
+        this.a = false;
+        this.j.callJs(this.b, new String[] { "-1", "{}" });
+        paramSosoLbsInfo = Long.toString(System.currentTimeMillis() - this.g);
+        ReportController.b(null, "P_CliOper", "BizTechReport", "", "getlocation", "getdata", 0, 1, this.j.getNetworkType(), paramSosoLbsInfo, "", "");
       }
       return;
       label1045:
@@ -239,7 +239,7 @@ public class PublicAccountJavascriptInterfaceImpl$TimedOnLocationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl.TimedOnLocationListener
  * JD-Core Version:    0.7.0.1
  */

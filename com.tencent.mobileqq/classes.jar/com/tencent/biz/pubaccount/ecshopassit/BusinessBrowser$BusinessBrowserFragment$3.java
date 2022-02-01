@@ -13,39 +13,39 @@ class BusinessBrowser$BusinessBrowserFragment$3
     paramInt1 = paramInt2 - paramInt4;
     if (paramInt1 > 0)
     {
-      if (this.a.jdField_b_of_type_Int < 0) {
-        this.a.jdField_b_of_type_Int = 0;
+      if (this.a.n < 0) {
+        this.a.n = 0;
       }
       paramView = this.a;
-      paramView.jdField_b_of_type_Int += paramInt1;
-      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
+      paramView.n += paramInt1;
+      if ((this.a.n > this.a.r) && (this.a.o))
       {
         paramView = this.a;
-        paramView.jdField_c_of_type_Boolean = false;
-        if (paramView.jdField_a_of_type_AndroidViewView != null)
+        paramView.o = false;
+        if (paramView.d != null)
         {
           paramView = this.a;
-          paramView.a(paramView.jdField_b_of_type_AndroidViewView, 0);
-          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+          paramView.a(paramView.j, 0);
+          this.a.d.clearAnimation();
+          this.a.d.startAnimation(this.a.q);
         }
       }
     }
     else
     {
-      if (this.a.jdField_b_of_type_Int > 0) {
-        this.a.jdField_b_of_type_Int = 0;
+      if (this.a.n > 0) {
+        this.a.n = 0;
       }
       paramView = this.a;
-      paramView.jdField_b_of_type_Int += paramInt1;
-      if ((-this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (!this.a.jdField_c_of_type_Boolean))
+      paramView.n += paramInt1;
+      if ((-this.a.n > this.a.r) && (!this.a.o))
       {
         paramView = this.a;
-        paramView.jdField_c_of_type_Boolean = true;
-        if (paramView.jdField_a_of_type_AndroidViewView != null)
+        paramView.o = true;
+        if (paramView.d != null)
         {
-          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
+          this.a.d.clearAnimation();
+          this.a.d.startAnimation(this.a.p);
         }
       }
     }
@@ -53,7 +53,7 @@ class BusinessBrowser$BusinessBrowserFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment.3
  * JD-Core Version:    0.7.0.1
  */

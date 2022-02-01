@@ -52,13 +52,13 @@ class FriendsManager$1
     super.onOnlineStatusPush(paramStatus, paramLong);
     paramStatus = (IOnlineStatusDataManager)((IOnlineStatusManagerService)FriendsManager.a(this.a).getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class);
     if (paramStatus != null) {
-      paramStatus.d(paramLong);
+      paramStatus.a(paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.1
  * JD-Core Version:    0.7.0.1
  */

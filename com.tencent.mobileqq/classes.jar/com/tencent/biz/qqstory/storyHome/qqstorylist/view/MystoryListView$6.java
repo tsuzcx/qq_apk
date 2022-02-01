@@ -9,7 +9,7 @@ class MystoryListView$6
   
   public void run()
   {
-    MystoryListView.a(this.this$0).setVisibility(0);
+    MystoryListView.j(this.this$0).setVisibility(0);
   }
 }
 

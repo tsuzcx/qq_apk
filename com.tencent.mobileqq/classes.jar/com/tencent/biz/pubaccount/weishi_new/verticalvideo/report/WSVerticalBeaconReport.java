@@ -40,40 +40,14 @@ import java.util.Set;
 
 public class WSVerticalBeaconReport
 {
-  private static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString;
-  private static final Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private static String b;
-  
-  private static int a(String paramString)
-  {
-    if (TextUtils.equals(paramString, "recommend_tab")) {
-      return jdField_a_of_type_Int + 1;
-    }
-    return 0;
-  }
-  
-  private static WSStatisticsReporter.Builder a(String paramString)
-  {
-    String str1;
-    if (TextUtils.equals(paramString, "follow_tab"))
-    {
-      String str2 = WeishiUtils.a(10);
-      str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = WeishiUtils.a(9);
-      }
-    }
-    else
-    {
-      str1 = WeishiUtils.a(WSVerticalUtils.a(paramString));
-    }
-    return new WSStatisticsReporter.Builder().setTabId(jdField_b_of_type_JavaLangString).setSopName(a(paramString)).setTestId(str1).setPushId(WSInitializeHelper.a().a()).setFlush(true);
-  }
+  private static final Set<String> a = new HashSet();
+  private static int b;
+  private static String c;
+  private static String d;
   
   public static String a()
   {
-    return jdField_b_of_type_JavaLangString;
+    return d;
   }
   
   private static String a(stOpVideo paramstOpVideo)
@@ -85,21 +59,6 @@ public class WSVerticalBeaconReport
       i = 0;
     }
     return String.valueOf(i);
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.equals(paramString, "aio_home_page")) {
-      return "feeds_fullscreen";
-    }
-    if ((!TextUtils.equals(paramString, "vertical_layer_collection")) && (!TextUtils.equals(paramString, "vertical_layer_collection_of_card")))
-    {
-      if ((!TextUtils.equals(paramString, "drama_preview")) && (!TextUtils.equals(paramString, "drama_history")) && (!TextUtils.equals(paramString, "drama_collection"))) {
-        return "fullscreen_videoplay";
-      }
-      return "drama_fullscreen_videoplay";
-    }
-    return "collection_videoplay";
   }
   
   @NonNull
@@ -134,13 +93,13 @@ public class WSVerticalBeaconReport
       paramMap = "1";
     }
     localHashMap.put("is_livenow", paramMap);
-    localHashMap.put("feeds_index", String.valueOf(a(paramString)));
-    localHashMap.put("feeds_feedid", b(paramString));
+    localHashMap.put("feeds_index", String.valueOf(d(paramString)));
+    localHashMap.put("feeds_feedid", e(paramString));
     paramString = WSPublicAccReport.getInstance().getRecommendFullScreenInfo();
-    if ((paramInt == 0) && (paramString.a()))
+    if ((paramInt == 0) && (paramString.d()))
     {
-      localHashMap.put("is_cache_info", String.valueOf(paramString.b()));
-      localHashMap.put("is_cache_file", String.valueOf(paramString.a()));
+      localHashMap.put("is_cache_info", String.valueOf(paramString.c()));
+      localHashMap.put("is_cache_file", String.valueOf(paramString.b()));
       localHashMap.put("exp_duration", String.valueOf(paramString.a()));
     }
     return localHashMap;
@@ -148,7 +107,7 @@ public class WSVerticalBeaconReport
   
   public static void a(int paramInt)
   {
-    jdField_a_of_type_Int = paramInt;
+    b = paramInt;
   }
   
   public static void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, String paramString1, String paramString2)
@@ -172,32 +131,32 @@ public class WSVerticalBeaconReport
       return;
     }
     HashMap localHashMap1 = new HashMap();
-    localHashMap1.put("event_type", paramWSVerticalDeltaTimeReportParams.jdField_a_of_type_JavaLangString);
-    localHashMap1.put("feed_id", paramWSVerticalDeltaTimeReportParams.jdField_d_of_type_JavaLangString);
-    localHashMap1.put("owner_id", paramWSVerticalDeltaTimeReportParams.jdField_e_of_type_JavaLangString);
-    localHashMap1.put("video_length", String.valueOf(paramWSVerticalDeltaTimeReportParams.jdField_a_of_type_Long));
+    localHashMap1.put("event_type", paramWSVerticalDeltaTimeReportParams.a);
+    localHashMap1.put("feed_id", paramWSVerticalDeltaTimeReportParams.d);
+    localHashMap1.put("owner_id", paramWSVerticalDeltaTimeReportParams.e);
+    localHashMap1.put("video_length", String.valueOf(paramWSVerticalDeltaTimeReportParams.f));
     HashMap localHashMap2 = new HashMap();
-    localHashMap2.put("play_scene", paramWSVerticalDeltaTimeReportParams.jdField_c_of_type_JavaLangString);
-    localHashMap2.put("oncreate_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.jdField_b_of_type_Long));
-    localHashMap2.put("onviewcreated_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.jdField_c_of_type_Long));
-    localHashMap2.put("onbindholder_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.jdField_d_of_type_Long));
-    localHashMap2.put("onplayvideo_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.jdField_e_of_type_Long));
-    localHashMap2.put("onvideostarted_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.jdField_f_of_type_Long));
-    localHashMap2.put("onoverall_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.jdField_g_of_type_Long));
-    localHashMap2.put("error_code", paramWSVerticalDeltaTimeReportParams.jdField_f_of_type_JavaLangString);
-    localHashMap2.put("error_msg", paramWSVerticalDeltaTimeReportParams.jdField_g_of_type_JavaLangString);
+    localHashMap2.put("play_scene", paramWSVerticalDeltaTimeReportParams.c);
+    localHashMap2.put("oncreate_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.g));
+    localHashMap2.put("onviewcreated_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.h));
+    localHashMap2.put("onbindholder_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.i));
+    localHashMap2.put("onplayvideo_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.j));
+    localHashMap2.put("onvideostarted_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.k));
+    localHashMap2.put("onoverall_time", String.valueOf(paramWSVerticalDeltaTimeReportParams.l));
+    localHashMap2.put("error_code", paramWSVerticalDeltaTimeReportParams.m);
+    localHashMap2.put("error_msg", paramWSVerticalDeltaTimeReportParams.n);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSVerticalBeaconReport.java][reportVerticalPlayAction] map:");
     localStringBuilder.append(localHashMap1.toString());
     localStringBuilder.append(", extMap:");
     localStringBuilder.append(localHashMap2.toString());
     WSLog.e("WSVerticalDeltaTimeLog", localStringBuilder.toString());
-    a(a(paramWSVerticalDeltaTimeReportParams.jdField_b_of_type_JavaLangString).addParams(localHashMap1).addExtParams(localHashMap2).setOperationId(""), "gzh_play_action");
+    a(f(paramWSVerticalDeltaTimeReportParams.b).addParams(localHashMap1).addExtParams(localHashMap2).setOperationId(""), "gzh_play_action");
   }
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    c = paramString;
   }
   
   public static void a(String paramString1, String paramString2, int paramInt, stJumpInfo paramstJumpInfo)
@@ -212,7 +171,7 @@ public class WSVerticalBeaconReport
     if (paramstJumpInfo.mapExt != null) {
       localHashMap.putAll(paramstJumpInfo.mapExt);
     }
-    a(a(paramString1).addParams(localMap).addExtParams(localHashMap).setOperationId(String.valueOf(paramstJumpInfo.id)), "gzh_click");
+    a(f(paramString1).addParams(localMap).addExtParams(localHashMap).setOperationId(String.valueOf(paramstJumpInfo.id)), "gzh_click");
   }
   
   public static void a(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -267,18 +226,18 @@ public class WSVerticalBeaconReport
   {
     if (paramWSPlayerParam != null)
     {
-      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
+      if (paramWSPlayerParam.c == null) {
         return;
       }
-      WSVideoInfo localWSVideoInfo = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo;
-      if (WSVerticalUtils.a(jdField_a_of_type_JavaUtilSet, paramInt1, localWSVideoInfo)) {
+      WSVideoInfo localWSVideoInfo = paramWSPlayerParam.c;
+      if (WSVerticalUtils.a(a, paramInt1, localWSVideoInfo)) {
         return;
       }
-      Object localObject = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
+      Object localObject = paramWSPlayerParam.d;
       long l2 = 0L;
       long l1;
       if (localObject != null) {
-        l1 = ((WSPlayerWrapper)localObject).a();
+        l1 = ((WSPlayerWrapper)localObject).m();
       } else {
         l1 = 0L;
       }
@@ -287,40 +246,40 @@ public class WSVerticalBeaconReport
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("");
       localHashMap.put("event_type", localStringBuilder.toString());
-      localHashMap.put("feed_id", localWSVideoInfo.jdField_a_of_type_JavaLangString);
-      localHashMap.put("owner_id", localWSVideoInfo.jdField_e_of_type_JavaLangString);
+      localHashMap.put("feed_id", localWSVideoInfo.a);
+      localHashMap.put("owner_id", localWSVideoInfo.j);
       if (paramInt1 == 2)
       {
         if (localObject != null) {
-          l2 = ((WSPlayerWrapper)localObject).a(paramBoolean);
+          l2 = ((WSPlayerWrapper)localObject).c(paramBoolean);
         }
         localHashMap.put("duration", String.valueOf(l2));
         localHashMap.put("last_location", String.valueOf(l1));
       }
-      localHashMap.put("video_length", String.valueOf(localWSVideoInfo.jdField_c_of_type_Int));
+      localHashMap.put("video_length", String.valueOf(localWSVideoInfo.d));
       localHashMap.put("recommend_id", "");
-      localHashMap.put("poolType", String.valueOf(localWSVideoInfo.jdField_d_of_type_Int));
-      localHashMap.put("global_key", WSRecommendReportManager.a().a(localWSVideoInfo.jdField_f_of_type_JavaLangString));
-      localHashMap.put("feed_pass_key", localWSVideoInfo.jdField_g_of_type_JavaLangString);
+      localHashMap.put("poolType", String.valueOf(localWSVideoInfo.h));
+      localHashMap.put("global_key", WSRecommendReportManager.a().a(localWSVideoInfo.k));
+      localHashMap.put("feed_pass_key", localWSVideoInfo.l);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSVerticalBeaconReport.java][reportVerticalVideoPlay] title:");
-      ((StringBuilder)localObject).append(localWSVideoInfo.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(localWSVideoInfo.g);
       ((StringBuilder)localObject).append(", map:");
       ((StringBuilder)localObject).append(localHashMap.toString());
       WSLog.e("WS_VIDEO_PLAY_TIME", ((StringBuilder)localObject).toString());
       if (paramMap == null) {
         paramMap = new HashMap();
       }
-      paramMap.put("type", String.valueOf(localWSVideoInfo.jdField_e_of_type_Int));
-      paramMap.put("cover_type", WeishiUtils.d(localWSVideoInfo.jdField_c_of_type_JavaLangString));
-      paramMap.put("material_type", String.valueOf(localWSVideoInfo.jdField_f_of_type_Int));
+      paramMap.put("type", String.valueOf(localWSVideoInfo.i));
+      paramMap.put("cover_type", WeishiUtils.g(localWSVideoInfo.f));
+      paramMap.put("material_type", String.valueOf(localWSVideoInfo.m));
       paramMap.put("play_scene", paramString2);
-      paramMap.put("tag_id", String.valueOf(paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.jdField_g_of_type_Int));
-      paramMap.put("feeds_label_type", String.valueOf(paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.h));
+      paramMap.put("tag_id", String.valueOf(paramWSPlayerParam.c.n));
+      paramMap.put("feeds_label_type", String.valueOf(paramWSPlayerParam.c.o));
       paramMap.put("videoplay_index", String.valueOf(paramInt2 + 1));
-      paramMap.put("feeds_index", String.valueOf(a(paramString1)));
-      paramMap.put("feeds_feedid", b(paramString1));
-      a(a(paramString1).addParams(localHashMap).addExtParams(paramMap).setOperationId(""), "gzh_video_play");
+      paramMap.put("feeds_index", String.valueOf(d(paramString1)));
+      paramMap.put("feeds_feedid", e(paramString1));
+      a(f(paramString1).addParams(localHashMap).addExtParams(paramMap).setOperationId(""), "gzh_video_play");
     }
   }
   
@@ -328,22 +287,22 @@ public class WSVerticalBeaconReport
   {
     if (paramWSVerticalItemData != null)
     {
-      Object localObject = paramWSVerticalItemData.a();
+      Object localObject = paramWSVerticalItemData.f();
       if (localObject == null) {
         return;
       }
       HashMap localHashMap = new HashMap();
-      localHashMap.put("rich_type", String.valueOf(((AbsWSRichWidgetData)localObject).a()));
+      localHashMap.put("rich_type", String.valueOf(((AbsWSRichWidgetData)localObject).d()));
       if ((localObject instanceof WSCommercialInfo))
       {
         localObject = (WSCommercialInfo)localObject;
         boolean bool;
-        if (((WSCommercialInfo)localObject).d() == 5) {
+        if (((WSCommercialInfo)localObject).k() == 5) {
           bool = true;
         } else {
           bool = false;
         }
-        a(localHashMap, bool, ((WSCommercialInfo)localObject).d(), paramBoolean);
+        a(localHashMap, bool, ((WSCommercialInfo)localObject).k(), paramBoolean);
         if (bool) {
           a(localHashMap, paramString3);
         }
@@ -399,22 +358,22 @@ public class WSVerticalBeaconReport
   {
     if (paramWSVerticalItemData != null)
     {
-      Object localObject = paramWSVerticalItemData.a();
+      Object localObject = paramWSVerticalItemData.f();
       if (localObject == null) {
         return;
       }
       HashMap localHashMap = new HashMap();
-      localHashMap.put("rich_type", String.valueOf(((AbsWSRichWidgetData)localObject).a()));
+      localHashMap.put("rich_type", String.valueOf(((AbsWSRichWidgetData)localObject).d()));
       if ((localObject instanceof WSCommercialInfo))
       {
         localObject = (WSCommercialInfo)localObject;
         boolean bool;
-        if (((WSCommercialInfo)localObject).d() == 5) {
+        if (((WSCommercialInfo)localObject).k() == 5) {
           bool = true;
         } else {
           bool = false;
         }
-        a(localHashMap, bool, ((WSCommercialInfo)localObject).d(), paramBoolean);
+        a(localHashMap, bool, ((WSCommercialInfo)localObject).k(), paramBoolean);
       }
       else if ((localObject instanceof WSPublisherInfo))
       {
@@ -432,17 +391,17 @@ public class WSVerticalBeaconReport
     } else {
       str = "";
     }
-    if (TextUtils.equals(str, WeishiUtils.d())) {
-      WeishiUtils.c("homepage_main");
+    if (TextUtils.equals(str, WeishiUtils.n())) {
+      WeishiUtils.m("homepage_main");
     } else {
-      WeishiUtils.c("homepage_guest");
+      WeishiUtils.m("homepage_guest");
     }
     a(paramString1, paramString2, paramString3, paramstSimpleMetaFeed, paramInt, "", paramMap);
   }
   
   static void a(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt, String paramString4, Map<String, String> paramMap)
   {
-    paramString3 = a(paramString1).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString3, paramInt, paramstSimpleMetaFeed)).setOperationId(paramString4);
+    paramString3 = f(paramString1).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString3, paramInt, paramstSimpleMetaFeed)).setOperationId(paramString4);
     paramString1 = paramMap;
     if (paramMap == null) {
       paramString1 = new HashMap();
@@ -454,7 +413,7 @@ public class WSVerticalBeaconReport
   
   static void a(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed, String paramString4, Map<String, String> paramMap)
   {
-    paramString3 = a(paramString1).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString3, 0, paramstSimpleMetaFeed)).setOperationId(paramString4);
+    paramString3 = f(paramString1).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams(paramString3, 0, paramstSimpleMetaFeed)).setOperationId(paramString4);
     paramString1 = paramMap;
     if (paramMap == null) {
       paramString1 = new HashMap();
@@ -466,7 +425,7 @@ public class WSVerticalBeaconReport
   
   private static void a(String paramString1, String paramString2, String paramString3, WSVerticalItemData paramWSVerticalItemData, Map<String, String> paramMap, int paramInt)
   {
-    stSimpleMetaFeed localstSimpleMetaFeed = paramWSVerticalItemData.a();
+    stSimpleMetaFeed localstSimpleMetaFeed = paramWSVerticalItemData.b();
     if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.opInfo != null)) {
       paramWSVerticalItemData = localstSimpleMetaFeed.opInfo.traceId;
     } else {
@@ -474,7 +433,7 @@ public class WSVerticalBeaconReport
     }
     paramMap.put("play_scene", paramString3);
     paramString3 = WSPublicAccReport.getInstance().getFeedsBaseParams("videotag_rich", paramInt, localstSimpleMetaFeed, paramWSVerticalItemData, "");
-    a(a(paramString2).addParams(paramString3).addExtParams(paramMap), paramString1);
+    a(f(paramString2).addParams(paramString3).addExtParams(paramMap), paramString1);
   }
   
   public static void a(String paramString1, String paramString2, Map<String, String> paramMap)
@@ -517,17 +476,17 @@ public class WSVerticalBeaconReport
       a(paramString1, paramString2, "floating_layer_request", null, "", localHashMap);
       return;
     }
-    if ((paramList != null) && (paramList.size() > 0) && ((((WSVerticalItemData)paramList.get(0)).a() instanceof stSimpleMetaFeed)))
+    if ((paramList != null) && (paramList.size() > 0) && ((((WSVerticalItemData)paramList.get(0)).b() instanceof stSimpleMetaFeed)))
     {
-      localObject = ((WSVerticalItemData)paramList.get(0)).a();
+      localObject = ((WSVerticalItemData)paramList.get(0)).b();
       StringBuilder localStringBuilder = new StringBuilder();
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
         WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)localIterator.next();
-        if (!TextUtils.isEmpty(localWSVerticalItemData.a().id))
+        if (!TextUtils.isEmpty(localWSVerticalItemData.b().id))
         {
-          localStringBuilder.append(localWSVerticalItemData.a().id);
+          localStringBuilder.append(localWSVerticalItemData.b().id);
           localStringBuilder.append("_");
         }
       }
@@ -580,17 +539,9 @@ public class WSVerticalBeaconReport
     paramMap.put("card_type", str);
   }
   
-  private static String b(String paramString)
-  {
-    if (TextUtils.equals(paramString, "recommend_tab")) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
   public static void b(String paramString)
   {
-    jdField_b_of_type_JavaLangString = paramString;
+    d = paramString;
   }
   
   public static void b(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -604,7 +555,7 @@ public class WSVerticalBeaconReport
       return;
     }
     Object localObject = new HashMap();
-    paramstSimpleMetaFeed = a(paramString1).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("jump_weishi", paramInt, paramstSimpleMetaFeed));
+    paramstSimpleMetaFeed = f(paramString1).addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("jump_weishi", paramInt, paramstSimpleMetaFeed));
     ((Map)localObject).put("play_scene", paramString2);
     if (TextUtils.equals(paramString1, "share")) {
       paramString1 = "1";
@@ -633,7 +584,7 @@ public class WSVerticalBeaconReport
   
   public static void b(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
   {
-    a(paramString1, paramString2, "like", paramstSimpleMetaFeed, 1001003, "", paramMap);
+    a(paramString1, paramString2, "comment_at_pop", paramstSimpleMetaFeed, "", paramMap);
   }
   
   public static void b(String paramString1, String paramString2, Map<String, String> paramMap)
@@ -642,6 +593,25 @@ public class WSVerticalBeaconReport
       paramMap.put("play_scene", paramString2);
     }
     WSPublicAccReport.getInstance().reportPageVisitExit(paramString1, paramMap);
+  }
+  
+  public static String c(String paramString)
+  {
+    if (TextUtils.equals(paramString, "aio_home_page")) {
+      return "feeds_fullscreen";
+    }
+    if ((!TextUtils.equals(paramString, "vertical_layer_collection")) && (!TextUtils.equals(paramString, "vertical_layer_collection_of_card")))
+    {
+      if ((!TextUtils.equals(paramString, "drama_preview")) && (!TextUtils.equals(paramString, "drama_history")) && (!TextUtils.equals(paramString, "drama_collection")))
+      {
+        if (TextUtils.equals(paramString, "essence_tab")) {
+          return "monofeed";
+        }
+        return "fullscreen_videoplay";
+      }
+      return "drama_fullscreen_videoplay";
+    }
+    return "collection_videoplay";
   }
   
   public static void c(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
@@ -670,15 +640,36 @@ public class WSVerticalBeaconReport
   
   public static void c(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
   {
-    a(paramString1, paramString2, "follow", paramstSimpleMetaFeed, 1004001, "", paramMap);
+    a(paramString1, paramString2, "like", paramstSimpleMetaFeed, 1001003, "", paramMap);
+  }
+  
+  private static int d(String paramString)
+  {
+    if (TextUtils.equals(paramString, "recommend_tab")) {
+      return b + 1;
+    }
+    return 0;
   }
   
   public static void d(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    f(paramString1, paramString2, paramstSimpleMetaFeed, null);
+    g(paramString1, paramString2, paramstSimpleMetaFeed, null);
   }
   
   public static void d(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
+  {
+    a(paramString1, paramString2, "follow", paramstSimpleMetaFeed, 1004001, "", paramMap);
+  }
+  
+  private static String e(String paramString)
+  {
+    if (TextUtils.equals(paramString, "recommend_tab")) {
+      return c;
+    }
+    return "";
+  }
+  
+  public static void e(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
   {
     int i;
     if (!WeishiGuideUtils.a(BaseApplicationImpl.getApplication())) {
@@ -689,29 +680,47 @@ public class WSVerticalBeaconReport
     a(paramString1, paramString2, "video_title", paramstSimpleMetaFeed, i, "", paramMap);
   }
   
-  public static void e(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
+  private static WSStatisticsReporter.Builder f(String paramString)
   {
-    a(paramString1, paramString2, "comment_entry", paramstSimpleMetaFeed, 1000001, "", paramMap);
+    String str1;
+    if (TextUtils.equals(paramString, "follow_tab"))
+    {
+      String str2 = WeishiUtils.a(10);
+      str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = WeishiUtils.a(9);
+      }
+    }
+    else
+    {
+      str1 = WeishiUtils.a(WSVerticalUtils.a(paramString));
+    }
+    return new WSStatisticsReporter.Builder().setTabId(d).setSopName(c(paramString)).setTestId(str1).setPushId(WSInitializeHelper.a().f()).setFlush(true);
   }
   
   public static void f(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
   {
-    a(paramString1, paramString2, "back", paramstSimpleMetaFeed, 1000001, "", paramMap);
+    a(paramString1, paramString2, "comment_entry", paramstSimpleMetaFeed, 1000001, "", paramMap);
   }
   
   public static void g(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
   {
-    a(paramString1, paramString2, "drama_clear", paramstSimpleMetaFeed, 1000001, "", paramMap);
+    a(paramString1, paramString2, "back", paramstSimpleMetaFeed, 1000001, "", paramMap);
   }
   
   public static void h(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
+  {
+    a(paramString1, paramString2, "drama_clear", paramstSimpleMetaFeed, 1000001, "", paramMap);
+  }
+  
+  public static void i(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, Map<String, String> paramMap)
   {
     a(paramString1, paramString2, "drama_updated", paramstSimpleMetaFeed, "", paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeaconReport
  * JD-Core Version:    0.7.0.1
  */

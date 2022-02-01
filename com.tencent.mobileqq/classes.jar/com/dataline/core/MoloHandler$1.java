@@ -25,7 +25,7 @@ class MoloHandler$1
   
   public void a(int paramInt, String paramString)
   {
-    Object localObject2 = this.a.a.a.getDataLineMsgProxy(0).a(paramString);
+    Object localObject2 = this.a.a.i.getDataLineMsgProxy(0).a(paramString);
     Object localObject1 = Long.valueOf(0L);
     StringBuilder localStringBuilder;
     switch (paramInt)
@@ -41,7 +41,7 @@ class MoloHandler$1
         ((StringBuilder)localObject1).append(")");
         QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject1).toString());
       }
-      DataLineReportUtil.i(this.a.a.a);
+      DataLineReportUtil.i(this.a.a.i);
       this.a.a.a(9, true, new Object[] { paramString });
       return;
     case 5: 
@@ -64,7 +64,7 @@ class MoloHandler$1
       if ((!((DataLineMsgRecord)localObject2).issuc) || (((DataLineMsgRecord)localObject2).progress != 1.0F))
       {
         ((DataLineMsgRecord)localObject2).issuc = false;
-        this.a.a.a.getMessageFacade().a(0).c();
+        this.a.a.i.getMessageFacade().d(0).e();
         this.a.a.a(3, false, new Object[] { localObject1, Long.valueOf(((DataLineMsgRecord)localObject2).sessionid), ((DataLineMsgRecord)localObject2).path });
         continue;
         if (QLog.isColorLevel())
@@ -82,10 +82,10 @@ class MoloHandler$1
         while (paramString.hasNext())
         {
           localObject2 = (DataLineMsgRecord)paramString.next();
-          DataLineReportUtil.g(this.a.a.a);
+          DataLineReportUtil.g(this.a.a.i);
           ((DataLineMsgRecord)localObject2).issuc = true;
           ((DataLineMsgRecord)localObject2).progress = 1.0F;
-          ((DataLineMsgRecord)localObject2).path = PCPushProxy.a().a(((DataLineMsgRecord)localObject2).strMoloKey);
+          ((DataLineMsgRecord)localObject2).path = PCPushProxy.a().g(((DataLineMsgRecord)localObject2).strMoloKey);
           if (QLog.isColorLevel()) {
             if (((DataLineMsgRecord)localObject2).path != null)
             {
@@ -106,10 +106,10 @@ class MoloHandler$1
               QLog.d("dataline.MoloHandler", 2, localStringBuilder.toString());
             }
           }
-          this.a.a.a.getDataLineMsgProxy(0).a(((DataLineMsgRecord)localObject2).msgId, ((DataLineMsgRecord)localObject2).path);
-          this.a.a.a.getMessageFacade().a(0).c();
+          this.a.a.i.getDataLineMsgProxy(0).a(((DataLineMsgRecord)localObject2).msgId, ((DataLineMsgRecord)localObject2).path);
+          this.a.a.i.getMessageFacade().d(0).e();
           this.a.a.a(3, true, new Object[] { localObject1, Long.valueOf(((DataLineMsgRecord)localObject2).sessionid), ((DataLineMsgRecord)localObject2).path });
-          this.a.a.a().getMessageFacade().a(0).b(((DataLineMsgRecord)localObject2).msgId);
+          this.a.a.h().getMessageFacade().d(0).d(((DataLineMsgRecord)localObject2).msgId);
           continue;
           if (QLog.isColorLevel())
           {
@@ -138,8 +138,8 @@ class MoloHandler$1
               {
                 ((DataLineMsgRecord)localObject2).issuc = false;
                 ((DataLineMsgRecord)localObject2).fileMsgStatus = 2L;
-                this.a.a.a.getMessageFacade().a(0).d(((DataLineMsgRecord)localObject2).msgId);
-                this.a.a.a.getMessageFacade().a(0).c();
+                this.a.a.i.getMessageFacade().d(0).f(((DataLineMsgRecord)localObject2).msgId);
+                this.a.a.i.getMessageFacade().d(0).e();
                 this.a.a.a(3, false, new Object[] { localObject1, Long.valueOf(((DataLineMsgRecord)localObject2).sessionid), ((DataLineMsgRecord)localObject2).path });
                 continue;
                 if (QLog.isColorLevel())
@@ -159,7 +159,7 @@ class MoloHandler$1
                   localObject2 = (DataLineMsgRecord)paramString.next();
                   ((DataLineMsgRecord)localObject2).issuc = true;
                   ((DataLineMsgRecord)localObject2).fileMsgStatus = 0L;
-                  this.a.a.a.getMessageFacade().a(0).d(((DataLineMsgRecord)localObject2).msgId);
+                  this.a.a.i.getMessageFacade().d(0).f(((DataLineMsgRecord)localObject2).msgId);
                   this.a.a.a(6, true, new Object[] { localObject1, Long.valueOf(((DataLineMsgRecord)localObject2).sessionid), ((DataLineMsgRecord)localObject2).path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(((DataLineMsgRecord)localObject2).filesize) });
                 }
               }
@@ -188,7 +188,7 @@ class MoloHandler$1
         ((StringBuilder)localObject1).append(paramInt2);
         QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject1).toString());
       }
-      paramPkgEntry = this.a.a.a.getDataLineMsgProxy(0).a(paramPkgEntry.a);
+      paramPkgEntry = this.a.a.i.getDataLineMsgProxy(0).a(paramPkgEntry.a);
       if (paramPkgEntry == null) {
         return;
       }
@@ -196,9 +196,9 @@ class MoloHandler$1
       while (paramPkgEntry.hasNext())
       {
         localObject1 = (DataLineMsgRecord)paramPkgEntry.next();
-        DataLineReportUtil.l(this.a.a.a);
+        DataLineReportUtil.l(this.a.a.i);
         ((DataLineMsgRecord)localObject1).issuc = false;
-        this.a.a.a.getMessageFacade().a(0).c();
+        this.a.a.i.getMessageFacade().d(0).e();
         this.a.a.a(3, false, new Object[] { paramString, Long.valueOf(((DataLineMsgRecord)localObject1).sessionid), ((DataLineMsgRecord)localObject1).path });
       }
       return;
@@ -206,8 +206,8 @@ class MoloHandler$1
     if (QLog.isColorLevel()) {
       QLog.d("dataline.MoloHandler", 2, "onDownloadError( tm exit)");
     }
-    Object localObject1 = this.a.a.a().getProxyManager().a(0).a();
-    paramPkgEntry = this.a.a.a().getProxyManager().a(0).a(true);
+    Object localObject1 = this.a.a.h().getProxyManager().a(0).a();
+    paramPkgEntry = this.a.a.h().getProxyManager().a(0).a(true);
     localObject1 = ((DataLineMsgSetList)localObject1).iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
@@ -219,7 +219,7 @@ class MoloHandler$1
         if ((localDataLineMsgRecord.strMoloKey != null) && ((!localDataLineMsgRecord.issuc) || (localDataLineMsgRecord.progress != 1.0F)))
         {
           localDataLineMsgRecord.issuc = false;
-          this.a.a.a.getMessageFacade().a(0).c();
+          this.a.a.i.getMessageFacade().d(0).e();
           this.a.a.a(3, false, new Object[] { paramString, Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path });
         }
       }
@@ -236,7 +236,7 @@ class MoloHandler$1
           if ((((DataLineMsgRecord)localObject2).strMoloKey != null) && ((!((DataLineMsgRecord)localObject2).issuc) || (((DataLineMsgRecord)localObject2).progress != 1.0F)))
           {
             ((DataLineMsgRecord)localObject2).issuc = false;
-            this.a.a.a.getMessageFacade().a(0).c();
+            this.a.a.i.getMessageFacade().d(0).e();
             this.a.a.a(3, false, new Object[] { paramString, Long.valueOf(((DataLineMsgRecord)localObject2).sessionid), ((DataLineMsgRecord)localObject2).path });
           }
         }
@@ -256,19 +256,19 @@ class MoloHandler$1
         ((StringBuilder)localObject).append("onDownloadUpdatem key[");
         ((StringBuilder)localObject).append(localPkgEntry.a);
         ((StringBuilder)localObject).append("], appName[");
-        ((StringBuilder)localObject).append(localPkgEntry.e);
-        ((StringBuilder)localObject).append("], progress[");
         ((StringBuilder)localObject).append(localPkgEntry.f);
+        ((StringBuilder)localObject).append("], progress[");
+        ((StringBuilder)localObject).append(localPkgEntry.p);
         QLog.d("dataline.MoloHandler", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.a.a.a.getDataLineMsgProxy(0).a(localPkgEntry.a);
+      Object localObject = this.a.a.i.getDataLineMsgProxy(0).a(localPkgEntry.a);
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-          float f = localPkgEntry.f / 100.0F;
+          float f = localPkgEntry.p / 100.0F;
           if (localDataLineMsgRecord.progress < f) {
             localDataLineMsgRecord.progress = f;
           }

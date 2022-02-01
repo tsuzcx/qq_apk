@@ -22,29 +22,29 @@ public class TroopMemberListActivity$SearchResultAdapter
   extends BaseAdapter
   implements IFacePreloadBaseAdapter
 {
-  private IFacePreloadBaseAdapterProxy jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFacePreloadBaseAdapterProxy;
   public List<TroopMemberListActivity.ATroopMember> a;
+  private IFacePreloadBaseAdapterProxy c;
   
   public TroopMemberListActivity$SearchResultAdapter(List<TroopMemberListActivity.ATroopMember> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFacePreloadBaseAdapterProxy = ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).getFacePreloadBaseAdapterProxy(this, paramList, paramList.app, paramList.searchList, 1, true);
+    this.c = ((ITroopMemberListActivityApi)QRoute.api(ITroopMemberListActivityApi.class)).getFacePreloadBaseAdapterProxy(this, paramList, paramList.app, paramList.searchList, 1, true);
     Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.a = localObject;
   }
   
   protected Bitmap a(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFacePreloadBaseAdapterProxy.a(paramInt, paramString);
+    return this.c.a(paramInt, paramString);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopmemberlistIFacePreloadBaseAdapterProxy.c();
+    this.c.c();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList == null) {
       return 0;
     }
@@ -53,8 +53,8 @@ public class TroopMemberListActivity$SearchResultAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return this.a.get(paramInt);
     }
     return null;
   }
@@ -66,10 +66,10 @@ public class TroopMemberListActivity$SearchResultAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (TroopMemberListActivity.access$2500(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity))
+    if (TroopMemberListActivity.access$2500(this.b))
     {
-      TroopMemberListActivity.ATroopMember localATroopMember = (TroopMemberListActivity.ATroopMember)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if ((TextUtils.isEmpty(localATroopMember.m)) && (!TextUtils.isEmpty(localATroopMember.p)) && (!TextUtils.isEmpty(localATroopMember.g)) && (!localATroopMember.g.equals(localATroopMember.p))) {
+      TroopMemberListActivity.ATroopMember localATroopMember = (TroopMemberListActivity.ATroopMember)this.a.get(paramInt);
+      if ((TextUtils.isEmpty(localATroopMember.n)) && (!TextUtils.isEmpty(localATroopMember.q)) && (!TextUtils.isEmpty(localATroopMember.h)) && (!localATroopMember.h.equals(localATroopMember.q))) {
         return 1;
       }
     }
@@ -84,12 +84,12 @@ public class TroopMemberListActivity$SearchResultAdapter
     {
       if (i == 0)
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mLayoutInflater.inflate(2131562975, paramViewGroup, false);
+        paramView = this.b.mLayoutInflater.inflate(2131629583, paramViewGroup, false);
         localTmViewHolder = new TroopMemberListActivity.TmViewHolder(paramView, false);
       }
       else
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mLayoutInflater.inflate(2131562979, paramViewGroup, false);
+        paramView = this.b.mLayoutInflater.inflate(2131629587, paramViewGroup, false);
         localTmViewHolder = new TroopMemberListActivity.TmViewHolder(paramView, true);
       }
       paramView.setTag(localTmViewHolder);
@@ -98,12 +98,12 @@ public class TroopMemberListActivity$SearchResultAdapter
     {
       localTmViewHolder = (TroopMemberListActivity.TmViewHolder)paramView.getTag();
     }
-    TroopMemberListActivity.ATroopMember localATroopMember = (TroopMemberListActivity.ATroopMember)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localTmViewHolder.g.setTag(localATroopMember.a);
-    localTmViewHolder.b.setTag(localATroopMember.a);
-    localTmViewHolder.jdField_a_of_type_AndroidViewView.setTag(localATroopMember.a);
-    localTmViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMemberListSlideItem.setTag(Integer.valueOf(paramInt));
-    TroopMemberListActivity localTroopMemberListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
+    TroopMemberListActivity.ATroopMember localATroopMember = (TroopMemberListActivity.ATroopMember)this.a.get(paramInt);
+    localTmViewHolder.o.setTag(localATroopMember.a);
+    localTmViewHolder.f.setTag(localATroopMember.a);
+    localTmViewHolder.d.setTag(localATroopMember.a);
+    localTmViewHolder.c.setTag(Integer.valueOf(paramInt));
+    TroopMemberListActivity localTroopMemberListActivity = this.b;
     Bitmap localBitmap = a(1, localATroopMember.a);
     boolean bool;
     if (i == 1) {
@@ -112,21 +112,21 @@ public class TroopMemberListActivity$SearchResultAdapter
       bool = false;
     }
     localTroopMemberListActivity.setItemViewValue(localTmViewHolder, localATroopMember, localBitmap, true, bool);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mFrom == 12) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mAdapter.jdField_a_of_type_JavaUtilList.contains(localATroopMember)) {
-        localTmViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.b.mFrom == 12) {
+      if (this.b.mAdapter.d.contains(localATroopMember)) {
+        localTmViewHolder.t.setVisibility(0);
       } else {
-        localTmViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        localTmViewHolder.t.setVisibility(8);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mAddFrdHelper != null)
+    if (this.b.mAddFrdHelper != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mAddFrdHelper.a(localTmViewHolder, localATroopMember);
-      if (localTmViewHolder.f.getVisibility() == 0)
+      this.b.mAddFrdHelper.a(localTmViewHolder, localATroopMember);
+      if (localTmViewHolder.w.getVisibility() == 0)
       {
         i = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getMaxWidthForNameInTroopMemberListActivity(2);
-        localTmViewHolder.e.setMaxWidth(i);
-        TroopMemberListActivity.access$2600(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, localTmViewHolder.e, localTmViewHolder.d, localATroopMember.a, i);
+        localTmViewHolder.l.setMaxWidth(i);
+        TroopMemberListActivity.access$2600(this.b.app, localTmViewHolder.l, localTmViewHolder.n, localATroopMember.a, i);
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
@@ -140,7 +140,7 @@ public class TroopMemberListActivity$SearchResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.SearchResultAdapter
  * JD-Core Version:    0.7.0.1
  */

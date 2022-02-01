@@ -17,20 +17,14 @@ import org.jetbrains.annotations.Nullable;
 public abstract class CommonListAdapter<BEAN, HOLDER extends CommonListAdapter.BaseListViewHolder>
   extends BaseAdapter
 {
+  private List<BEAN> a;
   @NotNull
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private List<BEAN> jdField_a_of_type_JavaUtilList;
+  private final Context b;
   
   public CommonListAdapter(@NotNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-  }
-  
-  @NotNull
-  public final Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
+    this.b = paramContext;
+    this.a = ((List)new ArrayList());
   }
   
   @NotNull
@@ -42,7 +36,7 @@ public abstract class CommonListAdapter<BEAN, HOLDER extends CommonListAdapter.B
   @NotNull
   public final List<BEAN> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public abstract void a(int paramInt, BEAN paramBEAN, @NotNull HOLDER paramHOLDER, @NotNull View paramView, @Nullable ViewGroup paramViewGroup);
@@ -50,20 +44,26 @@ public abstract class CommonListAdapter<BEAN, HOLDER extends CommonListAdapter.B
   public final void a(@NotNull List<? extends BEAN> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "value");
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll((Collection)paramList);
+    this.a.clear();
+    this.a.addAll((Collection)paramList);
     notifyDataSetChanged();
+  }
+  
+  @NotNull
+  public final Context b()
+  {
+    return this.b;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   @NotNull
   public Object getItem(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject = this.a.get(paramInt);
     if (localObject != null) {
       return localObject;
     }
@@ -81,8 +81,8 @@ public abstract class CommonListAdapter<BEAN, HOLDER extends CommonListAdapter.B
     Object localObject;
     if (paramView == null)
     {
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
-      localObject = a(this.jdField_a_of_type_AndroidContentContext, paramView, paramViewGroup);
+      paramView = a(this.b, paramViewGroup);
+      localObject = a(this.b, paramView, paramViewGroup);
       paramView.setTag(localObject);
     }
     for (;;)
@@ -94,7 +94,7 @@ public abstract class CommonListAdapter<BEAN, HOLDER extends CommonListAdapter.B
       }
       localObject = (CommonListAdapter.BaseListViewHolder)localObject;
     }
-    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), (CommonListAdapter.BaseListViewHolder)localObject, paramView, paramViewGroup);
+    a(paramInt, this.a.get(paramInt), (CommonListAdapter.BaseListViewHolder)localObject, paramView, paramViewGroup);
     return paramView;
     label77:
     paramView = new TypeCastException("null cannot be cast to non-null type HOLDER");
@@ -106,7 +106,7 @@ public abstract class CommonListAdapter<BEAN, HOLDER extends CommonListAdapter.B
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.list.CommonListAdapter
  * JD-Core Version:    0.7.0.1
  */

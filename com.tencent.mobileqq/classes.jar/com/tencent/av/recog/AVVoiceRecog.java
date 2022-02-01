@@ -21,54 +21,25 @@ import mqq.os.MqqHandler;
 public class AVVoiceRecog
   implements SdkAudioFrameCallback
 {
-  private static volatile AVVoiceRecog jdField_a_of_type_ComTencentAvRecogAVVoiceRecog;
+  private static volatile AVVoiceRecog n;
   public int a;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  private AVVoiceRecog.AVVoiceRecogCallback jdField_a_of_type_ComTencentAvRecogAVVoiceRecog$AVVoiceRecogCallback = null;
-  private AVVoiceRecog.VRListener jdField_a_of_type_ComTencentAvRecogAVVoiceRecog$VRListener = new AVVoiceRecog.VRListener(this);
-  Runnable jdField_a_of_type_JavaLangRunnable = new AVVoiceRecog.1(this);
-  String jdField_a_of_type_JavaLangString = a();
-  private boolean jdField_a_of_type_Boolean = false;
   public int b;
-  Runnable jdField_b_of_type_JavaLangRunnable = new AVVoiceRecog.2(this);
-  private boolean jdField_b_of_type_Boolean = false;
-  public int c;
-  private boolean c;
+  Runnable c = new AVVoiceRecog.1(this);
   public int d;
-  private int e = 1;
-  
-  public AVVoiceRecog()
-  {
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public static AVVoiceRecog a()
-  {
-    if (jdField_a_of_type_ComTencentAvRecogAVVoiceRecog == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentAvRecogAVVoiceRecog == null) {
-          jdField_a_of_type_ComTencentAvRecogAVVoiceRecog = new AVVoiceRecog();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentAvRecogAVVoiceRecog;
-  }
-  
-  private String a()
-  {
-    String str = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("audiodata");
-    localStringBuilder.append(str);
-    localStringBuilder.append(".pcm");
-    return localStringBuilder.toString();
-  }
+  public int e;
+  Runnable f = new AVVoiceRecog.2(this);
+  String g = f();
+  private boolean h = false;
+  private boolean i = false;
+  private boolean j = true;
+  private VideoAppInterface k = null;
+  private AVVoiceRecog.AVVoiceRecogCallback l = null;
+  private int m = 1;
+  private AVVoiceRecog.VRListener o = new AVVoiceRecog.VRListener(this);
   
   private void a(int paramInt1, int paramInt2)
   {
-    VideoController.a().b(0, false);
+    VideoController.f().b(0, false);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("pauseContinue, oldReasons[");
     localStringBuilder.append(paramInt1);
@@ -82,50 +53,50 @@ public class AVVoiceRecog
   private void a(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 135	java/io/File
+    //   0: new 114	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 136	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 117	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 4
-    //   10: new 87	java/lang/StringBuilder
+    //   10: new 79	java/lang/StringBuilder
     //   13: dup
-    //   14: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   14: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   17: astore 5
     //   19: aload 5
     //   21: aload_1
-    //   22: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: pop
     //   26: aload 5
     //   28: aload_2
-    //   29: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: pop
-    //   33: new 135	java/io/File
+    //   33: new 114	java/io/File
     //   36: dup
     //   37: aload 5
-    //   39: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokespecial 136	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokespecial 117	java/io/File:<init>	(Ljava/lang/String;)V
     //   45: astore_1
     //   46: aload 4
-    //   48: invokevirtual 140	java/io/File:exists	()Z
+    //   48: invokevirtual 121	java/io/File:exists	()Z
     //   51: ifne +9 -> 60
     //   54: aload 4
-    //   56: invokevirtual 143	java/io/File:mkdirs	()Z
+    //   56: invokevirtual 124	java/io/File:mkdirs	()Z
     //   59: pop
     //   60: aload_1
-    //   61: invokevirtual 140	java/io/File:exists	()Z
+    //   61: invokevirtual 121	java/io/File:exists	()Z
     //   64: ifne +16 -> 80
     //   67: aload_1
-    //   68: invokevirtual 146	java/io/File:createNewFile	()Z
+    //   68: invokevirtual 127	java/io/File:createNewFile	()Z
     //   71: pop
     //   72: goto +8 -> 80
     //   75: astore_2
     //   76: aload_2
-    //   77: invokevirtual 149	java/io/IOException:printStackTrace	()V
-    //   80: new 151	java/io/FileOutputStream
+    //   77: invokevirtual 130	java/io/IOException:printStackTrace	()V
+    //   80: new 132	java/io/FileOutputStream
     //   83: dup
     //   84: aload_1
     //   85: iconst_1
-    //   86: invokespecial 154	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   86: invokespecial 135	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   89: astore_2
     //   90: aload_3
     //   91: ifnull +10 -> 101
@@ -133,13 +104,13 @@ public class AVVoiceRecog
     //   95: astore_1
     //   96: aload_2
     //   97: aload_3
-    //   98: invokevirtual 158	java/io/FileOutputStream:write	([B)V
+    //   98: invokevirtual 139	java/io/FileOutputStream:write	([B)V
     //   101: aload_2
     //   102: astore_1
     //   103: aload_2
-    //   104: invokevirtual 161	java/io/FileOutputStream:flush	()V
+    //   104: invokevirtual 142	java/io/FileOutputStream:flush	()V
     //   107: aload_2
-    //   108: invokevirtual 164	java/io/FileOutputStream:close	()V
+    //   108: invokevirtual 145	java/io/FileOutputStream:close	()V
     //   111: return
     //   112: astore_3
     //   113: goto +16 -> 129
@@ -155,11 +126,11 @@ public class AVVoiceRecog
     //   129: aload_2
     //   130: astore_1
     //   131: aload_3
-    //   132: invokevirtual 149	java/io/IOException:printStackTrace	()V
+    //   132: invokevirtual 130	java/io/IOException:printStackTrace	()V
     //   135: aload_2
     //   136: ifnull +31 -> 167
     //   139: aload_2
-    //   140: invokevirtual 164	java/io/FileOutputStream:close	()V
+    //   140: invokevirtual 145	java/io/FileOutputStream:close	()V
     //   143: return
     //   144: astore_3
     //   145: aconst_null
@@ -167,15 +138,15 @@ public class AVVoiceRecog
     //   147: aload_2
     //   148: astore_1
     //   149: aload_3
-    //   150: invokevirtual 165	java/io/FileNotFoundException:printStackTrace	()V
+    //   150: invokevirtual 146	java/io/FileNotFoundException:printStackTrace	()V
     //   153: aload_2
     //   154: ifnull +13 -> 167
     //   157: aload_2
-    //   158: invokevirtual 164	java/io/FileOutputStream:close	()V
+    //   158: invokevirtual 145	java/io/FileOutputStream:close	()V
     //   161: return
     //   162: astore_1
     //   163: aload_1
-    //   164: invokevirtual 149	java/io/IOException:printStackTrace	()V
+    //   164: invokevirtual 130	java/io/IOException:printStackTrace	()V
     //   167: return
     //   168: astore_3
     //   169: aload_1
@@ -185,11 +156,11 @@ public class AVVoiceRecog
     //   173: aload_2
     //   174: ifnull +15 -> 189
     //   177: aload_2
-    //   178: invokevirtual 164	java/io/FileOutputStream:close	()V
+    //   178: invokevirtual 145	java/io/FileOutputStream:close	()V
     //   181: goto +8 -> 189
     //   184: astore_2
     //   185: aload_2
-    //   186: invokevirtual 149	java/io/IOException:printStackTrace	()V
+    //   186: invokevirtual 130	java/io/IOException:printStackTrace	()V
     //   189: aload_1
     //   190: athrow
     // Local variable table:
@@ -222,78 +193,92 @@ public class AVVoiceRecog
   
   private static boolean a(VideoAppInterface paramVideoAppInterface)
   {
-    return ((EffectSupportManager)paramVideoAppInterface.a(5)).a(3, "normal");
+    return ((EffectSupportManager)paramVideoAppInterface.c(5)).a(3, "normal");
+  }
+  
+  public static AVVoiceRecog b()
+  {
+    if (n == null) {
+      try
+      {
+        if (n == null) {
+          n = new AVVoiceRecog();
+        }
+      }
+      finally {}
+    }
+    return n;
   }
   
   private void b(int paramInt1, int paramInt2)
   {
-    a().b();
-    if (!this.jdField_b_of_type_Boolean)
+    b().c();
+    if (!this.i)
     {
-      this.jdField_c_of_type_Boolean = true;
+      this.j = true;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("resumeContinue failed, !mIsInitAndStart, mPauseReason[");
-      localStringBuilder.append(this.e);
+      localStringBuilder.append(this.m);
       localStringBuilder.append("], reason[");
       localStringBuilder.append(paramInt2);
       localStringBuilder.append("]");
       QLog.w("AVVoiceRecog", 1, localStringBuilder.toString());
       return;
     }
-    this.jdField_c_of_type_Boolean = false;
-    int i = VideoController.a().a(0, false);
-    int j = VideoController.a().a(0, 16000, 1, 16);
-    VideoController.a().a(1, this);
+    this.j = false;
+    int i1 = VideoController.f().a(0, false);
+    int i2 = VideoController.f().a(0, 16000, 1, 16);
+    VideoController.f().a(1, this);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("resumeContinue, oldReasons[");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("], mPauseReason[");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("], reason[");
     localStringBuilder.append(paramInt2);
     localStringBuilder.append("], mIsPause[");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("], regret[");
-    localStringBuilder.append(i);
+    localStringBuilder.append(i1);
     localStringBuilder.append("], setret[");
-    localStringBuilder.append(j);
+    localStringBuilder.append(i2);
     localStringBuilder.append("]");
     QLog.w("AVVoiceRecog", 1, localStringBuilder.toString());
   }
   
-  private boolean c()
+  private boolean e()
   {
-    VoiceRecognizer.shareInstance().setListener(this.jdField_a_of_type_ComTencentAvRecogAVVoiceRecog$VRListener);
-    if (this.jdField_a_of_type_Boolean)
+    VoiceRecognizer.shareInstance().setListener(this.o);
+    if (this.h)
     {
       VoiceRecognizer.shareInstance().setOpenLogCat(true);
       VoiceRecognizer.shareInstance().setSaveVoice(true);
     }
     VoiceRecognizer.shareInstance().setContReco(true);
-    Object localObject1 = ResMgr.a().a("AVVoiceRecogSo");
-    Object localObject2 = ResMgr.a().a("AVVoiceRecogModel");
+    Object localObject1 = ResMgr.a().f("AVVoiceRecogSo");
+    Object localObject2 = ResMgr.a().f("AVVoiceRecogModel");
     if ((localObject1 != null) && (localObject2 != null))
     {
-      if (!ResMgr.a().b("AVVoiceRecogSo"))
+      if (!ResMgr.a().g("AVVoiceRecogSo"))
       {
         ResMgr.a().a("AVVoiceRecogSo");
         QLog.i("AVVoiceRecog", 1, "initRecognizer. init failed. so file no exist.");
         return false;
       }
-      if (!ResMgr.a().b("AVVoiceRecogModel"))
+      if (!ResMgr.a().g("AVVoiceRecogModel"))
       {
         ResMgr.a().a("AVVoiceRecogModel");
         QLog.i("AVVoiceRecog", 1, "initRecognizer. init failed. model file no exist.");
         return false;
       }
       VoiceRecognizer.shareInstance().setWakeupThres(0);
-      int j = -1;
+      int i2 = -1;
       boolean bool;
-      int i;
+      int i1;
       try
       {
-        localObject1 = ResMgr.a().b("AVVoiceRecogSo");
-        localObject2 = ResMgr.a().b("AVVoiceRecogModel");
+        localObject1 = ResMgr.a().c("AVVoiceRecogSo");
+        localObject2 = ResMgr.a().c("AVVoiceRecogModel");
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("initRecognizer. soFullFileName = ");
         localStringBuilder.append((String)localObject1);
@@ -302,47 +287,47 @@ public class AVVoiceRecog
         QLog.i("AVVoiceRecog", 1, localStringBuilder.toString());
         bool = SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getApplication().getApplicationContext(), "c++_shared");
         if (!bool) {
-          i = j;
+          i1 = i2;
         }
         try
         {
           localObject1 = new StringBuilder();
-          i = j;
+          i1 = i2;
           ((StringBuilder)localObject1).append("initRecognizer. init failed. ret1 = ");
-          i = j;
+          i1 = i2;
           ((StringBuilder)localObject1).append(bool);
-          i = j;
+          i1 = i2;
           QLog.i("AVVoiceRecog", 1, ((StringBuilder)localObject1).toString());
           return false;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError1) {}
-        i = j;
-        j = VoiceRecognizer.shareInstance().init(BaseApplicationImpl.getApplication().getApplicationContext(), (String)localObject1, (String)localObject2);
-        i = j;
+        i1 = i2;
+        i2 = VoiceRecognizer.shareInstance().init(BaseApplicationImpl.getApplication().getApplicationContext(), (String)localObject1, (String)localObject2);
+        i1 = i2;
         localObject1 = new StringBuilder();
-        i = j;
+        i1 = i2;
         ((StringBuilder)localObject1).append("VoiceRecog. init. ret1 = ");
-        i = j;
+        i1 = i2;
         ((StringBuilder)localObject1).append(bool);
-        i = j;
+        i1 = i2;
         ((StringBuilder)localObject1).append(", ret2 = ");
-        i = j;
-        ((StringBuilder)localObject1).append(j);
-        i = j;
+        i1 = i2;
+        ((StringBuilder)localObject1).append(i2);
+        i1 = i2;
         ((StringBuilder)localObject1).append(", thre = ");
-        i = j;
+        i1 = i2;
         ((StringBuilder)localObject1).append(0);
-        i = j;
+        i1 = i2;
         QLog.i("AVVoiceRecog", 1, ((StringBuilder)localObject1).toString());
-        if ((bool) && (j >= 0))
+        if ((bool) && (i2 >= 0))
         {
           localObject1 = new SDKVersion();
-          i = VoiceRecognizer.shareInstance().getVersion((SDKVersion)localObject1);
-          if (i < 0)
+          i1 = VoiceRecognizer.shareInstance().getVersion((SDKVersion)localObject1);
+          if (i1 < 0)
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("initRecognizer. getVersion failed. ret = ");
-            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(i1);
             QLog.i("AVVoiceRecog", 1, ((StringBuilder)localObject1).toString());
             return false;
           }
@@ -354,30 +339,30 @@ public class AVVoiceRecog
           QLog.i("AVVoiceRecog", 1, ((StringBuilder)localObject2).toString());
           return true;
         }
-        i = j;
+        i1 = i2;
         localObject1 = new StringBuilder();
-        i = j;
+        i1 = i2;
         ((StringBuilder)localObject1).append("initRecognizer. init failed. ret1 = ");
-        i = j;
+        i1 = i2;
         ((StringBuilder)localObject1).append(bool);
-        i = j;
+        i1 = i2;
         ((StringBuilder)localObject1).append(", ret2 = ");
-        i = j;
-        ((StringBuilder)localObject1).append(j);
-        i = j;
+        i1 = i2;
+        ((StringBuilder)localObject1).append(i2);
+        i1 = i2;
         QLog.i("AVVoiceRecog", 1, ((StringBuilder)localObject1).toString());
         return false;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
       {
         bool = false;
-        i = j;
+        i1 = i2;
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("initRecognizer. init failed. ret1 = ");
       ((StringBuilder)localObject2).append(bool);
       ((StringBuilder)localObject2).append(", ret2 = ");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(i1);
       ((StringBuilder)localObject2).append(", err = ");
       ((StringBuilder)localObject2).append(localUnsatisfiedLinkError2.getMessage());
       QLog.i("AVVoiceRecog", 1, ((StringBuilder)localObject2).toString());
@@ -387,57 +372,36 @@ public class AVVoiceRecog
     return false;
   }
   
-  public void a()
+  private String f()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    VideoController.a().b(0, false);
-    VideoController.a().a(1, null);
-    VoiceRecognizer.shareInstance().cancel();
-    VoiceRecognizer.shareInstance().destroy();
-    this.jdField_b_of_type_Boolean = false;
-    this.e = 1;
-    this.jdField_c_of_type_Boolean = true;
-    QLog.i("AVVoiceRecog", 1, "stopAndUninit OK.");
-  }
-  
-  public void a(int paramInt)
-  {
-    this.e |= paramInt;
-    if (!this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Int = this.e;
-    this.jdField_b_of_type_Int = paramInt;
-    if (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = true;
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
+    String str = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("audiodata");
+    localStringBuilder.append(str);
+    localStringBuilder.append(".pcm");
+    return localStringBuilder.toString();
   }
   
   public void a(VideoAppInterface paramVideoAppInterface, AVVoiceRecog.AVVoiceRecogCallback paramAVVoiceRecogCallback)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvRecogAVVoiceRecog$AVVoiceRecogCallback = paramAVVoiceRecogCallback;
+    this.k = paramVideoAppInterface;
+    this.l = paramAVVoiceRecogCallback;
   }
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.i;
   }
   
   public boolean a(int paramInt)
   {
-    boolean bool3 = this.jdField_c_of_type_Boolean;
+    boolean bool3 = this.j;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (bool3)
     {
       bool1 = bool2;
-      if (this.e != paramInt) {
+      if (this.m != paramInt) {
         bool1 = true;
       }
     }
@@ -446,51 +410,67 @@ public class AVVoiceRecog
   
   public void b(int paramInt)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    this.m |= paramInt;
+    if (!this.i) {
       return;
     }
-    int i = this.e;
-    this.jdField_c_of_type_Int = i;
-    this.d = paramInt;
-    this.e = ((paramInt ^ 0xFFFFFFFF) & i);
+    this.a = this.m;
+    this.b = paramInt;
+    if (this.j) {
+      return;
+    }
+    this.j = true;
+    ThreadManager.getUIHandler().removeCallbacks(this.f);
+    ThreadManager.getUIHandler().post(this.c);
+  }
+  
+  public void c(int paramInt)
+  {
+    if (!this.j) {
+      return;
+    }
+    int i1 = this.m;
+    this.d = i1;
+    this.e = paramInt;
+    this.m = ((paramInt ^ 0xFFFFFFFF) & i1);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("resume, reason[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], mIsPause[");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("], mPauseReason[");
-    localStringBuilder.append(i);
+    localStringBuilder.append(i1);
     localStringBuilder.append("->");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("]");
     QLog.w("AVVoiceRecog", 1, localStringBuilder.toString());
-    if (this.e == 0)
+    if (this.m == 0)
     {
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandler().post(this.jdField_b_of_type_JavaLangRunnable);
+      ThreadManager.getUIHandler().removeCallbacks(this.c);
+      ThreadManager.getUIHandler().post(this.f);
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.j = true;
   }
   
-  public boolean b()
+  public boolean c()
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
+    boolean bool = this.i;
     if (bool) {
       return bool;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    Object localObject = this.k;
     if (localObject == null) {
       return bool;
     }
     if (!a((VideoAppInterface)localObject))
     {
       QLog.i("AVVoiceRecog", 1, "initAndStart. initRecognizer failed. not DeviceSupport.");
-      this.jdField_b_of_type_Boolean = false;
+      this.i = false;
       return false;
     }
-    localObject = ResMgr.a().a("AVVoiceRecogSo");
-    ResInfo localResInfo = ResMgr.a().a("AVVoiceRecogModel");
+    localObject = ResMgr.a().f("AVVoiceRecogSo");
+    ResInfo localResInfo = ResMgr.a().f("AVVoiceRecogModel");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("initAndStart. soResInfo = ");
     localStringBuilder.append(localObject);
@@ -499,40 +479,55 @@ public class AVVoiceRecog
     QLog.i("AVVoiceRecog", 1, localStringBuilder.toString());
     if ((localObject != null) && (localResInfo != null))
     {
-      bool = c();
+      bool = e();
       if (!bool)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("initAndStart. initRecognizer failed. initret = ");
         ((StringBuilder)localObject).append(bool);
         QLog.i("AVVoiceRecog", 1, ((StringBuilder)localObject).toString());
-        this.jdField_b_of_type_Boolean = false;
+        this.i = false;
         return false;
       }
       VoiceRecognizer.shareInstance().setKeywordSetIndex(0);
-      int i = VoiceRecognizer.shareInstance().startReceiving();
-      if (i < 0)
+      int i1 = VoiceRecognizer.shareInstance().startReceiving();
+      if (i1 < 0)
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("initAndStart. startReceiving failed. ret = ");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(i1);
         QLog.i("AVVoiceRecog", 1, ((StringBuilder)localObject).toString());
-        this.jdField_b_of_type_Boolean = false;
+        this.i = false;
         return false;
       }
       QLog.i("AVVoiceRecog", 1, "initAndStart OK.");
-      this.jdField_b_of_type_Boolean = true;
-      return this.jdField_b_of_type_Boolean;
+      this.i = true;
+      return this.i;
     }
     QLog.i("AVVoiceRecog", 1, "initAndStart. initRecognizer failed. soResInfo == null || modelResInfo == null.");
-    this.jdField_b_of_type_Boolean = false;
+    this.i = false;
     return false;
+  }
+  
+  public void d()
+  {
+    if (!this.i) {
+      return;
+    }
+    VideoController.f().b(0, false);
+    VideoController.f().a(1, null);
+    VoiceRecognizer.shareInstance().cancel();
+    VoiceRecognizer.shareInstance().destroy();
+    this.i = false;
+    this.m = 1;
+    this.j = true;
+    QLog.i("AVVoiceRecog", 1, "stopAndUninit OK.");
   }
   
   public void onReceiveAudioFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder;
-    if ((QLog.isColorLevel()) || (!this.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean))
+    if ((QLog.isColorLevel()) || (!this.i) || (this.j))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReceiveAudioFrame, srcType[");
@@ -542,19 +537,19 @@ public class AVVoiceRecog
       localStringBuilder.append("]");
       QLog.w("AVVoiceRecog", 1, localStringBuilder.toString());
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.i)
     {
-      if (this.jdField_c_of_type_Boolean) {
+      if (this.j) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.h)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
         localStringBuilder.append(File.separator);
         localStringBuilder.append("audiodata");
         localStringBuilder.append(File.separator);
-        a(localStringBuilder.toString(), this.jdField_a_of_type_JavaLangString, paramArrayOfByte);
+        a(localStringBuilder.toString(), this.g, paramArrayOfByte);
       }
       VoiceRecognizer.shareInstance().appendData(paramArrayOfByte, 0, paramInt2, false);
     }

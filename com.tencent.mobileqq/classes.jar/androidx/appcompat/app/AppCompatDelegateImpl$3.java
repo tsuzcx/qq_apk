@@ -13,7 +13,7 @@ class AppCompatDelegateImpl$3
   public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
   {
     int i = paramWindowInsetsCompat.getSystemWindowInsetTop();
-    int j = this.this$0.updateStatusGuard(i);
+    int j = this.this$0.updateStatusGuard(paramWindowInsetsCompat, null);
     WindowInsetsCompat localWindowInsetsCompat = paramWindowInsetsCompat;
     if (i != j) {
       localWindowInsetsCompat = paramWindowInsetsCompat.replaceSystemWindowInsets(paramWindowInsetsCompat.getSystemWindowInsetLeft(), j, paramWindowInsetsCompat.getSystemWindowInsetRight(), paramWindowInsetsCompat.getSystemWindowInsetBottom());

@@ -19,7 +19,7 @@ class TroopArkHelper$2
   
   protected void onBatchGetTroopInfoResp(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
   {
-    this.a.a().removeObserver(this);
+    this.a.b().removeObserver(this);
     paramBundle = new TroopInfoData();
     paramBundle.isMember = true;
     boolean bool = QLog.isColorLevel();
@@ -47,7 +47,7 @@ class TroopArkHelper$2
         localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
         if ((localObject != null) && (((BatchResponse)localObject).result == 0) && (((BatchResponse)localObject).type == 1))
         {
-          TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a.a);
+          TroopInfo localTroopInfo = ((TroopManager)this.a.b().getManager(QQManagerFactory.TROOP_MANAGER)).f(this.a.a);
           this.a.a((BatchResponse)localObject, paramBundle, localTroopInfo);
         }
         i += 1;
@@ -66,7 +66,7 @@ class TroopArkHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.scheme.TroopArkHelper.2
  * JD-Core Version:    0.7.0.1
  */

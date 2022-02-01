@@ -13,7 +13,7 @@ final class b
   {
     try
     {
-      a.b = a.b().getPackageManager().getPackageInfo(a.b().getPackageName(), 0).applicationInfo.loadLabel(a.b().getPackageManager()).toString();
+      a.b = a.j().getPackageManager().getPackageInfo(a.j().getPackageName(), 0).applicationInfo.loadLabel(a.j().getPackageManager()).toString();
       label36:
       e.a();
       com.tencent.featuretoggle.hltxkg.common.e.a.a(a.a());
@@ -27,7 +27,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.b
  * JD-Core Version:    0.7.0.1
  */

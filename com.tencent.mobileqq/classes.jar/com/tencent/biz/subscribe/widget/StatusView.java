@@ -19,18 +19,18 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 public class StatusView
   extends BaseWidgetView
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString = getResources().getString(2131701692);
-  private int jdField_c_of_type_Int = 18;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private int jdField_d_of_type_Int = -16777216;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private View c;
+  private ImageView d;
+  private TextView e;
+  private ImageView f;
+  private TextView g;
+  private TextView h;
+  private TextView i;
+  private LinearLayout j;
+  private String k;
+  private String l = getResources().getString(2131899714);
+  private int m = 18;
+  private int n = -16777216;
   
   public StatusView(Context paramContext)
   {
@@ -42,7 +42,7 @@ public class StatusView
     super(paramContext, paramAttributeSet);
   }
   
-  private void a(boolean paramBoolean)
+  private void setVisible(boolean paramBoolean)
   {
     if ((!paramBoolean) && (getVisibility() == 0)) {
       setVisibility(8);
@@ -52,41 +52,31 @@ public class StatusView
     }
   }
   
-  protected int a()
-  {
-    return 2131558740;
-  }
-  
-  public ImageView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetImageView;
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject = this.e;
     if ((localObject != null) && (((TextView)localObject).getVisibility() == 8)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.e.setVisibility(0);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    localObject = this.d;
     if ((localObject != null) && (((ImageView)localObject).getVisibility() == 8)) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.d.setVisibility(0);
     }
-    a(true);
+    setVisible(true);
   }
   
   protected void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376732);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369348));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369412));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379657));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379800));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379916));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379822));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370289));
+    this.c = paramView.findViewById(2131445015);
+    this.d = ((ImageView)paramView.findViewById(2131436363));
+    this.f = ((ImageView)paramView.findViewById(2131436448));
+    this.e = ((TextView)paramView.findViewById(2131448433));
+    this.g = ((TextView)paramView.findViewById(2131448629));
+    this.h = ((TextView)paramView.findViewById(2131448790));
+    this.i = ((TextView)paramView.findViewById(2131448663));
+    this.j = ((LinearLayout)paramView.findViewById(2131437523));
     paramContext = new StringBuilder();
-    paramContext.append(SubscribeUtils.a());
+    paramContext.append(SubscribeUtils.b());
     paramContext.append("/certified_account_feed_error.png");
     setHintImageFilePath(paramContext.toString());
     setBackgroundColor(-1);
@@ -95,31 +85,31 @@ public class StatusView
   public void a(View.OnClickListener paramOnClickListener)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(SubscribeUtils.a());
+    ((StringBuilder)localObject).append(SubscribeUtils.b());
     ((StringBuilder)localObject).append("/certified_account_feeds_empty.png");
     setHintImageFilePath(((StringBuilder)localObject).toString());
-    a(HardCodeUtil.a(2131719372), 13, getResources().getColor(2131167250));
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    a(HardCodeUtil.a(2131916927), 13, getResources().getColor(2131168245));
+    localObject = this.g;
     if (localObject != null)
     {
       ((TextView)localObject).setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+      this.g.setOnClickListener(paramOnClickListener);
     }
   }
   
   public void a(View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(SubscribeUtils.a());
+    ((StringBuilder)localObject).append(SubscribeUtils.b());
     ((StringBuilder)localObject).append("/certified_account_feeds_empty.png");
     setHintImageFilePath(((StringBuilder)localObject).toString());
-    a(HardCodeUtil.a(2131719375), 13, getResources().getColor(2131167250));
-    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    a(HardCodeUtil.a(2131916930), 13, getResources().getColor(2131168245));
+    localObject = this.j;
     if (localObject != null)
     {
       ((LinearLayout)localObject).setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener1);
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener2);
+      this.h.setOnClickListener(paramOnClickListener1);
+      this.i.setOnClickListener(paramOnClickListener2);
     }
   }
   
@@ -127,7 +117,7 @@ public class StatusView
   
   public void a(String paramString)
   {
-    a(paramString, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    a(paramString, this.m, this.n);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -136,50 +126,70 @@ public class StatusView
     a();
   }
   
+  public void b()
+  {
+    setVisible(false);
+  }
+  
   public void b(String paramString)
   {
-    Object localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    Object localObject = this.f;
     if (localObject != null)
     {
       ((ImageView)localObject).setVisibility(0);
-      if (!paramString.equals(this.jdField_a_of_type_JavaLangString)) {
+      if (!paramString.equals(this.k)) {
         try
         {
           localObject = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getResources().getDrawable(2130851328);
-          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getResources().getDrawable(2130851328);
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject));
-          this.jdField_a_of_type_JavaLangString = paramString;
+          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getResources().getDrawable(2130853592);
+          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = getResources().getDrawable(2130853592);
+          this.f.setImageDrawable(URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject));
+          this.k = paramString;
         }
         catch (Exception paramString)
         {
           paramString.printStackTrace();
         }
       }
-      a(true);
+      setVisible(true);
     }
   }
   
   public void c()
   {
-    a(false);
+    this.f.setVisibility(8);
+    setVisible(false);
   }
   
-  public void d()
+  public ImageView getIvHintPic()
   {
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    a(false);
+    return this.d;
+  }
+  
+  public ImageView getIvLoadingPic()
+  {
+    return this.f;
+  }
+  
+  protected int getLayoutId()
+  {
+    return 2131624360;
+  }
+  
+  public TextView getTvHint()
+  {
+    return this.e;
   }
   
   public void setHintImageFilePath(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+    if (this.d != null) {
       try
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130851328);
-        localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130851328);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getFileDrawable(paramString, localURLDrawableOptions));
+        localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130853592);
+        localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130853592);
+        this.d.setImageDrawable(URLDrawable.getFileDrawable(paramString, localURLDrawableOptions));
         return;
       }
       catch (Exception paramString)
@@ -191,27 +201,27 @@ public class StatusView
   
   public void setTextHint(String paramString)
   {
-    setTextHint(paramString, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+    setTextHint(paramString, this.m, this.n);
   }
   
   public void setTextHint(String paramString, float paramFloat, int paramInt)
   {
     String str = paramString;
     if (paramString == null) {
-      str = this.jdField_b_of_type_JavaLangString;
+      str = this.l;
     }
-    paramString = this.jdField_a_of_type_AndroidWidgetTextView;
+    paramString = this.e;
     if (paramString != null)
     {
       paramString.setText(str);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramFloat);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
+      this.e.setTextSize(paramFloat);
+      this.e.setTextColor(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.StatusView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,11 @@ package com.tencent.mtt.abtestsdk.utils;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ThreadPoolUtil
+public final class ThreadPoolUtil
 {
-  private static final ExecutorService sExecutor = ;
+  private static final int CPU_CORE_SIZE = Runtime.getRuntime().availableProcessors();
+  private static final int WORK_THREAD_POOL_SIZE = CPU_CORE_SIZE * 2 + 1;
+  private static final ExecutorService sExecutor = Executors.newFixedThreadPool(WORK_THREAD_POOL_SIZE);
   
   public static void execute(Runnable paramRunnable)
   {
@@ -54,7 +56,7 @@ public class ThreadPoolUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.utils.ThreadPoolUtil
  * JD-Core Version:    0.7.0.1
  */

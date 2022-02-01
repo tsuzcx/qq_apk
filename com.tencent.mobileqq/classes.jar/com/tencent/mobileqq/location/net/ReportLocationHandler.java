@@ -23,13 +23,13 @@ import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 public class ReportLocationHandler
   extends BaseProto<LocationHandler>
 {
-  private static int jdField_a_of_type_Int = 2000;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private ReportLocationHandler.OnGetLocationCallback jdField_a_of_type_ComTencentMobileqqLocationNetReportLocationHandler$OnGetLocationCallback;
-  private Long jdField_a_of_type_JavaLangLong;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-  private int b;
+  private static int a = 2000;
+  private final Handler b = new Handler(ThreadManager.getSubThreadLooper());
+  private final AtomicBoolean c = new AtomicBoolean(true);
+  private Runnable d;
+  private int e;
+  private Long f;
+  private ReportLocationHandler.OnGetLocationCallback g;
   
   private void a(int paramInt, long paramLong, LocationItem paramLocationItem)
   {
@@ -50,7 +50,7 @@ public class ReportLocationHandler
     qq_lbs_share.RoomKey localRoomKey = LocationProtoUtil.a(localAppRuntime, 0, paramLong);
     ((RoomOperate.ReqReportLocation)localObject).room_key.set(localRoomKey);
     ((RoomOperate.ReqReportLocation)localObject).room_key.setHasFlag(true);
-    ((RoomOperate.ReqReportLocation)localObject).direction.set(paramLocationItem.a());
+    ((RoomOperate.ReqReportLocation)localObject).direction.set(paramLocationItem.b());
     paramLocationItem = paramLocationItem.a();
     if (paramLocationItem == null)
     {
@@ -66,23 +66,18 @@ public class ReportLocationHandler
     a().sendPbReq(paramLocationItem);
   }
   
-  private void b() {}
+  private void g() {}
   
-  private void c()
+  private void h()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReportLocationHandler", 2, new Object[] { "stopReport: invoked. ", " loopReportStopped: ", this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean });
+      QLog.d("ReportLocationHandler", 2, new Object[] { "stopReport: invoked. ", " loopReportStopped: ", this.c });
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    this.c.set(true);
+    Runnable localRunnable = this.d;
     if (localRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
+      this.b.removeCallbacks(localRunnable);
     }
-  }
-  
-  int a()
-  {
-    return this.b;
   }
   
   protected LocationHandler a()
@@ -90,24 +85,48 @@ public class ReportLocationHandler
     return LocationHandler.a();
   }
   
-  String a()
+  public void a(String paramString, int paramInt, ReportLocationHandler.OnGetLocationCallback paramOnGetLocationCallback)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangLong);
-    localStringBuilder.append("");
-    return localStringBuilder.toString();
+    this.g = paramOnGetLocationCallback;
+    if (!this.c.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportLocationHandler", 2, new Object[] { "startReportInLoop: invoked. still in loop, no need re-request ", " sessionUin: ", paramString });
+      }
+      return;
+    }
+    this.c.set(false);
+    this.d = new ReportLocationHandler.1(this, paramInt, paramString);
+    this.b.post(this.d);
   }
   
-  public void a()
+  public boolean a(LocationRoom.RoomKey paramRoomKey)
+  {
+    if (!c()) {
+      return false;
+    }
+    int i = this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.f);
+    return new LocationRoom.RoomKey(i, localStringBuilder.toString()).equals(paramRoomKey);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    return (!TextUtils.isEmpty(e())) && (e().equals(paramString)) && (d() == paramInt);
+  }
+  
+  public void b()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ReportLocationHandler", 2, "destroy: invoked. ");
     }
-    c();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    h();
+    this.b.removeCallbacksAndMessages(null);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i;
     if (a(paramToServiceMsg, paramFromServiceMsg, paramObject))
@@ -119,15 +138,15 @@ public class ReportLocationHandler
         {
           i = paramToServiceMsg.req_interval.get();
           if (i != 0) {
-            jdField_a_of_type_Int = i * 1000;
+            a = i * 1000;
           }
           if (!QLog.isColorLevel()) {
             return;
           }
-          QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " intervalMillis: ", Integer.valueOf(jdField_a_of_type_Int) });
+          QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " intervalMillis: ", Integer.valueOf(a) });
           return;
         }
-        b();
+        g();
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -145,50 +164,31 @@ public class ReportLocationHandler
           QLog.d("ReportLocationHandler", 2, new Object[] { "requestReportLocationResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
         }
       }
-      b();
+      g();
     }
   }
   
-  public void a(String paramString, int paramInt, ReportLocationHandler.OnGetLocationCallback paramOnGetLocationCallback)
+  public boolean c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetReportLocationHandler$OnGetLocationCallback = paramOnGetLocationCallback;
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportLocationHandler", 2, new Object[] { "startReportInLoop: invoked. still in loop, no need re-request ", " sessionUin: ", paramString });
-      }
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_a_of_type_JavaLangRunnable = new ReportLocationHandler.1(this, paramInt, paramString);
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+    return this.c.get() ^ true;
   }
   
-  public boolean a()
+  int d()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
+    return this.e;
   }
   
-  public boolean a(LocationRoom.RoomKey paramRoomKey)
+  String e()
   {
-    if (!a()) {
-      return false;
-    }
-    int i = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.f);
     localStringBuilder.append("");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangLong);
-    return new LocationRoom.RoomKey(i, localStringBuilder.toString()).equals(paramRoomKey);
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    return (!TextUtils.isEmpty(a())) && (a().equals(paramString)) && (a() == paramInt);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.ReportLocationHandler
  * JD-Core Version:    0.7.0.1
  */

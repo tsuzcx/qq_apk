@@ -11,7 +11,7 @@ class NotificationActivity$MyClickListener
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364703) {
+    if (paramView.getId() == 2131430806) {
       this.a.finish();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -19,7 +19,7 @@ class NotificationActivity$MyClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.MyClickListener
  * JD-Core Version:    0.7.0.1
  */

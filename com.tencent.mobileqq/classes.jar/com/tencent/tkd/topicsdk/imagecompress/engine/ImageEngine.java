@@ -20,41 +20,50 @@ import org.jetbrains.annotations.NotNull;
 public class ImageEngine
   implements IEngine
 {
-  private int jdField_a_of_type_Int;
-  private final InputStreamProvider jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider;
-  private final File jdField_a_of_type_JavaIoFile;
-  private final boolean jdField_a_of_type_Boolean;
+  private int a;
   private int b;
+  private final InputStreamProvider c;
+  private final File d;
+  private final boolean e;
   
   public ImageEngine(@NotNull InputStreamProvider paramInputStreamProvider, @NotNull File paramFile, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider = paramInputStreamProvider;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramInputStreamProvider;
+    this.d = paramFile;
+    this.e = paramBoolean;
     paramInputStreamProvider = new BitmapFactory.Options();
     paramInputStreamProvider.inJustDecodeBounds = true;
     paramInputStreamProvider.inSampleSize = 1;
-    BitmapFactory.decodeStream(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a(), null, paramInputStreamProvider);
-    this.jdField_a_of_type_Int = paramInputStreamProvider.outWidth;
+    BitmapFactory.decodeStream(this.c.a(), null, paramInputStreamProvider);
+    this.a = paramInputStreamProvider.outWidth;
     this.b = paramInputStreamProvider.outHeight;
   }
   
-  private final int a()
+  private final Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    int j = this.jdField_a_of_type_Int;
+    Matrix localMatrix = new Matrix();
+    localMatrix.postRotate(paramInt);
+    paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, true);
+    Intrinsics.checkExpressionValueIsNotNull(paramBitmap, "Bitmap.createBitmap(\n   …           true\n        )");
+    return paramBitmap;
+  }
+  
+  private final int b()
+  {
+    int j = this.a;
     int i = j;
     if (j % 2 == 1) {
       i = j + 1;
     }
-    this.jdField_a_of_type_Int = i;
+    this.a = i;
     j = this.b;
     i = j;
     if (j % 2 == 1) {
       i = j + 1;
     }
     this.b = i;
-    i = RangesKt.coerceAtLeast(this.jdField_a_of_type_Int, this.b);
-    float f = RangesKt.coerceAtMost(this.jdField_a_of_type_Int, this.b) / i;
+    i = RangesKt.coerceAtLeast(this.a, this.b);
+    float f = RangesKt.coerceAtMost(this.a, this.b) / i;
     if ((f <= 1) && (f > 0.5625D))
     {
       if (i < 1664) {
@@ -84,48 +93,39 @@ public class ImageEngine
     return (int)Math.ceil(d1 / d2);
   }
   
-  private final Bitmap a(Bitmap paramBitmap, int paramInt)
-  {
-    Matrix localMatrix = new Matrix();
-    localMatrix.postRotate(paramInt);
-    paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, true);
-    Intrinsics.checkExpressionValueIsNotNull(paramBitmap, "Bitmap.createBitmap(\n   …           true\n        )");
-    return paramBitmap;
-  }
-  
   @NotNull
   public File a()
   {
     Object localObject1 = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject1).inSampleSize = a();
-    Object localObject2 = BitmapFactory.decodeStream(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a(), null, (BitmapFactory.Options)localObject1);
+    ((BitmapFactory.Options)localObject1).inSampleSize = b();
+    Object localObject2 = BitmapFactory.decodeStream(this.c.a(), null, (BitmapFactory.Options)localObject1);
     if (localObject2 != null)
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       localObject1 = localObject2;
-      if (Checker.SINGLE.isJPG(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a())) {
-        localObject1 = a((Bitmap)localObject2, Checker.SINGLE.getOrientation(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a()));
+      if (Checker.SINGLE.isJPG(this.c.a())) {
+        localObject1 = a((Bitmap)localObject2, Checker.SINGLE.getOrientation(this.c.a()));
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.e) {
         localObject2 = Bitmap.CompressFormat.PNG;
       } else {
         localObject2 = Bitmap.CompressFormat.JPEG;
       }
       ((Bitmap)localObject1).compress((Bitmap.CompressFormat)localObject2, 60, (OutputStream)localByteArrayOutputStream);
       ((Bitmap)localObject1).recycle();
-      localObject1 = new FileOutputStream(this.jdField_a_of_type_JavaIoFile);
+      localObject1 = new FileOutputStream(this.d);
       ((FileOutputStream)localObject1).write(localByteArrayOutputStream.toByteArray());
       ((FileOutputStream)localObject1).flush();
       ((FileOutputStream)localObject1).close();
       localByteArrayOutputStream.close();
-      return this.jdField_a_of_type_JavaIoFile;
+      return this.d;
     }
-    return new File(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a());
+    return new File(this.c.e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.engine.ImageEngine
  * JD-Core Version:    0.7.0.1
  */

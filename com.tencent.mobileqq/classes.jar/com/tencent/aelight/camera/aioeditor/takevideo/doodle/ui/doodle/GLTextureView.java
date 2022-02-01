@@ -19,23 +19,23 @@ public class GLTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener
 {
-  private static int jdField_a_of_type_Int;
-  private static final GLTextureView.GLThreadManager jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThreadManager = new GLTextureView.GLThreadManager(null);
-  private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
-  private GLTextureView.EGLConfigChooser jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser;
-  private GLTextureView.EGLContextFactory jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory;
-  private GLTextureView.EGLWindowSurfaceFactory jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory;
-  private GLTextureView.GLThread jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread;
-  private GLTextureView.GLWrapper jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLWrapper;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new GLTextureView.2(this);
-  private final WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean;
+  private static int a;
+  private static final GLTextureView.GLThreadManager f = new GLTextureView.GLThreadManager(null);
+  private boolean b;
+  private Runnable c = new GLTextureView.2(this);
   int d = 0;
-  private int e;
+  int e = 0;
+  private final WeakReference<GLTextureView> g = new WeakReference(this);
+  private GLTextureView.GLThread h;
+  private GLSurfaceView.Renderer i;
+  private boolean j;
+  private GLTextureView.EGLConfigChooser k;
+  private GLTextureView.EGLContextFactory l;
+  private GLTextureView.EGLWindowSurfaceFactory m;
+  private GLTextureView.GLWrapper n;
+  private int o;
+  private int p;
+  private boolean q;
   
   public GLTextureView(Context paramContext)
   {
@@ -47,15 +47,6 @@ public class GLTextureView
   {
     super(paramContext, paramAttributeSet);
     a();
-  }
-  
-  @TargetApi(14)
-  private float a()
-  {
-    if (Build.VERSION.SDK_INT >= 14) {
-      return getAlpha();
-    }
-    return 1.0F;
   }
   
   @SuppressLint({"UseValueOf"})
@@ -81,13 +72,30 @@ public class GLTextureView
   
   private void a()
   {
-    jdField_a_of_type_Int = a(getContext(), "ro.opengles.version", 0).intValue();
+    a = a(getContext(), "ro.opengles.version", 0).intValue();
     setSurfaceTextureListener(this);
     addOnLayoutChangeListener(new GLTextureView.1(this));
   }
   
+  private void b()
+  {
+    if (this.h == null) {
+      return;
+    }
+    throw new IllegalStateException("setRenderer has already been called for this instance.");
+  }
+  
   @TargetApi(14)
-  private void a(float paramFloat)
+  private float getViewAlpha()
+  {
+    if (Build.VERSION.SDK_INT >= 14) {
+      return getAlpha();
+    }
+    return 1.0F;
+  }
+  
+  @TargetApi(14)
+  private void setViewAlpha(float paramFloat)
   {
     if (Build.VERSION.SDK_INT >= 14)
     {
@@ -102,34 +110,26 @@ public class GLTextureView
     }
   }
   
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread == null) {
-      return;
-    }
-    throw new IllegalStateException("setRenderer has already been called for this instance.");
-  }
-  
   public void a(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.b();
+    this.h.d();
   }
   
   public void a(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, int paramInt3)
   {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_c_of_type_Int != paramInt2) || (this.d != paramInt3))
+    long l1 = System.currentTimeMillis();
+    if ((this.d != paramInt2) || (this.e != paramInt3))
     {
-      this.jdField_c_of_type_Int = paramInt2;
-      this.d = paramInt3;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.a(paramInt2, paramInt3);
+      this.d = paramInt2;
+      this.e = paramInt3;
+      this.h.a(paramInt2, paramInt3);
       if (QLog.isColorLevel()) {
         QLog.d("GLTextureView", 2, " surfaceChanged, onWindowResize");
       }
     }
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if ((this.jdField_a_of_type_Boolean) && (a() != 1.0F)) {
-      a(1.0F);
+    removeCallbacks(this.c);
+    if ((this.b) && (getViewAlpha() != 1.0F)) {
+      setViewAlpha(1.0F);
     }
     if (QLog.isColorLevel())
     {
@@ -139,32 +139,32 @@ public class GLTextureView
       paramSurfaceTexture.append(",h:");
       paramSurfaceTexture.append(paramInt3);
       paramSurfaceTexture.append(" use:");
-      paramSurfaceTexture.append(System.currentTimeMillis() - l);
+      paramSurfaceTexture.append(System.currentTimeMillis() - l1);
       QLog.d("GLTextureView", 2, paramSurfaceTexture.toString());
     }
   }
   
   public void b(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.c();
+    this.h.e();
   }
   
   public void b(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.a(paramRunnable);
+    this.h.a(paramRunnable);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.a();
+    this.h.c();
   }
   
   protected void finalize()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.d();
+      if (this.h != null) {
+        this.h.f();
       }
       return;
     }
@@ -174,77 +174,92 @@ public class GLTextureView
     }
   }
   
+  public int getDebugFlags()
+  {
+    return this.o;
+  }
+  
+  public boolean getPreserveEGLContextOnPause()
+  {
+    return this.q;
+  }
+  
+  public int getRenderMode()
+  {
+    return this.h.b();
+  }
+  
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer != null))
+    if ((this.j) && (this.i != null))
     {
-      GLTextureView.GLThread localGLThread = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread;
-      int i;
+      GLTextureView.GLThread localGLThread = this.h;
+      int i1;
       if (localGLThread != null) {
-        i = localGLThread.a();
+        i1 = localGLThread.b();
       } else {
-        i = 1;
+        i1 = 1;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread = new GLTextureView.GLThread(this.jdField_a_of_type_JavaLangRefWeakReference);
-      if (i != 1) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.a(i);
+      this.h = new GLTextureView.GLThread(this.g);
+      if (i1 != 1) {
+        this.h.a(i1);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.start();
+      this.h.start();
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.j = false;
   }
   
   protected void onDetachedFromWindow()
   {
-    GLTextureView.GLThread localGLThread = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread;
+    GLTextureView.GLThread localGLThread = this.h;
     if (localGLThread != null) {
-      localGLThread.d();
+      localGLThread.f();
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.j = true;
     super.onDetachedFromWindow();
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = 0;
+    this.b = true;
     this.d = 0;
+    this.e = 0;
     Log.d("GLTextureView", "onSurfaceTextureAvailable");
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     a(paramSurfaceTexture);
-    postDelayed(this.jdField_a_of_type_JavaLangRunnable, 250L);
+    postDelayed(this.c, 250L);
     if (QLog.isColorLevel())
     {
       paramSurfaceTexture = new StringBuilder();
       paramSurfaceTexture.append(" TextureView onSurfaceTextureAvailable surfaceCreated use:");
-      paramSurfaceTexture.append(System.currentTimeMillis() - l);
+      paramSurfaceTexture.append(System.currentTimeMillis() - l1);
       QLog.d("GLTextureView", 2, paramSurfaceTexture.toString());
     }
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     Log.d("GLTextureView", "onSurfaceTextureDestroyed");
     b(paramSurfaceTexture);
     if (QLog.isColorLevel()) {
       QLog.d("GLTextureView", 2, " TextureView onSurfaceTextureDestroyed");
     }
-    a(0.0F);
+    setViewAlpha(0.0F);
     return true;
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     Log.d("GLTextureView", "onSurfaceTextureSizeChanged");
     a(paramSurfaceTexture, 0, paramInt1, paramInt2);
     if (QLog.isColorLevel())
     {
       paramSurfaceTexture = new StringBuilder();
       paramSurfaceTexture.append(" TextureView onSurfaceTextureSizeChanged surfaceChanged use:");
-      paramSurfaceTexture.append(System.currentTimeMillis() - l);
+      paramSurfaceTexture.append(System.currentTimeMillis() - l1);
       QLog.d("GLTextureView", 2, paramSurfaceTexture.toString());
     }
   }
@@ -253,7 +268,7 @@ public class GLTextureView
   
   public void setDebugFlags(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.o = paramInt;
   }
   
   public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -264,7 +279,7 @@ public class GLTextureView
   public void setEGLConfigChooser(GLTextureView.EGLConfigChooser paramEGLConfigChooser)
   {
     b();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser = paramEGLConfigChooser;
+    this.k = paramEGLConfigChooser;
   }
   
   public void setEGLConfigChooser(boolean paramBoolean)
@@ -275,56 +290,56 @@ public class GLTextureView
   public void setEGLContextClientVersion(int paramInt)
   {
     b();
-    this.e = paramInt;
+    this.p = paramInt;
   }
   
   public void setEGLContextFactory(GLTextureView.EGLContextFactory paramEGLContextFactory)
   {
     b();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory = paramEGLContextFactory;
+    this.l = paramEGLContextFactory;
   }
   
   public void setEGLWindowSurfaceFactory(GLTextureView.EGLWindowSurfaceFactory paramEGLWindowSurfaceFactory)
   {
     b();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory = paramEGLWindowSurfaceFactory;
+    this.m = paramEGLWindowSurfaceFactory;
   }
   
   public void setGLWrapper(GLTextureView.GLWrapper paramGLWrapper)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLWrapper = paramGLWrapper;
+    this.n = paramGLWrapper;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.q = paramBoolean;
   }
   
   public void setRenderMode(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.a(paramInt);
+    this.h.a(paramInt);
   }
   
   public void setRenderer(GLSurfaceView.Renderer paramRenderer)
   {
     b();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser == null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser = new GLTextureView.SimpleEGLConfigChooser(this, true);
+    if (this.k == null) {
+      this.k = new GLTextureView.SimpleEGLConfigChooser(this, true);
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory == null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory = new GLTextureView.DefaultContextFactory(this, null);
+    if (this.l == null) {
+      this.l = new GLTextureView.DefaultContextFactory(this, null);
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory == null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory = new GLTextureView.DefaultWindowSurfaceFactory(null);
+    if (this.m == null) {
+      this.m = new GLTextureView.DefaultWindowSurfaceFactory(null);
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer = paramRenderer;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread = new GLTextureView.GLThread(this.jdField_a_of_type_JavaLangRefWeakReference);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread.start();
+    this.i = paramRenderer;
+    this.h = new GLTextureView.GLThread(this.g);
+    this.h.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class SegmentUtils
     //   41: aload_0
     //   42: ifnull +214 -> 256
     //   45: aload_0
-    //   46: invokevirtual 45	com/tencent/mobileqq/fts/v2/tokenizer/Token:b	()Ljava/lang/String;
+    //   46: invokevirtual 45	com/tencent/mobileqq/fts/v2/tokenizer/Token:d	()Ljava/lang/String;
     //   49: ldc 47
     //   51: invokestatic 53	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   54: ifeq +202 -> 256
@@ -64,19 +64,19 @@ public class SegmentUtils
     //   98: aload_0
     //   99: ifnull +83 -> 182
     //   102: aload_0
-    //   103: invokevirtual 45	com/tencent/mobileqq/fts/v2/tokenizer/Token:b	()Ljava/lang/String;
+    //   103: invokevirtual 45	com/tencent/mobileqq/fts/v2/tokenizer/Token:d	()Ljava/lang/String;
     //   106: ldc 47
     //   108: invokestatic 53	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   111: ifeq +71 -> 182
     //   114: aload_1
-    //   115: invokevirtual 45	com/tencent/mobileqq/fts/v2/tokenizer/Token:b	()Ljava/lang/String;
+    //   115: invokevirtual 45	com/tencent/mobileqq/fts/v2/tokenizer/Token:d	()Ljava/lang/String;
     //   118: ldc 47
     //   120: invokestatic 53	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   123: ifeq +14 -> 137
     //   126: aload_0
-    //   127: invokevirtual 74	com/tencent/mobileqq/fts/v2/tokenizer/Token:b	()I
+    //   127: invokevirtual 75	com/tencent/mobileqq/fts/v2/tokenizer/Token:c	()I
     //   130: aload_1
-    //   131: invokevirtual 76	com/tencent/mobileqq/fts/v2/tokenizer/Token:a	()I
+    //   131: invokevirtual 78	com/tencent/mobileqq/fts/v2/tokenizer/Token:b	()I
     //   134: if_icmpge +48 -> 182
     //   137: aload_0
     //   138: invokevirtual 55	com/tencent/mobileqq/fts/v2/tokenizer/Token:a	()Ljava/lang/String;
@@ -106,7 +106,7 @@ public class SegmentUtils
     //   186: invokestatic 59	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   189: ifne +42 -> 231
     //   192: aload_1
-    //   193: invokevirtual 45	com/tencent/mobileqq/fts/v2/tokenizer/Token:b	()Ljava/lang/String;
+    //   193: invokevirtual 45	com/tencent/mobileqq/fts/v2/tokenizer/Token:d	()Ljava/lang/String;
     //   196: ldc 47
     //   198: invokestatic 53	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   201: ifeq +14 -> 215
@@ -129,27 +129,27 @@ public class SegmentUtils
     //   233: goto -201 -> 32
     //   236: astore_0
     //   237: aload_0
-    //   238: invokevirtual 79	java/io/IOException:printStackTrace	()V
-    //   241: invokestatic 84	com/tencent/mobileqq/fts/FTSDatabase:a	()Lcom/tencent/mobileqq/fts/v2/logger/ILogger;
-    //   244: ldc 86
-    //   246: ldc 88
-    //   248: ldc 90
+    //   238: invokevirtual 81	java/io/IOException:printStackTrace	()V
+    //   241: invokestatic 86	com/tencent/mobileqq/fts/FTSDatabase:a	()Lcom/tencent/mobileqq/fts/v2/logger/ILogger;
+    //   244: ldc 88
+    //   246: ldc 90
+    //   248: ldc 92
     //   250: aload_0
-    //   251: invokeinterface 95 5 0
+    //   251: invokeinterface 97 5 0
     //   256: aload_2
-    //   257: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   260: astore_0
     //   261: aload_0
     //   262: areturn
     //   263: astore_0
     //   264: aload_0
-    //   265: invokevirtual 99	java/lang/Throwable:printStackTrace	()V
-    //   268: invokestatic 84	com/tencent/mobileqq/fts/FTSDatabase:a	()Lcom/tencent/mobileqq/fts/v2/logger/ILogger;
-    //   271: ldc 86
-    //   273: ldc 88
-    //   275: ldc 90
+    //   265: invokevirtual 101	java/lang/Throwable:printStackTrace	()V
+    //   268: invokestatic 86	com/tencent/mobileqq/fts/FTSDatabase:a	()Lcom/tencent/mobileqq/fts/v2/logger/ILogger;
+    //   271: ldc 88
+    //   273: ldc 90
+    //   275: ldc 92
     //   277: aload_0
-    //   278: invokeinterface 95 5 0
+    //   278: invokeinterface 97 5 0
     //   283: aconst_null
     //   284: areturn
     // Local variable table:
@@ -177,28 +177,9 @@ public class SegmentUtils
     //   256	261	263	java/lang/Throwable
   }
   
-  public static ArrayList<String> a(String paramString)
+  public static String[] b(String paramString)
   {
-    if (paramString == null) {
-      return null;
-    }
-    paramString = paramString.split("\\s");
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      String str = paramString[i].trim();
-      if ((str != null) && (!TextUtils.isEmpty(str))) {
-        localArrayList.add(str);
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public static String[] a(String paramString)
-  {
-    Object localObject = a(paramString);
+    Object localObject = c(paramString);
     if (localObject == null) {
       return null;
     }
@@ -226,9 +207,28 @@ public class SegmentUtils
     return localObject;
   }
   
-  public static String[] b(String paramString)
+  public static ArrayList<String> c(String paramString)
   {
-    Object localObject2 = a(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    paramString = paramString.split("\\s");
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      String str = paramString[i].trim();
+      if ((str != null) && (!TextUtils.isEmpty(str))) {
+        localArrayList.add(str);
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public static String[] d(String paramString)
+  {
+    Object localObject2 = b(paramString);
     Object localObject1 = FTSDatabase.a();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("query segments = ");
@@ -280,7 +280,7 @@ public class SegmentUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v2.utils.SegmentUtils
  * JD-Core Version:    0.7.0.1
  */

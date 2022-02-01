@@ -61,7 +61,7 @@ class RiskHintDlgFragment$8
           QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
         }
         DevlockPhoneStatus.a().a(paramDevlockInfo.TransferInfo);
-        this.a.a = paramDevlockInfo;
+        this.a.d = paramDevlockInfo;
         return;
       }
       if (QLog.isColorLevel())
@@ -86,7 +86,7 @@ class RiskHintDlgFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskHintDlgFragment.8
  * JD-Core Version:    0.7.0.1
  */

@@ -6,39 +6,34 @@ import org.json.JSONObject;
 
 public class VideoInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public int c;
   public String c;
-  private int d;
   public String d;
   public String e;
-  
-  public VideoInfo()
-  {
-    this.jdField_d_of_type_Int = 1;
-  }
+  public int f;
+  public long g;
+  public int h;
+  public int i;
+  public boolean j;
+  private int k = 1;
   
   public JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("video_md5", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("video_thumbe_url", this.jdField_d_of_type_JavaLangString);
+      localJSONObject.put("vid", this.b);
+      localJSONObject.put("url", this.a);
+      localJSONObject.put("video_md5", this.c);
+      localJSONObject.put("video_thumbe_url", this.d);
       localJSONObject.put("text", this.e);
-      localJSONObject.put("duration", this.jdField_a_of_type_Int);
-      localJSONObject.put("size", this.jdField_a_of_type_Long);
-      localJSONObject.put("width", this.jdField_b_of_type_Int);
-      localJSONObject.put("height", this.jdField_c_of_type_Int);
-      localJSONObject.put("isLocalVideo", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("takeVideoMode", this.jdField_d_of_type_Int);
+      localJSONObject.put("duration", this.f);
+      localJSONObject.put("size", this.g);
+      localJSONObject.put("width", this.h);
+      localJSONObject.put("height", this.i);
+      localJSONObject.put("isLocalVideo", this.j);
+      localJSONObject.put("takeVideoMode", this.k);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -56,7 +51,7 @@ public class VideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.data.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

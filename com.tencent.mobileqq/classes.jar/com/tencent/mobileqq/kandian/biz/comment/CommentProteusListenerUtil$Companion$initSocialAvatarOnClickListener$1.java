@@ -18,12 +18,12 @@ public final class CommentProteusListenerUtil$Companion$initSocialAvatarOnClickL
     Intrinsics.checkParameterIsNotNull(paramReadinjoyCommentListBaseAdapter, "adapter");
     Intrinsics.checkParameterIsNotNull(paramCommentViewItem, "commentViewItem");
     Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new CommentProteusListenerUtil.Companion.initSocialAvatarOnClickListener.1.configClickListener.1(paramReadinjoyCommentListBaseAdapter, paramCommentViewItem));
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new CommentProteusListenerUtil.Companion.initSocialAvatarOnClickListener.1.configClickListener.1(paramCommentViewItem, paramReadinjoyCommentListBaseAdapter, paramContainer));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initSocialAvatarOnClickListener.1
  * JD-Core Version:    0.7.0.1
  */

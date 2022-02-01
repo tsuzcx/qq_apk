@@ -12,66 +12,66 @@ class TroopActivity$2
 {
   TroopActivity$2(TroopActivity paramTroopActivity) {}
   
-  public Activity a()
-  {
-    return this.a;
-  }
-  
-  public View a()
-  {
-    return this.a.findViewById(2131376809);
-  }
-  
   public QQAppInterface a()
   {
     return this.a.app;
   }
   
-  public ForwardBaseOption a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public MqqWeakReferenceHandler a()
-  {
-    return this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  }
-  
   public void a(String paramString)
   {
     if (this.a.isResume()) {
-      QQToast.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(b(), paramString, 0).show(this.a.getTitleBarHeight());
     }
   }
   
-  public boolean a()
+  public Activity b()
+  {
+    return this.a;
+  }
+  
+  public ForwardBaseOption c()
   {
     return TroopActivity.a(this.a);
-  }
-  
-  public View b()
-  {
-    return this.a.findViewById(2131376752);
-  }
-  
-  public boolean b()
-  {
-    return TroopActivity.b(this.a);
-  }
-  
-  public View c()
-  {
-    return this.a.findViewById(2131376745);
   }
   
   public View d()
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
+    return this.a.findViewById(2131445137);
+  }
+  
+  public View e()
+  {
+    return this.a.findViewById(2131445043);
+  }
+  
+  public View f()
+  {
+    return this.a.findViewById(2131445033);
+  }
+  
+  public View g()
+  {
+    return this.a.k;
+  }
+  
+  public MqqWeakReferenceHandler h()
+  {
+    return this.a.o;
+  }
+  
+  public boolean i()
+  {
+    return TroopActivity.b(this.a);
+  }
+  
+  public boolean j()
+  {
+    return TroopActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ class QQSettingMeDressUpProcessor$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_MqqAppAppRuntime != null) && (this.this$0.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue() != null) && (((BusinessInfoCheckUpdate.AppInfo)this.this$0.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue()).iNewFlag.get() == 1))
+    if ((this.this$0.c != null) && (this.this$0.a.getValue() != null) && (((BusinessInfoCheckUpdate.AppInfo)this.this$0.a.getValue()).iNewFlag.get() == 1))
     {
-      IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)this.this$0.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IWebProcessManagerService.class, "");
+      IWebProcessManagerService localIWebProcessManagerService = (IWebProcessManagerService)this.this$0.c.getRuntimeService(IWebProcessManagerService.class, "");
       if (localIWebProcessManagerService != null) {
         localIWebProcessManagerService.startWebProcess(-1, null);
       }
@@ -24,7 +24,7 @@ class QQSettingMeDressUpProcessor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeDressUpProcessor.3
  * JD-Core Version:    0.7.0.1
  */

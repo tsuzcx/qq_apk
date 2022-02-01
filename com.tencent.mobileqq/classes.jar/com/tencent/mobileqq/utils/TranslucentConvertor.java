@@ -12,45 +12,45 @@ import java.util.List;
 public class TranslucentConvertor
   implements InvocationHandler
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private List<TranslucentConvertor.OnTranslucentConversionListener> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private Activity a;
   private boolean b;
+  private List<TranslucentConvertor.OnTranslucentConversionListener> c = new ArrayList();
+  private boolean d;
   
   public TranslucentConvertor(Activity paramActivity, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    if (!this.b)
-    {
-      Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-      if (localActivity != null)
-      {
-        this.b = true;
-        SwipeLayoutUtils.a(localActivity, this);
-      }
-    }
+    this.a = paramActivity;
+    this.b = paramBoolean;
   }
   
   public void a(TranslucentConvertor.OnTranslucentConversionListener paramOnTranslucentConversionListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramOnTranslucentConversionListener);
+    this.c.add(paramOnTranslucentConversionListener);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
+  }
+  
+  public void b()
+  {
+    if (!this.d)
+    {
+      Activity localActivity = this.a;
+      if (localActivity != null)
+      {
+        this.d = true;
+        SwipeLayoutUtils.a(localActivity, this);
+      }
+    }
   }
   
   public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     if ((paramMethod.getName().equalsIgnoreCase("onTranslucentConversionComplete")) && (paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       paramMethod = paramArrayOfObject[0];
       if (QLog.isColorLevel())
       {
@@ -63,7 +63,7 @@ public class TranslucentConvertor
       if ((paramMethod instanceof Boolean)) {
         paramObject = (Boolean)paramMethod;
       }
-      paramMethod = this.jdField_a_of_type_JavaUtilList.iterator();
+      paramMethod = this.c.iterator();
       while (paramMethod.hasNext()) {
         ((TranslucentConvertor.OnTranslucentConversionListener)paramMethod.next()).onTranslucentConversionComplete(paramObject.booleanValue());
       }
@@ -73,7 +73,7 @@ public class TranslucentConvertor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TranslucentConvertor
  * JD-Core Version:    0.7.0.1
  */

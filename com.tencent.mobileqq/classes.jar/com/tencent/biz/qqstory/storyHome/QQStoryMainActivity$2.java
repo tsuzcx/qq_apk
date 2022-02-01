@@ -13,7 +13,7 @@ class QQStoryMainActivity$2
   {
     ((IAIOShortVideoUtil)QRoute.api(IAIOShortVideoUtil.class)).setClickCameraTime(System.currentTimeMillis());
     QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(((IAIOShortVideoUtil)QRoute.api(IAIOShortVideoUtil.class)).getClickCameraTime()) });
-    this.this$0.a.a(false, true, 1, null);
+    this.this$0.c.a(false, true, 1, null);
   }
 }
 

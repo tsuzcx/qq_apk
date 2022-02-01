@@ -12,34 +12,34 @@ final class MsgNotifyPushDialog$5
   
   public void onCancel(DownloadTask paramDownloadTask)
   {
-    MsgNotifyPushDialog.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = null;
-    QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
+    MsgNotifyPushDialog.i = null;
+    QLog.d(MsgNotifyPushDialog.a, 1, "downloadZipFile cancel");
   }
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    MsgNotifyPushDialog.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = null;
-    if (paramDownloadTask.a() == 3)
+    MsgNotifyPushDialog.i = null;
+    if (paramDownloadTask.e() == 3)
     {
-      paramDownloadTask = MsgNotifyPushDialog.jdField_a_of_type_JavaLangString;
+      paramDownloadTask = MsgNotifyPushDialog.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("download finished ");
-      localStringBuilder.append(MsgNotifyPushDialog.f);
+      localStringBuilder.append(MsgNotifyPushDialog.h);
       QLog.d(paramDownloadTask, 1, localStringBuilder.toString());
-      paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
+      paramDownloadTask = new File(this.a);
       if ((paramDownloadTask.exists()) && (MsgNotifyPushDialog.a(paramDownloadTask))) {
-        QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
+        QLog.d(MsgNotifyPushDialog.a, 1, "downloadZipFile suc and zip succ");
       }
     }
     else
     {
-      QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", paramDownloadTask.b, " code=", Integer.valueOf(paramDownloadTask.a) });
+      QLog.d(MsgNotifyPushDialog.a, 1, new Object[] { "downloadZipFile failed: ", paramDownloadTask.d, " code=", Integer.valueOf(paramDownloadTask.c) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog.5
  * JD-Core Version:    0.7.0.1
  */

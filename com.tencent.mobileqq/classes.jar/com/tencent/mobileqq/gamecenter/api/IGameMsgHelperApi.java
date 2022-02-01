@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.gamecenter.api;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,10 +11,11 @@ import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
+import mqq.app.AppRuntime;
 
 @QAPI(process={"all"})
 public abstract interface IGameMsgHelperApi
@@ -27,10 +29,12 @@ public abstract interface IGameMsgHelperApi
   public static final String SESSION_URL = "https://fastest.gamecenter.qq.com/_fst_/speed_gamecenter_qq_com/_fst_/pushgame/v1/home/msg?_wv=18950115&_wwv=393&_fst_id=194";
   public static final String SP_KEY_AIO_GAME_ENTRY_SHOWN = "sp_aio_game_entry_shown";
   public static final String SP_KEY_CLEAN_TIME = "sp_top_clean_time";
+  public static final String SP_KEY_GAME_MSG_UNREAD_COUNT = "game_msg_unread_count";
   public static final String SP_KEY_GAME_SESSION_SHOWN = "sp_game_session_shown";
   public static final String SP_KEY_LAST_GAME_SESSION_CLICKED = "sp_last_game_session_clicked";
   public static final String SP_KEY_TOP_TIME = "sp_top_last_time";
   public static final int[] SYS_EMOTION_ORDER = { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 91, 51, 164, 174, 171, 165, 166, 161, 167, 170, 169, 172, 173, 168, 175, 17, 60, 61, 92, 93, 163, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64 };
+  public static final String[] S_EMOJI_LIST = { "🕹", "🎮", "🔊", "🔉", "🔈", "📢", "✉", "📨", "📧", "📩", "💌", "📪", "📫", "📬", "📮", "🎈", "📍" };
   public static final int TYPE_FROM_CLICK_ENTER_AIO = 1;
   public static final int TYPE_FROM_LS_ARRIVAL = 10006;
   public static final int TYPE_FROM_LS_CLICK = 10004;
@@ -38,17 +42,22 @@ public abstract interface IGameMsgHelperApi
   public static final int TYPE_FROM_MSG_TAB_ARRIVAL = 10003;
   public static final int TYPE_FROM_MSG_TAB_CLICK = 10001;
   public static final int TYPE_FROM_MSG_TAB_EXPOSURE = 10002;
-  public static final String[] sEmojiList = { "🕹", "🎮", "🔊", "🔉", "🔈", "📢", "✉", "📨", "📧", "📩", "💌", "📪", "📫", "📬", "📮", "🎈", "📍" };
   
   public abstract boolean checkMesssageIsValid(MessageRecord paramMessageRecord);
   
+  public abstract Dialog createProfileGuideDailg(Context paramContext, String paramString);
+  
   public abstract void delGameSession(String paramString);
   
-  public abstract void enterGameMsgChatPie(Context paramContext, String paramString1, String paramString2, String paramString3);
+  public abstract void enterGameMsgChatPie(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt);
   
   public abstract void enterGameMsgChatPie(AppInterface paramAppInterface, Context paramContext, String paramString);
   
+  public abstract void enterGameMsgChatPie(AppInterface paramAppInterface, Context paramContext, String paramString, int paramInt);
+  
   public abstract boolean getAIOGameEntryShown(String paramString);
+  
+  public abstract Drawable getGameMsgAvatarDrawable(AppInterface paramAppInterface, String paramString);
   
   public abstract Bitmap getGameRoleBitmap(Message paramMessage, AppInterface paramAppInterface);
   
@@ -62,7 +71,7 @@ public abstract interface IGameMsgHelperApi
   
   public abstract Intent getIntentFromMsg(Context paramContext, Message paramMessage, AppInterface paramAppInterface);
   
-  public abstract MessageRecord getLastGameMsg(AppInterface paramAppInterface, String paramString);
+  public abstract MessageRecord getLastGameMsg(AppRuntime paramAppRuntime, String paramString);
   
   public abstract long getLastGameSessionClicked(String paramString);
   
@@ -98,9 +107,9 @@ public abstract interface IGameMsgHelperApi
   
   public abstract void report(AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2);
   
-  public abstract void reportClickItemInMsgBox(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString);
+  public abstract void reportClickItemInGameMsgBox883(AppInterface paramAppInterface, String paramString);
   
-  public abstract void reportClickMsgBox(AppInterface paramAppInterface);
+  public abstract void reportClickMsgBoxEntry883(AppInterface paramAppInterface);
   
   public abstract void reportForGameMsg(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10);
   
@@ -116,9 +125,7 @@ public abstract interface IGameMsgHelperApi
   
   public abstract void reportForGameMsg865WithTianJi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13);
   
-  public abstract void reportGameMsgExplosureInBox(AppInterface paramAppInterface, int paramInt, String paramString);
-  
-  public abstract void reportMsgBoxExposure(AppInterface paramAppInterface, Object paramObject);
+  public abstract void reportGameMsgBoxExplosure883(AppInterface paramAppInterface, int paramInt, Message paramMessage);
   
   public abstract void setAIOGameEntryShown(String paramString, boolean paramBoolean);
   
@@ -132,7 +139,7 @@ public abstract interface IGameMsgHelperApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi
  * JD-Core Version:    0.7.0.1
  */

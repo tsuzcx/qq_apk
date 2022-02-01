@@ -18,22 +18,22 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class QQCustomSingleButtonDialog
   extends ReportDialog
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  View jdField_a_of_type_AndroidViewView;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new QQCustomSingleButtonDialog.1(this);
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ListView jdField_a_of_type_AndroidWidgetListView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  TextView a;
   TextView b;
   TextView c;
   TextView d;
   TextView e;
-  TextView f;
-  TextView g;
+  Button f;
+  LinearLayout g;
+  ListView h;
+  TextView i;
+  TextView j;
+  ImageView k;
+  View l;
+  String[] m;
+  LayoutInflater n;
+  DialogInterface.OnClickListener o;
+  private BaseAdapter p = new QQCustomSingleButtonDialog.1(this);
   
   public QQCustomSingleButtonDialog(Context paramContext, int paramInt)
   {
@@ -45,25 +45,17 @@ public class QQCustomSingleButtonDialog
     return paramInt;
   }
   
-  public QQCustomSingleButtonDialog a(int paramInt)
-  {
-    this.b.setText(paramInt);
-    this.b.setContentDescription(getContext().getString(paramInt));
-    this.b.setVisibility(0);
-    return this;
-  }
-  
   public QQCustomSingleButtonDialog a(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener)
   {
     if (paramOnClickListener == null)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      this.f.setVisibility(8);
       return this;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(paramInt1);
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(paramInt2));
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new QQCustomSingleButtonDialog.3(this, paramOnClickListener));
+    this.f.setBackgroundResource(paramInt1);
+    this.f.setContentDescription(getContext().getString(paramInt2));
+    this.f.setVisibility(0);
+    this.f.setOnClickListener(new QQCustomSingleButtonDialog.3(this, paramOnClickListener));
     a();
     return this;
   }
@@ -87,13 +79,13 @@ public class QQCustomSingleButtonDialog
   {
     if (paramString != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText(paramString, 5, 24));
+      this.a.setText(new QQText(paramString, 5, 24));
       this.b.setContentDescription(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      this.a.setVisibility(0);
+      paramString = this.m;
       return this;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.setVisibility(8);
     return this;
   }
   
@@ -127,6 +119,14 @@ public class QQCustomSingleButtonDialog
   
   protected void a() {}
   
+  public QQCustomSingleButtonDialog b(int paramInt)
+  {
+    this.b.setText(paramInt);
+    this.b.setContentDescription(getContext().getString(paramInt));
+    this.b.setVisibility(0);
+    return this;
+  }
+  
   public QQCustomSingleButtonDialog b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
@@ -153,32 +153,32 @@ public class QQCustomSingleButtonDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365648));
-    this.b = ((TextView)findViewById(2131365644));
-    this.c = ((TextView)findViewById(2131365621));
-    this.e = ((TextView)findViewById(2131365622));
-    this.g = ((TextView)findViewById(2131365994));
-    this.f = ((TextView)findViewById(2131373032));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367217));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367216);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365633));
-    this.d = ((TextView)findViewById(2131365639));
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.a = ((TextView)findViewById(2131431880));
+    this.b = ((TextView)findViewById(2131431876));
+    this.c = ((TextView)findViewById(2131431852));
+    this.e = ((TextView)findViewById(2131431853));
+    this.j = ((TextView)findViewById(2131432265));
+    this.i = ((TextView)findViewById(2131440611));
+    this.k = ((ImageView)findViewById(2131433674));
+    this.l = findViewById(2131433673);
+    this.f = ((Button)findViewById(2131431864));
+    this.d = ((TextView)findViewById(2131431870));
+    this.f.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363688));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370110));
+    this.g = ((LinearLayout)findViewById(2131429603));
+    this.h = ((ListView)findViewById(2131437272));
   }
   
   public void setTitle(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.a.setText(paramInt);
     this.b.setContentDescription(getContext().getString(paramInt));
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomSingleButtonDialog
  * JD-Core Version:    0.7.0.1
  */

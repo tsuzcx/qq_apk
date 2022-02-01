@@ -5,6 +5,7 @@ import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHelper;
 import com.tencent.mobileqq.minigame.publicaccount.api.IMiniGamePublicAccountApi;
 import com.tencent.mobileqq.minigame.publicaccount.config.MiniGamePAConfBean;
 import com.tencent.mobileqq.minigame.publicaccount.config.MiniGamePAConfProcessor;
@@ -81,10 +82,15 @@ public class MiniGamePublicAccountApiImpl
   {
     return TextUtils.equals(paramString, "qqMiniGame");
   }
+  
+  public boolean isUseHippy()
+  {
+    return MiniGamePublicAccountHelper.isOpenHippy();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.api.impl.MiniGamePublicAccountApiImpl
  * JD-Core Version:    0.7.0.1
  */

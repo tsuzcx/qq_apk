@@ -9,11 +9,13 @@ import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.model.FileMaterialInfo;
 import common.config.service.QzoneConfig;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -201,6 +203,17 @@ public class MiniAppLauncher
     localLaunchParam.navigateExtData = paramString3;
     localLaunchParam.reportData = paramString5;
     MiniAppController.startAppByAppid(paramContext, localLaunchParam.miniAppId, localLaunchParam.entryPath, localLaunchParam.envVersion, localLaunchParam, paramMiniAppLaunchListener);
+  }
+  
+  public static void launchMiniAppByIdWithFile(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, List<FileMaterialInfo> paramList)
+  {
+    LaunchParam localLaunchParam = new LaunchParam();
+    localLaunchParam.miniAppId = paramString1;
+    localLaunchParam.scene = paramInt;
+    localLaunchParam.envVersion = paramString3;
+    localLaunchParam.entryPath = paramString2;
+    localLaunchParam.fileMaterialInfoList = paramList;
+    MiniAppController.startAppByAppid(paramContext, localLaunchParam.miniAppId, localLaunchParam.entryPath, localLaunchParam.envVersion, localLaunchParam, null);
   }
   
   public static boolean launchMiniAppByScheme(Context paramContext, HashMap<String, String> paramHashMap, int paramInt, EntryModel paramEntryModel, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
@@ -612,7 +625,7 @@ public class MiniAppLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

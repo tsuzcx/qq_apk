@@ -24,18 +24,18 @@ class JsFlutterApp$1
         paramResult = new StringBuilder();
         paramResult.append("jsApp is not running");
         paramResult.append(paramMethodCall.arguments);
-        MxLog.c("JsFlutterApp", paramResult.toString());
+        MxLog.b("JsFlutterApp", paramResult.toString());
         paramMethodCall = new MethodCall("nativeCall", paramMethodCall.arguments);
-        JsFlutterApp.a(this.a).add(paramMethodCall);
+        JsFlutterApp.b(this.a).add(paramMethodCall);
         return;
       }
-      MXFlutterPlugin.a().a().a(JsObjectType.CURRENT_APP_OBJECT, "nativeCall", paramMethodCall.arguments, new JsFlutterApp.1.1(this, paramResult));
+      MXFlutterPlugin.a().d().a(JsObjectType.CURRENT_APP_OBJECT, "nativeCall", paramMethodCall.arguments, new JsFlutterApp.1.1(this, paramResult));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.JsFlutterApp.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ import org.json.JSONObject;
 public class SSOErrorInfoMapProcessor
   extends BaseQVipConfigProcessor<SSOErrorInfoMapConfig>
 {
-  public static SSOErrorInfoMapConfig c()
+  public static SSOErrorInfoMapConfig e()
   {
-    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)QConfigManager.a().a(477);
+    SSOErrorInfoMapConfig localSSOErrorInfoMapConfig2 = (SSOErrorInfoMapConfig)QConfigManager.b().b(477);
     SSOErrorInfoMapConfig localSSOErrorInfoMapConfig1 = localSSOErrorInfoMapConfig2;
     if (localSSOErrorInfoMapConfig2 == null) {
       localSSOErrorInfoMapConfig1 = new SSOErrorInfoMapConfig();
@@ -33,7 +33,7 @@ public class SSOErrorInfoMapProcessor
   public SSOErrorInfoMapConfig a(QConfItem[] paramArrayOfQConfItem)
   {
     localSSOErrorInfoMapConfig = new SSOErrorInfoMapConfig();
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     try
     {
       Object localObject;
@@ -93,7 +93,7 @@ public class SSOErrorInfoMapProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.SSOErrorInfoMapProcessor
  * JD-Core Version:    0.7.0.1
  */

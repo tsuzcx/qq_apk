@@ -32,16 +32,16 @@ import java.util.HashMap;
 public class AIOBrowserScene
   extends MainBrowserScene
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
   public TextureView a;
-  private View jdField_a_of_type_AndroidViewView;
-  private AIOBrowserPresenter jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
+  private AIOBrowserPresenter b;
+  private View c;
+  private Handler d;
   
   public AIOBrowserScene(Context paramContext, AIOBrowserPresenter paramAIOBrowserPresenter)
   {
     super(paramContext, paramAIOBrowserPresenter);
     this.mContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter = paramAIOBrowserPresenter;
+    this.b = paramAIOBrowserPresenter;
   }
   
   private void a(String paramString)
@@ -49,31 +49,6 @@ public class AIOBrowserScene
     HashMap localHashMap = new HashMap();
     localHashMap.put("data_changed_error", paramString);
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "richmediaBrowserDataChanged", true, 0L, 0L, localHashMap, "");
-  }
-  
-  public AIOBrowserBaseView a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
-    if ((localObject != null) && (((AIOBrowserPresenter)localObject).a != null))
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.a.getSelectedItem();
-      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.getDecoratorPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
-        if ((localObject instanceof AIOBrowserBasePresenter)) {
-          return ((AIOBrowserBasePresenter)localObject).a;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if (localHandler != null) {
-      localHandler.postDelayed(new AIOBrowserScene.1(this), 1000L);
-    }
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -93,9 +68,9 @@ public class AIOBrowserScene
     {
       if (paramInt2 == -1)
       {
-        paramIntent = a();
+        paramIntent = c();
         if (paramIntent != null) {
-          paramIntent.c();
+          paramIntent.d();
         }
       }
     }
@@ -107,20 +82,20 @@ public class AIOBrowserScene
       if ((paramInt2 == -1) && (paramInt1 == 0) && ((this.mContext instanceof Activity)))
       {
         ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).startChatAndSendMsg((Activity)this.mContext, paramIntent.getExtras());
-        if (ParamsManager.a().a() == 9501) {
+        if (ParamsManager.a().i() == 9501) {
           ((Activity)this.mContext).finish();
         }
       }
       else if ((paramInt2 == -1) && (paramInt1 == 10001))
       {
-        QQToast.a(this.mContext, 2131718264, 0).a();
+        QQToast.makeText(this.mContext, 2131915756, 0).show();
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    TextureView localTextureView = this.jdField_a_of_type_AndroidViewTextureView;
+    TextureView localTextureView = this.a;
     if (localTextureView != null)
     {
       int i;
@@ -135,7 +110,7 @@ public class AIOBrowserScene
   
   public boolean a()
   {
-    TextureView localTextureView = this.jdField_a_of_type_AndroidViewTextureView;
+    TextureView localTextureView = this.a;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localTextureView != null)
@@ -146,6 +121,14 @@ public class AIOBrowserScene
       }
     }
     return bool1;
+  }
+  
+  public void b()
+  {
+    Handler localHandler = this.d;
+    if (localHandler != null) {
+      localHandler.postDelayed(new AIOBrowserScene.1(this), 1000L);
+    }
   }
   
   public boolean back()
@@ -162,18 +145,35 @@ public class AIOBrowserScene
   public void buildParams(Intent paramIntent)
   {
     super.buildParams(paramIntent);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.d = new Handler(Looper.getMainLooper());
+  }
+  
+  public AIOBrowserBaseView c()
+  {
+    Object localObject = this.b;
+    if ((localObject != null) && (((AIOBrowserPresenter)localObject).b != null))
+    {
+      localObject = this.b.b.getSelectedItem();
+      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null))
+      {
+        localObject = this.b.getDecoratorPresenter(((RichMediaBrowserInfo)localObject).baseData.getType());
+        if ((localObject instanceof AIOBrowserBasePresenter)) {
+          return ((AIOBrowserBasePresenter)localObject).b;
+        }
+      }
+    }
+    return null;
   }
   
   public void initView()
   {
     super.initView();
-    this.mDragView.setOriginRect(ParamsManager.a().a());
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.mContext).inflate(2131562761, null);
+    this.mDragView.setOriginRect(ParamsManager.a().t());
+    this.c = LayoutInflater.from(this.mContext).inflate(2131629203, null);
     if (BrowserDanmakuUtils.a()) {
-      this.jdField_a_of_type_AndroidViewTextureView = ((TextureView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365375));
+      this.a = ((TextureView)this.c.findViewById(2131431573));
     }
-    getContentView().addView(this.jdField_a_of_type_AndroidViewView);
+    getContentView().addView(this.c);
   }
   
   public boolean needEnterRectAnimation()
@@ -207,11 +207,11 @@ public class AIOBrowserScene
   public void onContentMove(float paramFloat)
   {
     super.onContentMove(paramFloat);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
+    Object localObject = this.b;
     if (localObject != null) {
       ((AIOBrowserPresenter)localObject).a(false);
     }
-    localObject = a();
+    localObject = c();
     if (localObject != null) {
       ((AIOBrowserBaseView)localObject).b(false);
     }
@@ -226,21 +226,21 @@ public class AIOBrowserScene
   public void onDestroy()
   {
     super.onDestroy();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.d;
     if (localHandler != null)
     {
       localHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.d = null;
     }
   }
   
   public void onGestureFinish()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
+    Object localObject1 = this.b;
     if (localObject1 != null)
     {
       Object localObject2 = null;
-      RichMediaBrowserInfo localRichMediaBrowserInfo = ((AIOBrowserPresenter)localObject1).a.getSelectedItem();
+      RichMediaBrowserInfo localRichMediaBrowserInfo = ((AIOBrowserPresenter)localObject1).b.getSelectedItem();
       localObject1 = localObject2;
       if (localRichMediaBrowserInfo != null)
       {
@@ -260,24 +260,24 @@ public class AIOBrowserScene
         }
       }
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        ReportController.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, ParamsManager.a().c(), 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, ParamsManager.a().o(), 0, "", "", "", "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.i();
+      this.b.k();
     }
     super.onGestureFinish();
   }
   
   public void onResetPosition()
   {
-    if (ParamsManager.a().c() == 4) {
+    if (ParamsManager.a().o() == 4) {
       return;
     }
     super.onResetPosition();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter;
+    Object localObject = this.b;
     if (localObject != null) {
-      ((AIOBrowserPresenter)localObject).d();
+      ((AIOBrowserPresenter)localObject).f();
     }
-    localObject = a();
+    localObject = c();
     if (localObject != null) {
       ((AIOBrowserBaseView)localObject).b(true);
     }
@@ -285,7 +285,7 @@ public class AIOBrowserScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOBrowserScene
  * JD-Core Version:    0.7.0.1
  */

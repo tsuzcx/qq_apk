@@ -46,8 +46,8 @@ class SystemMessageProcessor$9
     {
       try
       {
-        paramProtoReq = (FriendsManager)SystemMessageProcessor.b(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
-        String str1 = SystemMessageProcessor.c(this.a).getAccount();
+        paramProtoReq = (FriendsManager)SystemMessageProcessor.e(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
+        String str1 = SystemMessageProcessor.f(this.a).getAccount();
         structmsg.RspNextSystemMsg localRspNextSystemMsg = new structmsg.RspNextSystemMsg();
         localRspNextSystemMsg.mergeFrom((byte[])paramProtoResp.resp.getWupBuffer());
         new StringBuilder();
@@ -93,14 +93,14 @@ class SystemMessageProcessor$9
           i = localArrayList.size();
           long l1 = ((MessageRecord)localArrayList.get(0)).time;
           long l2 = ((MessageRecord)localArrayList.get(i - 1)).time;
-          long l3 = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getOldestSysMsgTime(SystemMessageProcessor.d(this.a));
-          paramProtoReq = ((IMessageFacade)SystemMessageProcessor.e(this.a).getRuntimeService(IMessageFacade.class, "")).getAIOList(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l3).iterator();
+          long l3 = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getOldestSysMsgTime(SystemMessageProcessor.g(this.a));
+          paramProtoReq = ((IMessageFacade)SystemMessageProcessor.h(this.a).getRuntimeService(IMessageFacade.class, "")).getAIOList(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l3).iterator();
           if (paramProtoReq.hasNext())
           {
             localObject1 = (ChatMessage)paramProtoReq.next();
             if ((((ChatMessage)localObject1).time >= l2) && (((ChatMessage)localObject1).time <= l1))
             {
-              ((IMessageFacade)SystemMessageProcessor.f(this.a).getRuntimeService(IMessageFacade.class, "")).removeMsgByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, ((ChatMessage)localObject1).uniseq, false);
+              ((IMessageFacade)SystemMessageProcessor.i(this.a).getRuntimeService(IMessageFacade.class, "")).removeMsgByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, ((ChatMessage)localObject1).uniseq, false);
               paramProtoReq.remove();
               break label946;
             }
@@ -112,21 +112,21 @@ class SystemMessageProcessor$9
               ((MessageForSystemMsg)localObject2).parse();
             }
             String str2 = ((MessageForSystemMsg)localObject2).senderuin;
-            if ((((MessageForSystemMsg)localObject2).structMsg.msg.sub_type.get() != 13) || (!paramProtoResp.b(str2))) {
+            if ((((MessageForSystemMsg)localObject2).structMsg.msg.sub_type.get() != 13) || (!paramProtoResp.n(str2))) {
               break label946;
             }
-            ((IMessageFacade)SystemMessageProcessor.g(this.a).getRuntimeService(IMessageFacade.class, "")).removeMsgByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, ((ChatMessage)localObject1).uniseq, false);
+            ((IMessageFacade)SystemMessageProcessor.j(this.a).getRuntimeService(IMessageFacade.class, "")).removeMsgByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, ((ChatMessage)localObject1).uniseq, false);
             paramProtoReq.remove();
             break label946;
           }
-          ((INewFriendApi)QRoute.api(INewFriendApi.class)).setOldestSysMsgTime(SystemMessageProcessor.h(this.a), l2);
+          ((INewFriendApi)QRoute.api(INewFriendApi.class)).setOldestSysMsgTime(SystemMessageProcessor.k(this.a), l2);
           if (localArrayList.size() < 20) {
-            ((INewFriendApi)QRoute.api(INewFriendApi.class)).setHasNoMoreMsg(true, SystemMessageProcessor.i(this.a));
+            ((INewFriendApi)QRoute.api(INewFriendApi.class)).setHasNoMoreMsg(true, SystemMessageProcessor.l(this.a));
           }
           l2 = localRspNextSystemMsg.following_friend_seq.get();
           l1 = l2;
           if (l2 <= 0L) {
-            l1 = ((MessageCache)SystemMessageProcessor.j(this.a).getMsgCache()).e("following_friend_seq_47");
+            l1 = ((MessageCache)SystemMessageProcessor.m(this.a).getMsgCache()).y("following_friend_seq_47");
           }
           if (QLog.isColorLevel())
           {
@@ -135,10 +135,10 @@ class SystemMessageProcessor$9
             paramProtoResp.append(l1);
             QLog.e("Q.systemmsg.", 2, paramProtoResp.toString());
           }
-          ((MessageCache)SystemMessageProcessor.k(this.a).getMsgCache()).e("following_friend_seq_47", l1);
-          paramProtoResp = (IMessageFacade)SystemMessageProcessor.m(this.a).getRuntimeService(IMessageFacade.class, "");
+          ((MessageCache)SystemMessageProcessor.n(this.a).getMsgCache()).e("following_friend_seq_47", l1);
+          paramProtoResp = (IMessageFacade)SystemMessageProcessor.p(this.a).getRuntimeService(IMessageFacade.class, "");
           paramProtoReq = String.valueOf(str1);
-          if ((!MessageHandlerUtils.a(localArrayList)) || (!SystemMessageProcessor.l(this.a).isBackgroundStop)) {
+          if ((!MessageHandlerUtils.a(localArrayList)) || (!SystemMessageProcessor.o(this.a).isBackgroundStop)) {
             break label949;
           }
           bool = true;
@@ -147,7 +147,7 @@ class SystemMessageProcessor$9
         }
         else
         {
-          ((INewFriendApi)QRoute.api(INewFriendApi.class)).setHasNoMoreMsg(true, SystemMessageProcessor.n(this.a));
+          ((INewFriendApi)QRoute.api(INewFriendApi.class)).setHasNoMoreMsg(true, SystemMessageProcessor.q(this.a));
         }
         this.a.a(4005, true, null);
         return;
@@ -169,7 +169,7 @@ class SystemMessageProcessor$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SystemMessageProcessor.9
  * JD-Core Version:    0.7.0.1
  */

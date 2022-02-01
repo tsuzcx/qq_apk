@@ -10,45 +10,45 @@ import java.util.Random;
 public class ARTransferResourceInfo
   extends ARRenderResourceInfo
 {
-  public Boolean a;
-  public ArrayList<ARTransferDoorConfigInfo.FragmentInfo> a;
-  public Boolean b;
-  public String b;
-  public String c;
-  public int d;
-  public int e;
+  public Boolean i;
+  public Boolean j;
+  public int k;
+  public int l;
+  public ArrayList<ARTransferDoorConfigInfo.FragmentInfo> m;
+  public String n;
+  public String o;
   
   public ARTransferResourceInfo(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3, ArrayList<ARTransferDoorConfigInfo.FragmentInfo> paramArrayList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt4, int paramInt5)
   {
     super(paramString1, paramInt1, 2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
     paramString1 = Boolean.valueOf(false);
-    this.jdField_a_of_type_JavaLangBoolean = paramString1;
-    this.jdField_b_of_type_JavaLangBoolean = paramString1;
-    this.d = 3;
-    this.e = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangBoolean = paramBoolean1;
-    this.jdField_b_of_type_JavaLangBoolean = paramBoolean2;
-    this.e = paramInt4;
-    this.d = paramInt5;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.i = paramString1;
+    this.j = paramString1;
+    this.k = 3;
+    this.l = 1;
+    this.m = new ArrayList();
+    this.n = "";
+    this.i = paramBoolean1;
+    this.j = paramBoolean2;
+    this.l = paramInt4;
+    this.k = paramInt5;
+    this.m = paramArrayList;
+    this.n = paramString2;
+    this.o = paramString3;
   }
   
   public ARTransferDoorConfigInfo.FragmentInfo a()
   {
     QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromRandFunction");
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+    if (this.m.isEmpty()) {
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       ARTransferDoorConfigInfo.FragmentInfo localFragmentInfo = (ARTransferDoorConfigInfo.FragmentInfo)localIterator.next();
-      if (localFragmentInfo.b == 3) {
+      if (localFragmentInfo.e == 3) {
         localArrayList.add(localFragmentInfo);
       }
     }
@@ -58,57 +58,57 @@ public class ARTransferResourceInfo
     return (ARTransferDoorConfigInfo.FragmentInfo)localArrayList.get(new Random().nextInt(localArrayList.size()));
   }
   
-  public ARTransferDoorConfigInfo.FragmentInfo a(int paramInt)
-  {
-    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromClickOperation");
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      ARTransferDoorConfigInfo.FragmentInfo localFragmentInfo = (ARTransferDoorConfigInfo.FragmentInfo)localIterator.next();
-      if ((paramInt <= localFragmentInfo.d) && (paramInt >= localFragmentInfo.jdField_c_of_type_Int) && (localFragmentInfo.b == 1)) {
-        return localFragmentInfo;
-      }
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_JavaUtilArrayList.size() <= 1)) {
-      return ((ARTransferDoorConfigInfo.FragmentInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
   public boolean a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+    if (this.m.isEmpty()) {
       return false;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext()) {
-      if (((ARTransferDoorConfigInfo.FragmentInfo)localIterator.next()).b == paramInt) {
+      if (((ARTransferDoorConfigInfo.FragmentInfo)localIterator.next()).e == paramInt) {
         return true;
       }
     }
     return false;
   }
   
-  public ARTransferDoorConfigInfo.FragmentInfo b()
+  public ARTransferDoorConfigInfo.FragmentInfo b(int paramInt)
   {
-    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromTime");
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromClickOperation");
+    if (this.m.isEmpty()) {
       return null;
     }
-    int i = Calendar.getInstance().get(11);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       ARTransferDoorConfigInfo.FragmentInfo localFragmentInfo = (ARTransferDoorConfigInfo.FragmentInfo)localIterator.next();
-      if ((i < localFragmentInfo.d) && (i >= localFragmentInfo.jdField_c_of_type_Int) && (localFragmentInfo.b == 2)) {
+      if ((paramInt <= localFragmentInfo.g) && (paramInt >= localFragmentInfo.f) && (localFragmentInfo.e == 1)) {
+        return localFragmentInfo;
+      }
+    }
+    return null;
+  }
+  
+  public String b()
+  {
+    if ((!this.m.isEmpty()) && (this.m.size() <= 1)) {
+      return ((ARTransferDoorConfigInfo.FragmentInfo)this.m.get(0)).c;
+    }
+    return null;
+  }
+  
+  public ARTransferDoorConfigInfo.FragmentInfo c()
+  {
+    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromTime");
+    if (this.m.isEmpty()) {
+      return null;
+    }
+    int i1 = Calendar.getInstance().get(11);
+    Iterator localIterator = this.m.iterator();
+    while (localIterator.hasNext())
+    {
+      ARTransferDoorConfigInfo.FragmentInfo localFragmentInfo = (ARTransferDoorConfigInfo.FragmentInfo)localIterator.next();
+      if ((i1 < localFragmentInfo.g) && (i1 >= localFragmentInfo.f) && (localFragmentInfo.e == 2)) {
         return localFragmentInfo;
       }
     }
@@ -117,7 +117,7 @@ public class ARTransferResourceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferResourceInfo
  * JD-Core Version:    0.7.0.1
  */

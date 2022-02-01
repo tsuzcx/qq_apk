@@ -36,14 +36,14 @@ class LbsManager$3
     if (paramCommonResponse == null)
     {
       SLog.d("LbsManager", "response is null");
-      paramCommonRequest = (LbsManager.POIListRequestCallback)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      paramCommonRequest = (LbsManager.POIListRequestCallback)this.a.get();
       if (paramCommonRequest != null) {
         ThreadManager.getUIHandler().post(new LbsManager.3.1(this, paramCommonRequest, paramErrorMessage));
       }
       return;
     }
     paramCommonRequest = new qqstory_service.RspGetPOIList();
-    paramCommonResponse = paramCommonResponse.a;
+    paramCommonResponse = paramCommonResponse.b;
     try
     {
       paramCommonRequest.mergeFrom(paramCommonResponse);
@@ -75,9 +75,9 @@ class LbsManager$3
         } else {
           i = 0;
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.jdField_a_of_type_Boolean = (i ^ 0x1);
+        this.b.b = (i ^ 0x1);
         localObject = paramCommonRequest.next_cookie.get().toStringUtf8();
-        if (!this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.jdField_a_of_type_JavaUtilHashSet.contains(localObject))
+        if (!this.b.f.contains(localObject))
         {
           i = 0;
           while (i < paramErrorMessage.size())
@@ -101,12 +101,12 @@ class LbsManager$3
             paramCommonResponse.add(new TroopBarPOI("", str1, str2, j, str3, k, localAddress.province.get().toString()));
             i += 1;
           }
-          this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.jdField_a_of_type_JavaUtilHashSet.add(localObject);
-          this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.jdField_a_of_type_JavaLangString = ((String)localObject);
+          this.b.f.add(localObject);
+          this.b.d = ((String)localObject);
         }
       }
     }
-    paramErrorMessage = (LbsManager.POIListRequestCallback)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    paramErrorMessage = (LbsManager.POIListRequestCallback)this.a.get();
     if (paramErrorMessage != null)
     {
       ThreadManager.getUIHandler().post(new LbsManager.3.2(this, paramErrorMessage, paramCommonRequest, paramCommonResponse));
@@ -117,7 +117,7 @@ class LbsManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.LbsManager.3
  * JD-Core Version:    0.7.0.1
  */

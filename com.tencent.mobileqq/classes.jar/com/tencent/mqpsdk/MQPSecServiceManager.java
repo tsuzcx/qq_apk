@@ -9,17 +9,14 @@ import java.util.Map;
 
 public class MQPSecServiceManager
 {
-  public Context a;
-  public INetTransportProvider a;
-  private Map<String, Object> a;
+  public Context a = null;
+  public INetTransportProvider b = null;
+  private Map<String, Object> c = null;
   
   public MQPSecServiceManager(Context paramContext, INetTransportProvider paramINetTransportProvider)
   {
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider = null;
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider = paramINetTransportProvider;
+    this.a = paramContext;
+    this.b = paramINetTransportProvider;
   }
   
   public Object a(String paramString)
@@ -29,11 +26,11 @@ public class MQPSecServiceManager
     if (bool) {
       return null;
     }
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+    if (this.c == null) {
+      this.c = new LinkedHashMap();
     }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (this.c.containsKey(paramString)) {
+      return this.c.get(paramString);
     }
     if (TextUtils.equals(paramString, "intchk")) {
       localObject = new MQPIntChkService(this);
@@ -41,14 +38,14 @@ public class MQPSecServiceManager
       localObject = new MQPSigCheckService(this);
     }
     if (localObject != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      this.c.put(paramString, localObject);
     }
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqpsdk.MQPSecServiceManager
  * JD-Core Version:    0.7.0.1
  */

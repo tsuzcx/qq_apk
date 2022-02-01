@@ -20,7 +20,7 @@ public class ReceiptMsgAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838202;
+    return 2130838254;
   }
   
   public int getAppID()
@@ -49,17 +49,17 @@ public class ReceiptMsgAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698552);
+    return BaseApplicationImpl.getContext().getString(2131896498);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    ((ReceiptHelper)paramBaseChatPie.a(118)).a();
+    ((ReceiptHelper)paramBaseChatPie.q(118)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ReceiptMsgAppInfo
  * JD-Core Version:    0.7.0.1
  */

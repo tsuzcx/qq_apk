@@ -9,26 +9,21 @@ import java.util.HashMap;
 
 public class AdvertisementStatistics
 {
-  private static AdvertisementStatistics jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics = new AdvertisementStatistics();
-  private long jdField_a_of_type_Long = 0L;
-  private AdvertisementStatistics.Report jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report = new AdvertisementStatistics.Report(null);
-  public ImaxadThirdProcessorProxy a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
-  
-  private AdvertisementStatistics()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy = new ImaxadThirdProcessorProxy();
-  }
+  private static AdvertisementStatistics f = new AdvertisementStatistics();
+  public ImaxadThirdProcessorProxy a = new ImaxadThirdProcessorProxy();
+  private long b = 0L;
+  private AdvertisementStatistics.Report c = new AdvertisementStatistics.Report(null);
+  private boolean d = false;
+  private boolean e = false;
   
   public static AdvertisementStatistics a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics == null) {
-        jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics = new AdvertisementStatistics();
+      if (f == null) {
+        f = new AdvertisementStatistics();
       }
-      AdvertisementStatistics localAdvertisementStatistics = jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics;
+      AdvertisementStatistics localAdvertisementStatistics = f;
       return localAdvertisementStatistics;
     }
     finally {}
@@ -49,86 +44,79 @@ public class AdvertisementStatistics
     }
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.jdField_c_of_type_Long == -1L) {
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.jdField_c_of_type_Long = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-    }
-  }
-  
   public void a(String paramString, long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.a();
-    this.jdField_a_of_type_Long = paramLong;
-    long l = this.jdField_a_of_type_ComTencentMobileqqImaxadInjectImaxadThirdProcessorProxy.a();
+    this.d = false;
+    this.e = false;
+    this.c.b();
+    this.b = paramLong;
+    long l = this.a.b();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mClickTime:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append(" sToolShowTime:");
       ((StringBuilder)localObject).append(l);
       QLog.i("AdvertisementStatistics", 2, ((StringBuilder)localObject).toString());
     }
     if ((l != 0L) && (l <= paramLong))
     {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report;
-      ((AdvertisementStatistics.Report)localObject).jdField_a_of_type_Int = 1;
-      ((AdvertisementStatistics.Report)localObject).jdField_b_of_type_Long = 0L;
+      localObject = this.c;
+      ((AdvertisementStatistics.Report)localObject).d = 1;
+      ((AdvertisementStatistics.Report)localObject).g = 0L;
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report;
-      ((AdvertisementStatistics.Report)localObject).jdField_a_of_type_Int = 0;
-      ((AdvertisementStatistics.Report)localObject).jdField_b_of_type_Long = (l - paramLong);
+      localObject = this.c;
+      ((AdvertisementStatistics.Report)localObject).d = 0;
+      ((AdvertisementStatistics.Report)localObject).g = (l - paramLong);
     }
     l = SystemClock.uptimeMillis();
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report;
-    ((AdvertisementStatistics.Report)localObject).jdField_a_of_type_Long = (l - paramLong);
-    ((AdvertisementStatistics.Report)localObject).jdField_b_of_type_JavaLangString = paramString;
-    ((AdvertisementStatistics.Report)localObject).jdField_a_of_type_Boolean = paramBoolean;
+    Object localObject = this.c;
+    ((AdvertisementStatistics.Report)localObject).f = (l - paramLong);
+    ((AdvertisementStatistics.Report)localObject).b = paramString;
+    ((AdvertisementStatistics.Report)localObject).j = paramBoolean;
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.jdField_a_of_type_JavaLangString = "IMAX_Ad_videoLoadErr";
+    this.d = true;
+    this.c.a = "IMAX_Ad_videoLoadErr";
     HashMap localHashMap = new HashMap();
     localHashMap.put("adId", paramString1);
     localHashMap.put("vid", paramString2);
     long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.b;
     if (QLog.isColorLevel()) {
-      QLog.i("AdvertisementStatistics", 2, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.toString());
+      QLog.i("AdvertisementStatistics", 2, this.c.toString());
     }
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "IMAX_Ad_videoLoadErr", true, l1 - l2, 0L, localHashMap, "", false);
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (this.b) {
+    if (this.e) {
       return;
     }
-    this.b = true;
-    AdvertisementStatistics.Report localReport = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report;
-    localReport.jdField_a_of_type_JavaLangString = "IMAX_Ad_Remind_Dialog_Click";
-    localReport.jdField_b_of_type_JavaLangString = paramString1;
-    localReport.jdField_c_of_type_JavaLangString = paramString2;
+    this.e = true;
+    AdvertisementStatistics.Report localReport = this.c;
+    localReport.a = "IMAX_Ad_Remind_Dialog_Click";
+    localReport.b = paramString1;
+    localReport.c = paramString2;
     paramString1 = localReport.a();
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
-      paramString2.append(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.toString());
+      paramString2.append(this.c.toString());
       paramString2.append(" ok ");
       paramString2.append(paramBoolean);
       QLog.i("AdvertisementStatistics", 2, paramString2.toString());
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.jdField_a_of_type_JavaLangString, paramBoolean, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.jdField_c_of_type_Long, 0L, paramString1, "", false);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", this.c.a, paramBoolean, this.c.h, 0L, paramString1, "", false);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -138,41 +126,48 @@ public class AdvertisementStatistics
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.a();
+    this.d = true;
+    Object localObject = this.c.a();
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost_ByUsr";
+      this.c.a = "IMAX_Ad_StartCost_ByUsr";
     } else {
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost";
+      this.c.a = "IMAX_Ad_StartCost";
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.d, 0L, (HashMap)localObject, "", false);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", this.c.a, true, this.c.i, 0L, (HashMap)localObject, "", false);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("remindUsr:");
       ((StringBuilder)localObject).append(paramBoolean);
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.toString());
+      ((StringBuilder)localObject).append(this.c.toString());
       QLog.i("AdvertisementStatistics", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void b()
+  {
+    if (this.c.h == -1L) {
+      this.c.h = (SystemClock.uptimeMillis() - this.b);
     }
   }
   
   public void b(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report.d == -1L)
+    if (this.c.i == -1L)
     {
-      AdvertisementStatistics.Report localReport = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementStatistics$Report;
-      localReport.jdField_c_of_type_JavaLangString = paramString;
-      localReport.d = (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+      AdvertisementStatistics.Report localReport = this.c;
+      localReport.c = paramString;
+      localReport.i = (SystemClock.uptimeMillis() - this.b);
       a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics
  * JD-Core Version:    0.7.0.1
  */

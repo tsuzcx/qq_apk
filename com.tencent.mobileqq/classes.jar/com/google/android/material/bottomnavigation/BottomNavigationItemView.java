@@ -43,28 +43,28 @@ public class BottomNavigationItemView
   extends FrameLayout
   implements MenuView.ItemView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842912 };
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
+  private static final int[] a = { 16842912 };
+  private final int b;
+  private float c;
+  private float d;
+  private float e;
+  private int f;
+  private boolean g;
+  private ImageView h;
+  private final ViewGroup i;
+  private final TextView j;
+  private final TextView k;
+  private int l = -1;
   @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private MenuItemImpl m;
   @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private final ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ColorStateList n;
   @Nullable
-  private MenuItemImpl jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl;
+  private Drawable o;
   @Nullable
-  private BadgeDrawable jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private Drawable p;
   @Nullable
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = -1;
+  private BadgeDrawable q;
   
   public BottomNavigationItemView(@NonNull Context paramContext)
   {
@@ -80,75 +80,37 @@ public class BottomNavigationItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = getResources();
-    LayoutInflater.from(paramContext).inflate(R.layout.jdField_a_of_type_Int, this, true);
-    setBackgroundResource(R.drawable.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(R.dimen.h);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(R.id.i));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(R.id.j));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.ab));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.k));
-    this.jdField_a_of_type_AndroidViewViewGroup.setTag(R.id.Y, Integer.valueOf(this.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom()));
-    ViewCompat.setImportantForAccessibility(this.jdField_a_of_type_AndroidWidgetTextView, 2);
-    ViewCompat.setImportantForAccessibility(this.jdField_b_of_type_AndroidWidgetTextView, 2);
+    LayoutInflater.from(paramContext).inflate(R.layout.a, this, true);
+    setBackgroundResource(R.drawable.a);
+    this.b = paramAttributeSet.getDimensionPixelSize(R.dimen.h);
+    this.h = ((ImageView)findViewById(R.id.i));
+    this.i = ((ViewGroup)findViewById(R.id.j));
+    this.j = ((TextView)findViewById(R.id.ab));
+    this.k = ((TextView)findViewById(R.id.k));
+    this.i.setTag(R.id.Y, Integer.valueOf(this.i.getPaddingBottom()));
+    ViewCompat.setImportantForAccessibility(this.j, 2);
+    ViewCompat.setImportantForAccessibility(this.k, 2);
     setFocusable(true);
-    a(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize(), this.jdField_b_of_type_AndroidWidgetTextView.getTextSize());
-    paramContext = this.jdField_a_of_type_AndroidWidgetImageView;
+    a(this.j.getTextSize(), this.k.getTextSize());
+    paramContext = this.h;
     if (paramContext != null) {
       paramContext.addOnLayoutChangeListener(new BottomNavigationItemView.1(this));
     }
   }
   
-  private int a()
-  {
-    ViewGroup localViewGroup = (ViewGroup)getParent();
-    int m = localViewGroup.indexOfChild(this);
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      View localView = localViewGroup.getChildAt(i);
-      k = j;
-      if ((localView instanceof BottomNavigationItemView))
-      {
-        k = j;
-        if (localView.getVisibility() == 0) {
-          k = j + 1;
-        }
-      }
-      i += 1;
-    }
-    return j;
-  }
-  
-  @Nullable
-  private FrameLayout a(View paramView)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramView == localImageView)
-    {
-      localObject1 = localObject2;
-      if (BadgeUtils.jdField_a_of_type_Boolean) {
-        localObject1 = (FrameLayout)this.jdField_a_of_type_AndroidWidgetImageView.getParent();
-      }
-    }
-    return localObject1;
-  }
-  
   private void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Float = (paramFloat1 - paramFloat2);
-    this.jdField_b_of_type_Float = (paramFloat2 * 1.0F / paramFloat1);
-    this.jdField_c_of_type_Float = (paramFloat1 * 1.0F / paramFloat2);
+    this.c = (paramFloat1 - paramFloat2);
+    this.d = (paramFloat2 * 1.0F / paramFloat1);
+    this.e = (paramFloat1 * 1.0F / paramFloat2);
   }
   
   private void a(View paramView)
   {
-    if (!a()) {
+    if (!b()) {
       return;
     }
-    BadgeUtils.b(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable, paramView, a(paramView));
+    BadgeUtils.b(this.q, paramView, d(paramView));
   }
   
   private static void a(@NonNull View paramView, float paramFloat1, float paramFloat2, int paramInt)
@@ -171,60 +133,100 @@ public class BottomNavigationItemView
     paramView.setLayoutParams(localLayoutParams);
   }
   
-  private boolean a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable != null;
-  }
-  
   private void b(@Nullable View paramView)
   {
-    if (!a()) {
+    if (!b()) {
       return;
     }
     if (paramView != null)
     {
       setClipChildren(false);
       setClipToPadding(false);
-      BadgeUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable, paramView, a(paramView));
+      BadgeUtils.a(this.q, paramView, d(paramView));
     }
+  }
+  
+  private boolean b()
+  {
+    return this.q != null;
   }
   
   private void c(@Nullable View paramView)
   {
-    if (!a()) {
+    if (!b()) {
       return;
     }
     if (paramView != null)
     {
       setClipChildren(true);
       setClipToPadding(true);
-      BadgeUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable, paramView);
+      BadgeUtils.a(this.q, paramView);
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable = null;
+    this.q = null;
+  }
+  
+  @Nullable
+  private FrameLayout d(View paramView)
+  {
+    ImageView localImageView = this.h;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramView == localImageView)
+    {
+      localObject1 = localObject2;
+      if (BadgeUtils.a) {
+        localObject1 = (FrameLayout)this.h.getParent();
+      }
+    }
+    return localObject1;
+  }
+  
+  private int getItemVisiblePosition()
+  {
+    ViewGroup localViewGroup = (ViewGroup)getParent();
+    int i4 = localViewGroup.indexOfChild(this);
+    int i1 = 0;
+    int i3;
+    for (int i2 = 0; i1 < i4; i2 = i3)
+    {
+      View localView = localViewGroup.getChildAt(i1);
+      i3 = i2;
+      if ((localView instanceof BottomNavigationItemView))
+      {
+        i3 = i2;
+        if (localView.getVisibility() == 0) {
+          i3 = i2 + 1;
+        }
+      }
+      i1 += 1;
+    }
+    return i2;
   }
   
   void a()
   {
-    c(this.jdField_a_of_type_AndroidWidgetImageView);
+    c(this.h);
   }
   
-  void a(@NonNull BadgeDrawable paramBadgeDrawable)
+  @Nullable
+  BadgeDrawable getBadge()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable = paramBadgeDrawable;
-    paramBadgeDrawable = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBadgeDrawable != null) {
-      b(paramBadgeDrawable);
-    }
+    return this.q;
   }
   
   public MenuItemImpl getItemData()
   {
-    return this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl;
+    return this.m;
+  }
+  
+  public int getItemPosition()
+  {
+    return this.l;
   }
   
   public void initialize(@NonNull MenuItemImpl paramMenuItemImpl, int paramInt)
   {
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl = paramMenuItemImpl;
+    this.m = paramMenuItemImpl;
     setCheckable(paramMenuItemImpl.isCheckable());
     setChecked(paramMenuItemImpl.isChecked());
     setEnabled(paramMenuItemImpl.isEnabled());
@@ -252,9 +254,9 @@ public class BottomNavigationItemView
   public int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-    MenuItemImpl localMenuItemImpl = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl;
-    if ((localMenuItemImpl != null) && (localMenuItemImpl.isCheckable()) && (this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl.isChecked())) {
-      mergeDrawableStates(arrayOfInt, jdField_a_of_type_ArrayOfInt);
+    MenuItemImpl localMenuItemImpl = this.m;
+    if ((localMenuItemImpl != null) && (localMenuItemImpl.isCheckable()) && (this.m.isChecked())) {
+      mergeDrawableStates(arrayOfInt, a);
     }
     return arrayOfInt;
   }
@@ -262,21 +264,21 @@ public class BottomNavigationItemView
   public void onInitializeAccessibilityNodeInfo(@NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable;
+    Object localObject = this.q;
     if ((localObject != null) && (((BadgeDrawable)localObject).isVisible()))
     {
-      localObject = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl.getTitle();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl.getContentDescription())) {
-        localObject = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl.getContentDescription();
+      localObject = this.m.getTitle();
+      if (!TextUtils.isEmpty(this.m.getContentDescription())) {
+        localObject = this.m.getContentDescription();
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(localObject);
       localStringBuilder.append(", ");
-      localStringBuilder.append(this.jdField_a_of_type_ComGoogleAndroidMaterialBadgeBadgeDrawable.a());
+      localStringBuilder.append(this.q.g());
       paramAccessibilityNodeInfo.setContentDescription(localStringBuilder.toString());
     }
     paramAccessibilityNodeInfo = AccessibilityNodeInfoCompat.wrap(paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(0, 1, a(), 1, false, isSelected()));
+    paramAccessibilityNodeInfo.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(0, 1, getItemVisiblePosition(), 1, false, isSelected()));
     if (isSelected())
     {
       paramAccessibilityNodeInfo.setClickable(false);
@@ -290,6 +292,15 @@ public class BottomNavigationItemView
     return false;
   }
   
+  void setBadge(@NonNull BadgeDrawable paramBadgeDrawable)
+  {
+    this.q = paramBadgeDrawable;
+    paramBadgeDrawable = this.h;
+    if (paramBadgeDrawable != null) {
+      b(paramBadgeDrawable);
+    }
+  }
+  
   public void setCheckable(boolean paramBoolean)
   {
     refreshDrawableState();
@@ -297,48 +308,48 @@ public class BottomNavigationItemView
   
   public void setChecked(boolean paramBoolean)
   {
-    Object localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    Object localObject = this.k;
     ((TextView)localObject).setPivotX(((TextView)localObject).getWidth() / 2);
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    localObject = this.k;
     ((TextView)localObject).setPivotY(((TextView)localObject).getBaseline());
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.j;
     ((TextView)localObject).setPivotX(((TextView)localObject).getWidth() / 2);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.j;
     ((TextView)localObject).setPivotY(((TextView)localObject).getBaseline());
-    int i = this.jdField_b_of_type_Int;
-    float f;
-    if (i != -1)
+    int i1 = this.f;
+    float f1;
+    if (i1 != -1)
     {
-      if (i != 0)
+      if (i1 != 0)
       {
-        if (i != 1)
+        if (i1 != 1)
         {
-          if (i == 2)
+          if (i1 == 2)
           {
-            a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int, 17);
-            this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-            this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+            a(this.h, this.b, 17);
+            this.k.setVisibility(8);
+            this.j.setVisibility(8);
           }
         }
         else
         {
-          localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+          localObject = this.i;
           a((View)localObject, ((Integer)((ViewGroup)localObject).getTag(R.id.Y)).intValue());
           if (paramBoolean)
           {
-            a(this.jdField_a_of_type_AndroidWidgetImageView, (int)(this.jdField_a_of_type_Int + this.jdField_a_of_type_Float), 49);
-            a(this.jdField_b_of_type_AndroidWidgetTextView, 1.0F, 1.0F, 0);
-            localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-            f = this.jdField_b_of_type_Float;
-            a((View)localObject, f, f, 4);
+            a(this.h, (int)(this.b + this.c), 49);
+            a(this.k, 1.0F, 1.0F, 0);
+            localObject = this.j;
+            f1 = this.d;
+            a((View)localObject, f1, f1, 4);
           }
           else
           {
-            a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int, 49);
-            localObject = this.jdField_b_of_type_AndroidWidgetTextView;
-            f = this.jdField_c_of_type_Float;
-            a((View)localObject, f, f, 4);
-            a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F, 1.0F, 0);
+            a(this.h, this.b, 49);
+            localObject = this.k;
+            f1 = this.e;
+            a((View)localObject, f1, f1, 4);
+            a(this.j, 1.0F, 1.0F, 0);
           }
         }
       }
@@ -346,56 +357,56 @@ public class BottomNavigationItemView
       {
         if (paramBoolean)
         {
-          a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int, 49);
-          localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+          a(this.h, this.b, 49);
+          localObject = this.i;
           a((View)localObject, ((Integer)((ViewGroup)localObject).getTag(R.id.Y)).intValue());
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.k.setVisibility(0);
         }
         else
         {
-          a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int, 17);
-          a(this.jdField_a_of_type_AndroidViewViewGroup, 0);
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+          a(this.h, this.b, 17);
+          a(this.i, 0);
+          this.k.setVisibility(4);
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.j.setVisibility(4);
       }
     }
-    else if (this.jdField_a_of_type_Boolean)
+    else if (this.g)
     {
       if (paramBoolean)
       {
-        a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int, 49);
-        localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+        a(this.h, this.b, 49);
+        localObject = this.i;
         a((View)localObject, ((Integer)((ViewGroup)localObject).getTag(R.id.Y)).intValue());
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.k.setVisibility(0);
       }
       else
       {
-        a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int, 17);
-        a(this.jdField_a_of_type_AndroidViewViewGroup, 0);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+        a(this.h, this.b, 17);
+        a(this.i, 0);
+        this.k.setVisibility(4);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.j.setVisibility(4);
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+      localObject = this.i;
       a((View)localObject, ((Integer)((ViewGroup)localObject).getTag(R.id.Y)).intValue());
       if (paramBoolean)
       {
-        a(this.jdField_a_of_type_AndroidWidgetImageView, (int)(this.jdField_a_of_type_Int + this.jdField_a_of_type_Float), 49);
-        a(this.jdField_b_of_type_AndroidWidgetTextView, 1.0F, 1.0F, 0);
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        f = this.jdField_b_of_type_Float;
-        a((View)localObject, f, f, 4);
+        a(this.h, (int)(this.b + this.c), 49);
+        a(this.k, 1.0F, 1.0F, 0);
+        localObject = this.j;
+        f1 = this.d;
+        a((View)localObject, f1, f1, 4);
       }
       else
       {
-        a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Int, 49);
-        localObject = this.jdField_b_of_type_AndroidWidgetTextView;
-        f = this.jdField_c_of_type_Float;
-        a((View)localObject, f, f, 4);
-        a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F, 1.0F, 0);
+        a(this.h, this.b, 49);
+        localObject = this.k;
+        f1 = this.e;
+        a((View)localObject, f1, f1, 4);
+        a(this.j, 1.0F, 1.0F, 0);
       }
     }
     refreshDrawableState();
@@ -405,9 +416,9 @@ public class BottomNavigationItemView
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(paramBoolean);
-    this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
+    this.j.setEnabled(paramBoolean);
+    this.k.setEnabled(paramBoolean);
+    this.h.setEnabled(paramBoolean);
     if (paramBoolean)
     {
       ViewCompat.setPointerIcon(this, PointerIconCompat.getSystemIcon(getContext(), 1002));
@@ -418,10 +429,10 @@ public class BottomNavigationItemView
   
   public void setIcon(@Nullable Drawable paramDrawable)
   {
-    if (paramDrawable == this.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
+    if (paramDrawable == this.o) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.o = paramDrawable;
     Object localObject = paramDrawable;
     if (paramDrawable != null)
     {
@@ -430,36 +441,36 @@ public class BottomNavigationItemView
         paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
       }
       paramDrawable = DrawableCompat.wrap(paramDrawable).mutate();
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+      this.p = paramDrawable;
+      ColorStateList localColorStateList = this.n;
       localObject = paramDrawable;
       if (localColorStateList != null)
       {
-        DrawableCompat.setTintList(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, localColorStateList);
+        DrawableCompat.setTintList(this.p, localColorStateList);
         localObject = paramDrawable;
       }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    this.h.setImageDrawable((Drawable)localObject);
   }
   
   public void setIconSize(int paramInt)
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.h.getLayoutParams();
     localLayoutParams.width = paramInt;
     localLayoutParams.height = paramInt;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    this.h.setLayoutParams(localLayoutParams);
   }
   
   public void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    if (this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl != null)
+    this.n = paramColorStateList;
+    if (this.m != null)
     {
-      paramColorStateList = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+      paramColorStateList = this.p;
       if (paramColorStateList != null)
       {
-        DrawableCompat.setTintList(paramColorStateList, this.jdField_a_of_type_AndroidContentResColorStateList);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+        DrawableCompat.setTintList(paramColorStateList, this.n);
+        this.p.invalidateSelf();
       }
     }
   }
@@ -490,38 +501,38 @@ public class BottomNavigationItemView
   
   public void setItemPosition(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   public void setLabelVisibilityMode(int paramInt)
   {
-    if (this.jdField_b_of_type_Int != paramInt)
+    if (this.f != paramInt)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl != null) {
+      this.f = paramInt;
+      if (this.m != null) {
         paramInt = 1;
       } else {
         paramInt = 0;
       }
       if (paramInt != 0) {
-        setChecked(this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl.isChecked());
+        setChecked(this.m.isChecked());
       }
     }
   }
   
   public void setShifting(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.g != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      int i;
-      if (this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl != null) {
-        i = 1;
+      this.g = paramBoolean;
+      int i1;
+      if (this.m != null) {
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      if (i != 0) {
-        setChecked(this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl.isChecked());
+      if (i1 != 0) {
+        setChecked(this.m.isChecked());
       }
     }
   }
@@ -530,40 +541,40 @@ public class BottomNavigationItemView
   
   public void setTextAppearanceActive(@StyleRes int paramInt)
   {
-    TextViewCompat.setTextAppearance(this.jdField_b_of_type_AndroidWidgetTextView, paramInt);
-    a(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize(), this.jdField_b_of_type_AndroidWidgetTextView.getTextSize());
+    TextViewCompat.setTextAppearance(this.k, paramInt);
+    a(this.j.getTextSize(), this.k.getTextSize());
   }
   
   public void setTextAppearanceInactive(@StyleRes int paramInt)
   {
-    TextViewCompat.setTextAppearance(this.jdField_a_of_type_AndroidWidgetTextView, paramInt);
-    a(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize(), this.jdField_b_of_type_AndroidWidgetTextView.getTextSize());
+    TextViewCompat.setTextAppearance(this.j, paramInt);
+    a(this.j.getTextSize(), this.k.getTextSize());
   }
   
   public void setTextColor(@Nullable ColorStateList paramColorStateList)
   {
     if (paramColorStateList != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+      this.j.setTextColor(paramColorStateList);
+      this.k.setTextColor(paramColorStateList);
     }
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    Object localObject = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl;
+    this.j.setText(paramCharSequence);
+    this.k.setText(paramCharSequence);
+    Object localObject = this.m;
     if ((localObject == null) || (TextUtils.isEmpty(((MenuItemImpl)localObject).getContentDescription()))) {
       setContentDescription(paramCharSequence);
     }
-    MenuItemImpl localMenuItemImpl = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl;
+    MenuItemImpl localMenuItemImpl = this.m;
     localObject = paramCharSequence;
     if (localMenuItemImpl != null) {
       if (TextUtils.isEmpty(localMenuItemImpl.getTooltipText())) {
         localObject = paramCharSequence;
       } else {
-        localObject = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuItemImpl.getTooltipText();
+        localObject = this.m.getTooltipText();
       }
     }
     TooltipCompat.setTooltipText(this, (CharSequence)localObject);
@@ -576,7 +587,7 @@ public class BottomNavigationItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomnavigation.BottomNavigationItemView
  * JD-Core Version:    0.7.0.1
  */

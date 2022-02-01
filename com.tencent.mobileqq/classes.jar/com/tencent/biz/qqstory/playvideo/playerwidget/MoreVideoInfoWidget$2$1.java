@@ -11,8 +11,8 @@ class MoreVideoInfoWidget$2$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.c(false);
+    if (this.a.b != null) {
+      this.a.b.c(false);
     }
   }
 }

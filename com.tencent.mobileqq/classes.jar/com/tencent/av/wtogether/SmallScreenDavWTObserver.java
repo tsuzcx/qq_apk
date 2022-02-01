@@ -22,9 +22,9 @@ public class SmallScreenDavWTObserver
   
   private void a(String paramString)
   {
-    boolean bool = SmallScreenUtils.f(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+    boolean bool = SmallScreenUtils.f(this.b.getApp());
     if (bool) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new SmallScreenDavWTObserver.2(this, paramString));
+      this.a.post(new SmallScreenDavWTObserver.2(this, paramString));
     }
     if (QLog.isColorLevel())
     {
@@ -40,7 +40,7 @@ public class SmallScreenDavWTObserver
   
   protected void a()
   {
-    a(BaseApplicationImpl.getContext().getString(2131695991));
+    a(BaseApplicationImpl.getContext().getString(2131893753));
   }
   
   protected void a(boolean paramBoolean, String paramString)
@@ -60,7 +60,7 @@ public class SmallScreenDavWTObserver
       a(paramString);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SmallScreenDavWTObserver.1(this, paramString));
+    this.a.post(new SmallScreenDavWTObserver.1(this, paramString));
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
@@ -78,15 +78,15 @@ public class SmallScreenDavWTObserver
       ((StringBuilder)localObject).append("]");
       QLog.i("WTogether.ObserverImpl", 4, ((StringBuilder)localObject).toString());
     }
-    if ((!paramBoolean2) && (paramBoolean1) && (WTogetherUtil.b()))
+    if ((!paramBoolean2) && (paramBoolean1) && (WTogetherUtil.c()))
     {
       paramString = BaseApplicationImpl.getContext();
-      localObject = SessionMgr.a().a();
-      localObject = ((WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(16)).b((SessionInfo)localObject);
-      if (!((WatchTogetherInfo)localObject).a)
+      localObject = SessionMgr.a().b();
+      localObject = ((WTogetherMng)this.b.c(17)).b((SessionInfo)localObject);
+      if (!((WatchTogetherInfo)localObject).e)
       {
-        ((WatchTogetherInfo)localObject).a = true;
-        a(paramString.getString(2131695998));
+        ((WatchTogetherInfo)localObject).e = true;
+        a(paramString.getString(2131893760));
         return;
       }
       if (QLog.isColorLevel()) {
@@ -97,7 +97,7 @@ public class SmallScreenDavWTObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.SmallScreenDavWTObserver
  * JD-Core Version:    0.7.0.1
  */

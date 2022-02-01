@@ -37,7 +37,7 @@ public class ShareGroupAvatarJob
   
   protected void a(RestrictedBitmap paramRestrictedBitmap)
   {
-    a("ShareGroupAvatarJob_sga", paramRestrictedBitmap.a());
+    a("ShareGroupAvatarJob_sga", paramRestrictedBitmap.c());
     b(true);
   }
   
@@ -52,13 +52,13 @@ public class ShareGroupAvatarJob
   protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarJob_sgi"));
+      this.a = ((String)b("ShareGroupAvatarJob_sgi"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarJob
  * JD-Core Version:    0.7.0.1
  */

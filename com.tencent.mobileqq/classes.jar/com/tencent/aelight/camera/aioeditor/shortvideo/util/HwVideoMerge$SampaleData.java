@@ -5,24 +5,19 @@ import java.nio.ByteBuffer;
 
 class HwVideoMerge$SampaleData
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
   public ByteBuffer a;
-  public int b;
-  
-  private HwVideoMerge$SampaleData()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  }
+  public MediaCodec.BufferInfo b = new MediaCodec.BufferInfo();
+  public int c;
+  public int d;
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    this.a = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.util.HwVideoMerge.SampaleData
  * JD-Core Version:    0.7.0.1
  */

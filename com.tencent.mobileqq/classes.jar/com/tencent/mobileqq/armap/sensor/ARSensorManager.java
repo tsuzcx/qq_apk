@@ -15,19 +15,19 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ARSensorManager
 {
-  private int jdField_a_of_type_Int = 2;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private OrientationProvider jdField_a_of_type_ComTencentMobileqqArmapSensorProviderOrientationProvider = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a = 2;
+  private Context b;
+  private SensorManager c;
+  private OrientationProvider d = null;
+  private boolean e = false;
   
   public ARSensorManager(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramContext;
+    this.a = paramInt;
     try
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
+      this.c = ((SensorManager)this.b.getSystemService("sensor"));
       return;
     }
     catch (Throwable paramContext)
@@ -36,7 +36,7 @@ public class ARSensorManager
       localStringBuilder.append("ARSensorManager getSystemService error:");
       localStringBuilder.append(paramContext.getMessage());
       QLog.e("ARSensorManager", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+      this.c = null;
     }
   }
   
@@ -48,7 +48,7 @@ public class ARSensorManager
     if (paramInt == 1) {}
     try
     {
-      localObject1 = new TypeOrientationProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+      localObject1 = new TypeOrientationProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
     }
     catch (OrientationProviderNotFound localOrientationProviderNotFound1)
     {
@@ -62,7 +62,7 @@ public class ARSensorManager
     if (localObject1 == null) {}
     try
     {
-      localObject3 = new RotationVectorProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+      localObject3 = new RotationVectorProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
     }
     catch (OrientationProviderNotFound localOrientationProviderNotFound2)
     {
@@ -77,7 +77,7 @@ public class ARSensorManager
     label308:
     try
     {
-      localObject1 = new AccelMagnetProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+      localObject1 = new AccelMagnetProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
     }
     catch (OrientationProviderNotFound paramSensorManager)
     {
@@ -98,7 +98,7 @@ public class ARSensorManager
     {
       try
       {
-        localObject3 = new RotationGameVectorProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject3 = new RotationGameVectorProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       catch (OrientationProviderNotFound localOrientationProviderNotFound3)
       {
@@ -110,7 +110,7 @@ public class ARSensorManager
       if (localObject3 == null) {}
       try
       {
-        localObject1 = new RotationVectorProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject1 = new RotationVectorProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       catch (OrientationProviderNotFound localOrientationProviderNotFound4)
       {
@@ -121,7 +121,7 @@ public class ARSensorManager
       if (localObject1 == null) {}
       try
       {
-        localObject3 = new TypeOrientationProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject3 = new TypeOrientationProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       catch (OrientationProviderNotFound localOrientationProviderNotFound5)
       {
@@ -133,7 +133,7 @@ public class ARSensorManager
       if (localObject3 == null) {}
       try
       {
-        localObject4 = new AccelMagnetGyroProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject4 = new AccelMagnetGyroProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       catch (OrientationProviderNotFound localOrientationProviderNotFound6)
       {
@@ -143,13 +143,13 @@ public class ARSensorManager
       localObject1 = localObject4;
       if (localObject4 == null)
       {
-        localObject1 = new AccelProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject1 = new AccelProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
         break label367;
-        localObject1 = new TypeAccOrientationProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject1 = new TypeAccOrientationProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       try
       {
-        localObject3 = new RotationVectorProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject3 = new RotationVectorProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       catch (OrientationProviderNotFound localOrientationProviderNotFound7)
       {
@@ -160,7 +160,7 @@ public class ARSensorManager
       if (localObject3 == null) {}
       try
       {
-        localObject1 = new TypeOrientationProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject1 = new TypeOrientationProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       catch (OrientationProviderNotFound localOrientationProviderNotFound8)
       {
@@ -171,7 +171,7 @@ public class ARSensorManager
       if (localObject1 == null) {}
       try
       {
-        localObject3 = new AccelMagnetGyroProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject3 = new AccelMagnetGyroProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       catch (OrientationProviderNotFound localOrientationProviderNotFound9)
       {
@@ -180,7 +180,7 @@ public class ARSensorManager
       localObject3 = null;
       localObject1 = localObject3;
       if (localObject3 == null) {
-        localObject1 = new AccelMagnetProvider(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
+        localObject1 = new AccelMagnetProvider(this.b, paramInt, paramSensorManager, paramOnSensorChangeListener);
       }
       if (localObject1 == null) {
         paramSensorManager = "null";
@@ -192,18 +192,6 @@ public class ARSensorManager
       paramOnSensorChangeListener.append(paramSensorManager);
       QLog.d("ARSensorManager", 1, paramOnSensorChangeListener.toString());
       return localObject1;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      OrientationProvider localOrientationProvider = this.jdField_a_of_type_ComTencentMobileqqArmapSensorProviderOrientationProvider;
-      if (localOrientationProvider != null) {
-        localOrientationProvider.c();
-      }
     }
   }
   
@@ -226,7 +214,7 @@ public class ARSensorManager
   
   public boolean a(int paramInt)
   {
-    SensorManager localSensorManager = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    SensorManager localSensorManager = this.c;
     boolean bool = false;
     if (localSensorManager == null) {
       return false;
@@ -239,29 +227,29 @@ public class ARSensorManager
   
   public boolean a(ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorProviderOrientationProvider = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidHardwareSensorManager, paramOnSensorChangeListener);
-      paramOnSensorChangeListener = this.jdField_a_of_type_ComTencentMobileqqArmapSensorProviderOrientationProvider;
+      this.d = a(this.a, this.c, paramOnSensorChangeListener);
+      paramOnSensorChangeListener = this.d;
       if (paramOnSensorChangeListener != null)
       {
         paramOnSensorChangeListener.b();
-        this.jdField_a_of_type_Boolean = true;
+        this.e = true;
       }
       else
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.e = false;
       }
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
   public boolean a(ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorProviderOrientationProvider = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidHardwareSensorManager, paramOnSensorChangeListener);
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorProviderOrientationProvider != null)
+      this.d = a(this.a, this.c, paramOnSensorChangeListener);
+      if (this.d != null)
       {
         int i = paramInt;
         if (paramInt != 2)
@@ -279,33 +267,45 @@ public class ARSensorManager
             }
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorProviderOrientationProvider.a(i);
-        this.jdField_a_of_type_Boolean = true;
+        this.d.a(i);
+        this.e = true;
       }
       else
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.e = false;
       }
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
-  public boolean b()
+  public void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    if (this.e)
+    {
+      this.e = false;
+      OrientationProvider localOrientationProvider = this.d;
+      if (localOrientationProvider != null) {
+        localOrientationProvider.c();
+      }
+    }
+  }
+  
+  public boolean c()
+  {
+    Object localObject = this.c;
     boolean bool2 = false;
     if (localObject == null) {
       return false;
     }
     int i;
-    if (this.jdField_a_of_type_Int == 5) {
+    if (this.a == 5) {
       i = 15;
     } else {
       i = 11;
     }
     localObject = ((SensorManager)localObject).getDefaultSensor(i);
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4) != null)
+    if (this.c.getDefaultSensor(4) != null)
     {
       bool1 = bool2;
       if (localObject != null) {
@@ -317,7 +317,7 @@ public class ARSensorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.ARSensorManager
  * JD-Core Version:    0.7.0.1
  */

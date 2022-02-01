@@ -10,6 +10,7 @@ import android.view.Surface;
 import com.tencent.avgame.qav.AVGameMediaPlayerCtrl.CustomHandler;
 import com.tencent.avgame.report.exception.AVGameExceptionReporter;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.videoplatform.SDKInitListener;
@@ -33,115 +34,113 @@ import java.util.ArrayList;
 public class AVGameMediaPlayerWrapper
   implements SurfaceTexture.OnFrameAvailableListener, SDKInitListener, ISuperPlayer.OnAudioFrameOutputListener, ISuperPlayer.OnCaptureImageListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnDefinitionInfoListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnTVideoNetInfoListener, ISuperPlayer.OnVideoPreparedListener, ISuperPlayer.OnVideoSizeChangedListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private AVGameMediaPlayerWrapper.OnAVGameMediaPlayerCallBack jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper$OnAVGameMediaPlayerCallBack;
-  private AVGameMediaPlayerCtrl.CustomHandler jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
-  private volatile ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
-  private boolean c = true;
+  private volatile ISuperPlayer a;
+  private String b;
+  private boolean c = false;
   private boolean d = false;
-  private boolean e = false;
+  private boolean e = true;
+  private boolean f = false;
+  private Point g = new Point();
+  private int h = -1;
+  private Surface i;
+  private SurfaceTexture j;
+  private AVGameMediaPlayerWrapper.OnAVGameMediaPlayerCallBack k;
+  private AVGameMediaPlayerCtrl.CustomHandler l;
+  private boolean m = false;
   
-  private boolean b()
+  private void h()
   {
-    return this.e;
-  }
-  
-  private void d()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidViewSurface;
+    Object localObject = this.i;
     if (localObject != null)
     {
       ((Surface)localObject).release();
-      this.jdField_a_of_type_AndroidViewSurface = null;
+      this.i = null;
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    localObject = this.j;
     if (localObject != null)
     {
       ((SurfaceTexture)localObject).setOnFrameAvailableListener(null);
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+      this.j.release();
+      this.j = null;
     }
-    int i = this.jdField_a_of_type_Int;
-    if (i != -1)
+    int n = this.h;
+    if (n != -1)
     {
-      GlUtil.deleteTexture(i);
-      this.jdField_a_of_type_Int = -1;
+      GlUtil.deleteTexture(n);
+      this.h = -1;
     }
   }
   
-  private void e()
+  private void i()
   {
     QLog.d("AVGameMediaPlayerWrapper", 1, "initMediaPlayer");
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 107, null);
-    }
-    if (!this.jdField_a_of_type_Boolean)
+    if (this.a == null)
     {
-      d();
-      this.jdField_a_of_type_Int = GlUtil.createTexture(36197);
-      GLES20.glBindTexture(36197, 0);
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
-      if (Build.VERSION.SDK_INT >= 21) {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this, this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler);
-      } else {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+      boolean bool = QQVideoPlaySDKManager.isSDKReady();
+      ISuperPlayer localISuperPlayer = null;
+      if (bool) {
+        localISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 107, null);
       }
-      this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setSurface(this.jdField_a_of_type_AndroidViewSurface);
+      this.a = localISuperPlayer;
     }
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCaptureImageListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnDefinitionInfoListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnTVideoNetInfoUpdateListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoSizeChangedListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnSeekCompleteListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnAudioFrameOutputListener(this);
+    if (this.a == null)
+    {
+      QLog.d("AVGameMediaPlayerWrapper", 1, "initMediaPlayer fail");
+      return;
+    }
+    if (!this.c)
+    {
+      h();
+      this.h = GlUtil.createTexture(36197);
+      GLES20.glBindTexture(36197, 0);
+      this.j = new SurfaceTexture(this.h);
+      if (Build.VERSION.SDK_INT >= 21) {
+        this.j.setOnFrameAvailableListener(this, this.l);
+      } else {
+        this.j.setOnFrameAvailableListener(this);
+      }
+      this.i = new Surface(this.j);
+      this.a.setSurface(this.i);
+    }
+    this.a.setOnVideoPreparedListener(this);
+    this.a.setOnCaptureImageListener(this);
+    this.a.setOnInfoListener(this);
+    this.a.setOnErrorListener(this);
+    this.a.setOnDefinitionInfoListener(this);
+    this.a.setOnTVideoNetInfoUpdateListener(this);
+    this.a.setOnCompletionListener(this);
+    this.a.setOnVideoSizeChangedListener(this);
+    this.a.setOnSeekCompleteListener(this);
+    this.a.setOnAudioFrameOutputListener(this);
   }
   
-  private void f()
+  private boolean j()
+  {
+    return this.m;
+  }
+  
+  private void k()
   {
     QLog.d("AVGameMediaPlayerWrapper", 1, "releaseMediaPlayer");
-    AVGameMediaPlayerCtrl.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
+    AVGameMediaPlayerCtrl.CustomHandler localCustomHandler = this.l;
     if (localCustomHandler != null) {
       localCustomHandler.post(new AVGameMediaPlayerWrapper.6(this));
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public long a()
   {
-    return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
-  }
-  
-  public SurfaceTexture a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  }
-  
-  public void a()
-  {
-    QLog.d("AVGameMediaPlayerWrapper", 1, "releaseMgrRes");
-    f();
+    if (this.a != null) {
+      return this.a.getCurrentPositionMs();
+    }
+    return 0L;
   }
   
   public void a(AVGameMediaPlayerWrapper.OnAVGameMediaPlayerCallBack paramOnAVGameMediaPlayerCallBack, AVGameMediaPlayerCtrl.CustomHandler paramCustomHandler)
   {
     QLog.d("AVGameMediaPlayerWrapper", 1, "addAVGameMediaPlayerCallBack");
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper$OnAVGameMediaPlayerCallBack = paramOnAVGameMediaPlayerCallBack;
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler = paramCustomHandler;
+    this.k = paramOnAVGameMediaPlayerCallBack;
+    this.l = paramCustomHandler;
   }
   
   public void a(String paramString, long paramLong)
@@ -150,31 +149,23 @@ public class AVGameMediaPlayerWrapper
     localStringBuilder.append("playAudioByUrl url:=");
     localStringBuilder.append(paramString);
     QLog.d("AVGameMediaPlayerWrapper", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.e = false;
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler.post(new AVGameMediaPlayerWrapper.3(this, paramLong));
+    this.b = paramString;
+    this.m = false;
+    this.l.post(new AVGameMediaPlayerWrapper.3(this, paramLong));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.c = paramBoolean;
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(this.c);
+    this.e = paramBoolean;
+    if (this.a != null) {
+      this.a.setOutputMute(this.e);
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying());
   }
   
   public void b()
   {
-    QLog.d("AVGameMediaPlayerWrapper", 1, "stopVideoPlay");
-    AVGameMediaPlayerCtrl.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
-    if (localCustomHandler != null) {
-      localCustomHandler.post(new AVGameMediaPlayerWrapper.5(this));
-    }
+    QLog.d("AVGameMediaPlayerWrapper", 1, "releaseMgrRes");
+    k();
   }
   
   public void b(String paramString, long paramLong)
@@ -183,23 +174,47 @@ public class AVGameMediaPlayerWrapper
     localStringBuilder.append("playVideoByUrl url:=");
     localStringBuilder.append(paramString);
     QLog.d("AVGameMediaPlayerWrapper", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.e = false;
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler.post(new AVGameMediaPlayerWrapper.4(this, paramLong));
+    this.b = paramString;
+    this.m = false;
+    this.l.post(new AVGameMediaPlayerWrapper.4(this, paramLong));
   }
   
   public void c()
   {
+    QLog.d("AVGameMediaPlayerWrapper", 1, "stopVideoPlay");
+    AVGameMediaPlayerCtrl.CustomHandler localCustomHandler = this.l;
+    if (localCustomHandler != null) {
+      localCustomHandler.post(new AVGameMediaPlayerWrapper.5(this));
+    }
+  }
+  
+  public boolean d()
+  {
+    return (this.a != null) && (this.a.isPlaying());
+  }
+  
+  public int e()
+  {
+    return this.h;
+  }
+  
+  public SurfaceTexture f()
+  {
+    return this.j;
+  }
+  
+  public void g()
+  {
     QLog.d("AVGameMediaPlayerWrapper", 1, "doDestroy");
-    f();
-    if (!b()) {
-      AVGameExceptionReporter.a().a(4, this.jdField_a_of_type_JavaLangString, 0, null);
+    k();
+    if (!j()) {
+      AVGameExceptionReporter.a().a(4, this.b, 0, null);
     }
   }
   
   public void onAudioFrameOutput(TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    AVGameMediaPlayerWrapper.OnAVGameMediaPlayerCallBack localOnAVGameMediaPlayerCallBack = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper$OnAVGameMediaPlayerCallBack;
+    AVGameMediaPlayerWrapper.OnAVGameMediaPlayerCallBack localOnAVGameMediaPlayerCallBack = this.k;
     if (localOnAVGameMediaPlayerCallBack != null) {
       localOnAVGameMediaPlayerCallBack.a(paramTPAudioFrameBuffer);
     }
@@ -213,18 +228,18 @@ public class AVGameMediaPlayerWrapper
   {
     paramISuperPlayer = new StringBuilder();
     paramISuperPlayer.append("onCompletion url:=");
-    paramISuperPlayer.append(this.jdField_a_of_type_JavaLangString);
+    paramISuperPlayer.append(this.b);
     QLog.d("AVGameMediaPlayerWrapper", 1, paramISuperPlayer.toString());
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaPlayerWrapper$OnAVGameMediaPlayerCallBack;
+    paramISuperPlayer = this.k;
     if (paramISuperPlayer != null) {
-      if (this.jdField_a_of_type_Boolean) {
-        paramISuperPlayer.d(this.jdField_a_of_type_JavaLangString);
+      if (this.c) {
+        paramISuperPlayer.d(this.b);
       } else {
-        paramISuperPlayer.b(this.jdField_a_of_type_JavaLangString);
+        paramISuperPlayer.b(this.b);
       }
     }
-    this.e = true;
-    AVGameExceptionReporter.a().a(2, this.jdField_a_of_type_JavaLangString, 0, null);
+    this.m = true;
+    AVGameExceptionReporter.a().a(2, this.b, 0, null);
   }
   
   public void onDefinitionInfoUpdate(ISuperPlayer paramISuperPlayer, String paramString, ArrayList<String> paramArrayList) {}
@@ -241,8 +256,8 @@ public class AVGameMediaPlayerWrapper
     paramISuperPlayer.append(", extraInfo = ");
     paramISuperPlayer.append(paramString);
     QLog.e("AVGameMediaPlayerWrapper", 1, paramISuperPlayer.toString());
-    AVGameExceptionReporter.a().a(3, this.jdField_a_of_type_JavaLangString, paramInt3, paramString);
-    if (!this.jdField_a_of_type_Boolean) {
+    AVGameExceptionReporter.a().a(3, this.b, paramInt3, paramString);
+    if (!this.c) {
       ReportController.b(null, "dc00898", "", "", "0X800B0E7", "0X800B0E7", 0, 0, "", "", "", "");
     } else {
       ReportController.b(null, "dc00898", "", "", "0X800B1F4", "0X800B1F4", 0, 0, "", "", "", "");
@@ -252,22 +267,22 @@ public class AVGameMediaPlayerWrapper
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler != null)
+    if (this.l != null)
     {
-      if (this.b)
+      if (this.d)
       {
-        this.b = false;
+        this.d = false;
         paramSurfaceTexture = new StringBuilder();
         paramSurfaceTexture.append("onFrameAvailable avalibale:= + ");
-        paramSurfaceTexture.append(this.jdField_a_of_type_JavaLangString);
+        paramSurfaceTexture.append(this.b);
         QLog.d("AVGameMediaPlayerWrapper", 1, paramSurfaceTexture.toString());
       }
-      if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null) {
+      if (this.a == null) {
         return;
       }
-      long l = System.currentTimeMillis();
-      paramSurfaceTexture = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler.obtainMessage(256, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, Long.valueOf(l));
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler.sendMessage(paramSurfaceTexture);
+      long l1 = System.currentTimeMillis();
+      paramSurfaceTexture = this.l.obtainMessage(256, this.g.x, this.g.y, Long.valueOf(l1));
+      this.l.sendMessage(paramSurfaceTexture);
     }
   }
   
@@ -287,7 +302,7 @@ public class AVGameMediaPlayerWrapper
   public void onSeekComplete(ISuperPlayer paramISuperPlayer)
   {
     QLog.d("AVGameMediaPlayerWrapper", 1, "onSeekComplete");
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
+    paramISuperPlayer = this.l;
     if (paramISuperPlayer != null) {
       paramISuperPlayer.post(new AVGameMediaPlayerWrapper.9(this));
     }
@@ -298,7 +313,7 @@ public class AVGameMediaPlayerWrapper
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
     QLog.d("AVGameMediaPlayerWrapper", 1, "onVideoPrepared");
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$CustomHandler;
+    paramISuperPlayer = this.l;
     if (paramISuperPlayer != null) {
       paramISuperPlayer.post(new AVGameMediaPlayerWrapper.8(this));
     }

@@ -20,11 +20,11 @@ final class RIJWeiShiLegacyUtils$setRead$1
   public final void run()
   {
     Object localObject = new SessionInfo();
-    ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = AppConstants.WEISHI_UIN;
-    ((SessionInfo)localObject).jdField_a_of_type_Int = 1008;
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseSessionInfo)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(AppConstants.WEISHI_UIN, 1008);
-    localObject = this.jdField_a_of_type_AndroidAppActivity;
+    ((SessionInfo)localObject).b = AppConstants.WEISHI_UIN;
+    ((SessionInfo)localObject).a = 1008;
+    ChatActivityFacade.a(this.a, (BaseSessionInfo)localObject);
+    this.a.getMessageFacade().a(AppConstants.WEISHI_UIN, 1008);
+    localObject = this.b;
     if ((localObject instanceof ReadInJoyChannelActivity))
     {
       if (localObject != null)
@@ -38,7 +38,7 @@ final class RIJWeiShiLegacyUtils$setRead$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.RIJWeiShiLegacyUtils.setRead.1
  * JD-Core Version:    0.7.0.1
  */

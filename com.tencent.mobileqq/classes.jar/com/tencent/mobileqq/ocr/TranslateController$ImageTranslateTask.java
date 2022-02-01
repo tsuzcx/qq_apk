@@ -20,10 +20,10 @@ import java.util.Random;
 class TranslateController$ImageTranslateTask
   implements Runnable
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  String a;
   String b;
   String c;
+  boolean d;
   
   private String a()
   {
@@ -32,25 +32,25 @@ class TranslateController$ImageTranslateTask
   
   public void run()
   {
-    if (!FileUtil.b(this.jdField_a_of_type_JavaLangString))
+    if (!FileUtil.d(this.a))
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("picTranslate, file is not exists: ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.d("TranslateController", 1, ((StringBuilder)localObject1).toString());
       localObject1 = new TranslateResult(2);
-      ((TranslateResult)localObject1).jdField_b_of_type_Int = 1001;
-      TranslateController.a(this.this$0, false, this.jdField_a_of_type_JavaLangString, (TranslateResult)localObject1);
+      ((TranslateResult)localObject1).h = 1001;
+      TranslateController.a(this.this$0, false, this.a, (TranslateResult)localObject1);
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Boolean)
+    Object localObject1 = this.a;
+    if (this.d)
     {
-      localObject2 = ((IOCR)QRoute.api(IOCR.class)).getCachePath(this.jdField_a_of_type_JavaLangString);
+      localObject2 = ((IOCR)QRoute.api(IOCR.class)).getCachePath(this.a);
       localObject1 = localObject2;
-      if (!((IOCR)QRoute.api(IOCR.class)).compressImage(this.jdField_a_of_type_JavaLangString, (String)localObject2))
+      if (!((IOCR)QRoute.api(IOCR.class)).compressImage(this.a, (String)localObject2))
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.a;
         QLog.d("TranslateController", 1, "compress image failed!");
       }
     }
@@ -60,26 +60,26 @@ class TranslateController$ImageTranslateTask
     int i = ((BitmapFactory.Options)localObject2).outHeight;
     int j = ((BitmapFactory.Options)localObject2).outWidth;
     Object localObject3 = new ARCloudReqFileInfo();
-    ((ARCloudReqFileInfo)localObject3).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    ((ARCloudReqFileInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
-    ((ARCloudReqFileInfo)localObject3).jdField_a_of_type_Int = 0;
-    ((ARCloudReqFileInfo)localObject3).jdField_b_of_type_Int = i;
-    ((ARCloudReqFileInfo)localObject3).jdField_c_of_type_Int = j;
+    ((ARCloudReqFileInfo)localObject3).e = this.a;
+    ((ARCloudReqFileInfo)localObject3).a = ((String)localObject1);
+    ((ARCloudReqFileInfo)localObject3).b = 0;
+    ((ARCloudReqFileInfo)localObject3).c = i;
+    ((ARCloudReqFileInfo)localObject3).d = j;
     Object localObject4 = new ARCloudReqTranslateInfo();
-    ((ARCloudReqTranslateInfo)localObject4).jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    ((ARCloudReqTranslateInfo)localObject4).b = this.b;
     ((ARCloudReqTranslateInfo)localObject4).c = this.c;
-    ((ARCloudReqTranslateInfo)localObject4).jdField_a_of_type_JavaLangString = a();
+    ((ARCloudReqTranslateInfo)localObject4).a = a();
     localObject2 = new ARCloudReqInfo();
-    ((ARCloudReqInfo)localObject2).jdField_a_of_type_JavaLangString = a();
-    ((ARCloudReqInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo = ((ARCloudReqFileInfo)localObject3);
-    ((ARCloudReqInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo = ((ARCloudReqTranslateInfo)localObject4);
-    ((ARCloudReqInfo)localObject2).jdField_b_of_type_Int = 900000000;
-    ((ARCloudReqInfo)localObject2).jdField_a_of_type_Int = 900000000;
-    ((ARCloudReqInfo)localObject2).jdField_a_of_type_Long = 8192L;
-    ((ARCloudReqInfo)localObject2).jdField_c_of_type_Int = 0;
-    ((ARCloudReqInfo)localObject2).jdField_b_of_type_JavaLangString = String.valueOf(TranslateController.a(this.this$0).getAppid());
-    ((ARCloudReqInfo)localObject2).jdField_b_of_type_Long = Long.parseLong(TranslateController.a(this.this$0).getCurrentAccountUin());
-    ((ARCloudReqInfo)localObject2).jdField_c_of_type_Long = System.currentTimeMillis();
+    ((ARCloudReqInfo)localObject2).a = a();
+    ((ARCloudReqInfo)localObject2).b = ((ARCloudReqFileInfo)localObject3);
+    ((ARCloudReqInfo)localObject2).n = ((ARCloudReqTranslateInfo)localObject4);
+    ((ARCloudReqInfo)localObject2).d = 900000000;
+    ((ARCloudReqInfo)localObject2).c = 900000000;
+    ((ARCloudReqInfo)localObject2).e = 8192L;
+    ((ARCloudReqInfo)localObject2).f = 0;
+    ((ARCloudReqInfo)localObject2).o = String.valueOf(TranslateController.a(this.this$0).getAppid());
+    ((ARCloudReqInfo)localObject2).p = Long.parseLong(TranslateController.a(this.this$0).getCurrentAccountUin());
+    ((ARCloudReqInfo)localObject2).q = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
       localObject1 = new File((String)localObject1);
@@ -96,17 +96,17 @@ class TranslateController$ImageTranslateTask
       ((StringBuilder)localObject1).append(localObject2);
       QLog.d("TranslateController", 2, ((StringBuilder)localObject1).toString());
     }
-    if (TranslateController.a(this.this$0) == null)
+    if (TranslateController.b(this.this$0) == null)
     {
       localObject1 = this.this$0;
       TranslateController.a((TranslateController)localObject1, new ARCloudFileUpload(TranslateController.a((TranslateController)localObject1)));
     }
-    TranslateController.a(this.this$0).a((ARCloudReqInfo)localObject2, new TranslateController.ImageTranslateTask.1(this, (ARCloudReqInfo)localObject2));
+    TranslateController.b(this.this$0).a((ARCloudReqInfo)localObject2, new TranslateController.ImageTranslateTask.1(this, (ARCloudReqInfo)localObject2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.TranslateController.ImageTranslateTask
  * JD-Core Version:    0.7.0.1
  */

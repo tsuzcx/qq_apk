@@ -20,14 +20,14 @@ final class ImageLoaderImpl$loadImageFromFile$runnable$1$2
   
   public final void invoke()
   {
-    if (Intrinsics.areEqual(this.this$0.jdField_a_of_type_AndroidWidgetImageView.getTag(), this.this$0.jdField_a_of_type_JavaLangString)) {
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.this$0.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.b);
+    if (Intrinsics.areEqual(this.this$0.b.getTag(), this.this$0.c)) {
+      this.this$0.b.setImageDrawable(this.this$0.a.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ImageLoaderImpl.loadImageFromFile.runnable.1.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ import com.tencent.mobileqq.qroute.QRoute;
 public abstract class WSGridFeedPlayLikeController
   extends AbsWsUIGroup<stSimpleMetaFeed>
 {
-  protected stSimpleMetaFeed a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected stSimpleMetaFeed g;
+  private ImageView h;
+  private TextView i;
   
   public WSGridFeedPlayLikeController(Context paramContext)
   {
@@ -23,48 +23,48 @@ public abstract class WSGridFeedPlayLikeController
   
   protected void a()
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
-  }
-  
-  protected int b()
-  {
-    return 2131560428;
+    this.g = ((stSimpleMetaFeed)c());
   }
   
   protected void b()
   {
-    int i = d();
-    if (i > 0)
+    int j = m();
+    if (j > 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(c());
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(e());
-      ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).commonSetCountToTextView(this.jdField_a_of_type_AndroidWidgetTextView, i, "0");
+      this.h.setVisibility(0);
+      this.h.setImageResource(l());
+      this.i.setVisibility(0);
+      this.i.setTextColor(n());
+      ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).commonSetCountToTextView(this.i, j, "0");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.h.setVisibility(8);
+    this.i.setVisibility(8);
   }
   
-  protected abstract int c();
+  protected void f() {}
   
-  protected void c() {}
+  protected int i()
+  {
+    return 2131626473;
+  }
   
-  protected abstract int d();
+  protected void j()
+  {
+    this.h = ((ImageView)c(2131436097));
+    this.i = ((TextView)c(2131436096));
+  }
+  
+  protected abstract int l();
+  
+  protected abstract int m();
   
   @ColorInt
-  protected abstract int e();
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369127));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369126));
-  }
+  protected abstract int n();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedPlayLikeController
  * JD-Core Version:    0.7.0.1
  */

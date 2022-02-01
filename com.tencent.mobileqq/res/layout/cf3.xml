@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nmu" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="63.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/n5w" android:background="@drawable/biv" android:visibility="gone" android:layout_width="98.0dip" android:layout_height="37.0dip" />
-    <View android:id="@id/n6r" android:background="@drawable/bin" android:layout_width="49.0dip" android:layout_height="37.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/biv" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/mnj" android:visibility="gone" android:src="@drawable/g_n" style="@style/a8v" />
-        <ImageView android:id="@id/mnz" android:visibility="gone" android:src="@drawable/g9n" style="@style/a8v" />
-        <ImageView android:id="@id/mo3" android:visibility="gone" android:src="@drawable/g_s" style="@style/a8v" />
-        <ImageView android:id="@id/mn7" android:visibility="gone" android:src="@drawable/g9j" style="@style/a8v" />
-        <ImageView android:id="@id/afl" android:visibility="gone" android:src="@drawable/g9h" style="@style/a8v" />
-        <ImageView android:id="@id/mnh" android:visibility="gone" android:src="@drawable/g9o" style="@style/a8v" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/9b" android:layout_width="wrap_content" android:layout_height="33.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="@string/ptb" />
+        <View android:background="#4cffffff" android:layout_width="1.0px" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/al3" android:id="@id/nmw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="14.0dip" android:layout_centerVertical="true" />
     </LinearLayout>
-</merge>
+    <FrameLayout android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="63.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/nmx" android:background="@drawable/9b" android:padding="7.0dip" android:layout_width="33.0dip" android:layout_height="33.0dip" android:src="@drawable/c6n" />
+        <ImageView android:id="@id/nmv" android:background="@drawable/9b" android:padding="7.0dip" android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="@dimen/ms" android:src="@drawable/hna" android:contentDescription="@string/n0d" />
+    </LinearLayout>
+</LinearLayout>

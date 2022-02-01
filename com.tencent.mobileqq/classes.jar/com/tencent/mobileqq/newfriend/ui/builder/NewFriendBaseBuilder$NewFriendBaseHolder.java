@@ -9,22 +9,22 @@ import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
 public class NewFriendBaseBuilder$NewFriendBaseHolder
   extends SwipRightMenuBuilder.SwipItemBaseHolder
 {
-  public Button a;
-  public TroopLabelLayout a;
-  public ImageView f;
-  public String f;
-  public ImageView g;
-  public TextView h;
-  public TextView i;
-  public TextView j;
-  public TextView k;
-  public TextView l;
-  public TextView m;
-  public TextView n;
+  public Button A;
+  public TextView B;
+  public TextView C;
+  public String D;
+  public ImageView E;
+  public TroopLabelLayout F;
+  public TextView G;
+  public TextView H;
+  public ImageView w;
+  public TextView x;
+  public TextView y;
+  public TextView z;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendBaseBuilder.NewFriendBaseHolder
  * JD-Core Version:    0.7.0.1
  */

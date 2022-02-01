@@ -36,11 +36,11 @@ class BrowserAppInterface$2
   
   public void showLog(String paramString)
   {
-    if (this.a.b == -1) {
-      this.a.b = 0;
+    if (this.f.f == -1) {
+      this.f.f = 0;
     }
-    if (this.a.b == 1) {
-      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
+    if (this.f.f == 1) {
+      this.f.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.f, paramString));
     }
   }
   
@@ -53,7 +53,7 @@ class BrowserAppInterface$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BrowserAppInterface.2
  * JD-Core Version:    0.7.0.1
  */

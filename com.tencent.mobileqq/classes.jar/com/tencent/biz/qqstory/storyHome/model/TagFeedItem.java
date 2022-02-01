@@ -75,12 +75,12 @@ public class TagFeedItem
     SerializationPB.TagFeed localTagFeed = new SerializationPB.TagFeed();
     localTagFeed.video_list_feed.set(super.writeVideoListFeedLocalPB());
     localTagFeed.video_count.set(this.videoCount);
-    localTagFeed.tag_id.set(this.tagItem.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_Long);
-    localTagFeed.tag_type.set(this.tagItem.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_Int);
-    localTagFeed.tag_name.set(this.tagItem.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_JavaLangString);
-    localTagFeed.tag_desc.set(this.tagItem.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.b);
-    localTagFeed.join_count.set(this.tagItem.jdField_a_of_type_Int);
-    localTagFeed.wording.set(this.tagItem.jdField_a_of_type_JavaLangString);
+    localTagFeed.tag_id.set(this.tagItem.a.a);
+    localTagFeed.tag_type.set(this.tagItem.a.d);
+    localTagFeed.tag_name.set(this.tagItem.a.b);
+    localTagFeed.tag_desc.set(this.tagItem.a.c);
+    localTagFeed.join_count.set(this.tagItem.b);
+    localTagFeed.wording.set(this.tagItem.c);
     localTagFeed.schema.set(this.schema);
     localTagFeed.content.set(this.content);
     localTagFeed.blur.set(this.blurb);

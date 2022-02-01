@@ -357,7 +357,7 @@ public class PhotoUtils
       {
         if (j != 1)
         {
-          if ((j != 1000) && (j != 1025) && (j != 7400) && (j != 10004) && (j != 10008)) {
+          if ((j != 1000) && (j != 1025) && (j != 7400) && (j != 10004) && (j != 10008) && (j != 10013)) {
             switch (j)
             {
             default: 
@@ -395,8 +395,8 @@ public class PhotoUtils
           {
             if (j != 3000) {
               if (j != 6000) {
-                if ((j == 7400) || (j == 10004) || (j == 10008)) {
-                  break label138;
+                if ((j == 7400) || (j == 10004) || (j == 10008) || (j == 10013)) {
+                  break label146;
                 }
               }
             }
@@ -413,7 +413,7 @@ public class PhotoUtils
               break;
             }
           }
-          label138:
+          label146:
           return 3;
         }
         return 2;
@@ -949,13 +949,13 @@ public class PhotoUtils
         {
           paramIntent.putExtra("cleartop", true);
           paramArrayList = new IPluginManager.PluginParams(0);
-          paramArrayList.b = str2;
-          paramArrayList.e = ((String)localObject);
-          paramArrayList.jdField_a_of_type_JavaLangString = str3;
-          paramArrayList.f = str1;
-          paramArrayList.jdField_a_of_type_JavaLangClass = SmartDevicePluginProxyActivity.class;
-          paramArrayList.jdField_a_of_type_AndroidContentIntent = paramIntent;
-          paramArrayList.c = 2;
+          paramArrayList.d = str2;
+          paramArrayList.g = ((String)localObject);
+          paramArrayList.c = str3;
+          paramArrayList.h = str1;
+          paramArrayList.i = SmartDevicePluginProxyActivity.class;
+          paramArrayList.j = paramIntent;
+          paramArrayList.k = 2;
           IPluginManager.a(paramActivity, paramArrayList);
           bool1 = paramBoolean;
         }
@@ -966,13 +966,13 @@ public class PhotoUtils
           {
             paramIntent.putExtra("cleartop", true);
             paramArrayList = new IPluginManager.PluginParams(0);
-            paramArrayList.b = str2;
-            paramArrayList.e = ((String)localObject);
-            paramArrayList.jdField_a_of_type_JavaLangString = str3;
-            paramArrayList.f = str1;
-            paramArrayList.jdField_a_of_type_JavaLangClass = ((IQQComicUtil)QRoute.api(IQQComicUtil.class)).getProxyActivityClass(str1);
-            paramArrayList.jdField_a_of_type_AndroidContentIntent = paramIntent;
-            paramArrayList.c = 2;
+            paramArrayList.d = str2;
+            paramArrayList.g = ((String)localObject);
+            paramArrayList.c = str3;
+            paramArrayList.h = str1;
+            paramArrayList.i = ((IQQComicUtil)QRoute.api(IQQComicUtil.class)).getProxyActivityClass(str1);
+            paramArrayList.j = paramIntent;
+            paramArrayList.k = 2;
             IPluginManager.a(paramActivity, paramArrayList);
             bool1 = paramBoolean;
           }
@@ -991,7 +991,7 @@ public class PhotoUtils
     }
     if (TextUtils.isEmpty(paramArrayList))
     {
-      QQToast.a(paramActivity, HardCodeUtil.a(2131708147), 0).a();
+      QQToast.makeText(paramActivity, HardCodeUtil.a(2131905944), 0).show();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -1072,7 +1072,7 @@ public class PhotoUtils
         QZoneHelper.launchQZone(paramActivity, str2, paramIntent, -1);
       }
     }
-    if (Utils.b(paramIntent.getStringExtra("uin"))) {
+    if (Utils.c(paramIntent.getStringExtra("uin"))) {
       ReportController.b(null, "dc00898", "", "", "0X8007249", "0X8007249", 0, 0, "", "", "", "");
     }
     paramActivity.finish();
@@ -1173,7 +1173,7 @@ public class PhotoUtils
   {
     paramIntent.setClass(paramActivity, NewPhotoListActivity.class);
     paramIntent.putExtra("enter_from", 50);
-    paramIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationCrop.jdField_a_of_type_JavaLangString);
+    paramIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationCrop.a);
     paramIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramString1);
     paramIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     paramIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
@@ -1200,7 +1200,7 @@ public class PhotoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoUtils
  * JD-Core Version:    0.7.0.1
  */

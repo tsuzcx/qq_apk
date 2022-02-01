@@ -14,7 +14,7 @@ final class DeviceCapabilityExamination$3
   
   public void run()
   {
-    Object localObject1 = AVTestforEncDecConfig.a(this.jdField_a_of_type_Int);
+    Object localObject1 = AVTestforEncDecConfig.b(this.a);
     if (localObject1 == null)
     {
       QLog.w("DeviceCapabilityExamination", 1, "startDecoderTest, error", new Throwable("打印调用栈"));
@@ -40,7 +40,7 @@ final class DeviceCapabilityExamination$3
       QLog.w("DeviceCapabilityExamination", 1, ((StringBuilder)localObject2).toString(), new Throwable("打印调用栈"));
       return;
     }
-    DeviceCapabilityExamination.a(AudioHelper.b(), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, (AVTestforEncDecConfig.Sample)localObject2, null);
+    DeviceCapabilityExamination.a(AudioHelper.c(), this.b, this.a, (AVTestforEncDecConfig.Sample)localObject2, null);
   }
 }
 

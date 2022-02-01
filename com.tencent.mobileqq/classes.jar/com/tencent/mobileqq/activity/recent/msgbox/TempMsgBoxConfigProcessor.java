@@ -27,10 +27,10 @@ public class TempMsgBoxConfigProcessor
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed : ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("TempMsgBoxConfigProcessor", 2, localStringBuilder.toString());
       }
-      return TempMsgBoxConfigData.a(paramArrayOfQConfItem[0].a);
+      return TempMsgBoxConfigData.a(paramArrayOfQConfItem[0].b);
     }
     return new TempMsgBoxConfigData();
   }
@@ -85,7 +85,7 @@ public class TempMsgBoxConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

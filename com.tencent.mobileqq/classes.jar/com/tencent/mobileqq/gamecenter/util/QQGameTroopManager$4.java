@@ -10,12 +10,12 @@ class QQGameTroopManager$4
   public void run()
   {
     QQGameTroopManager localQQGameTroopManager = this.this$0;
-    QQGameTroopManager.a(localQQGameTroopManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString, QQGameTroopManager.a(localQQGameTroopManager));
+    QQGameTroopManager.a(localQQGameTroopManager, this.a, this.b, QQGameTroopManager.c(localQQGameTroopManager));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameTroopManager.4
  * JD-Core Version:    0.7.0.1
  */

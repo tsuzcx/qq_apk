@@ -18,24 +18,6 @@ public class RIJCommentResultDispatcher
     return RIJCommentResultDispatcher.CommentControllerHolder.a();
   }
   
-  public List<ReadInJoyCommentDataManager.OnDataChangeListener> a()
-  {
-    List localList2 = a;
-    List localList1 = localList2;
-    if (localList2 == null) {
-      localList1 = null;
-    }
-    return localList1;
-  }
-  
-  public void a()
-  {
-    List localList = a;
-    if (localList != null) {
-      localList.clear();
-    }
-  }
-  
   public void a(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
   {
     if (paramOnDataChangeListener != null)
@@ -50,6 +32,16 @@ public class RIJCommentResultDispatcher
     }
   }
   
+  public List<ReadInJoyCommentDataManager.OnDataChangeListener> b()
+  {
+    List localList2 = a;
+    List localList1 = localList2;
+    if (localList2 == null) {
+      localList1 = null;
+    }
+    return localList1;
+  }
+  
   public void b(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
   {
     List localList = a;
@@ -61,10 +53,18 @@ public class RIJCommentResultDispatcher
       a.remove(paramOnDataChangeListener);
     }
   }
+  
+  public void c()
+  {
+    List localList = a;
+    if (localList != null) {
+      localList.clear();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.RIJCommentResultDispatcher
  * JD-Core Version:    0.7.0.1
  */

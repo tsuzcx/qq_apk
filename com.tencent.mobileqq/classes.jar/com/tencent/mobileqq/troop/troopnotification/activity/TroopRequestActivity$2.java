@@ -13,7 +13,7 @@ class TroopRequestActivity$2
   
   public void onClick(View paramView)
   {
-    String str = this.a.d;
+    String str = this.a.g;
     ITroopSysMsgDependApiService localITroopSysMsgDependApiService = (ITroopSysMsgDependApiService)TroopRequestActivity.a(this.a).getRuntimeService(ITroopSysMsgDependApiService.class, "");
     if (localITroopSysMsgDependApiService != null) {
       localITroopSysMsgDependApiService.showOnePicture(this.a, str);
@@ -23,7 +23,7 @@ class TroopRequestActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.2
  * JD-Core Version:    0.7.0.1
  */

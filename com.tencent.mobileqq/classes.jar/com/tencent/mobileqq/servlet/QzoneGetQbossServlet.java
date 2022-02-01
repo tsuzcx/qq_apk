@@ -12,8 +12,8 @@ import mqq.app.Packet;
 public class QzoneGetQbossServlet
   extends MSFServlet
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  private String a;
+  private ArrayList<Integer> b;
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
@@ -28,8 +28,8 @@ public class QzoneGetQbossServlet
     localStringBuilder.append("servlet result code is ");
     localStringBuilder.append(i);
     paramIntent.putString("msg", localStringBuilder.toString());
-    paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
-    paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
+    paramIntent.putString("requestType", this.a);
+    paramIntent.putIntegerArrayList("appid", this.b);
     if (i == 1000)
     {
       paramFromServiceMsg = GetQbossRequest.a(paramFromServiceMsg.getWupBuffer());
@@ -63,8 +63,8 @@ public class QzoneGetQbossServlet
     long l = paramIntent.getLongExtra("selfuin", 0L);
     Object localObject = paramIntent.getIntegerArrayListExtra("appid");
     boolean bool = paramIntent.getBooleanExtra("needReport", false);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("requestType");
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    this.a = paramIntent.getStringExtra("requestType");
+    this.b = ((ArrayList)localObject);
     if (localObject == null) {
       return;
     }
@@ -89,7 +89,7 @@ public class QzoneGetQbossServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QzoneGetQbossServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ final class BaseEntryViewController$updateEntryViewData$1
   
   public final void invoke()
   {
-    Object localObject = (View)BaseEntryViewController.a(this.this$0).get(this.$viewId);
+    Object localObject = (View)BaseEntryViewController.b(this.this$0).get(this.$viewId);
     if ((localObject instanceof IEntryView))
     {
       ((IEntryView)localObject).a(this.$innerBundle, this.$outerBundle);
@@ -35,7 +35,7 @@ final class BaseEntryViewController$updateEntryViewData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.entry.controller.BaseEntryViewController.updateEntryViewData.1
  * JD-Core Version:    0.7.0.1
  */

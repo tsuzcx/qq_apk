@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.web.jsmodule;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.res.api.IApolloResManager.ApolloDressInfoListener;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager.ApolloDressInfoListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
@@ -23,10 +23,10 @@ class Makeup3DJsModule$3
     if (paramHashMap == null)
     {
       QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowLoad3DFaceDress] onGetApolloDressInfo apolloDressInfo is null! ");
-      this.jdField_a_of_type_ComTencentMobileqqApolloWebJsmoduleMakeup3DJsModule.a(this.jdField_a_of_type_JavaLangString, "apolloDressInfo is null");
+      this.c.a(this.a, "apolloDressInfo is null");
       return;
     }
-    paramHashMap = (String)paramHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+    paramHashMap = (String)paramHashMap.get(Integer.valueOf(this.b));
     if (TextUtils.isEmpty(paramHashMap))
     {
       QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowLoad3DFaceDress] dressPath is empty!");
@@ -37,7 +37,7 @@ class Makeup3DJsModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.Makeup3DJsModule.3
  * JD-Core Version:    0.7.0.1
  */

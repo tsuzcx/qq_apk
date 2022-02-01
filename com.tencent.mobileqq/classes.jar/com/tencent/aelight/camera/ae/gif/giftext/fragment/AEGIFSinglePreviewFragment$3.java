@@ -11,13 +11,13 @@ class AEGIFSinglePreviewFragment$3
   
   public void onClick(View paramView)
   {
-    AEBaseDataReporter.a().ap();
+    AEBaseDataReporter.a().au();
     AEGIFSinglePreviewFragment.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFSinglePreviewFragment.3
  * JD-Core Version:    0.7.0.1
  */

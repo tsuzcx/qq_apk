@@ -104,61 +104,32 @@ public class PopOutEmoticonUtil
     paramView.bringToFront();
   }
   
-  public static boolean a(int paramInt, EmoticonInfo paramEmoticonInfo)
-  {
-    boolean bool1;
-    if (paramInt == 0) {
-      bool1 = true;
-    } else {
-      bool1 = false;
-    }
-    boolean bool2;
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).emotionType == 1)) {
-      bool2 = true;
-    } else {
-      bool2 = false;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramEmoticonInfo = new StringBuilder();
-      paramEmoticonInfo.append("supportPopOutEmoticon isSupportEmo=");
-      paramEmoticonInfo.append(bool2);
-      paramEmoticonInfo.append("  |isSysAndEmoPanel=");
-      paramEmoticonInfo.append(bool1);
-      QLog.d("PopOutEmoticonUtil", 4, paramEmoticonInfo.toString());
-    }
-    return (bool1) && (bool2);
-  }
-  
   public static boolean a(int paramInt1, EmoticonInfo paramEmoticonInfo, int paramInt2)
   {
-    boolean bool3 = false;
     if (paramEmoticonInfo == null) {
       return false;
     }
-    boolean bool1;
+    boolean bool;
     if (paramInt2 == 0) {
-      bool1 = true;
+      bool = true;
     } else {
-      bool1 = false;
+      bool = false;
     }
-    boolean bool4 = a(paramInt1, paramEmoticonInfo);
+    if (paramInt1 == 0) {
+      paramInt2 = 1;
+    } else {
+      paramInt2 = 0;
+    }
     if (QLog.isColorLevel())
     {
       paramEmoticonInfo = new StringBuilder();
       paramEmoticonInfo.append("supportPopOutEmoticon isC2C=");
-      paramEmoticonInfo.append(bool1);
+      paramEmoticonInfo.append(bool);
+      paramEmoticonInfo.append(" emoPanelType=");
+      paramEmoticonInfo.append(paramInt1);
       QLog.d("PopOutEmoticonUtil", 4, paramEmoticonInfo.toString());
     }
-    boolean bool2 = bool3;
-    if (bool1)
-    {
-      bool2 = bool3;
-      if (bool4) {
-        bool2 = true;
-      }
-    }
-    return bool2;
+    return (bool) && (paramInt2 != 0);
   }
   
   public static boolean a(int paramInt, int[] paramArrayOfInt)
@@ -174,10 +145,28 @@ public class PopOutEmoticonUtil
     }
     return false;
   }
+  
+  public static boolean a(EmoticonInfo paramEmoticonInfo)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramEmoticonInfo != null)
+    {
+      bool1 = bool2;
+      if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
+      {
+        bool1 = bool2;
+        if (((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).emotionType == 2) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.util.PopOutEmoticonUtil
  * JD-Core Version:    0.7.0.1
  */

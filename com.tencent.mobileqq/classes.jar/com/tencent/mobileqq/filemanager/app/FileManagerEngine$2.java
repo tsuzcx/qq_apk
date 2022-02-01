@@ -11,15 +11,15 @@ class FileManagerEngine$2
   
   public void a(String paramString1, String paramString2)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    FileManagerEntity localFileManagerEntity = this.a;
     localFileManagerEntity.fileName = paramString1;
     localFileManagerEntity.strApkPackageName = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a.getFileManagerEngine().a().a(paramString2, new FileManagerEngine.2.1(this));
+    this.c.a.getFileManagerEngine().f().a(paramString2, new FileManagerEngine.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileManagerEngine.2
  * JD-Core Version:    0.7.0.1
  */

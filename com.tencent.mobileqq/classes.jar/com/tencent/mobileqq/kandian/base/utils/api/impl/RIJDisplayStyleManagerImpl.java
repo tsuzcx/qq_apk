@@ -3,16 +3,9 @@ package com.tencent.mobileqq.kandian.base.utils.api.impl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import com.tencent.mobileqq.kandian.base.utils.RIJDisplayStyleManager;
 import com.tencent.mobileqq.kandian.base.utils.api.IRIJDisplayStyleManager;
-import com.tencent.mobileqq.mini.entry.layout.LayoutAttrsKt;
-import com.tencent.mobileqq.util.DisplayUtil;
 import kotlin.Metadata;
-import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -21,85 +14,41 @@ import org.jetbrains.annotations.Nullable;
 public final class RIJDisplayStyleManagerImpl
   implements IRIJDisplayStyleManager
 {
-  private int recentListReportVisibleItemCount = 7;
-  
   public void calcVisibleItemCount(float paramFloat, @Nullable Resources paramResources)
   {
-    if (paramFloat != 0.0F)
-    {
-      if (paramResources == null) {
-        return;
-      }
-      setRecentListReportVisibleItemCount((int)(paramFloat / LayoutAttrsKt.getDp((Number)Float.valueOf(72.0F)) + 0.5F));
-    }
+    this.$$delegate_0.calcVisibleItemCount(paramFloat, paramResources);
   }
   
   public int getItemMiddleStyle(@Nullable Context paramContext, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return DisplayUtil.a(paramContext, 8.0F);
-    }
-    return DisplayUtil.a(paramContext, 3.0F);
+    return this.$$delegate_0.getItemMiddleStyle(paramContext, paramBoolean);
   }
   
   public int getItemPaddingNewStyle(@Nullable Context paramContext, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return DisplayUtil.a(paramContext, 14.0F);
-    }
-    return DisplayUtil.a(paramContext, 6.0F);
+    return this.$$delegate_0.getItemPaddingNewStyle(paramContext, paramBoolean);
   }
   
   @NotNull
   public int[] getPhysicalDisplaySize(@NotNull Activity paramActivity)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
-    Object localObject = paramActivity.getSystemService("window");
-    if (localObject != null)
-    {
-      localObject = ((WindowManager)localObject).getDefaultDisplay();
-      Point localPoint = new Point();
-      int j;
-      int i;
-      if (Build.VERSION.SDK_INT >= 17)
-      {
-        ((Display)localObject).getRealSize(localPoint);
-        j = localPoint.x;
-        i = localPoint.y;
-      }
-      else if (Build.VERSION.SDK_INT >= 15)
-      {
-        ((Display)localObject).getSize(localPoint);
-        j = localPoint.x;
-        i = localPoint.y;
-      }
-      else
-      {
-        localObject = new DisplayMetrics();
-        paramActivity = paramActivity.getWindowManager();
-        Intrinsics.checkExpressionValueIsNotNull(paramActivity, "activity.windowManager");
-        paramActivity.getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-        j = ((DisplayMetrics)localObject).widthPixels;
-        i = ((DisplayMetrics)localObject).heightPixels;
-      }
-      return new int[] { j, i };
-    }
-    throw new TypeCastException("null cannot be cast to non-null type android.view.WindowManager");
+    return this.$$delegate_0.getPhysicalDisplaySize(paramActivity);
   }
   
   public int getRecentListReportVisibleItemCount()
   {
-    return this.recentListReportVisibleItemCount;
+    return this.$$delegate_0.getRecentListReportVisibleItemCount();
   }
   
   public void setRecentListReportVisibleItemCount(int paramInt)
   {
-    this.recentListReportVisibleItemCount = paramInt;
+    this.$$delegate_0.setRecentListReportVisibleItemCount(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.api.impl.RIJDisplayStyleManagerImpl
  * JD-Core Version:    0.7.0.1
  */

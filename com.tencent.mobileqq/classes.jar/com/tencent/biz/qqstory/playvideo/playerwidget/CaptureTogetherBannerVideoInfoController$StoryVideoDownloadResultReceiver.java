@@ -18,23 +18,23 @@ public class CaptureTogetherBannerVideoInfoController$StoryVideoDownloadResultRe
   
   public void a(@NonNull CaptureTogetherBannerVideoInfoController paramCaptureTogetherBannerVideoInfoController, @NonNull StoryPlayerGroupHolder.DownloadVideoResultEvent paramDownloadVideoResultEvent)
   {
-    if (paramDownloadVideoResultEvent.jdField_a_of_type_Boolean)
+    if (paramDownloadVideoResultEvent.a)
     {
-      if (paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString != null)
+      if (paramDownloadVideoResultEvent.b != null)
       {
         paramCaptureTogetherBannerVideoInfoController = this.a;
         if (paramCaptureTogetherBannerVideoInfoController != null)
         {
           paramCaptureTogetherBannerVideoInfoController = (BannerVideoInfoWidget3.VideoDownloadListener)paramCaptureTogetherBannerVideoInfoController.get();
           if (paramCaptureTogetherBannerVideoInfoController != null) {
-            paramCaptureTogetherBannerVideoInfoController.a(paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString);
+            paramCaptureTogetherBannerVideoInfoController.a(paramDownloadVideoResultEvent.b);
           }
         }
       }
     }
     else
     {
-      SLog.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString });
+      SLog.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramDownloadVideoResultEvent.b });
       paramCaptureTogetherBannerVideoInfoController = this.a;
       if (paramCaptureTogetherBannerVideoInfoController != null)
       {

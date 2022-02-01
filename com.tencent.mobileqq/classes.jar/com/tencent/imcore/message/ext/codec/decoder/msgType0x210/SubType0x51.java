@@ -74,7 +74,7 @@ public class SubType0x51
       if (QLog.isColorLevel()) {
         QLog.d("DevLock", 2, "failed to parse msg0x210.Submsgtype0x51");
       }
-      MessageProtoCodec.a(paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType, paramMessageHandler.a());
+      MessageProtoCodec.a(paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType, paramMessageHandler.b());
     }
   }
   
@@ -87,7 +87,7 @@ public class SubType0x51
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x51
  * JD-Core Version:    0.7.0.1
  */

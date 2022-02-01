@@ -7,13 +7,11 @@ import com.tencent.qphone.base.util.QLog;
 public class EffectMutexManager
   extends BusinessManager
 {
-  private volatile SparseArray<EffectMutexManager.IMutexItem> a;
+  private volatile SparseArray<EffectMutexManager.IMutexItem> d = null;
   
   protected EffectMutexManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_AndroidUtilSparseArray = null;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
   protected void a() {}
@@ -31,8 +29,8 @@ public class EffectMutexManager
       localStringBuilder.append("]");
       QLog.w("EffectMutexManager", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramIMutexItem);
+    this.d.remove(paramInt);
+    this.d.put(paramInt, paramIMutexItem);
   }
   
   public void a(int paramInt, String paramString)
@@ -47,7 +45,7 @@ public class EffectMutexManager
       localStringBuilder.append("]");
       QLog.w("EffectMutexManager", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
+    this.c.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
   }
   
   protected boolean a(String paramString)

@@ -7,12 +7,12 @@ class FDStatsTree$1
 {
   public int a(FDStatsTree.ResultObj paramResultObj1, FDStatsTree.ResultObj paramResultObj2)
   {
-    return paramResultObj2.a - paramResultObj1.a;
+    return paramResultObj2.b - paramResultObj1.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDStatsTree.1
  * JD-Core Version:    0.7.0.1
  */

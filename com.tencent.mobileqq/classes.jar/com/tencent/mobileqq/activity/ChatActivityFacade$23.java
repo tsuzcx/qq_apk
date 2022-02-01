@@ -22,23 +22,23 @@ final class ChatActivityFacade$23
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSendFromLocal()) {
-        ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).removeProcessor(BaseTransFileController.makeKey(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq));
+      if (this.a.isSendFromLocal()) {
+        ((ITransFileController)this.b.getRuntimeService(ITransFileController.class)).removeProcessor(BaseTransFileController.makeKey(this.a.frienduin, this.a.uniseq));
       }
-      Object localObject = StructMsgFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+      Object localObject = StructMsgFactory.a(this.a.msgData);
+      this.b.getMessageFacade().h(this.c, this.d, this.e);
       if ((localObject instanceof StructMsgForImageShare))
       {
-        StructMsgForImageShare.resendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (StructMsgForImageShare)localObject);
+        StructMsgForImageShare.resendAndUploadImageShare(this.b, this.a, (StructMsgForImageShare)localObject);
         return;
       }
       if (((localObject instanceof AbsShareMsg)) && (ForwardUtils.a(((AbsShareMsg)localObject).forwardType, ((AbsStructMsg)localObject).mMsgServiceID)))
       {
-        AbsShareMsg.resendSdkShareMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (AbsShareMsg)localObject);
+        AbsShareMsg.resendSdkShareMessage(this.b, this.a, (AbsShareMsg)localObject);
         return;
       }
-      localObject = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject, null, true);
+      localObject = MessageRecordFactory.a(this.a);
+      this.b.getMessageFacade().a((MessageRecord)localObject, null, true);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -50,7 +50,7 @@ final class ChatActivityFacade$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.23
  * JD-Core Version:    0.7.0.1
  */

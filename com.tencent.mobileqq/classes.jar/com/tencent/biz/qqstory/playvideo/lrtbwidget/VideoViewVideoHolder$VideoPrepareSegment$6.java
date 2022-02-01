@@ -22,40 +22,40 @@ class VideoViewVideoHolder$VideoPrepareSegment$6
   
   public void a(DownloadUrlManager.DownloadUrlQueryResult paramDownloadUrlQueryResult)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.isCanceled())
+    if (this.c.isCanceled())
     {
-      SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.jdField_a_of_type_JavaLangString, "queryAndUpdateUrl onResult. stream canceled");
+      SLog.d(this.c.b.a, "queryAndUpdateUrl onResult. stream canceled");
       return;
     }
-    if (!TextUtils.equals(paramDownloadUrlQueryResult.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
+    if (!TextUtils.equals(paramDownloadUrlQueryResult.a, this.a.mVid))
     {
-      SLog.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.jdField_a_of_type_JavaLangString, "ignore queryAndUpdateUrl onResult. oldVid=%s. newVid=%s", new Object[] { paramDownloadUrlQueryResult.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      SLog.e(this.c.b.a, "ignore queryAndUpdateUrl onResult. oldVid=%s. newVid=%s", new Object[] { paramDownloadUrlQueryResult.a, this.a.mVid });
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.d())
+    if (!this.c.b.g())
     {
-      VideoViewVideoHolder.VideoPrepareSegment.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment, new ErrorMessage(-1, "queryAndUpdateUrl onResult already unBind"));
+      VideoViewVideoHolder.VideoPrepareSegment.c(this.c, new ErrorMessage(-1, "queryAndUpdateUrl onResult already unBind"));
       return;
     }
-    if (paramDownloadUrlQueryResult.jdField_a_of_type_Boolean)
+    if (paramDownloadUrlQueryResult.e)
     {
-      localObject1 = new File(this.jdField_a_of_type_JavaLangString);
+      localObject1 = new File(this.b);
       if ((((File)localObject1).exists()) && (!FileCacheUtils.a((File)localObject1)))
       {
         boolean bool = ((File)localObject1).delete();
-        SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.jdField_a_of_type_JavaLangString, "%s - %d found orphan tmp , delete it. %s", new Object[] { paramDownloadUrlQueryResult.jdField_a_of_type_JavaLangString, Integer.valueOf(paramDownloadUrlQueryResult.jdField_a_of_type_Int), Boolean.valueOf(bool) });
+        SLog.d(this.c.b.a, "%s - %d found orphan tmp , delete it. %s", new Object[] { paramDownloadUrlQueryResult.a, Integer.valueOf(paramDownloadUrlQueryResult.b), Boolean.valueOf(bool) });
       }
     }
-    if (TextUtils.isEmpty(paramDownloadUrlQueryResult.b))
+    if (TextUtils.isEmpty(paramDownloadUrlQueryResult.c))
     {
-      VideoViewVideoHolder.VideoPrepareSegment.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment, new ErrorMessage(13, "queryAndUpdateUrl onResult url empty"));
+      VideoViewVideoHolder.VideoPrepareSegment.d(this.c, new ErrorMessage(13, "queryAndUpdateUrl onResult url empty"));
       return;
     }
-    int i = TVKPreloader.a(new TVKPreloader.PreloadItem(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramDownloadUrlQueryResult.b, this.jdField_a_of_type_JavaLangString, "TVKsetVideoPath"));
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.jdField_a_of_type_JavaLangString;
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-    Object localObject3 = this.jdField_a_of_type_JavaLangString;
-    SLog.d((String)localObject1, "setVideoPath, vid=%s, cache=%d, fileName = %s, url=%s", new Object[] { localObject2, Integer.valueOf(i), ((String)localObject3).substring(((String)localObject3).length() - 15), paramDownloadUrlQueryResult.b });
+    int i = TVKPreloader.b(new TVKPreloader.PreloadItem(this.a.mVid, paramDownloadUrlQueryResult.c, this.b, "TVKsetVideoPath"));
+    Object localObject1 = this.c.b.a;
+    Object localObject2 = this.a.mVid;
+    Object localObject3 = this.b;
+    SLog.d((String)localObject1, "setVideoPath, vid=%s, cache=%d, fileName = %s, url=%s", new Object[] { localObject2, Integer.valueOf(i), ((String)localObject3).substring(((String)localObject3).length() - 15), paramDownloadUrlQueryResult.c });
     if (i != 1)
     {
       if (i != 2)
@@ -63,41 +63,41 @@ class VideoViewVideoHolder$VideoPrepareSegment$6
         if (i != 3)
         {
           if (i == 4) {
-            VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, HardCodeUtil.a(2131716177));
+            VideoViewVideoHolder.a(this.c.b, HardCodeUtil.a(2131913626));
           }
         }
         else {
-          VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, HardCodeUtil.a(2131716175));
+          VideoViewVideoHolder.a(this.c.b, HardCodeUtil.a(2131913624));
         }
       }
       else {
-        VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, HardCodeUtil.a(2131716181));
+        VideoViewVideoHolder.a(this.c.b, HardCodeUtil.a(2131913630));
       }
     }
     else
     {
-      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a;
+      localObject2 = this.c.b;
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(HardCodeUtil.a(2131716183));
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.b()) {
+      ((StringBuilder)localObject3).append(HardCodeUtil.a(2131913632));
+      if (this.c.b.l()) {
         localObject1 = "TVK";
       } else {
         localObject1 = "TexView";
       }
       ((StringBuilder)localObject3).append((String)localObject1);
       VideoViewVideoHolder.a((VideoViewVideoHolder)localObject2, ((StringBuilder)localObject3).toString());
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramDownloadUrlQueryResult.b, null, false);
+      VideoViewVideoHolder.i(this.c.b).a(this.c.b, this.a.mVid, paramDownloadUrlQueryResult.c, null, false);
     }
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, DownloadUrlManager.a(paramDownloadUrlQueryResult.b));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.c = paramDownloadUrlQueryResult.b;
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, "SP", SystemClock.uptimeMillis());
-    VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a, SystemClock.uptimeMillis());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_JavaLangString, paramDownloadUrlQueryResult.b, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoBytes, (int)this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoDuration, 0);
+    VideoViewVideoHolder.b(this.c.b, DownloadUrlManager.c(paramDownloadUrlQueryResult.c));
+    this.c.b.v = paramDownloadUrlQueryResult.c;
+    VideoViewVideoHolder.a(this.c.b, "SP", SystemClock.uptimeMillis());
+    VideoViewVideoHolder.b(this.c.b, SystemClock.uptimeMillis());
+    this.c.b.p.a(this.a.mVid, this.b, paramDownloadUrlQueryResult.c, this.a.mVideoBytes, (int)this.a.mVideoDuration, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment.6
  * JD-Core Version:    0.7.0.1
  */

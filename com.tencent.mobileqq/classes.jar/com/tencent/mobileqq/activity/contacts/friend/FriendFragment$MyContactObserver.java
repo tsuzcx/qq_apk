@@ -9,12 +9,12 @@ class FriendFragment$MyContactObserver
   
   protected void onHideContact(boolean paramBoolean)
   {
-    FriendFragment.a(this.a);
+    FriendFragment.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.FriendFragment.MyContactObserver
  * JD-Core Version:    0.7.0.1
  */

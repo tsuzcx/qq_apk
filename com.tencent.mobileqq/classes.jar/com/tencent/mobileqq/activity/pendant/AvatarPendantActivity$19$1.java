@@ -13,20 +13,20 @@ class AvatarPendantActivity$19$1
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter == null) {
+    if (this.a.a.B == null) {
       return;
     }
     Object localObject = (AvatarPendantManager)this.a.a.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
     if (localObject == null) {
       return;
     }
-    localObject = ((AvatarPendantManager)localObject).a();
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.a((List)localObject, this.a.a.jdField_a_of_type_JavaUtilList, AvatarPendantActivity.a(this.a.a));
+    localObject = ((AvatarPendantManager)localObject).f();
+    this.a.a.B.a((List)localObject, this.a.a.aj, AvatarPendantActivity.c(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.19.1
  * JD-Core Version:    0.7.0.1
  */

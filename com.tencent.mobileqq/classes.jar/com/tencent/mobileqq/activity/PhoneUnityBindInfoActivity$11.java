@@ -27,7 +27,7 @@ class PhoneUnityBindInfoActivity$11
           if (arrayOfByte != null)
           {
             PhoneUnityBindInfoActivity.access$2100(this.a).sendRebindMobileEncrypt(paramBundle, arrayOfByte, 0, true, false);
-            PhoneUnityBindInfoActivity.access$2200(this.a, 2131718766, 1000L, true);
+            PhoneUnityBindInfoActivity.access$2200(this.a, 2131916272, 1000L, true);
           }
           else if (QLog.isColorLevel())
           {
@@ -75,7 +75,7 @@ class PhoneUnityBindInfoActivity$11
       if (QLog.isColorLevel()) {
         QLog.d("PhoneUnityBindInfoActivity", 2, "onBindMobile failed");
       }
-      PhoneUnityBindInfoActivity.access$2400(this.a, 2131718218);
+      PhoneUnityBindInfoActivity.access$2400(this.a, 2131915700);
       this.a.resetContactSwitch(false);
     }
     this.a.app.unRegistObserver(this.a.bindObserver);
@@ -91,7 +91,7 @@ class PhoneUnityBindInfoActivity$11
     }
     else
     {
-      PhoneUnityBindInfoActivity.access$2600(this.a, 2131718218);
+      PhoneUnityBindInfoActivity.access$2600(this.a, 2131915700);
       this.a.resetContactSwitch(false);
     }
     this.a.app.unRegistObserver(this.a.bindObserver);
@@ -100,7 +100,7 @@ class PhoneUnityBindInfoActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity.11
  * JD-Core Version:    0.7.0.1
  */

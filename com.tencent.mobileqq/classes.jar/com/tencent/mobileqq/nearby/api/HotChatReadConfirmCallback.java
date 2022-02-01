@@ -12,8 +12,8 @@ public class HotChatReadConfirmCallback
 {
   public void a(AIOContext paramAIOContext)
   {
-    if (paramAIOContext.a().jdField_a_of_type_Int == 1) {
-      ((IHotChatUtil)QRoute.api(IHotChatUtil.class)).setReadedForHCTopic(paramAIOContext.a(), paramAIOContext.a().jdField_a_of_type_JavaLangString);
+    if (paramAIOContext.O().a == 1) {
+      ((IHotChatUtil)QRoute.api(IHotChatUtil.class)).setReadedForHCTopic(paramAIOContext.a(), paramAIOContext.O().b);
     }
   }
   
@@ -23,7 +23,7 @@ public class HotChatReadConfirmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.HotChatReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

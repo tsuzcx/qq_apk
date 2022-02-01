@@ -21,62 +21,62 @@ public class PasterDataManager$DoodleEmojiDownloadEventReceiver
   
   public void a(@NonNull PasterDataManager paramPasterDataManager, @NonNull DoodleEmojiManager.DoodleEmojiDownloadEvent paramDoodleEmojiDownloadEvent)
   {
-    paramPasterDataManager = paramPasterDataManager.a;
+    paramPasterDataManager = paramPasterDataManager.b;
     if (paramPasterDataManager != null)
     {
-      Object localObject = paramPasterDataManager.a(paramDoodleEmojiDownloadEvent.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleModelDoodleEmojiItem.pack_id);
+      Object localObject = paramPasterDataManager.a(paramDoodleEmojiDownloadEvent.a.pack_id);
       if (!(localObject instanceof NormalFacePackage))
       {
         paramPasterDataManager = this.TAG;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("DoodleEmojiDownloadEventReceiver no FacePackage found by pack id = ");
-        ((StringBuilder)localObject).append(paramDoodleEmojiDownloadEvent.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleModelDoodleEmojiItem.pack_id);
+        ((StringBuilder)localObject).append(paramDoodleEmojiDownloadEvent.a.pack_id);
         SLog.d(paramPasterDataManager, ((StringBuilder)localObject).toString());
         return;
       }
       localObject = (NormalFacePackage)localObject;
-      if (paramDoodleEmojiDownloadEvent.jdField_a_of_type_Int == 0)
+      if (paramDoodleEmojiDownloadEvent.b == 0)
       {
-        if (paramDoodleEmojiDownloadEvent.jdField_a_of_type_Boolean)
+        if (paramDoodleEmojiDownloadEvent.c)
         {
           SLog.b(this.TAG, "notify ui we finish downloading");
-          ((NormalFacePackage)localObject).jdField_b_of_type_Boolean = false;
-          ((NormalFacePackage)localObject).g = paramDoodleEmojiDownloadEvent.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleModelDoodleEmojiItem.getLocalEmojiFolderPath();
-          ((NormalFacePackage)localObject).c = 0;
-          ((NormalFacePackage)localObject).d = 0;
+          ((NormalFacePackage)localObject).n = false;
+          ((NormalFacePackage)localObject).l = paramDoodleEmojiDownloadEvent.a.getLocalEmojiFolderPath();
+          ((NormalFacePackage)localObject).o = 0;
+          ((NormalFacePackage)localObject).p = 0;
           paramPasterDataManager.a((FacePackage)localObject);
           return;
         }
         String str = this.TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("notify ui we new progress : ");
-        localStringBuilder.append(paramDoodleEmojiDownloadEvent.jdField_b_of_type_Long);
+        localStringBuilder.append(paramDoodleEmojiDownloadEvent.f);
         localStringBuilder.append(" / ");
-        localStringBuilder.append(paramDoodleEmojiDownloadEvent.jdField_a_of_type_Long);
+        localStringBuilder.append(paramDoodleEmojiDownloadEvent.e);
         SLog.b(str, localStringBuilder.toString());
-        ((NormalFacePackage)localObject).jdField_b_of_type_Boolean = true;
-        ((NormalFacePackage)localObject).g = null;
-        ((NormalFacePackage)localObject).c = ((int)paramDoodleEmojiDownloadEvent.jdField_a_of_type_Long);
-        ((NormalFacePackage)localObject).d = ((int)paramDoodleEmojiDownloadEvent.jdField_b_of_type_Long);
+        ((NormalFacePackage)localObject).n = true;
+        ((NormalFacePackage)localObject).l = null;
+        ((NormalFacePackage)localObject).o = ((int)paramDoodleEmojiDownloadEvent.e);
+        ((NormalFacePackage)localObject).p = ((int)paramDoodleEmojiDownloadEvent.f);
         paramPasterDataManager.a((FacePackage)localObject);
         return;
       }
-      if (paramDoodleEmojiDownloadEvent.jdField_b_of_type_Boolean)
+      if (paramDoodleEmojiDownloadEvent.d)
       {
-        PasterDataManager.a((NormalFacePackage)localObject, paramDoodleEmojiDownloadEvent.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleModelDoodleEmojiItem);
-        ((NormalFacePackage)localObject).a.clear();
+        PasterDataManager.a((NormalFacePackage)localObject, paramDoodleEmojiDownloadEvent.a);
+        ((NormalFacePackage)localObject).m.clear();
         paramPasterDataManager.a((FacePackage)localObject);
         return;
       }
-      ((NormalFacePackage)localObject).jdField_b_of_type_Boolean = false;
-      ((NormalFacePackage)localObject).g = null;
-      ((NormalFacePackage)localObject).c = 0;
-      ((NormalFacePackage)localObject).d = 0;
+      ((NormalFacePackage)localObject).n = false;
+      ((NormalFacePackage)localObject).l = null;
+      ((NormalFacePackage)localObject).o = 0;
+      ((NormalFacePackage)localObject).p = 0;
       paramPasterDataManager.a((FacePackage)localObject);
       paramPasterDataManager = this.TAG;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("DoodleEmojiDownloadEventReceiver download error = ");
-      ((StringBuilder)localObject).append(paramDoodleEmojiDownloadEvent.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramDoodleEmojiDownloadEvent.b);
       SLog.e(paramPasterDataManager, ((StringBuilder)localObject).toString());
       VideoEditReport.a("0X80076C9");
       VideoEditReport.b("0X80075DE");
@@ -92,7 +92,7 @@ public class PasterDataManager$DoodleEmojiDownloadEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.PasterDataManager.DoodleEmojiDownloadEventReceiver
  * JD-Core Version:    0.7.0.1
  */

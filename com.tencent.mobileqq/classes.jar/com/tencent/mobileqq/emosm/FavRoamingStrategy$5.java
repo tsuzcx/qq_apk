@@ -17,24 +17,24 @@ class FavRoamingStrategy$5
   
   protected void onModifyFavData(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.k();
+    if ((paramBoolean) && (this.a.b != null)) {
+      this.a.b.k();
     }
   }
   
   protected void onUpdateFavData(boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject != null) && ((paramObject instanceof Integer)) && (FavRoamingStrategy.a(this.a) != null)) {
-      FavRoamingStrategy.a(this.a).obtainMessage(208, paramObject).sendToTarget();
+    if ((paramObject != null) && ((paramObject instanceof Integer)) && (FavRoamingStrategy.b(this.a) != null)) {
+      FavRoamingStrategy.b(this.a).obtainMessage(208, paramObject).sendToTarget();
     }
-    if ((this.a.a != null) && (paramBoolean)) {
-      this.a.a.k();
+    if ((this.a.b != null) && (paramBoolean)) {
+      this.a.b.k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavRoamingStrategy.5
  * JD-Core Version:    0.7.0.1
  */

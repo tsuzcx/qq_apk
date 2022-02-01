@@ -14,39 +14,37 @@ import com.tencent.mobileqq.utils.ValueAnimation;
 public class ImageAlphaSwitchView
   extends View
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int;
-  public Bitmap a;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  public Transformation a;
-  ValueAnimation<Float> jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = null;
-  int b;
-  public Bitmap b;
-  int c = 3;
+  public Transformation a = new Transformation();
+  ValueAnimation<Float> b = null;
+  float c = 0.0F;
+  int d;
+  int e;
+  public Bitmap f;
+  public Bitmap g;
+  Paint h = new Paint();
+  int i = 3;
+  private Rect j = new Rect();
   
   public ImageAlphaSwitchView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.h.setAntiAlias(true);
   }
   
   public ImageAlphaSwitchView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.h.setAntiAlias(true);
   }
   
   private void a()
   {
     ValueAnimation localValueAnimation1 = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(255.0F), new ImageAlphaSwitchView.1(this));
-    ValueAnimation localValueAnimation2 = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+    ValueAnimation localValueAnimation2 = this.b;
     if (localValueAnimation2 != null) {
       localValueAnimation2.cancel();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = localValueAnimation1;
+    this.b = localValueAnimation1;
     localValueAnimation1.setDuration(500L);
     localValueAnimation1.start();
     invalidate();
@@ -54,106 +52,111 @@ public class ImageAlphaSwitchView
   
   public void a(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-      this.jdField_a_of_type_Float = 0.0F;
+      this.f = paramBitmap;
+      this.g = null;
+      this.c = 0.0F;
       invalidate();
       return;
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.g = paramBitmap;
     a();
+  }
+  
+  public Bitmap getNowImage()
+  {
+    return this.f;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_Int = getWidth();
-    this.jdField_b_of_type_Int = getHeight();
-    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    this.d = getWidth();
+    this.e = getHeight();
+    Bitmap localBitmap = this.g;
     boolean bool = false;
-    int k;
     int n;
-    int j;
+    int i2;
     int m;
-    int i;
+    int i1;
+    int k;
     if (localBitmap != null)
     {
-      k = localBitmap.getWidth();
-      n = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
-      j = this.jdField_b_of_type_Int;
-      m = j * k / n;
-      i = this.jdField_a_of_type_Int;
-      if (m > i)
+      n = localBitmap.getWidth();
+      i2 = this.g.getHeight();
+      m = this.e;
+      i1 = m * n / i2;
+      k = this.d;
+      if (i1 > k)
       {
-        k = n * i / k;
-        n = (j - k) / 2;
-        m = i;
-        j = k;
-        k = n;
+        n = i2 * k / n;
+        i2 = (m - n) / 2;
+        i1 = k;
+        m = n;
+        n = i2;
       }
       else
       {
-        k = 0;
+        n = 0;
       }
-      i = this.c;
-      if (i == 3) {}
+      k = this.i;
+      if (k == 3) {}
       do
       {
-        i = 0;
+        k = 0;
         break;
-        if (i == 17)
+        if (k == 17)
         {
-          i = (this.jdField_a_of_type_Int - m) / 2;
+          k = (this.d - i1) / 2;
           break;
         }
-      } while (i != 5);
-      i = this.jdField_a_of_type_Int - m;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
-      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      } while (k != 5);
+      k = this.d - i1;
+      this.h.setAlpha((int)this.c);
+      this.j.set(k, n, i1 + k, m);
+      paramCanvas.drawBitmap(this.g, null, this.j, this.h);
     }
-    localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    localBitmap = this.f;
     if (localBitmap != null)
     {
-      k = localBitmap.getWidth();
-      n = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      j = this.jdField_b_of_type_Int;
-      m = j * k / n;
-      i = this.jdField_a_of_type_Int;
-      if (m > i)
+      n = localBitmap.getWidth();
+      i2 = this.f.getHeight();
+      m = this.e;
+      i1 = m * n / i2;
+      k = this.d;
+      if (i1 > k)
       {
-        k = n * i / k;
-        n = (j - k) / 2;
-        m = i;
-        j = k;
-        k = n;
+        n = i2 * k / n;
+        i2 = (m - n) / 2;
+        i1 = k;
+        m = n;
+        n = i2;
       }
       else
       {
-        k = 0;
+        n = 0;
       }
-      i = this.c;
-      if (i == 3) {}
+      k = this.i;
+      if (k == 3) {}
       do
       {
-        i = 0;
+        k = 0;
         break;
-        if (i == 17)
+        if (k == 17)
         {
-          i = (this.jdField_a_of_type_Int - m) / 2;
+          k = (this.d - i1) / 2;
           break;
         }
-      } while (i != 5);
-      i = this.jdField_a_of_type_Int - m;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255 - (int)this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(i, k, m + i, j);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      } while (k != 5);
+      k = this.d - i1;
+      this.h.setAlpha(255 - (int)this.c);
+      this.j.set(k, n, i1 + k, m);
+      paramCanvas.drawBitmap(this.f, null, this.j, this.h);
     }
-    paramCanvas = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+    paramCanvas = this.b;
     if (paramCanvas != null) {
-      bool = paramCanvas.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+      bool = paramCanvas.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.a);
     }
     if (bool) {
       invalidate();
@@ -167,24 +170,24 @@ public class ImageAlphaSwitchView
   
   public void setGravity(int paramInt)
   {
-    this.c = paramInt;
+    this.i = paramInt;
   }
   
   public void setImage(Bitmap paramBitmap)
   {
-    ValueAnimation localValueAnimation = this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+    ValueAnimation localValueAnimation = this.b;
     if (localValueAnimation != null) {
       localValueAnimation.cancel();
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_Float = 0.0F;
+    this.f = paramBitmap;
+    this.g = null;
+    this.c = 0.0F;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageAlphaSwitchView
  * JD-Core Version:    0.7.0.1
  */

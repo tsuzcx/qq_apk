@@ -14,7 +14,7 @@ public class MoreTroopAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130842539;
+    return 2130843492;
   }
   
   public int getAppID()
@@ -27,18 +27,18 @@ public class MoreTroopAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131689488);
+    return BaseApplicationImpl.getContext().getString(2131886096);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    TroopUtils.a(paramBaseChatPie.a, paramBaseChatPie.a(), paramSessionInfo.jdField_a_of_type_JavaLangString, "0");
-    AIOPanelUtiles.a(paramBaseChatPie.a, "0X8005CB6", paramSessionInfo.jdField_a_of_type_Int);
+    TroopUtils.a(paramBaseChatPie.d, paramBaseChatPie.aX(), paramSessionInfo.b, "0");
+    AIOPanelUtiles.a(paramBaseChatPie.d, "0X8005CB6", paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.MoreTroopAppInfo
  * JD-Core Version:    0.7.0.1
  */

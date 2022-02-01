@@ -9,14 +9,14 @@ class MiniMultiForwardFragment$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMultiForwardFragment$1.this$0.a != null) && (this.jdField_a_of_type_JavaUtilArrayList != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMultiForwardFragment$1.this$0.a.a(this.jdField_a_of_type_JavaUtilArrayList, null, 0);
+    if ((this.b.this$0.e != null) && (this.a != null)) {
+      this.b.this$0.e.a(this.a, null, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMultiForwardFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

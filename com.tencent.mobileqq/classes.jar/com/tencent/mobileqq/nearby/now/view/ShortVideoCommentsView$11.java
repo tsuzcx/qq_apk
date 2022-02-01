@@ -21,22 +21,22 @@ class ShortVideoCommentsView$11
       return;
     }
     paramLong = this.a.app.getLongAccountUin();
-    if (ShortVideoCommentsView.access$800(this.a).c == paramLong)
+    if (ShortVideoCommentsView.access$800(this.a).f == paramLong)
     {
-      this.a.showToast(HardCodeUtil.a(2131713959));
+      this.a.showToast(HardCodeUtil.a(2131911490));
       ShortVideoCommentsView.access$802(this.a, null);
       return;
     }
     paramAdapterView = new StringBuilder();
     paramAdapterView.append("回复 ");
-    if (ShortVideoCommentsView.access$800(this.a).b.length() >= 6)
+    if (ShortVideoCommentsView.access$800(this.a).e.length() >= 6)
     {
-      paramAdapterView.append(ShortVideoCommentsView.access$800(this.a).b.substring(0, 5));
+      paramAdapterView.append(ShortVideoCommentsView.access$800(this.a).e.substring(0, 5));
       paramAdapterView.append("...");
     }
     else
     {
-      paramAdapterView.append(ShortVideoCommentsView.access$800(this.a).b);
+      paramAdapterView.append(ShortVideoCommentsView.access$800(this.a).e);
     }
     ShortVideoCommentsView.access$400(this.a).setText("");
     ShortVideoCommentsView.access$400(this.a).setHint(paramAdapterView);
@@ -50,7 +50,7 @@ class ShortVideoCommentsView$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.11
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,17 @@ import com.tencent.mobileqq.onlinestatus.OnLineStatusHelper;
 import com.tencent.mobileqq.onlinestatus.OnlineStatusPanelParams;
 import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
 import com.tencent.mobileqq.onlinestatus.model.OnlineStatusData;
+import com.tencent.mobileqq.onlinestatus.olympic.helper.OlympicProtocolHelper;
+import com.tencent.mobileqq.onlinestatus.utils.OnlineStatusSPUtil;
 import com.tencent.mobileqq.onlinestatus.view.AccountPanelViewContainer;
 import com.tencent.mobileqq.onlinestatus.viewmodel.AccountPanelViewModel;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import mqq.app.AppRuntime;
 import mqq.app.AppRuntime.Status;
 import mqq.app.MobileQQ;
+import trpc.qq_status_rank.status_rank_mgr.StatusRankMgr.StatusRankRequest;
 
 public class AccountPanelBinder
   extends BaseViewBinder
@@ -43,6 +50,22 @@ public class AccountPanelBinder
     paramAccountPanelViewModel.j().observe(paramLifeCycleAndViewModelStoreOwner, new AccountPanelBinder.9(this, paramOnlineStatusPanelParams, paramAccountPanel, paramAccountPanelViewModel, paramAccountPanelViewContainer));
   }
   
+  public void a(AccountPanel paramAccountPanel, AccountPanelViewContainer paramAccountPanelViewContainer)
+  {
+    if ((paramAccountPanel != null) && (paramAccountPanel.isShowing()))
+    {
+      AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (!OnlineStatusSPUtil.a(paramAccountPanel.getContext(), localAppRuntime.getCurrentUin()))
+      {
+        StatusRankMgr.StatusRankRequest localStatusRankRequest = new StatusRankMgr.StatusRankRequest();
+        localStatusRankRequest.status_id.set(1080);
+        localStatusRankRequest.uin.set(0L);
+        localStatusRankRequest.genrank.set(true);
+        OlympicProtocolHelper.a(localAppRuntime, localStatusRankRequest, new AccountPanelBinder.13(this, paramAccountPanelViewContainer, paramAccountPanel, localAppRuntime));
+      }
+    }
+  }
+  
   public void a(AccountPanel paramAccountPanel, AccountPanelViewContainer paramAccountPanelViewContainer, AccountPanelViewModel paramAccountPanelViewModel)
   {
     if (!paramAccountPanel.isShowing()) {
@@ -54,6 +77,11 @@ public class AccountPanelBinder
     paramAccountPanelViewModel.g().setValue(new OnlineStatusData(localStatus, l));
     paramAccountPanelViewContainer.d();
     paramAccountPanelViewModel.i().setValue(Boolean.valueOf(false));
+  }
+  
+  public void b(LifeCycleAndViewModelStoreOwner paramLifeCycleAndViewModelStoreOwner, AccountPanelViewModel paramAccountPanelViewModel, AccountPanel paramAccountPanel)
+  {
+    paramAccountPanelViewModel.l().observe(paramLifeCycleAndViewModelStoreOwner, new AccountPanelBinder.12(this, paramAccountPanel));
   }
   
   public void b(LifeCycleAndViewModelStoreOwner paramLifeCycleAndViewModelStoreOwner, AccountPanelViewModel paramAccountPanelViewModel, AccountPanelViewContainer paramAccountPanelViewContainer)
@@ -71,6 +99,11 @@ public class AccountPanelBinder
     paramAccountPanelViewModel.f().observe(paramLifeCycleAndViewModelStoreOwner, new AccountPanelBinder.4(this, paramAccountPanelViewContainer));
   }
   
+  public void c(LifeCycleAndViewModelStoreOwner paramLifeCycleAndViewModelStoreOwner, AccountPanelViewModel paramAccountPanelViewModel, AccountPanelViewContainer paramAccountPanelViewContainer, AccountPanel paramAccountPanel)
+  {
+    paramAccountPanelViewModel.k().observe(paramLifeCycleAndViewModelStoreOwner, new AccountPanelBinder.11(this, paramAccountPanel, paramAccountPanelViewContainer));
+  }
+  
   public void d(LifeCycleAndViewModelStoreOwner paramLifeCycleAndViewModelStoreOwner, AccountPanelViewModel paramAccountPanelViewModel, AccountPanelViewContainer paramAccountPanelViewContainer)
   {
     paramAccountPanelViewModel.c().observe(paramLifeCycleAndViewModelStoreOwner, new AccountPanelBinder.5(this, paramAccountPanelViewContainer));
@@ -83,7 +116,7 @@ public class AccountPanelBinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountPanelBinder
  * JD-Core Version:    0.7.0.1
  */

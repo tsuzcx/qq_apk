@@ -12,13 +12,13 @@ class MaterialContentAdapter$3
   
   public void a(@NonNull ApplyMaterialTask.Status paramStatus, int paramInt)
   {
-    ApplyMaterialTaskHelper.a("onPostDownloadMaterial", this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, String.format("callback: %s-%s", new Object[] { paramStatus, Integer.valueOf(paramInt) }));
+    ApplyMaterialTaskHelper.a("onPostDownloadMaterial", this.a, String.format("callback: %s-%s", new Object[] { paramStatus, Integer.valueOf(paramInt) }));
     ThreadManager.getUIHandler().post(new MaterialContentAdapter.3.1(this, paramStatus));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialContentAdapter.3
  * JD-Core Version:    0.7.0.1
  */

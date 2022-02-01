@@ -7,29 +7,29 @@ import androidx.customview.widget.ViewDragHelper;
 class BottomSheetBehavior$SettleRunnable
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
+  int a;
+  private final View b;
+  private boolean c;
   
   BottomSheetBehavior$SettleRunnable(BottomSheetBehavior paramBottomSheetBehavior, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramView;
+    this.a = paramInt;
   }
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.continueSettling(true))) {
-      ViewCompat.postOnAnimation(this.jdField_a_of_type_AndroidViewView, this);
+    if ((this.this$0.i != null) && (this.this$0.i.continueSettling(true))) {
+      ViewCompat.postOnAnimation(this.b, this);
     } else {
-      this.this$0.e(this.jdField_a_of_type_Int);
+      this.this$0.e(this.a);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomsheet.BottomSheetBehavior.SettleRunnable
  * JD-Core Version:    0.7.0.1
  */

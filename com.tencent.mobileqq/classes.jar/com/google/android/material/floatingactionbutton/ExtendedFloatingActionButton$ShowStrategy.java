@@ -12,17 +12,6 @@ class ExtendedFloatingActionButton$ShowStrategy
     super(paramExtendedFloatingActionButton, paramAnimatorTracker);
   }
   
-  public int a()
-  {
-    return R.animator.j;
-  }
-  
-  public void a()
-  {
-    super.a();
-    ExtendedFloatingActionButton.a(this.a, 0);
-  }
-  
   public void a(Animator paramAnimator)
   {
     super.a(paramAnimator);
@@ -37,22 +26,33 @@ class ExtendedFloatingActionButton$ShowStrategy
     }
   }
   
-  public boolean a()
+  public void d()
   {
-    return ExtendedFloatingActionButton.b(this.a);
+    super.d();
+    ExtendedFloatingActionButton.a(this.a, 0);
   }
   
-  public void c()
+  public void g()
   {
     this.a.setVisibility(0);
     this.a.setAlpha(1.0F);
     this.a.setScaleY(1.0F);
     this.a.setScaleX(1.0F);
   }
+  
+  public int h()
+  {
+    return R.animator.j;
+  }
+  
+  public boolean i()
+  {
+    return ExtendedFloatingActionButton.h(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton.ShowStrategy
  * JD-Core Version:    0.7.0.1
  */

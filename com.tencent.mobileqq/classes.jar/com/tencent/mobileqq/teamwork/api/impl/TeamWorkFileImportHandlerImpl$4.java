@@ -17,25 +17,25 @@ class TeamWorkFileImportHandlerImpl$4
     if (TeamWorkFileImportHandlerImpl.access$000(this.this$0) == null) {
       return;
     }
-    Object localObject = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).checkFormCache(this.jdField_a_of_type_OrgJsonJSONObject, TeamWorkFileImportHandlerImpl.access$000(this.this$0).getCurrentAccountUin());
+    Object localObject = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).checkFormCache(this.a, TeamWorkFileImportHandlerImpl.access$000(this.this$0).getCurrentAccountUin());
     if (localObject != null)
     {
       localObject = ImportFormData.a((JSONObject)localObject);
-      if ((localObject != null) && (((ImportFormData)localObject).jdField_a_of_type_JavaLangString != null) && (((ImportFormData)localObject).jdField_a_of_type_Boolean))
+      if ((localObject != null) && (((ImportFormData)localObject).a != null) && (((ImportFormData)localObject).g))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.l = ((ImportFormData)localObject).b;
-        this.this$0.notifyUI(6, true, new Object[] { ((ImportFormData)localObject).jdField_a_of_type_JavaLangString, ((ImportFormData)localObject).d, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo });
+        this.b.O = ((ImportFormData)localObject).f;
+        this.this$0.notifyUI(6, true, new Object[] { ((ImportFormData)localObject).a, ((ImportFormData)localObject).e, this.b });
         return;
       }
-      this.this$0.notifyUI(7, false, new Object[] { this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo });
+      this.this$0.notifyUI(7, false, new Object[] { this.b });
       return;
     }
-    this.this$0.notifyUIError(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+    this.this$0.notifyUIError(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkFileImportHandlerImpl.4
  * JD-Core Version:    0.7.0.1
  */

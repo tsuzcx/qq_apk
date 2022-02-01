@@ -24,24 +24,21 @@ import java.util.List;
 
 public class AccountDetailCustomModuleBaseWrapper
 {
-  protected Context a;
-  protected View.OnClickListener a;
-  protected AccountDetailBaseItemClickHandler a;
-  protected AdapterView.OnItemClickListener a;
-  String a;
-  protected ArrayList<IPublicAccountConfigAttr.PaConfigInfo> a;
-  String b;
+  protected ArrayList<IPublicAccountConfigAttr.PaConfigInfo> a = new ArrayList();
+  protected Context b;
+  String c;
+  String d;
+  protected AccountDetailBaseItemClickHandler e;
+  protected View.OnClickListener f = new AccountDetailCustomModuleBaseWrapper.1(this);
+  protected AdapterView.OnItemClickListener g = new AccountDetailCustomModuleBaseWrapper.2(this);
   
   public AccountDetailCustomModuleBaseWrapper(Context paramContext, ArrayList<IPublicAccountConfigAttr.PaConfigInfo> paramArrayList, AccountDetailBaseItemClickHandler paramAccountDetailBaseItemClickHandler, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new AccountDetailCustomModuleBaseWrapper.1(this);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new AccountDetailCustomModuleBaseWrapper.2(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailHandlerAccountDetailBaseItemClickHandler = paramAccountDetailBaseItemClickHandler;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.b = paramContext;
+    this.a = paramArrayList;
+    this.e = paramAccountDetailBaseItemClickHandler;
+    this.c = paramString1;
+    this.d = paramString2;
   }
   
   protected static ArrayList<IPublicAccountConfigAttr.PaConfigInfo> a(PublicAccountConfigAttrImpl paramPublicAccountConfigAttrImpl, int paramInt)
@@ -53,11 +50,11 @@ public class AccountDetailCustomModuleBaseWrapper
       while (localIterator.hasNext())
       {
         IPublicAccountConfigAttr.PaConfigInfo localPaConfigInfo = (IPublicAccountConfigAttr.PaConfigInfo)localIterator.next();
-        int k = localPaConfigInfo.jdField_b_of_type_Int;
+        int k = localPaConfigInfo.d;
         int j = 1;
         int i = j;
         if (k != 0) {
-          if ((localPaConfigInfo.jdField_b_of_type_Int == 1) && (paramInt == 1)) {
+          if ((localPaConfigInfo.d == 1) && (paramInt == 1)) {
             i = j;
           } else {
             i = 0;
@@ -69,24 +66,24 @@ public class AccountDetailCustomModuleBaseWrapper
           if (i != 2)
           {
             if ((i == 3) || (i == 4)) {
-              if (localPaConfigInfo.jdField_c_of_type_Int == 23)
+              if (localPaConfigInfo.e == 23)
               {
-                if ((!TextUtils.isEmpty(localPaConfigInfo.e)) && (!TextUtils.isEmpty(localPaConfigInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localPaConfigInfo.jdField_b_of_type_JavaLangString))) {
+                if ((!TextUtils.isEmpty(localPaConfigInfo.k)) && (!TextUtils.isEmpty(localPaConfigInfo.b)) && (!TextUtils.isEmpty(localPaConfigInfo.c))) {
                   localArrayList.add(localPaConfigInfo);
                 }
               }
-              else if ((!TextUtils.isEmpty(localPaConfigInfo.e)) && (!TextUtils.isEmpty(localPaConfigInfo.jdField_a_of_type_JavaLangString))) {
+              else if ((!TextUtils.isEmpty(localPaConfigInfo.k)) && (!TextUtils.isEmpty(localPaConfigInfo.b))) {
                 localArrayList.add(localPaConfigInfo);
               }
             }
           }
-          else if (localPaConfigInfo.jdField_c_of_type_Int == 23)
+          else if (localPaConfigInfo.e == 23)
           {
-            if ((!TextUtils.isEmpty(localPaConfigInfo.e)) && (!TextUtils.isEmpty(localPaConfigInfo.jdField_b_of_type_JavaLangString))) {
+            if ((!TextUtils.isEmpty(localPaConfigInfo.k)) && (!TextUtils.isEmpty(localPaConfigInfo.c))) {
               localArrayList.add(localPaConfigInfo);
             }
           }
-          else if (!TextUtils.isEmpty(localPaConfigInfo.e)) {
+          else if (!TextUtils.isEmpty(localPaConfigInfo.k)) {
             localArrayList.add(localPaConfigInfo);
           }
         }
@@ -109,7 +106,7 @@ public class AccountDetailCustomModuleBaseWrapper
       localObject2 = (IPublicAccountDataManager)((QQAppInterface)localObject1).getRuntimeService(IPublicAccountDataManager.class, "all");
       if (localObject2 != null)
       {
-        localObject2 = (PublicAccountDetailImpl)((IPublicAccountDataManager)localObject2).findAccountDetailInfo(this.jdField_a_of_type_JavaLangString);
+        localObject2 = (PublicAccountDetailImpl)((IPublicAccountDataManager)localObject2).findAccountDetailInfo(this.c);
         if ((localObject2 != null) && (((PublicAccountDetailImpl)localObject2).followType == 1))
         {
           i = 1;
@@ -119,21 +116,21 @@ public class AccountDetailCustomModuleBaseWrapper
     }
     int i = 0;
     label98:
-    Object localObject2 = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject2 = this.b;
     int j;
     if ((localObject2 != null) && ((localObject2 instanceof PublicAccountDetailActivityImpl))) {
-      j = PublicAccountDetailImpl.getReportAccountType((AppInterface)localObject1, this.jdField_a_of_type_JavaLangString, null);
+      j = PublicAccountDetailImpl.getReportAccountType((AppInterface)localObject1, this.c, null);
     } else {
       j = 1;
     }
-    if ((paramPaConfigInfo.jdField_a_of_type_Int == 3) && (paramPaConfigInfo.jdField_c_of_type_Int == 23))
+    if ((paramPaConfigInfo.a == 3) && (paramPaConfigInfo.e == 23))
     {
-      paramPaConfigInfo = paramPaConfigInfo.jdField_b_of_type_JavaLangString;
+      paramPaConfigInfo = paramPaConfigInfo.c;
       localObject1 = new DynamicInfo();
       ((DynamicInfo)localObject1).a(paramPaConfigInfo);
-      localObject1 = ((DynamicInfo)localObject1).a.jdField_c_of_type_JavaLangString;
+      localObject1 = ((DynamicInfo)localObject1).f.g;
       localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.c;
       if (i != 0) {
         paramPaConfigInfo = "02";
       } else {
@@ -142,9 +139,9 @@ public class AccountDetailCustomModuleBaseWrapper
       localIPublicAccountReportUtils.publicAccountReportClickEvent(null, (String)localObject2, "0X80077F9", "0X80077F9", 0, 0, "2", (String)localObject1, paramPaConfigInfo, String.valueOf(j), false);
       return;
     }
-    if (paramPaConfigInfo.jdField_a_of_type_Int == 1)
+    if (paramPaConfigInfo.a == 1)
     {
-      paramPaConfigInfo = Uri.parse(paramPaConfigInfo.jdField_c_of_type_JavaLangString);
+      paramPaConfigInfo = Uri.parse(paramPaConfigInfo.h);
       try
       {
         paramPaConfigInfo = paramPaConfigInfo.getQueryParameter("article_id");
@@ -159,7 +156,7 @@ public class AccountDetailCustomModuleBaseWrapper
         localObject1 = "";
       }
       localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.c;
       if (i != 0) {
         paramPaConfigInfo = "02";
       } else {
@@ -171,13 +168,13 @@ public class AccountDetailCustomModuleBaseWrapper
   
   protected boolean a(ArrayList<IPublicAccountConfigAttr.PaConfigInfo> paramArrayList)
   {
-    if (paramArrayList.size() != this.jdField_a_of_type_JavaUtilArrayList.size()) {
+    if (paramArrayList.size() != this.a.size()) {
       return false;
     }
     int i = 0;
     while (i < paramArrayList.size())
     {
-      if (paramArrayList.get(i) != this.jdField_a_of_type_JavaUtilArrayList.get(i)) {
+      if (paramArrayList.get(i) != this.a.get(i)) {
         return false;
       }
       i += 1;
@@ -187,7 +184,7 @@ public class AccountDetailCustomModuleBaseWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailCustomModuleBaseWrapper
  * JD-Core Version:    0.7.0.1
  */

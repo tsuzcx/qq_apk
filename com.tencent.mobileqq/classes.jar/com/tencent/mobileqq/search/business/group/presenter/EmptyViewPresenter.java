@@ -10,12 +10,12 @@ public class EmptyViewPresenter
 {
   public void a(IModel paramIModel, IView paramIView)
   {
-    paramIView.a().setVisibility(8);
+    paramIView.h().setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.presenter.EmptyViewPresenter
  * JD-Core Version:    0.7.0.1
  */

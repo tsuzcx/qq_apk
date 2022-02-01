@@ -11,17 +11,17 @@ import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 
 public class ShareToComputerHelper
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver;
-  private String jdField_a_of_type_JavaLangString;
+  private DataLineObserver a;
+  private AppInterface b;
+  private String c;
   
   public ShareToComputerHelper(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new ShareToComputerHelper.1(this);
-    paramAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    this.b = paramAppInterface;
+    this.a = new ShareToComputerHelper.1(this);
+    paramAppInterface = this.b;
     if (paramAppInterface != null) {
-      paramAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+      paramAppInterface.addObserver(this.a);
     }
   }
   
@@ -32,20 +32,20 @@ public class ShareToComputerHelper
     if (bool) {
       return 0L;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject = this.b;
     long l1 = l2;
     if (localObject != null)
     {
       if (QFileAssistantUtils.a((QQAppInterface)localObject))
       {
-        new QFileAssistantForwardManager((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(paramString);
+        new QFileAssistantForwardManager((QQAppInterface)this.b).a(paramString);
         return 1L;
       }
-      localObject = (DataLineHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      localObject = (DataLineHandler)this.b.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       l1 = l2;
       if (localObject != null)
       {
-        this.jdField_a_of_type_JavaLangString = paramString;
+        this.c = paramString;
         l1 = ((DataLineHandler)localObject).a(paramString, 0).longValue();
       }
     }
@@ -54,16 +54,16 @@ public class ShareToComputerHelper
   
   public void a()
   {
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    AppInterface localAppInterface = this.b;
     if (localAppInterface != null) {
-      localAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+      localAppInterface.removeObserver(this.a);
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.ShareToComputerHelper
  * JD-Core Version:    0.7.0.1
  */

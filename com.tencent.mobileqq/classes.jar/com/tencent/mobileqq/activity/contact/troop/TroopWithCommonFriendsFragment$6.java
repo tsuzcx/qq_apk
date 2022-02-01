@@ -13,27 +13,27 @@ class TroopWithCommonFriendsFragment$6
   
   protected void a(boolean paramBoolean, int paramInt, ArrayList<TroopList> paramArrayList)
   {
-    if (TroopWithCommonFriendsFragment.a(this.a) != null) {
-      TroopWithCommonFriendsFragment.a(this.a).dismiss();
+    if (TroopWithCommonFriendsFragment.b(this.a) != null) {
+      TroopWithCommonFriendsFragment.b(this.a).dismiss();
     }
     if (!paramBoolean)
     {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1014);
+      this.a.n.sendEmptyMessage(1014);
       return;
     }
-    TroopWithCommonFriendsHelper.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramArrayList);
-    TroopWithCommonFriendsHelper.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, paramInt);
+    TroopWithCommonFriendsHelper.a(TroopWithCommonFriendsFragment.g, paramArrayList);
+    TroopWithCommonFriendsHelper.a(TroopWithCommonFriendsFragment.g, paramInt);
     TroopWithCommonFriendsFragment localTroopWithCommonFriendsFragment = this.a;
-    localTroopWithCommonFriendsFragment.b = paramInt;
-    localTroopWithCommonFriendsFragment.jdField_a_of_type_JavaUtilList = TroopWithCommonFriendsHelper.a(paramArrayList, TroopWithCommonFriendsFragment.a(localTroopWithCommonFriendsFragment));
-    TroopWithCommonFriendsFragment.a(this.a).a();
-    TroopWithCommonFriendsFragment.a(this.a).a(this.a.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
+    localTroopWithCommonFriendsFragment.f = paramInt;
+    localTroopWithCommonFriendsFragment.j = TroopWithCommonFriendsHelper.a(paramArrayList, TroopWithCommonFriendsFragment.a(localTroopWithCommonFriendsFragment));
+    TroopWithCommonFriendsFragment.c(this.a).b();
+    TroopWithCommonFriendsFragment.c(this.a).a(this.a.j);
+    this.a.n.sendEmptyMessage(1012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment.6
  * JD-Core Version:    0.7.0.1
  */

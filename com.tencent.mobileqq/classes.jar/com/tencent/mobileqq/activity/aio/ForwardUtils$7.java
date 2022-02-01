@@ -14,13 +14,13 @@ final class ForwardUtils$7
   public void run()
   {
     if (NetworkUtil.getSystemNetwork(BaseApplication.getContext()) != 0) {
-      QQToast.a(this.a.getApp(), 2, 2131692645, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.a.getApp(), 2, 2131889669, 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.7
  * JD-Core Version:    0.7.0.1
  */

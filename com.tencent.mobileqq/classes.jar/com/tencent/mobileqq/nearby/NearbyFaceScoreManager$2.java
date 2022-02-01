@@ -38,9 +38,9 @@ class NearbyFaceScoreManager$2
           localStringBuilder.append(paramArrayOfByte);
           QLog.e("Q..troop.faceScore", 2, localStringBuilder.toString());
         }
-        if (this.a != null)
+        if (this.b != null)
         {
-          this.a.a(paramArrayOfByte, paramBundle, paramInt, i, j);
+          this.b.a(paramArrayOfByte, paramBundle, paramInt, i, j);
           return;
         }
         QLog.e("Q..troop.faceScore", 2, "fetchEntranceConfig onResult callback is null.");
@@ -55,7 +55,7 @@ class NearbyFaceScoreManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFaceScoreManager.2
  * JD-Core Version:    0.7.0.1
  */

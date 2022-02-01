@@ -1,20 +1,31 @@
 package com.tencent.av.ui;
 
-import android.view.View;
-import com.tencent.av.camera.api.ICameraManagerApi;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
 
 class AVActivity$17
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  AVActivity$17(AVActivity paramAVActivity) {}
+  AVActivity$17(AVActivity paramAVActivity, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.rotateCamera();
-      this.a.a.saveCameraAngle();
+    if (!VideoController.f().aD()) {
+      return;
+    }
+    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.f().aA();
+    if (localWatchTogetherMediaPlayCtrl == null) {
+      return;
+    }
+    if (!localWatchTogetherMediaPlayCtrl.q()) {
+      return;
+    }
+    if (this.a != 3) {
+      localWatchTogetherMediaPlayCtrl.a("AVActivity.onResume", null);
+    }
+    localWatchTogetherMediaPlayCtrl.p();
+    if (!localWatchTogetherMediaPlayCtrl.r()) {
+      localWatchTogetherMediaPlayCtrl.x();
     }
   }
 }

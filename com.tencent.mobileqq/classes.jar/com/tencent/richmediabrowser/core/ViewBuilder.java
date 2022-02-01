@@ -47,7 +47,7 @@ public class ViewBuilder
       if (((BrowserBasePresenter)localObject2).mainBrowserPresenter != null)
       {
         localObject1 = new MVPFactory(((BrowserBasePresenter)localObject2).mainBrowserPresenter);
-        int i = ((Integer)((BrowserBasePresenter)localObject2).mainBrowserPresenter.getParamsBuilder().jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.mType))).intValue();
+        int i = ((Integer)((BrowserBasePresenter)localObject2).mainBrowserPresenter.getParamsBuilder().c.get(Integer.valueOf(this.mType))).intValue();
         Object localObject3;
         if (i > 0)
         {
@@ -60,9 +60,9 @@ public class ViewBuilder
           ((IBrowserLog)localObject3).d("ViewBuilder", 4, localStringBuilder.toString());
           this.view = ((MVPFactory)localObject1).createView(this.mContext, i, this.basePresenter);
           this.basePresenter.setBrowserView(this.view);
-          if (((BrowserBasePresenter)localObject2).mainBrowserPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory != null)
+          if (((BrowserBasePresenter)localObject2).mainBrowserPresenter.getParamsBuilder().b != null)
           {
-            this.decoratorView = ((BrowserBasePresenter)localObject2).mainBrowserPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory.a(this.mContext, this.mType, this.decoratorPresenter);
+            this.decoratorView = ((BrowserBasePresenter)localObject2).mainBrowserPresenter.getParamsBuilder().b.a(this.mContext, this.mType, this.decoratorPresenter);
             this.decoratorView.a(this.view);
             this.decoratorPresenter.a(this.decoratorView);
             this.decoratorPresenter.a(this.basePresenter);
@@ -114,7 +114,7 @@ public class ViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.ViewBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,6 @@ public final class ViolaVideoFeedsConfigHandler
   public static final ViolaVideoFeedsConfigHandler.Companion a = new ViolaVideoFeedsConfigHandler.Companion(null);
   
   @JvmStatic
-  @NotNull
-  public static final String a()
-  {
-    return a.a();
-  }
-  
-  @JvmStatic
   public static final boolean a()
   {
     return a.a();
@@ -37,6 +30,13 @@ public final class ViolaVideoFeedsConfigHandler
   public static final boolean a(int paramInt)
   {
     return a.a(paramInt);
+  }
+  
+  @JvmStatic
+  @NotNull
+  public static final String b()
+  {
+    return a.b();
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, @Nullable String paramString)
@@ -78,7 +78,7 @@ public final class ViolaVideoFeedsConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.ViolaVideoFeedsConfigHandler
  * JD-Core Version:    0.7.0.1
  */

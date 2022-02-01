@@ -36,52 +36,28 @@ import org.jetbrains.annotations.NotNull;
 
 public class ExpandResourceDownloader
 {
-  private long jdField_a_of_type_Long;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final ExpandResourceDownloader.ResourceDownloaderListener jdField_a_of_type_ComTencentMobileqqQqexpandDownloaderExpandResourceDownloader$ResourceDownloaderListener;
-  private final IPreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController;
-  private final String jdField_a_of_type_JavaLangString;
-  private final HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(2);
-  private long jdField_b_of_type_Long;
-  private final String jdField_b_of_type_JavaLangString;
-  private long c;
+  private final QQAppInterface a;
+  private final IPreDownloadController b;
+  private final ExpandResourceDownloader.ResourceDownloaderListener c;
+  private final String d;
+  private final String e;
+  private final HashMap<String, Long> f = new HashMap();
+  private long g;
+  private final AtomicInteger h = new AtomicInteger(2);
+  private long i;
+  private long j;
   
   public ExpandResourceDownloader(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, @NonNull String paramString2, @NonNull ExpandResourceDownloader.ResourceDownloaderListener paramResourceDownloaderListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController = ((IPreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPreDownloadController.class));
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandDownloaderExpandResourceDownloader$ResourceDownloaderListener = paramResourceDownloaderListener;
+    this.a = paramQQAppInterface;
+    this.b = ((IPreDownloadController)this.a.getRuntimeService(IPreDownloadController.class));
+    this.d = paramString1;
+    this.e = paramString2;
+    this.c = paramResourceDownloaderListener;
     a(LocalStorageUtils.a().getString("expand_flutter_res_files", "[]"));
     if (QLog.isColorLevel()) {
       QLog.d("ExpandResourceDownloader", 2, String.format("ExpandResourceDownloader() url=%s md5=%s", new Object[] { paramString1, paramString2 }));
     }
-  }
-  
-  @NotNull
-  private HttpNetReq a(String paramString)
-  {
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = new ExpandResourceDownloader.2(this);
-    localHttpNetReq.mReqUrl = this.jdField_a_of_type_JavaLangString;
-    localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = paramString;
-    localHttpNetReq.mPrioty = 0;
-    localHttpNetReq.mSupportBreakResume = true;
-    return localHttpNetReq;
-  }
-  
-  @NotNull
-  private HttpEngineTask.IHttpEngineTask a()
-  {
-    return new ExpandResourceDownloader.1(this);
-  }
-  
-  private String a(String paramString)
-  {
-    return ExpandResourceUtil.b(paramString);
   }
   
   private void a(int paramInt, String paramString1, long paramLong, String paramString2)
@@ -91,8 +67,8 @@ public class ExpandResourceDownloader
     localHashMap.put("version", paramString1);
     localHashMap.put("time_cost", String.valueOf(paramLong));
     localHashMap.put("error_msg", paramString2);
-    localHashMap.put("total_length", String.valueOf(this.c));
-    localHashMap.put("download_length", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("total_length", String.valueOf(this.j));
+    localHashMap.put("download_length", String.valueOf(this.i));
     paramString1 = new StringBuilder();
     paramString1.append(NetworkState.g().getNetworkType());
     paramString1.append("");
@@ -108,14 +84,14 @@ public class ExpandResourceDownloader
     try
     {
       paramString = new JsonParser().parse(paramString).getAsJsonArray();
-      int j = paramString.size();
-      int i = 0;
-      while (i < j)
+      int m = paramString.size();
+      int k = 0;
+      while (k < m)
       {
-        String str = paramString.get(i).getAsJsonObject().getAsJsonPrimitive("filename").getAsString();
-        long l = paramString.get(i).getAsJsonObject().getAsJsonPrimitive("size").getAsLong();
-        this.jdField_a_of_type_JavaUtilHashMap.put(str, Long.valueOf(l));
-        i += 1;
+        String str = paramString.get(k).getAsJsonObject().getAsJsonPrimitive("filename").getAsString();
+        long l = paramString.get(k).getAsJsonObject().getAsJsonPrimitive("size").getAsLong();
+        this.f.put(str, Long.valueOf(l));
+        k += 1;
       }
       return;
     }
@@ -145,25 +121,12 @@ public class ExpandResourceDownloader
     return bool1;
   }
   
-  private String b()
-  {
-    return ExpandResourceUtil.b();
-  }
-  
   private void b(String paramString)
   {
-    Object localObject = a(paramString);
-    HttpEngineTask.IHttpEngineTask localIHttpEngineTask = a();
-    localObject = new HttpEngineTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, localIHttpEngineTask, (HttpNetReq)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController.requestPreDownload(10073, "prd", this.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString, paramString, 2, 0, false, (AbsPreDownloadTask)localObject);
-  }
-  
-  private boolean b()
-  {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return a(a(this.jdField_b_of_type_JavaLangString), this.jdField_b_of_type_JavaLangString);
-    }
-    return false;
+    Object localObject = c(paramString);
+    HttpEngineTask.IHttpEngineTask localIHttpEngineTask = f();
+    localObject = new HttpEngineTask(this.a, this.e, localIHttpEngineTask, (HttpNetReq)localObject);
+    this.b.requestPreDownload(10073, "prd", this.e, 0, this.d, paramString, 2, 0, false, (AbsPreDownloadTask)localObject);
   }
   
   private boolean b(String paramString1, String paramString2)
@@ -173,13 +136,13 @@ public class ExpandResourceDownloader
       Object localObject = new ArrayList();
       FileUtils.uncompressZip(paramString1, paramString2, false, null, (List)localObject);
       paramString1 = new JsonArray(((ArrayList)localObject).size());
-      int i = new File(paramString2).getAbsolutePath().length();
+      int k = new File(paramString2).getAbsolutePath().length();
       paramString2 = ((ArrayList)localObject).iterator();
       while (paramString2.hasNext())
       {
         localObject = (File)paramString2.next();
         JsonObject localJsonObject = new JsonObject();
-        localJsonObject.addProperty("filename", ((File)localObject).getAbsolutePath().substring(i + 1));
+        localJsonObject.addProperty("filename", ((File)localObject).getAbsolutePath().substring(k + 1));
         localJsonObject.addProperty("size", Long.valueOf(((File)localObject).length()));
         paramString1.add(localJsonObject);
       }
@@ -199,7 +162,20 @@ public class ExpandResourceDownloader
     return false;
   }
   
-  private void c(String paramString)
+  @NotNull
+  private HttpNetReq c(String paramString)
+  {
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mCallback = new ExpandResourceDownloader.2(this);
+    localHttpNetReq.mReqUrl = this.d;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = paramString;
+    localHttpNetReq.mPrioty = 0;
+    localHttpNetReq.mSupportBreakResume = true;
+    return localHttpNetReq;
+  }
+  
+  private void d(String paramString)
   {
     paramString = new File(paramString);
     if (paramString.exists()) {
@@ -207,17 +183,36 @@ public class ExpandResourceDownloader
     }
   }
   
-  private boolean c()
+  private String e(String paramString)
   {
-    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (d());
+    return ExpandResourceUtil.b(paramString);
   }
   
-  private boolean d()
+  @NotNull
+  private HttpEngineTask.IHttpEngineTask f()
   {
-    Object localObject = b();
-    if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0)
+    return new ExpandResourceDownloader.1(this);
+  }
+  
+  private boolean g()
+  {
+    if (!TextUtils.isEmpty(this.e)) {
+      return a(e(this.e), this.e);
+    }
+    return false;
+  }
+  
+  private boolean h()
+  {
+    return (!TextUtils.isEmpty(this.e)) && (i());
+  }
+  
+  private boolean i()
+  {
+    Object localObject = j();
+    if (this.f.size() > 0)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.entrySet()).iterator();
+      Iterator localIterator = new ArrayList(this.f.entrySet()).iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -242,43 +237,45 @@ public class ExpandResourceDownloader
     return false;
   }
   
-  public String a()
+  private String j()
   {
-    if (a())
-    {
-      String str = b();
-      if (QLog.isColorLevel()) {
-        QLog.d("ExpandResourceDownloader", 2, String.format("getUnzipValidResourcePath=%s", new Object[] { str }));
-      }
-      return str;
-    }
-    return "";
+    return ExpandResourceUtil.b();
   }
   
-  public void a()
+  public boolean a()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
+    boolean bool1 = g();
+    boolean bool2 = h();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExpandResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+    }
+    return (bool1) && (bool2);
+  }
+  
+  public void b()
+  {
+    if ((!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.e)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ExpandResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+        QLog.d("ExpandResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { this.d, this.e }));
       }
-      Object localObject = a(this.jdField_b_of_type_JavaLangString);
-      if (!ExpandFileUtils.a((String)localObject, this.jdField_b_of_type_JavaLangString))
+      Object localObject = e(this.e);
+      if (!ExpandFileUtils.a((String)localObject, this.e))
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(2, 3))
+        if (this.h.compareAndSet(2, 3))
         {
-          c((String)localObject);
+          d((String)localObject);
           b((String)localObject);
         }
       }
       else
       {
-        boolean bool2 = c();
+        boolean bool2 = h();
         boolean bool1 = bool2;
         if (!bool2)
         {
-          bool2 = b((String)localObject, b());
-          boolean bool3 = c();
+          bool2 = b((String)localObject, j());
+          boolean bool3 = h();
           if ((bool2) && (bool3)) {
             bool1 = true;
           } else {
@@ -289,7 +286,7 @@ public class ExpandResourceDownloader
           }
           ExtendFriendReport.a().b(bool1, bool3 ^ true);
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandDownloaderExpandResourceDownloader$ResourceDownloaderListener;
+        localObject = this.c;
         if (localObject != null) {
           ((ExpandResourceDownloader.ResourceDownloaderListener)localObject).a(bool1);
         }
@@ -299,36 +296,39 @@ public class ExpandResourceDownloader
     QLog.e("ExpandResourceDownloader", 1, "downloadResource invalid parameters.");
   }
   
-  public boolean a()
-  {
-    boolean bool1 = b();
-    boolean bool2 = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("ExpandResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-    }
-    return (bool1) && (bool2);
-  }
-  
-  public void b()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController.cancelPreDownload(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
   public void c()
   {
-    if ((!a()) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 3))
+    if (!TextUtils.isEmpty(this.d)) {
+      this.b.cancelPreDownload(this.d);
+    }
+  }
+  
+  public String d()
+  {
+    if (a())
     {
-      QLog.d("ExpandResourceDownloader", 1, String.format("current downLoad status is %s, redownload resource!", new Object[] { this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger }));
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-      a();
+      String str = j();
+      if (QLog.isColorLevel()) {
+        QLog.d("ExpandResourceDownloader", 2, String.format("getUnzipValidResourcePath=%s", new Object[] { str }));
+      }
+      return str;
+    }
+    return "";
+  }
+  
+  public void e()
+  {
+    if ((!a()) && (this.h.get() != 3))
+    {
+      QLog.d("ExpandResourceDownloader", 1, String.format("current downLoad status is %s, redownload resource!", new Object[] { this.h }));
+      this.h.set(2);
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.downloader.ExpandResourceDownloader
  * JD-Core Version:    0.7.0.1
  */

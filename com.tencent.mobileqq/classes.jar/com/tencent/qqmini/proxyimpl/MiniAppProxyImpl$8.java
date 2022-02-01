@@ -17,12 +17,12 @@ class MiniAppProxyImpl$8
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMiniAppProxy$IDrawableLoadedCallBack.onLoadSuccessed(paramURLDrawable);
+    this.a.onLoadSuccessed(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.8
  * JD-Core Version:    0.7.0.1
  */

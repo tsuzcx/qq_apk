@@ -14,7 +14,7 @@ final class ETDIYUtil$1
     if ((paramBoolean) && ((paramObject instanceof GetUserDiyFontRsp)))
     {
       paramObject = ((GetUserDiyFontRsp)paramObject).url;
-      ETDIYUtil.a(this.jdField_a_of_type_JavaIoFile, paramObject, this.jdField_a_of_type_JavaLangString);
+      ETDIYUtil.a(this.a, paramObject, this.b);
     }
   }
 }

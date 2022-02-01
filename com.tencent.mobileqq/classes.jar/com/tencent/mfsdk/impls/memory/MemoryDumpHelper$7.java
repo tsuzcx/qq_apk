@@ -8,12 +8,12 @@ class MemoryDumpHelper$7
 {
   public void run()
   {
-    MagnifierSDK.a().a().a(System.currentTimeMillis(), this.a);
+    MagnifierSDK.b().c().a(System.currentTimeMillis(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.MemoryDumpHelper.7
  * JD-Core Version:    0.7.0.1
  */

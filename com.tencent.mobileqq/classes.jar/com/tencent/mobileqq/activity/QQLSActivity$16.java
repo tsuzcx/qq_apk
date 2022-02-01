@@ -13,14 +13,14 @@ class QQLSActivity$16
   {
     try
     {
-      if (QQLSActivity.a(this.this$0) == 1)
+      if (QQLSActivity.z(this.this$0) == 1)
       {
-        BaseApplicationImpl.getContext().unregisterReceiver(this.this$0.a);
+        BaseApplicationImpl.getContext().unregisterReceiver(this.this$0.s);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("unRegisterScreenListener real mScreenReceiver:");
-          localStringBuilder1.append(this.this$0.a.hashCode());
+          localStringBuilder1.append(this.this$0.s.hashCode());
           localStringBuilder1.append("context :");
           localStringBuilder1.append(BaseApplicationImpl.getContext().hashCode());
           QLog.d("QQLSActivity", 2, localStringBuilder1.toString());
@@ -48,7 +48,7 @@ class QQLSActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.16
  * JD-Core Version:    0.7.0.1
  */

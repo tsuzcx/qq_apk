@@ -105,12 +105,7 @@ public class TroopConfigHandler
     }
   }
   
-  protected String a()
-  {
-    return "TroopConfigHandler";
-  }
-  
-  public void a()
+  public void b()
   {
     if (this.appRuntime == null)
     {
@@ -136,6 +131,11 @@ public class TroopConfigHandler
     ProtoUtils.a(this.appRuntime, new TroopConfigHandler.1(this), localReqBody.toByteArray(), "OidbSvc.0x496", 1174, 0);
   }
   
+  protected String dv_()
+  {
+    return "TroopConfigHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.a == null) {
@@ -153,7 +153,7 @@ public class TroopConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopconfig.api.impl.TroopConfigHandler
  * JD-Core Version:    0.7.0.1
  */

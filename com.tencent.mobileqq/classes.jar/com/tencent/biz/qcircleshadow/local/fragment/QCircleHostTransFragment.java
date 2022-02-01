@@ -38,7 +38,7 @@ public class QCircleHostTransFragment
     if (ImmersiveUtils.isSupporImmersive() != 0)
     {
       ((QPublicFragmentActivity)getActivity()).mSystemBarComp.init();
-      ((QPublicFragmentActivity)getActivity()).mSystemBarComp.setStatusBarColor(getResources().getColor(2131167333));
+      ((QPublicFragmentActivity)getActivity()).mSystemBarComp.setStatusBarColor(getResources().getColor(2131168376));
     }
     if (getActivity() != null) {
       this.a = getActivity().hashCode();
@@ -52,7 +52,7 @@ public class QCircleHostTransFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.fragment.QCircleHostTransFragment
  * JD-Core Version:    0.7.0.1
  */

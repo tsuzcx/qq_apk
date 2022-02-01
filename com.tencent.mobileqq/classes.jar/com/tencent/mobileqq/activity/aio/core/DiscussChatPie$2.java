@@ -13,21 +13,21 @@ class DiscussChatPie$2
   
   public void onClick(View paramView)
   {
-    if ((DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie) != null) && (DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie).isShowing())) {
-      DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie).dismiss();
+    if ((DiscussChatPie.a(this.b) != null) && (DiscussChatPie.a(this.b).isShowing())) {
+      DiscussChatPie.a(this.b).dismiss();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie.a.isShowing()))
+    if ((this.b.bi != null) && (this.b.bi.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie.a.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie.a = null;
+      this.b.bi.dismiss();
+      this.b.bi = null;
     }
-    DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie, this.jdField_a_of_type_JavaLangString);
+    DiscussChatPie.a(this.b, this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.DiscussChatPie.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ class SpecailCareListActivity$9
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.c.clearAnimation();
-    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
+    this.a.m.clearAnimation();
+    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.m);
     paramAnimation = this.a;
-    paramAnimation.c = null;
-    if (paramAnimation.a != null)
+    paramAnimation.m = null;
+    if (paramAnimation.s != null)
     {
-      this.a.a.a();
-      this.a.a = null;
+      this.a.s.b();
+      this.a.s = null;
     }
   }
   
@@ -31,7 +31,7 @@ class SpecailCareListActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.9
  * JD-Core Version:    0.7.0.1
  */

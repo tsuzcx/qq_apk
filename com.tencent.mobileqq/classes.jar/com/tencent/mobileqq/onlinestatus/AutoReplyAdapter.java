@@ -34,42 +34,42 @@ import java.util.List;
 public class AutoReplyAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private AutoReplyAdapter.OnAutoReplyItemListener jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter$OnAutoReplyItemListener;
-  private ArrayList<AutoReplyText> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private AppInterface a;
+  private Context b;
+  private ArrayList<AutoReplyText> c;
+  private Drawable d;
+  private boolean e;
+  private AutoReplyAdapter.OnAutoReplyItemListener f;
+  private boolean g;
   
   public AutoReplyAdapter(AppInterface paramAppInterface, Context paramContext, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
+    this.a = paramAppInterface;
+    this.b = paramContext;
+    this.d = paramDrawable;
+    this.c = new ArrayList();
+    this.e = false;
+    this.g = false;
   }
   
   private View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558453, paramViewGroup, false);
-    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131365169);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131623989, paramViewGroup, false);
+    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131431322);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramViewGroup.getLayoutParams();
     if (getItemViewType(paramInt) == 0)
     {
-      localMarginLayoutParams.topMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298527);
-      localMarginLayoutParams.bottomMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298522);
-      paramViewGroup.setText(2131690238);
-      paramViewGroup.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131690238));
+      localMarginLayoutParams.topMargin = this.b.getResources().getDimensionPixelSize(2131299241);
+      localMarginLayoutParams.bottomMargin = this.b.getResources().getDimensionPixelSize(2131299236);
+      paramViewGroup.setText(2131887149);
+      paramViewGroup.setContentDescription(this.b.getString(2131887149));
     }
     else
     {
-      localMarginLayoutParams.bottomMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298527);
-      localMarginLayoutParams.topMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298522);
-      paramViewGroup.setText(2131690240);
-      paramViewGroup.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131690240));
+      localMarginLayoutParams.bottomMargin = this.b.getResources().getDimensionPixelSize(2131299241);
+      localMarginLayoutParams.topMargin = this.b.getResources().getDimensionPixelSize(2131299236);
+      paramViewGroup.setText(2131887151);
+      paramViewGroup.setContentDescription(this.b.getString(2131887151));
     }
     paramViewGroup.setLayoutParams(localMarginLayoutParams);
     return paramLayoutInflater;
@@ -81,36 +81,36 @@ public class AutoReplyAdapter
     if ((paramView != null) && (paramView.getTag() != null) && (paramView.getVisibility() != 8))
     {
       paramLayoutInflater = (AutoReplyAdapter.ViewHolder)paramView.getTag();
-      paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramView;
+      paramLayoutInflater.a = paramView;
     }
     else
     {
-      paramView = paramLayoutInflater.inflate(2131558449, paramViewGroup, false);
-      paramLayoutInflater = paramView.findViewById(2131365754);
-      if (QQTheme.e()) {
+      paramView = paramLayoutInflater.inflate(2131623985, paramViewGroup, false);
+      paramLayoutInflater = paramView.findViewById(2131431997);
+      if (QQTheme.isDefaultTheme()) {
         paramInt = 0;
       } else {
         paramInt = 8;
       }
       paramLayoutInflater.setVisibility(paramInt);
-      if ((!QQTheme.e()) && (!QQTheme.a())) {
-        paramView.findViewById(2131376423).setBackgroundResource(2130839443);
+      if ((!QQTheme.isDefaultTheme()) && (!QQTheme.isNowThemeIsNight())) {
+        paramView.findViewById(2131444642).setBackgroundResource(2130839632);
       }
-      paramView.findViewById(2131369951).setPadding(0, 0, 0, 0);
-      paramView.findViewById(2131376597).setVisibility(8);
-      paramViewGroup = (TextView)paramView.findViewById(2131369980);
+      paramView.findViewById(2131437100).setPadding(0, 0, 0, 0);
+      paramView.findViewById(2131444855).setVisibility(8);
+      paramViewGroup = (TextView)paramView.findViewById(2131437131);
       paramViewGroup.setEditableFactory(new AutoReplyAdapter.2(this, paramViewGroup));
       paramLayoutInflater = new AutoReplyAdapter.ViewHolder(null);
-      paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramView;
-      paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = paramViewGroup;
-      paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376568));
-      paramLayoutInflater.b = paramView.findViewById(2131365888);
-      paramLayoutInflater.c = paramView.findViewById(2131365889);
-      paramLayoutInflater.d = paramView.findViewById(2131378491);
-      paramLayoutInflater.jdField_a_of_type_AndroidViewView.setTag(paramLayoutInflater);
+      paramLayoutInflater.a = paramView;
+      paramLayoutInflater.b = paramViewGroup;
+      paramLayoutInflater.c = ((ImageView)paramView.findViewById(2131444823));
+      paramLayoutInflater.d = paramView.findViewById(2131432154);
+      paramLayoutInflater.e = paramView.findViewById(2131432155);
+      paramLayoutInflater.f = paramView.findViewById(2131447106);
+      paramLayoutInflater.a.setTag(paramLayoutInflater);
     }
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new AutoReplyAdapter.3(this, paramAutoReplyText));
-    paramLayoutInflater.b.setOnClickListener(new AutoReplyAdapter.4(this, paramAutoReplyText));
+    paramLayoutInflater.c.setOnClickListener(new AutoReplyAdapter.3(this, paramAutoReplyText));
+    paramLayoutInflater.d.setOnClickListener(new AutoReplyAdapter.4(this, paramAutoReplyText));
     boolean bool = paramAutoReplyText.getExtra().getBoolean("AutoReplyAdapter:in_use", false);
     if (paramAutoReplyText.getTextId() == 2147483647) {
       paramInt = 1;
@@ -118,8 +118,8 @@ public class AutoReplyAdapter
       paramInt = 0;
     }
     paramView = AutoReplyText.trimRawString(paramAutoReplyText.getRawText(), true);
-    int i = (int)(paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getPaint().density);
-    paramView = TextUtils.subQQTextString(paramView, paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getPaint(), 3, i, ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(67.0F), true);
+    int i = (int)(paramLayoutInflater.b.getTextSize() / paramLayoutInflater.b.getPaint().density);
+    paramView = TextUtils.subQQTextString(paramView, paramLayoutInflater.b.getPaint(), 3, i, ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(67.0F), true);
     if (QLog.isColorLevel())
     {
       paramViewGroup = new StringBuilder();
@@ -128,43 +128,35 @@ public class AutoReplyAdapter
       QLog.d("AutoReplyAdapter", 2, paramViewGroup.toString());
     }
     paramViewGroup = new QQText(paramView, 3, i);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramViewGroup);
-    paramViewGroup = paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView;
+    paramLayoutInflater.b.setText(paramViewGroup);
+    paramLayoutInflater.b.setContentDescription(paramViewGroup);
+    paramViewGroup = paramLayoutInflater.c;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131701080));
+    localStringBuilder.append(HardCodeUtil.a(2131899100));
     localStringBuilder.append(paramView);
     paramViewGroup.setContentDescription(new QQText(localStringBuilder.toString(), 3, i));
-    paramLayoutInflater.c.setOnClickListener(new AutoReplyAdapter.5(this, paramAutoReplyText, bool));
-    paramLayoutInflater.jdField_a_of_type_AndroidViewView.findViewById(2131376423).setOnClickListener(new AutoReplyAdapter.6(this, paramAutoReplyText));
-    paramViewGroup = paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView;
+    paramLayoutInflater.e.setOnClickListener(new AutoReplyAdapter.5(this, paramAutoReplyText, bool));
+    paramLayoutInflater.a.findViewById(2131444642).setOnClickListener(new AutoReplyAdapter.6(this, paramAutoReplyText));
+    paramViewGroup = paramLayoutInflater.c;
     paramView = localObject;
     if (bool) {
-      paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      paramView = this.d;
     }
     paramViewGroup.setImageDrawable(paramView);
-    paramView = paramLayoutInflater.jdField_a_of_type_AndroidViewView;
+    paramView = paramLayoutInflater.a;
     if (paramInt != 0) {
       paramInt = 0;
     } else {
       paramInt = ScreenUtil.dip2px(200.0F);
     }
     paramView.setTag(-3, Integer.valueOf(paramInt));
-    paramView = (RelativeLayout.LayoutParams)paramLayoutInflater.d.getLayoutParams();
+    paramView = (RelativeLayout.LayoutParams)paramLayoutInflater.f.getLayoutParams();
     if (paramView.leftMargin > 0)
     {
       paramView.leftMargin = 0;
-      paramLayoutInflater.d.setLayoutParams(paramView);
+      paramLayoutInflater.f.setLayoutParams(paramView);
     }
     return paramLayoutInflater;
-  }
-  
-  private void a()
-  {
-    HashSet localHashSet = new HashSet(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(localHashSet);
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
   private void a(View paramView, int paramInt)
@@ -186,7 +178,7 @@ public class AutoReplyAdapter
   
   private View b(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558447, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131623983, paramViewGroup, false);
     paramLayoutInflater.setOnClickListener(new AutoReplyAdapter.1(this));
     return paramLayoutInflater;
   }
@@ -198,7 +190,7 @@ public class AutoReplyAdapter
     }
     if (a())
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject = this.c.iterator();
       int k = 0;
       int i = 0;
       int j = 0;
@@ -211,7 +203,7 @@ public class AutoReplyAdapter
             k = 1;
           }
           ((Iterator)localObject).remove();
-          AutoReplyAdapter.OnAutoReplyItemListener localOnAutoReplyItemListener = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter$OnAutoReplyItemListener;
+          AutoReplyAdapter.OnAutoReplyItemListener localOnAutoReplyItemListener = this.f;
           if (localOnAutoReplyItemListener != null)
           {
             boolean bool;
@@ -230,31 +222,34 @@ public class AutoReplyAdapter
           i += 1;
         }
       }
-      if ((k != 0) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+      if ((k != 0) && (!this.c.isEmpty()))
       {
-        localObject = (AutoReplyText)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        localObject = (AutoReplyText)this.c.get(0);
         if (localObject != null) {
           a(((AutoReplyText)localObject).getTextId());
         }
       }
       if (j != 0)
       {
-        this.b = true;
+        this.g = true;
         notifyDataSetChanged();
       }
     }
   }
   
-  public ArrayList<AutoReplyText> a()
+  private void d()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    HashSet localHashSet = new HashSet(this.c);
+    this.c.clear();
+    this.c.addAll(localHashSet);
+    Collections.sort(this.c);
   }
   
   public void a(int paramInt)
   {
     if (a())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       Object localObject1 = null;
       Object localObject2 = null;
       boolean bool1;
@@ -297,8 +292,8 @@ public class AutoReplyAdapter
         if (localObject2 == null) {
           bool1 = false;
         }
-        this.b = bool1;
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter$OnAutoReplyItemListener;
+        this.g = bool1;
+        localObject3 = this.f;
         if (localObject3 != null) {
           ((AutoReplyAdapter.OnAutoReplyItemListener)localObject3).a(localObject1, localObject2);
         }
@@ -314,7 +309,7 @@ public class AutoReplyAdapter
       if (paramAutoReplyText.getTextId() == 2147483647) {
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       label32:
       AutoReplyText localAutoReplyText;
       for (Object localObject = null; localIterator.hasNext(); localObject = localAutoReplyText)
@@ -329,31 +324,31 @@ public class AutoReplyAdapter
       if ((localObject != null) && (((AutoReplyText)localObject).getExtra().getBoolean("AutoReplyAdapter:in_use", false))) {
         paramAutoReplyText.getExtra().putBoolean("AutoReplyAdapter:in_use", true);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramAutoReplyText);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter$OnAutoReplyItemListener;
+      this.c.add(paramAutoReplyText);
+      localObject = this.f;
       if (localObject != null) {
         ((AutoReplyAdapter.OnAutoReplyItemListener)localObject).a(paramAutoReplyText);
       }
-      a();
-      this.b = true;
+      d();
+      this.g = true;
       notifyDataSetChanged();
     }
   }
   
   public void a(@Nullable AutoReplyAdapter.OnAutoReplyItemListener paramOnAutoReplyItemListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoReplyAdapter$OnAutoReplyItemListener = paramOnAutoReplyItemListener;
+    this.f = paramOnAutoReplyItemListener;
   }
   
   public void a(List<AutoReplyText> paramList)
   {
     if (a())
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.c.clear();
       int i;
       if ((paramList != null) && (!paramList.isEmpty()))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+        this.c.addAll(paramList);
         paramList = paramList.iterator();
         i = 0;
         while (paramList.hasNext())
@@ -364,7 +359,7 @@ public class AutoReplyAdapter
           }
           localAutoReplyText.getExtra().putBoolean("AutoReplyAdapter:in_use", false);
         }
-        a();
+        d();
       }
       else
       {
@@ -372,7 +367,7 @@ public class AutoReplyAdapter
       }
       notifyDataSetChanged();
       a(i);
-      this.b = false;
+      this.g = false;
     }
   }
   
@@ -380,7 +375,7 @@ public class AutoReplyAdapter
   {
     if (a())
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.e = paramBoolean;
       notifyDataSetChanged();
     }
   }
@@ -397,13 +392,18 @@ public class AutoReplyAdapter
   
   public boolean b()
   {
-    return this.b;
+    return this.g;
+  }
+  
+  public ArrayList<AutoReplyText> c()
+  {
+    return this.c;
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size() + 1 + 1 + 1;
+    if (this.e) {
+      return this.c.size() + 1 + 1 + 1;
     }
     return 0;
   }
@@ -411,8 +411,8 @@ public class AutoReplyAdapter
   @Nullable
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 1) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt - 1);
+    if ((paramInt >= 1) && (paramInt <= this.c.size())) {
+      return this.c.get(paramInt - 1);
     }
     return null;
   }
@@ -427,13 +427,13 @@ public class AutoReplyAdapter
     if ((paramInt >= 0) && (paramInt < 1)) {
       return 0;
     }
-    if (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() + 1) {
+    if (paramInt == this.c.size() + 1) {
       return 3;
     }
-    if ((paramInt >= 1) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+    if ((paramInt >= 1) && (paramInt <= this.c.size())) {
       return 1;
     }
-    if (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() + 1 + 1) {
+    if (paramInt == this.c.size() + 1 + 1) {
       return 4;
     }
     return 1;
@@ -441,7 +441,7 @@ public class AutoReplyAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    LayoutInflater localLayoutInflater = LayoutInflater.from(this.b);
     View localView;
     if ((getItemViewType(paramInt) != 0) && (getItemViewType(paramInt) != 4))
     {
@@ -454,7 +454,7 @@ public class AutoReplyAdapter
         AutoReplyText localAutoReplyText = (AutoReplyText)getItem(paramInt);
         localView = paramView;
         if (localAutoReplyText != null) {
-          localView = a(localLayoutInflater, paramInt, paramView, paramViewGroup, localAutoReplyText).jdField_a_of_type_AndroidViewView;
+          localView = a(localLayoutInflater, paramInt, paramView, paramViewGroup, localAutoReplyText).a;
         }
       }
     }
@@ -472,7 +472,7 @@ public class AutoReplyAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,15 +7,12 @@ class a$3
   
   public void run()
   {
-    a.b(this.a, System.currentTimeMillis());
-    a.f(this.a);
-    a.g(this.a);
-    a.h(this.a);
+    a.d(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.a.3
  * JD-Core Version:    0.7.0.1
  */

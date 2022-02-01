@@ -23,7 +23,7 @@ public class OfflineComplementFileStringLoader
     {
       Object localObject = this.a.a(paramString);
       if (localObject != null) {
-        return OfflineUtils.a((InputStream)localObject);
+        return OfflineUtils.b((InputStream)localObject);
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString);
@@ -46,7 +46,7 @@ public class OfflineComplementFileStringLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.OfflineComplementFileStringLoader
  * JD-Core Version:    0.7.0.1
  */

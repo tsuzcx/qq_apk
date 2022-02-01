@@ -28,7 +28,7 @@ public class VideoPredownloadManager
     }
   }
   
-  public static boolean a(String paramString)
+  public static boolean b(String paramString)
   {
     Object localObject1 = TVK_SDKMgr.getProxyFactory();
     if (localObject1 == null) {
@@ -84,7 +84,7 @@ public class VideoPredownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPredownloadManager
  * JD-Core Version:    0.7.0.1
  */

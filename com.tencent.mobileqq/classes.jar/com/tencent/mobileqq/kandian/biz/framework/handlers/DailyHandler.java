@@ -18,16 +18,14 @@ import org.jetbrains.annotations.Nullable;
 public class DailyHandler
   extends BaseHandler
 {
-  public void a() {}
-  
   public void a(@Nullable View paramView, @Nullable ListView paramListView) {}
   
   public void a(View paramView, ListView paramListView, long paramLong) {}
   
   public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (AbsBaseArticleInfo)a((int)paramLong);
-    if (DailyModeConfigHandler.c(a()))
+    paramAdapterView = (AbsBaseArticleInfo)b((int)paramLong);
+    if (DailyModeConfigHandler.c(c()))
     {
       if (RIJFeedsType.a(paramAdapterView)) {
         paramInt = 4;
@@ -41,9 +39,9 @@ public class DailyHandler
   public void a(Map<Long, ? extends BaseReportData> paramMap, boolean paramBoolean)
   {
     super.a(paramMap, paramBoolean);
-    if (DailyModeConfigHandler.c(a()))
+    if (DailyModeConfigHandler.c(c()))
     {
-      paramMap = a();
+      paramMap = g();
       if (!RIJShowKanDianTabSp.d())
       {
         QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
@@ -52,26 +50,28 @@ public class DailyHandler
       if (paramMap == null) {
         return;
       }
-      ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a()));
+      ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.z()));
     }
   }
   
-  public void b() {}
+  public void j() {}
   
-  public void c() {}
+  public void k() {}
   
-  public int d()
+  public void l() {}
+  
+  public void m() {}
+  
+  public void n() {}
+  
+  public int s()
   {
     return 3;
   }
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.DailyHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class KandianMergeManager$27
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.this$0), 1).edit();
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.c(this.this$0), 1).edit();
     localEditor.remove("kandian_push_msg_xml").remove("kandian_push_msg_time");
     RIJSPUtils.a(localEditor, true);
     RIJSPUtils.a("kandian_lock_screen_push_info", true);
@@ -20,7 +20,7 @@ class KandianMergeManager$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.27
  * JD-Core Version:    0.7.0.1
  */

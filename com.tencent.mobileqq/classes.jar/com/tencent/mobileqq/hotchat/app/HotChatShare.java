@@ -77,19 +77,19 @@ public class HotChatShare
       localObject3 = this.mInfo.getName();
       localObject4 = this.mInfo.getTroopUin();
       localObject5 = new StringBuilder();
-      ((StringBuilder)localObject5).append(HardCodeUtil.a(2131705686));
+      ((StringBuilder)localObject5).append(HardCodeUtil.a(2131903571));
       ((StringBuilder)localObject5).append(this.mInfo.getName());
-      ((StringBuilder)localObject5).append(HardCodeUtil.a(2131705681));
-      HotChatHelper.a(2, (QQAppInterface)localObject1, (BaseActivity)localObject2, (String)localObject3, (String)localObject4, str2, str1, ((StringBuilder)localObject5).toString(), HardCodeUtil.a(2131705683), null, null);
+      ((StringBuilder)localObject5).append(HardCodeUtil.a(2131903566));
+      HotChatHelper.a(2, (QQAppInterface)localObject1, (BaseActivity)localObject2, (String)localObject3, (String)localObject4, str2, str1, ((StringBuilder)localObject5).toString(), HardCodeUtil.a(2131903568), null, null);
       return;
     }
-    Object localObject1 = HardCodeUtil.a(2131705680);
+    Object localObject1 = HardCodeUtil.a(2131903565);
     if (!TextUtils.isEmpty(this.ownerNickname))
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131705684));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131903569));
       ((StringBuilder)localObject1).append(this.ownerNickname);
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131705685));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131903570));
       localObject1 = ((StringBuilder)localObject1).toString();
     }
     Object localObject2 = this.app.getCustomFaceFilePath(32, this.mInfo.getOwnerUin(), 200);
@@ -98,9 +98,9 @@ public class HotChatShare
     Object localObject5 = this.mInfo.getName();
     String str3 = this.mInfo.getTroopUin();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131705679));
+    localStringBuilder.append(HardCodeUtil.a(2131903564));
     localStringBuilder.append(this.mInfo.getName());
-    localStringBuilder.append(HardCodeUtil.a(2131705682));
+    localStringBuilder.append(HardCodeUtil.a(2131903567));
     HotChatHelper.a(2, (QQAppInterface)localObject3, (BaseActivity)localObject4, (String)localObject5, str3, str2, str1, localStringBuilder.toString(), (String)localObject1, this.ownerHeadUrl, (String)localObject2);
   }
   
@@ -120,7 +120,7 @@ public class HotChatShare
       return;
     }
     this.currentState = 0;
-    this.ownerNickname = ContactUtils.g(this.app, this.mInfo.getOwnerUin());
+    this.ownerNickname = ContactUtils.h(this.app, this.mInfo.getOwnerUin());
     if (!TextUtils.isEmpty(this.ownerNickname)) {
       this.currentState = 1;
     }
@@ -192,7 +192,7 @@ public class HotChatShare
       if (this.mLoading == null)
       {
         this.mLoading = new QQProgressDialog(this.mBaseActivity, this.mBaseActivity.getTitleBarHeight());
-        this.mLoading.c(2131694668);
+        this.mLoading.c(2131892360);
       }
       this.mLoading.show();
       return;
@@ -207,7 +207,7 @@ public class HotChatShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.app.HotChatShare
  * JD-Core Version:    0.7.0.1
  */

@@ -132,7 +132,7 @@ public class EmoticonPanelExtendHelper
   
   public int getSearchAnimHeight()
   {
-    return sMaxPanelHeight + ViewUtils.a(35.0F);
+    return sMaxPanelHeight + ViewUtils.dip2px(35.0F);
   }
   
   public String getTag()
@@ -442,7 +442,7 @@ public class EmoticonPanelExtendHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelExtendHelper
  * JD-Core Version:    0.7.0.1
  */

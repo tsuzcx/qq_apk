@@ -11,16 +11,14 @@ import org.jetbrains.annotations.Nullable;
 public final class BottomSelectorLayout$addCountChangeTextView$$inlined$addTextChangedListener$1
   implements TextWatcher
 {
-  public BottomSelectorLayout$addCountChangeTextView$$inlined$addTextChangedListener$1(BottomSelectorLayout paramBottomSelectorLayout) {}
-  
   public void afterTextChanged(@Nullable Editable paramEditable)
   {
     if (Integer.parseInt(String.valueOf(paramEditable)) < 0)
     {
-      BottomSelectorLayout.a(this.a).setTextColor(Color.parseColor("#F44837"));
+      BottomSelectorLayout.c(this.a).setTextColor(Color.parseColor("#F44837"));
       return;
     }
-    BottomSelectorLayout.a(this.a).setTextColor(Color.parseColor("#AAAAAA"));
+    BottomSelectorLayout.c(this.a).setTextColor(Color.parseColor("#AAAAAA"));
   }
   
   public void beforeTextChanged(@Nullable CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -29,7 +27,7 @@ public final class BottomSelectorLayout$addCountChangeTextView$$inlined$addTextC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addCountChangeTextView..inlined.addTextChangedListener.1
  * JD-Core Version:    0.7.0.1
  */

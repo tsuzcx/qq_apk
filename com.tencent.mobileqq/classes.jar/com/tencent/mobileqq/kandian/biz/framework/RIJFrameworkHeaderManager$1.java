@@ -12,22 +12,22 @@ class RIJFrameworkHeaderManager$1
   
   public void run()
   {
-    RIJFrameworkHeaderManager.a(this.this$0).i();
-    int i = this.jdField_a_of_type_AndroidViewView.getHeight();
+    RIJFrameworkHeaderManager.a(this.this$0).k();
+    int i = this.a.getHeight();
     StringBuilder localStringBuilder;
-    if ((i != this.jdField_a_of_type_Int) && (QLog.isColorLevel()))
+    if ((i != this.b) && (QLog.isColorLevel()))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("initUI 看点 mListView.setPadding error: statusLineHeight not equal heightDef;statusLineHeight=");
       localStringBuilder.append(i);
       localStringBuilder.append(",h = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.d("RIJFrameworkReportManager", 2, localStringBuilder.toString());
     }
-    if (i > this.jdField_a_of_type_Int)
+    if (i > this.b)
     {
-      this.b.setPadding(0, i, 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.setPadding(0, i, 0, 0);
+      this.c.setPadding(0, i, 0, 0);
+      this.d.setPadding(0, i, 0, 0);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -40,7 +40,7 @@ class RIJFrameworkHeaderManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJFrameworkHeaderManager.1
  * JD-Core Version:    0.7.0.1
  */

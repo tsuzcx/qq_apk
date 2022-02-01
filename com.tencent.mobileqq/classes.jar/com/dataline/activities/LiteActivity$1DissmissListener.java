@@ -9,7 +9,7 @@ class LiteActivity$1DissmissListener
   
   public void onDismiss()
   {
-    this.a.a = null;
+    this.a.Q = null;
   }
 }
 

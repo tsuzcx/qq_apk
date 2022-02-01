@@ -7,12 +7,12 @@ class TXCStreamDownloader$3
   
   public void run()
   {
-    TXCStreamDownloader.access$1200(this.a);
+    TXCStreamDownloader.access$1300(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.TXCStreamDownloader.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,16 @@ class QRDisplayActivity$27
   public void onFinish()
   {
     QRDisplayActivity.a(this.a, true);
-    if (QRDisplayActivity.a(this.a) == null)
+    if (QRDisplayActivity.f(this.a) == null)
     {
-      QRDisplayActivity.b(this.a);
+      QRDisplayActivity.g(this.a);
       if (QLog.isColorLevel()) {
         QLog.d("QRDisplayActivity", 4, "enter longclick");
       }
     }
-    else if (QRDisplayActivity.a(this.a) != null)
+    else if (QRDisplayActivity.f(this.a) != null)
     {
-      QRDisplayActivity.c(this.a);
+      QRDisplayActivity.h(this.a);
       if (QLog.isColorLevel()) {
         QLog.d("QRDisplayActivity", 4, "enter longclickstop");
       }

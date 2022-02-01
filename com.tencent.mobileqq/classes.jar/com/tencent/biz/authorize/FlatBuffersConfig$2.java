@@ -14,7 +14,7 @@ class FlatBuffersConfig$2
     for (;;)
     {
       if (i < 3) {
-        if (this.this$0.a(this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean)) {
+        if (this.this$0.a(this.a, this.b, this.c)) {
           return;
         }
       }

@@ -1,6 +1,5 @@
 package com.tencent.tkd.weibo.tweetTopic;
 
-import android.content.Context;
 import com.tencent.tkd.topicsdk.bean.TweetTopicItem;
 import com.tencent.tkd.weibo.utils.Utils;
 import kotlin.Metadata;
@@ -15,7 +14,7 @@ final class TweetTopicView$initSearchResultView$$inlined$apply$lambda$1
   extends Lambda
   implements Function1<TweetTopicItem, Unit>
 {
-  TweetTopicView$initSearchResultView$$inlined$apply$lambda$1(TweetTopicView paramTweetTopicView, Context paramContext)
+  TweetTopicView$initSearchResultView$$inlined$apply$lambda$1(TweetTopicView paramTweetTopicView)
   {
     super(1);
   }
@@ -28,7 +27,7 @@ final class TweetTopicView$initSearchResultView$$inlined$apply$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.TweetTopicView.initSearchResultView..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,20 +17,20 @@ public class DislikeInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<DislikeInfo> CREATOR = new DislikeInfo.1();
-  public long a;
-  public String a;
-  public byte[] a;
-  public String b;
-  public int c;
+  public String c;
+  public int d;
+  public long e;
+  public String f;
+  public byte[] g;
   
   public DislikeInfo() {}
   
   protected DislikeInfo(Parcel paramParcel)
   {
-    this.c = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readLong();
+    this.c = paramParcel.readString();
+    this.f = paramParcel.readString();
   }
   
   public static String a(ArrayList<DislikeInfo> paramArrayList)
@@ -52,7 +52,7 @@ public class DislikeInfo
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
-        ((StringBuilder)localObject2).append(PkgTools.toHexStr(((DislikeInfo)paramArrayList.get(i)).jdField_a_of_type_ArrayOfByte));
+        ((StringBuilder)localObject2).append(PkgTools.toHexStr(((DislikeInfo)paramArrayList.get(i)).g));
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject1 = localObject2;
         if (i != j - 1)
@@ -98,20 +98,20 @@ public class DislikeInfo
   
   public void a(articlesummary.DisLikeInfo paramDisLikeInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramDisLikeInfo.bytes_dislike_describe.get().toStringUtf8();
-    this.c = paramDisLikeInfo.type.get();
-    this.b = paramDisLikeInfo.bytes_dislike_account_id.get().toStringUtf8();
-    this.jdField_a_of_type_Long = paramDisLikeInfo.uint64_dislike_tagid.get();
-    this.jdField_a_of_type_ArrayOfByte = paramDisLikeInfo.toByteArray();
+    this.c = paramDisLikeInfo.bytes_dislike_describe.get().toStringUtf8();
+    this.d = paramDisLikeInfo.type.get();
+    this.f = paramDisLikeInfo.bytes_dislike_account_id.get().toStringUtf8();
+    this.e = paramDisLikeInfo.uint64_dislike_tagid.get();
+    this.g = paramDisLikeInfo.toByteArray();
   }
   
   public void a(oidb_0x6cf.DisLikeInfo paramDisLikeInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramDisLikeInfo.bytes_dislike_describe.get().toStringUtf8();
-    this.c = paramDisLikeInfo.type.get();
-    this.b = paramDisLikeInfo.bytes_dislike_account_id.get().toStringUtf8();
-    this.jdField_a_of_type_Long = paramDisLikeInfo.uint64_dislike_tagid.get();
-    this.jdField_a_of_type_ArrayOfByte = paramDisLikeInfo.toByteArray();
+    this.c = paramDisLikeInfo.bytes_dislike_describe.get().toStringUtf8();
+    this.d = paramDisLikeInfo.type.get();
+    this.f = paramDisLikeInfo.bytes_dislike_account_id.get().toStringUtf8();
+    this.e = paramDisLikeInfo.uint64_dislike_tagid.get();
+    this.g = paramDisLikeInfo.toByteArray();
   }
   
   public int describeContents()
@@ -123,11 +123,11 @@ public class DislikeInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DislikeInfo{type=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", tagID=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", describe='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -135,15 +135,15 @@ public class DislikeInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.c);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeLong(this.e);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo
  * JD-Core Version:    0.7.0.1
  */

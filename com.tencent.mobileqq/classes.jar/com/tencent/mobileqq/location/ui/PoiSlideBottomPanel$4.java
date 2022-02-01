@@ -16,29 +16,29 @@ class PoiSlideBottomPanel$4
     Object localObject = paramValueAnimator.getAnimatedValue();
     if ((localObject instanceof Float))
     {
-      paramValueAnimator = this.jdField_a_of_type_AndroidViewView;
+      paramValueAnimator = this.a;
       localObject = (Float)localObject;
       paramValueAnimator.setY(((Float)localObject).floatValue());
       if (QLog.isColorLevel())
       {
         paramValueAnimator = new StringBuilder();
         paramValueAnimator.append("[panel] onAnimationUpdate: hide invoked. org: ");
-        paramValueAnimator.append(this.jdField_a_of_type_Float);
+        paramValueAnimator.append(this.b);
         paramValueAnimator.append(" dest: ");
-        paramValueAnimator.append(this.jdField_a_of_type_Int);
+        paramValueAnimator.append(this.c);
         paramValueAnimator.append(" value: ");
-        paramValueAnimator.append(this.jdField_a_of_type_AndroidViewView.getY());
+        paramValueAnimator.append(this.a.getY());
         QLog.d("PoiSlideBottomPanel", 2, paramValueAnimator.toString());
       }
-      if (PoiSlideBottomPanel.g(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel) != null) {
-        PoiSlideBottomPanel.h(this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel).fadeBackground(1.0F - ((Float)localObject).floatValue() / this.jdField_a_of_type_Int);
+      if (PoiSlideBottomPanel.i(this.d) != null) {
+        PoiSlideBottomPanel.j(this.d).fadeBackground(1.0F - ((Float)localObject).floatValue() / this.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.PoiSlideBottomPanel.4
  * JD-Core Version:    0.7.0.1
  */

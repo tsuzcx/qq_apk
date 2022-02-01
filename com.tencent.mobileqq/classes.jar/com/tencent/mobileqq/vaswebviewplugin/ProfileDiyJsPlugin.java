@@ -65,13 +65,13 @@ public class ProfileDiyJsPlugin
           long l = paramString1.optLong("id");
           paramString2 = paramString1.optString("url");
           paramString1 = paramString1.optString("defaultText");
-          paramString3 = new Intent(this.mRuntime.a(), VipProfileCardDiyActivity.class);
+          paramString3 = new Intent(this.mRuntime.d(), VipProfileCardDiyActivity.class);
           paramString3.putExtra("extra_from", 2);
           paramString3.putExtra("extra_card_id", l);
           paramString3.putExtra("extra_card_url", paramString2);
           paramString3.putExtra("extra_card_text", paramString1);
           paramString3.putExtra("extra_card_default_text", paramString1);
-          this.mRuntime.a().startActivity(paramString3);
+          this.mRuntime.d().startActivity(paramString3);
           if (!TextUtils.isEmpty(paramJsBridgeListener))
           {
             paramString1 = new StringBuilder();
@@ -105,7 +105,7 @@ public class ProfileDiyJsPlugin
       paramBundle.getString("callbackid");
       paramBundle = paramBundle.getBundle("response");
       if (paramBundle != null) {
-        paramBundle.setClassLoader(this.mRuntime.a().getClassLoader());
+        paramBundle.setClassLoader(this.mRuntime.d().getClassLoader());
       }
       if (QLog.isColorLevel())
       {
@@ -119,7 +119,7 @@ public class ProfileDiyJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ProfileDiyJsPlugin
  * JD-Core Version:    0.7.0.1
  */

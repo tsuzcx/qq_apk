@@ -4,9 +4,9 @@ import android.graphics.Rect;
 
 public class ETTextRange
 {
-  public int a;
-  public Rect a;
   public String a;
+  public int b;
+  public Rect c;
 }
 
 

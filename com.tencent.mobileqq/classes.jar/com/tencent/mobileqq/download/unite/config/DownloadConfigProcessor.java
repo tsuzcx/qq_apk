@@ -12,7 +12,7 @@ public class DownloadConfigProcessor
 {
   public static DownloadConfigBean a()
   {
-    return (DownloadConfigBean)QConfigManager.a().a(692);
+    return (DownloadConfigBean)QConfigManager.b().b(692);
   }
   
   @NonNull
@@ -72,7 +72,7 @@ public class DownloadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.config.DownloadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class NotificationActivity$33
   public void onClick(View paramView)
   {
     Object localObject = this.a;
-    localObject = DialogUtil.a((Context)localObject, ((NotificationActivity)localObject).getResources().getDrawable(2130849933), 2131692071);
+    localObject = DialogUtil.a((Context)localObject, ((NotificationActivity)localObject).getResources().getDrawable(2130851670), 2131889040);
     ((ProgressDialog)localObject).setOnDismissListener(new NotificationActivity.33.1(this));
     NotificationActivity.access$100().a((BaseQQAppInterface)this.a.getAppRuntime(), (ProgressDialog)localObject);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -26,7 +26,7 @@ class NotificationActivity$33
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.33
  * JD-Core Version:    0.7.0.1
  */

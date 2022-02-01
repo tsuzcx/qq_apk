@@ -31,124 +31,124 @@ class BorderDrawable
   extends Drawable
 {
   @Dimension
-  float jdField_a_of_type_Float;
-  @ColorInt
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  float a;
+  private final ShapeAppearancePathProvider b = ShapeAppearancePathProvider.a();
   @NonNull
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final BorderDrawable.BorderState jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonBorderDrawable$BorderState = new BorderDrawable.BorderState(this, null);
-  private ShapeAppearanceModel jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  private final ShapeAppearancePathProvider jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider = ShapeAppearancePathProvider.a();
-  private boolean jdField_a_of_type_Boolean = true;
+  private final Paint c;
+  private final Path d = new Path();
+  private final Rect e = new Rect();
+  private final RectF f = new RectF();
+  private final RectF g = new RectF();
+  private final BorderDrawable.BorderState h = new BorderDrawable.BorderState(this, null);
   @ColorInt
-  private int jdField_b_of_type_Int;
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private int i;
   @ColorInt
-  private int c;
+  private int j;
   @ColorInt
-  private int d;
+  private int k;
   @ColorInt
-  private int e;
+  private int l;
+  @ColorInt
+  private int m;
+  private boolean n = true;
+  private ShapeAppearanceModel o;
+  @Nullable
+  private ColorStateList p;
   
   BorderDrawable(ShapeAppearanceModel paramShapeAppearanceModel)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = paramShapeAppearanceModel;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.o = paramShapeAppearanceModel;
+    this.c = new Paint(1);
+    this.c.setStyle(Paint.Style.STROKE);
   }
   
   @NonNull
-  private Shader a()
+  private Shader b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    Object localObject = this.e;
     copyBounds((Rect)localObject);
-    float f1 = this.jdField_a_of_type_Float / ((Rect)localObject).height();
-    int i = ColorUtils.compositeColors(this.jdField_a_of_type_Int, this.e);
-    int j = ColorUtils.compositeColors(this.jdField_b_of_type_Int, this.e);
-    int k = ColorUtils.compositeColors(ColorUtils.setAlphaComponent(this.jdField_b_of_type_Int, 0), this.e);
-    int m = ColorUtils.compositeColors(ColorUtils.setAlphaComponent(this.d, 0), this.e);
-    int n = ColorUtils.compositeColors(this.d, this.e);
-    int i1 = ColorUtils.compositeColors(this.c, this.e);
+    float f1 = this.a / ((Rect)localObject).height();
+    int i1 = ColorUtils.compositeColors(this.i, this.m);
+    int i2 = ColorUtils.compositeColors(this.j, this.m);
+    int i3 = ColorUtils.compositeColors(ColorUtils.setAlphaComponent(this.j, 0), this.m);
+    int i4 = ColorUtils.compositeColors(ColorUtils.setAlphaComponent(this.l, 0), this.m);
+    int i5 = ColorUtils.compositeColors(this.l, this.m);
+    int i6 = ColorUtils.compositeColors(this.k, this.m);
     float f2 = ((Rect)localObject).top;
     float f3 = ((Rect)localObject).bottom;
     localObject = Shader.TileMode.CLAMP;
-    return new LinearGradient(0.0F, f2, 0.0F, f3, new int[] { i, j, k, m, n, i1 }, new float[] { 0.0F, f1, 0.5F, 0.5F, 1.0F - f1, 1.0F }, (Shader.TileMode)localObject);
+    return new LinearGradient(0.0F, f2, 0.0F, f3, new int[] { i1, i2, i3, i4, i5, i6 }, new float[] { 0.0F, f1, 0.5F, 0.5F, 1.0F - f1, 1.0F }, (Shader.TileMode)localObject);
   }
   
   @NonNull
   protected RectF a()
   {
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(getBounds());
-    return this.jdField_b_of_type_AndroidGraphicsRectF;
+    this.g.set(getBounds());
+    return this.g;
   }
   
   public void a(@Dimension float paramFloat)
   {
-    if (this.jdField_a_of_type_Float != paramFloat)
+    if (this.a != paramFloat)
     {
-      this.jdField_a_of_type_Float = paramFloat;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(paramFloat * 1.3333F);
-      this.jdField_a_of_type_Boolean = true;
+      this.a = paramFloat;
+      this.c.setStrokeWidth(paramFloat * 1.3333F);
+      this.n = true;
       invalidateSelf();
     }
   }
   
   void a(@ColorInt int paramInt1, @ColorInt int paramInt2, @ColorInt int paramInt3, @ColorInt int paramInt4)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    this.i = paramInt1;
+    this.j = paramInt2;
+    this.k = paramInt3;
+    this.l = paramInt4;
   }
   
   void a(@Nullable ColorStateList paramColorStateList)
   {
     if (paramColorStateList != null) {
-      this.e = paramColorStateList.getColorForState(getState(), this.e);
+      this.m = paramColorStateList.getColorForState(getState(), this.m);
     }
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_Boolean = true;
+    this.p = paramColorStateList;
+    this.n = true;
     invalidateSelf();
   }
   
   public void a(ShapeAppearanceModel paramShapeAppearanceModel)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = paramShapeAppearanceModel;
+    this.o = paramShapeAppearanceModel;
     invalidateSelf();
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.n)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(a());
-      this.jdField_a_of_type_Boolean = false;
+      this.c.setShader(b());
+      this.n = false;
     }
-    float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.getStrokeWidth() / 2.0F;
-    copyBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRect);
-    float f2 = Math.min(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel.a().a(a()), this.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F);
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel.a(a()))
+    float f1 = this.c.getStrokeWidth() / 2.0F;
+    copyBounds(this.e);
+    this.f.set(this.e);
+    float f2 = Math.min(this.o.f().a(a()), this.f.width() / 2.0F);
+    if (this.o.a(a()))
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF.inset(f1, f1);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, f2, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.f.inset(f1, f1);
+      paramCanvas.drawRoundRect(this.f, f2, f2, this.c);
     }
   }
   
   @Nullable
   public Drawable.ConstantState getConstantState()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonBorderDrawable$BorderState;
+    return this.h;
   }
   
   public int getOpacity()
   {
-    if (this.jdField_a_of_type_Float > 0.0F) {
+    if (this.a > 0.0F) {
       return -3;
     }
     return -2;
@@ -157,74 +157,74 @@ class BorderDrawable
   @TargetApi(21)
   public void getOutline(@NonNull Outline paramOutline)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel.a(a()))
+    if (this.o.a(a()))
     {
-      float f = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel.a().a(a());
-      paramOutline.setRoundRect(getBounds(), f);
+      float f1 = this.o.f().a(a());
+      paramOutline.setRoundRect(getBounds(), f1);
       return;
     }
-    copyBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_AndroidGraphicsRect);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel, 1.0F, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPath);
-    if (this.jdField_a_of_type_AndroidGraphicsPath.isConvex()) {
-      paramOutline.setConvexPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    copyBounds(this.e);
+    this.f.set(this.e);
+    this.b.a(this.o, 1.0F, this.f, this.d);
+    if (this.d.isConvex()) {
+      paramOutline.setConvexPath(this.d);
     }
   }
   
   public boolean getPadding(@NonNull Rect paramRect)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel.a(a()))
+    if (this.o.a(a()))
     {
-      int i = Math.round(this.jdField_a_of_type_Float);
-      paramRect.set(i, i, i, i);
+      int i1 = Math.round(this.a);
+      paramRect.set(i1, i1, i1, i1);
     }
     return true;
   }
   
   public boolean isStateful()
   {
-    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    ColorStateList localColorStateList = this.p;
     return ((localColorStateList != null) && (localColorStateList.isStateful())) || (super.isStateful());
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.n = true;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    ColorStateList localColorStateList = this.p;
     if (localColorStateList != null)
     {
-      int i = localColorStateList.getColorForState(paramArrayOfInt, this.e);
-      if (i != this.e)
+      int i1 = localColorStateList.getColorForState(paramArrayOfInt, this.m);
+      if (i1 != this.m)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.e = i;
+        this.n = true;
+        this.m = i1;
       }
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.n) {
       invalidateSelf();
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.n;
   }
   
   public void setAlpha(@IntRange(from=0L, to=255L) int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.c.setAlpha(paramInt);
     invalidateSelf();
   }
   
   public void setColorFilter(@Nullable ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.c.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.BorderDrawable
  * JD-Core Version:    0.7.0.1
  */

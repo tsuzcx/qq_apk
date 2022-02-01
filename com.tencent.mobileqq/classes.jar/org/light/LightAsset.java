@@ -12,12 +12,15 @@ public class LightAsset
   
   public static native LightAsset Load(String paramString, int paramInt);
   
+  public static native LightAsset LoadFromString(String paramString1, String paramString2, int paramInt);
+  
   private static native void nativeInit();
   
   public native long duration();
   
   protected void finalize()
   {
+    nativeFinalize();
     super.finalize();
   }
   
@@ -25,7 +28,11 @@ public class LightAsset
   
   public native String[] getBoundsTrackerPlaceHolders();
   
+  public native int getDefaultCameraPosition();
+  
   public native FontAsset[] getFontAssets();
+  
+  public native LUTPlaceHolder[] getLUTPlaceHolders();
   
   public native int getVoiceEnvironment();
   
@@ -88,7 +95,7 @@ public class LightAsset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.LightAsset
  * JD-Core Version:    0.7.0.1
  */

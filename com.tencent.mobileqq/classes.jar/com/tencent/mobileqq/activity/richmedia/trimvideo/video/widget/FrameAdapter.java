@@ -8,28 +8,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class FrameAdapter
 {
-  private FrameAdapter.DataSetChangeListener jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter$DataSetChangeListener;
-  private ConcurrentHashMap<Integer, FramesProcessor.Frame> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, FramesProcessor.Frame> a = new ConcurrentHashMap();
+  private FrameAdapter.DataSetChangeListener b;
   
   public FrameAdapter(FrameAdapter.DataSetChangeListener paramDataSetChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter$DataSetChangeListener = paramDataSetChangeListener;
+    this.b = paramDataSetChangeListener;
   }
   
   public FramesProcessor.Frame a(int paramInt)
   {
-    return (FramesProcessor.Frame)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      FramesProcessor.Frame localFrame = (FramesProcessor.Frame)localIterator.next();
-      localFrame.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      localFrame.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
+    return (FramesProcessor.Frame)this.a.get(Integer.valueOf(paramInt));
   }
   
   public void a(FramesProcessor.Frame paramFrame)
@@ -38,11 +27,11 @@ public class FrameAdapter
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addFrame, index=");
-      localStringBuilder.append(paramFrame.jdField_a_of_type_Int);
+      localStringBuilder.append(paramFrame.b);
       QLog.d("FrameAdapter", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramFrame.jdField_a_of_type_Int), paramFrame);
-    paramFrame = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter$DataSetChangeListener;
+    this.a.putIfAbsent(Integer.valueOf(paramFrame.b), paramFrame);
+    paramFrame = this.b;
     if (paramFrame != null) {
       paramFrame.a();
     }
@@ -50,17 +39,28 @@ public class FrameAdapter
   
   public boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
+    return this.a.size() == 0;
   }
   
-  public boolean a(int paramInt)
+  public void b()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext())
+    {
+      FramesProcessor.Frame localFrame = (FramesProcessor.Frame)localIterator.next();
+      localFrame.a.recycle();
+      localFrame.a = null;
+    }
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return this.a.containsKey(Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FrameAdapter
  * JD-Core Version:    0.7.0.1
  */

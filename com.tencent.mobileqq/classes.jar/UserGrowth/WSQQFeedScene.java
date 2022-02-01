@@ -6,6 +6,7 @@ public final class WSQQFeedScene
   implements Serializable
 {
   public static final int QQ_FEED_SCENE_AB_TEST_POLICY = 10009;
+  public static final int QQ_FEED_SCENE_AIO_TO_C_LINK = 15;
   public static final int QQ_FEED_SCENE_AIO_TO_FLOATING_LAYER = 12;
   public static final int QQ_FEED_SCENE_FALLS_LIST = 1;
   public static final int QQ_FEED_SCENE_FEED_OP_INFO = 10011;
@@ -14,6 +15,9 @@ public final class WSQQFeedScene
   public static final int QQ_FEED_SCENE_FOLLOW_LIST = 9;
   public static final int QQ_FEED_SCENE_FOLLOW_VIDEO = 10;
   public static final int QQ_FEED_SCENE_FRIEND_MOMENT = 10006;
+  public static final int QQ_FEED_SCENE_GET_HOME_PROFILE = 10015;
+  public static final int QQ_FEED_SCENE_GET_PROFILE_WORKS_LIST = 10019;
+  public static final int QQ_FEED_SCENE_GET_PROFILE_WORKS_VIDEO = 10014;
   public static final int QQ_FEED_SCENE_GET_RECOMMEND_DRAMA = 10012;
   public static final int QQ_FEED_SCENE_H5_JUMP = 5;
   public static final int QQ_FEED_SCENE_MINI_VIDEO_PAGE = 10002;

@@ -11,12 +11,12 @@ import java.lang.ref.WeakReference;
 public class DenyRunnable$JumpSettingAction
   implements DenyRunnable.OnCancelAction
 {
-  private int jdField_a_of_type_Int = 2;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QQAppInterface> a;
+  private int b = 2;
   
   public DenyRunnable$JumpSettingAction(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.a = new WeakReference(paramQQAppInterface);
   }
   
   public void onCancel(Context paramContext, boolean paramBoolean)
@@ -25,7 +25,7 @@ public class DenyRunnable$JumpSettingAction
     {
       if (VersionUtils.k())
       {
-        QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
         if (localQQAppInterface != null) {
           ((IPhoneContactService)localQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).markOrClearUserSettingFlag(true);
         }
@@ -43,14 +43,14 @@ public class DenyRunnable$JumpSettingAction
         }
       }
       Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
-      localIntent.putExtra("fromKeyForContactBind", this.jdField_a_of_type_Int);
+      localIntent.putExtra("fromKeyForContactBind", this.b);
       paramContext.startActivity(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.DenyRunnable.JumpSettingAction
  * JD-Core Version:    0.7.0.1
  */

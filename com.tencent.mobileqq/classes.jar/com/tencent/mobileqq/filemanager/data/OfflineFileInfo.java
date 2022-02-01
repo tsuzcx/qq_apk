@@ -8,43 +8,39 @@ public class OfflineFileInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new OfflineFileInfo.1();
-  public int a;
-  public long a;
-  public String a;
   public boolean a;
-  private int b;
-  public long b;
   public String b;
-  public long c;
   public String c;
   public long d;
-  public String d;
-  public String e;
+  public int e;
+  public String f;
+  public long g;
+  public long h;
+  public long i;
+  public String j;
+  public String k;
+  private int l = 1;
   
-  public OfflineFileInfo()
-  {
-    this.jdField_b_of_type_Int = 1;
-  }
+  public OfflineFileInfo() {}
   
   public OfflineFileInfo(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.jdField_d_of_type_Long = paramParcel.readLong();
-    this.e = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    if (this.jdField_b_of_type_Int == 2)
+    this.l = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.d = paramParcel.readLong();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.g = paramParcel.readLong();
+    this.h = paramParcel.readLong();
+    this.i = paramParcel.readLong();
+    this.k = paramParcel.readString();
+    this.j = paramParcel.readString();
+    if (this.l == 2)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public int describeContents()
@@ -56,57 +52,57 @@ public class OfflineFileInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("bSend[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     localStringBuilder.append("strUuid[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     localStringBuilder.append("uFriendUin[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("]");
     localStringBuilder.append("nDangerLv[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("]");
     localStringBuilder.append("strFileName[");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("]");
     localStringBuilder.append("nFileSize[");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("]");
     localStringBuilder.append("nLiftTime[");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("]");
     localStringBuilder.append("nUploadTime[");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("]");
     localStringBuilder.append("md5[");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_Int = 2;
+    if (this.a) {
+      this.l = 2;
     } else {
-      this.jdField_b_of_type_Int = 1;
+      this.l = 1;
     }
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeString(this.e);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
+    paramParcel.writeInt(this.l);
+    paramParcel.writeString(this.b);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
+    paramParcel.writeLong(this.g);
+    paramParcel.writeLong(this.h);
+    paramParcel.writeLong(this.i);
+    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.OfflineFileInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,6 @@ import org.json.JSONObject;
 
 public class WSFeedParseUtils
 {
-  private static stMetaUgcVideoSeg a(JSONObject paramJSONObject)
-  {
-    stMetaUgcVideoSeg localstMetaUgcVideoSeg = new stMetaUgcVideoSeg();
-    if (paramJSONObject != null)
-    {
-      localstMetaUgcVideoSeg.file_id = paramJSONObject.optString("file_id");
-      localstMetaUgcVideoSeg.file_size = paramJSONObject.optInt("file_size");
-      localstMetaUgcVideoSeg.duration = paramJSONObject.optInt("duration");
-      localstMetaUgcVideoSeg.width = paramJSONObject.optInt("width");
-      localstMetaUgcVideoSeg.height = paramJSONObject.optInt("height");
-    }
-    return localstMetaUgcVideoSeg;
-  }
-  
   public static stSimpleMetaFeed a(String paramString)
   {
     try
@@ -55,7 +41,7 @@ public class WSFeedParseUtils
       localstSimpleMetaFeed.material_desc = paramJSONObject.optString("materialDesc");
       localstSimpleMetaFeed.material_thumburl = paramJSONObject.optString("materialThumburl");
       localstSimpleMetaFeed.feed_desc = paramJSONObject.optString("feedDesc");
-      localstSimpleMetaFeed.video = a(paramJSONObject.optJSONObject("video"));
+      localstSimpleMetaFeed.video = c(paramJSONObject.optJSONObject("video"));
       localstSimpleMetaFeed.video_url = paramJSONObject.optString("videoUrl");
       ArrayList localArrayList = new ArrayList();
       stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
@@ -65,7 +51,7 @@ public class WSFeedParseUtils
       localArrayList.add(localstMetaUgcImage);
       localstSimpleMetaFeed.images = localArrayList;
       localstSimpleMetaFeed.poster_id = paramJSONObject.optString("posterId");
-      localstSimpleMetaFeed.poster = a(paramJSONObject.optJSONObject("poster"));
+      localstSimpleMetaFeed.poster = b(paramJSONObject.optJSONObject("poster"));
       paramJSONObject = new stFloatingLayerCardStyle();
       paramJSONObject.cardType = 3;
       localstSimpleMetaFeed.floatingLayerCardStyle = paramJSONObject;
@@ -74,7 +60,7 @@ public class WSFeedParseUtils
     return null;
   }
   
-  private static stSimpleMetaPerson a(JSONObject paramJSONObject)
+  private static stSimpleMetaPerson b(JSONObject paramJSONObject)
   {
     stSimpleMetaPerson localstSimpleMetaPerson = new stSimpleMetaPerson();
     if (paramJSONObject != null)
@@ -88,10 +74,24 @@ public class WSFeedParseUtils
     }
     return localstSimpleMetaPerson;
   }
+  
+  private static stMetaUgcVideoSeg c(JSONObject paramJSONObject)
+  {
+    stMetaUgcVideoSeg localstMetaUgcVideoSeg = new stMetaUgcVideoSeg();
+    if (paramJSONObject != null)
+    {
+      localstMetaUgcVideoSeg.file_id = paramJSONObject.optString("file_id");
+      localstMetaUgcVideoSeg.file_size = paramJSONObject.optInt("file_size");
+      localstMetaUgcVideoSeg.duration = paramJSONObject.optInt("duration");
+      localstMetaUgcVideoSeg.width = paramJSONObject.optInt("width");
+      localstMetaUgcVideoSeg.height = paramJSONObject.optInt("height");
+    }
+    return localstMetaUgcVideoSeg;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSFeedParseUtils
  * JD-Core Version:    0.7.0.1
  */

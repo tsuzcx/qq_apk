@@ -39,38 +39,24 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/FastWebVideoPlayManager;", "Lcom/tencent/mobileqq/msf/sdk/handler/INetInfoHandler;", "()V", "TAG", "", "context", "Ljava/lang/ref/WeakReference;", "Landroid/content/Context;", "hasVideoPlayTaskRunning", "", "inPlayArea", "isNetChangeAutoPlaySwitchOpen", "mediaPlayListenerAdapter", "Lcom/tencent/mobileqq/kandian/base/video/player/MediaPlayListenerAdapter;", "playState", "Ljava/util/concurrent/atomic/AtomicInteger;", "rect", "Landroid/graphics/Rect;", "stateCallbackList", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoStateCallback;", "uiHandler", "Landroid/os/Handler;", "videoContainer", "Ljava/lang/ref/SoftReference;", "Landroid/widget/RelativeLayout;", "videoModule", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/FastWebVideoModule;", "videoPauseType", "Lcom/tencent/biz/pubaccount/NativeAd/report/constant/ReportConstants$VideoEndType;", "videoPlayer", "Lcom/tencent/mobileqq/kandian/base/video/player/api/IVideoPlayerWrapper;", "createPlayerObserver", "doVideoReport", "", "state", "", "getCurrentPos", "", "getPlayState", "initVideoPlayer", "isPlaying", "isSameData", "adData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;", "netChange", "onCreate", "onDestroy", "onInitOrBeforeReplay", "isReplay", "onNetMobile2None", "onNetMobile2Wifi", "p0", "onNetNone2Mobile", "onNetNone2Wifi", "onNetWifi2Mobile", "onNetWifi2None", "onPause", "onResume", "pauseVideo", "releasePlayer", "setStateCallback", "url", "callback", "setVideoData", "videoData", "Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "setVideoPauseType", "videoEndTYpe", "startVideo", "startVideoWhenScroll", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/FastWebVideoPlayManager;", "Lcom/tencent/mobileqq/msf/sdk/handler/INetInfoHandler;", "()V", "TAG", "", "context", "Ljava/lang/ref/WeakReference;", "Landroid/content/Context;", "hasVideoPlayTaskRunning", "", "inPlayArea", "isNetChangeAutoPlaySwitchOpen", "mediaPlayListenerAdapter", "Lcom/tencent/mobileqq/kandian/base/video/player/MediaPlayListenerAdapter;", "playState", "Ljava/util/concurrent/atomic/AtomicInteger;", "rect", "Landroid/graphics/Rect;", "stateCallbackList", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoStateCallback;", "uiHandler", "Landroid/os/Handler;", "videoContainer", "Ljava/lang/ref/SoftReference;", "Landroid/widget/RelativeLayout;", "videoModule", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/FastWebVideoModule;", "videoPauseType", "Lcom/tencent/biz/pubaccount/NativeAd/report/constant/ReportConstants$VideoEndType;", "videoPlayer", "Lcom/tencent/mobileqq/kandian/base/video/player/api/IVideoPlayerWrapper;", "commentAdAreaClickReport", "", "createPlayerObserver", "doVideoReport", "state", "", "getCurrentPos", "", "getPlayState", "initVideoPlayer", "isPlaying", "isSameData", "adData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/ProteusBannerVideoItemData;", "netChange", "onCreate", "onDestroy", "onInitOrBeforeReplay", "isReplay", "onNetMobile2None", "onNetMobile2Wifi", "p0", "onNetNone2Mobile", "onNetNone2Wifi", "onNetWifi2Mobile", "onNetWifi2None", "onPause", "onResume", "pauseVideo", "releasePlayer", "setStateCallback", "url", "callback", "setVideoData", "videoData", "Lcom/tencent/biz/pubaccount/NativeAd/module/AdModuleVideo;", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "setVideoPauseType", "videoEndTYpe", "startVideo", "startVideoWhenScroll", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class FastWebVideoPlayManager
   implements INetInfoHandler
 {
-  private static Rect jdField_a_of_type_AndroidGraphicsRect;
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static ReportConstants.VideoEndType jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType = ReportConstants.VideoEndType.CLICK_PAUSE;
-  private static FastWebVideoModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule;
-  public static final FastWebVideoPlayManager a;
-  private static volatile MediaPlayListenerAdapter jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerMediaPlayListenerAdapter;
-  private static IVideoPlayerWrapper jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
-  private static SoftReference<RelativeLayout> jdField_a_of_type_JavaLangRefSoftReference;
-  private static WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private static ConcurrentHashMap<String, VideoStateCallback> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static volatile AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static boolean b;
-  private static boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoPlayManager = new FastWebVideoPlayManager();
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule = new FastWebVideoModule();
-    jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  private final MediaPlayListenerAdapter a()
-  {
-    return (MediaPlayListenerAdapter)new FastWebVideoPlayManager.createPlayerObserver.1();
-  }
+  public static final FastWebVideoPlayManager a = new FastWebVideoPlayManager();
+  private static FastWebVideoModule b = new FastWebVideoModule();
+  private static WeakReference<Context> c;
+  private static IVideoPlayerWrapper d;
+  private static SoftReference<RelativeLayout> e;
+  private static Rect f = new Rect();
+  private static Handler g;
+  private static volatile boolean h;
+  private static volatile AtomicInteger i = new AtomicInteger(0);
+  private static volatile MediaPlayListenerAdapter j;
+  private static ConcurrentHashMap<String, VideoStateCallback> k = new ConcurrentHashMap();
+  private static boolean l;
+  private static boolean m;
+  private static ReportConstants.VideoEndType n = ReportConstants.VideoEndType.CLICK_PAUSE;
   
   private final void a(int paramInt)
   {
@@ -84,51 +70,75 @@ public final class FastWebVideoPlayManager
         if (paramInt != 7) {
           return;
         }
-        localObject2 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoObject(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().g(), 0, 1, jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().e(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().f(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().g(), 1, 0, jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().h(), ReportConstants.VideoEndType.NORMAL_COMPLETE, jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(), false);
+        localObject2 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoObject(b.c().a(), b.c().g(), b.c().c(), 1, b.c().e(), b.c().f(), b.c().g(), 1, 0, b.c().h(), ReportConstants.VideoEndType.NORMAL_COMPLETE, b.c().i(), false);
+        if (b.a() != null)
+        {
+          localObject3 = b.a();
+          if (localObject3 == null) {
+            Intrinsics.throwNpe();
+          }
+          if (((AdvertisementInfo)localObject3).isCommentAd())
+          {
+            ((JSONObject)localObject2).put("videoReplayCount", b.c().h());
+            ((JSONObject)localObject2).put("isClickReplay", false);
+          }
+        }
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("complete videoJson = ");
         ((StringBuilder)localObject3).append(localObject2);
         ReadInJoyAdLog.a("VideoPlayerWrapper_AD", ((StringBuilder)localObject3).toString());
         localObject3 = (IRIJAdService)QRoute.api(IRIJAdService.class);
         localObject4 = new AdReportData();
-        localObject5 = jdField_a_of_type_JavaLangRefWeakReference;
+        localObject5 = c;
         if (localObject5 != null) {
           localObject1 = (Context)((WeakReference)localObject5).get();
         }
-        ((IRIJAdService)localObject3).report(((AdReportData)localObject4).a((Context)localObject1).a(6).b(1).a(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a()).a((JSONObject)localObject2));
-        jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(0);
-        jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().b(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().g());
-        jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().d(0);
-        jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().c(1);
+        ((IRIJAdService)localObject3).report(((AdReportData)localObject4).a((Context)localObject1).a(6).b(1).a(b.a()).a((JSONObject)localObject2));
+        b.c().a(0);
+        b.c().b(b.c().g());
+        b.c().d(0);
+        b.c().c(1);
         return;
       }
       localObject2 = (IRIJAdService)QRoute.api(IRIJAdService.class);
       localObject4 = new AdReportData();
-      localObject5 = jdField_a_of_type_JavaLangRefWeakReference;
+      localObject5 = c;
       localObject1 = localObject3;
       if (localObject5 != null) {
         localObject1 = (Context)((WeakReference)localObject5).get();
       }
-      ((IRIJAdService)localObject2).report(((AdReportData)localObject4).a((Context)localObject1).a(6).b(1).a(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a()).a(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoObject(0, 0, 0, 0, 0, 0, jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().g(), 1, 2, jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().h(), ReportConstants.VideoEndType.OTHER, jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(), false)));
+      ((IRIJAdService)localObject2).report(((AdReportData)localObject4).a((Context)localObject1).a(6).b(1).a(b.a()).a(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoObject(0, 0, 0, 0, 0, 0, b.c().g(), 1, 2, b.c().h(), ReportConstants.VideoEndType.OTHER, b.c().i(), false)));
       return;
     }
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().b((int)a());
-    localObject3 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoObject(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().b(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().c(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().d(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().e(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().f(), jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().g(), 1, 0, jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().h(), jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType, jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(), false);
+    b.c().b((int)i());
+    localObject3 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoObject(b.c().a(), b.c().b(), b.c().c(), b.c().d(), b.c().e(), b.c().f(), b.c().g(), 1, 0, b.c().h(), n, b.c().i(), false);
+    if (b.a() != null)
+    {
+      localObject1 = b.a();
+      if (localObject1 == null) {
+        Intrinsics.throwNpe();
+      }
+      if (((AdvertisementInfo)localObject1).isCommentAd())
+      {
+        ((JSONObject)localObject3).put("videoReplayCount", b.c().h());
+        ((JSONObject)localObject3).put("isClickReplay", false);
+      }
+    }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("pause videoJson = ");
     ((StringBuilder)localObject1).append(localObject3);
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", ((StringBuilder)localObject1).toString());
     Object localObject4 = (IRIJAdService)QRoute.api(IRIJAdService.class);
     Object localObject5 = new AdReportData();
-    WeakReference localWeakReference = jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = c;
     localObject1 = localObject2;
     if (localWeakReference != null) {
       localObject1 = (Context)localWeakReference.get();
     }
-    ((IRIJAdService)localObject4).report(((AdReportData)localObject5).a((Context)localObject1).a(6).b(1).a(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a()).a((JSONObject)localObject3));
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().b());
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().c(0);
-    jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType = ReportConstants.VideoEndType.CLICK_PAUSE;
+    ((IRIJAdService)localObject4).report(((AdReportData)localObject5).a((Context)localObject1).a(6).b(1).a(b.a()).a((JSONObject)localObject3));
+    b.c().a(b.c().b());
+    b.c().c(0);
+    n = ReportConstants.VideoEndType.CLICK_PAUSE;
   }
   
   private final void a(Context paramContext, RelativeLayout paramRelativeLayout)
@@ -136,43 +146,48 @@ public final class FastWebVideoPlayManager
     if (paramContext == null) {
       return;
     }
-    if (jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper != null) {
-      h();
+    if (d != null) {
+      m();
     }
     paramContext = ((IVideoPlayerWrapperFactory)QRoute.api(IVideoPlayerWrapperFactory.class)).createPlayer(paramContext);
     paramContext.a((ViewGroup)paramRelativeLayout, true);
     paramContext.b(2);
-    if (jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerMediaPlayListenerAdapter == null) {
-      jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerMediaPlayListenerAdapter = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoPlayManager.a();
+    if (j == null) {
+      j = a.l();
     }
-    paramContext.a((MediaPlayListener)jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerMediaPlayListenerAdapter);
-    paramContext.c(true);
-    jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper = paramContext;
+    paramContext.a((MediaPlayListener)j);
+    paramContext.g(true);
+    d = paramContext;
   }
   
-  private final void h()
+  private final MediaPlayListenerAdapter l()
+  {
+    return (MediaPlayListenerAdapter)new FastWebVideoPlayManager.createPlayerObserver.1();
+  }
+  
+  private final void m()
   {
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "releasePlayer");
-    IVideoPlayerWrapper localIVideoPlayerWrapper = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+    IVideoPlayerWrapper localIVideoPlayerWrapper = d;
     if (localIVideoPlayerWrapper != null) {
-      localIVideoPlayerWrapper.g();
+      localIVideoPlayerWrapper.x();
     }
-    localIVideoPlayerWrapper = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+    localIVideoPlayerWrapper = d;
     if (localIVideoPlayerWrapper != null) {
-      localIVideoPlayerWrapper.h();
+      localIVideoPlayerWrapper.y();
     }
-    localIVideoPlayerWrapper = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+    localIVideoPlayerWrapper = d;
     if (localIVideoPlayerWrapper != null) {
       localIVideoPlayerWrapper.a(null);
     }
-    jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper = (IVideoPlayerWrapper)null;
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    jdField_a_of_type_Boolean = false;
+    d = (IVideoPlayerWrapper)null;
+    i.set(0);
+    h = false;
   }
   
-  private final void i()
+  private final void n()
   {
-    if (c)
+    if (m)
     {
       e();
       return;
@@ -180,25 +195,11 @@ public final class FastWebVideoPlayManager
     g();
   }
   
-  public final int a()
-  {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-  }
-  
-  public final long a()
-  {
-    IVideoPlayerWrapper localIVideoPlayerWrapper = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
-    if (localIVideoPlayerWrapper != null) {
-      return localIVideoPlayerWrapper.a();
-    }
-    return 0L;
-  }
-  
   public final void a()
   {
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "onCreate");
-    h();
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    m();
+    g = new Handler(Looper.getMainLooper());
   }
   
   public final void a(@Nullable Context paramContext, @Nullable RelativeLayout paramRelativeLayout, @Nullable AdModuleVideo paramAdModuleVideo, @Nullable AdvertisementInfo paramAdvertisementInfo, @Nullable ProteusBannerVideoItemData paramProteusBannerVideoItemData)
@@ -207,7 +208,7 @@ public final class FastWebVideoPlayManager
     {
       try
       {
-        if (jdField_a_of_type_Boolean)
+        if (h)
         {
           QLog.d("VideoPlayerWrapper_AD", 1, "setVideoData but hasVideoPlayTaskRunning");
           return;
@@ -228,32 +229,32 @@ public final class FastWebVideoPlayManager
           if (bool) {
             return;
           }
-          jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-          jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a(paramAdModuleVideo);
-          jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a(paramProteusBannerVideoItemData);
-          jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a(paramAdvertisementInfo);
-          paramProteusBannerVideoItemData = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
-          ProteusBannerVideoItemData localProteusBannerVideoItemData = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
-          paramAdModuleVideo = jdField_a_of_type_JavaLangRefWeakReference;
+          c = new WeakReference(paramContext);
+          b.a(paramAdModuleVideo);
+          b.a(paramProteusBannerVideoItemData);
+          b.a(paramAdvertisementInfo);
+          paramProteusBannerVideoItemData = b.a();
+          ProteusBannerVideoItemData localProteusBannerVideoItemData = b.b();
+          paramAdModuleVideo = c;
           paramAdvertisementInfo = null;
           if (paramAdModuleVideo != null)
           {
             paramAdModuleVideo = (Context)paramAdModuleVideo.get();
-            c = ReadInJoyAdSwitchUtil.a(paramProteusBannerVideoItemData, localProteusBannerVideoItemData, paramAdModuleVideo, 2);
-            jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramRelativeLayout);
+            m = ReadInJoyAdSwitchUtil.a(paramProteusBannerVideoItemData, localProteusBannerVideoItemData, paramAdModuleVideo, 2);
+            e = new SoftReference(paramRelativeLayout);
             a(paramContext, paramRelativeLayout);
             ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "ready to playerStartByUrl");
-            paramRelativeLayout = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+            paramRelativeLayout = d;
             if (paramRelativeLayout != null)
             {
-              paramAdModuleVideo = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
+              paramAdModuleVideo = b.b();
               paramContext = paramAdvertisementInfo;
               if (paramAdModuleVideo != null) {
-                paramContext = paramAdModuleVideo.w;
+                paramContext = paramAdModuleVideo.G;
               }
               paramRelativeLayout.a(null, paramContext, 3, 1L, 0L, 0);
             }
-            jdField_a_of_type_Boolean = true;
+            h = true;
           }
         }
         else
@@ -270,61 +271,52 @@ public final class FastWebVideoPlayManager
   public final void a(@NotNull ReportConstants.VideoEndType paramVideoEndType)
   {
     Intrinsics.checkParameterIsNotNull(paramVideoEndType, "videoEndTYpe");
-    jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType = paramVideoEndType;
+    n = paramVideoEndType;
   }
   
   public final void a(@Nullable String paramString, @Nullable VideoStateCallback paramVideoStateCallback)
   {
     if (paramString != null) {
-      ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(paramString, paramVideoStateCallback);
+      ((Map)k).put(paramString, paramVideoStateCallback);
     }
   }
   
   public final void a(boolean paramBoolean)
   {
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "onInitOrBeforeReplay");
-    h();
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().c(1);
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().d(0);
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(paramBoolean);
+    m();
+    b.d();
+    b.c().c(1);
+    b.c().d(0);
+    b.c().a(paramBoolean);
     if (paramBoolean)
     {
-      VideoAdReportData localVideoAdReportData = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
+      VideoAdReportData localVideoAdReportData = b.c();
       localVideoAdReportData.h(localVideoAdReportData.h() + 1);
       return;
     }
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().h(0);
-  }
-  
-  public final boolean a()
-  {
-    IVideoPlayerWrapper localIVideoPlayerWrapper = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
-    if (localIVideoPlayerWrapper != null) {
-      return localIVideoPlayerWrapper.f();
-    }
-    return false;
+    b.c().h(0);
   }
   
   public final boolean a(@Nullable ProteusBannerVideoItemData paramProteusBannerVideoItemData)
   {
-    Object localObject1 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
+    Object localObject1 = b.b();
     Object localObject2 = null;
     if (localObject1 != null) {
-      localObject1 = ((ProteusBannerVideoItemData)localObject1).w;
+      localObject1 = ((ProteusBannerVideoItemData)localObject1).G;
     } else {
       localObject1 = null;
     }
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      ProteusBannerVideoItemData localProteusBannerVideoItemData = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
+      ProteusBannerVideoItemData localProteusBannerVideoItemData = b.b();
       localObject1 = localObject2;
       if (localProteusBannerVideoItemData != null) {
-        localObject1 = localProteusBannerVideoItemData.w;
+        localObject1 = localProteusBannerVideoItemData.G;
       }
       if (paramProteusBannerVideoItemData != null)
       {
-        paramProteusBannerVideoItemData = paramProteusBannerVideoItemData.w;
+        paramProteusBannerVideoItemData = paramProteusBannerVideoItemData.G;
         if (paramProteusBannerVideoItemData != null) {}
       }
       else
@@ -343,7 +335,7 @@ public final class FastWebVideoPlayManager
   public final void b()
   {
     e();
-    jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportConstants$VideoEndType = ReportConstants.VideoEndType.CLICK_PAUSE;
+    n = ReportConstants.VideoEndType.CLICK_PAUSE;
   }
   
   public final void c()
@@ -354,57 +346,57 @@ public final class FastWebVideoPlayManager
   public final void d()
   {
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "onDestroy");
-    h();
-    jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerMediaPlayListenerAdapter = (MediaPlayListenerAdapter)null;
-    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+    m();
+    j = (MediaPlayListenerAdapter)null;
+    Handler localHandler = g;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
-    jdField_a_of_type_JavaLangRefSoftReference = (SoftReference)null;
-    b = false;
-    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, 0, 0);
+    k.clear();
+    b.d();
+    e = (SoftReference)null;
+    l = false;
+    f.set(0, 0, 0, 0);
   }
   
   public final void e()
   {
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("startVideo: inPlayArea = ");
-    ((StringBuilder)localObject2).append(b);
+    ((StringBuilder)localObject2).append(l);
     ((StringBuilder)localObject2).append("  isPlaying = ");
-    Object localObject1 = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+    Object localObject1 = d;
     if (localObject1 != null) {
-      localObject1 = Boolean.valueOf(((IVideoPlayerWrapper)localObject1).f());
+      localObject1 = Boolean.valueOf(((IVideoPlayerWrapper)localObject1).n());
     } else {
       localObject1 = null;
     }
     ((StringBuilder)localObject2).append(localObject1);
     ((StringBuilder)localObject2).append("  playState = ");
-    ((StringBuilder)localObject2).append(a());
+    ((StringBuilder)localObject2).append(h());
     ReadInJoyAdLog.a("VideoPlayerWrapper_AD", ((StringBuilder)localObject2).toString());
-    if (!b)
+    if (!l)
     {
       g();
       return;
     }
-    localObject1 = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
-    if ((localObject1 != null) && (!((IVideoPlayerWrapper)localObject1).f()) && (a() >= 2))
+    localObject1 = d;
+    if ((localObject1 != null) && (!((IVideoPlayerWrapper)localObject1).n()) && (h() >= 2))
     {
-      localObject1 = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+      localObject1 = d;
       if (localObject1 != null) {
-        ((IVideoPlayerWrapper)localObject1).d();
+        ((IVideoPlayerWrapper)localObject1).u();
       }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(3);
-      localObject2 = ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).entrySet().iterator();
+      i.set(3);
+      localObject2 = ((Map)k).entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         VideoStateCallback localVideoStateCallback = (VideoStateCallback)((Map.Entry)((Iterator)localObject2).next()).getValue();
         if (localVideoStateCallback != null)
         {
-          localObject1 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
+          localObject1 = b.b();
           if (localObject1 != null) {
-            localObject1 = ((ProteusBannerVideoItemData)localObject1).w;
+            localObject1 = ((ProteusBannerVideoItemData)localObject1).G;
           } else {
             localObject1 = null;
           }
@@ -417,46 +409,46 @@ public final class FastWebVideoPlayManager
   
   public final void f()
   {
-    Object localObject = jdField_a_of_type_JavaLangRefSoftReference;
+    Object localObject = e;
     if (localObject != null) {
       localObject = (RelativeLayout)((SoftReference)localObject).get();
     } else {
       localObject = null;
     }
-    b = ReadInJoyBottomAdVideoUtil.a((View)localObject, jdField_a_of_type_AndroidGraphicsRect);
+    l = ReadInJoyBottomAdVideoUtil.a((View)localObject, f);
     e();
   }
   
   public final void g()
   {
-    Object localObject1 = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
-    if ((localObject1 != null) && (((IVideoPlayerWrapper)localObject1).f() == true) && (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 5))
+    Object localObject1 = d;
+    if ((localObject1 != null) && (((IVideoPlayerWrapper)localObject1).n() == true) && (i.get() != 5))
     {
-      b = false;
-      localObject1 = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
+      l = false;
+      localObject1 = d;
       if (localObject1 != null) {
-        ((IVideoPlayerWrapper)localObject1).f();
+        ((IVideoPlayerWrapper)localObject1).w();
       }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(5);
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().e(2);
-      localObject1 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
-      Object localObject2 = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper;
-      int i;
+      i.set(5);
+      b.c().e(2);
+      localObject1 = b.c();
+      Object localObject2 = d;
+      int i1;
       if (localObject2 != null) {
-        i = (int)((IVideoPlayerWrapper)localObject2).a();
+        i1 = (int)((IVideoPlayerWrapper)localObject2).C();
       } else {
-        i = -1;
+        i1 = -1;
       }
-      ((VideoAdReportData)localObject1).b(i);
-      localObject2 = ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).entrySet().iterator();
+      ((VideoAdReportData)localObject1).b(i1);
+      localObject2 = ((Map)k).entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         VideoStateCallback localVideoStateCallback = (VideoStateCallback)((Map.Entry)((Iterator)localObject2).next()).getValue();
         if (localVideoStateCallback != null)
         {
-          localObject1 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a();
+          localObject1 = b.b();
           if (localObject1 != null) {
-            localObject1 = ((ProteusBannerVideoItemData)localObject1).w;
+            localObject1 = ((ProteusBannerVideoItemData)localObject1).G;
           } else {
             localObject1 = null;
           }
@@ -464,10 +456,39 @@ public final class FastWebVideoPlayManager
         }
       }
       a(5);
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().a(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().b());
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoFastWebVideoModule.a().c(0);
+      b.c().a(b.c().b());
+      b.c().c(0);
       ReadInJoyAdLog.a("VideoPlayerWrapper_AD", "pauseVideo");
     }
+  }
+  
+  public final int h()
+  {
+    return i.get();
+  }
+  
+  public final long i()
+  {
+    IVideoPlayerWrapper localIVideoPlayerWrapper = d;
+    if (localIVideoPlayerWrapper != null) {
+      return localIVideoPlayerWrapper.C();
+    }
+    return 0L;
+  }
+  
+  public final boolean j()
+  {
+    IVideoPlayerWrapper localIVideoPlayerWrapper = d;
+    if (localIVideoPlayerWrapper != null) {
+      return localIVideoPlayerWrapper.n();
+    }
+    return false;
+  }
+  
+  public final void k()
+  {
+    a(ReportConstants.VideoEndType.AD_AREA_CLICK);
+    a(5);
   }
   
   public void onNetMobile2None()
@@ -477,27 +498,27 @@ public final class FastWebVideoPlayManager
   
   public void onNetMobile2Wifi(@Nullable String paramString)
   {
-    i();
+    n();
   }
   
   public void onNetNone2Mobile(@Nullable String paramString)
   {
-    i();
+    n();
   }
   
   public void onNetNone2Wifi(@Nullable String paramString)
   {
-    i();
+    n();
   }
   
   public void onNetWifi2Mobile(@Nullable String paramString)
   {
-    i();
+    n();
   }
   
   public void onNetWifi2None()
   {
-    Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = g;
     if (localHandler != null) {
       localHandler.postDelayed((Runnable)FastWebVideoPlayManager.onNetWifi2None.1.a, 3000L);
     }
@@ -505,7 +526,7 @@ public final class FastWebVideoPlayManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.FastWebVideoPlayManager
  * JD-Core Version:    0.7.0.1
  */

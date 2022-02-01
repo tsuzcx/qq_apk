@@ -23,14 +23,14 @@ class SwipeUpAndDragListener$DragHandler$2
       SwipeUpAndDragListener.DragHandler.a(this.a, new LottieDrawable());
       SwipeUpAndDragListener.DragHandler.a(this.a).setComposition(paramLottieComposition);
       SwipeUpAndDragListener.DragHandler.a(this.a).setRepeatCount(-1);
-      SwipeUpAndDragListener.DragHandler.a(this.a).setImageDrawable(SwipeUpAndDragListener.DragHandler.a(this.a));
-      SwipeUpAndDragListener.DragHandler.a(this.a);
+      SwipeUpAndDragListener.DragHandler.b(this.a).setImageDrawable(SwipeUpAndDragListener.DragHandler.a(this.a));
+      SwipeUpAndDragListener.DragHandler.c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SwipeUpAndDragListener.DragHandler.2
  * JD-Core Version:    0.7.0.1
  */

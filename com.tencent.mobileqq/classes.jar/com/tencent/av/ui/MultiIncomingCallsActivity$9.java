@@ -13,7 +13,7 @@ class MultiIncomingCallsActivity$9
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentAvAppSessionInfo);
+    this.d.a(this.a, this.b, this.c);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

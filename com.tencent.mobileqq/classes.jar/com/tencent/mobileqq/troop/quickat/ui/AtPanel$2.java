@@ -31,12 +31,12 @@ class AtPanel$2
     if (paramInt1 != 2) {
       return;
     }
-    if ((paramString != null) && (paramString.equals(AtPanel.a(this.a).a)))
+    if ((paramString != null) && (paramString.equals(AtPanel.a(this.a).b)))
     {
       if ((paramList != null) && (!paramList.isEmpty()))
       {
-        AtPanel.a(this.a).a(paramList);
-        AtPanel.a(this.a).a(AtPanel.a(this.a), AtPanel.a(this.a), AtPanel.a(this.a).v());
+        AtPanel.c(this.a).a(paramList);
+        AtPanel.c(this.a).a(AtPanel.d(this.a), AtPanel.e(this.a), AtPanel.f(this.a).bG());
         return;
       }
       if (QLog.isColorLevel())
@@ -51,14 +51,14 @@ class AtPanel$2
         paramString.append(paramInt1);
         QLog.d("AtPanel", 2, paramString.toString());
       }
-      if (AtPanel.a(this.a) == null)
+      if (AtPanel.b(this.a) == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList mPopupWindow = null");
         }
         return;
       }
-      AtPanel.a(this.a).a(0, 2131689828);
+      AtPanel.b(this.a).a(0, 2131886469);
       return;
     }
     if (QLog.isColorLevel())
@@ -67,14 +67,14 @@ class AtPanel$2
       paramList.append(" onUpdateTroopGetMemberList troopUin =");
       paramList.append(paramString);
       paramList.append(" mSession.troopUin=");
-      paramList.append(AtPanel.a(this.a).a);
+      paramList.append(AtPanel.a(this.a).b);
       QLog.d("AtPanel", 2, paramList.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtPanel.2
  * JD-Core Version:    0.7.0.1
  */

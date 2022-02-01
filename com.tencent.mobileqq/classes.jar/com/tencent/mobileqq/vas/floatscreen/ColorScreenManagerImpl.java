@@ -22,10 +22,19 @@ public class ColorScreenManagerImpl
   extends VasManager<ColorScreenConfig>
   implements IColorScreenManager
 {
-  private Context jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getApplicationContext();
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private AppRuntime a = MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private Context b = this.a.getApp().getApplicationContext();
   
-  private ColorScreenConfig a(int paramInt)
+  private File a()
+  {
+    File localFile = new File(this.b.getFilesDir(), "color_screen");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
+  }
+  
+  private ColorScreenConfig b(int paramInt)
   {
     try
     {
@@ -50,18 +59,18 @@ public class ColorScreenManagerImpl
       else
       {
         ColorScreenConfig localColorScreenConfig = new ColorScreenConfig();
-        localColorScreenConfig.jdField_a_of_type_JavaLangString = ((File)localObject2).getAbsolutePath();
+        localColorScreenConfig.a = ((File)localObject2).getAbsolutePath();
         StringBuilder localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append(((File)localObject3).getAbsolutePath());
         localStringBuilder2.append(File.separator);
         localStringBuilder2.append("images");
-        localColorScreenConfig.jdField_b_of_type_JavaLangString = localStringBuilder2.toString();
+        localColorScreenConfig.b = localStringBuilder2.toString();
         try
         {
           localObject3 = new JSONObject(FileUtils.readFileContent(localFile));
-          localColorScreenConfig.jdField_a_of_type_Int = (((JSONObject)localObject3).optInt("repeatCount", localColorScreenConfig.jdField_a_of_type_Int) - 1);
-          localColorScreenConfig.jdField_a_of_type_Long = ((JSONObject)localObject3).optLong("eastInTime", localColorScreenConfig.jdField_a_of_type_Long);
-          localColorScreenConfig.jdField_b_of_type_Long = ((JSONObject)localObject3).optLong("eastOutTime", localColorScreenConfig.jdField_b_of_type_Long);
+          localColorScreenConfig.c = (((JSONObject)localObject3).optInt("repeatCount", localColorScreenConfig.c) - 1);
+          localColorScreenConfig.d = ((JSONObject)localObject3).optLong("eastInTime", localColorScreenConfig.d);
+          localColorScreenConfig.e = ((JSONObject)localObject3).optLong("eastOutTime", localColorScreenConfig.e);
           if (QLog.isColorLevel())
           {
             long l = IOUtil.getCRC32Value((File)localObject2);
@@ -83,28 +92,19 @@ public class ColorScreenManagerImpl
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("colorScreen.android.");
       localStringBuilder1.append(paramInt);
-      a(localStringBuilder1.toString());
+      c(localStringBuilder1.toString());
       return null;
     }
     finally {}
   }
   
-  private File a()
-  {
-    File localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "color_screen");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localFile;
-  }
-  
-  private void a(int paramInt)
+  private void c(int paramInt)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("colorScreen.android.");
     ((StringBuilder)localObject).append(paramInt);
     localObject = ((StringBuilder)localObject).toString();
-    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IVasQuickUpdateService.class, "");
+    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.a.getRuntimeService(IVasQuickUpdateService.class, "");
     if (localIVasQuickUpdateService != null) {
       localIVasQuickUpdateService.downloadItem(22L, (String)localObject, "ColorScreenManager");
     }
@@ -144,11 +144,6 @@ public class ColorScreenManagerImpl
   public void a(int paramInt, VasManager.CompleteListener<ColorScreenConfig> paramCompleteListener)
   {
     ThreadManager.post(new ColorScreenManagerImpl.1(this, paramInt, paramCompleteListener), 5, null, false);
-  }
-  
-  public void a(String paramString)
-  {
-    VasUpdateUtil.a(new File(a(), Integer.toString(a(paramString))));
   }
   
   public void a(String paramString, int paramInt)
@@ -204,14 +199,14 @@ public class ColorScreenManagerImpl
             }
           }
         }
-        a(paramString, a(i));
+        a(paramString, b(i));
       }
       return;
     }
     finally {}
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
     int i = a(paramString);
     if (i > 0) {
@@ -219,10 +214,15 @@ public class ColorScreenManagerImpl
     }
     return false;
   }
+  
+  public void c(String paramString)
+  {
+    VasUpdateUtil.a(new File(a(), Integer.toString(a(paramString))));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.floatscreen.ColorScreenManagerImpl
  * JD-Core Version:    0.7.0.1
  */

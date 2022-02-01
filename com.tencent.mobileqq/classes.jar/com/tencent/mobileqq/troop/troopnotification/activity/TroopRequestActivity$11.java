@@ -21,34 +21,34 @@ class TroopRequestActivity$11
           return;
         }
         paramMessage = (String)paramMessage.obj;
-        TextView localTextView = this.a.o;
+        TextView localTextView = this.a.aj;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramMessage);
         localStringBuilder.append("");
         localTextView.setText(localStringBuilder.toString());
-        localTextView = this.a.o;
+        localTextView = this.a.aj;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramMessage);
         localStringBuilder.append("");
         localTextView.setContentDescription(localStringBuilder.toString());
-        this.a.o.setVisibility(0);
+        this.a.aj.setVisibility(0);
         return;
       }
       this.a.a(true);
       this.a.h();
       paramMessage = this.a;
-      QQToast.a(paramMessage, paramMessage.getString(2131718739), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(paramMessage, paramMessage.getString(2131916242), 0).show(this.a.getTitleBarHeight());
       return;
     }
     this.a.h();
     paramMessage = this.a;
-    QQToast.a(paramMessage, paramMessage.getString(2131718752), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(paramMessage, paramMessage.getString(2131916258), 0).show(this.a.getTitleBarHeight());
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -17,20 +17,20 @@ final class CommentProteusListenerUtil$Companion$initCommentBannerClickListener$
   
   public final void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a != null)
+    if (this.a.c != null)
     {
-      paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a();
+      paramViewBase = this.b.m();
       Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-      ReadInJoyUtils.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem.a.activityJumpUrl);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a().e(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem);
+      ReadInJoyUtils.a(paramViewBase.getContext(), this.a.c.activityJumpUrl);
+      if (this.b.q() != null) {
+        this.b.q().e(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initCommentBannerClickListener.1.configClickListener.1
  * JD-Core Version:    0.7.0.1
  */

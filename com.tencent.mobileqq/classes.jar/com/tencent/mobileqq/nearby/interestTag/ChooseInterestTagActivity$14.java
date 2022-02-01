@@ -51,14 +51,14 @@ class ChooseInterestTagActivity$14
     }
   }
   
-  public boolean a(InterestTagInfo paramInterestTagInfo)
+  public boolean b(InterestTagInfo paramInterestTagInfo)
   {
     return ChooseInterestTagActivity.access$3700(this.a, paramInterestTagInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14
  * JD-Core Version:    0.7.0.1
  */

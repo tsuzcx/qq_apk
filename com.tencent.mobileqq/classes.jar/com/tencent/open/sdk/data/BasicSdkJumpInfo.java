@@ -9,51 +9,46 @@ public class BasicSdkJumpInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<BasicSdkJumpInfo> CREATOR = new BasicSdkJumpInfo.1();
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  private long a;
   private String b;
   private String c;
   private String d;
   private String e;
   private String f;
   private String g;
+  private String h;
   
   public BasicSdkJumpInfo(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = a(paramString1);
+    this.a = paramLong;
+    this.b = a(paramString1);
     paramString1 = paramString2;
     if (TextUtils.isEmpty(paramString2)) {
       paramString1 = "unknown";
     }
-    this.b = paramString1;
-    this.c = a(paramString3);
-    this.d = a(paramString4);
-    this.e = a(paramString5);
-    this.f = a(paramString6);
-    this.g = "";
+    this.c = paramString1;
+    this.d = a(paramString3);
+    this.e = a(paramString4);
+    this.f = a(paramString5);
+    this.g = a(paramString6);
+    this.h = "";
   }
   
   protected BasicSdkJumpInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readLong();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
     this.e = paramParcel.readString();
     this.f = paramParcel.readString();
     this.g = paramParcel.readString();
+    this.h = paramParcel.readString();
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   protected String a(String paramString)
@@ -67,12 +62,17 @@ public class BasicSdkJumpInfo
   
   public String b()
   {
-    return this.c;
+    return this.b;
   }
   
   public String c()
   {
-    return this.g;
+    return this.d;
+  }
+  
+  public String d()
+  {
+    return this.h;
   }
   
   public int describeContents()
@@ -82,19 +82,19 @@ public class BasicSdkJumpInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeLong(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
     paramParcel.writeString(this.f);
     paramParcel.writeString(this.g);
+    paramParcel.writeString(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.sdk.data.BasicSdkJumpInfo
  * JD-Core Version:    0.7.0.1
  */

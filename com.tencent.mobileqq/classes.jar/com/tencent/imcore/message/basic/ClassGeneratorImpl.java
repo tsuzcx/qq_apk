@@ -11,7 +11,7 @@ public class ClassGeneratorImpl<T>
   private List<Class<? extends T>> a = new ArrayList();
   private List<T> b = new ArrayList();
   
-  private T a(Class<? extends T> paramClass)
+  private T b(Class<? extends T> paramClass)
   {
     Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
@@ -24,7 +24,7 @@ public class ClassGeneratorImpl<T>
     return null;
   }
   
-  private T b(Class<? extends T> paramClass)
+  private T c(Class<? extends T> paramClass)
   {
     try
     {
@@ -47,14 +47,14 @@ public class ClassGeneratorImpl<T>
       while (localIterator.hasNext())
       {
         Object localObject2 = (Class)localIterator.next();
-        Object localObject3 = a((Class)localObject2);
+        Object localObject3 = b((Class)localObject2);
         if (localObject3 != null)
         {
           localArrayList.add(localObject3);
         }
         else
         {
-          localObject2 = b((Class)localObject2);
+          localObject2 = c((Class)localObject2);
           if (localObject2 != null)
           {
             this.b.add(localObject2);
@@ -85,7 +85,7 @@ public class ClassGeneratorImpl<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.basic.ClassGeneratorImpl
  * JD-Core Version:    0.7.0.1
  */

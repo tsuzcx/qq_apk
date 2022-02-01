@@ -8,12 +8,12 @@ final class IliveLaunchFragment$1
 {
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 1, "当前版本不支持进入直播间", 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 1, "当前版本不支持进入直播间", 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.1
  * JD-Core Version:    0.7.0.1
  */

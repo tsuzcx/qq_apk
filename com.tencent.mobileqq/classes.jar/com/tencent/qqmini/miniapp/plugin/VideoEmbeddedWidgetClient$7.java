@@ -12,16 +12,16 @@ class VideoEmbeddedWidgetClient$7
   public void onPrepared(IMediaPlayer paramIMediaPlayer)
   {
     QMLog.d("miniapp-embedded", "onPrepared");
-    VideoEmbeddedWidgetClient.access$1402(this.this$0, true);
+    VideoEmbeddedWidgetClient.access$1702(this.this$0, true);
     this.this$0.sendEvent(Integer.valueOf(5));
-    if (VideoEmbeddedWidgetClient.access$1500(this.this$0) != null) {
-      VideoEmbeddedWidgetClient.access$1600(this.this$0);
+    if (VideoEmbeddedWidgetClient.access$1200(this.this$0) != null) {
+      VideoEmbeddedWidgetClient.access$1800(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoEmbeddedWidgetClient.7
  * JD-Core Version:    0.7.0.1
  */

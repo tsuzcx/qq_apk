@@ -14,24 +14,24 @@ import com.tencent.widget.XPanelContainer;
 public class VoiceTextEditPanelProvider
   implements PanelProvider<BaseVoicetoTextView>
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private BaseVoicetoTextView jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private BaseChatPie a;
+  private QQAppInterface b;
+  private BaseVoicetoTextView c;
   
   public VoiceTextEditPanelProvider(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.a = paramBaseChatPie;
+    this.b = paramBaseChatPie.d;
   }
   
   public BaseVoicetoTextView a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView;
+    return this.c;
   }
   
   public BaseVoicetoTextView a(Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null)
+    if (this.a == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("OpenPanelVoiceTextEditPanelProvider", 1, "createPanel chatPie is null");
@@ -39,8 +39,8 @@ public class VoiceTextEditPanelProvider
       return null;
     }
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView = ((IVoice2TxtApi)QRoute.api(IVoice2TxtApi.class)).getVoice2TxtView(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout);
+    this.c = ((IVoice2TxtApi)QRoute.api(IVoice2TxtApi.class)).getVoice2TxtView(this.a.e);
+    this.c.a(this.b, this.a.bv(), this.a.ah, this.a.X, this.a.W);
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
@@ -48,20 +48,12 @@ public class VoiceTextEditPanelProvider
       paramContext.append(System.currentTimeMillis() - l);
       QLog.d("OpenPanel", 2, paramContext.toString());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView;
-  }
-  
-  public void a()
-  {
-    BaseVoicetoTextView localBaseVoicetoTextView = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView;
-    if (localBaseVoicetoTextView != null) {
-      localBaseVoicetoTextView.e();
-    }
+    return this.c;
   }
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    Object localObject = this.a;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -69,9 +61,9 @@ public class VoiceTextEditPanelProvider
       }
       return;
     }
-    if ((((BaseChatPie)localObject).a().a() == 36) && (paramInt == 0))
+    if ((((BaseChatPie)localObject).bm().getCurrentPanel() == 36) && (paramInt == 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView;
+      localObject = this.c;
       if (localObject != null) {
         ((BaseVoicetoTextView)localObject).d();
       }
@@ -80,16 +72,24 @@ public class VoiceTextEditPanelProvider
   
   public void a(String paramString, int paramInt, RecordParams.RecorderParam paramRecorderParam)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView != null)
+    if (this.c != null)
     {
-      AudioPanelAioHelper localAudioPanelAioHelper = (AudioPanelAioHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(128);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView.setParam(paramString, paramRecorderParam, paramInt, localAudioPanelAioHelper.a);
+      AudioPanelAioHelper localAudioPanelAioHelper = (AudioPanelAioHelper)this.a.q(128);
+      this.c.setParam(paramString, paramRecorderParam, paramInt, localAudioPanelAioHelper.c);
     }
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseVoicetoTextView localBaseVoicetoTextView = this.c;
+    if (localBaseVoicetoTextView != null) {
+      localBaseVoicetoTextView.e();
+    }
+  }
+  
+  public void c()
+  {
+    Object localObject = this.a;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -97,9 +97,9 @@ public class VoiceTextEditPanelProvider
       }
       return;
     }
-    if (((BaseChatPie)localObject).a().a() == 36)
+    if (((BaseChatPie)localObject).bm().getCurrentPanel() == 36)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView;
+      localObject = this.c;
       if (localObject != null) {
         ((BaseVoicetoTextView)localObject).b();
       }
@@ -128,7 +128,7 @@ public class VoiceTextEditPanelProvider
   {
     if ((paramInt1 == 36) && (paramInt2 != 36) && (paramInt2 != 1))
     {
-      BaseVoicetoTextView localBaseVoicetoTextView = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelViewBaseVoicetoTextView;
+      BaseVoicetoTextView localBaseVoicetoTextView = this.c;
       if (localBaseVoicetoTextView != null) {
         localBaseVoicetoTextView.e();
       }
@@ -137,7 +137,7 @@ public class VoiceTextEditPanelProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanelProvider
  * JD-Core Version:    0.7.0.1
  */

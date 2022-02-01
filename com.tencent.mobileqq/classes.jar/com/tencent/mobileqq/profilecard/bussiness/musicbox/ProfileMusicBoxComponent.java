@@ -47,12 +47,12 @@ public class ProfileMusicBoxComponent
     }
     ProfileMusicBox localProfileMusicBox = new ProfileMusicBox(false);
     paramCard = localProfileMusicBox.a(this.mActivity, paramCard.uin);
-    paramCard.setTag(2131562024, localProfileMusicBox);
-    if (paramCard.getTag(2131562024) != null) {
-      ((ProfileMusicBox)paramCard.getTag(2131562024)).a((ProfileCardInfo)this.mData);
+    paramCard.setTag(2131628450, localProfileMusicBox);
+    if (paramCard.getTag(2131628450) != null) {
+      ((ProfileMusicBox)paramCard.getTag(2131628450)).b((ProfileCardInfo)this.mData);
     }
     this.mViewContainer = paramCard;
-    updateItemTheme(paramCard, (TextView)paramCard.findViewById(2131378609), null, (ImageView)paramCard.findViewById(2131368501));
+    updateItemTheme(paramCard, (TextView)paramCard.findViewById(2131447238), null, (ImageView)paramCard.findViewById(2131435403));
     return true;
   }
   
@@ -75,7 +75,7 @@ public class ProfileMusicBoxComponent
   public void onDestroy()
   {
     super.onDestroy();
-    ProfileMusicBoxController localProfileMusicBoxController = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    ProfileMusicBoxController localProfileMusicBoxController = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).l();
     if (localProfileMusicBoxController != null) {
       localProfileMusicBoxController.a(null);
     }
@@ -83,7 +83,7 @@ public class ProfileMusicBoxComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.musicbox.ProfileMusicBoxComponent
  * JD-Core Version:    0.7.0.1
  */

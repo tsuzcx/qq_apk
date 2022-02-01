@@ -25,12 +25,12 @@ public class QWalletConfigServiceProxyImpl
   
   public QWalletConfigServiceProxyImpl()
   {
-    QWalletIPCConnector.a().a();
+    QWalletIPCConnector.a().b();
   }
   
   public String getConfig(String paramString)
   {
-    QWalletIPCConnector.a().a();
+    QWalletIPCConnector.a().b();
     Bundle localBundle = new Bundle();
     localBundle.putInt("oper_type", 2);
     localBundle.putString("module", paramString);
@@ -43,7 +43,7 @@ public class QWalletConfigServiceProxyImpl
   
   public int getInt(String paramString, int paramInt, String... paramVarArgs)
   {
-    QWalletIPCConnector.a().a();
+    QWalletIPCConnector.a().b();
     Bundle localBundle = new Bundle();
     localBundle.putInt("oper_type", 0);
     localBundle.putString("module", paramString);
@@ -58,7 +58,7 @@ public class QWalletConfigServiceProxyImpl
   
   public String getString(String paramString1, String paramString2, String... paramVarArgs)
   {
-    QWalletIPCConnector.a().a();
+    QWalletIPCConnector.a().b();
     Bundle localBundle = new Bundle();
     localBundle.putInt("oper_type", 1);
     localBundle.putString("module", paramString1);
@@ -90,7 +90,7 @@ public class QWalletConfigServiceProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.config.impl.QWalletConfigServiceProxyImpl
  * JD-Core Version:    0.7.0.1
  */

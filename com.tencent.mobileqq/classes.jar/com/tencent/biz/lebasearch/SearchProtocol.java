@@ -21,9 +21,9 @@ import mqq.app.NewIntent;
 public class SearchProtocol
 {
   public static int a;
-  public static final String a = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_UPDATE_TIME_STAMP();
-  public static final String b = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_LATITUDE();
-  public static final String c = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_LOGITUDE();
+  public static final String b = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_UPDATE_TIME_STAMP();
+  public static final String c = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_LATITUDE();
+  public static final String d = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_LOGITUDE();
   
   public static void a(AppInterface paramAppInterface, Context paramContext, SearchProtocol.SearchObserver paramSearchObserver)
   {
@@ -47,7 +47,7 @@ public class SearchProtocol
       mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
       localRootSearcherRequest.business.set(128);
       localRequestBody.search_request.set(localRootSearcherRequest);
-      localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+      localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
       paramSearchObserver.putExtra("data", localRequestBody.toByteArray());
       paramSearchObserver.setObserver(new SearchProtocol.2(paramContext));
       paramAppInterface.startServlet(paramSearchObserver);
@@ -83,7 +83,7 @@ public class SearchProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.SearchProtocol
  * JD-Core Version:    0.7.0.1
  */

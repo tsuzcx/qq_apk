@@ -19,19 +19,19 @@ class ReadInJoyNavigationGridview$NaviBarHandler
     ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
     if (localReadInJoyNavigationGridview != null)
     {
-      if (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview)) {
+      if (ReadInJoyNavigationGridview.b(localReadInJoyNavigationGridview)) {
         return;
       }
       if (paramMessage.what != 1) {
         return;
       }
-      ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
+      ReadInJoyNavigationGridview.c(localReadInJoyNavigationGridview);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyNavigationGridview.NaviBarHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -2,66 +2,52 @@ package com.tencent.mobileqq.statistics;
 
 class ArkAppReportController$ReportData
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public final long e;
-  public String e;
-  public long f = 0L;
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public long d = 0L;
+  public long e = 0L;
+  public long f = 1L;
   public long g = 0L;
-  
-  public ArkAppReportController$ReportData()
-  {
-    this.jdField_e_of_type_Long = 2L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 1L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-  }
+  public final long h = 2L;
+  public long i = 0L;
+  public long j = 0L;
+  public String k = "";
+  public String l = "";
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('|');
     localStringBuilder.append("${count_unknown}");
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('|');
     localStringBuilder.append(2L);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.j);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.l);
     localStringBuilder.append('|');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ArkAppReportController.ReportData
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,12 @@ class PublicAccountAdvertisementActivity$1
       this.a.finish();
       return;
     }
-    PublicAccountAdvertisementActivity.a(this.a).a();
+    PublicAccountAdvertisementActivity.c(this.a).a();
   }
   
   public boolean a()
   {
-    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+    return (!PublicAccountAdvertisementActivity.d(this.a)) && (!PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.f(this.a));
   }
   
   public boolean b()
@@ -41,7 +41,7 @@ class PublicAccountAdvertisementActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.1
  * JD-Core Version:    0.7.0.1
  */

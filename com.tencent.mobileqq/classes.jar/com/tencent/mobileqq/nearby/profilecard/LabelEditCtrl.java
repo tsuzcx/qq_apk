@@ -13,31 +13,21 @@ public class LabelEditCtrl
   extends LabelBaseCtrl
   implements View.OnClickListener
 {
-  public int a;
-  
-  public LabelEditCtrl()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  protected int a()
-  {
-    return 2131561180;
-  }
+  public int k = 0;
   
   protected LabelContainer a(View paramView, int paramInt1, InterestTag paramInterestTag, int paramInt2)
   {
-    ((TextView)paramView.findViewById(2131380106)).setText(c[paramInt1]);
-    paramInt1 = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    int i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131369714);
+    ((TextView)paramView.findViewById(2131449020)).setText(i[paramInt1]);
+    paramInt1 = DisplayUtil.a(this.b, 6.0F);
+    int i = DisplayUtil.a(this.b, 6.0F);
+    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131436826);
     localLabelContainer.setSpace(paramInt1, i);
     paramView.setTag(paramInterestTag);
     paramView.setOnClickListener(this);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == paramInt2 - 1)
+    if (this.a.getChildCount() == paramInt2 - 1)
     {
-      paramInt1 = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-      paramView.setBackgroundResource(2130839440);
+      paramInt1 = DisplayUtil.a(this.b, 10.0F);
+      paramView.setBackgroundResource(2130839629);
       paramView.setPadding(0, paramInt1, 0, paramInt1);
     }
     return localLabelContainer;
@@ -48,24 +38,29 @@ public class LabelEditCtrl
     return true;
   }
   
+  protected int b()
+  {
+    return 2131627532;
+  }
+  
   public void onClick(View paramView)
   {
     if ((paramView.getTag() instanceof InterestTag))
     {
       paramView = (InterestTag)paramView.getTag();
       Intent localIntent = new Intent();
-      localIntent.putExtra("interest_tag_type", paramView.jdField_a_of_type_Int);
+      localIntent.putExtra("interest_tag_type", paramView.a);
       localIntent.putExtra("is_from_judge", false);
       localIntent.putExtra("is_from_nearby", true);
       localIntent.putExtra("from_where", "NearbyPeopleProfileActivity");
-      localIntent.putParcelableArrayListExtra("choosed_interest_tags", paramView.jdField_a_of_type_JavaUtilArrayList);
-      RouteUtils.a(this.jdField_a_of_type_AndroidContentContext, localIntent, "/nearby/choose/interesttag", 11);
+      localIntent.putParcelableArrayListExtra("choosed_interest_tags", paramView.b);
+      RouteUtils.a(this.b, localIntent, "/nearby/choose/interesttag", 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.LabelEditCtrl
  * JD-Core Version:    0.7.0.1
  */

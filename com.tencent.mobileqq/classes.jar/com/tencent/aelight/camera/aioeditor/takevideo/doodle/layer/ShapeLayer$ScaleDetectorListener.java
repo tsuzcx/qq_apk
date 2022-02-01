@@ -13,7 +13,7 @@ class ShapeLayer$ScaleDetectorListener
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    EditPicRawImage localEditPicRawImage = ShapeLayer.a(this.a).a.a();
+    EditPicRawImage localEditPicRawImage = ShapeLayer.a(this.a).l.getEditPicRawImage();
     if (localEditPicRawImage != null) {
       localEditPicRawImage.a(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
     }
@@ -22,7 +22,7 @@ class ShapeLayer$ScaleDetectorListener
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    EditPicRawImage localEditPicRawImage = ShapeLayer.b(this.a).a.a();
+    EditPicRawImage localEditPicRawImage = ShapeLayer.b(this.a).l.getEditPicRawImage();
     if (localEditPicRawImage != null) {
       localEditPicRawImage.a(paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
     }
@@ -31,15 +31,15 @@ class ShapeLayer$ScaleDetectorListener
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    paramScaleGestureDetector = ShapeLayer.c(this.a).a.a();
+    paramScaleGestureDetector = ShapeLayer.c(this.a).l.getEditPicRawImage();
     if (paramScaleGestureDetector != null) {
-      paramScaleGestureDetector.b();
+      paramScaleGestureDetector.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.ShapeLayer.ScaleDetectorListener
  * JD-Core Version:    0.7.0.1
  */

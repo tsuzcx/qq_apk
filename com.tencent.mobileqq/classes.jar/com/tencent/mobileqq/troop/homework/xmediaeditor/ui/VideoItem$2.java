@@ -18,43 +18,43 @@ class VideoItem$2
   public void a(VideoInfo paramVideoInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onNext. info position=", Integer.valueOf(paramVideoInfo.c), ", old status=", Integer.valueOf(paramVideoInfo.f) });
+      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onNext. info position=", Integer.valueOf(paramVideoInfo.g), ", old status=", Integer.valueOf(paramVideoInfo.o) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.b.remove(paramVideoInfo);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.a(1, false);
+    this.b.g.remove(paramVideoInfo);
+    this.b.a(1, false);
   }
   
   public void onError(@NonNull Error paramError)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onError. info position=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c), ", old status=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.f) });
+      QLog.d("VideoItem", 2, new Object[] { "VideoItem GeneratePoster onError. info position=", Integer.valueOf(this.a.g), ", old status=", Integer.valueOf(this.a.o) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.f = 2;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.b.remove(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo);
+    this.a.o = 2;
+    this.b.g.remove(this.a);
     QLog.d("VideoItem", 1, paramError, new Object[0]);
     paramError = paramError.getMessage();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
+    if (this.b.b != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c);
+      Object localObject = this.b.b.findViewHolderForLayoutPosition(this.a.g);
       if ((localObject instanceof VideoItem.VideoViewHolder))
       {
         localObject = (VideoItem.VideoViewHolder)localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag())) {
-          ((VideoItem)((XMediaEditorAdapter)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo, 0);
+        if (this.a.e.equals(((VideoItem.VideoViewHolder)localObject).g.getTag())) {
+          ((VideoItem)((XMediaEditorAdapter)this.b.b.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.a, 0);
         }
       }
     }
     if (!paramError.startsWith("c_")) {
-      TroopReportor.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.a), "");
+      TroopReportor.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.a.n), "");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.a(1, false);
+    if (this.a.e.equals(this.b.e)) {
+      this.b.a(1, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.2
  * JD-Core Version:    0.7.0.1
  */

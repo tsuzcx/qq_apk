@@ -12,17 +12,12 @@ public abstract class GameResultBaseHelper
   
   public void a(boolean paramBoolean)
   {
-    if (IGameEngine.k()) {
+    if (IGameEngine.J()) {
       return;
     }
-    EngineData localEngineData = IGameEngine.a().a();
-    IGameEngine.a().a(localEngineData.b());
-    IGameEngine.a().a(false, 1, paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return false;
+    EngineData localEngineData = IGameEngine.I().s();
+    IGameEngine.I().a(localEngineData.n());
+    IGameEngine.I().a(false, 1, paramBoolean);
   }
   
   public void b() {}
@@ -31,16 +26,21 @@ public abstract class GameResultBaseHelper
   
   public void d() {}
   
-  @Deprecated
-  public void e() {}
+  public boolean f()
+  {
+    return false;
+  }
   
-  public void f()
+  @Deprecated
+  public void g() {}
+  
+  public void h()
   {
     a(false);
   }
   
   @Deprecated
-  public void g() {}
+  public void i() {}
 }
 
 

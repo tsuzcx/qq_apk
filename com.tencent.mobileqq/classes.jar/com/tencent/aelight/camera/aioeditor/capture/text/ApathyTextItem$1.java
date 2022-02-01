@@ -11,12 +11,12 @@ class ApathyTextItem$1
   @NonNull
   public String a(int paramInt, @NonNull String paramString)
   {
-    return TroopFileUtils.b(paramString);
+    return TroopFileUtils.c(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.ApathyTextItem.1
  * JD-Core Version:    0.7.0.1
  */

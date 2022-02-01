@@ -32,34 +32,29 @@ public final class VideoPreviewPage
   extends BaseSDKPage
   implements SurfaceHolder.Callback
 {
-  public static final VideoPreviewPage.Companion a;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
-  private String jdField_a_of_type_JavaLangString = "";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideopreviewVideoPreviewPage$Companion = new VideoPreviewPage.Companion(null);
-  }
+  public static final VideoPreviewPage.Companion a = new VideoPreviewPage.Companion(null);
+  private SurfaceView c;
+  private MediaPlayer d;
+  private SurfaceHolder e;
+  private String f = "";
   
   private final void a(View paramView)
   {
-    paramView = paramView.findViewById(R.id.aK);
+    paramView = paramView.findViewById(R.id.am);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.sv_video)");
-    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)paramView);
-    paramView = this.jdField_a_of_type_AndroidViewSurfaceView;
+    this.c = ((SurfaceView)paramView);
+    paramView = this.c;
     if (paramView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("surfaceView");
     }
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = paramView.getHolder();
-    paramView = this.jdField_a_of_type_AndroidViewSurfaceHolder;
+    this.e = paramView.getHolder();
+    paramView = this.e;
     if (paramView != null) {
       paramView.addCallback((SurfaceHolder.Callback)this);
     }
   }
   
-  private final void f()
+  private final void n()
   {
     Object localObject = a();
     if (localObject != null)
@@ -71,36 +66,36 @@ public final class VideoPreviewPage
     {
       localObject = "";
     }
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
+    this.f = ((String)localObject);
   }
   
-  private final void g()
+  private final void o()
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.d;
     if (localMediaPlayer == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mediaPlayer");
     }
     localMediaPlayer.release();
   }
   
-  private final void h()
+  private final void p()
   {
-    Object localObject = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    Object localObject = this.d;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mediaPlayer");
     }
     float f2 = ((MediaPlayer)localObject).getVideoWidth();
-    localObject = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    localObject = this.d;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mediaPlayer");
     }
     float f1 = ((MediaPlayer)localObject).getVideoHeight();
-    localObject = this.jdField_a_of_type_AndroidViewSurfaceView;
+    localObject = this.c;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("surfaceView");
     }
     float f3 = f2 / ((SurfaceView)localObject).getWidth();
-    localObject = this.jdField_a_of_type_AndroidViewSurfaceView;
+    localObject = this.c;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("surfaceView");
     }
@@ -109,7 +104,7 @@ public final class VideoPreviewPage
     f1 = (float)Math.ceil(f1 / f3);
     localObject = new RelativeLayout.LayoutParams((int)f2, (int)f1);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
-    SurfaceView localSurfaceView = this.jdField_a_of_type_AndroidViewSurfaceView;
+    SurfaceView localSurfaceView = this.c;
     if (localSurfaceView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("surfaceView");
     }
@@ -120,18 +115,18 @@ public final class VideoPreviewPage
   public View a(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.m, paramViewGroup, false);
-    f();
+    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.h, paramViewGroup, false);
+    n();
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "view");
     a(paramLayoutInflater);
-    ((RelativeLayout)paramLayoutInflater.findViewById(R.id.aA)).setOnClickListener((View.OnClickListener)new VideoPreviewPage.onCreateView.1(this));
+    ((RelativeLayout)paramLayoutInflater.findViewById(R.id.ac)).setOnClickListener((View.OnClickListener)new VideoPreviewPage.onCreateView.1(this));
     return paramLayoutInflater;
   }
   
   @NotNull
-  public Pair<Integer, Integer> a()
+  public Pair<Integer, Integer> c()
   {
-    Object localObject = a();
+    Object localObject = b();
     if (localObject != null)
     {
       localObject = ((Activity)localObject).getResources();
@@ -149,25 +144,25 @@ public final class VideoPreviewPage
     return new Pair(localObject, Integer.valueOf(0));
   }
   
-  public void a()
+  public void f()
   {
-    super.a();
-    g();
+    super.f();
+    o();
   }
   
   public void surfaceChanged(@Nullable SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void surfaceCreated(@Nullable SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-    paramSurfaceHolder = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    this.d = new MediaPlayer();
+    paramSurfaceHolder = this.d;
     if (paramSurfaceHolder == null) {
       Intrinsics.throwUninitializedPropertyAccessException("mediaPlayer");
     }
-    paramSurfaceHolder.setDisplay(this.jdField_a_of_type_AndroidViewSurfaceHolder);
+    paramSurfaceHolder.setDisplay(this.e);
     try
     {
-      paramSurfaceHolder.setDataSource(this.jdField_a_of_type_JavaLangString);
+      paramSurfaceHolder.setDataSource(this.f);
       paramSurfaceHolder.prepare();
       paramSurfaceHolder.setOnPreparedListener((MediaPlayer.OnPreparedListener)new VideoPreviewPage.surfaceCreated..inlined.apply.lambda.1(this));
       paramSurfaceHolder.setAudioStreamType(3);
@@ -186,7 +181,7 @@ public final class VideoPreviewPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videopreview.VideoPreviewPage
  * JD-Core Version:    0.7.0.1
  */

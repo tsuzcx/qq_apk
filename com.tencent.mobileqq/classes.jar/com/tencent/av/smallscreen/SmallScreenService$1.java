@@ -14,7 +14,7 @@ class SmallScreenService$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     paramContext = paramIntent.getAction();
     if (QLog.isColorLevel())
     {
@@ -37,17 +37,17 @@ class SmallScreenService$1
         QLog.d("SmallScreenService", 2, paramIntent.toString());
       }
     }
-    else if ((paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) && (this.a.a != null))
+    else if ((paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) && (this.a.s != null))
     {
-      this.a.a().removeCallbacks(this.a.a);
-      this.a.a.a = l;
-      this.a.a().postDelayed(this.a.a, 200L);
+      this.a.b().removeCallbacks(this.a.s);
+      this.a.s.a = l;
+      this.a.b().postDelayed(this.a.s, 200L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenService.1
  * JD-Core Version:    0.7.0.1
  */

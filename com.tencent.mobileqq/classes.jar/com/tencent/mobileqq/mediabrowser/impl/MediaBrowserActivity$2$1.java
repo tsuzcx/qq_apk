@@ -11,14 +11,14 @@ class MediaBrowserActivity$2$1
   
   public void run()
   {
-    if (MediaBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqMediabrowserImplMediaBrowserActivity$2.a) != null)
+    if (MediaBrowserActivity.a(this.g.a) != null)
     {
       IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("IAIOImageProviderCallBack.notifyImageResult():isPart ");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a);
       localIBrowserLog.d("MediaBrowserActivity", 4, localStringBuilder.toString());
-      MediaBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqMediabrowserImplMediaBrowserActivity$2.a).notifyImageResult(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      MediaBrowserActivity.a(this.g.a).notifyImageResult(this.b, this.c, this.d, this.e, this.f, this.a);
     }
   }
 }

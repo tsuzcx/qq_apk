@@ -16,10 +16,10 @@ import org.jetbrains.annotations.Nullable;
 public final class CommentLinkView
   extends HeightAdaptableListView
 {
-  private CommentLinkView.LinkAdatper jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView$LinkAdatper;
+  private List<BaseCommentData.CommentLinkData> a = (List)new ArrayList(0);
+  private CommentLinkView.LinkAdatper b;
   @Nullable
-  private CommentLinkView.OnLinkDeleteListener jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView$OnLinkDeleteListener;
-  private List<BaseCommentData.CommentLinkData> jdField_a_of_type_JavaUtilList = (List)new ArrayList(0);
+  private CommentLinkView.OnLinkDeleteListener c;
   
   public CommentLinkView(@NotNull Context paramContext)
   {
@@ -38,9 +38,9 @@ public final class CommentLinkView
   }
   
   @Nullable
-  public final CommentLinkView.OnLinkDeleteListener a()
+  public final CommentLinkView.OnLinkDeleteListener getOnLinkEmptyListener()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView$OnLinkDeleteListener;
+    return this.c;
   }
   
   public final void setData(@Nullable List<BaseCommentData.CommentLinkData> paramList)
@@ -48,12 +48,12 @@ public final class CommentLinkView
     if (paramList == null) {
       paramList = (List)new ArrayList(0);
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    paramList = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView$LinkAdatper;
+    this.a = paramList;
+    paramList = this.b;
     if (paramList == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView$LinkAdatper = new CommentLinkView.LinkAdatper(this);
-      setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView$LinkAdatper);
+      this.b = new CommentLinkView.LinkAdatper(this);
+      setAdapter((ListAdapter)this.b);
       return;
     }
     if (paramList == null) {
@@ -64,12 +64,12 @@ public final class CommentLinkView
   
   public final void setOnLinkEmptyListener(@Nullable CommentLinkView.OnLinkDeleteListener paramOnLinkDeleteListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView$OnLinkDeleteListener = paramOnLinkDeleteListener;
+    this.c = paramOnLinkDeleteListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.CommentLinkView
  * JD-Core Version:    0.7.0.1
  */

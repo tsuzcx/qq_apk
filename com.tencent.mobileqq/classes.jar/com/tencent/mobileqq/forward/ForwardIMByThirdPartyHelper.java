@@ -20,77 +20,77 @@ import com.tencent.qphone.base.util.QLog;
 public class ForwardIMByThirdPartyHelper
   implements Handler.Callback, ILifeCycleHelper
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  private QQCustomDialog a = null;
+  private QQAppInterface b;
+  private BaseChatPie c;
+  private Activity d;
+  private boolean e;
+  private boolean f;
+  private boolean g;
+  private String h;
+  private String i;
+  private SessionInfo j = new SessionInfo();
+  private boolean k;
   
   public ForwardIMByThirdPartyHelper(BaseChatPie paramBaseChatPie)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ForwardIMByThirdPartyHelper", 2, " init ");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    paramBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    this.c = paramBaseChatPie;
+    paramBaseChatPie = this.c;
     if (paramBaseChatPie != null)
     {
-      this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.a;
-      paramBaseChatPie = this.jdField_a_of_type_AndroidAppActivity;
+      this.d = paramBaseChatPie.f;
+      paramBaseChatPie = this.d;
       if (paramBaseChatPie != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)((BaseActivity)paramBaseChatPie).getAppInterface());
+        this.b = ((QQAppInterface)((BaseActivity)paramBaseChatPie).getAppInterface());
       }
     }
   }
   
   private QQCustomDialog a(String paramString)
   {
-    return DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230).setTitle(null).setMessage(paramString).setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131690709), new ForwardIMByThirdPartyHelper.1(this));
+    return DialogUtil.a(this.d, 230).setTitle(null).setMessage(paramString).setPositiveButton(this.d.getString(2131887629), new ForwardIMByThirdPartyHelper.1(this));
   }
   
   private void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.f)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        if (this.b.getCurrentAccountUin().equals(this.j.b))
         {
-          a(this.jdField_a_of_type_AndroidAppActivity.getString(2131699404)).show();
+          a(this.d.getString(2131897435)).show();
           return;
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40C", "0X800A40C", 0, 0, "", "", "", "");
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true, "", true, true, null, "from_internal", null);
+        ReportController.b(this.b, "dc01160", "", "", "0X800A40C", "0X800A40C", 0, 0, "", "", "", "");
+        ChatActivityUtils.a(this.b, this.d, this.j.a, this.j.b, this.j.e, this.j.f, true, "", true, true, null, "from_internal", null);
         return;
       }
-      if (this.c)
+      if (this.g)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        if (this.b.getCurrentAccountUin().equals(this.j.b))
         {
-          a(this.jdField_a_of_type_AndroidAppActivity.getString(2131699404)).show();
+          a(this.d.getString(2131897435)).show();
           return;
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40D", "0X800A40D", 0, 0, "", "", "", "");
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false, "", true, true, null, "from_internal", null);
+        ReportController.b(this.b, "dc01160", "", "", "0X800A40D", "0X800A40D", 0, 0, "", "", "", "");
+        ChatActivityUtils.a(this.b, this.d, this.j.a, this.j.b, this.j.e, this.j.f, false, "", true, true, null, "from_internal", null);
         return;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40B", "0X800A40B", 0, 0, "", "", "", "");
+      ReportController.b(this.b, "dc01160", "", "", "0X800A40B", "0X800A40B", 0, 0, "", "", "", "");
       return;
     }
-    if (this.d) {
+    if (this.k) {
       a();
     }
   }
   
   private void b()
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    QQCustomDialog localQQCustomDialog = this.a;
     if (localQQCustomDialog != null) {
       localQQCustomDialog.dismiss();
     }
@@ -98,20 +98,20 @@ public class ForwardIMByThirdPartyHelper
   
   protected void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-    if ((localObject != null) && (!((QQCustomDialog)localObject).isShowing()) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    Object localObject = this.a;
+    if ((localObject != null) && (!((QQCustomDialog)localObject).isShowing()) && (!this.d.isFinishing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.a.show();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131695206);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131719624);
+    this.a = DialogUtil.a(this.d, 230);
+    this.a.setMessage(2131892939);
+    this.a.setTitle(2131917221);
     localObject = new ForwardIMByThirdPartyHelper.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690728, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131695174, (DialogInterface.OnClickListener)localObject);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.a.setNegativeButton(2131887648, (DialogInterface.OnClickListener)localObject);
+    this.a.setPositiveButton(2131892907, (DialogInterface.OnClickListener)localObject);
+    if (!this.d.isFinishing()) {
+      this.a.show();
     }
   }
   
@@ -126,18 +126,18 @@ public class ForwardIMByThirdPartyHelper
     paramIntent = paramIntent.getExtras();
     if (paramIntent != null)
     {
-      this.jdField_a_of_type_Boolean = paramIntent.getBoolean("thridparty_pull_aio", false);
-      if (this.jdField_a_of_type_Boolean)
+      this.e = paramIntent.getBoolean("thridparty_pull_aio", false);
+      if (this.e)
       {
-        this.d = paramBoolean;
-        this.jdField_b_of_type_Boolean = paramIntent.getBoolean("pull_aio_audio", false);
-        this.c = paramIntent.getBoolean("pull_aio_video", false);
-        this.jdField_a_of_type_JavaLangString = paramIntent.getString("openid", "");
-        this.jdField_b_of_type_JavaLangString = paramIntent.getString("appid", "");
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramIntent.getString("uin");
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = paramIntent.getInt("uintype");
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e = paramIntent.getString("phonenum");
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramIntent.getString("uinname", "");
+        this.k = paramBoolean;
+        this.f = paramIntent.getBoolean("pull_aio_audio", false);
+        this.g = paramIntent.getBoolean("pull_aio_video", false);
+        this.h = paramIntent.getString("openid", "");
+        this.i = paramIntent.getString("appid", "");
+        this.j.b = paramIntent.getString("uin");
+        this.j.a = paramIntent.getInt("uintype");
+        this.j.f = paramIntent.getString("phonenum");
+        this.j.e = paramIntent.getString("uinname", "");
         a(true);
       }
     }
@@ -178,7 +178,7 @@ public class ForwardIMByThirdPartyHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardIMByThirdPartyHelper
  * JD-Core Version:    0.7.0.1
  */

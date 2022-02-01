@@ -43,47 +43,46 @@ import mqq.util.WeakReference;
 public class AECircleAlbumListLogic
   implements AEAlbumListLogic.IalbumListAdapterCallBack
 {
-  public AEAlbumListLogic.IalbumListAdapterCallBack a;
-  protected AlbumListAdapter a;
-  protected AlbumListData a;
-  protected PhotoCommonBaseData a;
   public WeakReference<AECircleAlbumListFragment> a;
+  protected PhotoCommonBaseData b;
+  protected AlbumListData c;
+  public AEAlbumListLogic.IalbumListAdapterCallBack d = null;
+  protected AlbumListAdapter e;
   
   protected AECircleAlbumListLogic(AECircleAlbumListFragment paramAECircleAlbumListFragment)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic$IalbumListAdapterCallBack = null;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAECircleAlbumListFragment);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData = AEPhotoCommonDataCreator.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.addHoldNember();
+    this.a = new WeakReference(paramAECircleAlbumListFragment);
+    this.b = AEPhotoCommonDataCreator.a();
+    this.b.addHoldNember();
     if (QLog.isColorLevel())
     {
       paramAECircleAlbumListFragment = new StringBuilder();
       paramAECircleAlbumListFragment.append("AlbumListLogic new，activity = ");
-      paramAECircleAlbumListFragment.append(this.jdField_a_of_type_MqqUtilWeakReference);
+      paramAECircleAlbumListFragment.append(this.a);
       paramAECircleAlbumListFragment.append(",PhotoCommonData = ");
-      paramAECircleAlbumListFragment.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
+      paramAECircleAlbumListFragment.append(this.b);
       QLog.d("AlbumListActivity", 2, paramAECircleAlbumListFragment.toString());
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic$IalbumListAdapterCallBack = this;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData = new AlbumListData();
+    this.d = this;
+    this.c = new AlbumListData();
   }
   
-  private AlbumListAdapter a()
+  private AlbumListAdapter c()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterAlbumListAdapter;
+    return this.e;
   }
   
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramViewGroup = a();
+    paramViewGroup = c();
     View localView = paramView;
     if (paramView == null) {
-      localView = ((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity().getLayoutInflater().inflate(2064318681, null);
+      localView = ((AECircleAlbumListFragment)this.a.get()).getActivity().getLayoutInflater().inflate(2064056511, null);
     }
-    ImageView localImageView1 = (ImageView)localView.findViewById(2064121938);
-    paramView = (TextView)localView.findViewById(2064121940);
-    Object localObject = (TextView)localView.findViewById(2064121946);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2064121947);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2063990873);
+    paramView = (TextView)localView.findViewById(2063990875);
+    Object localObject = (TextView)localView.findViewById(2063990881);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2063990882);
     QQAlbumInfo localQQAlbumInfo = paramViewGroup.a(paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(localQQAlbumInfo.name);
@@ -123,11 +122,11 @@ public class AECircleAlbumListLogic
     localObject = paramViewGroup;
     if (paramViewGroup == null)
     {
-      localObject = URLDrawableHelper.getDrawable(paramView, AlbumListAdapter.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, AlbumListAdapter.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+      localObject = URLDrawableHelper.getDrawable(paramView, AlbumListAdapter.a, AlbumListAdapter.a);
       ((URLDrawable)localObject).setTag(localQQAlbumInfo.mCoverInfo);
     }
     localImageView1.setImageDrawable((Drawable)localObject);
-    if ((localQQAlbumInfo.id != null) && (localQQAlbumInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId)))
+    if ((localQQAlbumInfo.id != null) && (localQQAlbumInfo.id.equals(this.b.albumId)))
     {
       localImageView2.setVisibility(0);
       return localView;
@@ -138,7 +137,7 @@ public class AECircleAlbumListLogic
   
   public String a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter;
+    Object localObject = this.b.filter;
     boolean bool1 = ((MediaFileFilter)localObject).needHeif;
     boolean bool2 = ((MediaFileFilter)localObject).needWebp;
     localObject = new StringBuffer();
@@ -160,9 +159,9 @@ public class AECircleAlbumListLogic
   
   public List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
+    if (this.a.get() != null)
     {
-      if (((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity() == null) {
+      if (((AECircleAlbumListFragment)this.a.get()).getActivity() == null) {
         return null;
       }
       boolean bool = false;
@@ -239,7 +238,7 @@ public class AECircleAlbumListLogic
         }
         if (paramInt == -1)
         {
-          paramList1 = AlbumListAdapter.b(((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
+          paramList1 = AlbumListAdapter.b(((AECircleAlbumListFragment)this.a.get()).getActivity());
         }
         else
         {
@@ -249,10 +248,10 @@ public class AECircleAlbumListLogic
           paramList1.mCoverInfo = new LocalMediaInfo();
         }
         paramList2.add(0, paramList1);
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.showVideo()))
+        if ((this.b.filter != null) && (this.b.filter.showVideo()))
         {
           paramList1 = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-          paramList1 = ((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity().getContentResolver().query(paramList1, new String[] { "_id" }, "_size>0 ", null, null);
+          paramList1 = ((AECircleAlbumListFragment)this.a.get()).getActivity().getContentResolver().query(paramList1, new String[] { "_id" }, "_size>0 ", null, null);
           if (paramList1 != null)
           {
             i = paramList1.getCount();
@@ -274,12 +273,12 @@ public class AECircleAlbumListLogic
               i = 0;
             }
           } while (i > 0);
-          a().jdField_a_of_type_Boolean = bool;
+          c().c = bool;
           if (bool)
           {
             if (paramInt == -1)
             {
-              paramList1 = a().a(((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
+              paramList1 = c().a(((AECircleAlbumListFragment)this.a.get()).getActivity());
             }
             else
             {
@@ -298,30 +297,16 @@ public class AECircleAlbumListLogic
     return null;
   }
   
-  public void a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("AlbumListLogic new，fragment = ");
-      localStringBuilder.append(this.jdField_a_of_type_MqqUtilWeakReference.get());
-      localStringBuilder.append(",PhotoCommonData = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
-      QLog.d("AlbumListActivity", 2, localStringBuilder.toString());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.releaseCommonData();
-  }
-  
   public void a(int paramInt)
   {
-    AlbumListAdapter localAlbumListAdapter = a();
-    MediaFileFilter localMediaFileFilter = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter;
+    AlbumListAdapter localAlbumListAdapter = c();
+    MediaFileFilter localMediaFileFilter = this.b.filter;
     Object localObject2 = null;
     int i;
     if ((localMediaFileFilter != null) && (localMediaFileFilter.showImage()))
     {
       LogTag.a();
-      localList = localAlbumListAdapter.a(((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), paramInt);
+      localList = localAlbumListAdapter.a(((AECircleAlbumListFragment)this.a.get()).getActivity(), paramInt);
       if ((paramInt != -1) && (localList != null) && (localList.size() == paramInt)) {
         i = 1;
       } else {
@@ -343,7 +328,7 @@ public class AECircleAlbumListLogic
       if (localMediaFileFilter.showVideo())
       {
         LogTag.a();
-        localObject1 = localAlbumListAdapter.a(((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), paramInt, localMediaFileFilter);
+        localObject1 = localAlbumListAdapter.a(((AECircleAlbumListFragment)this.a.get()).getActivity(), paramInt, localMediaFileFilter);
         j = i;
         if (paramInt != -1)
         {
@@ -360,7 +345,7 @@ public class AECircleAlbumListLogic
       }
     }
     LogTag.a();
-    List localList = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEAlbumListLogic$IalbumListAdapterCallBack.a(localList, (List)localObject1, paramInt);
+    List localList = this.d.a(localList, (List)localObject1, paramInt);
     if (localList != null)
     {
       i = 1;
@@ -396,17 +381,17 @@ public class AECircleAlbumListLogic
   {
     Object localObject = (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
     if (localObject != null) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap.isEmpty())) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap.putAll((Map)localObject);
+      if ((this.b.selectedMediaInfoHashMap != null) && (!this.b.selectedMediaInfoHashMap.isEmpty())) {
+        this.b.selectedMediaInfoHashMap.putAll((Map)localObject);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedMediaInfoHashMap = ((HashMap)localObject);
+        this.b.selectedMediaInfoHashMap = ((HashMap)localObject);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId = paramIntent.getStringExtra("ALBUM_ID");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName = paramIntent.getStringExtra("ALBUM_NAME");
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId == null)
+    this.b.albumId = paramIntent.getStringExtra("ALBUM_ID");
+    this.b.albumName = paramIntent.getStringExtra("ALBUM_NAME");
+    if (this.b.albumId == null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData;
+      localObject = this.b;
       ((PhotoCommonBaseData)localObject).albumId = "$RecentAlbumId";
       ((PhotoCommonBaseData)localObject).albumName = null;
     }
@@ -414,24 +399,24 @@ public class AECircleAlbumListLogic
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("passed in albumId=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId);
+      ((StringBuilder)localObject).append(this.b.albumId);
       ((StringBuilder)localObject).append(", albumName=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName);
+      ((StringBuilder)localObject).append(this.b.albumName);
       AEQLog.b("AECircleAlbumListLogic", ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.showMediaType = paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData;
+    this.b.showMediaType = paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
+    localObject = this.b;
     ((PhotoCommonBaseData)localObject).filter = MediaFileFilter.getFilter(((PhotoCommonBaseData)localObject).showMediaType);
     if (paramIntent.getBooleanExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", false))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.needGif = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.filter.needVideo = false;
+      this.b.filter.needGif = false;
+      this.b.filter.needVideo = false;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterAlbumListAdapter = new AlbumListAdapter((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    ((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterAlbumListAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterAlbumListAdapter;
+    this.e = new AlbumListAdapter((AECircleAlbumListFragment)this.a.get());
+    ((AECircleAlbumListFragment)this.a.get()).e = this.e;
     ThreadManager.getFileThreadHandler().post(new AECircleAlbumListLogic.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListData.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.isShowQzoneAlbum = paramIntent.getBooleanExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", false);
+    this.c.a = paramIntent.getBooleanExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
+    this.b.isShowQzoneAlbum = paramIntent.getBooleanExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", false);
   }
   
   boolean a(Intent paramIntent, QQAlbumInfo paramQQAlbumInfo)
@@ -439,14 +424,14 @@ public class AECircleAlbumListLogic
     String str = paramIntent.getStringExtra("ALBUM_NAME");
     paramIntent = paramIntent.getStringExtra("ALBUM_ID");
     boolean bool;
-    if (((str != null) && (!str.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName))) || ((paramIntent != null) && (!paramIntent.equals(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId)))) {
+    if (((str != null) && (!str.equals(this.b.albumName))) || ((paramIntent != null) && (!paramIntent.equals(this.b.albumId)))) {
       bool = true;
     } else {
       bool = false;
     }
     if (a(bool, paramQQAlbumInfo))
     {
-      paramQQAlbumInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData;
+      paramQQAlbumInfo = this.b;
       paramQQAlbumInfo.albumName = str;
       paramQQAlbumInfo.albumId = paramIntent;
       return true;
@@ -460,7 +445,7 @@ public class AECircleAlbumListLogic
     paramIntent.putExtra("ALBUM_NAME", paramQQAlbumInfo.name);
     paramInt = 0;
     paramIntent.putExtra("album_enter_directly", false);
-    XListView localXListView = ((AECircleAlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_ComTencentWidgetXListView;
+    XListView localXListView = ((AECircleAlbumListFragment)this.a.get()).f;
     paramIntent.putExtra("PhotoConst.photo_selection_index", localXListView.getFirstVisiblePosition());
     Object localObject = localXListView.getChildAt(0);
     if (localObject != null) {
@@ -483,10 +468,24 @@ public class AECircleAlbumListLogic
   {
     return paramBoolean;
   }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AlbumListLogic new，fragment = ");
+      localStringBuilder.append(this.a.get());
+      localStringBuilder.append(",PhotoCommonData = ");
+      localStringBuilder.append(this.b);
+      QLog.d("AlbumListActivity", 2, localStringBuilder.toString());
+    }
+    this.b.releaseCommonData();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECircleAlbumListLogic
  * JD-Core Version:    0.7.0.1
  */

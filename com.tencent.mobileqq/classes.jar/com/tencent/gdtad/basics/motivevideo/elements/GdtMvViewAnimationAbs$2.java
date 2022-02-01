@@ -10,30 +10,30 @@ class GdtMvViewAnimationAbs$2
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-    ((RelativeLayout.LayoutParams)localObject).topMargin = (this.jdField_a_of_type_Int + (int)(this.b * 1.0F));
-    ((RelativeLayout.LayoutParams)localObject).leftMargin = (this.c + (int)(this.d * 1.0F));
-    int i = this.e;
+    Object localObject = this.a;
+    ((RelativeLayout.LayoutParams)localObject).topMargin = (this.b + (int)(this.c * 1.0F));
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = (this.d + (int)(this.e * 1.0F));
+    int i = this.f;
     if (i == -1)
     {
       i = ((RelativeLayout.LayoutParams)localObject).leftMargin;
     }
     else
     {
-      int j = this.f;
+      int j = this.g;
       i = (int)(i * 1.0F) + j;
     }
     ((RelativeLayout.LayoutParams)localObject).rightMargin = i;
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    localObject = this.h;
     if (localObject != null) {
-      ((View)localObject).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      ((View)localObject).setLayoutParams(this.a);
     }
-    GdtMvViewAnimationAbs.b(this.jdField_a_of_type_AndroidViewView);
+    GdtMvViewAnimationAbs.b(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.elements.GdtMvViewAnimationAbs.2
  * JD-Core Version:    0.7.0.1
  */

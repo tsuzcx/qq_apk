@@ -11,9 +11,9 @@ public class DCAIOPreview
   extends DataCollector
   implements ReportEvent
 {
-  private SparseArray<DCAIOPreview.AIOPreviewData> a = new SparseArray();
-  private Handler jdField_b_of_type_AndroidOsHandler = new DCAIOPreview.1(this, a());
-  private String jdField_b_of_type_JavaLangString;
+  private String d;
+  private SparseArray<DCAIOPreview.AIOPreviewData> e = new SparseArray();
+  private Handler f = new DCAIOPreview.1(this, e());
   
   public DCAIOPreview(Context paramContext)
   {
@@ -21,46 +21,46 @@ public class DCAIOPreview
     int i = ((Activity)paramContext).getIntent().getIntExtra("forward_source_uin_type", -1);
     if (i == 0)
     {
-      this.jdField_b_of_type_JavaLangString = "c2c";
+      this.d = "c2c";
       return;
     }
     if (i == 1)
     {
-      this.jdField_b_of_type_JavaLangString = "grp";
+      this.d = "grp";
       return;
     }
     if (i == 3000)
     {
-      this.jdField_b_of_type_JavaLangString = "dis";
+      this.d = "dis";
       return;
     }
-    this.jdField_b_of_type_JavaLangString = "other";
+    this.d = "other";
   }
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidOsHandler.obtainMessage().sendToTarget();
+    this.f.obtainMessage().sendToTarget();
   }
   
   public void a(int paramInt)
   {
-    DCAIOPreview.AIOPreviewData localAIOPreviewData = (DCAIOPreview.AIOPreviewData)this.a.get(paramInt);
+    DCAIOPreview.AIOPreviewData localAIOPreviewData = (DCAIOPreview.AIOPreviewData)this.e.get(paramInt);
     if ((localAIOPreviewData != null) && (DCAIOPreview.AIOPreviewData.a(localAIOPreviewData))) {
-      DCAIOPreview.AIOPreviewData.a(localAIOPreviewData);
+      DCAIOPreview.AIOPreviewData.b(localAIOPreviewData);
     }
   }
   
   public void b(int paramInt)
   {
-    DCAIOPreview.AIOPreviewData localAIOPreviewData = (DCAIOPreview.AIOPreviewData)this.a.get(paramInt);
+    DCAIOPreview.AIOPreviewData localAIOPreviewData = (DCAIOPreview.AIOPreviewData)this.e.get(paramInt);
     if ((localAIOPreviewData != null) && (DCAIOPreview.AIOPreviewData.a(localAIOPreviewData))) {
-      DCAIOPreview.AIOPreviewData.b(localAIOPreviewData);
+      DCAIOPreview.AIOPreviewData.c(localAIOPreviewData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCAIOPreview
  * JD-Core Version:    0.7.0.1
  */

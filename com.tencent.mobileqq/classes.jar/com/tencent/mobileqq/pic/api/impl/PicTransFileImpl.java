@@ -6,6 +6,8 @@ import com.tencent.mobileqq.transfile.C2CPicDownloadProcessor;
 import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 import com.tencent.mobileqq.transfile.GroupPicDownloadProcessor;
 import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import com.tencent.mobileqq.transfile.GuildPicDownloadProcessor;
+import com.tencent.mobileqq.transfile.GuildPicUploadProcessor;
 import mqq.app.AppRuntime;
 
 public class PicTransFileImpl
@@ -32,6 +34,16 @@ public class PicTransFileImpl
   public Class getGroupUploadProClass()
   {
     return GroupPicUploadProcessor.class;
+  }
+  
+  public Class getGuildDownloadProClass()
+  {
+    return GuildPicDownloadProcessor.class;
+  }
+  
+  public Class getGuildUploadProClass()
+  {
+    return GuildPicUploadProcessor.class;
   }
   
   public byte[] getSessionKey()
@@ -73,7 +85,7 @@ public class PicTransFileImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.PicTransFileImpl
  * JD-Core Version:    0.7.0.1
  */

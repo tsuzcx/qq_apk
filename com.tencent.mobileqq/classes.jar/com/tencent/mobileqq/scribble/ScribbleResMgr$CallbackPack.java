@@ -5,32 +5,32 @@ import java.lang.ref.WeakReference;
 
 class ScribbleResMgr$CallbackPack
 {
-  int jdField_a_of_type_Int;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  int jdField_b_of_type_Int;
-  WeakReference<ResCallback> jdField_b_of_type_JavaLangRefWeakReference;
+  WeakReference<View> a;
+  WeakReference<ResCallback> b;
+  int c;
+  int d;
   
   public ScribbleResMgr$CallbackPack(ScribbleResMgr paramScribbleResMgr, int paramInt1, int paramInt2, View paramView, ResCallback paramResCallback)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramResCallback);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.a = new WeakReference(paramView);
+    this.b = new WeakReference(paramResCallback);
+    this.d = paramInt1;
+    this.c = paramInt2;
   }
   
   public View a()
   {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (View)this.a.get();
   }
   
-  public ResCallback a()
+  public ResCallback b()
   {
-    return (ResCallback)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    return (ResCallback)this.b.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr.CallbackPack
  * JD-Core Version:    0.7.0.1
  */

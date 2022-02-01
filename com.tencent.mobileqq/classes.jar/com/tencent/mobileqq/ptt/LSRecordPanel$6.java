@@ -17,27 +17,27 @@ class LSRecordPanel$6
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "LS startCloseAnimation onAnimationEnd");
     }
-    if (LSRecordPanel.a(this.a))
+    if (LSRecordPanel.d(this.a))
     {
-      if (paramAnimation == this.a.b) {
-        LSRecordPanel.a(this.a);
+      if (paramAnimation == this.a.c) {
+        LSRecordPanel.e(this.a);
       }
       paramAnimation = this.a;
-      paramAnimation.a = null;
       paramAnimation.b = null;
-      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(paramAnimation).getLayoutParams();
+      paramAnimation.c = null;
+      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.f(paramAnimation).getLayoutParams();
       int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
       paramAnimation.height -= i;
       paramAnimation.width -= i;
       paramAnimation.rightMargin += i / 2;
       LSRecordPanel.a(this.a, false);
-      LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
+      LSRecordPanel.f(this.a).setLayoutParams(paramAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.6
  * JD-Core Version:    0.7.0.1
  */

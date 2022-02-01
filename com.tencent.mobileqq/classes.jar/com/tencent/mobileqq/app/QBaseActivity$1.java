@@ -13,7 +13,7 @@ class QBaseActivity$1
   public void run()
   {
     Object localObject = this.this$0;
-    String str = ((QBaseActivity)localObject).getString(2131694975);
+    String str = ((QBaseActivity)localObject).getString(2131892702);
     int i = 0;
     if (SettingCloneUtil.readValue((Context)localObject, null, str, "qqsetting_screenshot_key", false)) {
       i = 1;
@@ -24,7 +24,7 @@ class QBaseActivity$1
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
     ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
-    QBaseActivity.access$002(QBaseActivity.access$100().a());
+    QBaseActivity.access$002(QBaseActivity.access$100().b());
     try
     {
       this.this$0.getApplicationContext().registerReceiver(QBaseActivity.access$000(), (IntentFilter)localObject);
@@ -38,7 +38,7 @@ class QBaseActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

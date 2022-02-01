@@ -15,7 +15,7 @@ class DoodleMsgLayout$2
   
   public void run()
   {
-    Bitmap localBitmap = BitmapManager.a(BaseApplication.getContext().getResources(), 2130839407);
+    Bitmap localBitmap = BitmapManager.a(BaseApplication.getContext().getResources(), 2130839591);
     if ((localBitmap != null) && (GlobalImageCache.a != null)) {
       GlobalImageCache.a.put("aio_doodle_progress", localBitmap, (byte)0);
     }
@@ -24,7 +24,7 @@ class DoodleMsgLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.2
  * JD-Core Version:    0.7.0.1
  */

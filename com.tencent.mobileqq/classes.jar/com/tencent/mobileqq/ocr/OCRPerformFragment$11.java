@@ -14,7 +14,7 @@ class OCRPerformFragment$11
   
   public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    if (!OCRPerformFragment.a(this.a)) {
+    if (!OCRPerformFragment.g(this.a)) {
       return;
     }
     OCRPerformFragment.a(this.a, false);
@@ -25,7 +25,7 @@ class OCRPerformFragment$11
     HashMap localHashMap = new HashMap();
     int i;
     if (paramTranslateResult != null) {
-      i = paramTranslateResult.b;
+      i = paramTranslateResult.h;
     } else {
       i = 2000;
     }
@@ -36,7 +36,7 @@ class OCRPerformFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.11
  * JD-Core Version:    0.7.0.1
  */

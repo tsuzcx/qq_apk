@@ -33,7 +33,7 @@ class QQGameAdServiceImpl$1
       {
         paramIntent = new QQGamePaAdInfo.LoginReportRsp();
         paramIntent.mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
-        paramLong = paramIntent.cache_time.get();
+        paramLong = paramIntent.cacheTime.get();
         paramIntent = new StringBuilder();
         paramIntent.append("pull ad cacheTs: ");
         paramIntent.append(paramLong);
@@ -51,7 +51,7 @@ class QQGameAdServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameAdServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

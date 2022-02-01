@@ -1,6 +1,5 @@
 package com.tencent.tav.player;
 
-import android.graphics.Rect;
 import android.graphics.SurfaceTexture;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,14 +10,10 @@ public class PlayerLayer
   private boolean needReleaseSurface = false;
   @Nullable
   private Player player;
-  private boolean readyForDisplay;
-  private PlayerLayer.PlayerLayerReadyListener readyListener = null;
   @NonNull
   Surface surface;
   int surfaceHeight;
   int surfaceWidth;
-  private int videoGravity;
-  private Rect videoRect;
   
   public PlayerLayer(@NonNull SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
@@ -47,31 +42,6 @@ public class PlayerLayer
     return this.surface;
   }
   
-  public int getSurfaceHeight()
-  {
-    return this.surfaceHeight;
-  }
-  
-  public int getSurfaceWidth()
-  {
-    return this.surfaceWidth;
-  }
-  
-  public int getVideoGravity()
-  {
-    return this.videoGravity;
-  }
-  
-  public Rect getVideoRect()
-  {
-    return this.videoRect;
-  }
-  
-  public boolean isReadyForDisplay()
-  {
-    return this.readyForDisplay;
-  }
-  
   void release()
   {
     if (this.needReleaseSurface) {
@@ -86,20 +56,10 @@ public class PlayerLayer
       paramPlayer.bindLayer(this);
     }
   }
-  
-  public void setReadyForDisplay(PlayerLayer.PlayerLayerReadyListener paramPlayerLayerReadyListener)
-  {
-    this.readyListener = paramPlayerLayerReadyListener;
-  }
-  
-  public void setVideoGravity(int paramInt)
-  {
-    this.videoGravity = paramInt;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.player.PlayerLayer
  * JD-Core Version:    0.7.0.1
  */

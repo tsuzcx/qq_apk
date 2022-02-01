@@ -7,12 +7,12 @@ class ExpandPushChannel$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelExpandPushChannel$2.a.success(this.jdField_a_of_type_JavaLangObject);
+    this.b.a.success(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.ExpandPushChannel.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qphone.base.util.QLog;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -21,7 +22,7 @@ public class IPUtils
       InetAddress localInetAddress;
       do
       {
-        localObject = NetworkInterface.getNetworkInterfaces();
+        localObject = NetworkMonitor.getNetworkInterfaces();
         Enumeration localEnumeration;
         while (!localEnumeration.hasMoreElements())
         {
@@ -71,7 +72,7 @@ public class IPUtils
             InetAddress localInetAddress;
             do
             {
-              paramContext = NetworkInterface.getNetworkInterfaces();
+              paramContext = NetworkMonitor.getNetworkInterfaces();
               while (!((Enumeration)localObject).hasMoreElements())
               {
                 if (!paramContext.hasMoreElements()) {
@@ -92,7 +93,7 @@ public class IPUtils
         else
         {
           if (((NetworkInfo)localObject).getType() == 1) {
-            return a(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getIpAddress());
+            return a(NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi")).getIpAddress());
           }
           if (((NetworkInfo)localObject).getType() == 9)
           {
@@ -111,7 +112,7 @@ public class IPUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.IPUtils
  * JD-Core Version:    0.7.0.1
  */

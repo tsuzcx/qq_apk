@@ -345,8 +345,13 @@ public class TroopPhotoUtilsApiImpl
     }
     if (paramInt != 102)
     {
-      paramInt = i - Utils.a(65.0F, paramActivity.getResources());
-      localPoint.set(paramInt, paramInt);
+      if (paramInt != 104)
+      {
+        paramInt = i - Utils.a(65.0F, paramActivity.getResources());
+        localPoint.set(paramInt, paramInt);
+        return localPoint;
+      }
+      localPoint.set(i, i);
       return localPoint;
     }
     localPoint.set(i, getScaledCoverHeight(i));
@@ -392,36 +397,36 @@ public class TroopPhotoUtilsApiImpl
   public String getErrText(Context paramContext, int paramInt)
   {
     if (paramInt == 0) {
-      return paramContext.getString(2131718782);
+      return paramContext.getString(2131916288);
     }
     if (paramInt == 1) {
-      return paramContext.getString(2131696086);
+      return paramContext.getString(2131893851);
     }
     if (paramInt == 2) {
-      return paramContext.getString(2131696085);
+      return paramContext.getString(2131893850);
     }
     if (paramInt == 3) {
-      return paramContext.getString(2131696087);
+      return paramContext.getString(2131893852);
     }
     if (paramInt == 5) {
-      return paramContext.getString(2131696084);
+      return paramContext.getString(2131893849);
     }
     if (paramInt == 100) {
-      return paramContext.getString(2131696068);
+      return paramContext.getString(2131893833);
     }
     if (paramInt == 101) {
-      return paramContext.getString(2131696069);
+      return paramContext.getString(2131893834);
     }
     if (paramInt == 102) {
-      return paramContext.getString(2131696066);
+      return paramContext.getString(2131893831);
     }
     if (paramInt == 103) {
-      return paramContext.getString(2131696070);
+      return paramContext.getString(2131893835);
     }
     if (paramInt == 1793) {
-      return paramContext.getString(2131693355);
+      return paramContext.getString(2131890904);
     }
-    return paramContext.getString(2131696083);
+    return paramContext.getString(2131893848);
   }
   
   public int getInSampleSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -718,7 +723,7 @@ public class TroopPhotoUtilsApiImpl
     localBundle.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
     localBundle.putString("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     localBundle.putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-    paramActivity.overridePendingTransition(2130771993, 2130771991);
+    paramActivity.overridePendingTransition(2130771996, 2130771994);
     ((ITroopCardApi)QRoute.api(ITroopCardApi.class)).startPhotoList(paramActivity, localBundle);
   }
   
@@ -738,7 +743,7 @@ public class TroopPhotoUtilsApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.api.impl.TroopPhotoUtilsApiImpl
  * JD-Core Version:    0.7.0.1
  */

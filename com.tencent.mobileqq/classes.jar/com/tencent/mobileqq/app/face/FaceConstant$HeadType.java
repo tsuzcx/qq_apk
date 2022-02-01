@@ -12,6 +12,8 @@ public abstract interface FaceConstant$HeadType
   public static final int QQHEAD_TYPE_DISUSSION = 101;
   public static final int QQHEAD_TYPE_GROUP = 4;
   public static final int QQHEAD_TYPE_GROUP_NEW = 8;
+  public static final int QQHEAD_TYPE_GUILD = 117;
+  public static final int QQHEAD_TYPE_GUILD_USER_TINYID = 118;
   public static final int QQHEAD_TYPE_IMAX_AD = 114;
   public static final int QQHEAD_TYPE_MERGE_KANDIAN = 111;
   public static final int QQHEAD_TYPE_MOBILE_NUMBER = 11;
@@ -25,11 +27,12 @@ public abstract interface FaceConstant$HeadType
   public static final int QQHEAD_TYPE_SERVICE_ACCOUNT_FOLDER = 112;
   public static final int QQHEAD_TYPE_STRANGER = 32;
   public static final int QQHEAD_TYPE_SUBACCOUNT = 103;
+  public static final int QQHEAD_TYPE_TEMP_GAME_MSG = 119;
   public static final int QQHEAD_TYPE_USER = 1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceConstant.HeadType
  * JD-Core Version:    0.7.0.1
  */

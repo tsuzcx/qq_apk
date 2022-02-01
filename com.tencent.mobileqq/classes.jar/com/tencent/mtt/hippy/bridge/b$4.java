@@ -20,25 +20,24 @@ class b$4
     } else {
       bool = false;
     }
-    Boolean localBoolean = Boolean.valueOf(bool);
     this.b.c.onDestroy();
     if (this.a != null)
     {
       paramString = null;
-      if (!localBoolean.booleanValue())
+      if (!bool)
       {
         paramString = new StringBuilder();
         paramString.append("destroy core failed!!! msg.what=");
         paramString.append(paramMessage.what);
         paramString = new RuntimeException(paramString.toString());
       }
-      this.a.callback(localBoolean, paramString);
+      this.a.callback(Boolean.valueOf(bool), paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.b.4
  * JD-Core Version:    0.7.0.1
  */

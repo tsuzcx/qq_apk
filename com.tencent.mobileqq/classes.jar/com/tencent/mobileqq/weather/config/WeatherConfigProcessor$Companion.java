@@ -13,14 +13,14 @@ public final class WeatherConfigProcessor$Companion
   @NotNull
   public final WeatherConfigBean a()
   {
-    Object localObject = QConfigManager.a().a(702);
+    Object localObject = QConfigManager.b().b(702);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "QConfigManager.getSingle…n().loadConObj(CONFIG_ID)");
     return (WeatherConfigBean)localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.config.WeatherConfigProcessor.Companion
  * JD-Core Version:    0.7.0.1
  */

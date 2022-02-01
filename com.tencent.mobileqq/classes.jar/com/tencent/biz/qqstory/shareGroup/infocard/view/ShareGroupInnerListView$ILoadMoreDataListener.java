@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.shareGroup.infocard.view;
 
 public abstract interface ShareGroupInnerListView$ILoadMoreDataListener
 {
-  public abstract boolean a(String paramString);
+  public abstract boolean b(String paramString);
 }
 
 

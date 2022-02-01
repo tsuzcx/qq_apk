@@ -13,15 +13,15 @@ class LoginView$21
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.showDialog(4);
-    PhoneNumQuickLoginManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.a.jdField_a_of_type_MqqAppAppRuntime, LoginView.b(this.a), LoginView.a(this.a));
+    this.a.b.showDialog(4);
+    PhoneNumQuickLoginManager.a(this.a.b, this.a.a, LoginView.B(this.a), this.a.K);
     PhoneNumQuickLoginManager.b("0X800B8CD");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.21
  * JD-Core Version:    0.7.0.1
  */

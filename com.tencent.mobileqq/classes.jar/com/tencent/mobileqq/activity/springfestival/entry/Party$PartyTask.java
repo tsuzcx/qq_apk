@@ -8,19 +8,19 @@ import com.tencent.mobileqq.utils.TimeFormatterUtils;
 public class Party$PartyTask
 {
   public int a;
-  public long a;
-  public Object a;
+  public long b;
+  public Object c;
   
   public Party$PartyTask(int paramInt, long paramLong, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a = paramInt;
+    this.b = paramLong;
+    this.c = paramObject;
   }
   
   public String a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.c;
     if (localObject != null)
     {
       if ((localObject instanceof BaseActivityData)) {
@@ -42,16 +42,16 @@ public class Party$PartyTask
     localStringBuilder.append("PartyTask{entryId=");
     localStringBuilder.append(a());
     localStringBuilder.append(", type=");
-    localStringBuilder.append(Party.b(this.jdField_a_of_type_Int));
+    localStringBuilder.append(Party.b(this.a));
     localStringBuilder.append(", time=");
-    localStringBuilder.append(TimeFormatterUtils.b(this.jdField_a_of_type_Long));
+    localStringBuilder.append(TimeFormatterUtils.f(this.b));
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.Party.PartyTask
  * JD-Core Version:    0.7.0.1
  */

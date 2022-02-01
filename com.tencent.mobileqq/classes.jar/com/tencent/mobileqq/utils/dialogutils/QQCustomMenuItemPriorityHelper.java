@@ -13,24 +13,23 @@ import java.util.Map;
 public class QQCustomMenuItemPriorityHelper
 {
   public static final int a;
-  private static Map<String, Integer> a;
   private static int b = 2147483647;
+  private static Map<String, Integer> c = new QQCustomMenuItemPriorityHelper.1();
   
   static
   {
     int i;
-    if ((ViewUtils.a() > 1.5F) && (FontSettingManager.getFontLevel() <= 16.0F)) {
+    if ((ViewUtils.getDensity() > 1.5F) && (FontSettingManager.getFontLevel() <= 16.0F)) {
       i = 5;
     } else {
       i = 4;
     }
-    jdField_a_of_type_Int = i;
-    jdField_a_of_type_JavaUtilMap = new QQCustomMenuItemPriorityHelper.1();
+    a = i;
   }
   
   public static int a(String paramString)
   {
-    Object localObject = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    Object localObject = (Integer)c.get(paramString);
     if (localObject != null) {
       return ((Integer)localObject).intValue();
     }
@@ -62,25 +61,25 @@ public class QQCustomMenuItemPriorityHelper
     {
       localObject1 = (QQCustomMenuItem)localIterator.next();
       if (localObject1 != null) {
-        if (((QQCustomMenuItem)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplication.getContext().getString(2131699607))) {
+        if (((QQCustomMenuItem)localObject1).a.equals(BaseApplication.getContext().getString(2131897640))) {
           localObject2 = localObject1;
-        } else if (((QQCustomMenuItem)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplication.getContext().getString(2131699586))) {
+        } else if (((QQCustomMenuItem)localObject1).a.equals(BaseApplication.getContext().getString(2131897617))) {
           localObject3 = localObject1;
-        } else if (((QQCustomMenuItem)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplication.getContext().getString(2131699602))) {
+        } else if (((QQCustomMenuItem)localObject1).a.equals(BaseApplication.getContext().getString(2131897635))) {
           localObject6 = localObject1;
-        } else if (((QQCustomMenuItem)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplication.getContext().getString(2131699606))) {
+        } else if (((QQCustomMenuItem)localObject1).a.equals(BaseApplication.getContext().getString(2131897639))) {
           localObject5 = localObject1;
-        } else if (((QQCustomMenuItem)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplication.getContext().getString(2131699592))) {
+        } else if (((QQCustomMenuItem)localObject1).a.equals(BaseApplication.getContext().getString(2131897624))) {
           localObject4 = localObject1;
         }
       }
     }
-    if ((localObject6 != null) && (localObject6.jdField_a_of_type_Boolean))
+    if ((localObject6 != null) && (localObject6.e))
     {
       localArrayList.remove(localObject6);
       localArrayList.add(localObject6);
     }
-    if ((localObject5 != null) && (localObject5.jdField_a_of_type_Boolean) && (localObject4 != null))
+    if ((localObject5 != null) && (localObject5.e) && (localObject4 != null))
     {
       localArrayList.remove(localObject5);
       localArrayList.add(localArrayList.indexOf(localObject4), localObject5);
@@ -94,7 +93,7 @@ public class QQCustomMenuItemPriorityHelper
     {
       localArrayList.remove(localObject2);
       int i = localArrayList.size();
-      int j = jdField_a_of_type_Int;
+      int j = a;
       if (i >= j) {
         localArrayList.add(j - 1, localObject2);
       } else {
@@ -107,7 +106,7 @@ public class QQCustomMenuItemPriorityHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItemPriorityHelper
  * JD-Core Version:    0.7.0.1
  */

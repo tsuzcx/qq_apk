@@ -14,7 +14,7 @@ class EditVideoMusicCache$2
   
   public void a(boolean paramBoolean, Object paramObject)
   {
-    String str = EditVideoMusicCache.a(this.a).getResources().getString(2131698369);
+    String str = EditVideoMusicCache.c(this.a).getResources().getString(2131896293);
     Object localObject = str;
     if (paramBoolean)
     {
@@ -29,16 +29,16 @@ class EditVideoMusicCache$2
       if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
       {
         localObject = new QQStoryMusicInfo();
-        ((QQStoryMusicInfo)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
-        ((QQStoryMusicInfo)localObject).d = paramObject.url;
-        ((QQStoryMusicInfo)localObject).jdField_b_of_type_Int = 2;
-        ((QQStoryMusicInfo)localObject).a = String.valueOf(paramObject.songId);
+        ((QQStoryMusicInfo)localObject).e = paramObject.songName;
+        ((QQStoryMusicInfo)localObject).g = paramObject.url;
+        ((QQStoryMusicInfo)localObject).k = 2;
+        ((QQStoryMusicInfo)localObject).d = String.valueOf(paramObject.songId);
         this.a.a(12, localObject);
         return;
       }
       localObject = str;
       if (paramObject.playable != 1) {
-        localObject = EditVideoMusicCache.a(this.a).getResources().getString(2131698370);
+        localObject = EditVideoMusicCache.c(this.a).getResources().getString(2131896294);
       }
     }
     this.a.a(7, localObject);

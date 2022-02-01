@@ -11,6 +11,7 @@ public class a
   private static boolean C = false;
   private static boolean D = false;
   private static boolean E = false;
+  private static boolean F = false;
   private static a a;
   private static Context b;
   private static boolean c = false;
@@ -37,7 +38,7 @@ public class a
   private static boolean x = false;
   private static boolean y = false;
   private static boolean z = false;
-  private String F = "ReportDuaManage";
+  private String G = "ReportDuaManage";
   
   public static a a()
   {
@@ -49,7 +50,7 @@ public class a
   
   private void h()
   {
-    TXCLog.i(this.F, "resetReportState");
+    TXCLog.i(this.G, "resetReportState");
     c = false;
     d = false;
     e = false;
@@ -79,6 +80,7 @@ public class a
     B = false;
     D = false;
     E = false;
+    F = false;
   }
   
   public void a(Context paramContext)
@@ -87,7 +89,7 @@ public class a
     b = paramContext.getApplicationContext();
     if (!c)
     {
-      TXCLog.i(this.F, "reportSDKInit");
+      TXCLog.i(this.G, "reportSDKInit");
       TXCDRApi.txReportDAU(b, 1201, 0, "reportSDKInit!");
     }
     c = true;
@@ -97,7 +99,7 @@ public class a
   {
     if (!d)
     {
-      TXCLog.i(this.F, "reportBeautyDua");
+      TXCLog.i(this.G, "reportBeautyDua");
       TXCDRApi.txReportDAU(b, 1202, 0, "reportBeautyDua");
     }
     d = true;
@@ -107,7 +109,7 @@ public class a
   {
     if (!e)
     {
-      TXCLog.i(this.F, "reportWhiteDua");
+      TXCLog.i(this.G, "reportWhiteDua");
       TXCDRApi.txReportDAU(b, 1203, 0, "reportWhiteDua");
     }
     e = true;
@@ -117,7 +119,7 @@ public class a
   {
     if (!f)
     {
-      TXCLog.i(this.F, "reportRuddyDua");
+      TXCLog.i(this.G, "reportRuddyDua");
       TXCDRApi.txReportDAU(b, 1204, 0, "reportRuddyDua");
     }
     f = true;
@@ -127,7 +129,7 @@ public class a
   {
     if (!j)
     {
-      TXCLog.i(this.F, "reportFilterImageDua");
+      TXCLog.i(this.G, "reportFilterImageDua");
       TXCDRApi.txReportDAU(b, 1208, 0, "reportFilterImageDua");
     }
     j = true;
@@ -137,7 +139,7 @@ public class a
   {
     if (!l)
     {
-      TXCLog.i(this.F, "reportSharpDua");
+      TXCLog.i(this.G, "reportSharpDua");
       TXCDRApi.txReportDAU(b, 1210, 0, "reportSharpDua");
     }
     l = true;
@@ -147,7 +149,7 @@ public class a
   {
     if (!n)
     {
-      TXCLog.i(this.F, "reportWarterMarkDua");
+      TXCLog.i(this.G, "reportWarterMarkDua");
       TXCDRApi.txReportDAU(b, 1212, 0, "reportWarterMarkDua");
     }
     n = true;
@@ -155,7 +157,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.a
  * JD-Core Version:    0.7.0.1
  */

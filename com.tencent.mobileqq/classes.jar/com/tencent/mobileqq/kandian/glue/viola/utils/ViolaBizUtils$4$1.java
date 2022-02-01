@@ -15,12 +15,12 @@ class ViolaBizUtils$4$1
   {
     if (paramBoolean)
     {
-      RIJUgcVideoPublishManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaUtilsViolaBizUtils$4.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo, true);
-      ViolaBizUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaUtilsViolaBizUtils$4.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule, this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaUtilsViolaBizUtils$4.jdField_b_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaUtilsViolaBizUtils$4.jdField_b_of_type_JavaLangString, 0, "");
+      RIJUgcVideoPublishManager.a(this.c.b).a(this.a, true);
+      ViolaBizUtils.a(this.c.d, this.c.e, this.b, this.c.f, 0, "");
     }
     else
     {
-      ViolaBizUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaUtilsViolaBizUtils$4.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule, this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaUtilsViolaBizUtils$4.jdField_b_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaUtilsViolaBizUtils$4.jdField_b_of_type_JavaLangString, -2, "cancel upload by user on mobile net");
+      ViolaBizUtils.a(this.c.d, this.c.e, this.b, this.c.f, -2, "cancel upload by user on mobile net");
     }
     String str = ViolaBizUtils.a;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -31,7 +31,7 @@ class ViolaBizUtils$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.utils.ViolaBizUtils.4.1
  * JD-Core Version:    0.7.0.1
  */

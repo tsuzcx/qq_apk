@@ -8,18 +8,13 @@ import java.util.Set;
 
 class Observable$TCHashMap<K, V>
 {
-  private HashMap<K, ArrayList<V>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<K, ArrayList<V>> b = new HashMap();
   
   public Observable$TCHashMap(Observable paramObservable) {}
   
-  public ArrayList<V> a(K paramK)
-  {
-    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-  }
-  
   public void a(V paramV)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -39,21 +34,26 @@ class Observable$TCHashMap<K, V>
   
   public void a(K paramK, V paramV)
   {
-    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+    ArrayList localArrayList2 = (ArrayList)this.b.get(paramK);
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList1 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, localArrayList1);
+      this.b.put(paramK, localArrayList1);
     }
     if (!localArrayList1.contains(paramV)) {
       localArrayList1.add(paramV);
     }
   }
+  
+  public ArrayList<V> b(K paramK)
+  {
+    return (ArrayList)this.b.get(paramK);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.common.Observable.TCHashMap
  * JD-Core Version:    0.7.0.1
  */

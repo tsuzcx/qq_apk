@@ -11,9 +11,9 @@ class EmptySupportViewPager$2
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (this.a.a != null)
+    if (this.a.b != null)
     {
-      Iterator localIterator = this.a.a.iterator();
+      Iterator localIterator = this.a.b.iterator();
       while (localIterator.hasNext()) {
         ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
       }
@@ -22,9 +22,9 @@ class EmptySupportViewPager$2
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.a.a != null)
+    if (this.a.b != null)
     {
-      Iterator localIterator = this.a.a.iterator();
+      Iterator localIterator = this.a.b.iterator();
       while (localIterator.hasNext()) {
         ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
       }
@@ -33,9 +33,9 @@ class EmptySupportViewPager$2
   
   public void onPageSelected(int paramInt)
   {
-    if (this.a.a != null)
+    if (this.a.b != null)
     {
-      Iterator localIterator = this.a.a.iterator();
+      Iterator localIterator = this.a.b.iterator();
       while (localIterator.hasNext()) {
         ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
       }

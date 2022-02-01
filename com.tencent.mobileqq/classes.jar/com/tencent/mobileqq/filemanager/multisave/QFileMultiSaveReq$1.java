@@ -14,21 +14,21 @@ class QFileMultiSaveReq$1
     {
       try
       {
-        if (TextUtils.isEmpty(FilePathUtil.a(this.jdField_a_of_type_JavaLangString))) {
+        if (TextUtils.isEmpty(FilePathUtil.a(this.a))) {
           break label109;
         }
         i = 1;
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack != null)
+        if (this.b != null)
         {
           if (i != 0)
           {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack.a();
+            this.b.a();
             return;
           }
-          QFileMultiSaveReq.ISaveFileCallBack localISaveFileCallBack = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack;
+          QFileMultiSaveReq.ISaveFileCallBack localISaveFileCallBack = this.b;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("save file fail. filePath[");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.a);
           ((StringBuilder)localObject).append("]");
           localISaveFileCallBack.a(-1, ((StringBuilder)localObject).toString());
           return;
@@ -36,7 +36,7 @@ class QFileMultiSaveReq$1
       }
       catch (Exception localException)
       {
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq$ISaveFileCallBack;
+        Object localObject = this.b;
         if (localObject != null) {
           ((QFileMultiSaveReq.ISaveFileCallBack)localObject).a(-1, localException.getMessage());
         }
@@ -49,7 +49,7 @@ class QFileMultiSaveReq$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.QFileMultiSaveReq.1
  * JD-Core Version:    0.7.0.1
  */

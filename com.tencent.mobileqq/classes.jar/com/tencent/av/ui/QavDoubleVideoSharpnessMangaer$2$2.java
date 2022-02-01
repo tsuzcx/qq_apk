@@ -21,11 +21,11 @@ class QavDoubleVideoSharpnessMangaer$2$2
     if (paramInt == 1)
     {
       ReportController.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
-      QavDoubleVideoSharpnessMangaer.a(this.a.a);
+      QavDoubleVideoSharpnessMangaer.f(this.a.a);
       return;
     }
     if (paramInt == 0) {
-      QavDoubleVideoSharpnessMangaer.a(this.a.a, QavDoubleVideoSharpnessMangaer.a(this.a.a).a().w);
+      QavDoubleVideoSharpnessMangaer.a(this.a.a, QavDoubleVideoSharpnessMangaer.a(this.a.a).k().ai);
     }
   }
 }

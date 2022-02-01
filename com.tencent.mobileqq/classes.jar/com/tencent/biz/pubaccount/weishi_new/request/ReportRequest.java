@@ -12,17 +12,17 @@ public class ReportRequest
   public ReportRequest(ArrayList<stReportItem> paramArrayList)
   {
     super("WeishiReport");
-    this.a = new stWeishiReportReq(paramArrayList);
+    this.c = new stWeishiReportReq(paramArrayList);
   }
   
-  public boolean a()
+  public boolean c()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.ReportRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -24,8 +24,8 @@ public class TagHomeFeed
   public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
     Object localObject = (qqstory_struct.TagFeed)paramStoryFeed.tag_feed.get();
-    ((TagFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.TagFeed)localObject);
-    ((TagFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    ((TagFeedItem)this.f).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.TagFeed)localObject);
+    ((TagFeedItem)this.f).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
     paramStoryFeed = new ArrayList();
     localObject = ((qqstory_struct.TagFeed)localObject).video_list.get().iterator();
     while (((Iterator)localObject).hasNext())

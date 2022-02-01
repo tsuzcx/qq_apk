@@ -20,7 +20,7 @@ class GameSessionView$3
       if (localObject != null)
       {
         paramEIPCResult = (List)((Bundle)localObject).getSerializable("key_get_game_msg");
-        if (!GameSessionView.a(this.a))
+        if (!GameSessionView.b(this.a))
         {
           if (!((Bundle)localObject).getBoolean("key_get_game_gray_user", false))
           {
@@ -38,16 +38,16 @@ class GameSessionView$3
         localStringBuilder.append("[onCallback] list:");
         localStringBuilder.append(paramEIPCResult.size());
         localStringBuilder.append(",type:");
-        localStringBuilder.append(GameSessionView.a(this.a));
+        localStringBuilder.append(GameSessionView.d(this.a));
         QLog.e((String)localObject, 1, localStringBuilder.toString());
-        GameSessionView.a(this.a).post(new GameSessionView.3.1(this, paramEIPCResult));
+        GameSessionView.c(this.a).post(new GameSessionView.3.1(this, paramEIPCResult));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.GameSessionView.3
  * JD-Core Version:    0.7.0.1
  */

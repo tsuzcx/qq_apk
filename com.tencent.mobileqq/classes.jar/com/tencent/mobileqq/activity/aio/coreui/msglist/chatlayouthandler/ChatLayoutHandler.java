@@ -13,28 +13,28 @@ import com.tencent.mobileqq.data.ChatMessage;
 
 public abstract class ChatLayoutHandler
 {
-  protected Context a;
-  protected View.OnClickListener a;
-  protected View.OnLongClickListener a;
-  protected SessionInfo a;
   private IChatLayoutListenerController a;
-  protected QQAppInterface a;
+  protected QQAppInterface b;
+  protected SessionInfo c;
+  protected Context d;
+  protected View.OnClickListener e;
+  protected View.OnLongClickListener f;
   
   public ChatLayoutHandler(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, IChatLayoutListenerController paramIChatLayoutListenerController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController = paramIChatLayoutListenerController;
+    this.b = paramQQAppInterface;
+    this.c = paramSessionInfo;
+    this.d = paramContext;
+    this.e = paramOnClickListener;
+    this.f = paramOnLongClickListener;
+    this.a = paramIChatLayoutListenerController;
   }
   
   public abstract void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, Bundle paramBundle);
   
   protected final void a(int paramInt, IChatLayoutListener.ChatLayoutListenerInfo paramChatLayoutListenerInfo)
   {
-    IChatLayoutListenerController localIChatLayoutListenerController = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController;
+    IChatLayoutListenerController localIChatLayoutListenerController = this.a;
     if (localIChatLayoutListenerController != null) {
       localIChatLayoutListenerController.a(paramInt, paramChatLayoutListenerInfo);
     }
@@ -42,7 +42,7 @@ public abstract class ChatLayoutHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.ChatLayoutHandler
  * JD-Core Version:    0.7.0.1
  */

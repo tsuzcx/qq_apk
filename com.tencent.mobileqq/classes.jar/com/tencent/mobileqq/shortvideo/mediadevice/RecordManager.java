@@ -7,51 +7,46 @@ import com.tencent.mobileqq.shortvideo.error.ErrorCenter;
 
 public class RecordManager
 {
-  public static RecordManager a;
   public static String a;
-  private TCTimer a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceRecordManager = new RecordManager();
-  }
+  public static RecordManager b = new RecordManager();
+  private TCTimer c;
   
   private RecordManager()
   {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+    a = getClass().getSimpleName();
   }
   
   public static RecordManager a()
   {
-    return jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceRecordManager;
+    return b;
   }
   
-  public AVCodec a()
+  public AVCodec b()
   {
     return AVCodec.get();
   }
   
-  public TCTimer a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonTCTimer == null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonTCTimer = new TCTimer(40, CodecParam.RECORD_MAX_TIME);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonTCTimer;
-  }
-  
-  public ErrorCenter a()
+  public ErrorCenter c()
   {
     return ErrorCenter.a();
   }
   
-  public void a()
+  public TCTimer d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonTCTimer = null;
+    if (this.c == null) {
+      this.c = new TCTimer(40, CodecParam.RECORD_MAX_TIME);
+    }
+    return this.c;
+  }
+  
+  public void e()
+  {
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.RecordManager
  * JD-Core Version:    0.7.0.1
  */

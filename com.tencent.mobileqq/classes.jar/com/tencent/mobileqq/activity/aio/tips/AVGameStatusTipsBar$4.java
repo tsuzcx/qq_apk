@@ -13,15 +13,15 @@ class AVGameStatusTipsBar$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = (IAvGameManager)AVGameStatusTipsBar.a(this.a).getRuntimeService(IAvGameManager.class, "");
+    paramDialogInterface = (IAvGameManager)AVGameStatusTipsBar.d(this.a).getRuntimeService(IAvGameManager.class, "");
     if (paramDialogInterface != null) {
-      paramDialogInterface.destroyAllGameRoom(AVGameStatusTipsBar.a(this.a).a);
+      paramDialogInterface.destroyAllGameRoom(AVGameStatusTipsBar.b(this.a).b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.AVGameStatusTipsBar.4
  * JD-Core Version:    0.7.0.1
  */

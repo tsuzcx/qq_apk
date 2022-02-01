@@ -27,50 +27,48 @@ public class NativeCommentView
   extends ReadInJoyYAFolderTextView
   implements IView, Observer<CharSequence>
 {
-  protected long a;
-  protected CmpCtxt a;
-  protected Observable<CharSequence> a;
-  protected String a;
-  protected int b;
-  public boolean b;
-  public boolean c = false;
+  public boolean d = false;
+  public boolean e = false;
+  protected CmpCtxt f = new CmpCtxt();
+  protected Observable<CharSequence> g;
+  protected int h;
+  protected long i;
+  protected String j;
   
   public NativeCommentView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
     setShouldCallClick(true);
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a().mSocialFeedInfo != null))
+    if ((this.f.a != null) && (this.f.a.k() != null) && (this.f.a.k().mSocialFeedInfo != null))
     {
-      AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a();
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable = localAbsBaseArticleInfo.articleViewModel.a();
-      a(localAbsBaseArticleInfo);
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.a(this);
-      CharSequence localCharSequence = (CharSequence)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.a();
+      AbsBaseArticleInfo localAbsBaseArticleInfo = this.f.a.k();
+      this.g = localAbsBaseArticleInfo.articleViewModel.c();
+      b(localAbsBaseArticleInfo);
+      this.g.a(this);
+      CharSequence localCharSequence = (CharSequence)this.g.a();
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setDesc: ");
       ((StringBuilder)localObject).append(localCharSequence);
       QLog.d("NativeCommentView", 2, ((StringBuilder)localObject).toString());
-      if ((localAbsBaseArticleInfo.mFeedType != 30) && ((localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo == null) || (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b.longValue() != 30L)))
+      if ((localAbsBaseArticleInfo.mFeedType != 30) && ((localAbsBaseArticleInfo.mSocialFeedInfo.n == null) || (localAbsBaseArticleInfo.mSocialFeedInfo.n.c.longValue() != 30L)))
       {
         localObject = localCharSequence;
-        if (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBuluoInfo != null)
+        if (localAbsBaseArticleInfo.mSocialFeedInfo.K != null)
         {
           localObject = localCharSequence;
-          if (TextUtils.isEmpty(localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityBuluoInfo.c)) {}
+          if (TextUtils.isEmpty(localAbsBaseArticleInfo.mSocialFeedInfo.K.d)) {}
         }
       }
       else
       {
-        localObject = new QQText(TroopBarUtils.a(((CharSequence)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable.a()).toString().replaceAll("\024", "")), 3, 16);
+        localObject = new QQText(TroopBarUtils.a(((CharSequence)this.g.a()).toString().replaceAll("\024", "")), 3, 16);
       }
       setVisibility(0);
-      if (this.c)
+      if (this.e)
       {
         setMaxLines(2);
         setSpanText("");
@@ -79,20 +77,20 @@ public class NativeCommentView
         setText((CharSequence)localObject);
         return;
       }
-      if ((!RIJItemViewTypeUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a())) && (!RIJItemViewTypeUtils.t(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a())) && (!RIJItemViewTypeUtils.g(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a())))
+      if ((!RIJItemViewTypeUtils.a(this.f.a.k())) && (!RIJItemViewTypeUtils.t(this.f.a.k())) && (!RIJItemViewTypeUtils.g(this.f.a.k())))
       {
-        if (localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)
+        if (localAbsBaseArticleInfo.mSocialFeedInfo.s != null)
         {
-          setMaxLines(a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a()));
-          if (((RIJFeedsType.s(localAbsBaseArticleInfo)) || (RIJFeedsType.t(localAbsBaseArticleInfo))) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a().mChannelID != 0L))
+          setMaxLines(a(this.f.a.k()));
+          if (((RIJFeedsType.y(localAbsBaseArticleInfo)) || (RIJFeedsType.z(localAbsBaseArticleInfo))) && (this.f.a.k().mChannelID != 0L))
           {
             setSpanText("");
             setMoreSpan(null);
           }
           else
           {
-            setMoreSpan(new NativeCommentView.2(this, this.jdField_a_of_type_Int, 16777215, 860716207, localAbsBaseArticleInfo));
-            setCustomViewLinkTextColor(this.jdField_a_of_type_Int);
+            setMoreSpan(new NativeCommentView.2(this, this.c, 16777215, 860716207, localAbsBaseArticleInfo));
+            setCustomViewLinkTextColor(this.c);
           }
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
@@ -105,54 +103,21 @@ public class NativeCommentView
         setVisibility(8);
         return;
       }
-      setMaxLines(a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a()));
+      setMaxLines(a(this.f.a.k()));
       if (localAbsBaseArticleInfo.mArticleType == 2) {
-        setSpanText(BaseApplication.getContext().getString(2131718002));
+        setSpanText(BaseApplication.getContext().getString(2131915482));
       } else if (localAbsBaseArticleInfo.isPGCShortContent()) {
-        setSpanText(HardCodeUtil.a(2131707106));
+        setSpanText(HardCodeUtil.a(2131904944));
       }
-      setMoreSpan(new NativeCommentView.1(this, this.jdField_a_of_type_Int, 16777215, 860716207));
-      setCustomViewLinkTextColor(this.jdField_a_of_type_Int);
-      if (this.c)
+      setMoreSpan(new NativeCommentView.1(this, this.c, 16777215, 860716207));
+      setCustomViewLinkTextColor(this.c);
+      if (this.e)
       {
         setHeight(0);
         return;
       }
       setText((CharSequence)localObject);
     }
-  }
-  
-  protected void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    Object localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("current text: ");
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable;
-    Object localObject2 = null;
-    if (localObject1 != null) {
-      localObject1 = (CharSequence)((Observable)localObject1).a();
-    } else {
-      localObject1 = null;
-    }
-    ((StringBuilder)localObject3).append(localObject1);
-    QLog.d("NativeCommentView", 1, ((StringBuilder)localObject3).toString());
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.articleViewModel != null))
-    {
-      paramAbsBaseArticleInfo.articleViewModel.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-      paramAbsBaseArticleInfo.articleViewModel.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      paramAbsBaseArticleInfo.articleViewModel.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_Long != 0L) {
-        paramAbsBaseArticleInfo.articleViewModel.a();
-      }
-    }
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("current text: ");
-    localObject3 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable;
-    paramAbsBaseArticleInfo = localObject2;
-    if (localObject3 != null) {
-      paramAbsBaseArticleInfo = (CharSequence)((Observable)localObject3).a();
-    }
-    ((StringBuilder)localObject1).append(paramAbsBaseArticleInfo);
-    QLog.d("NativeCommentView", 1, ((StringBuilder)localObject1).toString());
   }
   
   public void a(Observable<CharSequence> paramObservable)
@@ -170,10 +135,43 @@ public class NativeCommentView
     if (paramBoolean)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131718277));
+      localStringBuilder.append(HardCodeUtil.a(2131915769));
       localStringBuilder.append("：");
-      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      this.j = localStringBuilder.toString();
     }
+  }
+  
+  protected void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("current text: ");
+    Object localObject1 = this.g;
+    Object localObject2 = null;
+    if (localObject1 != null) {
+      localObject1 = (CharSequence)((Observable)localObject1).a();
+    } else {
+      localObject1 = null;
+    }
+    ((StringBuilder)localObject3).append(localObject1);
+    QLog.d("NativeCommentView", 1, ((StringBuilder)localObject3).toString());
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.articleViewModel != null))
+    {
+      paramAbsBaseArticleInfo.articleViewModel.a = this.h;
+      paramAbsBaseArticleInfo.articleViewModel.b = this.i;
+      paramAbsBaseArticleInfo.articleViewModel.c = this.j;
+      if (this.i != 0L) {
+        paramAbsBaseArticleInfo.articleViewModel.a();
+      }
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("current text: ");
+    localObject3 = this.g;
+    paramAbsBaseArticleInfo = localObject2;
+    if (localObject3 != null) {
+      paramAbsBaseArticleInfo = (CharSequence)((Observable)localObject3).a();
+    }
+    ((StringBuilder)localObject1).append(paramAbsBaseArticleInfo);
+    QLog.d("NativeCommentView", 1, ((StringBuilder)localObject1).toString());
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -209,7 +207,7 @@ public class NativeCommentView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    Observable localObservable = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable;
+    Observable localObservable = this.g;
     if (localObservable != null) {
       localObservable.b(this);
     }
@@ -223,7 +221,7 @@ public class NativeCommentView
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    Observable localObservable = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityObservable;
+    Observable localObservable = this.g;
     if (localObservable != null) {
       localObservable.b(this);
     }
@@ -231,13 +229,13 @@ public class NativeCommentView
   
   public void setModel(IReadInJoyModel paramIReadInJoyModel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramIReadInJoyModel);
-    int i = paramIReadInJoyModel.d();
-    if ((i == 48) || (i == 64) || (i == 65)) {
-      this.c = true;
+    this.f.a(paramIReadInJoyModel);
+    int k = paramIReadInJoyModel.o();
+    if ((k == 48) || (k == 64) || (k == 65)) {
+      this.e = true;
     }
     b();
-    setShouldCallClick(this.c);
+    setShouldCallClick(this.e);
   }
   
   public void setPreAccountUin(long paramLong)
@@ -246,7 +244,7 @@ public class NativeCommentView
     localStringBuilder.append("setPreAccountUin: ");
     localStringBuilder.append(paramLong);
     QLog.d("NativeCommentView", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Long = paramLong;
+    this.i = paramLong;
   }
   
   public void setPreBlankNum(int paramInt)
@@ -255,12 +253,12 @@ public class NativeCommentView
     localStringBuilder.append("setPreBlankNum: ");
     localStringBuilder.append(paramInt);
     QLog.d("NativeCommentView", 1, localStringBuilder.toString());
-    this.jdField_b_of_type_Int = paramInt;
+    this.h = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeCommentView
  * JD-Core Version:    0.7.0.1
  */

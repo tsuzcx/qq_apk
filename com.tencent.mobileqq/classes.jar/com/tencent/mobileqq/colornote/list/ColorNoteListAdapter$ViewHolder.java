@@ -22,74 +22,74 @@ public class ColorNoteListAdapter$ViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  ColorNoteListAdapter.DeleteListener jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$DeleteListener;
-  ColorNoteListAdapter jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter;
+  ColorNoteListAdapter a;
   public View b;
-  public TextView b;
+  public View c;
+  public ImageView d;
+  public TextView e;
+  public TextView f;
+  public Button g;
+  ColorNoteListAdapter.DeleteListener h;
+  Drawable i;
   
   public ColorNoteListAdapter$ViewHolder(ColorNoteListAdapter paramColorNoteListAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter = paramColorNoteListAdapter;
+    this.a = paramColorNoteListAdapter;
     Resources localResources = paramView.getContext().getResources();
     paramView.setOnClickListener(this);
-    View localView1 = paramView.findViewById(2131371971);
-    int j = 0;
+    View localView1 = paramView.findViewById(2131439416);
+    int k = 0;
     AccessibilityUtil.a(localView1, false);
     localView1.setOnClickListener(this);
-    View localView2 = paramView.findViewById(2131371972);
+    View localView2 = paramView.findViewById(2131439417);
     AccessibilityUtil.a(localView2, false);
     localView2.setOnClickListener(this);
-    int i;
+    int j;
     if (ColorNoteListAdapter.a(paramColorNoteListAdapter)) {
-      i = 8;
+      j = 8;
     } else {
-      i = 0;
+      j = 0;
     }
-    localView1.setVisibility(i);
+    localView1.setVisibility(j);
     if (ColorNoteListAdapter.a(paramColorNoteListAdapter)) {
-      i = j;
+      j = k;
     } else {
-      i = 8;
+      j = 8;
     }
-    localView2.setVisibility(i);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371964);
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(localResources.getString(2131690907));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371961);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371965));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371975));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(Utils.a(3.0F, localResources));
-    this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-    AccessibilityUtil.a(this.jdField_a_of_type_AndroidWidgetTextView, true);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371973));
-    this.jdField_b_of_type_AndroidWidgetTextView.setFocusable(true);
-    this.jdField_b_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
-    AccessibilityUtil.a(this.jdField_b_of_type_AndroidWidgetTextView, true);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131371966));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$DeleteListener = new ColorNoteListAdapter.DeleteListener(paramColorNoteListAdapter, this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$DeleteListener);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ColorNoteListAdapter.OnItemClickListener(paramColorNoteListAdapter, this));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new MusicDanceDrawable();
-    ((FloatingWindowDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a(paramView.getContext(), Utils.a(15.0F, localResources), Utils.a(9.5F, localResources));
+    localView2.setVisibility(j);
+    this.b = paramView.findViewById(2131439409);
+    this.b.setContentDescription(localResources.getString(2131887846));
+    this.c = paramView.findViewById(2131439406);
+    this.d = ((ImageView)paramView.findViewById(2131439410));
+    this.e = ((TextView)paramView.findViewById(2131439420));
+    this.e.setCompoundDrawablePadding(Utils.a(3.0F, localResources));
+    this.e.setFocusable(true);
+    this.e.setFocusableInTouchMode(true);
+    AccessibilityUtil.a(this.e, true);
+    this.f = ((TextView)paramView.findViewById(2131439418));
+    this.f.setFocusable(true);
+    this.f.setFocusableInTouchMode(true);
+    AccessibilityUtil.a(this.f, true);
+    this.g = ((Button)paramView.findViewById(2131439411));
+    this.h = new ColorNoteListAdapter.DeleteListener(paramColorNoteListAdapter, this);
+    this.g.setOnClickListener(this.h);
+    this.b.setOnClickListener(new ColorNoteListAdapter.OnItemClickListener(paramColorNoteListAdapter, this));
+    this.i = new MusicDanceDrawable();
+    ((FloatingWindowDrawable)this.i).a(paramView.getContext(), Utils.a(15.0F, localResources), Utils.a(9.5F, localResources));
   }
   
   public ColorNote a(int paramInt)
   {
-    return (ColorNote)ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).get(paramInt);
+    return (ColorNote)ColorNoteListAdapter.c(this.a).get(paramInt);
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (((i == 2131371971) || (i == 2131371972)) && (ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter) != null))
+    int j = paramView.getId();
+    if (((j == 2131439416) || (j == 2131439417)) && (ColorNoteListAdapter.b(this.a) != null))
     {
-      ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).b();
+      ColorNoteListAdapter.b(this.a).c();
       ReportController.b(null, "dc00898", "", "", "0X800A6CE", "0X800A6CE", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -97,7 +97,7 @@ public class ColorNoteListAdapter$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

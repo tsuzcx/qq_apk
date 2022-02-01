@@ -33,10 +33,10 @@ class QQServiceForAV$7
     paramString = (QQAppInterface)this.a.a();
     if ((paramBoolean) && (paramInt1 == 2))
     {
-      if (TextUtils.isEmpty(this.a.c)) {
-        this.a.c = paramString.getCurrentAccountUin();
+      if (TextUtils.isEmpty(this.a.e)) {
+        this.a.e = paramString.getCurrentAccountUin();
       }
-      paramLong2 = Long.valueOf(this.a.c).longValue();
+      paramLong2 = Long.valueOf(this.a.e).longValue();
       paramInt2 = 0;
       if (paramList == null) {
         paramInt1 = 0;
@@ -55,7 +55,7 @@ class QQServiceForAV$7
       if (paramString == null) {
         paramList = (QQAppInterface)this.a.a();
       }
-      paramList.removeObserver(this.a.a);
+      paramList.removeObserver(this.a.q);
     }
   }
 }

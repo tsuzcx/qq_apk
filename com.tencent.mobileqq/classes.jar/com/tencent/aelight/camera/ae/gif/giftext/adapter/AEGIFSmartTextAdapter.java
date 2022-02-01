@@ -18,36 +18,36 @@ import java.util.ArrayList;
 public class AEGIFSmartTextAdapter
   extends RecyclerView.Adapter<AEGIFSmartTextAdapter.QIMGIFSmartTextViewHolder>
 {
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private AEGIFTextMvp jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp;
-  private ArrayList<AEGIFSmartTextData> jdField_a_of_type_JavaUtilArrayList;
+  private Context a;
+  private ArrayList<AEGIFSmartTextData> b;
+  private RecyclerView c;
+  private int d = -1;
+  private AEGIFTextMvp e;
   
   public AEGIFSmartTextAdapter(Context paramContext, AEGIFTextMvp paramAEGIFTextMvp)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp = paramAEGIFTextMvp;
-    a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp.a());
-    a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp.a());
+    this.a = paramContext;
+    this.e = paramAEGIFTextMvp;
+    a(this.e.f());
+    a(this.e.e());
   }
   
   private void a(RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.c = paramRecyclerView;
   }
   
   private void a(ArrayList<AEGIFSmartTextData> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.b = paramArrayList;
   }
   
   public AEGIFSmartTextAdapter.QIMGIFSmartTextViewHolder a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
+    if (this.a == null) {
+      this.a = paramViewGroup.getContext();
     }
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2064318600, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2064056478, paramViewGroup, false);
     if (paramInt != 0) {
       paramViewGroup.setVisibility(4);
     }
@@ -56,37 +56,37 @@ public class AEGIFSmartTextAdapter
   
   public void a()
   {
-    AEGIFSmartTextAdapter.QIMGIFSmartTextViewHolder localQIMGIFSmartTextViewHolder = (AEGIFSmartTextAdapter.QIMGIFSmartTextViewHolder)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForLayoutPosition(this.jdField_a_of_type_Int);
+    AEGIFSmartTextAdapter.QIMGIFSmartTextViewHolder localQIMGIFSmartTextViewHolder = (AEGIFSmartTextAdapter.QIMGIFSmartTextViewHolder)this.c.findViewHolderForLayoutPosition(this.d);
     if (localQIMGIFSmartTextViewHolder != null)
     {
       localQIMGIFSmartTextViewHolder.a(false);
     }
     else
     {
-      i = this.jdField_a_of_type_Int;
+      i = this.d;
       if (i >= 0) {
         notifyItemChanged(i);
       }
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (i >= 0) {
-      ((AEGIFSmartTextData)this.jdField_a_of_type_JavaUtilArrayList.get(i - 1)).a(false);
+      ((AEGIFSmartTextData)this.b.get(i - 1)).a(false);
     }
-    this.jdField_a_of_type_Int = -1;
+    this.d = -1;
   }
   
   public void a(AEGIFSmartTextAdapter.QIMGIFSmartTextViewHolder paramQIMGIFSmartTextViewHolder, int paramInt)
   {
     if (paramQIMGIFSmartTextViewHolder.getLayoutPosition() == 0)
     {
-      localObject = new FrameLayout.LayoutParams(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 33.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 33.0F));
-      ((FrameLayout.LayoutParams)localObject).setMargins(0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 51.0F), 0);
+      localObject = new FrameLayout.LayoutParams(DisplayUtil.a(this.a, 33.0F), DisplayUtil.a(this.a, 33.0F));
+      ((FrameLayout.LayoutParams)localObject).setMargins(0, 0, DisplayUtil.a(this.a, 51.0F), 0);
       paramQIMGIFSmartTextViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       return;
     }
-    Object localObject = ((AEGIFSmartTextData)this.jdField_a_of_type_JavaUtilArrayList.get(paramQIMGIFSmartTextViewHolder.getLayoutPosition() - 1)).a;
+    Object localObject = ((AEGIFSmartTextData)this.b.get(paramQIMGIFSmartTextViewHolder.getLayoutPosition() - 1)).a;
     paramQIMGIFSmartTextViewHolder.a.setText((CharSequence)localObject);
-    if (this.jdField_a_of_type_Int == paramQIMGIFSmartTextViewHolder.getLayoutPosition()) {
+    if (this.d == paramQIMGIFSmartTextViewHolder.getLayoutPosition()) {
       paramQIMGIFSmartTextViewHolder.a(true);
     } else {
       paramQIMGIFSmartTextViewHolder.a(false);
@@ -96,7 +96,7 @@ public class AEGIFSmartTextAdapter
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
+    return this.b.size() + 1;
   }
   
   public long getItemId(int paramInt)
@@ -114,7 +114,7 @@ public class AEGIFSmartTextAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFSmartTextAdapter
  * JD-Core Version:    0.7.0.1
  */

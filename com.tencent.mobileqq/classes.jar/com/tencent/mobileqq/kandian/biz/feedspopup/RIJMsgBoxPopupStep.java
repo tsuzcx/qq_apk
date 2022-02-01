@@ -16,14 +16,15 @@ import com.tencent.mobileqq.kandian.base.automator.RIJPopupAutomator;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.privatechat.api.impl.RIJPrivateChatServiceImpl;
+import com.tencent.mobileqq.kandian.biz.privatechat.api.impl.RIJPrivateChatServiceImpl.Companion;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.mobileqq.kandian.glue.router.msgbox.api.impl.RIJMsgBoxUtils;
 import com.tencent.mobileqq.kandian.repo.aladdin.RIJKanDianLockScreenPushAladdinConfig;
 import com.tencent.mobileqq.kandian.repo.reddot.KandianMsgBoxRedPntInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +48,7 @@ public class RIJMsgBoxPopupStep
       return;
     }
     paramActivity.getWindow().getDecorView().postDelayed(new RIJMsgBoxPopupStep.1(this, paramActivity, paramInt, paramString), paramLong);
-    i();
+    j();
   }
   
   private boolean a(int paramInt)
@@ -59,10 +60,10 @@ public class RIJMsgBoxPopupStep
     if (paramInt != 5) {
       return false;
     }
-    localObject = ((KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a();
-    if ((localObject != null) && (((KandianMsgBoxRedPntInfo)localObject).mMsgCnt > 0))
+    localObject = ((KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).Q();
+    if ((localObject != null) && (RIJPrivateChatServiceImpl.Companion.a().getTotalRedCount((KandianMsgBoxRedPntInfo)localObject) > 0))
     {
-      boolean bool = ((Boolean)RIJSPUtils.a("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(false))).booleanValue();
+      boolean bool = ((Boolean)RIJSPUtils.b("sp_key_kandian_msg_box_show_float_window", Boolean.valueOf(false))).booleanValue();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkIfShowMsgBoxWithFloatingWindow | sp showFloatingWin ");
       ((StringBuilder)localObject).append(bool);
@@ -103,19 +104,19 @@ public class RIJMsgBoxPopupStep
     return false;
   }
   
-  private void i()
+  private void j()
   {
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
-    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = localKandianMergeManager.a();
+    KandianMergeManager localKandianMergeManager = (KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
+    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = localKandianMergeManager.Q();
     if (localKandianMsgBoxRedPntInfo != null)
     {
       localKandianMsgBoxRedPntInfo.isRead = true;
-      localKandianMergeManager.l();
+      localKandianMergeManager.I();
       ThreadManagerV2.excute(new RIJMsgBoxPopupStep.2(this, localKandianMsgBoxRedPntInfo, localKandianMergeManager), 64, null, false);
     }
   }
   
-  protected void g()
+  protected void h()
   {
     Object localObject = this.a.getIntent();
     boolean bool3 = ((Intent)localObject).hasExtra("notification_message_id");
@@ -149,17 +150,16 @@ public class RIJMsgBoxPopupStep
       if (bool1) {
         i = 3;
       }
-      localObject = ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).addValueSafe("load_mode", Integer.valueOf(i));
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X80081DB", ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).build());
+      PublicAccountReportUtils.a("0X80081DB", ((RIJTransMergeKanDianReport.ReportR5Builder)localObject).addValueSafe("load_mode", Integer.valueOf(i)).build());
     }
     a(bool1);
   }
   
-  protected void h()
+  protected void i()
   {
     int i = this.a.getIntent().getIntExtra("launch_from", 5);
     boolean bool;
-    if ((((KandianMergeManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).e() > 0) && (a(i))) {
+    if ((((KandianMergeManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).R() > 0) && (a(i))) {
       bool = true;
     } else {
       bool = false;
@@ -169,7 +169,7 @@ public class RIJMsgBoxPopupStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJMsgBoxPopupStep
  * JD-Core Version:    0.7.0.1
  */

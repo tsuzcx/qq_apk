@@ -17,6 +17,8 @@ public abstract interface IAECameraLauncher
   
   public abstract void launchAECameraUnit(Activity paramActivity, int paramInt, Bundle paramBundle);
   
+  public abstract void launchAEMultiCameraFromFlash(Context paramContext, @Nullable Bundle paramBundle);
+  
   public abstract void launchAEMutiCameraFromCircle(Context paramContext, @Nullable Bundle paramBundle);
 }
 

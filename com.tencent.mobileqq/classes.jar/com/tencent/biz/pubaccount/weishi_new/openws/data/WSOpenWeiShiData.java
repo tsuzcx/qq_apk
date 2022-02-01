@@ -2,52 +2,42 @@ package com.tencent.biz.pubaccount.weishi_new.openws.data;
 
 public class WSOpenWeiShiData
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private int a;
+  private int b;
   private String c;
   private String d;
   private String e;
+  private String f;
+  private String g;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public String c()
@@ -57,7 +47,7 @@ public class WSOpenWeiShiData
   
   public void c(String paramString)
   {
-    this.c = paramString;
+    this.e = paramString;
   }
   
   public String d()
@@ -67,7 +57,7 @@ public class WSOpenWeiShiData
   
   public void d(String paramString)
   {
-    this.d = paramString;
+    this.f = paramString;
   }
   
   public String e()
@@ -77,30 +67,40 @@ public class WSOpenWeiShiData
   
   public void e(String paramString)
   {
-    this.e = paramString;
+    this.g = paramString;
+  }
+  
+  public String f()
+  {
+    return this.f;
+  }
+  
+  public String g()
+  {
+    return this.g;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WSOpenWeiShiData{closeValidityPeriod=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", openValidityPeriod=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", imageUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", title='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", desc='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", btnText='");
+    localStringBuilder.append(", title='");
     localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", schema='");
+    localStringBuilder.append(", desc='");
     localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", btnText='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", schema='");
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -108,7 +108,7 @@ public class WSOpenWeiShiData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.openws.data.WSOpenWeiShiData
  * JD-Core Version:    0.7.0.1
  */

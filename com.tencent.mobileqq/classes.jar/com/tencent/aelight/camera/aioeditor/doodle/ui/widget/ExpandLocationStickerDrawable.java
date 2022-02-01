@@ -24,30 +24,30 @@ import org.json.JSONObject;
 public class ExpandLocationStickerDrawable
   extends InfoStickerDrawable
 {
-  private static int e = 30;
-  private static int h = 30;
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int d;
-  private int i = 0;
-  private int j = 0;
-  private int k = 16;
-  private int l = 16;
+  private static int s = 30;
+  private static int t = 30;
+  private Paint a = new Paint();
+  private TextPaint b = new TextPaint();
+  private Bitmap c;
+  private int d = 0;
+  private int e = 0;
+  private Typeface n = null;
+  private int o;
+  private int p;
+  private String q = "";
+  private String r;
+  private int u = 0;
+  private int v = 0;
+  private Rect w = new Rect(0, 0, 0, 0);
+  private int x = 16;
+  private int y = 16;
   
   public ExpandLocationStickerDrawable(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
-    a(this.jdField_a_of_type_JavaLangString);
+    a(this.i);
     b();
-    c();
+    e();
   }
   
   public static String a(int paramInt, String paramString1, String paramString2)
@@ -75,35 +75,35 @@ public class ExpandLocationStickerDrawable
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.q;
   }
   
   protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
   {
-    int n = e;
-    int m = 0;
-    int i2 = n + 0;
-    n = h;
-    int i3 = ((Integer)paramArrayList.get(this.jdField_c_of_type_Int)).intValue();
-    n += (this.jdField_c_of_type_JavaLangString.length() - 1) * (this.k - i3) / 2;
-    int i1 = ((Integer)paramArrayList.get(this.d)).intValue();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAlpha(i1);
-    PerLineFontBitmapsInfo.a(i1, this.jdField_a_of_type_AndroidTextTextPaint);
-    paramArrayList = new Rect(n, a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + i2, this.j + n, this.i + i2 + a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    int j = s;
+    int i = 0;
+    int m = j + 0;
+    j = t;
+    int i1 = ((Integer)paramArrayList.get(this.o)).intValue();
+    j += (this.r.length() - 1) * (this.x - i1) / 2;
+    int k = ((Integer)paramArrayList.get(this.p)).intValue();
+    this.a.setAlpha(k);
+    this.b.setAlpha(k);
+    PerLineFontBitmapsInfo.a(k, this.b);
+    paramArrayList = new Rect(j, a(1.0F, this.h.getResources()) + m, this.v + j, this.u + m + a(1.0F, this.h.getResources()));
+    Bitmap localBitmap = this.c;
     if (localBitmap != null) {
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(localBitmap, this.w, paramArrayList, this.a);
     }
-    n = n + this.j + this.l;
-    while (m < this.jdField_c_of_type_JavaLangString.length())
+    j = j + this.v + this.y;
+    while (i < this.r.length())
     {
-      paramArrayList = this.jdField_c_of_type_JavaLangString;
-      i1 = m + 1;
-      paramArrayList = paramArrayList.substring(m, i1);
-      paramCanvas.drawText(paramArrayList, n, this.i + i2, this.jdField_a_of_type_AndroidTextTextPaint);
-      n = n + (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramArrayList) + i3;
-      m = i1;
+      paramArrayList = this.r;
+      k = i + 1;
+      paramArrayList = paramArrayList.substring(i, k);
+      paramCanvas.drawText(paramArrayList, j, this.u + m, this.b);
+      j = j + (int)this.b.measureText(paramArrayList) + i1;
+      i = k;
     }
   }
   
@@ -120,86 +120,86 @@ public class ExpandLocationStickerDrawable
     }
     if (paramString != null)
     {
-      this.f = paramString.optInt("type", 0);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("iconpath", "");
-      this.jdField_c_of_type_JavaLangString = paramString.optString("locationString", "");
+      this.j = paramString.optInt("type", 0);
+      this.q = paramString.optString("iconpath", "");
+      this.r = paramString.optString("locationString", "");
     }
-    return new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString };
+    return new String[] { this.q, this.r };
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    e = a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    h = e;
-    this.l = a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.k = a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_c_of_type_JavaLangString = InfoStickerUtils.a(this.jdField_c_of_type_JavaLangString);
-    Object localObject = this.jdField_c_of_type_JavaLangString;
+    this.a.setAntiAlias(true);
+    this.a.setDither(true);
+    s = a(15.0F, this.h.getResources());
+    t = s;
+    this.y = a(10.0F, this.h.getResources());
+    this.b.setAntiAlias(true);
+    this.b.setDither(true);
+    this.b.setColor(-1);
+    this.x = a(9.0F, this.h.getResources());
+    this.r = InfoStickerUtils.a(this.r);
+    Object localObject = this.r;
     if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      this.jdField_c_of_type_JavaLangString = ChnToSpell.a(this.jdField_c_of_type_JavaLangString, 1);
-      this.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString.toUpperCase();
+      this.r = ChnToSpell.b(this.r, 1);
+      this.r = this.r.toUpperCase();
     }
     else
     {
-      this.jdField_c_of_type_JavaLangString = "YOUR CITY";
+      this.r = "YOUR CITY";
     }
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+    this.n = Typeface.createFromAsset(this.h.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
+    this.b.setTypeface(this.n);
+    this.b.setFakeBoldText(true);
+    this.b.setTextSize(a(15.0F, this.h.getResources()));
+    localObject = this.b.getFontMetrics();
     if (Build.VERSION.SDK_INT >= 21) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setLetterSpacing(0.0F);
+      this.b.setLetterSpacing(0.0F);
     }
-    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("X", 190L, 630L, 0, this.k, new DecelerateInterpolator());
-    this.d = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("T", 190L, 2110L, 0, 255, new DecelerateInterpolator());
-    if (FileUtils.fileExists(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString);
+    this.o = this.f.a("X", 190L, 630L, 0, this.x, new DecelerateInterpolator());
+    this.p = this.f.a("T", 190L, 2110L, 0, 255, new DecelerateInterpolator());
+    if (FileUtils.fileExists(this.q)) {
+      this.c = BitmapFactory.decodeFile(this.q);
     } else {
       QLog.e("ExpandLocationStickerDrawable", 2, "mIconPath not exist");
     }
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    int m;
-    int n;
+    Bitmap localBitmap = this.c;
+    int i;
+    int j;
     if (localBitmap != null)
     {
-      m = localBitmap.getWidth();
-      n = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      i = localBitmap.getWidth();
+      j = this.c.getHeight();
     }
     else
     {
-      m = 0;
-      n = 0;
+      i = 0;
+      j = 0;
     }
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, m, n);
-    this.i = (-(int)((Paint.FontMetrics)localObject).ascent - (int)((Paint.FontMetrics)localObject).descent + a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    if (n != 0) {
-      this.j = (this.i * m / n);
+    this.w = new Rect(0, 0, i, j);
+    this.u = (-(int)((Paint.FontMetrics)localObject).ascent - (int)((Paint.FontMetrics)localObject).descent + a(3.0F, this.h.getResources()));
+    if (j != 0) {
+      this.v = (this.u * i / j);
     }
-    this.jdField_b_of_type_Int = (this.i + e * 2);
-    float f = this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_c_of_type_JavaLangString);
-    this.jdField_a_of_type_Int = (this.j + h * 2 + this.l + (int)f + this.k * (this.jdField_c_of_type_JavaLangString.length() - 1) + a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    this.e = (this.u + s * 2);
+    float f = this.b.measureText(this.r);
+    this.d = (this.v + t * 2 + this.y + (int)f + this.x * (this.r.length() - 1) + a(3.0F, this.h.getResources()));
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_b_of_type_Int;
+    return this.e;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.ExpandLocationStickerDrawable
  * JD-Core Version:    0.7.0.1
  */

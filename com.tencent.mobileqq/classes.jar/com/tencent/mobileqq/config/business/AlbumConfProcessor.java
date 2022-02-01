@@ -12,7 +12,7 @@ public class AlbumConfProcessor
 {
   public static AlbumBean a()
   {
-    return (AlbumBean)QConfigManager.a().a(745);
+    return (AlbumBean)QConfigManager.b().b(745);
   }
   
   @NonNull
@@ -97,7 +97,7 @@ public class AlbumConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AlbumConfProcessor
  * JD-Core Version:    0.7.0.1
  */

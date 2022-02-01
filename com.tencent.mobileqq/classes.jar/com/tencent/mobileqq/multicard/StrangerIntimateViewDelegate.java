@@ -21,63 +21,63 @@ public class StrangerIntimateViewDelegate
   public void a()
   {
     super.a();
-    StrangerIntimateView localStrangerIntimateView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView;
+    StrangerIntimateView localStrangerIntimateView = this.a;
     if (localStrangerIntimateView != null)
     {
       localStrangerIntimateView.a(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView = null;
+      this.a = null;
     }
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    StrangerIntimateView localStrangerIntimateView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView;
+    StrangerIntimateView localStrangerIntimateView = this.a;
     if (localStrangerIntimateView == null) {
       return;
     }
     if (paramInt == 0)
     {
       localStrangerIntimateView.c(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.b(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.c();
+      this.a.b(true);
+      this.a.d();
       return;
     }
     localStrangerIntimateView.b(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.c(false);
+    this.a.c(false);
   }
   
   public void a(CardContent paramCardContent)
   {
     super.a(paramCardContent);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView != null)
+    if (this.a != null)
     {
-      if (a() != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.b(false);
+      if (p() != 0) {
+        this.a.b(false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.a(a(), a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.b();
+      this.a.a(l(), m());
+      this.a.c();
     }
   }
   
   public boolean a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView == null)
+    if (this.a == null)
     {
       paramBundle = null;
-      Bundle localBundle = a();
+      Bundle localBundle = k();
       if (localBundle != null) {
         paramBundle = localBundle.getString("uin");
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView = new StrangerIntimateView(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidContentContext, paramBundle);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.a(this);
+      this.a = new StrangerIntimateView(this.b, this.c, this.d, paramBundle);
+      this.a.a(this);
       b(1);
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.a());
+      a(this.a.a());
     }
-    b(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.a());
-    if (a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.a(a(), a());
+    b(this.a.a());
+    if (l() != null) {
+      this.a.a(l(), m());
     }
     return true;
   }
@@ -89,20 +89,20 @@ public class StrangerIntimateViewDelegate
     if (QLog.isColorLevel()) {
       QLog.d("StrangerIntimateViewDelegete", 2, "doOnResume() called");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView == null) {
+    if (this.a == null) {
       return;
     }
-    if (a() == 0)
+    if (p() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.b(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.c();
+      this.a.b(true);
+      this.a.d();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.b(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.e();
+      this.a.b(false);
+      this.a.f();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.l();
+    this.a.q();
   }
   
   public void d()
@@ -114,12 +114,12 @@ public class StrangerIntimateViewDelegate
   
   public void e()
   {
-    StrangerIntimateView localStrangerIntimateView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView;
+    StrangerIntimateView localStrangerIntimateView = this.a;
     if (localStrangerIntimateView == null) {
       return;
     }
     localStrangerIntimateView.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.b();
+    this.a.c();
   }
   
   public void f() {}
@@ -127,22 +127,22 @@ public class StrangerIntimateViewDelegate
   public void g()
   {
     super.g();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView == null) {
+    if (this.a == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (this.f != null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.a());
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
+      this.f.removeView(this.a.a());
+      this.f = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateStrangerIntimateView.i();
+    this.a.j();
   }
   
   public void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.StrangerIntimateViewDelegate
  * JD-Core Version:    0.7.0.1
  */

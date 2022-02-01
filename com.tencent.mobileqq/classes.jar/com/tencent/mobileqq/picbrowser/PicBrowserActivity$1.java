@@ -12,11 +12,6 @@ class PicBrowserActivity$1
 {
   PicBrowserActivity$1(PicBrowserActivity paramPicBrowserActivity) {}
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return super.a(paramActivity, paramAbstractImageListModel);
-  }
-  
   public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
     return new PicBrowserGalleryScene((PicBrowserActivity)paramActivity, paramAbstractImageListModel);
@@ -26,18 +21,23 @@ class PicBrowserActivity$1
   {
     paramActivity = this.a;
     paramActivity = new PicBrowserModel(paramActivity, paramActivity.mPicInfos);
-    paramActivity.a(this.a.mIndex);
+    paramActivity.b(this.a.mIndex);
     return paramActivity;
   }
   
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public AbstractImageListScene b(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
     return null;
+  }
+  
+  public AbstractAnimationManager c(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return super.c(paramActivity, paramAbstractImageListModel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserActivity.1
  * JD-Core Version:    0.7.0.1
  */

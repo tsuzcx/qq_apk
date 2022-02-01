@@ -48,9 +48,9 @@ public abstract class ILaunchManager$Stub
   {
     if (paramInt1 != 1598968902)
     {
-      Object localObject4 = null;
-      Object localObject2 = null;
       Object localObject5 = null;
+      Object localObject2 = null;
+      Object localObject4 = null;
       Object localObject6 = null;
       Object localObject3 = null;
       Object localObject1 = null;
@@ -79,7 +79,7 @@ public abstract class ILaunchManager$Stub
         paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
         localObject2 = paramParcel1.readString();
         localObject3 = paramParcel1.readString();
-        localObject1 = localObject4;
+        localObject1 = localObject5;
         if (paramParcel1.readInt() != 0) {
           localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
         }
@@ -103,11 +103,16 @@ public abstract class ILaunchManager$Stub
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager");
-        localObject1 = localObject5;
         if (paramParcel1.readInt() != 0) {
           localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
         }
-        preloadDownloadPackage((MiniAppInfo)localObject1);
+        localObject2 = localObject4;
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel1);
+        }
+        preloadDownloadPackage((MiniAppInfo)localObject1, (ResultReceiver)localObject2);
         paramParcel2.writeNoException();
         return true;
       case 3: 
@@ -149,7 +154,7 @@ public abstract class ILaunchManager$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.ILaunchManager.Stub
  * JD-Core Version:    0.7.0.1
  */

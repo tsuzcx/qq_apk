@@ -15,12 +15,12 @@ class PokeItemAnimationManager$1
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("inFileDir:");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.a);
         localStringBuilder.append(" | outFileDir:");
         localStringBuilder.append(this.b);
         QLog.d("LzmaUtils", 2, localStringBuilder.toString());
       }
-      FileUtils.uncompressZip(this.jdField_a_of_type_JavaLangString, this.b, false);
+      FileUtils.uncompressZip(this.a, this.b, false);
     }
     catch (IOException localIOException)
     {
@@ -28,12 +28,12 @@ class PokeItemAnimationManager$1
         QLog.d("LzmaUtils", 2, localIOException, new Object[0]);
       }
     }
-    PokeItemAnimationManager.a(this.this$0, this.b, this.jdField_a_of_type_AndroidContentContext);
+    PokeItemAnimationManager.a(this.this$0, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager.1
  * JD-Core Version:    0.7.0.1
  */

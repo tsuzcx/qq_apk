@@ -9,12 +9,12 @@ class EmoticonFromGroupManager$4
   
   public void run()
   {
-    EmoticonFromGroupManager.a(this.this$0).setCountOfSpare(FavEmoConstant.a - this.this$0.b());
+    EmoticonFromGroupManager.b(this.this$0).setCountOfSpare(FavEmoConstant.a - this.this$0.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -23,11 +23,11 @@ class NotifyAndRecAdapter$4
     RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
     if ((localRecommendTroopItem != null) && (!TextUtils.isEmpty(localRecommendTroopItem.uin)))
     {
-      RecommendTroopUtils.a(this.a.a, 2, localRecommendTroopItem.uin, new NotifyAndRecAdapter.4.1(this));
+      RecommendTroopUtils.a(this.a.e, 2, localRecommendTroopItem.uin, new NotifyAndRecAdapter.4.1(this));
       this.a.b.remove(localRecommendTroopItem);
       this.a.notifyDataSetChanged();
       if ((this.a.b != null) && (this.a.b.size() == 0)) {
-        NotifyAndRecAdapter.a(this.a).sendEmptyMessage(1018);
+        NotifyAndRecAdapter.c(this.a).sendEmptyMessage(1018);
       }
       if (NotifyAndRecAdapter.a(this.a) != null)
       {
@@ -51,7 +51,7 @@ class NotifyAndRecAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.adapter.NotifyAndRecAdapter.4
  * JD-Core Version:    0.7.0.1
  */

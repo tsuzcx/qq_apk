@@ -40,7 +40,7 @@ public class TroopMaskTroopInfoProcessor
     localObject1 = (ProxyManager)paramQQAppInterface.getManager(QQManagerFactory.PROXY_MANAGER);
     if (localObject1 != null)
     {
-      localObject1 = ((ProxyManager)localObject1).a();
+      localObject1 = ((ProxyManager)localObject1).g();
       paramInt = paramQQAppInterface.getTroopMask(paramString);
       if (paramInt == 2)
       {
@@ -51,7 +51,7 @@ public class TroopMaskTroopInfoProcessor
         TroopAssistantManager.a().c(paramString, paramQQAppInterface);
         if ((paramInt == 3) && (localObject1 != null))
         {
-          paramString = ((RecentUserProxy)localObject1).b(paramString, 1);
+          paramString = ((RecentUserProxy)localObject1).c(paramString, 1);
           if (paramString != null)
           {
             ((RecentUserProxy)localObject1).a(paramString);
@@ -60,7 +60,7 @@ public class TroopMaskTroopInfoProcessor
             localStringBuilder.append(paramString.uin);
             localStringBuilder.append("-");
             localStringBuilder.append(paramString.getType());
-            ((RecentDataListManager)localObject2).a(localStringBuilder.toString());
+            ((RecentDataListManager)localObject2).b(localStringBuilder.toString());
             ((RecentUserProxy)localObject1).a(paramString);
             RecentUtil.b(paramQQAppInterface, paramString.uin, 1);
             paramQQAppInterface.getMessageFacade().a(paramString.uin, paramString.getType());
@@ -87,7 +87,7 @@ public class TroopMaskTroopInfoProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopMaskTroopInfoProcessor
  * JD-Core Version:    0.7.0.1
  */

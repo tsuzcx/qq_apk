@@ -182,8 +182,8 @@ public class UFTPbProtoHelper
       localUFTC2CUploadRsp.a(paramApplyUploadRspV3.bool_file_exist.get());
     }
     localUFTC2CUploadRsp.b(paramBoolean);
-    if (localUFTC2CUploadRsp.b()) {
-      if (localUFTC2CUploadRsp.a())
+    if (localUFTC2CUploadRsp.n()) {
+      if (localUFTC2CUploadRsp.g())
       {
         if (paramApplyUploadRspV3.str_fileidcrc.has()) {
           localUFTC2CUploadRsp.f(paramApplyUploadRspV3.str_fileidcrc.get());
@@ -318,7 +318,7 @@ public class UFTPbProtoHelper
     localSubCmd0x1ReqBody.str_md5.set(paramUFTDiscUploadReq.c());
     localSubCmd0x1ReqBody.str_sha.set(paramUFTDiscUploadReq.d());
     localSubCmd0x1ReqBody.str_file_name.set(paramUFTDiscUploadReq.e());
-    localSubCmd0x1ReqBody.uint64_file_size.set(paramUFTDiscUploadReq.a());
+    localSubCmd0x1ReqBody.uint64_file_size.set(paramUFTDiscUploadReq.f());
     localSubCmd0x1ReqBody.uint32_upload_type.set(1);
     long l = Long.parseLong(paramUFTDiscUploadReq.b());
     localSubCmd0x1ReqBody.uint32_disscus_uin.set((int)l);
@@ -328,70 +328,32 @@ public class UFTPbProtoHelper
     return localSubCmd0x1ReqBody;
   }
   
-  public static cmd0x346.ApplyUploadHitReqV2 a(UFTC2CUploadReq paramUFTC2CUploadReq)
-  {
-    cmd0x346.ApplyUploadHitReqV2 localApplyUploadHitReqV2 = new cmd0x346.ApplyUploadHitReqV2();
-    localApplyUploadHitReqV2.uint64_sender_uin.set(paramUFTC2CUploadReq.a());
-    localApplyUploadHitReqV2.uint64_recver_uin.set(paramUFTC2CUploadReq.b());
-    localApplyUploadHitReqV2.uint64_file_size.set(paramUFTC2CUploadReq.d());
-    localApplyUploadHitReqV2.str_file_name.set(paramUFTC2CUploadReq.a());
-    localApplyUploadHitReqV2.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.a()));
-    localApplyUploadHitReqV2.bytes_3sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.e()));
-    localApplyUploadHitReqV2.bytes_sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.d()));
-    localApplyUploadHitReqV2.str_local_filepath.set(paramUFTC2CUploadReq.c());
-    localApplyUploadHitReqV2.uint32_danger_level.set(paramUFTC2CUploadReq.a());
-    localApplyUploadHitReqV2.uint64_total_space.set(paramUFTC2CUploadReq.e());
-    return localApplyUploadHitReqV2;
-  }
-  
   public static cmd0x346.ApplyUploadReqV2 a(UFTC2CUploadReq paramUFTC2CUploadReq)
   {
     cmd0x346.ApplyUploadReqV2 localApplyUploadReqV2 = new cmd0x346.ApplyUploadReqV2();
-    localApplyUploadReqV2.uint64_sender_uin.set(paramUFTC2CUploadReq.a());
-    localApplyUploadReqV2.uint64_recver_uin.set(paramUFTC2CUploadReq.b());
-    localApplyUploadReqV2.uint64_file_size.set(paramUFTC2CUploadReq.d());
-    localApplyUploadReqV2.str_file_name.set(paramUFTC2CUploadReq.a());
-    localApplyUploadReqV2.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.a()));
-    localApplyUploadReqV2.bytes_3sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.e()));
-    localApplyUploadReqV2.str_local_filepath.set(paramUFTC2CUploadReq.c());
-    localApplyUploadReqV2.uint32_danger_level.set(paramUFTC2CUploadReq.a());
-    localApplyUploadReqV2.uint64_total_space.set(paramUFTC2CUploadReq.e());
+    localApplyUploadReqV2.uint64_sender_uin.set(paramUFTC2CUploadReq.c());
+    localApplyUploadReqV2.uint64_recver_uin.set(paramUFTC2CUploadReq.d());
+    localApplyUploadReqV2.uint64_file_size.set(paramUFTC2CUploadReq.a());
+    localApplyUploadReqV2.str_file_name.set(paramUFTC2CUploadReq.b());
+    localApplyUploadReqV2.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.i()));
+    localApplyUploadReqV2.bytes_3sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.l()));
+    localApplyUploadReqV2.str_local_filepath.set(paramUFTC2CUploadReq.m());
+    localApplyUploadReqV2.uint32_danger_level.set(paramUFTC2CUploadReq.n());
+    localApplyUploadReqV2.uint64_total_space.set(paramUFTC2CUploadReq.o());
     return localApplyUploadReqV2;
-  }
-  
-  public static cmd0x346.ApplyUploadReqV3 a(UFTC2CUploadReq paramUFTC2CUploadReq)
-  {
-    cmd0x346.ApplyUploadReqV3 localApplyUploadReqV3 = new cmd0x346.ApplyUploadReqV3();
-    localApplyUploadReqV3.uint64_sender_uin.set(paramUFTC2CUploadReq.a());
-    localApplyUploadReqV3.uint64_recver_uin.set(paramUFTC2CUploadReq.b());
-    localApplyUploadReqV3.uint64_file_size.set(paramUFTC2CUploadReq.d());
-    localApplyUploadReqV3.str_file_name.set(paramUFTC2CUploadReq.a());
-    localApplyUploadReqV3.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.a()));
-    if (paramUFTC2CUploadReq.c() != null) {
-      localApplyUploadReqV3.bytes_md5.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.c()));
-    }
-    localApplyUploadReqV3.bytes_sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.d()));
-    if (paramUFTC2CUploadReq.e() != null) {
-      localApplyUploadReqV3.bytes_3sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.e()));
-    }
-    localApplyUploadReqV3.uint32_contenttype.set(0);
-    localApplyUploadReqV3.str_local_filepath.set(paramUFTC2CUploadReq.c());
-    localApplyUploadReqV3.uint32_danger_level.set(paramUFTC2CUploadReq.a());
-    localApplyUploadReqV3.uint64_total_space.set(paramUFTC2CUploadReq.e());
-    return localApplyUploadReqV3;
   }
   
   public static cmd0x346.UploadSuccReq a(UFTC2CSetUploadSucReq paramUFTC2CSetUploadSucReq)
   {
     cmd0x346.UploadSuccReq localUploadSuccReq = new cmd0x346.UploadSuccReq();
-    localUploadSuccReq.uint64_sender_uin.set(paramUFTC2CSetUploadSucReq.a());
-    localUploadSuccReq.uint64_recver_uin.set(paramUFTC2CSetUploadSucReq.b());
+    localUploadSuccReq.uint64_sender_uin.set(paramUFTC2CSetUploadSucReq.c());
+    localUploadSuccReq.uint64_recver_uin.set(paramUFTC2CSetUploadSucReq.d());
     localUploadSuccReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramUFTC2CSetUploadSucReq.a()));
-    if (paramUFTC2CSetUploadSucReq.a())
+    if (paramUFTC2CSetUploadSucReq.e())
     {
-      if (!TextUtils.isEmpty(paramUFTC2CSetUploadSucReq.a()))
+      if (!TextUtils.isEmpty(paramUFTC2CSetUploadSucReq.b()))
       {
-        localUploadSuccReq.str_fileidcrc.set(paramUFTC2CSetUploadSucReq.a());
+        localUploadSuccReq.str_fileidcrc.set(paramUFTC2CSetUploadSucReq.b());
         UFTLog.b("[UFTTransfer] UFTPbProtoHelper", 1, "getC2CSetUploadSucReq: UseMediaPlatform enabled");
         return localUploadSuccReq;
       }
@@ -405,9 +367,9 @@ public class UFTPbProtoHelper
     oidb_0x6d6.ResendReqBody localResendReqBody = new oidb_0x6d6.ResendReqBody();
     localResendReqBody.uint32_bus_id.set(paramUFTTroopUploadReReq.a());
     localResendReqBody.uint32_app_id.set(3);
-    localResendReqBody.uint64_group_code.set(paramUFTTroopUploadReReq.a());
-    localResendReqBody.str_file_id.set(paramUFTTroopUploadReReq.a());
-    localResendReqBody.bytes_sha.set(ByteStringMicro.copyFrom(paramUFTTroopUploadReReq.a()));
+    localResendReqBody.uint64_group_code.set(paramUFTTroopUploadReReq.b());
+    localResendReqBody.str_file_id.set(paramUFTTroopUploadReReq.d());
+    localResendReqBody.bytes_sha.set(ByteStringMicro.copyFrom(paramUFTTroopUploadReReq.c()));
     return localResendReqBody;
   }
   
@@ -416,28 +378,66 @@ public class UFTPbProtoHelper
     oidb_0x6d6.UploadFileReqBody localUploadFileReqBody = new oidb_0x6d6.UploadFileReqBody();
     localUploadFileReqBody.uint32_bus_id.set(paramUFTTroopUploadReq.a());
     localUploadFileReqBody.uint32_app_id.set(3);
-    localUploadFileReqBody.uint64_group_code.set(paramUFTTroopUploadReq.a());
-    localUploadFileReqBody.bytes_md5.set(ByteStringMicro.copyFrom(paramUFTTroopUploadReq.a()));
-    localUploadFileReqBody.bytes_sha.set(ByteStringMicro.copyFrom(paramUFTTroopUploadReq.b()));
-    if ((paramUFTTroopUploadReq.c() != null) && (paramUFTTroopUploadReq.c().length > 0)) {
-      localUploadFileReqBody.bytes_sha3.set(ByteStringMicro.copyFrom(paramUFTTroopUploadReq.c()));
+    localUploadFileReqBody.uint64_group_code.set(paramUFTTroopUploadReq.c());
+    localUploadFileReqBody.bytes_md5.set(ByteStringMicro.copyFrom(paramUFTTroopUploadReq.d()));
+    localUploadFileReqBody.bytes_sha.set(ByteStringMicro.copyFrom(paramUFTTroopUploadReq.e()));
+    if ((paramUFTTroopUploadReq.f() != null) && (paramUFTTroopUploadReq.f().length > 0)) {
+      localUploadFileReqBody.bytes_sha3.set(ByteStringMicro.copyFrom(paramUFTTroopUploadReq.f()));
     }
-    if (TextUtils.isEmpty(paramUFTTroopUploadReq.a())) {
+    if (TextUtils.isEmpty(paramUFTTroopUploadReq.b())) {
       localUploadFileReqBody.str_parent_folder_id.set("/");
     } else {
-      localUploadFileReqBody.str_parent_folder_id.set(paramUFTTroopUploadReq.a());
+      localUploadFileReqBody.str_parent_folder_id.set(paramUFTTroopUploadReq.b());
     }
-    localUploadFileReqBody.str_file_name.set(paramUFTTroopUploadReq.b());
-    localUploadFileReqBody.str_local_path.set(paramUFTTroopUploadReq.c());
-    localUploadFileReqBody.uint32_entrance.set(paramUFTTroopUploadReq.b());
-    localUploadFileReqBody.uint64_file_size.set(paramUFTTroopUploadReq.b());
-    localUploadFileReqBody.bool_support_multi_upload.set(paramUFTTroopUploadReq.a());
+    localUploadFileReqBody.str_file_name.set(paramUFTTroopUploadReq.g());
+    localUploadFileReqBody.str_local_path.set(paramUFTTroopUploadReq.h());
+    localUploadFileReqBody.uint32_entrance.set(paramUFTTroopUploadReq.j());
+    localUploadFileReqBody.uint64_file_size.set(paramUFTTroopUploadReq.i());
+    localUploadFileReqBody.bool_support_multi_upload.set(paramUFTTroopUploadReq.k());
     return localUploadFileReqBody;
+  }
+  
+  public static cmd0x346.ApplyUploadHitReqV2 b(UFTC2CUploadReq paramUFTC2CUploadReq)
+  {
+    cmd0x346.ApplyUploadHitReqV2 localApplyUploadHitReqV2 = new cmd0x346.ApplyUploadHitReqV2();
+    localApplyUploadHitReqV2.uint64_sender_uin.set(paramUFTC2CUploadReq.c());
+    localApplyUploadHitReqV2.uint64_recver_uin.set(paramUFTC2CUploadReq.d());
+    localApplyUploadHitReqV2.uint64_file_size.set(paramUFTC2CUploadReq.a());
+    localApplyUploadHitReqV2.str_file_name.set(paramUFTC2CUploadReq.b());
+    localApplyUploadHitReqV2.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.i()));
+    localApplyUploadHitReqV2.bytes_3sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.l()));
+    localApplyUploadHitReqV2.bytes_sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.k()));
+    localApplyUploadHitReqV2.str_local_filepath.set(paramUFTC2CUploadReq.m());
+    localApplyUploadHitReqV2.uint32_danger_level.set(paramUFTC2CUploadReq.n());
+    localApplyUploadHitReqV2.uint64_total_space.set(paramUFTC2CUploadReq.o());
+    return localApplyUploadHitReqV2;
+  }
+  
+  public static cmd0x346.ApplyUploadReqV3 c(UFTC2CUploadReq paramUFTC2CUploadReq)
+  {
+    cmd0x346.ApplyUploadReqV3 localApplyUploadReqV3 = new cmd0x346.ApplyUploadReqV3();
+    localApplyUploadReqV3.uint64_sender_uin.set(paramUFTC2CUploadReq.c());
+    localApplyUploadReqV3.uint64_recver_uin.set(paramUFTC2CUploadReq.d());
+    localApplyUploadReqV3.uint64_file_size.set(paramUFTC2CUploadReq.a());
+    localApplyUploadReqV3.str_file_name.set(paramUFTC2CUploadReq.b());
+    localApplyUploadReqV3.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.i()));
+    if (paramUFTC2CUploadReq.j() != null) {
+      localApplyUploadReqV3.bytes_md5.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.j()));
+    }
+    localApplyUploadReqV3.bytes_sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.k()));
+    if (paramUFTC2CUploadReq.l() != null) {
+      localApplyUploadReqV3.bytes_3sha.set(ByteStringMicro.copyFrom(paramUFTC2CUploadReq.l()));
+    }
+    localApplyUploadReqV3.uint32_contenttype.set(0);
+    localApplyUploadReqV3.str_local_filepath.set(paramUFTC2CUploadReq.m());
+    localApplyUploadReqV3.uint32_danger_level.set(paramUFTC2CUploadReq.n());
+    localApplyUploadReqV3.uint64_total_space.set(paramUFTC2CUploadReq.o());
+    return localApplyUploadReqV3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.proto.UFTPbProtoHelper
  * JD-Core Version:    0.7.0.1
  */

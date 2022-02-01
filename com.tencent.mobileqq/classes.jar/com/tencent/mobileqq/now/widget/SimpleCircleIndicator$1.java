@@ -11,12 +11,12 @@ class SimpleCircleIndicator$1
   public void onChanged()
   {
     super.onChanged();
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setCurrentItem(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getCurrentItem());
+    this.b.setCurrentItem(this.a.getCurrentItem());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.SimpleCircleIndicator.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,46 +10,46 @@ import com.tencent.mobileqq.qroute.QRoute;
 public class WeiYunPreviewController
   extends FilePreViewControllerBase
 {
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = null;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  AppInterface b;
+  String c;
+  String d;
+  FMObserver e = null;
   
   public WeiYunPreviewController(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    b();
-  }
-  
-  public int a()
-  {
-    return 4;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-    }
+    this.b = paramAppInterface;
+    this.c = paramString1;
+    this.d = paramString2;
+    d();
   }
   
   public boolean a()
   {
-    ((IQQFileEngine)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQFileEngine.class, "")).getWeiYunPreview(this.jdField_a_of_type_JavaLangString, this.b);
+    ((IQQFileEngine)this.b.getRuntimeService(IQQFileEngine.class, "")).getWeiYunPreview(this.c, this.d);
     return true;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new WeiYunPreviewController.1(this);
-    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    if (this.e != null) {
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteObserver(this.e);
+    }
+  }
+  
+  public int c()
+  {
+    return 4;
+  }
+  
+  public void d()
+  {
+    this.e = new WeiYunPreviewController.1(this);
+    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).addObserver(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunPreviewController
  * JD-Core Version:    0.7.0.1
  */

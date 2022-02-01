@@ -15,20 +15,20 @@ class ShengpiziHbFragment$3
   {
     if ((paramView instanceof TextView))
     {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplShengpiziHbFragment.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getText();
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplShengpiziHbFragment.jdField_a_of_type_JavaLangString = ((TextView)paramView).getText().toString();
+      this.b.p = this.a.getText();
+      this.b.q = ((TextView)paramView).getText().toString();
       paramView = new StringBuilder();
       paramView.append("choice: ");
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplShengpiziHbFragment.jdField_a_of_type_JavaLangString);
+      paramView.append(this.b.q);
       QLog.i("ShengPiZiHbFragment", 2, paramView.toString());
-      ShengpiziHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplShengpiziHbFragment).setText(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplShengpiziHbFragment.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplShengpiziHbFragment.jdField_a_of_type_AndroidViewView.post(new ShengpiziHbFragment.3.1(this));
+      ShengpiziHbFragment.e(this.b).setText(this.b.q);
+      this.b.a.post(new ShengpiziHbFragment.3.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ShengpiziHbFragment.3
  * JD-Core Version:    0.7.0.1
  */

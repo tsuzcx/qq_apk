@@ -168,7 +168,7 @@ public class ProgressPieView
     //   62: putfield 224	com/tencent/widget/ProgressPieView:mDefaultViewSize	F
     //   65: aload_1
     //   66: aload_2
-    //   67: getstatic 230	com/tencent/mobileqq/qqui/R$styleable:aD	[I
+    //   67: getstatic 230	com/tencent/mobileqq/qqui/R$styleable:ct	[I
     //   70: invokevirtual 234	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
     //   73: astore_2
     //   74: aload_0
@@ -176,92 +176,92 @@ public class ProgressPieView
     //   78: astore_1
     //   79: aload_0
     //   80: aload_2
-    //   81: getstatic 238	com/tencent/mobileqq/qqui/R$styleable:aM	I
+    //   81: getstatic 238	com/tencent/mobileqq/qqui/R$styleable:cB	I
     //   84: aload_0
     //   85: getfield 101	com/tencent/widget/ProgressPieView:mMax	I
     //   88: invokevirtual 244	android/content/res/TypedArray:getInteger	(II)I
     //   91: putfield 101	com/tencent/widget/ProgressPieView:mMax	I
     //   94: aload_0
     //   95: aload_2
-    //   96: getstatic 247	com/tencent/mobileqq/qqui/R$styleable:aN	I
+    //   96: getstatic 247	com/tencent/mobileqq/qqui/R$styleable:cC	I
     //   99: aload_0
     //   100: getfield 103	com/tencent/widget/ProgressPieView:mProgress	I
     //   103: invokevirtual 244	android/content/res/TypedArray:getInteger	(II)I
     //   106: putfield 103	com/tencent/widget/ProgressPieView:mProgress	I
     //   109: aload_0
     //   110: aload_2
-    //   111: getstatic 250	com/tencent/mobileqq/qqui/R$styleable:aU	I
+    //   111: getstatic 250	com/tencent/mobileqq/qqui/R$styleable:cJ	I
     //   114: aload_0
     //   115: getfield 105	com/tencent/widget/ProgressPieView:mStartAngle	I
     //   118: invokevirtual 253	android/content/res/TypedArray:getInt	(II)I
     //   121: putfield 105	com/tencent/widget/ProgressPieView:mStartAngle	I
     //   124: aload_0
     //   125: aload_2
-    //   126: getstatic 256	com/tencent/mobileqq/qqui/R$styleable:aL	I
+    //   126: getstatic 256	com/tencent/mobileqq/qqui/R$styleable:cA	I
     //   129: aload_0
     //   130: getfield 107	com/tencent/widget/ProgressPieView:mInverted	Z
     //   133: invokevirtual 260	android/content/res/TypedArray:getBoolean	(IZ)Z
     //   136: putfield 107	com/tencent/widget/ProgressPieView:mInverted	Z
     //   139: aload_0
     //   140: aload_2
-    //   141: getstatic 263	com/tencent/mobileqq/qqui/R$styleable:aJ	I
+    //   141: getstatic 263	com/tencent/mobileqq/qqui/R$styleable:cy	I
     //   144: aload_0
     //   145: getfield 109	com/tencent/widget/ProgressPieView:mCounterclockwise	Z
     //   148: invokevirtual 260	android/content/res/TypedArray:getBoolean	(IZ)Z
     //   151: putfield 109	com/tencent/widget/ProgressPieView:mCounterclockwise	Z
     //   154: aload_0
     //   155: aload_2
-    //   156: getstatic 266	com/tencent/mobileqq/qqui/R$styleable:aW	I
+    //   156: getstatic 266	com/tencent/mobileqq/qqui/R$styleable:cL	I
     //   159: aload_0
     //   160: getfield 113	com/tencent/widget/ProgressPieView:mStrokeWidth	F
     //   163: invokevirtual 270	android/content/res/TypedArray:getDimension	(IF)F
     //   166: putfield 113	com/tencent/widget/ProgressPieView:mStrokeWidth	F
     //   169: aload_0
     //   170: aload_2
-    //   171: getstatic 273	com/tencent/mobileqq/qqui/R$styleable:aR	I
+    //   171: getstatic 273	com/tencent/mobileqq/qqui/R$styleable:cG	I
     //   174: aload_0
     //   175: getfield 115	com/tencent/widget/ProgressPieView:mProgressStrokeWidth	F
     //   178: invokevirtual 270	android/content/res/TypedArray:getDimension	(IF)F
     //   181: putfield 115	com/tencent/widget/ProgressPieView:mProgressStrokeWidth	F
     //   184: aload_0
     //   185: aload_2
-    //   186: getstatic 276	com/tencent/mobileqq/qqui/R$styleable:aX	I
+    //   186: getstatic 276	com/tencent/mobileqq/qqui/R$styleable:cM	I
     //   189: invokevirtual 280	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
     //   192: putfield 282	com/tencent/widget/ProgressPieView:mTypeface	Ljava/lang/String;
     //   195: aload_0
     //   196: aload_2
-    //   197: getstatic 285	com/tencent/mobileqq/qqui/R$styleable:aF	I
+    //   197: getstatic 285	com/tencent/mobileqq/qqui/R$styleable:cu	I
     //   200: aload_0
     //   201: getfield 119	com/tencent/widget/ProgressPieView:mTextSize	F
     //   204: invokevirtual 270	android/content/res/TypedArray:getDimension	(IF)F
     //   207: putfield 119	com/tencent/widget/ProgressPieView:mTextSize	F
     //   210: aload_0
     //   211: aload_2
-    //   212: getstatic 288	com/tencent/mobileqq/qqui/R$styleable:aH	I
+    //   212: getstatic 288	com/tencent/mobileqq/qqui/R$styleable:cw	I
     //   215: invokevirtual 280	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
     //   218: putfield 290	com/tencent/widget/ProgressPieView:mText	Ljava/lang/String;
     //   221: aload_0
     //   222: aload_2
-    //   223: getstatic 293	com/tencent/mobileqq/qqui/R$styleable:aS	I
+    //   223: getstatic 293	com/tencent/mobileqq/qqui/R$styleable:cH	I
     //   226: aload_0
     //   227: getfield 111	com/tencent/widget/ProgressPieView:mShowStroke	Z
     //   230: invokevirtual 260	android/content/res/TypedArray:getBoolean	(IZ)Z
     //   233: putfield 111	com/tencent/widget/ProgressPieView:mShowStroke	Z
     //   236: aload_0
     //   237: aload_2
-    //   238: getstatic 296	com/tencent/mobileqq/qqui/R$styleable:aT	I
+    //   238: getstatic 296	com/tencent/mobileqq/qqui/R$styleable:cI	I
     //   241: aload_0
     //   242: getfield 117	com/tencent/widget/ProgressPieView:mShowText	Z
     //   245: invokevirtual 260	android/content/res/TypedArray:getBoolean	(IZ)Z
     //   248: putfield 117	com/tencent/widget/ProgressPieView:mShowText	Z
     //   251: aload_0
     //   252: aload_2
-    //   253: getstatic 299	com/tencent/mobileqq/qqui/R$styleable:aK	I
+    //   253: getstatic 299	com/tencent/mobileqq/qqui/R$styleable:cz	I
     //   256: invokevirtual 303	android/content/res/TypedArray:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   259: putfield 195	com/tencent/widget/ProgressPieView:mImage	Landroid/graphics/drawable/Drawable;
     //   262: aload_0
     //   263: aload_2
-    //   264: getstatic 306	com/tencent/mobileqq/qqui/R$styleable:aP	I
+    //   264: getstatic 306	com/tencent/mobileqq/qqui/R$styleable:cE	I
     //   267: aload_0
     //   268: getfield 123	com/tencent/widget/ProgressPieView:mProgressFillType	I
     //   271: invokevirtual 244	android/content/res/TypedArray:getInteger	(II)I
@@ -277,7 +277,7 @@ public class ProgressPieView
     //   292: iload 4
     //   294: istore_3
     //   295: aload_2
-    //   296: getstatic 314	com/tencent/mobileqq/qqui/R$styleable:aI	I
+    //   296: getstatic 314	com/tencent/mobileqq/qqui/R$styleable:cx	I
     //   299: iload 4
     //   301: invokevirtual 316	android/content/res/TypedArray:getColor	(II)I
     //   304: istore 4
@@ -290,7 +290,7 @@ public class ProgressPieView
     //   318: iload 5
     //   320: istore 6
     //   322: aload_2
-    //   323: getstatic 320	com/tencent/mobileqq/qqui/R$styleable:aO	I
+    //   323: getstatic 320	com/tencent/mobileqq/qqui/R$styleable:cD	I
     //   326: iload 5
     //   328: invokevirtual 316	android/content/res/TypedArray:getColor	(II)I
     //   331: istore_3
@@ -303,7 +303,7 @@ public class ProgressPieView
     //   344: iload 5
     //   346: istore 6
     //   348: aload_2
-    //   349: getstatic 323	com/tencent/mobileqq/qqui/R$styleable:aQ	I
+    //   349: getstatic 323	com/tencent/mobileqq/qqui/R$styleable:cF	I
     //   352: iload 5
     //   354: invokevirtual 316	android/content/res/TypedArray:getColor	(II)I
     //   357: istore 5
@@ -318,7 +318,7 @@ public class ProgressPieView
     //   376: iload 10
     //   378: istore 6
     //   380: aload_2
-    //   381: getstatic 327	com/tencent/mobileqq/qqui/R$styleable:aV	I
+    //   381: getstatic 327	com/tencent/mobileqq/qqui/R$styleable:cK	I
     //   384: iload 10
     //   386: invokevirtual 316	android/content/res/TypedArray:getColor	(II)I
     //   389: istore 8
@@ -335,7 +335,7 @@ public class ProgressPieView
     //   412: iload 8
     //   414: istore 6
     //   416: aload_2
-    //   417: getstatic 331	com/tencent/mobileqq/qqui/R$styleable:aG	I
+    //   417: getstatic 331	com/tencent/mobileqq/qqui/R$styleable:cv	I
     //   420: iload 9
     //   422: invokevirtual 316	android/content/res/TypedArray:getColor	(II)I
     //   425: istore 12
@@ -930,7 +930,7 @@ public class ProgressPieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ProgressPieView
  * JD-Core Version:    0.7.0.1
  */

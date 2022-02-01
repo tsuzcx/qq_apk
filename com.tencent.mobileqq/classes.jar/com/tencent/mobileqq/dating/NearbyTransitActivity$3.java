@@ -21,12 +21,12 @@ class NearbyTransitActivity$3
     if (i != 1) {
       bool = false;
     }
-    localIHotChatHandler.joinHotChat(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.this$0));
+    localIHotChatHandler.joinHotChat(localWifiPOIInfo, bool, 4, NearbyTransitActivity.g(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NearbyTransitActivity.3
  * JD-Core Version:    0.7.0.1
  */

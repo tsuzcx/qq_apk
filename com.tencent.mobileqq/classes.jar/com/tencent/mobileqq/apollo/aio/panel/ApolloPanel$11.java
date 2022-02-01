@@ -18,28 +18,28 @@ class ApolloPanel$11
   
   public void run()
   {
-    if ((ApolloPanel.a(this.this$0) != null) && (ApolloPanel.a(this.this$0) != null))
+    if ((ApolloPanel.s(this.this$0) != null) && (ApolloPanel.t(this.this$0) != null))
     {
-      if (ApolloPanel.a(this.this$0) == null) {
+      if (ApolloPanel.u(this.this$0) == null) {
         return;
       }
-      ApolloPanel.a(this.this$0).a(this.a);
+      ApolloPanel.s(this.this$0).a(this.a);
       int i;
-      if ((ApolloPanel.a(this.this$0) != null) && (ApolloPanel.a(this.this$0).a == 1036)) {
+      if ((ApolloPanel.o(this.this$0) != null) && (ApolloPanel.o(this.this$0).a == 1036)) {
         i = 1;
       } else {
         i = 0;
       }
       if (i != 0) {
-        ApolloPanel.a(this.this$0).setVisibility(8);
+        ApolloPanel.t(this.this$0).setVisibility(8);
       } else {
-        ApolloPanel.a(this.this$0).setVisibility(0);
+        ApolloPanel.t(this.this$0).setVisibility(0);
       }
-      ApolloPanel.a(this.this$0).setVisibility(0);
-      ApolloPanel.a(this.this$0).notifyDataSetChanged();
-      if (ApolloPanel.a(this.this$0) != null)
+      ApolloPanel.u(this.this$0).setVisibility(0);
+      ApolloPanel.s(this.this$0).notifyDataSetChanged();
+      if (ApolloPanel.g(this.this$0) != null)
       {
-        if (ApolloPanel.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+        if (ApolloPanel.g(this.this$0).ah == null) {
           return;
         }
         Iterator localIterator = this.a.iterator();
@@ -47,7 +47,7 @@ class ApolloPanel$11
         {
           ApolloActionPackage localApolloActionPackage = (ApolloActionPackage)localIterator.next();
           if ((localApolloActionPackage != null) && (localApolloActionPackage.isUpdate)) {
-            VipUtils.a(ApolloPanel.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "tabreddot", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(ApolloPanel.a(this.this$0).a), 0, new String[] { String.valueOf(localApolloActionPackage.packageId) });
+            VipUtils.a(ApolloPanel.g(this.this$0).d, "cmshow", "Apollo", "tabreddot", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(ApolloPanel.o(this.this$0).a), 0, new String[] { String.valueOf(localApolloActionPackage.packageId) });
           }
         }
       }
@@ -56,7 +56,7 @@ class ApolloPanel$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanel.11
  * JD-Core Version:    0.7.0.1
  */

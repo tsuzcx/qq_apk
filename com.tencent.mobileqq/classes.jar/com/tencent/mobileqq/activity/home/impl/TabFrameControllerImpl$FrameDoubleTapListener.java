@@ -26,7 +26,7 @@ public class TabFrameControllerImpl$FrameDoubleTapListener
       localStringBuilder.append("]");
       QLog.d("TabFrameControllerImpl", 2, localStringBuilder.toString());
     }
-    this.a.b = SystemClock.uptimeMillis();
+    this.a.S = SystemClock.uptimeMillis();
     TabFrameControllerImpl.dispatchOnDoubleTap(this.a);
     return false;
   }
@@ -43,7 +43,7 @@ public class TabFrameControllerImpl$FrameDoubleTapListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.TabFrameControllerImpl.FrameDoubleTapListener
  * JD-Core Version:    0.7.0.1
  */

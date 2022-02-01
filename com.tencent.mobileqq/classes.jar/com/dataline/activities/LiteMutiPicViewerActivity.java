@@ -50,21 +50,21 @@ public class LiteMutiPicViewerActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, WaitTextView.RefreshListener
 {
-  private int jdField_a_of_type_Int;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private GridView jdField_a_of_type_AndroidWidgetGridView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private LiteMutiPicViewerActivity.GridAdapter jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity$GridAdapter;
-  private WaitTextView jdField_a_of_type_ComDatalineUtilWidgetWaitTextView;
-  private DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new LiteMutiPicViewerActivity.2(this);
-  private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
-  private int d;
-  private int e;
+  private DataLineMsgSet a;
+  private GridView b;
+  private LiteMutiPicViewerActivity.GridAdapter c;
+  private WaitTextView d;
+  private RelativeLayout e;
+  private TextView f;
+  private TextView g;
+  private ProgressBar h;
+  private Button i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private int n;
+  private DataLineObserver o = new LiteMutiPicViewerActivity.2(this);
   
   private int a(Activity paramActivity)
   {
@@ -73,92 +73,92 @@ public class LiteMutiPicViewerActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131372697));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368483));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368484));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368485));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167056));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131368478));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368472));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = new WaitTextView(this);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setRefreshListener(this);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setGravity(17);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setTextColor(getResources().getColor(2131167144));
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setTextSize(1, 16.0F);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setPadding(0, 0, 0, AIOUtils.b(50.0F, getResources()));
+    this.b = ((GridView)findViewById(2131440243));
+    this.e = ((RelativeLayout)findViewById(2131435385));
+    this.f = ((TextView)findViewById(2131435386));
+    this.g = ((TextView)findViewById(2131435387));
+    this.g.setTextColor(getResources().getColor(2131167993));
+    this.h = ((ProgressBar)findViewById(2131435380));
+    this.i = ((Button)findViewById(2131435369));
+    this.f.setOnClickListener(this);
+    this.i.setOnClickListener(this);
+    this.d = new WaitTextView(this);
+    this.d.setRefreshListener(this);
+    this.d.setGravity(17);
+    this.d.setTextColor(getResources().getColor(2131168125));
+    this.d.setTextSize(1, 16.0F);
+    this.d.setPadding(0, 0, 0, AIOUtils.b(50.0F, getResources()));
     Object localObject = new AbsListView.LayoutParams(a(this), -2);
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(3);
-    this.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetGridView.setVerticalSpacing(this.d * 2);
-    this.jdField_a_of_type_AndroidWidgetGridView.setHorizontalSpacing(this.c * 2);
-    localObject = this.jdField_a_of_type_AndroidWidgetGridView;
-    ((GridView)localObject).setPadding(this.e, ((GridView)localObject).getPaddingTop(), this.e, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
-    this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity$GridAdapter = new LiteMutiPicViewerActivity.GridAdapter(this, null);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity$GridAdapter);
+    this.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.b.setNumColumns(3);
+    this.b.setColumnWidth(this.j);
+    this.b.setVerticalSpacing(this.m * 2);
+    this.b.setHorizontalSpacing(this.l * 2);
+    localObject = this.b;
+    ((GridView)localObject).setPadding(this.n, ((GridView)localObject).getPaddingTop(), this.n, this.b.getPaddingBottom());
+    this.b.setSelector(new ColorDrawable(0));
+    this.c = new LiteMutiPicViewerActivity.GridAdapter(this, null);
+    this.b.setAdapter(this.c);
     c();
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isCanReciveOrResend()) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.hasSendingOrRecving()))
+    if ((this.a.isCanReciveOrResend()) && (!this.a.hasSendingOrRecving()))
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSendFromLocal()) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692734);
+      this.e.setVisibility(0);
+      this.f.setVisibility(0);
+      this.g.setVisibility(4);
+      this.h.setVisibility(4);
+      this.i.setVisibility(4);
+      if (this.a.isSendFromLocal()) {
+        this.f.setText(2131889805);
       } else {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692733);
+        this.f.setText(2131889804);
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.hasSendingOrRecving())
+    else if (this.a.hasSendingOrRecving())
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      this.e.setVisibility(0);
+      this.f.setVisibility(4);
+      this.g.setVisibility(0);
+      this.h.setVisibility(0);
+      this.i.setVisibility(0);
       d();
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.e.setVisibility(8);
     }
-    this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity$GridAdapter.notifyDataSetChanged();
+    this.c.notifyDataSetChanged();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalProcess() * 100.0F));
+    this.h.setProgress((int)(this.a.getTotalProcess() * 100.0F));
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("(");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getCompletedCount());
+    ((StringBuilder)localObject).append(this.a.getCompletedCount());
     ((StringBuilder)localObject).append("/");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount());
+    ((StringBuilder)localObject).append(this.a.getTotalCount());
     ((StringBuilder)localObject).append(")");
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSendFromLocal()) {
-      i = 2131692748;
+    int i1;
+    if (this.a.isSendFromLocal()) {
+      i1 = 2131889819;
     } else {
-      i = 2131692707;
+      i1 = 2131889778;
     }
-    localStringBuilder.append(getString(i));
+    localStringBuilder.append(getString(i1));
     localStringBuilder.append((String)localObject);
     localObject = localStringBuilder.toString();
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    this.g.setText((CharSequence)localObject);
   }
   
   private void e()
   {
-    setTitle(2131693723);
+    setTitle(2131891298);
     this.rightViewImg.setVisibility(4);
     this.rightViewText.setVisibility(4);
   }
@@ -166,24 +166,24 @@ public class LiteMutiPicViewerActivity
   private void f()
   {
     Display localDisplay = ((WindowManager)getSystemService("window")).getDefaultDisplay();
-    this.e = getResources().getDimensionPixelSize(2131297487);
-    this.c = getResources().getDimensionPixelSize(2131297489);
-    this.d = getResources().getDimensionPixelSize(2131297490);
-    this.jdField_a_of_type_Int = ((localDisplay.getWidth() - this.e * 2 - this.c * 2) / 3);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+    this.n = getResources().getDimensionPixelSize(2131298138);
+    this.l = getResources().getDimensionPixelSize(2131298140);
+    this.m = getResources().getDimensionPixelSize(2131298141);
+    this.j = ((localDisplay.getWidth() - this.n * 2 - this.l * 2) / 3);
+    this.k = this.j;
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView.setText(String.format(getString(2131693742), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount()) }));
+    this.d.setText(String.format(getString(2131891317), new Object[] { Integer.valueOf(this.a.getTotalCount()) }));
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
+    Object localObject = this.a;
     if ((localObject != null) && (((DataLineMsgSet)localObject).isTimeOut()))
     {
-      localObject = this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity$GridAdapter;
+      localObject = this.c;
       if (localObject != null) {
         ((LiteMutiPicViewerActivity.GridAdapter)localObject).notifyDataSetChanged();
       }
@@ -202,18 +202,18 @@ public class LiteMutiPicViewerActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131560772);
-    int i = getIntent().getIntExtra("dataline_group_id", -1);
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = this.app.getDataLineMsgProxy(0).a(i);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = this.app.getDataLineMsgProxy(1).a(i);
+    setContentView(2131627030);
+    int i1 = getIntent().getIntExtra("dataline_group_id", -1);
+    this.a = this.app.getDataLineMsgProxy(0).a(i1);
+    if (this.a == null) {
+      this.a = this.app.getDataLineMsgProxy(1).a(i1);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet == null)
+    if (this.a == null)
     {
       QLog.e("IphoneTitleBarActivity", 1, "LiteMutiPicViewerActivity mSet is null, so finish");
       finish();
     }
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
+    addObserver(this.o);
     f();
     b();
     e();
@@ -224,14 +224,14 @@ public class LiteMutiPicViewerActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver;
+    Object localObject = this.o;
     if (localObject != null) {
       removeObserver((BusinessObserver)localObject);
     }
     if (this.app.getFileManagerProxy() != null) {
-      this.app.getFileManagerProxy().b();
+      this.app.getFileManagerProxy().e();
     }
-    localObject = this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView;
+    localObject = this.d;
     if (localObject != null) {
       ((WaitTextView)localObject).b();
     }
@@ -240,28 +240,28 @@ public class LiteMutiPicViewerActivity
   public void onClick(View paramView)
   {
     DataLineHandler localDataLineHandler = (DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    int i = paramView.getId();
+    int i1 = paramView.getId();
     Object localObject2;
     Object localObject1;
     Object localObject3;
-    if (i != 2131368472)
+    if (i1 != 2131435369)
     {
-      if (i == 2131368484) {
+      if (i1 == 2131435386) {
         if (NetworkUtil.isNetSupport(this))
         {
-          FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSendFromLocal(), this, new LiteMutiPicViewerActivity.1(this, localDataLineHandler));
-          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-          if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle())) {
+          FileManagerUtil.a(this.a.isSendFromLocal(), this, new LiteMutiPicViewerActivity.1(this, localDataLineHandler));
+          this.a.setPaused(false);
+          if ((this.a.getGroupType() == -2000) && (!this.a.isSingle())) {
             DataLineReportUtil.p(this.app);
           }
-          Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+          Iterator localIterator = this.a.values().iterator();
           localObject2 = null;
           localObject1 = null;
           while (localIterator.hasNext())
           {
             DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
             localObject3 = DatalineFilesAdapter.a(localDataLineMsgRecord);
-            if (((DLFileInfo)localObject3).jdField_a_of_type_Int == 1)
+            if (((DLFileInfo)localObject3).b == 1)
             {
               localObject3 = localObject2;
               if (localObject2 == null) {
@@ -270,7 +270,7 @@ public class LiteMutiPicViewerActivity
               ((ArrayList)localObject3).add(localDataLineMsgRecord);
               localObject2 = localObject3;
             }
-            else if ((((DLFileInfo)localObject3).jdField_a_of_type_Int == 4) || (((DLFileInfo)localObject3).jdField_a_of_type_Int == 2))
+            else if ((((DLFileInfo)localObject3).b == 4) || (((DLFileInfo)localObject3).b == 2))
             {
               if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
                 if (DataLineMsgSet.isSingle(localDataLineMsgRecord)) {
@@ -284,9 +284,9 @@ public class LiteMutiPicViewerActivity
                 localObject3 = new ArrayList();
               }
               ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
-              i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
+              i1 = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
               localDataLineMsgRecord.fileMsgStatus = 0L;
-              this.app.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
+              this.app.getMessageFacade().d(i1).f(localDataLineMsgRecord.msgId);
               localObject1 = localObject3;
             }
           }
@@ -294,25 +294,25 @@ public class LiteMutiPicViewerActivity
             localDataLineHandler.a((ArrayList)localObject2, true);
           }
           if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-            localDataLineHandler.a((List)localObject1);
+            localDataLineHandler.b((List)localObject1);
           }
           c();
         }
         else
         {
-          FMToastUtil.a(2131694475);
+          FMToastUtil.a(2131892157);
         }
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(true);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle())) {
+      this.a.setPaused(true);
+      if ((this.a.getGroupType() == -2000) && (!this.a.isSingle())) {
         DataLineReportUtil.o(this.app);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335) && (!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isReportPause))
+      if ((this.a.getGroupType() == -2335) && (!this.a.isReportPause))
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
+        localObject1 = this.a;
         ((DataLineMsgSet)localObject1).isReportPause = true;
         if (!((DataLineMsgSet)localObject1).isSingle()) {
           DataLineReportUtil.m(this.app);
@@ -320,18 +320,18 @@ public class LiteMutiPicViewerActivity
           DataLineReportUtil.k(this.app);
         }
       }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.isSingle()) && (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() != -2335))
+      if ((!this.a.isSingle()) && (this.a.getGroupType() != -2335))
       {
-        localDataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupId(), 0L, false);
+        localDataLineHandler.a(this.a.getGroupId(), 0L, false);
       }
       else
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+        localObject1 = this.a.values().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (DataLineMsgRecord)((Iterator)localObject1).next();
           localObject3 = DatalineFilesAdapter.a((DataLineMsgRecord)localObject2);
-          if ((((DLFileInfo)localObject3).jdField_a_of_type_Int == 0) || (((DLFileInfo)localObject3).jdField_a_of_type_Int == 3)) {
+          if ((((DLFileInfo)localObject3).b == 0) || (((DLFileInfo)localObject3).b == 3)) {
             localDataLineHandler.a(((DataLineMsgRecord)localObject2).groupId, ((DataLineMsgRecord)localObject2).sessionid, false);
           }
         }

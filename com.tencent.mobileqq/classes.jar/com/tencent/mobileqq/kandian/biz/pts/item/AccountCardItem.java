@@ -28,8 +28,8 @@ public class AccountCardItem
       return null;
     }
     long l;
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.a != null)) {
-      l = paramAbsBaseArticleInfo.mSocialFeedInfo.a.a;
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)) {
+      l = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
     } else {
       l = 0L;
     }
@@ -44,7 +44,7 @@ public class AccountCardItem
     if (localArticleCommentView != null) {
       localArticleCommentView.a(paramIReadInJoyModel);
     }
-    BindViewHelper.a(paramContainer, paramIReadInJoyModel.a());
+    BindViewHelper.a(paramContainer, paramIReadInJoyModel.k());
     Util.a(paramContainer, paramIReadInJoyModel);
     BindViewHelper.c(paramContainer, paramIReadInJoyModel);
   }
@@ -56,7 +56,7 @@ public class AccountCardItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.AccountCardItem
  * JD-Core Version:    0.7.0.1
  */

@@ -119,17 +119,22 @@ public class PanoramaUtil
   
   public static boolean isPanoramaPhoto(int paramInt)
   {
-    if (!getInstance().isNeedShowPanorama()) {
-      return false;
-    }
-    if (paramInt != 1)
+    if (!getInstance().isNeedShowPanorama())
     {
-      if (paramInt == 2) {
-        return true;
-      }
-      if (paramInt == 3) {}
+      QZLog.i("PanoramaUtil", "isPanoramaPhoto NoNeedShowPanorama");
       return false;
     }
+    if ((paramInt != 1) && (paramInt != 2))
+    {
+      if (paramInt == 3)
+      {
+        QZLog.i("PanoramaUtil", "isPanoramaPhoto IsNormal");
+        return false;
+      }
+      QZLog.i("PanoramaUtil", "isPanoramaPhoto Return");
+      return false;
+    }
+    QZLog.i("PanoramaUtil", "isPanoramaPhoto ReallyPanorama");
     return true;
   }
   
@@ -269,31 +274,38 @@ public class PanoramaUtil
   
   public static void setPanoramaType(LocalMediaInfo paramLocalMediaInfo)
   {
-    if (paramLocalMediaInfo.panoramaPhotoType == 0)
+    if ((paramLocalMediaInfo.panoramaPhotoType == 0) && (getInstance().isNeedShowPanorama()))
     {
-      if (!getInstance().isNeedShowPanorama()) {
-        return;
-      }
       if ((paramLocalMediaInfo.mediaWidth != 0) && (paramLocalMediaInfo.mediaHeight != 0))
       {
         if ((paramLocalMediaInfo.mediaHeight >= 1000) && (paramLocalMediaInfo.mediaWidth / paramLocalMediaInfo.mediaHeight == 2.0F))
         {
-          if (XMPCoreUtil.getInstance().isPanorama(paramLocalMediaInfo.path))
+          boolean bool = XMPCoreUtil.getInstance().isPanorama(paramLocalMediaInfo.path);
+          QZLog.i("PanoramaUtil", "setPanoramaType GetIsPanorama");
+          if (bool)
           {
             paramLocalMediaInfo.panoramaPhotoType = 2;
+            QZLog.i("PanoramaUtil", "setPanoramaType IsPanorama");
             return;
           }
           paramLocalMediaInfo.panoramaPhotoType = 3;
+          QZLog.i("PanoramaUtil", "setPanoramaType IsNotPanorama");
           return;
         }
         if ((paramLocalMediaInfo.mediaHeight >= 512) && (paramLocalMediaInfo.mediaWidth / paramLocalMediaInfo.mediaHeight >= 4.0F))
         {
           paramLocalMediaInfo.panoramaPhotoType = 1;
+          QZLog.i("PanoramaUtil", "setPanoramaType IsPanoramaCylinder");
           return;
         }
+        QZLog.i("PanoramaUtil", "setPanoramaType NormalType");
         paramLocalMediaInfo.panoramaPhotoType = 3;
+        return;
       }
+      QZLog.i("PanoramaUtil", "setPanoramaType LocalMediaInfoFalse");
+      return;
     }
+    QZLog.i("PanoramaUtil", "setPanoramaType NoPanoramaPhoto");
   }
   
   public int computeSampleSize(ImageLoader.Options paramOptions, int paramInt1, int paramInt2)
@@ -505,7 +517,7 @@ public class PanoramaUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.util.PanoramaUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 import mqq.app.api.IRuntimeService;
+import org.json.JSONObject;
 
 @Service(needUin=false, process={""})
 public abstract interface IGamePubAccountMsgService
@@ -32,10 +33,14 @@ public abstract interface IGamePubAccountMsgService
   public abstract void onGameNewMsg(List<MessageRecord> paramList);
   
   public abstract void saveGalleryDataToMsg(Bundle paramBundle);
+  
+  public abstract void showFirstOperationMsg();
+  
+  public abstract void startShowGamePaNoticeMsgByPush(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.IGamePubAccountMsgService
  * JD-Core Version:    0.7.0.1
  */

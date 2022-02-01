@@ -13,12 +13,12 @@ class AioFriendTitleHelper$4
   
   public void run()
   {
-    ((FriendsManager)AioFriendTitleHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(AioFriendTitleHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((FriendsManager)AioFriendTitleHelper.a(this.this$0).d.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(AioFriendTitleHelper.a(this.this$0).ah.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.AioFriendTitleHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -19,22 +19,22 @@ public class NowHongbaoPushManager
     this.a = paramQQAppInterface;
   }
   
-  private boolean a(NowPushMsgList.NowPushMsg paramNowPushMsg)
+  private boolean c(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
     if ((paramNowPushMsg.uint32_version.get() == 0L) && (paramNowPushMsg.uint64_start_time.get() == 0L) && (paramNowPushMsg.uint64_end_time.get() == 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.i("NowHongbaoPushManager", 2, "发送wns日志请求");
       }
-      ((IDynamicNowManager)this.a.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).c();
+      ((IDynamicNowManager)this.a.getManager(QQManagerFactory.NOW_DYNAMIC_MANAGER)).f();
       return true;
     }
     return false;
   }
   
-  private void c(NowPushMsgList.NowPushMsg paramNowPushMsg)
+  private void d(NowPushMsgList.NowPushMsg paramNowPushMsg)
   {
-    if (a(paramNowPushMsg)) {}
+    if (c(paramNowPushMsg)) {}
   }
   
   public void a(NowPushMsgList.NowPushMsg paramNowPushMsg)
@@ -53,7 +53,7 @@ public class NowHongbaoPushManager
     localStringBuilder.append(",version =");
     localStringBuilder.append(paramNowPushMsg.uint32_version.get());
     QLog.i("NowHongbaoPushManager", 1, localStringBuilder.toString());
-    c(paramNowPushMsg);
+    d(paramNowPushMsg);
   }
   
   public void b(NowPushMsgList.NowPushMsg paramNowPushMsg)
@@ -72,14 +72,14 @@ public class NowHongbaoPushManager
     localStringBuilder.append(",version =");
     localStringBuilder.append(paramNowPushMsg.uint32_version.get());
     QLog.i("NowHongbaoPushManager", 1, localStringBuilder.toString());
-    c(paramNowPushMsg);
+    d(paramNowPushMsg);
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.NowHongbaoPushManager
  * JD-Core Version:    0.7.0.1
  */

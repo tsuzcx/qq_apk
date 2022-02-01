@@ -10,24 +10,24 @@ import org.jetbrains.annotations.NotNull;
 public final class CECMShowOffscreenEngine$Companion$genOnScreenView$view$1
   implements OnApolloViewListener
 {
-  public void onNotifyLongTouch(@NotNull String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "name");
+    QLog.i("[cmshow][CECMShowOffscreenEngine]", 1, "CEOffScreenEngine onScreenView onSurfaceReady");
   }
   
-  public void onNotifyStatusChanged(int paramInt, @NotNull String paramString)
+  public void a(int paramInt, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "apolloId");
   }
   
-  public void onSurfaceReady(int paramInt1, int paramInt2)
+  public void a(@NotNull String paramString)
   {
-    QLog.i("[cmshow][CECMShowOffscreenEngine]", 1, "CEOffScreenEngine onScreenView onSurfaceReady");
+    Intrinsics.checkParameterIsNotNull(paramString, "name");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CECMShowOffscreenEngine.Companion.genOnScreenView.view.1
  * JD-Core Version:    0.7.0.1
  */

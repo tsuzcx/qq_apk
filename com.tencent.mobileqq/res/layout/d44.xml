@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/5o" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/5t" android:background="@drawable/iw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/5u" android:background="@drawable/iw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/5t" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/5n" android:background="@drawable/ivb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/5u">
+        <TextView android:textSize="14.0dip" android:textColor="@android:color/white" android:ellipsize="end" android:gravity="center" android:id="@id/5p" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="新增扩列贴纸" android:singleLine="true" android:layout_centerVertical="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/5v" android:background="@drawable/iw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-4.0dip" android:layout_toRightOf="@id/5n" android:layout_centerVertical="true" android:rotation="90.0" />
+    <ImageView android:id="@id/5s" android:background="@drawable/iw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_below="@id/5n" android:rotation="180.0" />
+    <ImageView android:id="@id/5w" android:background="@drawable/iw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_below="@id/5n" android:layout_alignRight="@id/5n" android:rotation="180.0" />
+</RelativeLayout>

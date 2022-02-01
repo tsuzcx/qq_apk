@@ -12,19 +12,19 @@ class StructMsgItemVideo$3
   
   public void run()
   {
-    String str = CGILoader.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.ab, StructMsgItemVideo.a(this.this$0));
-    this.this$0.a.obtainMessage().obj = this.jdField_a_of_type_AndroidViewView;
+    String str = CGILoader.a(this.a, this.this$0.ap, StructMsgItemVideo.a(this.this$0));
+    this.this$0.ax.obtainMessage().obj = this.b;
     if (!TextUtils.isEmpty(str))
     {
-      StructMsgItemVideo.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, str);
+      StructMsgItemVideo.a(this.this$0, this.a, str);
       return;
     }
-    StructMsgItemVideo.a(this.this$0, this.jdField_a_of_type_AndroidContentContext);
+    StructMsgItemVideo.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemVideo.3
  * JD-Core Version:    0.7.0.1
  */

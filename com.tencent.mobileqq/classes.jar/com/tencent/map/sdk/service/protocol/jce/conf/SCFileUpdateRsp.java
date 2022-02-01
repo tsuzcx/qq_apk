@@ -48,7 +48,7 @@ public final class SCFileUpdateRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.conf.SCFileUpdateRsp
  * JD-Core Version:    0.7.0.1
  */

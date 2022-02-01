@@ -8,28 +8,21 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/ResAnim;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "iAnim", "Lcom/tencent/xaction/api/IAnim;", "isAnimating", "", "isPlay", "()Z", "setPlay", "(Z)V", "doFrameUpdate", "", "animTime", "", "end", "play", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/ResAnim;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "iAnim", "Lcom/tencent/xaction/api/IAnim;", "isAnimating", "", "playCtrl", "", "getPlayCtrl", "()I", "setPlayCtrl", "(I)V", "doFrameUpdate", "", "animTime", "", "end", "play", "preStart", "view", "Landroid/view/View;", "Companion", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class ResAnim
   extends BaseAnim
 {
-  private IAnim iAnim;
+  public static final ResAnim.Companion Companion = new ResAnim.Companion(null);
+  public static final int DEFAULT = 0;
+  public static final int PLAY = 1;
+  public static final int STOP = 2;
+  private transient IAnim iAnim;
   private transient boolean isAnimating;
-  private boolean isPlay = true;
+  private int playCtrl;
   
   public void doFrameUpdate(float paramFloat)
   {
-    if (!this.isPlay) {
-      return;
-    }
-    if (!this.isAnimating)
-    {
-      localIAnim = this.iAnim;
-      if (localIAnim != null) {
-        localIAnim.play();
-      }
-      this.isAnimating = true;
-    }
     IAnim localIAnim = this.iAnim;
     if (localIAnim != null) {
       localIAnim.doFrame((paramFloat * getDuration()));
@@ -38,26 +31,42 @@ public final class ResAnim
   
   public void end()
   {
-    IAnim localIAnim = this.iAnim;
-    if (localIAnim != null) {
-      localIAnim.end();
+    if (this.playCtrl == 0)
+    {
+      IAnim localIAnim = this.iAnim;
+      if (localIAnim != null) {
+        localIAnim.end();
+      }
+      this.isAnimating = false;
     }
-    this.isAnimating = false;
   }
   
-  public final boolean isPlay()
+  public final int getPlayCtrl()
   {
-    return this.isPlay;
+    return this.playCtrl;
   }
   
   public void play()
   {
-    if (this.isPlay)
+    int i = this.playCtrl;
+    IAnim localIAnim;
+    if ((i != 1) && (i != 0))
     {
-      IAnim localIAnim = this.iAnim;
+      if (i == 2)
+      {
+        localIAnim = this.iAnim;
+        if (localIAnim != null) {
+          localIAnim.end();
+        }
+      }
+    }
+    else
+    {
+      localIAnim = this.iAnim;
       if (localIAnim != null) {
         localIAnim.play();
       }
+      this.isAnimating = true;
     }
   }
   
@@ -75,14 +84,14 @@ public final class ResAnim
     }
   }
   
-  public final void setPlay(boolean paramBoolean)
+  public final void setPlayCtrl(int paramInt)
   {
-    this.isPlay = paramBoolean;
+    this.playCtrl = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.anim.ResAnim
  * JD-Core Version:    0.7.0.1
  */

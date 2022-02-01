@@ -7,36 +7,30 @@ import trpc.qq_vgame.common.AvGameCommon.QuestionFeedbackInfo;
 
 public class AVRes
 {
-  public int a;
-  public String a;
+  public String a = "";
   public String b = "";
-  public String c = "";
-  
-  public AVRes()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-  }
+  public int c = 0;
+  public String d = "";
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   protected void a(AVRes paramAVRes)
   {
-    this.jdField_a_of_type_JavaLangString = paramAVRes.jdField_a_of_type_JavaLangString;
+    this.a = paramAVRes.a;
     this.b = paramAVRes.b;
-    this.jdField_a_of_type_Int = paramAVRes.jdField_a_of_type_Int;
     this.c = paramAVRes.c;
+    this.d = paramAVRes.d;
   }
   
   public void a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
+    this.c = paramInt;
+    this.d = paramString3;
   }
   
   public void a(AvGameCommon.QuestionFeedbackInfo paramQuestionFeedbackInfo)
@@ -44,10 +38,10 @@ public class AVRes
     if (paramQuestionFeedbackInfo == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramQuestionFeedbackInfo.content.get();
-    this.jdField_a_of_type_Int = paramQuestionFeedbackInfo.duration.get();
+    this.a = paramQuestionFeedbackInfo.content.get();
+    this.c = paramQuestionFeedbackInfo.duration.get();
     this.b = paramQuestionFeedbackInfo.content_md5.get();
-    this.c = "";
+    this.d = "";
   }
   
   public String b()
@@ -60,11 +54,11 @@ public class AVRes
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
     localStringBuilder.append(this.b);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("s");
     localStringBuilder.append("]");
     return localStringBuilder.toString();

@@ -2,22 +2,17 @@ package cooperation.vip.qqbanner.data;
 
 public final class VasADBannerData
 {
-  public int a;
-  public CountDownData a;
-  public CountDownImmersionData a;
-  public ImmersionData a;
-  public String a;
-  public int b;
+  public int a = 0;
   public String b;
-  public String c;
+  public int c;
   public String d;
   public String e;
   public String f;
-  
-  public VasADBannerData()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public String g;
+  public String h;
+  public CountDownImmersionData i;
+  public CountDownData j;
+  public ImmersionData k;
   
   public static VasADBannerData a()
   {
@@ -26,66 +21,66 @@ public final class VasADBannerData
   
   public VasADBannerData a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     return this;
   }
   
   public VasADBannerData a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public VasADBannerData b()
   {
     VasADBannerData localVasADBannerData = new VasADBannerData();
-    localVasADBannerData.f = this.f;
-    localVasADBannerData.e = this.e;
-    localVasADBannerData.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localVasADBannerData.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localVasADBannerData.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localVasADBannerData.h = this.h;
+    localVasADBannerData.g = this.g;
     localVasADBannerData.d = this.d;
-    localVasADBannerData.jdField_a_of_type_CooperationVipQqbannerDataCountDownImmersionData = this.jdField_a_of_type_CooperationVipQqbannerDataCountDownImmersionData;
-    localVasADBannerData.jdField_a_of_type_CooperationVipQqbannerDataCountDownData = this.jdField_a_of_type_CooperationVipQqbannerDataCountDownData;
+    localVasADBannerData.b = this.b;
+    localVasADBannerData.a = this.a;
+    localVasADBannerData.f = this.f;
+    localVasADBannerData.i = this.i;
+    localVasADBannerData.j = this.j;
+    localVasADBannerData.e = this.e;
+    localVasADBannerData.k = this.k;
     localVasADBannerData.c = this.c;
-    localVasADBannerData.jdField_a_of_type_CooperationVipQqbannerDataImmersionData = this.jdField_a_of_type_CooperationVipQqbannerDataImmersionData;
-    localVasADBannerData.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
     return localVasADBannerData;
   }
   
   public VasADBannerData b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
     return this;
   }
   
   public VasADBannerData b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
     return this;
   }
   
   public VasADBannerData c(String paramString)
   {
-    this.c = paramString;
+    this.e = paramString;
     return this;
   }
   
   public VasADBannerData d(String paramString)
   {
-    this.d = paramString;
+    this.f = paramString;
     return this;
   }
   
   public VasADBannerData e(String paramString)
   {
-    this.e = paramString;
+    this.g = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.data.VasADBannerData
  * JD-Core Version:    0.7.0.1
  */

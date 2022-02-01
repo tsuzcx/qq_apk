@@ -33,7 +33,7 @@ public class InterstitialAdPlugin
   private static final String ERRMSG = "errMsg";
   public static final String EVENT_INTERSTITIAL_CLOSE = "onInterstitialAdClose";
   public static final String KEY_REF_ID = "biz_src_miniapp";
-  public static final HashMap<Integer, String> S_CodeMsg_Map = MiniSDKConst.AdConst.CODE_MSG_MAP;
+  public static final HashMap<Integer, String> S_CODE_MSG_MAP = MiniSDKConst.AdConst.CODE_MSG_MAP;
   private static final String TAG = "InterstitialAdPlugin";
   private Map<Integer, InterstitialAdPlugin.MiniInterstitialAd> mInterstitialMap = new HashMap();
   
@@ -188,7 +188,7 @@ public class InterstitialAdPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InterstitialAdPlugin
  * JD-Core Version:    0.7.0.1
  */

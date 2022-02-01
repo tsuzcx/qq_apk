@@ -37,7 +37,7 @@ public class MsgStructingImpl
       paramMessageRecord = ((StructMsgForImageShare)paramMessageRecord.structingMsg).getFirstImageElement();
       if (paramMessageRecord != null)
       {
-        paramMessageRecord = paramMessageRecord.a;
+        paramMessageRecord = paramMessageRecord.aF;
         if (paramMessageRecord != null) {
           return paramMessageRecord;
         }
@@ -59,7 +59,7 @@ public class MsgStructingImpl
       StructMsgItemImage localStructMsgItemImage = ((StructMsgForImageShare)paramMessageRecord.structingMsg).getFirstImageElement();
       if (localStructMsgItemImage != null)
       {
-        localStructMsgItemImage.a = paramMessageForPic;
+        localStructMsgItemImage.aF = paramMessageForPic;
         ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(paramMessageForPic.frienduin, paramMessageForPic.istroop, paramMessageForPic.uniseq, paramMessageRecord.structingMsg.getBytes());
       }
     }
@@ -73,13 +73,13 @@ public class MsgStructingImpl
       StructMsgItemImage localStructMsgItemImage = ((StructMsgForImageShare)localMessageForStructing.structingMsg).getFirstImageElement();
       if (localStructMsgItemImage != null)
       {
-        localStructMsgItemImage.ae = paramString1;
-        localStructMsgItemImage.ad = paramString2;
-        localStructMsgItemImage.d = paramLong;
+        localStructMsgItemImage.aw = paramString1;
+        localStructMsgItemImage.av = paramString2;
+        localStructMsgItemImage.aC = paramLong;
         if (paramLong1 != null) {
-          localStructMsgItemImage.c = paramLong1.longValue();
+          localStructMsgItemImage.aB = paramLong1.longValue();
         }
-        localStructMsgItemImage.e = paramMessageRecord.time;
+        localStructMsgItemImage.aD = paramMessageRecord.time;
         localMessageForStructing.msgData = localMessageForStructing.structingMsg.getBytes();
         ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(paramString3, paramInt, paramMessageRecord.uniseq, localMessageForStructing.msgData);
       }
@@ -95,19 +95,19 @@ public class MsgStructingImpl
       StructMsgItemImage localStructMsgItemImage = localStructMsgForImageShare.getFirstImageElement();
       if (localStructMsgItemImage != null)
       {
-        localStructMsgItemImage.ae = paramString1;
-        localStructMsgItemImage.ad = paramString2;
+        localStructMsgItemImage.aw = paramString1;
+        localStructMsgItemImage.av = paramString2;
         if (paramLong1 != null) {
-          localStructMsgItemImage.c = paramLong1.longValue();
+          localStructMsgItemImage.aB = paramLong1.longValue();
         }
-        localStructMsgItemImage.e = paramMessageRecord.time;
-        localStructMsgItemImage.d = paramLong;
+        localStructMsgItemImage.aD = paramMessageRecord.time;
+        localStructMsgItemImage.aC = paramLong;
         if (AIOGallerySceneWithBusiness.b(localStructMsgForImageShare.mMsgActionData))
         {
-          paramString1 = localStructMsgItemImage.ac;
-          localStructMsgItemImage.ac = "";
+          paramString1 = localStructMsgItemImage.au;
+          localStructMsgItemImage.au = "";
           paramMessageRecord = localMessageForStructing.structingMsg.getXmlBytes();
-          localStructMsgItemImage.ac = paramString1;
+          localStructMsgItemImage.au = paramString1;
         }
         else
         {
@@ -127,7 +127,7 @@ public class MsgStructingImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.api.impl.MsgStructingImpl
  * JD-Core Version:    0.7.0.1
  */

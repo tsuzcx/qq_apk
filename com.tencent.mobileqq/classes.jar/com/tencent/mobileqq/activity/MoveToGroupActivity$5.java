@@ -15,23 +15,23 @@ class MoveToGroupActivity$5
     {
       paramMessage = new StringBuilder();
       paramMessage.append("mWaitingDialogControlHandler operationFinished = ");
-      paramMessage.append(MoveToGroupActivity.b(this.a));
+      paramMessage.append(MoveToGroupActivity.g(this.a));
       QLog.d("MoveToGroupActivity", 2, paramMessage.toString());
     }
     MoveToGroupActivity.c(this.a, true);
-    if (MoveToGroupActivity.b(this.a))
+    if (MoveToGroupActivity.g(this.a))
     {
       this.a.a(true);
       return;
     }
-    paramMessage = MoveToGroupActivity.a(this.a).obtainMessage(0);
-    MoveToGroupActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
+    paramMessage = MoveToGroupActivity.h(this.a).obtainMessage(0);
+    MoveToGroupActivity.h(this.a).sendMessageDelayed(paramMessage, 60000L);
     MoveToGroupActivity.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MoveToGroupActivity.5
  * JD-Core Version:    0.7.0.1
  */

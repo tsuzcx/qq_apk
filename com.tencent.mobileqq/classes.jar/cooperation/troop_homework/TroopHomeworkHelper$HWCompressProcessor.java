@@ -6,18 +6,18 @@ import com.tencent.richmedia.videocompress.VideoConverter.Processor;
 public class TroopHomeworkHelper$HWCompressProcessor
   implements VideoConverter.Processor
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
+  final String a;
   final int b;
+  final int c;
   
   TroopHomeworkHelper$HWCompressProcessor(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramString;
+    this.b = paramInt1;
     if (paramInt2 > 0) {
-      this.b = paramInt2;
+      this.c = paramInt2;
     } else {
-      this.b = 30;
+      this.c = 30;
     }
     if (paramString != null) {
       return;
@@ -29,9 +29,9 @@ public class TroopHomeworkHelper$HWCompressProcessor
   public com.tencent.richmedia.videocompress.VideoConverterConfig getEncodeConfig(int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: new 35	com/tencent/richmedia/videocompress/VideoConverterConfig
+    //   0: new 36	com/tencent/richmedia/videocompress/VideoConverterConfig
     //   3: dup
-    //   4: invokespecial 36	com/tencent/richmedia/videocompress/VideoConverterConfig:<init>	()V
+    //   4: invokespecial 37	com/tencent/richmedia/videocompress/VideoConverterConfig:<init>	()V
     //   7: astore 11
     //   9: iload_1
     //   10: istore 8
@@ -42,26 +42,26 @@ public class TroopHomeworkHelper$HWCompressProcessor
     //   18: istore 8
     //   20: aload 11
     //   22: aload_0
-    //   23: getfield 17	cooperation/troop_homework/TroopHomeworkHelper$HWCompressProcessor:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   26: putfield 39	com/tencent/richmedia/videocompress/VideoConverterConfig:output	Ljava/lang/String;
-    //   29: ldc 41
-    //   31: invokestatic 47	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   34: checkcast 41	com/tencent/mobileqq/dpc/api/IDPCApi
-    //   37: getstatic 53	com/tencent/mobileqq/dpc/enumname/DPCNames:lvcc	Lcom/tencent/mobileqq/dpc/enumname/DPCNames;
-    //   40: invokevirtual 57	com/tencent/mobileqq/dpc/enumname/DPCNames:name	()Ljava/lang/String;
-    //   43: ldc 59
-    //   45: invokeinterface 63 3 0
+    //   23: getfield 18	cooperation/troop_homework/TroopHomeworkHelper$HWCompressProcessor:a	Ljava/lang/String;
+    //   26: putfield 40	com/tencent/richmedia/videocompress/VideoConverterConfig:output	Ljava/lang/String;
+    //   29: ldc 42
+    //   31: invokestatic 48	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   34: checkcast 42	com/tencent/mobileqq/dpc/api/IDPCApi
+    //   37: getstatic 54	com/tencent/mobileqq/dpc/enumname/DPCNames:lvcc	Lcom/tencent/mobileqq/dpc/enumname/DPCNames;
+    //   40: invokevirtual 58	com/tencent/mobileqq/dpc/enumname/DPCNames:name	()Ljava/lang/String;
+    //   43: ldc 60
+    //   45: invokeinterface 64 3 0
     //   50: astore 10
     //   52: iconst_0
     //   53: istore 9
     //   55: aload 10
     //   57: ifnull +164 -> 221
     //   60: aload 10
-    //   62: invokevirtual 69	java/lang/String:length	()I
+    //   62: invokevirtual 70	java/lang/String:length	()I
     //   65: ifle +156 -> 221
     //   68: aload 10
-    //   70: ldc 71
-    //   72: invokevirtual 75	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   70: ldc 72
+    //   72: invokevirtual 76	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   75: astore 10
     //   77: aload 10
     //   79: ifnull +142 -> 221
@@ -72,26 +72,26 @@ public class TroopHomeworkHelper$HWCompressProcessor
     //   89: aload 10
     //   91: iconst_1
     //   92: aaload
-    //   93: invokestatic 81	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   96: invokevirtual 84	java/lang/Integer:intValue	()I
+    //   93: invokestatic 82	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   96: invokevirtual 85	java/lang/Integer:intValue	()I
     //   99: istore_3
     //   100: aload 10
     //   102: iconst_2
     //   103: aaload
-    //   104: invokestatic 81	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   107: invokevirtual 84	java/lang/Integer:intValue	()I
+    //   104: invokestatic 82	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   107: invokevirtual 85	java/lang/Integer:intValue	()I
     //   110: istore_2
     //   111: aload 10
     //   113: iconst_3
     //   114: aaload
-    //   115: invokestatic 81	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   118: invokevirtual 84	java/lang/Integer:intValue	()I
+    //   115: invokestatic 82	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   118: invokevirtual 85	java/lang/Integer:intValue	()I
     //   121: istore_1
     //   122: aload 10
     //   124: iconst_4
     //   125: aaload
-    //   126: invokestatic 81	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   129: invokevirtual 84	java/lang/Integer:intValue	()I
+    //   126: invokestatic 82	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   129: invokevirtual 85	java/lang/Integer:intValue	()I
     //   132: istore 4
     //   134: goto +97 -> 231
     //   137: astore 10
@@ -125,13 +125,13 @@ public class TroopHomeworkHelper$HWCompressProcessor
     //   185: istore_2
     //   186: iload 7
     //   188: istore_1
-    //   189: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   189: invokestatic 91	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   192: ifeq +39 -> 231
-    //   195: ldc 92
+    //   195: ldc 93
     //   197: iconst_2
-    //   198: ldc 94
+    //   198: ldc 95
     //   200: aload 10
-    //   202: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   202: invokestatic 99	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   205: iload 9
     //   207: istore 4
     //   209: iload 5
@@ -179,23 +179,23 @@ public class TroopHomeworkHelper$HWCompressProcessor
     //   279: iload 8
     //   281: i2f
     //   282: fdiv
-    //   283: putfield 102	com/tencent/richmedia/videocompress/VideoConverterConfig:scaleRate	F
+    //   283: putfield 103	com/tencent/richmedia/videocompress/VideoConverterConfig:scaleRate	F
     //   286: aload 11
     //   288: aload_0
-    //   289: getfield 19	cooperation/troop_homework/TroopHomeworkHelper$HWCompressProcessor:jdField_a_of_type_Int	I
+    //   289: getfield 20	cooperation/troop_homework/TroopHomeworkHelper$HWCompressProcessor:b	I
     //   292: i2f
     //   293: aload 11
-    //   295: getfield 102	com/tencent/richmedia/videocompress/VideoConverterConfig:scaleRate	F
+    //   295: getfield 103	com/tencent/richmedia/videocompress/VideoConverterConfig:scaleRate	F
     //   298: fmul
     //   299: aload 11
-    //   301: getfield 102	com/tencent/richmedia/videocompress/VideoConverterConfig:scaleRate	F
+    //   301: getfield 103	com/tencent/richmedia/videocompress/VideoConverterConfig:scaleRate	F
     //   304: fmul
-    //   305: ldc 103
+    //   305: ldc 104
     //   307: fadd
     //   308: f2i
-    //   309: putfield 106	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
+    //   309: putfield 107	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
     //   312: aload 11
-    //   314: getfield 106	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
+    //   314: getfield 107	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
     //   317: istore 4
     //   319: iload_2
     //   320: sipush 1024
@@ -206,10 +206,10 @@ public class TroopHomeworkHelper$HWCompressProcessor
     //   328: if_icmple +12 -> 340
     //   331: aload 11
     //   333: iload_2
-    //   334: putfield 106	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
+    //   334: putfield 107	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
     //   337: goto +26 -> 363
     //   340: aload 11
-    //   342: getfield 106	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
+    //   342: getfield 107	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
     //   345: istore_2
     //   346: iload_3
     //   347: sipush 1024
@@ -220,9 +220,9 @@ public class TroopHomeworkHelper$HWCompressProcessor
     //   354: if_icmpge +9 -> 363
     //   357: aload 11
     //   359: iload_3
-    //   360: putfield 106	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
+    //   360: putfield 107	com/tencent/richmedia/videocompress/VideoConverterConfig:videoBitRate	I
     //   363: aload_0
-    //   364: getfield 21	cooperation/troop_homework/TroopHomeworkHelper$HWCompressProcessor:b	I
+    //   364: getfield 22	cooperation/troop_homework/TroopHomeworkHelper$HWCompressProcessor:c	I
     //   367: istore_2
     //   368: iload_2
     //   369: iload_1
@@ -232,27 +232,27 @@ public class TroopHomeworkHelper$HWCompressProcessor
     //   375: goto +3 -> 378
     //   378: aload 11
     //   380: iload_1
-    //   381: putfield 109	com/tencent/richmedia/videocompress/VideoConverterConfig:videoFrameRate	I
-    //   384: invokestatic 90	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   381: putfield 110	com/tencent/richmedia/videocompress/VideoConverterConfig:videoFrameRate	I
+    //   384: invokestatic 91	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   387: ifeq +42 -> 429
-    //   390: new 111	java/lang/StringBuilder
+    //   390: new 112	java/lang/StringBuilder
     //   393: dup
-    //   394: invokespecial 112	java/lang/StringBuilder:<init>	()V
+    //   394: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   397: astore 10
     //   399: aload 10
-    //   401: ldc 114
-    //   403: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: ldc 115
+    //   403: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   406: pop
     //   407: aload 10
     //   409: aload 11
-    //   411: getfield 122	com/tencent/richmedia/videocompress/VideoConverterConfig:setRotation	Z
-    //   414: invokevirtual 125	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   411: getfield 123	com/tencent/richmedia/videocompress/VideoConverterConfig:setRotation	Z
+    //   414: invokevirtual 126	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   417: pop
-    //   418: ldc 92
+    //   418: ldc 93
     //   420: iconst_2
     //   421: aload 10
-    //   423: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   426: invokestatic 132	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   423: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   426: invokestatic 133	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   429: aload 11
     //   431: areturn
     // Local variable table:
@@ -311,7 +311,7 @@ public class TroopHomeworkHelper$HWCompressProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.TroopHomeworkHelper.HWCompressProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -10,27 +10,27 @@ import com.tencent.qphone.base.util.QLog;
 public class LSRecordAnimations$ChangeBgAndScaleAnimation
   extends ScaleAnimation
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
-  private LSRecordAnimations.TrackInfo jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  private GradientDrawable a;
+  private int b;
+  private int c;
+  private float d;
+  private float e;
+  private LSRecordAnimations.TrackInfo f;
+  private Animation.AnimationListener g;
   
   public LSRecordAnimations$ChangeBgAndScaleAnimation(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6, LSRecordAnimations.TrackInfo paramTrackInfo)
   {
     super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = (paramFloat2 - paramFloat1);
-    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo = paramTrackInfo;
+    this.d = paramFloat1;
+    this.e = (paramFloat2 - paramFloat1);
+    this.f = paramTrackInfo;
   }
   
   public void a(GradientDrawable paramGradientDrawable, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = paramGradientDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramGradientDrawable;
+    this.b = paramInt1;
+    this.c = paramInt2;
     if (QLog.isDevelopLevel())
     {
       paramGradientDrawable = new StringBuilder();
@@ -45,35 +45,35 @@ public class LSRecordAnimations$ChangeBgAndScaleAnimation
   public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation = this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    paramTransformation = this.g;
     if ((paramTransformation != null) && ((paramTransformation instanceof LSRecordAnimations.LSRecordAnimationCallback))) {
       ((LSRecordAnimations.LSRecordAnimationCallback)paramTransformation).a(this, paramFloat);
     }
-    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Float = (this.jdField_a_of_type_Float + this.jdField_b_of_type_Float * paramFloat);
+    this.f.a = (this.d + this.e * paramFloat);
     if (QLog.isDevelopLevel())
     {
       paramTransformation = new StringBuilder();
       paramTransformation.append("LS applyTransformation: ");
       paramTransformation.append(paramFloat);
       paramTransformation.append(" F: ");
-      paramTransformation.append(this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Float);
+      paramTransformation.append(this.f.a);
       QLog.d("LsRecord", 4, paramTransformation.toString());
     }
-    paramTransformation = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+    paramTransformation = this.a;
     if (paramTransformation != null)
     {
-      int i = this.jdField_b_of_type_Int;
+      int i = this.c;
       if (paramFloat < 1.0F)
       {
-        i = Color.argb((int)(Color.alpha(this.jdField_a_of_type_Int) + (Color.alpha(this.jdField_b_of_type_Int) - Color.alpha(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.red(this.jdField_a_of_type_Int) + (Color.red(this.jdField_b_of_type_Int) - Color.red(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.green(this.jdField_a_of_type_Int) + (Color.green(this.jdField_b_of_type_Int) - Color.green(this.jdField_a_of_type_Int)) * paramFloat), (int)(Color.blue(this.jdField_a_of_type_Int) + (Color.blue(this.jdField_b_of_type_Int) - Color.blue(this.jdField_a_of_type_Int)) * paramFloat));
-        this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(i);
+        i = Color.argb((int)(Color.alpha(this.b) + (Color.alpha(this.c) - Color.alpha(this.b)) * paramFloat), (int)(Color.red(this.b) + (Color.red(this.c) - Color.red(this.b)) * paramFloat), (int)(Color.green(this.b) + (Color.green(this.c) - Color.green(this.b)) * paramFloat), (int)(Color.blue(this.b) + (Color.blue(this.c) - Color.blue(this.b)) * paramFloat));
+        this.a.setColor(i);
       }
       else
       {
         paramTransformation.setColor(i);
-        this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = null;
+        this.a = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Int = i;
+      this.f.b = i;
     }
     if (QLog.isDevelopLevel())
     {
@@ -81,7 +81,7 @@ public class LSRecordAnimations$ChangeBgAndScaleAnimation
       paramTransformation.append("LS applyTransformation: ");
       paramTransformation.append(paramFloat);
       paramTransformation.append(" CLR: ");
-      paramTransformation.append(this.jdField_a_of_type_ComTencentMobileqqPttLSRecordAnimations$TrackInfo.jdField_a_of_type_Int);
+      paramTransformation.append(this.f.b);
       QLog.d("LsRecord", 4, paramTransformation.toString());
     }
   }
@@ -89,12 +89,12 @@ public class LSRecordAnimations$ChangeBgAndScaleAnimation
   public void setAnimationListener(Animation.AnimationListener paramAnimationListener)
   {
     super.setAnimationListener(paramAnimationListener);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = paramAnimationListener;
+    this.g = paramAnimationListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordAnimations.ChangeBgAndScaleAnimation
  * JD-Core Version:    0.7.0.1
  */

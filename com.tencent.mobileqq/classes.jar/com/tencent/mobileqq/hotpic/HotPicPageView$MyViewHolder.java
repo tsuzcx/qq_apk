@@ -11,17 +11,17 @@ class HotPicPageView$MyViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener, View.OnLongClickListener
 {
-  OnHolderItemClickListener a;
-  ImageView d;
+  OnHolderItemClickListener p;
+  ImageView q;
   
   public HotPicPageView$MyViewHolder(HotPicPageView paramHotPicPageView, View paramView, OnHolderItemClickListener paramOnHolderItemClickListener)
   {
     super(paramView);
     if (paramOnHolderItemClickListener != null)
     {
-      this.a = paramOnHolderItemClickListener;
-      this.d = ((ImageView)paramView.findViewById(2131368303));
-      this.d.setTag("HotPicControlTag");
+      this.p = paramOnHolderItemClickListener;
+      this.q = ((ImageView)paramView.findViewById(2131435176));
+      this.q.setTag("HotPicControlTag");
       this.itemView.setOnClickListener(this);
       this.itemView.setOnLongClickListener(this);
       this.itemView.setOnTouchListener(paramOnHolderItemClickListener);
@@ -30,7 +30,7 @@ class HotPicPageView$MyViewHolder
   
   public void onClick(View paramView)
   {
-    OnHolderItemClickListener localOnHolderItemClickListener = this.a;
+    OnHolderItemClickListener localOnHolderItemClickListener = this.p;
     if (localOnHolderItemClickListener != null) {
       localOnHolderItemClickListener.a(paramView, getPosition());
     }
@@ -39,7 +39,7 @@ class HotPicPageView$MyViewHolder
   
   public boolean onLongClick(View paramView)
   {
-    OnHolderItemClickListener localOnHolderItemClickListener = this.a;
+    OnHolderItemClickListener localOnHolderItemClickListener = this.p;
     if (localOnHolderItemClickListener != null)
     {
       localOnHolderItemClickListener.b(paramView, getPosition());
@@ -50,7 +50,7 @@ class HotPicPageView$MyViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

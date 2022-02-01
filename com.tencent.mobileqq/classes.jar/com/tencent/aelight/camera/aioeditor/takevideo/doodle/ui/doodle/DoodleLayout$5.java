@@ -12,19 +12,19 @@ class DoodleLayout$5
   
   public void a(float paramFloat)
   {
-    if (this.a.a() != null)
+    if (this.a.getShapeLayer() != null)
     {
-      this.a.b(paramFloat);
-      this.a.s();
+      this.a.c(paramFloat);
+      this.a.w();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.a.a() != null)
+    if (this.a.getShapeLayer() != null)
     {
-      this.a.b(paramInt);
-      this.a.s();
+      this.a.d(paramInt);
+      this.a.w();
     }
   }
   
@@ -36,14 +36,14 @@ class DoodleLayout$5
   public void b()
   {
     DoodleLayout.a(this.a, 0);
-    if (!this.a.a.b()) {
-      this.a.a.d();
+    if (!this.a.v.f()) {
+      this.a.v.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.5
  * JD-Core Version:    0.7.0.1
  */

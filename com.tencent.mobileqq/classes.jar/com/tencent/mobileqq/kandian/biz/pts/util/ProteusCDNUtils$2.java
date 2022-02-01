@@ -34,7 +34,7 @@ final class ProteusCDNUtils$2
       QLog.i("ProteusCDNUtils", 1, ((StringBuilder)localObject1).toString());
       return;
     }
-    localObject1 = BidDownloader.a((String)localObject2);
+    localObject1 = BidDownloader.d((String)localObject2);
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("[unCompressOfflineFile], fileFormat = ");
     ((StringBuilder)localObject3).append((String)localObject1);
@@ -84,7 +84,7 @@ final class ProteusCDNUtils$2
     }
     if (i == 0)
     {
-      localObject3 = OfflineEnvHelper.a(this.a);
+      localObject3 = OfflineEnvHelper.b(this.a);
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append((String)localObject3);
       ((StringBuilder)localObject4).append(this.a);
@@ -124,7 +124,7 @@ final class ProteusCDNUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.ProteusCDNUtils.2
  * JD-Core Version:    0.7.0.1
  */

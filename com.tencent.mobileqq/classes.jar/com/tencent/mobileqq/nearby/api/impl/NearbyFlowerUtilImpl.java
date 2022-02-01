@@ -21,12 +21,12 @@ public class NearbyFlowerUtilImpl
   
   public boolean checkPackageValid(String paramString)
   {
-    return NearbyFlowerUtil.a(paramString);
+    return NearbyFlowerUtil.c(paramString);
   }
   
   public List<String> getAnimationFrames(String paramString)
   {
-    return NearbyFlowerUtil.a(paramString);
+    return NearbyFlowerUtil.d(paramString);
   }
   
   public String getDownloadUrl(Object paramObject)
@@ -41,7 +41,7 @@ public class NearbyFlowerUtilImpl
   
   public int getFlowerCount(Object paramObject)
   {
-    return NearbyFlowerUtil.a((MessageForStructing)paramObject);
+    return NearbyFlowerUtil.b((MessageForStructing)paramObject);
   }
   
   public String getFlowerMsgVersion(Object paramObject)
@@ -56,17 +56,17 @@ public class NearbyFlowerUtilImpl
   
   public int[] getGlamourLevelColors(Context paramContext)
   {
-    return NearbyFlowerUtil.a(paramContext);
+    return NearbyFlowerUtil.b(paramContext);
   }
   
   public String getPackageDownloadPath(String paramString)
   {
-    return NearbyFlowerUtil.b(paramString);
+    return NearbyFlowerUtil.f(paramString);
   }
   
   public String getPackageStoreFolder(String paramString)
   {
-    return NearbyFlowerUtil.a(paramString);
+    return NearbyFlowerUtil.e(paramString);
   }
   
   public String getSummaryText(Object paramObject)
@@ -76,7 +76,7 @@ public class NearbyFlowerUtilImpl
   
   public int getTitleBarHeight(Context paramContext)
   {
-    return NearbyFlowerUtil.a(paramContext);
+    return NearbyFlowerUtil.c(paramContext);
   }
   
   public boolean isNearbyFlowerMsg(MessageRecord paramMessageRecord)
@@ -86,7 +86,7 @@ public class NearbyFlowerUtilImpl
   
   public Object loadActionData(String paramString)
   {
-    return NearbyFlowerUtil.a(paramString);
+    return NearbyFlowerUtil.g(paramString);
   }
   
   public void setGlamourIcon(String paramString)
@@ -101,7 +101,7 @@ public class NearbyFlowerUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.NearbyFlowerUtilImpl
  * JD-Core Version:    0.7.0.1
  */

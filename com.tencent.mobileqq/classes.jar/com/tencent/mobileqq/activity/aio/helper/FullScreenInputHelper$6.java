@@ -1,28 +1,27 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import android.content.ClipboardManager;
-import com.tencent.widget.XEditTextEx.OnWindowFocusChangedListener;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.copyprompt.CopyPromptHelper;
 
 class FullScreenInputHelper$6
-  implements XEditTextEx.OnWindowFocusChangedListener
+  implements View.OnLongClickListener
 {
   FullScreenInputHelper$6(FullScreenInputHelper paramFullScreenInputHelper) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onLongClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.a().addPrimaryClipChangedListener(FullScreenInputHelper.a(this.a));
-      FullScreenInputHelper.c(this.a);
-      return;
+    paramView = (CopyPromptHelper)this.a.a.q(19);
+    if (paramView != null) {
+      paramView.a();
     }
-    this.a.a().removePrimaryClipChangedListener(FullScreenInputHelper.a(this.a));
-    FullScreenInputHelper.d(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.6
  * JD-Core Version:    0.7.0.1
  */

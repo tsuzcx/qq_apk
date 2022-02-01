@@ -18,56 +18,62 @@ class a$a
   {
     this.a = 0L;
     this.b = 0;
+    QLog.d("MSF.C.DeepSleepDetector", 1, "[reset] startTime = 0, count = 0.");
   }
   
   private void a(long paramLong)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onAppBackground setStartTime ");
-      localStringBuilder.append(paramLong);
-      QLog.d("MSF.C.DeepSleepDetector", 2, localStringBuilder.toString());
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAppBackground setStartTime ");
+    localStringBuilder.append(paramLong);
+    QLog.d("MSF.C.DeepSleepDetector", 1, localStringBuilder.toString());
     this.a = paramLong;
   }
   
   private boolean a(boolean paramBoolean)
   {
-    long l = this.a;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (l > 0L) {
-      if ((i.a().h()) && ("huawei".equalsIgnoreCase(Build.MANUFACTURER)))
+    int i = i.a().l() * 1000;
+    long l1 = this.a;
+    boolean bool = false;
+    if (l1 > 0L) {
+      if ((i.a().j()) && ("huawei".equalsIgnoreCase(Build.MANUFACTURER)))
       {
-        bool1 = bool2;
-        if (Math.abs(SystemClock.elapsedRealtime() - this.a - (this.b - 1) * 120000) <= 120000L) {}
+        l1 = SystemClock.elapsedRealtime() - this.a;
+        long l2 = (this.b - 1) * i;
+        if (Math.abs(l1 - l2) > i) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        QLog.d("MSF.C.DeepSleepDetector", 1, new Object[] { "[hasInDeepSleep] result: ", Boolean.valueOf(bool), ", bgTime: ", Long.valueOf(l1), ", countTime: ", Long.valueOf(l2), ", interval: ", Integer.valueOf(i) });
       }
       else
       {
-        do
-        {
-          bool1 = true;
-          break;
-          bool1 = bool2;
-        } while (Math.abs((int)((SystemClock.elapsedRealtime() - this.a) / 120000L) + 1 - this.b) > 1);
+        l1 = SystemClock.elapsedRealtime() - this.a;
+        if (Math.abs((int)(l1 / i) + 1 - this.b) > 1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        QLog.d("MSF.C.DeepSleepDetector", 1, new Object[] { "[hasInDeepSleep] result: ", Boolean.valueOf(bool), ", bgTime: ", Long.valueOf(l1), ", mCount: ", Integer.valueOf(this.b), ", interval: ", Integer.valueOf(i) });
       }
     }
-    if ((bool1) && (paramBoolean)) {
+    if ((bool) && (paramBoolean)) {
       a();
     }
-    return bool1;
+    return bool;
   }
   
   public void run()
   {
     this.b += 1;
-    a.a(this.c).postDelayed(this, 120000L);
+    a.a(this.c).postDelayed(this, i.a().l() * 1000);
+    QLog.d("MSF.C.DeepSleepDetector", 1, new Object[] { "[run] count after++: ", Integer.valueOf(this.b) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.a.a
  * JD-Core Version:    0.7.0.1
  */

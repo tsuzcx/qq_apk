@@ -20,7 +20,7 @@ class BuddyFileAIOMsgTips$1$1
   public void run()
   {
     Object localObject3 = new ArrayList();
-    ((List)localObject3).addAll(this.jdField_a_of_type_JavaUtilList);
+    ((List)localObject3).addAll(this.a);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -30,13 +30,13 @@ class BuddyFileAIOMsgTips$1$1
       QLog.i("BuddyFileAIOMsgTips", 1, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = new ArrayList();
-    Object localObject4 = new StringTokenizer(TencentDocTipsConfigProcessor.a().c(), "|");
+    Object localObject4 = new StringTokenizer(TencentDocTipsConfigProcessor.a().h(), "|");
     if (!((StringTokenizer)localObject4).hasMoreTokens())
     {
       if (QLog.isColorLevel()) {
         QLog.i("BuddyFileAIOMsgTips", 1, "config filetype is null");
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips$1.a.a((List)localObject1);
+      this.b.a.a((List)localObject1);
       return;
     }
     Object localObject2 = new String[((StringTokenizer)localObject4).countTokens()];
@@ -46,12 +46,12 @@ class BuddyFileAIOMsgTips$1$1
       localObject2[i] = ((StringTokenizer)localObject4).nextToken();
       i += 1;
     }
-    long l = MessageCache.a();
+    long l = MessageCache.c();
     localObject3 = ((List)localObject3).iterator();
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (FileManagerEntity)((Iterator)localObject3).next();
-      if (((FileManagerEntity)localObject4).uniseq != this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips$1.this$0.a.uniseq)
+      if (((FileManagerEntity)localObject4).uniseq != this.b.this$0.d.uniseq)
       {
         if (((FileManagerEntity)localObject4).srvTime - l * 1000L > 86400000L)
         {
@@ -88,12 +88,12 @@ class BuddyFileAIOMsgTips$1$1
       ((StringBuilder)localObject2).append("]");
       QLog.i("BuddyFileAIOMsgTips", 1, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips$1.a.a((List)localObject1);
+    this.b.a.a((List)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -28,19 +28,19 @@ public class GetEmosmList
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "getEmosmList start int QQInitHandler...");
     }
-    ((IEmoticonFromGroupDBManagerService)this.mAutomator.a.getRuntimeService(IEmoticonFromGroupDBManagerService.class)).enableWrite2DBAfterTenSec();
-    Object localObject2 = this.mAutomator.a.getApp().getSharedPreferences("sticker_pref", 0);
-    Object localObject1 = this.mAutomator.a.getCurrentAccountUin();
+    ((IEmoticonFromGroupDBManagerService)this.mAutomator.k.getRuntimeService(IEmoticonFromGroupDBManagerService.class)).enableWrite2DBAfterTenSec();
+    Object localObject2 = this.mAutomator.k.getApp().getSharedPreferences("sticker_pref", 0);
+    Object localObject1 = this.mAutomator.k.getCurrentAccountUin();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("sticker_switch_");
     ((StringBuilder)localObject3).append((String)localObject1);
     boolean bool;
-    if ((((SharedPreferences)localObject2).getBoolean(((StringBuilder)localObject3).toString(), true)) && (EmojiStickerManager.a())) {
+    if ((((SharedPreferences)localObject2).getBoolean(((StringBuilder)localObject3).toString(), true)) && (EmojiStickerManager.d())) {
       bool = true;
     } else {
       bool = false;
     }
-    EmojiStickerManager.f = bool;
+    EmojiStickerManager.n = bool;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("sticker_max_send_num_");
     ((StringBuilder)localObject3).append((String)localObject1);
@@ -49,13 +49,13 @@ public class GetEmosmList
     ((StringBuilder)localObject3).append("sticker_max_show_num_");
     ((StringBuilder)localObject3).append((String)localObject1);
     QVipStickerProcessor.c = ((SharedPreferences)localObject2).getInt(((StringBuilder)localObject3).toString(), QVipStickerProcessor.a);
-    EmojiStickerManager.g = DeviceInfoUtil.h();
+    EmojiStickerManager.u = DeviceInfoUtil.U();
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("sticker_update_version_time_");
     ((StringBuilder)localObject3).append((String)localObject1);
-    EmojiStickerManager.d = ((SharedPreferences)localObject2).getLong(((StringBuilder)localObject3).toString(), 0L);
-    QLog.i("QQInitHandler", 1, String.format("Sticker config, switch %b, maxSendNum: %d, isRubbishMachine: %b, updateVersionTime: %d", new Object[] { Boolean.valueOf(EmojiStickerManager.f), Integer.valueOf(QVipStickerProcessor.b), Boolean.valueOf(EmojiStickerManager.g), Long.valueOf(EmojiStickerManager.d) }));
-    if (EmojiStickerManager.d == 0L)
+    EmojiStickerManager.A = ((SharedPreferences)localObject2).getLong(((StringBuilder)localObject3).toString(), 0L);
+    QLog.i("QQInitHandler", 1, String.format("Sticker config, switch %b, maxSendNum: %d, isRubbishMachine: %b, updateVersionTime: %d", new Object[] { Boolean.valueOf(EmojiStickerManager.n), Integer.valueOf(QVipStickerProcessor.b), Boolean.valueOf(EmojiStickerManager.u), Long.valueOf(EmojiStickerManager.A) }));
+    if (EmojiStickerManager.A == 0L)
     {
       long l = NetConnInfoCenter.getServerTime();
       localObject2 = ((SharedPreferences)localObject2).edit();
@@ -63,13 +63,13 @@ public class GetEmosmList
       ((StringBuilder)localObject3).append("sticker_update_version_time_");
       ((StringBuilder)localObject3).append((String)localObject1);
       ((SharedPreferences.Editor)localObject2).putLong(((StringBuilder)localObject3).toString(), l).apply();
-      EmojiStickerManager.d = l;
+      EmojiStickerManager.A = l;
     }
-    localObject2 = (IEmoticonManagerService)this.mAutomator.a.getRuntimeService(IEmoticonManagerService.class);
-    localObject1 = this.mAutomator.a.getApplication().getSharedPreferences("mobileQQ", 0);
+    localObject2 = (IEmoticonManagerService)this.mAutomator.k.getRuntimeService(IEmoticonManagerService.class);
+    localObject1 = this.mAutomator.k.getApplication().getSharedPreferences("mobileQQ", 0);
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("emosm_has_set_emosmpackage_valid_");
-    ((StringBuilder)localObject3).append(this.mAutomator.a.getCurrentAccountUin());
+    ((StringBuilder)localObject3).append(this.mAutomator.k.getCurrentAccountUin());
     if (!Boolean.valueOf(((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject3).toString(), false)).booleanValue())
     {
       localObject3 = ((IEmoticonManagerService)localObject2).syncGetTabEmoticonPackages();
@@ -84,16 +84,16 @@ public class GetEmosmList
       localObject2 = ((SharedPreferences)localObject1).edit();
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("emosm_has_set_emosmpackage_valid_");
-      ((StringBuilder)localObject3).append(this.mAutomator.a.getCurrentAccountUin());
+      ((StringBuilder)localObject3).append(this.mAutomator.k.getCurrentAccountUin());
       ((SharedPreferences.Editor)localObject2).putBoolean(((StringBuilder)localObject3).toString(), true).commit();
     }
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("emosm_has_download_emosmpackage_tag_");
-    ((StringBuilder)localObject2).append(this.mAutomator.a.getCurrentAccountUin());
+    ((StringBuilder)localObject2).append(this.mAutomator.k.getCurrentAccountUin());
     localObject2 = Boolean.valueOf(((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), false));
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("emosm_has_download_emosmpackage_kandian_tag_");
-    ((StringBuilder)localObject3).append(this.mAutomator.a.getCurrentAccountUin());
+    ((StringBuilder)localObject3).append(this.mAutomator.k.getCurrentAccountUin());
     localObject1 = Boolean.valueOf(((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject3).toString(), false));
     if (QLog.isColorLevel())
     {
@@ -109,7 +109,7 @@ public class GetEmosmList
       ((StringBuilder)localObject3).append(localObject1);
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject3).toString());
     }
-    localObject3 = (IEmoticonHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
+    localObject3 = (IEmoticonHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM);
     if (((Boolean)localObject2).booleanValue()) {
       ((IEmoticonHandler)localObject3).a(0, 0);
     } else {
@@ -125,7 +125,7 @@ public class GetEmosmList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetEmosmList
  * JD-Core Version:    0.7.0.1
  */

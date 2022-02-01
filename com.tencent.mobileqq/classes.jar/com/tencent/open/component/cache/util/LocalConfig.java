@@ -8,11 +8,6 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class LocalConfig
 {
-  public static int a(String paramString, int paramInt, long paramLong)
-  {
-    return a(paramLong).getInt(paramString, paramInt);
-  }
-  
   public static SharedPreferences a()
   {
     int i = Build.VERSION.SDK_INT;
@@ -44,10 +39,15 @@ public class LocalConfig
     localEditor.putInt(paramString, paramInt);
     localEditor.commit();
   }
+  
+  public static int b(String paramString, int paramInt, long paramLong)
+  {
+    return a(paramLong).getInt(paramString, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.component.cache.util.LocalConfig
  * JD-Core Version:    0.7.0.1
  */

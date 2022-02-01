@@ -16,15 +16,15 @@ final class VideoFeedsRecommendPresenter$onVideoStop$$inlined$let$lambda$1
   
   public final void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a instanceof ReadInJoyVideoReportData))
+    if ((this.b.e instanceof ReadInJoyVideoReportData))
     {
-      VideoFeedsReporter localVideoFeedsReporter = this.this$0.a();
-      VideoInfo localVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-      List localList = this.jdField_a_of_type_JavaUtilList;
-      AbsReadInJoyVideoReportData localAbsReadInJoyVideoReportData = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a;
+      VideoFeedsReporter localVideoFeedsReporter = this.this$0.f();
+      VideoInfo localVideoInfo = this.a;
+      List localList = this.c;
+      AbsReadInJoyVideoReportData localAbsReadInJoyVideoReportData = this.b.e;
       if (localAbsReadInJoyVideoReportData != null)
       {
-        localVideoFeedsReporter.a(localVideoInfo, localList, (ReadInJoyVideoReportData)localAbsReadInJoyVideoReportData, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+        localVideoFeedsReporter.a(localVideoInfo, localList, (ReadInJoyVideoReportData)localAbsReadInJoyVideoReportData, this.d, this.e, this.f);
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.base.video.player.data.ReadInJoyVideoReportData");
@@ -33,7 +33,7 @@ final class VideoFeedsRecommendPresenter$onVideoStop$$inlined$let$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendPresenter.onVideoStop..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

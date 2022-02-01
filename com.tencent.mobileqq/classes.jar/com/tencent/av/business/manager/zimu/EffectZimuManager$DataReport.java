@@ -11,13 +11,13 @@ import java.util.Map;
 
 public class EffectZimuManager$DataReport
 {
-  static long jdField_a_of_type_Long = 0L;
-  static String jdField_a_of_type_JavaLangString;
-  static boolean jdField_a_of_type_Boolean = false;
+  static long a = 0L;
+  static boolean b = false;
+  static String c;
   
   static long a(String paramString)
   {
-    boolean bool = Utils.a(paramString, jdField_a_of_type_JavaLangString);
+    boolean bool = Utils.a(paramString, c);
     long l1 = 0L;
     long l2 = l1;
     if (!bool)
@@ -27,14 +27,14 @@ public class EffectZimuManager$DataReport
       localStringBuilder.append("DataReport calTime zimu:");
       localStringBuilder.append(paramString);
       localStringBuilder.append("|");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(c);
       localStringBuilder.append("|");
-      localStringBuilder.append(jdField_a_of_type_Long);
+      localStringBuilder.append(a);
       AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
       l2 = l1;
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(c))
       {
-        l2 = jdField_a_of_type_Long;
+        l2 = a;
         if (l2 != 0L)
         {
           l1 = l3 - l2;
@@ -42,10 +42,10 @@ public class EffectZimuManager$DataReport
           localStringBuilder.append("DataReport zimu:");
           localStringBuilder.append(l1);
           AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
-          jdField_a_of_type_Boolean = true;
+          b = true;
           l1 /= 1000L;
-          a(jdField_a_of_type_JavaLangString, l1);
-          ReportController.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", jdField_a_of_type_JavaLangString, "");
+          a(c, l1);
+          ReportController.b(null, "CliOper", "", "", "0X800888D", "0X800888D", 0, 0, String.valueOf(l1), "", c, "");
         }
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("DataReport zimu 33:");
@@ -53,17 +53,17 @@ public class EffectZimuManager$DataReport
         AVLog.printColorLog("EffectZimuManager", localStringBuilder.toString());
         l2 = l1;
       }
-      jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_Long = l3;
+      c = paramString;
+      a = l3;
     }
     return l2;
   }
   
   public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramVideoAppInterface.a(0))
+    if (paramVideoAppInterface.d(0))
     {
-      paramVideoAppInterface = (ZimuItem)((EffectZimuManager)paramVideoAppInterface.a(0)).a();
+      paramVideoAppInterface = (ZimuItem)((EffectZimuManager)paramVideoAppInterface.c(0)).c();
       if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
         a(null);
       }

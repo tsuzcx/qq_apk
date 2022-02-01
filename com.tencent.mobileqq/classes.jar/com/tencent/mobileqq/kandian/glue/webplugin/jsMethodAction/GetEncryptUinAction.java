@@ -18,32 +18,22 @@ import org.json.JSONObject;
 public final class GetEncryptUinAction
   implements JsMethodAction
 {
-  public static final GetEncryptUinAction.Companion a;
-  private String a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueWebpluginJsMethodActionGetEncryptUinAction$Companion = new GetEncryptUinAction.Companion(null);
-  }
-  
-  public GetEncryptUinAction()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public static final GetEncryptUinAction.Companion a = new GetEncryptUinAction.Companion(null);
+  private String b = "";
   
   private final void a(int paramInt, String paramString1, String paramString2)
   {
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("encrytedUin", paramString2);
     paramString1 = new JsMethodModel(paramInt, paramString1, localJSONObject);
-    ReadInJoyJsMethodActionController.a.a(this.jdField_a_of_type_JavaLangString, paramString1.a());
+    ReadInJoyJsMethodActionController.a.a(this.b, paramString1.a());
   }
   
   private final void a(TroopMemberApiClient paramTroopMemberApiClient)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", paramTroopMemberApiClient.a((ITroopMemberApiClientApi.Callback)new GetEncryptUinAction.getCurrentUserEncryptedUin.callbackSeq.1(this)));
-    paramTroopMemberApiClient.a(162, localBundle);
+    localBundle.putInt("seq", paramTroopMemberApiClient.e((ITroopMemberApiClientApi.Callback)new GetEncryptUinAction.getCurrentUserEncryptedUin.callbackSeq.1(this)));
+    paramTroopMemberApiClient.a(163, localBundle);
   }
   
   @NotNull
@@ -69,8 +59,8 @@ public final class GetEncryptUinAction
       {
         paramActivity = new JSONObject(paramVarArgs[0]).optString("callback");
         Intrinsics.checkExpressionValueIsNotNull(paramActivity, "jobj.optString(\"callback\")");
-        this.jdField_a_of_type_JavaLangString = paramActivity;
-        if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString))
+        this.b = paramActivity;
+        if (!TextUtils.isEmpty((CharSequence)this.b))
         {
           a(paramTroopMemberApiClient);
           return true;
@@ -86,7 +76,7 @@ public final class GetEncryptUinAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.webplugin.jsMethodAction.GetEncryptUinAction
  * JD-Core Version:    0.7.0.1
  */

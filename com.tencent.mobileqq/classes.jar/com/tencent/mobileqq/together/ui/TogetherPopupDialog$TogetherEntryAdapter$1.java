@@ -7,37 +7,37 @@ class TogetherPopupDialog$TogetherEntryAdapter$1
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a.a.d();
+    if ((this.a.a != null) && (this.a.a.g != null)) {
+      this.a.a.g.e();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b.a.d();
+    if ((this.a.b != null) && (this.a.b.g != null)) {
+      this.a.b.g.e();
     }
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a.a.c();
+    if ((this.a.a != null) && (this.a.a.g != null)) {
+      this.a.a.g.d();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b.a.c();
+    if ((this.a.b != null) && (this.a.b.g != null)) {
+      this.a.b.g.d();
     }
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.a.a.f();
+    if ((this.a.a != null) && (this.a.a.g != null)) {
+      this.a.a.g.g();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b.a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog$TogetherEntryHolder.b.a.f();
+    if ((this.a.b != null) && (this.a.b.g != null)) {
+      this.a.b.g.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.TogetherPopupDialog.TogetherEntryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

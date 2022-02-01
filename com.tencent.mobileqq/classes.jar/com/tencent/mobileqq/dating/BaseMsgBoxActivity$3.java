@@ -37,7 +37,7 @@ class BaseMsgBoxActivity$3
       ((Intent)localObject).putExtra("unReadMsgNum", paramInt1);
       this.a.setResult(-1, (Intent)localObject);
       this.a.finish();
-      this.a.overridePendingTransition(2130772275, 2130772275);
+      this.a.overridePendingTransition(2130772361, 2130772361);
       if (QLog.isColorLevel()) {
         QLog.d("nearby.msgbox.tab", 2, "finish");
       }
@@ -46,7 +46,7 @@ class BaseMsgBoxActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.3
  * JD-Core Version:    0.7.0.1
  */

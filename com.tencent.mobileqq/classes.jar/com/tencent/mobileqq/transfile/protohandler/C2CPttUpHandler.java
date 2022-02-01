@@ -103,23 +103,20 @@ public class C2CPttUpHandler
         if (j != 1020)
         {
           if (j == 9999) {
-            break label630;
+            break label619;
           }
           if ((j == 10002) || (j == 10004)) {
-            break label624;
-          }
-          if (j == 10009) {
-            break label617;
+            break label613;
           }
           if (j != 1000)
           {
             if (j == 1001) {
-              break label624;
+              break label613;
             }
             if (j != 1008) {
               if (j != 1009) {
                 if ((j == 1023) || (j == 1024)) {
-                  break label647;
+                  break label636;
                 }
               }
             }
@@ -136,29 +133,26 @@ public class C2CPttUpHandler
         break;
       case 1004: 
         i = 105;
-        break label649;
+        break label638;
         i = 103;
-        break label649;
+        break label638;
         i = 101;
-        break label649;
+        break label638;
         i = 104;
-        break label649;
-        label617:
-        i = 130;
-        break label649;
-        label624:
+        break label638;
+        label613:
         i = 100;
-        break label649;
-        label630:
+        break label638;
+        label619:
         i = 114;
-        break label649;
+        break label638;
         if (localPttUpReq.forceViaOffline) {
-          break label649;
+          break label638;
         }
       }
-      label647:
+      label636:
       i = 0;
-      label649:
+      label638:
       paramList.uint64_type.set(i);
       if (localPttUpReq.uinType == 1008) {
         paramList.uint32_file_type.set(3);
@@ -313,7 +307,7 @@ public class C2CPttUpHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.C2CPttUpHandler
  * JD-Core Version:    0.7.0.1
  */

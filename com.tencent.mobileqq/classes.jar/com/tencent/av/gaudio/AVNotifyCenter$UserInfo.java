@@ -3,13 +3,10 @@ package com.tencent.av.gaudio;
 public class AVNotifyCenter$UserInfo
 {
   public long a;
-  String jdField_a_of_type_JavaLangString = null;
-  public boolean a;
+  public boolean b = false;
+  String c = null;
   
-  public AVNotifyCenter$UserInfo(AVNotifyCenter paramAVNotifyCenter)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public AVNotifyCenter$UserInfo(AVNotifyCenter paramAVNotifyCenter) {}
 }
 
 

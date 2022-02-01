@@ -12,14 +12,14 @@ class SurvivalRoomController$1
   
   public void a(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
   {
-    if ((IGameEngine.a().f()) && (!SurvivalRoomController.a(this.a).a())) {
+    if ((IGameEngine.I().A()) && (!SurvivalRoomController.a(this.a).h())) {
       this.a.a(paramBoolean, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
     }
   }
   
   public void b(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong)
   {
-    if ((IGameEngine.a().f()) && (!SurvivalRoomController.a(this.a).a())) {
+    if ((IGameEngine.I().A()) && (!SurvivalRoomController.a(this.a).h())) {
       this.a.b(paramBoolean, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong);
     }
   }

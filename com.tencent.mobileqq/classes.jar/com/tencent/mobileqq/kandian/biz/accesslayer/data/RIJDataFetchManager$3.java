@@ -10,15 +10,15 @@ final class RIJDataFetchManager$3
   
   public void run()
   {
-    BannerInfoModule localBannerInfoModule = ReadInJoyLogicEngine.a().a();
+    BannerInfoModule localBannerInfoModule = ReadInJoyLogicEngine.a().i();
     if (localBannerInfoModule != null) {
-      localBannerInfoModule.a(this.a);
+      localBannerInfoModule.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataFetchManager.3
  * JD-Core Version:    0.7.0.1
  */

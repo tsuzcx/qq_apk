@@ -1,27 +1,36 @@
 package com.tencent.mobileqq.troop.activity;
 
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.utils.DialogUtil;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
 class TroopAvatarWallPreviewActivity$13
-  implements QQPermissionCallback
+  implements Animation.AnimationListener
 {
-  TroopAvatarWallPreviewActivity$13(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable) {}
+  TroopAvatarWallPreviewActivity$13(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramArrayOfString, paramArrayOfInt);
+    if (this.a.mBottomBar == null) {
+      return;
+    }
+    this.a.mBottomBar.post(new TroopAvatarWallPreviewActivity.13.1(this));
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.savePicWithOverwrite(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    if (this.a.mPhotoDesc == null) {
+      return;
+    }
+    this.a.mPhotoDesc.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.13
  * JD-Core Version:    0.7.0.1
  */

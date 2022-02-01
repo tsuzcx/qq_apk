@@ -10,10 +10,10 @@ public class GetUserGuideInfoStep$Response
   extends BaseResponse
 {
   public String a;
-  public int b;
-  public String c;
-  public String d;
-  public String e;
+  public String b;
+  public int e;
+  public String f;
+  public String g;
   
   public GetUserGuideInfoStep$Response(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
   {
@@ -30,19 +30,19 @@ public class GetUserGuideInfoStep$Response
     } else {
       localObject1 = null;
     }
-    this.c = ((String)localObject1);
-    this.b = paramRspGetUserGuide.seqno.get();
+    this.b = ((String)localObject1);
+    this.e = paramRspGetUserGuide.seqno.get();
     if (paramRspGetUserGuide.confirm_word.has()) {
       localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();
     } else {
       localObject1 = null;
     }
-    this.d = ((String)localObject1);
+    this.f = ((String)localObject1);
     Object localObject1 = localObject2;
     if (paramRspGetUserGuide.cancel_word.has()) {
       localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
     }
-    this.e = ((String)localObject1);
+    this.g = ((String)localObject1);
   }
   
   public String toString()
@@ -52,15 +52,15 @@ public class GetUserGuideInfoStep$Response
     localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", word='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", seqno=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", confirmBtnTxt='");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", cancelBtnTxt='");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();

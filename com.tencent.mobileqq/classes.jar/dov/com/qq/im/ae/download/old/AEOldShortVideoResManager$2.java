@@ -10,12 +10,12 @@ final class AEOldShortVideoResManager$2
   
   public void run()
   {
-    AEOldShortVideoResManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, new AEOldShortVideoResManager.2.1(this), "msf_quic_lib");
+    AEOldShortVideoResManager.a(this.a, this.b, new AEOldShortVideoResManager.2.1(this), "msf_quic_lib");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ class AutoLocationMapView$2
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("AutoLocationMapView", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.a.a.obtainMessage(1);
+    Object localObject = this.a.b.obtainMessage(1);
     if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
       paramSosoLbsInfo = new GeoPoint((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
@@ -36,7 +36,7 @@ class AutoLocationMapView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AutoLocationMapView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -457,14 +457,14 @@ public class QQUserUIItem
     if (!bool1)
     {
       QQStoryContext.a();
-      bool2 = ((FriendsManager)QQStoryContext.a().getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.qq);
+      bool2 = ((FriendsManager)QQStoryContext.j().getManager(QQManagerFactory.FRIENDS_MANAGER)).n(this.qq);
     }
     return bool2;
   }
   
   public boolean isMe()
   {
-    return QQStoryContext.a().a(this.uid);
+    return QQStoryContext.a().b(this.uid);
   }
   
   public boolean isNotDovUser()
@@ -524,7 +524,7 @@ public class QQUserUIItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.QQUserUIItem
  * JD-Core Version:    0.7.0.1
  */

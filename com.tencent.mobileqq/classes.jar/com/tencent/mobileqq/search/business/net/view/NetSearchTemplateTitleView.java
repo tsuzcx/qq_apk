@@ -9,11 +9,11 @@ import com.tencent.image.URLImageView;
 public class NetSearchTemplateTitleView
   extends NetSearchTemplateBaseView
 {
-  public TextView a;
   public URLImageView a;
   public TextView b;
-  public ImageView c;
   public TextView c;
+  public ImageView d;
+  public TextView n;
   
   public NetSearchTemplateTitleView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -22,17 +22,17 @@ public class NetSearchTemplateTitleView
   
   protected void a()
   {
-    View localView = a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131378828));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366885));
-    this.b = ((TextView)localView.findViewById(2131371512));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131371487));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377114));
+    View localView = b(this.m);
+    this.a = ((URLImageView)localView.findViewById(2131447511));
+    this.b = ((TextView)localView.findViewById(2131433214));
+    this.c = ((TextView)localView.findViewById(2131438889));
+    this.d = ((ImageView)localView.findViewById(2131438862));
+    this.n = ((TextView)localView.findViewById(2131445485));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.view.NetSearchTemplateTitleView
  * JD-Core Version:    0.7.0.1
  */

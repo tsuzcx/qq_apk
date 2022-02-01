@@ -206,9 +206,9 @@ public class ProcessorReport
     {
       i = -9527;
       if (!paramBoolean1) {
-        str = getMsgReason(paramStatictisInfo.jdField_a_of_type_Long);
+        str = getMsgReason(paramStatictisInfo.d);
       } else {
-        str = getUrlReason(paramStatictisInfo.jdField_a_of_type_Long);
+        str = getUrlReason(paramStatictisInfo.d);
       }
     }
     else if ((paramStatictisInfo.b != 1002) && (paramStatictisInfo.b != 1013))
@@ -218,7 +218,7 @@ public class ProcessorReport
       } else {
         i = 9044;
       }
-      str = paramStatictisInfo.jdField_a_of_type_JavaLangString;
+      str = paramStatictisInfo.e;
     }
     else
     {
@@ -227,7 +227,7 @@ public class ProcessorReport
       } else {
         i = 9311;
       }
-      str = paramStatictisInfo.jdField_a_of_type_JavaLangString;
+      str = paramStatictisInfo.e;
     }
     setError(i, "", str, paramStepInfo);
     paramStepInfo.failTryCount = paramStatictisInfo.c;
@@ -275,7 +275,7 @@ public class ProcessorReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.report.ProcessorReport
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.identification;
 
 public class ConfigItem
 {
-  public int a;
   public String a;
   public String b;
   public String c;
@@ -12,12 +11,13 @@ public class ConfigItem
   public String g;
   public String h;
   public String i;
+  public int j;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ConfigItem{name='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", arm_url='");
     localStringBuilder.append(this.b);
@@ -44,14 +44,14 @@ public class ConfigItem
     localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append(", versionCode=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.ConfigItem
  * JD-Core Version:    0.7.0.1
  */

@@ -14,11 +14,11 @@ import android.widget.ImageView;
 public class ArcImageView
   extends ImageView
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 3;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Drawable a = null;
+  private boolean b = false;
+  private Paint c;
+  private int d = 3;
+  private float e = 0.0F;
   
   public ArcImageView(Context paramContext)
   {
@@ -40,28 +40,28 @@ public class ArcImageView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.c = new Paint();
+    this.c.setAntiAlias(true);
+    this.c.setStyle(Paint.Style.STROKE);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167394));
-      this.jdField_a_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 1.5F));
+      this.c.setColor(getResources().getColor(2131168464));
+      this.d = ((int)(getResources().getDisplayMetrics().density * 1.5F));
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
+    this.c.setStrokeWidth(this.d);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.b != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850766);
+      this.b = paramBoolean;
+      if ((this.b) && (this.a == null)) {
+        this.a = getResources().getDrawable(2130852588);
       }
       postInvalidate();
     }
@@ -71,23 +71,23 @@ public class ArcImageView
   {
     super.onDraw(paramCanvas);
     Object localObject = new RectF();
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     ((RectF)localObject).left = i;
     ((RectF)localObject).top = i;
-    ((RectF)localObject).right = (getWidth() - this.jdField_a_of_type_Int);
-    ((RectF)localObject).bottom = (getHeight() - this.jdField_a_of_type_Int);
-    paramCanvas.drawArc((RectF)localObject, 270.0F, this.jdField_a_of_type_Float, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Boolean)
+    ((RectF)localObject).right = (getWidth() - this.d);
+    ((RectF)localObject).bottom = (getHeight() - this.d);
+    paramCanvas.drawArc((RectF)localObject, 270.0F, this.e, false, this.c);
+    if (this.b)
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject = this.a;
       if (localObject != null)
       {
         ((Drawable)localObject).setState(getDrawableState());
         i = getWidth();
-        int j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-        int k = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i - j, 0, getWidth(), k);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        int j = this.a.getIntrinsicWidth();
+        int k = this.a.getIntrinsicHeight();
+        this.a.setBounds(i - j, 0, getWidth(), k);
+        this.a.draw(paramCanvas);
       }
     }
   }
@@ -107,16 +107,16 @@ public class ArcImageView
       }
     }
     paramFloat = f * 360.0F;
-    if (this.jdField_a_of_type_Float != paramFloat)
+    if (this.e != paramFloat)
     {
-      this.jdField_a_of_type_Float = paramFloat;
+      this.e = paramFloat;
       postInvalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ArcImageView
  * JD-Core Version:    0.7.0.1
  */

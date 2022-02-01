@@ -12,7 +12,7 @@ class UniteSearchActivity$11
   public void onClick(View paramView)
   {
     paramView = this.a;
-    paramView.openContextMenu(paramView.a);
+    paramView.openContextMenu(paramView.q);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -22,7 +22,7 @@ class UniteSearchActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.UniteSearchActivity.11
  * JD-Core Version:    0.7.0.1
  */

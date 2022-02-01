@@ -19,12 +19,12 @@ final class SpriteAioPlugin$showAudioTips$1
     Context localContext = (Context)BaseApplicationImpl.getContext();
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "BaseApplicationImpl.getContext()");
-    QQToast.a(localContext, (CharSequence)localBaseApplication.getResources().getString(2131690075), 1).a();
+    QQToast.makeText(localContext, (CharSequence)localBaseApplication.getResources().getString(2131886730), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.SpriteAioPlugin.showAudioTips.1
  * JD-Core Version:    0.7.0.1
  */

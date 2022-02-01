@@ -1,19 +1,23 @@
 package com.tencent.mobileqq.activity.framebusiness;
 
-import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
-import com.tencent.mobileqq.qcircle.api.IQCircleService;
+import com.tencent.mobileqq.app.FrameFragment;
+import com.tencent.mobileqq.auto.engine.lib.IBackEventListener;
 
 final class QCircleInjectImpl$5
-  implements Runnable
+  implements IBackEventListener
 {
-  public void run()
+  QCircleInjectImpl$5(FrameFragment paramFrameFragment) {}
+  
+  public void onBackEvent(boolean paramBoolean, String paramString)
   {
-    QCircleUtils.a().sendGetRainBowRequest();
+    if ("qcircle-app".equals(paramString)) {
+      QCircleInjectImpl.a(this.a, paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl.5
  * JD-Core Version:    0.7.0.1
  */

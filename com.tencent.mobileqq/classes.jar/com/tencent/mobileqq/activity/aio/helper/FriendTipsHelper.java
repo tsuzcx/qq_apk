@@ -21,25 +21,24 @@ public class FriendTipsHelper
   extends TipsHelper
   implements Handler.Callback
 {
-  GamePartyTipsBar jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar;
-  protected LightalkBlueTipsBar a;
-  private Observer jdField_a_of_type_JavaUtilObserver = new FriendTipsHelper.2(this);
+  protected LightalkBlueTipsBar a = null;
+  GamePartyTipsBar b;
+  private Observer h = new FriendTipsHelper.2(this);
   
   public FriendTipsHelper(AIOContext paramAIOContext)
   {
     super(paramAIOContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBar = null;
   }
   
   protected void a()
   {
     super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBar == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBar = new LightalkBlueTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (this.a == null) {
+      this.a = new LightalkBlueTipsBar(this.d, this.f, this.g, this.e);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar = new GamePartyTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBar);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar);
+    this.b = new GamePartyTipsBar(this.d, this.f, this.e, this.g);
+    this.f.b(this.a);
+    this.f.b(this.b);
   }
   
   @NonNull
@@ -52,16 +51,16 @@ public class FriendTipsHelper
   {
     if (paramMessage.what == 38)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBar == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBar = new LightalkBlueTipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      if (this.a == null) {
+        this.a = new LightalkBlueTipsBar(this.d, this.f, this.g, this.e);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBar, new Object[0]))
+      if (this.f.a(this.a, new Object[0]))
       {
         if (QLog.isColorLevel()) {
           QLog.d("LightalkBlueTipsBar", 2, "BaseChatPie:handleMessage() : TYPE_ON_SHOW =====>");
         }
         ThreadManager.getSubThreadHandler().post(new FriendTipsHelper.1(this));
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800510F", "0X800510F", 0, 0, "1", "", "", "");
+        ReportController.b(this.d, "CliOper", "", "", "0X800510F", "0X800510F", 0, 0, "1", "", "", "");
       }
       return true;
     }
@@ -81,15 +80,15 @@ public class FriendTipsHelper
       if (paramInt != 15) {
         return;
       }
-      ((GamePartyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+      ((GamePartyManager)this.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().deleteObserver(this.h);
       return;
     }
-    ((GamePartyManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    ((GamePartyManager)this.d.getManager(QQManagerFactory.GAME_PARTY_MANAGER)).a().addObserver(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FriendTipsHelper
  * JD-Core Version:    0.7.0.1
  */

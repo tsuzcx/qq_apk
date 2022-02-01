@@ -20,20 +20,18 @@ import org.json.JSONArray;
 
 public class TurtleReportCenter
 {
-  public static TurtleReportCenter a;
-  private Callback a;
+  public static TurtleReportCenter a = new TurtleReportCenter();
+  private Callback b = new TurtleReportCenter.1(this);
   
-  static
+  private void b(Bundle paramBundle)
   {
-    jdField_a_of_type_ComTencentMobileqqNearbyReportTurtleReportCenter = new TurtleReportCenter();
+    Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
+    paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), c(paramBundle));
+    paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
+    ((IOkHttpClientFactory)QRoute.api(IOkHttpClientFactory.class)).getRequestClient().newCall(paramBundle).enqueue(this.b);
   }
   
-  private TurtleReportCenter()
-  {
-    this.jdField_a_of_type_Okhttp3Callback = new TurtleReportCenter.1(this);
-  }
-  
-  private String a(Bundle paramBundle)
+  private String c(Bundle paramBundle)
   {
     JSONArray localJSONArray1 = new JSONArray();
     JSONArray localJSONArray2 = new JSONArray();
@@ -50,7 +48,7 @@ public class TurtleReportCenter
       else if (!"bid".equals(localObject))
       {
         localJSONArray1.put(localObject);
-        if (StringUtil.a(paramBundle.getString((String)localObject))) {
+        if (StringUtil.isEmpty(paramBundle.getString((String)localObject))) {
           localObject = "";
         } else {
           localObject = paramBundle.getString((String)localObject);
@@ -79,14 +77,6 @@ public class TurtleReportCenter
     return "";
   }
   
-  private void b(Bundle paramBundle)
-  {
-    Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
-    paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), a(paramBundle));
-    paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
-    ((IOkHttpClientFactory)QRoute.api(IOkHttpClientFactory.class)).getRequestClient().newCall(paramBundle).enqueue(this.jdField_a_of_type_Okhttp3Callback);
-  }
-  
   public void a(Bundle paramBundle)
   {
     if (paramBundle == null)
@@ -99,7 +89,7 @@ public class TurtleReportCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.report.TurtleReportCenter
  * JD-Core Version:    0.7.0.1
  */

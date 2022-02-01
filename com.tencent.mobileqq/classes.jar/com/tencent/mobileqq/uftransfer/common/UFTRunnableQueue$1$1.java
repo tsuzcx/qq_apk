@@ -7,12 +7,12 @@ class UFTRunnableQueue$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUftransferCommonUFTRunnableQueue$1.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUftransferCommonUFTRunnableQueue$IUFTRunnable);
+    this.e.a.a(this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.UFTRunnableQueue.1.1
  * JD-Core Version:    0.7.0.1
  */

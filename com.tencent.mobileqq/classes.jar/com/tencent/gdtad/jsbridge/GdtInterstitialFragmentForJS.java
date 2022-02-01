@@ -38,12 +38,12 @@ import tencent.gdt.qq_ad_get.QQAdGet;
 public class GdtInterstitialFragmentForJS
   extends PublicBaseFragment
 {
-  private GdtAdLoader.Listener jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener = new GdtInterstitialFragmentForJS.5(this);
-  private GdtAdLoader jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader;
-  private GdtAdError jdField_a_of_type_ComTencentGdtadApiGdtAdError;
-  private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams = new GdtInterstitialParams();
-  private IGdtInterstitialAd jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd;
-  private qq_ad_get.QQAdGet jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
+  private GdtAdLoader a;
+  private GdtAdError b;
+  private qq_ad_get.QQAdGet c;
+  private IGdtInterstitialAd d;
+  private GdtInterstitialParams e = new GdtInterstitialParams();
+  private GdtAdLoader.Listener f = new GdtInterstitialFragmentForJS.5(this);
   
   public static void a(Activity paramActivity, Class<? extends PublicFragmentActivity> paramClass, JSONObject paramJSONObject)
   {
@@ -164,7 +164,7 @@ public class GdtInterstitialFragmentForJS
     GdtLog.b("GdtInterstitialFragmentForJS", String.format("onActivityResult requestCode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if (paramInt1 == 10001)
     {
-      IGdtInterstitialAd localIGdtInterstitialAd = this.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd;
+      IGdtInterstitialAd localIGdtInterstitialAd = this.d;
       if (localIGdtInterstitialAd != null) {
         localIGdtInterstitialAd.a(getBaseActivity(), paramInt2, paramIntent);
       }
@@ -204,10 +204,10 @@ public class GdtInterstitialFragmentForJS
         localObject = paramBundle.getJSONObject("clickParams");
         paramBundle = new JSONObject();
         paramBundle.put("options", localObject);
-        this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), paramViewGroup)));
+        this.c = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), paramViewGroup)));
         paramViewGroup = new GdtHandler.Options();
         GdtHandler.a(paramViewGroup, paramBundle.toString());
-        this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a = paramViewGroup;
+        this.e.d = paramViewGroup;
       }
       catch (JSONException paramViewGroup)
       {
@@ -239,7 +239,7 @@ public class GdtInterstitialFragmentForJS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS
  * JD-Core Version:    0.7.0.1
  */

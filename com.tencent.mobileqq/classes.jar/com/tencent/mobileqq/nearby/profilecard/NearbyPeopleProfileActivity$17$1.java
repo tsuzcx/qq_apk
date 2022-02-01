@@ -36,12 +36,12 @@ class NearbyPeopleProfileActivity$17$1
     if (QLog.isColorLevel()) {
       QLog.i("NearbyPeopleProfileActivity", 2, "download vote headImage success");
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity$17.a.showVoteUpdateDialog(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
+    this.b.a.showVoteUpdateDialog(this.a, paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.17.1
  * JD-Core Version:    0.7.0.1
  */

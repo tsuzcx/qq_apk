@@ -22,22 +22,17 @@ import mqq.os.MqqHandler;
 public class DoutuHelper
   implements Handler.Callback, AIOOnTouchListener, OnFinishListener, IMsgTipsListener, ILifeCycleHelper
 {
-  private final AIOContext a;
   public IDoutuService a;
+  private final AIOContext b;
   
   public DoutuHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-  }
-  
-  public int a()
-  {
-    return 0;
+    this.b = paramAIOContext;
   }
   
   public void a()
   {
-    IDoutuService localIDoutuService = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+    IDoutuService localIDoutuService = this.a;
     if (localIDoutuService != null) {
       localIDoutuService.hideDoutuEmotionLayout();
     }
@@ -47,33 +42,28 @@ public class DoutuHelper
   
   public void a(AIOContext paramAIOContext, com.tencent.imcore.message.Message paramMessage)
   {
-    paramAIOContext = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+    paramAIOContext = this.a;
     if (paramAIOContext != null) {
       paramAIOContext.clearComboViews();
     }
   }
   
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
   public boolean a(BaseAIOContext paramBaseAIOContext, View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService != null)
+    if (this.a != null)
     {
       paramBaseAIOContext = (AIOShortcutBarHelper)paramBaseAIOContext.a(52);
       boolean bool;
       if (paramBaseAIOContext != null) {
-        bool = paramBaseAIOContext.e();
+        bool = paramBaseAIOContext.w();
       } else {
         bool = false;
       }
-      this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService.hideDoutuEmotionLayout();
+      this.a.hideDoutuEmotionLayout();
       if ((paramBaseAIOContext != null) && (bool))
       {
-        paramBaseAIOContext.c(15);
-        paramBaseAIOContext.c(12);
+        paramBaseAIOContext.d(15);
+        paramBaseAIOContext.d(12);
       }
     }
     return false;
@@ -86,21 +76,31 @@ public class DoutuHelper
   
   public void b()
   {
-    IDoutuService localIDoutuService = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+    IDoutuService localIDoutuService = this.a;
     if (localIDoutuService != null)
     {
       localIDoutuService.clearComboViews();
-      this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService.setComboShowSwitch(false);
+      this.a.setComboShowSwitch(false);
     }
   }
   
-  public void d(int paramInt)
+  public int bM_()
   {
-    IDoutuService localIDoutuService = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+    return 0;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    return false;
+  }
+  
+  public void e(int paramInt)
+  {
+    IDoutuService localIDoutuService = this.a;
     if (localIDoutuService != null)
     {
       localIDoutuService.hideDoutuEmotionLayout();
-      this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService.interruptAnimation();
+      this.a.interruptAnimation();
     }
   }
   
@@ -118,7 +118,7 @@ public class DoutuHelper
     default: 
       return false;
     case 81: 
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+      paramMessage = this.a;
       if (paramMessage != null)
       {
         paramMessage.refreshDoutuEmoData();
@@ -126,42 +126,42 @@ public class DoutuHelper
       }
       break;
     case 80: 
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+      paramMessage = this.a;
       if (paramMessage != null) {
         paramMessage.hideDoutuEmotionLayout();
       }
-      paramMessage = (AIOShortcutBarHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(52);
+      paramMessage = (AIOShortcutBarHelper)this.b.a(52);
       if (paramMessage != null)
       {
         localObject = new AIOShortcutBarHelper.AIOShortcutBarEvent(12);
         ((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject).a().putBoolean("mDoutuShow", false);
         paramMessage.a((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject);
-        paramMessage.c(15);
+        paramMessage.d(15);
         return false;
       }
       break;
     case 79: 
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), "dc00898", "", "", "0X8007FA8", "0X8007FA8", 0, 0, "", "", "", "");
+      ReportController.b(this.b.a(), "dc00898", "", "", "0X8007FA8", "0X8007FA8", 0, 0, "", "", "", "");
       if (QLog.isColorLevel()) {
         QLog.d("DoutuHelper", 2, "[Doutu] handleMessage : MSG_SHOW_DOUTU_EMOTION_LAYOUT");
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+      localObject = this.a;
       if (localObject != null) {
-        ((IDoutuService)localObject).showDoutuEmotionLayout(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), (DoutuItem)paramMessage.obj, 2131368875);
+        ((IDoutuService)localObject).showDoutuEmotionLayout(this.b.g(), (DoutuItem)paramMessage.obj, 2131435809);
       }
-      paramMessage = (StickerRecHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(14);
+      paramMessage = (StickerRecHelper)this.b.a(14);
       if (paramMessage != null)
       {
         paramMessage.b();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().removeMessages(67);
+        this.b.g().removeMessages(67);
       }
-      paramMessage = (AIOShortcutBarHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(52);
+      paramMessage = (AIOShortcutBarHelper)this.b.a(52);
       if (paramMessage != null)
       {
         localObject = new AIOShortcutBarHelper.AIOShortcutBarEvent(11);
         ((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject).a().putBoolean("mDoutuShow", true);
         paramMessage.a((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject);
-        paramMessage.c(16);
+        paramMessage.d(16);
       }
       return true;
     }
@@ -181,27 +181,27 @@ public class DoutuHelper
       if (paramInt != 15) {
         return;
       }
-      localIDoutuService = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+      localIDoutuService = this.a;
       if (localIDoutuService != null)
       {
         localIDoutuService.doOnChatDestory();
-        this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService = null;
+        this.a = null;
       }
     }
     else
     {
-      localIDoutuService = this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService;
+      localIDoutuService = this.a;
       if (localIDoutuService != null)
       {
         localIDoutuService.hideDoutuEmotionLayout();
-        this.jdField_a_of_type_ComTencentMobileqqDoutuApiIDoutuService.removeDoutuEmoLayout();
+        this.a.removeDoutuEmoLayout();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuHelper
  * JD-Core Version:    0.7.0.1
  */

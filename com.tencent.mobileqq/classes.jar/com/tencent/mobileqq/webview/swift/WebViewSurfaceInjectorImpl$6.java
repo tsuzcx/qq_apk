@@ -17,7 +17,35 @@ class WebViewSurfaceInjectorImpl$6
 {
   WebViewSurfaceInjectorImpl$6(WebViewSurfaceInjectorImpl paramWebViewSurfaceInjectorImpl, WebViewProvider paramWebViewProvider) {}
   
-  public String a(Bitmap paramBitmap)
+  public void a(Exception paramException)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onScreenShotError, error is ");
+    localStringBuilder.append(paramException.getMessage());
+    QLog.e("WebViewSurfaceInjectorImpl", 1, localStringBuilder.toString());
+    if (this.a.getHostActivity() == null)
+    {
+      QLog.e("WebViewSurfaceInjectorImpl", 1, "screen long shot onScreenShotError, activity is null");
+      return;
+    }
+    QQToast.makeText(this.a.getHostActivity(), 2131916048, 0).show();
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if (this.a.getHostActivity() == null)
+    {
+      QLog.e("WebViewSurfaceInjectorImpl", 1, "screen long shot error, activity is null");
+      return;
+    }
+    paramBitmap = new Intent();
+    paramBitmap.putExtra("public_fragment_window_feature", 1);
+    paramBitmap.putExtra("screen_path", paramString);
+    paramBitmap.putExtra("is_web_screen_long_shot", true);
+    PublicFragmentActivity.Launcher.a(this.a.getHostActivity(), paramBitmap, PublicTransFragmentActivity.class, ScreenShotFragment.class);
+  }
+  
+  public String b(Bitmap paramBitmap)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(ScreenShotUtil.a());
@@ -27,38 +55,10 @@ class WebViewSurfaceInjectorImpl$6
     QRScanUtil.a(paramBitmap, (String)localObject, Bitmap.CompressFormat.JPEG, 100, true);
     return localObject;
   }
-  
-  public void a(Exception paramException)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onScreenShotError, error is ");
-    localStringBuilder.append(paramException.getMessage());
-    QLog.e("WebViewSurfaceInjectorImpl", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getHostActivity() == null)
-    {
-      QLog.e("WebViewSurfaceInjectorImpl", 1, "screen long shot onScreenShotError, activity is null");
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getHostActivity(), 2131718549, 0).a();
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getHostActivity() == null)
-    {
-      QLog.e("WebViewSurfaceInjectorImpl", 1, "screen long shot error, activity is null");
-      return;
-    }
-    paramBitmap = new Intent();
-    paramBitmap.putExtra("public_fragment_window_feature", 1);
-    paramBitmap.putExtra("screen_path", paramString);
-    paramBitmap.putExtra("is_web_screen_long_shot", true);
-    PublicFragmentActivity.Launcher.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getHostActivity(), paramBitmap, PublicTransFragmentActivity.class, ScreenShotFragment.class);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewSurfaceInjectorImpl.6
  * JD-Core Version:    0.7.0.1
  */

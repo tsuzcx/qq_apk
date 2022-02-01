@@ -18,9 +18,9 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.shortcutbar.IShortcutBarDataProvider;
 import com.tencent.mobileqq.troop.shortcutbar.IShortcutBarProcessor;
 import com.tencent.mobileqq.troop.shortcutbar.ShortcutBarInfo;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,45 +30,40 @@ import qqcircle.QQCircleCountergroup.GetGroupCountRsp;
 public class QCircleMsgProcessor
   extends IShortcutBarProcessor
 {
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
-  private IShortcutBarDataProvider jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private AIOShortcutBarContext a;
+  private IShortcutBarDataProvider b;
+  private long c;
+  private SessionInfo d;
+  private Activity e;
+  private AppRuntime f;
   
   public QCircleMsgProcessor(AIOShortcutBarContext paramAIOShortcutBarContext, IShortcutBarDataProvider paramIShortcutBarDataProvider)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = paramAIOShortcutBarContext;
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider = paramIShortcutBarDataProvider;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramAIOShortcutBarContext.a();
-    this.jdField_a_of_type_AndroidAppActivity = paramAIOShortcutBarContext.a();
+    this.a = paramAIOShortcutBarContext;
+    this.b = paramIShortcutBarDataProvider;
+    this.d = paramAIOShortcutBarContext.d();
+    this.e = paramAIOShortcutBarContext.f();
     try
     {
-      this.jdField_a_of_type_Long = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      this.c = Long.parseLong(this.d.b);
       return;
     }
     catch (Exception paramAIOShortcutBarContext) {}
   }
   
-  private long a()
-  {
-    return a("key_last_close_troop_qcircle_msg_time", 0L);
-  }
-  
   private long a(String paramString, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+    Object localObject = this.f;
     if ((localObject != null) && (((AppRuntime)localObject).getApp() != null))
     {
-      localObject = (QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
+      localObject = (QQAppInterface)this.f;
       SharedPreferences localSharedPreferences = ((QQAppInterface)localObject).getApp().getSharedPreferences("qzone_sp_in_qq", 0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append("_");
       localStringBuilder.append(((QQAppInterface)localObject).getCurrentUin());
       localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.c);
       return localSharedPreferences.getLong(localStringBuilder.toString(), paramLong);
     }
     if (QZLog.isColorLevel()) {
@@ -79,33 +74,12 @@ public class QCircleMsgProcessor
   
   private void a(long paramLong)
   {
-    a("key_last_request_troop_qcircle_msg_time", paramLong);
-  }
-  
-  private void a(String paramString, long paramLong)
-  {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
-    if ((localObject != null) && (((AppRuntime)localObject).getApp() != null))
-    {
-      localObject = (QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append("_");
-      localStringBuilder.append(((QQAppInterface)localObject).getCurrentUin());
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      paramString = localStringBuilder.toString();
-      ((QQAppInterface)localObject).getApp().getSharedPreferences("qzone_sp_in_qq", 0).edit().putLong(paramString, paramLong).apply();
-      return;
-    }
-    if (QZLog.isColorLevel()) {
-      QLog.e("QCircleMsgProcessor", 2, "setTime: mChatPie == null || mChatPie.app == null || mChatPie.app.getApp() == null");
-    }
+    b("key_last_request_troop_qcircle_msg_time", paramLong);
   }
   
   private void a(ArrayList<ShortcutBarInfo> paramArrayList)
   {
-    IShortcutBarDataProvider localIShortcutBarDataProvider = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
+    IShortcutBarDataProvider localIShortcutBarDataProvider = this.b;
     if (localIShortcutBarDataProvider != null) {
       localIShortcutBarDataProvider.a(3, paramArrayList);
     }
@@ -123,12 +97,63 @@ public class QCircleMsgProcessor
     a(paramGetGroupCountRsp);
   }
   
-  private boolean a()
+  private void b(long paramLong)
+  {
+    b("key_request_troop_qcircle_msg_time_interval", paramLong);
+  }
+  
+  private void b(String paramString, long paramLong)
+  {
+    Object localObject = this.f;
+    if ((localObject != null) && (((AppRuntime)localObject).getApp() != null))
+    {
+      localObject = (QQAppInterface)this.f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(((QQAppInterface)localObject).getCurrentUin());
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.c);
+      paramString = localStringBuilder.toString();
+      ((QQAppInterface)localObject).getApp().getSharedPreferences("qzone_sp_in_qq", 0).edit().putLong(paramString, paramLong).apply();
+      return;
+    }
+    if (QZLog.isColorLevel()) {
+      QLog.e("QCircleMsgProcessor", 2, "setTime: mChatPie == null || mChatPie.app == null || mChatPie.app.getApp() == null");
+    }
+  }
+  
+  private void e()
+  {
+    if (!QCircleConfigHelper.ai())
+    {
+      QLog.i("QCircleMsgProcessoronInit", 2, "QzoneConfig.isQQCircleShowTroopToolBarEntrance()==false");
+      return;
+    }
+    if (g())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QCircleMsgProcessor", 2, "onInit: 冷却时间不发小世界快捷消息请求");
+      }
+      return;
+    }
+    ThreadManager.excute(new QCircleMsgProcessor.QCircleMsgTask(this, this.e, this.c), 128, null, false);
+  }
+  
+  private void f()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("key_troop_uin", String.valueOf(this.c));
+    localHashMap.put("key_jump_from", "24");
+    QCircleUtils.a().enterBySchemeAction(BaseApplicationImpl.getContext(), "openAggregation", localHashMap);
+  }
+  
+  private boolean g()
   {
     long l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    long l2 = a();
-    long l3 = b();
-    long l4 = c();
+    long l2 = h();
+    long l3 = j();
+    long l4 = k();
     boolean bool1 = QLog.isColorLevel();
     boolean bool3 = true;
     if (bool1) {
@@ -158,54 +183,29 @@ public class QCircleMsgProcessor
     return bool3;
   }
   
-  private long b()
+  private long h()
+  {
+    return a("key_last_close_troop_qcircle_msg_time", 0L);
+  }
+  
+  private void i()
+  {
+    b("key_last_close_troop_qcircle_msg_time", NetConnInfoCenter.getServerTimeMillis() / 1000L);
+  }
+  
+  private long j()
   {
     return a("key_last_request_troop_qcircle_msg_time", 0L);
   }
   
-  private void b(long paramLong)
-  {
-    a("key_request_troop_qcircle_msg_time_interval", paramLong);
-  }
-  
-  private long c()
+  private long k()
   {
     return a("key_request_troop_qcircle_msg_time_interval", 1200L);
   }
   
-  private void e()
-  {
-    if (!QzoneConfig.isQQCircleShowTroopToolBarEntrance())
-    {
-      QLog.i("QCircleMsgProcessoronInit", 2, "QzoneConfig.isQQCircleShowTroopToolBarEntrance()==false");
-      return;
-    }
-    if (a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QCircleMsgProcessor", 2, "onInit: 冷却时间不发小世界快捷消息请求");
-      }
-      return;
-    }
-    ThreadManager.excute(new QCircleMsgProcessor.QCircleMsgTask(this, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Long), 128, null, false);
-  }
-  
-  private void f()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("key_troop_uin", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("key_jump_from", "24");
-    QCircleUtils.a().enterBySchemeAction(BaseApplicationImpl.getContext(), "openAggregation", localHashMap);
-  }
-  
-  private void g()
-  {
-    a("key_last_close_troop_qcircle_msg_time", NetConnInfoCenter.getServerTimeMillis() / 1000L);
-  }
-  
   public void a()
   {
-    VSNetworkHelper.getInstance().cancelRequest(this.jdField_a_of_type_AndroidAppActivity);
+    VSNetworkHelper.getInstance().cancelRequest(this.e);
   }
   
   public void a(Object paramObject)
@@ -215,7 +215,7 @@ public class QCircleMsgProcessor
     }
     QLog.d("QCircleMsgProcessor", 2, "QCircleMsgInfo onClick");
     f();
-    ReportController.b(null, "dc00898", "", String.valueOf(this.jdField_a_of_type_Long), "0X800B24F", "0X800B24F", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", String.valueOf(this.c), "0X800B24F", "0X800B24F", 0, 0, "", "", "", "");
   }
   
   public void b()
@@ -230,8 +230,8 @@ public class QCircleMsgProcessor
     }
     QLog.d("QCircleMsgProcessor", 2, "QCircleMsgInfo onClickMessageCloseBtn");
     a((ArrayList)null);
-    g();
-    ReportController.b(null, "dc00898", "", String.valueOf(this.jdField_a_of_type_Long), "0X800B252", "0X800B252", 0, 0, "", "", "", "");
+    i();
+    ReportController.b(null, "dc00898", "", String.valueOf(this.c), "0X800B252", "0X800B252", 0, 0, "", "", "", "");
   }
   
   public void c() {}
@@ -240,7 +240,7 @@ public class QCircleMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.QCircleMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

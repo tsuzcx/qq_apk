@@ -8,7 +8,7 @@ public class HippyPageScrollStateChangedEvent
   extends HippyViewEvent
 {
   public static final String EVENT_NAME = "onPageScrollStateChanged";
-  private View mTarget;
+  private final View mTarget;
   
   public HippyPageScrollStateChangedEvent(View paramView)
   {
@@ -25,7 +25,7 @@ public class HippyPageScrollStateChangedEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.event.HippyPageScrollStateChangedEvent
  * JD-Core Version:    0.7.0.1
  */

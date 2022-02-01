@@ -46,7 +46,7 @@ public class TestStructMsg
     return null;
   }
   
-  public static String a(String paramString)
+  public static String b(String paramString)
   {
     try
     {
@@ -73,7 +73,7 @@ public class TestStructMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.TestStructMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -90,7 +90,7 @@ public class AccountDetailJigsawViewWrapper
     int n = (((Resources)localObject1).getDisplayMetrics().widthPixels - m) / 2;
     int i1 = AIOUtils.b(125.0F, (Resources)localObject1);
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
       int j;
       if (i % 2 == 0) {
@@ -120,7 +120,7 @@ public class AccountDetailJigsawViewWrapper
       {
         localObject1 = (LinearLayout)paramLinearLayout.getChildAt(i2);
       }
-      Object localObject2 = (IPublicAccountConfigAttr.PaConfigInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      Object localObject2 = (IPublicAccountConfigAttr.PaConfigInfo)this.a.get(i);
       RelativeLayout localRelativeLayout = new RelativeLayout(localContext);
       Object localObject3 = new LinearLayout.LayoutParams(n, i1);
       if (j == 0) {
@@ -128,20 +128,20 @@ public class AccountDetailJigsawViewWrapper
       }
       localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject3);
       localRelativeLayout.setTag(localObject2);
-      localRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localRelativeLayout.setOnClickListener(this.f);
       ((LinearLayout)localObject1).addView(localRelativeLayout);
       localObject1 = new URLImageView(localContext);
       ((URLImageView)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      ((URLImageView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(((IPublicAccountConfigAttr.PaConfigInfo)localObject2).e, null, null, true));
+      ((URLImageView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(((IPublicAccountConfigAttr.PaConfigInfo)localObject2).k, null, null, true));
       ((URLImageView)localObject1).setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
       ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
       localRelativeLayout.addView((View)localObject1);
       localObject1 = new TextView(localContext);
       localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject3).setMargins(AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      ((RelativeLayout.LayoutParams)localObject3).setMargins(AIOUtils.b(20.0F, this.b.getResources()), 0, AIOUtils.b(20.0F, this.b.getResources()), 0);
       ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
       ((TextView)localObject1).setGravity(17);
-      ((TextView)localObject1).setText(((IPublicAccountConfigAttr.PaConfigInfo)localObject2).a);
+      ((TextView)localObject1).setText(((IPublicAccountConfigAttr.PaConfigInfo)localObject2).b);
       ((TextView)localObject1).setTextColor(-1);
       ((TextView)localObject1).setTextSize(2, 16.0F);
       ((TextView)localObject1).setSingleLine(true);
@@ -153,7 +153,7 @@ public class AccountDetailJigsawViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailJigsawViewWrapper
  * JD-Core Version:    0.7.0.1
  */

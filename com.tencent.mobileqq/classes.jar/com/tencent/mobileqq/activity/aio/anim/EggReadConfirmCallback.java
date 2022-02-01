@@ -26,11 +26,11 @@ public class EggReadConfirmCallback
     } else {
       bool2 = false;
     }
-    BaseSessionInfo localBaseSessionInfo = paramAIOContext.a();
+    BaseSessionInfo localBaseSessionInfo = paramAIOContext.O();
     int i;
-    if ((localBaseSessionInfo.jdField_a_of_type_Int != 1) && (localBaseSessionInfo.jdField_a_of_type_Int != 3000))
+    if ((localBaseSessionInfo.a != 1) && (localBaseSessionInfo.a != 3000))
     {
-      if (!UinTypeUtil.b(localBaseSessionInfo.jdField_a_of_type_Int)) {
+      if (!UinTypeUtil.b(localBaseSessionInfo.a)) {
         bool1 = false;
       }
       i = 0;
@@ -90,7 +90,7 @@ public class EggReadConfirmCallback
     }
     else
     {
-      paramAIOContext = paramAIOContext.a().getMessageFacade().getLastMessage(localBaseSessionInfo.jdField_a_of_type_JavaLangString, localBaseSessionInfo.jdField_a_of_type_Int);
+      paramAIOContext = paramAIOContext.a().getMessageFacade().getLastMessage(localBaseSessionInfo.b, localBaseSessionInfo.a);
       if (paramAIOContext != null) {
         if (i != 0) {
           l1 = paramAIOContext.shmsgseq;
@@ -109,19 +109,19 @@ public class EggReadConfirmCallback
       QLog.d("AioAnimationDetector", 2, paramAIOContext.toString());
     }
     paramAIOContext = AioAnimationDetector.a();
-    paramAIOContext.jdField_a_of_type_Boolean = bool2;
-    paramAIOContext.jdField_a_of_type_Long = l1;
+    paramAIOContext.b = bool2;
+    paramAIOContext.a = l1;
     if (!bool2) {
       l1 += 1L;
     }
-    com.tencent.mobileqq.activity.ChatActivityFacade.jdField_a_of_type_Long = l1;
+    com.tencent.mobileqq.activity.ChatActivityFacade.a = l1;
   }
   
   public void b(AIOContext paramAIOContext) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.EggReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

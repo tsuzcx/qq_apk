@@ -2,15 +2,15 @@ package com.tencent.mobileqq.activity.home.impl;
 
 public class FrameInfoBean
 {
-  private int jdField_a_of_type_Int;
-  private Class jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private Class a;
+  private boolean b;
   private int c;
-  private int d;
+  private String d;
   private int e;
   private int f;
+  private int g;
+  private int h;
+  private int i;
   
   public FrameInfoBean(Class paramClass, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
@@ -19,43 +19,28 @@ public class FrameInfoBean
   
   public FrameInfoBean(Class paramClass, boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramClass;
+    this.b = paramBoolean;
+    this.c = paramInt1;
+    this.d = paramString;
+    this.e = paramInt2;
+    this.f = paramInt3;
+    this.g = paramInt4;
+    this.h = paramInt5;
+    this.i = paramInt6;
   }
   
   public Class a()
   {
-    return this.jdField_a_of_type_JavaLangClass;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
+  public boolean b()
   {
     return this.b;
   }
@@ -65,7 +50,7 @@ public class FrameInfoBean
     return this.c;
   }
   
-  public int d()
+  public String d()
   {
     return this.d;
   }
@@ -79,10 +64,25 @@ public class FrameInfoBean
   {
     return this.f;
   }
+  
+  public int g()
+  {
+    return this.g;
+  }
+  
+  public int h()
+  {
+    return this.h;
+  }
+  
+  public int i()
+  {
+    return this.i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.FrameInfoBean
  * JD-Core Version:    0.7.0.1
  */

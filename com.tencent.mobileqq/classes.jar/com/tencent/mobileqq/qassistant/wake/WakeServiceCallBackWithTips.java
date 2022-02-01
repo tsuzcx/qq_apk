@@ -8,28 +8,28 @@ import mqq.app.MobileQQ;
 public class WakeServiceCallBackWithTips
   extends WakeServiceCallBack
 {
-  public static WakeServiceCallBack b()
+  public static WakeServiceCallBack c()
   {
     return WakeServiceCallBackWithTips.WakeServiceCallBackWithTipsHolder.a();
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (QQAssistantGuider.a))
+    if ((paramBoolean) && (QQAssistantGuider.b))
     {
       if (QBaseActivity.sTopActivity != null) {
         new WakeDialog(QBaseActivity.sTopActivity, true).show();
       } else {
-        QQToast.a(MobileQQ.sMobileQQ, 2, MobileQQ.sMobileQQ.getString(2131695324), 1).a();
+        QQToast.makeText(MobileQQ.sMobileQQ, 2, MobileQQ.sMobileQQ.getString(2131893059), 1).show();
       }
       AssistantUtils.a("HelloQQWake", "WakeServiceCallBackWithTips show tips");
-      QQAssistantGuider.a = false;
+      QQAssistantGuider.b = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeServiceCallBackWithTips
  * JD-Core Version:    0.7.0.1
  */

@@ -5,45 +5,42 @@ import com.tencent.qphone.base.util.QLog;
 public class ARLocalGestureCircleRecogResult
   extends ARLocalRecogResultBase
 {
-  public long a;
-  public ARLocalGestureCircleRecogResult.ARCircleResult a;
-  public ARLocalGestureCircleRecogResult.ARGestureResult a;
+  public long a = 0L;
+  public ARLocalGestureCircleRecogResult.ARGestureResult b = new ARLocalGestureCircleRecogResult.ARGestureResult();
+  public ARLocalGestureCircleRecogResult.ARCircleResult c = new ARLocalGestureCircleRecogResult.ARCircleResult();
   
   public ARLocalGestureCircleRecogResult()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARGestureResult = new ARLocalGestureCircleRecogResult.ARGestureResult();
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult = new ARLocalGestureCircleRecogResult.ARCircleResult();
     a();
   }
   
   public void a()
   {
     QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
-    this.b = 4096L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARGestureResult.a();
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult.a();
+    this.j = 4096L;
+    this.a = 0L;
+    this.b.a();
+    this.c.a();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARLocalGestureCircleRecogResult{recogType = ");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", frameIdx = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", gestureResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARGestureResult);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", circleResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult
  * JD-Core Version:    0.7.0.1
  */

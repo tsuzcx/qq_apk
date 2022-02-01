@@ -22,7 +22,7 @@ class BaseStageView$4
     if (paramLottieDrawable != null)
     {
       localObject = this.a;
-      ((BaseStageView)localObject).a = paramLottieDrawable;
+      ((BaseStageView)localObject).w = paramLottieDrawable;
       BaseStageView.a((BaseStageView)localObject);
     }
   }

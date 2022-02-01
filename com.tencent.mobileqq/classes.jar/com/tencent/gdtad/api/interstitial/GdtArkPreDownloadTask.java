@@ -10,36 +10,19 @@ import java.lang.ref.WeakReference;
 
 final class GdtArkPreDownloadTask
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = -2147483648L;
-  private ArkAppMgr.IGetAppPathByNameCallback jdField_a_of_type_ComTencentArkOpenArkAppMgr$IGetAppPathByNameCallback = new GdtArkPreDownloadTask.6(this);
-  private GdtArkApp jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp;
-  private WeakReference<GdtArkPreDownloadTask.Listener> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  private WeakReference<GdtArkPreDownloadTask.Listener> a;
+  private GdtArkApp b;
+  private long c = -2147483648L;
+  private volatile int d = 0;
+  private boolean e = false;
+  private ArkAppMgr.IGetAppPathByNameCallback f = new GdtArkPreDownloadTask.6(this);
   
   public GdtArkPreDownloadTask(WeakReference<GdtArkPreDownloadTask.Listener> paramWeakReference, GdtArkApp paramGdtArkApp, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp = paramGdtArkApp;
-    this.jdField_a_of_type_Long = paramLong;
-    a();
-  }
-  
-  private String a()
-  {
-    String str;
-    if (a()) {
-      str = ArkAppMgr.getInstance().getAppPathFromLocal(this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp.a);
-    } else {
-      str = null;
-    }
-    GdtLog.b("GdtArkPreDownloadTask", String.format("getPath %s", new Object[] { str }));
-    return str;
-  }
-  
-  private void a()
-  {
-    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.1(this), 4);
+    this.a = paramWeakReference;
+    this.b = paramGdtArkApp;
+    this.c = paramLong;
+    b();
   }
   
   private void a(int paramInt)
@@ -50,12 +33,6 @@ final class GdtArkPreDownloadTask
   private void a(int paramInt1, int paramInt2, long paramLong)
   {
     AdThreadManager.INSTANCE.postDelayed(new GdtArkPreDownloadTask.3(this, paramInt1, paramInt2), 0, paramLong);
-  }
-  
-  private boolean a()
-  {
-    GdtArkApp localGdtArkApp = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtArkApp;
-    return (localGdtArkApp != null) && (localGdtArkApp.a()) && (!TextUtils.isEmpty(AdUin.INSTANCE.getUIN()));
   }
   
   private static boolean a(int paramInt1, int paramInt2)
@@ -81,12 +58,12 @@ final class GdtArkPreDownloadTask
   
   private void b()
   {
-    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.2(this), 0);
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.1(this), 4);
   }
   
   private void b(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (i != paramInt)
     {
       if (i != paramInt) {}
@@ -94,7 +71,7 @@ final class GdtArkPreDownloadTask
       {
         if (a(i, paramInt))
         {
-          this.jdField_a_of_type_Int = paramInt;
+          this.d = paramInt;
           a(paramInt);
         }
         else
@@ -104,22 +81,45 @@ final class GdtArkPreDownloadTask
       }
       finally {}
     }
-    GdtLog.b("GdtArkPreDownloadTask", String.format("setStatus oldStatus:%d newStatus:%d result:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    GdtLog.b("GdtArkPreDownloadTask", String.format("setStatus oldStatus:%d newStatus:%d result:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(this.d) }));
   }
   
-  private void c()
+  private boolean c()
+  {
+    GdtArkApp localGdtArkApp = this.b;
+    return (localGdtArkApp != null) && (localGdtArkApp.a()) && (!TextUtils.isEmpty(AdUin.INSTANCE.getUIN()));
+  }
+  
+  private void d()
+  {
+    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.2(this), 0);
+  }
+  
+  private String e()
+  {
+    String str;
+    if (c()) {
+      str = ArkAppMgr.getInstance().getAppPathFromLocal(this.b.a);
+    } else {
+      str = null;
+    }
+    GdtLog.b("GdtArkPreDownloadTask", String.format("getPath %s", new Object[] { str }));
+    return str;
+  }
+  
+  private void f()
   {
     AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.5(this), 4);
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask
  * JD-Core Version:    0.7.0.1
  */

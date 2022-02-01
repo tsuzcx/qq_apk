@@ -20,7 +20,7 @@ class NearbyTribeAppController$1
       ((Bundle)localObject).putString("REFERER", " https://buluo.qq.com/");
       ((Bundle)localObject).putString("HOST", " buluo.qq.com");
       QLog.e(NearbyTribeAppController.a(this.this$0), 1, "这里已经下架，如果依然发现该log，异常case");
-      localObject = new JSONObject(HttpUtil.openUrl(NearbyTribeAppController.a(this.this$0), "https://buluo.qq.com/cgi-bin/bar/post/get_entry?entry_ids=[18]", "POST", null, (Bundle)localObject));
+      localObject = new JSONObject(HttpUtil.openUrl(NearbyTribeAppController.b(this.this$0), "https://buluo.qq.com/cgi-bin/bar/post/get_entry?entry_ids=[18]", "POST", null, (Bundle)localObject));
       if (((JSONObject)localObject).getInt("retcode") == 0)
       {
         localObject = ((JSONObject)localObject).getJSONObject("result").getJSONObject("18").getString("download_link");
@@ -44,7 +44,7 @@ class NearbyTribeAppController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTribeAppController.1
  * JD-Core Version:    0.7.0.1
  */

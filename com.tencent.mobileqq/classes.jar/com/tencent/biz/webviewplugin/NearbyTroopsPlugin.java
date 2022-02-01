@@ -5,7 +5,7 @@ import android.content.Intent;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -33,7 +33,7 @@ public class NearbyTroopsPlugin
         localStringBuilder.append(paramString);
         QLog.d("NearbyTroopsPlugin", 2, localStringBuilder.toString());
       }
-      Activity localActivity = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.d();
       Intent localIntent = new Intent();
       localStringBuilder = null;
       try
@@ -88,7 +88,7 @@ public class NearbyTroopsPlugin
         ((StringBuilder)localObject1).append(paramString);
         QLog.d("NearbyTroopsPlugin", 2, ((StringBuilder)localObject1).toString());
       }
-      localObject1 = this.mRuntime.a();
+      localObject1 = this.mRuntime.d();
       if (localObject1 != null)
       {
         if (((Activity)localObject1).isFinishing()) {
@@ -120,7 +120,7 @@ public class NearbyTroopsPlugin
         this.a.a((Activity)localObject1);
         if (this.a.a(localMessageForDeliverGiftTips))
         {
-          this.a.a = new NearbyTroopsPlugin.1(this, (String)localObject2);
+          this.a.k = new NearbyTroopsPlugin.1(this, (String)localObject2);
           paramString = new StringBuilder();
           paramString.append("{\"result\":0,\"id\":");
           paramString.append(i);
@@ -166,8 +166,8 @@ public class NearbyTroopsPlugin
   
   protected void onCreate()
   {
-    AppInterface localAppInterface = this.mRuntime.a();
-    Activity localActivity = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
+    Activity localActivity = this.mRuntime.d();
     if (localAppInterface != null)
     {
       if (localActivity == null) {
@@ -181,13 +181,13 @@ public class NearbyTroopsPlugin
   {
     AIOAnimationControlManager localAIOAnimationControlManager = this.a;
     if (localAIOAnimationControlManager != null) {
-      localAIOAnimationControlManager.d();
+      localAIOAnimationControlManager.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NearbyTroopsPlugin
  * JD-Core Version:    0.7.0.1
  */

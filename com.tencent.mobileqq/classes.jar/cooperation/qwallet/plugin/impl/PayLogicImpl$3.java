@@ -14,13 +14,13 @@ class PayLogicImpl$3
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == R.id.x)
+    if (paramView.getId() == R.id.C)
     {
       paramView = ((IQWalletPayApi)QRoute.api(IQWalletPayApi.class)).getIdlePayData(this.this$0.isPCPushDesc);
       this.this$0.startPCPushPay(paramView);
       return;
     }
-    if (paramView.getId() == R.id.w)
+    if (paramView.getId() == R.id.B)
     {
       this.val$dialog.dismiss();
       ((IQWalletPayApi)QRoute.api(IQWalletPayApi.class)).clearAllPayData();
@@ -30,7 +30,7 @@ class PayLogicImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.impl.PayLogicImpl.3
  * JD-Core Version:    0.7.0.1
  */

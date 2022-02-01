@@ -12,14 +12,14 @@ class ChatHistoryC2CFileFragment$10$1
   {
     if ((paramInt1 == 3) && (paramInt2 == 0))
     {
-      ReportController.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
-      ChatHistoryC2CFileFragment.a(this.a.a, true);
+      ReportController.b(this.a.b.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
+      ChatHistoryC2CFileFragment.a(this.a.b, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment.10.1
  * JD-Core Version:    0.7.0.1
  */

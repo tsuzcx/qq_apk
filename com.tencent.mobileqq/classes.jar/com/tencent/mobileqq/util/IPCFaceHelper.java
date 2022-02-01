@@ -18,28 +18,28 @@ import mqq.os.MqqHandler;
 public class IPCFaceHelper
   implements Handler.Callback
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  QQAppInterface a;
+  MqqHandler b;
   
   public IPCFaceHelper(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(ThreadManager.getFileThreadLooper(), this);
+    this.a = paramQQAppInterface;
+    this.b = new MqqWeakReferenceHandler(ThreadManager.getFileThreadLooper(), this);
   }
   
   public Setting a(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceSetting(paramString);
+    return this.a.getFaceSetting(paramString);
   }
   
   public String a()
   {
-    return ((IQQAvatarHandlerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "")).getChoosedIP();
+    return ((IQQAvatarHandlerService)this.a.getRuntimeService(IQQAvatarHandlerService.class, "")).getChoosedIP();
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
+    Message localMessage = this.b.obtainMessage();
     localMessage.what = 1;
     Bundle localBundle = new Bundle();
     localBundle.putInt("headType", paramInt1);
@@ -51,8 +51,8 @@ public class IPCFaceHelper
   
   public void a(Setting paramSetting)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.updateSettingTableCache(paramSetting);
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.a.updateSettingTableCache(paramSetting);
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
     localEntityManager.persistOrReplace(paramSetting);
     localEntityManager.close();
   }
@@ -62,7 +62,7 @@ public class IPCFaceHelper
     if (paramLong <= 0L) {
       return;
     }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
     EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
     localEntityTransaction.begin();
     int i = 0;
@@ -74,7 +74,7 @@ public class IPCFaceHelper
         if (localSetting != null)
         {
           localSetting.updateTimestamp = paramLong;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.updateSettingTableCache(localSetting);
+          this.a.updateSettingTableCache(localSetting);
           localEntityManager.update(localSetting);
         }
         i += 1;
@@ -91,7 +91,7 @@ public class IPCFaceHelper
   
   public String b()
   {
-    return ((IQQAvatarHandlerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarHandlerService.class, "")).getChoosedStrangerGroupIP();
+    return ((IQQAvatarHandlerService)this.a.getRuntimeService(IQQAvatarHandlerService.class, "")).getChoosedStrangerGroupIP();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -106,7 +106,7 @@ public class IPCFaceHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.IPCFaceHelper
  * JD-Core Version:    0.7.0.1
  */

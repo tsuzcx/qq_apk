@@ -34,22 +34,14 @@ public class ReadInJoyDynamicChannelAdapter
   extends ReadInJoyDynamicChannelAbstractAdapter<Long, AbsBaseArticleInfo>
   implements ReadInJoyBaseAdapterInterface
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ReadInJoyDynamicChannelAdapter.1(this);
-  private DynamicItemViewHelperCompat jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCompatDynamicItemViewHelperCompat = new DynamicItemViewHelperCompat();
-  private int b = -1;
+  private int h = -1;
+  private DynamicItemViewHelperCompat i = new DynamicItemViewHelperCompat();
+  private View.OnClickListener j = new ReadInJoyDynamicChannelAdapter.1(this);
   
   public ReadInJoyDynamicChannelAdapter(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
   {
     super(paramActivity, paramRecyclerViewWithHeaderFooter, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCompatDynamicItemViewHelperCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, 3);
-  }
-  
-  private AbsBaseArticleInfo a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (AbsBaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    this.i.a(this.b, 3);
   }
   
   private void a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -62,7 +54,7 @@ public class ReadInJoyDynamicChannelAdapter
         if (!TextUtils.isEmpty(paramAbsBaseArticleInfo))
         {
           QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "addViewTypeStyleMap, adapterViewType = ", Integer.valueOf(paramInt), ", styleID = ", paramAbsBaseArticleInfo });
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramAbsBaseArticleInfo);
+          this.e.put(Integer.valueOf(paramInt), paramAbsBaseArticleInfo);
           return;
         }
         QLog.d("ReadInJoyDynamicChannelAdapter", 2, "addViewTypeStyleMap, styleID is null");
@@ -79,9 +71,9 @@ public class ReadInJoyDynamicChannelAdapter
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().a();
+    FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().d();
     AbsBaseArticleInfo localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    if (RIJFeedsType.h(paramAbsBaseArticleInfo))
+    if (RIJFeedsType.l(paramAbsBaseArticleInfo))
     {
       localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
       if (!paramAbsBaseArticleInfo.mNewPolymericInfo.a) {
@@ -89,9 +81,17 @@ public class ReadInJoyDynamicChannelAdapter
       }
     }
     if (localFastWebModule != null) {
-      this.b = localFastWebModule.a(localAbsBaseArticleInfo.mArticleContentUrl, String.valueOf(localAbsBaseArticleInfo.innerUniqueID), localAbsBaseArticleInfo.mSubscribeID, 1, null);
+      this.h = localFastWebModule.a(localAbsBaseArticleInfo.mArticleContentUrl, String.valueOf(localAbsBaseArticleInfo.innerUniqueID), localAbsBaseArticleInfo.mSubscribeID, 1, null);
     }
     b(localAbsBaseArticleInfo);
+  }
+  
+  private AbsBaseArticleInfo b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (AbsBaseArticleInfo)this.a.get(paramInt);
+    }
+    return null;
   }
   
   private void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -101,20 +101,20 @@ public class ReadInJoyDynamicChannelAdapter
       QLog.d("ReadInJoyDynamicChannelAdapter", 2, "startWebFastActivity, articleInfo is null.");
       return;
     }
-    RIJJumpUtils.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramAbsBaseArticleInfo);
+    RIJJumpUtils.a((Activity)this.c, paramAbsBaseArticleInfo);
   }
   
   public BaseViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCompatDynamicItemViewHelperCompat.a(paramInt);
+    boolean bool = this.i.a(paramInt);
     paramViewGroup = null;
     if (bool)
     {
-      localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      localObject = (String)this.e.get(Integer.valueOf(paramInt));
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        paramViewGroup = ProteusSupportUtilBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a(), (String)localObject);
-        if ((paramInt == DynamicItemViewHelperCompatBase.b) && (paramViewGroup != null)) {
+        paramViewGroup = ProteusSupportUtilBase.a(this.b, b(), (String)localObject);
+        if ((paramInt == DynamicItemViewHelperCompatBase.c) && (paramViewGroup != null)) {
           paramViewGroup.setVisibility(8);
         }
         QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, viewType = ", Integer.valueOf(paramInt), ", styleID =", localObject });
@@ -126,7 +126,7 @@ public class ReadInJoyDynamicChannelAdapter
     }
     else if (ProteusSupportUtilDynamic.a(paramInt))
     {
-      paramViewGroup = ProteusSupportUtilDynamic.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt, a());
+      paramViewGroup = ProteusSupportUtilDynamic.a(this.b, paramInt, b());
     }
     else
     {
@@ -135,7 +135,7 @@ public class ReadInJoyDynamicChannelAdapter
     Object localObject = paramViewGroup;
     if (paramViewGroup == null)
     {
-      localObject = new ProteusItemView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext());
+      localObject = new ProteusItemView(this.b.getContext());
       QLog.d("ReadInJoyDynamicChannelAdapter", 2, "proteusItemView is null");
     }
     QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, proteusItemView = ", localObject, ", viewType = ", Integer.valueOf(paramInt) });
@@ -144,7 +144,7 @@ public class ReadInJoyDynamicChannelAdapter
   
   public void a(int paramInt, View paramView)
   {
-    paramView = a(paramInt);
+    paramView = b(paramInt);
     if (paramView == null)
     {
       QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick articleInfo is null.");
@@ -157,48 +157,48 @@ public class ReadInJoyDynamicChannelAdapter
   
   public void a(BaseViewHolder paramBaseViewHolder, int paramInt)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = a(paramInt);
-    int i = paramBaseViewHolder.getItemViewType();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = b(paramInt);
+    int k = paramBaseViewHolder.getItemViewType();
     paramBaseViewHolder = (ProteusItemView)paramBaseViewHolder.itemView;
     if (localAbsBaseArticleInfo != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCompatDynamicItemViewHelperCompat.a(i))
+      if (this.i.a(k))
       {
-        if (i == DynamicItemViewHelperCompatBase.b) {
+        if (k == DynamicItemViewHelperCompatBase.c) {
           paramBaseViewHolder.setVisibility(8);
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCompatDynamicItemViewHelperCompat.a(paramBaseViewHolder, i, localAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
+          this.i.a(paramBaseViewHolder, k, localAbsBaseArticleInfo, this.b, paramInt);
         }
       }
-      else if (ProteusSupportUtilDynamic.a(i)) {
-        ProteusSupportUtilDynamic.a(paramBaseViewHolder, i, localAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt, a());
+      else if (ProteusSupportUtilDynamic.a(k)) {
+        ProteusSupportUtilDynamic.a(paramBaseViewHolder, k, localAbsBaseArticleInfo, this.b, paramInt, b());
       } else {
         QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onBindViewHolder not the right type");
       }
       a(Long.valueOf(localAbsBaseArticleInfo.mArticleID), localAbsBaseArticleInfo);
     }
-    QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, articleInfo = ", localAbsBaseArticleInfo, ", proteusItemView = ", paramBaseViewHolder, ", position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
+    QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, articleInfo = ", localAbsBaseArticleInfo, ", proteusItemView = ", paramBaseViewHolder, ", position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(k) });
   }
   
-  public void b()
+  public void e()
   {
-    FastWebModule localFastWebModule = ((ReadInJoyLogicManager)ReadInJoyUtils.a().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().a();
+    FastWebModule localFastWebModule = ((ReadInJoyLogicManager)ReadInJoyUtils.b().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER)).getReadInJoyLogicEngine().d();
     if (localFastWebModule != null) {
-      localFastWebModule.a(this.b);
+      localFastWebModule.a(this.h);
     }
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+    if (this.e != null) {
+      this.e.clear();
     }
   }
   
   public int getItemViewType(int paramInt)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = a(paramInt);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = b(paramInt);
     if (localAbsBaseArticleInfo != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCompatDynamicItemViewHelperCompat.a(localAbsBaseArticleInfo))
+      if (this.i.a(localAbsBaseArticleInfo))
       {
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCompatDynamicItemViewHelperCompat.a(localAbsBaseArticleInfo);
+        paramInt = this.i.b(localAbsBaseArticleInfo);
         a(paramInt, localAbsBaseArticleInfo);
         return paramInt;
       }
@@ -214,7 +214,7 @@ public class ReadInJoyDynamicChannelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.compat.ReadInJoyDynamicChannelAdapter
  * JD-Core Version:    0.7.0.1
  */

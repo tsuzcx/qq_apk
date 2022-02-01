@@ -10,24 +10,24 @@ import org.jetbrains.annotations.NotNull;
 
 class FullScreenInputHelper$TextChangeInfo
 {
-  private int jdField_a_of_type_Int;
-  private Editable jdField_a_of_type_AndroidTextEditable;
-  private int jdField_b_of_type_Int;
-  private Editable jdField_b_of_type_AndroidTextEditable;
-  private int jdField_c_of_type_Int;
-  private Editable jdField_c_of_type_AndroidTextEditable;
-  private int jdField_d_of_type_Int = -1;
-  private Editable jdField_d_of_type_AndroidTextEditable;
+  private Editable a;
+  private Editable b;
+  private Editable c;
+  private Editable d;
+  private int e;
+  private int f;
+  private int g;
+  private int h = -1;
   
   FullScreenInputHelper$TextChangeInfo(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidTextEditable = new SpannableStringBuilder(paramCharSequence);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
+    this.a = new SpannableStringBuilder(paramCharSequence);
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.g = paramInt3;
     try
     {
-      this.jdField_d_of_type_Int = a();
+      this.h = a();
       return;
     }
     catch (Throwable paramCharSequence)
@@ -38,23 +38,23 @@ class FullScreenInputHelper$TextChangeInfo
   
   int a()
   {
-    if (this.jdField_a_of_type_AndroidTextEditable.length() <= 0) {
+    if (this.a.length() <= 0) {
       return -1;
     }
     Object localObject;
     Editable localEditable;
-    if ((this.jdField_b_of_type_Int > 0) && (this.jdField_c_of_type_Int > 0))
+    if ((this.f > 0) && (this.g > 0))
     {
-      this.jdField_c_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(0, this.jdField_a_of_type_Int));
-      localObject = this.jdField_a_of_type_AndroidTextEditable;
-      this.jdField_d_of_type_AndroidTextEditable = ((Editable)((Editable)localObject).subSequence(this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, ((Editable)localObject).length()));
+      this.c = ((Editable)this.a.subSequence(0, this.e));
+      localObject = this.a;
+      this.d = ((Editable)((Editable)localObject).subSequence(this.e + this.f, ((Editable)localObject).length()));
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder("[mix]handle replace prefix: ");
-        if (!TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable))
+        if (!TextUtils.isEmpty(this.c))
         {
           ((StringBuilder)localObject).append(" prefix tail: ");
-          localEditable = this.jdField_c_of_type_AndroidTextEditable;
+          localEditable = this.c;
           ((StringBuilder)localObject).append(localEditable.charAt(localEditable.length() - 1));
         }
         else
@@ -62,10 +62,10 @@ class FullScreenInputHelper$TextChangeInfo
           ((StringBuilder)localObject).append("null");
         }
         ((StringBuilder)localObject).append(" suffix: ");
-        if (!TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable))
+        if (!TextUtils.isEmpty(this.d))
         {
           ((StringBuilder)localObject).append(" suffix head: ");
-          ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable.charAt(0));
+          ((StringBuilder)localObject).append(this.d.charAt(0));
         }
         else
         {
@@ -73,24 +73,24 @@ class FullScreenInputHelper$TextChangeInfo
         }
         QLog.d("FullScreenInputHelper", 2, new Object[] { localObject });
       }
-      if ((TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
+      if ((TextUtils.isEmpty(this.c)) && (FullScreenInputHelper.a(this.d, "￼"))) {
         return 12;
       }
-      if ((TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) && (FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼"))) {
+      if ((TextUtils.isEmpty(this.d)) && (FullScreenInputHelper.b(this.c, "￼"))) {
         return 13;
       }
-      if ((FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "\n")))
+      if ((FullScreenInputHelper.b(this.c, "￼")) && (FullScreenInputHelper.a(this.d, "\n")))
       {
-        if ((this.jdField_d_of_type_AndroidTextEditable.length() >= 2) && (this.jdField_d_of_type_AndroidTextEditable.charAt(1) == "￼".charAt(0))) {
+        if ((this.d.length() >= 2) && (this.d.charAt(1) == "￼".charAt(0))) {
           return 14;
         }
         return 15;
       }
-      if ((FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "\n")) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼")))
+      if ((FullScreenInputHelper.b(this.c, "\n")) && (FullScreenInputHelper.a(this.d, "￼")))
       {
-        if (this.jdField_c_of_type_AndroidTextEditable.length() >= 2)
+        if (this.c.length() >= 2)
         {
-          localObject = this.jdField_c_of_type_AndroidTextEditable;
+          localObject = this.c;
           if (((Editable)localObject).charAt(((Editable)localObject).length() - 2) == "￼".charAt(0)) {
             return 16;
           }
@@ -99,18 +99,18 @@ class FullScreenInputHelper$TextChangeInfo
       }
       return -1;
     }
-    if (this.jdField_b_of_type_Int > 0)
+    if (this.f > 0)
     {
-      this.jdField_c_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(0, this.jdField_a_of_type_Int));
-      localObject = this.jdField_a_of_type_AndroidTextEditable;
-      this.jdField_d_of_type_AndroidTextEditable = ((Editable)((Editable)localObject).subSequence(this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, ((Editable)localObject).length()));
+      this.c = ((Editable)this.a.subSequence(0, this.e));
+      localObject = this.a;
+      this.d = ((Editable)((Editable)localObject).subSequence(this.e + this.f, ((Editable)localObject).length()));
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder("[mix]handle delete prefix: ");
-        if (!TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable))
+        if (!TextUtils.isEmpty(this.c))
         {
           ((StringBuilder)localObject).append(" prefix tail: ");
-          localEditable = this.jdField_c_of_type_AndroidTextEditable;
+          localEditable = this.c;
           ((StringBuilder)localObject).append(localEditable.charAt(localEditable.length() - 1));
         }
         else
@@ -118,10 +118,10 @@ class FullScreenInputHelper$TextChangeInfo
           ((StringBuilder)localObject).append("null");
         }
         ((StringBuilder)localObject).append(" suffix: ");
-        if (!TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable))
+        if (!TextUtils.isEmpty(this.d))
         {
           ((StringBuilder)localObject).append(" suffix head: ");
-          ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable.charAt(0));
+          ((StringBuilder)localObject).append(this.d.charAt(0));
         }
         else
         {
@@ -129,45 +129,45 @@ class FullScreenInputHelper$TextChangeInfo
         }
         QLog.d("FullScreenInputHelper", 2, new Object[] { localObject });
       }
-      localObject = this.jdField_a_of_type_AndroidTextEditable;
-      int i = this.jdField_a_of_type_Int;
-      localObject = ((Editable)localObject).subSequence(i, this.jdField_b_of_type_Int + i).toString();
+      localObject = this.a;
+      int i = this.e;
+      localObject = ((Editable)localObject).subSequence(i, this.f + i).toString();
       if ((((String)localObject).length() == 1) && (((String)localObject).equals("\n")))
       {
-        if ((FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
+        if ((FullScreenInputHelper.b(this.c, "￼")) && (FullScreenInputHelper.a(this.d, "￼"))) {
           return 6;
         }
-        if ((!FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (!FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "\n")) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
+        if ((!FullScreenInputHelper.b(this.c, "￼")) && (!FullScreenInputHelper.b(this.c, "\n")) && (FullScreenInputHelper.a(this.d, "￼"))) {
           return 8;
         }
-        if ((FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (!FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼")) && (!FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "\n"))) {
+        if ((FullScreenInputHelper.b(this.c, "￼")) && (!FullScreenInputHelper.a(this.d, "￼")) && (!FullScreenInputHelper.a(this.d, "\n"))) {
           return 7;
         }
         return -1;
       }
-      if ((FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
+      if ((FullScreenInputHelper.b(this.c, "￼")) && (FullScreenInputHelper.a(this.d, "￼"))) {
         return 9;
       }
-      if ((!FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (!FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "\n")) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
+      if ((!FullScreenInputHelper.b(this.c, "￼")) && (!FullScreenInputHelper.b(this.c, "\n")) && (FullScreenInputHelper.a(this.d, "￼"))) {
         return 10;
       }
-      if ((FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (!FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼")) && (!FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "\n"))) {
+      if ((FullScreenInputHelper.b(this.c, "￼")) && (!FullScreenInputHelper.a(this.d, "￼")) && (!FullScreenInputHelper.a(this.d, "\n"))) {
         return 11;
       }
       return -1;
     }
-    if (this.jdField_c_of_type_Int > 0)
+    if (this.g > 0)
     {
-      this.jdField_c_of_type_AndroidTextEditable = ((Editable)this.jdField_a_of_type_AndroidTextEditable.subSequence(0, this.jdField_a_of_type_Int));
-      localObject = this.jdField_a_of_type_AndroidTextEditable;
-      this.jdField_d_of_type_AndroidTextEditable = ((Editable)((Editable)localObject).subSequence(this.jdField_a_of_type_Int, ((Editable)localObject).length()));
+      this.c = ((Editable)this.a.subSequence(0, this.e));
+      localObject = this.a;
+      this.d = ((Editable)((Editable)localObject).subSequence(this.e, ((Editable)localObject).length()));
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder("[mix]handle add prefix: ");
-        if (!TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable))
+        if (!TextUtils.isEmpty(this.c))
         {
           ((StringBuilder)localObject).append(" prefix tail: ");
-          localEditable = this.jdField_c_of_type_AndroidTextEditable;
+          localEditable = this.c;
           ((StringBuilder)localObject).append(localEditable.charAt(localEditable.length() - 1));
         }
         else
@@ -175,10 +175,10 @@ class FullScreenInputHelper$TextChangeInfo
           ((StringBuilder)localObject).append("null");
         }
         ((StringBuilder)localObject).append(" suffix: ");
-        if (!TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable))
+        if (!TextUtils.isEmpty(this.d))
         {
           ((StringBuilder)localObject).append(" suffix head: ");
-          ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable.charAt(0));
+          ((StringBuilder)localObject).append(this.d.charAt(0));
         }
         else
         {
@@ -186,24 +186,24 @@ class FullScreenInputHelper$TextChangeInfo
         }
         QLog.d("FullScreenInputHelper", 2, new Object[] { localObject });
       }
-      if ((TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼"))) {
+      if ((TextUtils.isEmpty(this.c)) && (FullScreenInputHelper.a(this.d, "￼"))) {
         return 0;
       }
-      if ((TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) && (FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼"))) {
+      if ((TextUtils.isEmpty(this.d)) && (FullScreenInputHelper.b(this.c, "￼"))) {
         return 1;
       }
-      if ((FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "￼")) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "\n")))
+      if ((FullScreenInputHelper.b(this.c, "￼")) && (FullScreenInputHelper.a(this.d, "\n")))
       {
-        if ((this.jdField_d_of_type_AndroidTextEditable.length() >= 2) && (this.jdField_d_of_type_AndroidTextEditable.charAt(1) == "￼".charAt(0))) {
+        if ((this.d.length() >= 2) && (this.d.charAt(1) == "￼".charAt(0))) {
           return 2;
         }
         return 3;
       }
-      if ((FullScreenInputHelper.b(this.jdField_c_of_type_AndroidTextEditable, "\n")) && (FullScreenInputHelper.a(this.jdField_d_of_type_AndroidTextEditable, "￼")))
+      if ((FullScreenInputHelper.b(this.c, "\n")) && (FullScreenInputHelper.a(this.d, "￼")))
       {
-        if (this.jdField_c_of_type_AndroidTextEditable.length() >= 2)
+        if (this.c.length() >= 2)
         {
-          localObject = this.jdField_c_of_type_AndroidTextEditable;
+          localObject = this.c;
           if (((Editable)localObject).charAt(((Editable)localObject).length() - 2) == "￼".charAt(0)) {
             return 4;
           }
@@ -214,36 +214,21 @@ class FullScreenInputHelper$TextChangeInfo
     return -1;
   }
   
-  Editable a()
-  {
-    int i = this.jdField_c_of_type_Int;
-    if (i <= 0) {
-      return new SpannableStringBuilder();
-    }
-    Editable localEditable = this.jdField_b_of_type_AndroidTextEditable;
-    if (localEditable != null)
-    {
-      int j = this.jdField_a_of_type_Int;
-      return (Editable)localEditable.subSequence(j, i + j);
-    }
-    return new SpannableStringBuilder();
-  }
-  
   void a(Editable paramEditable)
   {
-    this.jdField_b_of_type_AndroidTextEditable = paramEditable;
+    this.b = paramEditable;
   }
   
   void a(EditText paramEditText)
   {
-    if (this.jdField_b_of_type_AndroidTextEditable.length() <= 0) {
+    if (this.b.length() <= 0) {
       return;
     }
-    Editable localEditable = a();
+    Editable localEditable = b();
     paramEditText = paramEditText.getText();
     int i = Selection.getSelectionStart(paramEditText);
     int j = i;
-    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_AndroidTextEditable.length())
+    if (this.e == this.a.length())
     {
       j = i;
       if (FullScreenInputHelper.b(localEditable, "￼"))
@@ -252,7 +237,7 @@ class FullScreenInputHelper$TextChangeInfo
         j = i + 1;
       }
     }
-    i = this.jdField_d_of_type_Int;
+    i = this.h;
     int k = 2;
     Object localObject;
     switch (i)
@@ -264,7 +249,7 @@ class FullScreenInputHelper$TextChangeInfo
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[mix] handle other at position: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.e);
       QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       i = j;
       break;
@@ -273,11 +258,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle replace '[text]\\n_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       i = j;
@@ -291,11 +276,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle replace '[img]\\n_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       i = j;
@@ -309,11 +294,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle replace '[img]_\\n[text]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       i = j;
@@ -330,11 +315,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle replace '[img]_\\n[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       i = j;
@@ -348,11 +333,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle replace '[img]_' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       localEditable.insert(0, "\n");
@@ -362,11 +347,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle replace '_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       localEditable.append("\n");
@@ -376,28 +361,28 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle del '[img]_[text]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_c_of_type_AndroidTextEditable.append("\n");
+      this.c.append("\n");
       break;
     case 10: 
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle del '[text]_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_c_of_type_AndroidTextEditable.append("\n");
+      this.c.append("\n");
       i = j;
       break;
     case 9: 
@@ -405,60 +390,60 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle del '[img]_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_c_of_type_AndroidTextEditable.append("\n");
+      this.c.append("\n");
       break;
     case 8: 
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle del line '[text]_\\n_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = this.jdField_c_of_type_AndroidTextEditable;
-      ((Editable)localObject).delete(((Editable)localObject).length() - 1, this.jdField_c_of_type_AndroidTextEditable.length());
-      this.jdField_c_of_type_AndroidTextEditable.append("\n");
+      localObject = this.c;
+      ((Editable)localObject).delete(((Editable)localObject).length() - 1, this.c.length());
+      this.c.append("\n");
       break;
     case 7: 
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle del line '[img]_\\n_[text]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = this.jdField_c_of_type_AndroidTextEditable;
-      ((Editable)localObject).delete(((Editable)localObject).length() - 1, this.jdField_c_of_type_AndroidTextEditable.length());
+      localObject = this.c;
+      ((Editable)localObject).delete(((Editable)localObject).length() - 1, this.c.length());
       break;
     case 6: 
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle del line '[img]_\\n_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = this.jdField_c_of_type_AndroidTextEditable;
-      ((Editable)localObject).delete(((Editable)localObject).length() - 1, this.jdField_c_of_type_AndroidTextEditable.length());
+      localObject = this.c;
+      ((Editable)localObject).delete(((Editable)localObject).length() - 1, this.c.length());
       i = j - 1;
       break;
     case 5: 
@@ -466,11 +451,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle add '[text]\\n_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       i = j;
@@ -485,11 +470,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle add '[img]\\n_[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       i = j;
@@ -504,11 +489,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle add '[img]_\\n[text]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       i = j;
@@ -528,11 +513,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle add '[img]_\\n[img]' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       i = j;
@@ -546,11 +531,11 @@ class FullScreenInputHelper$TextChangeInfo
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[mix] handle add '[img]_' at position: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" prefix: ");
-        ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.c);
         ((StringBuilder)localObject).append(" suffix: ");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+        ((StringBuilder)localObject).append(this.d);
         QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
       }
       localEditable.insert(0, "\n");
@@ -561,33 +546,48 @@ class FullScreenInputHelper$TextChangeInfo
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[mix] handle add '_[img]' at position: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.e);
       ((StringBuilder)localObject).append(" prefix: ");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append(" suffix: ");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+      ((StringBuilder)localObject).append(this.d);
       QLog.d("FullScreenInputHelper", 2, ((StringBuilder)localObject).toString());
     }
     localEditable.append("\n");
     i = j;
     label2127:
-    if (this.jdField_d_of_type_Int != -1)
+    if (this.h != -1)
     {
       localObject = new SpannableStringBuilder();
-      if (!TextUtils.isEmpty(this.jdField_c_of_type_AndroidTextEditable)) {
-        ((Editable)localObject).append(this.jdField_c_of_type_AndroidTextEditable);
+      if (!TextUtils.isEmpty(this.c)) {
+        ((Editable)localObject).append(this.c);
       }
       if (!TextUtils.isEmpty(localEditable)) {
         ((Editable)localObject).append(localEditable);
       }
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_AndroidTextEditable)) {
-        ((Editable)localObject).append(this.jdField_d_of_type_AndroidTextEditable);
+      if (!TextUtils.isEmpty(this.d)) {
+        ((Editable)localObject).append(this.d);
       }
-      FullScreenInputHelper.c(false);
+      FullScreenInputHelper.g(false);
       paramEditText.replace(0, paramEditText.length(), (CharSequence)localObject);
       Selection.setSelection(paramEditText, Math.min(i, ((Editable)localObject).length()));
-      FullScreenInputHelper.c(true);
+      FullScreenInputHelper.g(true);
     }
+  }
+  
+  Editable b()
+  {
+    int i = this.g;
+    if (i <= 0) {
+      return new SpannableStringBuilder();
+    }
+    Editable localEditable = this.b;
+    if (localEditable != null)
+    {
+      int j = this.e;
+      return (Editable)localEditable.subSequence(j, i + j);
+    }
+    return new SpannableStringBuilder();
   }
   
   @NotNull
@@ -595,22 +595,22 @@ class FullScreenInputHelper$TextChangeInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<TextChangeInfo> {textBefore: ");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidTextEditable);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" textAfter: ");
-    localStringBuilder.append(this.jdField_b_of_type_AndroidTextEditable);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" indexChange: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" countAdded: ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" countDeleted: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.TextChangeInfo
  * JD-Core Version:    0.7.0.1
  */

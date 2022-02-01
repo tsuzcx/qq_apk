@@ -17,13 +17,13 @@ final class RIJStatisticCollectorReport$3
     try
     {
       HashMap localHashMap = new HashMap();
-      localObject = this.jdField_a_of_type_OrgJsonJSONObject.keys();
+      localObject = this.a.keys();
       while (((Iterator)localObject).hasNext())
       {
         String str = ((Iterator)localObject).next().toString();
-        localHashMap.put(str, this.jdField_a_of_type_OrgJsonJSONObject.optString(str));
+        localHashMap.put(str, this.a.optString(str));
       }
-      StatisticCollector.getInstance(this.jdField_a_of_type_MqqAppAppRuntime.getApplication()).collectPerformance(null, "actKanDianViolaPageDataNew", this.jdField_a_of_type_Boolean, -1L, -1L, localHashMap, null, true);
+      StatisticCollector.getInstance(this.b.getApplication()).collectPerformance(null, "actKanDianViolaPageDataNew", this.c, -1L, -1L, localHashMap, null, true);
       return;
     }
     catch (Exception localException)
@@ -37,7 +37,7 @@ final class RIJStatisticCollectorReport$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJStatisticCollectorReport.3
  * JD-Core Version:    0.7.0.1
  */

@@ -25,30 +25,30 @@ public class EditJumpToPtu$UIHandler
         if (i != 3) {
           return;
         }
-        this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b(0);
-        this.a.b();
+        this.a.t.d(0);
+        this.a.d();
         return;
       }
       paramMessage = (Bitmap)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(paramMessage, false);
-      this.a.jdField_a_of_type_Boolean = true;
+      this.a.t.a(paramMessage, false);
+      this.a.c = true;
       return;
     }
     if (EditJumpToPtu.a(this.a) != null)
     {
-      VideoEditReport.b("0X80080E3", VideoEditReport.a);
+      VideoEditReport.b("0X80080E3", VideoEditReport.c);
       paramMessage = new ArrayList();
       paramMessage.add(Uri.parse(EditJumpToPtu.a(this.a)));
       paramMessage = new Intent("", Uri.parse("pituopenapi://TTPTBEAUTIFY?back=1&v=490&refer=qqimageedit")).setClassName("com.tencent.ttpic", "com.tencent.ttpic.module.MainActivity").putParcelableArrayListExtra("android.intent.extra.STREAM", paramMessage);
       paramMessage.putExtra("big_brother_source_key", "biz_src_jc_editor");
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().startActivityForResult(paramMessage, 100);
+      this.a.u.getActivity().startActivityForResult(paramMessage, 100);
     }
-    this.a.b();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditJumpToPtu.UIHandler
  * JD-Core Version:    0.7.0.1
  */

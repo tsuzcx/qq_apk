@@ -10,9 +10,9 @@ import org.json.JSONObject;
 public class QVipColorNickProcessor
   extends BaseQVipConfigProcessor<QVipColorNickConfig>
 {
-  public static QVipColorNickConfig c()
+  public static QVipColorNickConfig e()
   {
-    return (QVipColorNickConfig)QConfigManager.a().a(412);
+    return (QVipColorNickConfig)QConfigManager.b().b(412);
   }
   
   @NonNull
@@ -28,7 +28,7 @@ public class QVipColorNickProcessor
     boolean bool = false;
     try
     {
-      if (new JSONObject(paramArrayOfQConfItem[0].a).optInt("allow_edit_color_nick", 1) == 1) {
+      if (new JSONObject(paramArrayOfQConfItem[0].b).optInt("allow_edit_color_nick", 1) == 1) {
         bool = true;
       }
       localQVipColorNickConfig.a = bool;
@@ -62,7 +62,7 @@ public class QVipColorNickProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipColorNickProcessor
  * JD-Core Version:    0.7.0.1
  */

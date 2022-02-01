@@ -14,7 +14,7 @@ import okhttp3.ResponseBody;
 class RequestProxyImpl$1
   implements Callback
 {
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private volatile boolean d = false;
   
   RequestProxyImpl$1(RequestProxyImpl paramRequestProxyImpl, String paramString, RequestProxy.RequestListener paramRequestListener) {}
   
@@ -22,28 +22,28 @@ class RequestProxyImpl$1
   {
     paramCall = new StringBuilder();
     paramCall.append("httpConnect err url:");
-    paramCall.append(this.jdField_a_of_type_JavaLangString);
+    paramCall.append(this.a);
     QLog.e("RequestProxyImpl", 1, paramCall.toString(), paramIOException);
     if ("Canceled".equals(paramIOException.getLocalizedMessage()))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(-5, "request error:cancel");
+      this.d = true;
+      this.b.onRequestFailed(-5, "request error:cancel");
     }
     else
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(HttpUtil.a(paramIOException, -1), "request error:network");
+      this.b.onRequestFailed(HttpUtil.a(paramIOException, -1), "request error:network");
     }
-    this.jdField_a_of_type_ComTencentQqminiProxyimplRequestProxyImpl.a.remove(this.jdField_a_of_type_JavaLangString);
+    this.c.a.remove(this.a);
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
     int i = paramResponse.code();
     Map localMap = paramResponse.headers().toMultimap();
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestHeadersReceived(i, localMap);
+    this.b.onRequestHeadersReceived(i, localMap);
     paramCall = null;
     try
     {
@@ -54,13 +54,13 @@ class RequestProxyImpl$1
     {
       paramResponse.printStackTrace();
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestSucceed(i, paramCall, localMap);
-    this.jdField_a_of_type_ComTencentQqminiProxyimplRequestProxyImpl.a.remove(this.jdField_a_of_type_JavaLangString);
+    this.b.onRequestSucceed(i, paramCall, localMap);
+    this.c.a.remove(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.RequestProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

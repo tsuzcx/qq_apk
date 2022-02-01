@@ -22,43 +22,29 @@ import mqq.app.AppRuntime;
 
 public class MsgProxyUtils
 {
-  public static MsgProxyUtils.Callback a;
-  static Comparator<MessageRecord> a;
-  public static final int[] a;
-  public static final int[] b;
-  public static final int[] c;
-  public static final int[] d;
-  public static final int[] e;
-  public static final int[] f;
-  public static final int[] g;
-  public static final int[] h;
-  public static final int[] i;
-  public static final int[] j;
-  public static final int[] k;
-  public static final int[] l;
+  public static MsgProxyUtils.Callback a = new MsgProxyUtilsDummyCallback();
+  public static final int[] b = { -2031, -2035, -2036, -2038, -2042, -2043, -5040, -5021 };
+  public static final int[] c = { -3006, -2035, -2036, -2038 };
+  public static final int[] d = { -1004, -1012, -4002, -4003, -4004, -1047, -1013, -2030, -4009, -4012, -1016, -1017, -1050, -2021, -1041, -1043, -1044, -1045, -5000, -5001, 1018, -2016, 2024, -2042, -5005, -5006, -1046, -3013, -3014, -2029, -2034, -2033, -2043, -2041, -5011, -2049, -2063, -3016 };
+  public static final int[] e = { -4003, -4020, -4004, -4009, -5011 };
+  public static final int[] f = { -1000, -2000, -2002, -2005, -1035, -1036, -1037, -20000, -2007, -2011, -1051, -8018 };
+  public static final int[] g = { -2000, -2002, -2007, -2058, -2011, -2020, -2022, -1051, -1035, -2057, -7001, -2071, -8018 };
+  public static final int[] h = { -1001, -2009, -2016, -4008 };
+  public static final int[] i = { -2030, -1047, -5040 };
+  public static final int[] j = { -5040, -5020, -5021, -5022, -5023 };
+  public static final int[] k = { 1000, 1004, 1020 };
+  public static final int[] l = { 1001, 10002, 1010 };
+  public static final int[] m = { 0, 1, 3000, 1025, 1024, 10007 };
+  static Comparator<MessageRecord> n = new MsgProxyUtils.1();
   
   static
   {
-    jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback = new MsgProxyUtilsDummyCallback();
-    jdField_a_of_type_ArrayOfInt = new int[] { -2031, -2035, -2036, -2038, -2042, -2043, -5040, -5021 };
-    b = new int[] { -3006, -2035, -2036, -2038 };
-    c = new int[] { -1004, -1012, -4002, -4003, -4004, -1047, -1013, -2030, -4009, -4012, -1016, -1017, -1050, -2021, -1041, -1043, -1044, -1045, -5000, -5001, 1018, -2016, 2024, -2042, -5005, -5006, -1046, -3013, -3014, -2029, -2034, -2033, -2043, -2041, -5011, -2049, -2063, -3016 };
-    d = new int[] { -4003, -4020, -4004, -4009, -5011 };
-    e = new int[] { -1000, -2000, -2002, -2005, -1035, -1036, -1037, -20000, -2007, -2011, -1051 };
-    f = new int[] { -2000, -2002, -2007, -2058, -2011, -2020, -2022, -1051, -1035, -2057, -7001, -2071 };
-    g = new int[] { -1001, -2009, -2016, -4008 };
-    h = new int[] { -2030, -1047, -5040 };
-    i = new int[] { -5040, -5020, -5021, -5022, -5023 };
-    j = new int[] { 1000, 1004, 1020 };
-    k = new int[] { 1001, 10002, 1010 };
-    l = new int[] { 0, 1, 3000, 1025, 1024 };
     InitMsgModule.a();
-    jdField_a_of_type_JavaUtilComparator = new MsgProxyUtils.1();
   }
   
   private static int a()
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.a();
+    return a.a();
   }
   
   public static int a(String paramString)
@@ -74,8 +60,8 @@ public class MsgProxyUtils
   
   public static int a(List<MessageRecord> paramList, MessageCache paramMessageCache)
   {
-    int n = 0;
-    int m = 0;
+    int i2 = 0;
+    int i1 = 0;
     if (paramList != null)
     {
       if (paramList.isEmpty()) {
@@ -85,63 +71,29 @@ public class MsgProxyUtils
       paramList = paramList.iterator();
       for (;;)
       {
-        n = m;
+        i2 = i1;
         if (!paramList.hasNext()) {
           break;
         }
         MessageRecord localMessageRecord = (MessageRecord)paramList.next();
         if ((!localMessageRecord.isread) && (!localMessageRecord.isLongMsg()))
         {
-          m += 1;
+          i1 += 1;
         }
-        else if ((!localMessageRecord.isread) && (localMessageRecord.isLongMsg()) && (!paramMessageCache.a(localMessageRecord)) && (!localHashSet.contains(UinTypeUtil.a(localMessageRecord))))
+        else if ((!localMessageRecord.isread) && (localMessageRecord.isLongMsg()) && (!paramMessageCache.b(localMessageRecord)) && (!localHashSet.contains(UinTypeUtil.a(localMessageRecord))))
         {
-          m += 1;
+          i1 += 1;
           localHashSet.add(UinTypeUtil.a(localMessageRecord));
         }
       }
     }
-    return n;
+    return i2;
   }
   
   @NonNull
   private static MessageRecord a(ArrayList<MessageRecord> paramArrayList)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.a(paramArrayList);
-  }
-  
-  public static String a(int paramInt)
-  {
-    if ((paramInt != 1001) && (paramInt != 10002))
-    {
-      if (paramInt != 1009)
-      {
-        if (paramInt != 1010) {
-          return AppConstants.LBS_HELLO_UIN;
-        }
-        return AppConstants.DATE_UIN;
-      }
-      return AppConstants.SAME_STATE_BOX_UIN;
-    }
-    return AppConstants.LBS_HELLO_UIN;
-  }
-  
-  public static String a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord.istroop != 1000) && (paramMessageRecord.istroop != 1004))
-    {
-      if ((paramMessageRecord.istroop == 1) && (g(paramMessageRecord))) {
-        return "80000000";
-      }
-      if (TextUtils.equals(AppConstants.FILE_ASSISTANT_UIN, paramMessageRecord.senderuin)) {
-        paramMessageRecord.senderuin = paramMessageRecord.selfuin;
-      }
-      return paramMessageRecord.senderuin;
-    }
-    if (paramMessageRecord.isSend()) {
-      return paramMessageRecord.selfuin;
-    }
-    return paramMessageRecord.frienduin;
+    return a.a(paramArrayList);
   }
   
   public static List<MessageRecord> a(List<MessageRecord> paramList, boolean paramBoolean)
@@ -161,32 +113,32 @@ public class MsgProxyUtils
         Collections.sort(paramList, new MsgProxyUtils.2());
       }
       long l1 = ((MessageRecord)paramList.get(paramList.size() - 1)).shmsgseq;
-      int n = paramList.size() - 1;
-      int i1;
-      for (int m = 0; n >= 0; m = i1)
+      int i2 = paramList.size() - 1;
+      int i3;
+      for (int i1 = 0; i2 >= 0; i1 = i3)
       {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.get(n);
+        MessageRecord localMessageRecord = (MessageRecord)paramList.get(i2);
         if ((k(localMessageRecord.msgtype)) && (localMessageRecord.shmsgseq == 0L))
         {
-          localArrayList.add(0, paramList.get(n));
-          i1 = m;
+          localArrayList.add(0, paramList.get(i2));
+          i3 = i1;
         }
         else
         {
           if (l1 - localMessageRecord.shmsgseq > 1L) {
             break;
           }
-          if ((l1 != localMessageRecord.shmsgseq) || (n >= paramList.size() - 1)) {
-            m += 1;
+          if ((l1 != localMessageRecord.shmsgseq) || (i2 >= paramList.size() - 1)) {
+            i1 += 1;
           }
-          l1 = ((MessageRecord)paramList.get(n)).shmsgseq;
-          localArrayList.add(0, paramList.get(n));
-          i1 = m;
-          if (m >= paramInt) {
+          l1 = ((MessageRecord)paramList.get(i2)).shmsgseq;
+          localArrayList.add(0, paramList.get(i2));
+          i3 = i1;
+          if (i1 >= paramInt) {
             return localArrayList;
           }
         }
-        n -= 1;
+        i2 -= 1;
       }
     }
     return localArrayList;
@@ -194,7 +146,7 @@ public class MsgProxyUtils
   
   public static void a(MsgProxyUtils.Callback paramCallback)
   {
-    jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback = paramCallback;
+    a = paramCallback;
   }
   
   public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
@@ -221,22 +173,6 @@ public class MsgProxyUtils
     }
   }
   
-  private static void a(List<MessageRecord> paramList)
-  {
-    int m = 0;
-    while (m < paramList.size())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(m);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("backupAioMsgList = [");
-      localStringBuilder.append(m);
-      localStringBuilder.append("] = ");
-      localStringBuilder.append(localMessageRecord);
-      QLog.d("Q.msg.MsgProxyUtils", 1, localStringBuilder.toString());
-      m += 1;
-    }
-  }
-  
   private static void a(List<MessageRecord> paramList1, int paramInt, MessageRecord paramMessageRecord, List<MessageRecord> paramList2)
   {
     try
@@ -247,9 +183,9 @@ public class MsgProxyUtils
     catch (Exception localException)
     {
       QLog.e("Q.msg.MsgProxyUtils", 1, "addToTailWhenException: ", localException);
-      a(paramList2);
+      b(paramList2);
       paramList1.add(paramMessageRecord);
-      jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.a(localException, paramList2);
+      a.a(localException, paramList2);
     }
   }
   
@@ -264,6 +200,11 @@ public class MsgProxyUtils
           b(paramList, paramT, paramBoolean);
           return;
         }
+        if (paramT.istroop == 10014)
+        {
+          c(paramList, paramT, paramBoolean);
+          return;
+        }
         paramList.add(paramT);
         return;
       }
@@ -273,51 +214,51 @@ public class MsgProxyUtils
   
   public static boolean a(int paramInt)
   {
-    int[] arrayOfInt = j;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = k;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
   public static boolean a(int paramInt1, int paramInt2)
   {
-    return ((UinTypeUtil.a(paramInt1) == 1001) || (UinTypeUtil.a(paramInt1) == 10002)) && (paramInt2 != -3001) && (paramInt2 != -3000) && (paramInt2 != -1032) && (paramInt2 != -1031) && (paramInt2 != -1003);
+    return ((UinTypeUtil.e(paramInt1) == 1001) || (UinTypeUtil.e(paramInt1) == 10002)) && (paramInt2 != -3001) && (paramInt2 != -3000) && (paramInt2 != -1032) && (paramInt2 != -1031) && (paramInt2 != -1003);
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    int[] arrayOfInt = c;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = d;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramMessageRecord.msgtype) {
+      if (arrayOfInt[i1] == paramMessageRecord.msgtype) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
-    return f(paramMessageRecord);
+    return g(paramMessageRecord);
   }
   
   private static <T extends MessageRecord> boolean a(T paramT, MessageRecord paramMessageRecord)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.a(paramT, paramMessageRecord);
+    return a.a(paramT, paramMessageRecord);
   }
   
   public static boolean a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, boolean paramBoolean)
   {
-    int m = paramMessageRecord1.msgtype;
-    int n = paramMessageRecord2.msgtype;
+    int i1 = paramMessageRecord1.msgtype;
+    int i2 = paramMessageRecord2.msgtype;
     boolean bool1 = true;
     boolean bool2 = false;
-    if (m == n)
+    if (i1 == i2)
     {
       if (paramMessageRecord1.msgUid != 0L)
       {
@@ -390,7 +331,7 @@ public class MsgProxyUtils
         break label756;
       }
     }
-    else if (e(paramMessageRecord1))
+    else if (f(paramMessageRecord1))
     {
       if ((paramMessageRecord1.msgUid == paramMessageRecord2.msgUid) && (paramMessageRecord1.shmsgseq == paramMessageRecord2.shmsgseq))
       {
@@ -520,7 +461,7 @@ public class MsgProxyUtils
             if ((paramMessageRecord1.msgtype == -1000) && (paramMessageRecord2.msgtype == -2011)) {
               return true;
             }
-            if (e(paramMessageRecord1)) {
+            if (f(paramMessageRecord1)) {
               return true;
             }
             if ((paramMessageRecord2.msgtype == -1051) && ((paramMessageRecord1.msgtype == -1000) || (paramMessageRecord1.msgtype == -2011))) {
@@ -541,7 +482,7 @@ public class MsgProxyUtils
       if (!paramMessageRecord1.isSendFromLocal()) {
         return false;
       }
-      if ((paramMessageRecord1.extraflag != 32772) && (paramMessageRecord1.extraflag != 32768) && ((paramMessageRecord1.msgtype != -1035) || (paramMessageRecord1.extraflag != 32770))) {
+      if ((!TextUtils.equals(paramMessageRecord1.getExtInfoFromExtStr("key_troop_sending_message_success"), "1")) && (paramMessageRecord1.extraflag != 32772) && (paramMessageRecord1.extraflag != 32768) && ((paramMessageRecord1.msgtype != -1035) || (paramMessageRecord1.extraflag != 32770))) {
         return false;
       }
       if (paramMessageRecord1.msgtype == -2006) {
@@ -581,11 +522,6 @@ public class MsgProxyUtils
     return bool1;
   }
   
-  public static boolean a(String paramString)
-  {
-    return AppConstants.MSG_BOX_INTERACT_UIN.equals(paramString);
-  }
-  
   public static boolean a(String paramString, int paramInt)
   {
     return (paramString != null) && (paramString.length() >= 6) && ((paramInt == 0) || (paramInt == 1) || (paramInt == 3000));
@@ -598,15 +534,15 @@ public class MsgProxyUtils
       if (paramList.isEmpty()) {
         return false;
       }
-      int n = paramList.size();
-      int m = 0;
-      while (m < n)
+      int i2 = paramList.size();
+      int i1 = 0;
+      while (i1 < i2)
       {
-        MessageRecord localMessageRecord = (MessageRecord)paramList.get(m);
+        MessageRecord localMessageRecord = (MessageRecord)paramList.get(i1);
         if ((!a(localMessageRecord)) && (localMessageRecord.msgtype != -2006)) {
           return true;
         }
-        m += 1;
+        i1 += 1;
       }
     }
     return false;
@@ -614,7 +550,7 @@ public class MsgProxyUtils
   
   public static boolean a(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
   {
-    return (UinTypeUtil.a(paramMessageRecord)) && (!UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop)) && (b(paramAppRuntime, paramMessageRecord));
+    return (UinTypeUtil.c(paramMessageRecord)) && (!UinTypeUtil.c(paramMessageRecord.frienduin, paramMessageRecord.istroop)) && (b(paramAppRuntime, paramMessageRecord));
   }
   
   private static void b(String paramString, int paramInt, List<MessageRecord> paramList, MessageCache paramMessageCache)
@@ -629,8 +565,8 @@ public class MsgProxyUtils
       HashMap localHashMap = new HashMap();
       ArrayList localArrayList3 = new ArrayList();
       Object localObject3 = paramList.iterator();
-      int m = 0;
-      int n = 0;
+      int i1 = 0;
+      int i2 = 0;
       Object localObject4;
       Object localObject1;
       while (((Iterator)localObject3).hasNext())
@@ -647,29 +583,29 @@ public class MsgProxyUtils
             }
             else
             {
-              int i1 = n + 1;
-              String str2 = UinTypeUtil.b(str1, i1);
+              int i3 = i2 + 1;
+              String str2 = UinTypeUtil.b(str1, i3);
               localHashMap.put(str2, localHashMap.get(str1));
               localObject1 = null;
-              n = 0;
-              while (n < localArrayList3.size())
+              i2 = 0;
+              while (i2 < localArrayList3.size())
               {
-                localObject1 = (Pair)localArrayList3.get(n);
+                localObject1 = (Pair)localArrayList3.get(i2);
                 if (((String)((Pair)localObject1).first).equals(str1)) {
                   break;
                 }
-                n += 1;
+                i2 += 1;
               }
               if (localObject1 != null)
               {
-                localArrayList3.remove(n);
-                localArrayList3.add(n, new Pair(str2, ((Pair)localObject1).second));
+                localArrayList3.remove(i2);
+                localArrayList3.add(i2, new Pair(str2, ((Pair)localObject1).second));
               }
               localObject1 = new ArrayList();
               ((ArrayList)localObject1).add(localObject4);
               localHashMap.put(str1, localObject1);
-              localArrayList3.add(new Pair(str1, Integer.valueOf(m)));
-              n = i1;
+              localArrayList3.add(new Pair(str1, Integer.valueOf(i1)));
+              i2 = i3;
             }
           }
           else
@@ -677,19 +613,19 @@ public class MsgProxyUtils
             localObject1 = new ArrayList();
             ((ArrayList)localObject1).add(localObject4);
             localHashMap.put(str1, localObject1);
-            localArrayList3.add(new Pair(str1, Integer.valueOf(m)));
+            localArrayList3.add(new Pair(str1, Integer.valueOf(i1)));
           }
           ((List)localObject2).add(localObject4);
         }
         else
         {
-          m += 1;
+          i1 += 1;
         }
       }
       paramList.removeAll((Collection)localObject2);
       if ((!localHashMap.isEmpty()) && (!localArrayList3.isEmpty()))
       {
-        if (paramMessageCache.a(paramString, paramInt) != null)
+        if (paramMessageCache.d(paramString, paramInt) != null)
         {
           localObject2 = new ArrayList();
           localObject1 = localHashMap.keySet().iterator();
@@ -734,7 +670,7 @@ public class MsgProxyUtils
                       ((StringBuilder)localObject4).append((String)localObject3);
                       QLog.d("Q.msg.MsgProxyUtils", 2, ((StringBuilder)localObject4).toString());
                     }
-                    paramMessageCache.a(paramString, paramInt, (String)localObject3);
+                    paramMessageCache.b(paramString, paramInt, (String)localObject3);
                   }
                 }
               }
@@ -748,15 +684,15 @@ public class MsgProxyUtils
             }
           }
         }
-        n = localArrayList3.size() - 1;
+        i2 = localArrayList3.size() - 1;
         paramMessageCache = localHashMap;
-        while (n >= 0)
+        while (i2 >= 0)
         {
-          localObject1 = (Pair)localArrayList3.get(n);
+          localObject1 = (Pair)localArrayList3.get(i2);
           localObject2 = (ArrayList)paramMessageCache.get(((Pair)localObject1).first);
           try
           {
-            Collections.sort((List)localObject2, jdField_a_of_type_JavaUtilComparator);
+            Collections.sort((List)localObject2, n);
           }
           catch (Exception localException)
           {
@@ -766,7 +702,7 @@ public class MsgProxyUtils
           }
           ArrayList localArrayList1 = new ArrayList();
           localObject2 = ((ArrayList)localObject2).iterator();
-          m = 0;
+          i1 = 0;
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (MessageRecord)((Iterator)localObject2).next();
@@ -790,12 +726,12 @@ public class MsgProxyUtils
                   QLog.d("Q.msg.MsgProxyUtils", 2, ((StringBuilder)localObject4).toString());
                 }
                 localObject4 = a(localArrayList1);
-                a(paramList, ((Integer)((Pair)localObject1).second).intValue() + m, (MessageRecord)localObject4, localArrayList2);
+                a(paramList, ((Integer)((Pair)localObject1).second).intValue() + i1, (MessageRecord)localObject4, localArrayList2);
                 localArrayList1.clear();
-                m += 1;
+                i1 += 1;
               }
-              a(paramList, ((Integer)((Pair)localObject1).second).intValue() + m, (MessageRecord)localObject3, localArrayList2);
-              m += 1;
+              a(paramList, ((Integer)((Pair)localObject1).second).intValue() + i1, (MessageRecord)localObject3, localArrayList2);
+              i1 += 1;
             }
           }
           if (!localArrayList1.isEmpty())
@@ -812,12 +748,28 @@ public class MsgProxyUtils
               QLog.d("Q.msg.MsgProxyUtils", 2, ((StringBuilder)localObject2).toString());
             }
             localObject2 = a(localArrayList1);
-            a(paramList, ((Integer)((Pair)localObject1).second).intValue() + m, (MessageRecord)localObject2, localArrayList2);
+            a(paramList, ((Integer)((Pair)localObject1).second).intValue() + i1, (MessageRecord)localObject2, localArrayList2);
             localArrayList1.clear();
           }
-          n -= 1;
+          i2 -= 1;
         }
       }
+    }
+  }
+  
+  private static void b(List<MessageRecord> paramList)
+  {
+    int i1 = 0;
+    while (i1 < paramList.size())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("backupAioMsgList = [");
+      localStringBuilder.append(i1);
+      localStringBuilder.append("] = ");
+      localStringBuilder.append(localMessageRecord);
+      QLog.d("Q.msg.MsgProxyUtils", 1, localStringBuilder.toString());
+      i1 += 1;
     }
   }
   
@@ -831,7 +783,7 @@ public class MsgProxyUtils
       return;
     }
     Iterator localIterator = paramList.iterator();
-    int m = 0;
+    int i1 = 0;
     boolean bool1 = false;
     boolean bool2;
     for (;;)
@@ -855,7 +807,7 @@ public class MsgProxyUtils
         }
         bool1 = bool2;
       } while (!paramBoolean);
-      m += 1;
+      i1 += 1;
     }
     label125:
     if (!bool2)
@@ -863,37 +815,37 @@ public class MsgProxyUtils
       paramList.add(paramT);
       return;
     }
-    paramList.add(m, paramT);
+    paramList.add(i1, paramT);
   }
   
   public static boolean b(int paramInt)
   {
-    int[] arrayOfInt = UinTypeUtil.d;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = UinTypeUtil.e;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
   public static boolean b(MessageRecord paramMessageRecord)
   {
-    int[] arrayOfInt = UinTypeUtil.e;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = UinTypeUtil.g;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramMessageRecord.msgtype) {
+      if (arrayOfInt[i1] == paramMessageRecord.msgtype) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
-    return f(paramMessageRecord);
+    return g(paramMessageRecord);
   }
   
   private static boolean b(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
@@ -906,17 +858,17 @@ public class MsgProxyUtils
     if (paramMessageRecord2.msgtype == -1000) {
       return TextUtils.equals(str1, str2);
     }
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.a(paramMessageRecord1, paramMessageRecord2, str1, str2);
+    return a.a(paramMessageRecord1, paramMessageRecord2, str1, str2);
   }
   
   public static boolean b(String paramString)
   {
-    return AppConstants.MSG_BOX_FOLLOW_UIN.equals(paramString);
+    return AppConstants.MSG_BOX_INTERACT_UIN.equals(paramString);
   }
   
   private static boolean b(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.a(paramAppRuntime, paramMessageRecord);
+    return a.a(paramAppRuntime, paramMessageRecord);
   }
   
   public static <T extends MessageRecord> void c(List<T> paramList, T paramT, boolean paramBoolean)
@@ -928,9 +880,13 @@ public class MsgProxyUtils
       }
       return;
     }
+    boolean bool1 = QLog.isColorLevel();
+    int i1 = 0;
+    if (bool1) {
+      QLog.d("Q.msg.MsgProxyUtils", 2, new Object[] { "insertToListBySeq, list size: ", Integer.valueOf(paramList.size()) });
+    }
     Iterator localIterator = paramList.iterator();
-    int m = 0;
-    boolean bool1 = false;
+    bool1 = false;
     boolean bool2;
     for (;;)
     {
@@ -943,45 +899,45 @@ public class MsgProxyUtils
       do
       {
         bool2 = true;
-        break label125;
+        break label163;
         if (localMessageRecord.shmsgseq != paramT.shmsgseq) {
           break;
         }
         bool2 = a(paramT, localMessageRecord);
         if (bool2) {
-          break label125;
+          break label163;
         }
         bool1 = bool2;
       } while (!paramBoolean);
-      m += 1;
+      i1 += 1;
     }
-    label125:
+    label163:
     if (!bool2)
     {
       paramList.add(paramT);
       return;
     }
-    paramList.add(m, paramT);
+    paramList.add(i1, paramT);
   }
   
   public static boolean c(int paramInt)
   {
     int[] arrayOfInt = UinTypeUtil.b;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
   public static boolean c(MessageRecord paramMessageRecord)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.b(paramMessageRecord);
+    return a.b(paramMessageRecord);
   }
   
   private static boolean c(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
@@ -1026,33 +982,48 @@ public class MsgProxyUtils
   
   public static boolean c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    return AppConstants.MSG_BOX_FOLLOW_UIN.equals(paramString);
+  }
+  
+  public static String d(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord.istroop != 1000) && (paramMessageRecord.istroop != 1004))
+    {
+      if ((paramMessageRecord.istroop == 1) && (h(paramMessageRecord))) {
+        return "80000000";
+      }
+      if (TextUtils.equals(AppConstants.FILE_ASSISTANT_UIN, paramMessageRecord.senderuin)) {
+        paramMessageRecord.senderuin = paramMessageRecord.selfuin;
+      }
+      return paramMessageRecord.senderuin;
     }
-    return paramString.equals("1822701914");
+    if (paramMessageRecord.isSend()) {
+      return paramMessageRecord.selfuin;
+    }
+    return paramMessageRecord.frienduin;
   }
   
   public static boolean d(int paramInt)
   {
-    int[] arrayOfInt = i;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = j;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
-  public static boolean d(MessageRecord paramMessageRecord)
+  public static boolean d(String paramString)
   {
-    if ((paramMessageRecord.msgtype == -5008) && (paramMessageRecord.shmsgseq == 0L)) {
-      return "1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_mini_app_sys"));
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    return false;
+    return paramString.equals("1822701914");
   }
   
   public static boolean e(int paramInt)
@@ -1060,144 +1031,168 @@ public class MsgProxyUtils
     boolean bool2 = d(paramInt);
     boolean bool1 = bool2;
     if (!bool2) {
-      bool1 = n(paramInt);
+      bool1 = o(paramInt);
     }
     return bool1;
   }
   
-  private static boolean e(MessageRecord paramMessageRecord)
+  public static boolean e(MessageRecord paramMessageRecord)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.d(paramMessageRecord);
+    if ((paramMessageRecord.msgtype == -5008) && (paramMessageRecord.shmsgseq == 0L)) {
+      return "1".equals(paramMessageRecord.getExtInfoFromExtStr("troop_mini_app_sys"));
+    }
+    return false;
   }
   
   public static boolean f(int paramInt)
   {
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = b;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
   private static boolean f(MessageRecord paramMessageRecord)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.c(paramMessageRecord);
+    return a.d(paramMessageRecord);
   }
   
   public static boolean g(int paramInt)
   {
-    int[] arrayOfInt = b;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = c;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
   private static boolean g(MessageRecord paramMessageRecord)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.a(paramMessageRecord);
+    return a.c(paramMessageRecord);
   }
   
   public static boolean h(int paramInt)
   {
-    int[] arrayOfInt = e;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = f;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
+  private static boolean h(MessageRecord paramMessageRecord)
+  {
+    return a.a(paramMessageRecord);
+  }
+  
   public static boolean i(int paramInt)
   {
-    int[] arrayOfInt = f;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = g;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
   public static boolean j(int paramInt)
   {
-    int[] arrayOfInt = g;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = h;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
   public static boolean k(int paramInt)
   {
-    int[] arrayOfInt = h;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    int[] arrayOfInt = i;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
-  public static boolean l(int paramInt)
+  public static String l(int paramInt)
   {
-    return paramInt == 1025;
+    if ((paramInt != 1001) && (paramInt != 10002))
+    {
+      if (paramInt != 1009)
+      {
+        if (paramInt != 1010) {
+          return AppConstants.LBS_HELLO_UIN;
+        }
+        return AppConstants.DATE_UIN;
+      }
+      return AppConstants.SAME_STATE_BOX_UIN;
+    }
+    return AppConstants.LBS_HELLO_UIN;
   }
   
   public static boolean m(int paramInt)
   {
-    int[] arrayOfInt = l;
-    int n = arrayOfInt.length;
-    int m = 0;
-    while (m < n)
+    return paramInt == 1025;
+  }
+  
+  public static boolean n(int paramInt)
+  {
+    int[] arrayOfInt = m;
+    int i2 = arrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (arrayOfInt[m] == paramInt) {
+      if (arrayOfInt[i1] == paramInt) {
         return true;
       }
-      m += 1;
+      i1 += 1;
     }
     return false;
   }
   
-  private static boolean n(int paramInt)
+  private static boolean o(int paramInt)
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyUtils$Callback.a(paramInt);
+    return a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyUtils
  * JD-Core Version:    0.7.0.1
  */

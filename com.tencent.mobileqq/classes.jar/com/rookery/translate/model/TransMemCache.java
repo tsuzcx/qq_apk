@@ -5,12 +5,12 @@ import android.support.v4.util.LruCache;
 public class TransMemCache
   implements ICache<String>
 {
-  private int jdField_a_of_type_Int;
-  LruCache<String, String> jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  LruCache<String, String> a;
+  private int b;
   
   public TransMemCache(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     a();
   }
   
@@ -18,7 +18,7 @@ public class TransMemCache
   {
     try
     {
-      paramString = (String)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+      paramString = (String)this.a.get(paramString);
       return paramString;
     }
     finally {}
@@ -26,21 +26,21 @@ public class TransMemCache
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new TransMemCache.1(this, this.jdField_a_of_type_Int);
+    this.a = new TransMemCache.1(this, this.b);
   }
   
   public void a(String paramString1, String paramString2)
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString1) == null)
+      if (this.a.get(paramString1) == null)
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString1, paramString2);
+        this.a.put(paramString1, paramString2);
       }
       else
       {
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramString1);
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString1, paramString2);
+        this.a.remove(paramString1);
+        this.a.put(paramString1, paramString2);
       }
       return;
     }

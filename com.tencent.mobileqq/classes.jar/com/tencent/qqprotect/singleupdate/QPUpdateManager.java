@@ -44,40 +44,25 @@ import mqq.manager.Manager;
 public class QPUpdateManager
   implements Handler.Callback, INetEngineListener, Manager
 {
-  private int jdField_a_of_type_Int = 0;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QPUpdateConfig jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig = null;
-  private SFU.UpdateSection jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection = null;
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString = "";
-  private ConcurrentHashMap<String, NetReq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  final Object a = new Object();
+  private ConcurrentHashMap<String, NetReq> b = new ConcurrentHashMap();
+  private QQAppInterface c;
+  private Handler d;
+  private int e = 0;
+  private SFU.UpdateSection f = null;
+  private boolean g;
+  private String h = "";
+  private String i = "";
+  private SharedPreferences j = null;
+  private QPUpdateConfig k = null;
   
   public QPUpdateManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("qp_sfu_config", 0);
-    this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig = new QPUpdateConfig(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  private int a()
-  {
-    try
-    {
-      int i = Build.VERSION.SDK_INT;
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return 0;
+    this.c = paramQQAppInterface;
+    this.d = new Handler(ThreadManager.getSubThreadLooper(), this);
+    this.g = false;
+    this.j = this.c.getApp().getSharedPreferences("qp_sfu_config", 0);
+    this.k = new QPUpdateConfig(this.c);
   }
   
   private int a(int paramInt, String paramString)
@@ -89,10 +74,10 @@ public class QPUpdateManager
       }
       return -1;
     }
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("last_update_config_version", 0) < paramInt) {
+    if (this.j.getInt("last_update_config_version", 0) < paramInt) {
       return 0;
     }
-    String str = b();
+    String str = f();
     if (!new File(str).exists()) {
       return 0;
     }
@@ -110,34 +95,6 @@ public class QPUpdateManager
     return 0;
   }
   
-  private String a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getDir("qqprotect", 0).toString());
-    ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append("SFU/");
-    localObject = ((StringBuilder)localObject).toString();
-    File localFile = new File((String)localObject);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return localObject;
-  }
-  
-  private String a(SFU.UpdateSection paramUpdateSection)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a());
-    ((StringBuilder)localObject).append(paramUpdateSection.jdField_a_of_type_Long);
-    ((StringBuilder)localObject).append(File.separator);
-    paramUpdateSection = ((StringBuilder)localObject).toString();
-    localObject = new File(paramUpdateSection);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return paramUpdateSection;
-  }
-  
   private void a(int paramInt1, int paramInt2)
   {
     try
@@ -152,10 +109,10 @@ public class QPUpdateManager
       QQProtectUpdate.UpdateQueryRequest localUpdateQueryRequest = new QQProtectUpdate.UpdateQueryRequest();
       localUpdateQueryRequest.head_update_query.set((MessageMicro)localObject);
       localUpdateQueryRequest.body_update_query.set(localUpdateQueryBody);
-      localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "MobileQQprotect.QPUpdate");
+      localObject = new ToServiceMsg("mobileqq.service", this.c.getCurrentAccountUin(), "MobileQQprotect.QPUpdate");
       ((ToServiceMsg)localObject).putWupBuffer(localUpdateQueryRequest.toByteArray());
       ((ToServiceMsg)localObject).extraData.putBoolean("req_pb_protocol_flag", true);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService((ToServiceMsg)localObject);
+      this.c.sendToService((ToServiceMsg)localObject);
       a("0X80078AA", paramInt1, "", "");
       if (QLog.isColorLevel())
       {
@@ -196,10 +153,10 @@ public class QPUpdateManager
     if (!bool) {}
     try
     {
-      if (localUserData.jdField_d_of_type_Int < 3)
+      if (localUserData.i < 3)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] retried to download, retry=%d, result=%b, url=%s", new Object[] { Integer.valueOf(localUserData.jdField_d_of_type_Int), Boolean.valueOf(bool), localUserData.jdField_c_of_type_JavaLangString }));
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] retried to download, retry=%d, result=%b, url=%s", new Object[] { Integer.valueOf(localUserData.i), Boolean.valueOf(bool), localUserData.e }));
         }
         a(localUserData);
         return;
@@ -208,7 +165,7 @@ public class QPUpdateManager
       if (localFile.exists()) {
         localFile.delete();
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localUserData.jdField_d_of_type_JavaLangString.toLowerCase());
+      this.b.remove(localUserData.f.toLowerCase());
       a(bool, paramNetResp.mReq);
       return;
     }
@@ -218,49 +175,26 @@ public class QPUpdateManager
     }
   }
   
-  private void a(SFU.UpdateSection paramUpdateSection)
-  {
-    if (paramUpdateSection != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] update complete: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
-      }
-      paramUpdateSection.a();
-      if (b())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        localStringBuilder.append(String.format("#%d#", new Object[] { Long.valueOf(paramUpdateSection.jdField_b_of_type_Long) }));
-        this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-        localStringBuilder.append(String.format("#%d#", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
-        this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-      }
-      a("0X80078B4", 0, "", "");
-    }
-  }
-  
   private void a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     paramString3 = String.format("%d", new Object[] { Integer.valueOf(paramInt) });
-    paramString2 = this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection;
+    paramString2 = this.f;
     if (paramString2 != null) {
-      paramInt = (int)paramString2.jdField_b_of_type_Long;
+      paramInt = (int)paramString2.b;
     } else {
       paramInt = 0;
     }
-    paramString2 = this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection;
+    paramString2 = this.f;
     if (paramString2 != null) {
-      paramString2 = String.format("%d", new Object[] { Long.valueOf(paramString2.jdField_a_of_type_Long) });
+      paramString2 = String.format("%d", new Object[] { Long.valueOf(paramString2.a) });
     } else {
       paramString2 = "";
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] report: actiontype=%s, actionname=%s, actionfrom=%d, actionresult=%d, sectionId=%s, reportId=%s, fileInfo: %s", new Object[] { paramString1, paramString1, Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), paramString2, paramString3, "", "" }));
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] report: actiontype=%s, actionname=%s, actionfrom=%d, actionresult=%d, sectionId=%s, reportId=%s, fileInfo: %s", new Object[] { paramString1, paramString1, Integer.valueOf(paramInt), Integer.valueOf(this.e), paramString2, paramString3, "", "" }));
     }
     QSecRptHelper localQSecRptHelper = new QSecRptHelper();
-    localQSecRptHelper.a(paramString1).a(paramString1).a(paramString3).a(paramString2).a(this.jdField_a_of_type_Int);
+    localQSecRptHelper.a(paramString1).a(paramString1).a(paramString3).a(paramString2).a(this.e);
     QSecRptController.a(localQSecRptHelper.toString(), 105, paramInt);
   }
   
@@ -273,25 +207,25 @@ public class QPUpdateManager
       if ((localFile.exists()) && (localUserData != null))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] http download complete: %s, %s", new Object[] { paramNetReq.mOutPath, localUserData.jdField_c_of_type_JavaLangString }));
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] http download complete: %s, %s", new Object[] { paramNetReq.mOutPath, localUserData.e }));
         }
-        int i = localUserData.jdField_a_of_type_Int;
-        if (i != 1)
+        int m = localUserData.a;
+        if (m != 1)
         {
-          if (i != 2) {
+          if (m != 2) {
             return;
           }
-          a("0X80078AE", localUserData.jdField_c_of_type_Int, "", "");
+          a("0X80078AE", localUserData.g, "", "");
           d(7);
           return;
         }
-        localFile = new File(b());
+        localFile = new File(f());
         new File(paramNetReq.mOutPath).renameTo(localFile);
-        a("0X80078AC", localUserData.jdField_c_of_type_Int, "", "");
-        if (this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig.a(localFile.toString()))
+        a("0X80078AC", localUserData.g, "", "");
+        if (this.k.a(localFile.toString()))
         {
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("last_update_config_version", localUserData.jdField_c_of_type_Int).commit();
-          if (this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig.a().isEmpty())
+          this.j.edit().putInt("last_update_config_version", localUserData.g).commit();
+          if (this.k.a().isEmpty())
           {
             if (QLog.isColorLevel()) {
               QLog.d("QQProtect.QPUpdate", 2, "[SFU] config ok but without any sections");
@@ -302,7 +236,7 @@ public class QPUpdateManager
           d(5);
           return;
         }
-        a("0X80078AC", localUserData.jdField_c_of_type_Int, localUserData.jdField_b_of_type_JavaLangString, localUserData.jdField_c_of_type_JavaLangString);
+        a("0X80078AC", localUserData.g, localUserData.d, localUserData.e);
         if (QLog.isColorLevel()) {
           QLog.d("QQProtect.QPUpdate", 2, "[SFU] invalid config (sig not accepted)");
         }
@@ -315,39 +249,12 @@ public class QPUpdateManager
     a(3);
   }
   
-  private boolean a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig.a();
-    int i = 0;
-    while (i < ((List)localObject).size())
-    {
-      if (!((SFU.UpdateSection)((List)localObject).get(i)).a())
-      {
-        bool = false;
-        break label50;
-      }
-      i += 1;
-    }
-    boolean bool = true;
-    label50:
-    if (QLog.isColorLevel())
-    {
-      if (bool) {
-        localObject = "yes";
-      } else {
-        localObject = "no";
-      }
-      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] all complete: %s", new Object[] { localObject }));
-    }
-    return bool;
-  }
-  
   private boolean a(QPUpdateManager.UserData paramUserData)
   {
     if (paramUserData == null) {
       return false;
     }
-    if ((paramUserData.jdField_a_of_type_Int == 2) && (paramUserData.e != 1) && (!NetworkUtils.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())))
+    if ((paramUserData.a == 2) && (paramUserData.k != 1) && (!NetworkUtils.isWifiConnected(this.c.getApplication())))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQProtect.QPUpdate", 2, "[SFU] donot download file because not using wifi");
@@ -355,26 +262,26 @@ public class QPUpdateManager
       CommTvRpt.a(3, 1);
       return false;
     }
-    if ((paramUserData.jdField_d_of_type_Int < 3) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramUserData.jdField_d_of_type_JavaLangString.toLowerCase()))) {
+    if ((paramUserData.i < 3) && (this.b.contains(paramUserData.f.toLowerCase()))) {
       return false;
     }
-    IHttpEngineService localIHttpEngineService = (IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all");
+    IHttpEngineService localIHttpEngineService = (IHttpEngineService)this.c.getRuntimeService(IHttpEngineService.class, "all");
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = this;
     localHttpNetReq.mSupportBreakResume = true;
-    localHttpNetReq.mReqUrl = paramUserData.jdField_c_of_type_JavaLangString;
+    localHttpNetReq.mReqUrl = paramUserData.e;
     localHttpNetReq.mHttpMethod = 0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramUserData.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(paramUserData.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(paramUserData.c);
+    localStringBuilder.append(paramUserData.d);
     localHttpNetReq.mOutPath = localStringBuilder.toString();
-    paramUserData.jdField_d_of_type_Int += 1;
-    paramUserData.jdField_a_of_type_Long = new Date().getTime();
+    paramUserData.i += 1;
+    paramUserData.j = new Date().getTime();
     localHttpNetReq.setUserData(paramUserData);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramUserData.jdField_d_of_type_JavaLangString.toLowerCase(), localHttpNetReq);
+    this.b.put(paramUserData.f.toLowerCase(), localHttpNetReq);
     localIHttpEngineService.sendReq(localHttpNetReq);
     if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] begin http download %s", new Object[] { paramUserData.jdField_c_of_type_JavaLangString }));
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] begin http download %s", new Object[] { paramUserData.e }));
     }
     return true;
   }
@@ -384,9 +291,9 @@ public class QPUpdateManager
     if (paramUpdateSection != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] rollback: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] rollback: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
       }
-      if (paramUpdateSection.jdField_b_of_type_JavaUtilList.isEmpty())
+      if (paramUpdateSection.q.isEmpty())
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQProtect.QPUpdate", 2, "[SFU] no files need to rollback");
@@ -399,12 +306,12 @@ public class QPUpdateManager
         {
           bool = true;
           break;
-          String str = b(paramUpdateSection);
+          String str = d(paramUpdateSection);
           l2 = 0L;
-          int i = 0;
-          while (i < paramUpdateSection.jdField_b_of_type_JavaUtilList.size())
+          int m = 0;
+          while (m < paramUpdateSection.q.size())
           {
-            Object localObject = (SFU.FileInfo)paramUpdateSection.jdField_b_of_type_JavaUtilList.get(i);
+            Object localObject = (SFU.FileInfo)paramUpdateSection.q.get(m);
             File localFile1 = new File(((SFU.FileInfo)localObject).f);
             File localFile2 = new File(((SFU.FileInfo)localObject).g);
             long l1 = l2;
@@ -416,7 +323,7 @@ public class QPUpdateManager
               l1 = l2 + 1L;
             }
             l2 = l1;
-            if (((SFU.FileInfo)localObject).jdField_a_of_type_Int == 2)
+            if (((SFU.FileInfo)localObject).l == 2)
             {
               l2 = l1;
               if (localFile1.exists())
@@ -427,7 +334,7 @@ public class QPUpdateManager
                 l2 = l1 + 1L;
               }
             }
-            localObject = new File(str, ((SFU.FileInfo)localObject).jdField_c_of_type_JavaLangString);
+            localObject = new File(str, ((SFU.FileInfo)localObject).c);
             l1 = l2;
             if (((File)localObject).exists())
             {
@@ -446,10 +353,10 @@ public class QPUpdateManager
                 }
               }
             }
-            i += 1;
+            m += 1;
             l2 = l1;
           }
-        } while (l2 == paramUpdateSection.jdField_b_of_type_JavaUtilList.size());
+        } while (l2 == paramUpdateSection.q.size());
       }
     }
     boolean bool = false;
@@ -468,47 +375,47 @@ public class QPUpdateManager
     //   3: aconst_null
     //   4: astore 5
     //   6: aload_2
-    //   7: invokevirtual 130	java/io/File:exists	()Z
+    //   7: invokevirtual 127	java/io/File:exists	()Z
     //   10: ifeq +12 -> 22
     //   13: aload_2
-    //   14: invokevirtual 311	java/io/File:delete	()Z
+    //   14: invokevirtual 276	java/io/File:delete	()Z
     //   17: ifne +36 -> 53
     //   20: iconst_0
     //   21: ireturn
-    //   22: new 124	java/io/File
+    //   22: new 121	java/io/File
     //   25: dup
     //   26: aload_2
-    //   27: invokevirtual 533	java/io/File:getParent	()Ljava/lang/String;
-    //   30: invokespecial 127	java/io/File:<init>	(Ljava/lang/String;)V
+    //   27: invokevirtual 500	java/io/File:getParent	()Ljava/lang/String;
+    //   30: invokespecial 124	java/io/File:<init>	(Ljava/lang/String;)V
     //   33: astore 6
     //   35: aload 6
-    //   37: invokevirtual 130	java/io/File:exists	()Z
+    //   37: invokevirtual 127	java/io/File:exists	()Z
     //   40: ifne +13 -> 53
     //   43: aload 6
-    //   45: invokevirtual 166	java/io/File:mkdirs	()Z
+    //   45: invokevirtual 503	java/io/File:mkdirs	()Z
     //   48: ifne +5 -> 53
     //   51: iconst_0
     //   52: ireturn
-    //   53: new 535	java/io/FileOutputStream
+    //   53: new 505	java/io/FileOutputStream
     //   56: dup
     //   57: aload_2
-    //   58: invokespecial 538	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   58: invokespecial 508	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   61: astore_2
-    //   62: new 540	java/io/BufferedInputStream
+    //   62: new 510	java/io/BufferedInputStream
     //   65: dup
-    //   66: new 542	java/io/FileInputStream
+    //   66: new 512	java/io/FileInputStream
     //   69: dup
     //   70: aload_1
-    //   71: invokespecial 543	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   74: invokespecial 546	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   71: invokespecial 513	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   74: invokespecial 516	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   77: astore 5
-    //   79: invokestatic 552	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   79: invokestatic 522	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   82: sipush 4096
-    //   85: invokevirtual 556	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   85: invokevirtual 526	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
     //   88: astore_1
     //   89: aload 5
     //   91: aload_1
-    //   92: invokevirtual 560	java/io/BufferedInputStream:read	([B)I
+    //   92: invokevirtual 530	java/io/BufferedInputStream:read	([B)I
     //   95: istore_3
     //   96: iload_3
     //   97: iconst_m1
@@ -517,17 +424,17 @@ public class QPUpdateManager
     //   102: aload_1
     //   103: iconst_0
     //   104: iload_3
-    //   105: invokevirtual 564	java/io/FileOutputStream:write	([BII)V
+    //   105: invokevirtual 534	java/io/FileOutputStream:write	([BII)V
     //   108: aload_2
-    //   109: invokevirtual 567	java/io/FileOutputStream:flush	()V
+    //   109: invokevirtual 537	java/io/FileOutputStream:flush	()V
     //   112: goto -23 -> 89
-    //   115: invokestatic 552	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   115: invokestatic 522	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   118: aload_1
-    //   119: invokevirtual 570	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   119: invokevirtual 540	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   122: aload_2
-    //   123: invokevirtual 573	java/io/FileOutputStream:close	()V
+    //   123: invokevirtual 543	java/io/FileOutputStream:close	()V
     //   126: aload 5
-    //   128: invokevirtual 574	java/io/BufferedInputStream:close	()V
+    //   128: invokevirtual 544	java/io/BufferedInputStream:close	()V
     //   131: iconst_1
     //   132: ireturn
     //   133: astore_1
@@ -554,16 +461,16 @@ public class QPUpdateManager
     //   170: aload 5
     //   172: astore_2
     //   173: aload 4
-    //   175: invokevirtual 575	java/io/IOException:printStackTrace	()V
+    //   175: invokevirtual 545	java/io/IOException:printStackTrace	()V
     //   178: aload_2
     //   179: ifnull +10 -> 189
     //   182: aload_2
-    //   183: invokevirtual 573	java/io/FileOutputStream:close	()V
+    //   183: invokevirtual 543	java/io/FileOutputStream:close	()V
     //   186: goto +3 -> 189
     //   189: aload_1
     //   190: ifnull +7 -> 197
     //   193: aload_1
-    //   194: invokevirtual 574	java/io/BufferedInputStream:close	()V
+    //   194: invokevirtual 544	java/io/BufferedInputStream:close	()V
     //   197: iconst_0
     //   198: ireturn
     //   199: astore 5
@@ -574,12 +481,12 @@ public class QPUpdateManager
     //   207: aload_2
     //   208: ifnull +10 -> 218
     //   211: aload_2
-    //   212: invokevirtual 573	java/io/FileOutputStream:close	()V
+    //   212: invokevirtual 543	java/io/FileOutputStream:close	()V
     //   215: goto +3 -> 218
     //   218: aload 4
     //   220: ifnull +8 -> 228
     //   223: aload 4
-    //   225: invokevirtual 574	java/io/BufferedInputStream:close	()V
+    //   225: invokevirtual 544	java/io/BufferedInputStream:close	()V
     //   228: goto +5 -> 233
     //   231: aload_1
     //   232: athrow
@@ -603,7 +510,7 @@ public class QPUpdateManager
     //   0	258	0	this	QPUpdateManager
     //   0	258	1	paramFile1	File
     //   0	258	2	paramFile2	File
-    //   95	10	3	i	int
+    //   95	10	3	m	int
     //   1	136	4	localObject1	Object
     //   141	1	4	localIOException1	java.io.IOException
     //   153	1	4	localIOException2	java.io.IOException
@@ -639,44 +546,22 @@ public class QPUpdateManager
     //   223	228	254	java/io/IOException
   }
   
-  private String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append("qp_sfu_config.dat");
-    return localStringBuilder.toString();
-  }
-  
-  private String b(SFU.UpdateSection paramUpdateSection)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a(paramUpdateSection));
-    ((StringBuilder)localObject).append("bak");
-    ((StringBuilder)localObject).append(File.separator);
-    paramUpdateSection = ((StringBuilder)localObject).toString();
-    localObject = new File(paramUpdateSection);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return paramUpdateSection;
-  }
-  
   private void b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.g)
       {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("last_query_time", new Date().getTime()).commit();
+        this.j.edit().putLong("last_query_time", new Date().getTime()).commit();
         d(2);
-        this.jdField_a_of_type_Boolean = true;
+        this.g = true;
       }
       else
       {
-        long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_query_time", 0L);
+        long l = this.j.getLong("last_query_time", 0L);
         if (new Date().getTime() - l > 3600000L)
         {
-          this.jdField_a_of_type_Boolean = false;
+          this.g = false;
           if (QLog.isColorLevel()) {
             QLog.d("QQProtect.QPUpdate", 2, "[SFU] last udpate timeout");
           }
@@ -689,22 +574,6 @@ public class QPUpdateManager
     }
   }
   
-  private void b(SFU.UpdateSection paramUpdateSection)
-  {
-    if (paramUpdateSection != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] cleanup: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
-      }
-      FileUtils.delete(a(paramUpdateSection), false);
-    }
-  }
-  
-  private boolean b()
-  {
-    return this.jdField_a_of_type_Int == 0;
-  }
-  
   private boolean b(SFU.UpdateSection paramUpdateSection)
   {
     return true;
@@ -712,19 +581,25 @@ public class QPUpdateManager
   
   private String c(SFU.UpdateSection paramUpdateSection)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a(paramUpdateSection));
-    localStringBuilder.append(paramUpdateSection.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(e());
+    ((StringBuilder)localObject).append(paramUpdateSection.a);
+    ((StringBuilder)localObject).append(File.separator);
+    paramUpdateSection = ((StringBuilder)localObject).toString();
+    localObject = new File(paramUpdateSection);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    return paramUpdateSection;
   }
   
   private void c()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.g = false;
       a("0X80078B5", 0, "", "");
-      this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection = null;
+      this.f = null;
       if (QLog.isColorLevel()) {
         QLog.d("QQProtect.QPUpdate", 2, "[SFU] update ended");
       }
@@ -734,72 +609,27 @@ public class QPUpdateManager
   
   private void c(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
-  private boolean c()
+  private String d(SFU.UpdateSection paramUpdateSection)
   {
-    this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection = null;
-    List localList = this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig.a();
-    int i = 0;
-    while (i < localList.size())
-    {
-      SFU.UpdateSection localUpdateSection = (SFU.UpdateSection)localList.get(i);
-      if (!localUpdateSection.a())
-      {
-        if ((localUpdateSection.jdField_b_of_type_Boolean) && (localUpdateSection.jdField_a_of_type_Boolean) && (localUpdateSection.jdField_c_of_type_Boolean))
-        {
-          this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection = localUpdateSection;
-          c(0);
-          if (QLog.isColorLevel()) {
-            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] next update: sid=%d", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection.jdField_a_of_type_Long) }));
-          }
-          bool = true;
-          break label206;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("QQProtect.QPUpdate", 2, String.format("[SFU] not matched section: sid=%d, os: %b, qq:%b, cpu:%b", new Object[] { Long.valueOf(localUpdateSection.jdField_a_of_type_Long), Boolean.valueOf(localUpdateSection.jdField_b_of_type_Boolean), Boolean.valueOf(localUpdateSection.jdField_a_of_type_Boolean), Boolean.valueOf(localUpdateSection.jdField_c_of_type_Boolean) }));
-        }
-        localUpdateSection.a();
-      }
-      i += 1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(c(paramUpdateSection));
+    ((StringBuilder)localObject).append("bak");
+    ((StringBuilder)localObject).append(File.separator);
+    paramUpdateSection = ((StringBuilder)localObject).toString();
+    localObject = new File(paramUpdateSection);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    boolean bool = false;
-    label206:
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] get next section result? %b", new Object[] { Boolean.valueOf(bool) }));
-    }
-    return bool;
-  }
-  
-  private boolean c(SFU.UpdateSection paramUpdateSection)
-  {
-    boolean bool;
-    if (paramUpdateSection != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify package: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
-      }
-      String str = MD5FileUtil.a(c(paramUpdateSection));
-      if (str == null) {
-        return false;
-      }
-      bool = str.equalsIgnoreCase(paramUpdateSection.jdField_b_of_type_JavaLangString);
-    }
-    else
-    {
-      bool = false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify result: %b", new Object[] { Boolean.valueOf(bool) }));
-    }
-    return bool;
+    return paramUpdateSection;
   }
   
   private void d()
   {
-    a(1, this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("last_update_config_version", 0));
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().remove("last_update_bids").commit();
+    a(1, this.j.getInt("last_update_config_version", 0));
+    this.j.edit().remove("last_update_bids").commit();
   }
   
   private void d(int paramInt)
@@ -823,24 +653,24 @@ public class QPUpdateManager
     {
       localThrowable.printStackTrace();
     }
-    e();
+    g();
     d(17);
     return;
-    a(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection);
-    this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection = null;
-    if (a())
+    g(this.f);
+    this.f = null;
+    if (h())
     {
       d(16);
       return;
     }
     d(5);
     return;
-    if (this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) {
-      b(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection);
+    if (this.f != null) {
+      h(this.f);
     }
     d(15);
     return;
-    if ((this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) && (a(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection)))
+    if ((this.f != null) && (a(this.f)))
     {
       a(0);
       return;
@@ -848,14 +678,14 @@ public class QPUpdateManager
     a("0X80078B3", 0, "", "");
     a(10);
     return;
-    if ((this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) && (b(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection)))
+    if ((this.f != null) && (b(this.f)))
     {
       a(0);
       return;
     }
     a(9);
     return;
-    if ((this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) && (d(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection)))
+    if ((this.f != null) && (i(this.f)))
     {
       d(12);
       return;
@@ -863,7 +693,7 @@ public class QPUpdateManager
     c(8);
     d(13);
     return;
-    if ((this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) && (f(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection)))
+    if ((this.f != null) && (k(this.f)))
     {
       d(11);
       return;
@@ -871,7 +701,7 @@ public class QPUpdateManager
     c(7);
     d(13);
     return;
-    if ((this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) && (e(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection)))
+    if ((this.f != null) && (j(this.f)))
     {
       d(10);
       return;
@@ -879,7 +709,7 @@ public class QPUpdateManager
     a("0X80078B1", 0, "", "");
     a(6);
     return;
-    if ((this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) && (g(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection)))
+    if ((this.f != null) && (l(this.f)))
     {
       d(9);
       return;
@@ -887,7 +717,7 @@ public class QPUpdateManager
     a("0X80078B0", 0, "", "");
     a(5);
     return;
-    if ((this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) && (c(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection)))
+    if ((this.f != null) && (f(this.f)))
     {
       d(8);
       return;
@@ -895,14 +725,14 @@ public class QPUpdateManager
     a("0X80078AF", 0, "", "");
     a(4);
     return;
-    if ((this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null) && (h(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection))) {
+    if ((this.f != null) && (m(this.f))) {
       return;
     }
     a(3);
     return;
-    if ((c()) && (this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection != null))
+    if ((k()) && (this.f != null))
     {
-      if (!i(this.jdField_a_of_type_ComTencentQqprotectSingleupdateSFU$UpdateSection))
+      if (!n(this.f))
       {
         d(15);
         return;
@@ -914,7 +744,7 @@ public class QPUpdateManager
     return;
     d();
     return;
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.e == 1)
     {
       d(17);
       return;
@@ -923,42 +753,187 @@ public class QPUpdateManager
     return;
   }
   
-  private boolean d(SFU.UpdateSection paramUpdateSection)
+  private String e()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.c.getApp().getDir("qqprotect", 0).toString());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("SFU/");
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localObject;
+  }
+  
+  private String e(SFU.UpdateSection paramUpdateSection)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c(paramUpdateSection));
+    localStringBuilder.append(paramUpdateSection.d);
+    return localStringBuilder.toString();
+  }
+  
+  private String f()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(e());
+    localStringBuilder.append("qp_sfu_config.dat");
+    return localStringBuilder.toString();
+  }
+  
+  private boolean f(SFU.UpdateSection paramUpdateSection)
   {
     boolean bool;
     if (paramUpdateSection != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify package: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
       }
-      if (paramUpdateSection.jdField_c_of_type_JavaUtilList.isEmpty())
+      String str = MD5FileUtil.a(e(paramUpdateSection));
+      if (str == null) {
+        return false;
+      }
+      bool = str.equalsIgnoreCase(paramUpdateSection.e);
+    }
+    else
+    {
+      bool = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify result: %b", new Object[] { Boolean.valueOf(bool) }));
+    }
+    return bool;
+  }
+  
+  private void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProtect.QPUpdate", 2, "[SFU] all sections update complete");
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(this.h))
+      {
+        QSecFramework.c().e();
+        this.j.edit().putString("last_update_bids", this.h).putString("last_update_sections", this.i).commit();
+        a("0X80078B6", 0, this.h, this.i);
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] notify update complete: %s", new Object[] { this.h }));
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  private void g(SFU.UpdateSection paramUpdateSection)
+  {
+    if (paramUpdateSection != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] update complete: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
+      }
+      paramUpdateSection.b();
+      if (i())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.h);
+        localStringBuilder.append(String.format("#%d#", new Object[] { Long.valueOf(paramUpdateSection.b) }));
+        this.h = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.i);
+        localStringBuilder.append(String.format("#%d#", new Object[] { Long.valueOf(paramUpdateSection.a) }));
+        this.i = localStringBuilder.toString();
+      }
+      a("0X80078B4", 0, "", "");
+    }
+  }
+  
+  private void h(SFU.UpdateSection paramUpdateSection)
+  {
+    if (paramUpdateSection != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] cleanup: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
+      }
+      FileUtils.delete(c(paramUpdateSection), false);
+    }
+  }
+  
+  private boolean h()
+  {
+    Object localObject = this.k.a();
+    int m = 0;
+    while (m < ((List)localObject).size())
+    {
+      if (!((SFU.UpdateSection)((List)localObject).get(m)).a())
+      {
+        bool = false;
+        break label50;
+      }
+      m += 1;
+    }
+    boolean bool = true;
+    label50:
+    if (QLog.isColorLevel())
+    {
+      if (bool) {
+        localObject = "yes";
+      } else {
+        localObject = "no";
+      }
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] all complete: %s", new Object[] { localObject }));
+    }
+    return bool;
+  }
+  
+  private boolean i()
+  {
+    return this.e == 0;
+  }
+  
+  private boolean i(SFU.UpdateSection paramUpdateSection)
+  {
+    boolean bool;
+    if (paramUpdateSection != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] verify: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
+      }
+      if (paramUpdateSection.r.isEmpty())
       {
         if (QLog.isColorLevel()) {
-          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] no diff: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] no diff: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
         }
       }
       else
       {
-        int i = 0;
-        while (i < paramUpdateSection.jdField_c_of_type_JavaUtilList.size())
+        int m = 0;
+        while (m < paramUpdateSection.r.size())
         {
-          SFU.FileInfo localFileInfo = (SFU.FileInfo)paramUpdateSection.jdField_c_of_type_JavaUtilList.get(i);
+          SFU.FileInfo localFileInfo = (SFU.FileInfo)paramUpdateSection.r.get(m);
           if (TextUtils.isEmpty(localFileInfo.g)) {
             str = localFileInfo.f;
           } else {
             str = localFileInfo.g;
           }
           String str = MD5FileUtil.a(str);
-          if ((str != null) && (str.equalsIgnoreCase(localFileInfo.jdField_b_of_type_JavaLangString)))
+          if ((str != null) && (str.equalsIgnoreCase(localFileInfo.b)))
           {
-            i += 1;
+            m += 1;
           }
           else
           {
             if (!QLog.isColorLevel()) {
               break label229;
             }
-            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] not matched: %s!=%s, sid=%d", new Object[] { str, localFileInfo.jdField_b_of_type_JavaLangString, Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] not matched: %s!=%s, sid=%d", new Object[] { str, localFileInfo.b, Long.valueOf(paramUpdateSection.a) }));
             break label229;
           }
         }
@@ -976,39 +951,28 @@ public class QPUpdateManager
     return bool;
   }
   
-  private void e()
+  private int j()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QPUpdate", 2, "[SFU] all sections update complete");
-    }
     try
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        QSecFramework.a().b();
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("last_update_bids", this.jdField_a_of_type_JavaLangString).putString("last_update_sections", this.jdField_b_of_type_JavaLangString).commit();
-        a("0X80078B6", 0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] notify update complete: %s", new Object[] { this.jdField_a_of_type_JavaLangString }));
-        return;
-      }
+      int m = Build.VERSION.SDK_INT;
+      return m;
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
+    return 0;
   }
   
-  private boolean e(SFU.UpdateSection paramUpdateSection)
+  private boolean j(SFU.UpdateSection paramUpdateSection)
   {
     if (paramUpdateSection != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] backup: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] backup: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
       }
-      long l2 = paramUpdateSection.f;
+      long l2 = paramUpdateSection.s;
       long l1 = 0L;
       if (l2 == 0L) {
         if (QLog.isColorLevel()) {
@@ -1019,31 +983,31 @@ public class QPUpdateManager
       {
         bool = true;
         break label265;
-        if (paramUpdateSection.f <= 0L) {
+        if (paramUpdateSection.s <= 0L) {
           break;
         }
-        String str = b(paramUpdateSection);
-        int i = 0;
-        while (i < paramUpdateSection.jdField_c_of_type_JavaUtilList.size())
+        String str = d(paramUpdateSection);
+        int m = 0;
+        while (m < paramUpdateSection.r.size())
         {
-          SFU.FileInfo localFileInfo = (SFU.FileInfo)paramUpdateSection.jdField_c_of_type_JavaUtilList.get(i);
+          SFU.FileInfo localFileInfo = (SFU.FileInfo)paramUpdateSection.r.get(m);
           l2 = l1;
-          if (1 == localFileInfo.jdField_a_of_type_Int)
+          if (1 == localFileInfo.l)
           {
             Object localObject = new StringBuilder();
             ((StringBuilder)localObject).append(str);
-            ((StringBuilder)localObject).append(localFileInfo.jdField_c_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(localFileInfo.c);
             localObject = ((StringBuilder)localObject).toString();
             a(new File(localFileInfo.f), new File((String)localObject));
             l2 = l1 + 1L;
           }
-          i += 1;
+          m += 1;
           l1 = l2;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] backup %d files of %d", new Object[] { Long.valueOf(l1), Integer.valueOf(paramUpdateSection.jdField_c_of_type_JavaUtilList.size()) }));
+          QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] backup %d files of %d", new Object[] { Long.valueOf(l1), Integer.valueOf(paramUpdateSection.r.size()) }));
         }
-      } while (paramUpdateSection.f == l1);
+      } while (paramUpdateSection.s == l1);
     }
     boolean bool = false;
     label265:
@@ -1053,19 +1017,54 @@ public class QPUpdateManager
     return bool;
   }
   
-  private boolean f(SFU.UpdateSection paramUpdateSection)
+  private boolean k()
   {
-    if ((paramUpdateSection != null) && (!paramUpdateSection.jdField_c_of_type_JavaUtilList.isEmpty()))
+    this.f = null;
+    List localList = this.k.a();
+    int m = 0;
+    while (m < localList.size())
+    {
+      SFU.UpdateSection localUpdateSection = (SFU.UpdateSection)localList.get(m);
+      if (!localUpdateSection.a())
+      {
+        if ((localUpdateSection.n) && (localUpdateSection.m) && (localUpdateSection.o))
+        {
+          this.f = localUpdateSection;
+          c(0);
+          if (QLog.isColorLevel()) {
+            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] next update: sid=%d", new Object[] { Long.valueOf(this.f.a) }));
+          }
+          bool = true;
+          break label206;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.w("QQProtect.QPUpdate", 2, String.format("[SFU] not matched section: sid=%d, os: %b, qq:%b, cpu:%b", new Object[] { Long.valueOf(localUpdateSection.a), Boolean.valueOf(localUpdateSection.n), Boolean.valueOf(localUpdateSection.m), Boolean.valueOf(localUpdateSection.o) }));
+        }
+        localUpdateSection.b();
+      }
+      m += 1;
+    }
+    boolean bool = false;
+    label206:
+    if (QLog.isColorLevel()) {
+      QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] get next section result? %b", new Object[] { Boolean.valueOf(bool) }));
+    }
+    return bool;
+  }
+  
+  private boolean k(SFU.UpdateSection paramUpdateSection)
+  {
+    if ((paramUpdateSection != null) && (!paramUpdateSection.r.isEmpty()))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] do update files: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] do update files: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
       }
-      String str = a(paramUpdateSection);
-      int i = 0;
-      while (i < paramUpdateSection.jdField_c_of_type_JavaUtilList.size())
+      String str = c(paramUpdateSection);
+      int m = 0;
+      while (m < paramUpdateSection.r.size())
       {
-        SFU.FileInfo localFileInfo = (SFU.FileInfo)paramUpdateSection.jdField_c_of_type_JavaUtilList.get(i);
-        File localFile1 = new File(str, localFileInfo.jdField_b_of_type_JavaLangString);
+        SFU.FileInfo localFileInfo = (SFU.FileInfo)paramUpdateSection.r.get(m);
+        File localFile1 = new File(str, localFileInfo.b);
         Object localObject = new File(localFileInfo.f);
         if ((localFile1.exists()) && (localFile1.canRead()))
         {
@@ -1078,7 +1077,7 @@ public class QPUpdateManager
             ((StringBuilder)localObject).append(".1");
             localObject = ((StringBuilder)localObject).toString();
             File localFile2 = new File((String)localObject);
-            localFileInfo.jdField_a_of_type_Int = 3;
+            localFileInfo.l = 3;
             localFileInfo.g = ((String)localObject);
             bool2 = a(localFile1, localFile2);
             if (QLog.isColorLevel()) {
@@ -1087,7 +1086,7 @@ public class QPUpdateManager
             bool1 = bool2;
             if (bool2)
             {
-              this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(localFileInfo.f, localFileInfo.g).commit();
+              this.j.edit().putString(localFileInfo.f, localFileInfo.g).commit();
               bool1 = bool2;
             }
           }
@@ -1096,12 +1095,12 @@ public class QPUpdateManager
             if (QLog.isColorLevel()) {
               QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] success copied: %s", new Object[] { localFileInfo.f }));
             }
-            paramUpdateSection.jdField_b_of_type_JavaUtilList.add(localFileInfo);
-            paramUpdateSection.g += 1L;
+            paramUpdateSection.q.add(localFileInfo);
+            paramUpdateSection.t += 1L;
           }
           else
           {
-            a("0X80078B2", (int)localFileInfo.jdField_b_of_type_Long, localFileInfo.jdField_a_of_type_JavaLangString, localFileInfo.jdField_b_of_type_JavaLangString);
+            a("0X80078B2", (int)localFileInfo.j, localFileInfo.a, localFileInfo.b);
             if (!QLog.isColorLevel()) {
               break;
             }
@@ -1113,12 +1112,12 @@ public class QPUpdateManager
         {
           QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] copied failed, src not existed or cannot read: %s", new Object[] { localFile1.toString() }));
         }
-        i += 1;
+        m += 1;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] update %d files of %d", new Object[] { Long.valueOf(paramUpdateSection.g), Integer.valueOf(paramUpdateSection.jdField_c_of_type_JavaUtilList.size()) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] update %d files of %d", new Object[] { Long.valueOf(paramUpdateSection.t), Integer.valueOf(paramUpdateSection.r.size()) }));
       }
-      if (paramUpdateSection.g == paramUpdateSection.jdField_c_of_type_JavaUtilList.size())
+      if (paramUpdateSection.t == paramUpdateSection.r.size())
       {
         bool1 = true;
         break label517;
@@ -1132,24 +1131,24 @@ public class QPUpdateManager
     return bool1;
   }
   
-  private boolean g(SFU.UpdateSection paramUpdateSection)
+  private boolean l(SFU.UpdateSection paramUpdateSection)
   {
     if (paramUpdateSection != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] unzip package: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] unzip package: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
       }
-      String str = a(paramUpdateSection);
+      String str = c(paramUpdateSection);
       File localFile = new File(str);
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      if (a() >= 30)
+      if (j() >= 30)
       {
-        if (ZipUtils.unZipFile3(c(paramUpdateSection), str) != 0) {}
+        if (ZipUtils.unZipFile3(e(paramUpdateSection), str) != 0) {}
       }
       else {
-        while (ZipUtils.unZipFile2(c(paramUpdateSection), str) == 0)
+        while (ZipUtils.unZipFile2(e(paramUpdateSection), str) == 0)
         {
           bool = true;
           break;
@@ -1163,62 +1162,62 @@ public class QPUpdateManager
     return bool;
   }
   
-  private boolean h(SFU.UpdateSection paramUpdateSection)
+  private boolean m(SFU.UpdateSection paramUpdateSection)
   {
     if (paramUpdateSection != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] download package: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] download package: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
       }
-      return a(new QPUpdateManager.UserData(2, 0, a(paramUpdateSection), paramUpdateSection.jdField_a_of_type_JavaLangString, paramUpdateSection.jdField_c_of_type_JavaLangString, paramUpdateSection.jdField_b_of_type_JavaLangString, 0, true, 0, new Date().getTime(), paramUpdateSection.jdField_b_of_type_Int));
+      return a(new QPUpdateManager.UserData(2, 0, c(paramUpdateSection), paramUpdateSection.d, paramUpdateSection.f, paramUpdateSection.e, 0, true, 0, new Date().getTime(), paramUpdateSection.v));
     }
     return false;
   }
   
-  private boolean i(SFU.UpdateSection paramUpdateSection)
+  private boolean n(SFU.UpdateSection paramUpdateSection)
   {
     if (paramUpdateSection != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] get different: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.jdField_a_of_type_Long) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] get different: sid=%d", new Object[] { Long.valueOf(paramUpdateSection.a) }));
       }
-      List localList = paramUpdateSection.jdField_a_of_type_JavaUtilList;
-      int i = 0;
-      while (i < localList.size())
+      List localList = paramUpdateSection.p;
+      int m = 0;
+      while (m < localList.size())
       {
-        SFU.FileInfo localFileInfo = (SFU.FileInfo)localList.get(i);
+        SFU.FileInfo localFileInfo = (SFU.FileInfo)localList.get(m);
         if (!new File(localFileInfo.f).exists())
         {
-          localFileInfo.jdField_a_of_type_Int = 2;
-          paramUpdateSection.jdField_c_of_type_JavaUtilList.add(localFileInfo);
+          localFileInfo.l = 2;
+          paramUpdateSection.r.add(localFileInfo);
         }
         else
         {
           String str = MD5FileUtil.a(localFileInfo.f);
-          if ((str == null) || (!str.equalsIgnoreCase(localFileInfo.jdField_b_of_type_JavaLangString)))
+          if ((str == null) || (!str.equalsIgnoreCase(localFileInfo.b)))
           {
-            localFileInfo.jdField_a_of_type_Int = 1;
+            localFileInfo.l = 1;
             if (str == null) {
               str = "";
             }
-            localFileInfo.jdField_c_of_type_JavaLangString = str;
-            paramUpdateSection.jdField_c_of_type_JavaUtilList.add(localFileInfo);
-            paramUpdateSection.f += 1L;
+            localFileInfo.c = str;
+            paramUpdateSection.r.add(localFileInfo);
+            paramUpdateSection.s += 1L;
           }
         }
-        i += 1;
+        m += 1;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] need to update %d files of %d", new Object[] { Integer.valueOf(paramUpdateSection.jdField_c_of_type_JavaUtilList.size()), Integer.valueOf(paramUpdateSection.jdField_a_of_type_JavaUtilList.size()) }));
+        QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] need to update %d files of %d", new Object[] { Integer.valueOf(paramUpdateSection.r.size()), Integer.valueOf(paramUpdateSection.p.size()) }));
       }
-      return paramUpdateSection.jdField_c_of_type_JavaUtilList.isEmpty() ^ true;
+      return paramUpdateSection.r.isEmpty() ^ true;
     }
     return false;
   }
   
   public void a()
   {
-    long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("last_query_time", -28800000L);
+    long l1 = this.j.getLong("last_query_time", -28800000L);
     long l2 = new Date().getTime() - l1;
     if (QLog.isColorLevel()) {
       QLog.d("QQProtect.QPUpdate", 1, String.format("[SFU] startSFU last time: %d, interval: %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) }));
@@ -1245,7 +1244,7 @@ public class QPUpdateManager
       c(paramInt);
       break;
     case 1: 
-      File localFile = new File(b());
+      File localFile = new File(f());
       if (localFile.exists()) {
         localFile.delete();
       }
@@ -1267,32 +1266,32 @@ public class QPUpdateManager
       {
         QQProtectUpdate.UpdateQueryResponse localUpdateQueryResponse = new QQProtectUpdate.UpdateQueryResponse();
         localUpdateQueryResponse.mergeFrom((byte[])paramObject);
-        j = -1;
-        int i = j;
+        n = -1;
+        int m = n;
         if (localUpdateQueryResponse.int32_status != null)
         {
-          i = j;
+          m = n;
           if (localUpdateQueryResponse.int32_status.has()) {
-            i = localUpdateQueryResponse.int32_status.get();
+            m = localUpdateQueryResponse.int32_status.get();
           }
         }
-        a("0X80078B8", i, "", "");
+        a("0X80078B8", m, "", "");
         boolean bool3 = true;
         boolean bool2 = false;
-        if (i == 0)
+        if (m == 0)
         {
           if ((localUpdateQueryResponse.uint32_sec_cmd == null) || (!localUpdateQueryResponse.uint32_sec_cmd.has())) {
             break label615;
           }
-          j = localUpdateQueryResponse.uint32_sec_cmd.get();
+          n = localUpdateQueryResponse.uint32_sec_cmd.get();
           if ((localUpdateQueryResponse.uint32_file_id == null) || (!localUpdateQueryResponse.uint32_file_id.has())) {
             break label621;
           }
-          k = localUpdateQueryResponse.uint32_file_id.get();
+          i1 = localUpdateQueryResponse.uint32_file_id.get();
           if ((localUpdateQueryResponse.uint32_file_version == null) || (!localUpdateQueryResponse.uint32_file_version.has())) {
             break label627;
           }
-          m = localUpdateQueryResponse.uint32_file_version.get();
+          i2 = localUpdateQueryResponse.uint32_file_version.get();
           if ((localUpdateQueryResponse.string_file_hash == null) || (!localUpdateQueryResponse.string_file_hash.has())) {
             break label633;
           }
@@ -1304,29 +1303,29 @@ public class QPUpdateManager
           if ((localUpdateQueryResponse.uint32_zip_flag == null) || (!localUpdateQueryResponse.uint32_zip_flag.has())) {
             break label645;
           }
-          n = localUpdateQueryResponse.uint32_zip_flag.get();
+          i3 = localUpdateQueryResponse.uint32_zip_flag.get();
           break label648;
-          int i1 = a(m, paramToServiceMsg);
+          int i4 = a(i2, paramToServiceMsg);
           if (QLog.isColorLevel()) {
-            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] resp: cmd=%d, status=%d, fileid=%d, fileversion=%d, md5=%s, url=%s, zipped: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m), paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(n) }));
+            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] resp: cmd=%d, status=%d, fileid=%d, fileversion=%d, md5=%s, url=%s, zipped: %d", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(i1), Integer.valueOf(i2), paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(i3) }));
           }
-          if ((i1 == 0) && (k == 1))
+          if ((i4 == 0) && (i1 == 1))
           {
-            a("0X80078AB", k, "", "");
+            a("0X80078AB", i1, "", "");
             if (QLog.isColorLevel()) {
-              QLog.d("QQProtect.QPUpdate", 2, String.format("Need to update config file, fileid=%d", new Object[] { Integer.valueOf(k) }));
+              QLog.d("QQProtect.QPUpdate", 2, String.format("Need to update config file, fileid=%d", new Object[] { Integer.valueOf(i1) }));
             }
-            bool1 = a(new QPUpdateManager.UserData(1, k, a(), "qp_sfu_config.dat", paramFromServiceMsg, paramToServiceMsg, m, bool1, 0, new Date().getTime(), 1));
+            bool1 = a(new QPUpdateManager.UserData(1, i1, e(), "qp_sfu_config.dat", paramFromServiceMsg, paramToServiceMsg, i2, bool1, 0, new Date().getTime(), 1));
           }
           else
           {
-            if (i1 == 1)
+            if (i4 == 1)
             {
-              paramToServiceMsg = new File(b());
-              if (!this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig.a(paramToServiceMsg.toString())) {
+              paramToServiceMsg = new File(f());
+              if (!this.k.a(paramToServiceMsg.toString())) {
                 break label666;
               }
-              if (this.jdField_a_of_type_ComTencentQqprotectSingleupdateQPUpdateConfig.a().isEmpty())
+              if (this.k.a().isEmpty())
               {
                 d(16);
                 bool1 = bool3;
@@ -1349,7 +1348,7 @@ public class QPUpdateManager
           bool1 = bool2;
           if (QLog.isColorLevel())
           {
-            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] Server replied with error, status=%d", new Object[] { Integer.valueOf(i) }));
+            QLog.d("QQProtect.QPUpdate", 2, String.format("[SFU] Server replied with error, status=%d", new Object[] { Integer.valueOf(m) }));
             bool1 = bool2;
           }
         }
@@ -1366,13 +1365,13 @@ public class QPUpdateManager
       }
       return;
       label615:
-      int j = 0;
+      int n = 0;
       continue;
       label621:
-      int k = 0;
+      int i1 = 0;
       continue;
       label627:
-      int m = 0;
+      int i2 = 0;
       continue;
       label633:
       paramToServiceMsg = "";
@@ -1380,8 +1379,8 @@ public class QPUpdateManager
       label639:
       paramFromServiceMsg = "";
       continue;
-      int n = 0;
-      if (n == 1)
+      int i3 = 0;
+      if (i3 == 1)
       {
         bool1 = true;
       }
@@ -1419,7 +1418,7 @@ public class QPUpdateManager
   
   public void onDestroy()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.d;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
@@ -1427,7 +1426,7 @@ public class QPUpdateManager
   
   public void onResp(NetResp paramNetResp)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.d;
     if (localHandler != null) {
       localHandler.obtainMessage(1052688, paramNetResp).sendToTarget();
     }
@@ -1435,12 +1434,12 @@ public class QPUpdateManager
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1052689, (int)paramLong1, (int)paramLong2, paramNetReq).sendToTarget();
+    this.d.obtainMessage(1052689, (int)paramLong1, (int)paramLong2, paramNetReq).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPUpdateManager
  * JD-Core Version:    0.7.0.1
  */

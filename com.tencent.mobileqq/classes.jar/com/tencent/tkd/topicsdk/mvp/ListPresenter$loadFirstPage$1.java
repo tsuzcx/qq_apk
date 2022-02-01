@@ -1,6 +1,6 @@
 package com.tencent.tkd.topicsdk.mvp;
 
-import com.tencent.tkd.topicsdk.framework.TLog;
+import android.util.Log;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.Unit;
@@ -23,6 +23,7 @@ final class ListPresenter$loadFirstPage$1
   public final void invoke(boolean paramBoolean1, @NotNull List<? extends BEAN> paramList, int paramInt1, boolean paramBoolean2, int paramInt2, @Nullable String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "list");
+    ListPresenter.a(this.this$0, false);
     if (paramBoolean1)
     {
       ListPresenter.a(this.this$0, paramBoolean2, paramInt1, paramList);
@@ -33,13 +34,13 @@ final class ListPresenter$loadFirstPage$1
     localStringBuilder.append(paramInt2);
     localStringBuilder.append(", errorMsg= ");
     localStringBuilder.append(paramString);
-    TLog.a("ListPresenter", localStringBuilder.toString());
+    Log.i("ListPresenter", localStringBuilder.toString());
     ListPresenter.a(this.this$0, paramBoolean2, paramList, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mvp.ListPresenter.loadFirstPage.1
  * JD-Core Version:    0.7.0.1
  */

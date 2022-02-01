@@ -38,62 +38,60 @@ import mqq.os.MqqHandler;
 public class AppShortcutBarPanel
   extends IAppShortcutBarDataUI
 {
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected View.OnClickListener a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private TroopAppShortcutBarHelper jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper;
-  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
-  private AppShortcutBarPanel.ScrollInfo jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo;
-  private AppShortcutBarScrollView jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  public boolean a;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_b_of_type_Boolean = false;
-  private LinearLayout c;
+  public boolean a = false;
+  protected View.OnClickListener b = new AppShortcutBarPanel.2(this);
+  private AIOShortcutBarContext c;
+  private AppShortcutBarScrollView d;
+  private LinearLayout e;
+  private LinearLayout f;
+  private LinearLayout g;
+  private TroopAppShortcutBarHelper h;
+  private long i;
+  private ArrayList<Long> j = new ArrayList();
+  private boolean k = false;
+  private AppShortcutBarPanel.ScrollInfo l;
+  private SessionInfo m;
+  private Activity n;
+  private Context o;
+  private AppRuntime p;
   
   public AppShortcutBarPanel(AIOShortcutBarContext paramAIOShortcutBarContext, AppShortcutBarScrollView paramAppShortcutBarScrollView, TroopAppShortcutBarHelper paramTroopAppShortcutBarHelper)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new AppShortcutBarPanel.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = paramAIOShortcutBarContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramAIOShortcutBarContext.a();
-    this.jdField_a_of_type_AndroidAppActivity = paramAIOShortcutBarContext.a();
-    this.jdField_a_of_type_AndroidContentContext = paramAIOShortcutBarContext.a();
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAIOShortcutBarContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView = paramAppShortcutBarScrollView;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView.findViewById(2131372301));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372291));
-    this.c = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372299));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper = paramTroopAppShortcutBarHelper;
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.b();
+    this.c = paramAIOShortcutBarContext;
+    this.m = paramAIOShortcutBarContext.d();
+    this.n = paramAIOShortcutBarContext.f();
+    this.o = paramAIOShortcutBarContext.e();
+    this.p = paramAIOShortcutBarContext.c();
+    this.d = paramAppShortcutBarScrollView;
+    this.e = ((LinearLayout)this.d.findViewById(2131439812));
+    this.f = ((LinearLayout)this.e.findViewById(2131439802));
+    this.g = ((LinearLayout)this.e.findViewById(2131439810));
+    this.h = paramTroopAppShortcutBarHelper;
+    this.i = this.h.w();
   }
   
   private void a(TroopShortcutBarApp paramTroopShortcutBarApp, View paramView)
   {
     paramView.setTag(paramTroopShortcutBarApp);
-    paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    boolean bool2 = ThemeUtil.isInNightMode(this.jdField_a_of_type_MqqAppAppRuntime);
-    Object localObject = (TextView)paramView.findViewById(2131377458);
-    ((TextView)localObject).setText(paramTroopShortcutBarApp.a());
+    paramView.setOnClickListener(this.b);
+    boolean bool2 = ThemeUtil.isInNightMode(this.p);
+    Object localObject = (TextView)paramView.findViewById(2131445857);
+    ((TextView)localObject).setText(paramTroopShortcutBarApp.e());
     if (bool2) {
       ((TextView)localObject).setTextColor(Color.parseColor("#ffffff"));
     } else {
       ((TextView)localObject).setTextColor(Color.parseColor("#1C1D1E"));
     }
-    localObject = (LinearLayout)paramView.findViewById(2131377455);
+    localObject = (LinearLayout)paramView.findViewById(2131445854);
     if (bool2) {
-      ((LinearLayout)localObject).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838593));
+      ((LinearLayout)localObject).setBackgroundDrawable(this.o.getResources().getDrawable(2130838710));
     } else {
-      ((LinearLayout)localObject).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838592));
+      ((LinearLayout)localObject).setBackgroundDrawable(this.o.getResources().getDrawable(2130838709));
     }
-    localObject = (TextView)paramView.findViewById(2131377457);
-    int i = paramTroopShortcutBarApp.c();
+    localObject = (TextView)paramView.findViewById(2131445856);
+    int i1 = paramTroopShortcutBarApp.i();
     boolean bool1 = false;
-    if ((i == 0) && (!paramTroopShortcutBarApp.b()))
+    if ((i1 == 0) && (!paramTroopShortcutBarApp.k()))
     {
       ((TextView)localObject).setVisibility(4);
     }
@@ -102,61 +100,61 @@ public class AppShortcutBarPanel
       ((TextView)localObject).setVisibility(0);
       ((TextView)localObject).setText("");
       ((TextView)localObject).setBackgroundResource(0);
-      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(2130837912, 0, 0, 0);
+      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(2130837936, 0, 0, 0);
     }
-    paramView = (URLImageView)paramView.findViewById(2131377456);
+    paramView = (URLImageView)paramView.findViewById(2131445855);
     if (bool2) {
       paramView.setColorFilter(1996488704);
     } else {
       paramView.setColorFilter(0);
     }
-    localObject = this.jdField_a_of_type_AndroidContentContext;
-    String str = paramTroopShortcutBarApp.b();
-    if (paramTroopShortcutBarApp.b() == 1) {
+    localObject = this.o;
+    String str = paramTroopShortcutBarApp.f();
+    if (paramTroopShortcutBarApp.g() == 1) {
       bool1 = true;
     }
     TroopAppShortcutUtils.a((Context)localObject, paramView, str, 19.0F, bool1);
   }
   
-  private void f()
+  private void g()
   {
-    TroopShortcutBarApp localTroopShortcutBarApp = TroopShortcutBarApp.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696205), "https://sola.gtimg.cn/aoi/sola/20200528211216_3ydkcWft2I.png");
-    View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561542, null);
+    TroopShortcutBarApp localTroopShortcutBarApp = TroopShortcutBarApp.a(this.o.getResources().getString(2131893971), "https://sola.gtimg.cn/aoi/sola/20200528211216_3ydkcWft2I.png");
+    View localView = View.inflate(this.o, 2131627903, null);
     a(localTroopShortcutBarApp, localView);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localView);
+    this.f.addView(localView);
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
+    this.k = false;
+    this.a = false;
   }
   
   public void a(ArrayList<ShortcutBarInfo> paramArrayList, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView == null) {
+    if (this.d == null) {
       return;
     }
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      this.jdField_a_of_type_Boolean = false;
-      Object localObject = this.jdField_b_of_type_AndroidWidgetLinearLayout;
+      this.a = false;
+      Object localObject = this.f;
       if (localObject == null) {
         return;
       }
       ((LinearLayout)localObject).removeAllViews();
-      if (this.c.getChildCount() == 0) {
-        i = 1;
+      if (this.g.getChildCount() == 0) {
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo = new AppShortcutBarPanel.ScrollInfo();
+      this.l = new AppShortcutBarPanel.ScrollInfo();
       paramArrayList = paramArrayList.iterator();
       long l2 = 0L;
-      int k = 1;
-      int j = i;
+      int i3 = 1;
+      int i2 = i1;
       boolean bool = false;
-      int i = k;
+      int i1 = i3;
       while (paramArrayList.hasNext())
       {
         localObject = (ShortcutBarInfo)paramArrayList.next();
@@ -165,51 +163,51 @@ public class AppShortcutBarPanel
           localObject = (TroopShortcutBarApp)localObject;
           try
           {
-            View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561542, null);
+            View localView = View.inflate(this.o, 2131627903, null);
             a((TroopShortcutBarApp)localObject, localView);
-            this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localView);
-            localView.setId((int)((TroopShortcutBarApp)localObject).b());
-            this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo.jdField_b_of_type_Int = localView.getWidth();
-            k = j;
-            if (j != 0)
+            this.f.addView(localView);
+            localView.setId((int)((TroopShortcutBarApp)localObject).d());
+            this.l.b = localView.getWidth();
+            i3 = i2;
+            if (i2 != 0)
             {
               LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-              localLayoutParams.setMargins(ViewUtils.a(14.0F), 0, 0, 0);
+              localLayoutParams.setMargins(ViewUtils.dip2px(14.0F), 0, 0, 0);
               localView.setLayoutParams(localLayoutParams);
-              k = 0;
+              i3 = 0;
             }
             long l1;
-            if (!((TroopShortcutBarApp)localObject).b())
+            if (!((TroopShortcutBarApp)localObject).k())
             {
               l1 = l2;
-              if (!((TroopShortcutBarApp)localObject).c()) {}
+              if (!((TroopShortcutBarApp)localObject).l()) {}
             }
             else
             {
               l1 = l2;
-              if (this.c.getChildCount() == 0)
+              if (this.g.getChildCount() == 0)
               {
-                this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo.jdField_a_of_type_Boolean = true;
-                if (((TroopShortcutBarApp)localObject).c())
+                this.l.c = true;
+                if (((TroopShortcutBarApp)localObject).l())
                 {
-                  l1 = ((TroopShortcutBarApp)localObject).c();
-                  this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo.jdField_a_of_type_Int = i;
-                  this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo.jdField_a_of_type_Long = ((TroopShortcutBarApp)localObject).b();
+                  l1 = ((TroopShortcutBarApp)localObject).j();
+                  this.l.a = i1;
+                  this.l.d = ((TroopShortcutBarApp)localObject).d();
                 }
                 else
                 {
                   l1 = l2;
-                  if (((TroopShortcutBarApp)localObject).b())
+                  if (((TroopShortcutBarApp)localObject).k())
                   {
                     l1 = l2;
-                    if (((TroopShortcutBarApp)localObject).c() > l2)
+                    if (((TroopShortcutBarApp)localObject).j() > l2)
                     {
-                      l2 = ((TroopShortcutBarApp)localObject).c();
+                      l2 = ((TroopShortcutBarApp)localObject).j();
                       l1 = l2;
-                      if (i > this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo.jdField_a_of_type_Int)
+                      if (i1 > this.l.a)
                       {
-                        this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo.jdField_a_of_type_Int = i;
-                        this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo.jdField_a_of_type_Long = ((TroopShortcutBarApp)localObject).b();
+                        this.l.a = i1;
+                        this.l.d = ((TroopShortcutBarApp)localObject).d();
                         l1 = l2;
                       }
                     }
@@ -217,15 +215,15 @@ public class AppShortcutBarPanel
                 }
               }
             }
-            if (i == 4) {
-              this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopappAppShortcutBarPanel$ScrollInfo.jdField_b_of_type_Long = ((TroopShortcutBarApp)localObject).b();
+            if (i1 == 4) {
+              this.l.e = ((TroopShortcutBarApp)localObject).d();
             }
-            i += 1;
-            if (((TroopShortcutBarApp)localObject).c()) {
+            i1 += 1;
+            if (((TroopShortcutBarApp)localObject).l()) {
               ((TroopShortcutBarApp)localObject).c(false);
             }
             bool = true;
-            j = k;
+            i2 = i3;
             l2 = l1;
           }
           catch (InflateException paramArrayList)
@@ -254,11 +252,11 @@ public class AppShortcutBarPanel
           }
         }
       }
-      this.jdField_a_of_type_Boolean = bool;
+      this.a = bool;
       if ((bool) && (paramBoolean)) {
         try
         {
-          f();
+          g();
         }
         catch (InflateException paramArrayList)
         {
@@ -287,39 +285,34 @@ public class AppShortcutBarPanel
       }
       if (bool)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.g();
-        if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_MqqAppAppRuntime != null))
+        this.h.m();
+        if ((!this.k) && (this.p != null))
         {
-          this.jdField_b_of_type_Boolean = true;
-          paramArrayList = String.valueOf(this.jdField_a_of_type_Long);
-          localObject = ((TroopManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramArrayList);
+          this.k = true;
+          paramArrayList = String.valueOf(this.i);
+          localObject = ((TroopManager)this.p.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramArrayList);
           if (localObject == null) {
             return;
           }
           ReportController.b(null, "dc00898", "", "", "0X800ACFF", "0X800ACFF", 0, 0, "", paramArrayList, String.valueOf(((TroopInfo)localObject).dwGroupClassExt), "");
-          TroopEssenceReportUtil.c((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_Long, true);
-          TroopEssenceReportUtil.d((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_Long, true);
+          TroopEssenceReportUtil.c((QQAppInterface)this.p, this.i, true);
+          TroopEssenceReportUtil.d((QQAppInterface)this.p, this.i, true);
         }
         ThreadManager.getUIHandler().postDelayed(new AppShortcutBarPanel.1(this), 800L);
         return;
       }
-      this.jdField_a_of_type_Boolean = false;
-      paramArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper;
+      this.a = false;
+      paramArrayList = this.h;
       if (paramArrayList != null) {
-        paramArrayList.h();
+        paramArrayList.o();
       }
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    if (this.c.getChildCount() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopAppShortcutBarHelper.h();
+    this.f.removeAllViews();
+    if (this.g.getChildCount() == 0) {
+      this.h.o();
     }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.a = false;
   }
   
   public void b() {}
@@ -331,26 +324,26 @@ public class AppShortcutBarPanel
   public void e()
   {
     AppShortcutBarPanel localAppShortcutBarPanel = this;
-    if ((localAppShortcutBarPanel.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView != null) && (localAppShortcutBarPanel.jdField_b_of_type_AndroidWidgetLinearLayout != null))
+    if ((localAppShortcutBarPanel.d != null) && (localAppShortcutBarPanel.f != null))
     {
-      if (localAppShortcutBarPanel.jdField_a_of_type_MqqAppAppRuntime == null) {
+      if (localAppShortcutBarPanel.p == null) {
         return;
       }
-      String str = String.valueOf(localAppShortcutBarPanel.jdField_a_of_type_Long);
-      TroopInfo localTroopInfo = ((TroopManager)localAppShortcutBarPanel.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).b(str);
+      String str = String.valueOf(localAppShortcutBarPanel.i);
+      TroopInfo localTroopInfo = ((TroopManager)localAppShortcutBarPanel.p.getManager(QQManagerFactory.TROOP_MANAGER)).f(str);
       if (localTroopInfo == null) {
         return;
       }
       Rect localRect = new Rect();
-      localAppShortcutBarPanel.jdField_a_of_type_ComTencentMobileqqWidgetAppShortcutBarScrollView.getHitRect(localRect);
-      int i = 0;
+      localAppShortcutBarPanel.d.getHitRect(localRect);
+      int i1 = 0;
       for (;;)
       {
         localAppShortcutBarPanel = this;
-        if (i >= localAppShortcutBarPanel.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount()) {
+        if (i1 >= localAppShortcutBarPanel.f.getChildCount()) {
           break;
         }
-        Object localObject = localAppShortcutBarPanel.jdField_b_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        Object localObject = localAppShortcutBarPanel.f.getChildAt(i1);
         if ((localObject != null) && (((View)localObject).getLocalVisibleRect(localRect)))
         {
           localObject = ((View)localObject).getTag();
@@ -359,36 +352,41 @@ public class AppShortcutBarPanel
             localObject = (TroopShortcutBarApp)localObject;
             if (localObject != null)
             {
-              long l = ((TroopShortcutBarApp)localObject).b();
-              localObject = localAppShortcutBarPanel.jdField_a_of_type_JavaUtilArrayList.iterator();
+              long l1 = ((TroopShortcutBarApp)localObject).d();
+              localObject = localAppShortcutBarPanel.j.iterator();
               while (((Iterator)localObject).hasNext()) {
-                if (((Long)((Iterator)localObject).next()).longValue() == l)
+                if (((Long)((Iterator)localObject).next()).longValue() == l1)
                 {
-                  j = 1;
+                  i2 = 1;
                   break label205;
                 }
               }
-              int j = 0;
+              int i2 = 0;
               label205:
-              if (j == 0)
+              if (i2 == 0)
               {
-                localAppShortcutBarPanel.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
-                ReportController.b(null, "dc00898", "", "", "0X800AAD3", "0X800AAD3", 0, 0, String.valueOf(l), str, String.valueOf(localTroopInfo.dwGroupClassExt), "");
-                if (l == 101914115L) {
+                localAppShortcutBarPanel.j.add(Long.valueOf(l1));
+                ReportController.b(null, "dc00898", "", "", "0X800AAD3", "0X800AAD3", 0, 0, String.valueOf(l1), str, String.valueOf(localTroopInfo.dwGroupClassExt), "");
+                if (l1 == 101914115L) {
                   QQGameTroopManager.a(0, str, true);
                 }
               }
             }
           }
         }
-        i += 1;
+        i1 += 1;
       }
     }
+  }
+  
+  public boolean f()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.troopapp.AppShortcutBarPanel
  * JD-Core Version:    0.7.0.1
  */

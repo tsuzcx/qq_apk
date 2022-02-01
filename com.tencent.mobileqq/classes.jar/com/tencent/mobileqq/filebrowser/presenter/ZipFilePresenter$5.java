@@ -14,16 +14,16 @@ class ZipFilePresenter$5
   public void onClick(View paramView)
   {
     ZipFilePresenter.a(this.a, true);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserViewZipFileBrowserView.g(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserViewZipFileBrowserView.e(false);
-    ZipFilePresenter.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.j();
+    this.a.a.g(true);
+    this.a.a.e(false);
+    ZipFilePresenter.b(this.a);
+    this.a.c.C();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.ZipFilePresenter.5
  * JD-Core Version:    0.7.0.1
  */

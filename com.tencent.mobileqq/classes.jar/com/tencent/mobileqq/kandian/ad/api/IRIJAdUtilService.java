@@ -15,6 +15,7 @@ import com.tencent.biz.pubaccount.NativeAd.report.constant.ReportConstants.Video
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.kandian.biz.ad.entity.VideoAdInfo;
 import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.api.IVideoFeedsItemUIDelegate;
@@ -154,6 +155,8 @@ public abstract interface IRIJAdUtilService
   
   public abstract int getGdtCarrierCode();
   
+  public abstract String getGdtIMEI();
+  
   public abstract String getIMEI();
   
   public abstract boolean getIfAllowFastWebAdRequestToFormalNets();
@@ -188,6 +191,8 @@ public abstract interface IRIJAdUtilService
   
   public abstract String getVideoInfoSoftAdExpoStatKey(VideoInfo paramVideoInfo);
   
+  public abstract String getWxVersionName(Context paramContext);
+  
   public abstract boolean hasAddLocationInfo(AbsBaseArticleInfo paramAbsBaseArticleInfo);
   
   public abstract boolean hasColorIcon(AbsBaseArticleInfo paramAbsBaseArticleInfo);
@@ -211,6 +216,12 @@ public abstract interface IRIJAdUtilService
   public abstract boolean isAdInteractType(AdvertisementInfo paramAdvertisementInfo);
   
   public abstract boolean isAdProteusView(int paramInt);
+  
+  public abstract boolean isAdShakeVideoCard(AbsBaseArticleInfo paramAbsBaseArticleInfo);
+  
+  public abstract boolean isAdSmallVideo(AbsBaseArticleInfo paramAbsBaseArticleInfo);
+  
+  public abstract boolean isAdSurpriseVideoCard(AbsBaseArticleInfo paramAbsBaseArticleInfo);
   
   public abstract boolean isAdvertisementInfo(AbsBaseArticleInfo paramAbsBaseArticleInfo);
   
@@ -294,6 +305,8 @@ public abstract interface IRIJAdUtilService
   
   public abstract void launchApp(Context paramContext, String paramString);
   
+  public abstract void loadImage(URLImageView paramURLImageView, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Activity paramActivity);
+  
   public abstract oidb_0x6cf.PhoneInfo makePhoneInfo();
   
   public abstract boolean openApp(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo);
@@ -340,13 +353,17 @@ public abstract interface IRIJAdUtilService
   
   public abstract void setAdInfoClickPos(AdvertisementInfo paramAdvertisementInfo, int paramInt, Object paramObject);
   
+  public abstract boolean showDiversionBar();
+  
+  public abstract void showDiversionWindow(Activity paramActivity);
+  
   public abstract void showVideoAdToast(BaseItemHolder paramBaseItemHolder, String paramString);
   
   public abstract void unRegisterGDTReceiver();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService
  * JD-Core Version:    0.7.0.1
  */

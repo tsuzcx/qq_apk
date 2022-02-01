@@ -9,7 +9,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Layout;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "h", "", "getH", "()I", "setH", "(I)V", "hPX", "getHPX", "setHPX", "isConvert", "", "()Z", "setConvert", "(Z)V", "startH", "getStartH", "setStartH", "startW", "getStartW", "setStartW", "startX", "getStartX", "setStartX", "startY", "getStartY", "setStartY", "w", "getW", "setW", "wPX", "getWPX", "setWPX", "x", "getX", "setX", "xPX", "getXPX", "setXPX", "y", "getY", "setY", "yPX", "getYPX", "setYPX", "doFrameUpdate", "", "animTime", "", "end", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Layout;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "h", "", "getH", "()I", "setH", "(I)V", "hPX", "getHPX", "setHPX", "isConvert", "", "()Z", "setConvert", "(Z)V", "startH", "getStartH", "setStartH", "startW", "getStartW", "setStartW", "startX", "getStartX", "setStartX", "startY", "getStartY", "setStartY", "w", "getW", "setW", "wPX", "getWPX", "setWPX", "x", "getX", "setX", "xPX", "getXPX", "setXPX", "y", "getY", "setY", "yPX", "getYPX", "setYPX", "doFrameUpdate", "", "animTime", "", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Layout
   extends BaseAnim
@@ -45,8 +45,6 @@ public final class Layout
       localView.layout((int)f5, (int)f6, (int)(f5 + (f1 + f2 * paramFloat)), (int)(f6 + (f3 + f4 * paramFloat)));
     }
   }
-  
-  public void end() {}
   
   public final int getH()
   {
@@ -215,7 +213,7 @@ public final class Layout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.anim.Layout
  * JD-Core Version:    0.7.0.1
  */

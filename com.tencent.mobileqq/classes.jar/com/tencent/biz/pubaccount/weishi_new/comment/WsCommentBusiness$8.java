@@ -15,36 +15,33 @@ class WsCommentBusiness$8
   
   public void a(WeishiTask paramWeishiTask)
   {
-    if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
+    if ((paramWeishiTask.m instanceof stPostCommentDingRsp))
     {
-      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-      String str;
+      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramWeishiTask.m;
       StringBuilder localStringBuilder;
-      if (this.jdField_a_of_type_UserGrowthStSimpleComment.isDing == 1)
+      if (this.a.isDing == 1)
       {
-        str = WsCommentBusiness.a();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("点赞成功,nothing is ");
         localStringBuilder.append(localstPostCommentDingRsp.nothing);
-        WSLog.d(str, localStringBuilder.toString());
+        WSLog.d("WsCommentBusiness", localStringBuilder.toString());
       }
       else
       {
-        str = WsCommentBusiness.a();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("取消点赞成功,nothing is ");
         localStringBuilder.append(localstPostCommentDingRsp.nothing);
-        WSLog.d(str, localStringBuilder.toString());
+        WSLog.d("WsCommentBusiness", localStringBuilder.toString());
       }
-      StoryDispatcher.a().dispatch(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramWeishiTask.b), paramWeishiTask.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
+      StoryDispatcher.a().dispatch(this.b.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramWeishiTask.e), paramWeishiTask.c, localstPostCommentDingRsp }));
       return;
     }
-    WSLog.d(WsCommentBusiness.a(), "评论点赞失败new！");
+    WSLog.d("WsCommentBusiness", "评论点赞失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentBusiness.8
  * JD-Core Version:    0.7.0.1
  */

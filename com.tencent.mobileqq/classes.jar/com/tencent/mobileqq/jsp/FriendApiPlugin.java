@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
 import com.tencent.mobileqq.friends.FriendConstants;
+import com.tencent.mobileqq.onlinestatus.api.IOnLineStatueHelperApi;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.profilecard.data.AllInOne;
 import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
@@ -34,7 +35,7 @@ public class FriendApiPlugin
   
   private int a()
   {
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if ((localActivity != null) && (FriendConstants.a(localActivity.getIntent().getStringExtra("url")))) {
       return 127;
     }
@@ -65,13 +66,13 @@ public class FriendApiPlugin
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
           paramJsBridgeListener = new AllInOne(paramJsBridgeListener.optString("uin"), paramJsBridgeListener.optInt("from"));
           paramJsBridgeListener.profileEntryType = a();
-          ProfileUtils.openProfileCard(this.mRuntime.a(), paramJsBridgeListener);
+          ProfileUtils.openProfileCard(this.mRuntime.d(), paramJsBridgeListener);
           return true;
         }
         catch (JSONException paramJsBridgeListener)
         {
           if (!QLog.isColorLevel()) {
-            break label1042;
+            break label1227;
           }
         }
         paramString1 = new StringBuilder();
@@ -120,7 +121,7 @@ public class FriendApiPlugin
                 paramJsBridgeListener = paramJsBridgeListener.toByteArray();
               }
             }
-            paramString3 = this.mRuntime.a();
+            paramString3 = this.mRuntime.d();
             paramVarArgs = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(paramString3, 1, paramString2, "", i, j, null, null, null, null, null);
             if (paramJsBridgeListener != null)
             {
@@ -139,7 +140,7 @@ public class FriendApiPlugin
           catch (JSONException paramJsBridgeListener)
           {
             if (!QLog.isColorLevel()) {
-              break label1042;
+              break label1227;
             }
           }
           paramString1 = new StringBuilder();
@@ -160,7 +161,7 @@ public class FriendApiPlugin
             paramString2.putString("KEY_UIN", paramString1);
             paramString1 = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_IS_FRIEND", paramString2);
             if (!paramString1.isSuccess()) {
-              break label1044;
+              break label1229;
             }
             bool1 = paramString1.data.getBoolean("KEY_IS_FRIEND", false);
             paramString1 = new JSONObject();
@@ -190,11 +191,11 @@ public class FriendApiPlugin
             }
             paramString3 = new JSONObject();
             if (TextUtils.isEmpty(paramJsBridgeListener)) {
-              break label1050;
+              break label1235;
             }
             paramString1 = paramJsBridgeListener;
             if ("0".equals(paramJsBridgeListener)) {
-              break label1050;
+              break label1235;
             }
             label785:
             paramString3.put("PhoneNumber", paramString1);
@@ -208,7 +209,11 @@ public class FriendApiPlugin
           }
         }
       }
-      else if ((!"deleteOneWayFriends".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
+      else if ("deleteOneWayFriends".equals(paramString3)) {
+        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+          break label1227;
+        }
+      }
     }
     for (;;)
     {
@@ -223,51 +228,83 @@ public class FriendApiPlugin
           {
             paramString2 = paramString1.optString(i);
             if (TextUtils.isEmpty(paramString2)) {
-              break label1056;
+              break label1241;
             }
             paramJsBridgeListener.add(paramString2);
-            break label1056;
+            break label1241;
           }
         }
         paramString1 = new StringBuilder();
         paramString1.append("delete single way friends: ");
         paramString1.append(paramJsBridgeListener);
         QLog.d("FriendApiPlugin", 1, paramString1.toString());
-        if (!paramJsBridgeListener.isEmpty())
-        {
-          paramString1 = new Bundle();
-          paramString1.putStringArrayList("KEY_BE_DELETE_SINGLE_WAY_FRIENDS", paramJsBridgeListener);
-          paramJsBridgeListener = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_DELETE_SINGLE_WAY_FRIENDS", paramString1);
-          if (paramJsBridgeListener != null) {
-            bool1 = paramJsBridgeListener.isSuccess();
-          }
-          paramJsBridgeListener = new StringBuilder();
-          paramJsBridgeListener.append("notify delete single way friend, isSuccess: ");
-          paramJsBridgeListener.append(bool1);
-          QLog.d("FriendApiPlugin", 1, paramJsBridgeListener.toString());
-          return true;
+        if (paramJsBridgeListener.isEmpty()) {
+          break label1227;
         }
+        paramString1 = new Bundle();
+        paramString1.putStringArrayList("KEY_BE_DELETE_SINGLE_WAY_FRIENDS", paramJsBridgeListener);
+        paramJsBridgeListener = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_DELETE_SINGLE_WAY_FRIENDS", paramString1);
+        if (paramJsBridgeListener != null) {
+          bool1 = paramJsBridgeListener.isSuccess();
+        }
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("notify delete single way friend, isSuccess: ");
+        paramJsBridgeListener.append(bool1);
+        QLog.d("FriendApiPlugin", 1, paramJsBridgeListener.toString());
+        return true;
       }
       catch (JSONException paramJsBridgeListener)
       {
         paramJsBridgeListener.printStackTrace();
+        return true;
       }
-      label1042:
+      if ("showAccountMenu".equals(paramString3))
+      {
+        QLog.i("FriendApiPlugin", 1, "showAccountMenu called");
+        QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_SET_OLYMPIC_ONLINE_STATUS", null, new FriendApiPlugin.1(this, paramVarArgs));
+        return true;
+      }
+      if ("shareRichState".equals(paramString3))
+      {
+        QLog.i("FriendApiPlugin", 1, "shareRichState called");
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+          try
+          {
+            long l = new JSONObject(paramVarArgs[0]).optLong("rank");
+            if (QLog.isColorLevel())
+            {
+              paramJsBridgeListener = new StringBuilder();
+              paramJsBridgeListener.append("shareRichState rank is ");
+              paramJsBridgeListener.append(l);
+              QLog.i("FriendApiPlugin", 1, paramJsBridgeListener.toString());
+            }
+            paramJsBridgeListener = new Intent();
+            paramJsBridgeListener.putExtra("KEY_OLYMPIC_RANK", l);
+            ((IOnLineStatueHelperApi)QRoute.api(IOnLineStatueHelperApi.class)).launchOlympicShareFragment(this.mRuntime.d(), paramJsBridgeListener);
+            return true;
+          }
+          catch (JSONException paramJsBridgeListener)
+          {
+            paramJsBridgeListener.printStackTrace();
+          }
+        }
+      }
+      label1227:
       return true;
-      label1044:
+      label1229:
       bool1 = false;
       break;
-      label1050:
+      label1235:
       paramString1 = "";
       break label785;
-      label1056:
+      label1241:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.FriendApiPlugin
  * JD-Core Version:    0.7.0.1
  */

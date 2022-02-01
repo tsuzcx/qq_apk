@@ -24,9 +24,9 @@ class PasterDataManager$3$1
       localStringBuilder.append(" longitude=");
       localStringBuilder.append(paramSosoLbsInfo.mLocation.mLon02);
       SLog.b("PasterDataManager", localStringBuilder.toString());
-      PasterDataManager.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager, true);
-      PasterDataManager.a(this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager, this.a.jdField_a_of_type_Boolean);
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterPasterDataManager.a(null);
+      PasterDataManager.a(this.a.b, true);
+      PasterDataManager.b(this.a.b, this.a.a);
+      this.a.b.a(null);
       return;
     }
     SLog.b("PasterDataManager", "onLocationUpdate() error");
@@ -34,7 +34,7 @@ class PasterDataManager$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.PasterDataManager.3.1
  * JD-Core Version:    0.7.0.1
  */

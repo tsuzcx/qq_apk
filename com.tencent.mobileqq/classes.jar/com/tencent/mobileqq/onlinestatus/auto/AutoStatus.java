@@ -9,34 +9,34 @@ import java.util.Locale;
 public class AutoStatus
 {
   public int a;
-  private long a;
+  private long b;
   
   public AutoStatus(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = paramInt;
+    this.b = System.currentTimeMillis();
   }
   
-  private boolean a()
+  private boolean b()
   {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long > Constant.O;
+    return System.currentTimeMillis() - this.b > Constant.R;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Int = 40001;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = 40001;
+    this.b = System.currentTimeMillis();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = paramInt;
+    this.b = System.currentTimeMillis();
   }
   
   public boolean a(String paramString)
   {
-    boolean bool = a();
+    boolean bool = b();
     if ((QLog.isColorLevel()) && (bool))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -65,7 +65,7 @@ public class AutoStatus
         return false;
       }
       paramObject = (AutoStatus)paramObject;
-      return this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int;
+      return this.a == paramObject.a;
     }
     return false;
   }
@@ -75,16 +75,16 @@ public class AutoStatus
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AutoStatus{status=");
-    localStringBuilder.append(Constant.a(this.jdField_a_of_type_Int));
+    localStringBuilder.append(Constant.c(this.a));
     localStringBuilder.append(", updateTime=");
-    localStringBuilder.append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)));
+    localStringBuilder.append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.b)));
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.AutoStatus
  * JD-Core Version:    0.7.0.1
  */

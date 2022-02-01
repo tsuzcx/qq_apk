@@ -12,12 +12,12 @@ class ViolaInitDelegate$2
   
   public int getCount()
   {
-    return ViolaInitDelegate.a(this.a).size();
+    return ViolaInitDelegate.c(this.a).size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = (View)ViolaInitDelegate.a(this.a).get(paramInt);
+    View localView = (View)ViolaInitDelegate.c(this.a).get(paramInt);
     if (localView.getParent() == null) {
       paramViewGroup.addView(localView);
     }
@@ -31,7 +31,7 @@ class ViolaInitDelegate$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.delegate.ViolaInitDelegate.2
  * JD-Core Version:    0.7.0.1
  */

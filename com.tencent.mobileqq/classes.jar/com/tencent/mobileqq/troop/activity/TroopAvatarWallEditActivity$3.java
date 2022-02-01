@@ -17,17 +17,17 @@ class TroopAvatarWallEditActivity$3
       return;
     }
     paramAdapterView = this.a;
-    paramAdapterView.jdField_a_of_type_Int = paramInt;
-    if (paramAdapterView.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopPhotoController != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopPhotoController.b(paramInt);
+    paramAdapterView.j = paramInt;
+    if (paramAdapterView.u != null) {
+      this.a.u.b(paramInt);
     }
-    if (!this.a.c) {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "0", "", "");
+    if (!this.a.p) {
+      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.k, "0", "", "");
     } else {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.jdField_a_of_type_JavaLangString, "1", "", "");
+      ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.k, "1", "", "");
     }
-    if (TroopAvatarWallEditActivity.a(this.a) != null) {
-      TroopAvatarWallEditActivity.a(this.a).a(paramInt);
+    if (TroopAvatarWallEditActivity.b(this.a) != null) {
+      TroopAvatarWallEditActivity.b(this.a).a(paramInt);
     }
   }
   
@@ -35,7 +35,7 @@ class TroopAvatarWallEditActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.3
  * JD-Core Version:    0.7.0.1
  */

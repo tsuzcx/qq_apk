@@ -1,24 +1,6 @@
 package com.qq.android.dexposed.utility;
 
-import android.util.Log;
-
-class NougatPolicy$TraceLogger
-{
-  static void e(String paramString1, String paramString2)
-  {
-    Log.i(paramString1, paramString2);
-  }
-  
-  static void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    Log.i(paramString1, paramString2, paramThrowable);
-  }
-  
-  static void i(String paramString1, String paramString2)
-  {
-    Log.i(paramString1, paramString2);
-  }
-}
+class NougatPolicy$TraceLogger {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

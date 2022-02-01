@@ -5,9 +5,9 @@ import java.util.LinkedList;
 
 public class VPNGRendererManager
 {
-  private static VPNGRendererManager jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager;
-  private ArrayList<VPNGRenderer> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  private LinkedList<Renderable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private static VPNGRendererManager a;
+  private LinkedList<Renderable> b = new LinkedList();
+  private ArrayList<VPNGRenderer> c = new ArrayList(5);
   
   private VPNGRenderer a(int paramInt1, int paramInt2)
   {
@@ -16,28 +16,28 @@ public class VPNGRendererManager
   
   public static VPNGRendererManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager == null) {
-          jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager = new VPNGRendererManager();
+        if (a == null) {
+          a = new VPNGRendererManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager;
+    return a;
   }
   
   public VPNGRenderer a(Renderable paramRenderable, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 5)
+    if (this.c.size() == 5)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRenderable);
+      this.b.add(paramRenderable);
       return null;
     }
     VPNGRenderer localVPNGRenderer = a(paramInt1, paramInt2);
     localVPNGRenderer.a(paramRenderable);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localVPNGRenderer);
+    this.c.add(localVPNGRenderer);
     return localVPNGRenderer;
   }
   
@@ -46,13 +46,13 @@ public class VPNGRendererManager
     if (paramVPNGRenderer != null)
     {
       paramVPNGRenderer.c();
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramVPNGRenderer);
-      if ((this.jdField_a_of_type_JavaUtilArrayList.size() < 5) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()))
+      this.c.remove(paramVPNGRenderer);
+      if ((this.c.size() < 5) && (!this.b.isEmpty()))
       {
-        paramVPNGRenderer = (Renderable)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+        paramVPNGRenderer = (Renderable)this.b.getFirst();
         VPNGRenderer localVPNGRenderer = a(paramVPNGRenderer.getRenderWidth(), paramVPNGRenderer.getRenderHeight());
         localVPNGRenderer.a(paramVPNGRenderer);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localVPNGRenderer);
+        this.c.add(localVPNGRenderer);
         paramVPNGRenderer.onSetRenderer(localVPNGRenderer);
       }
     }
@@ -60,7 +60,7 @@ public class VPNGRendererManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.glrenderer.VPNGRendererManager
  * JD-Core Version:    0.7.0.1
  */

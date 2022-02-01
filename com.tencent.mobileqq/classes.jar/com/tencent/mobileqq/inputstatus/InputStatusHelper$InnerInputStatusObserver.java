@@ -36,7 +36,7 @@ final class InputStatusHelper$InnerInputStatusObserver
       }
       else
       {
-        String str = InputStatusHelper.a();
+        String str = InputStatusHelper.e();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("send input status fail : ");
         localStringBuilder.append(paramObject);
@@ -45,16 +45,16 @@ final class InputStatusHelper$InnerInputStatusObserver
     }
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (this.a.get() != null))
     {
       if ((!InputStatusHelper.a((InputStatusHelper)this.a.get())) && (paramBoolean2))
       {
-        if (InputStatusHelper.a((InputStatusHelper)this.a.get()) != null) {
-          InputStatusHelper.a((InputStatusHelper)this.a.get()).a(InputStatusHelper.a((InputStatusHelper)this.a.get()));
+        if (InputStatusHelper.b((InputStatusHelper)this.a.get()) != null) {
+          InputStatusHelper.b((InputStatusHelper)this.a.get()).a(InputStatusHelper.c((InputStatusHelper)this.a.get()));
         }
-        InputStatusHelper.a((InputStatusHelper)this.a.get()).a.addTextChangedListener(InputStatusHelper.a((InputStatusHelper)this.a.get()));
+        InputStatusHelper.c((InputStatusHelper)this.a.get()).Y.addTextChangedListener(InputStatusHelper.d((InputStatusHelper)this.a.get()));
       }
       InputStatusHelper.a((InputStatusHelper)this.a.get(), paramBoolean2);
     }
@@ -62,7 +62,7 @@ final class InputStatusHelper$InnerInputStatusObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusHelper.InnerInputStatusObserver
  * JD-Core Version:    0.7.0.1
  */

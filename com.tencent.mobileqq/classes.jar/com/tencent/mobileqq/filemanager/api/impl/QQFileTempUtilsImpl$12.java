@@ -12,7 +12,7 @@ class QQFileTempUtilsImpl$12
   
   public void onClick(View paramView)
   {
-    QQFileManagerUtil.TipsClickedInterface localTipsClickedInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$TipsClickedInterface;
+    QQFileManagerUtil.TipsClickedInterface localTipsClickedInterface = this.a;
     if (localTipsClickedInterface != null) {
       localTipsClickedInterface.onClick(paramView);
     }
@@ -21,7 +21,7 @@ class QQFileTempUtilsImpl$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QQFileTempUtilsImpl.12
  * JD-Core Version:    0.7.0.1
  */

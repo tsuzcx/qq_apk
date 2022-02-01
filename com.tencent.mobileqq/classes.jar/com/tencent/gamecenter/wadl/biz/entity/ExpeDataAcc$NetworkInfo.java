@@ -9,14 +9,14 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class ExpeDataAcc$NetworkInfo
   extends MessageMicro<NetworkInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "network_type", "user_client_ip", "gateway_ip" }, new Object[] { Long.valueOf(0L), "", "" }, NetworkInfo.class);
-  public final PBStringField gateway_ip = PBField.initString("");
-  public final PBInt64Field network_type = PBField.initInt64(0L);
-  public final PBStringField user_client_ip = PBField.initString("");
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "networkType", "userClientIp", "gatewayIp" }, new Object[] { Long.valueOf(0L), "", "" }, NetworkInfo.class);
+  public final PBStringField gatewayIp = PBField.initString("");
+  public final PBInt64Field networkType = PBField.initInt64(0L);
+  public final PBStringField userClientIp = PBField.initString("");
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.entity.ExpeDataAcc.NetworkInfo
  * JD-Core Version:    0.7.0.1
  */

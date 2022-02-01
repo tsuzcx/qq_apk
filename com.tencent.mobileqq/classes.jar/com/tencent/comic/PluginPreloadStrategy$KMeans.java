@@ -4,22 +4,22 @@ import java.lang.reflect.Array;
 
 public class PluginPreloadStrategy$KMeans
 {
-  private int jdField_a_of_type_Int = 3;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private float[][] jdField_a_of_type_Array2dOfFloat;
+  private int a = 3;
+  private float[][] b;
+  private int[] c;
   
   public PluginPreloadStrategy$KMeans(int paramInt)
   {
     int i = paramInt;
     if (paramInt <= 0) {
-      i = this.jdField_a_of_type_Int;
+      i = this.a;
     }
-    this.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_Array2dOfFloat = ((float[][])Array.newInstance(Float.TYPE, new int[] { this.jdField_a_of_type_Int, 2 }));
+    this.a = i;
+    this.b = ((float[][])Array.newInstance(Float.TYPE, new int[] { this.a, 2 }));
     paramInt = 0;
-    while (paramInt < this.jdField_a_of_type_Int)
+    while (paramInt < this.a)
     {
-      float[][] arrayOfFloat = this.jdField_a_of_type_Array2dOfFloat;
+      float[][] arrayOfFloat = this.b;
       arrayOfFloat[paramInt][0] = 0;
       arrayOfFloat[paramInt][1] = 0;
       paramInt += 1;
@@ -31,31 +31,31 @@ public class PluginPreloadStrategy$KMeans
     if (paramArrayOfInt != null)
     {
       int j = paramArrayOfInt.length;
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if ((j >= i) && (i > 0) && (paramInt >= 1))
       {
         if (paramInt > paramArrayOfInt.length) {
           return -1;
         }
         int i2 = paramArrayOfInt.length;
-        this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+        this.c = paramArrayOfInt;
         int m = i2 / i;
         int k;
-        for (i = 0; i < this.jdField_a_of_type_Int; i = k)
+        for (i = 0; i < this.a; i = k)
         {
           j = i * m;
-          paramArrayOfInt = this.jdField_a_of_type_Array2dOfFloat;
+          paramArrayOfInt = this.b;
           paramArrayOfInt[i][0] = j;
-          paramArrayOfInt[i][1] = this.jdField_a_of_type_ArrayOfInt[j];
+          paramArrayOfInt[i][1] = this.c[j];
           for (;;)
           {
             k = i + 1;
             if ((j >= k * m) || (j >= i2)) {
               break;
             }
-            paramArrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+            paramArrayOfInt = this.c;
             float f = paramArrayOfInt[j];
-            localObject1 = this.jdField_a_of_type_Array2dOfFloat;
+            localObject1 = this.b;
             if (f > localObject1[i][1])
             {
               localObject1[i][0] = j;
@@ -71,14 +71,14 @@ public class PluginPreloadStrategy$KMeans
           paramArrayOfInt[i] = -1;
           i += 1;
         }
-        Object localObject1 = (int[][])Array.newInstance(Integer.TYPE, new int[] { this.jdField_a_of_type_Int, 2 });
-        int[] arrayOfInt = new int[this.jdField_a_of_type_Int];
+        Object localObject1 = (int[][])Array.newInstance(Integer.TYPE, new int[] { this.a, 2 });
+        int[] arrayOfInt = new int[this.a];
         i = 0;
-        while (i < this.jdField_a_of_type_Int)
+        while (i < this.a)
         {
           localObject1[i][0] = 0;
           localObject1[i][1] = 0;
-          arrayOfInt[i] = ((int)this.jdField_a_of_type_Array2dOfFloat[i][0]);
+          arrayOfInt[i] = ((int)this.b[i][0]);
           i += 1;
         }
         j = 0;
@@ -89,17 +89,17 @@ public class PluginPreloadStrategy$KMeans
           int n;
           while (k < i2)
           {
-            if (this.jdField_a_of_type_ArrayOfInt[k] != 0)
+            if (this.c[k] != 0)
             {
-              m = Math.abs(k - (int)this.jdField_a_of_type_Array2dOfFloat[0][0]);
+              m = Math.abs(k - (int)this.b[0][0]);
               i = 0;
               int i1 = 0;
-              while (i < this.jdField_a_of_type_Int)
+              while (i < this.a)
               {
                 n = m;
-                if (m > Math.abs(k - (int)this.jdField_a_of_type_Array2dOfFloat[i][0]))
+                if (m > Math.abs(k - (int)this.b[i][0]))
                 {
-                  n = Math.abs(k - (int)this.jdField_a_of_type_Array2dOfFloat[i][0]);
+                  n = Math.abs(k - (int)this.b[i][0]);
                   i1 = i;
                 }
                 i += 1;
@@ -110,7 +110,7 @@ public class PluginPreloadStrategy$KMeans
             k += 1;
           }
           i = 0;
-          while (i < this.jdField_a_of_type_Int)
+          while (i < this.a)
           {
             localObject1[i][0] = 0;
             localObject1[i][1] = 0;
@@ -120,7 +120,7 @@ public class PluginPreloadStrategy$KMeans
           Object localObject2;
           while (i < i2)
           {
-            localObject2 = this.jdField_a_of_type_ArrayOfInt;
+            localObject2 = this.c;
             if (localObject2[i] != 0)
             {
               Object localObject3 = localObject1[paramArrayOfInt[i]];
@@ -131,17 +131,17 @@ public class PluginPreloadStrategy$KMeans
             i += 1;
           }
           i = 0;
-          while (i < this.jdField_a_of_type_Int)
+          while (i < this.a)
           {
             if (localObject1[i][1] != 0)
             {
-              localObject2 = this.jdField_a_of_type_Array2dOfFloat[i];
+              localObject2 = this.b[i];
               double d1 = localObject1[i][0];
               Double.isNaN(d1);
               double d2 = localObject1[i][1];
               Double.isNaN(d2);
               localObject2[0] = ((int)Math.round(d1 * 1.0D / d2));
-              m = (int)this.jdField_a_of_type_Array2dOfFloat[i][0] - paramInt / 2;
+              m = (int)this.b[i][0] - paramInt / 2;
               if (m < 0) {
                 k = i2;
               } else {
@@ -155,7 +155,7 @@ public class PluginPreloadStrategy$KMeans
                 if (paramArrayOfInt[m] == i)
                 {
                   localObject2 = localObject1[i];
-                  localObject2[1] += this.jdField_a_of_type_ArrayOfInt[m];
+                  localObject2[1] += this.c[m];
                 }
                 n = m + 1;
                 if (n >= i2) {
@@ -166,16 +166,16 @@ public class PluginPreloadStrategy$KMeans
                 m = n + m;
                 k += 1;
               }
-              this.jdField_a_of_type_Array2dOfFloat[i][1] = localObject1[i][1];
+              this.b[i][1] = localObject1[i][1];
             }
             i += 1;
           }
           k = 0;
           i = 1;
-          while (k < this.jdField_a_of_type_Int)
+          while (k < this.a)
           {
             m = arrayOfInt[k];
-            localObject2 = this.jdField_a_of_type_Array2dOfFloat;
+            localObject2 = this.b;
             if (m != (int)localObject2[k][0])
             {
               arrayOfInt[k] = ((int)localObject2[k][0]);
@@ -188,13 +188,13 @@ public class PluginPreloadStrategy$KMeans
         paramInt = 0;
         for (;;)
         {
-          paramArrayOfInt = this.jdField_a_of_type_Array2dOfFloat;
+          paramArrayOfInt = this.b;
           if (paramInt >= paramArrayOfInt.length) {
             break;
           }
           for (i = 0;; i = j)
           {
-            paramArrayOfInt = this.jdField_a_of_type_Array2dOfFloat;
+            paramArrayOfInt = this.b;
             if (i >= paramArrayOfInt.length - paramInt - 1) {
               break;
             }
@@ -217,7 +217,7 @@ public class PluginPreloadStrategy$KMeans
     return -1;
   }
   
-  public int[] a(int[] paramArrayOfInt, int paramInt)
+  public int[] b(int[] paramArrayOfInt, int paramInt)
   {
     if ((paramArrayOfInt != null) && (paramInt > 0) && (paramArrayOfInt.length >= paramInt))
     {
@@ -275,7 +275,7 @@ public class PluginPreloadStrategy$KMeans
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.PluginPreloadStrategy.KMeans
  * JD-Core Version:    0.7.0.1
  */

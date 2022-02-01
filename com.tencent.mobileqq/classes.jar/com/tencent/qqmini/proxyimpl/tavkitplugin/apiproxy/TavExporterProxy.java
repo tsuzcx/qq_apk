@@ -2,8 +2,8 @@ package com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy;
 
 import com.tencent.qqmini.proxyimpl.tavkitplugin.ObjCreateTavEvent;
 import com.tencent.qqmini.proxyimpl.tavkitplugin.SendMsgTavEvent;
-import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import com.tencent.tavkit.composition.TAVComposition;
 import org.json.JSONObject;
 
@@ -17,7 +17,7 @@ class TavExporterProxy
       b(paramSendMsgTavEvent, paramTavExporter);
       return;
     }
-    paramTavExporter.a(ObjConvector.a(paramSendMsgTavEvent.a().getJSONObject("videoSize")));
+    paramTavExporter.a(ObjConvector.d(paramSendMsgTavEvent.c().getJSONObject("videoSize")));
     a();
   }
   
@@ -38,7 +38,7 @@ class TavExporterProxy
       d(paramSendMsgTavEvent, paramTavExporter);
       return;
     }
-    paramTavExporter.a(paramSendMsgTavEvent.a().getInt("videoBitRate"));
+    paramTavExporter.a(paramSendMsgTavEvent.c().getInt("videoBitRate"));
     a();
   }
   
@@ -69,7 +69,7 @@ class TavExporterProxy
       g(paramSendMsgTavEvent, paramTavExporter);
       return;
     }
-    paramSendMsgTavEvent = this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerMiniAppFileManager.getTmpPath(".mp4");
+    paramSendMsgTavEvent = this.d.getTmpPath(".mp4");
     paramTavExporter.a(new TavExporterProxy.MyExportListener(this, paramTavExporter));
     paramTavExporter.a(paramSendMsgTavEvent);
     a();
@@ -89,7 +89,7 @@ class TavExporterProxy
   void a(ObjCreateTavEvent paramObjCreateTavEvent)
   {
     super.a(paramObjCreateTavEvent);
-    paramObjCreateTavEvent = paramObjCreateTavEvent.a("composition");
+    paramObjCreateTavEvent = paramObjCreateTavEvent.b("composition");
     if (!(paramObjCreateTavEvent instanceof TAVComposition))
     {
       b();
@@ -101,10 +101,10 @@ class TavExporterProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TavExporter))
     {
-      localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+      localObject = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("get exporter obj filed, eventBean = ");
       localStringBuilder.append(paramSendMsgTavEvent);
@@ -116,7 +116,7 @@ class TavExporterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavExporterProxy
  * JD-Core Version:    0.7.0.1
  */

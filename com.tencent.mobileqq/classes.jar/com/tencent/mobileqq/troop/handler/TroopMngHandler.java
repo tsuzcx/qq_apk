@@ -44,6 +44,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -77,6 +78,7 @@ import tencent.im.oidb.cmd0xcca.cmd0xcca.RspBody;
 import tencent.im.oidb.cmd0xe72.oidb_0xe72.ReqBody;
 import tencent.im.oidb.cmd0xe72.oidb_0xe72.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import trpc.mizarproto.passthrough.FunctionLockMsg.FunctionLockBeatRsp;
 
 public class TroopMngHandler
   extends TroopBaseHandler
@@ -92,32 +94,32 @@ public class TroopMngHandler
   {
     int[] arrayOfInt = new int[11];
     int[] tmp6_5 = arrayOfInt;
-    tmp6_5[0] = 2131696140;
+    tmp6_5[0] = 2131893905;
     int[] tmp11_6 = tmp6_5;
-    tmp11_6[1] = 2131696136;
+    tmp11_6[1] = 2131893901;
     int[] tmp16_11 = tmp11_6;
-    tmp16_11[2] = 2131696132;
+    tmp16_11[2] = 2131893897;
     int[] tmp21_16 = tmp16_11;
-    tmp21_16[3] = 2131696135;
+    tmp21_16[3] = 2131893900;
     int[] tmp26_21 = tmp21_16;
-    tmp26_21[4] = 2131696139;
+    tmp26_21[4] = 2131893904;
     int[] tmp31_26 = tmp26_21;
-    tmp31_26[5] = 2131696137;
+    tmp31_26[5] = 2131893902;
     int[] tmp36_31 = tmp31_26;
-    tmp36_31[6] = 2131696142;
+    tmp36_31[6] = 2131893907;
     int[] tmp42_36 = tmp36_31;
-    tmp42_36[7] = 2131696134;
+    tmp42_36[7] = 2131893899;
     int[] tmp48_42 = tmp42_36;
-    tmp48_42[8] = 2131696141;
+    tmp48_42[8] = 2131893906;
     int[] tmp54_48 = tmp48_42;
-    tmp54_48[9] = 2131696133;
+    tmp54_48[9] = 2131893898;
     int[] tmp60_54 = tmp54_48;
-    tmp60_54[10] = 2131696138;
+    tmp60_54[10] = 2131893903;
     tmp60_54;
     if ((paramInt >= 0) && (paramInt < arrayOfInt.length)) {
       return arrayOfInt[paramInt];
     }
-    return 2131696133;
+    return 2131893898;
   }
   
   @NotNull
@@ -186,12 +188,75 @@ public class TroopMngHandler
     return localObject1;
   }
   
-  public static String a(String paramString)
+  private void a(int paramInt1, int paramInt2, String paramString, GroupMngRes paramGroupMngRes)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_role");
-    return localStringBuilder.toString();
+    if (paramInt2 == 1) {
+      paramInt1 = -2;
+    }
+    notifyUI(TroopMngObserver.d, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Integer.valueOf(paramInt1), paramString });
+  }
+  
+  private void a(GroupMngRes paramGroupMngRes, int paramInt, ToServiceMsg paramToServiceMsg)
+  {
+    Object localObject = paramGroupMngRes.vecBody;
+    paramGroupMngRes = Integer.valueOf(-1);
+    if (localObject != null)
+    {
+      int i = (int)PkgTools.getLongData((byte[])localObject, 8);
+      int j = (int)PkgTools.getLongData((byte[])localObject, 12);
+      localObject = PkgTools.getUTFString((byte[])localObject, 16, j);
+      paramToServiceMsg = (JoinGroupInfo)paramToServiceMsg.extraData.getParcelable("join_group_info");
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMngHandler", 2, String.format("handleGroupManager._eJoinGroupReq, verifyType: %s, verifyUrlLen: %s, verifyUrl: %s, joinGroupInfo: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), localObject, paramToServiceMsg }));
+      }
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramToServiceMsg != null))
+      {
+        TroopMngHandlerProcessorConfig.a((String)localObject, i, paramToServiceMsg);
+        return;
+      }
+      notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), paramGroupMngRes });
+      return;
+    }
+    notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), paramGroupMngRes });
+  }
+  
+  private void a(GroupMngRes paramGroupMngRes, int paramInt, String paramString)
+  {
+    Object localObject = paramGroupMngRes.vecJoinPrompt;
+    paramGroupMngRes = Integer.valueOf(-1);
+    if (localObject != null) {
+      try
+      {
+        localObject = new JSONObject(new String((byte[])localObject, "utf-8"));
+        int i = ((JSONObject)localObject).optInt("tid", 0);
+        long l = ((JSONObject)localObject).optLong("time", 0L);
+        notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), paramGroupMngRes });
+        if ((i == 0) || (l == 0L)) {
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleGroupManager._eJoinGroupReq, 0xe troopCode = ");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(",tId = ");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(",time =");
+          ((StringBuilder)localObject).append(l);
+          QLog.d("TroopMngHandler", 2, ((StringBuilder)localObject).toString());
+        }
+        notifyUI(TroopMngObserver.c, false, new Object[] { paramString, Integer.valueOf(i), Long.valueOf(l) });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), paramGroupMngRes });
+        paramString.printStackTrace();
+        return;
+      }
+    } else {
+      notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), paramGroupMngRes });
+    }
   }
   
   private void a(FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, GroupMngRes paramGroupMngRes)
@@ -200,10 +265,10 @@ public class TroopMngHandler
     {
       ((ITroopManagerService)this.appRuntime.getRuntimeService(ITroopManagerService.class, "")).deleteTroop(paramString);
       TroopMngHandlerProcessorConfig.d(this.appRuntime, paramString);
-      notifyUI(TroopMngObserver.c, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Byte.valueOf(paramGroupMngRes.result), paramString });
+      notifyUI(TroopMngObserver.d, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Byte.valueOf(paramGroupMngRes.result), paramString });
       return;
     }
-    int i = TroopMngObserver.c;
+    int i = TroopMngObserver.d;
     byte b;
     if (paramFromServiceMsg.isSuccess()) {
       b = paramGroupMngRes.result;
@@ -341,7 +406,7 @@ public class TroopMngHandler
         ((ITroopSystemMsgUtilApi)localObject2).saveTroopQuestionToSP(this.appRuntime.getApp(), paramToServiceMsg.troopuin, paramToServiceMsg.joinTroopQuestion);
         bool = false;
       }
-      notifyUI(TroopMngObserver.d, true, new Object[] { Byte.valueOf(paramGroupMngRes.result), paramToServiceMsg, Boolean.valueOf(bool) });
+      notifyUI(TroopMngObserver.e, true, new Object[] { Byte.valueOf(paramGroupMngRes.result), paramToServiceMsg, Boolean.valueOf(bool) });
       return;
     }
   }
@@ -357,7 +422,7 @@ public class TroopMngHandler
       GroupMngRes localGroupMngRes = (GroupMngRes)decodePacket(paramFromServiceMsg.getWupBuffer(), "GroupMngRes", new GroupMngRes());
       if (localGroupMngRes == null)
       {
-        notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(i), localByte });
+        notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(i), localByte });
         return;
       }
       if (QLog.isColorLevel())
@@ -376,7 +441,7 @@ public class TroopMngHandler
       switch (i)
       {
       default: 
-        notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(i), localByte });
+        notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(i), localByte });
         return;
       case 9: 
         b(paramFromServiceMsg, i, str, localGroupMngRes);
@@ -401,7 +466,7 @@ public class TroopMngHandler
       a(paramToServiceMsg, paramFromServiceMsg, localGroupMngRes);
       return;
     }
-    notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(i), localByte });
+    notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(i), localByte });
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, GroupMngRes paramGroupMngRes)
@@ -448,7 +513,7 @@ public class TroopMngHandler
         paramToServiceMsg = ((StringBuilder)localObject2).toString();
         ((SharedPreferences.Editor)localObject1).putInt(paramToServiceMsg, paramInt);
         if (paramInt == 6) {
-          ((SharedPreferences.Editor)localObject1).putInt(a(paramToServiceMsg), j);
+          ((SharedPreferences.Editor)localObject1).putInt(d(paramToServiceMsg), j);
         }
         ((SharedPreferences.Editor)localObject1).commit();
       }
@@ -465,10 +530,10 @@ public class TroopMngHandler
     }
     if ((paramFromServiceMsg.isSuccess()) && (paramGroupMngRes.result == 0))
     {
-      notifyUI(TroopMngObserver.c, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Byte.valueOf(paramGroupMngRes.result), paramString });
+      notifyUI(TroopMngObserver.d, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Byte.valueOf(paramGroupMngRes.result), paramString });
       return;
     }
-    int i = TroopMngObserver.c;
+    int i = TroopMngObserver.d;
     byte b;
     if (paramFromServiceMsg.isSuccess()) {
       b = paramGroupMngRes.result;
@@ -485,7 +550,7 @@ public class TroopMngHandler
       a(paramToServiceMsg, paramGroupMngRes);
       return;
     }
-    notifyUI(TroopMngObserver.d, paramFromServiceMsg.isSuccess(), new Object[] { Byte.valueOf(paramGroupMngRes.result), null, Boolean.valueOf(false) });
+    notifyUI(TroopMngObserver.e, paramFromServiceMsg.isSuccess(), new Object[] { Byte.valueOf(paramGroupMngRes.result), null, Boolean.valueOf(false) });
   }
   
   private void a(cmd0x874.RspBody paramRspBody)
@@ -507,7 +572,7 @@ public class TroopMngHandler
       if (localObject2 != null) {
         ((ITroopCreateGrayMsg)localObject2).addTroopCreatedGrayTipsMr(((TroopInfo)localObject1).troopuin);
       }
-      notifyUI(TroopMngObserver.i, true, new Object[] { Integer.valueOf(2131696140), str, paramRspBody, Boolean.valueOf(true) });
+      notifyUI(TroopMngObserver.j, true, new Object[] { Integer.valueOf(2131893905), str, paramRspBody, Boolean.valueOf(true) });
       return;
     }
     TroopMngHandlerProcessorConfig.a(this.appRuntime, paramRspBody, str, null);
@@ -528,16 +593,38 @@ public class TroopMngHandler
     this.appRuntime.addDefaultObservers(local1);
   }
   
+  private void b(GroupMngRes paramGroupMngRes, int paramInt, String paramString)
+  {
+    byte[] arrayOfByte = paramGroupMngRes.vecKaiyangTransInfo;
+    paramGroupMngRes = Integer.valueOf(-1);
+    if (arrayOfByte != null)
+    {
+      FunctionLockMsg.FunctionLockBeatRsp localFunctionLockBeatRsp = new FunctionLockMsg.FunctionLockBeatRsp();
+      try
+      {
+        localFunctionLockBeatRsp.mergeFrom(arrayOfByte);
+        notifyUI(TroopMngObserver.n, false, new Object[] { paramString, localFunctionLockBeatRsp });
+      }
+      catch (InvalidProtocolBufferMicroException paramString)
+      {
+        notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), paramGroupMngRes });
+        paramString.printStackTrace();
+        return;
+      }
+    }
+    notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), paramGroupMngRes });
+  }
+  
   private void b(FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, GroupMngRes paramGroupMngRes)
   {
     if ((paramFromServiceMsg.isSuccess()) && (paramGroupMngRes.result == 0))
     {
       ((ITroopManagerService)this.appRuntime.getRuntimeService(ITroopManagerService.class, "")).deleteTroop(paramString);
       TroopMngHandlerProcessorConfig.b(this.appRuntime, paramString);
-      notifyUI(TroopMngObserver.c, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Byte.valueOf(paramGroupMngRes.result), paramString });
+      notifyUI(TroopMngObserver.d, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Byte.valueOf(paramGroupMngRes.result), paramString });
       return;
     }
-    int i = TroopMngObserver.c;
+    int i = TroopMngObserver.d;
     byte b;
     if (paramFromServiceMsg.isSuccess()) {
       b = paramGroupMngRes.result;
@@ -549,99 +636,40 @@ public class TroopMngHandler
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, GroupMngRes paramGroupMngRes)
   {
-    boolean bool = paramFromServiceMsg.isSuccess();
-    paramFromServiceMsg = Integer.valueOf(-1);
-    if (bool)
+    if (paramFromServiceMsg.isSuccess())
     {
       int i = paramGroupMngRes.result;
       int j = paramGroupMngRes.errorCode;
       if (QLog.isColorLevel()) {
         QLog.d("TroopMngHandler", 2, String.format("handleGroupManager._eJoinGroupReq, errorCode: %s, result: %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
       }
-      if (i == 0)
+      if (i != 0)
       {
-        paramInt = i;
-        if (j == 1) {
-          paramInt = -2;
-        }
-        notifyUI(TroopMngObserver.c, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Integer.valueOf(paramInt), paramString });
-        return;
-      }
-      if (i == 13)
-      {
-        paramString = paramGroupMngRes.vecBody;
-        if (paramString != null)
+        switch (i)
         {
-          i = (int)PkgTools.getLongData(paramString, 8);
-          j = (int)PkgTools.getLongData(paramString, 12);
-          paramString = PkgTools.getUTFString(paramString, 16, j);
-          paramToServiceMsg = (JoinGroupInfo)paramToServiceMsg.extraData.getParcelable("join_group_info");
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMngHandler", 2, String.format("handleGroupManager._eJoinGroupReq, verifyType: %s, verifyUrlLen: %s, verifyUrl: %s, joinGroupInfo: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramString, paramToServiceMsg }));
-          }
-          if ((!TextUtils.isEmpty(paramString)) && (paramToServiceMsg != null))
-          {
-            TroopMngHandlerProcessorConfig.a(paramString, i, paramToServiceMsg);
-            return;
-          }
-          notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(paramInt), paramFromServiceMsg });
+        default: 
+          notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+          return;
+        case 15: 
+          b(paramGroupMngRes, paramInt, paramString);
+          return;
+        case 14: 
+          a(paramGroupMngRes, paramInt, paramString);
           return;
         }
-        notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(paramInt), paramFromServiceMsg });
+        a(paramGroupMngRes, paramInt, paramToServiceMsg);
         return;
       }
-      if (i == 14)
-      {
-        paramToServiceMsg = paramGroupMngRes.vecJoinPrompt;
-        if (paramToServiceMsg != null) {
-          try
-          {
-            paramToServiceMsg = new JSONObject(new String(paramToServiceMsg, "utf-8"));
-            i = paramToServiceMsg.optInt("tid", 0);
-            long l = paramToServiceMsg.optLong("time", 0L);
-            notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(paramInt), paramFromServiceMsg });
-            if ((i == 0) || (l == 0L)) {
-              return;
-            }
-            if (QLog.isColorLevel())
-            {
-              paramToServiceMsg = new StringBuilder();
-              paramToServiceMsg.append("handleGroupManager._eJoinGroupReq, 0xe troopCode = ");
-              paramToServiceMsg.append(paramString);
-              paramToServiceMsg.append(",tId = ");
-              paramToServiceMsg.append(i);
-              paramToServiceMsg.append(",time =");
-              paramToServiceMsg.append(l);
-              QLog.d("TroopMngHandler", 2, paramToServiceMsg.toString());
-            }
-            notifyUI(TroopMngObserver.jdField_b_of_type_Int, false, new Object[] { paramString, Integer.valueOf(i), Long.valueOf(l) });
-            return;
-          }
-          catch (Exception paramToServiceMsg)
-          {
-            notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(paramInt), paramFromServiceMsg });
-            paramToServiceMsg.printStackTrace();
-            return;
-          }
-        } else {
-          notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(paramInt), paramFromServiceMsg });
-        }
-      }
-      else
-      {
-        notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      }
+      a(i, j, paramString, paramGroupMngRes);
+      return;
     }
-    else
-    {
-      notifyUI(TroopMngObserver.c, false, new Object[] { Integer.valueOf(paramInt), paramFromServiceMsg });
-    }
+    notifyUI(TroopMngObserver.d, false, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(-1) });
   }
   
   private void b(cmd0x874.RspBody paramRspBody)
   {
     int i = a(paramRspBody.uint32_code.get());
-    notifyUI(TroopMngObserver.i, false, new Object[] { Integer.valueOf(i) });
+    notifyUI(TroopMngObserver.j, false, new Object[] { Integer.valueOf(i) });
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, GroupMngRes paramGroupMngRes)
@@ -671,10 +699,10 @@ public class TroopMngHandler
       }
       paramFromServiceMsg.saveTroopInfo((TroopInfo)localObject1);
       paramToServiceMsg.close();
-      notifyUI(TroopMngObserver.c, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Byte.valueOf(paramGroupMngRes.result), paramString });
+      notifyUI(TroopMngObserver.d, true, new Object[] { Integer.valueOf(paramGroupMngRes.reqtype), Byte.valueOf(paramGroupMngRes.result), paramString });
       return;
     }
-    int i = TroopMngObserver.c;
+    int i = TroopMngObserver.d;
     byte b;
     if (paramFromServiceMsg.isSuccess()) {
       b = paramGroupMngRes.result;
@@ -692,12 +720,12 @@ public class TroopMngHandler
     paramToServiceMsg = new TroopCreateInfo.TroopCreateResult();
     if (paramFromServiceMsg == null)
     {
-      notifyUI(TroopMngObserver.jdField_a_of_type_Int, false, paramToServiceMsg);
+      notifyUI(TroopMngObserver.b, false, paramToServiceMsg);
       return;
     }
     if (paramFromServiceMsg.getResultCode() != 1000)
     {
-      notifyUI(TroopMngObserver.jdField_a_of_type_Int, false, paramToServiceMsg);
+      notifyUI(TroopMngObserver.b, false, paramToServiceMsg);
       return;
     }
     paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -706,44 +734,68 @@ public class TroopMngHandler
       paramObject = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
       if (paramObject == null)
       {
-        notifyUI(TroopMngObserver.jdField_a_of_type_Int, false, paramToServiceMsg);
+        notifyUI(TroopMngObserver.b, false, paramToServiceMsg);
         return;
       }
-      int i = paramObject.uint32_result.get();
-      if (i != 0)
+      i = paramObject.uint32_result.get();
+      paramObject.str_error_msg.get();
+      if ((i != 0) && (i != 255))
       {
-        paramToServiceMsg.jdField_a_of_type_Int = i;
-        notifyUI(TroopMngObserver.jdField_a_of_type_Int, false, paramToServiceMsg);
+        paramToServiceMsg.a = i;
+        notifyUI(TroopMngObserver.b, false, paramToServiceMsg);
         return;
       }
       paramFromServiceMsg = new cmd0x8a1.RspBody();
     }
     catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
     {
-      label204:
-      label214:
-      break label214;
+      int i;
+      label276:
+      label286:
+      break label286;
     }
     try
     {
       paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+      if (i == 255)
+      {
+        paramToServiceMsg.a = i;
+        try
+        {
+          paramToServiceMsg.b = new String(paramFromServiceMsg.bytes_security_buffer.get().toByteArray(), "ISO-8859-1");
+        }
+        catch (UnsupportedEncodingException paramFromServiceMsg)
+        {
+          paramFromServiceMsg.printStackTrace();
+        }
+        notifyUI(TroopMngObserver.b, false, paramToServiceMsg);
+        return;
+      }
       if (paramFromServiceMsg.uint32_create_option.get() != 1)
       {
-        notifyUI(TroopMngObserver.jdField_a_of_type_Int, false, paramToServiceMsg);
+        notifyUI(TroopMngObserver.b, false, paramToServiceMsg);
         return;
       }
       paramToServiceMsg = new TroopInfo();
       paramToServiceMsg.troopuin = String.valueOf(Utils.a(paramFromServiceMsg.uint32_group_code.get()));
-      notifyUI(TroopMngObserver.jdField_a_of_type_Int, true, paramToServiceMsg);
+      notifyUI(TroopMngObserver.b, true, paramToServiceMsg);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
     {
-      break label204;
+      break label276;
     }
-    notifyUI(TroopMngObserver.jdField_a_of_type_Int, false, paramToServiceMsg);
+    notifyUI(TroopMngObserver.b, false, paramToServiceMsg);
     return;
-    notifyUI(TroopMngObserver.jdField_a_of_type_Int, false, paramToServiceMsg);
+    notifyUI(TroopMngObserver.b, false, paramToServiceMsg);
+  }
+  
+  public static String d(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_role");
+    return localStringBuilder.toString();
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -799,7 +851,7 @@ public class TroopMngHandler
       paramToServiceMsg = paramFromServiceMsg;
     }
     label172:
-    notifyUI(TroopMngObserver.g, bool1, paramToServiceMsg);
+    notifyUI(TroopMngObserver.h, bool1, paramToServiceMsg);
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -807,7 +859,7 @@ public class TroopMngHandler
     cmd0x758.RspBody localRspBody = new cmd0x758.RspBody();
     int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
     paramFromServiceMsg = (InviteToGroupInfo)paramToServiceMsg.extraData.getParcelable(InviteToGroupInfo.class.getSimpleName());
-    String str = paramFromServiceMsg.jdField_a_of_type_JavaLangString;
+    String str = paramFromServiceMsg.a;
     paramToServiceMsg = "";
     paramObject = Integer.valueOf(8);
     if (j == 0)
@@ -824,7 +876,7 @@ public class TroopMngHandler
           QLog.d("TroopMngHandler", 2, paramToServiceMsg.toString());
         }
       }
-      notifyUI(TroopMngObserver.c, true, new Object[] { paramObject, Integer.valueOf(0), str });
+      notifyUI(TroopMngObserver.d, true, new Object[] { paramObject, Integer.valueOf(0), str });
       paramToServiceMsg = ((ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(str);
       if ((paramToServiceMsg != null) && (!paramToServiceMsg.hasSetTroopHead())) {
         ((TroopMemberListHandler)this.appRuntime.getBusinessHandler(TroopMemberListHandler.class.getName())).a(Long.parseLong(str));
@@ -844,13 +896,13 @@ public class TroopMngHandler
       if (!TextUtils.isEmpty(paramToServiceMsg)) {
         TroopMngHandlerProcessorConfig.a(paramToServiceMsg, i, paramFromServiceMsg);
       } else {
-        notifyUI(TroopMngObserver.c, false, new Object[] { paramObject, Integer.valueOf(j) });
+        notifyUI(TroopMngObserver.d, false, new Object[] { paramObject, Integer.valueOf(j) });
       }
       QLog.d("TroopMngHandler", 1, String.format("handleInviteToGroup, verifyType: %s, verifyUrl: %s, inviteToGroupInfo: %s", new Object[] { Integer.valueOf(i), paramToServiceMsg, paramFromServiceMsg }));
     }
     else
     {
-      notifyUI(TroopMngObserver.c, false, new Object[] { paramObject, Integer.valueOf(j) });
+      notifyUI(TroopMngObserver.d, false, new Object[] { paramObject, Integer.valueOf(j) });
       QLog.d("TroopMngHandler", 1, String.format("handleInviteToGroup, result: %s", new Object[] { Integer.valueOf(j) }));
     }
     if (QLog.isColorLevel()) {
@@ -860,12 +912,12 @@ public class TroopMngHandler
   
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    Integer localInteger = Integer.valueOf(2131696133);
+    Integer localInteger = Integer.valueOf(2131893898);
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        notifyUI(TroopMngObserver.i, false, new Object[] { localInteger });
+        notifyUI(TroopMngObserver.j, false, new Object[] { localInteger });
         return;
       }
       paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -897,14 +949,14 @@ public class TroopMngHandler
     {
       break label151;
     }
-    notifyUI(TroopMngObserver.i, false, new Object[] { localInteger });
+    notifyUI(TroopMngObserver.j, false, new Object[] { localInteger });
     return;
-    notifyUI(TroopMngObserver.i, false, new Object[] { localInteger });
+    notifyUI(TroopMngObserver.j, false, new Object[] { localInteger });
     return;
     label187:
-    notifyUI(TroopMngObserver.i, false, new Object[] { localInteger });
+    notifyUI(TroopMngObserver.j, false, new Object[] { localInteger });
     return;
-    notifyUI(TroopMngObserver.i, false, new Object[] { localInteger });
+    notifyUI(TroopMngObserver.j, false, new Object[] { localInteger });
   }
   
   private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -950,20 +1002,15 @@ public class TroopMngHandler
         } else {
           k = 0;
         }
-        notifyUI(TroopMngObserver.k, true, new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), paramFromServiceMsg, Integer.valueOf(k) });
+        notifyUI(TroopMngObserver.l, true, new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), paramFromServiceMsg, Integer.valueOf(k) });
         return;
       }
-      notifyUI(TroopMngObserver.k, false, new Object[] { Integer.valueOf(m), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0) });
+      notifyUI(TroopMngObserver.l, false, new Object[] { Integer.valueOf(m), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0) });
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("TroopMngHandler", 2, "handleGetGroupInviteStatus req or resp is null.");
     }
-  }
-  
-  protected String a()
-  {
-    return "TroopMngHandler";
   }
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
@@ -1127,31 +1174,31 @@ public class TroopMngHandler
     if (QLog.isColorLevel()) {
       QLog.d("TroopMngHandler", 2, String.format("inviteToGroupWithNonFriends: %s", new Object[] { paramInviteToGroupInfo }));
     }
-    if ((paramInviteToGroupInfo != null) && (paramInviteToGroupInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramInviteToGroupInfo.jdField_a_of_type_JavaUtilArrayList.size() != 0)) {}
+    if ((paramInviteToGroupInfo != null) && (paramInviteToGroupInfo.c != null) && (paramInviteToGroupInfo.c.size() != 0)) {}
     for (;;)
     {
       int i;
       try
       {
-        Object localObject2 = paramInviteToGroupInfo.jdField_a_of_type_JavaUtilArrayList;
+        Object localObject2 = paramInviteToGroupInfo.c;
         localObject1 = new ArrayList();
         i = 0;
         if (i < ((List)localObject2).size())
         {
           InviteToGroupInfo.UinInfo localUinInfo = (InviteToGroupInfo.UinInfo)((List)localObject2).get(i);
-          if ((!TextUtils.isEmpty(localUinInfo.jdField_a_of_type_JavaLangString)) && (!localUinInfo.jdField_a_of_type_JavaLangString.equals(this.appRuntime.getCurrentAccountUin())))
+          if ((!TextUtils.isEmpty(localUinInfo.a)) && (!localUinInfo.a.equals(this.appRuntime.getCurrentAccountUin())))
           {
             cmd0x758.InviteUinInfo localInviteUinInfo = new cmd0x758.InviteUinInfo();
-            localInviteUinInfo.uint64_uin.set(Long.valueOf(localUinInfo.jdField_a_of_type_JavaLangString).longValue());
+            localInviteUinInfo.uint64_uin.set(Long.valueOf(localUinInfo.a).longValue());
             if (!TextUtils.isEmpty(localUinInfo.c)) {
               localInviteUinInfo.uint64_judge_conf_code.set(Long.parseLong(localUinInfo.c));
-            } else if (!TextUtils.isEmpty(localUinInfo.jdField_b_of_type_JavaLangString)) {
-              localInviteUinInfo.uint64_judge_group_code.set(Long.parseLong(localUinInfo.jdField_b_of_type_JavaLangString));
+            } else if (!TextUtils.isEmpty(localUinInfo.b)) {
+              localInviteUinInfo.uint64_judge_group_code.set(Long.parseLong(localUinInfo.b));
             }
             ((List)localObject1).add(localInviteUinInfo);
             break label449;
           }
-          QLog.d("TroopMngHandler", 1, String.format("inviteToGroupWithNonFriends, filter uin: %s", new Object[] { localUinInfo.jdField_a_of_type_JavaLangString }));
+          QLog.d("TroopMngHandler", 1, String.format("inviteToGroupWithNonFriends, filter uin: %s", new Object[] { localUinInfo.a }));
           break label449;
         }
         if (((List)localObject1).size() == 0)
@@ -1160,14 +1207,14 @@ public class TroopMngHandler
           return;
         }
         localObject2 = new cmd0x758.ReqBody();
-        ((cmd0x758.ReqBody)localObject2).uint64_join_group_code.set(Long.valueOf(paramInviteToGroupInfo.jdField_a_of_type_JavaLangString).longValue());
-        if (!TextUtils.isEmpty(paramInviteToGroupInfo.jdField_b_of_type_JavaLangString)) {
-          ((cmd0x758.ReqBody)localObject2).string_msg.set(paramInviteToGroupInfo.jdField_b_of_type_JavaLangString);
+        ((cmd0x758.ReqBody)localObject2).uint64_join_group_code.set(Long.valueOf(paramInviteToGroupInfo.a).longValue());
+        if (!TextUtils.isEmpty(paramInviteToGroupInfo.b)) {
+          ((cmd0x758.ReqBody)localObject2).string_msg.set(paramInviteToGroupInfo.b);
         }
         ((cmd0x758.ReqBody)localObject2).be_invited_uin_info.set((List)localObject1);
-        ((cmd0x758.ReqBody)localObject2).uint32_verify_type.set(paramInviteToGroupInfo.jdField_a_of_type_Int);
-        if (!TextUtils.isEmpty(paramInviteToGroupInfo.c)) {
-          ((cmd0x758.ReqBody)localObject2).string_verify_token.set(paramInviteToGroupInfo.c);
+        ((cmd0x758.ReqBody)localObject2).uint32_verify_type.set(paramInviteToGroupInfo.d);
+        if (!TextUtils.isEmpty(paramInviteToGroupInfo.e)) {
+          ((cmd0x758.ReqBody)localObject2).string_verify_token.set(paramInviteToGroupInfo.e);
         }
         localObject1 = makeOIDBPkg("OidbSvc.oidb_0x758", 1880, 1, ((cmd0x758.ReqBody)localObject2).toByteArray());
         ((ToServiceMsg)localObject1).extraData.putParcelable(InviteToGroupInfo.class.getSimpleName(), paramInviteToGroupInfo);
@@ -1196,20 +1243,20 @@ public class TroopMngHandler
     }
     ToServiceMsg localToServiceMsg = createToServiceMsg("ProfileService.GroupMngReq");
     localToServiceMsg.extraData.putInt("groupreqtype", 1);
-    localToServiceMsg.extraData.putString("troop_uin", paramJoinGroupInfo.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putString("troop_uin", paramJoinGroupInfo.a);
     localToServiceMsg.extraData.putString("uin", this.appRuntime.getCurrentAccountUin());
-    localToServiceMsg.extraData.putString("back_msg", paramJoinGroupInfo.jdField_b_of_type_JavaLangString);
-    localToServiceMsg.extraData.putInt("stat_option", paramJoinGroupInfo.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putString("join_group_key", paramJoinGroupInfo.c);
-    localToServiceMsg.extraData.putString("join_group_sig", paramJoinGroupInfo.d);
-    if (paramJoinGroupInfo.jdField_a_of_type_ArrayOfByte != null) {
-      localToServiceMsg.extraData.putByteArray("new_Member_Msg", paramJoinGroupInfo.jdField_a_of_type_ArrayOfByte);
+    localToServiceMsg.extraData.putString("back_msg", paramJoinGroupInfo.b);
+    localToServiceMsg.extraData.putInt("stat_option", paramJoinGroupInfo.c);
+    localToServiceMsg.extraData.putString("join_group_key", paramJoinGroupInfo.d);
+    localToServiceMsg.extraData.putString("join_group_sig", paramJoinGroupInfo.e);
+    if (paramJoinGroupInfo.f != null) {
+      localToServiceMsg.extraData.putByteArray("new_Member_Msg", paramJoinGroupInfo.f);
     }
-    if (!TextUtils.isEmpty(paramJoinGroupInfo.e)) {
-      localToServiceMsg.extraData.putString("pic_url", paramJoinGroupInfo.e);
+    if (!TextUtils.isEmpty(paramJoinGroupInfo.g)) {
+      localToServiceMsg.extraData.putString("pic_url", paramJoinGroupInfo.g);
     }
-    localToServiceMsg.extraData.putInt("join_group_verify_type", paramJoinGroupInfo.jdField_b_of_type_Int);
-    localToServiceMsg.extraData.putString("join_group_verify_token", paramJoinGroupInfo.f);
+    localToServiceMsg.extraData.putInt("join_group_verify_type", paramJoinGroupInfo.h);
+    localToServiceMsg.extraData.putString("join_group_verify_token", paramJoinGroupInfo.i);
     localToServiceMsg.extraData.putParcelable("join_group_info", paramJoinGroupInfo);
     send(localToServiceMsg);
     if (QLog.isColorLevel()) {
@@ -1389,7 +1436,7 @@ public class TroopMngHandler
       bool1 = false;
       i = -1;
       label688:
-      notifyUI(TroopMngObserver.e, bool1, new Object[] { Long.valueOf(l3), String.valueOf(l1), String.valueOf(l2), Integer.valueOf(i), paramToServiceMsg });
+      notifyUI(TroopMngObserver.f, bool1, new Object[] { Long.valueOf(l3), String.valueOf(l1), String.valueOf(l2), Integer.valueOf(i), paramToServiceMsg });
       if (QLog.isColorLevel())
       {
         paramObject = new StringBuilder(150);
@@ -1447,13 +1494,13 @@ public class TroopMngHandler
   public void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, byte[] paramArrayOfByte, String paramString5)
   {
     JoinGroupInfo localJoinGroupInfo = new JoinGroupInfo();
-    localJoinGroupInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localJoinGroupInfo.jdField_b_of_type_JavaLangString = paramString2;
-    localJoinGroupInfo.jdField_a_of_type_Int = paramInt;
-    localJoinGroupInfo.c = paramString3;
-    localJoinGroupInfo.d = paramString4;
-    localJoinGroupInfo.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    localJoinGroupInfo.e = paramString5;
+    localJoinGroupInfo.a = paramString1;
+    localJoinGroupInfo.b = paramString2;
+    localJoinGroupInfo.c = paramInt;
+    localJoinGroupInfo.d = paramString3;
+    localJoinGroupInfo.e = paramString4;
+    localJoinGroupInfo.f = paramArrayOfByte;
+    localJoinGroupInfo.g = paramString5;
     a(localJoinGroupInfo);
   }
   
@@ -1511,18 +1558,18 @@ public class TroopMngHandler
         QLog.d("TroopMngHandler", 2, String.format("inviteToGroup, groupCode: %s, inviteUins: %s, strMsg: %s", new Object[] { paramString1, paramArrayList, paramString2 }));
       }
       InviteToGroupInfo localInviteToGroupInfo = new InviteToGroupInfo();
-      localInviteToGroupInfo.jdField_a_of_type_JavaLangString = paramString1;
+      localInviteToGroupInfo.a = paramString1;
       paramString1 = new ArrayList();
-      localInviteToGroupInfo.jdField_b_of_type_JavaLangString = paramString2;
+      localInviteToGroupInfo.b = paramString2;
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
         paramString2 = (String)paramArrayList.next();
         InviteToGroupInfo.UinInfo localUinInfo = new InviteToGroupInfo.UinInfo();
-        localUinInfo.jdField_a_of_type_JavaLangString = paramString2;
+        localUinInfo.a = paramString2;
         paramString1.add(localUinInfo);
       }
-      localInviteToGroupInfo.jdField_a_of_type_JavaUtilArrayList = paramString1;
+      localInviteToGroupInfo.c = paramString1;
       a(localInviteToGroupInfo);
       return;
     }
@@ -1544,23 +1591,23 @@ public class TroopMngHandler
       while (i < paramList.size())
       {
         TroopCreateInfo.InviteMemberInfo localInviteMemberInfo = (TroopCreateInfo.InviteMemberInfo)paramList.get(i);
-        if (!localInviteMemberInfo.jdField_a_of_type_JavaLangString.equals(this.appRuntime.getCurrentAccountUin()))
+        if (!localInviteMemberInfo.a.equals(this.appRuntime.getCurrentAccountUin()))
         {
           InviteToGroupInfo.UinInfo localUinInfo = new InviteToGroupInfo.UinInfo();
-          localUinInfo.jdField_a_of_type_JavaLangString = localInviteMemberInfo.jdField_a_of_type_JavaLangString;
-          if (localInviteMemberInfo.jdField_a_of_type_Int == 1) {
-            localUinInfo.jdField_b_of_type_JavaLangString = localInviteMemberInfo.c;
-          } else if (localInviteMemberInfo.jdField_a_of_type_Int == 2) {
-            localUinInfo.c = localInviteMemberInfo.c;
+          localUinInfo.a = localInviteMemberInfo.a;
+          if (localInviteMemberInfo.c == 1) {
+            localUinInfo.b = localInviteMemberInfo.e;
+          } else if (localInviteMemberInfo.c == 2) {
+            localUinInfo.c = localInviteMemberInfo.e;
           }
           localArrayList.add(localUinInfo);
         }
         i += 1;
       }
       paramList = new InviteToGroupInfo();
-      paramList.jdField_a_of_type_JavaLangString = paramString1;
-      paramList.jdField_b_of_type_JavaLangString = paramString2;
-      paramList.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+      paramList.a = paramString1;
+      paramList.b = paramString2;
+      paramList.c = localArrayList;
       a(paramList);
       return;
     }
@@ -1586,10 +1633,10 @@ public class TroopMngHandler
       }
       if (!TextUtils.isEmpty(paramToServiceMsg))
       {
-        notifyUI(TroopMngObserver.j, bool, new Object[] { Integer.valueOf(j), str1, str2, paramToServiceMsg, Integer.valueOf(k) });
+        notifyUI(TroopMngObserver.k, bool, new Object[] { Integer.valueOf(j), str1, str2, paramToServiceMsg, Integer.valueOf(k) });
         return;
       }
-      notifyUI(TroopMngObserver.j, bool, new Object[] { str1, Integer.valueOf(k) });
+      notifyUI(TroopMngObserver.k, bool, new Object[] { str1, Integer.valueOf(k) });
       return;
     }
     if (QLog.isColorLevel()) {
@@ -1617,6 +1664,11 @@ public class TroopMngHandler
   public void c(String paramString)
   {
     a(paramString, 0);
+  }
+  
+  protected String dv_()
+  {
+    return "TroopMngHandler";
   }
   
   public Set<String> getCommandList()
@@ -1657,7 +1709,7 @@ public class TroopMngHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -1715,7 +1767,7 @@ public class TroopMngHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopMngHandler
  * JD-Core Version:    0.7.0.1
  */

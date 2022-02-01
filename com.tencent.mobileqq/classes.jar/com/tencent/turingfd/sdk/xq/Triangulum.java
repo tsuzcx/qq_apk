@@ -1,34 +1,38 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Triangulum
-  extends case
+  extends else
 {
-  public static List<Serpens> Ga = new ArrayList();
-  public List<Serpens> Ka = null;
-  public int ba = 0;
+  public static Betelnut a = new Betelnut();
+  public static String b = new String();
+  public Betelnut c = null;
+  public String d = "";
+  public String e = "";
+  public String f = null;
   
-  static
+  public void a(case paramcase)
   {
-    Serpens localSerpens = new Serpens();
-    Ga.add(localSerpens);
-  }
-  
-  public void a(byte parambyte)
-  {
-    parambyte.b(this.ba, 0);
-    List localList = this.Ka;
-    if (localList != null) {
-      parambyte.a(localList, 1);
+    paramcase.a(this.c, 0);
+    String str = this.d;
+    if (str != null) {
+      paramcase.a(str, 1);
+    }
+    str = this.e;
+    if (str != null) {
+      paramcase.a(str, 2);
+    }
+    str = this.f;
+    if (str != null) {
+      paramcase.a(str, 3);
     }
   }
   
   public void a(try paramtry)
   {
-    this.ba = paramtry.a(this.ba, 0, true);
-    this.Ka = ((List)paramtry.a(Ga, 1, false));
+    this.c = ((Betelnut)paramtry.a(a, 0, true));
+    this.d = paramtry.b(1, false);
+    this.e = paramtry.b(2, false);
+    this.f = paramtry.a(b, 3, false);
   }
   
   public boolean equals(Object paramObject)
@@ -43,12 +47,15 @@ public class Triangulum
       return false;
     }
     paramObject = (Triangulum)paramObject;
-    return (char.equals(this.ba, paramObject.ba)) && (char.equals(this.Ka, paramObject.Ka));
+    Betelnut localBetelnut1 = this.c;
+    Betelnut localBetelnut2 = paramObject.c;
+    int i = goto.a;
+    return (localBetelnut1.equals(localBetelnut2)) && (this.d.equals(paramObject.d)) && (this.e.equals(paramObject.e)) && (this.f.equals(paramObject.f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Triangulum
  * JD-Core Version:    0.7.0.1
  */

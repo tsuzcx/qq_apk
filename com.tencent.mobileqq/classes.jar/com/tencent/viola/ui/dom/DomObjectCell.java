@@ -273,7 +273,7 @@ public class DomObjectCell
     return ((getTouchUpComptState(paramString) == null) || (DomObjectCell.ComponentState.WILLAPPEAR.equals(getTouchUpComptState(paramString)))) && (paramBoolean == this.mTouchDirectionDown);
   }
   
-  public void resetComponentState(String paramString, boolean paramBoolean)
+  public void resetComponentState(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (this.mRegisterDidAppearComponentStateMap.size() >= 0)
     {
@@ -283,7 +283,7 @@ public class DomObjectCell
         String str = (String)localIterator.next();
         if ((!getComponentState(str).equals(DomObjectCell.ComponentState.DIDAPPEAR)) && (!getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR)))
         {
-          if (needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean)))
+          if ((paramBoolean2) && (needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean1))))
           {
             if (isComponentRegisterEvent("willAppear", str)) {
               fireEvent(paramString, "willAppear", str);
@@ -300,7 +300,7 @@ public class DomObjectCell
         {
           if (getComponentState(str).equals(DomObjectCell.ComponentState.WILLAPPEAR))
           {
-            if ((needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean))) && (isComponentRegisterEvent("didAppear", str))) {
+            if ((needFireNextStateWhenWillAppear(str, Boolean.valueOf(paramBoolean1))) && (isComponentRegisterEvent("didAppear", str))) {
               fireEvent(paramString, "didAppear", str);
             }
             if (isComponentRegisterEvent("didDisappear", str)) {
@@ -335,7 +335,7 @@ public class DomObjectCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectCell
  * JD-Core Version:    0.7.0.1
  */

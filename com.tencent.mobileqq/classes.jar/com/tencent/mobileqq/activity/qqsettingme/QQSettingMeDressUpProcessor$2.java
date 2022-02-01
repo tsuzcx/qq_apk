@@ -15,23 +15,23 @@ class QQSettingMeDressUpProcessor$2
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.c != null)
     {
-      Object localObject = this.this$0.a.getCurrentAccountUin();
+      Object localObject = this.this$0.c.getCurrentAccountUin();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         ((IWebProcessPreload)QRoute.api(IWebProcessPreload.class)).setBusinessClickTimeMills((String)localObject, "individuation");
       }
-      localObject = this.this$0.a.getApplication();
+      localObject = this.this$0.c.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("emoticon_panel_");
-      localStringBuilder.append(this.this$0.a.getCurrentAccountUin());
+      localStringBuilder.append(this.this$0.c.getCurrentAccountUin());
       ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit().putLong("sp_key_market_open_time", System.currentTimeMillis()).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeDressUpProcessor.2
  * JD-Core Version:    0.7.0.1
  */

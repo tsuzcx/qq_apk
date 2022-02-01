@@ -33,91 +33,97 @@ import org.libpag.PAGView;
 public class QQValuePagView
   extends VasPagView
 {
-  public static int a;
-  private static final Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
-  public static int b;
-  private QQValueInfoItem jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem;
-  private String jdField_a_of_type_JavaLangString = "";
-  Function1<View, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1 = new QQValuePagView.1(this);
-  private String b;
-  private int jdField_c_of_type_Int = -2;
-  private String jdField_c_of_type_JavaLangString = "";
-  
-  static
-  {
-    jdField_a_of_type_Int = 42;
-    jdField_b_of_type_Int = 15;
-  }
+  public static int a = 42;
+  public static int b = 15;
+  private static final Map<String, Integer> e = new HashMap();
+  Function1<View, Unit> c = new QQValuePagView.1(this);
+  private String f = "";
+  private String g = "";
+  private QQValueInfoItem h;
+  private String i = "";
+  private int j = -2;
   
   public QQValuePagView(@NotNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_JavaLangString = "";
   }
   
   public QQValuePagView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_JavaLangString = "";
   }
   
   public QQValuePagView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_JavaLangString = "";
   }
   
   private int a(int paramInt, boolean paramBoolean)
   {
-    int j = a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    int i = paramInt;
+    int m = d(this.g, this.f);
+    int k = paramInt;
     if (paramBoolean)
     {
-      i = paramInt;
-      if (j != -2)
+      k = paramInt;
+      if (m != -2)
       {
-        i = paramInt;
-        if (this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int != a(this.jdField_b_of_type_JavaLangString, "setting"))
+        k = paramInt;
+        if (this.h.a != d(this.g, "setting"))
         {
-          i = paramInt;
-          if (this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int != a(this.jdField_b_of_type_JavaLangString, "card"))
+          k = paramInt;
+          if (this.h.a != d(this.g, "card"))
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int == j) {
+            if (this.h.a == m) {
               return 0;
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int > j) {
+            if (this.h.a > m) {
               return 1;
             }
-            i = -1;
+            k = -1;
           }
         }
       }
     }
-    return i;
-  }
-  
-  private int a(String paramString1, String paramString2)
-  {
-    paramString1 = (Integer)jdField_a_of_type_JavaUtilMap.get(a(paramString1, paramString2));
-    if (paramString1 == null) {
-      return -2;
-    }
-    return paramString1.intValue();
-  }
-  
-  private String a(String paramString1, String paramString2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("old_");
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramString2);
-    return localStringBuilder.toString();
+    return k;
   }
   
   private void a(String paramString1, String paramString2, int paramInt)
   {
-    jdField_a_of_type_JavaUtilMap.put(a(paramString1, paramString2), Integer.valueOf(paramInt));
+    e.put(b(paramString1, paramString2), Integer.valueOf(paramInt));
+  }
+  
+  private boolean a()
+  {
+    Object localObject = this.h;
+    if (localObject != null)
+    {
+      if (!((QQValueInfoItem)localObject).g) {
+        return false;
+      }
+      removeAllViews();
+      localObject = new TextView(getContext());
+      if (this.h.a == -1)
+      {
+        ((TextView)localObject).setBackgroundDrawable(getResources().getDrawable(2130852442));
+      }
+      else
+      {
+        ((TextView)localObject).setBackgroundDrawable(getResources().getDrawable(2130852452));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.h.a);
+        localStringBuilder.append("");
+        ((TextView)localObject).setText(localStringBuilder.toString());
+      }
+      ((TextView)localObject).setPadding(30, 0, 0, 9);
+      ((TextView)localObject).setTextSize(11.0F);
+      ((TextView)localObject).setGravity(17);
+      ((TextView)localObject).setTextScaleX(0.9F);
+      ((TextView)localObject).setTextColor(-1);
+      ((TextView)localObject).setTypeface(Typeface.DEFAULT_BOLD);
+      addView((View)localObject, AIOUtils.b(a, ((TextView)localObject).getResources()), AIOUtils.b(b, ((TextView)localObject).getResources()));
+      return true;
+    }
+    return false;
   }
   
   private boolean a(View paramView, ViewGroup.LayoutParams paramLayoutParams, int paramInt1, boolean paramBoolean, String paramString1, String paramString2, int paramInt2)
@@ -127,16 +133,16 @@ public class QQValuePagView
       PAGView localPAGView = (PAGView)paramView;
       if (localPAGView.getFile() != null)
       {
-        a().a();
+        g().a();
         return true;
       }
-      if (a(localPAGView, this.jdField_b_of_type_JavaLangString, paramString2, paramString1))
+      if (a(localPAGView, this.g, paramString2, paramString1))
       {
-        b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramInt1);
-        a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int);
-        this.jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-        this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int;
-        paramLayoutParams.width = AIOUtils.b(jdField_a_of_type_Int, paramView.getResources());
+        b(this.g, this.f, paramInt1);
+        a(this.g, this.f, this.h.a);
+        this.i = this.g;
+        this.j = this.h.a;
+        paramLayoutParams.width = AIOUtils.b(a, paramView.getResources());
         paramView.postInvalidate();
         return false;
       }
@@ -166,42 +172,48 @@ public class QQValuePagView
           paramString3 = paramString2.getTextData(0);
           paramString3.fontFamily = paramString1.fontFamily;
           paramString3.fontStyle = paramString1.fontStyle;
-          int i = this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int;
-          if (i == -1)
+          int k = this.h.a;
+          if (k == -1)
           {
             paramString1 = "????";
           }
           else
           {
             paramString1 = new StringBuilder();
-            paramString1.append(i);
+            paramString1.append(k);
             paramString1.append("");
             paramString1 = paramString1.toString();
           }
           paramString3.text = paramString1;
-          paramPAGView.setTextData(0, paramString3);
+          paramString2.replaceText(0, paramString3);
         }
-        paramPAGView.setFile(paramString2);
+        paramPAGView.setComposition(paramString2);
         paramPAGView.setRepeatCount(-1);
         paramPAGView.play();
         return true;
       }
       return false;
     }
-    QQValueInfoManage.a().c(paramString1);
+    QQValueInfoManage.a().e(paramString1);
     return false;
   }
   
-  private int b(String paramString1, String paramString2)
+  private String b(String paramString1, String paramString2)
   {
-    paramString1 = (Integer)jdField_a_of_type_JavaUtilMap.get(b(paramString1, paramString2));
-    if (paramString1 == null) {
-      return 0;
-    }
-    return paramString1.intValue();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("old_");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
-  private String b(String paramString1, String paramString2)
+  private void b(String paramString1, String paramString2, int paramInt)
+  {
+    e.put(c(paramString1, paramString2), Integer.valueOf(paramInt));
+  }
+  
+  private String c(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("old_");
@@ -212,48 +224,27 @@ public class QQValuePagView
     return localStringBuilder.toString();
   }
   
-  private void b(String paramString1, String paramString2, int paramInt)
+  private int d(String paramString1, String paramString2)
   {
-    jdField_a_of_type_JavaUtilMap.put(b(paramString1, paramString2), Integer.valueOf(paramInt));
-  }
-  
-  private boolean b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem;
-    if (localObject != null)
-    {
-      if (!((QQValueInfoItem)localObject).jdField_a_of_type_Boolean) {
-        return false;
-      }
-      removeAllViews();
-      localObject = new TextView(getContext());
-      if (this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int == -1)
-      {
-        ((TextView)localObject).setBackgroundDrawable(getResources().getDrawable(2130850638));
-      }
-      else
-      {
-        ((TextView)localObject).setBackgroundDrawable(getResources().getDrawable(2130850648));
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int);
-        localStringBuilder.append("");
-        ((TextView)localObject).setText(localStringBuilder.toString());
-      }
-      ((TextView)localObject).setPadding(30, 0, 0, 9);
-      ((TextView)localObject).setTextSize(11.0F);
-      ((TextView)localObject).setGravity(17);
-      ((TextView)localObject).setTextScaleX(0.9F);
-      ((TextView)localObject).setTextColor(-1);
-      ((TextView)localObject).setTypeface(Typeface.DEFAULT_BOLD);
-      addView((View)localObject, AIOUtils.b(jdField_a_of_type_Int, ((TextView)localObject).getResources()), AIOUtils.b(jdField_b_of_type_Int, ((TextView)localObject).getResources()));
-      return true;
+    paramString1 = (Integer)e.get(b(paramString1, paramString2));
+    if (paramString1 == null) {
+      return -2;
     }
-    return false;
+    return paramString1.intValue();
   }
   
-  private boolean c()
+  private int e(String paramString1, String paramString2)
   {
-    return (this.jdField_c_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int) || (b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString) != 0) || ((this.jdField_a_of_type_JavaLangString == "setting") && (this.jdField_b_of_type_JavaLangString != this.jdField_c_of_type_JavaLangString));
+    paramString1 = (Integer)e.get(c(paramString1, paramString2));
+    if (paramString1 == null) {
+      return 0;
+    }
+    return paramString1.intValue();
+  }
+  
+  private boolean h()
+  {
+    return (this.j != this.h.a) || (e(this.g, this.f) != 0) || ((this.f == "setting") && (this.g != this.i));
   }
   
   public void a(String paramString1, String paramString2)
@@ -261,13 +252,13 @@ public class QQValuePagView
     if (getContext() == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem == null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem = QQValueInfoManage.a().a(paramString2);
+    if (this.h == null) {
+      this.h = QQValueInfoManage.a().c(paramString2);
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_b_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.h.e)) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_b_of_type_JavaLangString;
+    Object localObject = this.h.e;
     paramString2 = new StringBuilder((String)localObject);
     if (((String)localObject).contains("?"))
     {
@@ -294,15 +285,15 @@ public class QQValuePagView
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem = QQValueInfoManage.a().a(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem;
-    if ((paramString1 != null) && (paramString1.d != 1) && (this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int >= -1) && (this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_b_of_type_Int != 0))
+    this.h = QQValueInfoManage.a().c(paramString1);
+    this.f = paramString2;
+    this.g = paramString1;
+    paramString1 = this.h;
+    if ((paramString1 != null) && (paramString1.f != 1) && (this.h.a >= -1) && (this.h.b != 0))
     {
       setVisibility(0);
       QQValueInfoManage.a().a(paramString2, this);
-      if ((paramString2 == "card") && (this.jdField_c_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqVasQqvaluecardBeanQQValueInfoItem.jdField_a_of_type_Int)) {
+      if ((paramString2 == "card") && (this.j == this.h.a)) {
         return;
       }
       if (paramBoolean) {
@@ -310,16 +301,16 @@ public class QQValuePagView
       } else {
         setForeground(null);
       }
-      if (b()) {
+      if (a()) {
         return;
       }
-      a().b(this.jdField_a_of_type_KotlinJvmFunctionsFunction1);
-      if (!a())
+      g().b(this.c);
+      if (!b())
       {
-        a().a();
+        g().a();
         return;
       }
-      a().b();
+      g().b();
       return;
     }
     setVisibility(8);
@@ -329,8 +320,8 @@ public class QQValuePagView
   {
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      if (this.jdField_c_of_type_JavaLangString.equals(paramString)) {
-        a(paramString, this.jdField_a_of_type_JavaLangString, paramBoolean);
+      if (this.i.equals(paramString)) {
+        a(paramString, this.f, paramBoolean);
       }
     }
     else {
@@ -340,7 +331,7 @@ public class QQValuePagView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qqvaluecard.view.QQValuePagView
  * JD-Core Version:    0.7.0.1
  */

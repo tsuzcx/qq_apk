@@ -7,22 +7,22 @@ import android.widget.TextView;
 class PersonalityLabelGalleryActivity$LabelItemViewHolder
 {
   public long a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public GlowCountRecyclerView a;
-  public View b;
-  public ImageView b;
   public TextView b;
-  View c;
-  public ImageView c;
-  View d;
-  public ImageView d;
-  View e;
+  public View c;
+  public View d;
+  public ImageView e;
+  public ImageView f;
+  public ImageView g;
+  public ImageView h;
+  public GlowCountRecyclerView i;
+  public TextView j;
+  View k;
+  View l;
+  View m;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.LabelItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

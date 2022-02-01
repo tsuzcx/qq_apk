@@ -20,6 +20,7 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.RenderInfo;
@@ -28,6 +29,7 @@ import com.tencent.mobileqq.mini.apkgEntity.MiniAppInfoEntity;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04746;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
@@ -65,7 +67,7 @@ public class AppBrandLaunchManager
   private static AppBrandLaunchManager instance;
   private static byte[] lock = new byte[0];
   private int hardCoderTimeout = 0;
-  private final Runnable mCheckPreloadRunnable = new AppBrandLaunchManager.10(this);
+  private final Runnable mCheckPreloadRunnable = new AppBrandLaunchManager.11(this);
   private Context mContext = BaseApplicationImpl.getApplication();
   protected Handler mHandler = new Handler(ThreadManager.getSubThreadHandler().getLooper());
   private int mKillProcessMode = 0;
@@ -101,6 +103,7 @@ public class AppBrandLaunchManager
       if (isMiniAppUsed())
       {
         this.mLastPreloadDetectTime = System.currentTimeMillis();
+        checkPreloadMiniGame();
         MiniSdkLauncher.preloadMiniApp(this.mContext, true);
         return;
       }
@@ -183,7 +186,7 @@ public class AppBrandLaunchManager
       Object localObject;
       if (WnsConfig.getConfig("qqminiapp", "mini_app_hard_coder_enabled", true))
       {
-        int i = HardCoderManager.a().a(0, 1, 1, Process.myTid(), this.hardCoderTimeout, 601, 1L, Process.myTid(), "miniLaunch");
+        int i = HardCoderManager.getInstance().start(0, 1, 1, Process.myTid(), this.hardCoderTimeout, 601, 1L, Process.myTid(), "miniLaunch");
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("hard coder started, reqId: ");
         ((StringBuilder)localObject).append(i);
@@ -283,7 +286,7 @@ public class AppBrandLaunchManager
         localMiniAppConfig.launchParam.scene = 2016;
         localMiniAppConfig.launchParam.shareTicket = paramString;
         if ((paramInt != 1) && (paramInt == 3)) {
-          localMiniAppConfig.forceReroad = 3;
+          localMiniAppConfig.launchParam.forceReload = 3;
         }
         MiniAppController.startApp(null, localMiniAppConfig, null);
         return;
@@ -297,7 +300,24 @@ public class AppBrandLaunchManager
   
   private void notifyDesktop()
   {
-    getHandler().postDelayed(new AppBrandLaunchManager.11(this), 600L);
+    getHandler().postDelayed(new AppBrandLaunchManager.12(this), 600L);
+  }
+  
+  private void preDownloadPkgCallback(int paramInt, String paramString, IMiniCallback paramIMiniCallback)
+  {
+    if (paramIMiniCallback == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", paramInt);
+    localBundle.putString("errMsg", paramString);
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramIMiniCallback.onCallbackResult(bool, localBundle);
   }
   
   private void prelaunchLatestMiniApp()
@@ -427,6 +447,15 @@ public class AppBrandLaunchManager
     }
   }
   
+  public boolean checkPreloadMiniGame()
+  {
+    boolean bool = MiniSdkUtil.a(BaseApplicationImpl.getContext());
+    if (!bool) {
+      MiniSdkLauncher.preloadMiniApp(this.mContext, false);
+    }
+    return bool ^ true;
+  }
+  
   public Handler getHandler()
   {
     return this.mHandler;
@@ -490,6 +519,11 @@ public class AppBrandLaunchManager
     }
   }
   
+  public void preDownloadPkg(String paramString1, String paramString2, IMiniCallback paramIMiniCallback)
+  {
+    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, "", paramString2, new AppBrandLaunchManager.9(this, paramIMiniCallback));
+  }
+  
   public void preLaunchMiniApp(Context paramContext, MiniAppConfig paramMiniAppConfig)
   {
     if (paramMiniAppConfig == null) {
@@ -511,8 +545,8 @@ public class AppBrandLaunchManager
       }
       updateBaseLib();
       ThreadManagerV2.executeOnFileThread(new AppBrandLaunchManager.3(this));
-      doPreloadApp(true, true);
       doPreloadApp(false, true);
+      doPreloadApp(true, true);
       long l = MiniAppConfProcessor.a("mini_sdk_prelaunch_all_delay_time", 60000);
       ThreadManager.getFileThreadHandler().postDelayed(new AppBrandLaunchManager.4(this), l);
       if ((SplashMiniGameStarter.hasPreloaded) && (SplashMiniGameStarter.curData != null)) {
@@ -644,19 +678,19 @@ public class AppBrandLaunchManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 848	com/tencent/mobileqq/mini/apkg/BaseLibManager:g	()Lcom/tencent/mobileqq/mini/apkg/BaseLibManager;
-    //   5: new 850	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager$9
+    //   2: invokestatic 891	com/tencent/mobileqq/mini/apkg/BaseLibManager:g	()Lcom/tencent/mobileqq/mini/apkg/BaseLibManager;
+    //   5: new 893	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager$10
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 851	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager$9:<init>	(Lcom/tencent/mobileqq/mini/launch/AppBrandLaunchManager;)V
-    //   13: invokevirtual 854	com/tencent/mobileqq/mini/apkg/BaseLibManager:updateBaseLib	(Lcom/tencent/mobileqq/mini/apkg/BaseLibManager$UpdateListener;)V
+    //   10: invokespecial 894	com/tencent/mobileqq/mini/launch/AppBrandLaunchManager$10:<init>	(Lcom/tencent/mobileqq/mini/launch/AppBrandLaunchManager;)V
+    //   13: invokevirtual 897	com/tencent/mobileqq/mini/apkg/BaseLibManager:updateBaseLib	(Lcom/tencent/mobileqq/mini/apkg/BaseLibManager$UpdateListener;)V
     //   16: goto +18 -> 34
     //   19: astore_1
     //   20: goto +17 -> 37
     //   23: astore_1
     //   24: ldc 19
     //   26: iconst_1
-    //   27: ldc_w 856
+    //   27: ldc_w 899
     //   30: aload_1
     //   31: invokestatic 126	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   34: aload_0
@@ -680,7 +714,7 @@ public class AppBrandLaunchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager
  * JD-Core Version:    0.7.0.1
  */

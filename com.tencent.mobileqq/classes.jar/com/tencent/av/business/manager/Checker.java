@@ -18,14 +18,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class Checker
   implements Handler.Callback
 {
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private final ConcurrentHashMap<String, Checker.ItemRecord> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
-  private final ConcurrentLinkedQueue<String> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private final ConcurrentHashMap<String, Checker.ItemRecord> a = new ConcurrentHashMap(5);
+  private final ConcurrentLinkedQueue<String> b = new ConcurrentLinkedQueue();
+  private WeakReferenceHandler c = new WeakReferenceHandler(Looper.getMainLooper(), this);
   
   private void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() > 0) && (!this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(1))) {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
+    if ((this.b.size() > 0) && (!this.c.hasMessages(1))) {
+      this.c.sendEmptyMessage(1);
     }
   }
   
@@ -41,13 +41,13 @@ public class Checker
       a();
       return;
     }
-    if (paramItemRecord.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase == null)
+    if (paramItemRecord.a == null)
     {
-      paramItemRecord.jdField_a_of_type_Int += 1;
+      paramItemRecord.e += 1;
       a();
       return;
     }
-    paramItemRecord.jdField_a_of_type_Int += 1;
+    paramItemRecord.e += 1;
     ThreadManager.excute(new Checker.1(this, paramItemRecord, paramString), 16, null, false);
   }
   
@@ -61,7 +61,7 @@ public class Checker
     }
     if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(str)) {
+      if (this.b.contains(str)) {
         return;
       }
       if (QLog.isColorLevel())
@@ -72,51 +72,51 @@ public class Checker
         ((StringBuilder)localObject).append("]");
         QLog.i("Checker", 2, ((StringBuilder)localObject).toString());
       }
-      Checker.ItemRecord localItemRecord = (Checker.ItemRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      Checker.ItemRecord localItemRecord = (Checker.ItemRecord)this.a.get(str);
       Object localObject = localItemRecord;
       if (localItemRecord == null)
       {
         localObject = new Checker.ItemRecord(paramItemBase, paramArrayList, paramBoolean);
-        ((Checker.ItemRecord)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((Checker.ItemRecord)localObject).jdField_b_of_type_JavaLangString = paramString2;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
+        ((Checker.ItemRecord)localObject).c = paramString1;
+        ((Checker.ItemRecord)localObject).d = paramString2;
+        this.a.put(str, localObject);
       }
       if (((Checker.ItemRecord)localObject).a()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(str);
+      this.b.offer(str);
       a();
     }
   }
   
   void a(String paramString, Checker.ItemRecord paramItemRecord)
   {
-    boolean bool = paramItemRecord.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase.isUsable();
+    boolean bool = paramItemRecord.a.isUsable();
     int j;
     StringBuilder localStringBuilder2;
-    if ((bool) && (!FileUtils.fileExists(paramItemRecord.jdField_b_of_type_JavaLangString)))
+    if ((bool) && (!FileUtils.fileExists(paramItemRecord.d)))
     {
       j = 1;
     }
-    else if ((bool) && (paramItemRecord.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    else if ((bool) && (paramItemRecord.b.size() > 0))
     {
       int i = 0;
-      while (i < paramItemRecord.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < paramItemRecord.b.size())
       {
-        String str = (String)paramItemRecord.jdField_a_of_type_JavaUtilArrayList.get(i);
+        String str = (String)paramItemRecord.b.get(i);
         if (!TextUtils.isEmpty(str))
         {
-          if (paramItemRecord.jdField_b_of_type_JavaLangString.endsWith(File.separator))
+          if (paramItemRecord.d.endsWith(File.separator))
           {
             localStringBuilder2 = new StringBuilder();
-            localStringBuilder2.append(paramItemRecord.jdField_b_of_type_JavaLangString);
+            localStringBuilder2.append(paramItemRecord.d);
             localStringBuilder2.append(str);
             str = localStringBuilder2.toString();
           }
           else
           {
             localStringBuilder2 = new StringBuilder();
-            localStringBuilder2.append(paramItemRecord.jdField_b_of_type_JavaLangString);
+            localStringBuilder2.append(paramItemRecord.d);
             localStringBuilder2.append(File.separator);
             localStringBuilder2.append(str);
             str = localStringBuilder2.toString();
@@ -144,7 +144,7 @@ public class Checker
       j = i;
       if (i != 0)
       {
-        FileUtils.deleteDirectory(paramItemRecord.jdField_b_of_type_JavaLangString);
+        FileUtils.deleteDirectory(paramItemRecord.d);
         j = i;
       }
     }
@@ -156,28 +156,28 @@ public class Checker
     {
       try
       {
-        FileUtils.uncompressZip(paramItemRecord.jdField_a_of_type_JavaLangString, paramItemRecord.jdField_b_of_type_JavaLangString, false);
-        paramItemRecord.jdField_b_of_type_Boolean = true;
+        FileUtils.uncompressZip(paramItemRecord.c, paramItemRecord.d, false);
+        paramItemRecord.g = true;
       }
       catch (IOException localIOException)
       {
-        paramItemRecord.jdField_b_of_type_Boolean = false;
+        paramItemRecord.g = false;
         localStringBuilder2 = new StringBuilder();
         localStringBuilder2.append("realCheck, uncompressZip fail, record[");
         localStringBuilder2.append(paramItemRecord);
         localStringBuilder2.append("]");
         QLog.i("Checker", 2, localStringBuilder2.toString(), localIOException);
       }
-      if ((!paramItemRecord.jdField_b_of_type_Boolean) && (paramItemRecord.a()) && (paramItemRecord.jdField_a_of_type_Boolean))
+      if ((!paramItemRecord.g) && (paramItemRecord.a()) && (paramItemRecord.f))
       {
-        FileUtils.deleteFile(paramItemRecord.jdField_a_of_type_JavaLangString);
+        FileUtils.deleteFile(paramItemRecord.c);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("realCheck, del zip id[");
           localStringBuilder1.append(paramString);
           localStringBuilder1.append("], path[");
-          localStringBuilder1.append(paramItemRecord.jdField_a_of_type_JavaLangString);
+          localStringBuilder1.append(paramItemRecord.c);
           localStringBuilder1.append("]");
           QLog.i("Checker", 2, localStringBuilder1.toString());
         }
@@ -189,10 +189,10 @@ public class Checker
   {
     if (paramMessage.what == 1)
     {
-      String str = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      String str = (String)this.b.poll();
       paramMessage = null;
       if (!TextUtils.isEmpty(str)) {
-        paramMessage = (Checker.ItemRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        paramMessage = (Checker.ItemRecord)this.a.get(str);
       }
       b(str, paramMessage);
     }

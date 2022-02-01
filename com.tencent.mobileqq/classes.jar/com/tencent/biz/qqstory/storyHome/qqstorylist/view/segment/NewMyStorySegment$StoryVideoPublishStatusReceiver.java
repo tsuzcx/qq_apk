@@ -15,12 +15,12 @@ public class NewMyStorySegment$StoryVideoPublishStatusReceiver
   
   public void a(@NonNull NewMyStorySegment paramNewMyStorySegment, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if (paramStoryVideoPublishStatusEvent.a())
+    if (paramStoryVideoPublishStatusEvent.b())
     {
       SLog.b(this.TAG, "group video upload");
       return;
     }
-    if (!paramStoryVideoPublishStatusEvent.b())
+    if (!paramStoryVideoPublishStatusEvent.c())
     {
       SLog.b(this.TAG, "ignore personal video");
       return;

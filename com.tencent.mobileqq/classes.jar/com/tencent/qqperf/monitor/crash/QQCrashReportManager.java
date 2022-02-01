@@ -18,53 +18,39 @@ import mqq.os.MqqHandler;
 
 public class QQCrashReportManager
 {
-  public static int a = 0;
-  public static long a = 0L;
-  public static QQCrashCallback a;
-  private static QQCrashReportManager a;
   public static String a = "999";
-  public static StringBuilder a;
-  public static volatile boolean a;
-  public static volatile long b;
-  public static final String b;
-  public static StringBuilder b;
-  public static volatile boolean b;
-  public static String c;
-  public static volatile boolean c;
-  public static String d;
-  public static String e;
-  
-  static
-  {
-    jdField_b_of_type_JavaLangString = MobileQQ.sMobileQQ.getFilesDir().getPath();
-    jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashCallback = null;
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_b_of_type_Long = 0L;
-    jdField_c_of_type_Boolean = false;
-    jdField_c_of_type_JavaLangString = null;
-    d = null;
-    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder("DPC info:\n");
-    jdField_b_of_type_JavaLangStringBuilder = new StringBuilder("Thread info:\n");
-  }
+  public static int b;
+  public static long c;
+  public static final String d = MobileQQ.sMobileQQ.getFilesDir().getPath();
+  public static QQCrashCallback e = null;
+  public static volatile boolean f = false;
+  public static volatile boolean g = false;
+  public static volatile long h = 0L;
+  public static volatile boolean i = false;
+  public static String j = null;
+  public static String k = null;
+  public static String l;
+  public static StringBuilder m = new StringBuilder("DPC info:\n");
+  public static StringBuilder n = new StringBuilder("Thread info:\n");
+  private static QQCrashReportManager o;
   
   public static QQCrashReportManager a()
   {
-    if (jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashReportManager == null) {
+    if (o == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashReportManager == null) {
-          jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashReportManager = new QQCrashReportManager();
+        if (o == null) {
+          o = new QQCrashReportManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqperfMonitorCrashQQCrashReportManager;
+    return o;
   }
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    a = paramString;
     CrashReport.setUserId(MobileQQ.sMobileQQ, paramString);
   }
   
@@ -74,21 +60,21 @@ public class QQCrashReportManager
     CrashReport.setUserId(localBaseApplication, paramString);
     CrashReport.putUserData(localBaseApplication, "TbsSdkVersion", String.valueOf(WebView.getTbsSDKVersion(localBaseApplication)));
     CrashReport.putUserData(localBaseApplication, "X5CoreVersion", String.valueOf(QbSdk.getTbsVersion(localBaseApplication)));
-    CrashReport.putUserData(localBaseApplication, "Revision", AppSetting.g());
-    CrashReport.putUserData(localBaseApplication, "Version.buildNum", "8.7.0.5295");
-    CrashReport.putUserData(localBaseApplication, "AboutSubVersionLog", AppSetting.b());
-    CrashReport.putUserData(localBaseApplication, "appid", String.valueOf(AppSetting.a()));
+    CrashReport.putUserData(localBaseApplication, "Revision", AppSetting.i());
+    CrashReport.putUserData(localBaseApplication, "Version.buildNum", "8.8.17.5770");
+    CrashReport.putUserData(localBaseApplication, "AboutSubVersionLog", AppSetting.c());
+    CrashReport.putUserData(localBaseApplication, "appid", String.valueOf(AppSetting.d()));
     CrashReport.putUserData(localBaseApplication, "topActivity", ((IPerfApi)QRoute.api(IPerfApi.class)).getTopActivityName());
-    StringBuilder localStringBuilder = jdField_b_of_type_JavaLangStringBuilder;
+    StringBuilder localStringBuilder = n;
     localStringBuilder.append("Current process id=");
     localStringBuilder.append(Process.myPid());
     localStringBuilder.append(", Name=");
     localStringBuilder.append(MobileQQ.processName);
     localStringBuilder.append("\n");
-    jdField_b_of_type_Long = System.currentTimeMillis();
+    h = System.currentTimeMillis();
     if (1 == MobileQQ.sProcessId)
     {
-      QQCrashControlManager.a().a(paramString);
+      QQCrashControlManager.b().a(paramString);
       ThreadManager.getSubThreadHandler().postDelayed(new QQCrashReportManager.1(this, localBaseApplication), 180000L);
       ThreadManager.getSubThreadHandler().postDelayed(new QQCrashReportManager.2(this, localBaseApplication), 600000L);
     }
@@ -144,7 +130,7 @@ public class QQCrashReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.QQCrashReportManager
  * JD-Core Version:    0.7.0.1
  */

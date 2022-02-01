@@ -13,14 +13,14 @@ class QQGameUIHelper$1$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView.setVisibility(8);
-    QQGameUIHelper.a(this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView, true);
+    this.a.setVisibility(8);
+    QQGameUIHelper.a(this.a, true);
     paramAnimation = new RotateAnimation(0.0F, -45.0F, 1, 0.5F, 1, 0.5F);
     paramAnimation.setRepeatMode(2);
     paramAnimation.setRepeatCount(1);
     paramAnimation.setDuration(80L);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameUIHelper$1.a.startAnimation(paramAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView.b();
+    this.b.b.startAnimation(paramAnimation);
+    this.a.a();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -29,7 +29,7 @@ class QQGameUIHelper$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.QQGameUIHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,15 +7,15 @@ class PicBrowserGalleryAdapter$3
   
   public void run()
   {
-    PicBrowserGalleryAdapter.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    PicBrowserGalleryAdapter.a(this.this$0, this.a, this.b);
     if (PicBrowserGalleryAdapter.a(this.this$0) != null) {
-      PicBrowserGalleryAdapter.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+      PicBrowserGalleryAdapter.a(this.this$0).a(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserGalleryAdapter.3
  * JD-Core Version:    0.7.0.1
  */

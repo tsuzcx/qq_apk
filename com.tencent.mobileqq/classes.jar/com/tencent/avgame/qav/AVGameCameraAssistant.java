@@ -27,26 +27,26 @@ public class AVGameCameraAssistant
   extends CameraDataProcess
   implements Handler.Callback, CameraListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private CameraObserver jdField_a_of_type_ComTencentAvCameraCameraObserver = new AVGameCameraAssistant.4(this);
-  private final ICameraManagerApi jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi;
-  private IPCEventObserver jdField_a_of_type_ComTencentAvgameBusinessObserverIPCEventObserver = null;
-  private final AVGameBusinessCtrl jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl;
-  private AVGameCameraAssistant.ClearCacheTask jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask = null;
-  private AVGameEffectCtrl jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl = null;
-  private final WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private final ConcurrentLinkedQueue<AVGameCameraAssistant.CameraEventListener> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private final WeakReference<AVGameAppInterface> jdField_a_of_type_MqqUtilWeakReference;
-  private int b = 0;
+  private final AVGameBusinessCtrl d;
+  private final ICameraManagerApi e;
+  private final WeakReference<AVGameAppInterface> f;
+  private AVGameEffectCtrl g = null;
+  private final WeakReferenceHandler h;
+  private int i = 0;
+  private long j = 0L;
+  private IPCEventObserver k = null;
+  private AVGameCameraAssistant.ClearCacheTask l = null;
+  private final ConcurrentLinkedQueue<AVGameCameraAssistant.CameraEventListener> m = new ConcurrentLinkedQueue();
+  private CameraObserver n = new AVGameCameraAssistant.4(this);
   
   public AVGameCameraAssistant(AVGameBusinessCtrl paramAVGameBusinessCtrl, AVGameAppInterface paramAVGameAppInterface)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAVGameAppInterface);
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl = paramAVGameBusinessCtrl;
-    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi = CameraUtils.a(BaseApplicationImpl.getContext());
-    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.setCameraListener(this);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.addObserver(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
+    this.f = new WeakReference(paramAVGameAppInterface);
+    this.d = paramAVGameBusinessCtrl;
+    this.e = CameraUtils.a(BaseApplicationImpl.getContext());
+    this.e.setCameraListener(this);
+    this.h = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.e.addObserver(this.n);
   }
   
   private void a(boolean paramBoolean)
@@ -59,36 +59,36 @@ public class AVGameCameraAssistant
       ((StringBuilder)localObject).append("]");
       QLog.i("AVGameCameraAssistant", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl;
+    Object localObject = this.g;
     if (localObject != null)
     {
       ((AVGameEffectCtrl)localObject).a();
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl.a(paramBoolean);
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl = null;
+      this.g.a(paramBoolean);
+      this.g = null;
     }
     a(null);
   }
   
-  private void f()
+  private void g()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameBusinessObserverIPCEventObserver != null)
+    if (this.k != null)
     {
-      ObserverCenter.a().b(this.jdField_a_of_type_ComTencentAvgameBusinessObserverIPCEventObserver);
-      this.jdField_a_of_type_ComTencentAvgameBusinessObserverIPCEventObserver = null;
+      ObserverCenter.a().b(this.k);
+      this.k = null;
     }
   }
   
-  private void g()
+  private void h()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null) {
+    if (this.g == null) {
       try
       {
-        if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null)
+        if (this.g == null)
         {
           AVGameEffectCtrl localAVGameEffectCtrl = new AVGameEffectCtrl(this);
-          localAVGameEffectCtrl.b();
-          this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl = localAVGameEffectCtrl;
-          a(this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl);
+          localAVGameEffectCtrl.g();
+          this.g = localAVGameEffectCtrl;
+          a(this.g);
         }
         if (QLog.isDevelopLevel())
         {
@@ -102,54 +102,49 @@ public class AVGameCameraAssistant
   
   public int a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl.a();
-    int i = 0;
+    AVGameSession localAVGameSession = this.d.j();
+    int i1 = 0;
     if (localAVGameSession != null)
     {
-      i = localAVGameSession.jdField_a_of_type_Int;
+      i1 = localAVGameSession.a;
       if (paramBoolean1)
       {
         localAVGameSession.b(3);
-        localAVGameSession.jdField_a_of_type_Int = 4;
+        localAVGameSession.a = 4;
         localAVGameSession.a(1, false);
       }
-      else if (localAVGameSession.d == 2)
+      else if (localAVGameSession.m == 2)
       {
-        AVGameBusinessCtrl.b().c();
+        AVGameBusinessCtrl.b().l();
       }
     }
-    return i;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new AVGameCameraAssistant.2(this));
+    return i1;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new AVGameCameraAssistant.1(this, paramLong));
+    this.h.post(new AVGameCameraAssistant.1(this, paramLong));
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl.a();
+    Object localObject = this.d.j();
     if (localObject != null)
     {
       ((AVGameSession)localObject).b(0);
       ((AVGameSession)localObject).a(1, true);
     }
-    localObject = this.jdField_a_of_type_ComTencentAvUtilsFramePerfData;
-    this.jdField_a_of_type_ComTencentAvUtilsFramePerfData = null;
+    localObject = this.a;
+    this.a = null;
     if (localObject != null) {
-      ((FramePerfData)localObject).d();
+      ((FramePerfData)localObject).i();
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
+    this.h.removeMessages(1);
     a(false);
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask == null)
+    if (this.l == null)
     {
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask = new AVGameCameraAssistant.ClearCacheTask();
-      ThreadManager.excute(this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask, 16, null, false);
+      this.l = new AVGameCameraAssistant.ClearCacheTask();
+      ThreadManager.excute(this.l, 16, null, false);
     }
   }
   
@@ -165,9 +160,9 @@ public class AVGameCameraAssistant
     }
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramCameraEventListener))
+      if (!this.m.contains(paramCameraEventListener))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramCameraEventListener);
+        this.m.add(paramCameraEventListener);
         return;
       }
     }
@@ -183,39 +178,39 @@ public class AVGameCameraAssistant
       return;
     }
     paramAVGameSession.b(2);
-    long l = QQAudioHelper.b();
+    long l1 = QQAudioHelper.d();
     if (QLog.isColorLevel())
     {
       paramAVGameSession = new StringBuilder();
       paramAVGameSession.append("openCamera, seq[");
-      paramAVGameSession.append(l);
+      paramAVGameSession.append(l1);
       paramAVGameSession.append("]");
       QLog.i("AVGameCameraAssistant", 2, paramAVGameSession.toString());
     }
-    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.openCamera(l);
+    this.e.openCamera(l1);
   }
   
   public void a(String paramString)
   {
-    if (!EffectCtrlBase.b()) {
+    if (!EffectCtrlBase.c()) {
       return;
     }
-    if ((AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+    if ((AVGameAppInterface)this.f.get() == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null) {
-      g();
+    if (this.g == null) {
+      h();
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl;
-    if ((localObject != null) && (((AVGameEffectCtrl)localObject).f())) {
+    Object localObject = this.g;
+    if ((localObject != null) && (((AVGameEffectCtrl)localObject).m())) {
       return;
     }
     long l1 = SystemClock.elapsedRealtime();
-    long l2 = Math.abs(l1 - this.jdField_a_of_type_Long);
+    long l2 = Math.abs(l1 - this.j);
     if (l2 < 2000L) {
       return;
     }
-    this.jdField_a_of_type_Long = l1;
+    this.j = l1;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -231,9 +226,7 @@ public class AVGameCameraAssistant
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameEffectCtrl == null) {
-      g();
-    }
+    this.h.post(new AVGameCameraAssistant.2(this));
   }
   
   public void b(AVGameCameraAssistant.CameraEventListener paramCameraEventListener)
@@ -248,7 +241,7 @@ public class AVGameCameraAssistant
     }
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramCameraEventListener);
+      this.m.remove(paramCameraEventListener);
       return;
     }
     catch (Throwable paramCameraEventListener)
@@ -263,37 +256,44 @@ public class AVGameCameraAssistant
       return;
     }
     paramAVGameSession.b(5);
-    long l = QQAudioHelper.b();
+    long l1 = QQAudioHelper.d();
     if (QLog.isColorLevel())
     {
       paramAVGameSession = new StringBuilder();
       paramAVGameSession.append("openCamera, seq[");
-      paramAVGameSession.append(l);
+      paramAVGameSession.append(l1);
       paramAVGameSession.append("]");
       QLog.i("AVGameCameraAssistant", 2, paramAVGameSession.toString());
     }
-    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.closeCamera(l, true);
+    this.e.closeCamera(l1, true);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.deleteObserver(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    f();
+    if (this.g == null) {
+      h();
+    }
+  }
+  
+  public void d()
+  {
+    this.e.deleteObserver(this.n);
+    this.m.clear();
+    g();
     a(true);
   }
   
-  public void d() {}
+  public void e() {}
   
-  public void e()
+  public void f()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    AVGameCameraAssistant.ClearCacheTask localClearCacheTask = this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask;
+    this.b = 0;
+    this.c = false;
+    AVGameCameraAssistant.ClearCacheTask localClearCacheTask = this.l;
     if (localClearCacheTask != null)
     {
-      localClearCacheTask.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant$ClearCacheTask = null;
+      localClearCacheTask.a = true;
+      this.l = null;
     }
     a("beforeOpenCamera");
   }

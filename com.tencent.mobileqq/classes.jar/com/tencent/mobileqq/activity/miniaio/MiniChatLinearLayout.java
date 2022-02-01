@@ -17,9 +17,9 @@ public class MiniChatLinearLayout
   extends LinearLayout
   implements IChatShieldClick
 {
-  private CheckBox a;
   protected boolean a;
   protected boolean b;
+  private CheckBox c;
   
   public MiniChatLinearLayout(Context paramContext)
   {
@@ -28,10 +28,10 @@ public class MiniChatLinearLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return true;
     }
-    if (BaseChatItemLayout.jdField_a_of_type_Boolean) {
+    if (BaseChatItemLayout.ad) {
       return true;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -39,10 +39,10 @@ public class MiniChatLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return true;
     }
-    if (BaseChatItemLayout.jdField_a_of_type_Boolean)
+    if (BaseChatItemLayout.ad)
     {
       AIOCheckBoxUtil.a(this, paramMotionEvent);
       return true;
@@ -52,29 +52,29 @@ public class MiniChatLinearLayout
   
   public void setCheckBox(int paramInt, ChatMessage paramChatMessage, MiniChatLinearLayout paramMiniChatLinearLayout, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ViewGroup paramViewGroup)
   {
-    if (BaseChatItemLayout.jdField_a_of_type_Boolean)
+    if (BaseChatItemLayout.ad)
     {
-      if (this.jdField_a_of_type_AndroidWidgetCheckBox == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(getContext());
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(null);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364547);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(BaseChatItemLayout.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+        this.c = new CheckBox(getContext());
+        this.c.setButtonDrawable(null);
+        this.c.setId(2131430605);
+        this.c.setOnCheckedChangeListener(BaseChatItemLayout.ao);
         paramMiniChatLinearLayout = new LinearLayout.LayoutParams(1, 1);
-        addView(this.jdField_a_of_type_AndroidWidgetCheckBox, paramMiniChatLinearLayout);
+        addView(this.c, paramMiniChatLinearLayout);
       }
       else
       {
         paramMiniChatLinearLayout = new LinearLayout.LayoutParams(1, 1);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams(paramMiniChatLinearLayout);
+        this.c.setLayoutParams(paramMiniChatLinearLayout);
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramChatMessage);
-      paramMiniChatLinearLayout = AIOLongShotHelper.a();
-      if ((paramMiniChatLinearLayout != null) && (paramMiniChatLinearLayout.a())) {
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramMiniChatLinearLayout.a(paramChatMessage));
+      this.c.setTag(paramChatMessage);
+      paramMiniChatLinearLayout = AIOLongShotHelper.f();
+      if ((paramMiniChatLinearLayout != null) && (paramMiniChatLinearLayout.c())) {
+        this.c.setChecked(paramMiniChatLinearLayout.a(paramChatMessage));
       }
     }
-    paramChatMessage = this.jdField_a_of_type_AndroidWidgetCheckBox;
+    paramChatMessage = this.c;
     if (paramChatMessage != null) {
       paramChatMessage.setVisibility(8);
     }
@@ -87,12 +87,12 @@ public class MiniChatLinearLayout
   
   public void setIsShieldTouchForItem(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatLinearLayout
  * JD-Core Version:    0.7.0.1
  */

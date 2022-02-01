@@ -13,25 +13,25 @@ class EditPicSave$1
   
   public void onPostRun()
   {
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi != null)
+    if (this.a.u != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity() == null) {
+      if (this.a.u.getActivity() == null) {
         return;
       }
-      this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getRootView().postDelayed(new EditPicSave.1.1(this), 500L);
+      this.a.u.getRootView().postDelayed(new EditPicSave.1.1(this), 500L);
     }
   }
   
   public void onPreRun()
   {
-    if (this.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a() == 14) {
+    if (this.a.t.I.h() == 14) {
       EditPicSave.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicSave.1
  * JD-Core Version:    0.7.0.1
  */

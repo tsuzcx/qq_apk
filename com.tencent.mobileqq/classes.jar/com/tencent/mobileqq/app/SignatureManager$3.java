@@ -10,17 +10,17 @@ class SignatureManager$3
 {
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(this.a);
-    SignatureTemplateInfo localSignatureTemplateInfo = SignatureTemplateConfig.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a);
+    this.this$0.r.set(this.a);
+    SignatureTemplateInfo localSignatureTemplateInfo = SignatureTemplateConfig.a(this.this$0.j, this.a);
     if (localSignatureTemplateInfo != null) {
-      SignatureManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.a), localSignatureTemplateInfo);
+      SignatureManager.n.put(Integer.valueOf(this.a), localSignatureTemplateInfo);
     }
-    this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
+    this.this$0.r.set(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignatureManager.3
  * JD-Core Version:    0.7.0.1
  */

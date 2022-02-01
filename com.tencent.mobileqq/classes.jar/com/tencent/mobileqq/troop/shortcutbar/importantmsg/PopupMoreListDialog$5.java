@@ -13,17 +13,17 @@ class PopupMoreListDialog$5
   
   public void onClick(View paramView)
   {
-    if ((paramView != null) && (PopupMoreListDialog.a(this.a) != null) && (PopupMoreListDialog.a(this.a) != null) && ((paramView.getTag() instanceof ShortcutBarInfo)))
+    if ((paramView != null) && (PopupMoreListDialog.f(this.a) != null) && (PopupMoreListDialog.e(this.a) != null) && ((paramView.getTag() instanceof ShortcutBarInfo)))
     {
-      PopupMoreListDialog.a(this.a).a(paramView);
-      PopupMoreListDialog.a(this.a).b(paramView, 1);
+      PopupMoreListDialog.e(this.a).a(paramView);
+      PopupMoreListDialog.b(this.a).b(paramView, 1);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.PopupMoreListDialog.5
  * JD-Core Version:    0.7.0.1
  */

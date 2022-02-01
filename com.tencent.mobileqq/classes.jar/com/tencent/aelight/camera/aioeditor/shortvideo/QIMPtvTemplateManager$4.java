@@ -22,12 +22,12 @@ class QIMPtvTemplateManager$4
   {
     if (this.this$0.a(this.a))
     {
-      this.a.b = true;
+      this.a.g = true;
       return;
     }
-    this.a.b = false;
+    this.a.g = false;
     int i = (int)(FileUtils.getAvailableInnernalMemorySize() / 1024.0F / 1024.0F);
-    int j = (int)(this.a.a * 1024.0D);
+    int j = (int)(this.a.V * 1024.0D);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -54,7 +54,7 @@ class QIMPtvTemplateManager$4
     ((HttpNetReq)localObject).mCallback = new QIMPtvTemplateManager.4.1(this);
     ((HttpNetReq)localObject).mReqUrl = this.a.c;
     ((HttpNetReq)localObject).mHttpMethod = 0;
-    ((HttpNetReq)localObject).mOutPath = new File(QIMPtvTemplateManager.a(), this.a.e).getPath();
+    ((HttpNetReq)localObject).mOutPath = new File(QIMPtvTemplateManager.l(), this.a.e).getPath();
     ((HttpNetReq)localObject).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     try
     {
@@ -77,7 +77,7 @@ class QIMPtvTemplateManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.QIMPtvTemplateManager.4
  * JD-Core Version:    0.7.0.1
  */

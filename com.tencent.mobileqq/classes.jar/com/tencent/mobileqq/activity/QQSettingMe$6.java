@@ -13,17 +13,17 @@ class QQSettingMe$6
   
   public void run()
   {
-    if (!QQSettingMe.b()) {
+    if (!QQSettingMe.m()) {
       return;
     }
     Object localObject1 = new Rect();
-    Object localObject2 = QQSettingMe.a("d_document");
-    QQSettingMe.a(this.this$0).offsetDescendantRectToMyCoords((View)localObject2, (Rect)localObject1);
+    Object localObject2 = QQSettingMe.b("d_document");
+    QQSettingMe.j(this.this$0).offsetDescendantRectToMyCoords((View)localObject2, (Rect)localObject1);
     localObject2 = new Rect();
-    QQSettingMe.a(this.this$0).getDrawingRect((Rect)localObject2);
+    QQSettingMe.j(this.this$0).getDrawingRect((Rect)localObject2);
     boolean bool = ((Rect)localObject2).contains((Rect)localObject1);
     if (!bool) {
-      QQSettingMe.a(this.this$0).scrollTo(QQSettingMe.a(this.this$0).getScrollX(), ((Rect)localObject1).top);
+      QQSettingMe.j(this.this$0).scrollTo(QQSettingMe.j(this.this$0).getScrollX(), ((Rect)localObject1).top);
     }
     localObject1 = ThreadManagerV2.getUIHandlerV2();
     localObject2 = new QQSettingMe.6.1(this);
@@ -38,7 +38,7 @@ class QQSettingMe$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.6
  * JD-Core Version:    0.7.0.1
  */

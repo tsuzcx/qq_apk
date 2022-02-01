@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.data;
 
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.utils.ViewUtils;
 
 public class GrayTipsMessageConstants$HighlightItem
@@ -10,7 +11,8 @@ public class GrayTipsMessageConstants$HighlightItem
   public int groupId;
   public String icon;
   public String iconAlt;
-  private int iconSize = ViewUtils.b(16.0F);
+  private int iconSize = ViewUtils.dpToPx(16.0F);
+  public Bitmap mBitmap = null;
   public String mMsgAActionData = null;
   public String mMsgActionData = null;
   public boolean needUpdateNick;
@@ -49,6 +51,14 @@ public class GrayTipsMessageConstants$HighlightItem
     this(paramInt1, paramInt2, paramLong, paramInt3, paramInt4, paramString1, paramString2, paramString3, paramString4, paramInt5);
     this.remark = paramString5;
     this.groupId = paramInt6;
+  }
+  
+  public GrayTipsMessageConstants$HighlightItem(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt5, String paramString5, int paramInt6, Bitmap paramBitmap)
+  {
+    this(paramInt1, paramInt2, paramLong, paramInt3, paramInt4, paramString1, paramString2, paramString3, paramString4, paramInt5);
+    this.remark = paramString5;
+    this.groupId = paramInt6;
+    this.mBitmap = paramBitmap;
   }
   
   public int getIconSize()
@@ -98,7 +108,7 @@ public class GrayTipsMessageConstants$HighlightItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.GrayTipsMessageConstants.HighlightItem
  * JD-Core Version:    0.7.0.1
  */

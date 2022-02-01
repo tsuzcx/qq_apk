@@ -79,7 +79,7 @@ public class LifeOnlineElemDecoder
       } else {
         l4 = 0L;
       }
-      ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).sendMsgArriveReceipt(BaseApplication.getContext(), localMessageHandler.a, l1, l2, l3, l4, 1, null);
+      ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).sendMsgArriveReceipt(BaseApplication.getContext(), localMessageHandler.n, l1, l2, l3, l4, 1, null);
     }
     long l1 = l5;
     if (localElem.life_online.uint64_unique_id.has()) {
@@ -286,7 +286,7 @@ public class LifeOnlineElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.LifeOnlineElemDecoder
  * JD-Core Version:    0.7.0.1
  */

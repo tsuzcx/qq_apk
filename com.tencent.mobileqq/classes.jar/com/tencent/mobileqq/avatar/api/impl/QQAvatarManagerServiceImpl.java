@@ -310,16 +310,16 @@ public class QQAvatarManagerServiceImpl
       localStringBuilder1.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
     }
     localStringBuilder1.append("stranger_");
-    localStringBuilder1.append(Integer.toString(paramFaceInfo.b));
+    localStringBuilder1.append(Integer.toString(paramFaceInfo.d));
     localStringBuilder1.append("_");
-    String str = MD5.toMD5(paramFaceInfo.a);
+    String str = MD5.toMD5(paramFaceInfo.c);
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append(str);
-    localStringBuilder2.append(paramFaceInfo.a);
+    localStringBuilder2.append(paramFaceInfo.c);
     str = MD5.toMD5(localStringBuilder2.toString());
     localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append(str);
-    localStringBuilder2.append(paramFaceInfo.a);
+    localStringBuilder2.append(paramFaceInfo.c);
     localStringBuilder1.append(MD5.toMD5(localStringBuilder2.toString()));
     localStringBuilder1.append(".jpg_");
     return localStringBuilder1.toString();
@@ -495,7 +495,7 @@ public class QQAvatarManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

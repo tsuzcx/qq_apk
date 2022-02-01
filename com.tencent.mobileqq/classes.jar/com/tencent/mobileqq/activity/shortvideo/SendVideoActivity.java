@@ -136,7 +136,7 @@ public class SendVideoActivity
       if (QLog.isColorLevel()) {
         QLog.i("SendVideoActivity", 2, "handleMessage: send video timeout!");
       }
-      paramMessage = ((BlessManager)getAppInterface().getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).a();
+      paramMessage = ((BlessManager)getAppInterface().getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER)).z();
       if (paramMessage != null)
       {
         IHttpCommunicatorListener localIHttpCommunicatorListener = ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).findProcessor(paramMessage.frienduin, paramMessage.uniseq);
@@ -162,7 +162,7 @@ public class SendVideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.SendVideoActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,13 @@ public class OuterInterceptManager
 {
   public static void a(Activity paramActivity, OuterInterceptManager.OnInterceptDialogClickListener paramOnInterceptDialogClickListener)
   {
-    stCallInfo localstCallInfo = WSGlobalConfig.a().a();
+    stCallInfo localstCallInfo = WSGlobalConfig.a().b();
     if ((localstCallInfo != null) && (localstCallInfo.switch_call_live))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("stGlobalConfig.callinfo: ");
       localStringBuilder.append(localstCallInfo);
       WSLog.e("OuterInterceptManager", localStringBuilder.toString());
-      if (paramOnInterceptDialogClickListener != null) {
-        paramOnInterceptDialogClickListener.b();
-      }
       b(paramActivity, paramOnInterceptDialogClickListener);
       return;
     }
@@ -35,7 +32,7 @@ public class OuterInterceptManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager
  * JD-Core Version:    0.7.0.1
  */

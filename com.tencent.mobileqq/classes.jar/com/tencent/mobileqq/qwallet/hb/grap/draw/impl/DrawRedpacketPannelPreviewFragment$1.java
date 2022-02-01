@@ -29,10 +29,10 @@ class DrawRedpacketPannelPreviewFragment$1
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = DrawRedpacketPannelPreviewFragment.jdField_a_of_type_JavaLangString;
+      localObject1 = DrawRedpacketPannelPreviewFragment.a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("save path: ");
-      ((StringBuilder)localObject2).append(paramMessage.c);
+      ((StringBuilder)localObject2).append(paramMessage.e);
       ((StringBuilder)localObject2).append(" thread name: ");
       ((StringBuilder)localObject2).append(Thread.currentThread().getName());
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
@@ -43,13 +43,13 @@ class DrawRedpacketPannelPreviewFragment$1
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1007);
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramMessage.c);
+      localArrayList.add(paramMessage.e);
       ((Intent)localObject2).putStringArrayListExtra(((IQWalletTemp)QRoute.api(IQWalletTemp.class)).QAlbumConstants$PHOTO_PATHS(), localArrayList);
       ((Intent)localObject2).putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
-      ((Intent)localObject2).putExtra("uin", paramMessage.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject2).putExtra("uintype", paramMessage.jdField_a_of_type_Int);
-      ((Intent)localObject2).putExtra("troop_uin", paramMessage.jdField_b_of_type_JavaLangString);
-      ((Intent)localObject2).putExtra("key_confess_topicid", paramMessage.jdField_b_of_type_Int);
+      ((Intent)localObject2).putExtra("uin", paramMessage.a);
+      ((Intent)localObject2).putExtra("uintype", paramMessage.b);
+      ((Intent)localObject2).putExtra("troop_uin", paramMessage.c);
+      ((Intent)localObject2).putExtra("key_confess_topicid", paramMessage.d);
       ((Intent)localObject2).putExtra("PhotoConst.SEND_SIZE_SPEC", ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).PeakConstants$SendSizeSpec$SPEC_NOMAL());
       ((Intent)localObject2).putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
       if (localArrayList.size() == 1) {
@@ -62,7 +62,7 @@ class DrawRedpacketPannelPreviewFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawRedpacketPannelPreviewFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -70,8 +70,8 @@ public class C2CLinkElement
                     break;
                   }
                   localObject1 = (AbsStructMsgItem)localObject1;
-                } while ((((AbsStructMsgItem)localObject1).a == null) || (((AbsStructMsgItem)localObject1).a.isEmpty()));
-                localObject2 = ((AbsStructMsgItem)localObject1).a.iterator();
+                } while ((((AbsStructMsgItem)localObject1).ax == null) || (((AbsStructMsgItem)localObject1).ax.isEmpty()));
+                localObject2 = ((AbsStructMsgItem)localObject1).ax.iterator();
                 localObject1 = paramAbsShareMsg;
                 while (((Iterator)localObject2).hasNext())
                 {
@@ -144,7 +144,7 @@ public class C2CLinkElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkElement
  * JD-Core Version:    0.7.0.1
  */

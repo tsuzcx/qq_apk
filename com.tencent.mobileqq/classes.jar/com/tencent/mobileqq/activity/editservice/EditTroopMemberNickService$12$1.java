@@ -11,13 +11,13 @@ class EditTroopMemberNickService$12$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VasH5PayUtil.a(EditTroopMemberNickService.a(this.a.a), "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
+    VasH5PayUtil.a(EditTroopMemberNickService.f(this.a.a), "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.12.1
  * JD-Core Version:    0.7.0.1
  */

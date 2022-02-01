@@ -11,26 +11,26 @@ class AddFriendVerifyFragment$18
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.g != null)
     {
-      if (!this.this$0.a.isShowing()) {
-        this.this$0.a.show();
+      if (!this.this$0.g.isShowing()) {
+        this.this$0.g.show();
       }
       return;
     }
     Object localObject = this.this$0;
-    ((AddFriendVerifyFragment)localObject).a = DialogUtil.a(((AddFriendVerifyFragment)localObject).getActivity(), 230);
-    this.this$0.a.setMessage(2131694463);
+    ((AddFriendVerifyFragment)localObject).g = DialogUtil.a(((AddFriendVerifyFragment)localObject).getActivity(), 230);
+    this.this$0.g.setMessage(2131892143);
     localObject = new AddFriendVerifyFragment.18.1(this);
-    this.this$0.a.setPositiveButton(2131694583, (DialogInterface.OnClickListener)localObject);
-    if (!this.this$0.a.isShowing()) {
-      this.this$0.a.show();
+    this.this$0.g.setPositiveButton(2131892267, (DialogInterface.OnClickListener)localObject);
+    if (!this.this$0.g.isShowing()) {
+      this.this$0.g.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.18
  * JD-Core Version:    0.7.0.1
  */

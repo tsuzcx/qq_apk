@@ -11,21 +11,16 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class ContactBaseView
   extends FrameLayout
 {
-  public Activity a;
-  public ContactBaseView.IAddContactContext a;
-  public QQAppInterface a;
+  public ContactBaseView.IAddContactContext E;
+  public Activity F;
+  public QQAppInterface G;
   
   public ContactBaseView(ContactBaseView.IAddContactContext paramIAddContactContext)
   {
-    super(paramIAddContactContext.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext = paramIAddContactContext;
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramIAddContactContext.a();
-  }
-  
-  public int a()
-  {
-    return getResources().getDimensionPixelSize(2131298174);
+    super(paramIAddContactContext.b());
+    this.E = paramIAddContactContext;
+    this.F = this.E.b();
+    this.G = paramIAddContactContext.a();
   }
   
   public void a() {}
@@ -38,9 +33,14 @@ public abstract class ContactBaseView
   
   public void d() {}
   
-  public void g() {}
+  public int getHeightToTabBar()
+  {
+    return getResources().getDimensionPixelSize(2131298867);
+  }
   
   public void h() {}
+  
+  public void i() {}
   
   public final void setContentView(int paramInt)
   {
@@ -49,7 +49,7 @@ public abstract class ContactBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView
  * JD-Core Version:    0.7.0.1
  */

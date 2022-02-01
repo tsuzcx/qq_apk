@@ -17,17 +17,17 @@ class KSongMicView$1
     while (paramValueAnimator.hasNext())
     {
       KSongMicView.CircleHolder localCircleHolder = (KSongMicView.CircleHolder)paramValueAnimator.next();
-      localCircleHolder.jdField_c_of_type_Float = (localCircleHolder.f + (localCircleHolder.g - localCircleHolder.f) * f);
-      localCircleHolder.d = (localCircleHolder.h + (localCircleHolder.i - localCircleHolder.h) * f);
-      localCircleHolder.e = (localCircleHolder.j + (localCircleHolder.k - localCircleHolder.j) * f);
-      localCircleHolder.a = (localCircleHolder.b + (int)((localCircleHolder.jdField_c_of_type_Int - localCircleHolder.b) * f));
+      localCircleHolder.c = (localCircleHolder.g + (localCircleHolder.h - localCircleHolder.g) * f);
+      localCircleHolder.d = (localCircleHolder.i + (localCircleHolder.j - localCircleHolder.i) * f);
+      localCircleHolder.e = (localCircleHolder.k + (localCircleHolder.l - localCircleHolder.k) * f);
+      localCircleHolder.f = (localCircleHolder.m + (int)((localCircleHolder.n - localCircleHolder.m) * f));
     }
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.KSongMicView.1
  * JD-Core Version:    0.7.0.1
  */

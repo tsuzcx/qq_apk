@@ -34,48 +34,79 @@ import org.jetbrains.annotations.NotNull;
 public class ThemeSwitchManagerImpl
   implements IThemeSwitchManager
 {
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new ThemeSwitchManagerImpl.2(this, Looper.getMainLooper());
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ThemeCleaner jdField_a_of_type_ComTencentMobileqqVasThemeThemeCleaner = new ThemeCleaner();
-  public ThemeDiyStyleLogic.StyleCallBack a;
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  public AtomicBoolean a;
-  public AppRuntime a;
+  QQProgressDialog a;
+  public ThemeDiyStyleLogic.StyleCallBack b;
+  public AppRuntime c = MobileQQ.sMobileQQ.waitAppRuntime(null);
+  View d;
+  Bitmap e;
+  ImageView f;
+  public AtomicBoolean g = new AtomicBoolean(false);
+  WeakReference<Activity> h;
+  Handler i = new ThemeSwitchManagerImpl.2(this, Looper.getMainLooper());
+  private ThemeCleaner j = new ThemeCleaner();
   
   public ThemeSwitchManagerImpl()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqVasThemeThemeCleaner, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+    this.c.getApplication().registerReceiver(this.j, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+  }
+  
+  protected void a(Activity paramActivity)
+  {
+    if (this.d == null)
+    {
+      paramActivity = paramActivity.getWindow();
+      if (paramActivity != null)
+      {
+        paramActivity = paramActivity.getDecorView();
+        if (paramActivity != null) {
+          this.d = paramActivity.getRootView();
+        }
+      }
+    }
+  }
+  
+  protected void a(Activity paramActivity, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      ImageView localImageView = this.f;
+      if ((localImageView != null) && (localImageView.getParent() != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeSwitchManager", 2, new Object[] { "doScreenShot, last one has not remove-->", this.f });
+        }
+        ((ViewGroup)this.f.getParent()).removeView(this.f);
+      }
+      this.e = Bitmap.createBitmap(paramBitmap);
+      this.f = new ImageView(paramActivity);
+      this.f.setImageBitmap(this.e);
+      if (((IVasDepTemp)QRoute.api(IVasDepTemp.class)).isQQBrowserActivity(paramActivity))
+      {
+        this.f.setAlpha(220);
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeSwitchManager", 2, "doScreenShot, refActivity is QQBrowserActivity");
+        }
+      }
+      paramActivity = (ViewGroup)this.d;
+      this.f.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      paramActivity.addView(this.f);
+    }
   }
   
   public void clearOnErr()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(201);
+    this.i.sendEmptyMessage(201);
   }
   
   public void doScreenShot()
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+      if ((this.h != null) && (this.h.get() != null))
       {
-        Object localObject1 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (this.jdField_a_of_type_AndroidViewView == null)
-        {
-          localObject3 = ((Activity)localObject1).getWindow();
-          if (localObject3 != null)
-          {
-            localObject3 = ((Window)localObject3).getDecorView();
-            if (localObject3 != null) {
-              this.jdField_a_of_type_AndroidViewView = ((View)localObject3).getRootView();
-            }
-          }
-        }
-        if (this.jdField_a_of_type_AndroidViewView == null)
+        Activity localActivity = (Activity)this.h.get();
+        a(localActivity);
+        if (this.d == null)
         {
           if (!QLog.isColorLevel()) {
             return;
@@ -83,36 +114,13 @@ public class ThemeSwitchManagerImpl
           QLog.d("ThemeSwitchManager", 2, "doScreenShot, rootView is null");
           return;
         }
-        boolean bool1 = this.jdField_a_of_type_AndroidViewView.isDrawingCacheEnabled();
-        boolean bool2 = this.jdField_a_of_type_AndroidViewView.willNotCacheDrawing();
-        this.jdField_a_of_type_AndroidViewView.setDrawingCacheEnabled(true);
-        this.jdField_a_of_type_AndroidViewView.setWillNotCacheDrawing(false);
-        Object localObject3 = this.jdField_a_of_type_AndroidViewView.getDrawingCache();
-        if (localObject3 != null)
-        {
-          if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView.getParent() != null))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ThemeSwitchManager", 2, new Object[] { "doScreenShot, last one has not remove-->", this.jdField_a_of_type_AndroidWidgetImageView });
-            }
-            ((ViewGroup)this.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-          }
-          this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((Bitmap)localObject3);
-          this.jdField_a_of_type_AndroidWidgetImageView = new ImageView((Context)localObject1);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-          if (((IVasDepTemp)QRoute.api(IVasDepTemp.class)).isQQBrowserActivity((Activity)localObject1))
-          {
-            this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(220);
-            if (QLog.isColorLevel()) {
-              QLog.d("ThemeSwitchManager", 2, "doScreenShot, refActivity is QQBrowserActivity");
-            }
-          }
-          localObject1 = (ViewGroup)this.jdField_a_of_type_AndroidViewView;
-          this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-          ((ViewGroup)localObject1).addView(this.jdField_a_of_type_AndroidWidgetImageView);
-        }
-        this.jdField_a_of_type_AndroidViewView.setDrawingCacheEnabled(bool1);
-        this.jdField_a_of_type_AndroidViewView.setWillNotCacheDrawing(bool2);
+        boolean bool1 = this.d.isDrawingCacheEnabled();
+        boolean bool2 = this.d.willNotCacheDrawing();
+        this.d.setDrawingCacheEnabled(true);
+        this.d.setWillNotCacheDrawing(false);
+        a(localActivity, this.d.getDrawingCache());
+        this.d.setDrawingCacheEnabled(bool1);
+        this.d.setWillNotCacheDrawing(bool2);
       }
       else
       {
@@ -123,18 +131,18 @@ public class ThemeSwitchManagerImpl
     catch (Throwable localThrowable)
     {
       QLog.e("ThemeSwitchManager", 1, "doScreenShot oom, no animation", localThrowable);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      Object localObject2 = this.jdField_a_of_type_AndroidWidgetImageView;
-      if ((localObject2 != null) && (((ImageView)localObject2).getParent() != null)) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+      this.e = null;
+      Object localObject = this.f;
+      if ((localObject != null) && (((ImageView)localObject).getParent() != null)) {
+        ((ViewGroup)this.f.getParent()).removeView(this.f);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView = null;
+      this.f = null;
       if (QLog.isColorLevel())
       {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("drawingCache is:");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        QLog.d("ThemeSwitchManager", 2, ((StringBuilder)localObject2).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("drawingCache is:");
+        ((StringBuilder)localObject).append(this.e);
+        QLog.d("ThemeSwitchManager", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
@@ -159,17 +167,17 @@ public class ThemeSwitchManagerImpl
       localObject2[0] = Integer.valueOf(0);
       localObject2[1] = Integer.valueOf(0);
       localObject2[2] = Integer.valueOf(0);
-      int i = ((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsByStringToIntParser((String)localObject1, (Integer[])localObject2);
+      int k = ((IDPCApi)QRoute.api(IDPCApi.class)).parseComplexParamsByStringToIntParser((String)localObject1, (Integer[])localObject2);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("getIsEnableAnimate size:");
-        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(k);
         ((StringBuilder)localObject1).append(", params:");
         ((StringBuilder)localObject1).append(localObject2);
         QLog.i("ThemeSwitchManager", 2, ((StringBuilder)localObject1).toString());
       }
-      if (i >= 3)
+      if (k >= 3)
       {
         if (localObject2[0].intValue() == 1) {
           bool1 = true;
@@ -200,77 +208,77 @@ public class ThemeSwitchManagerImpl
   @NotNull
   public ThemeDiyStyleLogic.StyleCallBack getstyleCallBack()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack;
+    return this.b;
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasThemeThemeCleaner != null) {
-      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqVasThemeThemeCleaner);
+    if (this.j != null) {
+      this.c.getApplication().unregisterReceiver(this.j);
     }
-    this.jdField_a_of_type_MqqAppAppRuntime = null;
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    this.c = null;
+    QQProgressDialog localQQProgressDialog = this.a;
     if (localQQProgressDialog != null)
     {
       if (localQQProgressDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        this.a.dismiss();
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.a = null;
     }
   }
   
   public void onPostThemeChanged()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    Object localObject = this.a;
     if ((localObject != null) && (((QQProgressDialog)localObject).isShowing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.a.dismiss();
+      this.a = null;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.d == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ThemeSwitchManager", 2, "onPostThemeChanged rootView is null");
       }
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.e != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ThemeSwitchManager", 2, new Object[] { "onPostThemeChanged, isAnimating: ", Boolean.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()), " tmpScreenShot: ", this.jdField_a_of_type_AndroidWidgetImageView });
+        QLog.d("ThemeSwitchManager", 2, new Object[] { "onPostThemeChanged, isAnimating: ", Boolean.valueOf(this.g.get()), " tmpScreenShot: ", this.f });
       }
-      if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
+      if ((!this.g.get()) && (this.f != null))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.g.set(true);
         localObject = new AlphaAnimation(1.0F, 0.1F);
         ((Animation)localObject).setDuration(501L);
         ((Animation)localObject).setInterpolator(new LinearInterpolator());
         ((Animation)localObject).setFillAfter(true);
         ((Animation)localObject).setAnimationListener(new ThemeSwitchManagerImpl.1(this));
-        this.jdField_a_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
+        this.f.startAnimation((Animation)localObject);
       }
     }
     else if (QLog.isColorLevel())
     {
       QLog.d("ThemeSwitchManager", 2, "onPostThemeChanged drawingCache is null");
     }
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.d = null;
   }
   
   public void openSwitchDialog(Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(200);
+    this.h = new WeakReference(paramActivity);
+    this.i.sendEmptyMessage(200);
   }
   
   public void setstyleCallBack(@NotNull ThemeDiyStyleLogic.StyleCallBack paramStyleCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyStyleLogic$StyleCallBack = paramStyleCallBack;
+    this.b = paramStyleCallBack;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.manager.api.impl.ThemeSwitchManagerImpl
  * JD-Core Version:    0.7.0.1
  */

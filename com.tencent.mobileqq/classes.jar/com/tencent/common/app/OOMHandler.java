@@ -13,18 +13,18 @@ import java.util.HashMap;
 public class OOMHandler
   implements ISkinEngineLog, SkinEngineHandler
 {
-  private int jdField_a_of_type_Int = -1;
-  private BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+  private BaseApplicationImpl a;
+  private int b = -1;
   
   public OOMHandler(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
+    this.a = paramBaseApplicationImpl;
   }
   
   public boolean onDecodeOOM(OutOfMemoryError paramOutOfMemoryError, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
+    if (this.b == -1) {
+      this.b = ((ActivityManager)this.a.getSystemService("activity")).getMemoryClass();
     }
     long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
     paramOutOfMemoryError = new StringBuffer("decode resources oom, fileName: ");
@@ -34,7 +34,7 @@ public class OOMHandler
     paramOutOfMemoryError.append(", memory used:");
     paramOutOfMemoryError.append(l);
     paramOutOfMemoryError.append(" , heap size: ");
-    paramOutOfMemoryError.append(this.jdField_a_of_type_Int);
+    paramOutOfMemoryError.append(this.b);
     paramOutOfMemoryError.append(", api level:");
     paramOutOfMemoryError.append(Build.VERSION.SDK_INT);
     if (GlobalImageCache.a != null)
@@ -45,12 +45,12 @@ public class OOMHandler
     QLog.e("res-OOM", 1, paramOutOfMemoryError.toString());
     paramOutOfMemoryError = new HashMap(4);
     paramOutOfMemoryError.put("param_FailCode", Integer.toString(89100));
-    paramOutOfMemoryError.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramOutOfMemoryError.put("param_heapSize", Integer.toString(this.b));
     paramOutOfMemoryError.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
     paramOutOfMemoryError.put("param_cacheUsed", Long.toString(l));
     try
     {
-      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramOutOfMemoryError, "");
+      StatisticCollector.getInstance(this.a).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramOutOfMemoryError, "");
     }
     catch (Exception paramOutOfMemoryError)
     {
@@ -67,8 +67,8 @@ public class OOMHandler
   
   public boolean onDecodeReturnNullBitmap(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
+    if (this.b == -1) {
+      this.b = ((ActivityManager)this.a.getSystemService("activity")).getMemoryClass();
     }
     long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
     StringBuffer localStringBuffer = new StringBuffer("decode resources return null, fileName: ");
@@ -78,7 +78,7 @@ public class OOMHandler
     localStringBuffer.append(", memory used:");
     localStringBuffer.append(l);
     localStringBuffer.append(" , heap size: ");
-    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(this.b);
     localStringBuffer.append(", api level:");
     localStringBuffer.append(Build.VERSION.SDK_INT);
     if (GlobalImageCache.a != null)
@@ -88,12 +88,12 @@ public class OOMHandler
     }
     paramString = new HashMap(4);
     paramString.put("param_FailCode", Integer.toString(89102));
-    paramString.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramString.put("param_heapSize", Integer.toString(this.b));
     paramString.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
     paramString.put("param_cacheUsed", Long.toString(l));
     try
     {
-      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
+      StatisticCollector.getInstance(this.a).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
     }
     catch (Exception paramString)
     {
@@ -111,8 +111,8 @@ public class OOMHandler
   
   public boolean onSecondDecodeOOM(OutOfMemoryError paramOutOfMemoryError, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = ((ActivityManager)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getSystemService("activity")).getMemoryClass();
+    if (this.b == -1) {
+      this.b = ((ActivityManager)this.a.getSystemService("activity")).getMemoryClass();
     }
     long l = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
     StringBuffer localStringBuffer = new StringBuffer("decode resources second oom, fileName: ");
@@ -122,7 +122,7 @@ public class OOMHandler
     localStringBuffer.append(", memory used:");
     localStringBuffer.append(l);
     localStringBuffer.append(" , heap size: ");
-    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(this.b);
     localStringBuffer.append(", api level:");
     localStringBuffer.append(Build.VERSION.SDK_INT);
     if (GlobalImageCache.a != null)
@@ -132,12 +132,12 @@ public class OOMHandler
     }
     paramString = new HashMap(4);
     paramString.put("param_FailCode", Integer.toString(89101));
-    paramString.put("param_heapSize", Integer.toString(this.jdField_a_of_type_Int));
+    paramString.put("param_heapSize", Integer.toString(this.b));
     paramString.put("param_apiLevel", Integer.toString(Build.VERSION.SDK_INT));
     paramString.put("param_cacheUsed", Long.toString(l));
     try
     {
-      StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
+      StatisticCollector.getInstance(this.a).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
     }
     catch (Exception paramString)
     {
@@ -178,7 +178,7 @@ public class OOMHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.OOMHandler
  * JD-Core Version:    0.7.0.1
  */

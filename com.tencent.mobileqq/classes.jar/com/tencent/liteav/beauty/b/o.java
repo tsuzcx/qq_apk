@@ -1,12 +1,12 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.beauty.NativeLoad;
 
 public class o
-  extends h
+  extends j
 {
   private static float[] C = { 0.1826F, 0.6142F, 0.062F, -0.1006F, -0.3386F, 0.4392F, 0.4392F, -0.3989F, -0.0403F };
   private static float[] D = { 0.256816F, 0.504154F, 0.0979137F, -0.148246F, -0.29102F, 0.439266F, 0.439271F, -0.367833F, -0.071438F };
@@ -56,14 +56,12 @@ public class o
     int i = this.B;
     if (1 == i)
     {
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(8);
       TXCLog.i(this.A, "RGB-->I420 init!");
     }
     else if (3 == i)
     {
       TXCLog.i(this.A, "RGB-->NV21 init!");
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(11);
     }
     else
@@ -79,7 +77,6 @@ public class o
       localStringBuilder.append(this.B);
       localStringBuilder.append(" use default I420");
       TXCLog.i(str, localStringBuilder.toString());
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(8);
     }
     if ((this.a != 0) && (b())) {
@@ -106,7 +103,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.o
  * JD-Core Version:    0.7.0.1
  */

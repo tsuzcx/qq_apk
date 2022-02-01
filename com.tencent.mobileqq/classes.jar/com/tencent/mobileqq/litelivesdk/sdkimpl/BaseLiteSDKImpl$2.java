@@ -18,7 +18,7 @@ class BaseLiteSDKImpl$2
         if (this.a.getFloatRoomManager() == null) {
           return;
         }
-        this.a.getFloatRoomManager().f();
+        this.a.getFloatRoomManager().g();
         return;
       }
       return;
@@ -32,7 +32,7 @@ class BaseLiteSDKImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.BaseLiteSDKImpl.2
  * JD-Core Version:    0.7.0.1
  */

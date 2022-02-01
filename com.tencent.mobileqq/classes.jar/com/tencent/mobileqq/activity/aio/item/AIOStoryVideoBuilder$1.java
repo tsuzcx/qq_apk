@@ -24,11 +24,11 @@ class AIOStoryVideoBuilder$1
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    Object localObject1 = (BeancurdManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemAIOStoryVideoBuilder.a.getManager(QQManagerFactory.BEANCURD_MANAGER);
+    Object localObject1 = (BeancurdManager)this.b.a.getManager(QQManagerFactory.BEANCURD_MANAGER);
     if (localObject1 != null) {
       ((BeancurdManager)localObject1).a(4, 7);
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
+    Object localObject2 = this.a.mStStoryFeed;
     if ((localObject2 != null) && (((META.StStoryFeed)localObject2).postUser != null))
     {
       localObject1 = new Bundle();
@@ -49,7 +49,7 @@ class AIOStoryVideoBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AIOStoryVideoBuilder.1
  * JD-Core Version:    0.7.0.1
  */

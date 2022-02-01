@@ -8,32 +8,31 @@ import android.os.Message;
 
 public class DataCollector
 {
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
-  static String jdField_a_of_type_JavaLangString = "DataCollector";
-  Handler jdField_a_of_type_AndroidOsHandler = new DataCollector.1(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-  public boolean a;
+  static String a = "DataCollector";
+  private static HandlerThread d = new HandlerThread("Colloector-Tasker");
+  public boolean b = true;
+  Handler c = new DataCollector.1(this, d.getLooper());
   
   static
   {
-    jdField_a_of_type_AndroidOsHandlerThread.start();
+    d.start();
   }
   
   public DataCollector(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
+    a = getClass().getSimpleName();
   }
   
-  static Looper a()
+  static Looper e()
   {
-    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
+    return d.getLooper();
   }
   
   protected void a(Message paramMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DataCollector
  * JD-Core Version:    0.7.0.1
  */

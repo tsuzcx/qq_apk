@@ -10,22 +10,22 @@ class QIMProviderContainerView$6$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$6.a.a()))
+    if ((this.a) && (!this.b.a.a()))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$6.a.setReddotXOffsetDp(12);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$6.a.setReddotYOffsetDp(11);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$6.a.setRedDotDrawable(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$6.a.getResources().getDrawable(2130850767));
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$6.a.a(true);
+      this.b.a.setReddotXOffsetDp(12);
+      this.b.a.setReddotYOffsetDp(11);
+      this.b.a.setRedDotDrawable(this.b.a.getResources().getDrawable(2130852589));
+      this.b.a.a(true);
       return;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$6.a.a())) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView$6.a.a(false);
+    if ((!this.a) && (this.b.a.a())) {
+      this.b.a.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMProviderContainerView.6.1
  * JD-Core Version:    0.7.0.1
  */

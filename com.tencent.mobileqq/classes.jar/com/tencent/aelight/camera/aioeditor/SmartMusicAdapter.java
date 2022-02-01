@@ -1,6 +1,5 @@
 package com.tencent.aelight.camera.aioeditor;
 
-import NS_QQ_STORY_META.META.StMusic;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler.Callback;
@@ -21,98 +20,83 @@ import com.tencent.util.WeakReferenceHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import qqcircle.QQCircleSmartMatchMusic.LyricInfo;
+import qqcircle.QQCircleSmartMatchMusic.MusicInfo;
 
 public class SmartMusicAdapter
   extends RecyclerView.Adapter<SmartMusicAdapter.SmartMusicVH>
   implements Handler.Callback
 {
-  private EditVideoSmartMusicPart.onSmartMusicViewListener jdField_a_of_type_ComTencentAelightCameraAioeditorEditVideoSmartMusicPart$onSmartMusicViewListener;
-  private SmartMusicRecyclerView jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicRecyclerView;
-  private CircleLayoutManager jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewCircleLayoutManager;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<VsMusicItemInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<VsMusicItemInfo> a = new ArrayList();
+  private EditVideoSmartMusicPart.onSmartMusicViewListener b;
+  private HashMap<String, Integer> c = new HashMap();
+  private SmartMusicRecyclerView d;
+  private CircleLayoutManager e;
+  private WeakReferenceHandler f;
   
-  private int a(int paramInt)
+  private int b(int paramInt)
   {
-    if (a() == 0) {
+    if (b() == 0) {
       return 0;
     }
-    return paramInt % a();
+    return paramInt % b();
   }
   
   private void b(List<VsMusicItemInfo> paramList)
   {
     int i = 0;
-    while (i < a())
+    while (i < b())
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(((VsMusicItemInfo)paramList.get(i)).mSongMid, Integer.valueOf(i));
+      this.c.put(((VsMusicItemInfo)paramList.get(i)).mSongMid, Integer.valueOf(i));
       i += 1;
     }
   }
   
-  public int a()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
-  }
-  
   public int a(String paramString)
   {
-    return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+    return ((Integer)this.c.get(paramString)).intValue();
   }
   
   public SmartMusicAdapter.SmartMusicVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new SmartMusicAdapter.SmartMusicVH(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2064318697, null));
+    return new SmartMusicAdapter.SmartMusicVH(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2064056514, null));
   }
   
   public VsMusicItemInfo a(int paramInt)
   {
     int i = paramInt;
-    if (paramInt >= a()) {
-      i = a(paramInt);
+    if (paramInt >= b()) {
+      i = b(paramInt);
     }
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if ((localList != null) && (i >= 0) && (i < localList.size())) {
-      return (VsMusicItemInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+      return (VsMusicItemInfo)this.a.get(i);
     }
     return null;
   }
   
-  public WeakReferenceHandler a()
-  {
-    if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler == null) {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-    }
-    return this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  }
-  
   public List<VsMusicItemInfo> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(EditVideoSmartMusicPart.onSmartMusicViewListener paramonSmartMusicViewListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorEditVideoSmartMusicPart$onSmartMusicViewListener = paramonSmartMusicViewListener;
+    this.b = paramonSmartMusicViewListener;
   }
   
   public void a(SmartMusicAdapter.SmartMusicVH paramSmartMusicVH, int paramInt)
   {
-    if (a() == 0) {
+    if (b() == 0) {
       return;
     }
     int i;
-    if (paramInt < a()) {
+    if (paramInt < b()) {
       i = paramInt;
     } else {
-      i = a(paramInt);
+      i = b(paramInt);
     }
-    VsMusicItemInfo localVsMusicItemInfo = (VsMusicItemInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+    VsMusicItemInfo localVsMusicItemInfo = (VsMusicItemInfo)this.a.get(i);
     if (localVsMusicItemInfo != null)
     {
       if (localVsMusicItemInfo.isDownloading()) {
@@ -120,19 +104,19 @@ public class SmartMusicAdapter
       } else {
         paramSmartMusicVH.b(false);
       }
-      UIUtils.a(SmartMusicAdapter.SmartMusicVH.a(paramSmartMusicVH), localVsMusicItemInfo.mAlbumUrl, UIUtils.a(paramSmartMusicVH.itemView.getContext(), 60.0F), UIUtils.a(paramSmartMusicVH.itemView.getContext(), 60.0F), UIUtils.a(paramSmartMusicVH.itemView.getContext(), 30.0F), paramSmartMusicVH.itemView.getContext().getResources().getDrawable(2130838766), null);
+      UIUtils.a(SmartMusicAdapter.SmartMusicVH.a(paramSmartMusicVH), localVsMusicItemInfo.mAlbumUrl, UIUtils.a(paramSmartMusicVH.itemView.getContext(), 60.0F), UIUtils.a(paramSmartMusicVH.itemView.getContext(), 60.0F), UIUtils.a(paramSmartMusicVH.itemView.getContext(), 30.0F), paramSmartMusicVH.itemView.getContext().getResources().getDrawable(2130838988), null);
       paramSmartMusicVH.itemView.setOnClickListener(new SmartMusicAdapter.1(this, paramInt, localVsMusicItemInfo));
     }
   }
   
   public void a(ArrayList<VsMusicItemInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramArrayList;
+    this.a = paramArrayList;
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramArrayList.size())
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(((VsMusicItemInfo)paramArrayList.get(i)).mSongMid, Integer.valueOf(i));
+      this.c.put(((VsMusicItemInfo)paramArrayList.get(i)).mSongMid, Integer.valueOf(i));
       localArrayList.add(((VsMusicItemInfo)paramArrayList.get(i)).mSongMid);
       i += 1;
     }
@@ -145,16 +129,16 @@ public class SmartMusicAdapter
     VSNetworkHelper.getInstance().sendRequest(new BatchGetMusicInfoRequest(paramArrayList), new SmartMusicAdapter.2(this, paramBoolean));
   }
   
-  public void a(List<META.StMusic> paramList)
+  public void a(List<QQCircleSmartMatchMusic.MusicInfo> paramList)
   {
-    if (a() == 0) {
+    if (b() == 0) {
       localObject = new ArrayList();
     } else {
-      localObject = this.jdField_a_of_type_JavaUtilList;
+      localObject = this.a;
     }
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject);
+    this.a = ((List)localObject);
     Object localObject = new ArrayList();
-    int k = a();
+    int k = b();
     int i = 0;
     while (i < paramList.size())
     {
@@ -162,11 +146,11 @@ public class SmartMusicAdapter
       if (k == 0) {
         j = i;
       } else {
-        j = a() + i;
+        j = b() + i;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(((META.StMusic)paramList.get(i)).strSongMid.get(), Integer.valueOf(j));
-      this.jdField_a_of_type_JavaUtilList.add(new VsMusicItemInfo((META.StMusic)paramList.get(i)));
-      ((ArrayList)localObject).add(((META.StMusic)paramList.get(i)).strSongMid.get());
+      this.c.put(((QQCircleSmartMatchMusic.MusicInfo)paramList.get(i)).lyricInfo.strSongMid.get(), Integer.valueOf(j));
+      this.a.add(new VsMusicItemInfo((QQCircleSmartMatchMusic.MusicInfo)paramList.get(i)));
+      ((ArrayList)localObject).add(((QQCircleSmartMatchMusic.MusicInfo)paramList.get(i)).lyricInfo.strSongMid.get());
       i += 1;
     }
     b((ArrayList)localObject);
@@ -175,21 +159,38 @@ public class SmartMusicAdapter
   
   public boolean a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(paramVsMusicItemInfo.mSongMid) == null)
+    if (this.c.get(paramVsMusicItemInfo.mSongMid) == null)
     {
-      paramInt = a(paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramVsMusicItemInfo.mSongMid, Integer.valueOf(paramInt));
-      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramVsMusicItemInfo);
-      b(this.jdField_a_of_type_JavaUtilList);
+      paramInt = b(paramInt);
+      this.c.put(paramVsMusicItemInfo.mSongMid, Integer.valueOf(paramInt));
+      this.a.add(paramInt, paramVsMusicItemInfo);
+      b(this.a);
       notifyDataSetChanged();
       return true;
     }
     return false;
   }
   
+  public int b()
+  {
+    List localList = this.a;
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
+  }
+  
   public void b(ArrayList<String> paramArrayList)
   {
     a(paramArrayList, false);
+  }
+  
+  public WeakReferenceHandler c()
+  {
+    if (this.f == null) {
+      this.f = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    }
+    return this.f;
   }
   
   public int getItemCount()
@@ -205,19 +206,19 @@ public class SmartMusicAdapter
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicRecyclerView = ((SmartMusicRecyclerView)paramRecyclerView);
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewCircleLayoutManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicRecyclerView.a();
+    this.d = ((SmartMusicRecyclerView)paramRecyclerView);
+    this.e = this.d.getCircleLayoutManager();
   }
   
   public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onDetachedFromRecyclerView(paramRecyclerView);
-    a().removeCallbacks(null);
+    c().removeCallbacks(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.SmartMusicAdapter
  * JD-Core Version:    0.7.0.1
  */

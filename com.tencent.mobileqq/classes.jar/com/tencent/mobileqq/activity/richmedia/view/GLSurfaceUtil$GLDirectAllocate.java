@@ -10,16 +10,16 @@ public class GLSurfaceUtil$GLDirectAllocate
     Object localObject1 = localObject3;
     try
     {
-      if (GLSurfaceUtil.c)
+      if (GLSurfaceUtil.h)
       {
         localObject1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        GLSurfaceUtil.b = true;
+        GLSurfaceUtil.g = true;
       }
       localObject3 = localObject1;
       if (localObject1 == null)
       {
         localObject3 = ByteBuffer.allocateDirect(paramInt2);
-        GLSurfaceUtil.b = false;
+        GLSurfaceUtil.g = false;
       }
       return localObject3;
     }
@@ -34,7 +34,7 @@ public class GLSurfaceUtil$GLDirectAllocate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.GLSurfaceUtil.GLDirectAllocate
  * JD-Core Version:    0.7.0.1
  */

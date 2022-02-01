@@ -16,17 +16,17 @@ class StoryMessageListActivity$UpdateUserInfoEventReceiver
   
   public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramUpdateUserInfoEvent.g.isSuccess())
     {
       if (QLog.isDevelopLevel())
       {
         String str = this.TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("get userinfo come back. >>>>>> ");
-        localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+        localStringBuilder.append(paramUpdateUserInfoEvent.b);
         QLog.i(str, 2, localStringBuilder.toString());
       }
-      paramStoryMessageListActivity.e();
+      paramStoryMessageListActivity.f();
     }
   }
   

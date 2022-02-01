@@ -15,9 +15,9 @@ public class ViewFactory$GuideView
   extends LinearLayout
   implements View.OnClickListener
 {
-  public static final int a = 2;
+  public static final int b = 2;
   public ViewFactory.GuideView.OnItemClickListener a;
-  private int b = -1;
+  private int c = -1;
   
   public ViewFactory$GuideView(Context paramContext)
   {
@@ -30,9 +30,9 @@ public class ViewFactory$GuideView
     setOrientation(1);
     paramContext = LayoutInflater.from(paramContext);
     int i = 0;
-    while (i < jdField_a_of_type_Int)
+    while (i < b)
     {
-      addView(paramContext.inflate(2131558502, this, false));
+      addView(paramContext.inflate(2131624055, this, false));
       i += 1;
     }
   }
@@ -45,7 +45,7 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131367915)).setText(paramString);
+      ((TextView)localView.findViewById(2131434503)).setText(paramString);
       Object localObject = localView.getContentDescription();
       if (localObject == null) {
         localObject = "";
@@ -75,15 +75,15 @@ public class ViewFactory$GuideView
       localView.setOnClickListener(this);
       localView.setTag(Integer.valueOf(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b));
       localView.setTag(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131367910)).setImageResource(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b);
-      Object localObject = (TextView)localView.findViewById(2131367926);
+      ((ImageView)localView.findViewById(2131434498)).setImageResource(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b);
+      Object localObject = (TextView)localView.findViewById(2131434514);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localView.getContext().getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).jdField_a_of_type_Int));
+      localStringBuilder.append(localView.getContext().getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).a));
       localStringBuilder.append(":");
       ((TextView)localObject).setText(localStringBuilder.toString());
-      ((TextView)localView.findViewById(2131367915)).setText(paramString);
+      ((TextView)localView.findViewById(2131434503)).setText(paramString);
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).jdField_a_of_type_Int));
+      ((StringBuilder)localObject).append(getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).a));
       ((StringBuilder)localObject).append(":");
       ((StringBuilder)localObject).append(paramString);
       localView.setContentDescription(((StringBuilder)localObject).toString());
@@ -98,16 +98,16 @@ public class ViewFactory$GuideView
     default: 
       return null;
     case 80000002: 
-      return new ViewFactory.GuideView.DataHolder(2131689670, 2130844715);
+      return new ViewFactory.GuideView.DataHolder(2131886282, 2130846147);
     case 80000001: 
-      return new ViewFactory.GuideView.DataHolder(2131689671, 2130844714);
+      return new ViewFactory.GuideView.DataHolder(2131886283, 2130846146);
     }
-    return new ViewFactory.GuideView.DataHolder(2131689669, 2130844713);
+    return new ViewFactory.GuideView.DataHolder(2131886281, 2130846145);
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (this.b != paramInt)
+    if (this.c != paramInt)
     {
       ArrayList localArrayList = new ArrayList(3);
       int[] arrayOfInt = ViewFactory.a(paramInt);
@@ -118,11 +118,16 @@ public class ViewFactory$GuideView
         localArrayList.add(a(arrayOfInt[i]));
         i += 1;
       }
-      this.b = paramInt;
+      this.c = paramInt;
       a(localArrayList, paramString);
       return;
     }
     a(paramString);
+  }
+  
+  public ViewFactory.GuideView.OnItemClickListener getListener()
+  {
+    return this.a;
   }
   
   public void onClick(View paramView)
@@ -133,16 +138,16 @@ public class ViewFactory$GuideView
     {
     default: 
       break;
-    case 2130844715: 
+    case 2130846147: 
       i = 80000002;
       break;
-    case 2130844714: 
+    case 2130846146: 
       i = 80000001;
       break;
-    case 2130844713: 
+    case 2130846145: 
       i = 80000000;
     }
-    ViewFactory.GuideView.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView$OnItemClickListener;
+    ViewFactory.GuideView.OnItemClickListener localOnItemClickListener = this.a;
     if (localOnItemClickListener != null) {
       localOnItemClickListener.a(i, str);
     }
@@ -151,12 +156,12 @@ public class ViewFactory$GuideView
   
   public void setListener(ViewFactory.GuideView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView$OnItemClickListener = paramOnItemClickListener;
+    this.a = paramOnItemClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ViewFactory.GuideView
  * JD-Core Version:    0.7.0.1
  */

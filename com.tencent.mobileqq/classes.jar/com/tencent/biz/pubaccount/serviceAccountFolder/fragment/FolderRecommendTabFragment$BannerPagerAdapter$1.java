@@ -17,12 +17,12 @@ class FolderRecommendTabFragment$BannerPagerAdapter$1
   {
     try
     {
-      TogetherControlManager.EntryBannerInfo localEntryBannerInfo = (TogetherControlManager.EntryBannerInfo)FolderRecommendTabFragment.BannerPagerAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$BannerPagerAdapter).get(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$BannerPagerAdapter.a((TogetherControlManager.EntryBannerInfo)FolderRecommendTabFragment.BannerPagerAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$BannerPagerAdapter).get(this.jdField_a_of_type_Int), paramView.getContext());
+      TogetherControlManager.EntryBannerInfo localEntryBannerInfo = (TogetherControlManager.EntryBannerInfo)FolderRecommendTabFragment.BannerPagerAdapter.a(this.b).get(this.a);
+      this.b.a((TogetherControlManager.EntryBannerInfo)FolderRecommendTabFragment.BannerPagerAdapter.a(this.b).get(this.a), paramView.getContext());
       if (localEntryBannerInfo != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localEntryBannerInfo.a.iAdId);
+        localStringBuilder.append(localEntryBannerInfo.d.iAdId);
         localStringBuilder.append("");
         FolderRecommendTabFragment.a("227", "227", localStringBuilder.toString(), 102, 1);
       }
@@ -37,7 +37,7 @@ class FolderRecommendTabFragment$BannerPagerAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.BannerPagerAdapter.1
  * JD-Core Version:    0.7.0.1
  */

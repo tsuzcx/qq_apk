@@ -12,12 +12,12 @@ class TroopArkHelper$3
   
   public void run()
   {
-    ((TroopManager)this.this$0.a().getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a);
+    ((TroopManager)this.this$0.b().getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.scheme.TroopArkHelper.3
  * JD-Core Version:    0.7.0.1
  */

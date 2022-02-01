@@ -21,9 +21,9 @@ import java.util.zip.InflaterInputStream;
 
 public class OlympicUtil
 {
-  private static int jdField_a_of_type_Int = -1;
-  static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
+  static SimpleDateFormat a;
   private static int b = -1;
+  private static int c = -1;
   
   public static long a(String paramString)
   {
@@ -81,21 +81,6 @@ public class OlympicUtil
       }
     }
     return paramBitmap;
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    if (paramString.startsWith("http://hb.url.cn/myapp/qq_desk/")) {
-      return paramString.substring(31);
-    }
-    String str = paramString;
-    if (paramString.startsWith("http://")) {
-      str = paramString.substring(7);
-    }
-    return str;
   }
   
   public static void a(AppInterface paramAppInterface, String paramString, int paramInt)
@@ -156,10 +141,25 @@ public class OlympicUtil
     }
     return null;
   }
+  
+  public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    if (paramString.startsWith("http://hb.url.cn/myapp/qq_desk/")) {
+      return paramString.substring(31);
+    }
+    String str = paramString;
+    if (paramString.startsWith("http://")) {
+      str = paramString.substring(7);
+    }
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.utils.OlympicUtil
  * JD-Core Version:    0.7.0.1
  */

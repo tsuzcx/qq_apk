@@ -8,6 +8,7 @@ import android.hardware.SensorEvent;
 import android.media.AudioTrack;
 import android.opengl.GLES20;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import com.microrapid.opencv.ImageStatisticsData;
@@ -37,6 +38,7 @@ import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.config.AdjustRealConfig.TYPE;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 import com.tencent.ttpic.openapi.filter.ICMShowHandle;
+import com.tencent.ttpic.openapi.filter.LightConstants.AISwitchType;
 import com.tencent.ttpic.openapi.filter.LightNode;
 import com.tencent.ttpic.openapi.filter.LightNode.ILightNodeTipsListener;
 import com.tencent.ttpic.openapi.initializer.LightSdkInitializer;
@@ -48,6 +50,8 @@ import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.plugin.AICtrl;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager;
+import com.tencent.ttpic.params.LightBasicBeauty;
+import com.tencent.ttpic.params.QQBeautyController;
 import com.tencent.vbox.VboxFactory;
 import com.tencent.vbox.decode.VboxDecoder;
 import com.tencent.vbox.util.VideoUtil;
@@ -64,6 +68,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
 import org.light.AudioOutput;
 import org.light.CameraConfig.ImageOrigin;
@@ -74,15 +79,18 @@ import org.light.CameraController.MorphType;
 import org.light.DeviceCameraConfig;
 import org.light.LightAsset;
 import org.light.LightEngine;
+import org.light.bean.LightAIDataWrapper;
 import org.light.bean.WMElement;
 import org.light.callback.ExternalRenderCallback;
 import org.light.listener.IOnClickWatermarkListener;
+import org.light.listener.LightAIDataListener;
 import org.light.listener.LightAssetListener;
 import org.light.listener.WatermarkDelegate;
 
 public class AEFilterManager
   implements IWatermarkHandle, ICMShowHandle
 {
+  private static final String DIEJIA_MATERIAL_NAME = "video_diejia_";
   private static final int MAX_RENDER_LENGTH_FOR_STROKE = 1080;
   private static final int MIN_RENDER_LENGTH_FOR_STROKE = 640;
   private static final SizeI NET_SIZE = new SizeI(320, 320);
@@ -102,16 +110,22 @@ public class AEFilterManager
   public static int underexposure;
   private float adjustAlpha = 1.0F;
   private HashMap<String, String> adjustParams;
+  private Map<String, String> aiSwitchMap;
   boolean assetListenerUpdated = false;
   private AudioOutput audioReader;
   private AudioTrack audioTrack;
   private int beautyContrastRatio;
   private int beautyEyeLighten;
+  private int beautyFaceAlphaRedCheek;
+  private int beautyFaceAlphaSoft;
+  private int beautyFaceLipsLutAlpha;
+  private int beautyLutClearAlpha = 20;
+  private int beautyLutFoundationAlpah = 30;
   private float beautyNormalAlpha;
   private int beautyRemovePounch;
   private int beautyRemoveWrinkles;
   private int beautyRemoveWrinkles2;
-  private int beautySkinColor = 50;
+  private int beautySkinColor;
   private int beautySkinLevel;
   private int beautyToothWhiten;
   private boolean beautyUpdated = true;
@@ -128,14 +142,26 @@ public class AEFilterManager
   private int decodeTexture;
   private BeautyRealConfig.TYPE defaultTransBasicType = BeautyRealConfig.TYPE.BASIC4;
   private String[] deviceSupportAbility = { "ai.segment", "ai.segmentHair", "ai.face3d", "3d.kapu", "ai.catFace", "ai.body", "ai.gender", "ai.expression" };
+  private int douyinFactorSmall = 0;
+  private int douyinFactorThin = 0;
   private int encodeTexture;
+  private int exposureValue = 0;
   ExternalRenderCallback externalRenderCallback;
   private boolean externalRenderUpdated = true;
   private Map<String, String> extraConfigData = new HashMap();
   private boolean extraConfigUpdated = false;
   private PTFaceAttr faceAttrInLight;
   private boolean faceDataUpdated = false;
+  private boolean faceFeatureOpen = false;
+  private boolean faceFeatureUpdated = false;
+  private boolean faceGodOpen = false;
+  private boolean faceGoddessOpen = false;
+  private boolean faceNatureOpen = true;
+  private boolean faceThinTypeUpdated = false;
+  private boolean factorSmallThinUpdated = false;
   private int fadeLevel = 0;
+  private int fenGeAlpha = 100;
+  private boolean fenGeAlphaUpdated = false;
   private HashMap<Integer, Boolean> filterConfigMap = new HashMap();
   private HashMap<String, String> filterInLightNodeMap;
   private boolean filterInLightUpdated = true;
@@ -146,20 +172,22 @@ public class AEFilterManager
   private volatile boolean hasApplyPTFaceTransform = false;
   private int height;
   private int hightLightLevel = 0;
-  boolean isAIPreload = false;
   private boolean isAfterUpdateMaterial = false;
+  private boolean isBgmHidden = false;
   private boolean isLowLightEnv = false;
   private boolean isNeedPictureTest = false;
   private boolean isNeedSkipFrame = false;
   private boolean isOverallSmooth = false;
   boolean isPicNeedFlipBeforeRender = false;
+  private boolean isRealtime = true;
   private boolean isVeryLowEndDevice = false;
   private CameraConfig.ImageOrigin lightInputOriention = CameraConfig.ImageOrigin.BottomLeft;
   private LightNodeAppliedListener lightNodeAppliedListener;
   private int lightnessLevel = 0;
+  private boolean lipsBarUpdate = false;
   private int longLeg;
-  private float lookupLevel = 100.0F;
-  private boolean lutUpdated = true;
+  private boolean lutAlphaUpdate = true;
+  private boolean lutPathUpdated = true;
   private AEFilterChain mAEFilterChain;
   private IAEProfiler mAEProfiler = AEProfiler.getInstance();
   private AIBeautyParamsJsonBean mAIBeautyParamsJsonBean = null;
@@ -167,8 +195,11 @@ public class AEFilterManager
   private List<AEChainI> mAIFilterList;
   private AEAdjust mAdjust;
   private AIAttr mAiAttr = null;
+  private boolean mAiBeautyEnable;
+  private boolean mAiBeautyUpdated;
   private AICtrl mAiCtrl = new AICtrl();
   private AIParam mAiParam = new AIParam();
+  private boolean mAssetUpdate = false;
   private boolean mAsyncInitFilters = false;
   private boolean mAutoTest = false;
   private String mAutoTestSmoothVersion;
@@ -179,9 +210,12 @@ public class AEFilterManager
   private int mFrameIndex = 0;
   private AEGlow mGlow;
   private volatile boolean mHasSubmitCreatePTFaceTransform = false;
+  private float mIntensity = 100.0F;
   private boolean mIsInited = false;
   private LightAssetListener mLightAssetListener;
+  private ConcurrentHashMap<String, LightBasicBeauty> mLightBasicParams;
   private LightNode mLightNode;
+  private final ConcurrentHashMap<String, String> mLightNodeControllerPresetData = new ConcurrentHashMap();
   private boolean mLogFlag = false;
   private String mLutPath;
   private float mPhoneRoll;
@@ -195,12 +229,14 @@ public class AEFilterManager
   private IOnClickWatermarkListener mWatermarkClickListener;
   private MaterialLoadFinishListener materialLoadFinishListener;
   private boolean needFaceDetect = false;
+  private boolean needLowEndDownGrade = false;
   private boolean needUpdateAIFilter = true;
   private int outputTexture;
   private boolean pendingToSetBundles = false;
   private int phoneRotation;
   private boolean previewSizeUpdated = true;
   private PTFaceAttr ptFaceAttr;
+  private boolean redCheekBarUpdate = false;
   private ImageStatisticsData resultData;
   private float[] rotationMatrix = new float[16];
   private int saturationLevel = 0;
@@ -220,6 +256,7 @@ public class AEFilterManager
   private float smoothSharpenStrength = 1.2F;
   private boolean smoothUpdated = true;
   private final String smoothVersion;
+  private boolean softFaceBarUpdate = false;
   private AEFilterManager.MaterialInnerEffectListener stickerInnerLutFilterListener = null;
   private boolean syncMode = false;
   private boolean syncModeUpdated = false;
@@ -259,13 +296,26 @@ public class AEFilterManager
   
   public AEFilterManager()
   {
-    this("defaultBeautyV6.json", false);
+    this("defaultBeautyV6.json", false, null);
   }
   
-  public AEFilterManager(String paramString, boolean paramBoolean)
+  public AEFilterManager(String paramString, boolean paramBoolean, Map<String, String> paramMap)
+  {
+    this(paramString, paramBoolean, true, paramMap, false);
+  }
+  
+  public AEFilterManager(String paramString, boolean paramBoolean1, boolean paramBoolean2, Map<String, String> paramMap)
+  {
+    this(paramString, paramBoolean1, paramBoolean2, paramMap, false);
+  }
+  
+  public AEFilterManager(String paramString, boolean paramBoolean1, boolean paramBoolean2, Map<String, String> paramMap, boolean paramBoolean3)
   {
     this.smoothVersion = paramString;
-    this.isAIPreload = paramBoolean;
+    this.isBgmHidden = paramBoolean1;
+    this.isRealtime = paramBoolean2;
+    this.aiSwitchMap = paramMap;
+    this.needLowEndDownGrade = paramBoolean3;
     setDefaultOrder();
     this.mAEFilterChain = new AEFilterChain();
     initAudioTrack();
@@ -336,6 +386,35 @@ public class AEFilterManager
     return i;
   }
   
+  private void checkLightBasicParam()
+  {
+    Object localObject = this.mLightBasicParams;
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).size() != 0))
+    {
+      localObject = this.mLightNode;
+      if (localObject != null)
+      {
+        if (!((LightNode)localObject).isApplied()) {
+          return;
+        }
+        localObject = (LightBasicBeauty)this.mLightBasicParams.get("basicMultiply");
+        if (localObject != null) {
+          openAndUpdateBasicMultiply(((LightBasicBeauty)localObject).getPath(), ((LightBasicBeauty)localObject).getDefValue());
+        }
+        localObject = (LightBasicBeauty)this.mLightBasicParams.get("basicSoftLight");
+        if (localObject != null) {
+          openAndUpdateBasicSoftLight(((LightBasicBeauty)localObject).getPath(), ((LightBasicBeauty)localObject).getDefValue());
+        }
+        localObject = (LightBasicBeauty)this.mLightBasicParams.get("basicLips");
+        if (localObject != null) {
+          openAndUpdateBasicLips(((LightBasicBeauty)localObject).getPath(), ((LightBasicBeauty)localObject).getDefValue(), ((LightBasicBeauty)localObject).getType());
+        }
+        this.mLightBasicParams.clear();
+        LogUtils.i("AEFilterManager", "lightsdk 美颜数据恢复完成");
+      }
+    }
+  }
+  
   private void clearSharedResources()
   {
     ShaderManager.getInstance().clear();
@@ -373,7 +452,7 @@ public class AEFilterManager
           if (i != 200)
           {
             if (i != 300) {
-              break label1839;
+              break label2683;
             }
           }
           else
@@ -428,11 +507,30 @@ public class AEFilterManager
           if (localObject1 != null) {
             this.mLightNode.updateAsset(((VideoMaterial)localObject1).getLightAsset());
           }
+          if (!this.mLightNodeControllerPresetData.isEmpty())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("configFilters---mLightNodeControllerPresetData=");
+            ((StringBuilder)localObject1).append(this.mLightNodeControllerPresetData);
+            LogUtils.d("AEFilterManager", ((StringBuilder)localObject1).toString());
+            localObject1 = this.mLightNodeControllerPresetData.entrySet().iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (Map.Entry)((Iterator)localObject1).next();
+              this.mLightNode.setPresetData((String)((Map.Entry)localObject2).getKey(), (String)((Map.Entry)localObject2).getValue());
+            }
+            this.mLightNodeControllerPresetData.clear();
+          }
           localObject1 = this.configData;
           if (localObject1 == null) {
             this.configData = new HashMap();
           } else {
             ((Map)localObject1).clear();
+          }
+          if (this.mAssetUpdate)
+          {
+            checkMaterBasicBeauty();
+            this.mAssetUpdate = false;
           }
           boolean bool = this.smoothUpdated;
           localObject1 = "";
@@ -447,8 +545,7 @@ public class AEFilterManager
             ((StringBuilder)localObject3).append("");
             ((StringBuilder)localObject3).append(this.smoothSharpenStrength);
             ((Map)localObject2).put("smooth.sharpen", ((StringBuilder)localObject3).toString());
-            this.configData.put("smooth.curveAdjustAlpha", formatDecimalValue(0));
-            this.configData.put("smooth.facecoloralpha", formatDecimalValue(0));
+            this.configData.put("smooth.exposureValue", formatDecimalValue(this.exposureValue));
             this.smoothUpdated = false;
           }
           if (this.beautyUpdated)
@@ -457,38 +554,102 @@ public class AEFilterManager
             this.configData.put("body.thinShoulderStrength", formatDecimalValue(this.slimWaist));
             this.configData.put("body.thinBodyStrength", formatDecimalValue(this.thinBody));
             this.configData.put("body.waistStrength", formatDecimalValue(this.thinShoulder));
-            localObject2 = this.configData;
-            localObject3 = new StringBuilder();
-            ((StringBuilder)localObject3).append("");
-            ((StringBuilder)localObject3).append(this.beautyNormalAlpha);
-            ((Map)localObject2).put("beauty.faceFeature", ((StringBuilder)localObject3).toString());
-            this.configData.put("beauty.eyeLighten", formatDecimalValue(this.beautyEyeLighten));
+            if (this.softFaceBarUpdate)
+            {
+              this.configData.put("beauty.faceFeatureSoftlight", formatDecimalValue((int)this.beautyNormalAlpha));
+              updateBasicBeautyController(2);
+              this.softFaceBarUpdate = false;
+            }
+            this.configData.put("smooth.brightenEyeAlpha", formatDecimalValue(this.beautyEyeLighten));
             this.configData.put("beauty.toothWhiten", formatDecimalValue(this.beautyToothWhiten));
             this.configData.put("beauty.removeEyeBags", formatDecimalValue(this.beautyRemovePounch));
             this.configData.put("beauty.removeWrinkle", formatDecimalValue(this.beautyRemoveWrinkles));
             this.configData.put("beauty.removeLawLine", formatDecimalValue(this.beautyRemoveWrinkles2));
             this.configData.put("beauty.skinColor", formatDecimalValue(this.beautySkinColor));
             this.configData.put("beauty.imageContrastAlpha", formatDecimalValue(this.beautyContrastRatio));
-            this.configData.put("stretch.forehead", formatDecimalValue(this.transForehead));
-            this.configData.put("stretch.enlargeEye", formatDecimalValue(this.transEye));
+            this.configData.put("beauty.lutClearAlpha", formatDecimalValue(this.beautyLutClearAlpha));
+            this.configData.put("beauty.lutFoundationAlpha", formatDecimalValue(this.beautyLutFoundationAlpah));
+            if (this.redCheekBarUpdate)
+            {
+              this.configData.put("beauty.faceFeatureRedCheek", formatDecimalValue(this.beautyFaceAlphaRedCheek));
+              updateBasicBeautyController(3);
+              this.redCheekBarUpdate = false;
+            }
+            if (this.lipsBarUpdate)
+            {
+              this.configData.put("beauty.faceFeatureLipsLut", formatDecimalValue(this.beautyFaceLipsLutAlpha));
+              updateBasicBeautyController(1);
+              this.lipsBarUpdate = false;
+            }
             this.configData.put("stretch.eyeDistance", formatDecimalValue(this.transEyeDistance));
             this.configData.put("stretch.eyeAngle", formatDecimalValue(this.transEyeAngle));
-            this.configData.put("stretch.mouthSize", formatDecimalValue(this.transMouthShape));
+            if (this.smoothVersion.equals("defaultBeautyV7.json"))
+            {
+              this.configData.put("basicV7.enlargeEye", formatDecimalValue(this.transEye));
+              this.configData.put("basicV7.forehead", formatDecimalValue(this.transForehead));
+              this.configData.put("basicV7.mouthSize", formatDecimalValue(this.transMouthShape));
+              this.configData.put("basicV7.cheekboneThin", formatDecimalValue(this.transCheekboneThin));
+              this.configData.put("basicV7.thinNose", formatDecimalValue(this.transNose));
+              this.configData.put("basicV7.thinFace", formatDecimalValue(this.transFaceThin));
+            }
+            else
+            {
+              this.configData.put("stretch.enlargeEye", formatDecimalValue(this.transEye));
+              this.configData.put("stretch.forehead", formatDecimalValue(this.transForehead));
+              this.configData.put("stretch.mouthSize", formatDecimalValue(this.transMouthShape));
+              this.configData.put("stretch.cheekboneThin", formatDecimalValue(this.transCheekboneThin));
+              this.configData.put("stretch.thinNose", formatDecimalValue(this.transNose));
+              this.configData.put("stretch.thinFace", formatDecimalValue(this.transFaceThin));
+            }
             this.configData.put("stretch.chin", formatDecimalValue(this.transChin));
-            this.configData.put("stretch.thinFace", formatDecimalValue(this.transFaceThin));
             this.configData.put("stretch.vFace", formatDecimalValue(this.transFaceV));
             this.configData.put("stretch.noseWing", formatDecimalValue(this.transNoseWing));
             this.configData.put("stretch.noseHeight", formatDecimalValue(this.transNosePosition));
             this.configData.put("stretch.mouthHeight", formatDecimalValue(this.transLipsThickness));
+            this.configData.put("stretch.mouthWidth", formatDecimalValue(this.transLipsWidth));
+            this.configData.put(this.selectedBasicTransType, formatDecimalValue(this.selectedBasicTransValue));
+            this.configData.put("liquefaction.shortFace", formatDecimalValue(this.transFaceShorten));
             localObject2 = this.selectedBasicTransType;
             if (localObject2 != null) {
               this.configData.put(localObject2, formatDecimalValue(this.selectedBasicTransValue));
             }
-            this.configData.put("stretch.shortFace", formatDecimalValue(this.transFaceShorten));
-            this.configData.put("stretch.thinNose", formatDecimalValue(this.transNose));
             this.beautyUpdated = false;
           }
-          if ((this.isAfterUpdateMaterial) || (this.lutUpdated))
+          if (this.mAiBeautyUpdated)
+          {
+            this.mAiBeautyUpdated = false;
+            this.configData.put("auto_beauty_switch", formatBooleanValue(this.mAiBeautyEnable));
+          }
+          if (this.faceThinTypeUpdated)
+          {
+            this.configData.put("basicV7.natureFace.enable", formatBooleanValue(this.faceNatureOpen));
+            this.configData.put("basicV7.maleGodFace.enable", formatBooleanValue(this.faceGodOpen));
+            this.configData.put("basicV7.godnessFace.enable", formatBooleanValue(this.faceGoddessOpen));
+            this.faceThinTypeUpdated = false;
+          }
+          if (this.factorSmallThinUpdated)
+          {
+            if (this.faceNatureOpen) {
+              this.configData.put("basicV7.natureFace", formatDecimalValue(this.douyinFactorThin));
+            } else if (this.faceGodOpen) {
+              this.configData.put("basicV7.maleGodFace", formatDecimalValue(this.douyinFactorThin));
+            } else if (this.faceGoddessOpen) {
+              this.configData.put("basicV7.godnessFace", formatDecimalValue(this.douyinFactorThin));
+            }
+            this.configData.put("basicV7.shortFace", formatDecimalValue(this.douyinFactorSmall));
+            this.factorSmallThinUpdated = false;
+          }
+          if (this.fenGeAlphaUpdated)
+          {
+            this.configData.put("basicV7.makeupAlpha", formatDecimalValue(this.fenGeAlpha));
+            this.fenGeAlphaUpdated = false;
+          }
+          if (this.faceFeatureUpdated)
+          {
+            this.configData.put("beauty.faceFeature.enable", formatBooleanValue(this.faceFeatureOpen));
+            this.faceFeatureUpdated = false;
+          }
+          if ((this.isAfterUpdateMaterial) || (this.lutPathUpdated))
           {
             i = this.useLutType;
             if (i == 1001)
@@ -514,12 +675,18 @@ public class AEFilterManager
                 switchAbilityInLightNode("materialMesh.enable", false);
               }
               localObject2 = this.mVideoMaterial;
+              if ((localObject2 != null) && (((VideoMaterial)localObject2).getId() != null) && (this.mVideoMaterial.getId().startsWith("video_diejia_")))
+              {
+                switchAbilityInLightNode("basicMesh.enable", true);
+                switchAbilityInLightNode("materialMesh.enable", true);
+              }
+              localObject2 = this.mVideoMaterial;
               if ((localObject2 != null) && (((VideoMaterial)localObject2).getLightAsset() != null)) {
                 switchAbilityInLightNode("beauty.faceFeature.enable", this.mVideoMaterial.getLightAsset().hasMakeup() ^ true);
               }
               this.isAfterUpdateMaterial = false;
             }
-            if (this.lutUpdated)
+            if (this.lutPathUpdated)
             {
               localObject3 = this.configData;
               localObject2 = this.mLutPath;
@@ -527,9 +694,13 @@ public class AEFilterManager
                 localObject1 = localObject2;
               }
               ((Map)localObject3).put("lut.src", localObject1);
-              this.configData.put("lut.intensity", formatDecimalValue((int)this.lookupLevel));
-              this.lutUpdated = false;
+              this.lutPathUpdated = false;
             }
+          }
+          if (this.lutAlphaUpdate)
+          {
+            this.configData.put("lut.intensity", formatDecimalValue((int)this.mIntensity));
+            this.lutAlphaUpdate = false;
           }
           if (this.customMaterialUpdated)
           {
@@ -548,8 +719,17 @@ public class AEFilterManager
             this.extraConfigData.clear();
             this.extraConfigUpdated = false;
           }
-          if (this.configData.size() > 0) {
+          localObject1 = this.configData;
+          if ((localObject1 instanceof HashMap)) {
+            ((Map)localObject1).remove(null);
+          }
+          if (this.configData.size() > 0)
+          {
             this.mLightNode.updateCameraConfigData(this.configData);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("[configFilters] configData: ");
+            ((StringBuilder)localObject1).append(this.configData.toString());
+            LogUtils.d("AEFilterManager", ((StringBuilder)localObject1).toString());
           }
           if (this.previewSizeUpdated)
           {
@@ -595,7 +775,7 @@ public class AEFilterManager
             this.mLightNode.setPresetData("makeup.strength", formatDecimalValue(this.cosmeticsAlpha));
           }
         }
-        label1839:
+        label2683:
         localObject1 = AEProfiler.getInstance();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("IAEProfiler-configFilters-");
@@ -707,8 +887,21 @@ public class AEFilterManager
   
   private void initAudioTrack()
   {
-    this.audioTrack = new ReportAudioTrack(3, 44100, 12, 2, AudioTrack.getMinBufferSize(44100, 12, 2) * 2, 1);
-    this.audioTrack.setStereoVolume(1.0F, 1.0F);
+    try
+    {
+      int i = AudioTrack.getMinBufferSize(44100, 12, 2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("minBufferSize is: ");
+      localStringBuilder.append(i);
+      LogUtils.d("AEFilterManager", localStringBuilder.toString());
+      this.audioTrack = new ReportAudioTrack(3, 44100, 12, 2, i * 2, 1);
+      this.audioTrack.setStereoVolume(1.0F, 1.0F);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtils.e("AEFilterManager", localException);
+    }
   }
   
   private void initBundlePathsForLightNode()
@@ -779,9 +972,9 @@ public class AEFilterManager
             {
               localObject2 = this.mAutoTestSmoothVersion;
               if (localObject2 != null) {
-                this.mLightNode = new LightNode((String)localObject2, this.isAIPreload);
+                this.mLightNode = new LightNode((String)localObject2, this.isBgmHidden, this.isRealtime, this.aiSwitchMap, this.needLowEndDownGrade);
               } else {
-                this.mLightNode = new LightNode(this.smoothVersion, this.isAIPreload);
+                this.mLightNode = new LightNode(this.smoothVersion, this.isBgmHidden, this.isRealtime, this.aiSwitchMap, this.needLowEndDownGrade);
               }
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("[BeautyVersion] ver:");
@@ -794,6 +987,7 @@ public class AEFilterManager
             this.mLightNode.initPreviewSize(this.width, this.height);
             this.mLightNode.setInputOrigin(this.lightInputOriention);
             this.mLightNode.apply();
+            checkLightBasicParam();
             this.mIsInited = true;
           }
         }
@@ -848,7 +1042,7 @@ public class AEFilterManager
   
   private void initWritePCMThread()
   {
-    if (this.writePCMThread == null)
+    if ((this.writePCMThread == null) && (!this.isBgmHidden))
     {
       this.writePCMThread = new Thread(new AEFilterManager.1(this));
       this.writePCMThread.start();
@@ -879,6 +1073,12 @@ public class AEFilterManager
     }
     LogUtils.e("AEFilterManager", "can not support because videoMaterial is null or lightAsset is null!");
     return false;
+  }
+  
+  private boolean isLightNodeAvailable()
+  {
+    LightNode localLightNode = this.mLightNode;
+    return (localLightNode != null) && (localLightNode.isApplied()) && (this.mLightNode.getAsset() != null);
   }
   
   private String mapWeatherCode(int paramInt)
@@ -1058,6 +1258,24 @@ public class AEFilterManager
     }
   }
   
+  private void updateBasicBeautyController(int paramInt)
+  {
+    if ((this.mLightNode.isApplied()) && (!this.mLightNode.getBeautyController().isStatus(paramInt))) {
+      this.mLightNode.getBeautyController().openBasicConfigMap(this.configData, paramInt);
+    }
+  }
+  
+  private void updateLightBasicParams(String paramString, LightBasicBeauty paramLightBasicBeauty)
+  {
+    if (paramLightBasicBeauty == null) {
+      return;
+    }
+    if (this.mLightBasicParams == null) {
+      this.mLightBasicParams = new ConcurrentHashMap();
+    }
+    this.mLightBasicParams.put(paramString, paramLightBasicBeauty);
+  }
+  
   private void updateTips() {}
   
   public void addMaskTouchPoint(PointF paramPointF, int paramInt)
@@ -1087,6 +1305,14 @@ public class AEFilterManager
   {
     VideoMaterial localVideoMaterial = this.mVideoMaterial;
     return (localVideoMaterial == null) || ((!localVideoMaterial.needBodySegment()) && (!this.mVideoMaterial.isSticker3DMaterial()) && (!this.mVideoMaterial.isFace3DMaterial()));
+  }
+  
+  public void checkMaterBasicBeauty()
+  {
+    LightNode localLightNode = this.mLightNode;
+    if ((localLightNode != null) && (localLightNode.isApplied())) {
+      this.mLightNode.getBeautyController().checkAssetMakeup();
+    }
   }
   
   public void cmShowSetKapuAnimation(String paramString, CameraController.CmShowCallback paramCmShowCallback)
@@ -1358,6 +1584,16 @@ public class AEFilterManager
     return this.faceAttrInLight;
   }
   
+  @Nullable
+  public LightAIDataWrapper getLightAIDataWrapper(String[] paramArrayOfString, int paramInt)
+  {
+    LightNode localLightNode = this.mLightNode;
+    if (localLightNode != null) {
+      return localLightNode.getLightAIDataWrapper(paramArrayOfString, paramInt);
+    }
+    return null;
+  }
+  
   public LightNode getLightNode()
   {
     return this.mLightNode;
@@ -1454,6 +1690,60 @@ public class AEFilterManager
   }
   
   public void onStickerStatusChange(boolean paramBoolean) {}
+  
+  public void openAndUpdateBasicLips(String paramString, int paramInt1, int paramInt2)
+  {
+    LightNode localLightNode = this.mLightNode;
+    if ((localLightNode != null) && (localLightNode.isApplied()))
+    {
+      this.mLightNode.getBeautyController().openAndUpdateBasicLips(paramString, paramInt1, paramInt2);
+      return;
+    }
+    updateLightBasicParams("basicLips", new LightBasicBeauty(paramString, paramInt1, paramInt2));
+  }
+  
+  public void openAndUpdateBasicMultiply(String paramString, int paramInt)
+  {
+    LightNode localLightNode = this.mLightNode;
+    if ((localLightNode != null) && (localLightNode.isApplied()))
+    {
+      this.mLightNode.getBeautyController().openAndUpdateBasicMultiply(paramString, paramInt);
+      return;
+    }
+    updateLightBasicParams("basicMultiply", new LightBasicBeauty(paramString, paramInt));
+  }
+  
+  public void openAndUpdateBasicSoftLight(String paramString, int paramInt)
+  {
+    LightNode localLightNode = this.mLightNode;
+    if ((localLightNode != null) && (localLightNode.isApplied()))
+    {
+      this.mLightNode.getBeautyController().openAndUpdateBasicSoftLight(paramString, paramInt);
+      return;
+    }
+    updateLightBasicParams("basicSoftLight", new LightBasicBeauty(paramString, paramInt));
+  }
+  
+  public void openBeautyEnable(boolean paramBoolean)
+  {
+    this.faceFeatureOpen = paramBoolean;
+    this.faceFeatureUpdated = true;
+  }
+  
+  public void openFaceThinEnable(String paramString)
+  {
+    this.faceNatureOpen = false;
+    this.faceGodOpen = false;
+    this.faceGoddessOpen = false;
+    if ("basicV7.natureFace.enable".equals(paramString)) {
+      this.faceNatureOpen = true;
+    } else if ("basicV7.maleGodFace.enable".equals(paramString)) {
+      this.faceGodOpen = true;
+    } else if ("basicV7.godnessFace.enable".equals(paramString)) {
+      this.faceGoddessOpen = true;
+    }
+    this.faceThinTypeUpdated = true;
+  }
   
   public void resetAdjustLut()
   {
@@ -1559,140 +1849,185 @@ public class AEFilterManager
     this.mAutoTestSourceType = paramInt;
   }
   
+  public void setBasicAbilityEnable(String paramString, boolean paramBoolean)
+  {
+    if (isLightNodeAvailable()) {
+      this.mLightNode.setPresetData(paramString, formatBooleanValue(paramBoolean));
+    }
+  }
+  
   public void setBeautyNormalAlpha(float paramFloat)
   {
     if (this.beautyNormalAlpha != paramFloat)
     {
       this.beautyNormalAlpha = paramFloat;
       this.beautyUpdated = true;
+      this.softFaceBarUpdate = true;
     }
   }
   
   public void setBeautyOrTransformLevel(BeautyRealConfig.TYPE paramTYPE, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[setBeautyOrTransformLevel] type:");
-    localStringBuilder.append(paramTYPE);
-    localStringBuilder.append(" leval:");
-    localStringBuilder.append(paramInt);
-    LogUtils.d("AEFilterManager", localStringBuilder.toString());
     switch (AEFilterManager.5.$SwitchMap$com$tencent$ttpic$openapi$config$BeautyRealConfig$TYPE[paramTYPE.ordinal()])
     {
     default: 
       break;
-    case 33: 
+    case 41: 
       this.thinBody = paramInt;
       break;
-    case 32: 
+    case 40: 
       this.thinShoulder = paramInt;
       break;
-    case 31: 
+    case 39: 
       this.slimWaist = paramInt;
       break;
-    case 30: 
+    case 38: 
       this.longLeg = paramInt;
       break;
-    case 29: 
+    case 37: 
       this.transBasic8 = paramInt;
       this.selectedBasicTransType = "liquefaction.basic8";
       this.selectedBasicTransValue = paramInt;
       break;
-    case 28: 
+    case 36: 
       this.transBasic7 = paramInt;
       this.selectedBasicTransType = "liquefaction.basic7";
       this.selectedBasicTransValue = paramInt;
       break;
-    case 27: 
+    case 35: 
       this.transBasic6 = paramInt;
       this.selectedBasicTransType = "liquefaction.basic6";
       this.selectedBasicTransValue = paramInt;
       break;
-    case 26: 
+    case 34: 
       this.transBasic5 = paramInt;
       this.selectedBasicTransType = "liquefaction.basic5";
       this.selectedBasicTransValue = paramInt;
       break;
-    case 25: 
+    case 33: 
       this.transBasic4 = paramInt;
       this.selectedBasicTransType = "liquefaction.basic4";
       this.selectedBasicTransValue = paramInt;
       break;
-    case 24: 
+    case 32: 
       this.transBasic3 = paramInt;
       this.selectedBasicTransType = "liquefaction.basic3";
       this.selectedBasicTransValue = paramInt;
       break;
-    case 23: 
+    case 31: 
       this.transFaceShorten = paramInt;
       break;
-    case 22: 
+    case 30: 
       this.transCheekboneThin = paramInt;
       break;
-    case 21: 
+    case 29: 
       this.transNose = paramInt;
       break;
-    case 20: 
+    case 28: 
       this.transLipsWidth = paramInt;
       break;
-    case 19: 
+    case 27: 
       this.transLipsThickness = paramInt;
       break;
-    case 18: 
+    case 26: 
       this.transNosePosition = paramInt;
       break;
-    case 17: 
+    case 25: 
       this.transNoseWing = paramInt;
       break;
-    case 16: 
+    case 24: 
       this.transFaceV = paramInt;
       break;
-    case 15: 
+    case 23: 
       this.transFaceThin = paramInt;
       break;
-    case 14: 
+    case 22: 
       this.transChin = paramInt;
       break;
-    case 13: 
+    case 21: 
       this.transMouthShape = paramInt;
       break;
-    case 12: 
+    case 20: 
       this.transEyeAngle = paramInt;
       break;
-    case 11: 
+    case 19: 
       this.transEyeDistance = paramInt;
       break;
-    case 10: 
+    case 18: 
       this.transEye = paramInt;
       break;
-    case 9: 
+    case 17: 
       this.transForehead = paramInt;
       break;
-    case 8: 
+    case 16: 
+      setLipsBarUpdate(paramInt);
+      break;
+    case 15: 
+      setRedCheekBarUpdate(paramInt);
+      break;
+    case 14: 
+      setBeautyNormalAlpha(paramInt);
+      break;
+    case 13: 
+      this.beautyLutFoundationAlpah = paramInt;
+      break;
+    case 12: 
+      this.beautyLutClearAlpha = paramInt;
+      break;
+    case 11: 
       this.beautyContrastRatio = paramInt;
       break;
-    case 7: 
-      this.beautySkinColor = (paramInt * 2 - 100);
+    case 10: 
+      this.beautySkinColor = paramInt;
       break;
-    case 6: 
+    case 9: 
       this.beautyRemoveWrinkles2 = paramInt;
       break;
-    case 5: 
+    case 8: 
       this.beautyRemoveWrinkles = paramInt;
       break;
-    case 4: 
+    case 7: 
       this.beautyRemovePounch = paramInt;
       break;
-    case 3: 
+    case 6: 
       this.beautyToothWhiten = paramInt;
       break;
-    case 2: 
+    case 5: 
       this.beautyEyeLighten = paramInt;
       break;
-    case 1: 
+    case 4: 
       setSmoothLevel(paramInt);
       this.beautySkinLevel = paramInt;
+      break;
+    case 3: 
+      this.douyinFactorSmall = paramInt;
+      this.factorSmallThinUpdated = true;
+      break;
+    case 2: 
+      this.douyinFactorThin = paramInt;
+      this.factorSmallThinUpdated = true;
+      break;
+    case 1: 
+      setExposureValue(paramInt);
     }
     this.beautyUpdated = true;
+  }
+  
+  public void setBgSwitchEvent(String paramString)
+  {
+    if (isLightNodeAvailable())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{\"bgSrc\":\"");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\"}");
+      paramString = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bgPath jsonStr= ");
+      localStringBuilder.append(paramString);
+      Log.d("AEFilterManager", localStringBuilder.toString());
+      this.mLightNode.setPresetData("event.script.switchBg", paramString);
+    }
   }
   
   public void setCamera2Timestamp(long paramLong)
@@ -1726,6 +2061,12 @@ public class AEFilterManager
     this.customMaterialUpdated = true;
   }
   
+  public void setExposureValue(int paramInt)
+  {
+    this.exposureValue = paramInt;
+    this.smoothUpdated = true;
+  }
+  
   public void setExternalRenderCallback(ExternalRenderCallback paramExternalRenderCallback)
   {
     this.externalRenderCallback = paramExternalRenderCallback;
@@ -1755,6 +2096,22 @@ public class AEFilterManager
   public void setIsAfterUpdateMaterial(boolean paramBoolean)
   {
     this.isAfterUpdateMaterial = paramBoolean;
+  }
+  
+  public void setLightAIDataListener(LightAIDataListener paramLightAIDataListener)
+  {
+    LightNode localLightNode = this.mLightNode;
+    if (localLightNode != null) {
+      localLightNode.setLightAIDataListener(paramLightAIDataListener);
+    }
+  }
+  
+  public void setLightAIDataWrapper(LightAIDataWrapper paramLightAIDataWrapper)
+  {
+    LightNode localLightNode = this.mLightNode;
+    if (localLightNode != null) {
+      localLightNode.setLightAIDataWrapper(paramLightAIDataWrapper);
+    }
   }
   
   public void setLightBundle(String paramString1, String paramString2)
@@ -1792,8 +2149,7 @@ public class AEFilterManager
   
   public void setLightNodePresetData(String paramString1, String paramString2)
   {
-    LightNode localLightNode = this.mLightNode;
-    if ((localLightNode != null) && (localLightNode.isApplied()) && (this.mLightNode.getAsset() != null)) {
+    if (isLightNodeAvailable()) {
       this.mLightNode.setPresetData(paramString1, paramString2);
     }
   }
@@ -1804,9 +2160,12 @@ public class AEFilterManager
     this.tipsListenerUpdated = true;
   }
   
-  public void setLookupLevel(float paramFloat)
+  public void setLipsBarUpdate(int paramInt)
   {
-    this.lookupLevel = paramFloat;
+    if (paramInt != this.beautyFaceLipsLutAlpha) {
+      this.lipsBarUpdate = true;
+    }
+    this.beautyFaceLipsLutAlpha = paramInt;
   }
   
   public void setNeedPictureTest(boolean paramBoolean)
@@ -1842,6 +2201,11 @@ public class AEFilterManager
     this.flipBeforeRenderUpdated = true;
   }
   
+  public void setPresetData(String paramString1, String paramString2)
+  {
+    this.mLightNodeControllerPresetData.put(paramString1, paramString2);
+  }
+  
   public void setPtFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
     this.ptFaceAttr = paramPTFaceAttr;
@@ -1851,6 +2215,14 @@ public class AEFilterManager
       return;
     }
     localLightNode.setPtFaceAttr(paramPTFaceAttr);
+  }
+  
+  public void setRedCheekBarUpdate(int paramInt)
+  {
+    if (paramInt != this.beautyFaceAlphaRedCheek) {
+      this.redCheekBarUpdate = true;
+    }
+    this.beautyFaceAlphaRedCheek = paramInt;
   }
   
   public void setRotationMatrix(float[] paramArrayOfFloat)
@@ -1990,6 +2362,11 @@ public class AEFilterManager
     }
   }
   
+  public void setmIntensity(float paramFloat)
+  {
+    this.mIntensity = paramFloat;
+  }
+  
   public void stickerReset(boolean paramBoolean)
   {
     LightNode localLightNode = this.mLightNode;
@@ -2001,6 +2378,20 @@ public class AEFilterManager
   public void supportMultiThreads(boolean paramBoolean)
   {
     com.tencent.ttpic.openapi.filter.GaussianMaskFilter.reuseFilter = paramBoolean ^ true;
+  }
+  
+  public void switchAIAbility(@LightConstants.AISwitchType String paramString1, String paramString2)
+  {
+    if (this.filterInLightNodeMap == null) {
+      this.filterInLightNodeMap = new HashMap();
+    }
+    this.filterInLightNodeMap.put(paramString1, paramString2);
+  }
+  
+  public void switchAIBeauty(boolean paramBoolean)
+  {
+    this.mAiBeautyEnable = paramBoolean;
+    this.mAiBeautyUpdated = true;
   }
   
   public void switchAbilityInLightNode(String paramString, boolean paramBoolean)
@@ -2060,14 +2451,33 @@ public class AEFilterManager
     }
   }
   
+  public void updateFenGeAlpha(int paramInt)
+  {
+    this.fenGeAlpha = paramInt;
+    this.fenGeAlphaUpdated = true;
+  }
+  
+  public void updateLutAlpha(float paramFloat)
+  {
+    this.mIntensity = paramFloat;
+    this.lutAlphaUpdate = true;
+  }
+  
   public void updateLutGL(String paramString)
+  {
+    updateLutGL(paramString, 100.0F);
+  }
+  
+  public void updateLutGL(String paramString, float paramFloat)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[updateLutGL] lut = ");
     localStringBuilder.append(paramString);
     LogUtils.d("AEFilterManager", localStringBuilder.toString());
     this.mLutPath = paramString;
-    this.lutUpdated = true;
+    this.mIntensity = paramFloat;
+    this.lutPathUpdated = true;
+    this.lutAlphaUpdate = true;
     paramString = this.mLightNode;
     if ((paramString != null) && (paramString.getAsset() != null))
     {
@@ -2092,6 +2502,7 @@ public class AEFilterManager
     {
       localVideoMaterial = VideoMaterial.loadLightAsset(LightNode.getEmptyMaterialPath());
     }
+    this.mAssetUpdate = true;
     if (!isDeviceSupportMaterial(localVideoMaterial))
     {
       paramVideoMaterial = this.stickerInnerLutFilterListener;

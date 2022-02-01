@@ -51,7 +51,7 @@ class PreloadingFragment$3
           }
         }
         if ((((MiniAppInfo)localObject2).verType != 3) && (((MiniAppInfo)localObject2).verType != 1)) {
-          paramJSONObject.forceReroad = 3;
+          paramJSONObject.launchParam.forceReload = 3;
         }
         PreloadingFragment.access$200(this.this$0, paramJSONObject);
         if (PreloadingFragment.access$300(this.this$0) != null)
@@ -94,7 +94,7 @@ class PreloadingFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.3
  * JD-Core Version:    0.7.0.1
  */

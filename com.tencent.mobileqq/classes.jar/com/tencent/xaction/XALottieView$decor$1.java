@@ -34,13 +34,13 @@ public final class XALottieView$decor$1
   
   public void a()
   {
-    Object localObject1 = a();
+    Object localObject1 = d();
     if (!(localObject1 instanceof XAEngine))
     {
       QLog.a("XALottieView", 1, "xaEngine is error", null);
       return;
     }
-    Object localObject2 = a();
+    Object localObject2 = e();
     if (localObject2 == null)
     {
       QLog.a("XALottieView", 1, "data is null", null);
@@ -57,7 +57,7 @@ public final class XALottieView$decor$1
         localObjectRef.element = ((String)null);
         localObject3 = ((HashMap)localObject3).get("imagepath");
         if ((localObject3 instanceof String)) {
-          localObjectRef.element = FilePathUtil.a.a((String)localObject3, "$PARENT_ROOT", a());
+          localObjectRef.element = FilePathUtil.a.a((String)localObject3, "$PARENT_ROOT", d());
         }
         if ((String)localObjectRef.element != null) {
           this.a.setImageAssetsFolder((String)localObjectRef.element);
@@ -71,10 +71,10 @@ public final class XALottieView$decor$1
         XAEngine.Companion.a().execute((Runnable)new XALottieView.decor.1.bindData.1(this, (String)localObject2, localObjectRef, (IXAEngine)localObject1));
         this.a.setImageAssetDelegate((ImageAssetDelegate)new XALottieView.AssetDelegate());
         localObject1 = XAEmptyView.a;
-        localObject2 = a();
+        localObject2 = d();
         if (localObject2 != null)
         {
-          ((XAEmptyView.Companion)localObject1).b((XAEngine)localObject2, (IView)this.a, a());
+          ((XAEmptyView.Companion)localObject1).b((XAEngine)localObject2, (IView)this.a, e());
           return;
         }
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.xaction.impl.XAEngine");
@@ -84,19 +84,19 @@ public final class XALottieView$decor$1
     QLog.a("XALottieView", 1, "extsMap is empty", null);
   }
   
-  public void init(@NotNull IXAEngine paramIXAEngine, @Nullable ViewGroup paramViewGroup)
+  public void a(@NotNull IXAEngine paramIXAEngine, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramIXAEngine, "engine");
-    super.init(paramIXAEngine, paramViewGroup);
-    if (XALottieView.a.a() == null) {
-      XALottieView.a.a(new MQLruCache((int)(Runtime.getRuntime().maxMemory() / 1024) / 8));
+    super.a(paramIXAEngine, paramViewGroup);
+    if (XALottieView.Companion.a() == null) {
+      XALottieView.Companion.a(new MQLruCache((int)(Runtime.getRuntime().maxMemory() / 1024) / 8));
     }
     QLog.a("XALottieView", 2, "XALottieView init");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.XALottieView.decor.1
  * JD-Core Version:    0.7.0.1
  */

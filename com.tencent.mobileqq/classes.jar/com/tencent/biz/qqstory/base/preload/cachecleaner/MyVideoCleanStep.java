@@ -11,15 +11,15 @@ import java.util.List;
 public class MyVideoCleanStep
   extends AbsCleanStep
 {
-  protected int a;
-  protected int b;
+  protected int c;
+  protected int d;
   
   public MyVideoCleanStep(@NonNull String[] paramArrayOfString)
   {
     super(paramArrayOfString);
     paramArrayOfString = (StoryConfigManager)SuperManager.a(10);
-    this.jdField_a_of_type_Int = ((Integer)paramArrayOfString.b("StoryMyCacheCountMax", Integer.valueOf(200))).intValue();
-    this.b = ((Integer)paramArrayOfString.b("StoryMyCacheCountNormal", Integer.valueOf(100))).intValue();
+    this.c = ((Integer)paramArrayOfString.c("StoryMyCacheCountMax", Integer.valueOf(200))).intValue();
+    this.d = ((Integer)paramArrayOfString.c("StoryMyCacheCountNormal", Integer.valueOf(100))).intValue();
   }
   
   protected void a(String[] paramArrayOfString, AbsCleanStep.CleanContext paramCleanContext)
@@ -29,10 +29,10 @@ public class MyVideoCleanStep
     while (i < m)
     {
       String str = paramArrayOfString[i];
-      if (!a(str, this.jdField_a_of_type_Int))
+      if (!a(str, this.c))
       {
         File localFile = new File(str);
-        double d1 = a(localFile);
+        double d1 = b(localFile);
         File[] arrayOfFile = localFile.listFiles();
         ArrayList localArrayList = new ArrayList();
         int k = arrayOfFile.length;
@@ -58,16 +58,16 @@ public class MyVideoCleanStep
               localInterruptedException.printStackTrace();
             }
           }
-          if ((j % 20 == 0) && (a(str, this.b))) {
+          if ((j % 20 == 0) && (a(str, this.d))) {
             return;
           }
           a(((MyVideoCleanStep.FileInfo)localArrayList.get(j)).a);
           k += 1;
           j += 1;
         }
-        double d2 = a(localFile);
-        paramCleanContext.jdField_a_of_type_Double += d1 - d2;
-        paramCleanContext.jdField_a_of_type_Int += k;
+        double d2 = b(localFile);
+        paramCleanContext.d += d1 - d2;
+        paramCleanContext.c += k;
       }
       i += 1;
     }
@@ -84,7 +84,7 @@ public class MyVideoCleanStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class ConferenceFlyTicketActivity$1
   
   public void run()
   {
-    QQToast.a(this.this$0, this.a, 0).b(this.this$0.getTitleBarHeight());
+    QQToast.makeText(this.this$0, this.a, 0).show(this.this$0.getTitleBarHeight());
     this.this$0.finish();
   }
 }

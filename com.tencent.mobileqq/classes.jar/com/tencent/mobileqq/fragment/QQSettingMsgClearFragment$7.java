@@ -11,19 +11,19 @@ class QQSettingMsgClearFragment$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
       localOnClickListener.onClick(paramDialogInterface, paramInt);
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    paramDialogInterface = this.b;
     if ((paramDialogInterface != null) && (paramDialogInterface.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      this.b.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment.7
  * JD-Core Version:    0.7.0.1
  */

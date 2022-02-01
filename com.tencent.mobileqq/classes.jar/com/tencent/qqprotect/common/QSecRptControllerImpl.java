@@ -18,36 +18,29 @@ public class QSecRptControllerImpl
   extends QSecRptController
   implements Handler.Callback
 {
-  private static volatile QSecRptController jdField_a_of_type_ComTencentQqprotectCommonQSecRptController;
-  private final long jdField_a_of_type_Long = 300000L;
-  private QSecRptControllerImpl.ReportRunnable jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable = null;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-  private final Vector<QSecRptItem> jdField_a_of_type_JavaUtilVector = new Vector();
+  private static volatile QSecRptController a;
+  private MqqWeakReferenceHandler b = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+  private final Vector<QSecRptItem> c = new Vector();
+  private QSecRptControllerImpl.ReportRunnable d = null;
+  private final long e = 300000L;
   
   private QSecRptControllerImpl()
   {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(12315, 300000L);
+    this.b.sendEmptyMessageDelayed(12315, 300000L);
   }
   
   public static QSecRptController a()
   {
-    if (jdField_a_of_type_ComTencentQqprotectCommonQSecRptController == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqprotectCommonQSecRptController == null) {
-          jdField_a_of_type_ComTencentQqprotectCommonQSecRptController = new QSecRptControllerImpl();
+        if (a == null) {
+          a = new QSecRptControllerImpl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqprotectCommonQSecRptController;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(12315);
-    b();
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
+    return a;
   }
   
   private void a(SafeReport.ReqBody paramReqBody)
@@ -63,14 +56,14 @@ public class QSecRptControllerImpl
   
   private void a(QSecRptItem paramQSecRptItem)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilVector.add(paramQSecRptItem);
+      this.c.add(paramQSecRptItem);
       if (QLog.isColorLevel()) {
-        QLog.d("QSRPT", 2, String.format("add report: totally %d items in cache", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size()) }));
+        QLog.d("QSRPT", 2, String.format("add report: totally %d items in cache", new Object[] { Integer.valueOf(this.c.size()) }));
       }
-      if ((paramQSecRptItem.c == 2) || (this.jdField_a_of_type_JavaUtilVector.size() >= 40)) {
-        b();
+      if ((paramQSecRptItem.d == 2) || (this.c.size() >= 40)) {
+        c();
       }
       return;
     }
@@ -78,16 +71,23 @@ public class QSecRptControllerImpl
   
   private void b()
   {
+    this.b.removeMessages(12315);
+    c();
+    this.b.sendEmptyMessageDelayed(12315, this.e);
+  }
+  
+  private void c()
+  {
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable = new QSecRptControllerImpl.ReportRunnable(this, null);
-    if (this.jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable != null) {
-      synchronized (this.jdField_a_of_type_JavaUtilVector)
+    this.d = new QSecRptControllerImpl.ReportRunnable(this, null);
+    if (this.d != null) {
+      synchronized (this.c)
       {
-        QSecRptControllerImpl.ReportRunnable.a(this.jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable).addAll(this.jdField_a_of_type_JavaUtilVector);
-        this.jdField_a_of_type_JavaUtilVector.removeAllElements();
-        ThreadManager.post(this.jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable, 5, null, true);
+        QSecRptControllerImpl.ReportRunnable.a(this.d).addAll(this.c);
+        this.c.removeAllElements();
+        ThreadManager.post(this.d, 5, null, true);
         return;
       }
     }
@@ -96,11 +96,11 @@ public class QSecRptControllerImpl
   protected void b(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     QSecRptItem localQSecRptItem = new QSecRptItem();
-    localQSecRptItem.jdField_a_of_type_Int = paramInt1;
+    localQSecRptItem.a = paramInt1;
     localQSecRptItem.b = paramInt2;
-    localQSecRptItem.jdField_a_of_type_JavaLangString = paramString;
-    localQSecRptItem.c = paramInt3;
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(12316, localQSecRptItem).sendToTarget();
+    localQSecRptItem.c = paramString;
+    localQSecRptItem.d = paramInt3;
+    this.b.obtainMessage(12316, localQSecRptItem).sendToTarget();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -108,14 +108,14 @@ public class QSecRptControllerImpl
     if (paramMessage.what == 12316) {
       a((QSecRptItem)paramMessage.obj);
     } else if (paramMessage.what == 12315) {
-      a();
+      b();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.common.QSecRptControllerImpl
  * JD-Core Version:    0.7.0.1
  */

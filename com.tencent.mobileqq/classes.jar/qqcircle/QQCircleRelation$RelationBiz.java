@@ -12,6 +12,7 @@ public final class QQCircleRelation$RelationBiz
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field certification = PBField.initInt32(0);
+  public final PBStringField logo = PBField.initString("");
   public final PBStringField nick = PBField.initString("");
   public final PBInt32Field qqRelation = PBField.initInt32(0);
   public final PBStringField sign = PBField.initString("");
@@ -20,12 +21,12 @@ public final class QQCircleRelation$RelationBiz
   static
   {
     Integer localInteger = Integer.valueOf(0);
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40 }, new String[] { "timestamp", "nick", "sign", "qqRelation", "certification" }, new Object[] { Long.valueOf(0L), "", "", localInteger, localInteger }, RelationBiz.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50 }, new String[] { "timestamp", "nick", "sign", "qqRelation", "certification", "logo" }, new Object[] { Long.valueOf(0L), "", "", localInteger, localInteger, "" }, RelationBiz.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.QQCircleRelation.RelationBiz
  * JD-Core Version:    0.7.0.1
  */

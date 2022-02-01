@@ -11,15 +11,15 @@ class FaceListPage$2$1
   
   public void run()
   {
-    FaceListPage.a(this.a.this$0).setVisibility(4);
     FaceListPage.b(this.a.this$0).setVisibility(4);
-    FaceListPage.a(this.a.this$0).setVisibility(0);
-    FaceListPage.a(this.a.this$0).notifyDataSetChanged();
+    FaceListPage.c(this.a.this$0).setVisibility(4);
+    FaceListPage.d(this.a.this$0).setVisibility(0);
+    FaceListPage.e(this.a.this$0).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.FaceListPage.2.1
  * JD-Core Version:    0.7.0.1
  */

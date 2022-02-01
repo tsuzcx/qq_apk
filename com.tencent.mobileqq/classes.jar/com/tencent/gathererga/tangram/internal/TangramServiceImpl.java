@@ -24,52 +24,52 @@ import java.util.Set;
 public class TangramServiceImpl
   implements TangramService
 {
-  private static volatile TangramServiceImpl jdField_a_of_type_ComTencentGatherergaTangramInternalTangramServiceImpl;
-  private TangramGlobalSetting jdField_a_of_type_ComTencentGatherergaTangramTangramGlobalSetting;
-  private TangramStorage jdField_a_of_type_ComTencentGatherergaTangramInternalTangramStorage;
-  private Map<Integer, TangramIDSetting> jdField_a_of_type_JavaUtilMap;
+  private static volatile TangramServiceImpl d;
+  private TangramGlobalSetting a;
+  private Map<Integer, TangramIDSetting> b;
+  private TangramStorage c;
   
   private TangramServiceImpl(Context paramContext, TangramGlobalSetting paramTangramGlobalSetting)
   {
     if (!a(paramTangramGlobalSetting)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentGatherergaTangramTangramGlobalSetting = paramTangramGlobalSetting;
-    this.jdField_a_of_type_JavaUtilMap = paramTangramGlobalSetting.a();
+    this.a = paramTangramGlobalSetting;
+    this.b = paramTangramGlobalSetting.d();
     HashMap localHashMap = new HashMap();
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject = this.b;
     if ((localObject != null) && (!((Map)localObject).isEmpty()))
     {
-      localObject = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      localObject = this.b.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         int i = ((Integer)((Iterator)localObject).next()).intValue();
-        localHashMap.put(Integer.valueOf(i), Boolean.valueOf(((TangramIDSetting)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i))).a()));
+        localHashMap.put(Integer.valueOf(i), Boolean.valueOf(((TangramIDSetting)this.b.get(Integer.valueOf(i))).a()));
       }
     }
-    this.jdField_a_of_type_ComTencentGatherergaTangramInternalTangramStorage = new TangramStorage();
-    GathererSDK.a(GathererConfig.a(paramContext, 1).a(paramTangramGlobalSetting.a()).b(paramTangramGlobalSetting.b()).a(localHashMap).c(paramTangramGlobalSetting.c()).a(paramTangramGlobalSetting.a()).a(paramTangramGlobalSetting.a()).a(this.jdField_a_of_type_ComTencentGatherergaTangramInternalTangramStorage).a(paramTangramGlobalSetting.a()).a(paramTangramGlobalSetting.a()).a());
+    this.c = new TangramStorage();
+    GathererSDK.a(GathererConfig.a(paramContext, 1).a(paramTangramGlobalSetting.a()).b(paramTangramGlobalSetting.b()).a(localHashMap).c(paramTangramGlobalSetting.e()).a(paramTangramGlobalSetting.f()).a(paramTangramGlobalSetting.c()).a(this.c).a(paramTangramGlobalSetting.g()).a(paramTangramGlobalSetting.h()).a());
   }
   
   private TangramResult a(int paramInt, TangramIDSetting paramTangramIDSetting, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1) {
-      localObject = paramTangramIDSetting.a();
-    } else if (paramBoolean2) {
-      localObject = ProviderMethodPriorityImpl.a().a().c().a();
-    } else {
       localObject = paramTangramIDSetting.b();
+    } else if (paramBoolean2) {
+      localObject = ProviderMethodPriorityImpl.g().a().c().g();
+    } else {
+      localObject = paramTangramIDSetting.c();
     }
     if (paramInt == 402) {
-      paramTangramIDSetting = (ProviderResult)GathererCoreContext.a(paramInt, new Object[] { localObject, paramTangramIDSetting.a().a() });
+      paramTangramIDSetting = (ProviderResult)GathererCoreContext.a(paramInt, new Object[] { localObject, paramTangramIDSetting.d().b() });
     } else if (paramInt == 305) {
-      paramTangramIDSetting = (ProviderResult)GathererCoreContext.a(paramInt, new Object[] { localObject, Boolean.valueOf(paramTangramIDSetting.a().a()) });
+      paramTangramIDSetting = (ProviderResult)GathererCoreContext.a(paramInt, new Object[] { localObject, Boolean.valueOf(paramTangramIDSetting.d().a()) });
     } else {
       paramTangramIDSetting = (ProviderResult)GathererCoreContext.a(paramInt, new Object[] { localObject });
     }
     Object localObject = (AdDeviceInfoService)GathererSDK.a(AdDeviceInfoService.class);
-    if ((paramTangramIDSetting != null) && (paramTangramIDSetting.a() != null)) {
-      localObject = ((AdDeviceInfoService)localObject).a(Integer.valueOf(paramInt), String.valueOf(paramTangramIDSetting.a()));
+    if ((paramTangramIDSetting != null) && (paramTangramIDSetting.b() != null)) {
+      localObject = ((AdDeviceInfoService)localObject).a(Integer.valueOf(paramInt), String.valueOf(paramTangramIDSetting.b()));
     } else {
       localObject = null;
     }
@@ -78,48 +78,48 @@ public class TangramServiceImpl
   
   public static TangramServiceImpl a(Context paramContext, TangramGlobalSetting paramTangramGlobalSetting)
   {
-    if (jdField_a_of_type_ComTencentGatherergaTangramInternalTangramServiceImpl == null) {
+    if (d == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentGatherergaTangramInternalTangramServiceImpl == null) {
-          jdField_a_of_type_ComTencentGatherergaTangramInternalTangramServiceImpl = new TangramServiceImpl(paramContext, paramTangramGlobalSetting);
+        if (d == null) {
+          d = new TangramServiceImpl(paramContext, paramTangramGlobalSetting);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentGatherergaTangramInternalTangramServiceImpl;
+    return d;
   }
   
   private Map<Integer, TangramResult> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    HashMap localHashMap1 = this.jdField_a_of_type_ComTencentGatherergaTangramTangramGlobalSetting.a();
-    HashMap localHashMap2 = new HashMap();
-    if (localHashMap1 != null)
+    HashMap localHashMap = new HashMap();
+    Object localObject = this.b;
+    if (localObject != null)
     {
-      if (localHashMap1.size() == 0) {
-        return localHashMap2;
+      if (((Map)localObject).size() == 0) {
+        return localHashMap;
       }
-      Iterator localIterator = localHashMap1.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject = this.b.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        int i = ((Integer)localIterator.next()).intValue();
-        TangramIDSetting localTangramIDSetting = (TangramIDSetting)localHashMap1.get(Integer.valueOf(i));
-        if ((localTangramIDSetting != null) && ((!paramBoolean1) || (localTangramIDSetting.a() != null))) {
+        int i = ((Integer)((Iterator)localObject).next()).intValue();
+        TangramIDSetting localTangramIDSetting = (TangramIDSetting)this.b.get(Integer.valueOf(i));
+        if ((localTangramIDSetting != null) && ((!paramBoolean1) || (localTangramIDSetting.b() != null))) {
           if ((!paramBoolean1) && ((i == 1) || (i == 2))) {
-            localHashMap2.put(Integer.valueOf(i), a(i, localTangramIDSetting, false, true));
+            localHashMap.put(Integer.valueOf(i), a(i, localTangramIDSetting, false, true));
           } else {
-            localHashMap2.put(Integer.valueOf(i), a(i, localTangramIDSetting, paramBoolean1, paramBoolean2));
+            localHashMap.put(Integer.valueOf(i), a(i, localTangramIDSetting, paramBoolean1, paramBoolean2));
           }
         }
       }
-      GathererExecutor.a().execute(new TangramServiceImpl.2(this));
+      GathererExecutor.a().a(new TangramServiceImpl.2(this));
     }
-    return localHashMap2;
+    return localHashMap;
   }
   
   private void a()
   {
-    GathererExecutor.a().execute(new TangramServiceImpl.1(this));
+    GathererExecutor.a().a(new TangramServiceImpl.1(this));
   }
   
   private boolean a(TangramGlobalSetting paramTangramGlobalSetting)
@@ -133,10 +133,27 @@ public class TangramServiceImpl
     a();
     return localMap;
   }
+  
+  public void a(Map<Integer, TangramIDSetting> paramMap)
+  {
+    this.b = paramMap;
+    paramMap = new HashMap();
+    Object localObject = this.b;
+    if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    {
+      localObject = this.b.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        int i = ((Integer)((Iterator)localObject).next()).intValue();
+        paramMap.put(Integer.valueOf(i), Boolean.valueOf(((TangramIDSetting)this.b.get(Integer.valueOf(i))).a()));
+      }
+    }
+    GathererSDK.a(paramMap);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.tangram.internal.TangramServiceImpl
  * JD-Core Version:    0.7.0.1
  */

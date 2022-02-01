@@ -9,15 +9,15 @@ class VideoFeedsAdapter$9
   
   public void a(long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAdapter$AdapterEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsAdapter$AdapterEventListener.a(paramLong);
+    if (this.a.a != null) {
+      this.a.a.a(paramLong);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIVideoFeedsHardAdBarManager.a(paramLong);
+    this.a.w.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAdapter.9
  * JD-Core Version:    0.7.0.1
  */

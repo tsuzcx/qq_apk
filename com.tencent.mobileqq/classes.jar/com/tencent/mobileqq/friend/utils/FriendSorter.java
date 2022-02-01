@@ -65,16 +65,16 @@ public class FriendSorter
     return paramLinkedList;
   }
   
-  public static void a(Friends paramFriends)
+  public static void b(Friends paramFriends)
   {
     String str = a(paramFriends);
-    paramFriends.mCompareSpell = ChnToSpell.a(str, 1);
+    paramFriends.mCompareSpell = ChnToSpell.b(str, 1);
     paramFriends.mComparePartInt = a(str, paramFriends.mCompareSpell);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.utils.FriendSorter
  * JD-Core Version:    0.7.0.1
  */

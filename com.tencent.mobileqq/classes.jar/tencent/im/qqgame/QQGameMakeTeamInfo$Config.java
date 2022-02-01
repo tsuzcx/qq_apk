@@ -21,7 +21,7 @@ public final class QQGameMakeTeamInfo$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.qqgame.QQGameMakeTeamInfo.Config
  * JD-Core Version:    0.7.0.1
  */

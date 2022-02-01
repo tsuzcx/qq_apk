@@ -19,6 +19,9 @@ import org.json.JSONObject;
 public class VCell
   extends VDiv
 {
+  public static final int NOFITY_TYPE_ADD = 3;
+  public static final int NOFITY_TYPE_REMOVE = 2;
+  public static final int NOFITY_TYPE_UPDATE = 1;
   public static final String TAG = "VCell";
   private ViewGroup mRealView;
   private boolean needFresh = false;
@@ -106,7 +109,7 @@ public class VCell
     this.needFresh = paramBoolean;
   }
   
-  public void notifyChange()
+  public void notifyChange(int paramInt)
   {
     Object localObject = ViolaSDKManager.getInstance().getDomManager().getDomContext(getInstance().getInstanceId());
     if (localObject != null)
@@ -117,10 +120,10 @@ public class VCell
       }
       this.needFresh = true;
     }
-    if ((getParent() instanceof VRecyclerList)) {
+    if (((getParent() instanceof VRecyclerList)) && (paramInt != 2)) {
       ((VRecyclerList)getParent()).judgeIfNeedAppearEvent(this);
     }
-    super.notifyChange();
+    super.notifyChange(paramInt);
   }
   
   public void notifyChange(int paramInt, String paramString)
@@ -138,10 +141,10 @@ public class VCell
       }
       this.needFresh = true;
     }
-    if ((getParent() instanceof VRecyclerList)) {
+    if (((getParent() instanceof VRecyclerList)) && (((VRecyclerList)getParent()).isUpdateCheckEnable())) {
       ((VRecyclerList)getParent()).judgeIfNeedAppearEvent(this);
     }
-    super.notifyChange();
+    super.notifyChange(paramInt);
   }
   
   public void setHostView(VFrameLayout paramVFrameLayout)
@@ -151,7 +154,7 @@ public class VCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VCell
  * JD-Core Version:    0.7.0.1
  */

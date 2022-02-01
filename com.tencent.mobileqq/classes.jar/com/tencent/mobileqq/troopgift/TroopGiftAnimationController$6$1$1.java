@@ -9,14 +9,14 @@ class TroopGiftAnimationController$6$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$6$1.a.this$0.a instanceof TroopGiftToPersonalSurfaceView)) {
-      ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$6$1.a.this$0.a).setSendHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if ((this.b.a.this$0.a instanceof TroopGiftToPersonalSurfaceView)) {
+      ((TroopGiftToPersonalSurfaceView)this.b.a.this$0.a).setSendHeadBitmap(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.6.1.1
  * JD-Core Version:    0.7.0.1
  */

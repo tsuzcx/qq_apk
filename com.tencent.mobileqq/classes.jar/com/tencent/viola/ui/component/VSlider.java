@@ -201,8 +201,11 @@ public class VSlider
       updateStyle(this.mDomObj.getStyle(), false);
       updateAttrs(this.mDomObj.getAttributes());
       updateExtra(this.mDomObj.getExtra());
-      setBackgroundDrawable();
-      checkClipChild();
+      if (!ViolaUtils.isBindDataOpmOpen())
+      {
+        setBackgroundDrawable();
+        checkClipChild();
+      }
       checkDisAppearEventFromDomobject();
       updateLifeCycle("mounted");
     }
@@ -333,7 +336,7 @@ public class VSlider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VSlider
  * JD-Core Version:    0.7.0.1
  */

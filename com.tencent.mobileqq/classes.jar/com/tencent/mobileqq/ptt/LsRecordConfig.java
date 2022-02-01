@@ -20,7 +20,7 @@ public abstract class LsRecordConfig
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public static boolean b(QQAppInterface paramQQAppInterface)
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -29,7 +29,7 @@ public abstract class LsRecordConfig
     return localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("UserGuide", false) ^ true;
   }
   
-  public static void b(QQAppInterface paramQQAppInterface)
+  public static void c(QQAppInterface paramQQAppInterface)
   {
     long l = System.currentTimeMillis();
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
@@ -46,7 +46,7 @@ public abstract class LsRecordConfig
     }
   }
   
-  public static boolean b(QQAppInterface paramQQAppInterface)
+  public static boolean d(QQAppInterface paramQQAppInterface)
   {
     long l = System.currentTimeMillis();
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
@@ -63,7 +63,7 @@ public abstract class LsRecordConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LsRecordConfig
  * JD-Core Version:    0.7.0.1
  */

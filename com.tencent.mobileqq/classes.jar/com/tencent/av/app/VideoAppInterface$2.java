@@ -18,7 +18,7 @@ class VideoAppInterface$2
     boolean bool = ImmersiveUtils.supportStatusBarDarkMode();
     long l2 = System.currentTimeMillis();
     VideoAppInterface.a(this.this$0, null);
-    String str = VideoAppInterface.c();
+    String str = VideoAppInterface.C();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("supportStatusBarDarkMode, support[");
     localStringBuilder.append(bool);

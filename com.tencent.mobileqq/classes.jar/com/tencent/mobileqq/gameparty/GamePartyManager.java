@@ -50,47 +50,45 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.MsgBody;
 public class GamePartyManager
   implements ArkAppCenterCheckEvent.Callback, Manager
 {
-  static int jdField_a_of_type_Int = 3600;
-  public long a;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  protected Handler a;
-  private GamePartyNotifyCenter jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter = null;
-  public String a;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  public Vector<GamePartyManager.Session> a;
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  public long b;
+  static int a = 3600;
   public String b;
   public int c;
-  private String c;
   public int d;
-  public int e;
-  private int f;
+  public long e;
+  public int f;
+  public long g;
+  public String h;
+  public int i;
+  public Vector<GamePartyManager.Session> j = new Vector();
+  protected Handler k = new GamePartyManager.1(this, Looper.getMainLooper());
+  private WeakReference<QQAppInterface> l;
+  private SharedPreferences m;
+  private boolean n;
+  private int o;
+  private String p;
+  private GamePartyNotifyCenter q = null;
   
   public GamePartyManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_AndroidOsHandler = new GamePartyManager.1(this, Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-    this.f = -1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.d = jdField_a_of_type_Int;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.e = 0;
+    this.l = new WeakReference(paramQQAppInterface);
+    this.n = false;
+    this.o = -1;
+    this.c = 0;
+    this.d = 0;
+    this.e = 0L;
+    this.f = a;
+    this.g = 0L;
+    this.h = "";
+    this.i = 0;
     Object localObject = paramQQAppInterface.getApp();
-    int i;
+    int i1;
     if (Build.VERSION.SDK_INT > 10) {
-      i = 4;
+      i1 = 4;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = ((BaseApplication)localObject).getSharedPreferences("GamePartyManger", i);
-    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+    this.m = ((BaseApplication)localObject).getSharedPreferences("GamePartyManger", i1);
+    localObject = this.m;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gamePartyInfo");
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
@@ -98,7 +96,7 @@ public class GamePartyManager
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
     {
-      this.jdField_a_of_type_JavaLangString = new JSONObject((String)localObject).getString("teamId");
+      this.b = new JSONObject((String)localObject).getString("teamId");
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("https://openmobile.qq.com/gameteam/get_team_context?uin=");
       ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentAccountUin());
@@ -109,14 +107,14 @@ public class GamePartyManager
       label239:
       break label239;
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter = ((GamePartyNotifyCenter)a());
+    this.n = false;
+    this.q = ((GamePartyNotifyCenter)a());
     ArkAppCenterCheckEvent.a("com.tencent.qqopen.teamup", this);
   }
   
   public static int a(int paramInt)
   {
-    int i = 0;
+    int i1 = 0;
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -126,33 +124,33 @@ public class GamePartyManager
         }
         return 2;
       }
-      i = 1;
+      i1 = 1;
     }
-    return i;
+    return i1;
   }
   
   private void a(SubMsgType0xaa.GameTeam_TurnOverMessage paramGameTeam_TurnOverMessage, boolean paramBoolean)
   {
-    Object localObject2 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2 = (QQAppInterface)this.l.get();
     if (localObject2 == null) {
       return;
     }
-    int m = paramGameTeam_TurnOverMessage.uint32_sessionType.get();
+    int i4 = paramGameTeam_TurnOverMessage.uint32_sessionType.get();
     String str3 = paramGameTeam_TurnOverMessage.str_sourceUin.get();
     String str4 = paramGameTeam_TurnOverMessage.str_actionUin.get();
     String str2 = paramGameTeam_TurnOverMessage.str_teamId.get();
-    int i = paramGameTeam_TurnOverMessage.uint32_currentCount.get();
-    int j = paramGameTeam_TurnOverMessage.uint32_totalCount.get();
-    long l = paramGameTeam_TurnOverMessage.uint64_buildTeamTime.get();
+    int i1 = paramGameTeam_TurnOverMessage.uint32_currentCount.get();
+    int i2 = paramGameTeam_TurnOverMessage.uint32_totalCount.get();
+    long l1 = paramGameTeam_TurnOverMessage.uint64_buildTeamTime.get();
     String str1 = paramGameTeam_TurnOverMessage.str_leaderUin.get();
-    int k = paramGameTeam_TurnOverMessage.uin32_leaderStatus.get();
+    int i3 = paramGameTeam_TurnOverMessage.uin32_leaderStatus.get();
     Object localObject1 = null;
     if (paramGameTeam_TurnOverMessage.InviteSourceList.has()) {
       localObject1 = paramGameTeam_TurnOverMessage.InviteSourceList.get();
     }
     boolean bool2 = ((QQAppInterface)localObject2).getCurrentAccountUin().equals(str4);
     boolean bool1;
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(str2))) {
+    if ((this.n) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(str2))) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -165,7 +163,7 @@ public class GamePartyManager
       ((StringBuilder)localObject2).append(", expired = ");
       ((StringBuilder)localObject2).append(paramBoolean);
       ((StringBuilder)localObject2).append(", inParty = ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject2).append(this.n);
       ((StringBuilder)localObject2).append(", inSameParty = ");
       ((StringBuilder)localObject2).append(bool1);
       QLog.d("GamePartyManager", 2, ((StringBuilder)localObject2).toString());
@@ -173,7 +171,7 @@ public class GamePartyManager
     if (paramBoolean)
     {
       if (bool1) {
-        b();
+        c();
       }
     }
     else {
@@ -183,10 +181,10 @@ public class GamePartyManager
       case 6: 
         if ((bool2) && (bool1))
         {
-          this.jdField_a_of_type_JavaUtilVector.clear();
+          this.j.clear();
           if (localObject1 == null)
           {
-            this.jdField_a_of_type_JavaUtilVector.add(new GamePartyManager.Session(this, b(m), str3));
+            this.j.add(new GamePartyManager.Session(this, b(i4), str3));
           }
           else
           {
@@ -196,30 +194,30 @@ public class GamePartyManager
               localObject1 = (SubMsgType0xaa.InviteSource)paramGameTeam_TurnOverMessage.next();
               if ((((SubMsgType0xaa.InviteSource)localObject1).type.has()) && (((SubMsgType0xaa.InviteSource)localObject1).src.has()))
               {
-                i = ((SubMsgType0xaa.InviteSource)localObject1).type.get();
+                i1 = ((SubMsgType0xaa.InviteSource)localObject1).type.get();
                 localObject1 = ((SubMsgType0xaa.InviteSource)localObject1).src.get();
-                if ((i >= 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+                if ((i1 >= 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
                 {
-                  localObject1 = new GamePartyManager.Session(this, b(i), (String)localObject1);
-                  this.jdField_a_of_type_JavaUtilVector.add(localObject1);
+                  localObject1 = new GamePartyManager.Session(this, b(i1), (String)localObject1);
+                  this.j.add(localObject1);
                 }
               }
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.setChanged();
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.notifyObservers(Integer.valueOf(2));
+          this.q.setChanged();
+          this.q.notifyObservers(Integer.valueOf(2));
           return;
         }
         break;
       case 5: 
         if (bool2)
         {
-          this.f = b(m);
-          this.jdField_c_of_type_JavaLangString = str3;
-          this.jdField_a_of_type_JavaUtilVector.clear();
+          this.o = b(i4);
+          this.p = str3;
+          this.j.clear();
           if (localObject1 == null)
           {
-            this.jdField_a_of_type_JavaUtilVector.add(new GamePartyManager.Session(this, this.f, this.jdField_c_of_type_JavaLangString));
+            this.j.add(new GamePartyManager.Session(this, this.o, this.p));
           }
           else
           {
@@ -229,23 +227,23 @@ public class GamePartyManager
               localObject1 = (SubMsgType0xaa.InviteSource)paramGameTeam_TurnOverMessage.next();
               if ((((SubMsgType0xaa.InviteSource)localObject1).type.has()) && (((SubMsgType0xaa.InviteSource)localObject1).src.has()))
               {
-                m = ((SubMsgType0xaa.InviteSource)localObject1).type.get();
+                i4 = ((SubMsgType0xaa.InviteSource)localObject1).type.get();
                 localObject1 = ((SubMsgType0xaa.InviteSource)localObject1).src.get();
-                if ((m >= 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+                if ((i4 >= 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
                 {
-                  localObject1 = new GamePartyManager.Session(this, b(m), (String)localObject1);
-                  this.jdField_a_of_type_JavaUtilVector.add(localObject1);
+                  localObject1 = new GamePartyManager.Session(this, b(i4), (String)localObject1);
+                  this.j.add(localObject1);
                 }
               }
             }
           }
-          this.jdField_a_of_type_JavaLangString = str2;
-          this.jdField_b_of_type_Int = i;
-          this.jdField_c_of_type_Int = j;
-          this.jdField_a_of_type_Long = l;
-          this.jdField_b_of_type_JavaLangString = str1;
-          this.e = k;
-          a();
+          this.b = str2;
+          this.c = i1;
+          this.d = i2;
+          this.e = l1;
+          this.h = str1;
+          this.i = i3;
+          b();
           return;
         }
         break;
@@ -253,23 +251,23 @@ public class GamePartyManager
         if (bool2)
         {
           if (bool1) {
-            b();
+            c();
           }
         }
         else if (bool1)
         {
-          this.jdField_b_of_type_Int = i;
-          this.jdField_c_of_type_Int = j;
-          this.e = k;
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.setChanged();
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.notifyObservers(Integer.valueOf(2));
+          this.c = i1;
+          this.d = i2;
+          this.i = i3;
+          this.q.setChanged();
+          this.q.notifyObservers(Integer.valueOf(2));
           return;
         }
         break;
       case 3: 
         if (bool1)
         {
-          b();
+          c();
           return;
         }
         break;
@@ -277,40 +275,40 @@ public class GamePartyManager
         if (bool2)
         {
           if (bool1) {
-            b();
+            c();
           }
         }
         else if (bool1)
         {
-          this.jdField_b_of_type_Int = i;
-          this.jdField_c_of_type_Int = j;
-          this.e = k;
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.setChanged();
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.notifyObservers(Integer.valueOf(2));
+          this.c = i1;
+          this.d = i2;
+          this.i = i3;
+          this.q.setChanged();
+          this.q.notifyObservers(Integer.valueOf(2));
           return;
         }
         break;
       case 1: 
         if (bool2)
         {
-          this.f = b(m);
-          this.jdField_c_of_type_JavaLangString = str3;
-          this.jdField_a_of_type_JavaLangString = str2;
-          this.jdField_b_of_type_Int = i;
-          this.jdField_c_of_type_Int = j;
-          this.jdField_a_of_type_Long = l;
-          this.jdField_b_of_type_JavaLangString = str1;
-          this.e = k;
-          a();
+          this.o = b(i4);
+          this.p = str3;
+          this.b = str2;
+          this.c = i1;
+          this.d = i2;
+          this.e = l1;
+          this.h = str1;
+          this.i = i3;
+          b();
           return;
         }
         if (bool1)
         {
-          this.jdField_b_of_type_Int = i;
-          this.jdField_c_of_type_Int = j;
-          this.e = k;
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.setChanged();
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.notifyObservers(Integer.valueOf(2));
+          this.c = i1;
+          this.d = i2;
+          this.i = i3;
+          this.q.setChanged();
+          this.q.notifyObservers(Integer.valueOf(2));
         }
         break;
       }
@@ -319,7 +317,7 @@ public class GamePartyManager
   
   public static int b(int paramInt)
   {
-    int i = 0;
+    int i1 = 0;
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -329,32 +327,32 @@ public class GamePartyManager
         }
         return 3000;
       }
-      i = 1;
+      i1 = 1;
     }
-    return i;
+    return i1;
   }
   
   private void b(SubMsgType0xaa.GameTeam_TurnOverMessage paramGameTeam_TurnOverMessage)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.l.get();
     if (localQQAppInterface == null) {
       return;
     }
-    int i = paramGameTeam_TurnOverMessage.uint32_sessionType.get();
+    int i1 = paramGameTeam_TurnOverMessage.uint32_sessionType.get();
     Object localObject2 = paramGameTeam_TurnOverMessage.str_sourceUin.get();
     String str1 = paramGameTeam_TurnOverMessage.str_actionUin.get();
-    int j = paramGameTeam_TurnOverMessage.actionType.get();
+    int i2 = paramGameTeam_TurnOverMessage.actionType.get();
     String str2 = paramGameTeam_TurnOverMessage.str_teamId.get();
     boolean bool = localQQAppInterface.getCurrentAccountUin().equals(str1);
-    long l = NetConnInfoCenter.getServerTime();
-    int k = b(i);
+    long l1 = NetConnInfoCenter.getServerTime();
+    int i3 = b(i1);
     if (bool) {
-      paramGameTeam_TurnOverMessage = localQQAppInterface.getApp().getString(2131692802);
-    } else if (k != 0)
+      paramGameTeam_TurnOverMessage = localQQAppInterface.getApp().getString(2131889906);
+    } else if (i3 != 0)
     {
-      if (k != 1)
+      if (i3 != 1)
       {
-        if (k != 3000) {
+        if (i3 != 3000) {
           paramGameTeam_TurnOverMessage = str1;
         } else {
           paramGameTeam_TurnOverMessage = ContactUtils.a(localQQAppInterface, str1, (String)localObject2, 2, 0);
@@ -367,40 +365,40 @@ public class GamePartyManager
     else {
       paramGameTeam_TurnOverMessage = ContactUtils.a(localQQAppInterface, str1, (String)localObject2, 0, 0);
     }
-    if (j != 1)
+    if (i2 != 1)
     {
-      if (j != 2)
+      if (i2 != 2)
       {
-        if (j != 3)
+        if (i2 != 3)
         {
-          if (j != 4)
+          if (i2 != 4)
           {
-            if (j != 5) {}
+            if (i2 != 5) {}
             return;
           }
-          localObject1 = localQQAppInterface.getApp().getString(2131692816);
+          localObject1 = localQQAppInterface.getApp().getString(2131889920);
         }
         else
         {
-          localObject1 = localQQAppInterface.getApp().getString(2131692808);
+          localObject1 = localQQAppInterface.getApp().getString(2131889912);
         }
       }
       else {
-        localObject1 = localQQAppInterface.getApp().getString(2131692818);
+        localObject1 = localQQAppInterface.getApp().getString(2131889922);
       }
     }
     else {
-      localObject1 = localQQAppInterface.getApp().getString(2131692815);
+      localObject1 = localQQAppInterface.getApp().getString(2131889919);
     }
-    String str3 = localQQAppInterface.getApp().getString(2131692817);
+    String str3 = localQQAppInterface.getApp().getString(2131889921);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramGameTeam_TurnOverMessage);
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append(str3);
     paramGameTeam_TurnOverMessage = localStringBuilder.toString();
     Object localObject1 = (MessageForGrayTips)MessageRecordFactory.a(-2049);
-    ((MessageForGrayTips)localObject1).init(localQQAppInterface.getAccount(), (String)localObject2, str1, paramGameTeam_TurnOverMessage, l, -2049, k, 0L);
-    str1 = String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { localQQAppInterface.getAccount(), str2, Integer.valueOf(i), localObject2 });
+    ((MessageForGrayTips)localObject1).init(localQQAppInterface.getAccount(), (String)localObject2, str1, paramGameTeam_TurnOverMessage, l1, -2049, i3, 0L);
+    str1 = String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { localQQAppInterface.getAccount(), str2, Integer.valueOf(i1), localObject2 });
     localObject2 = new Bundle();
     ((Bundle)localObject2).putInt("key_action", 1);
     ((Bundle)localObject2).putString("key_action_DATA", str1);
@@ -411,24 +409,24 @@ public class GamePartyManager
     ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2011", "0", false);
   }
   
-  private void c()
+  private void d()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.f = -1;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.e = 0;
-    this.jdField_a_of_type_JavaUtilVector.clear();
+    this.n = false;
+    this.o = -1;
+    this.p = "";
+    this.b = "";
+    this.c = 0;
+    this.d = 0;
+    this.e = 0L;
+    this.g = 0L;
+    this.h = "";
+    this.i = 0;
+    this.j.clear();
   }
   
   public Object a(int paramInt, Object paramObject)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.l.get();
     Object localObject1 = null;
     if (localQQAppInterface == null) {
       return null;
@@ -519,37 +517,10 @@ public class GamePartyManager
   
   public Observable a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter = new GamePartyNotifyCenter();
+    if (this.q == null) {
+      this.q = new GamePartyNotifyCenter();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    long l2 = this.d;
-    long l3 = NetConnInfoCenter.getServerTime();
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = l3;
-    }
-    long l4 = this.jdField_a_of_type_Long;
-    long l1 = l2;
-    if (l3 > l4) {
-      l1 = l2 - (l3 - l4);
-    }
-    if (l1 > 0L)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      GamePartyNotifyCenter localGamePartyNotifyCenter = this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter;
-      if (localGamePartyNotifyCenter != null)
-      {
-        localGamePartyNotifyCenter.setChanged();
-        this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.notifyObservers(Integer.valueOf(1));
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, l1 * 1000L + 30000L);
-    }
+    return this.q;
   }
   
   public void a(String paramString, GamePartyManager.AsyncRequestCallback paramAsyncRequestCallback)
@@ -559,7 +530,7 @@ public class GamePartyManager
   
   protected void a(SubMsgType0xaa.GameTeam_StartGameMessage paramGameTeam_StartGameMessage, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.l.get();
     if (localQQAppInterface == null) {
       return;
     }
@@ -626,14 +597,14 @@ public class GamePartyManager
       long l1 = paramGameTeam_TurnOverMessage.uint64_createMsgTime.get();
       try
       {
-        if (l1 < this.jdField_b_of_type_Long)
+        if (l1 < this.g)
         {
           if (QLog.isColorLevel()) {
             QLog.d("GamePartyManager", 2, "handlePushMsg_TurnOver, msgTime before updateTime, drop it");
           }
           return;
         }
-        this.jdField_b_of_type_Long = l1;
+        this.g = l1;
         long l2 = paramGameTeam_TurnOverMessage.uint64_buildTeamTime.get();
         l1 = NetConnInfoCenter.getServerTime();
         if (l1 > l2) {
@@ -643,9 +614,9 @@ public class GamePartyManager
         }
         if (paramGameTeam_TurnOverMessage.uint32_expire.has())
         {
-          this.d = paramGameTeam_TurnOverMessage.uint32_expire.get();
-          if (this.d <= 0) {
-            this.d = jdField_a_of_type_Int;
+          this.f = paramGameTeam_TurnOverMessage.uint32_expire.get();
+          if (this.f <= 0) {
+            this.f = a;
           }
         }
         if (QLog.isColorLevel())
@@ -654,12 +625,12 @@ public class GamePartyManager
           localStringBuilder.append("handlePushMsg_TurnOver, createTime = ");
           localStringBuilder.append(l2);
           localStringBuilder.append(", expire = ");
-          localStringBuilder.append(this.d);
+          localStringBuilder.append(this.f);
           localStringBuilder.append(", deltaTime = ");
           localStringBuilder.append(l1);
           QLog.d("GamePartyManager", 2, localStringBuilder.toString());
         }
-        if (l1 < this.d)
+        if (l1 < this.f)
         {
           a(paramGameTeam_TurnOverMessage, false);
           b(paramGameTeam_TurnOverMessage);
@@ -677,31 +648,31 @@ public class GamePartyManager
   
   protected void a(SubMsgType0xaa.GameTeam_UpdateTeamMessage paramGameTeam_UpdateTeamMessage)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.l.get();
     if (localQQAppInterface == null) {
       return;
     }
     String str;
-    int i;
-    int j;
+    int i1;
+    int i2;
     Object localObject;
     if ((paramGameTeam_UpdateTeamMessage.str_teamId.has()) && (paramGameTeam_UpdateTeamMessage.uint32_status.has()) && (paramGameTeam_UpdateTeamMessage.uint32_current_count.has()) && (paramGameTeam_UpdateTeamMessage.uint64_buildTeamTime.has()) && (paramGameTeam_UpdateTeamMessage.uint64_createMsgTime.has()) && (paramGameTeam_UpdateTeamMessage.str_leaderUin.has()) && (paramGameTeam_UpdateTeamMessage.uin32_leaderStatus.has()))
     {
-      long l = paramGameTeam_UpdateTeamMessage.uint64_buildTeamTime.get();
+      long l1 = paramGameTeam_UpdateTeamMessage.uint64_buildTeamTime.get();
       str = paramGameTeam_UpdateTeamMessage.str_teamId.get();
-      i = paramGameTeam_UpdateTeamMessage.uint32_status.get();
-      j = paramGameTeam_UpdateTeamMessage.uint32_current_count.get();
+      i1 = paramGameTeam_UpdateTeamMessage.uint32_status.get();
+      i2 = paramGameTeam_UpdateTeamMessage.uint32_current_count.get();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("handlePushMsg_UpdateTeam, teamId = ");
         ((StringBuilder)localObject).append(str);
         ((StringBuilder)localObject).append(", status = ");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(i1);
         ((StringBuilder)localObject).append(", member = ");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(i2);
         ((StringBuilder)localObject).append(", createTime = ");
-        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append(l1);
         QLog.d("GamePartyManager", 2, ((StringBuilder)localObject).toString());
       }
       localObject = new JSONObject();
@@ -709,8 +680,8 @@ public class GamePartyManager
     try
     {
       ((JSONObject)localObject).put("team_id", str);
-      ((JSONObject)localObject).put("status", i);
-      ((JSONObject)localObject).put("member_count", j);
+      ((JSONObject)localObject).put("status", i1);
+      ((JSONObject)localObject).put("member_count", i2);
       label258:
       localObject = ((JSONObject)localObject).toString();
       try
@@ -730,19 +701,19 @@ public class GamePartyManager
       ((Intent)localObject).putExtra("uin", localQQAppInterface.getCurrentAccountUin());
       ((Intent)localObject).putExtra("teamId", str);
       localQQAppInterface.getApp().sendBroadcast((Intent)localObject);
-      j = paramGameTeam_UpdateTeamMessage.uin32_leaderStatus.get();
-      if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(str)))
+      i2 = paramGameTeam_UpdateTeamMessage.uin32_leaderStatus.get();
+      if ((this.n) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(str)))
       {
-        if (i >= 5)
+        if (i1 >= 5)
         {
-          b();
+          c();
           return;
         }
-        if ((i > 0) && (this.e != j))
+        if ((i1 > 0) && (this.i != i2))
         {
-          this.e = j;
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.setChanged();
-          this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.notifyObservers(Integer.valueOf(2));
+          this.i = i2;
+          this.q.setChanged();
+          this.q.notifyObservers(Integer.valueOf(2));
         }
       }
       return;
@@ -768,20 +739,20 @@ public class GamePartyManager
       if (!paramMsgBody.uint32_GameTeamCmd.has()) {
         return;
       }
-      int i = paramMsgBody.uint32_GameTeamCmd.get();
-      if (i == 2000)
+      int i1 = paramMsgBody.uint32_GameTeamCmd.get();
+      if (i1 == 2000)
       {
         if (paramMsgBody.msg_turnOverMessage.has()) {
           a((SubMsgType0xaa.GameTeam_TurnOverMessage)paramMsgBody.msg_turnOverMessage.get());
         }
       }
-      else if (i == 2001)
+      else if (i1 == 2001)
       {
         if (paramMsgBody.msg_startGameMessage.has()) {
           a((SubMsgType0xaa.GameTeam_StartGameMessage)paramMsgBody.msg_startGameMessage.get(), paramBoolean);
         }
       }
-      else if ((i == 2002) && (!paramBoolean) && (paramMsgBody.msg_updateTeamMessage.has())) {
+      else if ((i1 == 2002) && (!paramBoolean) && (paramMsgBody.msg_updateTeamMessage.has())) {
         a((SubMsgType0xaa.GameTeam_UpdateTeamMessage)paramMsgBody.msg_updateTeamMessage.get());
       }
     }
@@ -789,15 +760,15 @@ public class GamePartyManager
   
   public boolean a(int paramInt, String paramString)
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (QQAppInterface)this.l.get();
     if (localObject == null) {
       return false;
     }
-    if ((this.jdField_a_of_type_Boolean) && (paramInt >= 0) && (!TextUtils.isEmpty(paramString)))
+    if ((this.n) && (paramInt >= 0) && (!TextUtils.isEmpty(paramString)))
     {
-      if (((QQAppInterface)localObject).getCurrentAccountUin().equals(this.jdField_b_of_type_JavaLangString))
+      if (((QQAppInterface)localObject).getCurrentAccountUin().equals(this.h))
       {
-        localObject = this.jdField_a_of_type_JavaUtilVector.iterator();
+        localObject = this.j.iterator();
         GamePartyManager.Session localSession;
         do
         {
@@ -805,10 +776,10 @@ public class GamePartyManager
             break;
           }
           localSession = (GamePartyManager.Session)((Iterator)localObject).next();
-        } while ((paramInt != localSession.jdField_a_of_type_Int) || (!paramString.equals(localSession.jdField_a_of_type_JavaLangString)));
+        } while ((paramInt != localSession.a) || (!paramString.equals(localSession.b)));
         return true;
       }
-      if ((paramInt == this.f) && (paramString.equals(this.jdField_c_of_type_JavaLangString))) {
+      if ((paramInt == this.o) && (paramString.equals(this.p))) {
         return true;
       }
     }
@@ -817,30 +788,57 @@ public class GamePartyManager
   
   public void b()
   {
-    GamePartyNotifyCenter localGamePartyNotifyCenter = this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter;
+    this.k.removeMessages(1);
+    Message localMessage = this.k.obtainMessage(1);
+    long l2 = this.f;
+    long l3 = NetConnInfoCenter.getServerTime();
+    if (this.e == 0L) {
+      this.e = l3;
+    }
+    long l4 = this.e;
+    long l1 = l2;
+    if (l3 > l4) {
+      l1 = l2 - (l3 - l4);
+    }
+    if (l1 > 0L)
+    {
+      this.n = true;
+      GamePartyNotifyCenter localGamePartyNotifyCenter = this.q;
+      if (localGamePartyNotifyCenter != null)
+      {
+        localGamePartyNotifyCenter.setChanged();
+        this.q.notifyObservers(Integer.valueOf(1));
+      }
+      this.k.sendMessageDelayed(localMessage, l1 * 1000L + 30000L);
+    }
+  }
+  
+  public void c()
+  {
+    GamePartyNotifyCenter localGamePartyNotifyCenter = this.q;
     if (localGamePartyNotifyCenter != null)
     {
       localGamePartyNotifyCenter.setChanged();
-      this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter.notifyObservers(Integer.valueOf(3));
+      this.q.notifyObservers(Integer.valueOf(3));
     }
-    c();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    d();
+    this.k.removeMessages(1);
   }
   
   public void onDestroy()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.l.get();
     if (localQQAppInterface == null) {
       return;
     }
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    SharedPreferences.Editor localEditor = this.m.edit();
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.n)
     {
       localObject = new JSONObject();
       try
       {
-        ((JSONObject)localObject).put("teamId", this.jdField_a_of_type_JavaLangString);
+        ((JSONObject)localObject).put("teamId", this.b);
       }
       catch (JSONException localJSONException)
       {
@@ -864,7 +862,7 @@ public class GamePartyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gameparty.GamePartyManager
  * JD-Core Version:    0.7.0.1
  */

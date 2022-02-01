@@ -22,12 +22,12 @@ class SessionClearFragment$3
       localStringBuilder.append(paramBitmap);
       QLog.i("SessionClearFragment", 4, localStringBuilder.toString());
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+    SessionClearFragment.d(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment.3
  * JD-Core Version:    0.7.0.1
  */

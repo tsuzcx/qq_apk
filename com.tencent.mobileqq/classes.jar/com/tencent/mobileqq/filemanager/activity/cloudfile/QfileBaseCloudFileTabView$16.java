@@ -11,25 +11,25 @@ class QfileBaseCloudFileTabView$16
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.this$0);
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null) && (QfileBaseCloudFileTabView.d(this.this$0)))
+    this.this$0.C.a(this.this$0);
+    if ((this.this$0.f != null) && (QfileBaseCloudFileTabView.p(this.this$0)))
     {
       if (QLog.isColorLevel())
       {
-        String str = QfileBaseCloudFileTabView.b;
+        String str = QfileBaseCloudFileTabView.c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setSelect[");
         localStringBuilder.append(this.a);
         localStringBuilder.append("] success mFileListView");
         QLog.i(str, 2, localStringBuilder.toString());
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.expandGroup(this.a);
+      this.this$0.f.expandGroup(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.16
  * JD-Core Version:    0.7.0.1
  */

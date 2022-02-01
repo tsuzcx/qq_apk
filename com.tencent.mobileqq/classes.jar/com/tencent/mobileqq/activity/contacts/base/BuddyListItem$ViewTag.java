@@ -7,12 +7,12 @@ public class BuddyListItem$ViewTag
   extends SwipFacePreloadExpandableAdapter.ViewHolder
 {
   public SingleLineTextView a;
-  public Object a;
   public SingleLineTextView b;
+  public Object c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.BuddyListItem.ViewTag
  * JD-Core Version:    0.7.0.1
  */

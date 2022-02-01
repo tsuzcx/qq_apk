@@ -17,40 +17,40 @@ class TroopUnclaimedHbList$6
   
   public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
   {
-    if (TroopUnclaimedHbList.a(this.a) != null) {
-      TroopUnclaimedHbList.a(this.a).setVisibility(8);
+    if (TroopUnclaimedHbList.b(this.a) != null) {
+      TroopUnclaimedHbList.b(this.a).setVisibility(8);
     }
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if (TroopUnclaimedHbList.a(this.a) != null) {
-        TroopUnclaimedHbList.a(this.a).setVisibility(0);
+      if (TroopUnclaimedHbList.e(this.a) != null) {
+        TroopUnclaimedHbList.e(this.a).setVisibility(0);
       }
-      if (TroopUnclaimedHbList.a(this.a) != null) {
-        TroopUnclaimedHbList.a(this.a).setVisibility(8);
+      if (TroopUnclaimedHbList.f(this.a) != null) {
+        TroopUnclaimedHbList.f(this.a).setVisibility(8);
       }
-      if (TroopUnclaimedHbList.a(this.a) != null) {
-        TroopUnclaimedHbList.a(this.a).a(paramList);
+      if (TroopUnclaimedHbList.c(this.a) != null) {
+        TroopUnclaimedHbList.c(this.a).a(paramList);
       }
-      if (TroopUnclaimedHbList.a(this.a) != null) {
-        TroopUnclaimedHbList.a(this.a).start();
+      if (TroopUnclaimedHbList.g(this.a) != null) {
+        TroopUnclaimedHbList.g(this.a).start();
       }
     }
     else
     {
-      if (TroopUnclaimedHbList.a(this.a) != null) {
-        TroopUnclaimedHbList.a(this.a).setVisibility(8);
+      if (TroopUnclaimedHbList.e(this.a) != null) {
+        TroopUnclaimedHbList.e(this.a).setVisibility(8);
       }
-      if (TroopUnclaimedHbList.a(this.a) != null)
+      if (TroopUnclaimedHbList.f(this.a) != null)
       {
-        TroopUnclaimedHbList.a(this.a).setVisibility(0);
-        TroopUnclaimedHbList.a(this.a).setText(HardCodeUtil.a(R.string.dh));
+        TroopUnclaimedHbList.f(this.a).setVisibility(0);
+        TroopUnclaimedHbList.f(this.a).setText(HardCodeUtil.a(R.string.dk));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.TroopUnclaimedHbList.6
  * JD-Core Version:    0.7.0.1
  */

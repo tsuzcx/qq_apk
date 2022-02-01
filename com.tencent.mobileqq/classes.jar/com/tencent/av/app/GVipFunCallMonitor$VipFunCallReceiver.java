@@ -18,7 +18,7 @@ class GVipFunCallMonitor$VipFunCallReceiver
       if (paramIntent.getAction() == null) {
         return;
       }
-      paramContext = GVipFunCallMonitor.a(this.a).a();
+      paramContext = GVipFunCallMonitor.a(this.a).b();
       if (paramContext == null) {
         return;
       }

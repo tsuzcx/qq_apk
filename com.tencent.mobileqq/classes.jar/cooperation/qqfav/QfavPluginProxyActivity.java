@@ -17,26 +17,6 @@ import cooperation.qqfav.widget.QfavLoadingDialog;
 public class QfavPluginProxyActivity
   extends PluginProxyActivity
 {
-  private static Class<? extends PluginProxyActivity> a(Intent paramIntent)
-  {
-    String str = a(paramIntent);
-    if ("com.qqfav.FavoriteIpcDelegate".equals(str)) {
-      return QfavPluginProxyActivity.ForResult.class;
-    }
-    if ((str != null) && ((str.equals("com.qqfav.activity.AddPhotosFavActivity")) || (str.equals("com.qqfav.activity.AddLocationFavActivity")) || (str.equals("com.qqfav.FavoriteIpcDelegate")) || (str.equals("com.qqfav.file.activity.QfavFileBrowserActivity")))) {
-      paramIntent.setFlags(paramIntent.getFlags() | 0x20000000);
-    }
-    if ((paramIntent.getFlags() & 0x20000000) != 0) {
-      return QfavPluginProxyActivity.SingleTop.class;
-    }
-    if ((str != null) && ((str.equals("com.qqfav.activity.AddPhotosFavActivity")) || (str.equals("com.qqfav.activity.AddLocationFavActivity")) || (str.equals("com.qqfav.FavoriteIpcDelegate")) || (str.equals("com.qqfav.edit.EditPhotosActivity")) || (str.equals("com.qqfav.file.activity.QfavFileBrowserActivity"))))
-    {
-      paramIntent.setFlags(paramIntent.getFlags() | 0x20000000);
-      return QfavPluginProxyActivity.SingleTop.class;
-    }
-    return QfavPluginProxyActivity.class;
-  }
-  
   private static String a(Intent paramIntent)
   {
     switch (paramIntent.getIntExtra("nOperation", -1))
@@ -73,9 +53,9 @@ public class QfavPluginProxyActivity
   
   public static boolean a(Context paramContext, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
-    QfavPluginProxyService.a();
+    QfavPluginProxyService.c();
     QfavLoadingDialog localQfavLoadingDialog;
-    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!QfavHelper.a(paramContext))) {
+    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!QfavHelper.b(paramContext))) {
       localQfavLoadingDialog = new QfavLoadingDialog(paramContext);
     } else {
       localQfavLoadingDialog = null;
@@ -87,23 +67,43 @@ public class QfavPluginProxyActivity
       paramIntent.addFlags(268435456);
     }
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qqfav.apk";
-    localPluginParams.e = "qqfav.apk";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-    localPluginParams.f = str;
-    localPluginParams.jdField_a_of_type_JavaLangClass = a(paramIntent);
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.c = paramInt;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = localQfavLoadingDialog;
-    localPluginParams.d = 30000;
-    localPluginParams.g = null;
-    localPluginParams.jdField_b_of_type_Boolean = false;
+    localPluginParams.d = "qqfav.apk";
+    localPluginParams.g = "qqfav.apk";
+    localPluginParams.c = paramString;
+    localPluginParams.h = str;
+    localPluginParams.i = b(paramIntent);
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = paramInt;
+    localPluginParams.l = localQfavLoadingDialog;
+    localPluginParams.r = 30000;
+    localPluginParams.q = null;
+    localPluginParams.p = false;
     IPluginManager.a(paramContext, localPluginParams);
     paramContext = new StringBuilder();
     paramContext.append("QfavPluginProxyActivity: openPluginActivityForResult: ");
     paramContext.append(str);
     QLog.i("qqfav", 2, paramContext.toString());
     return true;
+  }
+  
+  private static Class<? extends PluginProxyActivity> b(Intent paramIntent)
+  {
+    String str = a(paramIntent);
+    if ("com.qqfav.FavoriteIpcDelegate".equals(str)) {
+      return QfavPluginProxyActivity.ForResult.class;
+    }
+    if ((str != null) && ((str.equals("com.qqfav.activity.AddPhotosFavActivity")) || (str.equals("com.qqfav.activity.AddLocationFavActivity")) || (str.equals("com.qqfav.FavoriteIpcDelegate")) || (str.equals("com.qqfav.file.activity.QfavFileBrowserActivity")))) {
+      paramIntent.setFlags(paramIntent.getFlags() | 0x20000000);
+    }
+    if ((paramIntent.getFlags() & 0x20000000) != 0) {
+      return QfavPluginProxyActivity.SingleTop.class;
+    }
+    if ((str != null) && ((str.equals("com.qqfav.activity.AddPhotosFavActivity")) || (str.equals("com.qqfav.activity.AddLocationFavActivity")) || (str.equals("com.qqfav.FavoriteIpcDelegate")) || (str.equals("com.qqfav.edit.EditPhotosActivity")) || (str.equals("com.qqfav.file.activity.QfavFileBrowserActivity"))))
+    {
+      paramIntent.setFlags(paramIntent.getFlags() | 0x20000000);
+      return QfavPluginProxyActivity.SingleTop.class;
+    }
+    return QfavPluginProxyActivity.class;
   }
   
   @Override
@@ -155,13 +155,13 @@ public class QfavPluginProxyActivity
     super.onCreate(paramBundle);
     paramBundle = getIntent().getExtras();
     if ((paramBundle != null) && (paramBundle.getInt("nOperation") == 6)) {
-      super.overridePendingTransition(2130772006, 2130772007);
+      super.overridePendingTransition(2130772009, 2130772010);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -67,7 +67,7 @@ public class RecentDataParcelProcessor
           if (a(paramObject, b))
           {
             paramObject = new MsgSummary();
-            paramArrayOfByte = ParcelHelper.a(paramObject);
+            paramArrayOfByte = ParcelHelper.b(paramObject);
           }
           try
           {
@@ -93,11 +93,6 @@ public class RecentDataParcelProcessor
     return null;
   }
   
-  void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
-  {
-    super.a(paramObject, paramArrayList, paramParcel);
-  }
-  
   protected byte[] a(Object paramObject, Field paramField)
   {
     if ((paramObject instanceof RecentBaseData))
@@ -116,7 +111,7 @@ public class RecentDataParcelProcessor
           else
           {
             localParcel.writeByteArray(b);
-            c(localObject, ParcelHelper.a(localObject), localParcel);
+            e(localObject, ParcelHelper.b(localObject), localParcel);
           }
           paramObject = localParcel.marshall();
           localParcel.recycle();
@@ -153,10 +148,15 @@ public class RecentDataParcelProcessor
   {
     super.b(paramObject, paramArrayList, paramParcel);
   }
+  
+  void d(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  {
+    super.d(paramObject, paramArrayList, paramParcel);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.parcelUtils.processor.RecentDataParcelProcessor
  * JD-Core Version:    0.7.0.1
  */

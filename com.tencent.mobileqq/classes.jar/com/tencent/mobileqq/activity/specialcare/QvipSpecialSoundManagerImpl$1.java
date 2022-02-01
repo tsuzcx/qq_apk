@@ -10,9 +10,9 @@ class QvipSpecialSoundManagerImpl$1
   
   public void run()
   {
-    if (QvipSpecialSoundManagerImpl.a(this.this$0, this.a.c))
+    if (QvipSpecialSoundManagerImpl.a(this.this$0, this.a.e))
     {
-      localObject = new File(QvipSpecialSoundManagerImpl.a(this.this$0).getFilesDir(), this.a.c);
+      localObject = new File(QvipSpecialSoundManagerImpl.a(this.this$0).getFilesDir(), this.a.e);
       long l;
       if (((File)localObject).exists()) {
         l = ((File)localObject).length();
@@ -26,12 +26,12 @@ class QvipSpecialSoundManagerImpl$1
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateSpecialSound down fial, id=");
     localStringBuilder.append(this.a.a);
-    QvipSpecialSoundManagerImpl.a((QvipSpecialSoundManagerImpl)localObject, localStringBuilder.toString());
+    QvipSpecialSoundManagerImpl.b((QvipSpecialSoundManagerImpl)localObject, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

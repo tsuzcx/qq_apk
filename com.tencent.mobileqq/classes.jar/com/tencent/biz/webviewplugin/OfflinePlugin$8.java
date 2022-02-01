@@ -16,11 +16,11 @@ class OfflinePlugin$8
   
   public void a()
   {
-    Object localObject = this.a.mRuntime.a();
+    Object localObject = this.a.mRuntime.d();
     if (localObject == null) {
       return;
     }
-    WebUiBaseInterface localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
+    WebUiBaseInterface localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.d());
     if (QBaseActivity.sTopActivity != localObject)
     {
       localObject = this.a.mRuntime.a();
@@ -43,23 +43,23 @@ class OfflinePlugin$8
   
   public void loaded(String paramString, int paramInt)
   {
-    paramString = this.a.a.obtainMessage();
+    paramString = this.a.u.obtainMessage();
     paramString.arg1 = 5;
     paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
+    this.a.u.sendMessage(paramString);
   }
   
   public void progress(int paramInt)
   {
-    Message localMessage = this.a.a.obtainMessage();
+    Message localMessage = this.a.u.obtainMessage();
     localMessage.arg1 = 4;
     localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
+    this.a.u.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.8
  * JD-Core Version:    0.7.0.1
  */

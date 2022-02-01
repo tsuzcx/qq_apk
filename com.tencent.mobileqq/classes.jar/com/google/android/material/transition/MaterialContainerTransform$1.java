@@ -10,12 +10,12 @@ class MaterialContainerTransform$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    MaterialContainerTransform.TransitionDrawable.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTransitionMaterialContainerTransform$TransitionDrawable, paramValueAnimator.getAnimatedFraction());
+    MaterialContainerTransform.TransitionDrawable.a(this.a, paramValueAnimator.getAnimatedFraction());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.MaterialContainerTransform.1
  * JD-Core Version:    0.7.0.1
  */

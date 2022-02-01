@@ -12,13 +12,13 @@ class QIMMusicConfigManager$1
   {
     Iterator localIterator = QIMMusicConfigManager.a(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((QIMMusicConfigManager.LoadMusicStepListener)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+      ((QIMMusicConfigManager.LoadMusicStepListener)localIterator.next()).a(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QIMMusicConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

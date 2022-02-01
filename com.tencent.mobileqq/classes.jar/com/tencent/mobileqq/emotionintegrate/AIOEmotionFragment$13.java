@@ -11,12 +11,12 @@ class AIOEmotionFragment$13
   
   public void run()
   {
-    AIOGalleryMsgRevokeMgr.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.this$0.jdField_a_of_type_AndroidViewView);
+    AIOGalleryMsgRevokeMgr.a((Activity)this.this$0.b, (RelativeLayout)this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.13
  * JD-Core Version:    0.7.0.1
  */

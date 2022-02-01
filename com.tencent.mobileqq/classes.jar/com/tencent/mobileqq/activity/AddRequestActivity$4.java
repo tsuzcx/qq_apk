@@ -14,25 +14,25 @@ class AddRequestActivity$4
 {
   AddRequestActivity$4(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0) {
       if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity;
-        NewReportPlugin.a(paramView, paramView.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
+        paramView = this.b;
+        NewReportPlugin.a(paramView, paramView.a, null, this.b.app.getCurrentAccountUin(), 20010, null);
       }
       else
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694424, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
+        QQToast.makeText(this.b, 2131892104, 0).show(this.b.getTitleBarHeight());
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public class PluginUtils
   public static Future<?> a(Context paramContext, Bundle paramBundle, boolean paramBoolean, PluginUtils.PluginCallback paramPluginCallback)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    paramBundle.putString("qqVersion", "8.7.0");
+    paramBundle.putString("qqVersion", "8.8.17");
     paramBundle.putString("bizType", "StudyRoom");
     paramBundle.putString("plugin_id", "StudyRoom");
     paramBundle.putString("appid", "101854111");
@@ -30,7 +30,7 @@ public class PluginUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.PluginUtils
  * JD-Core Version:    0.7.0.1
  */

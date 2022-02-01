@@ -16,7 +16,7 @@ public abstract class ArkConfProcessor<T extends ArkConfBean>
     try
     {
       ArkConfBean localArkConfBean1 = (ArkConfBean)paramClass.newInstance();
-      ArkConfBean localArkConfBean2 = (ArkConfBean)QConfigManager.a().a(localArkConfBean1.a());
+      ArkConfBean localArkConfBean2 = (ArkConfBean)QConfigManager.b().b(localArkConfBean1.a());
       if (localArkConfBean2 == null) {
         return localArkConfBean1;
       }
@@ -30,8 +30,6 @@ public abstract class ArkConfProcessor<T extends ArkConfBean>
     return null;
   }
   
-  protected abstract T a(String paramString);
-  
   @Nullable
   public T a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -44,9 +42,9 @@ public abstract class ArkConfProcessor<T extends ArkConfBean>
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (!TextUtils.isEmpty(paramArrayOfQConfItem)) {
-        return a(paramArrayOfQConfItem);
+        return b(paramArrayOfQConfItem);
       }
       paramArrayOfQConfItem = new StringBuilder();
       paramArrayOfQConfItem.append("[onParsed] content is empty, config type = ");
@@ -55,6 +53,8 @@ public abstract class ArkConfProcessor<T extends ArkConfBean>
     }
     return null;
   }
+  
+  protected abstract T b(String paramString);
   
   public boolean isAccountRelated()
   {
@@ -107,7 +107,7 @@ public abstract class ArkConfProcessor<T extends ArkConfBean>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.processor.ArkConfProcessor
  * JD-Core Version:    0.7.0.1
  */

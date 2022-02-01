@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountGifPlayTimeHttpDownloader;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngSoLoader;
 import com.tencent.image.ProtocolDownloader;
@@ -23,6 +21,8 @@ import com.tencent.mobileqq.emoticonview.FavoriteDownloader;
 import com.tencent.mobileqq.hotpic.HotPicDownLoader;
 import com.tencent.mobileqq.hotpic.HotPicOriginDownLoader;
 import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
+import com.tencent.mobileqq.kandian.base.image.api.IPublicAccountGifPlayTimeHttpDownloader;
+import com.tencent.mobileqq.kandian.base.image.api.IPublicAccountHttpDownloader;
 import com.tencent.mobileqq.kandian.biz.skin.SkinGifImageDownloader;
 import com.tencent.mobileqq.pic.api.IPicFactory;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -290,7 +290,7 @@ class InitUrlDrawable$URLDrawableFactory
   {
     try
     {
-      Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838021);
+      Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838063);
       return localDrawable;
     }
     catch (Throwable localThrowable)
@@ -305,7 +305,7 @@ class InitUrlDrawable$URLDrawableFactory
   {
     try
     {
-      Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838024);
+      Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838066);
       return localDrawable;
     }
     catch (Throwable localThrowable)
@@ -318,7 +318,7 @@ class InitUrlDrawable$URLDrawableFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitUrlDrawable.URLDrawableFactory
  * JD-Core Version:    0.7.0.1
  */

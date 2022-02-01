@@ -31,7 +31,7 @@ class QFlutterFaceLoader$2
         while (i < m)
         {
           Object localObject = paramIntent[i];
-          QFlutterFaceLoader.b(this.a).remove(localObject);
+          QFlutterFaceLoader.c(this.a).remove(localObject);
           i += 1;
         }
         paramContext = DecodeRequest.b(k, paramContext);
@@ -49,7 +49,7 @@ class QFlutterFaceLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader.2
  * JD-Core Version:    0.7.0.1
  */

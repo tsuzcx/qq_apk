@@ -145,18 +145,18 @@ public class QColorNickTextView
                 while (j < this.mParagraphs.size())
                 {
                   localParagraph = (QColorClearableEditText.Paragraph)this.mParagraphs.get(j);
-                  k = localParagraph.c;
+                  k = localParagraph.e;
                   if (k != 1)
                   {
                     if (k == 2) {
-                      f1 += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
+                      f1 += ((EmoticonSpan)localParagraph.d).getDrawable().getBounds().width();
                     }
                   }
                   else {
-                    for (k = 0; k < localParagraph.jdField_a_of_type_JavaLangString.length(); k = m)
+                    for (k = 0; k < localParagraph.c.length(); k = m)
                     {
                       localObject3 = getPaint();
-                      str = localParagraph.jdField_a_of_type_JavaLangString;
+                      str = localParagraph.c;
                       m = k + 1;
                       f2 = ((TextPaint)localObject3).measureText(str, k, m);
                       localObject3 = this.mColors;
@@ -192,11 +192,11 @@ public class QColorNickTextView
             while (k < this.mParagraphs.size())
             {
               localParagraph = (QColorClearableEditText.Paragraph)this.mParagraphs.get(k);
-              j = localParagraph.c;
+              j = localParagraph.e;
               if (j != 1)
               {
                 if (j == 2) {
-                  f1 += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
+                  f1 += ((EmoticonSpan)localParagraph.d).getDrawable().getBounds().width();
                 }
               }
               else
@@ -204,14 +204,14 @@ public class QColorNickTextView
                 j = i;
                 if (i == 0)
                 {
-                  getPaint().getTextBounds(localParagraph.jdField_a_of_type_JavaLangString, 0, localParagraph.jdField_a_of_type_JavaLangString.length(), this.mTextBound);
+                  getPaint().getTextBounds(localParagraph.c, 0, localParagraph.c.length(), this.mTextBound);
                   j = this.mTextBound.height();
                 }
                 i = j;
-                for (j = 0; j < localParagraph.jdField_a_of_type_JavaLangString.length(); j = m)
+                for (j = 0; j < localParagraph.c.length(); j = m)
                 {
                   localObject3 = getPaint();
-                  str = localParagraph.jdField_a_of_type_JavaLangString;
+                  str = localParagraph.c;
                   m = j + 1;
                   float f7 = ((TextPaint)localObject3).measureText(str, j, m);
                   if (this.mOrientation == 1) {
@@ -314,20 +314,20 @@ public class QColorNickTextView
     while (i < this.mParagraphs.size())
     {
       Object localObject = (QColorClearableEditText.Paragraph)this.mParagraphs.get(i);
-      int j = ((QColorClearableEditText.Paragraph)localObject).c;
+      int j = ((QColorClearableEditText.Paragraph)localObject).e;
       if (j != 1)
       {
         if (j == 2)
         {
-          localObject = (EmoticonSpan)((QColorClearableEditText.Paragraph)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+          localObject = (EmoticonSpan)((QColorClearableEditText.Paragraph)localObject).d;
           localPointF.x += ((EmoticonSpan)localObject).getDrawable().getBounds().width();
           f = Math.max(f, ((EmoticonSpan)localObject).getDrawable().getBounds().height());
         }
       }
       else
       {
-        localPointF.x += getPaint().measureText(((QColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString);
-        getPaint().getTextBounds(((QColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString, 0, ((QColorClearableEditText.Paragraph)localObject).jdField_a_of_type_JavaLangString.length(), localRect);
+        localPointF.x += getPaint().measureText(((QColorClearableEditText.Paragraph)localObject).c);
+        getPaint().getTextBounds(((QColorClearableEditText.Paragraph)localObject).c, 0, ((QColorClearableEditText.Paragraph)localObject).c.length(), localRect);
         f = Math.max(f, localRect.height());
       }
       i += 1;
@@ -461,7 +461,7 @@ public class QColorNickTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QColorNickTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ class ComicCancelRedPointPopDialog$1
       ComicCancelRedPointPopDialog.a(this.a).setVisibility(0);
     }
     ComicCancelRedPointPopDialog localComicCancelRedPointPopDialog = this.a;
-    ComicCancelRedPointPopDialog.a(localComicCancelRedPointPopDialog, ComicCancelRedPointPopDialog.a(localComicCancelRedPointPopDialog, paramInt));
+    ComicCancelRedPointPopDialog.b(localComicCancelRedPointPopDialog, ComicCancelRedPointPopDialog.a(localComicCancelRedPointPopDialog, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.ComicCancelRedPointPopDialog.1
  * JD-Core Version:    0.7.0.1
  */

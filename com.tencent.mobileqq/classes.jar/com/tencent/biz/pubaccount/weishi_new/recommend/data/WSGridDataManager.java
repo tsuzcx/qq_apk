@@ -14,10 +14,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class WSGridDataManager
 {
-  private final WSGridDataFilter jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSGridDataFilter = new WSGridDataFilter();
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  private final WSGridDataFilter a = new WSGridDataFilter();
   private String b = "";
+  private String c = "";
+  private boolean d;
   
   @NotNull
   private ServiceCallback<stSimpleGetFeedListRsp, WSGridDataManager.WSGridRspModel> a(IWSGridRspListener paramIWSGridRspListener, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, long paramLong)
@@ -31,8 +31,8 @@ public class WSGridDataManager
     WSGridDataManager.WSGridRspModel localWSGridRspModel = new WSGridDataManager.WSGridRspModel(null);
     if ((paramstSimpleGetFeedListRsp.feeds != null) && (paramstSimpleGetFeedListRsp.feeds.size() > 0))
     {
-      this.jdField_a_of_type_JavaLangString = paramstSimpleGetFeedListRsp.attach_info;
-      this.b = paramstSimpleGetFeedListRsp.session;
+      this.b = paramstSimpleGetFeedListRsp.attach_info;
+      this.c = paramstSimpleGetFeedListRsp.session;
       if (paramRspHeaderBean != null)
       {
         WSRecommendReportManager.a().a(paramstSimpleGetFeedListRsp.trace_id, paramRspHeaderBean.a);
@@ -45,7 +45,7 @@ public class WSGridDataManager
         WSGlobalConfig.a().a(1, paramstSimpleGetFeedListRsp.config);
       }
       paramRspHeaderBean = paramstSimpleGetFeedListRsp.feeds;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSGridDataFilter.a(paramBoolean1, paramBoolean2, paramRspHeaderBean, paramString);
+      this.a.a(paramBoolean1, paramBoolean2, paramRspHeaderBean, paramString);
       WeishiUtils.a(paramRspHeaderBean);
       localWSGridRspModel.a(paramRspHeaderBean);
       localWSGridRspModel.a(paramstSimpleGetFeedListRsp.is_finished);
@@ -59,23 +59,23 @@ public class WSGridDataManager
   {
     if ((paramBoolean2) || (paramBoolean1))
     {
-      this.jdField_a_of_type_JavaLangString = "";
       this.b = "";
-      this.jdField_a_of_type_Boolean = false;
+      this.c = "";
+      this.d = false;
     }
   }
   
   public void a(WSGridRequestParams paramWSGridRequestParams, IWSGridRspListener paramIWSGridRspListener)
   {
-    boolean bool1 = paramWSGridRequestParams.a();
-    boolean bool2 = paramWSGridRequestParams.b();
-    boolean bool3 = paramWSGridRequestParams.c();
-    long l = paramWSGridRequestParams.a();
+    boolean bool1 = paramWSGridRequestParams.b();
+    boolean bool2 = paramWSGridRequestParams.c();
+    boolean bool3 = paramWSGridRequestParams.d();
+    long l = paramWSGridRequestParams.h();
     String str1 = paramWSGridRequestParams.a();
-    String str2 = paramWSGridRequestParams.c();
-    String str3 = paramWSGridRequestParams.b();
-    ArrayList localArrayList = paramWSGridRequestParams.a();
-    paramWSGridRequestParams = paramWSGridRequestParams.b();
+    String str2 = paramWSGridRequestParams.f();
+    String str3 = paramWSGridRequestParams.e();
+    ArrayList localArrayList = paramWSGridRequestParams.g();
+    paramWSGridRequestParams = paramWSGridRequestParams.i();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSGridDataManager.java][fetchGridData] isFirstFromService:");
     localStringBuilder.append(bool2);
@@ -85,17 +85,17 @@ public class WSGridDataManager
     localStringBuilder.append(paramWSGridRequestParams.size());
     WSLog.a("WSGridDataManagerLog", localStringBuilder.toString());
     a(bool1, bool2);
-    WSNetService.a(new WSRecommendRequest(this.jdField_a_of_type_JavaLangString, (byte)bool1, (byte)bool2, localArrayList, 1, "", str2, this.b, str3, str1, paramWSGridRequestParams)).a(a(paramIWSGridRspListener, bool1, bool2, bool3, str1, l));
+    WSNetService.a(new WSRecommendRequest(this.b, (byte)bool1, (byte)bool2, localArrayList, 1, "", str2, this.c, str3, str1, paramWSGridRequestParams)).a(a(paramIWSGridRspListener, bool1, bool2, bool3, str1, l));
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridDataManager
  * JD-Core Version:    0.7.0.1
  */

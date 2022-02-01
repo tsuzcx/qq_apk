@@ -167,7 +167,7 @@ public class MiniLoadingAdLayout
   {
     Object localObject = paramString3;
     if (TextUtils.isEmpty(paramString3)) {
-      localObject = HardCodeUtil.a(2131694120);
+      localObject = HardCodeUtil.a(2131891748);
     }
     this.isGame = paramBoolean1;
     this.mLoadingAdImgView.setImageDrawable(Drawable.createFromPath(paramString4));
@@ -193,13 +193,13 @@ public class MiniLoadingAdLayout
     paramString3.setText(paramString4.toString());
     paramString3 = (String)localObject;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramString3 = HardCodeUtil.a(2131694120);
+      paramString3 = HardCodeUtil.a(2131891748);
     }
     paramString4 = this.mDeveloperDescView;
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705111));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131903001));
     ((StringBuilder)localObject).append(paramString3);
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705110));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131903000));
     paramString4.setText(((StringBuilder)localObject).toString());
     localObject = (RelativeLayout.LayoutParams)this.mCountdownContainer.getLayoutParams();
     paramString3 = (RelativeLayout.LayoutParams)this.mRightContainer.getLayoutParams();
@@ -344,7 +344,7 @@ public class MiniLoadingAdLayout
           }
           localBundle.putLong("st", l);
           localBundle.putString("viewid", parseViewId(paramString));
-          localBundle.putString("wlv", StorageUtil.getPreference().getString("version", "1.22.0.00008"));
+          localBundle.putString("wlv", StorageUtil.getPreference().getString("version", "1.29.0.00002"));
           return localBundle;
         }
       }
@@ -391,33 +391,33 @@ public class MiniLoadingAdLayout
   private void initUI()
   {
     if (!this.selectSecondOption) {
-      LayoutInflater.from(getContext()).inflate(2131559408, this, true);
+      LayoutInflater.from(getContext()).inflate(2131625374, this, true);
     } else {
-      LayoutInflater.from(getContext()).inflate(2131559409, this, true);
+      LayoutInflater.from(getContext()).inflate(2131625375, this, true);
     }
-    this.mAppLayout = ((RelativeLayout)findViewById(2131371262));
-    this.mGameLayout = ((RelativeLayout)findViewById(2131371272));
-    this.mRightContainer = ((RelativeLayout)findViewById(2131365165));
-    this.mCloseBtn = ((ImageView)findViewById(2131363890));
-    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371268));
-    this.mCountdownTextView = ((TextView)findViewById(2131370365));
+    this.mAppLayout = ((RelativeLayout)findViewById(2131438606));
+    this.mGameLayout = ((RelativeLayout)findViewById(2131438616));
+    this.mRightContainer = ((RelativeLayout)findViewById(2131431318));
+    this.mCloseBtn = ((ImageView)findViewById(2131429840));
+    this.mCountdownContainer = ((RelativeLayout)findViewById(2131438612));
+    this.mCountdownTextView = ((TextView)findViewById(2131437627));
     if (!this.selectSecondOption) {
-      this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371275));
+      this.mLoadingAdSkipBtn = ((TextView)findViewById(2131438619));
     } else {
-      this.mLoadingAdSkipBtn = ((TextView)findViewById(2131370367));
+      this.mLoadingAdSkipBtn = ((TextView)findViewById(2131437629));
     }
-    this.mDeveloperDescView = ((TextView)findViewById(2131365581));
-    this.mAppNameView = ((TextView)findViewById(2131371263));
-    this.mGameNameView = ((TextView)findViewById(2131371273));
-    this.mAppLogoView = ((ImageView)findViewById(2131371261));
-    this.mGameLogoView = ((ImageView)findViewById(2131371270));
-    this.mLoadingAdImgView = ((ImageView)findViewById(2131370366));
-    this.mLoadingAdBarLayout = ((RelativeLayout)findViewById(2131371267));
-    this.mLoadingAdBar = ((RelativeLayout)findViewById(2131371265));
-    this.mLoadingAdTextView = ((TextView)findViewById(2131371264));
-    this.mGamePublicationInfoLayout = ((LinearLayout)findViewById(2131371274));
-    this.mGamePublicationInfoFirstLineView = ((TextView)findViewById(2131367493));
-    this.mGamePublicationInfoSecondLineView = ((TextView)findViewById(2131367494));
+    this.mDeveloperDescView = ((TextView)findViewById(2131431808));
+    this.mAppNameView = ((TextView)findViewById(2131438607));
+    this.mGameNameView = ((TextView)findViewById(2131438617));
+    this.mAppLogoView = ((ImageView)findViewById(2131438605));
+    this.mGameLogoView = ((ImageView)findViewById(2131438614));
+    this.mLoadingAdImgView = ((ImageView)findViewById(2131437628));
+    this.mLoadingAdBarLayout = ((RelativeLayout)findViewById(2131438611));
+    this.mLoadingAdBar = ((RelativeLayout)findViewById(2131438609));
+    this.mLoadingAdTextView = ((TextView)findViewById(2131438608));
+    this.mGamePublicationInfoLayout = ((LinearLayout)findViewById(2131438618));
+    this.mGamePublicationInfoFirstLineView = ((TextView)findViewById(2131434011));
+    this.mGamePublicationInfoSecondLineView = ((TextView)findViewById(2131434012));
     this.densityDpi = DisplayHelper.getDensity(getContext());
   }
   
@@ -523,17 +523,17 @@ public class MiniLoadingAdLayout
       this.mGamePublicationInfoLayout.setVisibility(0);
       this.mDeveloperDescView.setVisibility(8);
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131694131));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131891759));
       ((StringBuilder)localObject1).append(this.miniAppInfo.gamePublicationNumber);
       ((StringBuilder)localObject1).append("   ");
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131694129));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131891757));
       ((StringBuilder)localObject1).append(this.miniAppInfo.gameOperatingCompany);
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131694123));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131891751));
       ((StringBuilder)localObject2).append(this.miniAppInfo.gameApprovalNumber);
       ((StringBuilder)localObject2).append("   ");
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131694130));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131891758));
       ((StringBuilder)localObject2).append(this.miniAppInfo.gamePublicationCompany);
       localObject2 = ((StringBuilder)localObject2).toString();
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
@@ -691,7 +691,7 @@ public class MiniLoadingAdLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout
  * JD-Core Version:    0.7.0.1
  */

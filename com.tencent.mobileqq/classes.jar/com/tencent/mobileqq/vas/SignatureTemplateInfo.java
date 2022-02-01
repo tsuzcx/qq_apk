@@ -6,26 +6,21 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SignatureTemplateInfo
 {
-  public int a;
-  public SignatureTemplateInfo.ImageItem a;
-  @unique
-  public String a;
+  public String A;
+  public int B;
+  public String C;
+  public SignatureTemplateInfo.ImageItem D;
+  public int E;
   public AtomicBoolean a;
-  public SignatureTemplateInfo.DynamicItem[] a;
-  public int b;
+  @unique
   public String b;
-  public int c;
   public String c;
   public int d;
-  public String d;
   public int e;
-  public String e;
-  public int f;
   public String f;
   public int g;
-  public String g;
   public String h;
-  public String i;
+  public int i;
   public String j;
   public String k;
   public String l;
@@ -38,41 +33,46 @@ public class SignatureTemplateInfo
   public String s;
   public String t;
   public String u;
+  public SignatureTemplateInfo.DynamicItem[] v;
+  public int w;
+  public String x;
+  public String y;
+  public String z;
   
   public SignatureTemplateInfo()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.a = new AtomicBoolean(false);
   }
   
   public SignatureTemplateInfo(String paramString)
   {
     int i1 = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = new AtomicBoolean(false);
+    this.b = paramString;
     if (paramString.equals("0")) {
       a();
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem = new SignatureTemplateInfo.DynamicItem[5];
+    this.v = new SignatureTemplateInfo.DynamicItem[5];
     while (i1 < 5)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i1] = new SignatureTemplateInfo.DynamicItem(this);
+      this.v[i1] = new SignatureTemplateInfo.DynamicItem(this);
       i1 += 1;
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131713985);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = -1;
-    this.e = "#FF03081A";
-    this.p = "#FF878B99";
+    this.b = "0";
+    this.c = HardCodeUtil.a(2131911516);
+    this.d = 1;
+    this.e = -1;
+    this.j = "#FF03081A";
+    this.u = "#FF878B99";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SignatureTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

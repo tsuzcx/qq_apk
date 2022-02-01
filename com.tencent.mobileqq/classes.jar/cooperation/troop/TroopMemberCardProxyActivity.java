@@ -24,19 +24,19 @@ public class TroopMemberCardProxyActivity
       localPluginCommunicationHandler.register(paramQQAppInterface);
     }
     paramQQAppInterface = new IPluginManager.PluginParams(1);
-    paramQQAppInterface.b = paramString1;
-    paramQQAppInterface.e = paramString2;
-    paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString4;
-    paramQQAppInterface.f = paramString3;
-    paramQQAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
-    paramQQAppInterface.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    paramQQAppInterface.jdField_a_of_type_AndroidAppDialog = paramDialog;
-    paramQQAppInterface.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    paramQQAppInterface.jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
-    paramQQAppInterface.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
-    paramQQAppInterface.c = paramInt;
-    paramQQAppInterface.d = 10000;
-    paramQQAppInterface.g = null;
+    paramQQAppInterface.d = paramString1;
+    paramQQAppInterface.g = paramString2;
+    paramQQAppInterface.c = paramString4;
+    paramQQAppInterface.h = paramString3;
+    paramQQAppInterface.i = paramClass;
+    paramQQAppInterface.j = paramIntent;
+    paramQQAppInterface.l = paramDialog;
+    paramQQAppInterface.j.putExtra("userQqResources", 2);
+    paramQQAppInterface.j.putExtra("param_plugin_gesturelock", true);
+    paramQQAppInterface.j.putExtra("useSkinEngine", true);
+    paramQQAppInterface.k = paramInt;
+    paramQQAppInterface.r = 10000;
+    paramQQAppInterface.q = null;
     IPluginManager.a(paramActivity, paramQQAppInterface);
     ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_member_card_plugin", "load_plugin", 0, 0, null, null, null, null);
   }
@@ -64,7 +64,7 @@ public class TroopMemberCardProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopMemberCardProxyActivity
  * JD-Core Version:    0.7.0.1
  */

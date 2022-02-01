@@ -21,10 +21,10 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils;
 import com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils.Companion;
-import com.tencent.mobileqq.kandian.biz.detail.web.api.IRIJWebArticleOptimizeUtil;
 import com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialViewNew.DoShareClick;
 import com.tencent.mobileqq.kandian.repo.feeds.FeedsSPUtils;
 import com.tencent.mobileqq.kandian.repo.webarticle.RIJPageGenerator;
+import com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticleOptimizeUtil;
 import com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticleUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ImageUtil;
@@ -51,39 +51,26 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   extends WebViewFragment
 {
   public static final String a = "ReadInJoyArticleDetailFragment";
-  public long a;
-  public ImageView a;
-  ReadInJoyFastWebBottomSocialViewNew.DoShareClick a;
-  public boolean a;
-  public long b;
-  public String b;
   public boolean b;
-  public long c;
-  private String c;
-  public long d;
-  private String d;
+  public ImageView c = null;
+  public long d = 0L;
   public long e = 0L;
-  
-  public ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "-1";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$DoShareClick = new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.5(this);
-  }
+  public long f = 0L;
+  public long g = 0L;
+  public long h = 0L;
+  public String i = "-1";
+  public boolean j = false;
+  ReadInJoyFastWebBottomSocialViewNew.DoShareClick k = new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.5(this);
+  private String l;
+  private String m = null;
   
   private boolean a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    boolean bool = RIJWebArticleUtil.a.i();
-    String str = jdField_a_of_type_JavaLangString;
+    boolean bool = RIJWebArticleUtil.a.j();
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[loadCacheHtml] webLoadUrlOptimize = ");
     localStringBuilder.append(bool);
@@ -95,7 +82,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     if (!TextUtils.isEmpty(str))
     {
       this.webView.loadDataWithBaseURL(paramString, str, "text/html", "utf-8", paramString);
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[loadCacheHtml] hit cache, url = ");
       localStringBuilder.append(paramString);
@@ -120,13 +107,13 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
         localObject1 = ((BaseApplication)localObject2).getSharedPreferences(localStringBuilder.toString(), 4);
         if (localObject1 != null)
         {
-          this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject1).getBoolean("readInJoy_loading_img", false);
+          this.b = ((SharedPreferences)localObject1).getBoolean("readInJoy_loading_img", false);
           if (QLog.isColorLevel())
           {
-            localObject1 = jdField_a_of_type_JavaLangString;
+            localObject1 = a;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("showGif");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+            ((StringBuilder)localObject2).append(this.b);
             QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
           }
         }
@@ -139,23 +126,23 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     long l1 = this.intent.getLongExtra("click_time", -1L);
     long l2 = this.intent.getLongExtra("available_memory", -1L);
     boolean bool = this.intent.getBooleanExtra("preload_tool_white_list", false);
-    int i;
-    if (getStatistics().t) {
-      i = 2;
-    } else if (SwiftBrowserStatistics.p) {
-      i = 1;
+    int n;
+    if (getStatistics().aH) {
+      n = 2;
+    } else if (SwiftBrowserStatistics.aD) {
+      n = 1;
     } else {
-      i = 0;
+      n = 0;
     }
-    if (i != 0) {
-      i = 1;
-    } else if (SwiftBrowserStatistics.o) {
-      i = 2;
+    if (n != 0) {
+      n = 1;
+    } else if (SwiftBrowserStatistics.aC) {
+      n = 2;
     } else {
-      i = 0;
+      n = 0;
     }
     if (l1 > 0L) {
-      ThreadManager.post(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.4(this, l2, l1, i, bool), 8, null, true);
+      ThreadManager.post(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.4(this, l2, l1, n, bool), 8, null, true);
     }
   }
   
@@ -167,34 +154,34 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
         return;
       }
       Object localObject1 = this.intent.getExtras();
-      this.jdField_c_of_type_JavaLangString = ((Bundle)localObject1).getString("row_key", "");
+      this.l = ((Bundle)localObject1).getString("row_key", "");
       Object localObject2 = ((Bundle)localObject1).getString("url");
-      localObject2 = ((IRIJWebArticleOptimizeUtil)QRoute.api(IRIJWebArticleOptimizeUtil.class)).getWebUrlWithOptimization((String)localObject2);
+      localObject2 = RIJWebArticleOptimizeUtil.a.a((String)localObject2);
       if (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isKandianNeedAddSkinParamsUrl((String)localObject2))
       {
         localObject2 = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).addSkinParams((String)localObject2);
         ((Bundle)localObject1).putString("url", (String)localObject2);
         this.intent.putExtra("url", (String)localObject2);
       }
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[initData] url = ");
-      ((StringBuilder)localObject2).append(this.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.m);
       QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     }
   }
   
   private void e()
   {
-    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (RIJPageGenerator.INSTANCE.isPageHtmlExist(this.jdField_c_of_type_JavaLangString)) && (getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null)) {
-      getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
+    if ((!TextUtils.isEmpty(this.l)) && (RIJPageGenerator.INSTANCE.isPageHtmlExist(this.l)) && (getUIStyleHandler().v != null)) {
+      getUIStyleHandler().v.setVisibility(8);
     }
   }
   
   @TargetApi(14)
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
     ThreadManager.getUIHandler().post(new ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.3(this));
@@ -202,20 +189,20 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   
   public void a(Bundle paramBundle)
   {
-    if ((getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView != null) && (getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView != null) && (getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup != null))
+    if ((getSwiftTitleUI().d != null) && (getSwiftTitleUI().h != null) && (getSwiftTitleUI().o != null))
     {
-      if ((!getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_b_of_type_Boolean) && (!getUIStyle().m))
+      if ((!getUIStyleHandler().f.b) && (!getUIStyle().v))
       {
-        getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849807);
+        getSwiftTitleUI().h.setImageResource(2130851512);
         getSwiftTitleUI().c(-16777216);
       }
       else
       {
-        paramBundle = ImageUtil.a(getResources().getDrawable(2130849807), -1);
-        getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        paramBundle = ImageUtil.a(getResources().getDrawable(2130851512), -1);
+        getSwiftTitleUI().h.setImageDrawable(paramBundle);
         getSwiftTitleUI().c(-1);
       }
-      getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      getSwiftTitleUI().h.setVisibility(0);
     }
   }
   
@@ -229,19 +216,19 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     if ((paramTouchWebView != null) && (bool))
     {
       paramBundle = paramTouchWebView.getSettingsExtension();
-      int i = WebView.getTbsCoreVersion(BaseApplicationImpl.getContext());
+      int n = WebView.getTbsCoreVersion(BaseApplicationImpl.getContext());
       if (QLog.isColorLevel())
       {
-        paramTouchWebView = jdField_a_of_type_JavaLangString;
+        paramTouchWebView = a;
         paramWebViewKernelCallBack = new StringBuilder();
         paramWebViewKernelCallBack.append("tbsCoreVersion: ");
-        paramWebViewKernelCallBack.append(i);
+        paramWebViewKernelCallBack.append(n);
         QLog.d(paramTouchWebView, 2, paramWebViewKernelCallBack.toString());
       }
-      if ((paramBundle != null) && (i >= 36855))
+      if ((paramBundle != null) && (n >= 36855))
       {
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "rij webview use ip connect");
+          QLog.d(a, 2, "rij webview use ip connect");
         }
         paramTouchWebView = new ArrayList();
         paramTouchWebView.add("post.mp.qq.com");
@@ -251,7 +238,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     }
     else if (QLog.isColorLevel())
     {
-      paramBundle = jdField_a_of_type_JavaLangString;
+      paramBundle = a;
       paramTouchWebView = new StringBuilder();
       paramTouchWebView.append("ipConnect: ");
       paramTouchWebView.append(bool);
@@ -261,31 +248,31 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   
   public void a(Bundle paramBundle, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
-    if (getUIStyleHandler().c) {
+    if (getUIStyleHandler().t) {
       return;
     }
     paramWebViewKernelCallBack.onShowPreview(paramBundle);
-    if ((getSwiftTitleUI() != null) && (getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView != null) && (getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView != null) && (getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup != null))
+    if ((getSwiftTitleUI() != null) && (getSwiftTitleUI().d != null) && (getSwiftTitleUI().h != null) && (getSwiftTitleUI().o != null))
     {
-      getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849814);
-      getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849807);
-      if ((!getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_b_of_type_Boolean) && (!getUIStyle().m))
+      getSwiftTitleUI().d.setBackgroundResource(2130851519);
+      getSwiftTitleUI().h.setImageResource(2130851512);
+      if ((!getUIStyleHandler().f.b) && (!getUIStyle().v))
       {
-        getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(0);
-        getSwiftTitleUI().jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
-        if (getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-          getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setCustomColor(-1);
+        getSwiftTitleUI().o.setBackgroundResource(0);
+        getSwiftTitleUI().o.setBackgroundColor(-1);
+        if (getUIStyleHandler().v != null) {
+          getUIStyleHandler().v.setCustomColor(-1);
         }
-        if (getWebTitleBarInterface().a() != null)
+        if (getWebTitleBarInterface().l() != null)
         {
-          getWebTitleBarInterface().a().setBackgroundColor(-1);
-          getUIStyle().i = true;
+          getWebTitleBarInterface().l().setBackgroundColor(-1);
+          getUIStyle().r = true;
         }
         getSwiftTitleUI().d(-16777216);
         getSwiftTitleUI().f(-16777216);
-        getSwiftTitleUI().jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130849814);
-        getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849807);
-        getSwiftTitleUI().jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        getSwiftTitleUI().d.setBackgroundResource(2130851519);
+        getSwiftTitleUI().h.setImageResource(2130851512);
+        getSwiftTitleUI().h.setVisibility(0);
       }
     }
     if (this.mNightMode)
@@ -294,28 +281,28 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
       paramBundle.setBackgroundColor(1996488704);
       getQBaseActivity().addContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
     }
-    RIJSocialBottomUtils.a.a(this.intent.getExtras(), getActivity(), getContentView(), this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$DoShareClick);
+    RIJSocialBottomUtils.a.a(this.intent.getExtras(), getActivity(), getContentView(), this.k);
   }
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
-    boolean bool = getStatistics().i;
+    boolean bool = getStatistics().at;
     paramWebViewKernelCallBack.onPageStarted(paramWebView, paramString, paramBitmap);
     if (bool) {
-      this.jdField_c_of_type_Long = System.currentTimeMillis();
+      this.f = System.currentTimeMillis();
     }
     e();
-    RIJSocialBottomUtils.a.a(false, this.jdField_d_of_type_JavaLangString, paramString);
+    RIJSocialBottomUtils.a.a(false, this.m, paramString);
   }
   
   public void a(WebView paramWebView, String paramString, WebViewKernelCallBack paramWebViewKernelCallBack)
   {
-    boolean bool = getStatistics().j;
+    boolean bool = getStatistics().au;
     paramWebViewKernelCallBack.onPageFinished(paramWebView, paramString);
     if (bool)
     {
-      this.jdField_d_of_type_Long = System.currentTimeMillis();
-      this.jdField_b_of_type_Boolean = true;
+      this.g = System.currentTimeMillis();
+      this.j = true;
       paramWebView = BaseApplicationImpl.getApplication().getRuntime();
       if (paramWebView != null)
       {
@@ -324,7 +311,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
         } else {
           paramWebView = "0";
         }
-        this.jdField_b_of_type_JavaLangString = paramWebView;
+        this.i = paramWebView;
       }
       c();
     }
@@ -338,7 +325,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   @TargetApi(12)
   public boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.d = System.currentTimeMillis();
     d();
     Object localObject = this.intent.getExtras();
     boolean bool;
@@ -354,7 +341,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
     paramBundle = ((Bundle)localObject).getString("preload_iamge_url");
     if ((this.webView != null) && (this.webView.getPluginEngine() != null))
     {
-      localObject = (PubAccountPreloadPlugin)this.webView.getPluginEngine().a("pubAccountPreload");
+      localObject = (PubAccountPreloadPlugin)this.webView.getPluginEngine().b("pubAccountPreload");
       if ((localObject != null) && (!TextUtils.isEmpty(paramBundle))) {
         ((PubAccountPreloadPlugin)localObject).a(paramBundle, true);
       }
@@ -375,7 +362,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
   
   public void onDestroy()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.j) {
       c();
     }
     RIJSocialBottomUtils.a.a();
@@ -389,7 +376,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.detail.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment
  * JD-Core Version:    0.7.0.1
  */

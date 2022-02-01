@@ -43,20 +43,20 @@ import mqq.util.WeakReference;
 public class AVGameBusinessCtrl
   extends IAVGameBusinessCtrl
 {
-  private static volatile AVGameBusinessCtrl jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new AVGameBusinessCtrl.1(this);
-  private AVGameCameraAssistant jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant;
-  private IAVGameBusinessCtrl.IOnEnterRoom jdField_a_of_type_ComTencentAvgameQavIAVGameBusinessCtrl$IOnEnterRoom;
-  private IAVGameMediaPlayerCtrl jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl;
-  private MultiOperatorImplForGame jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame;
-  private AVGameSessionManager jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
-  private QavMultiObserver jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver = new AVGameBusinessCtrl.2(this);
-  private final ArrayList<WeakReference<AVGameUIEventCallback>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final WeakReference<AVGameAppInterface> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  private boolean c = false;
-  private boolean d;
+  private static volatile AVGameBusinessCtrl a;
+  private final WeakReference<AVGameAppInterface> b;
+  private final ArrayList<WeakReference<AVGameUIEventCallback>> c = new ArrayList();
+  private AVGameSessionManager d;
+  private boolean e = true;
+  private final BroadcastReceiver f = new AVGameBusinessCtrl.1(this);
+  private MultiOperatorImplForGame g;
+  private IAVGameBusinessCtrl.IOnEnterRoom h;
+  private boolean i;
+  private boolean j = false;
+  private boolean k;
+  private AVGameCameraAssistant l;
+  private IAVGameMediaPlayerCtrl m;
+  private QavMultiObserver n = new AVGameBusinessCtrl.2(this);
   
   private AVGameBusinessCtrl()
   {
@@ -75,21 +75,21 @@ public class AVGameBusinessCtrl
     } else {
       localObject1 = null;
     }
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject1);
-    ((PushManager)((AppRuntime)localObject3).getManager(5)).registProxyMessagePush(AppSetting.a(), (String)localObject2, "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c", "VideoCCSvc.Adaptation", "OnlinePush.ReqPush" });
+    this.b = new WeakReference(localObject1);
+    ((PushManager)((AppRuntime)localObject3).getManager(5)).registProxyMessagePush(AppSetting.d(), (String)localObject2, "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c", "VideoCCSvc.Adaptation", "OnlinePush.ReqPush" });
     AVLog.a(new AVLogImpl());
-    localObject1 = VideoChannelImpl.a();
+    localObject1 = VideoChannelImpl.c();
     ((VideoChannelImpl)localObject1).a((AppRuntime)localObject3);
     ((VideoChannelImpl)localObject1).a(new AVGameBusinessCtrl.3(this));
-    long l = ((AppRuntime)localObject3).getLongAccountUin();
+    long l1 = ((AppRuntime)localObject3).getLongAccountUin();
     localObject2 = BaseApplicationImpl.getApplication().getApplicationContext();
-    localObject3 = new QavCtrlForGame((Context)localObject2, new MultiOperatorImplForGame((Context)localObject2, l, (VideoChannelInterface)localObject1, AvGameConfigUtil.a().b(l)));
+    localObject3 = new QavCtrlForGame((Context)localObject2, new MultiOperatorImplForGame((Context)localObject2, l1, (VideoChannelInterface)localObject1, AvGameConfigUtil.a().c(l1)));
     QavSDK localQavSDK = QavSDK.a();
     localQavSDK.a((QavCtrl)localObject3);
-    localQavSDK.a((Context)localObject2, l, (VideoChannelInterface)localObject1);
-    this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame = ((MultiOperatorImplForGame)QavSDK.a().a());
-    this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager = new AVGameSessionManager();
-    localQavSDK.a(this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver);
+    localQavSDK.a((Context)localObject2, l1, (VideoChannelInterface)localObject1);
+    this.g = ((MultiOperatorImplForGame)QavSDK.a().c());
+    this.d = new AVGameSessionManager();
+    localQavSDK.a(this.n);
     CostTraceUtil.a().c("AVGameBusinessCtrlInit");
     AVGamePerfReporter.a().a("param_QAVInit", 0);
     AVGamePerfReporter.a().a("param_AVGameInit", 0);
@@ -100,28 +100,13 @@ public class AVGameBusinessCtrl
     return b();
   }
   
-  public static void a()
-  {
-    if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl != null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl != null) {
-          jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl.b();
-        }
-        jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl = null;
-        return;
-      }
-      finally {}
-    }
-  }
-  
   private void a(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
       return;
     }
-    AVGameHandler.a().a().post(new AVGameBusinessCtrl.4(this, paramIntent, paramContext));
+    AVGameHandler.a().b().post(new AVGameBusinessCtrl.4(this, paramIntent, paramContext));
   }
   
   private void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt1, long paramLong3, int paramInt2)
@@ -134,7 +119,7 @@ public class AVGameBusinessCtrl
     ((StringBuilder)???).append("]");
     AVLog.c("AVGameBusinessCtrl", ((StringBuilder)???).toString());
     ??? = AVGameSession.a(paramInt1, paramLong2);
-    ??? = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a((String)???);
+    ??? = this.d.a((String)???);
     if (??? == null)
     {
       AVLog.a("AVGameBusinessCtrl", "onMemberShareInOrOut failed, session is null.");
@@ -151,9 +136,9 @@ public class AVGameBusinessCtrl
     ((StringBuilder)???).append(bool);
     ((StringBuilder)???).append("]");
     AVLog.c("AVGameBusinessCtrl", ((StringBuilder)???).toString());
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -171,65 +156,72 @@ public class AVGameBusinessCtrl
   
   public static AVGameBusinessCtrl b()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl == null) {
-          jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl = new AVGameBusinessCtrl();
+        if (a == null) {
+          a = new AVGameBusinessCtrl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl;
+    return a;
   }
   
   private void b(int paramInt1, int paramInt2)
   {
     boolean bool = false;
-    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute route=%s isHeadsetPlugged=%s isBluetoothOn=%s subType = %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(d()), Boolean.valueOf(g()), Integer.valueOf(paramInt2) }));
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
+    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute route=%s isHeadsetPlugged=%s isBluetoothOn=%s subType = %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(k()), Boolean.valueOf(t()), Integer.valueOf(paramInt2) }));
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
     if (localIMultiOperator != null) {
       localIMultiOperator.b(paramInt1);
     }
-    AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+    AVGameSession localAVGameSession = this.d.a();
     if (localAVGameSession != null)
     {
       if (paramInt1 == 1) {
         bool = true;
       }
-      localAVGameSession.d = bool;
+      localAVGameSession.h = bool;
     }
     if (localIMultiOperator != null) {
-      c(localIMultiOperator.a(), paramInt2);
+      c(localIMultiOperator.i(), paramInt2);
     }
   }
   
-  public static boolean b()
+  public static void c()
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl == null) {
-      AVLog.b("AVGameBusinessCtrl", "ERROR!!! Instance == null. ", new Throwable("打印调用栈"));
+    if (a != null) {
+      try
+      {
+        if (a != null) {
+          a.f();
+        }
+        a = null;
+        return;
+      }
+      finally {}
     }
-    return jdField_a_of_type_ComTencentAvgameQavAVGameBusinessCtrl != null;
   }
   
   private void c(int paramInt)
   {
-    int j = 3;
-    boolean bool2 = d();
+    int i2 = 3;
+    boolean bool2 = k();
     boolean bool1 = false;
-    boolean bool3 = g();
-    int i = 2;
+    boolean bool3 = t();
+    int i1 = 2;
     QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute isHeadsetPlugged=%s isBluetoothOn=%s current = %d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(paramInt) }));
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
     if (localIMultiOperator != null)
     {
-      if ((paramInt != 0) && (d()))
+      if ((paramInt != 0) && (k()))
       {
         localIMultiOperator.b(0);
-        i = 0;
-        paramInt = j;
+        i1 = 0;
+        paramInt = i2;
       }
-      else if ((paramInt != 2) && (g()))
+      else if ((paramInt != 2) && (t()))
       {
         localIMultiOperator.b(2);
         paramInt = 0;
@@ -238,113 +230,77 @@ public class AVGameBusinessCtrl
       {
         localIMultiOperator.b(1);
         paramInt = 0;
-        i = 1;
+        i1 = 1;
       }
-      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      AVGameSession localAVGameSession = this.d.a();
       if (localAVGameSession != null)
       {
-        if (i == 1) {
+        if (i1 == 1) {
           bool1 = true;
         }
-        localAVGameSession.d = bool1;
+        localAVGameSession.h = bool1;
       }
-      c(localIMultiOperator.a(), paramInt);
+      c(localIMultiOperator.i(), paramInt);
     }
   }
   
   private void c(int paramInt1, int paramInt2)
   {
-    AVGameHandler.a().b().post(new AVGameBusinessCtrl.6(this, paramInt1, paramInt2));
+    AVGameHandler.a().c().post(new AVGameBusinessCtrl.6(this, paramInt1, paramInt2));
   }
   
-  private void d()
+  public static boolean e()
   {
-    if (!a()) {
+    if (a == null) {
+      AVLog.b("AVGameBusinessCtrl", "ERROR!!! Instance == null. ", new Throwable("打印调用栈"));
+    }
+    return a != null;
+  }
+  
+  private void r()
+  {
+    if (!d()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a();
+    this.g.a();
   }
   
-  private void e()
+  private void s()
   {
-    if (!a()) {
+    if (!d()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.b();
+    this.g.b();
   }
   
-  private void f()
-  {
-    int i = 2;
-    boolean bool2 = d();
-    boolean bool1 = false;
-    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute isHeadsetPlugged=%s isBluetoothOn=%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(g()) }));
-    IMultiOperator localIMultiOperator = QavSDK.a().a();
-    if (localIMultiOperator != null)
-    {
-      if (d())
-      {
-        localIMultiOperator.b(0);
-        i = 0;
-      }
-      else if (g())
-      {
-        localIMultiOperator.b(2);
-      }
-      else
-      {
-        localIMultiOperator.b(1);
-        i = 1;
-      }
-      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-      if (localAVGameSession != null)
-      {
-        if (i == 1) {
-          bool1 = true;
-        }
-        localAVGameSession.d = bool1;
-      }
-      c(localIMultiOperator.a(), -1);
-    }
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl == null)
-    {
-      this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl = new AVGameMediaPlayerCtrl();
-      this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl.e();
-    }
-  }
-  
-  private boolean g()
+  private boolean t()
   {
     Object localObject = BluetoothAdapter.getDefaultAdapter();
     boolean bool2 = ((BluetoothAdapter)localObject).isEnabled();
     boolean bool1 = true;
     if (bool2)
     {
-      i = ((BluetoothAdapter)localObject).getProfileConnectionState(2);
-      int j = ((BluetoothAdapter)localObject).getProfileConnectionState(1);
-      int k = ((BluetoothAdapter)localObject).getProfileConnectionState(3);
-      if (i == 2) {
+      i1 = ((BluetoothAdapter)localObject).getProfileConnectionState(2);
+      int i2 = ((BluetoothAdapter)localObject).getProfileConnectionState(1);
+      int i3 = ((BluetoothAdapter)localObject).getProfileConnectionState(3);
+      if (i1 == 2) {
         break label71;
       }
-      if (j == 2)
+      if (i2 == 2)
       {
-        i = j;
+        i1 = i2;
         break label71;
       }
-      if (k == 2)
+      if (i3 == 2)
       {
-        i = k;
+        i1 = i3;
         break label71;
       }
     }
-    int i = -1;
+    int i1 = -1;
     label71:
     localObject = (AudioManager)BaseApplicationImpl.getContext().getSystemService("audio");
-    if (i == -1)
+    if (i1 == -1)
     {
       if (((AudioManager)localObject).isBluetoothA2dpOn()) {
         return true;
@@ -354,17 +310,53 @@ public class AVGameBusinessCtrl
     return bool1;
   }
   
-  public int a()
+  private void u()
   {
-    if ((b()) && (a())) {
-      return this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a();
+    int i1 = 2;
+    boolean bool2 = k();
+    boolean bool1 = false;
+    QLog.d("AVGameBusinessCtrl", 1, String.format("switchAudioRoute isHeadsetPlugged=%s isBluetoothOn=%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(t()) }));
+    IMultiOperator localIMultiOperator = QavSDK.a().c();
+    if (localIMultiOperator != null)
+    {
+      if (k())
+      {
+        localIMultiOperator.b(0);
+        i1 = 0;
+      }
+      else if (t())
+      {
+        localIMultiOperator.b(2);
+      }
+      else
+      {
+        localIMultiOperator.b(1);
+        i1 = 1;
+      }
+      AVGameSession localAVGameSession = this.d.a();
+      if (localAVGameSession != null)
+      {
+        if (i1 == 1) {
+          bool1 = true;
+        }
+        localAVGameSession.h = bool1;
+      }
+      c(localIMultiOperator.i(), -1);
     }
-    return 0;
+  }
+  
+  private void v()
+  {
+    if (this.m == null)
+    {
+      this.m = new AVGameMediaPlayerCtrl();
+      this.m.h();
+    }
   }
   
   public int a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, IAVGameBusinessCtrl.IOnEnterRoom paramIOnEnterRoom)
   {
-    if (!b()) {
+    if (!e()) {
       return -1;
     }
     AVGamePerfReporter.a().a("param_QAVEnterRoom");
@@ -386,7 +378,7 @@ public class AVGameBusinessCtrl
     } else {
       localObject = "";
     }
-    if (AVGameUtil.a((String)localObject) == 0L)
+    if (AVGameUtil.b((String)localObject) == 0L)
     {
       paramString = new StringBuilder();
       paramString.append("enterRoom failed. selfUin[");
@@ -395,8 +387,8 @@ public class AVGameBusinessCtrl
       AVLog.a("AVGameBusinessCtrl", paramString.toString());
       return -1;
     }
-    int i = AVGameUtil.a(paramString);
-    if (i == 0)
+    int i1 = AVGameUtil.a(paramString);
+    if (i1 == 0)
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("enterRoom failed. invalid args. [");
@@ -405,129 +397,87 @@ public class AVGameBusinessCtrl
       AVLog.a("AVGameBusinessCtrl", paramArrayOfByte.toString());
       return -1;
     }
-    paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+    paramString = this.d.a();
     if (paramString != null)
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("enterRoom failed. a call already exist. relation id(or peer uin) = ");
-      paramArrayOfByte.append(paramString.jdField_a_of_type_Long);
+      paramArrayOfByte.append(paramString.e);
       paramArrayOfByte.append(", sessionId = ");
-      paramArrayOfByte.append(paramString.jdField_a_of_type_JavaLangString);
+      paramArrayOfByte.append(paramString.b);
       AVLog.a("AVGameBusinessCtrl", paramArrayOfByte.toString());
       return -1;
     }
-    long l = i;
-    String str = AVGameSession.a(11, l);
-    paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a(str);
+    long l1 = i1;
+    String str = AVGameSession.a(11, l1);
+    paramString = this.d.a(str);
     if (paramString != null)
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("enterRoom failed. a call already exist. relation id = ");
-      paramArrayOfByte.append(paramString.jdField_a_of_type_Long);
+      paramArrayOfByte.append(paramString.e);
       paramArrayOfByte.append(", sessionId = ");
-      paramArrayOfByte.append(paramString.jdField_a_of_type_JavaLangString);
+      paramArrayOfByte.append(paramString.b);
       AVLog.a("AVGameBusinessCtrl", paramArrayOfByte.toString());
       return -1;
     }
-    paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a(1, str, true);
+    paramString = this.d.a(1, str, true);
     if (paramString == null)
     {
       AVLog.a("AVGameBusinessCtrl", "enterRoom failed. create session fail");
       return -1;
     }
-    paramString.jdField_b_of_type_Int = 11;
-    paramString.jdField_a_of_type_Long = l;
-    paramString.jdField_b_of_type_Boolean = false;
-    paramString.c = true;
+    paramString.d = 11;
+    paramString.e = l1;
+    paramString.f = false;
+    paramString.g = true;
     paramString.a(1);
-    paramString.jdField_b_of_type_Long = AVGameUtil.a((String)localObject);
+    paramString.l = AVGameUtil.b((String)localObject);
     localObject = new QavDef.MultiParams();
-    ((QavDef.MultiParams)localObject).jdField_a_of_type_Int = 11;
-    ((QavDef.MultiParams)localObject).jdField_b_of_type_Int = 14;
+    ((QavDef.MultiParams)localObject).a = 11;
+    ((QavDef.MultiParams)localObject).b = 14;
     ((QavDef.MultiParams)localObject).c = 1;
-    ((QavDef.MultiParams)localObject).d = i;
-    ((QavDef.MultiParams)localObject).jdField_a_of_type_JavaLangString = "";
-    ((QavDef.MultiParams)localObject).jdField_a_of_type_Long = paramString.jdField_b_of_type_Long;
-    ((QavDef.MultiParams)localObject).e = paramInt2;
-    ((QavDef.MultiParams)localObject).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    ((QavDef.MultiParams)localObject).f = paramInt1;
-    paramInt1 = this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a((QavDef.MultiParams)localObject);
+    ((QavDef.MultiParams)localObject).d = i1;
+    ((QavDef.MultiParams)localObject).f = "";
+    ((QavDef.MultiParams)localObject).e = paramString.l;
+    ((QavDef.MultiParams)localObject).g = paramInt2;
+    ((QavDef.MultiParams)localObject).h = paramArrayOfByte;
+    ((QavDef.MultiParams)localObject).i = paramInt1;
+    paramInt1 = this.g.a((QavDef.MultiParams)localObject);
     if (paramInt1 == 0)
     {
-      this.jdField_a_of_type_ComTencentAvgameQavIAVGameBusinessCtrl$IOnEnterRoom = paramIOnEnterRoom;
+      this.h = paramIOnEnterRoom;
       return paramInt1;
     }
     paramString = new StringBuilder();
     paramString.append("enterRoom failed. retCode = ");
     paramString.append(paramInt1);
     AVLog.a("AVGameBusinessCtrl", paramString.toString());
-    paramString = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
-    paramString.b(paramString.a().jdField_a_of_type_JavaLangString);
+    paramString = this.d;
+    paramString.b(paramString.a().b);
     return paramInt1;
-  }
-  
-  public AVGameCameraAssistant a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {
-          this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant = new AVGameCameraAssistant(this, (AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get());
-        }
-      }
-      finally {}
-    }
-    if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant == null) {
-      QLog.i("AVGameBusinessCtrl", 1, "getCameraAssistant, assistant is null.");
-    }
-    return this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant;
-  }
-  
-  public IAVGameMediaPlayerCtrl a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl;
-  }
-  
-  public AVGameSession a()
-  {
-    if (b())
-    {
-      AVGameSessionManager localAVGameSessionManager = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
-      if (localAVGameSessionManager != null) {
-        return localAVGameSessionManager.a();
-      }
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    if ((b()) && (a())) {
-      return this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a();
-    }
-    return null;
   }
   
   public void a(int paramInt)
   {
-    if (b())
+    if (e())
     {
-      if (!a()) {
+      if (!d()) {
         return;
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setAudioRoute route = ");
       ((StringBuilder)localObject).append(paramInt);
       AVLog.c("AVGameBusinessCtrl", ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.b(paramInt);
-      localObject = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      this.g.b(paramInt);
+      localObject = this.d.a();
       if (localObject != null)
       {
         boolean bool = true;
         if (paramInt != 1) {
           bool = false;
         }
-        ((AVGameSession)localObject).d = bool;
+        ((AVGameSession)localObject).h = bool;
       }
       c(paramInt, 0);
     }
@@ -535,7 +485,7 @@ public class AVGameBusinessCtrl
   
   public void a(int paramInt1, int paramInt2)
   {
-    AVGameHandler.a().b().post(new AVGameBusinessCtrl.5(this, paramInt1, paramInt2));
+    AVGameHandler.a().c().post(new AVGameBusinessCtrl.5(this, paramInt1, paramInt2));
   }
   
   public void a(AVGameUIEventCallback paramAVGameUIEventCallback)
@@ -543,9 +493,9 @@ public class AVGameBusinessCtrl
     if (paramAVGameUIEventCallback == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -553,7 +503,7 @@ public class AVGameBusinessCtrl
           return;
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramAVGameUIEventCallback));
+      this.c.add(new WeakReference(paramAVGameUIEventCallback));
       return;
     }
     for (;;)
@@ -564,9 +514,9 @@ public class AVGameBusinessCtrl
   
   public void a(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -582,44 +532,9 @@ public class AVGameBusinessCtrl
     }
   }
   
-  public boolean a()
-  {
-    return this.c;
-  }
-  
-  public void b()
-  {
-    AVLog.d("AVGameBusinessCtrl", "AVGameBusinessCtrl destroy.");
-    QavSDK.a().b(this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver);
-    this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver = null;
-    this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager = null;
-    this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame = null;
-    ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName());
-    QavSDK.a().a();
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant != null)
-        {
-          this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant.c();
-          this.jdField_a_of_type_ComTencentAvgameQavAVGameCameraAssistant = null;
-        }
-        return;
-      }
-      finally {}
-    }
-  }
-  
   public void b(int paramInt)
   {
-    AVGameSession localAVGameSession = a();
+    AVGameSession localAVGameSession = j();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -639,20 +554,20 @@ public class AVGameBusinessCtrl
     } else {
       bool = false;
     }
-    localAVGameSession.g = bool;
-    if (SecurityPolicyChecker.a().b()) {
-      localAVGameSession.g = true;
+    localAVGameSession.o = bool;
+    if (SecurityPolicyChecker.a().c()) {
+      localAVGameSession.o = true;
     }
-    Object localObject = a();
+    Object localObject = m();
     if (localObject != null) {
       ((AVGameCameraAssistant)localObject).a("goOnStage");
     }
-    localObject = QavSDK.a().a();
+    localObject = QavSDK.a().c();
     if ((localObject instanceof MultiOperatorImplForGame))
     {
       localAVGameSession.b(1);
-      if (!((MultiOperatorImplForGame)localObject).a()) {
-        this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver.a(false, localAVGameSession.jdField_a_of_type_Long, localAVGameSession.jdField_b_of_type_Int);
+      if (!((MultiOperatorImplForGame)localObject).c()) {
+        this.n.a(false, localAVGameSession.e, localAVGameSession.d);
       }
     }
   }
@@ -662,15 +577,15 @@ public class AVGameBusinessCtrl
     if (paramAVGameUIEventCallback == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() == paramAVGameUIEventCallback))
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localWeakReference);
+          this.c.remove(localWeakReference);
           return;
         }
       }
@@ -684,20 +599,180 @@ public class AVGameBusinessCtrl
   
   public void b(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = this.b;
     if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      long l = Long.valueOf(((AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get()).getCurrentAccountUin()).longValue();
-      localObject = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
+      long l1 = Long.valueOf(((AVGameAppInterface)this.b.get()).getCurrentAccountUin()).longValue();
+      localObject = this.d.a();
       if (localObject != null) {
-        a(paramBoolean, l, ((AVGameSession)localObject).jdField_a_of_type_Long, ((AVGameSession)localObject).jdField_b_of_type_Int, 0L, 0);
+        a(paramBoolean, l1, ((AVGameSession)localObject).e, ((AVGameSession)localObject).d, 0L, 0);
       }
     }
   }
   
-  public void c()
+  public void c(boolean paramBoolean)
   {
-    AVGameSession localAVGameSession = a();
+    if (e())
+    {
+      if (!d()) {
+        return;
+      }
+      this.g.a(paramBoolean);
+      AVGameSession localAVGameSession = this.d.a();
+      if (localAVGameSession != null) {
+        localAVGameSession.i = (paramBoolean ^ true);
+      }
+    }
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (e())
+    {
+      if (!d()) {
+        return;
+      }
+      this.g.b(paramBoolean);
+      AVGameSession localAVGameSession = this.d.a();
+      if (localAVGameSession != null) {
+        localAVGameSession.k = (paramBoolean ^ true);
+      }
+    }
+  }
+  
+  public boolean d()
+  {
+    return this.j;
+  }
+  
+  public void f()
+  {
+    AVLog.d("AVGameBusinessCtrl", "AVGameBusinessCtrl destroy.");
+    QavSDK.a().b(this.n);
+    this.n = null;
+    this.d = null;
+    this.g = null;
+    ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.d(), BaseApplicationImpl.getApplication().getQQProcessName());
+    QavSDK.a().b();
+    if (this.i)
+    {
+      this.i = false;
+      BaseApplicationImpl.getContext().unregisterReceiver(this.f);
+    }
+    synchronized (this.c)
+    {
+      this.c.clear();
+      try
+      {
+        if (this.l != null)
+        {
+          this.l.d();
+          this.l = null;
+        }
+        return;
+      }
+      finally {}
+    }
+  }
+  
+  public boolean g()
+  {
+    if (!e()) {
+      return true;
+    }
+    Object localObject1 = (AVGameAppInterface)this.b.get();
+    if (localObject1 != null) {
+      AVGameUtilService.b(((AVGameAppInterface)localObject1).getApp());
+    }
+    localObject1 = this.d;
+    if (localObject1 != null) {
+      localObject1 = ((AVGameSessionManager)localObject1).a();
+    } else {
+      localObject1 = null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("exitRoom, session[");
+    if (localObject1 == null) {
+      localObject2 = null;
+    } else {
+      localObject2 = ((AVGameSession)localObject1).b;
+    }
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("] tid=");
+    localStringBuilder.append(Thread.currentThread().getId());
+    AVLog.a("AVGameBusinessCtrl", localStringBuilder.toString());
+    Object localObject2 = this.m;
+    if (localObject2 != null)
+    {
+      ((IAVGameMediaPlayerCtrl)localObject2).k();
+      this.m = null;
+    }
+    CallingStateMonitor.a().e();
+    if (QavSDK.a().c() != null) {
+      QavSDK.a().c().a(-1L, true, false);
+    }
+    AvGameMusicPlayer.c();
+    if (Build.VERSION.SDK_INT >= 16) {
+      AudioProcess.c();
+    }
+    localObject2 = m();
+    if (localObject2 != null) {
+      ((AVGameCameraAssistant)localObject2).b((AVGameSession)localObject1);
+    }
+    if (localObject1 == null)
+    {
+      AVLog.a("AVGameBusinessCtrl", "exitRoom failed. session == null.");
+      return false;
+    }
+    ((AVGameSession)localObject1).a(3);
+    localObject2 = this.d;
+    if (localObject2 != null) {
+      ((AVGameSessionManager)localObject2).b(((AVGameSessionManager)localObject2).a().b);
+    }
+    AVLog.d("AVGameBusinessCtrl", "exitRoom mSessionManager has clear");
+    this.g.g();
+    ((AVGameSession)localObject1).a(4);
+    this.k = true;
+    this.j = false;
+    return true;
+  }
+  
+  public String h()
+  {
+    if ((e()) && (d())) {
+      return this.g.l();
+    }
+    return null;
+  }
+  
+  public int i()
+  {
+    if ((e()) && (d())) {
+      return this.g.i();
+    }
+    return 0;
+  }
+  
+  public AVGameSession j()
+  {
+    if (e())
+    {
+      AVGameSessionManager localAVGameSessionManager = this.d;
+      if (localAVGameSessionManager != null) {
+        return localAVGameSessionManager.a();
+      }
+    }
+    return null;
+  }
+  
+  public boolean k()
+  {
+    return ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).isWiredHeadsetOn();
+  }
+  
+  public void l()
+  {
+    AVGameSession localAVGameSession = j();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -709,117 +784,42 @@ public class AVGameBusinessCtrl
     if (localAVGameSession == null) {
       return;
     }
-    localAVGameSession.g = false;
-    Object localObject = QavSDK.a().a();
+    localAVGameSession.o = false;
+    Object localObject = QavSDK.a().c();
     if ((localObject instanceof MultiOperatorImplForGame))
     {
       localAVGameSession.b(4);
-      if (!((MultiOperatorImplForGame)localObject).b()) {
-        this.jdField_a_of_type_ComTencentQavControllerMultiQavMultiObserver.b(false, localAVGameSession.jdField_a_of_type_Long, localAVGameSession.jdField_b_of_type_Int);
+      if (!((MultiOperatorImplForGame)localObject).d()) {
+        this.n.b(false, localAVGameSession.e, localAVGameSession.d);
       }
     }
   }
   
-  public void c(boolean paramBoolean)
+  public AVGameCameraAssistant m()
   {
-    if (b())
-    {
-      if (!a()) {
-        return;
+    if (this.l == null) {
+      try
+      {
+        if (this.l == null) {
+          this.l = new AVGameCameraAssistant(this, (AVGameAppInterface)this.b.get());
+        }
       }
-      this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.a(paramBoolean);
-      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-      if (localAVGameSession != null) {
-        localAVGameSession.e = (paramBoolean ^ true);
-      }
+      finally {}
     }
+    if (this.l == null) {
+      QLog.i("AVGameBusinessCtrl", 1, "getCameraAssistant, assistant is null.");
+    }
+    return this.l;
   }
   
-  public boolean c()
+  public IAVGameMediaPlayerCtrl n()
   {
-    if (!b()) {
-      return true;
-    }
-    Object localObject1 = (AVGameAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localObject1 != null) {
-      AVGameUtilService.b(((AVGameAppInterface)localObject1).getApp());
-    }
-    localObject1 = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
-    if (localObject1 != null) {
-      localObject1 = ((AVGameSessionManager)localObject1).a();
-    } else {
-      localObject1 = null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("exitRoom, session[");
-    if (localObject1 == null) {
-      localObject2 = null;
-    } else {
-      localObject2 = ((AVGameSession)localObject1).jdField_a_of_type_JavaLangString;
-    }
-    localStringBuilder.append((String)localObject2);
-    localStringBuilder.append("] tid=");
-    localStringBuilder.append(Thread.currentThread().getId());
-    AVLog.a("AVGameBusinessCtrl", localStringBuilder.toString());
-    Object localObject2 = this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl;
-    if (localObject2 != null)
-    {
-      ((IAVGameMediaPlayerCtrl)localObject2).h();
-      this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl = null;
-    }
-    CallingStateMonitor.a().b();
-    if (QavSDK.a().a() != null) {
-      QavSDK.a().a().a(-1L, true, false);
-    }
-    AvGameMusicPlayer.b();
-    if (Build.VERSION.SDK_INT >= 16) {
-      AudioProcess.a();
-    }
-    localObject2 = a();
-    if (localObject2 != null) {
-      ((AVGameCameraAssistant)localObject2).b((AVGameSession)localObject1);
-    }
-    if (localObject1 == null)
-    {
-      AVLog.a("AVGameBusinessCtrl", "exitRoom failed. session == null.");
-      return false;
-    }
-    ((AVGameSession)localObject1).a(3);
-    localObject2 = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager;
-    if (localObject2 != null) {
-      ((AVGameSessionManager)localObject2).b(((AVGameSessionManager)localObject2).a().jdField_a_of_type_JavaLangString);
-    }
-    AVLog.d("AVGameBusinessCtrl", "exitRoom mSessionManager has clear");
-    this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.e();
-    ((AVGameSession)localObject1).a(4);
-    this.d = true;
-    this.c = false;
-    return true;
+    return this.m;
   }
   
-  public void d(boolean paramBoolean)
+  public boolean o()
   {
-    if (b())
-    {
-      if (!a()) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentAvgameQavMultiOperatorImplForGame.b(paramBoolean);
-      AVGameSession localAVGameSession = this.jdField_a_of_type_ComTencentAvgameSessionAVGameSessionManager.a();
-      if (localAVGameSession != null) {
-        localAVGameSession.f = (paramBoolean ^ true);
-      }
-    }
-  }
-  
-  public boolean d()
-  {
-    return ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).isWiredHeadsetOn();
-  }
-  
-  public boolean e()
-  {
-    return this.c;
+    return this.j;
   }
 }
 

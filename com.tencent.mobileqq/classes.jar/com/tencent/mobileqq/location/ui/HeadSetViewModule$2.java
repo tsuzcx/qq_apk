@@ -16,25 +16,25 @@ class HeadSetViewModule$2
 {
   HeadSetViewModule$2(HeadSetViewModule paramHeadSetViewModule, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      HeadSetViewModule.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetViewModule).finish();
-      paramView = HeadSetViewModule.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetViewModule).getIntent();
+      HeadSetViewModule.b(this.b).finish();
+      paramView = HeadSetViewModule.b(this.b).getIntent();
       String str = paramView.getStringExtra("uin");
       paramInt = paramView.getIntExtra("uintype", -1);
-      LocationShareRoomManager.a().a.a(3, paramInt, str);
+      LocationShareRoomManager.a().b.a(3, paramInt, str);
       paramView = new LocationRoom.RoomKey(paramInt, str);
       LocationShareLocationManager.a().a(paramView, false);
       ReportController.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.a.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.HeadSetViewModule.2
  * JD-Core Version:    0.7.0.1
  */

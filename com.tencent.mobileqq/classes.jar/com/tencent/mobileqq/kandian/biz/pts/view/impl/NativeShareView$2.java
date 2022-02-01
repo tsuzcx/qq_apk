@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.screendetect.ScreenShotFragment.ActionSheetItemViewHolder;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
@@ -41,7 +40,7 @@ class NativeShareView$2
     if (NativeShareView.a(this.a) != null) {
       NativeShareView.a(this.a).run();
     }
-    paramInt = ((ScreenShotFragment.ActionSheetItemViewHolder)paramAdapterView).a.action;
+    paramInt = ((ScreenShotFragment.ActionSheetItemViewHolder)paramAdapterView).c.action;
     if (paramInt != 2)
     {
       if (paramInt != 3)
@@ -57,30 +56,30 @@ class NativeShareView$2
             else
             {
               paramInt = 6;
-              ShareImageUtils.a(NativeShareView.a(this.a));
+              ShareImageUtils.a(NativeShareView.b(this.a));
             }
           }
           else
           {
             paramInt = 4;
-            ShareImageUtils.c((Activity)NativeShareView.a(this.a));
+            ShareImageUtils.c((Activity)NativeShareView.b(this.a));
           }
         }
         else
         {
-          ShareImageUtils.b((Activity)NativeShareView.a(this.a));
+          ShareImageUtils.b((Activity)NativeShareView.b(this.a));
           paramInt = 3;
         }
       }
       else
       {
-        ShareImageUtils.a((BaseActivity)NativeShareView.a(this.a));
+        ShareImageUtils.a((BaseActivity)NativeShareView.b(this.a));
         paramInt = i;
       }
     }
     else
     {
-      ShareImageUtils.a((Activity)NativeShareView.a(this.a));
+      ShareImageUtils.a((Activity)NativeShareView.b(this.a));
       paramInt = 1;
     }
     paramAdapterView = new JSONObject();
@@ -92,12 +91,12 @@ class NativeShareView$2
     {
       QLog.e("NativeShareView", 1, paramView, new Object[0]);
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800A3BE", "0X800A3BE", 0, 0, "", "", "", paramAdapterView.toString(), false);
+    PublicAccountReportUtils.a(null, "", "0X800A3BE", "0X800A3BE", 0, 0, "", "", "", paramAdapterView.toString(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeShareView.2
  * JD-Core Version:    0.7.0.1
  */

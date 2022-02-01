@@ -32,7 +32,7 @@ public class WebViewClient
   public static final int ERROR_UNSUPPORTED_AUTH_SCHEME = -3;
   public static final int ERROR_UNSUPPORTED_SCHEME = -10;
   public static final int INTERCEPT_BY_ISP = -16;
-  i a;
+  i mX5Client;
   
   public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean) {}
   
@@ -52,7 +52,7 @@ public class WebViewClient
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
-    i locali = this.a;
+    i locali = this.mX5Client;
     if (locali != null) {
       locali.a(paramWebView, paramString, paramBitmap);
     }
@@ -67,10 +67,10 @@ public class WebViewClient
   
   public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
-    if (this.a != null)
+    if (this.mX5Client != null)
     {
       if (paramWebResourceRequest.isForMainFrame()) {
-        this.a.onReceivedError(paramWebView.c(), paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
+        this.mX5Client.onReceivedError(paramWebView.b(), paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
       }
     }
     else if (paramWebResourceRequest.isForMainFrame()) {
@@ -92,7 +92,7 @@ public class WebViewClient
     paramSslErrorHandler.cancel();
   }
   
-  public boolean onRenderProcessGone(WebView paramWebView, WebViewClient.a parama)
+  public boolean onRenderProcessGone(WebView paramWebView, WebViewClient.RenderProcessGoneDetail paramRenderProcessGoneDetail)
   {
     return false;
   }
@@ -106,18 +106,18 @@ public class WebViewClient
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    i locali = this.a;
+    i locali = this.mX5Client;
     if (locali != null) {
-      return locali.shouldInterceptRequest(paramWebView.c(), paramWebResourceRequest.getUrl().toString());
+      return locali.shouldInterceptRequest(paramWebView.b(), paramWebResourceRequest.getUrl().toString());
     }
     return shouldInterceptRequest(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
   {
-    paramBundle = this.a;
+    paramBundle = this.mX5Client;
     if (paramBundle != null) {
-      return paramBundle.shouldInterceptRequest(paramWebView.c(), paramWebResourceRequest);
+      return paramBundle.shouldInterceptRequest(paramWebView.b(), paramWebResourceRequest);
     }
     return null;
   }
@@ -134,9 +134,9 @@ public class WebViewClient
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    i locali = this.a;
+    i locali = this.mX5Client;
     if (locali != null) {
-      return locali.shouldOverrideUrlLoading(paramWebView.c(), paramWebResourceRequest.getUrl().toString());
+      return locali.shouldOverrideUrlLoading(paramWebView.b(), paramWebResourceRequest.getUrl().toString());
     }
     return shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
@@ -148,7 +148,7 @@ public class WebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebViewClient
  * JD-Core Version:    0.7.0.1
  */

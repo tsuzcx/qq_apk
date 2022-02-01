@@ -14,26 +14,26 @@ public final class ProfileSettingConstants$Companion
   }
   
   @NotNull
-  public final Integer[] a()
-  {
-    return ProfileSettingConstants.a();
-  }
-  
-  @NotNull
-  public final Integer[][] a()
-  {
-    return ProfileSettingConstants.a();
-  }
-  
-  @NotNull
   public final Integer[][] b()
   {
     return ProfileSettingConstants.b();
   }
+  
+  @NotNull
+  public final Integer[][] c()
+  {
+    return ProfileSettingConstants.c();
+  }
+  
+  @NotNull
+  public final Integer[] d()
+  {
+    return ProfileSettingConstants.d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileSettingConstants.Companion
  * JD-Core Version:    0.7.0.1
  */

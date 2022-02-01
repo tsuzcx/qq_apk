@@ -11,16 +11,16 @@ class SelectTroopMemberAdapter$ChildViewHolder
   extends FacePreloadHolder.ViewHolder
 {
   public int a;
-  public View a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopMemberNewLevelView a;
-  public TroopMemberNewLevelView b;
+  public RelativeLayout b;
+  public TroopMemberNewLevelView c;
+  public TroopMemberNewLevelView d;
+  public TextView e;
+  public View f;
+  public CheckBox g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.SelectTroopMemberAdapter.ChildViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package androidx.appcompat.widget;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
-final class ActionMenuPresenter$SavedState$1
+class ActionMenuPresenter$SavedState$1
   implements Parcelable.Creator<ActionMenuPresenter.SavedState>
 {
   public ActionMenuPresenter.SavedState createFromParcel(Parcel paramParcel)

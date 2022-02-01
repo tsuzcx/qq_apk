@@ -17,28 +17,28 @@ class TroopRemarkEditFragment$3
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!TextUtils.equals(paramString, TroopRemarkEditFragment.b(this.a))) {
+      if (!TextUtils.equals(paramString, TroopRemarkEditFragment.d(this.a))) {
         return;
       }
       paramString = this.a;
-      TroopRemarkEditFragment.a(paramString, TroopRemarkEditFragment.a(paramString));
+      TroopRemarkEditFragment.a(paramString, TroopRemarkEditFragment.b(paramString));
       if ((paramBoolean) && (paramInt == 0))
       {
-        ReportController.b(TroopRemarkEditFragment.a(this.a), "dc00899", "Grp_set_new", "", "groupnameRemarks", "sub_success", 0, 0, TroopRemarkEditFragment.b(this.a), "", "", "");
+        ReportController.b(TroopRemarkEditFragment.c(this.a), "dc00899", "Grp_set_new", "", "groupnameRemarks", "sub_success", 0, 0, TroopRemarkEditFragment.d(this.a), "", "", "");
         paramString = new Intent();
-        paramString.putExtra("result", TroopRemarkEditFragment.e(this.a));
+        paramString.putExtra("result", TroopRemarkEditFragment.h(this.a));
         this.a.getActivity().setResult(-1, paramString);
         this.a.getActivity().finish();
         return;
       }
-      QQToast.a(this.a.getActivity(), 2131699542, 0).b(this.a.getQBaseActivity().getTitleBarHeight());
-      ReportController.b(TroopRemarkEditFragment.a(this.a), "dc00899", "Grp_set_new", "", "groupnameRemarks", "sub_failure", 0, 0, TroopRemarkEditFragment.b(this.a), "1", "", "");
+      QQToast.makeText(this.a.getActivity(), 2131897573, 0).show(this.a.getQBaseActivity().getTitleBarHeight());
+      ReportController.b(TroopRemarkEditFragment.c(this.a), "dc00899", "Grp_set_new", "", "groupnameRemarks", "sub_failure", 0, 0, TroopRemarkEditFragment.d(this.a), "1", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fragment.TroopRemarkEditFragment.3
  * JD-Core Version:    0.7.0.1
  */

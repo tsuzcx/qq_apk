@@ -23,24 +23,24 @@ class MoveFileActivity$8
       return;
     }
     this.a.b();
-    int i = this.a.getActivity().getResources().getDimensionPixelSize(2131299168);
+    int i = this.a.getActivity().getResources().getDimensionPixelSize(2131299920);
     Object localObject;
     StringBuilder localStringBuilder;
     if (paramBoolean)
     {
-      MoveFileActivity.a(this.a).add(0, paramTroopFileInfo);
-      MoveFileActivity.c(this.a, 0);
-      MoveFileActivity.a(this.a).setEnabled(true);
-      MoveFileActivity.a(this.a).setBackgroundResource(2130839301);
-      MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755543);
-      MoveFileActivity.a(this.a).i(paramTroopFileInfo);
-      MoveFileActivity.a(this.a).notifyDataSetChanged();
+      MoveFileActivity.b(this.a).add(0, paramTroopFileInfo);
+      MoveFileActivity.d(this.a, 0);
+      MoveFileActivity.i(this.a).setEnabled(true);
+      MoveFileActivity.i(this.a).setBackgroundResource(2130839481);
+      MoveFileActivity.i(this.a).setTextAppearance(this.a.getActivity(), 2131952356);
+      MoveFileActivity.h(this.a).j(paramTroopFileInfo);
+      MoveFileActivity.j(this.a).notifyDataSetChanged();
       localObject = this.a.app;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a.a);
       localStringBuilder.append("");
-      ReportController.b((AppRuntime)localObject, "P_CliOper", "Grp_files", "", "file", "new_suc", 0, 0, localStringBuilder.toString(), paramTroopFileInfo.b, "", "");
-      QQToast.a(this.a.getActivity(), 2, HardCodeUtil.a(2131706936), 0).b(i);
+      ReportController.b((AppRuntime)localObject, "P_CliOper", "Grp_files", "", "file", "new_suc", 0, 0, localStringBuilder.toString(), paramTroopFileInfo.c, "", "");
+      QQToast.makeText(this.a.getActivity(), 2, HardCodeUtil.a(2131904779), 0).show(i);
       return;
     }
     if (paramInt != -405)
@@ -53,47 +53,47 @@ class MoveFileActivity$8
           {
             if ((paramInt != -107) && (paramInt != -102))
             {
-              paramTroopFileInfo = this.a.getString(2131696078);
-              QQToast.a(this.a.getActivity(), 1, paramTroopFileInfo, 0).b(i);
+              paramTroopFileInfo = this.a.getString(2131893843);
+              QQToast.makeText(this.a.getActivity(), 1, paramTroopFileInfo, 0).show(i);
               return;
             }
-            paramTroopFileInfo = this.a.getString(2131697379);
-            QQToast.a(this.a.getActivity(), 1, paramTroopFileInfo, 0).b(i);
+            paramTroopFileInfo = this.a.getString(2131895152);
+            QQToast.makeText(this.a.getActivity(), 1, paramTroopFileInfo, 0).show(i);
             return;
           }
-          paramTroopFileInfo = this.a.getString(2131697382);
+          paramTroopFileInfo = this.a.getString(2131895155);
           localObject = this.a.app;
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.a.jdField_a_of_type_Long);
+          localStringBuilder.append(this.a.a);
           localStringBuilder.append("");
           ReportController.b((AppRuntime)localObject, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, localStringBuilder.toString(), "1", "", "");
         }
         else
         {
-          paramTroopFileInfo = this.a.getString(2131697383);
-          QQToast.a(this.a.getActivity(), 1, paramTroopFileInfo, 0).b(i);
+          paramTroopFileInfo = this.a.getString(2131895156);
+          QQToast.makeText(this.a.getActivity(), 1, paramTroopFileInfo, 0).show(i);
         }
       }
       else
       {
-        paramTroopFileInfo = this.a.getString(2131697377);
+        paramTroopFileInfo = this.a.getString(2131895150);
         localObject = this.a.app;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.a.jdField_a_of_type_Long);
+        localStringBuilder.append(this.a.a);
         localStringBuilder.append("");
         ReportController.b((AppRuntime)localObject, "P_CliOper", "Grp_files", "", "file", "repeat", 0, 0, localStringBuilder.toString(), "1", "", "");
       }
       localObject = this.a;
-      ((MoveFileActivity)localObject).a(((MoveFileActivity)localObject).getResources().getString(2131697539), null, this.a.jdField_a_of_type_JavaLangString, paramTroopFileInfo);
+      ((MoveFileActivity)localObject).a(((MoveFileActivity)localObject).getResources().getString(2131895312), null, this.a.b, paramTroopFileInfo);
       return;
     }
-    paramTroopFileInfo = this.a.getString(2131697380);
-    QQToast.a(this.a.getActivity(), 1, paramTroopFileInfo, 0).b(i);
+    paramTroopFileInfo = this.a.getString(2131895153);
+    QQToast.makeText(this.a.getActivity(), 1, paramTroopFileInfo, 0).show(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.8
  * JD-Core Version:    0.7.0.1
  */

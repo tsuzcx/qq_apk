@@ -8,46 +8,46 @@ import com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView;
 public class WSDramaItemTopAreaController
   extends AbsWSDramaUIGroup
 {
-  private KandianUrlImageView a;
+  private KandianUrlImageView j;
   
   public WSDramaItemTopAreaController(Context paramContext)
   {
     super(paramContext);
   }
   
-  private void f()
+  private void l()
   {
-    if ((this.jdField_a_of_type_UserGrowthStDrama != null) && (this.jdField_a_of_type_UserGrowthStDrama.tagIcon != null))
+    if ((this.g != null) && (this.g.tagIcon != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(0);
-      WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, this.jdField_a_of_type_UserGrowthStDrama.tagIcon);
+      this.j.setVisibility(0);
+      WSPicLoader.a().a(this.j, this.g.tagIcon);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
-  }
-  
-  protected int b()
-  {
-    return 2131560004;
+    this.j.setVisibility(8);
   }
   
   protected void b()
   {
-    f();
+    l();
   }
   
-  protected void c() {}
+  public void d(int paramInt) {}
   
-  public void c(int paramInt) {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131365896));
+    return 2131626047;
+  }
+  
+  protected void j()
+  {
+    this.j = ((KandianUrlImageView)c(2131432164));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.holder.controller.WSDramaItemTopAreaController
  * JD-Core Version:    0.7.0.1
  */

@@ -65,21 +65,21 @@ import org.jetbrains.annotations.NotNull;
 public class RelativeLiveFeedsAdapter
   extends MultiViewBlock<FeedsItemInfo>
 {
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
-  private int jdField_a_of_type_Int = ImmersiveUtils.dpToPx(16.0F);
-  CertifiedAccountRead.GetSubscriptionRsp.Bottom jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetSubscriptionRsp$Bottom;
+  private static Drawable d = new ColorDrawable(0);
   protected RecyclerView.LayoutManager a;
-  private FolderRecommendTabFragment.FolderRecommendHeadItemView jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
-  String jdField_a_of_type_JavaLangString;
-  private int b = ImmersiveUtils.dpToPx(13.0F);
-  private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean = true;
-  private int f = -1;
-  private int g = 99;
+  CertifiedAccountRead.GetSubscriptionRsp.Bottom b;
+  String c;
+  private int e = ImmersiveUtils.dpToPx(16.0F);
+  private int f = ImmersiveUtils.dpToPx(13.0F);
+  private boolean g = true;
+  private int k = -1;
+  private boolean l = false;
+  private boolean m = true;
+  private int n;
+  private int o;
+  private FolderRecommendTabFragment.FolderRecommendHeadItemView p;
+  private int q = -1;
+  private int r = 99;
   
   public RelativeLiveFeedsAdapter(Bundle paramBundle)
   {
@@ -88,38 +88,21 @@ public class RelativeLiveFeedsAdapter
   
   private RecyclerView.ViewHolder a(ViewGroup paramViewGroup)
   {
-    Object localObject = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559638, paramViewGroup, false);
+    Object localObject = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131625667, paramViewGroup, false);
     paramViewGroup = new RelativeLiveFeedsAdapter.RelativeLiveVH(this, (View)localObject);
-    this.jdField_d_of_type_Int = ((View)localObject).getResources().getDisplayMetrics().widthPixels;
-    int i = (int)(this.jdField_d_of_type_Int * 0.5F - ViewUtils.b(8.5F));
-    this.jdField_e_of_type_Int = (i - ViewUtils.b(7.0F));
-    int j = this.jdField_e_of_type_Int;
-    int k = ViewUtils.b(54.0F);
-    localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    this.n = ((View)localObject).getResources().getDisplayMetrics().widthPixels;
+    int i = (int)(this.n * 0.5F - ViewUtils.dpToPx(8.5F));
+    this.o = (i - ViewUtils.dpToPx(7.0F));
+    int j = this.o;
+    int i1 = ViewUtils.dpToPx(54.0F);
+    localObject = (RelativeLayout.LayoutParams)paramViewGroup.a.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = i;
-    ((RelativeLayout.LayoutParams)localObject).height = (j + k);
-    localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
-    i = this.jdField_e_of_type_Int;
+    ((RelativeLayout.LayoutParams)localObject).height = (j + i1);
+    localObject = (RelativeLayout.LayoutParams)paramViewGroup.c.getLayoutParams();
+    i = this.o;
     ((RelativeLayout.LayoutParams)localObject).width = i;
     ((RelativeLayout.LayoutParams)localObject).height = i;
     return paramViewGroup;
-  }
-  
-  @NotNull
-  private FrameLayout a(ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new TextView(paramViewGroup.getContext());
-    paramViewGroup.setTag("title");
-    FrameLayout localFrameLayout = a(paramViewGroup);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    paramViewGroup.setLayoutParams(localLayoutParams);
-    paramViewGroup.setTextSize(1, 16.0F);
-    paramViewGroup.setMaxLines(1);
-    paramViewGroup.setTextColor(Color.parseColor("#989eb4"));
-    paramViewGroup.getPaint().setFakeBoldText(true);
-    localLayoutParams.topMargin = ImmersiveUtils.dpToPx(10.0F);
-    paramViewGroup.setText(HardCodeUtil.a(2131701721));
-    return localFrameLayout;
   }
   
   private void a(boolean paramBoolean, Object paramObject)
@@ -138,8 +121,8 @@ public class RelativeLiveFeedsAdapter
       paramObject = ((CertifiedAccountRead.GetSubscriptionRsp)localObject2).room_lst.get();
       localObject1 = (CertifiedAccountRead.GetSubscriptionRsp.Bottom)((CertifiedAccountRead.GetSubscriptionRsp)localObject2).bottom.get();
       localObject2 = ((CertifiedAccountRead.GetSubscriptionRsp)localObject2).page_info.get();
-      a().b((String)localObject2);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView != null)
+      D().b((String)localObject2);
+      if (this.p != null)
       {
         if ((paramObject != null) && (paramObject.size() > 0))
         {
@@ -147,12 +130,12 @@ public class RelativeLiveFeedsAdapter
           paramBoolean = bool;
           if (bool)
           {
-            this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.b(false);
+            this.p.b(false);
             a(paramObject, (CertifiedAccountRead.GetSubscriptionRsp.Bottom)localObject1, (String)localObject2);
             paramBoolean = bool;
             if (localObject1 != null)
             {
-              this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(true, ((CertifiedAccountRead.GetSubscriptionRsp.Bottom)localObject1).desc.get(), ((CertifiedAccountRead.GetSubscriptionRsp.Bottom)localObject1).jump_url.get());
+              this.p.a(true, ((CertifiedAccountRead.GetSubscriptionRsp.Bottom)localObject1).desc.get(), ((CertifiedAccountRead.GetSubscriptionRsp.Bottom)localObject1).jump_url.get());
               paramBoolean = bool;
             }
           }
@@ -163,17 +146,29 @@ public class RelativeLiveFeedsAdapter
         }
         if (!paramBoolean)
         {
-          a();
-          this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.b(true);
-          this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(false, null, null);
+          b();
+          this.p.b(true);
+          this.p.a(false, null, null);
         }
       }
     }
   }
   
-  public int a()
+  @NotNull
+  private FrameLayout b(ViewGroup paramViewGroup)
   {
-    return 3;
+    paramViewGroup = new TextView(paramViewGroup.getContext());
+    paramViewGroup.setTag("title");
+    FrameLayout localFrameLayout = c(paramViewGroup);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+    paramViewGroup.setLayoutParams(localLayoutParams);
+    paramViewGroup.setTextSize(1, 16.0F);
+    paramViewGroup.setMaxLines(1);
+    paramViewGroup.setTextColor(Color.parseColor("#989eb4"));
+    paramViewGroup.getPaint().setFakeBoldText(true);
+    localLayoutParams.topMargin = ImmersiveUtils.dpToPx(10.0F);
+    paramViewGroup.setText(HardCodeUtil.a(2131899741));
+    return localFrameLayout;
   }
   
   public int a(int paramInt)
@@ -184,42 +179,14 @@ public class RelativeLiveFeedsAdapter
     return 2;
   }
   
-  public String a()
-  {
-    return "RELATIVE_ADAPTER_UNIQUE_KEY";
-  }
-  
-  public ArrayList<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      FeedsItemInfo localFeedsItemInfo = (FeedsItemInfo)localIterator.next();
-      if (localFeedsItemInfo.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetPortalRsp$RoomItem == null) {
-        return localArrayList;
-      }
-      try
-      {
-        localArrayList.add(new String(localFeedsItemInfo.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetPortalRsp$RoomItem.toByteArray(), "ISO8859_1"));
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.f = paramInt;
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, ArrayList<String> paramArrayList, int paramInt, String paramString3)
+  public void a(Context paramContext, String paramString1, String paramString2, ArrayList<String> paramArrayList, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     paramContext = new IliveJumpParams(paramContext, "subscription", paramString1, paramString2, false, paramArrayList, "", paramInt);
-    paramContext.d = paramString3;
+    paramContext.e = paramString3;
+    paramContext.m = paramString4;
+    paramContext.n = paramString5;
+    paramContext.o = paramString6;
+    paramContext.p = paramString7;
     IliveEntranceUtil.a(paramContext);
   }
   
@@ -227,22 +194,22 @@ public class RelativeLiveFeedsAdapter
   {
     paramRecyclerView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
     int i = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).getViewLayoutPosition();
-    if ((this.jdField_c_of_type_Boolean) && ((i == 0) || (i == 1)))
+    if ((this.g) && ((i == 0) || (i == 1)))
     {
-      paramRect.bottom = this.b;
+      paramRect.bottom = this.f;
       return;
     }
-    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.bottom = this.e;
   }
   
   public void a(Bundle paramBundle)
   {
-    a().addOnScrollListener(new RelativeLiveFeedsAdapter.2(this));
+    J().addOnScrollListener(new RelativeLiveFeedsAdapter.2(this));
   }
   
   public void a(FolderRecommendTabFragment.FolderRecommendHeadItemView paramFolderRecommendHeadItemView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView = paramFolderRecommendHeadItemView;
+    this.p = paramFolderRecommendHeadItemView;
   }
   
   public void a(LoadInfo paramLoadInfo)
@@ -253,11 +220,11 @@ public class RelativeLiveFeedsAdapter
       localGetSubscriptionReq.uin.set(Long.valueOf(localQQAppInterface.getCurrentUin()).longValue());
     }
     localGetSubscriptionReq.page_id.set(2);
-    if ((this.jdField_c_of_type_Int != -1) && ((paramLoadInfo.c()) || (paramLoadInfo.d()))) {
+    if ((this.k != -1) && ((paramLoadInfo.c()) || (paramLoadInfo.d()))) {
       localGetSubscriptionReq.page_info.set("");
-    } else if ((this.jdField_c_of_type_Int != -1) && (paramLoadInfo.e())) {
-      if (!TextUtils.isEmpty(a().b())) {
-        localGetSubscriptionReq.page_info.set(a().b());
+    } else if ((this.k != -1) && (paramLoadInfo.e())) {
+      if (!TextUtils.isEmpty(D().i())) {
+        localGetSubscriptionReq.page_info.set(D().i());
       } else {
         localGetSubscriptionReq.page_info.set("");
       }
@@ -268,8 +235,8 @@ public class RelativeLiveFeedsAdapter
   public void a(String paramString, BlockMerger.ShareData paramShareData)
   {
     super.a(paramString, paramShareData);
-    if ((paramString.equals("share_key_subscribe_feeds_update")) && (paramShareData.jdField_a_of_type_JavaLangObject != null) && (paramShareData.jdField_a_of_type_Boolean)) {
-      o();
+    if ((paramString.equals("share_key_subscribe_feeds_update")) && (paramShareData.a != null) && (paramShareData.b)) {
+      y();
     }
   }
   
@@ -278,9 +245,9 @@ public class RelativeLiveFeedsAdapter
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetSubscriptionRsp$Bottom = paramBottom;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.b = paramBottom;
+    this.c = paramString;
+    this.j.clear();
     int i = 0;
     for (;;)
     {
@@ -292,14 +259,14 @@ public class RelativeLiveFeedsAdapter
       paramBottom = ((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).room_lst.get();
       if ((paramBottom != null) && (paramBottom.size() != 0))
       {
-        if ((i != 0) || (this.f != 0)) {
+        if ((i != 0) || (this.q != 0)) {
           bool = false;
         }
-        this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).tab_info.name.get(), null));
+        this.j.add(new FeedsItemInfo(((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).tab_info.name.get(), null));
         j = 0;
         while (j < paramBottom.size())
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(null, (CertifiedAccountRead.GetPortalRsp.RoomItem)paramBottom.get(j), bool));
+          this.j.add(new FeedsItemInfo(null, (CertifiedAccountRead.GetPortalRsp.RoomItem)paramBottom.get(j), bool));
           j += 1;
         }
       }
@@ -310,7 +277,7 @@ public class RelativeLiveFeedsAdapter
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     notifyDataSetChanged();
   }
   
@@ -329,7 +296,7 @@ public class RelativeLiveFeedsAdapter
   
   public void b(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.q = paramInt;
   }
   
   public void b(List<CertifiedAccountRead.GetPortalRsp.RoomLstItem> paramList, CertifiedAccountRead.GetSubscriptionRsp.Bottom paramBottom, String paramString)
@@ -337,8 +304,8 @@ public class RelativeLiveFeedsAdapter
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetSubscriptionRsp$Bottom = paramBottom;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramBottom;
+    this.c = paramString;
     int i = 0;
     for (;;)
     {
@@ -350,16 +317,16 @@ public class RelativeLiveFeedsAdapter
       paramBottom = ((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).room_lst.get();
       if ((paramBottom != null) && (paramBottom.size() != 0))
       {
-        if ((i != 0) || (this.f != 0)) {
+        if ((i != 0) || (this.q != 0)) {
           bool = false;
         }
-        if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (i != 0)) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).tab_info.name.get(), null));
+        if ((this.j.size() > 0) && (i != 0)) {
+          this.j.add(new FeedsItemInfo(((CertifiedAccountRead.GetPortalRsp.RoomLstItem)paramList.get(i)).tab_info.name.get(), null));
         }
         j = 0;
         while (j < paramBottom.size())
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(new FeedsItemInfo(null, (CertifiedAccountRead.GetPortalRsp.RoomItem)paramBottom.get(j), bool));
+          this.j.add(new FeedsItemInfo(null, (CertifiedAccountRead.GetPortalRsp.RoomItem)paramBottom.get(j), bool));
           j += 1;
         }
       }
@@ -370,32 +337,69 @@ public class RelativeLiveFeedsAdapter
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
+  }
+  
+  public String bA_()
+  {
+    return "RELATIVE_ADAPTER_UNIQUE_KEY";
+  }
+  
+  public int c()
+  {
+    return 3;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public ArrayList<String> d()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.j.iterator();
+    while (localIterator.hasNext())
+    {
+      FeedsItemInfo localFeedsItemInfo = (FeedsItemInfo)localIterator.next();
+      if (localFeedsItemInfo.b == null) {
+        return localArrayList;
+      }
+      try
+      {
+        localArrayList.add(new String(localFeedsItemInfo.b.toByteArray(), "ISO8859_1"));
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
+    }
+    return localArrayList;
   }
   
   public void d(boolean paramBoolean)
   {
-    if ((a() != null) && (a() != null))
+    if ((I() != null) && (B() != null))
     {
-      a().a(4);
-      a().setRefreshing(false);
-      if (f())
+      D().a(4);
+      I().setRefreshing(false);
+      if (L())
       {
-        a().a(paramBoolean, a().a());
+        B().a(paramBoolean, D().a());
         return;
       }
-      if ((a() != null) && (b() != null) && (b().size() == 0)) {
-        a().a(paramBoolean, false);
+      if ((B() != null) && (N() != null) && (N().size() == 0)) {
+        B().a(paramBoolean, false);
       }
     }
   }
   
   public int getItemCount()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.h) {
       return 4;
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.j.size();
   }
   
   public long getItemId(int paramInt)
@@ -405,13 +409,13 @@ public class RelativeLiveFeedsAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+    if (paramInt >= this.j.size()) {
       return 100002;
     }
-    if (((FeedsItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString != null) {
+    if (((FeedsItemInfo)this.j.get(paramInt)).a != null) {
       return 100000;
     }
-    if (((FeedsItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$GetPortalRsp$RoomItem != null) {
+    if (((FeedsItemInfo)this.j.get(paramInt)).b != null) {
       return 100003;
     }
     return 100002;
@@ -420,27 +424,27 @@ public class RelativeLiveFeedsAdapter
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = paramRecyclerView.getLayoutManager();
+    this.a = paramRecyclerView.getLayoutManager();
   }
   
   @SuppressLint({"WrongConstant"})
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     int i = paramInt;
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.g) {
       i = paramInt - 1;
     }
-    if (!ArrayUtils.a(i, b()))
+    if (!ArrayUtils.isOutOfArrayIndex(i, N()))
     {
       FeedsItemInfo localFeedsItemInfo;
       if ((paramViewHolder instanceof RelativeLiveFeedsAdapter.RelativeFeedVH))
       {
-        localFeedsItemInfo = (FeedsItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ((RelativeLiveFeedsAdapter.RelativeFeedVH)paramViewHolder).a(localFeedsItemInfo.jdField_a_of_type_JavaLangString);
+        localFeedsItemInfo = (FeedsItemInfo)this.j.get(i);
+        ((RelativeLiveFeedsAdapter.RelativeFeedVH)paramViewHolder).a(localFeedsItemInfo.a);
       }
       if ((paramViewHolder instanceof RelativeLiveFeedsAdapter.RelativeLiveVH))
       {
-        localFeedsItemInfo = (FeedsItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localFeedsItemInfo = (FeedsItemInfo)this.j.get(i);
         RelativeLiveFeedsAdapter.RelativeLiveVH localRelativeLiveVH = (RelativeLiveFeedsAdapter.RelativeLiveVH)paramViewHolder;
         localRelativeLiveVH.a(localFeedsItemInfo);
         localRelativeLiveVH.a(localRelativeLiveVH, localFeedsItemInfo);
@@ -452,7 +456,7 @@ public class RelativeLiveFeedsAdapter
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     if (paramInt == 100000) {
-      return new RelativeLiveFeedsAdapter.RelativeFeedVH(this, a(paramViewGroup));
+      return new RelativeLiveFeedsAdapter.RelativeFeedVH(this, b(paramViewGroup));
     }
     if (paramInt == 100003) {
       return a(paramViewGroup);

@@ -6,13 +6,13 @@ import org.jetbrains.annotations.Nullable;
 public abstract interface IEmotionPanel
 {
   @Nullable
-  public abstract OnEmotionItemClickListener a();
+  public abstract OnEmotionItemClickListener getOnEmotionItemClickListener();
   
-  public abstract int e();
+  public abstract int getPageRowCount();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.base.IEmotionPanel
  * JD-Core Version:    0.7.0.1
  */

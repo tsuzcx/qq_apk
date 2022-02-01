@@ -23,11 +23,11 @@ class AECMShowRequestController$3
       return;
     }
     AEQLog.a("AECMShowRequestController", "[onResp] failed");
-    if (AECMShowRequestController.a(this.a) != null) {
-      ThreadManager.getUIHandler().removeCallbacks(AECMShowRequestController.a(this.a));
+    if (AECMShowRequestController.c(this.a) != null) {
+      ThreadManager.getUIHandler().removeCallbacks(AECMShowRequestController.c(this.a));
     }
-    if (AECMShowRequestController.a(this.a) != null) {
-      AECMShowRequestController.a(this.a).a(2, null);
+    if (AECMShowRequestController.b(this.a) != null) {
+      AECMShowRequestController.b(this.a).a(2, null);
     }
     AEBaseDataReporter.a().a(paramNetResp.mErrCode, String.valueOf(paramNetResp.reqCost), "CartoonPta", -2);
   }
@@ -36,7 +36,7 @@ class AECMShowRequestController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowRequestController.3
  * JD-Core Version:    0.7.0.1
  */

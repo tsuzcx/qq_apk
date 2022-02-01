@@ -13,14 +13,14 @@ class FileBrowserPresenterBase$4
   
   public void onClick(View paramView)
   {
-    FileManagerUtil.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d());
-    this.a.b = true;
+    FileManagerUtil.a(this.a.d, this.a.c.y());
+    this.a.g = true;
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase.4
  * JD-Core Version:    0.7.0.1
  */

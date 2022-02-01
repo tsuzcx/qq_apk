@@ -1,18 +1,18 @@
 package com.tencent.aelight.camera.ae.album.nocropper;
 
-import com.tencent.tavcut.bean.CropConfig;
+import com.tencent.qcircle.tavcut.bean.CropConfig;
 
 public class CropResult
 {
-  public final CropInfo a;
-  public final CropState a;
   public final CropConfig a;
+  public final CropInfo b;
+  public final CropState c;
   
   private CropResult(CropConfig paramCropConfig, CropState paramCropState)
   {
-    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = paramCropConfig;
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperCropState = paramCropState;
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumNocropperCropInfo = null;
+    this.a = paramCropConfig;
+    this.c = paramCropState;
+    this.b = null;
   }
   
   public static CropResult a()
@@ -37,7 +37,7 @@ public class CropResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.nocropper.CropResult
  * JD-Core Version:    0.7.0.1
  */

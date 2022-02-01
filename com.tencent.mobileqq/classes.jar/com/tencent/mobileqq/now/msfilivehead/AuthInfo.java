@@ -9,36 +9,27 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class AuthInfo
   extends MessageNano
 {
-  private static volatile AuthInfo[] a;
-  public int a;
+  private static volatile AuthInfo[] d;
   public String a;
   public String b;
+  public int c;
   
   public AuthInfo()
   {
-    a();
+    b();
   }
   
   public static AuthInfo[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo == null) {
+    if (d == null) {
       synchronized (InternalNano.LAZY_INIT_LOCK)
       {
-        if (jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo == null) {
-          jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo = new AuthInfo[0];
+        if (d == null) {
+          d = new AuthInfo[0];
         }
       }
     }
-    return jdField_a_of_type_ArrayOfComTencentMobileqqNowMsfiliveheadAuthInfo;
-  }
-  
-  public AuthInfo a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.jdField_a_of_type_Int = 0;
-    this.cachedSize = -1;
-    return this;
+    return d;
   }
   
   public AuthInfo a(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -60,7 +51,7 @@ public final class AuthInfo
             }
           }
           else {
-            this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+            this.c = paramCodedInputByteBufferNano.readUInt32();
           }
         }
         else {
@@ -68,9 +59,18 @@ public final class AuthInfo
         }
       }
       else {
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.a = paramCodedInputByteBufferNano.readString();
       }
     }
+    return this;
+  }
+  
+  public AuthInfo b()
+  {
+    this.a = "";
+    this.b = "";
+    this.c = 0;
+    this.cachedSize = -1;
     return this;
   }
   
@@ -78,14 +78,14 @@ public final class AuthInfo
   {
     int i = super.computeSerializedSize();
     int j = i;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(1, this.jdField_a_of_type_JavaLangString);
+    if (!this.a.equals("")) {
+      j = i + CodedOutputByteBufferNano.computeStringSize(1, this.a);
     }
     i = j;
     if (!this.b.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
-    int k = this.jdField_a_of_type_Int;
+    int k = this.c;
     j = i;
     if (k != 0) {
       j = i + CodedOutputByteBufferNano.computeUInt32Size(3, k);
@@ -95,13 +95,13 @@ public final class AuthInfo
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(1, this.jdField_a_of_type_JavaLangString);
+    if (!this.a.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(1, this.a);
     }
     if (!this.b.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.b);
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.c;
     if (i != 0) {
       paramCodedOutputByteBufferNano.writeUInt32(3, i);
     }
@@ -110,7 +110,7 @@ public final class AuthInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.msfilivehead.AuthInfo
  * JD-Core Version:    0.7.0.1
  */

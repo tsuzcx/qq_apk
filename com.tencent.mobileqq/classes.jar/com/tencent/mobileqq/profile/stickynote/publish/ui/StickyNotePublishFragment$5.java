@@ -15,7 +15,7 @@ final class StickyNotePublishFragment$5
   
   public void delete()
   {
-    TextUtils.backspace(this.jdField_a_of_type_AndroidWidgetEditText);
+    TextUtils.backspace(this.a);
   }
   
   public void emoticonMall() {}
@@ -36,7 +36,7 @@ final class StickyNotePublishFragment$5
     if (paramEmoticonInfo != null) {}
     try
     {
-      paramEmoticonInfo.send(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetEditText, null);
+      paramEmoticonInfo.send(this.b, this.c, this.a, null);
       return;
     }
     catch (Throwable paramEmoticonInfo) {}
@@ -46,7 +46,7 @@ final class StickyNotePublishFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.5
  * JD-Core Version:    0.7.0.1
  */

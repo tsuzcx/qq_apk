@@ -14,15 +14,15 @@ class PublicAccountDetailActivityImpl$21
     if (QLog.isColorLevel()) {
       QLog.d("com.tencent.biz.pubaccount.AccountDetail.activity.api.impl.AccountDetailActivity", 2, "updateDetailInfo");
     }
-    this.this$0.saveAccountDetailToDBAndCache(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl);
-    PublicAccountDetailImpl localPublicAccountDetailImpl = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl;
-    if ((localPublicAccountDetailImpl != null) && (localPublicAccountDetailImpl.followType == 1) && (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl.isSyncLbs)) {
-      this.this$0.publicAccountHandler.onFollowPublicAccount(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl);
+    this.this$0.saveAccountDetailToDBAndCache(this.a);
+    PublicAccountDetailImpl localPublicAccountDetailImpl = this.a;
+    if ((localPublicAccountDetailImpl != null) && (localPublicAccountDetailImpl.followType == 1) && (this.a.isSyncLbs)) {
+      this.this$0.publicAccountHandler.onFollowPublicAccount(this.a);
     }
-    if (this.this$0.tryGoToWeatherWhenGetInfo(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailImpl)) {
+    if (this.this$0.tryGoToWeatherWhenGetInfo(this.a)) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       this.this$0.mHandler.sendEmptyMessage(1);
       return;
@@ -32,7 +32,7 @@ class PublicAccountDetailActivityImpl$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.21
  * JD-Core Version:    0.7.0.1
  */

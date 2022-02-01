@@ -10,13 +10,13 @@ class BlessActivity$3
   
   public void run()
   {
-    BlessActivity.a(this.this$0).setImageBitmap(this.a);
-    BlessActivity.a(this.this$0).setVisibility(0);
+    BlessActivity.c(this.this$0).setImageBitmap(this.a);
+    BlessActivity.c(this.this$0).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.3
  * JD-Core Version:    0.7.0.1
  */

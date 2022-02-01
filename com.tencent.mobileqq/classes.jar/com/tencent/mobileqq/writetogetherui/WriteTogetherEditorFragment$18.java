@@ -10,13 +10,13 @@ class WriteTogetherEditorFragment$18
   
   public void run()
   {
-    WriteTogetherEditorFragment.b(this.this$0).setVisibility(0);
-    WriteTogetherEditorFragment.b(this.this$0).startAnimation(this.a);
+    WriteTogetherEditorFragment.s(this.this$0).setVisibility(0);
+    WriteTogetherEditorFragment.s(this.this$0).startAnimation(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.18
  * JD-Core Version:    0.7.0.1
  */

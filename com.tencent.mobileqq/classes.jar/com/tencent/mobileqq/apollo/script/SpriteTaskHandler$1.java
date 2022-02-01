@@ -11,7 +11,7 @@ class SpriteTaskHandler$1
   public void run()
   {
     SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)SpriteTaskHandler.a(this.this$0).pollLast();
-    ISpriteBridge localISpriteBridge = SpriteUtil.a(SpriteTaskHandler.a(this.this$0).a());
+    ISpriteBridge localISpriteBridge = SpriteUtil.c(SpriteTaskHandler.b(this.this$0).l());
     if ((localISpriteBridge != null) && (localSpriteTaskParam != null))
     {
       if (QLog.isColorLevel()) {
@@ -23,7 +23,7 @@ class SpriteTaskHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteTaskHandler.1
  * JD-Core Version:    0.7.0.1
  */

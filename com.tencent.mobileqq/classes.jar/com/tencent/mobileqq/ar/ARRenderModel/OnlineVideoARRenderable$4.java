@@ -8,20 +8,20 @@ class OnlineVideoARRenderable$4
 {
   public void run()
   {
-    if (OnlineVideoARRenderable.e(this.this$0) != -1) {
-      GLES20.glDeleteTextures(1, new int[] { OnlineVideoARRenderable.e(this.this$0) }, 0);
+    if (OnlineVideoARRenderable.i(this.this$0) != -1) {
+      GLES20.glDeleteTextures(1, new int[] { OnlineVideoARRenderable.i(this.this$0) }, 0);
     }
-    if (OnlineVideoARRenderable.f(this.this$0) != -1) {
-      GLES20.glDeleteTextures(1, new int[] { OnlineVideoARRenderable.f(this.this$0) }, 0);
+    if (OnlineVideoARRenderable.j(this.this$0) != -1) {
+      GLES20.glDeleteTextures(1, new int[] { OnlineVideoARRenderable.j(this.this$0) }, 0);
     }
-    if (OnlineVideoARRenderable.g(this.this$0) != -1) {
-      GLES20.glDeleteTextures(1, new int[] { OnlineVideoARRenderable.g(this.this$0) }, 0);
+    if (OnlineVideoARRenderable.k(this.this$0) != -1) {
+      GLES20.glDeleteTextures(1, new int[] { OnlineVideoARRenderable.k(this.this$0) }, 0);
     }
     try
     {
-      OnlineVideoARRenderable.b(this.this$0, OnlineVideoARRenderable.a(this.this$0, 1, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-      OnlineVideoARRenderable.c(this.this$0, OnlineVideoARRenderable.a(this.this$0, 2, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_Int / 2, (this.jdField_b_of_type_Int + 1) / 2));
-      OnlineVideoARRenderable.d(this.this$0, OnlineVideoARRenderable.a(this.this$0, 3, this.c, this.jdField_a_of_type_Int / 2, (this.jdField_b_of_type_Int + 1) / 2));
+      OnlineVideoARRenderable.b(this.this$0, OnlineVideoARRenderable.a(this.this$0, 1, this.a, this.b, this.c));
+      OnlineVideoARRenderable.c(this.this$0, OnlineVideoARRenderable.a(this.this$0, 2, this.d, this.b / 2, (this.c + 1) / 2));
+      OnlineVideoARRenderable.d(this.this$0, OnlineVideoARRenderable.a(this.this$0, 3, this.e, this.b / 2, (this.c + 1) / 2));
     }
     catch (Exception localException)
     {
@@ -39,7 +39,7 @@ class OnlineVideoARRenderable$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.OnlineVideoARRenderable.4
  * JD-Core Version:    0.7.0.1
  */

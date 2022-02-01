@@ -41,17 +41,17 @@ class ReadInJoyFeedsHeaderViewController$2
     if (paramInt != 6) {
       return;
     }
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() == 0)) && (paramList != null) && (paramList.size() > 0) && ((paramList.get(0) instanceof HotWordSearchEntryDataModel)))
+    if (((this.a.b == null) || (this.a.b.b == null) || (this.a.b.b.size() == 0)) && (paramList != null) && (paramList.size() > 0) && ((paramList.get(0) instanceof HotWordSearchEntryDataModel)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramList.get(0));
-      ReadInJoyFeedsHeaderViewController.jdField_a_of_type_Int = 0;
+      this.a.b = ((HotWordSearchEntryDataModel)paramList.get(0));
+      ReadInJoyFeedsHeaderViewController.e = 0;
       this.a.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyFeedsHeaderViewController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,24 +17,24 @@ import com.google.android.material.badge.BadgeUtils;
 public class BottomNavigationPresenter
   implements MenuPresenter
 {
-  private int jdField_a_of_type_Int;
-  private MenuBuilder jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder;
-  private BottomNavigationMenuView jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private MenuBuilder a;
+  private BottomNavigationMenuView b;
+  private boolean c = false;
+  private int d;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(BottomNavigationMenuView paramBottomNavigationMenuView)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView = paramBottomNavigationMenuView;
+    this.b = paramBottomNavigationMenuView;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public boolean collapseItemActionView(MenuBuilder paramMenuBuilder, MenuItemImpl paramMenuItemImpl)
@@ -54,18 +54,18 @@ public class BottomNavigationPresenter
   
   public int getId()
   {
-    return this.jdField_a_of_type_Int;
+    return this.d;
   }
   
   public MenuView getMenuView(ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView;
+    return this.b;
   }
   
   public void initForMenu(Context paramContext, MenuBuilder paramMenuBuilder)
   {
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder = paramMenuBuilder;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.initialize(this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder);
+    this.a = paramMenuBuilder;
+    this.b.initialize(this.a);
   }
   
   public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean) {}
@@ -74,11 +74,11 @@ public class BottomNavigationPresenter
   {
     if ((paramParcelable instanceof BottomNavigationPresenter.SavedState))
     {
-      BottomNavigationMenuView localBottomNavigationMenuView = this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView;
+      BottomNavigationMenuView localBottomNavigationMenuView = this.b;
       paramParcelable = (BottomNavigationPresenter.SavedState)paramParcelable;
-      localBottomNavigationMenuView.a(paramParcelable.jdField_a_of_type_Int);
-      paramParcelable = BadgeUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.getContext(), paramParcelable.jdField_a_of_type_ComGoogleAndroidMaterialInternalParcelableSparseArray);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.a(paramParcelable);
+      localBottomNavigationMenuView.b(paramParcelable.a);
+      paramParcelable = BadgeUtils.a(this.b.getContext(), paramParcelable.b);
+      this.b.setBadgeDrawables(paramParcelable);
     }
   }
   
@@ -86,8 +86,8 @@ public class BottomNavigationPresenter
   public Parcelable onSaveInstanceState()
   {
     BottomNavigationPresenter.SavedState localSavedState = new BottomNavigationPresenter.SavedState();
-    localSavedState.jdField_a_of_type_Int = this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.b();
-    localSavedState.jdField_a_of_type_ComGoogleAndroidMaterialInternalParcelableSparseArray = BadgeUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.a());
+    localSavedState.a = this.b.getSelectedItemId();
+    localSavedState.b = BadgeUtils.a(this.b.getBadgeDrawables());
     return localSavedState;
   }
   
@@ -100,20 +100,20 @@ public class BottomNavigationPresenter
   
   public void updateMenuView(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.a();
+      this.b.b();
       return;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.b();
+    this.b.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomnavigation.BottomNavigationPresenter
  * JD-Core Version:    0.7.0.1
  */

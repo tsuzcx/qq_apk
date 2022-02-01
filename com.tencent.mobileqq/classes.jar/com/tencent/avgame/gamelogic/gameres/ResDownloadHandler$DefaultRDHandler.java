@@ -35,15 +35,25 @@ public class ResDownloadHandler$DefaultRDHandler
     localStringBuilder.append(ResUtil.a());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("_res/");
-    localStringBuilder.append(paramDownloadParam.b);
+    localStringBuilder.append(paramDownloadParam.c);
     localStringBuilder.append(File.separator);
     return localStringBuilder.toString();
   }
   
-  public boolean a(IResDownloadManager.DownloadParam paramDownloadParam)
+  public boolean a(IResDownloadManager.DownloadParam paramDownloadParam, boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public String b(IResDownloadManager.DownloadParam paramDownloadParam)
+  {
+    return b(paramDownloadParam.c, paramDownloadParam.d);
+  }
+  
+  public boolean c(IResDownloadManager.DownloadParam paramDownloadParam)
   {
     String str1;
-    if (paramDownloadParam.a) {
+    if (paramDownloadParam.f) {
       str1 = a(paramDownloadParam);
     } else {
       str1 = b(paramDownloadParam);
@@ -64,17 +74,7 @@ public class ResDownloadHandler$DefaultRDHandler
     return bool;
   }
   
-  public boolean a(IResDownloadManager.DownloadParam paramDownloadParam, boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public String b(IResDownloadManager.DownloadParam paramDownloadParam)
-  {
-    return b(paramDownloadParam.b, paramDownloadParam.c);
-  }
-  
-  public boolean b(IResDownloadManager.DownloadParam paramDownloadParam)
+  public boolean d(IResDownloadManager.DownloadParam paramDownloadParam)
   {
     String str = b(paramDownloadParam);
     try
@@ -112,10 +112,10 @@ public class ResDownloadHandler$DefaultRDHandler
     return false;
   }
   
-  public boolean c(IResDownloadManager.DownloadParam paramDownloadParam)
+  public boolean e(IResDownloadManager.DownloadParam paramDownloadParam)
   {
     String str1 = ResUtil.b(b(paramDownloadParam));
-    if (!paramDownloadParam.b.equalsIgnoreCase(str1))
+    if (!paramDownloadParam.c.equalsIgnoreCase(str1))
     {
       if (QLog.isColorLevel())
       {

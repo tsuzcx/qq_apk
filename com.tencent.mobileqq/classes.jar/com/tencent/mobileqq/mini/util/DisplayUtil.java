@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -455,7 +456,17 @@ public class DisplayUtil
       while (i < localViewGroup.getChildCount())
       {
         localViewGroup.getChildAt(i).getContext().getPackageName();
-        if ((localViewGroup.getChildAt(i).getId() != -1) && ("navigationBarBackground".equals(paramActivity.getResources().getResourceEntryName(localViewGroup.getChildAt(i).getId())))) {
+        boolean bool;
+        try
+        {
+          bool = "navigationBarBackground".equals(paramActivity.getResources().getResourceEntryName(localViewGroup.getChildAt(i).getId()));
+        }
+        catch (Resources.NotFoundException localNotFoundException)
+        {
+          QLog.w("DisplayUtil", 1, "isNavigationBarExist error", localNotFoundException);
+          bool = false;
+        }
+        if ((localViewGroup.getChildAt(i).getId() != -1) && (bool)) {
           return true;
         }
         i += 1;
@@ -583,7 +594,7 @@ public class DisplayUtil
       ImmersiveUtils.setStatusTextColor(false, paramActivity.getWindow());
       return;
     }
-    ImmersiveUtils.setStatusTextColor(ThemeUtil.isDartStatusBar(paramActivity, 2131166489), paramActivity.getWindow());
+    ImmersiveUtils.setStatusTextColor(ThemeUtil.isDartStatusBar(paramActivity, 2131167331), paramActivity.getWindow());
   }
   
   public static void setSystemUIVisible(BaseActivity paramBaseActivity, boolean paramBoolean)
@@ -596,7 +607,7 @@ public class DisplayUtil
       paramBaseActivity.getWindow().clearFlags(512);
       return;
     }
-    LiuHaiUtils.a(paramBaseActivity);
+    LiuHaiUtils.f(paramBaseActivity);
     if (LiuHaiUtils.b()) {
       if ((Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27))) {
         enableXiaoMiNotch(paramBaseActivity);
@@ -627,7 +638,7 @@ public class DisplayUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

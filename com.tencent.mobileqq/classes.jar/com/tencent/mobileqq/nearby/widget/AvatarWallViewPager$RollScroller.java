@@ -19,7 +19,7 @@ class AvatarWallViewPager$RollScroller
     {
       Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
       localField.setAccessible(true);
-      localField.set(this.a.a, this);
+      localField.set(this.a.d, this);
       localField.setAccessible(false);
       return;
     }
@@ -31,17 +31,17 @@ class AvatarWallViewPager$RollScroller
   
   public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.o);
   }
   
   public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollScroller
  * JD-Core Version:    0.7.0.1
  */

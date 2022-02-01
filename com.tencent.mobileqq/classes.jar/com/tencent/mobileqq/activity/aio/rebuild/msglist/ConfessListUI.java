@@ -18,14 +18,14 @@ public class ConfessListUI
   public void c()
   {
     super.c();
-    if (this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.f > 0) {
-      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.a = new ConfessRefresher(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a());
+    if (this.h.w > 0) {
+      this.h.y = new ConfessRefresher(this.b.a().getMessageFacade().r());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.ConfessListUI
  * JD-Core Version:    0.7.0.1
  */

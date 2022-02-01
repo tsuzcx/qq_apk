@@ -4,21 +4,15 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class EffectFaceManager$VoiceStickerGuideTips
 {
-  public int a;
-  public String a;
+  public int a = 5000;
   public int b = 2;
-  public int c = 2;
-  public int d = 5000;
-  
-  public EffectFaceManager$VoiceStickerGuideTips()
-  {
-    this.jdField_a_of_type_Int = 5000;
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131704091);
-  }
+  public String c = HardCodeUtil.a(2131902014);
+  public int d = 2;
+  public int e = 5000;
   
   public String a(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString.replace("voicesticker", paramString);
+    return this.c.replace("voicesticker", paramString);
   }
 }
 

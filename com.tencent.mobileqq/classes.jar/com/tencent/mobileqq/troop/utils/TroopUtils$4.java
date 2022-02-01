@@ -18,14 +18,14 @@ final class TroopUtils$4
   
   public void run()
   {
-    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.b, this.c);
     int m = 0;
     int k = 0;
     int i = k;
     int j;
     try
     {
-      String[] arrayOfString = this.c.split("_");
+      String[] arrayOfString = this.d.split("_");
       j = m;
       if (arrayOfString != null)
       {
@@ -40,9 +40,9 @@ final class TroopUtils$4
           i = j;
           long l = Long.parseLong(arrayOfString[2]);
           i = j;
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(j), "", "", "");
+          ReportController.b(this.a, "dc00898", "", "", "0X800AD4F", "0X800AD4F", (int)l, 0, String.valueOf(j), "", "", "");
           i = j;
-          ((ITroopRecommendHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_RECOMMEND_HANDLER)).a(this.jdField_a_of_type_JavaLangString, 2, m);
+          ((ITroopRecommendHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_RECOMMEND_HANDLER)).a(this.b, 2, m);
         }
       }
     }
@@ -64,14 +64,14 @@ final class TroopUtils$4
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("checkAndOpenMemberProfileForRecommendTipsClick open card ");
-        ((StringBuilder)localObject).append(this.b);
-        ((StringBuilder)localObject).append(" ");
         ((StringBuilder)localObject).append(this.c);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(this.d);
         QLog.i("TroopMemberUtil", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = this.jdField_a_of_type_AndroidContentContext;
+      localObject = this.e;
       if (localObject != null) {
-        TroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)localObject, this.b, j, this.jdField_a_of_type_JavaLangString);
+        TroopUtils.a(this.a, (Context)localObject, this.c, j, this.b);
       }
     }
     else
@@ -80,7 +80,7 @@ final class TroopUtils$4
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("checkAndOpenMemberProfileForRecommendTipsClick no member ");
-        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(this.c);
         QLog.i("TroopMemberUtil", 2, ((StringBuilder)localObject).toString());
       }
       ThreadManager.getUIHandler().post(new TroopUtils.4.1(this));
@@ -89,7 +89,7 @@ final class TroopUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUtils.4
  * JD-Core Version:    0.7.0.1
  */

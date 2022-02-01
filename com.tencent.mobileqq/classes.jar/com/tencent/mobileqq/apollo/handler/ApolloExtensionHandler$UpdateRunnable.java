@@ -5,28 +5,28 @@ import com.tencent.mobileqq.app.BusinessObserver;
 class ApolloExtensionHandler$UpdateRunnable
   implements Runnable
 {
-  BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver;
-  Object jdField_a_of_type_JavaLangObject;
-  boolean jdField_a_of_type_Boolean;
+  BusinessObserver a;
+  boolean b;
+  Object c;
   
   public ApolloExtensionHandler$UpdateRunnable(BusinessObserver paramBusinessObserver, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = paramBusinessObserver;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a = paramBusinessObserver;
+    this.b = paramBoolean;
+    this.c = paramObject;
   }
   
   public void run()
   {
-    BusinessObserver localBusinessObserver = this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver;
+    BusinessObserver localBusinessObserver = this.a;
     if (localBusinessObserver != null) {
-      localBusinessObserver.onUpdate(0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+      localBusinessObserver.onUpdate(0, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.ApolloExtensionHandler.UpdateRunnable
  * JD-Core Version:    0.7.0.1
  */

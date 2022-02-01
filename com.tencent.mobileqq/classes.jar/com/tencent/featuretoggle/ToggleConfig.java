@@ -7,65 +7,50 @@ import java.util.Map;
 
 public class ToggleConfig
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 120000L;
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = (int)(Runtime.getRuntime().totalMemory() / 1024L / 8L);
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = false;
+  private String a;
+  private String b;
+  private String c;
   private String d = "";
   private String e;
-  private String f = "";
-  private String g = "";
-  private String h = "";
+  private boolean f = false;
+  private boolean g = false;
+  private boolean h = false;
+  private String i = "";
+  private long j = 120000L;
+  private String k = "";
+  private Map<String, String> l;
+  private int m = 0;
+  private String n = "";
+  private int o = (int)(Runtime.getRuntime().totalMemory() / 1024L / 8L);
   
   public ToggleConfig() {}
   
   public ToggleConfig(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.a = paramString1;
+    this.c = paramString2;
+    this.b = paramString3;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public Map<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
   public void a(long paramLong)
   {
-    long l = paramLong;
+    long l1 = paramLong;
     if (paramLong < 10L)
     {
-      LogUtils.a("The time must be greater than 10, Unit: second ,set duration 10", new Object[0]);
-      l = 10L;
+      LogUtils.c("The time must be greater than 10, Unit: second ,set duration 10", new Object[0]);
+      l1 = 10L;
     }
-    this.jdField_a_of_type_Long = (l * 1000L);
+    this.j = (l1 * 1000L);
   }
   
   public void a(String paramString)
@@ -75,22 +60,12 @@ public class ToggleConfig
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    this.f = paramBoolean;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public void b(String paramString)
@@ -103,17 +78,12 @@ public class ToggleConfig
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.h = paramBoolean;
   }
   
   public String c()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.c;
   }
   
   public void c(String paramString)
@@ -122,12 +92,7 @@ public class ToggleConfig
     if (paramString == null) {
       str = "";
     }
-    this.f = str;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
+    this.i = str;
   }
   
   public String d()
@@ -140,7 +105,7 @@ public class ToggleConfig
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.h = paramString;
+    this.n = paramString;
   }
   
   public String e()
@@ -150,37 +115,72 @@ public class ToggleConfig
   
   public void e(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String f()
-  {
-    return this.f;
+    this.a = paramString;
   }
   
   public void f(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
-  public String g()
+  public boolean f()
   {
-    return this.g;
+    return this.f;
   }
   
   public void g(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.c = paramString;
   }
   
-  public String h()
+  public boolean g()
+  {
+    return this.g;
+  }
+  
+  public boolean h()
   {
     return this.h;
+  }
+  
+  public String i()
+  {
+    return this.i;
+  }
+  
+  public long j()
+  {
+    return this.j;
+  }
+  
+  public String k()
+  {
+    return this.k;
+  }
+  
+  public Map<String, String> l()
+  {
+    return this.l;
+  }
+  
+  public int m()
+  {
+    return this.m;
+  }
+  
+  public String n()
+  {
+    return this.n;
+  }
+  
+  public int o()
+  {
+    return this.o;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.ToggleConfig
  * JD-Core Version:    0.7.0.1
  */

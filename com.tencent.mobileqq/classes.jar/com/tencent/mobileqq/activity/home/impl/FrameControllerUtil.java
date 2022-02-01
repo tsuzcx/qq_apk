@@ -7,13 +7,14 @@ import com.tencent.mobileqq.qroute.QRoute;
 public class FrameControllerUtil
   extends BaseFrameControllerUtil
 {
-  public static final String a = HardCodeUtil.a(2131693875);
-  public static final String b = HardCodeUtil.a(2131693874);
-  public static final String c = HardCodeUtil.a(2131719445);
-  public static final String d = HardCodeUtil.a(2131693876);
-  public static final String e = HardCodeUtil.a(2131699906);
-  public static final String f = HardCodeUtil.a(2131693524);
-  public static final String g = HardCodeUtil.a(2131697851);
+  public static final String l = HardCodeUtil.a(2131891480);
+  public static final String m = HardCodeUtil.a(2131891479);
+  public static final String n = HardCodeUtil.a(2131917005);
+  public static final String o = HardCodeUtil.a(2131891481);
+  public static final String p = HardCodeUtil.a(2131897959);
+  public static final String q = HardCodeUtil.a(2131891080);
+  public static final String r = HardCodeUtil.a(2131895628);
+  public static final String s = HardCodeUtil.a(2131890238);
   
   public static int a(int paramInt)
   {
@@ -89,7 +90,7 @@ public class FrameControllerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.FrameControllerUtil
  * JD-Core Version:    0.7.0.1
  */

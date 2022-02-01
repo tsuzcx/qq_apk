@@ -11,12 +11,12 @@ class DavWTogetherObserver$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      WTogetherUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+      WTogetherUtil.a(this.b, this.c);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 1).a();
+    QQToast.makeText(this.b, this.c, 1).show();
   }
 }
 

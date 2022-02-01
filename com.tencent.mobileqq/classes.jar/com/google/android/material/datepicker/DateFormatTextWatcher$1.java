@@ -15,11 +15,11 @@ class DateFormatTextWatcher$1
   public void run()
   {
     TextInputLayout localTextInputLayout = DateFormatTextWatcher.a(this.this$0);
-    Object localObject1 = DateFormatTextWatcher.a(this.this$0);
+    Object localObject1 = DateFormatTextWatcher.b(this.this$0);
     Object localObject2 = localTextInputLayout.getContext();
     String str1 = ((Context)localObject2).getString(R.string.A);
     String str2 = String.format(((Context)localObject2).getString(R.string.C), new Object[] { this.a });
-    localObject1 = String.format(((Context)localObject2).getString(R.string.B), new Object[] { ((DateFormat)localObject1).format(new Date(UtcDates.a().getTimeInMillis())) });
+    localObject1 = String.format(((Context)localObject2).getString(R.string.B), new Object[] { ((DateFormat)localObject1).format(new Date(UtcDates.b().getTimeInMillis())) });
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(str1);
     ((StringBuilder)localObject2).append("\n");
@@ -32,7 +32,7 @@ class DateFormatTextWatcher$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.DateFormatTextWatcher.1
  * JD-Core Version:    0.7.0.1
  */

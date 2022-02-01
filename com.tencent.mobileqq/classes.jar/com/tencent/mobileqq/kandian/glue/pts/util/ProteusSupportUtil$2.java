@@ -21,8 +21,8 @@ final class ProteusSupportUtil$2
   
   public void onFound(ViewBase paramViewBase)
   {
-    Object localObject = (ProteusItem)ProteusSupportUtil.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if ((localObject != null) && (((ProteusItem)localObject).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel, paramViewBase))) {
+    Object localObject = (ProteusItem)ProteusSupportUtil.a().get(Integer.valueOf(this.a));
+    if ((localObject != null) && (((ProteusItem)localObject).a(this.a, this.b, this.c, paramViewBase))) {
       return;
     }
     if (paramViewBase.getNativeView() != null)
@@ -42,7 +42,7 @@ final class ProteusSupportUtil$2
         ((StringBuilder)localObject).append(paramViewBase.getClickEvnet());
         QLog.d("ProteusSupportUtil", 2, ((StringBuilder)localObject).toString());
       }
-      if (ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, i, paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext)) {
+      if (ProteusSupportUtil.a(this.d, i, paramViewBase, this.e)) {
         paramViewBase.setOnClickListener(new ProteusSupportUtil.2.1(this, i, paramViewBase));
       }
     }
@@ -50,7 +50,7 @@ final class ProteusSupportUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.util.ProteusSupportUtil.2
  * JD-Core Version:    0.7.0.1
  */

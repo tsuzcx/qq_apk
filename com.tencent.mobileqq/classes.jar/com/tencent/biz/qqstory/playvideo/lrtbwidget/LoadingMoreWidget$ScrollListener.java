@@ -8,72 +8,72 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class LoadingMoreWidget$ScrollListener
   implements XViewPager.OnPageChangeListener
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = UIUtils.d(BaseApplication.getContext());
-  private int b = -1;
-  private int c = -1;
+  private float b = -1.0F;
+  private int c = UIUtils.e(BaseApplication.getContext());
+  private int d = -1;
+  private int e = -1;
   
   public LoadingMoreWidget$ScrollListener(LoadingMoreWidget paramLoadingMoreWidget) {}
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a() != 0) {
+    if (this.a.g() != 0) {
       return;
     }
-    this.c = paramInt;
+    this.e = paramInt;
   }
   
   public void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a() != 0) {
+    if (this.a.g() != 0) {
       return;
     }
-    if (this.b == -1) {
-      this.b = paramInt1;
+    if (this.d == -1) {
+      this.d = paramInt1;
     }
-    if (this.b != paramInt1)
+    if (this.d != paramInt1)
     {
-      this.b = paramInt1;
-      this.jdField_a_of_type_Float = paramFloat;
+      this.d = paramInt1;
+      this.b = paramFloat;
     }
-    if (this.jdField_a_of_type_Float > 0.5D)
+    if (this.b > 0.5D)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.setTranslationY(this.jdField_a_of_type_Int - paramInt2);
+      this.a.b.setTranslationY(this.c - paramInt2);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.setTranslationY(-paramInt2);
+    this.a.b.setTranslationY(-paramInt2);
   }
   
   public void b(int paramInt)
   {
-    SLog.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a()));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a() != 0) {
+    SLog.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.a.g()));
+    if (this.a.g() != 0) {
       return;
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_Float = -1.0F;
-      this.b = -1;
-      this.c = -1;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.clearAnimation();
+      this.b = -1.0F;
+      this.d = -1;
+      this.e = -1;
+      this.a.b.clearAnimation();
       return;
     }
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_Float < 0.5D)
+      if (this.b < 0.5D)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.setTranslationY(0.0F);
+        this.a.b.setTranslationY(0.0F);
         return;
       }
-      if (this.c != -1) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetLoadingMoreWidget.a.setTranslationY(this.jdField_a_of_type_Int);
+      if (this.e != -1) {
+        this.a.b.setTranslationY(this.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.LoadingMoreWidget.ScrollListener
  * JD-Core Version:    0.7.0.1
  */

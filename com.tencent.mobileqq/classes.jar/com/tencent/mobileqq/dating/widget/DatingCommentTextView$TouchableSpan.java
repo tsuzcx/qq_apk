@@ -12,10 +12,10 @@ public class DatingCommentTextView$TouchableSpan
   extends ClickableSpan
   implements BlockableEditTextView.BlockAble
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private WeakReference<View.OnClickListener> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private ColorStateList b;
+  private ColorStateList c;
+  private WeakReference<View.OnClickListener> d;
   
   public DatingCommentTextView$TouchableSpan(View.OnClickListener paramOnClickListener, int paramInt)
   {
@@ -29,19 +29,19 @@ public class DatingCommentTextView$TouchableSpan
   
   public DatingCommentTextView$TouchableSpan(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnClickListener);
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.b = paramColorStateList2;
+    this.d = new WeakReference(paramOnClickListener);
+    this.b = paramColorStateList1;
+    this.c = paramColorStateList2;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = (View.OnClickListener)((WeakReference)localObject).get();
@@ -55,11 +55,11 @@ public class DatingCommentTextView$TouchableSpan
   {
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setUnderlineText(false);
-    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    ColorStateList localColorStateList = this.b;
     int i;
     if (localColorStateList != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
       } else {
         i = localColorStateList.getColorForState(new int[0], 0);
@@ -70,10 +70,10 @@ public class DatingCommentTextView$TouchableSpan
     {
       paramTextPaint.setColor(-16777216);
     }
-    localColorStateList = this.b;
+    localColorStateList = this.c;
     if (localColorStateList != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
       } else {
         i = localColorStateList.getColorForState(new int[0], 0);
@@ -86,7 +86,7 @@ public class DatingCommentTextView$TouchableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.DatingCommentTextView.TouchableSpan
  * JD-Core Version:    0.7.0.1
  */

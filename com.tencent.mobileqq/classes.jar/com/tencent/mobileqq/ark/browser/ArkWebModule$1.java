@@ -18,7 +18,7 @@ class ArkWebModule$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131690158);
+    String str = this.a.getString(2131887057);
     Object localObject1 = str;
     if (paramBoolean)
     {
@@ -76,16 +76,16 @@ class ArkWebModule$1
     }
     paramBundle = (Bundle)localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramBundle = this.jdField_a_of_type_AndroidAppActivity.getString(2131690158);
+      paramBundle = this.a.getString(2131887057);
     }
-    localObject1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131690159);
-    this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule.a(String.format((String)localObject1, new Object[] { paramBundle }));
-    ArkWebModule.a(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule).show();
+    localObject1 = this.a.getString(2131887058);
+    this.b.a(String.format((String)localObject1, new Object[] { paramBundle }));
+    ArkWebModule.a(this.b).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkWebModule.1
  * JD-Core Version:    0.7.0.1
  */

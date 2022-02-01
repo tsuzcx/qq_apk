@@ -14,21 +14,21 @@ class AIOIceBreakShow$2
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (AIOIceBreakShow.a(this.a) == null) {
+    if (AIOIceBreakShow.b(this.a) == null) {
       return;
     }
     int i = ((Integer)paramValueAnimator.getAnimatedValue("alpha")).intValue();
     int j = ((Integer)paramValueAnimator.getAnimatedValue("height")).intValue();
-    AIOIceBreakShow.a(this.a).setAlpha(i / 100.0F);
-    paramValueAnimator = AIOIceBreakShow.a(this.a).a();
+    AIOIceBreakShow.b(this.a).setAlpha(i / 100.0F);
+    paramValueAnimator = AIOIceBreakShow.c(this.a).a();
     ((AbsListView.LayoutParams)paramValueAnimator.getLayoutParams()).height = j;
     paramValueAnimator.requestLayout();
-    AIOIceBreakShow.a(this.a).scrollTo(0, j - AIOIceBreakShow.a());
+    AIOIceBreakShow.b(this.a).scrollTo(0, j - AIOIceBreakShow.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow.2
  * JD-Core Version:    0.7.0.1
  */

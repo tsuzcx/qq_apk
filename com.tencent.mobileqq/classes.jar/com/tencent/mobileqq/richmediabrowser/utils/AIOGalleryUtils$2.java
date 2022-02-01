@@ -12,12 +12,12 @@ final class AIOGalleryUtils$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOGalleryUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserUtilsAIOGalleryUtils$OnSavePhoto);
+    AIOGalleryUtils.a(this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.utils.AIOGalleryUtils.2
  * JD-Core Version:    0.7.0.1
  */

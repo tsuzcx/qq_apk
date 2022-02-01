@@ -12,16 +12,16 @@ class TroopFileBubblePauseHandler$1
 {
   TroopFileBubblePauseHandler$1(TroopFileBubblePauseHandler paramTroopFileBubblePauseHandler, String paramString, TroopFileStatusInfo paramTroopFileStatusInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemTroopFileBubblePauseHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
-    new TroopFileItemOperation(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemTroopFileBubblePauseHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemTroopFileBubblePauseHandler.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemTroopFileBubblePauseHandler.a();
+    ReportController.b(this.c.b, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
+    new TroopFileItemOperation(Long.parseLong(this.a), this.c.b, (Activity)this.c.a).a(this.b.a);
+    this.c.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.TroopFileBubblePauseHandler.1
  * JD-Core Version:    0.7.0.1
  */

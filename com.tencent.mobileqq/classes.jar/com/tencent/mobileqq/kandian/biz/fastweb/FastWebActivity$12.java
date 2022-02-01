@@ -22,26 +22,26 @@ class FastWebActivity$12
   public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<CommentViewItem> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
     QLog.d("FastWebActivity", 2, "onCommentListLoad");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity.getIntent().removeExtra("intent_key_anchor_data");
+    this.c.getIntent().removeExtra("intent_key_anchor_data");
     if (!paramBoolean1)
     {
-      QRUtils.a(1, 2131717809);
+      QRUtils.a(1, 2131915284);
       return;
     }
-    paramList = FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).a().a();
+    paramList = FastWebActivity.o(this.c).f().i();
     if (paramList != null)
     {
-      if (!TextUtils.isEmpty(paramList.b))
+      if (!TextUtils.isEmpty(paramList.c))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity.a(true, this.jdField_a_of_type_JavaLangString, this.b, 2130772386, 0);
-        FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity, 1000L);
+        this.c.a(true, this.a, this.b, 2130772482, 0);
+        FastWebActivity.b(this.c, 1000L);
       }
       else
       {
-        FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity, 100L);
+        FastWebActivity.b(this.c, 100L);
       }
       paramList = new FastWebActivity.12.1(this);
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity).registerDataSetObserver(paramList);
+      FastWebActivity.l(this.c).registerDataSetObserver(paramList);
       ThreadManager.getUIHandler().postDelayed(new FastWebActivity.12.2(this, paramList), 2000L);
     }
   }
@@ -49,13 +49,13 @@ class FastWebActivity$12
   public void onCommentStateError(int paramInt)
   {
     if (paramInt == 1001) {
-      QRUtils.a(1, 2131717799);
+      QRUtils.a(1, 2131915274);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.12
  * JD-Core Version:    0.7.0.1
  */

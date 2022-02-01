@@ -26,27 +26,27 @@ import java.util.List;
 public class SearchResultGroupMessagePresenter
   implements IPresenter<IModel, ISearchResultGroupView>
 {
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private SearchResultGroupPresenter jdField_a_of_type_ComTencentMobileqqSearchPresenterSearchResultGroupPresenter;
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
+  private IFaceDecoder b;
+  private SearchResultGroupPresenter c;
   
   public SearchResultGroupMessagePresenter(IFaceDecoder paramIFaceDecoder, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
-    this.jdField_a_of_type_ComTencentMobileqqSearchPresenterSearchResultGroupPresenter = new SearchResultGroupPresenter(paramIFaceDecoder, paramBoolean);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramIFaceDecoder;
+    this.c = new SearchResultGroupPresenter(paramIFaceDecoder, paramBoolean);
+    this.a = paramBoolean;
   }
   
   public void a(IModel paramIModel, ISearchResultGroupView paramISearchResultGroupView)
   {
     ISearchResultGroupModel localISearchResultGroupModel = (ISearchResultGroupModel)paramIModel;
     SearchResultGroupMessageView localSearchResultGroupMessageView = (SearchResultGroupMessageView)paramISearchResultGroupView;
-    int i = localISearchResultGroupModel.a();
-    LinearLayout localLinearLayout = localSearchResultGroupMessageView.a();
+    int i = localISearchResultGroupModel.d();
+    LinearLayout localLinearLayout = localSearchResultGroupMessageView.d();
     ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
     if (localLinearLayout != null)
     {
-      List localList = localISearchResultGroupModel.a();
+      List localList = localISearchResultGroupModel.b();
       if ((localList != null) && (!localList.isEmpty()))
       {
         localLinearLayout.removeAllViews();
@@ -56,59 +56,59 @@ public class SearchResultGroupMessagePresenter
         {
           ISearchResultModel localISearchResultModel = (ISearchResultModel)localList.get(i);
           Object localObject;
-          if (this.jdField_a_of_type_Boolean)
+          if (this.a)
           {
-            paramIModel = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2131562796, null);
+            paramIModel = LayoutInflater.from(paramISearchResultGroupView.h().getContext()).inflate(2131629241, null);
             localObject = new FTSMessageSearchResultView(paramIModel);
           }
           else
           {
-            paramIModel = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2131562795, null);
+            paramIModel = LayoutInflater.from(paramISearchResultGroupView.h().getContext()).inflate(2131629240, null);
             localObject = new SearchResultView(paramIModel);
           }
-          paramIModel.setTag(2131380884, localISearchResultModel);
-          paramIModel.setTag(2131380889, localObject);
-          paramIModel.setTag(2131380885, Integer.valueOf(i));
-          paramIModel.setTag(2131380883, Integer.valueOf(localList.size()));
-          paramIModel.setTag(2131380886, this.jdField_a_of_type_ComTencentMobileqqSearchPresenterSearchResultGroupPresenter);
+          paramIModel.setTag(2131449867, localISearchResultModel);
+          paramIModel.setTag(2131449873, localObject);
+          paramIModel.setTag(2131449868, Integer.valueOf(i));
+          paramIModel.setTag(2131449866, Integer.valueOf(localList.size()));
+          paramIModel.setTag(2131449869, this.c);
           SearchViewUtils.a(localISearchResultModel, k, i);
-          int m = localISearchResultModel.b();
-          int n = localISearchResultModel.f_();
+          int m = localISearchResultModel.ck_();
+          int n = localISearchResultModel.cl_();
           int j;
           if ((localISearchResultModel instanceof ISearchResultPositionModel)) {
-            j = ((ISearchResultPositionModel)localISearchResultModel).u;
+            j = ((ISearchResultPositionModel)localISearchResultModel).af;
           } else {
             j = 0;
           }
           SearchViewUtils.a(m, n, paramIModel, j);
           localLinearLayout.addView(paramIModel);
-          if (this.jdField_a_of_type_ComTencentMobileqqSearchPresenterSearchResultGroupPresenter.a() != null) {
-            this.jdField_a_of_type_ComTencentMobileqqSearchPresenterSearchResultGroupPresenter.a().a((IModel)localList.get(i), (IView)localObject);
+          if (this.c.a() != null) {
+            this.c.a().a((IModel)localList.get(i), (IView)localObject);
           }
           i += 1;
         }
       }
     }
-    paramIModel = localISearchResultGroupModel.a();
+    paramIModel = localISearchResultGroupModel.b();
     if ((paramIModel != null) && (!paramIModel.isEmpty()))
     {
-      localSearchResultGroupMessageView.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      localSearchResultGroupMessageView.e.setVisibility(8);
       return;
     }
     if (paramISearchResultGroupView.b() != null) {
       paramISearchResultGroupView.b().setVisibility(8);
     }
-    localSearchResultGroupMessageView.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    localSearchResultGroupMessageView.jdField_b_of_type_AndroidViewView.setTag(2131380885, Integer.valueOf(-1));
-    localSearchResultGroupMessageView.jdField_b_of_type_AndroidWidgetTextView.setText(localISearchResultGroupModel.b());
-    localSearchResultGroupMessageView.c.setText(HardCodeUtil.a(2131713570));
-    localSearchResultGroupMessageView.a.setImageResource(2130846216);
-    localSearchResultGroupMessageView.jdField_b_of_type_AndroidViewView.setOnClickListener(new SearchResultGroupMessagePresenter.1(this, localISearchResultGroupModel));
+    localSearchResultGroupMessageView.e.setVisibility(0);
+    localSearchResultGroupMessageView.e.setTag(2131449868, Integer.valueOf(-1));
+    localSearchResultGroupMessageView.f.setText(localISearchResultGroupModel.c());
+    localSearchResultGroupMessageView.h.setText(HardCodeUtil.a(2131911116));
+    localSearchResultGroupMessageView.g.setImageResource(2130847686);
+    localSearchResultGroupMessageView.e.setOnClickListener(new SearchResultGroupMessagePresenter.1(this, localISearchResultGroupModel));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchResultGroupMessagePresenter
  * JD-Core Version:    0.7.0.1
  */

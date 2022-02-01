@@ -6,11 +6,6 @@ import android.view.ViewGroup;
 
 public class QQViewCompatUtil
 {
-  public static Object a(View paramView)
-  {
-    return ReflectionUtil.a(paramView, "android.view.View", "mParent", null);
-  }
-  
   public static void a(View paramView, TypedArray paramTypedArray)
   {
     ReflectionUtil.a(paramView, "android.view.View", "initializeScrollbars", new Class[] { TypedArray.class }, new Object[] { paramTypedArray });
@@ -25,10 +20,15 @@ public class QQViewCompatUtil
   {
     return ((Boolean)ReflectionUtil.a(paramView, "android.view.View", "includeForAccessibility", null, null)).booleanValue();
   }
+  
+  public static Object b(View paramView)
+  {
+    return ReflectionUtil.a(paramView, "android.view.View", "mParent", null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.QQViewCompatUtil
  * JD-Core Version:    0.7.0.1
  */

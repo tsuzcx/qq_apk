@@ -33,24 +33,19 @@ public class KanDianStrategy
   public BusinessConfig a(Bundle paramBundle, String paramString)
   {
     BusinessConfig localBusinessConfig = new BusinessConfig();
-    localBusinessConfig.jdField_a_of_type_JavaLangString = paramString;
-    localBusinessConfig.jdField_e_of_type_Int = 0;
-    localBusinessConfig.jdField_b_of_type_JavaLangString = ApkUtils.a(BaseApplicationImpl.getContext());
-    localBusinessConfig.jdField_a_of_type_Int = ApkUtils.a(BaseApplicationImpl.getContext());
-    localBusinessConfig.jdField_d_of_type_Int = 16232;
-    localBusinessConfig.jdField_b_of_type_Int = 0;
-    localBusinessConfig.c = 0;
-    localBusinessConfig.jdField_e_of_type_JavaLangString = this.a.getCurrentAccountUin();
-    localBusinessConfig.jdField_d_of_type_JavaLangString = paramBundle.getString("fromid");
-    localBusinessConfig.jdField_a_of_type_Boolean = true;
-    localBusinessConfig.jdField_a_of_type_JavaUtilList.clear();
-    localBusinessConfig.jdField_a_of_type_JavaUtilList.add("https://now.qq.com/");
+    localBusinessConfig.a = paramString;
+    localBusinessConfig.h = 0;
+    localBusinessConfig.b = ApkUtils.b(BaseApplicationImpl.getContext());
+    localBusinessConfig.c = ApkUtils.a(BaseApplicationImpl.getContext());
+    localBusinessConfig.f = 16232;
+    localBusinessConfig.d = 0;
+    localBusinessConfig.e = 0;
+    localBusinessConfig.j = this.a.getCurrentAccountUin();
+    localBusinessConfig.i = paramBundle.getString("fromid");
+    localBusinessConfig.k = true;
+    localBusinessConfig.n.clear();
+    localBusinessConfig.n.add("https://now.qq.com/");
     return localBusinessConfig;
-  }
-  
-  public String a(Bundle paramBundle)
-  {
-    return "1014";
   }
   
   public void a(Bundle paramBundle, IDoneCallback paramIDoneCallback)
@@ -95,10 +90,15 @@ public class KanDianStrategy
   {
     return QQUserAction.a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramMap, paramBoolean2, paramBoolean3);
   }
+  
+  public String b(Bundle paramBundle)
+  {
+    return "1014";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.strategy.KanDianStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -16,32 +16,22 @@ import mqq.os.MqqHandler;
 
 public class PTSSwitchManager
 {
-  public static PTSSwitchManager a;
-  private boolean a;
+  public static PTSSwitchManager a = new PTSSwitchManager();
   private boolean b = false;
   private boolean c = false;
+  private boolean d = false;
   
-  static
+  private void e()
   {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilPTSSwitchManager = new PTSSwitchManager();
-  }
-  
-  private PTSSwitchManager()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void b()
-  {
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     this.b = false;
-    d();
+    this.c = false;
+    g();
   }
   
-  private void c()
+  private void f()
   {
-    d();
+    g();
     PTSHelper.b();
     PTSNativeModuleRegistry.registerNativeModule("RequestFeedsModule", new PTSRequestFeedsModule());
     PTSNativeModuleRegistry.registerNativeModule("NavigateToModule", new PTSNavigateToModule());
@@ -50,42 +40,42 @@ public class PTSSwitchManager
     PTSNativeModuleRegistry.registerNativeModule("HandleJSException", new PTSHandleJSException());
     PTSNativeModuleRegistry.registerNativeModule("ReportTo1160", new PTSReportTo1160Module());
     PTSNativeModuleRegistry.registerNativeModule("MarkArticleRead", new PTSMarkArticleReadModule());
-    PTSEngineLoader.a().a();
-    PTSAppLoader.a().a();
+    PTSEngineLoader.a().b();
+    PTSAppLoader.a().b();
   }
   
-  private void d()
+  private void g()
   {
     PTSHelper.c();
     PTSNativeModuleRegistry.clearNativeModule();
-    PTSEventDispatcher.a().a();
+    PTSEventDispatcher.a().b();
   }
   
   void a()
   {
-    b();
+    e();
     PTSSwitchManager.1 local1 = new PTSSwitchManager.1(this);
     ThreadManager.getSubThreadHandler().post(local1);
   }
   
-  public boolean a()
-  {
-    return this.c;
-  }
-  
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.d;
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_Boolean) || (this.b);
+    return this.b;
+  }
+  
+  public boolean d()
+  {
+    return (this.b) || (this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSSwitchManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,98 @@
 package oicq.wlogin_sdk.report.event;
 
-import java.util.Date;
 import java.util.HashMap;
-import oicq.wlogin_sdk.report.c;
-import oicq.wlogin_sdk.request.t;
-import oicq.wlogin_sdk.tools.util;
 
 public class b
 {
-  private static String a;
+  private String a;
+  private String b;
+  private String c;
+  private boolean d = false;
+  private boolean e = false;
+  private boolean f = false;
+  private String g;
+  private final HashMap<String, String> h = new HashMap();
   
-  public static void a(a parama)
+  public b(String paramString1, String paramString2, String paramString3)
   {
-    String str1 = new Date().toString();
-    String str2 = String.valueOf(2473L);
-    if (a == null) {
-      a = t.m();
-    }
-    StringBuffer localStringBuffer = new StringBuffer(util.LOG_TAG_EVENT_REPORT);
-    localStringBuffer.append(",type=");
-    localStringBuffer.append(parama.a());
-    localStringBuffer.append(",subType=");
-    localStringBuffer.append(parama.b());
-    localStringBuffer.append(",detail=");
-    localStringBuffer.append(parama.d());
-    localStringBuffer.append(",isRealTime=");
-    localStringBuffer.append(parama.e());
-    localStringBuffer.append(",isImmediatelyUpload=");
-    localStringBuffer.append(parama.f());
-    localStringBuffer.append(",uin=");
-    localStringBuffer.append(parama.g());
-    localStringBuffer.append(",time=");
-    localStringBuffer.append(str1);
-    localStringBuffer.append(",version=");
-    localStringBuffer.append(str2);
-    localStringBuffer.append(",process=");
-    localStringBuffer.append(a);
-    HashMap localHashMap = parama.c();
-    localHashMap.put("user_id", parama.g());
-    localHashMap.put("sub_type", parama.b());
-    localHashMap.put("detail", parama.d());
-    localHashMap.put("wt_version", str2);
-    localHashMap.put("happen_time", str1);
-    localHashMap.put("process", a);
-    c.a(parama);
-    util.LOGI(localStringBuffer.toString(), "");
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public b a(String paramString)
+  {
+    this.g = paramString;
+    return this;
+  }
+  
+  public b a(String paramString1, String paramString2)
+  {
+    this.h.put(paramString1, paramString2);
+    return this;
+  }
+  
+  public b a(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+    return this;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public b b(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+    return this;
+  }
+  
+  public HashMap<String, String> c()
+  {
+    return this.h;
+  }
+  
+  public b c(boolean paramBoolean)
+  {
+    this.f = paramBoolean;
+    return this;
+  }
+  
+  public String d()
+  {
+    return this.c;
+  }
+  
+  public boolean e()
+  {
+    return this.d;
+  }
+  
+  public boolean f()
+  {
+    return this.e;
+  }
+  
+  public String g()
+  {
+    return this.g;
+  }
+  
+  public boolean h()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.report.event.b
  * JD-Core Version:    0.7.0.1
  */

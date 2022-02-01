@@ -26,21 +26,21 @@ class GuidePopuppWindow$2$1
       this.a.a.dismiss();
       return;
     }
-    RIJJumpUtils.a(GuidePopuppWindow.a(this.a.a), GuidePopuppWindow.a(this.a.a), CommentGuideConfigHandler.a(GuidePopuppWindow.a(this.a.a).innerUniqueID));
+    RIJJumpUtils.a(GuidePopuppWindow.c(this.a.a), GuidePopuppWindow.d(this.a.a), CommentGuideConfigHandler.a(GuidePopuppWindow.d(this.a.a).innerUniqueID));
     this.a.a.a(2);
     this.a.a.dismiss();
     paramViewBase = new RIJTransMergeKanDianReport.ReportR5Builder();
     RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = paramViewBase.addOS();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(CommentGuideConfigHandler.a());
+    localStringBuilder.append(CommentGuideConfigHandler.d());
     localReportR5Builder.addStringNotThrow("wording", localStringBuilder.toString());
-    ReadInJoyCommentUtils.a("0X8009FE8", GuidePopuppWindow.a(this.a.a), paramViewBase);
+    ReadInJoyCommentUtils.a("0X8009FE8", GuidePopuppWindow.d(this.a.a), paramViewBase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.guide.GuidePopuppWindow.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,322 +21,322 @@ import java.util.Set;
 
 public final class RIJDataManager$Builder
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  Context jdField_a_of_type_AndroidContentContext;
-  VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  IExposureSupplementManager jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityIExposureSupplementManager;
-  RIJDislikeManager jdField_a_of_type_ComTencentMobileqqKandianBizDislikeRIJDislikeManager;
-  PrefetchListener jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkPrefetchListener;
-  RIJPreloadImage jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkRIJPreloadImage;
-  ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  DynamicItemViewHelper jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilDynamicItemViewHelper;
-  VideoShareHelper jdField_a_of_type_ComTencentMobileqqKandianBizShareVideoShareHelper;
-  PlayableItem jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayableItem;
-  VideoAutoPlayController jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoAutoPlayController;
-  VideoPlayManager jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPlayManager;
-  VideoPreDownloadMgr jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr;
-  VideoRecommendManager jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoRecommendManager;
-  ArrayList<BaseReportData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  Map<Long, BaseReportData> jdField_a_of_type_JavaUtilMap = null;
-  Set<Long> jdField_a_of_type_JavaUtilSet = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
-  boolean d = false;
-  boolean e = false;
-  boolean f = false;
-  boolean g = false;
+  boolean A = false;
+  Context a;
+  int b;
+  VideoRecommendManager c;
+  VideoPlayManager d;
+  long e;
+  ReadInJoyBaseAdapter f;
+  VideoAutoPlayController g;
+  VideoPreDownloadMgr h;
+  PlayableItem i;
+  boolean j = false;
+  boolean k = false;
+  int l;
+  boolean m = false;
+  boolean n = false;
+  Set<Long> o = null;
+  Map<Long, BaseReportData> p = null;
+  ArrayList<BaseReportData> q = new ArrayList();
+  DynamicItemViewHelper r;
+  boolean s = false;
+  RIJPreloadImage t;
+  VafContext u;
+  boolean v = false;
+  RIJDislikeManager w;
+  VideoShareHelper x;
+  PrefetchListener y;
+  IExposureSupplementManager z;
   
-  public int a()
+  public Context A()
   {
-    return this.jdField_b_of_type_Int;
+    return this.a;
   }
   
-  public long a()
+  public int B()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public VafContext a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+    return this.b;
   }
   
   public Builder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     return this;
   }
   
   public Builder a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramLong;
     return this;
   }
   
   public Builder a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     return this;
   }
   
   public Builder a(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
+    this.u = paramVafContext;
     return this;
   }
   
   public Builder a(IExposureSupplementManager paramIExposureSupplementManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityIExposureSupplementManager = paramIExposureSupplementManager;
+    this.z = paramIExposureSupplementManager;
     return this;
   }
   
   public Builder a(RIJDislikeManager paramRIJDislikeManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeRIJDislikeManager = paramRIJDislikeManager;
+    this.w = paramRIJDislikeManager;
     return this;
   }
   
   public Builder a(PrefetchListener paramPrefetchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkPrefetchListener = paramPrefetchListener;
+    this.y = paramPrefetchListener;
     return this;
   }
   
   public Builder a(RIJPreloadImage paramRIJPreloadImage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkRIJPreloadImage = paramRIJPreloadImage;
+    this.t = paramRIJPreloadImage;
     return this;
   }
   
   public Builder a(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = paramReadInJoyBaseAdapter;
+    this.f = paramReadInJoyBaseAdapter;
     return this;
   }
   
   public Builder a(DynamicItemViewHelper paramDynamicItemViewHelper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilDynamicItemViewHelper = paramDynamicItemViewHelper;
+    this.r = paramDynamicItemViewHelper;
     return this;
   }
   
   public Builder a(VideoShareHelper paramVideoShareHelper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareVideoShareHelper = paramVideoShareHelper;
+    this.x = paramVideoShareHelper;
     return this;
   }
   
   public Builder a(PlayableItem paramPlayableItem)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayableItem = paramPlayableItem;
+    this.i = paramPlayableItem;
     return this;
   }
   
   public Builder a(VideoAutoPlayController paramVideoAutoPlayController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoAutoPlayController = paramVideoAutoPlayController;
+    this.g = paramVideoAutoPlayController;
     return this;
   }
   
   public Builder a(VideoPlayManager paramVideoPlayManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPlayManager = paramVideoPlayManager;
+    this.d = paramVideoPlayManager;
     return this;
   }
   
   public Builder a(VideoPreDownloadMgr paramVideoPreDownloadMgr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr = paramVideoPreDownloadMgr;
+    this.h = paramVideoPreDownloadMgr;
     return this;
   }
   
   public Builder a(VideoRecommendManager paramVideoRecommendManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoRecommendManager = paramVideoRecommendManager;
+    this.c = paramVideoRecommendManager;
     return this;
   }
   
   public Builder a(Set<Long> paramSet, Map<Long, BaseReportData> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilSet = paramSet;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.o = paramSet;
+    this.p = paramMap;
     return this;
   }
   
   public Builder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
     return this;
-  }
-  
-  public IExposureSupplementManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityIExposureSupplementManager;
-  }
-  
-  public RIJDislikeManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeRIJDislikeManager;
-  }
-  
-  public PrefetchListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkPrefetchListener;
-  }
-  
-  public RIJPreloadImage a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkRIJPreloadImage;
-  }
-  
-  public ReadInJoyBaseAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  }
-  
-  public DynamicItemViewHelper a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilDynamicItemViewHelper;
-  }
-  
-  public VideoShareHelper a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizShareVideoShareHelper;
-  }
-  
-  public PlayableItem a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayableItem;
-  }
-  
-  public VideoAutoPlayController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoAutoPlayController;
-  }
-  
-  public VideoPlayManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPlayManager;
-  }
-  
-  public VideoPreDownloadMgr a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr;
-  }
-  
-  public VideoRecommendManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoRecommendManager;
-  }
-  
-  public ArrayList<BaseReportData> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public Map<Long, BaseReportData> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
-  public Set<Long> a()
-  {
-    return this.jdField_a_of_type_JavaUtilSet;
   }
   
   public boolean a()
   {
-    return this.g;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
+    return this.A;
   }
   
   public Builder b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
     return this;
   }
   
-  public DynamicItemViewHelper b()
+  public IExposureSupplementManager b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilDynamicItemViewHelper;
-  }
-  
-  public boolean b()
-  {
-    return this.f;
+    return this.z;
   }
   
   public Builder c(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.m = paramBoolean;
     return this;
   }
   
-  public boolean c()
+  public PrefetchListener c()
   {
-    return this.e;
+    return this.y;
   }
   
   public Builder d(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.n = paramBoolean;
     return this;
   }
   
-  public boolean d()
+  public VideoShareHelper d()
   {
-    return this.d;
+    return this.x;
   }
   
   public Builder e(boolean paramBoolean)
   {
-    this.e = paramBoolean;
+    this.s = paramBoolean;
     return this;
   }
   
-  public boolean e()
+  public RIJDislikeManager e()
   {
-    return this.c;
+    return this.w;
   }
   
   public Builder f(boolean paramBoolean)
   {
-    this.f = paramBoolean;
+    this.v = paramBoolean;
     return this;
   }
   
   public boolean f()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.v;
+  }
+  
+  public VafContext g()
+  {
+    return this.u;
   }
   
   public Builder g(boolean paramBoolean)
   {
-    this.g = paramBoolean;
+    this.A = paramBoolean;
     return this;
   }
   
-  public boolean g()
+  public RIJPreloadImage h()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.t;
+  }
+  
+  public boolean i()
+  {
+    return this.s;
+  }
+  
+  public DynamicItemViewHelper j()
+  {
+    return this.r;
+  }
+  
+  public Set<Long> k()
+  {
+    return this.o;
+  }
+  
+  public Map<Long, BaseReportData> l()
+  {
+    return this.p;
+  }
+  
+  public ArrayList<BaseReportData> m()
+  {
+    return this.q;
+  }
+  
+  public boolean n()
+  {
+    return this.n;
+  }
+  
+  public DynamicItemViewHelper o()
+  {
+    return this.r;
+  }
+  
+  public boolean p()
+  {
+    return this.m;
+  }
+  
+  public PlayableItem q()
+  {
+    return this.i;
+  }
+  
+  public int r()
+  {
+    return this.l;
+  }
+  
+  public boolean s()
+  {
+    return this.k;
+  }
+  
+  public boolean t()
+  {
+    return this.j;
+  }
+  
+  public VideoPreDownloadMgr u()
+  {
+    return this.h;
+  }
+  
+  public ReadInJoyBaseAdapter v()
+  {
+    return this.f;
+  }
+  
+  public VideoAutoPlayController w()
+  {
+    return this.g;
+  }
+  
+  public long x()
+  {
+    return this.e;
+  }
+  
+  public VideoRecommendManager y()
+  {
+    return this.c;
+  }
+  
+  public VideoPlayManager z()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager.Builder
  * JD-Core Version:    0.7.0.1
  */

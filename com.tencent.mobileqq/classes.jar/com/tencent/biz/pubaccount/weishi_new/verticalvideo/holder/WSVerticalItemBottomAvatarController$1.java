@@ -10,12 +10,12 @@ class WSVerticalItemBottomAvatarController$1
   
   public void a()
   {
-    WSVerticalItemBottomAvatarController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemBottomAvatarController, this.jdField_a_of_type_UserGrowthStSimpleMetaPerson);
+    WSVerticalItemBottomAvatarController.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomAvatarController.1
  * JD-Core Version:    0.7.0.1
  */

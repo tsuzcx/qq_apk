@@ -17,7 +17,7 @@ class AbsProfileHeaderView$7
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.this$0.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.val$cardInfo.allInOne.uin);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.this$0.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(this.val$cardInfo.allInOne.uin);
     Message localMessage = this.this$0.mUIHandler.obtainMessage(1003, localExtensionInfo);
     this.this$0.mUIHandler.sendMessage(localMessage);
     if ((this.val$isInit) && (localExtensionInfo != null) && (AvatarPendantUtil.b(localExtensionInfo.pendantId))) {
@@ -27,7 +27,7 @@ class AbsProfileHeaderView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.7
  * JD-Core Version:    0.7.0.1
  */

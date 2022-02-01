@@ -33,8 +33,8 @@ public class IEmotionSearchManagerService$EmotionSearchTask
       paramInt = 0;
     }
     boolean bool;
-    if (StringUtil.a(this.searchKeyWords)) {
-      bool = StringUtil.a(paramString);
+    if (StringUtil.isEmpty(this.searchKeyWords)) {
+      bool = StringUtil.isEmpty(paramString);
     } else {
       bool = this.searchKeyWords.equalsIgnoreCase(paramString);
     }
@@ -56,7 +56,7 @@ public class IEmotionSearchManagerService$EmotionSearchTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.IEmotionSearchManagerService.EmotionSearchTask
  * JD-Core Version:    0.7.0.1
  */

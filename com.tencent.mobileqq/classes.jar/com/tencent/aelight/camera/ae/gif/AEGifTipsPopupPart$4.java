@@ -11,8 +11,8 @@ class AEGifTipsPopupPart$4
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    AEGifTipsPopupPart.a(this.a).setVisibility(8);
-    AEGifTipsPopupPart.a(this.a).setAlpha(1.0F);
+    AEGifTipsPopupPart.b(this.a).setVisibility(8);
+    AEGifTipsPopupPart.b(this.a).setAlpha(1.0F);
     AEGifTipsPopupPart.a(this.a, false);
   }
   
@@ -22,7 +22,7 @@ class AEGifTipsPopupPart$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGifTipsPopupPart.4
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,14 @@ class NoteCardProteusItem$1$1
   
   public void run()
   {
-    if (NoteCardProteusItem.b(this.a.a)) {
-      NoteCardProteusItem.a(this.a.a);
+    if (NoteCardProteusItem.c(this.a.d)) {
+      NoteCardProteusItem.d(this.a.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NoteCardProteusItem.1.1
  * JD-Core Version:    0.7.0.1
  */

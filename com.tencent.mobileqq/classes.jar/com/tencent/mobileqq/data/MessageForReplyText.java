@@ -80,12 +80,12 @@ public class MessageForReplyText
   
   public static void reportReplyMsg(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 0)
+    if (paramSessionInfo.a == 0)
     {
       ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X80095E8", "0X80095E8", 0, 0, "", "", "", "");
       return;
     }
-    reportReplyMsg(paramQQAppInterface, "Msg_menu", "clk_replyMsg", paramSessionInfo.jdField_a_of_type_JavaLangString, paramChatMessage);
+    reportReplyMsg(paramQQAppInterface, "Msg_menu", "clk_replyMsg", paramSessionInfo.b, paramChatMessage);
   }
   
   public static void reportReplyMsg(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, ChatMessage paramChatMessage)
@@ -149,7 +149,7 @@ public class MessageForReplyText
       ((StringBuilder)localObject3).append(i);
       ((StringBuilder)localObject3).append("");
       localObject3 = ((StringBuilder)localObject3).toString();
-      if (AnonymousChatHelper.a(paramChatMessage)) {
+      if (AnonymousChatHelper.c(paramChatMessage)) {
         paramChatMessage = "1";
       } else {
         paramChatMessage = "0";
@@ -320,12 +320,16 @@ public class MessageForReplyText
   
   public String getSummaryMsg()
   {
-    return this.sb.toString();
+    CharSequence localCharSequence = this.sb;
+    if (localCharSequence == null) {
+      return "";
+    }
+    return localCharSequence.toString();
   }
   
   public boolean isSupportFTS()
   {
-    return MsgProxyUtils.m(this.istroop);
+    return MsgProxyUtils.n(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -426,7 +430,7 @@ public class MessageForReplyText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForReplyText
  * JD-Core Version:    0.7.0.1
  */

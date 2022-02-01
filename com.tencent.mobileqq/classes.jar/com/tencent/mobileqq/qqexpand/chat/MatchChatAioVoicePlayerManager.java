@@ -2,7 +2,7 @@ package com.tencent.mobileqq.qqexpand.chat;
 
 import com.tencent.mobileqq.qqexpand.widget.voice.ExpandVoicePlayer;
 import com.tencent.mobileqq.qqexpand.widget.voice.ExpandVoicePlayer.ExtendFriendVoicePlayerListener;
-import com.tencent.mobileqq.qqexpand.widget.voice.ExpandVoiceView;
+import com.tencent.mobileqq.qqexpand.widget.voice.OldExpandVoiceView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.util.WeakReference;
@@ -10,44 +10,35 @@ import mqq.util.WeakReference;
 public class MatchChatAioVoicePlayerManager
   implements ExpandVoicePlayer.ExtendFriendVoicePlayerListener
 {
-  private static volatile MatchChatAioVoicePlayerManager jdField_a_of_type_ComTencentMobileqqQqexpandChatMatchChatAioVoicePlayerManager;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static volatile MatchChatAioVoicePlayerManager b;
+  private static final Object c = new Object();
   protected ExpandVoicePlayer a;
-  private WeakReference<ExpandVoiceView> jdField_a_of_type_MqqUtilWeakReference;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private WeakReference<OldExpandVoiceView> d;
+  private volatile boolean e;
   
   public static final void a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      if (jdField_a_of_type_ComTencentMobileqqQqexpandChatMatchChatAioVoicePlayerManager != null)
+      if (b != null)
       {
-        if (jdField_a_of_type_ComTencentMobileqqQqexpandChatMatchChatAioVoicePlayerManager.a()) {
-          jdField_a_of_type_ComTencentMobileqqQqexpandChatMatchChatAioVoicePlayerManager.b();
+        if (b.d()) {
+          b.c();
         }
-        ExpandVoiceView localExpandVoiceView = jdField_a_of_type_ComTencentMobileqqQqexpandChatMatchChatAioVoicePlayerManager.a();
-        if ((localExpandVoiceView != null) && (localExpandVoiceView.b())) {
-          localExpandVoiceView.d();
+        OldExpandVoiceView localOldExpandVoiceView = b.b();
+        if ((localOldExpandVoiceView != null) && (localOldExpandVoiceView.d())) {
+          localOldExpandVoiceView.f();
         }
       }
       return;
     }
   }
   
-  public ExpandVoiceView a()
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
-    if (localWeakReference != null) {
-      return (ExpandVoiceView)localWeakReference.get();
-    }
-    return null;
-  }
-  
   public void a(int paramInt) {}
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetVoiceExpandVoicePlayer;
+    paramString = this.a;
     if (paramString != null) {
       paramString.b();
     }
@@ -59,29 +50,38 @@ public class MatchChatAioVoicePlayerManager
   
   public void a(boolean paramBoolean) {}
   
-  public boolean a()
+  public OldExpandVoiceView b()
   {
-    return this.jdField_a_of_type_Boolean;
+    WeakReference localWeakReference = this.d;
+    if (localWeakReference != null) {
+      return (OldExpandVoiceView)localWeakReference.get();
+    }
+    return null;
   }
   
-  public void b()
+  public void b(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MatchChatAioVoicePlayerManager", 2, "stopVoice");
     }
-    ExpandVoicePlayer localExpandVoicePlayer = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetVoiceExpandVoicePlayer;
+    ExpandVoicePlayer localExpandVoicePlayer = this.a;
     if (localExpandVoicePlayer != null)
     {
       localExpandVoicePlayer.a();
-      this.jdField_a_of_type_Boolean = false;
+      this.e = false;
     }
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2) {}
+  public boolean d()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.MatchChatAioVoicePlayerManager
  * JD-Core Version:    0.7.0.1
  */

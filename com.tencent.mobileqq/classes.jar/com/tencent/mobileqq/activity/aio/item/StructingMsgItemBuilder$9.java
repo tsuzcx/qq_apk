@@ -15,14 +15,14 @@ class StructingMsgItemBuilder$9
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
-    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
+    Object localObject = this.a.mMsgActionData;
+    int i = this.a.uinType;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, (String)localObject);
+      localObject = JumpParser.a(this.b.d, this.b.e, (String)localObject);
       if (localObject != null)
       {
-        ((JumpAction)localObject).b("webview");
+        ((JumpAction)localObject).c("webview");
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(i);
         localStringBuilder.append("");
@@ -35,7 +35,7 @@ class StructingMsgItemBuilder$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.9
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class OnF2FConfigListener
       {
         paramString = new StringBuilder();
         paramString.append("handleConfigForTag qqsettingme_f2f content = ");
-        paramString.append(paramCfgParseResult.a);
+        paramString.append(paramCfgParseResult.d);
         QLog.d("OnF2FConfigListener", 2, paramString.toString());
       }
       ThreadManager.post(new OnF2FConfigListener.1(this, paramCfgParseResult, paramQQAppInterface), 5, null, false);
@@ -24,7 +24,7 @@ public class OnF2FConfigListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.OnF2FConfigListener
  * JD-Core Version:    0.7.0.1
  */

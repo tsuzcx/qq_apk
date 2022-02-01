@@ -14,12 +14,7 @@ import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 public class ArkInfoBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.f;
-  }
+  public static final int a = BannerTypeCollections.f;
   
   public ArkInfoBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -33,26 +28,26 @@ public class ArkInfoBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    return ArkTipsManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+    return ArkTipsManager.b().b(this.f);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
     if ((paramMessage != null) && (paramMessage.obj != null))
     {
-      ((TipsBar)paramBanner.a).setTipsText((String)paramMessage.obj);
-      paramBanner.a.setOnClickListener(new ArkInfoBannerProcessor.1(this));
+      ((TipsBar)paramBanner.c).setTipsText((String)paramMessage.obj);
+      paramBanner.c.setOnClickListener(new ArkInfoBannerProcessor.1(this));
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ArkInfoBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

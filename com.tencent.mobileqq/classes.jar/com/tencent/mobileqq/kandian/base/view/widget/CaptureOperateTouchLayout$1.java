@@ -10,41 +10,41 @@ class CaptureOperateTouchLayout$1
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718008);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoMeasureScaleView.setVisibility(0);
-    int i = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout);
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout, this.jdField_a_of_type_AndroidWidgetImageView.getX() / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout));
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout, i);
-    if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout) != null)
+    this.a.setText(2131915490);
+    this.b.setVisibility(0);
+    int i = CaptureOperateTouchLayout.a(this.d);
+    CaptureOperateTouchLayout.a(this.d, this.c.getX() / CaptureOperateTouchLayout.b(this.d));
+    CaptureOperateTouchLayout.a(this.d, i);
+    if (CaptureOperateTouchLayout.c(this.d) != null)
     {
-      CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout);
-      CaptureOperateTouchLayout localCaptureOperateTouchLayout = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout;
-      localOnCaptureOperateCallback.a(i, CaptureOperateTouchLayout.a(localCaptureOperateTouchLayout, CaptureOperateTouchLayout.b(localCaptureOperateTouchLayout)));
+      CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = CaptureOperateTouchLayout.c(this.d);
+      CaptureOperateTouchLayout localCaptureOperateTouchLayout = this.d;
+      localOnCaptureOperateCallback.a(i, CaptureOperateTouchLayout.b(localCaptureOperateTouchLayout, CaptureOperateTouchLayout.d(localCaptureOperateTouchLayout)));
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout) != null) {
-      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout).a();
+    if (CaptureOperateTouchLayout.c(this.d) != null) {
+      CaptureOperateTouchLayout.c(this.d).a();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717894);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoMeasureScaleView.setVisibility(4);
+    this.a.setText(2131915368);
+    this.b.setVisibility(4);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718046);
+    this.a.setText(2131915523);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoMeasureScaleView.setVisibility(4);
+    this.b.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.CaptureOperateTouchLayout.1
  * JD-Core Version:    0.7.0.1
  */

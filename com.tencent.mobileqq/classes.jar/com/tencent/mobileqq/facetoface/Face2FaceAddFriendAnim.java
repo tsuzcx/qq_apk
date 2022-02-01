@@ -25,48 +25,43 @@ import java.util.Map;
 
 public class Face2FaceAddFriendAnim
 {
-  public static byte[] a;
-  double jdField_a_of_type_Double = 0.0D;
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 1;
-  public Context a;
-  RotateAnimation jdField_a_of_type_AndroidViewAnimationRotateAnimation;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public QQAppInterface a;
-  Face2FaceUserData jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData = null;
-  public List<Face2FaceFriendBubbleView> a;
-  Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  boolean jdField_a_of_type_Boolean = false;
-  float jdField_b_of_type_Float = 0.0F;
-  int jdField_b_of_type_Int = -1;
-  List<Integer> jdField_b_of_type_JavaUtilList;
-  boolean jdField_b_of_type_Boolean = false;
-  public int c;
-  List<Integer> c;
-  public int d;
-  List<Integer> d;
-  int jdField_e_of_type_Int = 0;
-  List<Integer> jdField_e_of_type_JavaUtilList;
-  int jdField_f_of_type_Int = -1;
-  List<Integer> jdField_f_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(2131367227), Integer.valueOf(2131367229), Integer.valueOf(2131367230), Integer.valueOf(2131367231), Integer.valueOf(2131367232), Integer.valueOf(2131367233), Integer.valueOf(2131367234), Integer.valueOf(2131367235), Integer.valueOf(2131367236), Integer.valueOf(2131367228) });
-  int g;
-  int h = 0;
-  int i = 0;
-  int j = 0;
-  int k = 0;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = new byte[0];
-  }
+  public static byte[] z = new byte[0];
+  List<Integer> A = Arrays.asList(new Integer[] { Integer.valueOf(2131433684), Integer.valueOf(2131433686), Integer.valueOf(2131433687), Integer.valueOf(2131433688), Integer.valueOf(2131433689), Integer.valueOf(2131433690), Integer.valueOf(2131433691), Integer.valueOf(2131433692), Integer.valueOf(2131433693), Integer.valueOf(2131433685) });
+  public QQAppInterface B;
+  public Context C;
+  int a = 1;
+  double b = 0.0D;
+  float c = 0.0F;
+  float d = 0.0F;
+  boolean e = false;
+  int f = -1;
+  boolean g = false;
+  public int h;
+  public int i;
+  ImageView j;
+  public List<Face2FaceFriendBubbleView> k;
+  List<Integer> l;
+  List<Integer> m;
+  Map<String, Integer> n;
+  List<Integer> o;
+  List<Integer> p;
+  int q = 0;
+  int r = -1;
+  int s;
+  Face2FaceUserData t = null;
+  int u = 0;
+  int v = 0;
+  int w = 0;
+  int x = 0;
+  RotateAnimation y;
   
   public Face2FaceAddFriendAnim(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.B = paramQQAppInterface;
+    this.C = paramContext;
   }
   
-  private static int a(int paramInt1, int paramInt2)
+  private static int b(int paramInt1, int paramInt2)
   {
     double d1 = Math.random();
     double d2 = paramInt2 - paramInt1 + 1;
@@ -88,28 +83,28 @@ public class Face2FaceAddFriendAnim
   
   public Face2FaceFriendBubbleView a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return (Face2FaceFriendBubbleView)this.jdField_a_of_type_JavaUtilList.get(((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue());
+    if (this.n.containsKey(paramString)) {
+      return (Face2FaceFriendBubbleView)this.k.get(((Integer)this.n.get(paramString)).intValue());
     }
     return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_c_of_type_JavaUtilList.clear();
-    this.jdField_d_of_type_JavaUtilList.clear();
-    this.jdField_e_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.n.clear();
+    this.l.clear();
+    this.m.clear();
+    this.o.clear();
+    this.p.clear();
+    this.k.clear();
   }
   
   public void a(int paramInt)
   {
-    Face2FaceFriendBubbleView localFace2FaceFriendBubbleView = (Face2FaceFriendBubbleView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((localFace2FaceFriendBubbleView != null) && (localFace2FaceFriendBubbleView.c() != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(localFace2FaceFriendBubbleView.c())))
+    Face2FaceFriendBubbleView localFace2FaceFriendBubbleView = (Face2FaceFriendBubbleView)this.k.get(paramInt);
+    if ((localFace2FaceFriendBubbleView != null) && (localFace2FaceFriendBubbleView.getIdentify() != null) && (this.n.containsKey(localFace2FaceFriendBubbleView.getIdentify())))
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(localFace2FaceFriendBubbleView.c());
+      this.n.remove(localFace2FaceFriendBubbleView.getIdentify());
       localFace2FaceFriendBubbleView.setVisibility(4);
       localFace2FaceFriendBubbleView.setStatusWithoutAnimation(1);
       localFace2FaceFriendBubbleView.setClickable(false);
@@ -118,7 +113,7 @@ public class Face2FaceAddFriendAnim
         String str = Face2FaceAddFriendActivity.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("removeShowedFriendMap uinToHoleIndex remove( ");
-        localStringBuilder.append(localFace2FaceFriendBubbleView.c());
+        localStringBuilder.append(localFace2FaceFriendBubbleView.getIdentify());
         localStringBuilder.append(", ");
         localStringBuilder.append(paramInt);
         localStringBuilder.append(" )");
@@ -129,110 +124,110 @@ public class Face2FaceAddFriendAnim
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (this.C == null) {
       return;
     }
-    long l = 750L;
+    long l1 = 750L;
     if (paramInt == 1)
     {
-      this.jdField_b_of_type_Float = a(45, 180);
+      this.d = a(45, 180);
       if (a(0, 1) < 0.5D) {
-        this.jdField_b_of_type_Float *= -1.0F;
+        this.d *= -1.0F;
       }
-      l = a(800, 1500);
+      l1 = a(800, 1500);
     }
-    RotateAnimation localRotateAnimation = new RotateAnimation(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, 1, 0.5F, 1, 0.5F);
-    localRotateAnimation.setDuration(l);
+    RotateAnimation localRotateAnimation = new RotateAnimation(this.c, this.d, 1, 0.5F, 1, 0.5F);
+    localRotateAnimation.setDuration(l1);
     localRotateAnimation.setFillAfter(true);
     localRotateAnimation.setInterpolator(new Face2FaceAddFriendAnim.EaseInOutElasticInterpolator(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localRotateAnimation);
+    this.j.startAnimation(localRotateAnimation);
     localRotateAnimation.setAnimationListener(new Face2FaceAddFriendAnim.3(this, paramInt, paramBoolean));
   }
   
   public void a(QQAppInterface paramQQAppInterface, View paramView, int paramInt, String paramString)
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.C;
     if (localContext == null) {
       return;
     }
-    this.jdField_c_of_type_Int = localContext.getResources().getDisplayMetrics().widthPixels;
-    this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365046));
+    this.h = localContext.getResources().getDisplayMetrics().widthPixels;
+    this.i = this.C.getResources().getDisplayMetrics().heightPixels;
+    this.j = ((ImageView)paramView.findViewById(2131431179));
     if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)))
     {
-      ((ImageView)paramView.findViewById(2131365047)).setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840096);
+      ((ImageView)paramView.findViewById(2131431180)).setVisibility(4);
+      this.j.setImageResource(2130840321);
       paramString = paramQQAppInterface.getTroopFaceBitmap(paramString, (byte)3, false, false);
       paramQQAppInterface = paramString;
       if (paramString == null) {
-        paramQQAppInterface = ImageUtil.d();
+        paramQQAppInterface = ImageUtil.g();
       }
-      paramString = (ImageView)paramView.findViewById(2131379202);
+      paramString = (ImageView)paramView.findViewById(2131447939);
       paramString.setImageBitmap(paramQQAppInterface);
       paramString.setVisibility(0);
     }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.k = new ArrayList();
     paramInt = 0;
     while (paramInt < 10)
     {
-      paramQQAppInterface = (Face2FaceFriendBubbleView)paramView.findViewById(((Integer)this.jdField_f_of_type_JavaUtilList.get(paramInt)).intValue());
+      paramQQAppInterface = (Face2FaceFriendBubbleView)paramView.findViewById(((Integer)this.A.get(paramInt)).intValue());
       paramQQAppInterface.setStatusWithAnimation(1);
-      paramQQAppInterface.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_JavaUtilList.add(paramQQAppInterface);
+      paramQQAppInterface.setOnClickListener((View.OnClickListener)this.C);
+      this.k.add(paramQQAppInterface);
       paramInt += 1;
     }
-    this.jdField_b_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilList = new LinkedList();
-    this.jdField_c_of_type_JavaUtilList.addAll(Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9) }));
-    this.jdField_d_of_type_JavaUtilList = new LinkedList();
-    this.jdField_d_of_type_JavaUtilList.addAll(Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7) }));
-    this.jdField_e_of_type_JavaUtilList = new LinkedList();
-    this.jdField_e_of_type_JavaUtilList.addAll(Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(8), Integer.valueOf(9) }));
+    this.l = new LinkedList();
+    this.n = new HashMap();
+    this.m = new LinkedList();
+    this.m.addAll(Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7), Integer.valueOf(8), Integer.valueOf(9) }));
+    this.o = new LinkedList();
+    this.o.addAll(Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5), Integer.valueOf(6), Integer.valueOf(7) }));
+    this.p = new LinkedList();
+    this.p.addAll(Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(8), Integer.valueOf(9) }));
   }
   
   public void a(Face2FaceUserData paramFace2FaceUserData, boolean paramBoolean)
   {
     Object localObject1;
     Object localObject2;
-    if ((paramFace2FaceUserData != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    if ((paramFace2FaceUserData != null) && (this.C != null))
     {
-      localObject1 = paramFace2FaceUserData.e;
+      localObject1 = paramFace2FaceUserData.f;
       if ((paramFace2FaceUserData instanceof Face2FaceGroupProfile))
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(paramFace2FaceUserData.e);
+        ((StringBuilder)localObject1).append(paramFace2FaceUserData.f);
         ((StringBuilder)localObject1).append("_");
         ((StringBuilder)localObject1).append(((Face2FaceGroupProfile)paramFace2FaceUserData).b);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
-      int m;
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject1)) {
-        m = ((Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject1)).intValue();
+      int i1;
+      if (this.n.containsKey(localObject1)) {
+        i1 = ((Integer)this.n.get(localObject1)).intValue();
       } else {
-        m = -1;
+        i1 = -1;
       }
-      if (m == -1)
+      if (i1 == -1)
       {
         if (QLog.isColorLevel())
         {
           localObject1 = Face2FaceAddFriendActivity.a;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("startFriendDisappearAnimation disappear uin ");
-          ((StringBuilder)localObject2).append(paramFace2FaceUserData.e.substring(0, 4));
+          ((StringBuilder)localObject2).append(paramFace2FaceUserData.f.substring(0, 4));
           ((StringBuilder)localObject2).append(" is not in the hole");
           QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
           localObject1 = Face2FaceAddFriendActivity.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("startFriendDisappearAnimation disappear uin ");
-          ((StringBuilder)localObject2).append(paramFace2FaceUserData.e.substring(0, 4));
+          ((StringBuilder)localObject2).append(paramFace2FaceUserData.f.substring(0, 4));
           ((StringBuilder)localObject2).append(" is not in the hole");
           QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-          this.h += 1;
+          this.u += 1;
         }
         return;
       }
-      localObject1 = (Face2FaceFriendBubbleView)this.jdField_a_of_type_JavaUtilList.get(m);
+      localObject1 = (Face2FaceFriendBubbleView)this.k.get(i1);
       if (paramBoolean)
       {
         localObject2 = new ScaleAnimation(1.0F, 0.4F, 1.0F, 0.4F, 1, 0.5F, 1, 0.5F);
@@ -255,22 +250,22 @@ public class Face2FaceAddFriendAnim
           localObject1 = Face2FaceAddFriendActivity.a;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("startFriendDisappearAnimation disappear uin ");
-          ((StringBuilder)localObject2).append(paramFace2FaceUserData.e.substring(0, 4));
+          ((StringBuilder)localObject2).append(paramFace2FaceUserData.f.substring(0, 4));
           QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
         }
-        if (this.jdField_b_of_type_JavaUtilList.contains(Integer.valueOf(m))) {
-          this.jdField_b_of_type_JavaUtilList.remove(Integer.valueOf(m));
+        if (this.l.contains(Integer.valueOf(i1))) {
+          this.l.remove(Integer.valueOf(i1));
         }
-        a(m);
-        ((Face2FaceAddFriendActivity)this.jdField_a_of_type_AndroidContentContext).c(paramFace2FaceUserData);
-        this.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(m));
-        if ((m >= 2) && (m <= 7))
+        a(i1);
+        ((Face2FaceAddFriendActivity)this.C).c(paramFace2FaceUserData);
+        this.m.add(Integer.valueOf(i1));
+        if ((i1 >= 2) && (i1 <= 7))
         {
-          this.jdField_d_of_type_JavaUtilList.add(Integer.valueOf(m));
+          this.o.add(Integer.valueOf(i1));
           return;
         }
-        if (((m >= 0) && (m <= 1)) || ((m >= 8) && (m <= 9))) {
-          this.jdField_e_of_type_JavaUtilList.add(Integer.valueOf(m));
+        if (((i1 >= 0) && (i1 <= 1)) || ((i1 >= 8) && (i1 <= 9))) {
+          this.p.add(Integer.valueOf(i1));
         }
       }
       return;
@@ -282,7 +277,7 @@ public class Face2FaceAddFriendAnim
       ((StringBuilder)localObject2).append("startFriendDisappearAnimation disappear data is ");
       ((StringBuilder)localObject2).append(paramFace2FaceUserData);
       ((StringBuilder)localObject2).append(" mContext ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext);
+      ((StringBuilder)localObject2).append(this.C);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
   }
@@ -292,63 +287,63 @@ public class Face2FaceAddFriendAnim
     Object localObject1;
     label235:
     Object localObject2;
-    if ((paramFace2FaceUserData != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    if ((paramFace2FaceUserData != null) && (this.C != null))
     {
-      if (this.jdField_c_of_type_JavaUtilList.size() == 1) {
-        m = ((Integer)this.jdField_c_of_type_JavaUtilList.get(0)).intValue();
+      if (this.m.size() == 1) {
+        i1 = ((Integer)this.m.get(0)).intValue();
       }
       for (;;)
       {
-        i1 = m;
+        i3 = i1;
         break label235;
-        if (this.jdField_c_of_type_JavaUtilList.size() <= 1) {
+        if (this.m.size() <= 1) {
           break;
         }
-        if (this.jdField_d_of_type_JavaUtilList.size() == 1)
+        if (this.o.size() == 1)
         {
-          m = ((Integer)this.jdField_d_of_type_JavaUtilList.get(0)).intValue();
+          i1 = ((Integer)this.o.get(0)).intValue();
         }
-        else if (this.jdField_d_of_type_JavaUtilList.size() > 1)
+        else if (this.o.size() > 1)
         {
-          localObject1 = this.jdField_d_of_type_JavaUtilList;
-          m = ((Integer)((List)localObject1).get(a(0, ((List)localObject1).size() - 1))).intValue();
+          localObject1 = this.o;
+          i1 = ((Integer)((List)localObject1).get(b(0, ((List)localObject1).size() - 1))).intValue();
         }
-        else if (this.jdField_e_of_type_JavaUtilList.size() == 0)
+        else if (this.p.size() == 0)
         {
-          m = ((Integer)this.jdField_e_of_type_JavaUtilList.get(0)).intValue();
+          i1 = ((Integer)this.p.get(0)).intValue();
         }
         else
         {
-          if (this.jdField_e_of_type_JavaUtilList.size() <= 1) {
+          if (this.p.size() <= 1) {
             break;
           }
-          localObject1 = this.jdField_e_of_type_JavaUtilList;
-          m = ((Integer)((List)localObject1).get(a(0, ((List)localObject1).size() - 1))).intValue();
+          localObject1 = this.p;
+          i1 = ((Integer)((List)localObject1).get(b(0, ((List)localObject1).size() - 1))).intValue();
         }
       }
-      int i1 = -1;
-      if (i1 == -1) {
+      int i3 = -1;
+      if (i3 == -1) {
         return;
       }
-      localObject1 = (Face2FaceFriendBubbleView)this.jdField_a_of_type_JavaUtilList.get(i1);
-      this.g = i1;
+      localObject1 = (Face2FaceFriendBubbleView)this.k.get(i3);
+      this.s = i3;
       if (localObject1 == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData = paramFace2FaceUserData;
-      ((Face2FaceFriendBubbleView)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFace2FaceUserData);
+      this.t = paramFace2FaceUserData;
+      ((Face2FaceFriendBubbleView)localObject1).a(this.B, paramFace2FaceUserData);
       ((Face2FaceFriendBubbleView)localObject1).setVisibility(0);
       ((Face2FaceFriendBubbleView)localObject1).setClickable(true);
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel()) {
-        if (!TextUtils.isEmpty(paramFace2FaceUserData.e))
+        if (!TextUtils.isEmpty(paramFace2FaceUserData.f))
         {
           localObject2 = Face2FaceAddFriendActivity.a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("startFriendInAnimation get ( currentUin= ");
-          localStringBuilder.append(paramFace2FaceUserData.e.substring(0, 4));
+          localStringBuilder.append(paramFace2FaceUserData.f.substring(0, 4));
           localStringBuilder.append(" , index = ");
-          localStringBuilder.append(i1);
+          localStringBuilder.append(i3);
           localStringBuilder.append(" )");
           QLog.d((String)localObject2, 2, localStringBuilder.toString());
         }
@@ -357,149 +352,149 @@ public class Face2FaceAddFriendAnim
           QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation get  currentUin= null");
         }
       }
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_b_of_type_Int = -1;
+      this.a = 1;
+      this.g = false;
+      this.f = -1;
       localObject2 = new int[2];
-      this.jdField_a_of_type_AndroidWidgetImageView.getLocationOnScreen((int[])localObject2);
-      int i5 = localObject2[0] + (this.jdField_a_of_type_AndroidWidgetImageView.getWidth() >> 1);
-      int i7 = localObject2[1] + (this.jdField_a_of_type_AndroidWidgetImageView.getHeight() >> 1);
+      this.j.getLocationOnScreen((int[])localObject2);
+      int i7 = localObject2[0] + (this.j.getWidth() >> 1);
+      int i9 = localObject2[1] + (this.j.getHeight() >> 1);
       localObject2 = new int[2];
       ((Face2FaceFriendBubbleView)localObject1).getLocationOnScreen((int[])localObject2);
-      int i6 = localObject2[0] + (((Face2FaceFriendBubbleView)localObject1).getWidth() >> 1);
-      int i8 = localObject2[1] + (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1);
-      int i3 = Math.abs(i5 - i6);
-      int i4 = Math.abs(i7 - i8);
-      double d1 = i3;
-      double d2 = i4;
+      int i8 = localObject2[0] + (((Face2FaceFriendBubbleView)localObject1).getWidth() >> 1);
+      int i10 = localObject2[1] + (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1);
+      int i5 = Math.abs(i7 - i8);
+      int i6 = Math.abs(i9 - i10);
+      double d1 = i5;
+      double d2 = i6;
       Double.isNaN(d1);
       Double.isNaN(d2);
-      this.jdField_a_of_type_Double = (d1 / d2);
-      int m = ((Face2FaceFriendBubbleView)localObject1).getWidth();
-      if (i3 == 0)
+      this.b = (d1 / d2);
+      int i1 = ((Face2FaceFriendBubbleView)localObject1).getWidth();
+      if (i5 == 0)
       {
-        m = (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1) + i7;
-        if (i8 > i7) {
-          m = this.jdField_d_of_type_Int - i7 + (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1);
+        i1 = (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1) + i9;
+        if (i10 > i9) {
+          i1 = this.i - i9 + (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1);
         }
       }
       else
       {
-        m = ((m >> 1) + i5) * i4 / i3;
+        i1 = ((i1 >> 1) + i7) * i6 / i5;
       }
-      int n = localObject2[0] + ((Face2FaceFriendBubbleView)localObject1).getWidth();
-      int i2 = m - i4;
-      if (i8 > i7) {
-        this.jdField_a_of_type_Int = 2;
+      int i2 = localObject2[0] + ((Face2FaceFriendBubbleView)localObject1).getWidth();
+      int i4 = i1 - i6;
+      if (i10 > i9) {
+        this.a = 2;
       }
-      if (i6 > i5)
+      if (i8 > i7)
       {
-        n = this.jdField_c_of_type_Int - localObject2[0];
-        if (i8 < i7) {
-          this.jdField_a_of_type_Int = 5;
+        i2 = this.h - localObject2[0];
+        if (i10 < i9) {
+          this.a = 5;
         } else {
-          this.jdField_a_of_type_Int = 6;
+          this.a = 6;
         }
       }
-      if ((m - i7 < ((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1) && (m - (this.jdField_d_of_type_Int - i7) < ((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1))
+      if ((i1 - i9 < ((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1) && (i1 - (this.i - i9) < ((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1))
       {
-        m = n;
-        n = i2;
+        i1 = i2;
+        i2 = i4;
       }
       else
       {
-        if (i8 < i7)
+        if (i10 < i9)
         {
-          n = (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1) + i7;
-          m = localObject2[1] + ((Face2FaceFriendBubbleView)localObject1).getHeight();
-          if (i6 < i5) {
-            this.jdField_a_of_type_Int = 3;
+          i2 = (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1) + i9;
+          i1 = localObject2[1] + ((Face2FaceFriendBubbleView)localObject1).getHeight();
+          if (i8 < i7) {
+            this.a = 3;
           } else {
-            this.jdField_a_of_type_Int = 4;
+            this.a = 4;
           }
         }
         for (;;)
         {
           break;
-          n = m;
-          m = i2;
-          if (i8 <= i7) {
+          i2 = i1;
+          i1 = i4;
+          if (i10 <= i9) {
             break;
           }
-          n = this.jdField_d_of_type_Int - i7 + (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1);
-          m = this.jdField_d_of_type_Int - localObject2[1];
-          if (i6 < i5) {
-            this.jdField_a_of_type_Int = 7;
+          i2 = this.i - i9 + (((Face2FaceFriendBubbleView)localObject1).getHeight() >> 1);
+          i1 = this.i - localObject2[1];
+          if (i8 < i7) {
+            this.a = 7;
           } else {
-            this.jdField_a_of_type_Int = 8;
+            this.a = 8;
           }
         }
-        i2 = n * i3 / i4 - i3;
-        n = m;
-        m = i2;
+        i4 = i2 * i5 / i6 - i5;
+        i2 = i1;
+        i1 = i4;
       }
-      switch (this.jdField_a_of_type_Int)
+      switch (this.a)
       {
       default: 
         break;
       case 8: 
-        this.jdField_b_of_type_Int = 1;
-        this.jdField_b_of_type_Boolean = true;
+        this.f = 1;
+        this.g = true;
         break;
       case 7: 
-        m = -m;
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_b_of_type_Boolean = true;
+        i1 = -i1;
+        this.f = -1;
+        this.g = true;
         break;
       case 6: 
-        this.jdField_b_of_type_Int = 1;
-        this.jdField_b_of_type_Boolean = true;
+        this.f = 1;
+        this.g = true;
         break;
       case 5: 
-        n = -n;
-        this.jdField_b_of_type_Int = 1;
-        this.jdField_b_of_type_Boolean = false;
+        i2 = -i2;
+        this.f = 1;
+        this.g = false;
         break;
       case 4: 
-        n = -n;
-        this.jdField_b_of_type_Int = 1;
-        this.jdField_b_of_type_Boolean = false;
+        i2 = -i2;
+        this.f = 1;
+        this.g = false;
         break;
       case 3: 
-        m = -m;
-        n = -n;
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_b_of_type_Boolean = false;
+        i1 = -i1;
+        i2 = -i2;
+        this.f = -1;
+        this.g = false;
         break;
       case 2: 
-        m = -m;
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_b_of_type_Boolean = true;
+        i1 = -i1;
+        this.f = -1;
+        this.g = true;
         break;
       case 1: 
-        m = -m;
-        n = -n;
-        this.jdField_b_of_type_Int = -1;
-        this.jdField_b_of_type_Boolean = false;
+        i1 = -i1;
+        i2 = -i2;
+        this.f = -1;
+        this.g = false;
       }
-      d1 = this.jdField_a_of_type_Double;
-      boolean bool = this.jdField_b_of_type_Boolean;
-      localObject2 = new TranslateAnimation(m, 0.0F, n, 0.0F);
+      d1 = this.b;
+      boolean bool = this.g;
+      localObject2 = new TranslateAnimation(i1, 0.0F, i2, 0.0F);
       ((TranslateAnimation)localObject2).setDuration(400L);
       ((TranslateAnimation)localObject2).setInterpolator(new Face2FaceAddFriendAnim.EaseOutQuartInterpolator(this));
-      ((TranslateAnimation)localObject2).setAnimationListener(new Face2FaceAddFriendAnim.1(this, paramFace2FaceUserData, i1, d1, bool, paramBoolean3, paramFace2FaceUserData, paramBoolean1, paramBoolean2, (Face2FaceFriendBubbleView)localObject1, paramInt));
+      ((TranslateAnimation)localObject2).setAnimationListener(new Face2FaceAddFriendAnim.1(this, paramFace2FaceUserData, i3, d1, bool, paramBoolean3, paramFace2FaceUserData, paramBoolean1, paramBoolean2, (Face2FaceFriendBubbleView)localObject1, paramInt));
       ((Face2FaceFriendBubbleView)localObject1).startAnimation((Animation)localObject2);
-      localObject1 = paramFace2FaceUserData.e;
+      localObject1 = paramFace2FaceUserData.f;
       if ((paramFace2FaceUserData instanceof Face2FaceGroupProfile))
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(paramFace2FaceUserData.e);
+        ((StringBuilder)localObject1).append(paramFace2FaceUserData.f);
         ((StringBuilder)localObject1).append("_");
         ((StringBuilder)localObject1).append(((Face2FaceGroupProfile)paramFace2FaceUserData).b);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
-      this.jdField_a_of_type_JavaUtilMap.put(localObject1, Integer.valueOf(i1));
-      ((Face2FaceAddFriendActivity)this.jdField_a_of_type_AndroidContentContext).a(paramFace2FaceUserData, paramBoolean1, paramBoolean2);
+      this.n.put(localObject1, Integer.valueOf(i3));
+      ((Face2FaceAddFriendActivity)this.C).a(paramFace2FaceUserData, paramBoolean1, paramBoolean2);
       if (QLog.isColorLevel())
       {
         localObject2 = Face2FaceAddFriendActivity.b;
@@ -508,18 +503,18 @@ public class Face2FaceAddFriendAnim
         localStringBuilder.append((String)localObject1);
         QLog.d((String)localObject2, 2, localStringBuilder.toString());
       }
-      this.jdField_c_of_type_JavaUtilList.remove(Integer.valueOf(i1));
-      if (this.jdField_d_of_type_JavaUtilList.contains(Integer.valueOf(i1))) {
-        this.jdField_d_of_type_JavaUtilList.remove(Integer.valueOf(i1));
-      } else if (this.jdField_e_of_type_JavaUtilList.contains(Integer.valueOf(i1))) {
-        this.jdField_e_of_type_JavaUtilList.remove(Integer.valueOf(i1));
+      this.m.remove(Integer.valueOf(i3));
+      if (this.o.contains(Integer.valueOf(i3))) {
+        this.o.remove(Integer.valueOf(i3));
+      } else if (this.p.contains(Integer.valueOf(i3))) {
+        this.p.remove(Integer.valueOf(i3));
       }
       if (QLog.isColorLevel())
       {
         localObject1 = Face2FaceAddFriendActivity.a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("startFriendInAnimation currentUIn= ");
-        ((StringBuilder)localObject2).append(paramFace2FaceUserData.e.substring(0, 4));
+        ((StringBuilder)localObject2).append(paramFace2FaceUserData.f.substring(0, 4));
         ((StringBuilder)localObject2).append(" startAnimation OK");
         QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
@@ -532,58 +527,51 @@ public class Face2FaceAddFriendAnim
       ((StringBuilder)localObject2).append("startFriendInAnimation  data is ");
       ((StringBuilder)localObject2).append(paramFace2FaceUserData);
       ((StringBuilder)localObject2).append(" mContext ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext);
+      ((StringBuilder)localObject2).append(this.C);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) && (!this.jdField_b_of_type_JavaUtilList.contains(paramString))) {
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaUtilMap.get(paramString));
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (this.C == null) {
       return;
     }
-    long l = a(800, 1200);
-    float f1 = this.jdField_b_of_type_Float;
-    int m = (int)a(5, 12);
-    if (this.jdField_a_of_type_Boolean)
+    long l1 = a(800, 1200);
+    float f1 = this.d;
+    int i1 = (int)a(5, 12);
+    if (this.e)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float - m);
+      this.e = false;
+      this.d = (this.c - i1);
     }
     else
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + m);
+      this.e = true;
+      this.d = (this.c + i1);
     }
-    float f2 = this.jdField_b_of_type_Float;
+    float f2 = this.d;
     if (f1 == f2)
     {
-      float f3 = this.jdField_a_of_type_Float;
+      float f3 = this.c;
       if (f2 > f3) {
-        this.jdField_b_of_type_Float = (f3 - m);
+        this.d = (f3 - i1);
       } else {
-        this.jdField_b_of_type_Float = (f3 + m);
+        this.d = (f3 + i1);
       }
     }
-    this.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(f1, this.jdField_b_of_type_Float, 1, 0.5F, 1, 0.5F);
-    this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(l);
-    this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(new Face2FaceAddFriendAnim.EaseInOutElasticInterpolator(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setAnimationListener(new Face2FaceAddFriendAnim.4(this));
+    this.y = new RotateAnimation(f1, this.d, 1, 0.5F, 1, 0.5F);
+    this.y.setDuration(l1);
+    this.y.setFillAfter(true);
+    this.y.setInterpolator(new Face2FaceAddFriendAnim.EaseInOutElasticInterpolator(this));
+    this.j.startAnimation(this.y);
+    this.y.setAnimationListener(new Face2FaceAddFriendAnim.4(this));
   }
   
   public void b(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      this.jdField_b_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilMap.get(paramString));
+    if ((this.n.containsKey(paramString)) && (!this.l.contains(paramString))) {
+      this.l.add(this.n.get(paramString));
     }
   }
   
@@ -592,19 +580,26 @@ public class Face2FaceAddFriendAnim
     if (QLog.isColorLevel()) {
       QLog.d("Face2FaceAddFriendActivity", 2, "stopCompassShakeAnimation");
     }
-    Object localObject = this.jdField_a_of_type_AndroidViewAnimationRotateAnimation;
+    Object localObject = this.y;
     if (localObject != null) {
       ((RotateAnimation)localObject).cancel();
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    localObject = this.j;
     if (localObject != null) {
       ((ImageView)localObject).clearAnimation();
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.n.containsKey(paramString)) {
+      this.l.remove(this.n.get(paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim
  * JD-Core Version:    0.7.0.1
  */

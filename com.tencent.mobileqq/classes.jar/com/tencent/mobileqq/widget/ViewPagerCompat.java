@@ -13,10 +13,10 @@ import java.util.List;
 public class ViewPagerCompat
   extends ViewPager
 {
-  private ViewPagerCompat.PageChangeListenerImpl jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat$PageChangeListenerImpl;
-  private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = true;
+  private List<ViewPager.OnPageChangeListener> a;
   private List<ViewPagerCompat.OnAdapterChangeListener> b;
+  private ViewPagerCompat.PageChangeListenerImpl c;
+  private boolean d = true;
   
   public ViewPagerCompat(Context paramContext)
   {
@@ -32,8 +32,8 @@ public class ViewPagerCompat
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat$PageChangeListenerImpl = new ViewPagerCompat.PageChangeListenerImpl(this, null);
-    super.setOnPageChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetViewPagerCompat$PageChangeListenerImpl);
+    this.c = new ViewPagerCompat.PageChangeListenerImpl(this, null);
+    super.setOnPageChangeListener(this.c);
   }
   
   public void a(ViewPagerCompat.OnAdapterChangeListener paramOnAdapterChangeListener)
@@ -46,10 +46,10 @@ public class ViewPagerCompat
   
   public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.a == null) {
+      this.a = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
+    this.a.add(paramOnPageChangeListener);
   }
   
   public void b(ViewPagerCompat.OnAdapterChangeListener paramOnAdapterChangeListener)
@@ -62,7 +62,7 @@ public class ViewPagerCompat
   
   public void clearOnPageChangeListeners()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       localList.clear();
     }
@@ -70,7 +70,7 @@ public class ViewPagerCompat
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       try
       {
         boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
@@ -86,7 +86,7 @@ public class ViewPagerCompat
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       try
       {
         boolean bool = super.onTouchEvent(paramMotionEvent);
@@ -102,7 +102,7 @@ public class ViewPagerCompat
   
   public void removeOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       localList.remove(paramOnPageChangeListener);
     }
@@ -133,12 +133,12 @@ public class ViewPagerCompat
   
   public void setScrollable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ViewPagerCompat
  * JD-Core Version:    0.7.0.1
  */

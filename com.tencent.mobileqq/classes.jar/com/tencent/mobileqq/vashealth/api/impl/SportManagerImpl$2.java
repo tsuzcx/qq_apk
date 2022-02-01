@@ -17,22 +17,22 @@ class SportManagerImpl$2
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((paramSensorEvent.values[0] <= 1.0E+008F) && (NetConnInfoCenter.getServerTimeMillis() <= this.jdField_a_of_type_Long))
+    if ((paramSensorEvent.values[0] <= 1.0E+008F) && (NetConnInfoCenter.getServerTimeMillis() <= this.a))
     {
-      if ((SSOHttpUtils.jdField_a_of_type_Long != 0L) && (SSOHttpUtils.jdField_a_of_type_Int != 0))
+      if ((SSOHttpUtils.c != 0L) && (SSOHttpUtils.f != 0))
       {
-        long l = NetConnInfoCenter.getServerTimeMillis() - SSOHttpUtils.jdField_a_of_type_Long;
-        int i = (int)(paramSensorEvent.values[0] - SSOHttpUtils.jdField_a_of_type_Int);
-        if ((l > this.jdField_a_of_type_Int) && (i > this.b))
+        long l = NetConnInfoCenter.getServerTimeMillis() - SSOHttpUtils.c;
+        int i = (int)(paramSensorEvent.values[0] - SSOHttpUtils.f);
+        if ((l > this.b) && (i > this.c))
         {
-          this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplSportManagerImpl.refreshCurrentStep("timer1 report");
+          this.d.refreshCurrentStep("timer1 report");
           return;
         }
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("sensor event step:");
         localStringBuilder.append(paramSensorEvent.values[0]);
         localStringBuilder.append(",cur_total:");
-        localStringBuilder.append(SSOHttpUtils.jdField_a_of_type_Int);
+        localStringBuilder.append(SSOHttpUtils.f);
         localStringBuilder.append(",interval time:");
         localStringBuilder.append(l);
         QLog.e("SportManager", 1, localStringBuilder.toString());
@@ -40,9 +40,9 @@ class SportManagerImpl$2
       }
       paramSensorEvent = new StringBuilder();
       paramSensorEvent.append("lastReportStepTime:");
-      paramSensorEvent.append(SSOHttpUtils.jdField_a_of_type_Long);
+      paramSensorEvent.append(SSOHttpUtils.c);
       paramSensorEvent.append(",cur_total:");
-      paramSensorEvent.append(SSOHttpUtils.jdField_a_of_type_Int);
+      paramSensorEvent.append(SSOHttpUtils.f);
       QLog.e("SportManager", 1, paramSensorEvent.toString());
       return;
     }
@@ -57,7 +57,7 @@ class SportManagerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.SportManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

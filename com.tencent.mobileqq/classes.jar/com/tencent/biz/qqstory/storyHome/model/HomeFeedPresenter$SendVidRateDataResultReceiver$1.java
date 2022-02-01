@@ -12,17 +12,17 @@ class HomeFeedPresenter$SendVidRateDataResultReceiver$1
   public void run()
   {
     CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
+    if (HomeFeedPresenter.a(this.a))
     {
-      CommentEntry localCommentEntry = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+      CommentEntry localCommentEntry = this.b;
       localCommentEntry.type = 3;
       localCommentManager.a(localCommentEntry);
     }
     else
     {
-      localCommentManager.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localCommentManager.b(this.b);
     }
-    ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    ((FeedManager)SuperManager.a(11)).a(this.a);
   }
 }
 

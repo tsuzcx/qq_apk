@@ -16,10 +16,10 @@ class WTogetherRealNameVideoProcessHelper$1
   {
     try
     {
-      WTogetherRealNameVideoProcessHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper);
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      WTogetherRealNameVideoProcessHelper.a(this.b);
+      paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
       paramDialogInterface.putExtra("url", "https://ti.qq.com/realname/index.html?source=watchtogether");
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramDialogInterface, 21001);
+      this.a.startActivityForResult(paramDialogInterface, 21001);
       if (QLog.isColorLevel())
       {
         QLog.i("WTogetherRealNameVideoProcessHelper", 2, "showRealNameDialog click confirm.");

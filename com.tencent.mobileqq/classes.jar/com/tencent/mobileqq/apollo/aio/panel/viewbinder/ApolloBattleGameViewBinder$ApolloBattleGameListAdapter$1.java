@@ -11,14 +11,14 @@ class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter$1
   
   public void onClick(View paramView)
   {
-    ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder$ApolloBattleGameListAdapter, this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBattleGameInfo);
-    ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder$ApolloBattleGameListAdapter, this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBattleGameInfo, "game_click");
-    ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelViewbinderApolloBattleGameViewBinder$ApolloBattleGameListAdapter, this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloBattleGameInfo, 102);
+    ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.a(this.b, this.a);
+    ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.a(this.b, this.a, "game_click");
+    ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.a(this.b, this.a, 102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

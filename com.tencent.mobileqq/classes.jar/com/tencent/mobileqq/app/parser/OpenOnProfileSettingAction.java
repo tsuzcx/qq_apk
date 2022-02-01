@@ -28,22 +28,22 @@ public class OpenOnProfileSettingAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("OpenOnProfileSettingAction", 1, localStringBuilder.toString());
-      b_("OpenOnProfileSettingAction");
+      h_("OpenOnProfileSettingAction");
     }
     return false;
   }
   
   public boolean b()
   {
-    Intent localIntent = new Intent(this.a, InterestSwitchEditActivity.class);
+    Intent localIntent = new Intent(this.b, InterestSwitchEditActivity.class);
     localIntent.setFlags(67108864);
-    this.a.startActivity(localIntent);
+    this.b.startActivity(localIntent);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OpenOnProfileSettingAction
  * JD-Core Version:    0.7.0.1
  */

@@ -9,27 +9,27 @@ import java.util.List;
 public class PackageScanner
   implements IScanner
 {
-  private OnScanListener jdField_a_of_type_ComTencentQqprotectQsecOnScanListener = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private OnScanListener b = null;
   
   public PackageScanner(OnScanListener paramOnScanListener)
   {
-    this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener = paramOnScanListener;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    OnScanListener localOnScanListener = this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener;
-    if (localOnScanListener != null) {
-      localOnScanListener.a(a(), null);
-    }
+    this.b = paramOnScanListener;
   }
   
   private void c()
+  {
+    if (this.a) {
+      return;
+    }
+    this.a = true;
+    OnScanListener localOnScanListener = this.b;
+    if (localOnScanListener != null) {
+      localOnScanListener.a(b(), null);
+    }
+  }
+  
+  private void d()
   {
     Object localObject = BaseApplication.getContext().getPackageManager();
     if (localObject != null)
@@ -38,45 +38,40 @@ public class PackageScanner
       while (((Iterator)localObject).hasNext())
       {
         PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_Boolean) {
+        if (!this.a) {
           return;
         }
-        OnScanListener localOnScanListener = this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener;
+        OnScanListener localOnScanListener = this.b;
         if (localOnScanListener != null) {
-          localOnScanListener.b(a(), localPackageInfo);
+          localOnScanListener.b(b(), localPackageInfo);
         }
       }
     }
   }
   
-  private void d()
+  private void e()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    OnScanListener localOnScanListener = this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener;
+    this.a = false;
+    OnScanListener localOnScanListener = this.b;
     if (localOnScanListener != null) {
-      localOnScanListener.c(a(), null);
+      localOnScanListener.c(b(), null);
     }
-  }
-  
-  public String a()
-  {
-    return "App";
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     try
     {
-      b();
       c();
-      label16:
       d();
+      label16:
+      e();
       return;
     }
     catch (Exception localException)
@@ -84,10 +79,15 @@ public class PackageScanner
       break label16;
     }
   }
+  
+  public String b()
+  {
+    return "App";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.PackageScanner
  * JD-Core Version:    0.7.0.1
  */

@@ -26,15 +26,15 @@ class TimePickerView
   extends ConstraintLayout
   implements TimePickerControls
 {
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new TimePickerView.1(this);
-  private final MaterialButtonToggleGroup jdField_a_of_type_ComGoogleAndroidMaterialButtonMaterialButtonToggleGroup;
-  private final Chip jdField_a_of_type_ComGoogleAndroidMaterialChipChip;
-  private final ClockFaceView jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockFaceView;
-  private final ClockHandView jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockHandView;
-  private TimePickerView.OnDoubleTapListener jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView$OnDoubleTapListener;
-  private TimePickerView.OnPeriodChangeListener jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView$OnPeriodChangeListener;
-  private TimePickerView.OnSelectionChange jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView$OnSelectionChange;
+  private final Chip a;
   private final Chip b;
+  private final ClockHandView c;
+  private final ClockFaceView d;
+  private final MaterialButtonToggleGroup e;
+  private final View.OnClickListener f = new TimePickerView.1(this);
+  private TimePickerView.OnPeriodChangeListener g;
+  private TimePickerView.OnSelectionChange h;
+  private TimePickerView.OnDoubleTapListener i;
   
   public TimePickerView(Context paramContext)
   {
@@ -50,12 +50,12 @@ class TimePickerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     LayoutInflater.from(paramContext).inflate(R.layout.r, this);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockFaceView = ((ClockFaceView)findViewById(R.id.m));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialButtonMaterialButtonToggleGroup = ((MaterialButtonToggleGroup)findViewById(R.id.q));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialButtonMaterialButtonToggleGroup.a(new TimePickerView.2(this));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip = ((Chip)findViewById(R.id.v));
+    this.d = ((ClockFaceView)findViewById(R.id.m));
+    this.e = ((MaterialButtonToggleGroup)findViewById(R.id.q));
+    this.e.a(new TimePickerView.2(this));
+    this.a = ((Chip)findViewById(R.id.v));
     this.b = ((Chip)findViewById(R.id.s));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockHandView = ((ClockHandView)findViewById(R.id.n));
+    this.c = ((ClockHandView)findViewById(R.id.n));
     b();
     c();
   }
@@ -64,52 +64,52 @@ class TimePickerView
   private void b()
   {
     TimePickerView.4 local4 = new TimePickerView.4(this, new GestureDetector(getContext(), new TimePickerView.3(this)));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.setOnTouchListener(local4);
+    this.a.setOnTouchListener(local4);
     this.b.setOnTouchListener(local4);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.setTag(R.id.aa, Integer.valueOf(12));
+    this.a.setTag(R.id.aa, Integer.valueOf(12));
     this.b.setTag(R.id.aa, Integer.valueOf(10));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.b.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a.setOnClickListener(this.f);
+    this.b.setOnClickListener(this.f);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialButtonMaterialButtonToggleGroup.getVisibility() == 0)
+    if (this.e.getVisibility() == 0)
     {
       ConstraintSet localConstraintSet = new ConstraintSet();
       localConstraintSet.clone(this);
-      int i = ViewCompat.getLayoutDirection(this);
-      int j = 1;
-      if (i == 0) {
-        i = 1;
+      int j = ViewCompat.getLayoutDirection(this);
+      int k = 1;
+      if (j == 0) {
+        j = 1;
       } else {
-        i = 0;
+        j = 0;
       }
-      if (i != 0) {
-        j = 2;
+      if (j != 0) {
+        k = 2;
       }
-      localConstraintSet.clear(R.id.l, j);
+      localConstraintSet.clear(R.id.l, k);
       localConstraintSet.applyTo(this);
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialButtonMaterialButtonToggleGroup.setVisibility(0);
+    this.e.setVisibility(0);
   }
   
   public void a(float paramFloat, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockHandView.a(paramFloat, paramBoolean);
+    this.c.a(paramFloat, paramBoolean);
   }
   
   public void a(int paramInt)
   {
-    Chip localChip = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip;
+    Chip localChip = this.a;
     boolean bool2 = true;
     boolean bool1;
     if (paramInt == 12) {
@@ -135,11 +135,11 @@ class TimePickerView
     } else {
       paramInt1 = R.id.o;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialButtonMaterialButtonToggleGroup.a(paramInt1);
+    this.e.a(paramInt1);
     Object localObject = getResources().getConfiguration().locale;
     String str = String.format((Locale)localObject, "%02d", new Object[] { Integer.valueOf(paramInt3) });
     localObject = String.format((Locale)localObject, "%02d", new Object[] { Integer.valueOf(paramInt2) });
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip.setText(str);
+    this.a.setText(str);
     this.b.setText((CharSequence)localObject);
   }
   
@@ -150,42 +150,42 @@ class TimePickerView
   
   public void a(ClockHandView.OnActionUpListener paramOnActionUpListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockHandView.a(paramOnActionUpListener);
+    this.c.a(paramOnActionUpListener);
   }
   
   public void a(ClockHandView.OnRotateListener paramOnRotateListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockHandView.a(paramOnRotateListener);
+    this.c.a(paramOnRotateListener);
   }
   
   void a(@Nullable TimePickerView.OnDoubleTapListener paramOnDoubleTapListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView$OnDoubleTapListener = paramOnDoubleTapListener;
+    this.i = paramOnDoubleTapListener;
   }
   
   void a(TimePickerView.OnPeriodChangeListener paramOnPeriodChangeListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView$OnPeriodChangeListener = paramOnPeriodChangeListener;
+    this.g = paramOnPeriodChangeListener;
   }
   
   void a(TimePickerView.OnSelectionChange paramOnSelectionChange)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerTimePickerView$OnSelectionChange = paramOnSelectionChange;
+    this.h = paramOnSelectionChange;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockHandView.a(paramBoolean);
+    this.c.a(paramBoolean);
   }
   
   public void a(String[] paramArrayOfString, @StringRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTimepickerClockFaceView.a(paramArrayOfString, paramInt);
+    this.d.a(paramArrayOfString, paramInt);
   }
   
   public void b(AccessibilityDelegateCompat paramAccessibilityDelegateCompat)
   {
-    ViewCompat.setAccessibilityDelegate(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip, paramAccessibilityDelegateCompat);
+    ViewCompat.setAccessibilityDelegate(this.a, paramAccessibilityDelegateCompat);
   }
   
   protected void onAttachedToWindow()
@@ -204,7 +204,7 @@ class TimePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.timepicker.TimePickerView
  * JD-Core Version:    0.7.0.1
  */

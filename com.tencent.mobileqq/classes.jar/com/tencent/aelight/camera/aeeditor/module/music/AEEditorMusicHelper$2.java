@@ -5,7 +5,7 @@ import android.graphics.Bitmap.CompressFormat;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import com.tencent.biz.videostory.video.FrameVideoHelper.GetFrameByteArrayListener;
-import com.tencent.tavcut.session.TAVCutVideoSession;
+import com.tencent.qcircle.tavcut.session.TAVCutVideoSession;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -24,10 +24,10 @@ final class AEEditorMusicHelper$2
     long l2;
     try
     {
-      if (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession == null) {
+      if (this.a == null) {
         return;
       }
-      Object localObject2 = this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getMultiVideoFrame(this.jdField_a_of_type_JavaUtilList, (int)this.jdField_a_of_type_Long);
+      Object localObject2 = this.a.getMultiVideoFrame(this.b, (int)this.c);
       Object localObject1 = new ByteArrayOutputStream();
       localObject2 = ((List)localObject2).iterator();
       long l1 = 0L;
@@ -44,13 +44,13 @@ final class AEEditorMusicHelper$2
               continue;
             }
             l2 = l1;
-            ((Bitmap)localObject3).compress(Bitmap.CompressFormat.JPEG, (int)this.b, (OutputStream)localObject1);
+            ((Bitmap)localObject3).compress(Bitmap.CompressFormat.JPEG, (int)this.d, (OutputStream)localObject1);
             l2 = l1;
             localObject3 = ((ByteArrayOutputStream)localObject1).toByteArray();
             l2 = l1;
             l3 += localObject3.length;
             l2 = l1;
-            if (l3 >= this.c)
+            if (l3 >= this.e)
             {
               l2 = l1;
               localObject1 = new StringBuilder();
@@ -77,11 +77,11 @@ final class AEEditorMusicHelper$2
             }
           }
           l2 = l1;
-          if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener == null) {
+          if (this.f == null) {
             return;
           }
           l2 = l1;
-          this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener.a(true, localArrayList, l1);
+          this.f.a(true, localArrayList, l1);
           return;
         }
         catch (Throwable localThrowable1) {}
@@ -92,7 +92,7 @@ final class AEEditorMusicHelper$2
     {
       l2 = 0L;
     }
-    FrameVideoHelper.GetFrameByteArrayListener localGetFrameByteArrayListener = this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper$GetFrameByteArrayListener;
+    FrameVideoHelper.GetFrameByteArrayListener localGetFrameByteArrayListener = this.f;
     if (localGetFrameByteArrayListener != null) {
       localGetFrameByteArrayListener.a(false, localArrayList, l2);
     }
@@ -100,7 +100,7 @@ final class AEEditorMusicHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicHelper.2
  * JD-Core Version:    0.7.0.1
  */

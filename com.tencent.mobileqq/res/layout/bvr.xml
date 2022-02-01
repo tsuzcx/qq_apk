@@ -10,7 +10,7 @@
             <com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyNickNameTextView android:textSize="14.0dip" android:textColor="@drawable/zv" android:ellipsize="end" android:id="@id/jq_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gss" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
             <TextView android:textSize="12.0dip" android:textColor="#73000000" android:ellipsize="end" android:id="@id/bgr" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="5分钟前" android:lines="1" android:includeFontPadding="false" />
         </LinearLayout>
-        <TextView android:textSize="11.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ahf" android:background="@drawable/b21" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="50.0dip" android:layout_height="23.0dip" android:text="@string/sry" android:drawablePadding="3.0dip" />
+        <TextView android:textSize="11.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ahf" android:background="@drawable/b21" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="50.0dip" android:layout_height="23.0dip" android:text="@string/ka2" android:drawablePadding="3.0dip" />
     </LinearLayout>
     <View android:id="@id/bmt" android:background="#ffebebeb" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="65.0dip" />
 </RelativeLayout>

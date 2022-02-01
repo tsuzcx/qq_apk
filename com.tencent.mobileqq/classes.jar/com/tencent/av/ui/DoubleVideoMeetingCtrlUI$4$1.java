@@ -7,14 +7,14 @@ class DoubleVideoMeetingCtrlUI$4$1
   
   public void a()
   {
-    this.a.this$0.j = true;
-    this.a.this$0.O();
+    this.a.this$0.aU = true;
+    this.a.this$0.aj();
   }
   
   public void b()
   {
-    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
-    this.a.this$0.j = false;
+    this.a.this$0.d(this.a.a, this.a.b);
+    this.a.this$0.aU = false;
   }
 }
 

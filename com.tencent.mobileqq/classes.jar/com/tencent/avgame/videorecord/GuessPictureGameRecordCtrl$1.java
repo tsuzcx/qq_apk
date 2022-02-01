@@ -9,7 +9,7 @@ class GuessPictureGameRecordCtrl$1
   {
     GuessPictureGameRecordCtrl.a(this.this$0, false);
     GuessPictureGameRecordCtrl.b(this.this$0, false);
-    this.this$0.e();
+    this.this$0.l();
   }
 }
 

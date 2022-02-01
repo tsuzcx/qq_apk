@@ -14,21 +14,21 @@ class ReadInJoyChannelPanelFragment$4
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment.getBaseActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment.getBaseActivity().startActivity(paramView);
+    paramView = new Intent(this.b.getBaseActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", this.a);
+    this.b.getBaseActivity().startActivity(paramView);
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
       paramView.append("info.mChannelJumpUrl:");
-      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView.append(this.a);
       QLog.d("ReadInJoyChannelPanelFragment", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyChannelPanelFragment.4
  * JD-Core Version:    0.7.0.1
  */

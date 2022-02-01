@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.game.process.audio;
 
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.render.IRenderRunner;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderRunner;
 
 public abstract interface ICmGameAudioPlayer
 {
@@ -31,7 +31,7 @@ public abstract interface ICmGameAudioPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.audio.ICmGameAudioPlayer
  * JD-Core Version:    0.7.0.1
  */

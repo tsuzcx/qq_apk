@@ -81,11 +81,6 @@ public class TroopAuditHandler
     notifyUI(TroopAuditObserver.b, false, null);
   }
   
-  protected String a()
-  {
-    return "TroopAuditHandler";
-  }
-  
   public void a(long paramLong1, String paramString1, long paramLong2, List<String> paramList, int paramInt, long paramLong3, long paramLong4, long paramLong5, String paramString2, String paramString3)
   {
     cmd0x91b.ReqBody localReqBody = new cmd0x91b.ReqBody();
@@ -210,6 +205,11 @@ public class TroopAuditHandler
     sendPbReq((ToServiceMsg)localObject);
   }
   
+  protected String dv_()
+  {
+    return "TroopAuditHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -259,7 +259,7 @@ public class TroopAuditHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopaudit.handler.TroopAuditHandler
  * JD-Core Version:    0.7.0.1
  */

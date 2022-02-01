@@ -14,16 +14,16 @@ class WSRecommendFragment$1
   {
     if (paramWSTabItemViewHolder != null)
     {
-      if (paramWSTabItemViewHolder.a() == null) {
+      if (paramWSTabItemViewHolder.b() == null) {
         return;
       }
-      WSRecommendFragment.a(this.a).setCurrentItem(paramWSTabItemViewHolder.a().a());
+      WSRecommendFragment.a(this.a).setCurrentItem(paramWSTabItemViewHolder.b().d());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment.1
  * JD-Core Version:    0.7.0.1
  */

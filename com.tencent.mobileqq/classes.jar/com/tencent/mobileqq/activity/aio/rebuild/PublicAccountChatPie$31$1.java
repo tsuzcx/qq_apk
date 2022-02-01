@@ -9,12 +9,12 @@ class PublicAccountChatPie$31$1
   
   public void run()
   {
-    this.a.a.a.clearAnimation();
+    this.a.a.bj.clearAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.31.1
  * JD-Core Version:    0.7.0.1
  */

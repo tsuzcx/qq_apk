@@ -15,9 +15,9 @@ final class ProfileBasePrivacySettingAdapter$onBindViewHolder$$inlined$let$lambd
   
   public final void onClick(View paramView)
   {
-    ProfileBasePrivacySettingAdapter.PrivacySettingClickListener localPrivacySettingClickListener = this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter$PrivacySettingClickListener;
+    ProfileBasePrivacySettingAdapter.PrivacySettingClickListener localPrivacySettingClickListener = this.a;
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    Object localObject = ProfileBasePrivacySettingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileBasePrivacySettingAdapter).get(this.jdField_a_of_type_Int);
+    Object localObject = ProfileBasePrivacySettingAdapter.a(this.b).get(this.d);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "mData[position]");
     localPrivacySettingClickListener.b(paramView, (ProfileDisplaySettingItem)localObject);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -25,7 +25,7 @@ final class ProfileBasePrivacySettingAdapter$onBindViewHolder$$inlined$let$lambd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileBasePrivacySettingAdapter.onBindViewHolder..inlined.let.lambda.3
  * JD-Core Version:    0.7.0.1
  */

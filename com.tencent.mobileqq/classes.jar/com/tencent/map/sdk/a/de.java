@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.LocationMonitor;
 
 public final class de
 {
@@ -31,7 +32,7 @@ public final class de
       if (localObject == null) {
         return false;
       }
-      paramContext = paramContext.getLastKnownLocation((String)localObject);
+      paramContext = LocationMonitor.getLastKnownLocation(paramContext, (String)localObject);
       if (paramContext != null)
       {
         localObject = new StringBuilder();
@@ -51,7 +52,7 @@ public final class de
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.de
  * JD-Core Version:    0.7.0.1
  */

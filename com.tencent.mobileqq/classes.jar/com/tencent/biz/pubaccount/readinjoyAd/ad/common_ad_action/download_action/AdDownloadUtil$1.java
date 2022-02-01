@@ -14,28 +14,28 @@ final class AdDownloadUtil$1
   
   public void run()
   {
-    DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.c);
+    DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(this.a.c);
     boolean bool2 = false;
     if (localDownloadInfo == null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_actionDownload_actionAdDownloadUtil$PkgExistCallback.a(false);
+      this.b.a(false);
       return;
     }
     Object localObject1;
-    if (!TextUtils.isEmpty(localDownloadInfo.l)) {
-      localObject1 = localDownloadInfo.l;
+    if (!TextUtils.isEmpty(localDownloadInfo.q)) {
+      localObject1 = localDownloadInfo.q;
     } else {
       localObject1 = "";
     }
     Object localObject3 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      int i = localDownloadInfo.c;
+      int i = localDownloadInfo.o;
       localObject3 = null;
       TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
       if (i == 0)
       {
-        localTMAssistantDownloadTaskInfo = DownloadManagerV2.a().a(localDownloadInfo.d);
+        localTMAssistantDownloadTaskInfo = DownloadManagerV2.a().g(localDownloadInfo.d);
         localObject2 = localObject1;
         if (localTMAssistantDownloadTaskInfo != null)
         {
@@ -47,13 +47,13 @@ final class AdDownloadUtil$1
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          localObject3 = DownloadManagerV2.a().a(localDownloadInfo);
+          localObject3 = DownloadManagerV2.a().c(localDownloadInfo);
           localObject1 = localObject2;
         }
       }
       else
       {
-        localTMAssistantDownloadTaskInfo = DownloadManagerV2.a().a(localDownloadInfo);
+        localTMAssistantDownloadTaskInfo = DownloadManagerV2.a().c(localDownloadInfo);
         localObject2 = localObject1;
         if (localTMAssistantDownloadTaskInfo != null)
         {
@@ -65,7 +65,7 @@ final class AdDownloadUtil$1
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          localObject3 = DownloadManagerV2.a().a(localDownloadInfo.d);
+          localObject3 = DownloadManagerV2.a().g(localDownloadInfo.d);
           localObject1 = localObject2;
         }
       }
@@ -80,9 +80,9 @@ final class AdDownloadUtil$1
       localObject3 = localObject2;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localDownloadInfo.l = ((String)localObject2);
+        localDownloadInfo.q = ((String)localObject2);
         localDownloadInfo.a(4);
-        DownloadManagerV2.a().c(localDownloadInfo);
+        DownloadManagerV2.a().e(localDownloadInfo);
         localObject3 = localObject2;
       }
     }
@@ -94,12 +94,12 @@ final class AdDownloadUtil$1
         bool1 = true;
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_actionDownload_actionAdDownloadUtil$PkgExistCallback.a(bool1);
+    this.b.a(bool1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdDownloadUtil.1
  * JD-Core Version:    0.7.0.1
  */

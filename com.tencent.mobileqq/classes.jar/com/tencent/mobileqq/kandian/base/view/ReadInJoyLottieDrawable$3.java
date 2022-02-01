@@ -11,7 +11,7 @@ class ReadInJoyLottieDrawable$3
   
   public void run()
   {
-    LottieComposition localLottieComposition = (LottieComposition)ReadInJoyLottieDrawable.a().get(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    LottieComposition localLottieComposition = (LottieComposition)ReadInJoyLottieDrawable.a().get(this.a.getAbsolutePath());
     if (localLottieComposition != null)
     {
       ReadInJoyLottieDrawable.3.1 local1 = new ReadInJoyLottieDrawable.3.1(this);
@@ -26,7 +26,7 @@ class ReadInJoyLottieDrawable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.ReadInJoyLottieDrawable.3
  * JD-Core Version:    0.7.0.1
  */

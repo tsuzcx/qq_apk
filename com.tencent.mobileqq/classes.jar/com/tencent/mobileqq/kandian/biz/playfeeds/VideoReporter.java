@@ -11,14 +11,15 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.kandian.base.utils.RIJDeviceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJNetworkUtils;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.VideoSessionUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.diandian.api.IRecommendFeedsDiandianEntranceManager;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.diandian.RecommendFeedsDiandianEntranceManager;
 import com.tencent.mobileqq.kandian.biz.framework.RIJAppSetting;
 import com.tencent.mobileqq.kandian.biz.framework.RIJSoSoUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoReporterConstants;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
@@ -27,9 +28,9 @@ import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo.VideoExtraRepoerData;
+import com.tencent.mobileqq.kandian.repo.report.UserOperationModule;
 import com.tencent.mobileqq.kandian.repo.video.entity.VideoColumnInfo;
-import com.tencent.mobileqq.kandian.repo.xtab.api.IRIJXTabConfigHandler;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.xtab.api.impl.RIJXTabConfigHandler;
 import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
 import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -46,31 +47,9 @@ import org.json.JSONObject;
 public class VideoReporter
   implements VideoReporterConstants
 {
-  public static int a;
-  public static String a;
-  public static HashMap<Class<?>, String> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "8.7.0".replace(".", "");
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static int a()
-  {
-    boolean bool1 = RIJShowKanDianTabSp.c();
-    boolean bool2 = ReadInJoyHelper.l();
-    if (!bool1) {
-      return 0;
-    }
-    if (bool2) {
-      return 3;
-    }
-    if (((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()) {
-      return 4;
-    }
-    return 1;
-  }
+  public static String a = "8.8.17".replace(".", "");
+  public static int b;
+  public static HashMap<Class<?>, String> c = new HashMap();
   
   public static int a(int paramInt)
   {
@@ -106,7 +85,7 @@ public class VideoReporter
       i = j;
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.c(paramString);
+        paramQQAppInterface = paramQQAppInterface.g(paramString);
         i = j;
         if (paramQQAppInterface != null) {
           return paramQQAppInterface.wMemberNum;
@@ -121,7 +100,7 @@ public class VideoReporter
         paramQQAppInterface = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
         i = j;
         if (paramQQAppInterface != null) {
-          i = paramQQAppInterface.a(paramString);
+          i = paramQQAppInterface.c(paramString);
         }
       }
     }
@@ -136,7 +115,7 @@ public class VideoReporter
     if (paramAbsBaseArticleInfo.videoJumpChannelID > 0) {
       return paramAbsBaseArticleInfo.videoJumpChannelID;
     }
-    if (ReadInJoyHelper.d(BaseApplicationImpl.getApplication().getRuntime()) == 1) {
+    if (ReadInJoyHelper.j(BaseApplicationImpl.getApplication().getRuntime()) == 1) {
       return 56;
     }
     return 409409;
@@ -157,22 +136,6 @@ public class VideoReporter
       return "2";
     }
     return "1";
-  }
-  
-  public static String a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    try
-    {
-      Object localObject = new JSONObject(paramString);
-      ((JSONObject)localObject).put("jump_to_channel", paramInt);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
-    }
-    catch (Exception localException) {}
-    return paramString;
   }
   
   public static String a(int paramInt, String paramString1, String paramString2)
@@ -204,7 +167,7 @@ public class VideoReporter
     {
       localJSONObject.put("download", paramString);
       a(localJSONObject, 2);
-      paramString = a(localJSONObject);
+      paramString = b(localJSONObject);
       return paramString;
     }
     catch (JSONException paramString)
@@ -278,7 +241,7 @@ public class VideoReporter
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      a(paramString1, paramString2, paramString3, paramString4, localJSONObject);
+      b(paramString1, paramString2, paramString3, paramString4, localJSONObject);
       if (paramJSONObject != null)
       {
         paramString1 = paramJSONObject.keys();
@@ -298,11 +261,6 @@ public class VideoReporter
     return "";
   }
   
-  public static String a(JSONObject paramJSONObject)
-  {
-    return a(null, null, null, null, paramJSONObject);
-  }
-  
   public static JSONObject a(JSONObject paramJSONObject)
   {
     JSONObject localJSONObject = paramJSONObject;
@@ -320,7 +278,7 @@ public class VideoReporter
           paramJSONObject = paramJSONObject.mLocation;
           double d1 = 0.0D;
           if (paramJSONObject == null) {
-            break label186;
+            break label160;
           }
           d1 = paramJSONObject.mLon02;
           d2 = paramJSONObject.mLat02;
@@ -332,9 +290,9 @@ public class VideoReporter
             localJSONObject.put("wifi_ssid", RIJNetworkUtils.b(localContext));
             localJSONObject.put("wifi_mac", paramJSONObject);
           }
-          localJSONObject.put("imei", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMEIForReport());
-          localJSONObject.put("imsi", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMSIForReport());
-          localJSONObject.put("androidid", DeviceInfoUtil.f());
+          localJSONObject.put("imei", RIJDeviceUtil.a());
+          localJSONObject.put("imsi", RIJDeviceUtil.b());
+          localJSONObject.put("androidid", DeviceInfoUtil.j());
           return localJSONObject;
         }
       }
@@ -345,7 +303,7 @@ public class VideoReporter
       }
       paramJSONObject = null;
       continue;
-      label186:
+      label160:
       double d2 = 0.0D;
     }
   }
@@ -378,7 +336,7 @@ public class VideoReporter
   {
     ArrayList localArrayList = new ArrayList();
     ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.mUin = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+    localReportInfo.mUin = RIJQQAppInterfaceUtil.c();
     localReportInfo.mSource = 0;
     if (paramInt1 == 56) {
       localReportInfo.mOpSource = 11;
@@ -432,7 +390,7 @@ public class VideoReporter
       QLog.d("VideoReporter", 2, paramString2.toString());
     }
     localArrayList.add(localReportInfo);
-    ((IUserOperationModule)QRoute.api(IUserOperationModule.class)).request0x64eUserOperationReport(localArrayList);
+    UserOperationModule.getInstance().request0x64eUserOperationReport(localArrayList);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, long paramLong)
@@ -447,17 +405,17 @@ public class VideoReporter
   
   public static void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2, int paramInt3, ReportInfo.VideoExtraRepoerData paramVideoExtraRepoerData, String paramString)
   {
-    long l = paramVideoInfo.c;
-    String str = paramVideoInfo.g;
-    int j = (int)paramVideoInfo.f;
-    int k = paramVideoInfo.p;
+    long l = paramVideoInfo.u;
+    String str = paramVideoInfo.l;
+    int j = (int)paramVideoInfo.ah;
+    int k = paramVideoInfo.ai;
     int i;
-    if (paramVideoInfo.a != null) {
-      i = paramVideoInfo.a.a;
+    if (paramVideoInfo.ay != null) {
+      i = paramVideoInfo.ay.b;
     } else {
       i = -1;
     }
-    a(18, l, str, paramInt1, j, k, paramInt2, paramInt3, paramVideoExtraRepoerData, i, paramVideoInfo.w, paramString);
+    a(18, l, str, paramInt1, j, k, paramInt2, paramInt3, paramVideoExtraRepoerData, i, paramVideoInfo.ao, paramString);
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt1, int paramInt2, long paramLong, ReportInfo.VideoExtraRepoerData paramVideoExtraRepoerData)
@@ -468,7 +426,7 @@ public class VideoReporter
     int k = paramAbsBaseArticleInfo.mStrategyId;
     int i;
     if (paramAbsBaseArticleInfo.mVideoColumnInfo != null) {
-      i = paramAbsBaseArticleInfo.mVideoColumnInfo.a;
+      i = paramAbsBaseArticleInfo.mVideoColumnInfo.b;
     } else {
       i = -1;
     }
@@ -495,10 +453,51 @@ public class VideoReporter
         str = "4";
       }
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", paramString1, paramString1, 0, 0, str, Integer.toString(paramInt2), paramString3, paramString2, false);
+    PublicAccountReportUtils.a(null, "CliOper", "", "", paramString1, paramString1, 0, 0, str, Integer.toString(paramInt2), paramString3, paramString2, false);
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject)
+  public static String b()
+  {
+    return VideoSessionUtils.a();
+  }
+  
+  public static String b(int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      ((JSONObject)localObject).put("jump_to_channel", paramInt);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException) {}
+    return paramString;
+  }
+  
+  public static String b(JSONObject paramJSONObject)
+  {
+    return a(null, null, null, null, paramJSONObject);
+  }
+  
+  public static void b(VideoInfo paramVideoInfo, int paramInt1, int paramInt2, int paramInt3, ReportInfo.VideoExtraRepoerData paramVideoExtraRepoerData, String paramString)
+  {
+    long l = paramVideoInfo.u;
+    String str = paramVideoInfo.l;
+    int j = (int)paramVideoInfo.ah;
+    int k = paramVideoInfo.ai;
+    int i;
+    if (paramVideoInfo.ay != null) {
+      i = paramVideoInfo.ay.b;
+    } else {
+      i = -1;
+    }
+    a(5, l, str, paramInt1, j, k, paramInt2, paramInt3, paramVideoExtraRepoerData, i, paramVideoInfo.ao, paramString);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject)
   {
     String str = "1";
     for (;;)
@@ -519,27 +518,27 @@ public class VideoReporter
         }
         paramJSONObject.put("network_type", a());
         paramJSONObject.put("os", "1");
-        if (jdField_a_of_type_JavaLangString == null) {
-          jdField_a_of_type_JavaLangString = "8.7.0".replace(".", "");
+        if (a == null) {
+          a = "8.8.17".replace(".", "");
         }
-        paramJSONObject.put("version", jdField_a_of_type_JavaLangString);
-        paramJSONObject.put("imei", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMEIForReport());
-        paramJSONObject.put("imsi", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getIMSIForReport());
-        paramJSONObject.put("kandian_mode_new", a());
-        paramJSONObject.put("kandian_mode", RIJAppSetting.a());
+        paramJSONObject.put("version", a);
+        paramJSONObject.put("imei", RIJDeviceUtil.a());
+        paramJSONObject.put("imsi", RIJDeviceUtil.b());
+        paramJSONObject.put("kandian_mode_new", c());
+        paramJSONObject.put("kandian_mode", RIJAppSetting.b());
         paramJSONObject.put("report_timestamp", System.currentTimeMillis());
         if (CUKingCardUtils.a() != 1) {
-          break label312;
+          break label280;
         }
         paramString1 = str;
         paramJSONObject.put("simCardType", paramString1);
-        paramJSONObject.put("diandianfeeds_type", ((IRecommendFeedsDiandianEntranceManager)QRoute.api(IRecommendFeedsDiandianEntranceManager.class)).getEntryFeedsType());
-        if (!RIJTransMergeKanDianReport.a) {
-          break label318;
+        paramJSONObject.put("diandianfeeds_type", RecommendFeedsDiandianEntranceManager.getInstance().getEntryFeedsType());
+        if (!RIJTransMergeKanDianReport.b) {
+          break label286;
         }
         i = 1;
         paramJSONObject.put("from_aio", i);
-        paramJSONObject.put("model", DeviceInfoUtil.d());
+        paramJSONObject.put("model", DeviceInfoUtil.f());
       }
       catch (JSONException paramString1)
       {
@@ -547,42 +546,38 @@ public class VideoReporter
       }
       a(paramJSONObject);
       return;
-      label312:
+      label280:
       paramString1 = "0";
       continue;
-      label318:
+      label286:
       int i = 0;
     }
   }
   
-  public static String b()
+  public static int c()
   {
-    return VideoSessionUtils.a();
-  }
-  
-  public static void b(VideoInfo paramVideoInfo, int paramInt1, int paramInt2, int paramInt3, ReportInfo.VideoExtraRepoerData paramVideoExtraRepoerData, String paramString)
-  {
-    long l = paramVideoInfo.c;
-    String str = paramVideoInfo.g;
-    int j = (int)paramVideoInfo.f;
-    int k = paramVideoInfo.p;
-    int i;
-    if (paramVideoInfo.a != null) {
-      i = paramVideoInfo.a.a;
-    } else {
-      i = -1;
+    boolean bool1 = RIJShowKanDianTabSp.c();
+    boolean bool2 = ReadInJoyHelper.v();
+    if (!bool1) {
+      return 0;
     }
-    a(5, l, str, paramInt1, j, k, paramInt2, paramInt3, paramVideoExtraRepoerData, i, paramVideoInfo.w, paramString);
+    if (bool2) {
+      return 3;
+    }
+    if (RIJXTabConfigHandler.INSTANCE.isXTabMode()) {
+      return 4;
+    }
+    return 1;
   }
   
-  public static String c()
+  public static String d()
   {
-    return a(null);
+    return b(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter
  * JD-Core Version:    0.7.0.1
  */

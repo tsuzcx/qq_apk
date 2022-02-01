@@ -5,18 +5,18 @@ import java.util.List;
 
 public class ScenesRecommendItem$ScenesRecConfigItem
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  Date jdField_a_of_type_JavaUtilDate;
-  List<String> jdField_a_of_type_JavaUtilList;
-  String jdField_b_of_type_JavaLangString;
-  Date jdField_b_of_type_JavaUtilDate;
-  String c;
+  List<String> a;
+  String b;
+  int c;
   String d;
+  String e;
+  String f;
+  Date g;
+  Date h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendItem.ScenesRecConfigItem
  * JD-Core Version:    0.7.0.1
  */

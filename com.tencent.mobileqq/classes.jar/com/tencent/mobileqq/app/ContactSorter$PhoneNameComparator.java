@@ -16,13 +16,13 @@ public class ContactSorter$PhoneNameComparator
       {
         if ((!Character.isDigit(paramString1.charAt(0))) && (!Character.isDigit(paramString2.charAt(0))))
         {
-          String str1 = ChnToSpell.a(paramString1, 1);
-          String str2 = ChnToSpell.a(paramString2, 1);
+          String str1 = ChnToSpell.b(paramString1, 1);
+          String str2 = ChnToSpell.b(paramString2, 1);
           if ((str1.length() != 0) && (str2.length() != 0))
           {
             if (str1.charAt(0) == str2.charAt(0))
             {
-              if ((StringUtil.b(paramString1.charAt(0))) && (StringUtil.b(paramString2.charAt(0)))) {
+              if ((StringUtil.isAsciiAlpha(paramString1.charAt(0))) && (StringUtil.isAsciiAlpha(paramString2.charAt(0)))) {
                 return paramString1.charAt(0) - paramString2.charAt(0);
               }
               if (Character.isLetter(paramString1.charAt(0))) {
@@ -58,7 +58,7 @@ public class ContactSorter$PhoneNameComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ContactSorter.PhoneNameComparator
  * JD-Core Version:    0.7.0.1
  */

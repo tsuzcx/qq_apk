@@ -16,30 +16,30 @@ class UinSearcher$1$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0] == null)
+    this.a.show();
+    if (this.b[0] == null)
     {
-      if (this.b[0] == null) {
+      if (this.c[0] == null) {
         localObject1 = "0X800A923";
       } else {
         localObject1 = "0X800A921";
       }
     }
-    else if (this.b[0] == null) {
+    else if (this.c[0] == null) {
       localObject1 = "0X800A920";
     } else {
       localObject1 = "0X800A922";
     }
-    Object localObject2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0];
+    Object localObject2 = this.b[0];
     String str = "";
-    if ((localObject2 == null) && (this.b[0] == null))
+    if ((localObject2 == null) && (this.c[0] == null))
     {
       localObject2 = "";
     }
     else
     {
       int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessSearchUinSearchConfProcessor$UinSearchConfigBean.a())
+      if (this.d.a())
       {
         localObject2 = new StringBuilder();
         i = UinSearchConfProcessor.UinSearchConfigBean.a;
@@ -53,12 +53,12 @@ class UinSearcher$1$3
       ((StringBuilder)localObject2).append("");
       localObject2 = ((StringBuilder)localObject2).toString();
     }
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    ReportController.b((AppRuntime)localObject3, "dc00898", "", "", (String)localObject1, (String)localObject1, UinSearcher.a((QQAppInterface)localObject3, UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), UinSearcher.d(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a)), 0, (String)localObject2, "", "", "");
-    Object localObject1 = this.c;
-    if ((localObject1[0] != null) && (!TextUtils.isEmpty(localObject1[0].n)))
+    Object localObject3 = this.e;
+    ReportController.b((AppRuntime)localObject3, "dc00898", "", "", (String)localObject1, (String)localObject1, UinSearcher.a((QQAppInterface)localObject3, UinSearcher.f(this.g.a), UinSearcher.l(this.g.a)), 0, (String)localObject2, "", "", "");
+    Object localObject1 = this.f;
+    if ((localObject1[0] != null) && (!TextUtils.isEmpty(localObject1[0].E)))
     {
-      if (this.c[0].m.equals("#808080")) {
+      if (this.f[0].D.equals("#808080")) {
         localObject1 = "0X800B0BD";
       } else {
         localObject1 = "0X800B0BE";
@@ -68,12 +68,12 @@ class UinSearcher$1$3
       localObject1 = "0X800B0BF";
     }
     if (((String)localObject1).equals("0X800B0BD")) {
-      localObject2 = this.c[0].k;
+      localObject2 = this.f[0].A;
     } else {
       localObject2 = "";
     }
     if (!((String)localObject2).equals("")) {
-      str = this.c[0].l;
+      str = this.f[0].B;
     }
     if (QLog.isColorLevel())
     {
@@ -86,12 +86,12 @@ class UinSearcher$1$3
       ((StringBuilder)localObject3).append(str);
       QLog.d("UinSearcher", 2, ((StringBuilder)localObject3).toString());
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, UinSearcher.a(UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a)), 0, "", "", (String)localObject2, str);
+    ReportController.b(this.e, "dc00898", "", "", (String)localObject1, (String)localObject1, UinSearcher.a(UinSearcher.f(this.g.a)), 0, "", "", (String)localObject2, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.UinSearcher.1.3
  * JD-Core Version:    0.7.0.1
  */

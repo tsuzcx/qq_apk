@@ -15,20 +15,19 @@ public class MyPreviewCallback
   extends CameraCallback
   implements Camera.PreviewCallback
 {
-  public boolean a;
+  public boolean f = true;
   
   public MyPreviewCallback(AndroidCamera paramAndroidCamera, CameraPreviewCallback paramCameraPreviewCallback)
   {
     super(paramAndroidCamera, paramCameraPreviewCallback);
-    this.jdField_a_of_type_Boolean = true;
   }
   
   private int a(int paramInt)
   {
     int i = ImageFormat.getBitsPerPixel(paramInt);
-    float f = i * 1.0F / 8.0F;
-    int j = (int)(AndroidCamera.b * AndroidCamera.jdField_a_of_type_Int * f);
-    if (AudioHelper.b())
+    float f1 = i * 1.0F / 8.0F;
+    int j = (int)(AndroidCamera.c * AndroidCamera.b * f1);
+    if (AudioHelper.e())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getPreviewBufferSize, previewFormat[");
@@ -36,7 +35,7 @@ public class MyPreviewCallback
       localStringBuilder.append("], bitPixel[");
       localStringBuilder.append(i);
       localStringBuilder.append("], byteNum[");
-      localStringBuilder.append(f);
+      localStringBuilder.append(f1);
       localStringBuilder.append("], bufSize[");
       localStringBuilder.append(j);
       localStringBuilder.append("]");
@@ -45,7 +44,7 @@ public class MyPreviewCallback
     return j;
   }
   
-  private boolean a(int paramInt)
+  private boolean b(int paramInt)
   {
     if (paramInt <= 0) {
       return false;
@@ -77,33 +76,25 @@ public class MyPreviewCallback
     }
   }
   
-  public void a()
-  {
-    FrameBufMgr.a().a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MyPreviewCallback", 2, "release");
-    }
-  }
-  
   public void a(long paramLong, SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.a();
+    this.a.a();
     int i;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a() != null))
+    if ((this.f) && (this.b.b() != null))
     {
-      boolean bool = a(a(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a().getPreviewFormat()));
+      boolean bool = b(a(this.b.b().getPreviewFormat()));
       i = 2;
       if (bool)
       {
         int j = 0;
-        for (int k = 0; j < FrameBufMgr.a().a(); k = i)
+        for (int k = 0; j < FrameBufMgr.a().c(); k = i)
         {
-          paramSurfaceTexture = FrameBufMgr.a().a(0);
+          paramSurfaceTexture = FrameBufMgr.a().b(0);
           i = k;
           if (paramSurfaceTexture != null)
           {
             FrameBufMgr.a().a(paramSurfaceTexture, 1);
-            this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(paramSurfaceTexture);
+            this.b.k.addCallbackBuffer(paramSurfaceTexture);
             k += 1;
             i = k;
             if (k >= 2) {
@@ -112,18 +103,18 @@ public class MyPreviewCallback
           }
           j += 1;
         }
-        this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(this);
+        this.b.k.setPreviewCallbackWithBuffer(this);
         i = 1;
       }
       else
       {
-        this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
+        this.b.k.setPreviewCallback(this);
       }
     }
     else
     {
       i = 3;
-      this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(this);
+      this.b.k.setPreviewCallback(this);
     }
     paramSurfaceTexture = new StringBuilder();
     paramSurfaceTexture.append("setPreviewCallback, type[");
@@ -134,28 +125,36 @@ public class MyPreviewCallback
     QLog.w("MyPreviewCallback", 1, paramSurfaceTexture.toString());
   }
   
+  public void b()
+  {
+    FrameBufMgr.a().b();
+    if (QLog.isColorLevel()) {
+      QLog.i("MyPreviewCallback", 2, "release");
+    }
+  }
+  
   @TargetApi(8)
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
     if (paramArrayOfByte == null)
     {
-      if (AudioHelper.b())
+      if (AudioHelper.e())
       {
         paramArrayOfByte = new StringBuilder();
         paramArrayOfByte.append("onPreviewFrame, data is null, Camera[");
         paramArrayOfByte.append(paramCamera);
         paramArrayOfByte.append("], camera[");
-        paramArrayOfByte.append(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera);
+        paramArrayOfByte.append(this.b.k);
         paramArrayOfByte.append("]");
         QLog.w("MyPreviewCallback", 1, paramArrayOfByte.toString());
       }
-      this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.b();
+      this.a.b();
       return;
     }
-    a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam);
+    a(this.d);
     int n = paramArrayOfByte.length;
-    int i = AndroidCamera.jdField_a_of_type_Int;
-    int j = AndroidCamera.b;
+    int i = AndroidCamera.b;
+    int j = AndroidCamera.c;
     int k = i;
     int m = j;
     if (n != i * j * 3 / 2)
@@ -177,13 +176,13 @@ public class MyPreviewCallback
       }
       k = i;
       m = j;
-      if (AudioHelper.b())
+      if (AudioHelper.e())
       {
         paramCamera = new StringBuilder();
         paramCamera.append("OnPreviewData false, expectSize[");
-        paramCamera.append(AndroidCamera.jdField_a_of_type_Int);
-        paramCamera.append(", ");
         paramCamera.append(AndroidCamera.b);
+        paramCamera.append(", ");
+        paramCamera.append(AndroidCamera.c);
         paramCamera.append("], dataLen[");
         paramCamera.append(n);
         paramCamera.append("], fixSize[");
@@ -196,26 +195,26 @@ public class MyPreviewCallback
         k = i;
       }
     }
-    this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.a(this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int, AndroidCamera.d, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Boolean, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.c, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.d, this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b, n, k, m);
-    if (this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback != null)
+    this.a.a(this.d.a, this.b.l, AndroidCamera.f, this.b.y, this.d.c, this.d.d, this.d.b, n, k, m);
+    if (this.c != null)
     {
-      paramCamera = CameraFrame.a();
-      long l = this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo.j;
-      i = AndroidCamera.c;
-      j = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.jdField_a_of_type_Int;
-      n = this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam.b;
+      paramCamera = CameraFrame.f();
+      long l = this.a.k;
+      i = AndroidCamera.d;
+      j = this.d.a;
+      n = this.d.b;
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int == 1) {
+      if (this.b.l == 1) {
         bool = true;
       } else {
         bool = false;
       }
-      paramCamera.a(l, paramArrayOfByte, k, m, i, j, n, bool, AndroidCamera.d, System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback.onPreviewData(paramCamera);
+      paramCamera.a(l, paramArrayOfByte, k, m, i, j, n, bool, AndroidCamera.f, System.currentTimeMillis());
+      this.c.onPreviewData(paramCamera);
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera != null))
+    if ((this.f) && (this.b.k != null))
     {
-      byte[] arrayOfByte = FrameBufMgr.a().a(0);
+      byte[] arrayOfByte = FrameBufMgr.a().b(0);
       paramCamera = arrayOfByte;
       if (arrayOfByte == null)
       {
@@ -225,7 +224,7 @@ public class MyPreviewCallback
         paramCamera = paramArrayOfByte;
       }
       FrameBufMgr.a().a(paramCamera, 1);
-      this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_a_of_type_AndroidHardwareCamera.addCallbackBuffer(paramCamera);
+      this.b.k.addCallbackBuffer(paramCamera);
     }
   }
 }

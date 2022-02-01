@@ -9,8 +9,8 @@ final class QidianProfileCardActivity$QidianCompoundProfileItem$1
   public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
   {
     QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
-    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.a = paramParcel.readString();
+    localQidianCompoundProfileItem.b = paramParcel.readString();
     localQidianCompoundProfileItem.c = paramParcel.readString();
     int i = paramParcel.readByte();
     boolean bool2 = true;
@@ -20,16 +20,16 @@ final class QidianProfileCardActivity$QidianCompoundProfileItem$1
     } else {
       bool1 = false;
     }
-    localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
-    localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localQidianCompoundProfileItem.d = bool1;
+    localQidianCompoundProfileItem.e = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
-    localQidianCompoundProfileItem.d = paramParcel.readString();
-    localQidianCompoundProfileItem.e = paramParcel.readString();
+    localQidianCompoundProfileItem.f = bool1;
+    localQidianCompoundProfileItem.g = paramParcel.readString();
+    localQidianCompoundProfileItem.h = paramParcel.readString();
     return localQidianCompoundProfileItem;
   }
   
@@ -40,7 +40,7 @@ final class QidianProfileCardActivity$QidianCompoundProfileItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem.1
  * JD-Core Version:    0.7.0.1
  */

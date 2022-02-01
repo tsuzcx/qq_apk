@@ -8,18 +8,18 @@ import com.tencent.mobileqq.pb.PBStringField;
 public class GetWeatherResponse
   extends BaseResponse
 {
-  public final String a;
-  public final int b;
+  public final int a;
+  public final String b;
   
   public GetWeatherResponse(qqstory_service.RspGetWeather paramRspGetWeather)
   {
-    this.b = paramRspGetWeather.temperature.get();
-    this.a = paramRspGetWeather.wea_desc.get();
+    this.a = paramRspGetWeather.temperature.get();
+    this.b = paramRspGetWeather.wea_desc.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetWeatherResponse
  * JD-Core Version:    0.7.0.1
  */

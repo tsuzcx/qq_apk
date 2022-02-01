@@ -13,22 +13,22 @@ class WTogetherMng$1
   
   public void a()
   {
-    WTogetherMng.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng, this.jdField_a_of_type_ComTencentAvWtogetherDataWatchTogetherInfo);
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
+    WTogetherMng.a(this.d, this.b);
+    this.c.a(null);
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      WTogetherMng.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng, this.jdField_a_of_type_ComTencentAvAppSessionInfo, this.jdField_a_of_type_ComTencentAvWtogetherDataWatchTogetherInfo.a, this.jdField_a_of_type_ComTencentAvWtogetherDataWatchTogetherInfo.a());
+      WTogetherMng.a(this.d, this.a, this.b.f, this.b.g());
     }
     else
     {
-      WTogetherMng.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng, this.jdField_a_of_type_ComTencentAvWtogetherDataWatchTogetherInfo);
-      WTogetherMng.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng, BaseApplicationImpl.getContext().getString(2131696011), 0L);
+      WTogetherMng.a(this.d, this.b);
+      WTogetherMng.a(this.d, BaseApplicationImpl.getContext().getString(2131893773), 0L);
     }
-    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
+    this.c.a(null);
   }
 }
 

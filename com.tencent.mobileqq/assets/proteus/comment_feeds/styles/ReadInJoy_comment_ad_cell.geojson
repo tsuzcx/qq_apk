@@ -1,0 +1,120 @@
+{
+  "ReadInJoy_comment_ad_cell": {
+    "view_type": "UIView",
+    "default_visible": "YES",
+    "layout_type": "layout_relative",
+    "view_id": "id_comment_ad_container",
+    "event_type": "ad_item_click_in_comment",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "subviews": [
+      {
+        "view_type": "UIView",
+        "default_visible": "YES",
+        "layout_type": "layout_relative",
+        "padding_bottom": "10",
+        "align_parent_center_horizontal": "YES",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "345"
+        },
+        "attributes": {
+          "setCornerRadiusString:": "12.0",
+          "setLayerMaskBoundsString:": "1",
+          "setClipsToBounds:": "1",
+          "setBackgroundColorString:": "$background_color"
+        },
+        "subviews": [
+          {
+            "view_type": "UIView",
+            "default_visible": "YES",
+            "view_id": "id_comment_cell_one_container",
+            "layout_type": "layout_linear",
+            "direction": "vertical",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "relative",
+              "value": "375"
+            },
+            "subviews": [
+              {
+                "$includeComponet": "componet/readinjoy_comment_ad_header.geojson"
+              }
+            ]
+          },
+          {
+            "view_type": "UIView",
+            "default_visible": "YES",
+            "view_id": "id_comment_cell_ad_container",
+            "below_of_view": "id_comment_cell_one_container",
+            "layout_type": "layout_linear",
+            "direction": "vertical",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "relative",
+              "value": "375"
+            },
+            "subviews": [
+              {
+                "$includeComponet": "componet/readinjoy_comment_ad_container.geojson"
+              }
+            ]
+          },
+          {
+                "view_type": "UIView",
+                "default_visible":"YES",
+                "view_id": "id_comment_tail_container",
+                "below_of_view":"id_comment_cell_ad_container",
+                "layout_type":"layout_relative",
+                "margin_top": "5",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews": [
+                  {
+                    "view_type": "UIButton",
+                    "event_type": "cmd_comment_dot_click",
+                    "view_id": "id_comment_tail_3_dot",
+                    "align_parent_right":"YES",
+                    "height": {
+                        "type": "relative",
+                        "value": "18"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "18"
+                    },
+                    "attributes": {
+                        "setImages:forStates:": [
+                            [
+                                "rij_comment_3dot"
+                            ],
+                            [
+                                "0"
+                            ]
+                        ]
+                    }
+                  }
+                ]
+            }
+        ]
+      }
+    ]
+  }
+}

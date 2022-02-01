@@ -15,34 +15,34 @@ class QVipTroopFileConfig$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     Object localObject2 = (IVasH5PayUtil)QRoute.api(IVasH5PayUtil.class);
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.a;
     Object localObject1;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasConfigBusinessQvipQVipTroopFileConfig.h;
+    if (this.b) {
+      localObject1 = this.e.h;
     } else {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasConfigBusinessQvipQVipTroopFileConfig.i;
+      localObject1 = this.e.i;
     }
-    ((IVasH5PayUtil)localObject2).openH5PayByURL(localContext, ((QVipTroopFileConfig.Info)localObject1).a(this.jdField_a_of_type_JavaLangString));
+    ((IVasH5PayUtil)localObject2).openH5PayByURL(localContext, ((QVipTroopFileConfig.Info)localObject1).a(this.c));
     paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       paramDialogInterface = "0X800AE6A";
     } else {
       paramDialogInterface = "0X800AE64";
     }
-    localObject2 = this.jdField_a_of_type_JavaLangString;
-    if (this.b) {
+    localObject2 = this.c;
+    if (this.d) {
       localObject1 = "size";
     } else {
       localObject1 = "full";
     }
     QVipTroopFileConfig.a(paramDialogInterface, (String)localObject2, (String)localObject1);
     localObject2 = (IMobileReportManager)QRoute.api(IMobileReportManager.class);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       paramDialogInterface = "2";
     } else {
       paramDialogInterface = "3";
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       localObject1 = "2";
     } else {
       localObject1 = "1";
@@ -52,7 +52,7 @@ class QVipTroopFileConfig$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipTroopFileConfig.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,16 @@ final class ThemeBackground$1
   
   public Drawable a()
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846235);
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeBackground.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    Drawable localDrawable = this.a.getResources().getDrawable(2130847705);
+    AppRuntime localAppRuntime = this.b;
+    String str1 = this.c.a;
+    String str2 = this.d;
     return VasApngUtil.getApngDrawable(localAppRuntime, str1, "-setting-", localDrawable, new int[] { 1 }, str2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeBackground.1
  * JD-Core Version:    0.7.0.1
  */

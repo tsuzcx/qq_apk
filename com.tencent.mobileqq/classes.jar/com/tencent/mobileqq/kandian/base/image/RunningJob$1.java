@@ -10,7 +10,7 @@ class RunningJob$1
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageRunningJob.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.b = paramString;
+    this.b.b.s = paramString;
   }
   
   public void doCancel() {}
@@ -22,37 +22,37 @@ class RunningJob$1
   
   public void onFileDownloadFailed(int paramInt)
   {
-    String str = RunningJob.jdField_a_of_type_JavaLangString;
+    String str = RunningJob.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("receive image data error: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(" progress: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangStringBuilder);
+    localStringBuilder.append(this.a);
     QLog.d(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageRunningJob.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.e = paramInt;
+    this.b.b.q = paramInt;
   }
   
   public void onFileDownloadStarted()
   {
-    RIJImageOptReport.b(3, this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageRunningJob.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest);
+    RIJImageOptReport.b(3, this.b.b);
   }
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    RunningJob.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageRunningJob);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageRunningJob.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest.i = paramLong;
-    String str = RunningJob.jdField_a_of_type_JavaLangString;
+    RunningJob.a(this.b);
+    this.b.b.t = paramLong;
+    String str = RunningJob.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("receive image data success, total size: ");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(" progress: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangStringBuilder);
+    localStringBuilder.append(this.a);
     QLog.d(str, 1, localStringBuilder.toString());
   }
   
   public void publishProgress(int paramInt)
   {
-    StringBuilder localStringBuilder1 = this.jdField_a_of_type_JavaLangStringBuilder;
+    StringBuilder localStringBuilder1 = this.a;
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append(System.currentTimeMillis());
     localStringBuilder2.append(" ");
@@ -63,7 +63,7 @@ class RunningJob$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.RunningJob.1
  * JD-Core Version:    0.7.0.1
  */

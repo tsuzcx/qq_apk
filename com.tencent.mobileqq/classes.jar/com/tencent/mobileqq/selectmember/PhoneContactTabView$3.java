@@ -12,8 +12,8 @@ class PhoneContactTabView$3
   
   protected void onQueryBindState(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.unRegistObserver(this);
-    int i = PhoneContactTabView.a(this.a).getSelfBindState();
+    this.a.f.unRegistObserver(this);
+    int i = PhoneContactTabView.b(this.a).getSelfBindState();
     if ((i != 0) && (i != 1) && (i != 5)) {
       if (i != 6)
       {
@@ -21,7 +21,7 @@ class PhoneContactTabView$3
         {
           if (i != 9)
           {
-            PhoneContactTabView.b(this.a);
+            PhoneContactTabView.c(this.a);
             return;
           }
           this.a.d();
@@ -29,7 +29,7 @@ class PhoneContactTabView$3
       }
       else
       {
-        if (PhoneContactTabView.a(this.a).getSelfBindInfo().lastUsedFlag == 2L)
+        if (PhoneContactTabView.b(this.a).getSelfBindInfo().lastUsedFlag == 2L)
         {
           this.a.d();
           return;
@@ -43,7 +43,7 @@ class PhoneContactTabView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.PhoneContactTabView.3
  * JD-Core Version:    0.7.0.1
  */

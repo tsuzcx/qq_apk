@@ -20,11 +20,11 @@ class QFlutterFaceLoader$4
     {
       if (i == 1)
       {
-        paramMessage = QFlutterFaceLoader.a(this.a).keySet().iterator();
+        paramMessage = QFlutterFaceLoader.e(this.a).keySet().iterator();
         while (paramMessage.hasNext())
         {
           Integer localInteger = (Integer)paramMessage.next();
-          ArrayList localArrayList = (ArrayList)QFlutterFaceLoader.a(this.a).get(localInteger);
+          ArrayList localArrayList = (ArrayList)QFlutterFaceLoader.e(this.a).get(localInteger);
           QFlutterFaceLoader.a(this.a, new ArrayList(localArrayList), localInteger.intValue());
         }
       }
@@ -39,7 +39,7 @@ class QFlutterFaceLoader$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader.4
  * JD-Core Version:    0.7.0.1
  */

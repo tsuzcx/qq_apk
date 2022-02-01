@@ -29,8 +29,8 @@ public class GdtUtil
   
   public static int a(GdtMotiveVideoModel paramGdtMotiveVideoModel)
   {
-    if ((paramGdtMotiveVideoModel != null) && (paramGdtMotiveVideoModel.a() != null)) {
-      j = paramGdtMotiveVideoModel.a().getRewardTime();
+    if ((paramGdtMotiveVideoModel != null) && (paramGdtMotiveVideoModel.d() != null)) {
+      j = paramGdtMotiveVideoModel.d().getRewardTime();
     } else {
       j = 0;
     }
@@ -133,7 +133,7 @@ public class GdtUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtUtil
  * JD-Core Version:    0.7.0.1
  */

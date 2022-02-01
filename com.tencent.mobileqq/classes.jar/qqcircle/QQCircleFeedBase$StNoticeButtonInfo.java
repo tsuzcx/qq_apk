@@ -16,7 +16,7 @@ public final class QQCircleFeedBase$StNoticeButtonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.QQCircleFeedBase.StNoticeButtonInfo
  * JD-Core Version:    0.7.0.1
  */

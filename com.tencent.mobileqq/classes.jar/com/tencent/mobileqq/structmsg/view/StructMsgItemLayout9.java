@@ -22,7 +22,7 @@ public class StructMsgItemLayout9
   {
     Object localObject2 = paramContext;
     Resources localResources = paramContext.getResources();
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = this.ax.size();
     if ((paramView != null) && ((paramView instanceof RelativeLayout)))
     {
       paramView = (RelativeLayout)paramView;
@@ -31,41 +31,41 @@ public class StructMsgItemLayout9
         i = 0;
         while (i < j)
         {
-          paramContext = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          paramContext.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-          localObject1 = paramContext.jdField_a_of_type_JavaLangString;
+          paramContext = (AbsStructMsgElement)this.ax.get(i);
+          paramContext.ar = this.ar;
+          localObject1 = paramContext.b;
           if ("summary".equals(localObject1))
           {
             paramContext = (StructMsgItemSummary)paramContext;
             if (paramBoolean) {
-              paramContext.b("black");
+              paramContext.c("black");
             } else {
-              paramContext.b(null);
+              paramContext.c(null);
             }
-            localObject1 = paramContext.f();
+            localObject1 = paramContext.p();
             if ((localObject1 != null) && (((String)localObject1).equals("1")))
             {
-              paramContext.c("22");
+              paramContext.d("22");
               paramContext.a(true);
               paramContext.a((Context)localObject2, paramView.findViewById(2), paramBundle);
             }
             else if ((localObject1 != null) && (((String)localObject1).equals("2")))
             {
-              paramContext.c("44");
+              paramContext.d("44");
               paramContext.a(true);
               paramContext.a((Context)localObject2, paramView.findViewById(3), paramBundle);
             }
             else
             {
-              paramContext.c("30");
-              paramContext.b(20);
+              paramContext.d("30");
+              paramContext.c(20);
               paramContext.a((Context)localObject2, paramView.findViewById(4), paramBundle);
             }
           }
           else if ("picture".equals(localObject1))
           {
             paramContext = (StructMsgItemCover)paramContext;
-            if ((paramContext.c != null) && (!paramContext.c.equals("")))
+            if ((paramContext.e != null) && (!paramContext.e.equals("")))
             {
               localObject1 = paramContext.a((Context)localObject2, paramView.findViewById(6), true, paramBundle);
               ((View)localObject1).setClickable(true);
@@ -108,21 +108,21 @@ public class StructMsgItemLayout9
       if (i >= j) {
         break;
       }
-      Object localObject3 = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      ((AbsStructMsgElement)localObject3).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-      Object localObject4 = ((AbsStructMsgElement)localObject3).jdField_a_of_type_JavaLangString;
+      Object localObject3 = (AbsStructMsgElement)this.ax.get(i);
+      ((AbsStructMsgElement)localObject3).ar = this.ar;
+      Object localObject4 = ((AbsStructMsgElement)localObject3).b;
       if ("summary".equals(localObject4))
       {
         localObject3 = (StructMsgItemSummary)localObject3;
         if (paramBoolean) {
-          ((StructMsgItemSummary)localObject3).b("black");
+          ((StructMsgItemSummary)localObject3).c("black");
         } else {
-          ((StructMsgItemSummary)localObject3).b(null);
+          ((StructMsgItemSummary)localObject3).c(null);
         }
-        localObject4 = ((StructMsgItemSummary)localObject3).f();
+        localObject4 = ((StructMsgItemSummary)localObject3).p();
         if ((localObject4 != null) && (((String)localObject4).equals("1")))
         {
-          ((StructMsgItemSummary)localObject3).c("22");
+          ((StructMsgItemSummary)localObject3).d("22");
           ((StructMsgItemSummary)localObject3).a(true);
           localObject2 = ((StructMsgItemSummary)localObject3).a((Context)localObject2, null, paramBundle);
           ((View)localObject2).setId(2);
@@ -135,7 +135,7 @@ public class StructMsgItemLayout9
           if ((localObject4 == null) || (!((String)localObject4).equals("2"))) {
             break;
           }
-          ((StructMsgItemSummary)localObject3).c("44");
+          ((StructMsgItemSummary)localObject3).d("44");
           ((StructMsgItemSummary)localObject3).a(true);
           localObject2 = ((StructMsgItemSummary)localObject3).a((Context)localObject2, null, paramBundle);
           ((View)localObject2).setId(3);
@@ -143,8 +143,8 @@ public class StructMsgItemLayout9
           ((LinearLayout.LayoutParams)localObject3).topMargin = AIOUtils.b(-3.5F, localResources);
           localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
         }
-        ((StructMsgItemSummary)localObject3).c("30");
-        ((StructMsgItemSummary)localObject3).b(20);
+        ((StructMsgItemSummary)localObject3).d("30");
+        ((StructMsgItemSummary)localObject3).c(20);
         localObject2 = ((StructMsgItemSummary)localObject3).a((Context)localObject2, null, paramBundle);
         ((View)localObject2).setId(4);
         localObject3 = new RelativeLayout.LayoutParams(-2, -2);
@@ -156,7 +156,7 @@ public class StructMsgItemLayout9
         localObject3 = (StructMsgItemCover)localObject3;
         localObject2 = ((StructMsgItemCover)localObject3).a((Context)localObject2, null, true, paramBundle);
         localObject4 = new RelativeLayout.LayoutParams(AIOUtils.b(40.0F, localResources), AIOUtils.b(40.0F, localResources));
-        if ((((StructMsgItemCover)localObject3).c != null) && (!((StructMsgItemCover)localObject3).c.equals("")))
+        if ((((StructMsgItemCover)localObject3).e != null) && (!((StructMsgItemCover)localObject3).e.equals("")))
         {
           ((View)localObject2).setId(6);
           ((RelativeLayout.LayoutParams)localObject4).addRule(11, -1);
@@ -208,24 +208,24 @@ public class StructMsgItemLayout9
     return localObject1;
   }
   
-  protected int b()
-  {
-    return 9;
-  }
-  
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     return a(paramContext, paramView, false, paramBundle);
   }
   
-  public String b()
+  protected int c()
+  {
+    return 9;
+  }
+  
+  public String e()
   {
     return "Layout9";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout9
  * JD-Core Version:    0.7.0.1
  */
